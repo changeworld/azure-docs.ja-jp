@@ -3,7 +3,6 @@ title: 機械学習アルゴリズム チート シート | Microsoft Docs
 description: 印刷可能な機械学習アルゴリズム チート シートは、Azure Machine Learning Studio で予測モデルに適したアルゴリズムを選択するのに役立ちます。
 keywords: アルゴリズム チート シート、チート シート、Machine Learning アルゴリズム
 services: machine-learning
-documentationcenter: ''
 author: pakalra
 ms.author: pakalra
 manager: cgronlun
@@ -11,51 +10,39 @@ editor: cgronlun
 ms.assetid: e1dc31ec-1acb-463f-ba77-de565d4ddf4d
 ms.service: machine-learning
 ms.component: studio
-ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: b080a739aa73e3c8ef95c7db9a6358d942e94bba
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 56fadde5694dbd298c812db258105e03b7d23d45
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238388"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996742"
 ---
-# <a name="machine-learning-algorithm-cheat-sheet-for-microsoft-azure-machine-learning-studio"></a>Microsoft Azure Machine Learning Studio の機械学習アルゴリズム チート シート
-**Microsoft Azure Machine Learning チート シート** を使用すると、予測分析モデルに最適なアルゴリズムを選択できます。
+# <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Azure Machine Learning Studio の機械学習アルゴリズム チート シート
+
+**Azure Machine Learning アルゴリズム チート シート**を使用すると、予測分析モデルに最適なアルゴリズムを選択できます。
 
 [Azure Machine Learning Studio](https://studio.azureml.net/) には、***regression***、***classification***、***clustering***、***anomaly detection*** ファミリの多様なアルゴリズムのライブラリがあります。 各アルゴリズムは、異なる種類の機械学習の問題に対処するために設計されています。
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>ダウンロード: 機械学習アルゴリズム チート シート
-**チート シートをダウンロードする: [Machine Learning アルゴリズム チート シート (11 x 17 インチ)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v6.pdf)**
+
+**チート シートをダウンロードする: [Machine Learning アルゴリズム チート シート (11 x 17 インチ)](http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
 ![Machine Learning Algorithm Cheat Sheet : Machine Learning アルゴリズムの選択方法][cheat-sheet]
 
 [cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
 
-Machine Learning アルゴリズム チート シートをダウンロードし、タブロイド サイズで印刷すると、手元に保管しやすくなり、アルゴリズムを選択するときに役立ちます。
+Machine Learning Studio アルゴリズム チート シートをダウンロードし、タブロイド サイズで印刷すると、手元に保管しやすくなり、アルゴリズムを選択するときに役立ちます。
 
 > [!NOTE]
-> このチート シートを使用する詳細なガイドについては、「 [Microsoft Azure Machine Learning のアルゴリズムを選択する方法](algorithm-choice.md) 」をご覧ください。
-> 
-> 
+> このチート シートを使用して適切なアルゴリズムを選ぶ方法や、各種機械学習アルゴリズムの詳細と使用方法については、「[Microsoft Azure Machine Learning のアルゴリズムの選択方法](algorithm-choice.md)」をご覧ください。
 
-## <a name="more-help-with-algorithms"></a>アルゴリズムに関するその他のヘルプ
-* このチート シートを使用して適切なアルゴリズムを選ぶ方法や、各種機械学習アルゴリズムの詳細と使用方法については、「[Microsoft Azure Machine Learning のアルゴリズムの選択方法](algorithm-choice.md)」をご覧ください。
-* アルゴリズムに関する説明と使用例が記載されたインフォグラフィックのダウンロードについては、「[インフォグラフィックのダウンロード: Machine Learning の基礎とアルゴリズムの使用例](basics-infographic-with-algorithm-examples.md)」をご覧ください。
-* Machine Learning Studio で使用可能な機械学習アルゴリズムのカテゴリ別の一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの[モデルの初期化][initialize-model]に関するページを参照してください。
-* Machine Learning Studio で使用できるすべてのアルゴリズムとモジュールの一覧 (アルファベット順) については、Machine Learning Studio アルゴリズムとモジュールのヘルプの「[Machine Learning Studio モジュールの一覧 (アルファベット順)][a-z-list]」をご覧ください。
-* Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「 [Azure Machine Learning Studio 機能の概要図](studio-overview-diagram.md)」ご覧ください。
-
-[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
-## <a name="notes-and-terminology-definitions-for-the-machine-learning-algorithm-cheat-sheet"></a>機械学習アルゴリズム チート シートの注意事項と用語の定義
+## <a name="notes-and-terminology-definitions-for-the-machine-learning-studio-algorithm-cheat-sheet"></a>Machine Learning Studio アルゴリズム チート シートの注意事項と用語の定義
 
 * このアルゴリズム チート シートに示した提案は経験則です。 変化する場合や著しく異なる場合があります。 これは、開始点を提案するものです。 データに使用した複数のアルゴリズム間で競合が発生しても心配しないでください。 それぞれのアルゴリズムの原則を理解し、データが生成されたシステムを理解することに代わるものはありません。
 
-* すべての機械学習アルゴリズムには、独自のスタイルや "*帰納的バイアス*" があります。 特定の問題に対しては、複数のアルゴリズムが適切な場合や、1 つのアルゴリズムが他のアルゴリズムよりも適している場合があります。 しかし、事前にどれが最適かを知ることができるとは限りません。 このような場合は、複数のアルゴリズムがチート シートに一緒に記載されています。 1 つのアルゴリズムを試してみて、結果に満足できない場合は、他のアルゴリズムを試してみるのが適切な方策でしょう。 同じデータに対して複数のアルゴリズムを試し、その結果を比較した [Azure AI Gallery](http://gallery.cortanaintelligence.com/) の「[Compare Multi-class Classifiers: Letter recognition](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92)」(多クラス分類子の比較: 文字認識) をご覧ください。
+* すべての機械学習アルゴリズムには、独自のスタイルや "*帰納的バイアス*" があります。 特定の問題に対しては、複数のアルゴリズムが適切な場合や、1 つのアルゴリズムが他のアルゴリズムよりも適している場合があります。 しかし、事前にどれが最適かを知ることができるとは限りません。 このような場合は、複数のアルゴリズムがチート シートに一緒に記載されています。 1 つのアルゴリズムを試してみて、結果に満足できない場合は、他のアルゴリズムを試してみるのが適切な方策でしょう。 同じデータに対して複数のアルゴリズムを試し、その結果を比較した [Azure AI Gallery](http://gallery.azure.ai/) の「[Compare Multi-class Classifiers: Letter recognition](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92)」(多クラス分類子の比較: 文字認識) をご覧ください。
 
 * 機械学習には、主に 3 つのカテゴリ (**教師あり学習**、**教師なし学習**、**強化学習**) があります。
 
@@ -75,15 +62,20 @@ Machine Learning アルゴリズム チート シートをダウンロードし�
 
 * ニューラル ネットワークは、各カテゴリに**ダミー変数**を作成して、カテゴリが適用される場合はこれを 1 に設定し、適用されない場合は 0 に設定することで、カテゴリ変数と一緒に使用できます。
 
+## <a name="next-steps"></a>次の手順
 
-<!-- This is how you can embed a link in an image in HTML. Don't know how to do this in markdown.
-<a href="http://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet.pdf">
-<img src="C:\Users\garye\azure-docs-pr\articles\media\machine-learning-algorithm-cheat-sheet\cheat-sheet-small.png">
-</a>
--->
+* アルゴリズムに関する説明と使用例が記載されたインフォグラフィックのダウンロードについては、「[インフォグラフィックのダウンロード: Machine Learning の基礎とアルゴリズムの使用例](basics-infographic-with-algorithm-examples.md)」をご覧ください。
+
+* Machine Learning Studio で使用可能な機械学習アルゴリズムのカテゴリ別の一覧については、Machine Learning Studio アルゴリズムとモジュールのヘルプの[モデルの初期化][initialize-model]に関するページを参照してください。
+
+* Machine Learning Studio で使用できるすべてのアルゴリズムとモジュールの一覧 (アルファベット順) については、Machine Learning Studio アルゴリズムとモジュールのヘルプの「[Machine Learning Studio モジュールの一覧 (アルファベット順)][a-z-list]」をご覧ください。
+
+* Machine Learning Studio の機能の概要を示す図をダウンロードして印刷する場合は、「 [Azure Machine Learning Studio 機能の概要図](studio-overview-diagram.md)」ご覧ください。
+
+[!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 <!-- Module References -->
-[a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx
-[initialize-model]: https://msdn.microsoft.com/library/azure/0c67013c-bfbc-428b-87f3-f552d8dd41f6/
-[k-means-clustering]: https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/
-[one-vs-all-multiclass]: https://msdn.microsoft.com/library/azure/7191efae-b4b1-4d03-a6f8-7205f87be664/
+[a-z-list]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list
+[initialize-model]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model
+[k-means-clustering]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/k-means-clustering
+[one-vs-all-multiclass]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/one-vs-all-multiclass

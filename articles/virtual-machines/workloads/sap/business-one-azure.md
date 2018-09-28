@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: msjuergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca089672cf645af58952205dada66aa96ba0b65d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e8bd5ddab4553807f59b7afdf32fbfc1703e3d75
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578245"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949535"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP Business One
 このドキュメントでは、Azure Virtual Machines に SAP Business One をデプロイするためのガイダンスを提供します。 このドキュメントは、SAP の Business One のインストール ドキュメントに代わるものではありません。 このドキュメントでは、Business One アプリケーションを実行する Azure インフラストラクチャの計画とデプロイに関する基本的なガイドラインについて説明します。
@@ -39,7 +39,7 @@ SQL Server については、「[SAP NetWeaver のための Azure Virtual Machin
 - [Linux 上の Azure 仮想マシン](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 - [PowerShell を使用した Azure ネットワークと仮想ネットワークの管理](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
 - [CLI を使用した Azure ネットワークと仮想ネットワーク](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
-- [Azure CLI 2.0 を使用した Azure ディスクの管理](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
+- [Azure CLI を使用した Azure ディスクの管理](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
 関心があるのが Business One だけであっても、「[SAP NetWeaver のための Azure Virtual Machines の計画と実装](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)」は有益な情報源となります。
 

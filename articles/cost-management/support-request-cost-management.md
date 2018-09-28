@@ -1,23 +1,23 @@
 ---
-title: Azure Cost Management のサポート リクエストを作成する | Microsoft Docs
-description: この記事では、Cost Management のサポート リクエストを作成するために必要な手順について説明します。
+title: Azure で Cloudyn のサポート リクエストを作成する | Microsoft Docs
+description: この記事では、Cloudyn のサポート リクエストを作成するために必要な手順について説明します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 35d3153cb485f11fe17689f1ff1d3d88961878d3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d074b263d11c6b12a4283d2ff479a5b3dc1d6908
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296693"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952445"
 ---
-# <a name="create-a-support-request-for-cost-management"></a>Cost Management のサポート リクエストを作成する
+# <a name="create-a-support-request-for-cloudyn"></a>Cloudyn のサポート リクエストを作成する
 
 必要な情報が見つからない場合や、 問題がサービスの中断やバグだと思われる場合は、サポート リクエストを開くことができます。 サポート チケットを開くときは、1 つの問題について開いてください。 そうすることで、報告された問題の原因を迅速に特定できます。
 
@@ -48,4 +48,4 @@ ms.locfileid: "35296693"
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure Cost Management の詳細については、Cost Management に関する「[使用状況とコストを確認する](tutorial-review-usage.md)」チュートリアルに進んでください。
+- Cloudyn の詳細については、Cloudyn のチュートリアル「[使用状況とコストを確認する](tutorial-review-usage.md)」に進んでください。

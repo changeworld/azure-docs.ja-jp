@@ -15,16 +15,16 @@ ms.workload: big-compute
 ms.date: 07/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2360c5a672975cec48f5c17b098125b8287799c3
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 9b5c1df8776b63fc8ceecfa0377e74c757ba503c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493698"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950150"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
 
-Azure CLI 2.0 は、Azure リソースを管理するための、Azure のコマンド ライン エクスペリエンスです。 macOS、Linux、および Windows で使用できます。 Azure CLI 2.0 は、コマンド ラインから Azure リソースを管理できるように最適化されています。 Azure CLI を使用すると、Azure Batch アカウントを管理したり、プール、ジョブ、タスクなどのリソースを管理したりすることができます。 Batch API、Azure Portal、Batch PowerShell コマンドレットを使用して実行するタスクの多くは、Azure CLI でスクリプト化することができます。
+Azure CLI は、Azure リソースを管理するための、Azure のコマンド ライン エクスペリエンスです。 macOS、Linux、および Windows で使用できます。 Azure CLI は、コマンド ラインから Azure リソースを管理できるように最適化されています。 Azure CLI を使用すると、Azure Batch アカウントを管理したり、プール、ジョブ、タスクなどのリソースを管理したりすることができます。 Batch API、Azure Portal、Batch PowerShell コマンドレットを使用して実行するタスクの多くは、Azure CLI でスクリプト化することができます。
 
 この記事では、[Azure CLI バージョン 2.0](https://docs.microsoft.com/cli/azure) を Batch で使用する方法の概要を説明します。 CLI を Azure で使用する方法の概要については、「[Azure CLI 2.0 を使ってみる](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)」を参照してください。
 
@@ -47,12 +47,9 @@ Azure CLI のどのコマンドでも、コマンドの後ろに `-h` を付加�
 
 確信が持てない場合は、コマンド ライン オプション `-h` を使用して、任意の Azure CLI コマンドのヘルプを表示してください。
 
-> [!NOTE]
-> Azure CLI の以前のバージョンでは、CLI コマンドの先頭に `azure` を付けていました。 バージョン 2.0 では、すべてのコマンドが `az` で始まるようになりました。 バージョン 2.0 ではスクリプトを更新して新しい構文を使用するようにしてくだし。
->
->  
 
-また、[Batch の Azure CLI コマンド](https://docs.microsoft.com/cli/azure/batch)の詳細については、Azure CLI リファレンス ドキュメントを参照してください。 
+
+また、[Batch の Azure CLI コマンド](/cli/azure/batch)の詳細については、Azure CLI リファレンス ドキュメントを参照してください。 
 
 ## <a name="log-in-and-authenticate"></a>ログインと認証
 
@@ -63,7 +60,7 @@ Batch で Azure CLI を使用するには、ログインと認証を行う必要
 
 ### <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure にログインするには、いくつかの方法があります。詳細については、「[Azure CLI 2.0 を使用してログインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)」で説明しています。
+Azure にログインするには、いくつかの方法があります。詳しくは、「[Azure CLI 2.0 を使用してサインインする](/cli/azure/authenticate-azure-cli)」をご覧ください。
 
 1. [対話形式でログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-interactive-log-in)。 コマンド ラインから Azure CLI コマンドを実行しているときに、対話形式でログインします。
 2. [サービス プリンシパルでログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-logging-in-with-a-service-principal)。 スクリプトまたはアプリケーションから Azure CLI コマンドを実行しているときに、サービス プリンシパルでログインします。
@@ -87,7 +84,7 @@ Azure CLI を使用してプール、ジョブ、タスクなどの Batch リソ
 
 Batch アカウントでの認証には、次の 2 つの選択肢があります。
 
-- **Azure Active Directory (Azure AD) 認証を使用する。** 
+- **Azure Active Directory (Azure AD) 認証を使用する** 
 
     Azure AD での認証は、Batch で Azure CLI を使用する場合の既定の方法であり、ほとんどのシナリオに適しています。 
     
@@ -101,9 +98,9 @@ Batch アカウントでの認証には、次の 2 つの選択肢がありま�
     az batch account login -g myresource group -n mybatchaccount
     ```
 
-- **共有キー認証を使用する。**
+- **共有キー認証を使用する**
 
-    [共有キー認証](https://docs.microsoft.com/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key)では、アカウント アクセス キーを使用して、Batch サービスに対して Azure CLI コマンドを認証します。
+    [共有キー認証](/rest/api/batchservice/authenticate-requests-to-the-azure-batch-service#authentication-via-shared-key)では、アカウント アクセス キーを使用して、Batch サービスに対して Azure CLI コマンドを認証します。
 
     Batch コマンドの呼び出しを自動化する Azure CLI スクリプトを作成している場合は、共有キー認証か、Azure AD サービス プリンシパルを使用することができます。 一部のシナリオでは、サービス プリンシパルを作成するよりも共有キー認証を使用する方が簡単な場合があります。  
 
@@ -173,7 +170,6 @@ Azure CLI の問題をトラブルシューティングするときに、以下�
 * `-v` と `-vv` を使用して、**詳細**なコマンド出力を表示します。 `-vv` フラグを指定すると、Azure CLI は実際の REST 要求および応答を表示します。 これらのスイッチは、完全なエラー出力を表示する場合に便利です。
 * `--json` オプションを使用すると、**コマンド出力を JSON として**表示できます。 たとえば、 `az batch pool show pool001 --json` を実行すると、pool001 のプロパティが JSON 形式で表示されます。 この出力をコピーして変更し、 `--json-file` で使用できます (この記事の前半で説明した [JSON ファイル](#json-files) の項目を参照してください)。
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
-
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,6 +1,6 @@
 ---
 title: Azure の Linux VM の仮想ハード ディスクを拡張する | Microsoft Docs
-description: Azure CLI 2.0 を使用して、Linux VM の仮想ハード ディスクを拡張する方法について説明します。
+description: Azure CLI を使用して、Linux VM の仮想ハード ディスクを拡張する方法について説明します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: roygara
@@ -14,21 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: rogarana
-ms.openlocfilehash: 96d50260663f00f5ae2e9b2e0495c91ecb5da4b2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0c2d4d1413b6cfd0b5e457e720b59c6c7b575092
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421190"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974546"
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する方法
-Azure の Linux 仮想マシン (VM) では、通常、オペレーティング システム (OS) の既定の仮想ハード ディスク サイズは 30 GB です。 [データ ディスクを追加](add-disk.md)して記憶域スペースを追加できますが、既存のデータ ディスクを拡張することもできます。 この記事では、Azure CLI 2.0 を使用して、Linux VM のマネージド ディスクを拡張する方法について詳しく説明します。 
+
+Azure の Linux 仮想マシン (VM) では、通常、オペレーティング システム (OS) の既定の仮想ハード ディスク サイズは 30 GB です。 [データ ディスクを追加](add-disk.md)して記憶域スペースを追加できますが、既存のデータ ディスクを拡張することもできます。 この記事では、Azure CLI を使用して、Linux VM のマネージド ディスクを拡張する方法について詳しく説明します。 
 
 > [!WARNING]
 > ディスクのサイズ変更操作を実行する前に、常にデータをバックアップしていることを確認してください。 詳細については、「[Azure での Linux 仮想マシンのバックアップ](tutorial-backup-vms.md)」を参照してください。
 
 ## <a name="expand-azure-managed-disk"></a>Azure Managed Disks の拡張
-[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしていることを確認します。
+[Azure CLI](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしていることを確認します。
 
 この記事では、少なくとも 1 つのデータ ディスクが接続され、準備ができている Azure の既存の VM が必要です。 使用できる VM をまだ用意していない場合は、[データ ディスク付きの VM の作成と準備](tutorial-manage-disks.md#create-and-attach-disks)に関するページを参照してください。
 
@@ -43,8 +44,7 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
     > [!NOTE]
     > 仮想ハード ディスクを拡張するには、VM の割り当てを解除する必要があります。 `az vm stop` では、コンピューティング リソースは解放されません。 コンピューティング リソースを解放するには、`az vm deallocate` を使用します。
 
-1. 
-  [az disk list](/cli/azure/disk#az_disk_list) を使用して、リソース グループに含まれるマネージド ディスクの一覧を表示します。 次の例では、*myResourceGroup* という名前のリソース グループに含まれるマネージド ディスクの一覧を表示します。
+1. [az disk list](/cli/azure/disk#az_disk_list) を使用して、リソース グループに含まれるマネージド ディスクの一覧を表示します。 次の例では、*myResourceGroup* という名前のリソース グループに含まれるマネージド ディスクの一覧を表示します。
 
     ```azurecli
     az disk list \

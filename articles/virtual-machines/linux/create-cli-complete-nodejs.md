@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 1.0 を使用した完全な Linux 環境の作成 | Microsoft Docs
-description: Azure CLI 1.0 を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。
+title: Azure クラシック CLI を使用して完全な Linux 環境を作成する | Microsoft Docs
+description: Azure クラシック CLI を使用して、ストレージ、Linux VM、仮想ネットワークとサブネット、ロード バランサー、NIC、パブリック IP、ネットワーク セキュリティ グループすべてを新しく作成します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 1fb5542af77fbb584effca24a74b9e233359cf0e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 560d1c55b159ed817c0b080171862c28ebe73f3e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932346"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952802"
 ---
-# <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Azure CLI 1.0 を使用して完全な Linux 環境を作成する
+# <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Azure クラシック CLI を使用して完全な Linux 環境を作成する
 この記事では、開発と単純なコンピューティングに役立つ VM のペアを含む単純なネットワークとロード バランサーを構築します。 ここでは、インターネット上のどこからでも接続できる、2 台のセキュリティで保護された実用的な Linux VM を構築するまで、各コマンドの説明を交えながらプロセスについて説明します。 この記事を理解すると、より複雑なネットワークや環境に進むことができます。
 
 その過程で、Resource Manager デプロイ モデルによって提供される依存関係階層とその性能についても説明します。 システムがどのように構築されているかをいったん理解すると、 [Azure Resource Manager テンプレート](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して、より短時間でシステムを再構築することができます。 環境の各部分がどのように組み合わさっているかがわかると、それらを自動化するためのテンプレートの作成はより簡単になります。
@@ -33,20 +33,20 @@ ms.locfileid: "37932346"
 * ポート 80 の負荷分散規則が構成されたロード バランサー
 * 不要なトラフィックからVM を保護するネットワーク セキュリティ グループ ルール (NSG)
 
-このカスタム環境を作成するには、Resource Manager モード (`azure config mode arm`) の最新の [Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) が必要です。 JSON 解析ツールも必要です。 この例では、 [jq](https://stedolan.github.io/jq/)を使用します。
+このカスタム環境を作成するには、Resource Manager モード (`azure config mode arm`) の最新の [Azure クラシック CLI](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) が必要です。 JSON 解析ツールも必要です。 この例では、 [jq](https://stedolan.github.io/jq/)を使用します。
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
-- [Azure CLI 1.0](#quick-commands) - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI (本記事)
-- [Azure CLI 2.0](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイ モデル用の次世代 CLI
+- [Azure クラシック CLI](#quick-commands) - クラシック デプロイ モデルと Resource Manager デプロイ モデル用の CLI (本記事)
+- [Azure CLI](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) - Resource Manager デプロイ モデル用の次世代 CLI
 
 
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、VM を Azure にアップロードするための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-walkthrough)。
 
-[Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でログインし、Resource Manager モードを使用していることを確認します。
+[Azure クラシック CLI](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) にログインし、Resource Manager モードを使用していることを確認します。
 
 ```azurecli
 azure config mode arm
@@ -270,7 +270,7 @@ azure group export myResourceGroup
 ## <a name="detailed-walkthrough"></a>詳細なチュートリアル
 次の手順では、環境を構築する際に各コマンドがどのように機能するかについて説明します。 これらの概念は、開発または実稼働用のカスタム環境を作成するのに役立ちます。
 
-[Azure CLI 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でログインし、Resource Manager モードを使用していることを確認します。
+[Azure クラシック CLI](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) にログインし、Resource Manager モードを使用していることを確認します。
 
 ```azurecli
 azure config mode arm

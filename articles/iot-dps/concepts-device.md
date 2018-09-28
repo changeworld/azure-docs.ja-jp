@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: bd77a56acee948995bb2fcbb5beea60f69cda9ee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 354ef48f7935536864cde9dc0d9a130fa5aeb865
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34630155"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972863"
 ---
 # <a name="iot-hub-device-provisioning-service-device-concepts"></a>IoT Hub デバイス プロビジョニング サービスのデバイスの概念
 
@@ -28,9 +28,10 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 > [!NOTE]
 > IoT Hub は、そのサービスでの同様の概念として "認証スキーム" を使用します。
 
-デバイス プロビジョニング サービスでは、2 つの形式の構成証明がサポートされます。
+デバイス プロビジョニング サービスは、以下の形式の構成証明をサポートします。
 * 標準の X.509 証明書の認証フローに基づく**X.509 証明書**。
 * nonce チャレンジに基づく**トラステッド プラットフォーム モジュール (TPM)**。キーの TPM 標準を使用し、署名された Shared Access Signature (SAS) トークンを提示します。 このトークンでは、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)ごとに保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。
+* 共有アクセス署名 (SAS) **セキュリティ トークン**に基づく[対称キー](../iot-hub/iot-hub-devguide-security.md#security-tokens)。これにはハッシュの署名と埋め込みの有効期限が含まれています。 詳細については、「[対称キーの構成証明](concepts-symmetric-key-attestation.md)」を参照してください。
 
 ## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
 

@@ -9,34 +9,34 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 03d622e3c7a3315238f2bceedae529bbe06af299
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ef4de749d5b9152bbe043a26d3c60fe7f09f869
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378504"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951816"
 ---
 # <a name="call-bing-custom-search-endpoint-java"></a>Bing Custom Search エンドポイントを呼び出す (Java)
 
 このクイックスタートでは、Java を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。 
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイック スタートを完了するには、次のものが必要です。
-- カスタム検索インスタンス。 「[Create your first Bing Custom Search instance](quick-start.md)」 (最初の Bing Custom Search インスタンスを作成する) を参照してください。
 
+- すぐに使用できるカスタム検索インスタンス。 「[Create your first Bing Custom Search instance](quick-start.md)」 (最初の Bing Custom Search インスタンスを作成する) を参照してください。
 - [Java](https://www.java.com) をインストールしておくこと。
-
-- [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search API**。 このクイックスタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+- サブスクリプション キー。 [無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)をアクティブにすると、サブスクリプション キーを取得できます。または Azure ダッシュボードから有料のサブスクリプション キーを使用することもできます ([Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を参照してください)。    
 
 ## <a name="run-the-code"></a>コードの実行
 
-Bing Custom Search エンドポイントは次の手順で呼び出します。
+この例を実行するには、次の手順に従います。
 
-1. 任意の Java IDE を使用してパッケージを作成します。
-2. ファイル CustomSrchJava.java を作成し、それに次のコードをコピーします。
-3. **YOUR-SUBSCRIPTION-KEY** と **YOUR-CUSTOM-CONFIG-ID** をそれぞれ、自分のキーと構成 ID に変更します。
-
-    ``` Java
+1. 任意の Java IDE を使用してパッケージを作成します。  
+  
+2. パッケージに CustomSrchJava.java という名前のファイルを作成し、次のコードをそのファイルにコピーします。 **YOUR-SUBSCRIPTION-KEY** と **YOUR-CUSTOM-CONFIG-ID** を、自分のサブスクリプション キーと構成 ID に置き換えます。  
+  
+    ```java
     import java.io.InputStream;
     import java.net.URL;
     import java.net.URLEncoder;
@@ -58,9 +58,9 @@ Bing Custom Search エンドポイントは次の手順で呼び出します。
         static String subscriptionKey = "YOUR-SUBSCRIPTION-KEY"; 
         static String customConfigId = "YOUR-CUSTOM-CONFIG-ID";  
     
-        static String searchTerm = "Microsoft";  // Replace with search term specific to your defined sources.
+        static String searchTerm = "Microsoft";  // Replace with search term specific to your search scenario.
     
-        public static SearchResults SearchImages (String searchQuery) throws Exception {
+        public static SearchResults SearchWeb (String searchQuery) throws Exception {
             // construct URL of search request (endpoint + query string)
             URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchTerm, "UTF-8") + "&CustomConfig=" + customConfigId);
             HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -96,15 +96,15 @@ Bing Custom Search エンドポイントは次の手順で呼び出します。
     
         public static void main (String[] args) {
             if (subscriptionKey.length() != 32) {
-                System.out.println("Invalid Bing Search API subscription key!");
+                System.out.println("Invalid Custom Search subscription key!");
                 System.out.println("Please paste yours into the source code.");
                 System.exit(1);
             }
     
             try {
-                System.out.println("Searching the Web for: " + searchTerm);
+                System.out.println("Searching your slice of the Web for: " + searchTerm);
     
-                SearchResults result = SearchImages(searchTerm);
+                SearchResults result = SearchWeb(searchTerm);
     
                 System.out.println("\nRelevant HTTP Headers:\n");
                 for (String header : result.relevantHeaders.keySet())
@@ -130,8 +130,8 @@ Bing Custom Search エンドポイントは次の手順で呼び出します。
         }
     
     }
-    
-    ```
+    ```  
+  
 4. プログラムを実行します。
     
 ## <a name="next-steps"></a>次の手順

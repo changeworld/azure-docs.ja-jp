@@ -9,12 +9,12 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: v-brapel
-ms.openlocfilehash: 7cd61fc63d0d7734b842ed222c67c6753da9a418
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b6f50844d6571cca6d63c1db7a85863e3d22d411
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374736"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948079"
 ---
 # <a name="what-is-bing-custom-search"></a>Bing Custom Search とは
 
@@ -30,18 +30,34 @@ Web のカスタム ビューを作成するには、Bing Custom Search [ポー�
 
 ![画像 alt](./media/bcs-overview.png "Bing Custom Search の動作方法")
 
-## <a name="customize-search-suggestions"></a>検索候補のカスタマイズ
+## <a name="adding-custom-search-box-suggestions"></a>カスタム検索ボックスの候補の追加
 
-適切なレベルで Custom Search をサブスクライブしている場合 ([料金ページ](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)を参照してください)、Custom Search エクスペリエンスの検索候補をカスタマイズすることができます。 Custom Autosuggest API は、ユーザーが指定した部分的なクエリ文字列に基づいて、推奨されるクエリの一覧を返します。 Custom Autosuggest を使うと、検索エクスペリエンスに関連するカスタムの検索候補を提供できます。 カスタム候補のみを返すか Bing の候補を含めるかどうかは、指定できます。 Bing の候補が含まれる場合、カスタム候補は Bing が提供する候補の前に表示されます。 Bing の候補は、Custom Search インスタンスのコンテキストに制限されます。
+カスタム検索ボックスの候補を使用して、カスタム検索エクスペリエンスを強化することができます。 この機能を使うと、検索エクスペリエンスに関連するカスタムの検索候補を提供できます。 ユーザーが検索ボックスに入力すると、ユーザーの部分的なクエリ文字列に基づき、ドロップダウン リストにクエリ文字列の候補が表示されます。 カスタム検索候補のみを返すか、Bing の検索候補も含めるかを指定できます。 詳細については、[こちら](define-custom-suggestions.md)を参照してください。
+
+## <a name="adding-custom-image-search-experience"></a>カスタム画像検索エクスペリエンスの追加
+
+画像によりカスタム検索エクスペリエンスを強化できます。 Web の結果と同様に、カスタム検索では Web サイトのインスタンスのリストでの画像の検索がサポートされています。 詳細については、[こちら](get-images-from-instance.md)を参照してください。
+
+## <a name="adding-custom-video-search-experience"></a>カスタム動画検索エクスペリエンスの追加
+
+動画によりカスタム検索エクスペリエンスを強化できます。 Web の結果と同様に、カスタム検索では Web サイトのインスタンスのリストでの動画の検索がサポートされています。 詳細については、[こちら](get-videos-from-instance.md)を参照してください。
+
+## <a name="sharing-your-custom-search-instance-with-others"></a>カスタム検索インスタンスの他のユーザーとの共有
+
+インスタンスをチームのメンバーと共有することで、インスタンスの編集やテストを簡単に共同で行うことができます。 詳細については、[こちら](share-your-custom-search.md)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
 すぐに使い始める方法は、「[Create your first Bing Custom Search instance](quick-start.md)」 (最初の Bing Custom Search インスタンスを作成する) を参照してください。
 
-検索インスタンスのカスタマイズに使用可能なオプションについては、「[Define a custom search instance](define-your-custom-view.md)」 (カスタム検索インスタンスの定義) を参照してください。
+検索インスタンスのカスタマイズについて詳しくは、[カスタム検索インスタンスの定義](define-your-custom-view.md)に関するページをご覧ください。
 
-[Custom Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference)を理解します。 リファレンスには、検索結果を要求する際に使用するエンドポイント、ヘッダー、クエリ パラメーターの一覧が記載されています。 また、応答オブジェクトの定義も記載されています。
+各カスタム検索エンドポイントのリファレンス コンテンツをよく理解してください。 リファレンスには、検索結果を要求するときに使用するエンドポイント、ヘッダー、クエリ パラメーターが記載されています。 また、応答オブジェクトの定義も記載されています。
 
-候補をカスタマイズする方法については、「[Define custom search suggestions](define-custom-suggestions.md)」 (カスタム検索候補を定義する) を参照してください。
+- [Custom Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-search-api-v7-reference)
+- [Custom Image API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-images-api-v7-reference)
+- [Custom Video API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-videos-api-v7-reference)
+- [Custom Autosuggest API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-custom-autosuggest-api-v7-reference)
+
 
 検索結果の使用に関するルールを逸脱しないよう、[Bing の使用上および表示上の要件](./use-and-display-requirements.md)に関するページを必ず読んでください。

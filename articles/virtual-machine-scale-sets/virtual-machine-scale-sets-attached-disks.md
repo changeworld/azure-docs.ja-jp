@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: 4dd13f1feedf53255daa351bd087845ec5cc845a
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: cfe49e7f4e3692518c890b48582a2f4a6aa16faa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187876"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952462"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 仮想マシン スケール セットと接続されたデータ ディスク
 [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) では、使用できるストレージを拡張するために、データ ディスクをアタッチした VM インスタンスがサポートされています。 新たに作成するスケール セットや既存のスケール セットにデータ ディスクをアタッチすることができます。
 
 > [!NOTE]
->  データ ディスクがアタッチされたスケール セットを作成する場合、(スタンドアロン型の Azure VM と同様に) ディスクを使用する VM 内からディスクをマウントおよびフォーマットする必要があります。 このプロセスを完了するには、スクリプトを呼び出して VM 上のすべてのデータ ディスクをパーティション化およびフォーマットするカスタム スクリプト拡張機能を使用する方法が便利です。 詳細については、[Azure CLI 2.0](tutorial-use-disks-cli.md#prepare-the-data-disks) または [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks) の例を参照してください。
+>  データ ディスクがアタッチされたスケール セットを作成する場合、(スタンドアロン型の Azure VM と同様に) ディスクを使用する VM 内からディスクをマウントおよびフォーマットする必要があります。 このプロセスを完了するには、スクリプトを呼び出して VM 上のすべてのデータ ディスクをパーティション化およびフォーマットするカスタム スクリプト拡張機能を使用する方法が便利です。 詳細については、[Azure CLI](tutorial-use-disks-cli.md#prepare-the-data-disks) または [Azure PowerShell](tutorial-use-disks-powershell.md#prepare-the-data-disks) の例を参照してください。
 
 
 ## <a name="create-and-manage-disks-in-a-scale-set"></a>スケール セットのディスクを作成、管理する
 データ ディスクがアタッチされたスケール セットの作成、データ ディスクの準備とフォーマット、データ ディスクの追加と削除の方法について詳しくは、次のいずれかのチュートリアルを参照してください。
 
-- [Azure CLI 2.0](tutorial-use-disks-cli.md)
+- [Azure CLI](tutorial-use-disks-cli.md)
 - [Azure PowerShell](tutorial-use-disks-powershell.md)
 
 以降この記事では、データ ディスクを必要とする Service Fabric クラスターや、既に内容を含んだデータ ディスクをスケール セットにアタッチする方法など、特定のユース ケースについて概説します。
@@ -97,7 +97,7 @@ Linux クラスターでデータ ディスクを自動的に準備するには�
 
 
 ## <a name="additional-notes"></a>その他のメモ
-Azure Managed Disks と、スケール セットに接続されたデータ ディスクのサポートは、Microsoft.Compute API のバージョン [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) 以降で使用できます。
+Azure マネージド ディスクと、スケール セットに接続されたデータ ディスクのサポートは、Microsoft.Compute API のバージョン [_2016-04-30-preview_](https://github.com/Azure/azure-rest-api-specs/blob/master/arm-compute/2016-04-30-preview/swagger/compute.json) 以降で使用できます。
 
 スケール セット内の接続されたデータ ディスクに対する Azure Portal でのサポートは、最初は制限されています。 要件に応じて、Azure テンプレート、CLI、PowerShell、SDK、および REST API を使用して、接続されたディスクを管理できます。
 

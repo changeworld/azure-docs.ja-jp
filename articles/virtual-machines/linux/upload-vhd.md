@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 2.0 を使用したカスタム Linux VM のアップロードまたはコピー | Microsoft Docs
-description: Resource Manager デプロイ モデルと Azure CLI 2.0 を使用してカスタマイズされた仮想マシンをアップロードおよびコピーする
+title: Azure CLI を使用したカスタム Linux VM のアップロードまたはコピー | Microsoft Docs
+description: Resource Manager デプロイ モデルと Azure CLI を使用してカスタマイズされた仮想マシンをアップロードおよびコピーする
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,14 +15,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: cynthn
-ms.openlocfilehash: 3fb6957cf6af5c09a355b61c7c2440a929d1b837
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b5df02c9f07549aec406cf449bb0ae49ee9e280a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736673"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957433"
 ---
-# <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用してカスタム ディスクから Linux VM を作成しアップロードする
+# <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクから Linux VM を作成しアップロードする
 
 <!-- rename to create-vm-specialized -->
 
@@ -57,7 +57,7 @@ az vm create --resource-group myResourceGroup --location eastus --name myVM \
 > 
 
 
-* [Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしていることを確認します。
+* [Azure CLI](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしていることを確認します。
 
 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*mystorageaccount*、*mydisks* といったパラメーター名にします。
 

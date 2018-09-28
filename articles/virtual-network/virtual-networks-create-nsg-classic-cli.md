@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 1.0 を使用してネットワーク セキュリティ グループ (クラシック) を作成する | Microsoft Docs
-description: Azure CLI 1.0 を使ってネットワーク セキュリティ グループ (クラシック) を作成し、展開する方法を説明します。
+title: Azure クラシック CLI を使用してネットワーク セキュリティ グループ (クラシック) を作成する | Microsoft Docs
+description: Azure クラシック CLI を使用してネットワーク セキュリティ グループ (クラシック) を作成し、展開する方法を説明します。
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 5468801e56849498d712f51e71cfb31bf068398a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5e81fa709589e5fa4a109cdf7709b87bc446ac3c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38696620"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947236"
 ---
-# <a name="create-a-network-security-group-classic-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用してネットワーク セキュリティ グループ (クラシック) を作成する
+# <a name="create-a-network-security-group-classic-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用してネットワーク セキュリティ グループ (クラシック) を作成する
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]
 
 [!INCLUDE [virtual-networks-create-nsg-intro-include](../../includes/virtual-networks-create-nsg-intro-include.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "38696620"
 
 ## <a name="create-an-nsg-for-the-front-end-subnet"></a>フロントエンドのサブネットの NSG を作成する
 
-1. Azure CLI の使用経験がない場合は、「[Azure CLI のインストールと構成](../cli-install-nodejs.md)」をご覧ください。
+1. Azure CLI の使用経験がない場合は、「[Azure CLI のインストールと構成](/cli/azure/install-cli-version-1.0)」をご覧ください。
 2. クラシック モードに切り替えます。
 
     ```azurecli

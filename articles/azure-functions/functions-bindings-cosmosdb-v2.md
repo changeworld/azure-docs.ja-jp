@@ -1,5 +1,5 @@
 ---
-title: Functions の Azure Cosmos DB バインド 2.x (プレビュー)
+title: Functions 2.x の Azure Cosmos DB バインド
 description: Azure Functions で Azure Cosmos DB のトリガーとバインドを使用する方法について説明します。
 services: functions
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: ea1403ed8afe6e84a3118d891e8c2d34b390d158
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d39c27614fd4d534db36df1af61b2d419493c4d3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093432"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953482"
 ---
-# <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>Azure Functions の Azure Cosmos DB バインド 2.x (プレビュー)
+# <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Functions 2.x の Azure Cosmos DB バインド
 
 > [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [バージョン 1 - 一般公開](functions-bindings-cosmosdb.md)
@@ -27,7 +27,7 @@ ms.locfileid: "44093432"
 この記事では、Azure Functions 2.x で [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) のバインドを操作する方法について説明します。 Azure Functions は、Azure Cosmos DB のトリガー、入力、出力のバインドをサポートしています。
 
 > [!NOTE]
-> この記事は、プレビューにある [Azure Functions バージョン 2.x](functions-versions.md) を対象としています。  Functions 1.x でこれらのバインドを使用する方法については、[Azure Functions 1.x の Azure Cosmos DB のバインド](functions-bindings-cosmosdb.md)に関するページを参照してください。
+> この記事は、[Azure Functions version 2.x](functions-versions.md) を対象としています。  Functions 1.x でこれらのバインドを使用する方法については、[Azure Functions 1.x の Azure Cosmos DB のバインド](functions-bindings-cosmosdb.md)に関するページを参照してください。
 >
 > このバインドの元の名称は DocumentDB でした。 Functions バージョン 2.x では、トリガー、バインド、およびパッケージの名称はすべて、Cosmos DB になっています。
 
@@ -51,9 +51,9 @@ Azure Cosmos DB のトリガーは [Azure Cosmos DB 変更フィード](../cosmo
 
 言語固有の例をご覧ください。
 
-* [C#](#trigger---c-example)
+* [C# を選択した場合](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
+* [JavaScript を選択した場合](#trigger---javascript-example)
 * [Java](#trigger---java-example)
 
 [トリガーの例をスキップする](#trigger---attributes)
@@ -260,9 +260,9 @@ Azure Cosmos DB 入力バインドでは、SQL API を使用して 1 つ以上�
 
 次のリンクから、ID 値を指定することで単一のドキュメントを読み取る言語固有の例を参照してください。
 
-* [C#](#input---c-examples)
+* [C# を選択した場合](#input---c-examples)
 * [C# スクリプト (.csx)](#input---c-script-examples)
-* [JavaScript](#input---javascript-examples)
+* [JavaScript を選択した場合](#input---javascript-examples)
 * [F#](#input---f-examples)
 * [Java](#input---java-examples)
 
@@ -1256,9 +1256,9 @@ Azure Cosmos DB 出力バインドを使用すると、SQL API を使って Azur
 
 言語固有の例を参照してください。
 
-* [C#](#output---c-examples)
+* [C# を選択した場合](#output---c-examples)
 * [C# スクリプト (.csx)](#output---c-script-examples)
-* [JavaScript](#output---javascript-examples)
+* [JavaScript を選択した場合](#output---javascript-examples)
 * [F#](#output---f-examples)
 * [Java](#output---java-example)
 

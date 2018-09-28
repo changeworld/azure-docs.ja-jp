@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 82548ef8fd3f992eedd77c93be47cb5328a584c7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 92a30f0754decc3052bf53a64da13325ddc4f954
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34628642"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946563"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub デバイス プロビジョニング サービスのセキュリティの概念 
 
@@ -26,9 +26,11 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 > [!NOTE]
 > IoT Hub は、そのサービスでの同様の概念として "認証スキーム" を使用します。
 
-デバイス プロビジョニング サービスでは、2 つの形式の構成証明がサポートされます。
+デバイス プロビジョニング サービスでは、次の形式の構成証明がサポートされます。
 * 標準の X.509 証明書の認証フローに基づく**X.509 証明書**。
-* nonce チャレンジに基づく**トラステッド プラットフォーム モジュール (TPM)**。キーの TPM 標準を使用し、署名された Shared Access Signature (SAS) トークンを提示します。 このトークンでは、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)ごとに保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。
+* nonce チャレンジに基づく**トラステッド プラットフォーム モジュール (TPM)**。キーの TPM 標準を使用し、署名された Shared Access Signature (SAS) トークンを提示します。 この形式の構成証明では、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)に従って保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。
+* 共有アクセス署名 (SAS) の[セキュリティ トークン](../iot-hub/iot-hub-devguide-security.md#security-tokens)に基づく**対称キー**。ハッシュ処理された署名と埋め込みの有効期限が含まれています。 詳細については、「[Symmetric key attestation](concepts-symmetric-key-attestation.md)」(対称キーの構成証明) を参照してください。
+
 
 ## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
 
@@ -55,7 +57,7 @@ TPM の証明書は、nonce チャレンジに基づいています。nonce チ�
 
 ## <a name="x509-certificates"></a>X.509 証明書
 
-X.509 証明書を構成証明メカニズムとして使用することは、実稼働環境を拡張し、デバイスのプロビジョニングを簡素化するための優れた方法です。 X.509 証明書は通常、信頼する証明書チェーンに配置されます。証明書チェーンでは、チェーン内の各証明書が次の上位証明書の秘密キーによって署名され、最後は自己署名ルート証明書で終わります。 これにより、信頼されたルート証明機関 (CA) によって生成されるルート証明書から、各中間 CA 証明書や デバイスにインストールされたエンドエンティティ "リーフ" 証明書に至る、信頼する委任チェーンが確立されます。 詳細については、「[X.509 CA 証明書を使用したデバイス認証](/azure/iot-hub/iot-hub-x509ca-overview)」をご覧ください。 
+X.509 証明書を構成証明メカニズムとして使用することは、実稼働環境を拡張し、デバイスのプロビジョニングを簡素化するための優れた方法です。 X.509 証明書は通常、信頼する証明書チェーンに配置されます。証明書チェーンでは、チェーン内の各証明書が次の上位証明書の秘密キーによって署名され、最後は自己署名ルート証明書で終わります。 この配置により、信頼されたルート証明機関 (CA) によって生成されるルート証明書から、各中間 CA 証明書やデバイスにインストールされたエンドエンティティ "リーフ" 証明書に至る、信頼する委任チェーンが確立されます。 詳細については、「[X.509 CA 証明書を使用したデバイス認証](/azure/iot-hub/iot-hub-x509ca-overview)」をご覧ください。 
 
 証明書チェーンは、多くの場合、デバイスに関連付けられている論理的または物理的階層を表します。 たとえば、製造元は次の事項ができます。
 - 自己署名のルート CA 証明書を発行する

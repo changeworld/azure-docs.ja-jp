@@ -9,44 +9,45 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 32644fe0cf0a6e1666d2d1ee6efb826bf753f001
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ed00b75fa956d0197d3672d84b097f99ec3c35ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42814865"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956388"
 ---
 # <a name="call-bing-custom-search-endpoint-c"></a>Bing Custom Search エンドポイントを呼び出す (C#)
 
-このクイックスタートでは、C# を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。 
+このクイック スタートでは、C# を使用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。 
 
 ## <a name="prerequisites"></a>前提条件
 
--  すぐに使用できるカスタム検索インスタンス。 「[Create your first Bing Custom Search instance](quick-start.md)」 (最初の Bing Custom Search インスタンスを作成する) を参照してください。
--  [.Net Core](https://www.microsoft.com/net/download/core) がインストールされている。
-- [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search API**。 このクイックスタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。  
+このクイック スタートを完了するには、次のものが必要です。
 
-  >[!NOTE]  
-  >2017 年 10 月 15 日以前にプロビジョニングされたプレビュー キーを保有する既存の Bing Custom Search ユーザーは、2017 年 11 月 30 日まで、または許可されているクエリの最大数を使い切るまで、そのキーをご利用いただけます。 その後は、Azure での一般公開バージョンへの移行が必要になります。 
- 
+- すぐに使用できるカスタム検索インスタンス。 「[Create your first Bing Custom Search instance](quick-start.md)」 (最初の Bing Custom Search インスタンスを作成する) を参照してください。
+- [.Net Core](https://www.microsoft.com/net/download/core) がインストールされている。
+- サブスクリプション キー。 [無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)を起動すると、サブスクリプション キーを取得できます。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます ([Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページを参照)。    
+
+
 ## <a name="run-the-code"></a>コードの実行
 
 この例を実行するには、次の手順に従います。
 
-1. コードのフォルダーを作成します。
-2. コマンド プロンプトまたはターミナルから、先ほど作成したフォルダーに移動します。
+1. コードのフォルダーを作成します。  
+  
+2. コマンド プロンプトまたはターミナルから、先ほど作成したフォルダーに移動します。  
+  
 3. 次のコマンドを実行します。
     ```
     dotnet new console -o BingCustomSearch
     cd BingCustomSearch
     dotnet add package Newtonsoft.Json
     dotnet restore
-   ```
+    ```
+  
+4. Program.cs に次のコードをコピーします。 **YOUR-SUBSCRIPTION-KEY** と **YOUR-CUSTOM-CONFIG-ID** を、自分のサブスクリプション キーと構成 ID に置き換えます。
 
-4. Program.cs に次のコードをコピーします。
-5. **YOUR-SUBSCRIPTION-KEY** と **YOUR-CUSTOM-CONFIG-ID** を、自分のキーと構成 ID に置き換えます。
-
-    ``` CSharp
+    ```csharp
     using System;
     using System.Net.Http;
     using System.Web;
@@ -118,13 +119,13 @@ ms.locfileid: "42814865"
         }
     }
     ```
-6. 次のコマンドを使用してアプリケーションをビルドします。 コマンド出力で参照されている dll パスを書き留めます。
+6. 次のコマンドを使用してアプリケーションをビルドします。 コマンド出力で参照されている DLL パスを書き留めます。
 
     <pre>
     dotnet build 
     </pre>
     
-7. **PATH TO OUTPUT** はビルド ステップで参照されていたパスに置き換えて、次のコマンドを使用してアプリケーションを実行します。
+7. **PATH TO OUTPUT** は手順 6 で参照されていた DLL パスに置き換えて、次のコマンドを使用してアプリケーションを実行します。
 
     <pre>    
     dotnet **PATH TO OUTPUT**

@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 2.0 のサンプル - データ ディスクを接続して使用する | Microsoft Docs
-description: Azure CLI 2.0 のサンプル
+title: Azure CLI のサンプル - データ ディスクを接続して使用する | Microsoft Docs
+description: Azure CLI のサンプル
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 63811e01145999077506914ab646576eeb511116
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4dd87cf705d17700bf4903dcbc5e08aaf309a810
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308073"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956865"
 ---
-# <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用して、仮想マシン スケール セットがあるデータ ディスクを接続して使用する
+# <a name="attach-and-use-data-disks-with-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI を使用して、仮想マシン スケール セットがあるデータ ディスクを接続して使用する
 このスクリプトでは、仮想マシン スケール セットを作成し、データ ディスクを接続して準備します。
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
@@ -52,6 +52,6 @@ az group delete --name myResourceGroup
 | [az group delete](/cli/azure/ad/group#delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
-Azure CLI 2.0 の詳細については、[Azure CLI 2.0 のドキュメント](https://docs.microsoft.com/cli/azure/overview)を参照してください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
-その他の仮想マシン スケール セット用の Azure CLI 2.0 サンプル スクリプトは、[Azure 仮想マシン スケール セットのドキュメント](../cli-samples.md)にあります。
+その他の仮想マシン スケール セット用の Azure CLI サンプル スクリプトは、[Azure 仮想マシン スケール セットのドキュメント](../cli-samples.md)にあります。

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: 0ff14ec2100d47e0edc5288f1c46f4fdd63fa683
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: cbd1a7a3a797cc20be92583bbb5ac163333729fc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171529"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969803"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure でホストされているサービスの逆引き DNS を構成する
 
@@ -51,7 +51,7 @@ Azure DNS では、コンピューティング リソース (仮想マシン、�
 
 ## <a name="reverse-dns-for-publicipaddress-resources"></a>PublicIpAddress リソースの逆引き DNS
 
-ここでは、Azure PowerShell、Azure CLI 1.0、または Azure CLI 2.0 を使って、Resource Manager デプロイ モデルの PublicIpAddress リソースに対する逆引き DNS を構成する方法の詳細な手順について説明します。 Azure Portal を使った PublicIpAddress リソースの逆引き DNS の構成は、現在はサポートされていません。
+ここでは、Azure PowerShell、Azure CLI、または Azure CLI を使って、Resource Manager デプロイ モデルに PublicIpAddress リソースに対する逆引き DNS を構成する方法の詳細な手順を説明します。 Azure Portal を使った PublicIpAddress リソースの逆引き DNS の構成は、現在はサポートされていません。
 
 現在、Azure は、IPv4 の PublicIpAddress リソースの逆引き DNS のみをサポートしています。 IPv6 についてはサポートされていません。
 
@@ -77,7 +77,7 @@ $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
 Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 ```
 
-#### <a name="azure-cli-10"></a>Azure CLI 1.0
+#### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
 既存の PublicIpAddress に逆引き DNS を追加するには:
 
@@ -91,7 +91,7 @@ azure network public-ip set -n PublicIp -g MyResourceGroup -f contosoapp1.westus
 azure network public-ip set -n PublicIp -g MyResourceGroup -d contosoapp1 -f contosoapp1.westus.cloudapp.azure.com.
 ```
 
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
+#### <a name="azure-cli"></a>Azure CLI
 
 既存の PublicIpAddress に逆引き DNS を追加するには:
 
@@ -115,13 +115,13 @@ az network public-ip update --resource-group MyResourceGroup --name PublicIp --r
 New-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Location "WestUS" -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
 ```
 
-#### <a name="azure-cli-10"></a>Azure CLI 1.0
+#### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
 ```azurecli
 azure network public-ip create -n PublicIp -g MyResourceGroup -l westus -d contosoapp3 -f contosoapp3.westus.cloudapp.azure.com.
 ```
 
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network public-ip create --name PublicIp --resource-group MyResourceGroup --location westcentralus --dns-name contosoapp1 --reverse-fqdn contosoapp1.westcentralus.cloudapp.azure.com
@@ -137,13 +137,13 @@ az network public-ip create --name PublicIp --resource-group MyResourceGroup --l
 Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 ```
 
-#### <a name="azure-cli-10"></a>Azure CLI 1.0
+#### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
 ```azurecli
 azure network public-ip show -n PublicIp -g MyResourceGroup
 ```
 
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network public-ip show --name PublicIp --resource-group MyResourceGroup
@@ -161,13 +161,13 @@ $pip.DnsSettings.ReverseFqdn = ""
 Set-AzureRmPublicIpAddress -PublicIpAddress $pip
 ```
 
-#### <a name="azure-cli-10"></a>Azure CLI 1.0
+#### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
 ```azurecli
 azure network public-ip set -n PublicIp -g MyResourceGroup –f ""
 ```
 
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network public-ip update --resource-group MyResourceGroup --name PublicIp --reverse-fqdn ""
@@ -176,7 +176,7 @@ az network public-ip update --resource-group MyResourceGroup --name PublicIp --r
 
 ## <a name="configure-reverse-dns-for-cloud-services"></a>Cloud Services の逆引き DNS を構成する
 
-ここでは、Azure PowerShell を使って、クラシック デプロイ モデルで Cloud Services の逆引き DNS を構成する方法の詳細な手順についてを説明します。 Cloud Services の逆引き DNS の構成は、Azure Portal、Azure CLI 1.0、Azure CLI 2.0 ではサポートされていません。
+ここでは、Azure PowerShell を使って、クラシック デプロイ モデルで Cloud Services の逆引き DNS を構成する方法の詳細な手順についてを説明します。 Cloud Services に対する Azure Portal、Azure CLI、および Azure CLI からの逆引き DNS の構成はサポートされていません。
 
 ### <a name="add-reverse-dns-to-existing-cloud-services"></a>既存の Cloud Services への逆引き DNS の追加
 

@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 1ac55b728a29ff1bb8129087da5992ffe5f23df9
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 6ed1ef6019e339768c4ba6a62d8b4d99d844f254
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42820304"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949527"
 ---
 # <a name="azure-and-linux"></a>Azure と Linux
 Microsoft Azure は、分析、仮想マシン、データベース、モバイル、ネットワーク、ストレージ、Web など、多様なパブリック クラウド サービスを一元化した集合体として成長し続け、さまざまなソリューションのホストとして理想的な形態となっています。  Microsoft Azure のスケーラブルなコンピューティング プラットフォームによって、必要なときに使用した分だけを支払う料金体系が実現され、オンプレミスのハードウェアに投資する必要がありません。  貴社の顧客のニーズに応えるうえで必要なレベルにまでソリューションをいつでもスケールアップまたはスケールアウトできる柔軟性が Azure にはあります。
@@ -37,7 +37,7 @@ Azure は、単一インスタンス仮想マシン向けに、業界をリー�
 
 ## <a name="managed-disks"></a>Managed Disks
 
-Managed Disks により、Azure Storage アカウントの作成および管理はバックグラウンドで処理されるため、ストレージ アカウントのスケーラビリティの制限について心配する必要がありません。 ディスク サイズとパフォーマンス レベル (Standard または Premium) を指定すると、Azure によってディスクが作成および管理されます。 ディスクの追加や VM のスケールアップとスケールダウンを行うときに、使用されているストレージについて心配する必要はありません。 新しい VM を作成する場合は、[Azure CLI 2.0](quick-create-cli.md) または Azure Portal を使用して、管理 OS とデータ ディスクで VM を作成します。 VM に非管理対象ディスクがある場合は、[VM を変換して Managed Disks でバックアップ](convert-unmanaged-to-managed-disks.md)できます。
+Managed Disks により、Azure Storage アカウントの作成および管理はバックグラウンドで処理されるため、ストレージ アカウントのスケーラビリティの制限について心配する必要がありません。 ディスク サイズとパフォーマンス レベル (Standard または Premium) を指定すると、Azure によってディスクが作成および管理されます。 ディスクの追加や VM のスケールアップとスケールダウンを行うときに、使用されているストレージについて心配する必要はありません。 新しい VM を作成する場合は、[Azure CLI](quick-create-cli.md) または Azure portal を使用して、管理 OS とデータ ディスクで VM を作成します。 VM に非管理対象ディスクがある場合は、[VM を変換して Managed Disks でバックアップ](convert-unmanaged-to-managed-disks.md)できます。
 
 また、Azure リージョンごとに 1 つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 Managed Disks の詳細については、[Managed Disks の概要](../linux/managed-disks-overview.md)に関するページをご覧ください。
 
@@ -91,7 +91,7 @@ Azure の使用を開始するには、Azure アカウント、Azure CLI のイ�
 Azure クラウドを使用する最初の手順は、Azure アカウントにサインアップすることです。  開始するには、 [Azure アカウントのサインアップ](https://azure.microsoft.com/pricing/free-trial/) ページに移動します。
 
 ### <a name="install-the-cli"></a>CLI をインストールする
-新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure Portal の使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、`azure-cli` をインストールします。  Mac または Linux ワークステーションに [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールします。
+新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure Portal の使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、`azure-cli` をインストールします。  Mac または Linux ワークステーションに [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 
 ### <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
 これで Azure アカウント、Azure Web Portal、Azure CLI の準備ができました。  次の手順では、パスワードを使用せずに Linux で SSH を使用するための SSH キー ペアを作成します。  [Linux および Mac で SSH キーを作成](mac-create-ssh-keys.md) し、パスワードのないログインとセキュリティの強化を実現します。

@@ -5,14 +5,14 @@ author: vhorne
 manager: jeconnoc
 ms.service: dns
 ms.topic: overview
-ms.date: 6/7/2018
+ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 0812f5e3e23fbf49afec91524b4de2ff0eb7cd9a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e3e04bf7e35b22a56465810f476323ed217e047a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574183"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967627"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
@@ -52,6 +52,14 @@ DNS の課金は、Azure でホストされている DNS ゾーンの数と、DN
 Azure DNS では、プライベート DNS ゾーンもサポートされるようになりました (現在はパブリック プレビュー段階です)。 このため、現在利用可能な Azure 提供の名前ではなく、独自のカスタム ドメイン名をプライベート仮想ネットワーク内で使用できます。
 
 詳しくは、「[プライベート ドメインに Azure DNS を使用する](private-dns-overview.md)」をご覧ください。
+
+## <a name="alias-records"></a>エイリアス レコード
+
+Azure DNS では、エイリアス レコード セットをサポートします。 エイリアス レコード セットは、Azure パブリック IP アドレスまたは Traffic Manager プロファイルなどの Azure リソースを参照するために使用できます。 基になるリソースの IP アドレスが変更された場合、エイリアス レコード セットは DNS の解決時にシームレスに自動更新されます。 エイリアス レコード セットはサービス インスタンスをポイントし、サービス インスタンスは IP アドレスに関連付けられます。 
+
+さらに、エイリアス レコードを使用して、ひらめきやネイキッド ドメイン (contoso.com など) が Traffic Manager プロファイルをポイントできるようになりました。
+
+詳細については、「[Azure DNS エイリアス レコード](dns-alias.md)」をご覧ください。
 
 
 ## <a name="next-steps"></a>次の手順

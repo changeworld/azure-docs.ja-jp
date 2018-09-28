@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2018
+ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 7d27b95f9c7d21f49f547534ca99a44657062abc
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 8ce550fcd9756286488d17ac5cad258aaf1682ba
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42144907"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946859"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>仮想ネットワーク ピアリングの作成、変更、削除
 
@@ -33,7 +33,7 @@ ms.locfileid: "42144907"
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - ポータルを使う場合は、 https://portal.azure.com を開き、ピアリングの作業に[必要なアクセス許可](#permissions)を持つアカウントでログインします。
 - PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、Azure との接続を作成するには、ピアリングの作業に[必要なアクセス許可](#permissions)を持つアカウントで `Connect-AzureRmAccount` を実行する必要もあります。
-- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI のバージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、Azure との接続を作成するには、ピアリングの作業に[必要なアクセス許可](#permissions)を持つアカウントで `az login` を実行する必要もあります。
+- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI のバージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、Azure との接続を作成するには、ピアリングの作業に[必要なアクセス許可](#permissions)を持つアカウントで `az login` を実行する必要もあります。
 
 Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧に記載されている適切なアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てられている必要があります。
 
@@ -49,7 +49,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 6. <a name="add-peering"></a>次の設定の値を入力または選択します。
     - **[名前]:** ピアリングの名前は、仮想ネットワーク内で一意である必要があります。
     - **[仮想ネットワークのデプロイ モデル]:** ピアリングする仮想ネットワークのデプロイに使用されたデプロイ モデルを選択します。
-    - **[リソース ID を知っている]:** ピアリングする仮想ネットワークへの読み取りアクセス権がある場合は、このチェック ボックスをオフのままにしておきます。 ピアリングする仮想ネットワークまたはサブスクリプションへの読み取りアクセス権がない場合は、このボックスをオンにします。 チェック ボックスをオンにしたときに表示される **[リソース ID]** ボックスに、ピアリングする仮想ネットワークの完全なリソース ID を入力します。 この仮想ネットワークと同じ Azure [リージョン](https://azure.microsoft.com/regions)、または[サポートされている異なる](#requirements-and-constraints) Azure リージョンに存在する、仮想ネットワークのリソース ID を入力する必要があります。 完全なリソース ID は、/subscriptions/<Id>/resourceGroups/<リソース グループ名>/providers/Microsoft.Network/virtualNetworks/<仮想ネットワーク名> のようになります。 仮想ネットワークのリソース ID を取得するには、仮想ネットワークのプロパティを表示します。 仮想ネットワークのプロパティを表示する方法については、「[仮想ネットワークと設定の表示](manage-virtual-network.md#view-virtual-networks-and-settings)」を参照してください。
+    - **[リソース ID を知っている]:** ピアリングする仮想ネットワークへの読み取りアクセス権がある場合は、このチェック ボックスをオフのままにしておきます。 ピアリングする仮想ネットワークまたはサブスクリプションへの読み取りアクセス権がない場合は、このボックスをオンにします。 チェック ボックスをオンにしたときに表示される **[リソース ID]** ボックスに、ピアリングする仮想ネットワークの完全なリソース ID を入力します。 この仮想ネットワークと同じ Azure [リージョン](https://azure.microsoft.com/regions)、または[サポートされている異なる](#requirements-and-constraints) Azure リージョンに存在する、仮想ネットワークのリソース ID を入力する必要があります。 完全なリソース ID は、/subscriptions/<Id>/resourceGroups/<リソース グループ名>/providers/Microsoft.Network/virtualNetworks/<仮想ネットワーク名> のようになります。 仮想ネットワークのリソース ID を取得するには、仮想ネットワークのプロパティを表示します。 仮想ネットワークのプロパティを表示する方法については、「[仮想ネットワークと設定の表示](manage-virtual-network.md#view-virtual-networks-and-settings)」を参照してください。 サブスクリプションが、ピアリングを作成している仮想ネットワークを含むサブスクリプションと異なる Azure Active Directory テナントに関連付けられている場合、まず各テナントのユーザーを[ゲスト ユーザー](../active-directory/b2b/add-users-administrator.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-guest-users-to-the-directory)として他方のテナントに追加します。
     - **[サブスクリプション]:** ピアリングする仮想ネットワークの[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)を選択します。 アカウントに読み取りアクセス権があるサブスクリプションの数に応じて、1 つ以上のサブスクリプションが表示されます。 **[リソース ID]** チェック ボックスをオンにした場合、この設定は使用できません。
     - **[仮想ネットワーク]:** ピアリングする仮想ネットワークを選択します。 いずれかの Azure デプロイ モデルで作成された仮想ネットワークを選択できます。 異なるリージョンの仮想ネットワークを選ぶ場合は、[サポートされているリージョン](#cross-region)の仮想ネットワークを選ぶ必要があります。 仮想ネットワークを一覧に表示するには、その仮想ネットワークへの読み取りアクセス権が必要です。 仮想ネットワークが一覧に表示されていても、淡色表示されている場合、仮想ネットワークのアドレス空間がこの仮想ネットワークのアドレス空間と重複している可能性があります。 仮想ネットワークのアドレス空間が重複している場合、それらの仮想ネットワークをピアリングをすることはできません。 **[リソース ID]** チェック ボックスをオンにした場合、この設定は使用できません。
     - **[仮想ネットワーク アクセスを許可する]:** 2 つの仮想ネットワーク間の通信を有効にする場合は、**[有効]** (既定値) を選択します。 仮想ネットワーク間の通信を有効にすると、各仮想ネットワークに接続されているリソースは、同じ仮想ネットワークに接続されている場合と同様に、同じ帯域幅と待機時間で相互に通信できます。 2 つの仮想ネットワーク内のリソース間のすべての通信は、Azure プライベート ネットワーク経由で行われます。 ネットワーク セキュリティ グループの **VirtualNetwork** サービス タグには、仮想ネットワークとピアリングされた仮想ネットワークが含まれます。 ネットワーク セキュリティ グループのサービス タグについて詳しくは、[ネットワーク セキュリティ グループの概要](security-overview.md#service-tags)に関する記事をご覧ください。 ピアリングされた仮想ネットワークにトラフィックが流れないようにする場合は、**[無効]** を選択します。 仮想ネットワークを別の仮想ネットワークとピアリングしていても、2 つの仮想ネットワーク間のトラフィック フローを無効にする必要がある場合は、**[無効]** を選択できます。 ピアリングを削除し、再作成するよりも、有効化/無効化する方が便利な場合があります。 この設定を無効にすると、ピアリングされた仮想ネットワーク間でトラフィックが流れなくなります。
@@ -116,7 +116,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 - グローバル ピアリングの作成では、ピアリングされた仮想ネットワークは Azure パブリック クラウドの任意のリージョン内に存在できますが、Azure ナショナル クラウドに存在することはできません。 ナショナル クラウドでは、同じリージョン内の仮想ネットワークのみをピアリングできます。
 - 仮想ネットワーク内のリソースは、グローバルにピアリングされた仮想ネットワークの Azure 内部ロード バランサーのフロントエンド IP アドレスと通信することはできません。 ロード バランサーと、それと通信するリソースは、同じリージョン内の仮想ネットワークに存在する必要があります。 ただし、ピアリングされた仮想ネットワークが同じリージョン内にある場合、仮想ネットワークは、ピアリングされた他方の仮想ネットワーク内の Azure 内部ロードバランサーのフロントエンド IP アドレスと通信できます。
 - グローバルにピアリングされた仮想ネットワークでは、リモート ゲートウェイを使用することはできず、ゲートウェイ転送を許可することもできません。 リモート ゲートウェイを使用する場合、またはゲートウェイ転送を許可する場合は、ピアリングされた仮想ネットワークが同じリージョン内に存在する必要があります。
-- 仮想ネットワークが属しているサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションに属する仮想ネットワークをピアリングする場合、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。 AD テナントをまだ持っていない場合は、簡単に[作成](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)できます。 別々の Active Directory テナントに関連付けられた異なるサブスクリプション内の 2 つの仮想ネットワークは、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) を使って接続することができます。
+- 仮想ネットワークが属しているサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションに属する仮想ネットワークをピアリングする場合、両方のサブスクリプションを同じまたは異なる Azure Active Directory テナントに関連付けることができます。 AD テナントをまだ持っていない場合は、簡単に[作成](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)できます。 ポータルでは、異なる Azure Active Directory テナントに関連付けられているサブスクリプションからの仮想ネットワーク間のピアリングはサポートされていません。 CLI、PowerShell、またはテンプレートを使用できます。
 - ピアリングする仮想ネットワークの IP アドレス空間が重複していてはいけません。
 - 仮想ネットワークを別の仮想ネットワークとピアリングした後に、仮想ネットワークのアドレス空間に対してアドレス範囲の追加または削除を実行することはできません。 アドレス範囲を追加または削除するには、ピアリングを削除し、アドレス範囲を追加または削除してからピアリングを再作成します。 仮想ネットワークに対してアドレス範囲を追加または削除するには、[仮想ネットワークの管理](manage-virtual-network.md)に関するページを参照してください。
 - Resource Manager を使用してデプロイされた 2 つの仮想ネットワーク、または Resource Manager を使用してデプロイされた仮想ネットワークとクラシック デプロイ モデルを使用してデプロイされた仮想ネットワークをピアリングできます。 クラシック デプロイ モデルを使用して作成された 2 つの仮想ネットワークをピアリングすることはできません。 Azure デプロイ モデルの知識がない場合は、[Azure デプロイ モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 クラシック デプロイ モデルを使って作成された 2 つの仮想ネットワークは、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) を使用して接続できます。

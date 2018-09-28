@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 26e01ccab3693c672130462104078c16526aa921
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 04c7b521ad13db9f5ec9573fd1ab966ad1282e8e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992496"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954315"
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>仮想ネットワーク サブネットの追加、変更、削除
 
@@ -31,9 +31,9 @@ ms.locfileid: "38992496"
 この記事のセクションに記載された手順を始める前に、次のタスクを完了してください。
 
 - まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
-- ポータルを使用する場合は、https://portal.azure.com を開き、Azure アカウントでログインします。
+- ポータルを使用する場合は、 https://portal.azure.com を開き、Azure アカウントでログインします。
 - PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/powershell) でコマンドを実行するか、お使いのコンピューターから PowerShell を実行してください。 Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 このチュートリアルには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
-- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI のバージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
+- Azure コマンド ライン インターフェイス (CLI) コマンドを使用してこの記事のタスクを実行する場合は、[Azure Cloud Shell](https://shell.azure.com/bash) でコマンドを実行するか、お使いのコンピューターから CLI を実行してください。 このチュートリアルには、Azure CLI のバージョン 2.0.31 以降が必要です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 Azure CLI をローカルで実行している場合、`az login` を実行して Azure との接続を作成することも必要です。
 
 Azure へのログインまたは接続に使用するアカウントは、[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または「[アクセス許可](#permissions)」の一覧に記載されている適切なアクションが割り当てられている[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てられている必要があります。
 
@@ -49,6 +49,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
     - **[ネットワーク セキュリティ グループ]**: 0 個か 1 個の既存のネットワーク セキュリティ グループをサブネットに関連付けることで、そのサブネットの受信および送信ネットワーク トラフィックをフィルター処理できます。 ネットワーク セキュリティ グループは、仮想ネットワークと同じサブスクリプションと場所に存在する必要があります。 [ネットワーク セキュリティ グループ](security-overview.md)と[ネットワーク セキュリティ グループを作成する方法](tutorial-filter-network-traffic.md)に関するページを参照してください。
     - **[ルート テーブル]:** 0 個または 1 個の既存のルート テーブルをサブネットに関連付けることで、他のネットワークへのネットワーク トラフィック ルーティングを制御できます。 ルート テーブルは、仮想ネットワークと同じサブスクリプションと場所に存在する必要があります。 [Azure のルーティング](virtual-networks-udr-overview.md)と[ルート テーブルを作成する方法](tutorial-create-route-table-portal.md)に関するページを参照してください。
     - **[サービス エンドポイント]:** サブネットは、そのサブネットに対して 0 個または複数のサービス エンドポイントを有効にできます。 サービスのサービス エンドポイントを有効にするには、サービス エンドポイントを有効にするサービス (複数可) を **[サービス]** 一覧から選択します。 エンドポイントには､自動的に場所が構成されます。 既定では､仮想ネットワークのリージョンに対してサービス エンドポイントが構成されます｡ Azure Storage の場合、リージョン フェールオーバーのシナリオに対応するため、エンドポイントは [Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-paired-regions)に自動的に構成されます。
+    - **サブネット委任:** 1 つのサブスクリプションに対して 0 または複数の委任を有効にすることができます。 サブネット委任では、サービスのデプロイ時に一意の ID を利用してサブネットにサービス固有のリソースを作成するための明示的なアクセス許可がサービスに与えられます。 サービスに委任するには、**[サービス]** 一覧から委任先となるサービスを選択します。 
 
     サービス エンドポイントを削除するには、サービス エンドポイントを削除するサービスを選択解除します。 サービス エンドポイントおよび､そうしたエンドポイントを有効にできるサービスについては､[仮想ネットワークのサービス エンドポイントの概要](virtual-network-service-endpoints-overview.md)を参照してください｡ サービスのサービス エンドポイントを有効にしたら、そのサービスで作成されたリソースのサブネットへのネットワーク アクセスも有効にする必要があります。 たとえば、*Microsoft.Storage* のサービス エンドポイントを有効にする場合は、ネットワーク アクセスを許可するすべての Azure ストレージ アカウントへのネットワーク アクセスも有効にする必要があります。 サービス エンドポイントが有効になっているサブネットへのネットワーク アクセスを有効にする方法の詳細については、サービス エンドポイントを有効にした個々のサービスのドキュメントを参照してください。
 
@@ -71,6 +72,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
     - **[ユーザー]**: 組み込みロールまたは独自のカスタム ロールを使用して、サブネットへのアクセス権を制御できます。 サブネットにアクセスするロールとユーザーの割り当ての詳細については、[ロールの割り当てを使用した Azure リソースへのアクセス権の管理](../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access)に関するページをご覧ください。
     - **Network security group** と **Route table**: [サブネットの追加](#add-a-subnet) の手順 5 をご覧ください｡
     - **Service endpoints**: [サブネットの追加](#add-a-subnet)の手順 5 のサービス エンドポイントをご覧ください｡ 既存のサブネットに対してサービス エンドポイントを有効にする場合は､サブネット上のリソース上で重要なタスクが実行されていないことを確認してください｡ サービス エンドポイントは､*0.0.0.0/0* アドレス プレフィックスとネクスト ホップ タイプが *Internet* からなる既定のルートから始まってサービスのアドレス プレフィックスとネクスト ホップ タイプが *VirtualNetworkServiceEndpoint* からなる新しいルートまで､サブネット上のあらゆるネットワーク インターフェイスでルートを切り替えます｡ 切り替えの間､開いている TCP 接続は終了されることがあります｡ サービス エンドポイントは､すべてのネットワーク インターフェイスについて､サービスに対するトラフィック フローが新しいルートで更新されるまで有効にされません｡ ルーティングについては､[ルーティングの概要](virtual-networks-udr-overview.md)を参照してください｡
+    - **サブネット委任**: [サブネットの追加](#add-a-subnet)の手順 5 のサービス エンドポイントをご覧ください。 サブネット委任は、0 または複数の委任を有効にするように変更できます。 サブネットであるサービスのあるリソースが既にデプロイされている場合、サービスのすべてのリソースが削除されるまでサブネット委任は削除できません。 別のサービスに委任するには、**[サービス]** 一覧から委任先となるサービスを選択します。 
 5. **[保存]** を選択します。
 
 **コマンド**

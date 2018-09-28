@@ -9,31 +9,28 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: glenga
-ms.openlocfilehash: ced4b6846d291bfbb718c3346ea588ca9e961d07
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 889a5a40409238462ee81d3bbd51ac6b77d28173
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093704"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947490"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Azure Functions ランタイム バージョンをターゲットにする方法
 
 関数アプリは、Azure Functions ランタイムの特定のバージョンで実行されます。 メジャー バージョンには、[1.x と 2.x](functions-versions.md) の 2 つがあります。 この記事では、選択したバージョンで実行されるように Azure の関数アプリを構成する方法について説明します。 特定のバージョン用にローカル開発環境を構成する方法については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。
 
->[!IMPORTANT]   
-> Azure Functions ランタイム 2.0 はプレビュー段階であり、現在のところ、Azure Functions のすべての機能はサポートされていません。 詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](functions-versions.md)」をご覧ください。
-
 ## <a name="automatic-and-manual-version-updates"></a>自動および手動でのバージョンの更新
 
 Functions を使用すると、関数アプリ内で `FUNCTIONS_EXTENSION_VERSION` アプリケーション設定を使用して、ランタイムの特定のバージョンをターゲットにすることができます。 関数アプリは、新しいバージョンへの移行を明示的に選択しない限り、指定されたメジャー バージョンに保持されます。
 
-メジャー バージョン (1.x の場合は "~1"、2.x の場合は "beta") のみを指定した場合、関数アプリは、ランタイムの新しいマイナー バージョンが利用可能になった時点で、自動的に新しいマイナー バージョンに更新されます。 新しいマイナー バージョンには、重大な変更は導入されません。 マイナー バージョン (たとえば "1.0.11360") を指定した場合、関数アプリは、明示的にバージョンを変更するまで、そのバージョンに保持されます。 
+メジャー バージョン (2.x の場合は "~2"、1.x の場合は "~1") のみを指定した場合、関数アプリは、ランタイムの新しいマイナー バージョンが利用可能になった時点で、自動的に新しいマイナー バージョンに更新されます。 新しいマイナー バージョンには、重大な変更は導入されません。 マイナー バージョン (たとえば "2.0.12345") を指定した場合、関数アプリは、明示的にバージョンを変更するまで、そのバージョンに保持されます。 
 
 新しいバージョンが公開されると、ポータルで確認のメッセージが表示され、そのバージョンに移行することができます。 新しいバージョンに移行した後は、`FUNCTIONS_EXTENSION_VERSION` アプリケーション設定を使用して、いつでも以前のバージョンに戻すことができます。
 
 ランタイム バージョンを変更するたびに、関数アプリが再起動されます。
 
-自動更新を有効にするために `FUNCTIONS_EXTENSION_VERSION` アプリ設定で設定できる値は、現在、1.x ランタイムでは "~1"、2.x では "beta" です。
+自動更新を有効にするために `FUNCTIONS_EXTENSION_VERSION` アプリ設定で設定できる値は、現在、1.x ランタイムでは "~1"、2.x では "~2" です。
 
 ## <a name="view-the-current-runtime-version"></a>現在のランタイム バージョンの表示
 
@@ -55,7 +52,7 @@ Functions を使用すると、関数アプリ内で `FUNCTIONS_EXTENSION_VERSIO
 
     ![[Function App の設定] を選択する](./media/functions-versions/add-update-app-setting1a.png)
 
-2. **[アプリケーションの設定]** タブで `FUNCTIONS_EXTENSION_VERSION` 設定を探して、1.x ランタイムの有効なバージョンか、バージョン 2.0 の `beta` に値を変更します。 メジャー バージョンのチルダ (例: "~1") は、そのメジャー バージョンの最新バージョンを使用することを意味します。 
+2. **[アプリケーションの設定]** タブで `FUNCTIONS_EXTENSION_VERSION` 設定を探して、1.x ランタイムの有効なバージョンか、バージョン 2.0 の `~2` に値を変更します。 メジャー バージョンのチルダ (例: "~1") は、そのメジャー バージョンの最新バージョンを使用することを意味します。 
 
     ![関数アプリ設定を行う](./media/functions-versions/add-update-app-setting2.png)
 
@@ -70,7 +67,7 @@ az functionapp config appsettings set --name <function_app> \
 --resource-group <my_resource_group> \
 --settings FUNCTIONS_EXTENSION_VERSION=<version>
 ```
-このコードでは、`<function_app>` をお使いの関数アプリの名前に置き換えます。 また、`<my_resource_group>` をお使いの関数アプリのリソース グループの名前に置き換えます。 `<version>` を 1.x ランタイムの有効なバージョンまたはバージョン 2.0 の `beta` に置き換えます。 
+このコードでは、`<function_app>` をお使いの関数アプリの名前に置き換えます。 また、`<my_resource_group>` をお使いの関数アプリのリソース グループの名前に置き換えます。 `<version>` を 1.x ランタイムの有効なバージョンまたはバージョン 2.x の `~2` に置き換えます。 
 
 このコマンドは、上記のコード サンプルの **[テスト]** をクリックすることで、[Azure Cloud Shell](../cloud-shell/overview.md) から実行できます。 また、[Azure CLI をローカルに](/cli/azure/install-azure-cli)使用して、[az ログイン](/cli/azure/reference-index#az-login)を実行してサインインした後に、このコマンドを実行することもできます。
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: jasonh
-ms.openlocfilehash: e12379dbb63e57ee12e1cebb1761f0b103d50ef1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: e9662a0a0def91fa2cace1eb47dceffed5ff1ae6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110529"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978031"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
 
@@ -89,7 +89,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 * クラスター ノードで**ルート レベルの権限**を使用して実行されます。
 
-* **Azure Portal**、**Azure PowerShell**、**Azure CLI v1.0**、または **HDInsight .NET SDK** で使うことができます。
+* **Azure Portal**、**Azure PowerShell**、**Azure クラシック CLI**、または **HDInsight .NET SDK** で使用できます。
 
 クラスターには、実行されたすべてのスクリプトの履歴が保持されます。 履歴は、昇格または降格の操作のためスクリプトの ID を検索する必要がある場合に便利です。
 
@@ -147,7 +147,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 
 * Azure ポータル
 * Azure PowerShell
-* Azure CLI v1.0
+* Azure クラシック CLI
 * HDInsight .NET SDK
 
 HDInsight は、HDInsight クラスターで次のコンポーネントをインストールするためのスクリプトを提供します。
@@ -292,10 +292,9 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>実行中のクラスターに Azure CLI からスクリプト アクションを適用する
 
-次に進む前に、Azure CLI をインストールして構成したことを確認します。 詳しくは、「[Azure CLI 1.0 のインストール](../cli-install-nodejs.md)」をご覧ください。
+次に進む前に、Azure CLI をインストールして構成したことを確認します。 詳しくは、「[Azure クラシック CLI のインストール](../cli-install-nodejs.md)」をご覧ください。
 
-> [!IMPORTANT]
-> HDInsight には Azure CLI 1.0 が必要です。 現在、Azure CLI 2.0 では HDInsight を操作するためのコマンドは提供されていません。
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 1. Azure Resource Manager モードに切り替えるには、コマンド ラインで次のコマンドを実行します。
 
@@ -380,7 +379,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=123-140)]
 
-### <a name="using-the-azure-cli"></a>Azure CLI の使用
+### <a name="using-the-azure-classic-cli"></a>Azure クラシック CLI を使用する
 
 | 使用 | 目的 |
 | --- | --- |

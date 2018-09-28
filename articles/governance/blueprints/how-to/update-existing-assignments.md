@@ -1,0 +1,71 @@
+---
+title: 既存の Azure Blueprint の割り当てを更新する方法
+description: Azure Blueprint で既存の割り当てを更新するためのメカニズムについて学習します。
+services: blueprints
+author: DCtheGeek
+ms.author: dacoulte
+ms.date: 09/18/2018
+ms.topic: conceptual
+ms.service: blueprints
+manager: carmonm
+ms.openlocfilehash: ecac0fb21a6691874d5e8db49eadd7114d41845f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956202"
+---
+# <a name="how-to-update-an-existing-blueprint-assignment"></a>既存のブループリントの割り当てを更新する方法
+
+ブループリントが割り当てられたら、割り当てを更新できます。 既存の割り当てを更新する理由は次のとおりです。
+
+- [リソース ロック](../concepts/resource-locking.md)を追加または削除する
+- [動的パラメーター](../concepts/parameters.md#dynamic-parameters)の値を変更する
+- 割り当てを、ブループリントの新しい**公開済み**バージョンにアップグレードする
+
+## <a name="updating-assignments"></a>割り当ての更新
+
+1. Azure portal で **[すべてのサービス]** をクリックし、左側のウィンドウで **[ポリシー]** を検索して選択し、Azure Blueprint サービスを起動します。 **[ポリシー]** ページで、**[ブループリント]** をクリックします。
+
+1. 左側のページで、**[割り当てられたブループリント]** を選択します。
+
+1. ブループリントの一覧でブループリントの割り当てをクリックし、**[割り当ての更新]** ボタンをクリックするか、またはブループリントの割り当てを右クリックし、**[割り当ての更新]** を選択します。
+
+   ![割り当てを更新する](../media/update-existing-assignments/update-assignment.png)
+
+1. 元の割り当てからすべての値が事前入力された状態で、**[ブループリントの割り当て]** ページが読み込まれます。 **ブループリント定義のバージョン**、**ロック割り当て**状態、およびブループリント定義に存在する任意の動的パラメーターを変更できます。 変更が完了したら、**[割り当て]** をクリックします。
+
+1. 更新された割り当ての詳細ページで、新しいステータスを確認します。 この例では、割り当てに**ロック**を追加しました。
+
+   ![更新された割り当て - ロック](../media/update-existing-assignments/updated-assignment.png)
+
+1. ドロップダウン リストを使用して、他の**割り当て操作**に関する詳細を確認します。 選択した割り当て操作によって、**管理対象リソース**のテーブルが更新されます。
+
+   ![割り当て操作](../media/update-existing-assignments/assignment-operations.png)
+
+## <a name="rules-for-updating-assignments"></a>割り当ての更新の規則
+
+更新された割り当てのデプロイでは、いくつかの重要な規則に従います。 これらの規則により、要求された変更、およびデプロイまたは更新される成果物リソースの種類に応じて、既存のリソースに対する動作が決定されます。
+
+- ロールの割り当て
+  - ロールまたはロールの割り当て先 (ユーザー、グループ、またはアプリ) が変更された場合は、新しいロールの割り当てが作成されます。 以前にデプロイされたロールの割り当てはそのまま残ります。
+- ポリシーの割り当て
+  - ポリシーの割り当てのパラメーターが変更された場合は、既存の割り当てが更新されます。
+  - ポリシーの割り当ての定義が変更された場合は、新しいポリシーの割り当てが作成されます。 以前にデプロイされたポリシーの割り当てはそのまま残ります。
+  - ポリシーの割り当ての成果物がブループリントから削除された場合、以前にデプロイされたポリシーの割り当てはそのまま残ります。
+- Azure Resource Manager のテンプレート
+  - テンプレートは Resource Manager によって **PUT** として処理されます。 この処理はリソースの種類ごとに異なるので、ブループリントによって実行された際のこのアクションの影響を判断するには、含まれる各リソースのドキュメントを参照してください。
+
+## <a name="possible-errors-on-updating-assignments"></a>割り当ての更新時に考えられるエラー
+
+割り当てを更新する際に、実行時に障害を発生させるような変更を行ことがあります。 この例としては、既にデプロイされているリソース グループの場所を変更する場合が挙げられます。 [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) によってサポートされている任意の変更を行うことができますが、変更によって Azure Resource Manager でエラーが発生する場合は、割り当てにおいても障害が発生します。
+
+割り当てを更新できる回数に制限はありません。 そのため、無効なパラメーター、既存のオブジェクト、または Azure Resource Manager で許可されていない変更が原因でエラーが発生した場合は、エラーを特定し、割り当てに対して新たな更新を行います。
+
+## <a name="next-steps"></a>次の手順
+
+- [ブループリントのライフサイクル](../concepts/lifecycle.md)について
+- [静的および動的パラメーター](../concepts/parameters.md)の使い方
+- [ブループリントのシーケンス順序](../concepts/sequencing-order.md)のカスタマイズについて
+- [ブループリントによるリソース ロック](../concepts/resource-locking.md)の使い方
+- ブループリントの割り当て中に発生した問題を[一般的なトラブルシューティング](../troubleshoot/general.md)で解決する

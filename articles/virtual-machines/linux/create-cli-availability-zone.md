@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 512b6cde1a1de70f020a9af1254d2bc8e78f1b5f
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: c202379f236bcd2fea05ad9d135096bc724898e7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30905518"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956423"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLI を使用して可用性ゾーン内に Linux 仮想マシンを作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "30905518"
 
 可用性ゾーンを使用するには、[サポートされている Azure リージョン](../../availability-zones/az-overview.md#regions-that-support-availability-zones)に仮想マシンを作成します。
 
-[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/reference-index#az_login) で Azure アカウントにログインしていることを確認します。
+[Azure CLI](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/reference-index#az_login) で Azure アカウントにログインしていることを確認します。
 
 
 ## <a name="check-vm-sku-availability"></a>提供されている VM SKU の確認
@@ -60,7 +60,7 @@ virtualMachines   eastus2    Standard_E4_v3              Standard   E4_v3    1,2
 ```
 
 
-## <a name="create-resource-group"></a>Create resource group
+## <a name="create-resource-group"></a>リソース グループの作成
 
 [az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。  
 
@@ -98,22 +98,22 @@ VM の作成には数分かかることがあります。 VM が作成される�
 }
 ```
 
-## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>管理ディスクのゾーンと IP アドレスを確認する
+## <a name="confirm-zone-for-managed-disk-and-ip-address"></a>マネージド ディスクのゾーンと IP アドレスを確認する
 
-VM が可用性ゾーンに展開されると、その VM の管理ディスクが同じ可用性ゾーンに作成されます。 既定では、パブリック IP アドレスもそのゾーンに作成されます。 次の例では、これらのリソースについての情報を取得します。
+VM が可用性ゾーンに展開されると、その VM のマネージド ディスクが同じ可用性ゾーンに作成されます。 既定では、パブリック IP アドレスもそのゾーンに作成されます。 次の例では、これらのリソースについての情報を取得します。
 
-VM の管理ディスクが可用性ゾーンにあることを確認するには、[az vm show](/cli/azure/vm#az_vm_show) コマンドを使ってディスク ID を取得します。この例ではディスク ID を変数に格納し、後の手順で使用します。 
+VM のマネージド ディスクが可用性ゾーンにあることを確認するには、[az vm show](/cli/azure/vm#az_vm_show) コマンドを使ってディスク ID を取得します。この例ではディスク ID を変数に格納し、後の手順で使用します。 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
 ```
-これで、管理ディスクに関する情報を取得できます。
+これで、マネージド ディスクに関する情報を取得できます。
 
 ```azurecli-interactive
 az disk show --resource-group myResourceGroupVM --name $osdiskname
 ```
 
-この出力は、管理ディスクが VM と同じ可用性ゾーン内にあることを示しています。
+この出力は、マネージド ディスクが VM と同じ可用性ゾーン内にあることを示しています。
 
 ```azurecli
 {

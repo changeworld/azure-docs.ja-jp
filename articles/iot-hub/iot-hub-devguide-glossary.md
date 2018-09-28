@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 1a5df1081edeb8b8e7520064a71534f70a9a9d33
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 575326ee3bd2cb64b2cb65168f23f7fe97dad029
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344302"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954400"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。
@@ -27,11 +27,11 @@ Azure IoT Hub の自動デバイス管理は、大規模なデバイス集団の
 ## <a name="automatic-device-configuration"></a>自動デバイス構成
 ソリューション バックエンドは、[自動デバイス構成](iot-hub-auto-device-config.md)を使用することで、[デバイス ツイン](#device-twin)のセットに必要なプロパティを割り当て、システム メトリックとカスタム メトリックを使って状態を報告することができます。 
 
-## <a name="azure-cli"></a>Azure CLI
-[Azure CLI](../cli-install-nodejs.md) は、Microsoft Azure 上のリソースを作成したり管理したりするための、クロスプラットフォーム、オープンソース、かつシェルベースのコマンド ツールです。 この CLI バージョン は、Node.js を使用して実装されます。
+## <a name="azure-classic-cli"></a>Azure クラシック CLI
+[Azure クラシック CLI](../cli-install-nodejs.md) は、Microsoft Azure 上のリソースを作成したり、管理したりするためのクロスプラットフォーム、オープンソース、かつシェルベースのコマンド ツールです。 このバージョンの CLI は、クラシック デプロイのみで使用してください。
 
-## <a name="azure-cli-20"></a>Azure CLI 2.0
-[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) は、Microsoft Azure 上のリソースを作成したり管理したりするための、クロスプラットフォーム、オープンソース、かつシェルベースのコマンド ツールです。 この CLI のプレビュー バージョン は、Python を使用して実装されます。
+## <a name="azure-cli"></a>Azure CLI
+[Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) は、Microsoft Azure 上のリソースを作成したり管理したりするための、クロスプラットフォーム、オープンソース、かつシェルベースのコマンド ツールです。
 
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT device SDK
@@ -185,8 +185,8 @@ IoT Hub は、何百万ものデバイスとソリューションのバックエ
 ## <a name="iot-solution-accelerators"></a>IoT ソリューション アクセラレータ
 Azure IoT ソリューション アクセラレータは、複数の Azure サービスをソリューションにパッケージ化します。 これらのソリューションを使用すると、一般的な IoT シナリオをエンド ツー エンドで実装して、すぐに使い始めることができます。 詳しくは、[Azure IoT ソリューション アクセラレータの概要](../iot-accelerators/about-iot-accelerators.md)に関するページをご覧ください。
 
-## <a name="the-iot-extension-for-azure-cli-20"></a>Azure CLI 2.0 向け IoT 拡張機能
-[Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は、クロス プラットフォームのコマンドライン ツールです。 このツールを使用すると、[ID レジストリ](#identity-registry)でデバイスを管理し、デバイスからメッセージやファイルを送受信し、IoT Hub の操作を監視できます。
+## <a name="the-iot-extension-for-azure-cli"></a>Azure CLI の IoT 拡張機能 
+[Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)は、クロスプラットフォームのコマンドライン ツールです。 このツールを使用すると、[ID レジストリ](#identity-registry)でデバイスを管理し、デバイスからメッセージやファイルを送受信し、IoT Hub の操作を監視できます。
 
 ## <a name="job"></a>ジョブ
 ソリューションのバックエンドは、[ジョブ](iot-hub-devguide-jobs.md)を使用して、IoT Hub に登録されたデバイスでのアクティビティのスケジュール設定と追跡を実行できます。 アクティビティには、デバイス ツインの[必要なプロパティ](#desired-properties)の更新、デバイス ツインの[タグ](#tags)の更新、および[ダイレクト メソッド](#direct-method)の呼び出しが含まれます。 [IoT Hub](#iot-hub) は、ジョブを使用して [ID レジストリ](#identity-registry)との間で[インポートおよびエクスポート](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)も行います。

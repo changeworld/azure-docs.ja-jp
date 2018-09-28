@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 1c6751d980a7bb28e58a3aa00514411959f515d7
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 5f269f074236beef3e213c888e540bcf18238be1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34725868"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953703"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Azure から Linux VHD をダウンロードする
 
 この記事では、Azure CLI と Azure Portal を使用して、Azure から [Linux 仮想ハード ディスク (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ファイルをダウンロードする方法を説明します。 
 
-[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) をまだインストールしていない場合はインストールします。
+[Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2) をまだインストールしていない場合はインストールします。
 
 ## <a name="stop-the-vm"></a>VM を停止する
 
@@ -86,6 +86,6 @@ VHD ファイルをダウンロードするには、[Shared Access Signature (SA
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure CLI 2.0 を使用してカスタム ディスクをアップロードし、Linux VM を作成する](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方法を学習します。 
+- [Azure CLI を使用してカスタム ディスクをアップロードし、Linux VM を作成する](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)方法を学習します。 
 - [Azure CLI を使用した Azure ディスクの管理](tutorial-manage-disks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。
 

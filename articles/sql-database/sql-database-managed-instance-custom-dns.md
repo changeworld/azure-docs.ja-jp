@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 09/23/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: be32bc4b3f91fbc71305ee9f16fec17ff472cd4c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 2d1bb7e8522da32dd33933261ea41b578f8afac1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049577"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949487"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance のカスタム DNS の構成
 
-Azure SQL Database マネージド インスタンス (プレビュー) は、Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) 内にデプロイする必要があります。 プライベート ホスト名をマネージド インスタンスから解決する必要のあるシナリオがいくつか存在します (つまり、クラウドまたはハイブリッド環境内の他の SQL インスタンスにリンクされたサーバー)。 この場合は、Azure の内部でカスタム DNS を構成する必要があります。 マネージド インスタンスはその内側の作業に同じ DNS を使用するため、仮想ネットワークの DNS 構成をマネージド インスタンスと互換性があるようにする必要があります。 
+Azure SQL Database Managed Instance は、Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) 内にデプロイする必要があります。 プライベート ホスト名をマネージド インスタンスから解決する必要のあるシナリオがいくつか存在します (つまり、クラウドまたはハイブリッド環境内の他の SQL インスタンスにリンクされたサーバー)。 この場合は、Azure の内部でカスタム DNS を構成する必要があります。 マネージド インスタンスはその内側の作業に同じ DNS を使用するため、仮想ネットワークの DNS 構成をマネージド インスタンスと互換性があるようにする必要があります。 
 
 カスタム DNS 構成をマネージド インスタンスと互換性があるようにするには、以下が必要です。 
 - パブリック ドメイン名を解決できるようにカスタム DNS サーバーを構成する 

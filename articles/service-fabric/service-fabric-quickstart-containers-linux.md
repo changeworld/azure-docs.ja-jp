@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/11/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b0ded0fb274f6b64935ddaba75abf23a94063120
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c84470936dfc9610f23dacb55d8d8643a2651f71
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452653"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948402"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>クイック スタート: Service Fabric に Linux コンテナーをデプロイする
 
@@ -65,7 +65,7 @@ Azure にアプリケーションをデプロイするには、アプリケー�
 Service Fabric には、クラスターとそのアプリケーションを管理するために使用できるツールがいくつか用意されています。
 
 - ブラウザーベースのツールである Service Fabric Explorer。
-- Azure CLI 2.0 上で実行される Service Fabric コマンド ライン インターフェイス (CLI)。
+- Azure CLI 上で実行される Service Fabric コマンド ライン インターフェイス (CLI)。 
 - PowerShell コマンド。
 
 このクイック スタートでは、Cloud Shell の Service Fabric CLI と Service Fabric Explorer を使用します。 次のセクションでは、これらのツールを使用してセキュリティで保護されたクラスターに接続するために必要な証明書をインストールする方法について説明します。

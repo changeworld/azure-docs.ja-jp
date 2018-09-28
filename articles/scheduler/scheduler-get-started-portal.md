@@ -1,155 +1,152 @@
 ---
-title: Azure Portal の Azure Scheduler の概要 | Microsoft Docs
-description: Azure ポータルの Azure Scheduler の概要
+title: Azure Scheduler でスケジュールされたジョブを作成する - Azure portal | Microsoft Docs
+description: Azure portal で Azure Scheduler を使用して初めての自動化されたジョブを作成、スケジュール、実行する方法を説明します
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 08/10/2016
+ms.suite: infrastructure-services
+author: derek1ee
 ms.author: deli
-ms.openlocfilehash: f03ddb475835b30e9b931b7f057c062b57ac45f3
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.reviewer: klam
+ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
+ms.topic: hero-article
+ms.date: 09/17/2018
+ms.openlocfilehash: f1f7e67fbd5d8a9ebfae03c00eb0de36e86d9a97
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31413432"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949589"
 ---
-# <a name="get-started-with-azure-scheduler-in-azure-portal"></a>Azure ポータルの Azure Scheduler の概要
-Azure Scheduler では、スケジュールされたジョブを簡単に作成できます。 このチュートリアルでは、ジョブの作成方法について説明します。 また、Scheduler の監視機能と管理機能についても説明します。
+# <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Azure Scheduler で初めてのジョブを作成してスケジュールする - Azure portal
 
-## <a name="create-a-job"></a>ジョブを作成する
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。  
-2. **[+新規]** をクリックし、検索ボックスに「*Scheduler*」と入力し、結果の **[Scheduler]**、**[作成]** の順にクリックします。
-   
-    ![][marketplace-create]
-3. ここでは、http://www.microsoft.com/ への GET 要求を送信するのみのジョブを作成します。 **[スケジューラ ジョブ]** 画面に次の情報を入力します。
-   
-   1. **[名前]:** `getmicrosoft`  
-   2. **[サブスクリプション]:** Azure のサブスクリプション   
-   3. **[ジョブ コレクション]:** 既存のジョブ コレクションを選択するか、**[新規作成]** をクリックして名前を入力します。
-4. 次に、 **[アクションの設定]** で次の値を定義します。
-   
-   1. **[アクションの種類]:** ` HTTP`  
-   2. **[メソッド]:** `GET`  
-   3. **[URL]:** ` http://www.microsoft.com`  
-      
-      ![][action-settings]
-5. 最後に、スケジュールを定義してみましょう。 ジョブは 1 回限りのジョブとして定義することができますが、ここでは定期的なスケジュールを選択しましょう。
-   
-   1. **[繰り返し]**: `Recurring`
-   2. **[開始]**: 今日の日付
-   3. **[繰り返しの間隔]**: `12 Hours`
-   4. **[終了期限]**: 今日の日付から 2 日間  
-      
-      ![][recurrence-schedule]
-6. **[作成]**
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、廃止される予定の Azure Scheduler の後継です。 ジョブをスケジュールするには、[Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) を代わりにお使いください。 
 
-## <a name="manage-and-monitor-jobs"></a>ジョブの管理と監視
-ジョブが作成されると、メインの Azure ダッシュボードに表示されます。 ジョブをクリックすると、次のタブが表示された状態で新しいウィンドウが開きます。
+このチュートリアルでは、ジョブを簡単に作成してスケジュールし、そのジョブを監視および管理する方法を示します。 
 
-1. [プロパティ]  
-2. [アクションの設定]  
-3. スケジュール  
-4. 履歴
-5. ユーザー
+Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。
+
+## <a name="create-job"></a>ジョブを作成する
+
+1. [Azure Portal](https://portal.azure.com/) にサインインします。  
+
+1. Azure のメイン メニューで **[リソースの作成]** を選択します。 検索ボックスに「scheduler」と入力します。 結果の一覧から **Scheduler** を選択し、**[作成]** を選択します。
+
+   ![Scheduler リソースを作成する](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
+
+   URL `http://www.microsoft.com/` に GET 要求を送信するジョブを作成します。 
+
+1. **[スケジューラ ジョブ]** で次の情報を入力します。
+
+   | プロパティ | 値の例 | 説明 |
+   |----------|---------------|-------------| 
+   | **名前** | getMicrosoft | ジョブの名前です | 
+   | **ジョブ コレクション** | <*job-collection-name*> | ジョブ コレクションを作成するか、既存のコレクションを選択します。 | 
+   | **サブスクリプション** | <*Azure サブスクリプション名*> | Azure サブスクリプションの名前 | 
+   |||| 
+
+1. **[アクションの設定 - 構成]** を選択し、次の情報を指定して、終わったら **[OK]** を選択します。
+
+   | プロパティ | 値の例 | 説明 |
+   |----------|---------------|-------------| 
+   | **アクション** | **Http** | 実行するアクションの種類です | 
+   | **メソッド** | **Get** | 呼び出すメソッドです | 
+   | **URL** | **http://www.microsoft.com** | 送信先の URL です | 
+   |||| 
    
-   ![][job-overview]
+   ![ジョブを定義する](./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png)
 
-### <a name="properties"></a>[プロパティ]
-これらの読み取り専用のプロパティには、Scheduler ジョブの管理メタデータを記述します。
+1. **[スケジュール - 構成]** を選択し、スケジュールを定義して、終わったら **[OK]** を選択します。
 
-   ![][job-properties]
+   一度だけのジョブも作成できますが、この例では繰り返すスケジュールを設定します。
+
+   | プロパティ | 値の例 | 説明 |
+   |----------|---------------|-------------| 
+   | **定期的なアイテム** | **繰り返し** | 一度だけのジョブまたは定期的なジョブです | 
+   | **開始時刻** | <*今日の日時*> | ジョブの開始日時です | 
+   | **繰り返し間隔** | **1 時間** | 繰り返しの間隔と頻度です | 
+   | **終了** | 今日の日付から 2 日後が **[終了期限]** | ジョブの終了日時です | 
+   | **UTC オフセット** | **UTC +08:00** | 協定世界時 (UTC) と現在の場所の時刻との差異です | 
+   |||| 
+
+   ![スケジュールを定義する](./media/scheduler-get-started-portal/scheduler-v2-portal-recurrence-schedule.png)
+
+1. 準備ができたら、**[作成]** をクリックします。
+
+   作成したジョブが Azure によってデプロイされて、Azure ダッシュボードに表示されます。 
+
+1. デプロイが成功した通知が表示されたら、**[ダッシュボードにピン留め]** を選択します。 表示されない場合は、Azure ツール バーの **[通知]** アイコン (ベル) を選択して、**[ダッシュボードにピン留め]** を選択します。
+
+## <a name="monitor-and-manage-jobs"></a>ジョブを監視および管理する
+
+ジョブを確認、監視、管理するには、Azure ダッシュボードで目的のジョブを選択します。 **[設定]** では、ジョブの確認と管理を行うことができます。
+
+![ジョブの設定](./media/scheduler-get-started-portal/scheduler-v2-portal-job-overview-1.png)
+
+これらの領域の詳細については、領域を選択してください。
+
+* [**プロパティ**](#properties)
+* [**アクションの設定**](#action-settings)
+* [**スケジュール**](#schedule)
+* [**履歴**](#history)
+* [**ユーザー**](#users)
+
+<a name="properties"></a>
+
+### <a name="properties"></a>Properties
+
+ジョブの管理メタデータを記述する読み取り専用のプロパティを表示するには、**[プロパティ]** を選択します。
+
+![ジョブのプロパティを表示する](./media/scheduler-get-started-portal/scheduler-v2-portal-job-properties.png)
+
+<a name="action-settings"></a>
 
 ### <a name="action-settings"></a>[アクションの設定]
-**[ジョブ]** 画面でジョブをクリックすると、そのジョブを構成できます。 簡易作成ウィザードで詳細な設定を構成していなかった場合、ここで構成できます。
 
-すべてのアクションの種類で、再試行ポリシーとエラー アクションを変更することができます。
+ジョブの詳細な設定を変更するには、**[アクションの設定]** を選択します。 
 
-HTTP および HTTPS のジョブのアクションの種類では、方法を許可されている任意の HTTP 動詞に変更できます。 ヘッダーおよび基本的な認証情報を追加、削除、変更することもできます。
+![アクションの設定を確認する](./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png)
 
-ストレージ キュー アクションの種類では、ストレージ アカウント、キュー名、SAS トークン、および本文を変更することができます。
+| アクションの種類 | 説明 | 
+|-------------|-------------| 
+| すべての種類 | **[再試行ポリシー]** と **[エラー アクション]** の設定を変更できます。 | 
+| HTTP および HTTPS | **[メソッド]** を許可されている任意のメソッドに変更できます。 ヘッダーおよび基本的な認証情報を追加、削除、変更することもできます。 | 
+| ストレージ キュー| ストレージ アカウント、キュー名、SAS トークン、本文を変更することができます。 | 
+| Service Bus | 名前空間、トピックまたはキューのパス、認証設定、トランスポートの種類、メッセージのプロパティ、メッセージの本文を変更することができます。 | 
+||| 
 
-サービス バス アクションの種類では、名前空間、トピックとキューのパス、認証設定、トランスポートの種類、メッセージのプロパティ、およびメッセージの本文を変更することができます。
-
-   ![][job-action-settings]
+<a name="schedule"></a>
 
 ### <a name="schedule"></a>スケジュール
-簡易作成ウィザードで作成したスケジュールを変更する場合は、スケジュールを再構成することができます。
 
-また、 [ジョブの複雑なスケジュールと高度な繰り返し](scheduler-advanced-complexity.md)
+ジョブ ウィザードを使用してスケジュールを設定する場合は、開始日時、繰り返しスケジュール、繰り返しジョブの終了日時など、そのスケジュールを変更できます。
+さらに[複雑なスケジュールと高度な繰り返し](scheduler-advanced-complexity.md)を作成することもできます。
 
-開始日時、定期実行のスケジュール、および終了日時 (定期実行ジョブの場合) を変更できます。
+ビューまたはジョブのスケジュールを変更するには、**[スケジュール]** を選択します。
 
-   ![][job-schedule]
+![ジョブのスケジュールを表示する](./media/scheduler-get-started-portal/scheduler-v2-portal-job-schedule.png)
+
+<a name="history"></a>
 
 ### <a name="history"></a>履歴
-**[履歴]** タブには、選択したジョブのシステム内の各ジョブ実行について、選択したメトリックが表示されます。 これらのメトリックで、Scheduler の正常性状態に関するリアルタイムの値がわかります。
 
-1. 状態  
-2. 詳細  
-3. 再試行
-4. 発生: 1 回目、2 回目、3 回目など
-5. 実行の開始時刻  
-6. 実行の終了時刻
-   
-   ![][job-history]
+選択したジョブのすべての実行に関するメトリックを表示するには、**[履歴]** を選択します。 これらのメトリックでは、状態、再試行回数、出現回数、開始日時、終了日時など、ジョブの正常性に関するリアルタイム値が提供されます。
 
-[実行] をクリックして、各実行の全体の応答など、 **[履歴の詳細]** を表示できます。 このダイアログ ボックスでは、応答をクリップボードにコピーすることもできます。
+![ジョブの履歴とメトリックを表示する](./media/scheduler-get-started-portal/scheduler-v2-portal-job-history.png)
 
-   ![][job-history-details]
+実行ごとの完全な応答など、各実行の履歴の詳細を表示するには、**[履歴]** で各実行を選択します。 
+
+![ジョブ履歴の詳細を表示する](./media/scheduler-get-started-portal/scheduler-v2-portal-job-history-details.png)
+
+<a name="users"></a>
 
 ### <a name="users"></a>ユーザー
-Azure のロールベースのアクセス制御 (RBAC) では、Azure Scheduler のアクセス権を詳細に管理できます。 [ユーザー] タブの使用方法については、 [Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)
 
-## <a name="see-also"></a>関連項目
- [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
+Azure のロールベースのアクセス制御 (RBAC) を使用して、細かなレベルで各ユーザーの Azure Scheduler へのアクセスを管理できます。 ロールに基づくアクセスを設定する方法については、[RBAC を使用したアクセスの管理](../role-based-access-control/role-assignments-portal.md)に関するページをご覧ください。
 
- [Scheduler Concepts, Terminology, and Entity Hierarchy (Scheduler の概念、用語集、エンティティ階層構造)](scheduler-concepts-terms.md)
+## <a name="next-steps"></a>次の手順
 
- [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
-
- [Azure Scheduler で複雑なスケジュールと高度な定期実行を構築する方法](scheduler-advanced-complexity.md)
-
- [Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
-
- [Scheduler PowerShell Cmdlets Reference (Scheduler PowerShell コマンドレット リファレンス)](scheduler-powershell-reference.md)
-
- [Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
-
- [Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
-
- [Scheduler 送信認証](scheduler-outbound-authentication.md)
-
-[marketplace-create]: ./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png
-[action-settings]: ./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png
-[recurrence-schedule]: ./media/scheduler-get-started-portal/scheduler-v2-portal-recurrence-schedule.png
-[job-properties]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-properties.png
-[job-overview]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-overview-1.png
-[job-action-settings]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-action-settings.png
-[job-schedule]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-schedule.png
-[job-history]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-history.png
-[job-history-details]: ./media/scheduler-get-started-portal/scheduler-v2-portal-job-history-details.png
-
-
-[1]: ./media/scheduler-get-started-portal/scheduler-get-started-portal001.png
-[2]: ./media/scheduler-get-started-portal/scheduler-get-started-portal002.png
-[3]: ./media/scheduler-get-started-portal/scheduler-get-started-portal003.png
-[4]: ./media/scheduler-get-started-portal/scheduler-get-started-portal004.png
-[5]: ./media/scheduler-get-started-portal/scheduler-get-started-portal005.png
-[6]: ./media/scheduler-get-started-portal/scheduler-get-started-portal006.png
-[7]: ./media/scheduler-get-started-portal/scheduler-get-started-portal007.png
-[8]: ./media/scheduler-get-started-portal/scheduler-get-started-portal008.png
-[9]: ./media/scheduler-get-started-portal/scheduler-get-started-portal009.png
-[10]: ./media/scheduler-get-started-portal/scheduler-get-started-portal010.png
-[11]: ./media/scheduler-get-started-portal/scheduler-get-started-portal011.png
-[12]: ./media/scheduler-get-started-portal/scheduler-get-started-portal012.png
-[13]: ./media/scheduler-get-started-portal/scheduler-get-started-portal013.png
-[14]: ./media/scheduler-get-started-portal/scheduler-get-started-portal014.png
-[15]: ./media/scheduler-get-started-portal/scheduler-get-started-portal015.png
+* [概念、用語、エンティティ階層](scheduler-concepts-terms.md)について学習する
+* [複雑なスケジュールと高度な繰り返しを作成する](scheduler-advanced-complexity.md)
+* [Scheduler に対する高可用性と信頼性](scheduler-high-availability-reliability.md)について学習する
+* [制限、クォータ、既定値、エラー コード](scheduler-limits-defaults-errors.md)について学習する
