@@ -145,7 +145,7 @@ module.exports = df(function*(ctx) {
 
 ![HTTP API の図](media/durable-functions-overview/async-http-api.png)
 
-Durable Functions は、実行時間の長い関数を操作するコードをシンプルにするビルトイン API を提供します。 [サンプル](durable-functions-install.md)では、新しいオーケストレーター関数のインスタンスを開始するために使用できる、シンプルな REST コマンドについて説明しています。 インスタンスが開始されると、この拡張機能はオーケストレーター関数の状態をクエリする Webhook HTTP API を公開します。 次の例では、オーケストレーターを開始してその状態をクエリする REST コマンドを示します。 わかりやすくするため、この例では細部をいくらか省略しています。
+Durable Functions は、実行時間の長い関数を操作するコードをシンプルにするビルトイン API を提供します。 [サンプル](durable-functions-install.md)では、新しいオーケストレーター関数のインスタンスを開始するために使用できる、シンプルな REST コマンドについて説明しています。 インスタンスが開始されると、この拡張機能はオーケストレーター関数の状態をクエリする Webhook HTTP API を公開します。 次の例では、オーケストレーターを開始してその状態をクエリする REST コマンドを示します。 わかりやすくするため、この例では細部をいくつか省略しています。
 
 ```
 > curl -X POST https://myfunc.azurewebsites.net/orchestrators/DoWork -H "Content-Length: 0" -i
@@ -203,7 +203,7 @@ public static async Task<HttpResponseMessage> Run(
 
 ![モニター ダイアグラム](media/durable-functions-overview/monitor.png)
 
-Durable Functions を使用して、任意のエンドポイントを観察する複数のモニターを、数行のコードで作成できます。 モニターは、何らかの条件が満たされた場合、または [DurableOrchestrationClient](durable-functions-instance-management.md) によって実行を終了でき、待機間隔は、何らかの条件に基づいて変更できます (つまり指数バックオフを実装します)。次のコードは、基本的なモニターを実装になります。
+Durable Functions を使用して、任意のエンドポイントを観察する複数のモニターを、数行のコードで作成できます。 モニターは、何らかの条件が満たされた場合、または [DurableOrchestrationClient](durable-functions-instance-management.md) によって実行を終了でき、待機間隔は、何らかの条件に基づいて変更できます (つまり指数バックオフを実装します)。次のコードは、基本的なモニターの実装になります。
 
 #### <a name="c-script"></a>C# スクリプト
 
