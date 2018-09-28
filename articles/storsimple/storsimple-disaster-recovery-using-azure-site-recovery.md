@@ -168,16 +168,16 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 1. オートメーション アカウントで、**[変数]** &gt; **[変数の追加]** とクリックし、次の変数を追加します。 これらの資産を暗号化することもできます。 これらの変数は、復旧計画によって異なります。 次の手順で作成する復旧計画の名前が TestPlan の場合、変数は TestPlan-StorSimRegKey や TestPlan-AzureSubscriptionName などになります。
 
    - **BaseUrl**: Azure Cloud の Resource Manager URL。 **Get-AzureRmEnvironment | Select-Object Name, ResourceManagerUrl** コマンドレットを使用して取得します。
-   - *RecoveryPlanName***-ResourceGroupName**: StorSimple リソースを含む Resource Manager グループ。
-   - *RecoveryPlanName***-ManagerName**: StorSimple デバイスを含む StorSimple リソース。
-   - *RecoveryPlanName***-DeviceName**: フェールオーバーする必要のある StorSimple デバイス。
-   - *RecoveryPlanName***-DeviceIpAddress**: デバイスの IP アドレス (StorSimple デバイス マネージャー セクション &gt; **[設定]** &gt; **[ネットワーク]** &gt; **[DNS 設定]** グループの下の **[デバイス]** タブで見つかります)。
-   - *RecoveryPlanName***-VolumeContainers**: フェールオーバーする必要があるデバイスのボリューム コンテナーの、コンマで区切られた文字列 (例: volcon1、volcon2、volcon3)。
-   - *RecoveryPlanName***-TargetDeviceName**: フェールオーバーされるコンテナーが含まれる StorSimple Cloud Appliance。
-   - *RecoveryPlanName***-TargetDeviceIpAddress**: ターゲット デバイスの IP アドレス (これは、**[仮想マシン]** セクション &gt; **[設定]** グループ &gt; **[ネットワーキング]** タブで見つかります)。
-   - *RecoveryPlanName***-StorageAccountName**: (フェールオーバーされた VM で実行する必要がある) スクリプトが格納されるストレージ アカウント名。 スクリプトを一時的に格納する領域があれば、どのストレージ アカウントでも使用できます。
-   - *RecoveryPlanName***-StorageAccountKey**: 上記のストレージ アカウントのアクセス キー。
-   - *RecoveryPlanName***-VMGUIDS**: VM が保護されたら、Azure Site Recovery はフェールオーバーされた VM の詳細が識別できる一意の ID を、すべての VM に割り当てます。 VMGUID を取得するには、**[Recovery Services]** タブを選択して、**[保護された項目]** &gt; **[保護グループ]** &gt; **[マシン]** &gt; **[プロパティ]** をクリックします。 VM が複数ある場合は、コンマ区切りの文字列として GUID を追加します。
+   - *RecoveryPlanName* **-ResourceGroupName**: StorSimple リソースを含む Resource Manager グループ。
+   - *RecoveryPlanName* **-ManagerName**: StorSimple デバイスを含む StorSimple リソース。
+   - *RecoveryPlanName* **-DeviceName**: フェールオーバーする必要のある StorSimple デバイス。
+   - *RecoveryPlanName* **-DeviceIpAddress**: デバイスの IP アドレス (StorSimple デバイス マネージャー セクション &gt; **[設定]** &gt; **[ネットワーク]** &gt; **[DNS 設定]** グループの下の **[デバイス]** タブで見つかります)。
+   - *RecoveryPlanName* **-VolumeContainers**: フェールオーバーする必要があるデバイスのボリューム コンテナーの、コンマで区切られた文字列 (例: volcon1、volcon2、volcon3)。
+   - *RecoveryPlanName* **-TargetDeviceName**: フェールオーバーされるコンテナーが含まれる StorSimple Cloud Appliance。
+   - *RecoveryPlanName* **-TargetDeviceIpAddress**: ターゲット デバイスの IP アドレス (これは、**[仮想マシン]** セクション &gt; **[設定]** グループ &gt; **[ネットワーキング]** タブで見つかります)。
+   - *RecoveryPlanName* **-StorageAccountName**: (フェールオーバーされた VM で実行する必要がある) スクリプトが格納されるストレージ アカウント名。 スクリプトを一時的に格納する領域があれば、どのストレージ アカウントでも使用できます。
+   - *RecoveryPlanName* **-StorageAccountKey**: 上記のストレージ アカウントのアクセス キー。
+   - *RecoveryPlanName* **-VMGUIDS**: VM が保護されたら、Azure Site Recovery はフェールオーバーされた VM の詳細が識別できる一意の ID を、すべての VM に割り当てます。 VMGUID を取得するには、**[Recovery Services]** タブを選択して、**[保護された項目]** &gt; **[保護グループ]** &gt; **[マシン]** &gt; **[プロパティ]** をクリックします。 VM が複数ある場合は、コンマ区切りの文字列として GUID を追加します。
 
     たとえば、復旧計画の名前が fileServerpredayRP である場合、すべての資産を追加し終えたら **[変数]**、**[接続]** および **[証明書]** タブは次のように表示されます。
 

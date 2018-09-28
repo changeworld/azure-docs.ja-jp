@@ -16,12 +16,12 @@ ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: a4b1e59ff9ac4d7f455c87e821fb014ba238d3c9
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 2c7c1e71830eb3fe4f7240195dac828ac9dfed3a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127477"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951567"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 
@@ -56,7 +56,7 @@ Microsoft Azure ポータルにサインインすると、[ダッシュボード
 
 Azure ポータルのログ検索ポータルで、1 行の基本的なクエリを作成できます。 ログ検索ポータルは、外部ポータルを起動しなくても使用できます。また、このポータルを使用して、警告ルールの作成、コンピューター グループの作成、クエリ結果のエクスポートなど、さまざまな機能をログ検索で実行することができます。 
 
-[高度な分析ポータル](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-the-Analytics-portal)は、ログ検索ポータルで使用できない高度な機能を提供する専用ポータルです。 たとえば、複数行のクエリを編集したり、コードを選択的に実行したりできます。また、状況依存の Intellisense、スマート分析などの機能もあります。 高度な分析ポータルで、グラフィカルな形式で表示されるパフォーマンス ビューを作成し、今後の検索のために保存し、先ほど作成した共有ダッシュボードにピン留めします。   
+[Log Analytics ポータル](../log-analytics/query-language/get-started-analytics-portal.md)は、ログ検索ポータルで使用できない高度な機能を提供する専用ポータルです。 たとえば、複数行のクエリを編集したり、コードを選択的に実行したりできます。また、状況依存の Intellisense、スマート分析などの機能もあります。 高度な分析ポータルで、グラフィカルな形式で表示されるパフォーマンス ビューを作成し、今後の検索のために保存し、先ほど作成した共有ダッシュボードにピン留めします。   
 
 高度な分析ポータルは、ログ検索ポータル内のリンクから起動します。<br> ![高度な分析ポータルを起動する](media/log-analytics-tutorial-dashboards/log-analytics-advancedportal-01.png)
 

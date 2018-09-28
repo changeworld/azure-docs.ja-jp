@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 51cc4c37ba661feb63880c138e98200c981f6054
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 5288dc508c35c72f3c1996ce665ccf83a84a4ea3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918483"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948967"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Azure アクティビティ ログでサブスクリプション アクティビティを監視する
 
@@ -33,8 +33,7 @@ ms.locfileid: "37918483"
 Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API を使用して、アクティビティ ログからイベントを取得できます。
 
 > [!NOTE]
->  
-  [新しいアラート](monitoring-overview-unified-alerts.md)は、アクティビティ ログの警告ルールの作成と管理に強化されたエクスペリエンスを提供します。  [詳細情報](monitoring-activity-log-alerts-new-experience.md)。
+>  [新しいアラート](monitoring-overview-unified-alerts.md)は、アクティビティ ログの警告ルールの作成と管理に強化されたエクスペリエンスを提供します。  [詳細情報](monitoring-activity-log-alerts-new-experience.md)。
 
 アクティビティ ログの概要については、次のビデオを参照してください。
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
@@ -44,11 +43,12 @@ Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API �
 アクティビティ ログには、複数のカテゴリのデータが含まれています。 各カテゴリのスキーマの詳細については、[こちらの記事を参照してください](monitoring-activity-log-schema.md)。 チェックの内容は次のとおりです
 * **管理** - このカテゴリには、Resource Manager で実行されるすべての作成、更新、削除、およびアクション操作のレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"仮想マシンの作成"、"ネットワーク セキュリティ グループの削除" などがあります。ユーザーまたはアプリケーションが Resource Manager を使用して実行するすべてのアクションは、特定のリソースの種類に対する操作としてモデリングされます。 操作の種類が書き込み、削除、またはアクションの場合、その操作の開始のレコードと成功または失敗のレコードは、いずれも管理カテゴリに記録されます。 管理カテゴリには、サブスクリプション内のロールベースのアクセス制御に対する任意の変更も含まれています。
 * **サービス正常性** - このカテゴリには、Azure で発生した任意のサービス正常性インシデントのレコードが含まれます。 このカテゴリで表示されるイベントの種類として、"SQL Azure in East US is experiencing downtime" (米国東部の SQL Azure でダウンタイムが発生しています) などがあります。 サービス正常性イベントには、要対応、支援復旧、インシデント、メンテナンス、情報、またはセキュリティという 6 種類があります。イベントの影響を受けるリソースがサブスクリプションにある場合、1 つのイベントのみが表示されます。
+* **リソース正常性** - このカテゴリには、Azure リソースで発生したすべてのリソース正常性イベントのレコードが含まれます。 このカテゴリに表示されるイベントの種類として、[Virtual Machine health status changed to unavailable]\(仮想マシンの正常性状態が使用不可に変わりました\) などがあります。 リソース正常性イベントは、利用可能、利用不可、降格済み、不明の 4 つの正常性状態のいずれかになります。 さらに、リソース正常性イベントは、プラットフォーム開始またはユーザー開始のいずれかのカテゴリーに分けることができます。
 * **アラート** - このカテゴリには、Azure アラートの全アクティビティのレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"CPU % on myVM has been over 80 for the past 5 minutes" (過去 5 分間の myVM の CPU % が 80 を超えました) などがあります。 多様な Azure システムにアラートの概念があります。また、何らかのルールを定義し、条件がそのルールと一致するときに通知を受け取ることができます。 サポートされる Azure のアラートの種類が "アクティブになる" たびに、または通知を生成する条件を満たすたびに、アクティブ化のレコードもこのカテゴリのアクティビティ ログにプッシュされます。
 * **自動スケール** - このカテゴリには、サブスクリプションで定義したすべての自動スケール設定に基づいて、自動スケール エンジンの操作に関連するすべてのイベントのレコードが含まれます。 このカテゴリで表示されるイベントの種類として、"Autoscale scale up action failed" (自動スケールのスケールアップ アクションに失敗しました) などがあります。 自動スケールを使用すると、自動スケール設定で指定した時刻や負荷 (メトリック) データに基づいて、サポートされるリソースの種類のインスタンス数を自動的にスケールアウトまたはスケールインすることができます。 スケールアップまたはスケールダウンの条件を満たした場合、開始イベントと、成功または失敗イベントがこのカテゴリに記録されます。
 * **推奨** - このカテゴリには、Azure Advisor からの推奨イベントが含まれます。
 * **セキュリティ** - このカテゴリには、Azure Security Center によって生成されたアラートのレコードが含まれます。 このカテゴリで表示されるイベントの種類の例としては、"Suspicious double extension file executed" (拡張子が 2 つある不審なファイルが実行されました) などがあります。
-* **ポリシー、およびリソース正常性** - これらのカテゴリにはイベントが含まれていません。将来的に使用するために予約されています。
+* **ポリシー** - このカテゴリにはイベントは含まれません。これは将来の使用のために予約されています。 
 
 ## <a name="event-schema-per-category"></a>カテゴリごとのイベント スキーマ
 [カテゴリごとのアクティビティ ログ イベント スキーマの詳細については、この記事を参照してください。](monitoring-activity-log-schema.md)
@@ -107,7 +107,7 @@ Azure Portal では、次のフィールドでアクティビティ ログを絞
 >  現在、セキュリティで保護された仮想ネットワークの背後にあるストレージ アカウントにデータをアーカイブすることはできません。
 
 > [!WARNING]
-> ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するためのツールの更新方法について説明します。](./monitor-diagnostic-logs-append-blobs.md) 
+> ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](./monitor-diagnostic-logs-append-blobs.md) 
 >
 > 
 
@@ -159,7 +159,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 Remove-AzureRmLogProfile -name my_log_profile
 ```
 
-### <a name="configure-log-profiles-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用したログ プロファイルの構成
+### <a name="configure-log-profiles-using-the-azure-cli"></a>Azure CLI を使用したログ プロファイルの構成
 
 #### <a name="get-existing-log-profile"></a>既存のログ プロファイルの取得
 

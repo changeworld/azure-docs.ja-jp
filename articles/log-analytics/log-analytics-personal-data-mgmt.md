@@ -15,16 +15,19 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 3692c83a4991fc67ec176687bd076ab14e4c640d
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 9ea004a35f739a8c4f7ee1ed320bd6657ed4e820
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129372"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957916"
 ---
-# <a name="guidance-for-personal-data-stored-in-log-analytics"></a>Log Analytics に格納された個人データに関するガイダンス
+# <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Log Analytics と Application Insights に格納される個人データに関するガイダンス
 
-Log Analytics は、個人データが存在する可能性が高いデータ ストアです。 この記事では、そのようなデータがよく存在する Log Analytics の場所と、そのようなデータを処理するために使用できる機能について説明します。
+Log Analytics は、個人データが存在する可能性が高いデータ ストアです。 Application Insights では、そのデータが Log Analytics パーティションに格納されます。 この記事では、そのようなデータがよく存在する Log Analytics および Application Insights の場所と、そのようなデータを処理するために使用できる機能について説明します。
+
+> [!NOTE]
+> この記事では、"_ログ データ_" とは Log Analytics ワークスペースに送信されるデータのことで、"_アプリケーション データ_" とは Application Insights によって収集されるデータのことです。
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -38,7 +41,9 @@ Log Analytics は、個人データが存在する可能性が高いデータ �
 
 ## <a name="where-to-look-for-private-data-in-log-analytics"></a>プライベート データは Log Analytics のどこで見つかるか
 
-Log Analytics は柔軟なストアであり、データのスキーマを指定しながら、カスタム値で各フィールドを上書きできます。 さらに、カスタム スキーマが取り込まれる場合があります。 そのため、特定のワークスペースのどこにプライベート データがあるかを正確に断言することはできません。 しかし、インベントリの次の場所から手を着けるのが妥当です。
+Log Analytics は柔軟なストアであり、データのスキーマを指定しながら、カスタム値で各フィールドを上書きできます。 さらに、カスタム スキーマが取り込まれる場合があります。 そのため、特定のワークスペースのどこにプライベート データがあるかを正確に断言することはできません。 しかし、インベントリ内の以下の場所から始めるのが適切です。
+
+### <a name="log-data"></a>ログ データ
 
 * "*IP アドレス*": Log Analytics では、多数の異なるテーブルからさまざまな IP 情報が収集されます。 たとえば次のクエリは、過去 24 時間で IPv4 アドレスが収集されたすべてのテーブルを示します。
     ```
@@ -55,15 +60,34 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
 * "*カスタム データ*": Log Analytics では、カスタム ログとカスタム フィールド、[HTTP データ コレクター API](log-analytics-data-collector-api.md)、システムのイベント ログの一部として収集されるカスタム データなど、さまざまな方法による収集が可能です。 これらはすべてプライベート データを含んでいる可能性があり、そのようなデータが存在するかどうかを確認するために調べる必要があります。
 * "*ソリューションによって収集されたデータ*": ソリューションのメカニズムは変更可能です。そのため、コンプライアンスを確保するために、ソリューションによって生成されたすべてのテーブルを確認することをお勧めします。
 
+### <a name="application-data"></a>アプリケーション データ
+
+* *IP アドレス*: Application Insights は既定で、すべての IP アドレス フィールドを "0.0.0.0" に難読化しますが、セッション情報を管理するために、この値を実際のユーザー IP で上書きするのがかなり一般的なパターンです。 Analytics の次のクエリを使用すると、過去 24 時間にわたって、IP アドレス以外の列に "0.0.0.0" 以外の値が含まれるすべてのテーブルを検索できます。
+    ```
+    search client_IP != "0.0.0.0"
+    | where timestamp > ago(1d)
+    | summarize numNonObfuscatedIPs_24h = count() by $table
+    ```
+* *ユーザー ID*: 既定では、Application Insights は、ユーザーとセッションの追跡のために、ランダムに生成された ID を使用します。 しかし、これらのフィールドは、アプリケーションにとってより関連性の高い ID を格納するために上書きされるのが一般的です。 たとえば、ユーザー名や AAD GUID などです。これらの ID は多くの場合、個人データの範囲にあると見なされます。そのため、適切に処理する必要があります。 これらの ID については、常に難読化または匿名化を試みることをお勧めします。 これらの値がよく見つかるフィールドには、session_Id、user_Id、user_AuthenticatedId、user_AccountId、customDimensions などがあります。
+* *カスタム データ*: Application Insights では、どのデータ型にもカスタム ディメンションのセットを追加できます。 これらのディメンションは、*どのような*データでもありえます。 過去 24 時間にわたって収集されたすべてのカスタム ディメンションを識別するには、次のクエリを使用します。
+    ```
+    search * 
+    | where isnotempty(customDimensions)
+    | where timestamp > ago(1d)
+    | project $table, timestamp, name, customDimensions 
+    ```
+* *メモリ内および転送中のデータ*: Application Insights では、例外、要求、依存関係の呼び出し、およびトレースが追跡されます。 プライベート データは、多くの場合、コードや HTTP 呼び出しのレベルで収集できます。 例外、要求、依存関係、およびトレース テーブルを確認して、このようなデータをすべて識別します。 可能な場所では[テレメトリ初期化子](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling)を使用してこのデータを難読化します。
+* *スナップショット デバッガーのキャプチャ*: Application Insights の[スナップショット デバッガー](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger)機能では、アプリケーションの実稼働インスタンスで例外がキャッチされるたびにデバッグのスナップショットを収集できます。 スナップショットでは、例外と、スタックに含まれるすべてのステップのローカル変数の値にたどり着く完全なスタック トレースが公開されます。 残念ながら、この機能では、スナップ ポイントを選択的に削除したり、スナップショット内のデータにプログラムからアクセスしたりすることができません。 そのため、既定のスナップショット保有期間のペースではお客様のコンプライアンス要件が満たされない場合は、この機能を無効にすることをお勧めします。
+
 ## <a name="how-to-export-and-delete-private-data"></a>プライベート データをエクスポートして削除する方法
 
-「[個人データの処理に関する戦略](#strategy-for-personal-data-handling)」セクションで先ほど述べたとおり、可能な場合はデータ収集ポリシーを再構築することが__強く__推奨されます。プライベート データの収集を無効にするか、難読化または匿名化を行ってください。そうでなければ、"プライベート" と見なされるデータがなくなるよう修正してください。 データの処理を行う場合、戦略を定義して自動化するコスト、顧客が問題なくデータを操作できるインターフェイスを作成するコスト、継続的なメンテナンス コストがまず、お客様とそのチームにかかります。 そのうえ、Log Analytics で多額の計算コストがかかります。また、クエリ API または消去 API の同時呼び出しが大量に発生して、Log Analytics 機能に対するすべての他の操作に悪影響が及ぶ可能性があります。 とは言うものの、実際には、プライベート データを収集する必要があるシナリオが有効な場合もあります。 このような場合、このセクションで説明されているとおりデータを処理する必要があります。
+「[個人データの処理に関する戦略](#strategy-for-personal-data-handling)」セクションで先ほど述べたとおり、可能な場合はデータ収集ポリシーを再構築することが__強く__推奨されます。プライベート データの収集を無効にするか、難読化または匿名化を行ってください。そうでなければ、"プライベート" と見なされるデータがなくなるよう修正してください。 データの処理を行う場合、戦略を定義して自動化するコスト、顧客が問題なくデータを操作できるインターフェイスを作成するコスト、継続的なメンテナンス コストがまず、お客様とそのチームにかかります。 そのうえ、Log Analytics と Application Insights で多額の計算コストがかかります。また、クエリ API または消去 API の同時呼び出しが大量に発生して、Log Analytics 機能に対するすべての他の操作に悪影響が及ぶ可能性があります。 とは言え、プライベート データを収集する必要があるシナリオが有効な場合が確かにあります。 このような場合、このセクションで説明されているとおりデータを処理する必要があります。
 
 [!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
 
 ### <a name="view-and-export"></a>表示とエクスポート
 
-データ要求の表示とエクスポートの両方に[クエリ API](https://dev.loganalytics.io/) を使用する必要があります。 必要な場合、ユーザーに提供するためにデータの形式を適切なものに変換するロジックを実装できます。 そのようなロジックをホストするには、[Azure Functions](https://azure.microsoft.com/services/functions/) が適しています。
+データ要求の表示とエクスポートの両方に、[Log Analytics クエリ API](https://dev.loganalytics.io/) または [Application Insights クエリ API](https://dev.applicationinsights.io/quickstart) を使用する必要があります。 必要な場合、ユーザーに提供するためにデータの形式を適切なものに変換するロジックを実装できます。 そのようなロジックをホストするには、[Azure Functions](https://azure.microsoft.com/services/functions/) が適しています。
 
 ### <a name="delete"></a>削除
 
@@ -76,6 +100,8 @@ Log Analytics は柔軟なストアであり、データのスキーマを指定
 
 Azure Resource Manager ロールが割り当てられると、2 つの新しい API パスが利用できるようになります。 
 
+#### <a name="log-data"></a>ログ データ
+
 * [消去の POST] (https://docs.microsoft.com/rest/api/loganalytics/workspaces%202015-03-20/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します。 
 * GET purge status - POST purge 呼び出しでは、実行した消去 API の状態を確認するために呼び出せる URL が含まれる、'x-ms-status-location' ヘッダーが返されます。 例: 
 
@@ -83,7 +109,21 @@ Azure Resource Manager ロールが割り当てられると、2 つの新しい 
     x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/Microsoft.OperatonalInsights/workspaces/[WorkspaceName]/operations/purge-[PurgeOperationId]?api-version=2015-03-20
     ```
 
-ほとんどの消去操作は Microsoft の SLA よりもはるかに早く完了すると考えられます。しかし、Log Analytics によって使用されるデータ プラットフォームへの重大な影響があるため、消去操作の完了の正式な SLA は 30 日に設定されています。 
+> [!IMPORTANT]
+>  ほとんどの消去操作は Microsoft の SLA よりもはるかに早く完了すると考えられます。しかし、Log Analytics によって使用されるデータ プラットフォームへの重大な影響があるため、**消去操作の完了の正式な SLA は 30 日に設定されています**。 
+
+#### <a name="application-data"></a>アプリケーション データ
+
+* [POST purge](https://docs.microsoft.com/rest/api/application-insights/components/purge) - 削除するデータのパラメーターを指定するオブジェクトを受け取り、参照 GUID を返します
+* GET purge status - POST purge 呼び出しでは、実行した消去 API の状態を確認するために呼び出せる URL が含まれる、'x-ms-status-location' ヘッダーが返されます。 例: 
+
+   ```
+   x-ms-status-location: https://management.azure.com/subscriptions/[SubscriptionId]/resourceGroups/[ResourceGroupName]/providers/microsoft.insights/components/[ComponentName]/operations/purge-[PurgeOperationId]?api-version=2015-05-01
+   ```
+
+> [!IMPORTANT]
+>  消去操作の大部分は、Application Insights で使用されるデータ プラットフォームへの影響が大きいため、SLA よりもずっと短期間に完了する場合があります。**消去操作の完了についての SLA は、30 日に設定されています**。
 
 ## <a name="next-steps"></a>次の手順
-データの収集方法、処理方法、保護方法については、「[Log Analytics data security (Log Analytics データのセキュリティ)](log-analytics-data-security.md)」を参照してください。
+- Log Analytics のデータの収集方法、処理方法、保護方法については、「[Log Analytics データのセキュリティ](log-analytics-data-security.md)」をご覧ください。
+- Application Insights のデータが収集、処理、セキュリティ保護される方法について詳しくは、[Application Insights データのセキュリティ](../application-insights/app-insights-data-retention-privacy.md)に関するページをご覧ください。

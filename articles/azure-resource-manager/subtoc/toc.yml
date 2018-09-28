@@ -435,6 +435,9 @@ items:
     - name: TrustedID プロバイダー
       href: /azure/templates/Microsoft.DataLakeStore/accounts/trustedIdProviders
       maintainContext: true
+    - name: 仮想ネットワーク ルール
+      href: /azure/templates/Microsoft.DataLakeStore/accounts/virtualNetworkRules
+      maintainContext: true
     maintainContext: true
 - name: Deployment Manager
   items:
@@ -756,6 +759,16 @@ items:
       href: /azure/templates/Microsoft.Network/expressRouteCircuits/peerings
       maintainContext: true
     maintainContext: true
+  - name: Express Route ゲートウェイ
+    href: /azure/templates/microsoft.Network/expressroutegateways
+    items:
+    - name: Express Route 接続
+      href: /azure/templates/microsoft.network/expressroutegateways/expressRouteConnections
+      maintainContext: true
+    maintainContext: true
+  - name: インターフェイスのエンドポイント
+    href: /azure/templates/microsoft.network/expressroutegateways
+    maintainContext: true
   - name: ロード バランサー
     href: /azure/templates/Microsoft.Network/loadBalancers
     items:
@@ -768,6 +781,13 @@ items:
     maintainContext: true
   - name: ネットワーク インターフェイス
     href: /azure/templates/Microsoft.Network/networkInterfaces
+    items:
+    - name: TAP の構成
+      href: /azure/templates/microsoft.network/networkinterfaces/tapconfigurations
+      maintainContext: true
+    maintainContext: true
+  - name: ネットワーク プロファイル
+    href: /azure/templates/microsoft.network/networkprofiles
     maintainContext: true
   - name: ネットワーク セキュリティ グループ
     href: /azure/templates/Microsoft.Network/networkSecurityGroups
@@ -785,6 +805,9 @@ items:
     - name: パケット キャプチャ
       href: /azure/templates/Microsoft.Network/networkWatchers/packetCaptures
       maintainContext: true
+    maintainContext: true
+  - name: P2s VPN ゲートウェイ
+    href: /azure/templates/microsoft.network/p2svpngateways
     maintainContext: true
   - name: パブリック IP アドレス
     href: /azure/templates/Microsoft.Network/publicIPAddresses
@@ -832,8 +855,15 @@ items:
       href: /azure/templates/Microsoft.Network/virtualNetworks/virtualNetworkPeerings
       maintainContext: true
     maintainContext: true
+  - name: Virtual Network Tap
+    href: /azure/templates/microsoft.network/virtualnetworktaps
+    maintainContext: true
   - name: 仮想 WAN
     href: /azure/templates/Microsoft.Network/virtualWans
+    items:
+    - name: P2s VPN サーバーの構成
+      href: /azure/templates/microsoft.network/virtualwans/p2svpnserverconfigurations
+      maintainContext: true
     maintainContext: true
   - name: VPN ゲートウェイ
     href: /azure/templates/Microsoft.Network/vpnGateways
@@ -1329,9 +1359,9 @@ items:
         maintainContext: true
       maintainContext: true
     maintainContext: true
-ms.openlocfilehash: 5a4456e756946f24d1440991fc2edcfc69e8b2f8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 47f6e2d53e2bb7de5b1be13de03cb5378be96948
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221198"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419714"
