@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: 6df6a3a5242e0a5fc5c03136e1cd20967a93487a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8512c04cb0efc698ca688724c3806291bb02d200
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29386522"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947650"
 ---
 # <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Azure Cloud Shell で Bash から Terraform を使ってデプロイする
 この記事では、[Terraform AzureRM プロバイダー](https://www.terraform.io/docs/providers/azurerm/index.html)を使ってリソース グループを作成する手順について説明します。 
@@ -26,9 +26,9 @@ ms.locfileid: "29386522"
 [Hashicorp Terraform](https://www.terraform.io/) は、チーム メンバー間で共有して編集、レビュー、バージョン管理できる宣言型の構成ファイルに API を体系化するオープン ソース ツールです。 Microsoft AzureRM プロバイダーは、Azure Resource Manager によってサポートされるリソースと AzureRM API を介してやり取りするために使われます。 
 
 ## <a name="automatic-authentication"></a>自動認証
-Terraform は、Cloud Shell の Bash に既定でインストールされます。 さらに、Cloud Shell は既定の Azure CLI 2.0 サブスクリプションを自動的に認証し、Terraform Azure モジュールを介してリソースをデプロイします。
+Terraform は、Cloud Shell の Bash に既定でインストールされます。 さらに、Cloud Shell は既定の Azure CLI サブスクリプションを自動的に認証し、Terraform Azure モジュールを介してリソースをデプロイします。
 
-Terraform は、設定されている既定の Azure CLI 2.0 サブスクリプションを使います。 既定のサブスクリプションを更新するには、次のコマンドを実行します。
+Terraform は、設定されている既定の Azure CLI サブスクリプションを使います。 既定のサブスクリプションを更新するには、次のコマンドを実行します。
 
 ```azurecli-interactive
 az account set --subscription mySubscriptionName
@@ -144,7 +144,7 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 目的の構成状態にするために必要な変更を適用するには、[terraform apply コマンド](https://www.terraform.io/docs/commands/apply.html)を使います。
 
-### <a name="verify-deployment-with-azure-cli-20"></a>Azure CLI 2.0 でデプロイを検証する
+### <a name="verify-deployment-with-azure-cli"></a>Azure CLI でデプロイを検証する
 `az group show -n myRgName` を実行して、リソースが正しくプロビジョニングされたことを確認します。
 
 ```azcliinteractive
