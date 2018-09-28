@@ -291,7 +291,7 @@ items:
       topicHref: /azure/cognitive-services/project-personality-chat/overview
     - name: Project Acoustics
       tocHref: /azure/cognitive-services/acoustics/
-      topicHref: /azure/cognitive-services/acoustics/What-Is-Acoustics.md
+      topicHref: /azure/cognitive-services/acoustics/what-is-acoustics
   - name: コネクタ
     tocHref: /azure/connectors/
     topicHref: /azure/connectors/
@@ -622,9 +622,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: c2588f63135e0c52657b469945b005c13e863418
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 9ff551021d83b8c2e16d04e994c92cc3c1ae6937
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163530"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407197"

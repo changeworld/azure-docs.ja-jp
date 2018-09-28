@@ -159,9 +159,9 @@ items:
     - name: リリース ノート
       href: releasenotes.md
     - name: ライセンス
-      href: license.md
+      href: https://aka.ms/csspeech/license201809
     - name: サード パーティに関する通知
-      href: third-party-notices.md
+      href: https://csspeechstorage.blob.core.windows.net/drop/1.0.0/ThirdPartyNotices.html
   - name: Speech Devices SDK
     displayName: roobo, speech devices sdk
     href: speech-devices-sdk.md
@@ -188,9 +188,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: プライバシーと Cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: 7b8b81afa5090144f1be7d747d4af1f4a319a0f1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 42c387af26a7bc01fee622060f8f5e2a07404039
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985874"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409220"

@@ -125,6 +125,8 @@ items:
     href: infrastructure-automation.md
   - name: セキュリティとポリシー
     href: security-policy.md
+  - name: 状態とライフサイクル
+    href: states-lifecycle.md
   - name: 監視
     href: monitor.md
   - name: バックアップと回復
@@ -498,55 +500,7 @@ items:
       - name: FAQ
         href: migration-classic-resource-manager-faq.md
   - name: トラブルシューティング
-    items:
-    - name: SSH 接続
-      href: troubleshoot-ssh-connection.md
-      items:
-      - name: 詳細なトラブルシューティングの手順
-        href: detailed-troubleshoot-ssh-connection.md
-    - name: Linux VM のパスワードをリセットする
-      href: reset-password.md
-    - name: システムの再起動について
-      href: understand-vm-reboot.md
-    - name: ブート診断
-      href: boot-diagnostics.md
-    - name: シリアル コンソール
-      href: serial-console.md
-      items:
-      - name: シリアル コンソール GRUB/シングル ユーザー モード
-        href: serial-console-grub-single-user-mode.md
-      - name: シリアル コンソール NMI/SysRq
-        href: serial-console-nmi-sysrq.md
-    - name: アプリケーションへのアクセス
-      href: troubleshoot-app-connection.md
-    - name: 割り当ての失敗
-      href: allocation-failure.md
-    - name: 割り当ての失敗 - クラシック VM
-      href: allocation-failure-classic.md
-    - name: デプロイの問題
-      href: troubleshoot-deploy-vm.md
-    - name: VM の作成
-      href: troubleshoot-deployment-new-vm.md
-    - name: デバイス名が変更されている
-      href: troubleshoot-device-names-problems.md
-    - name: 新しい Azure ノードへの VM の再デプロイ
-      href: redeploy-to-new-node.md
-    - name: 一般的なエラー メッセージ
-      href: error-messages.md
-    - name: VM の復旧方法
-      items:
-      - name: Azure CLI
-        href: troubleshoot-recovery-disks.md
-      - name: Azure ポータル
-        href: troubleshoot-recovery-disks-portal.md
-    - name: アタッチされた VHD
-      items:
-      - name: ストレージ リソースの削除エラー
-        href: storage-resource-deletion-errors.md
-      - name: 接続された VHD による VM の予期しない再起動
-        href: unexpected-reboots-attached-vhds.md
-    - name: 調整エラー
-      href: troubleshooting-throttling-errors.md
+    href: ../troubleshooting/index.md
 - name: リファレンス
   items:
   - name: Azure CLI
@@ -583,9 +537,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: 5ac900d783b72689759bdfe5d2ba47c11aa2157c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9887abf2965b7122c6d0fda1954cc249d67f3380
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035593"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409001"

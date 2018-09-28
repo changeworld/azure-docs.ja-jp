@@ -96,7 +96,7 @@ items:
       href: quickstarts-sdk/csharp-analyze-sdk.md
     - name: サムネイルの生成
       href: quickstarts-sdk/csharp-thumb-sdk.md
-    - name: 手書きのテキストの抽出
+    - name: テキストを抽出します
       href: quickstarts-sdk/csharp-hand-text-sdk.md
 - name: チュートリアル
   items:
@@ -186,9 +186,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: カテゴリの分類
     href: Category-Taxonomy.md
-ms.openlocfilehash: 740c9349fc4c26e4f8163b888fa437f00010b697
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ff7b2f642f1864427ec3b825332bd38edcde805f
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978014"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409266"

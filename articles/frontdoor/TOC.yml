@@ -55,10 +55,12 @@ items:
       href: front-door-troubleshoot-allowed-ca.md
 - name: リファレンス
   items:
+  - name: Azure CLI
+    href: /cli/azure/ext/front-door/
   - name: Azure PowerShell
     href: front-door-powershell-reference.md
   - name: REST API
-    href: front-door-rest-api.md
+    href: /rest/api/frontdoor
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -69,9 +71,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=frontdoor
-ms.openlocfilehash: ef2336af29de4fd7f707041d2b730b40cc7536fe
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 31944414b1bdcdb98d166463d54e21ecab6924e9
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037764"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419343"
