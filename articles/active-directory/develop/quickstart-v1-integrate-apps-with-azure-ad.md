@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: celested
-ms.openlocfilehash: c9db5169a978875cf639f6c534ce7920909c896e
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 3b799cde0a696b4a764893c545a8d55d363a4800
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188242"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989024"
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Azure Active Directory とアプリケーションの統合
-[!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
+
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
 エンタープライズ開発者や SaaS (サービスとしてのソフトウェア) プロバイダーは、商用クラウド サービスまたは基幹業務アプリケーションを開発し、それらを Azure Active Directory (Azure AD) と統合することによって、自社のサービスにセキュリティで保護されたサインインと認可を実現することができます。 アプリケーションまたはサービスを Azure AD と統合するには、まず開発者がアプリケーションを Azure AD に登録しておく必要があります。
 
@@ -33,9 +34,11 @@ ms.locfileid: "43188242"
 登録されたアプリケーションを表す 2 つの Azure AD オブジェクト、およびそれらの関係の詳細については、[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)に関するページを参照してください。Azure Active Directory を使ってアプリケーションを開発するときに使用するブランド化ガイドラインの詳細については、[統合されたアプリケーションのブランド化に関するガイドライン](howto-add-branding-in-azure-ad-apps.md)を参照してください。
 
 ## <a name="adding-an-application"></a>アプリケーションの追加
+
 アプリケーションで Azure AD の機能を使用するには、まず Azure AD テナントにそのアプリケーションを登録する必要があります。 この登録プロセスでは、アプリケーションが配置されている URL、ユーザーが認証された後の応答の送信先となる URL、アプリを識別する URI など、アプリケーションの詳細を Azure AD に提供します。
 
 ### <a name="to-register-a-new-application-using-the-azure-portal"></a>Azure Portal を使用して新しいアプリケーションを登録するには
+
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータルのセッションを目的のテナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]**、**[新しいアプリケーションの登録]** の順にクリックします。
@@ -59,10 +62,9 @@ ms.locfileid: "43188242"
 
   > [!NOTE]
   > 既定では、新しく登録された Web アプリケーションは、同じテナントのユーザー**のみ**サインインできる構成になります。
-  > 
-  > 
 
 ## <a name="updating-an-application"></a>アプリケーションの更新
+
 アプリケーションを Azure AD に登録した後には、Web API にアクセスできるようにしたり、他の組織で使用できるようにしたりするために、登録したアプリケーションを更新する作業が必要になることがあります。 このセクションでは、アプリケーションをさらに細かく構成するためのさまざまな方法を説明します。 まずは、同意フレームワークの概要を説明します。他のユーザーまたはアプリケーションが使用する必要があるアプリケーションを構築する場合には、このフレームワークについて理解しておくことが重要です。
 
 ### <a name="overview-of-the-consent-framework"></a>同意フレームワークの概要
@@ -93,7 +95,7 @@ OAuth 2.0 の認可付与を採用している同意フレームワークの使�
    
   ![ユーザーの同意エクスペリエンス](./media/quickstart-v1-integrate-apps-with-azure-ad/consent.png)
 
-5. ユーザーが同意すると、アプリケーションに認証コードが返されます。アクセス トークンと更新トークンを取得するときには、この認証コードが必要になります。 このフローの詳細については、「Azure AD の認証シナリオ」の「[Web アプリケーション対 Web API](authentication-scenarios.md#web-application-to-web-api)」を参照してください。
+5. ユーザーが同意すると、アプリケーションに認証コードが返されます。アクセス トークンと更新トークンを取得するときには、この認証コードが必要になります。 このフローの詳細については、[Web API]](web-api.md) を参照してください。
 
 6. 管理者であれば、テナント内のユーザー全員に代わってアプリケーションの委任されたアクセス許可に同意することもできます。 管理者が同意すると、そのテナントのユーザーには同意ダイアログが表示されなくなります。この同意は、管理者ロールが与えられたユーザーが [Azure portal](https://portal.azure.com) で行うことができます。 アプリケーションの **[設定]** ページで、**[必要なアクセス許可]**、**[アクセス許可の付与]** の順にボタンをクリックします。 
 
@@ -103,6 +105,7 @@ OAuth 2.0 の認可付与を採用している同意フレームワークの使�
   > 現時点では、ADAL.js を使用するシングルページ アプリ (SPA) では、**[アクセス許可の付与]** ボタンを使用して明示的に同意を付与する必要があります。 そうしないと、アクセス トークンが要求されたときにアプリケーションでエラーが発生します。 
 
 ### <a name="configure-a-client-application-to-access-web-apis"></a>Web API にアクセスするためのクライアント アプリケーションの構成
+
 Web/confidential クライアント アプリケーションが認証を必要とする認可付与フローに参加 (し、アクセス トークンを取得) するためには、セキュリティで保護された資格情報を確立する必要があります。 Azure portal でサポートされている既定の認証方法は、クライアント ID と秘密鍵の組み合わせです。 このセクションでは、クライアントの資格情報に秘密鍵を追加するために必要な構成手順について説明します。
 
 さらに、同意フレームワークでは、リソース アプリケーションによって公開されている Web API (Microsoft Graph API など) にクライアントがアクセスできるようになる前に、要求されたアクセス許可に基づいてクライアントに必要なアクセス許可が付与されていることを確認します。 既定では、どのアプリケーションも "Windows Azure Active Directory" (Graph API) および "Windows Azure Service Management API" のアクセス許可を選択できます。 また、[Graph API の [サインインとユーザー プロファイルの読み取り] アクセス許可](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes#PermissionScopeDetails)が既定で選択されています。 Office 365 のサブスクリプションを保有しているアカウントが存在するテナントにクライアントを登録しようとしている場合には、SharePoint と Exchange Online 用の Web API とアクセス許可を選択できます。 目的の Web API ごとに [2 種類のアクセス許可](developer-glossary.md#permissions)から選択できます。
@@ -115,6 +118,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
   > 委任されたアクセス許可をアプリケーションに追加しても、テナント内のユーザーに対して自動的に同意が与えられるわけではありません。 管理者がすべてのユーザーに代わって同意を許可しない限り、ユーザーはやはり追加された委任されたアクセス許可に実行時に手動で同意する必要があります。
 
 #### <a name="to-add-application-credentials-or-permissions-to-access-web-apis"></a>Web API にアクセスするためのアプリケーションの資格情報またはアクセス許可を追加するには
+
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータルのセッションを目的のテナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。
@@ -213,8 +217,6 @@ Microsoft Graph API により公開されているスコープの全容につい
 
 > [!NOTE]
 > 現時点では、ネイティブ クライアント アプリケーションに [Access your organization's directory]\(組織のディレクトリにアクセスする\) アクセス許可を使用した場合、そのアプリケーションで Azure AD Graph API しか呼び出すことができなくなるという制約があります。 この制約は、Web アプリケーションには適用されません。
-> 
-> 
 
 ### <a name="configuring-multi-tenant-applications"></a>マルチテナント アプリケーションの構成
 
@@ -260,9 +262,9 @@ Web アプリケーションではほかにも、次のものが提供される�
 - [マルチテナント コード サンプル](https://azure.microsoft.com/documentation/samples/?service=active-directory&term=multi-tenant)の一覧。 
 - [クイック スタート: Azure AD のサインイン ページに会社のブランドを追加する](../fundamentals/customize-branding.md)
 
-### <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>シングル ページ アプリケーションでの OAuth 2.0 Implicit Grant の有効化
+### <a name="enabling-oauth-20-implicit-grant-for-single-page-applications"></a>シングル ページ アプリケーションでの OAuth 2.0 暗黙的な許可の有効化
 
-シングル ページ アプリケーション (SPA) の場合、ブラウザーで実行される JavaScript ヘビーなフロント エンドを備え、このフロントエンドからアプリケーションの Web API バックエンドを呼び出してビジネス ロジックを実行するというのが典型的な構造です。 Azure AD でホストされている SPA では、Azure AD によるユーザー認証と、アプリケーションの JavaScript クライアントによるバックエンド Web API の呼び出しを保護するためのトークンの取得に、OAuth 2.0 Implicit Grant を使用します。 
+シングル ページ アプリケーション (SPA) は、ブラウザー上で実行される JavaScript ヘビーなフロント エンドを使用して通常構成されています。これがアプリケーションの Web API バックエンドを呼び出してビジネス ロジックを実行します。 Azure AD でホストされている SPA では、Azure AD によるユーザー認証と、アプリケーションの JavaScript クライアントによるバックエンド Web API の呼び出しを保護するためのトークンの取得に、OAuth 2.0 Implicit Grant を使用します。 
 
 この認証プロトコルはほかにも、ユーザーが同意した後、クライアントとアプリケーション用に構成されている他の Web API リソースとの間に発生する呼び出しを保護するトークンを取得するときにも利用できます。 暗黙的な認可付与の詳細と、それが自身のアプリケーションのシナリオに適しているかどうかの判断に役立つ情報は、「[Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて](v1-oauth2-implicit-grant-flow.md)」を参照してください。
 
@@ -272,7 +274,6 @@ Web アプリケーションではほかにも、次のものが提供される�
 
 > [!NOTE]
 > アプリケーション マニフェストを編集する方法の詳細については、前の「[Web API を公開するためのリソース アプリケーションの構成](#configuring-a-resource-application-to-expose-web-apis)」セクションを参照してください。
->
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータルのセッションを目的のテナントに設定します。
@@ -285,12 +286,15 @@ Web アプリケーションではほかにも、次のものが提供される�
 5. 更新したマニフェストを保存します。 保存が完了すると、ユーザー認証に OAuth 2.0 Implicit Grant を使用するように Web API が構成されます。
 
 ## <a name="removing-an-application"></a>アプリケーションの削除
+
 このセクションでは、Azure AD テナントからアプリケーションの登録を削除する方法について説明します。
 
 ### <a name="removing-an-application-authored-by-your-organization"></a>組織が作成したアプリケーションの削除
+
 テナントの [アプリの登録] メイン ページで [マイ アプリ] フィルターを適用すると、組織が登録したアプリケーションが表示されます。 表示されるアプリケーションは、Azure Portal から手動で登録したか、PowerShell または Graph API を使ってプログラムにより登録したものです。 さらに具体的には、テナント内でアプリケーション オブジェクトとサービス プリンシパル オブジェクトの両方によって表されるアプリケーションです。 詳細については、[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)に関するページを参照してください。
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>ディレクトリからシングルテナント アプリケーションを削除するには
+
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータルのセッションを目的のテナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。 アプリケーションのメイン登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。
@@ -298,6 +302,7 @@ Web アプリケーションではほかにも、次のものが提供される�
 5. 確認メッセージが表示されたら、 **[はい]** をクリックします。
 
 #### <a name="to-remove-a-multi-tenant-application-from-its-home-directory"></a>ホーム ディレクトリからマルチテナント アプリケーションを削除するには
+
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータルのセッションを目的のテナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。 アプリケーションのメイン登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。
@@ -306,15 +311,16 @@ Web アプリケーションではほかにも、次のものが提供される�
 6. 確認メッセージが表示されたら、 **[はい]** をクリックします。
 
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>別の組織によって承認されているマルチテナント アプリケーションの削除
+
 テナントの [アプリの登録] メイン ページで [すべてのアプリ] フィルターを適用すると表示されるアプリケーションのうち、[マイ アプリ] に登録されているものを除いたものが、マルチテナント アプリケーションです。 技術的な話をすると、ここに挙げたマルチテナント アプリケーションは、別のテナントに存在し、同意プロセスの最中に組織のテナントに登録されたものです。 さらに具体的には、組織のテナントの中に対応するアプリケーション オブジェクトが存在せず、サービス プリンシパル オブジェクトのみによって表されるアプリケーションです。 アプリケーション オブジェクトとサービス プリンシパル オブジェクトの違いの詳細については、[Azure AD のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)に関するページを参照してください。
 
 (同意を与えた後に) ディレクトリに対するマルチテナント アプリケーションのアクセス権を削除するには、会社の管理者がアプリケーションのサービス プリンシパルを削除する必要があります。 削除にあたっては、管理者にグローバル管理者のアクセス権が必要になります。Azure portal で削除するか、[Azure AD PowerShell コマンドレット](http://go.microsoft.com/fwlink/?LinkId=294151)を使用して削除できます。
 
 ## <a name="next-steps"></a>次の手順
+
 - Azure AD での認証のしくみの詳細については、「[Azure AD の認証シナリオ](authentication-scenarios.md)」を参照してください。
 - アプリのビジュアル面のガイダンスに関するヒントについては、[統合アプリケーションのブランド化に関するガイドライン](howto-add-branding-in-azure-ad-apps.md)を参照してください。
 - アプリケーションのアプリケーション オブジェクトとサービス プリンシパル オブジェクトの関係の詳細については、[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](app-objects-and-service-principals.md)に関するページを参照してください。
 - アプリ マニフェストの役割の詳細については、[Azure Active Directory のアプリケーション マニフェスト](reference-app-manifest.md)に関するページを参照してください。
 - Azure AD の開発者向けの重要な概念の定義については、[Azure AD の開発者向け用語集](developer-glossary.md)のページを参照してください。
 - 開発者向けのすべての関連コンテンツの概要については、[Active Directory 開発者ガイド](azure-ad-developers-guide.md)を参照してください。
-
