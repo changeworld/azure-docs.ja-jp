@@ -1,6 +1,6 @@
 ---
-title: Kubernetes Cluster の Azure Stack へのデプロイ | Microsoft Docs
-description: Kubernetes Cluster を Azure Stack にデプロイする方法について説明します。
+title: Kubernetes の Azure Stack へのデプロイ | Microsoft Docs
+description: Kubernetes を Azure Stack にデプロイする方法について説明します。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,28 +11,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2018
+ms.date: 09/25/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 67e82a4809253123e15305b5f2ecd8cc5f7ee4ed
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a6e1acf3b9e69f32a8c175310134c534dbf8c561
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046852"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977538"
 ---
-# <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Kubernetes Cluster の Azure Stack へのデプロイ
+# <a name="deploy-kubernetes-to-azure-stack"></a>Kubernetes を Azure Stack にデプロイする
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 > [!Note]  
-> Azure Stack 上の Azure Kubernetes Services (AKS) Kubernetes はプライベート プレビューの段階にあります。 Azure Stack のオペレーターは、この記事の手順を実行するために必要な Kubernetes Marketplace 項目へのアクセスを要求する必要があります。
+> Azure Stack 上の Kubernetes はプレビュー段階にあります。 Azure Stack のオペレーターは、この記事の手順を実行するために必要な Kubernetes Cluster Marketplace 項目へのアクセスを要求する必要があります。
 
-以降の記事では、Azure Resource Manager ソリューション テンプレートを使用して、1 つの連携した操作で Kubernetes のためにリソースのデプロイとプロビジョニングを行う方法を示しています。 Azure Stack インストールに関する必要な情報を収集し、テンプレートを生成して、クラウドにデプロイする必要があります。
+以降の記事では、Azure Resource Manager ソリューション テンプレートを使用して、1 つの連携した操作で Kubernetes のためにリソースのデプロイとプロビジョニングを行う方法を示しています。 Azure Stack インストールに関する必要な情報を収集し、テンプレートを生成して、クラウドにデプロイする必要があります。 テンプレートは、グローバルな Azure で提供されるのと同じマネージド型の AKS サービスではなく、ACS サービスに近いことに注意してください。
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes とコンテナー
 
-Azure Stack 上の Azure Kubernetes Services (AKS) エンジンによって生成された Azure Resource Manager テンプレートを使用して、Kubernetes をインストールできます。 [Kubernetes](https://kubernetes.io) はコンテナー内でのアプリケーションのデプロイ、スケーリング、管理を自動化するオープンソース システムです。 [コンテナー](https://www.docker.com/what-container)は、VM と同じように、イメージ内に含まれています。 VM とは違って、コンテナー イメージには、コード、コードを実行するためのランタイム、特定のライブラリ、および設定など、アプリケーションを実行するために必要なリソースのみが含まれています。
+Azure Stack 上の ACS エンジンによって生成された Azure Resource Manager テンプレートを使用して、Kubernetes をインストールできます。 [Kubernetes](https://kubernetes.io) はコンテナー内でのアプリケーションのデプロイ、スケーリング、管理を自動化するオープンソース システムです。 [コンテナー](https://www.docker.com/what-container)は、VM と同じように、イメージ内に含まれています。 VM とは違って、コンテナー イメージには、コード、コードを実行するためのランタイム、特定のライブラリ、および設定など、アプリケーションを実行するために必要なリソースのみが含まれています。
 
 Kubernetes は、次の目的で使用できます。
 
@@ -59,7 +59,11 @@ Kubernetes は、次の目的で使用できます。
 ## <a name="create-a-service-principal-in-azure-ad"></a>Azure AD でのサービス プリンシパルの作成
 
 1. グローバルな [Azure Portal](http://portal.azure.com) にサインインします。
-1. Azure Stack インスタンスに関連付けられた Azure AD テナントを使ってサインインしたことを確認します。
+
+1. Azure Stack インスタンスに関連付けられた Azure AD テナントを使ってサインインしたことを確認します。 Azure ツールバーのフィルター アイコンをクリックすると、サインインを切り替えることができます。
+
+    ![AD テナントを選択する](media/azure-stack-solution-template-kubernetes-deploy/tenantselector.png)
+
 1. Azure AD アプリケーションを作成します。
 
     a. **[Azure Active Directory]** > **[+ アプリの登録]** > **[新しいアプリケーションの登録]** を選択します。
@@ -83,34 +87,33 @@ Kubernetes は、次の目的で使用できます。
     c. **[保存]** を選択します。 キー文字列をメモします。 クラスターを作成するときに、キー文字列が必要になります。 キーは、**サービス プリンシパル クライアント シークレット**として参照されます。
 
 
-
 ## <a name="give-the-service-principal-access"></a>サービス プリンシパルへのアクセスの付与
 
 サービス プリンシパルがリソースを作成できるように、そのプリンシパルにサブスクリプションへのアクセスを付与します。
 
 1.  [Azure Stack ポータル](https://portal.local.azurestack.external/)にサインインします。
 
-1. **[その他のサービス]** > **[サブスクリプション]** を選択します。
+1. **[すべてのサービス]** > **[サブスクリプション]** を選択します。
 
-1. 作成したサブスクリプションを選択します。
+1. オペレーターによって作成された、Kubernetes クラスターを使用するためのサブスクリプションを選択します。
 
 1. **[アクセス制御 (IAM)]** > **[+ 追加]** の順に選択します。
 
-1. **[所有者]** ロールを選択します
+1. **[共同作成者]** ロールを選択します。
 
 1. サービス プリンシパル用に作成したアプリケーションの名前を選択します。 必要に応じて、検索ボックスに名前を入力します。
 
 1. **[Save]** をクリックします。
 
-## <a name="deploy-a-kubernetes-cluster"></a>Kubernetes クラスターのデプロイ
+## <a name="deploy-a-kubernetes"></a>Kubernetes のデプロイ
 
 1. [Azure Stack ポータル](https://portal.local.azurestack.external)を開きます。
 
-1. **[+新規]** > **[コンピューティング]** > **[Kubernetes Cluster]\(Kubernetes クラスター\)** の順に選択します。 **Create** をクリックしてください。
+1. **[+ リソースの作成]** > **[コンピューティング]** > **[Kubernetes クラスター]** を選択します。 **Create** をクリックしてください。
 
     ![ソリューション テンプレートのデプロイ](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-1. [Kubernetes クラスターを作成] で **[基本]** を選びます。
+1. [Create Kubernetes] (Kubernetes の作成) で **[基本]** を選択します。
 
     ![ソリューション テンプレートのデプロイ](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
@@ -145,7 +148,6 @@ Kubernetes は、次の目的で使用できます。
 
 1. **[Tenant Arm Endpoint]\(テナント ARM エンドポイント\)** を入力します。 これは、Kubernetes クラスターのリソース グループを作成するために接続する Azure Resource Manager のエンドポイントです。 統合システムの Azure Stack のオペレーターからエンドポイントを取得する必要があります。 Azure Stack Development Kit (ASDK) の場合は、`https://management.local.azurestack.external` を使用できます。
 
-1. テナントの **[テナント ID]** を入力します。 この値を見つけるために手助けが必要な場合は、「[テナント ID を取得する](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)」を参照してください。 
 
 ## <a name="connect-to-your-cluster"></a>クラスターへの接続
 
@@ -155,6 +157,6 @@ Kubernetes は、次の目的で使用できます。
 
 ## <a name="next-steps"></a>次の手順
 
-[Kubernetes Cluster を Marketplace に追加する (Azure Stack のオペレーター)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[Kubernetes を Marketplace に追加する (Azure Stack のオペレーター)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [Azure における Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

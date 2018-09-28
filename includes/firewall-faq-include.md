@@ -5,37 +5,35 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 8/13/2018
+ms.date: 9/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: a63a12658bd0a4b4d018d51824af9814691a3cbf
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 4c6aaea836302732b1af3d22923c965575cfc9d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40183725"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47020474"
 ---
 ### <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
-Azure Firewall は、Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。 完全にステートフルなサービスとしてのファイアウォールで、組み込みの高可用性とクラウドによる無制限のスケーラビリティを備えています。 サブスクリプションと仮想ネットワークをまたいでアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、記録できます。 現在、Azure Firewall はパブリック プレビュー段階にあります。
+Azure Firewall は、Azure Virtual Network リソースを保護するクラウドベースのマネージド ネットワーク セキュリティ サービスです。 これは、組み込みの高可用性とクラウドによる無制限のスケーラビリティを備えた、完全にステートフルなサービスとしてのファイアウォールです。 サブスクリプションと仮想ネットワークをまたいでアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、記録できます。
 
-### <a name="which-capabilities-are-supported-in-the-azure-firewall-public-preview-release"></a>Azure Firewall パブリック プレビュー リリースではどの機能がサポートされていますか?  
+### <a name="what-capabilities-are-supported-in-azure-firewall"></a>Azure Firewall ではどのような機能がサポートされていますか?  
 
 * サービスとしてのステートフル ファイアウォール
 * 無制限のクラウド スケーラビリティを備えたビルトインの高可用性
-* FQDN フィルタリング 
+* FQDN フィルタリング
+* FQDN のタグ
 * ネットワーク トラフィックのフィルタリング規則
 * 送信 SNAT サポート
-* Azure サブスクリプションと仮想ネットワークをまたいでアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、記録する機能
+* 受信 DNAT のサポート
+* Azure サブスクリプションと VNET をまたいでアプリケーションとネットワークの接続ポリシーを一元的に作成、適用、記録できます。
 * Azure Monitor との完全統合によるログ記録と分析 
-
-### <a name="how-can-i-join-the-azure-firewall-public-preview"></a>Azure Firewall パブリック プレビューに参加する方法を教えてください
-
-現在、Azure Firewall はマネージド パブリック プレビューです。Register-AzureRmProviderFeature PowerShell コマンドを使用して参加できます。 このコマンドについては、Azure Firewall パブリック プレビューのドキュメントで説明されています。
 
 ### <a name="what-is-the-pricing-for-azure-firewall"></a>Azure Firewall の価格を教えてください
 
-Azure Firewall には、固定コストと変動コストがあります。 価格は以下のとおりです。パブリック プレビュー中は、さらに 50% 割り引かれます。
+Azure Firewall には、固定コスト + 変動コストがあります。
 
 * 固定料金: 1.25 ドル/ファイアウォール/時間
 * 変動料金: $ 0.03/ファイアウォールで処理される GB (イングレスまたはエグレス)
@@ -59,7 +57,7 @@ Azure Firewall は、ルールとルール コレクションをサポートし�
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Azure Firewall は受信トラフィック フィルター処理をサポートしていますか?
 
-Azure Firewall パブリック プレビューは、送信のフィルター処理のみをサポートしています。 一般公開 (GA) の Azure Firewall では、非 HTTP/S プロトコル (例: RDP、SSH、または FTP) の受信保護が暫定的に予定されています。  
+Azure Firewall は受信と送信のフィルター処理をサポートしています。 受信保護は HTTP/S プロトコル用です。 たとえば、RDP、SSH、および FTP プロトコルです。
  
 ### <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure Firewall では、どのログ記録および分析サービスがサポートされていますか?
 
@@ -110,3 +108,11 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 * 中央の仮想ネットワークで実行される Azure Firewall のインスタンスには、仮想ネットワーク ピアリングの上限があり、スポーク仮想ネットワークは最大 50 個に制限されます。  
 * Azure Firewall はグローバル ピアリングで機能しないので、リージョンごとにファイアウォールを少なくとも 1 つ展開する必要があります。
 * Azure Firewall では、10,000 個のアプリケーション ルールと 10,000 個のネットワーク ルールがサポートされます。
+
+### <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Azure Firewall では、ハブ仮想ネットワークで 2 つのスポーク仮想ネットワーク間のネットワーク トラフィックを転送したりフィルター処理したりできますか?
+
+はい。ハブ仮想ネットワークで Azure Firewall を使用して、2 つのスポーク仮想ネットワーク間のトラフィックをルーティングしたりフィルター処理したりできます。 各スポーク仮想ネットワークのサブネットを正常に動作させるためには、このシナリオで既定のゲートウェイとして Azure Firewall をポイントする UDR が必要です。
+
+### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network"></a>Azure Firewall では、同じ仮想ネットワークのサブネット間のネットワーク トラフィックを転送したりフィルター処理したりできますか?
+
+同じ仮想ネットワーク内または直接ピアリングされた仮想ネットワーク内のサブネット間のトラフィックは、UDR が既定のゲートウェイとして Azure Firewall をポイントする場合でも直接ルーティングされます。 内部ネットワークのセグメント化の推奨される方法は、ネットワーク セキュリティ グループを使用することです。 このシナリオでサブネット間トラフィックをファイアウォールに送信するには、UDR に両方のサブネットのターゲットのサブネット ネットワーク プレフィックスを明示的に含める必要があります。

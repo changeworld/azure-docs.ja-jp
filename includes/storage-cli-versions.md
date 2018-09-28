@@ -2,5 +2,5 @@
 
 現在使用可能な Azure コマンド ライン インターフェイス (CLI) のバージョンは 2 つあります。
 
-* [Azure CLI 2.0](../articles/storage/common/storage-azure-cli.md): Python で記述された次世代 CLI であり、Resource Manager デプロイ モデルで使用できます。
-* [Azure CLI 1.0](../articles/storage/common/storage-azure-cli-nodejs.md): Node.js で記述された CLI であり、クラシック デプロイ モデルと Resource Manager デプロイ モデルの両方に使用できます。
+* [Azure CLI](../articles/storage/common/storage-azure-cli.md): Azure CLI の現在のバージョンで、Resource Manager のデプロイ モデルで使用します。
+* [Azure クラシック CLI](../articles/storage/common/storage-azure-cli-nodejs.md): Azure CLI の旧バージョンで、従来のデプロイ モデルでのみ使用できます。

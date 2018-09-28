@@ -1,81 +1,23 @@
 ---
-title: Azure Availability Zones にゾーン冗長仮想ネットワーク ゲートウェイを作成する - プレビュー | Microsoft Docs
-description: Availability Zones に VPN ゲートウェイと ExpressRoute ゲートウェイをデプロイする - プレビュー
+title: Azure Availability Zones にゾーン冗長仮想ネットワーク ゲートウェイを作成する | Microsoft Docs
+description: Availability Zones に VPN Gateway と ExpressRoute ゲートウェイをデプロイする
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand how to create zone-redundant gateways.
 ms.service: vpn-gateway
-ms.topic: article
-ms.date: 07/09/2018
+ms.topic: conceptual
+ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: fa349555a5effd41ca519cbd5a29005203d79543
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: f531be5a814ed1805a2938daec1d210f9daccfa5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952557"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949776"
 ---
-# <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones---preview"></a>Azure Availability Zones にゾーン冗長仮想ネットワーク ゲートウェイを作成する - プレビュー
+# <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Azure Availability Zones にゾーン冗長仮想ネットワーク ゲートウェイを作成する
 
-[Azure Availability Zones](../availability-zones/az-overview.md) に、VPN ゲートウェイと ExpressRoute ゲートウェイをデプロイできます。 これにより、仮想ネットワーク ゲートウェイに回復性、スケーラビリティ、高可用性が提供されます。 Azure Availability Zones にゲートウェイをデプロイすると、オンプレミス ネットワークの Azure への接続をゾーン レベルの障害から保護しながら、ゲートウェイを 1 つのリージョン内に物理的かつ論理的に分離できます。
-
-ゾーン ゲートウェイとゾーン冗長ゲートウェイでは、基本的なパフォーマンスが通常の仮想ネットワーク ゲートウェイよりも向上しています。 さらに、ゾーン仮想ネットワーク ゲートウェイとゾーン冗長仮想ネットワーク ゲートウェイは他のゲートウェイよりも短時間で作成できます。 所要時間は、通常の 45 分に対して ExpressRoute ゲートウェイは 15 分、VPN ゲートウェイは 19 分です。
-
-### <a name="zrgw"></a>ゾーン冗長ゲートウェイ
-
-複数の可用性ゾーンにわたって仮想ネットワーク ゲートウェイを自動的にデプロイするには、ゾーン冗長仮想ネットワーク ゲートウェイを使用します。 ゾーン冗長ゲートウェイでは、Azure 上のミッション クリティカルでスケーラブルなサービスへのアクセスにおいて、99.99% のアップタイム SLA (一般提供時) が提供されます。
-
-<br>
-<br>
-
-![ゾーン冗長ゲートウェイの図](./media/create-zone-redundant-vnet-gateway/zonered.png)
-
-### <a name="zgw"></a>ゾーン ゲートウェイ
-
-特定の 1 つのゾーンにゲートウェイをデプロイするには、ゾーン ゲートウェイを使用します。 ゾーン ゲートウェイをデプロイすると、両方のゲートウェイ インスタンスが同じ可用性ゾーンにデプロイされます。
-
-<br>
-<br>
-
-![ゾーン ゲートウェイの図](./media/create-zone-redundant-vnet-gateway/zonal.png)
-
-## <a name="gwskus"></a>ゲートウェイの SKU
-
-ゾーン冗長ゲートウェイとゾーン ゲートウェイは新しいゲートウェイ SKU を使用する必要があります。 [プレビューに自己登録](#enroll)すると、すべての Azure AZ リージョン内の新しい仮想ネットワーク ゲートウェイ SKU が表示されます。 これらの SKU は ExpressRoute および VPN Gateway の対応する SKU と似ていますが、ゾーン冗長ゲートウェイとゾーン ゲートウェイに固有であるという点が異なります。
-
-新しいゲートウェイ SKU は次のとおりです。
-
-### <a name="vpn-gateway"></a>VPN Gateway
-
-* VpnGw1AZ
-* VpnGw2AZ
-* VpnGw3AZ
-
-### <a name="expressroute"></a>ExpressRoute
-
-* ErGw1AZ
-* ErGw2AZ
-* ErGw3AZ
-
-## <a name="pipskus"></a>パブリック IP の SKU
-
-ゾーン冗長ゲートウェイとゾーン ゲートウェイはいずれも、Azure パブリック IP リソースの *Standard* SKU に依存します。 Azure パブリック IP リソースの構成によって、デプロイするゲートウェイがゾーン冗長ゲートウェイになるかゾーン ゲートウェイになるかが決まります。 *Basic* SKU を使用してパブリック IP リソースを作成した場合、ゲートウェイはゾーン冗長性を持たず、ゲートウェイ リソースはリージョン固有となります。
-
-### <a name="pipzrg"></a>ゾーン冗長ゲートウェイ
-
-ゾーンを指定せずに **Standard** パブリック IP SKU を使用してパブリック IP アドレスを作成した場合、動作はゲートウェイが VPN ゲートウェイであるか ExpressRoute ゲートウェイであるかによって異なります。 
-
-* VPN ゲートウェイの場合は、2 つのゲートウェイ インスタンスがこれらの 3 つのゾーンの 2 つにデプロイされ、ゾーン冗長性が提供されます。 
-* ExpressRoute ゲートウェイの場合は、3 つ以上のインスタンスを作成できるため、ゲートウェイは 3 つのゾーンすべてにわたることができます。
-
-### <a name="pipzg"></a>ゾーン ゲートウェイ
-
-**Standard** パブリック IP SKU を使用してパブリック IP アドレスを作成し、ゾーン (1、2、または 3) を指定した場合、すべてのゲートウェイ インスタンスが同じゾーンにデプロイされます。
-
-### <a name="piprg"></a>リージョン ゲートウェイ
-
-**Basic** パブリック IP SKU を使用してパブリック IP アドレスを作成した場合、ゲートウェイはリージョン ゲートウェイとしてデプロイされ、ゲートウェイにはゾーン冗長性が組み込まれません。
+Azure Availability Zones に、VPN Gateway と ExpressRoute ゲートウェイをデプロイできます。 これにより、仮想ネットワーク ゲートウェイに回復性、スケーラビリティ、高可用性が提供されます。 Azure Availability Zones にゲートウェイをデプロイすると、オンプレミス ネットワークの Azure への接続をゾーン レベルの障害から保護しながら、ゲートウェイを 1 つのリージョン内に物理的かつ論理的に分離できます。 詳細については、[ゾーン冗長仮想ネットワーク ゲートウェイ](about-zone-redundant-vnet-gateways.md)に関するページと [Azure Availability Zones](../availability-zones/az-overview.md)に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -95,28 +37,7 @@ Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
 
 [!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
 
-## <a name="enroll"></a>1.プレビューに登録する
-
-ゾーン冗長ゲートウェイまたはゾーン ゲートウェイを構成する前に、まずプレビューでサブスクリプションを自己登録する必要があります。 サブスクリプションがプロビジョニングされると、すべての Azure AZ リージョン内の新しいゲートウェイ SKU が表示されます。 
-
-Azure アカウントにサインインしていて、このプレビューのホワイトリストに登録するサブスクリプションを使用していることを確認します。 次の例を使用して登録します。
-
-```azurepowershell-interactive
-Register-AzureRmProviderFeature -FeatureName AllowVMSSVirtualNetworkGateway -ProviderNamespace Microsoft.Network
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
-
-次のコマンドを使用して、そのサブスクリプションで 'AllowVMSSVirtualNetworkGateway' 機能が登録されていることを確認します。
-
-```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network
-```
-
-結果は次の例のようになります。
-
-![プロビジョニングの完了](./media/create-zone-redundant-vnet-gateway/verifypreview.png)
-
-## <a name="variables"></a>2.変数を宣言する
+## <a name="variables"></a>1.変数を宣言する
 
 この例の手順で使用する値は以下のとおりです。 さらに、一部の例では、手順で宣言された変数を使用します。 実際の環境でこれらの手順を使用するときは、必ずこれらの値を実際の値で置き換えてください。 場所を指定するときは、指定するリージョンがサポートされていることを確認してください。 詳細については、[FAQ](#faq) をご覧ください。
 
@@ -136,7 +57,7 @@ $GwIP1       = "VNet1GWIP"
 $GwIPConf1   = "gwipconf1"
 ```
 
-## <a name="configure"></a>3.仮想ネットワークの作成
+## <a name="configure"></a>2.仮想ネットワークの作成
 
 リソース グループを作成します。
 
@@ -152,7 +73,7 @@ $besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix 
 $vnet = New-AzureRmVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
 ```
 
-## <a name="gwsub"></a>4.Add the gateway subnet
+## <a name="gwsub"></a>3.Add the gateway subnet
 
 ゲートウェイ サブネットには、仮想ネットワーク ゲートウェイ サービスが使用する予約済み IP アドレスが含まれます。 次の例を使用して、ゲートウェイ サブネットを追加し設定します。
 
@@ -168,7 +89,7 @@ Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.
 ```azurepowershell-interactive
 $getvnet | Set-AzureRmVirtualNetwork
 ```
-## <a name="publicip"></a>5.パブリック IP アドレスの要求
+## <a name="publicip"></a>4.パブリック IP アドレスの要求
  
 この手順では、作成するゲートウェイに当てはまる説明を選択してください。 ゲートウェイをデプロイするゾーンの選択は、パブリック IP アドレスに対して指定されたゾーンに依存します。
 
@@ -195,7 +116,7 @@ $pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Nam
 ```azurepowershell-interactive
 $pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
 ```
-## <a name="gwipconfig"></a>6.IP 構成を作成する
+## <a name="gwipconfig"></a>5.IP 構成を作成する
 
 ```azurepowershell-interactive
 $getvnet = Get-AzureRmVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
@@ -203,7 +124,7 @@ $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork
 $gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
 ```
 
-## <a name="gwconfig"></a>7.ゲートウェイを作成する
+## <a name="gwconfig"></a>6.ゲートウェイを作成する
 
 仮想ネットワーク ゲートウェイを作成します。
 
@@ -219,52 +140,24 @@ New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name 
 New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased
 ```
 
-## <a name="feedback"></a>フィードバックの提供方法
-
-お客様からのフィードバックをお待ちしています。 ゾーン冗長およびゾーン VPN ゲートウェイと Express Route ゲートウェイに関する問題を報告したり (肯定的、否定的を問わず) フィードバック を送信するには、aznetworkgateways@microsoft.com まで電子メールをお送りください。 件名の “[ ]” には、お客様の会社名を入力してください。 また、問題を報告する場合は、サブスクリプション ID も入力してください。
-
 ## <a name="faq"></a>FAQ
 
-### <a name="how-do-i-sign-up-for-the-preview"></a>プレビューにサインアップするにはどうすればよいですか。
+### <a name="what-will-change-when-i-deploy-these-new-skus"></a>これらの新しい SKU をデプロイすると何が変わりますか。
 
-この記事の PowerShell コマンドを使用して[自己登録](#enroll)していただくことができます。
-
-### <a name="what-will-change-when-i-enroll"></a>登録すると何が変わりますか。
-
-お客様の観点からは、プレビュー中に、ゾーン冗長性を備えたゲートウェイをデプロイできるようになります。 つまり、すべてのゲートウェイ インスタンスが複数の Azure Availability Zones にわたってデプロイされ、それぞれの Availability Zone が別々の障害ドメインおよび更新ドメインとなります。 これにより、ゲートウェイの信頼性、可用性、およびゾーン障害に対する回復性が向上します。
+お客様の観点からは、ゾーン冗長性を備えたゲートウェイをデプロイできるようになります。 つまり、すべてのゲートウェイ インスタンスが複数の Azure Availability Zones にわたってデプロイされ、それぞれの Availability Zone が別々の障害ドメインおよび更新ドメインとなります。 これにより、ゲートウェイの信頼性、可用性、およびゾーン障害に対する回復性が向上します。
 
 ### <a name="can-i-use-the-azure-portal"></a>Azure Portal を使用することはできますか。
 
-はい。プレビュー版の Azure Portal を使用することができます。 ただし、引き続き PowerShell を使用して登録する必要があります。そうしないと、プレビュー期間中にポータルを使用することはできません。
+はい、Azure portal を使用して新しい SKU をデプロイできます。 ただし、これらの新しい SKU が表示されるのは、Azure Availability Zones がある Azure リージョンのみとなります。
 
-### <a name="what-regions-are-available-for-the-preview"></a>このプレビューではどのようなリージョンを利用できますか。
+### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>新しい SKU を使用する場合、どのようなリージョンを利用できますか。
 
-ゾーン冗長ゲートウェイとゾーン ゲートウェイは、運用環境/Azure パブリック リージョンで利用できます。
+新しい SKU は、Azure Availability Zones がある Azure リージョン (米国中部、フランス中部、西ヨーロッパ) でご利用いただけます。 将来的には、他の Azure パブリック リージョンでもゾーン冗長ゲートウェイを利用できるようになる予定です。
 
-### <a name="will-i-be-billed-for-participating-in-this-preview"></a>このプレビューへの参加に対しては課金されますか。
-
-プレビュー中は、ゲートウェイに対して課金されることはありません。 ただし、デプロイには SLA が関連付けられていません。 ぜひ、フィードバックをお寄せください。
-
-> [!NOTE]
-> ExpressRoute ゲートウェイでは、ゲートウェイに対する課金または料金請求はありません。 しかし、(ゲートウェイではなく) 回路自体に対しては課金されます。
-
-### <a name="what-regions-are-available-for-me-to-try-this-in"></a>これを試すのに、どのようなリージョンを利用できますか。
-
-パブリック プレビューは、米国中部およびフランス中部リージョン (Availability Zones が一般提供されている Azure リージョン) で利用できます。 将来的には、他の Azure パブリック リージョンでもゾーン冗長ゲートウェイを利用できるようになる予定です。
-
-### <a name="can-i-change-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>既存の仮想ネットワーク ゲートウェイをゾーン冗長ゲートウェイまたはゾーン ゲートウェイに変更することはできますか。
+### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>既存の仮想ネットワーク ゲートウェイをゾーン冗長ゲートウェイまたはゾーン ゲートウェイに変更、移行、アップグレードすることはできますか。
 
 既存の仮想ネットワーク ゲートウェイからゾーン冗長ゲートウェイまたはゾーン ゲートウェイへの移行は、現時点ではサポートされていません。 しかし、既存のゲートウェイを削除して、ゾーン冗長ゲートウェイまたはゾーン ゲートウェイを再作成することは可能です。
 
 ### <a name="can-i-deploy-both-vpn-and-express-route-gateways-in-same-virtual-network"></a>VPN ゲートウェイと Express Route ゲートウェイの両方を同じ仮想ネットワークにデプロイできますか。
 
-パブリック プレビュー中は、同じ仮想ネットワーク内での VPN ゲートウェイと Express Route ゲートウェイの共存がサポートされています。 ただし、次の要件および制限事項に注意してください。
-
-* ゲートウェイ サブネット用に、/27 IP アドレス範囲を予約する。
-* ゾーン冗長/ゾーン Express Route ゲートウェイは、ゾーン冗長/ゾーン VPN ゲートウェイとしか共存できない。
-* ゾーン冗長/ゾーン VPN ゲートウェイをデプロイする前に、ゾーン冗長/ゾーン Express Route ゲートウェイをデプロイする。
-* ゾーン冗長/ゾーン Express Route ゲートウェイは、最大 4 つの回路にしか接続できない。
-
-## <a name="next-steps"></a>次の手順
-
-お客様からのフィードバックをお待ちしています。 ゾーン冗長およびゾーン VPN ゲートウェイと Express Route ゲートウェイに関する問題を報告したり (肯定的、否定的を問わず) フィードバック を送信するには、aznetworkgateways@microsoft.com まで電子メールをお送りください。 件名の “[ ]” には、お客様の会社名を入力してください。 また、問題を報告する場合は、サブスクリプション ID も入力してください。
+同じ仮想ネットワーク内での VPN Gateway と Express Route ゲートウェイの共存がサポートされています。 ただし、ゲートウェイ サブネット用に、/27 IP アドレス範囲を予約する必要があります。

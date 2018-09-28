@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: maheshu
-ms.openlocfilehash: 2b94496895c0ab06127b6c556b1240e3279e572f
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 40eb0e8133626e77a1f61ddfc5df69ecf1b958f2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504415"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950796"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Windows Server 仮想マシンをマネージド ドメインに参加させます。
 この記事では、Resource Manager テンプレートを使用して Windows Server 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法を示します。
@@ -33,14 +33,13 @@ ms.locfileid: "39504415"
 2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ** 。
 3. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](active-directory-ds-getting-started.md)に記載されているすべてのタスクを実行してください。
 4. マネージド ドメインの IP アドレスを、必ず仮想ネットワークの DNS サーバーとして構成します。 詳しくは、[Azure 仮想ネットワークの DNS 設定を更新する方法](active-directory-ds-getting-started-dns.md)に関するページをご覧ください。
-5. 
-  [Azure AD Domain Services のマネージド ドメインとのパスワードの同期](active-directory-ds-getting-started-password-sync.md)に必要な手順をすべて実行します。
+5. [Azure AD Domain Services のマネージド ドメインとのパスワードの同期](active-directory-ds-getting-started-password-sync.md)に必要な手順をすべて実行します。
 
 
 ## <a name="install-and-configure-required-tools"></a>必要なツールをインストールして構成する
 このドキュメントで説明している手順を実行するには、次のオプションのいずれかを使用できます。
 * **Azure PowerShell** の[インストールおよび構成](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)
-* **Azure クロスプラットフォーム コマンド ライン インターフェイス**の[インストールおよび構成](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
+* **Azure CLI**: [インストールと構成](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)
 
 
 ## <a name="option-1-provision-a-new-windows-server-vm-and-join-it-to-a-managed-domain"></a>オプション 1: 新しい Windows Server VM をプロビジョニングしてマネージド ドメインに参加させる
@@ -53,15 +52,12 @@ Windows Server 仮想マシンをデプロイしてマネージド ドメイン�
 4. 仮想マシンをプロビジョニングする **Azure サブスクリプション**を選択します。 Azure AD Domain Services を有効にしたのと同じ Azure サブスクリプションを選択してください。
 5. 既存の**リソース グループ**を選択するか、新しいリソース グループを作成します。
 6. 新しい仮想マシンをデプロイする**場所**を選択します。
-7. 
-  **[Existing VNET Name]\(既存の VNET 名\)** で、Azure AD Domain Services のマネージド ドメインをデプロイした仮想ネットワークを指定します。
+7. **[Existing VNET Name]\(既存の VNET 名\)** で、Azure AD Domain Services のマネージド ドメインをデプロイした仮想ネットワークを指定します。
 8. **[Existing Subnet Name]\(既存のサブネット名\)** で、この仮想マシンをデプロイする仮想ネットワーク内のサブネットを指定します。 仮想ネットワーク内のゲートウェイ サブネットは選択しないでください。 また、マネージド ドメインがデプロイされている専用サブネットも選択しないでください。
 9. **[DNS Label Prefix]\(DNS ラベルのプレフィックス\)** で、プロビジョニングする仮想マシンのホスト名を指定します。 たとえば、"contoso-win" を指定します。
 10. 仮想マシンに対して適切な **[VM サイズ]** を選択します。
-11. 
-  **[参加するドメイン]** で、マネージド ドメインの DNS ドメイン名を指定します。
-12. 
-  **[ドメイン ユーザー名]** で、VM をマネージド ドメインに参加させるために使用する、マネージド ドメイン上のユーザー アカウント名を指定します。
+11. **[参加するドメイン]** で、マネージド ドメインの DNS ドメイン名を指定します。
+12. **[ドメイン ユーザー名]** で、VM をマネージド ドメインに参加させるために使用する、マネージド ドメイン上のユーザー アカウント名を指定します。
 13. **[ドメイン パスワード]** で、"domainUsername" パラメーターで参照されるドメイン ユーザー アカウントのパスワードを指定します。
 14. 省略可能: 仮想マシンを追加するカスタム OU への **OU パス**を指定できます。 このパラメーターの値を指定しない場合、仮想マシンはマネージド ドメイン上の既定の **[AAD DC Computers]\(AAD DC コンピューター\)** OU に追加されます。
 15. **[VM Admin Username]\(VM 管理ユーザー名\)** フィールドで、仮想マシンのローカル管理者のアカウント名を指定します。
@@ -87,13 +83,10 @@ Windows Server 仮想マシンをデプロイしてマネージド ドメイン�
 4. 仮想マシンをプロビジョニングする **Azure サブスクリプション**を選択します。 Azure AD Domain Services を有効にしたのと同じ Azure サブスクリプションを選択してください。
 5. 既存の**リソース グループ**を選択するか、新しいリソース グループを作成します。
 6. 新しい仮想マシンをデプロイする**場所**を選択します。
-7. 
-  **[VM List]\(VM 一覧\)** フィールドで、マネージド ドメインに参加させる既存の仮想マシンの名前を指定します。 コンマを使用して、個々の VM の名前を区切ります。 たとえば、**contoso web, contoso api** のようにします。
-8. 
-  **[Domain Join User Name]\(ドメイン参加ユーザー名\)** で、VM をマネージド ドメインに参加させるために使用する、マネージド ドメイン上のユーザー アカウント名を指定します。
+7. **[VM List]\(VM 一覧\)** フィールドで、マネージド ドメインに参加させる既存の仮想マシンの名前を指定します。 コンマを使用して、個々の VM の名前を区切ります。 たとえば、**contoso web, contoso api** のようにします。
+8. **[Domain Join User Name]\(ドメイン参加ユーザー名\)** で、VM をマネージド ドメインに参加させるために使用する、マネージド ドメイン上のユーザー アカウント名を指定します。
 9. **[Domain Join User Password]\(ドメイン参加ユーザー パスワード\)** で、"domainUsername" パラメーターで参照されるドメイン ユーザー アカウントのパスワードを指定します。
-10. 
-  **[ドメイン FQDN]** で、マネージド ドメインの DNS ドメイン名を指定します。
+10. **[ドメイン FQDN]** で、マネージド ドメインの DNS ドメイン名を指定します。
 11. 省略可能: 仮想マシンを追加するカスタム OU への **OU パス**を指定できます。 このパラメーターの値を指定しない場合、仮想マシンはマネージド ドメイン上の既定の **[AAD DC Computers]\(AAD DC コンピューター\)** OU に追加されます。
 12. **[上記の使用条件に同意する]** をクリックします。
 13. **[購入]** をクリックして仮想マシンをプロビジョニングします。

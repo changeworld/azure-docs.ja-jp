@@ -11,14 +11,18 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: 5a772f8792c02139e45977e207b5be4bebc63a9c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a2dff4dd57bdb0b010bbb4568d796f1e197a728
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906328"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971503"
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>変更の保持と大きなファイルの操作
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Azure Machine Learning 実験サービスでは、さまざまな実行ターゲットを構成できます。 ターゲットは、ローカル (ローカル コンピューターやローカル コンピューター上の Docker コンテナーなど) の場合もあれば、 リモート (リモート コンピューター上の Docker コンテナーや HDInsight クラスターなど) の場合もあります。 詳細については、[Azure Machine Learning 実験実行サービスの概要](experimentation-service-configuration.md)に関する記事をご覧ください。 
 
 ターゲットで実行するには、まずプロジェクト フォルダーをそのコンピューティング ターゲットにコピーする必要があります。 このため、ローカルの一時フォルダーを使用するローカル実行でもこれを行う必要があります。 
@@ -48,6 +52,9 @@ Azure Machine Learning 実験サービスでは、さまざまな実行ターゲ
 * Training a model
 * データセットを作成する
 * モデル トレーニングの実行の一環として、グラフをイメージ ファイルとしてプロットする 
+
+>[!Note]
+> 実行時にフォルダーで追跡されるファイルの最大サイズは 512 MB です。 スクリプトによって、outputs フォルダーに 512 MB を超えるファイルが生成された場合、フォルダーでそのファイルは収集されません。 
 
 また、各実行の出力を比較し、前回の実行で生成された出力ファイル (モデルなど) を選択して、それを後続のタスク (スコア付けなど) で使用することもできます。
 

@@ -8,19 +8,18 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 9ff8c28a139d9a16d31a61b560ef7f5759d0a3f5
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 78e3bec0d00336ce7cedc1434bf6ad7c65435969
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35267732"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978184"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM Scale Sets 向けの Resource Manager テンプレートを使用した高度な自動スケール構成
 Virtual Machine Scale Sets では、パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいてスケールインおよびスケールアウトを行うことができます。 また、スケール アクションに対して電子メール通知や webhook 通知を構成することもできます。 このチュートリアルでは、これらすべてのオブジェクトを VM スケール セットで Resource Manager テンプレートを使用して構成する例を示します。
 
 > [!NOTE]
-> このチュートリアルでは VM スケール セットの手順について説明しますが、この情報は [Cloud Services](https://azure.microsoft.com/services/cloud-services/) や [App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) の自動スケールを設定する場合にも適用されます。
-> CPU などシンプルなパフォーマンス メトリックに基づいて VM スケール セットに単純なスケールイン/スケールアウトを設定する方法については、[Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) や [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) のドキュメントを参照してください。
+> このチュートリアルでは VM Scale Sets の手順について説明しますが、この情報は [Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)の自動スケーリングにも適用されます。CPU などシンプルなパフォーマンス メトリックに基づいて VM スケール セットに単純なスケールイン/スケールアウトを設定する方法については、[Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) や [Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) のドキュメントを参照してください。
 >
 >
 

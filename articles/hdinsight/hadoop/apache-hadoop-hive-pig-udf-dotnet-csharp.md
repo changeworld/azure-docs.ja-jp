@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 9a214aa51bcd4b7aab7a65cf2989edd9e9dd3dc6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ebc4c918745e273700a0efb54db4408bb702c75e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044893"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991370"
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>HDInsight の Hadoop の Hive と Pig ストリーミングでの C# ユーザー定義関数 (UDF) の使用
 
@@ -31,7 +31,7 @@ Hive と Pig では、両方とも、外部のアプリケーションにデー�
 
     * 必要なすべての IDE を使用します。 [Visual Studio](https://www.visualstudio.com/vs) 2015、2017、または [Visual Studio Code](https://code.visualstudio.com/) をお勧めします。 このドキュメントの手順では、Visual Studio 2017 を使用します。
 
-* .exe ファイルをクラスターにアップロードして Pig と Hive のジョブを実行する方法。 Visual Studio、Azure PowerShell、Azure CLI の Data Lake ツールをお勧めします。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、ファイルをアップロードし、サンプルの Hive クエリを実行します。
+* .exe ファイルをクラスターにアップロードして Pig と Hive のジョブを実行する方法。 Visual Studio、Azure PowerShell、Azure Classic CLI の Data Lake ツールをお勧めします。 このドキュメントの手順では、Visual Studio の Data Lake ツールを使用して、ファイルをアップロードし、サンプルの Hive クエリを実行します。
 
     Hive クエリと Pig ジョブを実行する他の方法については、次のドキュメントを参照してください。
 

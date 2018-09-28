@@ -1,25 +1,27 @@
 ---
-title: Video Indexer の分析情報を表示および編集する | Microsoft Docs
+title: Video Indexer の分析情報の表示と編集
+titlesuffix: Azure Cognitive Services
 description: このトピックでは、Video Indexer の分析情報を表示および編集する方法を示します。
 services: cognitive services
-documentationcenter: ''
 author: juliako
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/31/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 797c09d72402cfc1ee2524e7792cc1310a53fb1e
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: c9b229e2fb3297d724ec8de02bf54e9765689ab7
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399479"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984540"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>Video Indexer の分析情報の表示と編集
 
 このトピックでは、ビデオの Video Indexer 分析情報を表示および編集する方法を示します。
 
-1. [Video Indexer](https://api-portal.videoindexer.ai/) アカウントにサインインします。
+1. [Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
 2. Video Indexer の分析情報を作成するビデオを見つけます。 詳細については、「[ビデオ内の正確な場面を見つける](video-indexer-search.md)」を参照してください。
 3. **[再生]** を押します。
 

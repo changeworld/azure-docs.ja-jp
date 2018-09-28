@@ -2,22 +2,21 @@
 title: 'Azure Cosmos DB: SQL Node.js API、SDK、およびリソース | Microsoft Docs'
 description: リリース日、提供終了日、Azure Cosmos DB Node.js SDK の各バージョン間の変更など、SQL Node.js API と SDK に関するあらゆる詳細を提供します。
 services: cosmos-db
-author: rnagpal
-manager: kfile
+author: deborahc
 editor: cgronlun
 ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 5/3/2018
+ms.date: 09/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e19c1cb7b297d2537e969e0dd632dae3e1c3d211
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b6983b49135b5a8adbef1d0cfc5a407cb7b0c7ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594364"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960551"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Node.js SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -40,12 +39,16 @@ ms.locfileid: "39594364"
 |API ドキュメント  |  [JavaScript SDK リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |SDK のインストール手順  |  [インストール手順](https://github.com/Azure/azure-cosmos-js#installation)
 |SDK への参加 | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
-| サンプル | [Node.js コード サンプル](sql-api-nodejs-samples-preview.md)
-| 概要チュートリアル | [JavaScript SDK の開始](sql-api-nodejs-get-started-preview.md)
-| Web アプリ チュートリアル | [Azure Cosmos DB を使用した Node.js Web アプリケーションの作成](sql-api-nodejs-application-preview.md)
+| サンプル | [Node.js コード サンプル](sql-api-nodejs-samples.md)
+| 概要チュートリアル | [JavaScript SDK の開始](sql-api-nodejs-get-started.md)
+| Web アプリ チュートリアル | [Azure Cosmos DB を使用した Node.js Web アプリケーションの作成](sql-api-nodejs-application.md)
 | 現在サポートされているプラットフォーム | [Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/) - SDK バージョン 2.0.0 以上が必要です。<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> [Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> [Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="2.0.0"/>2.0.0</a>
+* JavaScript SDK の Version 2.0.0 の GA
+* マルチリー ジョンの書き込みのサポートが追加されました。
 
 ### <a name="2.0.0-3"/>2.0.0-3</a>
 * パブリック プレビュー用の JavaScript SDK のバージョン 2.0.0 の RC1。

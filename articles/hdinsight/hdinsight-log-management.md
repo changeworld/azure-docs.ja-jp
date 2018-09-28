@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: aab5be7f98f5fdf6e7304485c3d1fc5ddb7afdba
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 339d5d39c637369420e197acf65df802cefd5cb9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106919"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988494"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight クラスターのログを管理する
 
@@ -43,12 +43,13 @@ HDInsight クラスターのログ管理戦略作成の最初のステップで�
 * クラスターの状態、最後の状態変化の詳細を含む
 * マスター、コア、タスクの各ノードに指定されている HDInsight インスタンスの種類と数
 
-この最上位レベルの情報のほとんどは、Azure Portal を使って取得できます。  代わりに、Azure CLI を使って HDInsight クラスターに関する情報を取得することもできます。
+この最上位レベルの情報のほとんどは、Azure Portal を使って取得できます。  代わりに、Azure クラシック CLI を使って HDInsight クラスターに関する情報を取得することもできます。
 
 ```
     azure hdinsight cluster list
     azure hdinsight cluster show <ClusterName>
 ```
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 また、PowerShell を使ってこの情報を表示できます。  詳しくは、「[Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-powershell.md)」をご覧ください。
 

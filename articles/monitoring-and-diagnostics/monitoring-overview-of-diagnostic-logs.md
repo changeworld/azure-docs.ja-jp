@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 9d2a20ce681ea7e7c4ff2f9b492653e9d9a57b2b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 630c8e5f48ba475755c3c9ffe632fcba086437e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248168"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983118"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Azure リソースからのログ データの収集と使用
 
@@ -45,7 +45,7 @@ ms.locfileid: "39248168"
 ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたは Event Hubs 名前空間を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な RBAC アクセスを持っている必要があります。
 
 > [!NOTE]
->  現在、セキュリティで保護された仮想ネットワークの背後にあるストレージ アカウントにデータをアーカイブすることはできません。
+>  現在、セキュリティで保護された仮想ネットワークの背後にあるストレージ アカウントにネットワーク フロー ログをアーカイブすることはできません。
 
 > [!WARNING]
 > ストレージ アカウント内のログ データの形式は、2018 年 11 月 1 日より JSON Lines に変更されます。 [この記事では、この変更による影響と、新しい形式に対応するツールに更新する方法について説明します。](./monitor-diagnostic-logs-append-blobs.md) 
@@ -145,9 +145,9 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resour
 
 現在、Azure PowerShell を使用してテナント診断設定を構成することはできません。
 
-### <a name="enable-collection-of-resource-diagnostic-logs-via-azure-cli-20"></a>Azure CLI 2.0 を使用してリソース診断ログの収集を有効にする
+### <a name="enable-collection-of-resource-diagnostic-logs-via-the-azure-cli"></a>Azure CLI を使用してリソース診断ログの収集を有効にする
 
-Azure CLI 2.0 によるリソース診断ログの収集を有効にするには、[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使います。
+Azure CLI によるリソース診断ログの収集を有効にするには、[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使用します。
 
 ストレージ アカウントへの診断ログの保存を有効にするには:
 

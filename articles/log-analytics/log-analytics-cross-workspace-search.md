@@ -15,18 +15,18 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 75116e0ba50c3f195d528d33822af0c446acd5fe
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 716f96b7723a947c35eb54acd67f13261363fd38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143483"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972880"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Log Analytics でクロス リソースのログ検索を実行する  
 
 以前の Azure Log Analytics では、現在のワークスペース内からしかデータを分析することができず、サブスクリプション内で定義された複数のワークスペース間でクエリを実行する機能が制限されていました。  また、Application Insights を使用した Web ベースのアプリケーションから収集されたテレメトリ項目を、Application Insights または Visual Studio から直接検索することしかできませんでした。  またこれにより、運用データとアプリケーション データを一緒にネイティブ分析することが難しくなっていました。   
 
-現在は、複数の Log Analytics ワークスペース間だけでなく、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからのデータのクエリを実行できるようになりました。 これにより、システム全体のデータを確認できます。  これらのタイプのクエリは、Azure portal ではなく、[Log Analytics ページ (プレビュー)](log-analytics-log-search-portals.md#log-analytics-page-preview) でのみ実行できます。 1 回のクエリに含めることができるリソース (Log Analytics ワークスペースおよび Application Insights アプリ) の数は 100 個に制限されています。 
+現在は、複数の Log Analytics ワークスペース間だけでなく、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからのデータのクエリを実行できるようになりました。 これにより、システム全体のデータを確認できます。  これらの種類のクエリは、[Log Analytics](log-analytics-log-search-portals.md#log-analytics-page) でのみ行うことができます。 1 回のクエリに含めることができるリソース (Log Analytics ワークスペースおよび Application Insights アプリ) の数は 100 個に制限されています。 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Log Analytics ワークスペース間と Application Insights からのクエリ
 クエリ内の別のワークスペースを参照するには、[*ワークスペース*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace())識別子を使用します。Application Insights のアプリの場合は、[*アプリ*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())識別子を使用します。  

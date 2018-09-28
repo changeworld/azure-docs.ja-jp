@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/04/2018
+ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 391cc4ca4b34149aeda54a60bfe6f6949e5a379b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: febdb2e3ae4432c36ca839f81ba7a1d333df1a2f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697749"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952003"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack にアプリをデプロイする
 
@@ -30,7 +30,7 @@ ms.locfileid: "43697749"
 このチュートリアルでは、以下を実現するためのサンプル環境を作成します。
 
 > [!div class="checklist"]
-> * コード コミットに基づいて、Visual Studio Team Services (VSTS) リポジトリに対して新しいビルドを開始します。
+> * コード コミットに基づいて、Azure DevOps Services リポジトリに対して新しいビルドを開始します。
 > * ユーザー受け入れテストを目的として、アプリをグローバル Azure に自動的にデプロイします。
 > * コードがテストに合格した時点で自動的にアプリを Azure Stack にデプロイします。
 
@@ -47,6 +47,12 @@ CI と CD については、次の記事をご覧ください。
 
 * [継続的インテグレーションとは](https://www.visualstudio.com/learn/what-is-continuous-integration/)
 * [継続的デリバリーとは](https://www.visualstudio.com/learn/what-is-continuous-delivery/)
+
+> [!Tip]  
+> ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack は Azure の拡張機能です。 Azure Stack は、オンプレミスの環境にクラウド コンピューティングの俊敏性とイノベーションを提供します。これにより、どこでもハイブリッド アプリをビルドしてデプロイできる唯一のハイブリッド クラウドが実現されます。  
+> 
+> ホワイト ペーパー「[Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars)」では、ハイブリッドアプリケーションの設計、デプロイ、および操作に関するソフトウェア品質の重要な要素 (配置、スケーラビリティ、可用性、回復性、管理の容易性、セキュリティ) について概説しています。 これらの設計の考慮事項は、ハイブリッド アプリケーションの設計を最適化したり、運用環境での課題を最小限に抑えたりするのに役立ちます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -81,30 +87,30 @@ CI と CD については、次の記事をご覧ください。
  * Azure Stack に[プラン/オファー](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview)を作成します。
  * Azure Stack に[テナント サブスクリプション](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm)を作成します。
  * テナント サブスクリプションに Web アプリを作成します。 後で使用できるように新しい Web アプリの URL を書き留めておきます。
- * テナント サブスクリプションに VSTS 仮想マシンをデプロイします。
+ * テナント サブスクリプションに Windows Server 2012 仮想マシンをデプロイします。 このサーバーはビルド サーバーとして、Azure DevOps Services を実行するために使用します。
 * 仮想マシン (VM) 用に .NET 3.5 を含んだ Windows Server 2016 イメージを用意します。 この VM は、プライベート ビルド エージェントとして Azure Stack に構築されます。
 
 ### <a name="developer-tool-requirements"></a>開発者ツールの要件
 
-* [VSTS ワークスペース](https://docs.microsoft.com/vsts/repos/tfvc/create-work-workspaces)を作成します。 サインアップ プロセスによって **MyFirstProject** という名前のプロジェクトが作成されます。
-* [Visual Studio 2017 をインストール](https://docs.microsoft.com/visualstudio/install/install-visual-studio)して [VSTS にサインイン](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services)します。
+* [Azure DevOps サービス ワークスペース](https://docs.microsoft.com/azure/devops/repos/tfvc/create-work-workspaces)を作成します。 サインアップ プロセスによって **MyFirstProject** という名前のプロジェクトが作成されます。
+* [Visual Studio 2017 をインストール](https://docs.microsoft.com/visualstudio/install/install-visual-studio)して、[Azure DevOps Services にサインイン](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services)します。
 * プロジェクトに接続し、[ローカルに複製](https://www.visualstudio.com/docs/git/gitquickstart)します。
 
  > [!Note]
  > Azure Stack 環境には、Windows Server と SQL Server を実行する適切なイメージがシンジケート化されている必要があります。 また、App Service がデプロイされている必要があります。
 
-## <a name="prepare-the-private-build-and-release-agent-for-visual-studio-team-services-integration"></a>Visual Studio Team Services 統合用にプライベート ビルドとリリース エージェントを準備する
+## <a name="prepare-the-private-azure-pipelines-agent-for-azure-devops-services-integration"></a>Azure DevOps Services 統合のためのプライベート Azure Pipelines エージェントを準備する
 
 ### <a name="prerequisites"></a>前提条件
 
-Visual Studio Team Services (VSTS) では、サービス プリンシパルを使用して、Azure Resource Manager に対する認証が行われます。 Azure Stack サブスクリプションにリソースをプロビジョニングするためには、VSTS に**共同作成者**ロールが必要です。
+Azure DevOps Services では、サービス プリンシパルを使用して、Azure Resource Manager に対する認証が行われます。 Azure Stack サブスクリプションにリソースをプロビジョニングするためには、Azure DevOps Services に**共同作成者**ロールが必要です。
 
 認証を構成するための要件を次の手順で説明します。
 
 1. サービス プリンシパルを作成するか、既存のサービス プリンシパルを使用します。
 2. サービス プリンシパルの認証キーを作成します。
 3. サービス プリンシパル名 (SPN) を共同作成者ロールに含めることができるように、ロールベースのアクセス制御を使用して、Azure Stack サブスクリプションを検証します。
-4. Azure Stack エンドポイントと SPN 情報を使用して、VSTS での新しいサービス定義を作成します。
+4. Azure Stack エンドポイントと SPN 情報を使用して、Azure DevOps Services での新しいサービス定義を作成します。
 
 ### <a name="create-a-service-principal"></a>サービス プリンシパルを作成する
 
@@ -122,7 +128,7 @@ Visual Studio Team Services (VSTS) では、サービス プリンシパルを�
 
     ![アプリケーションを選択](media\azure-stack-solution-hybrid-pipeline\000_01.png)
 
-2. **[アプリケーション ID]** の値をメモします。 この値は、VSTS でサービス エンドポイントを構成するときに使用します。
+2. **[アプリケーション ID]** の値をメモします。 この値は、Azure DevOps Services でサービス エンドポイントを構成するときに使用します。
 
     ![アプリケーション ID](media\azure-stack-solution-hybrid-pipeline\000_02.png)
 
@@ -144,7 +150,7 @@ Visual Studio Team Services (VSTS) では、サービス プリンシパルを�
 
 ### <a name="get-the-tenant-id"></a>テナント ID を取得する
 
-VSTS には、サービス エンドポイント構成の一部として、Azure Stack スタンプのデプロイ先の AAD ディレクトリに対応する**テナント ID** が必要です。 テナント ID を取得するには次の手順に従います。
+Azure DevOps Services には、サービス エンドポイント構成の一部として、Azure Stack スタンプのデプロイ先の AAD ディレクトリに対応する**テナント ID** が必要です。 テナント ID を取得するには次の手順に従います。
 
 1. **[Azure Active Directory]** を選択します。
 
@@ -194,20 +200,21 @@ VSTS には、サービス エンドポイント構成の一部として、Azure
 
 ‎Azure のアクセス権は、そのロールベースのアクセス制御 (RBAC) によって詳細に管理することができます。 それぞれの職務を遂行するユーザーに必要なアクセスのレベルを RBAC を使用して制御することができます。 ロールベースのアクセス制御の詳細については、[Azure サブスクリプション リソースへのアクセスの管理](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json)に関するページをご覧ください。
 
-### <a name="vsts-agent-pools"></a>VSTS エージェント プール
+### <a name="azure-devops-services-agent-pools"></a>Azure DevOps Services のエージェント プール
 
-各エージェントを個別に管理するのではなく、エージェント プールにまとめて整理することができます。 エージェント プールでは、そのプール内のすべてのエージェントに対して共有境界が定義されています。 VSTS では、エージェント プールのスコープは VSTS アカウントに制限されます。つまり、チーム プロジェクトの枠を越えてエージェント プールを共有できます。 エージェント プールの詳細については、[エージェント プールとキューの作成](https://docs.microsoft.com/vsts/build-release/concepts/agents/pools-queues?view=vsts)に関するページをご覧ください。
+各エージェントを個別に管理するのではなく、エージェント プールにまとめて整理することができます。 エージェント プールでは、そのプール内のすべてのエージェントに対して共有境界が定義されています。 Azure DevOps Services では、エージェント プールの対象範囲は、Azure DevOps Services 組織になります。これは、プロジェクト間でエージェント プールを共有できることを意味します。 エージェント プールの詳細については、[エージェント プールとキューの作成](https://docs.microsoft.com/azure/devops/pipelines/agents/pools-queues?view=vsts)に関するページをご覧ください。
 
 ### <a name="add-a-personal-access-token-pat-for-azure-stack"></a>Azure Stack の個人用アクセス トークン (PAT) を追加する
 
-VSTS にアクセスするための個人用アクセス トークンを作成します。
+Azure DevOps Services にアクセスするための個人用アクセス トークンを作成します。
 
-1. VSTS アカウントにサインインし、ご自分のアカウント プロファイル名を選択します。
+1. Azure DevOps Services 組織にサインインし、組織のプロファイル名を選択します。
+
 2. **[セキュリティの管理]** を選択して、トークン作成ページにアクセスします。
 
     ![ユーザーのサインイン](media\azure-stack-solution-hybrid-pipeline\000_17.png)
 
-    ![チーム プロジェクトの選択](media\azure-stack-solution-hybrid-pipeline\000_18.png)
+    ![プロジェクトの選択](media\azure-stack-solution-hybrid-pipeline\000_18.png)
 
     ![個人用アクセス トークンの追加](media\azure-stack-solution-hybrid-pipeline\000_18a.png)
 
@@ -220,7 +227,7 @@ VSTS にアクセスするための個人用アクセス トークンを作成�
 
     ![個人用アクセス トークン](media\azure-stack-solution-hybrid-pipeline\000_19.png)
 
-### <a name="install-the-vsts-build-agent-on-the-azure-stack-hosted-build-server"></a>Azure Stack でホストされているビルド サーバーに VSTS ビルド エージェントをインストールする
+### <a name="install-the-azure-devops-services-build-agent-on-the-azure-stack-hosted-build-server"></a>Azure Stack でホストされているビルド サーバーに Azure DevOps Services ビルド エージェントをインストールする
 
 1. Azure Stack ホストにデプロイしたビルド サーバーに接続します。
 2. ご自身の個人用アクセス トークン (PAT) を使用して、ビルド エージェントをダウンロードし、サービスとしてデプロイします。その後、VM 管理者アカウントとして実行します。
@@ -237,17 +244,17 @@ VSTS にアクセスするための個人用アクセス トークンを作成�
 
     ![ビルド エージェントのフォルダーの更新](media\azure-stack-solution-hybrid-pipeline\009_token_file.png)
 
-    VSTS フォルダーにエージェントが確認できます。
+    Azure DevOps Services フォルダー内のエージェントを確認できます。
 
 ## <a name="endpoint-creation-permissions"></a>エンドポイント作成のアクセス許可
 
-Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成することにより、Azure サービス アプリを Azure Stack にデプロイすることができます。 VSTS がビルド エージェントに接続し、エージェントが Azure Stack に接続します。
+Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成することにより、Azure サービス アプリを Azure Stack にデプロイすることができます。 Azure DevOps Services がビルド エージェントに接続し、そのエージェントが Azure Stack に接続します。
 
 ![VSTO における NorthwindCloud サンプル アプリ](media\azure-stack-solution-hybrid-pipeline\012_securityendpoints.png)
 
 1. VSTO にサインインし、アプリの設定ページに移動します。
 2. **[設定]** の **[セキュリティ]** を選択します。
-3. **[VSTS グループ]** の **[エンドポイント作成者]** を選択します。
+3. **[Azure DevOps Services グループ]** で、**[エンドポイント作成者]** を選択します。
 
     ![NorthwindCloud のエンドポイント作成者](media\azure-stack-solution-hybrid-pipeline\013_endpoint_creators.png)
 
@@ -257,7 +264,7 @@ Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成�
 
 5. **[ユーザーとグループの追加]** にユーザー名を入力し、そのユーザーをユーザー一覧から選択します。
 6. **[変更の保存]** を選択します。
-7. **[VSTS グループ]** の一覧で、**[エンドポイント管理者]** を選択します。
+7. **[Azure DevOps Services グループ]** の一覧で、**[エンドポイント管理者]** を選択します。
 
     ![NorthwindCloud のエンドポイント管理者](media\azure-stack-solution-hybrid-pipeline\015_save_endpoint.png)
 
@@ -265,6 +272,7 @@ Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成�
 9. **[ユーザーとグループの追加]** にユーザー名を入力し、そのユーザーをユーザー一覧から選択します。
 10. **[変更の保存]** を選択します。
 
+これでエンドポイント情報が存在するので、Azure DevOps Services から Azure Stack への接続を使用する準備ができました。 Azure Stack のビルド エージェントは、Azure DevOps Services から命令を受け取った後、Azure Stack との通信のためのエンドポイント情報を伝達します。
 ## <a name="create-an-azure-stack-endpoint"></a>Azure Stack エンドポイントを作成する
 
 「[Create an Azure Resource Manager service connection with an existing service principal (既存のサービス プリンシパルで Azure Resource Manager サービス接続を作成する)](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal)」の記事の手順に従い、既存のサービス プリンシパルでサービス接続を作成します。次のマッピングを使用してください。
@@ -285,18 +293,18 @@ Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成�
 
 チュートリアルのこの部分では、次の内容について説明します。
 
-* コードを VSTS プロジェクトに追加する。
+* Azure DevOps Services プロジェクトにコードを追加する。
 * 自己完結型 Web アプリ デプロイを作成する。
 * 継続的配置プロセスを構成する。
 
 > [!Note]
  > Azure Stack 環境には、Windows Server と SQL Server を実行する適切なイメージがシンジケート化されている必要があります。 また、App Service がデプロイされている必要があります。 Azure Stack オペレーターの要件については、App Service のドキュメントの「前提条件」セクションをご覧ください。
 
-ハイブリッド CI/CD は、アプリケーション コードとインフラストラクチャ コードの両方に適用できます。 VSTS から [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/)を Web アプリ コードのように使用して両方のクラウドに対してデプロイします。
+ハイブリッド CI/CD は、アプリケーション コードとインフラストラクチャ コードの両方に適用できます。 Azure DevOps Services から [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/)を Web アプリ コードのように使用して、両方のクラウドにデプロイします。
 
-### <a name="add-code-to-a-vsts-project"></a>コードを VSTS プロジェクトに追加する
+### <a name="add-code-to-an-azure-devops-services-project"></a>Azure DevOps Services プロジェクトにコードを追加する
 
-1. Azure Stack でのプロジェクト作成権限が付与されているアカウントを使用して、VSTS にサインインします。 次のキャプチャ画面は、HybridCICD プロジェクトへの接続方法を示しています。
+1. Azure Stack でプロジェクト作成特権を持っている組織で、Azure DevOps Services にサインインします。 次のキャプチャ画面は、HybridCICD プロジェクトへの接続方法を示しています。
 
     ![プロジェクトに接続](media\azure-stack-solution-hybrid-pipeline\017_connect_to_project.png)
 
@@ -310,37 +318,38 @@ Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成�
 
     ![Runtimeidentifier の構成](media\azure-stack-solution-hybrid-pipeline\019_runtimeidentifer.png)
 
-2. チーム エクスプローラーを使用して、コードを VSTS にチェックインします。
+2. チーム エクスプローラーを使用して、コードを Azure DevOps Services にチェックインします。
 
-3. アプリケーション コードが Visual Studio Team Services にチェックインされたことを確認します。
+3. アプリケーション コードが Azure DevOps Services にチェックインされたことを確認します。
 
-### <a name="create-the-build-definition"></a>ビルド定義を作成する
+### <a name="create-the-build-pipeline"></a>ビルド パイプラインを作成する
 
-1. ビルド定義を作成できるアカウントで VSTS にサインインします。
-2. プロジェクトの **[Build Web Application]\(Web アプリケーションのビルド\)** ページに移動します。
+1. ビルド パイプラインを作成できる組織で、Azure DevOps Services にサインインします。
+
+2. プロジェクトの **[Build Web Applicaiton]\(Web アプリケーションのビルド\)** ページに移動します。
 
 3. **[引数]** に **-r win10-x64** コードを追加します。 これは、.Net Core を使用して自己完結型のデプロイをトリガーするために必要です。
 
-    ![ビルド定義の引数を追加](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
+    ![ビルド パイプラインの引数の追加](media\azure-stack-solution-hybrid-pipeline\020_publish_additions.png)
 
 4. ビルドを実行します。 [自己完結型のデプロイ ビルド](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd)のプロセスにより、Azure および Azure Stack 上で実行できる成果物が発行されます。
 
 ### <a name="use-an-azure-hosted-build-agent"></a>Azure ホスト ビルド エージェントを使用する
 
-Web アプリをビルドしてデプロイする場合、VSTS でホスト ビルド エージェントを使用すると便利です。 エージェントのメンテナンスやアップグレードは Microsoft Azure によって自動的に実施されるので、中断のない継続的な開発サイクルが実現します。
+Web アプリをビルドしてデプロイする場合、Azure DevOps Services でホスト ビルド エージェントを使用すると便利です。 エージェントのメンテナンスやアップグレードは Microsoft Azure によって自動的に実施されるので、中断のない継続的な開発サイクルが実現します。
 
 ### <a name="configure-the-continuous-deployment-cd-process"></a>継続的配置 (CD) プロセスを構成する
 
-Visual Studio Team Services (VSTS) および Team Foundation Server (TFS) が提供するパイプラインは自由に構成でき、管理性にも優れ、開発、ステージング、品質保証 (QA)、運用など、さまざまな環境へのリリースに使用できます。 このプロセスの一環として、アプリケーション ライフ サイクルの特定のステージで承認を要求することもできます。
+Azure DevOps Services および Team Foundation Server (TFS) が提供するパイプラインは自由に構成でき、管理性にも優れ、開発、ステージング、品質保証 (QA)、運用など、さまざまな環境へのリリースに使用できます。 このプロセスの一環として、アプリケーション ライフ サイクルの特定のステージで承認を要求することもできます。
 
-### <a name="create-release-definition"></a>リリース定義の作成
+### <a name="create-release-pipeline"></a>リリース パイプラインを作成する
 
-アプリケーション ビルド プロセスの最後の手順は、リリース定義の作成です。 このリリース定義を使用してリリースを作成し、ビルドをデプロイします。
+アプリケーション ビルド プロセスの最後の手順は、リリース パイプラインの作成です。 このリリース パイプラインを使用してリリースを作成し、ビルドをデプロイします。
 
-1. VSTS にサインインして、プロジェクトの **[ビルドとリリース]** に移動します。
+1. Azure DevOps Services サービスにサインインし、プロジェクトの **Azure Pipelines** に移動します。
 2. **[リリース]** タブで **\[ + ]** を選択し、**[リリース定義の作成]** を選択します。
 
-   ![リリース定義の作成](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
+   ![リリース パイプラインを作成する](media\azure-stack-solution-hybrid-pipeline\021a_releasedef.png)
 
 3. **[テンプレートの選択]** で **[Azure App Service の配置]** を選択し、**[適用]** を選択します。
 
@@ -427,11 +436,11 @@ Visual Studio Team Services (VSTS) および Team Foundation Server (TFS) が提
 23. すべての変更を保存します。
 
 > [!Note]
-> リリース タスクの一部の設定は、テンプレートからリリース定義を作成したときに、[環境変数](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables)として自動的に定義されている可能性があります。 これらの設定は、タスクの設定では変更できません。 ただし親環境の項目では、これらの設定を編集することができます。
+> リリース タスクの一部の設定は、テンプレートからリリース パイプラインを作成したときに、[環境変数](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts#custom-variables)として自動的に定義されている可能性があります。 これらの設定は、タスクの設定では変更できません。 ただし親環境の項目では、これらの設定を編集することができます。
 
 ## <a name="create-a-release"></a>リリースを作成する
 
-リリース定義への変更が完了したら、デプロイを開始できます。 これを行うには、リリース定義からリリースを作成します。 リリースは自動的に作成される場合があります。たとえば、継続的配置トリガーはリリース定義で設定されています。 つまり、ソース コードを変更すると、新しいビルドが起動され、これにより新しいリリースが起動されます。 ただし、このセクションでは、新しいリリースを手動で作成します。
+リリース パイプラインに対する変更が完了したら、デプロイを開始できます。 これを行うには、リリース パイプラインからリリースを作成します。 リリースは自動的に作成される場合があります。たとえば、継続的配置トリガーは、リリース パイプラインで設定されています。 つまり、ソース コードを変更すると、新しいビルドが起動され、これにより新しいリリースが起動されます。 ただし、このセクションでは、新しいリリースを手動で作成します。
 
 1. **[パイプライン]** タブの **[リリース]** ボックスの一覧を開いて、**[リリースの作成]** を選択します。
 

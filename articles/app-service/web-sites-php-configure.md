@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 028a8f35b6ffc4b429725e91045e70112f2bdabd
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 39c40482017ae0c0dedcfb1b65ff3767c4e45169
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42140133"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999190"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Azure App Service Web Apps での PHP の構成方法
 
@@ -58,9 +58,9 @@ PHP 7.0 および PHP 7.2 バージョンも使用できますが、既定では
 
         PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
 
-### <a name="azure-cli-20-linux-mac-windows"></a>Azure CLI 2.0 (Linux、Mac、Windows)
+### <a name="azure-cli"></a>Azure CLI 
 
-Azure コマンド ライン インターフェイスを使用するには、コンピューターに [Azure CLI 2.0 をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)する必要があります。
+Azure コマンド ライン インターフェイスを使用するには、コンピューターに [Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) する必要があります。
 
 1. ターミナルを開いてアカウントにログインします。
 

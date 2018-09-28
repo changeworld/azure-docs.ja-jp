@@ -1,6 +1,6 @@
 ---
-title: Azure 仮想ネットワーク ゲートウェイと接続のトラブルシューティング - Azure CLI 2.0 | Microsoft Docs
-description: このページでは Azure Network Watcher を使用して Azure CLI 2.0 のトラブルシューティングを行う方法を説明します。
+title: Azure 仮想ネットワーク ゲートウェイと接続のトラブルシューティング - Azure CLI | Microsoft Docs
+description: このページでは Azure Network Watcher を使用して Azure CLI のトラブルシューティングを行う方法を説明する
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 5f843b42a108968e2fbefacddcd22f331a04691e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5a8ac32f43ecadb8908582fa853fc3f2bec7ac55
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091103"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970993"
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli-20"></a>Azure Network Watcher Azure CLI 2.0 を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Azure Network Watcher Azure CLI を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング
 
 > [!div class="op_single_selector"]
 > - [ポータル](diagnose-communication-problem-between-networks.md)
@@ -31,9 +31,7 @@ ms.locfileid: "39091103"
 
 Network Watcher は、Azure 内のネットワーク リソースの把握に関する多くの機能を提供します。 これらの機能の 1 つが、リソースのトラブルシューティングです。 リソースのトラブルシューティングは、ポータル、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を検査し、その結果を返します。
 
-この記事では、Azure CLI 2.0 を使用します。Azure CLI 2.0 は、Resource Manager デプロイメント モデルを対象とする次世代 CLI であり、Windows、Mac、Linux で利用できます。
-
-この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンドライン インターフェイス (Azure CLI) をインストール](https://docs.microsoft.com/cli/azure/install-az-cli2)する必要があります。
+この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンドライン インターフェイス (CLI) をインストール](/cli/azure/install-azure-cli)する必要があります。
 
 ## <a name="before-you-begin"></a>開始する前に
 

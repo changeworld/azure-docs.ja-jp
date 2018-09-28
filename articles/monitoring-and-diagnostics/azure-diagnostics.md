@@ -6,21 +6,21 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: b00d774ec59755288b8660d238c7b8dfc9a89eab
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ef1422db799db6d635ad9f03908e3a34f312e408
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089895"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974240"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Azure 診断拡張機能とは何か
-Azure 診断拡張機能は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内のエージェントです。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、Azure クラウド サービス (クラシック) の Web ロールおよび Worker ロール、仮想マシン、仮想マシン スケール セット、および Service Fabric となっています。 他の Azure サービスでは、異なる診断方法を使用します。 「[Azure Monitor の概要 ](monitoring-overview.md)」を参照してください。 
+Azure 診断拡張機能は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内のエージェントです。 さまざまなソースで診断拡張機能を使用することができます。 現時点でのサポート対象は、Azure クラウド サービス (クラシック) の Web ロールおよび Worker ロール、仮想マシン、仮想マシン スケール セット、および Service Fabric となっています。 他の Azure サービスでは、異なる診断方法を使用します。 「[Azure Monitor の概要 ](monitoring-overview.md)」を参照してください。
 
 ## <a name="linux-agent"></a>Linux エージェント
-Linux を実行する仮想マシンには、[Linux 版の拡張機能](../virtual-machines/linux/diagnostic-extension.md)をご利用いただけます。 収集される統計情報と動作は、Windows 版とは異なります。 
+Linux を実行する仮想マシンには、[Linux 版の拡張機能](../virtual-machines/linux/diagnostic-extension.md)をご利用いただけます。 収集される統計情報と動作は、Windows 版とは異なります。
 
 ## <a name="data-you-can-collect"></a>収集可能なデータ
 Azure 診断拡張機能では、次の種類のデータを収集できます。
@@ -37,13 +37,20 @@ Azure 診断拡張機能では、次の種類のデータを収集できます�
 | カスタム エラー ログ |アプリケーションまたはサービスで作成されたログ |
 | Azure 診断インフラストラクチャ ログ |診断自体に関する情報 |
 
-(1) ETW プロバイダーの一覧を取得するには、情報を収集するコンピューターのコンソール ウィンドウで `c:\Windows\System32\logman.exe query providers` を実行します。 
+(1) ETW プロバイダーの一覧を取得するには、情報を収集するコンピューターのコンソール ウィンドウで `c:\Windows\System32\logman.exe query providers` を実行します。
 
 ## <a name="data-storage"></a>データ ストレージ
-この拡張機能では、指定した [Azure Storage アカウント](azure-diagnostics-storage.md)にそのデータが格納されます。 
+この拡張機能では、指定した [Azure Storage アカウント](azure-diagnostics-storage.md)にそのデータが格納されます。
 
-[Application Insights](../application-insights/app-insights-cloudservices.md) に送信することもできます。 [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) にストリーム配信するという選択肢もあります。その場合、後で Azure 以外の監視サービスに送信できます。 
+[Application Insights](../application-insights/app-insights-cloudservices.md) に送信することもできます。 [Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) にストリーム配信するという選択肢もあります。その場合、後で Azure 以外の監視サービスに送信できます。
 
+### <a name="azure-monitor"></a>Azure Monitor
+Azure Monitor にデータを送信することもできます。 現時点では、このシンクはパフォーマンス カウンターにのみ適用されます。 これにより、VM、VMSS、またはクラウド サービスで収集されたパフォーマンス カウンターを Azure Monitor にカスタム メトリックとして送信できるようになります。 Azure Monitor シンクは以下をサポートします。
+* [Azure Monitor メトリック API](https://docs.microsoft.com/rest/api/monitor/) を使用して、Azure Monitor に送信されたすべてのパフォーマンス カウンターを取得します。
+* Azure Monitor の新しい[統合アラート エクスペリエンス](monitoring-overview-unified-alerts.md)を介して Azure Monitor に送信されたすべてのパフォーマンス カウンターに関して警告します
+* パフォーマンス カウンターでワイルドカード演算子をメトリックの "Instance" ディメンションとして扱います。  たとえば、"LogicalDisk(\*)/DiskWrites/sec" カウンターを収集した場合、"Instance" ディメンションでフィルターして分割し、VM 上の各論理ディスクのディスク書き込み回数/秒をプロットまたはアラートすることができます (C:、D: など)。
+
+このシンクを構成する方法については、[Azure 診断スキーマのドキュメント](azure-diagnostics-schema-1dot3-and-later.md)を参照してください。
 
 ## <a name="versioning-and-configuration-schema"></a>バージョン管理と構成スキーマ
 [Azure 診断のバージョン履歴とスキーマ](azure-diagnostics-versioning-history.md)に関するページを参照してください。

@@ -1,20 +1,21 @@
 ---
-title: Azure に接続された Video Indexer アカウントを作成する | Microsoft Docs
-description: この記事では、Azure に接続された Video Indexer アカウントを作成する方法について説明します。
+title: Azure Portal で Video Indexer アカウントを作成する
+titlesuffix: Azure Cognitive Services
+description: この記事では、Azure Portal で Video Indexer アカウントを作成する方法について説明します。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: video-indexer
+ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: juliako
-ms.openlocfilehash: c598fdae40b4552e1d4dc29b8558d82d0830160a
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 8b8aa3e2f7a461c13cc73270863498283f02f740
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841842"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983151"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Azure に接続された Video Indexer アカウントを作成する
 
@@ -52,16 +53,18 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
 
 ## <a name="connect-to-azure"></a>Azure への接続
 
-1. [https://www.videoindexer.ai/](https://www.videoindexer.ai/) にサインインし、**[Azure への接続]** ボタンをクリックします。
+1. [Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
+
+2. **[Azure への接続]** ボタンをクリックします。
 
     ![Azure への接続](./media/create-account/connect-to-azure.png)
 
-2. サブスクリプション一覧が表示されたら、使用するサブスクリプションを選択します。 
+3. サブスクリプション一覧が表示されたら、使用するサブスクリプションを選択します。 
 
     ![Video Indexer を Azure に接続する](./media/create-account/connect-vi-to-azure-subscription.png)
 
-3. サポートされている場所 (米国西部 2、北ヨーロッパ、東アジア) から Azure リージョンを選択します。
-4. **[Azure Media Services アカウント]** で、次のいずれかのオプションを選択します。
+4. サポートされている場所 (米国西部 2、北ヨーロッパ、東アジア) から Azure リージョンを選択します。
+5. **[Azure Media Services アカウント]** で、次のいずれかのオプションを選択します。
 
     * 新しい Media Services アカウントを作成するには、**[新規リソース グループの作成]** を選択します。 リソース グループの名前を入力します。
 
@@ -85,13 +88,13 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
         |アプリケーション ID|指定済みの Media Services アカウントのアクセス許可を備えた Azure AD アプリケーション ID。 詳細については、[サービス プリンシパルの認証の使用](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)に関するページを参照してください。|
         |アプリケーション キー|詳細については、[サービス プリンシパルの認証の使用](../../media-services/previous/media-services-portal-get-started-with-aad.md#service-principal-authentication)に関するページを参照してください。|
 
-5. 完了したら、**[接続]** を選択します。 この操作が完了するまでに数分かかる場合があります。 
+6. 完了したら、**[接続]** を選択します。 この操作が完了するまでに数分かかる場合があります。 
 
     Azure への接続が完了すると、新しい Video Indexer アカウントがアカウント一覧に表示されます。
 
     ![新しいアカウント](./media/create-account/new-account.png)
 
-6. 新しいアカウントを表示します。 
+7. 新しいアカウントを表示します。 
 
     ![Video Indexer アカウント](./media/create-account/vi-account.png)
 

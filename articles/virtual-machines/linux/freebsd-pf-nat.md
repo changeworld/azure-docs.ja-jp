@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 42312522381529075f544a6c277f66a4ef1982d2
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 8400fa12e8776834f71740f809df18753291601f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30904255"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992311"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>FreeBSD のパケット フィルターを使用してAzure 内にセキュア ファイアウォールを作成する方法
 この記事では、一般的な Web サーバー シナリオで、Azure Resource Manager テンプレートを通して FreeBSD の パケット フィルターを使用することで、NAT ファイアウォールをデプロイする方法について説明します。
@@ -30,12 +30,12 @@ PF (パケット フィルター、pf とも表記します) は、BSD ライセ
 
 ## <a name="get-started"></a>作業開始
 Web サーバー用のクラウドにセキュア ファイアウォールを設定することに関心があるのであれば、今すぐ始めましょう。 Azure Resource Manager テンプレートで使用されているスクリプトを適用して、ネットワーク トポロジを設定することもできます。
-Azure Resource Manager テンプレートは、PF を使用して NAT/リダイレクトを実行する 1 台の FreeBSD 仮想マシンと、Nginx Web サーバーがインストールされ構成されている 2 台の FreeBSD 仮想マシンをセットアップします。 NAT/リダイレクト仮想マシンは、2 台の Web サーバーのエグレス トラフィックに対する NAT の実行に加え、HTTP 要求をインターセプトして、ラウンド ロビン方式で 2 つの Web サーバーにリダイレクトします。 VNet はプライベートなルーティング不能 IP アドレス空間 10.0.0.2/24 を使用します。テンプレートのパラメーターは変更することができます。 Azure Resource Manager テンプレートは、VNet 全体のルート テーブルを定義することもできます。これは、宛先 IP アドレスに基づいて Azure の既定のルートを上書きするために使用される個別のルートのコレクションです。 
+Azure Resource Manager テンプレートは、PF を使用して NAT/リダイレクトを実行する 1 台の FreeBSD 仮想マシンと、Nginx Web サーバーがインストールされ構成されている 2 台の FreeBSD 仮想マシンをセットアップします。 NAT/リダイレクト仮想マシンは、2 台の Web サーバーのエグレス トラフィックに対する NAT の実行に加え、HTTP 要求をインターセプトして、ラウンド ロビン方式で 2 つの Web サーバーにリダイレクトします。 VNet はプライベートなルーティング不能 IP アドレス空間 10.0.0.2/24 を使用します。テンプレートのパラメーターは変更することができます。 Azure Resource Manager テンプレートは、VNet 全体のルート テーブルを定義することもできます。これは、宛先 IP アドレスに基づいて Azure の既定のルートをオーバーライドするために使用される個別のルートのコレクションです。 
 
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Azure CLI を使用してデプロイする
-最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `West US` の場所に作成します。
+最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、`myResourceGroup` という名前のリソース グループを `West US` の場所に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location westus

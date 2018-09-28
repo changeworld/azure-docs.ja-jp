@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: juluk
-ms.openlocfilehash: 4b7e4302bba2efed12e19043da1f592bed12a2fd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 0b3616a723e793ab1ce8d7bcca1f53ca10ec4f96
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608884"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970667"
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell の Bash のクイックスタート
 
@@ -36,7 +36,7 @@ ms.locfileid: "34608884"
 3. [Create storage]\(ストレージの作成\) を選択します。
 
 > [!TIP]
-> Azure CLI 2.0 では、ユーザーの認証が各セッションで自動的に行われます。
+> Azure CLI では、セッションごとにユーザー認証が自動的に行われます。
 
 ### <a name="select-the-bash-environment"></a>Bash 環境を選ぶ
 シェル ウィンドウの左側にある環境ドロップダウンで [`Bash`] が選択されていることを確認します。 <br>
@@ -63,14 +63,14 @@ az group create --location westus --name MyRG
 ```
 
 ### <a name="create-a-linux-vm"></a>Linux VM の作成
-新しいリソース グループに Ubuntu VM を作成します。 Azure CLI 2.0 によって SSH キーが作成され、そのキーを使って VM が設定されます。 <br>
+新しいリソース グループに Ubuntu VM を作成します。 Azure CLI によって SSH キーが作成され、キーが VM に設定されます。 <br>
 
 ```azurecli-interactive
 az vm create -n myVM -g MyRG --image UbuntuLTS --generate-ssh-keys
 ```
 
 > [!NOTE]
-> `--generate-ssh-keys` を使用すると、Azure CLI 2.0 によって VM と `$Home` ディレクトリに公開キーと秘密キーが作成され、設定されます。 既定では、キーは Cloud Shell で `/home/<user>/.ssh/id_rsa` と `/home/<user>/.ssh/id_rsa.pub` に配置されます。 `.ssh` フォルダーは、`$Home` の永続化に使用される、接続したファイル共有の 5 GB イメージに永続化されます。
+> `--generate-ssh-keys` を使用すると、Azure CLI によって VM と `$Home` ディレクトリに公開キーと秘密キーが作成され、設定されます。 既定では、キーは Cloud Shell で `/home/<user>/.ssh/id_rsa` と `/home/<user>/.ssh/id_rsa.pub` に配置されます。 `.ssh` フォルダーは、`$Home` の永続化に使用される、接続したファイル共有の 5 GB イメージに永続化されます。
 
 この VM でのユーザー名が、Cloud Shell で使用されるユーザー名になります ($User@Azure:)。
 
@@ -100,5 +100,5 @@ az group delete -n MyRG
 
 ## <a name="next-steps"></a>次の手順
 [Cloud Shell の Bash でのファイルの永続化については、こちらを参照してください](persisting-shell-storage.md) <br>
-[Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/) <br>
+[Azure CLI について](https://docs.microsoft.com/cli/azure/) <br>
 [Azure Files ストレージについて](../storage/files/storage-files-introduction.md) <br>

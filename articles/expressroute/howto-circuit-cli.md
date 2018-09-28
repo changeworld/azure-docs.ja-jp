@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2017
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: cd4e31336fd0e90b13f1c3984de89f24e65b052b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 21cd06692fe1c26cfa276d1f8ec7ace77b11d3c2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "23479611"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979983"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線の作成と変更
 
@@ -37,7 +37,7 @@ ms.locfileid: "23479611"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-* 開始する前に、最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](/cli/azure/install-azure-cli)」および「[Azure CLI 2.0 を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
+* 開始する前に、最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」および「[Azure CLI を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
 
 ## <a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
@@ -125,13 +125,13 @@ az network express-route list-service-providers
 
 応答をチェックして、ご利用の接続プロバイダーがリストにあるかどうかを確認します。 以下の項目は、回線を作成する際に必要になるため、書き留めておいてください。
 
-* 名前
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
 これで、ExpressRoute 回線を作成する準備が整いました。
 
-### <a name="3-create-an-expressroute-circuit"></a>3.ExpressRoute 回線の作成
+### <a name="3-create-an-expressroute-circuit"></a>手順 3.ExpressRoute 回線の作成
 
 > [!IMPORTANT]
 > ExpressRoute 回線の課金は、サービス キーが発行されたときから始まります。 接続プロバイダーが回線をプロビジョニングする準備ができたら、この操作を実行します。
@@ -350,7 +350,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>クラシック環境および Resource Manager 環境へのアクセスを制御するには
 
-「 [クラシック デプロイメント モデルから Resource Manager デプロイメント モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」の説明を参照してください。
+「[クラシック デプロイ モデルから Resource Manager デプロイ モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」の説明を参照してください。
 
 ## <a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
 
@@ -366,7 +366,7 @@ ExpressRoute 回線は、次のコマンドを実行して削除できます。
 az network express-route delete  -n MyCircuit -g ExpressRouteResourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 回線を作成したら、次の作業を必ず実行します。
 

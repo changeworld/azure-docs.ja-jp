@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f20e102ee1d100ea02da53fe460b56f8f8390418
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5f8ed885791a648f30790434be56d966bbf2e47
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426695"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989296"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
-[Azure でアラートを作成する](monitor-alerts-unified-usage.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](monitoring-action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
+[Azure でログ アラートを作成する](alert-log.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](monitoring-action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
 
 
 ## <a name="webhook-actions"></a>Webhook アクション
 
-Webhook アクションは、1 つの HTTP POST 要求を使用して外部のプロセスを呼び出すことができます。  呼び出されるサービスは、Webhook をサポートし、受信したペイロードの使用方法を決定できる必要があります。   アラートに対する応答で webhook を使用する例では、[Slack](http://slack.com) でメッセージを送信したり、[PagerDuty](http://pagerduty.com/) でインシデントを作成しています。  
+Webhook アクションは、1 つの HTTP POST 要求を使用して外部のプロセスを呼び出すことができます。  呼び出されるサービスは、Webhook をサポートし、受信したペイロードの使用方法を決定できる必要があります。    
 
 webhook アクションには、次の表に示すプロパティが必要です。
 
 | プロパティ | 説明 |
 |:--- |:--- |
 | Webhook URL |Webhook の URL。 |
-| Custom JSON payload (カスタム JSON ペイロード) |アラート作成中にこのオプションを選択するときに、webhook と共に送信するカスタム ペイロード。 詳細については、[Azure アラートを使用したアラートの管理](monitor-alerts-unified-usage.md)に関するページを参照してください。 |
+| Custom JSON payload (カスタム JSON ペイロード) |アラート作成中にこのオプションを選択するときに、webhook と共に送信するカスタム ペイロード。 詳細については、[ログ アラートの管理](alert-log.md)に関するページをご覧ください。 |
 
 > [!NOTE]
-> ログ アラートの *[webhook 用のカスタム Json ペイロードを含む]* オプションの横にある [webhook のテスト] ボタンをクリックすると、webhook URL をテストするためのダミーの呼び出しがトリガーされます。 この呼び出しには、ログ アラートに使用される実際のデータや JSON スキーマの表現は含まれません。 
+> ログ アラートの *[webhook 用のカスタム JSON ペイロードを含む]* オプションの横にある [View Webhook]\(Webhook の表示\) をクリックすると、指定されたカスタマイズ用のサンプル Webhook ペイロードが表示されます。 この呼び出しには、ログ アラートに使用される実際のデータや JSON スキーマの表現は含まれません。 
 
 Webhook には、URL と共に、外部のサービスに送信されるデータである JSON 形式のペイロードが含まれます。  既定では、ペイロードには次の表の値が含まれます。このペイロードを独自のカスタム値で置き換えることができます。  その場合は、各パラメーターに対して表に示される変数を使用して、カスタム ペイロードにそれらの値を含めることができます。
 
@@ -54,7 +54,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 | サブスクリプション ID |#subscriptionid |Application Insights で使用する Azure サブスクリプションの ID。 
 
 > [!NOTE]
-> Analytics セクションで表示するために、LinkToSearchResults により、URL の SearchQuery、Search Interval StartTime、Search Interval EndTime などのパラメーターが Azure portal に渡されます。 Azure portal の URI サイズの上限は約 2,000 文字であり、パラメーター値がこの上限を超えると開きます。 ユーザーは手動で詳細を入力して Analytics ポータルで結果を表示したり、[Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) または [Log Analytics REST API](https://dev.loganalytics.io/reference) を使用して結果をプログラミングで取得したりできます。 
+> Analytics セクションで表示するために、LinkToSearchResults により、URL の SearchQuery、Search Interval StartTime、Search Interval EndTime などのパラメーターが Azure portal に渡されます。 Azure portal の URI サイズの上限は約 2,000 文字であり、パラメーター値がこの上限を超えると、アラートで指定されたリンクは "*開きません*"。 ユーザーは手動で詳細を入力して Analytics ポータルで結果を表示したり、[Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) または [Log Analytics REST API](https://dev.loganalytics.io/reference) を使用して結果をプログラミングで取得したりできます。 
 
 たとえば、 *text*という名前の 1 つのパラメーターを含む次のカスタム ペイロードを指定できます。  この Webhook で呼び出すサービスでは、このパラメーターが想定されます。
 
@@ -198,6 +198,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 
 ## <a name="next-steps"></a>次の手順
 - [Azure Alerts のログ アラート](monitor-alerts-unified-log.md)について確認します。
+- [Azure のログ アラートの管理](alert-log.md)について理解します。
 - [Azure でのアクション グループ](monitoring-action-groups.md)の作成および管理
 - [Application Insights](../application-insights/app-insights-analytics.md) についてさらに学習します。
 - [Log Analytics](../log-analytics/log-analytics-overview.md) についてさらに学習します。 

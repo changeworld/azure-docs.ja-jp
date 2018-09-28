@@ -1,26 +1,27 @@
 ---
-title: Azure Video Indexer を使用して既存のビデオからビデオの分析情報を作成する | Microsoft Docs
-description: このトピックでは、他のビデオに基づいてビデオの分析情報を作成し、公開する方法を示します。
+title: 'チュートリアル: 既存のビデオからビデオの分析情報を作成する'
+titlesuffix: Azure Cognitive Services
+description: このトピックでは、既存のビデオ ファイルに基づいてビデオの分析情報を作成し、公開する方法を示します。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/25/2018
+ms.component: video-indexer
+ms.topic: tutorial
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 161a47f72a0f8038a515c09f25ec2a8e8a520547
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 3a3e5c62d9eb96563d395106db62cc91a8307658
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390842"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983919"
 ---
-# <a name="create-highlights-from-existing-videos"></a>既存のビデオからハイライトを作成する
+# <a name="tutorial-create-highlights-from-existing-videos"></a>チュートリアル: 既存のビデオからハイライトを作成する
 
 このトピックでは、他のビデオに基づいてビデオの分析情報を作成し、公開する方法を示します。
 
-1. [Video Indexer](https://api-portal.videoindexer.ai/) アカウントにサインインします。
+1. [Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
 2. ビデオの分析情報を作成するビデオを見つけます。
 3. **[再生]** を押します。
 

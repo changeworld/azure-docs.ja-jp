@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 270587f484216d130848ee3c7bdc8ae1c1df0afc
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 68514f1bc569d876f4cf851f97a690ae84cf43a6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982155"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970296"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Azure Stack での API バージョンのプロファイルの管理
 
@@ -79,8 +79,8 @@ API プロファイルは、Azure Resource Manager を使用するツール (Pow
 
 - **PowerShell**  
 PowerShell ギャラリーから入手できる **AzureRM.Bootstrapper** モジュールを使用して、API バージョンのプロファイルを操作するために必要な PowerShell コマンドレットを取得できます。 詳しくは、「[Use API version profiles for PowerShell (PowerShell 向け API バージョン プロファイルの使用)](azure-stack-version-profiles-powershell.md)」をご覧ください。
-- **Azure CLI 2.0**  
-Azure Stack 固有の API バージョンのプロファイルを使用するようにお使いの環境の構成を更新できます。 詳しくは、「[Azure Stack での Azure CLI 2.0 による API バージョンのプロファイルの使用](azure-stack-version-profiles-azurecli2.md)」をご覧ください。
+- **Azure CLI**  
+Azure Stack 固有の API バージョンのプロファイルを使用するようにお使いの環境の構成を更新できます。 詳細については、[Azure CLI での API バージョンのプロファイルの使用](azure-stack-version-profiles-azurecli2.md)に関するページを参照してください。
 - **GO**  
 GO SDK では、プロファイルはさまざまな種類のリソースと多様なサービスのさまざまなバージョンの組み合わせが用意されています。 プロファイルは、**YYYY-MM-DD** 形式のバージョンと共に profiles/ path で利用できます。 詳しくは、「[Use API version profiles for GO (GO 向け API バージョン プロファイルの使用)](azure-stack-version-profiles-go.md)」をご覧ください。
 - **Ruby**  

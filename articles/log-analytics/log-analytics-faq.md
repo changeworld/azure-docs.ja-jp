@@ -12,28 +12,83 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: eb1a60ff533e9e24f3dc80057129da47a2d9a726
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 06b30d1381d8fba1d6f053576f6556e6d02f2ae9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128532"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949164"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics についてよく寄せられる質問
 この Microsoft FAQ は、Microsoft Azure の Log Analytics についてよく寄せられる質問の一覧です。 Log Analytics に関して何か追加の質問がある場合は、[ディスカッション フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
 
+
+## <a name="new-logs-experience"></a>新しいログ エクスペリエンス
+
+### <a name="q-whats-the-difference-between-the-new-logs-experience-and-log-analytics"></a>Q: 新しいログ エクスペリエンスと Log Analytics の違いは何ですか?
+
+A: これらは同じものです。 [Log Analytics は Azure Monitor の機能として統合され](../azure-monitor/azure-monitor-rebrand.md)、より統一した監視エクスペリエンスが提供されます。 Azure Monitor の新しいログ エクスペリエンスは、多くのお客様が既に使用している Log Analytics クエリとまったく同じものです。
+
+### <a name="q-can-i-still-use-log-search"></a>Q: ログ検索は引き続き使用できますか? 
+
+A: 現時点では、ログ検索は OMS ポータルや Azure portal で**ログ (クラシック)** という名前で引き続き使用できます。 OMS ポータルは、2019 年 1 月 15 日に正式に廃止される予定です。 Azure portal のクラシック ログ エクスペリエンスは段階的に廃止され、新しいログ エクスペリエンスに置き換えられます。 
+
+### <a name="q-can-i-still-use-advanced-analytics-portal"></a>Q. 高度な分析ポータルは引き続き使用できますか? 
+Azure portal の新しいログ エクスペリエンスは[高度な分析ポータル](https://portal.loganalytics.io/)に基づいていますが、Azure portal 外から引き続きアクセスできます。 この外部ポータルの廃止に関するロードマップはまもなく発表されます。
+
+### <a name="q-why-cant-i-see-query-explorer-and-save-buttons-in-the-new-logs-experience"></a>Q. 新しいログ エクスペリエンスでクエリ エクスプローラーと [保存] ボタンを表示できないのはなぜですか?
+
+特定のリソースのコンテキストでログを検索する場合、**クエリ エクスプローラー**、**[保存]** ボタンおよび **[警告の設定]** ボタンは使用できません。 アラートを作成し、クエリを保存または読み込むには、ログのスコープをワークスペースに指定する必要があります。 ワークスペース コンテキストでログを開くには、**[すべてのサービス]** > **[監視]** > **[ログ]** の順に選択します。 最後に使用されたワークスペースが選択されますが、その他のワークスペースを選択することはできます。 詳細については、「[Log Analytics におけるデータの表示と分析](../log-analytics/log-analytics-log-search-portals.md)」を参照してください。
+
+### <a name="q-how-do-i-extract-custom-fields-in-the-new-logs-experience"></a>Q. 新しいログ エクスペリエンスではカスタム フィールドをどのように抽出するのですか? 
+
+A: 現在、カスタム フィールドの抽出はクラシック ログ エクスペリエンスでサポートされています。 
+
+### <a name="q-where-do-i-find-list-view-in-the-new-logs"></a>Q. 新しいログのリスト ビューはどこにありますか? 
+
+A: リスト ビューは新しいログではご利用いただけません。 結果テーブルの各レコードの左側に矢印があります。 この矢印をクリックすると、そのレコードの詳細が表示されます。 
+
+### <a name="q-after-running-a-query-a-list-of-suggested-filters-shows-up-but-it-doesnt-include-all-filters-how-can-i-see-the-rest"></a>Q. クエリを実行した後、推奨されるフィルターのリストが表示されますが、一部のフィルターが含まれていません。 残りのフィルターを表示するにはどうすればよいですか? 
+
+A: 現在表示されるのは、新しいフィルター実装のプレビューです。 現在、これは完全な結果セットに基づいており、UI のレコードの上限数 (10,000) によって制限されません。 現時点では、これが最もよく使用されているフィルターのリストであり、フィルターごとに最も一般的な値が 10 個表示されます。 
+
+### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>Q. VM からドリルインした後、ログに "このサブスクリプションのリソース プロバイダー 'Microsoft.Insights' を登録してこのクエリを有効にしてください" というエラーが表示されるのはなぜですか? 
+
+A: 既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 これにより、サブスクリプションがリソース プロバイダーと連携するように構成されます。 登録の範囲は常にサブスクリプションです。 詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md#portal)」を参照してください。
+
+### <a name="q-why-am-i-am-getting-no-access-error-message-when-accessing-logs-from-a-vm-page"></a>Q. VM ページからログにアクセスするときに、アクセス権なしというエラー メッセージが表示されるのはなぜですか? 
+
+A: VM ログを表示するには、VM ログを格納するワークスペースに対する読み取りアクセス許可が付与される必要があります。 このような場合、管理者が Azure でのアクセス許可を付与する必要があります。
+
+### <a name="q-why-can-i-can-access-my-workspace-in-oms-portal-but-i-get-the-error-you-have-no-access-in-the-azure-portal"></a>Q. OMS ポータルで自分のワークスペースにはアクセスできますが、Azure portal で "アクセス権がありません" というエラーが表示されるのはなぜですか?  
+
+A: Azure でワークスペースにアクセスするには、Azure のアクセス許可が割り当てられている必要があります。 場合によっては、適切なアクセス許可がないことがあります。 このような場合は、管理者が Azure のアクセス許可を付与する必要があります。詳細については、「[OMS ポータルの Azure への移行](../log-analytics/log-analytics-oms-portal-transition.md)」を参照してください。
+
+### <a name="q-why-cant-i-cant-see-view-designer-entry-in-logs"></a>Q. ログでビュー デザイナー エントリを表示できないのはなぜですか? 
+A: ビュー デザイナーは、共同作成者以上のアクセス許可が割り当てられているユーザーのみがログで使用できます。
+
+
 ## <a name="general"></a>全般
+
+### <a name="q-how-can-i-see-my-views-and-solutions-in-azure-portal"></a>Q. Azure portal で自分のビューとソリューションを表示するにはどうすればよいですか? 
+
+A: Azure portal には、ビューとインストールされているソリューションのリストが表示されます。 **[すべてのサービス]** をクリックします。 リソースのリストで、**[監視]** を選択してから **[...詳細]** をクリックします。 最後に使用されたワークスペースが選択されますが、その他のワークスペースを選択することはできます。 
+
+### <a name="q-why-i-cant-create-workspaces-in-west-central-us-region"></a>Q. 米国中西部リージョンでワークスペースを作成できないのはなぜですか? 
+
+A: このリージョンは一時的な容量の上限に達しています。 この上限は 2019 年前半に対処される予定です。
+
 
 ### <a name="q-does-log-analytics-use-the-same-agent-as-azure-security-center"></a>Q. Log Analytics で使用されるエージェントは Azure Security Center のエージェントと同じですか?
 
-A. 2017 年 6 月上旬より、Azure Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行っています。 詳細については、[Azure Security Center のプラットフォームの移行についての FAQ](../security-center/security-center-platform-migration-faq.md) に関するページを参照してください。
+A: 2017 年 6 月上旬より、Azure Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行っています。 詳細については、[Azure Security Center のプラットフォームの移行についての FAQ](../security-center/security-center-platform-migration-faq.md) に関するページを参照してください。
 
 ### <a name="q-what-checks-are-performed-by-the-ad-and-sql-assessment-solutions"></a>Q. AD および SQL Assessment ソリューションでは、どのようなチェックが行われますか?
 
-A. 次のクエリは、現在実行されているすべてのチェックの説明を示します。
+A: 次のクエリでは、現在実行されているすべてのチェックの説明が示されます。
 
 ```
 (Type=SQLAssessmentRecommendation OR Type=ADAssessmentRecommendation) | dedup RecommendationId | select FocusArea, ActionArea, Recommendation, Description | sort Type, FocusArea,ActionArea, Recommendation
@@ -41,7 +96,7 @@ A. 次のクエリは、現在実行されているすべてのチェックの�
 
 結果を Excel にエクスポートしてレビューすることができます。
 
-### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>Q: System Center Operations Manager コンソールに OMS とは異なる内容が表示されるのはなぜですか?
+### <a name="q-why-do-i-see-something-different-than-oms-in-the-system-center-operations-manager-console"></a>Q. System Center Operations Manager コンソールに OMS とは異なる内容が表示されるのはなぜですか?
 
 A: 使用している Operations Manager の更新プログラム ロールアップに応じて、*System Center Advisor*、*Operational Insights*、または *Log Analytics* のノードが表示される可能性があります。
 
@@ -134,7 +189,7 @@ A: エージェントが OMS と通信できることを確認するには、[�
 
 ### <a name="q-how-do-i-stop-an-agent-from-communicating-with-log-analytics"></a>Q: エージェントの Log Analytics との通信を停止するにはどうすればよいですか?
 
-A: System Center Operations Manager では、OMS で管理されたコンピューターの一覧からコンピューターを削除します。 Operations Manager はエージェントの構成を更新して、Log Analytics に報告しなくなるようにします。 Log Analytics に直接接続されているエージェントの場合は、[コントロール パネル]、[システムとセキュリティ]、**[Microsoft Monitoring Agent]** の順に選択して、エージェントの通信を停止できます。
+A: System Center Operations Manager では、OMS マネージド コンピューターの一覧からコンピューターを削除します。 Operations Manager はエージェントの構成を更新して、Log Analytics に報告しなくなるようにします。 Log Analytics に直接接続されているエージェントの場合は、[コントロール パネル]、[システムとセキュリティ]、**[Microsoft Monitoring Agent]** の順に選択して、エージェントの通信を停止できます。
 **[Azure Log Analytics (OMS)]** に表示されているすべてのワークスペースを削除します。
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>Q: ワークスペースを Azure サブスクリプション間で移動しようとするとエラーが表示されるのはなぜですか?
@@ -172,4 +227,4 @@ Type=WireData (ProcessName="C:\\Program Files\\Microsoft Monitoring Agent\\Agent
 ```
 
 ## <a name="next-steps"></a>次の手順
-* ドキュメントで [Log Analytics の詳細を確認し](log-analytics-get-started.md)、お試しください。
+* [Log Analytics の起動と開始](log-analytics-get-started.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。

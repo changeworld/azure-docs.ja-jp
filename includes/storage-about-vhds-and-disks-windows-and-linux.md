@@ -8,14 +8,15 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: f64645db782b055e1c544f257149411f29fc99d7
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 2ab2ac1e98e25da4065611d32fb50aa8ce809361
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34806317"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060964"
 ---
 ## <a name="about-vhds"></a>VHD について
+
 Azure で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。 ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/)」をご覧ください。 Premium Storage の詳細については、[高パフォーマンスの Premium Storage と Azure VM](../articles/virtual-machines/windows/premium-storage.md) に関する記事を参照してください。
 
 Azure は VHD フォーマットの固定ディスクをサポートしています。 固定フォーマットの場合、ファイル内で論理ディスクがリニアにレイアウトされるため、ディスク オフセット X は BLOB オフセット X に格納されます。BLOB 末尾の小さなフッターに、VHD のプロパティが記述されます。 固定フォーマットの場合、ほとんどのディスクに大きな未使用の範囲が含まれるため、容量が無駄になることがよくあります。 しかし、Azure では .vhd ファイルをスパース フォーマットで格納するため、固定ディスクのメリットと動的ディスクのメリットを同時に享受できます。 詳細については、「[仮想ハード ディスクの概要](https://technet.microsoft.com/library/dd979539.aspx)」をご覧ください。
@@ -29,40 +30,47 @@ Azure は VHD フォーマットの固定ディスクをサポートしていま
 > [!WARNING]
 > ユーザーがストレージからソースの .vhd ファイルを削除する場合、またはストレージ アカウントを削除する場合、Microsoft はそのデータを回復することはできません。
 
-## <a name="types-of-disks"></a>ディスクの種類 
+## <a name="types-of-disks"></a>ディスクの種類
+
 Azure ディスクは、99.999% の可用性で設計されています。 エンタープライズレベルの持続性を、業界トップレベルの年間故障率 0% で一貫して提供してきました。
 
 ディスクの作成時に選択できるストレージには、Premium SSD ディスク、Standard SSD (プレビュー)、および Standard HDD ストレージという 3 つのパフォーマンス レベルが存在します。 さらに、アンマネージドとマネージドという 2 種類のディスクがあります。
 
 ### <a name="standard-hdd-disks"></a>Standard HDD ディスク
+
 Standard HDD ディスクは、HDD を使用して、コスト効果の高いストレージを提供します。 Standard HDD ストレージは、1 つのデータセンターでローカルにレプリケートするか、プライマリ データセンターとセカンダリ データセンターで geo 冗長レプリケートできます。 ストレージのレプリケーションの詳細については、「[Azure Storage のレプリケーション](../articles/storage/common/storage-redundancy.md)」を参照してください。 
 
 Standard HDD ディスクの使用の詳細については、[標準ストレージとディスク](../articles/virtual-machines/windows/standard-storage.md)に関する記事を参照してください。
 
-### <a name="standard-ssd-disks-preview"></a>Standard SSD ディスク (プレビュー)
-Standard SSD ディスクは、Standard HDD ディスクと同種のワークロードに対応するように設計されていますが、一貫したパフォーマンスと信頼性が HDD よりも優れています。 Standard SSD ディスクは、Premium SSD ディスクと Standard HDD ディスクの要素を組み合わせたコスト効率の高いソリューションであり、ディスクの高 IOPS を必要としないアプリケーション (Web サーバーなど) に最適です。 使用可能な場合、Standard SSD ディスクは、ほとんどのワークロードのために推奨される展開オプションです。 Standard SSD ディスクは、マネージド ディスクとしてのみ利用でき、プレビュー段階中は、[限定されたリージョン](../articles/virtual-machines/windows/faq-for-disks.md)で、回復性の種類としてローカル冗長ストレージ (LRS) を指定してのみ利用できます。
+### <a name="standard-ssd-disks"></a>Standard SSD ディスク
 
-### <a name="premium-ssd-disks"></a>Premium SSD ディスク 
+Standard SSD ディスクは、Standard HDD ディスクと同種のワークロードに対応するように設計されていますが、一貫したパフォーマンスと信頼性が HDD よりも優れています。 Standard SSD ディスクは、Premium SSD ディスクと Standard HDD ディスクの要素を組み合わせたコスト効率の高いソリューションであり、ディスクの高 IOPS を必要としないアプリケーション (Web サーバーなど) に最適です。 使用可能な場合、Standard SSD ディスクは、ほとんどのワークロードのために推奨される展開オプションです。 Standard SSD ディスクは、マネージド ディスクとして、回復性の種類としてローカル冗長ストレージ (LRS) のみを現在利用可能なすべてのリージョンで利用できます。
+
+### <a name="premium-ssd-disks"></a>Premium SSD ディスク
+
 Premium SSD ディスクでは、SSD を使用して、I/O 集中型のワークロードを実行する VM 向けの高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 通常、Premium SSD ディスクは、シリーズ名に "s" が含まれているサイズで使用できます。 たとえば、Dv3 シリーズと Dsv3 シリーズがある場合、Dsv3 シリーズで Premium SSD ディスクを使用できます。  詳細については、[Premium Storage](../articles/virtual-machines/windows/premium-storage.md) に関する記事を参照してください。
 
-### <a name="unmanaged-disks"></a>アンマネージド ディスク
-アンマネージド ディスクとは、VM で使用されてきた従来の種類のディスクです。 これらのディスクでは、独自のストレージ アカウントを作成し、ディスクの作成時にそのストレージ アカウントを指定します。 同じストレージ アカウントにディスクを配置しすぎないようにしてください。ストレージ アカウントの[スケーラビリティ ターゲット](../articles/storage/common/storage-scalability-targets.md) (たとえば 20,000 IOPS) を超過すると、VM が調整されるためです。 アンマネージド ディスクを使用する場合は、VM のパフォーマンスを最大限に引き出すために、1 つ以上のストレージ アカウントを最大限に利用する方法を確認する必要があります。
+### <a name="unmanaged-disks"></a>非管理対象ディスク
 
-### <a name="managed-disks"></a>マネージド ディスク 
-マネージド ディスクにより、ストレージ アカウントの作成/管理はバックグラウンドで処理されるため、ストレージ アカウントのスケーラビリティの制限について心配する必要がなくなります。 ディスク サイズとパフォーマンス レベル (Standard/Premium) を指定するだけで、Azure でディスクが作成され、管理されます。 ディスクの追加や VM のスケールアップとスケールダウンを行うときに、使用されているストレージについて心配する必要はありません。 
+非管理対象ディスクとは、VM で使用されてきた従来の種類のディスクです。 これらのディスクでは、独自のストレージ アカウントを作成し、ディスクの作成時にそのストレージ アカウントを指定します。 同じストレージ アカウントにディスクを配置しすぎないようにしてください。ストレージ アカウントの[スケーラビリティ ターゲット](../articles/storage/common/storage-scalability-targets.md) (たとえば 20,000 IOPS) を超過すると、VM が調整されるためです。 非管理対象ディスクを使用する場合は、VM のパフォーマンスを最大限に引き出すために、1 つ以上のストレージ アカウントを最大限に利用する方法を確認する必要があります。
 
-また、Azure リージョンごとに 1 つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 マネージド ディスクの詳細については、[Managed Disks の概要](../articles/virtual-machines/windows/managed-disks-overview.md)に関するページをご覧ください。
+### <a name="managed-disks"></a>マネージド ディスク
 
-マネージド ディスクの多くの機能を活用するために、新しい VM にはマネージド ディスクを使用し、以前のアンマネージド ディスクをマネージド ディスクに変換することをお勧めします。
+Managed Disks により、ストレージ アカウントの作成/管理はバックグラウンドで処理されるため、ストレージ アカウントのスケーラビリティの制限について心配する必要がなくなります。 ディスク サイズとパフォーマンス レベル (Standard/Premium) を指定するだけで、Azure でディスクが作成され、管理されます。 ディスクの追加や VM のスケールアップとスケールダウンを行うときに、使用されているストレージについて心配する必要はありません。
+
+また、Azure リージョンごとに 1 つのストレージ アカウントでカスタム イメージを管理することができます。このカスタム イメージを使用すると、同じサブスクリプション内で何百もの VM を作成することができます。 Managed Disks の詳細については、[Managed Disks の概要](../articles/virtual-machines/windows/managed-disks-overview.md)に関するページをご覧ください。
+
+Managed Disks の多くの機能を活用するために、新しい VM には Managed Disks を使用し、以前の非管理対象ディスクをマネージド ディスクに変換することをお勧めします。
 
 ### <a name="disk-comparison"></a>ディスクの比較
-次の表では、Standard HDD、Standard SSD、および Premium SSD のマネージド ディスクとアンマネージド ディスクの両方を比較しており、どちらを使用するかを決定するのに役立ちます。
 
-|    | Azure Premium ディスク |Azure Standard SSD ディスク (プレビュー)| Azure Standard HDD ディスク 
-|--- | ------------------ | ------------------------------- | ----------------------- 
+次の表では、Standard HDD、Standard SSD、および Premium SSD のマネージド ディスクとアンマネージド ディスクの両方を比較しており、どちらを使用するかを決定するのに役立ちます。 アスタリスクで示されるサイズはプレビュー中です。
+
+|    | Azure Premium ディスク |Azure Standard SSD ディスク | Azure Standard HDD ディスク
+|--- | ------------------ | ------------------------------- | -----------------------
 | ディスクの種類 | ソリッド ステート ドライブ (SSD) | ソリッド ステート ドライブ (SSD) | ハード ディスク ドライブ (HDD)  
 | 概要  | I/O 集中型のワークロードを実行している VM またはミッション クリティカルな運用環境をホストしている VM 向けの、SSD ベースの高パフォーマンスで待ち時間の少ないディスク サポート |一貫したパフォーマンスと信頼性が HDD よりも優れている。 低 IOPS ワークロード用に最適化| 不定期に起こるアクセス用の HDD ベースのコスト効果の高いディスク
-| シナリオ  | 運用環境のワークロードやパフォーマンスに影響されやすいワークロード |Web サーバー、あまり使用されていないエンタープライズ アプリケーション、および開発/テスト| バックアップ、重要ではない、不定期に起こるアクセス 
-| ディスク サイズ | P4: 32 GiB (マネージド ディスクのみ)<br>P6: 64 GiB (マネージド ディスクのみ)<br>P10: 128 GiB<br>P15: 256 GiB (マネージド ディスクのみ)<br>P20: 512 GiB<br>P30: 1024 GiB<br>P40: 2048 GiB<br>P50: 4095 GiB |マネージド ディスクのみ:<br>E10: 128 GiB<br>E15: 256 GiB<br>E20: 512 GiB<br>E30: 1024 GiB<br>E40: 2048 GiB<br>E50: 4095 GiB | アンマネージド ディスク: 1 GiB ～ 4 TiB (4095 GiB) <br><br>マネージド ディスク<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GiB <br>S15: 256 GiB <br>S20: 512 GiB <br>S30: 1024 GiB <br>S40: 2048 GiB<br>S50: 4095 GiB
-| ディスクあたりの最大スループット | 250 MiB/秒 | 最大 60 MiB/秒 | 最大 60 MiB/秒 
-| ディスクあたりの最大 IOPS | 7,500 IOPS | 最大 500 IOPS | 最大 500 IOPS 
+| シナリオ  | 運用環境のワークロードやパフォーマンスに影響されやすいワークロード |Web サーバー、あまり使用されていないエンタープライズ アプリケーション、および開発/テスト| バックアップ、重要ではない、不定期に起こるアクセス
+| ディスク サイズ | P4: 32 GiB (マネージド ディスクのみ)<br>P6: 64 GiB (マネージド ディスクのみ)<br>P10: 128 GiB<br>P15: 256 GiB (マネージド ディスクのみ)<br>P20: 512 GiB<br>P30: 1024 GiB<br>P40: 2048 GiB<br>P50: 4,095 GiB<br>P60: 8,192 GiB * (8 TiB)<br>P70: 16,384 GiB * (16 TiB)<br>P80: 32,767 GiB * (32 TiB) |マネージド ディスクのみ:<br>E10: 128 GiB<br>E15: 256 GiB<br>E20: 512 GiB<br>E30: 1024 GiB<br>E40: 2048 GiB<br>E50: 4095 GiB<br>E60: 8,192 GiB * (8 TiB)<br>E70: 16,384 GiB * (16 TiB)<br> E80: 32,767 GiB * (32 TiB) | アンマネージド ディスク: 1 GiB ～ 4 TiB (4095 GiB) <br><br>管理ディスク:<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GiB <br>S15: 256 GiB <br>S20: 512 GiB <br>S30: 1024 GiB <br>S40: 2048 GiB<br>S50: 4095 GiB<br>S60: 8,192 GiB * (8 TiB)<br>S70: 16,384 GiB * (16 TiB)<br>S80: 32,384 GiB * (32 TiB)
+| ディスクあたりの最大スループット | P4: 25 MiB/秒<br> P6: 50 MiB/秒<br> P10: 100 MiB/秒<br> P15: 200 MiB/秒<br> P20: 150 MiB/秒<br> P30: 200 MiB/秒<br> P40-P50: 250 MiB/秒<br> P60: 480 MiB/秒<br> P70-P80: 750 MiB/秒 | E10-E50: 最大 60 MiB/秒<br> E60: 最大 300 MiB/秒 *<br> E70-E80: 500 MiB/秒 *| S4 - S50: 最大 60 MiB/秒<br> S60: 最大 300 MiB/秒 *<br> S70-S80: 最大 500 MiB/秒 *
+| ディスクあたりの最大 IOPS | P4: 120 IOPS<br> P6: 240 IOPS<br> P10: 500 IOPS<br> P15: 1100 IOPS<br> P20: 2300 IOPS<br> P30: 500 IOPS<br> P40-P50: 7500 IOPS<br> P60: 12,500 IOPS *<br> P70: 15,000 IOPS *<br> P80: 20,000 IOPS * | E10-E50: 最大 500 IOPS<br> E60: 最大 1300 IOPS *<br> E70-E80: 最大 2000 IOPS * | S4-S50: 最大 500 IOPS<br> S60: 最大 1300 IOPS *<br> S70-S80: 最大 2000 IOPS *

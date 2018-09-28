@@ -11,23 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/10/2018
+ms.date: 09/14/2018
 ms.author: bwren
-ms.openlocfilehash: 0e513cc4f6a7d5d030ded807870de9eb0fdc0ed8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: f40c8ed7eb6bfae958b3b57c4b7d525963ab9741
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38973184"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955258"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Log Analytics のデータ インジェスト時間
-Azure Log Analytics とは、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する高スケールのデータ サービスです。 データが収集されてから、Log Analytics でそのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
+Azure Log Analytics は、毎月増加するテラバイト単位のデータを送信する何千もの顧客にサービスを提供する、Azure Monitor 内の高スケールのデータ サービスです。 データが収集されてから、Log Analytics でそのデータが使用可能になるまでにかかる時間について、よく質問されることがあります。 この記事では、この待機時間に影響するさまざまな要因について説明します。
 
 ## <a name="typical-latency"></a>一般的な待機時間
-待機時間は、データが監視対象のシステムで作成される時間と Log Analytics で分析に使用できるようになる時間を指します。 Log Analytics にデータを取り込むための一般的な待機時間は 3 - 10 分で、データの 95% は 7 分未満で取り込まれます。 特定のデータに対する具体的な待機時間は、次に説明するさまざまな要因によって異なります。
+待機時間は、データが監視対象のシステムで作成される時間と Log Analytics で分析に使用できるようになる時間を指します。 Log Analytics にデータを取り込むための一般的な待機時間は 2 分から 5 分です。 特定のデータに対する具体的な待機時間は、次に説明するさまざまな要因によって異なります。
 
-## <a name="sla-for-log-analytics"></a>Log Analytics の SLA
-[Log Analytics サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) は、サービスがその目標を達成できない場合に、Microsoft がお客様に返金する場合を定めた法的効力のある契約です。 これは、システムの一般的なパフォーマンスではなく、壊滅的な状況になる可能性がある最悪のケースに基づいています。
 
 ## <a name="factors-affecting-latency"></a>待機時間に影響する要因
 特定のデータ セットの合計インジェスト時間は、次の高度な領域に分割することができます。 
@@ -60,7 +58,7 @@ Log Analytics エージェントを軽量にするため、エージェントは
 各ソリューションのコレクションの頻度を判断するには、そのドキュメントを参照してください。
 
 ### <a name="pipeline-process-time"></a>パイプライン処理時間
-ログ レコードは Log Analytics パイプラインに取り込まれると、テナントを分離してデータが失われないように、一時的なストレージに書き込まれます。 通常、このプロセスにより、さらに 5 - 15 秒が加算されます。 一部の管理ソリューションでは、データのストリーミング時に、データを集計し、分析情報を派生させるため、より重いアルゴリズムが実装されます。 たとえば、ネットワーク パフォーマンス監視は、3 分間隔で受信データを集計するため、事実上 3 分間の待機時間が加算されます。
+ログ レコードは Log Analytics パイプラインに取り込まれると、テナントを分離してデータが失われないように、一時的なストレージに書き込まれます。 通常、このプロセスにより、さらに 5 - 15 秒が加算されます。 一部の管理ソリューションでは、データのストリーミング時に、データを集計し、分析情報を派生させるため、より重いアルゴリズムが実装されます。 たとえば、ネットワーク パフォーマンス監視は、3 分間隔で受信データを集計するため、事実上 3 分間の待機時間が加算されます。 待機時間を増やす別のプロセスは、カスタム ログを処理するプロセスです。 場合によっては、このプロセスによって、エージェントがファイルから収集するログの待機時間が数分増えることがあります。
 
 ### <a name="new-custom-data-types-provisioning"></a>新しいカスタム データ型のプロビジョニング
 新しいカスタム データの型を[カスタム ログ](../log-analytics/log-analytics-data-sources-custom-logs.md)または[データ コレクター API](../log-analytics/log-analytics-data-collector-api.md) から作成すると、システムにより専用のストレージ コンテナーが作成されます。 これは、最初にこのデータ型が出現したときにのみ発生する 1 回限りのオーバーヘッドです。

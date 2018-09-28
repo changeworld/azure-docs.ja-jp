@@ -1,6 +1,6 @@
 ---
-title: Azure portal の [Log Analytics] ページの概要 | Microsoft Docs
-description: この記事では、[Log Analytics] ページを使用してクエリを作成する方法のチュートリアルを提供します。
+title: Azure portal で Log Analytics の使用を開始する | Microsoft Docs
+description: この記事では、Azure portal で Log Analytics を使用してクエリを記述する方法を説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,14 +15,16 @@ ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 493497476fdfe7d96d6f2dde735bab0147e547a7
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 3bcc5368a99dc7c7c32381ca0226119d81fc2c0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42142680"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978201"
 ---
-# <a name="get-started-with-the-log-analytics-page-in-the-azure-portal"></a>Azure portal の [Log Analytics] ページの概要
+# <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Azure portal で Log Analytics の使用を開始する
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 このチュートリアルでは、Azure portal の [Log Analytics] ページ (現在プレビュー段階) を使用して Log Analytics クエリを作成する方法について説明します。 以下の方法について説明します。
 
@@ -45,7 +47,7 @@ ms.locfileid: "42142680"
 ## <a name="basic-queries"></a>基本的なクエリ
 クエリを使用すると、用語を検索し、傾向を特定し、パターンを分析し、データに基づいて他の多くの分析情報を表示できます。 基本的なクエリから始めてみましょう。
 
-```OQL
+```Kusto
 Event | search "error"
 ```
 
@@ -55,7 +57,7 @@ Event | search "error"
 
 同じクエリは、次のように記述することもできます。
 
-```OQL
+```Kusto
 search in (Event) "error"
 ```
 
@@ -79,7 +81,7 @@ search in (Event) "error"
 ## <a name="filter-the-results"></a>結果をフィルター処理する
 まず、_Event_ テーブルのすべてを取得します。
 
-```OQL
+```Kusto
 Event
 ```
 
@@ -133,7 +135,7 @@ Event
 ## <a name="charts"></a>グラフ
 クエリの結果はテーブルに返されるだけでなく、クエリ結果をビジュアル形式で表示することができます。 次のクエリを例として使用します。
 
-```OQL
+```Kusto
 Event 
 | where EventLevelName == "Error" 
 | where TimeGenerated > ago(1d) 

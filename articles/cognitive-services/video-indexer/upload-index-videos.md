@@ -1,22 +1,23 @@
 ---
-title: Azure Video Indexer でビデオのアップロードとインデックス作成を行う | Microsoft Docs
-description: このトピックでは、API を使用して Azure Video Indexer でビデオのアップロードとインデックス作成を行う方法を示します。
+title: '例: Video Indexer でビデオをアップロードしてインデックスを付ける'
+titlesuffix: Azure Cognitive Services
+description: このトピックでは、API を使用して Video Indexer でビデオをアップロードし、インデックスを付ける方法を示します。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 08/17/2018
+ms.component: video-indexer
+ms.topic: sample
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: ac9d3f8fd10a3b65a2af2999b8c7ade7965de912
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: e84411535b82b3e4861b529f490bdde0eb25fd42
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664447"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983887"
 ---
-# <a name="upload-and-index-your-videos"></a>ビデオのアップロードとインデックス作成  
+# <a name="example-upload-and-index-your-videos"></a>例: ビデオをアップロードしてインデックスを付ける  
 
 この記事では、Azure Video Indexer でビデオをアップロードする方法について説明します。 Video Indexer API には、2 つのアップロード方法があります。 
 
@@ -33,7 +34,7 @@ ms.locfileid: "43664447"
 ## <a name="uploading-considerations"></a>アップロードに関する考慮事項
     
 - URL に基づいてビデオをアップロードする場合 (推奨)、エンドポイントは TLS 1.2 (またはそれ以降) を使用してセキュリティで保護する必要があります。
-- このバイト配列方法は 4GB に制限され、30 分後にタイムアウトします
+- このバイト配列オプションは 2 GB に制限され、30 分後にタイムアウトします
 - `videoURL` パラメーターに指定する URL はエンコードする必要があります
 
 ## <a name="configurations-and-params"></a>構成とパラメーター

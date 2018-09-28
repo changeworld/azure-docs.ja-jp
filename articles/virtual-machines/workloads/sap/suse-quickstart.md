@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: hermannd
-ms.openlocfilehash: cc4438a770a8092275373ccf8da9cc9951a1f906
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8a16fa9f639a6a4a17d6904d6bc9a0e31f774e0c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858614"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950048"
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>Microsoft Azure SUSE Linux VM での SAP NetWeaver の実行
 この記事では、Microsoft Azure SUSE Linux 仮想マシン (VM) で SAP NetWeaver を実行する際のさまざまな考慮事項について説明します。 2016 年 5 月 19 日の時点で、SAP NetWeaver は Azure 上の SUSE Linux VM で正式にサポートされています。 Linux のバージョン、SAP カーネルのバージョン、その他の前提条件など、すべての詳細については、SAP Note 1928533 "SAP Applications on Azure: Supported Products and Azure VM types" (Azure 上の SAP アプリケーション: サポートされる製品と Azure VM の種類) を参照してください。
@@ -119,7 +119,7 @@ SUSE VM をオンプレミスから Azure にアップロードする手順に�
    ```
 JSON テンプレート ファイルの詳細については、「[Azure Resource Manager のテンプレートの作成](../../../resource-group-authoring-templates.md)」と「[Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」を参照してください。
 
-CLI と Azure Resource Manager の詳細については、「[Azure Resource Manager での、Mac、Linux、および Windows 用 Azure CLI の使用](../../../xplat-cli-azure-resource-manager.md)」を参照してください。
+Azure クラシック CLI と Azure Resource Manager の詳細については、[Azure Resource Manager での Mac、Linux、および Windows 用 Azure クラシック CLI の使用](../../../xplat-cli-azure-resource-manager.md)に関する記事を参照してください。
 
 ## <a name="sap-license-and-hardware-key"></a>SAP のライセンスとハードウェア キー
 正式な SAP-Azure 証明書のために、SAP ライセンスに使用される SAP ハードウェア キーを計算するための新しいメカニズムが導入されました。 SAP カーネルはこの新しいアルゴリズムを利用するように適合させる必要がありました。 Linux 向けの SAP カーネルの以前のバージョンには、このコード変更が含まれていませんでした。 そのため、特定の状況 (Azure VM のサイズ変更など) では、SAP ハードウェア キーが変更され、SAP のライセンスが無効になりました。 最新の SAP Linux カーネルで解決策が提供されます。  この SAP カーネル パッチの詳細は SAP Note 1928533 にあります。

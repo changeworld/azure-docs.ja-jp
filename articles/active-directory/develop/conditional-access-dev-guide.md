@@ -5,22 +5,21 @@ services: active-directory
 keywords: ''
 author: CelesteDG
 manager: mtillman
-editor: PatAltimore
 ms.author: celested
 ms.reviewer: dadobali
-ms.date: 07/19/2017
+ms.date: 09/24/2018
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: ab6936d62aac5502d70239bacfbfd15bd6b793ab
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 229f74367262e07128fa9ea6c895d448b854ae0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142769"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958256"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -40,14 +39,14 @@ Azure Active Directory (Azure AD) の条件付きアクセス機能は、アプ�
 
 ### <a name="app-types-impacted"></a>アプリの種類が影響を受ける
 
-最も一般的なケースは、条件付きアクセスによってアプリの動作が変更されない、または開発者からの変更を必要としない場合です。 アプリが間接的、またはサイレントでサービスのトークンを要求する特定の場合のみ、アプリが条件付きアクセス "チャレンジ" を処理するためにコードを変更する必要があります。 これは、対話型のサインインを要求するだけで実行できる場合があります。 
+最も一般的なケースは、条件付きアクセスによってアプリの動作が変更されない、または開発者からの変更を必要としない場合です。 アプリが間接的、またはサイレントでサービスのトークンを要求する特定の場合のみ、アプリが条件付きアクセス "チャレンジ" を処理するためにコードを変更する必要があります。 これは、対話型のサインインを要求するだけで実行できる場合があります。
 
-具体的には、次のシナリオでは、条件付きアクセス "問題" に対応するためコードが必要になります。 
+具体的には、次のシナリオでは、条件付きアクセス "問題" に対応するためコードが必要になります。
 
 * Microsoft Graph にアクセスするアプリ
 * On-Behalf-Of フローを実行するアプリ
 * 複数のサービスとリソースにアクセスするアプリ
-* ADAL.js を使用するシングル ページ アプリケーション
+* ADAL.js を使用するシングル ページ アプリ
 * リソースを呼び出す Web Apps
 
 条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーの構成方法について詳しくは、「[クイック スタート: Azure Active Directory の条件付きアクセスを使用して特定のアプリケーションに対して MFA を必要にする](../conditional-access/app-based-mfa.md)」をご覧ください。
@@ -87,7 +86,7 @@ Azure AD の条件付きアクセスは、[Azure AD Premium](https://docs.micros
 * Microsoft Graph にアクセスするアプリ
 * On-Behalf-Of フローを実行するアプリ
 * 複数のサービスとリソースにアクセスするアプリ
-* ADAL.js を使用するシングル ページ アプリケーション
+* ADAL.js を使用するシングル ページ アプリ
 
 以下のセクションでは、より複雑な一般的なシナリオについて説明します。 基本的な運用原則では、条件付きアクセス ポリシーは、Microsoft Graph を通してアクセスされた場合を除いて、条件付きアクセス ポリシーが適用されるサービスのトークンが要求されたときに評価されます。
 
@@ -147,7 +146,7 @@ www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>シナリオ: On-Behalf-Of フローを実行するアプリ
 
-このシナリオでは、ネイティブ アプリが Web サービス/API を呼び出す場合について説明します。 呼び出されたサービスは、[On-Behalf-Of フロー](authentication-scenarios.md#application-types-and-scenarios)でダウンストリーム サービスを呼び出します。 ここでは、ダウンストリーム サービス (Web API 2) に、条件付きアクセス ポリシーを適用し、サーバー/デーモン アプリケーションではなく、ネイティブ アプリケーションを使用しています。 
+このシナリオでは、ネイティブ アプリが Web サービス/API を呼び出す場合について説明します。 さらに、そのサービスによって、"On-Behalf-Of" フローでダウンストリーム サービスが呼び出されます。 ここでは、ダウンストリーム サービス (Web API 2) に、条件付きアクセス ポリシーを適用し、サーバー/デーモン アプリケーションではなく、ネイティブ アプリケーションを使用しています。 
 
 ![On-Behalf-Of フローを実行するアプリのフロー ダイアグラム](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -190,9 +189,9 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 アプリが ADAL ライブラリを使用しており、トークンの取得に失敗した場合、常に対話形式で再試行されます。 この対話型の要求が発生すると、エンドユーザーには、条件付きアクセスに準拠する機会が与えられます。 これは、要求が `AcquireTokenSilentAsync` または `PromptBehavior.Never` でない限り該当し、この場合、アプリは対話型の ```AcquireToken``` 要求を実行し、エンドユーザーはポリシーに準拠する機会が与えられます。 
 
-## <a name="scenario-single-page-app-spa-using-adaljs"></a>シナリオ: シングル ページ アプリケーション (SPA) ADAL.js を使用する
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>シナリオ: ADAL.js を使用するシングル ページ アプリ (SPA)
 
-このシナリオでは、ADAL.js を使用して条件付きアクセスで保護されている Web API を呼び出すシングル ページ アプリケーション (SPA) について説明します。 これは、単純なアーキテクチャですが、条件付きアクセスを開発するときに考慮すべき点がいくつかあります。
+このシナリオでは、条件付きアクセスで保護されている Web API を呼び出すための ADAL.js がシングル ページ アプリ (SPA) において使用される場合について説明します。 これは、単純なアーキテクチャですが、条件付きアクセスを開発するときに考慮すべき点がいくつかあります。
 
 ADAL.js では、`login()`、`acquireToken(...)`、`acquireTokenPopup(…)`、および `acquireTokenRedirect(…)` トークンを取得する関数があります。 
 
@@ -202,7 +201,7 @@ ADAL.js では、`login()`、`acquireToken(...)`、`acquireTokenPopup(…)`、�
 
 Web API を呼び出すためにアクセス トークンが必要な場合は、アプリは `acquireToken(…)` を試行します。 トークンのセッションが期限切れか、あるいは条件付きアクセス ポリシーに準拠する必要がある場合は、*acquireToken* 関数が失敗してアプリは `acquireTokenPopup()` または `acquireTokenRedirect()` を使用します。
 
-![ADAL を使用するシングル ページ アプリケーションのフロー ダイアグラム](./media/conditional-access-dev-guide/spa-using-adal-scenario.png)
+![ADAL を使用するシングル ページ アプリのフロー ダイアグラム](./media/conditional-access-dev-guide/spa-using-adal-scenario.png)
 
 条件付きアクセスのシナリオで紹介した例を見てみましょう。 エンドユーザーがサイトに到着し、セッションは開始されていません。 `login()` を呼び出し、多要素認証なしで ID トークンを取得します。 ユーザーがボタンを押し、これにより、アプリは Web API からデータを要求する必要があります。 アプリは `acquireToken()` の呼び出しを試行しますが、ユーザーがまだ多要素認証を実行しておらず、条件付きアクセス ポリシーに準拠する必要があるため、失敗します。
 

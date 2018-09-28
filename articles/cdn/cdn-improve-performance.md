@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/13/2018
 ms.author: magattus
-ms.openlocfilehash: c3a20bd4fa1cccdca7cba0de52620f09fe01abc5
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2468462170f970cd597dd1296417d5b93a88c2ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42142385"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997275"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN でのファイル圧縮によるパフォーマンスの向上
 ファイル圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるため、ファイルの転送速度とページ読み込みのパフォーマンスを向上させることができる簡単で効率的な方法です。 ファイル圧縮により、帯域幅のコストを軽減し、ユーザーへの応答を改善することができます。
@@ -102,13 +102,14 @@ Standard および Premium CDN レベルでは同じ圧縮機能が提供され�
 
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Azure CDN Standard from Microsoft プロファイル
 
-**Azure CDN Standard from Microsoft** プロファイルの場合、すべてのファイルが圧縮対象です。 ただし、ファイルは[圧縮用に構成されている](#enabling-compression) MIME の種類である必要があります。
+**Azure CDN Standard from Microsoft** プロファイルの場合、対象ファイルのみが圧縮されます。 圧縮対象とするには、ファイルは次の条件を満たす必要があります。- [圧縮用に構成されている](#enabling-compression) MIME の種類であること
+- 1 KB より大きく 8 MB より小さいこと
 
 これらのプロファイルでは、次の圧縮エンコードがサポートされています。
 - gzip (GNU zip)
 - brotli 
  
-要求で複数の圧縮の種類がサポートされている場合、それらの圧縮の種類は brotli 圧縮よりも優先されます。
+要求で複数の圧縮の種類がサポートされている場合、brotli 圧縮が優先されます。
 
 アセットの要求で gzip 圧縮が指定され、要求がキャッシュ ミスになった場合、Azure CDN は POP サーバー上で直接アセットの gzip 圧縮を行います。 その後、圧縮ファイルがキャッシュから提供されます。
 

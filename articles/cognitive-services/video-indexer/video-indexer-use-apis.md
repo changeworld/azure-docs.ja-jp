@@ -1,45 +1,43 @@
 ---
-title: Azure Video Indexer API を使用する | Microsoft Docs
+title: 'チュートリアル: Video Indexer API を使用する'
+titlesuffix: Azure Cognitive Services
 description: この記事では、Video Indexer API 基本的な使用方法について説明します。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/25/2018
+ms.component: video-indexer
+ms.topic: tutorial
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 73359955861b88f2bc5ca297c32fa78c2632148c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7bd7ed1b2d2f437ef57598c42ca12ce8bfb174a1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449481"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985567"
 ---
-# <a name="use-azure-video-indexer-api"></a>Azure Video Indexer API を使用する
+# <a name="tutorial-use-the-video-indexer-api"></a>チュートリアル: Video Indexer API を使用する
 
 > [!Note]
 > Video Indexer V1 API は 2018 年 8 月 1 日に非推奨になりました。 今後は Video Indexer v2 API を使用してください。 <br/>Video Indexer v2 API を使用して開発する場合は、[こちら](https://api-portal.videoindexer.ai/)の手順を参照してください。 
 
 Video Indexer は、Microsoft が提供するさまざまなオーディオおよびビデオの人工知能 (AI) テクノロジが 1 つに統合されたサービスです。このサービスを利用すると、開発がより簡単になります。 API は、開発者がクラウド プラットフォームの規模、世界的な展開、可用性、信頼性を気にすることなく、Media AI テクノロジの使用に集中できるように設計されています。 この API を使用すると、ファイルをアップロードし、詳細なビデオの分析情報を取得し、アプリケーションに埋め込む分析情報とプレーヤー ウィジェットの URL を取得するなどのタスクを実行できます。
 
-Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[Azure サブスクリプションと Azure Media Services アカウント](connect-to-azure.md)に接続する Video Indexer アカウントを作成します。 Media アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
+Video Indexer アカウントを作成する場合、無料試用アカウント (一定分数の無料インデックス作成を利用可能) または有料オプション (クォータによる制限がありません) を選択できます。 無料試用アカウントで Video Indexer 使用すると、Web サイト ユーザーは最大 600 分間の無料インデックス作成、API ユーザーは最大 2,400 分間の無料インデックス作成を利用できます。 有料オプションでは、[Azure サブスクリプションと Azure Media Services アカウント](connect-to-azure.md)に接続する Video Indexer アカウントを作成します。 Azure Media Services アカウント関連の料金と同様に、インデックス作成時間 (分単位) の料金がかかります。 
 
-この記事では、開発者が [Video Indexer API](https://api-portal.videoindexer.ai/) を利用する方法について説明します。 Video Indexer サービスのより詳しい概要については、[概要](video-indexer-overview.md)に関する記事を参照してください。
+この記事では、開発者が [Video Indexer API](https://api-portal.videoindexer.ai/) を利用する方法について説明します。
 
 ## <a name="subscribe-to-the-api"></a>API にサブスクライブする
 
-1. サインインします。
-
-    Video Indexer での開発を始めるには、まず [Video Indexer](https://api-portal.videoindexer.ai/) ポータルにサインインする必要があります。 
+1. [Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/)にサインインします。
     
-    ![サインアップ](./media/video-indexer-use-apis/video-indexer-api01.png)
+    ![[サインイン]](./media/video-indexer-use-apis/video-indexer-api01.png)
 
     > [!Important]
     > * Video Indexer へのサインアップ時と同じプロバイダーを使用する必要があります。
     > * 個人用の Google アカウントと Microsoft (Outlook/Live) アカウントは試用アカウントにのみ使用できます。 Azure に接続するアカウントには、Azure AD が必要です。
     > * 1 つの電子メール アドレスで有効にすることができるアカウントは 1 つのみです。 ユーザーが user@gmail.com を使用して LinkedIn にサインインした後に、user@gmail.com を使用して Google にサインインしようとすると、ユーザーは既に存在しているというエラー ページが表示されます。
-
 
 2. サブスクライブします。
 
@@ -91,15 +89,15 @@ Operations API の各呼び出しは、呼び出しの承認スコープと一�
 
 アカウント ID パラメーターは、すべての操作 API 呼び出しに必要です。 アカウント ID は、次のいずれかの方法で取得できる GUID です。
 
-* Video Indexer ポータルを使用して次の手順でアカウント ID を取得します。
+* **Video Indexer** Web サイトを使用して、アカウント ID を取得します。
 
-    1. [videoindexer](https://www.videoindexer.ai/) にサインインします。
+    1. [Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
     2. **[設定]** ページを表示します。
     3. アカウント ID をコピーします。
 
         ![Account ID](./media/video-indexer-use-apis/account-id.png)
 
-* API を使用してプログラムでアカウント ID を取得します。
+* **Video Indexer 開発者ポータル**を使用して、プログラムからアカウント ID を取得します。
 
     [Get accounts](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) API を使用します。
     
@@ -225,7 +223,5 @@ Debug.WriteLine(playerWidgetLink);
 ## <a name="next-steps"></a>次の手順
 
 [出力 JSON の詳細を調べる](video-indexer-output-json.md)
-
-## <a name="see-also"></a>関連項目
 
 [Video Indexer の概要](video-indexer-overview.md)

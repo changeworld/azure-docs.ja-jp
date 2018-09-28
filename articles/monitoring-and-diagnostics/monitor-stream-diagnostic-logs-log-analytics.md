@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 134c33ac28c6a094bdc50deb7206db95bf4436fc
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c419a3c44a38f72d56f2b7b362c62e683fc20c7f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574533"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993019"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Azure 診断ログの Log Analytics へのストリーミング
 
-Azure Log Analytics には、ポータル、PowerShell コマンドレット、Azure CLI 2.0 のいずれかの方法を使い、**[Azure 診断ログ](monitoring-overview-of-diagnostic-logs.md)** をほぼリアルタイムでストリーミングすることができます。
+Azure Log Analytics には、ポータル、PowerShell コマンドレット、Azure CLI のいずれかの方法を使い、**[Azure 診断ログ](monitoring-overview-of-diagnostic-logs.md)** をほぼリアルタイムでストリーミングすることができます。
 
 ## <a name="what-you-can-do-with-diagnostics-logs-in-log-analytics"></a>Log Analytics から診断ログを使ってできること
 
@@ -73,9 +73,9 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resour
 
 workspaceID プロパティに指定するのは、ワークスペースの完全な Azure リソース ID です。Log Analytics ポータルに表示されるワークスペース ID/キーではないので注意してください。
 
-### <a name="via-azure-cli-20"></a>Azure CLI 2.0 の使用
+### <a name="via-azure-cli"></a>Azure CLI の使用
 
-[Azure CLI 2.0](insights-cli-samples.md) を使ってストリーミングを有効にするには、[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使います。
+[Azure CLI](insights-cli-samples.md) を使ってストリーミングを有効にするには、[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) コマンドを使います。
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

@@ -10,30 +10,37 @@ ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2017
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 92990a71a0b138f08c515450ecd71692fa57f297
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 6edcd5b3df7c3c58c6568434f82fbc52cb9e28df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "43185422"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958868"
 ---
 # <a name="branding-guidelines-for-applications"></a>アプリケーションのブランド化ガイドライン
 
-この記事では、Azure Active Directory (Azure AD) でアプリケーションを開発するときに使用するブランド化ガイドラインについて説明します。 Azure AD で管理されている職場または学校のアカウント、あるいは個人のアカウントをサインアップやサインインに使用したいと考えているアプリケーションの利用者向けの案内としてお役立てください。
+Azure Active Directory (Azure AD) を使用してアプリケーションを開発する場合は、(Azure AD で管理されている) 職場や学校のアカウントまたは個人のアカウントをサインアップやサインインに使用したいと考えているアプリケーションの利用者に案内する必要があります。
+
+この記事では、次のことについて説明します。
+
+- Microsoft によって管理される 2 種類のユーザー アカウントと、アプリケーションで Azure AD アカウントを参照する方法の詳細
+- アプリで使用するために Microsoft ロゴを追加する必要があるものの確認
+- アプリで使用する公式の**サインイン**または**Microsoft アカウントでサインイン**のイメージのダウンロード
+- ブランド化とナビゲーションの注意事項の詳細
 
 ## <a name="personal-accounts-vs-work-or-school-accounts-from-microsoft"></a>Microsoft の個人アカウントと職場または学校アカウント
 
 Microsoft は次の 2 種類のユーザー アカウントを管理しています。
 
-* **個人アカウント** (以前の Windows Live ID): このアカウントは、"*個々の*" ユーザーと Microsoft の関係を表し、コンシューマー向けデバイスや Microsoft のサービスにアクセスする際に使用されます。 このアカウントは個人的に使用するためのものです。
-* **職場または学校アカウント:** このアカウントは、Azure Active Directory を使用する組織に代わって Microsoft が管理しています。 このアカウントは、Office 365 や Microsoft の他のビジネス サービスにサインインする際に使用されます。
+- **個人アカウント** (以前の Windows Live ID): このアカウントは、"*個々の*" ユーザーと Microsoft の関係を表し、コンシューマー向けデバイスや Microsoft のサービスにアクセスする際に使用されます。 このアカウントは個人的に使用するためのものです。
+- **職場または学校アカウント:** このアカウントは、Azure Active Directory を使用する組織に代わって Microsoft が管理しています。 このアカウントは、Office 365 や Microsoft の他のビジネス サービスにサインインする際に使用されます。
 
 通常、Microsoft の職場または学校アカウントは、組織 (企業、学校、政府機関) がエンド ユーザー (従業員、学生、公務員) に割り当てます。 このアカウントは、Azure AD プラットフォームのクラウドで直接管理されるか、Windows Server Active Directory などのオンプレミス ディレクトリから Azure AD に同期されます。 職場または学校アカウントの " *管理人* " は Microsoft ですが、アカウントは組織が所有し、管理しています。
 
@@ -41,8 +48,8 @@ Microsoft は次の 2 種類のユーザー アカウントを管理していま
 
 Microsoft は、Azure または Active Directory のブランド名をエンド ユーザーに表示していません。開発者もこれらを表示しないようにする必要があります。
 
-* ユーザーがサインインしたら、できるだけ組織の名前とロゴを使用します。 "組織" のような総称を使用するのではなく、この方法をお勧めします。
-* ユーザーがサインインしていないときは、アカウントを "職場または学校アカウント" と呼び、Microsoft のロゴを使用して、Microsoft がこれらのアカウントを管理していることを伝えます。 "企業アカウント"、"ビジネス アカウント"、"会社アカウント" などの言葉はユーザーの混乱を招くので使用しないでください。
+- ユーザーがサインインしたら、できるだけ組織の名前とロゴを使用します。 "組織" のような総称を使用するのではなく、この方法をお勧めします。
+- ユーザーがサインインしていないときは、アカウントを "職場または学校アカウント" と呼び、Microsoft のロゴを使用して、Microsoft がこれらのアカウントを管理していることを伝えます。 "企業アカウント"、"ビジネス アカウント"、"会社アカウント" などの言葉はユーザーの混乱を招くので使用しないでください。
 
 ## <a name="user-account-pictogram"></a>ユーザー アカウントのピクトグラム
 
@@ -94,7 +101,6 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 | Microsoft アカウントでサインイン (薄い色調) | ![薄い色調のサインイン ボタン PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![薄い色調の Microsoft アカウントでサインイン ボタン SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
 | サインイン (濃い色調)                 | ![濃い色調のサインイン短縮版ボタン PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![濃い色調のサインイン短縮版ボタン SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
 | サインイン (薄い色調)                | ![薄い色調のサインイン短縮版ボタン PNG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![薄い色調のサインイン短縮版ボタン SVG](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
-
 
 ## <a name="branding-dos-and-donts"></a>ブランド化に関する注意事項
 

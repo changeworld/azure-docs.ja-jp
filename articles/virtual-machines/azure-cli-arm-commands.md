@@ -1,6 +1,6 @@
 ---
 title: Resource Manager モードでの Azure CLI コマンド | Microsoft Docs
-description: リソース マネージャー のデプロイ モデルのリソースを管理する Azure コマンド ライン インターフェイス (CLI) コマンド
+description: Resource Manager デプロイ モデルのリソースを管理する Azure コマンド ライン インターフェイス (CLI) コマンド
 services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
 documentationcenter: ''
 author: dlepow
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 8a2bae12fae6a1bf8f5ecbdb2ae01dea5260f3cb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5aecb218b66c06c87446e35e5c7c9ca8108b956c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30839146"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995552"
 ---
 # <a name="azure-cli-commands-in-resource-manager-mode"></a>Resource Manager モードでの Azure CLI コマンド
-この記事では、Azure Resource Manager デプロイメントモデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 Azure リソースおよびリソース グループの一般的な概要については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。  
+この記事では、Azure Resource Manager デプロイ モデルでの Azure リソースの作成と管理に一般的に使用される Azure コマンド ライン インターフェイス (CLI) コマンドの構文とオプションを説明します。 これらのコマンドにアクセスするには、リソース マネージャー (arm) モードで CLI を実行します。 これは完全な参照資料ではありません。ご使用の CLI バージョンで異なるコマンドやパラメーターが表示される場合もあります。 Azure リソースおよびリソース グループの一般的な概要については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。  
 
 > [!NOTE]
-> この記事では、Azure CLI での Resource Manager モードのコマンドを示します。Azure CLI は Azure CLI 1.0 と呼ばれることがあります。 Resource Manager モードでの操作は、次世代のマルチプラットフォーム CLI である [Azure CLI 2.0](/cli/azure/install-az-cli2) で試すこともできます。
+> この記事では、Azure CLI での Resource Manager モードのコマンドを示します。Azure CLI は Azure クラシック CLI と呼ばれることがあります。 Resource Manager モデルでの操作は、次世代のマルチプラットフォーム CLI である [Azure CLI](/cli/azure/install-az-cli2) で試すこともできます。
 >詳細については、[新旧の Azure CLI](/cli/azure/old-and-new-clis)に関するページを参照してください。
 >
 

@@ -5,20 +5,20 @@ author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/02/2016
+ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: 4eeca81e08a0ecae9ba41ccdd2bf8a2f395f579c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fe63ce931da9fbe94b47d00805820affddfb1bc1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264672"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946988"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Microsoft Azure Virtual Machines、Cloud Services、および Web Apps での自動スケールの概要
 この記事では、Microsoft Azure 自動スケールの概要、利点、および使用方法について説明します。  
 
-Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、および [App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/) にのみ適用されます。
+Azure Monitor の自動スケーリングは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)にのみ適用されます。
 
 > [!NOTE]
 > Azure には、2 通りの自動スケールの方法があります。 以前のバージョンの自動スケールは、仮想マシン (可用性セット) に適用されます。 この機能はサポートが限定されているので、より高速で信頼性の高い自動スケールのサポートを得るために、仮想マシン スケール セットに移行することをお勧めします。 この記事には、古い技術を使用する方法についてのリンクも含まれています。  
@@ -41,7 +41,7 @@ Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://az
 仮想マシン スケール セットは、Azure 診断エージェントからのテレメトリ データを使用します。一方、Web アプリおよびクラウド サービスのテレメトリは、Azure インフラストラクチャから直接取得されます。 一般的に使用される統計情報として、CPU 使用率、メモリ使用量、スレッド数、キューの長さ、ディスク使用量などがあります。 使用できるテレメトリ データの一覧については、[自動スケールの一般的なメトリック](insights-autoscale-common-metrics.md)に関するページを参照してください。
 
 ## <a name="custom-metrics"></a>カスタム メトリック
-アプリケーションから出力されている可能性のある独自のカスタム メトリックを利用することもできます。 メトリックを Application Insights に送信するようにアプリケーションを構成している場合は、これらのメトリックを利用して、スケールするかどうかを決定することができます。 
+アプリケーションから出力されている可能性のある独自のカスタム メトリックを利用することもできます。 メトリックを Application Insights に送信するようにアプリケーションを構成している場合は、これらのメトリックを利用して、スケールするかどうかを決定することができます。
 
 ## <a name="time"></a>Time
 スケジュール ベースの規則は、UTC に基づいています。 規則を設定する際に、タイム ゾーンを正しく設定する必要があります。  
@@ -102,7 +102,7 @@ Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://az
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
 ## <a name="supported-services-for-autoscale"></a>自動スケールでサポートされているサービス
-| サービス | スキーマとドキュメント |
+| Service | スキーマとドキュメント |
 | --- | --- |
 | Web Apps |[Web アプリのスケーリング](insights-how-to-scale.md) |
 | Cloud Services |[クラウド サービスの自動スケール](../cloud-services/cloud-services-how-to-scale-portal.md) |
@@ -110,6 +110,7 @@ Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://az
 | Virtual Machines: Windows スケール セット |[Windows での仮想マシン スケール セットのスケーリング](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
 | Virtual Machines: Linux スケール セット |[Linux での仮想マシン スケール セットのスケーリング](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
 | Virtual Machines: Windows の例 |[VM スケール セットに対する Resource Manager テンプレートを使用した高度な自動スケール構成](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
+| API Management サービス|[Azure API Management インスタンスを自動的にスケーリングする](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 
 ## <a name="next-steps"></a>次の手順
 自動スケールについてさらに学習するには、上の一覧にある自動スケールのチュートリアルを使用するか、以下のリソースを参照してください。

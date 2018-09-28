@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 5f40b4c9fff57b105b7d96de69780fea83871032
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 2a7842a50690049507e00b85c8736e63da002503
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302298"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950167"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -66,15 +66,25 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 >新しい ExpressRoute 回線では、パブリック ピアリングは無効になっています。 Azure サービスは、Microsoft ピアリングで利用できます。
 >
 
+* Power BI
+* Dynamics 365 for Finance and Operations (旧称 Dynamics AX Online)
+* ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br>
+  以下のサービスはサポートされていません。
+    * CDN
+    * Azure DevOps Services のロード テスト
+    * Multi-factor Authentication
+    * Traffic Manager
+
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
 
 * [Office 365](http://aka.ms/ExpressRouteOffice365)
 * Dynamics 365 
 * Power BI
 * Azure Active Directory
-* Visual Studio Team Services のロード テスト
+* Azure DevOps Services のロード テスト
 * ほとんどの Azure サービスがサポートされています。 サポートの確認に使うサービスで直接確認してください。<br>以下のサービスは**サポートされていません**。
     * CDN
+    * Azure DevOps Services のロード テスト
     * Multi-factor Authentication
     * Traffic Manager
 
@@ -337,3 +347,11 @@ Office 365 サービスでは、Premium アドオンを有効にする必要が�
 * 2017 年 8 月 1 日より前に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが定義されていない場合でも、すべてのサービス プレフィックスが Microsoft ピアリングでアドバタイズされます。
 
 * 2017 年 8 月 1 日以降に構成された ExpressRoute 回路の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 既定ではプレフィックスは表示されません。
+
+## <a name="globalreach"></a>ExpressRoute Direct (プレビュー)
+
+[!INCLUDE [Global Reach](../../includes/expressroute-direct-faq-include.md)]
+
+## <a name="globalreach"></a>Global Reach (プレビュー)
+
+[!INCLUDE [Global Reach](../../includes/expressroute-global-reach-faq-include.md)]

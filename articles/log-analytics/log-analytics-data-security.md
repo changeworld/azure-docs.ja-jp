@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 4cf04ceeb8650b2978389cefb561ae31e88bc853
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: b91b906db1307343a50ffc3be07d562091f2e335
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282439"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978794"
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
-このドキュメントは、[Azure セキュリティ センター](../security/security-microsoft-trust-center.md)に関する情報を補完する Azure Log Analytics 固有の情報を提供することを目的としています。  
+このドキュメントでは、[Azure セキュリティ センター](../security/security-microsoft-trust-center.md)の情報に加えて、Azure Monitor の機能である Log Analytics に固有の情報を提供することを目的としています。  
 
 この記事は、Log Analytics によるデータの収集、処理、および保護の方法について説明します。 エージェントを使用して Web サービスに接続し、System Center Operations Manager を使用して運用データを収集し、Azure 診断からデータを取得して Log Analytics に使用することができます。 
 
@@ -51,9 +51,9 @@ Log Analytics へのデータの転送時のセキュリティを保証するた
 |プラットフォーム/言語 | サポート | 詳細情報 |
 | --- | --- | --- |
 |Linux | Linux ディストリビューションでは、TLS 1.2 のサポートに関して [OpenSSL](https://www.openssl.org) に依存する傾向があります。  | [OpenSSL の Changelog](https://www.openssl.org/news/changelog.html) を参照して、使用している OpenSSL のバージョンがサポートされていることを確認してください。|
-| Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
-| Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
-| Windows 7 SP1 および Windows Server 2008 R2 SP1 | サポートされていますが、既定では有効になっていません。 | 有効にする方法の詳細については、「[トランスポート層セキュリティ (TLS) のレジストリ設定](https://docs.microsoft.com/en-us/windows-server/security/tls/tls-registry-settings)」を参照してください。  |
+| Windows 8.0 - 10 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには。  |
+| Windows Server 2012 - 2016 | サポートされています。既定で有効になっています。 | [既定の設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)を使用していることを確認するには |
+| Windows 7 SP1 および Windows Server 2008 R2 SP1 | サポートされていますが、既定では有効になっていません。 | 有効にする方法の詳細については、「[トランスポート層セキュリティ (TLS) のレジストリ設定](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings)」を参照してください。  |
 | Windows Server 2008 SP2 | TLS 1.2 のサポートには、更新プログラムが必要です。 | Windows Server 2008 SP2 に [TLS 1.2 のサポートを追加する更新プログラム](https://support.microsoft.com/help/4019276/update-to-add-support-for-tls-1-1-and-tls-1-2-in-windows-server-2008-s)に関するページを参照してください。 |
 
 ## <a name="data-segregation"></a>データの分離
@@ -86,7 +86,7 @@ Log Analytics サービスによってデータが取り込まれた後、デー
 | State |StateChangeEventId、StateId、NewHealthState、OldHealthState、コンテキスト、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
 ## <a name="physical-security"></a>物理的なセキュリティ
-Log Analytics サービスは Microsoft の担当者によって管理されており、すべてのアクティビティ ログは記録され、監査することができます。 Log Analytics は、Azure サービスとして動作し、すべての Azure コンプライアンスとセキュリティの要件を満たしています。 Azure の資産の物理的なセキュリティに関する詳細は、「 [Microsoft Azure セキュリティの概要](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)」の 18 ページを参照してください。 転送や終了を含む Log Analytics サービスへの責任がなくなったユーザーに対する、領域をセキュリティで保護する物理的なアクセス権は、1 営業日以内に変更されます。 使用されるグローバルな物理インフラストラクチャについては、[Microsoft データ センター](https://azure.microsoft.com/en-us/global-infrastructure/)を参照してください。
+Log Analytics サービスは Microsoft の担当者によって管理されており、すべてのアクティビティ ログは記録され、監査することができます。 Log Analytics は、Azure サービスとして動作し、すべての Azure コンプライアンスとセキュリティの要件を満たしています。 Azure の資産の物理的なセキュリティに関する詳細は、「 [Microsoft Azure セキュリティの概要](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)」の 18 ページを参照してください。 転送や終了を含む Log Analytics サービスへの責任がなくなったユーザーに対する、領域をセキュリティで保護する物理的なアクセス権は、1 営業日以内に変更されます。 使用されるグローバルな物理インフラストラクチャについては、[Microsoft データ センター](https://azure.microsoft.com/global-infrastructure/)を参照してください。
 
 ## <a name="incident-management"></a>インシデント管理
 Log Analytics には、すべての Microsoft サービスが準拠するインシデント管理プロセスがあります。 まとめると次のようになります。
@@ -117,7 +117,7 @@ Log Analytics ソフトウェア開発およびサービス チームの情報�
 
 開発チームの各メンバーは、正規のアプリケーション セキュリティのトレーニングを受けています。 内部的には、ソフトウェア開発用に、バージョン管理システムを使用しています。 各ソフトウェア プロジェクトは、バージョン管理システムによって保護されています。
 
-Microsoft には、Microsoft のすべてのサービスを監視して評価する、セキュリティとコンプライアンスのチームがあります。 情報セキュリティ責任者がチームを構成します。彼らは、Log Analytics を開発するエンジニアリング部門とは関係ありません。 セキュリティ責任者には独自の管理チェーンがあり、製品とサービスについて独立した評価を行い、セキュリティとコンプライアンスを確保します。
+Microsoft には、Microsoft のすべてのサービスを監視して評価する、セキュリティとコンプライアンスのチームがあります。 情報セキュリティ責任者がチームを構成します。彼らは、Log Analytics を開発するエンジニアリング チームとは関係ありません。 セキュリティ責任者には独自の管理チェーンがあり、製品とサービスについて独立した評価を行い、セキュリティとコンプライアンスを確保します。
 
 Microsoft の取締役会には、Microsoft におけるすべての情報セキュリティ プログラムに関する年次報告書が提出されます。
 
@@ -176,7 +176,7 @@ Windows または管理サーバー エージェントのキャッシュされ�
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>手順 3.Log Analytics サービスでデータを受信して処理する
 Log Analytics サービスでは、Azure 認証で証明書とデータの整合性を検証することにより、入力されるデータが信頼できる発行元からのものであることを確認します。 未処理の生データは、リージョンの Azure Event Hub に格納され、データは最終的に保存されます。 保存されているデータの種類は、インポートしてデータを収集するために使用したソリューションの種類によって異なります。 次に、Log Analytics サービスは、生データを処理してデータベースに取り込みます。
 
-データベースに格納されている収集済みデータのリテンション期間は、選択された料金プランによって異なります。 *無料*プランの場合、収集されたデータは 7 日間使用できます。 "*有料*" プランの場合、収集したデータは既定で 31 日間利用でき、730 日まで延長できます。 データの機密性を確保するために、データは Azure ストレージに暗号化されて格納されます。 過去 2 週間以内のデータは SSD ベースのキャッシュにも格納されます。このキャッシュは現在暗号化されていません。  2018 年の後半にこのような暗号化をサポートする予定です。  
+データベースに格納されている収集済みデータのリテンション期間は、選択された料金プランによって異なります。 *無料*プランの場合、収集されたデータは 7 日間使用できます。 "*有料*" プランの場合、収集したデータは既定で 31 日間利用でき、730 日まで延長できます。 データは、データの機密性を保証するために、Azure ストレージに暗号化され保存されます。そして、そのデータは、ローカル冗長ストレージ (LRS) を使用してローカルのリージョン内にレプリケートされます。 過去 2 週間以内のデータは SSD ベースのキャッシュにも格納されます。このキャッシュは現在暗号化されていません。  現在 SSD ベースのキャッシュの暗号化をサポートするために取り組んでいます。      
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4.Log Analytics を使用してデータにアクセスする
 Log Analytics ワークスペースにアクセスするには、設定済みの組織アカウントまたは Microsoft アカウントを使用して Azure Portal にサインインします。 ポータルと Log Analytics サービス間のすべてのトラフィックは、セキュリティで保護された HTTPS チャネル経由で送信されます。 ポータルを使用する場合、セッション ID がユーザーのクライアント (Web ブラウザー) で生成され、データはセッションが終了するまでローカル キャッシュに保存されます。 セッションが終了すると、キャッシュが削除されます。 個人を特定できる情報が含まれないクライアント側の Cookie は、自動的に削除されません。 セッションの Cookie は HTTPOnly としてマークされ、セキュリティで保護されます。 あらかじめ決められたアイドル期間の後は、Azure Portal セッションが終了します。

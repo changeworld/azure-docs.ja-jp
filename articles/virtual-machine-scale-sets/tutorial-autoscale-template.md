@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: da4f06ff4e1478043bc147c2c08083e118bccbe4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4532355130fff987e25c5c804630fb6bdd7699df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723121"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959837"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>チュートリアル: Azure テンプレートを使用して仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 このチュートリアルで学習する内容は次のとおりです。
@@ -36,7 +36,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.29 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.29 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
 
 
 ## <a name="define-an-autoscale-profile"></a>自動スケール プロファイルの定義
@@ -81,7 +81,7 @@ Azure テンプレート内で自動スケール プロファイルを定義す�
 | *threshold*       | 自動スケール ルールがアクションをトリガーする値。                                                      | 70%             |
 | *direction*       | ルールが適用されるときにスケール セットをスケールインするかスケールアウトするかを定義します。                                              | Increase (増加)        |
 | *type*            | VM インスタンスの数を特定の値で変更することを示します。                                    | 変更数    |
-| *値*           | ルールが適用されるときにスケールインまたはスケールアウトする VM インスタンスの数。                                             | 3               |
+| *value*           | ルールが適用されるときにスケールインまたはスケールアウトする VM インスタンスの数。                                             | 3               |
 | *cooldown*        | ルールを再度適用する前に待機する時間。この値を超えると、自動スケール操作が反映されます。 | 5 分       |
 
 次のルールを、前のセクションの *Microsoft.insights/autoscalesettings* リソース プロバイダーのプロファイル セクションに追加します。
@@ -272,7 +272,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Azure CLI 2.0 を使用してスケール セットを自動的にスケールインまたはスケールアウトする方法について学習しました。
+このチュートリアルでは、Azure CLI を使用してスケール セットを自動的にスケールインまたはスケールアウトする方法について学習しました。
 
 > [!div class="checklist"]
 > * スケール セットの自動スケールを使用する
@@ -280,7 +280,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > * VM インスタンスのストレステストを行い、自動スケール ルールをトリガーする
 > * 需要の減少に合わせて元のサイズに自動的にスケーリングする
 
-実際に動作している仮想マシン スケール セットの例については、次のサンプルの Azure CLI 2.0 サンプル スクリプトを参照してください。
+実際に動作している仮想マシン スケール セットの例については、次のサンプルの Azure CLI サンプル スクリプトを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure CLI 2.0 用のスケール セット スクリプトのサンプル](cli-samples.md)
+> [Azure CLI 用のスケール セット スクリプトのサンプル](cli-samples.md)

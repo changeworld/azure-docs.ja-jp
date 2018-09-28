@@ -1,0 +1,2 @@
+>[!Note]
+>**この記事は非推奨となっています。** このサービスの以前のバージョンについては、サポートを順次終了いたします。 [サポートのタイムラインをご確認ください](../articles/machine-learning/service/overview-what-happened-to-workbench.md#timeline)。 こちらの[クイック スタート](../articles/machine-learning/service/index.yml)を参考に、最新バージョンの使用を開始してください。

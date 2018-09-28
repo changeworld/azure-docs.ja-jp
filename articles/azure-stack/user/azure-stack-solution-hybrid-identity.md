@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/22/2018
+ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: a57afb4a90da5877879afddc35545e0bfef622a7
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: bed67c0213ed5715b8b3d8fd393d8d856e0ea15b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808164"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964992"
 ---
 # <a name="tutorial-configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>チュートリアル: Azure および Azure Stack アプリケーションのハイブリッド クラウド ID を構成する
 
@@ -37,10 +37,17 @@ Azure Stack 内の Azure Resource Manager を使用したデプロイまたは�
 このチュートリアルでは、以下を実現するためのサンプル環境を構築します。
 
 > [!div class="checklist"]
-> * グローバル Azure および Azure Stack でハイブリッド ID を確立する
-> * Azure Stack API にアクセスするためのトークンを取得します。
+> - グローバル Azure および Azure Stack でハイブリッド ID を確立する
+> - Azure Stack API にアクセスするためのトークンを取得します。
 
 このチュートリアルの手順を行うには、Azure Stack オペレーターのアクセス許可が必要です。
+
+> [!Tip]  
+> ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack は Azure の拡張機能です。 Azure Stack は、オンプレミスの環境にクラウド コンピューティングの俊敏性とイノベーションを提供します。これにより、どこでもハイブリッド アプリをビルドしてデプロイできる唯一のハイブリッド クラウドが実現されます。  
+> 
+> ホワイト ペーパー「[Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars)」では、ハイブリッドアプリケーションの設計、デプロイ、および操作に関するソフトウェア品質の重要な要素 (配置、スケーラビリティ、可用性、回復性、管理の容易性、セキュリティ) について概説しています。 これらの設計の考慮事項は、ハイブリッド アプリケーションの設計を最適化したり、運用環境での課題を最小限に抑えたりするのに役立ちます。
+
 
 ## <a name="create-a-service-principal-for-azure-ad-in-the-portal"></a>ポータルで Azure AD のサービス プリンシパルを作成する
 

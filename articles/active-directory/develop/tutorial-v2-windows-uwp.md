@@ -16,14 +16,18 @@ ms.workload: identity
 ms.date: 04/20/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 48d03b590d718cf82d692dc177a69f6d54de43d1
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 4afd4ce5b8a0ab4c076ebc3c587605dfe1204b8a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495916"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966386"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
+
+
+> [!div renderon="docs"]
+> [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 このガイドでは、ネイティブのユニバーサル Windows プラットフォーム (UWP) アプリケーションがアクセス トークンを要求し、Microsoft Graph API を呼び出す方法について説明します。 このガイドは、Azure Active Directory v2 エンドポイントのアクセス トークンを必要とする他の API にも適用されます。
 
@@ -71,11 +75,14 @@ ms.locfileid: "39495916"
 2. 以下のコマンドをコピーして、**パッケージ マネージャー コンソール**のウィンドウに貼り付けます。
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre
+    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
     ```
 
 > [!NOTE]
 > このコマンドを実行すると、[Microsoft Authentication Library](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) がインストールされます。 MSAL は、Azure Active Directory v2 で保護された API にアクセスするユーザー トークンを取得、キャッシュ、および更新します。
+
+> [!NOTE]
+> このチュートリアルでは、MSAL.NET の最新バージョンはまだ使用していませんが、更新に取り組んでいます。
 
 ## <a name="initialize-msal"></a>MSAL の初期化
 この手順は、トークンの処理など、MSAL とのやり取りを処理するクラスを作成するために役立ちます。

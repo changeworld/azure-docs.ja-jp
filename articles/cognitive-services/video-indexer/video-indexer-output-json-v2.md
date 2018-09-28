@@ -1,20 +1,21 @@
 ---
-title: v2 API によって生成される Azure Video Indexer 出力を調べる | Microsoft Docs
+title: v2 API によって生成される Video Indexer の出力を調べる
+titlesuffix: Azure Cognitive Services
 description: このトピックでは、v2 API によって生成される Video Indexer の出力を調べます。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/25/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 43cc02417fad8a2fa46bd309235951393cd55b8a
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 76f83e7ad70e3e1906bc1aa90c74d600053aeb6f
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40187379"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985646"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>v2 API によって生成される Video Indexer の出力を調べる
 
@@ -23,7 +24,7 @@ ms.locfileid: "40187379"
 
 **Get Video Index** API を呼び出して、応答の状態が OK になると、応答コンテンツとして詳細な JSON 出力が表示されます。 JSON コンテンツには、指定されたビデオの分析情報の詳細が含まれています。 分析情報には、トランスクリプト、ocr、顔、トピック、ブロックなどのディメンションが含まれます。ディメンションには、各ディメンションがいつビデオに表示されたかを示す時間の範囲のインスタンスが含まれます。  
 
-Video Indexer ポータルのビデオの **[再生]** ボタンを押して、ビデオの要約された分析情報を視覚的に確認することもできます。 詳しくは、「[View and edit video insights](video-indexer-view-edit.md)」(ビデオの分析情報の表示と編集) をご覧ください。
+[Video Indexer](https://www.videoindexer.ai/) Web サイトのビデオの **[再生]** ボタンを押して、ビデオの要約された分析情報を視覚的に確認することもできます。 詳しくは、「[View and edit video insights](video-indexer-view-edit.md)」(ビデオの分析情報の表示と編集) をご覧ください。
 
 ![洞察](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
@@ -90,6 +91,8 @@ Video Indexer ポータルのビデオの **[再生]** ボタンを押して、�
 |labels| 0 以上のラベルを含めることができます。 詳細については、「[ラベル](#labels)」をご覧ください。|
 |brands| 0 以上のブランドを含めることができます。 詳しくは、「[ブランド](#brands)」をご覧ください。|
 |statistics | 詳しくは、「[統計](#statistics)」をご覧ください。|
+|emotions| 0 個以上の emotions が含まれている場合があります。 詳しくは、「[emotions](#emotions)」をご覧ください。|
+|topics|0 個以上の topics が含まれている場合があります。 [topics](#topics) ディメンション。|
 
 ## <a name="videos"></a>videos
 
@@ -165,6 +168,8 @@ Video Indexer ポータルのビデオの **[再生]** ボタンを押して、�
 |sentiments|[センチメント](#sentiments) ディメンション|
 |visualContentModeration|[visualContentModeration](#visualcontentmoderation) ディメンション|
 |textualConentModeration|[textualConentModeration](#textualconentmoderation) ディメンション|
+|emotions| [emotions](#emotions) ディメンション。|
+|topics|[topics](#topics) ディメンション。|
 
 例:
 
@@ -320,7 +325,6 @@ instances|このブロックの時間範囲の一覧|
     ]
 }
 ] 
-
 ```
 
 #### <a name="faces"></a>faces
@@ -444,7 +448,7 @@ instances|このブロックの時間範囲の一覧|
           "id": 0,
           "instances": [
             {
-          "thumbnailId": "00000000-0000-0000-0000-000000000000",
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",
               "start": "00: 00: 00.1670000",
               "end": "00: 00: 00.2000000"
             }
@@ -453,7 +457,7 @@ instances|このブロックの時間範囲の一覧|
       ],
       "instances": [
         {
-       "thumbnailId": "00000000-0000-0000-0000-000000000000",   
+            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
           "start": "00: 00: 00.2000000",
           "end": "00: 00: 05.0330000"
         }
@@ -466,7 +470,7 @@ instances|このブロックの時間範囲の一覧|
           "id": 1,
           "instances": [
             {
-          "thumbnailId": "00000000-0000-0000-0000-000000000000",        
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
               "start": "00: 00: 05.2670000",
               "end": "00: 00: 05.3000000"
             }
@@ -667,10 +671,144 @@ visualContentModeration ブロックには、Video Indexer で成人向けコン
 |bannedWordsCount |禁止された単語の数|
 |bannedWordsRatio |単語の合計数の比率|
 
+#### <a name="emotions"></a>emotions
+
+Video Indexer では、音声とオーディオの手掛かりに基づいて感情を識別します。識別される感情は、喜び、悲しみ、怒り、または恐怖の可能性があります。
+
+|Name|説明|
+|---|---|
+|id|感情の ID。|
+|type|音声とオーディオの手掛かりに基づいて識別された感情の瞬間。この感情は、喜び、悲しみ、怒り、または恐怖の可能性があります。|
+|instances|この感情が出現した時間範囲の一覧。|
+
+```json
+"emotions": [{
+    "id": 0,
+    "type": "Fear",
+    "instances": [{
+      "adjustedStart": "0:00:39.47",
+      "adjustedEnd": "0:00:45.56",
+      "start": "0:00:39.47",
+      "end": "0:00:45.56"
+    },
+    {
+      "adjustedStart": "0:07:19.57",
+      "adjustedEnd": "0:07:23.25",
+      "start": "0:07:19.57",
+      "end": "0:07:23.25"
+    }]
+  },
+  {
+    "id": 1,
+    "type": "Anger",
+    "instances": [{
+      "adjustedStart": "0:03:55.99",
+      "adjustedEnd": "0:04:05.06",
+      "start": "0:03:55.99",
+      "end": "0:04:05.06"
+    },
+    {
+      "adjustedStart": "0:04:56.5",
+      "adjustedEnd": "0:05:04.35",
+      "start": "0:04:56.5",
+      "end": "0:05:04.35"
+    }]
+  },
+  {
+    "id": 2,
+    "type": "Joy",
+    "instances": [{
+      "adjustedStart": "0:12:23.68",
+      "adjustedEnd": "0:12:34.76",
+      "start": "0:12:23.68",
+      "end": "0:12:34.76"
+    },
+    {
+      "adjustedStart": "0:12:46.73",
+      "adjustedEnd": "0:12:52.8",
+      "start": "0:12:46.73",
+      "end": "0:12:52.8"
+    },
+    {
+      "adjustedStart": "0:30:11.29",
+      "adjustedEnd": "0:30:16.43",
+      "start": "0:30:11.29",
+      "end": "0:30:16.43"
+    },
+    {
+      "adjustedStart": "0:41:37.23",
+      "adjustedEnd": "0:41:39.85",
+      "start": "0:41:37.23",
+      "end": "0:41:39.85"
+    }]
+  },
+  {
+    "id": 3,
+    "type": "Sad",
+    "instances": [{
+      "adjustedStart": "0:13:38.67",
+      "adjustedEnd": "0:13:41.3",
+      "start": "0:13:38.67",
+      "end": "0:13:41.3"
+    },
+    {
+      "adjustedStart": "0:28:08.88",
+      "adjustedEnd": "0:28:18.16",
+      "start": "0:28:08.88",
+      "end": "0:28:18.16"
+    }]
+  }
+],
+```
+
+#### <a name="topics"></a>topics
+
+Video Indexer では、トランスクリプトから主なトピックを推論します。 可能な場合は、第 1 レベルの [IPTC](https://iptc.org/standards/media-topics/) 分類が含まれています。 
+
+|Name|説明|
+|---|---|
+|id|トピックの ID。|
+|name|トピック名 (例:「医薬品」)。|
+|referenceId|トピックの階層を反映している階層リンク。 例:「健康と福祉/医療と健康管理/医薬品」。|
+|confidence|範囲が [0,1] の信頼度スコア。 高いほど信頼度が高くなります。|
+|language|トピックで使用されている言語。|
+|iptcName|IPTC メディア コード名 (検出された場合)。|
+|instances |現在、Video Indexer は時間間隔に対してトピックにインデックスを付けないため、ビデオ全体が間隔として使用されます。|
+
+```json
+"topics": [{
+    "id": 0,
+    "name": "INTERNATIONAL RELATIONS",
+    "referenceId": "POLITICS AND GOVERNMENT/FOREIGN POLICY/INTERNATIONAL RELATIONS",
+    "referenceType": "VideoIndexer",
+    "confidence": 1,
+    "language": "en-US",
+    "instances": [{
+        "adjustedStart": "0:00:00",
+        "adjustedEnd": "0:03:36.25",
+        "start": "0:00:00",
+        "end": "0:03:36.25"
+    }]
+}, {
+    "id": 1,
+    "name": "Politics and Government",
+    "referenceType": "VideoIndexer",
+    "iptcName": "Politics",
+    "confidence": 0.9041,
+    "language": "en-US",
+    "instances": [{
+        "adjustedStart": "0:00:00",
+        "adjustedEnd": "0:03:36.25",
+        "start": "0:00:00",
+        "end": "0:03:36.25"
+    }]
+}]
+. . .
+```
 
 ## <a name="next-steps"></a>次の手順
 
-[Video Indexer API](https://api-portal.videoindexer.ai)
+[Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai)
 
 アプリケーションにウィジェットを埋め込む方法については、「[Embed Video Indexer widgets into your applications](video-indexer-embed-widgets.md)」(アプリケーションに Video Indexer ウィジェットを埋め込む) を参照してください。 
 

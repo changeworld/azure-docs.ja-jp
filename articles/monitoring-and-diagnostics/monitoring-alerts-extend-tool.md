@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 21ba95a7b3efff177afe63d22da3f6ba9848ded2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d70eecb6a5d6bafbfa6507dbe8b1bcb1cad67191
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301033"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990248"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>アラートを Log Analytics から Azure アラートに拡張する
 Azure Log Analytics のアラート機能は、Azure アラートに置き換わりつつあります。 この移行の一環として、Log Analytics で最初に構成したアラートは Azure に拡張されます。 アラートが自動的に Azure に移動されるのを待ちたくない場合は、次の方法でプロセスを開始できます。
@@ -22,7 +22,7 @@ Azure Log Analytics のアラート機能は、Azure アラートに置き換わ
 - AlertsVersion API を使ってプログラムによって開始する。  
 
 > [!NOTE]
-> Microsoft は 2018 年 5 月 14 日より、完了するまで反復される一連の処理で、Log Analytics で作成されたアラートを自動的に Azure アラートに拡張します。 Microsoft では Azure へのアラートの移行を予定しており、この移行中、アラートは Operations Management Suite ポータルと Azure portal の両方から管理できます。 このプロセスは破棄や中断を伴いません。  
+> Microsoft は 2018 年 5 月 14 日より、完了するまで反復される一連の処理で、Log Analytics のパブリック クラウド インスタンスで作成されたアラートを自動的に Azure アラートに拡張します。 [アクション グループ](monitoring-action-groups.md)の作成でなんらかの問題がある場合は、[これらの修復手順](monitoring-alerts-extend-tool.md#troubleshooting)を使用して、アクション グループを自動作成させます。 2018 年 7 月 5日まで、これらの手順を使用できます。 *Log Analytics の Azure Goverment およびソブリン クラウド ユーザーには適用されません*。 
 
 ## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>オプション 1: Operations Management Suite ポータルから開始する
 次の手順では、Operations Management Suite ポータルからワークスペースのアラートを拡張する方法について説明します。  
@@ -457,7 +457,7 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
 アラートを拡張するプロセスの途中で問題が発生し、必要な[アクション グループ](monitoring-action-groups.md)を作成できないことがあります。 このような場合は、エラー メッセージが Operation Management Suite ポータルの **[アラート]** セクションのバナーに表示されます。または、API に対する GET 呼び出しの完了時に表示されます。
 
 > [!IMPORTANT]
-> 2018 年 7 月 5日までに次の修復手順を実行しない場合、アラートは Azure で実行されますが、アクションや通知は実行されません。 アラートの通知を取得するには、[アクション グループ](monitoring-action-groups.md)を手動で編集して追加するか、前述の[カスタム PowerShell スクリプト](#option-3---using-custom-powershell-script)を使用する必要があります。
+> Azure パブリック クラウド ベースの Log Analytics ユーザーが 2018 年 7 月 5日までに次の修復手順を実行しない場合、アラートは Azure で実行されますが、アクションや通知は実行されません。 アラートの通知を取得するには、[アクション グループ](monitoring-action-groups.md)を手動で編集して追加するか、前述の[カスタム PowerShell スクリプト](#option-3---using-custom-powershell-script)を使用する必要があります。
 
 各エラーの修復手順を次に示します。
 - **エラー: Scope Lock is present at subscription/resource group level for write operations (サブスクリプション/リソース グループ レベルに書き込み操作のスコープ ロックが存在します)**:   ![スコープ ロックのエラー メッセージが強調表示されている Operation Management Suite ポータルの [アラートの設定] ページのスクリーンショット](./media/monitor-alerts-extend/ErrorScopeLock.png)

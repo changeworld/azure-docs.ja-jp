@@ -10,23 +10,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: f57a7f1cc255f9c4553384a7568beee1c2ed1752
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 59b637e6887a645430d902cd846cacda13b14cfe
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41946483"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972812"
 ---
-# <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Azure Stack での Azure CLI 2.0 による API バージョンのプロファイルの使用
+# <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Azure Stack での Azure CLI による API バージョンのプロファイルの使用
 
 この記事の手順に従うと、Linux、Mac、Windows クライアントのプラットフォームから Azure Stack Development Kit のリソースを管理するように Azure コマンド ライン インターフェイス (CLI) を設定できます。
 
 ## <a name="install-cli"></a>CLI のインストール
 
-開発ワークステーションにサインインし、CLI をインストールします。 Azure Stack には、Azure CLI バージョン 2.0 が必要です。 このバージョンは、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」で説明されている手順を使用してインストールできます。 インストールが正常に完了したことを確認するには、ターミナルまたはコマンド プロンプト ウィンドウを開いて次のコマンドを実行します。
+開発ワークステーションにサインインし、CLI をインストールします。 Azure Stack には、Azure CLI のバージョン 2.0 以降が必要です。 このバージョンは、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」で説明されている手順を使用してインストールできます。 インストールが正常に完了したことを確認するには、ターミナルまたはコマンド プロンプト ウィンドウを開いて次のコマンドを実行します。
 
 ```azurecli
 az --version
@@ -94,7 +94,7 @@ $subjectEntry = [string]::Format("# Subject: {0}", $root.Subject)
 $labelEntry   = [string]::Format("# Label: {0}", $root.Subject.Split('=')[-1])
 $serialEntry  = [string]::Format("# Serial: {0}", $root.GetSerialNumberString().ToLower())
 $md5Entry     = [string]::Format("# MD5 Fingerprint: {0}", $md5Hash)
-$sha1Entry    = [string]::Format("# SHA1 Finterprint: {0}", $sha1Hash)
+$sha1Entry    = [string]::Format("# SHA1 Fingerprint: {0}", $sha1Hash)
 $sha256Entry  = [string]::Format("# SHA256 Fingerprint: {0}", $sha256Hash)
 $certText = (Get-Content -Path $pemFile -Raw).ToString().Replace("`r`n","`n")
 
@@ -160,8 +160,11 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
 
    ```azurecli
    az cloud update \
-     --profile 2017-03-09-profile
+     --profile 2018-03-01-hybrid
    ```
+
+    >[!NOTE]  
+    >1808 ビルドより前のバージョンの Azure Stack を実行している場合は、**2018-03-01-hybrid** の API バージョンのプロファイルではなく、**2017-03-09-profile** の API バージョンのプロファイルを使用する必要があります。
 
 1. `az login` コマンドを使用して、Azure Stack 環境にサインインします。 Azure Stack 環境には、ユーザーまたは[サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-application-objects)としてサインインできます。 
 

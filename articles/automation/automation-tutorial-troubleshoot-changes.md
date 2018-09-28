@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: 変更, 追跡, オートメーション
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 08/27/2018
+ms.date: 09/12/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: fd94fd234067f63eab424c7f757d4adf842e7b46
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 16d5a025f0c0ff571298e0f528fb9119e37950f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43120587"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995262"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>環境の変更に関する問題を解決する
 
@@ -32,6 +32,7 @@ ms.locfileid: "43120587"
 > * アクティビティ ログの接続を有効にする
 > * イベントをトリガーする
 > * 変更を表示する
+> * アラートを構成する
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,9 +42,9 @@ ms.locfileid: "43120587"
 * 監視およびアクションの Runbook と監視タスクを保持する、[Automation アカウント](automation-offering-get-started.md)。
 * オンボードする[仮想マシン](../virtual-machines/windows/quick-create-portal.md)。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal (http://portal.azure.com) にログインします。
+Azure Portal ( http://portal.azure.com ) にサインインします。
 
 ## <a name="enable-change-tracking-and-inventory"></a>変更履歴とインベントリを有効にする
 
@@ -66,20 +67,22 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 ## <a name="using-change-tracking-in-log-analytics"></a>Log Analytics で変更履歴を使用する
 
-変更の追跡は、Log Analytics に送信されるログ データを生成します。 クエリを実行してログを検索するには、**[変更の追跡]** ウィンドウの上部にある **[Log Analytics]** ウィンドウを選択します。
-変更履歴データは、型 **ConfigurationChange** に格納されます。 次のサンプル Log Analytics クエリは、停止しているすべての Windows サービスを返します。
+変更の追跡は、Log Analytics に送信されるログ データを生成します。
+クエリを実行してログを検索するには、**[変更の追跡]** ウィンドウの上部にある **[Log Analytics]** ウィンドウを選択します。
+変更履歴データは、型 **ConfigurationChange** に格納されます。
+次のサンプル Log Analytics クエリは、停止しているすべての Windows サービスを返します。
 
 ```
 ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-Log Analytics でのログ ファイルの実行と検索については、[Azure Log Analytics ](https://docs.loganalytics.io/index) に関するページを参照してください。
+Log Analytics でのログ ファイルの実行と検索については、[Azure Log Analytics ](../log-analytics/log-analytics-queries.md) に関するページを参照してください。
 
 ## <a name="configure-change-tracking"></a>変更履歴を構成する
 
 変更履歴を使用すると、VM の構成の変更を追跡できます。 次にレジストリ キーとファイルの追跡を構成する手順について説明します。
- 
+
 収集および追跡するファイルとレジストリ キーを選択するには、**[変更履歴]** ページの上部にある **[設定の編集]** を選択します。
 
 > [!NOTE]
@@ -92,7 +95,7 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 1. **[Windows レジストリ]** タブで **[追加]** を選択します。
     **[変更履歴用の Windows レジストリを追加する]** ウィンドウが開きます。
 
-3. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、**[保存]** をクリックします。
+1. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、**[保存]** をクリックします。
 
 |プロパティ  |説明  |
 |---------|---------|
@@ -168,6 +171,49 @@ VM 内から **[操作]** の **[変更履歴]** を選択します。
 
 ![ポータルで変更の詳細を表示する](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
+## <a name="configure-alerts"></a>アラートを構成する
+
+Azure portal に変更を表示することは有益ですが、サービスの停止などの変化が発生したときにアラートを受信できると、もっと便利です。
+
+サービス停止アラートを追加するには、Azure portal で **[監視]** に移動します。 **[共有サービス]** で、**[アラート]** を選択し、**[+ 新しいアラート ルール]** をクリックします。
+
+**[1. アラートの条件を定義します]** で、**[+ ターゲットの選択]** をクリックします。 **[Filter by resource type]\(リソースの種類でフィルター処理\)** で **[Log Analytics]** を選択します。 Log Analytics ワークスペースを選択し、**[完了]** をクリックします。
+
+![リソースの選択](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
+
+**[+ 条件の追加]** を選択します。
+**[シグナル ロジックの構成]** の表で、**[カスタム ログ検索]** を選択します。 [検索クエリ] ボックスに次のクエリを入力します。
+
+```loganalytics
+ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
+```
+
+このクエリは、指定した時間帯に W3SVC サービスが停止したコンピューターを返します。
+
+**[アラート ロジック]** の **[しきい値]** に「**0**」を入力します。 完了したら、**[完了]** をクリックします。
+
+![シグナル ロジックの構成](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
+
+**[2. アラートの詳細を定義します]** で、アラートの名前と説明を入力します。 **[重大度]** を、**[情報 (重大度 2)]**、**[警告 (重大度 1)]** または **[重大 (重大度 0)]** に設定します。
+
+![アラートの詳細を定義する](./media/automation-tutorial-troubleshoot-changes/define-alert-details.png)
+
+**[3. アクション グループを定義します]** で、**[新しいアクション グループ]** を選択します。 アクション グループとは、複数のアラートで使用できるアクションのグループです。 アクションには、電子メール通知、Runbook、webhook などがありますが、これらに限定されるわけではありません。 アクション グループの詳細については、[アクション グループの作成および管理](../monitoring-and-diagnostics/monitoring-action-groups.md)に関するページを参照してください。
+
+**[アクション グループ名]** ボックスに、アラートの名前と短い名前を入力します。 短い名前は、通知がこのグループを使用して送信されるときに長い名前の代わりに使用されます。
+
+**[アクション]** に、**[電子メール管理者]** などのアクションの名前を入力します。 **[アクションの種類]** で、**[電子メール/SMS/プッシュ/音声]** を選びます。 **[詳細]** で、**[詳細の編集]** を選択します。
+
+![アクション グループの追加](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+
+**[電子メール/SMS/プッシュ/音声]** ウィンドウで、名前を入力します。 **[電子メール]** チェック ボックスをオンにして、有効な電子メール アドレスを入力します。 **[電子メール/SMS/プッシュ/音声]** ページで **[OK]** をクリックし、**[アクション グループの追加]** ページで **[OK]** をクリックします。
+
+アラート電子メールの件名をカスタマイズするには、**[ルールの作成]** の **[アクションをカスタマイズする]** で、**[電子メールの件名]** を選択します。 完了したら、**[アラート ルールの作成]** を選択します。 このアラートにより、更新プログラムの展開が成功したことと、その更新プログラムの展開の実行対象となったコンピューターが通知されます。
+
+次の図は、W3SVC サービスが停止したときに受信する電子メールの例です。
+
+![email](./media/automation-tutorial-troubleshoot-changes/email.png)
+
 ## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
@@ -179,6 +225,7 @@ VM 内から **[操作]** の **[変更履歴]** を選択します。
 > * アクティビティ ログの接続を有効にする
 > * イベントをトリガーする
 > * 変更を表示する
+> * アラートを構成する
 
 さらに詳しく学ぶには、変更履歴とインベントリ ソリューションの概要に進んでください。
 

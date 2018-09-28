@@ -1,26 +1,27 @@
 ---
-title: Azure Video Indexer を使用してビデオ内の正確な場面を見つける | Microsoft Docs
-description: このトピックでは、ビデオ内の正確な場面を見つける方法を示します。
+title: ビデオ内の正確な場面の検出 - Video Indexer
+titlesuffix: Azure Cognitive Services
+description: このトピックでは、Video Indexer を使用して、ビデオ内の正確な場面を見つける方法を示します。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/31/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 1cffa067d8028adab4dbcc82c529f77d980ce6be
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 9806f9c3f22429d61ac765773e4b6971d683a6b1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397545"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984510"
 ---
 # <a name="find-exact-moments-within-videos"></a>ビデオ内の正確な場面の検出
 
 このトピックでは、ビデオ内の正確な場面を見つけるための検索オプションを示します。
 
-1. [Video Indexer](https://api-portal.videoindexer.ai/) アカウントにサインインします。
+1. [Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
 2. アカウントのすべてのビデオから検索します。
 
     次の例では、Channel9 によって作成された Scott Hanselman が出演しているビデオをすべて検索しました。

@@ -6,25 +6,25 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 06/20/2018
+ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: d9d61762a2e7956c95356cb4e884675e38deeb1b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: a1f6aae69580f2afe5aceabd70cfe8e6fd3151b8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145385"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977946"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Microsoft Azure 診断の 1.3 以降の構成スキーマ
 > [!NOTE]
 > Azure 診断拡張機能は、パフォーマンス カウンターとその他の統計を収集するために使用されるコンポーネントです。
-> - Azure Virtual Machines 
+> - Azure Virtual Machines
 > - Virtual Machine Scale Sets
-> - Service Fabric 
-> - Cloud Services 
+> - Service Fabric
+> - Cloud Services
 > - ネットワーク セキュリティ グループ
-> 
+>
 > このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 
 このページは、バージョン 1.3 以降 (Azure SDK 2.4 以降) に対して有効です。 新しい構成セクションには、追加されたバージョンがコメントで示されています。  
@@ -53,7 +53,7 @@ Azure 診断の詳細については、[Azure 診断拡張機能](azure-diagnost
     <WadCfg>  
       <DiagnosticMonitorConfiguration overallQuotaInMB="10000">  
 
-        <PerformanceCounters scheduledTransferPeriod="PT1M">  
+        <PerformanceCounters scheduledTransferPeriod="PT1M", sinks="AzureMonitorSink">  
           <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />  
         </PerformanceCounters>  
 
@@ -105,13 +105,19 @@ Azure 診断の詳細については、[Azure 診断拡張機能](azure-diagnost
           <CrashDumpConfiguration processName="badapp.exe"/>  
         </CrashDumps>  
 
-        <DockerSources> <!-- Added in 1.9 --> 
+        <DockerSources> <!-- Added in 1.9 -->
           <Stats enabled="true" sampleRate="PT1M" scheduledTransferPeriod="PT1M" />
         </DockerSources>
 
       </DiagnosticMonitorConfiguration>  
 
       <SinksConfig>   <!-- Added in 1.5 -->  
+        <Sink name="AzureMonitorSink">
+            <AzureMonitor> <!-- Added in 1.11 -->
+                <resourceId>{insert resourceId}</ResourceId> <!-- Parameter only needed for classic VMs and Classic Cloud Services, exclude VMSS and Resource Manager VMs-->
+                <Region>{insert Azure region of resource}</Region> <!-- Parameter only needed for classic VMs and Classic Cloud Services, exclude VMSS and Resource Manager VMs -->
+            </AzureMonitor>
+        </Sink>
         <Sink name="ApplicationInsights">   
           <ApplicationInsights>{Insert InstrumentationKey}</ApplicationInsights>   
           <Channels>   
@@ -139,11 +145,18 @@ Azure 診断の詳細については、[Azure 診断拡張機能](azure-diagnost
   <PrivateConfig>  <!-- Added in 1.3 -->  
     <StorageAccount name="" key="" endpoint="" sasToken="{sas token}"  />  <!-- sasToken in Private config added in 1.8.1 -->  
     <EventHub Url="https://myeventhub-ns.servicebus.windows.net/diageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
-   
+
+    <AzureMonitorAccount>
+        <ServicePrincipalMeta> <!-- Added in 1.11; only needed for classic VMs and Classic cloud services -->
+            <PrincipalId>{Insert service principal clientId}</PrincipalId>
+            <Secret>{Insert service principal client secret}</Secret>
+        </ServicePrincipalMeta>
+    </AzureMonitorAccount>
+
     <SecondaryStorageAccounts>
        <StorageAccount name="secondarydiagstorageaccount" key="{base64 encoded key}" endpoint="https://core.windows.net" sasToken="{sas token}" />
     </SecondaryStorageAccounts>
-   
+
     <SecondaryEventHubs>
        <EventHub Url="https://myeventhub-ns.servicebus.windows.net/secondarydiageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
     </SecondaryEventHubs>
@@ -153,10 +166,14 @@ Azure 診断の詳細については、[Azure 診断拡張機能](azure-diagnost
 </DiagnosticsConfiguration>  
 
 ```  
+> [!NOTE]
+> パブリック構成の Azure Monitor シンクの定義には、resourceId と region の 2 つのプロパティがあります。 これらは、クラシック VM と従来の Cloud Services のみに必要です。 これらのプロパティは、Resource Manager 仮想マシンまたは Virtual Machine Scale Sets に使用しないでください。
+> また、プリンシパル ID とシークレットを渡す、Azure Monitor シンクの追加のプライベート構成要素もあります。 これは、クラシック VM と従来の Cloud Services のみに必要です。 Resource Manager VM と VMSSでは、プライベート構成要素の Azure Monitor 定義を除外できます。
+>
 
-前述の XML 構成ファイルの JSON 形式を次に示します。 
+前述の XML 構成ファイルの JSON 形式を次に示します。
 
-ほとんどの場合、json では PublicConfig と PrivateConfig は別々に使用されるため、これらは異なる変数として渡されます。 Resource Manager テンプレート、仮想マシン スケール セット PowerShell、Visual Studio などがこれに該当します。 
+ほとんどの場合、json では PublicConfig と PrivateConfig は別々に使用されるため、これらは異なる変数として渡されます。 Resource Manager テンプレート、仮想マシン スケール セット PowerShell、Visual Studio などがこれに該当します。
 
 ```json
 "PublicConfig" {
@@ -168,6 +185,7 @@ Azure 診断の詳細については、[Azure 診断拡張機能](azure-diagnost
             },
             "PerformanceCounters": {
                 "scheduledTransferPeriod": "PT1M",
+                "sinks": "AzureMonitorSink",
                 "PerformanceCounterConfiguration": [
                     {
                         "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
@@ -278,6 +296,14 @@ Azure 診断の詳細については、[Azure 診断拡張機能](azure-diagnost
         "SinksConfig": {
             "Sink": [
                 {
+                    "name": "AzureMonitorSink",
+                    "AzureMonitor":
+                    {
+                        "ResourceId": "{insert resourceId if a classic VM or cloud service, else property not needed}",
+                        "Region": "{insert Azure region of resource if a classic VM or cloud service, else property not needed}"
+                    }
+                },
+                {
                     "name": "ApplicationInsights",
                     "ApplicationInsights": "{Insert InstrumentationKey}",
                     "Channels": {
@@ -324,6 +350,11 @@ Azure 診断の詳細については、[Azure 診断拡張機能](azure-diagnost
 }
 ```
 
+> [!NOTE]
+> パブリック構成の Azure Monitor シンクの定義には、resourceId と region の 2 つのプロパティがあります。 これらは、クラシック VM と従来の Cloud Services のみに必要です。
+> これらのプロパティは、Resource Manager 仮想マシンまたは Virtual Machine Scale Sets に使用しないでください。
+>
+
 ```json
 "PrivateConfig" {
     "storageAccountName": "diagstorageaccount",
@@ -334,6 +365,12 @@ Azure 診断の詳細については、[Azure 診断拡張機能](azure-diagnost
         "Url": "https://myeventhub-ns.servicebus.windows.net/diageventhub",
         "SharedAccessKeyName": "SendRule",
         "SharedAccessKey": "{base64 encoded key}"
+    },
+    "AzureMonitorAccount": {
+        "ServicePrincipalMeta": {
+            "PrincipalId": "{Insert service principal client Id}",
+            "Secret": "{Insert service principal client secret}"
+        }
     },
     "SecondaryStorageAccounts": {
         "StorageAccount": [
@@ -357,6 +394,11 @@ Azure 診断の詳細については、[Azure 診断拡張機能](azure-diagnost
 }
 
 ```
+
+> [!NOTE]
+> プリンシパル ID とシークレットを渡す、Azure Monitor シンクの追加のプライベート構成要素があります。 これは、クラシック VM と従来の Cloud Services のみに必要です。 Resource Manager VM と VMSSでは、プライベート構成要素の Azure Monitor 定義を除外できます。
+>
+
 
 ## <a name="reading-this-page"></a>このページについて  
  次のタグは、前の例で示されている順序とほぼ同じように示されています。  説明が見つからない場合は、このページで要素または属性を検索してください。  
@@ -396,14 +438,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 ## <a name="wadcfg-element"></a>WadCFG 要素  
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG*
- 
+
  収集するテレメトリ データを特定して構成します。  
 
 
-## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration 要素 
+## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration 要素
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
 
- 必須 
+ 必須
 
 |属性|説明|  
 |----------------|-----------------|  
@@ -422,14 +464,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**EtwProviders**|このページの他の場所の説明を参照してください。|  
 |**メトリック**|このページの他の場所の説明を参照してください。|  
 |**PerformanceCounters**|このページの他の場所の説明を参照してください。|  
-|**WindowsEventLog**|このページの他の場所の説明を参照してください。| 
-|**DockerSources**|このページの他の場所の説明を参照してください。 | 
+|**WindowsEventLog**|このページの他の場所の説明を参照してください。|
+|**DockerSources**|このページの他の場所の説明を参照してください。 |
 
 
 
 ## <a name="crashdumps-element"></a>CrashDumps 要素  
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - CrashDumps*
- 
+
  クラッシュ ダンプの収集を有効にします。  
 
 |属性|説明|  
@@ -442,7 +484,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|必須。 各プロセスの構成値を定義します。<br /><br /> 次の属性も必須です。<br /><br /> **processName** - Azure 診断でクラッシュ ダンプを収集するプロセスの名前。|  
 
-## <a name="directories-element"></a>Directories 要素 
+## <a name="directories-element"></a>Directories 要素
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration -  Directories*
 
  ディレクトリ、IIS 失敗アクセス要求ログ、IIS ログのコンテンツの収集を有効にします。  
@@ -453,7 +495,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**IISLogs**|この要素を構成に含めることで、IIS ログの収集を有効にします。<br /><br /> **containerName** - IIS ログの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。|   
 |**FailedRequestLogs**|この要素を構成に含めることで、IIS サイトまたはアプリケーションへの失敗要求に関するログの収集を有効にします。 また、**Web.config** の **system.WebServer** でトレース オプションを有効にする必要もあります。|  
-|**DataSources**|監視するディレクトリの一覧。| 
+|**DataSources**|監視するディレクトリの一覧。|
 
 
 
@@ -541,14 +583,15 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |子要素|説明|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|次の属性は必須です。<br /><br /> - **counterSpecifier** - パフォーマンス カウンターの名前。 たとえば、「`\Processor(_Total)\% Processor Time`」のように入力します。 ホストでカウンター パフォーマンスの一覧を取得するには、`typeperf` コマンドを実行します。<br /><br /> - **sampleRate** - カウンターをサンプリングする頻度。<br /><br /> オプションの属性:<br /><br /> **unit** - カウンターの測定単位。|  
+|**PerformanceCounterConfiguration**|次の属性は必須です。<br /><br /> - **counterSpecifier** - パフォーマンス カウンターの名前。 たとえば、「 `\Processor(_Total)\% Processor Time` 」のように入力します。 ホストでカウンター パフォーマンスの一覧を取得するには、`typeperf` コマンドを実行します。<br /><br /> - **sampleRate** - カウンターをサンプリングする頻度。<br /><br /> オプションの属性:<br /><br /> **unit** - カウンターの測定単位。|
+|**sinks** | 1.5 で追加されました。 省略可能。 sink の場所を指定して、診断データも送信します。 たとえば、Azure Monitor や Event Hubs です。|    
 
 
 
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog 要素
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog*
- 
+
  Windows イベント ログの収集を有効にします。  
 
  オプションの **scheduledTransferPeriod** 属性。 前の説明を参照してください。  
@@ -567,7 +610,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  基本的な Azure ログのバッファー構成を定義します。  
 
-|Attribute|Type|説明|  
+|Attribute|type|説明|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferLogLevelFilterr**|**string**|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** で、すべてのログを転送します。 他の有効値は、(情報量が多いものから順に) **Verbose**、**Information**、**Warning**、**Error**、**Critical** となります。|  
@@ -599,14 +642,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  診断データの送信先を定義します。 Application Insights サービスなど。  
 
-|Attribute|Type|説明|  
+|Attribute|type|説明|  
 |---------------|----------|-----------------|  
-|**name**|文字列|シンク名を特定する文字列。|  
+|**name**|string|シンク名を特定する文字列。|  
 
-|要素|Type|説明|  
+|要素|type|説明|  
 |-------------|----------|-----------------|  
-|**Application Insights**|文字列|データを Application Insights に送信するときにのみ使用されます。 アクセス先のアクティブな Application Insights アカウントのインストルメンテーション キーが含まれます。|  
-|**Channels**|文字列|追加フィルタリングごとに 1 つ|  
+|**Application Insights**|string|データを Application Insights に送信するときにのみ使用されます。 アクセス先のアクティブな Application Insights アカウントのインストルメンテーション キーが含まれます。|  
+|**Channels**|string|追加フィルタリングごとに 1 つ|  
 
 ## <a name="channels-element"></a>Channels 要素  
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
@@ -615,9 +658,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  シンクを通過するログ データのストリームのフィルターを定義します。  
 
-|要素|Type|説明|  
+|要素|type|説明|  
 |-------------|----------|-----------------|  
-|**Channel**|文字列|このページの他の場所の説明を参照してください。|  
+|**Channel**|string|このページの他の場所の説明を参照してください。|  
 
 ## <a name="channel-element"></a>Channel 要素
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel*
@@ -632,7 +675,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**name**|**string**|参照するチャネルの一意の名前|  
 
 
-## <a name="privateconfig-element"></a>PrivateConfig 要素 
+## <a name="privateconfig-element"></a>PrivateConfig 要素
  *ツリー: ルート - DiagnosticsConfiguration - PrivateConfig*
 
  バージョン 1.3 で追加。  

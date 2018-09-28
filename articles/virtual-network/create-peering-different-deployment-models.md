@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: bec02b3f3bde9f9cfab615d75cc6f05976ce981a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 44cc582bfa0a6940de7eeea9b54e3979735c07e2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34726222"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998242"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-same-subscription"></a>仮想ネットワーク ピアリングの作成 - 異なるデプロイメント モデル、同じサブスクリプション
 
@@ -81,64 +81,66 @@ ms.locfileid: "34726222"
 
 ## <a name="cli"></a>ピアリングの作成 - Azure CLI
 
-1. Azure CLI 1.0 を[インストール](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)して、仮想ネットワーク (クラシック) を作成します。
-2. コマンド セッションを開き、`azure login` コマンドを使用して Azure にログインします。
-3. `azure config mode asm` コマンドを入力して、サービス管理モードで CLI を実行します。
-4. 次のコマンドを入力して、仮想ネットワーク (クラシック) を作成します。
- 
-    ```azurecli
-    azure network vnet create --vnet myVnet2 --address-space 10.1.0.0 --cidr 16 --location "East US"
-    ```
+Azure クラシック CLI と Azure CLI を使用して、次の手順を完了します。 次の手順のいずれかで **[試してみる]** ボタンを選択するだけで、または[クラシック CLI](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [CLI](/cli/azure/install-azure-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) をインストールし、ローカル コンピューター上のコマンドを実行すると、 Azure Cloud Shell からの手順を行うことができます。
 
-5. リソース グループと仮想ネットワーク (Resource Manager) を作成します。 CLI 1.0 または 2.0 のどちらかを使用できます ([インストール](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json))。 このチュートリアルでは、ピアリングの作成に 2.0 を使用する必要があるため、仮想ネットワーク (Resource Manager) の作成に CLI 2.0 が使用されています。 CLI 2.0.4 以降がインストールされたローカル コンピューターから、次のBash CLI スクリプトを実行します。 bash CLI スクリプトを Windows クライアントで実行する方法については、「[Windows での Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli-windows)」をご覧ください。 Azure Cloud Shell を使用して、スクリプトを実行することもできます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 次のスクリプトの **[使ってみる]** をクリックすると Cloud Shell が開き、Azure アカウントでログインできます。 スクリプトを実行するには、**[コピー]** ボタンをクリックし、Cloud Shell に内容を貼り付けて、`Enter` を押します。
+1. Cloud Shell を使用する場合は、Cloud Shell が Azure に自動的にサインインするため、手順 2 に進みます。 コマンド セッションを開き、`azure login` コマンドを使用して Azure にサインインします。
+2. `azure config mode asm` コマンドを入力して、サービス管理モードで CLI を実行します。
+3. 次のコマンドを入力して、仮想ネットワーク (クラシック) を作成します。
 
-    ```azurecli-interactive
-    #!/bin/bash
+   ```azurecli-interactive
+   azure network vnet create --vnet myVnet2 --address-space 10.1.0.0 --cidr 16 --location "East US"
+   ```
 
-    # Create a resource group.
-    az group create \
-      --name myResourceGroup \
-      --location eastus
+4. クラッシック CLI ではない、CLI を使用して、次の bash CLI スクリプトを実行します。 bash CLI スクリプトを Windows コンピュータで実行する方法については、「[Windows での Azure CLI のインストール](/cli/azure/install-azure-cli-windows)」をご覧ください。
 
-    # Create the virtual network (Resource Manager).
-    az network vnet create \
-      --name myVnet1 \
-      --resource-group myResourceGroup \
-      --location eastus \
-      --address-prefix 10.0.0.0/16
-    ```
+   ```azurecli-interactive
+   #!/bin/bash
 
-6. 異なるデプロイメント モデルで作成された 2 つの仮想ネットワークの間で仮想ネットワーク ピアリングを作成します。 PC で次のスクリプトをテキスト エディターにコピーします。 `<subscription id>` は、サブスクリプション ID で置き換えてください。サブスクリプション ID がわからない場合は、`az account show` コマンドを入力します。 出力された **id** の値がサブスクリプション ID です。変更後のスクリプトを CLI セッションに貼り付けて、`Enter` を押します。
+   # Create a resource group.
+   az group create \
+     --name myResourceGroup \
+     --location eastus
 
-    ```azurecli-interactive
-    # Get the id for VNet1.
-    vnet1Id=$(az network vnet show \
-      --resource-group myResourceGroup \
-      --name myVnet1 \
-      --query id --out tsv)
+   # Create the virtual network (Resource Manager).
+   az network vnet create \
+     --name myVnet1 \
+     --resource-group myResourceGroup \
+     --location eastus \
+     --address-prefix 10.0.0.0/16
+   ```
 
-    # Peer VNet1 to VNet2.
-    az network vnet peering create \
-      --name myVnet1ToMyVnet2 \
-      --resource-group myResourceGroup \
-      --vnet-name myVnet1 \
-      --remote-vnet-id /subscriptions/<subscription id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnet2 \
-      --allow-vnet-access
-    ```
-7. スクリプトの実行後、仮想ネットワーク (Resource Manager) のピアリングを確認します。 次のコマンドをコピーし、CLI セッションに貼り付けて、`Enter` を押します。
+5. CLI を使用して、異なるデプロイメント モデルで作成された 2 つの仮想ネットワークの間で仮想ネットワーク ピアリングを作成します。 PC で次のスクリプトをテキスト エディターにコピーします。 `<subscription id>` は、サブスクリプション ID で置き換えてください。サブスクリプション ID がわからない場合は、`az account show` コマンドを入力します。 出力された **id** の値がサブスクリプション ID です。変更後のスクリプトを CLI セッションに貼り付けて、`Enter` を押します。
 
-    ```azurecli-interactive
-    az network vnet peering list \
-      --resource-group myResourceGroup \
-      --vnet-name myVnet1 \
-      --output table
-    ```
-    
-    **PeeringState** 列に **Connected** と出力されます。 
+   ```azurecli-interactive
+   # Get the id for VNet1.
+   vnet1Id=$(az network vnet show \
+     --resource-group myResourceGroup \
+     --name myVnet1 \
+     --query id --out tsv)
 
-    2 つの仮想ネットワークに作成した Azure リソースが、その IP アドレスを使用して相互に通信できるようになりました。 仮想ネットワークに Azure の既定の名前解決を使用する場合、そのネットワーク内のリソースは、通信相手の仮想ネットワークに対して名前を解決することができません。 ピアリングされた仮想ネットワークの間で名前を解決する必要がある場合は、独自の DNS サーバーを作成する必要があります。 その方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
-8. **(省略可)** このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
-9. **(省略可)** このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-cli)」の手順を実行してください。
+   # Peer VNet1 to VNet2.
+   az network vnet peering create \
+     --name myVnet1ToMyVnet2 \
+     --resource-group myResourceGroup \
+     --vnet-name myVnet1 \
+     --remote-vnet-id /subscriptions/<subscription id>/resourceGroups/Default-Networking/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnet2 \
+     --allow-vnet-access
+   ```
+
+6. スクリプトの実行後、仮想ネットワーク (Resource Manager) のピアリングを確認します。 次のコマンドをコピーし、CLI セッションに貼り付けて、`Enter` を押します。
+
+   ```azurecli-interactive
+   az network vnet peering list \
+     --resource-group myResourceGroup \
+     --vnet-name myVnet1 \
+     --output table
+   ```
+
+   **PeeringState** 列に **Connected** と出力されます。
+
+   2 つの仮想ネットワークに作成した Azure リソースが、その IP アドレスを使用して相互に通信できるようになりました。 仮想ネットワークに Azure の既定の名前解決を使用する場合、そのネットワーク内のリソースは、通信相手の仮想ネットワークに対して名前を解決することができません。 ピアリングされた仮想ネットワークの間で名前を解決する必要がある場合は、独自の DNS サーバーを作成する必要があります。 その方法については、「[独自 DNS サーバー使用の名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
+7. **(省略可)** このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
+8. **(省略可)** このチュートリアルで作成したリソースを削除するには、この記事の「[リソースの削除](#delete-cli)」の手順を実行してください。
 
 ## <a name="powershell"></a>ピアリングの作成 - PowerShell
 
@@ -214,15 +216,15 @@ ms.locfileid: "34726222"
 
 ### <a name="delete-cli"></a>Azure CLI
 
-1. 次のコマンドで、Azure CLI 2.0 を使用して仮想ネットワーク (Resource Manager) を削除します。
+1. 次のコマンドで、Azure CLI を使用して仮想ネットワーク (Resource Manager) を削除します。
 
     ```azurecli-interactive
     az group delete --name myResourceGroup --yes
     ```
 
-2. 次のコマンドで、Azure CLI 1.0 を使用して仮想ネットワーク (クラシック) を削除します。
+2. 次のコマンドで、クラシック CLI を使用して仮想ネットワーク (クラシック) を削除します。
 
-    ```azurecli
+    ```azurecli-interactive
     azure config mode asm
 
     azure network vnet delete --vnet myVnet2 --quiet

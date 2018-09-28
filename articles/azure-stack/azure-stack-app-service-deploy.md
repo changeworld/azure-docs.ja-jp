@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9173dfcbb5f73c2292bce7d28c2dae5dbece79cd
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 69b025a06abb24bfa3b8ff6b692a2559b3947681
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41946611"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995274"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>App Service リソース プロバイダーを Azure Stack に追加する
 
@@ -27,8 +27,8 @@ ms.locfileid: "41946611"
 
 この記事のガイダンスを使用して、Azure Stack に App Service をデプロイします。
 
->[!IMPORTANT]  
->Azure App Service 1.3 をデプロイする前に、Azure Stack 統合システムに 1807 更新プログラムを適用するか、最新の Azure Stack Development Kit (ASDK) をデプロイしてください。
+> [!IMPORTANT]  
+> Azure App Service 1.3 をデプロイする前に、Azure Stack 統合システムに 1807 更新プログラムを適用するか、最新の Azure Stack Development Kit (ASDK) をデプロイしてください。
 
 Web および API アプリケーションを作成する機能をユーザーに提供できます。 これらのアプリケーションをユーザーが作成できるようにするには、次のことを行う必要があります。
 
@@ -228,7 +228,7 @@ App Service リソースプロバイダーをデプロイして登録したら�
 
 テスト Web アプリを作成するには、次の手順に従います。
 
-1. Azure Stack テナント ポータルで、**[新規]** > **[Web + モバイル]** > **[Web アプリ]** の順に選択します。
+1. Azure Stack ユーザー ポータルで、**[+ リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** を選択します。
 
 2. **[Web アプリ]** で、**[Web アプリ]** に名前を入力します。
 

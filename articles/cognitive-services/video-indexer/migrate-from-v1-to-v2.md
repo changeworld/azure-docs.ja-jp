@@ -1,20 +1,21 @@
 ---
-title: Azure Video Indexer API v1 から v2 に移行する | Microsoft Docs
+title: Azure Video Indexer API v1 から v2 に移行する
+titlesuffix: Azure Cognitive Services
 description: このトピックでは、Azure Video Indexer API v1 から v2 への移行方法について説明します。
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 07/25/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: b1737960a4142f5c0d949ce8c2524c34fe9cd79e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 3c70bbe11d94e6b03d615b8d1394ccdca6bd3790
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40187378"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985631"
 ---
 # <a name="migrate-from-the-video-indexer-api-v1-to-v2"></a>Azure Video Indexer API v1 から v2 に移行する
 
@@ -56,8 +57,8 @@ v2 バージョンの Video Indexer では、API の認証と承認のモデル�
 |---|---|---|
 |試用版|試用|試用アカウントに使用されます。 たとえば、「 https://api.videoindexer.ai/trial/Accounts/{accountId}/Videos/{videoId}/Index?language=English」のように入力します。|
 |米国西部|westus2|Azure 米国西部 2 リージョンに使用されます。  たとえば、「 https://api.videoindexer.ai/westus2/Accounts/{accountId}/Videos/{videoId}/Index?language=English」のように入力します。|
-|北ヨーロッパ |northeurope|Azure 北ヨーロッパ リージョンに使用されます。 たとえば、「https://api.videoindexer.ai/northeurope/Accounts/{accountId}/Videos/{videoId}/Index?language=English」のように入力します。 |
-|東アジア|eastasia|Azure 東アジア リージョンに使用されます。 たとえば、「https://api.videoindexer.ai/eastasia/Accounts/{accountId}/Videos/{videoId}/Index?language=English」のように入力します。|
+|北ヨーロッパ |northeurope|Azure 北ヨーロッパ リージョンに使用されます。 たとえば、「 https://api.videoindexer.ai/northeurope/Accounts/{accountId}/Videos/{videoId}/Index?language=English」のように入力します。 |
+|東アジア|eastasia|Azure 東アジア リージョンに使用されます。 たとえば、「 https://api.videoindexer.ai/eastasia/Accounts/{accountId}/Videos/{videoId}/Index?language=English」のように入力します。|
 
 ### <a name="data-model"></a>データ モデル
 
@@ -65,7 +66,7 @@ Video Indexer のデータ モデルが簡素化され、よりわかりやす�
 
 ### <a name="swagger"></a>Swagger
 
-それに応じて、Video Indexer API の定義も更新されました。これは [API ポータル](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token)からダウンロードできます。
+それに応じて、Video Indexer API の定義も更新されました。これは [Video Indexer 開発者ポータル](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token)からダウンロードできます。
 
 
 ### <a name="v1-vs-v2-examples"></a>V1 と V2 の例

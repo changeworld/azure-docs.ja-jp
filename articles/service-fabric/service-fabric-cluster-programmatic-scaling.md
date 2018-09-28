@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: dcf4721012fb8ec39bcd1de02c294747357b3539
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ff02f79321823e42c25897e9de30dfbb6fac46b0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213063"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949620"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 
 
 Azure で実行される Service Fabric クラスターは仮想マシン スケール セットの上に構築されます。  [クラスター スケーリング](./service-fabric-cluster-scale-up-down.md)では、Service Fabric クラスターが手動または自動スケール ルールでスケーリングする方法について説明します。 この記事では、資格情報を管理し、fluent Azure コンピューティング SDK を使用してクラスターをスケールインまたはスケールアウトする方法について説明します。これはより高度なシナリオになります。 概要については、[Azure のスケーリング操作をプログラムで調整する方法](service-fabric-cluster-scaling.md#programmatic-scaling)を読んでください。 
 
 ## <a name="manage-credentials"></a>資格情報を管理する
-スケーリングを処理するサービスを作成する際に難しいのは、そのサービスが、対話型ログインを行わずに仮想マシン スケール セットのリソースにアクセスできるようにする必要があるということです。 スケーリング サービスが独自の Service Fabric アプリケーションを変更するようであれば、Service Fabric クラスターへのアクセスは簡単です。しかし、スケール セットへのアクセスには資格情報が必要です。 ログインには、[Azure CLI 2.0](https://github.com/azure/azure-cli) で作成した[サービス プリンシパル](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)を使用できます。
+スケーリングを処理するサービスを作成する際に難しいのは、そのサービスが、対話型ログインを行わずに仮想マシン スケール セットのリソースにアクセスできるようにする必要があるということです。 スケーリング サービスが独自の Service Fabric アプリケーションを変更するようであれば、Service Fabric クラスターへのアクセスは簡単です。しかし、スケール セットへのアクセスには資格情報が必要です。 ログインには、[Azure CLI](https://github.com/azure/azure-cli) で作成した[サービス プリンシパル](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)を使用できます。
 
 サービス プリンシパルは、次の手順で作成できます。
 

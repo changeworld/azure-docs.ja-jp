@@ -1,6 +1,6 @@
 ---
-title: Azure AD Node.js Web API の概要 | Microsoft Docs
-description: 認証のために Azure AD と連携する Node.js REST Web API を構築する方法。
+title: Azure AD による Web API の保護 | Microsoft Docs
+description: 認証のために Azure AD と連携する Node.js REST Web API を構築する方法について説明します。
 services: active-directory
 documentationcenter: nodejs
 author: CelesteDG
@@ -11,27 +11,34 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: article
-ms.date: 11/30/2017
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 3b203e5be82c01e7d586c90bae454aca23ebd630
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: f6f804ea9121d1728e31f1e694280e841f4b7f4e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580383"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946546"
 ---
-# <a name="azure-ad-nodejs-web-api-getting-started"></a>Azure AD Node.js Web API の概要
+# <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>クイック スタート: Azure Active Directory による Node.JS Web API のセキュリティ保護
 
-この記事では、Azure Active Directory (AAD) との通信を処理する [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) モジュールを使用して、[Restify](http://restify.com/) API エンドポイントを [Passport](http://passportjs.org/) でセキュリティ保護する方法について説明します。 
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
-このチュートリアルでは、API エンドポイントのセキュリティ保護に関する事柄を取り上げます。 サインインと認証トークンの保持に関する事柄はここでは取り上げていません。これらはクライアント アプリケーションの役割です。 クライアントの実装に関する詳細については、「[Azure AD を使用した Node.js Web アプリへのサインインおよびサインアウト](quickstart-v1-openid-connect-code.md)」をご覧ください。
+このクイック スタートでは、Azure Active Directory (Azure AD) との通信を処理する [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) モジュールを使用して、[Restify](http://restify.com/) API エンドポイントを [Passport](http://passportjs.org/) でセキュリティ保護する方法について説明します。
+
+このクイック スタートでは、API エンドポイントのセキュリティ保護に関する事柄を取り上げます。 サインインと認証トークンの保持に関する事柄はここでは取り上げていません。これらはクライアント アプリケーションの役割です。 クライアントの実装に関する詳細については、「[Azure AD を使用した Node.js Web アプリへのサインインおよびサインアウト](quickstart-v1-openid-connect-code.md)」をご覧ください。
 
 この記事に関連する完全なコード サンプルは、[GitHub](https://github.com/Azure-Samples/active-directory-node-webapi-basic) で入手できます。
 
-## <a name="create-the-sample-project"></a>サンプル プロジェクトを作成する
-このサーバー アプリケーションには、AAD に渡されるアカウント情報のほかに、Restify と Passport をサポートするためのいくつかのパッケージの依存関係が必要です。
+## <a name="prerequisites"></a>前提条件
+
+最初に、以下の前提条件を完了します。
+
+### <a name="create-the-sample-project"></a>サンプル プロジェクトを作成する
+
+サーバー アプリケーションには、Azure AD に渡されるアカウント情報のほかに、Restify と Passport をサポートするためのいくつかのパッケージの依存関係が必要です。
 
 まず、次のコードを `package.json` という名前のファイルにコピーします。
 
@@ -53,13 +60,13 @@ ms.locfileid: "39580383"
 
 `package.json` が作成されたら、コマンド プロンプトで `npm install` を実行して、パッケージの依存関係をインストールします。 
 
-### <a name="configure-the-project-to-use-active-directory"></a>Active Directory を使用するようにプロジェクトを構成する
+#### <a name="configure-the-project-to-use-active-directory"></a>Active Directory を使用するようにプロジェクトを構成する
 
 アプリケーションの構成を開始するために、Azure CLI から取得できるアカウント固有の値がいくつかあります。 CLI で作業を開始するには Azure Cloud Shell を使用するのが最も簡単です。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Cloud Shell で次のコマンドを入力します。 
+Cloud Shell で次のコマンドを入力します。
 
 ```azurecli-interactive
 az ad app create --display-name node-aad-demo --homepage http://localhost --identifier-uris http://node-aad-demo
@@ -94,12 +101,15 @@ module.exports.credentials = {
   clientID: clientID
 };
 ```
+
 それぞれの構成設定の詳細については、[passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) モジュールのドキュメントをご覧ください。
 
-## <a name="implement-the-server"></a>サーバーの実装
+### <a name="implement-the-server"></a>サーバーの実装
+
 [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) モジュールの特徴は、[OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) と[ベアラー](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy)の 2 つの認証方式があることです。 この記事で実装されるサーバーでは、API エンドポイントの保護にベアラー方式を使用しています。
 
 ### <a name="step-1-import-dependencies"></a>手順 1: 依存関係のインポート
+
 `app.js` という名前の新しいファイルを作成し、次のテキストを貼り付けます。
 
 ```JavaScript
@@ -117,16 +127,13 @@ const
 このセクションのコードでは、
 
 - Restify サーバーを設定するために `restify` モジュールと `restify-plugins` モジュールが参照されます。
-
-- `passport` モジュールと `passport-azure-ad` モジュールが、AAD との通信を担当します。
-
+- `passport` モジュールと `passport-azure-ad` モジュールが、Azure AD との通信を担当します。
 - 変数 `config` は、前の手順で作成した `config.js` ファイルの値で初期化されます。
-
 - ユーザー トークンがセキュリティで保護されたエンドポイントに渡されるときに、これらを保存するために `authenticatedUserTokens` に配列が作成されます。
-
 - `serverPort` は、プロセスの環境のポートまたは構成ファイルのいずれかから定義されます。
 
 ### <a name="step-2-instantiate-an-authentication-strategy"></a>手順 2: 認証方式のインスタンス化
+
 エンドポイントをセキュリティで保護するには、現在の要求が認証されたユーザーからのものかどうかを判定する方式を指定する必要があります。 ここで、変数 `authenticatonStrategy` は `passport-azure-ad` `BearerStrategy` クラスのインスタンスです。 次のコードを `require` ステートメントの後ろに追加します。
 
 ```JavaScript
@@ -145,6 +152,7 @@ const authenticationStrategy = new BearerStrategy(config.credentials, (token, do
     return done(null, currentUser, token);
 });
 ```
+
 この実装では、配列 `authenticatedUserTokens` に認証トークンを追加する (まだ存在していない場合) ことによって、自動登録を使用しています。
 
 方式の新しいインスタンスが作成されたら、`use` メソッドを使用してこれを Passport に渡す必要があります。 Passport でこの方式を使用するように、次のコードを `app.js` に追加します。
@@ -154,6 +162,7 @@ passport.use(authenticationStrategy);
 ```
 
 ### <a name="step-3-server-configuration"></a>手順 3: サーバーの構成
+
 認証方式を定義したら、次は Restify サーバーを設定します。いくつかの基本的な設定とともに、セキュリティのために Passport を使用するように設定します。
 
 ```JavaScript
@@ -164,9 +173,9 @@ server.use(passport.session());
 ```
 このサーバーは初期化されて Authorization ヘッダーを解析するように構成された後に、Passport を使用するように設定されます。
 
-
 ### <a name="step-4-define-routes"></a>手順 4: ルートの定義
-次に、ルートを定義し、AAD でどれをセキュリティ保護するかを決定します。 このプロジェクトには、ルート レベルがオープンで、`/api` ルートが認証を要求するように設定されている 2 つのルートが含まれています。
+
+次に、ルートを定義し、Azure AD でどれをセキュリティ保護するかを決定します。 このプロジェクトには、ルート レベルがオープンで、`/api` ルートが認証を要求するように設定されている 2 つのルートが含まれています。
 
 `app.js` に、ルート レベルのルートの次のコードを追加します。
 
@@ -198,19 +207,19 @@ server.listen(serverPort);
 
 サーバーが実装されたので、コマンド プロンプトを開き、以下を入力してサーバーを起動します。
 
-```Shell
+```shell
 npm start
 ```
 
 サーバーが起動したら、サーバーに要求を送信して結果をテストします。 ルートのルートからの応答を実際に試してみるには、bash シェルを開いて次のコードを入力します。
 
-```Shell 
+```shell
 curl -isS -X GET http://127.0.0.1:3000/
 ```
 
 サーバーが正しく構成されている場合、応答は次のようになります。
 
-```Shell
+```shell
 HTTP/1.1 200 OK
 Server: Azure Active Directroy with Node.js Demo
 Content-Type: application/json
@@ -223,13 +232,13 @@ Try: curl -isS -X GET http://127.0.0.1:3000/api
 
 次に、bash シェルに次のコマンドを入力して、認証を必要とするルートをテストします。
 
-```Shell 
+```shell
 curl -isS -X GET http://127.0.0.1:3000/api
 ```
 
 サーバーが正しく構成されている場合、サーバーは次のように `Unauthorized` のステータスを返します。
 
-```Shell
+```shell
 HTTP/1.1 401 Unauthorized
 Server: Azure Active Directroy with Node.js Demo
 WWW-Authenticate: token is not found
@@ -239,10 +248,10 @@ Content-Length: 12
 
 Unauthorized
 ```
+
 セキュリティで保護された API が作成されたので、API に認証トークンを渡すことができるクライアントを実装できます。
 
 ## <a name="next-steps"></a>次の手順
-概要で説明したように、サーバーに接続するためにサインイン、サインアウト、およびトークンの管理を処理するクライアント側の実装を行う必要があります。 コードに基づく例については、[iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) と [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android) のクライアント アプリケーションをご覧ください。 詳細な手順を説明したチュートリアルについては、次の記事をご覧ください。
 
-> [!div class="nextstepaction"]
-> [Azure AD を使用した Node.js Web アプリへのサインインおよびサインアウト](quickstart-v1-openid-connect-code.md)
+* サーバーに接続するためにサインイン、サインアウト、およびトークンの管理を処理するクライアント側の実装を行う必要があります。 コードに基づく例については、[iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) と [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android) のクライアント アプリケーションをご覧ください。
+* ステップバイステップのチュートリアルについては、[Azure AD を使用した Node.js Web アプリへのサインインおよびサインアウト](quickstart-v1-openid-connect-code.md)を参照してください。

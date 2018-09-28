@@ -13,18 +13,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/22/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7954a4eebaf25e2a22e5a39721098ac8db1ed8dd
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 9e8d35ee606d66f5c4f6e11512247fc909ecfb9f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39580415"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999853"
 ---
 # <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0 プロトコル: 暗黙的なフローを使用する SPA
+
 v2.0 エンドポイントを使ったシングル ページ アプリでは、ユーザーは、Microsoft の個人アカウントと職場/学校アカウントのどちらでもサインインできます。 シングル ページ アプリなどの主にブラウザーで実行される JavaScript アプリには、認証に関して重要な課題があります。
 
 * これらのアプリのセキュリティ特性は、従来のサーバーベースの Web アプリケーションとは大きく異なります。
@@ -33,21 +34,21 @@ v2.0 エンドポイントを使ったシングル ページ アプリでは、�
 
 このようなアプリケーション (AngularJS、Ember.js、React.js など) 向けに、Azure AD では OAuth 2.0 Implicit Grant フローをサポートしています。 この暗黙的フローは、[OAuth 2.0 仕様](http://tools.ietf.org/html/rfc6749#section-4.2)で規定されています。 主な利点は、バックエンド サーバーと資格情報をやり取りしなくても、アプリが Azure AD からトークンを取得できることです。 これにより、アプリは、ユーザーのサインイン、セッションの維持、他の Web API へのトークンの取得をすべてクライアント JavaScript コード内で実行できます。 暗黙的フローを使用する際に考慮が必要なセキュリティに関する重要事項がいくつかあります。具体的には、[クライアント](http://tools.ietf.org/html/rfc6749#section-10.3)と[ユーザーの偽装](http://tools.ietf.org/html/rfc6749#section-10.3)に関する事項です。
 
-暗黙的フローと Azure AD を使用して JavaScript アプリに認証を追加する場合は、オープン ソースの JavaScript ライブラリである [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js)を使用することをお勧めします。 作業の開始に役立つ AngularJS チュートリアルを [こちら](active-directory-appmodel-v2-overview.md#getting-started) で入手できます。 
+暗黙的フローと Azure AD を使用して JavaScript アプリに認証を追加する場合は、オープン ソースの JavaScript ライブラリである [adal.js](https://github.com/AzureAD/azure-activedirectory-library-for-js)を使用することをお勧めします。 作業の開始に役立つ AngularJS チュートリアルを [こちら](v2-overview.md#getting-started) で入手できます。
 
 シングル ページ アプリケーションでライブラリを使用せずに、自分でプロトコル メッセージを送信する場合は、次の一般的な手順を実行してください。
 
 > [!NOTE]
 > Azure Active Directory のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。 v2.0 エンドポイントを使用する必要があるかどうかを判断するには、 [v2.0 の制限事項](active-directory-v2-limitations.md)に関するページをお読みください。
-> 
-> 
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
+
 暗黙的なサインイン フローの全体像は次のようになります。各手順についてはこの後詳しく説明します。
 
 ![OpenId Connect Swimlanes](./media/v2-oauth2-implicit-grant-flow/convergence_scenarios_implicit.png)
 
 ## <a name="send-the-sign-in-request"></a>サインイン要求を送信する
+
 最初にユーザーをアプリにサインインするために、v2.0 エンドポイントから [OpenID Connect](v2-protocols-oidc.md) 承認要求を送信し、`id_token` を取得します。
 
 > [!IMPORTANT]
@@ -69,8 +70,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > [!TIP]
 > この要求を実行するには、以下のリンクをクリックしてください。 サインイン後、ブラウザーは `https://localhost/myapp/` にリダイレクトされ、アドレス バーに `id_token` が含まれた状態になります。
 > <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=id_token+token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=openid%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
-> 
-> 
 
 | パラメーター |  | 説明 |
 | --- | --- | --- |
@@ -86,12 +85,12 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | login_hint |省略可能 |ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。 アプリはしばしば前回のサインインから `preferred_username` 要求を抽出して再認証時にこのパラメーターを使用します。 |
 | domain_hint |省略可能 |`consumers` か `organizations` のいずれかを指定できます。 これが含まれる場合、v2.0 のサインイン ページでユーザーが行う電子メール ベースの検出プロセスがスキップされ、ユーザー エクスペリエンスは若干簡素化されたものになります。 アプリはしばしば id_token から `tid` 要求を抽出して再認証時にこのパラメーターを使用します。 要求値 `tid` が `9188040d-6c67-4c5b-b112-36a304b66dad` の場合 (Microsoft Account コンシューマー テナント)、`domain_hint=consumers` を使用してください。 それ以外の場合は、 `domain_hint=organizations`を指定します。 |
 
-
 現時点では、ユーザーに資格情報の入力と認証が求められます。 v2.0 エンドポイントは、 `scope` クエリ パラメーターで指定されたアクセス許可にユーザーが同意済みであることの保証も行います。 いずれのアクセス許可にもユーザーが同意しなかった場合、必要なアクセス許可に同意するようユーザーに求めます。 アクセス許可、同意、マルチテナント アプリの詳細については、 [こちら](v2-permissions-and-consent.md)を参照してください。
 
 ユーザーが本人であることを証明し、同意の許可を与えると、v2.0 エンドポイントは、`response_mode` パラメーターに指定されたメソッドを使い、指定された `redirect_uri` でアプリに応答を返します。
 
 #### <a name="successful-response"></a>成功応答
+
 `response_mode=fragment` と `response_type=id_token+token` を使用した成功応答は、次のようになります (読みやすいように改行してあります)。
 
 ```
@@ -110,10 +109,11 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | token_type |`response_type` に `token` が含まれる場合に含まれます。 常に `Bearer`になります。 |
 | expires_in |`response_type` に `token` が含まれる場合に含まれます。 キャッシュ用に有効なトークンの秒数を示します。 |
 | scope |`response_type` に `token` が含まれる場合に含まれます。 access_token が有効なスコープを示します。 |
-| id_token |アプリが要求した id_token。 この id_token を使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。 id_token とその内容の詳細については、[v2.0 エンドポイント トークン リファレンス](v2-id-and-access-tokens.md)を参照してください。 |
+| id_token      | 無署名の JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
 | state |要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
 
 #### <a name="error-response"></a>エラー応答
+
 アプリ側でエラーを適切に処理できるよう、 `redirect_uri` にはエラー応答も送信されます。
 
 ```
@@ -128,9 +128,10 @@ error=access_denied
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
 ## <a name="validate-the-idtoken"></a>id_token を検証する
+
 単に id_token を受け取るだけでは、ユーザーを認証するには不十分です。id_token の署名を検証し、そのトークンに含まれる要求をアプリの要件に従って確認する必要があります。 v2.0 エンドポイントは、[JSON Web トークン (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
 
-クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。 id_token の署名を検証した後に、確認の必要な要求がいくつか存在します。 [トークンの検証](v2-id-and-access-tokens.md#validating-tokens)と[署名キーのロールオーバーに関する重要な情報](v2-id-and-access-tokens.md#validating-tokens)などの詳細については、「[v2.0 トークンのリファレンス](v2-id-and-access-tokens.md)」を参照してください。 トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。
+クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。 id_token の署名を検証した後に、確認の必要な要求がいくつか存在します。 [トークンの検証](id-tokens.md#validating-idtokens)と[署名キーのロールオーバーに関する重要な情報](active-directory-signing-key-rollover.md)などの詳細については、「[`id_token` リファレンス](id-tokens.md)」を参照してください。 トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。
 <!--TODO: Improve the information on this-->
 
 シナリオに応じてその他の要求も検証することができます。 以下に一般的な検証の例をいくつか挙げます。
@@ -139,12 +140,11 @@ error=access_denied
 * 適切な承認/特権がユーザーにあることを確認する。
 * 多要素認証など特定の強度の認証が行われたことを確認する。
 
-id_token に含まれる要求の詳細については、[v2.0 エンドポイント トークン リファレンス](v2-id-and-access-tokens.md)を参照してください。
-
-id_token を十分検証したら、ユーザーとのセッションを開始し、id_token に含まれる要求を使ってそのユーザーに関する情報をアプリの中で取得することができます。 取得した情報は、表示、記録、承認などに利用することができます。
+id_token を十分検証したら、ユーザーとのセッションを開始し、id_token に含まれる要求を使ってそのユーザーに関する情報をアプリの中で取得することができます。 この情報は、表示、記録、パーソナル化などに利用することができます。
 
 ## <a name="get-access-tokens"></a>アクセス トークンを取得する
-ユーザーをシングル ページ アプリにサインインしたら、 [Microsoft Graph](https://graph.microsoft.io)など、Azure AD によってセキュリティ保護された Web API を呼び出すためのアクセス トークンを取得できます。 このメソッドを使用すると、`token` response_type を使用してトークンを既に取得している場合でも、再度サインインするためにユーザーをリダイレクトする必要なく、その他のリソースのトークンを取得できます。
+
+ユーザーをシングル ページ アプリにサインインしたら、[Microsoft Graph](https://graph.microsoft.io) など、Azure AD によってセキュリティ保護された Web API を呼び出すためのアクセス トークンを取得できます。 このメソッドを使用すると、`token` response_type を使用してトークンを既に取得している場合でも、再度サインインするためにユーザーをリダイレクトする必要なく、その他のリソースのトークンを取得できます。
 
 通常の OpenID Connect/OAuth フローでは、この操作として、v2.0 `/token` エンドポイントへの要求を作成します。 ただし、v2.0 エンドポイントでは CORS 要求をサポートしていないため、AJAX 呼び出しでトークンの取得や更新を実行することはできません。 代わりに、非表示の iframe で暗黙的フローを使用して、他の Web API 用の新しいトークンを取得できます。 
 
@@ -164,8 +164,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > 以下の要求をコピーしてブラウザー タブに貼り付けてみてください (`domain_hint` と `login_hint` の値をユーザーの正しい値に置き換えてください)。
-> 
-> 
 
 ```
 https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=token&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&scope=https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&response_mode=fragment&state=12345&nonce=678910&prompt=none&domain_hint={{consumers-or-organizations}}&login_hint={{your-username}}
@@ -188,6 +186,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de7
 `prompt=none` パラメーターに応じて、要求はすぐに成功または失敗し、アプリケーションに戻ります。 成功すると、`response_mode` パラメーターで指定された方法を使用して、指定された `redirect_uri` でアプリに応答が送信されます。
 
 #### <a name="successful-response"></a>成功応答
+
 `response_mode=fragment` を使用した場合の正常な応答は次のようになります。
 
 ```
@@ -208,6 +207,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | scope |アクセス トークンが有効である範囲。 |
 
 #### <a name="error-response"></a>エラー応答
+
 アプリ側で適切に処理できるように、 `redirect_uri` にエラーの応答が送信される場合もあります。 `prompt=none`の場合、予期されるエラーは次のようになります。
 
 ```
@@ -231,12 +231,14 @@ access_token を受け取ったら、トークンの署名と以下の要求を�
 * **発行者**要求。トークンが v2.0 エンドポイントによってそのアプリに対して発行されたことを検証します。
 * **期間の開始時刻**要求と**期限切れ日時**要求。トークンが期限切れでないことを検証します。
 
-アクセス トークンに含まれている要求の詳細については、[v2.0 エンドポイント トークン リファレンス](v2-id-and-access-tokens.md)を参照してください。
+アクセス トークンに含まれている要求の詳細については、[アクセス トークン リファレンス](access-tokens.md)を参照してください
 
 ## <a name="refreshing-tokens"></a>トークンを更新する
+
 暗黙的な付与では、更新トークンが与えられません。 `id_token` と `access_token` はどちらも短時間で期限切れになるため、トークンを定期的に更新するようにアプリを準備しておく必要があります。 どちらの種類のトークンを更新する場合も、Azure AD の動作を制御する `prompt=none` パラメーターを使用して、上記と同じ非表示の iframe 要求を実行できます。 新しい `id_token` を取得する場合は、`nonce` に加えて、必ず `response_type=id_token` と `scope=openid` を使用してください。
 
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
+
 OpenIdConnect の `end_session_endpoint` により、ユーザーのセッションを終了し、v2.0 エンドポイントによって設定された Cookie をクリアする要求を、アプリから v2.0 エンドポイントに送信することができます。 ユーザーが Web アプリケーションから完全にサインアウトするには、アプリがユーザーとのセッションを終了し (通常、トークン キャッシュをクリアするか Cookie を切断する)、ブラウザーを以下にリダイレクトする必要があります。
 
 ```

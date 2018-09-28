@@ -9,22 +9,22 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e3aa2cf93e529fcc430162ac90be06a75690fb21
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 45558e25f2f61090cfb3ddb5c382170ab40792d0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523446"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999046"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して IoT Hub Device Provisioning Service を設定する
 
-[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使うと、デバイスのプロビジョニングで必要になる Azure のクラウド リソースをプログラミングを使って設定することができます。 ここで紹介する手順では、Azure Resource Manager テンプレートを使用して IoT ハブおよび新しい IoT Hub Device Provisioning Service を作成し、その 2 つのサービスをリンクする方法を示します。 このクイック スタートでは、リソース グループの作成とテンプレートのデプロイに必要な手順で発生するプログラミングに [Azure CLI 2.0](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) を使用していますが、[Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) のほか、.NET、Ruby などのプログラミング言語を使用してここに挙げた手順を実行し、テンプレートをデプロイするのも簡単です。 
+[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使うと、デバイスのプロビジョニングで必要になる Azure のクラウド リソースをプログラミングを使って設定することができます。 ここで紹介する手順では、Azure Resource Manager テンプレートを使用して IoT ハブおよび新しい IoT Hub Device Provisioning Service を作成し、その 2 つのサービスをリンクする方法を示します。 このクイック スタートでは、リソース グループの作成とテンプレートのデプロイに必要なプログラミング手順を実行するために [Azure CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) を使用していますが、[Azure ポータル](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal)、[PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) のほか、.NET、Ruby などのプログラミング言語を使用してこれらの手順を実行し、テンプレートをデプロイすることも簡単です。 
 
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-- このクイック スタートでは、Azure CLI をローカルで実行する必要があります。 また、Azure CLI バージョン 2.0 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+- このクイック スタートでは、Azure CLI をローカルで実行する必要があります。 また、Azure CLI バージョン 2.0 以降がインストールされている必要があります。 バージョンを確認するには、`az --version` を実行します。 CLI をインストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 
 ## <a name="sign-in-to-azure-and-create-a-resource-group"></a>Azure にサインインし、リソース グループを作成する

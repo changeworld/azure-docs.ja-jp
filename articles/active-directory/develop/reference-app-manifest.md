@@ -13,56 +13,58 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/27/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
-ms.reviewer: sureshja, justhu
-ms.openlocfilehash: f336771da334ffd964ecd032654b8549b7a5e847
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.reviewer: sureshja
+ms.openlocfilehash: 16841b927142572a40685940038eaf1cc6fc12ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127022"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962336"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
-Azure Active Directory (Azure AD) と統合するアプリは、Azure AD テナントに登録する必要があります。 アプリの構成は、[Azure portal](https://portal.azure.com) で行うことができます。**[Azure Active Directory]** を選択して、構成するアプリを選択し、**[マニフェスト]** を選択してください。
+Azure Active Directory (Azure AD) と統合するアプリは、Azure AD テナントに登録する必要があります。 アプリの構成は、[Azure portal](https://portal.azure.com) で行うことができます。その場合、**[Azure Active Directory]** の下にある **[アプリの登録]**、構成するアプリ、**[マニフェスト]** の順に選択します。
 
 ## <a name="manifest-reference"></a>マニフェスト リファレンス
 
 > [!NOTE]
-> 説明を表示できない場合は、ブラウザー ウィンドウを最大化するか、スクロール/スワイプして説明を表示してください。
+> **[説明]** の後に **[値の例]** 列が表示されない場合は、ご利用のブラウザー ウィンドウを最大化し、**[値の例]** 列が表示されるまでスクロール/スワイプします。
 
 >[!div class="mx-tdBreakAll"]
 >[!div class="mx-tdCol2BreakAll"]
 
-| キー  | 値の型 | 値の例 | 説明  |
+| キー  | 値の型 | 説明  | 値の例 |
 |---------|---------|---------|---------|
-| `appID` | 識別子の文字列 | `"601790de-b632-4f57-9523-ee7cb6ceba95"` | Azure AD によってアプリに割り当てられた一意識別子を指定します。 |
-| `appRoles` | 配列の型 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code> | アプリが宣言する可能性のあるロールのコレクションを指定します。 これらのロールは、ユーザー、グループ、またはサービス プリンシパルに割り当てることができます。 |
-| `availableToOtherTenants`| ブール値 | `true` | この値が true に設定されている場合、そのアプリは他のテナントから使用できます。 false に設定されている場合、そのアプリは、それが登録されているテナントからしか使用できません。 詳細については、[マルチテナント アプリ パターンを使用してすべての Azure AD ユーザーがサインインできるようにする方法](howto-convert-app-to-be-multi-tenant.md)に関するページを参照してください。 |
-| `displayName` | 文字列 | `MyRegisteredApp` | アプリの表示名。 |
-| `errorURL` | 文字列 | `http://MyRegisteredAppError` | アプリで発生したエラーの URL。 |
-| `groupMembershipClaims` | 文字列 | `1` | アプリが期待する、ユーザーまたは OAuth 2.0 アクセス トークンで発行される `groups` 要求を構成するビットマスク。 ビットマスクの値は次のとおりです。<br>0: なし<br>1: セキュリティ グループと Azure AD ロール<br>2: 予約済み<br>4: 予約済み<br>ビットマスクを 7 に設定すると、サインイン ユーザーがメンバーになっているすべてのセキュリティ グループ、配布グループ、および Azure AD ディレクトリ ロールが取得されます。 |
-| `optionalClaims` | 文字列 | `null` | この特定のアプリのセキュリティ トークン サービスによってトークンで返される省略可能な要求。 詳細については、[省略可能な要求](active-directory-optional-claims.md)に関するページを参照してください。 |
-| `acceptMappedClaims` | ブール値 | `true` | この値が `true` に設定されている場合、アプリは、カスタム署名キーを指定せずに要求のマッピングを使用できます。 |
-| `homepage` | 文字列 | `http://MyRegisteredApp` | アプリのホーム ページへの URL を指定します。 |
-| `informationalUrls` | 文字列 | <code>{<br>&nbsp;&nbsp;&nbsp;"privacy":"http://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"http://MyRegisteredApp/termsofservice"<br>}</code> | アプリのサービス利用規約とプライバシーに関する声明へのリンクを指定します。 サービス利用規約とプライバシーに関する声明は、ユーザーの同意エクスペリエンスからユーザーに提示されます。 詳細については、[登録済み Azure AD アプリのサービス利用規約とプライバシーに関する声明を追加する方法](howto-add-terms-of-service-privacy-statement.md)のページを参照してください。 |
-| `identifierUris` | 文字列配列 | `http://MyRegistererdApp` | その Azure AD テナント内で、またはアプリがマルチテナントである場合は検証されたカスタム ドメイン内で Web アプリを一意に識別するユーザー定義 URI。 |
-| `keyCredentials` | 配列の型 | <code>[<br>&nbsp;{<br>&nbsp;&nbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-09-13T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2017-09-12T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"type":"AsymmetricX509Cert",<br>&nbsp;&nbsp;&nbsp;"usage":"Verify",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;}<br>]</code> | アプリで割り当てられた資格情報、文字列ベースの共有シークレット、および X.509 証明書への参照を保持します。 これらの資格情報は、アクセス トークンを要求するときに使用されます (そのアプリがリソースとしてではなく、クライアントとして機能している場合)。 |
-| `knownClientApplications` | 配列の型 | `[GUID]` | クライアント アプリとカスタム Web API アプリの 2 つの部分を含むソリューションがある場合に、同意をバンドルするために使用されます。 この値にクライアント アプリの appID を入力すると、ユーザーは、クライアント アプリに 1 回同意するだけで済みます。 Azure AD は、クライアントへの同意が Web API への暗黙的な同意を示し、クライアントと Web API の両方のサービス プリンシパルを同時に自動的にプロビジョニングすることを認識します。 クライアントと Web API アプリの両方が同じテナントに登録されている必要があります。 |
-| `logoutUrl` | 文字列 | `http://MyRegisteredAppLogout` | アプリからログアウトするための URL。 |
-| `oauth2AllowImplicitFlow` | ブール値 | `false` | この Web アプリが OAuth2.0 暗黙的フロー トークンを要求できるかどうかを指定します。 既定値は false です。 このフラグは、ブラウザー ベースのアプリ (Javascript シングル ページ アプリなど) に使用されます。 |
-| `oauth2AllowUrlPathMatching` | ブール値 | `false` | OAuth 2.0 トークン要求の一部として、Azure AD がアプリの replyUrls に対するリダイレクト URI のパスの照合を許可するかどうかを指定します。 既定値は false です。 |
-| `oauth2Permissions` | 配列の型 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"adminConsentDescription":"Allow the app to access resources on behalf of the signed-in user.",<br>&nbsp;&nbsp;&nbsp;"adminConsentDisplayName":"Access resource1",<br>&nbsp;&nbsp;&nbsp;"id":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"type":"User",<br>&nbsp;&nbsp;&nbsp;"userConsentDescription":"Allow the app to access resource1 on your behalf.",<br>&nbsp;&nbsp;&nbsp;"userConsentDisplayName":"Access resources",<br>&nbsp;&nbsp;&nbsp;"value":"user_impersonation"<br>&nbsp;&nbsp;}<br>]</code> | Web API (リソース) アプリがクライアント アプリに公開する OAuth 2.0 アクセス許可スコープのコレクションを指定します。 これらのアクセス許可スコープは、同意中にクライアント アプリに付与できます。 |
-| `oauth2RequiredPostResponse` | ブール値 | `false` | OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求ではなく、POST 要求を許可するかどうかを指定します。 既定値は false です。これは、GET 要求のみが許可されることを指定します。 |
-| `objectId` | 識別子の文字列 | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` | ディレクトリ内のアプリの一意識別子。 この ID は、いずれかのプロトコル トランザクション内のアプリを識別するために使用される識別子ではありません。 これは、ディレクトリ クエリ内のオブジェクトを参照するために使用されます。 |
-| `parentalControlSettings` | 文字列 | <code>{<br>&nbsp;&nbsp;&nbsp;"countriesBlockedForMinors":[],<br>&nbsp;&nbsp;&nbsp;"legalAgeGroupRule":"Allow"<br>} </code> | `countriesBlockedForMinors` は、未成年者に関してアプリがブロックされる国を指定します。<br>`legalAgeGroupRule` は、アプリのユーザーに適用される法的年齢グループ ルールを指定します。 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids`、`BlockMinors` のいずれかに設定できます。  |
-| `passwordCredentials` | 配列の型 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-10-19T17:59:59.6521653Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2016-10-19T17:59:59.6521653Z",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;&nbsp;}<br>] </code> | `keyCredentials` プロパティの説明を参照してください。 |
-| `publicClient` | ブール値 | `false` | アプリがパブリック クライアント (モバイル デバイス上で実行されているインストール済みのアプリなど) であるかどうかを指定します。 既定値は false です。 |
-| `replyUrls` | 文字列配列 | `"http://localhost"` | この複数値プロパティは、Azure AD がトークンを返すときに宛先として受け入れる登録された redirect_uri 値の一覧を保持します。 |
-| `requiredResourceAccess` | 配列の型 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>&nbsp;&nbsp;&nbsp;"resourceAccess":[<br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;]<br>&nbsp;}<br>] </code> | 動的な同意では、静的な同意を使用しているユーザーに対する管理者の同意エクスペリエンスおよびユーザーの同意エクスペリエンスが `requiredResourceAccess` によって作動します。 ただし、一般的なケースでは、これによってユーザーの同意エクスペリエンスが作動することはありません。<br>`resourceAppId` は、アプリがアクセスする必要があるリソースの一意識別子です。 この値は、ターゲット リソース アプリで宣言された appId に等しくなるようにしてください。<br>`resourceAccess` は、指定されたリソースに対してアプリが必要とする OAuth2.0 アクセス許可スコープとアプリ ロールを格納する配列です。 指定されたリソースの `id` と `type` の値が格納されます。 |
-| `samlMetadataUrl` | 文字列 | `http://MyRegisteredAppSAMLMetadata` | アプリの SAML メタデータへの URL。 |
+| `accessTokenAcceptedVersion` | Null 許容の Int32 | 現在の API リソース用の承認済みアクセス トークンのバージョンを指定します。 指定できる値は 1、2、null です。 既定では null に設定され、2 として扱われます。 | `2` |
+| `allowPublicClient` | ブール値 | フォールバック アプリケーションの種類を指定します。 Azure AD では、既定で replyUrlsWithType からアプリケーションの種類が推測されます。 Azure AD でクライアント アプリの種類を判別できない特定のシナリオがあります (URL リダイレクトなしで HTTP 要求が行われる [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) フローなど)。 そのような場合、Azure AD では、このプロパティの値に基づいて、アプリケーションの種類が解釈されます。 この値が true に設定されている場合、フォールバック アプリケーションの種類は、モバイル デバイス上で実行されているインストール済みのアプリなど、パブリック クライアントとして設定されます。 既定値は false です。これは、フォールバック アプリケーションの種類が、Web アプリなどの機密クライアントであることを意味します。 | `false` |
+| `appId` | 識別子の文字列 | Azure AD によってアプリに割り当てられた一意識別子を指定します。 | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
+| `appRoles` | 配列の型 | アプリが宣言する可能性のあるロールのコレクションを指定します。 これらのロールは、ユーザー、グループ、またはサービス プリンシパルに割り当てることができます。 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |
+| `groupMembershipClaims` | string | アプリが期待する、ユーザーまたは OAuth 2.0 アクセス トークンで発行される `groups` 要求を構成するビットマスク。 ビットマスクの値は次のとおりです。<br>0: なし<br>1: セキュリティ グループと Azure AD ロール<br>2: 予約済み<br>4: 予約済み<br>ビットマスクを 7 に設定すると、サインイン ユーザーがメンバーになっているすべてのセキュリティ グループ、配布グループ、および Azure AD ディレクトリ ロールが取得されます。 | `1` |
+| `optionalClaims` | string | この特定のアプリのセキュリティ トークン サービスによってトークンで返される省略可能な要求。 詳細については、[省略可能な要求](active-directory-optional-claims.md)に関するページを参照してください。 | `null` |
+| `id` | 識別子の文字列 | ディレクトリ内のアプリの一意識別子。 この ID は、いずれかのプロトコル トランザクション内のアプリを識別するために使用される識別子ではありません。 これは、ディレクトリ クエリ内のオブジェクトを参照するために使用されます。 | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
+| `identifierUris` | 文字列配列 | その Azure AD テナント内で、またはアプリがマルチテナントである場合は検証されたカスタム ドメイン内で Web アプリを一意に識別するユーザー定義 URI。 | <code>[<br>&nbsp;&nbsp;"https://MyRegistererdApp"<br>]</code> |
+| `informationalUrls` | string | アプリのサービス利用規約とプライバシーに関する声明へのリンクを指定します。 サービス利用規約とプライバシーに関する声明は、ユーザーの同意エクスペリエンスからユーザーに提示されます。 詳細については、[登録済み Azure AD アプリのサービス利用規約とプライバシーに関する声明を追加する方法](howto-add-terms-of-service-privacy-statement.md)のページを参照してください。 | <code>{<br>&nbsp;&nbsp;&nbsp;"marketing":"https://MyRegisteredApp/marketing",<br>&nbsp;&nbsp;&nbsp;"privacy":"https://MyRegisteredApp/privacystatement",<br>&nbsp;&nbsp;&nbsp;"support":"https://MyRegisteredApp/support",<br>&nbsp;&nbsp;&nbsp;"termsOfService":"https://MyRegisteredApp/termsofservice"<br>}</code> |
+| `keyCredentials` | 配列の型 | アプリで割り当てられた資格情報、文字列ベースの共有シークレット、および X.509 証明書への参照を保持します。 これらの資格情報は、アクセス トークンを要求するときに使用されます (そのアプリがリソースとしてではなく、クライアントとして機能している場合)。 | <code>[<br>&nbsp;{<br>&nbsp;&nbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-09-13T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2017-09-12T00:00:00Z",<br>&nbsp;&nbsp;&nbsp;"type":"AsymmetricX509Cert",<br>&nbsp;&nbsp;&nbsp;"usage":"Verify",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;}<br>]</code> |
+| `knownClientApplications` | 配列の型 | クライアント アプリとカスタム Web API アプリの 2 つの部分を含むソリューションがある場合に、同意をバンドルするために使用されます。 この値にクライアント アプリの appID を入力すると、ユーザーは、クライアント アプリに 1 回同意するだけで済みます。 Azure AD は、クライアントへの同意が Web API への暗黙的な同意を示し、クライアントと Web API の両方のサービス プリンシパルを同時に自動的にプロビジョニングすることを認識します。 クライアントと Web API アプリの両方が同じテナントに登録されている必要があります。 | `[GUID]` |
+| `logoUrl` | string | ポータルでアップロードされたロゴへの CDN URL を指す値のみを読み取ります。 | `https://MyRegisteredAppLogo` |
+| `logoutUrl` | string | アプリからログアウトするための URL。 | `https://MyRegisteredAppLogout` |
+| `name` | string | アプリの表示名。 | `MyRegisteredApp` |
+| `oauth2AllowImplicitFlow` | ブール値 | この Web アプリで OAuth2.0 暗黙的フロー アクセス トークンを要求できるかどうかを指定します。 既定値は false です。 このフラグは、ブラウザー ベースのアプリ (Javascript シングル ページ アプリなど) に使用されます。 | `false` |
+| `oauth2AllowIdTokenImplicitFlow` | ブール値 | この Web アプリで OAuth2.0 暗黙的フロー ID トークンを要求できるかどうかを指定します。 既定値は false です。 このフラグは、ブラウザー ベースのアプリ (Javascript シングル ページ アプリなど) に使用されます。 | `false` |
+| `oauth2Permissions` | 配列の型 | Web API (リソース) アプリがクライアント アプリに公開する OAuth 2.0 アクセス許可スコープのコレクションを指定します。 これらのアクセス許可スコープは、同意中にクライアント アプリに付与できます。 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"adminConsentDescription":"Allow the app to access resources on behalf of the signed-in user.",<br>&nbsp;&nbsp;&nbsp;"adminConsentDisplayName":"Access resource1",<br>&nbsp;&nbsp;&nbsp;"id":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"type":"User",<br>&nbsp;&nbsp;&nbsp;"userConsentDescription":"Allow the app to access resource1 on your behalf.",<br>&nbsp;&nbsp;&nbsp;"userConsentDisplayName":"Access resources",<br>&nbsp;&nbsp;&nbsp;"value":"u| Web API (リソース) アプリがクライアント アプリに公開する OAuth 2.0 アクセス許可スコープのコレクションを指定します。 これらのアクセス許可スコープは、同意中にクライアント アプリに付与できます。 ser_impersonation"<br>&nbsp;&nbsp;}<br>]</code> |
+| `oauth2RequiredPostResponse` | ブール値 | OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求ではなく、POST 要求を許可するかどうかを指定します。 既定値は false です。これは、GET 要求のみが許可されることを指定します。 | `false` |
+| `parentalControlSettings` | string | `countriesBlockedForMinors` は、未成年者に関してアプリがブロックされる国を指定します。<br>`legalAgeGroupRule` は、アプリのユーザーに適用される法的年齢グループ ルールを指定します。 `Allow`、`RequireConsentForPrivacyServices`、`RequireConsentForMinors`、`RequireConsentForKids`、`BlockMinors` のいずれかに設定できます。  | <code>{<br>&nbsp;&nbsp;&nbsp;"countriesBlockedForMinors":[],<br>&nbsp;&nbsp;&nbsp;"legalAgeGroupRule":"Allow"<br>} </code> |
+| `passwordCredentials` | 配列の型 | `keyCredentials` プロパティの説明を参照してください。 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"customKeyIdentifier":null,<br>&nbsp;&nbsp;&nbsp;"endDate":"2018-10-19T17:59:59.6521653Z",<br>&nbsp;&nbsp;&nbsp;"keyId":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"startDate":"2016-10-19T17:59:59.6521653Z",<br>&nbsp;&nbsp;&nbsp;"value":null<br>&nbsp;&nbsp;&nbsp;}<br>] </code> |
+| `preAuthorizedApplications` | 配列の型 | 暗黙的に同意するアプリケーションと要求されたアクセス許可がリストされます。 管理者がアプリケーションに同意する必要があります。 preAuthorizedApplications では、ユーザーが要求されたアクセス許可に同意する必要はありません。 PreAuthorizedApplications でリストされるアクセス許可にはユーザーの同意は必要ありません。 しかし、preAuthorizedApplications にリストされていない追加の要求されたアクセス許可にはユーザーの同意が必要です。 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"appId": "abcdefg2-000a-1111-a0e5-812ed8dd72e8",<br>&nbsp;&nbsp;&nbsp;&nbsp;"permissionIds": [<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"8748f7db-21fe-4c83-8ab5-53033933c8f1"<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>]</code> |
+| `replyUrlsWithType` | 文字列配列 | この複数値プロパティは、Azure AD がトークンを返すときに宛先として受け入れる登録された redirect_uri 値の一覧を保持します。 各 uri 値には、関連付けられているアプリの種類の値を含める必要があります。 サポートされる種類の値は `Web`、`InstalledClient` です。 | <code>"replyUrlsWithType":&nbsp;[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"url":&nbsp;"https://localhost:4400/services/office365/redirectTarget.html",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":&nbsp;"InstalledClient"&nbsp;&nbsp;&nbsp;<br>&nbsp;&nbsp;}<br>]</code> |
+| `requiredResourceAccess` | 配列の型 | 動的な同意では、静的な同意を使用しているユーザーに対する管理者の同意エクスペリエンスおよびユーザーの同意エクスペリエンスが `requiredResourceAccess` によって作動します。 ただし、一般的なケースでは、これによってユーザーの同意エクスペリエンスが作動することはありません。<br>`resourceAppId` は、アプリがアクセスする必要があるリソースの一意識別子です。 この値は、ターゲット リソース アプリで宣言された appId に等しくなるようにしてください。<br>`resourceAccess` は、指定されたリソースに対してアプリが必要とする OAuth2.0 アクセス許可スコープとアプリ ロールを格納する配列です。 指定されたリソースの `id` と `type` の値が格納されます。 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAppId":"00000002-0000-0000-c000-000000000000",<br>&nbsp;&nbsp;&nbsp;&nbsp;"resourceAccess":[<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"id":"311a71cc-e848-46a1-bdf8-97ff7156d8e6",<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"type":"Scope"<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>&nbsp;&nbsp;&nbsp;&nbsp;]<br>&nbsp;&nbsp;}<br>] </code> |
+| `samlMetadataUrl` | string | アプリの SAML メタデータへの URL。 | `https://MyRegisteredAppSAMLMetadata` |
+| `signInUrl` | string | アプリのホーム ページへの URL を指定します。 | `https://MyRegisteredApp` |
+| `signInAudience` | string | 現在のアプリケーションでサポートされる Microsoft アカウントを指定します。 サポートされる値は次のとおりです。<ul><li>**AzureADMyOrg** - 自分の組織の Azure AD テナント (つまり、シングル テナント) における Microsoft の職場または学校アカウントを持つユーザー</li><li>**AzureADMultipleOrgs** - 任意の組織の Azure AD テナント (つまり、マルチテナント) での Microsoft の職場または学校アカウントを持つユーザー</li> <li>**AzureADandPersonalMicrosoftAccount** - 個人の Microsoft アカウント、または任意の組織の Azure AD テナントでの職場または学校アカウントを持つユーザー</li></ul> | `AzureADandPersonalMicrosoftAccount` |
+| `tags` | 文字列配列 | アプリケーションの分類と特定に使用できるカスタム文字列。 | <code>[<br>&nbsp;&nbsp;"ProductionApp"<br>]</code> |
 
 ## <a name="next-steps"></a>次の手順
 
@@ -87,4 +89,3 @@ Azure Active Directory (Azure AD) と統合するアプリは、Azure AD テナ�
 [O365-PERM-DETAILS]: https://msdn.microsoft.com/office/office365/HowTo/application-manifest
 [O365-SERVICE-DAEMON-APPS]: https://msdn.microsoft.com/office/office365/howto/building-service-apps-in-office-365
 [RBAC-CLOUD-APPS-AZUREAD]: http://www.dushyantgill.com/blog/2014/12/10/roles-based-access-control-in-cloud-applications-using-azure-ad/
-

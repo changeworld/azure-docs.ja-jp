@@ -1,6 +1,6 @@
 ---
 title: Azure Access Control Service からの移行 | Microsoft Docs
-description: Azure Access Control Service からアプリとサービスを移動するためのオプション
+description: Azure Access Control Service (ACS) からアプリとサービスを移動するオプションについて学習します。
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/14/2017
+ms.date: 09/07/2018
 ms.author: celested
-ms.reviewer: hirsin, dastrock
-ms.openlocfilehash: 41c7de3039634f262efedc1bb3de1b39dda4593a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.reviewer: jlu, annaba, hirsin
+ms.openlocfilehash: 2c7dc650109ecc3844ee2ae90e50b2267f5716c4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698062"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996521"
 ---
-# <a name="migrate-from-the-azure-access-control-service"></a>Azure Access Control Service からの移行
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法: Azure Access Control Service からの移行
 
-Azure Active Directory (Azure AD) のサービスである Azure Access Control は、2018年 11 月 7 日に終了する予定です。 現在 Access Control を使用しているアプリケーションとサービスは、それまでに別の認証メカニズムへと完全移行する必要があります。 この記事では、現在のお客様を対象に、Access Control の使用の廃止を計画する際の推奨事項を紹介します。 現在 Access Control を使用していない場合は、何もする必要はありません。
-
+Azure Active Directory (Azure AD) のサービスである Microsoft Azure Access Control (ACS) は、2018 年 11 月 7 日に終了する予定です。 現在 Access Control を使用しているアプリケーションとサービスは、それまでに別の認証メカニズムへと完全移行する必要があります。 この記事では、現在のお客様を対象に、Access Control の使用の廃止を計画する際の推奨事項を紹介します。 現在 Access Control を使用していない場合は、何もする必要はありません。
 
 ## <a name="overview"></a>概要
 
@@ -38,7 +37,7 @@ Access Control のユース ケースは、主に次の 3 つのカテゴリに�
 - Web アプリケーション (カスタムとパッケージ (SharePoint など) の両方) に対する認証の追加。 Web アプリケーションで Access Control の "パッシブ" 認証を使用すると、Microsoft アカウント (以前の Live ID) だけでなく、Google、Facebook、Yahoo、Azure AD、および Active Directory フェデレーション サービス (AD FS) のアカウントを使用してサインインできるようになります。
 - Access Control によって発行されるトークンを使用したカスタム Web サービスのセキュリティ保護。 Web サービスで "アクティブ" 認証を使用すると、Access Control を使用して認証された既知のクライアントに対してのみ、アクセスを許可できるようになります。
 
-これらの各ユース ケースと推奨される移行方法については、以下のセクションで説明します。 
+これらの各ユース ケースと推奨される移行方法については、以下のセクションで説明します。
 
 > [!WARNING]
 > ほとんどの場合、既存のアプリやサービスを新しいテクノロジに移行するには大幅なコード変更が必要になります。 停止またはダウンタイムの可能性を防ぐために、移行の計画や実行を速やかに開始することをお勧めします。
@@ -73,7 +72,6 @@ Access Control コンポーネントの廃止スケジュールを次に示し�
 - **2018 年 4 月 2日**: Azure クラシック ポータルは完全に廃止され、Access Control の名前空間管理はどの URL でも使用できなくなります。 これ以降、Access Control 名前空間を有効または無効にしたり、削除したり、列挙することはできなくなります。 ただし、Access Control 管理ポータルはその機能を完全に維持され、`https://\<namespace\>.accesscontrol.windows.net` に配置されます。 その他の Access Control コンポーネントもすべて、引き続き正常に動作します。
 - **2018 年 11 月 7 日**: すべての Access Control コンポーネントが完全にシャット ダウンされます。 これには、Access Control 管理ポータル、管理サービス、STS、およびトークン変換ルール エンジンが含まれます。 これ以降、(\<名前空間\>.accesscontrol.windows.net にある) Access Control へ送信されるすべての要求は失敗するようになります。 この時点までに、すべての既存アプリケーションとサービスを他のテクノロジへと移行しておく必要があります。
 
-
 ## <a name="migration-strategies"></a>移行方法
 
 次のセクションでは、Access Control から他の Microsoft テクノロジに移行する際の推奨事項の概要を示します。
@@ -98,7 +96,6 @@ Access Control によって発行されたトークンを受け入れる各 Micr
 <!-- Retail federation services are moving, customers don't need to move -->
 <!-- Azure StorSimple: TODO -->
 <!-- Azure SiteRecovery: TODO -->
-
 
 ### <a name="sharepoint-customers"></a>SharePoint のユーザー
 
@@ -175,26 +172,14 @@ WS-Federation または WIF を使用して Azure AD と統合する場合は、
 - Azure AD トークン カスタマイズの柔軟性をフルに活用できます。 Azure AD によって発行された要求を、Access Control によって発行された要求と一致するようにカスタマイズすることができます。 これは、ユーザー ID や名前識別子要求に特に便利です。 テクノロジが変更された後もユーザー ID の一貫性が維持されるようにするには、Azure AD によって発行されたユーザー ID を、Access Control によって発行されたユーザー ID と一致させる必要があります。
 - アプリケーション固有のトークン署名証明書を構成し、その有効期間を制御できます。
 
-<!--
-
-Possible nameIdentifiers from Access Control (via AAD or AD FS):
-- AD FS - Whatever AD FS is configured to send (email, UPN, employeeID, what have you)
-- Default from AAD using App Registrations, or Custom Apps before ClaimsIssuance policy: subject/persistent ID
-- Default from AAD using Custom apps nowadays: UPN
-- Kusto can't tell us distribution, it's redacted
-
--->
-
 > [!NOTE]
 > このアプローチを使用するには、Azure AD Premium ライセンスが必要です。 Access Control をご使用のお客様で、アプリケーションのシングル サインオンを設定するためのプレミアム ライセンスが必要なお客様は、Microsoft までご連絡ください。 必要な開発者ライセンスをご提供します。
 
 もう 1 つのアプローチは、[こちらのコード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation)に従う方法です。この方法では、WS-Federation の設定方法の手順が若干異なります。 このコード サンプルでは、WIF を使用せず、代わりに ASP.NET 4.5 OWIN ミドルウェアを使用します。 ただし、アプリ登録の手順は、WIF を使用するアプリに対しても有効であり、Azure AD Premium ライセンスは必要ありません。 
 
-このアプローチを選ぶ場合は、[Azure AD での署名キー ロールオーバー](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)について理解する必要があります。 このアプローチでは、Azure AD のグローバル署名キーを使用してトークンを発行します。 既定では、WIF は署名キーを自動的に更新しません。 Azure AD がそのグローバル署名キーを回転する場合、変更を確定するために WIF 実装を準備する必要があります。
+このアプローチを選ぶ場合は、[Azure AD での署名キー ロールオーバー](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)について理解する必要があります。 このアプローチでは、Azure AD のグローバル署名キーを使用してトークンを発行します。 既定では、WIF は署名キーを自動的に更新しません。 Azure AD がそのグローバル署名キーを回転する場合、変更を確定するために WIF 実装を準備する必要があります。 詳細については、「[Important information about signing key rollover in Azure AD](https://msdn.microsoft.com/en-us/library/azure/dn641920.aspx)」 (Azure AD の署名キーのロールオーバーに関する重要な情報) を参照してください。
 
 OpenID Connect または OAuth プロトコル経由で Azure AD と統合できる場合は、その方法で統合することをお勧めします。 Azure AD を Web アプリケーションに統合する方法については、[Azure AD 開発者ガイド](https://aka.ms/aaddev)にさまざまなドキュメントとガイダンスが記載されています。
-
-<!-- TODO: If customers ask about authZ, let's put a blurb on role claims here -->
 
 #### <a name="migrate-to-azure-active-directory-b2c"></a>Azure Active Directory B2C への移行
 
@@ -237,7 +222,6 @@ Azure AD B2C がアプリケーションとサービスの最善の移行経路�
 - [Azure AD B2C カスタム ポリシー](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview-custom)
 - [Azure AD B2C の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 
-
 #### <a name="migrate-to-ping-identity-or-auth0"></a>Ping Identity または Auth0 への移行
 
 場合によっては、Web アプリケーションの Access Control を Azure AD や Azure AD B2C に置き換えるために、大量のコード変更が必要になることがあります。 たとえば、次のような場合です。
@@ -249,8 +233,6 @@ Azure AD B2C がアプリケーションとサービスの最善の移行経路�
 - マルチテナントの Web アプリケーションで、多数の ID プロバイダーへのフェデレーションを一元管理するために、ACS を使用している
 
 以上のような場合には、Web アプリケーションを別のクラウド認証サービスに移行することを検討してください。 次のオプションを検討することをお勧めします。 これらのオプションでは、Access Control と同様の機能が提供されます。
-
-
 
 |     |     | 
 | --- | --- |

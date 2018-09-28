@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: a93467404232b0fff51136cb7648d84a81165bdb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4ae9d8053f7463c069a7305bbd07a91a387e31d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697961"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972302"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Portal で仮想マシン スケール セットを自動的にスケーリングする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。
 
-この記事では、Azure Portal を使用して、スケール セット内の VM インスタンスのパフォーマンスを監視する自動スケール ルールを作成する方法を示します。 これらの自動スケール ルールは、これらのパフォーマンス メトリックに応じて VM インスタンスの数を増減します。 これらの手順は、[Azure PowerShell](tutorial-autoscale-powershell.md) または [Azure CLI 2.0](tutorial-autoscale-cli.md) を使用して実行することもできます。
+この記事では、Azure Portal を使用して、スケール セット内の VM インスタンスのパフォーマンスを監視する自動スケール ルールを作成する方法を示します。 これらの自動スケール ルールは、これらのパフォーマンス メトリックに応じて VM インスタンスの数を増減します。 これらの手順は、[Azure PowerShell](tutorial-autoscale-powershell.md) または [Azure CLI](tutorial-autoscale-cli.md) を使用して実行することもできます。
 
 
 ## <a name="prerequisites"></a>前提条件
-自動スケール ルールを作成するには、既存の仮想マシン スケール セットが必要です。 スケール セットは、[Azure Portal](quick-create-portal.md)、[Azure PowerShell](quick-create-powershell.md)、または [Azure CLI 2.0](quick-create-cli.md) を使用して作成できます。
+自動スケール ルールを作成するには、既存の仮想マシン スケール セットが必要です。 スケール セットは、[Azure portal](quick-create-portal.md)、[Azure PowerShell](quick-create-powershell.md)、または [Azure CLI](quick-create-cli.md) を使用して作成できます。
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>自動的にスケールアウトするルールの作成

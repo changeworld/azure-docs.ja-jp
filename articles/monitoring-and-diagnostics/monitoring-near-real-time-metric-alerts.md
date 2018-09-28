@@ -1,6 +1,6 @@
 ---
-title: 新しい Azure Monitor メトリック アラートでサポートされるリソース
-description: Azure のほぼリアルタイムの新しいメトリック アラートでサポートされているメトリックとログのリファレンスです。
+title: Azure Monitor のメトリック アラートでサポートされるリソース
+description: Azure Monitor のメトリック アラートでサポートされるメトリックとログのリファレンス
 author: snehithm
 services: monitoring
 ms.service: azure-monitor
@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 019f245a7cc1feedcbd520c336f53a60ed1e9ddc
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 102f087f31aa304aaaee49e0e39ff8c6874127b4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579091"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966801"
 ---
-# <a name="supported-resources-for-newer-azure-monitor-metric-alerts"></a>新しい Azure Monitor メトリック アラートでサポートされるリソース
-Azure Monitor が[新しいタイプのメトリック アラート](monitoring-overview-unified-alerts.md)をサポートするようになりました。このタイプには、古い[クラシック メトリック アラート](insights-alerts-portal.md)と比較して多くのメリットがあります。 メトリックは[さまざまな Azure サービスで](monitoring-supported-metrics.md)利用できます。 新しいアラートが対応しているリソース タイプは限られていますが、その数は増えています。 この記事では、このサブセットを一覧で示します。 
+# <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Azure Monitor のメトリック アラートでサポートされるリソース
 
-新しいメトリック アラートは、ログ (プレビュー) からのメトリックの一部としてメトリックとして抽出された一般的な Log Analytics ログに対しても使用できます。  
+Azure Monitor が[新しいタイプのメトリック アラート](monitoring-overview-unified-alerts.md)をサポートするようになりました。このタイプには、古い[クラシック メトリック アラート](insights-alerts-portal.md)と比較して多くのメリットがあります。 メトリックは[さまざまな Azure サービスで](monitoring-supported-metrics.md)利用できます。 新しいアラートが対応しているリソース タイプは限られていますが、その数は増えています。 この記事では、このサブセットを一覧で示します。
+
+新しいメトリック アラートは、ログからのメトリックの一部としてメトリックとして抽出された一般的な Log Analytics ログに対しても使用できます 
 - Windows および Linux マシンの[パフォーマンス カウンター](../log-analytics/log-analytics-data-sources-performance-counters.md)
 - [Agent Health のためのハートビート レコード](../operations-management-suite/oms-solution-agenthealth.md)
 - [更新管理](../operations-management-suite/oms-solution-update-management.md)レコード
@@ -28,7 +29,7 @@ Azure Monitor が[新しいタイプのメトリック アラート](monitoring-
 > 特定のメトリックやディメンションは、選択された期間内にそのためのデータが存在する場合にのみ表示されます。 これらのメトリックは、米国東部、米国西中部、西ヨーロッパに Azure Log Analytics ワークスペースを持つ顧客が使用できます。 Log Analytics からのメトリックは現在、パブリック プレビューの段階にあり、変更される可能性があります。
 
 ## <a name="portal-powershell-cli-rest-support"></a>ポータル、PowerShell、CLI、REST のサポート
-現在、新しいメトリック アラートは Azure Portal、[REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)、または[リソース マネージャー テンプレート](monitoring-create-metric-alerts-with-templates.md)でのみ作成できます。 PowerShell と Azure コマンド ライン インターフェイス (Azure CLI 2.0) を使用した新しいアラートの構成は、近日中にサポートされる予定です。
+現在、新しいメトリック アラートは Azure Portal、[REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate)、または[リソース マネージャー テンプレート](monitoring-create-metric-alerts-with-templates.md)でのみ作成できます。 PowerShell と Azure CLI バージョン 2.0 以降を使用した新しいアラートの構成は、近日中にサポートされる予定です。
 
 ## <a name="metrics-and-dimensions-supported"></a>サポートされるメトリックとディメンション
 新しいメトリック アラートでは、ディメンションを使用するメトリックのアラートがサポートされています。 ディメンションを使用すると、メトリックを適切なレベルにフィルター処理できます。 サポートされるすべてのメトリックと適用可能なディメンションは、[Azure Monitor - メトリックス エクスプローラー (プレビュー)](monitoring-metric-charts.md) から探索および視覚化できます。
@@ -66,7 +67,9 @@ Azure Monitor が[新しいタイプのメトリック アラート](monitoring-
 |Microsoft.Storage/storageAccounts/services     |     [はい]    | [Blob service](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices)、[ファイル サービス](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices)、[Queue サービス](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices)、および [Table service](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  該当なし       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
 | Microsoft.Web/serverfarms | [はい] | [App Service プラン](monitoring-supported-metrics.md#microsoftwebserverfarms)  |
-|Microsoft.OperationalInsights/workspaces (プレビュー) | [はい]|[Log Analytics ワークスペース](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)|
+| Microsoft.Web/sites | [はい] | [App Services](monitoring-supported-metrics.md#microsoftwebsites-excluding-functions) と [Functions](monitoring-supported-metrics.md#microsoftwebsites-functions)|
+| Microsoft.Web/sites/slots | [はい] | [App Service スロット](monitoring-supported-metrics.md#microsoftwebsitesslots)|
+|Microsoft.OperationalInsights/workspaces| [はい]|[Log Analytics ワークスペース](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)|
 
 
 

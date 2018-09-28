@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: huishao
-ms.openlocfilehash: dfbdc9e3091255267afe6c60363b7f93c4623e02
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 0eab96d85aa9cc8bea8d30c5a36c8489b8ea652e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42143724"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974172"
 ---
 # <a name="introduction-to-freebsd-on-azure"></a>Azure の FreeBSD の概要
 この記事では、Azure での FreeBSD 仮想マシンの実行の概要を説明します。
@@ -45,8 +45,8 @@ FreeBSD 仮想マシンのデプロイは、Azure Marketplace から提供され
 - [Azure Marketplace の FreeBSD 10.4](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.FreeBSD104)
 - [Azure Marketplace の FreeBSD 11.1](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD111)
 
-### <a name="create-a-freebsd-vm-through-azure-cli-20-on-freebsd"></a>FreeBSD で Azure CLI 2.0 を使用して FreeBSD VM を作成する
-まず、FreeBSD コンピューターで次のコマンドを実行して、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) をインストールする必要があります。
+### <a name="create-a-freebsd-vm-through-azure-cli-on-freebsd"></a>FreeBSD で Azure CLI を使用して FreeBSD VM を作成する
+まず、FreeBSD コンピューターで次のコマンドを実行して、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) をインストールする必要があります。
 
 ```bash 
 curl -L https://aka.ms/InstallAzureCli | bash

@@ -1,25 +1,18 @@
 ---
 title: 'ExpressRoute の概要: プライベート接続でオンプレミスのネットワークを Azure に拡張する | Microsoft Docs'
-description: この ExpressRoute の技術概要では、ExpressRoute 接続がプライベート接続を介してオンプレミスのネットワークを Azure に拡張するしくみについて説明します。
-documentationcenter: na
+description: ExpressRoute の技術概要では、ExpressRoute 接続がプライベート接続を介してオンプレミスのネットワークを Azure に拡張するしくみについて説明します。
 services: expressroute
 author: cherylmc
-manager: timlt
-editor: ''
-ms.assetid: fd95dcd5-df1d-41d6-85dd-e91d0091af05
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.topic: overview
+ms.date: 09/19/2018
 ms.author: cherylmc
-ms.openlocfilehash: 75d69669945d31fbc9876d0c1e709b37f96aee6d
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f1bc447f73912ccf04f0c0cf7d6460d472bace4c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29940164"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961911"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute の概要
 Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供するプライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 ExpressRoute では、Microsoft Azure、Office 365、Dynamics 365 などの Microsoft クラウド サービスへの接続を確立できます。
@@ -70,11 +63,29 @@ ExpressRoute でサポートされているサービスの詳しい一覧につ�
 ### <a name="global-connectivity-with-expressroute-premium-add-on"></a>ExpressRoute Premium アドオンによるグローバル接続
 ExpressRoute Premium アドオン機能を有効にすると、地政学的境界を越えて接続を拡張できます。 たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、世界中のあらゆるリージョンでホストされているすべての Microsoft クラウド サービスにアクセスできます (国内クラウドは除外します)。 北ヨーロッパ リージョンと西ヨーロッパ リージョンにアクセスする場合と同じ方法で南アメリカやオーストラリアにデプロイされているサービスにアクセスできます。
 
+### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>ExpressRoute Global Reach によるオンプレミスを越えての接続
+
+ExpressRoute Global Reach を有効にして、複数の ExpressRoute 回線を接続することで、リモート サイト間でデータを交換することができます。 たとえば、カリフォルニア州シリコン バレーの ExpressRoute に接続されているプライベート データ センターがあり、テキサス州ダラスの ExpressRoute に接続されている別のプライベート データ センターがある場合、ExpressRoute Global Reach を使用すれば、2 つの ExpressRoute 回線を通してこれらのプライベート データ センターを互いに接続できます。 データ センター間のトラフィックは、Microsoft のネットワークの中を通って行き来します。
+
+詳細については、[ExpressRoute Global Reach](expressroute-global-reach.md) に関するページを参照してください。
+
 ### <a name="rich-connectivity-partner-ecosystem"></a>大勢の接続パートナーが属するエコシステム
 ExpressRoute のエコシステムには継続的に新しい接続パートナーと SI パートナーが加わり、拡大します。 最新の情報については、[ExpressRoute のプロバイダーと場所](expressroute-locations.md)に関する記事を参照してください。
 
 ### <a name="connectivity-to-national-clouds"></a>国内クラウドへの接続
 Microsoft は特殊な地政学的領域と顧客区分のために隔離されたクラウド環境を運営しています。 国内のクラウドとプロバイダーの一覧については、 [ExpressRoute のプロバイダーと場所](expressroute-locations.md) に関するページを参照してください。
+
+### <a name="expressroute-direct"></a>ExpressRoute Direct
+
+ExpressRoute Direct は、世界中に戦略的に分散されたピアリングの場所で Microsoft のグローバル ネットワークに直接接続する機能をお客様に提供します。 ExpressRoute Direct では、大規模なアクティブ/アクティブ接続をサポートするデュアル 100 Gbps 接続が提供されます。 
+
+以下に、ExpressRoute Direct で提供される主な機能の一部を示します。
+
+* Storage や Cosmos DB などのサービスへの大規模なデータ インジェスト 
+* 規制対象となっていて、専用の分離された接続が必要とされる、銀行、政府機関、小売などの業種に向けた物理的な分離性 
+* 事業単位に基づいた回線配分の詳細な制御
+
+詳細については、[ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973) に関するページを参照してください。
 
 ### <a name="bandwidth-options"></a>帯域幅のオプション
 さまざまな帯域幅に合った ExpressRoute 回線を購入できます。 サポートされる帯域幅は次のとおりです。 サポートされる帯域幅の一覧は接続パートナーに必ず確認してください。

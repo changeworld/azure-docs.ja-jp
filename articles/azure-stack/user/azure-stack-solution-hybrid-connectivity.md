@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 05/25/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 72c5c4b0f0ab752bb02e6bee7cd038afca44ee1b
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 652d39b4d15569b9365543e02f170664a88715fa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605197"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953261"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack でハイブリッド クラウド接続を構成する
 
@@ -32,6 +32,13 @@ ms.locfileid: "34605197"
 > [!div class="checklist"]
 > - プライバシーまたは規制要件を満たすためにデータをオンプレミスで保管する一方で、グローバル Azure のリソースにアクセスする。
 > - グローバル Azure のクラウド スケールのアプリのデプロイとリソースを使用しながら、レガシー システムを維持する。
+
+> [!Tip]  
+> ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack は Azure の拡張機能です。 Azure Stack は、オンプレミスの環境にクラウド コンピューティングの俊敏性とイノベーションを提供します。これにより、どこでもハイブリッド アプリをビルドしてデプロイできる唯一のハイブリッド クラウドが実現されます。  
+> 
+> ホワイト ペーパー「[Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars)」では、ハイブリッドアプリケーションの設計、デプロイ、および操作に関するソフトウェア品質の重要な要素 (配置、スケーラビリティ、可用性、回復性、管理の容易性、セキュリティ) について概説しています。 これらの設計の考慮事項は、ハイブリッド アプリケーションの設計を最適化したり、運用環境での課題を最小限に抑えたりするのに役立ちます。
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -57,7 +64,7 @@ Azure Stack オペレーターが、App Service のデプロイ、プランと�
 
 ### <a name="azure-stack"></a>Azure Stack
 
- - 運用 Azure Stack を使用するか、https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 から Azure Stack Development Kit をデプロイします。
+ - 運用 Azure Stack を使用するか、 https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 から Azure Stack Development Kit をデプロイします。
    >[!Note]
    >ASDK のデプロイには最大 7 時間がかかることがあるため、適切に計画してください。
 

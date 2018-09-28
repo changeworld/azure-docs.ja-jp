@@ -1,6 +1,6 @@
 ---
-title: 複数の NIC を持つ VM (クラシック) の作成 - Azure CLI 1.0 | Microsoft Docs
-description: Azure コマンドライン インターフェイス (CLI) 1.0 を使用して、複数の NIC を持つ VM (クラシック) を作成する方法について説明します。
+title: 複数の NIC を持つ VM (クラシック) を作成する - Azure クラシック CLI | Microsoft Docs
+description: Azure クラシック コマンドライン インターフェイス (CLI) を使用して、複数の NIC を持つ VM (クラシック) を作成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: genlin
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b56ab474ff23748487c50bd34487c80242c6429
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4ea53048819bfdad5c45e522115aa6e493dfc8bc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38651988"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953371"
 ---
-# <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して複数の NIC が設定された VM (クラシック) を作成する
+# <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して複数の NIC が設定された VM (クラシック) を作成する
 
 [!INCLUDE [virtual-network-deploy-multinic-classic-selectors-include.md](../../includes/virtual-network-deploy-multinic-classic-selectors-include.md)]
 
