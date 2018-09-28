@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: routlaw
 ms.custom: aaddev
-ms.openlocfilehash: eb26101229ad60abae7a8a84f8dfa496488e84ba
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d77af898d5baef4fa7970132b0eb8deddb8f68cb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579005"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981799"
 ---
 # <a name="request-an-access-token-using-oauth-20-to-access-web-apis-and-applications-secured-by-azure-active-directory"></a>Azure Active Directory によってセキュリティで保護された Web API およびアプリケーションにアクセスするための OAuth 2.0 を使用したアクセス トークンの要求
 
@@ -75,12 +75,12 @@ POST https://{tenant}/oauth2/v2.0/token?client_id={client-id}
 ```
 | パラメーター     | 説明                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| access_token  | 要求されたアクセス トークン。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。                                                                                                                                                                                                                                                                                                                                    |
+| access_token  | 要求された[アクセス トークン](access-tokens.md)。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。                                                                                                                                                                                                                                                                                                                                    |
 | token_type    | トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。                                                                                                                                                                                                                                                                                                                                                                           |
 | expires_in    | アクセス トークンの有効期間 (秒)。                                                                                                                                                                                                                                                                                                                                                                                                       |
 | scope         | access_token が有効である範囲。                                                                                                                                                                                                                                                                                                                                                                                                         |
-| refresh_token | OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得します。 Refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 詳細については、 [v2.0 トークン リファレンス](v2-id-and-access-tokens.md)を参照してください。 <br> **注:** `offline_access` スコープが要求された場合のみ提供されます。                                               |
-| id_token      | 無署名の JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[v2.0 エンドポイント トークンのリファレンス](v2-id-and-access-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
+| refresh_token | OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得します。 Refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 詳細については、[v2.0 コード付与リファレンス](v2-oauth2-auth-code-flow.md#refresh-the-access-token)を参照してください。 <br> **注:** `offline_access` スコープが要求された場合のみ提供されます。                                               |
+| id_token      | 無署名の JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
 
 
 

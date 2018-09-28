@@ -14,19 +14,19 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: 220132f5f8c926999ac18299c3e8362be78d23a8
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: b89b7885989a5e93d3d292e5cdcff733fed657af
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171791"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990180"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Azure PowerShell を使用して Azure DNS のレコードおよびレコード セットを管理する
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
-> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
+> * [Azure クラシック CLI](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 この記事では、Azure PowerShell を使用して DNS ゾーンの DNS レコードを管理する方法について説明します。 DNS レコードは、クロスプラットフォームの [Azure CLI](dns-operations-recordsets-cli.md) または [Azure Portal](dns-operations-recordsets-portal.md) を使用して管理することもできます。

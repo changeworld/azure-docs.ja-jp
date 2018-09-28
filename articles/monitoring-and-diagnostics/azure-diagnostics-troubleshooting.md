@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 8f41605114de296b626418d0a868e3ed778c0640
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 6ea68bce81094f4745616e32c7434d6c833a45ee
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263848"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952581"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 診断のトラブルシューティング
 この記事では、Azure 診断の使用に関連するトラブルシューティング情報について説明します。 Azure 診断の詳細については、[Azure 診断の概要](azure-diagnostics.md)に関するページを参照してください。
@@ -30,7 +30,7 @@ ms.locfileid: "35263848"
 以下は、いくつかの重要なログとアーティファクトのパスです。 以下の文章では、この情報を参照します。
 
 ### <a name="azure-cloud-services"></a>Azure クラウド サービス
-| アーティファクト | パス |
+| アーティファクト | Path |
 | --- | --- |
 | **Azure 診断構成ファイル** | %SystemDrive%\Packages\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<バージョン>\Config.txt |
 | **ログ ファイル** | C:\Logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\<バージョン>\ |
@@ -41,7 +41,7 @@ ms.locfileid: "35263848"
 | **MonAgentHost ログ ファイル** | C:\Resources\Directory\<CloudServiceDeploymentID>.\<RoleName>.DiagnosticStore\WAD0107\Configuration\MonAgentHost.<シーケンシャル番号>.log |
 
 ### <a name="virtual-machines"></a>仮想マシン
-| アーティファクト | パス |
+| アーティファクト | Path |
 | --- | --- |
 | **Azure 診断構成ファイル** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<バージョン>\RuntimeSettings |
 | **ログ ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
@@ -53,13 +53,13 @@ ms.locfileid: "35263848"
 | **MonAgentHost ログ ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<シーケンシャル番号>.log |
 
 ## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>メトリック データが Azure ポータルに表示されない
-Azure 診断には、Azure ポータルに表示できるメトリック データが用意されています。 ポータルでこのデータが表示できない場合、Azure 診断ストレージ アカウントの WADMetrics\* テーブルで、該当するメトリック レコードが存在するかどうかを確認してください。 
+Azure 診断には、Azure ポータルに表示できるメトリック データが用意されています。 ポータルでこのデータが表示できない場合、Azure 診断ストレージ アカウントの WADMetrics\* テーブルで、該当するメトリック レコードが存在するかどうかを確認してください。
 
 ここでは、テーブルの **PartitionKey** がリソース ID、仮想マシン、または仮想マシン スケール セットです。 **RowKey** はメトリック名です (パフォーマンス カウンター名とも呼ばれています)。
 
-リソース ID が間違っている場合は、**診断構成****、** > **メトリック** > **ResourceId** で、リソース ID が正しく設定されているかどうかを確認します。
+リソース ID が間違っている場合は、**[診断構成]**、**[メトリック]**、**[ResourceId]** で、リソース ID が正しく設定されているかどうかを確認します。
 
-特定のメトリックのデータがない場合は、**診断構成** > **PerformanceCounter** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
+特定のメトリックのデータがない場合は、**[診断構成]**、**[PerformanceCounter]** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
 - \ASP.NET Applications(__Total__)\Requests/Sec
@@ -83,7 +83,7 @@ Azure 診断には、Azure ポータルに表示できるメトリック デー�
 
 
 ## <a name="azure-diagnostics-isnt-starting"></a>Azure 診断が起動しない
-Azure 診断が起動しない理由については、前述のログ ファイルの場所にある **DiagnosticsPluginLauncher.log** ファイルと **DiagnosticsPlugin.log** ファイルを参照してください。 
+Azure 診断が起動しない理由については、前述のログ ファイルの場所にある **DiagnosticsPluginLauncher.log** ファイルと **DiagnosticsPlugin.log** ファイルを参照してください。
 
 これらのログで "`Monitoring Agent not reporting success after launch`" が示されている場合、MonAgentHost.exe の起動でエラーが発生したことを意味します。 前のセクションで `MonAgentHost log file` に対して指定されている場所でそのログを調べます。
 
@@ -105,38 +105,38 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 
 解決方法: 診断構成を修正し、診断を再インストールします。
 
-ストレージ アカウントが正しく構成されている場合、マシンにリモート アクセスし、DiagnosticsPlugin.exe と MonAgentCore.exe が実行されていることを確認します。 実行されていない場合、「[Azure 診断が起動しない](#azure-diagnostics-is-not-starting)」の手順に従ってください。 
+ストレージ アカウントが正しく構成されている場合、マシンにリモート アクセスし、DiagnosticsPlugin.exe と MonAgentCore.exe が実行されていることを確認します。 実行されていない場合、「[Azure 診断が起動しない](#azure-diagnostics-is-not-starting)」の手順に従ってください。
 
 プロセスが実行されている場合、「[データがローカルでキャプチャされているか](#is-data-getting-captured-locally)」に進み、そこの手順に従ってください。
 
 ### <a name="part-of-the-data-is-missing"></a>一部のデータが見つからない
 全部ではないが一部のデータが表示される場合、データ収集/転送のパイプラインは正しく設定されています。 以下、現象をさらに分類しています。これに基づいて問題を絞り込んでください。
 
-#### <a name="is-the-collection-configured"></a>収集は構成されているか 
+#### <a name="is-the-collection-configured"></a>収集は構成されているか
 診断構成には、特定の型のデータを収集する指示が含まれています。 [構成を見直し](#how-to-check-diagnostics-extension-configuration)、収集するように設定しているデータだけが調べられていることを確認してください。
 
 #### <a name="is-the-host-generating-data"></a>ホストはデータを生成しているか
 - **パフォーマンス カウンター**: perfmon を開き、カウンターを確認します。
 
-- **トレース ログ**: VM にリモート アクセスし、アプリケーションの構成ファイルに TextWriterTraceListener を追加します。  テキスト リスナーの設定方法については、http://msdn.microsoft.com/library/sk36c28t.aspx をご覧ください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
+- **トレース ログ**: VM にリモート アクセスし、アプリケーションの構成ファイルに TextWriterTraceListener を追加します。  テキスト リスナーの設定方法については、 http://msdn.microsoft.com/library/sk36c28t.aspx をご覧ください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
 トレース ログが生成されていない場合、「[トレース ログが見つからない場合 (詳細)](#more-about-trace-logs-missing)」をご覧ください。
 
-- **ETW トレース**: VM にリモート アクセスし、PerfView をインストールします。  PerfView で、**[ファイル]** > **[ユーザー コマンド]** >  の順に選択し、**Listen etwprovder1** >  を実行します。必要に応じてさらに **etwprovider2** 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
+- **ETW トレース**: VM にリモート アクセスし、PerfView をインストールします。  PerfView で、**[ファイル]**、**[ユーザー コマンド]** の順に選択し、**Listen etwprovder1** を実行します。必要に応じてさらに **etwprovider2** 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
 
 - **イベント ログ**: VM にリモート アクセスします。 `Event Viewer` を開き、イベントが存在することを確認します。
 
 #### <a name="is-data-getting-captured-locally"></a>データはローカルでキャプチャされているか
 次に、データがローカルでキャプチャされていることを確認します。
-データは、[診断データのローカル ストア](#log-artifacts-path)の `*.tsf` ファイルにローカルに保存されます。 ログは、種類ごとに異なる `.tsf` ファイルに収集されます。 名前は、Azure Storage のテーブル名に類似しています。 
+データは、[診断データのローカル ストア](#log-artifacts-path)の `*.tsf` ファイルにローカルに保存されます。 ログは、種類ごとに異なる `.tsf` ファイルに収集されます。 名前は、Azure Storage のテーブル名に類似しています。
 
 たとえば、`Performance Counters` は `PerformanceCountersTable.tsf` で収集されます。 イベント ログは `WindowsEventLogsTable.tsf` で収集されます。 「[ローカル ログの抽出](#local-log-extraction)」の手順に従って、ローカルの収集ファイルを開き、ファイルがディスク上で収集されていることを確認します。
 
-ログがローカルで収集されておらず、ホストがデータを生成していることを確認済みの場合は、構成に問題がある可能性があります。 構成を注意深く見直します。 
+ログがローカルで収集されておらず、ホストがデータを生成していることを確認済みの場合は、構成に問題がある可能性があります。 構成を注意深く見直します。
 
 MonitoringAgent [MaConfig.xml](#log-artifacts-path) に生成された構成も確認します。 関連ログ ソースについて説明するセクションがあることを確認します。 次に、診断構成と監視エージェント構成の間の変換で失われていないことを確認します。
 
 #### <a name="is-data-getting-transferred"></a>データは転送されているか
-ローカルでキャプチャされていることを確認済みのデータがストレージ アカウントに表示されない場合、次の手順に従ってください。 
+ローカルでキャプチャされていることを確認済みのデータがストレージ アカウントに表示されない場合、次の手順に従ってください。
 
 - 正しいストレージ アカウントを指定したことと、指定したストレージ アカウントのキーなどがロールオーバーされていないことを確認します。 Azure クラウド サービスでは、`useDevelopmentStorage=true` が更新されていない場合があります。
 
@@ -215,7 +215,7 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 
 または、マシンにリモート デスクトップ接続し、Azure 診断構成ファイルを確認します。詳細は、[ログ アーティファクト パス セクション](#log-artifacts-path)にあります。
 
-どちらの場合でも、**Microsoft.Azure.Diagnostics** を検索し、**xmlCfg** または **WadCfg** フィールドを見つけます。 
+どちらの場合でも、**Microsoft.Azure.Diagnostics** を検索し、**xmlCfg** または **WadCfg** フィールドを見つけます。
 
 仮想マシンで検索し、**WadCfg** フィールドが存在する場合、構成が JSON 形式であることを意味します。 **xmlCfg** フィールドが存在する場合、構成が XML であり、base64 でエンコードされていることを意味します。 診断で読み込まれた XML を表示するには、これを[デコードする](http://www.bing.com/search?q=base64+decoder)必要があります。
 
@@ -247,22 +247,22 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 | -112 |一般的なエラー |
 
 ### <a name="local-log-extraction"></a>ローカル ログの抽出
-監視エージェントは、ログとアーティファクトを `.tsf` ファイルとして収集します。 `.tsf` ファイルは読み取り可能ではありませんが、次の方法で `.csv` に変換できます。 
+監視エージェントは、ログとアーティファクトを `.tsf` ファイルとして収集します。 `.tsf` ファイルは読み取り可能ではありませんが、次の方法で `.csv` に変換できます。
 
 ```
 <Azure diagnostics extension package>\Monitor\x64\table2csv.exe <relevantLogFile>.tsf
 ```
 対応する `.tsf` ファイルと同じパスに新しいファイル `<relevantLogFile>.csv` が作成されます。
 
->[!NOTE] 
+>[!NOTE]
 > 必要なのは、メインの tsf ファイル (PerformanceCountersTable.tsf など) に対してこのユーティリティを実行することのみです。 付随するファイル (PerformanceCountersTables_\*\*001.tsf、PerformanceCountersTables_\*\*002.tsf など) は自動的に処理されます。
 
-### <a name="more-about-missing-trace-logs"></a>トレース ログが見つからない場合 (詳細) 
+### <a name="more-about-missing-trace-logs"></a>トレース ログが見つからない場合 (詳細)
 
 >[!NOTE]
-> 以下の情報は主に、IaaS VM で実行されているアプリケーションで DiagnosticsMonitorTraceListener を構成した場合を除き、Azure クラウド サービスに当てはまります。 
+> 以下の情報は主に、IaaS VM で実行されているアプリケーションで DiagnosticsMonitorTraceListener を構成した場合を除き、Azure クラウド サービスに当てはまります。
 
-- **DiagnosticMonitorTraceListener** が web.config または app.config で構成されていることを確認します。これは既定でクラウド サービス プロジェクトで構成されます。 ただし、ユーザーがこれをコメントアウトすることもあります。その場合、診断でトレース ステートメントが収集されることはありません。 
+- **DiagnosticMonitorTraceListener** が web.config または app.config で構成されていることを確認します。これは既定でクラウド サービス プロジェクトで構成されます。 ただし、ユーザーがこれをコメントアウトすることもあります。その場合、診断でトレース ステートメントが収集されることはありません。
 
 - ログが **OnStart** メソッドまたは **Run** メソッドから書き込まれていない場合は、**DiagnosticMonitorTraceListener** が app.config に含まれていることを確認します。既定では、これは web.config にありますが、w3wp.exe 内で実行されているコードにのみ適用されます。 そのため、WaIISHost.exe で実行されているトレースを保存するために app.config で必要になります。
 
@@ -275,11 +275,11 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 
 **1. .NET 4.5 の依存関係**
 
-Windows Azure 診断拡張機能は .NET 4.5 framework 以降にランタイムが依存します。 このドキュメントの作成時点では、Azure クラウド サービス用にプロビジョニングされたすべてのマシンと Azure 仮想マシンに基づくすべての公式イメージに .NET 4.5 以降がインストールされています。 
+Windows Azure 診断拡張機能は .NET 4.5 framework 以降にランタイムが依存します。 このドキュメントの作成時点では、Azure クラウド サービス用にプロビジョニングされたすべてのマシンと Azure 仮想マシンに基づくすべての公式イメージに .NET 4.5 以降がインストールされています。
 
 .NET 4.5 以降がインストールされていない Windows Azure 診断拡張機能を実行する状況も考えられます。 古いイメージやスナップショットからマシンを作成するときや、カスタム ディスクを利用するときです。
 
-通常、**DiagnosticsPluginLauncher.exe** の実行時には、終了コード **255** が表示されます。 次のように、例外が処理されないことが原因でエラーが発生します。 
+通常、**DiagnosticsPluginLauncher.exe** の実行時には、終了コード **255** が表示されます。 次のように、例外が処理されないことが原因でエラーが発生します。
 ```
 System.IO.FileLoadException: Could not load file or assembly 'System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies
 ```
@@ -290,8 +290,6 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 
 既定では、仮想マシンのポータルに特定のパフォーマンス カウンターが表示されます。 パフォーマンス カウンターは表示されないが、データが生成されていることはわかっている (データがストレージで使用できるため) 場合、以下を確認してください。
 
-- ストレージ内のデータのカウンター名が英語であるかどうか。 カウンターの名前が英語でない場合、ポータルのメトリック グラフは名前を認識できません。
+- ストレージ内のデータのカウンター名が英語であるかどうか。 カウンターの名前が英語でない場合、ポータルのメトリック グラフは名前を認識できません。 **軽減策**: システム アカウント用に、マシンの言語を英語に変更します。 **[コントロール パネル]** > **[地域と言語]** > **[管理]** > **[設定のコピー]** の順に選択します。 次に、**[ようこそ画面とシステム アカウント]** の選択を解除し、カスタム言語がシステム アカウントに適用されないようにします。
 
-- パフォーマンス カウンター名にワイルドカード (\*) を使用している場合、ポータルでは構成済みのカウンターと収集されたカウンターを関連付けることができません。
-
-**軽減策**: システム アカウント用に、マシンの言語を英語に変更します。 **[コントロール パネル]** > **[地域と言語]** > **[管理]** > **[設定のコピー]** の順に選択します。 次に、**[ようこそ画面とシステム アカウント]** の選択を解除し、カスタム言語がシステム アカウントに適用されないようにします。 また、ポータルを頻繁に利用する場合、ワイルドカードを使用しないでください。
+- パフォーマンス カウンター名にワイルドカード (\*) を使用している場合、パフォーマンス カウンターが Azure Storage シンクに送られるときに、構成済みのカウンターと収集されたカウンターをポータルが関連付けることができなくなります。 **軽減策**: ワイルドカード (\*) を使用でき、ポータルを展開できることを確認するために、パフォーマンス カウンターを ["Azure Monitor" シンク](azure-diagnostics-schema.md#diagnostics-extension-111)にルーティングします。

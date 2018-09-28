@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 97836c4160349b8095ba2095176783ae17b46e82
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 9df587d92b9e35db496c787186ff2945db7965ce
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216201"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987817"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Azure でのカスタム メトリックによる自動スケールの概要
 この記事では、Azure Portal でカスタム メトリックを使用してリソースをスケールする方法について説明します。
 
-Azure Monitor の自動スケールは、仮想マシン スケール セット (VMSS)、クラウド サービス、App Service プラン、App Service 環境のみに適用されます。 
+Azure Monitor の自動スケールは、[Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/)、[Cloud Services](https://azure.microsoft.com/services/cloud-services/)、[App Service - Web Apps](https://azure.microsoft.com/services/app-service/web/)、および [API Management サービス](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)にのみ適用されます。
 
 # <a name="lets-get-started"></a>作業の開始
 この記事では、Application Insights が構成されている Web アプリがあることを前提としています。 Web アプリをまだ所有していない場合は、[ASP.NET Web サイト向けに Application Insights を設定する][1]ことができます。

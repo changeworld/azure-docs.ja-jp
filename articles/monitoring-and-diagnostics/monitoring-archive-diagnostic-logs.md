@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 1686c283b0aa9f0713317b22e2ef2abd16e6b187
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: caa8f1a10652c16e181c47fbbe4f9f0c815cfd67
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579913"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983686"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Azure 診断ログのアーカイブ
 
@@ -62,7 +62,7 @@ ms.locfileid: "45579913"
 
    ![診断設定の追加 - 既存の設定が存在する](media/monitoring-archive-diagnostic-logs/diagnostic-settings-configure.png)
 
-4. **[Save]** をクリックします。
+4. **[保存]** をクリックします。
 
 しばらくすると、このリソースの設定一覧に新しい設定が表示され、新しいイベント データが生成されるとすぐに、診断ログがそのストレージ アカウントにアーカイブされます。
 
@@ -74,14 +74,14 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |
-| resourceId |[はい] |診断設定の対象となるリソースの ID。 |
+| resourceId |はい |診断設定の対象となるリソースの ID。 |
 | StorageAccountId |いいえ  |診断ログの保存先となるストレージ アカウントのリソース ID。 |
 | Categories |いいえ  |有効にするログ カテゴリのコンマ区切りのリスト。 |
-| Enabled |[はい] |このリソースに対する診断が有効であるか無効であるかを示すブール値。 |
+| Enabled |はい |このリソースに対する診断が有効であるか無効であるかを示すブール値。 |
 | RetentionEnabled |いいえ  |このリソースに対するリテンション期間ポリシーが有効であるか無効であるかを示すブール値。 |
 | RetentionInDays |いいえ  |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に保存されます。 |
 
-## <a name="archive-diagnostic-logs-via-the-azure-cli-20"></a>Azure CLI 2.0 を使用して診断ログをアーカイブする
+## <a name="archive-diagnostic-logs-via-the-azure-cli"></a>Azure CLI を使用して診断ログをアーカイブする
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \
@@ -151,9 +151,9 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 | 要素名 | 説明 |
 | --- | --- |
 | time |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
-| ResourceId |影響を受けるリソースのリソース ID。 |
+| resourceId |影響を受けるリソースのリソース ID。 |
 | operationName |操作の名前。 |
-| カテゴリ |イベントのログ カテゴリ。 |
+| category |イベントのログ カテゴリ。 |
 | properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 
 > [!NOTE]

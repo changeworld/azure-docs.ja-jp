@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: f497184b05432d6e32883bb3470f7e4da5fe550f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9941f442ad546155f58967fb3414eb2e7b7c3647
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047187"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973713"
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>REST を使用して HDInsight の Hadoop で MapReduce ジョブを実行
 
@@ -141,7 +141,7 @@ WebHCat REST API を使用して HDInsight クラスターの Hadoop で MapRedu
 
 6. ジョブの状態が `SUCCEEDED` に変化したら、Azure Blob ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには出力ファイルの場所を含めます。 この例では、場所は `/example/curl` です。 このアドレスは、`/example/curl` にあるクラスターの既定ストレージにジョブの出力を格納します。
 
-これらのファイルを一覧表示およびダウンロードするには [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) を使用します。 Azure CLI から Blob を操作することの詳細については、「[Azure Storage での Azure CLI 2.0 の使用](../../storage/common/storage-azure-cli.md#create-and-manage-blobs)」というドキュメントを参照してください。
+これらのファイルを一覧表示およびダウンロードするには [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)を使用します。 Azure CLI から Blob を操作する方法の詳細については、「[Azure Storage での Azure CLI の使用](../../storage/common/storage-azure-cli.md#create-and-manage-blobs)」というドキュメントを参照してください。
 
 ## <a id="nextsteps"></a>次のステップ
 

@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/07/2018
 ms.author: cynthn
-ms.openlocfilehash: 9d8e868eb11e45a01b3992022b729369da6b42e4
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 20d3568fa3f583c190f087de861d857fe3e793a9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931492"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985437"
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-windows-vm"></a>Windows VM の仮想ディスクを暗号化する方法
-仮想マシン (VM) のセキュリティとコンプライアンスを強化するために、Azure の仮想ディスクを暗号化できます。 ディスクは、Azure Key Vault で保護されている暗号化キーを使って暗号化されます。 これらの暗号化キーを制御し、その使用を監査することができます。 この記事では、Azure PowerShell を使用して Windows VM の仮想ディスクを暗号化する方法について詳しく説明します。 [Azure CLI 2.0 を使って Linux VM のディスクを暗号化する](../linux/encrypt-disks.md)こともできます。
+仮想マシン (VM) のセキュリティとコンプライアンスを強化するために、Azure の仮想ディスクを暗号化できます。 ディスクは、Azure Key Vault で保護されている暗号化キーを使って暗号化されます。 これらの暗号化キーを制御し、その使用を監査することができます。 この記事では、Azure PowerShell を使用して Windows VM の仮想ディスクを暗号化する方法について詳しく説明します。 [Azure CLI を使って Linux VM のディスクを暗号化する](../linux/encrypt-disks.md)こともできます。
 
 ## <a name="overview-of-disk-encryption"></a>ディスク暗号化の概要
 Windows VM の仮想ディスクは、Bitlocker を使って暗号化します。 Azure の仮想ディスクを暗号化するための料金はかかりません。 暗号化キーは、ソフトウェア保護を使って Azure Key Vault に格納されます。または、FIPS 140-2 レベル 2 標準に認定された Hardware Security Module (HSM) でキーをインポートまたは生成することもできます。 これらの暗号化キーは、VM に接続された仮想ディスクの暗号化/暗号化解除に使われます。 これらの暗号化キーの制御を維持し、その使用を監査することができます。 Azure Active Directory サービス プリンシパルは、VM の電源がオンまたはオフになったときにこれらの暗号化キーを発行するためのセキュリティで保護されたメカニズムを提供します。

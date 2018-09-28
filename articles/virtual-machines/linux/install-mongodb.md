@@ -1,6 +1,6 @@
 ---
 title: Azure CLI を使用して Linux VM に MongoDB をインストールする | Microsoft Docs
-description: Azure CLI 2.0 を使用して Linux 仮想マシンに MongoDB をインストールして構成する方法について説明する
+description: Azure CLI を使用して Linux 仮想マシンに MongoDB をインストールして構成する方法について説明する
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d066b412fb722318824a408861fe7d9595c71537
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: a6228290eb5f35d687c26042c87551471462ab85
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928235"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987834"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Linux VM に MongoDB をインストールして構成する方法
-[MongoDB](http://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Azure CLI 2.0 を使用して Linux VM に MongoDB をインストールして構成する方法を説明します。 次の方法が詳しくわかる例を示します。
+
+[MongoDB](http://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Azure CLI を使用して Linux VM に MongoDB をインストールして構成する方法を説明します。 次の方法が詳しくわかる例を示します。
 
 * [基本的な MongoDB インスタンスを手動でインストールして構成する](#manually-install-and-configure-mongodb-on-a-vm)
 * [Resource Manager テンプレートを使って基本的な MongoDB インスタンスを作成する](#create-basic-mongodb-instance-on-centos-using-a-template)
@@ -30,7 +31,7 @@ ms.locfileid: "37928235"
 
 
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>VM に MongoDB を手動でインストールして構成する
-MongoDB では、Red Hat/CentOS、SUSE、Ubuntu、Debian などの Linux ディストリビューション用の[インストール手順が提供](https://docs.mongodb.com/manual/administration/install-on-linux/)されています。 次の例では、*CentOS* VM を作成します。 この環境を作成するには、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要があります。
+MongoDB では、Red Hat/CentOS、SUSE、Ubuntu、Debian などの Linux ディストリビューション用の[インストール手順が提供](https://docs.mongodb.com/manual/administration/install-on-linux/)されています。 次の例では、*CentOS* VM を作成します。 この環境を作成するには、最新の [Azure CLI](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインする必要があります。
 
 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -120,7 +121,7 @@ GitHub にある次の Azure クイックスタート テンプレートを使�
 
 * [CentOS での基本的な MongoDB インスタンス](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-この環境を作成するには、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要があります。 最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+この環境を作成するには、最新の [Azure CLI](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインする必要があります。 最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -171,7 +172,7 @@ GitHub にある次の Azure クイックスタート テンプレートを使�
 > [!WARNING]
 > この複雑な MongoDB シャード化クラスターをデプロイするには、20 個より多くのコアが必要です。サブスクリプションに対するリージョンごとの既定のコア数は、通常 20 個です。 コア数を増やすには、Azure サポート要求を提出してください。
 
-この環境を作成するには、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要があります。 最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+この環境を作成するには、最新の [Azure CLI](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインする必要があります。 最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

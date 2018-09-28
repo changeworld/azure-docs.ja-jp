@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 09/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 91c097d2ac661aa4ac9b578b7d9060b97ee6f549
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 093124432314472da06065fad3a7cdff0f558d22
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126175"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999819"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -405,6 +405,30 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 ### <a name="unix-performance-counters"></a>Unix パフォーマンス カウンター
 * [Application Insights プラグインを使用して collectd をインストール](app-insights-java-collectd.md) し、さまざまな種類のシステムとネットワークに関するデータを取得します。
 
+## <a name="local-forwarder"></a>ローカル フォワーダー
+
+[ローカル フォワーダー](https://docs.microsoft.com/azure/application-insights/local-forwarder)とは、さまざまな SDK やフレームワークから Application Insights または [OpenCensus](https://opencensus.io/) のテレメトリを収集して、それを Application Insights にルーティングするエージェントです。 これは、Windows と Linux で実行できます。
+
+```xml
+<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
+<DeveloperMode>false</DeveloperMode>
+<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
+<!-- The properties below are optional. The values shown are the defaults for each property -->
+<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
+<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
+</Channel>
+```
+
+SpringBoot スターターを使用する場合は、構成ファイル (application.properies) に次を追加します。
+
+```yml
+azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
+azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
+azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
+```
+
+SpringBoot の application.properties と applicationinsights.xml の構成の既定値は同じです。
+
 ## <a name="get-user-and-session-data"></a>ユーザーとセッションのデータを取得する
 Web サーバーからテレメトリを送信しようとしているところです。 ここで、アプリケーションの状態を完全に把握するために、監視を追加することもできます。
 
@@ -453,7 +477,7 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 [apiexceptions]: app-insights-api-custom-events-metrics.md#trackexception
 [availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
-[eclipse]: app-insights-java-eclipse.md
+[eclipse]: /app-insights-java-quick-start.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-javascript.md

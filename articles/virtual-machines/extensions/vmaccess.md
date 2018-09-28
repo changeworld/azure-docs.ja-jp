@@ -1,6 +1,6 @@
 ---
 title: Azure Linux VM へのアクセスのリセット | Microsoft Docs
-description: VMAccess 拡張機能と Azure CLI 2.0 を使用して Linux VM 上の管理ユーザーを管理し、アクセスをリセットする方法
+description: VMAccess 拡張機能と Azure CLI を使用して Linux VM 上の管理ユーザーを管理し、アクセスをリセットする方法
 services: virtual-machines-linux
 documentationcenter: ''
 author: zroiy
@@ -15,14 +15,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: 51c203c746a5256924033ebe48d9ddfdc3823b16
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: e878f5c9f923b55a1eb94cefb1ecf021c81e884e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39415895"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998629"
 ---
-# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>VMAccess 拡張機能と Azure CLI 2.0 を使用して、Linux VM 上の管理ユーザー、SSH を管理し、ディスクをチェックまたは修復する
+# <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>VMAccess 拡張機能と Azure CLI を使用して、Linux VM 上の管理ユーザー、SSH を管理し、ディスクをチェックまたは修復する
 ## <a name="overview"></a>概要
 Linux VM 上のディスクがエラーを示しています。 何らかの理由で Linux VM の root パスワードをリセットしたか、誤って SSH 秘密キーを削除してしまいました。 これがかつてのデータ センターの時代で起きていたら、車で駆けつけ、KVM を開けて、サーバー コンソールにたどり着くことになっていたでしょう。 Azure VMAccess 拡張機能は、コンソールにアクセスして、Linux へのアクセスをリセットしたり、ディスク レベルの保守を実行したりできるその KVM スイッチとして考えてください。
 
@@ -47,10 +47,10 @@ VMAccess 拡張機能は、次の Linux ディストリビューションに対�
 ## <a name="ways-to-use-the-vmaccess-extension"></a>VMAccess 拡張機能の使用方法
 Linux VM で VMAccess 拡張機能を使用する方法は 2 つあります。
 
-* Azure CLI 2.0 と必要なパラメーターを使用する。
+* Azure CLI と必要なパラメーターを使用する。
 * [VMAccess 拡張機能が処理して、動作の基となる未加工の JSON ファイル](#use-json-files-and-the-vmaccess-extension)を使用する。
 
-次の例では、[az vm user](/cli/azure/vm/user) コマンドを使用します。 これらの手順を実行するには、[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインする必要があります。
+次の例では、[az vm user](/cli/azure/vm/user) コマンドを使用します。 これらの手順を実行するには、[Azure CLI](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインする必要があります。
 
 ## <a name="update-ssh-key"></a>SSH キーを更新する
 次の例では、`myVM` という名前の VM 上のユーザー `azureuser` の SSH キーを更新します。

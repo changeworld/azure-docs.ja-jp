@@ -1,60 +1,74 @@
 ---
-title: Scheduler 送信認証
-description: Scheduler 送信認証
+title: 送信認証 - Azure Scheduler
+description: Azure Scheduler の送信認証を設定または削除する方法について説明します
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 ms.date: 08/15/2016
-ms.author: deli
-ms.openlocfilehash: e345b2e22daae5b24c23645f7d2636f66df630ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88f2fe0781bad4b652826b6a8d1961dd39b063e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23040337"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993337"
 ---
-# <a name="scheduler-outbound-authentication"></a>Scheduler 送信認証
-Scheduler ジョブでは、認証を必要とするサービスを呼び出すことが必要になる場合があります。 このようにして、呼び出されたサービスは、Scheduler ジョブがそのリソースにアクセスできるかどうかを確認できます。 このようなサービスには、他の Azure サービス、Salesforce.com、Facebook、およびセキュリティで保護されたカスタム Web サイトが含まれます。
+# <a name="outbound-authentication-for-azure-scheduler"></a>Azure Scheduler の送信認証
 
-## <a name="adding-and-removing-authentication"></a>認証の追加と削除
-Scheduler ジョブに認証を追加するのは簡単です。ジョブを作成または更新するときに JSON の子要素 `authentication` を `request` 要素に追加するだけです。 PUT 要求、PATCH 要求、または POST 要求で `authentication` オブジェクトの一部として Scheduler サービスに渡されたシークレットが応答で返されることはありません 応答では、シークレット情報は null に設定されます。または、認証済みのエンティティを表す公開トークンが含まれる場合があります。
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、廃止予定の Azure Scheduler の後継です。 ジョブをスケジュールするには、[Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) を代わりにお使いください。 
 
-認証を削除するには、ジョブに対する PUT または PATCH 操作を明示的に実行して、`authentication` オブジェクトを null に設定します。 応答に認証プロパティが含まれることはありません。
+Azure Scheduler ジョブは、他の Azure サービス、Salesforce.com、Facebook、セキュリティで保護されたカスタム Web サイトなど、認証が必要なサービスを呼び出す必要があります。 呼び出されたサービスは、Scheduler ジョブが必要なリソースにアクセスできるかどうかを確認できます。 
 
-現在サポートされている認証の種類は、(SSL/TLS クライアント証明書を使用するための) `ClientCertificate` モデル、(基本認証用の) `Basic` モデル、(Active Directory の OAuth 認証用の) `ActiveDirectoryOAuth` モデルのみです。
+Scheduler では、これらの認証モデルがサポートされています。 
 
-## <a name="request-body-for-clientcertificate-authentication"></a>ClientCertificate 認証の要求本文
-`ClientCertificate` モデルを使用して認証を追加する場合は、要求本文に次の要素を指定します。  
+* *クライアント証明書* SSL/TLS クライアント証明書を使用する際の認証
+* *基本*認証
+* *Active Directory OAuth* 認証
 
-| 要素 | Description |
-|:--- |:--- |
-| *authentication (親要素)* |SSL クライアント証明書を使用するための認証オブジェクト。 |
-| *type* |必須。 認証の種類。SSL クライアント証明書の場合、値 `ClientCertificate` を使用する必要があります。 |
-| *pfx* |必須。 Base64 でエンコードされた PFX ファイルのコンテンツ。 |
-| *password* |必須。 PFX ファイルにアクセスするためのパスワード。 |
+## <a name="add-or-remove-authentication"></a>認証の追加または削除
 
-## <a name="response-body-for-clientcertificate-authentication"></a>ClientCertificate 認証の応答本文
-認証情報を含めて要求を送信した場合、応答には次の認証に関連する要素が含まれます。
+* Scheduler ジョブに認証を追加するには、ジョブを作成または更新する際に、`authentication` JavaScript Object Notation (JSON) の子要素を `request` 要素に追加します。 
 
-| 要素 | Description |
-|:--- |:--- |
-| *authentication (親要素)* |SSL クライアント証明書を使用するための認証オブジェクト。 |
-| *type* |認証の種類。 SSL クライアント証明書の場合、値 `ClientCertificate`を使用します。 |
-| *certificateThumbprint* |証明書の拇印。 |
-| *certificateSubjectName* |証明書のサブジェクト識別名。 |
-| *certificateExpiration* |証明書の有効期限日。 |
+  応答で、`authentication` オブジェクトの PUT 要求、PATCH 要求、または POST 要求を介して Scheduler サービスに渡されたシークレットが返されることはありません。 
+  応答では、シークレット情報は null に設定されます。または、認証済みのエンティティを表す公開トークンが使用される場合があります。 
 
-## <a name="sample-rest-request-for-clientcertificate-authentication"></a>ClientCertificate 認証のサンプル REST 要求
-```
-PUT https://management.azure.com/subscriptions/1fe0abdf-581e-4dfe-9ec7-e5cb8e7b205e/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
+* Scheduler ジョブから認証を削除するには、ジョブで PUT 要求または PATCH 要求を明示的に実行し、`authentication` オブジェクトを null に設定します。 応答には、認証プロパティは含まれません。
+
+## <a name="client-certificate"></a>クライアント証明書
+
+### <a name="request-body---client-certificate"></a>要求本文 - クライアント証明書
+
+`ClientCertificate` モデルを使用して認証を追加する場合は、要求本文にこれらの追加要素を指定します。  
+
+| 要素 | 必須 | 説明 |
+|---------|----------|-------------|
+| **authentication** (親要素) | SSL クライアント証明書を使用するための認証オブジェクト |
+| **type** | [はい] | 認証の種類。 SSL クライアント証明書の場合、値 `ClientCertificate`を使用します。 |
+| **pfx** | [はい] | Base64 でエンコードされた PFX ファイルのコンテンツ |
+| **password** | [はい] | PFX ファイルにアクセスするためのパスワード |
+||| 
+
+### <a name="response-body---client-certificate"></a>応答本文 - クライアント証明書 
+
+認証情報を含めて要求を送信した場合、応答にはこれらの認証要素が含まれます。
+
+| 要素 | 説明 | 
+|---------|-------------| 
+| **authentication** (親要素) | SSL クライアント証明書を使用するための認証オブジェクト |
+| **type** | 認証の種類。 SSL クライアント証明書の場合、値 `ClientCertificate`を使用します。 |
+| **certificateThumbprint** |証明書のサムプリント |
+| **certificateSubjectName** |証明書のサブジェクト識別名 |
+| **certificateExpiration** | 証明書の有効期限日 |
+||| 
+
+### <a name="sample-rest-request---client-certificate"></a>サンプル REST 要求 - クライアント証明書
+
+```json
+PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
 User-Agent: Fiddler
 Host: management.azure.com
 Authorization: Bearer sometoken
@@ -83,15 +97,15 @@ Content-Type: application/json; charset=utf-8
       "endTime": "2016-04-10T08:00:00Z",
       "interval": 1
     },
-    "state": "enabled",
+    "state": "enabled"
   }
 }
 ```
 
-## <a name="sample-rest-response-for-clientcertificate-authentication"></a>ClientCertificate 認証のサンプル REST 応答
-```
-HTTP/1.1 200 OK
-Cache-Control: no-cache
+### <a name="sample-rest-response---client-certificate"></a>サンプル REST 応答 - クライアント証明書
+
+```json
+HTTP/1.1 200 OKCache-Control: no-cache
 Pragma: no-cache
 Content-Length: 858
 Content-Type: application/json; charset=utf-8
@@ -107,7 +121,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 {
-  "id": "/subscriptions/1fe0abdf-581e-4dfe-9ec7-e5cb8e7b205e/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
+  "id": "/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
   "type": "Microsoft.Scheduler/jobCollections/jobs",
   "name": "southeastasiajc/httpjob",
   "properties": {
@@ -144,28 +158,35 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## <a name="request-body-for-basic-authentication"></a>基本認証の要求本文
-`Basic` モデルを使用して認証を追加する場合は、要求本文に次の要素を指定します。
+## <a name="basic"></a>Basic
 
-| 要素 | Description |
-|:--- |:--- |
-| *authentication (親要素)* |基本認証を使用するための認証オブジェクト。 |
-| *type* |必須。 認証の種類。 基本認証の場合、値 `Basic`を使用する必要があります。 |
-| *username* |必須。 認証するユーザー名。 |
-| *password* |必須。 認証するパスワード。 |
+### <a name="request-body---basic"></a>要求本文 - 基本
 
-## <a name="response-body-for-basic-authentication"></a>基本認証の応答本文
-認証情報を含めて要求を送信した場合、応答には次の認証に関連する要素が含まれます。
+`Basic` モデルを使用して認証を追加する場合は、要求本文にこれらの追加要素を指定します。
 
-| 要素 | Description |
-|:--- |:--- |
-| *authentication (親要素)* |基本認証を使用するための認証オブジェクト。 |
-| *type* |認証の種類。 基本認証の場合、値 `Basic`を使用します。 |
-| *username* |認証されたユーザー名。 |
+| 要素 | 必須 | 説明 |
+|---------|----------|-------------|
+| **authentication** (親要素) | 基本認証を使用するための認証オブジェクト | 
+| **type** | [はい] | 認証の種類。 基本認証の場合、値 `Basic`を使用します。 | 
+| **username** | [はい] | 認証するユーザー名 | 
+| **password** | [はい] | 認証するパスワード |
+|||| 
 
-## <a name="sample-rest-request-for-basic-authentication"></a>基本認証のサンプル REST 要求
-```
-PUT https://management.azure.com/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
+### <a name="response-body---basic"></a>応答本文 - 基本
+
+認証情報を含めて要求を送信した場合、応答にはこれらの認証要素が含まれます。
+
+| 要素 | 説明 | 
+|---------|-------------|
+| **authentication** (親要素) | 基本認証を使用するための認証オブジェクト |
+| **type** | 認証の種類。 基本認証の場合、値は `Basic` です。 |
+| **username** | 認証されたユーザー名 |
+||| 
+
+### <a name="sample-rest-request---basic"></a>サンプル REST 要求 - 基本
+
+```json
+PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
 User-Agent: Fiddler
 Host: management.azure.com
 Authorization: Bearer sometoken
@@ -195,13 +216,14 @@ Content-Type: application/json; charset=utf-8
       "endTime": "2016-04-10T08:00:00Z",
       "interval": 1
     },
-    "state": "enabled",
+    "state": "enabled"
   }
 }
 ```
 
-## <a name="sample-rest-response-for-basic-authentication"></a>基本認証のサンプル REST 応答
-```
+### <a name="sample-rest-response---basic"></a>サンプル REST 応答 - 基本
+
+```json
 HTTP/1.1 200 OK
 Cache-Control: no-cache
 Pragma: no-cache
@@ -219,7 +241,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 {  
-   "id":"/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
+   "id":"/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
    "type":"Microsoft.Scheduler/jobCollections/jobs",
    "name":"southeastasiajc/httpjob",
    "properties":{  
@@ -236,14 +258,14 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
                "type":"Basic"
             }
          },
-         "type":"http"
+         "type":"Http"
       },
       "recurrence":{  
-         "frequency":"minute",
+         "frequency":"Minute",
          "endTime":"2016-04-10T08:00:00Z",
          "interval":1
       },
-      "state":"enabled",
+      "state":"Enabled",
       "status":{  
          "nextExecutionTime":"2016-03-16T19:06:00Z",
          "executionCount":0,
@@ -254,35 +276,39 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 }
 ```
 
-## <a name="request-body-for-activedirectoryoauth-authentication"></a>ActiveDirectoryOAuth 認証の要求本文
-`ActiveDirectoryOAuth` モデルを使用して認証を追加する場合は、要求本文に次の要素を指定します。
+## <a name="active-directory-oauth"></a>Active Directory OAuth
 
-| 要素 | Description |
-|:--- |:--- |
-| *authentication (親要素)* |ActiveDirectoryOAuth 認証を使用するための認証オブジェクト。 |
-| *type* |必須。 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用する必要があります。 |
-| *tenant* |必須。 Azure AD テナントのテナント ID です。 |
-| *audience* |必須。 これは https://management.core.windows.net/ に設定されます。 |
-| *clientId* |必須。 Azure AD アプリケーションのクライアント識別子を指定します。 |
-| *secret* |必須。 トークンを要求しているクライアントのシークレット。 |
+### <a name="request-body---active-directory-oauth"></a>要求本文 - Active Directory OAuth 
 
-### <a name="determining-your-tenant-identifier"></a>テナント ID の確認
-Azure AD テナントのテナント ID は、Azure PowerShell で `Get-AzureAccount` を実行すると確認できます。
+`ActiveDirectoryOAuth` モデルを使用して認証を追加する場合は、要求本文にこれらの追加要素を指定します。
 
-## <a name="response-body-for-activedirectoryoauth-authentication"></a>ActiveDirectoryOAuth 認証の応答本文
-認証情報を含めて要求を送信した場合、応答には次の認証に関連する要素が含まれます。
+| 要素 | 必須 | 説明 |
+|---------|----------|-------------|
+| **authentication** (親要素) | [はい] | ActiveDirectoryOAuth 認証を使用するための認証オブジェクト |
+| **type** | [はい] | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 |
+| **tenant** | [はい] | Azure AD テナントのテナント ID です。 Azure AD テナントのテナント ID を確認するには、Azure PowerShell で `Get-AzureAccount` を実行します。 |
+| **audience** | [はい] | この値は `https://management.core.windows.net/` に設定されます。 | 
+| **clientId** | [はい] | Azure AD アプリケーションのクライアント識別子 | 
+| **secret** | [はい] | トークンを要求しているクライアントのシークレット | 
+|||| 
 
-| 要素 | Description |
-|:--- |:--- |
-| *authentication (親要素)* |ActiveDirectoryOAuth 認証を使用するための認証オブジェクト。 |
-| *type* |認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 |
-| *tenant* |Azure AD テナントのテナント ID です。 |
-| *audience* |これは https://management.core.windows.net/ に設定されます。 |
-| *clientId* |Azure AD アプリケーションのクライアント識別子。 |
+### <a name="response-body---active-directory-oauth"></a>応答本文 - Active Directory OAuth
 
-## <a name="sample-rest-request-for-activedirectoryoauth-authentication"></a>ActiveDirectoryOAuth 認証のサンプル REST 要求
-```
-PUT https://management.azure.com/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
+認証情報を含めて要求を送信した場合、応答にはこれらの認証要素が含まれます。
+
+| 要素 | 説明 |
+|---------|-------------|
+| **authentication** (親要素) | ActiveDirectoryOAuth 認証を使用するための認証オブジェクト |
+| **type** | 認証の種類。 ActiveDirectoryOAuth 認証の場合、値 `ActiveDirectoryOAuth`を使用します。 | 
+| **tenant** | Azure AD テナントのテナント識別子。 |
+| **audience** | この値は `https://management.core.windows.net/` に設定されます。 |
+| **clientId** | Azure AD アプリケーションのクライアント識別子 |
+||| 
+
+### <a name="sample-rest-request---active-directory-oauth"></a>サンプル REST 要求 - Active Directory OAuth
+
+```json
+PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
 User-Agent: Fiddler
 Host: management.azure.com
 Authorization: Bearer sometoken
@@ -307,20 +333,21 @@ Content-Type: application/json; charset=utf-8
           "type":"ActiveDirectoryOAuth"
         }
       },
-      "type": "http"
+      "type": "Http"
     },
     "recurrence": {
-      "frequency": "minute",
+      "frequency": "Minute",
       "endTime": "2016-04-10T08:00:00Z",
       "interval": 1
     },
-    "state": "enabled",
+    "state": "Enabled"
   }
 }
 ```
 
-## <a name="sample-rest-response-for-activedirectoryoauth-authentication"></a>ActiveDirectoryOAuth 認証のサンプル REST 応答
-```
+### <a name="sample-rest-response---active-directory-oauth"></a>サンプル REST 応答 - Active Directory OAuth
+
+```json
 HTTP/1.1 200 OK
 Cache-Control: no-cache
 Pragma: no-cache
@@ -337,59 +364,49 @@ x-ms-routing-request-id: WESTUS:20160316T191003Z:5183bbf4-9fa1-44bb-98c6-6872e3f
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 Date: Wed, 16 Mar 2016 19:10:02 GMT
 
-{  
-   "id":"/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
-   "type":"Microsoft.Scheduler/jobCollections/jobs",
-   "name":"southeastasiajc/httpjob",
-   "properties":{  
-      "startTime":"2015-05-14T14:10:00Z",
-      "action":{  
-         "request":{  
-            "uri":"https://mywebserviceendpoint.com",
-            "method":"GET",
-            "headers":{  
-               "x-ms-version":"2013-03-01"
+{
+   "id": "/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
+   "type": "Microsoft.Scheduler/jobCollections/jobs",
+   "name": "southeastasiajc/httpjob",
+   "properties": {
+      "startTime": "2015-05-14T14:10:00Z",
+      "action": {  
+         "request": {
+            "uri": "https://mywebserviceendpoint.com",
+            "method": "GET",
+            "headers": {  
+               "x-ms-version": "2013-03-01"
             },
-            "authentication":{  
-               "tenant":"microsoft.onmicrosoft.com",
-               "audience":"https://management.core.windows.net/",
-               "clientId":"dc23e764-9be6-4a33-9b9a-c46e36f0c137",
-               "type":"ActiveDirectoryOAuth"
+            "authentication": {  
+               "tenant": "microsoft.onmicrosoft.com",
+               "audience": "https://management.core.windows.net/",
+               "clientId": "dc23e764-9be6-4a33-9b9a-c46e36f0c137",
+               "type": "ActiveDirectoryOAuth"
             }
          },
-         "type":"http"
+         "type": "Http"
       },
-      "recurrence":{  
-         "frequency":"minute",
-         "endTime":"2016-04-10T08:00:00Z",
-         "interval":1
+      "recurrence": {  
+         "frequency": "minute",
+         "endTime": "2016-04-10T08:00:00Z",
+         "interval": 1
       },
-      "state":"enabled",
-      "status":{  
-         "lastExecutionTime":"2016-03-16T19:10:00.3762123Z",
-         "nextExecutionTime":"2016-03-16T19:11:00Z",
-         "executionCount":5,
-         "failureCount":5,
-         "faultedCount":1
+      "state": "Enabled",
+      "status": {  
+         "lastExecutionTime": "2016-03-16T19:10:00.3762123Z",
+         "nextExecutionTime": "2016-03-16T19:11:00Z",
+         "executionCount": 5,
+         "failureCount": 5,
+         "faultedCount": 1
       }
    }
 }
 ```
 
 ## <a name="see-also"></a>関連項目
- [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
 
- [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
-
- [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
-
- [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
-
- [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
-
- [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
-
- [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
-
- [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
-
+* [Azure Scheduler とは](scheduler-intro.md)
+* [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
+* [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
+* [Azure Scheduler REST API](https://msdn.microsoft.com/library/mt629143)
+* [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)

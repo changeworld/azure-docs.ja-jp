@@ -5,16 +5,16 @@ services: cost-management
 author: bandersmsft
 ms.service: cost-management
 ms.topic: include
-ms.date: 04/26/2018
+ms.date: 09/17/2018
 ms.author: banders
 manager: dougeby
 ms.custom: include file
-ms.openlocfilehash: 1b65775ef5ad40ca9e9c1e2c96fe1c2b8d92afdc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4acc3f43f04c51e5303c8eba1d934580802312b5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32198857"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47017689"
 ---
 ## <a name="view-cost-data"></a>コスト データの表示
 
@@ -26,27 +26,27 @@ Cloudyn による Azure コスト管理では、すべてのクラウド リソ�
 
 ダッシュボードでのレポートの目的がわからない場合は、**i** 記号にポインターを置くと説明が表示されます。 完全なレポートを表示するには、ダッシュボード上の任意のレポートをクリックします。
 
-ポータルの上部にあるレポート メニューを使用して、レポートを表示することもできます。 過去 30 日間の Contoso の Azure リソースの使用について見てみましょう。 **[コスト]** > **[コスト分析]** > **[Actual Cost Analysis]\(実績コスト分析\)** をクリックします。 レポートにタグ、グループ、またはフィルターのセットがある場合は、値をクリアします。
+ポータルの上部にあるレポート メニューを使用して、レポートを表示することもできます。 過去 30 日間の Contoso の Azure リソースの使用について見てみましょう。 **[コスト]** > **[コスト分析]** > **[Actual Cost Analysis (実績コストの分析)]** をクリックします。 レポートにタグ、グループ、またはフィルターのセットがある場合は、値をクリアします。
 
 ![実績コストの分析](./media/cost-management-create-account-view-data/actual-cost-01.png)
 
-この例では、$75,970 は総コストで、予算は $130,000 です。
+この例では、$122,273 が総コストで、予算は $290,000 です。
 
 ここで、レポートの書式を変更し、グループおよびフィルターを設定して、Azure コストの結果を絞り込んでみましょう。 **日付範囲**を過去 30 日間に設定します。 右上で、列の記号をクリックして棒グラフとして書式設定し、[グループ] で **[プロバイダー]** を選択します。 次に、**[プロバイダー]** のフィルターを **[Azure]** に設定します。
 
 ![実績コスト分析のフィルター処理](./media/cost-management-create-account-view-data/actual-cost-02.png)
 
-この例では、Azure リソースの合計コストは過去 30 日間で $3,839 でした。
+この例では、Azure リソースの合計コストは過去 30 日間で $3,309 でした。
 
 プロバイダー (Azure) バーを右クリックし、**[リソースの種類]** にドリルダウンします。
 
 ![ドリル ダウン](./media/cost-management-create-account-view-data/actual-cost-03.png)
 
-次の図は、Contoso に発生した Azure リソースのコストを示しています。 合計は $3,839 でした。 この例では、約半分のコストがローカル冗長ストレージに費やされ、残りの半分がさまざまな VM インスタンスに費やされていました。
+次の図は、Contoso に発生した Azure リソースのコストを示しています。 合計は $3,309 でした。 この例では、約半分のコストが Standard_A1 VM に費やされ、残りの半分がさまざまな Azure サービスや VM インスタンスに費やされていました。
 
 ![リソースの種類](./media/cost-management-create-account-view-data/actual-cost-04.png)
 
-リソースの種類を右クリックし、**[コスト エンティティ]** を選択して、コスト エンティティと、リソースを消費したサービスを表示します。 DevOps の VM と Worker サービスに、この例では、それぞれ $486.60 と $435.71 費やしました。 両方の合計は $922 です。
+リソースの種類を右クリックし、**[コスト エンティティ]** を選択して、コスト エンティティと、リソースを消費したサービスを表示します。 次の図では、ローカル冗長ストレージが、リソースの種類として設定されています。 Contoso |Azure/Storage では、$15.65 が消費されました。 エンジニアリング |Azure Storage では、$164.25 が消費されました。 共有インフラストラクチャ |Azure/Storage では、$116.58 が消費されました。 サービスの総コストは、$296 です。
 
 ![コスト エンティティとサービス](./media/cost-management-create-account-view-data/actual-cost-05.png)
 

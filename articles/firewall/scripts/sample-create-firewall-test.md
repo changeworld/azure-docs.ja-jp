@@ -8,18 +8,14 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 8/13/2018
 ms.author: victorh
-ms.openlocfilehash: b65a5dec63bdc625dda64e101620f56cd6dd7308
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 23f10280cd34927e2e74cb7c5001850bedc6dd35
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41921026"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967542"
 ---
 # <a name="create-an-azure-firewall-test-environment"></a>Azure Firewall のテスト環境を作成する
-
-[!INCLUDE [firewall-preview-notice](../../../includes/firewall-preview-notice.md)]
-
-Azure Firewall の記事の例では、Azure Firewall のパブリック プレビューを既に有効にしていることを前提としています。 詳細については、「[Enable the Azure Firewall public preview (Azure Firewall パブリック プレビューを有効にする)](../public-preview.md)」を参照してください。
 
 このサンプル スクリプトでは、ファイアウォールとテスト ネットワーク環境を作成します。 ネットワークには、*AzureFirewallSubnet*、*ServersSubnet*、および *JumpboxSubnet* の 3 つのサブネットを含む 1 つの VNet があります。 ServersSubnet と JumpboxSubnet には、それぞれ 1 つの 2 コア Windows Server があります。
 
@@ -29,7 +25,7 @@ Azure Firewall の記事の例では、Azure Firewall のパブリック プレ�
 
 このスクリプトは、Azure [Cloud Shell](https://shell.azure.com/powershell) から、またはローカルの PowerShell インストールから実行できます。 
 
-PowerShell をローカルで実行する場合、このスクリプトでは AzureRM PowerShell モジュール バージョン 6.4.0 以降が必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 
+PowerShell をローカルで実行する場合、このスクリプトでは最新の AzureRM PowerShell モジュール バージョンが必要になります。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 
 
 アップグレードが必要な場合は、Windows 10 および Windows Server 2016 に組み込まれている `PowerShellGet` を使用できます。
 
@@ -39,12 +35,6 @@ PowerShell をローカルで実行する場合、このスクリプトでは Az
 詳細については、「[Install Azure PowerShell on Windows with PowerShellGet (PowerShellGet を使用した Windows への Azure PowerShell のインストール)](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps?view=azurermps-6.4.0)」を参照してください
 
 Web Platform Installer を使用してインストールされた既存の Azure PowerShell は PowerShellGet のインストールと競合するため、削除する必要があります。
-
-さらに、AzureRM.Network (バージョン 6.4.0) のプレビュー版をインストールする必要があります。 古いモジュールを使用している場合は、`Uninstall-Module AzureRM.Network -Force` を実行して削除してください。 次に、以下を実行します。
-
- `Install-Module -Name AzureRM.Network -Repository PSGallery -RequiredVersion 6.4.0-preview -AllowPrerelease -Force`
-
-これで、バージョン 6.4.0 がインストールされます。
 
 PowerShell をローカルで実行している場合は `Connect-AzureRmAccount` を実行して Azure との接続を作成する必要もあることを思い出してください。
 

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: d6852b5b1fe3d0b3c248fc1948fa4c3a9428de89
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 86a24c2cdba890046f2cbb0ccf6b73decdac7235
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125410"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997524"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-linux-containers"></a>Windows に Azure IoT Edge をインストールして Linux コンテナーと共に使用する
 
@@ -107,6 +107,10 @@ Get-WinEvent -ea SilentlyContinue `
 ```powershell
 iotedge list
 ```
+
+## <a name="tips-and-suggestions"></a>ヒントと検索候補
+
+ネットワークにプロキシ サーバーが存在する場合は、[プロキシ サーバー経由で通信するように IoT Edge デバイスを構成する](how-to-configure-proxy-support.md)手順に従います。
 
 ## <a name="next-steps"></a>次の手順
 

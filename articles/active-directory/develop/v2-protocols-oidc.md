@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4c7b46972a8c07675e1318a900c1f07043beb3de
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 51c7bacbfa30a74aef89abba133e48c483375032
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591937"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971452"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory v2.0 と OpenID Connect プロトコル
 
@@ -139,7 +139,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 | パラメーター | 説明 |
 | --- | --- |
-| id_token |アプリが要求した ID トークン。 `id_token` パラメーターを使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。 ID トークンとその内容の詳細については、[v2.0 エンドポイント トークンのリファレンス](v2-id-and-access-tokens.md)を参照してください。 |
+| id_token |アプリが要求した ID トークン。 `id_token` パラメーターを使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。 ID トークンとその内容の詳細については、[`id_tokens` のリファレンス](id-tokens.md)を参照してください。 |
 | state |要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
 
 ### <a name="error-response"></a>エラー応答
@@ -175,20 +175,18 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 ## <a name="validate-the-id-token"></a>ID トークンの検証
 
-ユーザーを認証するには、ID トークンの受信だけでは不十分です。 ID トークンの署名を検証し、アプリの要件に従って、トークンに含まれている要求を確認する必要もあります。 v2.0 エンドポイントは、[JSON Web トークン (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
+単に id_token を受け取るだけでは、ユーザーを認証するには不十分です。id_token の署名を検証し、そのトークンに含まれる要求をアプリの要件に従って確認する必要があります。 v2.0 エンドポイントは、[JSON Web トークン (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
 
-クライアント コードで ID トークンを検証することもできますが、ID トークンをバックエンド サーバーに送信して検証を実行するのが一般的な方法です。 ID トークンの署名を検証した後に、いくつかの要求を確認する必要があります。 [トークンの検証](v2-id-and-access-tokens.md#validating-tokens)および[署名キーのロールオーバーに関する重要な情報](v2-id-and-access-tokens.md#validating-tokens)の詳細など、詳しくは [v2.0 トークンのリファレンス](v2-id-and-access-tokens.md)を参照してください。 ライブラリを使用してトークンを解析し、検証することをお勧めします。 ほとんどの言語とプラットフォームで、これらのライブラリを 1 つ以上使用できます。
+クライアント コードで `id_token` を検証することもできますが、`id_token` をバックエンド サーバーに送信して検証を実行するのが一般的な方法です。 id_token の署名を検証した後に、確認の必要な要求がいくつか存在します。 [トークンの検証](id-tokens.md#validating-idtokens)と[署名キーのロールオーバーに関する重要な情報](active-directory-signing-key-rollover.md)などの詳細については、[`id_token` のリファレンス](id-tokens.md)を参照してください。 トークンの解析および検証には、ほとんどの言語とプラットフォームに少なくとも 1 つは用意されているライブラリを活用することをお勧めします。
 <!--TODO: Improve the information on this-->
 
 シナリオに応じてその他の要求も検証することができます。 以下に一般的な検証の例をいくつか挙げます。
 
-* ユーザーまたは組織がアプリにサインアップ済みであることを確認する。
-* ユーザーに必要な承認または特権があることを確認する。
+* ユーザー/組織がアプリにサインアップ済みであることを確認する。
+* 適切な承認/特権がユーザーにあることを確認する。
 * 多要素認証など特定の強度の認証が行われたことを確認する。
 
-ID トークンに含まれている要求の詳細については、[v2.0 エンドポイント トークン リファレンス](v2-id-and-access-tokens.md)を参照してください。
-
-ID トークンを検証した後、ユーザーとのセッションを開始できます。 ID トークンに含まれている要求を使用して、アプリのユーザーに関する情報を取得します。 この情報は、表示、記録、承認などに利用することができます。
+id_token を十分検証したら、ユーザーとのセッションを開始し、id_token に含まれる要求を使ってそのユーザーに関する情報をアプリの中で取得することができます。 この情報は、表示、記録、パーソナル化などに利用することができます。
 
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
 
@@ -257,7 +255,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 | パラメーター | 説明 |
 | --- | --- |
-| id_token |アプリが要求した ID トークン。 この ID トークンを使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。 ID トークンとその内容の詳細については、[v2.0 エンドポイント トークンのリファレンス](v2-id-and-access-tokens.md)を参照してください。 |
+| id_token |アプリが要求した ID トークン。 この ID トークンを使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。 ID トークンとその内容の詳細については、[`id_tokens` のリファレンス](id-tokens.md)を参照してください。 |
 | code |アプリが要求した承認コード。 アプリは承認コードを使用して、対象リソースのアクセス トークンを要求します。 認証コードの有効期間は非常に短時間です。 通常、認証コードは約 10 分で期限切れになります。 |
 | state |要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
 
@@ -280,4 +278,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 想定されるエラー コードと推奨されるクライアントの応答については、「[承認エンドポイント エラーのエラー コード](#error-codes-for-authorization-endpoint-errors)」を参照してください。
 
-承認コードと ID トークンがある場合は、ユーザーをサインインさせ、代わりにアクセス トークンを取得できます。 ユーザーをサインインさせるには、[説明したとおり](#validate-the-id-token)に ID トークンを検証する必要があります。 アクセス トークンは、[OAuth プロトコルのドキュメント](v2-oauth2-auth-code-flow.md#request-an-access-token)に記載されている手順に従って取得できます。
+承認コードと ID トークンがある場合は、ユーザーをサインインさせ、代わりにアクセス トークンを取得できます。 ユーザーをサインインさせるには、[説明したとおり](id-tokens.md#validating-idtokens)に ID トークンを検証する必要があります。 アクセス トークンを取得するには、[OAuth コード フローのドキュメント](v2-oauth2-auth-code-flow.md#request-an-access-token)に記載されている手順に従って取得できます。

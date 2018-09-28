@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 9097ca13bf4f65db4b0924044a9c0f075e3703af
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 7f55b762bda5ff0c7bbedf414b18465656496cbb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37128896"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984587"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API を使用して Log Analytics でアラートのルールを作成および管理する
 Log Analytics のアラート REST API は、Operations Management Suite (OMS) でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
@@ -36,11 +36,11 @@ Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager 
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| 間隔 |検索を実行する頻度。 分単位で指定します。 |
+| Interval |検索を実行する頻度。 分単位で指定します。 |
 | QueryTimeSpan |条件を評価する時間間隔。 [Interval] の値以上にする必要があります。 分単位で指定します。 |
-| バージョン |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
+| Version |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
 
-たとえば、[Interval] を 15 分、[QueryTimeSpan] を 30 分に設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、条件が 30 分間にわたって true に評価されるとアラートがトリガーされます。
+たとえば、Interval を 15 分、QueryTimeSpan を 30 分に設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、条件が 30 分間にわたって true に評価されるとアラートがトリガーされます。
 
 ### <a name="retrieving-schedules"></a>スケジュールの取得
 Get メソッドを使用して、保存した検索条件のすべてのスケジュールを取得します。
@@ -95,14 +95,14 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| type |アクションの種類。  現在使用可能な値は、[Alert] と [Webhook] です。 |
+| type |アクションの種類。  現在使用可能な値は、Alert と Webhook です。 |
 | Name |アラートの表示名。 |
-| バージョン |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
+| Version |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
 
 ### <a name="retrieving-actions"></a>アクションの取得
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
 Get メソッドを使用して、スケジュールのすべてのアクションを取得します。
 
@@ -125,7 +125,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 ### <a name="deleting-actions"></a>アクションの削除
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
 アクション ID と共に Delete メソッドを使用すると、アクションを削除できます。
 
@@ -136,8 +136,8 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 
 | セクション | 説明 | 使用法 |
 |:--- |:--- |:--- |
-| しきい値 |アクションがいつ実行されるかの条件。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
-| 重大度 |アラートがトリガーされるときに分類に使用されるラベル。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
+| Threshold |アクションがいつ実行されるかの条件。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
+| Severity |アラートがトリガーされるときに分類に使用されるラベル。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
 | アクション グループ |Azure ActionGroup の ID。電子メール、SMS、音声通話、Webhook、Automation Runbook、ITSM Connector など、必要なアクションが指定されています。| アラートが Azure に拡張されると必要|
 | アクションのカスタマイズ|ActionGroup の選択したアクションの標準出力を変更します| すべてのアラートで省略可能で、アラートが Azure に拡張された後に使用できます。 |
 | EmailNotification |複数の受信者にメールを送信します。 | アラートが Azure に拡張された後は不要|
@@ -145,7 +145,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 | Webhook アクション | アラートから JSON として必要なサービスにデータをプッシュします |アラートが Azure に拡張された後は不要|
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。
+> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。
 
 #### <a name="thresholds"></a>しきい値
 アラート アクションには、しきい値を 1 つだけ指定する必要があります。  保存した検索条件の結果が、その検索に関連付けられているアクションのしきい値に一致すると、そのアクションの他のすべてのプロセスが実行されます。  また、アクションにしきい値だけを含めて、しきい値を含まない他の種類のアクションと共に使用することもできます。
@@ -154,8 +154,8 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| 演算子 |しきい値の比較演算子。 <br> gt = より大きい <br> lt = より小さい |
-| 値 |しきい値の値。 |
+| Operator |しきい値の比較演算子。 <br> gt = より大きい <br> lt = より小さい |
+| Value |しきい値の値。 |
 
 たとえば、[Interval] を 15 分、[QueryTimeSpan] を 30 分に設定し、しきい値を 10 より大きく設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、30 分間にわたって作成された 10 個のイベントが返されたときに、アラートがトリガーされます。
 
@@ -267,7 +267,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
         "AzNsNotification": {
           "GroupIds": [
             "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ]
+          ],
           "CustomEmailSubject": "Azure Alert fired"
         },
         "Severity": "critical",
@@ -301,7 +301,7 @@ Webhook の詳細のカスタマイズは、ActionGroup の詳細とともに送
         "AzNsNotification": {
           "GroupIds": [
             "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
-          ]
+          ],
           "CustomWebhookPayload": "{\"field1\":\"value1\",\"field2\":\"value2\"}",
           "CustomEmailSubject": "Azure Alert fired"
         },
@@ -323,14 +323,14 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 電子メール通知は、1 人以上の受信者にメールを送信します。  電子メール通知には、次の表に示したプロパティがあります。
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、電子メール通知などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、電子メール通知などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
    
 
 | プロパティ | 説明 |
 |:--- |:--- |
 | Recipients |メール アドレスの一覧。 |
-| 件名 |メールの件名。 |
-| 添付ファイル |添付ファイルは現在サポートされていないため、値は常に "None" になります。 |
+| Subject |メールの件名。 |
+| Attachment |添付ファイルは現在サポートされていないため、値は常に "None" になります。 |
 
 しきい値を含む電子メール通知に対する応答の例を次に示します。  
 
@@ -367,7 +367,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 修復では、アラートで識別された問題を修正するための Runbook が Azure Automation で開始されます。  修復アクションで使用される Runbook の Webhook を作成し、WebhookUri プロパティに URI を指定する必要があります。  OMS コンソールを使用してこのアクションを作成すると、Runbook に対して新しい Webhook が自動的に作成されます。
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Runbook を使用した修復などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Runbook を使用した修復などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
 修復には、次の表に示したプロパティがあります。
 
@@ -426,7 +426,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 Webhook アクションは、URL を呼び出し、送信されるペイロードをオプションで指定することにより、プロセスを開始します。  これは修復アクションに似ていますが、Azure Automation の Runbook 以外のプロセスを呼び出す可能性のある Webhook に対して使用することを意図しています。  また、リモート プロセスに配信されるペイロードを指定する追加のオプションも用意されています。
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Webhook などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Webhook などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
 
 Webhook アクションにはしきい値はありませんが、その代わりに、しきい値のあるアラート アクションを含むスケジュールに追加する必要があります。  

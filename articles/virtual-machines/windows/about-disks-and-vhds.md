@@ -9,14 +9,15 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: 4fa8341b4d1953e3c59d345f45853f4c9a4a2941
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 8f5c33a63fd932bedd7f1de3d3ae47306b3ea3e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715456"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954485"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>Azure Windows VM 用のディスク ストレージについて
+
 Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。 Azure のすべての仮想マシンには、Windows オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。 
 
 この記事では、ディスクのさまざまな使用方法について説明し、作成および使用できるディスクの種類を示します。 この記事は、 [Linux 仮想マシン](../linux/about-disks-and-vhds.md) にも利用できます。
@@ -28,22 +29,23 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 ディスクは VM でどのように使用されるのでしょうか。
 
 ### <a name="operating-system-disk"></a>オペレーティング システム ディスク
-どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。 これは SATA ドライブとして登録され、C ドライブのラベルが付けられます。 このディスクの最大容量は 2,048 ギガバイト (GB) です。 
+
+どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。 これは SATA ドライブとして登録され、C ドライブのラベルが付けられます。 このディスクの最大容量は 2,048 ギガバイト (GB) です。
 
 ### <a name="temporary-disk"></a>一時ディスク
+
 各 VM には、一時ディスクが含まれています。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)中、または [VM の再デプロイ](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)時に失われる可能性があります。 VM の標準の再起動が正常に実行されている間、一時ドライブのデータは保持されます。 
 
 この一時ディスクには D ドライブのラベルが付けられ、pagefile.sys を保存するために使用されます。 このディスクを再マッピングするには、 [Windows 一時ディスクのドライブ文字を変更する方法](change-drive-letter.md)に関するページを参照してください。 仮想マシンのサイズに基づいて、一時ディスクのサイズは異なります。 詳細については、「 [Azure の仮想マシンのサイズ](sizes.md)」を参照してください。
 
 Azure による一時ディスクの使用方法については、「 [Understanding the temporary drive on Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
-
 ### <a name="data-disk"></a>データ ディスク
-データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。 各ディスクの最大容量は 4,095 GB です。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
+
+データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。 各データ ディスクの最大容量は 4,095 GB、マネージド ディスクの最大容量は 32,767 TiB です。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
 
 > [!NOTE]
 > 仮想マシンの容量については、「 [Azure の Windows 仮想マシンのサイズ](sizes.md)」を参照してください。
-> 
 
 ユーザーがイメージから仮想マシンを作成するときに、Azure はオペレーティング システム ディスクを作成します。 ユーザーがデータ ディスクを含むイメージを使用する場合、Azure は仮想マシンの作成時にデータ ディスクも作成します。 それ以外の場合は、仮想マシンを作成した後にデータ ディスクを追加してください。
 
@@ -52,12 +54,11 @@ Azure による一時ディスクの使用方法については、「 [Understan
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
 
-## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>最後の 1 つの推奨事項: Standard非管理ディスクでの TRIM の使用 
+## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>最後の 1 つの推奨事項: Standard非管理ディスクでの TRIM の使用
 
-Standard 非管理ディスク (HDD) を使用する場合は、TRIM を有効にする必要があります。 TRIM はディスク上の未使用のブロックを破棄するため、実際に使用しているストレージにのみ課金されます。 これにより、サイズの大きいファイルを作成した後に削除した場合、コストを節約できます。 
+Standard 非管理ディスク (HDD) を使用する場合は、TRIM を有効にする必要があります。 TRIM はディスク上の未使用のブロックを破棄するため、実際に使用しているストレージにのみ課金されます。 これにより、サイズの大きいファイルを作成した後に削除した場合、コストを節約できます。
 
 次のコマンドを実行すると、TRIM の設定を確認できます。 Windows VM 上でコマンド プロンプトを開いて、次のように入力します。
-
 
 ```
 fsutil behavior query DisableDeleteNotify
@@ -77,7 +78,6 @@ fsutil behavior set DisableDeleteNotify 0
 ## <a name="next-steps"></a>次の手順
 * [ディスクのアタッチ](attach-disk-portal.md) による VM 用のストレージの追加。
 * [スナップショットの作成](snapshot-copy-managed-disk.md)。
-* 
-  [マネージド ディスクへの変換](convert-unmanaged-to-managed-disks.md)。
+* [マネージド ディスクへの変換](convert-unmanaged-to-managed-disks.md)。
 
 

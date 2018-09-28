@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: jasonh
-ms.openlocfilehash: c10ff022d54510c4fb81bf1f922aeaaf4e9036bb
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 33458794ad74b367f1278364d7b4ace30f7d13a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104856"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953590"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>HDInsight における Hadoop クラスターの可用性と信頼性
 
@@ -208,13 +208,13 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 
 ノードのサイズを選択できるのは、クラスターの作成中のみです。 「[HDInsight の料金](https://azure.microsoft.com/pricing/details/hdinsight/)」ページで、HDInsight で使用できるまざまな VM サイズの一覧を確認できます。
 
-クラスターを作成するときに、ノードのサイズを指定できます。 次の情報では、[Azure Portal][preview-portal]、[Azure PowerShell][azure-powershell]、[Azure CLI][azure-cli] を使用してサイズを指定する方法について説明します。
+クラスターを作成するときに、ノードのサイズを指定できます。 次の情報では、[Azure portal][preview-portal]、[Azure PowerShell][azure-powershell]、[Azure クラシック CLI][azure-cli] を使用してサイズを指定する方法について説明します。
 
 * **Azure Portal**: クラスターを作成するときに、クラスターによって使用されるノードのサイズを設定できます。
 
     ![ノード サイズの選択画面を示しているクラスター作成ウィザードの画像](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Azure CLI**: `azure hdinsight cluster create` コマンドを使用するときに、`--headNodeSize`、`--workerNodeSize`、および `--zookeeperNodeSize` パラメーターを使用してヘッド ノード、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
+* **Azure クラシック CLI**: `azure hdinsight cluster create` コマンドを使用するときに、`--headNodeSize`、`--workerNodeSize`、および `--zookeeperNodeSize` パラメーターを使用してヘッド ノード、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
 
 * **Azure PowerShell**: `New-AzureRmHDInsightCluster` コマンドレットを使用するときに、`-HeadNodeVMSize`、`-WorkerNodeSize`、および `-ZookeeperNodeSize` パラメーターを使用してヘッド ノード、ワーカー ノード、および ZooKeeper ノードのサイズを設定できます。
 
@@ -223,7 +223,7 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 このドキュメントに記載された事柄の詳細については、次のリンクを参照してください。
 
 * [Ambari REST リファレンス](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Azure CLI のインストールと構成](../cli-install-nodejs.md)
+* [Azure クラシック CLI のインストールと構成](../cli-install-nodejs.md)
 * [Azure PowerShell のインストールおよび構成](/powershell/azure/overview)
 * [Ambari を使用した HDInsight の管理](hdinsight-hadoop-manage-ambari.md)
 * [Provision Linux-based HDInsight clusters (Linux ベースの HDInsight クラスターのプロビジョニング)](hdinsight-hadoop-provision-linux-clusters.md)

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: 9c1f4699f067ece3108813d28ff834c68f44316d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: d267ffd5085c27c60e9eb229e2d9026fa83ef848
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003833"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998235"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 **Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。 データのスキーマは、ポータル、PowerShell、CLI、または直接 REST API 経由でデータを読み取る場合と、[ログ プロファイルを使用してストレージまたは Event Hubs にデータをストリーミングする場合](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)で異なります。 次の例は、ポータル、PowerShell、CLI、および REST API 経由で利用可能なスキーマを示します。 これらのプロパティの [Azure 診断ログ スキーマ](./monitoring-diagnostic-logs-schema.md)へのマッピングについては、この記事の最後で紹介します。
@@ -193,6 +193,95 @@ ms.locfileid: "40003833"
 ```
 プロパティの値に関するドキュメントについては、[サービスの正常性通知](./monitoring-service-notifications.md)に関する記事を参照してください。
 
+## <a name="resource-health"></a>リソース正常性
+このカテゴリには、Azure リソースで発生したすべてのリソース正常性イベントのレコードが含まれます。 このカテゴリに表示されるイベントの種類として、[Virtual Machine health status changed to unavailable]\(仮想マシンの正常性状態が使用不可に変わりました\) などがあります。 リソース正常性イベントは、利用可能、利用不可、降格済み、不明の 4 つの正常性状態のいずれかになります。 さらに、リソース正常性イベントは、プラットフォーム開始またはユーザー開始のいずれかのカテゴリーに分けることができます。
+
+### <a name="sample-event"></a>サンプル イベント
+
+```json
+{
+    "channels": "Admin, Operation",
+    "correlationId": "28f1bfae-56d3-7urb-bff4-194d261248e9",
+    "description": "",
+    "eventDataId": "a80024e1-883d-37ur-8b01-7591a1befccb",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "ResourceHealth",
+        "localizedValue": "Resource Health"
+    },
+    "eventTimestamp": "2018-09-04T15:33:43.65Z",
+    "id": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
+    "level": "Critical",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Resourcehealth/healthevent/Activated/action",
+        "localizedValue": "Health Event Activated"
+    },
+    "resourceGroupName": "<resource group>",
+    "resourceProviderName": {
+        "value": "Microsoft.Resourcehealth/healthevent/action",
+        "localizedValue": "Microsoft.Resourcehealth/healthevent/action"
+    },
+    "resourceType": {
+        "value": "Microsoft.Compute/virtualMachines",
+        "localizedValue": "Microsoft.Compute/virtualMachines"
+    },
+    "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
+    "status": {
+        "value": "Active",
+        "localizedValue": "Active"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-09-04T15:36:24.2240867Z",
+    "subscriptionId": "<subscription Id>",
+    "properties": {
+        "stage": "Active",
+        "title": "Virtual Machine health status changed to unavailable",
+        "details": "Virtual machine has experienced an unexpected event",
+        "healthStatus": "Unavailable",
+        "healthEventType": "Downtime",
+        "healthEventCause": "PlatformInitiated",
+        "healthEventCategory": "Unplanned"
+    },
+    "relatedEvents": []
+}
+```
+
+### <a name="property-descriptions"></a>プロパティの説明
+| 要素名 | 説明 |
+| --- | --- |
+| channels | 常に "Admin, Operation" |
+| correlationId | 文字列形式の GUID。 |
+| description |アラート イベントを説明する静的テキスト。 |
+| eventDataId |アラート イベントの一意識別子。 |
+| category | 常に "ResourceHealth"。 |
+| eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
+| level |イベントのレベル。 "Critical"、"Error"、"Warning"、"Informational"、"Verbose" のいずれかの値。 |
+| operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
+| operationName |操作の名前。 |
+| resourceGroupName |リソースが含まれているリソース グループの名前。 |
+| resourceProviderName |常に "Microsoft.Resourcehealth/healthevent/action"。 |
+| resourceType | リソース正常性イベントによって影響を受けたリソースの種類。 |
+| resourceId | 影響を受けたリソースのリソース ID の名前。 |
+| status |正常性イベントの状態を説明する文字列。 次の値のいずれか: Active、Resolved、InProgress、Updated |
+| subStatus | アラートの場合、通常は null です。 |
+| submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
+| subscriptionId |Azure サブスクリプション ID。 |
+| properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。|
+| properties.title | リソースの正常性状態を説明するわかりやすい文字列。 |
+| properties.details | イベントの詳細を説明する理解やすい文字列。 |
+| properties.currentHealthStatus | リソースの現在の正常性状態。 次の値のいずれか: "Available"、"Unavailable"、"Degraded"、"Unknown" |
+| properties.previousHealthStatus | リソースの前回の正常性状態。 次の値のいずれか: "Available"、"Unavailable"、"Degraded"、"Unknown" |
+| properties.type | リソース正常性イベントの種類の説明。 |
+| properties.cause | リソース正常性イベントの原因の説明。 "UserInitiated" または "PlatformInitiated" のいずれか。 |
+
+
 ## <a name="alert"></a>アラート:
 このカテゴリには、Azure アラートの全アクティビティのレコードが含まれています。 このカテゴリで表示されるイベントの種類として、"CPU % on myVM has been over 80 for the past 5 minutes" (過去 5 分間の myVM の CPU % が 80 を超えました) などがあります。 多様な Azure システムにアラートの概念があります。また、何らかのルールを定義し、条件がそのルールと一致するときに通知を受け取ることができます。 サポートされる Azure のアラートの種類が "アクティブになる" たびに、または通知を生成する条件を満たすたびに、アクティブ化のレコードもこのカテゴリのアクティビティ ログにプッシュされます。
 
@@ -306,7 +395,7 @@ ms.locfileid: "40003833"
 | properties.MetricName | メトリック アラート ルールの評価で使用されるメトリックのメトリック名。 |
 | properties.MetricUnit | メトリック アラート ルールの評価で使用されるメトリックのメトリック単位。 |
 
-## <a name="autoscale"></a>Autoscale
+## <a name="autoscale"></a>自動スケール
 このカテゴリには、サブスクリプションで定義したすべての自動スケール設定に基づいて、自動スケール エンジンの操作に関連するすべてのイベントのレコードが含まれます。 このカテゴリで表示されるイベントの種類として、"Autoscale scale up action failed" (自動スケールのスケールアップ アクションに失敗しました) などがあります。 自動スケールを使用すると、自動スケール設定で指定した時刻や負荷 (メトリック) データに基づいて、サポートされるリソースの種類のインスタンス数を自動的にスケールアウトまたはスケールインすることができます。 スケールアップまたはスケールダウンの条件を満たした場合、開始イベントと、成功または失敗イベントがこのカテゴリに記録されます。
 
 ### <a name="sample-event"></a>サンプル イベント

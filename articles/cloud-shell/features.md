@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 1321645d97e7f6ff2faed1e61ddb608afcb7b413
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 5087b8a1d675fb6fb2bbfb2b46a09c215bf5e9ae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038357"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998765"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 
@@ -31,7 +31,7 @@ Azure Cloud Shell は `Ubuntu 16.04 LTS` 上で実行されます。
 
 ### <a name="secure-automatic-authentication"></a>セキュリティで保護された自動認証
 
-Cloud Shell は、Azure CLI 2.0 と Azure PowerShell のアカウント アクセスを安全かつ自動的に認証します。
+Cloud Shell は、Azure CLI と Azure PowerShell のアカウント アクセスを安全かつ自動的に認証します。
 
 ### <a name="home-persistence-across-sessions"></a>セッション間での $Home の永続化
 
@@ -60,7 +60,7 @@ Cloud Shell には、Terraform、Ansible、Chef InSpec などのオープンソ�
 |Category   |Name   |
 |---|---|
 |Linux ツール            |Bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
-|Azure ツール            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) と [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
+|Azure ツール            |[Azure CLI](https://github.com/Azure/azure-cli) と [Azure クラシック CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
 |テキスト エディター           |vim<br> nano<br> emacs       |
 |ソース管理         |git                    |
 |ビルド ツール            |make<br> maven<br> npm<br> pip         |
@@ -82,5 +82,5 @@ Cloud Shell には、Terraform、Ansible、Chef InSpec などのオープンソ�
 ## <a name="next-steps"></a>次の手順
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
 [Cloud Shell での PowerShell (プレビュー) のクイックスタート](quickstart-powershell.md) <br>
-[Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/) <br>
+[Azure CLI について](https://docs.microsoft.com/cli/azure/) <br>
 [Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/) <br>

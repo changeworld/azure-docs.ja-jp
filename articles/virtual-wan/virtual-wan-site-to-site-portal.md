@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 07/13/2018
+ms.date: 09/21/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: ea36a3d4a2471cee6a18d70275aaf2e83ffc6f39
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 20ba28632710ee044d4273ba12900774310711c7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159653"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981357"
 ---
-# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan-preview"></a>チュートリアル: Azure Virtual WAN (プレビュー) を使用してサイト間接続を作成する
+# <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>チュートリアル: Azure Virtual WAN を使用してサイト間接続を作成する
 
-このチュートリアルでは、Virtual WAN を使用して IPsec/IKE (IKEv2) VPN 接続経由で Azure のリソースに接続する方法を示します。 この種類の接続では、外部接続用パブリック IP アドレスが割り当てられていてるオンプレミスの VPN デバイスが必要です。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください
+このチュートリアルでは、Virtual WAN を使用して IPsec/IKE (IKEv1 と IKEv2) VPN 接続経由で Azure のリソースに接続する方法を示します。 この種類の接続では、外部接続用パブリック IP アドレスが割り当てられていてるオンプレミスの VPN デバイスが必要です。 Virtual WAN の詳細については、[Virtual WAN の概要](virtual-wan-about.md)に関するページを参照してください
 
 > [!NOTE]
 > 通常、多くのサイトがある場合は、[Virtual WAN パートナー](https://aka.ms/virtualwan)を利用してこの構成を作成します。 ただし、ネットワークに慣れていて、独自の VPN デバイスの構成に熟練している場合は、この構成を自分で作成することができます。
@@ -25,7 +25,7 @@ ms.locfileid: "39159653"
 
 ![Virtual WAN のダイアグラム](./media/virtual-wan-about/virtualwan.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * WAN を作成する
@@ -38,102 +38,51 @@ ms.locfileid: "39159653"
 > * リソースの正常性を表示する
 > * 接続を監視する
 
-> [!IMPORTANT]
-> Azure Virtual WAN は、現在、マネージド パブリック プレビュー段階です。 Virtual WAN を使用するには、[プレビューに登録する](#enroll)必要があります。
->
-> このパブリック プレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することは避けてください。 特定の機能はサポート対象ではなく、機能が制限されることがあるか、Azure の場所によっては利用できない場合があります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
-
 ## <a name="before-you-begin"></a>開始する前に
 
-構成を開始する前に、以下の条件を満たしていることを確認します。
+[!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
-* IKEv2 を使用できる互換性のあるルートベースの VPN デバイスがあり、それを構成できる人員がいることを確認します。 Virtual WAN パートナーと連携している場合は、構成設定が自動的に作成されるため、デバイスを手動で構成する方法について心配する必要はありません。
-* VPN デバイスの外部接続用パブリック IPv4 アドレスがあることを確認します。 この IP アドレスを NAT の内側に割り当てることはできません。
-* 接続する仮想ネットワークが既にある場合は、オンプレミス ネットワークのどのサブネットも接続先の仮想ネットワークと重複していないことを確認します。 仮想ネットワークではゲートウェイ サブネットは必要ありません。仮想ネットワークに仮想ネットワーク ゲートウェイを配置することはできません。 仮想ネットワークがない場合は、この記事の手順を使用して仮想ネットワークを作成できます。
-* ハブ リージョンの IP アドレス範囲を取得します。 ハブは仮想ネットワークであり、ハブ リージョンに指定するアドレス範囲が接続先の既存の仮想ネットワークと重複することはできません。 さらに、オンプレミスで接続するアドレス範囲と重複することもできません。 オンプレミス ネットワーク構成の IP アドレス範囲を把握していない場合は、詳細な情報を把握している担当者と協力して作業を行ってください。
-* Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+## <a name="vnet"></a>1.仮想ネットワークの作成
 
-## <a name="enroll"></a>1.プレビューに登録する
+[!INCLUDE [Create a virtual network](../../includes/virtual-wan-tutorial-vnet-include.md)]
 
-Virtual WAN を構成する前に、まずプレビューにサブスクリプションを登録する必要があります。 これを行わないと、ポータルで Virtual WAN を使用できません。 登録するには、サブスクリプション ID を明記して、**azurevirtualwan@microsoft.com** にメールを送信します。 サブスクリプションが登録されると、メールが届きます。
+## <a name="openvwan"></a>2.仮想 WAN を作成する
 
-## <a name="vnet"></a>2.仮想ネットワークの作成
+ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
 
-VNet がまだない場合は、PowerShell を使用して簡単に作成できます。 仮想ネットワークは、Azure portal を使用して作成することもできます。
+[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-vwan-include.md)]
 
-* 作成する VNet のアドレス空間が接続する他の VNet のアドレス範囲やオンプレミス ネットワークのアドレス空間と重複しないことを確認してください。 
-* VNet が既にある場合は、VNet が必要な条件を満たしていて、仮想ネットワーク ゲートウェイがないことを確認します。
-
-この記事の [使ってみる] をクリックして PowerShell コンソールを開くと、VNet を簡単に作成することができます。 値を調整し、コマンドをコピーしてコンソール ウィンドウに貼り付けます。
-
-### <a name="create-a-resource-group"></a>リソース グループの作成
-
-PowerShell コマンドを調整した後、リソース グループを作成します。
-
-```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName WANTestRG -Location WestUS
-```
-
-### <a name="create-a-vnet"></a>VNet を作成する
-
-PowerShell コマンドを調整して、ご使用の環境に適した VNet を作成します。
-
-```azurepowershell-interactive
-$fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name FrontEnd -AddressPrefix "10.1.0.0/24"
-$vnet   = New-AzureRmVirtualNetwork `
-            -Name WANVNet1 `
-            -ResourceGroupName WANTestRG `
-            -Location WestUS `
-            -AddressPrefix "10.1.0.0/16" `
-            -Subnet $fesub1
-```
-
-## <a name="wan"></a>3.仮想 WAN を作成する
-
-1. ブラウザーから [Azure ポータル](https://portal.azure.com) に移動し、Azure アカウントでサインインします。
-2. 現時点では、**[すべてのサービス]** に移動して "Virtual WAN" を検索することで、Virtual WAN を見つけることができます。 または、Azure portal の上部にある検索ボックスで "Virtual WAN" を検索できます。 **[Virtual WAN]** をクリックしてページを開きます。
-3. **[作成]** をクリックして **[WAN の作成]** ページを開きます。 ページを利用できない場合は、まだこのプレビューの承認が得られていません。
-
-  ![WAN の作成](./media/virtual-wan-site-to-site-portal/createwan.png)
-4. [WAN の作成] ページで、次のフィールドに入力します。
-
-  * **[名前]** - WAN に付ける名前を選択します。
-  * **[サブスクリプション]** - 使用するサブスクリプションを選択します。
-  * **[リソース グループ]** - 新規に作成するか、既存のものを使用します。
-  * **[リソースの場所]** - ドロップダウンからリソースの場所を選択します。 WAN はグローバルなリソースであり、特定のリージョンに存在するものではありません。 ただし、作成する WAN リソースをより簡単に管理および検索するために、リージョンを選択する必要があります。
-5. **[作成]** をクリックして WAN を作成します。
-
-## <a name="site"></a>4.サイトを作成する
+## <a name="site"></a>3.サイトを作成する
 
 物理的な場所に合わせて必要な数のサイトを作成します。 たとえば、NY、ロンドン、および LA にブランチ オフィスがある場合は、3 つの別個のサイトを作成します。 これらのサイトには、オンプレミス VPN デバイスのエンドポイントが含まれています。 現時点では、サイトに対してプライベート アドレス空間を 1 つだけ指定できます。
 
-1. **[すべてのリソース]** に移動します。
-2. 作成した仮想 WAN をクリックします。
-3. ページの上部にある **[+ サイトの作成]** をクリックして、**[サイトの作成]** ページを開きます。
+1. 作成した WAN をクリックします。 [WAN] ページの **[WAN Architecture]\(WAN アーキテクチャ\)** で **[VPN サイト]** をクリックして VPN サイト ページを開きます。
+2. **[VPN サイト]** ページで **[+ サイトの作成]** をクリックします。
+3. **[サイトの作成]** ページで、次のフィールドに入力します。
 
-  ![新しいサイト](media/virtual-wan-site-to-site-portal/createsite.png)
-4. **[サイトの作成]** ページで、次のフィールドに入力します。
+  * **[名前]** - これは、オンプレミスのサイトの呼称です。
+  * **[パブリック IP アドレス]** - これは、オンプレミスのサイトにある VPN デバイスのパブリック IP アドレスです。
+  * **[プライベート アドレス空間]** - これは、オンプレミスのサイトにある IP アドレス空間です。 このアドレス空間宛てのトラフィックは、ローカル サイトにルーティングされます。
+  * **[サブスクリプション]** - サブスクリプションを確認します。
+  * **[リソース グループ]** - 使用するリソース グループ。
+  * **場所**。
+4. **[詳細設定の表示]** をクリックして追加の設定を表示します。 **[BGP]** を選択して BGP を有効にすることができます。Azure のこのサイト用に作成されたすべての接続でこの機能が有効になります。 **[デバイス情報]** (省略可能なフィールド) に入力することもできます。 これにより、Azure チームがお客様の環境をよりよく理解し、将来の最適化の可能性を追加したり、トラブルシューティングに役立てることができます。
+5. **[Confirm]\(確認\)** をクリックします。
+6. **[確認]** をクリックすると、VPN サイト ページに状態が表示されます。 このサイトは "**プロビジョニング中**" から "**プロビジョニング済み**" に切り替わります。
 
-  *  **[名前]** - これは、オンプレミスのサイトの呼称です。
-  *  **[パブリック IP アドレス]** - これは、オンプレミスのサイトにある VPN デバイスのパブリック IP アドレスです。
-  *  **[プライベート アドレス空間]** - これは、オンプレミスのサイトにある IP アドレス空間です。 このアドレス空間宛てのトラフィックは、ローカル サイトにルーティングされます。
-  *  **[サブスクリプション]** - サブスクリプションを確認します。
-  *  **[リソース グループ]** - 使用するリソース グループ。
-5. **[詳細設定の表示]** をクリックして追加の設定を表示します。 **BGP を有効にする**ことができます (オプション フィールド)。Azure のこのサイト用に作成されたすべての接続でこの機能が有効になります。 **[デバイス情報]** (オプション フィールド) に入力することもできます。 これにより、Azure チームがお客様の環境をよりよく理解し、将来の最適化の可能性を追加したり、トラブルシューティングに役立てることができます。
+## <a name="hub"></a>4.ハブを作成する
 
-  ![BGP](media/virtual-wan-site-to-site-portal/sitebgp.png)
-6. **[確認]** をクリックしてサイトを作成します。
-7. 作成するサイトごとにこれらの手順を繰り返します。
+[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-hub-include.md)]
 
-## <a name="hub"></a>5.ハブを作成してサイトを接続する
+## <a name="associate"></a>5.サイトをハブに関連付ける
 
-1. 仮想 WAN のページで、**[サイト]** をクリックします。
-2. **[関連付けられていないサイト]** に、まだハブに接続されていないサイトの一覧が表示されます。
-3. 関連付けるサイトを選択します。
-4. ドロップダウンで、ハブを関連付けるリージョンを選択します。 ハブは、接続する VNet が存在するリージョンに関連付ける必要があります。
-5. **[Confirm]\(確認\)** をクリックします。 このリージョンにハブがまだない場合は、仮想ハブ VNet が自動的に作成されます。 その場合、**[地域ハブの作成]** ページが表示されます。
-6. **[地域ハブの作成]** ページで、ハブ VNet のアドレス範囲を入力します。 これは、ハブ サービスを含む VNet です。 ここに入力する範囲は、プライベート IP アドレス範囲でなければならず、オンプレミスのアドレス空間または VNet アドレス空間と重複してはいけません。 後続の VPN エンドポイントは、このハブ VNet に作成されます  (ハブとゲートウェイの自動作成はポータルでのみ可能です)。
-7. **Create** をクリックしてください。
+ハブは、通常、VNet が存在するリージョンと同じリージョンにあるサイトに関連付ける必要があります。
+
+1. **[VPN サイト]** ページで、ハブに関連付ける 1 つまたは複数のサイトを選択し、**[+ 新しいハブの関連付け]** をクリックします。
+2. **[Associate sites with one or more hubs]\(サイトを 1 つまたは複数のハブと関連付ける\)** ページで、ドロップダウンからハブを選択します。 サイトを追加のハブと関連付けるには、**[関連付けの追加]** をクリックします。
+3. ここで特定の **PSK** を追加するか、既定値を使用することもできます。
+4. **[Confirm]\(確認\)** をクリックします。
+5. **[VPN サイト]** ページで接続状態を表示できます。
 
 ## <a name="vnet"></a>6.VNet をハブに接続する
 
@@ -147,6 +96,7 @@ $vnet   = New-AzureRmVirtualNetwork `
     * **[ハブ]** - この接続に関連付けるハブを選択します。
     * **[サブスクリプション]** - サブスクリプションを確認します。
     * **[仮想ネットワーク]** - このハブに接続する仮想ネットワークを選択します。 仮想ネットワークに既存の仮想ネットワーク ゲートウェイを設定することはできません。
+4. **[OK]** をクリックして、ピアリング接続を作成します。
 
 ## <a name="device"></a>7.VPN 構成をダウンロードする
 
@@ -290,14 +240,14 @@ $vnet   = New-AzureRmVirtualNetwork `
 ### <a name="configuring-your-vpn-device"></a>VPN デバイスの構成
 
 >[!NOTE]
-> Virtual WAN パートナー ソリューションを利用している場合は、VPN デバイス構成が自動的に実行されます。つまり、デバイス コントローラーによって構成ファイルが Azure から取得され、デバイスに適用されて Azure への接続が設定されます。 これは、VPN デバイスを手動で構成する方法を知る必要がないことを意味します。
+> Virtual WAN パートナー ソリューションを使用して作業している場合、VPN デバイスの構成が自動的に行われます。 デバイス コントローラーは Azure から構成ファイルを取得し、デバイスに適用して Azure への接続を設定します。 これは、VPN デバイスを手動で構成する方法を知る必要がないことを意味します。
 >
 
 デバイスを構成する手順が必要な場合は、[VPN デバイス構成スクリプトのページ](~/articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#configscripts)の手順を使用できます。このとき、次の点に注意してください。
 
 * VPN デバイスのページに書かれている手順は Virtual WAN 用ではありませんが、構成ファイルの Virtual WAN の値を使用して VPN デバイスを手動で構成することができます。 
 * VPN Gateway 用のダウンロード可能なデバイス構成スクリプトは、構成が異なるため、Virtual WAN では機能しません。
-* Virtual WAN では IKEv2 のみを使用でき、IKEv1 は使用できません。
+* 新しい Virtual WAN は、IKEv1 と IKEv2 の両方をサポートできます。
 * Virtual WAN では、ルートベースの VPN デバイスとデバイスの手順のみを使用できます。
 
 ## <a name="viewwan"></a>8.仮想 WAN を表示する
@@ -322,10 +272,6 @@ Azure VM とリモート サイト間の通信を監視するための接続を�
 ```azurepowershell-interactive
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
-
-## <a name="feedback"></a>プレビューのフィードバック
-
-お客様からのフィードバックをお待ちしています。 Virtual WAN に関する問題を報告したり (肯定的、否定的を問わず) フィードバックを送信するには、<azurevirtualwan@microsoft.com> までメールをお送りください。 件名の “[ ]” には、お客様の会社名を入力してください。 また、問題を報告する場合は、サブスクリプション ID も入力してください。
 
 ## <a name="next-steps"></a>次の手順
 

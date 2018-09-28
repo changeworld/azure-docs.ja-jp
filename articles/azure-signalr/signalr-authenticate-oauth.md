@@ -14,16 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 4856f4cdba7618884a42341f16d4828cb062e75c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 696139a3e37f7bd1e32b4e7cec836b3c66df16a6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667652"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974325"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>チュートリアル: Azure SignalR Service の認証
-
-Microsoft Azure SignalR サービスは現在、[パブリック プレビュー](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の段階です。
 
 このチュートリアルは、クイック スタートで導入したチャット ルーム アプリケーションをベースにしています。 まだ「[Create a chat room with SignalR Service (SignalR Service を使用してチャット ルームを作成する)](signalr-quickstart-dotnet-core.md)」を完了していない場合は、先にこの演習を完了してください。 
 
@@ -43,7 +41,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 ![Azure でホストされている OAuth Complete](media/signalr-authenticate-oauth/signalr-oauth-complete-azure.png)
 
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * GitHub アカウントに新しい OAuth アプリを登録する
@@ -396,7 +394,7 @@ GitHub を通じて提供される OAuth 認証 API の詳細については、�
 
 このセクションでは、Azure Cloud Shell から Azure コマンド ライン インターフェイス (CLI) を使用して、Azure で ASP.NET アプリケーションをホストするための新しい [Azure Web アプリ](https://docs.microsoft.com/azure/app-service/)を作成します。 Web アプリは、ローカル Git デプロイを使用するように構成されます。 また、Web アプリは、SignalR 接続文字列、GitHub OAuth のアプリ シークレット、およびデプロイ ユーザーによっても構成されます。
 
-このセクションの手順では、Azure CLI の *signalr* 拡張機能を使用します。 次のコマンドを実行して、Azure CLI 2.0 の *signalr* 拡張機能をインストールします。
+このセクションの手順では、Azure CLI の *signalr* 拡張機能を使用します。 次のコマンドを実行して、Azure CLI の *signalr* 拡張機能をインストールします。
 
 ```azurecli-interactive
 az extension add -n signalr

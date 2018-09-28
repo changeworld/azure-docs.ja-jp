@@ -8,12 +8,12 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9064e0da6dde6c4b30235adf771f06a4f25d709a
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 76b0bab0f2eb34d7283d38eb0442f4f2f2083db3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42140111"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995381"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Azure IoT Edge モジュールについて
 
@@ -67,7 +67,7 @@ Twin twin = await client.GetTwinAsync();
 
 ## <a name="offline-capabilities"></a>オフライン機能
 
-Azure IoT Edge は、IoT Edge デバイス上でのオフライン操作をサポートしています。 現在、これらの機能は限定されており、追加シナリオの開発が進行中です。 
+Azure IoT Edge は、IoT Edge デバイス上でのオフライン操作をサポートしています。 これらの機能は現在は制限されています。 
 
 IoT Edge モジュールは、次の要件を満たしている場合、既定の時間よりも長くオフライン状態を継続できます。 
 
@@ -75,6 +75,8 @@ IoT Edge モジュールは、次の要件を満たしている場合、既定�
 * **オフライン時にモジュールを IoT Edge ハブに対して再認証する必要がない**。 モジュールは、IoT ハブとのアクティブな接続がある Edge ハブに対してのみ認証できます。 何らかの理由で再起動された場合には、モジュールを再認証する必要があります。 SAS トークンの有効期限が切れた後でも、モジュールから Edge ハブにメッセージを送信することはできます。 接続が再開されると、Edge ハブはモジュールからの新しいトークンを要求し、それを IoT ハブに対して検証します。 成功した場合、Edge ハブは保存されているモジュール メッセージを転送します (モジュールのトークンが期限切れになっている間に送信されたメッセージであっても)。 
 * **オフライン時にメッセージを送信したモジュールが、接続の再開時にまだ機能している**。 Edge ハブでは、IoT ハブに再接続する際、モジュール メッセージを転送する前に、新しいモジュール トークンを検証する必要があります (以前のトークンの有効期限が切れている場合)。 モジュールが新しいトークンを提供できない場合、Edge ハブはモジュールの保存済みメッセージに対してアクションを実行することができません。 
 * **Edge ハブに、メッセージを保存できるだけのディスク容量がある**。 既定では、メッセージは Edge ハブ コンテナーのファイルシステムに保存されます。 なお、メッセージを保存するためのマウント済みボリュームを指定する構成オプションもあります。 いずれの場合も、IoT ハブへの遅延配信を行うには、メッセージを保存できるだけの容量が必要になります。  
+
+その他のオフライン機能はパブリック プレビューで利用できます。 詳細については、「[IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について](offline-capabilities.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
  - [Understand the Azure IoT Edge runtime and its architecture (Azure IoT Edge ランタイムとそのアーキテクチャについて)][lnk-runtime]

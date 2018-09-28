@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 3935da72cb747a642ee1f360dc5318fc2d34e763
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: e989406c852b7c87123681dd875f9cd8229524c1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263241"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971928"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure アクティビティ ログ アラートのための webhook
 アクション グループの定義の一部として、アクティビティ ログ アラート通知を受信するように webhook エンドポイントを構成することができます。 webhook を使用すると、後処理やカスタム アクションのために、これらの通知を他のシステムにルーティングすることができます。 この記事では、webhook に対する HTTP POST のペイロードの概要について説明します。
@@ -124,6 +124,43 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 }
 ```
 
+### <a name="resourcehealth"></a>ResourceHealth
+```json
+{
+    "schemaId": "Microsoft.Insights/activityLogs",
+    "data": {
+        "status": "Activated",
+        "context": {
+            "activityLog": {
+                "channels": "Admin, Operation",
+                "correlationId": "a1be61fd-37ur-ba05-b827-cb874708babf",
+                "eventSource": "ResourceHealth",
+                "eventTimestamp": "2018-09-04T23:09:03.343+00:00",
+                "eventDataId": "2b37e2d0-7bda-4de7-ur8c6-1447d02265b2",
+                "level": "Informational",
+                "operationName": "Microsoft.Resourcehealth/healthevent/Activated/action",
+                "operationId": "2b37e2d0-7bda-489f-81c6-1447d02265b2",
+                "properties": {
+                    "title": "Virtual Machine health status changed to unavailable",
+                    "details": "Virtual machine has experienced an unexpected event",
+                    "currentHealthStatus": "Unavailable",
+                    "previousHealthStatus": "Available",
+                    "type": "Downtime",
+                    "cause": "PlatformInitiated",
+                },
+                "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
+                "resourceGroupName": "<resource group>",
+                "resourceProviderName": "Microsoft.Resourcehealth/healthevent/action",
+                "status": "Active",
+                "subscriptionId": "<subscription Id",
+                "submissionTimestamp": "2018-09-04T23:11:06.1607287+00:00",
+                "resourceType": "Microsoft.Compute/virtualMachines"
+            }
+        }
+    }
+}
+```
+
 サービス正常性通知のアクティビティ ログ アラートの特定のスキーマについて詳しくは、「[サービス正常性通知](monitoring-service-notifications.md)」をご覧ください。 また、[既存の問題管理ソリューションでサービス正常性の webhook 通知を構成する](../service-health/service-health-alert-webhook-guide.md)方法についてご確認ください。
 
 その他のすべてのアクティビティ ログ アラートの特定のスキーマについて詳しくは、[Azure アクティビティ ログの概要](monitoring-overview-activity-logs.md)に関するページをご覧ください。
@@ -136,7 +173,7 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 | conditionType |常に "Event" です。 |
 | name |アラート ルールの名前。 |
 | id |アラートのリソース ID。 |
-| description  |アラートの作成時に設定したアラートの説明。 |
+| description |アラートの作成時に設定したアラートの説明。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 | timestamp |要求を処理した Azure サービスによってイベントが生成された時刻。 |
 | resourceId |影響を受けるリソースのリソース ID。 |

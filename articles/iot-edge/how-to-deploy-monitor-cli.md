@@ -9,12 +9,12 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b90c26eaa36c906dda904106b104c3dbf04a55ce
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c94a58a19558350c3c20377ce750f6758f688c0d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257982"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998510"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -24,20 +24,20 @@ Azure IoT Edge を使用することにより、分析をエッジに移動し�
 
 デバイスを個別に管理し、それらにモジュールを一括展開できます。 ただし、大規模な環境でのデバイスに変更を加える場合は、IoT Hub での自動デバイス管理の一環である、**IoT Edge の自動展開**を作成することができます。 デプロイは、一度に複数のモジュールを複数のデバイスに展開し、モジュールの状態と正常性を追跡し、必要に応じて変更できる動的プロセスです。 
 
-この記事では、Azure CLI 2.0 と IoT 拡張機能を設定します。 次に、使用可能な CLI コマンドで一連の IoT Edge デバイスにモジュールをデプロイして、進行状況を監視する方法を説明します。
+この記事では、Azure CLI と IoT 拡張機能をセットアップします。 次に、使用可能な CLI コマンドで一連の IoT Edge デバイスにモジュールをデプロイして、進行状況を監視する方法を説明します。
 
 ## <a name="cli-prerequisites"></a>CLI の前提条件
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-using-cli.md)。 
 * IoT Edge ランタイムがインストールされた [IoT Edge デバイス](how-to-register-device-cli.md)。
-* ご使用の環境内の [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 2.0 のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
-* [Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
+* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
+* [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
 
 ## <a name="configure-a-deployment-manifest"></a>配置マニフェストを構成する
 
 配置マニフェストは、デプロイするモジュール、モジュール間でのデータ フロー、およびモジュール ツインの目的のプロパティを記述した JSON ドキュメントです。 配置マニフェストのしくみとその作成方法について詳しくは、「[IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する](module-composition.md)」をご覧ください。
 
-Azure CLI 2.0 を使用してモジュールをデプロイするには、配置マニフェストを .txt ファイルとしてローカルに保存します。 コマンドを実行して構成をデバイスに適用するときには、次のセクションのファイル パスを使用します。 
+Azure CLI を使用してモジュールをデプロイするには、配置マニフェストを .txt ファイルとしてローカルに保存します。 コマンドを実行して構成をデバイスに適用するときには、次のセクションのファイル パスを使用します。 
 
 例として、1 つのモジュールでの基本的な配置マニフェストを次に示します。
 

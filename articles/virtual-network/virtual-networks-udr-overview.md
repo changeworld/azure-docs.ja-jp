@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: b206d93d7c72f5d8ff3dd3baa277cd0db33ba583
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 97e192312619455c0055a917df880cc48eb082dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811915"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978918"
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -105,13 +105,13 @@ Azure でカスタム (ユーザー定義) ルートを作成して、Azure の�
 
 次ホップの種類として表示および参照される名前は、Azure Portal とコマンド ライン ツール、および Azure Resource Manager デプロイ モデルとクラシック デプロイ モデルで異なります。 各種ツールと[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)で各次ホップの種類を指す際に使用される名前を次の表に示します。
 
-|次ホップの種類                   |Azure CLI 2.0 と PowerShell (Resource Manager) |Azure CLI 1.0 と PowerShell (クラシック)|
+|次ホップの種類                   |Azure CLI と PowerShell (Resource Manager) |Azure クラシック CLI と PowerShell (クラシック)|
 |-------------                   |---------                                       |-----|
 |仮想ネットワーク ゲートウェイ         |VirtualNetworkGateway                           |VPNGateway|
-|仮想ネットワーク                 |VNetLocal                                       |VNETLocal (asm モードの CLI 1.0 では使用不可)|
-|インターネット                        |インターネット                                        |Internet (asm モードの CLI 1.0 では使用不可)|
+|仮想ネットワーク                 |VNetLocal                                       |VNETLocal (asm モードのクラシック CLI では使用不可)|
+|インターネット                        |インターネット                                        |Internet (asm モードのクラシック CLI では使用不可)|
 |仮想アプライアンス               |VirtualAppliance                                |VirtualAppliance|
-|なし                            |なし                                            |Null (asm モードの CLI 1.0 では使用不可)|
+|なし                            |なし                                            |Null (asm モードのクラシック CLI では使用不可)|
 |仮想ネットワーク ピアリング         |VNET ピアリング                                    |適用不可|
 |仮想ネットワーク サービス エンドポイント|VirtualNetworkServiceEndpoint                   |適用不可|
 
