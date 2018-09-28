@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: d0720c23e0831b446a92855383fab06b0bfacbc7
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e66d896a7df48645dad39b5b978c4f7c2f8d8cb9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525469"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954553"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning サービスからデバイスの登録を抹消する方法
 
@@ -34,9 +34,12 @@ IoT ソリューションなどの重要なシステムでは、デバイスの�
 2. リソースの一覧から、デバイスをブラックリストに追加するプロビジョニング サービスを選択します。
 3. 目的のプロビジョニング サービスで、**[登録の管理]** を選択し、**[個々の登録]** タブを選択します。
 4. ブラックリストに追加するデバイスの登録エントリを選択します。 
-5. 下方にスクロールして、**[エントリの有効化]** スイッチで **[無効にする]** を選択し、**[保存]** を選択します。  
 
-   [![ポータルで個別登録エントリを無効にする](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
+    ![個々の登録を選択する](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
+
+5. 登録ページで下方にスクロールして、**[エントリの有効化]** スイッチで **[無効にする]** を選択し、**[保存]** を選択します。  
+
+   ![ポータルで個別登録エントリを無効にする](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
 
 デバイスをブラックリストに永続的に追加するには、デバイスの登録エントリを削除します。
 
@@ -47,7 +50,8 @@ IoT ソリューションなどの重要なシステムでは、デバイスの�
 5. ウィンドウの上部の **[削除]** を選択した後 **[はい]** を選択して登録の削除を確定します。 
 
    ![ポータルで個別登録エントリを削除する](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
-    
+
+
 手順を終了すると、個別登録の一覧からエントリが削除されたことがわかります。  
 
 ## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>登録グループを使用して、X.509 中間証明書またはルート CA 証明書をブラックリストに追加する
@@ -91,14 +95,18 @@ X.509 構成証明メカニズムを実装するデバイスでは、デバイ�
 1. Azure Portal にログインし、左側のメニューにある **[すべてのリソース]** を選択します。
 2. リソースの一覧から、ブラックリストに追加するデバイスの登録グループを含むプロビジョニング サービスを選択します。
 3. 目的のプロビジョニング サービスで、**[登録の管理]** を選択し、**[個々の登録]** タブを選択します。
-4. 上部にある **[追加]** を選択します。 
-5. デバイスの構成証明メカニズムとして **X.509** を選択し、デバイスの証明書をアップロードします。 これは、デバイスにインストールされる署名付きのエンド エンティティ証明書です。 デバイスは、これを使用して、認証用の証明書を生成します。
-6. **[IoT Hub デバイス ID]** にデバイスの ID を入力します。 
-7. **[エントリの有効化]** スイッチを **[無効にする]** を選択し、**[保存]** を選択します。 
+4. 上部にある **[個別登録の追加]** ボタンをクリックします。 
+5. **[登録の追加]** ページで、デバイスの構成証明**メカニズム**として **X.509** を選択します。
+
+    デバイス証明書をアップロードし、ブラックリストに追加するデバイスの ID を入力します。 証明書として、デバイスにインストールされている署名付きのエンド エンティティ証明書を使用します。 デバイスでは、署名付きのエンド エンティティ証明書を使用して認証が行われます。
+
+    ![ブラックリストにあるデバイスのプロパティを設定します。](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
+
+6. **[登録の追加]** ページで下方にスクロールして、**[エントリの有効化]** スイッチで **[無効にする]** を選択し、**[保存]** を選択します。 
 
     [![ポータルで無効にした個々の登録エントリを使用して、グループ登録のデバイスを無効にする](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
-登録の作成に成功すると、**[個々の登録]** タブにデバイスが表示されます。
+登録の作成に成功すると、**[個々の登録]** タブに無効になっているデバイス登録が表示されます。 
 
 ## <a name="next-steps"></a>次の手順
 

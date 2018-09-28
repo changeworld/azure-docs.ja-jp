@@ -2,32 +2,39 @@
 title: 価格と課金 - Azure Logic Apps | Microsoft Docs
 description: Azure Logic Apps の価格と課金のしくみについて説明します
 services: logic-apps
-author: kevinlam1
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
-ms.topic: article
-ms.date: 05/11/2018
+ms.suite: logic-apps
+author: kevinlam1
 ms.author: klam
-ms.openlocfilehash: e1702de42be8510412a6479b594a198a84d15ae2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.reviewer: estfan, LADocs
+ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
+ms.topic: article
+ms.date: 09/24/2018
+ms.openlocfilehash: b75fba2ba0e9fa922b1252378e0bab326cada7d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299258"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974308"
 ---
-# <a name="logic-apps-pricing-model"></a>Logic Apps の料金モデル
+# <a name="pricing-model-for-azure-logic-apps"></a>Azure Logic Apps の価格モデル
 
 Azure Logic Apps を使用して、自動化されたスケーラブルな統合ワークフローをクラウドに作成して実行できます。 ここでは、Logic Apps の課金と価格のしくみの詳細を示します。 
 
+<a name="consumption-pricing"></a>
+
 ## <a name="consumption-pricing-model"></a>従量課金モデル
 
-新しく作成したロジック アプリでは、使用した分だけ支払います。 新しいロジック アプリでは、従量課金プランと課金モデルが使用されます。これは、ロジック アプリ インスタンスによるすべてのアクションの実行が課金対象になることを意味します。 ロジック アプリ定義内のすべてのステップがアクションになります。この中には、トリガー、制御フローの各ステップ、組み込まれているアクションの呼び出し、およびコネクタの呼び出しが含まれます。 詳細については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)」を参照してください。
+パブリックまたは「グローバル」なLogic Apps サービスを使用して新しいロジック アプリを作成した場合は､使用分についてのみ課金されます｡ 新しいロジック アプリでは、従量課金プランと課金モデルが使用されます。これは、ロジック アプリ インスタンスによるアクションの実行がすべての課金対象になることを意味します。 ロジック アプリ定義内のすべてのステップがアクションになります。この中には、トリガー、制御フローの各ステップ、組み込まれているアクションの呼び出し、およびコネクタの呼び出しが含まれます。 詳細については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)」を参照してください。
+
+<a name="fixed-pricing"></a>
+
+## <a name="fixed-pricing-model"></a>固定価格モデル
+
+> [!NOTE]
+> 統合サービス環境は*プライベート プレビュー*段階あります｡ アクセスを要求するには､[ここから参加要求を作成](https://aka.ms/iseprivatepreview)します。
+
+専用のリソースを使用する分離されたプライベートな Logic Apps インスタンスである [*統合サービス環境*(ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を使用して新しいロジック アプリを作成した場合は､内蔵のアクションと標準の ISE ラベルのコネクタに対する固定の月額料金を課金されます｡ ISE には無料の Enterprise コネクタ 1 つが付属するのに対し､追加の Enterprise コネクタは Enterprise コネクタの従量制価格に基づいて課金されます｡ 詳細については、「[Logic Apps の価格](https://azure.microsoft.com/pricing/details/logic-apps)」を参照してください。
 
 <a name="triggers"></a>
 
@@ -45,7 +52,7 @@ Azure Logic Apps を使用して、自動化されたスケーラブルな統合
 
 トリガーの実行は、ロジック アプリの [概要] ウィンドウの [トリガーの履歴] セクションで確認できます。
 
-## <a name="actions"></a>アクション
+## <a name="actions"></a>Actions
 
 組み込まれているアクション (HTTP、Azure Functions、API Management の呼び出しなどのアクションや制御フローのステップなど) は、ネイティブ アクションとして課金され、それぞれに該当する種類があります。 [コネクタ](https://docs.microsoft.com/connectors)を呼び出すアクションの種類は "ApiConnection" です。 これらのコネクタは、標準コネクタまたはエンタープライズ コネクタのいずれかに分類され、該当する[価格][pricing]に基づいて課金されます。 
 

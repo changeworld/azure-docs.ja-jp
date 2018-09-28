@@ -1,6 +1,6 @@
 ---
-title: CLI 2.0 を利用し、Azure で Linux VM のイメージをキャプチャする | Microsoft Docs
-description: Azure CLI 2.0 を使用し、Azure VM のイメージをキャプチャし、一括デプロイに利用します。
+title: Azure CLI を使用し、Azure で Linux VM のイメージをキャプチャする | Microsoft Docs
+description: Azure CLI を使用し、Azure VM のイメージをキャプチャし、一括デプロイに利用します。
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: ea202cad06130cfaaa134cad94ac08bede2f41a9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 98d98c1337830ce54c7ff96c19812169be129584
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867703"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946818"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のイメージを作成する方法
 
@@ -36,9 +36,9 @@ ms.locfileid: "37867703"
 ## <a name="before-you-begin"></a>開始する前に
 次の前提条件が満たされていることを確認します。
 
-* 管理ディスクを使用し、Resource Manager デプロイ モデルで作成された Azure VM が必要です。 Linux VM を作成していない場合は、[ポータル](quick-create-portal.md)、[Azure CLI](quick-create-cli.md)、または [Resource Manager](create-ssh-secured-vm-from-template.md) テンプレートを使うことができます。 必要に応じて VM を構成します。 たとえば、[データ ディスクを追加](add-disk.md)し、更新プログラムを適用し、アプリケーションをインストールします。 
+* マネージド ディスクを使用し、Resource Manager デプロイ モデルで作成された Azure VM が必要です。 Linux VM を作成していない場合は、[ポータル](quick-create-portal.md)、[Azure CLI](quick-create-cli.md)、または [Resource Manager](create-ssh-secured-vm-from-template.md) テンプレートを使うことができます。 必要に応じて VM を構成します。 たとえば、[データ ディスクを追加](add-disk.md)し、更新プログラムを適用し、アプリケーションをインストールします。 
 
-* 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要もあります。
+* 最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要もあります。
 
 ## <a name="quick-commands"></a>クイック コマンド
 
@@ -62,7 +62,7 @@ Azure VM エージェントで VM のプロビジョニングを解除し、マ�
 4. コマンドが完了した後、「**exit**」と入力します。 SSH クライアントが閉じられます。
 
 ## <a name="step-2-create-vm-image"></a>手順 2. VM イメージを作成する
-Azure CLI 2.0 を使用し、一般化されたものとして VM を設定し、イメージをキャプチャします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myVnet*、*myVM*といったパラメーター名にします。
+Azure CLI を使用し、一般化されたものとして VM を設定し、イメージをキャプチャします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myVnet*、*myVM*といったパラメーター名にします。
 
 1. [az vm deallocate](/cli//azure/vm#deallocate) で、プロビジョニングを解除した VM の割り当てを解除します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM の割り当てを解除します。
    
@@ -146,4 +146,4 @@ az vm show \
 - 再度本記事の手順に従って、イメージのプロビジョニングの解除、割り当ての解除、一般化、作成を行います。
 - 今後のデプロイには、この新しいイメージを使用します。 必要に応じて、元のイメージを削除します。
 
-CLI を使用して VM を管理する方法の詳細については、[Azure CLI 2.0](/cli/azure) に関するページをご覧ください。
+CLI を使用して VM を管理する方法の詳細については、[Azure CLI](/cli/azure) に関するページをご覧ください。

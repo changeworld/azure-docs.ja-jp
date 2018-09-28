@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2017
+ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: 747b2e2499a9bafcf7a7b03bc2ce144828c55c75
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 66e04e7f0b272f19788e79805ef06d11e2eda572
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172502"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948028"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
 
@@ -63,6 +63,10 @@ Azure DNS で DNS ゾーンをホストするためにドメインを購入す�
 
 ## <a name="azure-dns-features"></a>Azure DNS の機能
 
+### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Traffic Manager でドメイン名の apex に対してエイリアス レコードを使用するときに、何か制限はありますか。
+
+はい。 Traffic Manager では静的パブリック IP アドレスを使用する必要があります。 静的 IP アドレスを使用して**外部エンドポイント** ターゲットを構成します。 
+
 ### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Azure DNS では DNS ベースのトラフィック ルーティングまたはエンドポイント フェールオーバーがサポートされますか。
 
 DNS ベースのトラフィック ルーティングとエンドポイント フェールオーバーは Azure Traffic Manager によって提供されます。 Azure Traffic Manager は、Azure DNS と組み合わせて使用できる別の Azure サービスです。 詳細については、[Traffic Manager の概要](../traffic-manager/traffic-manager-overview.md)を参照してください。
@@ -93,13 +97,41 @@ DNSSEC は Azure DNS のバックログで追跡される機能です。 フィ�
 
 URL リダイレクト機能は Azure DNS バックログで追跡されます。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape)できます。
 
-### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset-"></a>Azure DNS では、TXT レコードセットの拡張 ASCII エンコード (8 ビット) セットはサポートされますか。
+### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset"></a>Azure DNS では、TXT レコードセットの拡張 ASCII エンコード (8 ビット) セットはサポートされますか。
 
-はい。 最新バージョンの Azure REST API、SDK、PowerShell、CLI (2017-10-01 または SDK 2.1 より前のバージョンでは、拡張 ASCII セットはサポートされません) を使用している場合は、Azure DNS で TXT レコードセットの拡張 ASCII エンコード セットがサポートされます。 たとえば、ユーザーが TXT レコードの値として拡張 ASCII 文字\128 (例: "abcd\128efgh") を含む文字列を指定した場合、Azure DNS ではこの文字のバイト値 (128) を内部表現で使用します。 DNS 解決時にも、応答でこのバイト値が返されます。 また、解決に関する限り、"abc" と "\097\098\099" は代替可能です。 
+はい。 最新バージョンの Azure REST API、SDK、PowerShell、CLI (2017-10-01 または SDK 2.1 より前のバージョンでは、拡張 ASCII セットはサポートされません) を使用している場合は、Azure DNS で TXT レコードセットの拡張 ASCII エンコード セットがサポートされます。 たとえば、ユーザーが TXT レコードの値として拡張 ASCII 文字 \128 (例: "abcd\128efgh") を含む文字列を指定した場合、Azure DNS ではこの文字のバイト値 (128) を内部表現で使用します。 DNS 解決時にも、応答でこのバイト値が返されます。 また、解決に関する限り、"abc" と "\097\098\099" は代替可能です。 
 
 TXT レコードについては、[RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) のゾーン ファイルのマスター形式のエスケープ規則に従います。 たとえば、RFC に従い、"\" は実際にはあらゆるものをエスケープします。 TXT レコード値として "A\B" を指定した場合、これは "AB" として表され、解決されます。 解決時に TXT レコードに "A\B" を含める必要がある場合は、"\" を再度エスケープする必要があります。 つまり、"A\\B" と指定します。 
 
-現在、このサポートは、Azure Portal から作成された TXT レコードでは使用できません。 
+現在、このサポートは、Azure portal から作成された TXT レコードでは使用できません。 
+
+## <a name="alias-records"></a>エイリアス レコード
+
+### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>エイリアス レコードが役に立つのはどのようなシナリオですか。
+「[Azure DNS alias records overview](dns-alias.md)」 (Azure DNS エイリアス レコードの概要) のシナリオ セクションをご覧ください。
+
+### <a name="what-record-types-are-supported-for-alias-record-sets"></a>エイリアス レコード セットにはどのようなレコードの種類がサポートされていますか。
+Azure DNS ゾーンでは、エイリアスのレコードセットとして、A、AAAA、および CNAME の種類のレコードがサポートされています。 
+
+### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>エイリアス レコード セットのターゲットとしては、どのようなリソースがサポートされていますか。
+- **DNS の A または AAAA レコード セットからパブリック IP リソースにポイントします**。 A または AAAA レコード セットを作成し、パブリック IP リソースをポイントする、エイリアスのレコード セットにします。
+- **DNS の A、AAAA または CNAME レコード セットから Traffic Manager プロファイルをポイントします**。 現在は、DNS の CNAME レコードセットから Traffic Manager プロファイル (例: contoso.trafficmanager.net) の CNAME をポイントできるのに加え、DNS ゾーンの A または AAAA レコードセットから、外部エンドポイントを持つ Traffic Manager のプロファイルにポイントできるようにもなりました。
+- **同じゾーン内に別の DNS レコード セットをポイントします**。 エイリアス レコードでは、同じ種類の別のレコード セットを参照することができます。 たとえば、DNS の CNAME レコードセットを同じ種類の別の CNAME レコード セットのエイリアスにできます。 これは、動作という意味で、一部のレコード セットをエイリアスにして、一部はエイリアスにしない場合に便利です。
+
+### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Azure portal からエイリアス レコードを作成および更新できますか。
+はい。 Azure REST API、Azure PowerShell、CLI、SDK だけでなく、Azure portal でもエイリアス レコードを作成または管理できます。
+
+### <a name="will-alias-records-help-ensure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>エイリアス レコードは、基になるパブリック IP が削除されたときに DNS レコード セットを確実に削除するのに役立ちますか。
+はい。 実際、これはエイリアス レコードの主要な機能の 1 つです。 エイリアス レコードは、アプリケーションのエンド ユーザーに対する障害の可能性を回避するのに役立ちます。
+
+### <a name="will-alias-records-help-ensure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>エイリアス レコードは、基になるパブリック IP アドレスが変更されたときに、DNS レコード セットを正しい IP アドレスに確実に更新するのに役立ちますか。
+はい。 前の質問と同様、これはエイリアス レコードの主要な機能の 1 つであり、アプリケーションの障害またはセキュリティ リスクの可能性を回避するのに役立ちます。
+
+### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-an-a-or-aaaa-records-to-point-to-traffic-manager"></a>Traffic Manager をポイントする A または AAAA レコードに対してエイリアス レコード セットを使用するときに、何か制限はありますか。
+はい。 A または AAAA レコード セットからエイリアスとして Traffic Manager プロファイルをポイントする場合は、Traffic Manager プロファイルが外部エンドポイントのみを使用していることを確認する必要があります。 Traffic Manager で外部エンドポイントを作成するときに、エンドポイントの実際の IP アドレスを指定します。
+
+### <a name="is-there-an-additional-charge-for-using-alias-records"></a>エイリアス レコードを使用すると追加料金が発生しますか。
+エイリアス レコードは有効な DNS レコード セットの修飾であり、エイリアス レコードに対する追加の課金はありません。
 
 ## <a name="using-azure-dns"></a>Azure DNS の使用
 
@@ -190,10 +222,10 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 ### <a name="what-happens-when-we-attempt-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-registration-virtual-network"></a>登録仮想ネットワーク内の (自動的に登録された) 既存の仮想マシンと同じホスト名を持つプライベート ゾーンに新しい DNS レコードを手動で作成しようとするとどうなりますか。 
 登録仮想ネットワーク内の既存の (自動的に登録された) 仮想マシンと同じホスト名を持つプライベート ゾーンに新しい DNS レコードを手動で作成しようとした場合、新しい DNS レコードで自動的に登録された仮想マシン レコードを上書きすることが許可されます。 さらに、後でそのゾーンから手動で作成した DNS レコードを削除しようとすると、削除は成功し、その仮想マシンが存在し、プライベート IP がアタッチされている限り、自動登録が再度発生します (そのゾーンに DNS レコードが自動的に再作成されます)。 
 
-### <a name="what-happens-when-we-unlink-a-registration-virtual-network-from-a-private-zone--would-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-as-well"></a>プライベート ゾーンから登録仮想ネットワークのリンクを解除するとどうなりますか。 その仮想ネットワークから自動的に登録された仮想マシンのレコードもそのゾーンから削除されますか。
+### <a name="what-happens-when-we-unlink-a-registration-virtual-network-from-a-private-zone-would-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-as-well"></a>プライベート ゾーンから登録仮想ネットワークのリンクを解除するとどうなりますか。 その仮想ネットワークから自動的に登録された仮想マシンのレコードもそのゾーンから削除されますか。
 はい。 プライベート ゾーンから登録仮想ネットワークのリンクを解除 (その DNS ゾーンを更新して関連付けられた登録仮想ネットワークを削除) した場合、Azure はそのゾーンから自動的に登録された仮想マシンのレコードをすべて削除します。 
 
-### <a name="what-happens-when-we-delete-a-registration-or-resolution-virtual-network-that-is-linked-to-a-private-zone--do-we-have-to-manually-update-the-private-zone-to-un-link-the-virtual-network-as-a-registration-or-resolution--virtual-network-from-the-zone"></a>プライベート ゾーンにリンクされている登録 (または解決) 仮想ネットワークを削除するとどうなりますか。 プライベート ゾーンを手動で更新して、そのゾーンから登録 (または解決) 仮想ネットワークとしての仮想ネットワークのリンクを解除する必要がありますか。
+### <a name="what-happens-when-we-delete-a-registration-or-resolution-virtual-network-that-is-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-registration-or-resolution--virtual-network-from-the-zone"></a>プライベート ゾーンにリンクされている登録 (または解決) 仮想ネットワークを削除するとどうなりますか。 プライベート ゾーンを手動で更新して、そのゾーンから登録 (または解決) 仮想ネットワークとしての仮想ネットワークのリンクを解除する必要がありますか。
 はい。 リンクを解除する前に登録 (または解決) 仮想ネットワークをプライベート ゾーンから削除すると、Azure では削除操作が成功しますが、プライベート ゾーンに残っている仮想ネットワークのリンクは自動的には解除されません。 仮想ネットワークのリンクはプライベート ゾーンから手動で解除する必要があります。 この理由から、仮想ネットワークを削除する前に、まずプライベート ゾーンから仮想ネットワークのリンクを解除することをおすすめします。
 
 ### <a name="would-dns-resolution-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>既定の FQDN (internal.cloudapp.net) を使用している DNS 解決は、プライベート ゾーン (例: contoso.local) が仮想ネットワークにリンクされている場合でも機能しますか。 
@@ -212,7 +244,7 @@ Azure での他の内部 DNS オプションの詳細については、「[VM �
 * 逆引き DNS は登録仮想ネットワーク内のプライベート IP 空間に対してのみ機能する
 * プライベート ゾーンに登録されていないプライベート IP (例: プライベート ゾーンに解決仮想ネットワークとしてリンクされている仮想ネットワーク内の仮想マシンのプライベート IP) の逆引き DNS は、DNS サフィックスとして "internal.cloudapp.net" を返すが、このサフィックスは解決できない。   
 * 仮想ネットワークは、 最初から登録また解決仮想ネットワークとしてプライベート ゾーンにリンクされているときは、 空である (NIC がアタッチされている仮想マシンがない) 必要がある。 ただし、その他のプライベート ゾーンに登録または解決仮想ネットワークとしてさらにリンクする場合、仮想ネットワークは空でなくてもかまいません。 
-* 現時点では、条件付きの転送 (例: Azure とオンプレミス ネットワーク間の解決を有効にする) はサポートされていない。 他のメカニズムを介してこのシナリオを実現する方法については、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。
+* 現時点では、条件付きの転送 (例: Azure とオンプレミス ネットワーク間の解決を有効にする) はサポートされていない。 他のメカニズムを介してこのシナリオを実現する方法についてのドキュメントは、[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)に関するページを参照してください。
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Private Zones のゾーンやレコードにクォータや制限はありますか。
 Private Zones には、サブスクリプションごとのゾーンの数や、ゾーンごとのレコード セットの数について、別個の制限はありません。 Public Zones と Private Zones は両方とも[ここ](../azure-subscription-service-limits.md#dns-limits)に示す DNS 全体の制限が適用されます。

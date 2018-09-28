@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: jasonh
-ms.openlocfilehash: cb2ca9ac3be0034f5a90add58249a2c2043975d0
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ee97d2005752c9e0cd40de238d1f4a946bb9ee3d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094086"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948419"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
 
@@ -97,7 +97,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 
 ## <a name="client-side-technologies"></a>クライアント側のテクノロジ
 
-[Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)、[AZURE-CLI](../cli-install-nodejs.md)、[.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) などのクライアント側のテクノロジでは、Linux ベースのクラスターを引き続き使用できます。 これらのテクノロジは、両方のクラスター OS の種類で同じ REST API を使用します。
+[Azure PowerShell コマンドレット](/powershell/azureps-cmdlets-docs)、[Azure クラシック CLI](../cli-install-nodejs.md)、[.NET SDK for Hadoop](https://hadoopsdk.codeplex.com/) などのクライアント側のテクノロジでは、Linux ベースのクラスターを引き続き使用できます。 これらのテクノロジは、両方のクラスター OS の種類で同じ REST API を使用します。
 
 ## <a name="server-side-technologies"></a>サーバー側のテクノロジ
 
@@ -106,7 +106,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 | 使用するテクノロジ | 実行するアクション |
 | --- | --- |
 | **PowerShell** (クラスターの作成時に使用されるスクリプトを含む、サーバー側スクリプト) |Bash スクリプトを書き直します。 スクリプト アクションについては、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」および「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。 |
-| **Azure CLI** (サーバー側スクリプト) |Azure CLI は Linux で使用可能ですが、HDInsight クラスター ヘッド ノードにはプレインストールされません。 Azure CLI のインストールの詳細については、「[Azure CLI 2.0 の概要](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)」を参照してください。 |
+| **Azure クラシック CLI** (サーバー側スクリプト) |Azure クラシック CLI は Linux で使用可能ですが、HDInsight クラスター ヘッド ノードにはプレインストールされません。 Azure クラシック CLI のインストールの詳細については、[Azure クラシック CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)に関するページをご覧ください。 |
 | **.NET コンポーネント** |.Net は、[Mono](https://mono-project.com) を使用した Linux ベースの HDInsight でサポートされています。 詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。 |
 | **Win32 コンポーネントまたはその他の Windows 専用のテクノロジ** |ガイダンスはコンポーネントやテクノロジによって異なります。 Linux と互換性があるバージョンを確認できます。 ない場合は、代わりの解決策を見つけるか、このコンポーネントを再生成する必要があります。 |
 
