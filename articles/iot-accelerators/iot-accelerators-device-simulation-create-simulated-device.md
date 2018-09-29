@@ -6,14 +6,14 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 08/16/2018
+ms.date: 09/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6fe6421cea584a84c76e8c70c2ae90475b613036
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: a2bd69a8097b05fc8a5b09c9009d0e1c1669069c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371535"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434723"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成とテスト
 

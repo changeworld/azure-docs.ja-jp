@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: eugenesh
 ms.openlocfilehash: 5897740a1b5a183738c08b4dfde571be652aff3e
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642001"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092251"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>インデクサーを使用した Azure Search への Azure SQL Database の接続
 

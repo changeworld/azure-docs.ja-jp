@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
 ms.openlocfilehash: 5e0358ebf525c39c09df4268971fa71c02457821
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35774125"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094195"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Application Insights による Azure Batch .NET アプリケーションの監視とデバッグ
 

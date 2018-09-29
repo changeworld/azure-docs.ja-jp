@@ -1,20 +1,23 @@
 ---
 title: Azure App Service - ネットワーク構成の同期 | Microsoft Docs
 description: この記事では、Azure App Service のホスティング プラン用にネットワーク構成を同期する方法について説明します。
+services: sql-database
 ms.service: sql-database
-author: srdan-bozovic-msft
-manager: craigg
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/07/2018
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 57c4dd523a5dffc48a2d2d403d2a440a8d6cde95
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+manager: craigg
+ms.date: 03/07/2018
+ms.openlocfilehash: d5de908166e8de1d45a36f97aee8934653e59623
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257896"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163171"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>ネットワーク構成を Azure App Service のホスティング プラン用に同期する
 

@@ -2,20 +2,22 @@
 title: SQL Database アプリケーションの開発の概要 | Microsoft Docs
 description: SQL Database に接続するアプリケーションで使用できる接続ライブラリとベスト プラクティスについて説明します。
 services: sql-database
-author: stevestein
-manager: craigg
-ms.reviewer: genemi
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/20/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 1986c19e6625df7c281f7de9b322124da6a12c45
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.reviewer: genemi
+manager: craigg
+ms.date: 06/20/2018
+ms.openlocfilehash: 58f902edcd417809d1bb47a231cb1c2ac2f579d1
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973843"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063593"
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 この記事では、Azure SQL Database に接続するコードを記述するときの基本的な考慮事項について説明します。

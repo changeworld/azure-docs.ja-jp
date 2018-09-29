@@ -9,25 +9,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: e6b263c1eb9fe3b151f0a51b5da9a92b8ced4549
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: a4758e5597876112fa7a85850786491e22af8c83
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109744"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037142"
 ---
 # <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Azure Virtual Network サービス エンドポイントを使用して Azure Cosmos DB アカウントへのアクセスをセキュリティで保護する
 
-Azure CosmosDB アカウントは、Azure Virtual Network の特定のサブネットからのアクセスのみを許可するように構成することができます。 Virtual Network とそのサブネットの Azure CosmosDB の[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を有効にすることにより、トラフィックに Azure Cosmos DB への最適で安全なルートが確保されます。  
+Azure CosmosDB アカウントは、Azure Virtual Network にある特定のサブネットからのアクセスのみを許可するように構成することができます。 Virtual Network とそのサブネットの Azure CosmosDB の[サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)を有効にすることにより、トラフィックに Azure Cosmos DB への最適で安全なルートが確保されます。  
 
-Azure Cosmos DB は、グローバル分散型のマルチモデル データベース サービスです。 Azure Cosmos DB アカウント内のデータは、複数のリージョンにレプリケートすることができます。 Azure Cosmos DB が 1 つの仮想ネットワーク サービス エンドポイントで構成されている場合、各仮想ネットワークは、特定のサブネットに属している IP からのアクセスを許可します。 次の図は、仮想ネットワーク サービス エンドポイントが有効になっている Azure Cosmos DB を示しています。
+Azure Cosmos DB は、グローバル分散型のマルチモデル データベース サービスです。 Azure Cosmos DB アカウント内のデータは、複数のリージョンにレプリケートすることができます。 Azure Cosmos DB に仮想ネットワーク サービス エンドポイントが 1 つ構成されている場合、各仮想ネットワークでは、特定のサブネットに属している IP からのアクセスが許可されます。 次の図は、仮想ネットワーク サービス エンドポイントが有効になっている Azure Cosmos DB を示しています。
 
 ![仮想ネットワーク サービス エンドポイントのアーキテクチャ](./media/vnet-service-endpoint/vnet-service-endpoint-architecture.png)
 
 Azure Cosmos DB アカウントは、仮想ネットワーク サービス エンドポイントを使用して構成されると、指定されたサブネットからのみアクセスできるようになり、すべてのパブリック/インターネット アクセスは削除されます。 サービス エンドポイントの詳細については、Azure の[仮想ネットワーク サービス エンドポイントの概要](../virtual-network/virtual-network-service-endpoints-overview.md)に関する記事を参照してください。
-
-> [!NOTE]
-> 現在、Virtual Network サービス エンドポイントは、Azure Cosmos DB SQL API または Mongo API アカウント用に構成できます。 その他の API やソブリン クラウド (Azure Germany、Azure Government など) 用にサービス エンドポイントを構成する機能は、間もなく利用できるようになります。 Azure Cosmos DB アカウント用に既存の IP ファイアウォールが構成されている場合は、ファイアウォールの構成を書き留め、IP ファイアウォールを削除してから、サービス エンドポイント ACL を構成してください。 サービス エンドポイントを構成した後、必要な場合は IP ファイアウォールを再度有効にすることができます。
 
 ## <a name="configure-service-endpoint-by-using-azure-portal"></a>Azure Portal を使用してサービス エンドポイントを構成する
 ### <a name="configure-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>既存の Azure 仮想ネットワークとサブネット用のサービス エンドポイントを構成する
@@ -42,7 +39,7 @@ Azure Cosmos DB アカウントは、仮想ネットワーク サービス エ�
 
 4. 設定メニューの **[ファイアウォールと仮想ネットワーク]** を選択し、**[選択されたネットワーク]** からのアクセスを許可するように選択します。  
 
-3. 既存の仮想ネットワークのサブネットへのアクセスを許可するには、[仮想ネットワーク] で **[Add existing Azure virtual network]\(既存の Azure 仮想ネットワークを追加\)** を選択します。  
+3. 既存の仮想ネットワークにあるサブネットへのアクセスを許可するには、[仮想ネットワーク] で **[Add existing Azure virtual network]\(既存の Azure 仮想ネットワークを追加\)** を選択します。  
 
 4. 追加する Azure 仮想ネットワークの**サブスクリプション**を選択します。 Azure Cosmos DB アカウントへのアクセスを提供する Azure **仮想ネットワーク**と**サブネット**を選択します。 次に、**[有効化]** を選択して、サービス エンドポイントを持つ選択したネットワークを "Microsoft.AzureCosmosDB" に対して有効にします。 完了したら、**[追加]** を選択します。  
 
@@ -74,11 +71,11 @@ Azure Cosmos DB アカウントは、仮想ネットワーク サービス エ�
 
 ## <a name="allow-access-from-azure-portal"></a>Azure Portal からのアクセスを許可する
 
-Azure Virtual Network サービス エンドポイントが Azure Cosmos DB データベース アカウントに対して有効になると、既定では、ポータルやその他の Azure サービスからのアクセスは無効になります。 構成されたサブネットの外部のマシンから Azure Cosmos DB データベース アカウントへのアクセスは、ポータルからのアクセスも含めてブロックされます。
+Azure Virtual Network サービス エンドポイントが Azure Cosmos DB データベース アカウントに対して有効になると、既定では、ポータルやその他の Azure サービスからのアクセスは無効になります。 構成されたサブネットの外部にあるマシンから Azure Cosmos DB データベース アカウントへのアクセスは、ポータルからのアクセスも含めてブロックされます。
 
 ![ポータルからのアクセスを許可する](./media/vnet-service-endpoint/allow-access-from-portal.png)
 
-Azure Cosmos DB アカウントが Azure Search のような他の Azure サービスによって使用されたり、Stream Analytics または Power BI からアクセスされる場合は、**[Azure サービスへのアクセスを許可]** をオンにしてアクセスを許可します。
+Azure Cosmos DB アカウントが Azure Search のような他の Azure サービスによって使用されたり、Stream Analytics または Power BI からアクセスされたりする場合は、**[Azure サービスへのアクセスを許可]** をオンにしてアクセスを許可します。
 
 ポータルから Azure Cosmos DB メトリックにアクセスできるようにするには、**[Azure Portal へのアクセスを許可する]** オプションを有効にする必要があります。 これらのオプションの詳細については、「[Azure Portal からの接続](firewall-support.md#connections-from-the-azure-portal)」と「[他の Azure PaaS サービスからの接続](firewall-support.md#connections-from-global-azure-datacenters-or-azure-paas-services)」のセクションを参照してください。 アクセスを選択した後、**[保存]** を選択して、設定を保存します。
 
@@ -106,7 +103,7 @@ Azure PowerShell を使用して、Azure Cosmos DB アカウントへのサー�
 
 2. 仮想ネットワーク サービス エンドポイントを有効にする前に、将来使用できるように、Azure Cosmos DB アカウントに関連付けられている IP ファイアウォール情報をコピーしておいてください。 サービス エンドポイントを構成した後、IP ファイアウォールを再度有効にします。  
 
-3. 仮想ネットワークの既存のサブネット用のサービス エンドポイントを有効にします。  
+3. 仮想ネットワークにある、既存のサブネット用のサービス エンドポイントを有効にします。  
 
    ```powershell
    $rgname= "<Resource group name>"
@@ -247,7 +244,7 @@ NSG タグの詳細については、[仮想ネットワークのサービス �
   
 ### <a name="what-is-relationship-between-an-ip-firewall-and-virtual-network-service-endpoint-capability"></a>IP ファイアウォールと Virtual Network サービス エンドポイント機能とはどのような関係ですか。  
 
-この 2 つの機能は、Azure Cosmos DB アセットを確実に分離し、それらをセキュリティで保護するために、互いに補完しています。 IP ファイアウォールを使用すると、静的 IP が確実に Azure Cosmos DB アカウントにアクセスできます。  
+この 2 つの機能は、Azure Cosmos DB の資産を確実に分離し、それらをセキュリティで保護するために、互いに補完しています。 IP ファイアウォールを使用すると、確実に静的 IP から Azure Cosmos DB アカウントにアクセスできます。  
 
 ### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Azure Virtual Network ゲートウェイ (VPN) または Express Route ゲートウェイを介して接続しているオンプレミス デバイスの IP アドレスは、Azure Cosmos DB アカウントにアクセスできますか。  
 

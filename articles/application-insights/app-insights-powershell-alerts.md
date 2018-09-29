@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: 8e317d44b7fdff1ef244e2e549fbbebf3f829740
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e7e0f6747beea43b55ae1a20da44cde3c070cd89
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635062"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091374"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 [Application Insights](app-insights-overview.md) では、[アラート](app-insights-alerts.md)の構成を自動化できます。

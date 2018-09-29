@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
-ms.author: tonguyen
-ms.openlocfilehash: c782cadadb0250e6c3ca4912dbf8f81e19cb88c5
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: cwatson
+ms.openlocfilehash: be2e774bc4220d5d93f555263fa9f342f449f8b2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919056"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423444"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Microsoft Azure の課金内容の確認
 Azure の課金内容を確認するには、詳細な毎日の使用状況ファイルおよび Azure ポータルのコスト管理レポートと、請求書を比較します。
@@ -141,7 +141,6 @@ Azure ファースト パーティ料金は、Azure が直接開発して提供�
 
 ## <a name="tips-for-cost-management"></a>コスト管理に関するヒント
 - [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)や[総保有コスト計算ツール](https://aka.ms/azure-tco-calculator)を使用してコストを推定し、[各サービスの詳細な料金情報](https://azure.microsoft.com/pricing/)を取得します。
-- [課金アラートを設定](billing-set-up-alerts.md)します。
 - [Azure ポータルで使用状況とコストを定期的に確認します](billing-getting-started.md#costs)。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。

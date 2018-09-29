@@ -9,32 +9,32 @@ ms.component: bing-news-search
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: v-gedod
-ms.openlocfilehash: b8ae99698926a818bf22b0b4027af8610413aaa6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ab892e947566adf025499382b213a52ed3e96e35
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372909"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433686"
 ---
 # <a name="news-search-endpoints"></a>News Search エンドポイント
-**News Search API** は、ニュース記事、Web ページ、画像、動画、[エンティティ](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)を返します。 エンティティには、人物、場所、またはトピックに関する概要情報が含まれます。 
+**News Search API** は、ニュース記事、Web ページ、画像、動画、[エンティティ](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)を返します。 エンティティには、人物、場所、またはトピックに関する概要情報が含まれます。
 ## <a name="endpoints"></a>エンドポイント
 Bing API を使用してニュース検索の結果を取得するには、次のエンドポイントのいずれかに `GET` 要求を送信します。 ヘッダーと URL パラメーターは、さらに仕様を定義します。
 
-**エンドポイント 1:** ユーザーの検索クエリに基づいてニュース項目を返します。 検索クエリが空の場合、呼び出しではトップ ニュース記事が返されます。 クエリ `?q=""` オプションは、`/news` URL でも使用できます。 可用性については、[サポートされている国と市場](supported-countries-markets.md#supported-markets-for-news-search-endpoint)に関する記事をご覧ください。
+**エンドポイント 1:** ユーザーの検索クエリに基づいてニュース項目を返します。 検索クエリが空の場合、呼び出しではトップ ニュース記事が返されます。 クエリ `?q=""` オプションは、`/news` URL でも使用できます。 可用性については、[サポートされている国と市場](language-support.md#supported-markets-for-news-search-endpoint)に関する記事をご覧ください。
 ```
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/search 
-``` 
+GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
+```
 
-**エンドポイント 2:** カテゴリ別のトップ ニュース項目を返します。 `category=business`、`category=sports`、または `category=entertainment` を使用してビジネス、スポーツ、またはエンターテイメントのトップ記事を具体的に要求できます。  `category` パラメーターは、`/news` URL でのみ使用できます。 カテゴリを指定するための正式な要件がいくつかあります。[クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters)に関するドキュメントの `category` に関するページをご覧ください。 可用性については、[サポートされている国と市場](supported-countries-markets.md#supported-markets-for-news-endpoint)に関する記事をご覧ください。 
+**エンドポイント 2:** カテゴリ別のトップ ニュース項目を返します。 `category=business`、`category=sports`、または `category=entertainment` を使用してビジネス、スポーツ、またはエンターテイメントのトップ記事を具体的に要求できます。  `category` パラメーターは、`/news` URL でのみ使用できます。 カテゴリを指定するための正式な要件がいくつかあります。[クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters)に関するドキュメントの `category` に関するページをご覧ください。 可用性については、[サポートされている国と市場](language-support.md#supported-markets-for-news-endpoint)に関する記事をご覧ください。
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-**エンドポイント 3:** ソーシャル ネットワークで現在注目されているニュース トピックを返します。 `/trendingtopics` オプションが含まれている場合、Bing 検索は `freshness` や `?q=""` などの他のいくつかのパラメーターを無視します。 可用性については、[サポートされている国と市場](supported-countries-markets.md#supported-markets-for-news-trending-endpoint)に関する記事をご覧ください。
+**エンドポイント 3:** ソーシャル ネットワークで現在注目されているニュース トピックを返します。 `/trendingtopics` オプションが含まれている場合、Bing 検索は `freshness` や `?q=""` などの他のいくつかのパラメーターを無視します。 可用性については、[サポートされている国と市場](language-support.md#supported-markets-for-news-trending-endpoint)に関する記事をご覧ください。
 ```
-GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics 
-``` 
+GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
+```
 
 ヘッダー、パラメーター、市場コード、応答オブジェクト、エラーなどについて詳しくは、[Bing News Search API v7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) のリファレンスをご覧ください。
 ## <a name="response-json"></a>応答 JSON

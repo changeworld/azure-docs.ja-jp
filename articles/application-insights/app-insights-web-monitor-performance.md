@@ -15,11 +15,11 @@ ms.date: 05/10/2018
 ms.reviewer: sdash
 ms.author: mbullwin
 ms.openlocfilehash: 7e6aad6f6a0664d7834e6ea889dba14c1cbcdf0a
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635170"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095363"
 ---
 # <a name="monitor-performance-in-web-applications"></a>Web アプリケーションのパフォーマンスを監視する
 

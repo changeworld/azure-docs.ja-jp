@@ -9,12 +9,12 @@ ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 4fb8d45c285ee3c1651039619808b8964c5313cd
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: dfe561e7a7231c8e7f9465819a01cd4b0a35f47c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983082"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434543"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal を使用して複数の仮想マシンをバックアップする
 
@@ -42,9 +42,9 @@ Recovery Services コンテナーには、バックアップ データと、保�
 
     ![コンテナー メニューを開く](./media/tutorial-backup-vm-at-scale/provide-vault-detail-2.png)
 
-3. [Recovery Services コンテナー] メニューで、 
+3. [Recovery Services コンテナー] メニューで、
 
-    - **[名前]** に "*「myRecoveryServicesVault」*" と入力します
+    - **[名前]** に「*myRecoveryServicesVault*」と入力します。
     - 現在のサブスクリプション ID が **[サブスクリプション]** に表示されます。 追加のサブスクリプションがある場合は、新しいコンテナーに別のサブスクリプションを選択できます。
     - **[リソース グループ]** で **[既存のものを使用]** を選択し、"*[myResourceGroup]*" を選択します。 "*[myResourceGroup]*" が存在しない場合は、**[新規作成]** を選択し、"*「myResourceGroup」*" と入力します。
     - **[場所]** ドロップダウン メニューから "*[西ヨーロッパ]*" を選択します。
@@ -76,7 +76,7 @@ Recovery Services コンテナーを作成した後、次の手順は、デー�
 
     ![Select workload](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
-5. **[バックアップ ポリシー]** メニューで、**[ポリシー名]** に "*「Finance」*" と入力します。 バックアップ ポリシーの次の変更を入力します。 
+5. **[バックアップ ポリシー]** メニューで、**[ポリシー名]** に "*「Finance」*" と入力します。 バックアップ ポリシーの次の変更を入力します。
     - **[バックアップの頻度]** には、"*中部標準時*" のタイム ゾーンを設定します。 スポーツ複合施設はテキサス州にあるため、所有者は時間をローカルにすることを希望しています。 バックアップの頻度は、毎日午前 3 時 30 分に設定したままにします。
     - **[毎日のバックアップ ポイントの保持期間]** には、90 日の期間を設定します。
     - **[毎週のバックアップ ポイントの保持期間]** には、"*[月曜日]*" の復元ポイントを使用し、52 週間保持します。
@@ -84,21 +84,21 @@ Recovery Services コンテナーを作成した後、次の手順は、デー�
     - **[毎年のバックアップ ポイントの保持期間]** オプションの選択を解除します。 財務部門のリーダーは、36 か月間より長くデータを保持することを希望していません。
     - **[OK]** をクリックしてバックアップ ポリシーを作成します。
 
-    ![Select workload](./media/tutorial-backup-vm-at-scale/set-new-policy.png) 
+    ![Select workload](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
     バックアップ ポリシーを作成した後に、ポリシーを仮想マシンに関連付けます。
 
-6. **[仮想マシンの選択]** ダイアログで、"*[myVM]*" を選択し、**[OK]** をクリックしてバックアップ ポリシーを仮想マシンにデプロイします。 
+6. **[仮想マシンの選択]** ダイアログで、"*[myVM]*" を選択し、**[OK]** をクリックしてバックアップ ポリシーを仮想マシンにデプロイします。
 
     同じ場所にあり、まだバックアップ ポリシーに関連付けられていないすべての仮想マシンが表示されます。 "*myVMH1*" と "*myVMR1*" が選択されて "*財務*" ポリシーに関連付けられます。
 
-    ![Select workload](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png) 
+    ![Select workload](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png)
 
     デプロイが完了すると、デプロイが正常に完了したことを示す通知を受信します。
 
 ## <a name="initial-backup"></a>初回バックアップ
 
-Recovery Services コンテナーのバックアップを有効にしましたが、初回バックアップは作成されていません。 データが保護されるように最初のバックアップをトリガーすることが、ディザスター リカバリーのベスト プラクティスです。 
+Recovery Services コンテナーのバックアップを有効にしましたが、初回バックアップは作成されていません。 データが保護されるように最初のバックアップをトリガーすることが、ディザスター リカバリーのベスト プラクティスです。
 
 オンデマンド バックアップ ジョブを実行するには、次の手順に従います。
 
@@ -130,10 +130,10 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
     デプロイ通知で、バックアップ ジョブがトリガーされたこと、および [バックアップ ジョブ] ページでジョブの進行状況を監視できることが示されます。 仮想マシンのサイズによっては、最初のバックアップの作成に時間がかかる場合があります。
 
-    初回バックアップ ジョブが完了したら、[バックアップ ジョブ] メニューでその状態を確認できます。 オンデマンド バックアップ ジョブで、"*myVM*" の最初の復元ポイントが作成されました。 他の仮想マシンをバックアップする場合は、各仮想マシンでこの手順を繰り返します。 
+    初回バックアップ ジョブが完了したら、[バックアップ ジョブ] メニューでその状態を確認できます。 オンデマンド バックアップ ジョブで、"*myVM*" の最初の復元ポイントが作成されました。 他の仮想マシンをバックアップする場合は、各仮想マシンでこの手順を繰り返します。
 
     ![Backup Jobs tile](./media/tutorial-backup-vm-at-scale/initial-backup-complete.png)
-  
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 引き続きチュートリアルの作業を行う場合は、このチュートリアルで作成したリソースをクリーンアップしないでください。 作業を続行しない場合は、次の手順に従って、このチュートリアルで作成したすべてのリソースを Azure Portal で削除します。
@@ -153,15 +153,15 @@ Recovery Services コンテナーのバックアップを有効にしました�
 
     ![Settings icon](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
-4. コンテキスト メニューで、**[バックアップの停止]** を選択して [バックアップの停止] メニューを開きます。 
+4. コンテキスト メニューで、**[バックアップの停止]** を選択して [バックアップの停止] メニューを開きます。
 
     ![Settings icon](./media/tutorial-backup-vm-at-scale/context-menu-for-delete.png)
 
 5. **[バックアップの停止]** メニューで、上のドロップダウン メニューを選択し、**[バックアップ データの削除]** を選択します。
 
 6. **[Type the name of the Backup item]\(バックアップ項目の名前を入力してください\)** ダイアログで、"*「myVM」*" と入力します。
- 
-7. バックアップ項目が確認されると (チェックマークが表示されます)、**[バックアップの停止]** ボタンが有効になります。 **[バックアップの停止]** をクリックしてポリシーを停止し、復元ポイントを削除します。 
+
+7. バックアップ項目が確認されると (チェックマークが表示されます)、**[バックアップの停止]** ボタンが有効になります。 **[バックアップの停止]** をクリックしてポリシーを停止し、復元ポイントを削除します。
 
     ![[バックアップの停止] をクリックしてコンテナーを削除する](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 
@@ -183,7 +183,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
 > * 複数の仮想マシンを保護するポリシーを割り当てる
 > * 仮想マシンのオンデマンド バックアップをトリガーする
 
-ディスクから Azure 仮想マシンを復元するには、次のチュートリアルに進みます。 
+ディスクから Azure 仮想マシンを復元するには、次のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
 > [CLI を使用して VM を復元する](./tutorial-restore-disk.md)

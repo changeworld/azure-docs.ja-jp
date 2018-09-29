@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
 ms.devlang: dotNet
-ms.topic: conceptual
+ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/17/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d14420a363cfea23c86f63533a4ea89c5f2fd06f
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 7e324b80968017e0160f41b88fa1824669050ac9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412918"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407401"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>クイック スタート: Web アプリを作成して Azure Service Fabric mesh にデプロイする
 
@@ -36,13 +36,13 @@ Azure サブスクリプションが必要です。 Azure サブスクリプシ�
 
 Visual Studio を開き、**[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
 
-**[新しいプロジェクト]** ダイアログの上部にある **[検索]** ボックスに「`mesh`」と入力します。 **[Service Fabric Mesh Application]\(Service Fabric mesh アプリケーション\)** テンプレートを選択します  (テンプレートが表示されない場合は、[開発環境の設定](service-fabric-mesh-howto-setup-developer-environment-sdk.md)に関するページの説明に従って、Mesh SDK と VS Tools プレビューをインストールしたことを確認してください)。 
+**[新しいプロジェクト]** ダイアログの上部にある **[検索]** ボックスに「`mesh`」と入力します。 **[Service Fabric Mesh Application]\(Service Fabric Mesh アプリケーション\)** テンプレートを選択します  (テンプレートが表示されない場合は、[開発環境の設定](service-fabric-mesh-howto-setup-developer-environment-sdk.md)に関するページの説明に従って、Mesh SDK と VS Tools プレビューをインストールしたことを確認してください)。 
 
 **[名前]** ボックスに「**ServiceFabricMesh1**」と入力し、**[場所]** ボックスにプロジェクト ファイル格納場所のフォルダー パスを設定します。
 
 **[ソリューションのディレクトリを作成する]** がオンになっていることを確認し、**[OK]** をクリックして Service Fabric mesh プロジェクトを作成します。
 
-![Visual Studio: 新しい Service Fabric mesh プロジェクト ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
+![Visual Studio: 新しい Service Fabric Mesh プロジェクト ダイアログ](media/service-fabric-mesh-quickstart-dotnet-core/visual-studio-new-project.png)
 
 ### <a name="create-a-service"></a>サービスの作成
 

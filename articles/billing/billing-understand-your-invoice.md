@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
-ms.author: tonguyen
-ms.openlocfilehash: 6601ade7db52043de8150a3fca671591b9b469fd
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: cwatson
+ms.openlocfilehash: 4bfaaa51e39a7db297626a8009306eef9e3efa80
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063461"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393783"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の用語を確認します。
 
@@ -52,7 +52,7 @@ ms.locfileid: "37063461"
 | 請求日 |請求書が生成された日付。通常は、請求サイクルの終了の翌日 |
 | 支払い方法 |アカウントで使用される支払いの種類 (請求書またはクレジット カード) |
 | 請求先 |一覧表示される、アカウントに対応した請求先住所 |
-| サブスクリプション オファー (従量課金制) |購入したサブスクリプション プランの種類 (従量課金制、BizSpark Plus、Azure Pass など)。 詳細については、[Azure のオファーの種類](https://azure.microsoft.com/support/legal/offer-details/)に関する記事をご覧ください。 |
+| サブスクリプション オファー (従量課金制) |購入したサブスクリプション オファーの種類 (従量課金制、BizSpark Plus、Azure Pass など)。 詳細については、[Azure のオファーの種類](https://azure.microsoft.com/support/legal/offer-details/)に関する記事をご覧ください。 |
 | アカウント所有者メール アドレス | Microsoft Azure アカウントが登録されたアカウントのメール アドレス。 <br /><br />メール アドレスを変更するには、「[Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する方法](billing-how-to-change-azure-account-profile.md)」を参照してください。 |
 
 ### <a name="understand-the-invoice-summary"></a>請求書の要約について
@@ -78,7 +78,7 @@ ms.locfileid: "37063461"
 | --- | --- |
 | 利用料金 |利用料金は、現在の請求期間のサブスクリプションに対する合計月額料金です。|
 | 割引 |現在の請求期間に適用されるサービス割引|
-| 調整 |現在の請求期間に適用されるその他のクレジット (割引額、控除など) または未処理料金<br/><br/>たとえば、Visual Studio Enterprise with MSDN のプランをご利用の場合は、毎月のクレジット額が表示されます。 サブスクリプションをキャンセルすると、サブスクリプション プランで提供される毎月のクレジット額を超えた月額利用料金が表示されます。 料金は、現在の請求期間の開始日からサブスクリプションのキャンセル日まで発生します。 |
+| 調整 |現在の請求期間に適用されるその他のクレジット (割引額、控除など) または未処理料金<br/><br/>たとえば、Visual Studio Enterprise with MSDN のプランをご利用の場合は、毎月のクレジット額が表示されます。 サブスクリプションをキャンセルすると、サブスクリプション オファーで提供される毎月のクレジット額を超えた月額利用料金が表示されます。 料金は、現在の請求期間の開始日からサブスクリプションのキャンセル日まで発生します。 |
 
 #### <a name="sold-to-and-payment-instructions"></a>販売先と支払い指示
 

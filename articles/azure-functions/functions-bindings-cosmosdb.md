@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 50a8e491998b37a7ffebd5551cf755e8a9ca738a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 281d74b6836516e03771d82c96fab628eac12f1a
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093313"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395833"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1.x の Azure Cosmos DB バインド
 
@@ -51,9 +51,9 @@ Azure Cosmos DB のトリガーは [Azure Cosmos DB 変更フィード](../cosmo
 
 言語固有の例をご覧ください。
 
-* [C#](#trigger---c-example)
+* [C# を選択した場合](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
+* [JavaScript を選択した場合](#trigger---javascript-example)
 
 [トリガーの例をスキップする](#trigger---attributes)
 
@@ -222,9 +222,9 @@ Azure Cosmos DB 入力バインドでは、SQL API を使用して 1 つ以上�
 
 次のリンクから、ID 値を指定することで単一のドキュメントを読み取る言語固有の例を参照してください。
 
-* [C#](#input---c-examples)
+* [C# を選択した場合](#input---c-examples)
 * [C# スクリプト (.csx)](#input---c-script-examples)
-* [JavaScript](#input---javascript-examples)
+* [JavaScript を選択した場合](#input---javascript-examples)
 * [F#](#input---f-examples)
 
 [入力の例をスキップする](#input---attributes)
@@ -1188,9 +1188,9 @@ Azure Cosmos DB 出力バインドを使用すると、SQL API を使って Azur
 
 言語固有の例を参照してください。
 
-* [C#](#output---c-examples)
+* [C# を選択した場合](#output---c-examples)
 * [C# スクリプト (.csx)](#output---c-script-examples)
-* [JavaScript](#output---javascript-examples)
+* [JavaScript を選択した場合](#output---javascript-examples)
 * [F#](#output---f-examples)
 
 `DocumentClient` を使用した[入力の例](#input---c-examples)も参照してください。
@@ -1607,11 +1607,10 @@ F# コードを次に示します。
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Cosmos DB トリガーを使用するクイックスタートに進む](functions-create-cosmos-db-triggered-function.md)
+* [Cosmos DB のサーバーレス データベース コンピューティングの詳細情報](..\cosmos-db\serverless-computing-database.md)
+* [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
 
+<!---
 > [!div class="nextstepaction"]
-> [Cosmos DB のサーバーレス データベース コンピューティングの詳細情報](..\cosmos-db\serverless-computing-database.md)
-
-> [!div class="nextstepaction"]
-> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
+> [Go to a quickstart that uses a Cosmos DB trigger](functions-create-cosmos-db-triggered-function.md)
+--->

@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: yashar
-ms.openlocfilehash: 923337291d297832e03892b505f4efa8d3bb3f36
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.author: cwatson
+ms.openlocfilehash: ee73cb3164ce59136dd268853b8caa967a6f42e9
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300716"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393386"
 ---
 # <a name="understand-how-an-azure-reservation-discount-is-applied-to-sql-databases"></a>SQL データベースに対する Azure の予約割引の適用方法
 

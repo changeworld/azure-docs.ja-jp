@@ -2,19 +2,22 @@
 title: リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理 | Microsoft Docs
 description: 一時的なリテンション ポリシーを使用して、履歴データを管理する方法について説明します。
 services: sql-database
-author: bonova
-manager: craigg
 ms.service: sql-database
-ms.custom: develop databases
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: f65f7ec44ccbeb6f64d43d20b1bd7a77329fa97f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: f339cadc63d5e5cd934d07e7b0fffc6342ca04c7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649025"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159102"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理
 特に履歴データを長期間保持する場合に、テンポラル テーブルは通常のテーブルよりもデータベースのサイズの増大に大きく影響することがあります。 したがって、履歴データのリテンション ポリシーは、あらゆるテンポラル テーブルのライフサイクルの計画と管理において重要な要素となります。 Azure SQL Database のテンポラル テーブルには、こういったタスクの実行に役立つ、使いやすい保持メカニズムが備わっています。

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/01/2018
+ms.date: 09/01/2018
 ms.author: spelluru
-ms.openlocfilehash: e886089bbceff5fc1963044c4c1f2f7a012ea2a2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: c8722aeb9e957eb77dfc3dd975587717f91d5d1f
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697732"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395629"
 ---
 # <a name="managed-service-identity-preview"></a>管理対象サービス ID (プレビュー)
 

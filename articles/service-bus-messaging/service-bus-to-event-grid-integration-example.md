@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 02/15/2018
+ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: ca4a6bfcc0f1041e76c07b3b240d7c641ef8f587
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 55798af8d8e2b50614a3eee51b330c5b4fa0f918
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699870"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409578"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Azure Service Bus と Azure Event Grid の統合の例
 

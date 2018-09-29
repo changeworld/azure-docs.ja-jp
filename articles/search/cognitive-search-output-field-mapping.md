@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.openlocfilehash: 77e7a1cc725dc56ee20d3c1999cfb7cf0039d67f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35775201"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094473"
 ---
 # <a name="how-to-map-enriched-fields-to-a-searchable-index"></a>強化されたフィールドを検索可能なインデックスにマップする方法
 

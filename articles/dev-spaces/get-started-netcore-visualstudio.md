@@ -13,12 +13,12 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: ac1872cf3f5ee8b83da9fa4c489188504aa8ad22
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 43cf75d875b2f5fbfea46fb2c8fbae809668057d
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161545"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405174"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Azure Dev Spaces での .NET Core と Visual Studio の使用
 
@@ -29,11 +29,41 @@ ms.locfileid: "44161545"
 - 2 つのサービスを個別に開発し、Kubernetes の DNS サービス検索を使用して別のサービスを呼び出す。
 - チーム環境でコードを生産的に開発してテストする。
 
-[!INCLUDE [](includes/see-troubleshooting.md)]
+> [!Note]
+> **問題が発生した場合は**いつでも、「[トラブルシューティング](troubleshooting.md)」セクションを参照するか、このページでコメントを投稿してください。
 
-[!INCLUDE [](includes/portal-aks-cluster.md)]
 
-## <a name="get-the-visual-studio-tools"></a>Visual Studio Tools を入手する
+## <a name="create-a-kubernetes-cluster-enabled-for-azure-dev-spaces"></a>Azure Dev Spaces 対応の Kubernetes クラスターを作成する
+
+1. Azure Portal ( http://portal.azure.com ) にサインインします。
+1. **[Create a resource]\(リソースの作成\)** を選択し、**[Kubernetes]** を検索して、**[Azure Kubernetes Service]** > **[作成]** を選択します。
+
+   AKS クラスター の作成フォームの各見出しの下で、次の手順を実行します。
+
+    - **PROJECT DETAILS (プロジェクトの詳細)**: Azure サブスクリプションと、新規または既存の Azure リソース グループを選択します。
+    - **CLUSTER DETAILS (クラスターの詳細)**: AKS クラスターの名前、リージョン (現時点では EastUS、Central US、WestEurope、WestUS2、CanadaCentral、CanadaEast のいずれかを選択してください)、バージョン、DNS 名プレフィックスを入力します。
+    - **[SCALE]\(スケール\)**: AKS エージェント ノードの VM サイズとノード数を選択します。 Azure Dev Spaces を初めてお使いになる場合、ノード数は 1 つあれば十分にさまざまな機能を試すことができます。 ノード数は、クラスターのデプロイ後、いつでも簡単に調整できます。 AKS クラスターの作成後に VM サイズを変更することはできないので注意してください。 ただし、AKS クラスターのデプロイ後にスケールアップする必要が生じた場合は、より大きな VM を使って新しい AKS クラスターを簡単に作成できます。Dev Spaces を使用して、その大きい方のクラスターに再デプロイすることができます。
+
+   必ず Kubernetes バージョン 1.9.6 以降を選択してください。
+
+   ![Kubernetes の構成設定](media/common/Kubernetes-Create-Cluster-2.PNG)
+
+   完了したら、**[Next: Authentication]\(次: 認証\)** を選択します。
+
+1. ロールベースのアクセス制御 (RBAC) に必要な設定を選択します。 Azure Dev Spaces では、RBAC が有効なクラスターと無効なクラスターのどちらでもサポートされます。
+
+    ![RBAC の設定](media/common/k8s-RBAC.PNG)
+
+1. [HTTP アプリケーションのルーティング] が有効になっていることを確認します。
+
+   ![[HTTP アプリケーションのルーティング] の有効化](media/common/Kubernetes-Create-Cluster-3.PNG)
+
+    > [!Note]
+    > 既存のクラスターで [Http アプリケーション ルーティング](/azure/aks/http-application-routing)を有効にするには、`az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing` コマンドを使用します。
+
+1. 完了したら、**[Review + create] (レビュー + 作成)**、**[作成]** の順に選択します。
+
+## <a name="get-the-visual-studio-tools"></a>Visual Studio ツールを入手する
 1. 最新バージョンの [Visual Studio 2017](https://www.visualstudio.com/vs/) をインストールします。
 1. Visual Studio インストーラーで、次のワークロードが選択されていることを確認します。
     * ASP.NET および Web の開発
@@ -52,7 +82,6 @@ Visual Studio 2017 で、新しいプロジェクトを作成します。 現時
 **[Web アプリケーション (モデル ビュー コントローラー)]** テンプレートを選択し、ダイアログの上部にある 2 つのドロップダウンで **.NET Core** と **ASP.NET Core 2.0** が対象になっていることを確認します。 **[OK]** をクリックしてプロジェクトを作成します。
 
 ![](media/get-started-netcore-visualstudio/NewProjectDialog2.png)
-
 
 ### <a name="enable-dev-spaces-for-an-aks-cluster"></a>AKS クラスターの開発空間を有効にする
 

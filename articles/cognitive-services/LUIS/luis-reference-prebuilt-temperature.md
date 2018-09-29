@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での temperature 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: diberry
-ms.openlocfilehash: 6436a7ee8d7b796595813fa613c442824aeae8f3
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 39d33a3132a400ce0f1853062968cfdaf81c693f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237463"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041474"
 ---
 # <a name="temperature-entity"></a>temperature エンティティ
 temperature は、さまざまな温度の種類を抽出します。 このエンティティは既にトレーニングされているので、温度を含む発話の例をアプリケーションに追加する必要はありません。 temperature エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 

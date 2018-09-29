@@ -8,14 +8,14 @@ manager: timlt
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: e009bb9120fafc6edf60b68fab3336b9d1add507
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: ccb759a9151d734aa99a6f6b9c68e6072874dd84
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37034785"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394830"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bce9e7de13ff95024685ccf916541357f5362727
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 622a8777f5ed329636c7023bb52790756f8d7206
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070653"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422628"
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する
 
@@ -55,10 +55,6 @@ ms.locfileid: "34070653"
 ### <a name="why-cant-i-update-the-country"></a>国を更新できません。なぜですか?
 
 技術上の制約により、既存のアカウントの国を変更することはできません。 ただし、目的の国でアカウントを作成し、Azure サポートに連絡して、サービスをそのアカウントに移行することができます。
-
-### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use"></a>Azure 課金アラートのプレビュー機能ではどの電子メール アドレスが使用されますか?
-
-アラートにサインアップするときに追加したメール アドレスでアラート通知を受信します。 アラートに使用されるメール アドレスは、アカウント管理者のメール アドレスとは異なります。 詳細については、「[Microsoft Azure サブスクリプションの課金アラートの設定](billing-set-up-alerts.md)」を参照してください。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

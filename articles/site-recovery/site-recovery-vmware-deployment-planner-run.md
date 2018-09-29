@@ -2,24 +2,18 @@
 title: VMware から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs
 description: この記事では、Azure Site Recovery Deployment Planner の実行モードについて、VMware から Azure へのシナリオを想定して説明します。
 services: site-recovery
-documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: 8298f4a31db974f75e80aef7589bfd31fd7c7491
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9408323e58ec4df8ca806aea39fdf40c2ddb8a4f
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921054"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226763"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Azure Site Recovery Deployment Planner の実行 (VMware から Azure)
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -166,7 +160,7 @@ Deployment Planner ツールでは、デプロイの推奨情報をすべてま�
 | -StartDate | (省略可) 開始日時を MM-DD-YYYY:HH:MM (24 時間形式) で指定します。 *StartDate* は *EndDate* と一緒に指定する必要があります。 StartDate を指定した場合、StartDate から EndDate までの間に収集されたプロファイリング データを対象にレポートが生成されます。 |
 | -EndDate | (省略可) 終了日時を MM-DD-YYYY:HH:MM (24 時間形式) で指定します。 *EndDate* は *StartDate* と一緒に指定する必要があります。 EndDate を指定した場合、StartDate から EndDate までの間に収集されたプロファイリング データを対象にレポートが生成されます。 |
 | -GrowthFactor | (省略可) 増加率 (%)。 既定値は 30% です。 |
-| -UseManagedDisks | (省略可) UseManagedDisks (Yes/No)。 既定値は Yes です。 1 つのストレージ アカウントに配置できる仮想マシンの数は、仮想マシンのフェールオーバー/テスト フェールオーバーが、非管理対象ディスクではなく、管理ディスクに対して実行されることを想定して計算されます。 |
+| -UseManagedDisks | (省略可) UseManagedDisks (Yes/No)。 既定値は Yes です。 1 つのストレージ アカウントに配置できる仮想マシンの数は、仮想マシンのフェールオーバー/テスト フェールオーバーが、非管理対象ディスクではなく、マネージド ディスクに対して実行されることを想定して計算されます。 |
 |-SubscriptionId |(省略可) サブスクリプションの GUID。 サブスクリプションやそれに関連付けられているオファーに基づき、ターゲット Azure リージョンと通貨を指定して、最新の料金に関するコスト見積もりレポートを生成するには、このパラメーターを使用します。|
 |-TargetRegion|(省略可) レプリケーション先となる Azure リージョン。 Azure のコストはリージョンによって異なります。そこで、特定のターゲット Azure リージョンでレポートを生成するために、このパラメーターを使用します。<br>WestUS2 または最近使用したターゲット リージョンが既定値となります。<br>「[サポートされるターゲット リージョン](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions)」の一覧を参照してください。|
 |-OfferId|(省略可) 指定されたサブスクリプションに関連付けられているオファー。 既定値は MS-AZR-0003P (従量課金制) です。|
@@ -275,7 +269,7 @@ Deployment Planner ツールは、指定されたディレクトリに 64 MB の
 
 ### <a name="example"></a>例
 ```
-ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_ProfiledData -VMListFile E:\vCenter1_ProfiledData\ProfileVMList1.txt  -StorageAccountName  asrspfarm1 -StorageAccountKey by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
+ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_ProfiledData -Virtualization VMware -VMListFile E:\vCenter1_ProfiledData\ProfileVMList1.txt  -StorageAccountName  asrspfarm1 -StorageAccountKey by8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==
 ```
 
 >[!NOTE]

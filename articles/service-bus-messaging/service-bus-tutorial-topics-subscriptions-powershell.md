@@ -5,16 +5,16 @@ services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.author: spelluru
-ms.date: 05/22/2018
+ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 14f3fe81ab613f05154365b832d860808c3184bf
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: cda2162873b612cb138487e3d120a3bce3fea1ae
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702189"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407010"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>チュートリアル: PowerShell とトピック/サブスクリプションを使用して在庫を更新する
 
@@ -22,7 +22,7 @@ Microsoft Azure Service Bus は、アプリケーションとサービスの間�
 
 このチュートリアルでは、Service Bus キューとの間でメッセージを送受信し、PowerShell を使用してその名前空間内にメッセージング名前空間とキューを作成し、その名前空間に対する承認資格情報を取得する方法について説明します。 次に、[.NET Standard ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)を使用して、このキューからメッセージを送受信する方法について説明します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Azure PowerShell を使用して、Service Bus トピックとそのトピックへの 1 つ以上のサブスクリプションを作成する
 > * PowerShell を使用してトピック フィルターを追加する

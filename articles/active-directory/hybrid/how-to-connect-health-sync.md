@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc7ee4e7a6975722458ed12f636cdc8f4777614a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 8ca3c0524873e4c7a1326095eb1cc28f63f59a27
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46301940"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431935"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect Health を使用した Azure AD Connect の同期の監視
 次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](how-to-connect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](how-to-connect-health-adds.md)」を参照してください。
@@ -36,7 +36,7 @@ Azure AD Connect Health for Sync アラート セクションには、アクテ�
 ### <a name="limited-evaluation-of-alerts"></a>アラートの評価が限定される状況
 Azure AD Connect で既定の構成が使用されていない場合 (たとえば、属性フィルターが既定の構成からカスタム構成に変更されている場合)、Azure AD Connect Health エージェントは Azure AD Connect に関連するエラー イベントをアップロードしません。
 
-その結果、サービスによるアラートの評価は限定的なものになります。 このような状況にある場合は、それを示すバナーが該当するサービスの Azure Portal に表示されます。
+その結果、サービスによるアラートの評価は限定的なものになります。 このような状況にある場合は、それを示すバナーが Azure Portal の該当するサービスの下に表示されます。
 
 ![Azure AD Connect Health for Sync](./media/how-to-connect-health-sync/banner.png)
 

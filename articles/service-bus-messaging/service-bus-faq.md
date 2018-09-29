@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e86471936ccf164bb1fd23450239be85e39dd60b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 312d92994e4932e854ec77681da2d4dbd14da2aa
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696661"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392003"
 ---
 # <a name="service-bus-faq"></a>Service Bus に関する FAQ
 

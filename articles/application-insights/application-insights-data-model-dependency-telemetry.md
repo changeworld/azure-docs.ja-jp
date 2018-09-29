@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 71634b8f321cb898fb648f94953b2880d8d6b597
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 5765be9fc88cbe38841078b5c298d3ee12269e6d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35634283"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092555"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>依存関係テレメトリ: Application Insights データ モデル
 
@@ -52,7 +52,7 @@ ms.locfileid: "35634283"
 
 依存関係呼び出しの結果コード。 例: SQL エラー コードと HTTP 状態コード。
 
-## <a name="success"></a>成功
+## <a name="success"></a>Success
 
 呼び出しの成功または失敗を示す値。
 

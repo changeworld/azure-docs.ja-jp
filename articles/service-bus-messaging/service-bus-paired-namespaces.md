@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/21/2017
+ms.date: 09/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 3dbeba3e8a7a3acc651eb9f2f679440dd9e6728b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ac663cc382fcacd4960843c25aa6c95191210116
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696749"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395204"
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>ペアの名前空間の実装の詳細とコストの問題
 

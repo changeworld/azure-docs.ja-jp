@@ -80,9 +80,13 @@ items:
     href: /cli/azure/role?view=azure-cli-latest
   - name: REST API
     href: /rest/api/authorization/
-ms.openlocfilehash: 8a113e60cd9af0e7f9c0f192bc20ca674c56c0f8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+- name: リソース
+  items:
+  - name: Microsoft Learn でスキルを身に付ける
+    href: /learn/browse/?products=azure-active-directory
+ms.openlocfilehash: d7f84aefad411d8fd8d4ac7541871c7f4c50e2c9
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982785"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431544"

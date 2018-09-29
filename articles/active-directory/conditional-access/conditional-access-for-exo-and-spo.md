@@ -8,7 +8,7 @@ manager: mtillman
 editor: ''
 ms.assetid: 62349fba-3cc0-4ab5-babe-372b3389eff6
 ms.service: active-directory
-ms.component: protection
+ms.component: conditional-access
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 08/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: ed1937dd29abebc4b81dde41618c56ecb5ebdccc
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a5f0a17682f3481ad9a2dff5f144aa3d97f29920
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40161926"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063848"
 ---
 # <a name="how-to-set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>方法: SharePoint Online と Exchange Online に Azure Active Directory の条件付きアクセスを設定する 
 

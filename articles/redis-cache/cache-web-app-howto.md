@@ -16,11 +16,11 @@ ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
 ms.openlocfilehash: a92621d852ec60fb4773957d71dc6a55caaf991c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38674888"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092200"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリを作成する 
 
@@ -99,7 +99,7 @@ ms.locfileid: "38674888"
 
 * [キャッシュ用のアプリ設定で web.config ファイルを更新する](#Update-the-webconfig-file-with-an-app-setting-for-the-cache)
 * [StackExchange.Redis クライアントを使うようにアプリケーションを構成する](#configure-the-application-to-use-stackexchangeredis)
-* [HomeController とレイアウトを更新する](#update-the-homecontroller-and-layout)
+* [HomeController と Layout を更新する](#update-the-homecontroller-and-layout)
 * [新しい RedisCache ビューを追加する](#add-a-new-rediscache-view)
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>キャッシュ用のアプリ設定で web.config ファイルを更新する
@@ -326,7 +326,7 @@ ms.locfileid: "38674888"
 
 2. **[名前でフィルター]** ボックスにリソース グループの名前を入力します。 この記事の手順では、*TestResources* という名前のリソース グループを使用しました。 リソース グループの結果一覧で、**[...]** を選択し、**[リソース グループの削除]** を選択します。
 
-    ![Delete](./media/cache-web-app-howto/cache-delete-resource-group.png)
+    ![削除](./media/cache-web-app-howto/cache-delete-resource-group.png)
 
 リソース グループの削除の確認を求めるメッセージが表示されます。 確認のためにリソース グループの名前を入力し、**[削除]** を選択します。
 

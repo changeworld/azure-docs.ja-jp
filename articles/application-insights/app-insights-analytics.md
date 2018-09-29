@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 170cd76c72e8aeb5de48c711ae4637a0244742fb
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 6db98332fc7d896613a3318421e9a96bbb50cd15
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294202"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159144"
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights の Analytics
 Analytics は、[Application Insights](app-insights-overview.md) の強力な検索およびクエリのツールです。 Analytics は Web ツールであるため、セットアップは不要です。 Application Insights をお使いのアプリの一つで構成済みの場合、アプリの [[概要]](app-insights-dashboards.md) ブレードで Analytics を開いてアプリのデータを分析できます。
@@ -48,9 +48,9 @@ requests
 
 言語には、以下のような多くの魅力的な機能があります。
 
-* [フィルター](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)。カスタム プロパティとメトリックを含む、すべてのフィールドで未加工のアプリ テレメトリをフィルター処理します。
-* [結合](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/join-operator)。複数のテーブルを結合します。要求をページ ビュー、依存関係の呼び出し、例外およびログ トレースに関連付けます。
-* 強力な統計 [集計](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions)。
+* [フィルター](/azure/kusto/query/whereoperator)。カスタム プロパティとメトリックを含む、すべてのフィールドで未加工のアプリ テレメトリをフィルター処理します。
+* [結合](/azure/kusto/query/joinoperator)。複数のテーブルを結合します。要求をページ ビュー、依存関係の呼び出し、例外およびログ トレースに関連付けます。
+* 強力な統計 [集計](/azure/kusto/query/summarizeoperator)。
 * 迅速かつ強力な視覚化。
 * PowerShell などのプログラムによるクエリの実行に使用できる [REST API](https://dev.applicationinsights.io/)。
 

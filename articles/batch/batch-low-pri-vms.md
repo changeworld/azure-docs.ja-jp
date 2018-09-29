@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
 ms.openlocfilehash: d42cef944c3b971804ef1417a3877bf919784a02
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35777241"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093005"
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Batch で優先順位の低い VM を使用する
 

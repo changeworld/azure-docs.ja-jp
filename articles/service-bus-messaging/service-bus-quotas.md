@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2018
+ms.date: 09/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 1dd26651dfe0534bf2c32775eb09fa8740dca011
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 395ebb360ad84eb09a9366cbd598799a37e3b453
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696195"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406551"
 ---
 # <a name="service-bus-quotas"></a>Service Bus のクォータ
 ここでは、Azure Service Bus のメッセージングの基本的なクォータとスロットルのしきい値について説明します。

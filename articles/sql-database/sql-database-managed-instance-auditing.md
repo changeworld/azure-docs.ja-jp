@@ -2,20 +2,22 @@
 title: Azure SQL Database Managed Instance の監査 | Microsoft Docs
 description: T-SQL を使って Azure SQL Database Managed Instance の監査を始める方法について説明します
 services: sql-database
-author: giladm
-manager: craigg
-ms.reviewer: vanto
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/28/2018
+author: giladm
 ms.author: giladm
-ms.openlocfilehash: 7671b49921799e63b01d0eb85e90a8b75b2d5a48
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 38dee577ff57e6ba440fb4062315b57e4eb7957b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544296"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162255"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Azure SQL Database Managed Instance の監査の概要
 
@@ -104,7 +106,7 @@ ms.locfileid: "45544296"
     `RETENTION_DAYS` を指定しないと、既定値の 0 (無制限のリテンション期間) になります。
 
     以下の追加情報をご覧ください。
-    - [マネージド インスタンス、Azure SQL データベース、SQL Server での監査の相違点](#subheading-3)
+    - [マネージド インスタンス、Azure SQL データベース、SQL Server での監査の相違点](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
     - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
     - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: 7f31adcd7ebdd51cf930fcaf0cd2f214c7566565
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a15e726e237bcdbd9d380aaf9232e5d16a2e648f
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699371"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409137"
 ---
 # <a name="message-sequencing-and-timestamps"></a>メッセージのシーケンス処理とタイムスタンプ
 

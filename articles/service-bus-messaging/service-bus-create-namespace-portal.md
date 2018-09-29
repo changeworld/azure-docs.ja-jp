@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/29/2018
+ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: 699129e9f75cce76d1682e3e2e2fb83d248ea92e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a56a13db5df1234a8011caf10a82ac561b6877cf
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696027"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47390190"
 ---
 # <a name="create-a-service-bus-namespace-using-the-azure-portal"></a>Azure Portal を使用して Service Bus 名前空間を作成する
 

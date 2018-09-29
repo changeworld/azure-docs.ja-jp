@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: ca3f689ef91c0a1bcb751c78d4fa1d799ed3888b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7af0d4819d4044f4cccc43cde1cffe7dff7982a7
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984635"
+ms.locfileid: "47056439"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>ポータルで Azure Blueprint を定義して割り当てる
 
@@ -119,7 +119,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="edit-a-blueprint"></a>ブループリントを編集する
 
-「[ブループリントを作成する](#create_a_blueprint)」では、説明は指定されず、ロールの割り当ても新しいリソース グループに追加されませんでした。 どちらも以下の手順を実行して修正できます。
+「[ブループリントを作成する](#create-a-blueprint)」では、説明は指定されず、ロールの割り当ても新しいリソース グループに追加されませんでした。 どちらも以下の手順を実行して修正できます。
 
 1. 左側のページから **[ブループリントの定義]** を選択します。
 

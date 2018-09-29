@@ -2,20 +2,22 @@
 title: Azure SQL データベースのセキュリティ保護 | Microsoft Docs
 description: Azure SQL データベースをセキュリティで保護する手法と機能について説明します。
 services: sql-database
-author: DRediske
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: tutorial
-ms.date: 09/07/2018
+author: DRediske
 ms.author: daredis
-ms.reviewer: vanto
-ms.openlocfilehash: 220cda999c21e6b56546fe6d5dbe350675ad9691
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviewer: vanto, carlrab
+manager: craigg
+ms.date: 09/07/2018
+ms.openlocfilehash: 7db0276f03511273e2607378f993957ce3a6c094
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542399"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160436"
 ---
 # <a name="secure-your-azure-sql-database"></a>Azure SQL データベースのセキュリティ保護
 

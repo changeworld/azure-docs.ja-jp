@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 09/10/2018
 ms.author: spelluru
-ms.openlocfilehash: 4c299e06f7cf1df29cd6790df8a005ee694db3b5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 08894741f4b7c4d3ccb808a4e70ec1eeb4f6af49
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700766"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392195"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>PHP で Service Bus キューを使用する方法
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]

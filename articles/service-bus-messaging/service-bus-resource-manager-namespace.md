@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/11/2018
+ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 6c93c3d9ca46eda9e9bdce60b1047af9e9781142
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 6f3f44394ab11c1b66be3af976dbd1f7d23de96e
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699518"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405786"
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Service Bus 名前空間の作成
 

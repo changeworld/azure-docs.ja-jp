@@ -8,14 +8,14 @@ ms.date: 03/01/2018
 ms.topic: article
 ms.prod: ''
 ms.service: active-directory
-ms.technology: techgroup-identity
+ms.technology: app-mgmt
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: b905aeb98b0eed09a28081b824fa50ba052621ac
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 705836c2bfac42e72f1195ab80797db55b9ae4c0
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34192406"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47062919"
 ---
 # <a name="azure-active-directory-guided-setup-steps"></a>Azure Active Directory のガイド付きセットアップ手順
 

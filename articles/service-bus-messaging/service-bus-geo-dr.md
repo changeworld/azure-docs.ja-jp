@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 42960222efb1ade1b48a1d0db56ae3fb0349d174
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 8cf21b283053760077ca2903349f0dc5e4cbb9e2
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695393"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392488"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus の geo ディザスター リカバリー
 

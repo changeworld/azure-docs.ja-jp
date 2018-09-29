@@ -2,19 +2,22 @@
 title: アプリケーションのローリング アップグレード - Azure SQL Database | Microsoft Docs
 description: Azure SQL Database で geo レプリケーションを使用してクラウド アプリケーションのオンライン アップグレードをサポートする方法について説明します。
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/23/2018
+author: anosov1960
 ms.author: sashan
-ms.openlocfilehash: 37960995c89c2b30d90ac45dcd8cc44d80088398
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 08/23/2018
+ms.openlocfilehash: 4d518c959943184c38ed78cc8eb5449b306c8b04
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818618"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162306"
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>SQL Database アクティブ geo レプリケーションを使用したクラウド アプリケーションのローリング アップグレードの管理
 > [!NOTE]

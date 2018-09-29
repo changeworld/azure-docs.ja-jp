@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: amberb
-ms.openlocfilehash: 84b73d3f1481c0c1a551da50b9f6292cd835d567
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.author: cwatson
+ms.openlocfilehash: ab0b48f8c8579af8a3314bad14dafbe79f9a9781
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32773759"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393742"
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Azure の無料アカウントに含まれるサービスを作成する
 

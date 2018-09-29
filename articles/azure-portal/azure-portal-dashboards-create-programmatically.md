@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
-ms.author: adamab
-ms.openlocfilehash: 8ac3bb2c95420eb4a608f003f3d937e3a47c272b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: cwatson
+ms.openlocfilehash: a9ca57ce916dc3f9bc8d451063596519d1d6649c
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448232"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391346"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 

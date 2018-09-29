@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 05/11/2018
 ms.author: juliako
 ms.openlocfilehash: cbe20c4b75fff27fad60446fb933a9c8ba2e3312
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38461556"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091780"
 ---
 # <a name="cli-example-create-a-transform"></a>CLI の例: 変換の作成
 

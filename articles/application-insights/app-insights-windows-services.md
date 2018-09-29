@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3f2f0925cf6ec612b84765e42217723d8c8729c6
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 461b1f4e72f0a47da4ccb560bfb4cfb7d0f3ccd2
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "35634342"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096437"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Application Insights を .NET アプリケーション用に手動で構成する
 

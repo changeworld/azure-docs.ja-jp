@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 96ad812aff8f6ea4f47035188940730e5dc2992c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 3e63a4c05fde570e598ba05c65fb99cec0427711
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41924780"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226419"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -89,7 +89,7 @@ $storageAccountKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $resourceG
 # The cmdkey utility is a command-line (rather than PowerShell) tool. We use Invoke-Expression to allow us to 
 # consume the appropriate values from the storage account variables. The value given to the add parameter of the
 # cmdkey utility is the host address for the storage account, <storage-account>.file.core.windows.net for Azure 
-# Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as soverign 
+# Public Regions. $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign 
 # clouds or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
 Invoke-Expression -Command "cmdkey /add:$([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) " + `
     "/user:AZURE\$($storageAccount.StorageAccountName) /pass:$($storageAccountKeys[0].Value)"
@@ -150,7 +150,7 @@ if ($fileShare -eq $null) {
 
 # The value given to the root parameter of the New-PSDrive cmdlet is the host address for the storage account, 
 # <storage-account>.file.core.windows.net for Azure Public Regions. $fileShare.StorageUri.PrimaryUri.Host is 
-# used because non-Public Azure regions, such as soverign clouds or Azure Stack deployments, will have different 
+# used because non-Public Azure regions, such as sovereign clouds or Azure Stack deployments, will have different 
 # hosts for Azure file shares (and other storage resources).
 $password = ConvertTo-SecureString -String $storageAccountKeys[0].Value -AsPlainText -Force
 $credential = New-Object System.Management.Automation.PSCredential -ArgumentList "AZURE\$($storageAccount.StorageAccountName)", $password

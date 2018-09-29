@@ -8,7 +8,7 @@ author: MarkusVi
 manager: mtillman
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
 ms.service: active-directory
-ms.component: protection
+ms.component: user-help
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 664909fa78f2034c0750492e529b21cebc087e5c
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 31e9e6343b8359de40eaac5238058e1bd2bbe692
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34723798"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063882"
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Windows デバイスで目的の場所にアクセスできない
 

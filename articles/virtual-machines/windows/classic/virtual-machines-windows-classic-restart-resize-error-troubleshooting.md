@@ -16,11 +16,11 @@ ms.date: 06/15/2018
 ms.devlang: na
 ms.author: delhan
 ms.openlocfilehash: 400b20e474257650a22e04c89ddde581bf0552f4
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35779360"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091732"
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-restarting-or-resizing-an-existing-windows-virtual-machine-in-azure"></a>Azure での既存の Windows 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング
 > [!div class="op_single_selector"]

@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/11/2018
+ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: ac57c27cf973a2ba236ad1812129e29284deb211
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1250851386b9423b66bdbfd03292de56fd38850d
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696124"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410104"
 ---
 # <a name="create-a-service-bus-authorization-rule-for-namespace-and-queue-using-an-azure-resource-manager-template"></a>Service Bus の名前空間とキューに使用する承認規則を Azure Resource Manager テンプレートで作成する
 

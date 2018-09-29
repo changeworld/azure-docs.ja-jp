@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2018
+ms.date: 09/02/2018
 ms.author: spelluru
-ms.openlocfilehash: 25dfcf57fc92e2404f184569f12e24d801ee60c9
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: f3aed8949502e9c716de608ad0ca0a5e9511c3ec
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700489"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405769"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>メッセージ セッション: 先入れ先出し (FIFO) 
 

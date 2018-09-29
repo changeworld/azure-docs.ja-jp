@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 09/10/2018
 ms.author: spelluru
-ms.openlocfilehash: c20544fa3eea05d770c91aeff438f3268888c871
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 99cf1b8e95e2a07d6ade2e73c097c59fed0d4f56
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697380"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394328"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs"></a>Node.js で Service Bus キューを使用する方法
 

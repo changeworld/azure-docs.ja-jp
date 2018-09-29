@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: genli
-ms.openlocfilehash: 0bd0fca54ae5bf4292564a15adf38b7586768450
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.author: cwatson
+ms.openlocfilehash: c39dcdc0c4a89aa01c31dde1c5354ef1d4afe91d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145453"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395568"
 ---
 # <a name="cancel-your-subscription-for-azure"></a>Azure のサブスクリプションの取り消し
 

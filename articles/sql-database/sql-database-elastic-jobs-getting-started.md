@@ -2,19 +2,22 @@
 title: Elastic Database ジョブの概要 | Microsoft Docs
 description: Elastic Database ジョブを使用して、複数のデータベースにまたがる T-SQL スクリプトを実行します。
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: sacoperations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/16/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 8b03d228464978995a7a97e2f245b629b52ed812
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.reviewer: ''
+manager: craigg
+ms.date: 07/16/2018
+ms.openlocfilehash: e760aee960cf9d84cd5076c993b1a9583b045860
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092856"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159280"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Elastic Database ジョブの概要
 
@@ -37,7 +40,7 @@ Azure SQL Database の Elastic Database ジョブ (プレビュー) を使用す
    ![コマンド プロンプト](./media/sql-database-elastic-query-getting-started/cmd-prompt.png)
 
 2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を 4 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
-3. [Azure portal](https://portal.azure.com) に、次の 3 つの新しいデータベースが表示されます。
+3. [Azure ポータル](https://portal.azure.com)に、次の 3 つの新しいデータベースが表示されます。
 
    ![Visual Studio の確認](./media/sql-database-elastic-query-getting-started/portal.png)
 

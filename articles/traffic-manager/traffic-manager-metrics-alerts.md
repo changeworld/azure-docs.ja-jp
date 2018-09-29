@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: kumud
-ms.openlocfilehash: 424782be2d814df6d598591198b5005fb494d3da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: fe4cc3c06af6868396f5db6fd88804022f5f9793
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302867"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432479"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager のメトリックとアラート
 
@@ -46,7 +46,7 @@ Traffic Manager は、プロファイルごとに次のメトリックを提供�
 *図 2: 返されたエンドポイント別に表示したクエリ数の分割ビュー*
 
 ## <a name="endpoint-status-by-endpoint"></a>エンドポイント別のエンドポイント状態
-[このメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)を使用して、プロファイルのエンドポイントの正常性状態を理解します。 これには次の 2 つの値があります。
+[このメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworktrafficmanagerprofiles)を使用して、プロファイルのエンドポイントの正常性状態を理解します。 これには次の 2 つの値があります。
  - エンドポイントが動作中の場合、**1** を使用します。
  - エンドポイントが停止中の場合、**0** を使用します。
 

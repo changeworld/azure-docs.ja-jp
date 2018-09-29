@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: cfed1636bf27279b8a391559d3e88b823036f703
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 932e7447c59c7e9d8322a0e85b0843b0e836b840
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635684"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095514"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの作成
 この記事では、Azure Resource 管理を使用して [Application Insights](app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](app-insights-monitor-web-app-availability.md)の作成、[アラート](app-insights-alerts.md)の設定、[価格の詳細](app-insights-pricing.md)の設定、その他の Azure リソースの作成を行うことができます。

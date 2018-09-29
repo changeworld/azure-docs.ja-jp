@@ -15,12 +15,12 @@ ms.date: 07/31/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: 31e9e6b173a578b09f656850271ed5a8f0f2baa8
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b5d7b71b76eebc0c14fe1403791c3d4b6cefd7f4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391333"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161054"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Log Analytics のログ検索で収集されたデータの表示または分析
 
@@ -85,7 +85,7 @@ Syslog | where (SeverityLevel == "err")
 
 マウスを移動すると名前が青色で表示されるプロパティには、**[フィルター]** オプションのみがあります。  これは、検索条件のインデックスが付けられた "*検索可能*" フィールドです。  灰色のフィールドは "*フリー テキスト検索可能*" フィールドで、**[参照設定を表示]** オプションのみがあります。  このオプションは、その値を持つ任意のプロパティ レコードを返します。
 
-1 つのプロパティで結果をグループ化するには、レコード メニューで **[グループ化]** オプションを選択します。  これにより、グラフの結果を表示する [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 演算子がクエリに追加されます。  複数のプロパティでグループ化できますが、クエリを直接編集する必要があります。  **Computer** プロパティの横にあるレコード メニューを選択し、**['Computer' でグループ化]** を選択します。  
+1 つのプロパティで結果をグループ化するには、レコード メニューで **[グループ化]** オプションを選択します。  これにより、グラフの結果を表示する [summarize](/azure/kusto/query/summarizeoperator) 演算子がクエリに追加されます。  複数のプロパティでグループ化できますが、クエリを直接編集する必要があります。  **Computer** プロパティの横にあるレコード メニューを選択し、**['Computer' でグループ化]** を選択します。  
 
 ![コンピューターでグループ化](media/log-analytics-tutorial-viewdata/log-analytics-portal-eventlist-04.png)
 
@@ -130,7 +130,7 @@ Perf | where ObjectName == "Processor"  | where CounterName == "% Processor Time
 
 ![プロセッサ使用率](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-02.png)
 
-これによりデータが特定のカウンターに制限されますが、特に便利なフォームには、まだデータが入力されません。  データは折れ線グラフに表示できますが、最初に Computer と TimeGenerated でデータをグループ化する必要があります。  複数のフィールドでグループ化するには、クエリを直接変更する必要があるため、次のようにクエリを変更します。  これにより、**CounterValue** プロパティで [avg](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg()) 関数が使用され、1 時間ごとに平均値が計算されます。
+これによりデータが特定のカウンターに制限されますが、特に便利なフォームには、まだデータが入力されません。  データは折れ線グラフに表示できますが、最初に Computer と TimeGenerated でデータをグループ化する必要があります。  複数のフィールドでグループ化するには、クエリを直接変更する必要があるため、次のようにクエリを変更します。  これにより、**CounterValue** プロパティで [avg](/azure/kusto/query/avg-aggfunction) 関数が使用され、1 時間ごとに平均値が計算されます。
 
 ```
 Perf  
@@ -140,7 +140,7 @@ Perf
 
 ![パフォーマンス データのグラフ](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-03.png)
 
-データが適切にグループ化されたので、[render](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) 演算子を追加して、データをビジュアル グラフに表示できます。  
+データが適切にグループ化されたので、[render](/azure/kusto/query/renderoperator) 演算子を追加して、データをビジュアル グラフに表示できます。  
 
 ```
 Perf  

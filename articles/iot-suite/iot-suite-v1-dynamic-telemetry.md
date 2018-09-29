@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
 ms.openlocfilehash: 60e9ee00fabf15a62e782c70bca251b1a8e617c3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723654"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096618"
 ---
 # <a name="use-dynamic-telemetry-with-the-remote-monitoring-preconfigured-solution"></a>事前構成済みのリモート監視ソリューションによる動的テレメトリの使用
 

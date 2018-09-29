@@ -2,19 +2,22 @@
 title: Azure SQL Database と SQL Server 用の Spark Connector の使用 | Microsoft Docs
 description: Azure SQL Database と SQL Server 用の Spark コネクタを使用する方法について説明します
 services: sql-database
-author: allenwux
-manager: craigg
 ms.service: sql-database
+ms.subservice: development
 ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/23/2018
+author: allenwux
 ms.author: xiwu
-ms.openlocfilehash: a422f65097466e4bbe5740c449d3ccf88701802b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 04/23/2018
+ms.openlocfilehash: 09035b19ee48602fde70736ab918fccae71108a5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650164"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166254"
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-spark-connector-for-azure-sql-database-and-sql-server"></a>Azure SQL Database と SQL Server 用の Spark コネクタを使用してビッグ データのリアルタイム分析を高速化する
 
@@ -25,7 +28,7 @@ Azure SQL Database と SQL Server 用の Spark コネクタを使用して、Azu
 
 ## <a name="official-supported-versions"></a>正式にサポートされているバージョン
 
-| コンポーネント                            |バージョン                  |
+| コンポーネント                            |Version                  |
 | :----------------------------------- | :---------------------- |
 | Apache Spark                         |2.0.2 以降           |
 | Scala                                |2.10 以降            |

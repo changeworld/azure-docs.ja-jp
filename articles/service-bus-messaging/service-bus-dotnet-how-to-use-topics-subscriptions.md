@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 07/03/2018
+ms.date: 09/03/2018
 ms.author: spelluru
-ms.openlocfilehash: c53e0c16f6b1fd8a79f864651f5aae97af886b96
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ea145a1f5ccad98c19b3f779ea297644350b984b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699602"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393317"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 

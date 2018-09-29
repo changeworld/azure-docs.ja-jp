@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: 8b345656c9cb4cabd86581ccd04f74311fe0ce04
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 9bacce96e65a7aef611bec3ddae8b1872d5f9fae
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696083"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391465"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>非同期メッセージング パターンと高可用性
 

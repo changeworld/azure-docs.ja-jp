@@ -7,14 +7,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 18e2cc9457252dbd931b03fc08382287fd3a3c1e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: cfce11546249310ce00e5f19ba81520cc9dd78cf
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304647"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392637"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 

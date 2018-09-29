@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 08/22/2018
-ms.openlocfilehash: bf2116d7fc143e66309e3bbbdefc50bfa33f1521
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a5b9d711b1d53d56f31a8b32e6d86722ac02c905
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974563"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393538"
 ---
 # <a name="use-ansible-to-create-a-linux-virtual-machine-in-azure"></a>Ansible を使用して Azure に Linux 仮想マシンを作成する
 Ansible には宣言型の言語が使用され、Azure リソースの作成、構成、デプロイを Ansible の "*プレイブック*" で自動化することができます。 この記事の各セクションでは、Linux 仮想マシンのさまざまな要素を作成、構成する Ansible プレイブックの各セクションに注目します。 この記事の最後には、[Ansible プレイブック全体](#complete-sample-ansible-playbook)を掲載しています。
@@ -29,9 +29,9 @@ Ansible では、リソースのデプロイ先となるリソース グルー�
 
 ```yaml
 - name: Create resource group
-    azure_rm_resourcegroup:
-      name: myResourceGroup
-      location: eastus
+  azure_rm_resourcegroup:
+    name: myResourceGroup
+    location: eastus
 ```
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成

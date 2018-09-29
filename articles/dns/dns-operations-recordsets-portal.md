@@ -15,20 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: victorh
-ms.openlocfilehash: b95ec9b4b5077b236c5f3a7183820552b7ccac49
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: e24aa8d0fb72147b0ac30e7c495b598d6e9ea96f
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174313"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451394"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Azure ポータルを使用した DNS レコードとレコード セットの管理
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
-> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
-> * [PowerShell](dns-operations-recordsets.md)
 
 この記事では、Azure ポータルを使用して DNS ゾーンのレコード セットとレコードを管理する方法について説明します。
 
@@ -95,7 +89,7 @@ Azure ポータルを使用して、レコード セットからレコードを�
 
 1. レコード セットの **[Record set properties (レコード セットのプロパティ)]** ブレードで、**[削除]** をクリックします。
 
-    ![レコード セットの削除](./media/dns-operations-recordsets-portal/deleterecordset500.png)
+    ![レコード セットの削除](./media/dns-operations-recordsets-portal/deleterecordset500.PNG)
 
 2. レコード セットを削除してもよいかを確認するメッセージが表示されます。
 3. 削除するレコード セットの名前が正しいことを確認し、 **[はい]** をクリックします。

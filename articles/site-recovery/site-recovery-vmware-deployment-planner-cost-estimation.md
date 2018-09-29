@@ -2,24 +2,18 @@
 title: VMware から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs
 description: Azure Site Recovery Deployment Planner のユーザー ガイドです。
 services: site-recovery
-documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: ''
-ms.assetid: ''
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: nisoneji
-ms.openlocfilehash: f1d23419df6f66ef430cb57f41a9a70c7babe7df
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a946ecb31697591a7490c80496c02c5f907c6f36
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919143"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182384"
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート  
 
@@ -93,7 +87,7 @@ Azure の料金総額に対して何らかの割引を受ける資格のある A
 このテーブルには、Windows VM の数と非 Windows VM の数、さらに、それぞれの DR ドリルのコンピューティング コストが表示されます。
 
 ### <a name="settings"></a>設定 
-**[Using managed disk]\(管理ディスクの使用\)**: DR ドリル時に管理ディスクが使用されているかどうかを指定します。 既定値は [Yes]\(はい\) です。 -UseManagedDisks を [No]\(いいえ\) に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
+**[Using managed disk]\(マネージド ディスクの使用\)**: DR ドリル時にマネージド ディスクが使用されているかどうかを指定します。 既定値は [Yes]\(はい\) です。 -UseManagedDisks を [No]\(いいえ\) に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
 
 **[Currency]\(通貨\)**: レポートの生成に使用される通貨。 [Cost duration]\(コスト期間\): すべてのコストは、月または年単位で表示できます。 
 

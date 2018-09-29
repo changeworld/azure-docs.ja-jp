@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: 61260674639a351a01cfea9dd695ce32795aa8c0
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: fd8c45bf3d7fd9e392d55a82001aa8768fcce8ba
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35636469"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096601"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Application Insights での Linux パフォーマンス メトリック
 

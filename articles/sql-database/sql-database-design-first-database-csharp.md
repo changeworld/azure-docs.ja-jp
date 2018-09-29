@@ -2,20 +2,22 @@
 title: 最初の Azure SQL Database の設計 - C# | Microsoft Docs
 description: ADO.NET を利用し、C# プログラムで最初の Azure SQL データベースを設計し、それに接続する方法について説明します。
 services: sql-database
-author: MightyPen
-manager: craigg-msft
-ms.reviewer: CarlRabeler
 ms.service: sql-database
-ms.custom: develop databases, mvc, devcenter
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: tutorial
+author: MightyPen
 ms.author: genemi
+ms.reviewer: carlrab
+manager: craigg-msft
 ms.date: 06/07/2018
-ms.openlocfilehash: 9fdc23eb2e607d1264e1bd2bc9dc85ef8d9be642
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 65a9bde6fa086dc56809df9619ceee1c5b417e31
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498163"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063303"
 ---
 # <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>C&#x23; と ADO.NET で Azure SQL データベースを設計し、接続する
 

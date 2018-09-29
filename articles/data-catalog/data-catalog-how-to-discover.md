@@ -2,18 +2,18 @@
 title: Azure Data Catalog でデータ ソースを検出する方法
 description: この記事では、Azure Data Catalog を使用して登録済みのデータ資産を検出する方法に焦点を当てて説明します。これには、検索とフィルター処理、Azure Data Catalog ポータルの検索語句の強調表示機能の使用も含まれます。
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.assetid: f72ae3a3-6573-4710-89a7-f13555e1968c
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: f8e722073db967752747511e47921aec3c4a281a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 11216640a4f4f78e0b0de850f32f0ff85bbc9ef2
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052979"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407061"
 ---
 # <a name="how-to-discover-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でデータ ソースを検出する方法
 ## <a name="introduction"></a>はじめに

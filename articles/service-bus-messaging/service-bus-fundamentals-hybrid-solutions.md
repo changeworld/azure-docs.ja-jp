@@ -7,14 +7,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: get-started-article
-ms.date: 05/23/2018
+ms.date: 09/23/2018
 ms.author: spelluru
-ms.openlocfilehash: 1f9362ae102ffce6fb9ccc31362973d58964610f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 03030df7c75cc171640557769bc42896ae10a9ac
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697228"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392348"
 ---
 # <a name="azure-service-bus"></a>Azure Service Bus
 
