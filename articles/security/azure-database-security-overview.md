@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 09/20/2018
 ms.author: TomSh
-ms.openlocfilehash: 398594c37cb01cd337da983307a5f56753e54fd2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 460ef8a3d4436f240793025cbec874c624a2a6f4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574761"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039022"
 ---
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
 

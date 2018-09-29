@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/22/2017
 ms.author: rafats
-ms.openlocfilehash: 4b469d306c4cd642e375e4eb15b0d26df828b308
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 76545c9953cff944c515e887a6a4214b9c76c501
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42023600"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038529"
 ---
 # <a name="introduction-to-azure-cosmos-db-sql-api"></a>Azure Cosmos DB の概要: SQL API
 
@@ -39,8 +39,7 @@ SQL API を使った場合の Azure Cosmos DB の主な機能とメリットは�
 
 * **調整可能な整合性レベル:** 整合性とパフォーマンスの最適なトレードオフを実現するために、明確に定義された 5 つの整合性レベルの中から選択できます。 Azure Cosmos DB では、クエリと読み取り操作に関して、強固、有界整合性制約、セッション、一貫性のあるプレフィックス、最終的の 5 種類の整合性レベルを提供します。 きめ細かな一貫性レベルが明確に定義されていることによって、一貫性、可用性、待機時間の最適なトレードオフを検討することができます。 詳細については、[整合性レベルを使用して可用性とパフォーマンスを最大化する方法](consistency-levels.md)に関するページを参照してください。
 
-* 
-  **フル マネージド**: データベースやコンピューター リソースを管理する手間がかかりません。 Microsoft Azure サービスは完全に管理されているため、仮想マシンの管理、ソフトウェアのデプロイと構成、スケールの管理、複雑なデータ層のアップグレードへの対応は不要です。 すべてのデータベースは自動的にバックアップされ、局地的障害から保護されます。 Azure Cosmos DB アカウントを簡単に追加し、必要に応じて容量をプロビジョニングできるので、データベースの運用と管理ではなく、アプリケーションに注力できます。 
+* **フル マネージド**: データベースやコンピューター リソースを管理する手間がかかりません。 Microsoft Azure サービスは完全に管理されているため、仮想マシンの管理、ソフトウェアのデプロイと構成、スケールの管理、複雑なデータ層のアップグレードへの対応は不要です。 すべてのデータベースは自動的にバックアップされ、局地的障害から保護されます。 Azure Cosmos DB アカウントを簡単に追加し、必要に応じて容量をプロビジョニングできるので、データベースの運用と管理ではなく、アプリケーションに注力できます。 
 
 * **設計に込められたオープンな環境:** 既存のスキルやツールをそのまま活かすことができます。 SQL API に対するプログラミングは、シンプルで親しみやすく、新しいツールを導入する必要がないうえ、JSON や JavaScript のカスタム拡張機能への縛りもありません。 CRUD、クエリ、JavaScript 処理を含め、データベースのすべての機能には、単純な RESTful HTTP インターフェイスでアクセスすることができます。 SQL API は、既にあるフォーマット、言語、標準を積極的に採用すると共に、それを基盤として価値の高いデータベース機能を提供しています。
 
@@ -73,7 +72,7 @@ Azure Cosmos DB が公開するリソースには、HTTP/HTTPS 要求機能を�
 | [Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) |[Java ライブラリ](/java/api/com.microsoft.azure.documentdb) |
 | [JavaScript SDK](https://github.com/Azure/azure-cosmos-js) |[JavaScript ライブラリ](https://github.com/Azure/azure-cosmos-js) |
 | 該当なし |[サーバー側の JavaScript SDK](https://github.com/Azure/azure-cosmosdb-js-server) |
-| [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python ライブラリ](http://azure.github.io/azure-documentdb-python/) |
+| [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python ライブラリ](https://github.com/Azure/azure-cosmos-python) |
 | 該当なし | [MongoDB 用 API](mongodb-introduction.md)
 
 

@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: LUIS のオーサリング API とエンドポイント API からどのような HTTP 応答コードが返されるかを理解します
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: diberry
-ms.openlocfilehash: 5fd64b5fa3e3c084aee1e63c5233ccffc93917ae
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 07982716ff655f980844ca3dbcf7e8d7df1827c4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237944"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031222"
 ---
 # <a name="luis-api-http-response-codes"></a>LUIS API の HTTP 応答コード
 [オーサリング](https://aka.ms/luis-authoring-apis) API と[エンドポイント](https://aka.ms/luis-endpoint-apis) API は HTTP 応答コードを返します。 応答メッセージには、要求に固有の情報が含まれていますが、HTTP 応答の状態コードは全般的なものです。 

@@ -11,18 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: govindk
-ms.openlocfilehash: b21debdd6baa0a6587318ad861a821840ec6879c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: ebfba4d54b4d4158a2dc0bc2aed09699012ac157
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666699"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038053"
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Azure Cosmos DB のファイアウォール サポート
 Azure Cosmos DB データベース アカウントに格納されているデータを保護するために、Azure Cosmos DB は、強力なハッシュベースのメッセージ認証コード (HMAC) を利用したシークレット ベースの[承認モデル](https://msdn.microsoft.com/library/azure/dn783368.aspx)を備えています。 シークレット ベースの承認モデルに加え、Azure Cosmos DB は現在、ポリシーに基づく IP ベースのアクセス制御を使った受信ファイアウォールにも対応しています。 このモデルは、従来型データベース システムのファイアウォール規則に似ていますが、Azure Cosmos DB データベース アカウントのセキュリティ水準がさらに高くなっています。 このモデルによって今後は、承認されているコンピューターのグループやクラウド サービスからのみアクセスできるように Azure Cosmos DB データベース アカウントを構成することができます。 ただし承認されているコンピューターのグループやサービスから Azure Cosmos DB リソースにアクセスするためには、呼び出し側が有効な承認トークンを提示する必要がある点は変わりません。
-
-> [!NOTE]
-> ファイアウォールのサポートは、現在、Azure Cosmos DB SQL API アカウントと Mongo API アカウントで利用できます。 その他の API やソブリン クラウド (Azure Germany、Azure Government など) 用にファイアウォールを構成する機能は、間もなく利用できるようになります。 既存の IP ファイアウォールが構成されている Azure Cosmos DB アカウントのためにサービス エンドポイント ACL を構成しようとしている場合は、ファイアウォールの構成を書き留め、IP ファイアウォールを削除してから、サービス エンドポイント ACL を構成してください。 サービス エンドポイントを構成した後、必要な場合は IP ファイアウォールを再度有効にすることができます。
 
 ## <a name="ip-access-control-overview"></a>IP アクセス制御の概要
 既定では、有効な承認トークンと共に要求が送信されれば、Azure Cosmos DB データベース アカウントにパブリック インターネットからアクセスすることができます。 IP ポリシー ベースのアクセス制御を構成するためには、特定のデータベース アカウントのクライアント IP の許可リストとして追加する一連の IP アドレスまたは IP アドレス範囲を CIDR 形式でユーザーが指定する必要があります。 この構成を適用すると、この許可リストにないマシンを発信元とする要求はすべて、サーバーによってブロックされます。  以下の図は、IP ベースのアクセス制御における接続処理フローを表したものです。

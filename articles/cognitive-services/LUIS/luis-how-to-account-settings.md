@@ -4,18 +4,18 @@ description: LUIS Web サイトを使用して、アカウント設定を管理�
 titleSuffix: Azure
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 07/08/2018
 ms.author: diberry
-ms.openlocfilehash: 73e90e5ae86db2c2c4625762b285f8c86f0e241b
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: f3086f09e29664b816ba709fc5cda75d7b11d1b4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398047"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035251"
 ---
 # <a name="manage-account-and-authoring-key"></a>アカウントとオーサリング キーを管理する
 LUIS アカウントの 2 つの重要な情報は、ユーザー アカウントとオーサリング キーです。 ログイン情報は [account.microsoft.com](https://account.microsoft.com) で管理されます。 オーサリング キーは、[LUIS](luis-reference-regions.md) Web サイトの **[設定]** ページから管理されます。 

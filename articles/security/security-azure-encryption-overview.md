@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2017
+ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 00c8b30b5351b7a6e4388b186fab70e3a3357ef4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: dc1ca62ce184ac290f289975ff609b8240351099
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366309"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035098"
 ---
 # <a name="azure-encryption-overview"></a>Azure の暗号化の概要
 
