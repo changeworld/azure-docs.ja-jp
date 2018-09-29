@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8da582750b5e20ddd7018f59292e7342f1628c8c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9ef0b3d9ae0cea5082a5c764012958f02113fe9a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425385"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408489"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -32,7 +32,7 @@ ms.locfileid: "39425385"
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | ストレージ アカウントの名前付けの制限に従ってください。 | [ストレージ アカウント名の解決](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | 使用可能なストレージ アカウント プロパティを確認してください。 | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできません。 後で要求を再試行するか、別の VM サイズを要求します。 | [Linux のプロビジョニングと割り当ての問題](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)、[Windows のプロビジョニングと割り当ての問題](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)、[割り当てエラーのトラブルシューティング](../virtual-machines/windows/allocation-failure.md)|
+| AllocationFailed | クラスターまたはリージョンに使用可能なリソースがないか、要求された VM サイズをサポートできません。 後で要求を再試行するか、別の VM サイズを要求します。 | [Linux のプロビジョニングと割り当ての問題](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)、[Windows のプロビジョニングと割り当ての問題](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)、[割り当てエラーのトラブルシューティング](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | 同時実行操作の完了を待ちます。 | |
 | AuthorizationFailed | お客様のアカウントまたはサービス プリンシパルには、デプロイを完了するために十分なアクセス権がありません。 自分のアカウントが属するロールと、デプロイの範囲に対するアクセス権を確認してください。 | [Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md) |
 | BadRequest | Resource Manager で予期される値と一致しないデプロイ値を送信しました。 トラブルシューティングの方法については、内部ステータス メッセージを確認してください。 | [テンプレート リファレンス](/azure/templates/)と[サポートされている場所](resource-manager-templates-resources.md#location) |

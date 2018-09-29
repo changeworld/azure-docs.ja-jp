@@ -5,22 +5,22 @@ services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.author: spelluru
-ms.date: 05/22/2018
+ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 2496c931da734c019801e3fa6deee127d8e571df
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 357bdcbbee348d8cb89e2d75060a3e7ba05e2c86
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697055"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406236"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>チュートリアル: Azure Portal とトピック/サブスクリプションを使用して在庫を更新する
 
 Microsoft Azure Service Bus は、アプリケーションとサービスの間で情報を送信するマルチテナント クラウド メッセージング サービスです。 非同期操作により、柔軟なブローカー メッセージング、構造化された先入れ先出し型 (FIFO) のメッセージング、および発行/購読機能が可能になります。 このチュートリアルでは、公開/サブスクライブ チャネルで Azure Portal と .NET を使用して、小売在庫シナリオで Service Bus トピックとサブスクリプションを使用する方法について説明します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Azure Portal を使用して、Service Bus トピックとそのトピックへの 1 つ以上のサブスクリプションを作成する
 > * .NET コードを使用してトピック フィルターを追加する

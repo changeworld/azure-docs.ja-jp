@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/21/2017
+ms.date: 09/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 66475d9d59c8825eef7eb16e826d9813e819aa8a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: cc15947c5ed06d85d95d12aa448624533dc292d3
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699629"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393150"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>PowerShell モジュールで Service Bus リソースを管理する
 

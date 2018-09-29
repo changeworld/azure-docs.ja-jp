@@ -6,8 +6,6 @@ services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
 ms.author: hshapiro
-manager: hjerez
-editor: cgronlun
 ms.assetid: 43300854-a14e-4cd2-9bb1-c55c779e0e93
 ms.service: machine-learning
 ms.component: studio
@@ -16,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/23/2017
-ms.openlocfilehash: d0c26b51550354080e7341e282063c1bcfbf2655
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9d2cfeb780687e1bf0e61173b3550e26f4019115
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983244"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394151"
 ---
 # <a name="walkthrough-develop-a-predictive-analytics-solution-for-credit-risk-assessment-in-azure-machine-learning"></a>チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する
 

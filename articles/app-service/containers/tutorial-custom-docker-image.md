@@ -16,18 +16,18 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 161207b96deb2f7bd605d845a9207393f9f59c23
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 517926a3c78e9c95a9ecef9ae058c33e47566adb
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444744"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432610"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Web App for Containers のカスタム Docker イメージを使用する
 
 [Web App for Containers](app-service-linux-intro.md) は、PHP 7.0 や Node.js 4.5 などの特定のバージョンをサポートする組み込みの Docker イメージを Linux 上で提供します。 Web App for Containers では、Docker コンテナー テクノロジを使用して、組み込みイメージとカスタム イメージの両方をサービスとしてのプラットフォームとしてホストします。 このチュートリアルでは、カスタム Docker イメージを作成し、Web App for Containers にデプロイする方法について説明します。 このパターンは、組み込みイメージに選択した言語が含まれない場合や、アプリケーションで組み込みイメージで提供されない特定の構成が必要となる場合に便利です。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * カスタム Docker イメージを Azure にデプロイする
@@ -559,4 +559,4 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [Azure で Docker Python と PostgreSQL Web アプリを作成する](tutorial-docker-python-postgresql-app.md)
+> [Azure で Docker Python と PostgreSQL Web アプリを作成する](tutorial-python-postgresql-app.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 02/14/2017
 ms.author: wesmc
-ms.openlocfilehash: 3cf906830965959709a8c7e8dc7d2acc3f3a6f32
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: a6c3314a981b46aa6f1cbca1f34392d1e1ae6c9a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35778550"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431646"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-redis-cache"></a>Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー
 Redis 出力キャッシュ プロバイダーは、出力キャッシュ データ用のプロセス外ストレージ メカニズムです。 このデータは、完全な HTTP 応答専用です (ページ出力キャッシュ)。 プロバイダーは、ASP.NET 4 で導入された新しい出力キャッシュ プロバイダー拡張機能ポイントに接続します。
@@ -46,7 +46,7 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 
 ```xml
 <caching>
-  <outputCachedefault Provider="MyRedisOutputCache">
+  <outputCache defaultProvider="MyRedisOutputCache">
     <providers>
       <!-- For more details check https://github.com/Azure/aspnet-redis-providers/wiki -->
       <!-- Either use 'connectionString' OR 'settingsClassName' and 'settingsMethodName' OR use 'host','port','accessKey','ssl','connectionTimeoutInMilliseconds' and 'operationTimeoutInMilliseconds'. -->
@@ -73,6 +73,7 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
            host=""
            accessKey=""
            ssl="true" />
+    </providers>
   </outputCache>
 </caching>
 ```

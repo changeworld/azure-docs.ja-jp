@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2ea1e5c680858f48ef0f7421bd3595df019c0f2c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 5403be527e8591f0f0b658131b08632d6d1458ca
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160561"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452243"
 documentType: LandingData
 title: Azure Machine Learning サービス (プレビュー) のドキュメント
 metadata:
@@ -57,7 +57,7 @@ sections:
     style: unordered
     items:
     - html: <a href="http://aka.ms/aml-sdk">Azure Machine Learning SDK for Python (メインの SDK)</a>
-    - html: <a href="http://aka.ms/dataprep-sdk">Azure Machine Learning Data Prep SDK</a>
+    - html: <a href="http://aka.ms/data-prep-sdk">Azure Machine Learning Data Prep SDK</a>
 - title: その他の Azure Machine Learning テクノロジ
   items:
   - type: list

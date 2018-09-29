@@ -5,16 +5,16 @@ services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.author: spelluru
-ms.date: 05/22/2018
+ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 07ad8fc873a483b5d71d7ddd21f8f2a820bbfadc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ad315b822a908212a95b3a2ab9420a343a1803f9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982377"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404946"
 ---
 # <a name="tutorial-update-inventory-using-cli-and-topicssubscriptions"></a>チュートリアル: CLI とトピック/サブスクリプションを使用して在庫を更新する
 

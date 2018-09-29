@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2017
+ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: e98d980747edfb9987430a635ff3118cdd455828
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 726e414566622d28817c34c92bd45653677d590f
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702325"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392722"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認
 

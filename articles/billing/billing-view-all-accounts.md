@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2018
-ms.author: amberb
-ms.openlocfilehash: 7c4152140d291270386203e121da169b2a8deff5
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.author: cwatson
+ms.openlocfilehash: 769d810eb20b70a955560e6bf2a5b533ea6e55f0
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630808"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395527"
 ---
 # <a name="view-all-your-billing-accounts-in-azure-portal"></a>Azure Portal でのすべての請求先アカウントの表示  
 

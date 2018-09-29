@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: dddda5a222bf4e9fd81a3e13987ccdf443302083
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6e0294f99d1c2291e84bf2ac5d5b1f771222b551
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978906"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433414"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>Azure Machine Learning サービス (プレビュー) の概要
 
@@ -26,7 +26,7 @@ Azure Machine Learning サービス (プレビュー) は、機械学習モデ�
 
 機械学習からの予想や予測によってアプリやデバイスの機能性を高めることができます。 たとえばオンライン ショッピングでは、ユーザーが今までに購入した製品に基づいて他の商品をお勧めするのに機械学習が役立っています。 また、クレジット カードの読み取り時に、機械学習では、トランザクションをトランザクションのデータベースと比較することで不正の検出を支援します。 また、ロボット掃除機が部屋を掃除するとき、機械学習は、作業が行われているかどうかを判断するのを支援します。
 
-## <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
+## <a name="what-is-azure-machine-learning-service"></a>Azure Machine Learning サービスの概要
 
 Azure Machine Learning サービスには、機械学習モデルの開発、トレーニング、テスト、デプロイ、管理、および追跡に使用できるクラウドベースの環境が用意されています。
 

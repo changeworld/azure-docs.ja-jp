@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/21/2017
+ms.date: 09/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 9f899afef175afa2509dc60e0920dc387f8a7c5e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: db5f4bc7cc62c61f13258b919226efbf63165371
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702563"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406841"
 ---
 # <a name="service-bus-pricing-and-billing"></a>Service Bus の料金と課金
 

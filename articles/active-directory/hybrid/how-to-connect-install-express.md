@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/27/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 0e31f311c123fa8ace523cfde21ebdf2f707fce5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1af54e3b0237d1d62ae7fb47939e7786fa1219b8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303878"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434672"
 ---
 # <a name="getting-started-with-azure-ad-connect-using-express-settings"></a>簡単設定を使用した Azure AD Connect の開始
 Azure AD Connect の**簡単設定**は、トポロジのフォレストが 1 つであり、認証に[パスワード ハッシュ同期](how-to-connect-password-hash-synchronization.md)を使用する場合に使います。 **簡単設定** は既定のオプションであり、ごく一般的なデプロイ シナリオで使用されます。 数回クリックするだけで、オンプレミスのディレクトリをクラウドに拡張できます。
@@ -46,7 +46,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
    このページが表示されたら、**[Not Added (追加されていません)]** と **[Not Verified (検証されていません)]** のマークが付いたドメインをすべて確認します。 使用するドメインを Azure AD で検証済みにしてください。 対象のドメインを検証済みにしたら、更新シンボルをクリックします。
 8. [構成の準備完了] 画面で、 **[インストール]** をクリックします。
    * 必要に応じて、[構成の準備完了] ページの **[Start the synchronization process as soon as configuration completes (構成が完了したらすぐに同期プロセスを開始する)]** チェック ボックスをオフにします。 続けて[フィルター処理](how-to-connect-sync-configure-filtering.md)などの構成作業を行う場合は、このチェック ボックスをオフにする必要があります。 このオプションをオフにした場合、同期の構成は実行されますが、スケジューラは無効のままとなります。 スケジューラを実行するには、[もう一度インストール ウィザードを実行](how-to-connect-installation-wizard.md)して手動で有効にする必要があります。
-   * **[Start the synchronization process as soon as configuration completes]\(構成が完了したらすぐに同期プロセスを開始する\)** チェック ボックスをオンのままにすると、すべてのユーザー、グループ、連絡先について、直ちに Azure AD との完全同期がトリガーされます。 
+   * **[Start the synchronization process as soon as configuration completes]\(構成が完了したらすぐに同期プロセスを開始する\)** チェック ボックスをオンのままにすると、すべてのユーザー、グループ、連絡先について、直ちに Azure AD との完全同期がトリガーされます。
    * オンプレミスの Active Directory に Exchange がある場合、[**Exchange ハイブリッド デプロイ**](https://technet.microsoft.com/library/jj200581.aspx)を有効にすることもできます。 クラウドとオンプレミスの両方に Exchange メールボックスを同時に配置する場合は、このオプションを有効にしてください。
      ![Ready to configure Azure AD Connect](./media/how-to-connect-install-express/readytoconfigure.png)
 9. インストールが完了したら、 **[終了]** をクリックします。

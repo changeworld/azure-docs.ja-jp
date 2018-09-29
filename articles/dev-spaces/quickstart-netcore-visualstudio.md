@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 600625f143041eaf983b7ec7e945c5a968b522f5
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 0e58fb23aded66a44deb0d520151c98903cffe18
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42022844"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433329"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>クイック スタート: Azure Dev Spaces を使用して Kubernetes 開発環境を作成する (.NET Core および Visual Studio)
 
@@ -39,7 +39,7 @@ ms.locfileid: "42022844"
 
 ## <a name="set-up-azure-dev-spaces"></a>Azure Dev Spaces をセットアップする
 
-[Visual Studio Tools for Kubernetes](https://aka.ms/get-azds-visualstudio) をインストールします。
+[Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools) をインストールします。
 
 ## <a name="connect-to-a-cluster"></a>クラスターへの接続
 

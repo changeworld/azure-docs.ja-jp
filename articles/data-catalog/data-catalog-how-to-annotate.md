@@ -2,18 +2,18 @@
 title: Azure Data Catalog でデータ ソースに注釈を付ける方法
 description: Azure Data Catalog でデータ資産に注釈を付ける方法を説明する操作方法に関する記事 (フレンドリ名、タグ、説明、エキスパートを含む)　
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.assetid: 5a7e6bb2-863c-4eca-b614-1c814920d9ed
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: a6751a2cbb2a12d0d0ffe1eb0707ad4e8bc45ed8
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 39fd84882b42a1890358991b62afc1e393f6daa9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052888"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407834"
 ---
 # <a name="how-to-annotate-data-sources"></a>データ ソースに注釈を付ける方法
 ## <a name="introduction"></a>はじめに

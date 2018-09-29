@@ -13,12 +13,12 @@ ms.topic: tutorial
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: 97b052833946b373e2333491c4b516b3a088130b
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2a04b80e728ecf0af39cb46041a005a86ea1abec
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158468"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406109"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Azure Dev Spaces を使用したチーム開発
 
@@ -163,6 +163,23 @@ Azure Dev Spaces のこの組み込み機能を使用すると、共有環境で
 
 URL に "scott.s." の部分を追加して、 http://scott.s.webfrontend.123456abcdef.eastus.aksapp.io になるようにし、ブラウザーを更新します。 `mywebapi` プロジェクトで設定したブレークポイントに到達します。 F5 キーを押して続行すると、"Hello from webfrontend and mywebapi now says something new" という新しいメッセージがブラウザーに表示されます。 これは、`mywebapi` で更新したコードのパスが `default/scott` スペースで実行されているためです。
 
-[!INCLUDE [](includes/well-done.md)]
+### <a name="well-done"></a>お疲れさまでした。
+ファースト ステップ ガイドを修了しました。 以下の方法について学習しました。
 
-[!INCLUDE [](includes/clean-up.md)]
+> [!div class="checklist"]
+> * Azure でマネージド Kubernetes クラスターを使用して Azure Dev Spaces をセットアップする。
+> * コンテナー内のコードを繰り返し開発する。
+> * 2 つのサービスを個別に開発し、Kubernetes の DNS サービス検索を使用して別のサービスを呼び出す。
+> * チーム環境でコードを生産的に開発してテストする。
+
+Azure Dev Spaces の概要を理解できたら、[開発空間をチーム メンバーと共有](how-to/share-dev-spaces.md)し、共同作業の容易さについてチームの理解を深めましょう。
+
+## <a name="clean-up"></a>クリーンアップ
+すべての開発スペースとその内部で実行されているサービスを含め、クラスター上の Azure Dev Spaces インスタンスを完全に削除するには、`az aks remove-dev-spaces` コマンドを使用します。 この操作は元に戻せないことに注意してください。 Azure Dev Spaces のサポートをクラスターに再度追加することはできますが、始めからやり直すようになります。 古いサービスとスペースは復元されません。
+
+次の例では、アクティブなサブスクリプションの Azure Dev Spaces コントローラーを一覧表示し、リソース グループ "myaks-rg" の AKS クラスター "myaks" に関連付けられている Azure Dev Spaces コントローラーを削除します。
+
+```cmd
+    azds controller list
+    az aks remove-dev-spaces --name myaks --resource-group myaks-rg
+```

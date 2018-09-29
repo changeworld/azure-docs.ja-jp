@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 7999dc15fbe1af9d23b47971db03cf6b197f110f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a3cbbf887c4b7df57f2df89dfb8649967d6d9b1b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306111"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434757"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのデータ保護戦略の定義
 このタスクでは、次のトピックで定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。
@@ -58,8 +58,6 @@ ms.locfileid: "46306111"
 
 ## <a name="define-content-management-options"></a>コンテンツ管理オプションの定義
 
-<a name="one-advantage-of-using-azure-ad-to-manage-a-hybrid-identity-infrastructure-is-that-the-process-is-fully-transparent-from-the-end-users-perspective-the-user-tries-to-access-a-shared-resource-the-resource-requires-authentication-the-user-has-to-send-an-authentication-request-to-azure-ad-in-order-to-obtain-the-token-and-access-the-resource-this-entire-process-happens-in-the-background-without-user-interaction"></a>Azure AD を使用してハイブリッド ID インフラストラクチャを管理する利点の 1 つは、プロセスがエンド ユーザーから見て完全に透過的な点です。 ユーザーが共有リソースにアクセスしようとする場合、リソースの認証が必要となり、ユーザーは、トークンを取得してリソースにアクセスするために、Azure AD に認証要求を送信する必要があります。 このプロセス全体はバックグラウンドで発生し、ユーザーが介入することはありません。 
-=======
 Azure AD を使用してハイブリッド ID インフラストラクチャを管理する利点の 1 つは、プロセスがエンド ユーザーから見て完全に透過的な点です。 ユーザーが共有リソースにアクセスしようとする場合、リソースの認証が必要となり、ユーザーは、トークンを取得してリソースにアクセスするために、Azure AD に認証要求を送信する必要があります。 このプロセス全体はバックグラウンドで発生し、ユーザーが介入することはありません。 
 
 データのプライバシーを懸念する組織では、一般的に、使用するソリューションにデータ分類が不可欠です。 現在のオンプレミス インフラストラクチャで既にデータ分類を使っている場合は、ユーザー ID の主要リポジトリとして Azure AD を使うことができます。 オンプレミスでのデータ分類に使用されている一般的なツールは [Data Classification Toolkit](https://msdn.microsoft.com/library/Hh204743.aspx) for Windows Server 2012 R2 です。 このツールは、プライベート クラウド内のファイル サーバーにあるデータを識別、分類、保護するのに役立ちます。 Windows Server 2012 の[自動ファイル分類](https://technet.microsoft.com/library/hh831672.aspx)を使ってこのタスクを実現することもできます。

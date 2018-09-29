@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 3559a25f3073f88e99379e98bc4562209b0c0825
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f80c0f3cdc114b53c002266820e8d9b8773acc5d
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42108446"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432191"
 ---
 # <a name="about-the-speech-translation-api"></a>Speech Translation API について
 
@@ -32,7 +32,7 @@ Speech Translation API では、Microsoft のさまざまな製品やサービ�
 
 基になっている Microsoft の翻訳エンジンは、統計的機械翻訳 (SMT) とニューラル機械翻訳 (NMT) の 2 種類です。 後者は、ニューラル ネットワークを採用した人工知能アプローチであり、機械翻訳に対する最新のアプローチです。 NMT は、正確さだけでなく、流ちょうさや自然さについても、よりよい翻訳を提供します。 こうした流ちょうさが得られるのは、NMT では 1 つの文章のコンテキスト全体を使用して言葉を変換することが主な理由です。
 
-今日では、Microsoft はよく使われるほとんどの言語で NMT に移行しており、SMT はあまり使われない言語に対してのみ採用されています。 [音声間翻訳に使用できるすべての言語](supported-languages.md#speech-translation)で、NMT が導入されています。 音声テキスト変換では、言語ペアに応じて SMT または NMT を使用できます。 ターゲット言語が NMT によってサポートされている場合、翻訳全体が NMT によって処理されます。 ターゲット言語が NMT によってサポートされていない場合は、2 つの言語間の "ピボット" として英語を使用する NMT と SMT のハイブリッド翻訳となります。
+今日では、Microsoft はよく使われるほとんどの言語で NMT に移行しており、SMT はあまり使われない言語に対してのみ採用されています。 [音声間翻訳に使用できるすべての言語](language-support.md#speech-translation)で、NMT が導入されています。 音声テキスト変換では、言語ペアに応じて SMT または NMT を使用できます。 ターゲット言語が NMT によってサポートされている場合、翻訳全体が NMT によって処理されます。 ターゲット言語が NMT によってサポートされていない場合は、2 つの言語間の "ピボット" として英語を使用する NMT と SMT のハイブリッド翻訳となります。
 
 モデル間の違いは、翻訳エンジンの内部で吸収されます。 エンド ユーザーが気付くのは、翻訳品質の向上だけです (特に、中国語、日本語、アラビア語)。
 

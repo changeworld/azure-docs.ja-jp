@@ -2,18 +2,18 @@
 title: Azure Data Catalog のよく寄せられる質問
 description: データ ソースの検出、注釈、管理など、Azure Data Catalog についてのよく寄せられる質問です。
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: bb9223e2eef11d3378c228f8cd5242e6ebbbc74d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9aaba38b7dc0cd2bf659c9d91c9d7660bd17a6dd
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053273"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409186"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure Data Catalog のよく寄せられる質問
 この記事では、Azure Data Catalog サービスに関連する、よく寄せられる質問の回答を示します。

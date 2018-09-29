@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: d39c27614fd4d534db36df1af61b2d419493c4d3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0ea2a58e61d781e6ebfb72b860a3b7aed6ce0c7d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953482"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394482"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Functions 2.x の Azure Cosmos DB バインド
 
@@ -1694,11 +1694,10 @@ public String cosmosDbQueryById(
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Cosmos DB トリガーを使用するクイックスタートに進む](functions-create-cosmos-db-triggered-function.md)
+* [Cosmos DB のサーバーレス データベース コンピューティングの詳細情報](..\cosmos-db\serverless-computing-database.md)
+* [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
 
+<!---
 > [!div class="nextstepaction"]
-> [Cosmos DB のサーバーレス データベース コンピューティングの詳細情報](..\cosmos-db\serverless-computing-database.md)
-
-> [!div class="nextstepaction"]
-> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
+> [Go to a quickstart that uses a Cosmos DB trigger](functions-create-cosmos-db-triggered-function.md)
+--->

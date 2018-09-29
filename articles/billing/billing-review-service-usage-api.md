@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
-ms.author: alleonar
-ms.openlocfilehash: 2af87c87916dd272026a3bd7e1438507c655053b
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.author: erikre
+ms.openlocfilehash: bddb72f2b76d6e652dd26f2e383b7d06fded881b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616995"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395459"
 ---
 # <a name="review-azure-resource-usage-using-the-rest-api"></a>REST API を使用して Azure リソースの使用状況を確認する
 

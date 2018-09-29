@@ -2,18 +2,18 @@
 title: Azure Data Catalog 開発者の概念
 description: Catalog REST API によって公開される Azure Data Catalog 概念モデルの主要な概念の概要を説明します。
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 753b4660c8ca47f12aace87a254b93a88db8aaa7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 97dafe01db4779332a530dc8981b3d6ada8c9df9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053325"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406517"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog 開発者の概念
 Microsoft **Azure Data Catalog** は、データ ソース検出およびデータ ソース メタデータのクラウド ソーシングの機能を提供する、フル マネージドのクラウド サービスです。 開発者は、REST API を介してサービスを使用できます。 開発者が **Azure Data Catalog**を使いこなすには、サービスに実装されている概念を理解することが重要です。
@@ -115,13 +115,13 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <tr><td><b>注釈の種類 (入れ子になったビュー名)</b></td><td><b>追加のプロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
 
 <tr><td>Description ("descriptions")</td><td></td><td></td><td>このプロパティには、資産の説明が含まれています。 システムの各ユーザーは、独自の説明を追加できます。  そのユーザーだけが説明オブジェクトを編集できます   (管理者および資産の所有者は、Description オブジェクトを削除できますが、編集することはできません)。 システムでは、ユーザーの説明を個別に管理します。  したがって、資産ごとに説明の配列が存在します (場合により、データ ソースから派生した情報を含む説明。加えて、資産に関する知識を提供した各ユーザーの説明)。</td></tr>
-<tr><td></td><td>description</td><td>文字列</td><td>資産の簡単な説明 (2 ～ 3 行)</td></tr>
+<tr><td></td><td>description</td><td>string</td><td>資産の簡単な説明 (2 ～ 3 行)</td></tr>
 
 <tr><td>Tag ("tags")</td><td></td><td></td><td>このプロパティで、資産のタグを定義します。 システムの各ユーザーは、資産に対して複数のタグを追加できます。  Tag オブジェクトを作成したユーザーのみがそれらのオブジェクトを編集できます  (管理者および資産の所有者は、Tag オブジェクトを削除できますが、編集することはできません)。 システムでは、ユーザーのタグを個別に管理します。  したがって、各資産に Tag オブジェクトの配列があります。</td></tr>
-<tr><td></td><td>tag</td><td>文字列</td><td>資産を説明するタグ。</td></tr>
+<tr><td></td><td>tag</td><td>string</td><td>資産を説明するタグ。</td></tr>
 
 <tr><td>FriendlyName ("friendlyName")</td><td></td><td></td><td>このプロパティには、資産のフレンドリ名が含まれています。 FriendlyName はシングルトンの注釈です。1 つの FriendlyName のみを資産に追加できます。  FriendlyName オブジェクトを作成したユーザーのみがこのオブジェクトを編集できます (管理者および資産の所有者は、FriendlyName オブジェクトを削除できますが、編集することはできません)。 システムでは、ユーザーのフレンドリ名を個別に管理します。</td></tr>
-<tr><td></td><td>friendlyName</td><td>文字列</td><td>資産のフレンドリ名。</td></tr>
+<tr><td></td><td>friendlyName</td><td>string</td><td>資産のフレンドリ名。</td></tr>
 
 <tr><td>Schema ("schema")</td><td></td><td></td><td>スキーマは、データの構造を説明します。  属性 (列、属性、フィールドなど) の名前と型、およびその他のメタデータを一覧表示します。  この情報はすべて、データ ソースから派生します。  スキーマはシングルトンの注釈です。1 つのスキーマのみを資産に追加できます。</td></tr>
 <tr><td></td><td>columns</td><td>Column[]</td><td>列オブジェクトの配列。 データ ソースから派生した情報を含む列を説明します。</td></tr>
@@ -141,14 +141,14 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <tr><td></td><td>preview</td><td>object[]</td><td>列を表すオブジェクトの配列。  各オブジェクトには、列へのプロパティ マッピングが、行に対するその列の値と共に含まれます。</td></tr>
 
 <tr><td>AccessInstruction ("accessInstructions")</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>mimeType</td><td>文字列</td><td>コンテンツの MIME の種類。</td></tr>
-<tr><td></td><td>content</td><td>文字列</td><td>このデータ資産にアクセスする方法の手順。 コンテンツには、URL、電子メール アドレス、一連の手順が考えられます。</td></tr>
+<tr><td></td><td>mimeType</td><td>string</td><td>コンテンツの MIME の種類。</td></tr>
+<tr><td></td><td>content</td><td>string</td><td>このデータ資産にアクセスする方法の手順。 コンテンツには、URL、電子メール アドレス、一連の手順が考えられます。</td></tr>
 
 <tr><td>TableDataProfile ("tableDataProfiles")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>numberOfRows</td></td><td>int</td><td>データ セット内の行の数</td></tr>
 <tr><td></td><td>size</td><td>long</td><td>データ セットのバイト単位のサイズ。  </td></tr>
-<tr><td></td><td>schemaModifiedTime</td><td>文字列</td><td>スキーマが最後に変更された日時</td></tr>
-<tr><td></td><td>dataModifiedTime</td><td>文字列</td><td>データ セットが最後に変更された (データが追加、変更、または削除された) 日時</td></tr>
+<tr><td></td><td>schemaModifiedTime</td><td>string</td><td>スキーマが最後に変更された日時</td></tr>
+<tr><td></td><td>dataModifiedTime</td><td>string</td><td>データ セットが最後に変更された (データが追加、変更、または削除された) 日時</td></tr>
 
 <tr><td>ColumnsDataProfile ("columnsDataProfiles")</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>columns</td></td><td>ColumnDataProfile[]</td><td>列のデータ プロファイルの配列。</td></tr>
@@ -158,8 +158,8 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <tr><td></td><td>分類</td><td>String</td><td>この列のデータの分類。</td></tr>
 
 <tr><td>Documentation ("documentation")</td><td></td><td></td><td>特定の資産には 1 つのドキュメントしか関連付けることができません。</td></tr>
-<tr><td></td><td>mimeType</td><td>文字列</td><td>コンテンツの MIME の種類。</td></tr>
-<tr><td></td><td>content</td><td>文字列</td><td>ドキュメントのコンテンツ。</td></tr>
+<tr><td></td><td>mimeType</td><td>string</td><td>コンテンツの MIME の種類。</td></tr>
+<tr><td></td><td>content</td><td>string</td><td>ドキュメントのコンテンツ。</td></tr>
 
 </table>
 
@@ -169,34 +169,34 @@ Azure Data Catalog の重要な側面は、システム内のメタデータの�
 <table>
 <tr><td><b>共通の型</b></td><td><b>Properties</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
 <tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>sourceType</td><td>文字列</td><td>データ ソースの種類について説明します。  例: SQL Server、Oracle Database など。  </td></tr>
-<tr><td></td><td>ObjectType</td><td>文字列</td><td>データ ソース内のオブジェクトの種類について説明します。 例: SQL Server のテーブル、ビューなど。</td></tr>
+<tr><td></td><td>sourceType</td><td>string</td><td>データ ソースの種類について説明します。  例: SQL Server、Oracle Database など。  </td></tr>
+<tr><td></td><td>ObjectType</td><td>string</td><td>データ ソース内のオブジェクトの種類について説明します。 例: SQL Server のテーブル、ビューなど。</td></tr>
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>protocol</td><td>文字列</td><td>必須。 データ ソースとの通信に使用されるプロトコルについて説明します。 例: SQl Server の "tds"、Oracle の "oracle" など。現在サポートされているプロトコルの一覧については、[データ ソース参照の仕様の DSL 構造体](data-catalog-dsr.md)を参照してください。</td></tr>
+<tr><td></td><td>protocol</td><td>string</td><td>必須。 データ ソースとの通信に使用されるプロトコルについて説明します。 例: SQl Server の "tds"、Oracle の "oracle" など。現在サポートされているプロトコルの一覧については、[データ ソース参照の仕様の DSL 構造体](data-catalog-dsr.md)を参照してください。</td></tr>
 <tr><td></td><td>address</td><td>Dictionary<string, object></td><td>必須。 アドレスは、参照対象データ ソースの識別に使用されるプロトコルに固有の一連のデータです。 特定のプロトコルを対象にしたアドレス データ。つまり、プロトコルが不明な場合は意味がありません。</td></tr>
-<tr><td></td><td>[認証]</td><td>文字列</td><td>省略可能。 データ ソースとの通信に使用される認証スキーマ。 例: windows、oauth など。</td></tr>
+<tr><td></td><td>[認証]</td><td>string</td><td>省略可能。 データ ソースとの通信に使用される認証スキーマ。 例: windows、oauth など。</td></tr>
 <tr><td></td><td>connectionProperties</td><td>Dictionary<string, object></td><td>省略可能。 データ ソースに接続する方法の追加情報。</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>バックエンドでは公開時に AAD に対して指定されたプロパティの検証は実行されません。</td></tr>
-<tr><td></td><td>upn</td><td>文字列</td><td>ユーザーの一意の電子メール アドレス。 objectId が指定されていない場合や、"lastRegisteredBy" プロパティのコンテキストでは、この値を指定する必要があります。それ以外の場合は、任意で指定できます。</td></tr>
+<tr><td></td><td>upn</td><td>string</td><td>ユーザーの一意の電子メール アドレス。 objectId が指定されていない場合や、"lastRegisteredBy" プロパティのコンテキストでは、この値を指定する必要があります。それ以外の場合は、任意で指定できます。</td></tr>
 <tr><td></td><td>objectId</td><td>Guid</td><td>ユーザーまたはセキュリティ グループの AAD ID です。 省略可能。 upn が指定されていない場合には、この値を指定する必要があります。それ以外の場合は、任意で指定できます。</td></tr>
-<tr><td></td><td>firstName</td><td>文字列</td><td>ユーザーの名前 (表示用)。 省略可能。 "lastRegisteredBy" プロパティのコンテキストでのみ有効です。 "roles"、"permissions"、および "experts" のセキュリティ プリンシパルを指定するときに、この値を指定することはできません。</td></tr>
-<tr><td></td><td>lastName</td><td>文字列</td><td>ユーザーの姓 (表示用)。 省略可能。 "lastRegisteredBy" プロパティのコンテキストでのみ有効です。 "roles"、"permissions"、および "experts" のセキュリティ プリンシパルを指定するときに、この値を指定することはできません。</td></tr>
+<tr><td></td><td>firstName</td><td>string</td><td>ユーザーの名前 (表示用)。 省略可能。 "lastRegisteredBy" プロパティのコンテキストでのみ有効です。 "roles"、"permissions"、および "experts" のセキュリティ プリンシパルを指定するときに、この値を指定することはできません。</td></tr>
+<tr><td></td><td>lastName</td><td>string</td><td>ユーザーの姓 (表示用)。 省略可能。 "lastRegisteredBy" プロパティのコンテキストでのみ有効です。 "roles"、"permissions"、および "experts" のセキュリティ プリンシパルを指定するときに、この値を指定することはできません。</td></tr>
 
 <tr><td>分割</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>文字列</td><td>列または属性の名前。</td></tr>
-<tr><td></td><td>type</td><td>文字列</td><td>列または属性のデータ型。 使用可能な型は、資産の sourceType データによって異なります。  型のサブセットのみがサポートされます。</td></tr>
+<tr><td></td><td>name</td><td>string</td><td>列または属性の名前。</td></tr>
+<tr><td></td><td>type</td><td>string</td><td>列または属性のデータ型。 使用可能な型は、資産の sourceType データによって異なります。  型のサブセットのみがサポートされます。</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>列または属性に使用できる最大長。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
 <tr><td></td><td>precision</td><td>byte</td><td>列または属性の有効桁数。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
 <tr><td></td><td>isNullable</td><td>Boolean</td><td>列が null 値を含むことができるかどうか。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
-<tr><td></td><td>expression</td><td>文字列</td><td>値が計算列である場合、このフィールドには値を表す式が含まれています。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
+<tr><td></td><td>expression</td><td>string</td><td>値が計算列である場合、このフィールドには値を表す式が含まれています。 データ ソースから派生します。 一部のソースの種類のみに適用されます。</td></tr>
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>columnName </td><td>文字列</td><td>列の名前</td></tr>
-<tr><td></td><td>type </td><td>文字列</td><td>列の種類</td></tr>
-<tr><td></td><td>min </td><td>文字列</td><td>データ セット内の最小値</td></tr>
-<tr><td></td><td>max </td><td>文字列</td><td>データ セット内の最大値</td></tr>
+<tr><td></td><td>columnName </td><td>string</td><td>列の名前</td></tr>
+<tr><td></td><td>type </td><td>string</td><td>列の種類</td></tr>
+<tr><td></td><td>min </td><td>string</td><td>データ セット内の最小値</td></tr>
+<tr><td></td><td>max </td><td>string</td><td>データ セット内の最大値</td></tr>
 <tr><td></td><td>avg </td><td>double</td><td>データ セット内の平均値</td></tr>
 <tr><td></td><td>stdev </td><td>double</td><td>データ セットの標準偏差</td></tr>
 <tr><td></td><td>nullCount </td><td>int</td><td>データ セット内の null 値の数</td></tr>
@@ -216,19 +216,19 @@ Azure Data Catalog には、組み込みのデータ ソース プロトコル�
 <tr><td><b>種類</b></td><td><b>プロパティ</b></td><td><b>データ型</b></td><td><b>説明</b></td></tr>
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>namespace</td><td>文字列</td><td>プロトコルの名前空間。 名前空間の長さは 1 ～ 255 文字で、ドット (.) で区切られた 1 つ以上の空ではない部分を含める必要があります。 各部分の長さは 1 ～ 255 文字で、先頭には英字を指定し、英数字のみを使用する必要があります。</td></tr>
-<tr><td></td><td>name</td><td>文字列</td><td>プロトコルの名前。 名前の長さは 1 ～ 255 文字で、先頭には英字を指定し、英数字とダッシュ (-) 文字のみを使用する必要があります。</td></tr>
+<tr><td></td><td>namespace</td><td>string</td><td>プロトコルの名前空間。 名前空間の長さは 1 ～ 255 文字で、ドット (.) で区切られた 1 つ以上の空ではない部分を含める必要があります。 各部分の長さは 1 ～ 255 文字で、先頭には英字を指定し、英数字のみを使用する必要があります。</td></tr>
+<tr><td></td><td>name</td><td>string</td><td>プロトコルの名前。 名前の長さは 1 ～ 255 文字で、先頭には英字を指定し、英数字とダッシュ (-) 文字のみを使用する必要があります。</td></tr>
 <tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>ID プロパティの一覧。プロパティは 1 個以上 20 個以下にする必要があります。 たとえば、"server"、"database"、"schema"、"object" は "tds" プロトコルの ID プロパティです。</td></tr>
 <tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet[]</td><td>ID セットの一覧。 有効な資産の ID を示す ID プロパティのセットを定義します。 1 個以上 20 個以下のセット数を含める必要があります。 例: {"server"、"database"、"schema"、"object"} は、"tds" プロトコルの ID セットです。"tds" には、SQL Server Table 資産の ID が定義されています。</td></tr>
 
 <tr><td>DataSourceProtocolIdentityProperty</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>文字列</td><td>プロパティの名前。 名前の長さは 1 ～ 100 文字で、先頭には英字を指定し、英数字のみを使用する必要があります。</td></tr>
-<tr><td></td><td>type</td><td>文字列</td><td>プロパティの型。 サポートされる値: "bool"、boolean"、"byte"、"guid"、"int"、"integer"、"long"、"string"、"url"</td></tr>
+<tr><td></td><td>name</td><td>string</td><td>プロパティの名前。 名前の長さは 1 ～ 100 文字で、先頭には英字を指定し、英数字のみを使用する必要があります。</td></tr>
+<tr><td></td><td>type</td><td>string</td><td>プロパティの型。 サポートされる値: "bool"、boolean"、"byte"、"guid"、"int"、"integer"、"long"、"string"、"url"</td></tr>
 <tr><td></td><td>ignoreCase</td><td>bool</td><td>プロパティ値を使用するときに大文字と小文字の区別を無視するかどうかを指定します。 "string" 型のプロパティにのみ指定できます。 既定値は false です。</td></tr>
 <tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>bool[]</td><td>URL のパスの各セグメントで大文字と小文字の区別を無視するかどうかを指定します。 "url" 型のプロパティにのみ指定できます。 既定値は [false] です。</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>name</td><td>文字列</td><td>ID セットの名前。</td></tr>
+<tr><td></td><td>name</td><td>string</td><td>ID セットの名前。</td></tr>
 <tr><td></td><td>properties</td><td>string[]</td><td>この ID セットに含まれる ID プロパティの一覧。 重複を含めることはできません。 ID セットから参照されている各プロパティは、プロトコルの "identityProperties" の一覧で定義されている必要があります。</td></tr>
 
 </table>

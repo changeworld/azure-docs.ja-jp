@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 217e36b7814bb7fe092ca915afd09bfc76b6ffa3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 68352db238b92d39119b420ed0d573e88a95bc78
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094673"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394456"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Queue Storage のバインド
 
@@ -47,9 +47,9 @@ Queue ストレージ バインディングは [Microsoft.Azure.WebJobs.Extensio
 
 言語固有の例をご覧ください。
 
-* [C#](#trigger---c-example)
+* [C# を選択した場合](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
+* [JavaScript を選択した場合](#trigger---javascript-example)
 * [Java](#trigger---Java-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
@@ -309,9 +309,9 @@ Azure Queue Storage の出力バインドを使用して、キューにメッセ
 
 言語固有の例をご覧ください。
 
-* [C#](#output---c-example)
+* [C# を選択した場合](#output---c-example)
 * [C# スクリプト (.csx)](#output---c-script-example)
-* [JavaScript](#output---javascript-example)
+* [JavaScript を選択した場合](#output---javascript-example)
 * [Java](#output---java-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例
@@ -535,14 +535,15 @@ JavaScript 関数の場合は、`context.bindings.<name>` を使用して出力�
 
 ## <a name="next-steps"></a>次の手順
 
+* [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
+
+<!--
 > [!div class="nextstepaction"]
-> [Queue Storage のトリガーを使用するクイック スタートに進む](functions-create-storage-queue-triggered-function.md)
+> [Go to a quickstart that uses a Queue storage trigger](functions-create-storage-queue-triggered-function.md)
+-->
 
 > [!div class="nextstepaction"]
 > [Queue Storage 出力バインドを使用するチュートリアルに進む](functions-integrate-storage-queue-output-binding.md)
-
-> [!div class="nextstepaction"]
-> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
 
 <!-- LINKS -->
 

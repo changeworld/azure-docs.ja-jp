@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2018
+ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: fcdda123ff63c0d350945d3e4929d2a39a38fcb3
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: df69406bd0a6e09f66262ce66f8eeb7cada2422a
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699878"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393986"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 

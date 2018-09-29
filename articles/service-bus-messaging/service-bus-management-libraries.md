@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/05/2018
+ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: a959687fbf6e296cab7e0d8ca49ae97a005622cf
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b7f63ac8a52da4898abb3d30b71f3ee3a3e1a4b3
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696577"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394694"
 ---
 # <a name="service-bus-management-libraries"></a>Service Bus 管理ライブラリ
 

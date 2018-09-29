@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/05/2018
+ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 01833a51425f6a02c5ed781f4b10b22dc292f45d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: cd5bc1fb959872cfb98236feb5c32517ac7472ac
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696399"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394184"
 ---
 # <a name="sqlruleaction-syntax"></a>SQLRuleAction 構文
 

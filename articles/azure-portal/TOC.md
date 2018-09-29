@@ -1,7 +1,5 @@
 # 概要
 ## [Azure Portal の概要](../azure-portal-overview.md)
-# チュートリアル
-## [Azure Portal での DevOps](tutorial-azureportal-devops.md)
 # 概念
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [キーボード ショートカット](azure-portal-keyboard-shortcuts.md)

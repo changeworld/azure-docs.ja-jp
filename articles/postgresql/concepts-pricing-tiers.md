@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 07/21/2018
-ms.openlocfilehash: 18f6647a8412477384a48aa777461f99b2fbcb0a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.date: 09/27/2018
+ms.openlocfilehash: 696932135cdd3850e04d25370867c0273b99b3bf
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379544"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423546"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL の価格レベル
 
@@ -74,6 +74,11 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 | 西日本 | ○ | ○ |
 | 韓国中部 |  | ○ |
 | 韓国南部 |  | ○ |
+| ドイツ中部 |  | ○ |
+| US DoD Central  | ○ |  |
+| US DoD East  | ○ |  |
+| 米国政府アリゾナ |  | ○ |
+| 米国政府テキサス |  | ○ |
 
 ## <a name="storage"></a>Storage
 
@@ -120,4 +125,4 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 
 - [ポータルで PostgreSQL サーバーを作成](tutorial-design-database-using-azure-portal.md)する方法を確認します。
 - [Azure CLI での Azure Database for PostgreSQL サーバーの監視とスケーリング](scripts/sample-scale-server-up-or-down.md)する方法を確認します。
-- [サービスの制限事項](concepts-limits.md)を確認します。
+- [サービスの制限事項](concepts-limits.md)を確認します。 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/06/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 26930ccb80545b80ab047ef9bc51b7122009ec1f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: da9e1ce17e21f4d87286c0be5d425419f6ed0300
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967338"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408512"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターをスケーリングする
 
@@ -38,7 +38,7 @@ ms.locfileid: "46967338"
 > * テンプレートを使用して、セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成する
 > * クラスターをスケールインまたはスケールアウトする
 > * [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
-> * [Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)
+> * [クラスターの削除](service-fabric-tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -253,7 +253,7 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * クラスター ノード数を読み取る

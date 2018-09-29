@@ -2,18 +2,18 @@
 title: Azure Data Catalog 導入のためのアプローチとプロセス
 description: この記事では、Azure Data Catalog の導入を検討している組織向けのアプローチとプロセスを紹介します。具体的には、ビジョンの定義、主要なビジネス ユース ケースの特定、パイロット プロジェクトの選択などを取り上げます。
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.assetid: 0c771e7a-6fcd-417f-9247-897177719567
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: daeb8abdf52466ad5231e9d08e4eb6d853d1f4a8
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 07323f1b0541555ef71919e026ecaf2494056dad
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052868"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406500"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>Azure Data Catalog 導入のためのアプローチとプロセス
 この記事は、組織における **Azure Data Catalog** の導入方法について説明します。 **Azure Data Catalog** の導入を成功に導くためには、主にビジョンの定義、組織内の主要ビジネスのユースケースの識別、パイロット プロジェクトの選択の 3 点が重要になります。

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e115408ad9ba692f076568babb2c4aad8d133003
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 928a251c00952b9b515d41c87821e3b3f821809f
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950269"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434604"
 documentType: LandingData
 title: Azure Database for PostgreSQL のドキュメント
 metadata:
@@ -46,7 +46,7 @@ sections:
     style: ordered
     items:
     - html: データベースを設計する&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>
-    - html: <a href="/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Python と CLI を使用して Web アプリを構築する</a>
+    - html: <a href="/azure/app-service/containers/tutorial-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Python と CLI を使用して Web アプリを構築する</a>
 - title: Microsoft Learn でスキルを身に付ける
   items:
   - type: list

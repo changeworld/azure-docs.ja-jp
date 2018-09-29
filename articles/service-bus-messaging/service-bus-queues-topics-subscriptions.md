@@ -7,14 +7,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/18/2018
+ms.date: 09/18/2018
 ms.author: spelluru
-ms.openlocfilehash: f4b94e210430c20409e9227bbab51ff2ec117291
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 047c4c37090db77f7a7a692604dd63c5effff9fa
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702172"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409763"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus のキュー、トピック、サブスクリプション
 

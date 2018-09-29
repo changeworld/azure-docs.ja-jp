@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/10/2018
+ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: df9c218c275367852885e67ac2649926ba1d31d3
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 82a48c902b72b5aca546c45032a13e831533f9ee
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42140515"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393470"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>タグを使用した Azure リソースの整理
 

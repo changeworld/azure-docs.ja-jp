@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/02/2018
 ms.author: clemensv
 ms.custom: include file
-ms.openlocfilehash: 2784102cdc778188f0874a15e3ff02e4cc2e3eb8
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5c7c2fe101315959d07ce4912905bbf59a7ee664
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33904999"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452811"
 ---
 ### <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
@@ -22,8 +22,10 @@ Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プ�
 ### <a name="add-the-relay-nuget-package"></a>Relay NuGet パッケージを追加する
 
 1. 新しく作成したプロジェクトを右クリックしてから、**[NuGet パッケージの管理]** を選択します。
-2. **[参照]** を選択し、**Microsoft.Azure.Relay** を検索します。 検索結果から、"**Microsoft Azure Relay**" を選択します。 
-3. **[インストール]** を選択してインストールを完了します。 ダイアログ ボックスを閉じます。
+2. **[プレリリースを含める]** オプションを選択します。 
+3. **[参照]** を選択し、**Microsoft.Azure.Relay** を検索します。 検索結果から、"**Microsoft Azure Relay**" を選択します。
+4. バージョンには、**[2.0.0-preview1-20180523]** を選択します。 
+5. **[インストール]** を選択してインストールを完了します。 ダイアログ ボックスを閉じます。
 
 ### <a name="write-code-to-receive-messages"></a>メッセージを受信するコードを記述する
 
@@ -35,13 +37,21 @@ Visual Studio で、新しい**コンソール アプリ (.NET Framework)** プ�
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
+    using System.Net;
     ```
 2. ハイブリッド接続の詳細に関する定数を `Program` クラスに追加します。 中かっこ内のプレースホルダーを、ハイブリッド接続の作成時に取得した値に置き換えます。 必ず完全修飾名前空間名を使用してください。
    
     ```csharp
+    // replace {RelayNamespace} with the name of your namespace
     private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
+
+    // replace {HybridConnectionName} with the name of your hybrid connection
     private const string ConnectionName = "{HybridConnectionName}";
+
+    // replace {SAKKeyName} with the name of your Shared Access Policies key, which is RootManageSharedAccessKey by default
     private const string KeyName = "{SASKeyName}";
+
+    // replace {SASKey} with the primary key of the namespace you saved earlier
     private const string Key = "{SASKey}";
     ```
 

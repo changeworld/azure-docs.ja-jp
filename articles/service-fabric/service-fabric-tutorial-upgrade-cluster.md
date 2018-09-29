@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 367528353d5849a64ed1924d1b1e02a9b2c38252
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 2191ffabee31d12fb5b581280f924546b0078255
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007935"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405466"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターのランタイムをアップグレードする
 
@@ -31,7 +31,7 @@ ms.locfileid: "39007935"
 
 クラスターで既に最新の Service Fabric ランタイムが実行されている場合は、この手順を実行する必要はありません。 ただ、この記事は、サポート対象のランタイムを Azure Service Fabric クラスターにインストールする場合も使用できます。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * クラスター バージョンの読み取り
@@ -42,14 +42,14 @@ ms.locfileid: "39007935"
 > * テンプレートを使用して、セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成する
 > * [クラスターをスケールインまたはスケールアウトする](service-fabric-tutorial-scale-cluster.md)
 > * クラスターのランタイムをアップグレードする
-> * [Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)
+> * [クラスターの削除](service-fabric-tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを開始する前に
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
-* [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)または [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールします。
+* [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 * セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成します。
 * Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2017](http://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、**.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
 * Linux クラスターをデプロイする場合は、Java 開発環境を [Linux](service-fabric-get-started-linux.md) または [MacOS](service-fabric-get-started-mac.md) にセットアップします。  [Service Fabric CLI](service-fabric-cli.md) をインストールします。
@@ -197,13 +197,10 @@ sfctl cluster upgrade-status
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * クラスターのランタイムのバージョンを取得する
 > * クラスター ランタイムをのアップグレードする
 > * アップグレードを監視する
 
-次のチュートリアルでは、Service Fabric クラスターを使用して API Management をデプロイする方法について説明します。
-> [!div class="nextstepaction"]
-> [Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)

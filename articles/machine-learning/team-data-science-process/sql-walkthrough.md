@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 6e58429567e447002b1c9191bb8e50a4351649a9
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 6e9813d989a54dbb1609a58dd502a7493d973faa
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246799"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433720"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Team Data Science Process の活用: SQL Sever の使用
 このチュートリアルでは、SQL Server と公開されているデータセット ([NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセット) を使って、機械学習モデルを構築してデプロイするプロセスを説明します。 ここで使用する手順は、標準的なデータ サイエンス ワークフローを踏襲しています。つまり、データの取り込みと調査、特徴エンジニアリングによる学習の円滑化を経てモデルを構築し、デプロイします。
@@ -582,7 +582,7 @@ Azure Machine Learning に進む準備ができたら、次のいずれかを実
 2. **[プロパティ]** パネルで、**Azure SQL Database** を**データ ソース**として選択します。
 3. データベースの DNS 名を **[データベース サーバー名]** フィールドに入力します。 形式: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. **データベース名** を対応するフィールドに入力します。
-5. **SQL ユーザー名**を \*\*[サーバーのユーザーアカウント名] に、パスワードを **[サーバーのユーザー アカウントのパスワード]** に入力します。
+5. <**SQL ユーザー名**> を **[Server user account name (サーバーのユーザー アカウント名)]** に、<**パスワード**> を **[Server user account password (サーバーのユーザー アカウントのパスワード)]** に入力します。
 7. **データベース クエリ** テキスト編集領域で、必要なデータベース フィールド (ラベルなどの計算フィールドなど) を抽出するクエリを貼り付けてから、データを希望するサンプルのサイズにダウンサンプリングします。
 
 SQL Server データベースから直接データを読み取る、二項分類の実験の例を次の図に示します。 同様の実験を、多クラス分類と回帰問題で構築することができます。
