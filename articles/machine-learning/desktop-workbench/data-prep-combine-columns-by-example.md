@@ -57,7 +57,7 @@ ms.locfileid: "46986236"
 
 この例では、コンマの後に空白を続けたものが、*Street*、*City*、*State*、および *ZIP* の列を結合する区切り記号として使用されています。
 
-|Street|City|State|ZIP|分割|
+|Street|City|State|ZIP|列|
 |:----|:----|:----|:----|:----|
 |16011 N.E. 36th Way|REDMOND|WA|98052|16011 N.E. 36th Way, REDMOND, WA, 98052|
 |16021 N.E. 36th Way|REDMOND|WA|98052|16021 N.E. 36th Way, REDMOND, WA, 98052|

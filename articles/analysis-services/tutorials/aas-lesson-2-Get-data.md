@@ -82,7 +82,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
     
     **DimDate**
     
-      |分割|  
+      |列|  
       |--------|  
       |**DateKey**|  
       |**SpanishDayNameOfWeek**|  
@@ -92,7 +92,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
   
     **DimGeography**
   
-      |分割|  
+      |列|  
       |-------------|  
       |**SpanishCountryRegionName**|  
       |**FrenchCountryRegionName**|  
@@ -100,7 +100,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
   
     **DimProduct**
   
-      |分割|  
+      |列|  
       |-----------|  
       |**SpanishProductName**|  
       |**FrenchProductName**|  
@@ -115,14 +115,14 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
   
     **DimProductCategory**
   
-      |分割|  
+      |列|  
       |--------------------|  
       |**SpanishProductCategoryName**|  
       |**FrenchProductCategoryName**|  
   
     **DimProductSubcategory**
   
-      |分割|  
+      |列|  
       |-----------------------|  
       |**SpanishProductSubcategoryName**|  
       |**FrenchProductSubcategoryName**|  
