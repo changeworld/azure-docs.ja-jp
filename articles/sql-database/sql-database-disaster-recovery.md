@@ -2,20 +2,22 @@
 title: SQL Database のディザスター リカバリー | Microsoft Docs
 description: Azure SQL Database のアクティブ geo レプリケーションと geo リストア機能を使用して、地域のデータ センターの停止や障害からデータベースを復旧する方法について説明します。
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/16/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: dba78d3fb63ed6b2f867539fc471199ab72afe6a
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+manager: craigg
+ms.date: 07/16/2018
+ms.openlocfilehash: f04b17ec052e4d55ccb39c803b2d690589cb27d2
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092598"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161677"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database を復元する、またはセカンダリにフェールオーバーする
 Azure SQL Database は、障害から回復するために次の機能を備えています。

@@ -1,12 +1,12 @@
 ---
-title: "構成済みソリューションのカスタマイズ | Microsoft Docs"
-description: "Azure IoT Suite の構成済みソリューションのカスタマイズ方法に関するガイダンスを提供します。"
-services: 
+title: 構成済みソリューションのカスタマイズ | Microsoft Docs
+description: Azure IoT Suite の構成済みソリューションのカスタマイズ方法に関するガイダンスを提供します。
+services: ''
 suite: iot-suite
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4653ae53-4110-4a10-bd6c-7dc034c293a8
 ms.service: iot-suite
 ms.devlang: dotnet
@@ -15,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: ba965b9bc23b96adb2b1b7c9306cb7f508f820bf
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: cb5955111cb3954f71f11602042b5153ccee3473
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47106552"
 ---
 # <a name="customize-a-preconfigured-solution"></a>構成済みソリューションのカスタマイズ
 
@@ -30,8 +31,8 @@ Azure IoT Suite で提供される構成済みソリューションを利用す�
 構成済みソリューションのソース コードは、次のリポジトリの Github で入手できます。
 
 * リモート監視: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
-* 予測的なメンテナンス: [https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
-* コネクテッド ファクトリ: [https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
+* 予測メンテナンス: [https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
+* 接続済みファクトリ: [https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
 
 構成済みソリューションのソース コードは、Azure IoT Suite を使用して IoT ソリューションのエンド ツー エンド機能を実装する際に使用されるパターンとプラクティスを示すために提供されています。 ソリューションをビルドしてデプロイする方法の詳細については、GitHub リポジトリを参照してください。
 
@@ -232,7 +233,7 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
 
 このドキュメントでの説明をご希望のカスタマイズがある場合は、 [ユーザーの意見募集](https://feedback.azure.com/forums/321918-azure-iot)のページで機能の提案を投稿するか、この記事の下部でコメントしてください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 構成済みのソリューションをカスタマイズするためのオプションの詳細については、次のリンク先をご覧ください。
 
@@ -252,4 +253,4 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
 [lnk-telemetry-api-controller-02]: https://github.com/Azure/azure-iot-remote-monitoring/blob/e7003339f73e21d3930f71ceba1e74fb5c0d9ea0/DeviceAdministration/Web/WebApiControllers/TelemetryApiController.cs#L25 
 [lnk-sample-device-factory]: https://github.com/Azure/azure-iot-remote-monitoring/blob/master/Common/Factory/SampleDeviceFactory.cs#L40
 [lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-cf-customize]: iot-suite-connected-factory-customize.md
+[lnk-cf-customize]:../iot-accelerators/iot-accelerators-connected-factory-customize.md

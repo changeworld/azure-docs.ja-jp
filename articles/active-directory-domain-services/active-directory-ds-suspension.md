@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 95e1d8da-60c7-4fc1-987d-f48fde56a8cb
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: ergreenl
-ms.openlocfilehash: 72e22fbe61b4e30191bbac553709241e1b13f1f5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 6448e592db8024d911831b0b3634dabb4ed3b101
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502251"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063117"
 ---
 # <a name="suspended-domains"></a>中断されたドメイン
 Azure Active Directory Domain Services (Azure AD DS) が長期間にわたりマネージド ドメインにサービスを提供できない場合、マネージド ドメインは中断済み状態になります。 この記事では、マネージド ドメインが中断される理由、および中断されたドメインを修復する方法について説明します。

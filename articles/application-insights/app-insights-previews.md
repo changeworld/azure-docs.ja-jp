@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4d3e7a28e2a57cfeae4e48719dbc17533a856016
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 98081bc50696156f7b2e3da95889efb8db653807
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35641178"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095152"
 ---
 # <a name="preview-upcoming-changes-to-azure-application-insights"></a>Azure Application Insights で予定されている変更点のプレビュー 
 

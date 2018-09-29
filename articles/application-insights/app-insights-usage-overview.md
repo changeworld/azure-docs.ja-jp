@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1217083980355c69fa51d7a6983c71295684f5b1
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: d5b580df531e2f0c61ac1d43cfd5ae353f314fce
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35641218"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091903"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 

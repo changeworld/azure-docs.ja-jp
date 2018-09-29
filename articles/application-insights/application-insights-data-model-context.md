@@ -14,11 +14,11 @@ ms.date: 05/15/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: b6cfae20f09b19a57cf411777e78abb1dbbf0484
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35641082"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094114"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>テレメトリ コンテキスト: Application Insights データ モデル
 

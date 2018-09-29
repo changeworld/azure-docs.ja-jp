@@ -2,20 +2,22 @@
 title: 最大で 10 年間 Azure SQL Database のバックアップを格納する | Microsoft Docs
 description: Azure SQL Database が、最大で 10 年間、データベースの完全バックアップの格納をサポートする方法について説明します。
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/16/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8edf66d8ee61b2d0896ed8249ea286b0f3de7de5
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+manager: craigg
+ms.date: 07/16/2018
+ms.openlocfilehash: b2d4166c25014416efbb7392acda3f3f028b4fa9
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092848"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162048"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間 Azure SQL Database のバックアップを格納する
 
@@ -68,7 +70,7 @@ W=12 weeks (84 日)、M=12 months (365 日)、Y=10 years (3650 日)、WeekOfYear
 
 ## <a name="configure-long-term-backup-retention"></a>長期のバックアップ リテンション期間の構成
 
-Azure portal または PowerShell を使用して長期のリテンション期間を構成する方法については、[長期のバックアップ リテンション期間の構成](sql-database-long-term-backup-retention-configure.md)に関するページをご覧ください。
+Azure Portal または PowerShell を使用して長期のリテンション期間を構成する方法については、[長期のバックアップ リテンション期間の構成](sql-database-long-term-backup-retention-configure.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

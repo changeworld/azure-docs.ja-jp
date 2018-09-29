@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/7/2017
+ms.date: 09/07/2018
 ms.author: spelluru
-ms.openlocfilehash: d75d1937ca0450f3eedd2c5ba4e91caf3b473a9b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b989c8b12b9093d45a655dcd003b38aa18d53e96
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698012"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392507"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
 

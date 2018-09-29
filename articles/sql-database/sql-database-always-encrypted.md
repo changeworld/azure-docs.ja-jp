@@ -3,19 +3,22 @@ title: 'Always Encrypted: Azure SQL Database - Windows 証明書ストア | Micr
 description: この記事では、SQL Server Management Studio (SSMS) の Always Encrypted ウィザードを使って、SQL Database 内の機密データを保護する方法について説明します。 さらに、Windows 証明書ストアにキーを格納する方法も説明します。
 keywords: データの暗号化, sql 暗号化, データベースの暗号化, 機密データ, Always Encrypted
 services: sql-database
-author: VanMSFT
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: VanMSFT
 ms.author: vanto
-ms.openlocfilehash: c6656a1ef5e52782461d9b9e7106ff81eb3983ee
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviwer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 4c9b2099308bc6a239a72fe2ebe559cdfa2fd3a1
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544049"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064222"
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: データベース暗号化を使用して SQL Database で機密データを保護し、Windows 証明書ストアで暗号化キーを格納する
 

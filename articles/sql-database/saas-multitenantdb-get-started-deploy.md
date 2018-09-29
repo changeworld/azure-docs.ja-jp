@@ -1,23 +1,23 @@
 ---
 title: Azure SQL Database を使用するシャード化されたマルチテナント データベース SaaS アプリのデプロイ | Microsoft Docs
 description: Azure SQL Database を使用して SaaS パターンを示す、シャード化された Wingtip Tickets SaaS マルチテナント データベース アプリケーションをデプロイおよび操作します。
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: billgib
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.workload: data-management
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: MightyPen
+ms.author: genemi
+ms.reviewer: billgib, stein
+manager: craigg
 ms.date: 04/02/2018
-ms.reviewer: genemi
-ms.author: billgib
-ms.openlocfilehash: 0c2677622b118c11216bef62ff70e87f4de4cded
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: b91960920f0181939e634a221080d493fb8cea63
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665925"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056660"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するシャード化されたマルチテナント アプリケーションのデプロイと操作
 

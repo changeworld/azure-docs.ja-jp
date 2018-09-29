@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: この記事には、Language Understanding (LUIS) での percentage 作成済みエンティティについての情報が含まれます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: diberry
-ms.openlocfilehash: d445dbf69e3d2163b5d44b894f8795d41fbd34e3
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 6929fc3cc41db4e4bd4a1f8bda62c953a3722eff
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238966"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041170"
 ---
 # <a name="percentage-entity"></a>percentage エンティティ
 パーセンテージの値は、分数 `3 1/2` またはパーセンテージ `2%` として出現する可能性があります。 このエンティティは既にトレーニングされているので、パーセンテージを含む発話の例をアプリケーション意図に追加する必要はありません。 percentage エンティティは、[多くのカルチャ](luis-reference-prebuilt-entities.md)でサポートされています。 

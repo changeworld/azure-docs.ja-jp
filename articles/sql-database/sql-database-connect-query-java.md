@@ -2,20 +2,22 @@
 title: Java を使用して Azure SQL Database に照会する | Microsoft Docs
 description: このトピックでは、Azure SQL Database に接続して Transact-SQL ステートメントでデータベースに照会するプログラムを Java で作成する方法について説明します。
 services: sql-database
-author: ajlam
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,develop apps
+ms.subservice: development
+ms.custom: ''
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 04/01/2018
+author: ajlam
 ms.author: andrela
-ms.openlocfilehash: 8bd2ad5c4b0ab17bd6a37d9fefbd36d5e2a3cf4c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 89afeb53c6928f2907e22ff740a5d83fddb7781c
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051960"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47062811"
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>Java を使用して Azure SQL Database に照会する
 

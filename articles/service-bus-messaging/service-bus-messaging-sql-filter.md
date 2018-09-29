@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/05/2018
+ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: c94ffed753ebf8fddbd553977c5d733f2306971d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7bac115ab3215a7dde625f194bdf325f9e0af318
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698334"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392858"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 構文
 

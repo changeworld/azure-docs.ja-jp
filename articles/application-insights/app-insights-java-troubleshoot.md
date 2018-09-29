@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
 ms.openlocfilehash: 26899ea62b8caa872b6c99b94976c87f84ba7176
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635717"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091125"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java 用 Application Insights のトラブルシューティングおよび Q&A
 [Java 用 Azure Application Insights][java] について疑問または問題はありませんか。 ここでは、いくつかのヒントを紹介します。

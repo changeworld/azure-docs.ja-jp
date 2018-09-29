@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: b94f6ad4c7c6f3b5e93cdb890e053a3d1678e161
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722951"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094430"
 ---
 # <a name="transform-and-protect-your-api"></a>API を変換および保護する 
 
@@ -27,7 +27,7 @@ ms.locfileid: "38722951"
 
 このチュートリアルでは、Azure API Management でレート制限を構成することによって、いかに簡単にバックエンド API の保護を追加できるかを示します。 たとえば、API の呼び出し回数を制限して、開発者が過剰に使用しないようにすることができます。 詳しくは、「[API Management のポリシー](api-management-policies.md)」をご覧ください
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 応答ヘッダーを削除するように API を変換する
@@ -195,7 +195,7 @@ ms.locfileid: "38722951"
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * 応答ヘッダーを削除するように API を変換する

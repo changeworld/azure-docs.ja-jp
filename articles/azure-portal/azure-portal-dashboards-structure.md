@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
-ms.author: adamab
-ms.openlocfilehash: 2eb9289957968db04b78087413fb9df8ed1b085b
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.author: cwatson
+ms.openlocfilehash: 405e0d5184880a00c07de55bd968210fa28e45fc
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301674"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393079"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Azure ダッシュボードの構造
 このドキュメントでは、次のダッシュボードを例として、Azure のダッシュボードの構造を説明します。

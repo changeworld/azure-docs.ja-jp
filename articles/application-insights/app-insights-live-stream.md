@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 8498033163ce3dece96b856b294f97e00bb811d3
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: a7953781776fa4d7c9ae47901bb5f0c28a87ff2b
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35640665"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091193"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: 1 秒の待機時間での監視と診断
 

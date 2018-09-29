@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8ef0ea20256807650f19d25aa77276cb8cbcb7d7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4f063299a0bb454c8eaf3d38a0cb0a5fb20abcc8
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "35635636"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094085"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: よく寄せられる質問
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.reviewer: daviste
 ms.author: mbullwin
-ms.openlocfilehash: 2157af8d6c3b8eea372c060a70c78559d8ffe6ad
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 30ef00fa1bfd2933df5e5c966cb8266d7c598a47
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35634744"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162170"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights コーホート
 
@@ -110,7 +110,7 @@ ms.locfileid: "35634744"
 
     * クエリ セクション: 分析クエリを使用してコーホートを定義します。
 
-    クエリ セクションには、[分析クエリを記述](https://docs.loganalytics.io/index)します。 クエリは、定義するコーホートが記述された特定の行セットを選択します。 コーホート ツールによって、“| summarize by user_Id” 句が暗黙的にクエリに追加されます。 このデータはテーブル内のクエリの下にプレビュー表示されるので、クエリが結果を返していることを確認できます。
+    クエリ セクションには、[分析クエリを記述](/azure/kusto/query)します。 クエリは、定義するコーホートが記述された特定の行セットを選択します。 コーホート ツールによって、“| summarize by user_Id” 句が暗黙的にクエリに追加されます。 このデータはテーブル内のクエリの下にプレビュー表示されるので、クエリが結果を返していることを確認できます。
 
     > [!NOTE]
     > クエリが表示されない場合は、セクションの高さを高くしてクエリが表示されるようにサイズ調整を行います。 このセクションの先頭にあるアニメーション .gif に、サイズ変更の操作が示されています。

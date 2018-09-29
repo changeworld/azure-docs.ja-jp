@@ -11,13 +11,13 @@ ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/22/2017
-ms.author: rithorn
-ms.openlocfilehash: 2a9639103b494e3af54a6a21ed769cf4f7bd6259
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: cwatson
+ms.openlocfilehash: 853307f24574e6cea5841bcace815fea2bbcf2c8
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063194"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47390666"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>エンタープライズ コスト表示のトラブルシューティング 
 

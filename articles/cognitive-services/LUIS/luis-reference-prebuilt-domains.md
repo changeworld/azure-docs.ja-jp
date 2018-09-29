@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: 事前構築済みのドメインのリファレンスです。事前構築済みのドメインは、Language Understanding Intelligent Service (LUIS) の意図とエンティティの事前構築済みのコレクションです。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: diberry
-ms.openlocfilehash: 36e527f9afdce58475ca4c3c6e54ce393c48c983
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: f424abd339bda6c29079e3d286cbe96593f16f52
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238898"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040042"
 ---
 # <a name="prebuilt-domain-reference"></a>事前構築済みのドメインのリファレンス
 このリファレンスは、[事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)に関する情報を提供します。事前構築済みのドメインは、LUIS が提供している意図とエンティティの事前構築済みのコレクションです。
@@ -181,7 +181,7 @@ Events ドメインには、コンサート、フェスティバル、スポー�
 | Name | イベントの名前。|公園でシェイクスピア|
 | PlaceName| イベントの場所の名前。|ルーブル<br/>オペラ ハウス<br/>ブロードウェイ|
 | PlaceType | イベントが開かれる場所の種類。|カフェ<br/>劇場<br/>ライブラリ|
-| Type | イベントの種類。|コンサート<br/>スポーツの試合|
+| type | イベントの種類。|コンサート<br/>スポーツの試合|
 
 ## <a name="fitness"></a>Fitness 
 Fitness ドメインには、フィットネス アクティビティの追跡に関する意図およびエンティティが用意されています。 意図には、メモの保存、残りの時間や距離、アクティビティ結果の保存が含まれます。

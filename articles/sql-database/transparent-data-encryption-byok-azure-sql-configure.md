@@ -2,28 +2,22 @@
 title: 'PowerShell と CLI: SQL TDE の有効化 - 独自のキー - Azure SQL Database | Microsoft Docs'
 description: PowerShell または CLI を使用して、保存時の暗号化に Transparent Data Encryption (TDE) を使用するように Azure SQL Database と Data Warehouse を構成する方法について説明します。
 services: sql-database
-keywords: ''
-documentationcenter: ''
-author: aliceku
-manager: craigg
-editor: ''
-ms.prod: ''
-ms.reviewer: vanto
-ms.suite: sql
-ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
-ms.tgt_pltfrm: ''
-ms.devlang: azurecli, powershell
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/28/2018
+author: aliceku
 ms.author: aliceku
-monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 11e190e1a4d0309bdbdcb7a578fccaf84fabb8e3
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 0fad0cd32e8df38c5a9c06ecf01a14340f1bc9ef
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543779"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165077"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>PowerShell と CLI: Azure Key Vault の独自のキーを使用して Transparent Data Encryption を有効にする
 
@@ -35,11 +29,11 @@ ms.locfileid: "45543779"
 - [推奨されますが、必須ではありません] TDE 保護機能のキー マテリアルのローカル コピーを作成するためのハードウェア セキュリティ モジュール (HSM) またはローカル キー ストアを用意します。
 - Azure PowerShell バージョン 4.2.0 以降がインストールされ、実行されている必要があります。 
 - TDE に使用する Azure Key Vault とキーを作成します。
-   - [PowerShell を使用した Key Vault の操作](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)
-   - [ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](https://docs.microsoft.com/azure/key-vault/key-vault-get-started#a-idhsmaif-you-want-to-use-a-hardware-security-module-hsm)
+   - [PowerShell を使用した Key Vault の操作](../key-vault/key-vault-get-started.md)
+   - [ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](../key-vault/key-vault-get-started.md#HSM)
  - TDE に使用するには、キー コンテナーに次のプロパティが必要です。
-   - [論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-   - [PowerShell で Key Vault の論理的な削除を使用する方法](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) 
+   - [論理的な削除](../key-vault/key-vault-ovw-soft-delete.md)
+   - [PowerShell で Key Vault の論理的な削除を使用する方法](../key-vault/key-vault-soft-delete-powershell.md) 
 - TDE に使用するには、キーに次の属性が必要です。
    - 有効期限がない
    - 無効化されていない
@@ -201,11 +195,11 @@ ms.locfileid: "45543779"
 - [推奨されますが、必須ではありません] TDE 保護機能のキー マテリアルのローカル コピーを作成するためのハードウェア セキュリティ モジュール (HSM) またはローカル キー ストアを用意します。
 - コマンドライン インターフェイス バージョン 2.0 以降。 最新バージョンをインストールして Azure サブスクリプションに接続するには、「[Azure クロスプラットフォーム コマンド ライン インターフェイス 2.0 のインストールと構成](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)」を参照してください。 
 - TDE に使用する Azure Key Vault とキーを作成します。
-   - [CLI 2.0 を使用した Key Vault の管理](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2)
-   - [ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](https://docs.microsoft.com/azure/key-vault/key-vault-get-started#a-idhsmaif-you-want-to-use-a-hardware-security-module-hsm)
+   - [CLI 2.0 を使用した Key Vault の管理](../key-vault/key-vault-manage-with-cli2.md)
+   - [ハードウェア セキュリティ モジュール (HSM) と Key Vault の使用手順](../key-vault/key-vault-get-started.md#HSM)
  - TDE に使用するには、キー コンテナーに次のプロパティが必要です。
-   - [論理的な削除](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-   - [CLI で Key Vault の論理的な削除を使用する方法](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli) 
+   - [論理的な削除](../key-vault/key-vault-ovw-soft-delete.md)
+   - [CLI で Key Vault の論理的な削除を使用する方法](../key-vault/key-vault-soft-delete-cli.md) 
 - TDE に使用するには、キーに次の属性が必要です。
    - 有効期限がない
    - 無効化されていない

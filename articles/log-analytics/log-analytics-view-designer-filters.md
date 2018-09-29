@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 0ad22562bd1f36bba7c0ab99fe504e82645033d3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: dcdc84f100ce534ea517f0201b0c090c3059a318
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131412"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160931"
 ---
 # <a name="filters-in-log-analytics-views"></a>Log Analytics ビューのフィルター
 [Log Analytics ビュー](log-analytics-view-designer.md)の**フィルター**では、ビュー自体を変更せずに、特定のプロパティの値によってビュー内のデータをフィルター処理することができます。  たとえば、ビューのユーザーが、特定のコンピューターまたは複数のコンピューターからのデータだけをフィルター表示したビューを利用できます。  1 つのビューに複数のフィルターを作成して、ユーザーが複数のプロパティでフィルター処理することが可能です。  この記事では、フィルターの使用方法およびカスタム ビューへの追加方法について説明します。
@@ -49,7 +49,7 @@ ms.locfileid: "37131412"
 | Setting | 説明 |
 |:---|:---|
 | フィールド名 | フィルター処理に使用されるフィールドの名前です。  これは**値のクエリ**の集計フィールドと一致している必要があります。 |
-| 値のクエリ | ユーザー用のフィルターのドロップダウン リストを設定するために実行するクエリ。  特定のフィールドに対して一意の値を指定するには、ここで [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) または [distinct](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/distinct-operator) のいずれかを使用する必要があります。また、**フィールド名**に一致する必要があります。  [sort](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator) を使用すると、ユーザーに表示される値を並び替えることができます。 |
+| 値のクエリ | ユーザー用のフィルターのドロップダウン リストを設定するために実行するクエリ。  特定のフィールドに対して一意の値を指定するには、ここで [summarize](/azure/kusto/query/summarizeoperator) または [distinct](/azure/kusto/query/distinctoperator) のいずれかを使用する必要があります。また、**フィールド名**に一致する必要があります。  [sort](/azure/kusto/query/sortoperator) を使用すると、ユーザーに表示される値を並び替えることができます。 |
 | タグ | フィルターをサポートするクエリで使用されるフィールドの名前です。ユーザーへの表示にも使われます。 |
 
 ### <a name="examples"></a>例
@@ -59,8 +59,8 @@ ms.locfileid: "37131412"
 | フィールド名 | 値のクエリ | タグ |
 |:--|:--|:--|
 | Computer   | Heartbeat &#124; distinct Computer &#124; sort by Computer asc | [Computers (コンピューター)] |
-| EventLevelName | Event &#124; distinct EventLevelName | 重大度 |
-| SeverityLevel | Syslog &#124; distinct SeverityLevel | 重大度 |
+| EventLevelName | Event &#124; distinct EventLevelName | severity |
+| SeverityLevel | Syslog &#124; distinct SeverityLevel | severity |
 | SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
 
 

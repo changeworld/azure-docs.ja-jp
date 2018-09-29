@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: e0c2eca1e776f8dac34810dcbc306f5f2c7b9c8d
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 92b13c27d5f9c110dbcb4aa70aa9b8ddde17531a
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35636357"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096742"
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>既にライブの Java Web アプリ向けの Application Insights
 

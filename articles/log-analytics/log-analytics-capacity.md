@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: e9163b3c29fd304c80eff46426a30c4fa0ce3b15
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 0244673d50e22124e8a0678e202004f06b0bca00
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130345"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182622"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>容量とパフォーマンス ソリューション (プレビュー) を使って Hyper-V 仮想マシンの容量を計画する
 

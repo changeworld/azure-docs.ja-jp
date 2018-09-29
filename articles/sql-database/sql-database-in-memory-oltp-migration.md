@@ -2,20 +2,22 @@
 title: インメモリ OLTP による SQL のトランザクション パフォーマンスの向上 | Microsoft Docs
 description: インメモリ OLTP を導入して、既存の SQL Database のトランザクション パフォーマンスを向上させます。
 services: sql-database
-author: jodebrui
-manager: craigg
-ms.reviewer: MightyPen
 ms.service: sql-database
-ms.custom: develop databases
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: jodebrui
 ms.author: jodebrui
-ms.openlocfilehash: a2f0d901abfa0013a6f53bacd72a9f8db2e0fd99
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: MightyPen
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 8c683e86cd78f4c4ebe7a537c469c875b8ca07fe
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648049"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159841"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>インメモリ OLTP を使用した SQL Database のアプリケーション パフォーマンスの向上
 [インメモリ OLTP](sql-database-in-memory.md) は、[Premium および Business Critical レベル](sql-database-service-tiers-vcore.md)のデータベースで、価格レベルを上げることなくトランザクション処理、データ インジェスト、一時的なデータ シナリオのパフォーマンスを向上させるために使用できます。 

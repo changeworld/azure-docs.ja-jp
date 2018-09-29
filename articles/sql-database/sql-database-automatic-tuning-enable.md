@@ -2,20 +2,21 @@
 title: Azure SQL Database での自動チューニングの有効化 | Microsoft Docs
 description: Azure SQL Database で自動チューニングを簡単に有効にすることができます。
 services: sql-database
-author: danimir
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: d825ddd75bfc829aa82bab4cede0381dda2d36da
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 4f043cfc9c85513abe16bde38c5cac6e16e34af9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575300"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063321"
 ---
 # <a name="enable-automatic-tuning"></a>自動チューニングの有効化
 
@@ -86,7 +87,7 @@ T-SQL で個々の自動チューニング オプションを構成するには�
    
 個々のチューニング オプションを ON に設定した場合、データベースによって継承された設定がオーバーライドされて、そのチューニング オプションが有効になります。 個々のチューニング オプションを OFF に設定した場合は、データベースによって継承された設定が同じようにオーバーライドされたうえで、そのチューニング オプションが無効になります。 自動チューニング オプションに DEFAULT を指定した場合、データベース レベルの自動チューニング設定から構成が継承されます。  
 
-自動チューニングを構成する T-SQL のオプションの詳細については、[SQL Database 論理サーバーの ALTER DATABASE SET オプション (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017&tabs=sqldbls#arguments-1) に関するページを参照してください。
+自動チューニングを構成する T-SQL のオプションの詳細については、[SQL Database 論理サーバーの ALTER DATABASE SET オプション (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) に関するページを参照してください。
 
 ## <a name="disabled-by-the-system"></a>システムによる無効化
 自動チューニングがデータベースに対して作用するあらゆる操作は監視されていて、ときにはデータベースに対して適切に作用しない可能性があると判断される場合があります。 そのような状況では、チューニング オプションがシステムによって無効化されます。 その原因はほとんどの場合、クエリ ストアが有効になっていないか、特定のデータベースに対して読み取り専用状態になっていることにあります。

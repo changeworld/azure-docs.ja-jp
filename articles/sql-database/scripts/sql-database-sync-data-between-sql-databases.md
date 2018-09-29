@@ -2,27 +2,22 @@
 title: PowerShell サンプル - 複数の Azure SQL データベース間の同期 | Microsoft Docs
 description: 複数の Azure SQL データベース間を同期するための Azure PowerShell サンプル スクリプト
 services: sql-database
-documentationcenter: sql-database
-author: allenwux
-manager: craigg
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: sql-database
-ms.custom: load & move data, mvc
+ms.subservice: data-movement
+ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: database
-ms.date: 04/01/2018
+author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 3091d772c9650c816e8ec56ea4a01b3819deabc9
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 80011c46b707dba09a66364e0f8a316b118f1daf
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715790"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055358"
 ---
 # <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>PowerShell を使用した複数の SQL Database 間の同期
  

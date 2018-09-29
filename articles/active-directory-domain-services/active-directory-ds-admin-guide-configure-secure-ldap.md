@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2018
+ms.date: 09/25/2018
 ms.author: maheshu
-ms.openlocfilehash: 5740f36889b8c4d6ce1604e6d0138f840e88ef1a
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 22c97da35416ba1ff593dfa5e41f557ea2ab1cc0
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505199"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182248"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
 この記事では、Azure AD Domain Services のマネージド ドメインに対して、セキュリティで保護されたライトウェイト ディレクトリ アクセス プロトコル (LDAPS) を有効にする方法について説明します。 セキュリティで保護された LDAP は、「Secure Sockets Layer (SSL)/トランスポート層セキュリティ (TLS) 経由のライトウェイト ディレクトリ アクセス プロトコル (LDAP)」としても知られています。
@@ -43,11 +43,9 @@ ms.locfileid: "39505199"
 ### <a name="requirements-for-the-secure-ldap-certificate"></a>セキュリティで保護された LDAP 証明書の要件
 セキュリティで保護された LDAP を有効にする前に、以下のガイドラインに従って有効な証明書を取得します。 マネージド ドメインに対して、セキュリティで保護された LDAP を無効な証明書または正しくない証明書で有効にしようとすると、エラーが発生します。
 
-1. 
-  **信頼された発行者** - 証明書は、セキュリティで保護された LDAP を使用してマネージド ドメインに接続するコンピューターによって信頼された機関から発行される必要があります。 この機関は、これらのコンピューターによって信頼された公開証明機関 (CA) またはエンタープライズ CA です。
+1. **信頼された発行者** - 証明書は、セキュリティで保護された LDAP を使用してマネージド ドメインに接続するコンピューターによって信頼された機関から発行される必要があります。 この機関は、これらのコンピューターによって信頼された公開証明機関 (CA) またはエンタープライズ CA です。
 2. **有効期間** - 証明書は少なくとも、今後 3 ～ 6 か月間有効である必要があります。 証明書の有効期限が切れると、マネージド ドメインへのセキュリティで保護された LDAP のアクセスが切断されます。
-3. 
-  **サブジェクト名** - 証明書のサブジェクト名は、マネージド ドメインに対してワイルドカードにする必要があります。 たとえば、ドメインが contoso100.com という名前の場合、証明書のサブジェクト名は *.contoso100.com にする必要があります。 DNS 名 (サブジェクト代替名) はこのワイルドカード名に設定します。
+3. **サブジェクト名** - 証明書のサブジェクト名は、マネージド ドメインに対してワイルドカードにする必要があります。 たとえば、ドメインが contoso100.com という名前の場合、証明書のサブジェクト名は *.contoso100.com にする必要があります。 DNS 名 (サブジェクト代替名) はこのワイルドカード名に設定します。
 4. **キー使用法** - 証明書は、デジタル署名およびキーの暗号化に対して構成される必要があります。
 5. **証明書の目的** - 証明書は、SSL サーバー認証に対して有効である必要があります。
 
@@ -67,9 +65,8 @@ ms.locfileid: "39505199"
 組織が公開 CA から証明書を取得する場合は、その公開 CA から Secure LDAP 証明書を取得します。 エンタープライズ CA を展開している場合は、そのエンタープライズ CA から Secure LDAP 証明書を取得します。
 
 > [!TIP]
-> 
->   **ドメイン サフィックスが ".onmicrosoft.com" であるマネージド ドメインには、自己署名証明書を使用します。**
-マネージド ドメインの DNS ドメイン名の末尾が ".onmicrosoft.com" の場合、公開証明機関から Secure LDAP 証明書を取得することはできません。 "onmicrosoft.com" ドメインは Microsoft が所有しているため、公開証明機関はこのサフィックスのドメインの Secure LDAP 証明書を発行することを拒否します。 このシナリオでは、自己署名証明書を作成し、その証明書を使用して Secure LDAP を構成します。
+> **ドメイン サフィックスが ".onmicrosoft.com" であるマネージド ドメインには、自己署名証明書を使用します。**
+> マネージド ドメインの DNS ドメイン名の末尾が ".onmicrosoft.com" の場合、公開証明機関から Secure LDAP 証明書を取得することはできません。 "onmicrosoft.com" ドメインは Microsoft が所有しているため、公開証明機関はこのサフィックスのドメインの Secure LDAP 証明書を発行することを拒否します。 このシナリオでは、自己署名証明書を作成し、その証明書を使用して Secure LDAP を構成します。
 >
 
 公開証明機関から取得した証明書が、「[セキュリティで保護された LDAP 証明書の要件](#requirements-for-the-secure-ldap-certificate)」に記載されているすべての要件を満たしていることを確認します。
@@ -84,7 +81,7 @@ Windows コンピューターで **管理者** として新しい PowerShell ウ
 
 ```powershell
 $lifetime=Get-Date
-New-SelfSignedCertificate -Subject *.contoso100.com `
+New-SelfSignedCertificate -Subject contoso100.com `
   -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment `
   -Type SSLServerAuthentication -DnsName *.contoso100.com
 ```

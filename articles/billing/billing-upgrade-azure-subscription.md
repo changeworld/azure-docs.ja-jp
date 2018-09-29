@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2017
-ms.author: jlian
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 089bb6f3fd187a56495dfd353ee89086e6bea120
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 7cb9d8e0f03dc5cb81d68d51be018e79074a32c2
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39124985"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391301"
 ---
 # <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする
 

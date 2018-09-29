@@ -2,20 +2,22 @@
 title: Azure SQL Elastic Scale の FAQ | Microsoft Docs
 description: Azure SQL Database の Elastic Scale に関してよく寄せられる質問。
 services: sql-database
-documentationcenter: ''
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 94ae9549bb5e09c80703a7db316675bff1272372
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: afa442897637e6c7255335798dc45b48aedb2b2a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647478"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158583"
 ---
 # <a name="elastic-database-tools-faq"></a>エラスティック データベース ツールに関する FAQ
 #### <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>シャードごとにシングルテナントはあるが、シャーディング キーがない場合、スキーマ情報にどのようにしてシャーディング キーを取り込むのですか。

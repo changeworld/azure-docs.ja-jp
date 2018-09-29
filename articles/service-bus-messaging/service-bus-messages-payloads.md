@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: 44c25aa589b757ec29dad6863ff1969e76aed872
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 636b48f409c1a86f7da87c38b6250610026d4547
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346238"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392605"
 ---
 # <a name="messages-payloads-and-serialization"></a>メッセージ、ペイロード、およびシリアル化
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/17/2015
 ms.author: mbullwin
-ms.openlocfilehash: 5e3a577f8c4759dec2d85a431ae31b61b2d582e0
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 0a95da39b73201ea15bd6d3be64de9a12571028d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35636349"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095187"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Azure Web アプリのための PowerShell を使用した Application Insights の設定
 [Microsoft Azure](https://azure.com) は、[Azure Application Insights](app-insights-overview.md) に [Azure 診断を送信するように構成](app-insights-azure-diagnostics.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。

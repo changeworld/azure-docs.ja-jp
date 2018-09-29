@@ -16,11 +16,11 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 22888c76b27d287a8d7fb0f0f1f0a0d39d92375d
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35778530"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092954"
 ---
 # <a name="troubleshooting-allocation-failure-when-you-deploy-cloud-services-in-azure"></a>Azure で Cloud Services をデプロイするときの割り当てエラーのトラブルシューティング
 ## <a name="summary"></a>まとめ

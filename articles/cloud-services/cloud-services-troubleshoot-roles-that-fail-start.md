@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: 4b4669ecdae474c8926a346ed02f40913cf67265
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35774540"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093493"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>クラウド サービス ロールが起動しないときのトラブルシューティング
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。

@@ -1,4 +1,4 @@
-診断データとログ データの収集、表示、分析を通じて VM を監視する手段が数多く用意されています。 VM に対して単純な[監視](../articles/monitoring-and-diagnostics/monitoring-overview-azure-monitor.md)を行うだけであれば、Azure Portal で VM の概要画面を使用できます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使って VM で診断を構成すれば、さらに詳しいメトリック データを収集することができます。 また、[Application Insights](../articles/application-insights/app-insights-overview.md) や [Log Analytics](../articles/log-analytics/log-analytics-overview.md) など、より高度な監視方法を使用することもできます。
+診断データとログ データの収集、表示、分析を通じて VM を監視する手段が数多く用意されています。 VM に対して単純な[監視](../articles/azure-monitor/overview.md)を行うだけであれば、Azure Portal で VM の概要画面を使用できます。 [拡張機能](../articles/virtual-machines/windows/extensions-features.md)を使って VM で診断を構成すれば、さらに詳しいメトリック データを収集することができます。 また、[Application Insights](../articles/application-insights/app-insights-overview.md) や [Log Analytics](../articles/log-analytics/log-analytics-queries.md) など、より高度な監視方法を使用することもできます。
 
 ## <a name="diagnostics-and-metrics"></a>診断とメトリック 
 

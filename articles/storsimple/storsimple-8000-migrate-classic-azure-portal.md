@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/08/2018
 ms.author: alkohli
 ms.openlocfilehash: 5a0da47b854e625f2f4a2fcf4c95ec566ba63093
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35642098"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095680"
 ---
 # <a name="migrate-subscriptions-and-storage-accounts-associated-with-storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービスに関連付けられているサブスクリプションとストレージ アカウントを移行する
 

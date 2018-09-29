@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2018
+ms.date: 09/26/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 8481fbd6c7cb82b34070f9bc8cc6d7f3f4b2518c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a5b2a30549072387df0ae9300de6523ba4069514
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937579"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221283"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker コマンドレット リファレンス
 
@@ -167,7 +167,7 @@ Start-AzsReadinessChecker
 
 
 
- ## <a name="description"></a>[説明]
+ ## <a name="description"></a>説明
 **Start-AzsReadinessChecker** コマンドレットでは、証明書、Azure アカウント、Azure サブスクリプション、および Azure Active Directory が検証されます。 Azure Stack の配置前、またはシークレット ローテーションなどの Azure Stack サービス アクションの前に検証を実行します。 このコマンドレットを使用して、インフラストラクチャ証明書および必要に応じて PaaS 証明書に対する証明書署名要求を生成することもできます。  最後に、コマンドレットを使用して PFX 証明書を再パッケージ化し、パッケージの一般的な問題を修復することができます。
 
 ## <a name="examples"></a>例
@@ -177,7 +177,7 @@ Start-AzsReadinessChecker
 $regionName = 'east'
 $externalFQDN = 'azurestack.contoso.com'
 $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"}
-Start-AzsReadinessChecker -regionName $regionName -externalFQDN $externalFQDN -subjectName $subjectHash -IdentitySystem ADFS -requestType MultipleCSR
+Start-AzsReadinessChecker -regionName $regionName -externalFQDN $externalFQDN -subject $subjectHash -IdentitySystem ADFS -requestType MultipleCSR
 ```
 
 この例では、Start-AzsReadinessChecker によって、リージョン名が "east"、外部 FQDN が "azurestack.contoso.com" の ADFS Azure Stack デプロイに適した証明書に対する複数の証明書署名要求 (CSR) が生成されます
@@ -479,7 +479,7 @@ Azure Stack の登録に使用する登録サブスクリプション ID を指�
 |----------------------------|---------|
 |次のコマンドを入力します:                        |String   |
 |位置:                   |named    |
-|既定値:              |すべて      |
+|既定値:              |All      |
 |パイプライン入力を許可する:      |False    |
 |ワイルドカード文字を許可する: |False    |
 
@@ -529,7 +529,7 @@ PaaS サービス/ホスト名を証明書の要求に追加するかどうか�
 |----------------------------|---------|
 |次のコマンドを入力します:                        |String   |
 |位置:                   |named    |
-|既定値:              |すべて      |
+|既定値:              |All      |
 |有効な値:                |"Certificate"、"AzureRegistration"、"AzureIdentity"、"Jobs"、"All" |
 |パイプライン入力を許可する:      |False    |
 |ワイルドカード文字を許可する: |False    |

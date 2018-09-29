@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5d9dfa60a1c25590ea913a1f3e8022742db3a66b
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 755cf2e9b99cbb443157d1aead2e3391eb4ccdba
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35636348"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094594"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>従来の Windows デスクトップ アプリケーションでの使用状況とパフォーマンスの監視
 

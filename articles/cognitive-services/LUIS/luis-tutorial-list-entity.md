@@ -4,23 +4,23 @@ description: リスト エンティティを追加して、単語や語句の変
 services: cognitive-services
 author: diberry
 titleSuffix: Azure
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: diberry
-ms.openlocfilehash: 12a6cfbe7267d3575fbb33978d7ea6e743802d12
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 42fde2b24f851129e24257bbfe6d65a96e235485
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237164"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036781"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>リスト エンティティを使用してエンティティの検出を向上する 
 このチュートリアルでは、[リスト エンティティ](luis-concept-entity-types.md)を使用してエンティティの検出を向上する方法について説明します。 リスト エンティティは、用語の完全一致なので、ラベルを付ける必要はありません。  
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 * リスト エンティティを作成する 

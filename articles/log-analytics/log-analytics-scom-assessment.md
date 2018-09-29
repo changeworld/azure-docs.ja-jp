@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 7ce8afa04751cd38e64b9ed920a6f863781e3ad1
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.component: ''
+ms.openlocfilehash: 39e11f35870fa3a3573e5f1af467cfbd898a1563
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126283"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182146"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 

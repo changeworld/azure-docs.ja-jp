@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 6ce7a5501c4b294fb6f8a655597122e2a04b4547
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 03d692ddfd6f41fd559e9b921f0214a9cd2ada22
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979245"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225227"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>IoT Edge にモデルをデプロイするための準備
 
@@ -29,7 +29,7 @@ Azure IoT Edge デバイスとは、Azure IoT Edge ランタイムを実行し�
 
 * Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-* Azure Machine Learning サービスのワークスペース。 これを作成するには、「[Azure Machine Learning サービスの概要](quickstart-get-started.md)」のドキュメントにある手順に従います。
+* Azure Machine Learning ワークスペース。 これを作成するには、「[Azure Machine Learning サービスの概要](quickstart-get-started.md)」のドキュメントにある手順に従います。
 
 * 開発環境。 詳細については、「[開発環境を構成する方法](how-to-configure-environment.md)」のドキュメントを参照してください。
 
@@ -53,7 +53,7 @@ Azure IoT Edge モジュールはコンテナー イメージに基づいてい�
     ```python
     from azureml.core  import Workspace
 
-    #Load existing workspace from the the config file info.
+    #Load existing workspace from the config file info.
     ws  = Workspace.from_config()
     ```    
 

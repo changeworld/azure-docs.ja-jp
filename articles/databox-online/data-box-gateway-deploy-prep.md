@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: f4c3cf5329c10cda3691370e946b8397662a8d66
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4c21245e05625f65b6b5dcf5f7081f5f5d1abb52
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953414"
+ms.locfileid: "47030607"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>チュートリアル: Azure Data Box Gateway のデプロイを準備する (プレビュー)
 
@@ -89,7 +89,7 @@ Data Box Gateway をデプロイするには、以下の順序どおりにチュ
 
 ## <a name="create-a-new-resource"></a>新しいリソースを作成
 
-Data Box Gateway リソースの 1 つのインスタンスが、複数の Data Box Gateway 仮想デバイスを管理できます。 新しい Data Box Gateway リソースを作成するには、次の手順を実行します。 
+新しい Data Box Gateway リソースを作成するには、次の手順を実行します。 
 
 仮想マシンを管理するために既存の Data Box Gateway リソースがある場合は、この手順をスキップして、「[アクティブ化キーの取得](#get-the-activation-key)」に進みます。
 
@@ -121,7 +121,7 @@ Azure portal で次の手順を実行して Data Box リソースを作成しま
 Data Box Gateway リソースを作成したら、ホスト システムに仮想デバイスをプロビジョニングするために、適切な仮想デバイスのイメージをダウンロードする必要があります。 仮想デバイスのイメージはオペレーティング システムに固有で、Azure portal でリソースの **[クイック スタート]** ページからダウンロードできます。
 
 > [!IMPORTANT]
-> Data Box Gateway 上で実行するソフトウェアは、Data Box Gateway リソースに対してのみ使用できます。
+> Data Box Gateway 上で実行されるソフトウェアは、Data Box Gateway リソースに対してのみ使用できます。
 
 
 [Azure Portal](https://portal.azure.com/) で、次の手順を実行します。

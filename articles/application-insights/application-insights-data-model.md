@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: aaff60e847e0e9908a4cd9c07cb6cd47630c5e3a
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: da59fef660db15a646fcf1077e6f649a0de678d5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635147"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092234"
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights Telemetry のデータ モデル
 

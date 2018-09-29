@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT Suite と Logic Apps | Microsoft Docs"
-description: "ビジネス プロセスのための Azure IoT Suite への Logic Apps の接続方法に関するチュートリアルです。"
-services: 
+title: Azure IoT Suite と Logic Apps | Microsoft Docs
+description: ビジネス プロセスのための Azure IoT Suite への Logic Apps の接続方法に関するチュートリアルです。
+services: ''
 suite: iot-suite
-documentationcenter: 
+documentationcenter: ''
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4629a7af-56ca-4b21-a769-5fa18bc3ab07
 ms.service: iot-suite
 ms.devlang: na
@@ -16,10 +16,11 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
 ms.openlocfilehash: 4a1db86f4b715533dfea545365eaf66de0574c5e
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47106562"
 ---
 # <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>チュートリアル: ロジック アプリを Azure IoT Suite リモート監視構成済みソリューションに接続する
 [Microsoft Azure IoT Suite][lnk-internetofthings] リモート監視構成済みソリューションは、IoT ソリューションを例示するエンド ツー エンド機能をすぐに使い始められる優れた方法です。 このチュートリアルでは、Logic App を Microsoft Azure IoT Suite リモート監視構成済みソリューションに追加する方法を説明します。 これらの手順は、IoT ソリューションをビジネス プロセスに接続してさらに活用できる方法を示すものです。
@@ -29,7 +30,7 @@ ms.lasthandoff: 11/20/2017
 このため、このチュートリアルの前に、以下を行う必要があります。
 
 * Azure サブスクリプションでリモート監視の事前構成済みソリューションのプロビジョニングを行います。
-* SendGrid アカウントを作成し、ビジネス プロセスをトリガーする電子メールを送信できるようにします。 [SendGrid](https://sendgrid.com/) で **[無料で試す]**をクリックし、無料試用版アカウントにサインアップできます。 無料試用版アカウントに登録したら、SendGrid でメールを送信するアクセス許可を付与する [API キー](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) を作成する必要があります。 この API キーはチュートリアルの後半で必要になります。
+* SendGrid アカウントを作成し、ビジネス プロセスをトリガーする電子メールを送信できるようにします。 [SendGrid](https://sendgrid.com/) で **[無料で試す]** をクリックし、無料試用版アカウントにサインアップできます。 無料試用版アカウントに登録したら、SendGrid でメールを送信するアクセス許可を付与する [API キー](https://sendgrid.com/docs/User_Guide/Settings/api_keys.html) を作成する必要があります。 この API キーはチュートリアルの後半で必要になります。
 
 このチュートリアルでは、構成済みソリューションのバックエンドのアクションを編集するために Visual Studio 2015 または Visual Studio 2017 が必要となります。
 
@@ -83,7 +84,7 @@ ms.lasthandoff: 11/20/2017
    > ロジック アプリの保存後に HTTP ポストの URL をコピーできますが、まず、アクションを追加する必要があります。
    > 
    > 
-8. 手動トリガーで **[+ 新しいステップ]** をクリックします。 次に、 **[アクションの追加]**をクリックします。
+8. 手動トリガーで **[+ 新しいステップ]** をクリックします。 次に、 **[アクションの追加]** をクリックします。
    
     ![](media/iot-suite-v1-logic-apps-tutorial/logicappcode.png)
 9. **[SendGrid - メールを送信]** を見つけてクリックします。
@@ -106,7 +107,7 @@ ms.lasthandoff: 11/20/2017
 ## <a name="set-up-the-eventprocessor-web-job"></a>EventProcessor Web ジョブをセットアップする
 このセクションでは、構成済みのソリューションを、作成したロジック アプリに接続します。 このタスクを完了するには、デバイス センサーの値がしきい値を超えたときにアクションが発生するとロジック アプリをトリガーする URL を追加します。
 
-1. git クライアントを使用して、最新バージョンの [azure-iot-remote-monitoring github リポジトリ][lnk-rmgithub]を複製します。 次に例を示します。
+1. git クライアントを使用して、最新バージョンの [azure-iot-remote-monitoring github リポジトリ][lnk-rmgithub]を複製します。 例: 
    
     ```cmd
     git clone https://github.com/Azure/azure-iot-remote-monitoring.git
@@ -154,7 +155,7 @@ ms.lasthandoff: 11/20/2017
 
 ![](media/iot-suite-v1-logic-apps-tutorial/logicapprun.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで Logic Apps を使用して構成済みソリューションをビジネス プロセスに接続しました。次を参照することで、構成済みソリューションのカスタマイズのオプションについて、さらに理解を深めることができます。
 
 * [事前構成済みのリモート監視ソリューションによる動的テレメトリの使用][lnk-dynamic]

@@ -2,27 +2,22 @@
 title: PowerShell の例 - SQL データ同期の同期スキーマを更新する | Microsoft Docs
 description: SQL データ同期の同期スキーマを更新するための Azure PowerShell のサンプル スクリプト
 services: sql-database
-documentationcenter: sql-database
-author: allenwux
-manager: craigg
-editor: ''
-tags: ''
-ms.assetid: ''
 ms.service: sql-database
-ms.custom: load & move data, mvc
+ms.subservice: data-movement
+ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: database
-ms.date: 01/10/2018
+author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: 7a913b2e55c681d0905db76eb0f0e0e99baf3142
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+manager: craigg
+ms.date: 01/10/2018
+ms.openlocfilehash: bd3e3a7383098d74f3753908585d3392fafcadc4
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054657"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056609"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>PowerShell を使用して、既存の同期グループの同期スキーマを更新する
 

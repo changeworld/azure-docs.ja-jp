@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722849"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093404"
 ---
 # <a name="import-and-publish-your-first-api"></a>最初の API のインポートと発行 
 
@@ -27,7 +27,7 @@ ms.locfileid: "38722849"
 
 バックエンド API が API Management (APIM) にインポートされると、APIM API はバックエンド API のファサードになります。 バックエンド API のインポート時に、ソース API と APIM API は同一です。 APIM を使用すると、バックエンド API に触れることなく必要に応じてファサードをカスタマイズできます。 詳しくは、「[API を変換および保護する](transform-api.md)」をご覧ください。 
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 最初の API のインポート
@@ -55,7 +55,7 @@ ms.locfileid: "38722849"
 
     以下の表の値を使用して、最初の API を作成します。
 
-    |設定|値|説明|
+    |Setting|値|説明|
     |---|---|---|
     |**OpenAPI の仕様**|http://conferenceapi.azurewebsites.net?format=json|API を実装しているサービスを参照します。 要求は、API Management によってこのアドレスに転送されます。|
     |**[表示名]**|*Demo Conference API\(デモ会議 API\)*|サービス URL の入力後に Tab キーを押すと、json の内容に基づいてこのフィールドに値が入力されます。 <br/>この名前は開発者ポータルに表示されます。|
@@ -69,7 +69,7 @@ ms.locfileid: "38722849"
     >[!NOTE]
     > API を発行するには、API を成果物に関連付ける必要があります。 この作業は **[設定] ページ**から行うことができます。
     
-3. **[作成]** を選択します。
+3. **作成**を選択します。
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure Portal での新しい APIM API のテスト
 
@@ -99,7 +99,7 @@ Azure Portal には、API の操作を表示およびテストするための便
 
 ## <a name="next-steps"> </a>次のステップ
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * 最初の API のインポート

@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
-ms.author: yashar
-ms.openlocfilehash: de4a771672b45f930385c2c923b3935c65b6c045
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.author: cwatson
+ms.openlocfilehash: 460cd3a5b05680563661e2f6519eaa3506eee03b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301648"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392084"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>仮想マシンに対する Azure 予約割引の適用方法
 

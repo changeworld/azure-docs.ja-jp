@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: b1945c68f0e320c834ae93a590f420403263a0fd
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: d99c9732bb1bf494b87d2073ba002264c7a51634
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098942"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221249"
 ---
 # <a name="run-a-cassandra-cluster-on-linux-in-azure-with-nodejs"></a>Azure 内の Linux 上にある Cassandra クラスターを Node.js で実行する
 
@@ -117,7 +117,7 @@ Azure にデプロイされたシステムのうち高い可用性(たとえば 
 デプロイ時には、次のソフトウェア バージョンが使用されます。
 
 <table>
-<tr><th>ソフトウェア</th><th>ソース</th><th>バージョン</th></tr>
+<tr><th>ソフトウェア</th><th>ソース</th><th>Version</th></tr>
 <tr><td>JRE    </td><td>[JRE 8](http://www.oracle.com/technetwork/java/javase/downloads/server-jre8-downloads-2133154.html) </td><td>8U5</td></tr>
 <tr><td>JNA    </td><td>[JNA](https://github.com/twall/jna) </td><td> 3.2.7</td></tr>
 <tr><td>Cassandra</td><td>[Apache Cassandra 2.0.8](http://www.apache.org/dist/cassandra/)</td><td> 2.0.8</td></tr>
@@ -396,7 +396,7 @@ Cassandra のスタートアップ スクリプトがこれらの jar を見つ�
         #Create internal load balancer
         Add-AzureInternalLoadBalancer -ServiceName $serviceName -InternalLoadBalancerName $ilbName -SubnetName "data" -StaticVNetIPAddress "$ilbIP"
         Write-Host "Created $ilbName"
-        #Add add the thrift endpoint to the internal load balancer for all the VMs
+        #Add the thrift endpoint to the internal load balancer for all the VMs
         foreach($vmName in $vmNames)
         {
             Get-AzureVM -ServiceName $serviceName -Name $vmName |
@@ -426,7 +426,7 @@ VM にログインし、次の処理を行います。
 8 ノードのクラスターについて、以下のような情報が画面に表示されます。
 
 <table>
-<tr><th>状態</th><th>Address    </th><th>Load    </th><th>トークン    </th><th>所有 </th><th>ホスト ID    </th><th>ラック</th></tr>
+<tr><th>Status</th><th>Address    </th><th>Load    </th><th>トークン    </th><th>所有 </th><th>ホスト ID    </th><th>ラック</th></tr>
 <tr><th>UN    </td><td>10.1.2.4     </td><td>87.81 KB    </td><td>256    </td><td>38.0%    </td><td>Guid (removed)</td><td>rack1</td></tr>
 <tr><th>UN    </td><td>10.1.2.5     </td><td>41.08 KB    </td><td>256    </td><td>68.9%    </td><td>Guid (removed)</td><td>rack1</td></tr>
 <tr><th>UN    </td><td>10.1.2.6     </td><td>55.29 KB    </td><td>256    </td><td>68.8%    </td><td>Guid (removed)</td><td>rack2</td></tr>

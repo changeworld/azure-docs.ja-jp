@@ -3,19 +3,22 @@ title: SQL 接続エラー、一時エラーの修正 | Microsoft Docs
 description: Azure SQL Database での SQL 接続エラーまたは一時エラーのトラブルシューティング、診断、防止の方法について説明します。
 keywords: sql 接続, 接続文字列, 接続の問題, 一時エラー, 接続エラー
 services: sql-database
-author: dalechen
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/01/2018
+author: dalechen
 ms.author: ninarn
-ms.openlocfilehash: 1da4e8d94007653a43f187322c1d0e4077e337fa
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 08/01/2018
+ms.openlocfilehash: f381eaad61c98228ea9be2665ebed5878b666317
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398939"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064239"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>SQL Database の SQL 接続エラーと一時エラーのトラブルシューティング、診断、防止
 この記事では、クライアント アプリケーションが Azure SQL Database とやり取りする際に発生する接続エラーと一時エラーを防止、トラブルシューティング、診断、軽減する方法について説明します。 再試行ロジックの構成方法、接続文字列の作成方法、およびその他の接続設定の調整方法について説明します。

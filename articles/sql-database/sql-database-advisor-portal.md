@@ -2,20 +2,22 @@
 title: パフォーマンスに関する推奨事項の適用 - Azure SQL Database | Microsoft Docs
 description: Azure Portal を使用して、Azure SQL Database のパフォーマンスを最適化できるパフォーマンスの推奨事項を調べます。
 services: sql-database
-author: danimir
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 67432c8751cd8809649d41195957a7d68b392074
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: d06d29fb43ea8d8971c3f013c1e66406a30798d3
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665601"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064258"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 
@@ -127,7 +129,7 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 | Pending |推奨インデックスの適用コマンドは受信済みで、実行が予定されています。 |
 | 実行中 |推奨事項は適用中です。 |
 | Validating |推奨事項が正常に適用され、サービスは効果を測定しています。 |
-| 成功 |推奨事項が正常に適用され、効果が測定されました。 |
+| Success |推奨事項が正常に適用され、効果が測定されました。 |
 | Error |推奨インデックスの適用プロセス中にエラーが発生しました。 一時的な問題か、またはテーブルおよびスクリプトへのスキーマの変更が無効になっている可能性があります。 |
 | 復元 |推奨インデックスは適用されましたが、非効率なインデックスと見なされたため、自動的に元に戻されています。 |
 | 復元済み |推奨事項は元に戻されました。 |

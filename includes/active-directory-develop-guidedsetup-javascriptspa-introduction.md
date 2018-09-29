@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: b816d94c8d85ad7d28dfc76072627423a30f6704
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2a4c389d063bb63f2fa2293d54236f99d7035e0e
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293623"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060760"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>JavaScript Single Page Application (SPA) から Microsoft Graph API を呼び出す
 
@@ -47,6 +47,7 @@ ms.locfileid: "46293623"
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|JavaScript プレビュー用の Microsoft Authentication Library|
 
 > [!NOTE]
-> *msal.js* は、"*Azure Active Directory v2 エンドポイント*" を対象とします。これにより、個人アカウント、または学校および職場アカウントでサインインして、トークンを取得することができます。 "*Azure Active Directory v2 エンドポイント*" には、[いくつかの制限](..\articles\active-directory\develop\active-directory-v2-limitations.md)があります。 学校および職場アカウントのみを使用する場合は、*adal.js* と "*V1 エンドポイント*" を使用します。 v1 エンドポイントと v2 のエンドポイントの相違点を理解するには、[v1 と v2 の比較](../articles/active-directory/develop/azure-ad-endpoint-comparison.md)に関するページを参照してください。
+> *msal.js* は、"*Azure Active Directory v2 エンドポイント*" を対象とします。これにより、個人アカウント、または学校および職場アカウントでサインインして、トークンを取得することができます。 "*Azure Active Directory v2 エンドポイント*" には、[いくつかの制限](..\articles\active-directory\develop\active-directory-v2-limitations.md)があります。
+> v1 エンドポイントと v2 のエンドポイントの相違点を理解するには、[v1 と v2 の比較](../articles/active-directory/develop/azure-ad-endpoint-comparison.md)に関するページを参照してください。
 
 <!--end-collapse-->

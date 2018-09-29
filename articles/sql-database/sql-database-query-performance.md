@@ -2,20 +2,22 @@
 title: Azure SQL Database の Query Performance Insight | Microsoft Docs
 description: クエリのパフォーマンスを監視して、Azure SQL Database の CPU 消費量の多いクエリを明らかにします。
 services: sql-database
-author: danimir
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 5069b4e69c53ed93e9018cef2517f6125b838d12
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: f46d5a31667f52f553bcfdbd20ff56439d526144
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524167"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163309"
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Azure SQL Database Query Performance Insight
 リレーショナル データベースのパフォーマンスの管理とチューニングは、かなりの専門知識と時間の投入を必要とする困難な作業です。 Query Performance Insight を使用すると、短時間でデータベース パフォーマンスのトラブルシューティングを行うことができます。以下の情報が提供されます。
