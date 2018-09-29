@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/19/2016
 ms.author: mbullwin
-ms.openlocfilehash: c6ef869bd211b156ba17d2aa8f384d15269b6d59
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 0f2bf1e318729ae8ccb0f4f521b2a795cf932a86
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35634270"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091326"
 ---
 # <a name="powershell-script-to-create-an-application-insights-resource"></a>Application Insights リソースを作成するための PowerShell スクリプト
 

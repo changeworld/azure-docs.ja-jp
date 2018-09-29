@@ -2,20 +2,22 @@
 title: ディザスター リカバリー ソリューションの設計 - Azure SQL Database | Microsoft Docs
 description: フェールオーバー パターンを適切に選んで、ディザスター リカバリーを実現するクラウド ソリューションを設計する方法について説明します。
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: elastic-pools
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/27/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8f365d123a234f367a1415232a714d2c18663b63
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+manager: craigg
+ms.date: 08/27/2018
+ms.openlocfilehash: 9ed01103a83073d1bbb22f476a9115af816571aa
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124072"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166556"
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>SQL Database エラスティック プールを使用したアプリケーションの障害復旧戦略
 長年にわたって、私たちはクラウド サービスが絶対確実なものではなく、壊滅的な状況になる可能性があることを学んできました。 SQL Database には、そのような状況が発生した場合にアプリケーションのビジネス継続性を提供するための機能がいくつかあります。 [エラスティック プール](sql-database-elastic-pool.md)と Single Database は、同様のディザスター リカバリー (DR) 機能をサポートしています。 この記事では、SQL Database のこれらのビジネス継続性機能を活用する、エラスティック プールのいくつかの DR 戦略について説明します。

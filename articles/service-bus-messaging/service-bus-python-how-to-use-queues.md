@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 04/30/2018
+ms.date: 08/30/2018
 ms.author: spelluru
-ms.openlocfilehash: afc310ce4dd373b632f183245ab427a3a65a0af6
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: cc8fc62811fe019dcaf613a1c0b50d89183e6555
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696770"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406194"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Python で Service Bus キューを使用する方法
 

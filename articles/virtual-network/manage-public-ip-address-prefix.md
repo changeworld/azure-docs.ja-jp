@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 1426bddb6e9e3e110fe5a86ed451ec40c2677e78
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 71dee9f36a3e8e11cc23f966c9157f6409a3b5e0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957507"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405735"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>パブリック IP アドレス プレフィックスの作成、変更、削除
 
@@ -78,7 +78,6 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
     |Name|[はい]|パブリック IP アドレスには、選択したリソース グループ内で一意の名前を付ける必要があります。|
    |アイドル タイムアウト (分)|いいえ |クライアントからキープアライブ メッセージを送信しなくても TCP 接続または HTTP 接続が開いたまま維持される時間 (分)。 |
    |DNS 名ラベル|いいえ |作成する Azure リージョン (すべてのサブスクリプション、すべての顧客) で一意の名前を付けます。 指定した名前を使用してリソースに接続できるよう、DNS 内の名前と IP アドレスが Azure によって自動的に登録されます。 指定した名前に既定のサブネット (*location.cloudapp.azure.com* など、"location" は選択した場所) が付加されて、完全修飾 DNS 名が作成されます。詳細については、[Azure パブリック IP アドレスで Azure DNS を使用する方法](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address)に関するページを参照してください。|
-   |可用性ゾーン|  いいえ  | この設定は、サポートされているリージョンを選択した場合にのみ表示されます。 サポートされている場所の一覧については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページを参照してください。ゾーン冗長が自動的に選択され、データ パスのゾーン障害からの復元性が高くなります。 特定のゾーンを保証したい場合は (これは、ゾーン障害からの復元性が高くありません)、特定のゾーンを選択できます。
 
 ## <a name="view-or-delete-a-prefix"></a>プレフィックスの表示または削除
 

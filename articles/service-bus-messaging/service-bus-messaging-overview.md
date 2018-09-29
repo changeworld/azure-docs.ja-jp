@@ -8,15 +8,15 @@ manager: timlt
 editor: ''
 ms.service: service-bus-messaging
 ms.topic: overview
-ms.date: 05/22/2018
+ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: a291d4d7ecafde366a20b7e7f1f12a95303da90d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 08295ceeb2ebe94a96eaade0a6443f0f59212d60
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697620"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394031"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
 

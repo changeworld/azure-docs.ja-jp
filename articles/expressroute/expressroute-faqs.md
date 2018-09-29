@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2a7842a50690049507e00b85c8736e63da002503
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 101dec93713983e5f2082a59103288fcda346740
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950167"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419306"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -348,9 +348,9 @@ Office 365 サービスでは、Premium アドオンを有効にする必要が�
 
 * 2017 年 8 月 1 日以降に構成された ExpressRoute 回路の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 既定ではプレフィックスは表示されません。
 
-## <a name="globalreach"></a>ExpressRoute Direct (プレビュー)
+## <a name="expressRouteDirect"></a>ExpressRoute Direct (プレビュー)
 
-[!INCLUDE [Global Reach](../../includes/expressroute-direct-faq-include.md)]
+[!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 
 ## <a name="globalreach"></a>Global Reach (プレビュー)
 

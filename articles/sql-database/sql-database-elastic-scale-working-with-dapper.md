@@ -2,19 +2,22 @@
 title: Dapper での Elastic Database クライアント ライブラリの使用 | Microsoft Doc
 description: Dapper でのエラスティック データベース クライアント ライブラリの使用。
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 6619f2dfe5f58cd23dbd0ffe6e2b545b803f3acc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 1b0200413fe40acac997570fdccc970a78cf6ece
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647930"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162233"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Dapper でのエラスティック データベース クライアント ライブラリの使用
 このドキュメントは、Dapper を使用してアプリケーションを構築する開発者が、 [エラスティック データベース ツール](sql-database-elastic-scale-introduction.md) を導入し、シャーディングを実装してデータ層をスケール アウトするアプリケーションを作成する場合に使用します。  このドキュメントでは、エラスティック データベース ツールと統合するために Dapper ベースのアプリケーションに加える必要がある変更点を示します。 ここでは、Dapper を使用してエラスティック データベース シャード管理とデータ依存ルーティングを構成する方法を重点的に説明します。 

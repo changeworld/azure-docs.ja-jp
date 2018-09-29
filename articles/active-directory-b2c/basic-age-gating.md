@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9d24e37642a41e4d60b33f42a60d7e56cb4b35b5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9a9a86d445deaea4872615f443ad53f76638a758
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446726"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056524"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Azure AD B2C で年齢制限を使用する
 
 >[!IMPORTANT]
->この機能はプライベート プレビュー段階にあります。  これが利用可能になった時点で[サービス ブログ](https://blogs.msdn.microsoft.com/azureadb2c/)で詳細を確認するか、AADB2CFeedback@microsoft.com までお問い合わせください。  これは運用環境のディレクトリでは使用しないでください。これらの新機能を使用すると、データが失われる可能性があります。また、一般公開されるまでは、動作に予期しない変更が生じる可能性もあります。  
+>この機能はプライベート プレビュー段階にあります。  これが利用可能になった時点で[サービス ブログ](https://blogs.msdn.microsoft.com/azureadb2c/)で詳細を確認するか、AADB2CPreview@microsoft.com までお問い合わせください。  これは運用環境のディレクトリでは使用しないでください。これらの新機能を使用すると、データが失われる可能性があります。また、一般公開されるまでは、動作に予期しない変更が生じる可能性もあります。  
 >
 
 ##<a name="age-gating"></a>年齢制限
@@ -56,13 +56,3 @@ Active Directory B2C で保護者の同意なしに未成年者をブロック�
 サインアップ、サインイン、またはその両方を許可するユーザー フローでは、アプリケーションからの同意のない未成年者をブロックすることを選択できます。  ブロックされているユーザーを Azure AD B2C で処理するためのオプションは 2 つあります。
 * JSON をアプリケーションに再度送信する - このオプションでは、未成年者がブロックされたという応答をアプリケーションに再度送信します。
 * エラー ページを表示する - アプリケーションにアクセスできないことを知らせるページがユーザーに表示されます。
-
-##<a name="known-issues"></a>既知の問題
-###<a name="format-for-the-response-when-a-minor-is-blocked"></a>未成年者がブロックされる場合の応答の形式
-現在、この応答の形式は正しくありません。このバグは今後の更新で解決される予定です。
-
-###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>セットアップ時に追加された特定の属性を削除するとディレクトリで年齢制限を使用できなくなる
-年齢制限の設定では、`Properties` のオプションを使用してディレクトリを構成しました。  グラフから `legalCountry` または `dateOfBirth` を削除した場合、ディレクトリで年齢制限を使用できなくなります。また、これらのプロパティを再作成することはできません。
-
-###<a name="list-of-countries-is-incomplete"></a>国の一覧が不完全である
-現在、legalCountry の国の一覧は不完全なため、今後の更新で残りの国を追加する予定です。

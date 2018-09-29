@@ -49,6 +49,8 @@ items:
       href: tutorial-linux-vm-access-nonaad.md
     - name: Azure Cosmos DB へのアクセス
       href: tutorial-linux-vm-access-cosmos-db.md
+    - name: Azure AD Graph API へのアクセス
+      href: tutorial-linux-vm-access-azure-ad-graph.md
     - name: ユーザー割り当てマネージド ID による Azure Resource Manager へのアクセス
       href: msi-tutorial-linux-vm-access-arm.md
   - name: Azure Service Bus
@@ -133,9 +135,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-msi
   - name: AAD 開発者フォーラム
     href: https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences
-ms.openlocfilehash: 253e12e37c719a2a2bb1441a1ccea8f6fe617615
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3f063a2353e9663c5f933f67d7e45807f4b4a0e4
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055341"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452362"

@@ -1,21 +1,23 @@
 ---
 title: Azure SQL Database マルチテナント アプリの例 - Wingtip SaaS | Microsoft Docs
 description: Azure SQL Database を使用するマルチテナント アプリケーションのサンプルを使用して、Wingtip SaaS の例について説明します
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: ccac68fb22baed668ed786fd594eda122f2522ee
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: dd67e49a80c403e807b24276cf14b9e8c47037b9
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643918"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055511"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナントごとのデータベース パターンを使用するマルチテナント SaaS アプリケーションの概要
 

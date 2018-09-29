@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 09/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: a36609ae63351070bb28469d9ccf1f3deb7bc6ff
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 5a9621ef9a8d6c545617e5bf3ef6f4197b70be88
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616951"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419609"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack の診断ツール
 
@@ -143,14 +143,6 @@ if($s)
  |クラウド|IdentityProvider|OnboardRP|     |   
  |クラスター|iDns|PXE|     |
  |   |   |   |    |
-
-
-### <a name="bkmk_gui"></a>グラフィカル ユーザー インターフェイスを使用してログを収集する
-Get-AzureStackLog コマンドレットのパラメーターを指定して Azure Stack ログを取得する代わりに、主要な Azure Stack ツールの GitHub ツール リポジトリ (http://aka.ms/AzureStackTools) にあるオープン ソースの Azure Stack ツールを使用することもできます。
-
-**ERCS_AzureStackLogs.ps1** PowerShell スクリプトは GitHub ツール リポジトリに格納され、定期的に更新されています。 最新バージョンを入手するために、http://aka.ms/ERCS から直接ダウンロードすることをお勧めします。 管理 PowerShell セッションから開始されるこのスクリプトは、特権エンドポイントに接続し、指定されたパラメーターで Get-AzureStackLog を実行します。 パラメーターが指定されていない場合、スクリプトは、既定でグラフィカル ユーザー インターフェイスを使用して、パラメーターを入力するように求めます。
-
-ERCS_AzureStackLogs.ps1 PowerShell スクリプトの詳細については、[短いビデオ](https://www.youtube.com/watch?v=Utt7pLsXEBc)を視聴するか、Azure Stack ツールの GitHub リポジトリにある [Readme ファイル](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) を参照します。 
 
 ### <a name="additional-considerations"></a>追加の考慮事項
 

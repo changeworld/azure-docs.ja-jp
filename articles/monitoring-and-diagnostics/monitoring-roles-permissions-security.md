@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: c99186d73886041d92bea38b0dd4dc17f55001e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1a42c13bc0b441074829b1753c1d3cab8fbfaccf
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977861"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407571"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
 チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、開発エンジニアなど) がいる場合、またはマネージド サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
@@ -181,14 +181,8 @@ New-AzureRmRoleDefinition -Role $role
 多くの場合、監視データはストレージ アカウントに書き込まれます。 ストレージ アカウントにコピーされたデータに、権限を持たないユーザーがアクセスできないようにすることができます。 さらにセキュリティを強化するために、"選択されたネットワーク" を使用できるストレージ アカウントを制限することによって、権限を持つリソースと信頼できる Microsoft サービスのみがストレージ アカウントにアクセスできるように、ネットワーク アクセスをロックすることができます。
 ![Azure Storage の [設定] ダイアログ](./media/monitoring-roles-permissions-security/secured-storage-example.png) Azure Monitor は、このような "信頼された Microsoft サービス" の 1 つと見なされます。信頼された Microsoft サービスがセキュリティで保護されたストレージにアクセスできるようにする場合、Azure Monitor にはセキュリティで保護されたストレージ アカウントへのアクセス権が付与されます。このような保護された条件下で Azure Monitor 診断ログ、アクティビティ ログ、およびメトリックをストレージ アカウントに書き込むことができます。 これにより、Log Analytics から、セキュリティで保護されたストレージのログを読み取ることもできます。   
 
+
 詳細については、[ネットワーク セキュリティと Azure Storage](../storage/common/storage-network-security.md) に関するページを参照してください。
- 
-### <a name="secured-virtual-networks-with-service-endpoints"></a>セキュリティで保護された仮想ネットワークとサーバー エンドポイント 
-
-仮想ネットワーク (VNet) を使用すると、指定したトラフィックのみが Azure リソースと通信できるようにトラフィックを制限することができます。 サービス エンドポイントを指定して、Azure Monitor を含めるように VNet を拡張することができます。こうすることで、リソースは仮想ネットワークから Azure Monitor にログおよびメトリック情報を引き続き安全に送信することができます。  
-
-詳細については、[仮想ネットワーク エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)に関するページを参照してください。 
-
 
 ## <a name="next-steps"></a>次の手順
 * [Resource Manager で RBAC とアクセス許可を確認します](../role-based-access-control/overview.md)

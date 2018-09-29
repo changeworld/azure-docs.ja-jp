@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: bc0e0bfb8d4dc8637c191785a98f5d15e086cbf5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 6be1605ee1bb385c303d100729238a8eb71605d0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696433"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407333"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Service Bus のトランザクション処理の概要
 

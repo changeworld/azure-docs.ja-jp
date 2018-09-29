@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mbullwin
 ms.openlocfilehash: 6fcc11b0120c9d19cfc1482100ac68d04c9d625d
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635260"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095346"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする
 

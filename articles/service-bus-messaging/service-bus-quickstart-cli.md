@@ -7,14 +7,14 @@ manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 05/22/2018
+ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 279f71496cc408ba991c4335f98eff649ad1b923
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2c931ebd2d415b3423f1de16462e2c780f59b8d8
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983992"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406959"
 ---
 # <a name="quickstart-send-and-receive-messages-using-azure-cli-and-java"></a>クイック スタート: Azure CLI と Java を使用してメッセージを送受信する
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 293671ac3426a92453e0c1642d421038824ac02c
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: b4787f5b9657afbcedbd3803d6a17af9c8cf9099
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886975"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406993"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
 Windows 仮想マシン (VM) をオンプレミスから Microsoft Azure にアップロードする前に、仮想ハード ディスク (VHD または VHDX) を準備する必要があります。 Azure では、VHD ファイル形式で容量固定ディスクの**第 1 世代の VM のみ**がサポートされています。 VHD のサイズの上限は、1,023 GB です。 第 1 世代の VM は、VHDX ファイル システムから VHD ファイル システムに、また容量可変ディスクから容量固定ディスクに変換できます。 ただし、VM の世代を変更することはできません。 詳細については、[Hyper-V で第 1 世代と第 2 世代のどちらの VM を作成する必要があるか](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)に関するページを参照してください。
@@ -374,7 +374,7 @@ sysrep は、Windows インストールに組み込むことができるプロ�
 特殊化されたディスクから VM を作成する方法の詳細については、以下を参照してください。
 
 - [特殊化されたディスクからの VM の作成](create-vm-specialized.md)
-- [特殊化された VHD ディスクからの VM の作成](https://review.docs.microsoft.com/en-us/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
+- [特殊化された VHD ディスクからの VM の作成](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
 一般化されたイメージを作成する場合は、sysprep を実行する必要があります。 Sysprep の詳細については、「[Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。 
 

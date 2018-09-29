@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 5087b8a1d675fb6fb2bbfb2b46a09c215bf5e9ae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2184d006bb99d57f50e71c0096d68b7a0b69a219
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998765"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162289"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 
@@ -44,7 +44,7 @@ Cloud Shell は、Azure CLI と Azure PowerShell のアカウント アクセス
 
 ### <a name="azure-drive-azure"></a>Azure ドライブ (Azure:)
 
-Cloud Shell (プレビュー) の PowerShell は、Azure ドライブ (`Azure:`) で開始します。
+Cloud Shell の PowerShell は、Azure ドライブ (`Azure:`) で開始します。
 Azure ドライブを使用すると、ファイル システムのナビゲーションと同じように、Compute、Network、Storage などの Azure リソースを簡単に検出およびナビゲーションできるようになります。
 使用しているドライブに関係なく、引き続き使い慣れた [Azure PowerShell コマンドレット](https://docs.microsoft.com/powershell/azure)を使用してこれらのリソースを管理できます。
 Azure リソースに対するすべての変更は、Azure Portal で直接行われたものも、Azure PowerShell コマンドレット経由で行われたものも、Azure ドライブに反映されます。  `dir -Force` を実行してリソースを最新の情報に更新できます。
@@ -81,6 +81,6 @@ Cloud Shell には、Terraform、Ansible、Chef InSpec などのオープンソ�
 
 ## <a name="next-steps"></a>次の手順
 [Cloud Shell の Bash のクイックスタート](quickstart.md) <br>
-[Cloud Shell での PowerShell (プレビュー) のクイックスタート](quickstart-powershell.md) <br>
-[Azure CLI について](https://docs.microsoft.com/cli/azure/) <br>
+[Cloud Shell の PowerShell のクイック スタート](quickstart-powershell.md) <br>
+[Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/) <br>
 [Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/) <br>

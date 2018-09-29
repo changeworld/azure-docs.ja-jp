@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: amberb
-ms.openlocfilehash: 3019fe5f8b44eaa32d4ab309f296d6b4574df1d3
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: cwatson
+ms.openlocfilehash: 4a8b2c07754b1a1c9679f7b044f112bf03dfb433
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061372"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392110"
 ---
 # <a name="understand-free-service-to-meter-mapping"></a>無料サービスと測定のマッピングについて
 
@@ -27,7 +27,7 @@ ms.locfileid: "37061372"
 
 ## <a name="service-to-meter-mapping-for-free-account-eligible-services"></a>無料アカウント対象サービスの、サービスと測定のマッピング 
 
-|    サービス   | Azure Portal での測定名 | 使用状況ファイル/API での測定名 | 測定 ID |
+|    Service   | Azure Portal での測定名 | 使用状況ファイル/API での測定名 | 測定 ID |
 | ------------ | -------------------------- | -------------------------| -------- |
 | B1S Linux VM | コンピューティング時間 - Standard_B1 VM | コンピューティング時間 - 無料 | 8260cba2-4437-47d1-a31e-2561cd370f50
 | B1S Windows VM | コンピューティング時間 - Standard_B1 VM (Windows) | コンピューティング時間 - 無料 | ff3e6fa5-ee46-478e-8d0e-b629f4f8a8ac
@@ -43,13 +43,13 @@ ms.locfileid: "37061372"
 | ホット ブロック BLOB Storage | Standard IO - ホット ブロック BLOB (GB) - ローカル冗長 | Standard IO - ホット ブロック BLOB (GB) - 無料 | 67a3a3fd-826f-42c1-8843-bffa14f0da13
 | ホット ブロック BLOB Storage | Standard IO - ホット ブロック BLOB 書き込み操作 (10,000 件) | Standard IO - ホット ブロック BLOB 書き込み操作 (10,000 件) - 無料 | b34bbb76-edce-4c2d-a288-81a2db1fea53
 | ホット ブロック BLOB Storage  | Standard IO - ホット ブロック BLOB 書き込み/リスト操作 (10,000 件) | Standard IO - ホット ブロック BLOB 書き込み/リスト操作 (10,000 件) - 無料 | 7e68cf36-1198-4d3b-baa7-86a74c5b3079
-| 管理ディスク *  | Standard 管理ディスク/スナップショット (GB) - ローカル冗長 | Standard 管理ディスク/スナップショット (GB) - 無料 | ad94c237-52a5-4804-ae65-38c5bf85ef42
-| 管理ディスク *  | Standard 管理対象ディスク操作 (10,000 件) | Standard 管理対象ディスク操作 (10,000 件) - 無料 | 82cc6ea4-0abd-43ac-acc0-ec34edf0f14c
+| 管理ディスク *  | Standard マネージド ディスク/スナップショット (GB) - ローカル冗長 | Standard マネージド ディスク/スナップショット (GB) - 無料 | ad94c237-52a5-4804-ae65-38c5bf85ef42
+| 管理ディスク *  | Standard マネージド ディスク操作 (10,000 件) | Standard マネージド ディスク操作 (10,000 件) - 無料 | 82cc6ea4-0abd-43ac-acc0-ec34edf0f14c
 | 管理ディスク *  | Premium Storage - ページ BLOB/P6 (ユニット) - ローカル冗長 | Premium Storage - ページ BLOB/P6 (ユニット) - 無料 | 2b98c168-27ca-4cc1-b509-e887dec87657
 | SQL Database | Standard S0 Database 日数 - SQL Database | Standard S0 Database 日数 - 無料 | dd6b69d3-9be0-4a91-abff-2c58bbcafd1d
 | 共有 - 帯域幅 ** | データ転送 (送信) (GB) | データ転送 (送信) (GB) - 無料 | 0fc067a1-65d2-46da-b24b-7a9cbe2c69bd
 
-\* Windows 仮想マシンを作成して管理対象ディスクを選択すると、仮想マシンの一部として管理対象ディスク メーターが消費されます。
+\* Windows 仮想マシンを作成してマネージド ディスクを選択すると、仮想マシンの一部としてマネージド ディスク メーターが消費されます。
 
 \** 共有メーターは、複数のサービスで使用できます。 たとえば、仮想マシンとストレージの両方が、データ転送 (送信) (GB) メーターに対して使用状況を出力します。
 

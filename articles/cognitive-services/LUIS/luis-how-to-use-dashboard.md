@@ -3,18 +3,18 @@ title: LUIS アプリのアプリケーション ダッシュボード | Microso
 description: ご自身のアプリをひと目で監視できる視覚的なレポート作成ツール、アプリケーション ダッシュボードについて説明します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 03/01/2018
 ms.author: diberry
-ms.openlocfilehash: 518227d9f4165a08fafefa357de255d97c710f61
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cab07a994f2bdfb7ef8491adbb482c1902e4d4cb
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224502"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031987"
 ---
 # <a name="application-dashboard"></a>アプリケーション ダッシュボード
 アプリ ダッシュボードを使用すると、ご自身のアプリをひと目で監視することができます。 **ダッシュボード**は、**[マイ アプリ]** でアプリケーション名をクリックし、上部パネルから **[ダッシュボード]** を選択してアプリを開いたときに表示されます。 

@@ -1,21 +1,23 @@
 ---
 title: SaaS アプリのディザスター リカバリーのための Azure SQL Database の geo 冗長バックアップの使用 | Microsoft Docs
 description: 停止が発生した場合に Azure SQL Database の geo 冗長バックアップを使用して、マルチテナント SaaS アプリを復旧する方法について説明します
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: saas apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/16/2018
+author: AyoOlubeko
 ms.author: ayolubek
-ms.openlocfilehash: fc28622ad6d2569d455f82a30a84c47647baa1e2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: sstein
+manager: craigg
+ms.date: 04/16/2018
+ms.openlocfilehash: adb3778c723f7c56b5f31381c804e39a8b782709
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645336"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056191"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>geo リストアを使用して、データベースのバックアップからマルチテナント SaaS アプリケーションを復旧する
 
@@ -198,7 +200,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
  
     ![復旧プロセス](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-    * テナントがオフラインの間にテナントのイベント ページを直接開いた場合は、テナントがオフラインであることを示す通知が表示されます。 たとえば、Contoso Concert Hall がオフラインのときに、http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall を開いてみます。
+    * テナントがオフラインの間にテナントのイベント ページを直接開いた場合は、テナントがオフラインであることを示す通知が表示されます。 たとえば、Contoso Concert Hall がオフラインのときに、 http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/contosoconcerthall を開いてみます。
 
     ![復旧プロセス](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -363,7 +365,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 > [!div class="checklist"]
 
 >* テナント カタログを使用して定期的に更新された構成情報を保持し、別のリージョン内にミラー イメージの復旧環境を作成できるようにする。

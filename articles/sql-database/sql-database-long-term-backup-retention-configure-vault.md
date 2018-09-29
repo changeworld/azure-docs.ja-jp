@@ -2,20 +2,22 @@
 title: 長期的なバックアップ保有期間を構成する - Azure SQL Database | Microsoft Docs
 description: 自動バックアップを Azure Recovery Services コンテナーに保存する方法、および Azure Recovery Services コンテナーから復元する方法について説明します。
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/08/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: c908e73a225f90227f09a8bb806a62c690de7632
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+manager: craigg
+ms.date: 05/08/2018
+ms.openlocfilehash: a9a3d696f1c503969b89795f8c6d86a77bd353e8
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718850"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160726"
 ---
 # <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Azure Recovery Services コンテナーを使用して Azure SQL Database から長期的なバックアップ保有期間を構成して復元する
 

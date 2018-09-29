@@ -1,21 +1,21 @@
 ---
-title: Bing Visual Search SDK | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: Bing Visual Search SDK
+titleSuffix: Azure Cognitive Services
 description: Web を検索するアプリケーション用の Bing Visual Search SDK。
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: bing-visual-search
-ms.topic: article
+ms.component: bing-visual-search
+ms.topic: conceptual
 ms.date: 4/19/2018
 ms.author: scottwhi
-ms.openlocfilehash: 9095ef443e406c0f3e40ae575cdf6d6484726e0f
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: dd55bb78fd385ab12d711e569ca6d5013c48e545
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41929737"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221997"
 ---
 # <a name="bing-visual-search-sdk"></a>Bing Visual Search SDK
 

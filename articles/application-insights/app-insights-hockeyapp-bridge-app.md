@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7586dbc4d7a0b7dbc7756eabbb4a8d5e0e60a731
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: ce8946e5a022eea9281898d1518cc3e8bfb50ee5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635249"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092507"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Application Insights での HockeyApp データの探索
 

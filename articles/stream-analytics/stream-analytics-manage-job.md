@@ -10,18 +10,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 6b924e0555ea7a57f8d5e5309a266b6d2fb44f44
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1955fc033e0351be9da89bbee11dc41d6281a63a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702529"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433992"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>通話データを分析して結果を Power BI ダッシュボードで視覚化する Stream Analytics ジョブの作成
  
 このチュートリアルでは、Azure Stream Analytics を使用して、クライアント アプリケーションが生成するサンプル通話を分析する方法を紹介します。 クライアント アプリケーションが生成する通話データには不正な呼び出しが含まれているため、そのような呼び出しをフィルター処理するよう Stream Analytics ジョブを定義します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * サンプル通話データを生成して Azure Event Hubs に送信する  
@@ -101,12 +101,12 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 5. 次に、コマンド ウィンドウを開き、TelcoGenerator アプリケーションを解凍したフォルダーに変更し、次のコマンドを入力します。
 
    ```
-   telcodatagen.exe 1000 .2 2
+   telcodatagen.exe 1000 0.2 2
    ```
 
    このコマンドは、次のパラメーターを受け取ります。
    * **1 時間あたりの通話データ レコードの数**。  
-   * **不正の確率のパーセンテージ** - アプリが不正な呼び出しをシミュレートする頻度。 値 .2 は、呼び出しレコードの約 20% が不正に見えることを意味します。  
+   * **不正の確率のパーセンテージ** - アプリが不正な呼び出しをシミュレートする頻度。 値 0.2 は、呼び出しレコードの約 20% が不正に見えることを意味します。  
    * **継続時間** - アプリを実行する時間数。 コマンド ラインでプロセスを終了する (Ctrl + C) ことで、いつでもアプリを停止できます。
 
    数秒後に、アプリはイベント ハブに送信する呼び出しレコードを画面に表示し始めます。 通話データには、次のフィールドが含まれています。
@@ -228,7 +228,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 
 3. **[分]** を 3 に設定し、**[OK]** を選択します。 3 分間分のデータが入力ストリームからサンプリングされ、サンプル データの準備ができると通知されます。 通知バーからサンプリングの状態を確認できます。 
 
-   サンプル データは一時的に保存され、クエリ ウィンドウを開いている間使用できます。 クエリ ウィンドウを閉じると、サンプル データは破棄されるので、サンプル データの新しいセットを作成する必要があります。 代わりの方法として、サンプル データが含まれている .json ファイルを [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample Data/telco.json) から入手し、その .json ファイルをアップロードして CallStream 入力のサンプル データとして使用することもできます。  
+   サンプル データは一時的に保存され、クエリ ウィンドウを開いている間使用できます。 クエリ ウィンドウを閉じると、サンプル データは破棄されるので、サンプル データの新しいセットを作成する必要があります。 代わりの方法として、サンプル データが含まれている .json ファイルを [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) から入手し、その .json ファイルをアップロードして CallStream 入力のサンプル データとして使用することもできます。  
 
 4. **[テスト]** を選択してクエリをテストすると、次のスクリーンショットに示すように出力結果が表示されます。  
 
@@ -262,7 +262,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 
 チュートリアルのこの部分では、PowerBI チームが作成したサンプルの [ASP.NET](http://asp.net/) Web アプリケーションを使用して、ダッシュボードを埋め込みます。 ダッシュボードの埋め込みの詳細については、記事「[Power BI で埋め込み](https://docs.microsoft.com/power-bi/developer/embedding)」を参照してください。
 
-このチュートリアルでは、ユーザーが所有するデータ アプリケーション用の手順に従います。 アプリケーションを設定するには、[PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub リポジトリに移動し、**User Owns Data** セクションの指示に従います (**integrate-dashboard-web-app** サブセクションのリダイレクト URL およびホーム ページ URL を使用します)。 ダッシュボードの例を使用しているため、[GitHub リポジトリ](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User Owns Data/integrate-dashboard-web-app)にある integrate-dashboard-web-app サンプル コードを使用します。
+このチュートリアルでは、ユーザーが所有するデータ アプリケーション用の手順に従います。 アプリケーションを設定するには、[PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub リポジトリに移動し、**User Owns Data** セクションの指示に従います (**integrate-dashboard-web-app** サブセクションのリダイレクト URL およびホーム ページ URL を使用します)。 ダッシュボードの例を使用しているため、[GitHub リポジトリ](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app)にある integrate-dashboard-web-app サンプル コードを使用します。
 ブラウザーでアプリケーションが実行されるようになったら、次の手順に従って、先ほど作成したダッシュボードを Web ページに埋め込みます。
 
 1. **[Power BI にサインイン]** を選択します。これにより、PowerBI アカウントのダッシュボードへのアクセスがアプリケーションに許可されます。  

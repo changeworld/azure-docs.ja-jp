@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: d8a7ae412fc80dff7bd91c1cdc5d4fcd985e07f4
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 8745519f1a0fdda7a5feb6ffb3f61e5250bb260a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359069"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164789"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの論理関数
 
@@ -38,7 +38,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |[はい] |ブール値 |true かどうかを確認する最初の値。 |
 | arg2 |[はい] |ブール値 |true かどうかを確認する 2 番目の値。 |
@@ -100,7 +100,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |[はい] |文字列または整数 |ブール値に変換する値。 |
 
@@ -165,7 +165,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | condition |[はい] |ブール値 |true かどうかを確認する値。 |
 | trueValue |[はい] | string、int、object、または array |条件が true の場合に返される値。 |
@@ -239,6 +239,10 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
         "noOutput": {
             "type": "string",
             "value": "[if(equals('a', 'b'), 'yes', 'no')]"
+        },
+        "objectOutput": {
+            "type": "object",
+            "value": "[if(equals('a', 'a'), json('{\"test\": \"value1\"}'), json('null'))]"
         }
     }
 }
@@ -250,6 +254,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 | ---- | ---- | ----- |
 | yesOutput | String | はい |
 | noOutput | String | × |
+| objectOutput | オブジェクト | { "test": "value1" } |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -270,7 +275,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |[はい] |ブール値 |変換する値。 |
 
@@ -365,7 +370,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 ### <a name="parameters"></a>parameters
 
-| パラメーター | 必須 | type | [説明] |
+| パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
 | arg1 |[はい] |ブール値 |true かどうかを確認する最初の値。 |
 | arg2 |[はい] |ブール値 |true かどうかを確認する 2 番目の値。 |

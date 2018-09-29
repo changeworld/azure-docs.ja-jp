@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 6decb0e9188db00608be35d9ba4e84df92ceb671
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 02f6e2648c007cfe87984e8de886b8b76e1e8d16
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34072336"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409917"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM 間の接続に関する問題のトラブルシューティング
 
@@ -103,7 +103,7 @@ VM のアプリまたはサービスがポートをリッスンしているか�
 
 ### <a name="step-8-try-to-connect-to-a-vm-network-share"></a>手順 8: VM ネットワーク共有への接続を試みる
 
-VM ネットワーク共有に接続できない場合の原因として、使用できない NIC が VM にあることが考えられます。 使用できない NIC を削除するには、[使用できない NIC の削除方法](../virtual-machines/windows/reset-network-interface.md#delete-the-unavailable-nics)に関するページを参照してください。
+VM ネットワーク共有に接続できない場合の原因として、使用できない NIC が VM にあることが考えられます。 使用できない NIC を削除するには、[使用できない NIC の削除方法](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)に関するページを参照してください。
 
 ### <a name="step-9-check-inter-vnet-connectivity"></a>手順 9: VNET 間接続を確認する
 

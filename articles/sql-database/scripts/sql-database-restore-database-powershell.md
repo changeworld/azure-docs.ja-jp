@@ -2,26 +2,22 @@
 title: PowerShell サンプル - 復元 - バックアップ - Azure SQL データベース | Microsoft Docs
 description: geo 冗長バックアップから Azure SQL データベースを復元するための Azure PowerShell サンプル スクリプト
 services: sql-database
-documentationcenter: sql-database
-author: CarlRabeler
-manager: craigg
-editor: carlrab
-tags: azure-service-management
-ms.assetid: ''
 ms.service: sql-database
-ms.custom: business continuity, mvc
+ms.subservice: operations
+ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: database
-ms.date: 09/07/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: fdce110c0349afa138bf547287a08ecb0e25915d
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/07/2018
+ms.openlocfilehash: b6e44e8aeeb0e0dd6ea11922e93549fc74482bba
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049847"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055256"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-database-from-backups"></a>PowerShell を使用してバックアップから Azure SQL データベースを復元する
 

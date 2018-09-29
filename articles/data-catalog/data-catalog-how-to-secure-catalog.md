@@ -2,17 +2,17 @@
 title: Azure Data Catalog へのアクセスをセキュリティで保護する方法
 description: この記事では、データ カタログとそのデータ資産をセキュリティで保護する方法について説明します。
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 6b82c71154edfe5fedab3b92e25c11007820c15c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9d80eddffaf376b6f6f0090dce74a4884b291531
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053241"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405531"
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>データ カタログとデータ資産へのアクセスをセキュリティで保護する方法
 > [!IMPORTANT]
