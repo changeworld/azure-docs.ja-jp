@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a734eb7b4efecf14a4d47a660c00d561a5fa6677
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c23646bca6109d27e57b2f928363e65c83c634eb
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971809"
+ms.locfileid: "47031154"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>チュートリアル: Visual Studio を使用して Service Fabric アプリケーションをアップグレードする方法を学習する
 
@@ -46,7 +46,7 @@ ms.locfileid: "46971809"
 
 * To Do アプリをデプロイしていない場合は、[Service Fabric Mesh Web アプリケーションの発行](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)に関するページの指示に従ってください。
 
-# <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Visual Studio を使用して Service Fabric Mesh サービスをアップグレードする
+## <a name="upgrade-a-service-fabric-mesh-service-by-using-visual-studio"></a>Visual Studio を使用して Service Fabric Mesh サービスをアップグレードする
 
 この記事では、アプリケーション内でマイクロサービスを独立してアップグレードする方法を示します。  この例では、タスク カテゴリを表示するように `WebFrontEnd` サービスを変更します。 その後、デプロイされているサービスをアップグレードします。
 
