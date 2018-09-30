@@ -1,42 +1,41 @@
 ---
 title: Azure Machine Learning サービスのサポートおよびトレーニングの取得
-description: この記事では、Azure Machine Learning のサービスおよび Azure Machine Learning Workbench のサポートおよびトレーニングの取得方法について説明します。
+description: この記事では、Azure Machine Learning サービス向けのサポートとトレーニングの取得方法について説明します
 services: machine-learning
-author: j-martens
-ms.author: jmartens
-manager: cgronlund
-ms.reviewer: mldocs
 ms.service: machine-learning
 ms.component: core
-ms.workload: data-services
-ms.topic: article
-ms.date: 03/01/2018
-ms.openlocfilehash: a9529a2b38105274f021483cfce51f30fd38fb62
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.topic: conceptual
+ms.reviewer: jmartens
+author: j-martens
+ms.author: jmartens
+ms.date: 09/24/2018
+ms.openlocfilehash: b5834bfd47cf2ab8462462c43394c8f05e43afa3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35635652"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971401"
 ---
-# <a name="get-support-and-training-for-azure-machine-learning-services"></a>Azure Machine Learning サービスのサポートおよびトレーニングの取得
+# <a name="get-support-and-training-for-azure-machine-learning-service"></a>Azure Machine Learning サービスのサポートおよびトレーニングの取得
 
-この記事では、Azure Machine Learning のサービスの詳細と、お客様の問題や疑問点を解決するためのサポートを取得する方法について説明します。 
+この記事では、Azure Machine Learning サービスの詳細、およびお客様の問題や疑問点を解決するためのサポートを取得する方法について説明します。 
 
 ## <a name="learn-more-about-azure-machine-learning"></a>Azure Machine Learning の詳細
 
-[Azure Machine Learning ドキュメント センター](../desktop-workbench/overview-what-is-azure-ml.md)に、ハウツー ガイドやビデオ チュートリアルが用意されています。 これらのステップバイステップ形式のガイドでは、サービスを紹介するとともに、データ サイエンスのライフ サイクルについて説明しています。 Machine Learning Center には継続的に新しい資料が追加されます。 
-
-また、[詳細について説明した動画を見る](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)こともできます。
+このサイトのドキュメントに加えて、以下を参照することができます。
++ [チュートリアルと使い方の記事](../service/index.yml)
++ [アーキテクチャの概要](../service/concept-azure-machine-learning-architecture.md)
++ [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
 
 記事の末尾にあるフィードバック リンクを使用して、追加の学習教材を要求する**リクエストを送信**できます。
 
-## <a name="get-support-for-azure-machine-learning-services"></a>Azure Machine Learning サービスのサポートを受ける
+## <a name="get-support-for-azure-machine-learning-service"></a>Azure Machine Learning サービスのサポートを受ける
 
-次の方法で Azure Machine Learning サービスのサポートを受けることができます。
+次のサポート ソースを確認します。
 
-+ **テクニカル サポート**: [Azure テクニカル サポート](https://azure.microsoft.com/support/options/)にアクセスし Machine Learning を選択して Azure サポートに連絡します。 
++ **テクニカル サポート**: [Azure のサポート](https://azure.microsoft.com/support/options/)にアクセスし、[Machine Learning] を選択します。 
 
-+ **MSDN ユーザー フォーラム**: 質問したり質問に回答して他のユーザーとつながれる、[MSDN の Azure Machine Learning サービスのサポート フォーラム](https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning)です。
++ **ユーザー フォーラム**: [MSDN の Azure Machine Learning サービスのサポート フォーラム](https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning)では、質問したり質問に回答したりして他のユーザーとつながることができます。
 
 + **StackOverflow**: "Azure-Machine-Learning" タグが付いた [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) の Machine Learning コミュニティをご利用ください。
 

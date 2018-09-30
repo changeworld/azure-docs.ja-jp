@@ -9,43 +9,40 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 5d9391cc486dc868a1a291ccc7095291cddd3e4c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 73c31c7175bd4dfcb182fb76784937c176ac7702
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858461"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977878"
 ---
 # <a name="call-bing-custom-search-endpoint-nodejs"></a>Bing Custom Search エンドポイントを呼び出す (Node.js)
 
-このクイックスタートでは、Node.js を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。 
+このクイック スタートでは、Node.js を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法を紹介します。 
 
 ## <a name="prerequisites"></a>前提条件
+
 このクイック スタートを完了するには、次のものが必要です。
 
-- カスタム検索インスタンス。 「[Create your first Bing Custom Search instance](quick-start.md)」 (最初の Bing Custom Search インスタンスを作成する) を参照してください。
-
+- すぐに使用できるカスタム検索インスタンス。 「[Create your first Bing Custom Search instance](quick-start.md)」 (最初の Bing Custom Search インスタンスを作成する) を参照してください。
 - [Node.js](https://www.nodejs.org/) がインストールされていること。
-
--  [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search API**。 このクイックスタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+- サブスクリプション キー。 [無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)をアクティブにすると、サブスクリプション キーを取得できます。または Azure ダッシュボードから有料のサブスクリプション キーを使用することもできます ([Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を参照してください)。    
 
 ## <a name="run-the-code"></a>コードの実行
 
-Bing Custom Search エンドポイントは次の手順で呼び出します。
+この例を実行するには、次の手順に従います。
 
-1. コードのフォルダーを作成します。
-
-2. コマンド プロンプトまたはターミナルから、先ほど作成したフォルダーに移動します。
-
+1. コードのフォルダーを作成します。  
+  
+2. コマンド プロンプトまたはターミナルから、先ほど作成したフォルダーに移動します。  
+  
 3. **request** ノード モジュールをインストールします。
     <pre>
     npm install request
-    </pre>
+    </pre>  
     
-4. ファイル BingCustomSearch.js を作成し、それに次のコードをコピーします。
-
-5. **YOUR-SUBSCRIPTION-KEY** と **YOUR-CUSTOM-CONFIG-ID** をそれぞれ、自分のキーと構成 ID に変更します (手順 1 参照)。
-
+4. 作成したフォルダー内に BingCustomSearch.js という名前のファイルを作成し、次のコードをコピーします。 **YOUR-SUBSCRIPTION-KEY** と **YOUR-CUSTOM-CONFIG-ID** を、自分のサブスクリプション キーと構成 ID に置き換えます。  
+  
     ``` javascript
     var request = require("request");
     
@@ -74,11 +71,13 @@ Bing Custom Search エンドポイントは次の手順で呼び出します。
             console.log();
         }
     })
-    ```
-6. 次のコマンドでコードを実行します。
+    ```  
+  
+6. 次のコマンドでコードを実行します。  
+  
     ```    
     node BingCustomSearch.js
-   ``` 
+    ``` 
 
 ## <a name="next-steps"></a>次の手順
 - [ホストされている UI エクスペリエンスの構成](./hosted-ui.md)

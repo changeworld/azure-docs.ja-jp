@@ -1,6 +1,6 @@
 ---
-title: Azure CLI を使用して Hadoop クラスターを管理する - Azure HDInsight
-description: Azure コマンド ライン インターフェイスを使用して、Azure HDInsight で Hadoop クラスターを管理する方法について説明します。 Azure CLI は、Windows、Mac、Linux で機能します。
+title: Azure Classic CLI を使用して Hadoop クラスターを管理する - Azure HDInsight
+description: Azure Classic CLI を使用して、Azure HDInsight で Hadoop クラスターを管理する方法について説明します。
 services: hdinsight
 ms.reviewer: jasonh
 author: jasonwhowell
@@ -9,32 +9,32 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 8d77f6f902ad0d1f6ee2b3dd1da5a38364f1da9b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2586b9219eb145b2033fe2d8fc64b8ae72f34eda
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103746"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958290"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Azure CLI を使用した HDInsight での Hadoop クラスターの管理
+# <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-classic-cli"></a>Azure Classic CLI を使用した HDInsight での Hadoop クラスターの管理
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-[Azure コマンド ライン インターフェイス](../cli-install-nodejs.md) を使用して、Azure HDInsight で Hadoop クラスターを管理する方法について説明します。 Azure CLI は Node.js で実装されます。 Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。 現在、HDInsight は [Azure CLI 2.0](https://docs.microsoft.com/cli/azure) をサポートしていません。
+[Azure Classic CLI](../cli-install-nodejs.md) を使用して、Azure HDInsight で Hadoop クラスターを管理する方法について説明します。 Classic CLI は Node.js で実装されます。 Windows、Mac、Linux など、Node.js をサポートするいずれのプラットフォームでも使用できます。
 
-この記事では、HDInsight での Azure CLI の使用についてのみ説明します。 Azure CLI の使用方法に関する一般的なガイドについては、「[Azure CLI のインストール][azure-command-line-tools]」を参照してください。
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 ## <a name="prerequisites"></a>前提条件
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **Azure CLI** - インストールと構成に関する情報は、 [Azure CLI のインストールと構成](../cli-install-nodejs.md) に関するページを参照してください。
+* **Azure Classic CLI** - インストールと構成に関する情報は、[Azure Classic CLI のインストールと構成](../cli-install-nodejs.md) に関するページを参照してください。
 * 次のコマンドを使用して、**Azure に接続**します。
 
     ```cli
     azure login
     ```
   
-    職場か学校のアカウントを使用した認証の詳細については、「 [Azure CLI から Azure サブスクリプションへの接続する](/cli/azure/authenticate-azure-cli)」をご覧ください。
+    職場か学校のアカウントを使用した認証の詳細については、[Azure Classic CLI から Azure サブスクリプションへの接続する](/cli/azure/authenticate-azure-cli)に関するページを参照してください。
 * 次のコマンドを使用して、**Azure リソース マネージャー モードに切り替えます**。
   
     ```cli
@@ -101,7 +101,7 @@ azure hdinsight cluster disable-rdp-access [options] <Cluster Name>
 * [Azure Portal を使用した HDInsight の管理][hdinsight-admin-portal]
 * [Azure PowerShell を使用した HDInsight の管理][hdinsight-admin-powershell]
 * [Azure HDInsight の概要][hdinsight-get-started]
-* [Azure CLI の使い方][azure-command-line-tools]
+* [Azure Classic CLI の使い方][azure-command-line-tools]
 
 [azure-command-line-tools]: ../cli-install-nodejs.md
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md

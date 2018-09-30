@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 18a9709893533c2c0b606077a126437282f9195e
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: eb88501c5daf0b79d22f4407a372c4606a173db1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42140341"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987698"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -164,7 +164,7 @@ VM リソースを含め、[ギャラリーにはテンプレート](https://azu
 
 - REST API - [すべてのリソース プロバイダーの一覧を表示する](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
 - PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
-- Azure CLI 2.0 - [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
+- Azure CLI - [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
 
 ## <a name="parameters-and-variables"></a>パラメーターと変数
 
@@ -442,7 +442,7 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 
 ![拡張機能の状態の確認](./media/template-description/virtual-machines-show-extensions.png)
 
-また、**Get-AzureRmVMExtension** PowerShell コマンド、**vm extension get** Azure CLI 2.0 コマンド、または **Get extension information** REST API を使用して、拡張機能の情報を取得することもできます。
+また、**Get-AzureRmVMExtension** PowerShell コマンド、**vm extension get** Azure CLI コマンド、または **Get extension information** REST API を使用して、拡張機能の情報を取得することもできます。
 
 ## <a name="deployments"></a>デプロイメント
 

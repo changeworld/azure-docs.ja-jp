@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 0f77b46be0207b0ce96e6dc2562fb5298afbe36b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 11d9f5efb452d46e5ca30169861582f6f2bbbd1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928184"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969395"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する
 
@@ -51,8 +51,8 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 
 | Name                       | 必須 | type                                                                                | 説明  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
-| location                   | True     | 文字列                                                                              | リソースの場所。 |
-| name                       |          | 文字列                                                                              | 仮想マシンの名前。 |
+| location                   | True     | string                                                                              | リソースの場所。 |
+| name                       |          | string                                                                              | 仮想マシンの名前。 |
 | properties.hardwareProfile |          | [HardwareProfile](/rest/api/compute/virtualmachines/createorupdate#hardwareprofile) | 仮想マシンのハードウェア設定を指定します。 |
 | properties.storageProfile  |          | [StorageProfile](/rest/api/compute/virtualmachines/createorupdate#storageprofile)   | 仮想マシンのストレージ設定を指定します。 |
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | 仮想マシンのオペレーティング システム設定を指定します。 |
@@ -141,9 +141,9 @@ MV を作成する要求本文の例の圧縮された *201 Created* 応答は�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure REST API や他の管理ツール (Azure CLI 2.0 や Azure PowerShell など) の詳細については、以下を参照してください。
+Azure REST API や他の管理ツール (Azure CLI や Azure PowerShell など) の詳細については、以下を参照してください。
 
 - [Azure Compute プロバイダー REST API](/rest/api/compute/)
 - [Azure Rest API の開始](/rest/api/azure/)
-- [Azure CLI 2.0](/cli/azure/)
+- [Azure CLI](/cli/azure/)
 - [Azure PowerShell モジュール](/powershell/azure/overview)

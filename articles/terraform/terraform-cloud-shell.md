@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: 107a6dd82465ce1455a3c2922c8f9cba6b73dd64
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a5f44edf201ce9a2e2c0da6b5da9031958a11fdc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667964"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959310"
 ---
 # <a name="terraform-cloud-shell-development"></a>Terraform Cloud Shell の開発 
 
@@ -45,7 +45,7 @@ Cloud Shell は、`terraform` CLI コマンドのいずれかを使用すると�
 
 ファイルとシェルの状態は、複数の Cloud Shell セッションにまたがって Azure Storage に維持されます。 ローカル コンピューターのファイルをコピーし、Cloud Shell にアップロードするには、[Azure Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer) を使用します。
 
-Azure CLI 2.0 は Cloud Shell で使用可能で、`terraform apply` または `terraform destroy` が完了した後の構成のテストと作業のチェックに適したツールです。
+Azure CLI は Cloud Shell で使用可能で、`terraform apply` または `terraform destroy` が完了した後の構成のテストと作業のチェックに適したツールです。
 
 
 ## <a name="next-steps"></a>次の手順

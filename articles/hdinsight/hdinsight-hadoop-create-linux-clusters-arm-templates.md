@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 9a48b3ff9769e2757ac7930feb14d6537d96fae3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4cf516550e9f9852ec50981932c2df8f236d0358
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109240"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961316"
 ---
 # <a name="create-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して HDInsight に Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "43109240"
 この記事の手順に従うには、次のものが必要です。
 
 * [Azure サブスクリプション](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* Azure PowerShell または Azure CLI
+* Azure PowerShell または Azure Classic CLI。
 
 ### <a name="resource-manager-templates"></a>Resource Manager テンプレート
 Resource Manager テンプレートを使用すると、1 つの調整された操作で、アプリケーションのために以下のリソースを簡単に作成できます。
@@ -49,7 +49,7 @@ Resource Manager を使用すると、サブスクリプション内の既存の
 
 - Azure Portal: 「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](../azure-resource-manager/resource-manager-export-template.md)」を参照してください。
 - Azure PowerShell: 「[PowerShell を使用した Azure Resource Manager テンプレートのエクスポート](../azure-resource-manager/resource-manager-export-template-powershell.md)」を参照してください。
-- Azure CLI: 「[Azure CLI を使用した Azure Resource Manager テンプレートのエクスポート](../azure-resource-manager/resource-manager-export-template-cli.md)」を参照してください。
+- Azure Classic CLI: [Azure Classic CLI を使用した Azure Resource Manager テンプレートのエクスポート](../azure-resource-manager/resource-manager-export-template-cli.md)に関するページを参照してください。
 
 
 ## <a name="deploy-using-the-portal"></a>ポータルを使用したデプロイ
@@ -60,9 +60,9 @@ Resource Manager テンプレートは、Azure Portal を使用してデプロ�
 
 Resource Manager テンプレートは、Azure PowerShell を使用してデプロイすることができます。 詳細については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)」と「[SAS トークンと Azure PowerShell を使用してプライベートの Resource Manager テンプレートをデプロイする](../azure-resource-manager/resource-manager-powershell-sas-token.md)」を参照してください。
 
-## <a name="deploy-using-cli"></a>CLI を使用したデプロイ
+## <a name="deploy-using-azure-cli"></a>Azure CLI を使用したデプロイ
 
-Resource Manager テンプレートは、Azure CLI を使用してデプロイすることができます。 詳細については、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-cli.md)」と「[SAS トークンと Azure CLI を使用してプライベートの Resource Manager テンプレートをデプロイする](../azure-resource-manager/resource-manager-cli-sas-token.md)」を参照してください。
+Resource Manager テンプレートは、クラシック CLI を使用してデプロイすることができます。 詳細については、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-cli.md)」と「[SAS トークンと Azure CLI を使用してプライベートの Resource Manager テンプレートをデプロイする](../azure-resource-manager/resource-manager-cli-sas-token.md)」を参照してください。
 
 ## <a name="deploy-using-the-rest-api"></a>REST API を使用したデプロイ
 Resource Manager テンプレートは、REST API を使用してデプロイすることができます。 詳細については、「[Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-rest.md)」を参照してください。

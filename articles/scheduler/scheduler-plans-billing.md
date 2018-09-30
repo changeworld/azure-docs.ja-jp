@@ -1,83 +1,87 @@
 ---
-title: Azure Scheduler のプランと課金
-description: Azure Scheduler のプランと課金
+title: プランと課金 - Azure Scheduler
+description: Azure Scheduler のプランと課金について説明します
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.topic: article
 ms.date: 08/18/2016
-ms.author: deli
-ms.openlocfilehash: 03f335634b7ce1fe4aa6251d6ec21922ed9b84c8
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 74f13628b62d53a84b4d19255a30a6bc4a7367ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887489"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974291"
 ---
-# <a name="plans-and-billing-in-azure-scheduler"></a>Azure Scheduler のプランと課金
+# <a name="plans-and-billing-for-azure-scheduler"></a>Azure Scheduler のプランと課金
+
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、廃止される予定の Azure Scheduler の後継です。 ジョブをスケジュールするには、[Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) を代わりにお使いください。 
+
 ## <a name="job-collection-plans"></a>ジョブ コレクション プラン
-ジョブ コレクションは、Azure Scheduler における課金対象のエンティティです。 複数のジョブを格納するジョブ コレクションは、Standard、P10 Premium、および P20 Premium の 3 つのプランで提供されます。以降では、これらのプランについて説明します。
 
-| **ジョブ コレクション プラン** | **ジョブ コレクションあたりのジョブの最大数** | **最大繰り返し頻度** | **サブスクリプションあたりのジョブ コレクションの最大数** | **制限** |
+Azure Scheduler では、ジョブ コレクションには特定の数のジョブが含まれています。 ジョブ コレクションは課金対象のエンティティであり、ここで説明する Standard、P10 Premium、および P20 Premium プランが用意されています。 
+
+| ジョブ コレクション プラン | コレクションあたりの最大ジョブ数 | 最大繰り返し頻度 | サブスクリプションあたりの最大ジョブ コレクション数 | 制限 | 
 |:--- |:--- |:--- |:--- |:--- |
-| **Standard** |ジョブ コレクションあたり 50 個のジョブ |1 分に 1 回。 1 分に 1 回を超えてジョブを実行できません。 |1 つのサブスクリプションに最大で 100 個の Standard ジョブ コレクションが許可されます。 |Scheduler の完全な機能セットへのアクセス |
-| **P10 Premium** |ジョブ コレクションあたり 50 個のジョブ |1 分に 1 回。 1 分に 1 回を超えてジョブを実行できません。 |1 つのサブスクリプションに最大で 10,000 個の P10 Premium ジョブ コレクションが許可されます。 詳細については、<a href="mailto:wapteams@microsoft.com">お問い合わせ</a>ください。 |Scheduler の完全な機能セットへのアクセス |
-| **P20 Premium** |ジョブ コレクションあたり 1,000 個のジョブ |1 分に 1 回。 1 分に 1 回を超えてジョブを実行できません。 |1 つのサブスクリプションに最大で 10,000 個の P20 Premium ジョブ コレクションが許可されます。 詳細については、<a href="mailto:wapteams@microsoft.com">お問い合わせ</a>ください。 |Scheduler の完全な機能セットへのアクセス |
-
-## <a name="upgrades-and-downgrades-of-job-collection-plans"></a>ジョブ コレクション プランのアップグレードとダウングレード
-ジョブ コレクション プランは、Standard、P10 Premium、および P20 Premium の間でいつでもアップグレードまたはダウングレードできます。
-
-## <a name="billing-and-azure-plans"></a>課金および Azure プラン
-100 を超える Standard ジョブ コレクション (Standard 課金単位 10 単位) を使用している場合は、Premium プランにすべてのジョブ コレクションを移行することをお勧めします。
-
-1 つの Standard ジョブ コレクションと 1 つの Premium ジョブ コレクションを使用している場合、Standard プランの 1 課金単位*および* Premium プランの 1 課金単位が請求されます。 Scheduler サービスでは、Standard または Premium のどちらかに設定されているアクティブなジョブ コレクションの数に基づいて課金されます。これについては、次の 2 つのセクションで詳しく説明します。
-
-## <a name="standard-billable-units"></a>Standard 課金単位
-Standard 課金単位には、最大 10 個の Standard ジョブ コレクションを含めることができます。 Standard ジョブ コレクションでは、ジョブ コレクションあたり最大で 50 個のジョブを含めることができるため、Standard 課金単位 1 単位でサブスクリプションに最大 500 個のジョブを含めることができます (これは、1 か月あたり約 2,200 万件のジョブ実行に相当します)。
-
-使用している Standard ジョブ コレクションが 1 ～ 10 個の場合、Standard 課金単位 1 単位分が課金されます。 使用している Standard ジョブ コレクションが 11 ～ 20 個の場合、Standard 課金単位 2 単位分が課金されます。 使用している Standard ジョブ コレクションが 21 ～ 30 個の場合、Standard 課金単位 3 単位分が課金されます。それ以上の数についても同様の計算になります。
-
-## <a name="p10-premium-billable-units"></a>P10 Premium 課金単位
-P10 Premium 課金単位には、最大 10,000 個の P10 Premium ジョブ コレクションを含めることができます。 P10 Premium ジョブ コレクションでは、ジョブ コレクションあたり最大で 50 個のジョブを含めることができるため、Premium 課金単位 1 単位でサブスクリプションに最大 500,000 個のジョブを含めることができます (これは、1 か月あたり約 220 億件のジョブ実行に相当します)。
-
-使用している Premium ジョブ コレクションが 1 ～ 10,000 個の場合、P10 Premium 課金単位 1 単位分が課金されます。 使用している Premium ジョブ コレクションが 10,001 ～ 20,000 個の場合、P10 Premium 課金単位 2 単位分が課金されます。それ以上の数についても同様の計算になります。
-
-このように、P10 Premium ジョブ コレクションでは、Standard ジョブ コレクションと同じ機能を提供する一方で、大量のジョブ コレクションを必要とするアプリケーションのために割引価格を実現しています。
-
-## <a name="p20-premium-billable-units"></a>P20 Premium 課金単位
-P20 Premium 課金単位には、最大 5,000 個の P20 Premium ジョブ コレクションを含めることができます。 P20 Premium ジョブ コレクションでは、ジョブ コレクションあたり最大で 1,000 個のジョブを含めることができるため、Premium 課金単位 1 単位でサブスクリプションに最大 5,000,000 個のジョブを含めることができます (これは、1 か月あたり約 2,200 億件のジョブ実行に相当します)。
-
-P20 Premium ジョブ コレクションで提供される機能は P10 Premium ジョブ コレクションと同じですが、P10 Premium ジョブ コレクションよりもジョブ コレクションあたりでサポートされるジョブの数が多く、ジョブ全体の総数もより多くなるため、スケーラビリティが向上します。
-
-## <a name="billing-and-active-status"></a>課金とアクティブ状態
-ジョブ コレクションは、サブスクリプション全体が課金に関する問題のために一時的な無効状態にならない限り、常にアクティブです。 ジョブ コレクションが課金されないようにするには、ジョブ コレクションを削除します。
-
-1 回の操作でジョブ コレクション内のすべてのジョブを無効にすることができますが、その操作を行ってもジョブ コレクションの課金状態は変更されず、ジョブ コレクションに対して*依然として* 課金されます。 同様に、空のジョブ コレクションもアクティブと見なされ、課金の対象となります。
+| **Standard** | コレクションあたり 50 ジョブ | 1 分に 1 回。 1 分に 1 回より多くジョブを実行することはできません。 | 各 Azure サブスクリプションが持つことのできる Standard ジョブ コレクションは最大 100 個です。 | Scheduler の完全な機能セットにアクセスする | 
+| **P10 Premium** | コレクションあたり 50 ジョブ | 1 分に 1 回。 1 分に 1 回より多くジョブを実行することはできません。 | 各 Azure サブスクリプションが持つことのできる P10 Premium ジョブ コレクションは最大 10,000 個です。 それより多くのコレクションが必要な場合は、<a href="mailto:wapteams@microsoft.com">お問い合わせください</a>。 | Scheduler の完全な機能セットにアクセスする |
+| **P20 Premium** | コレクションあたり 1,000 ジョブ | 1 分に 1 回。 1 分に 1 回より多くジョブを実行することはできません。 | 各 Azure サブスクリプションが持つことのできる P20 Premium ジョブ コレクションは最大 5,000 個です。 それより多くのコレクションが必要な場合は、<a href="mailto:wapteams@microsoft.com">お問い合わせください</a>。 | Scheduler の完全な機能セットにアクセスする |
+|||||| 
 
 ## <a name="pricing"></a>価格
+
 料金の詳細については、「[Scheduler 料金](https://azure.microsoft.com/pricing/details/scheduler/)」を参照してください。
 
+## <a name="upgrade-or-downgrade-plans"></a>プランをアップグレードまたはダウングレードする
+
+いつでも、Standard、P10 Premium、P20 Premium の間でジョブ コレクション プランをアップグレードまたはダウングレードできます。
+
+## <a name="active-status-and-billing"></a>アクティブ状態と課金
+
+ジョブ コレクションは、Azure サブスクリプション全体が課金に関する問題のために一時的な無効状態にならない限り、常にアクティブです。 また、1 回の操作でジョブ コレクション内のすべてのジョブを無効にできますが、このアクションを行ってもジョブ コレクションの課金状態は変更されないので、ジョブ コレクションは "*依然として*" 課金されます。 空のジョブ コレクションはアクティブと見なされ、課金の対象となります。
+
+ジョブ コレクションが課金されないようにするには、ジョブ コレクションを削除する必要があります。
+
+## <a name="standard-billable-units"></a>Standard 課金単位
+
+Standard 課金単位には、最大 10 個の Standard ジョブ コレクションを含めることができます。 Standard ジョブ コレクションでは、コレクションあたり最大で 50 個のジョブを含めることができるため、Standard 課金単位 1 単位で Azure サブスクリプションに最大 500 個のジョブを含めることができます (これは、1 か月あたり約 "*2,200 万件*" のジョブ実行に相当します)。 次の一覧では、Standard ジョブ コレクションのさまざまな数に基づいて、どのように課金されるのかを説明します。
+
+* 使用している Standard ジョブ コレクションが 1 個から 10 個の場合、Standard 課金単位 1 単位分が課金されます。 
+
+* 使用している Standard ジョブ コレクションが 11 個から 20 個の場合、Standard 課金単位 2 単位分が課金されます。 
+
+* 使用している Standard ジョブ コレクションが 21 個から 30 個の場合、Standard 課金単位 3 単位分が課金されます。それ以上の数についても同様の計算になります。
+
+## <a name="p10-premium-billable-units"></a>P10 Premium 課金単位
+
+P10 Premium 課金単位には、最大 10,000 個の P10 Premium ジョブ コレクションを含めることができます。 P10 Premium ジョブ コレクションでは、コレクションあたり最大で 50 個のジョブを含めることができるため、P10 Premium 課金単位 1 単位で Azure サブスクリプションに最大 500,000 個のジョブを含めることができます (これは、1 か月あたり約 "*220 億件*" のジョブ実行に相当します)。 
+
+P10 Premium ジョブ コレクションでは、Standard ジョブ コレクションと同じ機能が提供されますが、大量のジョブ コレクションを必要とするアプリのための割引価格があり、より高いスケーラビリティが提供されます。 次の一覧では、P10 Premium ジョブ コレクションのさまざまな数に基づいて、どのように課金されるのかを説明します。
+
+* 使用している P10 Premium ジョブ コレクションが 1 個から 10,000 個の場合、P10 Premium 課金単位 1 単位分が課金されます。 
+
+* 使用している P10 Premium ジョブ コレクションが 10,001 個から 20,000 個の場合、P10 Premium 課金単位 2 単位分が課金されます。それ以上の数についても同様の計算になります。
+
+## <a name="p20-premium-billable-units"></a>P20 Premium 課金単位
+
+P20 Premium 課金単位には、最大 5,000 個の P20 Premium ジョブ コレクションを含めることができます。 P20 Premium ジョブ コレクションでは、ジョブ コレクションあたり最大で 1,000 個のジョブを含めることができるため、P20 Premium 課金単位 1 単位で Azure サブスクリプションに最大 5,000,000 個のジョブを含めることができます (これは、1 か月あたり約 "*2,200 億件*" のジョブ実行に相当します)。
+
+P20 Premium ジョブ コレクションで提供される機能は P10 Premium ジョブ コレクションと同じですが、P10 Premium ジョブ コレクションよりもコレクションあたりでサポートされるジョブの数が多く、ジョブ全体の総数もより多くなるため、スケーラビリティが向上します。
+
+## <a name="plan-comparison"></a>プランの比較
+
+* 100 を超える Standard ジョブ コレクション (Standard 課金単位 10 単位) を使用している場合は、Premium プランにすべてのジョブ コレクションを移行することでよい結果が得られます。
+
+* 1 つの Standard ジョブ コレクションと 1 つの Premium ジョブ コレクションを使用している場合、Standard プランの 1 課金単位 "*および*" Premium プランの 1 課金単位が請求されます。
+
+  Scheduler サービスでは、Standard または Premium どちらかのアクティブなジョブ コレクションの数に基づいて課金されます。
+
 ## <a name="see-also"></a>関連項目
- [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
 
- [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
-
- [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
-
- [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
-
- [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
-
- [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
-
- [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
-
- [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
-
+* [Azure Scheduler とは](scheduler-intro.md)
+* [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
+* [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)

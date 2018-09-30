@@ -8,7 +8,6 @@ ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
-ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
@@ -16,17 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.openlocfilehash: 05cb2a62cf0f001012f5faa022de233d7cbdce97
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2fd0fe55b975010a1eaafeb455d61a6cb3ebff77
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146778"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970925"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Team Data Science Process テンプレートでのプロジェクトの体系化
 
-このドキュメントでは、Team Data Science Process (TDSP) テンプレートを使用して Azure Machine Learning でデータ サイエンス プロジェクトを作成する手順について説明します。 これらのテンプレートは、コラボレーションと再現性のためにプロジェクトを体系化するために役立ちます。 
+このドキュメントでは、Team Data Science Process (TDSP) テンプレートを使用して Azure Machine Learning の以前のバージョンでデータ サイエンス プロジェクトを作成する手順について説明します。 これらのテンプレートは、コラボレーションと再現性のためにプロジェクトを体系化するために役立ちます。 
 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 ## <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
 TDSP は、高度な分析ソリューションを実行および配信するアジャイルで反復的なデータ サイエンス プロセスです。 エンタープライズ組織のデータ サイエンス チームのコラボレーションと効率を向上させるように設計されています。 次の 4 つの主要コンポーネントでこれらの目標をサポートします。
@@ -52,7 +53,7 @@ TDSP の詳細については、[Team Data Science Process の概要](../team-da
 * TDSP Machine Learning [テンプレート](https://aka.ms/tdspamlgithubrepo)を確認します。
 * コンテンツ ("docs" フォルダー内に既に存在するもの以外) のサイズは 25 MB 未満である必要があります。 この一覧の後の注意事項を確認してください。
 * sample\_data フォルダーは、コードをテストする場合や開発を早期に開始する場合に使用できる小さなデータ ファイル (5 MB 未満) 専用です。
-* Word や PowerPoint などのファイルを格納すると、"docs" フォルダーのサイズが大幅に増加する可能性があります。 このようなファイルを格納するには、コラボレーション Wiki、[SharePoint](https://products.office.com/en-us/sharepoint/collaboration)、またはその他のコラボレーション リソースを探すことをお勧めします。
+* Word や PowerPoint などのファイルを格納すると、"docs" フォルダーのサイズが大幅に増加する可能性があります。 このようなファイルを格納するには、コラボレーション Wiki、[SharePoint](https://products.office.com/sharepoint/collaboration)、またはその他のコラボレーション リソースを探すことをお勧めします。
 * Machine Learning で大きなファイルと出力を処理する方法については、「[変更の保持と大規模なファイルの処理](http://aka.ms/aml-largefiles)」をご覧ください。
 
 > [!NOTE]

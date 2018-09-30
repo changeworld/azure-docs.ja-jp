@@ -1,6 +1,6 @@
 ---
-title: Azure CLI のサンプル スクリプト - Azure CLI 2.0 を使用した Web アプリのスケールの手動設定 | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - Azure CLI 2.0 を使用した Web アプリのスケールの手動設定
+title: Azure CLI のサンプル スクリプト - Azure CLI を使用した Web アプリのスケールの手動設定 | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - Azure CLI を使用した Web アプリのスケールの手動設定
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
@@ -16,12 +16,12 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 844250dce567bac280ae3a9a688cc8e5bc5852c9
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 28ca20d44d18e8fe25153b7f9298d5174412ad79
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30282448"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988582"
 ---
 # <a name="scale-a-web-app-manually"></a>Web アプリを手動でスケールする
 
@@ -31,7 +31,7 @@ ms.locfileid: "30282448"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
