@@ -90,8 +90,8 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: 使用と表示の要件
     href: UseAndDisplayRequirements.md
-  - name: サポートされている国と市場
-    href: supported-countries-markets.md
+  - name: 言語とリージョンのサポート
+    href: language-support.md
   - name: Bing Web Search API 用の分析
     href: bing-web-stats.md
   - name: サポート
@@ -104,9 +104,9 @@ items:
       href: https://cognitive.uservoice.com/knowledgebase/topics/127875-bing-search-web-image-video-news-autosuggest
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: f47ce6cd9a32f7f9dca71a3cfa652c0b51e4e4ed
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cf435f7f32b65228b3d7931e817747d4ffa0d14f
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982632"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431698"

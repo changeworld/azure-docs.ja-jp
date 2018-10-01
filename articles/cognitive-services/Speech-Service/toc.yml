@@ -121,8 +121,8 @@ items:
     href: https://aka.ms/azure-powershell-cognitiveservices
   - name: Azure CLI
     href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
-  - name: サポートされている言語
-    href: supported-languages.md
+  - name: 言語とリージョンのサポート
+    href: language-support.md
   - name: リージョン
     href: regions.md
   - name: REST API
@@ -188,9 +188,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: プライバシーと Cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: 42c387af26a7bc01fee622060f8f5e2a07404039
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 5584f6384e1bd5cbc63de976ac35dadd4dc92184
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409220"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433023"

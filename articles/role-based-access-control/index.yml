@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 6972ad521ac5622086b5294dc6b49e35f10ba178
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431483"
 documentType: LandingData
 title: ロールベースのアクセス制御に関するドキュメント
 metadata:
@@ -14,12 +20,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 06/15/2018
   ms.author: rolyon
-  ms.openlocfilehash: 2d49a0ad4393582439511e5454041a2478cea961
-  ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 06/29/2018
-  ms.locfileid: "37115028"
 abstract:
   description: ロールベースのアクセス制御 (RBAC) は、Azure のリソースのアクセス権を詳細に管理できるシステムです。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
   aside:
@@ -46,3 +46,16 @@ sections:
     - html: <a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">グループのアクセス権の付与 - PowerShell</a>
     - html: <a href="/azure/role-based-access-control/tutorial-custom-role-powershell">カスタム ロールの作成 - PowerShell</a>
     - html: <a href="/azure/role-based-access-control/tutorial-custom-role-cli">カスタム ロールの作成 - CLI</a>
+- title: Microsoft Learn でスキルを身に付ける
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: ロールベースのアクセス制御 (RBAC) を使用した Azure リソースのセキュリティ保護
+      href: /learn/modules/secure-azure-resources-with-rbac/
+      image:
+        src: /learn/achievements/secure-azure-resources-with-rbac.svg
+        href: /learn/modules/secure-azure-resources-with-rbac/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-active-directory">対話型学習の詳細...</a>

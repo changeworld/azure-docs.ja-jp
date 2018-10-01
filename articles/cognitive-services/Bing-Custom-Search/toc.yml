@@ -83,11 +83,11 @@ items:
     href: https://aka.ms/bingcustomsearchtryit
   - name: Bing Custom Search エンドポイント
     href: endpoint-custom.md
-  - name: サポートされている国と市場
-    href: supported-countries-markets.md
-ms.openlocfilehash: 2617e733aaae4a78d064e734ab440a03954930c9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+  - name: 言語とリージョンのサポート
+    href: language-support.md
+ms.openlocfilehash: 62392b7ff226072108c61f10b3f0519677aaba6b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999666"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431996"

@@ -118,6 +118,8 @@ items:
       href: concepts-expressroute-with-site-recovery.md
     - name: ネットワーク セキュリティ グループと Site Recovery
       href: concepts-network-security-group-with-site-recovery.md
+    - name: パブリック IP アドレスと Site Recovery
+      href: concepts-public-ip-address-with-site-recovery.md
   - name: アプリのディザスター リカバリー
     href: site-recovery-workload.md
   - name: 復旧計画について
@@ -211,7 +213,7 @@ items:
       - name: 物理サーバー レプリケーションのソース環境を設定する
         href: physical-azure-set-up-source.md
       - name: 物理サーバー レプリケーションのターゲット環境を設定する
-        href: physical-azure-set-up-target.md
+        href: vmware-azure-set-up-target.md
       - name: Azure Stack VM のディザスター リカバリーを設定する
         href: azure-stack-site-recovery.md
     - name: モビリティ サービスをデプロイする
@@ -394,9 +396,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: d05914e528754520f0f752bf72c303875cdb61ef
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 1e217297860a68ff5a4765a7a3de4cec78bfa68c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364586"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432904"

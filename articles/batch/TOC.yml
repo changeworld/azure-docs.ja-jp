@@ -84,6 +84,8 @@ items:
       href: batch-linux-nodes.md
     - name: 優先順位の低い VM を使用する
       href: batch-low-pri-vms.md
+    - name: プールとノードのエラーのチェック
+      href: batch-pool-node-error-checking.md
   - name: ジョブとタスクの管理
     items:
     - name: ジョブの準備と完了タスク
@@ -216,9 +218,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-batch
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=batch
-ms.openlocfilehash: 4dcc965a8dadd891a323e6f609faa98cf716fb5b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4cf95728868db40f148d2750360f7055606d568d
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050340"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433312"

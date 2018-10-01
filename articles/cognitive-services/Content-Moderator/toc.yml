@@ -1,133 +1,140 @@
+items:
 - name: Content Moderator のドキュメント
 - name: 概要
   items:
-    - name: Content Moderator とは
-      href: overview.md
+  - name: Content Moderator とは
+    href: overview.md
 - name: サンプル
   items:
-    - name: .NET SDK のサンプル
-      href: samples-dotnet.md
-    - name: 'C# の REST API のサンプル'
-      href: samples-rest.md
+  - name: .NET SDK のサンプル
+    href: samples-dotnet.md
+  - name: C# での REST API のサンプル
+    href: samples-rest.md
 - name: 概念
   items:
-    - name: 画像のモデレート
-      href: image-moderation-api.md
-    - name: テキストのモデレート
-      href: text-moderation-api.md
-    - name: テキストのモデレート - 言語
-      href: Text-Moderation-API-Languages.md
-    - name: ビデオのモデレート
-      href: video-moderation-human-review.md
-    - name: ジョブとレビュー
-      href: review-api.md
-    - name: Workflows
-      href: workflow-api.md
+  - name: 画像のモデレート
+    href: image-moderation-api.md
+  - name: テキストのモデレート
+    href: text-moderation-api.md
+  - name: ビデオのモデレート
+    href: video-moderation-human-review.md
+  - name: ジョブとレビュー
+    href: review-api.md
+  - name: Workflows
+    href: workflow-api.md
 - name: ハウツー ガイド
   items:
-    - name: Content Moderator を試す
+  - name: Content Moderator を試す
+    items:
+    - name: Content Moderator の概要
+      href: quick-start.md
+    - name: モデレート API
       items:
-        - name: Content Moderator の概要
-          href: quick-start.md
-        - name: モデレート API
-          items:
-            - name: ヘルパー ライブラリ - .NET
-              href: content-moderator-helper-quickstart-dotnet.md
-            - name: イメージ - API コンソール
-              href: try-image-api.md
-            - name: イメージ - .NET
-              href: image-moderation-quickstart-dotnet.md
-            - name: カスタム イメージ - API コンソール
-              href: try-image-list-api.md
-            - name: カスタム イメージ - .NET
-              href: image-lists-quickstart-dotnet.md
-            - name: テキスト - API コンソール
-              href: try-text-api.md
-            - name: テキスト - .NET
-              href: text-moderation-quickstart-dotnet.md
-            - name: カスタム用語 - API コンソール
-              href: try-terms-list-api.md
-            - name: カスタム用語 - .NET
-              href: term-lists-quickstart-dotnet.md
-            - name: ビデオ - .NET
-              href: video-moderation-api.md
-        - name: API の確認
-          items:
-            - name: ジョブ - API コンソール
-              href: try-review-api-job.md
-            - name: ジョブ - .NET
-              href: moderation-jobs-quickstart-dotnet.md
-            - name: レビュー - API コンソール
-              href: try-review-api-review.md
-            - name: レビュー - .NET
-              href: moderation-reviews-quickstart-dotnet.md
-            - name: ビデオのレビュー - .NET
-              href: video-reviews-quickstart-dotnet.md
-            - name: ビデオのトランスクリプトのレビュー - .NET
-              href: video-transcript-reviews-quickstart-dotnet.md
-            - name: ワークフロー - API コンソール
-              href: try-review-api-workflow.md
-    - name: 最初の Content Moderator アプリ
+      - name: ヘルパー ライブラリ - .NET
+        href: content-moderator-helper-quickstart-dotnet.md
+      - name: イメージ - API コンソール
+        href: try-image-api.md
+      - name: イメージ - .NET
+        href: image-moderation-quickstart-dotnet.md
+      - name: カスタム イメージ - API コンソール
+        href: try-image-list-api.md
+      - name: カスタム イメージ - .NET
+        href: image-lists-quickstart-dotnet.md
+      - name: テキスト - API コンソール
+        href: try-text-api.md
+      - name: テキスト - .NET
+        href: text-moderation-quickstart-dotnet.md
+      - name: カスタム用語 - API コンソール
+        href: try-terms-list-api.md
+      - name: カスタム用語 - .NET
+        href: term-lists-quickstart-dotnet.md
+      - name: ビデオ - .NET
+        href: video-moderation-api.md
+    - name: API の確認
       items:
-        - name: Facebook のコンテンツ モデレーション
-          href: facebook-post-moderation.md
-        - name: E コマースの画像のモデレート
-          href: ecommerce-retail-catalog-moderation.md
-        - name: ビデオとトランスクリプトのモデレート
-          href: video-transcript-moderation-review-tutorial-dotnet.md
-    - name: レビュー ツール
-      items:
-        - name: 人間の関与について
-          href: Review-Tool-User-Guide/human-in-the-loop.md
-        - name: 設定の使用
-          href: Review-Tool-User-Guide/Configure.md
-        - name: チームの管理
-          href: Review-Tool-User-Guide/SubTeams.md
-        - name: タグを使用する
-          href: Review-Tool-User-Guide/Tags.md
-        - name: 画像のレビュー
-          href: Review-Tool-User-Guide/Review-Moderated-Images.md
-        - name: テキストのレビュー
-          href: Review-Tool-User-Guide/Text-Reviews.md
-        - name: 資格情報を管理する
-          href: Review-Tool-User-Guide/Credentials.md
-        - name: コネクタの使用
-          href: Review-Tool-User-Guide/Connectors.md
-        - name: ワークフローの使用
-          href: Review-Tool-User-Guide/Workflows.md
-        - name: ダッシュボードの表示
-          href: Review-Tool-User-Guide/View-Dashboard.md
+      - name: ジョブ - API コンソール
+        href: try-review-api-job.md
+      - name: ジョブ - .NET
+        href: moderation-jobs-quickstart-dotnet.md
+      - name: レビュー - API コンソール
+        href: try-review-api-review.md
+      - name: レビュー - .NET
+        href: moderation-reviews-quickstart-dotnet.md
+      - name: ビデオのレビュー - .NET
+        href: video-reviews-quickstart-dotnet.md
+      - name: ビデオのトランスクリプトのレビュー - .NET
+        href: video-transcript-reviews-quickstart-dotnet.md
+      - name: ワークフロー - API コンソール
+        href: try-review-api-workflow.md
+  - name: 最初の Content Moderator アプリ
+    items:
+    - name: Facebook のコンテンツ モデレーション
+      href: facebook-post-moderation.md
+    - name: E コマースの画像のモデレート
+      href: ecommerce-retail-catalog-moderation.md
+    - name: ビデオとトランスクリプトのモデレート
+      href: video-transcript-moderation-review-tutorial-dotnet.md
+  - name: レビュー ツール
+    items:
+    - name: 人間の関与について
+      href: Review-Tool-User-Guide/human-in-the-loop.md
+    - name: 設定の使用
+      href: Review-Tool-User-Guide/Configure.md
+    - name: チームの管理
+      href: Review-Tool-User-Guide/SubTeams.md
+    - name: タグを使用する
+      href: Review-Tool-User-Guide/Tags.md
+    - name: 画像のレビュー
+      href: Review-Tool-User-Guide/Review-Moderated-Images.md
+    - name: テキストのレビュー
+      href: Review-Tool-User-Guide/Text-Reviews.md
+    - name: 資格情報を管理する
+      href: Review-Tool-User-Guide/Credentials.md
+    - name: コネクタの使用
+      href: Review-Tool-User-Guide/Connectors.md
+    - name: ワークフローの使用
+      href: Review-Tool-User-Guide/Workflows.md
+    - name: ダッシュボードの表示
+      href: Review-Tool-User-Guide/View-Dashboard.md
 - name: リファレンス
   items:
-    - name: Content Moderator API
-      href: api-reference.md
-    - name: SDK
-      items:
-        - name: Java
-          href: 'https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-cognitiveservices-contentmoderator%22'
-        - name: Node.js
-          href: 'https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest'
-        - name: Python
-          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python'
-        - name: .NET
-          href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator'
+  - name: Content Moderator API
+    href: api-reference.md
+  - name: SDK
+    items:
+    - name: Java
+      href: https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-cognitiveservices-contentmoderator%22
+    - name: Node.js
+      href: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest
+    - name: Python
+      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python
+    - name: .NET
+      href: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator
 - name: リソース
   items:
-    - name: FAQ
-      href: FAQs.md
-    - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
-    - name: アカウント データのエクスポートまたは削除
-      href: ./export-delete-data.md
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/559960-content-moderator'
-    - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
-    - name: ナレッジ ベース
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/?category=ai-machine-learning'
-    - name: オンデマンド ウェビナー
-      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
+  - name: FAQ
+    href: FAQs.md
+  - name: 言語とリージョンのサポート
+    href: language-support.md
+  - name: リージョン別の提供状況
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator
+  - name: アカウント データのエクスポートまたは削除
+    href: ./export-delete-data.md
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/559960-content-moderator
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
+  - name: ナレッジ ベース
+    href: https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
+  - name: オンデマンド ウェビナー
+    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
+ms.openlocfilehash: 32f0c64253836d3080cc815753e361d810e1f2e8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433807"

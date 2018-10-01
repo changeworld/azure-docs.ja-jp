@@ -62,6 +62,8 @@ items:
     href: text-analytics-resource-external-community.md
   - name: FAQ
     href: text-analytics-resource-faq.md
+  - name: 言語とリージョンのサポート
+    href: language-support.md
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/
   - name: リージョン別の提供状況
@@ -70,15 +72,13 @@ items:
     href: https://stackoverflow.com/questions/tagged/text-analytics-api
   - name: Subscription key
     href: https://azure.microsoft.com/try/cognitive-services/?api=text-analytics
-  - name: サポートされている言語
-    href: text-analytics-supported-languages.md
   - name: 試してみる
     href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/555922-text-analytics
-ms.openlocfilehash: 654f9807d4e44e651e5b47ad91300e49a4359e0f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f69d4138907980ed7272dc8c5fa2c8415d4beb80
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999530"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432123"

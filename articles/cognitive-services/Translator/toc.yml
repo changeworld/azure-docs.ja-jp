@@ -1,175 +1,182 @@
+items:
 - name: Translator Text API のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Translator Text API とは
-      href: translator-info-overview.md
+  - name: Translator Text API とは
+    href: translator-info-overview.md
 - name: クイック スタート
-  expanded: true
   items:
-    - name: 'C#'
-      items:
-        - name: テキストを翻訳する
-          href: quickstart-csharp-translate.md
-        - name: テキストのスクリプトを変換する
-          href: quickstart-csharp-transliterate.md
-        - name: テキストから言語を特定する
-          href: quickstart-csharp-detect.md
-        - name: 別の翻訳を取得する
-          href: quickstart-csharp-dictionary.md
-        - name: サポートされている言語を取得する
-          href: quickstart-csharp-languages.md
-        - name: テキスト内の文の長さを取得する
-          href: quickstart-csharp-sentences.md
-    - name: Go
-      items:
-        - name: テキストを翻訳する
-          href: quickstart-go-translate.md
-        - name: テキストのスクリプトを変換する
-          href: quickstart-go-transliterate.md
-        - name: テキストから言語を特定する
-          href: quickstart-go-detect.md
-        - name: 別の翻訳を取得する
-          href: quickstart-go-dictionary.md
-        - name: サポートされている言語を取得する
-          href: quickstart-go-languages.md
-        - name: テキスト内の文の長さを取得する
-          href: quickstart-go-sentences.md
-    - name: Java
-      items:
-        - name: テキストを翻訳する
-          href: quickstart-java-translate.md
-        - name: テキストのスクリプトを変換する
-          href: quickstart-java-transliterate.md
-        - name: テキストから言語を特定する
-          href: quickstart-java-detect.md
-        - name: 別の翻訳を取得する
-          href: quickstart-java-dictionary.md
-        - name: サポートされている言語を取得する
-          href: quickstart-java-languages.md
-        - name: テキスト内の文の長さを取得する
-          href: quickstart-java-sentences.md
-    - name: Node.js
-      items:
-        - name: テキストを翻訳する
-          href: quickstart-nodejs-translate.md
-        - name: テキストのスクリプトを変換する
-          href: quickstart-nodejs-transliterate.md
-        - name: テキストから言語を特定する
-          href: quickstart-nodejs-detect.md
-        - name: 別の翻訳を取得する
-          href: quickstart-nodejs-dictionary.md
-        - name: サポートされている言語を取得する
-          href: quickstart-nodejs-languages.md
-        - name: テキスト内の文の長さを取得する
-          href: quickstart-nodejs-sentences.md
-    - name: PHP
-      items:
-        - name: テキストを翻訳する
-          href: quickstart-php-translate.md
-        - name: テキストのスクリプトを変換する
-          href: quickstart-php-transliterate.md
-        - name: テキストから言語を特定する
-          href: quickstart-php-detect.md
-        - name: 別の翻訳を取得する
-          href: quickstart-php-dictionary.md
-        - name: サポートされている言語を取得する
-          href: quickstart-php-languages.md
-        - name: テキスト内の文の長さを取得する
-          href: quickstart-php-sentences.md
-    - name: Python
-      items:
-        - name: テキストを翻訳する
-          href: quickstart-python-translate.md
-        - name: テキストのスクリプトを変換する
-          href: quickstart-python-transliterate.md
-        - name: テキストから言語を特定する
-          href: quickstart-python-detect.md
-        - name: 別の翻訳を取得する
-          href: quickstart-python-dictionary.md
-        - name: サポートされている言語を取得する
-          href: quickstart-python-languages.md
-        - name: テキスト内の文の長さを取得する
-          href: quickstart-python-sentences.md
-    - name: Ruby
-      items:
-        - name: テキストを翻訳する
-          href: quickstart-ruby-translate.md
-        - name: テキストのスクリプトを変換する
-          href: quickstart-ruby-transliterate.md
-        - name: テキストから言語を特定する
-          href: quickstart-ruby-detect.md
-        - name: 別の翻訳を取得する
-          href: quickstart-ruby-dictionary.md
-        - name: サポートされている言語を取得する
-          href: quickstart-ruby-languages.md
-        - name: テキスト内の文の長さを取得する
-          href: quickstart-ruby-sentences.md
+  - name: C#の場合
+    items:
+    - name: テキストを翻訳する
+      href: quickstart-csharp-translate.md
+    - name: テキストのスクリプトを変換する
+      href: quickstart-csharp-transliterate.md
+    - name: テキストから言語を特定する
+      href: quickstart-csharp-detect.md
+    - name: 別の翻訳を取得する
+      href: quickstart-csharp-dictionary.md
+    - name: サポートされている言語を取得する
+      href: quickstart-csharp-languages.md
+    - name: テキスト内の文の長さを取得する
+      href: quickstart-csharp-sentences.md
+  - name: Go
+    items:
+    - name: テキストを翻訳する
+      href: quickstart-go-translate.md
+    - name: テキストのスクリプトを変換する
+      href: quickstart-go-transliterate.md
+    - name: テキストから言語を特定する
+      href: quickstart-go-detect.md
+    - name: 別の翻訳を取得する
+      href: quickstart-go-dictionary.md
+    - name: サポートされている言語を取得する
+      href: quickstart-go-languages.md
+    - name: テキスト内の文の長さを取得する
+      href: quickstart-go-sentences.md
+  - name: Java
+    items:
+    - name: テキストを翻訳する
+      href: quickstart-java-translate.md
+    - name: テキストのスクリプトを変換する
+      href: quickstart-java-transliterate.md
+    - name: テキストから言語を特定する
+      href: quickstart-java-detect.md
+    - name: 別の翻訳を取得する
+      href: quickstart-java-dictionary.md
+    - name: サポートされている言語を取得する
+      href: quickstart-java-languages.md
+    - name: テキスト内の文の長さを取得する
+      href: quickstart-java-sentences.md
+  - name: Node.js
+    items:
+    - name: テキストを翻訳する
+      href: quickstart-nodejs-translate.md
+    - name: テキストのスクリプトを変換する
+      href: quickstart-nodejs-transliterate.md
+    - name: テキストから言語を特定する
+      href: quickstart-nodejs-detect.md
+    - name: 別の翻訳を取得する
+      href: quickstart-nodejs-dictionary.md
+    - name: サポートされている言語を取得する
+      href: quickstart-nodejs-languages.md
+    - name: テキスト内の文の長さを取得する
+      href: quickstart-nodejs-sentences.md
+  - name: PHP
+    items:
+    - name: テキストを翻訳する
+      href: quickstart-php-translate.md
+    - name: テキストのスクリプトを変換する
+      href: quickstart-php-transliterate.md
+    - name: テキストから言語を特定する
+      href: quickstart-php-detect.md
+    - name: 別の翻訳を取得する
+      href: quickstart-php-dictionary.md
+    - name: サポートされている言語を取得する
+      href: quickstart-php-languages.md
+    - name: テキスト内の文の長さを取得する
+      href: quickstart-php-sentences.md
+  - name: Python
+    items:
+    - name: テキストを翻訳する
+      href: quickstart-python-translate.md
+    - name: テキストのスクリプトを変換する
+      href: quickstart-python-transliterate.md
+    - name: テキストから言語を特定する
+      href: quickstart-python-detect.md
+    - name: 別の翻訳を取得する
+      href: quickstart-python-dictionary.md
+    - name: サポートされている言語を取得する
+      href: quickstart-python-languages.md
+    - name: テキスト内の文の長さを取得する
+      href: quickstart-python-sentences.md
+  - name: Ruby
+    items:
+    - name: テキストを翻訳する
+      href: quickstart-ruby-translate.md
+    - name: テキストのスクリプトを変換する
+      href: quickstart-ruby-transliterate.md
+    - name: テキストから言語を特定する
+      href: quickstart-ruby-detect.md
+    - name: 別の翻訳を取得する
+      href: quickstart-ruby-dictionary.md
+    - name: サポートされている言語を取得する
+      href: quickstart-ruby-languages.md
+    - name: テキスト内の文の長さを取得する
+      href: quickstart-ruby-sentences.md
+  expanded: true
 - name: チュートリアル
   items:
-    - name: Translator Text の WPF アプリの作成
-      href: tutorial-wpf-translation-csharp.md
+  - name: Translator Text の WPF アプリの作成
+    href: tutorial-wpf-translation-csharp.md
 - name: 概念
   items:
-    - name: サポートされている言語
-      href: languages.md
-    - name: テキストの翻訳をカスタマイズおよび改善する
-      href: customization.md
-    - name: API が文字数をカウントする方法
-      href: character-counts.md
+  - name: テキストの翻訳をカスタマイズおよび改善する
+    href: customization.md
+  - name: API が文字数をカウントする方法
+    href: character-counts.md
 - name: ハウツー ガイド
   items:
-    - name: Translator Text API にサインアップする
-      href: translator-text-how-to-signup.md
-    - name: V3 Text API に移行する
-      href: migrate-to-v3.md
-    - name: 不適切な表現のフィルターを追加する
-      href: profanity-filtering.md
-    - name: 単語アラインメント情報を受信する
-      href: word-alignment.md
-    - name: 動的ディクショナリ機能を使用する
-      href: dynamic-dictionary.md
+  - name: Translator Text API にサインアップする
+    href: translator-text-how-to-signup.md
+  - name: V3 Text API に移行する
+    href: migrate-to-v3.md
+  - name: 不適切な表現のフィルターを追加する
+    href: profanity-filtering.md
+  - name: 単語アラインメント情報を受信する
+    href: word-alignment.md
+  - name: 動的ディクショナリ機能を使用する
+    href: dynamic-dictionary.md
 - name: リファレンス
   items:
-    - name: v3 Translator Text API のリファレンス
-      href: reference/v3-0-reference.md
-      items:
-        - name: Languages
-          href: reference/v3-0-languages.md
-        - name: Translate
-          href: reference/v3-0-translate.md
-        - name: Transliterate
-          href: reference/v3-0-transliterate.md
-        - name: Detect
-          href: reference/v3-0-detect.md
-        - name: BreakSentence
-          href: reference/v3-0-break-sentence.md
-        - name: 辞書検索
-          href: reference/v3-0-dictionary-lookup.md
-        - name: 辞書の例
-          href: reference/v3-0-dictionary-examples.md
-    - name: v2 Translator Text API のリファレンス (非推奨)
-      href: reference/v2-0-reference.md
-      items:
-        - name: テキストの変換
-          href: transform-text.md
-        - name: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
-          href: ctf-reporting.md
-        - name: N-Best の翻訳結果を返す
-          href: return-n-best-translations.md
+  - name: v3 Translator Text API のリファレンス
+    href: reference/v3-0-reference.md
+    items:
+    - name: Languages
+      href: reference/v3-0-languages.md
+    - name: Translate
+      href: reference/v3-0-translate.md
+    - name: Transliterate
+      href: reference/v3-0-transliterate.md
+    - name: Detect
+      href: reference/v3-0-detect.md
+    - name: BreakSentence
+      href: reference/v3-0-break-sentence.md
+    - name: 辞書検索
+      href: reference/v3-0-dictionary-lookup.md
+    - name: 辞書の例
+      href: reference/v3-0-dictionary-examples.md
+  - name: v2 Translator Text API のリファレンス (非推奨)
+    href: reference/v2-0-reference.md
+    items:
+    - name: テキストの変換
+      href: transform-text.md
+    - name: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
+      href: ctf-reporting.md
+    - name: N-Best の翻訳結果を返す
+      href: return-n-best-translations.md
 - name: リソース
   items:
-    - name: コード サンプル (GitHub)
-      href: 'https://aka.ms/TranslatorGitHub'
-    - name: FAQ
-      href: 'https://www.microsoft.com/translator/faq.aspx'
-    - name: ナレッジ ベース
-      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132647-translator'
-    - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/'
-    - name: リージョン別の提供状況
-      href: 'https://azure.microsoft.com/global-infrastructure/services/'
-    - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/questions/tagged/microsoft-translator'
-    - name: UserVoice
-      href: 'https://cognitive.uservoice.com/forums/558796-translator'
+  - name: コード サンプル (GitHub)
+    href: https://aka.ms/TranslatorGitHub
+  - name: FAQ
+    href: https://www.microsoft.com/translator/faq.aspx
+  - name: ナレッジ ベース
+    href: https://cognitive.uservoice.com/knowledgebase/topics/132647-translator
+  - name: 言語とリージョンのサポート
+    href: language-support.md
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
+  - name: リージョン別の提供状況
+    href: https://azure.microsoft.com/global-infrastructure/services/
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/questions/tagged/microsoft-translator
+  - name: UserVoice
+    href: https://cognitive.uservoice.com/forums/558796-translator
+ms.openlocfilehash: adea86473e69a1ea346dbf63b6976642d201dcb9
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434451"
