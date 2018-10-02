@@ -1,6 +1,6 @@
 ---
 layout: HubPage
-hide_bc: true
+hide_bc: false
 title: Azure Active Directory のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
 description: Azure Active Directory (Azure AD) は、Microsoft のマルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスで、中核となるディレクトリ サービス、アプリケーションのアクセス管理機能、ID の保護機能が 1 つのソリューションに統合されています。
 services: active-directory
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 09/20/2018
 ms.author: mtillman
-ms.openlocfilehash: bf72b8fbe437971e6d621208c93c239c3c557f55
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 646d1639c7cdd4f9a21ec1c8ac65587cab4f4e12
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165060"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585205"
 ---
 <div id="main" class="v2">
     <div class="container">
