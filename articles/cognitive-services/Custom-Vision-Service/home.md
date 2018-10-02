@@ -18,14 +18,14 @@ ms.locfileid: "43285246"
 ---
 # <a name="what-is-the-custom-vision-service"></a>Custom Vision Service とは
 
-Custom Vision Service は、カスタム画像分類子の構築を支援する Microsoft Cognitive Services です。 画像の分類子を簡単に素早く構築、デプロイし、その性能を向上させることができます。 Custom Vision Service には、画像をアップロードして分類子をトレーニングするための REST API や Web インターフェイスが用意されています。
+Custom Vision Service は、カスタム画像分類器を構築できる Microsoft Cognitive Services です。 画像の分類器を簡単に素早く構築、デプロイし、その性能を向上させることができます。 Custom Vision Service には、画像をアップロードして分類器をトレーニングするための REST API や Web インターフェイスが用意されています。
 
 ## <a name="what-does-custom-vision-service-do-well"></a>Custom Vision Service でできること
 
 Custom Vision Service は、分類したい項目が画像の中で目立つ場合に最も良く動作します。 
 
-分類子を作るうえで画像はほとんど必要ありません。 クラスごとに 50 枚もあれば、プロトタイプを作り始めることができます。 Custom Vision Service が使用する方法は差異の影響を受けづらいため、データが少なくてもプロトタイプを作り始めることができるのです。 しかしこれは、ごく微妙な違いを検出したいシナリオには Custom Vision Service があまり適さないということを意味します  (品質保証のシナリオにおける小さな割れやへこみなど)。
+分類器を作るうえで画像はほとんど必要ありません。 クラスごとに 50 枚もあれば、プロトタイプを作り始めることができます。 Custom Vision Service が使用する方法は差異の影響を受けづらいため、データが少なくてもプロトタイプを作り始めることができるのです。 しかしこれは、ごく微妙な違いを検出したいシナリオには Custom Vision Service があまり適さないということを意味します  (品質保証のシナリオにおける小さな割れやへこみなど)。
 
 ## <a name="next-steps"></a>次の手順
 
-[分類子の構築方法について](getting-started-build-a-classifier.md)
+[分類器の構築方法について](getting-started-build-a-classifier.md)
