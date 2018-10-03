@@ -1,0 +1,77 @@
+items:
+- name: Azure Blockchain Workbench (パブリック プレビュー)
+  href: index.yml
+- name: 概要
+  items:
+  - name: Azure Blockchain Workbench について
+    href: overview.md
+  expanded: true
+- name: 概念
+  items:
+  - name: アーキテクチャ
+    href: architecture.md
+  - name: 統合のパターン
+    href: integration-patterns.md
+- name: ハウツー ガイド
+  items:
+  - name: Workbench をデプロイする
+    href: deploy.md
+  - name: ブロックチェーン アプリを作成する
+    href: create-app.md
+  - name: Workbench ユーザーを管理する
+    href: manage-users.md
+  - name: ブロックチェーン アプリを使用する
+    href: use.md
+  - name: Workbench API を使用する
+    href: use-api.md
+  - name: アプリのトラブルシューティング
+    href: troubleshooting.md
+  - name: Workbench データを使用する
+    items:
+    - name: DB ファイアウォールを構成する
+      href: database-firewall.md
+    - name: DB の詳細を取得する
+      href: getdb-details.md
+    - name: Excel でデータを使用する
+      href: data-excel.md
+    - name: Power BI でデータを使用する
+      href: data-powerbi.md
+    - name: SQL Management Studio でデータを使用する
+      href: data-sql-management-studio.md
+  expanded: true
+- name: リファレンス
+  items:
+  - name: 構成
+    href: configuration.md
+  - name: データベース ビュー
+    href: database-views.md
+  - name: メッセージング API
+    href: messages-overview.md
+  - name: REST API
+    href: https://docs.microsoft.com/rest/api/azure-blockchain-workbench
+- name: リソース
+  items:
+  - name: ブログ
+    href: https://azure.microsoft.com/blog/topics/blockchain/
+  - name: コード サンプル
+    href: https://github.com/Azure-Samples/blockchain
+  - name: コミュニティ
+    href: https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain
+  - name: フォーラム
+    href: https://aka.ms/workbenchforum
+  - name: 製品フィードバック
+    href: https://aka.ms/blockchainuservoice
+- name: ソリューション テンプレート
+  items:
+  - name: Ethereum Proof-of-Authority Consortium
+    href: ../templates/ethereum-poa-deployment.md
+  - name: Ethereum Proof-of-Work Consortium
+    href: ../templates/ethereum-deployment.md
+  - name: Hyperledger Fabric コンソーシアム
+    href: ../templates/hyperledger-fabric-single-member-blockchain.md
+ms.openlocfilehash: de9b0906450f3ba26ebfac6699c07d93039db6a7
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239780"
