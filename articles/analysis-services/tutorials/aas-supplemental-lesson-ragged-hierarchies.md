@@ -42,7 +42,7 @@ ms.locfileid: "37440767"
 
 4.  次の[リレーションシップ](../tutorials/aas-lesson-4-create-relationships.md)を作成します。
 
-    | 表 1           | 分割       | フィルターの方向   | テーブル 2     | 分割      | アクティブ |
+    | テーブル 1           | 列       | フィルターの方向   | テーブル 2     | 列      | アクティブ |
     |-------------------|--------------|--------------------|-------------|-------------|--------|
     | FactResellerSales | OrderDateKey | 既定値            | DimDate     | 日付        | [はい]    |
     | FactResellerSales | DueDate      | 既定値            | DimDate     | 日付        | いいえ      |

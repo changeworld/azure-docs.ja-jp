@@ -82,7 +82,7 @@ ms.locfileid: "37446658"
   
 1.  AutoSum 機能を使用して次のメジャーを作成し､名前を指定します｡  
 
-    |分割|メジャー名|AutoSum (∑)|数式|  
+    |列|メジャー名|AutoSum (∑)|数式|  
     |----------------|----------|-----------------|-----------|  
     |SalesOrderLineNumber|InternetOrderLinesCount|Count|=COUNTA([SalesOrderLineNumber])|  
     |OrderQuantity|InternetTotalUnits|合計|=SUM([OrderQuantity])|  
