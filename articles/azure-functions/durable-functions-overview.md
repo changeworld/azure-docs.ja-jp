@@ -34,7 +34,7 @@ ms.locfileid: "39627408"
 > [!NOTE]
 > Durable Functions は Azure Functions の高度な拡張機能であり、すべてのアプリケーションに適しているわけではありません。 この記事は、開発者が [Azure Functions](functions-overview.md) のコンセプトを十分に理解しており、サーバーレス アプリケーションの開発に取り組んでいることを前提としています。
 
-Durable Functions の主な用途は、サーバーレス アプリケーションでステートフルな複数の処理が協調作業する際に発生する問題をシンプルにすることです。 次のセクションでは、Durable Functions を使用することでメリットがある、いくつかの典型的なアプリケーションのパターンを示します。
+Durable Functions の主な用途は、サーバーレス アプリケーションにおける複雑でステートフルな調整の問題をシンプルにすることです。 次のセクションでは、Durable Functions を使用することでメリットがある、いくつかの典型的なアプリケーションのパターンを示します。
 
 ## <a name="pattern-1-function-chaining"></a>パターン #1: 関数チェーン
 
