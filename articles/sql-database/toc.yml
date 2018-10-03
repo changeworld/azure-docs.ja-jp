@@ -95,14 +95,14 @@ items:
       href: sql-database-service-tiers-dtu.md
     - name: ハイパースケール サービス レベル
       href: sql-database-hyperscale.md
-    - name: リソース制限
-      href: sql-database-resource-limits.md
     - name: 予約容量の前払い
       href: sql-database-reserved-capacity.md
   - name: 論理サーバー
     items:
     - name: 作成と管理
       href: sql-database-logical-servers.md
+    - name: リソース制限
+      href: sql-database-resource-limits-logical-server.md
     - name: 接続のアーキテクチャ
       href: sql-database-connectivity-architecture.md
     - name: T-SQL の相違点
@@ -135,6 +135,8 @@ items:
     items:
     - name: マネージド インスタンス
       href: sql-database-managed-instance.md
+    - name: リソース制限
+      href: sql-database-managed-instance-resource-limits.md
     - name: VNet 構成
       href: sql-database-managed-instance-vnet-configuration.md
     - name: '[カスタム DNS]'
@@ -624,9 +626,9 @@ items:
     href: /azure/architecture/
   - name: 顧客事例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 009bd79dca50b98268b9bfb7ba4b1a3ab0f4c44b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0f6a269c31089b52b2dca16ca31e1c229efc70fb
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393878"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042497"
