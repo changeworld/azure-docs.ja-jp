@@ -38,7 +38,7 @@ Durable Functions の主な用途は、サーバーレス アプリケーショ�
 
 ## <a name="pattern-1-function-chaining"></a>パターン #1: 関数チェーン
 
-*関数チェーン*は、特定の順序で関数のシーケンスを実行するパターンです。 ある関数の出力が、別の関数の入力に適用される必要がある、ということがよくあります。
+*関数チェーン*は、特定の順序で関数のシーケンスを実行するパターンです。 多くの場合、ある関数の出力が、別の関数の入力に適用されます。
 
 ![関数チェーンの図](media/durable-functions-overview/function-chaining.png)
 
@@ -78,17 +78,17 @@ module.exports = df(function*(ctx) {
 });
 ```
 
-"F1"、"F2"、"F3"、"F4" という値は、関数アプリ内の他の関数の名前です。 制御フローは、通常の命令型のコーディング構造で実装されます。 つまり、コードは上から下へ実行され、コードに条件文やループなどの既存言語の制御フロー セマンティクスを含めることができます。  エラー処理ロジックを try ブロック、catch ブロック、finally ブロックに含めることもできます。
+"F1"、"F2"、"F3"、"F4" という値は、Function App 内の他の関数の名前です。 制御フローは、一般的な命令型のコーディング構造で実装されます。 つまり、コードは上から下へ実行され、コードに条件文やループなどの既存言語の制御フロー セマンティクスを含めることができます。  エラー処理ロジックを try ブロック、catch ブロック、finally ブロックに含めることもできます。
 
 `ctx` パラメーター ([DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html)) は名前によって他の関数を呼び出し、パラメーターを渡して、関数の出力を返すメソッドを提供します。 コードが `await` を呼び出すたびに Durable Functions フレームワークは、現在の関数インスタンスの進行状況に*チェックポイントを設定*します。 プロセスまたは VM が実行途中でリサイクルされる場合、その関数インスタンスは先の `await` 呼び出しから再開されます。 この再起動動作については、後で詳しく説明します。
 
 ## <a name="pattern-2-fan-outfan-in"></a>パターン #2: ファンアウト/ファンイン
 
-*ファンアウト/ファンイン*は、複数の関数を並列に実行してすべてが完了するまで待機するパターンです。  複数の関数から返された結果に基づいて集計作業が行われる場合があります。
+*ファンアウト/ファンイン*は、複数の関数を並列に実行してすべてが完了するまで待機するパターンです。  一般的に複数の関数から返された結果に基づいて集計作業が行われます。
 
 ![ファンアウト/ファンインの図](media/durable-functions-overview/fan-out-fan-in.png)
 
-通常の関数では、関数が複数のメッセージを 1 つのキューに送信することでファンアウトが行われます。 しかし、ファンインして戻すことはこれよりずっと難しくなります。 キューによってトリガーされる関数が終了し、関数の出力が格納される時間を追跡するように、コードを記述する必要があります。 Durable Functions 拡張機能は、比較的単純なコードでこのパターンを処理します。
+通常の関数では、関数が複数のメッセージを 1 つのキューに送信することでファンアウトが行われます。 しかし、ファンインした結果を取得することはファンアウトより難しくなります。 キューによってトリガーされる関数が終了し、関数の出力が格納されるタイミングを追跡するように、コードを記述する必要があります。 Durable Functions 拡張機能は、比較的単純なコードでこのパターンを処理します。
 
 #### <a name="c-script"></a>C# スクリプト
 
@@ -137,7 +137,7 @@ module.exports = df(function*(ctx) {
 
 ファンアウト作業が `F2` 関数の複数のインスタンスに配分され、タスクの動的リストを使用してこの作業が追跡されます。 .NET `Task.WhenAll` API が呼び出され、すべての呼び出された関数が終了するまで待機します。 次に、`F2` 関数の出力が動的なタスク リストから集計されて、`F3` 関数に渡されます。
 
-`Task.WhenAll` の `await` 呼び出しの際に自動でチェックポイントを設定することで、実行途中でクラッシュや再起動が生じても既に完了したすべてのタスクをやり直す必要がなくなります。
+`Task.WhenAll` の `await` 呼び出しの際に自動でチェックポイントを設定することで、実行途中でクラッシュや再起動が生じても既に完了したタスクをやり直す必要がなくなります。
 
 ## <a name="pattern-3-async-http-apis"></a>パターン #3: 非同期 HTTP API
 
@@ -145,7 +145,7 @@ module.exports = df(function*(ctx) {
 
 ![HTTP API の図](media/durable-functions-overview/async-http-api.png)
 
-Durable Functions は、実行時間の長い関数を操作するコードをシンプルにするビルトイン API を提供します。 [サンプル](durable-functions-install.md)では、新しいオーケストレーター関数のインスタンスを開始するために使用できる、シンプルな REST コマンドについて説明しています。 インスタンスが開始されると、この拡張機能はオーケストレーター関数の状態をクエリする Webhook HTTP API を公開します。 次の例では、オーケストレーターを開始してその状態をクエリする REST コマンドを示します。 わかりやすくするため、この例では細部をいくらか省略しています。
+Durable Functions は、実行時間の長い関数を操作するコードをシンプルにするビルトイン API を提供します。 [サンプル](durable-functions-install.md)では、新しいオーケストレーター関数のインスタンスを開始するために使用できる、シンプルな REST コマンドについて説明しています。 インスタンスが開始されると、この拡張機能はオーケストレーター関数の状態をクエリする Webhook HTTP API を公開します。 次の例では、オーケストレーターを開始してその状態をクエリする REST コマンドを示します。 わかりやすくするため、この例では細部をいくつか省略しています。
 
 ```
 > curl -X POST https://myfunc.azurewebsites.net/orchestrators/DoWork -H "Content-Length: 0" -i
@@ -203,7 +203,7 @@ public static async Task<HttpResponseMessage> Run(
 
 ![モニター ダイアグラム](media/durable-functions-overview/monitor.png)
 
-Durable Functions を使用して、任意のエンドポイントを観察する複数のモニターを、数行のコードで作成できます。 モニターは、何らかの条件が満たされた場合、または [DurableOrchestrationClient](durable-functions-instance-management.md) によって実行を終了でき、待機間隔は、何らかの条件に基づいて変更できます (つまり指数バックオフを実装します)。次のコードは、基本的なモニターを実装します。
+Durable Functions を使用して、任意のエンドポイントを観察する複数のモニターを、数行のコードで作成できます。 モニターは、何らかの条件が満たされた場合、または [DurableOrchestrationClient](durable-functions-instance-management.md) によって実行を終了でき、待機間隔は、何らかの条件に基づいて変更できます (つまり指数バックオフを実装します)。次のコードは、基本的なモニターの実装になります。
 
 #### <a name="c-script"></a>C# スクリプト
 
@@ -334,7 +334,7 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
 
 ## <a name="the-technology"></a>テクノロジ
 
-背後では、永続的タスクのオーケストレーションを構築するための GitHub のオープン ソース ライブラリである [Durable Task Framework](https://github.com/Azure/durabletask) の上に、Durable Functions 拡張機能が構築されています。 Azure Functions が Azure WebJobs のサーバーレスな進化形であるのと同じように、Durable Functions は Durable Task Framework のサーバーレスな進化形です。 Durable Task Framework は、ミッション クリティカルなプロセスを自動化するために Microsoft 内外で頻繁に使用されています。 サーバーレスな Azure Functions 環境には自然に適合します。
+背後では、永続的タスクのオーケストレーションを構築するための GitHub のオープン ソース ライブラリである [Durable Task Framework](https://github.com/Azure/durabletask) の上に、Durable Functions 拡張機能が構築されています。 Azure Functions が Azure WebJobs のサーバーレスな進化形であるのと同じように、Durable Functions は Durable Task Framework のサーバーレスな進化形です。 Durable Task Framework は、ミッション クリティカルなプロセスを自動化するために Microsoft 内外で頻繁に使用されています。 サーバーレスな Azure Functions 環境に自然に適合します。
 
 ### <a name="event-sourcing-checkpointing-and-replay"></a>イベント ソーシング、チェックポイント設定、リプレイ
 
@@ -346,7 +346,7 @@ public static async Task Run(string instanceId, DurableOrchestrationClient clien
 
 ### <a name="orchestrator-code-constraints"></a>オーケストレーター コードの制約
 
-このリプレイ動作は、オーケストレーター関数に記述できるコード タイプに関する制約を設けます。 たとえば、オーケストレーター コードは複数回リプレイされて毎回同じ結果を生成する必要があるため、確定的である必要があります。 制約に関する完全なリストについては、**チェックポイントの設定と再起動**に関する記事の「[Orchestrator code constraints (オーケストレーター コードの制約)](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints)」セクションをご覧ください。
+このリプレイ動作は、オーケストレーター関数に記述できるコードの種類にいくつかの制約を設けます。 たとえば、オーケストレーター コードは複数回リプレイされて毎回同じ結果を生成する必要があるため、決定的である必要があります。 制約に関する完全なリストについては、**チェックポイントの設定と再起動**に関する記事の「[Orchestrator code constraints (オーケストレーター コードの制約)](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints)」セクションをご覧ください。
 
 ## <a name="language-support"></a>言語のサポート
 
@@ -360,7 +360,7 @@ Durable Functions 拡張機能は、Application Insights インストルメン�
 
 ![App Insights のクエリ結果](media/durable-functions-overview/app-insights-1.png)
 
-各ログ エントリの `customDimensions` フィールドには、有用な構造化データが数多く格納されています。 完全に展開された、そのようなエントリの例を次に示します。
+各ログ エントリの `customDimensions` フィールドには、有用な構造化データが数多く格納されています。 完全に展開されたエントリの例を次に示します。
 
 ![App Insights クエリの customDimensions フィールド](media/durable-functions-overview/app-insights-2.png)
 
@@ -377,11 +377,11 @@ Table Storage は、オーケストレーター アカウントの実行履歴�
 ![Azure Storage Explorer のスクリーン ショット](media/durable-functions-overview/storage-explorer.png)
 
 > [!WARNING]
-> Table Storage 内で実行履歴を確認できるのは簡単で便利ですが、このテーブルに依存関係を設定することは避けてください。 これについては、Durable Functions 拡張機能が今後改善されていくうちに変更される可能性があります。
+> Table Storage 内で実行履歴を確認できるのは簡単で便利ですが、このテーブルに依存することは、しないでください。 この動作は、Durable Functions 拡張機能が今後改善されていくうちに変更される可能性があります。
 
 ## <a name="known-issues-and-faq"></a>既知の問題とよくあるご質問
 
-すべての既知の問題は、[GitHub の Issue](https://github.com/Azure/azure-functions-durable-extension/issues) 一覧で追跡されています。 問題が発生してその問題が GitHub で見つからない場合は、新しい Issue を開き、その問題の詳細な説明を記載してお知らせください。
+すべての既知の問題は、[GitHub の Issue](https://github.com/Azure/azure-functions-durable-extension/issues) の一覧で追跡されています。 問題が発生してその問題が GitHub で見つからない場合は、新しい Issue を開き、その問題の詳細な説明を記載してお知らせください。
 
 ## <a name="next-steps"></a>次の手順
 
