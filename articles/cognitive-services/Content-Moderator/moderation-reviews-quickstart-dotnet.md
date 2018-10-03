@@ -100,7 +100,7 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
 > [!NOTE]
 > お使いの Content Moderator のサービス キーは 1 秒ごとの要求数 (RPS) が制限されており、その上限を超えると、SDK が 429 エラー コードとともに例外をスローします。 
 >
-> 無料レベルのキーの RPS は 1 に制限されています。
+> Free レベルのキーの RPS は 1 に制限されています。
 
 #### <a name="add-the-following-constants-to-the-program-class-in-programcs"></a>次の定数を Program.cs 内の **Program** クラスに追加します。
     

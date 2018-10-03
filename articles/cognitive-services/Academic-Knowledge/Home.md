@@ -24,7 +24,7 @@ MAG データは、Bing Web インデックスだけではなく、Bing から�
 
 Microsoft Academic Graph については、[http://aka.ms/academicgraph](http://aka.ms/academicgraph) を参照してください。
 
-Academic Knowledge API は、Cognitive Services Preview から Cognitive Services Labs に移動されました。 プロジェクトの新しいホームページは [https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge) です。 既存の API キーは、2018 年 5 月 24日 まで機能します。 この日を過ぎたら、新しい API キーを生成してください。 既存のキーの有効期限が切れた後、有料プレビューは使用できなくなることに注意してください。 この API の無料レベルでは目的を十分に果たせない場合は、Microsoft のチームにお問い合わせください。 
+Academic Knowledge API は、Cognitive Services Preview から Cognitive Services Labs に移動されました。 プロジェクトの新しいホームページは [https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge) です。 既存の API キーは、2018 年 5 月 24日 まで機能します。 この日を過ぎたら、新しい API キーを生成してください。 既存のキーの有効期限が切れた後、有料プレビューは使用できなくなることに注意してください。 この API の Free レベルでは目的を十分に果たせない場合は、Microsoft のチームにお問い合わせください。 
 
 ## <a name="features"></a>機能
 Academic Knowledge API は、次の 4 つの関連する REST エンドポイントで構成されます。  

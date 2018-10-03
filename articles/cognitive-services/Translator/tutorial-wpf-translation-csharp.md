@@ -40,7 +40,7 @@ ms.locfileid: "39716374"
 
 また、プログラムで使用される 3 つの Azure サービスのサブスクリプション キーも必要です。 Translator Text サービスのキーは、Azure ダッシュボードから取得できます。 毎月最大 200 万文字を無料で翻訳できる、無料価格レベルを利用できます。
 
-Text Analytics と Bing Spell Check の両方のサービスには、無料試用版が用意されており、[Cognitive Services の試行](https://azure.microsoft.com/try/cognitive-services/)でサインアップできます。 また、Azure ダッシュボードを介してどちらかのサブスクリプションも作成できます。 Text Analytics には無料レベルがあります。
+Text Analytics と Bing Spell Check の両方のサービスには、無料試用版が用意されており、[Cognitive Services の試行](https://azure.microsoft.com/try/cognitive-services/)でサインアップできます。 また、Azure ダッシュボードを介してどちらかのサブスクリプションも作成できます。 Text Analytics には Free レベルがあります。
 
 このチュートリアルのソース コードは下に示されています。 お使いのサブスクリプション キーは、`MainWindow.xaml.cs` 内で `TEXT_TRANSLATION_API_SUBSCRIPTION_KEY` などの変数としてソース コードにコピーする必要があります。
 
