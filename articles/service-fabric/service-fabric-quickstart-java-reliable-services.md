@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ed5da0afe67deaa7000c1bf3b8d75bdea14f2ecd
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 7fcf0b924868d755bc76f7d1e695e73afc4eae6a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616328"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993393"
 ---
 # <a name="quickstart-deploy-a-java-reliable-services-application-to-service-fabric"></a>クイック スタート: Service Fabric に Java Reliable Services アプリケーションをデプロイする
 
@@ -101,7 +101,7 @@ Azure 内のクラスターにアプリケーションをデプロイするに�
 Service Fabric には、クラスターとそのアプリケーションを管理するために使用できるツールがいくつか用意されています。
 
 * ブラウザーベースのツールである Service Fabric Explorer。
-* Azure CLI 2.0 上で実行される Service Fabric コマンド ライン インターフェイス (CLI)。
+* Azure CLI 上で実行される Service Fabric コマンド ライン インターフェイス (CLI)。
 * PowerShell コマンド。
 
 このクイック スタートでは、Service Fabric CLI と Service Fabric Explorer を使用します。

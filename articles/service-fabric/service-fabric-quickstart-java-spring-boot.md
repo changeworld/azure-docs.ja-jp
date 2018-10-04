@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cedc13cb18440eee32e333d395494043e2eca9d1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 702d247bf331a4231b4b71ae6661ff88c9e0be2e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39442515"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982768"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>クイック スタート: Java Spring Boot アプリケーションを Service Fabric にデプロイする
 
@@ -187,7 +187,7 @@ Azure 内のクラスターにアプリケーションをデプロイするに�
 Service Fabric には、クラスターとそのアプリケーションを管理するために使用できるツールがいくつか用意されています。
 
 * ブラウザーベースのツールである Service Fabric Explorer。
-* Azure CLI 2.0 上で実行される Service Fabric コマンド ライン インターフェイス (CLI)。
+* Azure CLI 上で実行される Service Fabric コマンド ライン インターフェイス (CLI)。
 * PowerShell コマンド。
 
 このクイック スタートでは、Service Fabric CLI と Service Fabric Explorer を使用します。
