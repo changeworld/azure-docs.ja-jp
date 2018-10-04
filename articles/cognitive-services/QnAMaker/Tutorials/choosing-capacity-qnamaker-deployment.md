@@ -29,7 +29,7 @@ QnA Maker サービスを作成する前に、前述したサービスに関し�
 通常、次の 3 つのパラメーターを考慮する必要があります。
 1. **サービスに必要なスループット**: App Service の適切な[アプリ プラン](https://azure.microsoft.com/en-in/pricing/details/app-service/plans/)を、実際のニーズに基づいて選択します。 アプリは[スケールアップ](https://docs.microsoft.com/en-us/azure/app-service/web-sites-scale)またはスケールダウンすることができます。 この点は、Azure Search の SKU の選択にも影響します。詳細については、[こちら](https://docs.microsoft.com/en-us/azure/search/search-sku-tier)を参照してください。
 
-2. **ナレッジ ベースのサイズと数**: 実際のシナリオに合った適切な [Azure Search SKU](https://azure.microsoft.com/en-in/pricing/details/search/) を選択してください。 特定のレベルで発行できるナレッジ ベースの数は N-1 件です (N は、そのレベルで許容される最大インデックス)。 レベルごとに許容されるドキュメントの最大サイズと最大数もチェックしてください。
+2. **ナレッジ ベースのサイズと数**: 実際のシナリオに合った適切な [Azure Search SKU](https://azure.microsoft.com/en-in/pricing/details/search/) を選択してください。 特定のレベルで発行できるナレッジ ベースの数は N-1 個です (N は、そのレベルで許容される最大インデックス)。 レベルごとに許容されるドキュメントの最大サイズと最大数もチェックしてください。
 
 3. **ソースとしてのドキュメントの数**: QnA Maker 管理サービスの Free SKU では、ポータルと API で管理できるドキュメントの数が 3 つ (サイズはそれぞれ 1 MB) に限定されます。 Standard SKU では、管理できるドキュメントの数に制限はありません。 詳細については、[こちら](https://aka.ms/qnamaker-pricing)を参照してください。
 
@@ -37,8 +37,8 @@ QnA Maker サービスを作成する前に、前述したサービスに関し�
 
 |                        | QnA Maker 管理 | App Service | Azure Search | 制限事項                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| 実験        | 無料の SKU             | Free レベル   | Free レベル    | 発行できる KB は 2 つまで (最大サイズ 50 MB)  |
-| 開発/テスト環境   | Standard SKU         | 共有      | Basic        | 発行できる KB は 4 つまで (最大サイズ 2 GB)    |
+| 実験        | 無料の SKU             | Free レベル   | Free レベル    | 発行できる KB は 2 個まで (最大サイズ 50 MB)  |
+| 開発/テスト環境   | Standard SKU         | 共有      | Basic        | 発行できる KB は 14 個まで (最大サイズ 2 GB)    |
 | 運用環境 | Standard SKU         | Basic       | 標準     | 発行できる KB は 49 個まで (最大サイズ 25 GB) |
 
 QnA Maker スタックのアップグレードについては、「[QnA Maker サービスのアップグレード](../How-To/upgrade-qnamaker-service.md)」を参照してください。
