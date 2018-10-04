@@ -82,7 +82,7 @@ ms.locfileid: "37342435"
 ## <a name="errors-during-the-optional-web-proxy-settings"></a>省略可能な Web プロキシの設定中のエラー
 | No. | エラー メッセージ | 考えられる原因 | 推奨される操作 |
 | --- | --- | --- | --- |
-| 1 |Invoke-HcsSetupWizard: 無効なパラメーター (HRESULT からの例外: 0x80070057) |プロキシ設定に指定されたパラメーターの 1 つが有効ではありません。 |URI が正しい形式で指定されていません。 次の形式を使用します。http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
+| 1 |Invoke-HcsSetupWizard: 無効なパラメーター (HRESULT からの例外: 0x80070057) |プロキシ設定に指定されたパラメーターの 1 つが有効ではありません。 |URI が正しい形式で指定されていません。 次の形式を使用します。 http://*<IP address or FQDN of the web proxy server>*:*<TCP port number>* |
 | 2 |Invoke-HcsSetupWizard: RPC セーバーを利用できません (HRESULT: 0x800706ba からの例外) |根本原因は、次のいずれかです。<ol><li>クラスターが稼働していません。</li><li>パッシブ コントローラーがアクティブ コントローラーと通信できません。コマンドがパッシブ コントローラーから実行されています。</li></ol> |根本原因に応じて対応します。<ol><li>[Microsoft サポートに問い合わせ](storsimple-8000-contact-microsoft-support.md) て、クラスターが稼働しているかどうかを確認します。</li><li>コマンドをアクティブ コントローラーから実行します。 パッシブ コントローラーからコマンドを実行する場合、パッシブ コントローラーがアクティブ コントローラーと通信できることが必要となります。 この接続を確立できない場合は、[Microsoft サポートに問い合わせる](storsimple-8000-contact-microsoft-support.md)必要があります。</li></ol> |
 | 3 |Invoke-HcsSetupWizard: RPC コールに失敗しました (HRESULT からの例外: 0x800706be) |クラスターはダウンしています。 |[Microsoft サポートに問い合わせ](storsimple-8000-contact-microsoft-support.md) て、クラスターが稼働しているかどうかを確認します。 |
 | 4 |Invoke-HcsSetupWizard: クラスター リソースが見つかりません (HRESULT からの例外: 0x8007138f) |クラスター リソースが見つかりません。 これはインストールが適切でなかった場合に発生することがあります。 |デバイスを工場出荷時の既定の設定にリセットすることが必要な場合があります。 [Microsoft サポートに問い合わせ](storsimple-8000-contact-microsoft-support.md) て、クラスター リソースを作成します。 |
