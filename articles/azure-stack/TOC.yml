@@ -15,8 +15,6 @@ items:
       href: azure-stack-update-1807.md
     - name: 1805 更新プログラム
       href: azure-stack-update-1805.md
-    - name: 1804 更新プログラム
-      href: azure-stack-update-1804.md
 - name: クイック スタート
   items:
   - name: Azure Stack の評価
@@ -382,9 +380,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 434ca3b33d74e95003daba04614b47b2fcce318a
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7bb089d4a10f6c30318befc5ccca71ac5bdb9017
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391974"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249555"

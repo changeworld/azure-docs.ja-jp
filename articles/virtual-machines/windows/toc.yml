@@ -35,6 +35,7 @@ items:
   - name: 9 - 仮想マシンのバックアップ
     href: tutorial-backup-vms.md
   - name: 10 - VM の管理
+    displayName: scope policy RBAC lock tag
     href: tutorial-govern-resources.md
   - name: 11 - VM の監視と更新
     href: tutorial-monitoring.md
@@ -62,27 +63,34 @@ items:
     href: sizes.md
     items:
     - name: 汎用
+      displayName: Dsv3 Dv3 DSv2 Dv2 Av2
       href: sizes-general.md
       items:
       - name: 負荷の急増に対応できる B シリーズ
         href: b-series-burstable.md
     - name: コンピューティング最適化
+      displayName: Fsv2 Fs F-series
       href: sizes-compute.md
     - name: メモリ最適化
+      displayName: Esv3 Ev3 M-series GS G-series DSv2 Dv2
       href: sizes-memory.md
       items:
       - name: 制約付き vCPU
         href: constrained-vcpu.md
     - name: ストレージ最適化
+      displayName: ls
       href: sizes-storage.md
     - name: GPU 最適化
+      displayName: NV NVv2 NC NCv2 NCv3 ND
       href: sizes-gpu.md
       items:
       - name: GPU ドライバーの設定
         href: n-series-driver-setup.md
     - name: ハイ パフォーマンス コンピューティング
+      displayName: H-series
       href: sizes-hpc.md
     - name: 旧世代
+      displayName: D-series Ds-series A-series Basic
       href: sizes-previous-gen.md
     - name: Azure コンピューティング ユニット (ACU)
       href: acu.md
@@ -162,6 +170,7 @@ items:
   - name: VM のセキュリティ保護
     items:
     - name: 暗号化
+      displayName: encryption
       href: encrypt-disks.md
     - name: WinRM の使用
       href: winrm.md
@@ -442,9 +451,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: a991b7edc35256823a45b8ad65f9aa99eb7477c9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 69cc971935efa05201591adb81b3b7aeb49c020d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408472"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268108"
