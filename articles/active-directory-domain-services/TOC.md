@@ -22,6 +22,8 @@
 ## [マネージド ドメインの正常性のチェック](active-directory-ds-check-health.md)
 ## [Azure CSP サブスクリプションで Azure AD Domain Services を使用する](active-directory-ds-csp.md)
 ## [PowerShell を使用して Azure AD Domain Services を有効にする](active-directory-ds-enable-using-powershell.md)
+## [Azure AD からマネージド ドメインまで範囲指定された同期を構成する](active-directory-ds-scoped-synchronization.md)
+## [マネージド ドメインをセキュリティで保護する](active-directory-ds-secure-your-domain.md)
 ## マネージド ドメインに参加する
 ### [Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [テンプレートによる Windows Server VM](active-directory-ds-join-windows-vm-template.md)
@@ -44,7 +46,6 @@
 ### [マネージド ドメインでグループの管理されたサービス アカウントを作成する](active-directory-ds-create-gmsa.md)
 ### [マネージド ドメインでグループ ポリシーを管理する](active-directory-ds-admin-guide-administer-group-policy.md)
 ### [マネージド ドメインでパスワード ポリシーを構成する](active-directory-ds-password-policy.md)
-### [Azure AD からマネージド ドメインまで範囲指定された同期を構成する](active-directory-ds-scoped-synchronization.md)
 ## [仮想ネットワークを選択する](active-directory-ds-networking.md)
 ## アプリケーションをデプロイする
 ### [SharePoint Server のプロファイルの同期のサポートを構成する](active-directory-ds-enable-sharepoint-profile-sync.md)

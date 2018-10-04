@@ -3,8 +3,8 @@ items:
   href: index.yml
 - name: 概要
   items:
-  - name: Azure ID の管理
-    href: /azure/active-directory/fundamentals/identity-fundamentals?context=azure/active-directory/users-groups-roles/context/ugr-context
+  - name: ユーザー、グループ、ライセンス、およびロール
+    href: directory-overview-user-model.md
 - name: クイック スタート
   items:
   - name: Azure AD へのユーザーの追加
@@ -157,9 +157,9 @@ items:
     href: https://docs.microsoft.com/cli/azure/ad
   - name: Azure AD PowerShell for Graph
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-ms.openlocfilehash: 2893d985620193302547461c29b4da05450db07b
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 71d33f870a9b5db09a3f12f39b8d9e0ecc82676e
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181857"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017892"

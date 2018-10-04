@@ -102,19 +102,24 @@ items:
       href: troubleshoot-recovery-disks-linux.md
     - name: Azure ポータル
       href: troubleshoot-recovery-disks-portal-linux.md
-- name: BitLocker のエラー
-  href: troubleshoot-bitlocker-boot-error.md
-- name: ファイル システム エラーのチェック
-  href: troubleshoot-check-disk-boot-error.md
+- name: ブート エラー
+  href: boot-error-troubleshoot.md
+  items:
+  - name: BitLocker のエラー
+    href: troubleshoot-bitlocker-boot-error.md
+  - name: ファイル システム エラーのチェック
+    href: troubleshoot-check-disk-boot-error.md
+  - name: ブルー スクリーン エラー
+    href: troubleshoot-common-blue-screen-error.md
 - name: 調整エラー
   href: troubleshooting-throttling-errors.md
 - name: 入れ子になった仮想化の使用
   href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: システムの再起動を理解する
   href: understand-vm-reboot.md
-ms.openlocfilehash: b00e785c3ae31171ce3189edd9cffe094bc71024
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 296e296b52a6ad1a9809d94f2228411f027d0758
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410753"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585885"
