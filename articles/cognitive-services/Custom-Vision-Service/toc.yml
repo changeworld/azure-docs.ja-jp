@@ -8,11 +8,11 @@ items:
   items:
   - name: Custom Vision Service を使い始める
     items:
-    - name: 分類器の構築
+    - name: 分類子の構築
       href: getting-started-build-a-classifier.md
     - name: モデルのテスト
       href: test-your-model.md
-    - name: 分類器の改善
+    - name: 分類子の改善
       href: getting-started-improving-your-classifier.md
     - name: 予測 API の使用
       href: use-prediction-api.md
