@@ -60,7 +60,7 @@ items:
     href: service-bus-samples.md
 - name: 概念
   items:
-  - name: 管理対象サービス ID (プレビュー)
+  - name: Azure リソースのマネージド ID
     href: service-bus-managed-service-identity.md
   - name: ロールベースのアクセス制御 (プレビュー)
     href: service-bus-role-based-access-control.md
@@ -228,9 +228,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azureservicebus
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
-ms.openlocfilehash: 823cbade38d61a95ad23ccfb093df390bd73613d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 673edb1abb9fbc48d0ede9f4daa10f58c04cc6b0
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946835"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785615"

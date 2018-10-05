@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: 概要
   items:
-  - name: Azure Machine Learning とは
+  - name: Azure Machine Learning サービスの概要
     href: overview-what-is-azure-ml.md
   - name: Workbench はどうなったか
     href: overview-what-happened-to-workbench.md
@@ -12,8 +12,10 @@ items:
   expanded: true
 - name: クイック スタート
   items:
-  - name: 作業開始
+  - name: 作業の開始 - ポータル
     href: quickstart-get-started.md
+  - name: 作業の開始 - Python
+    href: quickstart-create-workspace-with-python.md
 - name: チュートリアル
   items:
   - name: 'モデルのトレーニング: パート 1'
@@ -42,8 +44,12 @@ items:
       href: how-to-choose-a-dev-environment.md
     - name: 環境を構成する
       href: how-to-configure-environment.md
-  - name: トレーニング環境をセットアップする
-    href: how-to-set-up-training-targets.md
+    - name: VS Code Tools for AI
+      items:
+      - name: 作業開始
+        href: how-to-vscode-tools.md
+      - name: トレーニングとデプロイ
+        href: how-to-vscode-train-deploy.md
   - name: データを準備する
     href: how-to-data-prep.md
     items:
@@ -53,19 +59,23 @@ items:
       href: how-to-transform-data.md
     - name: データを書き込む
       href: how-to-write-data.md
-  - name: トレーニングと調整
+  - name: データにアクセスする
+    href: how-to-access-data.md
+  - name: モデルをトレーニングする
     items:
-    - name: データにアクセスする
-      href: how-to-access-data.md
-    - name: ML モデルのトレーニング
+    - name: トレーニング環境をセットアップする
+      href: how-to-set-up-training-targets.md
+    - name: 推定器を作成する
       href: how-to-train-ml-models.md
       items:
-      - name: PyTorch モデルをトレーニングする
+      - name: PyTorch
         href: how-to-train-pytorch.md
-      - name: TensorFlow モデルをトレーニングする
+      - name: TensorFlow
         href: how-to-train-tensorflow.md
     - name: ONNX モデルを作成してデプロイする
       href: how-to-build-deploy-onnx.md
+  - name: モデルを調整する
+    items:
     - name: ハイパーパラメーターを調整する
       href: how-to-tune-hyperparameters.md
     - name: 実験とメトリックを追跡する
@@ -77,21 +87,28 @@ items:
       href: how-to-configure-auto-train.md
     - name: リモート コンピューティング ターゲットを使用する
       href: how-to-auto-train-remote.md
-  - name: デプロイと監視
+  - name: モデルをデプロイする
     items:
     - name: モデルをデプロイする場所
       href: how-to-deploy-and-where.md
-      items:
-      - name: ACI にデプロイする
-        href: how-to-deploy-to-aci.md
-      - name: AKS にデプロイする
-        href: how-to-deploy-to-aks.md
-      - name: FPGA にデプロイする
-        href: how-to-deploy-fpga-web-service.md
-      - name: IoT Edge にデプロイする
-        href: how-to-deploy-to-iot.md
+    - name: ACI にデプロイする
+      href: how-to-deploy-to-aci.md
+    - name: AKS にデプロイする
+      href: how-to-deploy-to-aks.md
+    - name: FPGA にデプロイする
+      href: how-to-deploy-fpga-web-service.md
+    - name: IoT Edge にデプロイする
+      href: how-to-deploy-to-iot.md
+    - name: トラブルシューティング
+      href: how-to-troubleshoot-deployment.md
+    - name: SSL でセキュリティ保護する
+      href: how-to-secure-web-service.md
+  - name: モデルを監視する
+    items:
     - name: 運用環境でデータを収集する
       href: how-to-enable-data-collection.md
+    - name: Application Insights での監視
+      href: how-to-enable-app-insights.md
   - name: リソース クォータを管理する
     href: how-to-manage-quotas.md
   - name: データをエクスポートおよび削除する
@@ -104,8 +121,6 @@ items:
     href: reference-azure-machine-learning-cli.md
 - name: リソース
   items:
-  - name: R 開発者ガイド
-    href: ../r-developers-guide.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
   - name: 価格
@@ -114,6 +129,8 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: アカウント データのエクスポートまたは削除
     href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
+  - name: リリース ノート
+    href: azure-machine-learning-release-notes.md
   - name: 既知の問題
     href: resource-known-issues.md
   - name: サポートを受ける
@@ -314,17 +331,13 @@ items:
           href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics
         - name: テキスト分類モデルの構築とデプロイ
           href: ../desktop-workbench/how-to-build-deploy-text-classification-models.md
-    - name: 以前のリリース ノート
-      href: azure-machine-learning-release-notes.md
     - name: FAQ
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 以前の問題
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-    - name: サポート
-      href: support-for-aml-services.md
-ms.openlocfilehash: 0e069ce7bb04a4aef2e631488ec807a1539c32e5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: fb5ffe0b261d1c233765175170b5697050b58d20
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162153"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248814"

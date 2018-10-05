@@ -72,6 +72,25 @@ items:
       href: devtest-lab-store-secrets-in-key-vault.md
     - name: Azure でアプリをテストする
       href: test-app-azure.md
+    - name: エンタープライズで DevTest Labs インフラストラクチャを設定する
+      href: devtest-lab-guidance-prescriptive-adoption.md
+      items:
+      - name: DevTest Labs を使って作業を開始する
+        href: devtest-lab-guidance-get-started.md
+      - name: DevTest Labs デプロイのスケールアップ
+        href: devtest-lab-guidance-scale.md
+      - name: DevTest Labs の実装を調整する
+        href: devtest-lab-guidance-orchestrate-implementation.md
+      - name: DevTest Labs インフラストラクチャのガバナンス
+        items:
+        - name: リソース
+          href: devtest-lab-guidance-governance-resources.md
+        - name: コストと所有権
+          href: devtest-lab-guidance-governance-cost-ownership.md
+        - name: ポリシーとコンプライアンス
+          href: devtest-lab-guidance-governance-policy-compliance.md
+        - name: アプリケーションの移行と統合
+          href: devtest-lab-guidance-governance-application-migration-integration.md
     - name: ラボでの VM の使用
       items:
       - name: VM の作成
@@ -194,9 +213,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: c2e701b16c67be86d3e8d2463b8ad45646f0ed0b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 401c41d1b91d6373dfb3c743e0c6f56332030b45
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988633"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247568"

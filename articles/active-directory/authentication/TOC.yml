@@ -215,9 +215,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 089a72487d919c6726bb4c5565e856c5c9f1b691
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 01b2e111f929b78bc0ef6957e9123f35bc8f92a7
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161728"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236535"

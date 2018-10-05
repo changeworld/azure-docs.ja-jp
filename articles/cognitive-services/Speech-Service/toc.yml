@@ -104,6 +104,14 @@ items:
     href: prepare-transcription.md
   - name: カスタム オーディオ ストリームを使用する
     href: how-to-use-audio-input-streams.md
+  - name: 移行
+    items:
+    - name: Bing Speech から
+      href: how-to-migrate-from-bing-speech.md
+    - name: Custom Speech Service から
+      href: how-to-migrate-from-custom-speech-service.md
+    - name: Translator Speech API から
+      href: how-to-migrate-from-translator-speech-api.md
 - name: 概念
   items:
   - name: 音声テキスト変換
@@ -127,6 +135,8 @@ items:
     href: regions.md
   - name: REST API
     href: rest-apis.md
+  - name: Swagger リファレンス
+    href: https://westus.cris.ai/swagger/ui/index
   - name: Speech SDK API
     displayName: C#, C++, Java, .NET, .NET Core, UWP, Android, Linux, Windows
     href: speech-sdk-reference.md
@@ -188,9 +198,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: プライバシーと Cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: 4398c418d42bb2585d9f7e12a2e9e0685fe6dd0b
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 11faf3ac6bbe7578e0bd642aef87421cbb53ff08
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018006"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248212"

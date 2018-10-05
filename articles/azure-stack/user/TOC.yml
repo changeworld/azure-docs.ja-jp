@@ -22,28 +22,32 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: 高可用性 SQL データベースの作成
-    href: azure-stack-tutorial-sql.md
-  - name: 高可用性 MySQL データベースの作成
-    href: azure-stack-tutorial-mysql.md
-  - name: Azure と Azure Stack へのアプリのデプロイ
-    href: azure-stack-solution-pipeline.md
-  - name: ハイブリッド クラウド ID の構成
-    href: azure-stack-solution-hybrid-identity.md
-  - name: ハイブリッド クラウド接続の構成
-    href: azure-stack-solution-hybrid-connectivity.md
-  - name: プランへのサブスクライブ
-    href: azure-stack-subscribe-services.md
-  - name: テンプレートからの VM の作成
-    href: azure-stack-create-vm-template.md
-  - name: エッジ機械学習ソリューションを作成する
-    href: azure-stack-solution-machine-learning.md
-  - name: ステージング データ分析ソリューションを作成する
-    href: azure-stack-solution-staged-data-analytics.md
-  - name: Azure でクラウドの間スケーリング ソリューションを作成する
-    href: azure-stack-solution-cloud-burst.md
-  - name: 地理的に分散されたアプリ ソリューションを作成する
-    href: azure-stack-solution-geo-distributed.md
+  - name: 一般的なタスク
+    items:
+    - name: プランへのサブスクライブ
+      href: azure-stack-subscribe-services.md
+    - name: テンプレートからの VM の作成
+      href: azure-stack-create-vm-template.md
+    - name: 高可用性 SQL データベースの作成
+      href: azure-stack-tutorial-sql.md
+    - name: 高可用性 MySQL データベースの作成
+      href: azure-stack-tutorial-mysql.md
+  - name: ハイブリッド クラウド パターン
+    items:
+    - name: Azure と Azure Stack へのアプリのデプロイ
+      href: azure-stack-solution-pipeline.md
+    - name: ハイブリッド クラウド ID の構成
+      href: azure-stack-solution-hybrid-identity.md
+    - name: ハイブリッド クラウド接続の構成
+      href: azure-stack-solution-hybrid-connectivity.md
+    - name: エッジ機械学習ソリューションを作成する
+      href: azure-stack-solution-machine-learning.md
+    - name: ステージング データ分析ソリューションを作成する
+      href: azure-stack-solution-staged-data-analytics.md
+    - name: Azure でクラウドの間スケーリング ソリューションを作成する
+      href: azure-stack-solution-cloud-burst.md
+    - name: 地理的に分散されたアプリ ソリューションを作成する
+      href: azure-stack-solution-geo-distributed.md
 - name: ハウツー ガイド
   items:
   - name: Azure Stack ポータルの使用
@@ -208,9 +212,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: a67adb5f0b641f5f4eadfeb08c9802214d9f217b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 52dbfaf7b7ea7b6f264dcb9ac3d75aec782c8bff
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405412"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239406"
