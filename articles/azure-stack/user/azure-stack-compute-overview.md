@@ -6,15 +6,15 @@ author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.openlocfilehash: d478ccd0895ad067657bce56469a3a61d4ea0e17
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: a0d75b13369cff4e99bef6f57a3b01f3d8eee6e4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "43050382"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227165"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Azure Stack 仮想マシンの概要
 
@@ -99,7 +99,7 @@ VM の拡張機能は、デプロイ後の構成と自動化タスクを通じ�
 |リソース|必須|説明|
 |---------|---------|---------|
 |リソース グループ|[はい]|VM は、リソース グループに含まれる必要があります。|
-|ストレージ アカウント|[はい]|VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。|
+|ストレージ アカウント|いいえ |マネージド ディスクを使用する場合、仮想ハード ディスクを格納するためにストレージ アカウントは VM に必要ありません。 <br>アンマネージド ディスクを使用する場合、VM には仮想ハード ディスクを格納するためにストレージ アカウントが必要です。|
 |仮想ネットワーク|[はい]|VM は、仮想ネットワークのメンバーである必要があります。|
 |パブリック IP アドレス|いいえ |VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。|
 |Linux|[はい]|VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。|

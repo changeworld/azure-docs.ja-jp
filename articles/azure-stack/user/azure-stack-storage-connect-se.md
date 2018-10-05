@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/21/2018
+ms.date: 06/15/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 9704f05cc6da97e33c0043b93acedc9e66bdcc36
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 2f974b7773e7a4cbc0eda32a267bb5ab939644d8
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34714903"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095118"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Azure Stack サブスクリプションまたはストレージ アカウントにストレージ エクスプローラーを接続する
 
@@ -65,9 +65,9 @@ Azure Stack Development Kit 用に、Azure Stack の証明機関のルート証�
 
     ![[Target Azure Stack (Azure Stack を対象にする)] が選択されていることを確認する](./media/azure-stack-storage-connect-se/target-azure-stack.png)
 
-## <a name="connect-to-an-azure-stack-subscription"></a>Azure Stack サブスクリプションに接続する
+## <a name="connect-to-an-azure-stack-subscription-with-azure-ad"></a>Azure AD を使用して Azure Stack サブスクリプションに接続する
 
-Azure Stack サブスクリプションにストレージ エクスプローラーを接続するには、次の手順に従います。
+Azure Active Directory (Azure AD) アカウントに属している Azure Stack サブスクリプションにストレージ エクスプローラーを接続するには、次の手順を使用します。
 
 1. ストレージ エクスプローラーの左側のウィンドウで、**[アカウントの管理]** を選択します。 
     サインインしている Microsoft サブスクリプションがすべて表示されます。
@@ -87,6 +87,44 @@ Azure Stack サブスクリプションにストレージ エクスプローラ�
     左側のウィンドウに、選択した Azure Stack サブスクリプションに関連付けられているストレージ アカウントが表示されます。
 
     ![Azure Stack サブスクリプション アカウントを含むストレージ アカウントの一覧](./media/azure-stack-storage-connect-se/azure-stack-storage-account-list.png)
+
+## <a name="connect-to-an-azure-stack-subscription-with-ad-fs-account"></a>AD FS アカウントを使用して Azure Stack サブスクリプションに接続する
+
+> [!Note]  
+> Azure のフェデレーション サービス (AD FS) のサインイン エクスペリエンスでは、Azure Stack 1804 以降の更新プログラムが適用されたストレージ エクスプローラー 1.2.0 以降のバージョンがサポートされます。
+AD FS アカウントに属している Azure Stack サブスクリプションにストレージ エクスプローラーを接続するには、次の手順を使用します。
+
+1. **[アカウントの管理]** を選択します。 エクスプローラーには、サインインした Microsoft サブスクリプションが一覧表示されます。
+2. **[アカウントの追加]** を選択して、Azure Stack サブスクリプションに接続します。
+
+    ![[アカウントの追加]](media/azure-stack-storage-connect-se/add-an-account.png)
+
+3. **[次へ]** を選択します。 [Azure Storage へ接続] ダイアログ ボックスの **[Azure 環境]** で **[Use Custom Environment] (カスタム環境の使用)** を選択し、**[次へ]** をクリックします。
+
+    ![Azure Storage へ接続](media/azure-stack-storage-connect-se/connect-to-azure-storage.png)
+
+4. Azure Stack のカスタム環境に必要な情報を入力します。 
+
+    | フィールド | メモ |
+    | ---   | ---   |
+    | 環境名 | このフィールドはユーザーがカスタマイズできます。 |
+    | Azure Resource Manager endpoint (Azure Resource Manager エンドポイント) | Azure Stack Development Kit の Azure Resource Manager リソース エンドポイントの例は次のとおりです。<br>オペレーター用: https://adminmanagement.local.azurestack.external <br> ユーザー用: https://management.local.azurestack.external |
+
+    Azure Stack 統合システムで作業していて、管理エンドポイントが不明な場合は、オペレーターに問い合わせてください。
+
+    ![[アカウントの追加]](./media/azure-stack-storage-connect-se/custom-environments.png)
+
+5. **[サインイン]** を選択し、少なくとも 1 つのアクティブな Azure Stack サブスクリプションに関連付けられている Azure Stack アカウントに接続します。
+
+
+
+6. 操作する Azure Stack サブスクリプションを選択します。 **[適用]** を選択します。
+
+    ![アカウント管理](./media/azure-stack-storage-connect-se/account-management.png)
+
+    左側のウィンドウに、選択した Azure Stack サブスクリプションに関連付けられているストレージ アカウントが表示されます。
+
+    ![関連付けられているサブスクリプションの一覧](./media/azure-stack-storage-connect-se/list-of-associated-subscriptions.png)
 
 ## <a name="connect-to-an-azure-stack-storage-account"></a>Azure Stack ストレージ アカウントに接続する
 

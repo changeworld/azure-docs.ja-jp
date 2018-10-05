@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 44fa19191f08f0e35c06f0b7ea5a3e5e41611de3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9560166f9733e1370f99f5f76a6ca3a58567865e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979119"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220244"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>チュートリアル: Azure Data Box Gateway でデータを転送する (プレビュー)
 
@@ -55,7 +55,7 @@ ms.locfileid: "46979119"
 
 1. Azure Portal に戻ります。 **[すべてのリソース]** に移動し、Data Box Gateway リソースを探します。
     
-2. フィルター処理されたリソースの一覧で、Data Box Gateway リソースを選択し、**[概要]** に移動します。 デバイスのコマンド バーで **[+ 共有の追加]** をクリックします。
+2. フィルター処理されたリソースの一覧で、Data Box Gateway リソースを選択して、**[概要]** に移動します。 デバイスのコマンド バーで **[+ 共有の追加]** をクリックします。
    
    ![共有の追加](./media/data-box-gateway-deploy-add-shares/click-add-share.png)
 

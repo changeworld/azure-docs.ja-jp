@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/16/2018
 ms.author: anzaman
-ms.openlocfilehash: a0576e00d22b731f7ee9de3a9b021c0f52fc8ef9
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 620a2bf9221bdb7c46dc36a2b3ed23d853faff35
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34702178"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031719"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>ポイント対サイト VPN ルーティングについて
 
-この記事は、Azure ポイント対サイト VPN ルーティングの動作を理解するのに役立ちます。 P2S VPN ルーティングの動作は、クライアント OS、VPN 接続に使用されるプロトコル、および仮想ネットワーク (VNet) が相互に接続する方法によって異なります。
+この記事は、Azure ポイント対サイト VPN ルーティングの動作を理解するのに役立ちます。 P2S VPN ルーティングの動作は、クライアント OS、VPN 接続に使用されるプロトコル、および仮想ネットワーク (VNet) 間の接続方法によって異なります。
 
-現在、Azure では、リモート アクセスに対して IKEv2 と SSTP の 2 つのプロトコルをサポートしています。 IKEv2 は、Windows、Linux、MacOS、Android、iOS など、多くのクライアント オペレーティング システム上でサポートされます。 SSTP は、Windows 上でのみサポートされます。 Windows VPN クライアントがある状態でネットワークのトポロジに変更を加えた場合は、変更をクライアントに適用するために、Windows クライアント用の VPN クライアント パッケージをダウンロードしてもう一度インストールする必要があります。
+現在、Azure では、リモート アクセスに対して IKEv2 と SSTP の 2 つのプロトコルをサポートしています。 IKEv2 は、Windows、Linux、MacOS、Android、iOS など、多くのクライアント オペレーティング システム上でサポートされます。 SSTP は、Windows 上でのみサポートされます。 Windows VPN クライアントがある状態でネットワークのトポロジに変更を加えた場合は、変更をそのクライアントに適用するために、Windows クライアント用の VPN クライアント パッケージをダウンロードしてもう一度インストールする必要があります。
 
 > [!NOTE]
 > この記事は、IKEv2 に対してのみ適用されます。
@@ -34,9 +34,9 @@ ms.locfileid: "34702178"
 
 ## <a name="diagrams"></a>図について
 
-この記事にはいくつかの異なる図があります。 各セクションでは、異なるトポロジや構成を示します。 この記事の目的により、サイト間 (S2S) 接続と VNet 間接続はどちらも IPsec トンネルであるため、同じように機能します。 この記事のすべての VPN ゲートウェイはルートベースです。
+この記事にはいくつかの異なる図があります。 セクションごとに、異なるトポロジや構成が示されています。 この記事の目的により、サイト間 (S2S) 接続と VNet 間接続はどちらも IPsec トンネルであるため、同じように機能します。 この記事のすべての VPN ゲートウェイはルートベースです。
 
-## <a name="isolatedvnet"></a>1 つの分離された VNet
+## <a name="isolatedvnet"></a>分離された 1 つの VNet
 
 この例のポイント対サイト VPN ゲートウェイ接続は、他の仮想ネットワークに接続もピアリングもされていない VNet (VNet1) に関するものです。 この例では、SSTP または IKEv2 を使用しているクライアントが VNet1 にアクセスできます。
 
@@ -54,17 +54,17 @@ ms.locfileid: "34702178"
 
 ### <a name="access"></a>Access
 
-* Windows クライアントは VNet1 にアクセスできます
+* Windows クライアントから VNet1 にアクセスできます
 
-* Windows 以外のクライアントは VNet1 にアクセスできます
+* Windows 以外のクライアントから VNet1 にアクセスできます
 
-## <a name="multipeered"></a>複数のピアリングされた VNet
+## <a name="multipeered"></a>ピアリングされた複数の VNet
 
 この例のポイント対サイト VPN ゲートウェイ接続は VNet1 に関するものです。 VNet1 は VNet2 とピアリングされています。 VNet2 は VNet3 とピアリングされています。 VNet1 は VNet4 とピアリングされています。 VNet1 と VNet3 の間に直接ピアリングはありません。 VNet1 では [ゲートウェイ転送を許可する] が有効で、VNet2 では [Use remote gateways]\(リモート ゲートウェイを使用する\) が有効です。
 
 Windows を使用しているクライアントは直接ピアリングされた VNet にアクセスできますが、VNet ピアリングまたはネットワーク トポロジが変更された場合は VPN クライアントをもう一度ダウンロードする必要があります。 Windows 以外のクライアントは、直接ピアリングされた VNet にアクセスできます。 アクセスは推移的ではなく、直接ピアリングされた VNet のみに限定されます。
 
-![複数のピアリングされた VNet](./media/vpn-gateway-about-point-to-site-routing/2.jpg "複数のピアリングされた VNet")
+![ピアリングされた複数の VNet](./media/vpn-gateway-about-point-to-site-routing/2.jpg "ピアリングされた複数の VNet")
 
 ### <a name="address-space"></a>アドレス空間:
 
@@ -84,15 +84,15 @@ Windows を使用しているクライアントは直接ピアリングされた
 
 ### <a name="access"></a>Access
 
-* Windows クライアントは VNet1、VNet2、VNet4 にアクセスできますが、トポロジの変更を反映するには VPN クライアントをもう一度ダウンロードする必要があります。
+* Windows クライアントから VNet1、VNet2、VNet4 にアクセスできますが、トポロジの変更を反映するには VPN クライアントをもう一度ダウンロードする必要があります。
 
-* Windows 以外のクライアントは VNet1、VNet2、VNet4 にアクセスできます
+* Windows 以外のクライアントから VNet1、VNet2、VNet4 にアクセスできます
 
 ## <a name="multis2s"></a>S2S VPN を使用して接続されている複数の VNet
 
 この例のポイント対サイト VPN ゲートウェイ接続は VNet1 に関するものです。 VNet1 は、サイト間 VPN 接続を使用して VNet2 に接続されています。 VNet2 は、サイト間 VPN 接続を使用して VNet3 に接続されています。 VNet1 と VNet3 の間に直接ピアリングやサイト間 VPN 接続はありません。 どのサイト間接続でも、ルーティングのための BGP は実行されていません。
 
-Windows、またはサポートされる別の OS を使用しているクライアントは、VNet1 にのみアクセスできます。 その他の VNet にアクセスするには、BGP を使用する必要があります。
+Windows、または別のサポート対象 OS を使用しているクライアントから、VNet1 にのみアクセスできます。 その他の VNet にアクセスするには、BGP を使用する必要があります。
 
 ![複数の VNet と S2S](./media/vpn-gateway-about-point-to-site-routing/3.jpg "複数の VNet と S2S")
 
@@ -112,15 +112,15 @@ Windows、またはサポートされる別の OS を使用しているクライ
 
 ### <a name="access"></a>Access
 
-* Windows クライアントは VNet1 にのみアクセスできます
+* Windows クライアントから VNet1 にのみアクセスできます
 
-* Windows 以外のクライアントは VNet1 にのみアクセスできます
+* Windows 以外のクライアントから VNet1 にのみアクセスできます
 
 ## <a name="multis2sbgp"></a>S2S VPN (BGP) を使用して接続されている複数の VNet
 
 この例のポイント対サイト VPN ゲートウェイ接続は VNet1 に関するものです。 VNet1 は、サイト間 VPN 接続を使用して VNet2 に接続されています。 VNet2 は、サイト間 VPN 接続を使用して VNet3 に接続されています。 VNet1 と VNet3 の間に直接ピアリングやサイト間 VPN 接続はありません。 すべてのサイト間接続で、ルーティングのための BGP が実行されています。
 
-Windows、またはサポートされる別の OS を使用しているクライアントは、サイト間 VPN を使用して接続されているすべての VNet にアクセスできますが、接続されている VNet へのルートを Windows クライアントに手動で追加する必要があります。
+Windows、または別のサポートさ対象 OS を使用しているクライアントから、サイト間 VPN を使用して接続されているすべての VNet にアクセスできますが、接続されている VNet へのルートを Windows クライアントに手動で追加する必要があります。
 
 ![複数の VNet と S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "複数の VNet と S2S (BGP)")
 
@@ -140,15 +140,15 @@ Windows、またはサポートされる別の OS を使用しているクライ
 
 ### <a name="access"></a>Access
 
-* Windows クライアントは VNet1、VNet2、VNet3 にアクセスできますが、VNet2 と VNet3 へのルートを手動で追加する必要があります。
+* Windows クライアントから VNet1、VNet2、VNet3 にアクセスできますが、VNet2 と VNet3 へのルートを手動で追加する必要があります。
 
-* Windows 以外のクライアントは VNet1、VNet2、VNet3 にアクセスできます
+* Windows 以外のクライアントから VNet1、VNet2、VNet3 にアクセスできます
 
 ## <a name="vnetbranch"></a>1 つの VNet とブランチ オフィス
 
 この例のポイント対サイト VPN ゲートウェイ接続は VNet1 に関するものです。 VNet1 は他のどの仮想ネットワークとも接続またはピアリングされていませんが、BGP を実行していないサイト間 VPN 接続を通じてオンプレミスのサイトに接続されています。
 
-Windows クライアントは VNet1 とブランチ オフィス (Site1) にアクセスできますが、Site1 へのルートをクライアントに手動で追加する必要があります。 Windows 以外のクライアントは、VNet1 とオンプレミスの Site1 にアクセスできます。
+Windows クライアントと Windows 以外のクライアントは VNet1 にのみアクセスできます。
 
 ![VNet とブランチ オフィスでのルーティング](./media/vpn-gateway-about-point-to-site-routing/5.jpg "VNet とブランチ オフィスでのルーティング")
 
@@ -162,13 +162,13 @@ Windows クライアントは VNet1 とブランチ オフィス (Site1) にア�
 
 * Windows クライアントに追加されたルート: 10.1.0.0/16、192.168.0.0/24
 
-* Windows 以外のクライアントに追加されたルート: 10.1.0.0/16、10.101.0.0/16、192.168.0.0/24
+* Windows 以外のクライアントに追加されたルート: 10.1.0.0/16、192.168.0.0/24
 
 ### <a name="access"></a>Access
 
 * Windows クライアントは VNet1 にのみアクセスできます
 
-* Windows 以外のクライアントは VNet1 にのみアクセスできます
+* Windows 以外のクライアントから VNet1 にのみアクセスできます
 
 ## <a name="vnetbranchbgp"></a>1 つの VNet とブランチ オフィス (BGP)
 
@@ -192,9 +192,9 @@ Windows クライアントは VNet とブランチ オフィス (Site1) にア�
 
 ### <a name="access"></a>Access
 
-* Windows クライアントは VNet1 と Site1 にアクセスできますが、Site1 へのルートを手動で追加する必要があります。
+* Windows クライアントから VNet1 と Site1 にアクセスできますが、Site1 へのルートを手動で追加する必要があります。
 
-* Windows 以外のクライアントは VNet1 と Site1 にアクセスできます。
+* Windows 以外のクライアントから VNet1 と Site1 にアクセスできます。
 
 
 ## <a name="multivnets2sbranch"></a>S2S を使用して接続された複数の VNet と 1 つのブランチ オフィス
@@ -223,9 +223,9 @@ Windows クライアントは VNet とブランチ オフィス (Site1) にア�
 
 ### <a name="access"></a>Access
 
-* Windows クライアントは VNet1 にのみアクセスできます
+* Windows クライアントから VNet1 にのみアクセスできます
 
-* Windows 以外のクライアントは VNet1 にのみアクセスできます
+* Windows 以外のクライアントから VNet1 にのみアクセスできます
 
 ## <a name="multivnets2sbranchbgp"></a>S2S を使用して接続された複数の VNet と 1 つのブランチ オフィス (BGP)
 
@@ -253,9 +253,9 @@ Windows を使用しているクライアントは、サイト間 VPN 接続を�
 
 ### <a name="access"></a>Access
 
-* Windows クライアントは VNet1、VNet2、VNet3、Site1 にアクセスできますが、VNet2、VNet3、Site1 へのルートをクライアントに手動で追加する必要があります。
+* Windows クライアントから VNet1、VNet2、VNet3、Site1 にアクセスできますが、VNet2、VNet3、Site1 へのルートをクライアントに手動で追加する必要があります。
 
-* Windows 以外のクライアントは VNet1、VNet2、VNet3、Site1 にアクセスできます。
+* Windows 以外のクライアントから VNet1、VNet2、VNet3、Site1 にアクセスできます。
 
 ## <a name="next-steps"></a>次の手順
 

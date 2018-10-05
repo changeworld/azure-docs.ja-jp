@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 78f9ba817008a28e63ec167c4e2ccc7f3859be16
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: b02f1b04756f1e3f01426e58c5f8c625cb746f05
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142781"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163904"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -93,11 +93,18 @@ The subscription named <subscription name> cannot be found.
 
 Azure で正しく認証され、選択しようとしているサブスクリプションにアクセスできることを次の手順で確認します。  
 
-1. **Select-AzureSubscription** コマンドレットを実行する前に必ず **Add-AzureAccount** を実行してください。  
-2. それでもエラー メッセージが表示される場合は、**Add-AzureAccount** コマンドレットの後ろに **Get-AzureSubscription** コマンドレットを追加するというコードの変更を行った後、そのコードを実行します。 Get-AzureSubscription の出力にサブスクリプション詳細が含まれることを確認します。  
+1. **Select-AzureSubscription** コマンドレットを実行する前に、必ず **Add-AzureAccount** コマンドレットを実行してください。  
+2. それでもエラー メッセージが表示される場合は、**Add-AzureAccount** コマンドレットの後に **-AzureRmContext** パラメーターを追加してコードを変更してから、コードを実行します。
 
-   * 出力にサブスクリプション詳細が含まれない場合、サブスクリプションが初期化されていません。  
-   * 出力にサブスクリプション詳細が含まれる場合は、 **Select-AzureSubscription** コマンドレットで正しいサブスクリプション名または ID を使用していることを確認します。
+   ```powershell
+   $Conn = Get-AutomationConnection -Name AzureRunAsConnection
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
+-ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+
+   $context = Get-AzureRmContext
+
+   Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
+   ```
 
 ### <a name="auth-failed-mfa"></a>シナリオ: 多要素認証が有効になっているために Azure に対する認証が失敗した
 
@@ -151,7 +158,7 @@ Automation アカウントで、**[モジュール]** をクリックし、**[Az
 
 #### <a name="resolution"></a>解決策
 
-複数のサブスクリプションを使用している場合は、子 Runbook を呼び出したときにサブスクリプションのコンテキストが失われることがあります。 サブスクリプションのコンテキストが子 Runbook に渡されるようにするには、コマンドレットに `DefaultProfile` パラメーターを追加してそれにコンテキストを渡します。
+複数のサブスクリプションを使用している場合は、子 Runbook を呼び出したときにサブスクリプションのコンテキストが失われることがあります。 サブスクリプションのコンテキストが子 Runbook に渡されるようにするには、コマンドレットに `AzureRmContext` パラメーターを追加してそれにコンテキストを渡します。
 
 ```azurepowershell-interactive
 # Connect to Azure with RunAs account
@@ -171,7 +178,7 @@ Start-AzureRmAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -DefaultProfile $AzureContext `
+    -AzureRmContext $AzureContext `
     –Parameters $params –wait
 ```
 
@@ -216,17 +223,19 @@ The job was tried three times but it failed
 
 1. メモリの制限。 サンドボックスに割り当てられるメモリの制限については、「[Automation の制限](../../azure-subscription-service-limits.md#automation-limits)」で説明されています。400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。
 
-2. モジュールに互換性がない。 これは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「Command not found (コマンドが見つかりません)」または「Cannot bind parameter (パラメーターをバインドできません)」というメッセージが Runbook から返されます。
+1. ネットワーク ソケット。 「[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)」の説明のように、Azure サンド ボックスの同時ネットワーク ソケット数は 1,000 に制限されています。
+
+1. モジュールに互換性がない。 これは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「Command not found (コマンドが見つかりません)」または「Cannot bind parameter (パラメーターをバインドできません)」というメッセージが Runbook から返されます。
 
 #### <a name="resolution"></a>解決策
 
 次の解決策のいずれでもこの問題は解決されます。
 
-* メモリの制限内で問題を解決するために推奨される方法としては、複数の Runbook 間でワークロードを分割する、メモリ内のデータと同量のデータを処理しない、Runbook からの不要な出力を書き込まない、PowerShell ワークフロー Runbook に書き込むチェックポイントの数を検討する、などがあります。  
+* メモリの制限内で問題を解決するために推奨される方法としては、複数の Runbook 間でワークロードを分割する、メモリ内のデータと同量のデータを処理しない、Runbook からの不要な出力を書き込まない、PowerShell Workflow Runbook に書き込むチェックポイントの数を検討する、などがあります。 `$myVar.clear()` などの clear メソッドを使用して変数をクリアし、`[GC]::Collect()` を使用してガベージ コレクションをすぐに実行します。これにより、実行時の Runbook のメモリ専有領域が小さくなります。
 
 * 「[Azure Automation の Azure PowerShell モジュールを更新する方法](../automation-update-azure-modules.md)」の手順に従って Azure モジュールを更新します。  
 
-* 別の解決策は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。 ハイブリッド worker は、Azure サンドボックスのような[フェア シェア](../automation-runbook-execution.md#fair-share)による制限はありません。
+* 別の解決策は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。 ハイブリッド worker には、Azure サンドボックスのようなメモリとネットワークの制限はありません。
 
 ### <a name="fails-deserialized-object"></a>シナリオ: 逆シリアル化されたオブジェクトであるため、Runbook が失敗する
 

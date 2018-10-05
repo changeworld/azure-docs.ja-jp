@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: daveba
-ms.openlocfilehash: 29be0c3a420fe3546059ebdbf2ec7c1ab124990e
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 0840f1abb05e97ca8f55cb0003e4f3cd2383e8c7
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161836"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222525"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-identity-to-access-azure-storage-via-a-sas-credential"></a>チュートリアル: Linux VM のシステム割り当て ID を使用して SAS 資格情報で Azure Storage にアクセスする
 

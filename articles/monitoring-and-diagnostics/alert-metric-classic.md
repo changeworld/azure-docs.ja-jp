@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: e325335d43ef31c44ac812aca66309132f5372a3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e0c9cc342bb4b06053f53abc891ee1c415327998
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951612"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410002"
 ---
-# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してメトリック アラートを作成、表示、管理する
+# <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してクラシック メトリック アラートを作成、表示、および管理する
 
 Azure Monitor のクラシック メトリック アラートには、メトリックのいずれかがしきい値を超えた場合に通知を受け取る方法が用意されています。 クラシック メトリック アラートは、ディメンションを持たないメトリックについてのみアラートを生成できるようにする古い機能です。 クラシック メトリック アラートよりも機能が向上したメトリック アラートと呼ばれる新しい機能が既にあります。 新しいメトリック アラート機能の詳細については、[メトリック アラートの概要](alert-metric-overview.md)に関するページをご覧ください。 この記事では、Azure portal、Azure CLI、および PowerShell を使用して、クラシック メトリック アラート ルールを作成、表示、管理する方法について説明します。
 
-## <a name="create-a-classic-metric-alert-rule-using-azure-portal"></a>Azure portal を使用してクラシック メトリック アラートを作成する
+## <a name="with-azure-portal"></a>Azure Portal の場合
 
 1. [ポータル](https://portal.azure.com/)で、監視するリソースを見つけて選択します。
 
@@ -46,15 +46,13 @@ Azure Monitor のクラシック メトリック アラートには、メトリ�
 
 数分後にアラートがアクティブになり、前述のようにトリガーされます。
 
-## <a name="manage-your-classic-metric-alert-rules-using-azure-portal"></a>Azure portal を使用してクラシック メトリック アラートを管理する
-
 アラートを作成したら、それを選択して次のタスクのいずれかを実行できます。
 
 * メトリックのしきい値と、前日の実際の値を示すグラフを表示する。
 * 編集または削除する。
 * そのアラートの受信を一時的に停止または再開する必要がある場合に、そのアラートを**無効**または**有効**にする。
 
-## <a name="creating-and-managing-classic-metric-alert-rule-using-azure-cli"></a>Azure CLI を使用してクラシック メトリック アラートの作成管理
+## <a name="with-azure-cli"></a>Azure CLI の場合
 
 前のセクションでは、Azure portal を使用してメトリック アラート ルールを作成、表示、および 管理する方法について説明しました。 このセクションでは、クロスプラットフォームの [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使用して同じ操作を行う方法について説明します。 Azure CLI の使用を開始する最も簡単な方法は、[Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview?view=azure-cli-latest) を使用することです。
 
@@ -86,7 +84,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
 az monitor alert delete --name <alert name> --resource-group <group name>
 ```
 
-### <a name="create-view-and-manage-classic-metric-alerts-using-powershell"></a>PowerShell を使用してクラシック メトリック アラートを作成、表示、管理する
+## <a name="with-powershell"></a>PowerShell の場合
 
 このセクションでは、PowerShell コマンドを使用してクラシック メトリック アラートを作成、表示、管理する方法を示します。この記事の例では、クラシック メトリック アラート用の Azure Monitor コマンドレットを使用する方法を示しています。
 

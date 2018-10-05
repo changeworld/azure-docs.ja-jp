@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/25/2018
 ms.author: alkohli
-ms.openlocfilehash: 0204445464a9d61b4e25be1d71373ce8394b32f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9bc84a9b08c4cfbdf7f24416c923e0dbd7076556
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957673"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161932"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>チュートリアル: データを Azure Data Box にコピーする 
 
@@ -45,12 +45,12 @@ ms.locfileid: "46957673"
 ## <a name="connect-to-data-box"></a>Data Box に接続する
 
 選択したストレージ アカウントに基づいて、Data Box では最大で次のものが作成されます。
-- 各関連付けられているストレージ アカウントごとに 3 つの共有 (GPv1、GPv2)。
+- GPv1 および GPv2 に対して関連付けられているストレージ アカウントごとに 3 つの共有。
 - Premium または BLOB ストレージ アカウントに対して 1 つの共有。 
 
 ブロック BLOB とページ BLOB の共有では、第 1 レベルのエンティティはコンテナーであり、第 2 レベルのエンティティは BLOB です。 Azure Files の共有では、第 1 レベルのエンティティは共有であり、第 2 レベルのエンティティはファイルです。
 
-次の例を考えてみます。 
+各データ メンバー フィールドが JSON オブジェクトにマップされ、フィールド名がオブジェクトの "key" 部分にマップされ、"value" 部分がオブジェクトの値の部分に再帰的にマップされます。 
 
 - ストレージ アカウント: *Mystoracct*
 - ブロック BLOB 用の共有: *Mystoracct_BlockBlob/my-container/blob*
@@ -80,7 +80,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
-    メッセージが表示されたら、共有のパスワードを入力します。 上記のコマンドを使用して共有に接続する例を次に示します。
+    メッセージに従って共有のパスワードを入力します。 上記のコマンドを使用して共有に接続する例を次に示します。
 
     ```
     C:\Users\Databoxuser>net use \\10.126.76.172\devicemanagertest1_BlockBlob /u:devicemanagertest1
@@ -88,7 +88,7 @@ Windows Server ホスト コンピューターを使用している場合は、�
     The command completed successfully.
     ```
 
-4. Windows + R キーを押します。**[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>`」と入力します。 Click **OK**. これによりエクスプローラーが開きます。
+4. Windows キーを押しながら R キーを押します。**[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>`」と入力します。 Click **OK**. これによりエクスプローラーが開きます。
     
     ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
@@ -233,7 +233,7 @@ Robocopy コマンドについて詳しくは、「[Robocopy and a few examples]
 
 Linux ホスト コンピューターを使用している場合は、Robocopy のようなコピー ユーティリティを使用します。 Linux で使用できる代替手段は、[rsync](https://rsync.samba.org/)、[FreeFileSync](https://www.freefilesync.org/)、[Unison](https://www.cis.upenn.edu/~bcpierce/unison/)、[Ultracopier](https://ultracopier.first-world.info/) などです。  
 
-cp コマンドは、ディレクトリをコピーするのに最適なオプションの 1 つです。 使用方法について詳しくは、[cp の man ページ](http://man7.org/linux/man-pages/man1/cp.1.html)をご覧ください。
+`cp` コマンドは、ディレクトリをコピーするのに最適なオプションの 1 つです。 使用方法について詳しくは、[cp の man ページ](http://man7.org/linux/man-pages/man1/cp.1.html)をご覧ください。
 
 マルチスレッドのコピーに rsync オプションを使用する場合は、以下のガイドラインに従ってください。
 
@@ -273,7 +273,7 @@ cp コマンドは、ディレクトリをコピーするのに最適なオプ�
    
     ![発送の準備をする 1](media/data-box-deploy-copy-data/prepare-to-ship1.png)
 
-2. チェックサムが有効になっていない場合、チェックサムを有効にするオプションが表示されます。 データの整合性のため、チェックサムの検証を実行することをお勧めします。 **[チェックサムを有効にする]** をオンにすると、チェックサムの計算が開始され、データのサイズによっては時間がかかる場合があります。 **[準備の開始]** をクリックします。
+2. 既定では、チェックサムは発送準備中にインラインで計算されます。 チェックサムの計算は、データのサイズによっては時間がかかる場合があります。 **[準備の開始]** をクリックします。
     1. 発送を準備するときは、デバイスの共有はオフラインになり、デバイスはロックされます。
         
         ![発送の準備をする 1](media/data-box-deploy-copy-data/prepare-to-ship2.png) 

@@ -1,22 +1,49 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: navyasric
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: nacanuma
+ms.custom: include file
+ms.openlocfilehash: b2950720ae7038f435a8e2dfb24333afc49984b1
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060673"
+---
 ## <a name="test-your-code"></a>コードのテスト
 
+### <a name="test-with-node"></a>ノードでのテスト
+Visual Studio を使用していない場合は、お使いの Web サーバーが開始されていることを確認します。
+1. **index.html** ファイルの場所に基づく TCP ポートをリッスンするように、サーバーを構成します。 ノードの場合、アプリケーション フォルダーからコマンド ライン プロンプトで次のコマンドを実行することで、Web サーバーを起動してポートをリッスンします。
+
+    ```bash
+    npm install
+    node server.js
+    ```
+1. ブラウザーを開き、「 http://<span></span>localhost:30662」または「 http://<span></span>localhost:{ポート}」と入力します (ここで、**"ポート"** は Web サーバーがリッスンしているポートです)。 index.html ファイルの内容と **[サインイン]** ボタンが表示されるはずです。
+
+<p/><!-- -->
+
 ### <a name="test-with-visual-studio"></a>Visual Studio でのテスト
-Visual Studio を使用している場合は、 **F5** キーを押してプロジェクトを実行します。 ブラウザーで http://<span></span>localhost:{ポート} の場所を開くと、**[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** ボタンが表示されます。
+Visual Studio を使用している場合は、プロジェクト ソリューションを選択したことを確認し、**F5** キーを押してプロジェクトを実行します。 ブラウザーで http://<span></span>localhost:{ポート} の場所を開くと、**[サインイン]** ボタンが表示されます。
 
-<p/><!-- --> 
-
-### <a name="test-with-python-or-other-web-server"></a>Python または別の Web サーバーでのテスト
-Visual Studio を使用していない場合は、お使いの Web サーバーが開始されていることを確認します。 **index.html** ファイルの場所に基づく TCP ポートをリッスンするように、サーバーを構成します。 Python の場合、アプリケーション フォルダーからコマンド プロンプトのターミナルを実行することで、ポートのリッスンを開始します。
- 
-```bash
-python -m http.server 8080
-```
-ブラウザーを開き、「http://<span></span>localhost:8080」または「http://<span></span>localhost:{ポート}」と入力します (ここで、**"ポート"** は Web サーバーがリッスンしているポートです)。 index.html ファイルのコンテンツと **[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** ボタンが表示されます。
 
 ## <a name="test-your-application"></a>アプリケーションのテスト
 
-ブラウザーに index.html ファイルが読み込まれた後、**[Call Microsoft Graph API]\(Microsoft Graph API の呼び出し\)** を選択します。 アプリケーションを初めて実行すると、ブラウザーは Microsoft Azure Active Directory (Azure AD) v2.0 のエンドポイントにリダイレクトされ、サインインを求めるメッセージが表示されます。
- 
+ブラウザーに index.html ファイルが読み込まれたら、**[サインイン]** をクリックします。 Microsoft Azure Active Directory (Azure AD) v2.0 エンドポイントを使用してサインインするように求められます。
+
 ![JavaScript SPA アカウントにサインインする](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
 
 
@@ -27,23 +54,21 @@ python -m http.server 8080
 ![アプリケーションによるアクセスに同意する](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
 ### <a name="view-application-results"></a>アプリケーションの結果を表示する
-サインインした後、**[Graph API Call Response]\(Graph API 呼び出しの応答\)** ボックスにユーザー プロファイル情報が表示されます。
- 
-![Microsoft Graph API 呼び出しから期待される結果](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
+サインイン後は、ページに Microsoft Graph API の応答が表示され、そこに、返されたユーザー プロファイル情報が表示されるはずです。
 
-また、**[アクセス トークン]** および **[ID Token Claims]\(ID トークンの要求\)** ボックスで取得したトークに関する基本情報も確認できます。
+![Microsoft Graph API 呼び出しから期待される結果](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>スコープと委任されたアクセス許可の詳細
 
-Microsoft Graph API には、ユーザーのプロファイルを読み取るための **user.read** スコープが必要です。 このスコープは既定で、登録ポータルに登録されているすべてのアプリケーションで自動的に追加されます。 Microsoft Graph の他の API や、バックエンド サーバーのカスタム API には、追加のスコープが必要な場合があります。 Microsoft Graph API には、ユーザーの予定表を表示するための **Calendars.Read** スコープが必要です。
+Microsoft Graph API は、ユーザーのプロファイルを読み込むためにスコープ `user.read` を必要とします。 このスコープは既定で、登録ポータルに登録されているすべてのアプリケーションで自動的に追加されます。 Microsoft Graph の他の API や、バックエンド サーバーのカスタム API には、追加のスコープが必要な場合があります。 たとえば、Microsoft Graph API には、ユーザーの予定表を表示するための `Calendars.Read` スコープが必要です。
 
-アプリケーションのコンテキストでユーザーの予定表にアクセスするには、**Calendars.Read** の委任されたアクセス許可をアプリケーション登録情報に追加します。 次に、**Calendars.Read** スコープを **acquireTokenSilent** 呼び出しに追加します。 
+アプリケーションのコンテキストでユーザーの予定表にアクセスするには、`Calendars.Read` の委任されたアクセス許可をアプリケーション登録情報に追加します。 次に、`acquireTokenSilent` の呼び出しに `Calendars.Read` スコープを追加します。
 
 >[!NOTE]
 >スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。
 
-バックエンド API がスコープを必要としない場合は (非推奨)、**acquireTokenSilent** および **acquireTokenRedirect** 呼び出しのスコープとして **clientId** を使用できます。
+バックエンド API でスコープを必要としない (推奨されません) 場合は、トークンを取得するための呼び出し内のスコープとして `clientId` を使用できます。
 
 <!--end-collapse-->
 

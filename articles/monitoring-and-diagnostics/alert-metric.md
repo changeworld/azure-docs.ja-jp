@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 479fd902ef68bf24306bcd699da0be08415592a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ac31818a68aa2b4624410b423b7559b84275777
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956991"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409373"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Azure Monitor を使用してメトリック アラートを作成、表示、管理する
 
@@ -20,7 +20,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 
 メトリック アラートの動作について詳しくは、[メトリック アラートの概要](alert-metric-overview.md)に関するページをご覧ください。
 
-## <a name="create-a-metric-alert-rule-using-azure-portal"></a>Azure portal を使用してメトリック アラートを作成する
+## <a name="create-with-azure-portal"></a>Azure Portal での作成
 
 次の手順では、Azure portal でメトリック アラート ルールを作成する方法について説明します。
 
@@ -58,7 +58,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 > [!NOTE]
 > ポータルで作成したメトリック アラート ルールは、ターゲット リソースと同じリソース グループに作成されます。
 
-## <a name="view-and-manage-metric-alert-rules-using-azure-portal"></a>Azure portal を使用してメトリック アラート ルールを表示および管理する
+## <a name="view-and-manage-with-azure-portal"></a>Azure portal での表示と管理
 
 [アラート] の [ルールの管理] ブレードを使用して、メトリック アラート ルールを表示および管理できます。 次の手順では、メトリック アラート ルールを表示し、それらの 1 つを編集する方法を示します。
 
@@ -80,7 +80,7 @@ Azure Monitor のメトリック アラートには、メトリックのいず�
 
 6. **[完了]** をクリックして編集内容を保存します。
 
-## <a name="create-view-and-manage-metric-alert-rules-using-azure-cli"></a>Azure CLI を使用してメトリック アラート ルールを作成、表示、管理する
+## <a name="with-azure-cli"></a>Azure CLI の場合
 
 前のセクションでは、Azure portal を使用してメトリック アラート ルールを作成、表示、および 管理する方法について説明しました。 このセクションでは、クロスプラットフォームの [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使用して同じ操作を行う方法について説明します。 Azure CLI の使用を開始する最も簡単な方法は、[Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview?view=azure-cli-latest) を使用することです。 この記事では、Cloud Shell を使用します。
 

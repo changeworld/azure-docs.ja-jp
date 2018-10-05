@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 2c7dc650109ecc3844ee2ae90e50b2267f5716c4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 59856418adde1ea29a0513a1ca7c0c60531768d8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996521"
+ms.locfileid: "47036543"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法: Azure Access Control Service からの移行
 
@@ -61,6 +61,51 @@ STS および管理操作とのすべての通信は、この URL で行われ�
 これに対する例外は、`https://accounts.accesscontrol.windows.net` へのすべてのトラフィックです。 この URL へのトラフィックは既に他のサービスによって対処されており、Access Control の廃止の影響を**受けません**。 
 
 Access Control の詳細については、「[Access Control Service 2.0](https://msdn.microsoft.com/library/hh147631.aspx)」(アーカイブ) を参照してください。
+
+## <a name="find-out-which-of-your-apps-will-be-impacted"></a>影響を受けるアプリケーションを確認する
+
+このセクションの手順に従って、どのアプリケーションが ACS の提供終了によって影響を受けるかを確認します。
+
+### <a name="download-and-install-acs-powershell"></a>ACS PowerShell をダウンロードしてインストールする
+
+1. PowerShell ギャラリーに移動し、[Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2) をダウンロードします。
+1. 次を実行してモジュールをインストールします
+
+    ```powershell
+    Install-Module -Name Acs.Namespaces
+    ```
+
+1. 次を実行して、使用できるすべてのコマンドの一覧を取得します
+
+    ```powershell
+    Get-Command -Module Acs.Namespaces
+    ```
+
+    特定のコマンドのヘルプを表示するには、次を実行します。
+
+    ```
+     Get-Help [Command-Name] -Full
+    ```
+    
+    `[Command-Name]` は、ACS コマンドの名前です。
+
+### <a name="list-your-acs-namespaces"></a>ACS 名前空間を一覧表示する
+
+1. **Connect-AcsAccount** コマンドレットを使用して ACS に接続します。
+  
+    コマンドを実行する前に `Set-ExecutionPolicy -ExecutionPolicy Bypass` を実行し、コマンドを実行するためにそれらのサブスクリプションの管理者になっておくことが必要な場合があります。
+
+1. **Get-AcsSubscription** コマンドレットを使用して、使用可能な Azure サブスクリプションを一覧表示します。
+1. **Get-AcsNamespace** コマンドレットを使用して、ACS 名前空間を一覧表示します。
+
+### <a name="check-which-applications-will-be-impacted"></a>どのアプリケーションが影響を受けるかを確認する
+
+1. 前の手順で取得した名前空間を使用して、`https://<namespace>.accesscontrol.windows.net` に移動します
+
+    たとえば、名前空間の 1 つが contoso-test である場合は、`https://contoso-test.accesscontrol.windows.net` に移動します
+
+1. **[信頼関係]** で、**[証明書利用者アプリケーション]** を選択し、ACS の提供終了の影響を受けるアプリケーションの一覧を表示します。
+1. その他に ACS 名前空間があれば、それらについて手順 1 ～ 2 を繰り返します。
 
 ## <a name="retirement-schedule"></a>提供終了のスケジュール
 

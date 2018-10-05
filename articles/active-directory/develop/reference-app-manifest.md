@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 16841b927142572a40685940038eaf1cc6fc12ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 74bcd1e795186eba652d2da986c290e1989dd1d1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962336"
+ms.locfileid: "47041576"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory のアプリ マニフェスト
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) と統合するアプリは、Azure AD テナ�
 | `accessTokenAcceptedVersion` | Null 許容の Int32 | 現在の API リソース用の承認済みアクセス トークンのバージョンを指定します。 指定できる値は 1、2、null です。 既定では null に設定され、2 として扱われます。 | `2` |
 | `allowPublicClient` | ブール値 | フォールバック アプリケーションの種類を指定します。 Azure AD では、既定で replyUrlsWithType からアプリケーションの種類が推測されます。 Azure AD でクライアント アプリの種類を判別できない特定のシナリオがあります (URL リダイレクトなしで HTTP 要求が行われる [ROPC](https://tools.ietf.org/html/rfc6749#section-4.3) フローなど)。 そのような場合、Azure AD では、このプロパティの値に基づいて、アプリケーションの種類が解釈されます。 この値が true に設定されている場合、フォールバック アプリケーションの種類は、モバイル デバイス上で実行されているインストール済みのアプリなど、パブリック クライアントとして設定されます。 既定値は false です。これは、フォールバック アプリケーションの種類が、Web アプリなどの機密クライアントであることを意味します。 | `false` |
 | `appId` | 識別子の文字列 | Azure AD によってアプリに割り当てられた一意識別子を指定します。 | `"601790de-b632-4f57-9523-ee7cb6ceba95"` |
-| `appRoles` | 配列の型 | アプリが宣言する可能性のあるロールのコレクションを指定します。 これらのロールは、ユーザー、グループ、またはサービス プリンシパルに割り当てることができます。 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |
+| `appRoles` | 配列の型 | アプリが宣言する可能性のあるロールのコレクションを指定します。 これらのロールは、ユーザー、グループ、またはサービス プリンシパルに割り当てることができます。 その他の例および詳細については、「[アプリケーションにアプリ ロールを追加してトークンで受け取る](howto-add-app-roles-in-azure-ad-apps.md)」を参照してください。 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"allowedMemberTypes": [<br>&emsp;&nbsp;&nbsp;&nbsp;"User"<br>&nbsp;&nbsp;&nbsp;],<br>&nbsp;&nbsp;&nbsp;"description":"Read-only access to device information",<br>&nbsp;&nbsp;&nbsp;"displayName":"Read Only",<br>&nbsp;&nbsp;&nbsp;"id":guid,<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"value":"ReadOnly"<br>&nbsp;&nbsp;}<br>]</code>  |
 | `groupMembershipClaims` | string | アプリが期待する、ユーザーまたは OAuth 2.0 アクセス トークンで発行される `groups` 要求を構成するビットマスク。 ビットマスクの値は次のとおりです。<br>0: なし<br>1: セキュリティ グループと Azure AD ロール<br>2: 予約済み<br>4: 予約済み<br>ビットマスクを 7 に設定すると、サインイン ユーザーがメンバーになっているすべてのセキュリティ グループ、配布グループ、および Azure AD ディレクトリ ロールが取得されます。 | `1` |
 | `optionalClaims` | string | この特定のアプリのセキュリティ トークン サービスによってトークンで返される省略可能な要求。 詳細については、[省略可能な要求](active-directory-optional-claims.md)に関するページを参照してください。 | `null` |
 | `id` | 識別子の文字列 | ディレクトリ内のアプリの一意識別子。 この ID は、いずれかのプロトコル トランザクション内のアプリを識別するために使用される識別子ではありません。 これは、ディレクトリ クエリ内のオブジェクトを参照するために使用されます。 | `"f7f9acfc-ae0c-4d6c-b489-0a81dc1652dd"` |
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) と統合するアプリは、Azure AD テナ�
 | `logoUrl` | string | ポータルでアップロードされたロゴへの CDN URL を指す値のみを読み取ります。 | `https://MyRegisteredAppLogo` |
 | `logoutUrl` | string | アプリからログアウトするための URL。 | `https://MyRegisteredAppLogout` |
 | `name` | string | アプリの表示名。 | `MyRegisteredApp` |
-| `oauth2AllowImplicitFlow` | ブール値 | この Web アプリで OAuth2.0 暗黙的フロー アクセス トークンを要求できるかどうかを指定します。 既定値は false です。 このフラグは、ブラウザー ベースのアプリ (Javascript シングル ページ アプリなど) に使用されます。 | `false` |
+| `oauth2AllowImplicitFlow` | ブール値 | この Web アプリで OAuth2.0 暗黙的フロー アクセス トークンを要求できるかどうかを指定します。 既定値は false です。 このフラグは、ブラウザー ベースのアプリ (Javascript シングル ページ アプリなど) に使用されます。 詳細については、目次に「`OAuth 2.0 implicit grant flow`」と入力し、暗黙的フローに関するトピックを表示します。 | `false` |
 | `oauth2AllowIdTokenImplicitFlow` | ブール値 | この Web アプリで OAuth2.0 暗黙的フロー ID トークンを要求できるかどうかを指定します。 既定値は false です。 このフラグは、ブラウザー ベースのアプリ (Javascript シングル ページ アプリなど) に使用されます。 | `false` |
 | `oauth2Permissions` | 配列の型 | Web API (リソース) アプリがクライアント アプリに公開する OAuth 2.0 アクセス許可スコープのコレクションを指定します。 これらのアクセス許可スコープは、同意中にクライアント アプリに付与できます。 | <code>[<br>&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;"adminConsentDescription":"Allow the app to access resources on behalf of the signed-in user.",<br>&nbsp;&nbsp;&nbsp;"adminConsentDisplayName":"Access resource1",<br>&nbsp;&nbsp;&nbsp;"id":"\<guid>",<br>&nbsp;&nbsp;&nbsp;"isEnabled":true,<br>&nbsp;&nbsp;&nbsp;"type":"User",<br>&nbsp;&nbsp;&nbsp;"userConsentDescription":"Allow the app to access resource1 on your behalf.",<br>&nbsp;&nbsp;&nbsp;"userConsentDisplayName":"Access resources",<br>&nbsp;&nbsp;&nbsp;"value":"u| Web API (リソース) アプリがクライアント アプリに公開する OAuth 2.0 アクセス許可スコープのコレクションを指定します。 これらのアクセス許可スコープは、同意中にクライアント アプリに付与できます。 ser_impersonation"<br>&nbsp;&nbsp;}<br>]</code> |
 | `oauth2RequiredPostResponse` | ブール値 | OAuth 2.0 トークン要求の一部として、Azure AD が GET 要求ではなく、POST 要求を許可するかどうかを指定します。 既定値は false です。これは、GET 要求のみが許可されることを指定します。 | `false` |

@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1a343e238662393995404b8e4c705cf799866855
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 1bf716d4e5a37739de2e820725449be2576054ea
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136905"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038773"
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
@@ -113,7 +113,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 
 部分文字列ではなく、語句全体を検索します。 引用符で特殊文字を囲みます。
 
-| 文字列 | 一致 "*しない*" | 一致する |
+| string | 一致 "*しない*" | 一致する |
 | --- | --- | --- |
 | HomeController.About |home<br/>controller<br/>out | homecontroller<br/>about<br/>"homecontroller.about"|
 |米国|Uni<br/>ted|united<br/>states<br/>united AND states<br/>"united states"
@@ -123,8 +123,8 @@ Visual Studio で [検索] ウィンドウを開きます。
 | サンプル クエリ | 効果 |
 | --- | --- |
 | `apple` |時間範囲内でフィールドに "apple" という単語が含まれるすべてのイベントを検索します |
-| `apple AND banana` |両方の単語を含むイベントを検索します。 "and" ではなく大文字の "AND" を使用します。 |
-| `apple OR banana`<br/>`apple banana` |どちらかの単語を含むイベントを検索します。 "or" ではなく "OR" を使用します。<br/>短縮形。 |
+| `apple AND banana` <br/>`apple banana` |両方の単語を含むイベントを検索します。 "and" ではなく大文字の "AND" を使用します。 <br/>短縮形。 |
+| `apple OR banana` |どちらかの単語を含むイベントを検索します。 "or" ではなく "OR" を使用します。 |
 | `apple NOT banana` |ある単語を含む一方で他方の単語を含まないイベントを検索します。 |
 
 ## <a name="sampling"></a>サンプリング
@@ -133,13 +133,13 @@ Visual Studio で [検索] ウィンドウを開きます。
 [サンプリングについてはこちらを参照してください](app-insights-sampling.md)。
 
 ## <a name="create-work-item"></a>作業項目を作成する
-任意のテレメトリ項目の詳細を使用して、GitHub または Visual Studio Team Services でバグを作成できます。 
+任意のテレメトリ項目の詳細を使用して、GitHub または Azure DevOps でバグを作成できます。 
 
 ![新しい作業項目をクリックし、フィールドを編集して [OK] をクリックします。](./media/app-insights-diagnostic-search/42.png)
 
-これを初めて行う場合は、Team Services のアカウントおよびプロジェクトへのリンクを構成するように求められます。
+これを初めて行う場合は、Azure DevOps の組織およびプロジェクトへのリンクを構成するように求められます。
 
-![Team Services サーバーとプロジェクト名の URL を入力し、[承認] をクリックします](./media/app-insights-diagnostic-search/41.png)
+![Azure DevOps Services の URL とプロジェクト名を入力し、[承認] をクリックします](./media/app-insights-diagnostic-search/41.png)
 
 ([作業項目] ブレードでリンクを構成することもできます)。
 

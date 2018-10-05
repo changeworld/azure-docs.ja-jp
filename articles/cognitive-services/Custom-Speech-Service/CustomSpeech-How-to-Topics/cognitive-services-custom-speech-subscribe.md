@@ -1,24 +1,25 @@
 ---
-title: Azure 上の Custom Speech Service のサブスクリプション キーを取得する | Microsoft Docs
-description: Cognitive Services の Custom Speech Service の呼び出しのためにサブスクリプション キーを取得する方法を説明します。
+title: サブスクリプション キーを取得する - Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Custom Speech Service の呼び出しのためにサブスクリプション キーを取得する方法を説明します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: e5cac34a9aead209bec90cfd5f89e94a005a1995
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e4694928baf98bdb0d6aacead8dffec6bb73d6f7
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980357"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224774"
 ---
 # <a name="obtain-subscription-keys"></a>サブスクリプション キーを取得する
-Azure Custom Speech Service を開始するには、最初にユーザー アカウントを Azure サブスクリプションにリンクする必要があります。 Free レベルと有料レベルのサブスクリプションがあります。 レベルについて詳しくは、[価格に関するページ](https://www.microsoft.com/cognitive-services/en-us/pricing)をご覧ください。
+Azure Custom Speech Service を開始するには、最初にユーザー アカウントを Azure サブスクリプションにリンクする必要があります。 無料レベルと有料レベルのサブスクリプションがあります。 レベルについて詳しくは、[価格に関するページ](https://www.microsoft.com/cognitive-services/en-us/pricing)をご覧ください。
 
 ## <a name="get-a-subscription-key"></a>サブスクリプション キーを取得する
 1. 次の 2 つの方法のいずれかで Azure Portal からサブスクリプション キーを取得できます。
@@ -42,7 +43,7 @@ Azure Custom Speech Service を開始するには、最初にユーザー アカ
 
       d. **場所**。 現在は **[米国西部]** です。
 
-      e. **[価格レベル]**。 適切なレベルを選択します。 **F0** は Free レベルです。 許可されるクォータについては、[価格に関するページ](https://www.microsoft.com/cognitive-services/en-us/pricing)をご覧ください。
+      e. **[価格レベル]**。 適切なレベルを選択します。 **F0** は無料レベルです。 許可されるクォータについては、[価格に関するページ](https://www.microsoft.com/cognitive-services/en-us/pricing)をご覧ください。
 
       ![Cognitive Services アカウントの作成](../../../media/cognitive-services/custom-speech-service/custom-speech-azure-cris-blade.png)
 
@@ -70,7 +71,7 @@ Azure Custom Speech Service を開始するには、最初にユーザー アカ
 
       ![サブスクリプション キー名](../../../media/cognitive-services/custom-speech-service/custom-speech-enter-subsciption.png)
 
-データのアップロード、モデルのトレーニング、またはデプロイの実行を行うには、Custom Speech Service アクティビティを Azure サブスクリプションにリンクする必要があります。 Free レベルのサブスクリプションまたは有料レベルのサブスクリプションを使用できます。 詳細については、 [価格に関するページ](https://www.microsoft.com/cognitive-services/en-us/pricing)を参照してください。
+データのアップロード、モデルのトレーニング、またはデプロイの実行を行うには、Custom Speech Service アクティビティを Azure サブスクリプションにリンクする必要があります。 無料レベルのサブスクリプションまたは有料レベルのサブスクリプションを使用できます。 詳細については、 [価格に関するページ](https://www.microsoft.com/cognitive-services/en-us/pricing)を参照してください。
 
 ## <a name="get-a-subscription-id"></a>サブスクリプション ID を取得する
 サブスクリプション ID を取得したら、Azure Portal に移動します。 *Cognitive Services* と *Custom Speech Service* を検索し、手順に従います。

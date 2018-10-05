@@ -9,15 +9,16 @@ ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 12628b5a552b864784d780e5f2adc00aac579911
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 13ba4d774cbc347830c32385ba4927a0df687159
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215035"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035472"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送
-Automation からは、Runbook ジョブの状態とジョブ ストリームを Log Analytics ワークスペースに送信できます。 ジョブ ログとジョブ ストリームは、Azure Portal または PowerShell を使用してジョブごとに表示できます。これを使用して、簡単な調査を行うことができます。 Log Analytics では、次のことが可能になりました。
+
+Automation からは、Runbook ジョブの状態とジョブ ストリームを Log Analytics ワークスペースに送信できます。 このプロセスは、ワークスペースのリンク設定を伴わず、完全に独立しています。 ジョブ ログとジョブ ストリームは、Azure Portal または PowerShell を使用してジョブごとに表示できます。これを使用して、簡単な調査を行うことができます。 Log Analytics では、次のことが可能になりました。
 
 * Automation ジョブに関する情報を得る。
 * Runbook ジョブの状態 (失敗、中断など) に基づいて電子メールまたはアラートをトリガーする。
@@ -26,12 +27,12 @@ Automation からは、Runbook ジョブの状態とジョブ ストリームを
 * ジョブの履歴を時系列で視覚化する。
 
 ## <a name="prerequisites-and-deployment-considerations"></a>前提条件とデプロイに関する考慮事項
+
 Log Analytics への Automation ログの送信を開始するには、次のものが必要です。
 
 * 2016 年 11 月以降のリリースの [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0)。
 * Log Analytics ワークスペース。 詳細については、「[Log Analytics の起動と開始](../log-analytics/log-analytics-get-started.md)」を参照してください。 
 * Azure Automation アカウントの ResourceId。
-
 
 Azure Automation アカウントの ResourceId を調べるには、次の PowerShell を実行します。
 
@@ -159,7 +160,18 @@ Automation ジョブのログを Log Analytics に送信し始めたので、次
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
 <br> ![Log Analytics でのジョブの状態の履歴を示すグラフ](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
+## <a name="remove-diagnostic-settings"></a>診断設定を削除する
+
+Automation アカウントから診断設定を削除するには、次のコマンドを実行します。
+
+```powershell-interactive
+$automationAccountId = "[resource id of your automation account]"
+
+Remove-AzureRmDiagnosticSetting -ResourceId $automationAccountId
+```
+
 ## <a name="summary"></a>まとめ
+
 Automation ジョブの状態およびストリーム データを Log Analytics に送信し、次の対応を行うことで、Automation ジョブの状態をより理解できるようになります。
 + 問題が発生した場合に通知するアラートの設定。
 + カスタム ビューと検索クエリを使用した Runbook の結果、Runbook ジョブの状態、その他の関連する主要な指標やメトリックの視覚化。  

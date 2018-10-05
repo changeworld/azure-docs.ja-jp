@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/18/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9fe18c5e9514d7b8ecc3e38b394ddb4fadcc4393
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e984dc985100bcdabbee4fb86bd1819a329301a5
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46303946"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452634"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](how-to-connect-install-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -56,10 +56,10 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 | AD FS とのフェデレーション |ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。  ユーザーはサインインのためにオンプレミスの AD FS インスタンスにリダイレクトされ、認証はオンプレミスで行われます。 |
 | PingFederate によるフェデレーション|ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。  ユーザーはサインインのためにオンプレミスの PingFederate インスタンスにリダイレクトされ、認証はオンプレミスで行われます。 |
 | 構成しない |ユーザー サインイン機能はインストールおよび構成されません。 サード パーティのフェデレーション サーバーまたは別の既存のソリューションが既に設置されている場合は、このオプションを選択します。 |
-|シングル サインオンを有効にする|これはパスワード同期とパススルー認証の両方で使用できるオプションであり、企業ネットワーク上のデスクトップ ユーザーのシングル サインオン機能を有効にします。 詳細については、[シングル サインオン](how-to-connect-sso.md)に関するページをご覧ください。 </br>AD FS ユーザーはこのオプションを使用できません。AD FS によって同レベルのシングル サインオンが既に提供されているためです。</br>
+|シングル サインオンを有効にする|このオプションは、パスワード ハッシュの同期とパススルー認証の両方で使用でき、企業ネットワーク上のデスクトップ ユーザーにシングル サインオン エクスペリエンスを提供します。 詳細については、[シングル サインオン](how-to-connect-sso.md)に関するページをご覧ください。 </br>AD FS ユーザーはこのオプションを使用できません。AD FS によって同レベルのシングル サインオンが既に提供されているためです。</br>
 
 ### <a name="connect-to-azure-ad"></a>Azure への接続
-[Azure AD に接続] 画面で、グローバル管理者のアカウントとパスワードを入力します。 前のページで **[AD FS とのフェデレーション]** を選択した場合、フェデレーション用に有効にする予定があるドメイン内のアカウントでサインインしないようにしてください。 Azure AD ディレクトリに付属する既定の **onmicrosoft.com** ドメイン内のアカウントを使用することをお勧めします。
+[Azure AD に接続] 画面で、グローバル管理者のアカウントとパスワードを入力します。 前のページで **[AD FS とのフェデレーション]** を選択した場合、フェデレーション用に有効にする予定があるドメイン内のアカウントでサインインしないようにしてください。 Azure AD テナントに付属する既定の **onmicrosoft.com** ドメイン内のアカウントを使用することをお勧めします。
 
 このアカウントは、Azure AD のサービス アカウントを作成するためにのみ使用され、ウィザードが完了した後は使用されません。  
 ![User Sign in](./media/how-to-connect-install-custom/connectaad.png)
@@ -93,7 +93,7 @@ Azure AD Connect では、Active Directory ドメイン サービスに接続す
 ![Unverified domains](./media/how-to-connect-install-custom/aadsigninconfig2.png)  
 **[Not Added (追加されていません)]** と **[Not Verified (検証されていません)]** のマークが付いたドメインをすべて確認します。 使用するドメインを Azure AD で検証済みにしてください。 対象のドメインを検証済みにしたら、更新シンボルをクリックします。 詳細については、[ドメインの追加と検証](../active-directory-domains-add-azure-portal.md)に関するページを参照してください。
 
-**UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサインインするときに使用する属性です。 使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。 既定の userPrincipalName 属性のままにしておくことをお勧めします。 この属性がルーティング不可能で検証できない場合は、別の属性を選択することができます。 たとえば、サインイン ID を保持する属性として電子メールを選択することができます。 userPrincipalName 以外の属性を使用する方法は、 **代替 ID**と呼ばれます。 代替 ID の属性値は、RFC822 標準に従う必要があります。 代替 ID は、パスワード同期とフェデレーションの両方で使用できます。 Active Directory では、値が 1 つのみであってもこの属性を複数値として定義できません。
+**UserPrincipalName** - userPrincipalName 属性は、ユーザーが Azure AD と Office 365 にサインインするときに使用する属性です。 使用するドメイン (UPN サフィックス) は、ユーザーを同期する前に、Azure AD で検証する必要があります。 既定の userPrincipalName 属性のままにしておくことをお勧めします。 この属性がルーティング不可能で検証できない場合は、別の属性を選択することができます。 たとえば、サインイン ID を保持する属性として電子メールを選択することができます。 userPrincipalName 以外の属性を使用する方法は、 **代替 ID**と呼ばれます。 代替 ID の属性値は、RFC822 標準に従う必要があります。 代替 ID は、パスワード ハッシュの同期、パススルー認証、およびフェデレーションで使用できます。 Active Directory では、値が 1 つのみであってもこの属性を複数値として定義できません。
 
 >[!NOTE]
 > パススルー認証を有効にする場合、ウィザードを続行するために少なくとも 1 つの検証済みドメインが必要になります。
@@ -139,7 +139,7 @@ sourceAnchor 属性は、ユーザー オブジェクトの有効期間中に変
 | ソース アンカーの管理を Azure に任せる | Azure AD に属性を選択させる場合は、このオプションを選択します。 このオプションを選択すると、Azure AD Connect ウィザードが sourceAnchor 属性選択ロジックを適用します。このロジックについては、「[Azure AD Connect: 設計概念](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)」の「Using ms-DS-ConsistencyGuid as sourceAnchor (sourceAnchor としての ms-DS-ConsistencyGuid の使用)」セクションで説明されています。 どの属性がソース アンカー属性として選択されたかは、カスタム インストールの完了後、ウィザードに表示されます。 |
 | 特有の属性 | sourceAnchor 属性として既存の AD 属性を指定する場合は、このオプションを選択します。 |
 
-この属性は変更できないため、適切な属性を使用するように計画する必要があります。 適切な属性として考えられるのは objectGUID です。 この属性は、ユーザー アカウントをフォレスト/ドメイン間で移動しなければ、変更されません。 フォレスト間でアカウントを移動するマルチ フォレスト環境では、employeeID を持つ属性など、別の属性を使用する必要があります。 ユーザーが結婚したり割り当てが変更されたりした場合に変化する可能性のある属性は、使用しないようにしてください。 @-sign が含まれる属性は使用できないので、電子メールや userPrincipalName は使用できません。 属性では大文字と小文字も区別されるため、フォレスト間でオブジェクトを移動する場合は、大文字と小文字をそのままの状態に維持するようにしてください。 バイナリ属性は base64 でエンコードされますが、他の種類の属性はエンコードされない状態のままになります。 フェデレーション シナリオと一部の Azure AD インターフェイスでは、この属性は immutableID とも呼ばれます。 ソース アンカーの詳細については、[設計概念](plan-connect-design-concepts.md#sourceanchor)に関するページを参照してください。
+この属性は変更できないため、適切な属性を使用するように計画する必要があります。 適切な属性として考えられるのは objectGUID です。 この属性は、ユーザー アカウントをフォレスト/ドメイン間で移動しなければ、変更されません。 ユーザーが結婚したり割り当てが変更されたりした場合に変化する可能性のある属性は、使用しないようにしてください。 @-sign が含まれる属性は使用できないので、電子メールや userPrincipalName は使用できません。 属性では大文字と小文字も区別されるため、フォレスト間でオブジェクトを移動する場合は、大文字と小文字をそのままの状態に維持するようにしてください。 バイナリ属性は base64 でエンコードされますが、他の種類の属性はエンコードされない状態のままになります。 フェデレーション シナリオと一部の Azure AD インターフェイスでは、この属性は immutableID とも呼ばれます。 ソース アンカーの詳細については、[設計概念](plan-connect-design-concepts.md#sourceanchor)に関するページを参照してください。
 
 ### <a name="sync-filtering-based-on-groups"></a>グループに基づく同期フィルタリング
 グループに基づくフィルタリング機能では、パイロット用にごく一部のオブジェクトのみを同期することができます。 この機能を使用するには、対象とするグループをオンプレミスの Active Directory に作成します。 次に、直接のメンバーとして Azure AD に同期するユーザーとグループを追加します。 このグループには後でユーザーを追加したりユーザーを削除したりして、Azure AD に表示するオブジェクトの一覧を管理することができます。 同期するオブジェクトはすべて、グループの直接のメンバーである必要があります。 ユーザー、グループ、連絡先、およびコンピューター/デバイスは、すべて直接のメンバーにする必要があります。 入れ子になったグループのメンバーシップは解決されません。 グループをメンバーとして追加すると、グループ自体は追加されますが、そのグループのメンバーは追加されません。
@@ -220,7 +220,7 @@ Azure AD Connect で追加されたフォレストごとに、ドメイン管理
 
         Value: `https://autologon.microsoftazuread-sso.com`  
         Data: 1  
-    
+
 
 5.  次のようになります。  
 ![イントラネット ゾーン](./media/how-to-connect-install-custom/sitezone.png)
@@ -382,7 +382,7 @@ Azure AD Connect は、前の手順で PingFederate メタデータから取得�
 ## <a name="troubleshooting"></a>トラブルシューティング
 次のセクションには、Azure AD Connect のインストール時に問題が発生した場合に使用できるトラブルシューティングと情報が含まれています。
 
-### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>"The ADSync database already contains data and cannot be overwritten (ADSync データベースに既にデータが含まれており、上書きできません)" 
+### <a name="the-adsync-database-already-contains-data-and-cannot-be-overwritten"></a>"The ADSync database already contains data and cannot be overwritten (ADSync データベースに既にデータが含まれており、上書きできません)"
 Azure AD Connect をカスタム インストールし、**[必須コンポーネントのインストール]** ページで **[既存の SQL サーバーを使用する]** オプションを選択すると、**"The ADSync database already contains data and cannot be overwritten. (ADSync データベースに既にデータが含まれており、上書きできません。) Please remove the existing database and try again. (既存のデータベースを削除してからやり直してください。)"** と表示されるエラーが発生することがあります。
 
 ![Error](./media/how-to-connect-install-custom/error1.png)
@@ -393,7 +393,7 @@ Azure AD Connect をカスタム インストールし、**[必須コンポー�
 
 この問題を解決するには、まず、アンインストール前に Azure AD Connect によって使用されていた **ADSync** データベースが既に使用されていないことを確認します。
 
-削除する前に、データベースをバックアップすることをお勧めします。 
+削除する前に、データベースをバックアップすることをお勧めします。
 
 データベースは手作業で削除する必要があります。  そのためには、**Microsoft SQL Server Management Studio** を使用して、SQL インスタンスに接続します。 **ADSync** データベースを探して右クリックし、コンテキスト メニューの **[削除]** を選択します。  **[OK]** をクリックして削除します。
 

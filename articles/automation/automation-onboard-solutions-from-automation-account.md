@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 8649b96c9cf95e4a25b24dedf447aef133ef299a
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 5b906b4a90dbceb62c6f2381d0ffa8bc1bee7ef1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865405"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033823"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management、Change Tracking、および Inventory ソリューションの配布準備
 
@@ -22,7 +22,7 @@ Azure Automation には、オペレーティング システムのセキュリ�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure にサインインします( https://portal.azure.com )。
+Azure にサインインします ( https://portal.azure.com )。
 
 ## <a name="enable-solutions"></a>ソリューションの有効化
 
@@ -102,6 +102,43 @@ Azure に存在しないマシンは手動で追加する必要があります�
 ### <a name="selected-machines"></a>選択したマシン
 
 1 つ以上のマシンに対してソリューションを有効にするには、**[Enable on selected machines]\(選択したマシンで有効にします\)** を選択し、ソリューションに追加する各マシンの横にある **[追加]** をクリックします。 このタスクにより、選択したマシン名が、ソリューションの "保存した検索クエリ" コンピューター グループに追加されます。
+
+## <a name="unlink-workspace"></a>ワークスペースのリンクの解除
+
+以下のソリューションは、Log Analytics ワークスペースに依存しています。
+
+* [更新管理](automation-update-management.md)
+* [変更の追跡](automation-change-tracking.md)
+* [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
+
+Automation アカウントを Log Analytics と統合する必要がなくなった場合は、Azure Portal から直接、アカウントのリンクを解除できます。  作業を進める前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを続行できません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
+
+これらのソリューションを削除したら、以下の手順を行うと、Automation アカウントのリンクを解除できます。
+
+> [!NOTE]
+> Azure SQL 監視ソリューションの以前のバージョンを含む一部のソリューションでは、Automation アセットを作成している可能性があり、ワークスペースのリンクを解除する前にその削除が必要な場合があります。
+
+1. Azure portal から Automation アカウントを開き、[Automation アカウント] ページで、左側にある **[関連リソース]** セクションで **[リンクされたワークスペース]** を選択します。
+
+1. [ワークスペースのリンクを解除] ページ **[ワークスペースのリンクを解除]** をクリックします。
+
+   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
+
+   続行するかどうかを確認するプロンプトが表示されます。
+
+1. Azure Automation によってアカウントと Log Analytics ワークスペースとのリンクが解除されている間、メニューの **[通知]** で進行状況を追跡できます。
+
+更新の管理ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
+
+* スケジュールの更新 - 各スケジュールには、作成した更新のデプロイに一致する名前が付いています。
+
+* ソリューションに作成されたハイブリッド worker グループ - 各グループの名前は machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8 のようになります。
+
+勤務時間外の VM の開始/停止ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
+
+* VM の開始/停止の Runbook スケジュール
+* VM の開始/停止の Runbook
+* variables
 
 ## <a name="next-steps"></a>次の手順
 

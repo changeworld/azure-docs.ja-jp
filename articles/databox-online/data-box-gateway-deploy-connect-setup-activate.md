@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/27/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: e2fe7c375525389da865a3c85b52fad4dd11e333
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 77ccc6ebbb48ab3d7ce22d6c593bd62aa8dec3ac
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957487"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419482"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>チュートリアル: Azure Data Box Gateway (プレビュー) を接続、設定、アクティブ化する 
 
@@ -122,7 +122,7 @@ Data Box Gateway を構成および設定する前に、以下のことを確認
        
          ![](./media/data-box-gateway-deploy-connect-setup-activate/image10.png)
     
-    3. これによってデバイスが再起動されます。 デバイスが正常にアクティブ化されるまでに、2 分から 3 分待機する必要がある場合があります。 デバイスが再起動したら、サインイン ページが表示されます。
+    3. デバイスが正常にアクティブ化されるまでに、少し待つ必要がある場合があります。 アクティブ化の後、ページが更新され、デバイスが正常にアクティブ化されたことを示します。
 
 
 ## <a name="next-steps"></a>次の手順

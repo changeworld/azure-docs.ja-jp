@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fd96a6cfebe44bd02e3f44a44d91119ad1c2c5a9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: fe35f26fe73661901fa85da65e353fe66adf5d47
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34598754"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094219"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
 
@@ -47,7 +47,7 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 
 所有者は、アクセス権を含めすべてを管理できます。 次の表は、このロールに付与されるアクセス許可を示しています。
 
-|アクション|説明|
+|Actions|説明|
 |---|---|
 |Microsoft.Automation/automationAccounts/|あらゆる種類のリソースの作成と管理。|
 
@@ -78,12 +78,21 @@ Automation オペレーターは、ジョブの作成と管理、Automation ア�
 |**アクション**  |**説明**  |
 |---------|---------|
 |Microsoft.Authorization/*/read|承認の読み取り。|
+|Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read|Hybrid Runbook Worker リソースを読み取ります。|
 |Microsoft.Automation/automationAccounts/jobs/read|Runbook のジョブの一覧表示。|
 |Microsoft.Automation/automationAccounts/jobs/resume/action|一時停止されているジョブの再開。|
 |Microsoft.Automation/automationAccounts/jobs/stop/action|進行中のジョブの取り消し。|
 |Microsoft.Automation/automationAccounts/jobs/streams/read|ジョブ ストリームと出力の読み取り。|
+|Microsoft.Automation/automationAccounts/jobs/output/read|ジョブの出力を取得します。|
 |Microsoft.Automation/automationAccounts/jobs/suspend/action|進行中のジョブの一時停止。|
 |Microsoft.Automation/automationAccounts/jobs/write|ジョブの作成。|
+|Microsoft.Automation/automationAccounts/jobSchedules/read|Azure Automation ジョブ スケジュールを取得します。|
+|Microsoft.Automation/automationAccounts/jobSchedules/write|Azure Automation ジョブ スケジュールを作成します。|
+|Microsoft.Automation/automationAccounts/linkedWorkspace/read|Automation アカウントにリンクされているワークスペースを取得します。|
+|Microsoft.Automation/automationAccounts/read|Azure Automation アカウントを取得します。|
+|Microsoft.Automation/automationAccounts/runbooks/read|Azure Automation Runbook を取得します。|
+|Microsoft.Automation/automationAccounts/schedules/read|Azure Automation スケジュール資産を取得します。|
+|Microsoft.Automation/automationAccounts/schedules/write|Azure Automation スケジュール資産を作成または更新します。|
 |Microsoft.Resources/subscriptions/resourceGroups/read      |ロールとロール割り当ての読み取り。         |
 |Microsoft.Resources/deployments/*      |リソース グループ デプロイの作成と管理。         |
 |Microsoft.Insights/alertRules/*      | アラート ルールの作成と管理。        |
@@ -234,7 +243,7 @@ Log Analytics 閲覧者は、すべての監視データの表示と検索、お
 |AutomationOnboarding ブレード - ソリューションを読み取る     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read         | 解決策        |
 |AutomationOnboarding ブレード - ワークスペースを読み取る     | Microsoft.OperationalInsights/workspaces/intelligencepacks/read        | ワークスペース        |
 |ワークスペースとアカウントのリンクを作成する     | Microsoft.OperationalInsights/workspaces/write        | ワークスペース        |
-|Shoebox のアカウントを記述する      | Microsoft.Automation/automationAccounts/write        | アカウント        |
+|Shoebox のアカウントを記述する      | Microsoft.Automation/automationAccounts/write        | Account        |
 |ソリューションを作成する      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write        | リソース グループ         |
 |保存した検索条件を作成および編集する     | Microsoft.OperationalInsights/workspaces/write        | ワークスペース        |
 |スコープ構成を作成および編集する     | Microsoft.OperationalInsights/workspaces/write        | ワークスペース        |

@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 0a624d850b8c3260acb24cb17566090e8ad0043e
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 5bb36c693db5b2d7d46b772fd8b92bcda3667dc7
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233939"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039430"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management、Change Tracking、および Inventory ソリューションを複数の VM で使用できるようにする
 
@@ -43,17 +43,62 @@ Azure Portal で**仮想マシン**に移動します。
 
 仮想マシンの一覧はフィルターされ、同じサブスクリプションおよび場所にある仮想マシンのみが表示されます。 お使いの仮想マシンが 4 つ以上のリソース グループにある場合、最初の 3 つのリソース グループが選択されます。
 
+### <a name="resource-group-limit"></a> オンボードの制限事項
+
+オンボードのために使用できるリソース グループの数は、[Resource Manager のデプロイメントの制限](../azure-resource-manager/resource-manager-cross-resource-group-deployment.md)によって制限されます。 Resource Manager のデプロイメントは、更新プログラムの展開と混同してはならず、デプロイあたり 5 つのリソース グループに制限されています。 オンボードの整合性を確保するため、それらのリソース グループのうちの 2 つは、Log Analytics ワークスペース、Automation アカウント、および関連リソースを構成するために予約されています。 これで、デプロイのために選択するリソース グループは 3 つ残ります。
+
 フィルター コントロールを使用して、異なるサブスクリプション、場所、およびリソース グループから仮想マシンを選択します。
 
 ![Update Management ソリューションの使用準備](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-Log Analytics ワークスペースと Automation アカウントの選択を確認します。 既定では、新しいワークスペースおよび Automation アカウントが選択されます。 既存の Log Analytics ワークスペースおよび Automation アカウントがあり、これらを使用する場合、**[変更]** をクリックして **[構成]** ページから選択します。 完了したら、**[保存]** をクリックします。
+Log Analytics ワークスペースと Automation アカウントの選択を確認します。 既定では、既存のワークスペースと Automation アカウントが選択されます。 異なる Log Analytics ワークスペースと Automation アカウントを使用する場合は、**[CUSTOM] (カスタム)** をクリックして、**[Custom Configuration] (カスタム構成)** ページから選択します。 Log Analytics ワークスペースを選択すると、それが Automation アカウントにリンクされているかどうかを判断するためのチェックが行われます。 リンクされている Automation アカウントが見つかった場合は、次の画面が表示されます。 完了したら、**[OK]** をクリックします。
 
 ![ワークスペースとアカウントを選択する](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
+
+選択したワークスペースが Automation アカウントにリンクされていない場合は、次の画面が表示されます。 Automation アカウントを選択し、完了したら **[OK]** をクリックします。
+
+![ワークスペースがありません](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
 有効にしない仮想マシンの横のチェックボックスをオフにします。 有効にできない仮想マシンは既に選択解除されています。
 
 **[有効にする]** をクリックしてソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
+
+## <a name="unlink-workspace"></a>ワークスペースのリンクの解除
+
+以下のソリューションは、Log Analytics ワークスペースに依存しています。
+
+* [更新管理](automation-update-management.md)
+* [変更の追跡](automation-change-tracking.md)
+* [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
+
+Automation アカウントを Log Analytics と統合する必要がなくなった場合は、Azure Portal から直接、アカウントのリンクを解除できます。 作業を進める前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを続行できません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
+
+これらのソリューションを削除したら、以下の手順を行うと、Automation アカウントのリンクを解除できます。
+
+> [!NOTE]
+> Azure SQL 監視ソリューションの以前のバージョンを含む一部のソリューションでは、Automation アセットを作成している可能性があり、ワークスペースのリンクを解除する前にその削除が必要な場合があります。
+
+1. Azure portal から Automation アカウントを開き、[Automation アカウント] ページで、左側にある **[関連リソース]** セクションで **[リンクされたワークスペース]** を選択します。
+
+1. [ワークスペースのリンクを解除] ページ **[ワークスペースのリンクを解除]** をクリックします。
+
+   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-browse/automation-unlink-workspace-blade.png).
+
+   続行するかどうかを確認するプロンプトが表示されます。
+
+1. Azure Automation によってアカウントと Log Analytics ワークスペースとのリンクが解除されている間、メニューの **[通知]** で進行状況を追跡できます。
+
+更新の管理ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
+
+* スケジュールの更新 - 各スケジュールには、作成した更新のデプロイに一致する名前が付いています。
+
+* ソリューションに作成されたハイブリッド worker グループ - 各グループの名前は machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8 のようになります。
+
+勤務時間外の VM の開始/停止ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
+
+* VM の開始/停止の Runbook スケジュール
+* VM の開始/停止の Runbook
+* variables
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

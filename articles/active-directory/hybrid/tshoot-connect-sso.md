@@ -9,15 +9,15 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c2b6bd3b04dfbc7446e92dfcb16db64cc3c693c5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a020f0f22f16d8aaa959c41a912ca5839be05312
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310621"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055902"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -36,7 +36,7 @@ ms.locfileid: "46310621"
 - Active Directory でユーザーが属しているグループ数が多すぎる場合、ユーザーの Kerberos チケットが大きすぎて処理できなくなり、シームレス SSO が失敗する可能性があります。 Azure AD HTTPS 要求のヘッダーは最大サイズが 50 KB です。Cookie など、他の Azure AD アーティファクト (通常、2 から 5 KB) に対応するには、Kerberos チケットのサイズを、制限より小さくする必要があります。 ユーザーのグループ メンバーシップを減らし、再試行することをお勧めします。
 - 30 以上の Active Directory フォレストを同期している場合は、Azure AD Connect によるシームレス SSO を有効にすることはできません。 この問題を回避するには、テナントでこの機能を[手動で有効](#manual-reset-of-the-feature)にします。
 - Azure AD サービスの URL (https://autologon.microsoftazuread-sso.com)) を、ローカル イントラネット ゾーンではなく信頼済みサイト ゾーンに追加すると、"*ユーザーのサインインがブロック*" されます。
-- Active Directory の設定で Kerberos での暗号化の種類 **RC4_HMAC_MD5** の使用を無効にすると、シームレス SSO が中断されます。 グループ ポリシー管理エディター ツールで、**[コンピューターの構成]、[Windows 設定]、[セキュリティ設定]、[ローカル ポリシー]、[セキュリティ オプション]、[ネットワーク セキュリティ: Kerberos で許可する暗号化の種類を構成する]** の順に選択して、**[RC4_HMAC_MD5]** のポリシーの値が "有効" になっていることを確認してください。
+- シームレス SSO では、Kerberos のために **RC4_HMAC_MD5** の暗号化の種類を使用します。 Active Directory の設定で **RC4_HMAC_MD5** の暗号化の種類の使用を無効にすると、シームレス SSO が中断されます。 グループ ポリシー管理エディター ツールで、**[コンピューターの構成]、[Windows 設定]、[セキュリティ設定]、[ローカル ポリシー]、[セキュリティ オプション]、[ネットワーク セキュリティ: Kerberos で許可する暗号化の種類を構成する]** の順に選択して、**[RC4_HMAC_MD5]** のポリシーの値が **[有効]** になっていることを確認してください。 さらに、シームレス SSO では他の暗号化の種類を使用できないため、それらが **[無効]** になっていることを確認してください。
 
 ## <a name="check-status-of-feature"></a>機能の状態の確認
 

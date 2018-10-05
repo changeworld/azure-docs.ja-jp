@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: cd89c41b43be1da339ca7dcc64110e7145a93903
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 72cf094dc6206fcb156a3e4dae6e89662e2085d8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857332"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434859"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング: Azure ポイント対サイト接続の問題
 
@@ -51,7 +51,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
     | AzureGateway-*GUID*.cloudapp.net、AzureRoot.cer    | ローカル コンピューター\信頼されたルート証明機関|
 
-3. Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID> に移動し、ユーザーおよびコンピューターのストアに手動で証明書 (*.cer ファイル) をインストールします。
+3. C:\Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID> に移動し、ユーザーおよびコンピューターのストアに手動で証明書 (*.cer ファイル) をインストールします。
 
 クライアント証明書をインストールする方法の詳細については、[ポイント対サイト接続の証明書の生成とエクスポート](vpn-gateway-certificates-point-to-site.md)に関する記事をご覧ください。
 
@@ -276,7 +276,7 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="solution"></a>解決策
 
-この問題を解決するには、**C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId>** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。
+この問題を解決するには、**C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId>** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>ポイント対サイト VPN クライアントがローカル ドメイン内のリソースの FQDN を解決できません
 
@@ -361,7 +361,7 @@ Azure VPN ゲートウェイの種類は VPN で、VPN の種類は **RouteBased
 
 ### <a name="solution"></a>解決策
 
-**C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId>** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。 
+**C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId>** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>VPN クライアントがしばらくしたら休止状態またはスリープ状態になる
 

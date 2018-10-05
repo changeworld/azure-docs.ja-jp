@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e449e6e457c4fa568b5a4de5823014b4dcea82d0
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: c94fd0bb68a03c64935c20fef1fab7b68c9c2c9b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064542"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032990"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker をデプロイする
 
@@ -30,7 +30,7 @@ Windows Hybrid Runbook Worker をインストールして構成するには、2 
 Windows Hybrid Runbook Worker の最小要件は次のようになります。
 
 * Windows Server 2012 以降。
-* Windows PowerShell 4.0 以降 ([WMF 4.0 をダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。 確実性の高い Windows PowerShell 5.1 ([WMF 5.1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=54616)) をお勧めします。
+* Windows PowerShell 5.1 以降 ([WMF 5.1 をダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))。
 * .NET Framework 4.6.2 以降。
 * 2 コア。
 * 4 GB の RAM。
@@ -49,13 +49,13 @@ Runbook Worker が正常にデプロイされたら、「[Hybrid Runbook Worker 
 
 Windows ハイブリッド worker ロールのインストールと構成を自動化するには、次の手順を実行します。
 
-1. [PowerShell ギャラリー](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/DisplayScript) の New-OnPremiseHybridWorker.ps1 スクリプトを Hybrid Runbook Worker ロールを実行しているコンピューターから、または環境内の別のコンピューターから直接ダウンロードします。 スクリプトを worker にコピーします。
+1. [PowerShell ギャラリー](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) の New-OnPremiseHybridWorker.ps1 スクリプトを Hybrid Runbook Worker ロールを実行しているコンピューターから、または環境内の別のコンピューターから直接ダウンロードします。 スクリプトを worker にコピーします。
 
    New-OnPremiseHybridWorker.ps1 スクリプトは、実行中に次のパラメーターを必要とします。
 
    * *AutomationAccountName* (必須): Automation アカウントの名前。
    * *AAResourceGroupName* (必須): Automation アカウントに関連付けられているリソース グループの名前。
-   * *OMSResourceGroupName* (省略可能): Operations Management Suite ワークスペース用のリソース グループの名前。 このリソース グループが指定されていない場合、*AAResourceGroupName* が使用されます。
+   * *OMSResourceGroupName* (省略可能): Log Analytics ワークスペース用のリソース グループの名前。 このリソース グループが指定されていない場合、*AAResourceGroupName* が使用されます。
    * *HybridGroupName* (必須): このシナリオをサポートしている Runbook のターゲットとして指定する Hybrid Runbook Worker グループの名前。
    * *SubscriptionID* (必須): Automation アカウントが存在する Azure サブスクリプション ID。
    * *WorkspaceName* (省略可能): Log Analytics ワークスペースの名前。 Log Analytics ワークスペースがない場合は、スクリプトがこれを作成して構成します。
@@ -63,8 +63,8 @@ Windows ハイブリッド worker ロールのインストールと構成を自�
      > [!NOTE]
      > 現在、Log Analytics との統合がサポートされている Automation リージョンは、**オーストラリア南東部**、**米国東部 2**、**東南アジア**、および**西ヨーロッパ**だけです。 Automation アカウントがこれらのいずれかのリージョンに存在しない場合、スクリプトは Log Analytics ワークスペースを作成しますが、それらをリンクできないことをユーザーに警告します。
 
-1. コンピューターの**スタート**画面から、管理者モードで **Windows PowerShell** を開きます。
-1. PowerShell コマンドライン シェルから、ダウンロードしたスクリプトがあるフォルダーを参照します。 パラメーター *-AutomationAccountName*、*-AAResourceGroupName*、*-OMSResourceGroupName*、*-HybridGroupName*、*-SubscriptionId*、および *-WorkspaceName* の値を変更します。 その後、スクリプトを実行します。
+2. コンピューターの**スタート**画面から、管理者モードで **Windows PowerShell** を開きます。
+3. PowerShell コマンドライン シェルから、ダウンロードしたスクリプトがあるフォルダーを参照します。 パラメーター *-AutomationAccountName*、*-AAResourceGroupName*、*-OMSResourceGroupName*、*-HybridGroupName*、*-SubscriptionId*、および *-WorkspaceName* の値を変更します。 その後、スクリプトを実行します。
 
      > [!NOTE]
      > スクリプトの実行後、Azure での認証が求められます。 サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用してサインインする*必要があります*。
@@ -75,9 +75,9 @@ Windows ハイブリッド worker ロールのインストールと構成を自�
    -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
    ```
 
-1. NuGet のインストールに同意するように求められ、Azure 資格情報で認証するように求められます。
+4. NuGet のインストールに同意するように求められ、Azure 資格情報で認証するように求められます。
 
-1. スクリプトが完了すると、**[ハイブリッド Worker グループ]** ページに、新しいグループとメンバーの数が表示されます。 既存のグループの場合は、メンバーの数が増分されます。 **[ハイブリッド worker グループ]** ページ上にあるリストからグループを選択し、**[ハイブリッド worker]** タイルを選択できます。 **[ハイブリッド worker]** ページで、グループの各メンバーが一覧表示されます。
+5. スクリプトが完了すると、**[ハイブリッド Worker グループ]** ページに、新しいグループとメンバーの数が表示されます。 既存のグループの場合は、メンバーの数が増分されます。 **[ハイブリッド worker グループ]** ページ上にあるリストからグループを選択し、**[ハイブリッド worker]** タイルを選択できます。 **[ハイブリッド worker]** ページで、グループの各メンバーが一覧表示されます。
 
 ### <a name="manual-deployment"></a>手動デプロイ
 

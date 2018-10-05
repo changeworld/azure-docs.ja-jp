@@ -10,12 +10,12 @@ ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d5f9bae34dabba71861adc9b2aeb0d33b8a1e226
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 30569c3a89de320769d433b5b3a4af9cf4e08e66
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195949"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091408"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>インベントリ収集による Azure 仮想マシンの管理
 
@@ -62,7 +62,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 |プロパティ  |[説明]  |
 |---------|---------|
-|有効     | 設定が適用されるかどうかを決定します。        |
+|Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |Windows レジストリ キー   | ファイル確認のためのパス (例: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup")。      |
@@ -71,7 +71,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 |プロパティ  |[説明]  |
 |---------|---------|
-|有効     | 設定が適用されるかどうかを決定します。        |
+|Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス。例: "c:\temp\myfile.txt"
@@ -80,7 +80,7 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 
 |プロパティ  |[説明]  |
 |---------|---------|
-|有効     | 設定が適用されるかどうかを決定します。        |
+|Enabled     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "/etc/*.conf")。       |
@@ -88,6 +88,24 @@ Azure サブスクリプションをお持ちでない場合は、[無料アカ�
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
 |sudo の使用     | この設定により、項目を確認するときに、sudo を使用するかどうかが決まります。         |
 |リンク     | この設定により、ディレクトリを走査するときの、シンボリック リンクの処理方法が決まります。<br> **無視** - シンボリック リンクを無視し、参照先のファイル/ディレクトリを含めません。<br>**フォロー** - 再帰中、シンボリック リンクをフォローします。参照先のファイル/ディレクトリも含めます。<br>**管理** - シンボリック リンクをフォローします。また、返された内容の処理を変更することができます。      |
+
+## <a name="manage-machine-groups"></a>コンピューター グループを管理する
+
+インベントリを使用すると、Log Analytics 内で、コンピューター グループを作成し、表示することができます。 コンピューター グループは、Log Analytics 内でクエリによって定義されるコンピューターのコレクションです。
+
+コンピューター グループを表示するには、[インベントリ] ページの **[Machine groups] (コンピューター グループ)** タブを選択します。
+
+![[インベントリ] ページでコンピューター グループを表示する](./media/automation-vm-inventory/inventory-machine-groups.png)
+
+一覧からコンピューター グループを選択すると、[Machine groups] (コンピューター グループ) ページが開きます。 このページには、コンピューター グループに関する詳細が表示されます。 これらの詳細には、グループを定義するために使用される Log Analytics クエリが含まれます。 ページの下部には、そのグループの一部になっているコンピューターのページ単位の一覧があります。
+
+![コンピューター グループのページを表示する](./media/automation-vm-inventory/machine-group-page.png)
+
+**[+ 複製]** ボタンをクリックして、コンピューター グループを複製します。 ここで、グループに新しい名前とグループの別名を付ける必要があります。 この時点では、定義の変更が可能です。 クエリを変更した後、**[Validate query] (クエリの検証)** を押して、選択されるコンピューターをプレビューします。 そのグループでよければ、**[作成]** をクリックしてコンピューター グループを作成します
+
+新しいコンピューター グループを作成する場合は、**[+ Create a machine group] (+ 新しいコンピューター グループの作成)** を選択します。 このボタンによって、**[Create a machine group] (コンピューター グループの作成)** ページが開きます。 **[作成]** をクリックしてグループを作成します。
+
+![新しいコンピューター グループを作成する](./media/automation-vm-inventory/create-new-group.png)
 
 ## <a name="disconnect-your-virtual-machine-from-management"></a>仮想マシンを管理から切断する
 

@@ -1,21 +1,22 @@
 ---
-title: Azure 上の Custom Speech Service の用語集 | Microsoft Docs
+title: 用語集 - Custom Speech Service
+titlesuffix: Azure Cognitive Services
 description: 用語集では、Custom Speech Service を使用する際に目にする専門用語が定義されます。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: f57809fee463213cbb427146325666656b022e41
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6922244fa9a5d053e506120112759d29bc74a8af
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956746"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222796"
 ---
 # <a name="glossary"></a>用語集
 

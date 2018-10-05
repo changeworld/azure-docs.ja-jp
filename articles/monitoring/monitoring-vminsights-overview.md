@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 79f507c342f5a13c4d3784cf312f0bf8aeffa3e3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 26fcc3eb78af53360cca57382b4c06b017f36c0e
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957256"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063270"
 ---
-## <a name="what-is-azure-monitor-for-vms"></a>VM 用 Azure Monitor とは?
+# <a name="what-is-azure-monitor-for-vms"></a>VM 用 Azure Monitor とは?
 
 Azure Monitor for VMs では、Azure 仮想マシン (VM) の大規模な監視が行われます。それを行うために、さまざまなプロセスや、その他のリソースおよび外部プロセスに対する相互接続された依存関係など、Windows および Linux VM のパフォーマンスと正常性が分析されます。 このソリューションでは、オンプレミスまたは別のクラウド プロバイダーでホストされている VM について、パフォーマンスおよびアプリケーションの依存関係の監視もサポートされています。  これには、そのような詳細な分析情報を提供する次の 3 つの主要機能が含まれています。
 
@@ -57,4 +57,4 @@ VM 用 Azure Monitor の使用を開始するとすぐに、ご利用の VM に�
 ログのサイズは、カウンターの文字列の長さによって異なり、論理ディスクおよびネットワーク アダプターの数に応じて大きくなる可能性があります。  ワークスペースを既にお持ちで、これらのカウンターを収集している場合、重複する課金は適用されません。  Service Map を既に使用している場合、追加の接続データが Azure Monitor に送信されることが唯一の変更点となります。
 
 ## <a name="next-steps"></a>次の手順
-[VM 用 Azure Monitor の利用を開始](monitoring-vminsights-onboard.md)して、ご使用の Azure 仮想マシンの監視を開始します。
+仮想マシンの監視を有効にするための要件と方法を理解するため、「[Azure Monitor for VM の配布準備をする](monitoring-vminsights-onboard.md)」を確認します。

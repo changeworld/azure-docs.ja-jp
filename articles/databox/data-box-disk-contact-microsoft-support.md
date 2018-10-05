@@ -5,19 +5,19 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: article
-ms.date: 08/28/2018
+ms.date: 09/27/2018
 ms.author: alkohli;
 ms.component: ''
-ms.openlocfilehash: afb7de78a30367b0cc12e621019f1e8be975e63f
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 9bab8a55301a5eb40b38bec984205fff2a52559e
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191375"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422815"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Azure Data Box のサポート チケットを開く 
 
-Azure Data Box サービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
+この記事は、どちらも Azure Data Box サービスによって管理される Azure Data Box と Azure Data Box Disk に適用されます。 Azure Data Box サービスで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 この記事で説明する内容は次のとおりです。
 
 * サポート要求を作成する方法
 * ポータル内からサポート要求ライフ サイクルを管理する方法

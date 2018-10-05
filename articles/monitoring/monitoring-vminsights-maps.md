@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: magoedte
-ms.openlocfilehash: 30f9a874853f4cb492d7a562d0d2439b73cf62dc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e75409e791c00dc0a5bec591aecfbaa019df8f81
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989976"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225164"
 ---
 # <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>VM 用 Azure Monitor のマップを使用したアプリケーション コンポーネントの理解
-VM 用 Azure Monitor を使用して、Azure で実行されている Windows および Linux 仮想マシン上で検出されたアプリケーション コンポーネントを表示することで、環境を監視できます。仮想マシンから VM 用 Azure Monitor に直接アクセスする方法と、Azure Monitor から仮想マシンのグループ全体の情報を表示する方法があります。 
+Azure 環境で実行されている Windows および Linux 仮想マシン上の検出されたアプリケーション コンポーネントの表示は、VM 用 Azure Monitor を使用して仮想マシンから直接、または Azure Monitor から VM のグループを経由しての 2 の方法で観察できます。 
 
-この記事は、2 つの視点でのエクスペリエンスとマップ機能の使用方法を理解するうえで役立ちます。 VM 用 Azure Monitor の構成については、[VM 用 Azure Monitor の有効化](monitoring-vminsights-onboard.md)に関する記事をご覧ください。
+この記事は、2 つの視点でのエクスペリエンスとマップ機能の使用方法を理解するうえで役立ちます。 VM の Azure Monitor の構成については、[VM の Azure Monitor の有効化](monitoring-vminsights-onboard.md)に関する記事をご覧ください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
@@ -91,7 +91,7 @@ Azure アラートとアラート ルールの作成の詳細については、�
 仮想マシンから VM 用 Azure Monitor に直接アクセスするには、次の手順に従います。
 
 1. Azure Portal で、**[仮想マシン]** を選択します。 
-2. 一覧から VM を選択し、**[監視]** セクションの **[Insights (プレビュー)]** を選択します。  
+2. リストから VM を選択し、**[監視]** セクションの **[Insights (プレビュー)]** を選択します。  
 3. **[マップ]** タブを選択します。
 
 マップでは、指定した時間範囲での VM の依存関係 (アクティブなネットワーク接続で実行されているプロセス グループとプロセス) が視覚化されます。  既定では、マップには過去 30 分間の情報が表示されます。  左上隅にある**時間範囲**セレクターを使用して、過去の時間範囲 (最大 1 時間) でクエリを実行すると、過去 (インシデントの発生中や変更が行われる前など) の依存関係を表示できます。  

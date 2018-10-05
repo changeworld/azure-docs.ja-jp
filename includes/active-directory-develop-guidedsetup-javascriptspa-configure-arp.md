@@ -1,3 +1,27 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: navyasric
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: nacanuma
+ms.custom: include file
+ms.openlocfilehash: eead4c6a66a317c7404205415cbf04c442ffe8d1
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060824"
+---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>アプリへのアプリケーション登録情報の追加
 
 この手順では、アプリケーション登録情報のリダイレクト URL を構成してから、アプリケーション ID を JavaScript SPA アプリケーションに追加する必要があります。
@@ -7,26 +31,26 @@
 [`Redirect URL`] フィールドを Web サーバーに基づく index.html ページの URL に構成し、*[更新]* をクリックします。
 
 
-> #### <a name="visual-studio-instructions-for-obtaining-redirect-url"></a>Visual Studio で、リダイレクト URL を取得する手順
-> リダイレクト URL を取得するには:
-> 1.    *ソリューション エクスプローラー*で、プロジェクト選択して [`Properties`] ウィンドウを確認します ([プロパティ] ウィンドウが表示されない場合は `F4` を押します)
-> 2.    `URL` からクリップボードに値をコピーします<br/> ![プロジェクトのプロパティ](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
-> 3.    このページの上部にある `Redirect URL` に値を貼り付け、`Update` をクリックします
+> #### <a name="visual-studio-instructions-for-obtaining-the-redirect-url"></a>リダイレクト URL を取得するための Visual Studio での手順
+> リダイレクト URL を取得するには、次の手順に従います。
+> 1.    **ソリューション エクスプローラー**でプロジェクトを選択し、**[プロパティ]** ウィンドウを確認します。 **[プロパティ]** ウィンドウが表示されない場合は、**F4** キーを押します。
+> 2.    **URL** からクリップボードに値をコピーします。<br/> ![プロジェクトのプロパティ](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
+> 3.    このページの上部にある **[リダイレクト URL]** に値を貼り付けて、**[更新]** をクリックします
 
 <p/>
 
-> #### <a name="setting-redirect-url-for-python"></a>Python のリダイレクト URL の設定
-> Python の場合、コマンド ラインで Web サーバー ポートを設定できます。 このガイドの設定では、参照用にポート 8080 を使用しますが、他の利用可能なポートを自由にお使いいただけます。 いずれの場合も、下記の手順に従って、アプリケーションの登録情報にリダイレクト URL を設定します。<br/>
-> `http://localhost:8080/` を、このページ上部の `Redirect URL` に設定するか、カスタム TCP ポートを使用している場合 (*[ポート]* = カスタム TCP ポートの番号) は `http://localhost:[port]/` を使用して、[更新] をクリックします
+> #### <a name="setting-redirect-url-for-node"></a>Node のリダイレクト URL の設定
+> Node.js の場合は、Web サーバーのポートを *server.js* ファイルで設定できます。 このチュートリアルでは、参照用にポート 30662 を使用しますが、その他に使用可能なポートも使用できます。 下記の手順に従って、アプリケーションの登録情報内にリダイレクト URL を設定します。<br/>
+> `http://localhost:30662/` を、このページ上部の **[リダイレクト URL]** に設定するか、カスタム TCP ポートを使用している場合 (*[ポート]* はカスタム TCP ポートの番号) は `http://localhost:[port]/` を使用して、**[更新]** をクリックします
 
 ### <a name="configure-your-javascript-spa-application"></a>JavaScript SPA アプリケーションの構成
 
-1.  アプリケーション登録情報を含む `msalconfig.js` という名前のファイルを作成します。 Visual Studio を使用している場合は、プロジェクト (プロジェクト ルート フォルダー) を選択し、右クリックして `Add` > `New Item` > `JavaScript File` を選択します。 これに `msalconfig.js` という名前を付けます。
-2.  次のコードを `msalconfig.js` ファイルに追加します。
+1.  プロジェクトの設定中に作成された `index.html` ファイルで、アプリケーション登録情報を追加します。 `index.html` ファイルの本文の `<script></script>` タグ内で、先頭に次のコードを追加します。
 
 ```javascript
-var msalconfig = {
+var applicationConfig = {
     clientID: "[Enter the application Id here]",
-    redirectUri: location.origin
+    graphScopes: ["user.read"],
+    graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
-``` 
+```

@@ -17,12 +17,12 @@ ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: 4eeb716e4eeae8dc560f9588c6c3ce252daf741e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5ac69c53a6b6c1e4695b88e5806f8e883cd52c66
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309761"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432056"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Azure AD Connect を使用して AD FS と Azure AD の信頼を管理する
 
@@ -41,7 +41,7 @@ Azure AD Connect では、Azure AD 信頼に関連する設定**だけ**が管�
 | Setting | 説明 |
 | :--- | :--- |
 | トークン署名証明書 | Azure AD Connect では、Azure AD との信頼関係をリセットし、再作成することができます。 Azure AD Connect は、AD FS のトークン署名証明書に対する 1 回限りの即時ロールオーバーを実行し、Azure AD ドメインのフェデレーション設定を更新します。|
-| トークン署名アルゴリズム | トークン署名アルゴリズムには SHA-256 を使用することをお勧めします。 Azure AD Connect では、トークン署名アルゴリズムが SHA-256 よりも安全性の低い値に設定されている場合に、そのことを検出できます。 その場合、設定は次回の構成操作時に SHA-256 に更新されます。 |
+| トークン署名アルゴリズム | トークン署名アルゴリズムには SHA-256 を使用することをお勧めします。 Azure AD Connect では、トークン署名アルゴリズムが SHA-256 よりも安全性の低い値に設定されている場合に、そのことを検出できます。 その場合、設定は次回の構成操作時に SHA-256 に更新されます。 新しいトークン署名証明書を使用するには、他の証明書利用者信頼を更新する必要があります。 |
 | Azure AD 信頼識別子 | Azure AD Connect は、Azure AD 信頼の正しい識別子の値を設定します。 AD FS は、その識別子の値を使用して Azure AD 信頼を一意に識別します。 |
 | Azure AD エンドポイント | Azure AD Connect は、Azure AD 信頼に対して構成されたエンドポイントが、回復性とパフォーマンスを考慮した最新の推奨値に常に従っているかどうかを確認します。 |
 | 発行変換規則 | フェデレーション設定での Azure AD の機能を最適なパフォーマンスに維持するには、多数の要求規則が必要になります。 Azure AD Connect は、Azure AD 信頼が常に推奨の要求規則セットで構成されているかどうかを確認します。 |

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 39ec7c979294860967deb3307f5d87112b762257
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b019523227bcd45e502ec84055cfb09025918331
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142885"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406126"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してアカウント資格情報をバックアップおよび復旧する
 
@@ -78,12 +78,12 @@ Microsoft Authenticator アプリは、アカウント資格情報と、アカ�
 
     ![使用可能なアカウントとそれに関連付けられたドロップダウン矢印を表示している Microsoft Authenticator アプリ](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
 
-2.  **[Scan QR code to recover]\(QR コードをスキャンして復旧\)** を選択し、管理者によって提供される QR コードをスキャンします。
+2.  **[Scan QR code to recover] (QR コードをスキャンして復旧)** を選択してから、QR コードをスキャンします。
 
     ![QR コードをスキャンできる Microsoft Authenticator アプリ](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >QR コードを取得する方法の詳細については、「[Microsoft Authenticator アプリの概要](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app)」を参照してください。
+    >QR コードを取得する方法の詳細については、管理者がセキュリティ情報を有効にしたかどうかに基づいて、「[Microsoft Authenticator アプリの概要](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app)」または「[Authenticator アプリを使用するようにセキュリティ情報を設定する](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app#to-use-the-microsoft-authenticator-app)」を参照してください。
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>バックアップと復旧に関する問題のトラブルシューティング
 バックアップを使用できない理由はいくつかあります。

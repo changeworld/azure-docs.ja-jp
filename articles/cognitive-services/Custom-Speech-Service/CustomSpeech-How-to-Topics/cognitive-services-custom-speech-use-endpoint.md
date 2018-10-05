@@ -1,26 +1,27 @@
 ---
-title: Azure 上で Custom Speech Service でカスタム音声エンドポイントを使用する | Microsoft Docs
-description: Cognitive Services の Custom Speech Service でカスタム Speech-to-Text エンドポイントを使用する方法を説明します。
+title: カスタム音声エンドポイントを使用する - Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Custom Speech Service を使用してカスタム Speech-to-Text エンドポイントを使用する方法を説明します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: 55583952df3b83331f1f622a4fce269713ecf2a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 98c1b58e58490199b0258dfcc8df183c3fe9a8bd
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966522"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223374"
 ---
 # <a name="use-a-custom-speech-to-text-endpoint"></a>カスタム Speech-to-Text エンドポイントの使用
 既定の Cognitive Services 音声エンドポイントと同様の方法で、Azure Custom Speech Service の Speech-to-Text エンドポイントに要求を送信できます。 これらのエンドポイントは、Speech API の既定のエンドポイントと機能的には同じです。 そのため、Speech API のクライアント ライブラリまたは REST API を介して使用できる同じ機能を、カスタム エンドポイントでも使用できます。
 
-このサービスを使用して作成するエンドポイントは、さまざまな数の同時要求を処理できます。 ボリュームは、サブスクリプションに関連付けられている価格レベルによって変わります。 受信する要求が多すぎると、エラーが発生します。 Free レベルには要求数の毎月の上限があります。
+このサービスを使用して作成するエンドポイントは、さまざまな数の同時要求を処理できます。 ボリュームは、サブスクリプションに関連付けられている価格レベルによって変わります。 受信する要求が多すぎると、エラーが発生します。 無料レベルには要求数の毎月の上限があります。
 
 このサービスは、データがリアルタイムで送信されることを前提としています。 より速く送信された場合、リアルタイムの音声の時間が経過するまで、要求は実行中と見なされます。
 

@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: ''
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: d0da9107fe1dd34481ca0bf1aa9a0b260bb10951
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e47ffbe15291275a7104d5e201a597d084cdbdd9
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946631"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422866"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -117,7 +117,7 @@ A.
 A.-->
 
 ### <a name="q-the-system-fault-indicator-led-on-the-front-operating-panel-is-on-what-should-i-do"></a>Q. 前面操作パネルで、システム障害インジケーター LED が点灯しています。 どうすればよいですか。
-A. システム障害インジケーター LED が点灯している場合、システムは正常でないことを示しています。 Microsoft サポートに手順をお問い合わせください。
+A. システム障害インジケーター LED が点灯している場合、システムは正常でないことを示しています。 [Microsoft サポート](data-box-disk-contact-microsoft-support.md) に対処法をお問い合わせください。
 
 ### <a name="q-i-cant-access-the-data-box-unlock-password-in-the-azure-portal-why-would-this-be"></a>Q. Azure portal で、Data Box のロック解除パスワードが入手できません。 なぜこうなるのでしょうか?
 A. Azure portal でロック解除パスワードが入手できない場合は、サブスクリプションとストレージ アカウントでアクセス許可を確認してください。 リソース グループ レベルで、共同作成者または所有者の権限を所有していることを確認してください。 権限がない場合は、アクセス資格情報を表示するために、少なくとも 1 つの Data Box Operator の役割権限を所有している必要があります。
@@ -127,8 +127,8 @@ A. Azure portal でロック解除パスワードが入手できない場合は�
 ### <a name="q-how-do-i-track-the-data-box-from-when-i-placed-the-order-to-shipping-the-device-back"></a>Q. 注文してからデバイスを返送するまで、Data Box を追跡する方法を教えてください。 
 A.  Data Box の注文状況は Azure portal で追跡できます。 注文を作成する際に、通知メールを指定するように求められます。 指定した場合は、注文の状態が変化するたびにメールで通知されます。 [通知メールの構成](data-box-portal-ui-admin.md#edit-notification-details)方法に関するページを参照してください。
 
-### <a name="q-how-do-i-return-the-disks"></a>Q. ディスクの返送方法を教えてください。 
-A.  Microsoft では、E インク表示に配送先住所ラベルを表示します。 このラベルを梱包箱に貼り付けて、封をしたパッケージを集荷場所に持ち込んでください。 ラベルを破損または紛失した場合は、**[概要] > [出荷ラベルをダウンロード]** に移動して、新しい返送ラベルをダウンロードしてください。
+### <a name="q-how-do-i-return-the-device"></a>Q. デバイスの返送方法を教えてください。 
+A.  Microsoft では、E インク表示に配送先住所ラベルを表示します。 配送先住所ラベルが E インク表示に表示されない場合は、**[概要] > [配送先住所ラベルのダウンロード]** に移動します。 ラベルをダウンロードして印刷し、デバイスの透明なプラスチック タグに挿入して、そのデバイスを集荷場所に持ち込みます。 
 
 ### <a name="q-i-received-an-email-notification-that-my-device-has-reached-the-azure-datacenter-how-do-i-find-out-if-the-data-upload-is-in-progress"></a>Q. デバイスが Azure データセンターに到着したという電子メール通知を受け取りました。 データのアップロードが進行中であるかどうかを確認する方法を教えてください。
 A. Azure portal では、Data Box の注文に移動し、**概要**に移動できます。 Azure へのデータ アップロードが開始されている場合は、右側のペインでコピーの進行状況が表示されます。 
@@ -184,8 +184,8 @@ A. Data Box サービスでは、Microsoft が Azure データセンターとの
 ### <a name="q-e-ink-display-is-not-showing-the-return-shipment-label-what-should-i-do"></a>Q. E インク表示が返品ラベルを示していません。 どうすればよいですか。
 A. E インク表示が返品ラベルを示していない場合は、次の手順を実行します。
 - 以前の配送から古い配送先住所ラベルとステッカーを取り外します。
-- Azure portal で注文に移動します。 [概要] に移動し、配送先住所ラベルをダウンロードします。 詳細については、「[配送先住所ラベルのダウンロード](data-box-portal-admin.md#download-shipping-label)」を参照してください。
-- 配送先住所ラベルを印刷し、デバイスに添付されている透明なスリーブに挿入します。 
+- Azure portal で注文に移動します。 **[概要]** および **[配送先住所ラベルのダウンロード]** に移動します。 詳細については、「[配送先住所ラベルのダウンロード](data-box-portal-admin.md#download-shipping-label)」を参照してください。
+- 配送先住所ラベルを印刷し、デバイスに添付されている透明なプラスチック スリーブに挿入します。 
 - 配送先住所ラベルがはっきりと見えることを確認してください。 
 
 ### <a name="q-how-is-my-data-protected-during-transit"></a>Q. 移動中のデータは、どのようにして保護されるのですか? 
@@ -204,12 +204,11 @@ A. はい。 デバイスを起動して、データをさらに追加できま�
 A.  **データのコピー**の注文状況が**完了**として表示されたら、データにはすぐにアクセスできるはずです。
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>Q. アップロード後、私のデータは Azure 内のどこに置かれるのですか?
-A.  データを Data Box にコピーする場合、データがブロック BLOB、ページ BLOB、または Azure ファイルであるかに応じて、データは次のいずれかのパスに、Azure Storage アカウントでアップロードされます。
- - `<You_storage_account_name_BlockBlob>/<my_container>/Blob` 
- - `<Your_storage_account_name_PageBlob>/<my_container>/Blob`
- - `<Your_storage_account_name_AzFile>/` 
-
-ブロック BLOB とページ BLOB の共有では、第 1 レベルのエンティティはコンテナーであり、第 2 レベルのエンティティは BLOB です。 Azure ファイルの共有では、第 1 レベルのエンティティは共有であり、第 2 レベルのエンティティはファイルです。
+A.  データを Data Box にコピーする場合は、そのデータがブロック BLOB、ページ BLOB、または Azure ファイルのいずれであるかに応じて、データは Azure Storage アカウントの次のいずれかのパスにアップロードされます。
+ - `https://<storage_account_name>.blob.core.windows.net/<containername>` 
+ -  `https://<storage_account_name>.file.core.windows.net/<sharename>`
+ 
+ あるいは、Azure Portal で Azure ストレージ アカウントにアクセスし、そこから移動することもできます。
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>Q. コンテナーに付けた名前が Azure の要件に従っていないことに気付きました。 Azure へのデータのアップロードは失敗しますか?
 A.  コンテナー名に大文字が使われている場合、それらは自動的に小文字へと変換されます。 名前が他の方式に準拠していない場合 (特殊文字やその他の言語など)、アップロードは失敗します。 共有、コンテナー、ファイルの名前付けに関するベスト プラクティスの詳細については、次を参照してください。 

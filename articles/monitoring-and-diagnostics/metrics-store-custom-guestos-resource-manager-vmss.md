@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: d896cb01c7dc2cd4ed028db418f838809c7ce25c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b9808233e08e545c31e171afe104173dccc6abed
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987001"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434927"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Windows 仮想マシン スケール セットについて Resource Manager テンプレートを使用してゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -83,7 +83,7 @@ resources セクションで仮想マシン スケール セットの定義を�
 
 **extensionProfile** で、**VMSS-WAD-extension セクション**によって示されているように、新しい拡張機能をテンプレートに追加します。  このセクションは、出力されたメトリックが Azure Monitor で確実に受け入れられるようにするマネージド サービス ID (MSI) 拡張機能です。 **name** フィールドには任意の名前を含めることができます。 
 
-以下のコードでは、MSI 拡張機能によって、診断拡張機能と構成が、拡張機能リソースとして仮想マシン スケール セット リソースに追加されます。 必要に応じて、パフォーマンス カウンターを自由に追加/削除できます。 
+MSI 拡張機能の次のコードはまた、診断拡張機能および構成を拡張機能リソースとして仮想マシン スケール セット リソースに追加します。 必要に応じて、パフォーマンス カウンターを自由に追加/削除できます。 
 
 ```json
           "extensionProfile": { 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6e449c1216fabf64da2b2abb59a7066fa30e332d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: b577f697f4467656166b83ea78efdfe6d742941f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982982"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032531"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
@@ -145,7 +145,8 @@ Get-AzureRmLog -ResourceId $JobResourceID -MaxRecord 1 | Select Caller
 
 Runbook がチェックポイントを持っていないか、またはアンロードされる前にジョブがまだ最初のチェックポイントに達していない場合、ジョブは最初から再開されます。
 
-実行時間が長いタスクの場合は、[Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) を使うことをお勧めします。 Hybrid Runbook Worker はフェア シェアによって制限されず、Runbook が実行できる時間に制限はありません。
+実行時間が長いタスクの場合は、[Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) を使うことをお勧めします。 Hybrid Runbook Worker はフェア シェアによって制限されず、Runbook が実行できる時間に制限はありません。 その他のジョブの[制限](../azure-subscription-service-limits.md#automation-limits)は、Azure サンドボックスと Hybrid Runbook Worker の両方に適用されます。
+
 
 PowerShell Workflow Runbook を Azure で使っている場合は、Runbook を作成するときに、2 つのチェックポイント間で任意のアクティビティを実行するのにかかる時間が 3 時間を超えないことを確認してください。 この 3 時間の制限に達したり、実行に時間のかかる操作を分割したりしないように、Runbook にチェックポイントを追加することが必要な場合があります。 たとえば、Runbook が大規模な SQL データベースで再インデックス化を実行する可能性があります。 この単一処理がフェア シェア制限内で完了しない場合、ジョブはアンロードされ、先頭から再開されます。 この場合は再インデックス化処理を複数のステップに分割します。たとえば、一度に 1 つのテーブルを再インデックス化し、各処理の後にチェックポイントを挿入します。こうすれば、最後の処理が完了した後、ジョブは再開することが可能です。
 

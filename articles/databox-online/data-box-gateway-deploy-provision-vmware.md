@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: d0c6f8723909b71501894c9363932c752c1e130c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5a173340be424c74c76da659816b1b95b74c465f
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989857"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419544"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>チュートリアル: VMware で Azure Data Box Gateway をプロビジョニングする (プレビュー)
 
@@ -34,7 +34,7 @@ ms.locfileid: "46989857"
 
 > [!div class="checklist"]
 > * ホストがデバイスの最小要件を満たしていることを確認する
-> * ハイパーバイザーで仮想デバイスをプロビジョニングする
+> * VMware で仮想デバイスをプロビジョニングする
 > * 仮想デバイスを起動し、IP アドレスを取得する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -46,7 +46,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮想デバイスをプロビジョニングするための前提条件は次のとおりです。
 
-### <a name="for-the-data-box-gateway-resource"></a>Data Box Gateway リソースに対して
+### <a name="for-the-data-box-gateway-resource"></a>Data Box Gateway リソースの場合
 
 開始する前に次の点を確認します。
 
@@ -56,7 +56,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
   > [!IMPORTANT]
   > Data Box Gateway 上で実行されるソフトウェアは、Data Box Gateway リソースに対してのみ使用できます。
 
-### <a name="for-the-data-box-gateway-virtual-device"></a>Data Box Gateway 仮想デバイスに対して
+### <a name="for-the-data-box-gateway-virtual-device"></a>Data Box Gateway 仮想デバイスの場合
 
 仮想デバイスをデプロイする前に次の点を確認します。
 
@@ -69,7 +69,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
   * 250 GB の OS ディスク。
   * システム データ用の 2 TB の仮想ディスク。
 
-### <a name="for-the-network-in-datacenter"></a>データセンターのネットワークに対して
+### <a name="for-the-network-in-datacenter"></a>データセンターのネットワークの場合
 
 作業を開始する前に、次のことを行います。
 
@@ -198,7 +198,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 6. 手順 5 ～ 7 は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、これらの手順をスキップして手順 8 に進みます。 非 DHCP 環境でデバイスを起動した場合は、**Set-hcsipaddress コマンドレットを使用してネットワークを構成してください**という趣旨のメッセージが表示されます。 
    
-7. ネットワークを構成するには、コマンド プロンプトで `Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効なネットワーク インターフェイスの一覧を表示します。 デバイスで単一のネットワーク インターフェイスが有効になっている場合、このインターフェイスに割り当てられる既定の名前は `DATA1`です。
+7. ネットワークを構成するには、コマンド プロンプトで `Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効なネットワーク インターフェイスの一覧を表示します。 デバイスで単一のネットワーク インターフェイスが有効になっている場合、このインターフェイスに割り当てられる既定の名前は `Ethernet`です。
 
 8. `Set-HcsIpAddress` コマンドレットを使用してネットワークを構成します。 例を次に示します。
 
@@ -208,7 +208,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image24.png)
 
-デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます (下記参照)。 最小要件を満たすための十分なリソースを確保するようにデバイスの構成を変更する必要があります。 その後、再起動し、デバイスに接続します。 「 [手順 1: ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)」にある最小構成要件を参照してください。
+デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます (下記参照)。 最小要件を満たすための十分なリソースを確保するようにデバイスの構成を変更する必要があります。 その後、再起動し、デバイスに接続します。 「[ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#check-the-host-system)」にある最小構成要件を参照してください。
 
 <!---If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
 
@@ -221,7 +221,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 > [!div class="checklist"]
 > * ホストがデバイスの最小要件を満たしていることを確認する
-> * ハイパーバイザーで仮想デバイスをプロビジョニングする
+> * VMware で仮想デバイスをプロビジョニングする
 > * 仮想デバイスを起動し、IP アドレスを取得する
 
 次のチュートリアルに進み、仮想ネットワークの接続、設定、および仮想化を行う方法を学習してください。

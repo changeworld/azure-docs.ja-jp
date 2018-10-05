@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: f4659d2dc8dfd52ae6f7ec19dc29ec31c9b3ca6b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: bc2b391457d7652b62558c9a752376b07b50a8c1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047344"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391810"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル: フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -122,7 +122,7 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
     a. フォレストを選択します。
 
-    b. 認証サービスを選択します。
+    b. 認証サービスを選択します。 組織で Windows 10 クライアントのみを使用している場合を除き、AD FS サーバーを選択する必要があります。
 
     c. **[追加]** をクリックして、エンタープライズ管理者の資格情報を入力します。
 

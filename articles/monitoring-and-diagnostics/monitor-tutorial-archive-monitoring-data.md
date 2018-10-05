@@ -9,16 +9,22 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: f6b7b9fe73f5e815e08bbf4f6493ee181a0c692b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: be6f3efd74d013e9ddb02c44031dd6a402f00871
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918273"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409492"
 ---
-# <a name="archive-azure-monitoring-data"></a>Azure 監視データをアーカイブする
+# <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure Storage を使用して Azure のメトリック データとログ データをアーカイブする
 
-Azure 環境内の複数のレイヤーで生成されるログ データとメトリック データを、Azure ストレージ アカウントにアーカイブすることができます。 このようにすると、Log Analytics または Azure Monitor でのこれらのデータのリテンション期間が過ぎた後も、低コストで検索対象外のストアに過去の監視データの履歴を保持できます。 このチュートリアルでは、データをストレージ アカウントにアーカイブするように Azure 環境を構成する手順について説明します。
+Azure 環境内の複数のレイヤーで生成されるログ データとメトリック データを、Azure Storage アカウントにアーカイブすることができます。 このようにすると、これらのデータのリテンション期間が過ぎた後も、低コストで検索対象外のストアに過去の監視データの履歴を保持できます。 
+
+- Azure Monitor プラットフォームのメトリックは 93 日間保持されます。 
+- リソース診断ログは、Log Analytics にルーティングされる場合にのみ表示されます。Log Analytics では、構成できるリテンション期間は最小で 30 日間です。 
+- アクティビティ ログのエントリは 90 日間保持されます。  
+
+このチュートリアルでは、データをストレージ アカウントにアーカイブするように Azure 環境を構成する手順について説明します。
 
 > [!div class="checklist"]
 > * 監視データを保持するストレージ アカウントを作成する

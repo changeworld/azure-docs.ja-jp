@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 09/20/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2c2dd2208cf910456fa8f94ca739b7ef8875d475
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: df32ed7a6d3bc0c9e349f576f5f48832bf9906dd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355808"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041924"
 ---
 # <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションへプロビジョニングされた間違ったユーザー グループ
 
@@ -109,7 +109,7 @@ ms.locfileid: "44355808"
 >
 >
 
-グループのプロビジョニングが有効になっている場合は、適切なフィールドが "一致する ID" に使用されていることを確認する属性マッピングを必ず確認してください。 これは、表示名か電子メール エイリアスで、一致するプロパティが空か、Azure AD のグループに入力されていない場合はグループとそのメンバーがプロビジョニングされません。
+グループのプロビジョニングが有効になっている場合は、適切なフィールドが "照合 ID" に使用されていることを確かめるために、属性マッピングを必ず確認してください。 この照合 ID は、表示名または電子メール エイリアスである場合があります。 照合プロパティが空か、または Azure AD のグループ用に設定されていない場合、グループとそのメンバーはプロビジョニングされません。
 
 ## <a name="next-steps"></a>次の手順
 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](user-provisioning.md)

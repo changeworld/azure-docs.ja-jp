@@ -145,7 +145,7 @@ items:
       href: how-to-connect-fed-single-adfs-multitenant-federation.md
     - name: O365 および Azure AD 用のフェデレーション証明書の更新
       href: how-to-connect-fed-o365-certs.md
-    - name: AD FS 用の SSL 証明書の更新
+    - name: AD FS の SSL 証明書を更新する
       href: how-to-connect-fed-ssl-update.md
     - name: Azure AD との AD FS の信頼を管理する
       href: how-to-connect-azure-ad-trust.md
@@ -283,9 +283,9 @@ items:
     href: reference-connect-sync-functions-reference.md
   - name: Azure AD のフェデレーション互換性リスト
     href: how-to-connect-fed-compatibility.md
-ms.openlocfilehash: e0485c86f365c93362fed792a41ec835680a1ee7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ae07126e564e90e3f37a64159783c65dde963229
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46300478"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452594"

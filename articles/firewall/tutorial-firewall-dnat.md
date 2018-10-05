@@ -5,26 +5,22 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 9/27/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 766ad04251fbe404d43734115e41e23ae0a4be28
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 894389ec07fb8e371a269f895473fe82985de7c3
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982051"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405973"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>チュートリアル: Azure portal で Azure Firewall DNAT を使用して受信トラフィックをフィルター処理する
 
-受信トラフィックの変換とサブネットに対するフィルター処理を行うように Azure Firewall 宛先ネットワーク アドレス変換 (DNAT) を構成できます。 Azure Firewall には、受信規則と送信規則という概念はありません。 あるのはアプリケーション ルールとネットワーク ルールであり、それらがファイアウォールに入ってくるすべてのトラフィックに適用されます。 ネットワーク ルールが先に適用され、次にアプリケーション ルールが適用された後、これらのルールが終了します。
+受信トラフィックの変換とサブネットに対するフィルター処理を行うように Azure Firewall 宛先ネットワーク アドレス変換 (DNAT) を構成できます。 DNAT を構成すると、NAT ルール コレクションの動作は、**宛先ネットワーク アドレス変換 (DNAT)** に設定されます。 その後、NAT ルール コレクション内の各ルールを使用して、ファイアウォールのパブリック IP およびポートをプライベート IP およびポートに変換できます。 DNAT ルールは、変換されたトラフィックを許可するための対応するネットワーク ルールを暗黙的に追加します。 この動作は、変換されたトラフィックに一致する拒否ルールを使用してネットワーク ルール コレクションを明示的に追加することで、オーバーライドすることができます。 Azure Firewall ルール処理ロジックの詳細については、「[Azure Firewall ルール処理ロジック](rule-processing.md)」を参照してください。
 
->[!NOTE]
->Firewall DNAT 機能は、現在 Azure PowerShell と REST のみで利用できます。
-
-たとえば、ネットワーク ルールが一致した場合、アプリケーション ルールによるパケットの評価は行われません。 一致するネットワーク ルールが存在せず、パケットのプロトコルが HTTP/HTTPS の場合、パケットはアプリケーション ルールによって評価されます。 一致が見つからない場合、パケットは[インフラストラクチャ ルール コレクション](infrastructure-fqdns.md)に対して評価されます。 それでも一致するものがない場合、パケットは既定では拒否されます。
-
-DNAT を構成すると、NAT ルール コレクションの動作は、**宛先ネットワーク アドレス変換 (DNAT)** に設定されます。 ファイアウォールのパブリック IP とポートは、プライベート IP アドレスとポートに変換されます。 その後、ルールが通常どおりに適用されます (ネットワーク ルールが先、その後にアプリケーション ルール)。 たとえば、TCP ポート 3389 でリモート デスクトップ トラフィックを許可するネットワーク ルールを構成するとします。 まずアドレス変換が発生し、その後、変換後のアドレスを使用してネットワーク ルールとアプリケーション ルールが適用されます。
+> [!NOTE]
+> DNAT は、ポート 80 および 22 では機能しません。 これは近い将来に解決できるよう取り組んでいます。 それまでの間は、NAT 規則の宛先ポートとして他の任意のポートを使用します。 ポート 80 または 22 は引き続き、変換されたポートとして使用できます。 たとえば、パブリック IP 81 をプライベート IP 80 にマッピングできます。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -33,7 +29,6 @@ DNAT を構成すると、NAT ルール コレクションの動作は、**宛�
 > * ファイアウォールをデプロイする
 > * 既定のルートを作成する
 > * DNAT ルールを構成する
-> * ネットワーク ルールを構成する
 > * ファイアウォールをテストする
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -97,7 +92,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[追加]** をクリックします。
 4. 名前として「**Peer-HubSpoke**」と入力します。
 5. 仮想ネットワークとして **[VN-Spoke]** を選択します。
-7. **[OK]** をクリックします。
+7. Click **OK**.
 
 #### <a name="spoke-to-hub"></a>スポークからハブへ
 
@@ -107,9 +102,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 4. 名前として「**Peer-SpokeHub**」と入力します。
 5. 仮想ネットワークとして **[VN-Hub]** を選択します。
 6. **[転送されたトラフィックを許可する]** をクリックします。
-7. **[OK]** をクリックします。
+7. Click **OK**.
 
-## <a name="create-a-virtual-machine"></a>仮想マシンを作成する
+## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
 ワークロード仮想マシンを作成して、**SN-Workload** サブネットに配置します。
 
@@ -153,12 +148,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[ファイアウォール]** をクリックし、**[作成]** をクリックします。 
 4. **[ファイアウォールの作成]** ページで、次の表を使用してファイアウォールを構成します。
    
-   |設定  |値  |
+   |Setting  |値  |
    |---------|---------|
-   |名前     |FW-DNAT-test|
+   |Name     |FW-DNAT-test|
    |サブスクリプション     |\<該当するサブスクリプション\>|
    |リソース グループ     |**既存のものを使用**: RG-DNAT-Test |
-   |場所     |以前使用したのと同じ場所を選択します|
+   |Location     |以前使用したのと同じ場所を選択します|
    |仮想ネットワークの選択     |**既存のものを使用**: VN-Hub|
    |パブリック IP アドレス     |**新規作成**。 パブリック IP アドレスは、Standard SKU タイプであることが必要です。|
 
@@ -199,48 +194,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="configure-a-dnat-rule"></a>DNAT ルールを構成する
 
-```azurepowershell-interactive
- $rgName  = "RG-DNAT-Test"
- $firewallName = "FW-DNAT-test"
- $publicip = type the Firewall public ip
- $newAddress = type the private IP address for the Srv-Workload virtual machine 
- 
-# Get Firewall
-    $firewall = Get-AzureRmFirewall -ResourceGroupName $rgName -Name $firewallName
-  # Create NAT rule
-    $natRule = New-AzureRmFirewallNatRule -Name RL-01 -SourceAddress * -DestinationAddress $publicip -DestinationPort 3389 -Protocol TCP -TranslatedAddress $newAddress -TranslatedPort 3389
-  # Create NAT rule collection
-    $natRuleCollection = New-AzureRmFirewallNatRuleCollection -Name RC-DNAT-01 -Priority 200 -Rule $natRule
-  # Add NAT Rule collection to firewall:
-    $firewall.AddNatRuleCollection($natRuleCollection)
-  # Save:
-    $firewall | Set-AzureRmFirewall
-```
-## <a name="configure-a-network-rule"></a>ネットワーク ルールを構成する
-
-1. **RG-DNAT-Test** を開き、**FW-DNAT-test** ファイアウォールをクリックします。
-1. **FW-DNAT-test** ページの **[設定]** で、**[ルール]** をクリックします。
-2. **[ネットワーク ルール コレクションの追加]** をクリックします。
-
-次の表を使用するルールを構成し、**[追加]** をクリックします。
-
-
-|パラメーター  |値  |
-|---------|---------|
-|名前     |**RC-Net-01**|
-|優先順位     |**200**|
-|動作     |**許可**|
-
-**ルール**:
-
-|パラメーター  |設定  |
-|---------|---------|
-|名前     |**RL-RDP**|
-|プロトコル     |**TCP**|
-|ソース アドレス     |*|
-|宛先アドレス     |**Srv-Workload** のプライベート IP アドレス|
-|ターゲット ポート|**3389**|
-
+1. **RG-DNAT-Test** を開き、**FW-DNAT-test** ファイアウォールをクリックします。 
+1. **FW-DNAT-test** ページの **[設定]** で、**[ルール]** をクリックします。 
+2. **[Add DNAT rule collection] (DNAT ルール コレクションの追加)** をクリックします。 
+3. **[名前]** に「**RC-DNAT-01**」と入力します。 
+1. **[優先度]** に「**200**」と入力します。 
+6. **[ルール]** の **[名前]** に「**RL-01**」と入力します。 
+7. **[ソース アドレス]** に「*」と入力します。 
+8. **[宛先アドレス]** に、ファイアウォールのパブリック IP アドレスを入力します。 
+9. **[宛先ポート]** に「**3389**」と入力します。 
+10. **[Translated Address] (変換されたアドレス)** に、Srv-Workload 仮想マシンのプライベート IP アドレスを入力します。 
+11. **[Translated port] (変換されたポート)** に「**3389**」と入力します。 
+12. **[追加]** をクリックします。 
 
 ## <a name="test-the-firewall"></a>ファイアウォールをテストする
 
@@ -255,14 +220,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * テスト ネットワーク環境を設定する
 > * ファイアウォールをデプロイする
 > * 既定のルートを作成する
 > * DNAT ルールを構成する
-> * ネットワーク ルールを構成する
 > * ファイアウォールをテストする
 
 次に、Azure Firewall のログを監視することができます。

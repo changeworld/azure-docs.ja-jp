@@ -1,22 +1,24 @@
 ---
-title: "Azure Application Insights の使用の影響 | Microsoft Docs"
-description: "さまざまなプロパティがアプリの各部のコンバージョン率に潜在的に及ぼす影響について分析します。"
+title: Azure Application Insights の使用の影響 | Microsoft Docs
+description: さまざまなプロパティがアプリの各部のコンバージョン率に潜在的に及ぼす影響について分析します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/25/2018
-ms.author: mbullwin ; daviste
-ms.openlocfilehash: d76db02647ce878343f60fc84cf063c5b7833438
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.reviewer: daviste
+ms.author: mbullwin
+ms.openlocfilehash: 9188776fdd213f01523069b08bd898f48bee57a4
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091483"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights による影響分析
 
@@ -66,7 +68,7 @@ ms.lasthandoff: 02/09/2018
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>影響ツールによってこれらのコンバージョン率が計算される方法
 
-影響ツールの内部では、[ピアソン相関係数] (https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)が使用されます。 結果は -1 と 1 の間で計算されます。ここでは、-1 がゼロ相関を表し、1 が正相関を表します。
+内部的には、影響ツールは [ピアソン相関関係の係数] に依存しています (https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)。 結果は -1 と 1 の間で計算されます。ここでは、-1 がゼロ相関を表し、1 が正相関を表します。
 
 影響分析のしくみを単純に分解すると、次のようになります。
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/1/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f272ac7ee6432b43d0c9a72daf620a46e52366f8
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 2f990f22d762c5f95d3274b740caf30691ded90e
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399051"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409846"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure Automation でのピーク時間外 VM 起動/停止ソリューション
 
@@ -31,6 +31,9 @@ Start/Stop VMs during off-hours ソリューションでは、ユーザー定義
 - このソリューションは任意のリージョンの VM を管理しますが、Azure Automation アカウントと同じサブスクリプションでのみ使用できます。
 - このソリューションは、Azure および AzureGov から、Log Analytics ワークスペース、Azure Automation アカウント、および Alerts をサポートする任意のリージョン対して利用できます。 現在、AzureGov リージョンは電子メール機能をサポートしていません。
 
+> [!NOTE]
+> クラシック VM 用のソリューションを使用している場合、すべての VM はクラウド サービスごとに順番に処理されます。 異なるクラウド サービスにわたる並列ジョブの処理は、引き続きサポートされます。
+
 ## <a name="prerequisites"></a>前提条件
 
 このソリューションの Runbook は、[Azure 実行アカウント](automation-create-runas-account.md)で動作します。 認証方法としては、実行アカウントの使用をお勧めします。有効期限が切れたり頻繁に変わったりするパスワードではなく、証明書を使った認証が使用されるためです。
@@ -45,28 +48,28 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
 
    > [!NOTE]
    > Azure portal のどこからでも、**[リソースの作成]** をクリックして作成できます。 [Marketplace] ページで、「**Start**」、「**Start/Stop**」などのキーワードを入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 または、ソリューションのフルネームから 1 つ以上のキーワードを入力し、Enter キーを押すこともできます。 検索結果から **Start/Stop VMs during off-hours** を選択します。
-1. 選択したソリューションの **[Start/Stop VMs during off-hours]** ページで概要を確認し、**[作成]** をクリックします。
+2. 選択したソリューションの **[Start/Stop VMs during off-hours]** ページで概要を確認し、**[作成]** をクリックします。
 
    ![Azure ポータル](media/automation-solution-vm-management/azure-portal-01.png)
 
-1. **[ソリューションの追加]** ページが表示されます。 Automation サブスクリプションにインポートする前に、ソリューションの設定を行うよう求められます。
+3. **[ソリューションの追加]** ページが表示されます。 Automation サブスクリプションにインポートする前に、ソリューションの設定を行うよう求められます。
 
    ![VM 管理の [ソリューションの追加] ページ](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-1. **[ソリューションの追加]** ページで、**[ワークスペース]** を選択します。 Automation アカウントと同じ Azure サブスクリプションに関連付けられている Log Analytics ワークスペースを選択します。 ワークスペースがない場合は、**[新しいワークスペースの作成]** を選択します。 **[OMS ワークスペース]** ページで、次の手順を実行します。
-   - 新しい **OMS ワークスペース**の名前を指定します。
+4. **[ソリューションの追加]** ページで、**[ワークスペース]** を選択します。 Automation アカウントと同じ Azure サブスクリプションに関連付けられている Log Analytics ワークスペースを選択します。 ワークスペースがない場合は、**[新しいワークスペースの作成]** を選択します。 **[Log Analytics ワークスペース]** ページで、次の手順を実行します。
+   - 新しい **Log Analytics ワークスペース**の名前を指定します。
    - 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
    - **[リソース グループ]** では、新しいリソース グループを作成するか、既存のリソース グループを選択できます。
    - **[場所]** を選択します。 現在使用できる場所は、**オーストラリア南東部**、**カナダ中部**、**インド中部**、**米国東部**、**東日本**、**東南アジア**、**英国南部**、および**西ヨーロッパ**のみです。
    - **[価格レベル]** を選択します。 **[GB ごと (スタンドアロン)]** オプションを選択します。 Log Analytics は[価格](https://azure.microsoft.com/pricing/details/log-analytics/)を更新し、GB ごとのレベルが唯一のオプションとなっています。
 
-1. **[OMS ワークスペース]** ページに必要な情報を入力したら、**[作成]** をクリックします。 進行状況はメニューの **[通知]** で追跡できます。完了したら、**[ソリューションの追加]** ページに戻ります。
-1. **[ソリューションの追加]** ページで、**[Automation アカウント]** を選択します。 新しい Log Analytics ワークスペースを作成する場合は、関連付ける新しい Automation アカウントを作成するか、Log Analystics ワークスペースにまだリンクされていない既存の Automation アカウントを選択することができます。 既存の Automation アカウントを選択するか、**[Automation アカウントの作成]** をクリックし、**[Automation アカウントの追加]** ページで、次の情報を入力します。
+5. **[Log Analytics ワークスペース]** ページで必要な情報を入力したら、**[作成]** をクリックします。 進行状況はメニューの **[通知]** で追跡できます。完了したら、**[ソリューションの追加]** ページに戻ります。
+6. **[ソリューションの追加]** ページで、**[Automation アカウント]** を選択します。 新しい Log Analytics ワークスペースを作成する場合は、関連付ける新しい Automation アカウントを作成するか、Log Analystics ワークスペースにまだリンクされていない既存の Automation アカウントを選択することができます。 既存の Automation アカウントを選択するか、**[Automation アカウントの作成]** をクリックし、**[Automation アカウントの追加]** ページで、次の情報を入力します。
    - **[名前]** フィールドに、Automation アカウントの名前を入力します。
 
     それ以外のオプションはすべて、選択した Log Analytics ワークスペースに基づいて自動的に入力されます。 こうしたオプションは変更できません。 このソリューションに含まれている Runbook は、Azure 実行アカウントが既定の認証方法になります。 **[OK]** をクリックすると、構成オプションが検証され、Automation アカウントが作成されます。 進行状況は、メニューの **[通知]** で追跡できます。
 
-1. 最後に、**[ソリューションの追加]** ページで、**[構成]** を選択します。 **[パラメーター]** ページが表示されます。
+7. 最後に、**[ソリューションの追加]** ページで、**[構成]** を選択します。 **[パラメーター]** ページが表示されます。
 
    ![ソリューションの [パラメーター] ページ](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
@@ -83,7 +86,7 @@ Start/Stop VMs during off-hours ソリューションを、ご利用の Automati
      > [!IMPORTANT]
      > **[Target ResourceGroup Names]\(ターゲット リソース グループ名\)** の既定値は **&ast;** です。 これは、サブスクリプション内のすべての VM が対象です。 ソリューションでサブスクリプション内のすべての VM を対象にするのでない場合は、スケジュールを有効にする前に、この値をリソース グループ名の一覧に更新する必要があります。
 
-1. ソリューションに必要な初期設定を構成したら、**[OK]** をクリックして **[パラメーター]** ページを閉じ、**[作成]** を選択します。 すべての設定が検証された後、ソリューションは、ご利用のサブスクリプションにデプロイされます。 このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。
+8. ソリューションに必要な初期設定を構成したら、**[OK]** をクリックして **[パラメーター]** ページを閉じ、**[作成]** を選択します。 すべての設定が検証された後、ソリューションは、ご利用のサブスクリプションにデプロイされます。 このプロセスは、完了までに数秒かかる場合があります。進行状況は、メニューの **[通知]** で確認してください。
 
 ## <a name="scenarios"></a>シナリオ
 
@@ -274,7 +277,7 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 
 以下の表は、このソリューションによって収集されたジョブ レコードを探すログ検索の例です。
 
-|Query | 説明|
+|クエリ | 説明|
 |----------|----------|
 |正常に終了した Runbook ScheduledStartStop_Parent のジョブを検索する | search Category == "JobLogs" &#124; where ( RunbookName_s == "ScheduledStartStop_Parent" ) &#124; where ( ResultType == "Completed" )  &#124; summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) &#124; sort by TimeGenerated desc|
 |正常に終了した Runbook SequencedStartStop_Parent のジョブを検索する | search Category == "JobLogs" &#124; where ( RunbookName_s == "SequencedStartStop_Parent" ) &#124; where ( ResultType == "Completed" )  &#124; summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) &#124; sort by TimeGenerated desc

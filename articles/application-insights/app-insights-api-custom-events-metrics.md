@@ -11,26 +11,30 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 06/08/2018
+ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 5c33e1a5568de5fffb5ea9cedb43bdc04aeaeba7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7ee1dc7a3e3ae6bff6f2084d7290a37dc999dec7
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38306762"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040213"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
 アプリケーションに数行のコードを挿入して、ユーザーの行動を調べたり、問題の診断に役立つ情報を取得したりすることができます。 デバイスとデスクトップ アプリケーション、Web クライアント、Web サーバーからテレメトリを送信できます。 [Azure Application Insights](app-insights-overview.md) コア テレメトリ API を使用すると、カスタムのイベントやメトリック、独自バージョンの標準テレメトリを送信できます。 この API は、Application Insights の標準のデータ コレクターで使用される API と同じものです。
 
+> [!NOTE]
+> `TrackMetric()` は、.NET ベースのアプリケーションのためにカスタム メトリックを送信する場合に推奨される方法ではなくなりました。 Application Insights .NET SDK の[バージョン 2.60 beta 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) で、新しいメソッドの [`TelemetryClient.GetMetric()`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) が導入されました。 Application Insights .NET SDK [バージョン 2.72](https://docs.microsoft.com/en-us/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) の時点で、この機能は安定したリリースの一部になりました。
+
 ## <a name="api-summary"></a>API の概要
-この API は、いくつかの小さな違いは別として、すべてのプラットフォームで一様になっています。
+コア API は、`GetMetric` (.NET のみ) のようないくつかの違いは別として、すべてのプラットフォームにわたって同一です。
 
 | 方法 | 使用対象 |
 | --- | --- |
 | [`TrackPageView`](#page-views) |ページ、画面、ブレード、フォーム |
 | [`TrackEvent`](#trackevent) |ユーザー アクションとその他のイベント。 ユーザーの行動を追跡するために、またはパフォーマンスを監視するために使用されます。 |
+| [`GetMetric`](#getmetric) |0 と多次元メトリックは、は、C# の場合のみ、一元的に構成された集計です。 |
 | [`TrackMetric`](#trackmetric) |キューの長さなど、特定のイベントに関連しないパフォーマンスを測定します。 |
 | [`TrackException`](#trackexception) |診断用に例外を記録します。 他のイベントとの関連で例外の発生箇所を追跡し、スタック トレースを調べます。 |
 | [`TrackRequest`](#trackrequest) |パフォーマンス分析用にサーバー要求の頻度と期間を記録します。 |
@@ -61,7 +65,7 @@ Application Insights SDK の参照がまだない場合:
 ## <a name="get-a-telemetryclient-instance"></a>TelemetryClient インスタンスの取得
 `TelemetryClient` インスタンスを取得します (Web ページの JavaScript を除く)。
 
-*C#*
+*C# を選択した場合*
 
     private TelemetryClient telemetry = new TelemetryClient();
 
@@ -82,7 +86,7 @@ TelemetryClient はスレッド セーフです。
 
 ASP.NET および Java プロジェクトの場合は、受信 HTTP 要求が自動的にキャプチャされます。 アプリの他のモジュールのために TelemetryClient の追加のインスタンスを作成することもできます。 たとえば、ミドルウェア クラスでビジネス ロジック イベントを報告する 1 つの TelemetryClient インスタンスを使用できます。 マシンを識別するために UserId や DeviceId などのプロパティを設定できます。 こうした情報は、インスタンスから送信されるすべてのイベントに付属します。 
 
-*C#*
+*C# を選択した場合*
 
     TelemetryClient.Context.User.Id = "...";
     TelemetryClient.Context.Device.Id = "...";
@@ -101,7 +105,7 @@ Application Insights の*カスタム イベント*はデータ ポイントで�
 
 たとえば、ゲーム アプリで、ユーザーが勝利したときにイベントを送信します。
 
-*JavaScript*
+*JavaScript を選択した場合*
 
     appInsights.trackEvent("WinGame");
 
@@ -121,31 +125,107 @@ Application Insights の*カスタム イベント*はデータ ポイントで�
 
     telemetry.trackEvent({name: "WinGame"});
 
-### <a name="view-your-events-in-the-microsoft-azure-portal"></a>Microsoft Azure ポータルでイベントを表示する
-イベントの件数を表示するには、[[メトリックス エクスプローラー]](app-insights-metrics-explorer.md) ブレードを開き、新しいグラフを追加して **[イベント]** を選択します。  
-
-![カスタム イベント件数の表示](./media/app-insights-api-custom-events-metrics/01-custom.png)
-
-さまざまなイベントの件数を比較するには、グラフの種類を **[グリッド]** に設定し、イベント名でグループ化します。
-
-![グラフの種類およびグループ化の設定](./media/app-insights-api-custom-events-metrics/07-grid.png)
-
-グリッドでイベント名をクリックすると、そのイベントの個々の発生の情報が表示されます。 詳細を表示するには、リストの任意の発生をクリックします。
-
-![イベントをドリルスルーする](./media/app-insights-api-custom-events-metrics/03-instances.png)
-
-Search またはメトリックス エクスプローラーで特定のイベントを対象にするには、ブレードのフィルターを対象となるイベントの名前に設定します。
-
-![[フィルター] を開き、イベント名を展開して、1 つ以上の値を選択する](./media/app-insights-api-custom-events-metrics/06-filter.png)
-
 ### <a name="custom-events-in-analytics"></a>Analytics でのカスタム イベント
 
 テレメトリは、[Application Insights Analytics](app-insights-analytics.md) の `customEvents` テーブルにあります。 各行は、アプリでの `trackEvent(..)` に対する呼び出しを表します。 
 
 [サンプリング](app-insights-sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackEvent() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 カスタム イベントの正しい数を取得するには、`customEvent | summarize sum(itemCount)` などのコードを使用する必要があります。
 
+## <a name="getmetric"></a>GetMetric
+
+### <a name="examples"></a>次に例を示します。
+
+*C# を選択した場合*
+
+```csharp
+#pragma warning disable CA1716  // Namespace naming
+
+namespace User.Namespace.Example01
+{
+    using System;
+    using Microsoft.ApplicationInsights;
+    using TraceSeveretyLevel = Microsoft.ApplicationInsights.DataContracts.SeverityLevel;
+
+    /// <summary>
+    /// Most simple cases are one-liners.
+    /// This is all possible without even importing an additional namespace.
+    /// </summary>
+
+    public class Sample01
+    {
+        /// <summary />
+        public static void Exec()
+        {
+            // *** SENDING METRICS ***
+
+            // Recall how you send custom telemetry with Application Insights in other cases, e.g. Events.
+            // The following will result in an EventTelemetry object to be sent to the cloud right away.
+            TelemetryClient client = new TelemetryClient();
+            client.TrackEvent("SomethingInterestingHappened");
+
+            // Metrics work very similar. However, the value is not sent right away.
+            // It is aggregated with other values for the same metric, and the resulting summary (aka "aggregate" is sent automatically every minute.
+            // To mark this difference, we use a pattern that is similar, but different from the established TrackXxx(..) pattern that sends telemetry right away:
+
+            client.GetMetric("CowsSold").TrackValue(42);
+
+            // *** MULTI-DIMENSIONAL METRICS ***
+
+            // The above example shows a zero-dimensional metric.
+            // Metrics can also be multi-dimensional.
+            // In the initial version we are supporting up to 2 dimensions, and we will add support for more in the future as needed.
+            // Here is an example for a one-dimensional metric:
+
+            Metric animalsSold = client.GetMetric("AnimalsSold", "Species");
+
+            animalsSold.TrackValue(42, "Pigs");
+            animalsSold.TrackValue(24, "Horses");
+
+            // The values for Pigs and Horses will be aggregated separately from each other and will result in two distinct aggregates.
+            // You can control the maximum number of number data series per metric (and thus your resource usage and cost).
+            // The default limits are no more than 1000 total data series per metric, and no more than 100 different values per dimension.
+            // We discuss elsewhere how to change them.
+            // We use a common .Net pattern: TryXxx(..) to make sure that the limits are observed.
+            // If the limits are already reached, Metric.TrackValue(..) will return False and the value will not be tracked. Otherwise it will return True.
+            // This is particularly useful if the data for a metric originates from user input, e.g. a file:
+
+            Tuple<int, string> countAndSpecies = ReadSpeciesFromUserInput();
+            int count = countAndSpecies.Item1;
+            string species = countAndSpecies.Item2;
+
+            if (!animalsSold.TrackValue(count, species))
+
+            {
+                client.TrackTrace($"Data series or dimension cap was reached for metric {animalsSold.Identifier.MetricId}.", TraceSeveretyLevel.Error);
+            }
+
+            // You can inspect a metric object to reason about its current state. For example:
+            int currentNumberOfSpecies = animalsSold.GetDimensionValues(1).Count;
+        }
+
+        private static void ResetDataStructure()
+        {
+            // Do stuff
+        }
+
+        private static Tuple<int, string> ReadSpeciesFromUserInput()
+        {
+            return Tuple.Create(18, "Cows");
+        }
+
+        private static int AddItemsToDataStructure()
+        {
+            // Do stuff
+            return 5;
+        }
+    }
+}
+```
 
 ## <a name="trackmetric"></a>TrackMetric
+
+> [!NOTE]
+> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric は、.NET SDK では非推奨です。 メトリックは送信される前に必ず、ある期間にわたって事前に集計される必要があります。 GetMetric(..) オーバーロードのいずれかを使用して、SDK の事前集計機能にアクセスするためのメトリック オブジェクトを取得します。 独自の事前集計ロジックを実装する場合は、Track(ITelemetry metricTelemetry) メソッドを使用して集計結果を送信できます。 アプリケーションで、一定時間にわたる集計を行わず、すべての機会に個別のテレメトリ項目を送信する必要がある場合は、おそらくイベント テレメトリのユース ケースに該当します。TelemetryClient.TrackEvent (Microsoft.Applicationlnsights.DataContracts.EventTelemetry) を参照してください。
 
 Application Insights では、特定のイベントに関連付けられていないメトリックをグラフ化できます。 たとえば、一定の間隔でキューの長さを監視できます。 メトリックでは、個々の測定値は変化と傾向よりも関心が薄いため、統計グラフが役に立ちます。
 
@@ -161,13 +241,13 @@ Application Insights にメトリックを送信するために、`TrackMetric(.
 
 1 つのメトリック値を送信するには:
 
-*JavaScript*
+*JavaScript を選択した場合*
 
  ```Javascript
      appInsights.trackMetric("queueLength", 42.0);
  ```
 
-*C#*
+*C# を選択した場合*
 
 ```csharp
     var sample = new MetricTelemetry();
@@ -190,163 +270,6 @@ Application Insights にメトリックを送信するために、`TrackMetric(.
      telemetry.trackMetric({name: "queueLength", value: 42.0});
  ```
 
-#### <a name="aggregating-metrics"></a>メトリックの集計
-
-帯域幅、コストを削減し、パフォーマンスを向上するために、アプリから送信する前にメトリックを集計することをお勧めします。
-集計コードの例を次に示します。
-
-*C#*
-
-```csharp
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-
-using Microsoft.ApplicationInsights;
-using Microsoft.ApplicationInsights.DataContracts;
-
-namespace MetricAggregationExample
-{
-    /// <summary>
-    /// Aggregates metric values for a single time period.
-    /// </summary>
-    internal class MetricAggregator
-    {
-        private SpinLock _trackLock = new SpinLock();
-
-        public DateTimeOffset StartTimestamp    { get; }
-        public int Count                        { get; private set; }
-        public double Sum                       { get; private set; }
-        public double SumOfSquares              { get; private set; }
-        public double Min                       { get; private set; }
-        public double Max                       { get; private set; }
-        public double Average                   { get { return (Count == 0) ? 0 : (Sum / Count); } }
-        public double Variance                  { get { return (Count == 0) ? 0 : (SumOfSquares / Count)
-                                                                                  - (Average * Average); } }
-        public double StandardDeviation         { get { return Math.Sqrt(Variance); } }
-
-        public MetricAggregator(DateTimeOffset startTimestamp)
-        {
-            this.StartTimestamp = startTimestamp;
-        }
-
-        public void TrackValue(double value)
-        {
-            bool lockAcquired = false;
-
-            try
-            {
-                _trackLock.Enter(ref lockAcquired);
-
-                if ((Count == 0) || (value < Min))  { Min = value; }
-                if ((Count == 0) || (value > Max))  { Max = value; }
-                Count++;
-                Sum += value;
-                SumOfSquares += value * value;
-            }
-            finally
-            {
-                if (lockAcquired)
-                {
-                    _trackLock.Exit();
-                }
-            }
-        }
-    }   // internal class MetricAggregator
-
-    /// <summary>
-    /// Accepts metric values and sends the aggregated values at 1-minute intervals.
-    /// </summary>
-    public sealed class Metric : IDisposable
-    {
-        private static readonly TimeSpan AggregationPeriod = TimeSpan.FromSeconds(60);
-
-        private bool _isDisposed = false;
-        private MetricAggregator _aggregator = null;
-        private readonly TelemetryClient _telemetryClient;
-
-        public string Name { get; }
-
-        public Metric(string name, TelemetryClient telemetryClient)
-        {
-            this.Name = name ?? "null";
-            this._aggregator = new MetricAggregator(DateTimeOffset.UtcNow);
-            this._telemetryClient = telemetryClient ?? throw new ArgumentNullException(nameof(telemetryClient));
-
-            Task.Run(this.AggregatorLoopAsync);
-        }
-
-        public void TrackValue(double value)
-        {
-            MetricAggregator currAggregator = _aggregator;
-            if (currAggregator != null)
-            {
-                currAggregator.TrackValue(value);
-            }
-        }
-
-        private async Task AggregatorLoopAsync()
-        {
-            while (_isDisposed == false)
-            {
-                try
-                {
-                    // Wait for end end of the aggregation period:
-                    await Task.Delay(AggregationPeriod).ConfigureAwait(continueOnCapturedContext: false);
-
-                    // Atomically snap the current aggregation:
-                    MetricAggregator nextAggregator = new MetricAggregator(DateTimeOffset.UtcNow);
-                    MetricAggregator prevAggregator = Interlocked.Exchange(ref _aggregator, nextAggregator);
-
-                    // Only send anything is at least one value was measured:
-                    if (prevAggregator != null && prevAggregator.Count > 0)
-                    {
-                        // Compute the actual aggregation period length:
-                        TimeSpan aggPeriod = nextAggregator.StartTimestamp - prevAggregator.StartTimestamp;
-                        if (aggPeriod.TotalMilliseconds < 1)
-                        {
-                            aggPeriod = TimeSpan.FromMilliseconds(1);
-                        }
-
-                        // Construct the metric telemetry item and send:
-                        var aggregatedMetricTelemetry = new MetricTelemetry(
-                                Name,
-                                prevAggregator.Count,
-                                prevAggregator.Sum,
-                                prevAggregator.Min,
-                                prevAggregator.Max,
-                                prevAggregator.StandardDeviation);
-                        aggregatedMetricTelemetry.Properties["AggregationPeriod"] = aggPeriod.ToString("c");
-
-                        _telemetryClient.Track(aggregatedMetricTelemetry);
-                    }
-                }
-                catch(Exception ex)
-                {
-                    // log ex as appropriate for your application
-                }
-            }
-        }
-
-        void IDisposable.Dispose()
-        {
-            _isDisposed = true;
-            _aggregator = null;
-        }
-    }   // public sealed class Metric
-}
-```
-
-### <a name="custom-metrics-in-metrics-explorer"></a>メトリックス エクスプローラーでのカスタム メトリック
-
-結果を表示するには、メトリックス エクスプローラーを開き、新しいグラフを追加します。 メトリックを表示するグラフを編集します。
-
-> [!NOTE]
-> カスタム メトリックは、使用可能なメトリックの一覧に表示されるまで、数分かかることがあります。
->
-
-![新しいグラフを追加するかグラフを選択し、[カスタム] でメトリックを選択する](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
-
 ### <a name="custom-metrics-in-analytics"></a>Analytics でのカスタム メトリック
 
 テレメトリは、[Application Insights Analytics](app-insights-analytics.md) の `customMetrics` テーブルにあります。 各行は、アプリでの `trackMetric(..)` に対する呼び出しを表します。
@@ -356,8 +279,6 @@ namespace MetricAggregationExample
 ## <a name="page-views"></a>ページ ビュー
 デバイスまたは Web ページ アプリケーションでは、各画面または各ページが読み込まれた場合既定でページ ビュー テレメトリが送信されます。 ただし、これを変更し、ページ ビューを追跡する回数を増やしたり、変えたりできます。 たとえば、タブまたはブレードを表示するアプリケーションで、ユーザーが新しいブレードを開いたときに常にページを追跡できます。
 
-![[概要] ブレードの使用状況レンズ](./media/app-insights-api-custom-events-metrics/appinsights-47usage-2.png)
-
 ユーザーとセッションのデータはページ ビューとともにプロパティとして送信されます。そのため、ページ ビューのテレメトリがあれば、ユーザーとセッションのグラフがアクティブになります。
 
 ### <a name="custom-page-views"></a>カスタム ページ ビュー
@@ -365,7 +286,7 @@ namespace MetricAggregationExample
 
     appInsights.trackPageView("tab1");
 
-*C#*
+*C# を選択した場合*
 
     telemetry.TrackPageView("GameReviewPage");
 
@@ -390,7 +311,7 @@ namespace MetricAggregationExample
 * [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) の呼び出し `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);` で明示的な時間を設定する。
 * ページ ビューのタイミングの呼び出し (`startTrackPage` と `stopTrackPage`) を使用する。
 
-*JavaScript*
+*JavaScript を選択した場合*
 
     // To start timing a page:
     appInsights.startTrackPage("Page1");
@@ -443,7 +364,7 @@ Web サービス モジュールが実行されていない状況で要求をシ
 
 手動でテレメトリを追跡している場合、テレメトリの相関付けを確実に行うための最も簡単な方法として、次のパターンを使用できます。
 
-*C#*
+*C# を選択した場合*
 
 ```csharp
 // Establish an operation context and associated telemetry item:
@@ -472,7 +393,7 @@ using (var operation = telemetryClient.StartOperation<RequestTelemetry>("operati
 
 カスタム操作の追跡の詳細については、「[Application Insights .NET SDK でカスタム操作を追跡する](application-insights-custom-operations-tracking.md)」をご覧ください。
 
-### <a name="requests-in-analytics"></a>Analytics での要求 
+### <a name="requests-in-analytics"></a>Analytics での要求
 
 [Application Insights Analytics](app-insights-analytics.md) で、要求は `requests` テーブルに表示されます。
 
@@ -491,7 +412,7 @@ requests | summarize count = sum(itemCount), avgduration = avg(duration) by name
 
 レポートにはスタック トレースが含まれます。
 
-*C#*
+*C# を選択した場合*
 
     try
     {
@@ -510,7 +431,7 @@ requests | summarize count = sum(itemCount), avgduration = avg(duration) by name
         telemetry.trackException(ex);
     }
 
-*JavaScript*
+*JavaScript を選択した場合*
 
     try
     {
@@ -576,7 +497,7 @@ TrackTrace を使用すると、Application Insights に "階層リンクの追�
 
 Java の [Log4J や Logback などの標準ロガー](app-insights-java-trace-logs.md)では、Application Insights Log4j または Logback アペンダーを使用してポータルにサードパーティのログを送信します。
 
-*C#*
+*C# を選択した場合*
 
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
 
@@ -596,7 +517,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 
 加えて、メッセージに重大度レベルを追加することができます。 また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタリングしたり検索したりすることができます。 例: 
 
-*C#*
+*C# を選択した場合*
 
 ```C#
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
@@ -627,7 +548,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 ## <a name="trackdependency"></a>TrackDependency
 応答時間と外部コードの呼び出しの成功率を追跡するには、TrackDependency 呼び出しを使用します。 結果は、ポータルの依存関係グラフに表示されます。
 
-*C#*
+*C# を選択した場合*
 
 ```csharp
 var success = false;
@@ -664,7 +585,7 @@ finally
 
 ```
 
-*JavaScript*
+*JavaScript を選択した場合*
 
 ```Javascript
 var success = false;
@@ -708,7 +629,7 @@ dependencies
 ## <a name="flushing-data"></a>データのフラッシュ
 通常、SDK は、ユーザーへの影響を最小限に抑えるために選択した時間帯にデータを送信します。 ただし、終了するアプリケーションで SDK を使用する場合などには、バッファーのフラッシュが必要になることがあります。
 
-*C#*
+*C# を選択した場合*
  
  ```C#
     telemetry.Flush();
@@ -738,7 +659,7 @@ Web アプリでは、ユーザーは (既定では) Cookie により識別さ�
 
 ユーザーがアプリにサインインしていれば、認証されたユーザーの ID をブラウザー コードに設定して、より正確な数値を取得できます。
 
-*JavaScript*
+*JavaScript を選択した場合*
 
 ```JS
 // Called when my app has identified the user.
@@ -787,7 +708,7 @@ ASP.NET Web MVC アプリケーションでの例:
 
 使用できる [プロパティ、プロパティ値、およびメトリックの数には制限](#limits) があります。
 
-*JavaScript*
+*JavaScript を選択した場合*
 
     appInsights.trackEvent
       ("WinGame",
@@ -806,7 +727,7 @@ ASP.NET Web MVC アプリケーションでの例:
          );
 
 
-*C#*
+*C# を選択した場合*
 
     // Set up some properties and metrics:
     var properties = new Dictionary <string, string>
@@ -860,26 +781,6 @@ ASP.NET Web MVC アプリケーションでの例:
 >
 >
 
-*メトリックを使用した場合*、メトリックス エクスプ ローラーを開き、**カスタム** グループからメトリックを選択します。
-
-![メトリックス エクスプローラーを開き、グラフを選択してメトリックを選択する](./media/app-insights-api-custom-events-metrics/03-track-custom.png)
-
-> [!NOTE]
-> メトリックが表示されない場合、または**カスタム**の見出しがない場合は、選択ブレードを閉じてやり直してください。 パイプラインを介したメトリックの集計が終了するまでには 1 時間かかる場合があります。
-
-*プロパティとメトリックを使用した場合*、プロパティ別にメトリックを分割します。
-
-![グループ化を設定し、グループ化基準のプロパティを選択する](./media/app-insights-api-custom-events-metrics/04-segment-metric-event.png)
-
-*診断検索では*、イベントのそれぞれの発生箇所のプロパティとメトリックを表示できます。
-
-![インスタンスを選択し、[...] を選択する](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-4.png)
-
-特定のプロパティ値を持つイベントを表示するには、**[検索]** フィールドを使用します。
-
-![検索用語を入力する](./media/app-insights-api-custom-events-metrics/appinsights-23-customevents-5.png)
-
-検索式の詳細については、[こちら](app-insights-diagnostic-search.md)を参照してください。
 
 ### <a name="alternative-way-to-set-properties-and-metrics"></a>プロパティとメトリックを設定する別の方法
 個別のオブジェクトでイベントのパラメーターを集めたほうが便利であれば、そのようにできます。
@@ -921,7 +822,7 @@ requests
 ## <a name="timed"></a> タイミング イベント
 アクションの実行にかかる時間をグラフで示す必要が生じることがあります。 たとえば、ユーザーがゲームで選択肢について考える時間について調べるとします。 測定パラメーターを使用することでこの調査を行うことができます。
 
-*C#*
+*C# を選択した場合*
 
 ```C#
     var stopwatch = System.Diagnostics.Stopwatch.StartNew();
@@ -965,7 +866,7 @@ requests
 ## <a name="defaults"></a>カスタム テレメトリの既定のプロパティ
 記述するカスタム イベントのいくつかに既定のプロパティ値を設定する必要がある場合、TelemetryClient インスタンスで設定できます。 既定値は、そのクライアントから送信されたすべてのテレメトリ項目に追加されます。
 
-*C#*
+*C# を選択した場合*
 
     using Microsoft.ApplicationInsights.DataContracts;
 
@@ -1023,7 +924,7 @@ requests
 ## <a name="disabling-telemetry"></a>テレメトリの無効化
 テレメトリの収集と送信を *動的に停止および開始* するには
 
-*C#*
+*C# を選択した場合*
 
 ```csharp
 
@@ -1067,7 +968,7 @@ requests
 ## <a name="debug"></a>開発者モード
 デバッグ中、結果をすぐに確認できるように、テレメトリをパイプラインから送信すると便利です。 テレメトリで問題を追跡する際に役立つ付加的なメッセージも取得できます。 アプリケーションの速度を低下させる可能性があるため、本稼働ではオフにしてください。
 
-*C#*
+*C# を選択した場合*
 
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 
@@ -1077,7 +978,7 @@ requests
 
 
 ## <a name="ikey"></a> 選択したカスタム テレメトリにインストルメンテーション キーを設定する
-*C#*
+*C# を選択した場合*
 
     var telemetry = new TelemetryClient();
     telemetry.InstrumentationKey = "---my key---";
@@ -1089,7 +990,7 @@ requests
 
 インストルメンテーション キーは構成ファイルから取得する代わりにコードで設定できます。 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
-*C#*
+*C# を選択した場合*
 
     protected void Application_Start()
     {
@@ -1099,7 +1000,7 @@ requests
           WebConfigurationManager.Settings["ikey"];
       ...
 
-*JavaScript*
+*JavaScript を選択した場合*
 
     appInsights.config.instrumentationKey = myKey;
 
@@ -1174,5 +1075,3 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 * [イベントおよびログを検索する](app-insights-diagnostic-search.md)
 
 * [トラブルシューティング](app-insights-troubleshoot-faq.md)
-
-

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: f270b2ccea51e83bc6475051b8667bf73d7fd717
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 039e2d3c70493868ca2f79e89fc82d8970ec6865
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36221514"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032402"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Azure 仮想マシンから Update Management、Change Tracking、および Inventory ソリューションをオンボードする
 
@@ -22,7 +22,7 @@ Azure Automation には、オペレーティング システムのセキュリ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal (https://portal.azure.com) にサインインします。
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="enable-the-solutions"></a>ソリューションの有効化
 
@@ -53,20 +53,57 @@ Log Analytics ワークスペースと Automation アカウントを選択し、
 
 いずれかの構成の省略記号 (**...**) を選択し、**[編集]** を選択します。 **[スコープ構成の編集]** ウィンドウで、**[コンピューター グループの選択]** を選択します。 **[コンピューター グループ]** ウィンドウに、スコープ構成を作成するために使用された、保存された検索条件が表示されます。
 
-## <a name="saved-searches"></a>保存された検索条件
+## <a name="saved-searches"></a>保存した検索条件
 
 コンピューターが Update Management Change Tracking、または Inventory ソリューションに追加されると、ワークスペースの 2 つの保存された検索条件のいずれかにそのコンピューターが追加されます。 保存された検索条件は、これらのソリューションの対象となるコンピューターを含むクエリです。
 
 ワークスペースに移動します。 **[全般]** の下の **[保存された検索]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
 
-|名前     |カテゴリ  |エイリアス  |
+|Name     |Category  |エイリアス  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
-|MicrosoftDefaultComputerGroup     | Updates        | Updates__MicrosoftDefaultComputerGroup         |
+|MicrosoftDefaultComputerGroup     | 更新プログラム        | Updates__MicrosoftDefaultComputerGroup         |
 
 いずれかの保存された検索条件を選択して、グループの設定に使用されるクエリを表示します。 次の図は、クエリとその結果を示しています。
 
-![保存され検索条件](media/automation-onboard-solutions-from-vm/logsearch.png)
+![保存した検索条件](media/automation-onboard-solutions-from-vm/logsearch.png)
+
+## <a name="unlink-workspace"></a>ワークスペースのリンクの解除
+
+以下のソリューションは、Log Analytics ワークスペースに依存しています。
+
+* [更新管理](automation-update-management.md)
+* [変更の追跡](automation-change-tracking.md)
+* [勤務時間外に VM を起動/停止する](automation-solution-vm-management.md)
+
+Automation アカウントを Log Analytics と統合する必要がなくなった場合は、Azure Portal から直接、アカウントのリンクを解除できます。  作業を進める前に、上記で説明したソリューションを削除する必要があります。そうしないと、このプロセスを続行できません。 インポート済みのソリューションに関する記事を確認して、削除に必要な手順を理解してください。
+
+これらのソリューションを削除したら、以下の手順を行うと、Automation アカウントのリンクを解除できます。
+
+> [!NOTE]
+> Azure SQL 監視ソリューションの以前のバージョンを含む一部のソリューションでは、Automation アセットを作成している可能性があり、ワークスペースのリンクを解除する前にその削除が必要な場合があります。
+
+1. Azure portal から Automation アカウントを開き、[Automation アカウント] ページで、左側にある **[関連リソース]** セクションで **[リンクされたワークスペース]** を選択します。
+
+1. [ワークスペースのリンクを解除] ページ **[ワークスペースのリンクを解除]** をクリックします。
+
+   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
+
+   続行するかどうかを確認するプロンプトが表示されます。
+
+1. Azure Automation によってアカウントと Log Analytics ワークスペースとのリンクが解除されている間、メニューの **[通知]** で進行状況を追跡できます。
+
+更新の管理ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
+
+* スケジュールの更新 - 各スケジュールには、作成した更新のデプロイに一致する名前が付いています。
+
+* ソリューションに作成されたハイブリッド worker グループ - 各グループの名前は machine1.contoso.com_9ceb8108-26c9-4051-b6b3-227600d715c8 のようになります。
+
+勤務時間外の VM の開始/停止ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
+
+* VM の開始/停止の Runbook スケジュール
+* VM の開始/停止の Runbook
+* variables
 
 ## <a name="next-steps"></a>次の手順
 

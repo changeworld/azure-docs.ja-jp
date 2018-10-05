@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: ea1117e202868465e3ea4004d21cf62d175a357a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0eec1100c5246bb9f5c281971453ac60abc0339f
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963919"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225021"
 ---
 # <a name="web-apps"></a>Web Apps
 
@@ -44,7 +44,7 @@ Web ブラウザー対 Web アプリケーションのシナリオのコード �
 
 ## <a name="app-registration"></a>アプリの登録
 
-Web アプリを登録するには、「[Register an app with the Azure AD v2.0 endpoint](quickstart-v2-register-an-app.md)」 (Azure AD v2.0 エンドポイントを使用したアプリの登録) を参照してください。
+Web アプリを登録するには、「[Azure AD v1.0 エンドポイントを使用したアプリの登録](quickstart-v1-add-azure-ad-app.md)」を参照してください。
 
 * シングル テナント: 自分の組織だけが使用するアプリケーションを構築している場合は、Azure portal を使用して、アプリケーションを会社のディレクトリに登録する必要があります。
 * マルチテナント: 組織の外部のユーザーが使用できるアプリケーションを構築している場合は、アプリケーションを会社のディレクトリに登録するだけでなく、そのアプリケーションを使用する各組織のディレクトリにも登録する必要があります。 ディレクトリ内でアプリケーションを使用できるようにするには、ユーザーがアプリケーションに同意できるようにするためのサインアップ プロセスを含めます。 ユーザーがアプリケーションにサインアップするときに、アプリケーションが必要とするアクセス許可と同意オプションを示すダイアログが表示されます。 必要なアクセス許可によっては、他の組織の管理者が同意することが必要な場合があります。 ユーザーまたは管理者が同意すると、アプリケーションがディレクトリに登録されます。
@@ -55,5 +55,5 @@ Azure AD によって発行されたトークンの有効期間が終了する�
 
 ## <a name="next-steps"></a>次の手順
 
-* その他の[アプリケーションの種類とシナリオ](app-types.md)の説明
-* Azure AD [認証の基本](authentication-scenarios.md)についての説明
+* その他の[アプリケーションの種類とシナリオ](app-types.md)について学習する
+* Azure AD [認証の基本](authentication-scenarios.md)について学習する

@@ -6,14 +6,14 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 9/24/2018
+ms.date: 9/26/2018
 ms.author: victorh
-ms.openlocfilehash: 2961f6cc8607ba7ec670b297a1858bf433c3ec89
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1527ed9c0a83577da9a231cb91a93ad7f182061c
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960789"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392698"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -68,7 +68,9 @@ Azure Firewall には、次の既知の問題があります。
 |グローバル ピアリングを使用したハブとスポークが機能しない|ある Azure リージョンにハブとファイアウォールがデプロイされており、グローバル VNET ピアリング経由でハブに接続されるスポークが別の Azure リージョンにある場合、ハブとスポークのモデルはサポートされません。|詳細については、「[仮想ネットワーク ピアリングの作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)」を参照してください。|
 TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク フィルタリング規則が、インターネットへのトラフィックで機能しない|TCP/UDP 以外のプロトコルに関するネットワーク フィルタリング規則は、パブリック IP アドレスへの SNAT で機能しません。 TCP/UDP 以外のプロトコルは、スポーク サブネットと VNet との間でサポートされます。|Azure Firewall では Standard Load Balancer が使用されます。[現在 Standard Load Balancer では、IP プロトコルの SNAT はサポートされていません](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations)。 Microsoft は、将来のリリースでこのシナリオに対応できるよう方法を模索しています。|
 |宛先 NAT (DNAT) はポート 80 と 22 では機能しません。|NAT 規則のコレクション内の [宛先ポート] フィールドには、ポート 80 またはポート 22 を含めることはできません。|これは近い将来に解決できるよう取り組んでいます。 それまでの間は、NAT 規則の宛先ポートとして他の任意のポートを使用します。 ポート 80 または 22 は、変換されたポートとして引き続き使用できます (たとえば、パブリックの ip:81 をプライベートの ip:80 にマップできます)。|
-|
+|PowerShell と CLI では ICMP がサポートされない|Azure PowerShell と CLI は、ネットワーク ルールの有効なプロトコルとして ICMP をサポートしていません。|それでも、ポータルと REST API を介して、ICMP をプロトコルとして使用することが可能です。 近いうちに PowerShell と CLI に ICMP を追加するため、取り組みを進めています。|
+|FQDN タグで port:protocol を設定する必要がある|FQDN タグを使用するアプリケーション ルールには、port:protocol の定義が必要です。|port:protocol 値として、**https** を使用できます。 FQDN タグが使用される場合にこのフィールドを省略可能にするため、取り組みを進めています。|
+|ファイアウォールを別のリソース グループまたはサブスクリプションへ移動することはサポートされていません。|ファイアウォールを別のリソース グループまたはサブスクリプションへ移動することはサポートされていません。|この機能はサポートされる予定です。 ファイアウォールを別のリソース グループまたはサブスクリプションに移動するには、現在のインスタンスを削除して、新しいリソース グループまたはサブスクリプション内に再作成する必要があります。|
 
 ## <a name="next-steps"></a>次の手順
 

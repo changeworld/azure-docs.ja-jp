@@ -1,25 +1,25 @@
 ---
-title: Azure Automation と Visual Studio Team Services ソース管理の統合
-description: Azure Automation アカウントと Visual Stuido Team Services ソース管理の統合を設定するシナリオについて説明します。
+title: Azure Automation と Azure DevOps Services ソース管理の統合
+description: Azure Automation アカウントと Azure DevOps Services ソース管理の統合を設定するシナリオについて説明します。
 services: automation
 author: eamonoreilly
 ms.author: eamono
-keywords: azure powershell, VSTS, ソース管理, 自動化
+keywords: azure powershell, Azure DevOps Services, ソース管理, 自動化
 ms.service: automation
 ms.component: process-automation
 ms.topic: conceptual
 ms.date: 03/19/2017
-ms.openlocfilehash: f34267490a0db71e05ece97c23b86467dbf7dbeb
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ef21060e98972dd7bc561f9a4311fa0c4bdec3b4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34194303"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227063"
 ---
-# <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure Automation のシナリオ - Automation ソース管理と Visual Studio Team Services の統合
+# <a name="azure-automation-scenario---automation-source-control-integration-with-azure-devops"></a>Azure Automation のシナリオ - Automation ソース管理と Azure DevOps の統合
 
-このシナリオでは、ソース管理下にある Azure Automation の Runbook または DSC 構成の管理に使用している Visual Studio Team Services プロジェクトがあります。
-この記事では、チェックインごとに継続的インテグレーションが発生するように、VSTS と Azure Automation 環境を統合する方法について説明します。
+このシナリオには Azure DevOps プロジェクトがあり、それを、ソース管理の対象となる Azure Automation の Runbook または DSC 構成の管理に使用しています。
+この記事では、チェックインごとに継続的インテグレーションが発生するように、Azure DevOps と Azure Automation 環境を統合する方法について説明します。
 
 ## <a name="getting-the-scenario"></a>シナリオの取得
 
@@ -27,72 +27,73 @@ ms.locfileid: "34194303"
 
 ### <a name="runbooks"></a>Runbooks
 
-Runbook | [説明]| 
+Runbook | 説明| 
 --------|------------|
-Sync-VSTS | チェックインの処理が完了したら、VSTS ソース管理から Runbook または構成をインポートします。 手動で実行した場合、すべての Runbook または構成がインポートされ Automation アカウントに発行されます。| 
-Sync-VSTSGit | チェックインの処理が完了したら、Git ソース管理下にある VSTS から Runbook または構成をインポートします。 手動で実行した場合、すべての Runbook または構成がインポートされ Automation アカウントに発行されます。|
+Sync-VSTS | チェックインの処理が完了したら、Azure DevOps ソース管理から Runbook または構成をインポートします。 手動で実行した場合、すべての Runbook または構成がインポートされ Automation アカウントに発行されます。| 
+Sync-VSTSGit | チェックインの処理が完了したら、Git ソース管理下にある Azure DevOps ソース管理から Runbook または構成をインポートします。 手動で実行した場合、すべての Runbook または構成がインポートされ Automation アカウントに発行されます。|
 
 ### <a name="variables"></a>variables
 
-変数 | [説明]|
+可変 | 説明|
 -----------|------------|
-VSToken | 作成する変数資産 (VSTS 個人用アクセス トークンを含む) をセキュリティで保護します。 VSTS 個人用アクセス トークンを作成する方法は、[VSTS 認証に関するページ](/vsts/accounts/use-personal-access-tokens-to-authenticate)で確認できます。
+VSToken | 作成する変数資産 (Azure DevOps 個人用アクセス トークンを含む) をセキュリティで保護します。 Azure DevOps 個人用アクセス トークンを作成する方法については、[Azure DevOps 認証に関するページ](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)に説明があります。
 ## <a name="installing-and-configuring-this-scenario"></a>このシナリオのインストールと構成
 
-Runbook または構成を Automation アカウントに同期するために使用する VSTS で、[個人用アクセス トークン](/vsts/accounts/use-personal-access-tokens-to-authenticate)を作成します。
+Runbook または構成を Automation アカウントに同期するために使用する Azure DevOps で、[個人用アクセス トークン](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)を作成します。
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPersonalToken.png) 
 
-Runbook が VSTS に対して認証を行い、Runbook または構成を Automation アカウントに同期できるように、個人用アクセス トークンを保持する Automation アカウントで、[セキュリティで保護された変数](automation-variables.md)を作成します。 これには VSToken という名前を付けることができます。 
+Runbook が Azure DevOps に対して認証を行い、Runbook または構成を Automation アカウントに同期できるように、個人用アクセス トークンを保持する Automation アカウントで、[セキュリティで保護された変数](automation-variables.md)を作成します。 これには VSToken という名前を付けることができます。
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSTokenVariable.png)
 
-Runbook または構成を Automation アカウントに同期する Runbook をインポートします。 VSTS ソース管理または Git を使用した VSTS を使用して Automation アカウントにデプロイするかどうかに応じて、PowerShellGallery.com の [VSTS サンプル Runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) または [Git を使用した VSTS サンプル Runbook] (https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) を使用することができます。
+Runbook または構成を Automation アカウントに同期する Runbook をインポートします。 Azure DevOps ソース管理または Git で Azure DevOps を使用して Automation アカウントにデプロイするかどうかに応じて、[Azure DevOps サンプル Runbook](https://www.powershellgallery.com/packages/Sync-VSTS)、または [PowerShellGallery](https://www.powershellgallery.com) にある [Git サンプル Runbook で Azure DevOps](https://www.powershellgallery.com/packages/Sync-VSTSGit) を使用できます。
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPowerShellGallery.png)
 
 これで、この Runbook を[発行](automation-creating-importing-runbook.md#publishing-a-runbook)できるようになったので、Webhook を作成できます。 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPublishRunbook.png)
 
-この Sync-VSTS Runbook の [Webhook](automation-webhooks.md) を作成し、次に示すようにパラメーターを入力します。 VSTS のサービス フックで必要なので、webhook の URL をコピーします。 VSAccessTokenVariableName は、個人用アクセス トークンを保持するために前に作成したセキュリティで保護された変数の名前 (VSToken) です。 
+この Sync-VSTS Runbook の [Webhook](automation-webhooks.md) を作成し、次に示すようにパラメーターを入力します。 Azure DevOps のサービス フックで必要なので、Webhook の URL をコピーします。 VSAccessTokenVariableName は、個人用アクセス トークンを保持するために前に作成したセキュリティで保護された変数の名前 (VSToken) です。 
 
-VSTS (Sync-VSTS.ps1) と統合すると、次のパラメーターを取得します。
+Azure DevOps (Sync-VSTS.ps1) との統合により、以下のパラメーターが取得されます。
 ### <a name="sync-vsts-parameters"></a>Sync-VSTS パラメーター
 
-パラメーター | [説明]| 
+パラメーター | 説明| 
 --------|------------|
-WebhookData | VSTS サービス フックから送信されたチェックイン情報が含まれます。 このパラメーターは空白のままにする必要があります。| 
+WebhookData | これには、Azure DevOps サービス フックから送信されたチェックイン情報が含まれます。 このパラメーターは空白のままにする必要があります。| 
 ResourceGroup | Automation アカウントがあるリソース グループの名前です。|
-AutomationAccountName | VSTS と同期する Automation アカウントの名前です。|
-VSFolder | Runbook と構成が存在する VSTS のフォルダーの名前です。|
-VSAccount | Visual Studio Team Services アカウントの名前です。| 
-VSAccessTokenVariableName | VSTS 個人用アクセス トークンを保持する、セキュリティで保護された変数 (VSToken) の名前です。| 
+AutomationAccountName | Azure DevOps と同期する Automation アカウントの名前です。|
+VSFolder | Runbook と構成が存在する Azure DevOps 内のフォルダーの名前です。|
+VSAccount | Azure DevOps 組織の名前です。| 
+VSAccessTokenVariableName | Azure DevOps 個人用アクセス トークンを保持する、セキュリティで保護された変数 (VSToken) の名前です。| 
 
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSWebhook.png)
 
-GIT (Sync-VSTSGit.ps1) を使用した VSTS を使用している場合、次のパラメーターを取得します。
+GIT (Sync-VSTSGit.ps1) と共に Azure DevOps を使用すると、以下のパラメーターが取得されます。
 
-パラメーター | [説明]|
+パラメーター | 説明|
 --------|------------|
-WebhookData | VSTS サービス フックから送信されたチェックイン情報が含まれます。 このパラメーターは空白のままにする必要があります。| ResourceGroup | Automation アカウントがあるリソース グループの名前です。|
-AutomationAccountName | VSTS と同期する Automation アカウントの名前です。|
-VSAccount | Visual Studio Team Services アカウントの名前です。|
-VSProject | Runbook と構成が存在する VSTS のプロジェクトの名前です。|
+WebhookData | これには、Azure DevOps サービス フックから送信されたチェックイン情報が含まれます。 このパラメーターは空白のままにする必要があります。| 
+ResourceGroup | Automation アカウントがあるリソース グループの名前です。|
+AutomationAccountName | Azure DevOps と同期する Automation アカウントの名前です。|
+VSAccount | Azure DevOps 組織の名前です。|
+VSProject | Runbook と構成が存在する Azure DevOps 内のプロジェクトの名前です。|
 GitRepo | Git リポジトリの名前です。|
-GitBranch | VSTS Git リポジトリの分岐の名前です。|
-フォルダー | VSTS Git 分岐のフォルダーの名前です。|
-VSAccessTokenVariableName | VSTS 個人用アクセス トークンを保持する、セキュリティで保護された変数 (VSToken) の名前です。|
+GitBranch | Azure DevOps Git リポジトリの分岐の名前です。|
+フォルダー | Azure DevOps Git 分岐のフォルダーの名前です。|
+VSAccessTokenVariableName | Azure DevOps 個人用アクセス トークンを保持する、セキュリティで保護された変数 (VSToken) の名前です。|
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSGitWebhook.png)
 
-コードのチェックイン時にこの Webhook をトリガーするフォルダーへのチェックインの VSTS で、サービス フックを作成します。 新しいサブスクリプションを作成するとき、統合する **Web フック**をサービスとして選択します。 サービス フックの詳細については、[VSTS サービス フックのドキュメント](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started)を参照してください。
+コードのチェックイン時にこの Webhook をトリガーするフォルダーにチェックインするため、Azure DevOps 内にサービス フックを作成します。 新しいサブスクリプションを作成するとき、統合する **Web フック**をサービスとして選択します。 サービス フックの詳細については、[Azure DevOps のサービス フックに関するドキュメント](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started)を参照してください。
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSServiceHook.png)
 
-これで、VSTS への Runbook と構成のすべてのチェックインを実行して、これらを Automation アカウントに自動的に同期することができます。
+これで、Azure DevOps に対する Runbook と構成のチェックインをすべて実行し、これらが Automation アカウントに自動的に同期されるようにできるはずです。
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSSyncRunbookOutput.png)
 
-この Runbook が VSTS によってトリガーされず、手動で実行する場合は、webhookdata パラメーターを空のままにすることができ、これにより指定した VSTS フォルダーから完全同期が実行されます。
+Azure DevOps によるトリガーではなく手動でこの Runbook を実行する場合は、webhookdata パラメーターを空のままにすることができます。これにより、指定した Azure DevOps フォルダーから完全な同期が行われます。
 
-シナリオを削除する場合、VSTS からサービス フックを削除し、Runbook を削除して VSToken 変数を削除します。
+シナリオをアンインストールする場合は、Azure DevOps からサービス フックを削除し、Runbook を削除して、VSToken 変数を削除します。

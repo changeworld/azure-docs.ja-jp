@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 45e8668ce0a7eb2edd79271096f58b56ca1af5f0
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 02b36d8f8c8c9be2532b440bd9858766e8b524ca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205571"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060547"
 ---
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
@@ -37,7 +37,7 @@ ms.locfileid: "36205571"
 1.  Android Studio で、**[Gradle Scripts]\(Gradle スクリプト\)** > **build.gradle (Module: app)** を選択します。
 2.  **[Dependencies]\(依存関係\)** で、次のコードを貼り付けます。
 
-    ```ruby  
+    ```gradle  
     compile ('com.microsoft.identity.client:msal:0.1.+') {
         exclude group: 'com.android.support', module: 'appcompat-v7'
     }
@@ -47,10 +47,10 @@ ms.locfileid: "36205571"
 <!--start-collapse-->
 ### <a name="about-this-package"></a>このパッケージについて
 
-上記のコードのパッケージによって、Microsoft Authentication Library がインストールされます。 MSAL は、Azure Active Directory v2 エンドポイントで保護されている API へのアクセスに使用するユーザー トークンの取得、キャッシュ、更新を処理します。
+上記のコードのパッケージによって、Microsoft Authentication Library がインストールされます。 MSAL は、取得、キャッシュ、更新、削除を含め、すべてのトークン操作を処理します。  Microsoft ID プラットフォームによって保護されている API にアクセスするには、トークンが必要です。
 <!--end-collapse-->
 
-## <a name="create-the-application-ui"></a>アプリケーション UI を作成する
+## <a name="create-the-apps-ui"></a>アプリケーションの UI を作成する
 
 1. **[res]** > **[layout]** に移動し、**activity_main.xml** を開きます。 
 2. アクティビティのレイアウトを `android.support.constraint.ConstraintLayout` などから `LinearLayout` に変更します。

@@ -12,35 +12,32 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/05/2018
+ms.date: 09/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f25d0b3522658d5fcd4b34110cb03b624dd9e7b1
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 776f70b6b24288006d52cb0e91797d1074180160
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841507"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452617"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル: Azure Data Box Disk にデータをコピーして確認する
 
 このチュートリアルでは、ホスト コンピューターからデータをコピーして、データ整合性を確認するためのチェックサムを生成する方法について説明します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * データを Data Box ディスクにコピーする
-> * データ整合性の確認
+> * データの確認
 
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に次の点を確認します。
 - [Azure Data Box Disk のインストールと構成に関するチュートリアル](data-box-disk-deploy-set-up.md)を完了していること。
-- ディスクが開梱され電源が入っていること。
-- ディスクにデータをコピーするためのホスト コンピューターがあること。 このホスト コンピューターは次の条件を満たしている必要があります。
-    - [サポート対象のオペレーティング システム](data-box-disk-system-requirements.md)が実行されていること。
-    - [Windows PowerShell 4 がインストール済み](https://www.microsoft.com/download/details.aspx?id=40855)であること。
-    - [.NET Framework 4.5 がインストール済み](https://www.microsoft.com/download/details.aspx?id=30653)であること。
+- ディスクは、ロックが解除されてクライアント コンピューターに接続されます。
+- ディスクにデータをコピーするために使用するクライアント コンピューターでは、[サポートされているオペレーティング システム](data-box-disk-system-requirements.md)が実行されている必要があります。
 
 
 ## <a name="copy-data-to-disks"></a>ディスクにデータをコピーする
@@ -59,6 +56,7 @@ ms.locfileid: "43841507"
 
     コンテナーと BLOB の名前については、Azure の名前付けの要件に従ってください。
 
+    #### <a name="azure-naming-conventions-for-container-and-blob-names"></a>コンテナーと BLOB の名前に関する Azure の名前付け規則
     |エンティティ   |規則  |
     |---------|---------|
     |ブロック BLOB とページ BLOB のコンテナー名     |先頭には文字または数字を使用する必要があります。使用できるのは、小文字、数字、ハイフンのみ (-) のみです。 すべてのハイフン (-) は、その直前または直後に文字または数字が使用されている必要があります。 連続するハイフンを名前に使用することはできません。 <br>3 文字から 63 文字の有効な DNS 名にする必要があります。          |
@@ -165,17 +163,21 @@ ms.locfileid: "43841507"
 > -  データのコピー中は、そのサイズが [Azure Storage と Data Box Disk の制限](data-box-disk-limits.md)に関するページに記載されたサイズ制限に準拠していることを確認してください。 
 > - Data Box Disk によってアップロードされているデータが、Data Box Disk の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
 
-## <a name="verify-data-integrity"></a>データ整合性の確認
+## <a name="verify-data"></a>データの確認 
 
-データ整合性を確認するには、次の手順を実行します。
+データを確認するには、次の手順を実行します。
 
-1. チェックサムを検証するために、`AzureExpressDiskService.ps1` を実行します。 エクスプローラーで、ドライブの *AzureImportExport* フォルダーに移動します。 右クリックして **[PowerShell で実行]** を選択します。 
+1. ドライブの *AzureImportExport* フォルダーで、チェックサムの検証のために `DataBoxDiskValidation.cmd` を実行します。 
+    
+    ![Data Box Disk 検証ツールの出力](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
-    ![チェックサムの実行](media/data-box-disk-deploy-copy-data/data-box-disk-checksum.png)
-
-2. データのサイズによっては、この手順にしばらく時間がかかることがあります。 スクリプトが完了すると、データ整合性チェック処理の概要が、処理の完了までの時間と共に表示されます。 **Enter** を押して、コマンド ウィンドウを終了します。
+2. 適切なオプションを選択してください。 **オプション 2 を選択して、常にファイルの検証とチェックサムの生成を行うことをお勧めします**。 データのサイズによっては、この手順にしばらく時間がかかることがあります。 スクリプトが完了したら、コマンド ウィンドウを終了します。 検証とチェックサムの生成の間にエラーが発生した場合は、通知が表示され、エラー ログへのリンクも提供されます。
 
     ![チェックサムの出力](media/data-box-disk-deploy-copy-data/data-box-disk-checksum-output.png)
+
+    > [!TIP]
+    > - 2 回の実行の間にツールをリセットします。
+    > - オプション 1 を使用して、小さなファイル (KB 単位まで) を含む大きなデータセットだけを扱うファイルを検証します。 これらの場合、チェックサムの生成に非常に長い時間がかかり、パフォーマンスが非常に低いことがあります。
 
 3. 複数のディスクを使用している場合は、ディスクごとにコマンドを実行します。
 

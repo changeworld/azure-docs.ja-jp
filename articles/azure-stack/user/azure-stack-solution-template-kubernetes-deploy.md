@@ -11,24 +11,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: a6e1acf3b9e69f32a8c175310134c534dbf8c561
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 82d99f575837b47a29bd6d8330ee58f442b6110a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977538"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409356"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Kubernetes を Azure Stack にデプロイする
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 > [!Note]  
-> Azure Stack 上の Kubernetes はプレビュー段階にあります。 Azure Stack のオペレーターは、この記事の手順を実行するために必要な Kubernetes Cluster Marketplace 項目へのアクセスを要求する必要があります。
+> Azure Stack 上の Kubernetes はプレビュー段階にあります。
 
-以降の記事では、Azure Resource Manager ソリューション テンプレートを使用して、1 つの連携した操作で Kubernetes のためにリソースのデプロイとプロビジョニングを行う方法を示しています。 Azure Stack インストールに関する必要な情報を収集し、テンプレートを生成して、クラウドにデプロイする必要があります。 テンプレートは、グローバルな Azure で提供されるのと同じマネージド型の AKS サービスではなく、ACS サービスに近いことに注意してください。
+以降の記事では、Azure Resource Manager ソリューション テンプレートを使用して、1 つの連携した操作で Kubernetes のためにリソースのデプロイとプロビジョニングを行う方法を示しています。 Azure Stack インストールに関する必要な情報を収集し、テンプレートを生成して、クラウドにデプロイする必要があります。 テンプレートは、グローバルな Azure で提供されるのと同じマネージド型の AKS サービスではないことに注意してください。
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes とコンテナー
 
@@ -54,7 +54,9 @@ Kubernetes は、次の目的で使用できます。
 
 1. Azure Stack テナント ポータルに有効なサブスクリプションがあること、また、新しいアプリケーションの追加に使用できる十分なパブリック IP アドレスがあることを確認します。
 
-    Azure Stack **Administrator** サブスクリプションにクラスターを展開することはできません。 User** サブスクリプションを使用する必要があります。 
+    Azure Stack **Administrator** サブスクリプションにクラスターを展開することはできません。 **User** サブスクリプションを使用する必要があります。 
+
+1. マーケットプレースに Kubernetes クラスターがない場合は、Azure Stack の管理者に連絡してください。
 
 ## <a name="create-a-service-principal-in-azure-ad"></a>Azure AD でのサービス プリンシパルの作成
 
@@ -113,9 +115,23 @@ Kubernetes は、次の目的で使用できます。
 
     ![ソリューション テンプレートのデプロイ](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-1. [Create Kubernetes] (Kubernetes の作成) で **[基本]** を選択します。
+### <a name="1-basics"></a>1.基本
+
+1. [Kubernetes クラスターを作成] で **[基本]** を選びます。
 
     ![ソリューション テンプレートのデプロイ](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
+
+1. **[サブスクリプション]** を選択します。
+
+1. 新しいリソース グループの名前を入力するか、既存のリソース グループを選択します。 リソース名は、英数字かつ小文字にする必要があります。
+
+1. リソース グループの **[場所]** を選択します。 これは、Azure Stack のインストールに対して選択するリージョンです。
+
+### <a name="2-kubernetes-cluster-settings"></a>2.Kubernetes クラスターの設定
+
+1. [Kubernetes クラスターを作成] で **[Kubernetes Cluster Settings] (Kubernetes クラスターの設定)** を選択します。
+
+    ![ソリューション テンプレートのデプロイ](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
 
 1. **[Linux VM Admin Username]\(Linux VM 管理者ユーザー名\)** を入力します。 Kubernetes クラスターと DVM の一部である Linux Virtual Machines のユーザー名
 
@@ -126,28 +142,29 @@ Kubernetes は、次の目的で使用できます。
     > [!Note]  
     > 各クラスターに対して、新しい一意のマスター プロファイル DNS プレフィックスを使用してください。
 
-1. **[Agent Pool Profile Count]\(エージェント プール プロファイル数\)** を入力します。 値には、クラスター内のエージェントの数が含まれます。 1 - 4 の値を使用できます。
+1. **[Kubernetes Master Pool Profile Count] (Kubernetes マスター プール プロファイル数)** を選択します。 この数には、マスター プール内のノードの数が含まれます。 1 ～ 7 を使用できます。 この値は奇数である必要があります。
 
-1. **[Service Principal ClientId]\(サービス プリンシパル クライアント ID\)** を入力します。これは、Kubernetes Azure クラウド プロバイダーによって使用されます。
+1. **[The VMSize of the Kubernetes master VMs] (Kubernetes マスター VM の VMSize)** を選択します。
 
-1. サービス プリンシパル アプリケーションを作成するときに作成した、**[Service Principal Client Secret]\(サービス プリンシパル クライアント シークレット\)** を入力します。
+1. **[Kubernetes Node Pool Profile Count] (Kubernetes ノード プール プロファイル数)** を選択します。 値には、クラスター内のエージェントの数が含まれます。 
+
+1. **[Storage Profile] (ストレージ プロファイル)** を選択します。 **[Blob Disk] (Blob ディスク)** または **[Managed Disk] (マネージド ディスク)** を選択できます。 これにより、Kubernetes ノード VM の VM サイズを指定します。 
+
+1. **[Service Principal ClientId]\(サービス プリンシパル クライアント ID\)** を入力します。これは、Kubernetes Azure クラウド プロバイダーによって使用されます。 サービス プリンシパルを作成したときにアプリケーション ID として識別されたクライアント ID。
+
+1. サービス プリンシパルを作成するときに作成した、**[Service Principal Client Secret]\(サービス プリンシパル クライアント シークレット\)** を入力します。
 
 1. **Kubernetes Azure クラウド プロバイダーのバージョン**を入力します。 これは、Kubernetes Azure プロバイダーのバージョンです。 Azure Stack は、各 Azure Stack バージョンに対してカスタムの Kubernetes ビルドをリリースします。
 
-1. **[サブスクリプション]** を選択します。
+### <a name="3-summary"></a>手順 3.まとめ
 
-1. 新しいリソース グループの名前を入力するか、既存のリソース グループを選択します。 リソース名は、英数字かつ小文字にする必要があります。
+1. [Summary] (概要) を選択します。 ブレードには、Kubernetes クラスターの構成設定の検証メッセージが表示されます。
 
-1. リソース グループの **[場所]** を選択します。 これは、Azure Stack のインストールに対して選択するリージョンです。
+    ![ソリューション テンプレートのデプロイ](media/azure-stack-solution-template-kubernetes-deploy/04_preview.png)
 
-### <a name="specify-the-azure-stack-settings"></a>Azure Stack の設定を指定する
+2. 設定を確認します。
 
-1. **[Azure Stack Stamp Settings]\(Azure Stack スタンプの設定\)** を選択します。
-
-    ![ソリューション テンプレートのデプロイ](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
-
-1. **[Tenant Arm Endpoint]\(テナント ARM エンドポイント\)** を入力します。 これは、Kubernetes クラスターのリソース グループを作成するために接続する Azure Resource Manager のエンドポイントです。 統合システムの Azure Stack のオペレーターからエンドポイントを取得する必要があります。 Azure Stack Development Kit (ASDK) の場合は、`https://management.local.azurestack.external` を使用できます。
-
+3. **[OK]** を選択してクラスターをデプロイします。
 
 ## <a name="connect-to-your-cluster"></a>クラスターへの接続
 

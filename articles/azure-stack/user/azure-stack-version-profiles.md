@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 68514f1bc569d876f4cf851f97a690ae84cf43a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1b63a75a2505ecbd82896932018ef4f0936b9b37
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970296"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182894"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Azure Stack での API バージョンのプロファイルの管理
 
@@ -77,6 +77,7 @@ API プロファイルは、Azure Resource Manager を使用するツール (Pow
 
 プロファイルを使用して、Azure Stack を使って目的の言語でソリューションを統合するためのコード サンプルが用意されています。 現在、次の言語用のガイダンスとサンプルを使用できます。
 
+- **.NET** .NET API プロファイルを使用すると、リソース プロバイダーのパッケージに含まれる各リソースの種類の、最も安定した最新バージョンを取得できます。 詳細については、[Azure Stack での .NET による API バージョンのプロファイルの使用](azure-stack-version-profiles-net.md)についてのページを参照してください。
 - **PowerShell**  
 PowerShell ギャラリーから入手できる **AzureRM.Bootstrapper** モジュールを使用して、API バージョンのプロファイルを操作するために必要な PowerShell コマンドレットを取得できます。 詳しくは、「[Use API version profiles for PowerShell (PowerShell 向け API バージョン プロファイルの使用)](azure-stack-version-profiles-powershell.md)」をご覧ください。
 - **Azure CLI**  
@@ -86,7 +87,7 @@ GO SDK では、プロファイルはさまざまな種類のリソースと多�
 - **Ruby**  
 Azure Stack Resource Manager 向けの Ruby SDK には､インフラストラクチャの構築と管理に役立つツールが用意されています。 SDK のリソース プロバイダには､Ruby 言語を使用したコンピュートや仮想ネットワーク､ストレージがあります｡ 詳しくは、「[Use API version profiles with Ruby](azure-stack-version-profiles-ruby.md)」をご覧ください。
 - **Python**  
-- Python SDK では、Azure Stack とグローバル Azure などの異なるクラウド プラットフォームをターゲットとする API バージョン プロファイルをサポートします。 ハイブリッド クラウド向けのソリューションの作成時に API プロファイルを使用できます。 詳しくは、「[Azure Stack での Python による API バージョンのプロファイルの使用](azure-stack-version-profiles-python.md)」をご覧ください。
+Python SDK では、Azure Stack とグローバル Azure などの異なるクラウド プラットフォームをターゲットとする API バージョン プロファイルをサポートします。 ハイブリッド クラウド向けのソリューションの作成時に API プロファイルを使用できます。 詳しくは、「[Azure Stack での Python による API バージョンのプロファイルの使用](azure-stack-version-profiles-python.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

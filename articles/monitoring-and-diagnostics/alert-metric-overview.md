@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: 1ec47ddf5769dd8ed624277a86db57f449581b90
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 586ced5b239b77dd9ae596a754613a66cee371a9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948691"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405922"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Azure Monitor でのメトリック アラートの機能
 
-Azure Monitor でメトリック アラートは、複数ディメンションのメトリック上で動作します。 これらのメトリックには、プラットフォーム メトリック、カスタム メトリック (プレビュー)、Log Analytics からの一般的なログのメトリックへの変換、Application Insights の標準的なメトリックが含まれます。 メトリック アラートは 1 つまたはメトリック タイム シリーズの条件が true かどうかを定期的に評価し、評価が満たされたときに通知します。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
+Azure Monitor でメトリック アラートは、複数ディメンションのメトリック上で動作します。 これらのメトリックには、プラットフォーム メトリック、[カスタム メトリック](metrics-custom-overview.md)、[Log Analytics からの一般的なログのメトリックへの変換](monitoring-metric-alerts-logs.md)、Application Insights の標準的なメトリックが含まれます。 メトリック アラートは 1 つまたは複数のメトリック タイム シリーズの条件が true かどうかを定期的に評価し、評価が満たされたときに通知します。 メトリック アラートはステートフルです。つまり、状態が変更されたときにのみ通知を送信します。
 
 ## <a name="how-do-metric-alerts-work"></a>メトリック アラートの機能
 
@@ -75,15 +75,21 @@ Azure Monitor のメトリック アラートでは、1 つのルールによる
 
 このルールは、このインスタンスのすべての値を自動的に監視します。つまり、 インスタンスが生成されるたびにメトリックのアラート ルールを変更しなくても、それを監視できます。
 
-### <a name="monitoring-multiple-resource-using-metric-alerts"></a>メトリック アラートによる複数のリソースの監視
+### <a name="monitoring-multiple-resources-using-metric-alerts"></a>メトリック アラートによる複数のリソースの監視
 
-前のセクションで説明したようには、1 つのメトリック アラート ルールでそれぞれのディメンションの組み合わせを (つまり、 メトリック タイム シリーズ) を監視することができます ただし、これは一度に 1 つのリソースに限定されます。 また、メトリック アラートはプレビューで 1 つのルールによる複数リソースの監視をサポートするようになりました。 サブスクリプションに多数の VM がある場合に、この新しい機能はそれらの監視を迅速に設定するのに役立ちます。 
+前のセクションで説明したようには、1 つのメトリック アラート ルールでそれぞれのディメンションの組み合わせ (つまり、 メトリック タイム シリーズ) を監視することができます。 ただし、以前はこれは一度に 1 つのリソースに限定されていました。 また、Azure Monitor はプレビューで 1 つのメトリック アラート ルールによる複数リソースの監視をサポートするようになりました。 この機能は現在はプレビューで、仮想マシンでのみサポートされています。 また、1 つのメトリック アラートが 1 つの Azure リージョン内のリソースを監視することもできます。
 
-現在、この機能はプレビュー段階にあります。 Azure portal では現在、複数のリソースを監視するメトリック アラート ルールの作成はサポートされていません。 そのようなルールは Azure Resource Manager テンプレートを使って作成できます。
+1 つのメトリック アラートでの監視範囲は、次の 3 つのいずれかの方法で指定することができます。
+
+- サブスクリプション内の 1 つの Azure リージョン内の仮想マシンのリストとして
+- サブスクリプション内の 1 つまたは複数のリソース グループ内の (1 つの Azure リージョン内の) すべての仮想マシン
+- 1 つのサブスクリプション内の (1 つの Azure リージョン内の) すべての仮想マシン
+
+Azure portal では現在、複数のリソースを監視するメトリック アラート ルールの作成はサポートされていません。 そのようなルールは [Azure Resource Manager テンプレート](monitoring-create-metric-alerts-with-templates.md#resource-manager-template-for-metric-alert-that-monitors-multiple-resources)を使って作成できます。 仮想マシンごとに個別の通知が届きます。 
 
 ## <a name="typical-latency"></a>一般的な待機時間
 
-メトリック アラートでは通常、アラート ルールの頻度を 1 min に設定している場合、5 分以内に通知を受領します。通知システムが高負荷の場合は、待機時間が長くなることがあります。
+メトリック アラートでは通常、アラート ルールの頻度を 1 分に設定している場合は 5 分以内に通知を受領します。通知システムが高負荷の場合は、待機時間が長くなることがあります。
 
 ## <a name="supported-resource-types-for-metric-alerts"></a>メトリック アラートでサポートされているリソースの種類
 

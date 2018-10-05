@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: bf744d2aaab168b8ce918f7b776d8855cdc5ad16
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ad498dc8c5bea9516bef5a62495fc0d0cc8f7399
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975245"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419697"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>チュートリアル: Hyper-V で Azure Data Box Gateway をプロビジョニングする (プレビュー)
 
@@ -87,7 +87,7 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 
     * 最小で 4 コア。
     * 少なくとも 8 GB の RAM。
-    * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。 .
+    * トラフィックをインターネットにルーティングできるネットワークに接続している 1 つのネットワーク インターフェイス。 
     * 250 GB の OS ディスク。
     * システム データ用の 2 TB の仮想ディスク。
 
@@ -105,9 +105,6 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
    ![](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. 仮想マシンの新規作成ウィザードの **[開始する前に]** ページで **[次へ]** をクリックします。
 5. **[名前と場所を指定]** ページで、仮想デバイスの**名前**を入力します。 **[次へ]** をクリックします。
-   
-   > [!IMPORTANT]
-   > このリリースでは、仮想デバイスの名前に大文字のみを使用できます。
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. **[世代の指定]** ページで、.vhdx デバイスのイメージの種類に **[第 2 世代]** を選択し、**[次へ]** をクリックします。    
@@ -171,17 +168,10 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
 3. デバイスの準備ができるまでに 10 から 15 分かかる場合があります。 進行状況を示すステータス メッセージがコンソールに表示されます。 デバイスの準備ができたら **[アクション]** に移動します。 `Ctrl + Alt + Delete` キーを押して、仮想デバイスにログインします。 既定のユーザーは *EdgeUser* で、既定のパスワードは *Password1* です。
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
-4. セキュリティ上の理由から、デバイス管理者のパスワードは初回ログオン後に有効期限が切れます。 このため、パスワードを変更するよう求められます。
-
-   8 文字以上を含むパスワードを入力します。 パスワードは、4 つの要件 (大文字、小文字、数字、および特殊文字) のうち少なくとも 3 つを満たす必要があります。 確認のためにパスワードを再入力します。 パスワードが変更されたことが通知されます。
    
-5. パスワードが正常に変更されると、仮想デバイスが再起動することがあります。 デバイスが起動するのを待ちます。  デバイスの Windows PowerShell コンソールと進行状況バーが表示されます。
-
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image22.png)
-
-6. 手順 6. ～ 8. は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、手順 6 ～ 8 をスキップし、手順 9 に進みます。 非 DHCP 環境でデバイスを起動した場合は、結果にメッセージが表示されます。
+6. 手順 5 ～ 7 は、非 DHCP 環境での起動時にのみ適用されます。 DHCP 環境の場合は、これらの手順をスキップします。 非 DHCP 環境でデバイスを起動した場合は、結果にメッセージが表示されます。
     
-7. ネットワークを構成するには、`Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効なネットワーク インターフェイスの一覧を表示します。 デバイスで単一のネットワーク インターフェイスが有効になっている場合、このインターフェイスに割り当てられる既定の名前は `DATA1`です。
+7. ネットワークを構成するには、`Get-HcsIpAddress` コマンドを使用して、仮想デバイスで有効なネットワーク インターフェイスの一覧を表示します。 デバイスで単一のネットワーク インターフェイスが有効になっている場合、このインターフェイスに割り当てられる既定の名前は `Ethernet`です。
 
 8. `Set-HcsIpAddress` コマンドレットを使用してネットワークを構成します。 次の例を参照してください。
 
@@ -192,7 +182,7 @@ Windows Server 2016 または Windows Server 2012 R2 の Hyper-V を実行する
    ![](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
       
 
-デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます。 最小要件を満たすだけのリソースにコンピューターが対応できるように、デバイスの構成を変更します。 その後、再起動し、デバイスに接続します。 「 [手順 1: ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements)」にある最小構成要件を参照してください。
+デバイスが最小構成要件を満たしていない場合は、バナー テキストにエラーが表示されます。 最小要件を満たすだけのリソースにコンピューターが対応できるように、デバイスの構成を変更します。 その後、再起動し、デバイスに接続します。 「[ホスト システムが仮想デバイスの最小要件を満たしていることを確認する](#check-the-host-system)」にある最小構成要件を参照してください。
 
 <!--If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
 

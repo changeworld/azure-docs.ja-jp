@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8f21457a63470b88e93ead97454f996cea38073a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a0b5188605874a04f0341cde1a68487c8a50df84
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103770"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431816"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -39,7 +39,8 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 ## <a name="runbook-permissions"></a>Runbook のアクセス許可
 
-Hybrid Runbook Worker で実行されている Runbook は Azure 外部のリソースにアクセスするため、Azure のリソースへの認証に Runbook で通常使用される方法と同じものを使用することはできません。 Runbook にローカル リソースに対して独自の認証機能を用意するか、すべての Runbook にユーザー コンテキストを提供する RunAs アカウントを指定することができます。
+Hybrid Runbook Worker で実行されている Runbook は Azure 外部のリソースにアクセスするため、Azure のリソースへの認証に Runbook で通常使用される方法と同じものを使用することはできません。 Runbook では、ローカル リソースに対する独自の認証を提供すること、[Azure リソースのマネージド ID ](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
+)を使用して認証を構成すること、またはすべての Runbook にユーザー コンテキストを提供する RunAs アカウントを指定することができます。
 
 ### <a name="runbook-authentication"></a>Runbook の認証
 
@@ -74,6 +75,32 @@ Restart-Computer -ComputerName $Computer -Credential $Cred
 4. **[すべての設定]**、**[ハイブリッド Worker グループの設定]** の順に選択します。
 5. **[実行者]** を **[既定]** から **[カスタム]** に変更します。
 6. 資格情報を選択し、 **[保存]** をクリックします。
+
+### <a name="managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID
+
+Azure 仮想マシンで実行されている Hybrid Runbook Worker は、Azure リソースに対する認証に Azure リソースのマネージド ID を使用できます。 Azure リソースのマネージド ID を使用することは、実行アカウントと比べて多数の利点があります。
+
+* 実行証明書をエクスポートし、それを Hybrid Runbook Worker にインポートする必要がありません
+* 実行アカウントで使用される証明書を更新する必要がありません
+* Runbook のコードで、Run As Connection オブジェクトを処理する必要がありません
+
+Hybrid Runbook Worker で Azure リソースのマネージド ID を使用するには、次の手順を完了する必要があります。
+
+1. Azure VM の作成
+2. [VM で Azure リソースのマネージド ID を構成します](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
+3. [Resource Manager で VM にリソース グループへのアクセスを許可します](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)
+4. [VM のシステム割り当てのマネージド ID を使用してアクセス トークンを取得します] (../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
+5. 仮想マシンに [Windows Hybrid Runbook Worker をインストールします](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)。
+
+前記の手順が完了したら、Azure リソースに対する認証のために Runbook で `Connect-AzureRmAccount -Identity` を使用できます。 これで、実行アカウントを利用して実行アカウントの証明書を管理する必要が減ります。
+
+```powershell
+# Connect to Azure using the Managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
+Connect-AzureRmAccount -Identity
+
+# Get all VM names from the subscription
+Get-AzureRmVm | Select Name
+```
 
 ### <a name="automation-run-as-account"></a>Automation 実行アカウント
 

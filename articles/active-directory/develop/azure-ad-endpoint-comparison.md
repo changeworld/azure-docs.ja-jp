@@ -3,7 +3,7 @@ title: Azure AD v2.0 エンドポイントと v1.0 エンドポイントの比�
 description: Azure AD v2.0 エンドポイントと v1.0 エンドポイントとの相違点を把握する
 services: active-directory
 documentationcenter: ''
-author: andretms
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 5060da46-b091-4e25-9fa8-af4ae4359b6c
@@ -13,23 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2018
+ms.date: 09/27/2018
 ms.author: andret
-ms.reviewer: hirsin, celested
+ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: 02c7edc84d2ac3a91c33d8f266d022db5cd5cb40
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b75b31ddfc77be5ed651e7b8484e41a4ae73d8d8
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948959"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406534"
 ---
-# <a name="comparing-the-azure-ad-v20-endpoint-with-v10-endpoint"></a>Azure AD v2.0 エンドポイントと v1.0 エンドポイントの比較
+# <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Azure AD v2.0 エンドポイントと v1.0 エンドポイントの比較
 
 新しいアプリケーションを開発する場合、v1.0 エンドポイントと v2.0 エンドポイントの相違点を把握しておくことが重要です。 主な相違点と、v2.0 エンドポイントの既存の制限事項をいくつか以下に示します。
 
 > [!NOTE]
-> Azure AD のシナリオと機能のすべてが、v2.0 エンドポイントでサポートされるわけではありません。 v2.0 エンドポイントを使用する必要があるかどうかを判断するには、 [v2.0 の制限事項](#limitations)に関するページをお読みください。
+> Azure Active Directory (Azure AD) のシナリオおよび機能のすべてが v2.0 エンドポイントでサポートされているわけではありません。 v2.0 エンドポイントを使用する必要があるかどうかを判断するには、 [v2.0 の制限事項](#limitations)に関するページをお読みください。
 
 ## <a name="who-can-sign-in"></a>サインインできるユーザー
 
@@ -37,7 +37,7 @@ ms.locfileid: "46948959"
 
 * v1.0 エンドポイントでは、職場と学校のアカウント (Azure AD) でのみ、ご利用のアプリケーションにサインインすることができます。
 
-* v2.0 エンドポイントでは、Azure Active Directory からの職場と学校のアカウントと、個人アカウント (MSA) (hotmail.com、outlook.com、msn.com) でサインインできます。
+* v2.0 エンドポイントでは、Azure AD からの職場と学校のアカウント、および個人アカウント (MSA) (hotmail.com、outlook.com、msn.com) でサインインできます。
 
 * v1.0 と v2.0 の両方のエンドポイントで、*[シングルテナント](single-and-multi-tenant-apps.md)* として構成されているアプリケーション、またはテナント固有のエンドポイント (`https://login.microsoftonline.com/{TenantId_or_Name}`) を指すように構成されている*マルチテナント* アプリケーションに対する Azure AD ディレクトリの*[ゲスト ユーザー](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* によるサインインも受け入れられます。
 
@@ -214,15 +214,13 @@ v2.0 エンドポイントを使用すると [OAuth 2.0 で保護された Web A
 
 v2.0 エンドポイントは SAML と WS-Federation をサポートしていません。OpenID 接続と OAuth 2.0 のみをサポートしています。 OAuth プロトコルの一部の機能がまだ v2.0 エンドポイントには組み込まれていません。
 
-現時点では、v2.0 エンドポイントでは、次のプロトコルの機能は "*利用できません*"。
+現時点では、v2.0 エンドポイントでは、次のプロトコルの機能は*使用できない*か、または*サポートされていません*。
 
-* 現時点では、`email` 要求は、省略可能な要求が構成され、その要求の中でスコープに scope=email が指定された場合にのみ返されます。 ただし、この動作は、v2.0 エンドポイントが Open ID Connect と OAuth2.0 標準にさらに準拠するように更新されたときに変更されます。
+* `email` 要求は、省略可能な要求が構成され、その要求の中でスコープに scope=email が指定された場合にのみ返されます。 ただし、この動作は、v2.0 エンドポイントが Open ID Connect および OAuth2.0 標準にさらに準拠するように更新されたときに変更されることが予測されます。
 
 * v2.0 エンドポイントで ID トークン内のロールまたはグループの要求の発行はサポートされていません。
 
-* [OAuth 2.0 リソース所有者パスワード資格情報の付与](https://tools.ietf.org/html/rfc6749#section-4.3)は、v2.0 エンドポイントでサポートされていません。
-
-また、v2.0 エンドポイントは、SAML と WS-Federation プロトコルのいかなる形式もサポートしていません。
+* v2.0 エンドポイントは、[OAuth 2.0 リソース所有者パスワード資格情報の付与](https://tools.ietf.org/html/rfc6749#section-4.3)をサポートしていません。
 
 v2.0 エンドポイントでサポートされているプロトコル機能の範囲について詳しく理解するには、[OpenID Connect および OAuth 2.0 プロトコルに関するリファレンス](active-directory-v2-protocols.md)を参照してください。
 

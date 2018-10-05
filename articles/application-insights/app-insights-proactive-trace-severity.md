@@ -1,8 +1,8 @@
 ---
-title: "スマート検出 - Azure Application Insights におけるトレースの重大度の比率の低下 | Microsoft Docs"
-description: "トレースのテレメトリで異常なパターンを検出するために、Azure Application Insights でアプリケーション トレースを監視します。"
+title: スマート検出 - Azure Application Insights におけるトレースの重大度の比率の低下 | Microsoft Docs
+description: トレースのテレメトリで異常なパターンを検出するために、Azure Application Insights でアプリケーション トレースを監視します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: mbullwin
-ms.openlocfilehash: 29ed195dadb7230df425d6d981a0a482e09ee79f
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 41e972145d2404e46b62521c7d40d997be74a7f9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47093844"
 ---
 # <a name="degradation-in-trace-severity-ratio-preview"></a>トレースの重大度の比率の低下 (プレビュー)
 
@@ -32,9 +33,9 @@ ms.lasthandoff: 12/09/2017
 いいえ。通知は、アプリに確実に問題があることを示すものではありません。 "良好な" トレースと "問題のある" トレースの比率の低下がアプリケーションの問題を示している場合もありますが、比率のこの変化が無害の場合もあります。 たとえば、アプリケーションの新しいフローで既存のフローよりも多くの "問題のある" トレースが生成されたことが原因で変化する場合があります。
 
 ## <a name="how-do-i-fix-it"></a>どのように修正すればよいですか
-通知には、診断プロセスでサポートする診断情報が含まれています。
+通知には、診断プロセスでサポートされる診断情報が含まれています。
 1. **トリアージ**:  通知では影響を受ける操作の数が示されます。 この情報を基に、問題に優先順位を割り当てることができます。
-2. **スコープ**:  問題の影響を受けるのはすべてのトラフィックか、それとも一部の操作だけか。 この情報を通知から取得できます。
-3. **診断**:  サポート情報にリンクしている関連項目とレポートを使用して、問題の詳細な診断に役立てることができます。
+2. **範囲**。 問題の影響を受けるのはすべてのトラフィックか、それとも一部の操作だけか。 この情報を通知から取得できます。
+3. **診断**。 サポート情報にリンクしている関連項目とレポートを使用して、問題の詳細な診断に役立てることができます。
 
 

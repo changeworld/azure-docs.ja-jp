@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 09/25/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 503d5913efe67bd0de738f68921b9631c63acfa8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.component: ''
+ms.openlocfilehash: d1ad629ff5c6909256baa94573d045a8c2c09fb5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116046"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223833"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問
 当初、Log Analytics では、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。  このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。
@@ -83,7 +83,7 @@ Log Analytics のクエリに基づくアラート ルールは現在、[一元�
 | Azure Storage     | ワークスペースの **[詳細設定]** メニュー。 |
 | System Center     | ワークスペースの **[詳細設定]** メニュー。 |
 | Office 365        | 構成の詳細については、[Office 365 管理ソリューションのドキュメント](../operations-management-suite/oms-solution-office-365.md)を参照してください。 |
-| Windows のテレメトリ | Azure portal ではまだ使用できません。 |
+| Windows のテレメトリ | ソリューションの [設定] メニュー。 構成の詳細については、[Azure portal での Windows Analytics](/windows/deployment/update/windows-analytics-azure-portal) に関するページを参照してください。 |
 | ITSM Connector    | ITSM サービスを Log Analytics に接続する手順については、「[ITSM 製品/サービスを IT Service Management Connector に追加する](../log-analytics/log-analytics-itsmc-connections.md)」を参照してください。 |
 
 ### <a name="data"></a>データ
@@ -122,7 +122,7 @@ Log Analytics の使用量とコストは、ワークスペースから **[使�
 
 
 ## <a name="can-i-still-use-the-classic-portal"></a>クラシック ポータルはまだ使用できるのですか?
-限られた期間、https://\<<実際のワークスペース名>\>.portal.mms.microsoft.com という URL でポータルにアクセスできます。 ぜひ Azure portal をご利用のうえ、障害となっている問題がありましたら、LAUpgradeFeedback@microsoft.com までフィードバックをお寄せください。
+限られた期間、 https://\<<実際のワークスペース名>\>.portal.mms.microsoft.com という URL でポータルにアクセスできます。 ぜひ Azure portal をご利用のうえ、障害となっている問題がありましたら、LAUpgradeFeedback@microsoft.com までフィードバックをお寄せください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a047a36112ff599038500f0cb58305f07a5838dd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c6399c2662a655f1c4ba50380a5ac4dde6ddda78
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994821"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221164"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory アクセス トークン
 
@@ -82,7 +82,7 @@ JWT は次の 3 つの部分に分かれています。
 
 | 要求 | 形式 | 説明 |
 |-----|--------|-------------|
-| `aud` | 文字列、アプリケーション ID/URI | トークンの受信者を示します。 アクセス トークンでは、対象の受信者は Azure portal でアプリに割り当てられたアプリのアプリケーション ID です。 アプリでは、この値を検証し、値が一致しない場合はトークンを拒否する必要があります。 |
+| `aud` | 文字列、アプリケーション ID URI | トークンの受信者を示します。 アクセス トークンでは、対象の受信者は Azure portal でアプリに割り当てられたアプリのアプリケーション ID です。 アプリでは、この値を検証し、値が一致しない場合はトークンを拒否する必要があります。 |
 | `iss` | 文字列、STS URI | トークンを作成して返したセキュリティ トークン サービス (STS)、およびユーザーが認証された Azure AD テナントを示します。 トークンが v2.0 エンドポイントによって発行された場合、URI の末尾は `/v2.0` になります。 ユーザーが Microsoft アカウントを持つコンシューマー ユーザーであることを示す GUID は `9188040d-6c67-4c5b-b112-36a304b66dad` です。 要求の GUID 部分を使用して、アプリにサインインできるテナントのセットを制限します (該当する場合)。 |
 | `iat` | int、UNIX タイムスタンプ | "Issued At" は、このトークンの認証がいつ行われたのかを示します。 |
 | `nbf` | int、UNIX タイムスタンプ | "nbf" (not before) 要求は JWT が有効になる日時を示します。これ以前にその JWT を受け入れて処理することはできません。 |

@@ -13,12 +13,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: d4ebecd11f4ca3d12a55cf25db31e31d7f528db8
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: b6d548183cfa548f9ad35f06922752c929e318ac
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343731"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041957"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>アカウントへの 2 段階認証の設定
 2 段階認証とは、他のユーザーの侵入を困難にすることでアカウントの保護に役立つ追加のセキュリティ手順です。 あなたがこの記事を読んでいるということは、おそらく会社や学校の管理者から Multi-Factor Authentication に関するメールを受け取ったと考えられます。 または、サインインしようとして、追加のセキュリティ確認を設定するように求めるメッセージが表示されたのかもしれません。 その場合は、**自動登録プロセスが完了するまでサインインできません**。
@@ -47,6 +47,9 @@ ms.locfileid: "39343731"
 
 ## <a name="use-a-mobile-app-as-the-contact-method"></a>連絡方法としてのモバイル アプリの使用
 この方法を使用する場合は、携帯電話またはタブレットに認証アプリをインストールする必要があります。 この記事で説明する手順は、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[iOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できる Microsoft Authenticator アプリに基づいています。
+
+>[!NOTE]
+>Microsoft Authenticator アプリを使用する必要はありません。 既に別の認証子アプリを使用している場合は、それを引き続き使用できます。
 
 1. ドロップダウン リストから **[モバイル アプリ]** を選択します。
 2. **[確認のため通知を受け取る]** または **[Use verification code (確認コードを使用)]** のいずれかを選択し、**[セットアップ]** を選択します。

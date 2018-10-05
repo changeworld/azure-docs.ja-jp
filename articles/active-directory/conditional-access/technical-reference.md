@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 0055968e4333f5ac7653a37fcd728b040024ee55
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e44b68a2ed2786b449e2680ca4a8ca531058b85c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629849"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432810"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -64,7 +64,7 @@ Microsoft から、次のクラウド アプリに条件付きアクセス ポ�
 
 - Microsoft Power BI 
 
-- Microsoft Visual Studio Team Services
+- Azure DevOps
 
 - Microsoft Teams
 
@@ -192,7 +192,7 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 |Outlook Mobile アプリ|Office 365 Exchange Online|Android、iOS|
 |PowerBI アプリ|PowerBI サービス|Windows 10、Windows 8.1、Windows 7、Android、iOS|
 |Skype for Business|Office 365 Exchange Online|Android、IOS |
-|Visual Studio Team Services アプリ|Visual Studio Team Services|Windows 10、Windows 8.1、Windows 7、iOS、Android|
+|Azure DevOps アプリ|Azure DevOps|Windows 10、Windows 8.1、Windows 7、iOS、Android|
 
 
 
@@ -223,6 +223,9 @@ Chrome ブラウザーにこの拡張機能を自動的に展開するには、�
 - Microsoft Teams
 - Microsoft Visio
 - Microsoft Word
+- Microsoft To-Do
+- Microsoft Stream
+- Microsoft Edge
 
 
 

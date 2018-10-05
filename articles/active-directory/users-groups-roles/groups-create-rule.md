@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/20/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9a2eb8ab4e3ee65e97de578c825bf106aee1b829
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: e418316a74ccf27ec730261957a8b6c64de5d063
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480342"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040603"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>動的グループの作成と状態チェックを行う
 
@@ -29,7 +29,7 @@ Azure Active Directory (Azure AD) では、ユーザーまたはデバイスの�
 
 ## <a name="to-create-a-group-membership-rule"></a>グループ メンバーシップ ルールを作成するには
 
-1. グローバル管理者またはユーザー アカウントの管理者であるアカウントで [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+1. 全体管理者、Intune サービス管理者、またはテナントでユーザー アカウント管理者ロールであるアカウントを使用して、[Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 2. **[グループ]** を選びます。
 3. **[すべてグループ]** を選び、**[新しいグループ]** を選びます。
 

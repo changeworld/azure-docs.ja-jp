@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/16/2018
+ms.date: 09/26/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e98012a012c8569a40fe454a777e5f108bfe0e2e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 72503c9f073a046b81001322cdbb4fb8a1af76cf
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304591"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224122"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: 自動アップグレード
 この機能は、ビルド [ 1.1.105.0 (2016 年 2 月リリース) で導入されました](reference-connect-version-history.md#111050)。  この機能は[ビルド 1.1.561](reference-connect-version-history.md#115610) で更新され、以前サポートされていなかった追加のシナリオがサポートされています。
@@ -38,8 +38,8 @@ Azure AD Connect のインストールを常に最新の状態に保つことは
 
 | 状態 | コメント |
 | --- | --- |
-| Enabled |自動アップグレードが有効です。 |
-| Suspended |システムによる設定だけが可能です。 システムは自動アップグレードを受け付けることができなくなりました。 |
+| 有効 |自動アップグレードが有効です。 |
+| Suspended |システムによる設定だけが可能です。 システムは、自動アップグレードを**現在受け付けることができません**。 |
 | Disabled |自動アップグレードが無効です。 |
 
 `Set-ADSyncAutoUpgrade` を使用して、**有効**と**無効**を切り替えることができます。 システムだけが、状態を **保留**に設定することができます。

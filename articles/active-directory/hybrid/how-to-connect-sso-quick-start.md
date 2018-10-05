@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 532a37c5de7b69c44f0f8502613ac534f57c8ef9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d7906323da8e9ee1571efe908084ae1433884e61
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306441"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405990"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
@@ -124,9 +124,9 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
     結果は次のようになります。
 
-    値: https://autologon.microsoftazuread-sso.com
+    値の名前: https://autologon.microsoftazuread-sso.com
   
-    Data 1
+    値 (データ): 1
 
    >[!NOTE]
    > 一部のユーザーに対してシームレス SSO の使用を許可したくない場合 ( ユーザー共有キオスクでサインインする場合など) は、前述の値を **4** に設定します。 この操作により、Azure AD の URL が [制限付きゾーン] に追加され、シームレス SSO は常に失敗するようになります。

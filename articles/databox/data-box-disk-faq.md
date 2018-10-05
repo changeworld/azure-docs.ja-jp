@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/04/2018
+ms.date: 09/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 26f8f59d940c1e4a25e24229c2a3df75052e63e4
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 611dcb2cb904b5d3ee6ce0f571c2d04cfd7e7c35
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783292"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451752"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Azure Data Box Disk とは (プレビュー)
 
@@ -74,10 +74,12 @@ A. Data Box Disk に関して何か問題が発生した場合は、[Data Box Di
 A.  いいえ。 データのサイズとディスクの在庫に応じて、8 TB のディスク (最大 5 台) が発送されます。  
 
 ### <a name="q-how-do-i-unlock-the-data-box-disks"></a>Q. Data Box Disk のロックを解除する方法を教えてください。 
-A.  Azure portal で、対象の Data Box Disk の注文に移動し、**[デバイスの詳細]** に移動します。 パスキーをコピーします。 Azure portal から Data Box Disk ロック解除ツールをダウンロードして抽出し、ディスクにコピーするデータがあるコンピューターから *DataBoxDiskUnlock.exe* を実行します。 パスキーを指定すると、ディスクのロックが解除されます。 ロック解除に使用するパスキーは、すべてのディスクで共通です。
+A.  Azure portal で、対象の Data Box Disk の注文に移動し、**[デバイスの詳細]** に移動します。 パスキーをコピーします。 お使いのオペレーティング システム用の Data Box Disk ロック解除ツールを Azure portal からダウンロードして抽出します。 ディスクにコピーするデータがあるコンピューターでツールを実行します。 パスキーを指定すると、ディスクのロックが解除されます。 ロック解除に使用するパスキーは、すべてのディスクで共通です。 
+
+詳細な手順については、[Windows クライアントでのディスクのロック解除](data-box-disk-deploy-set-up.md#unlock-disks-on-windows-client)または [Linux クライアントでのディスクのロック解除](data-box-disk-deploy-set-up.md#unlock-disks-on-linux-client)に関するページを参照してください。
 
 ### <a name="q-can-i-use-a-linux-host-computer-to-connect-and-copy-the-data-on-to-the-data-box-disks"></a>Q. Linux ホスト コンピューターを使用して、Data Box Disk に接続し、データをコピーすることはできますか?
-A.  いいえ。 サポートされるのは Windows コンピューターだけです。 詳細については、ホスト コンピューターに関して[サポートされるオペレーティング システム](data-box-disk-system-requirements.md)の一覧を参照してください。
+A.  はい。 Linux と Windows のどちらのクライアントを使用しても、Data Box Disk に接続し、データをコピーできます。 詳細については、ホスト コンピューターに関して[サポートされるオペレーティング システム](data-box-disk-system-requirements.md)の一覧を参照してください。
 
 ### <a name="q-my-disks-are-dispatched-but-now-i-want-to-cancel-this-order-why-is-the-cancel-button-not-available"></a>Q. ディスクは発送されましたが、この注文をキャンセルしようと思っています。 [キャンセル] ボタンが利用できないのはなぜでしょうか?
 A.  注文をキャンセルできるのは、ディスクの注文後、発送される前までです。 ディスクが発送された後は、注文をキャンセルすることはできなくなります。 プレビュー期間中はディスクを無料で返送できますが、この点は、ソリューションが一般提供になった時点で変更される可能性が高いと思われます。 
@@ -139,10 +141,10 @@ A.  データ コピーの注文の状態が完了として表示されたら、
 A.  ディスク上の *BlockBlob* フォルダーと *PageBlob* フォルダーにデータをコピーすると、*BlockBlob* フォルダーと *PageBlob* フォルダーのサブフォルダーごとのコンテナーが Azure Storage アカウントに作成されます。 *BlockBlob* フォルダーと *PageBlob* フォルダーの直下にコピーしたファイルは、Azure Storage アカウントの *$root* という既定のコンテナーに置かれます。 
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>Q. コンテナーに付けた名前が Azure の要件に従っていないことに気付きました。 Azure へのデータのアップロードは失敗しますか?
-A. コンテナー名に大文字が使われている場合、それらは自動的に小文字へと変換されます。 それ以外の点で名前付け規則に違反している場合 (特殊文字、他の言語など)、アップロードは失敗します。
+A. コンテナー名に大文字が使われている場合、それらは自動的に小文字へと変換されます。 それ以外の点で名前付け規則に違反している場合 (特殊文字、他の言語など)、アップロードは失敗します。 詳細については、[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions)を参照してください。
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-multiple-data-box-disks"></a>Q. 複数の Data Box Disk にコピーしたデータは、どのようにして確認すればよいでしょうか?
-A.  データのコピーが完了した後、*AzureImportExport* フォルダーに用意されている `AzureExpressDiskService.cmd` を実行することで、検証用のチェックサムを生成できます。 ディスクが複数ある場合は、ディスクごとにコマンド ウィンドウを開いてこのコマンドを実行する必要があります。 データのサイズによっては、この操作にかなり (数時間など) 時間がかかる場合があるので注意してください。
+A.  データのコピーが完了した後、*DataBoxDiskImport* フォルダーに用意されている `DataBoxDiskValidation.cmd` を実行することで、検証用のチェックサムを生成できます。 ディスクが複数ある場合は、ディスクごとにコマンド ウィンドウを開いてこのコマンドを実行する必要があります。 データのサイズによっては、この操作にかなり (数時間など) 時間がかかる場合があるので注意してください。
 
 ### <a name="q-what-happens-to-my-data-after-i-have-returned-the-disks"></a>Q. 返送したディスクのデータは、その後、どうなるのですか?
 A.  Azure へのデータのコピーが完了した後、そのデータは、NIST SP 800-88 Revision 1 のガイドラインに従ってディスクから確実に消去されます。  

@@ -1,21 +1,22 @@
 ---
-title: Azure 上の Custom Speech Service でサポートされるロケールと言語 | Microsoft Docs
+title: サポートされるロケールと言語 - Custom Speech Service
+titlesuffix: Azure Cognitive Services
 description: Cognitive Services の Custom Speech Service でサポートされる言語の概要。
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1f186681c7e46d2e47ed7eee55c8f61290c48fcb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 34af6673689244364ab3a1fe3f2a6ab056ea8598
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987528"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223957"
 ---
 # <a name="supported-locales-in-custom-speech-service"></a>Custom Speech Service でサポートされるロケール
 Custom Speech Service では、次のロケールのモデルのカスタマイズが現在サポートされています。

@@ -10,15 +10,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/14/2018
+ms.topic: conceptual
+ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 97cc6d6e922ab0bedd729eddca754ae016f041bf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0413357b6e17bf66b0ae9b504bc23b9702d03c91
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958018"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220977"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -47,7 +47,7 @@ Log Analytics クエリ言語は、単純なログ検索に適している一方
 ![ログ](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Azure Monitor が収集するデータ
-Log Analytics はさまざまなソースからデータを収集できます。 アプリケーションやそれが依存する運用やサービスから、プラットフォーム自体に至るまで、アプリケーションのさまざまな階層のデータ監視を検討することができます。 Azure Monitor は、以下のそれぞれの層からデータを収集します。
+Azure Monitor はさまざまなソースからデータを収集できます。 アプリケーションやそれが依存する運用やサービスから、プラットフォーム自体に至るまで、アプリケーションのさまざまな階層のデータ監視を検討することができます。 Azure Monitor は、以下のそれぞれの層からデータを収集します。
 
 - **アプリケーション監視データ:** プラットフォームを問わず、記述したコードのパフォーマンスと機能に関するデータ。
 - **ゲスト OS 監視データ:** アプリケーションが実行されているオペレーティング システムに関するデータ。 これは Azure、別のクラウド、またはオンプレミスで実行できます。 
@@ -62,7 +62,7 @@ Azure サブスクリプションを作成して仮想マシンや Web アプリ
 [アプリケーションにインストルメンテーション パッケージを追加](../application-insights/app-insights-azure-web-apps.md)すると、Application Insights が有効になり、ページ ビュー、アプリケーションの要求、例外など、アプリケーションに関する詳細情報を収集できます。 さらにアプリケーションの可用性を検証するには、ユーザー トラフィックをシミュレートする[可用性テスト](../application-insights/app-insights-monitor-web-app-availability.md)を構成します。
 
 ### <a name="custom-sources"></a>カスタム ソース
-Azure Monitor では、[Data Collector API](../log-analytics/log-analytics-data-collector-api.md) を使用して任意の REST クライアントからログ データを収集できます。 これにより、カスタム監視シナリオを作成し、他のソースに利用統計情報を公開していないリソースにまで監視を拡張することができます。
+Azure Monitor では、[Data Collector API](../log-analytics/log-analytics-data-collector-api.md) を使用して任意の REST クライアントからログ データを収集できます。 これにより、カスタム監視シナリオを作成し、他のソースを通じてテレメトリが公開されないリソースも監視対象に含めることができます。
 
 
 
@@ -145,9 +145,6 @@ Azure Monitor のメトリックとログの読み取りや書き込み、生成
 ## <a name="next-steps"></a>次の手順
 各項目の詳細情報
 
-* [Azure Monitor](https://azure.microsoft.com/services/monitor/)。コアな監視のメトリックとアラートの使用を開始します。
-* [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/) (App Service Web アプリの問題を診断する場合)。
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/)。収集した監視データとログを分析する場合は、こちらをご覧ください。
-
-
-
+* [メトリックとログ](../monitoring/monitoring-data-collection.md) Azure Monitor によって収集されたデータについては、こちらをご覧ください。
+* [データ ソース](../monitoring/monitoring-data-sources.md) アプリケーションのさまざまなコンポーネントでテレメトリを送信する方法については、こちらをご覧ください。
+* [Log Analytics](../log-analytics/log-analytics-queries.md) 収集したデータを分析する場合は、こちらをご覧ください。

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/19/2018
 ms.author: magoedte
-ms.openlocfilehash: e8723bd8e26eb66d9333c2093b5ada8bc78ca14b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 308a447ff99cd11ad6a28df0bdb515764b0f546b
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989603"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063457"
 ---
 # <a name="azure-monitor-for-vms-frequently-asked-questions"></a>VM 用 Azure Monitor についてよく寄せられる質問
 この Microsoft FAQ では、Microsoft Azure の VM 用 Azure Monitor についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -93,3 +93,6 @@ VM 用 Azure Monitor のマップ機能は Service Map に基づいています�
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>[パフォーマンス] タブのネットワーク グラフと Azure VM の概要ページのネットワーク グラフが異なるのはなぜですか?
 
 Azure VM の概要ページには、ゲスト VM でのアクティビティのホストの測定に基づいてグラフが表示されます。  Azure VM の概要のネットワーク グラフでは、課金対象となるネットワーク トラフィックのみが表示されます。  これには、VNET 間トラフィックは含まれません。  VM 用 Azure Monitor に表示されるデータとグラフは、ゲスト VM のデータに基づいており、ネットワーク グラフには、VNET 間も含め、その VM に対する受信および送信のすべての TCP/IP トラフィックが表示されます。
+
+## <a name="next-steps"></a>次の手順
+仮想マシンの監視を有効にするための要件と方法を理解するため、「[Azure Monitor for VM の配布準備をする](monitoring-vminsights-onboard.md)」を確認します。

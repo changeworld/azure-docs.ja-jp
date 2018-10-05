@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6048a17bf50ecac691c7cf687f87e454c54ee9d9
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 839e462522be4f492010ca1c22631cb4dd6affe4
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521885"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064433"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Application Insights を使用してライブ Azure Web アプリをプロファイルする
 
-Azure Application Insights のこの機能は Azure App Service の Web Apps 機能のために一般公開されており、Azure コンピューティング リソースに対してはプレビューの段階です。 [プロファイラーのオンプレミスの使用に関してはこちらをご覧ください](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers)。
+Azure Application Insights のこの機能は、Azure App Service の Web Apps 機能と Azure コンピューティング リソースのために一般公開されています。 [プロファイラーのオンプレミスの使用に関してはこちらをご覧ください](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers)。
 
 この記事では、[Application Insights](app-insights-overview.md) を使用したときにライブ Web アプリケーションの各メソッドで費やされる時間について説明します。 Application Insights Profiler ツールは、アプリによって処理されたライブ要求の詳細なプロファイルを表示します。 Profiler は、ほとんどの時間を使用する*ホット パス*を強調します。 さまざまな応答時間を持つ要求がサンプリングごとにプロファイルされます。 さまざまな手法を使用することによって、アプリケーションに関連付けられたオーバーヘッドを最小限に抑えることができます。
 
@@ -45,9 +45,9 @@ Web アプリをデプロイ後、ソース コードに App Insights SDK が含
 
     ![Profiler 用のアプリ設定][profiler-app-setting]
 
-### <a name="enable-profiler-for-azure-compute-resources-preview"></a>Azure コンピューティング リソースに対して Profiler を有効にする (プレビュー)
+### <a name="enable-profiler-for-azure-compute-resources"></a>Azure コンピューティング リソースに対して Profiler を有効にする
 
-詳細については、[Azure コンピューティング リソースのためのプレビュー バージョンの Profiler](https://go.microsoft.com/fwlink/?linkid=848155) に関するページを参照してください。
+詳細については、[Azure コンピューティング リソース用のバージョンの Profiler](https://go.microsoft.com/fwlink/?linkid=848155) に関するページを参照してください。
 
 ## <a name="view-profiler-data"></a>プロファイラー データを表示する
 
@@ -76,8 +76,7 @@ Microsoft サービス プロファイラーでは、アプリのパフォーマ
 
 ### <a id="jitnewobj"></a>オブジェクトの割り当て (clr!JIT\_New または clr!JIT\_Newarr1)
 
-
-  **clr!JIT\_New** と **clr!JIT\_Newarr1** は、マネージド ヒープからメモリを割り当てる .NET Framework のヘルパー関数です。 **clr!JIT\_New** は、オブジェクトが割り当てられるときに呼び出されます。 **clr!JIT\_Newarr1** は、オブジェクト配列が割り当てられるときに呼び出されます。 通常、これらの 2 つの関数は高速であり、比較的短時間で完了します。 タイムラインで **clr!JIT\_New** または **clr!JIT\_Newarr1** がかなり長時間かかっていることが確認された場合は、そのコードが多数のオブジェクトを割り当て、大量のメモリを消費している可能性があることを示しています。
+**clr!JIT\_New** と **clr!JIT\_Newarr1** は、マネージド ヒープからメモリを割り当てる .NET Framework のヘルパー関数です。 **clr!JIT\_New** は、オブジェクトが割り当てられるときに呼び出されます。 **clr!JIT\_Newarr1** は、オブジェクト配列が割り当てられるときに呼び出されます。 通常、これらの 2 つの関数は高速であり、比較的短時間で完了します。 タイムラインで **clr!JIT\_New** または **clr!JIT\_Newarr1** がかなり長時間かかっていることが確認された場合は、そのコードが多数のオブジェクトを割り当て、大量のメモリを消費している可能性があることを示しています。
 
 ### <a id="theprestub"></a>コードの読み込み (clr!ThePreStub)
 
@@ -205,7 +204,7 @@ Profiler が有効になった Web Apps リソースに Web アプリを再デ�
 
 *ディレクトリが空ではありません 'D:\\home\\site\\wwwroot\\App_Data\\jobs'*
 
-このエラーは、スクリプトまたは Visual Studio Team Services デプロイ パイプラインから Web 配置を実行した場合に発生します。 解決するには、次の追加デプロイ パラメーターを、Web 配置タスクに追加します。
+このエラーは、スクリプトまたは Azure DevOps デプロイ パイプラインから Web 配置を実行した場合に発生します。 解決するには、次の追加デプロイ パラメーターを、Web 配置タスクに追加します。
 
 ```
 -skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'

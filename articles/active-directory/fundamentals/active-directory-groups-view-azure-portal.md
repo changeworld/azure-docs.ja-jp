@@ -1,45 +1,133 @@
 ---
-title: Azure AD ですべての既存のグループを表示する | Microsoft Docs
-description: Azure Active Directory でグループを表示または検索する方法
+title: Azure Active Directory で組織のグループとメンバーを表示するためのクイック スタート | Microsoft Docs
+description: Azure portal を使用して、組織のグループとそれらに割り当てられているメンバーを検索し、表示する方法に関する手順のクイック スタート。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: quickstart
-ms.date: 08/28/2017
+ms.date: 09/24/2018
 ms.author: lizross
-ms.custom: H1Hack27Feb2017;it-pro
+ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: 4022bfc465f87fe086de5d7198dac1d748ddbca6
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 9da9f055163f5df4ea064bd46caa811e39fba20c
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860450"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056405"
 ---
-# <a name="view-or-search-for-your-user-groups-in-azure-active-directory"></a>Azure Active Directory でユーザー グループを表示または検索する
-この記事では、Azure Active Directory (Azure AD) でグループを表示する方法について説明します。 Azure AD ユーザー管理の機能の 1 つに、グループを使って一度に多数のユーザーにライセンスまたはアクセス許可を割り当てることができる機能があります。
+<!--As a brand-new Azure AD administrator, I need to view my organization’s groups along with the assigned members, so I can manage permissions to apps and services for people in my organization-->
 
-## <a name="how-do-i-see-all-the-groups"></a>すべてのグループを表示する方法
-1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[すべてのサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
+# <a name="quickstart-view-your-organizations-groups-and-members-in-azure-active-directory"></a>クイック スタート: Azure Active Directory で組織のグループとメンバーを表示する
+Azure portal を使用して、組織の既存のグループとグループ メンバーを表示できます。 グループは、制限付きの可能性があるアプリおよびサービスに対して全員が同じアクセスとアクセス許可を必要とするユーザー (メンバー) を管理するために使用されます。
 
-   ![[ユーザーとグループ] を開く](./media/active-directory-groups-view-azure-portal/search-user-management.png)
-3. **[ユーザーとグループ]** ブレードで、**[すべてのグループ]** を選択します。
+このクイック スタートでは、組織の既存のグループすべてを表示し、割り当てられているメンバーを表示します。
 
-   ![グループ ブレードを開く](./media/active-directory-groups-view-azure-portal/view-groups-blade.png)
-4. **[ユーザーとグループ - すべてのグループ]** ブレードでは、表示列の追加または削除、グループを検索するための一覧のフィルター処理、グループの変更 (変更するための十分なアクセス許可が必要) を行うことができます。
+Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。 
+
+## <a name="prerequisites"></a>前提条件
+開始する前に、次のことを行う必要があります。
+
+- Azure Active Directory テナントを作成する。 詳細については、[Azure Active Directory ポータルにアクセスし、新しいテナントを作成](active-directory-access-create-new-tenant.md)することに関するページを参照してください。
+
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインする必要があります。
+
+## <a name="create-a-new-group"></a>新しいグループを作成する 
+_MDM policy - West_ という名前の新しいグループを作成します。 グループの作成に関する詳細については、「[基本的なグループを作成し、メンバーを追加する方法](active-directory-groups-create-azure-portal.md)」を参照してください。
+
+1. **[Azure Active Directory]**、**[グループ]**、**[新しいグループ]** と選択します。
+
+2. **[グループ]** ページの入力を完了します。
+    
+    - **[グループの種類]:** **[セキュリティ]** を選択します
+    
+    - **[グループ名:]** 「_MDM policy - West_」と入力します
+    
+    - **[メンバーシップの種類]**: **[割り当て済み]** を選択します。
+
+3. **作成**を選択します。
+
+## <a name="create-a-new-user"></a>新しいユーザーを作成する
+_Alain Charon_ という名前の新しいユーザーを作成します。 ユーザーは、グループ メンバーとして追加される前に存在している必要があります。 ユーザーの作成に関する詳細については、[ユーザーを追加または削除する方法](add-users-azure-active-directory.md)に関するページを参照してください。
+
+1. **[Azure Active Directory]**、**[ユーザー]**、**[新しいユーザー]** と選択します。
+
+2. **[ユーザー]** ページの入力を完了します。
+
+    - **[名前]:** 「_Alain Charon_」と入力します。
+
+    - **[ユーザー名]:** 「*alain@contoso.com*」と入力します。
+
+3. 提供される自動生成されたパスワードを **[パスワード]** ボックスにコピーし、**[作成]** を選択します。
+
+## <a name="add-a-group-member"></a>グループ メンバーを追加する
+これでグループとユーザーを用意したので、_Alain Charon_ をメンバーとして _MDM policy - West_ グループに追加できます。 グループ メンバーの追加に関する詳細については、[グループ メンバーを追加または削除する方法](active-directory-groups-members-azure-portal.md)に関するページを参照してください。
+
+1. **[Azure Active Directory]** > **[グループ]** を選択します。
+
+2. **[グループ - すべてのグループ]** ページから、**[MDM policy - West]** グループを検索して選択します。
+
+3. **[MDM policy - West の概要]** ページで、**[管理]** 領域から **[メンバー]** を選択します。
+
+4. **[メンバーの追加]** を選択してから、**[Alain Charon]** を検索して選択します。
+
+5. **[選択]** を選択します。
+
+## <a name="view-all-groups"></a>すべてのグループを表示する
+Azure portal の **[グループ - すべてのグループ]** ページでは、組織のすべてのグループを参照できます。
+
+- **[Azure Active Directory]** > **[グループ]** を選択します。
+
+    **[グループ - すべてのグループ]** ページが開き、アクティブなグループがすべて表示されます。
+
+    ![既存のグループをすべて表示している [グループ - すべてのグループ] ページ](media/active-directory-groups-view-azure-portal/groups-all-groups-blade-with-all-groups.png)
+
+## <a name="search-for-the-group"></a>グループを検索する
+**[グループ - すべてのグループ]** ページを検索し、**[MDM policy - West]** グループを見つけます。
+
+1. **[グループ - すべてのグループ]** ページで、**[検索]** ボックスに「_MDM_」と入力します。
+
+    _[MDM policy - West]_ グループを含む検索結果が **[検索]** ボックスの下に表示されます。
+
+    ![検索ボックスがいっぱいの [グループ - すべてのグループ] ページ](media/active-directory-groups-view-azure-portal/search-for-specific-group.png)
+
+3. **[MDM policy – West]** グループを選択します。
+
+4. **[MDM policy – West の概要]** ページで、そのグループのメンバー数を含め、グループの情報を参照します。
+
+    ![メンバー情報を含む [MDM policy – West の概要] ページ](media/active-directory-groups-view-azure-portal/group-overview-blade.png)
+
+## <a name="view-group-members"></a>グループ メンバーを表示する
+これでグループが見つかったので、割り当てられているすべてのメンバーを表示できます。
+
+- **[管理]** 領域から **[メンバー]** を選択し、_Alain Charon_ を含め、その特定のグループに割り当てられているメンバー名の完全な一覧を確認します。
+
+    ![[MDM policy – West] グループに割り当てられているメンバーの一覧](media/active-directory-groups-view-azure-portal/groups-all-members.png)
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+このグループは、このドキュメントの**使用方法のガイド**のセクションで提供されている使用方法のプロセスのいくつかで使用されています。 しかし、このグループを使用しないのであれば、次の手順を使用して、割り当てられているメンバーを削除できます。
+
+1. **[グループ - すべてのグループ]** ページで **[MDM policy - West]** グループを検索します。
+
+2.  **[MDM policy – West]** グループを選択します。
+
+    **[MDM policy – West の概要]** ページが表示されます。
+
+3. **[削除]** を選択します。
+
+    グループと、それに関連付けられているメンバーが削除されます。
+
+    ![[削除] リンクが強調表示されている [MDM policy – West の概要] ページ](media/active-directory-groups-view-azure-portal/group-overview-blade-delete.png)
+
+    >[!Important]
+    >これにより、ユーザー Alain Charon は削除されず、削除されたグループ内の彼のメンバーシップだけが削除されました。
 
 ## <a name="next-steps"></a>次の手順
-次の記事は、Azure Active Directory に関する追加情報を示します。
+サブスクリプションを Azure AD ディレクトリに関連付ける方法を説明している次の記事に進みます。
 
-* [既存のグループの表示](active-directory-groups-view-azure-portal.md)
-* [新しいグループの作成とメンバーの追加](active-directory-groups-create-azure-portal.md)
-* [グループの設定の管理](active-directory-groups-settings-azure-portal.md)
-* [グループのメンバーの管理](active-directory-groups-members-azure-portal.md)
-* [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
-* [グループ内のユーザーの動的ルールの管理](../users-groups-roles/groups-dynamic-membership.md)
+> [!div class="nextstepaction"]
+> [Azure サブスクリプションを関連付ける](active-directory-how-subscriptions-associated-directory.md)

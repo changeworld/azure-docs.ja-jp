@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 92ebd399cea88440e0f76ee1f34cb5930d3121d9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c4e237af7e85223839b3f26bcc33007f8abb9d0a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578686"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034231"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Hybrid Runbook Worker を使用してデータ センターまたはクラウドのリソースを自動化する
 
@@ -26,11 +26,11 @@ Azure Automation の Runbook は Azure クラウド プラットフォームで�
 
 各 Hybrid Runbook Worker は、エージェントのインストール時に指定する Hybrid Runbook Worker グループのメンバーです。 グループには単一のエージェントを含めることができますが、高可用性グループに複数のエージェントをインストールすることができます。
 
-Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグループを指定します。 グループの各ワーカーは、実行可能なジョブがあるかどうかを確認するために Azure Automation をポーリングします。 ジョブが実行可能な場合、ジョブに最初に到達した worker がこれを実行します。 特定の worker を指定することはできません。
+Hybrid Runbook Worker で Runbook を開始する場合は、実行されるグループを指定します。 グループの各ワーカーは、実行可能なジョブがあるかどうかを確認するために Azure Automation をポーリングします。 ジョブが実行可能な場合、ジョブに最初に到達した worker がこれを実行します。 特定の worker を指定することはできません。 ジョブの[制限](../azure-subscription-service-limits.md#automation-limits)は、Azure サンドボックスと Hybrid Runbook Worker の両方に適用されます。
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker をインストールする
 
-Hybrid Runbook worker をインストールするプロセスは OS によって異なります。 次の表には、インストールで使用できる方法のリンクが含まれています。 
+Hybrid Runbook worker をインストールするプロセスは OS によって異なります。 次の表には、インストールで使用できる方法のリンクが含まれています。
 
 Windows Hybrid Runbook Worker をインストールして構成するには、2 つの方法を使用できます。 Automation Runbook を使用して、Windows コンピューターを構成するプロセスを完全に自動化する方法をお勧めします。 2 番目の方法は、ロールを手動でインストールして構成する手順を段階的に追うものです。 Linux マシンでは、コンピューターにエージェントをインストールする Python スクリプトを実行します。
 

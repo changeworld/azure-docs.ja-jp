@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 27f271a20af2bb9910f1cf7d63e6033d78e67b83
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f2f2208f325728275706eeed9ff16e8afc3b11cf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41917735"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166879"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>チュートリアル: ログイン画面からの Azure AD パスワードのリセット
 
@@ -45,8 +45,6 @@ ms.locfileid: "41917735"
    * 必要に応じて、そのプロファイルについてのわかりやすい説明を入力します。
    * プラットフォーム: **Windows 10 以降**
    * プロファイルの種類: **カスタム**
-
-   ![CreateProfile][CreateProfile]
 
 3. **設定**を構成します。
    * "パスワードのリセット" リンクを有効にするには、次の OMA-URI 設定を**追加**します。
@@ -100,7 +98,6 @@ ms.locfileid: "41917735"
 ![ログイン画面][LoginScreen]
 
 ユーザーがログインを試みると、ログイン画面に "パスワードのリセット" というリンクが表示されます。このリンクを選択することで、セルフ サービスによるパスワードのリセット機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
-ユーザーがログインを試みると、ログイン画面に "パスワードのリセット" というリンクが表示されます。このリンクを選択することで、セルフ サービスによるパスワードのリセット機能が作動します。 ユーザーがパスワードをリセットするには、この機能を使用するだけでよく、別のデバイスを使用して Web ブラウザーにアクセスする必要はありません。
 
 [職場または学校アカウントのパスワードをリセットする方法](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)に関するページで、この機能の使い方がユーザー向けに説明されています。
 
@@ -116,6 +113,10 @@ Hyper-V を使用してこの機能をテストすると、"パスワードの�
 
 Windows のロック画面がレジストリ キーまたはグループ ポリシーを使って無効にされている場合、"**パスワードのリセット**" が利用できなくなります。
 
+Azure AD 監査ログには、パスワードのリセットが発生した IP アドレスと ClientType に関する情報が含まれます。
+
+![Azure AD 監査ログにおけるログオン画面のパスワードのリセットの例](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 このチュートリアルの一部として構成した機能を今後は使用しない場合は、作成した Intune デバイス構成プロファイルまたはレジストリ キーを削除します。
@@ -127,6 +128,5 @@ Windows のロック画面がレジストリ キーまたはグループ ポリ�
 > [!div class="nextstepaction"]
 > [サインイン時にリスクを評価する](tutorial-risk-based-sspr-mfa.md)
 
-[CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "Windows 10 ログイン画面に表示される "パスワードのリセット" リンクを有効にするための Intune デバイス構成プロファイルを作成する"
 [Assignment]: ./media/tutorial-sspr-windows/profile-assignment.png "Intune デバイス構成ポリシーを Windows 10 デバイスのグループに割り当てる"
 [LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "Windows 10 ログイン画面に表示される "パスワードのリセット" リンク"
