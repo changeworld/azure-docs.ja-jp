@@ -14,7 +14,7 @@ items:
     items:
     - name: 意図の取得
       items:
-      - name: C#の場合
+      - name: C#
         href: luis-get-started-cs-get-intent.md
       - name: Go
         href: luis-get-started-go-get-intent.md
@@ -32,7 +32,7 @@ items:
         href: luis-get-started-ruby-get-intent.md
     - name: モデルの変更
       items:
-      - name: C#の場合
+      - name: C#
         href: luis-get-started-cs-add-utterance.md
       - name: Go
         href: luis-get-started-go-add-utterance.md
@@ -182,13 +182,13 @@ items:
         items:
         - name: Node.js
           href: luis-nodejs-tutorial-build-bot-framework-sample.md
-        - name: C#の場合
+        - name: C#
           href: luis-csharp-tutorial-build-bot-framework-sample.md
       - name: Application Insights
         items:
         - name: Node.js
           href: luis-tutorial-function-appinsights.md
-        - name: C#の場合
+        - name: C#
           href: luis-tutorial-bot-csharp-appinsights.md
   - name: 予測精度の改善
     items:
@@ -298,7 +298,7 @@ items:
     href: https://aka.ms/azure-powershell-cognitiveservices
   - name: SDK
     items:
-    - name: C#の場合
+    - name: C#
       items:
       - name: SDK
         href: https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/LUIS

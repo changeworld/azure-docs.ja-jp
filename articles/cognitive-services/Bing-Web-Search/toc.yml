@@ -10,7 +10,7 @@ items:
   items:
   - name: REST API
     items:
-    - name: C#の場合
+    - name: C#
       href: quickstarts/csharp.md
     - name: Go
       href: quickstarts/go.md
@@ -26,7 +26,7 @@ items:
       href: quickstarts/ruby.md
   - name: SDK
     items:
-    - name: C#の場合
+    - name: C#
       href: web-search-sdk-quickstart.md
     - name: Java
       href: web-sdk-java-quickstart.md

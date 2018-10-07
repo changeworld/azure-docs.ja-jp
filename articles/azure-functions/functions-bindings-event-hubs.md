@@ -71,10 +71,10 @@ Functions がスケーリングするインスタンスの数 `N` が、イベ�
 
 言語固有の例をご覧ください。
 
-* [C# を選択した場合](#trigger---c-example)
+* [C#](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript を選択した場合](#trigger---javascript-example)
+* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
@@ -405,10 +405,10 @@ Event Hubs 出力バインドを使用して、イベント ストリームに�
 
 言語固有の例をご覧ください。
 
-* [C# を選択した場合](#output---c-example)
+* [C#](#output---c-example)
 * [C# スクリプト (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
-* [JavaScript を選択した場合](#output---javascript-example)
+* [JavaScript](#output---javascript-example)
 * [Java](#output---java-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例

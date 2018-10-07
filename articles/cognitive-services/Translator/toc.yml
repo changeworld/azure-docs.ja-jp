@@ -7,7 +7,7 @@ items:
     href: translator-info-overview.md
 - name: クイック スタート
   items:
-  - name: C#の場合
+  - name: C#
     items:
     - name: テキストを翻訳する
       href: quickstart-csharp-translate.md

@@ -48,7 +48,7 @@ items:
   - name: 音声を認識する
     displayName: recognize speech, speech recognition, speech to text, stt
     items:
-    - name: C#の場合
+    - name: C#
       href: how-to-recognize-speech-csharp.md
     - name: C++
       href: how-to-recognize-speech-cpp.md
@@ -59,7 +59,7 @@ items:
   - name: 音声から意図を認識する
     displayName: recognize intent, intent recognition, language understanding service, luis
     items:
-    - name: C#の場合
+    - name: C#
       href: how-to-recognize-intents-from-speech-csharp.md
     - name: C++
       href: how-to-recognize-intents-from-speech-cpp.md
@@ -68,7 +68,7 @@ items:
   - name: 音声を翻訳する
     displayName: translate speech, speech translation, translator, s2s, speech to speech
     items:
-    - name: C#の場合
+    - name: C#
       href: how-to-translate-speech-csharp.md
     - name: C++
       href: how-to-translate-speech-cpp.md

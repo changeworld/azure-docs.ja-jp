@@ -9,7 +9,7 @@ items:
   items:
   - name: 作業開始
     href: quickstart.md
-  - name: C#の場合
+  - name: C#
     href: csharp.md
   - name: Java
     href: java.md

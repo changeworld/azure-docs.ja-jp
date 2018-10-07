@@ -28,7 +28,7 @@ ms.locfileid: "47094527"
 * [.NET のログ記録アダプター](https://github.com/Microsoft/ApplicationInsights-dotnet-logging/releases)
 * [ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-aspnet5/releases)
 * [Java](https://github.com/Microsoft/ApplicationInsights-Java)
-* [JavaScript を選択した場合](https://github.com/Microsoft/ApplicationInsights-JS/commits/master)
+* [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/commits/master)
 * [Visual Studio ツール](app-insights-release-notes-vsix.md)
 * [その他のプラットフォーム](https://github.com/Microsoft/ApplicationInsights-Home)
 

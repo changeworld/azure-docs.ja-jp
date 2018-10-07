@@ -77,7 +77,7 @@ Azure Service Bus で AMQP 1.0 がサポートされるため、仲介型メッ�
 | C |Apache Qpid Proton-C |
 | PHP |Apache Qpid Proton-PHP |
 | Python |Apache Qpid Proton-Python |
-| C#の場合 |AMQP .Net Lite |
+| C# |AMQP .Net Lite |
 
 **図 2: AMQP 1.0 クライアント ライブラリの表**
 

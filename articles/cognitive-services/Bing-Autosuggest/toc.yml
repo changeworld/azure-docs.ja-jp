@@ -7,7 +7,7 @@ items:
     href: get-suggested-search-terms.md
 - name: REST API のクイック スタート
   items:
-  - name: C#の場合
+  - name: C#
     href: quickstarts/csharp.md
   - name: Java
     href: quickstarts/java.md
