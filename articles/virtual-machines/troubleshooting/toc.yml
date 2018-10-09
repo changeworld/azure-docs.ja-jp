@@ -1,4 +1,6 @@
 items:
+- name: VM の起動が停止し、"Windows の準備をしています。 コンピューターの電源を切らないでください。" が表示される
+  href: troubleshoot-vm-boot-configure-update.md
 - name: Azure VM のトラブルシューティング
   href: index.md
 - name: 割り当ての失敗
@@ -117,9 +119,9 @@ items:
   href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: システムの再起動を理解する
   href: understand-vm-reboot.md
-ms.openlocfilehash: 296e296b52a6ad1a9809d94f2228411f027d0758
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 088840fcab2ae9d47098d9d2f06af87b88c93e4e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585885"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857450"

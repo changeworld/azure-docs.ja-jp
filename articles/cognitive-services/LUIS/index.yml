@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9c0e5c668210ec7fff5c7e2bb37afb123db8c5c4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 585a16280583acf7ab9952a9c76d4557ea0d3b0d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983312"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867755"
 documentType: LandingData
 title: Language Understanding (LUIS) のドキュメント
 metadata:
@@ -129,4 +129,4 @@ sections:
     - title: PowerShell
       html: <p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
     - title: CLI
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Azure CLI</a></p>
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices">Azure CLI</a></p>

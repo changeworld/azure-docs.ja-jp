@@ -143,7 +143,7 @@ Azure Stack 仮想マシンには、次の 3 種類のメイン ディスクが�
 
 一部のデプロイでは、より高度な構成手法を使用することで、パフォーマンスがさらに向上する場合があります。 パフォーマンスの向上を実現する際に役立つ SQL Server 機能をいくつか以下にリストします。
 
-- **Azure Storage にバックアップ****する。** Azure Stack Virtual Machines で実行される SQL Server のバックアップを実行する際は、SQL Server Backup to URL を使用できます。 SQL Server 2012 SP1 CU2 以降で使用できるこの機能は、接続されているデータ ディスクにバックアップする場合に推奨されます。
+- **Azure Storage にバックアップ** **する。** Azure Stack Virtual Machines で実行される SQL Server のバックアップを実行する際は、SQL Server Backup to URL を使用できます。 SQL Server 2012 SP1 CU2 以降で使用できるこの機能は、接続されているデータ ディスクにバックアップする場合に推奨されます。
 
     Azure Storage を使用してバックアップまたは復元を行うときは、「[SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://msdn.microsoft.com/library/jj919149.aspx)」と「[Microsoft Azure に格納されたバックアップからの復元](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017)」に記載されている推奨事項に従ってください。 [Azure Virtual Machines での SQL Server の自動バックアップ](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup)を使用して、バックアップを自動化することもできます。
 

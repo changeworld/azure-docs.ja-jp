@@ -22,6 +22,7 @@
 #### [2 - チーム開発](team-development-nodejs.md)
 
 ## 方法
+### [Azure Cloud Shell を使用して Kubernetes クラスターを作成する](how-to/create-cluster-cloud-shell.md)
 ### [Azure Dev Spaces を共有する](how-to/share-dev-spaces.md)
 ### [シークレットを管理する](how-to/manage-secrets.md)
 ### [カスタム NuGet フィードを使用する](how-to/use-custom-nuget-feed.md)

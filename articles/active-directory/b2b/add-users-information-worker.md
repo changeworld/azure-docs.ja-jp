@@ -80,7 +80,7 @@ ms.locfileid: "45983065"
 2. ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
 3. **[グループ]** を選びます。
 4. **[設定]** で、**[全般]** を選択します。
-5. **[セルフサービス グループ管理]** で、**[Owners can manage group membership requests in the Access Panel]\(所有者がアクセス パネルでグループ メンバーシップの要求を管理できる)\** の横にある **[はい]** を選択します。
+5. **[セルフサービス グループ管理]** で、**[Owners can manage group membership requests in the Access Panel]\(所有者がアクセス パネルでグループ メンバーシップの要求を管理できる)** の横にある **[はい]** を選択します。
 6. **[保存]** を選択します。
 
 ### <a name="create-a-group-to-assign-to-the-app-and-make-the-user-an-owner"></a>アプリに割り当てるグループを作成して、ユーザーを所有者にする

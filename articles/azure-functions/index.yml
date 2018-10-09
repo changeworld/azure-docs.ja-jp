@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0a933667ba314d1bf8cd7259fb657f85ebe0a21f
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 67e3e3d45c26882fda3689a6ae3ab35c204c4f26
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393844"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857943"
 documentType: LandingData
 title: Azure Functions のドキュメント
 metadata:
@@ -47,6 +47,18 @@ sections:
         src: media/index/stopwatch.svg
       text: Timer
       href: /azure/azure-functions/functions-create-scheduled-function
+    - image:
+        src: media/index/cosmosdb.svg
+      text: Azure Cosmos DB
+      href: /azure/azure-functions/functions-create-cosmos-db-triggered-function
+    - image:
+        src: media/index/blob.svg
+      text: BLOB
+      href: /azure/azure-functions/functions-create-storage-blob-triggered-function
+    - image:
+        src: media/index/storage.svg
+      text: キュー
+      href: /azure/azure-functions/functions-create-storage-queue-triggered-function
   - type: paragraph
     text: ローカルでの開発とデバッグの方法を学習します。
   - type: list

@@ -11,6 +11,8 @@ items:
     href: quickstart-create-first-logic-app-workflow.md
   - name: ロジック アプリの作成 - Visual Studio
     href: quickstart-create-logic-apps-with-visual-studio.md
+  - name: ロジック アプリの作成 - Visual Studio Code
+    href: quickstart-create-logic-apps-visual-studio-code.md
   expanded: true
 - name: チュートリアル
   items:
@@ -38,8 +40,6 @@ items:
       href: logic-apps-create-logic-apps-from-templates.md
     - name: BizTalk Services から移行する
       href: logic-apps-move-from-mabs.md
-    - name: ロジック アプリの作成 - Visual Studio Code
-      href: create-logic-apps-visual-studio-code.md
     - name: ワークフローの実行のコントロール
       items:
       - name: 条件付きステートメント
@@ -371,9 +371,9 @@ items:
     href: https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest
-ms.openlocfilehash: f8546e49cd382e7a5b8cbee735e361b84bb729d4
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 40d1fe669313e946d41d0a31dec5e7390d711c57
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064001"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855291"

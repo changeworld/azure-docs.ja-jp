@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: ecf300b4095b4b6c928f4caddf9ee51423f6e1cc
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a5152f9d9652a32c63c028a363187428d3014c54
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163649"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867597"
 documentType: LandingData
 title: Azure の管理 - ガバナンス
 metadata:
@@ -63,7 +63,7 @@ sections:
     className: cardsZ
     columns: 3
     items:
-    - href: /azure/architecture/cloud-adoption/governance/what-is-governance?toc=/azure/governance/toc.json
+    - href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
       html: <p>以前は、インフラストラクチャからソフトウェアまで、あらゆるレベルのテクノロジの所有権と責任が企業にあることが前提になっていました。 今では、クラウドによって、必要に応じたリソースのプロビジョニングや使用が実現したことで、企業によるテクノロジの利用方法が転換される可能性があります。</p>
       title: エンタープライズ クラウドの導入
     - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
