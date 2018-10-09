@@ -1,26 +1,29 @@
 ---
-title: Azure SQL Database へのアクセスの許可 | Microsoft Docs
-description: Microsoft Azure SQL Database へのアクセスの許可について説明します。
+title: Azure SQL Database と Data Warehouse へのアクセスの許可 | Microsoft Doc
+description: Microsoft Azure SQL Database と SQL Data Warehouse へのアクセスを許可する方法について説明します。
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: sql-data-warehouse
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
-ms.author: carlrab
-ms.openlocfilehash: 2ab2f047839763239358e61f61f0fc962c17d729
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 06/13/2018
+ms.openlocfilehash: a39e65d5a3aff6158c189f392e2db8bd8273ad1b
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647437"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063781"
 ---
-# <a name="azure-sql-database-access-control"></a>Azure SQL Database のアクセス制御
-SQL Database では、セキュリティを提供するために、IP アドレスで接続を制限するファイアウォール規則、ユーザーに ID の指定を要求する認証メカニズム、およびユーザーを特定の操作とデータに限定する承認メカニズムによって、アクセスを制御します。 
+# <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Azure SQL Database と SQL Data Warehouse へのアクセスの制御
+Azure の [SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) では、セキュリティを提供するために、IP アドレスで接続を制限するファイアウォール規則、ユーザーに ID の指定を要求する認証メカニズム、ユーザーを特定の操作とデータに限定する承認メカニズムによってアクセスを制御します。 
 
 > [!IMPORTANT]
-> SQL Database のセキュリティ機能の概要については、[SQL のセキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。 チュートリアルについては、「[Azure SQL Database のセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。
+> SQL Database のセキュリティ機能の概要については、[SQL のセキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。 チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。 SQL Data Warehouse のセキュリティ機能の概要については、[SQL Data Warehouse のセキュリティの概要](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)に関するページを参照してください。
 
 ## <a name="firewall-and-firewall-rules"></a>ファイアウォールとファイアウォール規則
 Microsoft Azure SQL Database は、Azure およびその他のインターネット ベースのアプリケーション用のリレーショナル データベース サービスを提供します。 データを保護するため、ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。 詳細については、「[Azure SQL Database ファイアウォール規則の概要](sql-database-firewall-configure.md)」を参照してください。
@@ -29,7 +32,7 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
 
 接続処理の一部として、Azure 仮想マシンからの接続は worker ロールごとに異なる別の IP アドレスとポートにリダイレクトされます。 ポート番号の範囲は、11000 ～ 11999 です。 TCP ポートの詳細については、「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
 SQL Database は、2 種類の認証をサポートしています。
 
@@ -42,7 +45,7 @@ SQL Database は、2 種類の認証をサポートしています。
 
 ベスト プラクティスとしては、アプリケーションで専用アカウントを使用して認証することをお勧めします。この方法により、アプリケーションに付与されるアクセス許可を制限し、アプリケーション コードが SQL インジェクション攻撃に対して脆弱な場合に、悪意のあるアクティビティのリスクを軽減できます。 [包含データベース ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)を作成する方法をお勧めします。この方法により、アプリがデータベースから直接認証を受けることができます。 
 
-## <a name="authorization"></a>承認
+## <a name="authorization"></a>Authorization
 
 承認とは、Azure SQL Database でユーザーが許可される操作を示すものであり、ユーザー アカウントのデータベース [ロールのメンバーシップ](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/database-level-roles)と[オブジェクト レベルのアクセス許可](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)によって制御されます。 ベスト プラクティスとして、必要最低限の特権をユーザーに付与することをお勧めします。 接続しているサーバー管理者のアカウントは db_owner のメンバーであり、データベース内ですべての操作を実行する権限を持ちます。 スキーマのアップグレードやその他の管理操作をデプロイするために、このアカウントを保存します。 アクセス許可が限定された "ApplicationUser" アカウントを使用して、アプリケーションで必要な最小限の特権により、アプリケーションをデータベースに接続します。 詳細については、[ログインの管理](sql-database-manage-logins.md)に関するページを参照してください。
 

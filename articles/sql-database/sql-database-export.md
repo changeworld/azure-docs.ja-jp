@@ -2,19 +2,22 @@
 title: Azure SQL Database を BACPAC ファイルにエクスポートする | Microsoft Docs
 description: Azure Portal を使用して BACPAC ファイルに Azure SQL Database をエクスポートする
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: load & move data
-ms.date: 04/01/2018
-ms.author: carlrab
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: c2f29d8c660e3d39f91bcdd97209d2e88f5ae864
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: a867a57e54efae6d735a9918a637fa3b4f9e37bc
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647954"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160290"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL Database を BACPAC ファイルにエクスポートする
 
@@ -31,7 +34,7 @@ ms.locfileid: "34647954"
 * Blob Storage にエクスポートする場合、BACPAC ファイルの最大サイズは 200 GB です。 大きな BACPAC ファイルをアーカイブするには、ローカル ストレージにエクスポートします。
 * この記事で説明されている方法を用いた Azure Premium Storage への BACPAC ファイルのエクスポートはサポートされていません。
 * Azure SQL Database からのエクスポート操作が 20 時間を超える場合は、操作が取り消されることがあります。 エクスポート中にパフォーマンスを向上させるには、次の操作を実行します。
-  * サービス レベルを一時的に上げる。
+  * コンピューティング サイズを一時的に増やします。
   * エクスポート中のすべての読み取りアクティビティと書き込みアクティビティを中止する。
   * すべての大きなテーブルに null 以外の値を持つ [クラスター化インデックス](https://msdn.microsoft.com/library/ms190457.aspx) を使用する。 クラスター化インデックスがないと、エクスポートが 6 ～ 12 時間よりも時間が長くかかる場合には失敗することがあります。 これは、エクスポート サービスがテーブル スキャンを実行してテーブル全体をエクスポートしようとする必要があることが原因です。 テーブルがエクスポート向けに最適化されているかを判断するための適切な方法として、**DBCC SHOW_STATISTICS** を実行し、*RANGE_HI_KEY* が null 以外の値であり、分布が適切であることを確認する方法があります。 詳細については、「[DBCC SHOW_STATISTICS](https://msdn.microsoft.com/library/ms174384.aspx)」を参照してください。
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 8854f694ce067aaa80a159430a9f48440bcdd95a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 6bd41115f586bf2969dacb772f097d84654f0306
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34701872"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092596"
 ---
 # <a name="resize-a-windows-vm"></a>Windows VM のサイズ変更
 
@@ -53,7 +53,7 @@ $vm.HardwareProfile.VmSize = "<newVMsize>"
 Update-AzureRmVM -VM $vm -ResourceGroupName $resourceGroup
 ```
 
-目的のサイズが表示されない場合は、次のコマンドを実行して VM の割り当てを解除します。その後、VM のサイズを変更して、再起動します。 **<newVMsize>** を目的のサイズに変更します。
+目的のサイズが表示されない場合は、次のコマンドを実行して VM の割り当てを解除します。その後、VM のサイズを変更して、再起動します。 **<newVMsize>** を目的のサイズに置き換えます。
    
 ```powershell
 Stop-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName -Force

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: v-deasim
-ms.openlocfilehash: 98a7fc5c4607115811e17a7cf6acd4e867663833
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 0baa43977099af9c6c0d9c2e4c03abc121ec279d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261306"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47097008"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -117,8 +117,6 @@ Log Analytics を使用してログを保存するには、次の手順に従い
 
 9. 構成を終了するには、**OK** をクリックします。
 
-    ![ポータル - 診断ログ](./media/cdn-diagnostics-log/08_Workspace-resource.png)
-
 10. ワークスペースを作成したら、**診断ログ**ページに戻ります。 新しい Log Analytics ワークスペースの名前を確認します。
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/09_Return-to-logging.png)
@@ -127,7 +125,7 @@ Log Analytics を使用してログを保存するには、次の手順に従い
 
 12. 新しい Log Analytics ワークスペースを表示するには、CDN エンドポイント ページから**コア分析**を選択します。
 
-    ![ポータル - 診断ログ](./media/cdn-diagnostics-log/11_OMS-dashboard.png) 
+    ![ポータル - 診断ログ](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
     これで、Log Analytics ワークスペースがデータをログ記録する準備ができました。 そのデータを使用するためには、[Log Analytics ソリューション](#consuming-diagnostics-logs-from-a-log-analytics-workspace)を使用する必要があります。これについては、この記事の中で後で説明します。
 
@@ -168,17 +166,16 @@ Azure ストレージ アカウントからコア分析データにアクセス�
 2.  ストレージ アカウントを見つけます
 3.  このストレージ アカウントで **Blob Containers** ノードを展開します。
 4.  *Insights-logs-coreanalytics* というコンテナーを選択します。
-5.  右側のページに結果が表示されます。まず第1レベルが *resourceId=* で表示されます。 *PT1H.json* ファイルにたどり着くまで各レベルを選択していきます。 パスの説明については、次の*Blob パス形式*メモを参照してください。
+5.  右側のページに結果が表示されます。まず第1レベルが *resourceId=* で表示されます。 *PT1H.json* ファイルにたどり着くまで各レベルを選択していきます。 パスの説明については、「[BLOB パスの形式](cdn-azure-diagnostic-logs.md#blob-path-format)」を参照してください。
 6.  各 Blob *PT1H.json* ファイルは、特定の CDN エンドポイントまたはカスタム ドメインについての 1 時間の分析ログを表します。
 7.  この JSON ファイルのコンテンツのスキーマは、コア分析ログのセクション スキーマに説明されています。
 
 
-> [!NOTE]
-> **BLOB パスの形式**
-> 
-> コア分析ログは、1 時間ごとに生成され、そのデータは 1 つの Azure BLOB 内に JSON ペイロードとして収集され、格納されます。 Storage Explorer ツールでは '/' がディレクトリの区切り記号と解釈され、階層表示されるため、Azure BLOB のパスは、階層構造が存在するように表示され、BLOB 名が表示されます。 BLOB のこの名前は次の名前付け規則に従っています 
-    
-    resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json
+#### <a name="blob-path-format"></a>BLOB パスの形式
+
+コア分析ログは、1 時間ごとに生成され、そのデータは 1 つの Azure BLOB 内に JSON ペイロードとして収集され、格納されます。 Storage Explorer ツールでは '/' がディレクトリの区切り記号と解釈され、階層表示されるため、Azure BLOB のパスは、階層構造が存在するように表示され、BLOB 名が表示されます。 BLOB のこの名前は次の名前付け規則に従っています   
+
+```resourceId=/SUBSCRIPTIONS/{Subscription Id}/RESOURCEGROUPS/{Resource Group Name}/PROVIDERS/MICROSOFT.CDN/PROFILES/{Profile Name}/ENDPOINTS/{Endpoint Name}/ y={Year}/m={Month}/d={Day}/h={Hour}/m={Minutes}/PT1H.json```
 
 **フィールドの説明:**
 

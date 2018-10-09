@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 09/05/2018
+ms.date: 09/24/2018
 ms.author: jonbeck
-ms.openlocfilehash: 25dec8388c02e834ff3d35965ab9288aca23946d
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 47253fd05cb1df96841b30357ac6e7cfe75c12c5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840837"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039686"
 ---
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシンのサイズ
 
@@ -33,7 +33,7 @@ ms.locfileid: "43840837"
 | [コンピューティングの最適化](sizes-compute.md)        | Fsv2、Fs、F             | 高い CPU 対メモリ比。 トラフィックが中程度の Web サーバー、ネットワーク アプライアンス、バッチ処理、アプリケーション サーバーに適しています。        |
 | [メモリの最適化](../virtual-machines-windows-sizes-memory.md)         | Esv3、Ev3、M、GS、G、DSv2、Dv2  | 高いメモリ対 CPU 比。 リレーショナル データベース サーバー、中～大規模のキャッシュ、およびメモリ内分析に適しています。                 |
 | [ストレージの最適化](../virtual-machines-windows-sizes-storage.md)        | Ls                | 高いディスク スループットと IO。 ビッグ データ、SQL、および NoSQL のデータベースに最適です。                                                         |
-| [GPU](sizes-gpu.md)            | NV、NC、NCv2、NCv3、ND            | 負荷の高いグラフィックスのレンダリングやビデオ編集、ディープ ラーニングを使用したモデル トレーニングと推論 (ND) に特化した仮想マシン。 1 つまたは複数の GPU で利用できます。       |
+| [GPU](sizes-gpu.md)            | NV、NVv2、NC、NCv2、NCv3、ND            | 負荷の高いグラフィックスのレンダリングやビデオ編集、ディープ ラーニングを使用したモデル トレーニングと推論 (ND) に特化した仮想マシン。 1 つまたは複数の GPU で利用できます。       |
 | [ハイ パフォーマンス コンピューティング](sizes-hpc.md) | H       | 高スループットのネットワーク インターフェイス (RDMA) のオプションを備えた、最も高速かつ強力な CPU 仮想マシン。 
 
 

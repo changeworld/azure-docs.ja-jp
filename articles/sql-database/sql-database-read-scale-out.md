@@ -2,19 +2,22 @@
 title: Azure SQL Database - レプリカでの読み取りクエリ | Microsoft Docs
 description: Azure SQL Database は、読み取りスケールアウトと呼ばれる読み取り専用レプリカの処理能力を使用して、読み取り専用ワークロードを負荷分散する機能を提供します。
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: scale-out
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 8/27/2018
+author: anosov1960
 ms.author: sashan
-ms.openlocfilehash: c0fa4a9868aa19032888aa50a0d300dd2e88fcca
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/18/2018
+ms.openlocfilehash: d82f4e03176911804702db2ea18a5bc9a95583a3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124819"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158704"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する (プレビュー)
 
@@ -26,7 +29,7 @@ Premium 階層 ([DTU ベースの購入モデル](sql-database-service-tiers-dtu
 
 ![読み取り専用レプリカ](media/sql-database-managed-instance/business-critical-service-tier.png)
 
-これらのレプリカは、通常のデータベース接続で使用される読み取り/書き込みレプリカと同じパフォーマンス レベルでプロビジョニングされます。 **読み取りスケールアウト**機能では、読み取り/書き込みレプリカを共有する代わりに、読み取り専用レプリカのいずれか 1 つの処理能力を使用して SQL Database の読み取り専用ワークロードを負荷分散できます。 これにより、読み取り専用のワークロードは、メインの読み取り/書き込みワークロードから分離され、パフォーマンスに影響を及ぼすことはありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーションを対象としています。そのため、余分なコストをかけることなく、この追加の処理能力を使用してパフォーマンス上の利点を得ることが可能です。
+これらのレプリカは、通常のデータベース接続で使用される読み取り/書き込みレプリカと同じコンピューティング サイズでプロビジョニングされます。 **読み取りスケールアウト**機能では、読み取り/書き込みレプリカを共有する代わりに、読み取り専用レプリカのいずれか 1 つの処理能力を使用して SQL Database の読み取り専用ワークロードを負荷分散できます。 これにより、読み取り専用のワークロードは、メインの読み取り/書き込みワークロードから分離され、パフォーマンスに影響を及ぼすことはありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーションを対象としています。そのため、余分なコストをかけることなく、この追加の処理能力を使用してパフォーマンス上の利点を得ることが可能です。
 
 特定のデータベースで読み取りスケールアウト機能を使用するには、データベースを作成するときに明示的に有効にするか、PowerShell を使用して [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) または [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) コマンドレットを呼び出すか、Azure Resource Manager REST API から[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)メソッドを使用して構成を変更し、後から明示的に有効にする必要があります。 
 
@@ -119,7 +122,7 @@ Body:
 (フェールオーバー グループのメンバーなどとして) geo レプリケートされたデータベース上の読み取り専用ワークロードを、読み取りスケールアウトを使用して負荷分散する場合は、プライマリ データベース上および geo レプリケートされたセカンダリ データベース上の両方で、読み取りスケールアウトが有効になっていることを確認します。 これにより、フェールオーバー後にアプリケーションが新しいプライマリに接続したときに、同じ負荷分散効果が保証されます。 読み取りスケールが有効な、geo レプリケートされたセカンダリ データベースに接続している場合、`ApplicationIntent=ReadOnly` が設定されたセッションは、プライマリ データベース上で接続をルーティングするのと同じ方法で、レプリカの 1 つにルーティングされます。  `ApplicationIntent=ReadOnly` が設定されていないセッションは、geo レプリケートされたセカンダリのプライマリ レプリカ (これも読み取り専用) にルーティングされます。 geo レプリケートされたセカンダリ データベースのエンドポイントは、プライマリ データベースとは異なります。そのため、これまでは、セカンダリにアクセスするために、`ApplicationIntent=ReadOnly` を設定する必要はありませんでした。 下位互換性を確保するため、`sys.geo_replication_links` DMV には、`secondary_allow_connections=2` (すべてのクライアント接続を許可) が示されています。
 
 > [!NOTE]
-> プレビューの間は、セカンダリ データベースのローカル レプリカ間でラウンド ロビンやその他の負荷分散ルーティングは実行されません。 
+> プレビューの間は、セカンダリ データベースのローカル レプリカ間でラウンド ロビンやその他の負荷分散ルーティングはサポートされていません。 
 
 
 ## <a name="next-steps"></a>次の手順

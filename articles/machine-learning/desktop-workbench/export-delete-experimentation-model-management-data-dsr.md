@@ -11,16 +11,18 @@ ms.component: core
 ms.topic: conceptual
 ms.date: 05/22/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7daa3bdf9fb51fee6b0e190625f07e0d14c3d1f4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8c5b20bf837491e8b15f7bc8baa018ead584616b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995144"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159178"
 ---
 # <a name="export-or-delete-your-experimentation-or-model-management-data-in-machine-learning"></a>Machine Learning で 実験またはモデル管理データをエクスポートまたは削除する
 
-[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+>[!Note]
+>**この記事は非推奨となっています。** このサービスの以前のバージョンについては、サポートを順次終了いたします。 [サポートのタイムラインをご確認ください](../service/overview-what-happened-to-workbench.md#timeline)。 このトピックについての[最新の記事](../service/how-to-export-delete-data.md)をお読みください。
+
 
 Azure Machine Learning では、実験またはモデル管理に関連するアカウントを、認証済みの REST API を使用してエクスポートまたは削除できます。 この記事では、その方法について説明します。
 

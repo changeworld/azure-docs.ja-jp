@@ -2,19 +2,22 @@
 title: 'Azure SQL Database の DTU ベースのリソース制限: エラスティック プール | Microsoft Docs'
 description: このページでは、Azure SQL Database のエラスティック プールに対するいくつかの一般的な DTU ベースのリソース制限について説明します。
 services: sql-database
-author: sachinpMSFT
-manager: craigg
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: elastic-pools
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/01/2018
-ms.author: carlrab
-ms.openlocfilehash: 0920489daf99445a9d715d0858cf68ae45e6a178
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+author: sachinpMSFT
+ms.author: sachinp
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: b2efdf0b1a8abe91589f56ecbb6dc01f7606f305
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42144301"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158989"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルを使用したエラスティック プールのリソース制限 
 
@@ -25,9 +28,9 @@ ms.locfileid: "42144301"
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
-## <a name="elastic-pool-storage-sizes-and-performance-levels"></a>エラスティック プール: ストレージ サイズとパフォーマンス レベル
+## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>エラスティック プール: ストレージ サイズとコンピューティング サイズ
 
-次の表では、SQL Database エラスティック プールについて、各サービス レベルおよびパフォーマンス レベルで使用可能なリソースを示します。 [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases)、[Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases)、または [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) を使って、サービス レベル、パフォーマンス レベル、ストレージ量を設定できます。
+次の表では、SQL Database エラスティック プールについて、各サービス レベルとコンピューティング サイズで使用可能なリソースを示します。 [Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases)、[Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases)、または [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) を使って、サービス レベル、コンピューティング サイズ、ストレージ量を設定できます。
 
 > [!NOTE]
 > エラスティック プール内の個々のリソース制限は、一般的に DTU やサービス層に基づくプール外の単一のデータベースのリソース制限と同じです。 たとえば、S2 データベースの最大同時実行ワーカー数は 120 ワーカーです。 そのため、プール内の各データベースの最大 DTU が 50 DTU (S2 と同じ) の場合、Standard プール内のデータベースの最大同時実行ワーカー数も 120 ワーカーです。
@@ -108,7 +111,7 @@ ms.locfileid: "42144301"
 ||||||||
 
 > [!IMPORTANT]
-> 現在、米国中西部、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、ドイツ北東部、USGov アイオワ、中国北部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+> 現在、米国中西部、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、ドイツ北東部、USGov アイオワ、中国北部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
 
 エラスティック プールのすべての DTU が使用されている場合は、プール内の各データベースが、同量のリソースを受け取ってクエリを処理します。 SQL Database サービスは、コンピューティング時間を均等にすることで、データベース間におけるリソース共有の公平性を実現します。 それ以外の場合、エラスティック プールのリソース共有の公平性は、データベースあたりの DTU分が 0 以外の値に設定されているときに、リソース量に加えて各データベースに適用されることが保証されます。
 
@@ -131,4 +134,4 @@ ms.locfileid: "42144301"
 - サーバーおよびサブスクリプション レベルの制限については詳しくは、「[Azure SQL Database のリソース制限の概要](sql-database-resource-limits.md)」をご覧ください。
 - Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
 - DTU と eDTU については、「[データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU) の説明](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)」をご覧ください。
-- tempdb のサイズ制限については、https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database を参照してください。
+- tempdb のサイズ制限については、 https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database を参照してください。

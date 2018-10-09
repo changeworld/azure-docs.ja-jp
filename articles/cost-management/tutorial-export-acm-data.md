@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/13/2018
+ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b1c7323dc108f5ee7a8bf6075abfe2a3e2fb9810
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0765e79b90eed49742f5eead33063907eb1db1f4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953142"
+ms.locfileid: "47030848"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>チュートリアル: データをエクスポートし、管理する
 
@@ -31,8 +31,15 @@ ms.locfileid: "46953142"
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure EA アカウント
-- BLOB またはファイル ストレージに対して構成された Azure ストレージ アカウント
+データのエクスポートは、すべての [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) のお客様が利用できます。 ユーザーおよびグループによるデータのエクスポートについては、サブスクリプションに従い、次の Azure のアクセス許可がサポートされています。
+
+- 所有者: サブスクリプションのスケジュールされたエクスポートを作成、変更、または削除できます。
+- 共同作成者: スケジュールされたエクスポートを作成、変更、または削除できます。 他のユーザーが作成したスケジュールされたエクスポートの名前を変更できます。
+- 閲覧者: アクセス許可を持っているエクスポートをスケジュールできます。
+
+Azure Storage アカウントの場合:
+- エクスポートに関するアクセス許可に関係なく、構成されているストレージ アカウントを変更するには書き込みアクセス許可が必要です。
+- BLOB またはファイル ストレージに対して Azure ストレージ アカウントを構成する必要があります。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサインインします。
@@ -71,7 +78,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com/)) にサイ�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * 毎日のエクスポートを作成する

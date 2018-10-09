@@ -2,19 +2,22 @@
 title: Azure SQL Database のファイル領域管理 | Microsoft Docs
 description: このページでは、Azure SQL Database を使用してファイル領域を管理する方法について説明します。また、データベースを縮小する必要があるかどうかを判断する方法、データベースの縮小操作を実行する方法を示すコード サンプルを紹介します。
 services: sql-database
-author: oslake
-manager: craigg
 ms.service: sql-database
-ms.custom: how-to
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/15/2018
+author: oslake
 ms.author: moslake
-ms.openlocfilehash: 498e83e7c312480af6d2eff7d44bd13aee9c55fd
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: a46192c79d32ddf5f178541c3be128893e8f6109
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42142199"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159943"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Azure SQL Database でファイル領域を管理する
 この記事では、Azure SQL Database のさまざまな種類の記憶域スペースと、データベースとエラスティック プールに割り当てられたファイル領域を明示的に管理する必要がある場合に実行できる手順について説明します。
@@ -27,7 +30,7 @@ Azure SQL Database では、Azure Portal に表示される大部分の記憶域
 - T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-データベースの基礎となるデータ ファイルの割り当てが使用データ ページ数よりも大きくなるようなワークロード パターンがあります。  この状況は、使用領域が増えた後でデータが削除された場合に発生する可能性があります。  これは、データの削除時に割り当てられていたファイル領域が自動的に再利用されないためです。  このようなシナリオでは、データベースまたはプールに割り当てられた領域がサポートされている上限を超える可能性があるため、データを増やすことができなくなり、パフォーマンス層を変更できなくなります。この状況を軽減するには、データ ファイルを縮小する必要があります。
+データベースの基礎となるデータ ファイルの割り当てが使用データ ページ数よりも大きくなるようなワークロード パターンがあります。  この状況は、使用領域が増えた後でデータが削除された場合に発生する可能性があります。  これは、データの削除時に割り当てられていたファイル領域が自動的に再利用されないためです。  このようなシナリオでは、データベースまたはプールに割り当てられた領域がサポートされている上限を超えて、データを増やすことができなくなったり、サービス レベルとコンピューティング サイズを変更できなくなったりする可能性があるので、これを緩和するにはデータ ファイルを縮小する必要があります。
 
 データベースのパフォーマンスに影響を与える可能性があるため、未使用の割り当て領域を再利用するために SQL DB サービスがデータ ファイルを自動的に縮小することはありません。  ただし、「[未使用の割り当て済み領域を再利用する](#reclaim-unused-allocated-space)」で説明されている手順に従って、データ ファイルを選択した時点でセルフサービスによって縮小できます。 
 

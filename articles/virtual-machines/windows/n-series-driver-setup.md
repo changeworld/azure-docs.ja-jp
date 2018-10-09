@@ -1,5 +1,5 @@
 ---
-title: Windows 用 Azure N シリーズ ドライバー セットアップ | Microsoft Docs
+title: Windows 用 Azure N シリーズ GPU ドライバーのセットアップ | Microsoft Docs
 description: Azure で Windows Server または Windows を実行する N シリーズ VM 用の NVIDIA GPU ドライバーの設定方法
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/19/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50d9ea88afc0e7d96d71b2ab26c8a8489ae41fee
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a4d259c7f9a139b3c31d96e75d588c7be162189c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719653"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033260"
 ---
-# <a name="set-up-gpu-drivers-for-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM の GPU ドライバーをセットアップする 
+# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Windows を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする 
+
 Windows を実行している Azure N シリーズ VM の GPU 機能を利用するには、NVIDIA GPU ドライバーがインストールされている必要があります。 [NVIDIA GPU ドライバー拡張機能](../extensions/hpccompute-gpu-windows.md)は、N シリーズ VM 上に適切な NVIDIA CUDA または GRID ドライバーをインストールします。 この拡張機能は、Azure Portal または Azure PowerShell や Azure Resource Manager テンプレートなどのツールを使用してインストールまたは管理します。 サポートされるオペレーティング システムおよびデプロイ手順については、[NVIDIA GPU ドライバー拡張機能のドキュメント](../extensions/hpccompute-gpu-windows.md)を参照してください。
 
 GPU ドライバーを手動でインストールすることを選択した場合、この記事では、サポートされるオペレーティング システム、ドライバー、インストールおよび検証手順について説明します。 手動でのドライバー セットアップ情報は、[Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でも使用できます。
@@ -38,7 +39,7 @@ GPU ドライバーを手動でインストールすることを選択した場�
 
 2. ご使用の Windows オペレーティング システムに、サポートされるドライバーをダウンロード、抽出、インストールします。
 
-Azure NV VM では、ドライバーのインストール後に再起動が必要です。 NC VM では、再起動は必要ありません。
+VM に GRID ドライバーをインストールした後は、再起動が必要です。 CUDA ドライバーをインストールした後は、再起動は必要ありません。
 
 ## <a name="verify-driver-installation"></a>ドライバーのインストールの確認
 
@@ -64,7 +65,7 @@ RDMA ネットワーク接続は、同じ可用性セット内にデプロイま
   ```
   詳細については、「[Windows 用の仮想マシン拡張機能とその機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
-RDMA ネットワークは、[Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) または Intel MPI 5.x で実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 
+RDMA ネットワークは、[Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) または Intel MPI 5.x で実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 
 
 
 ## <a name="next-steps"></a>次の手順

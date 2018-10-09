@@ -1,21 +1,23 @@
 ---
 title: RLS とエラスティック データベース ツールを使用したマルチテナント アプリ | Microsoft Docs
 description: 行レベルのセキュリティを備えた弾力性データベース ツールを使用して、拡張性の高いデータ層を持つアプリケーションを構築します。
-metakeywords: azure sql database elastic tools multi tenant row level security rls
 services: sql-database
-manager: craigg
-author: tmullaney
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: tmullaney
 ms.author: thmullan
-ms.openlocfilehash: 02ad01185a86aa5a975be2a66b54a214029dd73f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 94430d3b72bb5b8e8bde0e9e2e9fb2eb2b0c3632
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645812"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056286"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 
@@ -38,7 +40,7 @@ ms.locfileid: "34645812"
 ### <a name="prerequisites"></a>前提条件
 
 - Visual Studio (2012 以降) を使用します。 
-- 3 つの Azure SQL データベースを作成します。 
+- 3 つの Azure SQL データベースを作成します 
 - サンプル プロジェクトをダウンロードします: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](http://go.microsoft.com/?linkid=9888163)
   - **Program.cs** 
 
@@ -348,8 +350,7 @@ GO
 
 ## <a name="additional-resources"></a>その他のリソース
 
-- 
-  [Azure エラスティック プールの概要](sql-database-elastic-pool.md)
+- [Azure エラスティック プールの概要](sql-database-elastic-pool.md)
 - [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
 - [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)
 - [Azure AD および OpenID Connect を使用したマルチテナント アプリでの認証](../guidance/guidance-multitenant-identity-authenticate.md)

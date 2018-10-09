@@ -9,15 +9,15 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 5/8/2018
+ms.date: 9/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a79c1951fb8cfbfc208942835ee87b91b763c44
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: 8bfe815b9664e499f7ae458dfc42b88199e0ecb4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34798187"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037934"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Python SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -36,13 +36,13 @@ ms.locfileid: "34798187"
 
 <table>
 
-<tr><td>**SDK のダウンロード**</td><td>[PyPI](https://pypi.python.org/pypi/pydocumentdb)</td></tr>
+<tr><td>**SDK のダウンロード**</td><td>[PyPI](https://pypi.org/project/azure-cosmos)</td></tr>
 
-<tr><td>**API ドキュメント**</td><td>[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/pydocumentdb?view=azure-python)</td></tr>
+<tr><td>**API ドキュメント**</td><td>[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cosmos)</td></tr>
 
-<tr><td>**SDK のインストール手順**</td><td>[Python SDK のインストール手順](http://azure.github.io/azure-documentdb-python/)</td></tr>
+<tr><td>**SDK のインストール手順**</td><td>[Python SDK のインストール手順](https://github.com/Azure/azure-cosmos-python)</td></tr>
 
-<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-documentdb-python)</td></tr>
+<tr><td>**SDK への協力**</td><td>[GitHub](https://github.com/Azure/azure-cosmos-python)</td></tr>
 
 <tr><td>**作業開始**</td><td>[Python SDK の開始](sql-api-python-application.md)</td></tr>
 
@@ -50,6 +50,12 @@ ms.locfileid: "34798187"
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name300300"></a><a name="3.0.0"/>3.0.0
+* マルチリージョンの書き込みがサポートされるようになりました。
+* 名前空間が azure.cosmos に変更されました。
+* コレクションとドキュメントの概念の名前がコンテナーとアイテムに変更され、document_client の名前が cosmos_client に変更されました。 
+
 ### <a name="a-name232232"></a><a name="2.3.2"/>2.3.2
 * 接続に問題が発生したとき、デフォルトで再試行されるようになりました。
 
@@ -57,7 +63,7 @@ ms.locfileid: "34798187"
 * Azure DocumentDB ではなく Azure Cosmos DB を参照するように更新されたドキュメントです。
 
 ### <a name="a-name230230"></a><a name="2.3.0"/>2.3.0
-* この SDK バージョンでは、https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
+* この SDK バージョンでは、 https://aka.ms/cosmosdb-emulator からダウンロードできる Azure Cosmos DB エミュレーターの最新バージョンが必要です。
 
 ### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
 * 集計辞書のバグを修正しました。
@@ -137,7 +143,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 <br/>
 
-| バージョン | リリース日 | 提供終了日 |
+| Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
 | [2.3.2](#2.3.2) |2018 年 5 月 8 日 |--- |
 | [2.3.1](#2.3.1) |2017 年 12 月 21 日 |--- |

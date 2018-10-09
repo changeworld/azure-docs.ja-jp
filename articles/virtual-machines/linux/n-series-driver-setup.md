@@ -1,5 +1,5 @@
 ---
-title: Linux 用 Azure N シリーズ ドライバー セットアップ | Microsoft Docs
+title: Linux 用 Azure N シリーズ GPU ドライバーのセットアップ | Microsoft Docs
 description: Azure で Linux を実行する N シリーズ VM 用の NVIDIA GPU ドライバーの設定方法を説明します。
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/30/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d85bc79ddd08cb051b2e4d978a931f460020c10
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 822261e74f7da941ac89090e5d493c4be18bc307
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364502"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038886"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
@@ -55,7 +55,7 @@ lspci | grep -i NVIDIA
 
 1. CUDA ドライバーをダウンロードしてインストールします。
   ```bash
-  CUDA_REPO_PKG=cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
+  CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
@@ -99,7 +99,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS または Red Hat Enterprise Linux 7.3 または 7.4
 
-1. カーネルを更新します。
+1. カーネルを更新します (推奨)。 カーネルを更新しない場合は、`kernel-devel` と `dkms` のバージョンが確実にカーネルに対して適切であるようにします。
 
   ```
   sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -127,7 +127,7 @@ sudo reboot
 
   sudo yum install dkms
 
-  CUDA_REPO_PKG=cuda-repo-rhel7-9.1.85-1.x86_64.rpm
+  CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
 
   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
@@ -170,9 +170,9 @@ N シリーズ VM で RDMA 接続をサポートする Azure Marketplace で、�
 
 * **CentOS ベースの 7.4 HPC** - RDMA ドライバーおよび Intel MPI 5.1 は、VM にインストールされます。
 
-## <a name="install-grid-drivers-on-nv-series-vms"></a>NV シリーズ VM への GRID ドライバーのインストール
+## <a name="install-grid-drivers-on-nv-or-nvv2-series-vms"></a>NV または NVv2 シリーズの VM に GRID ドライバーをインストールする
 
-NV シリーズ VM に NVIDIA GRID ドライバーをインストールするには、各 VM への SSH 接続を作成して、Linux ディストリビューションに応じた手順に従います。 
+NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバーをインストールするには、各 VM への SSH 接続を作成して、Linux ディストリビューションに応じた手順に従います。 
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
@@ -189,7 +189,7 @@ NV シリーズ VM に NVIDIA GRID ドライバーをインストールするに
 
   sudo apt-get install build-essential ubuntu-desktop -y
   ```
-3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
+3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV または NVv2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
 
   ```
   blacklist nouveau
@@ -232,7 +232,7 @@ NV シリーズ VM に NVIDIA GRID ドライバーをインストールするに
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS または Red Hat Enterprise Linux 
 
-1. カーネルと DKMS を更新します。
+1. カーネルと DKMS を更新します (推奨)。 カーネルを更新しない場合は、`kernel-devel` と `dkms` のバージョンがカーネルに対して確実に適切であるようにします。
  
   ```bash  
   sudo yum update
@@ -244,7 +244,7 @@ NV シリーズ VM に NVIDIA GRID ドライバーをインストールするに
   sudo yum install dkms
   ```
 
-2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
+2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV または NV2 の VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
 
   ```
   blacklist nouveau
@@ -304,7 +304,7 @@ GPU デバイスの状態を照会するには、VM に SSH 接続し、ドラ�
  
 
 ### <a name="x11-server"></a>X11 サーバー
-NV VM へのリモート接続用に X11 サーバーが必要な場合は、グラフィックスのハードウェア アクセラレータを許可している [x11vnc](http://www.karlrunge.com/x11vnc/) をお勧めします。 M60 デバイスの BusID は、X11 構成ファイル (通常、 `etc/X11/xorg.conf`) に手動で追加する必要があります。 次のような `"Device"` セクションを追加します。
+NV または NVv2 の VM へのリモート接続用に X11 サーバーが必要な場合は、グラフィックスのハードウェア アクセラレータを許可している [x11vnc](http://www.karlrunge.com/x11vnc/) をお勧めします。 M60 デバイスの BusID は、X11 構成ファイル (通常、 `etc/X11/xorg.conf`) に手動で追加する必要があります。 次のような `"Device"` セクションを追加します。
  
 ```
 Section "Device"
