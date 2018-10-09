@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2018
+ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 60b4658d18d39797d30055e86cb21689cfb661fa
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 5224829b59e7ad425fb01a242a702e0d4cad8657
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631666"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392382"
 ---
 # <a name="azure-stack-1805-update"></a>Azure Stack 1805 更新プログラム
 
@@ -91,6 +91,9 @@ Azure Stack 1805 更新プログラムのビルド番号は **1.1805.1.47** で�
 このビルド バージョンのインストール後について次の既知の問題があります。
 
 ### <a name="portal"></a>ポータル  
+
+- Azure Stack のテクニカル ドキュメントは、最新のリリースについて説明しています。 リリースごとにポータルが変更されるため、Azure Stack ポータルを使用した場合の動作と、ドキュメントに示されている内容が異なる場合があります。 
+
 - <!-- 2931230 – IS  ASDK --> アドオン プランとしてユーザー サブスクリプションに追加されたプランは、ユーザー サブスクリプションからプランを削除しても削除できません。 アドオン プランを参照するサブスクリプションも削除されるまで、プランは残ります。 
 
 - <!-- TBD - IS ASDK --> このバージョンの Azure Stack では、OEM Extension パッケージを使用してドライバーの更新プログラムを適用することはできません。  この問題の回避策はありません。

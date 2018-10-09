@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 09/11/2018
 ms.author: patricka
-ms.openlocfilehash: e61b4457cd88c236145ce7595ee7db4340538465
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 0c49a895a3cd214bb6f9c88b5365cf980c60bf0a
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330543"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451773"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Azure Stack でのマルチテナント
 
@@ -101,12 +101,25 @@ Register-AzSWithMyDirectoryTenant `
 > Azure Stack 管理者が今後新しいサービスや更新プログラムをインストールした場合には、このスクリプトをもう一度実行する必要があります。
 >
 > このスクリプトは、ディレクトリ内の Azure Stack アプリケーションの状態を確認するためにいつでも実行できます。
+> 
+> VM をマネージド ディスク内に作成する操作 (1808 更新プログラムで導入) で問題が起きた場合は新しい**ディスク リソース プロバイダー**が追加されており、このスクリプトをもう一度実行する必要があります。
+
+### <a name="activate-the-administrator-and-tenant-portals"></a>管理者およびテナント ポータルのアクティブ化
+Azure AD を使用するデプロイの後は、Azure Stack の管理者とテナント ポータルの両方をアクティブにする必要があります。 アクティブにすることによって、ディレクトリの全ユーザーに関して適切なアクセス許可 (同意のページに一覧が表示されます) を Azure Stack ポータルと Azure Resource Manager に付与することに同意したことになります。
+
+- 管理者ポータルの場合は、 https://adminportal.local.azurestack.external/guest/signup に移動して情報を確認し、[承諾] をクリックします。 同意後は、ディレクトリ テナント管理者ではないサービス管理者を追加することができます。
+- テナント ポータルの場合は、 https://portal.local.azurestack.external/guest/signup に移動して情報を確認し、[承諾] をクリックします。 同意後は、ディレクトリのユーザーがテナント ポータルにサインインすることができます。 
+ 
+> [!NOTE] 
+> ポータルがアクティブにされていない場合は、ディレクトリ管理者だけがポータルにサインインし、使用することができます。 他のユーザーがサインインすると、管理者が他のユーザーにアクセス許可を付与していないことを示すエラーが表示されます。 Azure Stack の登録先ディレクトリに管理者がネイティブに属していない場合は、Azure Stack ディレクトリをアクティベーション URL に追加する必要があります。 Azure Stack が fabrikam.onmicrosoft.com に登録されており、管理者ユーザーが admin@contoso.com の場合は、 https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com に移動してポータルをアクティブにします。
+
+
 
 ### <a name="direct-users-to-sign-in"></a>ユーザーをサインインに誘導する
 
-あなたとメアリーの両方が Fabrikam ディレクトリのオンボード手順を完了したので、メアリーは Fabrikam のユーザーをサインインに誘導することができます。  Fabrikam のユーザー (つまり、fabrikam.onmicrosoft.com のサフィックスを持つユーザー) は、https://portal.local.azurestack.external にアクセスしてサインインします。  
+あなたとメアリーの両方が Fabrikam ディレクトリのオンボード手順を完了したので、メアリーは Fabrikam のユーザーをサインインに誘導することができます。  Fabrikam のユーザー (つまり、fabrikam.onmicrosoft.com のサフィックスを持つユーザー) は、 https://portal.local.azurestack.external にアクセスしてサインインします。  
 
-メアリーは、Fabrikam ディレクトリの[外部プリンシパル](../role-based-access-control/rbac-and-directory-admin-roles.md) (つまり、fabrikam.onmicrosoft.com のサフィックスを持たない Fabrikam ディレクトリのユーザー) はすべて、https://portal.local.azurestack.external/fabrikam.onmicrosoft.com を使用してサインインするよう誘導します。  この URL を使用しなかった場合、これらのユーザーは既定のディレクトリ (Fabrikam) に送られ、管理者による同意がないことを示すエラーが表示されます。
+メアリーは、Fabrikam ディレクトリの[外部プリンシパル](../role-based-access-control/rbac-and-directory-admin-roles.md) (つまり、fabrikam.onmicrosoft.com のサフィックスを持たない Fabrikam ディレクトリのユーザー) はすべて、 https://portal.local.azurestack.external/fabrikam.onmicrosoft.com を使用してサインインするよう誘導します。  この URL を使用しなかった場合、これらのユーザーは既定のディレクトリ (Fabrikam) に送られ、管理者による同意がないことを示すエラーが表示されます。
 
 ## <a name="disable-multi-tenancy"></a>マルチテナントの無効化
 

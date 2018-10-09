@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 8914391a586bb508192200beaba7f591649a1e99
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 35c15613192ac12a7d4c64cbe28f62200724d311
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "43050440"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452277"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でストレージ アカウントを管理する
 ビジネスのニーズに基づいてストレージ容量を検索、回復、および回収するために、Azure Stack でストレージ アカウントを管理する方法について説明します。
@@ -28,19 +27,19 @@ ms.locfileid: "43050440"
 ## <a name="find"></a>ストレージ アカウントの検索
 リージョン内のストレージ アカウントのリストは、次の方法を使って Azure Stack で表示できます。
 
-1. インターネット ブラウザーで、 https://adminportal.local.azurestack.external に移動します。
-2. クラウド オペレーターとして Azure Stack の管理ポータルにサインインします (デプロイ時に指定した資格情報を使用)。
-3. 既定のダッシュボードで、**[リージョンの管理]** リストを見つけ、調べたいリージョンを選択します (**[local]** など)。
+1. [管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
+
+2. **[管理]** の下で、**[すべてのサービス]** > **[リージョン管理]** を選択します。
+
+3. **[リソース プロバイダー]** リストから **[ストレージ]** を選びます。
    
-   ![](media/azure-stack-manage-storage-accounts/image1.png)
-4. **[リソース プロバイダー]** リストから **[ストレージ]** を選びます。
+   ![ストレージ リソース プロバイダー](media/azure-stack-manage-storage-accounts/image1.png)
+
+5. **[ストレージ]** で、**[ストレージ アカウント]** を選択します。
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. ここで、ストレージ リソース プロバイダーの管理者ウィンドウで、下にスクロールして、**[ストレージ アカウント]** タブを選択します。
    
-   ![](media/azure-stack-manage-storage-accounts/image3.png)
-   
-   結果のページでは、そのリージョンのストレージ アカウントのリストが示されます。
+   ブレードに、そのリージョンのストレージ アカウントのリストが表示されます。
    
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
@@ -76,7 +75,7 @@ ms.locfileid: "43050440"
 
 Azure Stack では、これを行う簡単な方法があります。
 
-1. ストレージ アカウント リストを参照します。 詳細については、このトピックの「[ストレージ アカウントの検索](#find)」を参照してください。
+1. ストレージ アカウント リストを参照します。 詳細については、この記事の「[ストレージ アカウントの検索](#find)」を参照してください。
 2. そのリストで特定のアカウントを検索します。 場合によっては、フィルターを使用する必要があります。
 3. アカウントの*状態*を確認します。 **[削除済み]** になっているはずです。
 4. アカウントを選択して、その詳細ウィンドウを開きます。
@@ -97,19 +96,18 @@ Azure Stack では、これを行う簡単な方法があります。
   "保有期間外" は、削除されたアカウントが保有期間を超過しており、回復できない可能性があることを意味します。
 * 削除されたアカウントがアカウント リストに表示されない。
   
-  削除されたアカウントが既にガベージ コレクトされている場合、アカウント リストに表示されません。 この場合、回復はできません。 このトピックの「[容量の回収](#reclaim)」を参照してください。
+  削除されたアカウントが既にガベージ コレクトされている場合、アカウント リストに表示されません。 この場合、回復はできません。 この記事の「[容量の回収](#reclaim)」を参照してください。
 
 ## <a name="set-the-retention-period"></a>保有期間の設定
 保有期間の設定では、クラウド オペレーターは削除されたアカウントが回復できる可能性がある期間を日数で指定できます (0 から 9999 日の間)。 既定の保有期間は 0 日に設定されています。 値を “0” に設定すると、削除されたすべてのアカウントがすぐに保有期間外になり、定期的なガベージ コレクションの対象としてマークされます。
 
 **保有期間を変更するには:**
 
-1. インターネット ブラウザーで、 https://adminportal.local.azurestack.external に移動します。
-2. クラウド オペレーターとして Azure Stack の管理ポータルにサインインします (デプロイ時に指定した資格情報を使用)。
-3. 既定のダッシュボードで、**[リージョンの管理]** リストを見つけ、調べたいリージョンを選択します (**[local]** など)。
-4. **[リソース プロバイダー]** リストから **[ストレージ]** を選びます。
-5. 上部の **[設定]** を選択して [設定] ウィンドウを開きます。
-6. **[構成]** を選択してリテンション期間の値を編集します。
+1. [管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
+2. **[管理]** の下で、**[すべてのサービス]** > **[リージョン管理]** を選択します。
+3. **[リソース プロバイダー]** リストから **[ストレージ]** を選びます。
+4. 上部の **[設定]** を選択して [設定] ウィンドウを開きます。
+5. **[構成]** を選択してリテンション期間の値を編集します。
 
    日数を設定して保存します。
    
@@ -142,7 +140,7 @@ PowerShell を使用して保有期間を明示的にオーバーライドし、
    Azure Resource Manager コマンドレットの詳細については、[Azure Resource Manager での Azure PowerShell の使用](http://go.microsoft.com/fwlink/?LinkId=394767)に関するページを参照してください。
 2. 次のコマンドレットを実行します。
 
-> [!NOTE]
+> [!NOTE]  
 > これらのコマンドレットを実行すると、アカウントとその内容が完全に削除されます。 これは復旧できません。 慎重に使用してください。
 
 ```PowerShell  

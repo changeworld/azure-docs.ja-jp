@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2018
+ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 84eb1c08cc3f9ef104e2eb0b96ed397315c3f374
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 57869de8a99c65810da0c75f81c75d93eac88412
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937567"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47090818"
 ---
 # <a name="validate-azure-registration"></a>Azure の登録の検証 
 Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を使用して、対象の Azure サブスクリプションを Azure Stack で使用する準備が整っていることを検証します。 Azure Stack デプロイを開始する前に、登録を検証します。 適合性チェッカーは以下を検証します。
 - 使用する Azure サブスクリプションの種類がサポート対象であること。 サブスクリプションは、Cloud Service Provider (CSP) または Enterprise Agreement (EA) である必要があります。 
-- ご自身のサブスクリプションの登録に使用するアカウントが Azure にログインでき、サブスクリプション所有者であること。 
+- ご自身のサブスクリプションの登録に使用するアカウントが Azure にサインインでき、サブスクリプション所有者であること。 
 
 Azure Stack 登録の詳細については、「[Azure を使用した Azure Stack の登録](azure-stack-registration.md)」を参照してください。 
 
@@ -37,7 +37,7 @@ Azure Stack 登録の詳細については、「[Azure を使用した Azure Sta
 
 **ツールを実行するコンピューター:**
  - インターネットに接続された Windows 10 または Windows Server 2016。
- - PowerShell 5.1 以降。 お使いのバージョンを確認するには、次の PowerShell cmd を実行し、"*メジャー*" バージョンと "*マイナー*" バージョンを確かめます。  
+ - PowerShell 5.1 以降。 お使いのバージョンを確認するには、次の PowerShell コマンドを実行し、"*メジャー*" バージョンと "*マイナー*" バージョンを確かめます。  
 
     >`$PSVersionTable.PSVersion` 
  - [PowerShell for Azure Stack](azure-stack-powershell-install.md) を構成します。 
@@ -69,13 +69,13 @@ Azure Stack 登録の詳細については、「[Azure を使用した Azure Sta
 
 
 ## <a name="report-and-log-file"></a>レポートとログ ファイル
-検証のたびに、結果のログが **AzsReadinessChecker.log** と **AzsReadinessCheckerReport.json** に出力されます。 これらのファイルの場所は、PowerShell に検証結果と共に表示されます。 
+検証を実行するたびに、結果のログが **AzsReadinessChecker.log** と **AzsReadinessCheckerReport.json** に出力されます。 これらのファイルの場所は、PowerShell に検証結果と共に表示されます。 
 
-これらのファイルは、Azure Stack のデプロイまたは検証に関する問題の調査の前に、検証の状態を共有するときに役立ちます。 両方のファイルに、以降の各検証チェックの結果が保持されます。 このレポートによって、対象デプロイ チームが ID 構成を確認できます。 ログ ファイルは、ご自身のデプロイ チームやサポート チームが検証の問題を調査するときに役立ちます。 
+これらのファイルは、Azure Stack をデプロイする前、または検証に関する問題を調査する前に、検証の状態を共有するときに役立ちます。 両方のファイルに、以降の各検証チェックの結果が保持されます。 デプロイ チームはこのレポートを使用して ID 構成を確認できます。 デプロイ チームやサポート チームは、検証の問題を調査する際に、このログ ファイルを役立たせることができます。 
 
 既定では、両方のファイルが *C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json* に書き込まれます。  
- - 別のレポートの場所を指定するには、実行コマンド ラインの末尾で **-OutputPath** ***&lt;path&gt;*** パラメーターを使用します。   
- - ツールの以前の実行に関する情報を *AzsReadinessCheckerReport.json* からクリアするには、実行コマンドの末尾で、**-CleanReport**   パラメーターを使用します。 詳細については、「[Azure Stack validation report (Azure Stack 検証レポート)](azure-stack-validation-report.md)」を参照してください。
+ - 別のレポートの場所を指定するには、実行コマンド ラインの末尾で **-OutputPath** ***&lt;パス&gt;*** パラメーターを使用します。   
+ - ツールの以前の実行に関する情報を *AzsReadinessCheckerReport.json* からクリアするには、実行コマンドの末尾で **-CleanReport**   パラメーターを使用します。 詳細については、「[Azure Stack validation report (Azure Stack 検証レポート)](azure-stack-validation-report.md)」を参照してください。
 
 ## <a name="validation-failures"></a>検証エラー
 検証チェックに失敗した場合は、エラーの詳細が PowerShell ウィンドウに表示されます。 また、ツールによって、AzsReadinessChecker.log にログ情報が記録されます。
@@ -96,7 +96,7 @@ Azure Stack 登録の詳細については、「[Azure を使用した Azure Sta
 **解決策** - PowerShell での実行中、プロンプトに従ってパスワードをリセットします。 
   > `Login-AzureRMAccount` 
 
-または、https://portal.azure.com にアカウントとしてログインします。この場合、ユーザーはパスワードを変更する必要があります。
+または、 https://portal.azure.com にアカウントとしてログインします。この場合、ユーザーはパスワードを変更する必要があります。
 
 
 ### <a name="microsoft-accounts-are-not-supported-for-registration"></a>Microsoft アカウント登録はサポートされていません  

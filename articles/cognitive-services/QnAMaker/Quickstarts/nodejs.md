@@ -1,27 +1,28 @@
 ---
-title: Microsoft QnA Maker API (V4) の Node.js クイック スタート - Azure Cognitive Services | Microsoft Docs
+title: 'クイック スタート: QnA Maker API (V4) 用の Node.js'
+titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services で Microsoft Translator Text API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
-author: v-jaswel
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 6da1ec00e04ea993923a97c4641880a5f31d18fa
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 05a15ddf8d7668896052c38afc549bc7b3cb056a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868176"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434332"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-nodejs"></a>Microsoft QnA Maker API の Node.js クイック スタート 
 <a name="HOLTop"></a>
 
 この記事では、Node.js で [Microsoft QnA Maker API](../Overview/overview.md) を使用し、次を行う方法について説明します。
 
-- [新しいナレッジ ベースを作成します。](#Create)
+- [新しいサポート技術情報を作成します。](#Create)
 - [既存のナレッジ ベースを更新します。](#Update)
 - [ナレッジ ベースの作成または更新要求の状態を取得します。](#Status)
 - [既存のナレッジ ベースを公開します。](#Publish)
@@ -30,11 +31,13 @@ ms.locfileid: "37868176"
 - [ナレッジ ベースを使用し、質問の回答を取得します。](#GetAnswers)
 - [ナレッジ ベースに関する情報を取得します。](#GetKB)
 - [指定のユーザーに属するすべてのナレッジ ベースに関する情報を取得します。](#GetKBsByUser)
-- [ナレッジ ベースを削除します。](#Delete)
+- [サポート技術情報を削除します。](#Delete)
 - [現在のエンドポイント キーを取得します。](#GetKeys)
 - [現在のエンドポイント キーを再生成します。](#PutKeys)
 - [現在の一連の単語変更を取得します。](#GetAlterations)
 - [現在の一連の単語変更を置換します。](#PutAlterations)
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,12 +47,12 @@ ms.locfileid: "37868176"
 
 <a name="Create"></a>
 
-## <a name="create-knowledge-base"></a>ナレッジ ベースを作成する
+## <a name="create-knowledge-base"></a>サポート技術情報を作成する
 
-次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいナレッジ ベースが作成されます。
+次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいサポート技術情報が作成されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -106,7 +109,7 @@ let post = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -242,10 +245,10 @@ create_kb (path, content, function (result) {
 
 ## <a name="update-knowledge-base"></a>ナレッジ ベースを更新する
 
-次のコードでは、[Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) メソッドを利用し、既存のナレッジ ベースが更新されます。
+次のコードでは、[Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) メソッドを利用し、既存のサポート技術情報が更新されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -305,7 +308,7 @@ let patch = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -435,7 +438,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>要求の状態を取得する
 
-[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、ナレッジ ベースの作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
+[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、サポート技術情報の作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
 
 [先頭に戻る](#HOLTop)
 
@@ -443,10 +446,10 @@ Press any key to continue.
 
 ## <a name="publish-knowledge-base"></a>ナレッジ ベースを公開する
 
-次のコードでは、[Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) メソッドを利用し、既存のナレッジ ベースが公開されます。
+次のコードでは、[Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) メソッドを利用し、既存のサポート技術情報が公開されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -506,7 +509,7 @@ let post = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -555,10 +558,10 @@ publish_kb (path, '', function (result) {
 
 ## <a name="replace-knowledge-base"></a>ナレッジ ベースを置換する
 
-次のコードでは、[Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) メソッドを利用し、指定のナレッジ ベースのコンテンツが置換されます。
+次のコードでは、[Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) メソッドを利用し、指定のサポート技術情報のコンテンツが置換されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -618,7 +621,7 @@ let put = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -688,10 +691,10 @@ replace_kb (path, content, function (result) {
 
 ## <a name="download-the-contents-of-a-knowledge-base"></a>ナレッジ ベースのコンテンツをダウンロードする
 
-次のコードでは、[Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) メソッドを利用し、指定のナレッジ ベースのコンテンツがダウンロードされます。
+次のコードでは、[Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) メソッドを利用し、指定のサポート技術情報のコンテンツがダウンロードされます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -819,13 +822,13 @@ get_qna (path, function (result) {
 
 ## <a name="get-answers-to-a-question-using-a-knowledge-base"></a>ナレッジ ベースを使用し、質問の回答を取得する
 
-次のコードでは、**Generate answers** メソッドを利用し、指定のナレッジ ベースによる質問の回答が生成されます。
+次のコードでは、**Generate answers** メソッドを利用し、指定のサポート技術情報による質問の回答が生成されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
 1. 次に示すコードを追加します。
 1. `host` の値を QnA Maker サブスクリプションの Web サイト名で置換します。 詳細については、「[QnA Maker サービスを作成する](../How-To/set-up-qnamaker-service-azure.md)」を参照してください。
 1. `endpoint_key` の値を、お使いのサブスクリプションで有効なエンドポイント キーに置き換えます。 これはサブスクリプション キーと同じではないことにご注意ください。 [Get endpoint keys](#GetKeys) メソッドでエンドポイント キーを取得できます。
-1. `kb` 値を、回答を求めてクエリを実行しようとするナレッジ ベースの ID に置き換えます。 このナレッジ ベースは [Publish](#Publish) メソッドを利用して公開しておく必要があります。
+1. `kb` 値を、回答を求めてクエリを実行しようとするサポート技術情報の ID に置き換えます。 このナレッジ ベースは [Publish](#Publish) メソッドを利用して公開しておく必要があります。
 1. プログラムを実行します。
 
 ```nodejs
@@ -894,7 +897,7 @@ let post = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Authorization' : 'EndpointKey ' + endpoint_key,
         }
     };
@@ -950,10 +953,10 @@ get_answers (method, content, function (result) {
 
 ## <a name="get-information-about-a-knowledge-base"></a>ナレッジ ベースに関する情報を取得する
 
-次のコードでは、[Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) メソッドを利用し、指定のナレッジ ベースに関する情報が取得されます。
+次のコードでは、[Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) メソッドを利用し、指定のサポート技術情報に関する情報が取得されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -1065,10 +1068,10 @@ get_kb (path, function (result) {
 
 ## <a name="get-all-knowledge-bases-for-a-user"></a>ユーザーのすべてのナレッジ ベースを取得する
 
-次のコードでは、[Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) メソッドを利用し、指定のユーザーのすべてのナレッジ ベースに関する情報が取得されます。
+次のコードでは、[Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) メソッドを利用し、指定のユーザーのすべてのサポート技術情報に関する情報が取得されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -1193,10 +1196,10 @@ Press any key to continue.
 
 ## <a name="delete-a-knowledge-base"></a>ナレッジ ベースを削除する
 
-次のコードでは、[Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) メソッドを利用し、指定のナレッジ ベースが削除されます。
+次のコードでは、[Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) メソッドを利用し、指定のサポート技術情報が削除されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -1256,7 +1259,7 @@ let http_delete = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -1289,7 +1292,7 @@ delete_kb (path, '', function (result) {
 });
 ```
 
-**ナレッジ ベースの応答を削除する**
+**サポート技術情報の応答を削除する**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
@@ -1308,7 +1311,7 @@ delete_kb (path, '', function (result) {
 次のコードでは、[Get endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) メソッドを利用し、現在のエンドポイント キーが取得されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -1409,7 +1412,7 @@ get_keys (path, function (result) {
 次のコードでは、[Refresh endpoint keys](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) メソッドを利用し、現在のエンドポイント キーが再生成されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -1469,7 +1472,7 @@ let patch = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };
@@ -1535,7 +1538,7 @@ refresh_keys (path, content, function (result) {
 次のコードでは、[Download alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) メソッドを利用し、現在の単語変更が取得されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -1642,7 +1645,7 @@ get_alterations (path, function (result) {
 次のコードでは、[Replace alterations](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) メソッドを利用し、現在の単語変更が置換されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -1699,7 +1702,7 @@ let put = function (path, content, callback) {
         path : path,
         headers : {
             'Content-Type' : 'application/json',
-            'Content-Length' : content.length,
+            'Content-Length' : Buffer.byteLength(content),
             'Ocp-Apim-Subscription-Key' : subscriptionKey,
         }
     };

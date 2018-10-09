@@ -6,23 +6,22 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: b0e694e4-3575-424c-afda-7d48c2025a62
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: cdfdaf9195f14e3cbe3db2a4507bd91a3133a26e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d979692ba32c596058d28c88f32e7e5872ab7ef9
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071387"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452328"
 ---
-# <a name="manage-storage-capacity-for-azure-stack"></a>Azure Stack のストレージ容量を管理する
+# <a name="manage-storage-capacity-for-azure-stack"></a>Azure Stack のストレージ容量を管理する 
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
@@ -86,10 +85,15 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 - **使用済み容量**は、テナント データとそれに関連付けられているメタデータを格納するファイルのすべてのエクステントで使用されるバイト単位のデータの量です。
 
 ### <a name="use-the-administrator-portal"></a>管理者ポータルを使用する
-クラウド オペレーターは、管理者ポータルを使用して、すべての共有のストレージ容量を確認できます。 **[ストレージに移動]** > **[ファイル共有]** をクリックしてファイル共有の一覧を開きます。そこで使用状況情報を確認できます。
-![例: ストレージのファイル共有](media/azure-stack-manage-storage-shares/storage-file-shares.png)
-- **[合計]** は、共有で使用できるバイト単位の合計領域です。 この領域は、ストレージ サービスによって保持されるデータとメタデータ用に使用されます。
-- **[使用済み]** は、テナント データとそれに関連付けられているメタデータを格納するファイルのすべてのエクステントで使用されるバイト単位のデータの量です。
+クラウド オペレーターは、管理者ポータルを使用して、すべての共有のストレージ容量を確認できます。
+
+1. [管理ポータル](https://adminportal.local.azurestack.external)にサインインします。
+2. **[すべてのサービス]** > **[ストレージ]** を選択してファイル共有の一覧を開きます。そこで使用状況情報を確認できます。 
+
+  ![例: ストレージのファイル共有](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+
+  - **[合計]** は、共有で使用できるバイト単位の合計領域です。 この領域は、ストレージ サービスによって保持されるデータとメタデータ用に使用されます。
+  - **[使用済み]** は、テナント データとそれに関連付けられているメタデータを格納するファイルのすべてのエクステントで使用されるバイト単位のデータの量です。
 
 ### <a name="storage-space-alerts"></a>記憶域スペースのアラート
 管理者ポータルを使用しているときは、領域が少なくなっている共有に関するアラートを受信します。
@@ -204,5 +208,4 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 領域を管理する最も極端な方法には、仮想マシンのディスクの移動が伴います。 接続されているコンテナー (VM ディスクを含むコンテナー) の移動は複雑であるため、この操作を実行する場合は Microsoft サポートに問い合わせてください。
 
 ## <a name="next-steps"></a>次の手順
-
-  [ユーザーに対する仮想マシンの提供](azure-stack-tutorial-tenant-vm.md)についての詳細を確認します。
+[ユーザーに対する仮想マシンの提供](azure-stack-tutorial-tenant-vm.md)についての詳細を確認します。

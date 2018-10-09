@@ -11,26 +11,26 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 69bf788ef30a18bbe70e251fdd6a814d0f528f55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 978cce4642dc61143bd829fcae03357fd8c969c2
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994566"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405514"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Kubernetes を Azure Stack Marketplace に追加する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 > [!note]  
-> Azure Stack 上の Kubernetes はプレビュー段階にあります。 この記事の手順を実行するために必要な Kubernetes Cluster Marketplace 項目へのアクセスを要求するには、[アクセス取得の要求を送信](https://aka.ms/azsk8)してください。
+> Azure Stack 上の Kubernetes はプレビュー段階にあります。
 
 Kubernetes は、Marketplace 項目としてユーザーに提供できます。 ユーザーは、1 回の連携した操作で Kubernetes をデプロイできます。
 
-以降の記事では、Azure Resource Manager テンプレートを使用して、スタンドアロンの Kubernetes Cluster のためにリソースのデプロイとプロビジョニングを行う方法を示しています。 開始する前に、Azure Stack とグローバルな Azure テナントの設定を確認します。 必要な、Azure Stack に関する情報を収集します。 テナントと Azure Stack Marketplace に必要なリソースを追加します。 このクラスターは、Ubuntu サーバー、カスタム スクリプト、およびマーケットプレース内に置かれる Kubernetes 項目に依存します。
+以降の記事では、Azure Resource Manager テンプレートを使用して、スタンドアロンの Kubernetes Cluster のためにリソースのデプロイとプロビジョニングを行う方法を示しています。 Kubernetes Cluster Marketplace の項目 0.3.0 には、Azure Stack バージョン 1808 が必要です。 開始する前に、Azure Stack とグローバルな Azure テナントの設定を確認します。 必要な、Azure Stack に関する情報を収集します。 テナントと Azure Stack Marketplace に必要なリソースを追加します。 このクラスターは、Ubuntu サーバー、カスタム スクリプト、およびマーケットプレース内に置かれる Kubernetes 項目に依存します。
 
 ## <a name="create-a-plan-an-offer-and-a-subscription"></a>プラン、オファー、サブスクリプションを作成する
 
@@ -127,14 +127,20 @@ Kubernetes 項目を更新するときには、Marketplace 内にある項目を
 
 Kubernetes を削除するには:
 
-1. 現在の項目の名前に注意してください。例: `Microsoft.AzureStackKubernetesCluster.0.2.0`
+1. オペレーターとして PowerShell を使用して Azure Stack に接続します。 手順については、「[Azure Stack の PowerShell 環境を構成する](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-admin)」を参照してください。
 
-1. PowerShell を使用して Azure Stack に接続します。
-
-1. 次の PowerShell コマンドレットを使用して項目を削除します。
+2. ギャラリーで、Kubernetes クラスターの現在の項目を検索します。
 
     ```PowerShell  
-    $Itemname="Microsoft.AzureStackKubernetesCluster.0.2.0"
+    Get-AzsGalleryItem | Select Name
+    ```
+    
+3. 現在の項目の名前に注意してください。例: `Microsoft.AzureStackKubernetesCluster.0.2.0`
+
+4. 次の PowerShell コマンドレットを使用して項目を削除します。
+
+    ```PowerShell  
+    $Itemname="Microsoft.AzureStackKubernetesCluster.0.3.0"
 
     Remove-AzsGalleryItem -Name $Itemname
     ```

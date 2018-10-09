@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/28/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 5a6dcddce3337989a7a34515570ac3277aa1edd5
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 09f5dbdb173e1613ed942391da7baaeb045654e4
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841932"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452532"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 
@@ -45,18 +45,20 @@ Azure Stack の Azure への登録により、Azure からマーケットプレ�
 
 Azure を使用して Azure Stack を登録する前に、以下のものが必要です。
 
-- Azure サブスクリプションのサブスクリプション ID。 ID を取得するには、Azure にサインインし、**[More services] (その他のサービス)** > **[サブスクリプション]** をクリックして、使用するサブスクリプションをクリックすると、**[要点]** の下にサブスクリプション ID が表示されます。
+- Azure サブスクリプションのサブスクリプション ID。 登録には、EA、CSP、CSP 共有サービス サブスクリプションだけがサポートされています。 CSP では、[CSP を使用するか CSPSS サブスクリプションを使用するか](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-cspss-subscription)を決める必要があります。<br><br>ID を取得するには、Azure にサインインして、**[すべてのサービス]** をクリックします。 次に、**[一般]** カテゴリの下で **[サブスクリプション]** を選び、使用するサブスクリプションをクリックすると、**[要点]** の下にサブスクリプション ID が表示されます。
 
   > [!Note]  
   > ドイツのクラウド サブスクリプションは現在サポートされていません。
 
-- サブスクリプションの所有者であるアカウントのユーザー名とパスワード (MSA/2FA アカウントがサポートされます)。
+- サブスクリプションの所有者であるアカウントのユーザー名とパスワード。
 
-- ユーザー アカウントは、Azure Stack が登録されている Azure AD テナント (たとえば、`yourazurestacktenant.onmicrosoft.com`) の管理者である必要があります。
+- ユーザー アカウントは Azure サブスクリプションにアクセスできなければならず、そのサブスクリプションに関連付けられているディレクトリで ID アプリケーションとサービス プリンシパルを作成するアクセス許可を持つ必要があります。
 
 - Azure Stack リソース プロバイダーを登録しました (詳細については、下の「Azure Stack リソース プロバイダーを登録する」セクションを参照してください)。
 
-  これらの要件を満たす Azure サブスクリプションがない場合は、[ここで無料の Azure アカウントを作成](https://azure.microsoft.com/free/?b=17.06)できます。 Azure Stack を登録しても、Azure サブスクリプションに課金されることはありません。
+登録の後、Azure Active Directory の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要です。 たとえば、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に復元するか、*既定のプロバイダー サブスクリプション*の所有者である別の全体管理者アカウントを使用します。
+
+これらの要件を満たす Azure サブスクリプションがない場合は、[ここで無料の Azure アカウントを作成](https://azure.microsoft.com/free/?b=17.06)できます。 Azure Stack を登録しても、Azure サブスクリプションに課金されることはありません。
 
 ### <a name="powershell-language-mode"></a>PowerShell 言語モード
 
@@ -93,6 +95,19 @@ Azure Stack のデプロイは、"*接続*" デプロイまたは "*切断*" デ
  Azure からの切断デプロイ オプションを使用すると、インターネットへの接続なしで Azure Stack をデプロイして使用できます。 ただし、切断されたデプロイでは、AD FS ID ストアおよび容量ベースの課金モデルに制限されます。
     - [**容量**課金モデルを使用して切断された Azure Stack を登録する](#register-disconnected-with-capacity-billing)
 
+### <a name="determine-a-unique-registration-name-to-use"></a>使用する一意の登録名の判別 
+Azure Stack を Azure に登録するときに、一意の登録名を指定する必要があります。 Azure の登録に Azure Stack サブスクリプションを関連付ける簡単な方法は、Azure Stack の**クラウド ID** を使用することです。 
+
+> [!NOTE]
+> 容量ベースの課金モデルを使用している Azure Stack 登録では、年単位のサブスクリプションの期限が切れた後の再登録で一意の名前を変更する必要があります。
+
+Azure Stack デプロイのクラウド ID を調べるには、特権エンドポイントにアクセスできるコンピューターで管理者として PowerShell を開き、次のコマンドを実行して、**CloudID** の値を書き留めます。 
+
+```powershell
+Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
+Run: get-azurestackstampinformation 
+```
+
 ## <a name="register-connected-with-pay-as-you-go-billing"></a>従量課金制モデルを使用して接続された Azure Stack を登録する
 
 従量制課金モデルを使用して Azure Stack を Azure に登録するには、次の手順を使用します。
@@ -104,7 +119,7 @@ Azure Stack のデプロイは、"*接続*" デプロイまたは "*切断*" デ
 
 1. Azure Stack リソース プロバイダーを Azure に登録するには、PowerShell ISE を管理者として起動し、**EnvironmentName** パラメーターを適切な Azure サブスクリプション タイプ (以下のパラメーターを参照) に設定して、次の PowerShell コマンドレットを使用します。
 
-2. Azure Stack を登録するために使用する Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRmAccount** コマンドレットを実行します。 Azure グローバル管理者アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
+2. Azure Stack を登録するために使用する Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRmAccount** コマンドレットを実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
 
    ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
@@ -164,7 +179,7 @@ Azure Stack のデプロイは、"*接続*" デプロイまたは "*切断*" デ
 
 1. Azure Stack リソース プロバイダーを Azure に登録するには、PowerShell ISE を管理者として起動し、**EnvironmentName** パラメーターを適切な Azure サブスクリプション タイプ (以下のパラメーターを参照) に設定して、次の PowerShell コマンドレットを使用します。
 
-2. Azure Stack を登録するために使用する Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRmAccount** コマンドレットを実行します。 Azure グローバル管理者アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
+2. Azure Stack を登録するために使用する Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRmAccount** コマンドレットを実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。
 
    ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
@@ -255,7 +270,7 @@ Azure Stack のデプロイは、"*接続*" デプロイまたは "*切断*" デ
 アクティブ化キーを取得するには、次の PowerShell コマンドレットを実行します。  
 
   ```Powershell
-  $RegistrationResourceName = "AzureStack-<Cloud Id for the Environment to register>"
+  $RegistrationResourceName = "AzureStack-<unique-registration-name>"
   $KeyOutputFilePath = "$env:SystemDrive\ActivationKey.txt"
   $ActivationKey = Get-AzsActivationKey -RegistrationName $RegistrationResourceName -KeyOutputFilePath $KeyOutputFilePath
   ```
@@ -284,7 +299,7 @@ Get-AzsActivationKey から作成されたアクティブ化キーのファイ�
 Azure Stack が Azure に正常に登録されたことを検証するには、次の手順を使用します。
 
 1. Azure Stack [管理者ポータル](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-portals#access-the-administrator-portal): https&#58;//adminportal.*&lt;region>.&lt;fqdn>* にサインインします。
-2. **[その他のサービス]** > **[Marketplace Management]\(Marketplace の管理\)** > **[Add from Azure]\(Azure から追加\)** の順に選択します。
+2. **[すべてのサービス]** を選択し、**[管理]** カテゴリで **[Marketplace 管理]** > **[Azure から追加]** を選択します。
 
 Azure (WordPress など) から利用可能な項目のリストが表示される場合は、アクティブ化に成功しました。 ただし、切断された環境では、Azure Stack Marketplace に Azure Marketplace 項目は表示されません。
 
@@ -349,7 +364,7 @@ Azure Stack のアクティブ化リソースを削除するには、Azure Stack
 または登録名を使用することもできます。
 
   ```Powershell
-  $registrationName = "AzureStack-<Cloud ID of Azure Stack Environment>"
+  $registrationName = "AzureStack-<unique-registration-name>"
   Unregister-AzsEnvironment -RegistrationName $registrationName
   ```
 
