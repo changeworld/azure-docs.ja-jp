@@ -9,12 +9,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: 3f1bdb63253506aee211f3733df2a339824de7a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e1d8f41c55ffd453507804b005d10620665b512c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994651"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222030"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Databricks から Azure Cosmos DB Cassandra API のデータにアクセスする
 
@@ -32,9 +32,9 @@ ms.locfileid: "46994651"
 
 * [必要な場合は検証のために cqlsh を使用する](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
-* **Datastax Cassandra コネクタの Cassandra API インスタンスの構成**
+* **Cassandra コネクタ用の Cassandra API インスタンス構成:**
 
-  Cassandra の Datastax コネクタでは、spark コンテキストのために、Cassandra への接続の詳細の初期化が必要です。 Databricks のノートブックを起動すると、spark コンテキストは既に初期化されています。停止して再初期化することはお勧めしません。 解決方法の一つとして、クラスターの spark 構成で、Cassandra API インスタンスの構成情報をクラスターレベルで追加することができます。 これは、クラスターあたり 1 回限りのアクティビティです。 Spark の構成情報に、以下のコードをスペース区切りのキー値のペアとして追加します。
+  Cassandra API のコネクタでは、spark コンテキストのために、Cassandra への接続の詳細の初期化が必要です。 Databricks のノートブックを起動すると、spark コンテキストは既に初期化されています。停止して再初期化することはお勧めしません。 解決方法の一つとして、クラスターの spark 構成で、Cassandra API インスタンスの構成情報をクラスターレベルで追加することができます。 これは、クラスターあたり 1 回限りのアクティビティです。 Spark の構成情報に、以下のコードをスペース区切りのキー値のペアとして追加します。
  
   ```scala
   spark.cassandra.connection.host YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmosdb.azure.com
@@ -46,11 +46,11 @@ ms.locfileid: "46994651"
 
 ## <a name="add-the-required-dependencies"></a>必要な依存関係を追加する
 
-* **Datastax Cassandra Spark コネクタ** - Datastax Cassandra コネクタは、Spark で Azure Cosmos DB Cassandra API と統合するために、Azure Databricks クラスターに接続する必要があります。 クラスターを接続する方法は以下の通りです。
+* **Cassandra Spark コネクタ:** - Cassandra コネクタは、Spark で Azure Cosmos DB Cassandra API と統合するために、Azure Databricks クラスターに接続する必要があります。 クラスターを接続する方法は以下の通りです。
 
-  * Databricks ランタイム バージョンと Spark のバージョンを確認します。 次に Datastax Cassandra Spark コネクタと互換性がある [Maven 座標](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector)を探してから、クラスターに接続します。 コネクタ ライブラリのクラスタへの接続については、「[Maven パッケージまたは Spark パッケージをアップロードする」](https://docs.databricks.com/user-guide/libraries.html)」の記事を参照してください。 たとえば、「Databricks Runtime version 4.3」、「Spark 2.3.1」および「Scala 2.11」の Maven 座標は `spark-cassandra-connector_2.11-2.3.1` です。
+  * Databricks ランタイム バージョンと Spark のバージョンを確認します。 次に Cassandra Spark コネクタと互換性がある [Maven 座標](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector)を探してから、クラスターに接続します。 コネクタ ライブラリのクラスタへの接続については、「[Maven パッケージまたは Spark パッケージをアップロードする」](https://docs.databricks.com/user-guide/libraries.html)」の記事を参照してください。 たとえば、「Databricks Runtime version 4.3」、「Spark 2.3.1」および「Scala 2.11」の Maven 座標は `spark-cassandra-connector_2.11-2.3.1` です。
 
-* **Azure Cosmos DB Cassandra API 固有のライブラリ** - Datastax Spark コネクタから Azure Cosmos DB Cassandra api への再試行ポリシーの構成では、カスタムの接続ファクトリが必要です。 ライブラリをクラスタに接続するために、`com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`[ の Maven 座標](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar)を追加します。
+* **Azure Cosmos DB Cassandra API 固有のライブラリ:** - Cassandra Spark コネクタから Azure Cosmos DB Cassandra api への再試行ポリシーの構成では、カスタムの接続ファクトリが必要です。 ライブラリをクラスタに接続するために、`com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0`[ の Maven 座標](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar)を追加します。
 
 ## <a name="sample-notebooks"></a>ノートブックのサンプル
 

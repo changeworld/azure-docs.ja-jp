@@ -9,14 +9,14 @@ ms.date: 03/26/2018
 ms.author: tamram
 ms.custom: mvc
 ms.component: blobs
-ms.openlocfilehash: b3916fb0de48f30bd4809d1fc42dde6ac78c07b6
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d50291a33a9456fad20382d8e646bf6a19d6179e
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023268"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47180883"
 ---
-# <a name="make-your-application-data-highly-available-with-azure-storage"></a>Azure Storage を使用してアプリケーション データを高可用にする
+# <a name="tutorial-make-your-application-data-highly-available-with-azure-storage"></a>チュートリアル: Azure Storage を使用してアプリケーション データを高可用にする
 
 このチュートリアルは、Azure でアプリケーション データに高い可用性を確保する方法について紹介するシリーズの第 1 部です。 完了すると、BLOB を[読み取りアクセス geo 冗長ストレージ](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) ストレージ アカウントにアップロードし、取得するコンソール アプリケーションが作成されます。 RA-GRS は、プライマリ リージョンからセカンダリ リージョンにトランザクションをレプリケートすることによって機能します。 このレプリケーション プロセスにより、セカンダリ リージョンのデータの結果整合性が保証されます。 このアプリケーションで[ブレーカー](/azure/architecture/patterns/circuit-breaker) パターンを使用して、接続先のエンドポイントを判断します。 エラーをシミュレートすると、アプリケーションはセカンダリ エンドポイントに切り替えます。
 

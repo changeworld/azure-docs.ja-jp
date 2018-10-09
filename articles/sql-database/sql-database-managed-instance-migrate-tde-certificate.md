@@ -1,26 +1,27 @@
 ---
 title: TDE 証明書の移行 - Azure SQL Database Managed Instance | Microsoft Docs
-description: Transparent Data Encryption が有効なデータベースのデータベース暗号化キーを保護する証明書を Azure SQL Managed Instance に移行します
-keywords: SQL Database チュートリアル, SQL Database Managed Instance, TDE 証明書の移行
+description: Transparent Data Encryption が有効なデータベースのデータベース暗号化キーを保護する証明書を Azure SQL Database Managed Instance に移行します
 services: sql-database
-author: MladjoA
-ms.reviewer: carlrab, jovanpop
 ms.service: sql-database
-ms.custom: managed instance
-ms.topic: tutorial
-ms.date: 08/09/2018
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: MladjoA
 ms.author: mlandzic
+ms.reviewer: carlrab, jovanpop
 manager: craigg
-ms.openlocfilehash: 73990d6feeed56114bc3c66164bbb53c093bbe21
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 08/09/2018
+ms.openlocfilehash: 078a64bf625fad15b66a3c4e6e31e798f675fc33
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050613"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161779"
 ---
-# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>TDE で保護されたデータベースの証明書を Azure SQL Managed Instance に移行する
+# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-database-managed-instance"></a>TDE で保護されたデータベースの証明書を Azure SQL Database Managed Instance に移行する
 
-ネイティブな復元オプションを使用して、[Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) によって保護されたデータベースを Azure SQL Managed Instance に移行する場合、データベースの復元前に、オンプレミスまたは IaaS の SQL Server から対応する証明書を移行しておく必要があります。 この記事では、証明書を Azure SQL Database Managed Instance に手動で移行するプロセスについて説明します。
+ネイティブな復元オプションを使用して、[Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) によって保護されたデータベースを Azure SQL Database Managed Instance に移行する場合、データベースの復元前に、オンプレミスまたは IaaS の SQL Server から対応する証明書を移行しておく必要があります。 この記事では、証明書を Azure SQL Database Managed Instance に手動で移行するプロセスについて説明します。
 
 > [!div class="checklist"]
 > * 証明書を Personal Information Exchange (.pfx) ファイルにエクスポートする
@@ -30,7 +31,7 @@ ms.locfileid: "44050613"
 TDE で保護されたデータベースと対応する証明書の両方を円滑に移行するためにフル マネージド サービスを使用する別の方法については、[Azure Database Migration Service を使用してオンプレミスのデータベースを Managed Instance に移行する方法](../dms/tutorial-sql-server-to-managed-instance.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> Azure SQL Managed Instance の Transparent Data Encryption は、サービス管理モードで動作します。 移行された証明書は TDE で保護されたデータベースの復元にのみ使用されます。 移行された証明書は、復元が実行された後すぐに、システムによって管理される別の証明書に置き換えられます。
+> Azure SQL Database Managed Instance の Transparent Data Encryption は、サービス管理モードで動作します。 移行された証明書は TDE で保護されたデータベースの復元にのみ使用されます。 移行された証明書は、復元が実行された後すぐに、システムによって管理される別の証明書に置き換えられます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -109,7 +110,7 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
 4. ウィザードに従って、証明書と秘密キーを Personal Information Exchange 形式にエクスポートします。
 
-## <a name="upload-certificate-to-azure-sql-managed-instance-using-azure-powershell-cmdlet"></a>Azure PowerShell コマンドレットを使用して証明書を Azure SQL Managed Instance にアップロードする
+## <a name="upload-certificate-to-azure-sql-database-managed-instance-using-azure-powershell-cmdlet"></a>Azure PowerShell コマンドレットを使用して証明書を Azure SQL Database Managed Instance にアップロードする
 
 1. PowerShell で準備手順を開始します。
 
@@ -139,6 +140,6 @@ SQL Server Management Studio で証明書をエクスポートして .pfx 形式
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Transparent Data Encryption が有効なデータベースの暗号化キーを保護する証明書を、オンプレミスまたは IaaS の SQL Server から Azure SQL Managed Instance に移行する方法について説明しました。
+この記事では、Transparent Data Encryption が有効なデータベースの暗号化キーを保護する証明書を、オンプレミスまたは IaaS の SQL Server から Azure SQL Database Managed Instance に移行する方法について説明しました。
 
 データベース バックアップを Azure SQL Database マネージド インスタンスに復元する方法については、「[Azure SQL Database マネージド インスタンスにデータベース バックアップを復元する](sql-database-managed-instance-get-started-restore.md)」を参照してください。

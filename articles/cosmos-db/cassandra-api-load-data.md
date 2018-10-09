@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: d659004e94c51f173bc1e9ae42fd9c62ae45912f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 662d4b8812ca4b92c1130b9c2c38771e7ec30a06
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972540"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393999"
 ---
 # <a name="load-sample-data-into-an-azure-cosmos-db-cassandra-api-table"></a>Azure Cosmos DB の Cassandra API のテーブルにサンプル データを読み込む
 
-このチュートリアルでは、Java アプリケーションを使用して Azure Cosmos DB の Cassandra API アカウント内のテーブルにサンプル ユーザー データを読み込む方法を示します。 Java アプリケーションは [Datastax Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID やユーザー名、ユーザー所在地などのユーザー データを読み込みます。 
+このチュートリアルでは、Java アプリケーションを使用して Azure Cosmos DB の Cassandra API アカウント内のテーブルにサンプル ユーザー データを読み込む方法を示します。 この Java アプリケーションでは、[Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID、ユーザー名、ユーザー所在地などのユーザー データを読み込みます。 
 
 このチュートリアルに含まれるタスクは次のとおりです。
 

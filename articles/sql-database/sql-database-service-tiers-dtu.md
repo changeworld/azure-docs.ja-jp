@@ -1,24 +1,27 @@
 ---
 title: Azure SQL Database サービス レベル - DTU | Microsoft Docs
-description: 単一のデータベースとプールされたデータベースに対してパフォーマンス レベルとストレージ サイズを提供するサービス レベルについて説明します。
+description: 単一のデータベースとプールされたデータベースに対してコンピューティング サイズとストレージ サイズを提供するサービス レベルについて説明します。
 services: sql-database
-author: sachinpMSFT
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/01/2018
+author: sachinpMSFT
+ms.author: sachinp
+ms.reviewer: carlrab
 manager: craigg
-ms.author: carlrab
-ms.openlocfilehash: d0250d508ca6d21ee09c9402e10d2fdb025529ac
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.date: 09/14/2018
+ms.openlocfilehash: 2f9362a6d771df3cdb11855844025bc8d9ea732e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142785"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162374"
 ---
-# <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>DTU ベースのサービス レベル、パフォーマンス レベル、ストレージ リソースの選択 
+# <a name="choosing-a-dtu-based-service-tier-compute-size-and-storage-resources"></a>DTU ベースのサービス レベル、コンピューティング サイズ、ストレージ リソースの選択 
 
-サービス レベルは、固定の付属ストレージ容量、固定のバックアップ保有期間、および固定の価格を持つさまざまなパフォーマンス レベルによって区別されます。 すべてのサービス レベルで、ダウンタイムなしでパフォーマンス レベルを柔軟に変更できます。 単一データベースとエラスティック プールは、サービス レベルおよびパフォーマンス レベルに基づいて、時間単位で課金されます。
+サービス レベルは、固定の付属ストレージ容量、固定のバックアップ保有期間、固定の価格を持つさまざまなコンピューティング サイズによって区別されます。 すべてのサービス レベルで、ダウンタイムなしでコンピューティング サイズを柔軟に変更できます。 単一データベースとエラスティック プールは、サービス レベルとコンピューティング サイズに基づいて時間単位で課金されます。
 
 > [!IMPORTANT]
 > SQL Database Managed Instance は、現在、パブリック プレビュー段階であり、DTU ベースの購入モデルをサポートしていません。 詳細については、[Azure SQL Database Managed Instance に関するページ](sql-database-managed-instance.md)を参照してください。 
@@ -40,7 +43,7 @@ ms.locfileid: "42142785"
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Single Database の DTU と容量の上限
 
-パフォーマンス レベルは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU と eDTU の概要](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)に関する記事をご覧ください。
+コンピューティング サイズは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU と eDTU の概要](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)に関する記事をご覧ください。
 
 ||Basic|標準|Premium|
 | :-- | --: | --: | --: | --: |
@@ -73,7 +76,7 @@ ms.locfileid: "42142785"
 DTU の各測定に関連付けられている物理的な特性 (CPU、メモリ、IO) は、実際のデータベース ワークロードをシミュレートするベンチマークを使用して較正されます。
 
 ### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>実際のデータベース パフォーマンスへのベンチマーク結果の関連付け
-すべてのベンチマークは単なる典型値であり、指標である点を理解しておくことが重要です。 ベンチマーク アプリケーションで達成されるトランザクション率は、他のアプリケーションで達成されるトランザクション率と同じにはなりません。 ベンチマークは、さまざまなテーブルやデータの種類を含むスキーマに対して実行されるさまざまなトランザクションの種類のコレクションで構成されます。 ベンチマークはすべての OLTP ワークロードに共通する同じ基本操作を実行しますが、特定のクラスのデータベースまたはアプリケーションを表すものではありません。 このベンチマークの目的は、パフォーマンス レベルをスケール アップまたはスケール ダウンしたときに予想されるデータベースの相対的なパフォーマンスの適切なガイドを提供することです。 実際には、データベースのサイズと複雑さはさまざまであり、さまざまなワークロードが発生するため、対応方法も変わります。 たとえば、IO の利用が多いアプリケーションでは IO しきい値に達するまでの時間が短くなったり、CPU の使用量が多いアプリケーションでは CPU の上限に達するまでの時間が短くなったりすることがあります。 負荷が増えている状況で、特定のデータベースがベンチマークと同様に拡張する保証はありません。
+すべてのベンチマークは単なる典型値であり、指標である点を理解しておくことが重要です。 ベンチマーク アプリケーションで達成されるトランザクション率は、他のアプリケーションで達成されるトランザクション率と同じにはなりません。 ベンチマークは、さまざまなテーブルやデータの種類を含むスキーマに対して実行されるさまざまなトランザクションの種類のコレクションで構成されます。 ベンチマークはすべての OLTP ワークロードに共通する同じ基本操作を実行しますが、特定のクラスのデータベースまたはアプリケーションを表すものではありません。 このベンチマークの目的は、コンピューティング サイズをスケール アップまたはスケール ダウンしたときに予想されるデータベースの相対的なパフォーマンスの適切なガイドを提供することです。 実際には、データベースのサイズと複雑さはさまざまであり、さまざまなワークロードが発生するため、対応方法も変わります。 たとえば、IO の利用が多いアプリケーションでは IO しきい値に達するまでの時間が短くなったり、CPU の使用量が多いアプリケーションでは CPU の上限に達するまでの時間が短くなったりすることがあります。 負荷が増えている状況で、特定のデータベースがベンチマークと同様に拡張する保証はありません。
 
 ベンチマークとその方法について、以下でさらに詳細に説明します。
 
@@ -155,5 +158,5 @@ ASDB は、オンライン トランザクション処理 (OLTP) ワークロー
 
 ## <a name="next-steps"></a>次の手順
 
-- 単一データベースに対して選択できる具体的なパフォーマンス レベルとストレージ サイズの詳細については、[単一データベースに対する SQL Database の DTU ベースのリソース制限](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels)に関するページをご覧ください。
-- エラスティック プールに対して選択できる具体的なパフォーマンス レベルとストレージ サイズの詳細については、[SQL Database の DTU ベースのリソース制限](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels)に関するページをご覧ください。
+- 単一データベースに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[単一データベースに対する SQL Database の DTU ベースのリソース制限](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)に関するページをご覧ください。
+- エラスティック プールに対して選択できる具体的なコンピューティング サイズとストレージ サイズの詳細については、[SQL Database の DTU ベースのリソース制限](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)に関するページをご覧ください。

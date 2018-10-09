@@ -1,25 +1,27 @@
 ---
 title: 脅威検出 - Azure SQL Database Managed Instance | Microsoft Docs
-description: 脅威の検出は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
+description: 脅威検出では、マネージド インスタンスのデータベースに対する潜在的なセキュリティの脅威を示す異常なデータベース アクティビティを検出します。
 services: sql-database
-author: rmatchoro
-manager: craigg
 ms.service: sql-database
-ms.custom: security, managed instance
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/07/2018
+author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
-ms.openlocfilehash: 76033438ad785412aa97358d80b5e4fdbf4c2bfb
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 7f05bd6c96a8e22b1e039c3edcec491b7c079d54
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716997"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162411"
 ---
 # <a name="azure-sql-database-managed-instance-threat-detection"></a>Azure SQL Database Managed Instance の脅威検出
 
-SQL 脅威検出では、Azure SQL Database マネージド インスタンス (プレビュー) の データベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティを検出します。
+SQL 脅威検出では、Azure SQL Database Managed Instance のデータベースへのアクセスやデータベースの悪用を試みる、害を及ぼす可能性のある異常なアクティビティを検出します。
 
 ## <a name="overview"></a>概要
 

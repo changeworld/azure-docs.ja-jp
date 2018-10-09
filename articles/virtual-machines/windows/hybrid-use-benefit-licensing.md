@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: a4b0baefc8c3c839a06d6540e57b34657138c8ff
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: fef057b5d1e1ba8b03b04852376b1e5a49926008
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34071954"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432407"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit
 ソフトウェア アシュアランスを取得したお客様は、Windows Server 向け Azure Hybrid Benefit により、オンプレミスの Windows Server ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure ハイブリッド特典を使用して、Windows OS 搭載の新しい仮想マシンをデプロイすることができます。 この記事では、Windows Server 向け Azure ハイブリッド特典での新しい VM のデプロイ方法と、既存の稼働中 VM を更新する方法について説明します。 Windows Server 向け Azure Hybrid Benefit のライセンスとコスト削減について詳しくは、[Windows Server 向け Azure Hybrid Benefit のライセンス ページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)をご覧ください。
@@ -40,7 +40,7 @@ ms.locfileid: "34071954"
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit の使用方法
 Azure Hybrid Benefit で Windows 仮想マシンを使用する方法はいくつかあります。
 
-1. [Azure Marketplace で提供されている Windows Server イメージ](#https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WindowsServer?tab=Overview)の 1 つから VM をデプロイできます
+1. [Azure Marketplace で提供されている Windows Server イメージ](# https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WindowsServer?tab=Overview)の 1 つから VM をデプロイできます
 2. カスタム VM をアップロードし、Resource Manager テンプレートまたは Azure PowerShell を使ってデプロイできます
 3. 既存の VM については、Azure ハイブリッド特典で実行するか、Windows Server のオンデマンド料金を支払うかの間で切り替えおよび変換することができます
 4. Windows Server 向け Azure ハイブリッド特典を仮想マシン スケール セットに適用することもできます
@@ -82,7 +82,11 @@ Resource Manager テンプレート内に、追加パラメーター `licenseTyp
 ```
 
 ## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>既存の VM を Windows Server 向け Azure ハイブリッド特典を使用するように変換する
-Windows Server 向け Azure ハイブリッド特典を利用するように変換したい既存の VM がある場合は、VM のライセンスの種類を以下のように更新できます。
+Windows Server 向け Azure ハイブリッド特典を利用するように変換したい既存の VM がある場合は、以下の手順に従って、VM のライセンスの種類を更新できます。
+
+> [!NOTE]
+> VM 上のライセンスの種類を変更しても、システムが再起動したり、サービスが中断したりすることはありません。  メタデータ フラグが更新されるだけです。
+> 
 
 ### <a name="portal"></a>ポータル
 ポータル VM ブレードから、"構成" オプションを選択して Azure ハイブリッド特典を使用するように VM を更新し、"Azure ハイブリッド特典" オプションに切り替えることができます。
@@ -110,7 +114,7 @@ Windows Server 向け Azure ハイブリッド特典を利用するように変�
     ```azurecli
     az vm update --resource-group myResourceGroup --name myVM --set licenseType=Windows_Server
     ```
-    
+
 ### <a name="how-to-verify-your-vm-is-utilizing-the-licensing-benefit"></a>VM がライセンスの特典を利用していることを確認する方法
 VM を PowerShell、Resource Manager テンプレート、ポータルのいずれかの方法でデプロイした後、次の方法で設定を確認できます。
 
@@ -141,6 +145,10 @@ LicenseType              :
 ```azurecli
 az vm get-instance-view -g MyResourceGroup -n MyVM --query '[?licenseType==Windows_Server]' -o table
 ```
+
+> [!NOTE]
+> VM 上のライセンスの種類を変更しても、システムが再起動したり、サービスが中断したりすることはありません。 これはメタデータのライセンス フラグのみです。
+>
 
 ## <a name="list-all-vms-with-azure-hybrid-benefit-for-windows-server-in-a-subscription"></a>サブスクリプションのすべての Windows Server 向け Azure ハイブリッド特典付き VM の一覧表示
 Windows Server 向け Azure Hybrid Benefit でデプロイされたすべての仮想マシンを参照し、カウントするには、自分のサブスクリプションから次のコマンドを実行します。

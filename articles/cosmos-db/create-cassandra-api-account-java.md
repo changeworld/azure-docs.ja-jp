@@ -9,16 +9,16 @@ ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: af25c52d1300a2daed3542c5cb1db080c505f715
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e5b412042d0a872443c0b30c774dfd4926555a5a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953125"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221668"
 ---
 # <a name="create-an-azure-cosmos-db-cassandra-api-account-database-and-a-table-by-using-a-java-application"></a>Java アプリケーションを使用して Azure Cosmos DB Cassandra API のアカウント、データベース、テーブルを作成する
 
-このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB に Cassandra API アカウントを作成し、データベース (キースペースとも呼ばれます) とテーブルを追加する方法について説明します。 Java アプリケーションでは、[Datastax Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID、ユーザー名、ユーザーの住所などの詳細情報を格納するユーザー データベースを作成します。  
+このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB に Cassandra API アカウントを作成し、データベース (キースペースとも呼ばれます) とテーブルを追加する方法について説明します。 Java アプリケーションでは、[Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID、ユーザー名、ユーザーの住所などの詳細情報を格納するユーザー データベースを作成します。  
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -48,7 +48,7 @@ ms.locfileid: "46953125"
 
    |Setting   |推奨値  |説明  |
    |---------|---------|---------|
-   |ID   |   一意名を入力    | この Azure Cosmos DB アカウントを識別するための一意の名前を入力します。 <br/><br/>指定した ID に cassandra.cosmosdb.azure.com が付加されてコンタクト ポイントが作成されるので、ID は一意であっても識別可能なものを使用してください。         |
+   |ID   |   一意の名前を入力します    | この Azure Cosmos DB アカウントを識別するための一意の名前を入力します。 <br/><br/>指定した ID に cassandra.cosmosdb.azure.com が付加されてコンタクト ポイントが作成されるので、ID は一意であっても識別可能なものを使用してください。         |
    |API    |  Cassandra   |  API によって、作成するアカウントの種類が決まります。 <br/> **Cassandra** を選択します。この記事では、CQL 構文を使用してクエリ可能なワイドカラム データベースを作成するためです。  |
    |サブスクリプション    |  該当するサブスクリプション        |  この Azure Cosmos DB アカウントに使用する Azure サブスクリプションを選択します。        |
    |リソース グループ   | 名前を入力    |   **[新規作成]** を選択してから、自分のアカウントの新しいリソースグループの名前を入力します。 簡略化のため、ID と同じ名前を使用することができます。    |
@@ -91,7 +91,7 @@ cassandra_password=<FILLME_with_PRIMARY PASSWORD>
  
 2. `cassandra-demo` フォルダーを検索します。 テキスト エディターを使用して、生成された `pom.xml` ファイルを開きます。 
 
-   Cassandra datastax 依存関係を追加し、[pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/pom.xml) ファイルで示されているようにプロジェクトで必要なプラグインをビルドします。  
+   Cassandra 依存関係を追加し、[pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/java-examples/pom.xml) ファイルで示されているようにプロジェクトで必要なプラグインをビルドします。  
 
 3. `cassandra-demo\src\main` フォルダーの下に、`resources` という名前の新しいフォルダーを作成します。  resources フォルダーの下に、config.properties ファイルと log4j.properties ファイルを追加します。
 

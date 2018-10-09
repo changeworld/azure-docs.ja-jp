@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d25f46804c3320b7d941a945f3c4d9a5dfb6970c
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b7de476c6b96856e9b783ed8182985846bb39cfa
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702131"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452396"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>SQL API 用の Azure Cosmos DB .NET SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -50,6 +50,24 @@ ms.locfileid: "43702131"
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
+
+* マルチリージョンの要求の一時的な障害に対する回復力を上げました。
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+
+* マルチリージョンの書き込みがサポートされるようになりました。
+* TOP と MaxBufferedItemCount でクロス パーティションのクエリ パフォーマンスが改善されました。
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+
+* 要求をキャンセルできるようになりました。
+* SetCurrentLocation を ConnectionPolicy に追加しました。これにより、優先される場所がリージョンに基づいて自動的に事前設定されます。
+* 個々のパーティション上のいずれのドキュメントにも一致しないフィルターや Min/Max を含むクロス パーティション クエリのバグを修正しました。
+* DocumentClient のメソッドが IDocumentClient と等価になりました。
+* 確立される接続数を減らすために、ダイレクト TCP トランスポート スタックを更新しました。
+* 非 Windows クライアント向けにダイレクト モード TCP のサポートを追加しました。
+
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
 * 要求をキャンセルできるようになりました。
@@ -309,8 +327,9 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
-| [2.0.0-preview2](#2.0.0-preview2) |2018 年 7 月 26 日 |--- |
-| [2.0.0-preview](#2.0.0-preview) |2018 年 5 月 11 日 |--- |
+| [2.1.1](#2.1.1) |2018 年 9 月 27 日 |--- |
+| [2.1.0](#2.1.0) |2018 年 9 月 21 日 |--- |
+| [2.0.0](#2.0.0) |2018 年 9 月 7 日 |--- |
 | [1.22.0](#1.22.0) |2018 年 4 月 19 日 |--- |
 | [1.21.1](#1.20.1) |2018 年 3 月 9 日 |--- |
 | [1.20.2](#1.20.1) |2018 年 2 月 21 日 |--- |

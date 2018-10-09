@@ -2,19 +2,22 @@
 title: Azure SQL Database のリソースのスケーリング | Microsoft Docs
 description: この記事では、リソースの割り当てを追加または削除して、データベースをスケーリングする方法について説明します。
 services: sql-database
-author: jovanpop-msft
-ms.reviewer: carlrab
 ms.service: sql-database
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/16/2018
+author: jovanpop-msft
 ms.author: jovanpop
+ms.reviewer: carlrab
 manager: craigg
-ms.openlocfilehash: 2378a4d5bb7d7f52ee2e96224db01e5e386b4c46
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.date: 09/20/2018
+ms.openlocfilehash: cd0653cf1920bd62621b89410b8cd2de2570fae3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146618"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162919"
 ---
 # <a name="scale-database-resources"></a>データベース リソースをスケーリングする
 
@@ -30,13 +33,14 @@ Azure SQL Database では、最小限のダウンタイムでデータベース�
 
 Azure SQL Database には、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)があります。 
 -   [DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)には、データベースの軽量ワークロードから重量ワークロードまでをサポートする、計算リソース、メモリ リソース、および IO リソースの組み合わせがそれぞれ異なる、Basic、Standard、Premium の 3 つのサービス レベルがあります。 各レベルにおけるパフォーマンス レベルでは、これらのリソースのさまざまな組み合わせが提供され、ストレージ リソースを追加することができます。
--   [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)では、仮想コアの数、メモリの量、およびストレージの量と速度を選択できます。
-最初にアプリを月数ドルの小さな 1 つのデータベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを変更することができます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+-   [仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)では、仮想コアの数、メモリの量、およびストレージの量と速度を選択できます。 この購入モデルには、General Purpose、Business Critical、Hyperscale (プレビュー) という 3 つのサービス レベルがあります。
+最初に General Purpose サービス レベルで月額の安い小さなシングル データベースにアプリをビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを Business Critical サービス レベルに変更できます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
 
+> [!IMPORTANT]
+> General Purpose または Business Critical から Hyperscale にサービス レベルを変更することはできません。 ただし、Hyperscale サービス レベル内でパフォーマンス レベルを変更できます。
 
 > [!NOTE]
 > 動的スケーラビリティは自動スケールとは異なります。 自動スケールは、基準に基づいてサービスが自動的にスケールされるのに対し、動的スケーラビリティでは、ダウンタイムなしで手動スケールすることができます。
->
 
 単一の Azure SQL Database は、手動の動的スケーラビリティをサポートしますが、自動スケールはサポートしていません。 *自動*操作を増やすには、エラスティック プールの使用を検討してください。エラスティック プールを使用すると、データベースが個々のデータベースのニーズに基づいてプール内のリソースを共有できます。
 ただし、単一の Azure SQL Database のスケーラビリティを自動化できるスクリプトがあります。 例については、「[PowerShell を使用して単一の SQL データベースを監視およびスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md)」を参照してください。
@@ -47,12 +51,11 @@ Azure SQL Database には、[DTU ベースの購入モデル](sql-database-servi
 
 Azure SQL Database の 3 種類すべてに、データベースを動的にスケーリングする何らかの機能があります。
 -   [Azure SQL Single Database](sql-database-single-database-scale.md) では[DTU](sql-database-dtu-resource-limits-single-databases.md) モデルまたは[仮想コア](sql-database-vcore-resource-limits-single-databases.md) モデルを使って、各データベースに割り当てられる最大リソース量を定義できます。
--   [Azure SQL Managed Instance](sql-database-managed-instance.md) は[仮想コア](/azure/sql-database/sql-database-managed-instance#vcore-based-purchasing-model-preview) モードを使い、インスタンスに割り当てられる最大 CPU コア数と最大ストレージ量を定義できます。 インスタンス内のすべてのデータベースが、インスタンスに割り当てられたリソースを共有します。
+-   [Azure SQL Managed Instance](sql-database-managed-instance.md) は[仮想コア](sql-database-managed-instance.md#vcore-based-purchasing-model) モードを使い、インスタンスに割り当てられる最大 CPU コア数と最大ストレージ量を定義できます。 インスタンス内のすべてのデータベースが、インスタンスに割り当てられたリソースを共有します。
 -   [Azure SQL エラスティック プール](sql-database-elastic-pool-scale.md)を使用すると、プール内のデータベースのグループごとの最大リソース制限を定義できます。
 
 ## <a name="alternative-scale-methods"></a>別のスケーリング方法
-リソースのスケーリングは、データベースまたはアプリケーション コードを変更することなく、データベースのパフォーマンスを向上させることができる、最も簡単で効果的な方法です。
-場合によっては、最高のパフォーマンス レベルであっても、パフォーマンスを最適化するだけでは、コスト効果の高い方法でワークロードを正常に処理できない可能性があります。 そのような場合は、データベースをスケーリングするための他のオプションがあります。
+リソースのスケーリングは、データベースまたはアプリケーション コードを変更することなく、データベースのパフォーマンスを向上させることができる、最も簡単で効果的な方法です。 場合によっては、最高のサービス レベル、コンピューティング サイズ、パフォーマンス最適化であっても、コスト効果の高い方法でワークロードを正常に処理できないことがあります。 そのような場合は、次の追加オプションでデータベースの規模を変更できます。
 -   [読み取りスケールアウト](sql-database-read-scale-out.md)は、データの 1 つの読み取り専用レプリカを取得している場合に利用できる機能であり、レポートなどの負荷が高い読み取り専用クエリを実行できます。 読み取り専用レプリカは、プライマリ データベースのリソース使用量に影響を与えずに、読み取り専用ワークロードを処理します。
 -   [データベース シャーディング](sql-database-elastic-scale-introduction.md)は、データを複数のデータベースに分割してそれらを個別にスケーリングできる一連のテクニックです。
 

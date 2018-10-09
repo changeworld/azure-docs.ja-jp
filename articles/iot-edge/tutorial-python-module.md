@@ -5,20 +5,20 @@ services: iot-edge
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 06/26/2018
+ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6cf3a721dfd601fc4d4beb122f56b4a4de5fe426
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 0a32f925aa1ff4066a893fb107f4d785bd1fd8f8
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41918390"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423563"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-to-your-simulated-device"></a>チュートリアル: Python IoT Edge モジュールを開発して、シミュレートされたデバイスに展開する
 
-Azure IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 [Windows][lnk-quickstart-win] または [Linux][lnk-quickstart-lin] のシミュレートされたデバイスに Azure IoT Edge を展開するクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルで学習する内容は次のとおりです。    
+Azure IoT Edge モジュールを使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、センサー データをフィルター処理する IoT Edge モジュールを作成および展開する方法について説明します。 [Windows][lnk-quickstart-win] または [Linux][lnk-quickstart-lin] のシミュレートされたデバイスに Azure IoT Edge を展開するクイック スタートで作成した、シミュレートされた IoT Edge デバイスを使用します。 このチュートリアルでは、以下の内容を学習します。    
 
 > [!div class="checklist"]
 > * Visual Studio Code を使用して IoT Edge Python モジュールを作成する。
@@ -41,7 +41,7 @@ Azure IoT Edge デバイス:
 
 クラウド リソース:
 
-* Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
+* Azure の Free レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
 
 開発リソース:
 

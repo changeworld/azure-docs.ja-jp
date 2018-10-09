@@ -5,28 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 09/20/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: abd4a3b21ede2ddbdede2ec133938d412d5d4c8d
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 6354d89ff5a23ccb51b85737b3a842c08534683e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248167"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223612"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Azure AD ID を使用し、CLI または PowerShell で Azure Storage にアクセスする (プレビュー)
 
-Azure Storage には、Azure CLI と PowerShell のためのプレビュー拡張機能があります。この機能では、Azure Active Directory (Azure AD) ID でログインし、スクリプト コマンドを実行できます。 ユーザー、グループ、アプリケーション サービス プリンシパルが Azure AD ID になることができます。[マネージド サービス ID](../../active-directory/managed-service-identity/overview.md) が Azure AD ID になることもあります。 ストレージ リソースにアクセスするためのアクセス許可をロールベースのアクセス制御 (RBAC) を介して Azure AD ID に割り当てることができます。 Azure Storage の RBAC ロールについては、「[Manage access rights to Azure Storage data with RBAC (Preview)](storage-auth-aad-rbac.md)」 (RBAC で Azure Storage データへのアクセス許可を管理する (プレビュー)) を参照してください。
+Azure Storage には、Azure CLI と PowerShell のためのプレビュー拡張機能があります。この機能では、Azure Active Directory (Azure AD) ID でログインし、スクリプト コマンドを実行できます。 ユーザー、グループ、アプリケーション サービス プリンシパルが Azure AD ID になることができます。[マネージド サービス ID](../../active-directory/managed-identities-azure-resources/overview.md) が Azure AD ID になることもあります。 ストレージ リソースにアクセスするためのアクセス許可をロールベースのアクセス制御 (RBAC) を介して Azure AD ID に割り当てることができます。 Azure Storage の RBAC ロールについては、「[Manage access rights to Azure Storage data with RBAC (Preview)](storage-auth-aad-rbac.md)」 (RBAC で Azure Storage データへのアクセス許可を管理する (プレビュー)) を参照してください。
 
 Azure AD ID で Azure CLI または PowerShell にログインするとき、その ID で Azure Storage にアクセスするためのアクセス トークンが返されます。 そのトークンが CLI または PowerShell によって自動的に使用され、Azure Storage に対する操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
 
-> [!IMPORTANT]
-> このプレビューは、非運用環境でのみの使用を意図しています。 運用サービス レベル アグリーメント (SLA) は、Azure Storage 用の Azure AD 統合の一般公開が宣言されるまで利用できません。 ご利用のシナリオで Azure AD 統合がまだサポートされていない場合、お使いのアプリケーションでは共有キー承認か SAS トークンを引き続き使用してください。 プレビューの詳細については、「[Authenticate access to Azure Storage using Azure Active Directory (Preview) (Azure Active Directory を使用した Azure Storage へのアクセスの認証 (プレビュー))](storage-auth-aad.md)」を参照してください。
->
-> プレビュー中、RBAC ロールの割り当ては反映に最大 5 分かかることがあります。
->
-> Azure AD と Azure Storage の統合では、Azure Storage 操作に HTTPS を使用する必要があります。
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="supported-operations"></a>サポート対象の操作
 
@@ -61,40 +56,50 @@ az storage blob download --account-name storagesamples --container sample-contai
 
 ## <a name="call-powershell-commands-with-an-azure-ad-identity"></a>Azure AD ID で PowerShell コマンドを呼び出す
 
+Azure PowerShell は、次のプレビュー モジュールのいずれかについてのみ、Azure AD ID でのサインインをサポートしています。 
+
+- 4.4.0-preview 
+- 4.4.1-preview 
+
 Azure PowerShell を使用し、Azure AD ID でサインインするには:
 
-1. 最新バージョンの PowerShellGet がインストールされていることを確認します。 次のコマンドを実行し、最新バージョンをインストールします。
+1. Azure PowerShell の以前のインストールがある場合はアンインストールします。
+
+    - **[設定]** の **[アプリと機能]** 設定を使用して、Windows から Azure PowerShell の以前のインストールを削除します。
+    - `%Program Files%\WindowsPowerShell\Modules` からすべての **Azure*** モジュールを削除します。
+
+1. 最新バージョンの PowerShellGet がインストールされていることを確認します。 Windows PowerShell ウィンドウを開き、次のコマンドを実行して最新バージョンをインストールします。
  
     ```powershell
-    Install-Module -Name Azure.Storage -AllowPrerelease –AllowClobber -RequiredVersion "4.4.1-preview"
+    Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+1. PowerShellGet のインストール後、PowerShell ウィンドウを閉じて再び開きます。 
 
-2. Azure PowerShell を以前にインストールしていた場合、それはアンインストールしてください。
-3. AzureRM をインストールします。
+1. 最新バージョンの Azure PowerShell をインストールします。
 
     ```powershell
     Install-Module AzureRM –Repository PSGallery –AllowClobber
     ```
 
-4. プレビュー モジュールをインストールします。
+1. Azure AD をサポートする Azure Storage プレビュー モジュールのいずれかをインストールします。
 
     ```powershell
-    Install-Module -Name Azure.Storage -AllowPrerelease –AllowClobber 
+    Install-Module Azure.Storage –Repository PSGallery -RequiredVersion 4.4.1-preview  –AllowPrerelease –AllowClobber –Force 
     ```
+1. PowerShell ウィンドウを閉じて再び開きます。
+1. [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) コマンドレットを呼び出してコンテキストを作成し、`-UseConnectedAccount` パラメーターを含めます。 
+1. Azure AD ID でコマンドレットを呼び出すには、新しく作成したコンテキストをコマンドレットに渡します。
 
-5. [New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) コマンドレットを呼び出してコンテキストを作成し、`-UseConnectedAccount` パラメーターを含めます。 
-6. Azure AD ID でコマンドレットを呼び出すには、コンテキストをコマンドレットに渡します。
-
-次の例では、Azure AD ID を使用し、Azure PowerShell からコンテナーの BLOB を一覧表示する方法を示しています。 
+次の例では、Azure AD ID を使用し、Azure PowerShell からコンテナーの BLOB を一覧表示する方法を示しています。 プレースホルダーのアカウント名とコンテナー名は、必ず実際の値に置き換えてください。 
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -UseConnectedAccount 
-Get-AzureStorageBlob -Container $sample-container -Context $ctx 
+$ctx = New-AzureStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
+Get-AzureStorageBlob -Container sample-container -Context $ctx 
 ```
 
 ## <a name="next-steps"></a>次の手順
 
 - Azure Storage の RBAC ロールについては、[RBAC で Azure Storage データへのアクセス許可を管理する (プレビュー)](storage-auth-aad-rbac.md) 方法に関するページを参照してください。
-- Azure Storage でマネージド サービス ID を使用する方法については、「[Authenticate with Azure AD from an Azure Managed Service Identity (Preview)](storage-auth-aad-msi.md)」 (Azure マネージド サービス ID から Azure AD で認証する (プレビュー)) を参照してください。
+- Azure Storage を使用して Azure リソースのマネージド ID を使用する方法については、「[Azure マネージド サービス ID (プレビュー) から Azure AD の認証を受ける](storage-auth-aad-msi.md)」を参照してください。
 - ストレージ アプリケーション内からコンテナーやキューへのアクセスを承認する方法については、[ストレージ アプリケーションで Azure AD を使用する](storage-auth-aad-app.md)方法に関するページを参照してください。
 - Azure の BLOB とキューの Azure AD 統合に関する詳細については、Azure Storage チームのブログ投稿「[Announcing the Preview of Azure AD Authentication for Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)」(Azure Storage の Azure AD Authentication のプレビューの発表) を参照してください。

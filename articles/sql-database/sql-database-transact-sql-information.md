@@ -2,19 +2,22 @@
 title: Azure SQL Database への移行時に T-SQL の相違点を解決する | Microsoft Docs
 description: Azure SQL Database では完全にサポートされない Transact-SQL ステートメント
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: migrate
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: e89c863ac50a8b906b388c505f444cd60fdbaad3
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: dfff51d7541ffdc2d279b238a6d993d5e29515f0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34649076"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160709"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL Database への移行時に Transact-SQL の相違点を解決する   
 SQL Server から Azure SQL サーバーに[データベースを移行](sql-database-cloud-migrate.md)する場合、SQL Server を移行する前にデータベースの再構築が必要だと気づくことがあります。 この記事では、再構築を実行し、再構築が必要な根本的な原因を理解するうえで役立つガイダンスを提供します。 非互換性を検出するには、[データ移行アシスタント (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) を使用します。
@@ -49,7 +52,7 @@ SQL Database でサポートされる機能とサポートされない機能の�
 - 高可用性: Microsoft Azure アカウントを通じて管理される高可用性に関連する構文。 これには、バックアップのための構文、復元、AlwaysOn、データベース ミラーリング、ログ配布、復旧モードが含まれます。
 - ログ リーダー: SQL Database で使用できないログ リーダーに依存する構文: プッシュ レプリケーション、変更データ キャプチャ。 SQL Database は、プッシュ レプリケーションの記事のサブスクライバーである可能性があります。
 - 関数: `fn_get_sql`、`fn_virtualfilestats`、`fn_virtualservernodes`
-- ハードウェア: ハードウェア関連のサーバー設定に関連する構文: メモリ、ワーカー スレッド、CPU アフィニティ、トレース フラグなど。 代わりにサービス レベルを使用します。
+- ハードウェア: ハードウェア関連のサーバー設定に関連する構文: メモリ、ワーカー スレッド、CPU アフィニティ、トレース フラグなど。 代わりにサービス レベルとコンピューティング サイズを使用します。
 - `KILL STATS JOB`
 - `OPENQUERY`、`OPENROWSET`、`OPENDATASOURCE`、および 4 部構成の名前
 - .NET framework: CLR と SQL Server の統合

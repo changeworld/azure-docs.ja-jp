@@ -2,19 +2,22 @@
 title: Azure SQL Database のエラスティック クエリの概要 | Microsoft Docs
 description: エラスティック クエリを使用すると、複数のデータベースにまたがる Transact-SQL クエリを実行できます。
 services: sql-database
-manager: craigg
-author: MladjoA
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/03/2018
+author: MladjoA
 ms.author: mlandzic
-ms.openlocfilehash: 52fce1cf1acb5e084c629c9cad6486d6a599b4fd
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 8a7962866b70ae0ec99b8425a365575fbd4e5913
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435775"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164371"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database のエラスティック クエリの概要 (プレビュー)
 
@@ -28,7 +31,7 @@ T-SQL で Azure SQL Database 間の完全なクエリを実行します。 こ�
 
 ### <a name="available-on-standard-tier"></a>Standard レベルで利用可能
 
-エラスティック クエリは、Standard と Premium の両方のパフォーマンス レベルでサポートされます。 下位のパフォーマンス レベルのパフォーマンスに関する制限事項については、後述の「プレビューの制限事項」をご覧ください。
+エラスティック クエリは、Standard と Premium の両方のサービス レベルでサポートされます。 下位のサービス レベルのパフォーマンスに関する制限事項については、後述の「プレビューの制限事項」をご覧ください。
 
 ### <a name="push-parameters-to-remote-databases"></a>リモート データベースにパラメーターをプッシュする
 
@@ -101,7 +104,7 @@ DDL ステートメントを実行すると、ローカル テーブルである
 
 > [!NOTE]
 > エラスティック クエリ データベース (ヘッド ノード) は、別のデータベースにするか、シャード マップをホストする同じデータベースにすることができます。
-> 選択した構成にかかわらず、データベースに期待されるログイン/クエリ要求数を処理できるレベルのサービスとパフォーマンスを確保します。
+> 選択した構成にかかわらず、データベースに期待されるログイン/クエリ要求数を処理できるレベルのサービス レベルとコンピューティング サイズを確保します。
 
 次の手順では、(通常は) いくつかのリモート SQL Database 上にある一連のテーブルへのアクセスを必要とする行方向のパーティション分割シナリオ向けに、エラスティック データベース クエリを構成します。
 
@@ -133,7 +136,7 @@ DDL ステートメントを実行すると、ローカル テーブルである
 
 ## <a name="preview-limitations"></a>プレビューの制限事項
 
-* Standard パフォーマンス レベルでは、初回のエラスティック クエリの実行に数分かかる場合があります。 これは、エラスティック クエリ機能の読み込みに要する時間です。パフォーマンス レベルが上位になるほど、読み込みのパフォーマンスが高くなります。
+* Standard サービス レベルでは、初回のエラスティック クエリの実行に数分かかる場合があります。 これは、エラスティック クエリ機能の読み込みに要する時間です。サービス レベルおよびコンピューティング サイズが上位になるほど、読み込みのパフォーマンスが高くなります。
 * SSMS または SSDT の外部データ ソースまたは外部テーブルからのスクリプト処理はまだサポートされていません。
 * SQL DB の Import/Export では、外部データ ソースと外部テーブルはまだサポートされていません。 Import/Export を使用する必要がある場合は、エクスポートの前にこれらのオブジェクトを削除し、インポート後にこれらのオブジェクトを再作成します。
 * 現在、エラスティック クエリでは、外部テーブルへの読み取り専用アクセスだけがサポートされています。 ただし、外部テーブルが定義されているデータベースでは、完全な T-SQL 機能を使用できます。 これは、SELECT <column_list> INTO <local_table> を使用して一時的な結果を保持する場合や、外部テーブルを参照するエラスティック クエリ データベースでストアド プロシージャを定義する場合などに便利です。

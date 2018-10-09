@@ -2,20 +2,22 @@
 title: Azure SQL データ同期 | Microsoft Docs
 description: この概要では、Azure SQL データ同期について説明します。
 services: sql-database
-author: allenwux
-manager: craigg
 ms.service: sql-database
-ms.custom: data-sync
+ms.subservice: data-movement
+ms.custom: data sync
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/09/2018
+author: allenwux
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: ba1fdcf64592bdfe23195e781a21d7a2db693325
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+manager: craigg
+ms.date: 08/09/2018
+ms.openlocfilehash: ae7ac2726ccb97264b387eb9ae5476ae1946a783
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141371"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161983"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
 

@@ -2,29 +2,33 @@
 title: Multi-Factor Authentication の構成 - Azure SQL | Microsoft Docs
 description: SQL Database と SQL Data Warehouse の SSMS で Multi-Factored Authentication を使用する方法について説明します。
 services: sql-database
-author: GithubMirek
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: GithubMirek
 ms.author: mireks
-ms.openlocfilehash: 93c1548bfbb229140db8bbfc22c3fd198402dd5d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+manager: craigg
+ms.date: 06/13/2018
+ms.openlocfilehash: 1761c7040becf0bfe63caf12d8f5ea7b15e9b88b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650283"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162935"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio と Azure AD 用に多要素認証を構成する
 
-このトピックでは、Azure Active Directory Multi-Factor Authentication (MFA) と SQL Server Management Studio を使用する方法について説明します。 Azure AD MFA は、SSMS または SqlPackage.exe を Azure SQL Database と Azure SQL Data Warehouse に接続するときに使用できます。
+このトピックでは、Azure Active Directory Multi-Factor Authentication (MFA) と SQL Server Management Studio を使用する方法について説明します。 Azure AD MFA は、SSMS または SqlPackage.exe を Azure の [SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) に接続するときに使用できます。 Azure SQL Database の多要素認証の概要については、「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)」を参照してください。
 
-Azure SQL Database の多要素認証の概要については、「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)」を参照してください。
+> [!NOTE]
+> このトピックは Azure SQL サーバーのほか、その Azure SQL サーバーに作成される SQL Database と SQL Data Warehouse の両方に当てはまります。 わかりやすいように、SQL Database という言葉で SQL Database と SQL Data Warehouse の両方を言い表します。
 
 ## <a name="configuration-steps"></a>構成の手順
 
-1. **Azure Active Directory の構成** - 詳細については、「[Azure AD ディレクトリの管理](https://msdn.microsoft.com/library/azure/hh967611.aspx)」、「[オンプレミスのディレクトリと Azure Active Directory の統合](../active-directory/active-directory-aadconnect.md)」、[独自のドメイン名を Azure AD に追加する方法に関するブログ](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、[Microsoft Azure が Windows Server Active Directory とのフェデレーションをサポートするようになったことに関するブログ](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、および[Windows PowerShell を使用した Azure AD の管理に関する記事](https://msdn.microsoft.com/library/azure/jj151815.aspx)を参照してください。
+1. **Azure Active Directory の構成** - 詳細については、「[Azure AD ディレクトリの管理](https://msdn.microsoft.com/library/azure/hh967611.aspx)」、「[オンプレミスのディレクトリと Azure Active Directory の統合](../active-directory/hybrid/whatis-hybrid-identity.md)」、[独自のドメイン名を Azure AD に追加する方法に関するブログ](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、[Microsoft Azure が Windows Server Active Directory とのフェデレーションをサポートするようになったことに関するブログ](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)、および[Windows PowerShell を使用した Azure AD の管理に関する記事](https://msdn.microsoft.com/library/azure/jj151815.aspx)を参照してください。
 2. **MFA の構成** - 詳細な手順については、「[Azure Multi-Factor Authentication とは](../active-directory/authentication/multi-factor-authentication.md)」、「[Azure SQL Database と Data Warehouse での条件付きアクセス (MFA)](sql-database-conditional-access.md)」を参照してください (完全な条件付きアクセスの場合は Premium Azure Active Directory (Azure AD) が必要です。 標準の Azure AD では、制限付きの MFA を使用できます)。
 3. **SQL Database または SQL Data Warehouse での Azure AD 認証の構成** - 手順については、「[Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](sql-database-aad-authentication.md)」をご覧ください。
 4. **SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」から SSMS の最新版をダウンロードします。 このトピックのすべての機能を使用するには、2017 年 7 月以降のバージョン 17.2 を使用してください。  
@@ -39,7 +43,7 @@ Azure SQL Database の多要素認証の概要については、「[SQL Database
    ![1mfa-universal-connect-user](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
 3. ゲスト ユーザーとして接続している場合は、**[オプション]** をクリックし、**[接続プロパティ]** ダイアログ ボックスで **[AD ドメイン名またはテナント ID]** ボックスに入力します。 詳細については、「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)」を参照してください。
    ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)   
-4. SQL Database と SQL Data Warehouse では通常どおり、**[オプション]** をクリックし、**[オプション]** ダイアログ ボックスでデータベースを指定します。 接続ユーザーがゲスト ユーザーの場合 (つまり joe@outlook.com)、このチェックボックスをオンにして、オプションの一部として現在の AD ドメイン名またはテナント ID を追加する必要があります。 「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)]()」(sql-database-ssms-mfa-authentication.md) を参照してください。 次いで **[接続]** をクリックします。  
+4. SQL Database と SQL Data Warehouse では通常どおり、**[オプション]** をクリックし、**[オプション]** ダイアログ ボックスでデータベースを指定します。 接続ユーザーがゲスト ユーザーの場合 (つまり joe@outlook.com)、このチェックボックスをオンにして、オプションの一部として現在の AD ドメイン名またはテナント ID を追加する必要があります。 「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)」を参照してください。 次いで **[接続]** をクリックします。  
 5. **[アカウントにサインイン]** ダイアログ ボックスが開いたら、Azure Active Directory ID のアカウントとパスワードを入力します。 ユーザーが Azure AD とフェデレーションされているドメインに属している場合、パスワードは不要です。  
    ![2mfa-sign-in][2]  
 

@@ -2,21 +2,22 @@
 title: Azure SQL Database のバックアップ - 自動、geo 冗長 | Microsoft Docs
 description: SQL Database は数分ごとにローカル データベースをバックアップし、Azure 読み取りアクセス geo 冗長ストレージを利用して地理的冗長性を提供します。
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.workload: Active
-ms.date: 07/25/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: ce7c41730bec4e014225fb8c744d029493f5ec2c
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+manager: craigg
+ms.date: 09/25/2018
+ms.openlocfilehash: 5c6ebfcb7eae52915af24fc67e9b3c774656149d
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246788"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181143"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>SQL Database 自動バックアップについての詳細情報
 
@@ -26,7 +27,7 @@ SQL Database はデータベースをバックアップし、Azure 読み取り�
 
 ## <a name="what-is-a-sql-database-backup"></a>SQL Database バックアップとは何か。
 
-SQL Database は、ポイントインタイム リストア (PITR) の目的で、SQL Server 技術を利用して、[完全](https://msdn.microsoft.com/library/ms186289.aspx)バックアップ、[差分](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)バックアップ、[トランザクション ログ](https://msdn.microsoft.com/library/ms191429.aspx) バックアップを作成します。 トランザクション ログ バックアップは一般的には 5 - 10 分ごとに発生し、差分バックアップは 12 時間ごとに行われます。頻度はパフォーマンス レベルとデータベース アクティビティの量に基づきます。 完全バックアップと差分バックアップによるトランザクション ログ バックアップにより、データベースをホストする同じサーバーに、データベースを特定の時点に復元できます。 バックアップは RA-GRS ストレージ BLOB に格納され、この BLOB はデータ センターの停止に対する保護のために[ペアのデータ センター](../best-practices-availability-paired-regions.md)にレプリケートされます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
+SQL Database は、ポイントインタイム リストア (PITR) の目的で、SQL Server 技術を利用して、[完全](https://msdn.microsoft.com/library/ms186289.aspx)バックアップ、[差分](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server)バックアップ、[トランザクション ログ](https://msdn.microsoft.com/library/ms191429.aspx) バックアップを作成します。 トランザクション ログ バックアップは一般的には 5 - 10 分ごとに発生し、差分バックアップは 12 時間ごとに行われます。頻度はコンピューティング サイズとデータベース アクティビティの量に基づきます。 完全バックアップと差分バックアップによるトランザクション ログ バックアップにより、データベースをホストする同じサーバーに、データベースを特定の時点に復元できます。 バックアップは RA-GRS ストレージ BLOB に格納され、この BLOB はデータ センターの停止に対する保護のために[ペアのデータ センター](../best-practices-availability-paired-regions.md)にレプリケートされます。 データベースを復元するとき、どのバックアップを復元する必要があるかをサービスが判定します (完全、差分、トランザクション ログ)。
 
 
 これらのバックアップを使用して、以下を行うことができます。
@@ -66,7 +67,7 @@ DTU ベースの購入モデルを使用して作成されたデータベース�
 
 ## <a name="how-often-do-backups-happen"></a>バックアップはどのくらいの頻度で行われますか。
 ### <a name="backups-for-point-in-time-restore"></a>ポイントインタイム リストアのバックアップ
-SQL Database では、完全バックアップ、差分バックアップ、トランザクション ログ バックアップを自動的に作成して、ポイントインタイム リストア (PITR) のセルフ サービスをサポートします。 完全データベース バックアップは毎週、差分データベース バックアップは一般的に 12 時間ごとに、トランザクション ログ バックアップは通常、5 - 10 分ごとに作成されます。頻度は、パフォーマンス レベルとデータベース アクティビティの量に基づきます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。
+SQL Database では、完全バックアップ、差分バックアップ、トランザクション ログ バックアップを自動的に作成して、ポイントインタイム リストア (PITR) のセルフ サービスをサポートします。 完全データベース バックアップは毎週、差分データベース バックアップは一般的に 12 時間ごとに、トランザクション ログ バックアップは通常、5 - 10 分ごとに作成されます。頻度は、コンピューティング サイズとデータベース アクティビティの量に基づきます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。
 
 PITR バックアップは、geo 冗長であり、[Azure Storage のリージョン間レプリケーション](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)によって保護されます。
 
@@ -82,6 +83,10 @@ PITR と同じように、LTR バックアップは、geo 冗長であり、[Azu
 ## <a name="are-backups-encrypted"></a>バックアップは暗号化されますか?
 
 データベースが TDE で暗号化されている場合、LTR バックアップを含むバックアップは保存中に自動的に暗号化されます。 Azure SQL データベースに対して TDE が有効になっているとき、バックアップも暗号化されます。 新しい Azure SQL データベースはすべて、既定で TDE が有効になった状態で構成されます。 TDE に関する詳細については、「[Azure SQL Database での Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
+
+## <a name="how-does-microsoft-ensure-backup-integrity"></a>Microsoft はどのようにバックアップの整合性を保証しているか
+
+Azure SQL Database のエンジニアリング チームは、サービス全体でデータベースの自動データベース バックアップの復元の自動テストを継続的に行っています。 復元時に、データベースは DBCC CHECKDB を使用した整合性チェックも受けます。 整合性チェック中に問題が見つかると、エンジニアリング チームにアラートが送信されます。 Azure SQL Database におけるデータ整合性の詳細については、「[Data Integrity in Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/)」 (Azure SQL Database でのデータ整合性) を参照してください。
 
 ## <a name="how-do-automated-backups-impact-my-compliance"></a>自動バックアップはどのようにコンプライアンスに影響しますか。
 

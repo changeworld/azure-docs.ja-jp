@@ -4,17 +4,17 @@ description: このチュートリアルでは、Azure Machine Learning をモ�
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 08/22/2018
+ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: ddc5adbb5b6bc7f04a893b05df3601714ed85eec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c9350704943bebada217338488e51b97acc550ca
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991455"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423614"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル: Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 
@@ -45,7 +45,7 @@ Azure IoT Edge デバイス:
 
 クラウド リソース:
 
-* Azure の Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
+* Azure の Free レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
 * Azure Machine Learning アカウント。 [Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/desktop-workbench/quickstart-installation.md)に関するセクションの手順に従います。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
 
 開発リソース:

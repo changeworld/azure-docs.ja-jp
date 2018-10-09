@@ -2,19 +2,22 @@
 title: Azure SQL Database との接続に関する一般的な問題のトラブルシューティング
 description: Azure SQL Database の一般的な接続エラーを特定して解決する手順。
 services: sql-database
-author: dalechen
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: dalechen
 ms.author: daleche
-ms.openlocfilehash: 06a0abd673785a572fb8efa8df199562dc13067f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 276a2d6d717497538a6633a9b0926bb89b9e875c
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648872"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161099"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Azure SQL Database との接続に関する一般的な問題のトラブルシューティング
 Azure SQL Database との接続に失敗すると、[エラー メッセージ](sql-database-develop-error-messages.md)が表示されます。 この記事では、Azure SQL Database の接続に関する問題のトラブルシューティングに役立つトピックを紹介します。 ここでは接続の問題の[一般的な原因](#cause)を説明し、問題の特定に役立つ[トラブルシューティング ツール](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues)を紹介しています。また、[一時的なエラー](#troubleshoot-transient-errors)、および[永続的または一時的でないエラー](#troubleshoot-persistent-errors)を解決するトラブルシューティングの手順についてもご紹介します。 
@@ -59,7 +62,7 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 
 1. アプリケーションによって報告されたエラーで発生している既知の障害については、 [Microsoft Azure サービス ダッシュボード](https://azure.microsoft.com/status) を参照してください。
 2. Azure SQL Database など、クラウド サービスに接続するアプリケーションは、定期的な再構成イベントを想定し、これらをアプリケーション エラーとしてユーザーに示すのではなく、再試行ロジックを実装してこれらのエラーを処理します。 詳細および一般的な再試行戦略については、[一時エラー](sql-database-connectivity-issues.md)のセクション、および「[SQL Database の開発: 概要](sql-database-develop-overview.md)」のベスト プラクティスや設計ガイドラインをご覧ください。 その後、具体的な内容を「 [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md) 」のコード サンプルで確認してください。
-3. データベースがリソースの制限に近づくと、一時的な接続の問題に見える場合があります。 [パフォーマンスの問題のトラブルシューティング](sql-database-troubleshoot-performance.md)のトピックを参照してください。
+3. データベースがリソースの制限に近づくと、一時的な接続の問題に見える場合があります。 [リソース制限](sql-database-resource-limits.md)に関するページを参照してください。
 4. 接続の問題が解消されない場合、アプリケーションでのエラーの継続時間が 60 秒を超えた場合、または 1 日にエラーが複数回発生した場合は、 **Azure サポート** サイトの [[サポートの要求]](https://azure.microsoft.com/support/options) を選択して、サポート要求を送信してください。
 
 ## <a name="troubleshoot-persistent-errors"></a>永続的なエラーのトラブルシューティング
@@ -76,7 +79,6 @@ Error code 40613: "Database <x> on server <y> is not currently available. Please
 4. ダッシュ ボードでサービスの正常性を確認します。 リージョンの障害があると思われる場合は、新しいリージョンへの回復手順を [障害からの回復](sql-database-disaster-recovery.md) のトピックで参照してください。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-troubleshoot-performance.md)
 * [Microsoft Azure ドキュメントの検索](http://azure.microsoft.com/search/documentation/)
 * [Azure SQL Database サービスの更新情報](http://azure.microsoft.com/updates/?service=sql-database)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure の組み込みロール | Microsoft Docs
-description: Azure でのロール ベースのアクセス制御 (RBAC) の組み込みロールについて説明します。 Actions、NotActions、DataActions、NotDataActions を一覧表示します。
+title: Azure リソースの組み込みロール | Microsoft Docs
+description: ロールベースのアクセス制御 (RBAC) および Azure リソースのための組み込みロールについて説明します。 Actions、NotActions、DataActions、NotDataActions を一覧表示します。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,18 +11,18 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 08/19/2018
+ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: e03b2ab45edd57a124dcc960ff518ece4902d2fa
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6fe9a106975a03fabc9d674ede694e683dc3cd94
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048370"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410274"
 ---
-# <a name="built-in-roles-in-azure"></a>Azure の組み込みロール
+# <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 [ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
 
 組み込みロールは、常に進化しています。 最新のロールの定義を取得するには、[Get AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) または [az role definition list](/cli/azure/role/definition#az-role-definition-list) を使用してください。
@@ -33,9 +33,9 @@ ms.locfileid: "43048370"
 
 | 組み込みのロール | 説明 |
 | --- | --- |
-| [所有者](#owner) | リソースへのアクセスを含め、すべてを管理できます。 |
-| [共同作成者](#contributor) | リソースへのアクセス以外のすべてを管理できます。 |
-| [閲覧者](#reader) | すべてを表示できますが、変更することはできません。 |
+| [Owner](#owner) | リソースへのアクセスを含め、すべてを管理できます。 |
+| [Contributor](#contributor) | リソースへのアクセス以外のすべてを管理できます。 |
+| [Reader](#reader) | すべてを表示できますが、変更することはできません。 |
 | [AcrImageSigner](#acrimagesigner) | ACR イメージ署名者 |
 | [AcrQuarantineReader](#acrquarantinereader) | ACR 検査データ閲覧者 |
 | [AcrQuarantineWriter](#acrquarantinewriter) | ACR 検査データ作成者 |
@@ -43,7 +43,7 @@ ms.locfileid: "43048370"
 | [API Management Service Operator Role](#api-management-service-operator-role) | サービスを管理できますが、API は対象外です |
 | [API Management Service Reader Role](#api-management-service-reader-role) | サービスと API への読み取り専用アクセスです |
 | [Application Insights Component Contributor](#application-insights-component-contributor) | Application Insights コンポーネントを管理できます |
-| [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 このロールは、[所有者](#owner)ロールにも[共同作成者](#contributor)ロールにも含まれていないことに注意してください。 |
+| [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 これらのアクセス許可は、[所有者](#owner)ロールまたは[共同作成者](#contributor)ロールには含まれないことに注意してください。 |
 | [Automation Job Operator](#automation-job-operator) | Automation Runbook を使用してジョブを作成および管理します。 |
 | [Automation Operator](#automation-operator) | Automation オペレーターはジョブを開始、停止、中断、再開することができます |
 | [Automation Runbook Operator](#automation-runbook-operator) | Runbook のジョブを作成する方法については、Runbook のプロパティを参照してください。 |
@@ -62,16 +62,21 @@ ms.locfileid: "43048370"
 | [Classic Network Contributor](#classic-network-contributor) | 従来のネットワークを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Classic Storage Account Contributor](#classic-storage-account-contributor) | 従来のストレージ アカウントを管理できますが、アクセスすることはできません。 |
 | [従来のストレージ アカウント キー オペレーターのサービス ロール](#classic-storage-account-key-operator-service-role) | 従来のストレージ アカウント キー オペレーターは、従来のストレージ アカウントでのキーの一覧表示と再生成を行うことができます |
-| [Classic Virtual Machine Contributor](#classic-virtual-machine-contributor) | 従来の仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。|
+| [Classic Virtual Machine Contributor](#classic-virtual-machine-contributor) | 従来の仮想マシンを管理できますが、アクセスすることはできません。また、接続先の仮想ネットワークやストレージ アカウントにもアクセスできません。 |
+| [Cognitive Services 共同作成者](#cognitive-services-contributor) | Cognitive Services のキーの作成、読み取り、更新、削除、管理を行うことができます。 |
+| [Cognitive Services ユーザー](#cognitive-services-user) | Cognitive Services のキーの読み取りおよび一覧表示を行うことができます。 |
 | [Cosmos DB アカウントの閲覧者ロール](#cosmos-db-account-reader-role) | Cosmos DB アカウントのデータを読み取ることができます。 Azure Cosmos DB アカウントの管理については、「[DocumentDB Account Contributor](#documentdb-account-contributor)」をご覧ください。 |
+| [Cost Management 共同作成者](#cost-management-contributor) | コストを表示し、コストの構成 (予算、エクスポートなど) を管理することができます。 |
+| [Cost Management 閲覧者](#cost-management-reader) | コストのデータと構成 (予算、エクスポートなど) を表示することができます。 |
 | [Data Box Contributor](#data-box-contributor) | Data Box サービスですべてを管理できます (他のユーザーに対するアクセス権の付与を除く)。 |
-| [Data Box Operator](#data-box-operator) | Data Box サービスを管理できます (注文の作成または注文の詳細の編集、および他のユーザーに対するアクセス権の付与を除く)。 |
+| [Data Box 閲覧者](#data-box-reader) | Data Box サービスを管理できます (注文の作成または注文の詳細の編集、および他のユーザーに対するアクセス権の付与を除く)。 |
 | [Data Factory Contributor](#data-factory-contributor) | データ ファクトリを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Data Lake Analytics Developer](#data-lake-analytics-developer) | 独自のジョブを送信、監視、管理できますが、Data Lake Analytics アカウントを作成または削除することはできません。 |
 | [Data Purger](#data-purger) | 分析データを削除することができます。 |
 | [DevTest Labs User](#devtest-labs-user) | Azure DevTest Labs の仮想マシンに対して接続、起動、再起動、シャットダウンを行えます。 |
 | [DNS Zone Contributor](#dns-zone-contributor) | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
 | [DocumentDB Account Contributor](#documentdb-account-contributor) | Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以前は DocumentDB と呼ばれていました。 |
+| [HDInsight ドメイン サービス共同作成者](#hdinsight-domain-services-contributor) | HDInsight Enterprise セキュリティ パッケージに必要なドメイン サービス関連の操作の読み取り、作成、変更、削除を行うことができます。 |
 | [Intelligent Systems Account Contributor](#intelligent-systems-account-contributor) | Intelligent Systems のアカウントを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [Key Vault Contributor](#key-vault-contributor) | キー コンテナーを管理できますが、アクセスすることはできません。 |
 | [Lab Creator](#lab-creator) | Azure Lab アカウントで管理対象のラボを作成、管理、削除できます。 |
@@ -80,6 +85,7 @@ ms.locfileid: "43048370"
 | [Logic App Contributor](#logic-app-contributor) | ロジック アプリを管理できますが、アクセスすることはできません。 |
 | [Logic App Operator](#logic-app-operator) | ロジック アプリの読み取り、有効化、無効化ができます。 |
 | [Managed Application Operator Role](#managed-application-operator-role) | マネージド アプリケーション リソースに対する読み取りとアクションの実行が可能です。 |
+| [Managed Applications 閲覧者](#managed-applications-reader) | マネージド アプリおよび要求 JIT アクセスでリソースを読み取ることができます。 |
 | [Managed Identity Contributor](#managed-identity-contributor) | ユーザー割り当て ID の作成、読み取り、更新、削除を行います |
 | [Managed Identity Operator](#managed-identity-operator) | ユーザー割り当て ID の読み取りと割り当てを行います |
 | [管理グループ共同作成者](#management-group-contributor) | 管理グループ共同作成者ロール |
@@ -89,6 +95,7 @@ ms.locfileid: "43048370"
 | [Monitoring Reader](#monitoring-reader) | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
 | [Network Contributor](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [New Relic APM Account Contributor](#new-relic-apm-account-contributor) | New Relic Application Performance Management のアカウントとアプリケーションを管理できます。ただし、それらへのアクセスは含まれません。 |
+| [PowerApps 管理者テスト](#powerapps-administrator-test) | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
 | [Reader and Data Access](#reader-and-data-access) | すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。 |
 | [Redis Cache Contributor](#redis-cache-contributor) | Redis Caches を管理できます。ただし、それらへのアクセスは含まれません。 |
 | [リソース ポリシーの共同作成者 (プレビュー)](#resource-policy-contributor-preview) | (プレビュー) リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。 |
@@ -119,7 +126,7 @@ ms.locfileid: "43048370"
 | [Website Contributor](#website-contributor) | Web サイト (Web プランではない) を管理できます。ただし、それらへのアクセスは含まれません。 |
 
 
-## <a name="owner"></a>所有者
+## <a name="owner"></a>Owner
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -128,7 +135,7 @@ ms.locfileid: "43048370"
 > | **アクション** |  |
 > | * | あらゆる種類のリソースの作成と管理 |
 
-## <a name="contributor"></a>共同作成者
+## <a name="contributor"></a>Contributor
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -143,7 +150,7 @@ ms.locfileid: "43048370"
 > | Microsoft.Blueprint/blueprintAssignments/write |  |
 > | Microsoft.Blueprint/blueprintAssignments/delete |  |
 
-## <a name="reader"></a>閲覧者
+## <a name="reader"></a>Reader
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -259,7 +266,7 @@ ms.locfileid: "43048370"
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **説明** | Application Insights Snapshot Debugger 機能を使用するアクセス許可をユーザーに付与します |
+> | **説明** | Application Insights スナップショット デバッガーで収集されたデバック スナップショットの表示とダウンロードを実行できるアクセス許可をユーザーに与えます。 これらのアクセス許可は、[所有者](#owner)ロールまたは[共同作成者](#contributor)ロールには含まれないことに注意してください。 |
 > | **Id** | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
@@ -371,6 +378,7 @@ ms.locfileid: "43048370"
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Network/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
+> | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp は、サービスによって使用される内部操作です。 |
 > | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/* | バックアップ管理操作の結果の管理 |
@@ -391,14 +399,13 @@ ms.locfileid: "43048370"
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Recovery Services コンテナーのアラートを取得します。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 > | Microsoft.RecoveryServices/Vaults/read | "コンテナーの取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトを取得します。 |
-> | Microsoft.RecoveryServices/Vaults/refreshContainers/* | 新しく作成されたコンテナーを取得するための検出操作の管理 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 登録済み ID の管理 |
 > | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/usages/* | Recovery Services コンテナーの使用状況の作成および管理 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
-> | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ## <a name="backup-operator"></a>Backup Operator
@@ -504,9 +511,10 @@ ms.locfileid: "43048370"
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Billing/*/read | 課金情報の読み取り |
-> | Microsoft.Consumption/*/read |  |
 > | Microsoft.Commerce/*/read |  |
+> | Microsoft.Consumption/*/read |  |
 > | Microsoft.Management/managementGroups/read | 認証済みユーザーの管理グループを一覧表示します。 |
+> | Microsoft.CostManagement/*/read |  |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ## <a name="biztalk-contributor"></a>BizTalk Contributor
@@ -653,6 +661,52 @@ ms.locfileid: "43048370"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
+## <a name="cognitive-services-contributor"></a>Cognitive Services 共同作成者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Cognitive Services のキーの作成、読み取り、更新、削除、管理を行うことができます。 |
+> | **Id** | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
+> | **アクション** |  |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.CognitiveServices/* |  |
+> | Microsoft.Features/features/read | サブスクリプションの機能を取得します。 |
+> | Microsoft.Features/providers/features/read | 指定されたリソース プロバイダーのサブスクリプションの機能を取得します。 |
+> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Insights/diagnosticSettings/* | 分析サーバーの診断の設定の作成、更新、または読み取りを行います |
+> | Microsoft.Insights/logDefinitions/read | ログ定義を読み取ります。 |
+> | Microsoft.Insights/metricdefinitions/read | メトリック定義を読み取ります。 |
+> | Microsoft.Insights/metrics/read | メトリックを読み取ります。 |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
+> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/deployments/operations/read | デプロイ操作を取得または一覧表示します。 |
+> | Microsoft.Resources/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
+> | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
+> | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
+
+## <a name="cognitive-services-user"></a>Cognitive Services ユーザー
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Cognitive Services のキーの読み取りおよび一覧表示を行うことができます。 |
+> | **Id** | a97b65f3-24c7-4388-baec-2e87135dc908 |
+> | **アクション** |  |
+> | Microsoft.CognitiveServices/*/read |  |
+> | Microsoft.CognitiveServices/accounts/listkeys/action | キーを一覧表示します。 |
+> | Microsoft.Insights/metricdefinitions/read | メトリック定義を読み取ります。 |
+> | Microsoft.Insights/metrics/read | メトリックを読み取ります。 |
+> | Microsoft.Insights/alertRules/read | クラシック メトリック アラートを読み取ります |
+> | Microsoft.Insights/diagnosticSettings/read | リソースの診断設定を読み取ります |
+> | Microsoft.Insights/logDefinitions/read | ログ定義を読み取ります。 |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
+> | Microsoft.Resources/deployments/operations/read | デプロイ操作を取得または一覧表示します。 |
+> | Microsoft.Resources/subscriptions/operationresults/read | サブスクリプション操作の結果を取得します。 |
+> | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
+
 ## <a name="cosmos-db-account-reader-role"></a>Cosmos DB アカウントの閲覧者ロール
 > [!div class="mx-tableFixed"]
 > | | |
@@ -665,6 +719,34 @@ ms.locfileid: "43048370"
 > | Microsoft.DocumentDB/databaseAccounts/readonlykeys/action | データベース アカウントの読み取り専用キーを読み取ります。 |
 > | Microsoft.Insights/MetricDefinitions/read | メトリック定義を読み取ります。 |
 > | Microsoft.Insights/Metrics/read | メトリックを読み取ります。 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
+
+## <a name="cost-management-contributor"></a>Cost Management 共同作成者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | コストを表示し、コストの構成 (予算、エクスポートなど) を管理することができます。 |
+> | **Id** | 434105ed-43f6-45c7-a02f-909b2ba83430 |
+> | **アクション** |  |
+> | Microsoft.Consumption/* |  |
+> | Microsoft.CostManagement/* |  |
+> | Microsoft.Billing/billingPeriods/read | 使用可能な請求期間を一覧表示します。 |
+> | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
+
+## <a name="cost-management-reader"></a>Cost Management 閲覧者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | コストのデータと構成 (予算、エクスポートなど) を表示することができます。 |
+> | **Id** | 72fafb9e-0641-4937-9268-a91bfd8191a3 |
+> | **アクション** |  |
+> | Microsoft.Consumption/*/read |  |
+> | Microsoft.CostManagement/*/read |  |
+> | Microsoft.Billing/billingPeriods/read | 使用可能な請求期間を一覧表示します。 |
+> | Microsoft.Resources/subscriptions/read | サブスクリプションの一覧を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
@@ -682,7 +764,7 @@ ms.locfileid: "43048370"
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | Microsoft.Databox/* |  |
 
-## <a name="data-box-operator"></a>Data Box Operator
+## <a name="data-box-reader"></a>Data Box 閲覧者
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -690,9 +772,12 @@ ms.locfileid: "43048370"
 > | **Id** | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.Databox/*/read |  |
+> | Microsoft.Databox/jobs/listsecrets/action |  |
+> | Microsoft.Databox/jobs/listcredentials/action | 注文に関連する暗号化されていない資格情報を一覧表示します。 |
+> | Microsoft.Databox/locations/availableSkus/action | このメソッドは、使用可能な SKU の一覧を返します。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
-> | Microsoft.Databox/jobs/listsecrets/action | 注文に関連する暗号化されていないシークレットを一覧表示します。 |
 
 ## <a name="data-factory-contributor"></a>Data Factory Contributor
 > [!div class="mx-tableFixed"]
@@ -822,6 +907,17 @@ ms.locfileid: "43048370"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
+## <a name="hdinsight-domain-services-contributor"></a>HDInsight ドメイン サービス共同作成者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | HDInsight Enterprise セキュリティ パッケージに必要なドメイン サービス関連の操作の読み取り、作成、変更、削除を行うことができます。 |
+> | **Id** | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
+> | **アクション** |  |
+> | Microsoft.AAD/*/read |  |
+> | Microsoft.AAD/domainServices/*/read |  |
+> | Microsoft.AAD/domainServices/oucontainer/* |  |
+
 ## <a name="intelligent-systems-account-contributor"></a>Intelligent Systems Account Contributor
 > [!div class="mx-tableFixed"]
 > | | |
@@ -864,7 +960,8 @@ ms.locfileid: "43048370"
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.LabServices/labAccounts/*/read |  |
 > | Microsoft.LabServices/labAccounts/createLab/action | ラボ アカウントにラボを作成します。 |
-> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action | ラボ アカウントの下で構成されたサイズ カテゴリ別のリージョン別の提供状況を取得します。 |
+> | Microsoft.LabServices/labAccounts/sizes/getRegionalAvailability/action |  |
+> | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | ラボ アカウントの下で構成されたサイズ カテゴリ別のリージョン別の提供状況を取得します。 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
@@ -964,6 +1061,17 @@ ms.locfileid: "43048370"
 > | **アクション** |  |
 > | Microsoft.Solutions/applications/read | アプリケーションの一覧を取得します。 |
 
+## <a name="managed-applications-reader"></a>Managed Applications 閲覧者
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | マネージド アプリおよび要求 JIT アクセスでリソースを読み取ることができます。 |
+> | **Id** | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
+> | **アクション** |  |
+> | */read | 機密データを除くあらゆる種類のリソースの読み取り |
+> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Solutions/jitRequests/* |  |
+
 ## <a name="managed-identity-contributor"></a>Managed Identity Contributor
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1045,7 +1153,8 @@ ms.locfileid: "43048370"
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/action | ワークスペースの共有キーを取得します。 これらのキーを使用して、Microsoft Operational Insights エージェントをワークスペースに接続します。 |
 > | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Log Analytics ストレージ インサイト構成の読み取り/書き込み/削除を行います。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
-> | Microsoft.WorkloadMonitor/workloads/* |  |
+> | Microsoft.WorkloadMonitor/monitors/* |  |
+> | Microsoft.WorkloadMonitor/notificationSettings/* |  |
 > | Microsoft.WorkloadMonitor/workloadInsights/* |  |
 
 ## <a name="monitoring-metrics-publisher"></a>監視メトリック パブリッシャー
@@ -1101,6 +1210,21 @@ ms.locfileid: "43048370"
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | NewRelic.APM/accounts/* |  |
+
+## <a name="powerapps-administrator-test"></a>PowerApps 管理者テスト
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **説明** | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
+> | **Id** | befefa01-2a29-4897-83a8-272ff33ce314 |
+> | **アクション** |  |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
+> | Microsoft.Network/dnsZones/* |  |
+> | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
+> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ## <a name="reader-and-data-access"></a>Reader and Data Access
 > [!div class="mx-tableFixed"]
@@ -1387,6 +1511,7 @@ ms.locfileid: "43048370"
 > | Microsoft.Sql/servers/read | サーバーの一覧を返すか、指定されたサーバーのプロパティを取得します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | **NotActions** |  |
+> | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | 監査ポリシーを編集することはできません |
 > | Microsoft.Sql/servers/databases/auditingSettings/* | 監査設定を編集することはできません |
 > | Microsoft.Sql/servers/databases/auditRecords/read | データベースの BLOB 監査レコードを取得します。 |
@@ -1414,6 +1539,7 @@ ms.locfileid: "43048370"
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーの作成と管理 |
 > | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定の作成と管理 |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL サーバー データベース監査ポリシーの作成と管理 |
@@ -1453,6 +1579,7 @@ ms.locfileid: "43048370"
 > | Microsoft.Sql/servers/* | SQL サーバーの作成と管理 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | **NotActions** |  |
+> | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーは編集できません |
 > | Microsoft.Sql/servers/auditingSettings/* | SQL サーバー監査設定は編集できません |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | SQL サーバー データベース監査ポリシーは編集できません |
@@ -1632,10 +1759,10 @@ ms.locfileid: "43048370"
 > | Microsoft.Network/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
 > | Microsoft.Network/virtualNetworks/subnets/join/action | 仮想ネットワークに参加します。 |
 > | Microsoft.RecoveryServices/locations/* |  |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | バックアップの保護インテントを作成します |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 保護された項目のオブジェクトの詳細を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | バックアップ保護項目を作成します。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | バックアップの保護インテントを作成します |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | すべての保護ポリシーを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/write | 保護ポリシーを作成します。 |
 > | Microsoft.RecoveryServices/Vaults/read | "コンテナーの取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトを取得します。 |
@@ -1644,6 +1771,7 @@ ms.locfileid: "43048370"
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.SqlVirtualMachine/* |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | 指定されたストレージ アカウントのアクセス キーを返します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |

@@ -2,19 +2,22 @@
 title: Azure SQL Database セキュリティをディザスター リカバリー用に構成する | Microsoft Docs
 description: データベースの復元やセカンダリ サーバーへのフェールオーバーを行った後の、セキュリティ構成やセキュリティ管理に関する考慮事項について説明します。
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: anosov1960
 ms.author: sashan
-ms.openlocfilehash: 0796e5900bc67d93e51a0ce377ef5d1144346e2c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 2f5a455cecfbf4b40b1a410a756117d70c4a4b69
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646866"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166828"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する 
 
