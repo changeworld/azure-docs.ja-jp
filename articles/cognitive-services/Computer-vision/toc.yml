@@ -30,13 +30,13 @@ items:
         href: QuickStarts/ruby-analyze.md
     - name: ローカル画像の分析
       items:
-      - name: C#の場合
+      - name: C#
         href: QuickStarts/CSharp-analyze.md
       - name: Python
         href: QuickStarts/python-disk.md
     - name: サムネイルの生成
       items:
-      - name: C#の場合
+      - name: C#
         href: QuickStarts/CSharp-thumb.md
       - name: cURL
         href: QuickStarts/curl-thumb.md
@@ -56,7 +56,7 @@ items:
         href: QuickStarts/ruby-thumb.md
     - name: 印刷されたテキストの抽出
       items:
-      - name: C#の場合
+      - name: C#
         href: QuickStarts/CSharp-print-text.md
       - name: cURL
         href: QuickStarts/curl-print-text.md
@@ -76,7 +76,7 @@ items:
         href: QuickStarts/ruby-print-text.md
     - name: 手書きのテキストの抽出
       items:
-      - name: C#の場合
+      - name: C#
         href: QuickStarts/CSharp-hand-text.md
       - name: Java
         href: QuickStarts/java-hand-text.md

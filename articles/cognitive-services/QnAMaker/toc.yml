@@ -9,7 +9,7 @@ items:
   items:
   - name: 新しいナレッジ ベースの作成
     items:
-    - name: C#の場合
+    - name: C#
       href: Quickstarts/create-new-kb-csharp.md
     - name: Go
       href: Quickstarts/create-new-kb-go.md
@@ -21,7 +21,7 @@ items:
       href: Quickstarts/create-new-kb-python.md
   - name: ナレッジ ベースの更新
     items:
-    - name: C#の場合
+    - name: C#
       href: Quickstarts/update-kb-csharp.md
     - name: Go
       href: Quickstarts/update-kb-go.md
@@ -33,7 +33,7 @@ items:
       href: Quickstarts/update-kb-python.md
   - name: ナレッジ ベースの公開
     items:
-    - name: C#の場合
+    - name: C#
       href: Quickstarts/publish-kb-csharp.md
     - name: Go
       href: Quickstarts/publish-kb-go.md
@@ -97,7 +97,7 @@ items:
     href: How-To/troubleshooting-runtime.md
   - name: QnA Maker API の使用
     items:
-    - name: C#の場合
+    - name: C#
       href: Quickstarts/csharp.md
     - name: Java
       href: Quickstarts/java.md

@@ -44,7 +44,7 @@ Mobile Apps 入力バインドは、モバイル テーブル エンドポイン
 言語固有の例をご覧ください。
 
 * [C# スクリプト (.csx)](#input---c-script-example)
-* [JavaScript を選択した場合](#input---javascript-example)
+* [JavaScript](#input---javascript-example)
 
 ### <a name="input---c-script-example"></a>入力 - C# スクリプトの例
 
@@ -171,9 +171,9 @@ Mobile Apps 出力バインドを使用して、Mobile Apps テーブルにレ�
 
 言語固有の例をご覧ください。
 
-* [C# を選択した場合](#output---c-example)
+* [C#](#output---c-example)
 * [C# スクリプト (.csx)](#output---c-script-example)
-* [JavaScript を選択した場合](#output---javascript-example)
+* [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例
 

@@ -65,7 +65,7 @@ Application Insights SDK の参照がまだない場合:
 ## <a name="get-a-telemetryclient-instance"></a>TelemetryClient インスタンスの取得
 `TelemetryClient` インスタンスを取得します (Web ページの JavaScript を除く)。
 
-*C# を選択した場合*
+*C#*
 
     private TelemetryClient telemetry = new TelemetryClient();
 
@@ -86,7 +86,7 @@ TelemetryClient はスレッド セーフです。
 
 ASP.NET および Java プロジェクトの場合は、受信 HTTP 要求が自動的にキャプチャされます。 アプリの他のモジュールのために TelemetryClient の追加のインスタンスを作成することもできます。 たとえば、ミドルウェア クラスでビジネス ロジック イベントを報告する 1 つの TelemetryClient インスタンスを使用できます。 マシンを識別するために UserId や DeviceId などのプロパティを設定できます。 こうした情報は、インスタンスから送信されるすべてのイベントに付属します。 
 
-*C# を選択した場合*
+*C#*
 
     TelemetryClient.Context.User.Id = "...";
     TelemetryClient.Context.Device.Id = "...";
@@ -105,7 +105,7 @@ Application Insights の*カスタム イベント*はデータ ポイントで�
 
 たとえば、ゲーム アプリで、ユーザーが勝利したときにイベントを送信します。
 
-*JavaScript を選択した場合*
+*JavaScript*
 
     appInsights.trackEvent("WinGame");
 
@@ -135,7 +135,7 @@ Application Insights の*カスタム イベント*はデータ ポイントで�
 
 ### <a name="examples"></a>次に例を示します。
 
-*C# を選択した場合*
+*C#*
 
 ```csharp
 #pragma warning disable CA1716  // Namespace naming
@@ -241,13 +241,13 @@ Application Insights にメトリックを送信するために、`TrackMetric(.
 
 1 つのメトリック値を送信するには:
 
-*JavaScript を選択した場合*
+*JavaScript*
 
  ```Javascript
      appInsights.trackMetric("queueLength", 42.0);
  ```
 
-*C# を選択した場合*
+*C#*
 
 ```csharp
     var sample = new MetricTelemetry();
@@ -286,7 +286,7 @@ Application Insights にメトリックを送信するために、`TrackMetric(.
 
     appInsights.trackPageView("tab1");
 
-*C# を選択した場合*
+*C#*
 
     telemetry.TrackPageView("GameReviewPage");
 
@@ -311,7 +311,7 @@ Application Insights にメトリックを送信するために、`TrackMetric(.
 * [trackPageView](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md#trackpageview) の呼び出し `appInsights.trackPageView("tab1", null, null, null, durationInMilliseconds);` で明示的な時間を設定する。
 * ページ ビューのタイミングの呼び出し (`startTrackPage` と `stopTrackPage`) を使用する。
 
-*JavaScript を選択した場合*
+*JavaScript*
 
     // To start timing a page:
     appInsights.startTrackPage("Page1");
@@ -364,7 +364,7 @@ Web サービス モジュールが実行されていない状況で要求をシ
 
 手動でテレメトリを追跡している場合、テレメトリの相関付けを確実に行うための最も簡単な方法として、次のパターンを使用できます。
 
-*C# を選択した場合*
+*C#*
 
 ```csharp
 // Establish an operation context and associated telemetry item:
@@ -412,7 +412,7 @@ requests | summarize count = sum(itemCount), avgduration = avg(duration) by name
 
 レポートにはスタック トレースが含まれます。
 
-*C# を選択した場合*
+*C#*
 
     try
     {
@@ -431,7 +431,7 @@ requests | summarize count = sum(itemCount), avgduration = avg(duration) by name
         telemetry.trackException(ex);
     }
 
-*JavaScript を選択した場合*
+*JavaScript*
 
     try
     {
@@ -497,7 +497,7 @@ TrackTrace を使用すると、Application Insights に "階層リンクの追�
 
 Java の [Log4J や Logback などの標準ロガー](app-insights-java-trace-logs.md)では、Application Insights Log4j または Logback アペンダーを使用してポータルにサードパーティのログを送信します。
 
-*C# を選択した場合*
+*C#*
 
     telemetry.TrackTrace(message, SeverityLevel.Warning, properties);
 
@@ -517,7 +517,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 
 加えて、メッセージに重大度レベルを追加することができます。 また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタリングしたり検索したりすることができます。 例: 
 
-*C# を選択した場合*
+*C#*
 
 ```C#
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
@@ -548,7 +548,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 ## <a name="trackdependency"></a>TrackDependency
 応答時間と外部コードの呼び出しの成功率を追跡するには、TrackDependency 呼び出しを使用します。 結果は、ポータルの依存関係グラフに表示されます。
 
-*C# を選択した場合*
+*C#*
 
 ```csharp
 var success = false;
@@ -585,7 +585,7 @@ finally
 
 ```
 
-*JavaScript を選択した場合*
+*JavaScript*
 
 ```Javascript
 var success = false;
@@ -629,7 +629,7 @@ dependencies
 ## <a name="flushing-data"></a>データのフラッシュ
 通常、SDK は、ユーザーへの影響を最小限に抑えるために選択した時間帯にデータを送信します。 ただし、終了するアプリケーションで SDK を使用する場合などには、バッファーのフラッシュが必要になることがあります。
 
-*C# を選択した場合*
+*C#*
  
  ```C#
     telemetry.Flush();
@@ -659,7 +659,7 @@ Web アプリでは、ユーザーは (既定では) Cookie により識別さ�
 
 ユーザーがアプリにサインインしていれば、認証されたユーザーの ID をブラウザー コードに設定して、より正確な数値を取得できます。
 
-*JavaScript を選択した場合*
+*JavaScript*
 
 ```JS
 // Called when my app has identified the user.
@@ -708,7 +708,7 @@ ASP.NET Web MVC アプリケーションでの例:
 
 使用できる [プロパティ、プロパティ値、およびメトリックの数には制限](#limits) があります。
 
-*JavaScript を選択した場合*
+*JavaScript*
 
     appInsights.trackEvent
       ("WinGame",
@@ -727,7 +727,7 @@ ASP.NET Web MVC アプリケーションでの例:
          );
 
 
-*C# を選択した場合*
+*C#*
 
     // Set up some properties and metrics:
     var properties = new Dictionary <string, string>
@@ -822,7 +822,7 @@ requests
 ## <a name="timed"></a> タイミング イベント
 アクションの実行にかかる時間をグラフで示す必要が生じることがあります。 たとえば、ユーザーがゲームで選択肢について考える時間について調べるとします。 測定パラメーターを使用することでこの調査を行うことができます。
 
-*C# を選択した場合*
+*C#*
 
 ```C#
     var stopwatch = System.Diagnostics.Stopwatch.StartNew();
@@ -866,7 +866,7 @@ requests
 ## <a name="defaults"></a>カスタム テレメトリの既定のプロパティ
 記述するカスタム イベントのいくつかに既定のプロパティ値を設定する必要がある場合、TelemetryClient インスタンスで設定できます。 既定値は、そのクライアントから送信されたすべてのテレメトリ項目に追加されます。
 
-*C# を選択した場合*
+*C#*
 
     using Microsoft.ApplicationInsights.DataContracts;
 
@@ -924,7 +924,7 @@ requests
 ## <a name="disabling-telemetry"></a>テレメトリの無効化
 テレメトリの収集と送信を *動的に停止および開始* するには
 
-*C# を選択した場合*
+*C#*
 
 ```csharp
 
@@ -968,7 +968,7 @@ requests
 ## <a name="debug"></a>開発者モード
 デバッグ中、結果をすぐに確認できるように、テレメトリをパイプラインから送信すると便利です。 テレメトリで問題を追跡する際に役立つ付加的なメッセージも取得できます。 アプリケーションの速度を低下させる可能性があるため、本稼働ではオフにしてください。
 
-*C# を選択した場合*
+*C#*
 
     TelemetryConfiguration.Active.TelemetryChannel.DeveloperMode = true;
 
@@ -978,7 +978,7 @@ requests
 
 
 ## <a name="ikey"></a> 選択したカスタム テレメトリにインストルメンテーション キーを設定する
-*C# を選択した場合*
+*C#*
 
     var telemetry = new TelemetryClient();
     telemetry.InstrumentationKey = "---my key---";
@@ -990,7 +990,7 @@ requests
 
 インストルメンテーション キーは構成ファイルから取得する代わりにコードで設定できます。 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーを設定します。
 
-*C# を選択した場合*
+*C#*
 
     protected void Application_Start()
     {
@@ -1000,7 +1000,7 @@ requests
           WebConfigurationManager.Settings["ikey"];
       ...
 
-*JavaScript を選択した場合*
+*JavaScript*
 
     appInsights.config.instrumentationKey = myKey;
 

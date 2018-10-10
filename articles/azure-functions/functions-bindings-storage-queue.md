@@ -47,9 +47,9 @@ Queue ストレージ バインディングは [Microsoft.Azure.WebJobs.Extensio
 
 言語固有の例をご覧ください。
 
-* [C# を選択した場合](#trigger---c-example)
+* [C#](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
-* [JavaScript を選択した場合](#trigger---javascript-example)
+* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---Java-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
@@ -309,9 +309,9 @@ Azure Queue Storage の出力バインドを使用して、キューにメッセ
 
 言語固有の例をご覧ください。
 
-* [C# を選択した場合](#output---c-example)
+* [C#](#output---c-example)
 * [C# スクリプト (.csx)](#output---c-script-example)
-* [JavaScript を選択した場合](#output---javascript-example)
+* [JavaScript](#output---javascript-example)
 * [Java](#output---java-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例

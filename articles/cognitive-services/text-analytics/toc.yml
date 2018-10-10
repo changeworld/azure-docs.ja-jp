@@ -8,7 +8,7 @@ items:
   expanded: true
 - name: クイック スタート
   items:
-  - name: C#の場合
+  - name: C#
     href: quickstarts/csharp.md
   - name: Go
     href: quickstarts/go.md

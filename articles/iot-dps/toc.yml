@@ -23,7 +23,7 @@ items:
         href: quick-create-simulated-device.md
       - name: Java
         href: quick-create-simulated-device-tpm-java.md
-      - name: C#の場合
+      - name: C#
         href: quick-create-simulated-device-tpm-csharp.md
       - name: Node.js
         href: quick-create-simulated-device-tpm-node.md
@@ -35,7 +35,7 @@ items:
         href: quick-create-simulated-device-x509.md
       - name: Java
         href: quick-create-simulated-device-x509-java.md
-      - name: C#の場合
+      - name: C#
         href: quick-create-simulated-device-x509-csharp.md
       - name: Node.js
         href: quick-create-simulated-device-x509-node.md
@@ -51,7 +51,7 @@ items:
       items:
       - name: Java
         href: quick-enroll-device-tpm-java.md
-      - name: C#の場合
+      - name: C#
         href: quick-enroll-device-tpm-csharp.md
       - name: Node.js
         href: quick-enroll-device-tpm-node.md
@@ -61,7 +61,7 @@ items:
       items:
       - name: Java
         href: quick-enroll-device-x509-java.md
-      - name: C#の場合
+      - name: C#
         href: quick-enroll-device-x509-csharp.md
       - name: Node.js
         href: quick-enroll-device-x509-node.md
@@ -78,7 +78,7 @@ items:
     items:
     - name: C
       href: tutorial-provision-device-to-hub.md
-    - name: C#の場合
+    - name: C#
       href: tutorial-net-provision-device-to-hub.md
   - name: 4 - デバイスを複数のハブにプロビジョニングする
     href: tutorial-provision-multiple-hubs.md

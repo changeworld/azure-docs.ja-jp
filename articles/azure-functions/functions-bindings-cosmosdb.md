@@ -51,9 +51,9 @@ Azure Cosmos DB のトリガーは [Azure Cosmos DB 変更フィード](../cosmo
 
 言語固有の例をご覧ください。
 
-* [C# を選択した場合](#trigger---c-example)
+* [C#](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
-* [JavaScript を選択した場合](#trigger---javascript-example)
+* [JavaScript](#trigger---javascript-example)
 
 [トリガーの例をスキップする](#trigger---attributes)
 
@@ -222,9 +222,9 @@ Azure Cosmos DB 入力バインドでは、SQL API を使用して 1 つ以上�
 
 次のリンクから、ID 値を指定することで単一のドキュメントを読み取る言語固有の例を参照してください。
 
-* [C# を選択した場合](#input---c-examples)
+* [C#](#input---c-examples)
 * [C# スクリプト (.csx)](#input---c-script-examples)
-* [JavaScript を選択した場合](#input---javascript-examples)
+* [JavaScript](#input---javascript-examples)
 * [F#](#input---f-examples)
 
 [入力の例をスキップする](#input---attributes)
@@ -1188,9 +1188,9 @@ Azure Cosmos DB 出力バインドを使用すると、SQL API を使って Azur
 
 言語固有の例を参照してください。
 
-* [C# を選択した場合](#output---c-examples)
+* [C#](#output---c-examples)
 * [C# スクリプト (.csx)](#output---c-script-examples)
-* [JavaScript を選択した場合](#output---javascript-examples)
+* [JavaScript](#output---javascript-examples)
 * [F#](#output---f-examples)
 
 `DocumentClient` を使用した[入力の例](#input---c-examples)も参照してください。

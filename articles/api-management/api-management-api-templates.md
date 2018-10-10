@@ -30,9 +30,9 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 -   [操作](#Product)  
 -   [コード サンプル](#CodeSamples)  
     -   [Curl](#Curl)  
-    -   [C# を選択した場合](#CSharp)  
+    -   [C#](#CSharp)  
     -   [Java](#Stub)  
-    -   [JavaScript を選択した場合](#JavaScript)  
+    -   [JavaScript](#JavaScript)  
     -   [Objective C](#ObjectiveC)  
     -   [PHP](#PHP)  
     -   [Python](#Python)  
@@ -646,11 +646,11 @@ Azure API Management には、開発者ポータルの各ページの内容を�
   
 -   [Curl](#Curl)  
   
--   [C# を選択した場合](#CSharp)  
+-   [C#](#CSharp)  
   
 -   [Java](#Stub)  
   
--   [JavaScript を選択した場合](#JavaScript)  
+-   [JavaScript](#JavaScript)  
   
 -   [Objective C](#ObjectiveC)  
   

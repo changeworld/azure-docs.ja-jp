@@ -54,13 +54,13 @@ ms.locfileid: "46957314"
 Azure Functions で GA またはプレビューであるいずれかの言語を使用する方法の詳細については、以下のリソースを参照してください。
 
 > [!div class="nextstepaction"]
-> [C# を選択した場合](functions-reference-csharp.md)
+> [C#](functions-reference-csharp.md)
 
 > [!div class="nextstepaction"]
 > [F#](functions-reference-fsharp.md)
 
 > [!div class="nextstepaction"]
-> [JavaScript を選択した場合](functions-reference-node.md)
+> [JavaScript](functions-reference-node.md)
 
 > [!div class="nextstepaction"]
 > [Java](functions-reference-java.md)

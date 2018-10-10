@@ -10,7 +10,7 @@ items:
   items:
   - name: 最初のインスタンスの作成
     href: quick-start.md
-  - name: C#の場合
+  - name: C#
     href: call-endpoint-csharp.md
   - name: Java
     href: call-endpoint-java.md

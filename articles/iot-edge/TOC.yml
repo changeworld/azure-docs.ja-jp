@@ -26,7 +26,7 @@ items:
       href: tutorial-deploy-machine-learning.md
     - name: カスタム コードを使用したデータのフィルター処理
       items:
-      - name: C#の場合
+      - name: C#
         href: tutorial-csharp-module.md
       - name: Python
         href: tutorial-python-module.md
@@ -106,7 +106,7 @@ items:
     items:
     - name: Azure Functions
       href: how-to-develop-csharp-function.md
-    - name: C#の場合
+    - name: C#
       href: how-to-develop-csharp-module.md
     - name: Python
       href: how-to-develop-python-module.md

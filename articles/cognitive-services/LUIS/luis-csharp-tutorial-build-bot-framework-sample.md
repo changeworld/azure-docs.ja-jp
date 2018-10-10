@@ -49,7 +49,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
     * サブスクリプション、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
     * **Bot テンプレート**で、以下を選択します。
         * **SDK v3**
-        * **C# を選択した場合**
+        * **C#**
         * **言語の理解**
     * **LUIS アプリの場所**を選択します。 これは、アプリが作成されるオーサリング [リージョン](luis-reference-regions.md)です。
     * 法的通知の確認チェック ボックスをオンにします。 法的通知の条項はチェック ボックスの下にあります。

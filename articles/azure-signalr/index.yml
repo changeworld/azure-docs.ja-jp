@@ -40,7 +40,7 @@ sections:
       href: /azure/azure-signalr/signalr-quickstart-azure-functions-javascript
     - image:
         src: https://docs.microsoft.com/en-us/azure/media/index/azurefunctions.svg
-      text: C#の場合
+      text: C#
       href: /azure/azure-signalr/signalr-quickstart-azure-functions-csharp
     - image:
         src: https://docs.microsoft.com/en-us/media/logos/logo_REST.svg
@@ -70,7 +70,7 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://docs.microsoft.com/aspnet/core/signalr/javascript-client">JavaScript を選択した場合</a>
+    - html: <a href="https://docs.microsoft.com/aspnet/core/signalr/javascript-client">JavaScript</a>
     - html: <a href="https://docs.microsoft.com/aspnet/core/signalr/dotnet-client">.NET Standard</a>
     - html: <a href="https://github.com/aspnet/SignalR/tree/release/2.2/clients/java/signalr">Java</a>
 - title: サンプル
