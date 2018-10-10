@@ -135,7 +135,7 @@
 #### [レイヤード セキュリティ アーキテクチャを実装する](../app-service/environment/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [バックエンド リソースへの安全な接続](../app-service/environment/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## Backup
+## バックアップ
 ### [Azure でのアプリのバックアップ](../app-service/web-sites-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure でのアプリの復元](../app-service/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
@@ -146,7 +146,7 @@
 ## 統合
 ### [SendGrid を使用した Azure での電子メールの送信方法](../sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [PowerApps および Microsoft Flow にエクスポートする](../azure-functions/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [管理対象のサービス ID の使用](../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [マネージド ID の使用](../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 ## トラブルシューティング
 ### Mobile Apps の一般的なトラブルシューティング

@@ -2,21 +2,29 @@
 title: Elastic Database ジョブのインストールの概要 | Microsoft Docs
 description: 弾力性ジョブの機能のインストールについて説明します。
 services: sql-database
-manager: craigg
-author: ddove
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 5760ca693f347068e03770b348d88b3b2adbf678
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 37052c86736a05012b9bb996f07bbf2568d7c879
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645614"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163172"
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database ジョブのインストールの概要
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+
+
 [**Elastic Database ジョブ**](sql-database-elastic-jobs-overview.md)は、PowerShell または Azure Portal を使用してインストールできます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。 さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
 
 既存の**エラスティック プール**から、ポータルを使用して**Elastic Database ジョブ**を既にインストールしている場合、最新の PowerShell プレビューには、既存のインストールをアップグレードするスクリプトが含まれています。 PowerShell API 経由で公開されている新しい機能を活用するために、最新の **Elastic Database ジョブ** コンポーネントにアップグレードすることを強くお勧めします。
@@ -24,7 +32,7 @@ ms.locfileid: "34645614"
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 無料評価版については、「 [無料評価版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 * Azure PowerShell。 [Web Platform インストーラー](http://go.microsoft.com/fwlink/p/?linkid=320376)を使用して最新バージョンをインストールします。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。
-* [NuGet Command-line Utility](https://nuget.org/nuget.exe) を使用して、Elastic Database ジョブ パッケージをインストールします。 詳細については、http://docs.nuget.org/docs/start-here/installing-nuget を参照してください。
+* [NuGet Command-line Utility](https://nuget.org/nuget.exe) を使用して、Elastic Database ジョブ パッケージをインストールします。 詳細については、 http://docs.nuget.org/docs/start-here/installing-nuget を参照してください。
 
 ## <a name="download-and-import-the-elastic-database-jobs-powershell-package"></a>Elastic Database ジョブ PowerShell パッケージをダウンロードしてインストールする
 1. Microsoft Azure PowerShell コマンド ウィンドウを開き、NuGet Command-line Utility (nuget.exe) をダウンロードしたディレクトリに移動します。
@@ -88,7 +96,7 @@ ms.locfileid: "34645614"
 </tr>
     <tr>
     <td>SqlServerDatabaseSlo</td>
-    <td>Standard エディションのサービス レベル目標を指定します。 このパラメーターの既定値は S0 です。 S0/S1/S2/S3/S4/S6/S9/S12 のパラメーター値を指定できます。Azure SQL Database では各 SLO が使用されます。 SQL Database の SLO について詳しくは、[エラスティック データベース ジョブのコンポーネントと価格](sql-database-elastic-jobs-overview.md#components-and-pricing)に関するページをご覧ください。</td>
+    <td>Standard エディションのコンピューティング サイズを指定します。 このパラメーターの既定値は S0 です。 S0/S1/S2/S3/S4/S6/S9/S12 のパラメーター値を指定できます。Azure SQL Database では各コンピューティング サイズが使用されます。 SQL Database のコンピューティング サイズの詳細については、[エラスティック データベース ジョブのコンポーネントと価格](sql-database-elastic-jobs-overview.md#components-and-pricing)に関するページをご覧ください。</td>
 </tr>
 
 </tr>
@@ -146,13 +154,11 @@ ms.locfileid: "34645614"
 </table>
 
 ## <a name="install-the-elastic-database-jobs-components-using-the-portal"></a>ポータルを使用して Elastic Database ジョブ コンポーネントをインストールする
-
-  [エラスティック プールを作成](sql-database-elastic-pool-manage-portal.md)すると、 **Elastic Database ジョブ** コンポーネントをインストールして、エラスティック プール内の各データベースに対して管理タスクを実行できるようになります。 **Elastic Database ジョブ** PowerShell API を使用するときとは異なり、現在、ポータル インターフェイスは既存のプールに対する実行のみに制限されています。
+[エラスティック プールを作成](sql-database-elastic-pool-manage-portal.md)すると、 **Elastic Database ジョブ** コンポーネントをインストールして、エラスティック プール内の各データベースに対して管理タスクを実行できるようになります。 **Elastic Database ジョブ** PowerShell API を使用するときとは異なり、現在、ポータル インターフェイスは既存のプールに対する実行のみに制限されています。
 
 **推定所要時間:** 10 分。
 
-1. 
-  [Azure Portal](https://portal.azure.com/#) で、エラスティック プールのダッシュボード ビューから、**[ジョブの作成]** をクリックします。
+1. [Azure Portal](https://portal.azure.com/#) で、エラスティック プールのダッシュボード ビューから、**[ジョブの作成]** をクリックします。
 2. 初めてジョブを作成する場合は、**[プレビュー版の使用条件]** をクリックして、**Elastic Database ジョブ**をインストールする必要があります。
 3. チェック ボックスをクリックして条項に同意します。
 4. [サービスのインストール] ビューで、 **[ジョブの資格情報]** をクリックします。

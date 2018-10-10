@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/27/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: 4dfeff0e22a541a39a59c37c869af41a7e444fa6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.reviewer: quying
+ms.openlocfilehash: 8fc24e58af51a249e3305dbe1496c499387be6b1
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842500"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407911"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>SQL リソース プロバイダーへのホスティング サーバーの追加
 
 SQL リソース プロバイダーが SQL インスタンスに接続できる限り、その SQL インスタンスを、[Azure Stack](azure-stack-poc.md) 内の仮想マシン (VM) 上、または Azure Stack 環境の外部にある VM 上でホストできます。
+
+> [!NOTE]
+> SQL データベースは、SQL リソース プロバイダー サーバー上に作成する必要があります。 SQL リソース プロバイダーは既定のプロバイダー サブスクリプションに作成する必要がありますが、SQL ホスティング サーバーは課金対象のユーザー サブスクリプションに作成する必要があります。 リソース プロバイダー サーバーは、ユーザー データベースをホストするためには使用しないでください。
 
 ## <a name="overview"></a>概要
 
@@ -45,6 +48,9 @@ SQL ホスティング サーバーを追加する前に、次の必須要件と
 Marketplace 管理機能により、SQL IaaS 仮想マシン イメージを使用できます。 これらのイメージは、Azure で使用できる SQL VM と同じです。
 
 Marketplace 項目を使用して SQL VM をデプロイする前に、必ず **SQL IaaS 拡張機能**の最新バージョンをダウンロードしてください。 IaaS 拡張機能や対応するポータル拡張機能により、修正プログラムの自動適用やバックアップなどの追加機能が提供されます。 この拡張機能の詳細については、「[SQL Server Agent 拡張機能による Azure Virtual Machines での管理タスクの自動化](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)」を参照してください。
+
+> [!NOTE]
+> SQL IaaS 拡張機能は、Marketplace にあるすべて SQL on Windows イメージに_必須_です。この拡張機能をダウンロードしなかった場合、VM のデプロイは失敗します。 これは Linux ベースの SQL 仮想マシン イメージでは使用されません。
 
 SQL VM のデプロイにはその他の選択肢もあります。[Azure Stack Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates) のテンプレートなどです。
 
@@ -125,7 +131,7 @@ SQL Server のインスタンスごとに各可用性グループで[自動シ�
   GO
   ```
 
-可用性グループは大かっこで囲む必要があることに注意してください。
+可用性グループは角かっこで囲む必要があります。
 
 セカンダリ ノードで、次の SQL コマンドを実行します。
 

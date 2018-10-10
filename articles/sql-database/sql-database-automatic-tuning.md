@@ -2,20 +2,22 @@
 title: Azure SQL Database - 自動チューニング | Microsoft Docs
 description: Azure SQL Database は SQL クエリを分析し、ユーザーのワークロードに自動的に適応します。
 services: sql-database
-author: danimir
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 38b59c28096b23a22b216158d9e945a2881a4f41
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 931e0f2c6be51c78187413d638259237f98bd9b0
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189260"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063355"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database での自動チューニング
 
@@ -81,5 +83,5 @@ Azure SQL Database で使用可能な自動チューニング オプションは
 - 自動チューニングの推奨設定を手動で確認して適用するには、「[パフォーマンスに関する推奨事項の検索と適用](sql-database-advisor-portal.md)」をご覧ください。
 - T-SQL を使用して自動チューニングの推奨情報を適用および表示する方法については、「[Manage automatic tuning via T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/)」(T-SQL を使用して自動チューニングを管理する) をご覧ください。
 - 自動チューニングの推奨情報に関するメール通知の作成については、「[自動チューニングの電子メール通知](sql-database-automatic-tuning-email-notifications.md)」を参照してください。
-- 自動チューニングに使用されている組み込みインテリジェンスの詳細については、「[人工知能による Azure SQL Database のチューニング](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)」をご覧ください。
+- 自動チューニングに使用されている組み込みインテリジェンスの詳細については、「[Artificial Intelligence tunes Azure SQL databases](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)」(人工知能による Azure SQL Database のチューニング) をご覧ください。
 - Azure SQL Database と SQL server 2017 における自動チューニングの動作の詳細については、[SQL Server の自動チューニング](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)に関する記事をご覧ください。

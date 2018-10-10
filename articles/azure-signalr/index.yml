@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b4c33753452921e12056e702c68cd0f1a8741f41
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c9732332bcb8a3f4ce6a1d48049c57e50e743826
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998675"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870301"
 documentType: LandingData
 title: Azure SignalR サービスのドキュメント
 metadata:
@@ -44,7 +44,7 @@ sections:
       href: /azure/azure-signalr/signalr-quickstart-azure-functions-csharp
     - image:
         src: https://docs.microsoft.com/en-us/media/logos/logo_REST.svg
-      text: C#
+      text: REST API
       href: /azure/azure-signalr/signalr-quickstart-rest-api
 - title: ステップバイステップのチュートリアル
   items:

@@ -56,6 +56,8 @@ items:
     items:
     - name: ディレクトリの管理
       href: /azure/active-directory/fundamentals/active-directory-administer?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: ドメイン名を管理する
+      href: domains-manage.md
     - name: ディレクトリを削除する
       href: directory-delete-howto.md
     - name: 複数のディレクトリ
@@ -157,9 +159,9 @@ items:
     href: https://docs.microsoft.com/cli/azure/ad
   - name: Azure AD PowerShell for Graph
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-ms.openlocfilehash: 71d33f870a9b5db09a3f12f39b8d9e0ecc82676e
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: ade39bbb8e98bb25889e18d54a042401f2f20228
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017892"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853676"

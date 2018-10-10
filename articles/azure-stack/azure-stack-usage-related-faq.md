@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 847f18b2-49a9-4931-9c09-9374e932a071
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 09/27/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: ac22ba34bff1d5321c05bc0a0a1b14ca742079a7
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: e4bb17bd068076a9ffa9bcab5826f0efa84a19d7
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051503"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406007"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Azure Stack Usage API のよくあるご質問
 
@@ -29,7 +28,7 @@ ms.locfileid: "37051503"
 ## <a name="what-meter-ids-can-i-see"></a>どのような測定 ID を表示できますか。
 次のリソース プロバイダーの使用状況が報告されます。
 
-**ネットワーク**  
+### <a name="network"></a>ネットワーク
   
 **測定 ID**: F271A8A388C44D93956A063E1D2FA80B  
 **測定名**: 静的 IP アドレスの使用状況  
@@ -41,7 +40,7 @@ ms.locfileid: "37051503"
 **単位**: IP アドレス  
 **備考**: 使用中の IP アドレス数。 使用状況 API を日単位の細分性で呼び出した場合、メーターは IP アドレスに時間数を乗算して返します。  
   
-**Storage**  
+### <a name="storage"></a>Storage
   
 **測定 ID**: B4438D5D-453B-4EE1-B42A-DC72E377F1E4  
 **測定名**: TableCapacity  
@@ -107,22 +106,8 @@ ms.locfileid: "37051503"
 **測定名**: QueueDataTransOut  
 **単位**: GB 単位のエグレス  
 **備考**: GB 単位の Queue サービス データ送信  
-  
-**Sql RP**  
-  
-**測定 ID**: CBCFEF9A-B91F-4597-A4D3-01FE334BED82  
-**測定名**: DatabaseSizeHourSqlMeter  
-**単位**: MB\*時間数  
-**備考**: 作成時のデータベースの合計容量。 使用状況 API を日単位の細分性で呼び出した場合、メーターは MB に時間数を乗算して返します。  
-  
-**MySql RP**  
-  
-**測定 ID**: E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3  
-**測定名**: DatabaseSizeHourMySqlMeter  
-**単位**: MB\*時間数  
-**備考**: 作成時のデータベースの合計容量。 使用状況 API を日単位の細分性で呼び出した場合、メーターは MB に時間数を乗算して返します。  
-  
-**Compute**  
+
+### <a name="compute"></a>コンピューティング 
   
 **測定 ID**: FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5  
 **測定名**: ベース VM サイズ時間  
@@ -139,7 +124,122 @@ ms.locfileid: "37051503"
 **単位**: VM 時間  
 **備考**: ベース VM と Windows VM の両方をキャプチャ。 コアの調整なし。  
   
-**Key Vault**  
+### <a name="managed-disks"></a>Managed Disks
+
+**測定 ID**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
+**測定名**: S4   
+**単位**: ディスク数   
+**備考**: Standard マネージド ディスク - 32 GB 
+
+**測定 ID**: dc9fc6a9-0782-432a-b8dc-978130457494   
+**測定名**: S6   
+**単位**: ディスク数   
+**備考**: Standard マネージド ディスク - 64 GB 
+
+**測定 ID**: e5572fce-9f58-49d7-840c-b168c0f01fff   
+**測定名**: S10   
+**単位**: ディスク数   
+**備考**: Standard マネージド ディスク - 128 GB 
+
+**測定 ID**: 9a8caedd-1195-4cd5-80b4-a4c22f9302b8   
+**測定名**: S15   
+**単位**: ディスク数   
+**備考**: Standard マネージド ディスク - 256 GB 
+
+**測定 ID**: 5938f8da-0ecd-4c48-8d5a-c7c6c23546be   
+**測定名**: S20   
+**単位**: ディスク数      
+**備考**: Standard マネージド ディスク - 512 GB 
+
+**測定 ID**: 7705a158-bd8b-4b2b-b4c2-0782343b81e6   
+**測定名**: S30   
+**単位**: ディスク数   
+**備考**: Standard マネージド ディスク - 1024 GB 
+
+**測定 ID**: d9aac1eb-a5d1-42f2-b617-9e3ea94fed88   
+**測定名**: S40   
+**単位**: ディスク数   
+**備考**: Standard マネージド ディスク - 2048 GB 
+
+**測定 ID**: a54899dd-458e-4a40-9abd-f57cafd936a7   
+**測定名**: S50   
+**単位**: ディスク数   
+**備考**: Standard マネージド ディスク - 4096 GB 
+
+**測定 ID**: 5c105f5f-cbdf-435c-b49b-3c7174856dcc   
+**測定名**: P4   
+**単位**: ディスク数   
+**備考**: Premium マネージド ディスク - 32 GB 
+
+**測定 ID**: 518b412b-1927-4f25-985f-4aea24e55c4f   
+**測定名**: P6   
+**単位**: ディスク数   
+**備考**: Premium マネージド ディスク - 64 GB 
+
+**測定 ID**: 5cfb1fed-0902-49e3-8217-9add946fd624   
+**測定名**: P10   
+**単位**: ディスク数   
+**備考**: Premium マネージド ディスク - 128 GB  
+
+**測定 ID**: 8de91c94-f740-4d9a-b665-bd5974fa08d4   
+**測定名**: P15  
+**単位**: ディスク数   
+**備考**: Premium マネージド ディスク - 256 GB 
+
+**測定 ID**: c7e7839c-293b-4761-ae4c-848eda91130b   
+**測定名**: P20   
+**単位**: ディスク数   
+**備考**: Premium マネージド ディスク - 512 GB 
+
+**測定 ID**: 9f502103-adf4-4488-b494-456c95d23a9f   
+**測定名**: P30   
+**単位**: ディスク数   
+**備考**: Premium マネージド ディスク - 1024 GB 
+
+**測定 ID**: 043757fc-049f-4e8b-8379-45bb203c36b1   
+**測定名**: P40   
+**単位**: ディスク数    
+**備考**: Premium マネージド ディスク - 2048 GB 
+
+**測定 ID**: c0342c6f-810b-4942-85d3-6eaa561b6570   
+**測定名**: P50   
+**単位**: ディスク数   
+**備考**: Premium マネージド ディスク - 4096 GB 
+
+**測定 ID**: 8a409390-1913-40ae-917b-08d0f16f3c38   
+**測定名**: ActualStandardDiskSize   
+**単位**: バイト      
+**備考**: Standard マネージド ディスクのディスク上の実際のサイズ  
+
+**測定 ID**: 1273b16f-8458-4c34-8ce2-a515de551ef6  
+**測定名**: ActualPremiumDiskSize   
+**単位**: バイト      
+**備考**: Premium マネージド ディスクのディスク上の実際のサイズ 
+
+**測定 ID**: 89009682-df7f-44fe-aeb1-63fba3ddbf4c  
+**測定名**: ActualStandardSnapshotSize   
+**単位**: バイト   
+**備考**: マネージド Standard スナップショットのディスク上の実際のサイズ。  
+
+**測定 ID**: 95b0c03f-8a82-4524-8961-ccfbf575f536   
+**測定名**: ActualPremiumSnapshotSize   
+**単位**: バイト   
+**備考**: マネージド Premium のディスク上の実際のサイズ。   
+
+### <a name="sql-rp"></a>Sql RP
+  
+**測定 ID**: CBCFEF9A-B91F-4597-A4D3-01FE334BED82  
+**測定名**: DatabaseSizeHourSqlMeter  
+**単位**: MB\*時間数  
+**備考**: 作成時のデータベースの合計容量。 使用状況 API を日単位の細分性で呼び出した場合、メーターは MB に時間数を乗算して返します。  
+  
+### <a name="mysql-rp"></a>MySql RP   
+  
+**測定 ID**: E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3  
+**測定名**: DatabaseSizeHourMySqlMeter  
+**単位**: MB\*時間数  
+**備考**: 作成時のデータベースの合計容量。 使用状況 API を日単位の細分性で呼び出した場合、メーターは MB に時間数を乗算して返します。    
+### <a name="key-vault"></a>Key Vault   
   
 **測定 ID**: EBF13B9F-B3EA-46FE-BF54-396E93D48AB4  
 **測定名**: Key Vault トランザクション  
@@ -151,7 +251,7 @@ ms.locfileid: "37051503"
 **単位**: 10K のトランザクション  
 **備考**: RSA 3K/4K、ECC キー トランザクション。 (プレビュー)。  
   
-*App Service**  
+### <a name="app-service"></a>App Service   
   
 **測定 ID**: 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
 **測定名**: App Service  
@@ -193,7 +293,7 @@ ms.locfileid: "37051503"
 **単位**: 1 時間  
 **備考**: インスタンスのサイズと数に基づいて計算されます。  
   
-**カスタム worker 層**  
+### <a name="custom-worker-tiers"></a>カスタム worker 層   
   
 **測定 ID**: *カスタム worker 層*  
 **測定名**: カスタム worker 層  
@@ -221,10 +321,10 @@ ms.locfileid: "37051503"
 **備考**: 受信要求応答の合計バイト数 + 送信要求応答の合計バイト数 + 受信 FTP 要求応答の合計バイト数 + 受信 Web デプロイ要求応答の合計バイト数。  
   
 
-## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>Azure Stack Usage API は [Azure Usage API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (現在パブリック プレビュー中) と比較してどうですか。
+## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsdocsmicrosoftcomazurebillingbilling-usage-rate-card-overviewazure-resource-usage-api-preview-currently-in-public-preview"></a>Azure Stack Usage API は [Azure Usage API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (現在パブリック プレビュー中) と比較してどうですか。
 * Tenant Usage API は、Azure API と一貫性がありますが、唯一の例外として、現在 Azure Stack では *showDetails* フラグがサポートされていません。
 * Provider Usage API は、Azure Stack にのみ適用されます。
-* 現在、Azure で使用可能な [RateCard API](https://msdn.microsoft.com/library/azure/mt219004.aspx) は Azure Stack で使用できません。
+* 現在、Azure で使用可能な [RateCard API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-ratecard-api-preview) は Azure Stack で使用できません。
 
 ## <a name="what-is-the-difference-between-usage-time-and-reported-time"></a>使用時間と報告時間の違いは何ですか。
 使用状況データ レポートには、2 つの主要な時間値があります。

@@ -1,21 +1,23 @@
 ---
 title: 自動チューニング電子メール通知の操作ガイド - Azure SQL Database | Microsoft Docs
-description: Azure SQL Database は SQL クエリを分析し、ユーザーのワークロードに自動的に適応します。
+description: Azure SQL Database の自動クエリ チューニングに対する電子メール通知を有効にします。
 services: sql-database
-author: danimir
-manager: craigg
-ms.reviewer: carlrab
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/05/2018
+author: danimir
 ms.author: v-daljep
-ms.openlocfilehash: 643740ea76769f857e8c99ebaa6d27eceed99067
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 86639be7c4d934929272e6d578485bfc8bfb9cc9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644333"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064103"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自動チューニングの電子メール通知
 
@@ -205,12 +207,12 @@ Microsoft Flow の機能について詳しくは、「[Microsoft Flow を使っ�
 1. チューニング推奨情報を取得する PowerShell スクリプトを実行するアクションを作成します。
 - **[+ 新しいステップ]** を選択し、繰り返しフローのウィンドウで **[アクションの追加]** を順に選択します。
 - 検索フィールドに「**automation**」と入力し、検索結果から **[Azure Automation – ジョブの作成]** を選択します。
-- [ジョブの作成] ウィンドウで、ジョブのプロパティを構成します。 この構成では、**[Automation アカウント] ウィンドウ**で**前に記録した** Azure サブスクリプション ID、リソース グループ、Automation アカウントの詳細が必要になります。 このセクションで指定できるオプションについて詳しくは、[Azure Automation でのジョブの作成](https://docs.microsoft.com/connectors/azureautomation/#Create_job)に関する記事をご覧ください。
+- [ジョブの作成] ウィンドウで、ジョブのプロパティを構成します。 この構成では、**[Automation アカウント] ウィンドウ**で**前に記録した** Azure サブスクリプション ID、リソース グループ、Automation アカウントの詳細が必要になります。 このセクションで指定できるオプションについて詳しくは、[Azure Automation でのジョブの作成](https://docs.microsoft.com/connectors/azureautomation/#create-job)に関する記事をご覧ください。
 - **[フローの保存]** をクリックすると、このアクションの作成が完了します。
 
 2. 実行した PowerShell スクリプトの出力を取得するアクションを作成します。
 - **[+ 新しいステップ]** を選択し、繰り返しフローのウィンドウで **[アクションの追加]** を順に選択します。
-- 検索フィールドに「**automation**」と入力し、検索結果から **[Azure Automation - Get job output]\(Azure Automation - ジョブ出力の取得\)** を選択します。 このセクションで指定できるオプションについて詳しくは、「[Azure Automation – Get job output](https://docs.microsoft.com/connectors/azureautomation/#Get_job_output)」(Azure Automation - ジョブ出力の取得) をご覧ください。
+- 検索フィールドに「**automation**」と入力し、検索結果から **[Azure Automation - Get job output]\(Azure Automation - ジョブ出力の取得\)** を選択します。 このセクションで指定できるオプションについて詳しくは、「[Azure Automation – Get job output](https://docs.microsoft.com/connectors/azureautomation/#get-job-output)」(Azure Automation - ジョブ出力の取得) をご覧ください。
 - 必須フィールドを設定します (前のジョブの作成と同様)。([Automation アカウント] ウィンドウに入力したように) Azure サブスクリプション ID、リソース グループ、Automation アカウントを入力します。
 - フィールド **[ジョブ ID]** の内側をクリックして **[動的なコンテンツ]** メニューを表示します。 このメニューで、オプション **[ジョブ ID]** を選択します。
 - **[フローの保存]** をクリックすると、このアクションの作成が完了します。

@@ -1,21 +1,23 @@
 ---
-title: マルチテナント SaaS チュートリアル - Azure SQL Database | Microsoft Docs
+title: シングルテナント SaaS チュートリアル - Azure SQL Database | Microsoft Docs
 description: Azure SQL Database を使用するスタンドアロン シングルテナント SaaS アプリケーションをデプロイおよび操作します。
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: 32cfa2e9bd48dd4e27da5c4010391c032d67d96b
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: sstein
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 1e74a0c915471fecb3b8e0662559eb5bfe189b3d
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644724"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423019"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するスタンドアロン シングルテナント アプリケーションをデプロイおよび操作する
 
@@ -25,7 +27,7 @@ ms.locfileid: "34644724"
 
 このチュートリアルでは、3 つのテナントに対応する 3 つのスタンドアロン アプリケーションを Azure サブスクリプションにデプロイします。  ユーザーには、個々のアプリケーション コンポーネントを確認して操作するフル アクセスがあります。
 
-アプリケーションのソース コードと管理スクリプトは、[WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub リポジトリから入手できます。
+アプリケーションのソース コードと管理スクリプトは、[WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) GitHub リポジトリから入手できます。 このアプリケーションは Visual Studio 2015 で作成されました。更新なしでは、Visual Studio 2017 で開いたり、コンパイルしたりできません。
 
 
 このチュートリアルで学習する内容は次のとおりです。
@@ -80,7 +82,7 @@ ms.locfileid: "34644724"
 
     (各 URL で、&lt;user&gt; を、デプロイのユーザー値に置き換えてください。)
 
-   ![イベント](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
+   ![events](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
 アプリは、着信要求の分散を制御するために [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md) を使用します。 各テナント固有のアプリ インスタンスには、URL 内のドメイン名の一部としてテナント名が含まれています。 すべてのテナント URL に、特定の**ユーザー**値が含まれます。 URL の形式を次に示します。
 - http://events.&lt;venuename&gt;.&lt;user&gt;.trafficmanager.net

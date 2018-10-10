@@ -2,20 +2,22 @@
 title: ActiveDirectoryInteractive を使用した SQL への接続 | Microsoft Docs
 description: SqlAuthenticationMethod.ActiveDirectoryInteractive モードを使用して Azure SQL Database に接続するための C# コード例と説明。
 services: sql-database
-author: GithubMirek
-manager: craigg
 ms.service: sql-database
+ms.subservice: security
 ms.custom: active directory
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/06/2018
+author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.openlocfilehash: 3d6eb70b3ce9072dc2c51220af89549022b5dacf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.date: 04/06/2018
+manager: craigg
+ms.openlocfilehash: 80944e73f21d75943d4fa71c7ac9500e47bab250
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238270"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055528"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>ActiveDirectoryInteractive モードを使用した Azure SQL Database への接続
 
@@ -122,13 +124,13 @@ SQL Database サーバーの Azure AD 管理者を使用して、SQL Database �
 
 この C# の例で利用する名前空間の 1 つが **System.Data.SqlClient** です。 特に重要なのは、**SqlAuthenticationMethod** 列挙型です。 この列挙型には次の値があります。
 
-- **SqlAuthenticationMethod.ActiveDirectory\*Interactive**\*:&nbsp; MFA (Multi-Factor Authentication) を実現するために、Azure AD ユーザー名と共に使用します。
+- **SqlAuthenticationMethod.ActiveDirectory *Interactive***:&nbsp; MFA (Multi-Factor Authentication) を実現するために、Azure AD ユーザー名と共に使用します。
     - この記事ではこの値が重視されます。 ユーザー パスワードのダイアログを表示し、このユーザーに MFA を適用する場合は MFA 検証のダイアログを表示することで、対話型エクスペリエンスを実現します。
     - この値は、.NET Framework バージョン 4.7.2 以降で使用できます。
 
-- **SqlAuthenticationMethod.ActiveDirectory\*Integrated**\*:&nbsp; "*フェデレーション*" アカウントに使用します。 フェデレーション アカウントの場合、ユーザー名は Windows ドメインに認識されています。 この方法では、MFA はサポートされていません。
+- **SqlAuthenticationMethod.ActiveDirectory *Integrated***:&nbsp; *フェデレーション* アカウントに使用します。 フェデレーション アカウントの場合、ユーザー名は Windows ドメインに認識されています。 この方法では、MFA はサポートされていません。
 
-- **SqlAuthenticationMethod.ActiveDirectory\*Password**\*:&nbsp; Azure AD ユーザーとそのユーザーのパスワードを必要とする認証に使用します。 Azure SQL Database によって認証が実行されます。 この方法では、MFA はサポートされていません。
+- **SqlAuthenticationMethod.ActiveDirectory *Password***:&nbsp; Azure AD ユーザーとそのユーザーのパスワードを必要とする認証に使用します。 Azure SQL Database によって認証が実行されます。 この方法では、MFA はサポートされていません。
 
 
 

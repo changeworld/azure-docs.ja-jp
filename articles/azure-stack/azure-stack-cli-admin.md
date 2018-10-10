@@ -1,30 +1,31 @@
 ---
-title: "Azure Stack ユーザーに対する Azure CLI の有効化 | Microsoft Docs"
-description: "クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack でリソースを管理およびデプロイする方法"
+title: Azure Stack ユーザーに対する Azure CLI の有効化 | Microsoft Docs
+description: クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack でリソースを管理およびデプロイする方法
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: f576079c-5384-4c23-b5a4-9ae165d1e3c3
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 06/11/2018
 ms.author: mabrigg
-ms.openlocfilehash: e2483bda5a0c6a6b270759946f146c37c5dad5b1
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 09c551ea7196ae20a60a5dd34c1cda889ff5df46
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47091068"
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Azure Stack ユーザーに対する Azure CLI の有効化
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure CLI を使用して実行できる Azure Stack オペレーターの特定のタスクはありません。 ただし、ユーザーが CLI を使用してリソースを管理できるようにするには、Azure Stack オペレーターがユーザーに以下を提供する必要があります。
+Azure Stack のユーザーに CA ルート証明書を提供して、開発マシンで Azure CLI を使用できるようにすることができます。 ユーザーが CLI を使用してリソースを管理するには証明書が必要になります。
 
 * ユーザーが Azure Stack Development Kit の外部のワークステーションから CLI を使用する場合は、**Azure Stack の CA ルート証明書**が必要です。  
 
@@ -34,7 +35,7 @@ Azure CLI を使用して実行できる Azure Stack オペレーターの特定
 
 ## <a name="export-the-azure-stack-ca-root-certificate"></a>Azure Stack の CA ルート証明書をエクスポートする
 
-Azure Stack の CA ルート証明書は、開発キットと、開発キット環境内で実行されているテナント仮想マシンで利用できます。 PEM 形式で Azure Stack ルート証明書をエクスポートするには、開発キットまたはテナント仮想マシンにサインインし、次のスクリプトを実行します。
+Azure Stack の CA ルート証明書は、開発キットと、開発キット環境内で実行されているテナント仮想マシンで見つかります。 PEM 形式で Azure Stack ルート証明書をエクスポートするには、開発キットまたはテナント仮想マシンにサインインし、次のスクリプトを実行します。
 
 ```powershell
 $label = "AzureStackSelfSignedRootCert"
@@ -58,19 +59,17 @@ certutil -encode root.cer root.pem
 Azure Stack オペレーターは、仮想マシンのエイリアス ファイルをホストする、公的にアクセス可能なエンドポイントを設定する必要があります。 仮想マシンのエイリアス ファイルは、イメージの共通名が指定された JSON ファイルです。 この名前は、Azure CLI パラメーターとして VM をデプロイするときに後で指定します。  
 
 エイリアス ファイルにエントリを追加する前に、[Azure Marketplace からイメージをダウンロード](azure-stack-download-azure-marketplace-item.md)するか、[独自のカスタム イメージを発行](azure-stack-add-vm-image.md)してください。 カスタム イメージを発行する場合は、発行時に指定した発行者、プラン、SKU、およびバージョン情報をメモしておいてください。 Marketplace のイメージである場合は、```Get-AzureVMImage``` コマンドレットを使用して情報を表示できます。  
-   
+
 多くの一般的なイメージの別名を含む[サンプル エイリアス ファイル](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json)が使用できます。 それを出発点として使用できます。 このファイルを CLI クライアントがアクセスできる場所にホストします。 そのためには、BLOB ストレージ アカウント内でファイルをホストし、ユーザーと URL を共有する方法があります。
 
 1. GitHub から[サンプル ファイル](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json)をダウンロードします。
 2. Azure Stack に新しいストレージ アカウントを作成します。 完了したら、新しい BLOB コンテナーを作成します。 アクセス ポリシーを [パブリック] に設定します。  
-3. その新しいコンテナーに JSON ファイルをアップロードします。 完了したら、BLOB 名をクリックし、BLOB のプロパティから URL を選択すると、BLOB の URL を表示できます。
+3. その新しいコンテナーに JSON ファイルをアップロードします。 完了したら、BLOB 名を選択し、BLOB のプロパティから URL を選択すると、BLOB の URL を表示できます。
 
+## <a name="next-steps"></a>次の手順
 
-## <a name="next-steps"></a>次のステップ
+- [Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
 
-[Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
+- [PowerShell で接続する](azure-stack-connect-powershell.md)
 
-[PowerShell で接続する](azure-stack-connect-powershell.md)
-
-[ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)
-
+- [ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)

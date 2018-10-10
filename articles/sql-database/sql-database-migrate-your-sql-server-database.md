@@ -2,19 +2,22 @@
 title: DMA を使用して SQL Server DB を Azure SQL Database に移行する | Microsoft Docs
 description: DMA を使用して SQL Server データベースを Azure SQL Database に移行する方法について説明します。
 services: sql-database
-author: sachinpMSFT
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,migrate
-ms.topic: tutorial
-ms.date: 07/02/2018
-ms.author: carlrab
-ms.openlocfilehash: 1d8ec772293354c059f21aaae8006f5c40540058
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: sachinpMSFT
+ms.author: sachinp
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 58016636dad24b9b7d5278ce89643e6cd8d5be9e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050206"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162864"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>DMA を使用して SQL Server データベースを Azure SQL Database に移行する
 
@@ -246,11 +249,11 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 ## <a name="change-database-properties"></a>データベースのプロパティを変更する
 
-SQL Server Management Studio を使用して、サービス レベル、パフォーマンス レベル、互換性レベルを変更できます。 インポート フェーズ中には、パフォーマンスを最大化するために、パフォーマンス レベルがより高いデータベースへインポートすることをお勧めしますが、インポートの完了後は、インポートされたデータベースを積極的に使用する準備が整うまで、スケールダウンして費用を節約することをお勧めします。 互換性レベルを変更すると、パフォーマンスが向上し、Azure SQL Database サービスの最新機能を使用できるようになります。 古いデータベースを移行する場合、データベースの互換性レベルは、インポートされるデータベースと互換性のある最低サポート レベルで維持されます。 詳細については、「[Azure SQL Database の互換性レベル 130 によるクエリ パフォーマンスの向上](sql-database-compatibility-level-query-performance-130.md)」を参照してください。
+SQL Server Management Studio を使用して、サービス レベル、コンピューティング サイズ、互換性レベルを変更できます。 インポート フェーズ中には、パフォーマンスを最大化するために、サービス レベルまたはコンピューティング サイズがより高いデータベースへインポートすることをお勧めしますが、インポートの完了後は、インポートされたデータベースを積極的に使用する準備が整うまで、スケールダウンして費用を節約することをお勧めします。 互換性レベルを変更すると、パフォーマンスが向上し、Azure SQL Database サービスの最新機能を使用できるようになります。 古いデータベースを移行する場合、データベースの互換性レベルは、インポートされるデータベースと互換性のある最低サポート レベルで維持されます。 詳細については、「[Azure SQL Database の互換性レベル 130 によるクエリ パフォーマンスの向上](sql-database-compatibility-level-query-performance-130.md)」を参照してください。
 
 1. オブジェクト エクスプローラーで **mySampleDatabase** を右クリックしてから、**[新しいクエリ]** をクリックします。 データベースに接続されたクエリ ウィンドウが開きます。
 
-2. 次のコマンドを実行して、サービス レベルを **Standard**、パフォーマンス レベルを **S1** に設定します。
+2. 次のコマンドを実行して、サービス レベルを **Standard**、コンピューティング サイズを **S1** に設定します。
 
     ```sql
     ALTER DATABASE mySampleDatabase 

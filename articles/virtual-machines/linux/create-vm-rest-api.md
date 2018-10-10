@@ -15,16 +15,32 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/05/2018
 ms.author: cynthn
-ms.openlocfilehash: 11d9f5efb452d46e5ca30169861582f6f2bbbd1b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3eeaee9bc6320231f10aa85227e2f43756181806
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969395"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433482"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH 認証を使用する Linux 仮想マシンを REST API で作成する
 
-Azure の仮想マシン (VM) は、場所、ハードウェアのサイズ、オペレーティング システム イメージ、ログオン資格情報などのさまざまなパラメーターによって定義されます。 この記事では、SSH 認証を使用する Linux 仮想マシンを REST API を使用して作成する方法について説明します。
+Azure 内の Linux 仮想マシン (VM) は、ディスクやネットワーク インターフェイスなどのさまざまなリソースで構成され、場所、サイズおよびオペレーティング システムのイメージや認証の設定などのパラメーターが定義されます。
+
+Azure portal、Azure CLI 2.0、多くの Azure SDK、Azure Resource Manager テンプレートおよび Ansible や Terraform などの多くのサードパーティ製ツールを使用して、Linux VM を作成することができます。 これらのすべてのツールでは、最終的に REST API を使用して Lunux VM が作成されます。
+
+この記事では、REST API を使用して、マネージド ディスクと SSH 認証で Ubuntu 18.04-LTS を実行する Linux VM を作成する方法について説明します。
+
+## <a name="before-you-start"></a>開始する前に
+
+要求を作成して送信する前に、次のものが必要になります。
+
+* ご自分のサブスクリプションの `{subscription-id}`
+  * 複数のサブスクリプションをお持ちの場合は、[複数のサブスクリプションの操作](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)に関するページを参照してください。
+* 事前に作成した `{resourceGroupName}`
+* 同じリソース グループ内の[仮想ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md)
+* SSH キー ペア (お持ちでない場合は、[新しいものを作成](mac-create-ssh-keys.md)できます)
+
+## <a name="request-basics"></a>要求の基本
 
 仮想マシンを作成または更新するには、次の *PUT* 操作を使用します。
 
@@ -32,9 +48,7 @@ Azure の仮想マシン (VM) は、場所、ハードウェアのサイズ、�
 PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}?api-version=2017-12-01
 ```
 
-## <a name="create-a-request"></a>要求を作成する
-
-*PUT* 要求を作成するには、`{subscription-id}` パラメーターが必要です。 複数のサブスクリプションをお持ちの場合は､[Working with multiple subscriptions](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions)を参照してください｡ リソースの `{resourceGroupName}` と `{vmName}` を `api-version` パラメーターと共に定義します。 この記事では、`api-version=2017-12-01` を使用します。
+`{subscription-id}` および `{resourceGroupName}` パラメーターに加え、`{vmName}` を指定する必要があります (`api-version` は省略可能ですが、この記事は `api-version=2017-12-01` でテストされました)
 
 次のヘッダーは必須です｡
 
@@ -43,7 +57,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 | *Content-Type:*  | 必須。 `application/json` を設定します。 |
 | *Authorization:* | 必須。 有効な `Bearer` [ アクセス トークン](https://docs.microsoft.com/rest/api/azure/#authorization-code-grant-interactive-clients)を設定します｡ |
 
-要求の作成方法の詳細については、「[Components of a REST API request/response](/rest/api/azure/#components-of-a-rest-api-requestresponse)」(REST API 要求/応答のコンポーネント) を参照してください。
+REST API 要求の操作の概要については、「[Components of a REST API request/response](/rest/api/azure/#components-of-a-rest-api-requestresponse)」(REST API 要求/応答のコンポーネント) を参照してください。
 
 ## <a name="create-the-request-body"></a>要求本文を作成する
 
@@ -58,15 +72,12 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 | properties.osProfile       |          | [OSProfile](/rest/api/compute/virtualmachines/createorupdate#osprofile)             | 仮想マシンのオペレーティング システム設定を指定します。 |
 | properties.networkProfile  |          | [NetworkProfile](/rest/api/compute/virtualmachines/createorupdate#networkprofile)   | 仮想マシンのネットワーク インターフェイスを指定します。 |
 
-要求本文で使用可能な定義の完全な一覧については、[仮想マシンの作成または更新要求の本文の定義](/rest/api/compute/virtualmachines/createorupdate#definitions)に関するセクションを参照してください。
-
-### <a name="example-request-body"></a>要求本文の例
-
-次の要求本文の例では、Premium マネージド ディスクを使用する Ubuntu 18.04-LTS イメージを定義します。 SSH 公開キー認証が使用され、[前に作成した](../../virtual-network/virtual-network-network-interface.md)既存の仮想ネットワーク インターフェイス カード (NIC) が VM で使用されます。 *osProfile.linuxConfiguration.ssh.publicKeys.keyData* フィールドに SSH 公開キーを指定します。 必要であれば、[SSH キー ペアを生成](mac-create-ssh-keys.md)できます。
+要求本文の例を以下に示します。 `{computerName}` および `{name}` パラメーターの VM 名、`networkInterfaces` の下の作成したネットワーク インターフェイスの名前、`adminUsername` と `path` のユーザー名、`keyData` の (`~/.ssh/id_rsa.pub` などに配置されている) SSH キーペアの *public* 部分が指定されていることを確認してください。 変更できるその他のパラメーターは `location` と `vmSize` です。  
 
 ```json
 {
   "location": "eastus",
+  "name": "{vmName}",
   "properties": {
     "hardwareProfile": {
       "vmSize": "Standard_DS1_v2"
@@ -89,7 +100,7 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
     },
     "osProfile": {
       "adminUsername": "{your-username}",
-      "computerName": "myVM",
+      "computerName": "{vmName}",
       "linuxConfiguration": {
         "ssh": {
           "publicKeys": [
@@ -105,19 +116,24 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
     "networkProfile": {
       "networkInterfaces": [
         {
-          "id": "/subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}",
+          "id": "/subscriptions/{subscription-id}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkInterfaces/{existing-nic-name}",
           "properties": {
             "primary": true
           }
         }
       ]
     }
-  },
-  "name": "myVM"
+  }
 }
 ```
 
-## <a name="responses"></a>応答
+要求本文で使用可能な定義の完全な一覧については、[仮想マシンの作成または更新要求の本文の定義](/rest/api/compute/virtualmachines/createorupdate#definitions)に関するセクションを参照してください。
+
+## <a name="sending-the-request"></a>要求の送信
+
+この HTTP 要求を送信するために任意のクライアントを使用することができます。 また、**[試してみる]** ボタンをクリックして、[ブラウザー内ツール](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate)を使用することもできます。
+
+### <a name="responses"></a>応答
 
 バーチャル マシンの作成または更新操作には、2 種類の成功応答があります。
 
@@ -125,10 +141,6 @@ PUT https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 Created | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | 作成日時     |
-
-REST API の応答の詳細については、「[Process the response message](/rest/api/azure/#process-the-response-message)」(応答メッセージを処理する) を参照してください。
-
-### <a name="example-response"></a>応答の例
 
 MV を作成する要求本文の例の圧縮された *201 Created* 応答は、*vmId* が割り当てられ、*provisioningState* が *Creating* であることを示します。
 
@@ -138,6 +150,8 @@ MV を作成する要求本文の例の圧縮された *201 Created* 応答は�
     "provisioningState": "Creating"
 }
 ```
+
+REST API の応答の詳細については、「[Process the response message](/rest/api/azure/#process-the-response-message)」(応答メッセージを処理する) を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

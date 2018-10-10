@@ -65,9 +65,9 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 Azure portal でアプリを登録した場合、次の手順に従います。
 
 1.  [Azure portal](https://portal.azure.com/) にサインインします。
-2.  **[アプリの登録]**  セクションに移動して、自分のアプリを選択します。
-3. アプリの  **[プロパティ]**  セクションを開きます。
-4.  **[サービス利用規約 URL]**  と  **[プライバシーに関する声明 URL]**  フィールドに入力します。
+2.  **[アプリの登録]** セクションに移動して、自分のアプリを選択します。
+3. アプリの  **[プロパティ]** セクションを開きます。
+4.  **[サービス利用規約 URL]** と  **[プライバシーに関する声明 URL]** フィールドに入力します。
 5. 変更を保存します。
 
     ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロパティ セクション](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
@@ -78,7 +78,7 @@ Azure portal でアプリを登録した場合、次の手順に従います。
 
 1.  [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)にサインインします。
 2. 自分のアプリを選択して、 **[プロファイル]**  セクションまでスクロールします。
-3.  **[サービス利用規約 URL]**  と  **[プライバシーに関する声明 URL]**  フィールドに入力します。
+3.  **[サービス利用規約 URL]** と  **[プライバシーに関する声明 URL]** フィールドに入力します。
 4. 変更を保存します。
 
     ![サービス利用規約 URL とプライバシーに関する声明 URL を含むアプリのプロファイル セクション](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)

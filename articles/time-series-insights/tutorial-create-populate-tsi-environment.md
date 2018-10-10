@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 06/04/2018
 ms.author: anshan
 manager: cshankar
-ms.openlocfilehash: 7faec1608845d218a738c70f147f79248a549dde
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 46fecf6f1b2826f0e23b7b6c4f4511ce9a662d1c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626774"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365691"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>チュートリアル: Azure Time Series Insights 環境を作成する
 
-このチュートリアルでは、シミュレートされたデバイスからのデータが入力された Time Series Insights (TSI) 環境を作成するプロセスについて説明します。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、シミュレートされたデバイスからのデータが入力された Time Series Insights (TSI) 環境を作成するプロセスについて説明します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * TSI 環境の作成 
@@ -26,11 +26,17 @@ ms.locfileid: "39626774"
 > * デバイス シミュレーションを実行して TSI 環境にデータをストリーミングする
 > * シミュレートされたテレメトリ データを確認する
 
+## <a name="video"></a>ビデオ: 
+
+### <a name="in-this-video-we-show-you-how-to-use-an-azure-iot-solution-accelerator-to-generate-data-that-can-be-used-to-get-started-with-time-series-insightsbr"></a>このビデオでは、Azure IoT Solution Accelerator を使用して、Time Series Insights を使用するために使うデータを生成する方法を紹介します。</br>
+
+> [!VIDEO https://www.youtube.com/embed/6ehNf6AJkFo]
+
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。 
 
-また、Azure のサインイン アカウントは、サブスクリプションの「所有者」ロールのメンバーである必要があります。 詳細については、「[Azure サブスクリプション管理者を追加または変更する](/azure/billing/billing-add-change-azure-subscription-administrator)」を参照してください。
+また、Azure のサインイン アカウントは、サブスクリプションの所有者ロールのメンバーである必要があります。 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](/azure/role-based-access-control/role-assignments-portal)」を参照してください。
 
 ## <a name="overview"></a>概要
 
@@ -174,7 +180,7 @@ IoT Hub には、機能を他のアクターと共有する各種エンドポイ
    パラメーター|説明
    ---|---
    **[Target IoT Hub]\(IoT Hub をターゲットにする\)** | [Use pre-provisioned IoT Hub]\(事前プロビジョニングされている IoT Hub を使用する\) を選択します。
-   **[デバイス モデル]** | [Chiller]\(冷却装置\) を選択します。
+   **[デバイス モデル]** | [Chiller] を選択します。
    **[Number of devices]\(デバイスの数\)**  | **[数量]** に 1000 と入力します。
    **[Telemetry frequency]\(テレメトリ頻度\)** | 10 秒と入力します。
    **[Simulation duration]\(シミュレーション期間\)** | **[End in:]\(実行時間:\)** を選択し、5 分と入力します。

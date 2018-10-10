@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2016
+ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: eb2b26333647d464a3a18cd07bf1576251fb3830
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9208f2cb207daff2b122550fede48a8dda11d1db
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715405"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407928"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines のデプロイ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -206,10 +206,7 @@ ms.locfileid: "39715405"
 [planning-guide-7]:planning-guide.md#96a77628-a05e-475d-9df3-fb82217e8f14 (SAP インスタンスのクラウド専用のデプロイの概念)
 [planning-guide-9.1]:planning-guide.md#6f0a47f3-a289-4090-a053-2521618a28c3 (Azure Monitoring Solution for SAP)
 [planning-guide-azure-premium-storage]:planning-guide.md#ff5ad0f9-f7f4-4022-9102-af07aef3bc92 (Azure Premium Storage)
-
-  [
-  planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f
-   (Managed Disks)
+[planning-guide-managed-disks]:planning-guide.md#c55b2c6e-3ca1-4476-be16-16c81927550f (Managed Disks)
 [planning-guide-figure-100]:media/virtual-machines-shared-sap-planning-guide/100-single-vm-in-azure.png
 [planning-guide-figure-1300]:media/virtual-machines-shared-sap-planning-guide/1300-ref-config-iaas-for-sap.png
 [planning-guide-figure-1400]:media/virtual-machines-shared-sap-planning-guide/1400-attach-detach-disks.png
@@ -424,8 +421,7 @@ Azure Marketplace のイメージを使用して新しい仮想マシンを作�
 1. **設定**:
   * **Storage**
     * **ディスクの種類**: OS ディスクのディスクの種類を選びます。 データ ディスクに Premium Storage を使いたい場合は、OS ディスクにも Premium Storage を使うことをお勧めします。
-    * 
-  **マネージド ディスクを使用**: Managed Disks を使う場合は、[はい] を選びます。 Managed Disks について詳しくは、計画ガイドの [Managed Disks][planning-guide-managed-disks] の章をご覧ください。
+    * **マネージド ディスクを使用**: Managed Disks を使う場合は、[はい] を選びます。 Managed Disks について詳しくは、計画ガイドの [Managed Disks][planning-guide-managed-disks] の章をご覧ください。
     * **ストレージ アカウント**: 既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。 すべてのストレージの種類が SAP アプリケーションの実行に対応しているわけではありません。 ストレージの種類について詳しくは、「[Azure Virtual Machines 上の SAP NetWeaver – DBMS デプロイ ガイド][dbms-guide]に」の「[Microsoft Azure Storage][dbms-guide-2.3]」をご覧ください。
   * **ネットワーク**
     * **仮想ネットワーク**と**サブネット**: 仮想マシンをイントラネットと統合するには、オンプレミス ネットワークに接続されている仮想ネットワークを選択します。
@@ -449,17 +445,13 @@ Azure Marketplace のイメージを使用して新しい仮想マシンを作�
 * [**2 層構成 (仮想マシン 1 台のみ) テンプレート** (sap-2-tier-marketplace-image)][sap-templates-2-tier-marketplace-image]
 
   仮想マシンを 1 台だけ使用して 2 層システムを作成する場合は、このテンプレートを使用します。
-* 
-  [
-  **2 層構成 (仮想マシン 1 台のみ) テンプレート - Managed Disks** (sap-2-tier-marketplace-image-md)][sap-templates-2-tier-marketplace-image-md]
+* [**2 層構成 (仮想マシン 1 台のみ) テンプレート - Managed Disks** (sap-2-tier-marketplace-image-md)][sap-templates-2-tier-marketplace-image-md]
 
   1 台だけの仮想マシンと Managed Disks を使って 2 層システムを作成する場合は、このテンプレートを使います。
 * [**3 層構成 (複数の仮想マシン) テンプレート** (sap-3-tier-marketplace-image)][sap-templates-3-tier-marketplace-image]
 
   複数の仮想マシンを使用して 3 層システムを作成する場合は、このテンプレートを使用します。
-* 
-  [
-  **3 層構成 (複数の仮想マシン) テンプレート - Managed Disks** (sap-3-tier-marketplace-image-md)][sap-templates-3-tier-marketplace-image-md]
+* [**3 層構成 (複数の仮想マシン) テンプレート - Managed Disks** (sap-3-tier-marketplace-image-md)][sap-templates-3-tier-marketplace-image-md]
 
   複数の仮想マシンと Managed Disks を使って 3 層システムを作成する場合は、このテンプレートを使います。
 
@@ -491,7 +483,7 @@ Azure Portal で、テンプレートの次のパラメーターを入力しま�
   * **管理ユーザー名**と**管理パスワード**: ユーザー名とパスワード。
     仮想マシンへのサインインに使用する新しいユーザーが作成されます。
   * **New Or Existing Subnet (新規または既存のサブネット)**: 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを指定します。 オンプレミス ネットワークに接続されている仮想ネットワークが既にある場合は、**[Existing (既存)]** を選択します。
-  * **サブネット ID**: 仮想マシンの接続先となるサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続する際に使用する、仮想プライベート ネットワーク (VPN) または Azure ExpressRoute 仮想ネットワークのサブネットを選択します。 通常、ID は /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名> のようになります。
+  * **[Subnet Id]\(サブネット ID\)**: VM を VNet にデプロイする場合で、その VNet で VM の割り当て先サブネットが定義されている場合は、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名> のようになります。
 
 1. **使用条件**:   
     法律条項を確認し、同意します。
@@ -561,8 +553,7 @@ Azure に VM をデプロイしたら、オンプレミス環境の場合と同�
 1. **設定**:
   * **Storage**
     * **ディスクの種類**: OS ディスクのディスクの種類を選びます。 データ ディスクに Premium Storage を使いたい場合は、OS ディスクにも Premium Storage を使うことをお勧めします。
-    * 
-  **マネージド ディスクを使用**: Managed Disks を使う場合は、[はい] を選びます。 Managed Disks について詳しくは、計画ガイドの [Managed Disks][planning-guide-managed-disks] の章をご覧ください。
+    * **マネージド ディスクを使用**: Managed Disks を使う場合は、[はい] を選びます。 Managed Disks について詳しくは、計画ガイドの [Managed Disks][planning-guide-managed-disks] の章をご覧ください。
   * **ネットワーク**
     * **仮想ネットワーク**と**サブネット**: 仮想マシンをイントラネットと統合するには、オンプレミス ネットワークに接続されている仮想ネットワークを選択します。
     * **パブリック IP アドレス**: 使用するパブリック IP アドレスを選択するか、新しいパブリック IP アドレスを作成するためのパラメーターを入力します。 パブリック IP アドレスを使用して、インターネット経由で仮想マシンにアクセスできます。 仮想マシンへのアクセスをセキュリティで保護するために、ネットワーク セキュリティ グループも作成してください。
@@ -584,17 +575,13 @@ Azure Portal からプライベート OS イメージを使用してデプロイ
 * [**2 層構成 (仮想マシン 1 台のみ) テンプレート** (sap-2-tier-user-image)][sap-templates-2-tier-user-image]
 
   仮想マシンを 1 台だけ使用して 2 層システムを作成する場合は、このテンプレートを使用します。
-* 
-  [
-  **2 層構成 (仮想マシン 1 台のみ) テンプレート - 管理ディスク イメージ** (sap-2-tier-user-image-md)][sap-templates-2-tier-user-image-md]
+* [**2 層構成 (仮想マシン 1 台のみ) テンプレート - 管理ディスク イメージ** (sap-2-tier-user-image-md)][sap-templates-2-tier-user-image-md]
 
   1 台だけの仮想マシンと管理ディスク イメージを使って 2 層システムを作成する場合は、このテンプレートを使います。
 * [**3 層構成 (複数の仮想マシン) テンプレート** (sap-3-tier-user-image)][sap-templates-3-tier-user-image]
 
   複数の仮想マシンまたは独自の OS イメージを使用して 3 層システムを作成する場合は、このテンプレートを使用します。
-* 
-  [
-  **3 層構成 (複数の仮想マシン) テンプレート - 管理ディスク イメージ** (sap-3-tier-user-image-md)][sap-templates-3-tier-user-image-md]
+* [**3 層構成 (複数の仮想マシン) テンプレート - 管理ディスク イメージ** (sap-3-tier-user-image-md)][sap-templates-3-tier-user-image-md]
 
   複数の仮想マシンまたは独自の OS イメージと管理ディスク イメージを使って 3 層システムを作成する場合は、このテンプレートを使用します。
 
@@ -622,15 +609,12 @@ Azure Portal で、テンプレートの次のパラメーターを入力しま�
       * [Microsoft Azure Storage の概要][storage-introduction]
   * **User Image VHD URI \(ユーザー イメージ VHD の URI\)** (非管理ディスク イメージ テンプレートのみ): プライベート OS イメージ VHD の URI (例: https://&lt;アカウント名>.blob.core.windows.net/vhds/userimage.vhd)。
   * **User Image Storage Account \(ユーザー イメージのストレージ アカウント\)** (非管理ディスク イメージ テンプレートのみ): プライベート OS イメージを保存するストレージ アカウントの名前 (例: https://&lt;アカウント名>.blob.core.windows.net/vhds/userimage.vhd の &lt;アカウント名>)。
-  * 
-  **userImageId \(ユーザー イメージ ID\)** (マネージド ディスク イメージ テンプレートのみ): 使う Managed Disk イメージの ID
+  * **userImageId \(ユーザー イメージ ID\)** (マネージド ディスク イメージ テンプレートのみ): 使う Managed Disk イメージの ID
   * **管理ユーザー名**と**管理パスワード**: ユーザー名とパスワード。
 
     仮想マシンへのサインインに使用する新しいユーザーが作成されます。
   * **New Or Existing Subnet (新規または既存のサブネット)**: 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを指定します。 オンプレミス ネットワークに接続されている仮想ネットワークが既にある場合は、**[Existing (既存)]** を選択します。
-  * **サブネット ID**: 仮想マシンの接続先となるサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続する際に使用する、VPN または ExpressRoute 仮想ネットワークのサブネットを選択します。 ID は、通常、次のようになります。
-
-    /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名>
+  * **[Subnet Id]\(サブネット ID\)**: VM を VNet にデプロイする場合で、その VNet で VM の割り当て先サブネットが定義されている場合は、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名> のようになります。
 
 1. **使用条件**:   
     法律条項を確認し、同意します。
@@ -685,9 +669,7 @@ Azure Portal からプライベート OS ディスクを使用してデプロイ
 * [**2 層構成 (仮想マシン 1 台のみ) テンプレート** (sap-2-tier-user-disk)][sap-templates-2-tier-os-disk]
 
   仮想マシンを 1 台だけ使用して 2 層システムを作成する場合は、このテンプレートを使用します。
-* 
-  [
-  **2 層構成 (仮想マシン 1 台のみ) テンプレート - 管理ディスク** (sap-2-tier-user-disk-md)][sap-templates-2-tier-os-disk-md]
+* [**2 層構成 (仮想マシン 1 台のみ) テンプレート - 管理ディスク** (sap-2-tier-user-disk-md)][sap-templates-2-tier-os-disk-md]
 
   1 台だけの仮想マシンと管理ディスクを使って 2 層システムを作成する場合は、このテンプレートを使います。
 
@@ -711,12 +693,9 @@ Azure Portal で、テンプレートの次のパラメーターを入力しま�
       * [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ][storage-premium-storage-preview-portal]
       * [Microsoft Azure Storage の概要][storage-introduction]
   * **OS disk VHD URI \(OS ディスク VHD の URI\)** (非管理ディスク テンプレートのみ): プライベート OS ディスクの URI (例: https://&lt;アカウント名>.blob.core.windows.net/vhds/osdisk.vhd)。
-  * 
-  **OS disk Managed Disk Id \(OS ディスクの管理ディスク ID\)** (マネージド ディスク テンプレートのみ): 管理ディスクの OS ディスクの ID (/subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN)
+  * **OS disk Managed Disk Id \(OS ディスクの管理ディスク ID\)** (マネージド ディスク テンプレートのみ): 管理ディスクの OS ディスクの ID (/subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN)
   * **New Or Existing Subnet (新規または既存のサブネット)**: 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを指定します。 オンプレミス ネットワークに接続されている仮想ネットワークが既にある場合は、**[Existing (既存)]** を選択します。
-  * **サブネット ID**: 仮想マシンの接続先となるサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続する際に使用する、VPN または Azure ExpressRoute 仮想ネットワークのサブネットを選択します。 ID は、通常、次のようになります。
-
-    /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名>
+  * **[Subnet Id]\(サブネット ID\)**: VM を VNet にデプロイする場合で、その VNet で VM の割り当て先サブネットが定義されている場合は、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/&lt;サブスクリプション ID>/resourceGroups/&lt;リソース グループ名>/providers/Microsoft.Network/virtualNetworks/&lt;仮想ネットワーク名>/subnets/&lt;サブネット名> のようになります。
 
 1. **使用条件**:   
     法律条項を確認し、同意します。
@@ -940,9 +919,7 @@ PowerShell を使用して Azure Enhanced Monitoring Extension for SAP をイン
 #### <a name="408f3779-f422-4413-82f8-c57a23b4fc2f"></a>Linux VM 向け Azure CLI
 Azure CLI を使用して Azure Enhanced Monitoring Extension for SAP をインストールするには、次の手順に従います。
 
-1. Azure CLI 1.0 を使用してインストールする
-
-   1. 「[Azure CLI 1.0 のインストール][azure-cli]」の説明に従って、Azure CLI 1.0 をインストールします。
+   1. 「[Azure クラシック CLI のインストール][azure-cli]」の説明に従って、Azure クラシック CLI をインストールします。
    1. Azure アカウントでサインインします。
 
       ```
@@ -1022,6 +999,10 @@ Azure VM をデプロイし、関連する Azure 監視インフラストラク�
   >
 
 Azure Enhanced Monitoring Extension がインストールされていない場合や、AzureEnhancedMonitoring サービスが実行されていない場合は、拡張機能が正しく構成されていません。 拡張機能をデプロイする方法の詳細については、「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」をご覧ください。
+
+> [!NOTE]
+> Azperflib.exe は、独自の目的には使用できないコンポーネントです。 このコンポーネントは、VM に関連する Azure 監視データを SAP Host Agent に提供します。
+> 
 
 ##### <a name="check-the-output-of-azperflibexe"></a>azperflib.exe の出力の確認
 azperflib.exe の出力には、SAP 用に設定されたすべての Azure パフォーマンス カウンターが表示されます。 収集されたカウンターのリストの下部に表示される概要と正常性インジケーターは、Azure 監視の状態を示しています。
@@ -1116,6 +1097,10 @@ SAP NetWeaver ABAP アプリケーション サーバーが既にインストー
 
 正常性チェックのすべての結果が **OK** であることを確認します。 一部のチェックで **OK** と表示されていない場合は、「[Azure Enhanced Monitoring Extension for SAP の構成][deployment-guide-4.5]」で説明した更新コマンドレットを実行します。 15 分待ってから、「[Azure Enhanced Monitoring Extension for SAP の適合性チェック][deployment-guide-5.1]」と「[Azure 監視インフラストラクチャ構成の正常性チェック][deployment-guide-5.2]」で説明したチェックをもう一度実行します。 チェックで一部またはすべてのカウンターの問題が引き続き見つかった場合は、「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」をご覧ください。
 
+> [!Note]
+> Azure Standard Managed Disks を使用している場合、警告が発生する可能性があります。 テストから "OK" が返る代わりに、警告が表示されます。 これは正常な動作であり、このディスク タイプの場合は意図されたものです。 「[SAP 用 Azure 監視インフラストラクチャのトラブルシューティング][deployment-guide-5.3]」もご覧ください。
+> 
+
 ### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>SAP 用 Azure 監視インフラストラクチャのトラブルシューティング
 
 #### <a name="windowslogowindows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Azure パフォーマンス カウンターまったく表示されない
@@ -1167,6 +1152,23 @@ Azure のパフォーマンス メトリックは、デーモンによって収�
 
 ###### <a name="solution"></a>解決策
 拡張機能がインストールされていません。 これがプロキシの問題 (前述) かどうかを確認します。 コンピューターを再起動するか、`Set-AzureRmVMAEMExtension` 構成スクリプトを再実行することが必要な場合があります。
+
+##### <a name="the-execution-of-set-azurermvmaemextension-and-test-azurermvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Set-AzureRmVMAEMExtension および Test-AzureRmVMAEMExtension を実行すると、Standard Managed Disks はサポートされていないことを示す警告メッセージが表示されます。
+
+###### <a name="issue"></a>問題
+Set-AzureRmVMAEMExtension または Test-AzureRmVMAEMExtension を実行すると、次のようなメッセージが表示されます。
+
+<pre><code>
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+</code></pre>
+
+前に説明したように、azperfli.exe を実行すると、非正常状態を示す結果が返る場合があります。 
+
+###### <a name="solution"></a>解決策
+このメッセージの原因は、Standard Azure Storage アカウントの統計情報を確認するための監視拡張機能によって使用される API を、Standard Managed Disks が提供しないためです。 これは、重要な問題ではありません。 Standard Disk Storage アカウントで監視が導入されたのは、頻繁に発生する I/O の調整のためでした。 Managed Disks では、ストレージ アカウント内のディスクの数を制限することによってこのような調整は回避されます。 そのため、この種の監視データは重要ではありません。
+
 
 #### <a name="linuxlogolinux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] 一部の Azure パフォーマンス カウンターが見つからない
 Azure のパフォーマンス メトリックは、デーモンによって収集されます。デーモンは複数のソースからデータを取得します。 一部の構成データはローカルで収集され、一部のパフォーマンス メトリックは Azure 診断から読み取られます。 ストレージ カウンターは、ストレージ サブスクリプション レベルでログから使用されます。

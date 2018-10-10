@@ -3,7 +3,7 @@ title: Azure Stack 1807 更新プログラム | Microsoft Docs
 description: 既知の問題、更新プログラムをダウンロードする場所など、Azure Stack 統合システムの 1807 更新プログラムの更新内容について説明します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2018
-ms.author: brenduns
+ms.date: 09/26/2018
+ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: afbe3ff2e6be4e03f8de8ac2490922c3ec788733
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 951c012dd22cf83741211b9601a5e7502de33be6
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091382"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393028"
 ---
 # <a name="azure-stack-1807-update"></a>Azure Stack 1807 更新プログラム
 
@@ -143,7 +143,11 @@ Azure Stack では、Windows Server 2016 の Server Core インストールを�
   > - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
 
 
-- 更新プログラム 1807 のインストールを開始する前に、[Test-AzureStack](azure-stack-diagnostic-test.md) を実行して Azure Stack の状態を確認し、見つかった操作上の問題を解決します。 また、アクティブなアラートを確認し、アクションが必要なアラートを解決します。
+- この更新プログラムのインストールを開始する前に、次のパラメーターを指定して [Test-AzureStack](azure-stack-diagnostic-test.md) を実行して Azure Stack の状態を確認し、見つかったすべての操作上の問題 (すべての警告とエラーを含む) を解決します。 また、アクティブなアラートを確認し、アクションが必要なアラートを解決します。  
+
+  ```PowerShell
+  Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
+  ``` 
 
 ### <a name="known-issues-with-the-update-process"></a>更新プロセスに関する既知の問題
 
@@ -154,20 +158,21 @@ Azure Stack では、Windows Server 2016 の Server Core インストールを�
 - <!-- 2830461 - IS --> 更新で注意が必要な特定の状況では、対応するアラートが生成されないことがあります。 それでも正確な状態はポータルに反映され、影響を受けることはありません。
 
 ### <a name="post-update-steps"></a>更新後の手順
+この更新プログラムをインストールした後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。 
+- [KB 4464231 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1807.1.78]( https://support.microsoft.com/help/4464231)
 
-- <!-- 2933866 – IS --> **失敗した更新プログラムのインストールの状態が改善されました。** このバージョンでは 2 つの新しい状態カテゴリが導入され、失敗した更新プログラムのインストールについての詳細がオペレーターに提供されます。 *PreparationFailed* および *InstallationFailed* の 2 つのカテゴリです。 このバージョンのインストール後に、これらの新しいカテゴリを反映するために、以前の更新プログラムのインストールの失敗に関する情報が改訂される場合があります。 
-
-<!-- *There are no post-update steps for update 1807.* -->
-
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - Link to KB  
- -->
+ <!-- 2933866 – IS -->この更新プログラムをインストールすると、**失敗した更新プログラムのインストールに関して表示される状態が改善されます。** これには、2 つの新しい状態カテゴリを反映するように変更された、過去の更新プログラムのインストールの失敗に関する情報が含まれる可能性があります。 これらの 2 つの新しい状態カテゴリとは、*PreparationFailed* および *InstallationFailed* です。  
 
 ## <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
 
 このビルド バージョンのインストール後について次の既知の問題があります。
 
 ### <a name="portal"></a>ポータル
+
+- Azure Stack のテクニカル ドキュメントは、最新のリリースについて説明しています。 リリースごとにポータルが変更されるため、Azure Stack ポータルを使用した場合の動作と、ドキュメントに示されている内容が異なる場合があります。 
+
+- 管理ポータルの[ドロップダウン リストから新しいサポート要求を開く](azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、Azure Stack 統合システムでは、リンク [https://aka.ms/newsupportrequest](https://aka.ms/newsupportrequest) をご使用ください。
+
 - <!-- 2931230 – IS  ASDK --> アドオン プランとしてユーザー サブスクリプションに追加されたプランは、ユーザー サブスクリプションからプランを削除しても削除できません。 アドオン プランを参照するサブスクリプションも削除されるまで、プランは残ります。 
 
 - <!--2760466 – IS  ASDK --> このバージョンを実行する新しい Azure Stack 環境をインストールすると、「*アクティブ化が必要*」を示すアラートが表示されない場合があります。 マーケットプレース シンジケーションを使用するには、[アクティブ化](azure-stack-registration.md)する必要があります。  

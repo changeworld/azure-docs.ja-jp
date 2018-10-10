@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b8004500df2e29ab865a8eb78adf278ef61d5ee8
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7000fc13a792f4f6def592e78dc759c8cf165881
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702437"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451920"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB .NET Core SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -52,6 +52,24 @@ ms.locfileid: "43702437"
 ## <a name="release-notes"></a>リリース ノート
 
 Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md) と同等の機能が備わっています。
+
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
+
+* マルチリージョンの要求の一時的な障害に対する回復力を上げました。
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+
+* マルチリージョンの書き込みがサポートされるようになりました。
+* TOP と MaxBufferedItemCount でクロス パーティションのクエリ パフォーマンスが改善されました。
+
+### <a name="a-name200200"></a><a name="2.0.0"/>2.0.0
+
+* 要求をキャンセルできるようになりました。
+* SetCurrentLocation を ConnectionPolicy に追加しました。これにより、優先される場所がリージョンに基づいて自動的に事前設定されます。
+* 個々のパーティション上のいずれのドキュメントにも一致しないフィルターや Min/Max を含むクロス パーティション クエリのバグを修正しました。
+* DocumentClient のメソッドが IDocumentClient と等価になりました。
+* 確立される接続数を減らすために、ダイレクト TCP トランスポート スタックを更新しました。
+* 非 Windows クライアント向けにダイレクト モード TCP のサポートを追加しました。
 
 ### <a name="a-name200-preview2200-preview2"></a><a name="2.0.0-preview2"/>2.0.0-preview2
 
@@ -186,8 +204,9 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
-| [2.0.0-preview2](#2.0.0-preview2) |2018 年 7 月 26 日 |--- |
-| [2.0.0-preview](#2.0.0-preview) |2018 年 5 月 11 日 |--- |
+| [2.1.1](#2.1.1) |2018 年 9 月 27 日 |--- |
+| [2.1.0](#2.1.0) |2018 年 9 月 21 日 |--- |
+| [2.0.0](#2.0.0) |2018 年 9 月 7 日 |--- |
 | [1.9.1](#1.9.1) |2018 年 3 月 9 日 |--- |
 | [1.8.2](#1.8.2) |2018 年 2 月 21 日 |--- |
 | [1.8.1](#1.8.1) |2018 年 2 月 5 日 |--- |

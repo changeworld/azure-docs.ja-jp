@@ -1,21 +1,21 @@
 ---
-title: 利用可能な動画をページングする方法 | Microsoft Docs
+title: 利用可能な動画をページングする方法 - Bing Video Search
+titlesuffix: Azure Cognitive Services
 description: Bing が返すことのできるすべての動画をページングする方法を示します。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 910A485F-BCF3-42B9-958D-DD48BDEDA965
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 00476825eb3fc1008c3f2172b591d8b7a2f35884
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9b030312c562d1c0a6cbacfc7f424289dee2e8de
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372805"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225567"
 ---
 # <a name="paging-videos"></a>動画のページング
 

@@ -2,19 +2,22 @@
 title: Azure SQL Database の仮想コアベースのリソース制限 - 単一データベース | Microsoft Docs
 description: このページでは、Azure SQL Database の単一データベースに対するいくつかの一般的な仮想コアベースのリソース制限について説明します。
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: single-database
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/05/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: c1ea223bf00dea32fb150cf141be7b5ea3239215
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 5f0e5de7503d06d1aff319434d763d3b034053b3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055422"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166364"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Azure SQL Database の単一データベースに対する仮想コアベースの購入モデルの制限
 
@@ -26,14 +29,14 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
 
-## <a name="single-database-storage-sizes-and-performance-levels"></a>単一データベース: ストレージ サイズとパフォーマンス レベル
+## <a name="single-database-storage-sizes-and-compute-sizes"></a>単一データベース: ストレージ サイズとコンピューティング サイズ
 
-次の表では、各サービス レベルおよびパフォーマンス レベルにおいて単一データベースで使用可能なリソースを示します。 [Azure Portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases)、または [REST API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases) を使って、単一のデータベースにサービス レベル、パフォーマンス レベル、ストレージ量を設定できます。
+次の表では、各サービス レベルおよびコンピューティング サイズにおいて単一データベースで使用可能なリソースを示します。 [Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases)、[PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases)、[Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases)、または [REST API](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases) を使って、単一のデータベースにサービス レベル、コンピューティング サイズ、ストレージ量を設定できます。
 
 ### <a name="general-purpose-service-tier"></a>汎用のサービス階層
 
 #### <a name="generation-4-compute-platform"></a>第 4 世代コンピューティング プラットフォーム
-|パフォーマンス レベル|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
+|コンピューティング サイズ|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
 |H/W の世代|4|4|4|4|4|4|
 |仮想コア|1|2|4|8|16|24|
@@ -55,7 +58,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |||
 
 #### <a name="generation-5-compute-platform"></a>第 5 世代コンピューティング プラットフォーム
-|パフォーマンス レベル|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
+|コンピューティング サイズ|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
 |H/W の世代|5|5|5|5|5|5|5|
 |仮想コア|2|4|8|16|24|32|40|80|
@@ -79,12 +82,12 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 ### <a name="business-critical-service-tier"></a>Business Critical サービス レベル
 
 #### <a name="generation-4-compute-platform"></a>第 4 世代コンピューティング プラットフォーム
-|パフォーマンス レベル|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
+|コンピューティング サイズ|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |H/W の世代|4|4|4|4|4|4|
 |仮想コア|1|2|4|8|16|24|
 |メモリ (GB)|7|14|28|56|112|168|
-|列ストアをサポート|はい|はい|はい|はい|はい|[はい]|
+|列ストアをサポート|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
 |インメモリ OLTP ストレージ (GB)|1|2|4|8|20|36|
 |ストレージの種類|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|
 |最大データ サイズ (GB)|1024|1024|1024|1024|1024|1024|
@@ -101,7 +104,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |||
 
 #### <a name="generation-5-compute-platform"></a>第 5 世代コンピューティング プラットフォーム
-|パフォーマンス レベル|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|コンピューティング サイズ|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |H/W の世代|5|5|5|5|5|5|5|5|
 |仮想コア|2|4|8|16|24|32|40|80|
@@ -122,8 +125,52 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 |||
 
+### <a name="hyperscale-service-tier-preview"></a>Hyperscale サービス レベル (プレビュー)
+
+#### <a name="generation-4-compute-platform"></a>第 4 世代コンピューティング プラットフォーム
+|パフォーマンス レベル|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
+|:--- | --: |--: |--: |--: |--: |--: |--: |
+|H/W の世代|4|4|4|4|4|4|
+|仮想コア|1|2|4|8|16|24|
+|メモリ (GB)|7|14|28|56|112|168|
+|列ストアをサポート|はい|はい|はい|はい|はい|[はい]|
+|インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
+|ストレージの種類|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|
+|最大データ サイズ (TB)|100 |100 |100 |100 |100 |100 |
+|最大ログ サイズ (TB)|1 |1 |1 |1 |1 |1 |
+|TempDB のサイズ (GB)|32|64|128|256|384|384|
+|ターゲットの IOPS (64 KB)|未定|未定|未定|未定|未定|未定|
+|IO 待機時間 (概算)|未定|未定|未定|未定|未定|未定|
+|最大同時実行ワーカー (要求) 数|200|400|800|1600|3200|4800|
+|許可される最大セッション数|30000|30000|30000|30000|30000|30000|
+|レプリカの数|2|2|2|2|2|2|
+|マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
+|読み取りスケールアウト|[はい]|はい|はい|はい|はい|[はい]|
+|含まれるバックアップ ストレージ|7|7|7|7|7|7|
+|||
+### <a name="generation-5-compute-platform"></a>第 5 世代コンピューティング プラットフォーム
+|パフォーマンス レベル|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
+|H/W の世代|5|5|5|5|5|5|5|5|
+|仮想コア|2|4|8|16|24|32|40|80|
+|メモリ (GB)|11|22|44|88|132|176|220|440|
+|列ストアをサポート|はい|はい|はい|はい|はい|はい|はい|[はい]|
+|インメモリ OLTP ストレージ (GB)|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
+|ストレージの種類|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|ローカル SSD|
+|最大データ サイズ (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
+|最大ログ サイズ (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
+|TempDB のサイズ (GB)|64|128|256|384|384|384|384|384|
+|ターゲットの IOPS (64 KB)|未定|未定|未定|未定|未定|未定|未定|未定|
+|IO 待機時間 (概算)|未定|未定|未定|未定|未定|未定|未定|未定|
+|最大同時実行ワーカー (要求) 数|200|400|800|1600|2400|3200|4000|8000|
+|許可される最大セッション数|30000|30000|30000|30000|30000|30000|30000|30000|
+|レプリカの数|2|2|2|2|2|2|2|2|
+|マルチ AZ|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|該当なし|
+|読み取りスケールアウト|[はい]|はい|はい|はい|はい|はい|はい|[はい]|
+|含まれるバックアップ ストレージ (プレビューの制限)|7|7|7|7|7|7|7|7|
+|||
+
 ## <a name="next-steps"></a>次の手順
 
 - よく寄せられる質問の回答については、「[SQL Database に関する FAQ](sql-database-faq.md)」を参照してください。
-- サーバーおよびサブスクリプション レベルの制限については詳しくは、「[Azure SQL Database のリソース制限の概要](sql-database-resource-limits.md)」をご覧ください。
 - Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。

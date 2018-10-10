@@ -54,8 +54,6 @@ items:
       href: concepts-supported-versions.md
     - name: PostgreSQL 拡張機能
       href: concepts-extensions.md
-    - name: サーバー ログ
-      href: concepts-server-logs.md
     - name: 高可用性
       href: concepts-high-availability.md
   - name: リソース
@@ -84,6 +82,8 @@ items:
     items:
     - name: 監視と調整
       href: concepts-monitoring.md
+    - name: サーバー ログ
+      href: concepts-server-logs.md
     - name: クエリ ストア
       items:
       - name: クエリ ストア
@@ -198,9 +198,9 @@ items:
     href: partners-migration-postgresql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 9e39295a1e0e66c86ec88b3ffdef7a6e67ff4fc8
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6a42612c202544dabcee3370bedcdb33de4cfe94
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432513"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867699"

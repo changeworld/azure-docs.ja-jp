@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 4434b67393d34c3418e44e82681a586c268a37e5
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: cbfe3022c4ffd03e4ab93682eb14a5a588aa0013
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746998"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409475"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure File Sync のトラブルシューティング
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -125,6 +125,16 @@ Set-AzureRmStorageSyncServerEndpoint `
     -CloudTiering true `
     -VolumeFreeSpacePercent 60
 ```
+<a id="server-endpoint-noactivity"></a>**サーバー エンドポイントの正常性状態が "アクティビティなし" または "保留中" で、登録済みサーバー ブレードのサーバーの状態が "オフラインのようです" になっている**  
+
+この問題は、ストレージ同期モニター プロセスが実行されていない場合、またはプロキシやファイアウォールのためにサーバーが Azure File Sync サービスと通信できない場合に、発生する可能性があります。
+
+この問題を解決するには、次の手順を実行します。
+
+1. サーバーでタスク マネージャーを開き、ストレージ同期モニター (AzureStorageSyncMonitor.exe) プロセスが実行されていることを確認します。 プロセスが実行されていない場合は、最初にサーバーの再起動を試みます。 サーバーを再起動しても問題が解決しない場合は、Azure File Sync エージェントをアンインストールして再インストールします (注: エージェントをアンインストールして再インストールしても、サーバーの設定は保持されます)。
+2. ファイアウォールとプロキシの設定が正しく構成されていることを確認します。
+    - サーバーがファイアウォールの背後にある場合は、送信ポート 443 が許可されていることを確認します。 ファイアウォールで特定のドメインへのトラフィックが制限されている場合は、ファイアウォールの[ドキュメント](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#firewall)に記載されているドメインにアクセスできることを確認します。
+    - サーバーがプロキシの背後にある場合は、プロキシの[ドキュメント](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-firewall-and-proxy#proxy)に記載されている手順に従って、コンピューター全体またはアプリ固有のプロキシ設定を構成します。
 
 ## <a name="sync"></a>同期
 <a id="afs-change-detection"></a>**SMB またはポータルを使用して Azure ファイル共有内にファイルを直接作成した場合、ファイルが同期グループ内のサーバーと同期されるまでどのくらい時間がかかりますか?**  
@@ -226,14 +236,13 @@ Azure ファイル共有内で直接変更を加えた場合、Azure File Sync �
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | 同期中にファイルが変更されたため、再度同期する必要があります。 | 必要なアクションはありません。 |
 
 #### <a name="handling-unsupported-characters"></a>サポートされていない文字の処理
-**FileSyncErrorsReport.ps1** PowerShell スクリプトで、サポートされていない文字が原因のエラー (エラー コード 0x7b および 0x8007007b) が示されている場合は、それぞれのファイルで問題のある文字を削除したり名前変更したりする必要があります。 これらの文字の大部分には標準のビジュアル エンコードがないため、PowerShell はこれらの文字を疑問符または空の四角形として出力します。
+**FileSyncErrorsReport.ps1** PowerShell スクリプトで、サポートされていない文字が原因のエラー (エラー コード 0x7b および 0x8007007b) が示されている場合は、それぞれのファイルで問題のある文字を削除したり名前変更したりする必要があります。 これらの文字の大部分には標準のビジュアル エンコードがないため、PowerShell はこれらの文字を疑問符または空の四角形として出力します。 [評価ツール](storage-sync-files-planning.md#evaluation-tool)を使用して、サポートされていない文字を識別できます。
 
 下の表に、Azure File Sync でまだサポートされていない Unicode 文字をすべて示します。
 
 | 文字セット | 文字数 |
 |---------------|-----------------|
 | <ul><li>0x0000009D (osc オペレーティング システム コマンド)</li><li>0x00000090 (dcs デバイス コントロール文字列)</li><li>0x0000008F (ss3 シングル シフト 3)</li><li>0x00000081 (ハイ オクテット プリセット)</li><li>0x0000007F (del 削除)</li><li>0x0000008D (ri 逆改行)</li></ul> | 6 |
-| <ul><li>0x0000200F (右から左にマーク)</li><li>0x0000200E (左から右にマーク)</li><li>0x0000202E (右から左にオーバーライド)</li><li>0x0000202D (左から右にオーバーライド)</li><li>0x0000202C (文字方向の変更を終了)</li><li>0x0000202B (右から左に埋め込み)</li><li>0x0000202A (左から右に埋め込み)</li></ul> | 7 |
 | 0x0000FDD0 - 0x0000FDEF (アラビア文字表示形 - a) | 32 |
 | 0x0000FFF0 - 0x0000FFFF (特殊文字) | 16 |
 | <ul><li>0x0001FFFE - 0x0001FFFF = 2 (非文字)</li><li>0x0002FFFE - 0x0002FFFF = 2 (非文字)</li><li>0x0003FFFE - 0x0003FFFF = 2 (非文字)</li><li>0x0004FFFE - 0x0004FFFF = 2 (非文字)</li><li>0x0005FFFE - 0x0005FFFF = 2 (非文字)</li><li>0x0006FFFE - 0x0006FFFF = 2 (非文字)</li><li>0x0007FFFE - 0x0007FFFF = 2 (非文字)</li><li>0x0008FFFE - 0x0008FFFF = 2 (非文字)</li><li>0x0009FFFE - 0x0009FFFF = 2 (非文字)</li><li>0x000AFFFE - 0x000AFFFF = 2 (非文字)</li><li>0x000BFFFE - 0x000BFFFF = 2 (非文字)</li><li>0x000CFFFE - 0x000CFFFF = 2 (非文字)</li><li>0x000DFFFE - 0x000DFFFF = 2 (非文字)</li><li>0x000EFFFE - 0x000EFFFF = 2 (未定義)</li><li>0x000FFFFE - 0x000FFFFF = 2 (補助私用領域)</li></ul> | 30 |

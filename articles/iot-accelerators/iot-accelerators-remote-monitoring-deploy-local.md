@@ -1,23 +1,23 @@
 ---
 title: リモート監視ソリューションをローカルにデプロイする - Azure | Microsoft Docs
-description: このチュートリアルでは、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。
-author: dominicbetts
+description: この攻略ガイドでは、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターに展開する方法を示します。
+author: asdonald
 manager: timlt
-ms.author: dobett
+ms.author: asdonald
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 03/07/2018
+ms.date: 09/26/2018
 ms.topic: conceptual
-ms.openlocfilehash: 21bc8c27a44c940279b0c5bdcdbe04e579dc4bfa
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 7007b1406dbcfab3af4700418ac2ce07b9e521c0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188662"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407435"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>リモート監視ソリューション アクセラレータをローカルでデプロイする
 
-この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 このアプローチでは、マイクロサービスをローカル Docker コンテナーにデプロイし、クラウド内で IoT Hub、Cosmos DB、および Azure ストレージ サービスを使用します。 ソリューション アクセラレータ (PCS) CLI を使用して Azure クラウド サービスをデプロイします。
+この記事では、リモート監視ソリューション アクセラレータをテストおよび開発のためにローカル コンピューターにデプロイする方法を示します。 この記事で説明する方法では、マイクロサービスをローカル Docker コンテナーに展開し、クラウド内で IoT Hub、Cosmos DB、および Azure Time Series Insights サービスを使用します。 ローカル コンピューター上の IDE でリモート監視ソリューション アクセラレータを実行する方法については、GitHub の「[Starting Microservices on local environment](https://github.com/Azure/remote-monitoring-services-java/blob/master/docs/LOCAL_DEPLOYMENT.md)」(ローカル環境でのマイクロサービスの開始) をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,83 +30,62 @@ ms.locfileid: "39188662"
 * [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Docker Compose](https://docs.docker.com/compose/install/)
-* [Node.js](https://nodejs.org/) - このソフトウェアは PCS CLI の前提条件です。
-* PCS CLI
-* ソース コードのローカル リポジトリ
+* [Node.js v8](https://nodejs.org/) - このソフトウェアは、スクリプトが Azure リソースを作成するために使用する PCS CLI の前提条件です。 Node.js v10 は使用しないでください。
 
 > [!NOTE]
 > これらのツールは、Windows、Linux、iOS を含む多数のプラットフォームで使用できます。
 
-### <a name="install-the-pcs-cli"></a>PCS CLI をインストールする
-
-npm で PCS CLI をインストールするには、コマンド ライン環境で、次のコマンドを実行します。
-
-```cmd/sh
-npm install iot-solutions -g
-```
-
-CLI の詳細については、[CLI の使用方法](https://github.com/Azure/pcs-cli/blob/master/README.md)に関する記事をご覧ください。
-
 ### <a name="download-the-source-code"></a>ソース コードをダウンロードする
 
- リモート監視ソース コード リポジトリには、マイクロサービスを含む Docker イメージをダウンロード、構成、および実行するために必要な Docker 構成ファイルが含まれています。 複製してローカル バージョンのリポジトリを作成するには、お気に入りのコマンド ラインまたはターミナルを使用してローカル コンピューター上に適切なフォルダーに移動し、次のいずれかのコマンドを実行します。
+リモート監視ソース コードの GitHub リポジトリには、マイクロサービスを含む Docker イメージをダウンロード、構成、および実行するために必要な Docker 構成ファイルが含まれています。 複製してローカル バージョンのリポジトリを作成するには、コマンド ライン環境を使用してローカル コンピューター上の適切なフォルダーに移動してから、次のいずれかのコマンドを実行します。
 
-マイクロサービスの Java 実装をインストールするには、次を実行します。
+Java マイクロサービスの実装の最新バージョンをダウンロードするには、次のコマンドを実行します。
 
 ```cmd/sh
-git clone --recursive https://github.com/Azure/azure-iot-pcs-remote-monitoring-java
+git clone https://github.com/Azure/remote-monitoring-services-java.git
 ```
 
-マイクロサービスの .Net 実装をインストールするには、次を実行します。
+.NET マイクロサービスの実装の最新バージョンをダウンロードするには、次のコマンドを実行します。
 
 ```cmd\sh
-git clone --recursive https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet
+git clone https://github.com/Azure/remote-monitoring-services-dotnet.git
 ```
 
-リモート監視構成済みソリューションのリポジトリとサブモジュール [ [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) | [.Net](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) ]
-
 > [!NOTE]
-> これらのコマンドは、すべてのマイクロサービスのソース コードをダウンロードします。 Docker 内のマイクロサービスを実行するためのソース コードは必要ありませんが、後で構成済みソリューションを変更し、その変更をローカルにテストすることを予定している場合はこのソース コードが役立ちます。
+> これらのコマンドでは、マイクロサービスのローカル実行に使用するスクリプトだけでなく、すべてのマイクロサービスのソース コードがダウンロードされます。 Docker 内のマイクロサービスを実行するためのソース コードは必要ありませんが、後でソリューション アクセラレータを変更し、その変更をローカルにテストすることを予定している場合は、ソース コードが役に立ちます。
 
 ## <a name="deploy-the-azure-services"></a>Azure サービスをデプロイする
 
-この記事ではマイクロサービスをローカルに実行する方法を示しますが、これらのマイクロサービスは、クラウド内で実行されている 3 つの Azure サービスに依存します。 これらの Azure サービスは [Azure Portal から手動で](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup)、または PCS CLI を使用してデプロイできます。 この記事では、`pcs` ツールを使用する方法を示します。
+この記事ではマイクロサービスをローカルに実行する方法を示しますが、これらはクラウド内で実行されている Azure サービスに依存します。 これらの Azure サービスは、[Azure portal から手動で](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup)、または提供されているスクリプトを使用して、デプロイできます。 次のスクリプトの例では、Windows コンピューターで .NET リポジトリを使用していることを前提としています。 別の環境で作業している場合は、パス、ファイル拡張子、およびパスの区切り記号を適切に調整してください。 提供されているスクリプトを使用するには、次のようにします。
 
-### <a name="sign-in-to-the-cli"></a>CLI へのサインイン
+### <a name="create-new-azure-resources"></a>新しい Azure リソースを作成する
 
-ソリューション アクセラレータをデプロイする前に、次のように CLI を使用して Azure サブスクリプションにサインインする必要があります。
+必要な Azure リソースをまだ作成していない場合は、次の手順のようにします。
 
-```cmd/sh
-pcs login
-```
+1. コマンド ライン環境で、リポジトリの複製したコピーの **remote-monitoring-services-dotnet\scripts\local\launch** フォルダーに移動します。
 
-画面の指示に従って、サインインを完了します。 CLI 内部の場所はクリックしないでください。ログインが失敗する可能性があります。 ログインを完了すると、ログインに成功したというメッセージが CLI に表示されます。 
+2. **start.cmd** スクリプトを実行し、指示に従います。 スクリプトで、Azure アカウントにサインインしてスクリプトを再起動するように求められます。 その後、スクリプトで次の情報の入力を求められます。
+    * ソリューション名。
+    * 使用する Azure サブスクリプション。
+    * 使用する Azure データセンターの場所。
 
-### <a name="run-a-local-deployment"></a>ローカル デプロイを実行する
+    スクリプトで、指定したソリューション名のリソース グループが Azure に作成されます。 このリソース グループには、ソリューション アクセラレータが使用する Azure リソースが含まれます。
 
-ローカル デプロイを開始するには、次のコマンドを使用します。 必要な Azure リソースが作成され、コンソールに環境変数が出力されます。 
+3. スクリプトが完了すると、環境変数の一覧が表示されます。 コマンドからの出力の指示に従って、これらの変数を **remote-monitoring-services-dotnet\\scripts\\local\\.env** ファイルに保存します。
 
-```cmd/pcs
-pcs -s local
-```
+### <a name="use-existing-azure-resources"></a>既存の Azure リソースを使用する
 
-このスクリプトでは、次の情報を入力するよう求められます。
-
-* ソリューション名。
-* 使用する Azure サブスクリプション。
-* 使用する Azure データセンターの場所。
-
-> [!NOTE]
-> このスクリプトは、Azure サブスクリプションのリソース グループ内に IoT Hub インスタンス、Cosmos DB インスタンス、および Azure ストレージ アカウントを作成します。 このリソース グループの名前は、上の `pcs` ツールを実行したときに選択したソリューションの名前です。 
-
-> [!IMPORTANT]
-> このスクリプトは、実行するのに数分かかります。 それが完了すると、メッセージ `Copy the following environment variables to /scripts/local/.env file:` が表示されます。 メッセージの後に表示される環境変数の定義をメモしておきます。これは、後の手順で使用します。
+必要な Azure リソースを既に作成してある場合は、**remote-monitoring-services-dotnet\\scripts\\local\\.env** ファイルの環境変数定義を必要な値で編集します。 **.env** ファイルには、必要な値を検索する場所についての詳細な情報が含まれています。
 
 ## <a name="run-the-microservices-in-docker"></a>Docker 内のマイクロサービスを実行する
 
-Docker 内のマイクロサービスを実行するには、まず、上記の前の方の手順で複製したリポジトリのローカル コピー内の **scripts\\local\\.env** ファイルを編集します。 このファイルの内容全体を、直前の手順で `pcs` コマンドを実行したときにメモした環境変数の定義に置き換えます。 これらの環境変数は、Docker コンテナー内のマイクロサービスが `pcs` ツールによって作成された Azure サービスに接続できるようにします。
+ローカルの Docker コンテナーで実行されているマイクロサービスは、Azure で実行されているサービスにアクセスする必要があります。 次のコマンドを使用して、お使いの Docker 環境のインターネット接続をテストできます。このコマンドは、小さいコンテナーを起動し、インターネット アドレスに ping を試みます。
 
-ソリューション アクセラレータを実行するには、コマンド ライン環境で **scripts\local** フォルダーに移動し、次のコマンドを実行します。
+```cmd/sh
+docker run --rm -ti library/alpine ping google.com
+```
+
+ソリューション アクセラレータを実行するには、コマンド ライン環境で **remote-monitoring-services-dotnet\\scripts\\local** フォルダーに移動し、次のコマンドを実行します。
 
 ```cmd\sh
 docker-compose up
@@ -120,13 +99,13 @@ docker-compose up
 
 ## <a name="clean-up"></a>クリーンアップ
 
-不必要な課金を避けるために、テストを完了したら、Azure サブスクリプションからクラウド サービスを削除します。 サービスを削除するための最も簡単な方法として、[Azure Portal](https://ms.portal.azure.com) に移動し、`pcs` ツールを使って作成したリソース グループを削除します。
+不必要な課金を避けるために、テストを完了したら、Azure サブスクリプションからクラウド サービスを削除します。 サービスを削除する最も簡単な方法は、[Azure portal](https://ms.portal.azure.com) に移動し、**start.cmd** スクリプトを実行したときに作成されたリソース グループを削除することです。
 
 Docker イメージを削除し、ローカル コンピューター上の領域を解放するには、`docker-compose down --rmi all` コマンドを使用します。 また、GitHub からソース コードを複製するときに作成されたリモート監視リポジトリのローカル コピーを削除することもできます。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * ローカルの開発環境の設定

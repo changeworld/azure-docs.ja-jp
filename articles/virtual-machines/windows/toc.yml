@@ -103,7 +103,7 @@ items:
     items:
     - name: Managed Disks
       href: managed-disks-overview.md
-    - name: Premium Storage
+    - name: Premium SSD
       href: premium-storage.md
     - name: Standard SSD
       href: disks-standard-ssd.md
@@ -451,9 +451,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: 69cc971935efa05201591adb81b3b7aeb49c020d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 5e33ab701e1499a7bff65c0906ebd6adbcd9994c
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268108"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855801"

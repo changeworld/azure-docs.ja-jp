@@ -1,24 +1,24 @@
 ---
 title: 'チュートリアル: Azure Machine Learning で画像分類モデルをトレーニングする'
-description: Python Jupyter Notebook で scikit-learn 画像分類モデルをトレーニングする方法について説明します。 このチュートリアルは、2 部構成のシリーズのパート 1 です。
-author: hning86
-ms.author: haining
-ms.topic: conceptual
+description: このチュートリアルでは、Azure Machine Learning サービスを使用して、Python Jupyter ノートブックの scikit-learn で画像分類モデルをトレーニングする方法について説明します。 このチュートリアルは、2 部構成のシリーズのパート 1 です。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
+ms.topic: tutorial
+author: hning86
+ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: bed4abcce3019607715416b5194a2ddecc89b76a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6fbca5e83d8ab4b3c34c6448c7a2303697da623b
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966613"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181400"
 ---
 # <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning"></a>チュートリアル #1: Azure Machine Learning で画像分類モデルをトレーニングする
 
-このチュートリアルでは、機械学習モデルのトレーニングをローカルに行ったり、リモートのコンピューティング リソース上で行ったりします。 Python Jupyter Notebook 内の Azure Machine Learning サービスに関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
+このチュートリアルでは、機械学習モデルのトレーニングをローカルに行ったり、リモートのコンピューティング リソース上で行ったりします。 Python Jupyter Notebook 内の Azure Machine Learning サービス (プレビュー) に関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
 
 このチュートリアルでは、Azure Machine Learning で [MNIST](http://yann.lecun.com/exdb/mnist/) データセットや [scikit-learn](http://scikit-learn.org) を使用して、単純なロジスティック回帰をトレーニングします。  MNIST は、70,000 ものグレースケールのイメージから成る、人気のあるデータセットです。 各イメージは、0 から 9 までの数値を表す 28x28 ピクセルの手書き数字です。 多クラス分類子を作成して、特定のイメージが表す数字を識別することが目標です。 
 
@@ -37,7 +37,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="get-the-notebook"></a>ノートブックを入手する
 
-便利なように、このチュートリアルは Jupyter Notebook として提供されています。 `tutorials/01.train-models.ipynb` ノートブックを実行するには、以下のいずれかの方式を使用します。
+便利なように、このチュートリアルは Jupyter Notebook として提供されています。 次の 2 つのいずれかの方法を使用して、[Machine Learning サンプル ノートブックの GitHub リポジトリ](https://github.com/Azure/MachineLearningNotebooks)を複製して、`tutorials/01.train-models.ipynb` ノートブックを実行します。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -79,7 +79,7 @@ print(ws.name, ws.location, ws.resource_group, ws.location, sep = '\t')
 
 ### <a name="create-experiment"></a>実験の作成
 
-実験を作成して、ワークスペース内のすべての実行を追跡します。  
+実験を作成して、ワークスペース内の実行を追跡します。 ワークスペースには、複数の実験を持つことができます。 
 
 ```python
 experiment_name = 'sklearn-mnist'
@@ -105,7 +105,7 @@ batchai_cluster_name = "traincluster"
 try:
     # look for the existing cluster by name
     compute_target = ComputeTarget(workspace=ws, name=batchai_cluster_name)
-    if compute_target is BatchAiCompute:
+    if type(compute_target) is BatchAiCompute:
         print('found compute target {}, just use it.'.format(batchai_cluster_name))
     else:
         print('{} exists but it is not a Batch AI cluster. Please choose a different name.'.format(batchai_cluster_name))
@@ -157,7 +157,7 @@ urllib.request.urlretrieve('http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ub
 
 ### <a name="display-some-sample-images"></a>複数のサンプル イメージの表示
 
-圧縮されたファイルを `numpy` 配列内に読み込みます。 それから `matplotlib` を使用して、ラベルがあるデータセットから 30 個のランダムなイメージをプロットします。
+圧縮されたファイルを `numpy` 配列内に読み込みます。 それから `matplotlib` を使用して、ラベルがあるデータセットから 30 個のランダムなイメージをプロットします。 この手順には、`util.py` ファイルに含まれている `load_data` 関数が必要です。 このファイルは、サンプル フォルダーに含まれています。 このノートブックと同じフォルダーに配置されていることを確認してください。 `load_data` 関数は、圧縮ファイルを numpy 配列に解析します。
 
 
 
@@ -194,7 +194,7 @@ plt.show()
 
 ### <a name="upload-data-to-the-cloud"></a>クラウドへのデータのアップロード
 
-次に、ローカル コンピューターからクラウド内にデータをアップロードして、データをリモートから利用できるようにします。これにより、リモート トレーニングでデータを利用できるようになります。 データストアは、データをアップロード/ダウンロードしたり、リモート コンピューティング ターゲットから対話したりするために、ワークスペースに関連付けられる便利なコンストラクトです。 
+次に、ローカル コンピューターから Azure にデータをアップロードして、データをリモートから利用できるようにします。これにより、リモート トレーニングでデータを利用できるようになります。 データストアは、データをアップロード/ダウンロードしたり、リモート コンピューティング ターゲットから対話したりするために、ワークスペースに関連付けられる便利なコンストラクトです。 これは Azure Blob Storage アカウントによってサポートされます。
 
 MNIST ファイルは、データストアのルートにある `mnist` という名前のディレクトリ内にアップロードされます。
 
@@ -365,7 +365,7 @@ run = exp.submit(config=est)
 run
 ```
 
-呼び出しは非同期なので、ジョブが開始されると即時に**実行**状態が返されます。
+呼び出しは非同期なので、ジョブが開始されると即時に**準備中**または**実行**状態が返されます。
 
 ## <a name="monitor-a-remote-run"></a>リモート実行を監視する
 
@@ -377,7 +377,7 @@ run
 
   その後の実行のためにコンテナーがキャッシュに入れられるので、この段階は Python 環境ごとに 1 回行われます。  イメージの作成中に、ログが実行履歴にストリーミングされます。 これらのログを使用して、イメージの作成の進行状況を監視できます。
 
-- **拡大縮小**: 現在使用できるものより多くのノードがリモート クラスターで必要な場合、自動的にノードがさらに追加されます。 通常、拡大縮小には**約 5 分**かかります。
+- **拡大縮小**: リモート クラスターで、現在使用可能なノードよりも多くのノードを実行する必要がある場合、自動的にノードが追加されます。 通常、拡大縮小には**約 5 分**かかります。
 
 - **実行**: この段階では、必要なスクリプトとファイルがコンピューティング ターゲットに送信され、データ ストアがマウント/コピーされてから、entry_script が実行されます。 ジョブの実行中に、stdout と ./logs ディレクトリが実行履歴にストリーミングされます。 これらのログを使用して、実行の進行状況を監視できます。
 

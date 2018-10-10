@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 2182a39836f02596d22168722e6ece7a2872dccc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c5cfcee65b176147125dd2edbff2497b1eee70b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969485"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158566"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>最新バージョンの Azure Machine Learning サービスに移行する 
 
@@ -54,13 +54,13 @@ Azure Machine Learning サービスの最初のプレビューで作成された
 
 [Azure portal ](quickstart-get-started.md)で Azure Machine Learning ワークスペースを作成することで、最新バージョンを開始します。 ポータルのワークスペース ダッシュボードは、Edge、Chrome、および Firefox ブラウザーでのみでサポートされます。
 
-この新しいワークスペースは最上位のサービス リソースであり、Azure Machine Learning サービスのすべての最新機能を使用することができます。 [ワークスペースとアーキテクチャの詳細についてはこちらをご覧ください](concept-azure-machine-learning-architecture.md)。
+この新しいワークスペースは最上位のサービス リソースであり、Azure Machine Learning サービスのすべての最新機能を使用することができます。 このワークスペースとアーキテクチャの詳細については、[こちら](concept-azure-machine-learning-architecture.md)をご覧ください。
 
 <a name="projects"></a>
 
 ## <a name="projects"></a>プロジェクト
 
-プロジェクトをクラウドのワークスペースに配置する代わりに、最新リリースでは、プロジェクトはローカル コンピューター上のディレクトリに配置されるようになりました。 [最新アーキテクチャの図をご覧ください](concept-azure-machine-learning-architecture.md)。 
+プロジェクトをクラウドのワークスペースに配置する代わりに、最新リリースでは、プロジェクトはローカル コンピューター上のディレクトリに配置されるようになりました。 [最新アーキテクチャ](concept-azure-machine-learning-architecture.md)の図をご覧ください。 
 
 ファイルとスクリプトを含むローカル ディレクトリを使用し続けるには、ディレクトリの名前を ['experiment.submit'](http://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) Python コマンドで指定するか、または 'az ml project attach' CLI コマンドを使用します。
 

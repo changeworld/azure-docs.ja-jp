@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/12/2017
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: eba2ef280e60693cfd4402348fe61b122cdccdf6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 902009d7807b1ce340000c271350af1c37231d77
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399858"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181194"
 ---
-# <a name="search-unstructured-data-in-cloud-storage"></a>クラウド ストレージで非構造化データを検索する
+# <a name="tutorial-search-unstructured-data-in-cloud-storage"></a>チュートリアル: クラウド ストレージで非構造化データを検索する
 
 このチュートリアルでは、Azure BLOB に格納されたデータを使用し、[Azure Search](../../search/search-what-is-azure-search.md) を使用して、非構造化データを検索する方法を説明します。 非構造化データは、事前に定義された方法で編成されていないか、データ モデルがないデータです。 たとえば、.txt ファイルなどです。
 

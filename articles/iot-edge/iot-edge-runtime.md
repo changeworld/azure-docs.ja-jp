@@ -8,12 +8,12 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f832b05969c028880f6e375ff4a2ee8dc7a7eaf4
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 9c9c04a8310a46605cf5733131db1418b7cb7f7a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42140339"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47218786"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge ランタイムとそのアーキテクチャの概要
 
@@ -23,7 +23,7 @@ IoT Edge ランタイムは、IoT Edge デバイスで次の機能を実行し�
 
 * デバイスにワークロードをインストールし、更新する。
 * デバイス上の Azure IoT Edge のセキュリティ標準を維持する。
-* [IoT Edge モジュール][lnk-modules]の実行状態を絶えず確保する。
+* [IoT Edge モジュール][lnk モジュール] の実行状態を絶えず確保する。
 * モジュールの正常性をクラウドに報告してリモート監視を可能にする。
 * ダウンストリームのリーフ デバイスと IoT Edge デバイス間の通信を円滑化する。
 * IoT Edge デバイス上のモジュール間の通信を円滑化する。
@@ -31,7 +31,7 @@ IoT Edge ランタイムは、IoT Edge デバイスで次の機能を実行し�
 
 ![IoT Edge ランタイムによる洞察とモジュールの正常性の IoT Hub への通信][1]
 
-IoT Edge ランタイムには、モジュールの管理と通信の 2 つのカテゴリの役割があります。 これら 2 つの役割は、IoT Edge ランタイムを構成する 2 つのコンポーネントによって実行されます。 IoT Edge ハブは通信を実行し、IoT Edge エージェントは、モジュールの展開と監視を実行します。 
+IoT Edge ランタイムには、通信とモジュール管理の 2 つのカテゴリの役割があります。 これら 2 つの役割は、IoT Edge ランタイムを構成する 2 つのコンポーネントによって実行されます。 IoT Edge ハブは通信を実行し、IoT Edge エージェントは、モジュールの展開と監視を実行します。 
 
 Edge ハブと Edge エージェントは、いずれも、IoT Edge デバイス上で実行される他のモジュールと同様のモジュールです。 
 
@@ -117,7 +117,7 @@ Azure IoT Edge セキュリティ フレームワークについて詳しくは�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure IoT Edge モジュールについて][lnk-modules]
+[Azure IoT Edge の証明書について][lnk-certs]
 
 <!-- Images -->
 [1]: ./media/iot-edge-runtime/Pipeline.png
@@ -126,4 +126,4 @@ Azure IoT Edge セキュリティ フレームワークについて詳しくは�
 [4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
 
 <!-- Links -->
-[lnk-modules]: iot-edge-modules.md
+[lnk-certs]: iot-edge-certs.md

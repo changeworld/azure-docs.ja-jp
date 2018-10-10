@@ -1,22 +1,23 @@
 ---
 title: エラスティック プールを使用した複数の SQL Database の管理 | Microsoft Docs
 description: エラスティック プールを使用して、複数 (数百や数千) の SQL データベースを管理およびスケーリングします。 一定の価格で必要な場所にリソースを配布できます。
-keywords: 複数のデータベース, データベース リソース, データベース パフォーマンス
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.subservice: elastic-pool
-ms.custom: DBs & servers
-ms.date: 07/27/2018
-ms.author: ninarn
+subservice: elastic-pool
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: ffc74eafed81c3dad836cfe70050244cb66a820b
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+author: oslake
+ms.author: moslake
+ms.reviewer: ninarn, carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 71269b4888d1b5c9724248ac91f0818d7f8f5bf5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003741"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162357"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 
@@ -55,7 +56,7 @@ SaaS 開発者は、複数のデータベースで構成される大規模なデ
 
    ![a single database suitable for a pool](./media/sql-database-elastic-pool/one-database.png)
 
-図に示した DB1 の 5 分間のピークは 90 DTU ですが、全体的な平均使用量は 5 DTU 未満です。 Single Database でこのワークロードを実行するためには S3 パフォーマンス レベルが必要ですが、このパフォーマンスを確保すると、アクティビティの少ない時間帯にほとんどのリソースが使用されなくなります。
+図に示した DB1 の 5 分間のピークは 90 DTU ですが、全体的な平均使用量は 5 DTU 未満です。 Single Database でこのワークロードを実行するためには S3 コンピューティング サイズが必要ですが、このパフォーマンスを確保すると、アクティビティの少ない時間帯にほとんどのリソースが使用されなくなります。
 
 プールを利用すれば、これらの未使用の DTU を複数のデータベースで共有できるので、必要な DTU と全体的なコストを削減できます。
 
@@ -65,7 +66,7 @@ DB1 と類似する使用パターンを持つデータベースが他にもあ�
 
    ![twenty databases with a utilization pattern suitable for a pool](./media/sql-database-elastic-pool/twenty-databases.png)
 
-全 20 のデータベースの DTU 使用量合計は、前の図では黒線で示されています。 これは、DTU の合計使用量が 100 DTU を超えることはなく、20 のデータベースでこの期間にわたって 100 eDTU を共有することが可能であることを示しています。 これは、Single Database のそれぞれのパフォーマンス レベルが S3 であるときと比較した場合、DTU を 20 倍削減し価格を 13 倍下げます。
+全 20 のデータベースの DTU 使用量合計は、前の図では黒線で示されています。 これは、DTU の合計使用量が 100 DTU を超えることはなく、20 のデータベースでこの期間にわたって 100 eDTU を共有することが可能であることを示しています。 これは、Single Database のそれぞれのコンピューティング サイズが S3 であるときと比較した場合、DTU を 20 倍削減し価格を 13 倍下げます。
 
 次の理由からこの例は理想的です。
 
@@ -75,21 +76,21 @@ DB1 と類似する使用パターンを持つデータベースが他にもあ�
 
 プールの価格は、プール eDTU の機能を表します。 プールの eDTU 単価は単一データベースの DTU 単価の 1.5 倍ですが、**プール eDTU は多数のデータベースで共有できるため、合計 eDTU は少なくて済みます**。 これらの価格と eDTU 共有の特徴が、プールで節約を可能にするベースとなります。
 
-データベース数とデータベースの使用量に関連する次の経験則から、Single Database でのパフォーマンス レベルを使用した場合と比べて、プールがコスト削減に繋がることがわかります。
+データベース数とデータベースの使用量に関連する次の経験則から、Single Database でのコンピューティング サイズを使用した場合と比べて、プールがコスト削減に繋がることがわかります。
 
 ### <a name="minimum-number-of-databases"></a>最小数のデータベース
 
 単一データベースのリソースの総量が、プールに必要なリソースの 1.5 倍を超える場合、エラスティック プールのコスト効率の方が高くなります。
 
 ***DTU ベースの購入モデルの例***<br>
-Single Database のパフォーマンス レベルを使用した場合と比較して、100 eDTU のプールのコスト効果の方が高くなるようにするには、最低 2 個の S3 データベースまたは最低 15 個の S0 データベースが必要です。
+Single Database のコンピューティング サイズを使用した場合と比較して、100 eDTU のプールのコスト効果の方が高くなるようにするには、最低 2 個の S3 データベースまたは最低 15 個の S0 データベースが必要です。
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>同時にピークとなるデータベースの最大数
 
 リソースを共有することで、プール内のすべてのデータベースが、単一のデータベースで使用可能な上限に達するまで、リソースを同時に使用できるわけではありません。 同時にピークになるデータベース数が少ないほど、プール リソースを低く設定して、よりプールのコスト効果を高めることができます。 一般的に、そのリソースの上限まで同時にピークになることができるのは、プールの 2/3 (67%) 以下のデータベースです。
 
 ***DTU ベースの購入モデルの例***<br>
-200 eDTU のプール内の 3 つの S3 データベースのコストを削減する場合、同時にピークになることが許容されるのは、これらのデータベースのうちの 2 つまでです。 これら 4 つの S3 データベースの 3 つ以上が同時にピークとなる場合、プール サイズを 200 eDTU よりも大きくする必要があります。 プール サイズを 200 eDTU よりも大きくした場合、単一データベースのパフォーマンス レベルを使用した場合よりもコストを低く抑えるには、プールの S3 データベース数を増やす必要があります。
+200 eDTU のプール内の 3 つの S3 データベースのコストを削減する場合、同時にピークになることが許容されるのは、これらのデータベースのうちの 2 つまでです。 これら 4 つの S3 データベースの 3 つ以上が同時にピークとなる場合、プール サイズを 200 eDTU よりも大きくする必要があります。 プール サイズを 200 eDTU よりも大きくした場合、単一データベースのコンピューティング サイズを使用した場合よりもコストを低く抑えるには、プールの S3 データベース数を増やす必要があります。
 
 この例では、プール内の他のデータベースの使用は考慮されていないことに注意してください。 すべてのデータベースがある特定の時間にいくらか使用されている場合、同時にピークとなることができるのは、2/3 (67%) 未満のデータベースです。
 
@@ -123,7 +124,7 @@ SQL Database は、既存の SQL Database サーバー内にあるデータベ�
 2. プール内のすべてのデータベースに必要なバイト数を追加することで、プールに必要なストレージ領域を見積もります。 次に、このストレージの容量を提供する eDTU プール サイズを決定します。
 3. DTU ベースの購入モデルの場合、手順 1 と手順 2 の eDTU の見積もりのうち、大きい方を使用します。 vCore ベースの購入モデルの場合、手順 1 の vCore の見積もりを使用します。
 4. 「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」ページを参照し、手順 3 の見積もりを超える最小のプール サイズを探します。
-5. 手順 5. のプールの価格と、Single Database の適切なパフォーマンス レベルを使用した場合の価格を比較します。
+5. 手順 5. のプールの価格と、Single Database の適切なコンピューティング サイズを使用した場合の価格を比較します。
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>エラスティック プールでのその他の SQL Database 機能の使用
 
@@ -140,8 +141,7 @@ SQL Database は、既存の SQL Database サーバー内にあるデータベ�
 
 - **geo リストア**: geo リストアは、データベースがホストされているリージョン内のインシデントのためにデータベースが使用できない場合の既定の復旧オプションを提供します。 「 [Azure SQL Database を復元する、またはセカンダリにフェールオーバーする](sql-database-disaster-recovery.md)
 
-- 
-  **アクティブ geo レプリケーション**: geo リストアが提供できるものよりアグレッシブな復旧要件があるアプリケーションの場合は、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を構成します。
+- **アクティブ geo レプリケーション**: geo リストアが提供できるものよりアグレッシブな復旧要件があるアプリケーションの場合は、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を構成します。
 
 ## <a name="creating-a-new-sql-database-elastic-pool-using-the-azure-portal"></a>Azure Portal を使用した新しい SQL Database エラスティック プールの作成
 
@@ -152,7 +152,7 @@ Azure Portal でエラスティック プールを作成できる方法には次
 > [!NOTE]
 > サーバーに複数のプールを作成することはできますが、同じプールに異なるサーバーからデータベースを追加することはできません。
 
-プールのエラスティックに使用できる機能のほか、各データベースに使用可能な最大リソース量が、プールのサービス レベルによって決定されます。 詳細については、[DTU モデル](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels)でのエラスティック プールのリソース上限をご覧ください。 エラスティック プールに対する仮想コア ベースのリソース制限については、[エラスティック プールでの仮想コアベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページをご覧ください。
+プールのエラスティックに使用できる機能のほか、各データベースに使用可能な最大リソース量が、プールのサービス レベルによって決定されます。 詳細については、[DTU モデル](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)でのエラスティック プールのリソース上限をご覧ください。 エラスティック プールに対する仮想コア ベースのリソース制限については、[エラスティック プールでの仮想コアベースのリソース制限](sql-database-vcore-resource-limits-elastic-pools.md)に関するページをご覧ください。
 
 プールのリソースと価格を構成するには、**[プールの構成]** をクリックします。 そのため、サービス レベルを選択し、プールにデータベースを追加して、プールとそのデータベースに対するリソース上限を構成します。
 

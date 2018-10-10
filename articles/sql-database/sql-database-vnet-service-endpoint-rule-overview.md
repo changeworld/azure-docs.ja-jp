@@ -3,20 +3,21 @@ title: Azure SQL Database の Virtual Network サービス エンドポイント
 description: サブネットを Virtual Network サービス エンドポイントとしてマークします。 その後、仮想ネットワーク規則としてのエインドポイントを Azure SQL Database の ACL に追加します。 SQL Database では、すべての仮想マシンとサブネット上の他のノードからの通信を許可します。
 services: sql-database
 ms.service: sql-database
-ms.prod_service: sql-database, sql-data-warehouse
-author: DhruvMsft
-manager: craigg
-ms.custom: VNet Service endpoints
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/28/2018
-ms.reviewer: carlrab
+author: DhruvMsft
 ms.author: dmalik
-ms.openlocfilehash: 223a8da0c3c940c57dfc58d9cc87a19ae45a64eb
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.reviewer: vanto, genemi
+manager: craigg
+ms.date: 09/18/2018
+ms.openlocfilehash: 90138664e5eab9110f51bbd3d3755dec0ed59ea8
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143812"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166811"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Azure SQL Database と SQL Data Warehouse の Virtual Network のサービス エンドポイントと規則を使用する
 
@@ -125,7 +126,7 @@ Virtual Network サービス エンドポイントの管理では、セキュリ
 
 Azure SQL Database の場合、仮想ネットワーク規則機能には以下のような制限事項があります。
 
-- Web アプリは、VNet/サブネット内のプライベート IP にマップできます。 サービス エンドポイントが特定の VNet/サブネットから有効化されている場合でも、Web アプリからサーバーへの接続には、VNet/サブネットのソースではなく、Azure のパブリック IP ソースが使用されます。 サーバーに VNet ファイアウォール ルールがある場合、Web アプリからそのサーバーへの接続を有効にするには、サーバーで**すべての Azure サービスを許可する**必要があります。
+- Web アプリは、VNet/サブネット内のプライベート IP にマップできます。 サービス エンドポイントが特定の VNet/サブネットから有効化されている場合でも、Web アプリからサーバーへの接続には、VNet/サブネットのソースではなく、Azure のパブリック IP ソースが使用されます。 サーバーに VNet ファイアウォール規則がある場合、Web アプリからそのサーバーへの接続を有効にするには、サーバーで **Azure サービスにサーバーへのアクセスを許可する**必要があります。
 
 - SQL Database のファイアウォールでは、各仮想ネットワーク規則はサブネットを参照します。 これらの参照されるサブネットはすべて、SQL Database がホストされているのと同じ geographic 型のリージョンでホストされている必要があります。
 
@@ -157,23 +158,23 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-## <a name="impact-of-removing-allow-all-azure-services"></a>[Allow all Azure Services]\(すべての Azure サービスを許可\) を削除した場合の影響
+## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>[Azure サービスにサーバーへのアクセスを許可する] を削除することの影響
 
-多くのユーザーが、Azure SQL Server から **[Allow all Azure Services]\(すべての Azure サービスを許可\)** を削除し、VNet ファイアウォール規則に置き換えることを望んでいます。
+多くのユーザーが、Azure SQL Server から **[Azure サービスにサーバーへのアクセスを許可する]** を削除し、VNet ファイアウォール規則に置き換えることを望んでいます。
 ただし、これを削除すると、Azure SQLDB の次の機能に影響します。
 
 #### <a name="import-export-service"></a>Import Export Service
-Azure SQLDB Import Export Service は、Azure の VM 上で実行されます。 これらの VM は VNet に存在しないため、データベースに接続するときに Azure IP を取得します。 **[Allow all Azure Services]\(すべての Azure サービスを許可\)** を削除すると、これらの VM はデータベースにアクセスできなくなります。
+Azure SQLDB Import Export Service は、Azure の VM 上で実行されます。 これらの VM は VNet に存在しないため、データベースに接続するときに Azure IP を取得します。 **[Azure サービスにサーバーへのアクセスを許可する]** を削除すると、これらの VM はデータベースにアクセスできなくなります。
 この問題は回避することができます。 DACFx API を使用して、BACPAC インポート/エクスポートをコードで直接実行します。 ファイアウォール規則を設定した VNet サブネット内の VM にこれがデプロイされていることを確認してください。
 
 #### <a name="sql-database-query-editor"></a>SQL Database クエリ エディター
-Azure SQL Database クエリ エディターは、Azure の VM にデプロイされます。 これらの VM は VNet に存在しません。 そのため、VM はデータベースに接続するときに Azure IP を取得します。 **[Allow all Azure Services]\(すべての Azure サービスを許可\)** を削除すると、これらの VM はデータベースにアクセスできなくなります。
+Azure SQL Database クエリ エディターは、Azure の VM にデプロイされます。 これらの VM は VNet に存在しません。 そのため、VM はデータベースに接続するときに Azure IP を取得します。 **[Azure サービスにサーバーへのアクセスを許可する]** を削除すると、これらの VM はデータベースにアクセスできなくなります。
 
 #### <a name="table-auditing"></a>テーブル監査
 現在、SQL Database で監査を有効にする方法が 2 つあります。 Azure SQL Server でサービス エンドポイントを有効にすると、テーブル監査は失敗します。 この問題を軽減するには、BLOB 監査に移行します。
 
 #### <a name="impact-on-data-sync"></a>データ同期への影響
-Azure SQLDB には、Azure IP を使用してデータベースに接続するデータ同期機能があります。 サービス エンドポイントを使用する場合、使用している論理サーバーへの**すべての Azure サービス**のアクセスの許可をオフにすることがあります。 これにより、データ同期機能が中断されます。
+Azure SQLDB には、Azure IP を使用してデータベースに接続するデータ同期機能があります。 サービス エンドポイントを使用する場合、使用している論理サーバーへの **[Azure サービスにサーバーへのアクセスを許可する]** のアクセス許可をオフにすることがあります。 これにより、データ同期機能が中断されます。
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Azure Storage で VNet サービス エンドポイントを使用した場合の影響
 
@@ -184,7 +185,7 @@ Azure SQL Server で使用されているストレージ アカウントでこ�
 PolyBase は、ストレージ アカウントから Azure SQLDW にデータを読み込むときによく使用されます。 データの読み込み元のストレージ アカウントが、アクセス先を一連の VNet サブネットだけに制限している場合、PolyBase からアカウントへの接続は切断されます。 この点については軽減策があります。詳細については、Microsoft サポートまでお問い合わせください。
 
 #### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB の BLOB 監査
-BLOB 監査では、監査ログをユーザー独自のストレージ アカウントにプッシュします。 このストレージ アカウントが VENT サービス エンドポイント機能を使用している場合、Azure SQLDB からストレージ アカウントへの接続は切断されます。
+BLOB 監査では、監査ログをユーザー独自のストレージ アカウントにプッシュします。 このストレージ アカウントが VNet サービス エンドポイント機能を使用している場合、Azure SQLDB からストレージ アカウントへの接続は切断されます。
 
 ## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET サービス エンドポイントをオンにすることなく VNET ファイアウォール規則をサーバーに追加する
 
@@ -254,7 +255,7 @@ PowerShell スクリプトでも、仮想ネットワーク規則を作成でき
 
 ### <a name="azure-portal-steps"></a>Azure Portal の手順
 
-1. [Azure Portal][http-azure-portal-link-ref-477t] にログインします。
+1. [Azure Portal][http-azure-portal-link-ref-477t] にサインインします。
 
 2. ポータルで **[SQL サーバー]** &gt; **[ファイアウォール / 仮想ネットワーク]** の順に移動します。
 

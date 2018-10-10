@@ -12,21 +12,21 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/22/2018
+ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 161687ec2275558adb235dc63b5244a0a8ff7e47
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 27600cd4656f70b4cd01745667c0e0fd2a2f4997
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110795"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405821"
 ---
 # <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>チュートリアル: Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
 
-このチュートリアルは、シリーズの第 1 部です。 Azure CLI とテンプレートを使用して、Linux Service Fabric クラスターを [Azure 仮想ネットワーク (VNET)](../virtual-network/virtual-networks-overview.md) および[ネットワーク セキュリティ グループ (NSG)](../virtual-network/virtual-networks-nsg.md)にデプロイする方法を説明します。 完了すると、クラウドで実行されているクラスターにアプリケーションをデプロイできるようになります。 PowerShell を使用して Windows クラスターを作成する場合は、[Azure でのセキュリティで保護された Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)に関するページを参照してください。
+このチュートリアルは、シリーズの第 1 部です。 Azure CLI とテンプレートを使用して Linux Service Fabric クラスターを [Azure 仮想ネットワーク (VNET)](../virtual-network/virtual-networks-overview.md) にデプロイする方法を学習します。 完了すると、クラウドで実行されているクラスターにアプリケーションをデプロイできるようになります。 PowerShell を使用して Windows クラスターを作成する場合は、[Azure でのセキュリティで保護された Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)に関するページを参照してください。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure CLI を使用して Azure に VNET を作成する
@@ -40,7 +40,7 @@ ms.locfileid: "37110795"
 > * Azure にセキュリティで保護されたクラスターを作成する
 > * [クラスターをスケールインまたはスケールアウトする](service-fabric-tutorial-scale-cluster.md)
 > * [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
-> * [Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)
+> * [クラスターの削除](service-fabric-tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,7 +48,7 @@ ms.locfileid: "37110795"
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
 * [Service Fabric CLI をインストール](service-fabric-cli.md)します。
-* [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールします。
+* [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
 
 次の手順で、5 ノードの Service Fabric クラスターを作成します。 Azure で Service Fabric クラスターを実行することによって発生するコストを計算するには、[Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用します。
 
@@ -78,10 +78,10 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 
 次の Resource Manager テンプレート ファイルをダウンロードします。
 
-* [vnet-linuxcluster.json][template]
-* [vnet-linuxcluster.parameters.json][parameters]
+* [AzureDeploy.json][template]
+* [AzureDeploy.Parameters.json][parameters]
 
-[vnet-linuxcluster.json][template] を使用して、次の項目を含むいくつかのリソースをデプロイします。
+このテンプレートでは、5 つの仮想マシンと 1 つのノード タイプから成るセキュリティ保護されたクラスターが、仮想ネットワークにデプロイされます。  [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) には他のサンプル テンプレートがあります。 [AzureDeploy.json][template] では、次のものを含むいくつかのリソースがデプロイされます。
 
 ### <a name="service-fabric-cluster"></a>Service Fabric クラスター
 
@@ -106,29 +106,18 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 * アプリケーション ポート: 80
 * アプリケーション ポート: 443
 
-### <a name="virtual-network-subnet-and-network-security-group"></a>仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループ
+### <a name="virtual-network-and-subnet"></a>仮想ネットワークとサブネット
 
-仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループの名前は、テンプレート パラメーターで宣言されます。  仮想ネットワークとサブネットのアドレス空間もテンプレート パラメーターで宣言されます。
+仮想ネットワークとサブネットの名前は、テンプレート パラメーターで宣言されています。  仮想ネットワークとサブネットのアドレス空間もテンプレート パラメーターで宣言されます。
 
 * 仮想ネットワークのアドレス空間: 10.0.0.0/16
 * Service Fabric サブネットのアドレス空間: 10.0.2.0/24
 
-ネットワーク セキュリティ グループでは、次の受信トラフィック規則が有効になっています。 テンプレートの変数を変更することで、ポートの値を変更できます。
-
-* ClientConnectionEndpoint (TCP): 19000
-* HttpGatewayEndpoint (HTTP/TCP): 19080
-* SMB: 445
-* ノード間通信 - 1025、1026、1027
-* 一時的なポート範囲 - 49152 ～ 65534 (256 ポート以上が必要)
-* アプリケーション用のポート: 80 および 443
-* アプリケーションのポート範囲 - 49152 ～ 65534 (サービス間通信用に使用され、他のポートはロード バランサーで開かれません)
-* 他のすべてのポートをブロック
-
-他のアプリケーション ポートが必要な場合は、Microsoft.Network/loadBalancers resource リソースと Microsoft.Network/networkSecurityGroups リソースを調整してトラフィックを許可する必要があります。
+他のアプリケーション ポートが必要な場合は、Microsoft.Network/loadBalancers リソースを調整してトラフィックを許可する必要があります。
 
 ## <a name="set-template-parameters"></a>テンプレート パラメーターの設定
 
-[vnet-cluster.parameters.json][parameters] パラメーター ファイルでは、クラスターおよび関連リソースをデプロイするための多くの値を宣言します。 実際のデプロイに合わせて変更する必要があるパラメーターの一部を次に示します。
+[AzureDeploy.Parameters][parameters] パラメーター ファイルでは、クラスターおよび関連リソースをデプロイするための多くの値が宣言されています。 実際のデプロイに合わせて変更する必要があるパラメーターの一部を次に示します。
 
 |パラメーター|値の例|メモ|
 |---|---||
@@ -136,7 +125,7 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 |adminPassword|Password#1234| クラスター VM の管理者パスワード。|
 |clusterName|mysfcluster123| クラスターの名前。 |
 |location|southcentralus| クラスターの場所。 |
-|certificateThumbprint|| <p>自己署名証明書を作成する場合または証明書ファイルを提供する場合は、値を空にする必要があります。</p><p>以前にキー コンテナーにアップロードされた既存の証明書を使用するには、証明書の拇印値を入力します。 例: "6190390162C988701DB5676EB81083EA608DCCF3"。 </p>|
+|certificateThumbprint|| <p>自己署名証明書を作成する場合または証明書ファイルを提供する場合は、値を空にする必要があります。</p><p>以前にキー コンテナーにアップロードされた既存の証明書を使用するには、証明書の SHA1 サムプリントの値を入力します。 例: "6190390162C988701DB5676EB81083EA608DCCF3"。 </p>|
 |certificateUrlValue|| <p>自己署名証明書を作成する場合または証明書ファイルを提供する場合は、値を空にする必要があります。</p><p>以前にキー コンテナーにアップロードされた既存の証明書を使用するには、証明書の URL を入力します。 (例: "https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346")。</p>|
 |sourceVaultValue||<p>自己署名証明書を作成する場合または証明書ファイルを提供する場合は、値を空にする必要があります。</p><p>以前にキー コンテナーにアップロードされた既存の証明書を使用するには、ソース コンテナー値を入力します。 たとえば、"/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT" と入力します。</p>|
 
@@ -144,7 +133,9 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>仮想ネットワークとクラスターのデプロイ
 
-次に、ネットワーク トポロジを設定し、Service Fabric クラスターをデプロイします。 [vnet-linuxcluster.json][template] Resource Manager テンプレートを使用して、仮想ネットワーク (VNET) を作成し、さらに Service Fabric のサブネットとネットワーク セキュリティ グループ (NSG) を作成します。 このテンプレートを使用すると、証明書セキュリティが有効なクラスターもデプロイできます。  運用環境クラスターの場合は、証明機関 (CA) から取得した証明書をクラスター証明書として使用します。 自己署名証明書を使用して、テスト クラスターを保護することができます。
+次に、ネットワーク トポロジを設定し、Service Fabric クラスターをデプロイします。 [AzureDeploy.json] [template] Resource Manager テンプレートでは、Service Fabric 用の仮想ネットワーク (VNET) とサブネットが作成されます。 このテンプレートを使用すると、証明書セキュリティが有効なクラスターもデプロイできます。  運用環境クラスターの場合は、証明機関 (CA) から取得した証明書をクラスター証明書として使用します。 自己署名証明書を使用して、テスト クラスターを保護することができます。
+
+### <a name="create-a-cluster-using-an-existing-certificate"></a>既存の証明書を使用したクラスターの作成
 
 次のスクリプトでは、既存の証明書で保護された新しいクラスターをデプロイするために、[az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) コマンドとテンプレートを使用しています。 また、このコマンドを使用して、Azure に新しいキー コンテナーを作成し、証明書をアップロードします。
 
@@ -167,7 +158,23 @@ az group create --name $ResourceGroupName --location $Location
 az sf cluster create --resource-group $ResourceGroupName --location $Location \
    --certificate-password $Password --certificate-file $CertPath \
    --vault-name $VaultName --vault-resource-group $ResourceGroupName  \
-   --template-file vnet-linuxcluster.json --parameter-file vnet-linuxcluster.parameters.json
+   --template-file AzureDeploy.json --parameter-file AzureDeploy.Parameters.json
+```
+
+### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>新しい自己署名証明書を使用したクラスターの作成
+
+次のスクリプトでは、[az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) コマンドとテンプレートを使用して、Azure に新しいクラスターがデプロイされます。 また、このコマンドでは、Azure に新しいキー コンテナーが作成され、新しい自己署名証明書がそのキー コンテナーに追加されて、証明書ファイルがローカルにダウンロードされます。
+
+```azurecli
+ResourceGroupName="sflinuxclustergroup"
+ClusterName="sflinuxcluster"
+Location="southcentralus"
+Password="q6D7nN%6ck@6"
+VaultName="linuxclusterkeyvault"
+VaultGroupName="linuxclusterkeyvaultgroup"
+CertPath="C:\MyCertificates"
+
+az sf cluster create --resource-group $ResourceGroupName --location $Location --cluster-name $ClusterName --template-file C:\temp\cluster\AzureDeploy.json --parameter-file C:\temp\cluster\AzureDeploy.Parameters.json --certificate-password $Password --certificate-output-folder $CertPath --certificate-subject-name $ClusterName.$Location.cloudapp.azure.com --vault-name $VaultName --vault-resource-group $ResourceGroupName
 ```
 
 ## <a name="connect-to-the-secure-cluster"></a>セキュリティで保護されたクラスターに接続する
@@ -187,17 +194,11 @@ sfctl cluster health
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このチュートリアル シリーズの他の記事では、ここで作成したクラスターを使用します。 次の記事にすぐに進まない場合は、料金の発生を避けるため、クラスターを削除することができます。 クラスターと、そのクラスターによって使用されるすべてのリソースを削除するための最も簡単な方法は、リソース グループを削除することです。
-
-Azure にログインして、クラスターを削除するサブスクリプション ID を選択します。  サブスクリプション ID は、[Azure Portal](http://portal.azure.com) にログインして確認できます。 リソース グループとクラスター リソースすべてを削除するには、[az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete) コマンドを使用します。
-
-```azurecli
-az group delete --name $ResourceGroupName
-```
+このチュートリアル シリーズの他の記事では、ここで作成したクラスターを使用します。 次の記事にすぐに進まない場合は、料金の発生を避けるため、[クラスターを削除](service-fabric-cluster-delete.md)することができます。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Azure CLI を使用して Azure に VNET を作成する
@@ -210,5 +211,5 @@ az group delete --name $ResourceGroupName
 > [!div class="nextstepaction"]
 > [クラスターを拡大/縮小する](service-fabric-tutorial-scale-cluster.md)
 
-[template]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/cluster-tutorial/vnet-linuxcluster.json
-[parameters]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/cluster-tutorial/vnet-linuxcluster.parameters.json
+[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/5-VM-Ubuntu-1-NodeTypes-Secure/AzureDeploy.json
+[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/5-VM-Ubuntu-1-NodeTypes-Secure/AzureDeploy.Parameters.json

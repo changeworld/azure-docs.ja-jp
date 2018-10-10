@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 69ead9e6dae400ce16cb2442c7b1c13e348d1572
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 92422a254bcfd5b31731dda6d1790cc85f467860
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34355255"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094982"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
 
@@ -30,7 +30,7 @@ ASE は、Azure Portal または Azure Resource Manager テンプレートを使
 Azure Portal で ASE を作成するときに、同時に VNet を作成するか、既存の VNet にデプロイするかを選択できます。 テンプレートから ASE を作成するときは、以下が必要です。 
 
 * Resource Manager VNet。
-* その VNet のサブネット。 推奨される ASE のサブネット サイズは、将来的な規模の拡大に対応できる、128 のアドレスを持つ `/25` です。 ASE を作成した後は、サイズ変更はできません。
+* その VNet のサブネット。 推奨される ASE のサブネット サイズは、将来的な規模の拡大およびスケーリングのニーズに対応できる、256 のアドレスを持つ `/24` です。 ASE を作成した後は、サイズ変更はできません。
 * VNet のリソース ID。 この情報は、Azure Portal から、仮想ネットワークのプロパティで取得できます。
 * デプロイ先のサブスクリプション。
 * デプロイ先の場所。
@@ -41,7 +41,7 @@ ASE の作成を自動化するには、次の手順に従います。
 
 2. ILB ASE を作成したら、ILB ASE ドメインに一致する SSL 証明書がアップロードされます。
 
-3. アップロードされた SSL 証明書は、"既定の" SSL 証明書として ILB ASE に割り当てられます。  この証明書は、ILB ASE 上のアプリが、ASE に割り当てられた共通ルート ドメイン (たとえば、https://someapp.mycustomrootdomain.com) を使用する場合に、そのアプリの SSL トラフィックで使用されます。
+3. アップロードされた SSL 証明書は、"既定の" SSL 証明書として ILB ASE に割り当てられます。  この証明書は、ILB ASE 上のアプリが、ASE に割り当てられた共通ルート ドメイン (たとえば、 https://someapp.mycustomrootdomain.com) を使用する場合に、そのアプリの SSL トラフィックで使用されます。
 
 
 ## <a name="create-the-ase"></a>ASE を作成する
@@ -65,12 +65,12 @@ New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-
 ASE の作成には 1 時間ほどかかります。 続いて、ポータルの、デプロイをトリガーしたサブスクリプションの ASE の一覧に、作成した ASE が表示されます。
 
 ## <a name="upload-and-configure-the-default-ssl-certificate"></a>"既定の" SSL 証明書をアップロードして構成する
-SSL 証明書は、アプリへの SSL 接続を確立するために使用する "既定の" SSL 証明書として ASE に関連付ける必要があります。 ASE の既定の DNS サフィックスが *internal-contoso.com* である場合、https://some-random-app.internal-contoso.com への接続には **.internal-contoso.com* に対して有効な SSL 証明書が必要です。 
+SSL 証明書は、アプリへの SSL 接続を確立するために使用する "既定の" SSL 証明書として ASE に関連付ける必要があります。 ASE の既定の DNS サフィックスが *internal-contoso.com* である場合、 https://some-random-app.internal-contoso.com への接続には **.internal-contoso.com* に対して有効な SSL 証明書が必要です。 
 
 内部証明機関を利用する、外部の発行者から証明書を購入する、自己署名証明書を使用する、のいずれかの手段で有効な SSL 証明書を取得します。 どのようなソースから SSL 証明書を取得した場合でも、以下の証明書属性を適切に構成する必要があります。
 
 * **Subject**: この属性は、**.your-root-domain-here.com* に設定する必要があります。
-* **Subject Alternative Name**: この属性は、**.your-root-domain-here.com* と **.scm.your-root-domain-here.com* を両方とも含むように設定する必要があります。各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続で、*your-app-name.scm.your-root-domain-here.com* 形式のアドレスが使用されます。
+* **Subject Alternative Name**: この属性は、**.your-root-domain-here.com* と **.scm.your-root-domain-here.com* を両方とも含むように設定する必要があります。 各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続で、*your-app-name.scm.your-root-domain-here.com* 形式のアドレスが使用されます。
 
 有効な SSL 証明書を取得した後は、さらに 2 つの準備手順を実行する必要があります。 SSL 証明書を .pfx ファイルとして変換/保存します。 .pfx ファイルには、すべての中間証明書とルート証明書を忘れずに含めてください。 パスワードで保護してください。
 
@@ -150,7 +150,7 @@ New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-
 
 変更を適用するには ASE フロントエンドあたり約 40 分かかります。 たとえば、2 つのフロントエンドを使用する既定サイズの ASE では、テンプレートが完了するまでに約 1 時間 20 分かかります。 テンプレートの実行中に、ASE をスケーリングすることはできません。  
 
-テンプレートが完了したら、ILB ASE 上のアプリは、HTTPS 経由でアクセスできます。 接続は、既定の SSL 証明書を使用して保護されます。 既定の SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。 たとえば、https://mycustomapp.internal-contoso.com の場合、**.internal-contoso.com* の既定の SSL 証明書が使用されます。
+テンプレートが完了したら、ILB ASE 上のアプリは、HTTPS 経由でアクセスできます。 接続は、既定の SSL 証明書を使用して保護されます。 既定の SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。 たとえば、 https://mycustomapp.internal-contoso.com の場合、**.internal-contoso.com* の既定の SSL 証明書が使用されます。
 
 ただし、パブリックのマルチテナント サービスで実行されるアプリの場合と同じように、開発者は個々のアプリのカスタム ホスト名を構成できます。 個々のアプリに一意の SNI SSL 証明書バインドを構成することもできます。
 

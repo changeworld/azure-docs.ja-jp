@@ -7,20 +7,20 @@ author: v-jerkin
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/08/2018
 ms.author: v-jerkin
-ms.openlocfilehash: d19b71542f032111bbd3d9c7f3fe246110377b5d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5822c313cf0fb5848726cf85c46cda2a3a408264
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127588"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434621"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>音声サービスで "Text to Speech" を使用する
 
-音声サービスには、簡単な HTTP 要求を通じて利用できる、Text to Speech 機能が用意されています。 読み上げられるテキストを適切なエンドポイントに POST し、サービスが合成された音声を含むオーディオ ファイル (`.wav`) を返します。 こうすることで、アプリケーションがこのオーディオを適宜使用できるようになります。
+音声サービスには、簡単な HTTP 要求を通じて利用できる、Text to Speech 機能が用意されています。 読み上げられるテキストを適切なエンドポイントに `POST` し、合成された音声を含むオーディオ ファイル (`.wav`) がサービスから返されます。 こうすることで、アプリケーションがこのオーディオを適宜使用できるようになります。
 
-Text to Speech の POST 要求の本文は、プレーンテキスト (ASCII か UTF8) または [SSML](speech-synthesis-markup.md) ドキュメントのいずれかで指定できます。 プレーン テキストの要求は、既定の音声で読み上げられます。 ほとんどの場合は SSML 本文を使用します。 HTTP 要求には[承認](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication)トークンが含まれている必要があります。 
+Text to Speech の POST 要求の本文は、プレーンテキスト (ASCII か UTF8) または [SSML](speech-synthesis-markup.md) ドキュメントのいずれかで指定できます。 プレーン テキストの要求は、既定の音声で読み上げられます。 ほとんどの場合は SSML 本文を使用します。 HTTP 要求には[承認](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication)トークンが含まれている必要があります。
 
 Text to Speech のエンドポイントがリージョン別に表示されています。 お使いのサブスクリプションに該当するものを使用してください。
 
@@ -38,21 +38,21 @@ Text to Speech のエンドポイントがリージョン別に表示されて�
 </speak>
 ```
 
-利用可能な音声とその名前については、[Text to Speech の音声](supported-languages.md#text-to-speech)一覧で確認してください。
+利用可能な音声とその名前については、[Text to Speech の音声](language-support.md#text-to-speech)一覧で確認してください。
 
 ## <a name="make-a-request"></a>要求を行う
 
-Text to Speech の HTTP 要求は POST モードで行われ、要求の本文は読み上げられるテキストで構成されます。 HTTP 要求の本体の最大長は 1024 文字です。 要求には次のヘッダーが必要です。 
+Text to Speech の HTTP 要求は POST モードで行われ、要求の本文は読み上げられるテキストで構成されます。 HTTP 要求の本体の最大長は 1024 文字です。 要求には次のヘッダーが必要です。
 
 ヘッダー|値|説明
 -|-|-
 |`Content-Type` | `application/ssml+xml` | 入力するテキストの形式。
-|`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`audio-16khz-16kbps-mono-siren`<br>`riff-16khz-16kbps-mono-siren`<br>`riff-16khz-16bit-mono-pcm`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | 出力オーディオの形式。
+|`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`riff-16khz-16bit-mono-pcm`<br>`raw-8khz-8bit-mono-mulaw`<br>`riff-8khz-8bit-mono-mulaw`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | 出力オーディオの形式。
 |`User-Agent`   |アプリケーション名 | アプリケーション名は必須で、255 文字未満にする必要があります。
 | `Authorization`   | トークン サービスにサブスクリプション キーを提示することで取得した認証トークン。 各トークンは 10 分間有効です。 「[REST API: 認証](rest-apis.md#authentication)」をご覧ください。
 
 > [!NOTE]
-> 選択した音声と出力形式のビット レートが異なる場合、オーディオは必要に応じて再サンプリングされます。 24 khz の音声は、`audio-16khz-16kbps-mono-siren` や `riff-16khz-16kbps-mono-siren` の出力形式をサポートしていません。 
+> 選択した音声と出力形式のビット レートが異なる場合、オーディオは必要に応じて再サンプリングされます。
 
 サンプルの要求を以下に示します。
 
@@ -87,7 +87,8 @@ Response audio payload
 |-|-|-|
 400 |正しくない要求 |必須パラメーターが指定されていない、空、または null です。 または、必須またはオプションのパラメーターに渡された値が無効です。 よくある問題はヘッダーが長すぎることです。
 401|権限がありません |要求が承認されていません。 サブスクリプション キーまたはトークンが有効であることを確認してください。
-413|要求のエンティティが大きすぎます|SSML 入力が 1024 文字を超えています
+413|要求のエンティティが大きすぎます|入力 SSML が大きすぎるか、含まれている `<voice>` 要素が 3 個を超えています。
+429|要求が多すぎます|使用中のサブスクリプションで許可されている要求のクォータまたは速度を超えています。
 |502|無効なゲートウェイ    | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。
 
 Text to Speech REST API について詳しくは、「[REST API](rest-apis.md#text-to-speech)」をご覧ください。

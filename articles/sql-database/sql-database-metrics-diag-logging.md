@@ -2,34 +2,36 @@
 title: Azure SQL Database のメトリックと診断のロギング | Microsoft Docs
 description: Azure SQL Database リソースを構成して、リソースの使用状況、接続性、およびクエリ実行の統計情報を保存する方法について説明します。
 services: sql-database
-documentationcenter: ''
-author: danimir
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/16/2018
+author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 55274b08695bacf0b63b937f9e8e21c8565f1715
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: bf9185ece171ef0595aa3470fd52b839eb5d6136
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967389"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165961"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
-Azure SQL Database では、監視を容易にするためのメトリックと診断ログを出力することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
 
-* **Azure Storage**: 大量のテレメトリを低価格でアーカイブします。
+Azure SQL Database および Managed Instance データベースでは、パフォーマンスの監視を容易にするためのメトリックおよび診断ログを出力することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかにストリーミングするようにデータベースを構成することができます。
+
+* **Azure SQL Analytics**: レポート機能、アラート機能、および移行機能を備えた、統合済みの Azure データベース インテリジェント パフォーマンス監視ソリューションとして使用されます。
 * **Azure Event Hubs**: SQL Database のテレメトリを、カスタム監視ソリューションまたはホット パイプラインと統合します。
-* **Azure Log Analytics**: レポート機能、アラート機能、および移行機能を備えた既製の監視ソリューション用です。 Azure Log Analytics は、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) の機能です
+* **Azure Storage**: 大量のテレメトリを低価格でアーカイブします。
 
     ![アーキテクチャ](./media/sql-database-metrics-diag-logging/architecture.png)
 
-## <a name="enable-logging"></a>ログの有効化
+## <a name="enable-logging-for-a-database"></a>データベースのロギングを有効にする
 
-メトリックや診断のロギングは既定では有効になっていません。 次のいずれかの方法を使用してメトリックと診断のロギングを有効にして管理できます。
+既定では、SQL Database または Managed Instance データベース上のメトリックや診断のロギングは有効になっていません。 次のいずれかの方法を使用して、データベース上のメトリックおよび診断のテレメトリ ロギングを有効にして管理できます。
 
 - Azure ポータル
 - PowerShell
@@ -39,38 +41,54 @@ Azure SQL Database では、監視を容易にするためのメトリックと�
 
 メトリックと診断のロギングを有効にする際に、選択したデータが収集される Azure リソースを指定する必要があります。 次のオプションを使用できます。
 
-- Log Analytics
+- SQL Analytics
 - Event Hubs
 - Storage 
 
-新しい Azure リソースをプロビジョニングするか、既存のリソースを選択できます。 ストレージ リソースを選択したら、収集するデータを指定する必要があります。 次のオプションを使用できます。
+新しい Azure リソースをプロビジョニングするか、既存のリソースを選択できます。 リソースを選択したら、データベースの診断設定オプションを使用して、収集するデータを指定する必要があります。 使用可能なオプションと、Azure SQL Database および Managed Instance データベースのサポートは次のとおりです。
 
-- [すべてのメトリック](sql-database-metrics-diag-logging.md#all-metrics): DTU の割合、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合が含まれます。
-- [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): CPU 使用率、クエリ実行時間など、クエリのランタイム統計に関する情報が含まれます。
-- [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): CPU、ログ、ロック状態など、クエリが何を待機したかを示すクエリ待機統計に関する情報が含まれます。
-- [Errors](sql-database-metrics-diag-logging.md#errors-dataset): このデータベースで発生した SQL エラーに関する情報が含まれます。
-- [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): データベースが各種の待機に費やした時間に関する情報が含まれます。
-- [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset): データベースで発生したタイムアウトに関する情報が含まれます。
-- [Blocks](sql-database-metrics-diag-logging.md#blockings-dataset): データベースで発生したブロック イベントに関する情報が含まれます。
-- [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Intelligent Insights が含まれます。 [Intelligent Insights](sql-database-intelligent-insights.md) の詳細。
-- **Audit** / **SQLSecurityAuditEvents**: 現在利用できません。
+| 監視テレメトリ | Azure SQL Database のサポート | Managed Instance のデータベースのサポート |
+| :------------------- | ------------------- | ------------------- |
+| [すべてのメトリック](sql-database-metrics-diag-logging.md#all-metrics): DTU/CPU の割合、DTU/CPU の上限、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合が含まれます。 | [はい] | いいえ  |
+| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): CPU 使用率やクエリ実行時間の統計など、クエリのランタイム統計に関する情報が含まれます。 | [はい] | [はい] |
+| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): CPU、ログ、ロック状態など、クエリが何を待機したかを示すクエリ待機統計に関する情報が含まれます。 | [はい] | [はい] |
+| [Errors](sql-database-metrics-diag-logging.md#errors-dataset): このデータベースで発生した SQL エラーに関する情報が含まれます。 | [はい] | いいえ  |
+| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): データベースが各種の待機に費やした時間に関する情報が含まれます。 | [はい] | いいえ  |
+| [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset): データベースで発生したタイムアウトに関する情報が含まれます。 | [はい] | いいえ  |
+| [Blocks](sql-database-metrics-diag-logging.md#blockings-dataset): データベースで発生したブロック イベントに関する情報が含まれます。 | [はい] | いいえ  |
+| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): パフォーマンスに対する Intelligent Insights が含まれます。 [Intelligent Insights](sql-database-intelligent-insights.md) の詳細。 | [はい] | [はい] |
+
+**注**: 監査および SQLSecurityAuditEvents のログを使用する場合、これらのオプションがデータベースの診断設定内で使用可能であっても、**SQL 監査**ソリューションだけを使用してこれらのログを有効にし、ストリーミング テレメトリを Log Analytics、Event Hub、または Storage に構成する必要があります。
 
 Event Hubs またはストレージ アカウントを選択した場合は、保持ポリシーを指定できます。 このポリシーは、選択した期間よりも古いデータを削除します。 Log Analytics を指定した場合、リテンション期間ポリシーは選択した価格レベルに依存します。 詳細については、「[Log Analytics の価格](https://azure.microsoft.com/pricing/details/log-analytics/)」を参照してください。 
 
-ログ記録を有効にする方法や、各種の Azure サービスでサポートされているメトリックとログのカテゴリについては、次の資料を参照してください。 
+## <a name="enable-logging-for-elastic-pools-or-managed-instance"></a>エラスティック プールまたは Managed Instance のロギングを有効にする
+
+既定では、エラスティック プールまたは Managed Instance に対するメトリックや診断のロギングは有効になっていません。 次のいずれかの方法を使用して、エラスティック プールまたは Managed Instance に対するメトリックおよび診断のテレメトリ ロギングを有効にして管理できます。 収集に使用できるデータは次のとおりです。
+
+| 監視テレメトリ | エラスティック プールのサポート | Managed Instance のサポート |
+| :------------------- | ------------------- | ------------------- |
+| [すべてのメトリック](sql-database-metrics-diag-logging.md#all-metrics) (エラスティック プール): eDTU/CPU の割合、eDTU/CPU の上限、物理データ読み取りの割合、ログ書き込みの割合、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、ストレージの上限、および XTP ストレージの割合が含まれています。 | [はい] | 該当なし |
+| [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) (Managed Instance): 仮想コア数、平均 CPU の割合、IO 要求、読み取り/書き込みバイト数、予約済みストレージ領域、使用済みストレージ領域が含まれています。 | 該当なし | [はい] |
+
+各種の Azure サービスでサポートされているメトリックとログのカテゴリについては、次の資料を参照してください。
 
 * [Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 * [Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-1. ポータルでメトリックと診断ログ収集を有効にするには、Azure SQL Database またはエラスティック プールのページに移動して、**[診断設定]** を選択します。
+- SQL Database または Managed Instance データベースに対してメトリックおよび診断のログ収集を有効にするには、ご使用のデータベースに移動し、**[診断設定]** を選択します。 **[+Add diagnostic setting]\(診断設定の追加\)** を選択して新しい設定を構成するか、または **[設定の編集]** を選択して既存の設定を編集します。
 
    ![Azure Portal で有効にする](./media/sql-database-metrics-diag-logging/enable-portal.png)
 
-2. ターゲットとテレメトリを選択して、診断設定を新しく作成するか、既存の診断設定を編集します。
+- **Azure SQL Database** で、ターゲットとテレメトリを選択して、診断設定を新しく作成するか、既存の診断設定を編集します。
 
    ![診断設定](./media/sql-database-metrics-diag-logging/diagnostics-portal.png)
+
+- **Managed Instance データベース**で、ターゲットとテレメトリを選択して、診断設定を新しく作成するか、既存の診断設定を編集します。
+
+   ![診断設定](./media/sql-database-metrics-diag-logging/diagnostics-portal-mi.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -174,7 +192,7 @@ Log Analytics を使用すると、Azure SQL Database フリートを簡単に�
 
 2. 作成した Log Analytics リソースにメトリックと診断ログを記録するようデータベースを構成します。
 
-3. Log Analytics のギャラリーから **Azure SQL Analytics** ソリューションをインストールします。
+3. Azure Marketplace から **Azure SQL Analytics** ソリューションをインストールする。
 
 ### <a name="create-a-log-analytics-resource"></a>Log Analytics リソースを作成する。
 
@@ -259,15 +277,52 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ## <a name="metrics-and-logs-available"></a>利用可能なメトリックとログ
 
-### <a name="all-metrics"></a>すべてのメトリック
+Azure SQL Database、エラスティック プール、Managed Instance、および Managed Instance のデータベースに使用できるメトリックおよびログの詳細な監視テレメトリの内容を次に示します。
+
+## <a name="all-metrics"></a>すべてのメトリック
+
+### <a name="all-metrics-for-elastic-pools"></a>エラスティック プールのすべてのメトリック
 
 |**リソース**|**メトリック**|
 |---|---|
-|Database|DTU の割合、使用中の DTU、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合、デッドロック |
 |エラスティック プール|eDTU の割合、使用中の eDTU、eDTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、ストレージの上限、XTP ストレージの割合 |
-|||
 
-### <a name="logs"></a>ログ
+### <a name="all-metrics-for-azure-sql-database"></a>Azure SQL Database のすべてのメトリック
+
+|**リソース**|**メトリック**|
+|---|---|
+|Azure SQL Database|DTU の割合、使用中の DTU、DTU の上限、CPU の割合、物理データ読み取りの割合、ログ書き込みの割合、ファイアウォール接続による成功/失敗/ブロック、セッションの割合、ワーカーの割合、ストレージ、ストレージの割合、XTP ストレージの割合、デッドロック |
+
+## <a name="logs"></a>ログ
+
+### <a name="logs-for-managed-instance"></a>Managed Instance のログ
+
+### <a name="resource-usage-stats"></a>リソースの使用状況統計
+
+|プロパティ|説明|
+|---|---|
+|TenantId|テナント ID。|
+|SourceSystem|常に Azure|
+|TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
+|type|常に AzureDiagnostics|
+|ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
+|Category|カテゴリの名前。 常に: ResourceUsageStats|
+|リソース|リソースの名前。|
+|ResourceType|リソースの種類の名前。 常に: MANAGEDINSTANCES|
+|SubscriptionId|データベースが属するサブスクリプション GUID。|
+|ResourceGroup|データベースが属するリソース グループの名前。|
+|LogicalServerName_s|Managed Instance の名前。|
+|resourceId|リソース URI。|
+|SKU_s|Managed Instance の製品 SKU|
+|virtual_core_count_s|使用可能な仮想コアの数|
+|avg_cpu_percent_s|平均 CPU の割合|
+|reserved_storage_mb_s|Managed Instance 上の予約済みストレージ容量|
+|storage_space_used_mb_s|Managed Instance 上の使用済みストレージ|
+|io_requests_s|IOPS 数|
+|io_bytes_read_s|読み取り IOPS バイト|
+|io_bytes_written_s|書き込み IOPS バイト|
+
+### <a name="logs-for-azure-sql-database-and-managed-instance-database"></a>Azure SQL Database と Managed Instance データベースのログ
 
 ### <a name="query-store-runtime-statistics"></a>クエリ ストアのランタイム統計
 

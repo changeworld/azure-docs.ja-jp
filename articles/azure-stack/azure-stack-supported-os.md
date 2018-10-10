@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 09/26/2018
 ms.author: sethm
-ms.reviewer: JeffGoldner
-ms.openlocfilehash: 65e9b4371eab4e4e4978e91184ab9712b9ecc9eb
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.reviewer: ''
+ms.openlocfilehash: be4d9b3ea7e5715d7c3a4df11b7e8bab4d1d4ca5
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629377"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405599"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Azure Stack でサポートされているゲスト オペレーティング システム
 
@@ -40,11 +40,12 @@ Azure Stack は、次の表に示す Windows ゲスト オペレーティング 
 | Windows Server 2008 SP2 | 64 ビット |  Bring your own image |
 | Windows 10 *(注 1 をご覧ください)* | 64 ビット、Pro、および Enterprise | Bring your own image |
 
-***注 1:*** *Azure Stack で Windows 10 クライアント オペレーティング システムをデプロイするには、[Windows per User Licensing](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) を所持しているか、Qualified Multitenant Hoster ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)) から購入する必要があります。*
+> [!NOTE]
+> Azure Stack で Windows 10 クライアント オペレーティング システムをデプロイするには、[Windows per User Licensing](https://www.microsoft.com/en-us/Licensing/product-licensing/windows10.aspx) を所持しているか、Qualified Multitenant Hoster [(QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)) から購入する必要があります。
 
 Marketplace イメージは従量課金制または BYOL (EA/SPLA) ライセンスで利用できます。 1 つの Azure Stack インスタンスで両方を使うことはサポートされていません。 デプロイ時に、Azure Stack により、適切なバージョンのゲスト エージェントがイメージに挿入されます。
 
- Datacenter エディションは、Marketplace でダウンロードできます。お客様は、他のエディションを含む独自のサーバー イメージを使用できます。 Marketplace では、Windows クライアント イメージを利用できません。
+Datacenter エディションは、Marketplace でダウンロードできます。お客様は、他のエディションを含む独自のサーバー イメージを使用できます。 Marketplace では、Windows クライアント イメージを利用できません。
 
 ## <a name="linux"></a>Linux
 
@@ -70,6 +71,11 @@ Marketplace で入手可能として示されている Linux ディストリビ�
 | Ubuntu 16.04-LTS | 64 ビット | Canonical | [はい] |
 | Ubuntu 18.04-LTS | 64 ビット | Canonical | [はい] |
 
-他の Linux ディストリビューションは、今後サポートされる可能性があります。
-
 Red Hat Enterprise Linux のサポート情報については、「[Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531)」(Red Hat と Azure Stack: よく寄せられる質問) を参照してください。
+
+## <a name="next-steps"></a>次の手順
+
+Azure Stack Marketplace の詳細については、次の記事をご覧ください。
+
+[Marketplace アイテムのダウンロード](azure-stack-download-azure-marketplace-item.md)  
+[Marketplace アイテムの作成と発行](azure-stack-create-and-publish-marketplace-item.md)

@@ -1,23 +1,23 @@
 ---
 title: Azure SQL Database Managed Instance の接続アーキテクチャ | Microsoft Docs
 description: この記事では、Azure SQL Database Managed Instance の通信についてその概要を紹介すると共に、接続アーキテクチャと Managed Instance にトラフィックを誘導する各種コンポーネントの働きについて説明します。
-keywords: ''
 services: sql-database
-author: srdan-bozovic-msft
-manager: craigg
 ms.service: sql-database
-ms.subservice: managed instance
+ms.subservice: managed-instance
 ms.custom: ''
-ms.date: 08/16/2018
+ms.devlang: ''
+ms.topic: conceptual
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.topic: conceptual
-ms.openlocfilehash: 54917c6548c7f0bfacad6408732c5619e6346683
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+manager: craigg
+ms.date: 08/16/2018
+ms.openlocfilehash: 312425d3ea02d15a992b9a694f09cb2be73b6221
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177503"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161592"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Azure SQL Database Managed Instance の接続アーキテクチャ 
 
@@ -73,8 +73,8 @@ Managed Instance の接続アーキテクチャについて、さらに踏み込
 - 概要については、「 [マネージド インスタンスとは](sql-database-managed-instance.md)」を参照してください。 
 - VNet の構成の詳細については、 [Managed Instance VNet の構成](sql-database-managed-instance-vnet-configuration.md)に関するページを参照してください。 
 - クイック スタートについては、Managed Instance の作成方法に関するページを参照してください。 
-  - [Azure portal](sql-database-managed-instance-create-tutorial-portal.md) を使用する場合 
-  - [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) を使用する場合 
+  - [Azure Portal](sql-database-managed-instance-get-started.md) から 
+  - [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) の使用 
   - [Azure Resource Manager テンプレート](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)を使用する場合 
   - [Azure Resource Manager テンプレート (Jumpbox と SSMS を含む)](https://portal.azure.com/) を使用する場合 
 

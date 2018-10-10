@@ -2,19 +2,22 @@
 title: 'Azure Portal: SQL Database の geo レプリケーション | Microsoft Docs'
 description: Azure Portal を使用して Azure SQL Database の geo レプリケーションを構成してフェールオーバーを開始する
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/16/2018
-ms.author: carlrab
-ms.openlocfilehash: 27fb8f369ad23592902c05fe5275fc54bc6cf148
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+author: anosov1960
+ms.author: sashan
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 592e4c2dc375da34b3a6039bef7ea4da0fa3315b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090471"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163972"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure Portal を使用して Azure SQL Database のアクティブ geo レプリケーションを構成してフェールオーバーを開始する
 
@@ -34,7 +37,7 @@ Azure Portal を使ってアクティブ geo レプリケーションを構成�
 
 セカンダリ データベースを追加するには、サブスクリプションの所有者または共同所有者でなければなりません。
 
-セカンダリ データベースは、プライマリ データベースと同じ名前となります。また、既定でのサービス レベルはプライマリ データベースと同じになります。 セカンダリ データベースは、Single Database またはエラスティック プールのデータベースにできます。 詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。
+セカンダリ データベースは、プライマリ データベースと同じ名前となります。また、既定でのサービス レベルおよびコンピューティング サイズはプライマリ データベースと同じになります。 セカンダリ データベースは、Single Database またはエラスティック プールのデータベースにできます。 詳細については、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関する記事を参照してください。
 セカンダリ データベースを作成しシード処理を行うと、プライマリ データベースから新しいセカンダリ データベースへのデータのレプリケートが開始されます。
 
 > [!NOTE]
