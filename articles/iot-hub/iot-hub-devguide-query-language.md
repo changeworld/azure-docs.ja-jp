@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 7704e08246798108aa251c19a4ab0c3baaaad570
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2e4b356fec642e06e3223700967eeacd19f1c49c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140972"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952479"
 ---
-# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティング向けの IoT Hub クエリ言語
 
 IoT Hub には SQL に似た強力な言語が備わっており、[デバイス ツイン][lnk-twins]や[ジョブ][lnk-jobs]、および[メッセージ ルーティング][lnk-devguide-messaging-routes]に関する情報を取得できます。 この記事で取り扱う内容は次のとおりです。
 
 * IoT Hub のクエリ言語の主な機能の説明
-* 言語の詳しい説明
+* 言語の詳しい説明 メッセージ ルーティングにおけるクエリ言語の詳細については、[メッセージ ルーティングでのクエリ](../iot-hub/iot-hub-devguide-routing-query-syntax.md)に関するページを参照してください。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -165,7 +165,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 SELECT * FROM devices.modules
 ```
 
-デバイスと devices.modules コレクション間の結合は許可されません。 デバイス間でモジュール ツインのクエリを実行する場合は、タグに基づいて行います。 このクエリでは、スキャン中状態のすべてのデバイスのすべてのモジュール ツインが返されます。
+デバイスと devices.modules コレクション間の結合は許可されません。 デバイスを超えてモジュール ツインのクエリを実行する場合は、タグに基づいて行います。 このクエリでは、スキャン中状態のすべてのデバイスのすべてのモジュール ツインが返されます。
 
 ```sql
 Select * from devices.modules where properties.reported.status = 'scanning'
@@ -304,126 +304,6 @@ WHERE devices.jobs.jobId = 'myJobId'
 * プロジェクション。`SELECT *` のみ実行可能
 * 条件。ジョブのプロパティ以外にデバイス ツインを参照するもの (上述のセクションを参照)
 * 集計の実行。カウント、平均、グループ化など
-
-## <a name="device-to-cloud-message-routes-query-expressions"></a>デバイスからクラウドへのメッセージ ルートのクエリ式
-
-[デバイスからクラウドへのルート][lnk-devguide-messaging-routes]を使用して、デバイスからクラウドへのメッセージをさまざまなエンドポイントに送信するように IoT Hub を構成することができます。 送信は、個々のメッセージに対して評価される式に基づいて行われます。
-
-ルート[条件][lnk-query-expressions]では、ツインおよびジョブ クエリ内の条件として、IoT Hub クエリ言語の構文が使用されますが、使用できるのは一部の機能のみです。 ルート条件は、メッセージ ヘッダーと本文で評価されます。 ルーティング クエリ式には、メッセージ ヘッダーのみ、メッセージ本文のみ、またはメッセージ ヘッダーとメッセージ本文の両方が含まれることがあります。 IoT Hub は、メッセージをルーティングするためにヘッダーとメッセージ本文の特定のスキーマを想定します。次のセクションで、IoT Hub が正しくルーティングするために必要なものについて説明します。
-
-### <a name="routing-on-message-headers"></a>メッセージ ヘッダーでのルーティング
-
-IoT Hub は、メッセージのルーティングのために、メッセージ ヘッダーの次の JSON 表現を想定しています。
-
-```json
-{
-  "message": {
-    "systemProperties": {
-      "contentType": "application/json",
-      "contentEncoding": "utf-8",
-      "iothub-message-source": "deviceMessages",
-      "iothub-enqueuedtime": "2017-05-08T18:55:31.8514657Z"
-    },
-    "appProperties": {
-      "processingPath": "<optional>",
-      "verbose": "<optional>",
-      "severity": "<optional>",
-      "testDevice": "<optional>"
-    },
-    "body": "{\"Weather\":{\"Temperature\":50}}"
-  }
-}
-```
-
-メッセージのシステム プロパティには、`'$'` シンボルが付きます。
-ユーザー プロパティは、常にその名前でアクセスされます。 ユーザー プロパティの名前が、システム プロパティと一致する場合 (`$contentType` など)、とユーザー プロパティは、`$contentType` 式で取得されます。
-システム プロパティは、常にかっこ `{}` を使用してアクセスできます。たとえば、`{$contentType}` 式を使用してシステム プロパティ `contentType` にアクセスできます。 かっこで囲まれたプロパティ名は、常に対応するシステム プロパティを取得します。
-
-プロパティ名では大文字と小文字は区別されません。
-
-> [!NOTE]
-> メッセージのプロパティはすべて文字列です。 [開発者ガイド][lnk-devguide-messaging-format]に記載されているように、システムのプロパティは現在クエリで使用できません。
->
-
-たとえば、`messageType` プロパティを使用する場合、すべてのテレメトリを 1 つのエンドポイントにルーティングし、すべての警告を別のエンドポイントにルーティングすることを望むかもしれません。 次の式を記述してテレメトリをルーティングします。
-
-```sql
-messageType = 'telemetry'
-```
-
-また、次の式を記述して警告メッセージをルーティングします。
-
-```sql
-messageType = 'alert'
-```
-
-ブール式と関数もサポートされています。 この機能により、例えば次のように重大度レベルを区別できます。
-
-```sql
-messageType = 'alerts' AND as_number(severity) <= 2
-```
-
-サポートされている演算子と関数の完全な一覧については、「[式と条件][lnk-query-expressions]」セクションを参照してください。
-
-### <a name="routing-on-message-bodies"></a>メッセージ本文でのルーティング
-
-IoT Hub は、メッセージ本文が、UTF-8、UTF-16、または UTF-32 でエンコードされた適切な形式の JSON である場合のみ、メッセージ本文のコンテンツに基づいてルーティングできます。 メッセージのコンテンツの種類を `application/json` に設定します。 コンテンツのエンコードを、メッセージ ヘッダーでサポートされているいずれかの UTF エンコードに設定します。 いずれかのヘッダーが指定されていない場合、IoT Hub は、メッセージに対して、本文を含むクエリ式を評価しようとしません。 メッセージが JSON メッセージでない場合、またはメッセージでコンテンツの種類とコンテンツのエンコーディングを指定しない場合でも、メッセージ ルーティングを使用して、メッセージ ヘッダーに基づいてメッセージをルーティングできます。
-
-次の例では、正しい形式でエンコードされた JSON 本文を持つメッセージを作成する方法を示します。
-
-```csharp
-string messageBody = @"{ 
-                            ""Weather"":{ 
-                                ""Temperature"":50, 
-                                ""Time"":""2017-03-09T00:00:00.000Z"", 
-                                ""PrevTemperatures"":[ 
-                                    20, 
-                                    30, 
-                                    40 
-                                ], 
-                                ""IsEnabled"":true, 
-                                ""Location"":{ 
-                                    ""Street"":""One Microsoft Way"", 
-                                    ""City"":""Redmond"", 
-                                    ""State"":""WA"" 
-                                }, 
-                                ""HistoricalData"":[ 
-                                    { 
-                                    ""Month"":""Feb"", 
-                                    ""Temperature"":40 
-                                    }, 
-                                    { 
-                                    ""Month"":""Jan"", 
-                                    ""Temperature"":30 
-                                    } 
-                                ] 
-                            } 
-                        }"; 
- 
-// Encode message body using UTF-8 
-byte[] messageBytes = Encoding.UTF8.GetBytes(messageBody); 
- 
-using (var message = new Message(messageBytes)) 
-{ 
-    // Set message body type and content encoding. 
-    message.ContentEncoding = "utf-8"; 
-    message.ContentType = "application/json"; 
- 
-    // Add other custom application properties.  
-    message.Properties["Status"] = "Active";    
- 
-    await deviceClient.SendEventAsync(message); 
-}
-```
-
-クエリ式で `$body` を使用して、メッセージをルーティングできます。 クエリ式で、簡単な本文参照、本文配列参照、または複数の本文参照を使用できます。 クエリ式で、本文参照とメッセージ ヘッダー参照を組み合わせることもできます。 たとえば、以下はすべて有効なクエリ式です。
-
-```sql
-$body.Weather.HistoricalData[0].Month = 'Feb'
-$body.Weather.Temperature = 50 AND $body.Weather.IsEnabled
-length($body.Weather.Location.State) = 2
-$body.Weather.Temperature = 50 AND Status = 'Active'
-```
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT Hub クエリの基礎
 IoT Hub のすべてのクエリは、SELECT 句と FROM 句、およびオプションの WHERE 句と GROUP BY で構成されます。 各クエリは JSON ドキュメントのコレクション (デバイス ツインなど) で実行されます。 FROM 句は (**devices** や **devices.jobs**) で繰り返されるドキュメント コレクションを示します。 次に、WHERE 句でフィルター処理が適用されます。 集計により、この手順の結果は GROUP BY 句の指定に従ってグループ化されます。 グループごとに、SELECT 句で指定された行が生成されます。
@@ -614,8 +494,7 @@ GROUP BY <group_by_element>
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 [lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-read-custom.md
+[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-d2c.md
 [lnk-devguide-messaging-format]: iot-hub-devguide-messages-construct.md
-[lnk-devguide-messaging-routes]: ./iot-hub-devguide-messages-read-custom.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md

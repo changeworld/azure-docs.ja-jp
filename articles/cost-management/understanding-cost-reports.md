@@ -1,23 +1,23 @@
 ---
-title: Azure Cost Management のコスト管理レポートについて | Microsoft Docs
+title: Azure での Cloudyn コスト管理レポートの概要 | Microsoft Docs
 description: この記事では、Cloudyn コスト管理レポートの基本的なしくみと機能について説明します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/18/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 75709e099c6126997d91bf4b679de473fc75a485
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: e4d4c2115ddae592e9ca7bdf119b36d0ccee2da4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064628"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998714"
 ---
-# <a name="understanding-cost-management-reports"></a>コスト管理レポートについて
+# <a name="understanding-cloudyn-cost-management-reports"></a>Cloudyn コスト管理レポートの概要
 
 この記事では、Cloudyn コスト管理レポートの基本的なしくみと機能について説明します。 ほとんどの Cloudyn レポートは、直感的で、統一感のある外観になっています。 この記事を読むと、すべてのコスト管理レポートを利用できるようになります。 標準機能の多くは各種レポートで使用できるため、レポート間を簡単に移動できます。 レポートはカスタマイズ可能で、いくつかのオプションから計算や結果の表示方法を選択できます。
 
@@ -203,5 +203,5 @@ ms.locfileid: "37064628"
 
 ## <a name="next-steps"></a>次の手順
 
-- Cloudyn に含まれるレポートについて、「[Cost Management レポートの使用](use-reports.md)」を参照してください。
+- Cloudyn に含まれるレポートについては、「[Cloudyn レポートの使用](use-reports.md)」を参照してください。
 - レポートを使用して[ダッシュボード](dashboards.md)を作成する方法について学びます。

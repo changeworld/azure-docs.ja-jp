@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: agaiha
-ms.openlocfilehash: 8ffa9823000efbb101be73397cd0025f9933cecd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac09754876d52798add58d9e0752d776ca29f247
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652646"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994804"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -54,9 +54,10 @@ Azure ポータルを使用して、LAD 3.0 を有効化し、構成すること
 ### <a name="prerequisites"></a>前提条件
 
 * **Azure Linux エージェント バージョン 2.2.0 以降**。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)に従って更新します。
-* **Azure CLI**。 マシンに [Azure CLI 2.0 環境をセットアップ](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
+* **Azure CLI**。 ご使用のマシンに [Azure CLI 環境をセットアップ](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
 * wget コマンド。まだ持っていない場合は `sudo apt-get install wget` を実行します。
 * 既存の Azure サブスクリプションと、データをその中に格納するための既存のストレージ アカウント。
+* サポートされている Linux ディストリビューションのリストは、 https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions にあります。
 
 ### <a name="sample-installation"></a>サンプル インストール
 
@@ -98,8 +99,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 
 ### <a name="migration-from-previous-versions-of-the-extension"></a>以前のバージョンの拡張機能からの移行
 
-拡張機能の最新バージョンは **3.0** です。 
-  **以前のバージョン (2.x) は非推奨となり、2018 年 7 月 31 日以降は非公開になる可能性があります**。
+拡張機能の最新バージョンは **3.0** です。 **以前のバージョン (2.x) は非推奨となり、2018 年 7 月 31 日以降は非公開になる可能性があります**。
 
 > [!IMPORTANT]
 > この拡張機能では、構成の面で大幅な変更点が導入されます。 その変更点の 1 つは、拡張機能のセキュリティを向上させるために行われました。結果として、2.x との下位互換性を維持できなくなりました。 また、この拡張機能の Extension Publisher は、2.x バージョンのパブリッシャーとは異なります。
@@ -172,7 +172,7 @@ sinksConfig | (省略可能) メトリックとイベントの配信が可能な
 要素 | 値
 ------- | -----
 name | このシンクを拡張機能構成の他の場所で参照するために使用される文字列。
-型 | 定義されているシンクの型。 この型のインスタンス内のその他の値 (存在する場合) を決定します。
+type | 定義されているシンクの型。 この型のインスタンス内のその他の値 (存在する場合) を決定します。
 
 Linux Diagnostic Extension のバージョン 3.0 では、EventHub と JsonBlob という 2 つのシンク型がサポートされています。
 
@@ -273,7 +273,7 @@ sampleRateInSeconds | (省略可能) 生の (未集計) メトリックを収集
 
 要素 | 値
 ------- | -----
-ResourceId | VM または VM が所属する仮想マシン スケール セットの Azure Resource Manager リソース ID。 この設定は、JsonBlob シンクが構成で使用されている場合にも指定する必要があります。
+resourceId | VM または VM が所属する仮想マシン スケール セットの Azure Resource Manager リソース ID。 この設定は、JsonBlob シンクが構成で使用されている場合にも指定する必要があります。
 scheduledTransferPeriod | 集計メトリックが計算され、Azure Metrics に転送される頻度。これは、IS 8601 の時間間隔として表されます。 最小の転送間隔は 60 秒、つまり、PT1M です。 少なくとも 1 つの scheduledTransferPeriod を指定する必要があります。
 
 performanceCounters セクションで指定されたメトリックのサンプルは、15 秒ごと、またはカウンターに明示的に定義されたサンプル レートで収集されます。 複数の scheduledTransferPeriod 頻度が表示されている場合 (この例のように)、各集計は独立して計算されます。
@@ -314,7 +314,7 @@ performanceCounters セクションで指定されたメトリックのサンプ
 要素 | 値
 ------- | -----
 sinks | (省略可能) LAD が集計したメトリック結果を送信するシンクの名前をコンマで区切ったリスト。 集計されたすべてのメトリックは、一覧表示された各シンクに発行されます。 [sinksConfig](#sinksconfig) を参照してください。 例: `"EHsink1, myjsonsink"`.
-型 | メトリックの実際のプロバイダーを識別します。
+type | メトリックの実際のプロバイダーを識別します。
 class | "counter" とともに、プロバイダーの名前空間内の特定のメトリックを識別します。
 counter | "class" とともに、プロバイダーの名前空間内の特定のメトリックを識別します。
 counterSpecifier | Azure Metrics 名前空間内で特定のメトリックを識別します。
@@ -389,7 +389,7 @@ minSeverity | Syslog の重大度レベル ("LOG\_ERR" や "LOG\_INFO" など)�
 要素 | 値
 ------- | -----
 namespace | (省略可能) クエリが実行される OMI 名前空間。 指定されていない場合、既定値は "root/scx" で、[System Center クロスプラットフォーム プロバイダー](http://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation)によって実装されます。
-クエリ | 実行される OMI クエリ。
+query | 実行される OMI クエリ。
 table | (省略可能) 指定されたストレージ アカウントの Azure ストレージ テーブル ([保護された設定](#protected-settings)を参照してください)。
 frequency | (省略可能) クエリの実行間隔 (秒) 。 既定値は 300 (5 分) です。最小値は 15 秒です。
 sinks | (省略可能) メトリック結果の生のサンプルが発行される追加のシンクの名前をコンマで区切ったリスト。 これらの生のサンプルの集計は、拡張機能または Azure メトリックスによって計算されません。

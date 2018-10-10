@@ -7,27 +7,33 @@ ms.author: haining
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: b587f5dcc9558ec52b85e4b53dae0e31ad475a4e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ROBOTS: NOINDEX
+ms.openlocfilehash: 07a9d46dff17b43d01a6b411292cf240c32476f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983720"
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench のローミングとコラボレーション
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
 この記事では、Azure Machine Learning Workbench を使って、コンピューター間のローミングやチーム メンバーとのコラボレーション用にプロジェクトを設定する方法について説明します。 
 
 リモート Git リポジトリ (リポジトリ) とのリンクがある Azure Machine Learning プロジェクトを作成すると、プロジェクトのメタデータとスナップショットがクラウドに保存されます。 クラウドのリンクを使って、別のコンピューターからプロジェクトにアクセス (ローミング) することができます。 また、チーム メンバーにプロジェクトへのアクセスを許可して共同作業することもできます。 
 
 ## <a name="prerequisites"></a>前提条件
-1. Machine Learning Workbench アプリをインストールします。 Azure Machine Learning 実験アカウントにアクセスできることを確認します。 詳しくは、[インストール ガイド](../service/quickstart-installation.md)をご覧ください。
+1. Machine Learning Workbench アプリをインストールします。 Azure Machine Learning 実験アカウントにアクセスできることを確認します。 詳しくは、[インストール ガイド](quickstart-installation.md)をご覧ください。
 
-2. [Visual Studio Team Services](https://www.visualstudio.com) (Team Services) にアクセスして、プロジェクトをリンクするリポジトリを作成します。 詳しくは、「[Azure Machine Learning Workbench プロジェクトでの Git リポジトリの使用](using-git-ml-project.md)」をご覧ください。
+2. [Azure DevOps](https://www.visualstudio.com) にアクセスし、プロジェクトをリンクするリポジトリを作成します。 詳しくは、「[Azure Machine Learning Workbench プロジェクトでの Git リポジトリの使用](using-git-ml-project.md)」をご覧ください。
 
 ## <a name="create-a-new-machine-learning-project"></a>新しい Machine Learning プロジェクトを作成する
-Azure Machine Learning Workbench を開き、新しいプロジェクトを作成します (たとえば、iris という名前のプロジェクト)。 **[Visualstudio.com GIT Repository URL]\(Visualstudio.com GIT Rリポジトリの URL\)** ボックスに、Team Services の Git リポジトリの有効な URL を入力します。 
+Azure Machine Learning Workbench を開き、新しいプロジェクトを作成します (たとえば、iris という名前のプロジェクト)。 **[Visualstudio.com GIT Repository URL]\(Visualstudio.com GIT リポジトリの URL\)** ボックスに、Azure DevOps Git リポジトリの有効な URL を入力します。 
 
 > [!IMPORTANT]
 > 空のプロジェクト テンプレートを選んだ場合、選んだ Git リポジトリに既に master ブランチがある場合があります。 Machine Learning は、単に master ブランチをローカルに複製します。 そして、aml_config フォルダーと他のプロジェクト メタデータ ファイルを、ローカルのプロジェクト フォルダーに追加します。 
@@ -60,7 +66,7 @@ $ git push origin master
 <a name="roaming"></a>
 
 ### <a name="open-machine-learning-workbench-on-a-second-computer"></a>Machine Learning Workbench を 2 番目のコンピューターで開く
-Team Services Git リポジトリがプロジェクトにリンクされると、Machine Learning Workbench がインストールされている任意のコンピューターから iris プロジェクトにアクセスできるようになります。 
+Azure DevOps Git リポジトリがプロジェクトにリンクされると、Machine Learning Workbench がインストールされている任意のコンピューターから iris プロジェクトにアクセスできるようになります。 
 
 別のコンピューターにある iris プロジェクトにアクセスするには、プロジェクトの作成に使ったものと同じ資格情報を使って、アプリにサインインする必要があります。 また、Machine Learning 実験アカウントとワークスペースも同じである必要があります。 iris プロジェクトは、ワークスペース内の他のプロジェクトと共にアルファベット順に一覧表示されます。 
 
@@ -82,11 +88,11 @@ macOS では、プロジェクトは /home/\<ユーザー名\>/Documents/AzureML
 
 
 ### <a name="work-on-the-downloaded-project"></a>ダウンロードしたプロジェクトでの作業 
-新しくダウンロードしたプロジェクトには、プロジェクトを最後に実行したときのプロジェクトの状態が反映されています。 プロジェクトの状態のスナップショットは、実行を送信するたびに Team Services Git リポジトリの実行履歴ブランチに対し自動的にコミットされます。 最新の実行に関連付けられているスナップショットを使って、2 番目のコンピューターのプロジェクトがインスタンス化されます。 
+新しくダウンロードしたプロジェクトには、プロジェクトを最後に実行したときのプロジェクトの状態が反映されています。 プロジェクトの状態のスナップショットは、実行を送信するたびに Azure DevOps Git リポジトリの実行履歴分岐に対し自動的にコミットされます。 最新の実行に関連付けられているスナップショットを使って、2 番目のコンピューターのプロジェクトがインスタンス化されます。 
  
 
 ## <a name="collaboration"></a>コラボレーション
-Team Services Git リポジトリにリンクされているプロジェクトを使って、チーム メンバーとコラボレーションできます。 Machine Learning 実験アカウント、ワークスペース、プロジェクトに対するアクセス許可を、ユーザーに割り当てることができます。 この段階で、Azure CLI を使って Azure Resource Manager のコマンドを実行できます。 [Azure Portal](https://portal.azure.com) を使用することもできます。 詳しくは、「[Azure Portal を使ってユーザーを追加する](#portal)」をご覧ください。    
+Azure DevOps Git リポジトリにリンクされているプロジェクトを使って、チーム メンバーとコラボレーションできます。 Machine Learning 実験アカウント、ワークスペース、プロジェクトに対するアクセス許可を、ユーザーに割り当てることができます。 この段階で、Azure CLI を使って Azure Resource Manager のコマンドを実行できます。 [Azure Portal](https://portal.azure.com) を使用することもできます。 詳しくは、「[Azure Portal を使ってユーザーを追加する](#portal)」をご覧ください。    
 
 ### <a name="use-the-command-line-to-add-users"></a>コマンド ラインを使ってユーザーを追加する
 例として、Alice は iris プロジェクトの所有者であるものとします。 Alice は、プロジェクトへのアクセスを Bob と共有することを望んでいます。 
@@ -127,16 +133,16 @@ Machine Learning の実験アカウント、ワークスペース、およびプ
 ## <a name="sample-collaboration-workflow"></a>コラボレーションのワークフローの例
 コラボレーションのワークフローを、例を使って説明します。 Contoso の従業員である Alice と Bob は、Machine Learning Workbench を使ってデータ サイエンス プロジェクトでコラボレーションを行うことを考えています。 2 人の ID は、同じ Contoso Azure Active Directory (Azure AD) テナントに属しています。 Alice と Bob に必要な手順は次のとおりです。
 
-1. Alice が、Team Services プロジェクトに空の Git リポジトリを作成します。 Team Services プロジェクトは、Contoso Azure AD テナントの下に作成された Azure サブスクリプション内に存在する必要があります。 
+1. Alice が Azure DevOps プロジェクトに空の Git リポジトリを作成します。 Azure DevOps プロジェクトは、Contoso Azure AD テナントの下に作成された Azure サブスクリプション内に存在する必要があります。 
 
-2. Alice は、Machine Learning 実験アカウント、ワークスペース、および Machine Learning Workbench プロジェクトを、自分のコンピューターに作成します。 Alice は、プロジェクトを作成するとき、Team Services の Git リポジトリの URL を入力します。
+2. Alice は、Machine Learning 実験アカウント、ワークスペース、および Machine Learning Workbench プロジェクトを、自分のコンピューターに作成します。 Alice は、プロジェクトを作成するとき、Azure DevOps Git リポジトリの URL を入力します。
 
-3. Alice は、プロジェクトでの作業を始めます。 彼女は、スクリプトをいくつか作成して何回か実行します。 実行のたびに、プロジェクト フォルダー全体のスナップショットが、Machine Learning Workbench によって作成された Team Services Git リポジトリの実行履歴ブランチに、コミットとして自動的にプッシュされます。
+3. Alice は、プロジェクトでの作業を始めます。 彼女は、スクリプトをいくつか作成して何回か実行します。 実行のたびに、プロジェクト フォルダー全体のスナップショットが、Machine Learning Workbench によって作成された Azure DevOps Git リポジトリの実行履歴ブランチに、コミットとして自動的にプッシュされます。
 
-4. Alice は作業の進行に満足しています。 彼女は、変更をローカルな master ブランチにコミットした後、それを Team Services Git リポジトリの master ブランチにプッシュしようと考えます。 プロジェクトを開き、Machine Learning Workbench でコマンド プロンプト ウィンドウを開いて、次のコマンドを入力します。
+4. Alice は作業の進行に満足しています。 彼女は、変更をローカルな master ブランチにコミットした後、それを Azure DevOps Git リポジトリの master ブランチにプッシュしようと考えます。 プロジェクトを開き、Machine Learning Workbench でコマンド プロンプト ウィンドウを開いて、次のコマンドを入力します。
     
     ```sh
-    # Verify that the Git remote is pointing to the Team Services Git repo.
+    # Verify that the Git remote is pointing to the Azure DevOps Git repo.
     $ git remote -v
 
     # Verify that the current branch is master.
@@ -148,11 +154,11 @@ Machine Learning の実験アカウント、ワークスペース、およびプ
     # Commit changes with a comment.
     $ git commit -m "this is a good milestone"
 
-    # Push the commit to the master branch of the remote Git repo in Team Services.
+    # Push the commit to the master branch of the remote Git repo in Azure DevOps.
     $ git push
     ```
 
-5. Alice は共同作成者として Bob をワークスペースに追加します。 これは、Azure Portal で、または前に示したように `az role assignment` コマンドを使って、行うことができます。 また、Alice は、Bob に Team Services Git リポジトリへの読み取り/書き込みアクセス許可も付与します。
+5. Alice は共同作成者として Bob をワークスペースに追加します。 これは、Azure Portal で、または前に示したように `az role assignment` コマンドを使って、行うことができます。 また、Alice は、Bob に Azure DevOps Git リポジトリへの読み取り/書き込みアクセス許可も付与します。
 
 6. Bob は、自分のコンピューターで Machine Learning Workbench にサインインします。 彼は、Alice から共有されているワークスペースを見ることができます。 Bob は、そのワークスペースに一覧表示されている iris プロジェクトを参照できます。 
 
@@ -165,13 +171,13 @@ Machine Learning の実験アカウント、ワークスペース、およびプ
 9. Bob は、Alice がプッシュした最新の変更を取得し、異なるブランチで作業を始めようと考えます。 そこで Bob は、Machine Learning Workbench でコマンド プロンプト ウィンドウを開き、次のコマンドを実行します。
 
     ```sh
-    # Verify that the Git remote is pointing to the Team Services Git repo.
+    # Verify that the Git remote is pointing to the Azure DevOps Git repo.
     $ git remote -v
 
     # Verify that the current branch is master.
     $ git branch
 
-    # Get the latest commit in the Team Services Git master branch and overwrite current files.
+    # Get the latest commit in the Azure DevOps Git master branch and overwrite current files.
     $ git pull --force
 
     # Create a new local branch named "bob" so that Bob's work is done in the "bob" branch
@@ -192,7 +198,7 @@ Machine Learning の実験アカウント、ワークスペース、およびプ
     # Commit the changes with a comment.
     $ git commit -m "I found a cool new trick."
 
-    # Create a new branch on the remote Team Services Git repo, and then push the changes.
+    # Create a new branch on the remote Azure DevOps Git repo, and then push the changes.
     $ git push origin bob
     ```
 

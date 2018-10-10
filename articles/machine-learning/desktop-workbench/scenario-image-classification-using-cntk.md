@@ -12,14 +12,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ROBOTS: NOINDEX
+ms.openlocfilehash: 83d6f529330a05e6a7c46ad45b19f0338f93bfc7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "35640642"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995093"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用した画像分類
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 画像分類アプローチを使用して、コンピューター ビジョンの多くの問題を解決できます。
 これには、オブジェクトがたとえば*犬*、*自動車*、*船*である場合に、*画像にオブジェクトが存在するか*というような質問に答えるモデルのビルドが含まれます。 または、*この患者の網膜スキャンによって、どのクラスの眼病重症度が示されるか*というようなより複雑な質問もあります。
@@ -51,7 +56,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 この例を実行するための前提条件は次のとおりです。
 
 1. [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
-2. [クイック スタート インストール ガイド](../service/quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成するための [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md)。  
+2. [クイック スタート インストール ガイド](quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成するための [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md)。  
 3. Windows マシン。 Workbench は Windows と MacOS のみをサポートしており、Microsoft の Cognitive Toolkit (ディープ ラーニング ライブラリとして使用する) は Windows と Linux のみをサポートしているため、Windows OS が必要です。
 4. 専用 GPU は、パート 1 で SVM トレーニングを実行するためには必要ありませんが、パート 2 で説明されている DNN の調整に必要です。 強力な GPU がないか、複数の GPU でトレーニングする必要があるか、または Windows マシンがない場合は、Windows オペレーティング システムで Azure のディープ ラーニング仮想マシンを使用することを検討してください。 ワンクリック デプロイ ガイドについては、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)を参照してください。 デプロイ後、リモート デスクトップ接続経由で VM に接続し、そこで Workbench をインストールして、VM からローカルでコードを実行します。
 5. OpenCV などのさまざまな Python ライブラリをインストールする必要があります。 Workbench の *[ファイル]* メニューから *[コマンド プロンプトを開く]* をクリックし、次のコマンドを実行してこれらの依存関係をインストールします。  
@@ -95,7 +100,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 
 ## <a name="data-description"></a>データの説明
 
-このチュートリアルでは、現行サンプルとして、最大 428 画像から構成される上衣のテクスチャ データセットを使用しています。 各画像は、3 つの異なるテクスチャ (ドット、ストライプ、ヒョウ柄) のいずれかとして注釈が付けられています。 このチュートリアルを迅速に実行できるように、画像数を少なくしています。 ただし、コードは十分にテストされているため、数万件以上の画像でも動作します。 すべての画像は Bing Image Search を使用してスクラップされ、[パート 3](#using-a-custom-dataset) で説明するように、手動で注釈が付けられています。 各属性と共に画像の URL が、*/resources/fashionTextureUrls.tsv* ファイルに一覧表示されています。
+このチュートリアルでは、現行サンプルとして、最大 428 画像から構成される上衣のテクスチャ データセットを使用しています。 各画像は、3 つの異なるテクスチャ (ドット、ストライプ、ヒョウ柄) のいずれかとして注釈が付けられています。 このチュートリアルを迅速に実行できるように、画像数を少なくしています。 ただし、コードは十分にテストされているため、数万件以上の画像でも動作します。 すべての画像は、[パート 3](#using-a-custom-dataset) で説明するように、手動で注釈が付けられています。 各属性と共に画像の URL が、*/resources/fashionTextureUrls.tsv* ファイルに一覧表示されています。
 
 スクリプト `0_downloadData.py` はすべての画像を *DATA_DIR/images/fashionTexture/* ディレクトリにダウンロードします。 428 個の URL の一部は、切断されている可能性があります。 これは問題ではなく、単にトレーニングとテストに使用する画像がやや少ないことを意味しています。 このサンプルで提供されているすべてのスクリプトは、ローカルで実行する必要があります。docker などのリモート環境では実行しないでください。
 
@@ -263,11 +268,11 @@ Azure Machine Learning Workbench は、Azure での実行ごとの履歴を保�
 
 ## <a name="part-3---custom-dataset"></a>パート 3 - カスタム データセット
 
-パート 1 および 2 では、提供された上衣のテクスチャ画像を使用して、画像分類モデルをトレーニングし、評価しました。 ここでは、代わりにユーザーが提供したカスタム データセットを使用する方法を示します。 または、そうしたデータセットを入手できない場合に、Bing Image Search を使用して、そのようなデータセットを生成し、注釈を付ける方法も説明します。
+パート 1 および 2 では、提供された上衣のテクスチャ画像を使用して、画像分類モデルをトレーニングし、評価しました。 ここでは、代わりにユーザーが提供したカスタム データセットを使用する方法を示します。 
 
 ### <a name="using-a-custom-dataset"></a>カスタム データセットの使用
 
-まず、衣服のテクスチャ データ用のフォルダー構造を見てみましょう。 異なる属性のすべての画像が、*DATA_DIR/images/fashionTexture/* の各サブフォルダー *dotted*、*leopard、および*striped* 内にあることに注意します。 また、画像フォルダー名も、`PARAMETERS.py` ファイル内に示されていることにも注意してください。
+まず、衣服のテクスチャ データ用のフォルダー構造を見てみましょう。 異なる属性のすべての画像が、*DATA_DIR/images/fashionTexture/* の各サブフォルダー *dotted*、*leopard*、および *striped* 内にあることに注意してください。 また、画像フォルダー名も、`PARAMETERS.py` ファイル内に示されていることにも注意してください。
 ```python
 datasetName = "fashionTexture"
 ```
@@ -280,14 +285,23 @@ datasetName = "fashionTexture"
 
 ### <a name="image-scraping-and-annotation"></a>画像のスクラップと注釈
 
-トレーニングとテストのために十分な数の注釈付き画像を収集することは困難な場合があります。 この問題に対処する 1 つの方法は、インターネットから画像をスクラップすることです。 たとえば、下のクエリ *t-shirt striped* の Bing Image Search 結果をご覧ください。 予想どおりに、ほとんどの画像がストライプの T シャツです。 いくつか正しくないか、あいまいな画像 (1 列目の 1 行目または 3 列目の 2 行目など) は簡単に識別し、除去できます。
+トレーニングとテストのために十分な数の注釈付き画像を収集することは困難な場合があります。 この問題に対処する 1 つの方法は、インターネットから画像をスクラップすることです。
+
+> [!IMPORTANT] 
+> 使用する画像については、画像の著作権およびライセンスを侵害していないことを確認してください。 
+
+<!--
+For example, see below the Bing Image Search results for the query *t-shirt striped*. As expected, most images indeed are striped t-shirts. The few incorrect or ambiguous images (such as column 1, row 1; or column 3, row 2) can be identified and removed easily:
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/bing_search_striped.jpg" alt="alt text" width="600"/>
 </p>
+-->
 
 大規模で多様なデータセットを生成するには、多数のクエリを使用する必要があります。 たとえば、7\*3 = 21 個のクエリは、衣服 {blouse, hoodie, pullover, sweater, shirt, t-shirt, vest} と属性{striped, dotted, leopard} のすべての組み合わせを使用して、自動的に合成することができます。 クエリごとに上位 50 個の画像をダウンロードすると、最大 21*50=1050 個の画像が得られることになります。
 
-Bing Image Search から手動で画像をダウンロードする代わりに、[Cognitive Services Bing Image Search API](https://www.microsoft.com/cognitive-services/bing-image-search-api) を使用する方がはるかに簡単です。これは、クエリ文字列を指定すると、一連の画像の URL が返されます。
+<!--
+Rather than manually downloading images from Bing Image Search, it is much easier to instead use the [Cognitive Services Bing Image Search API](https://www.microsoft.com/cognitive-services/bing-image-search-api) which returns a set of image URLs given a query string.
+-->
 
 ダウンロードした画像の一部が、まったく同じかほぼ同じ (たとえば、画像解像度や jpg の圧縮効果だけが異なる) ことがあります。 トレーニングとテストの分割で、同じ画像が含まれないように、これらの重複を削除する必要があります。 重複する画像を削除するにはハッシュベースのアプローチを使用します。これは、2 つの手順で動作します。(i) まず、すべての画像のハッシュ文字列を計算し、(ii) 2 回目の画像の読み取りで、まだ見たことがないハッシュ文字列を持つ画像だけを保持します。 その他のすべての画像を破棄します。 Python ライブラリ `imagehash` で、`dhash` アプローチを見つけ、この[ブログ](http://www.hackerfactor.com/blog/index.php?/archives/529-Kind-of-Like-That.html)でパラメーター `hash_size` を 16 に設定して、うまく実行する方法を説明しました。 実際に重複している画像の大部分が削除されていれば、いくつか重複していない画像が誤って削除されてもかまいません。
 

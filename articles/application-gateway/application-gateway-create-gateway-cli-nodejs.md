@@ -1,6 +1,6 @@
 ---
-title: Azure Application Gateway の作成 - Azure CLI 1.0 | Microsoft Docs
-description: Resource Manager で Azure CLI 1.0 を使用して、アプリケーション ゲートウェイを作成する方法について説明します。
+title: Azure Application Gateway を作成する - Azure クラシック CLI | Microsoft Docs
+description: Resource Manager で Azure クラシック CLI を使用して Application Gateway を作成する方法について説明します
 services: application-gateway
 documentationcenter: na
 author: vhorne
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 29eec4ad1883db9d824b416bdfc7e984a5af4fbe
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e834b1633f17ecec74ae17e962de445ad8d6dccd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35636476"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974427"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイを作成する
 
@@ -29,8 +29,8 @@ ms.locfileid: "35636476"
 > * [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
 > * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-create-gateway.md)
 > * [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
-> * [Azure CLI 1.0](application-gateway-create-gateway-cli.md)
-> * [Azure CLI 2.0](application-gateway-create-gateway-cli.md)
+> * [Azure クラシック CLI](application-gateway-create-gateway-cli.md)
+> * [Azure CLI](application-gateway-create-gateway-cli.md)
 > 
 > 
 
@@ -38,7 +38,7 @@ Azure Application Gateway はレイヤー 7 のロード バランサーです�
 
 ## <a name="prerequisite-install-the-azure-cli"></a>前提条件: Azure CLI のインストール
 
-この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンド ライン インターフェイス (Azure CLI) をインストール](../xplat-cli-install.md)し、[Azure にログオン](/cli/azure/authenticate-azure-cli)する必要があります。 
+この記事の手順を実行するには、[Azure CLI をインストール](../xplat-cli-install.md)して、[Azure にログオン](/cli/azure/authenticate-azure-cli)する必要があります。 
 
 > [!NOTE]
 > Azure アカウントをお持ちでない場合は、取得する必要があります。 [ここで無料試用版](../active-directory/fundamentals/sign-up-organization.md)にサインアップしてください。

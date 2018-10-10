@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 767c91e4926e553b63b8331ac99edcd7823d2c13
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 02624b4f3b0fceb1816f4f43b1f435356f8d5235
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055017"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984043"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
@@ -26,7 +26,7 @@ ms.locfileid: "44055017"
 
 IoT Hub では、組み込みの D2C 受信エンドポイントでコンシューマー グループを管理ができます。
 
-既定では、メッセージのルーティング ルールと明示的に一致しないメッセージはすべて、組み込みエンドポイントに書き込まれます。 このフォールバック ルートを無効にした場合は、どのメッセージのルーティング ルールにも明示的に一致しないメッセージは破棄されます。
+[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)を使用しているとき、[フォールバック ルート](iot-hub-devguide-messages-d2c.md#fallback-route)が有効になっている場合、ルートに関するクエリに一致しないメッセージはすべて、組み込みのエンドポイントに書き込まれます。 このフォールバック ルートを無効にした場合は、どのクエリにも一致しないメッセージは破棄されます。
 
 リテンション期間は、[IoT Hub のリソース プロバイダー REST API][lnk-resource-provider-apis] を使用してプログラムにより変更するか、[Azure Portal][lnk-management-portal] を使用して変更できます。
 
@@ -39,9 +39,8 @@ IoT Hub は、**messages/events** 組み込みエンドポイントをバック�
 IoT Hub を認識しない SDK (または製品統合) を使用する場合は、イベント ハブ互換性エンドポイントとイベント ハブ互換名を取得する必要があります。
 
 1. [Azure Portal][lnk-management-portal] にサインインし、IoT ハブに移動します。
-1. **[エンドポイント]** をクリックします。
-1. **[Built-in endpoints]** (組み込みエンドポイント) セクションで、**[イベント]** をクリックします。 
-1. プロパティ ページが開き、**[イベント ハブ互換エンドポイント]**、**[イベント ハブ互換名]**、**[パーティション]**、**[保持期間]**、**[コンシューマー グループ]** の各値が表示されます。
+1. **[組み込みのエンドポイント]** をクリックします。
+1. **[イベント]** セクションには、**[イベント ハブ互換エンドポイント]**、**[イベント ハブ互換名]**、**[パーティション]**、**[保持期間]**、**[コンシューマー グループ]** が表示されます。
 
     ![Device-to-cloud settings][img-eventhubcompatible]
 
@@ -63,11 +62,9 @@ IoT Hub から公開されている、Event Hub 互換のエンドポインで�
 
 ## <a name="next-steps"></a>次の手順
 
-IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント][lnk-endpoints]に関するページをご覧ください。
-
-[クイック スタート][lnk-get-started]では、デバイスからクラウドへのメッセージをシミュレートされたデバイスから送信し、組み込みエンドポイントからそのメッセージを読み取る方法を説明します。 詳細については、[ルートを使用した IoT Hub の device-to-cloud メッセージの処理][lnk-d2c-tutorial]に関するチュートリアルをご覧ください。
-
-デバイスからクラウドへのメッセージをカスタム エンドポイントにルーティングする場合は、「[デバイスからクラウドへのメッセージにメッセージ ルートとカスタム エンドポイントを使用する][lnk-custom]」を参照してください。
+* IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント][lnk-endpoints]に関するページをご覧ください。
+* [クイック スタート][lnk-get-started]では、デバイスからクラウドへのメッセージをシミュレートされたデバイスから送信し、組み込みエンドポイントからそのメッセージを読み取る方法を説明します。 詳細については、[ルートを使用した IoT Hub の device-to-cloud メッセージの処理][lnk-d2c-tutorial]に関するチュートリアルをご覧ください。
+* デバイスからクラウドへのメッセージをカスタム エンドポイントにルーティングする場合は、「[デバイスからクラウドへのメッセージにメッセージ ルートとカスタム エンドポイントを使用する][lnk-custom]」を参照してください。
 
 [img-eventhubcompatible]: ./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png
 

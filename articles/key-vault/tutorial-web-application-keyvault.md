@@ -9,32 +9,32 @@ ms.assetid: 0e57f5c7-6f5a-46b7-a18a-043da8ca0d83
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 05/17/2018
+ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 91e2047998d6e743691821c631e15c94cd63cf15
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: d1776fc2347eb1a1f03a834b6a5f847ef5c551e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41917605"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948885"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>チュートリアル: キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する
 
-このチュートリアルでは、Azure Web アプリケーションを取得し、マネージド サービス ID を使用してキー コンテナーから情報を読み取るために必要な手順を学習します。 学習内容は次のとおりです。
+このチュートリアルでは、Azure Web アプリケーションを取得し、Azure リソースのマネージド ID を使用してキー コンテナーから情報を読み取るために必要な手順を学習します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * キー コンテナーを作成する
 > * キー コンテナーにシークレットを格納する
-> * Azure AD Web アプリケーションを作成する
-> * マネージド サービス ID を有効にする
+> * Azure Web アプリケーションを作成する
+> * Web アプリケーションの マネージド ID を有効にする
 > * アプリケーションに必要なアクセス許可を付与して、キー コンテナーからデータを読み取る
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 CLI を使用して Azure にログインするには、次のように入力します。
 
@@ -218,9 +218,9 @@ Web アプリケーションでインストールしておく必要のある NuG
 >[!IMPORTANT]
 > ブラウザー ウィンドウが開き、502.5 のプロセス エラー メッセージが表示されます。 これは予期されることです。 キー コンテナーからシークレットを読み取るために、アプリケーション ID の権限を付与する必要があります。
 
-## <a name="enable-managed-service-identity"></a>マネージド サービス ID を有効にする
+## <a name="enable-a-managed-identity-for-the-web-app"></a>Web アプリの マネージド ID を有効にする
 
-Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 管理対象サービス ID (MSI) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
+Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
 
 1. Azure CLI に戻ります。
 2. assign-identity コマンドを実行して、このアプリケーションの ID を作成します。
@@ -230,7 +230,7 @@ az webapp identity assign --name "WebKeyVault" --resource-group "ContosoResource
 ```
 
 >[!NOTE]
->このコマンドは、ポータルに移動して、Web アプリケーション プロパティの **[マネージド サービス ID]** を **[オン]** に切り替えることと同等です。
+>このコマンドは、ポータルに移動して、Web アプリケーション プロパティの **[Identity / System assigned]\(ID/システム割り当て済み\)** を **[オン]** に切り替えることと同等です。
 
 ## <a name="grant-rights-to-the-application-identity"></a>アプリケーション ID に権限を付与する
 

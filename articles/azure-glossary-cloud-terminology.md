@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 84766ba4cf9e844184752bc44d2e0a471b97db27
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e62910cc760a200abba6d56e4fa1eb87973285ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32159130"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963596"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集: Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -31,7 +31,7 @@ Microsoft Azure 用語集は、Azure プラットフォーム向けのクラウ�
 
 ## <a name="account"></a>アカウント
 Azure サブスクリプションへのアクセスおよび管理に使用するアカウント。 Azure アカウントと呼ばれることが多いですが、既存の職場アカウント、学校アカウント、個人用 Microsoft アカウント、Office 365 のユーザー名とパスワードのいずれかを指定できます。 [無料試用版](https://azure.microsoft.com)にサインアップする際に、Azure サブスクリプションを管理するためのアカウントを作成することもできます。  
-「[Office 365 アカウントを使用して Azure のサブスクリプションにサインアップする](billing/billing-use-existing-office-365-account-azure-subscription.md)」、および「[サインインに使用できるアカウント](active-directory/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
+「[Office 365 アカウントを使用して Azure のサブスクリプションにサインアップする](billing/billing-use-existing-office-365-account-azure-subscription.md)」、および「[サインインに使用できるアカウント](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
 
 ## <a name="api-app"></a>API アプリ
 [App Service アプリ](#app-service-app)の別名。
@@ -43,17 +43,17 @@ Web サイトまたは Web アプリケーション、Web API、または[モバ
 アプリケーションの冗長性と信頼性を提供するために、ひとまとまりで管理される仮想マシンのコレクション。 可用性セットを利用していれば、計画済みまたは計画外メンテナンスの間にも、少なくとも 1 つの仮想マシンを使用できます。  
 「[Windows 仮想マシンの可用性の管理](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Linux 仮想マシンの可用性管理](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください。
 
-## <a name="classic-model"></a>Azure クラシック デプロイメント モデル
+## <a name="classic-model"></a>Azure クラシック デプロイ モデル
 Azure でリソースをデプロイするときに使われる 2 つの [デプロイ モデル](resource-manager-deployment-model.md) のうちの 1 つ (新しいモデルは Azure Resource Manager です)。 Azure サービスには、Resource Manager デプロイ モデルだけをサポートするもの、クラシック デプロイ モデルだけをサポートするもの、その両方をサポートするものがあります。 各 Azure サービスでサポートされるモデルについては、該当するドキュメントをご覧ください。
 
 ## <a name="cli"></a>Azure コマンド ライン インターフェイス (CLI)
-Windows、macOS、Linux から Azure サービスを管理するためのコマンド ライン インターフェイス。  サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。 「[Azure CLI 2.0](/cli/azure)」をご覧ください。
+Windows、macOS、Linux から Azure サービスを管理するためのコマンド ライン インターフェイス。  サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。 「[Azure CLI](/cli/azure)」を参照してください。
 
 ## <a name="powershell"></a>Azure PowerShell
 Windows PC からコマンド ラインを使って Azure サービスを管理するためのコマンド ライン インターフェイス。 サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。
 「[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。
 
-## <a name="arm-model"></a>Azure Resource Manager デプロイメント モデル
+## <a name="arm-model"></a>Azure Resource Manager デプロイ モデル 
 Microsoft Azure でリソースをデプロイするために使用される 2 つの [デプロイ モデル](resource-manager-deployment-model.md) のうちの 1 つ (もう一方はクラシック デプロイ モデル)。 Azure サービスには、Resource Manager デプロイ モデルだけをサポートするもの、クラシック デプロイ モデルだけをサポートするもの、その両方をサポートするものがあります。 各 Azure サービスでサポートされるモデルについては、該当するドキュメントをご覧ください。
 
 ## <a name="fault-domain"></a>障害ドメイン
@@ -66,15 +66,15 @@ Microsoft Azure でリソースをデプロイするために使用される 2 �
 
 ## <a name="geo-replication"></a>geo レプリケーション
 リージョン ペア内に存在する BLOB、テーブル、キューなどのコンテンツを自動的にレプリケートするプロセス。  
-「[Azure SQL Database のアクティブ geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)」をご覧ください。
-<!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
+[Azure SQL Database のアクティブ geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)
+<!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->に関するページを参照してください。
 
 ## <a name="image"></a>image
 任意の数の仮想マシンを作成するために使用できるアプリケーション構成とオペレーティング システムが含まれるファイル。 Azure では、VM イメージと OS イメージの 2 種類があります。 VM イメージには、オペレーティング システムと、イメージの作成時に、仮想マシンにアタッチされているすべてのディスクが含まれています。 OS イメージには汎用オペレーティング システムのみが含まれ、データ ディスク構成はありません。  
 「[Powershell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 ## <a name="limits"></a>制限
-作成できるリソースの数または達成できるパフォーマンス ベンチマーク。 制限は通常、サブスクリプション、サービス、プランによって変わります。  
+作成できるリソースの数または達成できるパフォーマンス ベンチマーク。 制限は通常、サブスクリプション、サービス、オファーによって変わります。  
 「[Azure サブスクリプションとサービスの制限、クォータ、制約](azure-subscription-service-limits.md)」をご覧ください。
 
 ## <a name="load-balancer"></a>ロード バランサー
@@ -126,8 +126,8 @@ Azure Storage の Azure BLOB、Queue、Table、ファイルの各サービスに
 「[Azure ストレージ アカウントについて](storage/common/storage-create-storage-account.md)」をご覧ください。
 
 ## <a name="subscription"></a>サブスクリプション
-Azure サービスを入手する権利を与える、お客様と Microsoft の契約。 サブスクリプションの価格と関連条件は、サブスクリプションで選択されたプランに応じて決まります。
-「[マイクロソフト オンライン サブスクリプション契約](https://azure.microsoft.com/support/legal/subscription-agreement/)」と「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
+Azure サービスを入手する権利を与える、お客様と Microsoft の契約。 サブスクリプションの価格と関連条件は、サブスクリプションで選択されたオファーに応じて決まります。
+「[マイクロソフト オンライン サブスクリプション契約](https://azure.microsoft.com/support/legal/subscription-agreement/)」と「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」をご覧ください。
 
 ## <a name="tag"></a>tag
 管理や課金の要件に合わせてリソースを分類できる、インデックスの用語。 リソースが複雑に絡み合っている場合は、タグを使用してこれらの資産をわかりやすく視覚化することができます。 たとえば、組織内で同じロールを果たしている複数リソース、または同じ部門に属している複数リソースにタグを付けることができます。  
@@ -146,7 +146,7 @@ Azure サービスを入手する権利を与える、お客様と Microsoft の
 <!-- This definition seems obscure to me; maybe a list of examples would work better than a conceptual definition? -->
 「[仮想マシンの拡張機能とその機能について](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」(Windows) と「[仮想マシンの拡張機能とその機能について](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」(Linux) をご覧ください。
 
-## <a name="vnet"></a>仮想ネットワーク
+## <a name="vnet"></a>Virtual network
 他のどの Azure テナントとも切り離された Azure リソース間の接続を提供するネットワーク。 [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) を使用して、仮想ネットワーク間の接続や[仮想ネットワークとオンプレミス ネットワーク間](vpn-gateway/vpn-gateway-plan-design.md)の接続を確立できます。 仮想ネットワーク内では、IP アドレス ブロック、DNS 設定、セキュリティ ポリシー、およびルート テーブルを完全に制御できます。  
 「[Virtual Network の概要](virtual-network/virtual-networks-overview.md)」をご覧ください。  
 

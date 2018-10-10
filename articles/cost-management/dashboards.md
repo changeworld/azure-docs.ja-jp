@@ -1,21 +1,21 @@
 ---
-title: Azure Cost Management ダッシュボードで主なメトリックを表示する | Microsoft Docs
-description: この記事では、Azure Cost Management のダッシュボードで主なメトリックを表示する方法について説明します。
+title: Azure 内の Cloudyn ダッシュボードで主なメトリックを表示する | Microsoft Docs
+description: この記事では、Cloudyn のダッシュボードで主なメトリックを表示する方法について説明します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/05/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b1dc2e2eca900ca0ae72329c3c373b2d24f1b2e0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 1d2b4a0cd78f3d68a76bd9186be4174f2dd1d86c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35302756"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999713"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>ダッシュボードで主なコスト メトリックを表示する
 
@@ -34,7 +34,7 @@ Cloudyn のダッシュボードには、レポートの高レベルのビュー
 
 ダッシュボードの可用性は、ダッシュボードを表示するときに使用されるクラウド サービス プロバイダーのアカウントの種類によって異なります。 Cloudyn によって収集される使用可能な情報の種類は、ダッシュボード内のレポートに影響を与えます。 たとえば、AWS アカウントを持っていない場合、S3 Tracker ダッシュボードは表示されません。 同様に、Cloudyn への Azure Resource Manager アクセスを有効にしていない場合、Optimizer ダッシュボード ウィジェットに Azure 固有の情報は表示されません。
 
-事前に作成された任意のダッシュボードを使用することも、カスタマイズされたレポートを含む独自のダッシュボードを作成することもできます。 Cloudyn レポートに慣れていない場合は、「[Cost Management レポートの使用](use-reports.md)」を参照してください。
+事前に作成された任意のダッシュボードを使用することも、カスタマイズされたレポートを含む独自のダッシュボードを作成することもできます。 Cloudyn レポートについてよく理解していない場合は、「[Cloudyn レポートの使用](use-reports.md)」を参照してください。
 
 ## <a name="create-a-custom-dashboard"></a>カスタム ダッシュボードを作成する
 
@@ -295,3 +295,6 @@ Cloud Comparison ダッシュボードは、価格、CPU の種類、および R
 ### <a name="ec2azure-instance-type-mapping"></a>EC2/Azure インスタンスの種類のマッピング
 このウィジェットでは、Amazon EC2 と Azure の間のエラスティック コンピューティング ユニットの最適なマッピングが表示されます。
 - ウィジェットをクリックすると、インスタンスの種類のマッピング レポートが開きます。
+
+## <a name="next-steps"></a>次の手順
+- レポートの詳細については、「[Cloudyn レポートの使用](use-reports.md)」の記事を参照してください。

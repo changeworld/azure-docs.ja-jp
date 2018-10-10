@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: 9c39d621bfc8df338a4556fd412ae54489982074
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: fb9de98a80d348c3ba1e84ae19551c7ca080628b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092769"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966845"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -234,7 +234,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 *host.json* 内のカテゴリ値により、先頭の値が同一のすべてのカテゴリについてログを制御する。 たとえば、*host.json* 内の "Host" は、"Host.General"、"Host.Executor"、"Host.Results" などのログを制御します。
 
-*host.json* に先頭の文字列が同一のカテゴリが複数含まれる場合は、同一の部分がより長いものが最初に一致する。 たとえば、"Host.Aggregator" 以外のランタイムからのすべてを `Error` レベルで記録し、"Host.Aggregator" のログを `Information` レベルで記録するとします。
+*host.json* に先頭の文字列が同一のカテゴリが複数含まれる場合は、同一の部分がより長いものが最初に一致する。 たとえば、"Host.Aggregator" 以外のランタイムからのすべてのログを `Error` レベルで記録し、"Host.Aggregator" のログを `Information` レベルで記録するとします。
 
 ```json
 {
@@ -298,7 +298,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 ## <a name="configure-sampling"></a>サンプリングを構成する
 
-Application Insights には、負荷がピークのときにテレメトリ データが生成されすぎないようにする[サンプリング](../application-insights/app-insights-sampling.md)機能が備わっています。 Application Insights では、テレメトリ項目の数が特定の割合を超えると、受信した項目の一部がランダムに無視され始めます。 1 秒あたりの項目の最大数に対する既定の設定は 5 です。 *host.json* でサンプリングを構成できます。  次に例を示します。
+Application Insights には、負荷がピークのときにテレメトリ データが生成されすぎないようにする[サンプリング](../application-insights/app-insights-sampling.md)機能が備わっています。 Application Insights では、受信テレメトリの割合が特定のしきい値を超えると、受信した項目の一部がランダムに無視され始めます。 1 秒あたりの項目の最大数に対する既定の設定は 5 です。 *host.json* でサンプリングを構成できます。  次に例を示します。
 
 ```json
 {
@@ -457,11 +457,6 @@ namespace functionapp0915
                 };
             UpdateTelemetryContext(dependency.Context, context, name);
             telemetryClient.TrackDependency(dependency);
-            
-            return name == null
-                ? req.CreateResponse(HttpStatusCode.BadRequest, 
-                    "Please pass a name on the query string or in the request body")
-                : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
         }
         
         // This correllates all telemetry with the current Function invocation
@@ -499,18 +494,6 @@ module.exports = function (context, req) {
     client.trackDependency({target:"http://dbname", name:"select customers proc", data:"SELECT * FROM Customers", duration:231, resultCode:0, success: true, dependencyTypeName: "ZSQL", tagOverrides:{"ai.operation.id": context.invocationId}});
     client.trackRequest({name:"GET /customers", url:"http://myserver/customers", duration:309, resultCode:200, success:true, tagOverrides:{"ai.operation.id": context.invocationId}});
 
-    if (req.query.name || (req.body && req.body.name)) {
-        context.res = {
-            // status: 200, /* Defaults to 200 */
-            body: "Hello " + (req.query.name || req.body.name)
-        };
-    }
-    else {
-        context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    }
     context.done();
 };
 ```
@@ -547,9 +530,9 @@ Functions での Application Insights 統合に関する問題をレポートし
 
 ### <a name="real-time-monitoring"></a>リアルタイム監視
 
-[Azure コマンド ライン インターフェイス (CLI) 2.0](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/overview) を使用して、ローカル ワークステーションのコマンド ライン セッションにログ ファイルをストリーミングできます。  
+[Azure コマンド ライン インターフェイス (CLI)](/cli/azure/install-azure-cli) または [Azure PowerShell](/powershell/azure/overview) を使用して、ローカル ワークステーションのコマンド ライン セッションにログ ファイルをストリーミングできます。  
 
-Azure CLI 2.0 では、次のコマンドを使用して、サインイン、ご使用のサブスクリプションの選択、ログ ファイルのストリーミングを行います。
+Azure CLI では、次のコマンドを使用して、サインイン、ご使用のサブスクリプションの選択、ログ ファイルのストリーミングを行います。
 
 ```
 az login

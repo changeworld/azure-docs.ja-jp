@@ -4,15 +4,15 @@ description: Azure Files についてよく寄せられる質問とその回答�
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 07/19/2018
+ms.date: 09/11/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 31f5b2792aa83d15a1478cf201ca674995816430
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 43acff5c4d37c46245566fb2e1d74d3e14d527bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144509"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949844"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -196,44 +196,97 @@ ms.locfileid: "42144509"
 **ストレージ同期サービスやストレージ アカウントを別のリソース グループまたはサブスクリプションに移動できますか。**  
    はい、ストレージ同期サービスやストレージ アカウントは、別のリソース グループまたはサブスクリプションに移動できます。 ストレージ アカウントを移動する場合は、そのストレージ アカウントにハイブリッド ファイル同期サービス アクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
 
+* <a id="afs-ntfs-acls"></a>
+**Azure File Sync では、Azure Files の格納データと共にディレクトリ レベルまたはファイル レベルの NTFS ACL が保持されますか。**
+
+    オンプレミスのファイル サーバーから伝達された NTFS ACL は、Azure File Sync によってメタデータとして保持されます。 Azure Files では、Azure File Sync サービスによって管理されているファイル共有へのアクセスに、Azure AD 資格情報による認証を使用することはできません。
+    
 ## <a name="security-authentication-and-access-control"></a>セキュリティ、認証、およびアクセス制御
 * <a id="ad-support"></a>
 **Azure Files では、Active Directory ベースの認証とアクセス制御はサポートされていますか。**  
-    Azure Files では、2 つの方法でアクセス制御を管理することができます。
+    
+    はい。Azure Files では、Azure Active Directory (Azure AD) による ID ベースの認証およびアクセス制御がサポートされています (プレビュー)。 Azure Files での SMB 経由の Azure AD 認証では、ドメイン参加 VM が Azure AD 資格情報で共有、ディレクトリ、ファイルにアクセスできるよう、Azure Active Directory Domain Services が利用されます。 詳細については、「[SMB を使用した Azure Files の Azure Active Directory 認証の概要 (プレビュー)](storage-files-active-directory-overview.md)」を参照してください。 
+
+    Azure Files では、その他 2 つの方法でアクセス制御を管理できます。
 
     - Shared Access Signature (SAS) を使用すると、指定した期間中有効な特定のアクセス許可があるトークンを生成できます。 たとえば、特定のファイルへの読み取り専用のアクセス許可が付与された、有効期限が 10 分間のトークンを生成できます。 このトークンを所有するすべてのユーザーは、トークンが有効な間、そのファイルへの 10 分間の読み取り専用アクセスを持ちます。 現在、Shared Access Signature キーは、REST API またはクライアント ライブラリでしかサポートされていません。 ストレージ アカウント キーを使って SMB 経由で Azure ファイル共有をマウントする必要があります。
 
     - Azure File Sync は、(Active Directory ベースかローカルかに関係なく) すべての随意 ACL (DACL) を保持し、同期先のすべてのサーバー エンドポイントにレプリケートします。 Windows Server は既に Active Directory で認証できるので、Azure File Sync は、Active Directory ベースの認証の完全サポートと ACL のサポートが実現するまでの優れた応急策となります。
 
-    現在 Azure Files は、Active Directory を直接はサポートしていません。
+* <a id="ad-support-regions"></a>
+**Azure Files での SMB 経由の Azure AD のプレビューは、すべての Azure リージョンで利用できますか。**
+
+    プレビューは、米国西部、米国西部 2、米国中南部、米国東部、米国東部 2、米国中部、米国中北部、オーストラリア東部、西ヨーロッパ、北ヨーロッパを除くすべてのパブリック リージョンで利用できます。
+
+* <a id="ad-support-on-premises"></a>
+**Azure Files での SMB 経由の Azure AD 認証 (プレビュー) では、オンプレミス マシンからの Azure AD を使用した認証はサポートされていますか。**
+
+    いいえ。プレビュー リリースでは、Azure Files でオンプレミス マシンからの Azure AD による認証はサポートされていません。
+
+* <a id="ad-support-devices"></a>
+**Azure Files での SMB 経由の Azure AD 認証 (プレビュー) では、Azure AD に参加済みまたは登録済みのデバイスからの Azure AD 資格情報を使用した SMB アクセスはサポートされていますか。**
+
+    いいえ。このシナリオはサポートされていません。
+
+* <a id="ad-support-rest-apis"></a>
+**ディレクトリまたはファイルの NTFS ACL の取得、設定、またはコピーをサポートする REST API はありますか。**
+
+    プレビュー リリースでは、ディレクトリまたはファイルの NTFS ACL を取得、設定、またはコピーするための REST API はサポートされていません。
+
+* <a id="ad-vm-subscription"></a>
+**異なるサブスクリプションの VM から Azure AD 資格情報を使用して Azure Files にアクセスすることはできますか。**
+
+    ファイル共有のデプロイ元であるサブスクリプションが、VM のドメイン参加先である Azure AD Domain Services デプロイと同じ Azure AD テナントに関連付けられている場合は、同じ Azure AD 資格情報を使用して Azure Files にアクセスできます。 制限は、サブスクリプションにではなく、関連付けられている Azure AD テナントに課せられます。    
+    
+* <a id="ad-support-subscription"></a>
+**ファイル共有が関連付けられているプライマリ テナントとは異なる Azure AD テナントを使用して、Azure Files での SMB 経由の Azure AD 認証を有効にすることはできますか。**
+
+    いいえ。Azure Files では、ファイル共有と同じサブスクリプションに存在する Azure AD テナントとの Azure AD 統合のみがサポートされます。 Azure AD テナントに関連付けることができるサブスクリプションは 1 つだけです。
+
+* <a id="ad-linux-vms"></a>
+**Azure Files での SMB 経由の Azure AD 認証 (プレビュー) では Linux VM がサポートされますか。**
+
+    いいえ。プレビュー リリースでは、Linux VM からの認証はサポートされていません。
+
+* <a id="ad-aad-smb-afs"></a>
+**SMB 機能経由の Azure AD 認証は、Azure File Sync によって管理されているファイル共有で利用できますか。**
+
+    いいえ。Azure Files では、Azure File Sync によって管理されているファイル共有での NTFS ACL の保持がサポートされていません。オンプレミスのファイル サーバーから伝達されたファイル ACL は、Azure File Sync によって保持されます。Azure Files に対してネイティブに構成された NTFS ACL は、Azure File Sync サービスによって上書きされます。 さらに Azure Files では、Azure File Sync サービスによって管理されているファイル共有へのアクセスに、Azure AD 資格情報による認証を使用することはできません。
 
 * <a id="encryption-at-rest"></a>
 **Azure ファイル共有に保存時の暗号化を確保するには、どうすればよいですか。**  
+
     現在、すべてのリージョンにおいて Azure Storage Service Encryption を既定で有効にするプロセスが進行中です。 これらのリージョンでは、暗号化を有効にするために何かする必要はありません。 その他のリージョンについては、[サーバー側の暗号化](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関するページを参照してください。
 
 * <a id="access-via-browser"></a>
 **Web ブラウザーを使用して特定のファイルにアクセスできるようにするにはどうすればよいですか。**  
+
     Shared Access Signature を使用すると、指定した期間中有効な特定のアクセス許可があるトークンを生成できます。 たとえば、特定の期間に特定のファイルに対する読み取り専用アクセス権があるトークンを生成できます。 この URL を持つユーザーは、トークンが有効な間、任意の Web ブラウザーから直接ファイルにアクセスできます。 Shared Access Signature キーは、Storage Explorer などの UI から簡単に生成できます。
 
 * <a id="file-level-permissions"></a>
 **共有内のフォルダーに読み取り専用または書き込み専用の権限を指定できますか。**  
+
     SMB を使用してファイル共有をマウントした場合、フォルダーレベルでアクセス許可を制御することはできません。 ただし、REST API またはクライアント ライブラリを使用して Shared Access Signature を作成すれば、共有内のフォルダーに対して読み取り専用または書き込み専用のアクセス許可を指定することができます。
 
 * <a id="ip-restrictions"></a>
 **Azure ファイル共有に IP 制限を実装することはできますか。**  
+
     はい。 Azure ファイル共有へのアクセスはストレージ アカウント レベルで制限できます。 詳細については、[Azure Storage ファイアウォールおよび Virtual Networks の構成](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)に関する記事を参照してください。
 
 * <a id="data-compliance-policies"></a>
 **Azure Files ではどのようなデータ コンプライアンス ポリシーがサポートされていますか。**  
+
    Azure Files は、Azure Storage 内の他のストレージ サービスと同じストレージ アーキテクチャ上で実行されます。 他の Azure Storage サービスで使用されているデータ コンプライアンス ポリシーが Azure Files でも適用されます。 Azure Storage のデータ コンプライアンスの詳細については、「[Azure Storage のコンプライアンス認証](https://docs.microsoft.com/en-us/azure/storage/common/storage-compliance-offerings)」を参照するか、[Microsoft セキュリティ センター](https://microsoft.com/en-us/trustcenter/default.aspx)にアクセスできます。
 
 ## <a name="on-premises-access"></a>オンプレミスのアクセス
 * <a id="expressroute-not-required"></a>
 **Azure Files に接続するためや、Azure File Sync をオンプレミスで使用するために、Azure ExpressRoute を使用する必要はありますか。**  
+
     いいえ。 ExpressRoute から Azure ファイル共有にアクセスする必要はありません。 Azure ファイル共有を直接オンプレミスにマウントしている場合、必要なのは、インターネット アクセスのためにポート 445 (TCP 送信) が開放されていることだけです (これは SMB が通信に使用するポートです)。 Azure File Sync を使用している場合、必要なのは、HTTPS アクセスのためのポート 443 (TCP 送信) だけです (SMB は必要ありません)。 ただし、ExpressRoute は、これらのアクセス オプションのいずれでも使用 "*できます*"。
 
 * <a id="mount-locally"></a>
 **ローカル マシンに Azure ファイル共有をマウントするにはどうすればよいですか。**  
+
     ポート 445 (TCP 送信) が開放されており、クライアントが SMB 3.0 プロトコルをサポートしている (たとえば、Windows 10 や Windows Server 2016 を使用している) 場合は、SMB プロトコル経由でファイル共有をマウントできます。 ポート 445 が組織のポリシーまたはお使いの ISP によってブロックされている場合は、Azure File Sync を使用して Azure ファイル共有にアクセスできます。
 
 ## <a name="backup"></a>Backup
@@ -242,6 +295,7 @@ ms.locfileid: "42144509"
     誤って削除した場合のために、定期的に[共有スナップショット](storage-snapshots-files.md)を使用して保護できます。 AzCopy、RoboCopy、またはマウントされているファイル共有をバックアップできるサードパーティ製のバックアップ ツールを使用することもできます。 Azure Backup では、Azure Files をバックアップできます。 詳細については、[Azure Backup で Azure ファイル共有をバックアップする](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files)方法に関するページを参照してください。
 
 ## <a name="share-snapshots"></a>共有スナップショット
+
 ### <a name="share-snapshots-general"></a>共有スナップショット - 一般
 * <a id="what-are-snaphots"></a>
 **ファイル共有スナップショットとは何ですか。**  
@@ -262,10 +316,14 @@ ms.locfileid: "42144509"
 * <a id="snapshot-limits"></a>
 **使用できる共有スナップショットの数に制限はありますか。**  
     はい。 Azure Files で保持できる共有スナップショットの数は最大で 200 個です。 共有スナップショットは共有クォータに対してカウントされないので、すべての共有スナップショットで使用される合計領域に共有ごとの制限はありません。 ストレージ アカウントの制限は、引き続き適用されます。 共有スナップショットの数が 200 を超えると、新しい共有スナップショットを作成するために、古い共有スナップショットを削除する必要があります。
+
 * <a id="snapshot-cost"></a>
 **共有スナップショットにかかるコストを教えてください。**  
     標準トランザクションと標準ストレージのコストがスナップショットに適用されます。 スナップショットは本質的に増分です。 基本のスナップショットは共有そのものです。 それ以降のスナップショットはすべて増分であり、以前のスナップショットとの差分のみを格納しています。 つまり、ワークロード チャーンが最小であれば、請求書に表示される差分変更は最小になります。 Standard Azure Files の価格設定情報については、「[料金ページ](https://azure.microsoft.com/pricing/details/storage/files/)」を参照してください。 現在、共有スナップショットで使用されるサイズを見る方法として、請求された容量と使用した容量を比較しています。 Microsoft は、報告機能を改善するツールの開発に取り組んでいます。
 
+* <a id="ntfs-acls-snaphsots"></a>
+**ディレクトリおよびファイルの NTFS ACL は共有スナップショットで保持されますか。**
+    ディレクトリおよびファイルの NTFS ACL は共有スナップショットで保持されます。
 
 ### <a name="create-share-snapshots"></a>共有スナップショットを作成する
 * <a id="file-snaphsots"></a>
@@ -285,7 +343,7 @@ ms.locfileid: "42144509"
 ### <a name="manage-share-snapshots"></a>共有スナップショットを管理する
 * <a id="browse-snapshots-linux"></a>
 **Linux から共有スナップショットを参照できますか。**  
-    Azure CLI 2.0 を使用して、Linux で共有スナップショットの作成、一覧表示、参照、復元が可能です。
+    Azure CLI を使用して、Linux で共有スナップショットの作成、一覧表示、参照、復元が可能です。
 
 * <a id="copy-snapshots-to-other-storage-account"></a>
 **共有スナップショットを別のストレージ アカウントにコピーできますか。**  
@@ -325,13 +383,9 @@ ms.locfileid: "42144509"
 **Azure Files のスケールの上限を教えてください。**  
     Azure Files のスケーラビリティおよびパフォーマンスのターゲットについては、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](storage-files-scale-targets.md)」を参照してください。
 
-* 
-  <a id="need-larger-share">
-    </a>
-  
-
-  **Azure Files で現在提供されているよりも大きなファイル共有を必要としています。Azure ファイル共有のサイズを増やすことはできますか。**  
-  いいえ。 Azure ファイル共有の最大サイズは、5 TiB です。 これは、現時点でのハード制限であり、調整することはできません。 現在、共有サイズを 100 TiB にまで増やすソリューションに取り組んでいるところですが、現時点でスケジュールをお伝えすることはできません。
+* <a id="need-larger-share"></a>
+**Azure Files で現在提供されているよりも大きなファイル共有を必要としています。Azure ファイル共有のサイズを増やすことはできますか。**  
+    いいえ。 Azure ファイル共有の最大サイズは、5 TiB です。 これは、現時点でのハード制限であり、調整することはできません。 現在、共有サイズを 100 TiB にまで増やすソリューションに取り組んでいるところですが、現時点でスケジュールをお伝えすることはできません。
 
 * <a id="open-handles-quota"></a>
 **同じファイルに同時にアクセスできるクライアントの数はどのくらいですか。**   

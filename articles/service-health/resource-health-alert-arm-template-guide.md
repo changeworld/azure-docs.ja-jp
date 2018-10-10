@@ -1,0 +1,438 @@
+---
+title: Resource Manager テンプレートを使用して Azure Resource Health アラートを構成する | Microsoft Docs
+description: Azure リソースが利用不可になったときに通知するアラートをプログラムで作成します。
+author: shawntabrizi
+manager: scotthit
+editor: ''
+services: service-health
+documentationcenter: service-health
+ms.assetid: ''
+ms.service: service-health
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 9/4/2018
+ms.author: shtabriz
+ms.openlocfilehash: b19a840e5d0d3434d3e3ff91e0d7af037d64fb5a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975362"
+---
+# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Resource Manager テンプレートを使用して Resource Health アラートを構成する
+
+この記事では、Azure Resource Manager テンプレートと Azure PowerShell を使用して、Resource Health アクティビティ ログ アラートをプログラムで作成する方法を示します。
+
+Azure Resource Health では、Azure リソースの現在および過去の正常性状態に関する情報が持続的に通知されます。 Azure Resource Health アラートでは、これらのリソースの正常性状態が変化すると、ほぼリアルタイムで通知できます。 Resource Health アラートをプログラムで作成すると、ユーザーは通知を一括で作成およびカスタマイズできます。
+
+## <a name="prerequisites"></a>前提条件
+
+このページの指示に従うには、事前にいくつかの項目を設定する必要があります。
+
+1. [Azure PowerShell モジュール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) (`AzureRm`) をインストールする必要があります。
+2. 通知を行うよう構成された[アクション グループを作成または再利用する](../monitoring-and-diagnostics/monitoring-action-groups.md)必要があります。
+
+## <a name="instructions"></a>このサンプルについての指示
+1. PowerShell を使用し、アカウントを使用して Azure にログインし、操作するサブスクリプションを選択します。
+
+        Login-AzureRmAccount
+        Select-AzureRmSubscription -Subscription <subscriptionId>
+
+    > `Get-AzureRmSubscription` を使用すると、アクセスできるサブスクリプションを一覧表示できます。
+
+2. アクション グループの完全な Azure Resource Manager ID を検索して保存します。
+
+        (Get-AzureRmActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+
+3. Resource Health アラートの Resource Manager テンプレートを `resourcehealthalert.json` として作成して保存します ([次の詳細を参照](#resource-manager-template-for-resource-health-alerts))。
+
+4. このテンプレートを使用して、新しい Azure Resource Manager デプロイを作成します。
+
+        New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+
+5. アラート名と、先ほどコピーしたアクション グループのリソース ID の入力を求めるメッセージが表示されます。
+
+        Supply values for the following parameters:
+        (Type !? for Help.)
+        activityLogAlertName: <Alert Name>
+        actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resouceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
+
+6. すべてが正常に動作すると、PowerShell に確認メッセージが表示されます。
+
+        DeploymentName          : ExampleDeployment
+        ResourceGroupName       : <resourceGroup>
+        ProvisioningState       : Succeeded
+        Timestamp               : 11/8/2017 2:32:00 AM
+        Mode                    : Incremental
+        TemplateLink            :
+        Parameters              :
+                                Name                     Type       Value
+                                ===============          =========  ==========
+                                activityLogAlertName     String     <Alert Name>
+                                activityLogAlertEnabled  Bool       True
+                                actionGroupResourceId    String     /...
+        
+        Outputs                 :
+        DeploymentDebugLogLevel :
+
+このプロセスを完全に自動化する場合は、手順 5 で値を求めるメッセージが表示されないよう、Resource Manager テンプレートを編集します。
+
+## <a name="resource-manager-template-for-resource-health-alerts"></a>Resource Health アラートの Resource Manager テンプレート
+
+Resource Health アラートを作成するための開始点として、この基本テンプレートを使用できます。 このテンプレートは記述どおりに動作し、ユーザーはサインアップして、サブスクリプション内のすべてのリソースにわたり、新しくアクティブになったすべてのリソース正常性イベントに関するアラートを受信できます。
+
+> また、この記事の最後に、このテンプレートと比較して Resource Health アラートの信号雑音比率が大きくなる、より複雑な警告テンプレートも示されています。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "activityLogAlertName": {
+      "type": "string",
+      "metadata": {
+        "description": "Unique name (within the Resource Group) for the Activity log alert."
+      }
+    },
+    "actionGroupResourceId": {
+      "type": "string",
+      "metadata": {
+        "description": "Resource Id for the Action group."
+      }
+    }
+  },
+  "resources": [   
+    {
+      "type": "Microsoft.Insights/activityLogAlerts",
+      "apiVersion": "2017-04-01",
+      "name": "[parameters('activityLogAlertName')]",      
+      "location": "Global",
+      "properties": {
+        "enabled": true,
+        "scopes": [
+            "[subscription().id]"
+        ],        
+        "condition": {
+          "allOf": [
+            {
+              "field": "category",
+              "equals": "ResourceHealth"
+            },
+            {
+              "field": "status",
+              "equals": "Active"
+            }
+          ]
+        },
+        "actions": {
+          "actionGroups":
+          [
+            {
+              "actionGroupId": "[parameters('actionGroupResourceId')]"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
+```
+
+ただし、このような広範なアラートは一般的に推奨されません。 以下に、重要なイベントに焦点を合わせるためにこのアラートの範囲を設定する方法について説明します。
+
+### <a name="adjusting-the-alert-scope"></a>アラート スコープの調整
+
+Resource Health アラートは、次の 3 つの異なるスコープでイベントを監視するよう構成できます。
+
+ * サブスクリプション レベル
+ * リソース グループ レベル
+ * リソース レベル
+
+アラート テンプレートはサブスクリプション レベルで構成されますが、特定のリソース、または特定のリソース グループ内のリソースに関してのみ通知を行うようアラートを構成する場合は、上記のテンプレートの `scopes` セクションを変更するだけです。
+
+リソース グループ レベルのスコープの場合、scopes セクションは次のようになります。
+```json
+"scopes": [
+    "/subscriptions/<subscription id>/resourcegroups/<resource group>"
+],
+```
+
+一方、リソース レベルのスコープの場合、scopes セクションは次のようになります。
+
+```json
+"scopes": [
+    "/subscriptions/<subscription id>/resourcegroups/<resource group>/providers/<resource>"
+],
+```
+
+次に例を示します。`"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
+
+> Azure portal に移動し、Azure リソースを表示しているときに URL を確認して、この文字列を取得できます。
+
+### <a name="adjusting-the-resource-types-which-alert-you"></a>アラートを生成するリソースの種類の調整
+
+サブスクリプションまたはリソース グループ レベルのアラートには、異なる種類のリソースが含まれる場合があります。 リソースの種類の特定のサブセットからのみ生成されるようアラートを制限する場合は、次のように、テンプレートの `condition` セクションで定義できます。
+
+```json
+"condition": {
+    "allOf": [
+        ...,
+        {
+            "anyOf": [
+                {
+                    "field": "resourceType",
+                    "equals": "Microsoft.Compute/virtualMachines",
+                    "containsAny": null
+                },
+                {
+                    "field": "resourceType",
+                    "equals": "Microsoft.Storage/storageAccounts",
+                    "containsAny": null
+                },
+                ...
+            ]
+        }
+    ]
+},
+```
+
+ここでは、`anyOf` ラッパーを使用して、指定したいずれかの条件と一致する Resource Health アラートを定義し、アラートが特定のリソースの種類をターゲットにできるようにします。
+
+### <a name="adjusting-the-resource-health-events-that-alert-you"></a>アラートを生成する Resource Health イベントの調整
+リソースで正常性イベントが発生すると、正常性イベントの状態を表す一連の段階: `Active`、`InProgress`、`Updated`、および `Resolved` を経由する可能性があります。
+
+リソースが異常になった場合にのみ通知を受け取るには、`status` が `Active` の際にのみ通知するようアラートを構成する必要があります。 一方、その他の段階でも通知を受け取るには、次のような詳細情報を追加します。
+
+```json
+"condition": {
+    "allOf": [
+        ...,
+        {
+            "anyOf": [
+                {
+                    "field": "status",
+                    "equals": "Active"
+                },
+                {
+                    "field": "status",
+                    "equals": "InProgress"
+                },
+                        {
+                    "field": "status",
+                    "equals": "Resolved"
+                }
+            ]
+        }
+    ]
+}
+```
+
+正常性イベントの 4 つすべての段階で通知を受け取るには、この条件をすべて削除して、`status` プロパティとは関係なくアラートが生成されるようにします。
+
+### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>"Unknown" イベントを回避するための Resource Health アラートの調整
+
+Azure Resource Health では、テスト ランナーを使用してリソースを持続的に監視することで、リソースの最新の正常性をレポートできます。 関連するレポート対象の正常性状態は、"Available"、"Unavailable"、および "Degraded" です。 ただし、ランナーと Azure リソースが通信できない場合、リソースに関して "Unknown" 状態がレポートされ、"Active" 正常性イベントと見なされます。
+
+しかし、リソースで "Unknown" がレポートされた場合、その正常性状態は前回の正確なレポートから変化していない可能性があります。 "Unknown" イベントに関するアラートを生成しない場合は、テンプレートで次のロジックを指定します。
+
+```json
+"condition": {
+    "allOf": [
+        ...,
+        {
+            "anyOf": [
+                {
+                    "field": "properties.currentHealthStatus",
+                    "equals": "Available",
+                    "containsAny": null
+                },
+                {
+                    "field": "properties.currentHealthStatus",
+                    "equals": "Unavailable",
+                    "containsAny": null
+                },
+                {
+                    "field": "properties.currentHealthStatus",
+                    "equals": "Degraded",
+                    "containsAny": null
+                }
+            ]
+        },
+        {
+            "anyOf": [
+                {
+                    "field": "properties.previousHealthStatus",
+                    "equals": "Available",
+                    "containsAny": null
+                },
+                {
+                    "field": "properties.previousHealthStatus",
+                    "equals": "Unavailable",
+                    "containsAny": null
+                },
+                {
+                    "field": "properties.previousHealthStatus",
+                    "equals": "Degraded",
+                    "containsAny": null
+                }
+            ]
+        },
+    ]
+},
+```
+
+この例では、現在および以前の正常性状態が "Unknown" でないイベントのみを通知します。 この変更は、アラートが携帯電話または電子メールに直接送信される場合に役立つ可能性があります。
+
+### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>ユーザーが開始したイベントを回避するためのアラートの調整
+
+Resource Health イベントは、プラットフォームまたはユーザーによって開始されたイベントによってトリガーできます。 正常性イベントが Azure プラットフォームに由来する場合にのみ通知を送信することは、理に適っています。
+
+このような種類のイベントのみをフィルター処理するようアラートを構成することは簡単です。
+
+```json
+"condition": {
+    "allOf": [
+        ...,
+        {
+            "field": "properties.cause",
+            "equals": "PlatformInitiated",
+            "containsAny": null
+        }
+    ]
+}
+```
+
+## <a name="recommended-resource-health-alert-template"></a>推奨される Resource Health アラート テンプレート
+
+前のセクションで説明したさまざまな調整を使用して、信号雑音比率を最大化するよう構成された包括的なアラート テンプレートを作成できます。
+
+推奨されるテンプレートを次に示します。
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "activityLogAlertName": {
+            "type": "string",
+            "metadata": {
+                "description": "Unique name (within the Resource Group) for the Activity log alert."
+            }
+        },
+        "actionGroupResourceId": {
+            "type": "string",
+            "metadata": {
+                "description": "Resource Id for the Action group."
+            }
+        }
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Insights/activityLogAlerts",
+            "apiVersion": "2017-04-01",
+            "name": "[parameters('activityLogAlertName')]",
+            "location": "Global",
+            "properties": {
+                "enabled": true,
+                "scopes": [
+                    "[subscription().id]"
+                ],
+                "condition": {
+                    "allOf": [
+                        {
+                            "field": "category",
+                            "equals": "ResourceHealth",
+                            "containsAny": null
+                        },
+                        {
+                            "anyOf": [
+                                {
+                                    "field": "properties.currentHealthStatus",
+                                    "equals": "Available",
+                                    "containsAny": null
+                                },
+                                {
+                                    "field": "properties.currentHealthStatus",
+                                    "equals": "Unavailable",
+                                    "containsAny": null
+                                },
+                                {
+                                    "field": "properties.currentHealthStatus",
+                                    "equals": "Degraded",
+                                    "containsAny": null
+                                }
+                            ]
+                        },
+                        {
+                            "anyOf": [
+                                {
+                                    "field": "properties.previousHealthStatus",
+                                    "equals": "Available",
+                                    "containsAny": null
+                                },
+                                {
+                                    "field": "properties.previousHealthStatus",
+                                    "equals": "Unavailable",
+                                    "containsAny": null
+                                },
+                                {
+                                    "field": "properties.previousHealthStatus",
+                                    "equals": "Degraded",
+                                    "containsAny": null
+                                }
+                            ]
+                        },
+                        {
+                            "anyOf": [
+                                {
+                                    "field": "properties.cause",
+                                    "equals": "PlatformInitiated",
+                                    "containsAny": null
+                                }
+                            ]
+                        },
+                        {
+                            "anyOf": [
+                                {
+                                    "field": "status",
+                                    "equals": "Active",
+                                    "containsAny": null
+                                },
+                                {
+                                    "field": "status",
+                                    "equals": "Resolved",
+                                    "containsAny": null
+                                },
+                                {
+                                    "field": "status",
+                                    "equals": "InProgress",
+                                    "containsAny": null
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "actions": {
+                    "actionGroups": [
+                        {
+                            "actionGroupId": "[parameters('actionGroupResourceId')]"
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
+しかし、自分にとって最も効果的な構成を把握するためには、ドキュメントで学習したツールを使用して独自のカスタマイズを行ってください。
+
+## <a name="next-steps"></a>次の手順
+
+Resource Health に関する詳細情報を参照してください。
+-  [Azure Resource Health の概要](Resource-health-overview.md)
+-  [Azure Resource Health で利用できるリソースの種類と正常性チェック](resource-health-checks-resource-types.md)
+
+Service Health アラートを作成します。
+-  [Service Health のアラートの構成](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md) 

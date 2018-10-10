@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 9eaaaaa4cc9be661cdc2ffde2b634e062c95a404
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ff382becb71f187ac38b0ef5d31c1b29c43f3fe7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523259"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972557"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 Azure Storage は多層型セキュリティ モデルを提供しているため、許可されたネットワークの特定のセットに対するストレージ アカウントをセキュリティで保護することができます。  ネットワーク ルールが構成されている場合、ストレージ アカウントにアクセスできるのは、許可されているネットワークからのアプリケーションのみです。  許可されているネットワークからの呼び出し時に、アプリケーションはストレージ アカウントにアクセスするための適切な承認 (有効なアクセス キーまたは SAS トークン) を要求します。
 
 > [!IMPORTANT]
-> ストレージ アカウントのファイアウォール ルールをオンにすると、他の Azure サービスを含む、データの受信要求へのアクセスがブロックされます。  これにはポータルの使用やログの書き込みなども含まれます。参加サービスに対しては、以下の「[例外](#Exceptions)」セクションに従って、機能を再度有効にできます。  ポータルにアクセスするには、設定済みの信頼できる境界 (IP または VNet) 内のコンピューターからアクセスする必要があります。
+> ストレージ アカウントのファイアウォール ルールをオンにすると、他の Azure サービスを含む、データの受信要求へのアクセスがブロックされます。  これにはポータルの使用やログの書き込みなども含まれます。参加サービスに対しては、以下の「[例外](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)」セクションに従って、機能を再度有効にできます。  ポータルにアクセスするには、設定済みの信頼できる境界 (IP または VNet) 内のコンピューターからアクセスする必要があります。
 >
 
 ## <a name="scenarios"></a>シナリオ
@@ -35,7 +35,7 @@ Azure Storage に対して、REST や SMB などのすべてのネットワー�
 
 従来のストレージ アカウントは、ファイアウォールおよび仮想ネットワークをサポート**していません**。
 
-ネットワーク ルールが適用されたストレージ アカウントで非管理対象ディスクを使用した仮想マシンのバックアップと復元は、この記事の「[例外](/storage/common/storage-network-security#exceptions)」セクションに記載されている例外を作成することでサポートされます。  ファイアウォールの例外は Azure によって既に管理されているので、Managed Disks には適用されません。
+ネットワーク ルールが適用されたストレージ アカウントで非管理対象ディスクを使用した仮想マシンのバックアップと復元は、この記事の「[例外](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)」セクションに記載されている例外を作成することでサポートされます。  ファイアウォールの例外は Azure によって既に管理されているので、Managed Disks には適用されません。
 
 ## <a name="change-the-default-network-access-rule"></a>既定のネットワーク アクセス ルールの変更
 既定では、ストレージ アカウントは、任意のネットワーク上のクライアントからの接続を受け入れます。  選択したネットワークへのアクセスを制限するには、まず既定のアクションを変更する必要があります。
@@ -70,7 +70,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 ```    
 
 #### <a name="cliv2"></a>CLIv2
-1. [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールして[ログイン](/cli/azure/authenticate-azure-cli)します。
+1. [Azure CLI をインストール](/cli/azure/install-azure-cli)して[ログイン](/cli/azure/authenticate-azure-cli)します。
 2. ストレージ アカウントの既定のルールの状態を表示します。
 ```azurecli
 az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
@@ -152,7 +152,7 @@ Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Na
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールして[ログイン](/cli/azure/authenticate-azure-cli)します。
+1. [Azure CLI をインストール](/cli/azure/install-azure-cli)して[ログイン](/cli/azure/authenticate-azure-cli)します。
 2. 仮想ネットワーク ルールを一覧表示します。
 ```azurecli
 az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
@@ -208,7 +208,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 2. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
 3. "選択したネットワーク" からのアクセスを許可するように選択していることを確認します。
 4. インターネット IP 範囲へのアクセスを許可するには、[ファイアウォール] の [アドレス範囲] に IP アドレスまたはアドレス範囲 (CIDR 形式) を入力します。
-5. IP ネットワーク ルールを削除するには、[...] をクリックしてルールのコンテキスト メニューを開き、[削除] をクリックします。
+5. IP ネットワーク ルールを削除するには、ネットワーク ルールの横にあるごみ箱のアイコンをクリックします。
 6. *[保存]* をクリックして変更を保存します。
 
 #### <a name="powershell"></a>PowerShell
@@ -243,7 +243,7 @@ Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Ac
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールして[ログイン](/cli/azure/authenticate-azure-cli)します。
+1. [Azure CLI をインストール](/cli/azure/install-azure-cli)して[ログイン](/cli/azure/authenticate-azure-cli)します。
 2. IP ネットワーク ルールを一覧表示します。
 ```azurecli
 az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query ipRules
@@ -290,7 +290,9 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 |Azure Event Grid|Microsoft.EventGrid|Blob Storage イベントの発行を有効にする  [詳細情報](https://docs.microsoft.com/azure/event-grid/overview)。|
 |Azure Event Hubs|Microsoft.EventHub|Event Hubs Capture を使用したアーカイブ データのキャプチャ  [詳細情報](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|
 |Azure のネットワーク|Microsoft.Networking|ネットワーク トラフィック ログの保存および分析  [詳細情報](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)。|
-||||
+|Azure Monitor|Microsoft.Insights| セキュリティで保護されたストレージ アカウントに監視データを書き込めるようにします。[詳細情報](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks)。|
+|
+
 
 ### <a name="storage-analytics-data-access"></a>ストレージ分析データ アクセス
 場合によっては、ネットワーク境界の外側から診断ログとメトリックを読み取るためにアクセスする必要があります。  ネットワーク ルールの例外では、ストレージ アカウントのログ ファイル、メトリック テーブル、またはその両方への読み取りアクセスを許可できます。 [ストレージ分析の使用に関する説明](/azure/storage/storage-analytics)
@@ -327,7 +329,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールして[ログイン](/cli/azure/authenticate-azure-cli)します。
+1. [Azure CLI をインストール](/cli/azure/install-azure-cli)して[ログイン](/cli/azure/authenticate-azure-cli)します。
 2. ストレージ アカウントのネットワーク ルールの例外を表示します。
 ```azurecli
 az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass

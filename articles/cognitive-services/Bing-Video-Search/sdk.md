@@ -1,22 +1,21 @@
 ---
-title: Bing Search SDK | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: Bing Video Search SDK
+titleSuffix: Azure Cognitive Services
 description: Web を検索するアプリケーション用の Bing Search SDK。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
-ms.assetid: ''
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/25/2018
-ms.author: v-gedod
-ms.openlocfilehash: e91b20c1efc7c211ad3f4fc773e029a5e3b9fce1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 3d8656748a9632ac20b6a658e4bcbdd647c0573e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377949"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224683"
 ---
 # <a name="bing-search-sdk"></a>Bing Search SDK
 Bing Video Search API のサンプルには、次のようなシナリオが含まれています。
@@ -32,7 +31,7 @@ Bing Search SDK を使用すると、次のプログラミング言語で簡単�
 * [Node.js サンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)を使ってみる 
     * 定義と依存関係については、[Node.js ライブラリ](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/videoSearch)も参照してください。
 * [Java サンプル](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples)を使ってみる 
-    * 定義と依存関係については、[Java ライブラリ](hhttps://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)も参照してください。
+    * 定義と依存関係については、[Java ライブラリ](h https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch)も参照してください。
 * [Python サンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)を使ってみる 
     * 定義と依存関係については、[Python ライブラリ](https://github.com/Azure/azure-sdk-for-python/tree/master/azure-cognitiveservices-search-videosearch)も参照してください。
 

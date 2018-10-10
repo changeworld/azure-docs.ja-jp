@@ -1,6 +1,6 @@
 ---
-title: Azure Storage での Azure CLI 2.0 の使用 | Microsoft Docs
-description: Azure Storage で Azure コマンドライン インターフェイス (Azure CLI) 2.0 を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。 Azure CLI 2.0 は、Python で作成されたクロスプラットフォーム ツールです。
+title: Azure Storage での Azure CLI の使用 | Microsoft Docs
+description: Azure Storage で Azure コマンド ライン インターフェイス (Azure CLI) を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。
 services: storage
 author: roygara
 ms.service: storage
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 12b383267cb90d9305043b52450572add0c1c202
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: cd2399e25889cdc9c885b76e002e47415c0629e5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527492"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984387"
 ---
-# <a name="using-the-azure-cli-20-with-azure-storage"></a>Azure Storage での Azure CLI 2.0 の使用
+# <a name="using-the-azure-cli-with-azure-storage"></a>Azure Storage での Azure CLI の使用
 
-オープンソースであるクロスプラットフォーム Azure CLI 2.0 には、Azure Platform で使用できるさまざまなコマンドが用意されています。 豊富なデータ アクセスを含む、 [Azure Portal](https://portal.azure.com) にあるものと同じ機能の多くを使用できます。
+オープンソースであるクロスプラットフォーム Azure CLI では、Azure Platform で使用するための一連のコマンドが提供されます。 豊富なデータ アクセスを含む、 [Azure Portal](https://portal.azure.com) にあるものと同じ機能の多くを使用できます。
 
-このガイドでは、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) を使用して Azure Storage アカウント内のリソースを扱うタスクを実行する方法をいくつかご紹介します。 このガイドを使用する前に、最新バージョンの CLI 2.0 をダウンロードしてインストールするか、最新バージョンの CLI 2.0 にアップグレードすることをお勧めします。
+このガイドでは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) を使用して Azure Storage アカウント内のリソースを扱ういくつかのタスクを実行する方法を紹介します。 このガイドを使用する前に、最新バージョンの CLI をダウンロードしてインストールするか、最新バージョンの CLI にアップグレードすることをお勧めします。
 
 ガイド内の例では、Ubuntu 上での Bash シェルの使用を想定していますが、その他のプラットフォームでも同様に動作します。 
 
@@ -31,11 +31,11 @@ ms.locfileid: "39527492"
 
 ### <a name="accounts"></a>アカウント
 * **Azure アカウント**: まだ Azure サブスクリプションを持っていない場合は、[無料 Azure アカウントを作成](https://azure.microsoft.com/free/)します。
-* **ストレージ アカウント**: 「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」の「[ストレージ アカウントの作成](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+* **ストレージ アカウント**: 「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」の「[ストレージ アカウントの作成](storage-quickstart-create-account.md)」を参照してください。
 
-### <a name="install-the-azure-cli-20"></a>Azure CLI 2.0 のインストール
+### <a name="install-the-azure-cli"></a>Azure CLI のインストール
 
-「[Install the Azure CLI 2.0](/cli/azure/install-az-cli2)」(Azure CLI 2.0 のインストール) に記載されている手順に従って、Azure CLI 2.0 をダウンロードしてインストールします。
+[Azure CLI のインストール](/cli/azure/install-az-cli2)に関するページに記載されている手順に従って、Azure CLI をダウンロードしてインストールします。
 
 > [!TIP]
 > インストールに問題がある場合は、その記事の「[Installation Troubleshooting](/cli/azure/install-az-cli2#installation-troubleshooting)」 (インストールのトラブルシューティング) セクションと、GitHub の「[インストールのトラブルシューティング](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md)」ガイドを確認してください。
@@ -96,16 +96,16 @@ Azure サブスクリプション内のリソースを操作するには、最�
   * これは、Microsoft アカウントまたは多要素認証を使用するアカウントでは機能しません。
 * **サービス プリンシパルによるログイン**: `az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
 
-## <a name="azure-cli-20-sample-script"></a>Azure CLI 2.0 サンプル スクリプト
+## <a name="azure-cli-sample-script"></a>Azure CLI サンプル スクリプト
 
-次に、Azure Storage リソースを操作するいくつかの基本的な Azure CLI 2.0 コマンドを発行する、簡単なシェル スクリプトを説明します。 スクリプトはまず最初にストレージ アカウントに新しいコンテナーを作成し、そのコンテナーに任意の既存ファイルを (BLOB として) アップロードします。 次にコンテナー内のすべての BLOB を一覧表示し、最後に、指定したローカル コンピューター上の宛先にファイルをダウンロードします。
+次に、Azure Storage リソースを操作するいくつかの基本的な Azure CLI コマンドを発行する、簡単なシェル スクリプトを使用します。 スクリプトはまず最初にストレージ アカウントに新しいコンテナーを作成し、そのコンテナーに任意の既存ファイルを (BLOB として) アップロードします。 次にコンテナー内のすべての BLOB を一覧表示し、最後に、指定したローカル コンピューター上の宛先にファイルをダウンロードします。
 
 ```bash
 #!/bin/bash
 # A simple Azure Storage example script
 
 export AZURE_STORAGE_ACCOUNT=<storage_account_name>
-export AZURE_STORAGE_ACCESS_KEY=<storage_account_key>
+export AZURE_STORAGE_KEY=<storage_account_key>
 
 export container_name=<container_name>
 export blob_name=<blob_name>
@@ -210,7 +210,7 @@ az storage account keys list \
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
-export AZURE_STORAGE_ACCESS_KEY=<key>
+export AZURE_STORAGE_KEY=<key>
 ```
 
 既定のストレージ アカウントを設定するもう 1 つの方法としては、接続文字列の使用があります。 まず、`show-connection-string` コマンドで接続文字列を取得します。
@@ -228,7 +228,7 @@ export AZURE_STORAGE_CONNECTION_STRING="<connection_string>"
 ```
 
 > [!NOTE]
-> この記事のこれ以降のセクションでは、すべての例は `AZURE_STORAGE_ACCOUNT` および `AZURE_STORAGE_ACCESS_KEY` 環境変数を設定済みであると仮定しています。
+> この記事のこれ以降のセクションでは、すべての例は `AZURE_STORAGE_ACCOUNT` および `AZURE_STORAGE_KEY` 環境変数を設定済みであると仮定しています。
 
 ## <a name="create-and-manage-blobs"></a>BLOB を作成および管理する
 Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化データを格納するためのサービスです。 このセクションでは、Azure BLOB ストレージの概念について理解しているユーザーを対象としています。 詳しくは、「[.NET を使用して Azure Blob Storage を使用する](../blobs/storage-dotnet-how-to-use-blobs.md)」と「[BLOB サービスの概念](/rest/api/storageservices/blob-service-concepts)」をご覧ください。
@@ -257,6 +257,8 @@ az storage blob upload \
     --container-name <container_name> \
     --name <blob_name>
 ```
+
+ストレージ アカウントのコンテナー内にあるフォルダーに直接アップロードする場合は、`--name <blob_name>` を `--name <folder/blob_name>` に置き換えます。
 
  既定では `blob upload` コマンドは *.vhd ファイルをページ BLOB にアップロードし、それ以外の場合はブロック BLOB にアップロードします。 BLOB アップロード時に別の種類を指定するには、`--type` 引数を使用することができます。使用できる値は `append`、`block`、および `page` です。
 
@@ -517,8 +519,8 @@ az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z
 ```
 
 ## <a name="next-steps"></a>次の手順
-下記の資料で、Azure CLI 2.0 の使用に関する詳細をさらにご覧いただけます。
+下記の資料で、Azure CLI の使用に関する詳細をさらにご覧いただけます。 
 
-* [Azure CLI 2.0 の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-* [Azure CLI 2.0 コマンド リファレンス](/cli/azure)
-* [GitHub の Azure CLI 2.0](https://github.com/Azure/azure-cli)
+* [Azure CLI の概要](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
+* [Azure CLI コマンド リファレンス](/cli/azure)
+* [GitHub の Azure CLI](https://github.com/Azure/azure-cli)

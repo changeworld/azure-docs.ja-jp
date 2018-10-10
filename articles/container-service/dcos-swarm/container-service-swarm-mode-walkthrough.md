@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: d3438f42753cba82a28d16be2b63926c4762b26b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c8f9db2674976d2c1efa7686b8b224b48a19a534
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421935"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964447"
 ---
 # <a name="deploy-docker-ce-cluster"></a>Docker CE クラスターのデプロイ
 
@@ -24,7 +24,7 @@ Azure Container Service での Docker CE は現在プレビュー段階です。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -169,7 +169,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 このクイック スタートでは、Docker Swarm クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。
 
-Docker Swarm と Visual Studio Team Services の統合について確認するには、「Docker Swarm と VSTS を使用した CI/CD」に進んでください。
+Docker Swarm と Azure DevOps の統合について確認するには、Docker Swarm と Azure DevOps を使用した CI/CD に進んでください。
 
 > [!div class="nextstepaction"]
-> [Docker Swarm と VSTS を使用した CI/CD](./container-service-docker-swarm-setup-ci-cd.md)
+> [Docker Swarm と Azure DevOps を使用した CI/CD](./container-service-docker-swarm-setup-ci-cd.md)

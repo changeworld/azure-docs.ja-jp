@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 2.0 で VM の名前解決に内部 DNS を使用する | Microsoft Docs
-description: 仮想ネットワーク インターフェイス カードの作成方法および Azure CLI 2.0 で Azure での VM の名前解決に内部 DNS を使用する方法
+title: Azure CLI で VM の名前解決に内部 DNS を使用する | Microsoft Docs
+description: 仮想ネットワーク インターフェイス カードの作成方法および Azure CLI で Azure での VM の名前解決に内部 DNS を使用する方法
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
@@ -15,15 +15,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: c1ca250d7255877cc811bf7c03034ecbb8f1f372
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: acfdd9070b49805c20b8ef921b5387c151448aa1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936906"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961503"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>仮想ネットワーク インターフェイス カードを作成して Azure での VM の名前解決に内部 DNS を使用する
-この記事では、仮想ネットワーク インターフェイス カード (vNIC) と DNS ラベル名を Azure CLI 2.0 と共に使用して Linux VM の静的な内部 DNS 名を設定する方法を説明します。 静的 DNS 名は、このドキュメントで使用している Jenkins ビルド サーバーや、Git サーバーなどの永続的なインフラストラクチャ サービスに使用されます。
+
+この記事では、仮想ネットワーク インターフェイス カード (vNIC) と DNS ラベル名を Azure CLI と共に使用して Linux VM に静的な内部 DNS 名を設定する方法を説明します。 静的 DNS 名は、このドキュメントで使用している Jenkins ビルド サーバーや、Git サーバーなどの永続的なインフラストラクチャ サービスに使用されます。
 
 要件は次のとおりです。
 
@@ -31,7 +32,7 @@ ms.locfileid: "36936906"
 * [SSH パブリック キー ファイルおよびプライベート キー ファイル](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quick-commands"></a>クイック コマンド
-タスクをすばやく実行する必要がある場合のために、次のセクションでは、必要なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-walkthrough)。 これらの手順を実行するには、[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインする必要があります。
+タスクをすばやく実行する必要がある場合のために、次のセクションでは、必要なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-walkthrough)。 これらの手順を実行するには、[Azure CLI](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインする必要があります。
 
 前提条件: リソース グループ、仮想ネットワークおよびサブネット、SSH 受信が設定されたネットワーク セキュリティ グループ。
 

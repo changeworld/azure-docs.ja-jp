@@ -1,6 +1,6 @@
 ---
 title: 新しい Azure IoT Edge デバイスの登録 (CLI) | Microsoft Docs
-description: Azure CLI 2.0 の IoT 拡張機能を使用して、新しい IoT Edge デバイスを登録する
+description: Azure CLI の IoT 拡張機能を使用して、新しい IoT Edge デバイスを登録する
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 451f4df31cd1c520b14227829923f72fe80c38c3
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: ee5e68d45c7d966619238312dabedc1628a4bf61
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325498"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998034"
 ---
-# <a name="register-a-new-azure-iot-edge-device-with-azure-cli-20"></a>Azure CLI 2.0 を使用して新しい Azure IoT Edge デバイスを登録する
+# <a name="register-a-new-azure-iot-edge-device-with-azure-cli"></a>Azure CLI を使用して新しい Azure IoT Edge デバイスを登録する
 
 Azure IoT Edge で IoT デバイスを使用する前に、それらを IoT ハブに登録する必要があります。 デバイスを登録すると、Edge ワークロード用にデバイスを設定するために使用できる接続文字列を受け取ります。 
 
-[Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、IoT Edge などの Azure リソースを管理するための、オープン ソースのクロス プラットフォーム コマンド ライン ツールです。 これを使用すると、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを簡単に管理することができます。 新しい IoT 拡張機能によって、Azure CLI 2.0 には、デバイス管理、完全な IoT Edge 対応などの機能が追加されました。
+[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) は、IoT Edge などの Azure リソースを管理するための、オープン ソースのクロス プラットフォーム コマンド ライン ツールです。 これを使用すると、Azure IoT Hub リソース、デバイス プロビジョニング サービス インスタンス、およびリンク済みのハブを簡単に管理することができます。 新しい IoT 拡張機能によって、Azure CLI には、デバイス管理、完全な IoT Edge 対応などの機能が追加されました。
 
-この記事では、Azure CLI 2.0 を使用して新しい IoT Edge デバイスを登録する方法を示します。
+この記事では、Azure CLI を使用して新しい IoT Edge デバイスを登録する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-using-cli.md)。 
-* ご使用の環境内の [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 2.0 のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
-* [Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
+* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
+* [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
 
-## <a name="create-a-device"></a>デバイスの作成
+## <a name="create-a-device"></a>デバイスを作成する
 
 次のコマンドを使用して、IoT ハブに新しいデバイス ID を作成します。 
 
@@ -67,4 +67,4 @@ device id パラメーターでは大文字と小文字が区別されます。 
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure CLI 2.0 でモジュールをデバイスにデプロイ](how-to-deploy-modules-cli.md)する方法を学習します
+[Azure CLI でモジュールをデバイスにデプロイ](how-to-deploy-modules-cli.md)する方法について説明します

@@ -1,27 +1,27 @@
 ---
-title: Azure Blob Storage の不変ストレージ (プレビュー) | Microsoft Docs
+title: Azure Storage Blob の不変ストレージ | Microsoft Docs
 description: Azure Storage では、BLOB (オブジェクト) ストレージの WORM (Write Once Read Many) がサポートされています。これにより、指定された期間、消去および変更できない状態でデータを保存できます。
 services: storage
-author: sangsinh
+author: MichaelHauss
 ms.service: storage
 ms.topic: article
-ms.date: 05/29/2018
-ms.author: sangsinh
+ms.date: 09/18/2018
+ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: cfc25906e926e8dd6687eeccd311a38653772c4d
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 14b5dfb0a12df6c5251ee9f9e6b35a7ce527a1d3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399000"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961979"
 ---
-# <a name="store-business-critical-data-in-azure-blob-storage-preview"></a>ビジネスに不可欠なデータを Azure Blob Storage (プレビュー) 内に保管する
+# <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
 
 Azure Blob (オブジェクト) Storage の不変ストレージを使用すると、ユーザーはビジネスに不可欠なデータを WORM (Write Once Read Many) 状態で保存できます。 この状態では、ユーザーが指定した期間、データを消去および変更できなくなります。 保持間隔の間、BLOB の作成と読み取りは可能ですが、変更または削除することはできません。
 
 ## <a name="overview"></a>概要
 
-不変ストレージを使用すると、金融機関やそれに関連する業界 (特に、ブローカー ディーラー組織) は、データを安全に保存できるようになります。
+不変ストレージを使用すると、金融機関やそれに関連する業界 (特に、ブローカー ディーラー組織) は、データを安全に保存できるようになります。 これは、重要なデータを削除から保護するための任意のシナリオでも利用できます。  
 
 一般的な用途は次のとおりです。
 
@@ -37,9 +37,9 @@ Azure Blob (オブジェクト) Storage の不変ストレージを使用する�
 
 - **訴訟ホールド ポリシーのサポート:** 保持間隔がわからない場合は、訴訟ホールドを設定することで、訴訟ホールドがクリアされるまでデータを不変状態で保存できます。  訴訟ホールドを設定すると、BLOB の作成と読み取りは可能ですが、変更または削除はできません。 各訴訟ホールドは、識別子文字列 (ケース ID など) として使用されるユーザー定義の英数字のタグに関連付けられています。
 
-- **すべての BLOB 層のサポート:** WORM ポリシーは Azure Blob Storage 層から独立しており、ホット、クール、アーカイブのすべての層に適用されます。 ユーザーは、データの不変性を維持しながら、ワークロードに対応する最もコストが最適化された層にデータを保存できます。
+- **すべての BLOB 層のサポート:** WORM ポリシーは Azure Blob Storage 層から独立しており、ホット、クール、アーカイブのすべての層に適用されます。 ユーザーは、データの不変性を維持しながら、ワークロードに対応する最もコストが最適化された層にデータを移行できます。
 
-- **コンテナー レベルの構成:** ユーザーは、時間ベースのリテンション ポリシーと訴訟ホールド タグをコンテナー レベルで構成できます。 ユーザーは、コンテナー レベルの簡単な設定を使用して、時間ベースのリテンション ポリシーの作成とロック、保持間隔の延長、訴訟ホールドの設定とクリアなどを行うことができます。 これらのポリシーは、コンテナー内の既存および新規のすべての BLOB に適用されます。
+- **コンテナー レベルの構成:** ユーザーは、時間ベースのリテンション ポリシーと訴訟ホールド タグをコンテナー レベルで構成できます。 ユーザーは、コンテナー レベルのシンプルな設定を使用して、時間ベースのリテンション ポリシーの作成とロック、保持間隔の延長、訴訟ホールドの設定とクリアなどを行うことができます。 これらのポリシーは、コンテナー内の既存および新規のすべての BLOB に適用されます。
 
 - **監査ログのサポート**: 各コンテナーには、監査ログが含まれています。 各コンテナーでは、保持間隔の延長の最大 3 つのログと共に、ロック済みの時間ベースのリテンション ポリシーの時間ベースのリテンション コマンドが最大 5 つ表示されます。 時間ベースのリテンションの場合、ログにはユーザー ID、コマンドの種類、タイム スタンプ、保持間隔が含まれます。 訴訟ホールドの場合、ログにはユーザー ID、コマンドの種類、タイム スタンプ、訴訟ホールド タグが含まれます。 このログは、SEC 17a-4(f) 規制ガイドラインに従い、コンテナーの有効期間の間保持されます。 コントロール プレーンのすべてのアクティビティのより包括的なログは、[Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)に表示されます。 規制や他の目的で必要になる可能性のあるログは、ユーザーが永続的に保存する必要があります。
 
@@ -54,13 +54,13 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 > [!IMPORTANT]
 > SEC 17a-4(f) や他の規制を順守するために BLOB を不変 (書き込みおよび削除禁止) 状態にするには、時間ベースのリテンション ポリシーを"*ロック*"する必要があります。 適切な時間内 (通常は 24 時間以内) にポリシーをロックすることをお勧めします。 短期間の機能評価以外の目的で、"*ロック解除*"状態を使用しないことをお勧めします。
 
-時間ベースのリテンション ポリシーをコンテナーに適用すると、"*有効な*"リテンション期間中、コンテナー内のすべての BLOB が不変状態のままになります。 既存の BLOB の有効なリテンション期間は、BLOB の作成時刻とユーザーが指定した保持間隔の差になります。 
+時間ベースのリテンション ポリシーをコンテナーに適用すると、"*有効な*"リテンション期間中、コンテナー内のすべての BLOB が不変状態のままになります。 既存の BLOB の有効な保有期間は、BLOB の作成時刻とユーザーが指定した保有期間の差になります。
 
-新しい BLOB の場合、有効なリテンション期間はユーザーが指定した保持間隔と同じです。 ユーザーは保持間隔を変更できるので、不変ストレージでは、ユーザー指定の保持間隔の最新の値が有効なリテンション期間の計算に使用されます。
+新しい BLOB の場合、有効な保有期間はユーザーが指定した保有期間と同じです。 ユーザーは保持間隔を延長できるので、不変ストレージでは、ユーザー指定の保持間隔の最新の値が有効な保有期間の計算に使用されます。
 
 > [!TIP]
 > 例:
-> 
+>
 > ユーザーが、保持間隔が 5 年の時間ベースのリテンション ポリシーを作成しました。
 >
 > そのコンテナー内の既存の BLOB である testblob1 は、1 年前に作成されました。 testblob1 の有効なリテンション期間は、4 年です。
@@ -77,35 +77,30 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
 |シナリオ  |BLOB の状態  |禁止されている BLOB 操作  |
 |---------|---------|---------|
-|BLOB の有効なリテンション期間がまだ終了していないか、訴訟ホールドが設定されている     |不変: 削除および書き込み禁止         |Delete Container、Delete Blob、Put Blob1、Put Block、Put Block List、Set Blob Metadata、Put Page、Set Blob Properties、Snapshot Blob、Incremental Copy Blob、Append Block         |
-|BLOB の有効なリテンション期間が終了している     |書き込み禁止のみ (削除操作は可能)         |Put Blob、Put Block、Put Block List、Set Blob Metadata、Put Page、Set Blob Properties、Snapshot Blob、Incremental Copy Blob、Append Block         |
+|BLOB の有効なリテンション期間がまだ終了していないか、訴訟ホールドが設定されている     |不変: 削除および書き込み禁止         |Delete Container、Delete Blob、Put Blob<sup>1</sup>、Put Block<sup>1</sup>、Put Block List<sup>1</sup>、Set Blob Metadata、Put Page、Set Blob Properties、Snapshot Blob、Incremental Copy Blob、Append Block         |
+|BLOB の有効なリテンション期間が終了している     |書き込み禁止のみ (削除操作は可能)         |Put Blob<sup>1</sup>、Put Block<sup>1</sup>、Put Block List<sup>1</sup>、Set Blob Metadata、Put Page、Set Blob Properties、Snapshot Blob、Incremental Copy Blob、Append Block         |
 |すべての訴訟ホールドがクリアされており、時間ベースのリテンション ポリシーがコンテナー上で設定されていない     |変更可能         |なし         |
 |WORM ポリシーが作成されていない (時間ベースのリテンションまたは訴訟ホールド)     |変更可能         |なし         |
 
+<sup>1</sup> アプリケーションでは、一度 BLOB を作成するためにこの操作を呼び出す可能性があります。 BLOB の以降の操作はすべて禁止されます。
+
 > [!NOTE]
-> 上記の表の先頭の 2 つのシナリオでは、最初の Put Blob、および BLOB の作成に必要な Put Block List と Put Block が許可されます。 以降のすべての操作は許可されません。
 >
-> 不変ストレージは、GPv2 および Blob Storage アカウントでのみ使用できます。 不変ストレージを作成するには、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用する必要があります。
+> 不変ストレージは、General Purpose V2 および Blob Storage アカウントでのみ使用できます。 アカウントを作成するには、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用する必要があります。
 
 ## <a name="pricing"></a>価格
 
-この機能の使用に対する追加料金はありません。 不変データは、通常の変更可能データと同様に価格が設定されます。 価格設定の詳細については、「[Azure Storage の価格設定に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
+この機能の使用に対する追加料金はありません。 不変データは、通常の変更可能データと同様に価格が設定されます。 Azure Blob Storage の価格設定については、[Azure Storage の価格に関するページ](https://azure.microsoft.com/pricing/details/storage/blobs/)を参照してください。
 
-### <a name="restrictions"></a>制限
-
-パブリック プレビュー期間中は、次の制限が適用されます。
-
-- "*実稼働データやビジネスに不可欠なデータは保存しないでください。*"
-- プレビュー/NDA のすべての制限が適用されます。
 
 ## <a name="getting-started"></a>使用の開始
 
-[Azure Portal](http://portal.azure.com)、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)、および [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) の最新リリースでは、Azure Blob Storage の不変ストレージがサポートされます。
+[Azure portal](http://portal.azure.com) と [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) の最新リリース、および [Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/Azure.Storage.v4.4.0-preview-May2018) のプレビュー版では、Azure Blob Storage の不変ストレージがサポートされます。
 
 ### <a name="azure-portal"></a>Azure ポータル
 
 1. 新しいコンテナーを作成するか、既存のコンテナーを選択して、不変状態に維持する必要がある BLOB を格納します。
- コンテナーは、GPv2 ストレージ アカウント内に存在する必要があります。
+ コンテナーは、GPv2 ストレージ アカウントまたは BLOB ストレージ アカウントに存在する必要があります。
 2. [コンテナーの設定] 内にある **[アクセス ポリシー]** を選択します。 次に、**[Immutable blob storage]\(不変 BLOB ストレージ\)** の下で **[+ Add policy]\(+ポリシーの追加\)** を選択します。
 
     ![ポータルでコンテナーの設定](media/storage-blob-immutable-storage/portal-image-1.png)
@@ -134,11 +129,9 @@ Azure Blob Storage の不変ストレージでは、時間ベースのリテン�
 
     ![[ポリシーの種類] の下にある [タグ名] ボックス](media/storage-blob-immutable-storage/portal-image-set-legal-hold-tags.png)
 
-### <a name="azure-cli-20"></a>Azure CLI 2.0
+8. 訴訟ホールドをクリアするには、タグを削除するだけです。
 
-`az extension add -n storage-preview` を使用して、[Azure CLI 拡張機能](http://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)をインストールします。
-
-拡張機能が既にインストールされている場合は、`az extension update -n storage-preview` コマンドを使用して、不変ストレージを有効にします。
+### <a name="azure-cli"></a>Azure CLI
 
 この機能は、`az storage container immutability-policy` および `az storage container legal-hold` コマンド グループに含まれています。 これらに対して `-h` を実行すると、コマンドが表示されます。
 
@@ -160,7 +153,8 @@ Azure Blob Storage の不変ストレージは、次のクライアント ライ
 
 - [.NET クライアント ライブラリ (バージョン 7.2.0-preview 以上)](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/7.2.0-preview)
 - [Node.js クライアント ライブラリ (バージョン 4.0.0 以上)](https://www.npmjs.com/package/azure-arm-storage)
-- [Python クライアント ライブラリ (バージョン 2.0.0 Release Candidate 2 以上)](https://pypi.org/project/azure-mgmt-storage/2.0.0rc1/)
+- [Python クライアント ライブラリ (バージョン 2.0.0 Release Candidate 2 以上)](https://pypi.org/project/azure-mgmt-storage/2.0.0rc2/)
+- [Java クライアント ライブラリ](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/storage/resource-manager/Microsoft.Storage/preview/2018-03-01-preview)
 
 ## <a name="supported-values"></a>サポートされている値
 
@@ -176,15 +170,15 @@ Azure Blob Storage の不変ストレージは、次のクライアント ライ
 
 **この機能が適用されるのはブロック BLOB だけですか? それとも、ページ BLOB と追加 BLOB にも適用されますか?**
 
-不変ストレージは、どの種類の BLOB でも使用できます。  ただし、主としてブロック BLOB 用に使用することをお勧めします。 ブロック BLOB とは異なり、ページ BLOB と追加 BLOB は WORM コンテナーの外部で作成し、コンテナー内にコピーする必要があります。 これらの BLOB を WORM コンテナー内にコピーした後は、追加 BLOB への"*追加*"やページ BLOB の変更を行うことはできなくなります。
+不変ストレージは任意の BLOB 型で使用できますが、主にブロック BLOB に使用することをお勧めします。 ブロック BLOB とは異なり、ページ BLOB と追加 BLOB は WORM コンテナーの外部で作成し、コンテナー内にコピーする必要があります。 これらの BLOB を WORM コンテナー内にコピーした後は、追加 BLOB への"*追加*"やページ BLOB の変更を行うことはできなくなります。
 
 **この機能を使用するために、常に新しいストレージ アカウントを作成する必要がありますか?**
 
-不変ストレージは、既存の GPv2 アカウントまたは新しいストレージ アカウント (アカウントの種類が GPv2 の場合) で使用できます。 この機能は、BLOB ストレージでのみ使用できます。
+既存または新しく作成した General Purpose V2 アカウントまたは Blob Storage アカウントで不変ストレージを使用できます。 この機能は、BLOB ストレージにのみ使用できます。
 
 **"*ロック済み*" の時間ベースのリテンション ポリシーまたは訴訟ホールドが適用されたコンテナーを削除しようとするとどうなりますか?**
 
-ロック済みの時間ベースの保持ポリシーまたは訴訟ホールドが適用された BLOB が 1 つ以上あると、Delete Container 操作は失敗します。 これは、データを[論理的に削除](storage-blob-soft-delete.md)した場合も当てはまります。 保持間隔がアクティブな BLOB がなく、訴訟ホールドもなければ、Delete Container 操作は成功します。 コンテナーを削除するには、事前に BLOB を削除しておく必要があります。 
+ロック済みの時間ベースのリテンション ポリシーまたは訴訟ホールドが適用された BLOB が 1 つ以上存在すると、Delete Container 操作は失敗します。 保持間隔がアクティブな BLOB が存在せず、訴訟ホールドもない場合にのみ、Delete Container 操作は成功します。 コンテナーを削除するには、事前に BLOB を削除しておく必要があります。
 
 **"*ロック済み*" の時間ベースのリテンション ポリシーまたは訴訟ホールドが適用された WORM コンテナーを含むストレージ アカウントを削除しようとするとどうなりますか?**
 
@@ -192,7 +186,7 @@ Azure Blob Storage の不変ストレージは、次のクライアント ライ
 
 **BLOB が不変状態のときに、異なる BLOB 層 (ホット、クール、コールド) の間でデータを移動できますか?**
 
-はい。データを不変状態に保ちながら、Set Blob Tier コマンドを使用して、BLOB 層の間でデータを移動できます。 不変ストレージは、ホット、クール、コールドの各 BLOB 層でサポートされています。
+はい。データを不変状態に保ちながら、Set Blob Tier コマンドを使用して、BLOB 層の間でデータを移動できます。 不変ストレージは、ホット、クール、アーカイブの各 BLOB 層でサポートされています。
 
 **支払いを怠ったときに、リテンション期間がまだ終了していない場合はどうなりますか?**
 
@@ -209,6 +203,8 @@ Azure Blob Storage の不変ストレージは、次のクライアント ライ
 ## <a name="sample-powershell-code"></a>PowerShell コードの例
 
 ご参考までに、PowerShell スクリプトの例を次に示します。 このスクリプトでは、新しいストレージ アカウントとコンテナーが作成されます。 そのあと、訴訟ホールドを設定およびクリアする方法、時間ベースのリテンション ポリシー (不変ポリシーとも呼ばれる) を作成およびロックする方法、および保持間隔を延長する方法が示されています。
+
+Azure Storage アカウントを設定してテストします。
 
 ```powershell
 $ResourceGroup = "<Enter your resource group>”
@@ -258,115 +254,128 @@ Remove-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
 # Remove a container with a container object
 $containerObject2 = Get-AzureRmStorageContainer -StorageAccount $accountObject -Name $container2
 Remove-AzureRmStorageContainer -InputObject $containerObject2
+```
 
+訴訟ホールドを設定してクリアします。
+
+```powershell
 # Set a legal hold
 Add-AzureRmStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -Name $container -Tag tag1,tag2
+    -StorageAccountName $StorageAccount -Name $container -Tag <tag1>,<tag2>,...
 
-# Set a legal hold with an account object
-Add-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag tag3
+# with an account object
+Add-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>
 
-# Set a legal hold with a container object
-Add-AzureRmStorageContainerLegalHold -Container $containerObject -Tag tag4,tag5
+# with a container object
+Add-AzureRmStorageContainerLegalHold -Container $containerObject -Tag <tag4>,<tag5>,...
 
 # Clear a legal hold
 Remove-AzureRmStorageContainerLegalHold -ResourceGroupName $ResourceGroup `
-    -StorageAccountName $StorageAccount -Name $container -Tag tag2
+    -StorageAccountName $StorageAccount -Name $container -Tag <tag2>
 
-# Clear a legal hold with an account object
-Remove-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag tag3,tag5
+# with an account object
+Remove-AzureRmStorageContainerLegalHold -StorageAccount $accountObject -Name $container -Tag <tag3>,<tag5>
 
-# Clear a legal hold with a container object
-Remove-AzureRmStorageContainerLegalHold -Container $containerObject -Tag tag4
+# with a container object
+Remove-AzureRmStorageContainerLegalHold -Container $containerObject -Tag <tag4>
+```
 
-# Create or update an immutability policy
-## with an account name or container name
-
+不変ポリシーを作成または更新します。
+```powershell
+# with an account name or container name
 Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -ContainerName $container -ImmutabilityPeriod 10
 
-## with an account object
+# with an account object
 Set-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
     -ContainerName $container -ImmutabilityPeriod 1 -Etag $policy.Etag
 
-## with a container object
+# with a container object
 $policy = Set-AzureRmStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 7
 
-## with an immutability policy object
+# with an immutability policy object
 Set-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -ImmutabilityPeriod 5
+```
 
+不変ポリシーを取得します。
+```powershell
 # Get an immutability policy
 Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName $ResourceGroup `
     -StorageAccountName $StorageAccount -ContainerName $container
 
-# Get an immutability policy with an account object
+# with an account object
 Get-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
     -ContainerName $container
 
-# Get an immutability policy with a container object
+# with a container object
 Get-AzureRmStorageContainerImmutabilityPolicy -Container $containerObject
+```
 
-# Lock an immutability policy (add -Force to dismiss the prompt)
-## with an immutability policy object
-
+不変ポリシーをロックします (プロンプトを無視するには、-Force を追加します)。
+```powershell
+# with an immutability policy object
 $policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
 $policy = Lock-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy -force
 
-## with an account name or container name
+# with an account name or container name
 $policy = Lock-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
     -Etag $policy.Etag
 
-## with an account object
+# with an account object
 $policy = Lock-AzureRmStorageContainerImmutabilityPolicy -StorageAccount `
     $accountObject -ContainerName $container -Etag $policy.Etag
 
-## with a container object
+# with a container object
 $policy = Lock-AzureRmStorageContainerImmutabilityPolicy -Container `
     $containerObject -Etag $policy.Etag -force
+```
 
-# Extend an immutability policy
-## with an immutability policy object
+不変ポリシーを拡張します。
+```powershell
 
+# with an immutability policy object
 $policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
 
 $policy = Set-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy `
     $policy -ImmutabilityPeriod 11 -ExtendPolicy
 
-## with an account name or container name
+# with an account name or container name
 $policy = Set-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
     -ImmutabilityPeriod 11 -Etag $policy.Etag -ExtendPolicy
 
-## with an account object
+# with an account object
 $policy = Set-AzureRmStorageContainerImmutabilityPolicy -StorageAccount `
     $accountObject -ContainerName $container -ImmutabilityPeriod 12 -Etag `
     $policy.Etag -ExtendPolicy
 
-## with a container object
+# with a container object
 $policy = Set-AzureRmStorageContainerImmutabilityPolicy -Container `
     $containerObject -ImmutabilityPeriod 13 -Etag $policy.Etag -ExtendPolicy
+```
 
-# Remove an immutability policy (add -Force to dismiss the prompt)
-## with an immutability policy object
+不変ポリシーを削除します (プロンプトを無視するには、-Force を追加します)。
+```powershell
+# with an immutability policy object
 $policy = Get-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container
 Remove-AzureRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 
-## with an account name or container name
+# with an account name or container name
 Remove-AzureRmStorageContainerImmutabilityPolicy -ResourceGroupName `
     $ResourceGroup -StorageAccountName $StorageAccount -ContainerName $container `
     -Etag $policy.Etag
 
-## with an account object
+# with an account object
 Remove-AzureRmStorageContainerImmutabilityPolicy -StorageAccount $accountObject `
     -ContainerName $container -Etag $policy.Etag
 
-## with a container object
+# with a container object
 Remove-AzureRmStorageContainerImmutabilityPolicy -Container $containerObject `
     -Etag $policy.Etag
-    
+
 ```

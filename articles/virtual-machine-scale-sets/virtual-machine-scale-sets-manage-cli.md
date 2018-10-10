@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 2.0 を使用した仮想マシン スケール セットの管理 | Microsoft Docs
-description: 仮想マシン スケール セットを管理するための一般的な Azure CLI 2.0 コマンド (インスタンスの起動と停止、スケール セット容量の変更の方法など)。
+title: Azure CLI を使用した仮想マシン スケール セットの管理 | Microsoft Docs
+description: 仮想マシン スケール セットを管理するための一般的な Azure CLI コマンド (インスタンスの起動と停止、スケール セット容量の変更の方法など)。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 512dd7c3318022106b721d8f215bff17de51e51d
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 014e6ff2bc769675e47743cfdd4fbf7fc6234974
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42140729"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999836"
 ---
-# <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用した仮想マシン スケール セットの管理
-仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 この記事では、これらのタスクを実行するための一般的な Azure CLI 2.0 コマンドの一部について説明します。
+# <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Azure CLI を使用した仮想マシン スケール セットの管理
+仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 この記事では、これらのタスクを実行するための一般的な Azure CLI コマンドの一部について説明します。
 
-これらの管理タスクを実行するには、最新の Azure CLI 2.0 が必要です。 詳細については、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 仮想マシン スケール セットを作成する必要がある場合は、[Azure CLI 2.0 でスケール セットを作成](quick-create-cli.md)できます。
+これらの管理タスクを実行するには、最新の Azure CLI が必要です。 詳細については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 仮想マシン スケール セットを作成する必要がある場合は、[Azure CLI を使用してスケール セットを作成](quick-create-cli.md)できます。
 
 
 ## <a name="view-information-about-a-scale-set"></a>スケール セットに関する情報を表示する

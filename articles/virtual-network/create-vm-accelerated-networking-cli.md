@@ -1,6 +1,6 @@
 ---
 title: 高速ネットワークを使った Azure 仮想マシンの作成 | Microsoft Docs
-description: 高速ネットワークを使った Linux 仮想マシンの作成方法について説明します。
+description: 高速ネットワークを有効にした Linux 仮想マシンを作成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: gsilva5
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 9ea843df4cf437b97f7fe1d62636a51f8201376e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: b6aaf98ca3b5581691b6c70783be5250b506056c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414574"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990962"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Linux 仮想マシンの作成
 
@@ -75,7 +75,7 @@ VM インスタンスの詳細については、「[Linux 仮想マシンのサ�
 
 ### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myNic*、*myVM* といったパラメーター名にします。
+最新の [Azure CLI](/cli/azure/install-azure-cli) をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインします。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myNic*、*myVM* といったパラメーター名にします。
 
 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所 *centralus* に作成します。
 

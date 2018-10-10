@@ -1,6 +1,6 @@
 ---
-title: App Service および Azure Functions での管理対象のサービス ID | Microsoft Docs
-description: Azure App Service および Azure Functions での管理対象のサービス ID の概念と設定に関するガイドです
+title: App Service と Azure Functions のマネージド ID | Microsoft Docs
+description: Azure App Service と Azure Functions でのマネージド ID の概念と設定に関するガイドです
 services: app-service
 author: mattchenderson
 manager: cfowler
@@ -11,22 +11,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: c7a819f987de41ba7705d21bb6de95475cd3f9c8
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: fb9b50ecb16bd37d005403a14ea11c6d89f50dfe
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027188"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983649"
 ---
-# <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>App Service および Azure Functions で Azure マネージド サービス ID を使用する方法
+# <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>App Service と Azure Functions でマネージド ID を使用する方法
 
 > [!NOTE] 
-> App Service on Linux と Web App for Containers は、現時点ではマネージド サービス ID をサポートしていません。
+> App Service on Linux と Web App for Containers では現在のところ、マネージド ID をサポートしていません。
 
 > [!Important] 
-> アプリがサブスクリプションやテナント間で移行された場合、App Service および Azure Functions での管理対象のサービス ID は想定されたとおりに動作しません。 アプリでは、機能を無効にしてから再度有効にすることで、新しい ID を取得する必要があります。 以下の「[ID の削除](#remove)」を参照してください。 また、ダウンストリーム リソースでは、新しい ID を使用するようにアクセス ポリシーを更新する必要があります。
+> アプリがサブスクリプションやテナント間で移行された場合、App Service と Azure Functions でのマネージド ID は想定されたとおりに動作しません。 アプリでは、機能を無効にしてから再度有効にすることで、新しい ID を取得する必要があります。 以下の「[ID の削除](#remove)」を参照してください。 また、ダウンストリーム リソースでは、新しい ID を使用するようにアクセス ポリシーを更新する必要があります。
 
-このトピックでは、App Service および Azure Functions アプリケーション用の管理対象アプリ ID を作成し、それを使って他のリソースにアクセスする方法を説明します。 アプリで Azure Active Directory の管理対象のサービス ID を使うと、他の AAD で保護されたリソース (Azure Key Vault など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 管理対象のサービス ID について詳しくは、「[Managed Service Identity overview](../active-directory/managed-identities-azure-resources/overview.md)」(管理対象のサービス ID の概要) をご覧ください。
+このトピックでは、App Service と Azure Functions アプリケーションでマネージド ID を作成し、それを使用して他のリソースにアクセスする方法を説明します。 アプリで Azure Active Directory のマネージド ID を使用すると、他の AAD で保護されたリソース (Azure Key Vault など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 AAD のマネージド ID については、「[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
 ## <a name="creating-an-app-with-an-identity"></a>ID を持つアプリの作成
 
@@ -34,25 +34,25 @@ ID を持つアプリを作成するには、アプリケーションで追加�
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
-ポータルで管理対象サービス ID を設定するには、最初に通常の方法でアプリケーションを作成した後、機能を有効にします。
+ポータルでマネージド ID を設定するには、最初に通常の方法でアプリケーションを作成した後、機能を有効にします。
 
 1. ポータルを使って通常の方法でアプリを作成します。 ポータルでアプリに移動します。
 
 2. 関数アプリを使っている場合は、**[プラットフォーム機能]** に移動します。 他のアプリの種類の場合は、左側のナビゲーションを下にスクロールして **[設定]** グループに移動します。
 
-3. **[Managed service identity]\(管理対象のサービス ID\)** を選びます。
+3. **[マネージド ID]** を選択します。
 
 4. **[Register with Azure Active Directory]\(Azure Active Directory に登録\)** を **[オン]** に切り替えます。 **[Save]** をクリックします。
 
-![App Service での管理対象のサービス ID](media/app-service-managed-service-identity/msi-blade.png)
+![App Service のマネージド ID](media/app-service-managed-service-identity/msi-blade.png)
 
 ### <a name="using-the-azure-cli"></a>Azure CLI の使用
 
-Azure CLI を使用して、管理対象のサービス ID を設定するには、既存のアプリケーションに対して `az webapp identity assign` コマンドを使用する必要があります。 このセクションの例を実行するためのオプションとして次の 3 つがあります。
+Azure CLI を使用してマネージド ID を設定するには、既存のアプリケーションに対して `az webapp identity assign` コマンドを使用する必要があります。 このセクションの例を実行するためのオプションとして次の 3 つがあります。
 
 - Azure Portal から [Azure Cloud Shell](../cloud-shell/overview.md) を使用する。
 - 以下の各コード ブロックの右上隅にある [試してみる] を利用して、埋め込まれた Azure Cloud Shell シェルを使用します。
-- ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.31 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 
+- ローカル CLI コンソールを使用する場合、[Azure CLI の最新バージョン (2.0.31 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 
 
 次の手順では、CLI を使用して、Web アプリを作成し、ID を割り当てる方法について説明します。
 
@@ -151,13 +151,13 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 アプリは、その ID を使って、AAD で保護されている他のリソース (Azure Key Vault など) へのトークンを取得できます。 これらのトークンは、アプリケーションの特定のユーザーではなく、リソースにアクセスしているアプリケーションを表します。 
 
 > [!IMPORTANT]
-> アプリケーションからのアクセスを許可するように、対象のリソースを構成することが必要な場合があります。 たとえば、Key Vault に対するトークンを要求する場合、アプリケーションの ID を含むアクセス ポリシーを追加する必要があります。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 管理対象のサービス ID のトークンをサポートしているリソースについて詳しくは、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
+> アプリケーションからのアクセスを許可するように、対象のリソースを構成することが必要な場合があります。 たとえば、Key Vault に対するトークンを要求する場合、アプリケーションの ID を含むアクセス ポリシーを追加する必要があります。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 Azure Active Directory トークンをサポートしているリソースの詳細については、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication)」をご覧ください。
 
 App Service と Azure Functions には、トークンを取得するための簡単な REST プロトコルがあります。 .NET アプリケーションの場合は、Microsoft.Azure.Services.AppAuthentication ライブラリがこのプロトコルの抽象化を提供し、ローカル開発エクスペリエンスをサポートします。
 
 ### <a name="asal"></a>.NET 用の Microsoft.Azure.Services.AppAuthentication ライブラリの使用
 
-.NET アプリケーションと Functions の場合、管理対象のサービス ID を使う最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 このライブラリでのローカル開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス]に関するページをご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
+.NET アプリケーションと Functions の場合、マネージド ID を使用する最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI](/cli/azure)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 このライブラリでのローカル開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス]に関するページをご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
 
 1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) および [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet パッケージに対する参照をアプリケーションに追加します。
 
@@ -168,7 +168,7 @@ using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.Azure.KeyVault;
 // ...
 var azureServiceTokenProvider = new AzureServiceTokenProvider();
-string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://management.azure.com/");
+string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://vault.azure.net");
 // OR
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
 ```
@@ -177,7 +177,7 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 
 ### <a name="using-the-rest-protocol"></a>REST プロトコルの使用
 
-管理対象のサービス ID を使うアプリでは、2 つの環境変数を定義します。
+マネージド ID を使用するアプリでは、2 つの環境変数を定義します。
 - MSI_ENDPOINT
 - MSI_SECRET
 
@@ -205,7 +205,7 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 この応答は、[AAD のサービス間アクセス トークン要求に対する応答](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response)と同じです。
 
 > [!NOTE] 
-> プロセスが初めて開始されるときに環境変数が設定されるため、お使いのアプリケーションの管理対象サービス ID を有効にした後、`MSI_ENDPOINT` および `MSI_SECRET` がコードに対して利用可能になる前にアプリケーションを再起動するか、またはアプリケーションのコードを再デプロイする必要が生じる場合があります。
+> 環境変数はプロセスが初めて開始されるときに設定されます。そのため、アプリケーションのマネージド ID を有効にした後、場合によってはアプリケーションを再起動するか、アプリケーションのコードを再デプロイしないと `MSI_ENDPOINT` と `MSI_SECRET` をコードで利用できません。
 
 ### <a name="rest-protocol-examples"></a>REST プロトコルの例
 要求の例を次に示します。
@@ -276,11 +276,11 @@ ID は、ポータル、PowerShell、または CLI を使用して、作成時�
 この方法で ID を削除すると、AAD からプリンシパルも削除されます。 システム割り当て ID は、アプリ リソースが削除されるときに、AAD から自動的に削除されます。
 
 > [!NOTE] 
-> また、単純にローカル トークン サービスを無効にする、設定可能なアプリケーション設定 WEBSITE_DISABLE_MSI もあります。 ただし、ID はその場所に残り、ツールには引き続き MSI が "オン" または "有効" と表示されます。 そのため、この設定の使用は推奨しません。
+> また、単純にローカル トークン サービスを無効にする、設定可能なアプリケーション設定 WEBSITE_DISABLE_MSI もあります。 ただし、ID はその場所に残り、ツールには引き続きマネージド ID が "オン" または "有効" と表示されます。 そのため、この設定の使用は推奨しません。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [マネージド サービス ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)
+> [マネージド ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)
 
 [Microsoft.Azure.Services.AppAuthentication のリファレンス]: https://go.microsoft.com/fwlink/p/?linkid=862452

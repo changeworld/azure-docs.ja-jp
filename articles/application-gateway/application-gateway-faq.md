@@ -7,14 +7,14 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 8/10/2018
+ms.date: 9/6/2018
 ms.author: victorh
-ms.openlocfilehash: 858427bfd2a9b4c40ddf7054e09d98bcf5c1a992
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 56c66418b9f47e0ae0d345cd6e8a7d3ef2914b82
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038684"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986678"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -333,7 +333,7 @@ WAF は診断ログを通じて監視されます。診断ログについて詳�
 
 **Q.WAF は DDoS 防止もサポートしますか?**
 
-いいえ。WAF は DDoS 防止を提供しません。
+はい。 アプリケーション ゲートウェイがデプロイされている VNet 上で DDos Protection を有効にすることができます。 これにより、Azure DDos Protection サービスを使用してアプリケーション ゲートウェイ VIP も確実に保護されます。
 
 ## <a name="diagnostics-and-logging"></a>診断とログ
 
@@ -360,6 +360,12 @@ Application Gateway では監査ログを使用できます。 ポータルで�
 **Q.Application Gateway でアラートを設定できますか?**
 
 はい。Application Gateway はアラートをサポートしており、メトリックに基づいてアラートが構成されます。 現時点で Application Gateway に用意されているのは "スループット" のメトリックです。アラートを生成するためにこのメトリックを構成できます。 アラートについて詳しくは、「[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」をご覧ください。
+
+**Q.Application Gateway のトラフィック統計情報を分析するにはどうすればよいですか?**
+
+Azure Log Analytics、Excel、Power BI などのさまざまなメカニズムを使用して、アクセス ログを表示および分析することができます。
+
+Microsoft は、一般的な [GoAccess](https://goaccess.io/) ログ アナライザーをインストールし、Application Gateway アクセス ログに対して実行する、Resource Manager テンプレートも発行しています。 GoAccess では、ユニーク ビジター、要求されたファイル、ホスト、オペレーティング システム、ブラウザー、HTTP 状態コードなど、重要な HTTP トラフィック統計情報が提供されます。 詳細については、[GitHub の Resource Manager テンプレート フォルダーにある Readme ファイル](https://aka.ms/appgwgoaccessreadme)を参照してください。
 
 **Q.バックエンドの正常性から不明な状態が返されるのですが、この状態はどのような原因が考えられますか?**
 

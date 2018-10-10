@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: 58309977c93864d52a3217919ac8d7fa9152a968
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: b841a1104a0cc1e74d9ab1f16ef39d3892ba7d55
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576904"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996691"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>サブスクリプションにアクセスするための Resource Manager 認証 API の使用
 ## <a name="introduction"></a>はじめに
@@ -154,7 +154,7 @@ Open ID Connect 応答の例を次に示します。
 
     grant_type=authorization_code&code=AAABAAAAiL9Kn2Z*****L1nVMH3Z5ESiAA&redirect_uri=http%3A%2F%2Flocalhost%3A62080%2FAccount%2FSignIn&client_id=a0448380-c346-4f9f-b897-c18733de9394&client_secret=olna84E8*****goScOg%3D
 
-証明書資格情報を使用する場合は、JSON Web トークン (JWT) を作成し、アプリケーションの証明書資格情報の秘密キーを使用して署名 (RSA SHA256) します。 トークンの要求の種類については、「[JWT トークン要求](../active-directory/develop/v1-protocols-oauth-code.md#jwt-token-claims)」をご覧ください。 クライアント アサーション JWT トークンの署名については、 [Active Directory 認証ライブラリ (.NET) のコード](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) を参照してください。
+証明書資格情報を使用する場合は、JSON Web トークン (JWT) を作成し、アプリケーションの証明書資格情報の秘密キーを使用して署名 (RSA SHA256) します。 このトークンのビルドは、[クライアントの視覚情報フロー](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#second-case-access-token-request-with a-certificate)に示されます。  クライアント アサーション JWT トークンの署名については、 [Active Directory 認証ライブラリ (.NET) のコード](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/blob/dev/src/ADAL.PCL.Desktop/CryptographyHelper.cs) を参照してください。
 
 クライアント認証の詳細については、 [Open ID Connect 仕様](http://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication) をご覧ください。
 

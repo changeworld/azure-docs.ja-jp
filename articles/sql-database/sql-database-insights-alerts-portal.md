@@ -1,20 +1,23 @@
 ---
 title: Azure Portal での SQL Database アラートの作成 | Microsoft Docs
 description: Azure Portal を使用して SQL Database アラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。
-author: aamalvea
-manager: craigg
 services: sql-database
 ms.service: sql-database
-ms.custom: monitor and tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: aamalvea
 ms.author: aamalvea
-ms.openlocfilehash: 349f1bbb0bfcc737d70e32947dd217c2cd51e194
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 27f807c8f2f6b6a65ef95136047f5eed1b3aab02
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648025"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159314"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Azure Portal を使用した SQL Database と Data Warehouse のアラートの作成
 
@@ -43,12 +46,11 @@ ms.locfileid: "34648025"
 1. [ポータル](https://portal.azure.com/)で、監視するリソースを見つけて選択します。
 2. この手順は、SQL DB およびエラスティック プールと SQL DW では異なります。 
 
-   - 
-  **SQL DB とエラスティック プールのみ**: [監視] セクションで、**[アラート]** または **[アラート ルール]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
+   - **SQL DB とエラスティック プールのみ**: [監視] セクションで、**[アラート]** または **[アラート ルール]** を選択します。 テキストとアイコンは、リソースごとに多少異なる場合があります。  
    
      ![監視](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButton.png)
   
-   - **SQL DW のみ**: [主なタスク] セクションで **監視** を選択します。 **[DWU 利用状況]** グラフをクリックします。
+   - **SQL DW のみ**: 主なタスク] セクションで **[監視]** を選択します。 **[DWU 利用状況]** グラフをクリックします。
 
      ![主なタスク](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButtonDW.png)
 
@@ -109,7 +111,7 @@ ms.locfileid: "34648025"
 | SQL Data Warehouse | connection_successful | 成功した接続 | 合計 | 10 分 |
 | SQL Data Warehouse | connection_failed | 失敗した接続 | 合計 | 10 分 |
 | SQL Data Warehouse | blocked_by_firewall | ファイアウォールによってブロックされる | 合計 | 10 分 |
-| SQL Data Warehouse | service_level_objective | データベースのサービス レベル目標 | 合計 | 10 分 |
+| SQL Data Warehouse | service_level_objective | データベースのサービス レベル | 合計 | 10 分 |
 | SQL Data Warehouse | dwu_limit | DWU 上限 | 最大値 | 10 分 |
 | SQL Data Warehouse | dwu_consumption_percent | DWU の割合 | 平均 | 10 分 |
 | SQL Data Warehouse | dwu_used | 使用済み DWU | 平均 | 10 分 |

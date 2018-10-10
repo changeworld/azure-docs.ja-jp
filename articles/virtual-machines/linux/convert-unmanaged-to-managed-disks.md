@@ -1,6 +1,6 @@
 ---
-title: Azure の Linux 仮想マシンを非管理対象ディスクから管理ディスクに変換する - Azure Managed Disks |Microsoft Docs
-description: Resource Manager デプロイメント モデルで Azure CLI 2.0 を使用して Linux VM を非管理対象から管理ディスクに変換する方法
+title: Azure の Linux 仮想マシンを非管理対象ディスクからマネージド ディスクに変換する - Azure Managed Disks |Microsoft Docs
+description: Resource Manager デプロイ モデルで Azure CLI を使用して Linux VM を非管理対象からマネージド ディスクに変換する方法
 services: virtual-machines-linux
 documentationcenter: ''
 author: roygara
@@ -15,18 +15,18 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: rogarana
-ms.openlocfilehash: a3a2bbc15dd94ef09755d34a20e69c97854416b3
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: 62ac70134c1bdf9d178d59723ff73561049a4bbf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30289262"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993076"
 ---
-# <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linux 仮想マシンを非管理対象ディスクから管理ディスクに変換する
+# <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linux 仮想マシンを非管理対象ディスクからマネージド ディスクに変換する
 
 非管理対象ディスクを使用する既存の Linux 仮想マシン (VM) を所有している場合、[Azure Managed Disks](../linux/managed-disks-overview.md) を使用するように VM を変換することができます。 このプロセスでは、OS ディスクと接続されたすべてのデータ ディスクの両方を変換します。
 
-この記事では、Azure CLI を使用して VM を変換する方法を説明します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
+この記事では、Azure CLI を使用して VM を変換する方法を説明します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="before-you-begin"></a>開始する前に
 * [Managed Disks への移行に関する FAQ](faq-for-disks.md#migrate-to-managed-disks) を確認します。
@@ -35,7 +35,7 @@ ms.locfileid: "30289262"
 
 
 ## <a name="convert-single-instance-vms"></a>単一インスタンスの VM を変換する
-このセクションでは、単一インスタンスの Azure VM を非管理対象ディスクから Managed Disks に変換する方法について説明します。 (VM が可用性セットに含まれている場合は次のセクションを参照してください。)このプロセスを使用して、VM を非管理対象の Premium (SSD) ディスクから Premium 管理ディスクに、または非管理対象の標準 (HDD) ディスクから標準管理ディスクに変換できます。
+このセクションでは、単一インスタンスの Azure VM を非管理対象ディスクからマネージド ディスクに変換する方法について説明します。 (VM が可用性セットに含まれている場合は次のセクションを参照してください。)このプロセスを使用して、VM を非管理対象の Premium (SSD) ディスクから Premium マネージド ディスクに、または非管理対象の標準 (HDD) ディスクから標準マネージド ディスクに変換できます。
 
 1. [az vm deallocate](/cli/azure/vm#az_vm_deallocate) を使用して VM の割り当てを解除します。 次の例では、`myResourceGroup` という名前のリソース グループに含まれる `myVM` という名前の VM の割り当てを解除します。
 
@@ -43,13 +43,13 @@ ms.locfileid: "30289262"
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-2. [az vm convert](/cli/azure/vm#az_vm_convert) を使用して VM を管理ディスクに変換します。 次のプロセスでは、OS ディスクとすべてのデータ ディスクを含む `myVM` という名前の VM を変換します。
+2. [az vm convert](/cli/azure/vm#az_vm_convert) を使用して VM をマネージド ディスクに変換します。 次のプロセスでは、OS ディスクとすべてのデータ ディスクを含む `myVM` という名前の VM を変換します。
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-3. 管理ディスクに変換した後、[az vm start](/cli/azure/vm#az_vm_start) で VM を起動します。 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を起動します。
+3. マネージド ディスクに変換した後、[az vm start](/cli/azure/vm#az_vm_start) で VM を起動します。 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を起動します。
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -57,9 +57,9 @@ ms.locfileid: "30289262"
 
 ## <a name="convert-vms-in-an-availability-set"></a>可用性セットの VM を変換する
 
-Managed Disks に変換する VM が可用性セット内にある場合は、最初に可用性セットを管理対象の可用性セットに変換する必要があります。
+マネージド ディスクに変換する VM が可用性セット内にある場合は、最初に可用性セットを管理対象の可用性セットに変換する必要があります。
 
-可用性セットを変換する前に、可用性セット内のすべての VM の割り当てを解除する必要があります。 可用性セット自体を管理対象の可用性セットに変換したあと、すべての VM を管理ディスクに変換する計画を立てます。 その後、すべての VM を起動し、通常どおり操作を続行します。
+可用性セットを変換する前に、可用性セット内のすべての VM の割り当てを解除する必要があります。 可用性セット自体を管理対象の可用性セットに変換したあと、すべての VM をマネージド ディスクに変換する計画を立てます。 その後、すべての VM を起動し、通常どおり操作を続行します。
 
 1. [az vm availability-set list](/cli/azure/vm/availability-set#az_vm_availability_set_list) を使用して、可用性セット内のすべての VM を一覧表示します。 次の例では、`myResourceGroup` という名前のリソース グループの `myAvailabilitySet` という名前の可用性セットに含まれるすべての VM の一覧を取得します。
 
@@ -85,13 +85,13 @@ Managed Disks に変換する VM が可用性セット内にある場合は、�
         --name myAvailabilitySet
     ```
 
-4. [az vm convert](/cli/azure/vm#az_vm_convert) を使用して、すべての VM を管理ディスクに変換します。 次のプロセスでは、OS ディスクとすべてのデータ ディスクを含む `myVM` という名前の VM を変換します。
+4. [az vm convert](/cli/azure/vm#az_vm_convert) を使用して、すべての VM をマネージド ディスクに変換します。 次のプロセスでは、OS ディスクとすべてのデータ ディスクを含む `myVM` という名前の VM を変換します。
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-5. 管理ディスクに変換した後、[az vm start](/cli/azure/vm#az_vm_start) ですべての VM を起動します。 次の例では、`myResourceGroup` という名前のリソース グループの `myVM` という名前の VM を起動します。
+5. マネージド ディスクに変換した後、[az vm start](/cli/azure/vm#az_vm_start) ですべての VM を起動します。 次の例では、`myResourceGroup` という名前のリソース グループの `myVM` という名前の VM を起動します。
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM

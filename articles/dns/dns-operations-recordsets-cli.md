@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 2.0 を使用した Azure DNS の DNS レコードの管理 | Microsoft Docs
-description: Azure DNS でドメインをホストする際に Azure DNS の DNS レコード セットとレコードを管理します。 レコード セットとレコードを操作するための CLI 2.0 コマンドをすべて紹介します。
+title: Azure CLI を使用した Azure DNS の DNS レコードの管理 | Microsoft Docs
+description: Azure DNS でドメインをホストする際に Azure DNS の DNS レコード セットとレコードを管理します。
 services: dns
 documentationcenter: na
 author: vhorne
@@ -14,23 +14,23 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: victorh
-ms.openlocfilehash: 41366f29ecf5dcd6ffe23148acd61100681620df
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 1f1ee4f69cc1ab656df04ed30cae6f4c3e55bfa7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174253"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963817"
 ---
-# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure DNS のレコードおよびレコード セットを管理する
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS の DNS レコードおよびレコードセットを管理する
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
+> * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-この記事では、クロスプラットフォームの Azure コマンドライン インターフェイス (CLI) 2.0 を使用して DNS ゾーンの DNS レコードを管理する方法について説明します。CLI は、Windows、Mac、および Linux で使用できます。 DNS レコードは、[Azure PowerShell](dns-operations-recordsets.md) または [Azure Portal](dns-operations-recordsets-portal.md) を使用して管理することもできます。
+この記事では、クロスプラットフォームの Azure CLI を使用してご利用の DNS ゾーン用の DNS レコードを管理する方法について説明します。CLI は、Windows、Mac、および Linux で使用できます。 DNS レコードは、[Azure PowerShell](dns-operations-recordsets.md) または [Azure Portal](dns-operations-recordsets-portal.md) を使用して管理することもできます。
 
-この記事の例では、[Azure CLI 2.0 のインストール、サインイン、DNS ゾーンの作成](dns-operations-dnszones-cli.md)が既に完了していることを前提としています。
+この記事の例では、[Azure CLI のインストール、サインイン、DNS ゾーンの作成](dns-operations-dnszones-cli.md)が既に完了していることを前提としています。
 
 ## <a name="introduction"></a>はじめに
 

@@ -16,18 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 75bba953a7a5737f0388e53a9f6f38dd8324eb83
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 91e9cb6b436cc78a0c5bd4769d38622abda4c04d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33944539"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977572"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure での Linux VM の最適化
 コマンド ラインやポータルを使用すると、Linux 仮想マシン (VM) を簡単に作成できます。 このチュートリアルでは、Microsoft Azure Platform でのパフォーマンスが最適化されるように Linux 仮想マシンがセットアップされていることを確認する方法を説明します。 このトピックでは Ubuntu Server VM を使用しますが、 [テンプレートとして独自のイメージ](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux 仮想マシンを作成することもできます。  
 
 ## <a name="prerequisites"></a>前提条件
-このトピックでは、利用中の Azure サブスクリプション ([無料試用版](https://azure.microsoft.com/pricing/free-trial/)のサインアップ) が既にあり、VM を Azure サブスクリプションにプロビジョニング済みであることを前提としています。 [VM を作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)する前に、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされていることを確認し、[az login](/cli/azure/reference-index#az_login) を使用して Azure サブスクリプションにログインしておく必要があります。
+このトピックでは、利用中の Azure サブスクリプション ([無料試用版](https://azure.microsoft.com/pricing/free-trial/)のサインアップ) が既にあり、VM を Azure サブスクリプションにプロビジョニング済みであることを前提としています。 [VM を作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)する前に、最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされていることを確認し、[az login](/cli/azure/reference-index#az_login) を使用して Azure サブスクリプションにログインしておく必要があります。
 
 ## <a name="azure-os-disk"></a>Azure OS ディスク
 Azure に Linux VM を作成すると、その VM には 2 つのディスクが関連付けられています。 **/dev/sda** は OS ディスクを表し、**/dev/sdb** は一時ディスクを表します。  メインの OS ディスク (**/dev/sda**) は、VM の高速起動用に最適化されており、ワークロードでは優れたパフォーマンスを発揮しないため、オペレーティング システム以外の用途には使用しないでください。 データ用の永続的で最適化されたストレージにするために、1 つ以上のディスクを VM に接続することができます。 
@@ -42,7 +42,7 @@ VM サイズに基づいて、A シリーズのマシンでは最大 16 個、D 
 * **XFS**: バリアを無効にするには、マウント オプション `nobarrier` を使用します (バリアを有効にするには `barrier` を使用します)。
 
 ## <a name="unmanaged-storage-account-considerations"></a>非管理対象ストレージ アカウントに関する考慮事項
-Azure CLI 2.0 で VM を作成したときの既定のアクションでは、Azure Managed Disks が使用されます。  これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。  非管理対象ディスクではストレージ アカウントが必要であり、パフォーマンスに関するその他の考慮事項がいくつかあります。  Managed Disks の詳細については、「[Azure Managed Disks の概要](../windows/managed-disks-overview.md)」をご覧ください。  次のセクションで説明するパフォーマンスに関する考慮事項は、非管理対象ディスクを使用する場合にのみ適用されます。  既定の推奨ストレージ ソリューションは、管理ディスクを使用することです。
+Azure CLI で VM を作成したときの既定のアクションでは、Azure Managed Disks が使用されます。  これらのディスクは Azure プラットフォームによって処理されるため、ディスクを格納するための準備も場所も必要ありません。  非管理対象ディスクではストレージ アカウントが必要であり、パフォーマンスに関するその他の考慮事項がいくつかあります。  マネージド ディスクの詳細については、「[Azure Managed Disks の概要](../windows/managed-disks-overview.md)」をご覧ください。  次のセクションで説明するパフォーマンスに関する考慮事項は、非管理対象ディスクを使用する場合にのみ適用されます。  既定の推奨ストレージ ソリューションは、マネージド ディスクを使用することです。
 
 非管理対象ディスクを使用する VM を作成する場合は、近接性を確保し、ネットワーク待ち時間を最小限に抑えるために、VM と同じリージョンに存在するストレージ アカウントからディスクを接続する必要があります。  各 Standard Storage アカウントには、最大 20,000 IOPS および 500 TB のサイズ容量が適用されます。  この制限により、OS ディスクと作成するすべてのデータ ディスクの両方を含む、約 40 個の使用頻度の高いディスクとなります。 Premium Storage アカウントの場合、最大 IOPS に関する制限はありませんが、32 TB のサイズ制限があります。 
 
@@ -118,7 +118,7 @@ Found memtest86+ image: /memtest86+.bin
 done
 ```
 
-Redhat 配布ファミリでは、次のコマンドのみが必要です。   
+Red Hat 配布ファミリでは、次のコマンドのみが必要です。   
 
 ```bash
 echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local

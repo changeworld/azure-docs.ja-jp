@@ -8,14 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/26/2018
-ms.openlocfilehash: 659c33ec0e989003e68b5165fab70f50c607868c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 98c62f54e2413bd67600db182c452d0d5965f239
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591883"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972183"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) での HDInsight の使用方法について説明します。 Azure Virtual Network を使用すると、次のシナリオが可能になります。
 
@@ -70,7 +72,7 @@ ms.locfileid: "39591883"
 
     HDInsight では、さまざまなポートを使用する複数のサービスをホストします。 これらのポートへのトラフィックはブロックしないでください。 仮想アプライアンスのファイアウォールの通過を許可するポートの一覧については、「[セキュリティ](#security)」のセクションをご覧ください。
 
-    既存のセキュリティ構成を検索するには、次の Azure PowerShell または Azure CLI コマンドを使用します。
+    既存のセキュリティ構成を検索するには、次の Azure PowerShell または Azure クラシック CLI コマンドを使用します。
 
     * ネットワーク セキュリティ グループ
 
@@ -107,7 +109,7 @@ ms.locfileid: "39591883"
 
     * [Azure Portal を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-portal.md)
     * [Azure PowerShell を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-    * [Azure CLI 1.0 を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
+    * [Azure クラシック CLI を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [Azure Resource Manager テンプレートを使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
   > [!IMPORTANT]
@@ -171,7 +173,7 @@ Azure には、仮想ネットワークにインストールされている Azur
 
 ## <a name="directly-connect-to-hadoop-services"></a>Hadoop サービスへの直接接続
 
-HDInsight のほとんどのドキュメントでは、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、https://CLUSTERNAME.azurehdinsight.net でクラスターに接続できることが必要です。 このアドレスではパブリック ゲートウェイが使用されていますが、NSG または UDR を使用してインターネットからのアクセスが制限されている場合は、このゲートウェイを使用できません。
+HDInsight のほとんどのドキュメントでは、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、 https://CLUSTERNAME.azurehdinsight.net でクラスターに接続できることが必要です。 このアドレスではパブリック ゲートウェイが使用されていますが、NSG または UDR を使用してインターネットからのアクセスが制限されている場合は、このゲートウェイを使用できません。
 
 仮想ネットワーク経由で Ambari やその他の Web ページに接続するには、次の手順を使用します。
 
@@ -441,7 +443,7 @@ $vnet | Set-AzureRmVirtualNetwork
 > Add-AzureRmNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 > ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-classic-cli"></a>Azure クラシック CLI
 
 次の手順を使用して、受信トラフィックを制限するが HDInsight が必要とする IP アドレスからのトラフィックは許可する仮想ネットワークを作成します。
 
@@ -510,7 +512,7 @@ $vnet | Set-AzureRmVirtualNetwork
 
 仮想ネットワークのカスタム DNS サーバーで次を実行します。
 
-1. Azure PowerShell または Azure CLI を使用して、仮想ネットワークの DNS サフィックスを見つけます。
+1. Azure PowerShell または Azure クラシック CLI を使用して、仮想ネットワークの DNS サフィックスを見つけます。
 
     ```powershell
     $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
@@ -573,7 +575,7 @@ $vnet | Set-AzureRmVirtualNetwork
     
     * `192.168.0.1` の値を、オンプレミスの DNS サーバーの IP アドレス と置き換えます。 このエントリにより、その他の DNS 要求はすべて、オンプレミスの DNS サーバーにルーティングされます。
 
-3. 構成を使用するには、バインドを再起動します。 たとえば、「`sudo service bind9 restart`」のように入力します。
+3. 構成を使用するには、バインドを再起動します。 たとえば、「 `sudo service bind9 restart` 」のように入力します。
 
 4. オンプレミスの DNS サーバーに、条件付きフォワーダーを追加します。 手順 1 で見つけた DNS サフィックスへの要求をカスタム DNS サーバーに送信するように条件付きフォワーダーを構成します。
 
@@ -592,7 +594,7 @@ $vnet | Set-AzureRmVirtualNetwork
 
 * [バインド](https://www.isc.org/downloads/bind/)がカスタム DNS サーバーにインストールされている。
 
-1. Azure PowerShell または Azure CLI を使用して、両方の仮想ネットワークの DNS サフィックスを見つけます。
+1. Azure PowerShell または Azure クラシック CLI を使用して、両方の仮想ネットワークの DNS サフィックスを見つけます。
 
     ```powershell
     $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"

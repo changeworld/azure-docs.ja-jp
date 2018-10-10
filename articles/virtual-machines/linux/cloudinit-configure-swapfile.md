@@ -1,6 +1,6 @@
 ---
 title: cloud-init を使用して Linux VM 上のスワップファイルを構成する | Microsoft Docs
-description: Azure CLI 2.0 による作成時に cloud-init を使用して Linux VM のスワップファイルを構成する方法
+description: Azure CLI による作成時に cloud-init を使用して Linux VM のスワップファイルを構成する方法
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 88a141922f113caf7ad67c89de48f84a821f7ba3
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 2a5a878b7c8c3b6126d90b978241fbcb237d8db7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29952600"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946308"
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>cloud-init を使用して Linux VM 上のスワップファイルを構成する
 この記事では、[cloud-init](https://cloudinit.readthedocs.io) を使用してさまざまな Linux ディストリビューションのスワップファイルを構成する方法を示します。 従来、スワップファイルはそれを必要とするディストリビューションに基づいて Linux エージェント (WALA) によって構成されました。  このドキュメントでは、cloud-init を使用したプロビジョニング時にスワップファイルをオンデマンドで構築するプロセスを概説します。  cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法について詳しくは、「[cloud-init の概要](using-cloud-init.md)」をご覧ください
@@ -27,7 +27,7 @@ ms.locfileid: "29952600"
 ## <a name="create-swapfile-for-ubuntu-based-images"></a>Ubuntu ベースのイメージ用のスワップファイルを作成する
 既定では、Azure では Ubuntu ギャラリー イメージはスワップ ファイルを作成しません。 cloud-init を使用して VM のプロビジョニング中にスワップ ファイル構成を有効にするには、Ubuntu wiki 上の [AzureSwapPartitions に関するドキュメント](https://wiki.ubuntu.com/AzureSwapPartitions)をご覧ください。
 
-## <a name="create-swapfile-for-redhat-and-centos-based-images"></a>RedHat および CentOS ベースのイメージ用のスワップファイルを作成する
+## <a name="create-swapfile-for-red-hat-and-centos-based-images"></a>Red Hat および CentOS ベースのイメージ用のスワップファイルを作成する
 
 現在のシェルで、*cloud_init_swapfile.txt* という名前のファイルを作成し、次の構成を貼り付けます。 この例では、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 任意のエディターを使用することができます。 `sensible-editor cloud_init_swapfile.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 **nano** エディターを使用するには #1 を選びます。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。  
 

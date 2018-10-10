@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 614375c95f4af3a5fbeeb4368ff8c577372e6381
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 2ec712dcce1295a91f552176ddcf6572d3f23ecc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37933954"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993563"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Azure Active Directory 認証 (プレビュー) を使用して Azure の Linux 仮想マシンにログインする
 
@@ -35,7 +35,7 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
   - ローカル管理者アカウントへの依存度を低減することで、資格情報の損失/漏洩や、セキュリティ性の弱い資格情報をユーザーが設定することを憂慮する必要がなくなります。
   - Azure AD ディレクトリ用に設定されたパスワードの複雑性と、パスワードの有効期間ポリシーを使用して、Linux VM もセキュリティ保護できます。
   - Azure 仮想マシンへのログイン セキュリティをさらに強化するために、多要素認証を設定することができます。
-  - Azure Active Directory を使用して Linux VM にログインする機能は、[フェデレーション サービス](../../active-directory/connect/active-directory-aadconnectfed-whatis.md)を使用するお客様も使用できます。
+  - Azure Active Directory を使用して Linux VM にログインする機能は、[フェデレーション サービス](../../active-directory/hybrid/how-to-connect-fed-whatis.md)を使用するお客様も使用できます。
 
 - **シームレスなコラボレーション:** ロールベースのアクセス制御 (RBAC) を使用することで、どのユーザーが、正規のユーザーまたは管理者権限を持つユーザーとして特定の VM にサインインできるかを指定できます。 ユーザーがチームに参加またはチームから脱退する場合は、適切なアクセス権が付与されるよう VM の RBAC ポリシーを更新できます。 この操作は、不要な SSH 公開キーを削除して VM をスクラブするよりも簡単です。 従業員が退職し、そのユーザー アカウントが無効化または Azure AD から削除されると、リソースにアクセスできなくなります。
 
@@ -43,7 +43,7 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
 
 この機能のプレビュー期間中は、次の Linux ディストリビューションがサポートされます。
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 | --- | --- |
 | CentOS | CentOS 6.9、CentOS 7.4 |
 | Debian | Debian 9 |
@@ -59,7 +59,7 @@ Azure AD の認証を使用して、Azure Linux VM にログインすると、�
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、Azure CLI バージョン 2.0.31 以降を実行していることがこのチュートリアルの要件になります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合、Azure CLI バージョン 2.0.31 以降を実行していることがこのチュートリアルの要件になります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-a-linux-virtual-machine"></a>Linux 仮想マシンの作成
 
@@ -117,7 +117,7 @@ az role assignment create \
 > [!NOTE]
 > AAD ドメインとログオン ユーザー名ドメインが一致しない場合は、*--assignee* のユーザー名だけでなく、*--assignee-object-id* を使用してユーザー アカウントのオブジェクト ID を指定する必要があります。 ユーザー アカウントのオブジェクト ID は、[az ad user list](/cli/azure/ad/user#az-ad-user-list)を使用して取得できます。
 
-RBAC を使用して、Azure サブスクリプション リソースへのアクセスを管理する方法の詳細については、[Azure CLI 2.0](../../role-based-access-control/role-assignments-cli.md)、[Azure Portal](../../role-based-access-control/role-assignments-portal.md)、または [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md) の使用に関する記事を参照してください。
+RBAC を使用して、Azure サブスクリプション リソースへのアクセスを管理する方法の詳細については、[Azure CLI](../../role-based-access-control/role-assignments-cli.md)、[Azure portal](../../role-based-access-control/role-assignments-portal.md)、または [Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md) の使用に関する記事を参照してください。
 
 Linux 仮想マシンにサインインする特定のユーザーに対して多要素認証を要求するように Azure AD を構成することもできます。 詳細については、「[クラウドでの Azure Multi-Factor Authentication の概要](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)」を参照してください。
 
@@ -179,4 +179,4 @@ Web ブラウザーで認証手続きを完了した直後に、新しいコー�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Active Directory の詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」と「[Azure AD の概要](../../active-directory/fundamentals/get-started-azure-ad.md)」を参照してください。
+Azure Active Directory の詳細については、「[Azure Active Directory とは](../../active-directory/fundamentals/active-directory-whatis.md)」を参照してください

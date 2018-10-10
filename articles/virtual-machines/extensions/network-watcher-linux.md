@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: efd512395b49d3c274bb5aa409d1cbd527673659
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 35cd773c2a30549dde10a73b2fbe6db1a0c8b34a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781889"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989381"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux 用 Network Watcher Agent 仮想マシン拡張機能
 
@@ -87,7 +87,7 @@ Network Watcher Agent 拡張機能は、次の Linux ディストリビューシ
 
 Azure VM 拡張機能は、Azure Resource Manager テンプレートを使ってデプロイできます。 Network Watcher Agent 拡張機能をデプロイするには、テンプレートで前回の JSON スキーマを利用します。
 
-## <a name="azure-cli-10-deployment"></a>Azure CLI 1.0 でのデプロイ
+## <a name="azure-classic-cli-deployment"></a>Azure クラシック CLI でのデプロイ
 
 次の例では、従来のデプロイ モデルを使用してデプロイされた既存の VM に Network Watcher Agent VM 拡張機能をデプロイします。
 
@@ -96,7 +96,7 @@ azure config mode asm
 azure vm extension set myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWatcher 1.4
 ```
 
-## <a name="azure-cli-20-deployment"></a>Azure CLI 2.0 でのデプロイ
+## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
 
 次の例では、Resource Manager を使用してデプロイされた既存の VM に Network Watcher Agent VM 拡張機能をデプロイします。
 
@@ -110,7 +110,7 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 
 Azure Portal または Azure CLI を使用して、拡張機能のデプロイ状態に関するデータを取得できます。
 
-次の例は、Azure CLI 1.0 で従来のデプロイ モデルを使用してデプロイされた VM に対する拡張機能のデプロイ状態を示しています。
+次の例は、Azure クラシック CLI で従来のデプロイ モデルを使用してデプロイされた VM に対する拡張機能のデプロイ状態を示しています。
 
 ```azurecli
 azure config mode asm
@@ -122,7 +122,7 @@ azure vm extension get myVM1
 /var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
 `
 
-次の例は、Azure CLI 2.0 で Resource Manager を使用してデプロイされた VMの NetworkWatcherAgentLinux に対する拡張機能のデプロイ状態を示しています。
+次の例は、Azure CLI で Resource Manager を使用してデプロイされた VM の NetworkWatcherAgentLinux に対する拡張機能のデプロイ状態を示しています。
 
 ```azurecli
 az vm extension show --name NetworkWatcherAgentLinux --resource-group myResourceGroup1 --vm-name myVM1

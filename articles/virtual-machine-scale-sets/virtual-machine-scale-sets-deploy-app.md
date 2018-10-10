@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 8817facc21d2a7ac86bdaf198aab3179a93c4914
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 86bb231a4eb9468ccc92c182b099714950b2a81c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38718983"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979445"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
 スケール セット内の仮想マシン (VM) インスタンスでアプリケーションを実行する　には、まず、アプリケーション コンポーネントと必要なファイルをインストールする必要があります。 この記事では、スケール セット内のインスタンス用にカスタム VM イメージを構築する、または既存の VM インスタンスにインストール スクリプトを自動的に実行する方法について説明します。 また、スケール セットのアプリケーションまたは OS 更新プログラムを管理する方法についても説明します。
@@ -31,14 +31,14 @@ Azure プラットフォーム イメージの 1 つを使用してスケール 
 
 スケール セットにインスタンスがプロビジョニングされると同時にアプリケーションを実行できるカスタム VM イメージを構築すれば、構成管理と VM のプロビジョニングにかかる時間を短縮できます。 スケール セットでカスタム VM イメージを作成し、使用する方法については、次のチュートリアルをご覧ください。
 
-- [Azure CLI 2.0](tutorial-use-custom-image-cli.md)
+- [Azure CLI](tutorial-use-custom-image-cli.md)
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
 ## <a name="already-provisioned"></a>カスタム スクリプト拡張機能を使用してアプリケーションをインストールする
 カスタム スクリプト拡張機能は、Azure VM でスクリプトをダウンロードし、実行します。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 スクリプトは、Azure ストレージや GitHub からダウンロードできます。また、拡張機能の実行時に Azure Portal に提供することもできます。 スケール セットでカスタム VM イメージを作成し、使用する方法については、次のチュートリアルをご覧ください。
 
-- [Azure CLI 2.0](tutorial-install-apps-cli.md)
+- [Azure CLI](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
 - [Azure Resource Manager テンプレート](tutorial-install-apps-template.md)
 
@@ -114,7 +114,7 @@ az vmss create \
 ### <a name="install-applications-with-os-updates"></a>OS 更新プログラムを使用してアプリケーションをインストールする
 OS の新しいリリースが使用できる場合は、新しいカスタム イメージを使用または構築して、スケール セットに [OS の更新プログラムを展開](virtual-machine-scale-sets-upgrade-scale-set.md)できます。 各 VM インスタンスは、指定した最新のイメージにアップグレードされます。 アプリケーションが事前にインストールされたカスタム イメージ、カスタム スクリプト拡張機能、または PowerShell DSC を使用して、アップグレードを実行すると同時にアプリケーションが自動的に提供されるようにできます。 このプロセスを実行する場合、アプリケーションの保守を計画して、バージョンの互換性の問題がないことを確認する必要があります。
 
-アプリケーションが事前にインストールされているカスタム VM イメージを使用すると、アプリケーションの更新プログラムをデプロイメント パイプラインに統合して新しいイメージを構築し、スケール セット全体に OS のアップグレードを展開することができます。 この方法を使用すると、パイプラインが最新のアプリケーション ビルドを選択し、VM を作成および認証し、スケール セットの VM インスタンスをアップグレードできます。 複数のカスタム VM イメージ間にわたってアプリケーション更新プログラムを構築してデプロイするデプロイ パイプラインを実行する場合は、[Packer イメージを作成し、Visual Studio Team Services でデプロイする](/vsts/pipelines/apps/cd/azure/deploy-azure-scaleset)ことができます。また、[Spinnaker](https://www.spinnaker.io/) や [Jenkins](https://jenkins.io/) などの別のプラットフォームを使用することもできます。
+アプリケーションが事前にインストールされているカスタム VM イメージを使用すると、アプリケーションの更新プログラムをデプロイメント パイプラインに統合して新しいイメージを構築し、スケール セット全体に OS のアップグレードを展開することができます。 この方法を使用すると、パイプラインが最新のアプリケーション ビルドを選択し、VM を作成および認証し、スケール セットの VM インスタンスをアップグレードできます。 複数のカスタム VM イメージ間にわたってアプリケーション更新プログラムを構築してデプロイするデプロイ パイプラインを実行する場合は、[Packer イメージを作成し、Azure DevOps Services でデプロイする](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)ことができます。また、[Spinnaker](https://www.spinnaker.io/) や [Jenkins](https://jenkins.io/) などの別のプラットフォームを使用することもできます。
 
 
 ## <a name="next-steps"></a>次の手順

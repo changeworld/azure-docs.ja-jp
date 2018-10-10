@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 256eac99feacc18a51e45c3f07cdceb7d687cacf
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 563194ea0b3e4bda2021c75c544d068f00d74ba7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293623"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963834"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Application Gateway のバックエンドの正常性、診断ログ、およびメトリック
 
@@ -58,7 +58,7 @@ Application Gateway は、ポータル、PowerShell、およびコマンド ラ�
 Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
 ```
 
-### <a name="view-back-end-health-through-azure-cli-20"></a>Azure CLI 2.0 を介したバックエンドの正常性の表示
+### <a name="view-back-end-health-through-azure-cli"></a>Azure CLI を介したバックエンドの正常性の表示
 
 ```azurecli
 az network application-gateway show-backend-health --resource-group AdatumAppGatewayRG --name AdatumAppGateway
@@ -257,7 +257,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 |ruleSetType     | ルール セットの種類。 使用できる値は OWASP です。        |
 |ruleSetVersion     | 使用されるルール セットのバージョン。 使用できる値は 2.2.9 と 3.0 です。     |
 |ruleId     | トリガーするイベントのルール ID。        |
-|Message     | トリガーするイベントのわかりやすいメッセージ。 詳細は details セクションに示されます。        |
+|message     | トリガーするイベントのわかりやすいメッセージ。 詳細は details セクションに示されます。        |
 |action     |  要求に対して実行されるアクション。 使用できる値は Blocked と Allowed です。      |
 |site     | ログの生成対象のサイト。 ルールがグローバルであるため、現時点では Global のみ表示されます。|
 |詳細     | トリガーするイベントの詳細。        |
@@ -311,6 +311,10 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 > Visual Studio を使い慣れていて、C# の定数と変数の値を変更する基本的な概念を理解している場合は、GitHub から入手できる[ログ変換ツール](https://github.com/Azure-Samples/networking-dotnet-log-converter)を使用できます。
 > 
 > 
+
+#### <a name="analyzing-access-logs-through-goaccess"></a>GoAccess を介してアクセス ログを分析する
+
+Microsoft は、人気のある [GoAccess](https://goaccess.io/) ログ アナライザーをインストールし、Application Gateway アクセス ログに対して実行する、Resource Manager テンプレートを発行しています。 GoAccess では、ユニーク ビジター、要求されたファイル、ホスト、オペレーティング システム、ブラウザー、HTTP 状態コードなど、重要な HTTP トラフィック統計情報が提供されます。 詳細については、[GitHub の Resource Manager テンプレート フォルダーにある Readme ファイル](https://aka.ms/appgwgoaccessreadme)を参照してください。
 
 ## <a name="metrics"></a>メトリック
 

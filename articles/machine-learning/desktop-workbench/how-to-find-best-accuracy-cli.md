@@ -7,19 +7,20 @@ ms.author: kefzhou
 manager: akannava
 ms.reviewer: akannava, haining, mldocs, jmartens, jasonwhowell
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
-ms.openlocfilehash: 077af8b5d3367dd2188cbd6e5d76aaf52512a1e8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ROBOTS: NOINDEX
+ms.openlocfilehash: 094fd6d8c6c6d647533cf5409d1a85283c71c80e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830801"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953244"
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>精度が最適で最短時間の実行を見つける
-実行が複数回の場合、ユース ケース例として、最適な精度の実行を見つけることがあります。 アプローチの 1 つは、[JMESPath](http://jmespath.org/) クエリでコマンド ライン インターフェイス (CLI) を使用することです。 Azure CLI で JMESPath を使用する方法については、「[Azure CLI 2.0 での JMESPath クエリの使用](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest)」をご覧ください。 次の例では、0、0.98、1、および 1 の精度で 4 個の実行が作成されます。 範囲 `[MaxAccuracy-Threshold, MaxAccuracy]` (`Threshold = .03`) 内に含まれる場合、実行はフィルターされます。
+実行が複数回の場合、ユース ケース例として、最適な精度の実行を見つけることがあります。 アプローチの 1 つは、[JMESPath](http://jmespath.org/) クエリでコマンド ライン インターフェイス (CLI) を使用することです。 Azure CLI で JMESPath を使用する方法については、「[Azure CLI で JMESPath クエリを使用する](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest)」を参照してください。 次の例では、0、0.98、1、および 1 の精度で 4 個の実行が作成されます。 範囲 `[MaxAccuracy-Threshold, MaxAccuracy]` (`Threshold = .03`) 内に含まれる場合、実行はフィルターされます。
 
 ## <a name="sample-data"></a>サンプル データ
 `Accuracy` 値の既存の実行がない場合、以下の手順でクエリ用の実行が生成されます。

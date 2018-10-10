@@ -1,6 +1,6 @@
 ---
 title: Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する | Microsoft Docs
-description: Azure DevTest Labs を使って Azure CLI 2.0 で仮想マシンを作成して管理する方法を説明します
+description: Azure DevTest Labs を使って Azure CLI で仮想マシンを作成して管理する方法を説明します
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5e50bc3c6804a6f3d3dafd07b2918605c4cbc6ab
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ccf9b08856fcc652e3ad4b2b31587d43d7ef9cca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434681"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995956"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Azure CLI を使用して DevTest Labs で仮想マシンを作成して管理する
 このクイック スタートでは、ラボで開発用コンピューターを作成、起動、接続、更新、およびクリーンアップする方法について説明します。 
@@ -27,7 +27,7 @@ ms.locfileid: "39434681"
 
 * ラボが作成されていない場合は、[こちら](devtest-lab-create-lab.md)で方法をご覧ください。
 
-* [CLI 2.0 をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 開始するには、az login を実行して、Azure との接続を作成します。 
+* [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)を実行します。 開始するには、az login を実行して、Azure との接続を作成します。 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>仮想マシンを作成して確認する 
 SSH 認証を使って Marketplace イメージから VM を作成します。

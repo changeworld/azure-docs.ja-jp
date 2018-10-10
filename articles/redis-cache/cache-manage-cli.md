@@ -1,6 +1,6 @@
 ---
-title: Azure CLI を使用した Azure Redis Cache の管理 | Microsoft Docs
-description: 任意のプラットフォームに Azure CLI をインストールする方法、Azure CLI を使って Azure アカウントに接続する方法、Azure CLI で Redis Cache を作成および管理する方法。
+title: Azure クラシック CLI を使用した Azure Redis Cache の管理 | Microsoft Docs
+description: 任意のプラットフォームに Azure クラシック CLI をインストールする方法、Azure クラシック CLI を使って Azure アカウントに接続する方法、クラシック CLI で Redis キャッシュを作成および管理する方法。
 services: redis-cache
 documentationcenter: ''
 author: wesmc7777
@@ -14,39 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: fdb0989af2215166b69f10474a0d22aab7b4d593
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 0e8bbaad920f35028c51641779a3272f73f81f37
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27911280"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978407"
 ---
-# <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>Azure コマンド ライン インターフェイス (Azure CLI) を使用して Azure Redis Cache を作成および管理する方法
+# <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して Azure Redis Cache を作成および管理する方法
 > [!div class="op_single_selector"]
 > * [PowerShell](cache-howto-manage-redis-cache-powershell.md)
-> * [Azure CLI](cache-manage-cli.md)
->
+> * [Azure クラシック CLI](cache-manage-cli.md)
 >
 
-Azure CLI は、任意のプラットフォームから Azure インフラストラクチャを管理する優れた方法です。 この記事では、Azure CLI を使用して Azure Redis Cache インスタンスを作成および管理する方法について説明します。
+Azure クラシック CLI は、任意のプラットフォームから Azure インフラストラクチャを管理する優れた方法です。 この記事では、Azure クラシック CLI を使用して Azure Redis Cache インスタンスを作成および管理する方法について説明します。
 
+[!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 > [!NOTE]
-> この記事は、Azure CLI の以前のバージョンに適用されます。 最新の Azure CLI 2.0 サンプル スクリプトについては、[Azure CLI Redis キャッシュ サンプル](cli-samples.md)に関するページを参照してください。
-> 
-> 
+> 最新の Azure CLI サンプル スクリプトについては、[Azure CLI Redis キャッシュ サンプル](cli-samples.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
-Azure CLI を使用して Azure Redis Cache インスタンスを作成および管理するには、次の手順を実行する必要があります。
+Azure クラシック CLI を使用して Azure Redis Cache インスタンスを作成および管理するには、次の手順を実行する必要があります。
 
 * Azure アカウントが必要です。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/pricing/free-trial/) をほんの少しの時間で作成することができます。
-* [Azure CLI のインストール](../cli-install-nodejs.md)を実行します。
-* Azure CLI のインストールを個人の Azure アカウント、仕事用 Azure アカウント、学校用 Azure アカウントに関連付けることで、 `azure login` コマンドを使用して Azure CLI からログインすることができます。 相違点を理解して選択するには、「 [Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](/cli/azure/authenticate-azure-cli)」を参照してください。
-* 以下のコマンドを実行する前に、 `azure config mode arm` コマンドを実行して、Azure CLI をリソース マネージャー モードに切り替えます。 詳細については、「[Azure CLI を使用して Azure のリソースとリソース グループを管理する](../xplat-cli-azure-resource-manager.md)」を参照してください。
+* [Azure クラシック CLI をインストールします](../cli-install-nodejs.md)。
+* Azure CLI のインストールを個人の Azure アカウントか、職場または学校 Azure アカウントに関連付けることで、`azure login` コマンドを使用してクラシック CLI からログインすることができます。
+* 以下のコマンドを実行する前に、`azure config mode arm` コマンドを実行して、クラシック CLI を Resource Manager モードに切り替えます。 詳細については、[Azure クラシック CLI を使用して Azure のリソースとリソース グループを管理する方法](../xplat-cli-azure-resource-manager.md)に関するページを参照してください。
 
 ## <a name="redis-cache-properties"></a>Redis Cache のプロパティ
 Redis Cache インスタンスを作成および更新する場合には、次のプロパティを使用します。
 
-| プロパティ | スイッチ | [説明] |
+| プロパティ | スイッチ | 説明 |
 | --- | --- | --- |
 | name |-n, --name |Redis Cache の名前です。 |
 | resource group |-g, --resource-group |リソース グループの名前です。 |
@@ -57,12 +55,12 @@ Redis Cache インスタンスを作成および更新する場合には、次�
 | Redis 構成 |-c、--redis-configuration |Redis 構成。 構成のキーと値の JSON 形式の文字列をここに入力します。 形式: "{"":"","":""}" |
 | Redis 構成 |-f、--redis-configuration-file |Redis 構成。 構成キーおよび値を含むファイルのパスをここに入力します。 ファイル エントリの形式: {"":"","":""} |
 | シャード数 |-r、--shard-count |クラスタリングにより Premium クラスター キャッシュに作成するシャードの数。 |
-| 仮想ネットワーク |-v、--virtual-network |VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| Virtual Network |-v、--virtual-network |VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | key type |-t、--key-type |更新するキーの種類です。 有効な値: [Primary、Secondary] |
 | StaticIP |-p, --static-ip <static-ip> |VNET でキャッシュをホストする場合に、キャッシュのサブネットで一意の IP アドレスを指定します。 指定していない場合、サブネットから自動的にアドレスが 1 つ選択されます。 |
 | サブネット |t、--subnet <subnet> |VNET でキャッシュをホストする場合に、キャッシュをデプロイするサブネットの名前を指定します。 |
 | VirtualNetwork |-v, --virtual-network <virtual-network> |VNET でキャッシュをホストする場合に、Redis Cache をデプロイする仮想ネットワークの正確な ARM リソース ID を指定します。 形式の例: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| [サブスクリプション] |-s、--subscription |サブスクリプションの識別子です。 |
+| サブスクリプション |-s、--subscription |サブスクリプションの識別子です。 |
 
 ## <a name="see-all-redis-cache-commands"></a>すべての Redis Cache コマンドを参照してください。
 すべての Redis Cache コマンドとそのパラメーターを表示するには、 `azure rediscache -h` コマンドを使用します。

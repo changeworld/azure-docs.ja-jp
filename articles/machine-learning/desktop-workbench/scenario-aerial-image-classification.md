@@ -7,18 +7,23 @@ manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.topic: article
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
-ms.openlocfilehash: d34f25fd75816f0ae840b3cbb2e0e88cbc2bfd91
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5ca47c8234239b56a2d829903828dda8220d53cb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832409"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967610"
 ---
 # <a name="aerial-image-classification"></a>航空画像の分類
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 この例は、Azure Machine Learning Workbench を使用して、画像分類モデルの分散トレーニングと運用化を調整する方法を示しています。 トレーニングには 2 つのアプローチを使います。(i) [Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) GPU クラスターを使って、ディープ ニューラル ネットワークを調整し、(ii) [Microsoft Machine Learning for Apache Spark (MMLSpark)](https://github.com/Azure/mmlspark) パッケージを使い、トレーニング済みの CNTK モデルを使って画像を特徴付けし、生成された特徴を使って分類をトレーニングします。 その後、[Azure HDInsight Spark](https://azure.microsoft.com/services/hdinsight/apache-spark/) クラスターを使ってクラウド内の大きな画像セットに並列方式でトレーニングされたモデルを適用します。こうすると、worker ノードを追加または削除することにより、トレーニングと運用化の速度を上げたり下げたりできます。
 
@@ -61,21 +66,21 @@ ms.locfileid: "34832409"
        - 使用可能なコアがあまりない場合は、HDInsight クラスター テンプレートを変更して、プロビジョニングする worker 数を減らすことができます。 この手順については、「HDInsight Spark クラスターの作成」セクションを参照してください。
     - このサンプルでは、2 つの NC6 (1 GPU、6 vCPU) VM から成る Batch AI トレーニング クラスターを作成します。 Azure Portal のサブスクリプションの [使用量 + クォータ] タブで、米国東部リージョンにアカウントで使用できるコアが十分にあることを確認します。
 - [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md)
-    - [インストールと作成のクイックスタート](../service/quickstart-installation.md)に関するページを参照して Azure Machine Learning Workbench をインストールし、実験用アカウントとモデル管理アカウントを作成します。
-- [Batch AI](https://github.com/Azure/BatchAI) Python SDK と Azure CLI 2.0
+    - [インストールと作成のクイックスタート](../desktop-workbench/quickstart-installation.md)に関するページを参照して Azure Machine Learning Workbench をインストールし、実験用アカウントとモデル管理アカウントを作成します。
+- [Batch AI](https://github.com/Azure/BatchAI) Python SDK と Azure CLI
     - [Batch AI Recipes の README](https://github.com/Azure/BatchAI/tree/master/recipes) の次のセクションを完了します。
         - "Prerequisites (前提条件)"
         - "Create and get your Azure Active Directory (AAD) application (Azure Active Directory (AAD) アプリケーションの作成と取得)"
-        - "Register BatchAI Resource Providers (BatchAI リソースプロバイダーの登録)" ("Run Recipes Using Azure CLI 2.0 (Azure CLI 2.0 を使用したレシピの実行)" の下)
+        - "Register BatchAI Resource Providers (BatchAI リソースプロバイダーの登録)" ("Run Recipes Using Azure CLI (Azure CLI を使用したレシピの実行)" の下)
         - "Install Azure Batch AI Management Client (Azure Batch AI 管理クライアントのインストール)"
         - "Install Azure Python SDK (Azure Python SDK のインストール)"
     - 作成するよう指示された Azure Active Directory アプリケーションのクライアント ID、シークレット、テナント ID をメモしておきます。 これらの資格情報は、このチュートリアルで後ほど使用します。
-    - このドキュメントの作成時点では、Azure Machine Learning Workbench と Azure Batch AI は Azure CLI 2.0 の別々の分岐を使用しています。 はっきりさせるため、Workbench の CLI バージョンを "Azure Machine Learning Workbench から起動された CLI" と呼び、一般公開バージョン (Batch AI を含むもの) を "Azure CLI 2.0" と呼びます。
+    - このドキュメントの作成時点では、Azure Machine Learning Workbench と Azure Batch AI は Azure CLI の別々の分岐を使用しています。 はっきりさせるため、Workbench の CLI バージョンを "Azure Machine Learning Workbench から起動された CLI" と呼び、一般公開バージョン (Batch AI を含むもの) を "Azure CLI" と呼びます。
 - [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)。Azure ストレージ アカウント間のファイル転送を調整する無料のユーティリティです。
     - AzCopy の実行可能ファイルを含むフォルダーが、システム PATH 環境変数にあることを確認します (環境変数の変更手順については、[こちら](https://support.microsoft.com/help/310519/how-to-manage-environment-variables-in-windows-xp)をご覧ください)。
 - SSH クライアント。[PuTTY](http://www.putty.org/) をお勧めします。
 
-この例は、Windows 10 PC でテストされましたが、Azure Data Science Virtual Machines など、任意の Windows マシンから実行することができます。 Azure CLI 2.0 は、[こちらの説明](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials)に従って MSI からインストールされました。 この例を macOS 上で実行するには、若干の変更が必要になる可能性があります (ファイルパスの変更など)。
+この例は、Windows 10 PC でテストされましたが、Azure Data Science Virtual Machines など、任意の Windows マシンから実行することができます。 Azure CLI は、[こちらの説明](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials)に従って MSI からインストールされました。 この例を macOS 上で実行するには、若干の変更が必要になる可能性があります (ファイルパスの変更など)。
 
 ### <a name="set-up-azure-resources"></a>Azure リソースの設定
 
@@ -181,7 +186,7 @@ ms.locfileid: "34832409"
 
 ### <a name="set-up-batch-ai-resources"></a>Batch AI リソースをセットアップする
 
-ストレージ アカウント ファイルの転送と Spark クラスターのデプロイが完了するのを待つ間に、Batch AI ネットワーク ファイル サーバー (NFS) と GPU クラスターを準備できます。 Azure CLI 2.0 のコマンド プロンプトを開き、次のコマンドを実行します。
+ストレージ アカウント ファイルの転送と Spark クラスターのデプロイが完了するのを待つ間に、Batch AI ネットワーク ファイル サーバー (NFS) と GPU クラスターを準備できます。 Azure CLI のコマンド プロンプトを開き、次のコマンドを実行します。
 
 ```
 az --version 
@@ -380,7 +385,7 @@ az ml experiment submit -c myhdi Code\02_Modeling\run_mmlspark.py --config_filen
 
 いずれかの種類のトレーニング実行を 2 回以上終えたら、左側のメニュー バーにある時計のアイコンをクリックして、Workbench の実行履歴機能に移動します。 左側のスクリプト一覧から `run_mmlspark.py` を選びます ウィンドウに、すべての実行に対するテスト セットの精度比較が読み込まれます。 詳細を表示するには、下へスクロールして個々 の実行の名前をクリックします。
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 
 HDInsight のリモート実行を使用して、トレーニング済みモデルの 1 つをマサチューセッツ州ミドルセックス郡のタイル状の航空画像に適用するには、目的のモデルの名前を次のコマンドに挿入して、コマンドを実行します。
 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/29/2018
+ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0abf0a5971435fc3842a93e79d39468cba5c74da
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: fb0fb4e0f23413cb56b1bb5ec419c44dfc52e7b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445213"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996844"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Azure Active Directory の全体管理者のアクセス権を昇格する
 
@@ -37,7 +37,9 @@ Azure Active Directory (Azure AD) の[全体管理者](../active-directory/users
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="elevate-access-for-a-global-administrator-using-the-azure-portal"></a>Azure portal を使用して全体管理者のアクセス権を昇格する
+## <a name="azure-portal"></a>Azure ポータル
+
+Azure portal を使用して全体管理者のアクセス権を昇格するには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) または [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
 
@@ -59,7 +61,9 @@ Azure Active Directory (Azure AD) の[全体管理者](../active-directory/users
 
 1. 昇格したアクセス権で行う必要のあるタスクを実行します。 完了したら、スイッチを **[いいえ]** に戻します。
 
-## <a name="list-role-assignment-at-the-root-scope--using-powershell"></a>PowerShell を使用してルート スコープ (/) のロールの割り当てを一覧表示する
+## <a name="azure-powershell"></a>Azure PowerShell
+
+### <a name="list-role-assignment-at-the-root-scope-"></a>ルート スコープ (/) のロールの割り当てを一覧表示する
 
 ルート スコープ (`/`) のユーザーについてユーザー アクセス管理者ロールの割り当てを一覧表示するには、[Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment) コマンドを使用します。
 
@@ -79,7 +83,7 @@ ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc
 ObjectType         : User
 ```
 
-## <a name="remove-a-role-assignment-at-the-root-scope--using-powershell"></a>PowerShell を使用してルート スコープ (/) のロールの割り当てを削除する
+### <a name="remove-a-role-assignment-at-the-root-scope-"></a>ルート スコープ (/) のロールの割り当てを削除する
 
 ルート スコープ (`/`) のユーザーについてユーザー アクセス管理者ロールの割り当てを削除するには、[Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment) コマンドを使用します。
 
@@ -88,7 +92,9 @@ Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
   -RoleDefinitionName "User Access Administrator" -Scope "/"
 ```
 
-## <a name="elevate-access-for-a-global-administrator-using-the-rest-api"></a>REST API を使用して全体管理者のアクセス権を昇格する
+## <a name="rest-api"></a>REST API
+
+### <a name="elevate-access-for-a-global-administrator"></a>全体管理者のアクセス権を昇格する
 
 REST API を使用して全体管理者のアクセス権を昇格するには、以下の基本的な手順を実行します。
 
@@ -117,7 +123,7 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
 
 1. 再び必要になるまで、ユーザー アクセス管理者特権を削除します。
 
-## <a name="list-role-assignments-at-the-root-scope--using-the-rest-api"></a>REST API を使用してルート スコープ (/) のロールの割り当てを一覧表示する
+### <a name="list-role-assignments-at-the-root-scope-"></a>ルート スコープ (/) のロールの割り当てを一覧表示する
 
 ルート スコープ (`/`) でのユーザーに対するロールの割り当ての一覧を表示することができます。
 
@@ -127,7 +133,17 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
    GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
    ```
 
-## <a name="remove-elevated-access-using-the-rest-api"></a>REST API を使用して昇格したアクセス権を削除する
+### <a name="list-deny-assignments-at-the-root-scope-"></a>ルート スコープ (/) の拒否割り当てを一覧表示する
+
+ルート スコープ (`/`) でのユーザーに対するすべての拒否割り当てを一覧表示することができます。
+
+- Call GET denyAssignments を呼び出します。`{objectIdOfUser}` は、拒否割り当てを取得するユーザーのオブジェクト ID です。
+
+   ```http
+   GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter=gdprExportPrincipalId+eq+'{objectIdOfUser}'
+   ```
+
+### <a name="remove-elevated-access"></a>昇格されたアクセス権を削除する
 
 `elevateAccess` を呼び出すと、自分自身に対するロールの割り当てが作成されます。このため、これらの権限を取り消すには、割り当てを削除する必要があります。
 

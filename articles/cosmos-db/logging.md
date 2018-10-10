@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: acc327bd9fa6828a65243b6d0ad0c6da4b98f48d
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 68eb567235897641d5d4027160f62c5aa6e7e4f9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857101"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963391"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
@@ -29,9 +29,9 @@ Azure Cosmos DB アカウントの監視方法を説明する前に、ログと�
 
 ![さまざまな種類の Azure ログ](./media/logging/azurelogging.png)
 
-この図の**コンピューティング リソース**とは、ユーザーが Microsoft ゲスト OS にアクセスできる Azure リソースを表します。 たとえば、Azure Virtual Machines、仮想マシン スケール セット、Azure Container Service などが、コンピューティング リソースと見なされます。 コンピューティング リソースは、アクション ログ、診断ログとアプリケーション ログを生成します。 詳しくは、[Azure 監視のコンピューティング リソース](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---compute-subset)に関する記事をご覧ください。
+この図の**コンピューティング リソース**とは、ユーザーが Microsoft ゲスト OS にアクセスできる Azure リソースを表します。 たとえば、Azure Virtual Machines、仮想マシン スケール セット、Azure Container Service などが、コンピューティング リソースと見なされます。 コンピューティング リソースは、アクション ログ、診断ログとアプリケーション ログを生成します。 詳細については、[Azure でのデータ監視のソース](../monitoring/monitoring-data-sources.md#)に関する記事を参照してください。
 
-**非コンピューティング リソース**とは、ユーザーが基盤となる OS にアクセスできず、リソースに直接作業するリソースです。 たとえば、ネットワーク セキュリティ グループ、Azure Logic Apps などが挙げられます。 Azure Cosmos DB は、非コンピューティング リソースです。 非コンピューティング リソースのログは、アクティビティ ログで確認するか、ポータルの [診断ログ] オプションを有効にすることで表示できます。 詳しくは、[Azure 監視の非コンピューティング リソース](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---everything-else)に関する記事をご覧ください。
+**非コンピューティング リソース**とは、ユーザーが基盤となる OS にアクセスできず、リソースに直接作業するリソースです。 たとえば、ネットワーク セキュリティ グループ、Azure Logic Apps などが挙げられます。 Azure Cosmos DB は、非コンピューティング リソースです。 非コンピューティング リソースのログは、アクティビティ ログで確認するか、ポータルの [診断ログ] オプションを有効にすることで表示できます。 詳細については、[Azure Monitor でのデータのソース](../monitoring/monitoring-data-sources.md)に関する記事を参照してください。
 
 アクティビティ ログは、Azure Cosmos DB のサブスクリプション レベルでの操作を記録します。 ListKeys や DatabaseAccounts の書き込みなどの操作が記録されます。 診断ログは、より詳細なログ記録を提供し、DataPlaneRequests (Create, Read, Query など) と MongoRequests を記録できます。
 

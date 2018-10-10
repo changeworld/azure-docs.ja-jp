@@ -1,31 +1,33 @@
 ---
-title: Azure Cost Management での予算の管理 | Microsoft Docs
-description: この記事では、Cost Management で予算を作成して管理する方法について説明します。
+title: Azure での Cloudyn 予算の管理 | Microsoft Docs
+description: この記事では、Cloudyn で予算を作成して管理する方法について説明します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/25/2018
+ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 106e8f082d148ed9a8c58313177be81ee074a2c3
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: bbd232c819a11de691c4d3c3209273b064eddf62
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578465"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963436"
 ---
 # <a name="manage-budgets"></a>予算の管理
 
-予算と予算ベースのアラートを設定して、クラウドのガバナンスとアカウンタビリティを向上させることができます。 この記事では、Cost Management で予算を短時間で作成し、管理を始める方法について説明します。
+予算と予算ベースのアラートを設定して、クラウドのガバナンスとアカウンタビリティを向上させることができます。 この記事では、Cloudyn で予算を短時間で作成し、管理を始める方法について説明します。
 
 エンタープライズ アカウントまたは MSP アカウントをお持ちの場合は、階層型コスト エンティティ構造を使用して、さまざまな事業単位や部署などのコスト エンティティに月間予算クォータを割り当てることができます。 Premium アカウントをお持ちの場合は、予算管理機能を使用できます。この機能はクラウド費用全体に適用されます。 すべての予算は手動で割り当てます。
 
 割り当てられた予算に対する消費済み予算の割合に基づいて、しきい値アラートを設定し、しきい値ごとに重大度を定義することができます。
 
 予算レポートには、割り当てられた予算が表示されます。 ユーザーは、消費予定に対する支出の未達、到達、超過を時系列で確認できます。 予算レポートの上部にある **[フィールドの表示/非表示]** を選択すると、コスト、予算、累積コスト、合計予算を表示できます。
+
+Azure Cost Management には Cloudyn と同様の機能があります。 Azure Cost Management は、Azure のネイティブのコスト管理ソリューションです。 このソリューションにより、コストの分析、予算の作成と管理、データのエクスポート、最適化のための推奨事項の検討と対処を行うことで、費用を節約することができます。 Cost Management での予算の詳細については、[予算の作成と管理](tutorial-acm-create-budgets.md)に関するページを参照してください。
 
 ## <a name="create-budgets"></a>予算を作成する
 
@@ -83,5 +85,5 @@ ms.locfileid: "45578465"
 
 ## <a name="next-steps"></a>次の手順
 
-- Cost Management の最初のチュートリアルをまだ完了していない場合は、「[使用状況とコストを確認する](https://docs.microsoft.com/azure/cost-management/tutorial-review-usage)」をご覧ください。
-- Cost Management で利用できるレポートの詳細については、[こちら](use-reports.md)をご覧ください。
+- Cloudyn の最初のチュートリアルをまだ完了していない場合は、「[使用状況とコストを確認する](tutorial-review-usage.md)」で確認してください。
+- [Cloudyn で利用できるレポート](use-reports.md)の詳細を学習します。

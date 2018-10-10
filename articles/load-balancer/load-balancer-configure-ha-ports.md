@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 117e73c35bb66578976ef990e61eea606e2e8e36
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 9661722c5d35e4336d5e42374a1444cf50734fba
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736883"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998340"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>内部ロード バランサー用の高可用性ポートの構成
 
@@ -45,7 +45,7 @@ ms.locfileid: "34736883"
 
 高可用性ポートを構成するには、バックエンド プール内の NVA で内部ロード バランサーを設定します。 NVA の正常性を検出するための対応するロード バランサー正常性プローブ構成と、高可用性ポートのロード バランサー規則を設定します。 ロード バランサー関連の全般的な構成については、[概要](load-balancer-get-started-ilb-arm-portal.md)に関する記事をご覧ください。 この記事では、高可用性ポートの構成を取り上げます。
 
-構成では、基本的にフロントエンド ポートとバックエンド ポートの値を **0** に設定する必要があります。 プロトコル値は **All** に設定します。 この記事では、Azure Portal、PowerShell、Azure CLI 2.0 を使用して高可用性ポートを構成する方法について説明します。
+構成では、基本的にフロントエンド ポートとバックエンド ポートの値を **0** に設定する必要があります。 プロトコル値は **All** に設定します。 この記事では、Azure portal、PowerShell、Azure CLI を使用して高可用性ポートを構成する方法について説明します。
 
 ### <a name="configure-a-high-availability-ports-load-balancer-rule-with-the-azure-portal"></a>Azure Portal を使用して高可用性ポートのロード バランサー規則を構成する
 
@@ -95,7 +95,7 @@ PowerShell で、次のコマンドを使用して高可用性ポートのロー
 lbrule = New-AzureRmLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
 ```
 
-### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli-20"></a>Azure CLI 2.0 を使用して高可用性ポートのロード バランサー規則を構成する
+### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli"></a>Azure CLI を使用して高可用性ポートのロード バランサー規則を構成する
 
 [内部ロード バランサー セットの作成](load-balancer-get-started-ilb-arm-cli.md)に関する記事の手順 4. で、次のコマンドを使用して高可用性ポートのロード バランサー規則を作成します。
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: f81ef3c231874f314d6fe023ba247a0bcff61e90
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 6535eee93b0fcaa2c0888fc6b647811c21e564d9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42140725"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971911"
 ---
 # <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-cli"></a>Azure CLI を使って多数の IoT デバイスを構成および監視する
 
@@ -34,8 +34,8 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 ## <a name="cli-prerequisites"></a>CLI の前提条件
 
 * Azure サブスクリプション内の [IoT ハブ](../iot-hub/iot-hub-create-using-cli.md)。 
-* ご使用の環境内の [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI 2.0 のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
-* [Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
+* ご使用の環境内の [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –-version` を使用します。 このバージョンでは、az 拡張機能のコマンドがサポートされ、Knack コマンド フレームワークが導入されています。 
+* [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)。
 
 ## <a name="implement-device-twins-to-configure-devices"></a>デバイスを構成するためのデバイス ツインを実装する
 
@@ -56,7 +56,7 @@ Azure IoT Hub の自動デバイス管理では、大規模な数のデバイス
 
 ## <a name="define-the-target-content-and-metrics"></a>ターゲット コンテンツとメトリックを定義する
 
-ターゲット コンテンツとメトリック クエリは、デバイス ツインの設定される目的のプロパティと、測定対象の報告されるプロパティを記述する JSON ドキュメントとして指定されます。  Azure CLI 2.0 を使用し自動デバイス構成を作成するには、対象のコンテンツとメトリックを .txt ファイルとしてローカルに保存します。 コマンドを実行して構成をデバイスに適用するときには、以降のセクションのファイル パスを使用します。 
+ターゲット コンテンツとメトリック クエリは、デバイス ツインの設定される目的のプロパティと、測定対象の報告されるプロパティを記述する JSON ドキュメントとして指定されます。  Azure CLI を使用して自動デバイス構成を作成するには、対象のコンテンツとメトリックを .txt ファイルとしてローカルに保存します。 コマンドを実行して構成をデバイスに適用するときには、以降のセクションのファイル パスを使用します。 
 
 基本的なターゲット コンテンツ サンプルを次に示します。
 

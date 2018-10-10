@@ -2,27 +2,26 @@
 title: Azure Functions の OpenAPI メタデータ | Microsoft Docs
 description: Azure Functions での OpenAPI サポートの概要
 services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: b6aacc536e589a2036aba5a0784a4ba71641a59e
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 93e6b8c606c0a6d7abebeb515b938a45001757c1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "22991677"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950371"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions での OpenAPI 2.0 メタデータのサポート (プレビュー)
 Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポートは、関数アプリ内での OpenAPI 2.0 定義の作成に使用できるプレビュー機能です。 関数アプリを使用して、そのファイルをホストできます。
+
+> [!IMPORTANT]
+> 現在、OpenAPI のプレビュー機能は、1.x ランタイムでのみ利用できます。 1.x 関数アプリを作成する方法については、[こちらにあります](./functions-versions.md#creating-1x-apps)。
 
 [OpenAPI メタデータ](http://swagger.io/)では、REST API をホストしている関数を、他のさまざまなソフトウェアで使用できます。 このソフトウェアには、PowerApps や [Azure App Service の API Apps 機能](../app-service/app-service-web-overview.md)などの Microsoft 製品、[Postman](https://www.getpostman.com/docs/importing_swagger) などのサード パーティの開発者ツール、および[多くのその他のパッケージ](http://swagger.io/tools/)が含まれています。
 
@@ -34,6 +33,9 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 ## <a name="enable"></a>OpenAPI 定義のサポートの有効化
 すべての OpenAPI 設定を、関数アプリの**プラットフォーム機能**の **API の定義**ページで構成できます。
 
+> [!NOTE]
+> 現在、関数 API の定義機能は、ベータ版のランタイムではサポートされません。
+
 ホストされる OpenAPI と定義およびクイック スタート定義の生成を有効にするには、**[API 定義のソース]** を **[関数 (プレビュー)]** に設定します。 **外部 URL** を使用して、他の場所でホストされている OpenAPI 定義を自分の関数で使用できます。
 
 ## <a name="generate-definition"></a>関数のメタデータからの Swagger スケルトンの生成
@@ -43,7 +45,7 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 
 ### <a name="templates"></a>使用可能なテンプレート
 
-|Name| [説明] |
+|Name| 説明 |
 |:-----|:-----|
 |Generated Definition (生成された定義)|関数の既存のメタデータから推論可能な情報量が最大の OpenAPI 定義|
 

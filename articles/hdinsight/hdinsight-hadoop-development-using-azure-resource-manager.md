@@ -9,28 +9,28 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: jasonh
-ms.openlocfilehash: 1988593fa7cb0d84baffc4264147d350962bb6bc
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d036922d68116689d1c54c2c3e89be5accedb533
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093069"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983488"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>HDInsight クラスター用の Azure Resource Manager ベースの開発ツールに移行する
 
-HDInsight は、HDInsight 用の Azure Service Manager (ASM) ベースのツールを推奨していません。 HDInsight クラスターの操作に Azure PowerShell、Azure CLI、HDInsight .NET SDK を使用している場合、今後は、Azure Resource Manager バージョンの PowerShell、CLI、.NET SDK を使用することをお勧めします。 この記事では、新しい Resource Manager ベースのアプローチに移行する方法を紹介します。 また、HDInsight に対する ASM と Resource Manager のアプローチの違いについても適宜説明します。
+HDInsight は、HDInsight 用の Azure Service Manager (ASM) ベースのツールを推奨していません。 HDInsight クラスターの操作に Azure PowerShell、Azure クラシック CLI、または HDInsight .NET SDK を使用している場合、今後は、Azure Resource Manager バージョンの PowerShell、CLI、.NET SDK を使用することをお勧めします。 この記事では、新しい Resource Manager ベースのアプローチに移行する方法を紹介します。 また、HDInsight に対する ASM と Resource Manager のアプローチの違いについても適宜説明します。
 
 > [!IMPORTANT]
 > ASM ベースの PowerShell、CLI、.NET SDK のサポートは、 **2017 年 1 月 1 日**に中止される予定です。
 > 
 > 
 
-## <a name="migrating-azure-cli-to-azure-resource-manager"></a>Azure CLI を Azure Resource Manager に移行する
+## <a name="migrating-azure-classic-cli-to-azure-resource-manager"></a>Azure クラシック CLI を Azure Resource Manager に移行する
 
 > [!IMPORTANT]
-> Azure CLI 2.0 では HDInsight クラスターを操作するためのコマンドは提供されていません。 Azure CLI 1.0 は非推奨となりますが、Azure CLI 1.0 を使用して HDInsight を操作することはできます。
+> Azure CLI では、HDInsight クラスターを操作するためのサポートは提供されていません。 Azure クラシック CLI は非推奨となりますが、引き続き Azure クラシック CLI を使用して HDInsight を操作することはできます。
 
-Azure CLI 1.0 を使用して HDInsight を操作するための基本的なコマンドを次に示します。
+Azure クラシック CLI を使用して HDInsight を操作するための基本的なコマンドを次に示します。
 
 * `azure hdinsight cluster create` - 新しい HDInsight クラスターを作成します
 * `azure hdinsight cluster delete` - 既存の HDInsight クラスターを削除します

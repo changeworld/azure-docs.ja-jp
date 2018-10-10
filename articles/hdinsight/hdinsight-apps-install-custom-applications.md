@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 9df3b20cd72236d7001aac94bae302b5a6f9eb8d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 5e3194b856766502e4cc8c68ffa4bb936634adfa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110574"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983142"
 ---
 # <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight へのカスタム Hadoop アプリケーションのインストール
 
@@ -66,7 +66,7 @@ HDInsight アプリケーションは、クラスターを作成するときに�
     このボタンをクリックすると、Azure ポータルの Resource Manager テンプレートが開きます。  Resource Manager テンプレートは、[https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json) にあります。  この Resource Manager テンプレートの作成方法については、MSDN の「 [Install an HDInsight application (HDInsight アプリケーションのインストール)](https://msdn.microsoft.com/library/mt706515.aspx)」を参照してください。
 2. 手順に従ってクラスターを作成し、Hue をインストールします。 HDInsight クラスターの作成の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
-Azure ポータルのほか、[Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-powershell) や [Azure CLI](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-cli) を使用して Resource Manager テンプレートを呼び出すこともできます。
+Azure portal のほか、[Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-powershell) や [Azure クラシック CLI](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-azure-cli) を使用して Resource Manager テンプレートを呼び出すこともできます。
 
 ## <a name="validate-the-installation"></a>インストールを検証する
 Azure ポータルでアプリケーションのステータスを確認し、アプリケーションが正しくインストールされていることを確認できます。 さらに、すべての HTTP エンドポイントが正しく設定されていること、また Web ページが存在する場合は正しく表示されることを確認することもできます。
@@ -117,8 +117,8 @@ HDInsight アプリケーションを削除する方法は複数あります。
 ### <a name="use-azure-powershell"></a>Azure PowerShell の使用
 Azure PowerShell を使用して、クラスターを削除したり、リソース グループを削除したりできます。 [Azure PowerShell を使用したクラスターの削除](hdinsight-administer-use-powershell.md#delete-clusters)に関するセクションを参照してください。
 
-### <a name="use-azure-cli"></a>Azure CLI の使用
-Azure CLI を使用して、クラスターを削除したり、リソース グループを削除したりできます。 [Azure CLI を使用したクラスターの削除](hdinsight-administer-use-command-line.md#delete-clusters)に関するセクションを参照してください。
+### <a name="use-azure-classic-cli"></a>Azure クラシック CLI を使用する
+Azure クラシック CLI を使用してクラスターを削除したり、リソース グループを削除したりできます。 [Azure クラシック CLI を使用したクラスターの削除](hdinsight-administer-use-command-line.md#delete-clusters)に関するセクションを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * [MSDN 記事を参照して HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションをデプロイするための Resource Manager テンプレートの作成方法について確認します。
