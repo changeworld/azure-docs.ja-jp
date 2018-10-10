@@ -117,8 +117,6 @@ items:
         href: service-bus-amqp-overview.md
       - name: .NET
         href: service-bus-amqp-dotnet.md
-      - name: Java
-        href: service-bus-amqp-java.md
       - name: Java Message Service と AMQP
         href: service-bus-java-how-to-use-jms-api-amqp.md
       - name: AMQP プロトコル ガイド
@@ -228,9 +226,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azureservicebus
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
-ms.openlocfilehash: 673edb1abb9fbc48d0ede9f4daa10f58c04cc6b0
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 9ab10886a16bdd71a099509d2c77122720f99fe4
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785615"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883858"

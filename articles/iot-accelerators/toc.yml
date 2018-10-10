@@ -97,61 +97,6 @@ items:
       href: iot-accelerators-remote-monitoring-rbac.md
     - name: テレメトリ エクスプローラーへのアクセスを許可する
       href: iot-accelerators-remote-monitoring-rbac-tsi.md
-  - name: リモート監視 (以前のバージョン)
-    items:
-    - name: 事前に構成されたソリューションとは
-      href: ../iot-suite/iot-suite-v1-what-are-preconfigured-solutions.md
-    - name: FAQ
-      href: ../iot-suite/iot-suite-v1-faq.md
-    - name: 作業の開始
-      items:
-      - name: 事前に構成されたソリューションを使ってみる
-        href: ../iot-suite/iot-suite-v1-getstarted-preconfigured-solutions.md
-      - name: azureiotsuite.com のアクセス許可
-        href: ../iot-suite/iot-suite-v1-permissions.md
-      - name: リモート監視ソリューションのチュートリアル
-        href: ../iot-suite/iot-suite-v1-remote-monitoring-sample-walkthrough.md
-      - name: Raspberry Pi を接続する
-        href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-get-started.md
-        items:
-        - name: C の使用
-          items:
-          - name: シミュレートされたデータ
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md
-          - name: 実際のセンサーを使用する
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md
-          - name: ファームウェアの更新プログラムを実装する
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-c-get-started-advanced.md
-        - name: Node.js の使用
-          items:
-          - name: シミュレートされたデータ
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md
-          - name: 実際のセンサーを使用する
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md
-          - name: ファームウェアの更新プログラムを実装する
-            href: ../iot-suite/iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md
-      - name: MXChip IoT DevKit を接続する
-        href: ../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md
-    - name: ハウツー ガイド
-      items:
-      - name: シミュレートされたデバイスの接続
-        items:
-        - name: Windows 上の C
-          href: ../iot-suite/iot-suite-v1-connecting-devices.md
-        - name: Linux 上の C
-          href: ../iot-suite/iot-suite-v1-connecting-devices-linux.md
-        - name: Node.js
-          href: ../iot-suite/iot-suite-v1-connecting-devices-node.md
-      - name: ロジック アプリをリモート監視ソリューションに接続する
-        href: ../iot-suite/iot-suite-v1-logic-apps-tutorial.md
-      - name: ソリューション アクセラレータをカスタマイズする
-        href: ../iot-suite/iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md
-      - name: リモート監視ソリューションで動的テレメトリを使用する
-        href: ../iot-suite/iot-suite-v1-dynamic-telemetry.md
-      - name: リモート監視ソリューションでカスタム規則を作成する
-        href: ../iot-suite/iot-suite-v1-custom-rule.md
-      - name: リモート監視ソリューションにおけるデバイス情報
-        href: ../iot-suite/iot-suite-v1-remote-monitoring-device-info.md
   - name: 接続済みファクトリ
     items:
     - name: ダッシュボードの使用
@@ -203,7 +148,7 @@ items:
   - name: 解決方法
     items:
     - name: IoT ソリューション アクセラレータ
-      href: /azure/iot-suite
+      href: /azure/iot-accelerators
     - name: IoT Central
       href: https://docs.microsoft.com/microsoft-iot-central/
   - name: プラットフォーム サービス
@@ -256,9 +201,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: IoT ソリューション アクセラレータのラーニング パス
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: 935b9acf2eeaaee73745426eefb5625f470f62b7
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: f0efa66bd9ed85ed4ab79f5937355bd19c404a64
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365470"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884335"

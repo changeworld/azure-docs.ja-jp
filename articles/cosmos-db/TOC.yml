@@ -185,6 +185,8 @@ items:
         href: sql-api-sql-query-metrics.md
       - name: ストアド プロシージャ、トリガー、UDF
         href: programming.md
+      - name: SQL データのパーティション分割
+        href: sql-api-partition-data.md
       - name: データの種類
         items:
         - name: Datetime
@@ -281,6 +283,8 @@ items:
       items:
       - name: グラフ データのインポート
         href: bulk-executor-graph-dotnet.md
+      - name: グラフ データのパーティション分割
+        href: graph-partitioning.md
   - name: Cassandra API ドキュメント
     items:
     - name: はじめに
@@ -418,8 +422,6 @@ items:
         href: performance-testing.md
     - name: コスト効率の優れた読み取りと書き込み
       href: key-value-store-cost.md
-    - name: SQL データのパーティション分割
-      href: sql-api-partition-data.md
   - name: 他の Azure サービスとの統合
     items:
     - name: 変更フィードの e コマース ソリューション
@@ -490,9 +492,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 8111949d7069066b63c12a851324d21feda8bac2
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: dac79ee7d4a8810cce0a2e77e8dcd8d06842454c
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48868594"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888019"

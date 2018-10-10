@@ -7,8 +7,6 @@ items:
     href: overview-what-is-azure-ml.md
   - name: Workbench はどうなったか
     href: overview-what-happened-to-workbench.md
-  - name: Microsoft の ML 製品の比較
-    href: overview-more-machine-learning.md
   expanded: true
 - name: クイック スタート
   items:
@@ -335,9 +333,9 @@ items:
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: 以前の問題
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-ms.openlocfilehash: fb5ffe0b261d1c233765175170b5697050b58d20
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 183622c419558d696cd5cf4c4a2dabb5f6b9d150
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248814"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884788"

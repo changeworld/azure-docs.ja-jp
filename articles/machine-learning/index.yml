@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: fdb4247627e5badbbb6b23b0081386b38f2c50cf
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 258ab57d621c23c305bd37b4e32a8220de8a9521
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394983"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886781"
 documentType: LandingData
 title: Azure Machine Learning のドキュメント
 metadata:
@@ -13,6 +13,7 @@ metadata:
   services: machine-learning
   author: j-martens
   ms.service: machine-learning
+  ms.component: core
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page

@@ -25,7 +25,7 @@
 # 方法
 ## 計画と設計
 ### [Azure AD のアーキテクチャを理解する](fundamentals/active-directory-architecture.md)
-### [Azure Active Directory での要求マッピング](active-directory-claims-mapping.md)
+### [Azure Active Directory での要求マッピング](develop/active-directory-claims-mapping.md)
 ### [ハイブリッド ID ソリューションをデプロイする](hybrid/plan-hybrid-identity-design-considerations-overview.md)
 #### 要件を確認する
 ##### [ID](hybrid/plan-hybrid-identity-design-considerations-business-needs.md)
@@ -200,7 +200,7 @@
 #### [テナント制限](manage-apps/tenant-restrictions.md)
 #### [ユーザーのプロビジョニングに SCIM を使用する](manage-apps/use-scim-to-provision-users-and-groups.md)
 
-### [Azure AD アプリケーションの同意エクスペリエンスについて](application-consent-experience.md)
+### [Azure AD アプリケーションの同意エクスペリエンスについて](develop/application-consent-experience.md)
 
 ### トラブルシューティング
 
@@ -323,7 +323,7 @@
 
 ### [Azure AD Connect を使用してオンプレミスの ID を統合する](hybrid/whatis-hybrid-identity.md)
 
-### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
+### [トークンの有効期間を構成する](develop/active-directory-configurable-token-lifetimes.md)
 
 ## ID をセキュリティで保護する
 
