@@ -1,20 +1,21 @@
 ---
-title: Azure Content Moderator でテキスト モデレート API を使用してテキストをモデレートする | Microsoft Docs
+title: テキスト モデレート API を使用してテキストをモデレートする - Content Moderator
+titlesuffix: Azure Cognitive Services
 description: オンライン コンソールでテキスト モデレート API を使用して、テキストのモデレートを試します。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/05/2017
 ms.author: sajagtap
-ms.openlocfilehash: ed696c31a886626819414c45eb7995edaf161fff
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 95fd5507287a9294f4fca6af9cc5f01f0ea9fe1c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374525"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219789"
 ---
 # <a name="moderate-text-from-the-api-console"></a>API コンソールからテキストをモデレートする
 
@@ -32,9 +33,9 @@ Azure Content Moderator で[テキスト モデレート API](https://westus.dev
 ## <a name="open-the-api-console"></a>API コンソールを開く
 **API テスト コンソールを開く場合**、実際の場所を最もよく表しているリージョンを選択します。 
 
-  ![[Text - Screen](テキスト - 選別) ページでのリージョンの選択](images/test-drive-region.png)
+  ![[Text - Screen] \(テキスト - 選別) ページでのリージョンの選択](images/test-drive-region.png)
 
-  **[Text - Screen]**(テキスト - 選別) API コンソールが開きます。
+  **[Text - Screen]** \(テキスト - 選別) API コンソールが開きます。
 
 ## <a name="select-the-inputs"></a>入力を選択する
 
@@ -48,7 +49,7 @@ Azure Content Moderator で[テキスト モデレート API](https://westus.dev
 
 **[autocorrect]**、**[PII]**、および **[classify]**(プレビュー) については、**[true]** を選択します。 **[ListId]** フィールドは空白のままにしておきます。
 
-  ![[Text - Screen](テキスト - 選別) コンソールのクエリ パラメーター](images/text-api-console-inputs.PNG)
+  ![[Text - Screen]\(テキスト - 選別) コンソールのクエリ パラメーター](images/text-api-console-inputs.PNG)
 
 ### <a name="content-type"></a>コンテンツの種類
 **[Content-type]** については、選別するコンテンツの種類を選択します。 この例では、コンテンツの種類として既定値の **[text/plain]** を使用します。 **[Ocp-Apim-Subscription-Key]** ボックスにサブスクリプション キーを入力します。
