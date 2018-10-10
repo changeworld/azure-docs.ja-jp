@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/08/2018
+ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: dad76ab9f2a1a621fb513a4d411792fe2f88a557
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 17b4bc68b2dc996134626b1822cfd17f0a9a7572
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005877"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161643"
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure Load Balancer Standard の概要
 
@@ -232,6 +232,8 @@ Standard Load Balancer は、構成された負荷分散ルールの数と、処
 - [Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)について学習する。
 - [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) での診断で[サポートされる多次元メトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)について学習する。
 - [送信接続に対する Load Balancer](load-balancer-outbound-connections.md) の使用について学習する。
+- [アウトバウンド規則](load-balancer-outbound-rules-overview.md)について学習する。
+- [アイドル時の TCP リセット](load-balancer-tcp-reset.md)について学習する。
 - [HA ポート負荷分散ルールでの Standard Load Balancer](load-balancer-ha-ports-overview.md) について学習する。
 - [複数のフロントエンドでの Load Balancer](load-balancer-multivip-overview.md) の使用について学習する。
 - [仮想ネットワーク](../virtual-network/virtual-networks-overview.md)について学習する。

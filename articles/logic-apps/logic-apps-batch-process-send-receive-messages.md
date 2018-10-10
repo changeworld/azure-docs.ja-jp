@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: ee1df77dc18350a64082cb62c297a53700cad223
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bd31de8f60fff5630141f708714083fe76220d11
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128747"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410155"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Azure Logic Apps でのメッセージの送信、受信、バッチ処理
 
@@ -60,7 +60,7 @@ ms.locfileid: "43128747"
    |----------|-------------|
    | **バッチ モード** | - **インライン**: リリース条件をバッチ トリガー内に定義する場合に使用します。 <br>- **統合アカウント**: [統合アカウント](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)を通じてリリース条件の構成を複数定義する場合に使用します。 統合アカウントであれば、これらの構成をすべて 1 か所で保持することができ、別個のロジック アプリに分ける必要はありません。 | 
    | **バッチ名** | バッチの名前 (この例では "TestBatch")。**インライン** バッチ モードにのみ適用されます。 |  
-   | **リリース条件** | **インライン** バッチ モードにのみ適用されます。個々のバッチを処理する前に満たすべき条件を指定します。 <p>- **メッセージ数ベース**: バッチとして収集するメッセージの数 (10 件など)。 <br>- **サイズ ベース**: バイト数に基づく最大バッチ サイズ (100 MB など)。 <br>- **スケジュール ベース**: バッチをリリースする間隔と頻度 (10 分など)。 開始日時を指定することもできます。 <br>- **すべて選択**: 指定した条件をすべて使用します。 | 
+   | **リリース条件** | **インライン** バッチ モードにのみ適用されます。個々のバッチを処理する前に満たすべき条件を選択します。 <p>- **メッセージ数ベース**: バッチとして収集するメッセージの数 (10 件など)。 <br>- **サイズ ベース**: バイト数に基づく最大バッチ サイズ (100 MB など)。 <br>- **スケジュール ベース**: バッチをリリースする間隔と頻度 (10 分など)。 最小間隔は 60 秒 (1 分) です。 分の小数値は 1 分単位に切り上げられます。 開始日時を指定するには、**[詳細オプションを表示する]** を選択します。 <br>- **すべて選択**: 指定した条件をすべて使用します。 | 
    ||| 
    
    この例では、すべての条件が選択されています。
@@ -107,9 +107,7 @@ ms.locfileid: "43128747"
 
    * **[本文]** ボックスで、動的なコンテンツの一覧が表示されたら、**[メッセージ ID]** フィールドを選択します。 
 
-     電子メールの送信アクションは、入力として配列を受け取るため、このアクションには、Logic Apps デザイナーによって "For each" ループが自動的に追加されます。 
-     このループによって、バッチ内のメッセージごとにメールが送信されます。 
-     つまり、バッチ トリガーでメッセージ数が 10 に設定されている場合、トリガーが起動するたびに 10 通のメールが送信されます。
+     Logic Apps デザイナーでは、電子メール送信アクションを囲む "For each" ループが自動的に追加されます。これは、そのアクションで、前のアクションの出力をバッチではなくコレクションとして処理するためです。 
 
      ![[本文] で [メッセージ ID] を選択する](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
 
@@ -216,6 +214,7 @@ ms.locfileid: "43128747"
 
 ## <a name="next-steps"></a>次の手順
 
+* [EDI メッセージのバッチ処理と送信](../logic-apps/logic-apps-scenario-edi-send-batch-messages.md)
 * [JSON を使用してロジック アプリの定義に基づいて構築する](../logic-apps/logic-apps-author-definitions.md)
 * [Azure Logic Apps と関数を使用して Visual Studio でサーバーレス アプリを構築する](../logic-apps/logic-apps-serverless-get-started-vs.md)
 * [ロジック アプリの例外処理とエラーのログ記録](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)

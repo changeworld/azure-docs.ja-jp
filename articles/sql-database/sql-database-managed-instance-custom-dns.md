@@ -2,20 +2,22 @@
 title: Azure SQL Database Managed Instance のカスタム DNS | Microsoft Docs
 description: このトピックでは、Azure SQL Database マネージド インスタンスのカスタム DNS の構成オプションについて説明します。
 services: sql-database
-author: srdan-bozovic-msft
-manager: craigg
 ms.service: sql-database
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/23/2018
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 2d1bb7e8522da32dd33933261ea41b578f8afac1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: craigg
+ms.date: 09/23/2018
+ms.openlocfilehash: f26ea763d48d03fe7e981b7abbbe64e573ec0b3a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949487"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224275"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance のカスタム DNS の構成
 
@@ -36,7 +38,7 @@ Azure SQL Database Managed Instance は、Azure [仮想ネットワーク (VNet)
    ![カスタム DNS オプション](./media/sql-database-managed-instance-custom-dns/custom-dns-server-ip-address.png) 
 
    > [!IMPORTANT]
-   > DNS の一覧で Azure の再帰リゾルバーを設定しないと、マネージド インスタンスが問題のある状態になります。 その状態から回復するには、準拠するネットワーク ポリシーを使用して VNet 内に新しいインスタンスを作成し、インスタンス レベル データを作成して、データベースを復元することが必要になる可能性があります。 「[VNet 構成](sql-database-managed-instance-vnet-configuration.md)」を参照してください。
+   > Azure の再帰リゾルバーを DNS リストに設定しないと、何らかの理由でカスタム DNS サーバーが使用不能になった場合に、マネージド インスタンスが障害状態になる可能性があります。 その状態から回復するには、準拠するネットワーク ポリシーを使用して VNet 内に新しいインスタンスを作成し、インスタンス レベル データを作成して、データベースを復元することが必要になる可能性があります。 Azure の再帰リゾルバーを DNS リストの最後のエントリとして設定すると、すべてのカスタム DNS サーバーが失敗した場合でも、パブリック名を解決できます。 「[VNet 構成](sql-database-managed-instance-vnet-configuration.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

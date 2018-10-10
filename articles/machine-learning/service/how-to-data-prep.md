@@ -10,22 +10,26 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: c357026e20ff402dd7236bd8db7fe2abe488bc39
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 673b8ddf3ed07507cbce4b54e9b8a488cb3ac689
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954247"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166607"
 ---
-# <a name="prepare-data-with-the-azure-machine-learning-data-prep-sdk-for-python"></a>Azure Machine Learning Data Prep SDK for Python でデータを用意する
+# <a name="prepare-data-for-modeling-with-azure-machine-learning"></a>Azure Machine Learning を使用したモデリング用にデータを準備する
  
-データ準備は機械学習ワークフローの重要な部分です。 使いやすい形式のクリーン データにアクセスできれば、モデルは一層精確かつ効率的になります。 [Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) を使用してさまざまな形式のデータを読み込み、それを変換してさらに便利にしたり、モデルでアクセスする場所にデータを書き込んだりできます。 
+データ準備は機械学習ワークフローの重要な部分です。 使いやすい形式のクリーン データにアクセスできれば、モデルは一層精確かつ効率的になります。 
 
+[Azure Machine Learning Data Prep SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) を使用して、Python でデータを準備することができます。 
 
-## <a name="steps-for-data-preparation-with-azure-machine-learning"></a>Azure Machine Learning によるデータ準備の手順 
-1. [データの読み込み](how-to-load-data.md )
-2. [データを変換する](how-to-transform-data.md )
-3. [データを書き込む](how-to-write-data.md )
+## <a name="data-preparation-pipeline"></a>データ準備パイプライン
+
+主なデータ準備手順は次のとおりです。
+
+1. [データを読み込む](how-to-load-data.md): さまざまな形式で読み込むことができます
+2. [変換する](how-to-transform-data.md): より使いやすい構造に変換します
+3. [書き込む](how-to-write-data.md): モデルからアクセスできる場所にデータを書き込みます
 
 ![データ準備プロセス](./media/concept-data-preparation/data-prep-process.png)
 

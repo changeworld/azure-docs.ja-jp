@@ -1,37 +1,43 @@
 ---
 title: スケールアウトされたクラウド データベースの管理 | Microsoft Docs
 description: エラスティック データベース ジョブ サービスを使用して、データベース グループ全体に対してスクリプトを実行します。
-metakeywords: azure sql database elastic databases
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 5e2c233ec631f6a3e57d2203a9678b42f909a885
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 06/14/2018
+ms.openlocfilehash: 649a76fad8f54339a6b1e429b3966945410573f7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646087"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166794"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベースの管理
+
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+**Elastic Database ジョブ**は顧客がホストする Azure クラウド サービスです。**ジョブ**と呼ばれるアドホック タスクとスケジュールされた管理タスクを実行できます。 ジョブを利用すると、Transact-SQL スクリプトで管理作業を実行することで、大規模なグループの Azure SQL データベースを簡単かつ信頼できる方法で管理できます。 
+
 スケールアウトされシャード化されたデータベースを管理するために、**Elastic Database ジョブ**機能 (プレビュー) を利用すると、次を含むデータベースのグループ全体で、信頼できる方法で Transact-SQL (T-SQL) スクリプトを実行できます。
 
 * データベースのカスタム定義コレクション (詳細は後述)
-* 
-  [エラスティック プール](sql-database-elastic-pool.md)内のすべてのデータベース
+* [エラスティック プール](sql-database-elastic-pool.md)内のすべてのデータベース
 * シャード セット ( [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)を使用して作成) 
 
 ## <a name="documentation"></a>ドキュメント
 * [エラスティック データベース ジョブ コンポーネントのインストール](sql-database-elastic-jobs-service-installation.md) 
 * [Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md)
 * [PowerShell を使用したジョブの作成と管理](sql-database-elastic-jobs-powershell.md)
-* [スケールアウトされた Azure SQL Database の作成と管理](sql-database-elastic-jobs-getting-started.md)
+* [スケールアウトされた Azure SQL データベースの作成と管理](sql-database-elastic-jobs-getting-started.md)
 
-現在、**Elastic Database ジョブ**は顧客がホストする Azure クラウド サービスです。**ジョブ**と呼ばれるアドホック タスクとスケジュールされた管理タスクを実行できます。 ジョブを利用すると、Transact-SQL スクリプトで管理作業を実行することで、大規模なグループの Azure SQL Database を簡単かつ信頼できる方法で管理できます。 
+
 
 ![エラスティック データベース ジョブ][1]
 
@@ -42,11 +48,11 @@ ms.locfileid: "34646087"
 
 **レポート**
 
-Azure SQL Database の集合から 1 つの対象テーブルにデータを集める
+Azure SQL データベースのコレクションから 1 つのテーブルにデータを集約します。
 
 **オーバーヘッドの削減**
 
-通常、Transact-SQL ステートメントを実行するか、その他の管理タスクを実行するには、各データベースに個別に接続する必要があります。 ジョブを利用すれば、ターゲット グループ内の各データベースのログイン タスクが処理されます。 また、Azure SQL Database のグループに対して実行される Transact-SQL スクリプトを定義、保守、維持することもできます。
+通常、Transact-SQL ステートメントを実行するか、その他の管理タスクを実行するには、各データベースに個別に接続する必要があります。 ジョブを利用すれば、ターゲット グループ内の各データベースのログイン タスクが処理されます。 また、Azure SQL データベースのグループに対して実行する Transact-SQL スクリプトを定義、保守、維持することもできます。
 
 **アカウンティング**
 
@@ -54,7 +60,7 @@ Azure SQL Database の集合から 1 つの対象テーブルにデータを集�
 
 **柔軟性**
 
-Azure SQL Database のカスタム グループを定義し、ジョブを実行するスケジュールを定義します。
+Azure SQL データベースのカスタム グループを定義し、ジョブを実行するスケジュールを定義します。
 
 > [!NOTE]
 > Azure ポータルでは、SQL Azure エラスティック プールに限定された一連の少ない機能のみ利用できます。 現在のすべての機能にアクセスするには、PowerShell API を使用してください。
@@ -70,8 +76,7 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 
 ## <a name="elastic-database-jobs-end-to-end"></a>Elastic Database ジョブ: エンド ツー エンド
 1. **エラスティック データベース ジョブ** コンポーネントをインストールします。 詳細については、「 [エラスティック データベース ジョブのインストール](sql-database-elastic-jobs-service-installation.md)」を参照してください。 インストールが失敗した場合は、「 [アンインストールする方法](sql-database-elastic-jobs-uninstall.md)」をご覧ください。
-2. カスタム定義のデータベース コレクションの作成、スケジュールの追加、結果セットの収集など、その他の機能にアクセスするには、PowerShell API を使用します。 
-  **エラスティック プール**に対して実行するように制限されたジョブの簡単なインストール、作成、監視には、ポータルを使用します。 
+2. カスタム定義のデータベース コレクションの作成、スケジュールの追加、結果セットの収集など、その他の機能にアクセスするには、PowerShell API を使用します。 **エラスティック プール**に対して実行するように制限されたジョブの簡単なインストール、作成、監視には、ポータルを使用します。 
 3. ジョブ実行用に暗号化された資格情報を作成し、 [グループ内の各データベースにユーザー (またはロール) を追加します](sql-database-security-overview.md)。
 4. グループ内のすべてのデータベースに対して実行できるべき等 T-SQL スクリプトを作成します。 
 5. 「 [Elastic Database ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」の手順に従い、Azure ポータルを使用してジョブを作成します。 

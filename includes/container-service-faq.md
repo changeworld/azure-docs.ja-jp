@@ -32,13 +32,13 @@ Azure Container Service は SLA による保証が付いた Azure サービス�
 
 クラスターの Linux 仮想マシンへの認証に使用する SSH RSA 公開キーと秘密キーのペアは、オペレーティング システムに搭載された標準のツールを使用して作成できます。 作成方法については、[OS X と Linux](../articles/virtual-machines/linux/mac-create-ssh-keys.md) または [Windows](../articles/virtual-machines/linux/ssh-from-windows.md) のガイダンスを参照してください。 
 
-[Azure CLI 2.0 のコマンド](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)を使用してコンテナー サービス クラスターをデプロイする場合は、クラスター用の SSH キーを自動的に生成することができます。
+[Azure CLI のコマンド](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)を使用してコンテナー サービス クラスターをデプロイする場合は、クラスター用の SSH キーを自動的に生成することができます。
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Kubernetes クラスターのサービス プリンシパルはどのようにして作成するのですか。
 
 Azure Active Directory サービス プリンシパルの ID とパスワードが、Azure Container Service で Kubernetes クラスターを作成する際にも必要です。 詳細については、[Kubernetes クラスターのサービス プリンシパル](../articles/container-service/kubernetes/container-service-kubernetes-service-principal.md)に関するページを参照してください。
 
-[Azure CLI 2.0 のコマンド](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)を使用して Kubernetes クラスターをデプロイする場合は、クラスターのサービス プリンシパルの資格情報を自動的に生成することができます。
+[Azure CLI のコマンド](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md)を使用して Kubernetes クラスターをデプロイする場合は、クラスターのサービス プリンシパルの資格情報を自動的に生成することができます。
 
 ### <a name="how-large-a-cluster-can-i-create"></a>作成できるクラスターの大きさはどの程度ですか。
 1、3、または 5 個のマスター ノードを含むクラスターを作成できます。 エージェント ノードは、最大 100 個選択できます。
@@ -105,4 +105,4 @@ Windows には、DNS に関して、修正プログラムが今も積極的に�
 ## <a name="next-steps"></a>次の手順
 
 * Azure Container Service の[概要を確認する](../articles/container-service/kubernetes/container-service-intro-kubernetes.md)。
-* [ポータル](../articles/container-service/dcos-swarm/container-service-deployment.md)または [Azure CLI 2.0](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) を使用して、コンテナー サービス クラスターをデプロイする。
+* [ポータル](../articles/container-service/dcos-swarm/container-service-deployment.md)または [Azure CLI](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) を使用して、コンテナー サービス クラスターをデプロイする。

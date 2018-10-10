@@ -2,24 +2,26 @@
 title: Azure SQL Database Managed Instance の T-SQL の違い | Microsoft Docs
 description: この記事では、Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点について説明します。
 services: sql-database
-author: jovanpop-msft
-ms.reviewer: carlrab, bonova
 ms.service: sql-database
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 0813/2018
+author: jovanpop-msft
 ms.author: jovanpop
+ms.reviewer: carlrab, bonova
 manager: craigg
-ms.openlocfilehash: 57c6b52df3e8f6c47eb794cda4b47bfa2d7de374
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.date: 08/13/2018
+ms.openlocfilehash: 2f512c666555ca8bee58305b76573459f6e631e2
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051240"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166505"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点 
 
-Azure SQL Database Managed Instance (プレビュー) は、オンプレミスの SQL Server データベース エンジンとの高い互換性を備えています。 SQL Server データベース エンジンのほとんどの機能がマネージド インスタンスでサポートされています。 ただし、構文と動作に違いがあるため、この記事ではこれらの違いについて説明します。
+Azure SQL Database Managed Instance は、オンプレミスの SQL Server データベース エンジンとの高い互換性を備えています。 SQL Server データベース エンジンのほとんどの機能がマネージド インスタンスでサポートされています。 ただし、構文と動作に違いがあるため、この記事ではこれらの違いについて説明します。
  - [T-SQL の相違点とサポートされていない機能](#Differences)
  - [マネージド インスタンスで動作が異なる機能](#Changes)
  - [一時的な制限事項と既知の問題](#Issues)
@@ -267,7 +269,7 @@ HDFS または Azure Blob Storage 内のファイルを参照する外部テー�
 
 ### <a name="replication"></a>レプリケーション 
  
-レプリケーションは、マネージド インスタンスでサポートされます。 レプリケーションについては、「[SQL Server のレプリケーション](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)」をご覧ください。
+マネージド インスタンスのパブリック プレビューで、レプリケーションを使用できます。 レプリケーションについては、「[SQL Server のレプリケーション](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance)」をご覧ください。
  
 ### <a name="restore-statement"></a>RESTORE ステートメント 
  
@@ -335,23 +337,24 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
 - `sp_attach_db`、`sp_attach_single_file_db`、`sp_detach_db` はサポートされていません。 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)、[sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql) に関する各記事をご覧ください。
 - `sp_renamedb` はサポートされていません。 [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql) に関する記事をご覧ください。
 
-### <a name="sql-server-agent"></a>SQL Server エージェント 
- 
+### <a name="sql-server-agent"></a>SQL Server エージェント
+
 - SQL エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、マネージド インスタンスではサポートされていません。  
-- ジョブ - 現在サポートされているのは、T-SQL ジョブ ステップだけです (パブリック プレビュー期間に、さらに多くのステップが追加される予定です)。
- - SSIS はまだサポートされていません。 
- - レプリケーションはまだサポートされていません。  
-  - トランザクション ログ リーダーはまだサポートされていません。  
-  - スナップショットはまだサポートされていません。  
-  - ディストリビューターはまだサポートされていません。  
-  - マージはサポートされていません。  
+- ジョブ - 現在、T-SQL ジョブ ステップがサポートされています。
+- 他の種類のジョブ ステップは現在、サポートされていません (パブリック プレビュー期間に、ステップの種類がさらに追加される予定です)。
+  - サポートされていないレプリケーション ジョブには、次が含まれます。
+    - トランザクション ログ リーダー。  
+    - スナップショット。
+    - ディストリビューター。  
+    - マージ。  
+  - SSIS はまだサポートされていません。 
   - キュー リーダーはサポートされていません。  
- - コマンド シェルはまだサポートされていません。 
+  - コマンド シェルはまだサポートされていません。 
   - マネージド インスタンスは、外部リソース (例: robocopy を介したネットワーク共有) にはアクセスできません。  
- - PowerShell はまだサポートされていません。
- - Analysis Services はサポートされていません。  
+  - PowerShell はまだサポートされていません。
+  - Analysis Services はサポートされていません。  
 - 通知は部分的にサポートされています。
- - 電子メール通知がサポートされていますが、データベース メール プロファイルを構成する必要があります。 データベース メール プロファイルは 1 つしか存在できず、パブリック プレビューでは `AzureManagedInstance_dbmail_profile` という名前である必要があります (一時的な制限)。  
+- 電子メール通知がサポートされていますが、データベース メール プロファイルを構成する必要があります。 データベース メール プロファイルは 1 つしか存在できず、パブリック プレビューでは `AzureManagedInstance_dbmail_profile` という名前である必要があります (一時的な制限)。  
  - ポケットベルはサポートされていません。  
  - NetSend はサポートされていません。 
  - アラートはまだサポートされていません。
@@ -414,15 +417,58 @@ Azure Portal を使用して生成された SAS キーから、先頭の `?` を
 
 SQL Server Management Studio と SQL Server Data Tools には、マネージド インスタンスにアクセスする際に問題がある可能性があります。 一般公開の前に、ツールに関するすべての問題に対処する予定です。
 
-### <a name="incorrect-database-names"></a>データベース名が正しくない
+### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>一部のビュー、ログ、およびメッセージでの不正なデータベース名
 
-マネージド インスタンスでは、復元中または一部のエラー メッセージにデータベース名の代わりに GUID 値が表示されることがあります。 一般公開の前に、これらの問題を解決する予定です。
+複数のシステム ビュー、パフォーマンス カウンター、エラー メッセージ、XEvent、およびエラー ログ エントリで、実際のデータベース名ではなく GUID データベース識別子が表示されています。 将来、実際のデータベース名に置き換えられるため、これらの GUID 識別子には依存しないでください。
 
 ### <a name="database-mail-profile"></a>データベース メール プロファイル
 データベース メール プロファイルは 1 つしか存在できず、`AzureManagedInstance_dbmail_profile` という名前である必要があります。 これは間もなく削除される一時的な制限です。
+
+### <a name="error-logs-are-not-persisted"></a>エラー ログが非永続的である
+マネージド インスタンスで利用可能なエラー ログは永続的ではなく、このログのサイズは、最大ストレージ上限には含まれません。 フェールオーバーが発生した場合、エラー ログは自動的に消去される可能性があります。
+
+### <a name="error-logs-are-verbose"></a>エラー ログが詳細である
+マネージド インスタンスでは、エラー ログに詳細情報が書き込まれ、その多くは関連のない内容です。 エラー ログの情報量は将来、減らされる予定です。
+
+**対処法**: エラー ログを読み込む際にカスタムの手順を使用して、関連のない項目をフィルターで除外します。 詳細については、「[Azure SQL DB Managed Instance – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/)」(英語) を参照してください。
+
+### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>同じインスタンス内にある 2 つのデータベース上でトランザクション スコープがサポートされない
+同じトランザクション スコープ下では、同一インスタンス内にある 2 つのデータベースに対して 2 つのクエリが送信された場合、.Net の `TransactionScope` クラスが機能しません。
+
+```C#
+using (var scope = new TransactionScope())
+{
+    using (var conn1 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
+    {
+        conn1.Open();
+        SqlCommand cmd1 = conn1.CreateCommand();
+        cmd1.CommandText = string.Format("insert into T1 values(1)");
+        cmd1.ExecuteNonQuery();
+    }
+
+    using (var conn2 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
+    {
+        conn2.Open();
+        var cmd2 = conn2.CreateCommand();
+        cmd2.CommandText = string.Format("insert into b.dbo.T2 values(2)");        cmd2.ExecuteNonQuery();
+    }
+
+    scope.Complete();
+}
+
+```
+
+このコードは同一インスタンス内でデータを操作しますが、MSDTC を必要とします。
+
+**対処法**: 2 つの接続を使用する代わりに [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) を使って、接続コンテキスト内で他のデータベースを使用します。
+
+### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>CLR モジュールとリンク サーバーでローカル IP アドレスを参照できないことがある
+マネージド インスタンスに配置された CLR モジュールと、現在のインスタンスを参照しているリンク サーバー/分散クエリでは、ローカル インスタンスの IP を解決できないことがあります。 これは一時的なエラーです。
+
+**対処法**: 可能であれば、CLR モジュールでコンテキスト接続を使用します。
 
 ## <a name="next-steps"></a>次の手順
 
 - マネージド インスタンスの詳細については、[マネージド インスタンスの概要](sql-database-managed-instance.md)に関する記事をご覧ください。
 - 機能比較一覧については、[SQL 共通機能](sql-database-features.md)に関する記事をご覧ください。
-- 新しいマネージド インスタンスの作成方法を紹介するチュートリアルが必要な場合、[マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関するページを参照してください。
+- 新しいマネージド インスタンスの作成方法を示したクイックスタートについては、[マネージド インスタンスの作成](sql-database-managed-instance-get-started.md)に関するページを参照してください。

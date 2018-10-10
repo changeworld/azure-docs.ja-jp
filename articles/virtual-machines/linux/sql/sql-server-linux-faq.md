@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: jroth
-ms.openlocfilehash: 56a0629249cdb5f0f098d2b7b6d36b3fbb215009
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e8297892c533f3b0126f925f81d3e9bc429828ef
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30190873"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039957"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Linux Azure Virtual Machines における SQL Server についてよく寄せられる質問
 
@@ -70,19 +70,19 @@ ms.locfileid: "30190873"
 
    現時点では、SQL Server 用 BYOL Linux 仮想マシンのイメージはありません。 ただし、前の質問で説明したように、SQL Server を Linux 専用の VM に手動でインストールできます。
 
-1. **従量課金のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
+1. **従量課金制のギャラリー イメージから作成した VM を、現在所有している SQL Server ライセンスを使用するように変更できますか。**
 
-   いいえ。 秒単位のライセンスから、所有しているライセンスへの使用に切り替えることはできません。 新しい Linux VM を作成し、SQL Server をインストールし、データを移行する必要があります。 ライセンス持ち込みについて詳しくは、前の質問をご覧ください。
+   いいえ。 秒単位のライセンスから独自のライセンスの使用に切り替えることはできません。 新しい Linux VM を作成し、SQL Server をインストールし、データを移行する必要があります。 ライセンス持ち込みについて詳しくは、前の質問をご覧ください。
 
-## <a name="administration"></a>[管理]
+## <a name="administration"></a>管理
 
 1. **Linux SQL Server 仮想マシンを SQL Server Management Studio (SSMS) で管理できますか?**
 
-   はい。ただし、SSMS は現時点では Windows 限定のツールです。 Linux SQL Server VM で SSMS を使用するには、Windows コンピューターからリモートで接続する必要があります。 Linux では、新しい[mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf)ツールでさまざまな管理タスクをローカルに実行できます。 クロスプラットフォームのデータベース管理ツールをプレビューするには、[SQL Server Operations Studio (プレビュー)](https://docs.microsoft.com/sql/sql-operations-studio/what-is) に関する記事を参照してください。
+   はい。ただし、SSMS は現時点では Windows 限定のツールです。 Linux SQL Server VM で SSMS を使用するには、Windows コンピューターからリモートで接続する必要があります。 Linux では、新しい[mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf)ツールでさまざまな管理タスクをローカルに実行できます。 クロスプラットフォームのデータベース管理ツールについては、[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is) を参照してください。
 
-1. **SQL VM から SQL Server を完全に削除することはできますか?**
+1. **SQL VM から SQL Server を完全に削除できますか。**
 
-   はい。ただし、「[SQL Server Azure VM の料金ガイダンス](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)」の説明のとおり、SQL Server に対しては引き続き課金されます。 SQL Server が不要になった場合は、新しい仮想マシンをデプロイし、データとアプリケーションを新しい仮想マシンに移行してから、 SQL Server 仮想マシンを削除してください。
+   はい。ただし、[SQL Server Azure VM の価格に関するガイダンス](../../windows/sql/virtual-machines-windows-sql-server-pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json)のページで説明されているように、SQL VM に対しては引き続き課金されます。 SQL Server が不要になった場合は、新しい仮想マシンをデプロイし、データとアプリケーションを新しい仮想マシンに移行してから、 SQL Server 仮想マシンを削除してください。
 
 ## <a name="updating-and-patching"></a>更新プログラムと修正プログラムの適用
 

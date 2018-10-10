@@ -1,6 +1,6 @@
 ---
 title: Azure で API Management と Service Fabric を統合する | Microsoft Docs
-description: このチュートリアルでは、Azure API Management と Service Fabric の基本的な使用方法を簡単に説明します。
+description: Azure API Management をすぐに使い始め、Service Fabric のバックエンド サービスにトラフィックをルーティングする方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -9,54 +9,37 @@ editor: ''
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: tutorial
+ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/9/2018
+ms.date: 9/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1b0588e25c0d156080a2e879185b76714d8691b2
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 572a4cd78fe60351babb9e86c604447f6848a866
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113376"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408234"
 ---
-# <a name="tutorial-integrate-api-management-with-service-fabric-in-azure"></a>チュートリアル: Azure で API Management と Service Fabric を統合する
+# <a name="integrate-api-management-with-service-fabric-in-azure"></a>Azure で API Management と Service Fabric を統合する
 
-このチュートリアルは、シリーズの第 4 部です。  Service Fabric での Azure API Management のデプロイは高度なシナリオです。  API Management は、バックエンドの Service Fabric サービスのルーティング規則を豊富に備えた API を公開する必要があるときに便利です。 通常、クラウド アプリケーションには、ユーザー、デバイス、またはその他のアプリケーションに単一の受信ポイントを提供するフロントエンド ゲートウェイが必要です。 Service Fabric では、ASP.NET Core アプリケーション、Event Hubs、IoT Hub、Azure API Management など、トラフィック イングレス用に設計された任意のステートレス サービスをゲートウェイとして使用できます。
+Service Fabric での Azure API Management のデプロイは高度なシナリオです。  API Management は、バックエンドの Service Fabric サービスのルーティング規則を豊富に備えた API を公開する必要があるときに便利です。 通常、クラウド アプリケーションには、ユーザー、デバイス、またはその他のアプリケーションに単一の受信ポイントを提供するフロントエンド ゲートウェイが必要です。 Service Fabric では、ASP.NET Core アプリケーション、Event Hubs、IoT Hub、Azure API Management など、トラフィック イングレス用に設計された任意のステートレス サービスをゲートウェイとして使用できます。
 
-このチュートリアルでは、Service Fabric を使用して [Azure API Management](../api-management/api-management-key-concepts.md) をセットアップし、Service Fabric のバックエンド サービスにトラフィックをルーティングする方法について示します。  完了すると、トラフィックをバックエンド ステートレス サービスに送信するよう API 操作が構成された状態で、API Management が VNET にデプロイされます。 Service Fabric を使用する Azure API Management のその他のシナリオについては、[概要](service-fabric-api-management-overview.md)を参照してください。
-
-このチュートリアルで学習する内容は次のとおりです。
-
-> [!div class="checklist"]
-> * API Management をデプロイする
-> * API Management を構成する
-> * API 操作の作成
-> * バックエンド ポリシーの構成
-> * API を製品に追加する
-
-このチュートリアル シリーズで学習する内容は次のとおりです。
-> [!div class="checklist"]
-> * テンプレートを使用して、セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成する
-> * [クラスターをスケールインまたはスケールアウトする](service-fabric-tutorial-scale-cluster.md)
-> * [クラスターのランタイムをアップグレードする](service-fabric-tutorial-upgrade-cluster.md)
-> * Service Fabric を使用して API Management をデプロイする
+この記事では、Service Fabric を使用して [Azure API Management](../api-management/api-management-key-concepts.md) を設定し、Service Fabric のバックエンド サービスにトラフィックをルーティングする方法について示します。  完了すると、トラフィックをバックエンド ステートレス サービスに送信するよう API 操作が構成された状態で、API Management が VNET にデプロイされます。 Service Fabric を使用する Azure API Management のその他のシナリオについては、[概要](service-fabric-api-management-overview.md)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを開始する前に
+作業を開始する前に、次のことを行います。
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
-* [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)または [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールします。
-* セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成します。
+* [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)または [Azure CLI](/cli/azure/install-azure-cli) をインストールします。
+* ネットワーク セキュリティ グループにセキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を作成します。
 * Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2017](http://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、**.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
-* Linux クラスターをデプロイする場合は、Java 開発環境を [Linux](service-fabric-get-started-linux.md) または [MacOS](service-fabric-get-started-mac.md) にセットアップします。  [Service Fabric CLI](service-fabric-cli.md) をインストールします。
 
 ## <a name="network-topology"></a>ネットワーク トポロジ
 
-この時点までに、セキュリティで保護されている [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)が Azure 上にあり、API Management をサブネットの仮想ネットワーク (VNET) と、API Management 用に設計された NSG にデプロイしました。 このチュートリアルで使用する API Management の Resource Manager テンプレートは、前の [Windows クラスター チュートリアル](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター チュートリアル](service-fabric-tutorial-create-vnet-and-linux-cluster.md)で設定した VNET、サブネット、および NSG の名前を使用するようあらかじめ構成されています。 このチュートリアルでは、次のトポロジを Azure にデプロイします。Azure の同じ Virtual Network のサブネット内に Azure API Management と Service Fabric があります。
+この時点までに、セキュリティで保護されている [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)が Azure 上にあり、API Management をサブネットの仮想ネットワーク (VNET) と、API Management 用に設計された NSG にデプロイしました。 この記事のために、[Windows クラスターのチュートリアル](service-fabric-tutorial-create-vnet-and-windows-cluster.md)で設定した VNET、サブネット、および NSG の名前を使用するように API Management Resource Manager テンプレートが事前に構成されています。この記事では、API Management および Service Fabric が同じ仮想ネットワークのサブネット内にある Azure に次のトポロジをデプロイします。
 
  ![キャプション][sf-apim-topology-overview]
 
@@ -77,11 +60,9 @@ az account set --subscription <guid>
 
 ## <a name="deploy-a-service-fabric-back-end-service"></a>Service Fabric のバックエンド サービスのデプロイ
 
-Service Fabric バックエンド サービスにトラフィックがルーティングされるよう API Management を構成する前に、まずは要求を受け入れる実行中のサービスが必要です。  [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を以前に作成している場合、.NET Service Fabric サービスをデプロイします。  [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を以前に作成している場合、Java Service Fabric サービスをデプロイします。
+Service Fabric バックエンド サービスにトラフィックがルーティングされるよう API Management を構成する前に、まずは要求を受け入れる実行中のサービスが必要です。  
 
-### <a name="deploy-a-net-service-fabric-service"></a>.NET Service Fabric サービスをデプロイする
-
-このチュートリアルでは、既定の Web API プロジェクト テンプレートを使用して、ASP.NET Core の基本的なステートレス リライアブル サービスを作成します。 これにより、サービスの HTTP エンドポイントが作成され、Azure API Management を通じて公開することができます。
+既定の Web API プロジェクト テンプレートを使用して、ASP.NET Core の基本的なステートレス リライアブル サービスを作成します。 これにより、サービスの HTTP エンドポイントが作成され、Azure API Management を通じて公開することができます。
 
 Visual Studio を管理者として起動し、ASP.NET Core サービスを作成します。
 
@@ -115,42 +96,6 @@ Visual Studio を管理者として起動し、ASP.NET Core サービスを作�
 
 `fabric:/ApiApplication/WebApiService` という名前の ASP.NET Core ステートレス サービスが、Azure の Service Fabric クラスターで実行されているはずです。
 
-### <a name="create-a-java-service-fabric-service"></a>Java Service Fabric サービスを作成する
-
-このチュートリアルでは、ユーザーにメッセージをエコー バックする基本的な Web サーバーをデプロイします。 このエコー サーバー サンプル アプリケーションは、Azure API Management を通じて公開することができる、サービスの HTTP エンドポイントを含みます。
-
-1. Java の入門サンプルを複製します。
-
-   ```bash
-   git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
-   cd service-fabric-java-getting-started/reliable-services-actor-sample
-   ```
-
-2. *Services/EchoServer/EchoServer1.0/EchoServerApplication/EchoServerPkg/ServiceManifest.xml* を編集します。 サービスがポート 8081 でリッスンするようエンドポイントを変更します。
-
-   ```xml
-   <Endpoint Name="WebEndpoint" Protocol="http" Port="8081" />
-   ```
-
-3. *ServiceManifest.xml* を保存し、EchoServer1.0 アプリケーションをビルドします。
-
-   ```bash
-   cd Services/EchoServer/EchoServer1.0/
-   gradle
-   ```
-
-4. アプリケーションをクラスターにデプロイします。
-
-   ```bash
-   cd Scripts
-   sfctl cluster select --endpoint https://mycluster.southcentralus.cloudapp.azure.com:19080 --pem <full_path_to_pem_on_dev_machine> --no-verify
-   ./install.sh
-   ```
-
-   `fabric:/EchoServerApplication/EchoServerService` という名前の Java ステートレス サービスが、Azure の Service Fabric クラスターで実行されているはずです。
-
-5. ブラウザーを開き、「http://mycluster.southcentralus.cloudapp.azure.com:8081/getMessage」と入力すると、"[version 1.0]Hello World!!!" と 表示されます。
-
 ## <a name="download-and-understand-the-resource-manager-templates"></a>Resource Manager テンプレートのダウンロードと理解
 
 次の Resource Manager テンプレートとパラメーター ファイルをダウンロードして保存します。
@@ -170,9 +115,9 @@ Visual Studio を管理者として起動し、ASP.NET Core サービスを作�
 
 ### <a name="microsoftapimanagementservicecertificates"></a>Microsoft.ApiManagement/service/certificates
 
-[Microsoft.ApiManagement/service/certificates](/azure/templates/microsoft.apimanagement/service/certificates) は、API Management セキュリティを構成します。 API Management は、Service Fabric クラスターへのアクセス権を持つクライアント証明書を使用して、サービス検出の際にそのクラスターで認証する必要があります。 このチュートリアルでは、[Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md#createvaultandcert_anchor)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md#createvaultandcert_anchor)を作成したときに指定した証明書と同じものを使用します。この証明書は、クラスターにアクセスするときに既定で使用できます。
+[Microsoft.ApiManagement/service/certificates](/azure/templates/microsoft.apimanagement/service/certificates) は、API Management セキュリティを構成します。 API Management は、Service Fabric クラスターへのアクセス権を持つクライアント証明書を使用して、サービス検出の際にそのクラスターで認証する必要があります。 この記事では、[Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md#createvaultandcert_anchor)を作成したときに指定した証明書と同じものを使用します。この証明書は、クラスターにアクセスするときに既定で使用できます。
 
-このチュートリアルでは、クライアント認証とクラスター ノード間のセキュリティに同じ証明書を使用します。 Service Fabric クラスターにアクセスするよう構成した別のクライアント証明書がある場合は、その証明書を使用してもかまいません。 Service Fabric クラスターを作成したときに指定したクラスター証明書の秘密キー ファイル (.pfx) の**名前**、**パスワード**、および**データ** (Base 64 エンコード文字列) を指定します。
+この記事では、クライアント認証とクラスター ノード間のセキュリティに同じ証明書を使用します。 Service Fabric クラスターにアクセスするよう構成した別のクライアント証明書がある場合は、その証明書を使用してもかまいません。 Service Fabric クラスターを作成したときに指定したクラスター証明書の秘密キー ファイル (.pfx) の**名前**、**パスワード**、および**データ** (Base 64 エンコード文字列) を指定します。
 
 ### <a name="microsoftapimanagementservicebackends"></a>Microsoft.ApiManagement/service/backends
 
@@ -184,18 +129,18 @@ Service Fabric のバックエンドの場合は、特定の Service Fabric サ�
 
 [Microsoft.ApiManagement/service/products](/azure/templates/microsoft.apimanagement/service/products) は製品を作成します。 Azure API Management の成果物には、少なくとも 1 つの API に加え、使用量クォータや使用条件が含まれます。 成果物が発行されると、開発者は成果物をサブスクライブして、成果物の API の利用を開始できます。
 
-製品のわかりやすい **displayName** と **description** を入力します。 このチュートリアルでは、サブスクリプションは必須ですが、管理者によるサブスクリプションの承認は必須ではありません。  この製品の **state** が "公開" され、サブスクライバーに表示します。
+製品のわかりやすい **displayName** と **description** を入力します。 この記事では、サブスクリプションは必須ですが、管理者によるサブスクリプションの承認は必須ではありません。  この製品の **state** が "公開" され、サブスクライバーに表示します。
 
 ### <a name="microsoftapimanagementserviceapis"></a>Microsoft.ApiManagement/service/apis
 
 [Microsoft.ApiManagement/service/apis](/azure/templates/microsoft.apimanagement/service/apis) は API を作成します。 API Management における API は、クライアント アプリケーションから呼び出すことのできる一連の操作を表します。 操作を追加し、API を成果物に追加すると、API を発行できます。 API が発行されると、開発者はそれをサブスクライブして使用できます。
 
-* **displayName** には、API の任意の名前を指定できます。 このチュートリアルの場合、"Service Fabric App" を使用します。
+* **displayName** には、API の任意の名前を指定できます。 この記事では、「Service Fabric App」を使用します。
 * **name** は、"service-fabric-app" などの API に対する一意のわかりやすい名前です。 開発者ポータルとパブリッシャー ポータルには、この名前が表示されます。
-* **serviceUrl** は、API が実装されている HTTP サービスを参照します。 要求は、API Management によってこのアドレスに転送されます。 Service Fabric のバックエンドの場合、この URL の値は使用されません。 任意の値を入力できます。 このチュートリアルでは、たとえば "http://servicefabric" を使用します。
+* **serviceUrl** は、API が実装されている HTTP サービスを参照します。 要求は、API Management によってこのアドレスに転送されます。 Service Fabric のバックエンドの場合、この URL の値は使用されません。 任意の値を入力できます。 この記事では、たとえば「 http://servicefabric」です。
 * **path** が API Management サービスのベース URL に付加されます。 ベース URL は、API Management サービス インスタンスによってホストされるすべての API に共通です。 API Management では API がサフィックスによって識別されるため、サフィックスは、特定の発行者のすべての API で一意である必要があります。
-* **protocols** により、API へのアクセスに使用できるプロトコルが決まります。 このチュートリアルでは、**http** と **https** をリストします。
-* **path** は API のサフィックスです。 このチュートリアルでは、"myapp" を使用します。
+* **protocols** により、API へのアクセスに使用できるプロトコルが決まります。 この記事では、**http** と **https** を指定します。
+* **path** は API のサフィックスです。 この記事では、「myapp」を使用します。
 
 ### <a name="microsoftapimanagementserviceapisoperations"></a>Microsoft.ApiManagement/service/apis/operations
 
@@ -203,9 +148,9 @@ Service Fabric のバックエンドの場合は、特定の Service Fabric サ�
 
 フロントエンド API 操作を追加するには、値を入力します。
 
-* **displayName** と **description** で操作を説明します。 このチュートリアルでは、"Values" を使用します。
-* **method** は HTTP 動詞を指定します。  このチュートリアルでは、**GET** を指定します。
-* **urlTemplate** は、API のベース URL に付加され、単一の HTTP 操作を識別します。  このチュートリアルでは、`/api/values` (.NET バックエンド サービスを追加した場合) または `getMessage` (Java バックエンド サービスを追加した場合) を使用します。  既定では、ここで指定した URL パスが、バックエンドの Service Fabric サービスに送信される URL パスになります。 サービスで使用するのと同じ URL パス ("/api/values" など) を指定すると、何も変更しなくても操作が正常に機能します。 バックエンドの Service Fabric サービスで使用するのとは異なる URL パスを指定することもできますが、その場合は後ほど操作ポリシー内でパスの再生成を指定する必要があります。
+* **displayName** と **description** で操作を説明します。 この記事では、「Values」を使用します。
+* **method** は HTTP 動詞を指定します。  この記事では、**GET** を指定します。
+* **urlTemplate** は、API のベース URL に付加され、単一の HTTP 操作を識別します。  この記事では、`/api/values` (.NET バックエンド サービスを追加した場合) または `getMessage` (Java バックエンド サービスを追加した場合) を使用します。  既定では、ここで指定した URL パスが、バックエンドの Service Fabric サービスに送信される URL パスになります。 サービスで使用するのと同じ URL パス ("/api/values" など) を指定すると、何も変更しなくても操作が正常に機能します。 バックエンドの Service Fabric サービスで使用するのとは異なる URL パスを指定することもできますが、その場合は後ほど操作ポリシー内でパスの再生成を指定する必要があります。
 
 ### <a name="microsoftapimanagementserviceapispolicies"></a>Microsoft.ApiManagement/service/apis/policies
 
@@ -218,7 +163,7 @@ Service Fabric のバックエンドの場合は、特定の Service Fabric サ�
 * ステートフル サービスのレプリカの選択。
 * 解決の再試行の条件。サービスの場所を再解決して要求を再送信するための条件を指定できます。
 
-**policyContent** は、ポリシーの JSON エスケープ XML コンテンツです。  このチュートリアルでは、前にデプロイした .NET または Java ステートレス サービスに直接要求をルーティングするバックエンド ポリシーを作成します。 受信ポリシーの下に `set-backend-service` ポリシーを追加します。  *sf-service-instance-name* の値を `fabric:/ApiApplication/WebApiService` (前に .NET バックエンド サービスをデプロイした場合) または `fabric:/EchoServerApplication/EchoServerService` (Java サービスをデプロイした場合) に置き換えます。  *backend-id* は、バックエンド リソース (この場合は、*apim.json* テンプレートで定義されている `Microsoft.ApiManagement/service/backends` リソース) を参照します。 *backend-id* を使用して、API Management API を使用して作成された別のバックエンド リソースを参照することもできます。 このチュートリアルでは、*backend-id* を *service_fabric_backend_name* パラメーターの値に設定します。
+**policyContent** は、ポリシーの JSON エスケープ XML コンテンツです。  この記事では、前にデプロイした .NET または Java ステートレス サービスに直接要求をルーティングするバックエンド ポリシーを作成します。 受信ポリシーの下に `set-backend-service` ポリシーを追加します。  *sf-service-instance-name* の値を `fabric:/ApiApplication/WebApiService` (前に .NET バックエンド サービスをデプロイした場合) または `fabric:/EchoServerApplication/EchoServerService` (Java サービスをデプロイした場合) に置き換えます。  *backend-id* は、バックエンド リソース (この場合は、*apim.json* テンプレートで定義されている `Microsoft.ApiManagement/service/backends` リソース) を参照します。 *backend-id* を使用して、API Management API を使用して作成された別のバックエンド リソースを参照することもできます。 この記事では、*backend-id* を *service_fabric_backend_name* パラメーターの値に設定します。
 
 ```xml
 <policies>
@@ -227,7 +172,7 @@ Service Fabric のバックエンドの場合は、特定の Service Fabric サ�
     <set-backend-service
         backend-id="servicefabric"
         sf-service-instance-name="service-name"
-        sf-resolve-condition="@((int)context.Response.StatusCode != 200)" />
+        sf-resolve-condition="@(context.LastError?.Reason == 'BackendConnectionFailure')" />
   </inbound>
   <backend>
     <base/>
@@ -267,7 +212,7 @@ $b64 = [System.Convert]::ToBase64String($bytes);
 [System.Io.File]::WriteAllText("C:\mycertificates\sfclustertutorialgroup220171109113527.txt", $b64);
 ```
 
-*inbound_policy* で、*sf-service-instance-name* の値を `fabric:/ApiApplication/WebApiService` (前に .NET バックエンド サービスをデプロイした場合) または `fabric:/EchoServerApplication/EchoServerService` (Java サービスをデプロイした場合) に置き換えます。 *backend-id* は、バックエンド リソース (この場合は、*apim.json* テンプレートで定義されている `Microsoft.ApiManagement/service/backends` リソース) を参照します。 *backend-id* を使用して、API Management API を使用して作成された別のバックエンド リソースを参照することもできます。 このチュートリアルでは、*backend-id* を *service_fabric_backend_name* パラメーターの値に設定します。
+*inbound_policy* で、*sf-service-instance-name* の値を `fabric:/ApiApplication/WebApiService` (前に .NET バックエンド サービスをデプロイした場合) または `fabric:/EchoServerApplication/EchoServerService` (Java サービスをデプロイした場合) に置き換えます。 *backend-id* は、バックエンド リソース (この場合は、*apim.json* テンプレートで定義されている `Microsoft.ApiManagement/service/backends` リソース) を参照します。 *backend-id* を使用して、API Management API を使用して作成された別のバックエンド リソースを参照することもできます。 この記事では、*backend-id* を *service_fabric_backend_name* パラメーターの値に設定します。
 
 ```xml
 <policies>
@@ -276,7 +221,7 @@ $b64 = [System.Convert]::ToBase64String($bytes);
     <set-backend-service
         backend-id="servicefabric"
         sf-service-instance-name="service-name"
-        sf-resolve-condition="@((int)context.Response.StatusCode != 200)" />
+        sf-resolve-condition="@(context.LastError?.Reason == 'BackendConnectionFailure')" />
   </inbound>
   <backend>
     <base/>
@@ -349,14 +294,7 @@ az group delete --name $ResourceGroupName
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
-
-> [!div class="checklist"]
-> * API Management をデプロイする
-> * API Management を構成する
-> * API 操作の作成
-> * バックエンド ポリシーの構成
-> * API を製品に追加する
+[API Management](/azure/api-management/import-and-publish) の使用方法の詳細を確認する
 
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 

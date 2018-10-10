@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/04/2017
+ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: ce73d1ef5425ee2fe66655571a6d6bbbff372af5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: faabdb4c2d2e434863a6bed0b2cd85a05c94eab1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502813"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395731"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows データ サイエンス仮想マシンでできる 10 のこと
 
@@ -47,7 +47,7 @@ Windows データ サイエンス仮想マシン (DSVM) は、データの探索
 **前提条件**
 
 * Azure サブスクリプションが必要です。 [こちら](https://azure.microsoft.com/free/)で無料試用版にサインアップできます。
-* Azure ポータルでデータ サイエンス仮想マシンをプロビジョニングする手順については、 [仮想マシンの作成](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm)に関するページをご覧ください。
+* Azure ポータルでデータ サイエンス仮想マシンをプロビジョニングする手順については、 [仮想マシンの作成](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)に関するページをご覧ください。
 
 ## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1.Microsoft ML Server または Python を使用してデータを探索し、モデルを開発する
 R や Python などの言語を使用して、DSVM 上で直接データ分析を実行できます。
@@ -56,7 +56,7 @@ R に関しては、スタート メニュー、デスクトップ、または R
 
 Python に関しては、Python Tools for Visual Studio (PTVS) 拡張機能がプレインストールされる Visual Studio Community Edition などの IDE を使用できます。 既定では、Python 3.6 のみ、ルート Conda 環境が PTVS 上に構成されます。 Anaconda Python 2.7 を有効にするために、次の手順を実行する必要があります。
 
-* Visual Studio 2015 Community Edition の **[ツール]** -> **[Python Tools (Python ツール)]** -> **[Python Environments (Python 環境)]** の順に移動し、**[+ Custom (+ カスタム)]** をクリックして、各バージョンのカスタム環境を作成します。
+* Visual Studio Community Edition の **[ツール]** -> **[Python ツール]** -> **[Python 環境]** の順に移動し、**[+ カスタム]** をクリックして、各バージョンのカスタム環境を作成します。
 * 環境の説明を入力し、プレフィックス パス (Anaconda Python 2.7 の場合は *c:\anaconda\envs\python2*) を設定します。
 * **[Auto Detect (自動検出)]** をクリックし、**[Apply (適用)]** をクリックして環境を保存します。
 
@@ -66,7 +66,7 @@ Python に関しては、Python Tools for Visual Studio (PTVS) 拡張機能が�
 
 Python 環境の作成方法の詳細については、 [PTVS のドキュメント](http://aka.ms/ptvsdocs) を参照してください。
 
-これで、新しい Python プロジェクトを作成する準備が整いました。 **[ファイル]** -> **[新規作成]** -> **[プロジェクト]** -> **[Python]** の順に移動し、作成している Python アプリケーションの種類を選択します。 現在のプロジェクトの Python 環境を目的のバージョン (Anaconda 2.7 または 3.6) に設定できます。これには、**[Python environment (Python 環境)]** を右クリックして、**[Add/Remove Python Environments (Python 環境の追加/削除)]** を選択し、目的の環境を選択します。 PTVS の操作方法の詳細については、製品の[ドキュメント](http://aka.ms/ptvsdocs)を参照してください。
+これで、新しい Python プロジェクトを作成する準備が整いました。 **[ファイル]** -> **[新規作成]** -> **[プロジェクト]** -> **[Python]** の順に移動し、作成している Python アプリケーションの種類を選択します。 現在のプロジェクトの Python 環境を目的のバージョン (Python 2.7 または 3.6) に設定できます。これには、**[Python 環境]** を右クリックして、**[Python 環境の追加/削除]** を選択し、目的の環境を選択します。 PTVS の操作方法の詳細については、製品の[ドキュメント](http://aka.ms/ptvsdocs)を参照してください。
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2.Jupyter Notebook から Python または R を使用してデータの探索とモデリングを行う
 Jupyter Notebook は、ブラウザー ベースの "IDE" でデータの探索とモデリングを行うことができる強力な環境です。 Jupyter Notebook では Python 2 と Python 3 のほか R (オープン ソース R と Microsoft R Server の両方に対応) を使用できます。

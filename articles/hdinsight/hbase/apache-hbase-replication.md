@@ -3,18 +3,18 @@ title: Azure 仮想ネットワーク内で HBase クラスターのレプリケ
 description: 負荷分散、高可用性、ダウンタイムなしの移行と更新、およびディザスター リカバリーを実現するために、ある HDInsight バージョンから別のバージョンへの HBase レプリケーションを設定する方法について説明します。
 services: hdinsight,virtual-network
 author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/11/2018
-ms.author: jasonh
-ms.openlocfilehash: 624165f5ee1140ade9b9ce03c5249d297c8d83f1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/15/2018
+ms.openlocfilehash: 51f5f3b9742de45b1b72104c8cf08079d0719763
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047485"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224383"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する
 
@@ -109,6 +109,7 @@ Bind をインストールするには、2 つの DNS 仮想マシンのパブ�
 2. **[リソース グループ] > <リソース グループ名> [vnet1DNS]** を選択して、DNS 仮想マシンを開きます。  リソース グループ名は、最後の手順で作成する名前です。 既定の DNS 仮想マシン名は、*vnet1DNS* と *vnet2NDS* です。
 3. **[プロパティ]** を選択して、仮想ネットワークのプロパティ ページを開きます。
 4. **[パブリック IP アドレス]** を書き留めます。さらに、**[プライベート IP アドレス]** を確認します。  プライベート IP アドレスは、vnet1DNS では **10.1.0.4**、vnet2DNS では **10.2.0.4** です。  
+5. 既定の (Azure で提供されている) DNS サーバーを使用して受信および送信アクセスでパッケージをダウンロードして Bind をインストールできるように、次の手順で両方の仮想ネットワークの DNS サーバーを変更します。
 
 Bind をインストールするには、次の手順に従います。
 
@@ -135,7 +136,7 @@ Bind をインストールするには、次の手順に従います。
     sudo apt-get install bind9 -y
     ```
 
-3. 名前解決の要求をオンプレミス DNS サーバーに転送するように Bind を構成するには、`/etc/bind/named.conf.options` ファイルの内容として、次のテキストを使用します。
+3. オンプレミスの DNS サーバーに名前解決要求を転送するように Bind を構成します。 そのために、`/etc/bind/named.conf.options` ファイルの内容として次のテキストを使用します。
 
     ```
     acl goodclients {
@@ -151,7 +152,7 @@ Bind をインストールするには、次の手順に従います。
         allow-query { goodclients; };
 
         forwarders {
-            168.63.129.16 #This is the Azure DNS server
+            168.63.129.16; #This is the Azure DNS server
         };
 
         dnssec-validation auto;
@@ -217,7 +218,7 @@ Bind をインストールするには、次の手順に従います。
 
     ```bash
     sudo apt install dnsutils
-    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net 10.2.0.4
+    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
     ```
 
     > [!IMPORTANT]
@@ -277,7 +278,7 @@ sudo service bind9 status
 
 ## <a name="enable-replication"></a>レプリケーションを有効にする
 
-次の手順は、Azure Portal からスクリプト アクションのスクリプトを呼び出す方法を示しています。 Azure PowerShell と Azure コマンドライン ツール (Azure CLI) を使用したスクリプト アクションの実行については、[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする方法](../hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
+次の手順は、Azure Portal からスクリプト アクションのスクリプトを呼び出す方法を示しています。 Azure PowerShell と Azure クラシック CLI を使用したスクリプト アクションの実行については、[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする方法](../hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
 **Azure Portal から HBase レプリケーションを有効にするには**
 

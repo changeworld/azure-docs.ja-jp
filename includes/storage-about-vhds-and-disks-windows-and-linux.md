@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 2ab2ac1e98e25da4065611d32fb50aa8ce809361
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 26c3e8a096a3ee7bc5146759f8de62e5c1c7fed1
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060964"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47389878"
 ---
 ## <a name="about-vhds"></a>VHD について
 
@@ -73,4 +73,4 @@ Managed Disks の多くの機能を活用するために、新しい VM には M
 | シナリオ  | 運用環境のワークロードやパフォーマンスに影響されやすいワークロード |Web サーバー、あまり使用されていないエンタープライズ アプリケーション、および開発/テスト| バックアップ、重要ではない、不定期に起こるアクセス
 | ディスク サイズ | P4: 32 GiB (マネージド ディスクのみ)<br>P6: 64 GiB (マネージド ディスクのみ)<br>P10: 128 GiB<br>P15: 256 GiB (マネージド ディスクのみ)<br>P20: 512 GiB<br>P30: 1024 GiB<br>P40: 2048 GiB<br>P50: 4,095 GiB<br>P60: 8,192 GiB * (8 TiB)<br>P70: 16,384 GiB * (16 TiB)<br>P80: 32,767 GiB * (32 TiB) |マネージド ディスクのみ:<br>E10: 128 GiB<br>E15: 256 GiB<br>E20: 512 GiB<br>E30: 1024 GiB<br>E40: 2048 GiB<br>E50: 4095 GiB<br>E60: 8,192 GiB * (8 TiB)<br>E70: 16,384 GiB * (16 TiB)<br> E80: 32,767 GiB * (32 TiB) | アンマネージド ディスク: 1 GiB ～ 4 TiB (4095 GiB) <br><br>管理ディスク:<br> S4: 32 GiB <br>S6: 64 GiB <br>S10: 128 GiB <br>S15: 256 GiB <br>S20: 512 GiB <br>S30: 1024 GiB <br>S40: 2048 GiB<br>S50: 4095 GiB<br>S60: 8,192 GiB * (8 TiB)<br>S70: 16,384 GiB * (16 TiB)<br>S80: 32,384 GiB * (32 TiB)
 | ディスクあたりの最大スループット | P4: 25 MiB/秒<br> P6: 50 MiB/秒<br> P10: 100 MiB/秒<br> P15: 200 MiB/秒<br> P20: 150 MiB/秒<br> P30: 200 MiB/秒<br> P40-P50: 250 MiB/秒<br> P60: 480 MiB/秒<br> P70-P80: 750 MiB/秒 | E10-E50: 最大 60 MiB/秒<br> E60: 最大 300 MiB/秒 *<br> E70-E80: 500 MiB/秒 *| S4 - S50: 最大 60 MiB/秒<br> S60: 最大 300 MiB/秒 *<br> S70-S80: 最大 500 MiB/秒 *
-| ディスクあたりの最大 IOPS | P4: 120 IOPS<br> P6: 240 IOPS<br> P10: 500 IOPS<br> P15: 1100 IOPS<br> P20: 2300 IOPS<br> P30: 500 IOPS<br> P40-P50: 7500 IOPS<br> P60: 12,500 IOPS *<br> P70: 15,000 IOPS *<br> P80: 20,000 IOPS * | E10-E50: 最大 500 IOPS<br> E60: 最大 1300 IOPS *<br> E70-E80: 最大 2000 IOPS * | S4-S50: 最大 500 IOPS<br> S60: 最大 1300 IOPS *<br> S70-S80: 最大 2000 IOPS *
+| ディスクあたりの最大 IOPS | P4: 120 IOPS<br> P6: 240 IOPS<br> P10: 500 IOPS<br> P15: 1100 IOPS<br> P20: 2300 IOPS<br> P30: 5000 IOPS<br> P40-P50: 7500 IOPS<br> P60: 12,500 IOPS *<br> P70: 15,000 IOPS *<br> P80: 20,000 IOPS * | E10-E50: 最大 500 IOPS<br> E60: 最大 1300 IOPS *<br> E70-E80: 最大 2000 IOPS * | S4-S50: 最大 500 IOPS<br> S60: 最大 1300 IOPS *<br> S70-S80: 最大 2000 IOPS *
