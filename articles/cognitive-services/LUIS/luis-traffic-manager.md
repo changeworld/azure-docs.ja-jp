@@ -1,20 +1,21 @@
 ---
-title: Microsoft Azure Traffic Manager を使用して Language Understanding (LUIS) でエンドポイント クォータを増やす | Microsoft Docs
-description: Microsoft Azure Traffic Manager を使用して、Language Understanding (LUIS) で複数のサブスクリプションにまたがってエンドポイント クォータを拡張することで、エンドポイント クォータを増やします。
+title: Microsoft Azure Traffic Manager を使用して Language Understanding (LUIS) でエンドポイント クォータを増やす
+titleSuffix: Azure Cognitive Services
+description: Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、 **公開** ページの **リソースとキー** セクションで LUIS アプリケーションに追加します。
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 909c32452db216f79633b94c31f39350b7a6ee20
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 28fc0d0061d1826f0e17c26325ea227e001dccda
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248630"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042178"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager を使用した複数のキーにわたるエンドポイント クォータの管理
 Language Understanding (LUIS) では、1 つのキーのクォータを超えて、エンドポイント要求クォータを増やすことができます。 そのためには、LUIS の複数のキーを作成し、**[Publish]\(公開\)** ページの **[Resources and Keys]\(リソースとキー\)** セクションで LUIS アプリケーションに追加します。 
@@ -44,9 +45,7 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![luis-traffic-manager リソース グループ内の 2 つの LUIS キーが表示された Azure portal のスクリーンショット](./media/traffic-manager/luis-keys.png)
 
-2. [LUIS][LUIS] Web サイトの **[Publish]\(公開\)** ページで、アプリにキーを追加し、アプリを再公開します。 
-
-    ![[Publish]\(公開\) ページに 2 つの LUIS キーが表示された LUIS ポータルのスクリーンショット](./media/traffic-manager/luis-keys-in-luis.png)
+2. [LUIS][LUIS] Web サイトの **[Manage]\(管理\)** セクションの **[Keys and endpoints]\(キーとエンドポイント\)** ページで、アプリにキーを割り当てて、右上のメニューで **[Publish]\(公開\)** ボタンを選択してアプリを再公開します。 
 
     **エンドポイント**列の URL の例では、エンドポイント キーをクエリ パラメーターとして指定した GET 要求を使用します。 2 つの新しいキーのエンドポイント URL をコピーします。 これらは、この記事で後述する Traffic Manager の構成の一部として使用されます。
 
@@ -350,7 +349,7 @@ dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {
 
 LUIS エンドポイントによる正常な応答を次に示します。
 
-```cmd
+```json
 [
     {
         value: 'westus.api.cognitive.microsoft.com', 

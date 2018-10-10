@@ -1,6 +1,6 @@
 ---
-title: Azure 仮想マシン (VM) 上で SAP HANA システム レプリケーションを設定する | Microsoft Docs
-description: Azure 仮想マシン (VM) 上で SAP HANA の高可用性を実現します。
+title: SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性 | Microsoft Docs
+description: SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 7a0797d79da95db77174a3e067a1e84276f286a5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e2e76e3cd058e5798b0159923118b050f38d077e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142213"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034639"
 ---
-# <a name="high-availability-of-sap-hana-on-azure-virtual-machines"></a>Azure 仮想マシン上の SAP HANA の高可用性
+# <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での SAP HANA の高可用性
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -68,6 +68,7 @@ Azure 仮想マシン (VM) 上では、Azure VM HANA システム レプリケ�
 * SAP Note [1984787]: SUSE Linux Enterprise Server 12 に関する一般情報が記載されています。
 * SAP Note [1999351]: Azure Enhanced Monitoring Extension for SAP に関するその他のトラブルシューティング情報が記載されています。
 * [SAP Community WIKI](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes): Linux に必要なすべての SAP Note を参照できます。
+* [SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [Linux 上の SAP のための Azure Virtual Machines の計画と実装][planning-guide]に関するガイド。
 * [Linux 上の SAP のための Azure Virtual Machines のデプロイ][deployment-guide] (この記事)。
 * [Linux 上の SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]に関するガイド。
@@ -110,9 +111,13 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
     - **[System Availability]\(システムの可用性\)**: **[HA]\(高可用性\)** を選びます。
     - **[Admin Username and Admin Password]\(管理者の名前とパスワード\)**: マシンへのログオンに使用できる新しいユーザーが作成されます。
     - **[New Or Existing Subnet]\(新規または既存のサブネット\)**: 新しい仮想ネットワークまたはサブネットを作成するか、既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、**[Existing]\(既存\)** を選択します。
-    - **[Subnet ID]\(サブネット ID\)**: 仮想マシンを接続するサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続するには、VPN または Azure ExpressRoute 仮想ネットワークのサブネットを選択します。 通常、この ID は、**/subscriptions/\<サブスクリプション ID>/resourceGroups/\<リソース グループ名>/providers/Microsoft.Network/virtualNetworks/\<仮想ネットワーク名>/subnets/\<サブネット名>** のようになります。
+    - **[Subnet ID]\(サブネット ID\)**: VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、この ID は、**/subscriptions/\<サブスクリプション ID>/resourceGroups/\<リソース グループ名>/providers/Microsoft.Network/virtualNetworks/\<仮想ネットワーク名>/subnets/\<サブネット名>** のようになります。
 
 ### <a name="manual-deployment"></a>手動デプロイ
+
+> [!IMPORTANT]
+> 選択した OS が、使用している特定の VM の種類の SAP HANA に対して認定されていることを確認してください。 SAP HANA 認定 VM の種類と、その種類に対応する OS リリースの一覧は、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページに記載されています。 表示されている VM の種類をクリックすると、特定の VM の種類に対して SAP HANA でサポートされている OS のリリースの一覧が表示され、詳細を確認できます
+>  
 
 1. リソース グループを作成します。
 1. 仮想ネットワークを作成します。
@@ -121,12 +126,10 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 1. ロード バランサー (内部) を作成します。
    - 手順 2 で作成した仮想ネットワークを選択します。
 1. 仮想マシン 1 を作成します。
-   - SLES4SAP 12 SP1 以降を使用します。 この例では、SLES4SAP 12 SP2 イメージ https://ms.portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP2PremiumImage-ARM を使用しています。
-   - SAP 12 SP2 (Premium) には SLES を使用します。
+   - 選択した VM の種類で SAP HANA に対してサポートされている SLES4SAP イメージを、Azure ギャラリーから使用します。
    - 手順 3 で作成した可用性セットを選択します。
 1. 仮想マシン 2 を作成します。
-   - SLES4SAP 12 SP1 以降を使用します。 この例では、SLES4SAP 12 SP1 BYOS イメージ https://ms.portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP2PremiumImage-ARM を使用しています。
-   - SAP 12 SP2 (Premium) には SLES を使用します。
+   - 選択した VM の種類で SAP HANA に対してサポートされている SLES4SAP イメージを、Azure ギャラリーから使用します。
    - 手順 3 で作成した可用性セットを選択します。 
 1. データ ディスクを追加します。
 1. ロードバランサーを構成します。 まず、フロントエンド IP プールを作成します。
@@ -677,6 +680,9 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 
 ### <a name="suse-tests"></a>SUSE のテスト
 
+> [!IMPORTANT]
+> 選択した OS が、使用している特定の VM の種類の SAP HANA に対して認定されていることを確認してください。 SAP HANA 認定 VM の種類と、その種類に対応する OS リリースの一覧は、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページに記載されています。 表示されている VM の種類をクリックすると、特定の VM の種類に対して SAP HANA でサポートされている OS のリリースの一覧が表示され、詳細を確認できます
+
 ユース ケースに応じて、「SAP HANA SR Performance Optimized Scenario」(SAP HANA SR パフォーマンス最適化シナリオ) ガイドまたは「SAP HANA SR Cost Optimized Scenario」(SAP HANA SR コスト最適化シナリオ) ガイドに記載されているすべてのテスト ケースを実行します。 これらのガイドについては、[SLES for SAP のベスト プラクティスに関するページ][sles-for-sap-bp]を参照してください。
 
 次のテストは、「SAP HANA SR Performance Optimized Scenario SUSE Linux Enterprise Server for SAP Applications 12 SP1」(SAP HANA SR パフォーマンス最適化シナリオ SUSE Linux Enterprise Server for SAP Applications 12 SP1) ガイドのテストに関する説明のコピーです。 最新バージョンについては、常にガイドも参照してください。 テストを開始する前に常に HANA が同期していることを確認し、Pacemaker の設定が正しいことを確認してください。
@@ -969,7 +975,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
 
-   停止した HANA インスタンスが Pacemaker によって検出され、ノード hn1-db-1 上のリソースは失敗とマークされます。 次のコマンドを実行して、失敗した状態をクリーンアップします。 すると、Pacemaker によって HANA インスタンスが自動的に再起動されます。
+   停止した HANA インスタンスが Pacemaker によって検出され、ノード hn1-db-1 上のリソースは失敗とマークされます。 Pacemaker によって HANA インスタンスが自動的に再起動されます。 次のコマンドを実行して、失敗した状態をクリーンアップします。
 
    <pre><code># run as root
    hn1-db-1:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-1

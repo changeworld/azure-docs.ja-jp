@@ -1,63 +1,63 @@
 ---
-title: 2 つの意図で簡単なアプリを作成する - Azure | Microsoft Docs
-description: このクイックスタートでは、2 つの意図を使用してユーザーの発話を識別する簡単な LUIS アプリを作成する方法について説明します。エンティティは使用しません。
+title: 'チュートリアル 1: カスタム LUIS アプリで意図を検出する'
+titleSuffix: Azure Cognitive Services
+description: ユーザーの意図を予測するカスタム アプリを作成します。 このアプリは、メール アドレスや日付などの発話テキストからさまざまなデータ要素を抽出しないため、最も単純な種類の LUIS アプリです。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3f23ade2b0256c72c344e2a619227a79e3c79a47
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b229dbc90f3f6ecc226c88ee393114f233bcf1a2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160117"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035410"
 ---
-# <a name="tutorial-1-build-app-with-custom-domain"></a>チュートリアル: 1. カスタム ドメインを使用してアプリをビルドする
-このチュートリアルでは、ユーザーがアプリに送信した発話 (テキスト) に基づいて、**意図**を使用してそのユーザーの_意図_を判断する方法を実践するアプリを作成します。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
+# <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>チュートリアル 1: ユーザーの意図を特定するカスタム アプリを構築する
 
-このアプリは最も簡単な種類の LUIS アプリで、発話からデータを抽出しません。 発話からユーザーの意図のみを判断します。
+このチュートリアルでは、発話 (テキスト) に基づいてユーザーの意図を予測する人事 (HR) カスタム アプリを作成します。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
 
-<!-- green checkmark -->
+アプリの目的では、会話や自然言語テキストの意図を特定することです。 これらの意図 (intention) は、**意図**(Intent) に分類されます。 このアプリにはいくつかの意図があります。 最初の意図 **`GetJobInformation`** は、ユーザーが社内で有効な仕事に関する情報を必要としているタイミングを識別します。 2 番目の意図 **`None`** は、このアプリの_領域_ (範囲) 外にいるユーザーからのすべての発話に対して使用されます。 3 番目の意図 **`ApplyForJob`** は後で、仕事への応募に関するすべての発話に対して追加されます。 この 3 番目の意図は、誰かが仕事に応募するときには仕事の情報は既に知られているはずであるため、`GetJobInformation` とは異なります。 ただし、単語の選択によっては、どちらも仕事に関することであるため、意図の特定が難しい場合があります。
+
+LUIS は、JSON 応答を返した後は、この要求の処理を終えています。 LUIS は、ユーザーの発話に対する回答は提供しません。自然言語で、どのような種類の情報が質問されているかを識別するだけです。 
+
+**このチュートリアルで学習する内容は次のとおりです。**
+
 > [!div class="checklist"]
-> * 人事 (HR) ドメインの新しいアプリを作成する 
-> * GetJobInformation 意図を追加する
-> * GetJobInformation 意図に発話の例を追加する 
-> * アプリをトレーニングして公開する
-> * アプリのエンドポイントをクエリして LUIS JSON の応答を表示する
-> * ApplyForJob 意図を追加する
-> * ApplyForJob 意図に発話の例を追加する 
-> * もう一度トレーニング、公開し、エンドポイントをクエリする 
+> * 新しいアプリの作成 
+> * 意図の作成
+> * 発話の例を追加する
+> * アプリのトレーニング
+> * アプリの発行
+> * エンドポイントからの意図の取得
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="purpose-of-the-app"></a>アプリの目的
-このアプリにはいくつかの意図があります。 最初の意図 **`GetJobInformation`** は、ユーザーが社内で有効な仕事に関する情報を必要としているタイミングを識別します。 2 番目の意図 **`None`** は、その他すべての種類の発話を識別します。 このクイックスタートの後半に、3 番目の意図 `ApplyForJob` が追加されます。 
-
 ## <a name="create-a-new-app"></a>新しいアプリの作成
-1. [LUIS](luis-reference-regions.md#luis-website) Web サイトにログインします。 LUIS エンドポイントを公開する必要がある[リージョン](luis-reference-regions.md#publishing-regions)にログインします。
 
-2. [LUIS](luis-reference-regions.md#luis-website) Web サイトで **[Create new app]\(アプリの新規作成\)** を選択します。  
+1. URL が [https://www.luis.ai](https://www.luis.ai) の LUIS ポータルにサインインします。 
 
-    [![](media/luis-quickstart-intents-only/app-list.png "[My Apps]\(マイ アプリ\) ページのスクリーン ショット")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+2. **[Create new app]\(新しいアプリの作成\)** を選択します。  
 
-3. ポップアップ ダイアログで、名前に「`HumanResources`」と入力します。 このアプリでは、会社の人事部門に関する質問に対応します。 人事部門では、会社のポストの補充など、雇用に関連する問題に対処します。
+    [![](media/luis-quickstart-intents-only/app-list.png "Language Understanding (LUIS) の [My Apps]\(マイ アプリ) ページのスクリーンショット")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+
+3. ポップアップ ダイアログ ボックスで、名前として「`HumanResources`」と入力し、既定のカルチャである **[English]\(英語)** はそのままにします。 説明は空のままにします。
 
     ![LUIS の新規アプリ](./media/luis-quickstart-intents-only/create-app.png)
 
-4. 終了が処理すると、アプリの **[Intents]\(意図\)** ページに **None** 意図が表示されます。 
+    次に、アプリの **[Intents]\(意図\)** ページに **None** 意図が表示されます。
 
-## <a name="create-getjobinformation-intention"></a>GetJobInformation 意図を作成する
-1. **[Create new intent]\(意図の新規作成\)** を選択します。 新しい意図の名前として「`GetJobInformation`」と入力します。 この意図は、ユーザーが社内で空きのある仕事に関する情報を必要とするすべてのタイミングで予測されます。
+## <a name="getjobinformation-intent"></a>GetJobInformation 意図
 
-    ![](media/luis-quickstart-intents-only/create-intent.png "[Create new intent]\(意図の新規作成\) ダイアログのスクリーンショット")
+1. **[Create new intent]\(意図の新規作成\)** を選択します。 新しい意図の名前として「`GetJobInformation`」と入力します。 この意図は、ユーザーが社内で空きのある仕事に関する情報を欲したすべてのタイミングで予測されます。
 
-    意図を作成すると、識別する情報のカテゴリが作成されます。 カテゴリに名前を付けると、LUIS クエリ結果を使用する他のアプリケーションが、そのカテゴリ名を使用して、適切な回答を見つけることができます。 LUIS はこれらの質問に回答しません。どのような種類の情報が自然言語で質問されたかを明らかにするだけです。 
+    ![](media/luis-quickstart-intents-only/create-intent.png "Language Understanding (LUIS) の [New intent]\(新しい意図) ダイアログ ボックスのスクリーンショット")
 
-2. ユーザーの要求として予想される 7 つの発話をこの意図に追加します。次はその例です。
+2. _発話例_を提供することで、この意図についてはどのような種類の発話を予測する必要があるか、LUIS のトレーニングを行っています。 この意図に、ユーザーの質問として予想される発話例をいくつか追加します。次はその例です。
 
     | 発話の例|
     |--|
@@ -71,9 +71,17 @@ ms.locfileid: "44160117"
 
     [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "MyStore 意図用の新しい発話を入力しているスクリーンショット")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
-3. 現在、この LUIS アプリの **None** 意図には発話はありません。 アプリが回答しない発話が必要です。 空白のままにしないでください。 左側のパネルから **[Intents]\(意図\)** を選びます。 
+    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
-4. **None** 意図を選択します。 ユーザーが入力する可能性があるがアプリには関係のない 3 つの発話を追加します。 求人に関するアプリの場合、**None** 意図の発話の例として、次のような発話が挙げられます。
+
+## <a name="none-intent"></a>None 意図 
+クライアント アプリケーションは、その発話が、アプリケーションの主題の領域外にあるかどうかを知る必要があります。 LUIS が発話に対して **None** 意図を返した場合、クライアント アプリケーションは、ユーザーが会話の終了を望んでいるかどうかを確認することができます。 ユーザーが終了を望んでいない場合、クライアント アプリケーションは会話を続行するよう追加の指示を出すこともできます。 
+
+主題の領域外にあるこれらの発話例は、**None** 意図にグループ化します。 空白のままにしないでください。 
+
+1. 左側のパネルから **[Intents]\(意図\)** を選びます。
+
+2. **None** 意図を選択します。 ユーザーが入力する可能性があっても、この人事アプリには関係のない 3 つの発話を追加します。 求人に関するアプリの場合に、**None** 意図となるものをいくつか示します。
 
     | 発話の例|
     |--|
@@ -81,25 +89,24 @@ ms.locfileid: "44160117"
     |ピザを注文して|
     |海の中のペンギン|
 
-    LUIS 呼び出し元アプリケーション (チャットボットなど) では、LUIS が発話に対して **None** 意図を返した場合、ボットがユーザーが会話の終了を望んでいるかどうかを確認することがあります。 また、ユーザーが終了を望んでいない場合、チャットボットは会話を続けるよう指示することもあります。 
 
-## <a name="train-and-publish-the-app"></a>アプリをトレーニングして公開する
+## <a name="train"></a>トレーニング 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-app-to-endpoint"></a>エンドポイントにアプリを公開する
+## <a name="publish"></a>[発行]
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
-## <a name="query-endpoint-for-getjobinformation-intent"></a>GetJobInformation 意図のエンドポイントをクエリする
+## <a name="get-intent"></a>意図の取得
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. アドレスの URL の末尾に移動し、「`I'm looking for a job with Natual Language Processing`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話の**クエリ**です。 この発話は手順 4 のどの発話例とも同じではないので、よいテストであり、最もスコアの高い意図として `GetJobInformation` 意図が返される必要があります。 
+2. アドレス バーの URL の末尾に移動し、「`I'm looking for a job with Natural Language Processing`」と入力します。 最後のクエリ文字列パラメーターは `q` です。これは発話の**クエリ**です。 この発話は、どの発話例とも同じではありません。 これは適切なテストであり、最上位のスコアリング意図として `GetJobInformation` 意図を返すはずです。 
 
-    ```
+    ```JSON
     {
-      "query": "I'm looking for a job with Natual Language Processing",
+      "query": "I'm looking for a job with Natural Language Processing",
       "topScoringIntent": {
         "intent": "GetJobInformation",
         "score": 0.8965092
@@ -118,8 +125,12 @@ ms.locfileid: "44160117"
     }
     ```
 
-## <a name="create-applyforjob-intention"></a>ApplyForJob 意図を作成する
-LUIS Web サイトのブラウザー タブに戻り、仕事に応募するための新しい意図を作成します。
+    結果には、このアプリ内の**すべての意図**が含まれています (現在は 2 つ)。 現在このアプリにはまったくエンティティがないため、エンティティの配列は空になっています。 
+
+    JSON の結果では、最上位のスコアリング意図が **`topScoringIntent`** プロパティとして識別されています。 すべてのスコアは 0 から 1 の範囲であり、1 に近いほどよいスコアです。 
+
+## <a name="applyforjob-intent"></a>ApplyForJob 意図
+LUIS の Web サイトに戻り、ユーザーの発話が、仕事への応募に関するものかどうかを特定する新しい意図を作成します。
 
 1. 右上のメニューから **[Build]\(ビルド\)** を選択し、アプリのビルドに戻ります。
 
@@ -143,15 +154,21 @@ LUIS Web サイトのブラウザー タブに戻り、仕事に応募するた�
 
     現時点ではその意図が正しいことを LUIS が判断できないため、ラベル付きの意図は赤で囲まれています。 アプリをトレーニングすることで、LUIS にその発話が正しい意図であることを指示します。 
 
-    再度[トレーニングして公開](#train-and-publish-the-app)します。 
+## <a name="train-again"></a>再度のトレーニング
 
-## <a name="query-endpoint-for-applyforjob-intent"></a>ApplyForJob 意図のエンドポイントをクエリする
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+
+## <a name="publish-again"></a>再度の発行
+
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
+
+## <a name="get-intent-again"></a>再度の意図の取得
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. ブラウザーの新しいウィンドウで、URL の最後に `Can I submit my resume for job 235986` と入力します。 
 
-    ```
+    ```JSON
     {
       "query": "Can I submit my resume for job 235986",
       "topScoringIntent": {
@@ -176,19 +193,15 @@ LUIS Web サイトのブラウザー タブに戻り、仕事に応募するた�
     }
     ```
 
-## <a name="what-has-this-luis-app-accomplished"></a>この LUIS アプリの処理内容
-このアプリは、いくつかの意図を使用することで、同じ意図で言い方が異なる自然言語クエリを識別しました。 
-
-JSON の結果は最も高いスコアの意図を識別します。 すべてのスコアは 0 から 1 の範囲であり、1 に近いほどよいスコアです。 `GetJobInformation` 意図と `None` 意図のスコアはよりゼロに近くなっています。 
-
-## <a name="where-is-this-luis-data-used"></a>この LUIS データの使用場所 
-LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリケーションは、topScoringIntent の結果を受け、(LUIS に格納されていない) 情報を探して質問に回答するか、会話を終了します。 これらはボットつまり呼び出し元アプリケーションのプログラムのオプションです。 LUIS ではその作業を行いません。 LUIS はユーザーの意図を判断するだけです。 
+    結果には、新しい意図 **ApplyForJob** と既存の意図が含まれています。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
+
+このチュートリアルでは、人事 (HR) アプリを作成し、2 つの意図を作成して、各意図に発話例を追加しました。また、None 意図への発話例の追加、トレーニング、発行、およびエンドポイントのテストを行いました。 これらが、LUIS モデルを構築する基本的な手順です。 
 
 > [!div class="nextstepaction"]
 > [このアプリに事前構築済みの意図とエンティティを追加する](luis-tutorial-prebuilt-intents-entities.md)

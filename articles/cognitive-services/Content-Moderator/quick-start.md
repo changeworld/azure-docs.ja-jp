@@ -1,27 +1,28 @@
 ---
-title: Azure Content Moderator の概要 | Microsoft Docs
-description: Azure Content Moderator を開始する方法。
+title: Content Moderator の概要
+titlesuffix: Azure Cognitive Services
+description: Content Moderator を使い始める方法。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: sajagtap
-ms.openlocfilehash: ae4333047ebd95733c7baaed0323a0c2c477d323
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c2ac0ccd89b5f1436a151e3d69c5d7423090f244
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374317"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225296"
 ---
 # <a name="get-started-with-content-moderator"></a>Content Moderator の概要
 
-Content Moderator API とレビュー ツールを次の方法で開始します。
+Content Moderator は、次の方法で使い始めます。
 
-- [レビュー ツールを開始](#start-with-the-review-tool)して、API キーおよびレビュー チームの両方を作成します。 レビュー ツールを探索し、Content Moderator API を使用して統合する方法について説明します。
-- Azure portal で、[Content Moderator にサブスクライブ](#start-with-the-apis)します。 レビュー チームを作成するには、さらにオンラインで サインアップする必要があります。
+- [レビュー ツールを使用して開始](#start-with-the-review-tool)し、API キーを取得してレビュー チームを作成します。 追加の手順なしに、API キーを使用して、コンテンツをスキャンするためのモデレーション用 API と、レビューを生成するためのレビュー用 API を呼び出すことができるのが利点です。
+- Azure portal で [Content Moderator にサブスクライブ](#start-with-the-apis)して API キーを取得します。 [API リファレンス](api-reference.md)と [SDK](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net) を確認してください。 レビュー チームを作成するには、さらにオンラインで サインアップする必要があります。
 - [フロー コネクタとテンプレートを使用して](https://flow.microsoft.com/connectors/shared_cognitiveservicescontentmoderator/content-moderator/)、使いやすいデザイナーとの幅広い統合を確認します。
 
 選択するオプションに関係なく、[資格情報の管理](review-tool-user-guide/credentials.md)の記事を確認して、お使いの API 資格情報を見つけてください。
@@ -37,7 +38,7 @@ Content Moderator レビュー ツール Web サイトで[サインアップ](ht
 ![チーム メンバーを招待する](images/QuickStart-2-small.png)
 
 ### <a name="upload-images-or-enter-text"></a>画像をアップロードするかテキストを入力する
-**[Try](試す) > [画像]** または **[Try](試す) > [テキスト]** をクリックします。 最大 5 つのサンプル画像をアップロードするか、モデレーション用のサンプル テキストを入力します。
+**[Try]\(試す) > [画像]** または **[Try]\(試す) > [テキスト]** をクリックします。 最大 5 つのサンプル画像をアップロードするか、モデレーション用のサンプル テキストを入力します。
 
 ![画像またはテキスト モデレーションを試す](images/tryimagesortext.png)
 
@@ -55,9 +56,9 @@ Content Moderator レビュー ツール Web サイトで[サインアップ](ht
 
 ### <a name="use-the-apis"></a>API の使用
 
-コンテンツ モデレーションとレビュー ツールの操作を確認したので、Content Moderator を自身のビジネス アプリケーションと統合する方法について説明します。 次のセクションを使用して、SDK とサンプルの理解を深め、促進します。
+Content Moderator をビジネス アプリケーションと統合する方法について説明します。 [API リファレンス](api-reference.md)と [SDK](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net) を確認してください。
 
-## <a name="start-with-the-apis"></a>API を開始する
+## <a name="subscribe-in-the-azure-portal"></a>Azure portal でサブスクライブする
 
 Azure portal で、[Content Moderator にサブスクライブ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesContentModerator)します。 次の API のいずれかから開始します。
 
@@ -85,4 +86,4 @@ Azure portal で、[Content Moderator にサブスクライブ](https://ms.porta
 
 ## <a name="next-steps"></a>次の手順
 
-[画像モデレート API](image-moderation-api.md) から始まるコンテンツ モデレートについて詳しく説明します。
+[API リファレンス](api-reference.md)と [SDK](sdk-and-samples.md#sdks-for-python-java-nodejs-and-net) を確認してください。 [.NET SDK のサンプル](sdk-and-samples.md#net-sdk-samples)、[C# での REST API のサンプル](https://github.com/sanjeev3/azure-docs-pr/blob/master/articles/cognitive-services/Content-Moderator/sdk-and-samples.md#rest-api-samples-in-c)、および[チュートリアル](sdk-and-samples.md#tutorials)を使用して、統合をすぐに始めます。
