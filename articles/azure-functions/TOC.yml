@@ -23,10 +23,18 @@ items:
     href: functions-create-first-azure-function-azure-cli-linux.md
   - name: トリガー
     items:
+    - name: Azure Cosmos DB
+      href: functions-create-cosmos-db-triggered-function.md
+    - name: BLOB ストレージ
+      href: functions-create-storage-blob-triggered-function.md
+    - name: Queue Storage
+      href: functions-create-storage-queue-triggered-function.md
     - name: Timer
       href: functions-create-scheduled-function.md
   - name: 統合
     items:
+    - name: Azure Cosmos DB
+      href: functions-integrate-store-unstructured-data-cosmosdb.md
     - name: Storage
       href: functions-integrate-storage-queue-output-binding.md
   expanded: true
@@ -282,9 +290,9 @@ items:
     href: https://github.com/Azure/Azure-Functions/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/en-us/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: 0db8c68bb4bfae9bc54b4430d2e024340b79c1c0
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 6971effaf321883f3a1f318fa117bc47e71766b7
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801644"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853625"

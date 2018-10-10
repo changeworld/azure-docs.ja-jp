@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 96f767e96bcebeadfd0557d64b8efbf45b9f9a39
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: f8083d9db71b9f3c7d80444d574ed5c89b918f6c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43187566"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900365"
 documentType: LandingData
 title: Azure for Containers
 metadata:
@@ -69,6 +69,10 @@ sections:
       title: Azure Container Registry にプライベート Docker レジストリを作成する
       image:
         src: /azure/media/index/container-registry.svg
+    - href: https://docs.microsoft.com/azure/container-instances/container-instances-quickstart
+      title: Azure Container Instances でコンテナー アプリをオンデマンドで実行する
+      image:
+        src: /azure/media/index/containerinstances.svg
 - title: 無料の Pluralsight ビデオ トレーニング
   items:
   - type: list

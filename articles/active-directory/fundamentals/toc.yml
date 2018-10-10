@@ -46,6 +46,8 @@ items:
       href: customize-branding.md
     - name: Azure サブスクリプションを関連付ける
       href: active-directory-how-subscriptions-associated-directory.md
+    - name: プライバシー情報を追加する
+      href: active-directory-properties-area.md
   - name: グループ
     items:
     - name: グループを作成してメンバーを追加する
@@ -87,9 +89,9 @@ items:
     href: active-directory-administer.md
   - name: Azure ID ソリューション
     href: understand-azure-identity-solutions.md
-ms.openlocfilehash: b31baf4a0472afd09343673e2cdf94dc29b4cb12
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 04bd34de85980d6044a3fa1d4e02be2fb1be6b29
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465556"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902554"

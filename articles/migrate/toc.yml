@@ -49,6 +49,8 @@ items:
       href: contoso-migration-rearchitect-container-sql.md
     - name: 13. Contoso - Azure でのアプリのリビルド
       href: contoso-migration-rebuild.md
+    - name: 14. Contoso - 移行のスケーリング
+      href: contoso-migration-scale.md
   - name: 大規模な環境の検出と評価
     href: how-to-scale-assessment.md
   - name: マシンのグループ化
@@ -81,9 +83,9 @@ items:
     href: https://azure.microsoft.com/migrate
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: a16444b1b2441ab58f8500784e668409697cef43
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b87dd452598b1fb9b34c4b1af755e12c83938fb2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161796"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901262"
