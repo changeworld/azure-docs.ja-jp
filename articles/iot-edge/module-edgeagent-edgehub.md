@@ -4,16 +4,16 @@ description: edgeAgent および edgeHub モジュール ツインの特定の�
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 03/14/2018
+ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2858179d42ebf51cbb24d95d2e0093f8577bacef
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 5e358992661f7bcf06121a07c1bafca0850316b2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030565"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423139"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Edge エージェントと Edge ハブのモジュール ツインのプロパティ
 
@@ -27,9 +27,9 @@ Edge エージェントのモジュール ツインは `$edgeAgent` と呼ばれ
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| schemaVersion | "1.0" である必要がある | [はい] |
-| runtime.type | "docker" である必要がある | [はい] |
-| runtime.settings.minDockerVersion | このデプロイ マニフェストに必要な最小の Docker バージョンに設定される | [はい] |
+| schemaVersion | "1.0" である必要がある | はい |
+| runtime.type | "docker" である必要がある | はい |
+| runtime.settings.minDockerVersion | このデプロイ マニフェストに必要な最小の Docker バージョンに設定される | はい |
 | runtime.settings.loggingOptions | Edge エージェント コンテナーのログ オプションを含む文字列化された JSON。 [Docker のログ オプション][lnk-docker-logging-options] | いいえ  |
 | runtime.settings.registryCredentials<br>.{registryId}.username | コンテナー レジストリのユーザー名です。 Azure Container Registry では、ユーザー名は通常、レジストリ名です。<br><br> 公開されていないモジュール イメージでは、レジストリの資格情報が必要です。 | いいえ  |
 | runtime.settings.registryCredentials<br>.{registryId}.password | コンテナー レジストリのパスワード。 | いいえ  |
@@ -109,9 +109,9 @@ Edge ハブのモジュール ツインは `$edgeHub` と呼ばれ、デバイ�
 | lastDesiredVersion | この整数は、Edge ハブによって処理された必要なプロパティの最後のバージョンを参照します。 |
 | lastDesiredStatus.code | これは、Edge ハブによって表示された最後の必要なプロパティを参照する状態コードです。 許可される値: `200` 成功、`400` 無効な構成、`500` 失敗 |
 | lastDesiredStatus.description | 状態のテキストでの説明 |
-| clients.{device or module identity}.status | このデバイスまたはモジュールの接続状態。 可能性のある値 {"connected" \| "disconnected"}。 切断された状態になることができるのはモジュール ID だけです。 Edge ハブに接続されるダウンストリーム デバイスは、接続されている場合にのみ表示されます。 |
-| clients.{device or module identity}.lastConnectTime | デバイスまたはモジュールが接続された最後の時間 |
-| clients.{device or module identity}.lastDisconnectTime | デバイスまたはモジュールが切断された最後の時間 |
+| clients.{device or moduleId}.status | このデバイスまたはモジュールの接続状態。 可能性のある値 {"connected" \| "disconnected"}。 切断された状態になることができるのはモジュール ID だけです。 Edge ハブに接続されるダウンストリーム デバイスは、接続されている場合にのみ表示されます。 |
+| clients.{device or moduleId}.lastConnectTime | デバイスまたはモジュールが接続された最後の時間 |
+| clients.{device or moduleId}.lastDisconnectTime | デバイスまたはモジュールが切断された最後の時間 |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -15,16 +15,17 @@ ms.workload: big-compute
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 85bda9e1a936f19a37be2f2c1c42f948cab727d6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 98bd088d4995bd1444b059531dc5b19d0283f551
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122469"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965536"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
-この記事では、[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) の機能を使用して、Batch アカウントを監視する方法を説明します。 Azure Monitor は、Batch アカウント内のリソースの[メトリック](../monitoring-and-diagnostics/monitoring-overview-metrics.md)と[診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)を収集します。 このデータを収集し、さまざまな方法で使用して、Batch アカウントの監視と問題の診断を行います。 [メトリック アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md#alerts-on-azure-monitor-data)を構成して、メトリックが指定した値に達したときに通知を受信するように構成することもできます。 
+ 
+この記事では、[Azure Monitor](../azure-monitor/overview.md) の機能を使用して、Batch アカウントを監視する方法を説明します。 Azure Monitor は、Batch アカウント内のリソースの[メトリック](../monitoring/monitoring-data-collection.md#metrics)と[診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)を収集します。 このデータを収集し、さまざまな方法で使用して、Batch アカウントの監視と問題の診断を行います。 [メトリック アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)を構成して、メトリックが指定した値に達したときに通知を受信するように構成することもできます。 
 
 ## <a name="batch-metrics"></a>Batch メトリック
 
@@ -64,7 +65,8 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 2. **[監視]** で、**[アラート ルール]** > **[メトリック アラートの追加]** をクリックします。
 3. メトリック、アラート条件 (メトリックが期間中に特定の値を超えた場合など)、および 1 つ以上の通知を選択します。
 
-リアルタイムに近い通知は、[REST API](https://docs.microsoft.com/rest/api/monitor/) を使用して構成することもできます。 詳細については、「[Azure Portal で使用できる Azure サービスの新しいメトリック アラート](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)」を参照してください。
+リアルタイムに近い通知は、[REST API](https://docs.microsoft.com/rest/api/monitor/) を使用して構成することもできます。 詳しくは、[アラートの概要](../monitoring-and-diagnostics/monitoring-overview-alerts.md)に関するページをご覧ください。
+
 ## <a name="batch-diagnostics"></a>Batch 診断
 
 診断ログには、Azure リソースによって生成された、各リソースの操作を記述する情報が含まれます。 Batch では、次のログを収集できます。

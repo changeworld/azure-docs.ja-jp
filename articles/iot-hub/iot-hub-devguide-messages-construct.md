@@ -1,55 +1,60 @@
 ---
 title: Azure IoT Hub メッセージの形式について | Microsoft Docs
 description: 開発者ガイド - IoT Hub メッセージの形式と予期される内容について説明します。
-author: dominicbetts
-manager: timlt
+author: ash2017
+manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: 7c08848698f07d64bbbff429682c18525659f7bf
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.date: 08/13/2018
+ms.author: asrastog
+ms.openlocfilehash: edea20343c2a261902c082dbc5c96b78db6b470d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286519"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973222"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
-プロトコル間でのシームレスな相互運用性をサポートするために、IoT Hub では、すべてのデバイス用プロトコルの共通のメッセージ形式が定義されています。 このメッセージ形式は、[device-to-cloud][lnk-d2c] メッセージと [cloud-to-device][lnk-c2d] メッセージの両方で使用されます。 
+プロトコル間でのシームレスな相互運用性をサポートするために、IoT Hub では、すべてのデバイス用プロトコルの共通のメッセージ形式が定義されています。 このメッセージ形式は、[device-to-cloud ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) メッセージと [cloud-to-device](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-c2d) メッセージの両方で使用されます。 
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-[IoT Hub メッセージ][lnk-messaging]は、次のような構成です。
+IoT Hub は、ストリーミング メッセージング パターンを使用して、D2C メッセージングを実装しています。 IoT Hub の device-to-cloud メッセージは、[Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/) の "*メッセージ*" というよりはむしろ [Event Hubs](https://docs.microsoft.com/azure/event-hubs/) の "*イベント*" であり、複数のリーダーで読み取り可能なサービスを経由する、大量のイベントが存在します。
 
+IoT Hub メッセージは、次のような構成です。
 * 事前定義された一連の "*システム プロパティ*" を以下に示します。
 * 一連の *アプリケーション プロパティ*。 メッセージ本文を逆シリアル化しなくてもアプリケーションが定義してアクセスできる、文字列プロパティのディクショナリです。 IoT Hub によってこれらのプロパティが変更されることはありません。
 * 非透過的なバイナリ本文。
 
-以下の場合は、プロパティ名と値に含めることができるのは、ASCII 英数字と ```{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}``` のみです。  
+HTTPS プロトコルを使用して device-to-cloud メッセージを送信するとき、または cloud-to-device メッセージを送信するときに、プロパティ名と値に含めることができるのは、ASCII 英数字と ```{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}``` のみです。
 
-* HTTPS プロトコルを使用して device-to-cloud メッセージを送信します。
-* クラウドからデバイスへのメッセージを送信します。
+IoT Hub を使用した device-to-cloud メッセージングには、次のような特徴があります。
 
-各種プロトコルを使用したメッセージのエンコードとデコードの方法の詳細については、[Azure IoT SDK][lnk-sdks] に関するページをご覧ください。
+* device-to-cloud メッセージには持続性があり、最長で 7 日間、IoT hub の既定の **messages/events** エンドポイントに保持されます。
+* device-to-cloud メッセージは最大 256 KB で、バッチとしてグループ化して送信を最適化できます。 バッチは最大で 256 KB です。
+* IoT Hub では、任意のパーティション分割は許可されていません。 D2C メッセージは、発信元の **deviceId**に基づいてパーティション分割されます。
+* 「[IoT Hub へのアクセスの制御](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-security)」のセクションで説明されているように、IoT Hub ではデバイスごとに認証とアクセス制御を行うことができます。
+
+各種プロトコルを使用したメッセージのエンコードとデコードの方法の詳細については、[Azure IoT SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) に関するページをご覧ください。
 
 次のテーブルは、IoT Hub メッセージ内の一連のシステム プロパティです。
 
 | プロパティ | 説明 | ユーザーが設定可能 |
 | --- | --- | --- |
-| MessageId |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式: ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。 | はい |
+| MessageId |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式: ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。 | [はい] |
 | Sequence number |IoT Hub によって各 C2D メッセージに割り当てられる数値 (デバイスとキューごとに一意)。 | C2D メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| ターゲット |[C2D][lnk-c2d] メッセージで指定される宛先。 | C2D メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| ExpiryTimeUtc |メッセージの有効期限の日時。 | はい |
-| EnqueuedTime |IoT Hub が[クラウドからデバイス][lnk-c2d]へのメッセージを受信した日時。 | C2D メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| CorrelationId |通常、要求/応答パターンで要求の MessageId を格納する、応答メッセージの文字列プロパティ。 | はい |
+| ターゲット |[cloud-to-device][lnk-c2d] メッセージで指定される宛先。 | C2D メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
+| ExpiryTimeUtc |メッセージの有効期限の日時。 | [はい] |
+| EnqueuedTime |IoT Hub が [cloud-to-device][lnk-c2d] メッセージを受信した日時。 | C2D メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
+| CorrelationId |通常、要求/応答パターンで要求の MessageId を格納する、応答メッセージの文字列プロパティ。 | [はい] |
 | UserId |メッセージの送信元を指定するために使用される ID。 IoT Hub でメッセージが生成されると、 `{iot hub name}`に設定されます。 | いいえ  |
-| Ack |フィードバック メッセージのジェネレーター。 このプロパティは、デバイスがメッセージを使用した結果としてのフィードバック メッセージの生成を IoT Hub に要求するために、C2D メッセージで使用されます。 使用可能な値: **none** (既定値): フィードバック メッセージは生成されません。**positive**: メッセージが完了した場合にフィードバック メッセージを受信します。**negative**: デバイスでメッセージが完了しないまま、メッセージの有効期限が切れた場合 (または最大配信数に達した場合) にフィードバック メッセージを受信します。**full**: positive と negative の両方の値を意味します。 詳細については、「[メッセージのフィードバック][lnk-feedback]を参照してください。 | [はい] |
+| Ack |フィードバック メッセージのジェネレーター。 このプロパティは、デバイスがメッセージを使用した結果としてのフィードバック メッセージの生成を IoT Hub に要求するために、C2D メッセージで使用されます。 使用可能な値: **none** (既定値): フィードバック メッセージは生成されません。**positive**: メッセージが完了した場合にフィードバック メッセージを受信します。**negative**: デバイスでメッセージが完了しないまま、メッセージの有効期限が切れた場合 (または最大配信数に達した場合) にフィードバック メッセージを受信します。**full**: positive と negative の両方の値を意味します。 詳細については、[メッセージのフィードバック][lnk-feedback] をご覧ください。 | [はい] |
 | ConnectionDeviceId |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **deviceId** が含まれます。 | D2C メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| ConnectionDeviceGenerationId |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **generationId** (「[デバイス ID のプロパティ][lnk-device-properties]」を参照) が含まれています。 | D2C メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| ConnectionAuthMethod |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。 詳細については、[D2C のなりすまし対策][lnk-antispoofing]に関するセクションを参照してください。 | D2C メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
-| CreationTimeUtc | デバイスでメッセージが作成された日時。 デバイスでこの値を明示的に設定する必要があります。 | はい |
+| ConnectionDeviceGenerationId |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの ([デバイス ID のプロパティ][Ink-device-properties] に応じた) **generationId** が含まれています。 | D2C メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
+| ConnectionAuthMethod |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。 詳細については、[D2C のなりすまし対策][lnk-antispoofing] に関する記述をご覧ください。 | D2C メッセージの場合は「いいえ」。それ以外の場合は「はい」。 |
+| CreationTimeUtc | デバイスでメッセージが作成された日時。 デバイスでこの値を明示的に設定する必要があります。 | [はい] |
 
 ## <a name="message-size"></a>メッセージ サイズ
 
@@ -61,18 +66,27 @@ IoT Hub では、メッセージのサイズは、プロトコルに関係なく
 
 プロパティの名前と値は ASCII 文字に制限されているため、文字列の長さがバイト単位のサイズと等しくなります。
 
+## <a name="anti-spoofing-properties"></a>なりすまし対策のプロパティ
+
+D2C メッセージでのデバイスのなりすましを回避するために、IoT Hub では、すべてのメッセージに次のプロパティを持つスタンプが使用されます。
+
+* **ConnectionDeviceId**
+* **ConnectionDeviceGenerationId**
+* **ConnectionAuthMethod**
+
+最初の 2 つには、「[デバイス ID プロパティ](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-identity-registry#device-identity-properties)」で説明されている発信元デバイスの **deviceId** と **generationId** が含まれています。
+
+**ConnectionAuthMethod** プロパティには、次のプロパティを使用してシリアル化された JSON オブジェクトが含まれています。
+
+```json
+{
+  "scope": "{ hub | device }",
+  "type": "{ symkey | sas | x509 }",
+  "issuer": "iothub"
+}
+```
+
 ## <a name="next-steps"></a>次の手順
 
-IoT Hub でのメッセージ サイズの制限については、[IoT Hub のクォータと調整][lnk-quotas]に関するページをご覧ください。
-
-IoT Hub メッセージをさまざまなプログラミング言語で作成し、読み取る方法については、[クイック スタート][lnk-get-started]をご覧ください。
-
-[lnk-messaging]: iot-hub-devguide-messaging.md
-[lnk-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-get-started]: quickstart-send-telemetry-node.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-[lnk-c2d]: iot-hub-devguide-messages-c2d.md
-[lnk-d2c]: iot-hub-devguide-messages-d2c.md
-[lnk-feedback]: iot-hub-devguide-messages-c2d.md#message-feedback
-[lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties
-[lnk-antispoofing]: iot-hub-devguide-messages-d2c.md#anti-spoofing-properties
+* IoT Hub でのメッセージ サイズの制限については、[IoT Hub のクォータと調整](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-quotas-throttling)に関するページをご覧ください。
+* IoT Hub メッセージをさまざまなプログラミング言語で作成し、読み取る方法については、[クイック スタート](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-node)をご覧ください。

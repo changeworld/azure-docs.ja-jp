@@ -1,22 +1,23 @@
 ---
-title: LUIS におけるデータ ストレージの概要 - Azure | Microsoft Docs
-description: データを Language Understanding (LUIS) に格納する方法を説明します。
+title: LUIS でのデータの格納 - Language Understanding
+titleSuffix: Azure Cognitive Services
+description: データを Language Understanding (LUIS) に格納する方法を説明します。 LUIS では、キーによって指定された領域に対応する Azure のデータ ストアに、データが暗号化されて格納されます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: e4e289db0803a127bdbff5122095ae2125cdbb38
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 6d42246b3078e0f4684dfe29bca720e8f8d779cd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226194"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034707"
 ---
-# <a name="data-storage-and-removal"></a>データの保存と削除
+# <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Language Understanding (LUIS) Cognitive Services でのデータの格納と削除
 LUIS では、キーによって指定された領域に対応する Azure のデータ ストアに、データが暗号化されて格納されます。 このデータは 30 日間保存されます。 
 
 ## <a name="export-and-delete-app"></a>アプリのエクスポートと削除

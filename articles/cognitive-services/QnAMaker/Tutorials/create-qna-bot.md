@@ -1,22 +1,23 @@
 ---
-title: Azure Bot Service による QnA ボットの作成 - Azure Cognitive Services | Microsoft Docs
+title: Azure Bot Service による QnA ボット - QnA Maker
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: fc430bf3aa7cad279d7a93bb6892aa19abee3378
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 74c7bc5c601cd36a8dd2454506745406bc00dac0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109271"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031290"
 ---
-# <a name="create-a-qna-bot-with-azure-bot-service"></a>Azure Bot Service による QnA ボットの作成
-このチュートリアルでは、Azure portal で Azure Bot Service を使用して QnA ボットを構築する手順について説明します。
+# <a name="create-a-qna-bot-with-azure-bot-service-v3"></a>Azure Bot Service v3 による QnA ボットの作成
+このチュートリアルでは、Azure portal で Azure Bot Service v3 を使用して QnA ボットを構築する手順について説明します。
 
 ## <a name="prerequisite"></a>前提条件
 構築する前に、「[ナレッジ ベースの作成](../How-To/create-knowledge-base.md)」の手順に従って、質問と回答が含まれる QnA Maker サービスを作成します。
@@ -32,16 +33,24 @@ ms.locfileid: "37109271"
 
     ![ボット サービスの選択](../media/qnamaker-tutorials-create-bot/bot-service-selection.png)
 
-3. **[ボット サービス]** ブレードで、必要な情報を指定し、**[作成]** を選択します。 これによって、QnAMakerDialog を使用したボット サービスが作成され、Azure にデプロイされます。
+3. **[ボット サービス] ブレード**で、必要な情報を指定します。
 
     - **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。
     - [サブスクリプション]、[リソース グループ]、[App Service プラン]、[場所] を選択します。
-    - ボット テンプレート フィールドで、**[Question and Answer]\(質問と答え\)** (Node.js または C#) テンプレートを選択します。
-    - 法的通知の確認チェックボックスをオンにします。 法的通知の条項はチェック ボックスの下にあります。
 
-        ![ボット サービスの選択](../media/qnamaker-tutorials-create-bot/bot-service-qna-template.PNG)
+4. SDK v4 を使用して QnA ボットを作成する方法については、[QnA v4 bot template](https://aka.ms/qna-bot-v4)\(QnA v4 ボット テンプレート\) を参照してください。 v3 テンプレートを使用するには、SDK バージョンは **SDK v3** を、SDK 言語は **C#** または **Node.js** を選択します。
 
-4. ボット サービスがデプロイされたことを確認します。
+    ![ボット SDK 設定](../media/qnamaker-tutorials-create-bot/bot-v3.png)
+
+5. ボット テンプレートのフィールドで **[Question and Answer]\(質問と回答\)** テンプレートを選択し、**[選択]** を選択してテンプレート設定を保存します。
+
+    ![ボット サービスの選択](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
+
+6. 設定を確認して **[作成]** を選択します。 これによって、QnAMakerDialog を使用したボット サービスが作成され、Azure にデプロイされます。
+
+    ![ボット サービスの選択](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
+
+7. ボット サービスがデプロイされたことを確認します。
 
     - **[通知]** (Azure portal の上端にあるベル アイコン) を選択します。 通知は、**[デプロイが開始されました]** から **[デプロイメントに成功しました]** に変わります。
     - 通知が **[デプロイメントに成功しました]** に変わったら、その通知で **[リソースに移動]** を選択します。
@@ -62,7 +71,7 @@ ms.locfileid: "37109271"
     ![アプリケーション設定](../media/qnamaker-tutorials-create-bot/application-settings.PNG)
 
 2. https://qnamaker.ai で、ナレッジ ベースの [設定] タブから、ナレッジ ベース ID、ホスト URL、およびエンドポイント キーを取得します。
-    - [QnA Maker](https://qnamaker.ai) にログインする
+    - [QnA Maker](https://qnamaker.ai) にサインインする
     - ナレッジ ベースに移動する
     - **[設定]** タブをクリックする
     - まだの場合は、ナレッジ ベースを**発行**します。

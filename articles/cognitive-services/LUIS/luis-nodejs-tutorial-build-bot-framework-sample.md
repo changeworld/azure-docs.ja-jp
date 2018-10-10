@@ -1,24 +1,25 @@
 ---
-title: Azure で Bot Builder SDK for Node.js を使用して LUIS をボットと統合する | Microsoft Docs
+title: Node.js を使用した LUIS ボット - Web アプリ ボット - Bot Framework SDK 3.0
+titleSuffix: Azure Cognitive Services
 description: Bot Framework を使用して LUIS アプリケーションと統合されるボットをビルドします。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 6d6937105b11d94138b51660dc9f3c5e682e19bc
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 0bd191da3f2625bc202ee66100e7dac25d9d65de
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224077"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042331"
 ---
-# <a name="integrate-luis-with-a-bot-using-the-bot-builder-sdk-for-nodejs"></a>Azure で Bot Builder SDK for Node.js を使用して LUIS をボットと統合する
+# <a name="luis-bot-in-nodejs"></a>Node.js の LUIS ボット
 
-このチュートリアルでは、LUIS アプリと統合された [Bot Framework][BotFramework] を使用してボットをビルドする方法について説明します。
+Node.js を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成します。 このチャット ボットでは、ボット ソリューションをすばやく実装するため、事前構築済みの HomeAutomation ドメインを使用します。 ボットは、Bot Framework 3.x と Azure Web アプリ ボットで構築します。
 
 ## <a name="prerequisite"></a>前提条件
 
@@ -45,7 +46,10 @@ Bot を作成する前に、[アプリの作成](./luis-get-started-create-app.m
 3. **[ボット サービス]** ブレードで、必要な情報を指定し、**[作成]** を選択します。 これによって、ボット サービスと LUIS アプリが作成され、Azure にデプロイされます。 [音声認識の準備](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming)を使用するには、ボットを作成する前に、[リージョンの要件](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming)を確認します。 
     * **[アプリ名]** にボットの名前を設定します。 この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (mynotesbot.azurewebsites.net など)。 <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * サブスクリプション、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)、App Service プラン、[場所](https://azure.microsoft.com/regions/)を選択します。
-    * **[ボット テンプレート]** フィールドで **Language Understanding (Node.js)** テンプレートを選択します。
+    * **Bot テンプレート**で、以下を選択します。
+        * **SDK v3**
+        * **Node.js**
+        * **言語の理解**
     * **LUIS アプリの場所**を選択します。 これは、アプリが作成されるオーサリング [リージョン][LUIS]です。
     * 法的通知の確認チェック ボックスをオンにします。 法的通知の条項はチェック ボックスの下にあります。
 

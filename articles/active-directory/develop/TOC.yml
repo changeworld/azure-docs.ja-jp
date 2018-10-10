@@ -58,8 +58,9 @@ items:
   - name: 概念
     items:
     - name: アプリケーションの種類
-      href: app-types.md
       items:
+      - name: アプリケーションの種類
+        href: app-types.md
       - name: シングルページ アプリ
         href: single-page-application.md
       - name: Web アプリ
@@ -71,26 +72,27 @@ items:
       - name: デーモンまたはサーバー アプリケーション
         href: service-to-service.md
     - name: Authentication
-      href: authentication-scenarios.md
       items:
-      - name: プロトコル
+      - name: 認証の基本
+        href: authentication-scenarios.md
+      - name: OAuth 2.0 と OpenID Connect プロトコル
         items:
-        - name: OAuth と OpenID Connect プロトコル
-          items:
-          - name: OAuth 2.0 の暗黙的な許可のフロー
-            href: v1-oauth2-implicit-grant-flow.md
-          - name: OAuth 2.0 認証コード付与
-            href: v1-protocols-oauth-code.md
-          - name: OAuth 2.0 の On-Behalf-Of フロー
-            href: v1-oauth2-on-behalf-of-flow.md
-          - name: OAuth 2.0 クライアント資格情報の付与
-            href: v1-oauth2-client-creds-grant-flow.md
-        - name: SAML 2.0
-          items:
-          - name: シングル サインオン
-            href: single-sign-on-saml-protocol.md
-          - name: サインアウト
-            href: single-sign-out-saml-protocol.md
+        - name: OpenID Connect
+          href: v1-protocols-openid-connect-code.md
+        - name: OAuth 2.0 の暗黙的な許可のフロー
+          href: v1-oauth2-implicit-grant-flow.md
+        - name: OAuth 2.0 認証コード付与
+          href: v1-protocols-oauth-code.md
+        - name: OAuth 2.0 の On-Behalf-Of フロー
+          href: v1-oauth2-on-behalf-of-flow.md
+        - name: OAuth 2.0 クライアント資格情報の付与
+          href: v1-oauth2-client-creds-grant-flow.md
+      - name: SAML 2.0 プロトコル
+        items:
+        - name: シングル サインオン
+          href: single-sign-on-saml-protocol.md
+        - name: サインアウト
+          href: single-sign-out-saml-protocol.md
         - name: WS-Federation
           items:
           - name: フェデレーション メタデータ
@@ -106,16 +108,18 @@ items:
       - name: SAML トークン
         href: reference-saml-tokens.md
     - name: アプリケーションの構成
-      href: app-objects-and-service-principals.md
       items:
+      - name: アプリケーションとサービス プリンシパル
+        href: app-objects-and-service-principals.md
       - name: アプリを Azure AD に追加する方法と理由
         href: active-directory-how-applications-are-added.md
       - name: 単一テナント アプリとマルチテナント アプリ
         href: single-and-multi-tenant-apps.md
     - name: アクセス許可と同意
       displayName: Scopes
-      href: v1-permissions-and-consent.md
       items:
+      - name: アクセス許可と同意の種類
+        href: v1-permissions-and-consent.md
       - name: 同意フレームワーク
         href: consent-framework.md
       - name: アプリケーションの同意エクスペリエンス
@@ -143,6 +147,8 @@ items:
           href: ../active-directory-enterprise-app-role-management.md
         - name: 要求のカスタマイズ
           href: active-directory-saml-claims-customization.md
+      - name: ADAL のエラー処理のベスト プラクティス
+        href: active-directory-devhowto-adal-error-handling.md
     - name: アプリケーションの構成
       items:
       - name: シングルテナント アプリをマルチテナント アプリに変換する
@@ -185,7 +191,7 @@ items:
       href: https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-scenarios-for-developers
   - name: 参照
     items:
-    - name: Azure AD Authentication ライブラリ
+    - name: 認証ライブラリ
       displayName: ADAL
       href: active-directory-authentication-libraries.md
     - name: Azure AD Graph API
@@ -276,20 +282,21 @@ items:
     - name: アプリケーションの種類
       href: v2-app-types.md
     - name: Authentication
-      href: authentication-scenarios.md
       items:
-      - name: プロトコル
+      - name: 認証の基本
+        href: authentication-scenarios.md
+      - name: OAuth 2.0 と OpenID Connect プロトコル
         items:
-        - name: OAuth と OpenID Connect プロトコル
-          items:
-          - name: OAuth 2.0 の暗黙的な許可のフロー
-            href: v2-oauth2-implicit-grant-flow.md
-          - name: OAuth 2.0 認証コード付与
-            href: v2-oauth2-auth-code-flow.md
-          - name: OAuth 2.0 の On-Behalf-Of フロー
-            href: v2-oauth2-on-behalf-of-flow.md
-          - name: OAuth 2.0 クライアント資格情報の付与
-            href: v2-oauth2-client-creds-grant-flow.md
+        - name: OpenID Connect
+          href: v2-protocols-oidc.md
+        - name: OAuth 2.0 の暗黙的な許可のフロー
+          href: v2-oauth2-implicit-grant-flow.md
+        - name: OAuth 2.0 認証コード付与
+          href: v2-oauth2-auth-code-flow.md
+        - name: OAuth 2.0 の On-Behalf-Of フロー
+          href: v2-oauth2-on-behalf-of-flow.md
+        - name: OAuth 2.0 クライアント資格情報の付与
+          href: v2-oauth2-client-creds-grant-flow.md
       - name: ID トークン
         href: id-tokens.md
       - name: アクセス トークン
@@ -297,14 +304,16 @@ items:
       - name: 証明書の資格情報
         href: active-directory-certificate-credentials.md
     - name: アプリケーションの構成
-      href: app-objects-and-service-principals.md
       items:
+      - name: アプリケーションとサービス プリンシパル
+        href: app-objects-and-service-principals.md
       - name: 単一テナント アプリとマルチテナント アプリ
         href: single-and-multi-tenant-apps.md
     - name: アクセス許可と同意
       displayName: Scopes
-      href: v2-permissions-and-consent.md
       items:
+      - name: アクセス許可と同意の種類
+        href: v2-permissions-and-consent.md
       - name: 同意フレームワーク
         href: consent-framework.md
       - name: アプリケーションの同意エクスペリエンス
@@ -347,7 +356,7 @@ items:
         href: vs-active-directory-error.md
   - name: 参照
     items:
-    - name: Microsoft Authentication Library
+    - name: 認証ライブラリ
       displayName: MSAL
       href: reference-v2-libraries.md
     - name: Microsoft Graph 内の Azure AD API
@@ -373,9 +382,9 @@ items:
     href: developer-support-help-options.md
   - name: Azure リソースのマネージド サービス ID
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 180b7962d6083887a25f582471b6b3e405f3f8f9
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 139d80313bb663a45e476e90812ce7772beccc19
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419673"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785003"

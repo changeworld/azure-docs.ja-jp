@@ -1,20 +1,21 @@
 ---
-title: ナレッジ ベースの更新 - Go のクイック スタート - Azure Cognitive Services | Microsoft Docs
+title: 'クイック スタート: Go によるナレッジ ベースの更新 - QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: QnA Maker に使用するナレッジ ベースを Go で更新する方法。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 06/18/2018
-ms.author: nolachar
-ms.openlocfilehash: 613bcd67f766497c9dca49f2ac2dd7a9f7b1cacf
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 03287a2c7a79f0a19d12d7246b2aba679f4ae1a9
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "43770777"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040161"
 ---
 # <a name="update-a-knowledge-base"></a>ナレッジ ベースの更新
 
@@ -190,7 +191,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>要求の状態を取得する
 
-[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、ナレッジ ベースの作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
+[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、サポート技術情報の作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

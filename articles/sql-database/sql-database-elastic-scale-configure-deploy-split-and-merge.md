@@ -2,19 +2,22 @@
 title: Split-Merge サービスのデプロイ | Microsoft Docs
 description: split-merge ツールを使用して、シャード化されたデータベース間でデータを移動します。
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 51a5f70cc56b2a4196ee7b151be0af3a9e16fc4f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: e277e2fa5ca7062cde1c0061e585dfb092337d4a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646934"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159348"
 ---
 # <a name="deploy-a-split-merge-service"></a>split-merge サービスのデプロイ
 split-merge ツールを使用すると、シャード化されたデータベース間でデータを移動できます。 「 [スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -32,10 +35,8 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 ## <a name="prerequisites"></a>前提条件
 1. Split-Merge ステータス データベースとして使用する Azure SQL DB を作成します。 [Azure ポータル](https://portal.azure.com)にアクセスします。 新しい **SQL Database**を作成します。 データベースに名前を付けて、新しい管理者とパスワードを作成します。 今後の使用のために、パスワードと名前を必ず記録しておいてください。
 2. Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。 ポータルの **[ファイアウォール設定]** で、**[Azure サービスへのアクセスを許可する]** 設定が **[オン]** に設定されていることを確認してください。 [保存] アイコンをクリックします。
-   
-   ![使用できるサービス][1]
-3. 診断の出力に使用する Azure Storage アカウントを作成します。 Azure Portal にアクセスします。 左側のバーで、**[リソースの作成]** をクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。
-4. Split-Merge サービスが含まれる Azure クラウド サービスを作成します。  Azure Portal にアクセスします。 左側のバーで、**[リソースの作成]** をクリックした後に、**[Compute]**、**[クラウド サービス]**、**[作成]** の順にクリックします。 
+3. 診断の出力用の Azure Storage アカウントを作成します。
+4. Split-Merge サービス用の Azure クラウド サービスを作成します。
 
 ## <a name="configure-your-split-merge-service"></a>Split-Merge サービスの構成
 ### <a name="split-merge-service-configuration"></a>Split-Merge サービスの構成
@@ -118,17 +119,14 @@ Web ロール:
 運用デプロイメントでは、CA、暗号化、サーバー証明書、クライアント証明書のそれぞれに異なる証明書を使用する必要があることに注意してください。 この詳細な手順については、 [セキュリティの構成](sql-database-elastic-scale-split-merge-security-configuration.md)に関するページを参照してください。
 
 ## <a name="deploy-your-service"></a>サービスのデプロイ
-1. [Azure ポータル](https://manage.windowsazure.com)にアクセスします。
-2. 左側の **[クラウド サービス]** タブをクリックし、先ほど作成したクラウド サービスを選択します。
-3. **[ダッシュボード]** をクリックします。
-4. ステージング環境を選択し、 **[新しいステージング環境のデプロイをアップロードします]** をクリックします。
-   
-   ![ステージング][3]
+1. [Azure portal](https://portal.azure.com) に移動します
+2. 前に作成したクラウド サービスを選択します。
+3. **[Overview]** をクリックします。
+4. ステージング環境を選択し、**[アップロード]** をクリックします。
 5. ダイアログ ボックスにデプロイ ラベルを入力します。 [パッケージ] と [構成] の両方で [ローカルから] をクリックし、**SplitMergeService.cspkg** ファイルと、先ほど構成した cscfg ファイルを選択します。
 6. **[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイします。]** チェック ボックスがオンになっていることを確認します。
 7. 右下のチェック マークをクリックしてデプロイを開始します。 完了には数分かかります。
 
-   ![アップロード][4]
 
 ## <a name="troubleshoot-the-deployment"></a>デプロイのトラブルシューティング
 Web ロールのオンライン化に失敗した場合は、セキュリティの構成に問題があると考えられます。 SSL が前の説明どおりに構成されていることをご確認ください。
@@ -144,11 +142,11 @@ worker ロールのオンライン化に失敗した場合に最も考えられ�
    ```
 
 * サーバー名が **https://** で始まっていないことを確認します。
-* Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。 これを行うには、https://manage.windowsazure.com を開いて左側の [SQL Database] をクリックし、上部の [サーバー] をクリックしてから使用するサーバーを選択します。 上部の **[構成]** をクリックし、**[Azure サービス]** の値が [はい] に設定されていることを確認します (この記事の冒頭にある前提条件をご覧ください)。
+* Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。 これを行うには、ポータルでご自身のデータベースを開き、**[Azure サービスへのアクセスを許可する]** 設定が [**オン****] に設定されていることを確認してください。
 
 ## <a name="test-the-service-deployment"></a>サービス デプロイのテスト
 ### <a name="connect-with-a-web-browser"></a>Web ブラウザーへの接続
-Split-Merge サービスの Web エンドポイントを決定します。 エンドポイントを見つけるには、Azure クラシック ポータルでクラウド サービスの **[ダッシュボード]** に移動し、右側の **[サイトの URL]** を検索します。 既定のセキュリティ設定では HTTP エンドポイントは無効であるため、**http://** を **https://** に置き換えます。 この URL のページをブラウザーに読み込みます。
+Split-Merge サービスの Web エンドポイントを決定します。 これをポータルで見つけるには、クラウド サービスの **[概要]** に移動し、右側の **[サイトの URL]** を検索します。 既定のセキュリティ設定では HTTP エンドポイントは無効であるため、**http://** を **https://** に置き換えます。 この URL のページをブラウザーに読み込みます。
 
 ### <a name="test-with-powershell-scripts"></a>PowerShell スクリプトでのテスト
 付属の PowerShell スクリプト サンプルを実行して、デプロイメントと環境をテストできます。

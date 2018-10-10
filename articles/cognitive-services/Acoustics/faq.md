@@ -9,18 +9,18 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 7e27b5117f5f0ea98916ecfefcbb0dac9323e1d9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: a71e867bd23cf64b2ac7fc8cd1c54c55d92ce924
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181384"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431790"
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ## <a name="what-is-project-acoustics"></a>Project Acoustics とは
 
-Project Acoustics Unity プラグインは、実行時よりも前に音波の挙動を計算する音響システムであり、静的ライティングに似ています。 波動物理学の複雑な計算が設計時にクラウドで実行されるため、実行時の CPU コストを低減します。  
+Project Acoustics Unity プラグインは、実行時よりも前に音波の挙動を計算する音響システムであり、静的ライティングに似ています。 複雑な波動物理学計算がクラウドで実行されるため、実行時の CPU コストを低減します。  
 
 ## <a name="where-can-i-download-the-plugin"></a>どこでプラグインをダウンロードできますか?
 
@@ -28,7 +28,7 @@ Project Acoustics Unity プラグインは、実行時よりも前に音波の�
 
 ## <a name="is-azure-used-at-runtime"></a>Azure は実行時に使用されますか?
 
-いいえ、クラウド統合は設計時の事前計算段階の間にのみ使用されます。
+いいえ、クラウド統合はシーン設定の一部としての事前計算段階の間にのみ使用されます。
  
 ## <a name="what-is-simulation-input"></a>シミュレーション入力とは何ですか? 
 

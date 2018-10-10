@@ -1,23 +1,23 @@
 ---
-title: Visual Search SDK の Python 向けクイック スタート | Microsoft Docs
-description: Visual Search SDK の Python コンソール アプリケーションの設定。
+title: 'クイック スタート: Bing Visual Search SDK (Python)'
 titleSuffix: Azure Cognitive Services
+description: Visual Search SDK の Python コンソール アプリケーションの設定。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: bing-web-search
-ms.topic: article
+ms.component: bing-visual-search
+ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: f7a1f275f9059abdceaef577fb5ca722c9951366
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 269eaccbf834646b540123dfeeeec7c569b8ced4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939416"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222643"
 ---
-# <a name="visual-search-sdk-python-quickstart"></a>Visual Search SDK の Python 向けクイック スタート
+# <a name="quickstart-bing-visual-search-sdk-python"></a>クイック スタート: Bing Visual Search SDK Python
 
 Bing Visual Search SDK では、Web 要求と結果解析に REST API の機能を使用します。
 [Python 向けの Visual Search SDK のサンプル ソース コード](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/visual_search_samples.py)は、GitHub で公開しています。

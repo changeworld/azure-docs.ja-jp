@@ -3,20 +3,19 @@ title: Azure Functions を使用してサーバーレス API を作成する | M
 description: Azure Functions を使用してサーバーレス API を作成する方法
 services: functions
 author: mattchenderson
-manager: cfowler
-ms.service: functions
-ms.tgt_pltfrm: na
+manager: jeconnoc
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 7c3933210c01c81077b594abb8c3183d6e3c58a0
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9a35c1205c0b564c8d0db1fbd0535d41bb9c84a0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "24811602"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989908"
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Azure Functions を使用したサーバーレス API の作成
 
@@ -30,7 +29,7 @@ ms.locfileid: "24811602"
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal を開きます。 そのためには、Azure アカウントで [https://portal.azure.com](https://portal.azure.com) にサインインします。
+Azure Portal を開きます。 これを行うには、Azure アカウントで [https://portal.azure.com](https://portal.azure.com) にサインインします。
 
 ## <a name="customize-your-http-function"></a>HTTP 関数のカスタマイズ
 
@@ -47,12 +46,12 @@ Azure Portal を開きます。 そのためには、Azure アカウントで [h
     | [許可されている HTTP メソッド] | 選択したメソッド | この関数の呼び出しに使用する HTTP メソッドを決定します |
     | [選択した HTTP メソッド] | GET | この関数の呼び出しには、選択した HTTP メソッドのみが使用できます |
     | [ルート テンプレート] | /hello | この関数の呼び出しに使用するルートを決定します |
-    | 承認レベル | 匿名 | 省略可能: API キーを使用せずに関数にアクセスできるようにします |
+    | 承認レベル | Anonymous | 省略可能: API キーを使用せずに関数にアクセスできるようにします |
 
     > [!NOTE] 
     > ルート テンプレートには `/api` ベース パス プレフィックスを含めないよう注意してください。このパス プレフィックスはグローバル設定で処理します。
 
-1. **[保存]** をクリックします。
+1. **[Save]** をクリックします。
 
 HTTP 関数をカスタマイズする方法の詳細については、「[Azure Functions における HTTP と Webhook のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#customizing-the-http-endpoint)」をご覧ください。
 
@@ -104,7 +103,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 
     | フィールド | 値の例 | 説明 |
     |---|---|---|
-    | 名前 | HelloProxy | 管理にのみ使用するフレンドリ名です |
+    | Name | HelloProxy | 管理にのみ使用するフレンドリ名です |
     | [ルート テンプレート] | /api/hello | このプロキシの呼び出しに使用するルートを決定します |
     | [バックエンド URL] | https://%HELLO_HOST%/api/hello | 要求の送信先となるエンドポイントを指定します |
     
@@ -177,17 +176,17 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 }
 ```
 
-backendUri プロパティを変更することなく、"GetUserByName" という新しいプロキシを追加しています。 別のリソースを呼び出す代わりに、応答の上書きによって Proxies からの既定の応答を変更します。 要求と応答の上書きは、バックエンド URL と併用することもできます。 これは、レガシ システムにプロキシする際に特に役立ちます。その際は、ヘッダー、クエリ パラメーターなどを変更する必要がある場合があります。要求と応答の上書きの詳細については、[Proxies での要求と応答の変更](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses)に関する記事をご覧ください。
+backendUri プロパティを変更することなく、"GetUserByName" という新しいプロキシを追加しています。 別のリソースを呼び出す代わりに、応答のオーバーライドによって Proxies からの既定の応答を変更します。 要求と応答のオーバーライドは、バックエンド URL と併用することもできます。 これは、レガシ システムにプロキシする際に特に役立ちます。その際は、ヘッダー、クエリ パラメーターなどを変更する必要がある場合があります。要求と応答のオーバーライドの詳細については、[Proxies での要求と応答の変更](https://docs.microsoft.com/azure/azure-functions/functions-proxies#a-namemodify-requests-responsesamodifying-requests-and-responses)に関する記事をご覧ください。
 
 ブラウザーまたはお使いの REST クライアントを使用して `<YourProxyApp>.azurewebsites.net/api/users/{username}` エンドポイントを呼び出し、モック API をテストします。 _{username}_ をユーザー名を表す文字列値に必ず置き換えてください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Functions の API を作成しカスタマイズする方法について説明します。 また、モックなどの複数の API をまとめて 1 つの API サーフェスにする方法についても説明します。 これらの手法を使用することで、Azure Functions のサーバーレス コンピューティング モデルで API を実行しながら、複雑な API も構築できます。
 
 次のリファレンスは、API の開発をさらに進める際に役立ちます。
 
-- [Azure Functions における HTTP と Webhook のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
+- [Azure Functions での HTTP のバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook)
 - [Azure Functions プロキシの操作]
 - [Azure Functions API (プレビュー) のドキュメント](https://docs.microsoft.com/azure/azure-functions/functions-api-definition-getting-started)
 

@@ -1,21 +1,9 @@
+<!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->
 ---
-title: Face API サービスの API リファレンス | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: API リファレンスでは、人の管理、LargePersonGroup/PersonGroup の管理、LargeFaceList/FaceList の管理および Face アルゴリズム API に関する情報を説明します。
-services: cognitive-services
-author: SteveMSFT
-manager: corncar
-ms.service: cognitive-services
-ms.component: face-api
-ms.topic: article
-ms.date: 03/01/2018
-ms.author: sbowles
-ms.openlocfilehash: 94c03d4f07a18c0c63d76965b1b31dce66388843
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378077"
+タイトル: API リファレンス - Face API titleSuffix: Azure Cognitive Services の説明: API リファレンスでは、人の管理、LargePersonGroup/PersonGroup の管理、LargeFaceList/FaceList の管理および Face アルゴリズム API に関する情報を提供します。
+サービス: cognitive-services 作成者: SteveMSFT マネージャー: cgronlun
+
+ms.service: cognitive-services ms.component: face-api ms.topic: reference ms.date: 03/01/2018 ms.author: sbowles
 ---
 # <a name="api-reference"></a>API リファレンス
 

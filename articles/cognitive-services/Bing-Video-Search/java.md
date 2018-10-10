@@ -1,22 +1,23 @@
 ---
-title: Azure Cognitive Services、Bing Video Search API の Java のクイック スタート | Microsoft Docs
-description: Azure 上で Microsoft Cognitive Services の Bing Video Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing Video Search API (Java)'
+titlesuffix: Azure Cognitive Services
+description: Bing Video Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: db9bc353c86565956881c90ce3a3b6275e1b8771
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8ec5aa9e832a24fcd3b029727217bffb3b4d94e0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376949"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223238"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-java"></a>Java での Bing Video Search API のクイック スタート
+# <a name="quickstart-bing-video-search-api-with-java"></a>クイック スタート: Java での Bing Video Search API
 
 この記事では、Azure 上の Microsoft Cognitive Services の一部である Bing Search API の使用方法を示します。 この記事では Java を使用しますが、この API は HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。 
 
@@ -26,16 +27,16 @@ API の技術的な詳細については、[API リファレンス](https://docs
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search API** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search APIs** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
 
 ## <a name="bing-video-search"></a>Bing Video Search
 
 [Bing Video Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference) は、Bing 検索エンジンからビデオの結果を返します。
 
 1. [gson ライブラリ](https://github.com/google/gson)をダウンロードまたはインストールします。
-2. 適当な IDE またはエディターで新しい Java プロジェクトを作成します。
+2. 普段使用している IDE またはエディターで新しい Java プロジェクトを作成します。
 3. 次に示すコードを追加します。
-4. `subscriptionKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+4. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 5. プログラムを実行します。
 
 ```java
@@ -148,7 +149,7 @@ class SearchResults{
 
 **応答**
 
-次の例に示すように、正常な応答が JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {

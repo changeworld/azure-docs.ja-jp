@@ -1,22 +1,23 @@
 ---
-title: LUIS での作成済みエンティティ | Microsoft Docs
-description: この記事では、Language Understanding Intelligent Services (LUIS) に含まれる作成済みエンティティの一覧を示します。
+title: Language Understanding (LUIS) の作成済みエンティティ
+titleSuffix: Azure Cognitive Services
+description: LUIS には、日付、時刻、数字、測定値、通貨など、一般的な情報の種類を認識するための作成済みエンティティのセットが含まれています。 作成済みエンティティのサポートは、LUIS アプリのカルチャによって異なります。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 95ff173a843e7ad18ec396a1130b2e2b4035f656
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: e3bd203c9ab1d6daaae04866cf195b3ca28c3078
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248239"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041559"
 ---
-# <a name="prebuilt-entities"></a>作成済みエンティティ
+# <a name="prebuilt-entities-to-recognize-common-data-types"></a>一般的なデータ型を認識するための作成済みエンティティ
 
 LUIS には、日付、時刻、数字、測定値、通貨など、一般的な情報の種類を認識するための作成済みエンティティのセットが含まれています。 作成済みエンティティのサポートは、LUIS アプリのカルチャによって異なります。 カルチャによるサポートを含む、LUIS がサポートする作成済みエンティティの完全な一覧については、[作成済みエンティティのリファレンス](./luis-reference-prebuilt-entities.md)に関するページをご覧ください。
 
@@ -28,7 +29,6 @@ LUIS には、日付、時刻、数字、測定値、通貨など、一般的な
 1. **[マイ アプリ]** ページで名前をクリックしてアプリを開き、左側で **[エンティティ]** をクリックします。 
 2. **[エンティティ]** ページで **[Manage prebuilt entities]\(作成済みエンティティの管理\)** をクリックします。
 
-    ![[エンティティ] ページ - [Manage prebuilt entities]\(作成済みエンティティの管理\)](./media/luis-use-prebuilt-entity/add-prebuilt-entity-button.png)
 3. **[Add prebuilt entities]\(作成済みエンティティの追加\)** ダイアログ ボックスで、追加する作成済みエンティティ (たとえば、"datetimeV2") をクリックします。 その後、 **[保存]** をクリックします。
 
     ![[Add prebuilt entities]\(作成済みエンティティの追加\) ダイアログ ボックス](./media/luis-use-prebuilt-entity/add-prebuilt-entity-dialog.png)
@@ -73,7 +73,7 @@ LUIS は、非標準形式ではない数字をインテリジェントに認識
 2. **[アプリの発行]** ページでエンドポイント URL をクリックして、LUIS エンドポイントを Web ブラウザーで開きます。 
 3. 日付範囲が含まれている発話を URL に追加します。 たとえば、「`book a flight tomorrow`」などと入力します。LUIS が `tomorrow` を `builtin.datetimeV2.date` エンティティとして識別し、その値を明日の日付と識別することを、`resolution` フィールドで確認します。 
 
-次の例では、今日の日付が 2017 年 10 月 31 日である場合に、LUIS からの JSON 応答がどのようになるかを示します。
+次の例は、今日の日付が 2017 年 10 月 31 日である場合に、LUIS からの JSON 応答がどのようになるかを示しています。
 
 ```json
 {

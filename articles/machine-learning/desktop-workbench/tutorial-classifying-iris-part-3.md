@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning サービスのモデル デプロイ チュートリアル
-description: このチュートリアルでは、Azure Machine Learning サービスの使い方をエンド ツー エンドで詳しく説明します。 これは 3 部構成の第 3 部で、デプロイ モデルについて取り上げています。
+title: Azure Machine Learning service のモデル デプロイ チュートリアル
+description: このチュートリアルでは、Azure Machine Learning service の使い方をエンド ツー エンドで詳しく説明します。 これは 3 部構成の第 3 部で、デプロイ モデルについて取り上げています。
 services: machine-learning
 author: aashishb
 ms.author: aashishb
@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/13/2018
-ms.openlocfilehash: de0c93ef5b907b56e6ad66a04bb728b5b9aabb9a
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2eb6eb5090b0a68a189e2d4f1148d3238bc3ee0d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41919598"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946614"
 ---
 # <a name="tutorial-3-classify-iris-deploy-a-model"></a>チュートリアル 3: あやめの分類: モデルをデプロイする
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Azure Machine Learning (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
 
 このチュートリアルは、**3 部構成のシリーズのパート 3** になります。 チュートリアルのこのパートでは、Machine Learning (プレビュー) を使って次の作業を行います。
@@ -38,7 +42,7 @@ Azure Machine Learning (プレビュー) は、データ サイエンスと高�
 
 このチュートリアルを完了するには、次のものが必要です。
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
-- 実験アカウントと Azure Machine Learning Workbench (こちらの[クイック スタート](../service/quickstart-installation.md)の説明に従ってインストールされていること)
+- 実験アカウントと Azure Machine Learning Workbench (こちらの[クイック スタート](quickstart-installation.md)の説明に従ってインストールされていること)
 - [チュートリアルのパート 2](tutorial-classifying-iris-part-2.md) で得られた分類モデル
 - Docker エンジン (ローカルにインストールされ、実行されていること)
 
@@ -224,9 +228,9 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 1. リアルタイム Web サービスを作成するには、次のコマンドを使用します。
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s ./output/service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
    ```
-   このコマンドにより、後で使用できる Web サービス ID が生成されます。
+   このコマンドにより、後で使用できる Web サービス ID が生成されます。 ノートブックの場合は、出力ディレクトリを省略します。
 
    **az ml service create realtime** コマンドでは、次のスイッチを使用します。
 
@@ -276,9 +280,9 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    マニフェストを作成するには、前の手順で出力されたモデル ID を指定して次のコマンドを実行します。
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s service_schema.json -c aml_config\conda_dependencies.yml
+   az ml manifest create --manifest-name <new manifest name> -f score_iris.py -r python -i <model ID> -s ./output/service_schema.json -c aml_config\conda_dependencies.yml
    ```
-   このコマンドにより、マニフェスト ID が生成されます。
+   このコマンドにより、マニフェスト ID が生成されます。  ノートブックの場合は、出力ディレクトリを省略します。
 
 1. Docker イメージを作成します。
 

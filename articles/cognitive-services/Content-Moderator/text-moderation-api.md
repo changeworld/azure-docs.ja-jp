@@ -1,20 +1,20 @@
 ---
-title: Azure Content Moderator - テキストのモデレート | Microsoft Docs
+title: テキストのモデレート - Content Moderator
 description: 混入が考えられる不要なテキスト、PII、および条件のカスタム一覧に対して、テキストのモデレートを使用します。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: 6924807a64cec074d9688eaad158bb9bb638f6bb
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 4c4a0ccfc93a6a48a0178183b94cc03cb576930a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085761"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226570"
 ---
 # <a name="text-moderation"></a>テキストのモデレート
 
@@ -72,7 +72,7 @@ JSON の次の抽出箇所は、出力例を示しています。
 - `Category1` は、特定の状況で性的に露骨か、または成人向けであると見なされる可能性のある言語の潜在的な存在を示します。
 - `Category2` は、特定の状況で性的な連想を起こさせるか、または成熟した表現であると見なされる可能性のある言語の潜在的な存在を示します。
 - `Category3` は、特定の状況で不快であると見なされる可能性のある言語の潜在的な存在を示します。
-- `Score` は 0 から 1 の間です。 このモデルでは、スコアが高いほど、そのカテゴリに該当する可能性が高いと予測しています。 このプレビューは、人がコーディングした結果ではなく、統計モデルに依存しています。 独自のコンテンツを使用してテストを行い、実際の要件に合うように各カテゴリをどのように設定するかを決めることをお勧めします。
+- `Score` は 0 から 1 の間です。 このモデルでは、スコアが高いほど、そのカテゴリに該当する可能性が高いと予測しています。 この機能は、人がコーディングした結果ではなく、統計モデルに依存しています。 独自のコンテンツを使用してテストを行い、実際の要件に合うように各カテゴリをどのように設定するかを決めることをお勧めします。
 - `ReviewRecommended` は、内部スコアのしきい値に応じて true または false のどちらかになります。 ユーザーは、この値を使用するか、独自のコンテンツ ポリシーに基づいてカスタムしきい値を決めるかを見極める必要があります。
 
 ## <a name="personally-identifiable-information-pii"></a>個人を特定できる情報 (PII)

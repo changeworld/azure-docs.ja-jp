@@ -1,22 +1,23 @@
 ---
-title: Bing Video Search 単一ページ Web アプリ (ソース コード) | Microsoft Docs
+title: 'チュートリアル: シングルページ Web アプリを構築する - Bing Video Search'
+titlesuffix: Azure Cognitive Services
 description: 単一ページ Web アプリケーションで Bing Video Search API を使用する方法を示すチュートリアルのソース コードです。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: v-gedod
-ms.openlocfilehash: bed17c1df2b7c8dff9f874e43be8d67900fd7836
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: rosh
+ms.openlocfilehash: b0856be88382e1bb7a4cc65f5fd05910b814e152
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39112462"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223289"
 ---
-# <a name="tutorial-single-page-video-search-app"></a>チュートリアル: 単一ページ Video Search アプリ
+# <a name="tutorial-single-page-bing-video-search-app"></a>チュートリアル: 単一ページ Bing Video Search アプリ
 
 これは、Bing Video Search の[単一ページ アプリのチュートリアル](tutorial-bing-video-search-single-page-app.md)で説明した完全なソース コードです。 アプリを実行するには、メモ帳または別のテキスト エディターにソース コードをコピーし、`bing.html` として保存します。 保存したファイルを、Microsoft Edge やその他一般的なブラウザーで開きます。
 

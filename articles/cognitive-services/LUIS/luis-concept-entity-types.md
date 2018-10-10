@@ -1,20 +1,21 @@
 ---
-title: Azure での LUIS アプリのエンティティの種類について | Microsoft Docs
+title: LUIS アプリでのエンティティ型 - Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Language Understanding Intelligent Service (LUIS) アプリにエンティティ (アプリケーションのドメイン内のキー データ) を追加します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b0b5852a223a77e33a288bb8061c1ce374018ec1
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 3ed10ac428b7ce2e528ccf46e34c1d394523bdec
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282281"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042450"
 ---
 # <a name="entities-in-luis"></a>LUIS のエンティティ
 
@@ -45,10 +46,10 @@ ms.locfileid: "39282281"
 
 次の発話で、単語 `fair` は、同形異義語です。 スペルは同じですが、意味が異なります。
 
-```
-What kind of county fairs are happening in the Seattle area this summer?
-Is the current rating for the Seattle review fair?
-```
+|発話|
+|--|
+|今年の夏、シアトル地区でどのような種類のカウンティー フェアが開催されますか?|
+|シアトル レビューの現在の評価は公正ですか?|
 
 イベント エンティティですべてのイベント データを検索する場合は、2 つ目ではなく最初の発話の単語 `fair` にラベルを付けます。
 
@@ -97,7 +98,7 @@ LUIS には、事前構築済みのエンティティ、機械学習済みのカ
 ## <a name="composite-vs-hierarchical-entities"></a>複合エンティティと階層構造エンティティの比較
 複合エンティティと階層構造エンティティは、どちらも親子関係を持ち、機械学習されます。 機械学習により、LUIS では、異なるコンテキスト (単語の配置) に基づいてエンティティを理解できます。 複合エンティティでは、子としてさまざまな種類のエンティティを使用できるため、より柔軟です。 階層構造エンティティの子は、シンプルなエンティティのみです。 
 
-|Type|目的|例|
+|type|目的|例|
 |--|--|--|
 |階層構造|シンプルなエンティティの親子|Location.Origin=New York<br>Location.Destination=London|
 |複合|親子エンティティ: 事前構築済み、リスト、シンプル、階層構造| number=3<br>list=first class<br>prebuilt.datetimeV2=March 5|

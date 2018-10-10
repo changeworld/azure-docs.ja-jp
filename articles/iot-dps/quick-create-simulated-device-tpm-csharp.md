@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 055a1f09cf30665321d570978d800e1fbb3c0cf7
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: fd16defdcd3c3cb0c78994e9259b55f3d687163b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42023973"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032650"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の C# デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
 
@@ -66,9 +66,9 @@ ms.locfileid: "42023973"
     ![コマンド ウィンドウの出力](./media/quick-create-simulated-device-tpm-csharp/output1.png) 
 
 
-4. Azure Portal の Device Provisioning Service の概要ブレードで、**[登録を管理します]** を選択します。 **[個々の登録]** タブを選択し、上部にある **[追加]** ボタンをクリックします。 
+4. Azure Portal の Device Provisioning Service の概要ブレードで、**[登録を管理します]** を選択します。 **[個別登録]** タブを選択し、上部にある **[個別登録の追加]** ボタンをクリックします。 
 
-5. **[登録リストのエントリを追加する]** に次の情報を入力します。
+5. **[Add Enrollment] (登録の追加)** で、次の情報を入力します。
     - ID 構成証明の "*メカニズム*" として **[TPM]** を選択します。
     - TPM デバイスの "*登録 ID*" と "*保証キー*" を入力します。 
     - 必要に応じて、プロビジョニング サービスにリンクされた IoT ハブを選択します。
@@ -76,7 +76,7 @@ ms.locfileid: "42023973"
     - **[Initial device twin state]\(初期のデバイス ツインの状態\)** をデバイスの目的の初期構成で更新します。
     - 作業が完了したら、**[保存]** をクリックします。 
 
-    ![ポータルのブレードにデバイス登録情報を入力します。](./media/quick-create-simulated-device-tpm-csharp/enter-device-enrollment.png)  
+    ![ポータルのブレードにデバイス登録情報を入力します。](./media/quick-create-simulated-device-tpm-csharp/enterdevice-enrollment.png)  
 
    登録に成功すると、*[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
 
@@ -84,7 +84,7 @@ ms.locfileid: "42023973"
 
 1. デバイスがプロビジョニングされたことを確認します。 プロビジョニング サービスにリンクされた IoT ハブに対してシミュレートされたデバイスが正常にプロビジョニングされると、ハブの **[IoT デバイス]** ブレードにデバイス ID が表示されます。 
 
-    ![IoT ハブに登録されたデバイス](./media/quick-create-simulated-device-tpm-csharp/hub-registration.png) 
+    ![IoT ハブに登録されたデバイス](./media/quick-create-simulated-device-tpm-csharp/hub_registration.png) 
 
     *[Initial device twin state]\(初期のデバイス ツインの状態\)* をデバイスの登録エントリの既定値から変更した場合、デバイスはハブから目的のツインの状態をプルし、それに従って動作することができます。 詳細については、「[IoT Hub のデバイス ツインの理解と使用](../iot-hub/iot-hub-devguide-device-twins.md)」を参照してください。
 

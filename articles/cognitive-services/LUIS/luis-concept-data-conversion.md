@@ -1,23 +1,24 @@
 ---
-title: LUIS におけるデータ変換の概念の概要 - Azure | Microsoft Docs
+title: LUIS でのデータ変換の概念 - Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) の予測の前に、発話の変更方法について説明します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 05a02191af171936dd9f5c4bf469b9c84aa144a3
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3862a0dbd94b5764cf506b05201d8dc60430fc7d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223703"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038971"
 ---
 # <a name="data-conversion-concepts-in-luis"></a>LUIS におけるデータ変換の概念
-LUIS には、予測の前に、音声の発話からテキストの発話へと変換する機能があります。 
+LUIS では、Cognitive Services の音声サービスを使用して、予測の前に音声の発話からテキストの発話に発話を変換します。 
 
 ## <a name="speech-to-intent-conversion-concepts"></a>音声から意図への変換の概念
 LUIS の音声テキスト変換を使用すると、音声の発話をエンドポイントに送信し、LUIS の予測応答を受け取ることができます。 このプロセスは、[音声](https://docs.microsoft.com/azure/cognitive-services/Speech)サービスと LUIS の統合です。 

@@ -3,7 +3,7 @@ title: Azure 仮想マシンの拡張機能とその機能 | Microsoft Docs
 description: Azure VM 拡張機能と、それらを Azure 仮想マシンで使用する方法を説明します
 services: virtual-machines-linux
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: ec201f7f82aea97b9927b85a6b185fad51f6081d
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 38f885cc230df6e0edb1e5b5254faf0cd519847a
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412602"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451445"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Azure 仮想マシンの拡張機能とその機能
 Azure 仮想マシン (VM) の拡張機能は、Azure VM でデプロイ後の構成と自動化のタスクを実行する小さなアプリケーションです。ユーザーは既存のイメージを使用でき、後でそれをデプロイの一部としてカスタマイズできるため、カスタムのイメージのビルド作業をなくすことができます。
@@ -41,7 +41,7 @@ Azure プラットフォームでは、VM の構成、監視、セキュリテ�
 使用可能な拡張機能は、Portal の VM ブレードの拡張機能で確認できますが、ここには一部しか表示されません。完全な一覧は、CLI ツールを使用して確認できます。[Linux 用の VM 拡張機能の検出](features-linux.md)および [Windows 用の VM 拡張機能の検出](features-windows.md)に関するページをご覧ください。
 
 ## <a name="how-can-i-install-an-extension"></a>拡張機能をインストールする方法
-Azure VM 拡張機能は、Azure CLI 2.0、Azure PowerShell、Azure Resource Manager テンプレート、および Azure Portal のいずれかを使用して管理できます。 拡張機能を試してみるには、Azure Portal に移動し、カスタム スクリプト拡張機能を選択し、コマンド/スクリプトを渡して拡張機能を実行します。
+Azure VM 拡張機能は、Azure CLI、Azure PowerShell、Azure Resource Manager テンプレート、および Azure portal のいずれかを使用して管理できます。 拡張機能を試してみるには、Azure Portal に移動し、カスタム スクリプト拡張機能を選択し、コマンド/スクリプトを渡して拡張機能を実行します。
 
 CLI または Resource Manager テンプレートで Portal に追加したものと同じ拡張機能が必要な場合は、[Windows カスタム スクリプト拡張機能](custom-script-windows.md)および [Linux カスタム スクリプト拡張機能](custom-script-linux.md)などの別の拡張機能のドキュメントをご覧ください。
 

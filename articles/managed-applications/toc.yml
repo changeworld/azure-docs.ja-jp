@@ -7,14 +7,16 @@ items:
     href: overview.md
 - name: クイック スタート
   items:
-  - name: マネージド アプリケーションを作成する
-    href: managed-apps-quickstart-cli.md
+  - name: アプリケーション定義の発行
+    href: publish-managed-app-definition-quickstart.md
+  - name: サービス カタログ アプリのデプロイ
+    href: deploy-service-catalog-quickstart.md
   expanded: true
 - name: チュートリアル
   items:
-  - name: マネージド アプリケーション ファイルを作成する
+  - name: 定義ファイルの作成
     href: publish-service-catalog-app.md
-  - name: マーケットプレース アプリケーションの作成
+  - name: マーケットプレース アプリケーションの発行
     href: publish-marketplace-app.md
 - name: サンプル
   items:
@@ -26,16 +28,22 @@ items:
     href: sample-projects.md
 - name: ハウツー ガイド
   items:
-  - name: ポータルのインターフェイスを作成する
-    href: create-uidefinition-overview.md
-  - name: ポータルのインターフェイスをテストする
-    href: test-createuidefinition.md
-  - name: マネージド リソースの更新
-    href: update-managed-resources.md
-  - name: ポータルを使用して発行する
-    href: publish-portal.md
-  - name: Key Vault のシークレットを使用する
-    href: key-vault-access.md
+  - name: 発行元
+    items:
+    - name: ポータルのインターフェイスを作成する
+      href: create-uidefinition-overview.md
+    - name: ポータルのインターフェイスをテストする
+      href: test-createuidefinition.md
+    - name: マネージド リソースの更新
+      href: update-managed-resources.md
+    - name: ポータルを使用したアプリケーション定義の発行
+      href: publish-portal.md
+    - name: Key Vault のシークレットを使用する
+      href: key-vault-access.md
+  - name: コンシューマー
+    items:
+    - name: マネージド アプリケーションの監視
+      href: monitor-managed-application-portal.md
 - name: リファレンス
   items:
   - name: Azure CLI
@@ -97,9 +105,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: スタック オーバーフロー
     href: http://stackoverflow.com/questions/tagged/azure-managedapps
-ms.openlocfilehash: 03a385046c0f30932e6ba99fdce46fbdc9849eb6
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: b74cfed4f0208a1b70980d34284fd7f9ff207ca4
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365300"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801559"

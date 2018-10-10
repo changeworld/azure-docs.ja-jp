@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/7/2018
-ms.openlocfilehash: 56f1d26d5d687982366b9a8fb20235ff338a9573
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ROBOTS: NOINDEX
+ms.openlocfilehash: 272b8250a80fee42780311dec92f6d47c221c160
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722985"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990163"
 ---
 # <a name="tutorial-1-classify-iris---preparing-the-data"></a>チュートリアル 1: あやめの分類 - データを準備する
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンドツーエンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
 
@@ -32,6 +35,8 @@ Azure Machine Learning サービス (プレビュー) は、データ サイエ�
 
 このチュートリアルでは、経時的な変化を伴わない[あやめデータ セット](https://en.wikipedia.org/wiki/Iris_flower_data_set)を使用します。 
 
+[!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -40,11 +45,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - Azure Machine Learning 実験アカウント
 - Azure Machine Learning Workbench のインストール
 
-これらの前提条件をまだ満たしていない場合は、[インストールと基本操作のクイックスタート](../service/quickstart-installation.md)の手順に従ってアカウントを設定し、Azure Machine Learning Workbench アプリケーションをインストールしてください。 
+これらの前提条件をまだ満たしていない場合は、[インストールと基本操作のクイックスタート](quickstart-installation.md)の手順に従ってアカウントを設定し、Azure Machine Learning Workbench アプリケーションをインストールしてください。 
 
 ## <a name="create-a-new-project-in-workbench"></a>Workbench で新しいプロジェクトを作成する
 
-[インストールと基本操作のクイック スタート](../service/quickstart-installation.md)の記事の手順を終え、このプロジェクトが既に存在する場合は、次のセクションにスキップしてかまいません。
+[インストールと基本操作のクイック スタート](quickstart-installation.md)の記事の手順を終え、このプロジェクトが既に存在する場合は、次のセクションにスキップしてかまいません。
 
 1. Azure Machine Learning Workbench アプリを開き、必要に応じてログインします。 
    
@@ -62,7 +67,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    プロジェクト名 | myIris |アカウントを識別する一意の名前を入力します。 独自の名前を使用できるほか、実験を識別するうえで最適な部門またはプロジェクトの名前を使用できます。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 
    プロジェクト ディレクトリ | c:\Temp\ | プロジェクトの作成先となるディレクトリを指定します。
    プロジェクトの説明 | "_空白のまま_" | 省略可能なフィールド。プロジェクトの説明を入力することができます。
-   Visualstudio.com の GIT リポジトリの URL |"_空白のまま_" | 省略可能なフィールド。 プロジェクトは、ソース管理とコラボレーションのために、Visual Studio Team Services で Git リポジトリに関連付けることができます。 [セットアップ方法](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)に関するページを参照してください。 
+   Visualstudio.com の GIT リポジトリの URL |"_空白のまま_" | 省略可能なフィールド。 ソース管理とコラボレーションのために、Azure DevOps でプロジェクトを Git リポジトリに関連付けることができます。 [セットアップ方法](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)に関するページを参照してください。 
    選択したワークスペース | IrisGarden (存在する場合) | Azure Portal で実験アカウント用に作成したワークスペースを選択します。 <br/>このクイック スタートの手順に従っている場合、ワークスペースの名前は IrisGarden です。 それ以外の場合は、実験アカウントの作成時に作ったワークスペースを選択してください。それ以外に使いたいワークスペースがあれば、そちらを選んでもかまいません。
    プロジェクト テンプレート | あやめの分類 | テンプレートには、製品に習熟するうえで役立つスクリプトとデータが含まれています。 このクイック スタートに必要なスクリプトとデータ、そしてこのドキュメント サイトに存在する他のチュートリアルで使用するスクリプトとデータも、このテンプレートに含まれています。 
 

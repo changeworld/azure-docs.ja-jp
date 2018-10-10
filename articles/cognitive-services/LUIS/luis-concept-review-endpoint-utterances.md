@@ -1,23 +1,24 @@
 ---
-title: Language Understanding (LUIS) でアクティブ ラーニングを使用するためのエンドポイント発話のレビュー | Microsoft Docs
-description: "\"エンドポイント発話のレビュー\" という名前のアクティブ ラーニング機能を使用して、パフォーマンス予測を向上させる速度を上げます。"
+title: Language Understanding (LUIS) でアクティブ ラーニングを使用するためのエンドポイント発話のレビュー
+titleSuffix: Azure Cognitive Services
+description: アクティブ ラーニングは、3 つの予測精度の改善戦略の 1 つで、最も簡単に実装できます。 アクティブ ラーニングによって、エンドポイント発話の意図とエンティティが正しいことをレビューします。 LUIS が確証を持てないエンドポイント発話が LUIS によって選択されます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 05b3404d318359c6966df44bfab9baff3ded980f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 78cc2a8a2b9295654d0c6264cbf4a4d634b16544
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222615"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038172"
 ---
 # <a name="enable-active-learning-by-reviewing-endpoint-utterances"></a>エンドポイント発話のレビューによるアクティブ ラーニングの有効化
-アクティブ ラーニングは、3 つの予測精度の改善戦略の 1 つで、最も簡単に実装できます。 
+アクティブ ラーニングは、3 つの予測精度の改善戦略の 1 つで、最も簡単に実装できます。 アクティブ ラーニングによって、エンドポイント発話の意図とエンティティが正しいことをレビューします。 LUIS が確証を持てないエンドポイント発話が LUIS によって選択されます。
 
 ## <a name="what-is-active-learning"></a>アクティブ ラーニングとは
 アクティブ ラーニングは 2 段階のプロセスです。 まず、LUIS がアプリのエンドポイントで受信した発話が、LUIS によって選択されます。 次のステップで、アプリの所有者またはコラボレーターが、選択された発話を、正しい意図とその意図内の任意のエンティティを含め、[レビュー](luis-how-to-review-endoint-utt.md)のために検証します。 発話をレビューしたら、アプリをもう一度トレーニングして公開します。 

@@ -5,15 +5,15 @@ services: iot-accelerators
 author: dominicbetts
 ms.service: iot-accelerators
 ms.topic: include
-ms.date: 08/16/2018
+ms.date: 09/28/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c6e57d5094f455983b8b474b6930f628d654e457
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: 5eb3c08792b760bf66e443f79762d91210706c92
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371008"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47435114"
 ---
 1 つ目のシナリオでは、新しいテレメトリ タイプを Contoso の既存の **Chiller** デバイスの種類に追加します。
 
@@ -31,7 +31,7 @@ ms.locfileid: "43371008"
 
 次の表に、電球がクラウドにデータ ストリームとしてレポートするデータを示します。
 
-| Name   | 値      |
+| 名前   | 値      |
 | ------ | ----------- |
 | 状態 | "オン"、"オフ" |
 | 気温 | 度 (華氏) |
@@ -73,6 +73,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 * Visual Studio Code。 [Mac、Linux、および Windows 用の Visual Studio Code をダウンロード](https://code.visualstudio.com/download)できます。
 * .NET Core。 [Mac、Linux、および Windows 用の .NET Core をダウンロード](https://www.microsoft.com/net/download)できます。
+* [C# for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * Postman。 [Mac、Windows、または Linux 用の Postman をダウンロード](https://www.getpostman.com/apps)できます。
 * [Azure サブスクリプションにデプロイされた IoT ハブ](../articles/iot-hub/iot-hub-create-through-portal.md)。 このガイドの手順を完了するには、IoT ハブの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
 * [強力な一貫性](../articles/cosmos-db/manage-account.md)を確保するよう構成された、SQL API を使用する Cosmos DB データベース。 このガイドの手順を完了するには、Cosmos DB データベースの接続文字列が必要です。 この接続文字列は、Azure portal から取得できます。
@@ -89,13 +90,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ### <a name="download-the-microservices"></a>マイクロサービスをダウンロードする
 
-[ストレージ アダプター マイクロサービス](https://github.com/Azure/pcs-storage-adapter-dotnet/archive/master.zip)を GitHub からローカル コンピューター上の適切な場所にダウンロードし、解凍します。
+[リモート監視マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip)を GitHub からローカル コンピューター上の適切な場所にダウンロードし、解凍します。 この記事では、このフォルダーの名前は **remote-monitoring-services-dotnet-master** であることを前提としています。
 
-[デバイス シミュレーション マイクロサービス](https://github.com/Azure/device-simulation-dotnet/archive/master.zip)を GitHub からローカル コンピューター上の適切な場所にダウンロードし、解凍します。
+[デバイス シミュレーション マイクロサービス](https://github.com/Azure/device-simulation-dotnet/archive/master.zip)を GitHub からローカル コンピューター上の適切な場所にダウンロードし、解凍します。 この記事では、このフォルダーの名前は **device-simulation-dotnet-master** であることを前提としています。
 
 ### <a name="run-the-storage-adapter-microservice"></a>ストレージ アダプター マイクロサービスを実行する
 
-Visual Studio Code で **pcs-storage-adapter-dotnet-master** フォルダーを開きます。 未解決の依存関係がある場合は、**[復元]** ボタンをクリックして修正します。
+Visual Studio Code で **remote-monitoring-services-dotnet-master\storage-adapter** フォルダーを開きます。 未解決の依存関係がある場合は、**[復元]** ボタンをクリックして修正します。
 
 **.vscode/launch.json** ファイルを開き、Cosmos DB 接続文字列を **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** 環境変数に割り当てます。
 
@@ -117,20 +118,14 @@ Visual Studio Code の**ターミナル** ウィンドウに、実行中のマ�
 
     | ソース | 変換先 |
     | ------ | ----------- |
-    | Services\Data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
-    | Services\Data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
-    | Services\Data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
-    | Services\Data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
-    | Services\Data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
-    | Services\Data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
+    | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
+    | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
+    | Services\data\devicemodels\scripts\Reboot-method.js | C:\temp\devicemodels\scripts\Reboot-method.js |
+    | Services\data\devicemodels\scripts\FirmwareUpdate-method.js | C:\temp\devicemodels\scripts\FirmwareUpdate-method.js |
+    | Services\data\devicemodels\scripts\EmergencyValveRelease-method.js | C:\temp\devicemodels\scripts\EmergencyValveRelease-method.js |
+    | Services\data\devicemodels\scripts\IncreasePressure-method.js | C:\temp\devicemodels\scripts\IncreasePressure-method.js |
 
 1. **C:\temp\devicemodels\chiller-01.json** ファイルを開きます。
-
-1. **SchemaVersion** 値を次のとおりに更新します。
-
-    ```json
-    "SchemaVersion": "1.0.0",
-    ```
 
 1. **InitialState** セクションに、次の 2 つの定義を追加します。
 
@@ -422,7 +417,7 @@ Visual Studio Code の**ターミナル** ウィンドウに、実行中のマ�
 
 Visual Studio Code の新しいインスタンスで、GitHub からダウンロードした **device-simulation-dotnet-master** フォルダーを開きます。 未解決の依存関係がある場合は、**[復元]** ボタンをクリックして修正します。
 
-**.vscode/launch.json** ファイルを開き、IoT Hub 接続文字列を **PCS_IOTHUB_CONNSTRING** 環境変数に割り当てます。
+**.vscode/launch.json** ファイルを開き、IoT Hub 接続文字列を **PCS_IOTHUB_CONNSTRING** 環境変数に割り当てます。 同じファイルに、**PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** 環境変数を追加し、Cosmos DB データベース用の接続文字列を割り当てます。
 
 **WebService/Properties/launchSettings.json** ファイルを開き、IoT Hub 接続文字列を **PCS_IOTHUB_CONNSTRING** 環境変数に割り当てます。
 
@@ -466,7 +461,7 @@ Postman を設定するには:
 
 1. **[File]\(ファイル\) > [Import]\(インポート\)** をクリックします。 次に、**[Choose Files]\(ファイルの選択\)** をクリックします。
 
-1. **device-simulation-dotnet/docs/postman** フォルダーに移動します。 **Azure IoT Device Simulation solution accelerator.postman_collection** と **Azure IoT Device Simulation solution accelerator.postman_environment** を選択し、**[Open]\(開く\)** をクリックします。
+1. **device-simulation-dotnet-master/docs/postman** フォルダーに移動します。 **Azure IoT Device Simulation solution accelerator.postman_collection** と **Azure IoT Device Simulation solution accelerator.postman_environment** を選択し、**[Open]\(開く\)** をクリックします。
 
 1. **[Azure IoT Device Simulation solution accelerator]\(Azure IoT デバイス シミュレーション ソリューション アクセラレータ\)** を、送信可能な要求に展開します。
 

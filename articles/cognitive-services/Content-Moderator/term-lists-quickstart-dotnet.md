@@ -1,29 +1,30 @@
 ---
-title: Azure Content Moderator でカスタム用語リストを使用してモデレートする | Microsoft Docs
-description: Azure Content Moderator SDK for .NET を使用してカスタム用語リストをモデレートする方法
+title: 'クイック スタート: カスタム用語リストを使用してモデレートする - Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: Content Moderator SDK for .NET を使用してカスタム用語リストをモデレートする方法
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
-ms.date: 01/11/2018
+ms.topic: quickstart
+ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 6da72ad070d9c3a6be38e24626dff77b52fed852
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c7a9e98444b47b058a17b18ba7d9a7c6b2249ba4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373357"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223221"
 ---
-# <a name="moderate-with-custom-term-lists-in-net"></a>.NET でカスタム用語リストを使用してモデレートする
+# <a name="quickstart-moderate-with-custom-term-lists-in-net"></a>クイック スタート: .NET でカスタム用語リストを使用してモデレートする
 
 Azure Content Moderator の既定のグローバルな用語リストは、ほとんどのコンテンツ モデレーションのニーズに十分対応できます。 しかし、組織に固有の用語のスクリーニングが必要になる場合があります。 たとえば、さらに詳しくレビューするために、競合他社名にタグを付けたい場合などです。 
 
-Content Moderator SDK for .NET を使用して、Text Moderation API で使用するカスタム用語リストを作成できます。
+[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) を使用して、Text Moderation API で使用するカスタム用語リストを作成できます。
 
 > [!NOTE]
-> **用語リストの数は 5 個まで**、各リスト内の**用語の数は 10,000 個まで**に制限されています。
+> 上限は**用語の一覧が 5 つ**で、各一覧では**用語が 10,000 個を超えてはいけません**。
 >
 
 この記事では、Content Moderator SDK for .NET を使用して次の操作をすぐに開始するために役立つ情報とコード サンプルを提供します。
@@ -41,15 +42,13 @@ Content Moderator SDK for .NET を使用して、Text Moderation API で使用�
 
 REST API や SDK を通じて Content Moderator サービスを使用するには、サブスクリプション キーが必要です。
 
-サブスクリプション キーは、Content Moderator のダッシュボードで、**[設定]** > **[資格情報]** > **[API]** > **[Trial Ocp-Apim-Subscription-Key]** の順に選択すると表示されます。 詳細については、[概要](overview.md)に関するページを参照してください。
+サブスクリプション キーは、Content Moderator のダッシュボードで、**[Setting]\(設定\)** > **[Credentials]\(資格情報\)** > **[API]** > **[Trial Ocp-Apim-Subscription-Key]\(試用版 Ocp-Apim-Subscription-Key\)** の順に選択すると表示されます。 詳細については、[概要](overview.md)に関するページを参照してください。
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
 1. ソリューションに新しい**コンソール アプリ (.NET Framework)** プロジェクトを追加します。
 
 1. プロジェクトに **TermLists** と名前を付けます。 このプロジェクトをソリューションのシングル スタートアップ プロジェクトとして選択します。
-
-1. [Content Moderator クライアント ヘルパーのクイックスタート](content-moderator-helper-quickstart-dotnet.md)で作成した **ModeratorHelper** プロジェクト アセンブリへの参照を追加します。
 
 ### <a name="install-required-packages"></a>必要なパッケージをインストールする
 
@@ -64,11 +63,64 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
 プログラムの using ステートメントを変更します。
 
-    using System;
-    using System.Threading;
+    using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
-    using ModeratorHelper;
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Threading;
+
+### <a name="create-the-content-moderator-client"></a>Content Moderator クライアントを作成する
+
+次のコードを追加して、サブスクリプションの Content Moderator クライアントを作成します。
+
+> [!IMPORTANT]
+> **AzureRegion** および **CMSubscriptionKey** フィールドをリージョン識別子とサブスクリプション キーの値で更新します。
+
+
+    /// <summary>
+    /// Wraps the creation and configuration of a Content Moderator client.
+    /// </summary>
+    /// <remarks>This class library contains insecure code. If you adapt this 
+    /// code for use in production, use a secure method of storing and using
+    /// your Content Moderator subscription key.</remarks>
+    public static class Clients
+    {
+        /// <summary>
+        /// The region/location for your Content Moderator account, 
+        /// for example, westus.
+        /// </summary>
+        private static readonly string AzureRegion = "YOUR API REGION";
+
+        /// <summary>
+        /// The base URL fragment for Content Moderator calls.
+        /// </summary>
+        private static readonly string AzureBaseURL =
+            $"https://{AzureRegion}.api.cognitive.microsoft.com";
+
+        /// <summary>
+        /// Your Content Moderator subscription key.
+        /// </summary>
+        private static readonly string CMSubscriptionKey = "YOUR API KEY";
+
+        /// <summary>
+        /// Returns a new Content Moderator client for your subscription.
+        /// </summary>
+        /// <returns>The new client.</returns>
+        /// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
+        /// When you have finished using the client,
+        /// you should dispose of it either directly or indirectly. </remarks>
+        public static ContentModeratorClient NewClient()
+        {
+            // Create and initialize an instance of the Content Moderator API wrapper.
+            ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
+
+            client.Endpoint = AzureBaseURL;
+            return client;
+        }
+    }
 
 ### <a name="add-private-properties"></a>プライベート プロパティを追加する
 
@@ -87,7 +139,7 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
     /// <summary>
     /// The number of minutes to delay after updating the search index before
-    /// performing image match operations against a the list.
+    /// performing image match operations against the list.
     /// </summary>
     private const double latencyDelay = 0.5;
 
@@ -100,7 +152,7 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 > [!NOTE]
 > お使いの Content Moderator のサービス キーは 1 秒ごとの要求数 (RPS) が制限されており、その上限を超えると、SDK が 429 エラー コードとともに例外をスローします。 
 >
-> Free レベルのキーの RPS は 1 に制限されています。
+> 無料レベルのキーの RPS は 1 に制限されています。
 
     /// <summary>
     /// Creates a new term list.
@@ -375,4 +427,4 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
     
 ## <a name="next-steps"></a>次の手順
 
-.NET 用のこのクイック スタートや他の Content Moderator のクイック スタートの [Visual Studio ソリューションをダウンロード](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)し、統合を開始します。
+.NET 用のこのクイック スタートや他の Content Moderator のクイック スタートのために、[Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)を入手し、統合を開始します。

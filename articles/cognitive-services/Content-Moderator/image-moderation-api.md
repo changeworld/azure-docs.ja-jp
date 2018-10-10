@@ -1,20 +1,21 @@
 ---
-title: Azure Content Moderator - 画像のモデレーション | Microsoft Docs
+title: 画像のモデレーション - Content Moderator
+titlesuffix: Azure Cognitive Services
 description: 画像のモデレーションを使用して、不適切な画像をモデレートします。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: c7cbc343c6e9113642d0ac79f4a4d60a404e8171
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6c5fed78c67f974a2af11efd133e9a79ec52124b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377664"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219653"
 ---
 # <a name="image-moderation"></a>画像のモデレート
 
@@ -143,7 +144,7 @@ Content Moderator は、カスタム画像のリストを管理するための�
 
 さらに微妙な場合は、Content Moderator の[レビュー ツール](Review-Tool-User-Guide/human-in-the-loop.md)とその API を使用し、レビューでのモデレーション結果とコンテンツをヒューマン モデレーターに示します。 モデレーターはコンピューターが割り当てたタグを調べて、その最終的な決定を確認します。
 
-![ヒューマン モデレーター用の画像レビュー](images/moderation-reviews-quickstart-dotnet.PNG)
+![人によるモデレーション用のイメージ レビュー](images/moderation-reviews-quickstart-dotnet.PNG)
 
 ## <a name="next-steps"></a>次の手順
 

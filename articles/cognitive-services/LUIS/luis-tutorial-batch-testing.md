@@ -1,51 +1,27 @@
 ---
-title: バッチ テストを使用して LUIS の予測を改善する | Microsoft Docs
-titleSuffix: Azure
-description: バッチ テストを読み込み、結果を確認し、変更を加えて LUIS の予測を改善します。
+title: 'チュートリアル 2: 1000 個の発話のセットを使用したバッチ テスト '
+titleSuffix: Azure Cognitive Services
+description: このチュートリアルでは、バッチ テストを使用してアプリでの発話予測の問題を検出し、修正する方法を説明します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 5abaeaee87d54e82df29e75b89c83522b8746730
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: e5155caa26669cd98b679eec611334ee5c048fca
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158247"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162543"
 ---
-# <a name="improve-app-with-batch-test"></a>バッチ テストを使用してアプリを改善する
+# <a name="tutorial-2-batch-test-data-sets"></a>チュートリアル 2: バッチ テストのデータ セット
 
-このチュートリアルでは、バッチ テストを使用して発話予測の問題を検出する方法を説明します。  
-
-このチュートリアルで学習する内容は次のとおりです。
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-* バッチ テスト ファイルを作成する 
-* バッチ テストを実行する
-* テスト結果を確認する
-* エラーを修正する 
-* バッチを再テストする
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>開始する前に
-
-[エンドポイントの発話の確認](luis-tutorial-review-endpoint-utterances.md)チュートリアルの人事アプリがない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-review-HumanResources.json) GitHub リポジトリにあります。
-
-元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`batchtest` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 
-
-アプリをトレーニングします。
-
-## <a name="purpose-of-batch-testing"></a>バッチ テストの目的
+このチュートリアルでは、バッチ テストを使用してアプリでの発話予測の問題を検出し、修正する方法を説明します。  
 
 バッチ テストでは、ラベルの付いた発話とエンティティの既知のセットを使用して、アクティブなトレーニング済みのモデルの状態を検証できます。 JSON 形式のバッチ ファイルで、発話を追加し、その発話内で予測されるようにしたいエンティティ ラベルを設定します。 
-
-<!--The recommended test strategy for LUIS uses three separate sets of data: example utterances provided to the model, batch test utterances, and endpoint utterances. --> このチュートリアル以外のアプリを使用している場合は、意図に既に追加されている発話の例を使用して*いない*ことを確認してください。 発話の例に対してバッチ テストの発話を確認するには、そのアプリを[エクスポート](luis-how-to-start-new-app.md#export-app)します。 そのアプリの発話の例とバッチ テストの発話を比較します。 
 
 バッチ テストを実行するための要件:
 
@@ -53,13 +29,42 @@ ms.locfileid: "44158247"
 * 重複はなし。 
 * 許可されるエンティティ型: シンプル、階層構造 (親のみ)、および複合の機械学習されたエンティティのみ。 バッチ テストは、機械学習された意図とエンティティに対してのみ有効です。
 
-## <a name="create-a-batch-file-with-utterances"></a>発話を含むバッチ ファイルを作成する
+このチュートリアル以外のアプリを使用している場合は、意図に既に追加されている発話の例を使用*しないでください*。 
 
-1. [VSCode](https://code.visualstudio.com/) などのテキスト エディターで `HumanResources-jobs-batch.json` を作成します。 
+**このチュートリアルで学習する内容は次のとおりです。**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * 既存のチュートリアル アプリを使用する
+> * バッチ テスト ファイルを作成する 
+> * バッチ テストを実行する
+> * テスト結果を確認する
+> * エラーを修正する 
+> * バッチを再テストする
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>既存のアプリを使用する
+
+最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
+
+以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+
+1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json)をダウンロードして保存します。
+
+2. JSON を新しいアプリにインポートします。
+
+3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `batchtest` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。 
+
+4. アプリをトレーニングします。
+
+## <a name="batch-file"></a>バッチ ファイル
+
+1. テキスト エディターで `HumanResources-jobs-batch.json` を作成するか、または[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json)します。 
 
 2. JSON 形式のバッチ ファイルで、テストで予測されるようにしたい**意図**を持つ発話を追加します。 
 
-   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
+   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
 ## <a name="run-the-batch"></a>バッチを実行する
 
@@ -73,13 +78,13 @@ ms.locfileid: "44158247"
 
     [![データセットのインポートが強調表示されている LUIS アプリのスクリーンショット](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
 
-4. `HumanResources-jobs-batch.json` ファイルのファイル システムの場所を選択します。
+4. `HumanResources-jobs-batch.json` ファイルのファイルの場所を選択します。
 
 5. データセットに `intents only` という名前を付け、**[完了]** を選択します。
 
     ![ファイルの選択](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
-6. **[実行]** ボタンを選択します。 テストが完了するまで待ちます。
+6. **[実行]** ボタンを選択します。 
 
 7. **[See results]\(結果の表示\)** を選択します。
 
@@ -109,7 +114,7 @@ ms.locfileid: "44158247"
 
 **[False positive] (誤検知)** セクション内の一番上の点に対応する発話は `Can I apply for any database jobs with this resume?` と `Can I apply for any database jobs with this resume?` です。 最初の発話の場合、単語 `resume` は **ApplyForJob** でのみ使用されました。 2 番目の発話の場合、単語 `apply` は **ApplyForJob** 意図でのみ使用されました。
 
-## <a name="fix-the-app-based-on-batch-results"></a>バッチ結果に基づいてアプリを修正する
+## <a name="fix-the-app"></a>アプリを修正する
 
 このセクションの目的は、アプリを修正することによって、**GetJobInformation** ですべての発話が正しく予測されるようにすることです。 
 
@@ -119,7 +124,7 @@ ms.locfileid: "44158247"
 
 最初の修正では、**GetJobInformation** にさらに発話を追加します。 2 番目の修正では、`resume` や `apply` などの単語の重みを **ApplyForJob** 意図に近づくように減らします。 
 
-### <a name="add-more-utterances-to-getjobinformation"></a>**GetJobInformation** にさらに発話を追加する
+### <a name="add-more-utterances"></a>さらに発話を追加する
 
 1. 上部のナビゲーション パネルにある **[テスト]** ボタンを選択することによってバッチ テスト パネルを閉じます。 
 
@@ -149,7 +154,7 @@ ms.locfileid: "44158247"
 
 4. 右上のナビゲーションにある **[トレーニング]** を選択することによってアプリをトレーニングします。
 
-## <a name="verify-the-fix-worked"></a>修正が機能していることを確認する
+## <a name="verify-the-new-model"></a>新しいモデルを確認する
 
 バッチ テスト内の発話が正しく予測されていることを確認するために、バッチ テストを再度実行します。
 
@@ -171,12 +176,12 @@ ms.locfileid: "44158247"
 
 テストの発話で指定される **[Job] (仕事)** エンティティの値は通常、1 つまたは 2 つの単語であり、いくつかの例ではそれ以上の単語数になります。 _独自の_人事アプリに一般に多数の単語の仕事名が存在する場合、このアプリで **[Job] (仕事)** エンティティのラベルが付けられている発話の例はうまく機能しません。
 
-1. [VSCode](https://code.visualstudio.com/) などのテキスト エディターで `HumanResources-entities-batch.json` を作成します。 または、LUIS-Samples の Github リポジトリから[このファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json)をダウンロードします。
+1. [VSCode](https://code.visualstudio.com/) などのテキスト エディターで `HumanResources-entities-batch.json` を作成するか、または[ダウンロード](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json)します。
 
 
 2. JSON 形式のバッチ ファイルで、テストで予測されるようにしたい**意図**を持つ発話や、その発話内の任意のエンティティの場所を含むオブジェクトの配列を追加します。 エンティティはトークン ベースであるため、各エンティティを文字で開始および終了するようにしてください。 発話をスペースで開始または終了しないでください。 これにより、バッチ ファイルのインポート中にエラーが発生します。  
 
-   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
+   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
 
 
 ## <a name="run-the-batch-with-entities"></a>エンティティを含むバッチを実行する
@@ -222,15 +227,13 @@ ms.locfileid: "44158247"
 
 エンティティが正しく予測される前に[パターン](luis-concept-patterns.md)を追加しても、この問題は修正されません。 これは、パターンが、そのパターン内のすべてのエンティティが検出されるまで一致しないためです。 
 
-## <a name="what-has-this-tutorial-accomplished"></a>このチュートリアルで達成されたこと
-
-バッチでエラーを見つけ、モデルを修正することによってアプリの予測精度が向上しました。 
-
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
+
+チュートリアルでは、バッチ テストを使用して、現在のモデルの問題を検出しました。 モデルを修正し、バッチ ファイルを使用して再テストを行い、変更が正しいことを確認しました。
 
 > [!div class="nextstepaction"]
 > [パターンについて](luis-tutorial-pattern.md)

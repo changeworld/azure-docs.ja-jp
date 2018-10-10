@@ -1,22 +1,23 @@
 ---
-title: LUIS アプリのバッチ テスト - Azure | Microsoft Docs
-description: Language Understanding (LUIS) バッチ テストを使用して、不適切な意図とエンティティを含む発話を見つけます。
+title: 発話の例を 1000 個使用したバッチ テスト
+titleSuffix: Azure Cognitive Services
+description: Language Understanding (LUIS) バッチ テスト セットを使用して、不適切な意図とエンティティを含む発話を見つけます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 07c38aa5f66fc8c38392c5407449ec6911e80d47
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: b4c58a13c8b66add8ebd7e535ecac9d7b0f1075b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888628"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032123"
 ---
-# <a name="batch-testing"></a>バッチ テスト
+# <a name="batch-testing-with-a-set-of-example-utterances"></a>発話の例のセットを使用したバッチ テスト
  バッチ テストは、ご自身の現在のトレーニング済みモデルで実行する包括的なテストで、LUIS におけるそのモデルのパフォーマンスを測定します。 
 
 <a name="batch-testing"></a>
@@ -27,8 +28,6 @@ ms.locfileid: "42888628"
     ![バッチ テストのリンク](./media/luis-how-to-batch-test/batch-testing-link.png)
 
 2. **[Import dataset]\(データセットのインポート\)** を選択します。 **[Import new dataset]\(新しいデータセットのインポート\)** ダイアログ ボックスが表示されます。 **[ファイルの選択]** を選択し、テスト対象の *1,000 個以下の*発話を含む、正しい [JSON 形式](luis-concept-batch-test.md#batch-file-format)を持つ JSON ファイルを見つけます。
-
-    ![データセット ファイルのインポート](./media/luis-how-to-batch-test/batchtest-importset.png)
 
     インポート エラーは、ブラウザーの上部にある赤い通知バーで報告されます。 インポートでエラーが発生した場合、データセットは作成されません。 詳細については、[一般的なエラー](luis-concept-batch-test.md#common-errors-importing-a-batch)に関するトピックをご覧ください。
 
@@ -49,7 +48,7 @@ ms.locfileid: "42888628"
 
 ダウンロード可能なデータセットは、バッチ テスト用にアップロードされたファイルと同じです。
 
-|State|意味|
+|状態|意味|
 |--|--|
 |![テストの成功を示す緑色の丸いアイコン](./media/luis-how-to-batch-test/batch-test-result-green.png)|すべての発話が成功しました。|
 |![テストの失敗を示す赤い x アイコン](./media/luis-how-to-batch-test/batch-test-result-red.png)|1 つ以上の発話の意図が予測と一致しませんでした。|

@@ -1,25 +1,25 @@
 ---
-title: ナレッジ ベースの共同利用 - Microsoft Cognitive Services | Microsoft Docs
-titleSuffix: Azure
-description: QnA Maker ナレッジ ベースを共同利用する方法
+title: ナレッジ ベースの共同利用 - Qna Maker
+titleSuffix: Azure Cognitive Services
+description: QnA Maker では、複数のユーザーがサポート技術情報を共同利用できます。 この機能は、Azure のロール ベースのアクセス制御で提供されています。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: e18d656236276595fc5186a6656349bf28974ead
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: bb074b1f256275c26889a30435dff28c86060a7b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376165"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035234"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>ナレッジ ベースの共同利用
 
-QnA Maker では、複数のユーザーがナレッジ ベースを共同利用できます。 この機能は、Azure の[ロール ベースのアクセス制御](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure)で提供されています。 
+QnA Maker では、複数のユーザーがサポート技術情報を共同利用できます。 この機能は、Azure の[ロール ベースのアクセス制御](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure)で提供されています。 
 
 次の手順を実行して、QnA Maker のサービスを他者と共有します。
 

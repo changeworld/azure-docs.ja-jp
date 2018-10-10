@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: b0dd5e0c365c65fc7b29752f7885acb71bdb3df8
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: c19b19cab33ae868f11ded0b7ce87dac99269596
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181431"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431991"
 ---
 # <a name="known-issues"></a>既知の問題
 Project Acoustics の Designer Preview の使用時に、以下で説明する既知の問題が発生する場合があります。
@@ -27,7 +27,7 @@ Project Acoustics の Designer Preview の使用時に、以下で説明する�
 
 共同作業者間でプロジェクトを共有しやすいよう、本来は相対パスが既定であるべきです。 回避策として、プロジェクト ディレクトリからの相対パスにパスを変更してください。
 
-## <a name="runtime-voxels-are-a-different-size-than-design-time-voxels"></a>実行時ボクセルのサイズが設計時ボクセルと異なる
+## <a name="runtime-voxels-are-a-different-size-than-scene-preview-voxels"></a>実行時ボクセルのサイズがシーン プレビュー ボクセルと異なる
 
 **[プローブ]** タブで **[計算]** を実行してボクセルを表示した後、同じシーンに対して実行時にベイクを実行してボクセルを表示した場合、ボクセルのサイズが異なります。 事前ベイクで表示されるボクセルはシミュレーションで使用されるボクセルです。 実行時に表示されるボクセルは、プローブ ポイント間の補間に使用されます。 このことは、実際には開いていないポータルが実行時に開いているように見える不一致の原因になることがあります。
 

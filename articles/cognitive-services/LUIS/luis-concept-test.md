@@ -1,22 +1,23 @@
 ---
-title: LUIS アプリのテスト - Azure | Microsoft Docs
-description: Language Understanding (LUIS) を使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
+title: LUIS アプリのテスト
+titleSuffix: Azure Cognitive Services
+description: テストは、LUIS にサンプル発話を提供し、LUIS が認識した意図およびエンティティの応答を取得するプロセスです。 LUIS で、対話的に一度に 1 つずつ発話をテストすることも、発話のバッチを提供することもできます。 テストを使用して、現在のアクティブ モデルを、公開済みのモデルと比較します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d231eaf98358e3f8237a820e59433558d293872f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 7999f25d9c8bd9a8e44bd858d2860d94be16a62f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224349"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033228"
 ---
-# <a name="testing-in-luis"></a>LUIS でのテスト
+# <a name="testing-example-utterances-in-luis"></a>LUIS での発話の例のテスト
 
 テストは、LUIS にサンプル発話を提供し、LUIS が認識した意図およびエンティティの応答を取得するプロセスです。 
 
@@ -25,6 +26,7 @@ LUIS で、対話的に一度に 1 つずつ発話を[テスト](luis-interactiv
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
 <a name="E-(exponent)-notation"></a>
+
 ## <a name="what-is-a-score-in-testing"></a>テストでのスコアとは
 予測スコアの詳細については、「[予測スコア](luis-concept-prediction-score.md)」の概念を参照してください。
 

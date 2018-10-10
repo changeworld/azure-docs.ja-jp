@@ -1,23 +1,23 @@
 ---
-title: ドメイン参加済み HDInsight クラスターの管理 - Azure
-description: ドメイン参加済み HDInsight クラスターを管理する方法について説明します
+title: Enterprise セキュリティ パッケージで HDInsight クラスターを管理する - Azure
+description: Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する方法について説明します。
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.openlocfilehash: 494049cffe77e23c33528747e04bf96065fac2e2
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 08/24/2018
+ms.openlocfilehash: 02a77ef9589a42a6f33087ba7e22efc3144a8f2c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051606"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973560"
 ---
-# <a name="manage-domain-joined-hdinsight-clusters"></a>ドメイン参加済み HDInsight クラスターの管理
-ドメイン参加済み HDInsight のユーザーとロールについて説明し、ドメイン参加済み HDInsight クラスターの管理方法についても説明します。
+# <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用して HDInsight クラスターを管理する
+HDInsight Enterprise セキュリティ パッケージ (ESP) でのユーザーとロール、および ESP クラスターを管理する方法について説明します。
 
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>VSCode を使用してドメイン参加済みクラスターにリンクする
 
@@ -140,12 +140,12 @@ Beeline をローカルにインストールしている場合に Azure 仮想�
 
 
 
-## <a name="users-of-domain-joined-hdinsight-clusters"></a>ドメイン参加済み HDInsight クラスターのユーザー
-ドメインに参加していない HDInsight クラスターには、クラスターの作成中に作成される、次の 2 つのユーザー アカウントがあります。
+## <a name="users-of-hdinsight-clusters-with-esp"></a>ESP を使用する HDInsight クラスターのユーザー
+ESP を使用していない HDInsight クラスターには、クラスターの作成中に作成される、次の 2 つのユーザー アカウントがあります。
 
 * **Ambari 管理者**: このアカウントは、"*Hadoop ユーザー*" または "*HTTP ユーザー*" とも呼ばれます。 このアカウントは、Ambari (https://&lt;clustername>.azurehdinsight.net) にログオンするために使用できます。 また、Ambari ビューに対するクエリの実行、外部ツール (PowerShell、Templeton、Visual Studio など) によるジョブの実行、Hive ODBC ドライバーと BI ツール (Excel、PowerBI、Tableau など) による認証にも使用できます。
 
-ドメイン参加済み HDInsight クラスターには、Ambari 管理者以外に、3 つの新しいユーザーの種類があります。
+ESP を使用している HDInsight クラスターには、Ambari 管理者以外に、3 つの新しいユーザーの種類があります。
 
 * **Ranger 管理者**: このアカウントは、ローカルの Apache Ranger 管理者アカウントです。 これは、Active Directory ドメイン ユーザーではありません。 このアカウントは、ポリシーのセットアップや、他のユーザー管理者または代理管理者の作成に使用することができます (それらの管理者がポリシーを管理できるようにするため)。 既定では、ユーザー名は *admin* で、パスワードは Ambari 管理者パスワードと同じです。 パスワードは、Ranger の [Settings (設定)] ページで更新することができます。
 * **クラスター管理者ドメイン ユーザー**: このアカウントは、Ambari と Ranger を含む Hadoop クラスター管理者として指定された Active Directory ドメイン ユーザーです。 クラスターの作成中に、このユーザーの資格情報を指定する必要があります。 このユーザーは、次の特権を持ちます。
@@ -159,8 +159,8 @@ Beeline をローカルにインストールしている場合に Azure 仮想�
     クラスター内には、Ranger によって管理されないエンドポイント (たとえば Templeton) がいくつかあります。そのため、それらは安全ではありません。 これらのエンドポイントは、クラスター管理者ドメイン ユーザーを除くすべてのユーザーに対してロックダウンされます。
 * **レギュラー**: クラスターの作成中に、複数の Active Directory グループを指定することができます。 これらのグループのユーザーは、Ranger と Ambari に同期されます。 これらのユーザーはドメイン ユーザーであり、Ranger によって管理されているエンドポイント (たとえば Hiveserver2) のみにアクセスできます。 すべての RBAC ポリシーと監査は、これらのユーザーに適用できます。
 
-## <a name="roles-of-domain-joined-hdinsight-clusters"></a>ドメイン参加済み HDInsight クラスターのロール
-ドメイン参加済み HDInsight には、次のロールがあります。
+## <a name="roles-of-hdinsight-clusters-with-esp"></a>ESP を使用する HDInsight クラスターのロール
+HDInsight Enterprise セキュリティ パッケージには次のロールがあります。
 
 * クラスター管理者
 * クラスター オペレーター
@@ -174,7 +174,7 @@ Beeline をローカルにインストールしている場合に Azure 仮想�
 2. 左側のメニューで **[Roles (ロール)]** をクリックします。
 3. 青い疑問符をクリックして、アクセス許可を表示します。
 
-    ![ドメイン参加済み HDInsight のロールのアクセス許可](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
+    ![ESP HDInsight のロールのアクセス許可](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
 
 ## <a name="open-the-ambari-management-ui"></a>Ambari Management UI を開く
 
@@ -184,43 +184,43 @@ Beeline をローカルにインストールしている場合に Azure 仮想�
 4. クラスター管理者のドメイン ユーザー名とパスワードを使用して、Ambari にログオンします。
 5. 右上隅のドロップダウン メニューで **[Admin (管理者)]** をクリックし、**[Manage Ambari (Ambari の管理)]** をクリックします。
 
-    ![ドメイン参加済み HDInsight での Ambari の管理](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    ![ESP HDInsight での Ambari の管理](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
     次のような UI になります。
 
-    ![ドメイン参加済み HDInsight での Ambari Management UI](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    ![ESP HDInsight での Ambari Management UI](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Active Directory から同期されているドメイン ユーザーの一覧表示
 1. Ambari Management UI を開きます。  「[Ambari Management UI を開く](#open-the-ambari-management-ui)」を参照してください。
 2. 左側のメニューで **[ユーザー]** をクリックします。 Active Directory から HDInsight クラスターに同期されているすべてのユーザーが表示されます。
 
-    ![ドメイン参加済み HDInsight での Ambari Management UI によるユーザーの一覧表示](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
+    ![ESP HDInsight での Ambari Management UI によるユーザーの一覧表示](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>Active Directory から同期されているドメイン グループの一覧表示
 1. Ambari Management UI を開きます。  「[Ambari Management UI を開く](#open-the-ambari-management-ui)」を参照してください。
 2. 左側のメニューで **[Groups (グループ)]** をクリックします。 Active Directory から HDInsight クラスターに同期されているすべてのグループが表示されます。
 
-    ![ドメイン参加済み HDInsight での Ambari Management UI によるグループの一覧表示](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
+    ![ESP HDInsight での Ambari Management UI によるグループの一覧表示](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
 
 ## <a name="configure-hive-views-permissions"></a>Hive ビューのアクセス許可の構成
 1. Ambari Management UI を開きます。  「[Ambari Management UI を開く](#open-the-ambari-management-ui)」を参照してください。
 2. 左側のメニューで **[Views (ビュー)]** をクリックします。
 3. **[HIVE]** をクリックして、詳細を表示します。
 
-    ![ドメイン参加済み HDInsight での Ambari Management UI による Hive ビュー](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
+    ![ESP HDInsight での Ambari Management UI による Hive ビュー](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
 4. **[Hive View (Hive ビュー)]** リンクをクリックして、Hive ビューを構成します。
 5. **[Permissions (アクセス許可)]** セクションまで下へスクロールします。
 
-    ![ドメイン参加済み HDInsight での Ambari Management UI による Hive ビューのアクセス許可の構成](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
+    ![ESP HDInsight での Ambari Management UI による Hive ビューのアクセス許可の構成](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
 6. **[Add User (ユーザーの追加)]** または **[Add Group (グループの追加)]** をクリックし、Hive ビューを使用するユーザーまたはグループを指定します。
 
 ## <a name="configure-users-for-the-roles"></a>ロールのユーザーの構成
- ロールとそのアクセス許可の一覧を表示するには、「[ドメイン参加済み HDInsight クラスターのロール](#roles-of-domain---joined-hdinsight-clusters)」を参照してください。
+ ロールとそのアクセス許可の一覧を表示するには、「[ESP を使用する HDInsight クラスターのロール](#roles-of-domain---joined-hdinsight-clusters)」を参照してください。
 
 1. Ambari Management UI を開きます。  「[Ambari Management UI を開く](#open-the-ambari-management-ui)」を参照してください。
 2. 左側のメニューで **[Roles (ロール)]** をクリックします。
 3. **[Add User (ユーザーの追加)]** または **[Add Group (グループの追加)]** をクリックし、別のロールにユーザーやグループを割り当てます。
 
 ## <a name="next-steps"></a>次の手順
-* ドメイン参加済み HDInsight クラスターの構成については、[ドメイン参加済み HDInsight クラスターの構成](apache-domain-joined-configure.md)に関する記事を参照してください。
-* Hive ポリシーの構成と Hive クエリの実行については、[ドメイン参加済み HDInsight クラスターの Hive ポリシーの構成](apache-domain-joined-run-hive.md)に関する記事をご覧ください。
+* Enterprise セキュリティ パッケージを使用した HDInsight クラスターの構成については、[ESP での HDInsight クラスターの構成](apache-domain-joined-configure.md)に関するページをご覧ください。
+* Hive ポリシーの構成と Hive クエリの実行については、[ESP を使用する HDInsight クラスター用の Hive ポリシーの構成](apache-domain-joined-run-hive.md)に関するページをご覧ください。

@@ -1,20 +1,20 @@
 ---
-title: Bing Visual Search SDK のトリミング範囲と結果のチュートリアル | Microsoft Docs
+title: 'チュートリアル: 画像トリミング範囲と結果 - Bing Visual Search'
 description: Bing Visual Search SDK を使用してアップロードされた画像のトリミング範囲に類似する画像の URL を取得する方法。
 services: cognitive-services
 author: mikedodaro
-manager: ronakshah
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-visual-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: dd51ed7c710cc51a9fe0e63e55aa0d2c4ea24bee
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 66e17c00da898e575bb858dbe16a35d1c44a2780
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574491"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226912"
 ---
 # <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>チュートリアル: Bing Visual Search SDK の画像トリミング範囲と結果
 Visual Search SDK には、画像の領域を選択し、大きな画像のトリミング範囲に類似するオンラインの画像を見つけるオプションがあります。  この例では、複数の人物が含まれた画像から 1 人だけが含まれるトリミング範囲を指定します。  コードでは、トリミング範囲と大きな画像の URL を送信し、Bing Search URL とオンラインで見つかった類似する画像の URL を含む結果を返します。

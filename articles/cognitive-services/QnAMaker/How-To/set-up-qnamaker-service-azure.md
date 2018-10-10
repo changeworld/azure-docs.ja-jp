@@ -1,21 +1,21 @@
 ---
-title: QnA Maker サービスのセットアップ方法 - Microsoft Cognitive Services | Microsoft Docs
-titleSuffix: Azure
-description: QnA Maker サービスのセットアップ方法
+title: QnA Maker サービスを設定する - QnA Maker
+titleSuffix: Azure Cognitive Services
+description: QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA Maker サービスをセットアップしておく必要があります。 QnA Maker サービスは、サブスクリプション内で新しいリソースを作成することが認可されているユーザーであれば、だれでもセットアップできます。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: ce452dd686529e017b4eae4717eadb044b389409
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 87bcd23983c1d973f7e90caf806092c909b7b9e4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376320"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032548"
 ---
 # <a name="create-a-qna-maker-service"></a>QnA Maker サービスを作成する
 

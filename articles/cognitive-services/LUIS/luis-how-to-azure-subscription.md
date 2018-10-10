@@ -1,20 +1,21 @@
 ---
-title: Azure エンドポイント サブスクリプションの管理 | Microsoft Docs
+title: LUIS でのエンドポイント サブスクリプション管理
+titleSuffix: Azure Cognitive Services
 description: この記事では、ご自身の LUIS アカウントに対して従量制課金エンドポイント キーを作成し、次の支払いプランに従って、お使いのエンドポイントに無制限トラフィックを提供します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0b735499ae589e44c2ce5076fce38ec47ddd69c7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: c7c6009d9fec14e8633a37e5384dd203f2f5fa60
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223281"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040382"
 ---
 # <a name="manage-azure-endpoint-subscription-keys"></a>Azure エンドポイント サブスクリプション キーの管理
 
@@ -26,7 +27,7 @@ ms.locfileid: "39223281"
 <a name="create-luis-service"></a>
 ## <a name="create-luis-endpoint-key"></a>LUIS エンドポイント キーの作成
 
-1. **[Microsoft Azure](https://ms.portal.azure.com/)** にサインインします 
+1. **[Microsoft Azure](https://ms.portal.azure.com/)** にサインインします。 
 2. 左側のパネルの緑色の **+** 記号をクリックし、マーケットプレースで "LUIS" を検索して、**[Language Understanding]** をクリックします。次に、**[経験の作成]** に従って LUIS サブスクリプション アカウントを作成します。 
 
     ![Azure Search](./media/luis-azure-subscription/azure-search.png) 
@@ -40,8 +41,7 @@ ms.locfileid: "39223281"
     ![Azure キー](./media/luis-azure-subscription/azure-keys.png)
 
     > [!Note] 
-    > * リージョンの [LUIS](luis-reference-regions.md) Web サイトにログインし、[新しい LUIS エンドポイント キーを追加](luis-how-to-manage-keys.md#assign-endpoint-key)します。 
-    > * 作成した Azure サービスの名前は、リージョンの [LUIS](luis-reference-regions.md) 発行ページで選択できるように覚えておく必要があります。  
+    > リージョンの [LUIS](luis-reference-regions.md) Web サイトにサインインし、[新しい LUIS エンドポイント キーを割り当て](luis-how-to-manage-keys.md#assign-endpoint-key)ます。 手順 3 の LUIS サブスクリプションの名前が必要です。
 
 ## <a name="change-luis-pricing-tier"></a>LUIS 価格レベルの変更
 

@@ -1,6 +1,6 @@
 ---
-title: 内部ロード バランサーの作成 - Azure CLI クラシック | Microsoft Docs
-description: クラシック デプロイ モデルで Azure CLI を使用して、内部ロード バランサーを作成する方法について説明します。
+title: 内部ロード バランサーを作成する - Azure クラシック CLI | Microsoft Docs
+description: クラシック デプロイ モデルで Azure クラシック CLI を使用して、内部ロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: genlin
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 06/18/2018
 ms.author: genli
-ms.openlocfilehash: 8f0ac03ff7b749e47692d03d65502df0a19bb758
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fb8929b31fa4325b996ddf4c5ec48e4acb0b930a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38539519"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966918"
 ---
-# <a name="get-started-creating-an-internal-load-balancer-classic-using-the-azure-cli"></a>Azure CLI を使用した内部ロード バランサー (クラシック) の作成の概要
+# <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用した内部ロード バランサーの作成の概要
 
 > [!div class="op_single_selector"]
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-classic-ps.md)
@@ -44,11 +44,11 @@ ms.locfileid: "38539519"
 2. 着信トラフィックを受信できる仮想マシンに対応するエンドポイントを追加します。
 3. 内部負荷分散インスタンスの仮想 IP (VIP) アドレスにトラフィックを送信するようにサーバーを構成します。
 
-## <a name="step-by-step-creating-an-internal-load-balancer-using-cli"></a>CLI を使用した内部ロード バランサーの作成手順
+## <a name="step-by-step-creating-an-internal-load-balancer-using-classic-cli"></a>クラシック CLI を使用した内部ロード バランサーの作成手順
 
 このガイドでは、前述のシナリオに基づいてインターネット ロード バランサーを作成する方法を説明します。
 
-1. Azure CLI を初めて使用する場合は、「 [Azure CLI のインストール](../cli-install-nodejs.md) 」を参照して、Azure のアカウントとサブスクリプションを選択する時点までの指示に従います。
+1. クラシック CLI を初めて使用する場合は、「[Azure CLI のインストールと構成](../cli-install-nodejs.md)」を参照し、Azure のアカウントとサブスクリプションを選択する時点までの指示に従ってください。
 2. 次に示すように、 **azure config mode** コマンドを実行して、以下に示すようにクラシック モードに切り替えます。
 
     ```azurecli

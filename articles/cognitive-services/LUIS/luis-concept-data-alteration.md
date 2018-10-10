@@ -1,23 +1,24 @@
 ---
-title: LUIS におけるデータ変更の概念について - Azure | Microsoft Docs
+title: LUIS でのデータ変更の概念 - Language Understanding
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) での予測前にデータを変更する方法について説明します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d8421114bb5a7416ad2523fe9b0353f03f672619
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1aad540086764b1e2315d3b3e195c55ba5931e07
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223985"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036058"
 ---
 # <a name="data-alterations"></a>データの変更
-LUIS では、予測前または予測中に発話を操作する方法が用意されています。 
+LUIS では、予測前または予測中に発話を操作する方法が用意されています。 これらには、スペルの修正や、事前構築済み datetimeV2 でのタイム ゾーンの問題の修正が含まれます。 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>発話内のスペル ミスの修正
 LUIS では、[Bing Spell Check API V7](https://azure.microsoft.com/services/cognitive-services/spell-check/) を使用して、発話内のスペル ミスを修正します。 LUIS には、このサービスに関連付けられているキーが必要です。 キーを作成し、[エンドポイント](https://aka.ms/luis-endpoint-apis)にクエリ文字列パラメーターとして追加します。 
@@ -47,6 +48,9 @@ LUIS では、[Bing Spell Check API V7](https://azure.microsoft.com/services/cog
 }
 ```
  
+### <a name="whitelist-words"></a>単語をホワイトリストに登録する
+LUIS で使用される Bing スペル チェック API は、スペル チェックの変更中に無視する単語のホワイトリストをサポートしていません。 単語または頭字語をホワイトリストに登録する必要がある場合、発話を意図予測のために LUIS に送信する前に、クライアント アプリケーションでホワイトリストを使用して発話を処理します。
+
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>事前構築済み datetimeV2 エンティティのタイム ゾーンの変更
 LUIS アプリで事前構築済み datetimeV2 エンティティを使用している場合、予測の応答で datetime 値が返されることがあります。 要求のタイム ゾーンを使用して、返すべき正しい datetime が決定されます。 要求元がボットであったり、LUIS の前段階の集約化された他のアプリケーションであったりする場合は、LUIS で使用するタイム ゾーンを修正します。 
 

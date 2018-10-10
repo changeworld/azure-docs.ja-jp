@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 05/24/2018
 ms.author: glenga
-ms.openlocfilehash: e3f2cc24a3ff765a33d27bbe5a43ca9d5a229e1b
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: cc965073863375d76efb969ad66cf5750c9755bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092957"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969429"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -160,7 +160,7 @@ function generateRandomId() {
 |Visual Studio 2017 を使用する C# クラス ライブラリ|[NuGet ツールを使用](#c-class-library-with-visual-studio-2017)|[NuGet ツールを使用](#c-class-library-with-visual-studio-2017)|
 |Visual Studio Code を使用する C# クラス ライブラリ|該当なし|[.NET Core CLI を使用](#c-class-library-with-visual-studio-code)|
 
-次のバインドの種類は、HTTP、タイマー、および Azure Storage (Blob、キュー、およびテーブル) のすべてのバージョンと環境に自動登録されているため、明示的な登録を必要としない例外です。 
+バインドの種類 HTTP とタイマーは、すべてのバージョンと環境に自動登録されているため、明示的な登録を必要としない例外です。
 
 ### <a name="azure-portal-development"></a>Azure Portal 開発
 
@@ -226,10 +226,10 @@ C# と C# スクリプトでは、`out` パラメーターや[コレクター �
 
 言語固有の戻り値の使用例を次に示します。
 
-* [C#](#c-example)
+* [C# を選択した場合](#c-example)
 * [C# スクリプト (.csx)](#c-script-example)
 * [F#](#f-example)
-* [JavaScript](#javascript-example)
+* [JavaScript を選択した場合](#javascript-example)
 
 ### <a name="c-example"></a>C# の例
 

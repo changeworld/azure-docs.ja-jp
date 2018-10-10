@@ -1,20 +1,21 @@
 ---
-title: LUIS の反復的アプリ設計について -Azure | Microsoft Docs
-description: LUIS アプリでは、最適なデータ抽出を実現できるように、LUIS をトレーニングする反復処理を設計する必要があります。
+title: Language Understanding (LUIS) での反復型アプリ設計
+titleSuffix: Azure Cognitive Services
+description: LUIS は、モデル変更、発話の例、公開、エンドポイント クエリからのデータ収集という反復サイクルの中で最も適切に学習します。  LUIS アプリでは、最適なデータ抽出を実現できるように、LUIS をトレーニングする反復処理を設計する必要があります。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 947350a1d0dcfb0caaca654768c3660fc1b146e1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 05f5ceb5a0f3529d7635f7aae0c3c41c19f0b1ad
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225443"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031953"
 ---
 # <a name="authoring-cycle"></a>作成サイクル
 LUIS は、モデル変更、発話の例、公開、エンドポイント クエリからのデータ収集という反復サイクルの中で最も適切に学習します。 
@@ -32,15 +33,12 @@ LUIS は、モデル変更、発話の例、公開、エンドポイント ク�
 LUIS には、意図内の発話例が必要です。 これらの例には、発話が意味する意図を判断できるくらい十分なバリエーションの単語の選択と語順が必要になります。 各発話例では、必要なあらゆるデータがエンティティとしてラベル付けされている必要があります。 
 
 発話を **None** 意図に割り当てることによって、アプリのドメインに無関係な発話を無視するように LUIS に指示します。 発話から抽出する必要のない単語またはフレーズにはラベル付けをする必要がありません。 無視する単語またはフレーズにはラベルを付けません。 
-<!--
-## Not just yet
-Do not add features such as a [phrase list](luis-concept-feature.md) feature in your first cycle. Phrase lists are phrases that would be specific to your app's subject area.  
--->
+
 ## <a name="train-and-publish-the-app"></a>アプリをトレーニングして公開する
-必要なエンティティがラベル付けされている 10 から 15 のさまざまな発話を意図ごとに用意したら、LUIS をトレーニングし、公開してエンドポイントを取得します。 アプリを作成し、必要な[エンドポイント領域](luis-reference-regions.md)で利用できるように公開します。 
+必要なエンティティがラベル付けされている 10 から 15 のさまざまな発話を意図ごとに用意したら、トレーニングして公開します。 公開成功の通知から、リンクを使用してエンドポイントを取得します。 アプリを作成し、必要な[エンドポイント領域](luis-reference-regions.md)で利用できるように公開します。 
 
 ## <a name="https-endpoint-testing"></a>HTTPS エンドポイントのテスト
-LUIS アプリは、**[[公開]](luis-how-to-publish-app.md)** ページに記載されている HTTPS エンドポイントからテストできます。 エンドポイントからテストすると、LUIS では、信頼度が低い発話を確認用に選択できます。  
+LUIS アプリは HTTPS エンドポイントからテストできます。 エンドポイントからテストすると、LUIS では、信頼度が低い発話を確認用に選択できます。  
 
 ## <a name="recycle"></a>リサイクル
 作成サイクルが完了したら、もう一度開始できます。 LUIS によって信頼度が低いとマークされたエンドポイントの発話の見直しから開始します。 意図とエンティティの両方について、これらの発話をチェックします。 発話を確認したら、確認リストが空になります。  

@@ -1,76 +1,56 @@
 ---
-title: パターンを使用して LUIS の予測を向上させる方法のチュートリアル - Azure | Microsoft Docs
-titleSuffix: Cognitive Services
-description: このチュートリアルでは、意図のパターンを使用して、LUIS による意図とエンティティの予測を向上させます。
+title: 'チュートリアル 3: LUIS の予測を改善するためのパターン'
+titleSuffix: Azure Cognitive Services
+description: パターンを使用して意図とエンティティの予測を改善しますが、提供する発話の例は減らします。 このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例によって提供されます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 9c14f2121cd83cec802f4fd4a92661d58eb7efb3
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f4b267dda3c05d490d91fe02fbcfde4e49674603
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159574"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166403"
 ---
-# <a name="tutorial-improve-app-with-patterns"></a>チュートリアル: パターンを使用してアプリを改善する
+# <a name="tutorial-3-add-common-utterance-formats"></a>チュートリアル 3: 一般的な発話の形式を追加する
 
-このチュートリアルでは、パターンを使用して意図とエンティティの予測を向上させます。  
+このチュートリアルでは、パターンを使用して意図とエンティティの予測を改善しますが、提供する発話の例は減らします。 このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例によって提供されます。 パターンは、式の照合と機械学習の組み合わせです。  テンプレート発話の例は、意図の発話と共に、どのような発話が意図に適合するかを LUIS がより適切に解釈できるようにします。 
+
+**このチュートリアルで学習する内容は次のとおりです。**
 
 > [!div class="checklist"]
-* パターンがアプリで役立つことを確認する方法
-* パターンを作成する方法
-* パターン予測の改善を検証する方法
+> * 既存のチュートリアル アプリを使用する 
+> * 意図を作成する
+> * トレーニング
+> * [発行]
+> * エンドポイントから意図とエンティティを取得する
+> * パターンを作成する
+> * パターン予測の改善を検証する
+> * テキストを無視できるものとマークし、パターン内で入れ子にする
+> * テスト パネルを使用してパターンの成功を検証する
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="use-existing-app"></a>既存のアプリを使用する
 
-[バッチ テスト](luis-tutorial-batch-testing.md) チュートリアルの人事アプリがない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-batchtest-HumanResources.json) GitHub リポジトリにあります。
+最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
 
-元の Human Resources アプリを保持する場合は、[[Settings]\(設定\)](luis-how-to-manage-versions.md#clone-a-version) ページでバージョンを複製し、`patterns` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 
+以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
 
-## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>パターンによって少ない例で一般的な発話を LUIS に学習させる
+1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json)をダウンロードして保存します。
 
-人事ドメインの性質上、組織内の従業員の関係について一般的な尋ね方がいくつかあります。 例: 
+2. JSON を新しいアプリにインポートします。
 
-|発話|
-|--|
-|Jill Jones は誰に報告しますか?|
-|誰が Jill Jones に報告しますか?|
-
-発話の多数の例を提供せずに、それぞれの文脈の一意性を判断するには、これらの発話は類似しすぎています。 意図のパターンを追加することにより、発話の多数の例を提供しなくても、LUIS は意図の一般的な発話パターンを学習します。 
-
-この意図のテンプレート発話の例を次に示します。
-
-|テンプレート発話の例|
-|--|
-|{Employee} は誰に報告しますか?|
-|誰が {Employee} に報告しますか?|
-
-このパターンは、エンティティと無視できるテキストを識別するための構文を含むテンプレート発話の例によって提供されます。 パターンは、正規表現の照合と機械学習の組み合わせです。  テンプレート発話の例は、意図の発話と共に、どのような発話が意図に適合するかを LUIS がより適切に解釈できるようにします。
-
-パターンが発話に一致するには、まず、発話内のエンティティがテンプレート発話内のエンティティに一致している必要があります。 ただし、テンプレートは意図の予測にのみ役立ち、エンティティの予測には役立ちません。 
-
-**パターンを使用すると提供される発話の例を少なくすることができますが、エンティティが検出されない場合、パターンは一致しません。**
-
-従業員が[リスト エンティティのチュートリアル](luis-quickstart-intent-and-list-entity.md)で作成されたことに注意してください。
+3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `patterns` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
 
 ## <a name="create-new-intents-and-their-utterances"></a>新しい意図とその発話を作成する
 
-2 つの新しい意図である `OrgChart-Manager` と `OrgChart-Reports` を追加します。 LUIS がクライアント アプリに予測を返したら、そのクライアント アプリで意図の名前を関数名として使用でき、従業員エンティティをその関数へのパラメーターとして使用できます。
-
-```Javascript
-OrgChart-Manager(employee){
-    ///
-}
-```
-
-1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Intents]\(意図\)** ページで、**[Create new intent]\(意図の新規作成\)** を選びます。 
 
@@ -110,17 +90,17 @@ OrgChart-Manager(employee){
 
 ## <a name="caution-about-example-utterance-quantity"></a>発話の例の量に関する注意
 
-これらの意図での発話の例の量は、LUIS の適切なトレーニングに十分ではありません。 実際のアプリでは、各意図に、さまざまな単語の選択や発話の長さを持つ少なくとも 15 の発話が必要です。 これらのいくつかの発話は、特にパターンを強調するために選択されます。 
+[!include[Too few examples](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]
 
-## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
+## <a name="train"></a>トレーニング
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
+## <a name="publish"></a>[発行]
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを実行する
+## <a name="get-intent-and-entities-from-endpoint"></a>エンドポイントから意図とエンティティを取得する
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -215,13 +195,53 @@ OrgChart-Manager(employee){
 
 この 2 つ目のブラウザー ウィンドウは開いたままにします。 後でまた使います。 
 
-## <a name="add-the-template-utterances"></a>テンプレート発話を追加する
+## <a name="template-utterances"></a>テンプレート発話
+人事ドメインの性質上、組織内の従業員の関係について一般的な尋ね方がいくつかあります。 例: 
+
+|発話|
+|--|
+|Jill Jones は誰に報告しますか?|
+|誰が Jill Jones に報告しますか?|
+
+発話の多数の例を提供せずに、それぞれの文脈の一意性を判断するには、これらの発話は類似しすぎています。 意図のパターンを追加することにより、発話の多数の例を提供しなくても、LUIS は意図の一般的な発話パターンを学習します。 
+
+この意図のテンプレート発話例には、次のものが含まれます:
+
+|テンプレート発話例|構文の意味|
+|--|--|
+|{Employee} は誰に報告しますか[?]|交換可能な {Employee}、[?] を無視}|
+|誰が {Employee} に報告しますか[?]|交換可能な {Employee}、[?] を無視}|
+
+`{Employee}` 構文では、テンプレート発話内でのエンティティの位置とそれがどのエンティティであるかがマークされます。 オプションの構文 `[?]` は、オプションである単語または句読点をマークします。 LUIS は、かっこ内のオプションのテキストを無視し、発話を照合します。
+
+構文は正規表現のように見えますが、正規表現ではありません。 中かっこ `{}` と角かっこ `[]` の構文のみがサポートされています。 これらは 2 階層まで入れ子にすることができます。
+
+パターンが発話に一致するには、まず、発話内のエンティティがテンプレート発話内のエンティティに一致している必要があります。 ただし、テンプレートは意図の予測にのみ役立ち、エンティティの予測には役立ちません。 
+
+**パターンを使用すると提供される発話の例を少なくすることができますが、エンティティが検出されない場合、パターンは一致しません。**
+
+このチュートリアルでは、2 つの新しい意図 `OrgChart-Manager` および `OrgChart-Reports` を追加します。 
+
+|意図|発話|
+|--|--|
+|OrgChart-Manager|Jill Jones は誰に報告しますか?|
+|OrgChart-Reports|誰が Jill Jones に報告しますか?|
+
+LUIS がクライアント アプリに予測を返したら、そのクライアント アプリで意図の名前を関数名として使用でき、従業員エンティティをその関数へのパラメーターとして使用できます。
+
+```Javascript
+OrgChartManager(employee){
+    ///
+}
+```
+
+従業員が[リスト エンティティのチュートリアル](luis-quickstart-intent-and-list-entity.md)で作成されたことに注意してください。
 
 1. 上部メニューの **[ビルド]** を選択します。
 
 2. 左側のナビゲーションの **[Improve app performance]\(アプリのパフォーマンスの改善\)** で、**[Patterns]\(パターン\)** を選択します。
 
-3. **[OrgChart-Manager]** 意図を選択してから、次のテンプレート発話を 1 つずつ入力し、各テンプレート発話の後に Enter キーを押します。
+3. **OrgChart-Manager** 意図を選択し、次のテンプレート発話を入力します。
 
     |テンプレート発話|
     |:--|
@@ -232,17 +252,13 @@ OrgChart-Manager(employee){
     |{Employee} の監督者は誰ですか[?]|
     |{Employee} の上司は誰ですか[?]|
 
-    `{Employee}` 構文では、テンプレート発話内でのエンティティの位置とそれがどのエンティティであるかがマークされます。 
-
     ロールを持つエンティティはロール名が含まれた構文を使用し、[ロールのための別のチュートリアル](luis-tutorial-pattern-roles.md)で説明されています。 
-
-    オプションの構文 `[]` は、オプションである単語または句読点をマークします。 LUIS は、かっこ内のオプションのテキストを無視し、発話を照合します。
 
     テンプレート発話を入力する場合は、左の中かっこ `{` を入力すると LUIS がエンティティの入力を支援します。
 
     [![意図のためのテンプレート発話の入力を示すスクリーンショット](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-4. **[OrgChart-Reports]** 意図を選択してから、次のテンプレート発話を 1 つずつ入力し、各テンプレート発話の後に Enter キーを押します。
+4. **OrgChart-Reports** 意図を選択し、次のテンプレート発話を入力します。
 
     |テンプレート発話|
     |:--|
@@ -427,6 +443,8 @@ OrgChart-Manager(employee){
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
+
+このチュートリアルでは、多くの発話例を追加しなければ高い精度での予測が難しかった発話のために 2 つの意図を追加します。 これらのパターンの追加によって LUIS での意図の予測が改善され、スコアが大幅に向上しました。 エンティティと無視可能テキストのマーク付けによって、LUIS でより多様な発話にパターンを適用できるようになりました。
 
 > [!div class="nextstepaction"]
 > [パターンと共にロールを使用する方法について](luis-tutorial-pattern-roles.md)

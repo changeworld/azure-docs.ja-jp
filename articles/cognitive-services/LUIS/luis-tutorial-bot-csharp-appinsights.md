@@ -1,26 +1,28 @@
 ---
-title: C# を使用して LUIS データを Application Insights に追加する| Microsoft Docs
-titleSuffix: Azure
+title: C# を使用した LUIS からの Application Insights データ
+titleSuffix: Azure Cognitive Services
 description: C# を使用して LUIS アプリケーションおよび Application Insights と統合されるボットを構築します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: f1efe305f5659bfab50cee13ac30d56531cc6093
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 83ad70e1242af1e01af06206a3a141f455072a44
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237793"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038954"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Web アプリ ボットから LUIS の結果を Application Insights に追加する
-このチュートリアルでは、LUIS 応答の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 データを用意したら、Kusto 言語または PowerBI を使用して、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートできます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。
+# <a name="add-luis-results-to-application-insights"></a>LUIS の結果を Application Insights に追加する
+このチュートリアルでは、LUIS 応答の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 データを用意したら、Kusto 言語または PowerBI を使用して、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートできます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。 
 
-このチュートリアルで学習する内容は次のとおりです。
+ボットは、Bot Framework 3.x と Azure Web アプリ ボットで構築します。
+
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 * Application Insights を Web アプリ ボットに追加する
@@ -231,7 +233,7 @@ Application Insights を使用すると、[Kusto](https://docs.microsoft.com/azu
     ![カスタム分析レポート](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
 
 
-[Kusto クエリ言語](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries)または [PowerBI へのデータのエクスポート](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)の詳細を確認してください。 
+[Kusto クエリ言語](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)または [PowerBI へのデータのエクスポート](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)の詳細を確認してください。 
 
 
 ## <a name="learn-more-about-bot-framework"></a>Bot Framework の詳細

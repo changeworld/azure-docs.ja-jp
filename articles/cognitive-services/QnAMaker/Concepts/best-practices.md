@@ -1,49 +1,98 @@
 ---
-title: ベスト プラクティス - QnA Maker - Azure Cognitive Services | Microsoft Docs
+title: ベスト プラクティス - QnA Maker
+titlesuffix: Azure Cognitive Services
 description: 以下のベスト プラクティスを利用してナレッジ ベースを改善し、アプリケーション/チャット ボットのエンド ユーザーにより良い情報を提供します。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: 7a85ebbc3892a90e98e73a73425c1f8ec1de0b35
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.date: 09/24/2018
+ms.author: tulasim
+ms.openlocfilehash: cb171a666a4a54660a3bf54b8f26aed23f60d249
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378690"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036305"
 ---
 # <a name="best-practices"></a>ベスト プラクティス
 [ナレッジ ベース開発ライフサイクル](../Concepts/development-lifecycle-knowledge-base.md)では、ナレッジ ベースを始まりから終わりまで管理する方法を紹介しています。 以下のベスト プラクティスを利用してナレッジ ベースを改善し、アプリケーション/チャット ボットのエンド ユーザーにより良い情報を提供します。
 
 ## <a name="extraction"></a>抽出
-QnA Maker は継続的に、コンテンツから QnA を抽出するアルゴリズムを改善し、サポートされるファイルと HTML ページ形式を拡大しています。 抽出元になるドキュメントの種類に基づく抽出については、[ガイドライン](../Concepts/data-sources-supported.md)に従ってください。 
+QnA Maker サービスは継続的に、コンテンツから QnA を抽出するアルゴリズムを改善し、サポートされるファイルおよび HTML 形式のリストを拡大しています。 ドキュメントの種類に応じた、データ抽出の[ガイドライン](../Concepts/data-sources-supported.md)に従ってください。 
 
 一般的に、FAQ ページは独立させ、他の情報と組み合わせないでください。 製品マニュアルにはわかりやすい見出しを付けてください。索引ページを付けることもお勧めします。 
 
-## <a name="rankingmatching"></a>優先度付け/照合
+## <a name="chit-chat"></a>おしゃべり
+少ない労力でボットをより話し上手で魅力的にするために、おしゃべりをボットに追加します。 ナレッジ ベースの作成時に、3 つの事前定義済みの性格に対応したおしゃべりデータ セットを簡単に追加し、いつでも性格を変更することができます。 [おしゃべりをナレッジ ベースに追加](../How-To/chit-chat-knowledge-base.md)する方法を学びます。 
+
+### <a name="choosing-a-personality"></a>性格の選択
+おしゃべりでは、3 つの事前定義済みの性格がサポートされています: 
+
+|性格|
+|--|
+|プロフェッショナル|
+|フレンド|
+|コミック|
+
+改まった応答からくだけた応答、非礼な応答まで可能です。 ボットに演じさせたい雰囲気に最も近い性格を選択する必要があります。 データ セットを表示し、ボットの基本として機能するデータ セットを選択した後、応答をカスタマイズすることができます。 
+
+### <a name="edit-bot-specific-questions"></a>ボット固有の質問の編集
+おしゃべりデータ セットの一部であり、一般的な回答が入力されているボット固有の質問がいくつかあります。 ボットの詳細を最も的確に反映するように、これらの回答を変更します。 
+
+以下のおしゃべり QnA をより具体的にすることをお勧めします。
+
+* 自分がだれであるか。
+* 何ができますか?
+* 何歳ですか?
+* あなたを創造したのは誰ですか?
+* こんにちは
+   
+
+## <a name="rankingscoring"></a>ランキング/スコア
 QnA Maker でサポートされている優先度付け機能を効果的に活用してください。 それにより、ユーザーからの問い合わせに適切な回答が与えられる可能性が上がります。
 
+### <a name="choosing-a-threshold"></a>しきい値の選択
+しきい値として使用される既定の信頼度スコアは 50 ですが、ナレッジ ベースのニーズに合わせてこの値を変更できます。 すべてのナレッジ ベースは異なっているため、ナレッジ ベースに最も適したしきい値をテストして選択する必要があります。 [信頼度スコア](../Concepts/confidence-score.md)の詳細をご覧ください。 
+
+
 ### <a name="add-alternate-questions"></a>代わりの質問を追加する
-[代わりの質問](../How-To/edit-knowledge-base.md)を用意すること (別の表現で言い換えること) で、ユーザーからの問い合わせに一致する可能性が向上します。 代わりの質問は、同じ質問にさまざまな表現が使われるときに役立ちます。 たとえば、*"Is parking available?"* (駐車できますか) を *"Do you have car park?"* (駐車場はありますか) にするなど、文章の構造を変えます。あるいは、*"Hi"* を *"Yo"* や *"Hey there!"* にするなど、言葉遣いを変えたり、俗語を使ったりします。
+[代わりの質問](../How-To/edit-knowledge-base.md)を用意すること (別の表現で言い換えること) で、ユーザーからの問い合わせに一致する可能性が向上します。 代わりの質問は、同じ質問にさまざまな表現が使われるときに役立ちます。 これには、文の構造や言葉遣いの変化が含まれることがあります。
+
+|元の質問|代わりの質問|Change| 
+|--|--|--|
+|駐車場は空いていますか?|駐車場はありますか?|文の構造|
+ |やあ|よう<br>おい!|言葉遣いまたはスラング|
 
 ### <a name="use-metadata-filters"></a>メタデータ フィルターを使用する
 [メタデータ](../How-To/edit-knowledge-base.md)を利用すれば、フィルターに基づいてユーザーからの問い合わせの結果を絞り込むことができます。 レッジ ベースの回答は、問い合わせが同じであっても、メタデータ タグに基づいて異なる場合があります。 たとえば、*"where is parking located"* (駐車場はどこですか) という問いに対し、レストランの支店の場所が違えば、つまり、*Location: Seattle* (所在地: シアトル) のときと、*Location: Redmond* (所在地: レドモンド) のときで答えが変わります。
 
 ### <a name="use-synonyms"></a>同義語を使用する
-英語では同義語をある程度サポートしていますが、さまざま言い方があるキーワードに同義語を追加するには、[言葉の変更](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd)機能を利用します。たとえば、*buy* ->  に *purchase* を追加したり、*netbanking* ->  に *net banking* を追加したりします。 同義語は QnA Maker サービスレベルで追加し、サービス内の全ナレッジ ベースで共有してください。
+英語では同義語をある程度サポートしていますが、さまざま言い方があるキーワードに同義語を追加するには、[言葉の変更](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd)機能を利用します。 同義語は QnA Maker サービスレベルで追加し、サービス内の全ナレッジ ベースで共有してください。
+
+|元の語|シノニム|
+|--|--|
+|買う|購入する<br>ネットバンキング<br>ネット バンキング|
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>質問を区別する目的で明確な言葉を使う
-QnA Maker の照合/優先度付けアルゴリズムはユーザーからの問い合わせとナレッジ ベースに登録されている質問を一致させるアルゴリズムですが、このアルゴリズムはそれぞれの質問が異なるニーズに対処する場合に最も効果を発揮します。 複数の質問で同じ言葉が繰り返し使われていると、その言葉が含まれる問い合わせが届いたとき、正しい回答が選ばれる可能性が下がります。
+QnA Maker の照合/優先度付けアルゴリズムはユーザーからの問い合わせとナレッジ ベースに登録されている質問を一致させるアルゴリズムですが、このアルゴリズムはそれぞれの質問が異なるニーズに対処する場合に最も効果を発揮します。 複数の質問で同じ言葉が繰り返し使われていると、その言葉が含まれる問い合わせが届いたとき、正しい回答が選ばれる可能性が下がります。 
+
+たとえば、2 つの個別 QnA があり、次のような質問内容であるとします。
+
+|QnA|
+|--|
+|駐車*場所*はどこですか|
+|ATM の*場所*はどこですか|
+
+これら 2 つの QnA は非常によく似た語で表現されていますが、この類似性のために、「*`<x>` の場所はどこですか*」のように表現されるユーザーの問い合わせの多くが非常に近いスコアになる可能性があります。 代わりに、ナレッジ ベース内の多くの質問に存在するかもしれない「場所」のような語を避け、「*駐車場はどこですか*」や「*ATM はどこですか*」のような質問で違いを明確にしてください。 
+
 
 ## <a name="collaborate"></a>協力
-QnA Maker では、ユーザーはナレッジ ベースに[協力](../How-to/collaborate-knowledge-base.md)できます。 ーザーがナレッジ ベースにアクセスするには、Azure QnA Maker リソース グループにアクセスする許可が必要です。 ナレッジ ベースの編集と保守管理を外注する組織もありますが、その場合でも Azure リソースへのアクセスを保護できます。 この編集者/承認者モデルは、異なるサブスクリプションで同じ [QnA Maker サービス](../How-to/set-up-qnamaker-service-azure.md)を 2 つ設定し、その 1 つを編集/テスト サイクルに指定することで実現できます。 テストが完了したら、[インポート/エクスポート](../Tutorials/migrate-knowledge-base.md) プロセスを利用し、承認者の QnA Maker サービスにナレッジ ベースコンテンツを転送できます。
+QnA Maker では、ユーザーはナレッジ ベースに[協力](../How-to/collaborate-knowledge-base.md)できます。 ナレッジ ベースにアクセスするためには、Azure QnA Maker リソース グループへのアクセス権がユーザーに必要です。 ナレッジ ベースの編集と保守管理を外注する組織もありますが、その場合でも Azure リソースへのアクセスを保護できます。 この編集者/承認者モデルは、異なるサブスクリプションで同じ [QnA Maker サービス](../How-to/set-up-qnamaker-service-azure.md)を 2 つ設定し、その 1 つを編集/テスト サイクルに選択することで実現されます。 テストが終了したら、[インポート/エクスポート](../Tutorials/migrate-knowledge-base.md) プロセスを利用して、承認者の QnA Maker サービスにナレッジ ベース コンテンツを転送します。この承認者が最終的にナレッジ ベースを公開し、エンドポイントを更新します。
 
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [ナレッジ ベースを編集する](../How-to/edit-knowledge-base.md)
-

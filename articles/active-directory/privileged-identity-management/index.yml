@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d3e8a597362925ad2f7a87a7373cfe1aeb2591ff
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 6724c15c7cb4bf9f8f758296015a026d1d2563b8
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783636"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801835"
 documentType: LandingData
 title: Privileged Identity Management のドキュメント
 metadata:
@@ -22,6 +22,15 @@ metadata:
   ms.author: rolyon
 abstract:
   description: Azure Active Directory (Azure AD) Privileged Identity Management (PIM) では、継続的な管理者アクセスを特権ロールに限定できるほか、アクセス許可を持つユーザーを検出したり、特権アクセスの状況を確認したりできます。
+  aside:
+    image:
+      alt: 
+      height: 112
+      src: media/index/video-thumb-pim.png
+      width: 200
+    title: お客様の領域でキーを保護する (42:45)
+    href: https://www.youtube.com/embed/w7wTpZYJJeQ
+    width: 200
 sections:
 - title: 適格でアクティブなロールのユーザー向けのハウツー ガイド
   items:

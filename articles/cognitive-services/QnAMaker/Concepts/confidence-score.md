@@ -1,21 +1,21 @@
 ---
-title: 信頼度スコア - Microsoft Cognitive Services | Microsoft Docs
-titleSuffix: Azure
-description: 信頼スコアの説明
+title: 信頼度スコア - QnA Maker
+titleSuffix: Azure Cognitive Services
+description: 信頼度スコアは、ユーザーの質問と返された応答の間の一致の程度を示します。
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: c97bdb7e57275ebd1893bc28248c4ecc6b35c153
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 33da5cf5724b8314ce813f12eb077d9a15ec1b2a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376309"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041525"
 ---
 # <a name="confidence-score"></a>信頼度スコア
 
@@ -56,7 +56,7 @@ ms.locfileid: "35376309"
 
     ![App Service にアクセスする](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
-3. **[アプリケーション設定]** をクリックし、**DefaultAnswer** フィールドを目的の既定の応答に編集します。 **[保存]** をクリックします。
+3. **[アプリケーション設定]** をクリックし、**DefaultAnswer** フィールドを目的の既定の応答に編集します。 **[Save]** をクリックします。
 
     ![既定の応答を変更する](../media/qnamaker-concepts-confidencescore/change-response.png)
 

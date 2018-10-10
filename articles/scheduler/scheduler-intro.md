@@ -1,56 +1,43 @@
 ---
 title: Azure Scheduler とは | Microsoft Docs
-description: Azure Scheduler では、クラウドで実行するアクションを宣言的に記述することができます。 その後スケジュールを設定し、アクションを自動的に実行します。
+description: Azure の内部または外部のサービスを呼び出す自動ジョブを作成、スケジュール、および実行する方法について説明します
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 08/18/2016
+ms.suite: infrastructure-services
+author: derek1ee
 ms.author: deli
-ms.openlocfilehash: a3bf1aacd6978499d7ef77cbcb451a06b857ac38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.reviewer: klam
+ms.assetid: 52aa6ae1-4c3d-43fb-81b0-6792c84bcfae
+ms.topic: hero-article
+ms.date: 09/17/2018
+ms.openlocfilehash: 4d4f7bf9c77dad21f9e66ab0fa023a4898163f1f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22715116"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989183"
 ---
 # <a name="what-is-azure-scheduler"></a>Azure Scheduler とは
-Azure Scheduler では、クラウドで実行するアクションを宣言的に記述することができます。 その後スケジュールを設定し、アクションを自動的に実行します。  Scheduler では、[Azure Portal](scheduler-get-started-portal.md)、コード、[REST API](https://msdn.microsoft.com/library/mt629143.aspx)、または Azure PowerShell を使用してこれを実行します。
 
-Scheduler には、スケジュールされた作業の作成、保守、呼び出しの機能があります。  Scheduler が、ワークロードをホストしたり、コードを実行したりすることはありません。 Scheduler は他の場所 (Azure、オンプレミス、または別のプロバイダー) でホストされるコードを *呼び出す* だけです。 呼び出しは、HTTP、HTTPS、ストレージ キュー、Service Bus キュー、Service Bus トピックを介して行われます。
+> [!IMPORTANT]
+> [Azure Logic Apps](../logic-apps/logic-apps-overview.md) は、廃止される予定の Azure Scheduler の後継です。 ジョブをスケジュールするには、[Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) を代わりにお使いください。 
 
-Scheduler では [ジョブ](scheduler-concepts-terms.md)をスケジュールし、レビュー可能なジョブ実行結果の履歴を保持し、ワークロードを確実かつ高い信頼度で実行するようにスケジュールします。 Azure WebJobs (Azure App Service の Web Apps 機能の一部) およびその他の Azure スケジュール機能では、Scheduler をバック グラウンドで使用します。 [Scheduler REST API](https://msdn.microsoft.com/library/mt629143.aspx) では、こうしたアクションにおける通信を管理します。 このため、Scheduler は [複雑なスケジュールおよび高度な定期実行](scheduler-advanced-complexity.md) に容易に対応できます。
+[Azure Scheduler](https://azure.microsoft.com/services/scheduler/) は、宣言でアクションを記述することによって、クラウド内で実行される[ジョブ](../scheduler/scheduler-concepts-terms.md)を作成するのに役立ちます。 その後、サービスはそれらのアクションを自動的にスケジュールして実行します。 たとえば、Azure の内部および外部のサービスを呼び出すことができ (HTTP または HTTPS エンドポイントの呼び出しなど)、Azure Storage キューおよび Azure Service Bus キューまたはトピックにメッセージを送信することもできます。 すぐに、または後で、ジョブを実行することができます。 Scheduler は、[複雑なスケジュールおよび高度な定期実行](../scheduler/scheduler-advanced-complexity.md)に容易に対応できます。 Scheduler は、ジョブを実行するタイミングを指定し、ユーザーが確認できるジョブの結果の履歴を保持し、実行するワークロードを予期したとおり確実にスケジュールします。
 
-Scheduler の使用に適しているシナリオがいくつかあります。 次に例を示します。
+Scheduler を使用してスケジュールされたワークロードを作成、管理、および実行できますが、Scheduler がワークロードをホストしたりコードを実行したりすることはありません。 このサービスは、他の場所 (Azure、オンプレミス、別のプロバイダーなど) でホストされているサービスまたはコードを "*呼び出す*" だけです。 Scheduler は、HTTP、HTTPS、Storage キュー、Service Bus キュー、Service Bus トピックを介して呼び出すことができます。 ジョブを作成、管理、およびスケジュールするには、[Azure portal](../scheduler/scheduler-get-started-portal.md)、コード、[Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/)、または [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)を使用できます。 たとえば、スクリプトを使用したり Azure portal 内で、ジョブおよび[ジョブ コレクション](../scheduler/scheduler-concepts-terms.md)をプログラムにより作成、表示、更新、管理、削除できます。
 
-* *定期的なアプリケーション アクション:* Twitter からのデータを定期的に収集し、フィードに集めます。
-* *日々のメンテナンス:* 日々のログの排除、バックアップの実行、その他のメンテナンス タスク。 たとえば、管理者は、午前 1 時にデータベースをバックアップすることができます  (今後 9 か月間、毎日)。
+Azure App Service の [Web Apps](https://azure.microsoft.com/services/app-service/web/) 機能である [Azure WebJobs](../app-service/web-sites-create-web-jobs.md) など、他の Azure スケジュール機能も Scheduler をバックグラウンドで使用します。 [Scheduler REST API](https://docs.microsoft.com/rest/api/scheduler/) を使用することで、これらのアクションに対する通信を管理できます。 これらのアクションにおける通信を管理します。
 
-Scheduler では、ジョブおよび [ジョブ コレクション](scheduler-concepts-terms.md) の作成、更新、削除、表示、および管理を、プログラム、スクリプト、およびポータルを使用して実行することができます。
+Scheduler が役に立ついくつかのシナリオを次に示します。
 
-## <a name="see-also"></a>関連項目
- [Azure Scheduler の概念、用語集、エンティティ階層構造](scheduler-concepts-terms.md)
+* **アプリの定期的なアクションを実行する**: たとえば、Twitter からフィードに定期的にデータを収集します。
 
- [Azure ポータル内で Scheduler を使用した作業開始](scheduler-get-started-portal.md)
+* **毎日のメンテナンスを実行する:** 日常的なログの除去、バックアップの実行、その他のメンテナンス タスクなどです。 
 
- [Azure Scheduler のプランと課金](scheduler-plans-billing.md)
+  たとえば、管理者は、今後 9 か月間毎日午前 1 時にデータベースをバックアップする、といったことがあります。
 
- [Azure Scheduler で複雑なスケジュールと高度な定期実行を構築する方法](scheduler-advanced-complexity.md)
+## <a name="next-steps"></a>次の手順
 
- [Azure Scheduler REST API リファレンス](https://msdn.microsoft.com/library/mt629143)
-
- [Azure Scheduler PowerShell コマンドレット リファレンス](scheduler-powershell-reference.md)
-
- [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
-
- [Azure Scheduler の制限、既定値、エラー コード](scheduler-limits-defaults-errors.md)
-
- [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
-
+* [Azure portal で Scheduler の使用を始める](scheduler-get-started-portal.md)
+* [Azure Scheduler のプランと課金](scheduler-plans-billing.md)を確認する
+* [Azure Scheduler で複雑なスケジュールと高度な繰り返しを構築する方法](scheduler-advanced-complexity.md)を学習する

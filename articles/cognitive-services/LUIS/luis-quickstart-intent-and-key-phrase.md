@@ -1,41 +1,24 @@
 ---
-title: 'チュートリアル: キー フレーズを返す LUIS アプリを作成する - Azure | Microsoft Docs'
-description: このチュートリアルでは、LUIS アプリに keyPhrase エンティティを追加して返し、主題の発話を分析する方法について説明します。
+title: 'チュートリアル 8: LUIS でのキー フレーズ抽出'
+titleSuffix: Azure Cognitive Services
+description: keyPhrase 事前構築済みエンティティを使用して、発話から主題を抽出します。 発話に事前構築済みエンティティのラベルを付ける必要はありません。 このエンティティは自動的に検出されます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: ef7a1c81f453a8d4ff9526a4844518782e152c4f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 8fa183c22b9b6830c57b0a16b7f5d20ca38e3ef3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159488"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166522"
 ---
-# <a name="tutorial-8-add-keyphrase-entity"></a>チュートリアル: 8.  keyPhrase エンティティを追加する 
-このチュートリアルでは、発話から主題を抽出する方法を示すアプリを使用します。
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * keyPhrase エンティティの概要 
-> * 人事 (HR) ドメインで LUIS アプリを使用する 
-> * 発話からコンテンツを抽出する keyPhrase エンティティを追加する
-> * アプリをトレーニングして公開する
-> * アプリのエンドポイントにクエリを実行して、キー フレーズを含む LUIS JSON の応答を確認する
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>開始する前に
-[シンプル エンティティ](luis-quickstart-primary-and-secondary-data.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-simple-HumanResources.json) GitHub リポジトリにあります。
-
-元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`keyphrase` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 
-
-## <a name="keyphrase-entity-extraction"></a>keyPhrase エンティティの抽出
-主題は、事前構築済みのエンティティ **keyPhrase** によって提供されます。 このエンティティは、発話に含まれる主題を返します。
+# <a name="tutorial-8-extract-key-phrases-of-utterance"></a>チュートリアル 8: 発話のキー フレーズを抽出する
+このチュートリアルでは、事前構築済みの keyPhrase エンティティを使用して、発話から主題を抽出します。 発話に事前構築済みエンティティのラベルを付ける必要はありません。 このエンティティは自動的に検出されます。
 
 以下の発話は、キー フレーズの例です。
 
@@ -46,147 +29,157 @@ ms.locfileid: "44159488"
 
 お使いのクライアント アプリケーションでは、これらの値を、他の抽出されたエンティティと共に使用して、会話の次のステップを判断できます。
 
+**このチュートリアルで学習する内容は次のとおりです。**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * 既存のチュートリアル アプリを使用する
+> * keyPhrase エンティティを追加する 
+> * トレーニング
+> * [発行]
+> * エンドポイントから意図とエンティティを取得する
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>既存のアプリを使用する
+
+最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
+
+前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+
+1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-simple-HumanResources.json)をダウンロードして保存します。
+
+2. JSON を新しいアプリにインポートします。
+
+3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `keyphrase` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
+
 ## <a name="add-keyphrase-entity"></a>keyPhrase エンティティを追加する 
 発話から主題を抽出する keyPhrase 事前構築済みエンティティを追加します。
 
-1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 左側のメニューから **[Entities]\(エンティティ\)** を選択します。
 
-    [ ![[ビルド] セクションの左側のナビゲーションで強調表示されている [Entities]\(エンティティ\) スクリーンショット](./media/luis-quickstart-intent-and-key-phrase/hr-select-entities-button.png)](./media/luis-quickstart-intent-and-key-phrase/hr-select-entities-button.png#lightbox)
-
 3. **[Manage prebuilt entities]\(事前構築済みエンティティの管理\)** を選択します。
-
-    [ ![[Entities]\(エンティティ\) リストのポップアップ ダイアログのスクリーンショット](./media/luis-quickstart-intent-and-key-phrase/hr-manage-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/hr-manage-prebuilt-entities.png#lightbox)
 
 4. ポップアップ ダイアログで **[keyPhrase]** を選択し、**[完了]** を選択します。 
 
     [ ![[Entities]\(エンティティ\) リストのポップアップ ダイアログのスクリーンショット](./media/luis-quickstart-intent-and-key-phrase/hr-add-or-remove-prebuilt-entities.png)](./media/luis-quickstart-intent-and-key-phrase/hr-add-or-remove-prebuilt-entities.png#lightbox)
 
-    <!-- TBD: asking Carol
-    You won't see these entities labeled in utterances on the intents pages. 
-    -->
 5. 左側のメニューから **[Intents]\(意図\)** を選択し、**[Utilities.Confirm]** 意図を選択します。 keyPhrase エンティティは、複数の発話でラベル付けされています。 
 
     [ ![発話で keyPhrases がラベル付けされている Utilities.Confirm 意図のスクリーンショット](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png)](./media/luis-quickstart-intent-and-key-phrase/hr-keyphrase-labeled.png#lightbox)
 
-## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
+## <a name="train"></a>トレーニング
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-app-to-endpoint"></a>エンドポイントにアプリを公開する
+## <a name="publish"></a>[発行]
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-
-## <a name="query-the-endpoint-with-an-utterance"></a>発話を使用してエンドポイントにクエリを実行する
+## <a name="get-intent-and-entities-from-endpoint"></a>エンドポイントから意図とエンティティを取得する
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. アドレスの URL の末尾に移動し、「`does form hrf-123456 cover the new dental benefits and medical plan`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
-
-```
-{
-  "query": "does form hrf-123456 cover the new dental benefits and medical plan",
-  "topScoringIntent": {
-    "intent": "FindForm",
-    "score": 0.9300641
-  },
-  "intents": [
+    
+    ```JSON
     {
-      "intent": "FindForm",
-      "score": 0.9300641
-    },
-    {
-      "intent": "ApplyForJob",
-      "score": 0.0359598845
-    },
-    {
-      "intent": "GetJobInformation",
-      "score": 0.0141798034
-    },
-    {
-      "intent": "MoveEmployee",
-      "score": 0.0112197418
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00507669244
-    },
-    {
-      "intent": "None",
-      "score": 0.00238501839
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00202810857
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.00102957746
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.0008688423
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 3.557994E-05
+      "query": "does form hrf-123456 cover the new dental benefits and medical plan",
+      "topScoringIntent": {
+        "intent": "FindForm",
+        "score": 0.9300641
+      },
+      "intents": [
+        {
+          "intent": "FindForm",
+          "score": 0.9300641
+        },
+        {
+          "intent": "ApplyForJob",
+          "score": 0.0359598845
+        },
+        {
+          "intent": "GetJobInformation",
+          "score": 0.0141798034
+        },
+        {
+          "intent": "MoveEmployee",
+          "score": 0.0112197418
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.00507669244
+        },
+        {
+          "intent": "None",
+          "score": 0.00238501839
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.00202810857
+        },
+        {
+          "intent": "Utilities.Stop",
+          "score": 0.00102957746
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.0008688423
+        },
+        {
+          "intent": "Utilities.Confirm",
+          "score": 3.557994E-05
+        }
+      ],
+      "entities": [
+        {
+          "entity": "hrf-123456",
+          "type": "HRF-number",git 
+          "startIndex": 10,
+          "endIndex": 19
+        },
+        {
+          "entity": "new dental benefits",
+          "type": "builtin.keyPhrase",
+          "startIndex": 31,
+          "endIndex": 49
+        },
+        {
+          "entity": "medical plan",
+          "type": "builtin.keyPhrase",
+          "startIndex": 55,
+          "endIndex": 66
+        },
+        {
+          "entity": "hrf",
+          "type": "builtin.keyPhrase",
+          "startIndex": 10,
+          "endIndex": 12
+        },
+        {
+          "entity": "-123456",
+          "type": "builtin.number",
+          "startIndex": 13,
+          "endIndex": 19,
+          "resolution": {
+            "value": "-123456"
+          }
+        }
+      ]
     }
-  ],
-  "entities": [
-    {
-      "entity": "hrf-123456",
-      "type": "HRF-number",git 
-      "startIndex": 10,
-      "endIndex": 19
-    },
-    {
-      "entity": "new dental benefits",
-      "type": "builtin.keyPhrase",
-      "startIndex": 31,
-      "endIndex": 49
-    },
-    {
-      "entity": "medical plan",
-      "type": "builtin.keyPhrase",
-      "startIndex": 55,
-      "endIndex": 66
-    },
-    {
-      "entity": "hrf",
-      "type": "builtin.keyPhrase",
-      "startIndex": 10,
-      "endIndex": 12
-    },
-    {
-      "entity": "-123456",
-      "type": "builtin.number",
-      "startIndex": 13,
-      "endIndex": 19,
-      "resolution": {
-        "value": "-123456"
-      }
-    }
-  ]
-}
-```
+    ```
 
-フォームの検索中、ユーザーが指定した情報には、フォームを見つけるうえで必要だったもの以外も含まれています。 追加情報は **builtin.keyPhrase** として返されます。 クライアント アプリケーションは、この追加情報を、"新しい歯科治療給付について人事担当者に問い合わせますか" といった補足質問に対して使用できます。また、"新しい歯科治療または医療プランに関する詳細情報" オプションを含むメニューを、アプリケーションに追加することもできます。
-
-## <a name="what-has-this-luis-app-accomplished"></a>この LUIS アプリの処理内容
-このアプリは、keyPhrase エンティティの検出を使用し、自然言語のクエリの意図を特定し、主題を含む抽出されたデータを返しました。 
-
-チャットボットは、会話の次のステップを判断することができる十分な情報を取得しまた。 
-
-## <a name="where-is-this-luis-data-used"></a>この LUIS データの使用場所 
-LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し側アプリは、発話から topScoringIntent の結果と keyPhrase データを取得し、次のステップに進むことができます。 LUIS は、ボットや呼び出し側アプリケーションのためにこのようなプログラム作業を実行しません。 LUIS はユーザーの意図を判断するだけです。 
+    フォームの検索中、ユーザーが指定した情報には、フォームを見つけるうえで必要だったもの以外も含まれています。 追加情報は **builtin.keyPhrase** として返されます。 クライアント アプリケーションは、この追加情報を、"新しい歯科治療給付について人事担当者に問い合わせますか" といった補足質問に対して使用できます。また、"新しい歯科治療または医療プランに関する詳細情報" オプションを含むメニューを、アプリケーションに追加することもできます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
+
+このチュートリアルでは、事前構築済みの keyPhrase エンティティを追加し、発話にラベルを付けることなく、発話内のキー フレーズをすばやく提供しました。 
 
 > [!div class="nextstepaction"]
 > [センチメント分析をアプリに追加する](luis-quickstart-intent-and-sentiment-analysis.md)

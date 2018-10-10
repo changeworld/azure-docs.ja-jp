@@ -1,21 +1,21 @@
 ---
-title: ナレッジ ベースのインポート方法 - Microsoft Cognitive Services | Microsoft Docs
-titleSuffix: Azure
+title: プレビュー版のナレッジ ベースを移行する - Qna Maker
+titleSuffix: Azure Cognitive Services
 description: ナレッジ ベースのインポート方法
 services: cognitive-services
-author: nstulasi
-manager: sangitap
+author: tulasim88
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: ce8f98f9bdb37d5f326e942fe5b5e815e5272c56
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.date: 09/12/2018
+ms.author: tulasim
+ms.openlocfilehash: 0cb8a185407c7b180a170f1f9b9d76aa28a24de5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378702"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031630"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>エクスポート/インポートを使用したナレッジ ベースの移行
 2018 月 5 月 7 日、\\\build\ カンファレンスで QnA Maker の一般提供が発表されました。 QnA Maker GA により、新しいアーキテクチャが Azure 上に構築されます。 QnA Maker Free プレビューで作成されたナレッジ ベースは、QnA Maker GA. に移行する必要があります。 QnA Maker プレビューは、2018 年 11 月に非推奨となる予定です。 QnA Maker GA での変更の詳細については、QnA Maker GA のお知らせに関する[ブログ記事](https://aka.ms/qnamakerga-blog)をご覧ください。
@@ -53,7 +53,7 @@ QnA Maker には、[価格モデル](https://azure.microsoft.com/en-us/pricing/d
     - サービスに**名前**を付けます。 名前は重複しても構いません。特殊文字も使用できます。
     - プレビュー ナレッジ ベースのデータを使用するため、ファイルまたは URL のアップロードをスキップします。 ここでは、空のナレッジ ベースを作成します。
 
-7. **[作成]** を選択します。
+7. **作成**を選択します。
 
     ![KB の作成](../media/qnamaker-how-to-create-kb/create-kb.png)
 

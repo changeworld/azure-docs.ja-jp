@@ -1,22 +1,23 @@
 ---
-title: Azure Content Moderator を使用した機械学習と AI による e コマース カタログ モデレーション | Microsoft Docs
-description: 機械学習と AI を使用して e コマース カタログを自動的にモデレートする
+title: 'チュートリアル: e コマース カタログのモデレーション - Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: 機械学習と AI を使用して e コマース カタログを自動的にモデレートします。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6177758eaa3e611ad67da0778d889df48b052d90
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 2405ba9087e63b57c7bd6bc6f290cdafacaf7a49
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37095753"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227352"
 ---
-# <a name="ecommerce-catalog-moderation-with-machine-learning"></a>機械学習による e コマース カタログのモデレーション
+# <a name="tutorial-ecommerce-catalog-moderation-with-machine-learning"></a>チュートリアル: 機械学習による e コマース カタログのモデレーション
 
 このチュートリアルでは、マシン支援型 AI テクノロジと人によるモデレーションを組み合わせて、機械学習ベースの高度な e コマース カタログ モデレーションを実装して、高度なカタログ システムを提供する方法について説明します。
 

@@ -9,14 +9,14 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: 7796accffb7041e567c5e18857d09e105b5268ce
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 675dae022376fc62292f3b079bd735939b9199c2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961571"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220297"
 ---
-# <a name="how-to-configure-a-development-environment-for-the-azure-machine-learning-service"></a>Azure Machine Learning サービスの開発環境を構成する方法
+# <a name="configure-a-development-environment-for-the-azure-machine-learning-service"></a>Azure Machine Learning サービスの開発環境の構成
 
 Azure Machine Learning サービスを操作する開発環境を構成する方法について説明します。 環境を Azure Machine Learning ワークスペースに関連付ける構成ファイルを作成する方法を学習します。 次の開発環境を構成する方法も学習します。
 
@@ -39,17 +39,31 @@ Azure Machine Learning サービスを操作する開発環境を構成する方
 
 ワークスペース構成ファイルは、SDK によって Azure Machine Learning サービス ワークスペースと通信するために使用されます。  このファイルを入手するには次の 2 つの方法があります。
 
-* [クイックスタート](quickstart-get-started.md)を完了すると、ファイル `config.json` が Azure notebooks で作成されます。  このファイルには、ワークスペースの構成情報が含まれています。  それを参照するスクリプトまたはノートブックと同じディレクトリにダウンロードします。
+* [クイック スタート](quickstart-get-started.md)を完了して、ワークスペースと構成ファイルを作成します。 自動的に `config.json` ファイルが Azure Notebooks に作成されます。  このファイルには、ワークスペースの構成情報が含まれています。  これを参照するスクリプトまたはノートブックと同じディレクトリに、これをダウンロードまたはコピーします。
+
 
 * 次の手順で構成ファイルを自分で作成します。
 
     1. [Azure Portal](https://portal.azure.com) でワークスペースを開きます。 __ワークスペース名__、__リソース グループ__、および__サブスクリプション ID__ をコピーします。 これらの値は、構成ファイルの作成に使用されます。
 
-       ポータルのワークスペース ダッシュボードは、Edge、Chrome、および Firefox ブラウザーでのみでサポートされます。
-    
         ![Azure ポータル](./media/how-to-configure-environment/configure.png) 
     
-    3. テキスト エディターで **config.json** というファイルを作成します。  ポータルから値を挿入して、そのファイルに次の内容を追加します。
+    1. この Python コードを使用してファイルを作成します。 ワークスペースを参照するスクリプトまたはノートブックと同じディレクトリでこのコードを実行します。
+        ```
+        from azureml.core import Workspace
+
+        subscription_id ='<subscription-id>'
+        resource_group ='<resource-group>'
+        workspace_name = '<workspace-name>'
+        
+        try:
+           ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
+           ws.write_config()
+           print('Library configuration succeeded')
+        except:
+           print('Workspace not found')
+        ```
+        これによって、次の `aml_config/config.json` ファイルが書き込まれます。 
     
         ```json
         {
@@ -58,12 +72,11 @@ Azure Machine Learning サービスを操作する開発環境を構成する方
         "workspace_name": "<workspace-name>"
         }
         ```
-    
-        >[!NOTE] 
-        >後からコードで、このファイルを `ws = Workspace.from_config()` で読み取ります。
-    
-    4. **config.json** は必ずそれを参照するスクリプトまたはノートブックと同じディレクトリに保存します。
-    
+        `aml_config` ディレクトリ、または `config.json` ファイルのみを、ワークスペースを参照する他のディレクトリにコピーできます。
+
+>[!NOTE] 
+>同じディレクトリまたは配下のディレクトリにある他のスクリプトやノートブックで、`ws=Workspace.from_config()` を使用してワークスペースを読み込みます。
+
 ## <a name="azure-notebooks-and-data-science-virtual-machine"></a>Azure Notebooks および Data Science Virtual Machine
 
 Azure Notebooks と Azure データ サイエンス仮想マシン (DSVM) は、Azure Machine Learning サービスで動作するように事前構成されています。 Azure Machine Learning SDK などの必要なコンポーネントは、これらの環境にプレインストールされています。
@@ -98,7 +111,7 @@ Azure Notebooks を Azure Machine Learning サービスで使用する例につ�
 3. Azure Machine Learning SDK を Notebook の他の機能とインストールするには、次のコマンドを使用します。
 
      ```shell
-    pip install --upgrade azureml-sdk[notebooks,automl,contrib]
+    pip install --upgrade azureml-sdk[notebooks,automl]
     ```
 
     SDK をインストールするには数分かかる場合があります。
@@ -155,7 +168,7 @@ Azure Notebooks を Azure Machine Learning サービスで使用する例につ�
 2. Azure Machine Learning SDK をインストールするには、次のコマンドを使用します。
  
     ```shell
-    pip install --upgrade azureml-sdk[automl,contrib]
+    pip install --upgrade azureml-sdk[automl]
     ```
 
 4. Visual Studio Code の Tools for AI をインストールするには、[Tools for AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai) の Visual Studio Marketplace のエントリを参照してください。 

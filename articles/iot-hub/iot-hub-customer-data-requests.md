@@ -8,18 +8,18 @@ ms.date: 05/16/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: c0197b8f0cceab575aa5e830d094ddd2fb6b6b01
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 862ed2b38521cac3a4c83a9dc90db78f9f030ff1
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436297"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451818"
 ---
 # <a name="summary-of-customer-data-request-features"></a>顧客データ要求機能の概要
 
 Azure IoT Hub は、企業のお客様を対象とする REST API ベースのクラウド サービスであり、百万単位のデバイスとパーティション分割された Azure サービスの間で、セキュリティで保護された双方向の通信を有効にします。
 
-[!INCLUDE [gdpr-intro-sentence](../../includes/gdpr-intro-sentence.md)]
+[!INCLUDE [gdpr-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 個々のデバイスには、テナント管理者によってデバイス識別子 (デバイス ID) が割り当てられます。 デバイスのデータは、割り当てられているデバイス ID に基づきます。 Microsoft は、デバイス ID とユーザーを関連付けることができる情報を保持せず、そのようなデータにアクセスすることもできません。
 
@@ -37,17 +37,17 @@ Azure IoT Hub サービスの Azure Monitor 統合機能を使って診断ログ
 
 テナント管理者は、Azure portal の Azure IoT Hub 拡張機能の IoT デバイス ブレードを使って、デバイスを削除することができます。それにより、そのデバイスに関連付けられているデータが削除されます。
 
-REST API を使ってデバイスの削除操作を実行することもできます。 詳しくは、[サービス - デバイスの削除](https://docs.microsoft.com/rest/api/iothub/service/deletedevice)に関する記事をご覧ください。
+REST API を使ってデバイスの削除操作を実行することもできます。 詳しくは、[サービス - デバイスの削除](/rest/api/iothub/service/deletedevice)に関する記事をご覧ください。
 
 ## <a name="exporting-customer-data"></a>顧客データのエクスポート
 
 テナント管理者は、Azure portal の Azure IoT Hub 拡張機能の IoT デバイス ブレード内でコピーと貼り付けを利用して、デバイスに関連付けられているデータをエクスポートできます。
 
-REST API を使ってデバイスのエクスポート操作を実行することもできます。 詳しくは、[サービス - デバイスの取得](https://docs.microsoft.com/rest/api/iothub/service/getdevice)に関する記事をご覧ください。
+REST API を使ってデバイスのエクスポート操作を実行することもできます。 詳しくは、[サービス - デバイスの取得](/rest/api/iothub/service/getdevice)に関する記事をご覧ください。
 
 > [!NOTE]
 > Microsoft のエンタープライズ サービスを使うと、システム生成ログと呼ばれる情報がいくつか生成されます。 Azure IoT Hub システムによって生成されたログの一部は、テナント管理者がアクセスしたりエクスポートしたりすることはできません。 これらのログは、個々のデバイスに関連するサービスと診断データ内で実行された実際のアクションで構成されています。
 
 ## <a name="links-to-additional-documentation"></a>その他のドキュメントへのリンク
 
-Azure IoT Hub Service API の完全なドキュメントは、[https://docs.microsoft.com/rest/api/iothub/service](https://docs.microsoft.com/rest/api/iothub/service) にあります。
+Azure IoT Hub Service API の完全なドキュメントは、[IoT Hub Service API](https://docs.microsoft.com/rest/api/iothub/service) にあります。

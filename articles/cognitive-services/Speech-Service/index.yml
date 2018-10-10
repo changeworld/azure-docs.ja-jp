@@ -1,18 +1,18 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 81b8d6652c3c642ae761ee8971646864a3eb6330
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 01b288136036fc5ff719c179821801aeac95c5c5
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182265"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830534"
 documentType: LandingData
 title: Speech Service SDK のドキュメント
 metadata:
-  title: Speech Service SDK のドキュメント - チュートリアル、クイック スタート、API リファレンス - Cognitive Services | Microsoft Docs
+  title: Speech Service のドキュメント - チュートリアル、クイック スタート、API リファレンス - Cognitive Services | Microsoft Docs
   meta.description: >
-    The Speech Service provides developers an easy way to add powerful speech-enabled features to their applications.
+    The Speech service gives developers an easy way to add powerful speech-enabled features to their applications.
 
-    Examples include&#58; voice command control & dialog, natural speech conversation, speech transcription & dictation, and speech translation.
+    Examples include voice command control and dialogue, natural speech conversation, speech transcription and dictation, and speech translation.
   services: cognitive-services
   author: nitinme
   manager: cgronlun
@@ -60,7 +60,7 @@ sections:
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: 目的とする下記の矢印リンク <img src="media/index/link.jpg" height="15" width="15"></img> をクリックして、ダウンロード、インストール、使用の方法を確認してください。
+    text: 矢印リンクを選択すると、SDK をダウンロード、インストール、使用する方法について確認できます。 <img src="media/index/link.jpg" height="15" width="15"></img>。
   - type: table
     style: dataMatrix
     columns:

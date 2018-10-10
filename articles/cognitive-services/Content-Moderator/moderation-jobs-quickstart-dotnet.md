@@ -1,36 +1,49 @@
 ---
-title: Azure Content Moderator - .NET を使用してモデレーション ジョブを開始する | Microsoft Docs
-description: Azure Content Moderator SDK for .NET を使用してモデレーション ジョブを開始する方法
+title: 'クイック スタート: .NET を使用してモデレーション ジョブを開始する - Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: Azure Content Moderator SDK for .NET を使用してモデレーション ジョブを開始する方法。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
-ms.date: 01/06/2018
+ms.topic: quickstart
+ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: a103875607355993e216ce1ddea02009fc8fa1c4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6045d6daf2abace6e2b38bd6fd6e22516e3a60a0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373152"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227436"
 ---
-# <a name="start-moderation-jobs-using-net"></a>.NET を使用してモデレーション ジョブを開始する
+# <a name="quickstart-start-moderation-jobs-using-net"></a>クイック スタート: .NET を使用してモデレーション ジョブを開始する
 
-この記事では、Content Moderator SDK for .NET を初めて使用して次の処理を行うときに役立つ情報とコード サンプルを提供します。
+この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) を使用して次の操作をすぐに開始するために役立つ情報とコード サンプルを提供します。
  
 - ヒューマン モデレーターがレビューをスキャンし、作成するモデレーション ジョブを開始する
 - 保留中のレビューの状態を取得する
 - レビューの最終状態を追跡して取得する
 - 結果をコールバック URL に送信する
 
-この記事では Visual Studio と C# に精通していることを前提としています。
+この記事では、Visual Studio と C# に精通していることを前提としています。
 
-## <a name="sign-up-for-content-moderator-services"></a>Content Moderator サービスにサインアップする
+## <a name="sign-up-for-content-moderator"></a>Content Moderator へのサインアップ
 
 REST API や SDK を通じて Content Moderator サービスを使用するには、サブスクリプション キーが必要です。
 キーを入手する方法については、[クイック スタート](quick-start.md)を参照してください。
+
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>前の手順で完了していない場合は、レビュー ツール アカウントにサインアップする
+
+Azure portal から Content Moderator を取得した場合は、[レビュー ツールのアカウントにもサインアップ](https://contentmoderator.cognitive.microsoft.com/)し、レビュー チームを作成します。 レビュー API を呼び出してジョブを開始し、レビュー ツールにレビューを表示するには、チーム ID とレビュー ツールが必要です。
+
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>お使いの API キーで、レビュー作成のためにレビュー API の呼び出しが可能であることを確認してください
+
+Azure portal から起動した場合は、前の手順の完了後に Content Moderator のキーが 2 つある状態になることがあります。 
+
+SDK サンプルで、Azure から提供される API キーを使用する予定の場合は、[レビュー API での Azure キーの使用](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api)に関するセクションで説明されている手順に従って、アプリケーションがレビュー API を呼び出し、レビューを作成できるようにします。
+
+レビュー ツールによって生成される無料試用版のキーを使用する場合、そのキーは既にレビュー ツール アカウントによって知られています。そのため、追加の手順は必要ありません。
 
 ## <a name="define-a-custom-moderation-workflow"></a>カスタム モデレーション ワークフローを定義する
 
@@ -47,8 +60,6 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
 
 1. このプロジェクトをソリューションのシングル スタートアップ プロジェクトとして選択します。
 
-1. [Content Moderator クライアント ヘルパーのクイックスタート](content-moderator-helper-quickstart-dotnet.md)で作成した **ModeratorHelper** プロジェクト アセンブリへの参照を追加します。
-
 ### <a name="install-required-packages"></a>必要なパッケージをインストールする
 
 次の NuGet パッケージをインストールします。
@@ -61,14 +72,64 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
 
 プログラムの using ステートメントを変更します。
 
+    using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
-    using ModeratorHelper;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Threading;
+
+### <a name="create-the-content-moderator-client"></a>Content Moderator クライアントを作成する
+
+次のコードを追加して、サブスクリプションの Content Moderator クライアントを作成します。
+
+> [!IMPORTANT]
+> **AzureRegion** および **CMSubscriptionKey** フィールドをリージョン識別子とサブスクリプション キーの値で更新します。
+
+
+    /// <summary>
+    /// Wraps the creation and configuration of a Content Moderator client.
+    /// </summary>
+    /// <remarks>This class library contains insecure code. If you adapt this 
+    /// code for use in production, use a secure method of storing and using
+    /// your Content Moderator subscription key.</remarks>
+    public static class Clients
+    {
+        /// <summary>
+        /// The region/location for your Content Moderator account, 
+        /// for example, westus.
+        /// </summary>
+        private static readonly string AzureRegion = "YOUR API REGION";
+
+        /// <summary>
+        /// The base URL fragment for Content Moderator calls.
+        /// </summary>
+        private static readonly string AzureBaseURL =
+            $"https://{AzureRegion}.api.cognitive.microsoft.com";
+
+        /// <summary>
+        /// Your Content Moderator subscription key.
+        /// </summary>
+        private static readonly string CMSubscriptionKey = "YOUR API KEY";
+
+        /// <summary>
+        /// Returns a new Content Moderator client for your subscription.
+        /// </summary>
+        /// <returns>The new client.</returns>
+        /// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
+        /// When you have finished using the client,
+        /// you should dispose of it either directly or indirectly. </remarks>
+        public static ContentModeratorClient NewClient()
+        {
+            // Create and initialize an instance of the Content Moderator API wrapper.
+            ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
+
+            client.Endpoint = AzureBaseURL;
+            return client;
+        }
+    }
 
 ### <a name="initialize-application-specific-settings"></a>アプリケーション固有の設定を初期化する
 
@@ -78,7 +139,7 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
 > TeamName 定数は、Content Moderator サブスクリプションの作成時に使用した名前に設定します。 [Content Moderator Web サイト](https://westus.contentmoderator.cognitive.microsoft.com/)から TeamName を取得します。
 > ログインしたら、**[設定]** (歯車) メニューから **[資格情報]** を選択します。
 >
-> チーム名は、**[API]** セクションの **[ID]** フィールドの値です。
+> チーム名は、**[API]** セクションの **[Id]** フィールドの値です。
 
 
     /// <summary>
@@ -92,7 +153,7 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
     /// </summary>
     /// <remarks>This must be the team name you used to create your 
     /// Content Moderator account. You can retrieve your team name from
-    /// the Conent Moderator web site. Your team name is the Id associated 
+    /// the Content Moderator web site. Your team name is the Id associated 
     /// with your subscription.</remarks>
     private const string TeamName = "***";
 
@@ -105,7 +166,7 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
     /// <summary>
     /// The name of the log file to create.
     /// </summary>
-    /// <remarks>Relative paths are ralative the execution directory.</remarks>
+    /// <remarks>Relative paths are relative to the execution directory.</remarks>
     private const string OutputFile = "OutputLog.txt";
 
     /// <summary>
@@ -117,7 +178,7 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
     /// <summary>
     /// The callback endpoint for completed reviews.
     /// </summary>
-    /// <remarks>Revies show up for reviewers on your team. 
+    /// <remarks>Reviews show up for reviewers on your team. 
     /// As reviewers complete reviews, results are sent to the
     /// callback endpoint using an HTTP POST request.</remarks>
     private const string CallbackEndpoint = "";
@@ -136,7 +197,7 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
             writer.WriteLine("Create review job for an image.");
             var content = new Content(ImageUrl);
         
-            // The WorkflowName contains the nameof the workflow defined in the online review tool.
+            // The WorkflowName contains the name of the workflow defined in the online review tool.
             // See the quickstart article to learn more.
             var jobResult = client.Reviews.CreateJobWithHttpMessagesAsync(
                     TeamName, "image", "contentID", WorkflowName, "application/json", content, CallbackEndpoint);
@@ -260,4 +321,4 @@ Content Moderator レビュー ツールにサインインして、保留中の�
 
 ## <a name="next-steps"></a>次の手順
 
-.NET 用のこのクイック スタートや他の Content Moderator のクイック スタートの [Visual Studio ソリューションをダウンロード](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)し、統合を開始します。
+.NET 用のこのクイック スタートや他の Content Moderator のクイック スタートのために、[Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)を入手し、統合を開始します。

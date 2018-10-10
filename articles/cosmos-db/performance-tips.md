@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 47896b681c2ba43d4ca41682ec51e0dfd167c9d5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a805294ecb416d18f3ce13981d26a7d25cd5a204
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700958"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432853"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Azure Cosmos DB と .NET のパフォーマンスに関するヒント
 
@@ -42,7 +42,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
    * 直接モード
 
-     直接モードは、TCP および HTTPS プロトコル経由の接続をサポートします。 現在、直接モードは Windows プラットフォームの .NET Standard 2.0 においてのみサポートされています。 直接モードを利用するときは、次の 2 つのプロトコル オプションがあります。
+     直接モードは、TCP および HTTPS プロトコル経由の接続をサポートします。 現在、直接モードは .NET Standard 2.0 においてのみサポートされています。 直接モードを利用するときは、次の 2 つのプロトコル オプションがあります。
 
     * TCP
     * HTTPS
@@ -174,7 +174,7 @@ Azure Cosmos DB は、高速で柔軟性に優れた分散データベースで�
 
     詳細については、[Azure Cosmos DB インデックス作成ポリシー](indexing-policies.md)に関するページをご覧ください。
 
-## <a name="throughput"></a>Throughput
+## <a name="throughput"></a>スループット
 <a id="measure-rus"></a>
 
 1. **測定と調整によって 1 秒あたりの要求ユニットの使用量を削減する**

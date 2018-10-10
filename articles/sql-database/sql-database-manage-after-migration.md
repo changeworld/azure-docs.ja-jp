@@ -2,22 +2,22 @@
 title: 移行後の管理 - Azure SQL Database | Microsoft Docs
 description: Azure SQL Database への移行後のデータベースの管理方法について説明します。
 services: sql-database
-author: joesackmsft
-manager: craigg
 ms.service: sql-database
-ms.custom: migrate
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/20/2018
+author: joesackmsft
 ms.author: josack
-ms.suite: sql
-ms.prod_service: sql-database
-ms.component: data-movement
-ms.openlocfilehash: 133cba72a93d692851043f1c66d6a4a38e18b324
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 6dd4aacddfbce3e06c1ea9a356a559cc8cd8049c
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379467"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166488"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database でのデータベースの管理
 
@@ -36,9 +36,9 @@ ms.locfileid: "44379467"
 ビジネス継続性とディザスター リカバリーの機能を使うと、障害が発生した場合でも、通常どおりビジネスを継続できます。 この場合の障害は、データベース レベルのイベント (たとえば、ユーザーが誤って重要なテーブルを削除した) や、データ センター レベルのイベント (津波などの地域災害) です。 
 
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>SQL Database でバックアップを作成し管理するにはどうすればよいですか?
-Azure SQL DB ではバックアップを作成しません。なぜなら必要ないからです。 データベースのバックアップは SQL Database が自動的に行うため、バックアップのスケジュール、取得、管理について心配する必要はもうありません。 プラットフォームは、完全バックアップを 1 週間ごと、差分バックアップを数時間ごと、ログ バックアップを 5 分ごとに取得して、効率的なディザスター リカバリーと最小限のデータ損失を保証します。 データベースを作成するとすぐに、最初の完全バックアップが行われます。 これらのバックアップは "保有期間" と呼ばれる一定の期間だけ利用でき、この期間は選ばれているパフォーマンス レベルによって異なります。  SQL Database では、[特定の時点への復旧 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) を使って、この保有期間内の任意の時点に復元することができます。
+Azure SQL DB ではバックアップを作成しません。なぜなら必要ないからです。 データベースのバックアップは SQL Database が自動的に行うため、バックアップのスケジュール、取得、管理について心配する必要はもうありません。 プラットフォームは、完全バックアップを 1 週間ごと、差分バックアップを数時間ごと、ログ バックアップを 5 分ごとに取得して、効率的なディザスター リカバリーと最小限のデータ損失を保証します。 データベースを作成するとすぐに、最初の完全バックアップが行われます。 これらのバックアップは "リテンション期間" と呼ばれる一定の期間だけ利用でき、この期間は選ばれているサービス レベルによって異なります。 SQL Database では、[特定の時点への復旧 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) を使って、この保有期間内の任意の時点に復元することができます。
 
-|パフォーマンス レベル|保有期間の日数|
+|サービス階層|保有期間の日数|
 |---|:---:|
 |Basic|7|
 |標準|35|
@@ -73,12 +73,12 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 - [Azure Active Directory 認証](sql-database-aad-authentication.md)
 - SQL 認証。 
 
-従来の Windows 認証はサポートされていません。 Azure Active Directory (AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 AAD は [MFA (多要素認証)](sql-database-ssms-mfa-authentication.md) をサポートし、[数クリック](../active-directory/connect/active-directory-aadconnect-get-started-express.md)で AAD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定の論理サーバーの任意のデータベースでユーザーを認証できます。 このサービスを使用すると、SQL Database および SQL Data Warehouse で、Azure AD ドメイン内において多要素認証とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
+従来の Windows 認証はサポートされていません。 Azure Active Directory (AD) は、ID とアクセスの集中管理サービスです。 組織内のすべての担当者にシングル サインオン (SSO) アクセスを非常に簡単に提供できます。 つまり、認証が簡単なように、資格情報はすべての Azure サービスで共有されます。 AAD は [MFA (多要素認証)](sql-database-ssms-mfa-authentication.md) をサポートし、[数クリック](../active-directory/hybrid/how-to-connect-install-express.md)で AAD を Windows Server Active Directory と統合できます。 SQL 認証はこれまでとまったく同じように動作します。 ユーザー名とパスワードを提供すると、特定の論理サーバーの任意のデータベースでユーザーを認証できます。 このサービスを使用すると、SQL Database および SQL Data Warehouse で、Azure AD ドメイン内において多要素認証とゲスト ユーザー アカウントを提供できます。 既に Active Directory をオンプレミスで使用している場合、そのディレクトリを Azure Active Directory とフェデレーションして Azure へ拡張できます。
 
 |**ユーザーの条件**|**SQL Database/SQL Data Warehouse**|
 |---|---|
 |Azure で Azure Active Directory (AD) を使用しない|[SQL 認証](sql-database-security-overview.md)を使用します。|
-|オンプレミスの SQL Server で AD を使用している|[AD と Azure AD をフェデレーションして](../active-directory/connect/active-directory-aadconnect.md)、Azure AD 認証を使用します。 これにより、シングル サインオンを使用できます。|
+|オンプレミスの SQL Server で AD を使用している|[AD と Azure AD をフェデレーションして](../active-directory/hybrid/whatis-hybrid-identity.md)、Azure AD 認証を使用します。 これにより、シングル サインオンを使用できます。|
 |多要素認証 (MFA) を適用する必要がある|[Microsoft 条件付きアクセス](sql-database-conditional-access.md)で MFA をポリシーとして必須にして、[MFA サポート付きの Azure AD ユニバーサル認証](sql-database-ssms-mfa-authentication.md)を使用します。|
 |Microsoft アカウント (live.com、outlook.com) または他のドメイン (gmail.com など) のゲスト アカウントを持っている|SQL Database/Data Warehouse で、[Azure AD B2B コラボレーション](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)を利用する [Azure AD ユニバーサル認証](sql-database-ssms-mfa-authentication.md)を使用します。|
 |フェデレーション ドメインから Azure AD の資格情報を使用して Windows にログオンしている|[Azure AD 統合認証](sql-database-aad-authentication-configure.md)を使用します。|
@@ -98,7 +98,7 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 サーバー レベルまたはデータベース レベルで、ファイアウォール ルールを作成できます。 サーバー レベルのファイアウォール ルールは、ポータルまたは SSMS で作成できます。 サーバー レベルとデータベース レベルでファイアウォール ルールを設定する方法について詳しくは、[SQL Database でのファイアウォール ルールの作成](sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal)に関するページをご覧ください。
 
 #### <a name="service-endpoints"></a>サービス エンドポイント
-既定では、SQL Database は "すべての Azure サービスを許可する" ように構成されます。これは、Azure 内の任意の仮想マシンがデータベースへの接続を試行できることを意味します。 これらの試みも認証を受ける必要があります。 ただし、すべての Azure IP がデータベースにアクセスできるようにしたくない場合は、"すべての Azure サービスの許可" を無効にできます。 さらに、[VNET サービス エンドポイント](sql-database-vnet-service-endpoint-rule-overview.md)を構成できます。
+既定では、SQL Database は、"Azure サービスがサーバーにアクセスできる" ように構成されます。これは、Azure 内の任意の仮想マシンがデータベースへの接続を試行できることを意味します。 これらの試みも認証を受ける必要があります。 ただし、Azure IP がデータベースにアクセスできるようにしたくない場合は、"サーバーへの Azure サービスのアクセスの許可" を無効にできます。 さらに、[VNET サービス エンドポイント](sql-database-vnet-service-endpoint-rule-overview.md)を構成できます。
 
 サービス エンドポイント (SE) を使うと、Azure 内の自分のプライベート仮想ネットワークのみに、重要な Azure リソースを公開できます。 これにより、基本的に、リソースへのパブリック アクセスが除去されます。 仮想ネットワークと Azure の間のトラフィックは、Azure のバックボーン ネットワーク上に留まります。 SE を使わない場合は、強制トンネリング パケット ルーティングを使います。 仮想ネットワークはインターネット トラフィックを強制的に組織に送り、Azure サービス トラフィックは同じルートを経由します。 サービス エンドポイントを使うと、パケットは仮想ネットワークから Azure バックボーン ネットワーク上のサービスに直接流れるので、これを最適化できます。
 
@@ -170,7 +170,7 @@ Always Encrypted (クライアント側暗号化) および Transparent Data Enc
 - [ワークフロー](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL Database はすべての規制要件に準拠していますか? また、SQL Database は組織のコンプライアンスにどのように役立ちますか?
-SQL Database は、さまざまな規制に準拠しています。 適合しているコンプライアンスの最新の一覧については、[Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/compliance/complianceofferings) にアクセスして組織に重要なコンプライアンスをドリルダウンし、SQL Database がコンプライアンスに準拠している Azure サービスに含まれているかどうかを確認してください。 SQL Database はコンプライアンスに準拠しているサービスとして認証を受けていますが、これは組織のサービスのコンプライアンスを支援するものであり、自動的にコンプライアンスを保証するものではないことに注意してください。
+SQL Database は、さまざまな規制に準拠しています。 適合しているコンプライアンスの最新の一覧については、[Microsoft Trust Center](https://microsoft.com/trustcenter/compliance/complianceofferings) にアクセスして組織に重要なコンプライアンスをドリルダウンし、SQL Database がコンプライアンスに準拠している Azure サービスに含まれているかどうかを確認してください。 SQL Database はコンプライアンスに準拠しているサービスとして認証を受けていますが、これは組織のサービスのコンプライアンスを支援するものであり、自動的にコンプライアンスを保証するものではないことに注意してください。
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>移行後のインテリジェントなデータベースの監視とメンテナンス
 
@@ -202,7 +202,7 @@ SQL Database では、プラットフォームのインテリジェントな洞�
 
    ![監視グラフ 2](./media/sql-database-manage-after-migration/chart.png)
 
-このグラフでは、リソース別のアラートを構成することもできます。 これらのアラートを使用することで、リソースの状態に電子メールで対応したり、HTTPS/HTTP エンドポイントに書き込んだり、アクションを実行することができます。 詳しい手順については、「[Azure SQL Database におけるデータベース パフォーマンスの監視](sql-database-single-database-monitor.md)」をご覧ください。
+このグラフでは、リソース別のアラートを構成することもできます。 これらのアラートを使用することで、リソースの状態に電子メールで対応したり、HTTPS/HTTP エンドポイントに書き込んだり、アクションを実行することができます。 詳細については、[アラートの作成](sql-database-insights-alerts-portal.md)に関するページをご覧ください。
 
 - **動的管理ビュー**: リソース使用率の統計について、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 動的管理ビューでクエリを実行すると過去 1 時間における履歴を確認でき、[sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) システム カタログ ビューでクエリを実行すると過去 14 日間の履歴を確認できます。
 - **Query Performance Insight**: [Query Performance Insight](sql-database-query-performance.md) では、指定したデータベースについて、リソース使用率が上位のクエリおよび実行時間が長いクエリの履歴を確認できます。 リソース使用率、期間、および実行頻度で、上位のクエリをすばやく識別できます。 クエリを追跡し、回帰を検出できます。 この機能を使用するには、データベースで[クエリ ストア](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)を有効化しアクティブにする必要があります。
@@ -218,12 +218,12 @@ SQL Database では、プラットフォームのインテリジェントな洞�
 
 パフォーマンスのトラブルシューティングでは、アプリケーションだけの問題であるか、それともデータベースの問題がアプリケーションのパフォーマンスに影響しているのかを、識別することが重要です。 多くの場合、パフォーマンスの問題はアプリケーション層にあります。 アーキテクチャまたはデータ アクセス パターンが原因である可能性があります。 たとえば、ネットワーク待機時間の影響を受けやすい、頻繁に通信を行うアプリケーションについて考えます。 この場合、アプリケーションとサーバーの間で多数の短い要求がやり取りされ、混雑したネットワークではこれらのラウンドトリップが急速に蓄積されるため、アプリケーションに悪影響があります。 この場合にパフォーマンスを向上させるには、[バッチ クエリ](sql-database-performance-guidance.md#batch-queries)を使うことができます。 バッチを使うと、要求が一括処理されるようになるので非常に有効です。ラウンドトリップ遅延時間を削減し、アプリケーションのパフォーマンスを向上させることができます。 
 
-さらに、データベースの全体的なパフォーマンスの低下が生じている場合は、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) および [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) の各動的管理ビューを監視して、CPU、IO、メモリ使用率を把握できます。 パフォーマンスは、データベースのリソース不足のために影響を受けている可能性があります。 ワークロードの需要の増減に応じて、パフォーマンス レベルやサービス階層の変更が必要になる場合があります。 
+さらに、データベースの全体的なパフォーマンスの低下が生じている場合は、[sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) および [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) の各動的管理ビューを監視して、CPU、IO、メモリ使用率を把握できます。 パフォーマンスは、データベースのリソース不足のために影響を受けている可能性があります。 ワークロードの需要の増減に応じて、コンピューティング サイズやサービス レベルの変更が必要になる場合があります。 
 
 パフォーマンスのチューニングに関する問題の包括的な推奨事項については、「[データベースの調整](sql-database-performance-guidance.md#tune-your-database)」をご覧ください。
 
-### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-performance-level"></a>適切なサービス階層とパフォーマンス レベルを使用していることを確認するにはどうすればよいですか?
-SQL Database には、Basic、Standard、Premium というさまざまなサービス レベルが用意されています。 各サービス レベルに対応した予測可能なパフォーマンスが保証されます。 ワークロードによっては、アクティビティが急増して、リソース使用率が現在のパフォーマンス レベルの上限に達する可能性があります。 このような場合は、最初にチューニングが役に立つかどうかを評価するのが有効です (たとえば、インデックスの追加や変更など)。 まだ制限の問題が発生する場合は、上位のパフォーマンス レベルまたはサービス レベルへの移行を検討します。 
+### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>適切なサービス レベルとコンピューティング サイズを使用していることを確認するにはどうすればよいですか?
+SQL Database には、Basic、Standard、Premium というさまざまなサービス レベルが用意されています。 各サービス レベルに対応した予測可能なパフォーマンスが保証されます。 ワークロードによっては、アクティビティのバーストにより、リソース使用率が現在のコンピューティング サイズの上限に達する可能性があります。 このような場合は、最初にチューニングが役に立つかどうかを評価するのが有効です (たとえば、インデックスの追加や変更など)。 まだ制限の問題が発生する場合は、上位のサービス レベルまたはコンピューティング サイズへの移行を検討します。 
 
 |**サービス レベル**|**一般的なユース ケース シナリオ**|
 |---|---|
@@ -232,7 +232,7 @@ SQL Database には、Basic、Standard、Premium というさまざまなサー�
 |**Premium**|同時実行ユーザー数が多く、CPU/メモリの要件が高く、IO 要求が高いアプリケーション。 同時実行性が高く、スループットが高く、待機時間の影響を受けやすいアプリは、Premium レベルを利用できます。 |
 |||
 
-パフォーマンス レベルが適切であることを確認するには、「SQL Database のパフォーマンスとリソース使用率を監視するにはどうすればよいですか?」で説明したいずれかの方法で、クエリとデータベース リソース使用量を監視できます。 クエリ/データベースによるCPU/メモリ使用量が一貫して高い場合は、上位のパフォーマンス レベルへのスケールアップを検討します。 同様に、ピーク時間帯でもリソースがあまり使われていない場合は、現在のパフォーマンス レベルからのスケールダウンを検討します。 
+コンピューティング サイズが適切であることを確認するには、「SQL Database のパフォーマンスとリソース使用率を監視するにはどうすればよいですか?」で説明したいずれかの方法で、クエリとデータベース リソース使用量を監視できます。 クエリ/データベースによるCPU/メモリ使用量が一貫して高い場合は、上位のコンピューティング サイズへのスケールアップを検討します。 同様に、ピーク時間帯でもリソースがあまり使われていない場合は、現在のコンピューティング サイズからのスケールダウンを検討します。 
 
 SaaS アプリ パターンまたはデータベース統合シナリオがある場合は、エラスティック プールを使ってコストを最適化することを検討します。 エラスティック プールは、データベースの統合とコストの最適化を実現する優れた方法です。 Elastic Pool を使った複数のデータベースの管理については、[プールとデータベースの管理](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)に関するページをご覧ください。 
 

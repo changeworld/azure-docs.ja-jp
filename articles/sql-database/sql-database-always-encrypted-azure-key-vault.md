@@ -3,19 +3,22 @@ title: 'Always Encrypted: SQL Database - Azure Key Vault | Microsoft Docs'
 description: この記事では、SQL Server Management Studio の Always Encrypted ウィザードでデータ暗号化を使って SQL Database の機密データを保護する方法について説明します。
 keywords: データの暗号化, 暗号化キー, クラウドの暗号化
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: VanMSFT
+ms.author: vanto
+ms.reviewer: ''
+manager: craigg
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: 19a033b79879f1b51626a14510fc4cc71c43426c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d944ead01da81e2fec49d256a4da939067bcceee
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34644061"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064410"
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted: データ暗号化を使用して SQL Database で機密データを保護し、Azure Key Vault で暗号化キーを格納する
 
@@ -595,7 +598,9 @@ Clinic データベースで次のクエリを実行します。
 
    ![新しいコンソール アプリケーション](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-SSMS を使用してプレーンテキスト データにアクセスするには、接続に *Column Encryption Setting=enabled* パラメーターを追加します。
+プレーンテキスト データにアクセスする SSMS を使用するには、まず、ユーザーが Azure Key Vault への適切なアクセス許可、*get*、*unwrapKey*、および *verify* を持っていることを確認する必要があります。 詳細については、「[列マスター キーを作成して保存する (Always Encrypted)](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-2017)」を参照してください。
+
+次に、接続中に *Column Encryption Setting=enabled* パラメーターを追加します。
 
 1. SSMS の**オブジェクト エクスプローラー**でサーバーを右クリックし、**[切断]** を選択します。
 2. **[接続]** > **[データベース エンジン]** の順にクリックして **[サーバーへの接続]** ウィンドウを開き、**[オプション]** をクリックします。

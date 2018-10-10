@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: b61b6b730d645e2ffd518628abe2a121f119fd09
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 9ec049ebbfaa8e6ee5dbf585488d5c2e8ff25802
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715065"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949708"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -49,7 +49,7 @@ Azure における仮想マシン スケール セットについてよく寄せ
 
 **Q.** カスタム イメージを使用して Scale Sets を作成するにはどうすればよいですか?
 
-**A.** VM イメージを作成しキャプチャしてから、それをスケール セットのソースとして使用します。 カスタム VM イメージを作成して使用する方法のチュートリアルについては、[Azure CLI 2.0](tutorial-use-custom-image-cli.md) または [Azure PowerShell](tutorial-use-custom-image-powershell.md) に関するページを参照してください。
+**A.** VM イメージを作成しキャプチャしてから、それをスケール セットのソースとして使用します。 カスタム VM イメージを作成して使用する方法のチュートリアルについては、[Azure CLI](tutorial-use-custom-image-cli.md) または [Azure PowerShell](tutorial-use-custom-image-powershell.md) に関するページを参照してください。
 
 **Q.** Scale Sets 容量を 20 から 15 に減らすと、どの VM が削除されますか?
 
@@ -72,7 +72,7 @@ Azure における仮想マシン スケール セットについてよく寄せ
 **A.** はい。 詳細については、[スケール セットのゾーン](./virtual-machine-scale-sets-use-availability-zones.md)に関するドキュメントを参照してください。
 
 
-## <a name="autoscale"></a>Autoscale
+## <a name="autoscale"></a>自動スケール
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Azure の自動スケールのベスト プラクティスを教えてください。
 
@@ -129,7 +129,7 @@ VM の自動スケール設定は、ホストレベルのメトリックまた�
 
 ### <a name="how-do-i-set-up-autoscale-on-a-virtual-machine-scale-set-by-using-powershell"></a>仮想マシン スケール セットに対する自動スケールを PowerShell で設定する方法を教えてください。
 
-PowerShell を使用して仮想マシン スケール セットに対する自動スケールを設定するには、[仮想マシン スケール セットを自動的にスケーリングする](tutorial-autoscale-powershell.md)に関するページを参照してください。 また、[Azure CLI 2.0](tutorial-autoscale-cli.md) および [Azure テンプレート](tutorial-autoscale-template.md)を使用して、自動スケールを構成することもできます。
+PowerShell を使用して仮想マシン スケール セットに対する自動スケールを設定するには、[仮想マシン スケール セットを自動的にスケーリングする](tutorial-autoscale-powershell.md)に関するページを参照してください。 また、[Azure CLI](tutorial-autoscale-cli.md) および [Azure テンプレート](tutorial-autoscale-template.md)を使用して、自動スケールを構成することもできます。
 
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>VM が停止 (割り当て解除) されている場合、その VM は自動スケール操作の一環として起動されますか?
@@ -269,7 +269,7 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
 linuxConfiguration の要素名 | 必須 | type | 説明
 --- | --- | --- | --- |  ---
 ssh | いいえ  | コレクション | Linux OS の SSH キーの構成を指定します。
-パス | [はい] | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
+path | [はい] | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
 keyData | [はい] | String | Base64 でエンコードされた SSH 公開キーを指定します。
 
 実際の例については、[GitHub の 101-vm-sshkey クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)を参照してください。
@@ -387,8 +387,7 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/TrustCenter/Compliance/PCI)を参照してください。
 
-### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>
-  [Azure 管理対象サービス ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は仮想マシン スケール セットでも機能しますか。
+### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>[Azure 管理対象サービス ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は仮想マシン スケール セットでも機能しますか。
 
 はい。 Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。 Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux)。 Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows)。
 

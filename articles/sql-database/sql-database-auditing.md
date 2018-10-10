@@ -2,19 +2,22 @@
 title: Azure SQL Database 監査の使用 | Microsoft Docs
 description: Azure SQL Database 監査を使用して、データベースイベントを追跡し、監査ログに書き込みます。
 services: sql-database
-author: giladmit
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 06/24/2018
+author: giladmit
 ms.author: giladm
-ms.openlocfilehash: f187a5fe1541f5508e55443abe80fc295ee63c87
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/10/2018
+ms.openlocfilehash: 8ba07b22d247cb9263890a747bd166d63af27e3b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081457"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395749"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 Azure SQL Database 監査では、データベース イベントを追跡し、Azure ストレージ アカウントの監査ログにイベントを書き込みます。 また、監査によって以下を行うことができます。
@@ -65,50 +68,72 @@ SQL Database 監査を使用して、以下を行うことができます。
 2. SQL データベース/サーバー ペインの [セキュリティ] 見出しの下にある **[監査]** に移動します。
 
     <a id="auditing-screenshot"></a> ![ナビゲーション ウィンドウ][1]
-3. サーバーの監査ポリシーを設定する場合は、データベース監査ブレードの **[サーバー設定を表示]** リンクを選択できます。 そうすると、サーバー監査設定を表示または修正することができます。 サーバー監視ポリシーは、このサーバー上にある既存のデータベースと新規作成されたデータベースのすべてに適用されます。
+
+3. サーバーの監査ポリシーを設定する場合は、データベース監査ページの **[サーバー設定を表示]** リンクを選択できます。 そうすると、サーバー監査設定を表示または修正することができます。 サーバー監視ポリシーは、このサーバー上にある既存のデータベースと新規作成されたデータベースのすべてに適用されます。
 
     ![ナビゲーション ウィンドウ][2]
+
 4. データベース レベルで監査を有効にする場合は、**[監査]** を  **[ON]\(オン\)** に切り替えます。
 
     サーバーの監査が有効になっている場合、データベース構成監査とサーバー監査が並行して存在します。
 
     ![ナビゲーション ウィンドウ][3]
-5. **[監査ログの容量]** ブレードを開くには、**[容量の詳細]** を選択します。 ログを保存する Azure ストレージ アカウントを選択し、リテンション期間を選択します。 古いログは削除されます。 次に、 **[OK]** をクリックします
 
-    <a id="storage-screenshot"></a> ![ナビゲーション ウィンドウ][4]
-6. 監査対象イベントをカスタマイズする場合は、[PowerShell コマンドレット](#subheading-7)または [REST API](#subheading-9) を使用して行います。
-7. 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](sql-database-threat-detection-get-started.md)に関するページを参照してください。
-8. **[Save]** をクリックします。
+5. **新規** - 監査ログを書き込む場所を構成するときに、複数のオプションから選択できるようになりました。 ログは、Azure ストレージ アカウント、OMS ワークスペース (Log Analytics で使用)、またはイベント ハブ (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
 
+    ![ストレージ オプション](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
+6. ストレージ アカウントへの監査ログの書き込みを構成するには、**[ストレージ]** を選択し、**[容量の詳細]** を開きます。 ログを保存する Azure ストレージ アカウントを選択し、リテンション期間を選択します。 古いログは削除されます。 次に、 **[OK]** をクリックします
 
+    ![ストレージ アカウント](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
+7. OMS ワークスペースへの監査ログの書き込みを構成するには、**[Log Analytics (プレビュー)]** を選択し、**[Log Analytics の詳細]** を開きます。 ログが書き込まれる OMS ワークスペースを選択または作成し、**[OK]** をクリックします。
+
+    ![OMS](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+
+8. イベント ハブへの監査ログの書き込みを構成するには、**[イベント ハブ (プレビュー)]** を選択し、**[イベント ハブの詳細]** を開きます。 ログが書き込まれるイベント ハブを選択し、**[OK]** をクリックします。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
+
+    ![イベント ハブ](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
+
+9. **[Save]** をクリックします。
+10. 監査対象イベントをカスタマイズする場合は、[PowerShell コマンドレット](#subheading-7)または [REST API](#subheading-9) を使用して行います。
+11. 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](sql-database-threat-detection-get-started.md)に関するページを参照してください。 
 
 ## <a id="subheading-3"></a>監査ログとレポートを分析する
-監査ログは、設定時に選択した Azure ストレージ アカウントで集計されます。 [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用して監査ログを調査できます。
+監査ログを Log Analytics に書き込む場合:
+- [Azure Portal](https://portal.azure.com) を使用します。  関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** をクリックします。
 
-BLOB 監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。
+    ![監査ログの表示](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
 
-ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
+- **[監査レコード]** ページの上部にある **[Open in OMS]\(OMS で開く\)** をクリックすると、Log Analytics でログ ビューが開きます。このビューで、時間の範囲と検索クエリをカスタマイズできます。
 
-BLOB 監査ログを表示するには、いくつかの方法が使用できます。
+    ![OMS で開く](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
-* [Azure Portal](https://portal.azure.com) を使用します。  関連するデータベースを開きます。 データベースの **[監査と脅威検出]** ブレードの上部にある **[監査ログの表示]** をクリックします。
+- また、Log Analytics ブレードから監査ログにアクセスすることもできます。 ご自身の Log Analytics ワークスペースを開いて、**[全般]** セクションで **[ログ]** をクリックします。 監査ログを表示するには、*search "SQLSecurityAuditEvents"* などの単純なクエリから始めることができます。
+    ここから [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) を使用して、お使いの監査ログのデータに対して詳細検索を実行することもできます。 Log Analytics により、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 OMS Log Analytics 検索言語およびコマンドに関する有用な追加情報については、[Log Analytics 検索リファレンス](../log-analytics/log-analytics-log-search.md)に関するページをご覧ください。
+
+監査ログをイベント ハブに書き込む場合:
+- イベント ハブの監査ログ データを使用するには、イベントを処理し、そのイベントをターゲットに書き込むようにストリームを設定する必要があります。 詳細については、「[Azure Event Hubs のドキュメント](https://docs.microsoft.com/azure/event-hubs/)」を参照してください。
+
+監査ログを Azure ストレージ アカウントに書き込むことを選択すると、複数の方法でログを表示できるようになります。
+- 監査ログは、設定時に選択したアカウントで集計されます。 [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを使用して監査ログを調査できます。 Azure Storage では、監査ログは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
+
+- [Azure Portal](https://portal.azure.com) を使用します。  関連するデータベースを開きます。 データベースの **[監査]** ページの上部にある **[監査ログの表示]** をクリックします。
 
     ![ナビゲーション ウィンドウ][7]
 
-    **[監査レコード]** ブレードが開きます。ここからログを参照できます。
+    **[監査レコード]** が開きます。ここからログを参照できます。
 
-    - **[監査レコード]** ブレードの上部にある **[フィルター]** をクリックすると、特定の日付を表示できます。
+    - **[監査レコード]** ページの上部にある **[フィルター]** をクリックすると、特定の日付を表示できます。
     - **[監査対象]** を切り替えると、"*サーバー監視ポリシー*" で作成された監査レコードと "*データベース監査ポリシー*" で作成された監査レコードを切り替えることができます。
     - **[Show only audit records for SQL injections]\(SQL インジェクションの監査レコードのみを表示する\)** チェックボックスをオンにすると、SQL インジェクション関連の監査レコードのみを表示できます。
 
        ![ナビゲーション ウィンドウ][8]
 
-* システム関数 **sys.fn_get_audit_file** (T-SQL) を使用して、表形式で監査ログ データを返します。 この関数の使用方法の詳細については、[sys.fn_get_audit_file のドキュメント](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql)を参照してください。
+- システム関数 **sys.fn_get_audit_file** (T-SQL) を使用して、表形式で監査ログ データを返します。 この関数の使用方法の詳細については、[sys.fn_get_audit_file](https://docs.microsoft.com/sql/relational-databases/system-functions/sys-fn-get-audit-file-transact-sql) に関するページをご覧ください。
 
 
-* SQL Server Management Studio (SSMS 17 以降) で **[監査ファイルの統合]** を使用します。
+- SQL Server Management Studio (SSMS 17 以降) で **[監査ファイルの統合]** を使用します。
     1. SSMS のメニューから、**[ファイル]** > **[開く]** > **[監査ファイルの統合]** を選択します。
 
         ![ナビゲーション ウィンドウ][9]
@@ -118,24 +143,17 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 
     4. 統合されたファイルを SSMS で開くと、ファイルを表示および分析し、XEL または CSV ファイルまたはテーブルにエクスポートすることができます。
 
-* 作成した[同期アプリケーション](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration)を使用します。 アプリケーションは Azure で実行され、Log Analytics のパブリック API を使用して SQL 監査ログを Log Analytics にプッシュします。 同期アプリケーションは Log Analytics ダッシュボード経由で、Log Analytics へ SQL 監査ログをプッシュして使用します。
-
-* Power BI を使用します。 Power BI で監査ログのデータを表示および分析できます。 [Power BI の詳細を確認し、ダウンロード可能なテンプレートにアクセスします](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/)。
-
-* ポータル経由で、あるいは [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを利用して Azure Storage BLOB コンテナーからログ ファイルをダウンロードします。
-    * ログ ファイルをローカルでダウンロードした後に、ファイルをダブルクリックし、SSMS でログを開き、表示し、分析できます。
-    * また、Azure ストレージ エクスプ ローラーを使用して、同時に複数のファイルをダウンロードすることもできます。 特定のサブフォルダーを右クリックし、**[名前を付けて保存]** を選択してローカル フォルダーに保存します。
+- Power BI を使用します。 Power BI で監査ログのデータを表示および分析できます。 ダウンロード可能なテンプレートの詳細、およびテンプレートへのにアクセスについては、[Power BI での監査ログ データの分析](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/)に関するページをご覧ください。
+- ポータル経由で、あるいは [Azure ストレージ エクスプローラー](http://storageexplorer.com/)などのツールを利用して Azure Storage BLOB コンテナーからログ ファイルをダウンロードします。
+    * ログ ファイルをローカルでダウンロードした後に、ファイルをダブルクリックし、SSMS でログを開き、表示し、分析します。
+    * また、Azure ストレージ エクスプ ローラーを使用して、同時に複数のファイルをダウンロードすることもできます。 それには、特定のサブフォルダーを右クリックし、**[名前を付けて保存]** を選択してローカル フォルダーに保存します。
 
 * 他の方法:
    * 複数のファイルまたはログ ファイルが含まれるサブフォルダーをダウンロードした後、前述の SSMS 監査ファイルの統合の指示に従って、ローカルでマージすることができます。
-
    * BLOB 監査ログをプログラムで表示します。
 
      * [拡張イベント リーダー](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) (C# ライブラリ) を使用します。
      * PowerShell を使用して[拡張イベント ファイルにクエリを実行します](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/)。
-
-
-
 
 ## <a id="subheading-5"></a>運用方法
 <!--The description in this section refers to preceding screen captures.-->
@@ -154,16 +172,16 @@ Geo レプリケーション データベースでは、プライマリ デー�
 <br>
 
 ### <a id="subheading-6">ストレージ キーの再生成</a>
-運用環境では、ストレージ キーを最新の情報に定期的に更新することが推奨されます。 キーを最新の情報に更新する場合は、監査ポリシーを再度保存する必要があります。 このプロセスは次のとおりです。
+運用環境では、ストレージ キーを最新の情報に定期的に更新することが推奨されます。 監査ログを Azure Storage に書き込む場合、ご自身のキーを最新の情報に更新するときに、お使いの監査ポリシーを再度保存する必要があります。 このプロセスは次のとおりです。
 
-1. **[容量の詳細]** ブレードを開きます。 **[ストレージ アクセス キー]** ボックスで **[セカンダリ]** をクリックし、**[OK]** をクリックします。 監査構成ブレードの上部にある **[保存]** をクリックします。
+1. **[容量の詳細]** を開きます。 **[ストレージ アクセス キー]** ボックスで **[セカンダリ]** をクリックし、**[OK]** をクリックします。 次に、監査構成ページの上部にある **[保存]** をクリックします。
 
     ![ナビゲーション ウィンドウ][5]
-2. ストレージ構成ブレードに移動し、プライマリ アクセス キーを再生成します。
+2. ストレージ構成ページに移動し、プライマリ アクセス キーを再生成します。
 
     ![ナビゲーション ウィンドウ][6]
-3. 監査構成ブレードに戻り、[ストレージ アクセス キー] を [セカンダリ] から [プライマリ] に切り替え、**[OK]** をクリックします。 監査構成ブレードの上部にある **[保存]** をクリックします。
-4. ストレージ構成ブレードに戻り、セカンダリ アクセス キーを再生成 (次のキー更新サイクルの準備として) します。
+3. 監査構成ページに戻り、[ストレージ アクセス キー] を [セカンダリ] から [プライマリ] に切り替え、**[OK]** をクリックします。 次に、監査構成ページの上部にある **[保存]** をクリックします。
+4. ストレージ構成ページに戻り、セカンダリ アクセス キーを (次のキー更新サイクルの準備として) 再生成します。
 
 ## <a name="additional-information"></a>追加情報
 
@@ -199,16 +217,16 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 **REST API - BLOB 監査**:
 
-* [データベース BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/createorupdate)
-* [サーバー BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
-* [データベース BLOB 監査ポリシーの取得](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
-* [サーバー BLOB 監査ポリシーの取得](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
+* [データベース BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+* [サーバー BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+* [データベース BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+* [サーバー BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 WHERE 句のサポートによってフィルタリングを強化した拡張ポリシー:
-* [データベース "*拡張*" BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-* [サーバー "*拡張*" BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
-* [データベース "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/get)
-* [サーバー "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/get)
+* [データベース "*拡張*" BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+* [サーバー "*拡張*" BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
+* [データベース "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+* [サーバー "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

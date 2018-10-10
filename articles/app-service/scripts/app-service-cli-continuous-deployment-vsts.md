@@ -1,6 +1,6 @@
 ---
-title: Azure CLI のサンプル スクリプト - Visual Studio Team Services からの継続的なデプロイで Web アプリを作成する | Microsoft Docs
-description: Azure CLI のサンプル スクリプト - Visual Studio Team Services からの継続的なデプロイで Web アプリを作成する
+title: Azure CLI スクリプト サンプル - Azure DevOps Services から継続的配置を使用して Web アプリを作成する | Microsoft Docs
+description: Azure CLI スクリプト サンプル - Azure DevOps Services から継続的配置を使用して Web アプリを作成する
 services: app-service\web
 documentationcenter: ''
 author: syntaxc4
@@ -16,30 +16,30 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: e3748654f85e32edeb6f0c7478418068aeb4ae5f
-ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
+ms.openlocfilehash: fcb55c72f63a9964f04fba1e2b8abbaf39fe6b46
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/30/2018
-ms.locfileid: "30282880"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967042"
 ---
-# <a name="create-a-web-app-with-continuous-deployment-from-visual-studio-team-services"></a>Visual Studio Team Services からの継続的なデプロイで Web アプリを作成する
+# <a name="create-a-web-app-with-continuous-deployment-from-azure-devops"></a>Azure DevOps から継続的配置を使用して Web アプリを作成する
 
-このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、Visual Studio Team Services リポジトリからの継続的デプロイを設定します。 このサンプルでは、以下が必要です。
+このサンプル スクリプトでは、App Service で Web アプリとその関連リソースを作成した後、Azure DevOps リポジトリからの継続的配置を設定します。 このサンプルでは、以下が必要です。
 
-* 管理アクセス許可のある、アプリケーション コードを含む Visual Studio Team Services リポジトリ。
-* Visual Studio Team Services アカウントの[個人用アクセス トークン (PAT)](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate)。
+* 管理アクセス許可のある、アプリケーション コードを含む Azure DevOps リポジトリ。
+* Azure DevOps 組織に対する[個人用アクセス トークン (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts)。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-vsts-continuous/deploy-vsts-continuous.sh?highlight=3-4 "Create a web app with continuous deployment from Visual Studio Team Services")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-vsts-continuous/deploy-vsts-continuous.sh?highlight=3-4 "Create a web app with continuous deployment from Azure DevOps")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 

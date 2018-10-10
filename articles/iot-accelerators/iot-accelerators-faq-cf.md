@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: d2f5ce97ee81deaf590771f4794af4adf0fdbd1b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 737a76ba313dddaa58c302f1df501f16a5c4e9e8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248589"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966559"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -111,7 +111,7 @@ www.azureiotsolutions.com からソリューションをデプロイした場合
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-[DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) または [Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)ツールを使うと、ソリューションが使っている IoT ハブに、どのデバイスが登録されているかを確認できます。 Device Explorer を使うには、デプロイ環境の IoT ハブ用の接続文字列が必要になります。 Azure CLI 2.0 向け IoT 拡張機能を使うには、IoT Hub の名前が必要です。
+[DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) または [Azure CLI 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)ツールを使うと、ソリューションが使っている IoT ハブに、どのデバイスが登録されているかを確認できます。 Device Explorer を使うには、デプロイ環境の IoT ハブ用の接続文字列が必要になります。 Azure CLI 向け IoT 拡張機能を使うには、IoT Hub の名前が必要です。
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>シミュレーション コンポーネントからログ データを取得するにはどうすればいいですか
 

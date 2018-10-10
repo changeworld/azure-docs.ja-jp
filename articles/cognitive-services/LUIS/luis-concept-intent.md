@@ -1,20 +1,21 @@
 ---
-title: Azure での LUIS アプリの意図について | Microsoft Docs
-description: Language Understanding Intelligent Service (LUIS) アプリにおける意図とは何かを説明します。
+title: LUIS アプリでの意図について
+titleSuffix: Azure Cognitive Services
+description: 意図は、ユーザーが実行しようとしているタスクまたはアクションを表します。 ユーザーの発話で表明される目的や目標です。 ユーザーがアプリケーションで実行しようとしているアクションに対応する、意図のセットを定義します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 456f28191161c9a2fac223bf2a31e62e54ae28ae
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: cfad122b44944cfb637d8ef98931410d60c81ab8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225790"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041171"
 ---
 # <a name="intents-in-luis"></a>LUIS での意図
 

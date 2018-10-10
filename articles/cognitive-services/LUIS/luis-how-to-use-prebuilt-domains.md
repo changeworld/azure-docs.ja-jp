@@ -1,20 +1,21 @@
 ---
-title: Azure での LUIS アプリの事前構築済みドメインの使用 | Microsoft Docs
-description: Language Understanding Intelligent Service (LUIS) アプリケーションで事前構築済みのドメインを使用する方法を説明します。
+title: LUIS アプリで事前構築済みのドメインを使用してアプリの構築を迅速化する
+titleSuffix: Azure Cognitive Services
+description: Language Understanding (LUIS) には事前構築済みのドメインが用意されています。これは事前構築済みの一連の意図とエンティティで、クライアント アプリケーションのドメインまたは共通のカテゴリに対して連携して動作します。 事前構築済みのドメインは事前トレーニング済みで、LUIS アプリに追加する準備ができています。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: df57f9adf5bf7f5f652a77ddeafe950463c6a9fc
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 1aa7e1bf9c1a584803a60a5061b4ae4cc8664ff4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224179"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037373"
 ---
 # <a name="use-prebuilt-domains-in-luis-apps"></a>LUIS アプリでの事前構築済みドメインの使用  
 

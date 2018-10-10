@@ -225,7 +225,7 @@ items:
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-resource-manager-vm.md?toc=/azure/azure-monitor/toc.json
         - name: VM スケール セットのゲストのメトリックをメトリック ストアに送信する
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-resource-manager-vmss.md?toc=/azure/azure-monitor/toc.json
-        - name: クラシック VM のゲストのメトリックをメトリック ストアに送信する
+        - name: VM クラシックのゲストのメトリックをメトリック ストアに送信する
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-vm.md?toc=/azure/azure-monitor/toc.json
         - name: クラウド サービスのゲストのメトリックをメトリック ストアに送信する
           href: ../monitoring-and-diagnostics/metrics-store-custom-guestos-classic-cloud-service.md?toc=/azure/azure-monitor/toc.json
@@ -700,14 +700,6 @@ items:
       items:
       - name: アラート ルールの作成
         items:
-        - name: Azure Portal でメトリックまたはログの新しいアラートを構成する
-          href: ../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=/azure/azure-monitor/toc.json
-        - name: Azure Portal でクラシック アラートを構成する
-          href: ../monitoring-and-diagnostics/insights-alerts-portal.md?toc=/azure/azure-monitor/toc.json
-        - name: CLI を使用してクラシック アラートを構成する
-          href: ../monitoring-and-diagnostics/insights-alerts-command-line-interface.md?toc=/azure/azure-monitor/toc.json
-        - name: Azure PowerShell を使用してクラシック アラートを構成する
-          href: ../monitoring-and-diagnostics/insights-alerts-powershell.md?toc=/azure/azure-monitor/toc.json
         - name: OMS ポータルから Azure Portal にアラートをコピーする
           href: ../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md?toc=/azure/azure-monitor/toc.json
       - name: メトリック アラートの使用
@@ -977,9 +969,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: ecb930a1dc50b1a613533068846be2d7cfaeb748
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 7b26143e0fa2acc44636eb30afc6d3a76a05c2ec
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018895"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784918"

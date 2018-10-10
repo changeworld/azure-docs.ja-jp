@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: b54a302c022a8af84c1964c13ffadc52b45c4ca4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b7908f9f9aef51857f0ffb07102e1df245b7a259
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696821"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064460"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Azure Functions を使用したサーバーレス データベース コンピューティング
 
@@ -110,15 +110,12 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 ## <a name="tooling"></a>ツール
 
 Azure Portal と Visual Studio 2017 では、Azure Cosmos DB と Azure Functions 間のネイティブ統合を使用できます。
-* Azure Functions ポータルでは、Azure Cosmos DB トリガーを作成できます。 クイックスタートの手順については、[Azure Portal での Azure Cosmos DB トリガーの作成](https://aka.ms/cosmosdbtriggerportalfunc)に関するページを参照してください。![Azure Functions ポータルで Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/azure-function-cosmos-db-trigger.png) 
-* Azure Functions ポータルでは、Azure Cosmos DB 入力バインディングと出力バインディングを他の種類のトリガーに追加することもできます。 クイックスタートの手順については、「[Azure Functions と Cosmos DB を使用して非構造化データを格納する](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)」を参照してください。
-    ![Azure Functions ポータルで Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/function-portal-input-binding.png)
-*   Azure Cosmos DB ポータルで、Azure Cosmos DB トリガーを同じリソース グループ内の既存の Azure Functions アプリに追加できます。
-    ![Azure Functions ポータルで Azure Cosmos DB トリガーを作成する](./media/serverless-computing-database/cosmos-db-portal.png)
-* Visual Studio 2017 では、統合テンプレートを利用して Azure Cosmos DB トリガーを作成できます。
+
+* Azure Functions ポータルでは、Azure Cosmos DB トリガーを作成できます。 クイック スタートの手順については、[Azure portal での Azure Cosmos DB トリガーの作成](https://aka.ms/cosmosdbtriggerportalfunc)に関するページをご覧ください。
+* Azure Cosmos DB ポータルで、Azure Cosmos DB トリガーを同じリソース グループ内の既存の Azure Functions アプリに追加できます。
+* Visual Studio 2017 では、[Visual Studio 2017 用の Azure Functions Tools](../azure-functions/functions-develop-vs.md) を利用して Azure Cosmos DB トリガーを作成できます。
 
     >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
-
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>サーバーレス コンピューティングに Azure Functions 統合を選択する理由
 
@@ -152,7 +149,6 @@ Flow、Logic Apps、Azure Functions、または WebJobs が実装に適してい
 
 * [Azure Portal で Azure Cosmos DB トリガーを作成する](https://aka.ms/cosmosdbtriggerportalfunc)
 * [Azure Cosmos DB 入力バインディングを使用して Azure Functions HTTP トリガーを作成する](https://aka.ms/cosmosdbinputbind)
-* [Azure Functions と Cosmos DB を使用して非構造化データを格納する](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)
 * [Azure Cosmos DB のバインディングとトリガー](../azure-functions/functions-bindings-cosmosdb.md)
 
 

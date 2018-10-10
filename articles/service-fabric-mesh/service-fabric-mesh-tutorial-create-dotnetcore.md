@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - マルチサービス Web アプリケーションを作成してデバッグし、Service Fabric mesh にデプロイする | Microsoft Docs
-description: このチュートリアルでは、バックエンド Web サービスと通信する ASP.NET Core Web サイトで構成されるマルチサービス Azure Service Fabric mesh アプリケーションを作成して、ローカルでデバッグし、Azure に発行します。
+title: チュートリアル - マルチサービス アプリケーションを作成してデバッグし、Service Fabric Mesh にデプロイして監視する | Microsoft Docs
+description: このチュートリアルでは、バックエンド Web サービスと通信する ASP.NET Core Web サイトで構成されるマルチサービス Azure Service Fabric Mesh アプリケーションを作成して、ローカルでデバッグし、Azure に発行します。
 services: service-fabric-mesh
 documentationcenter: .net
 author: TylerMSFT
@@ -12,26 +12,28 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 59ff3434e7b984f4530ad4f8b03b27991d3a9c1c
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 09112aafdbabf0cda2b3ae13af73a9223533a6e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41917747"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979196"
 ---
-# <a name="tutorial-create-debug-and-deploy-a-multi-service-web-application-to-service-fabric-mesh"></a>チュートリアル: マルチサービス Web アプリケーションを作成してデバッグし、Service Fabric mesh にデプロイする
+# <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>チュートリアル: マルチサービス Service Fabric Mesh アプリを作成、デバッグ、デプロイ、およびアップグレードする
 
-このチュートリアルは、シリーズの第 1 部です。 ASP.NET Web フロントエンドと ASP.NET Core Web API バックエンド サービスを含む Azure Service Fabric mesh アプリケーションを作成する方法を学びます。 次に、ローカル開発クラスターでアプリをデバッグし、アプリを Azure に発行します。 作業が完了すると、Azure Service Fabric mesh で実行している Service Fabric mesh アプリケーションでサービス間の呼び出しを行う簡単な To Do アプリが完成します。
+このチュートリアルは、シリーズの第 1 部です。 Visual Studio を使用して、ASP.NET Web フロントエンドと ASP.NET Core Web API バックエンド サービスを含む Azure Service Fabric Mesh アプリを作成する方法を学習します。 次に、ローカル開発クラスターでアプリをデバッグします。 アプリを Azure に発行してから、構成とコードを変更して、アプリをアップグレードします。 最後に、使用していないものに課金されないように、未使用の Azure リソースをクリーンアップします。
+
+完了すると、アプリ ライフサイクル管理のほとんどのフェーズを実施し、Service Fabric Mesh アプリでのサービス間呼び出しを示すアプリが作成されています。
 
 To Do アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/azure-samples/service-fabric-mesh)して、[ローカルでのアプリのデバッグ](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)に進んでもかまいません。
 
 シリーズの第 1 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * ASP.NET Web フロントエンドで構成される Service Fabric mesh アプリケーションを作成する。
+> * Visual Studio を使用して、ASP.NET Web フロントエンドで構成される Service Fabric Mesh アプリを作成する。
 > * To Do 項目を表すモデルを作成する。
 > * バックエンド サービスを作成し、そこから データを取得する。
 > * バックエンド サービスのモデル ビュー コントローラー パターンの一部としてコントローラーと DataContext を追加する。
@@ -40,9 +42,11 @@ To Do アプリケーションを手動で作成しない場合は、完成し�
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
-> * Service Fabric mesh アプリケーションをビルドする
-> * [アプリをローカルでデバッグする](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * [アプリを Azure に発行する](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * Visual Studio で Service Fabric Mesh アプリを作成する
+> * [ローカル開発クラスター内で実行されている Service Fabric Mesh アプリをデバッグする](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * [Service Fabric Mesh アプリをデプロイする](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Service Fabric Mesh アプリをアップグレードする](service-fabric-mesh-tutorial-upgrade.md)
+> * [Service Fabric Mesh リソースをクリーンアップする](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -54,19 +58,17 @@ To Do アプリケーションを手動で作成しない場合は、完成し�
 
 * Service Fabric ランタイム、SDK、Docker、Visual Studio 2017 がインストールされた[開発環境の設定](service-fabric-mesh-howto-setup-developer-environment-sdk.md)が済んでいることを確認します。
 
-* 現在、このチュートリアルのアプリをビルドするときは、英語のロケールを使用する必要があります。
-
-## <a name="create-a-service-fabric-mesh-project"></a>Service Fabric mesh プロジェクトを作成する
+## <a name="create-a-service-fabric-mesh-project-in-visual-studio"></a>Visual Studio で Service Fabric Mesh プロジェクトを作成する
 
 Visual Studio を実行し、**[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
 
-**[新しいプロジェクト]** ダイアログの上部にある **[検索]** ボックスに「`mesh`」と入力します。 **[Service Fabric Mesh Application]\(Service Fabric mesh アプリケーション\)** テンプレートを選択します  (テンプレートが表示されない場合は、[開発環境の設定](service-fabric-mesh-howto-setup-developer-environment-sdk.md)に関するページの説明に従って、mesh SDK と VS Tools プレビューをインストールしたことを確認してください)。  
+**[新しいプロジェクト]** ダイアログの上部にある **[検索]** ボックスに「`mesh`」と入力します。 **[Service Fabric Mesh Application]\(Service Fabric Mesh アプリケーション\)** テンプレートを選択します  (テンプレートが表示されない場合は、[開発環境の設定](service-fabric-mesh-howto-setup-developer-environment-sdk.md)に関するページの説明に従って、mesh SDK と VS Tools プレビューをインストールしたことを確認してください)。  
 
 **[名前]** ボックスに「`todolistapp`」と入力し、**[場所]** ボックスにプロジェクト ファイルを格納する場所のフォルダー パスを設定します。
 
-**[ソリューションのディレクトリを作成]** がオンになっていることを確認し、**[OK]** をクリックして Service Fabric mesh プロジェクトを作成します。
+**[ソリューションのディレクトリを作成]** がオンになっていることを確認し、**[OK]** をクリックして Service Fabric Mesh プロジェクトを作成します。
 
-![Visual Studio: 新しい Service Fabric mesh プロジェクト ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
+![Visual Studio: 新しい Service Fabric Mesh プロジェクト ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-project.png)
 
 次は、**[新しい Service Fabric サービス]** ダイアログが表示されます。
 
@@ -76,13 +78,13 @@ Visual Studio を実行し、**[ファイル]** > **[新規]** > **[プロジェ
 
 **[サービス名]** を「**WebFrontEnd**」に設定します。 **[OK]** をクリックして、ASP.NET Core サービスを作成します。
 
-![Visual Studio: 新しい Service Fabric mesh プロジェクト ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-service-fabric-service.png)
+![Visual Studio: 新しい Service Fabric Mesh プロジェクト ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-service-fabric-service.png)
 
 次は、**[新しい ASP.NET Core Web アプリケーション]** ダイアログが表示されます。 **[新しい ASP.NET Core Web アプリケーション]** ダイアログで、**[Web アプリケーション]** を選択してから **[OK]** をクリックします。
 
 ![Visual Studio: 新しい ASP.NET Core アプリケーション](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-new-aspnetcore-app.png)
 
-これで、Service Fabric mesh アプリケーションが用意できました。 次は、To Do 情報のモデルを作成します。
+これで、Service Fabric Mesh アプリケーションが用意できました。 次は、To Do 情報のモデルを作成します。
 
 ## <a name="create-the-to-do-items-model"></a>To Do 項目のモデルを作成する
 
@@ -212,10 +214,7 @@ public static class DataContext
 
     static DataContext()
     {
-        ToDoList = new Model.ToDoList("Main List");
-
         // Seed to-do list
-
         ToDoList.Add(Model.ToDoItem.Load("Learn about microservices", 0, true));
         ToDoList.Add(Model.ToDoItem.Load("Learn about Service Fabric", 1, true));
         ToDoList.Add(Model.ToDoItem.Load("Learn about Service Fabric Mesh", 2, false));
@@ -368,19 +367,20 @@ service.yaml ファイルを開き、次の変数を `environmentVariables` に�
 
 > [!IMPORTANT]
 > service.yaml ファイル内の変数をインデントするには、タブではなくスペースを使用する必要があります。そうしないと、コンパイルができません。 Visual Studio では、環境変数を作成すると、タブが挿入されることがあります。 タブはすべてスペースに置き換えてください。 **[ビルド]** デバッグ出力にエラーが表示されていても、アプリは起動されます。 ただし、タブをスペースに変換しない限り機能しません。 service.yaml ファイルでタブが使用されていないことを確認するには、Visual Studio のエディターで **[編集]**  > **[詳細設定]**  > **[空白の表示]** の順に選択し、空白を可視化します。
+> service.yaml ファイルは英語ロケールを使用して処理されることに注意してください。  たとえば、小数点区切り文字を使用する必要がある場合は、コンマではなくピリオドを使用します。
 
 **WebFrontEnd** プロジェクトの **service.yaml** ファイルは次のようなものにする必要がありますが、`ApiHostPort` の値は異なるものになると考えられます。
 
 ![WebFrontEnd プロジェクトの Service.yaml](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-serviceyaml-envvars.png)
 
-これで、Service Fabric mesh アプリケーションのイメージを、バックエンドの Web サービスと共に、ローカル クラスターにビルドおよびデプロイする準備が整いました。
+これで、Service Fabric Mesh アプリケーションのイメージを、バックエンドの Web サービスと共に、ローカル クラスターにビルドおよびデプロイする準備が整いました。
 
 ## <a name="next-steps"></a>次の手順
 
 チュートリアルのこの部分で学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * ASP.NET Web フロントエンドで構成される Service Fabric mesh アプリケーションを作成する。
+> * ASP.NET Web フロントエンドで構成される Service Fabric Mesh アプリを作成する。
 > * To Do 項目を表すモデルを作成する。
 > * バックエンド サービスを作成し、そこから データを取得する。
 > * バックエンド サービスのモデル ビュー コントローラー パターンの一部としてコントローラーと DataContext を追加する。
@@ -389,4 +389,4 @@ service.yaml ファイルを開き、次の変数を `environmentVariables` に�
 
 次のチュートリアルに進みます。
 > [!div class="nextstepaction"]
-> [ローカルで実行している Service Fabric mesh アプリケーションをデバッグする](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> [ローカル開発クラスター内で実行されている Service Fabric Mesh アプリケーションをデバッグする](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)

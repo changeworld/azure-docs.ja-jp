@@ -1,20 +1,21 @@
 ---
-title: Language Understanding (LUIS) アプリケーションの計画 - Azure Cognitive Services | Microsoft Docs
+title: Language Understanding (LUIS) アプリケーションの計画
+titleSuffix: Azure Cognitive Services
 description: 関連するアプリの意図とエンティティについて概説し、Language Understanding Intelligent Service (LUIS) でアプリケーション プランを作成します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: conceptual
-ms.date: 09/06/2017
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 7c8974767621ad574b243fba5c3e49d97ec142e6
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: a7e137c864d216b6b936181c3482358bd10f175a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842274"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037271"
 ---
 # <a name="plan-your-luis-app"></a>LUIS アプリの計画
 

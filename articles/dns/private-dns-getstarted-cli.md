@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/25/2018
 ms.author: victorh
-ms.openlocfilehash: 023a1ecb6afc49dd20a14d57558d72a44779dbe9
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: 27a27cfb81362b070deb0bad367ff62e8c39460c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39257567"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964391"
 ---
-# <a name="create-an-azure-dns-private-zone-using-azure-cli"></a>Azure CLI を使用して Azure DNS プライベート ゾーンを作成する
+# <a name="create-an-azure-dns-private-zone-using-the-azure-cli"></a>Azure CLI を使用して Azure DNS プライベート ゾーンを作成する
 
 このチュートリアルでは、Azure CLI を使用して最初のプライベート DNS ゾーンとレコードを作成する手順について説明します。
 
@@ -22,7 +22,7 @@ ms.locfileid: "39257567"
 
 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 仮想ネットワークにプライベート DNS ゾーンを発行するには、そのゾーン内のレコードを解決することが認められた仮想ネットワークの一覧を指定します。  これらを "*解決仮想ネットワーク*" と呼びます。 VM が作成されたときや IP が変更されたとき、または VM が削除されたときに絶えず Azure DNS によってホスト名レコードが維持される仮想ネットワークを指定することもできます。  これを "*登録仮想ネットワーク*" と呼びます。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * DNS プライベート ゾーンの作成

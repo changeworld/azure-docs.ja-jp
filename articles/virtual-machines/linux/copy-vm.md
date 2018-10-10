@@ -14,24 +14,23 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: cynthn
-ms.openlocfilehash: 8d250f1289c3757d5ea862a1c195dde6f8efb0eb
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 64b33fcd25582f6b1d3e7efe12aba85bb17c4cca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36938266"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951204"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Azure CLI と Managed Disks を使用して Linux VM のコピーを作成する
 
-
-この記事では、Azure CLI 2.0 と Azure Resource Manager デプロイ モデルを使用して、Linux を実行する Azure 仮想マシン (VM) のコピーを作成する方法について説明します。 
+この記事では、Azure CLI と Azure Resource Manager デプロイ モデルを使用して、Linux を実行する Azure 仮想マシン (VM) のコピーを作成する方法について説明します。 
 
 さらに、[VHD から VM をアップロードして作成する](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)こともできます。
 
 ## <a name="prerequisites"></a>前提条件
 
 
--   [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールする。
+-   [Azure CLI](/cli/azure/install-az-cli2)
 
 -   [az login](/cli/azure/reference-index#az_login) で Azure アカウントにサインインする。
 
@@ -54,7 +53,7 @@ az vm deallocate \
 
 VM をコピーするには、基となる仮想ハード ディスクのコピーを作成します。 このプロセスでは、ソース VM と同じ構成および設定が含まれる管理ディスクとして、特殊な VHD を作成します。
 
-Azure Managed Disks の詳細については、「[Azure Managed Disks overview](../windows/managed-disks-overview.md)」 (Azure Managed Disks の概要) をご覧ください。 
+Azure Managed Disks の詳細については、「[Azure Managed Disks の概要](../windows/managed-disks-overview.md)」をご覧ください。 
 
 1.  [az vm list](/cli/azure/vm#az_vm_list) で、各 VM とその OS ディスクの名前を一覧表示します。 次の例では、**myResourceGroup** という名前のリソース グループに含まれているすべての VM の一覧を表示します。
     
@@ -72,14 +71,14 @@ Azure Managed Disks の詳細については、「[Azure Managed Disks overview]
     myVM    myDisk
     ```
 
-1.  [az disk create](/cli/azure/disk#az_disk_create) を使用して新しい管理ディスクを作成することによって、ディスクをコピーします。 次の例では、**myDisk** という名前の管理ディスクから **myCopiedDisk** という名前のディスクを作成します。
+1.  [az disk create](/cli/azure/disk#az_disk_create) を使用して新しいマネージド ディスクを作成することによって、ディスクをコピーします。 次の例では、**myDisk** という名前のマネージド ディスクから **myCopiedDisk** という名前のディスクを作成します。
 
     ```azurecli
     az disk create --resource-group myResourceGroup \
          --name myCopiedDisk --source myDisk
     ``` 
 
-1.  [az disk list](/cli/azure/disk#az_disk_list) を使用して、リソース グループ内に管理ディスクがあることを確認します。 次の例では、**myResourceGroup** という名前のリソース グループ内の管理ディスクの一覧を表示します。
+1.  [az disk list](/cli/azure/disk#az_disk_list) を使用して、リソース グループ内にマネージド ディスクがあることを確認します。 次の例では、**myResourceGroup** という名前のリソース グループ内のマネージド ディスクの一覧を表示します。
 
     ```azurecli
     az disk list --resource-group myResourceGroup --output table
@@ -127,7 +126,7 @@ Azure Managed Disks の詳細については、「[Azure Managed Disks overview]
 
 これで、[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成できます。
 
-次のように、コピーした管理ディスクを OS ディスクとして使用するように指定します (--attach-os-disk)。
+次のように、コピーしたマネージド ディスクを OS ディスクとして使用するように指定します (--attach-os-disk)。
 
 ```azurecli
 az vm create --resource-group myResourceGroup \

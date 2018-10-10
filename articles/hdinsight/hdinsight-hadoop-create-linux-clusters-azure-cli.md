@@ -1,6 +1,6 @@
 ---
-title: コマンド ラインを使用して Hadoop クラスターを作成する - Azure HDInsight
-description: クロス プラットフォーム Azure CLI 1.0 を使用して HDInsight クラスターを作成する方法について説明します。
+title: Azure クラシック CLI を使用して Hadoop クラスターを作成する - Azure HDInsight
+description: クロスプラットフォームの Azure クラシック CLI を使用して HDInsight クラスターを作成する方法について説明します。
 services: hdinsight
 author: jasonwhowell
 ms.reviewer: jasonh
@@ -9,23 +9,20 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 523c2a85929d8474c283055a8ae38d489cbd4b12
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 84b352fea0c5b9c98cd3b4e814e448cf8b706402
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090976"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992815"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLI を使用した HDInsight クラスターの作成
+# <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Azure クラシック CLI を使用して HDInsight クラスターを作成する
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-このドキュメントの手順では、Azure CLI 1.0 を使用して HDInsight 3.5 クラスターをプロセスを順を追って説明します。
+このドキュメントの手順では、Azure クラシック CLI を使用して HDInsight 3.5 クラスターをプロセスを順を追って説明します。
 
-> [!IMPORTANT]
-> このトピックでは、Azure CLI 1.0 を使用して HDInsight クラスターを作成する方法について説明します。 このバージョンの CLI は非推奨となっています。また、Azure CLI 2.0 には、HDInsight クラスターの作成機能がまだ追加されていません。
->
-> HDInsight クラスターの作成と管理は、Azure PowerShell を使用して行うこともできます。 詳しくは、[Azure PowerShell を使用した HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)に関するページをご覧ください。
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,14 +30,11 @@ ms.locfileid: "43090976"
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
 
-* **Azure CLI**。 このドキュメントの手順は、Azure CLI バージョン 0.10.14 で最後にテストされました。
-
-    > [!IMPORTANT]
-    > Azure CLI 1.0 は非推奨となっています。また、Azure CLI 2.0 には、HDInsight クラスターの作成機能がまだ追加されていません。
+* **Azure クラシック CLI**。 このドキュメントの手順は、Azure クラシック CLI バージョン 0.10.14 で最後にテストされました。
 
 ## <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションにログイン
 
-「[Azure コマンド ライン インターフェイス (Azure CLI) からの Azure サブスクリプションへの接続](/cli/azure/authenticate-azure-cli)」に記載されている手順に従い、 **login** メソッドを使用してサブスクリプションに接続します。
+「[Azure コマンド ライン インターフェイスからの Azure サブスクリプションへの接続](/cli/azure/authenticate-azure-cli)」に記載されている手順に従い、**login** メソッドを使用してサブスクリプションに接続します。
 
 ## <a name="create-a-cluster"></a>クラスターの作成
 
@@ -50,7 +44,7 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
 
         azure login
 
-    名前とパスワードを入力するように求められます。 複数の Azure サブスクリプションがある場合は、 `azure account set <subscriptionname>` を使用して、Azure CLI コマンドが使用するサブスクリプションを設定します。
+    名前とパスワードを入力するように求められます。 複数の Azure サブスクリプションがある場合は、`azure account set <subscriptionname>` を使用して、クラシック CLI コマンドが使用するサブスクリプションを設定します。
 
 2. 次のコマンドで Azure リソース マネージャー モードに切り替えます。
 
@@ -124,7 +118,7 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI を使用して HDInsight クラスターを作成したら、クラスターの使用方法について、以下のトピックを参照してください。
+クラシック CLI を使用して HDInsight クラスターを作成したら、クラスターの使用方法について、以下のトピックを参照してください。
 
 ### <a name="hadoop-clusters"></a>Hadoop クラスター
 

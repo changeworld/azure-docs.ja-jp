@@ -1,6 +1,6 @@
 ---
-title: Azure CLI 1.0 を使用したクラシック Linux VM の作成 | Microsoft Docs
-description: クラシック デプロイ モデルを使用して Azure CLI 1.0 で Linux 仮想マシンを作成する方法について説明する
+title: Azure クラシック CLI を使用してクラシック Linux VM を作成する | Microsoft Docs
+description: クラシック デプロイ モデルを使用して Azure クラシック CLI で Linux 仮想マシンを作成する方法について説明します
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -16,18 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 13d0ef93c3828c514e46e37494a66f7003eac827
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 507d9e12a37d7bf187a3e56b04cb47ac0104773d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931616"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982043"
 ---
-# <a name="how-to-create-a-classic-linux-vm-with-the-azure-cli-10"></a>Azure CLI 1.0 を使用してクラシック Linux VM を作成する方法
+# <a name="how-to-create-a-classic-linux-vm-with-the-azure-classic-cli"></a>Azure クラシック CLI を使用してクラシック Linux VM を作成する方法
 > [!IMPORTANT] 
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 Resource Manager バージョンについては、[こちら](../create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をご覧ください。
 
-このトピックでは、クラシック デプロイ モデルを使用して Azure CLI 1.0 で Linux 仮想マシン (VM) を作成する方法について説明します。 ここでは、Azure 上の使用可能な **イメージ** にある Linux イメージを使用します。 Azure CLI 1.0 コマンドでは、次のような構成を選択できます。
+このトピックでは、クラシック デプロイ モデルを使用して Azure クラシック CLI で Linux 仮想マシン (VM) を作成する方法について説明します。 ここでは、Azure 上の使用可能な **イメージ** にある Linux イメージを使用します。 Azure クラシック CLI コマンドでは、次のような構成を選択できます。
 
 * 仮想ネットワークと VM との接続
 * 既存のクラウド サービスへの VM の追加

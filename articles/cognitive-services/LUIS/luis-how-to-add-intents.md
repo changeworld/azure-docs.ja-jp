@@ -1,25 +1,26 @@
 ---
-title: LUIS アプリケーションでの意図の追加 | Microsoft Docs
-description: Language Understanding (LUIS) を使用して意図を追加し、アプリがユーザー要求を解釈して、適切に対応できるようにします。
+title: LUIS アプリケーションでの意図の追加
+titleSuffix: Azure Cognitive Services
+description: 意図を LUIS アプリに追加して、同じ意図を持つ質問またはコマンドのグループを特定します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 0ebf15ea49467674ab3c56aa7983131593cf5c9a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 9b7207a16a89e48ad64b2dbc48a5293d0cf8aa25
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225888"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036084"
 ---
 # <a name="manage-intents"></a>意図の管理 
 [意図](luis-concept-intent.md)を LUIS アプリに追加して、同じ意図を持つ質問またはコマンドのグループを特定します。 
 
-**[Intents]\(意図\)** ページで、ご自身の意図を追加して管理します。このページには、LUIS の左側のパネルの **[Intents]\(意図\)** からアクセスできます。 
+意図の管理は、上部のツール バーの **[Build]\(ビルド\)** セクションから行います。 左側のパネルからアクセスできる **[Intents]\(意図\)** ページで、意図を追加および管理します。 
 
 次の手順では、TravelAgent アプリに "Bookflight" 意図を追加する方法を示します。
 
@@ -28,7 +29,6 @@ ms.locfileid: "39225888"
 1. **[マイ アプリ]** ページでアプリ (TravelAgent など) の名前をクリックして開き、左側のパネルで **[Intents]\(意図\)** をクリックします。 
 2. **[Intents]\(意図\)** ページで、**[Create new intent]\(意図の新規作成\)** をクリックします。
 
-    ![意図の一覧](./media/luis-how-to-add-intents/IntentsList.png)
 3. **[Create new intent]\(意図の新規作成\)** ダイアログ ボックスで、意図の名前として「BookFlight」と入力し、**[完了]** をクリックします。
 
     ![意図の追加](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
@@ -105,7 +105,7 @@ ms.locfileid: "39225888"
 2. **[Delete utterances?]\(発話を削除しますか\)** ポップアップ ダイアログで **[完了]** を選択します。
 
 ## <a name="search-in-utterances-on-intent-page"></a>意図ページで発話を検索する
-意図で、テキスト (単語またはフレーズ) を含む発話を検索できます。 たとえば、特定の単語を含むエラーに気が付き、その単語を含むすべての例を見つける必要があるとします。 
+意図の発話リスト内で、テキスト (単語またはフレーズ) を含む発話を検索できます。 たとえば、特定の単語を含むエラーに気が付き、その単語を含むすべての例を見つける必要があるとします。 
 
 1. ツール バーの虫眼鏡アイコンを選択します。
 

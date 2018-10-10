@@ -1,21 +1,21 @@
 ---
-title: LUIS アプリでエンティティを管理する | Microsoft Docs
-titleSuffix: Azure
+title: LUIS アプリにエンティティを追加する
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) アプリにエンティティ (アプリケーションのドメイン内のキー データ) を追加します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: e97f9a5391799849983bd98db5400e0a842627b7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: e82955da24e127e5536c2e40ad2cccf07c5fa173
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224128"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032004"
 ---
 # <a name="manage-entities"></a>エンティティを管理する
 アプリの[意図](luis-concept-intent.md)を識別した後、[エンティティ](luis-concept-entity-types.md)によって[発話例にラベルを付ける](luis-concept-utterance.md)必要があります。 エンティティはコマンドまたは質問の重要な断片であり、クライアント アプリがタスクを実行するのに不可欠な場合があります。 
@@ -31,8 +31,6 @@ ms.locfileid: "39224128"
  
 2. **[エンティティ]** ページで、**[Manage prebuilt entities]\(事前構築済みのエンティティの管理\)** を選択します。
 
-    ![[エンティティ] ページでの事前構築済みエンティティの追加のスクリーンショット](./media/add-entities/manage-prebuilt-entities-button.png)
-
 3. **[Add or remove prebuilt entities]\(事前構築済みのエンティティの追加または削除\)** ダイアログ ボックスで、事前構築済みのエンティティ **number** および **datetimeV2** を選択します。 **[完了]** を選択します。
 
     ![事前構築済みエンティティの追加ダイアログ ボックスのスクリーンショット](./media/add-entities/list-of-prebuilt-entities.png)
@@ -43,8 +41,6 @@ ms.locfileid: "39224128"
 シンプル エンティティとは、1 つの概念について説明する汎用的エンティティです。 
 
 1. アプリで、**[ビルド]** セクションから、左パネル内の **[エンティティ]** をクリックし、**[Create new entity]\(新しいエンティティの作成\)** を選択します。
-
-    ![[Create new entity]\(新しいエンティティの追加\) ボタンが強調された [エンティティ] ページのスクリーンショット](./media/add-entities/create-new-entity-button.png)
 
 2. ポップアップ ダイアログ ボックスで、**[Entity name]\(エンティティ名\)** ボックスに「`Airline`」と入力し、**[エンティティの種類]** リストから **[簡易]** を選択し、**[完了]** を選択します。
 

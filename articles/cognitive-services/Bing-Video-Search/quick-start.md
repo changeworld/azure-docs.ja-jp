@@ -1,23 +1,23 @@
 ---
-title: Video Search API クイック スタート | Microsoft Docs
+title: 'クイック スタート: Bing Video Search API'
+titlesuffix: Azure Cognitive Services
 description: Bing Video Search API の使用方法の概要について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 7E59692A-83A8-4F4C-B122-1F0EDC8E5C86
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 0bd0f067d64cac3ebac342ebadcfcc010a47af7b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: abeeec95755a566216ac65b2edf5c831a8ab93b6
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376957"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225516"
 ---
-# <a name="your-first-video-search-query"></a>初めてのビデオ検索クエリ
+# <a name="quickstart-your-first-video-search-query"></a>クイック スタート: 初めてのビデオ検索クエリ
 
 最初の呼び出しを行う前に、Bing Search Cognitive Services のサブスクリプション キーを入手する必要があります。 キーを取得するには、「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=bing-video-search-api)」を参照してください。
 

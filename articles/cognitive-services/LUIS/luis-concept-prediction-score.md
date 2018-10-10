@@ -1,20 +1,21 @@
 ---
-title: LUIS によって返される予測スコアについて - Azure | Microsoft Docs
+title: LUIS によって返される予測スコアについて
+titleSuffix: Azure Cognitive Services
 description: LUIS における予測スコアの意味する内容を学習します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 7412459fca179e7a13d6933f27c2c9ac2d770f33
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: dc19151e82f44159533050e60ba2f1c6d65466fe
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358105"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032239"
 ---
 # <a name="prediction-score"></a>予測スコア
 予測スコアは、予測結果についての LUIS の信頼度を示します。 

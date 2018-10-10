@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning サービス (プレビュー) のモデル構築チュートリアル | Microsoft Docs
-description: このチュートリアルでは、Azure Machine Learning サービス (プレビュー) の使い方をエンド ツー エンドで詳しく説明します。 このパート 2 では、実験について説明します。
+title: Azure Machine Learning service (プレビュー) のモデル構築チュートリアル | Microsoft Docs
+description: このチュートリアルでは、Azure Machine Learning service (プレビュー) の使い方をエンド ツー エンドで詳しく説明します。 このパート 2 では、実験について説明します。
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -12,17 +12,21 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 3/15/2018
-ms.openlocfilehash: 4f9b14762332bd11fd69a855d8fabdb206e34919
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6faabc3003048c93c08451c537496e762352b50b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41918663"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997319"
 ---
 # <a name="tutorial-2-classify-iris---build-a-model"></a>チュートリアル 2: あやめの分類: モデルを構築する
-Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析を支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
 
-このチュートリアルは、**3 部構成のシリーズのパート 2** になります。 チュートリアルのこのパートでは、Azure Machine Learning サービスを使って次の作業を行います。
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Azure Machine Learning service (プレビュー) は、データ サイエンスと高度な分析を支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
+
+このチュートリアルは、**3 部構成のシリーズのパート 2** になります。 チュートリアルのこのパートでは、Azure Machine Learning service を使って次の作業を行います。
 
 > [!div class="checklist"]
 > * スクリプトを開いてコードを確認する
@@ -39,7 +43,7 @@ Azure Machine Learning サービス (プレビュー) は、データ サイエ�
 
 このチュートリアルを完了するには、次のものが必要です。
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
-- 実験アカウントと Azure Machine Learning Workbench (こちらの[クイック スタート](../service/quickstart-installation.md)の説明に従ってインストールされていること)
+- 実験アカウントと Azure Machine Learning Workbench (こちらの[クイック スタート](quickstart-installation.md)の説明に従ってインストールされていること)
 - プロジェクトおよびあやめデータ ([チュートリアルのパート 1](tutorial-classifying-iris-part-1.md) で準備したもの)
 - Docker エンジン (ローカルにインストールされ、実行されていること)。 Docker の Community Edition でかまいません。 Docker のインストール方法については、こちら (https://docs.docker.com/engine/installation/) をご覧ください。
 

@@ -1,20 +1,21 @@
 ---
-title: Azure での LUIS アプリのフィーチャーについて | Microsoft Docs
-description: LUIS アプリのパフォーマンス向上に役立つフィーチャーについて説明します。 フィーチャーには、正規表現を認識するためのフレーズ リストやパターンが含まれます。
+title: Azure Cognitive Services の LUIS アプリのフィーチャー
+titleSuffix: Azure Cognitive Services
+description: フィーチャーを言語モデルに追加することで、ラベル付けまたは分類する必要がある入力を認識する方法についてのヒントが提供されます。 フィーチャーは LUIS による意図とエンティティ両方の認識を補助します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8d3f006f27d1d728f89458deba27e1c1a63b6de5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 015679b6020e9d2a4d702f9d6e723ecd9499d8dc
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224930"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034469"
 ---
 # <a name="phrase-list-features-in-luis"></a>LUIS のフレーズ リストのフィーチャー
 

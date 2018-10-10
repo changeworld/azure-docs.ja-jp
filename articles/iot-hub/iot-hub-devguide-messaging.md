@@ -8,41 +8,39 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: b0667f820145f16c75a07ebe1849e20d2de36cc7
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 1915c4bc6cd611479c7575179d8fe64def8895eb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39185511"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956379"
 ---
-# <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>IoT Hub における device-to-cloud と cloud-to-device のメッセージング
+# <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>IoT Hub で device-to-cloud および cloud-to-device メッセージを送信する
 
-IoT Hub メッセージングを使用して、次のようにご利用のデバイスと通信します。
+IoT Hub では、デバイスとの間で双方向通信を行うことができます。 デバイスからソリューション バックエンドにメッセージを送信し、IoT ソリューション バックエンドからデバイスにコマンドを送信することによって、デバイスと通信するには、IoT Hub メッセージングを使用します。 詳しくは、「[Azure IoT Hub メッセージの形式について](../iot-hub/iot-hub-devguide-messages-construct.md)」をご覧ください。
 
-* [device-to-cloud][lnk-d2c] メッセージをデバイスからソリューション バックエンドに送信する。
-* [cloud-to-device][lnk-c2d] メッセージをソリューション バックエンドからデバイスに送信する。
+## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>IoT Hub への device-to-cloud メッセージの送信
+
+IoT Hub に組み込まれているサービス エンドポイントを使用することで、バックエンド サービスはデバイスからテレメトリ メッセージを読み取ることができます。 このエンドポイントは [Event Hubs](https://docs.microsoft.com/azure/event-hubs/) と互換性があり、標準の IoT Hub SDK を使用して[この組み込みエンドポイントから読み取る]((https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin))ことができます。
+
+また、IoT Hub では[カスタム エンドポイント](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints#custom-endpoints)もサポートされています。ユーザーはカスタム エンドポイントを定義することで、[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)を使用して、Azure サービスにデバイスのテレメトリ データとイベントを送信することができます。
+
+## <a name="sending-cloud-to-device-messages-from-iot-hub"></a>IoT Hub からの cloud-to-device メッセージの送信
+
+ソリューション バックエンドからデバイスに [cloud-to-device](iot-hub-devguide-messages-c2d.md) メッセージを送信することができます。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 IoT Hub のメッセージング機能の中心となる特性は、メッセージの信頼性と持続性です。 これらのプロパティにより、デバイス側では断続的な接続に対する復元性を、クラウド側ではイベント処理の負荷の急増に対する復元性を実現できます。 IoT Hub では、D2C および C2D メッセージングの両方について、 *少なくとも 1 回* の配信保証が実装されます。
 
-IoT Hub の機能の概要については、[Azure IoT Hub サービスの概要][lnk-iot-hub-overview]に関するページをご覧ください。
-
-## <a name="when-to-use-iot-hub-messaging"></a>IoT Hub メッセージングを使用する場合
+## <a name="choosing-the-right-type-of-iot-hub-messaging"></a>適切な種類の IoT Hub メッセージングの選択
 
 時系列のテレメトリとデバイス アプリからのアラートを送信するには device-to-cloud メッセージを使用し、デバイス アプリに一方向の通知を送信するには cloud-to-device メッセージを使用します。
 
-* device-to-cloud メッセージ、報告プロパティ、またはファイルのアップロードのどれを使用するべきか不明な場合は、「[device-to-cloud 通信に関するガイダンス][lnk-d2c-guidance]」をご覧ください。
-* cloud-to-device メッセージ、必要とされるプロパティ、またはダイレクト メソッドのどれを使用するべきか不明な場合は、「[cloud-to-device 通信に関するガイダンス][lnk-c2d-guidance]」をご覧ください。
+* device-to-cloud メッセージ、報告プロパティ、ファイルのアップロードのどれを選択するかについては、「[device-to-cloud 通信に関するガイダンス](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-d2c-guidance)」をご覧ください。
+* cloud-to-device メッセージ、必要とされるプロパティ、ダイレクト メソッドのどれを選択するかについては、「[cloud-to-device 通信に関するガイダンス](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-* IoT Hub の [device-to-cloud メッセージング][lnk-d2c]についてご確認ください。
-* IoT Hub の [cloud-to-device メッセージング][lnk-c2d]についてご確認ください。
-
-[lnk-azure-iot]: ../iot-fundamentals/index.yml
-[lnk-iot-hub-overview]: about-iot-hub.md
-[lnk-d2c]: iot-hub-devguide-messages-d2c.md
-[lnk-c2d]: iot-hub-devguide-messages-c2d.md
-[lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
-[lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
+* IoT Hub の[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)について学習する。
+* IoT Hub の [cloud-to-device メッセージング](iot-hub-devguide-messages-c2d.md)について学習する。

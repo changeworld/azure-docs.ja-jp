@@ -1,24 +1,27 @@
 ---
-title: 新しいナレッジ ベースを作成する - Java のクイック スタート - Microsoft QnA Maker API (v4) - Azure Cognitive Services | Microsoft Docs
-description: FAQ や製品マニュアルを保持するナレッジ ベースを Java で作成し、QnA Maker で使用できるようにします。
+title: 'クイック スタート: API Java - ナレッジ ベースの作成 - QnA Maker'
+titlesuffix: Azure Cognitive Services
+description: このクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 3d637a4a046318a95eeeb532cbb7a9938cb1004d
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 5dfea3a8b4b5a79585b910fd2fad4ffbda4729fd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "43771368"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037611"
 ---
 # <a name="create-a-new-knowledge-base-in-java"></a>新しいナレッジ ベースを Java で作成する
 
 このクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
 以下 (**getKB()** の "kb.urls") に、2 つのサンプル FAQ の URL が記載されています。コンテンツは、これらの URL から取得されます。 QnA Maker は、FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。詳しくは、こちらの[データ ソース](../Concepts/data-sources-supported.md)に関するドキュメントをご覧ください。 このクイック スタートの FAQ URL は、独自のものを使用してもかまいません。
 
@@ -32,7 +35,7 @@ ms.locfileid: "43771368"
 
 ## <a name="create-knowledge-base"></a>ナレッジ ベースを作成する
 
-次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいナレッジ ベースが作成されます。
+次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいサポート技術情報が作成されます。
 
 1. 適切な IDE で新しい Java プロジェクトを作成します。
 1. その Java プロジェクトに [Google GSON ライブラリ](https://github.com/google/gson)を追加します。任意のプロジェクト管理ツール (Maven など) に依存関係を追加するか、.jar ファイルを手動で[作成](https://stackoverflow.com/questions/5258159/how-to-make-an-executable-jar-file)してインポートしてください。

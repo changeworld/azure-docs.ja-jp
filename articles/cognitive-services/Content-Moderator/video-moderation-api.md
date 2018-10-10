@@ -1,26 +1,27 @@
 ---
-title: Azure Content Moderator - ビデオのモデレート | Microsoft Docs
+title: ビデオのモデレーション - Content Moderator
+titlesuffix: Azure Cognitive Services
 description: ビデオのモデレートを使用して、成人向けのわいせつなコンテンツの可能性があるものをスキャンします。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: sajagtap
-ms.openlocfilehash: ef58f5990d4a0a19ab2b8c61b42ab2a0754dc6fa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9b6240ef0883e1a523c50c9b641065deb2669d53
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377693"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226537"
 ---
 # <a name="video-moderation"></a>ビデオのモデレート
 
 現在、人気のある、または地域のソーシャル メディア Web サイトでは、オンライン ビューアーによって十億単位のビデオ表示が生成され、その数は増加し続けています。 成人向けのわいせつなコンテンツの可能性があるものを予測する機械学習ベースのサービスを適用することにより、モデレーション作業にかかるコストを削減できます。
 
-## <a name="sign-up-for-the-content-moderator-media-processor-public-preview"></a>Content Moderator メディア プロセッサ (パブリック プレビュー) にサインアップします。
+## <a name="sign-up-for-the-content-moderator-media-processor-preview"></a>Content Moderator メディア プロセッサ (プレビュー) にサインアップする
 
 ### <a name="create-a-free-azure-account"></a>無料の Azure アカウントを作成する
 
@@ -54,7 +55,7 @@ AMS 資格情報を取得したら、2 つの方法で、Content Moderator メ�
 
    サンプル コードで、プロジェクト **VideoModeration** に名前を付けます。
 
-1. このプロジェクトをお使いのソリューションのシングル スタートアップ プロジェクトとして選択します。
+1. このプロジェクトをソリューションのシングル スタートアップ プロジェクトとして選択します。
 
 ### <a name="install-required-packages"></a>必要なパッケージをインストールする
 
@@ -65,7 +66,7 @@ AMS 資格情報を取得したら、2 つの方法で、Content Moderator メ�
 
 ### <a name="update-the-programs-using-statements"></a>プログラムの using ステートメントを更新する
 
-プログラムの using ステートメントを修正します。
+プログラムの using ステートメントを変更します。
 
     using System;
     using System.Linq;
@@ -368,8 +369,8 @@ Content Moderation ジョブが完了したら、JSON 応答を分析します�
 
 > - `adultScore` は、特定の状況で、性的に露骨な表現または成人向けの表現であると考えられるコンテンツの存在の可能性および予測スコアを表します。
 > - `racyScore` は、特定の状況で、性的に挑発的または成熟した表現であると考えられるコンテンツの存在の可能性および予測スコアを表します。
-> - `adultScore` と `racyScore` の値は 0 から 1 の範囲です。 スコアが高いほど、モデルによる予測においてカテゴリが該当する可能性は高くなります。 このプレビューは、手動でコード化された結果ではなく、統計モデルに依存します。 独自のコンテンツでテストを行うことで、各カテゴリを要件に合わせて設定する方法を決定することをお勧めします。
-> - `reviewRecommended` の値は true または false のいずれかであり、内部スコアのしきい値に応じて決まります。 顧客は、この値を使用するか、それとも独自のコンテンツ ポリシーに基づくカスタムしきい値を決定するかを評価する必要があります。
+> - `adultScore` と `racyScore` の値は 0 から 1 の範囲です。 スコアが高いほど、モデルによる予測においてカテゴリが該当する可能性は高くなります。 このプレビューは、人がコーディングした結果ではなく、統計モデルに依存しています。 独自のコンテンツを使用してテストを行い、実際の要件に合うように各カテゴリをどのように設定するかを決めることをお勧めします。
+> - `reviewRecommended` は、内部スコアのしきい値に応じて true または false のどちらかになります。 ユーザーは、この値を使用するか、独自のコンテンツ ポリシーに基づいてカスタムしきい値を決めるかを見極める必要があります。
 >
 
     {

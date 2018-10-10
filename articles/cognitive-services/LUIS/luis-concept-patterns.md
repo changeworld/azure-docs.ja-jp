@@ -1,24 +1,24 @@
 ---
-title: パターンがどのように予測精度を改善するかを学習する | Microsoft Docs
-titleSuffix: Azure
-description: 意図の予測スコアを改善し、エンティティを探すようにパターンを設計する方法について学習します。
+title: パターンがどのように予測精度を改善するかを学習する
+titleSuffix: Azure Cognitive Services
+description: パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。 パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c08419e3fb5b25284121a0eac30c38c8ba7570f1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 5ade15b3f80d725af4ece31a36ea0b670f5f5147
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225219"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031545"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>パターンは予測精度を改善する
-パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。 発話のパターンを指定することで、LUIS は信頼度の高い予測を実現します。 
+パターンは、複数の発話が非常に似ているときに、精度を改善するように設計されています。  パターンを使用すると、さらに多くの発話を提供しなくても意図の精度を高めることができます。 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>パターンは信頼度の低い意図を解決する
 従業員に関連する組織図を報告する人事管理アプリがあるとします。 ある従業員の名前と関係を指定すると、LUIS はその従業員と関わりのある従業員を返します。 Tom という従業員の上司は Alice で、部下は Michael、Rebbeca、および Carl です。
@@ -60,25 +60,25 @@ ms.locfileid: "39225219"
 ### <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>パターン テンプレートにエンティティを追加する構文
 パターン テンプレートにエンティティを追加するには、エンティティ名を `Who does {Employee} manage?` のように中かっこで囲みます。 
 
-```
-Who does {Employee} manage?
-```
+|エンティティのあるパターン|
+|--|
+|`Who does {Employee} manage?`|
 
 ### <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>パターン テンプレートにエンティティとロールを追加する構文
 エンティティのロールは、`{entity:role}` のようにエンティティ名、コロン、ロール名の順に記述します。 パターン テンプレートにロール付きのエンティティを追加するには、エンティティ名とロール名を `Book a ticket from {Location:Origin} to {Location:Destination}` のように中かっこで囲みます。 
 
-```
-Book a ticket from {Location:Origin} to {Location:Destination}
-```
+|エンティティ ロールのあるパターン|
+|--|
+|`Book a ticket from {Location:Origin} to {Location:Destination}`|
 
 ### <a name="syntax-to-add-a-patternany-to-pattern-template"></a>パターン テンプレートに pattern.any を追加する構文
 Pattern.any エンティティでは、パターンに可変長のエンティティを追加することができます。 パターン テンプレートが後に続く限り、pattern.any は任意の長さで指定できます。 
 
 **Pattern.any** エンティティをパターン テンプレートに追加するには、Pattern.any エンティティを `How much does {Booktitle} cost and what format is it available in?` のように中かっこで囲みます。  
 
-```
-How much does {Booktitle} cost and what format is it available in?
-```
+|Pattern.any エンティティのあるパターン|
+|--|
+|`How much does {Booktitle} cost and what format is it available in?`|
 
 |パターン内の書籍のタイトル|
 |--|
@@ -107,9 +107,9 @@ How much does {Booktitle} cost and what format is it available in?
 ### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>テンプレートの発話でオプションのテキストをマークする構文
 正規表現の角かっこの構文 `[]` を使用して、発話内のオプションのテキストをマークします。 オプションのテキストは、最大で 2 つの角かっこのみを入れ子にできます。
 
-```
-[find] email about {subject} [from {person}]
-```
+|省略可能なテキストのあるパターン|
+|--|
+|`[find] email about {subject} [from {person}]`|
 
 `.`、`!`、`?` などの句読点は角かっこを使用して無視できます。 これらのマークを無視するには、各マークが別個のパターン内にある必要があります。 現在、オプションの構文は、複数の項目のリスト内のある項目を無視することはできません。
 

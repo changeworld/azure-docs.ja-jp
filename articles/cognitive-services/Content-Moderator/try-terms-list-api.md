@@ -1,20 +1,21 @@
 ---
-title: Azure Content Moderator でカスタム用語リストを使用してテキストをモデレートする | Microsoft Docs
+title: カスタム用語リストを使用してテキストをモデレートする - Content Moderator
+titlesuffix: Azure Cognitive Services
 description: Content Moderator API コンソールでカスタム用語リストを使ってみましょう。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/05/2017
 ms.author: sajagtap
-ms.openlocfilehash: 2542e4590781879408aafe8d072eceef157e02c9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 99df9fda2cc56f169a61ec215a976de28fc13d27
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373317"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220280"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>API コンソールでカスタム用語リストを使用してモデレートする
 

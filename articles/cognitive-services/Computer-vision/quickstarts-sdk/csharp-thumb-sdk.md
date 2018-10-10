@@ -1,25 +1,27 @@
 ---
-title: 'Computer Vision API C# クイック スタート SDK: サムネイルの作成 | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Computer Vision Windows C# クライアント ライブラリを使って、画像からサムネイルを生成します。
+title: 'クイック スタート: サムネイルの生成 - SDK、C# - Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Computer Vision Windows C# クライアント ライブラリを使って、画像からサムネイルを生成します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: e26d2da8f068b3b23b8211dc88cd21ca4a049018
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.date: 09/14/2018
+ms.author: nolachar
+ms.openlocfilehash: 8fdbcf5bfe4d4fe60a2858b34b38c01d66e75d99
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43772176"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054814"
 ---
-# <a name="quickstart-generate-a-thumbnail---sdk-c35"></a>クイック スタート: サムネイルの生成 - SDK、C&#35;
+# <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>クイック スタート: Computer Vision SDK と C# によるサムネイルの生成
 
 このクイック スタートでは、Computer Vision Windows クライアント ライブラリを使って、画像からサムネイルを生成します。
+
+サンプルのソース コードは、[Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,7 +42,7 @@ ms.locfileid: "43772176"
     1. **[Microsoft.Azure.CognitiveServices.Vision.ComputerVision]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
 1. `Program.cs` を以下のコードに置き換えます。
 1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. 必要に応じて、サブスクリプション キーを取得した場所に `computerVision.AzureRegion = AzureRegions.Westcentralus` を変更します。
+1. 必要に応じて、`computerVision.Endpoint` をサブスクリプション キーに関連付けられている Azure リージョンに変更します。
 1. 必要に応じて、`<LocalImage>` をローカル画像のパスとファイル名に置き換えます (設定しなかった場合は無視されます)。
 1. 必要に応じて、`remoteImageUrl` を別の画像に設定します。
 1. 必要に応じて、サムネイルをディスクに保存するために、`writeThumbnailToDisk` を `true` に設定します。
@@ -48,7 +50,6 @@ ms.locfileid: "43772176"
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Vision.ComputerVision;
-using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 
 using System;
 using System.IO;
@@ -74,33 +75,33 @@ namespace ImageThumbnail
 
         static void Main(string[] args)
         {
-            ComputerVisionAPI computerVision = new ComputerVisionAPI(
+            ComputerVisionClient computerVision = new ComputerVisionClient(
                 new ApiKeyServiceClientCredentials(subscriptionKey),
                 new System.Net.Http.DelegatingHandler[] { });
 
             // You must use the same region as you used to get your subscription
             // keys. For example, if you got your subscription keys from westus,
-            // replace "Westcentralus" with "Westus".
+            // replace "westcentralus" with "westus".
             //
             // Free trial subscription keys are generated in the westcentralus
             // region. If you use a free trial subscription key, you shouldn't
             // need to change the region.
 
             // Specify the Azure region
-            computerVision.AzureRegion = AzureRegions.Westcentralus;
+            computerVision.Endpoint = "https://westcentralus.api.cognitive.microsoft.com";
 
             Console.WriteLine("Images being analyzed ...\n");
             var t1 = GetRemoteThumbnailAsync(computerVision, remoteImageUrl);
             var t2 = GetLocalThumbnailAsnc(computerVision, localImagePath);
 
             Task.WhenAll(t1, t2).Wait(5000);
-            Console.WriteLine("Press any key to exit");
+            Console.WriteLine("Press ENTER to exit");
             Console.ReadLine();
         }
 
         // Create a thumbnail from a remote image
         private static async Task GetRemoteThumbnailAsync(
-            ComputerVisionAPI computerVision, string imageUrl)
+            ComputerVisionClient computerVision, string imageUrl)
         {
             if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
             {
@@ -124,7 +125,7 @@ namespace ImageThumbnail
 
         // Create a thumbnail from a local image
         private static async Task GetLocalThumbnailAsnc(
-            ComputerVisionAPI computerVision, string imagePath)
+            ComputerVisionClient computerVision, string imagePath)
         {
             if (!File.Exists(imagePath))
             {

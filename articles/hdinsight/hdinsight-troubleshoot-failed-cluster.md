@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: f18e667e86c310e4d2950ba195911307aec5426d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6c9e980e4f448f705743b2e6dce268c671ffe9b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047027"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950717"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>処理速度が遅いか失敗した HDInsight クラスターのトラブルシューティング
 
@@ -57,12 +57,13 @@ Azure Portal は次の情報を提供できます。
 
 ![HDInsight、Azure Portal の情報](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-Azure CLI を使うこともできます。
+Azure クラシック CLI を使うこともできます。
 
 ```
     azure hdinsight cluster list
     azure hdinsight cluster show <ClusterName>
 ```
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 もう 1 つのオプションは、PowerShell を使うことです。 詳しくは、「[Azure PowerShell を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-powershell.md)」をご覧ください。
 
@@ -100,7 +101,7 @@ HDInsight は複数の Azure サービスに依存しています。 Azure HDIns
 
 #### <a name="restart-your-cluster-services"></a>クラスターのサービスを再起動する
 
-クラスターのパフォーマンスが低下している場合は、Ambari UI または Azure CLI を使ってサービスを再起動することを検討します。 クラスターで一時的なエラーが発生している場合、再起動は環境を安定させる最も簡単な方法であり、パフォーマンスが向上する可能性があります。
+クラスターのパフォーマンスが低下している場合は、Ambari UI または Azure クラシック CLI を使ってサービスを再起動することを検討します。 クラスターで一時的なエラーが発生している場合、再起動は環境を安定させる最も簡単な方法であり、パフォーマンスが向上する可能性があります。
 
 ## <a name="step-3-view-your-clusters-health"></a>ステップ 3: クラスターの正常性を表示する
 

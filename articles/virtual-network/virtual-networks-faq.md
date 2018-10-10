@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 2802a725bca7f63f6956293048b0e854ebfb59b5
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: e92c099d9e0dfacff71c13382059acb06037bb1e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42144506"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999870"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -259,3 +259,24 @@ VNet ピアリング接続を作成するのに料金はかかりません。 �
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>ピアリング接続に帯域幅制限はありますか。
 いいえ。 ローカルであってもグローバルであっても、VNet ピアリングで帯域幅制限は課されません。 帯域幅は VM やコンピューティング リソースによってのみ制限されます。
 
+## <a name="virtual-network-tap"></a>仮想ネットワーク TAP
+
+### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>仮想ネットワーク TAP はどの Azure リージョンで利用できますか。
+開発者向けプレビューの期間中、機能は米国中西部リージョンで使用できます。 監視対象のネットワーク インターフェイス、仮想ネットワーク TAP リソース、およびコレクターまたは分析ソリューションは、同じリージョンにデプロイする必要があります。
+
+### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>仮想ネットワーク TAP では、ミラー化されたパケットに対するフィルター処理機能がサポートされていますか。
+仮想ネットワーク TAP のプレビュー版では、フィルター処理機能はサポートされていません。 TAP 構成をネットワーク インターフェイスに追加すると、ネットワーク インターフェイス上のすべてのイングレス トラフィックとエグレス トラフィックのディープ コピーが、TAP のターゲットにストリーミングされます。
+
+### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>監視対象のネットワーク インターフェイスに、複数の TAP 構成を追加できますか。
+監視対象のネットワーク インターフェイスに追加できる TAP 構成は 1 つだけです。 ユーザーが選択した分析ツールに TAP トラフィックの複数コピーをストリーミングする機能については、個別の[パートナー ソリューション](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions)を確認してください。
+
+### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>同じ仮想ネットワーク TAP リソースで、複数の仮想ネットワーク内の監視対象ネットワーク インターフェイスからのトラフィックを集約できますか。
+はい。 同じ仮想ネットワーク TAP リソースを使用して、同じサブスクリプションまたは異なるサブスクリプションのピアリングされた仮想ネットワーク内の監視対象ネットワーク インターフェイスからのミラー化されたトラフィックを集約できます。 仮想ネットワーク TAP リソースと、ターゲット ロード バランサーまたはターゲット ネットワーク インターフェイスは、同じサブスクリプションに含まれる必要があります。 すべてのサブスクリプションが同じ Azure Active Directory テナントに存在する必要がある。
+
+### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>ネットワーク インターフェイスで仮想ネットワーク TAP 構成を有効にする場合、運用環境のトラフィックのパフォーマンスについて考慮することがありますか。
+
+仮想ネットワーク TAP は開発者プレビュー段階です。 プレビュー期間中は、サービス レベル アグリーメントはありません。 運用環境のワークロードでは機能を使用しないでください。 TAP 構成で仮想マシンのネットワーク インターフェイスを有効にすると、運用トラフィックを送信するために仮想マシンに割り当てられている Azure ホスト上の同じリソースを使用して、ミラーリング機能が実行され、ミラー化されたパケットが送信されます。 運用トラフィックとミラー化されたトラフィックを送信するのに十分なリソースを仮想マシンが利用できるように、[Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の適切な仮想マシン サイズを選択してください。
+
+### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>仮想ネットワーク TAP では、[Linux](create-vm-accelerated-networking-cli.md) または [Windows](create-vm-accelerated-networking-powershell.md) に対する高速ネットワークはサポートされていますか。
+
+高速ネットワークが有効になっている仮想マシンにアタッチされたネットワーク インターフェイスで、TAP 構成を追加することができます。 ただし、現在 Azure の高速ネットワークではミラーリング トラフィックのオフロードがサポートされていないため、TAP 構成を追加することにより、仮想マシンでのパフォーマンスと待機時間が影響を受けます。

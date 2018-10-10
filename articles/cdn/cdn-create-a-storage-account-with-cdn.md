@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: v-deasim
 ms.custom: mvc
-ms.openlocfilehash: 05ce8c932e9d3d812e34e23c082d459c3193ea40
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f720c8921a9a49e76465cce1c8226232fdb12ea
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608503"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096243"
 ---
 # <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>クイック スタート: Azure ストレージ アカウントと Azure CDN との統合
 このクイック スタートでは、[Azure Content Delivery Network (CDN)](cdn-overview.md) を有効にして、Azure ストレージからのコンテンツをキャッシュします。 Azure CDN では、高帯域幅コンテンツ配信用のグローバル ソリューションが開発者に提供されています。 Azure CDN は、コンピューティング インスタンスの BLOB と静的コンテンツを、米国、ヨーロッパ、アジア、オーストラリア、南アメリカの物理ノードにキャッシュできます。
@@ -80,11 +80,11 @@ Azure Portal や PowerShell など、ストレージ アカウントは複数の
     
 5. ストレージ アカウントを作成後にダッシュボードに保存するには、**[ダッシュボードにピン留め]** をオンにします。
     
-6. **[作成]** を選択します。 ストレージ アカウントの作成は、完了までに数分かかる場合があります。
+6. **作成**を選択します。 ストレージ アカウントの作成は、完了までに数分かかる場合があります。
 
 ## <a name="enable-azure-cdn-for-the-storage-account"></a>ストレージ アカウントの Azure CDN を有効にする
 
-ストレージ アカウントから直接、ストレージ アカウントの Azure CDN を有効にできます。 最適化の種類など、CDN エンドポイントに対して高度な構成設定を指定する場合は、代わりに [Azure CDN 拡張機能](cdn-create-new-endpoint.md)を使って、CDN プロファイルまたは CDN エンドポイントを作成できます。
+ストレージ アカウントから直接、ストレージ アカウントの Azure CDN を有効にできます。 CDN エンドポイントの詳細な構成設定 ([大きなファイル ダウンロードの最適化](cdn-optimization-overview.md#large-file-download)など) を指定する場合は、代わりに [Azure CDN 拡張機能](cdn-create-new-endpoint.md)を使用して CDN プロファイルとエンドポイントを作成できます。
 
 1. ダッシュボードでストレージ アカウントを選び、左側のウィンドウで **[Azure CDN]** を選びます。 **[Azure CDN]** ボタンがすぐに表示されない場合は、左側のウィンドウの **[検索]** ボックスに「CDN」と入力て検索します。
     
@@ -100,7 +100,7 @@ Azure Portal や PowerShell など、ストレージ アカウントは複数の
     | **[価格レベル]** | ドロップダウンから **[Standard Verizon]** を選択します。 |
     | **[CDN エンドポイント名]** | エンドポイントのホスト名として「*my-endpoint-123*」と入力します。 この名前はグローバルに一意でなければなりません。この名前が既に使用されている場合は、別の名前を入力してください。 この名前は、ドメイン _&lt;エンドポイント名&gt;_.azureedge.net でキャッシュされたリソースにアクセスする際に使用します。 既定では、新しい CDN エンドポイントは、ストレージ アカウントのホスト名を配信元サーバーとして使います。|
 
-3. **[作成]** を選択します。 作成されたエンドポイントが、エンドポイントの一覧に表示されます。
+3. **作成**を選択します。 作成されたエンドポイントが、エンドポイントの一覧に表示されます。
 
     ![ストレージの新しい CDN エンドポイント](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png)
 
@@ -109,6 +109,9 @@ Azure Portal や PowerShell など、ストレージ アカウントは複数の
 ストレージ アカウントの **[Azure CDN]** ページで、一覧から CDN エンドポイントを選んで、CDN エンドポイント構成ページを開きます。 このページから、[圧縮](cdn-improve-performance.md)、[クエリ文字列キャッシュ](cdn-query-string.md)、[geo フィルタリング](cdn-restrict-access-by-country.md)など、配信のその他の CDN 機能を有効にすることができます。 
     
 ![ストレージの CDN エンドポイントの構成](./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png)
+
+## <a name="enable-sas"></a>SAS を有効にする
+プライベート ストレージ コンテナーへの制限付きアクセス権限を付与するには、Azure ストレージ アカウントの Shared Access Signature (SAS) 機能を使用できます。 SAS は、アカウント キーを公開することなく Azure Storage リソースへの制限付きアクセス権を付与する URI です。 詳細については、「[SAS を利用した Azure CDN の使用](cdn-sas-storage-support.md)」を参照してください。
 
 ## <a name="access-cdn-content"></a>CDN コンテンツにアクセスする
 CDN にキャッシュされたコンテンツにアクセスするには、ポータルで提供される CDN URL を使用します。 キャッシュされた BLOB のアドレスの形式は次のようになります。
@@ -139,8 +142,8 @@ Azure CDN に既にキャッシュされているオブジェクトは、オブ�
 3. ストレージ アカウントを削除するには、ダッシュボードからそのアカウントを選択し、上部のメニューから **[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
-カスタム ドメインを CDN エンドポイントに追加する方法については、次のチュートリアルを参照してください。
+カスタム ドメインの追加および CDN エンドポイントでの HTTPS の有効化の詳細については、次のチュートリアルを参照してください。
 
 > [!div class="nextstepaction"]
-> [チュートリアル: カスタム ドメインを Azure CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
+> [チュートリアル: HTTPS 経由で Azure CDN のカスタム ドメインを使用してストレージ BLOB にアクセスする](cdn-storage-custom-domain-https.md)
 

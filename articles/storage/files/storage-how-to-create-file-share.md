@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 9ce0bc425836fffb59e804bdbd19f23cfc26c00e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ec952aa26d7bc6b185b425700080a4f474564b76
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527171"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955811"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Azure Files にファイル共有を作成する
 Azure のファイル共有は、[Azure ポータル](https://portal.azure.com/)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。 このチュートリアルでは、次の事項について説明します。
@@ -47,7 +47,7 @@ PowerShell の使用を準備するために、Azure PowerShell コマンドレ�
 > [!Note]  
 > 最新の Azure PowerShell モジュールをダウンロードしてインストールするか、アップグレードすることをお勧めします。
 
-1. **ストレージ アカウントとキーのコンテキストを作成します**。コンテキストは、ストレージ アカウント名とアカウント キーをカプセル化します。 [Azure Portal](https://portal.azure.com/) からアカウント キーをコピーする手順については、「[ストレージ アクセス キーの表示とコピー](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#view-and-copy-storage-access-keys)」を参照してください。
+1. **ストレージ アカウントとキーのコンテキストを作成します**。コンテキストは、ストレージ アカウント名とアカウント キーをカプセル化します。 [Azure portal](https://portal.azure.com/) からアカウント キーをコピーする手順については、「[ストレージ アカウントのアクセス キー](../common/storage-account-manage.md#access-keys)」をご覧ください。
 
     ```powershell
     $storageContext = New-AzureStorageContext <storage-account-name> <storage-account-key>
@@ -64,7 +64,7 @@ PowerShell の使用を準備するために、Azure PowerShell コマンドレ�
 
 ## <a name="create-file-share-through-command-line-interface-cli"></a>コマンド ライン インターフェイス (CLI) を使用したファイル共有の作成
 1. **コマンド ライン インターフェイス (CLI) の使用の準備をするには、Azure CLI をダウンロードしてインストールします。**  
-    [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)と [Azure CLI 2.0 の使用開始](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)に関する各ページを参照してください。
+    [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)と [Azure CLI の使用開始](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)に関する各ページを参照してください。
 
 2. **共有の作成先となるストレージ アカウントへの接続文字列を作成します。**  
     次の例の ```<storage-account>``` と ```<resource_group>``` は、実際のストレージ アカウント名とリソース グループに置き換えてください。

@@ -1,6 +1,6 @@
 ---
-title: Azure Cognitive Services Speech Service
-description: Speech Service Cognitive Services で発音をカスタマイズする方法について説明します。
+title: Azure Cognitive Services で Speech Service を使用して発音をカスタマイズする
+description: Azure Cognitive Services で Speech Service を使用して発音をカスタマイズする方法について説明します。
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
@@ -8,12 +8,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 93fec1ea78263798588a43b2314ffdea736cdbbc
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a608d1e48112fbb2adb56191eeb7f168de507e77
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745353"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423206"
 ---
 # <a name="enable-custom-pronunciation"></a>カスタムの発音を有効にする
 カスタムの発音を使用すると、発音形式と単語または用語の表示を定義できます。 製品名や頭字語などのカスタマイズされた用語を処理する場合に便利です。 必要なのは、発音ファイル (単純な .txt ファイル) のみです。
@@ -33,7 +33,7 @@ Display form <Tab> Spoken form <Newline>
 | CNTK | see n tea k|
 
 ## <a name="requirements-for-the-spoken-form"></a>音声フォームの要件
-音声フォームは小文字にする必要があります (これはインポート時に強制できます)。 また、データ インポーターでチェックを提供する必要があります。 音声フォームまたは表示フォームにタブを使用することはできません。 ただし、表示フォームでは、他にも禁止文字が存在する可能性があります (~ や ^ など)。
+音声フォームは小文字にする必要があります (これはインポート時に強制できます)。 データ インポーターでチェックを提供する必要もあります。 音声フォームまたは表示フォームにタブを使用することはできません。 ただし、表示フォームでは、他にも禁止文字が存在する可能性があります (~ や ^ など)。
 
 次のイメージに示すように、各 .txt ファイルには、複数のエントリを含めることができます。
 
@@ -47,7 +47,7 @@ Display form <Tab> Spoken form <Newline>
 | Language | 文字 |
 |---------- |----------|
 | 英語 (en-Us) | a、b、c、d、e、f、g、h、i、j、k、l、o、p、q、r、s、t、u、v、w、x、y、z |
-| ドイツ語 (de-DE) | ä、ö、ü、ẞ、a、b、c、d、e、f、g、h、i、j、k、l、o、p、q、r、s、t、u、v、w、x、y、z |
+| ドイツ語 (de-DE) | ä、ö、ü、?、a、b、c、d、e、f、g、h、i、j、k、l、o、p、q、r、s、t、u、v、w、x、y、z |
 
 > [!NOTE]
 > 用語の表示フォーム (発音ファイル内) は、言語適応データセットと同じ方法で記述する必要があります。

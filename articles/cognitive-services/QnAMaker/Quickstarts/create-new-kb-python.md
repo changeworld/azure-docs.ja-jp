@@ -1,24 +1,27 @@
 ---
-title: 新しいナレッジ ベースを作成する - Python のクイック スタート - Microsoft QnA Maker API (V4) - Azure Cognitive Services | Microsoft Docs
-description: FAQ や製品マニュアルを保持するナレッジ ベースを Python で作成し、QnA Maker で使用できるようにします。
+title: 'クイック スタート: API Python - ナレッジ ベースの作成 - QnA Maker'
+titlesuffix: Azure Cognitive Services
+description: このクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: a8e3ae73c76c13d44267f221d37a07eea721a608
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 9a3b801058a2614b9b484a3ebf414a9225c5371e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "43771382"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033296"
 ---
 # <a name="create-a-new-knowledge-base-in-python"></a>新しいナレッジ ベースを Python で作成する
 
 このクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
 以下 (**req** ディクショナリ要素の "urls") に、2 つのサンプル FAQ の URL が記載されています。 QnA Maker は、FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。詳しくは、こちらの[データ ソース](../Concepts/data-sources-supported.md)に関するドキュメントをご覧ください。 このクイック スタートの FAQ URL は、独自のものを使用してもかまいません。
 
@@ -34,7 +37,7 @@ Visual Studio と Python について詳しくは、「[Windows 上の Visual St
 
 ## <a name="create-knowledge-base"></a>ナレッジ ベースを作成する
 
-次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいナレッジ ベースが作成されます。
+次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいサポート技術情報が作成されます。
 
 1. 適切な IDE で新しい Python プロジェクトを作成します。
 2. 次に示すコードを追加します。

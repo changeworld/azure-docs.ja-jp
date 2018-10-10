@@ -1,6 +1,6 @@
 ---
-title: チュートリアル - Service Fabric mesh アプリケーションを Service Fabric mesh にデプロイする | Microsoft Docs
-description: バックエンド Web サービスと通信する ASP.NET Core Web サイトで構成される Azure Service Fabric mesh アプリケーションを発行する方法を説明します。
+title: チュートリアル - Service Fabric Mesh アプリケーションをデプロイする | Microsoft Docs
+description: バックエンド Web サービスと通信する ASP.NET Core Web サイトで構成される Azure Service Fabric Mesh アプリケーションを、Visual Studio を使用して発行する方法を説明します。
 services: service-fabric-mesh
 documentationcenter: .net
 author: TylerMSFT
@@ -12,35 +12,35 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/26/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 350749161260768071afbb47b854cb2e9184bd9d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 467484824ec3a3ceffb6dfa692953406ed6acc1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284729"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963323"
 ---
-# <a name="tutorial-deploy-a-service-fabric-mesh-web-application"></a>チュートリアル: Service Fabric mesh Web アプリケーションをデプロイする
+# <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>チュートリアル: Service Fabric Mesh アプリケーションをデプロイする
 
 このチュートリアルはシリーズの第 3 部です。ここでは、Azure Service Fabric mesh Web アプリケーションを Visual Studio から直接 発行する方法について説明します。
 
 このチュートリアルで学習する内容は次のとおりです。
 > [!div class="checklist"]
-> * アプリを Azure に発行する
+> * Visual Studio を使用してアプリを Azure に発行する。
 > * アプリケーションのデプロイの状態を確認する
 > * サブスクリプションに現在デプロイされているすべてのアプリケーションを表示する
-> * アプリケーション ログを表示する
-> * アプリで使用されているリソースをクリーンアップする
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
-> * [Service Fabric mesh Web アプリケーションを作成する](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * [アプリをローカルでデバッグする](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
-> * アプリを Azure に発行する
+> * [Visual Studio で Service Fabric Mesh アプリを作成する](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * [ローカル開発クラスター内で実行されている Service Fabric Mesh アプリをデバッグする](service-fabric-mesh-tutorial-debug-service-fabric-mesh-app.md)
+> * Service Fabric Mesh アプリをデプロイする
+> * [Service Fabric Mesh アプリをアップグレードする](service-fabric-mesh-tutorial-upgrade.md)
+> * [Service Fabric Mesh リソースをクリーンアップする](service-fabric-mesh-tutorial-cleanup-resources.md)
 
-ASP.NET Web フロントエンドと ASP.NET Core Web API バックエンド サービスを含む Azure Service Fabric mesh アプリを作成する方法を学びます。 次に、ローカル開発クラスターでアプリをデバッグし、アプリを Azure に発行します。 作業が完了すると、Service Fabric mesh Web アプリケーションでサービス間の呼び出しを行う方法を示す簡単な To Do アプリが作成されます。
+[!INCLUDE [preview note](./includes/include-preview-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +62,7 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 ## <a name="publish-to-azure"></a>Azure に発行する
 
-Service Fabric mesh プロジェクトを Azure に発行するには、Visual Studio で **[ServiceFabricMeshApp]** を右クリックし、**[発行...]** を選択します。
+Service Fabric Mesh プロジェクトを Azure に発行するには、Visual Studio で **todolistapp** を右クリックし、**[発行...]** を選択します。
 
 **[Service Fabric アプリケーションの発行]** ダイアログが表示されます。
 
@@ -74,9 +74,9 @@ Azure アカウントとサブスクリプションを選択します。 **[場�
 
 ![Visual Studio - Service Fabric mesh の新しいリソース グループ ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-resource-group-dialog.png)
 
-**[Service Fabric アプリケーションの発行]** ダイアログに戻り、**[Azure Container Registry]** の **[\<Create New Container Registry...>]\(<新しいコンテナー レジストリの作成...>\)** を選択します。 **[コンテナー レジストリの作成]** ダイアログで、**[コンテナー レジストリ名]** に一意の名前を使用します。 **場所**を指定します (このチュートリアルでは、**[米国東部]** を使用します)。 前の手順で作成した**リソース グループ**をドロップダウンで選択します (例: **sfmeshTutorial1RG**)。 **[SKU]** を **[Basic]** に設定し、**[作成]** をクリックして発行ダイアログに戻ります。
+**[Service Fabric アプリケーションの発行]** ダイアログに戻り、**[Azure Container Registry]** の **[\<Create New Container Registry...>]\(<新しいコンテナー レジストリの作成...>\)** を選択します。 **[コンテナー レジストリの作成]** ダイアログで、**[コンテナー レジストリ名]** に一意の名前を使用します。 **場所**を指定します (このチュートリアルでは、**[米国東部]** を使用します)。 前の手順で作成した**リソース グループ**をドロップダウンで選択します (例: **sfmeshTutorial1RG**)。 **[SKU]** を **[Basic]** に設定し、**[作成]** をクリックして、プライベート Azure コンテナー レジストリを作成し、発行ダイアログに戻ります。
 
-![Visual Studio - Service Fabric mesh の新しいリソース グループ ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
+![Visual Studio の Service Fabric Mesh 新規コンテナー レジストリ ダイアログ](./media/service-fabric-mesh-tutorial-deploy-dotnetcore/visual-studio-publish-new-container-registry-dialog.png)
 
 リソース プロバイダーがサブスクリプションに登録されていないことを示すエラーが表示された場合は、登録できます。 まず、サブスクリプションでリソース プロバイダーが使用可能かどうかを確認します。
 
@@ -109,7 +109,6 @@ Web ブラウザーを開き、その URL に移動して、Azure で実行さ�
 ## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric mesh CLI の設定 
 残りの手順は、Azure Cloud Shell または Azure CLI のローカル インストールを使用して実行できます。 こちらの[手順](service-fabric-mesh-howto-setup-cli.md)に従って、Azure Service Fabric mesh CLI 拡張モジュールをインストールしてください。
 
-
 ## <a name="check-application-deployment-status"></a>アプリケーションのデプロイの状態を確認する
 
 この時点で、アプリケーションはデプロイされています。 `app show` コマンドを使用して、アプリケーションの状態を確認できます。 
@@ -124,31 +123,9 @@ az mesh app show --resource-group $rg --name ServiceMeshApp
 
 "app list" コマンドを使用して、サブスクリプションにデプロイされているアプリケーションのリストを取得できます。
 
-```cli
+```azurecli-interactive
 az mesh app list --output table
 ```
-
-## <a name="see-the-application-logs"></a>アプリケーション ログを表示する
-
-デプロイ済みのアプリケーションのログを確認します。
-
-```azurecli-interactive
-az mesh code-package-log get --resource-group $rg --application-name ServiceMeshApp --service-name todoservice --replica-name 0 --code-package-name ServiceMeshApp
-```
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-不要になったら、作成したすべてのリソースを削除します。 ACR サービス リソースと Service Fabric mesh サービス リソースの両方をホストする新しいリソース グループを作成したので、このリソース グループを安全に削除できます。リソース グループを削除すると、関連するすべてのリソースが削除されます。
-
-```azurecli
-az group delete --resource-group sfmeshTutorial1RG
-```
-
-```powershell
-Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
-```
-
-リソース グループは、[ポータルから](../azure-resource-manager/resource-group-portal.md#delete-resource-group-or-resources)削除することもできます。 
 
 ## <a name="next-steps"></a>次の手順
 
@@ -157,13 +134,9 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 > * アプリを Azure に発行する
 > * アプリケーションのデプロイの状態を確認する
 > * サブスクリプションに現在デプロイされているすべてのアプリケーションを表示する
-> * アプリケーション ログを表示する
-> * アプリで使用されているリソースをクリーンアップする
 
-Service Fabric mesh アプリケーションを Azure に発行したら、次のことを行ってみてください。
-
-* [投票アプリ サンプル](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/votingapp)を調べて、サービス間通信の別の例を確認する
-* [Service Fabric のリソースを確認する](service-fabric-mesh-service-fabric-resources.md)
-* [Cloud Shell の概要を読む](https://docs.microsoft.com/azure/cloud-shell/overview)
+次のチュートリアルに進みます。
+> [!div class="nextstepaction"]
+> [Service Fabric Mesh アプリをアップグレードする](service-fabric-mesh-tutorial-upgrade.md)
 
 [azure-cli-install]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest

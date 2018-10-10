@@ -54,7 +54,7 @@ items:
   - name: Event Grid との統合
     href: ../event-grid/event-grid-event-hubs-integration.md
     maintainContext: true
-  - name: 管理対象サービス ID (プレビュー)
+  - name: Azure リソースのマネージド ID
     href: event-hubs-managed-service-identity.md
   - name: ロールベースのアクセス制御 (プレビュー)
     href: event-hubs-role-based-access-control.md
@@ -186,9 +186,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: d2ceee656e4194bcf61b5e12a3992140dc02df66
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 32db692f9fafc248b82618c494c95ddf79e901aa
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405956"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785040"

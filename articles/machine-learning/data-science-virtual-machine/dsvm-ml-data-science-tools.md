@@ -15,17 +15,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: cf73f792bcce906a673da0c6fb2eec099239c1c2
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 9a9dc868c4f22f95ca5027e3c95513d176c69eac
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31409552"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392402"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>機械学習ツールとデータ サイエンス ツール
 データ サイエンス仮想マシン (DSVM) には、Python、R、Julia などの一般的な言語で使用可能な、機械学習用のツールおよびライブラリの豊富なセットがあります。 
 
 ここでは、DSVM の機械学習ツールおよびライブラリの一部を示します。 
+
+## <a name="azure-machine-learning-servicehttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>[Azure Machine Learning サービス](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) SDK
+|    |           |
+| ------------- | ------------- |
+| 紹介   |   Azure Machine Learning サービスは、機械学習モデルの開発とデプロイに使用できるクラウド サービスです。  Python SDK を使用して、お使いのモデルを構築、トレーニング、スケーリング、および管理しながら、そのモデルを追跡できます。 モデルはコンテナーとしてデプロイし、クラウド、オンプレミス、または IoT Edge で実行します。   |
+| サポートされている DSVM エディション     | Windows (Conda 環境: AzureML)、Linux (Conda 環境: py36)    |
+| 一般的な用途      | 一般的な ML プラットフォーム      |
+| DSVM での構成/インストール方法      |  GPU サポートと共にインストールされます   |
+| 使用/実行方法      | Python SDK、および Azure コマンド ライン ツール (AZ CLI) として使用。 Windows エディションでは Conda 環境 `AzureML`、Linux エディションでは `py36` に対してアクティブにします。      |
+| サンプルへのリンク      | サンプル Jupyter ノートブックが notebooks の下にある `AzureML` ディレクトリに含まれています  |
+| DSVM 上の関連ツール      | Visual Studio Code、Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |

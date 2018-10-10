@@ -1,22 +1,23 @@
 ---
-title: Language Understanding (LUIS) 境界での C# による LUIS リージョンの検索 | Microsoft Docs
+title: LUIS での C# を使用したエンドポイントのリージョンの検索
+titleSuffix: Azure Cognitive Services
 description: LUIS のエンドポイント キーとアプリケーション ID で公開リージョンをプログラムによって検索します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6f2688e492dbba718dc55825de164c189a9b46c9
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 53c3d1abb24ae0d5b33a2a100dda07fd20ae92d1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225110"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039634"
 ---
-# <a name="region-can-be-determined-from-api-call"></a>API 呼び出しからリージョンを特定可能 
+# <a name="find-endpoint-region-with-c"></a>C# を使用したエンドポイントのリージョンの検索 
 LUIS アプリ ID と LUIS サブスクリプション ID がある場合は、エンドポイントのクエリに使用するリージョンを見つけることができます。
 
 > [!NOTE] 

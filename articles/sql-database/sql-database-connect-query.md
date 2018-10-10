@@ -2,20 +2,22 @@
 title: Azure SQL Database の接続とクエリに関するクイック スタート | Microsoft Docs
 description: Azure SQL Database の各種クイック スタートでは、Azure SQL データベースに接続してクエリを実行する方法を紹介しています。
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc
+ms.subservice: operations
+ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-ms.date: 04/24/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: ec39c5ad0771c2bc78655e52c58949db6e9b3353
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/24/2018
+ms.openlocfilehash: 576e0adca21f5cd3313893035ff66bd83a0a0164
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186013"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063525"
 ---
 # <a name="azure-sql-database-connect-and-query-quickstarts"></a>Azure SQL Database の接続とクエリに関するクイック スタート
 
@@ -26,7 +28,7 @@ ms.locfileid: "32186013"
 | |  |
 |---|---|
 |[SQL Server Management Studio](sql-database-connect-query-ssms.md)|このクイック スタートでは、SSMS を使って Azure SQL データベースに接続し Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。|
-|[SQL Operations Studio](https://docs.microsoft.com/sql/sql-operations-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|このクイック スタートでは、SQL Operations Studio (プレビュー) を使って Azure SQL データベースに接続した後、SQL Operations Studio (プレビュー) の各種チュートリアルで用いる TutorialDB を Transact-SQL (T-SQL) ステートメントを使って作成する方法を紹介しています。|
+|[Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)|このクイック スタートでは、Azure Data Studio を使用して Azure SQL データベースに接続した後、Transact-SQL (T-SQL) ステートメントを使用して Azure Data Studio チュートリアルで使用される TutorialDB を作成する方法を示します。|
 |[Azure Portal](sql-database-connect-query-portal.md)|このクイック スタートでは、クエリ エディターを使用して SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、および削除する方法について説明します。|
 |[Visual Studio Code](sql-database-connect-query-vscode.md)|このクイック スタートでは、Visual Studio Code を使って Azure SQL データベースに接続し、Transact-SQL ステートメントを使ってデータベース内のデータを照会、挿入、更新、削除する方法について説明します。|
 |[Visual Studio での .NET](sql-database-connect-query-dotnet-visual-studio.md)|このクイック スタートでは、Azure SQL データベースに接続して Transact-SQL ステートメントでデータを照会する C# プログラムを Visual Studio と .NET Framework を使って作成する方法について説明します。|

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 905873a695635ba80de258cbf458c8dd3e18d443
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: e73b0e88a98c1b06216378078626b4338c598816
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700340"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422968"
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Gremlin コンソールでのグラフの作成、クエリ、および走査
 
@@ -90,21 +90,16 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
 5. 次に、`:remote console` を実行して、すべてのコンソール コマンドをリモート サーバーにリダイレクトします。
 
+   > [!NOTE]
+   > `:remote console` コマンドを実行せずに、すべてのコンソール コマンドをリモート サーバーにリダイレクトしたい場合は、コマンドの前に `:>` を付ける必要があります。たとえば、コマンドを `:> g.V().count()` として実行します。 このプレフィックスはコマンドの一部であり、Azure Cosmos DB で Gremlin コンソールを使用するときに重要になります。 このプレフィックスを省略すると、コンソールにコマンドをローカルで、多くの場合はメモリ内のグラフに対して実行するように指示します。 このプレフィックス `:>` を使用すると、コンソールにリモート コマンドを、この場合は Azure Cosmos DB (localhost エミュレーターまたは Azure インスタンスのどちらか) に対して実行するように指示します。
+
 これでセットアップは終了です。 いくつかのコンソール コマンドの実行を開始しましょう。
 
 単純な count() コマンドを試します。 コンソールのプロンプトに次のように入力します。
-```
-:> g.V().count()
-```
 
-> [!TIP]
-> `g.V().count()` というテキストの前にある `:>` に注意してください。 
->
-> これは入力するコマンドの一部です。 Azure Cosmos DB で Gremlin コンソールを使用するときに重要です。  
->
-> この `:>` プレフィックスを省略すると、コンソールによってコマンドがローカルで、多くの場合、メモリ内のグラフに対して実行されます。
-> この `:>` を使用して、リモート コマンドを実行するようにコンソールに指示します。このケースでは、Cosmos DB (localhost エミュレーターまたは > Azure インスタンス) に対して実行されます。
-
+```
+g.V().count()
+```
 
 ## <a name="create-vertices-and-edges"></a>頂点と辺の作成
 
@@ -113,7 +108,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 入力 (Thomas):
 
 ```
-:> g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
+g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1)
 ```
 
 出力:
@@ -124,7 +119,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 入力 (Mary Kay):
 
 ```
-:> g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
+g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2)
 
 ```
 
@@ -138,7 +133,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 入力 (Robin):
 
 ```
-:> g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
+g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3)
 ```
 
 出力:
@@ -150,7 +145,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 入力 (Ben):
 
 ```
-:> g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
+g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4)
 
 ```
 
@@ -163,7 +158,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 入力 (Jack):
 
 ```
-:> g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
+g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5)
 ```
 
 出力:
@@ -178,7 +173,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 入力 (Thomas -> Mary Kay):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
+g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
 ```
 
 出力:
@@ -190,7 +185,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 入力 (Thomas -> Robin):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
+g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
 ```
 
 出力:
@@ -202,7 +197,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 入力 (Robin -> Ben):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
+g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
 ```
 
 出力:
@@ -217,7 +212,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 
 次の内容を入力します。
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
+g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
 ```
 出力:
 
@@ -234,7 +229,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 入力 (フィルター クエリ):
 
 ```
-:> g.V().hasLabel('person').has('age', gt(40))
+g.V().hasLabel('person').has('age', gt(40))
 ```
 
 出力:
@@ -248,7 +243,7 @@ serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessage
 入力 (フィルター + プロジェクション クエリ):
 
 ```
-:> g.V().hasLabel('person').has('age', gt(40)).values('firstName')
+g.V().hasLabel('person').has('age', gt(40)).values('firstName')
 ```
 
 出力:
@@ -264,7 +259,7 @@ Thomas のすべての友人を返すようにグラフを走査してみまし�
 入力 (Thomas の友人):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
+g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
 ```
 
 出力: 
@@ -279,7 +274,7 @@ Thomas のすべての友人を返すようにグラフを走査してみまし�
 入力 (Thomas の友人の友人):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
+g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 出力:
 
@@ -294,7 +289,7 @@ Thomas のすべての友人を返すようにグラフを走査してみまし�
 入力 (Jack 頂点を削除):
 
 ```
-:> g.V().hasLabel('person').has('firstName', 'Jack').drop()
+g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
 ## <a name="clear-your-graph"></a>グラフのクリア
@@ -304,8 +299,8 @@ Thomas のすべての友人を返すようにグラフを走査してみまし�
 入力:
 
 ```
-:> g.E().drop()
-:> g.V().drop()
+g.E().drop()
+g.V().drop()
 ```
 
 お疲れさまでした。 この Azure Cosmos DB: Gremlin API チュートリアルは完了しました。

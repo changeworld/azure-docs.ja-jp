@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: ea8e8ae9b0f487481ac2f25d4e2b9c5733e15431
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 24eec3b1f3c85384f80823b82962038c235b6dac
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842257"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036992"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の送信接続
 
@@ -69,7 +69,7 @@ VM に割り当てられたパブリック IP は、(1 対多ではなく) 1 対
 
 SNAT ポートは、「[SNAT と PAT の理解](#snat)」の説明のとおり事前に割り当てられます。 これは有限のリソースであり、不足する可能性があります。 これらがどのように[消費される](#pat)のかを理解することが重要です。 この消費のための設計と移行を必要に応じて行う方法については、[SNAT 不足の管理](#snatexhaust)に関するセクションを確認してください。
 
-[複数の (パブリック) IP アドレスが Load Balancer Basic に関連付けられている](load-balancer-multivip-overview.md)場合、それらのパブリック IP アドレスはどれも[送信フローの候補](#multivipsnat)になり、その 1 つが選択されます。  
+[複数のパブリック IP アドレスが Load Balancer Basic に関連付けられている](load-balancer-multivip-overview.md)場合、それらのパブリック IP アドレスはどれも[送信フローの候補](#multivipsnat)になり、その 1 つがランダムに選択されます。  
 
 Load Balancer Basic で送信接続の正常性を監視するために、[Load Balancer の Log Analytics](load-balancer-monitor-log.md) と、[SNAT ポート不足メッセージを監視するためのアラート イベント ログ](load-balancer-monitor-log.md#alert-event-log)を使用できます。
 

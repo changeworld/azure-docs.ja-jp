@@ -1,24 +1,27 @@
 ---
-title: ナレッジ ベースの公開 - Java のクイック スタート - Azure Cognitive Services | Microsoft Docs
+title: 'クイック スタート: Java によるナレッジ ベースの公開 - QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: QnA Maker に使用するナレッジ ベースを Java で公開する方法。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/18/2018
-ms.author: nolachar
-ms.openlocfilehash: fd815802643a67fe340098e97687fc6438a18ea0
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: a625151a0f6595e02ed899f2f8f7273c8e4f5cde
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43770810"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036924"
 ---
 # <a name="publish-a-knowledge-base-in-java"></a>Java でナレッジ ベースを公開する
 
 次のコードでは、[Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) メソッドを利用し、既存のナレッジ ベースが公開されます。
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 
 1. 適切な IDE で新しい Java プロジェクトを作成します。
 2. 次に示すコードを追加します。

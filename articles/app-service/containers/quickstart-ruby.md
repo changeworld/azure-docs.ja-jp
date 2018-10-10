@@ -1,7 +1,7 @@
 ---
-title: Ruby アプリの作成と App Service on Linux へのデプロイ | Microsoft Docs
-description: App Service on Linux で Ruby アプリを作成する方法について説明します。
-keywords: Azure App Service, Linux, OSS, Ruby
+title: Ruby on Rails アプリを作成して App Service on Linux にデプロイする | Microsoft Docs
+description: App Service on Linux で Ruby on Rails アプリを作成する方法について説明します。
+keywords: Azure App Service、Linux、OSS、Ruby、Rails
 services: app-service
 documentationcenter: ''
 author: SyntaxC4
@@ -16,16 +16,19 @@ ms.topic: quickstart
 ms.date: 08/24/2018
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 729ed8ac4568f5f39fd62fadbc8d4d0e4595f7b8
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 04025998f78843b1cc69acd663681b9563a531bc
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885291"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431229"
 ---
-# <a name="create-a-ruby-app-in-app-service-on-linux"></a>App Service on Linux での Ruby アプリの作成
+# <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>App Service on Linux で Ruby on Rails アプリを作成する
 
 [Azure App Service on Linux](app-service-linux-intro.md) は、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、Web App on Linux として Azure にデプロイできる基本的な [Ruby on Rails](https://rubyonrails.org/) アプリケーションの作成方法を示します。
+
+> [!NOTE]
+> この時点で、Ruby 開発スタックは Ruby on Rails のみをサポートしています。 別のプラットフォーム (Sinatra など) を使用する場合は、[Web App for Containers](https://docs.microsoft.com/azure/app-service/containers/) のクイック スタートを参照してください。
 
 ![Hello-world](./media/quickstart-ruby/hello-world-updated.png)
 
@@ -48,9 +51,16 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 アプリケーションをローカルで実行すると、アプリケーションを Azure にデプロイするとどう表示されるかを把握できます。 ターミナル ウィンドウを開き、`hello-world` ディレクトリに変更し、`rails server` コマンドを使用してサーバーを起動します。
 
+最初の手順では、必要な gem をインストールします。 `Gemfile` がサンプルに含まれているため、インストールする gem を指定する必要はありません。 これには bundler を使用します。
+
+```
+bundle install
+```
+
+gem がインストールされたら、bundler を使用してアプリを起動します。
+
 ```bash
-cd hello-world\bin
-rails server
+bundle exec rails server
 ```
 
 Web ブラウザーで `http://localhost:3000` に移動して、ローカルでアプリケーションをテストします。

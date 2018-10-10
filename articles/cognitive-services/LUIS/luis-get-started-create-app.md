@@ -1,20 +1,21 @@
 ---
-title: 初めての Language Understanding (LUIS) アプリを 10 分で作成する - Cognitive Services LUIS | Microsoft Docs
-description: このクイック スタートでは、照明やアプライアンスの電源をオンにしたりオフにしたりする用途を想定し、事前構築済みのドメイン `HomeAutomation` を使用した LUIS アプリを作成します。 この事前構築済みのドメインによって、意図、エンティティ、発話例が得られます。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
+title: 10 分で作る最初の LUIS アプリ
+titleSuffix: Azure Cognitive Services
+description: 照明やアプライアンスの電源をオンにしたりオフにしたりする用途を想定し、事前構築済みのドメイン `HomeAutomation` を使用した LUIS アプリを作成します。 この事前構築済みのドメインによって、意図、エンティティ、発話例が得られます。 完成すると、クラウド内で LUIS エンドポイントが実行されるようになります。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/22/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 457f23936dec0cf85e9aebbf3e54bba37c2f3ca3
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 12a660b49d1a81865c34ceda38f041de9be31eb1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "43771647"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037475"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート - 事前構築済みのホーム オートメーション アプリを使用する
 
@@ -54,11 +55,7 @@ ms.locfileid: "43771647"
 
 ## <a name="intents-and-entities"></a>意図とエンティティ
 
-左側のナビゲーション ウィンドウで **[Intents]\(意図\)** を選択し、HomeAutomation ドメインの意図を確認します。 
-
-[![](media/luis-quickstart-new-app/home-automation-intents.png "テーブル内で意図の名前が強調表示されている [Intents]\(意図\) リストのスクリーンショット")](media/luis-quickstart-new-app/home-automation-intents.png)
-
-それぞれの意図には、サンプル発話が存在します。
+左側のナビゲーション ウィンドウで **[Intents]\(意図\)** を選択し、HomeAutomation ドメインの意図を確認します。 それぞれの意図には、サンプル発話が存在します。
 
 > [!NOTE]
 > **[None]\(なし\)** は、すべての LUIS アプリに用意されている意図です。 これは自分のアプリの機能に対応しない発話を処理する目的で使用されます。 
@@ -67,11 +64,9 @@ ms.locfileid: "43771647"
 
 [![](media/luis-quickstart-new-app/home-automation-turnon.png "HomeAutomation.TurnOff 意図のスクリーンショット")](media/luis-quickstart-new-app/home-automation-turnon.png)
 
-## <a name="train-your-app"></a>アプリをトレーニングする
+## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
 
-上部のナビゲーションの **[Train]\(トレーニング\)** を選択します。
-
-[![](media/luis-quickstart-new-app/trained.png "HomeAutomation.TurnOff 意図と成功を示す緑色の通知のスクリーンショット")](media/luis-quickstart-new-app/trained.png)
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
 ## <a name="test-your-app"></a>アプリをテストする
 アプリのトレーニング後、そのテストを行うことができます。 上部のナビゲーションの **[Test]\(テスト\)** を選択します。 対話型のテスト ウィンドウにテスト発話 (「Turn off the lights」など) を入力し、Enter キーを押します。 
@@ -89,29 +84,23 @@ Turn off the lights
 
 もう一度 **[テスト]** を選択して、テスト ウィンドウを折りたたみます。 
 
-## <a name="publish-your-app"></a>アプリケーションの発行
-上部のナビゲーションの **[Publish]\(公開\)** を選択します。 
+<a name="publish-your-app"></a>
 
-[![](media/luis-quickstart-new-app/publish.png "公開ボタンが強調表示されたアプリのスクリーンショット")](media/luis-quickstart-new-app/publish.png)
+## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
 
-[Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-上部に表示される緑色の通知バーは、アプリが正常に公開されたことを示します。
+## <a name="query-the-endpoint-with-a-different-utterance"></a>異なる発話でエンドポイントにクエリを実行する
 
-[![](media/luis-quickstart-new-app/published.png "公開に成功したときのアプリのスクリーンショット")](media/luis-quickstart-new-app/published.png)
+1. [!include[LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
-正常に公開されたら、**[Publish app]\(アプリの公開\)** ページに表示されるエンドポイントの URL を使用することができます。
+2. アドレスの URL の末尾に移動し、「`turn off the living room light`」と入力して Enter キーを押します。 ブラウザーに HTTP エンドポイントの JSON 応答が表示されます。
 
-[![](media/luis-quickstart-new-app/endpoint.png "エンドポイント URL が強調表示されている公開ページのスクリーンショット")](media/luis-quickstart-new-app/endpoint.png)
-
-## <a name="use-your-app"></a>アプリを使用する
-公開されたエンドポイントは、生成された URL を使って、ブラウザーでテストすることができます。 この URL をブラウザーで開き、URL パラメーター "&q" に、目的のテスト クエリを設定します。 たとえば、`turn off the living room light` を URL の最後に追加し、Enter キーを押します。 ブラウザーに HTTP エンドポイントの JSON 応答が表示されます。
-
-
-[![](media/luis-quickstart-new-app/turn-off-living-room.png "意図 TurnOff が検出された JSON の結果を表示するブラウザーのスクリーンショット")](media/luis-quickstart-new-app/turn-off-living-room.png)
-
+    [![](media/luis-quickstart-new-app/turn-off-living-room.png "意図 TurnOff が検出された JSON の結果を表示するブラウザーのスクリーンショット")](media/luis-quickstart-new-app/turn-off-living-room.png)
+    
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS アプリを削除します。 それを行うには、アプリの一覧内のアプリ名の右にある省略記号 (***...***) ボタンを選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+
+[!include[LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
 

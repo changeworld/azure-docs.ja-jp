@@ -1,20 +1,21 @@
 ---
-title: Azure の LUIS アプリでの発話 | Microsoft Docs
-description: Language Understanding Intelligent Service (LUIS) アプリで発話を追加します。
+title: LUIS アプリでの発話
+titleSuffix: Azure Cognitive Services
+description: 発話は、アプリが解釈する必要のあるユーザーからの入力です。 ユーザーが入力すると思われる語句を収集します。 同じことを意味しますが、異なる単語の長さと単語の配置で構成されている発話を含めるようにします。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6f962d0aaf631051c841be29d2854a89bf58ac25
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 39c99cc35f4c2549efc9c20af0680b77483325c5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224417"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038937"
 ---
 # <a name="utterances-in-luis"></a>LUIS での発話
 
@@ -35,12 +36,14 @@ LUIS モデルに[発話の例を追加する](luis-how-to-add-example-utterance
 さまざまなセンテンス パターンを作成しようとしても、いくつかのボキャブラリを繰り返していることに気付きます。
 
 次の発話の例を使用します。
-```
-how do I get a computer?
-Where do I get a computer?
-I want to get a computer, how do I go about it?
-When can I have a computer? 
-```
+
+|発話の例|
+|--|
+|コンピューターはどうすれば手に入りますか?|
+|コンピューターはどこで手に入りますか?|
+|コンピューターを手に入れたいのですが、どうすればよいですか?|
+|いつコンピューターを入手できますか?| 
+
 ここでのコア用語 "コンピューター" は全部同じです。 デスクトップ コンピューター、ラップトップ、ワークステーション、またはマシンと言うこともできます。 LUIS はコンテキストからシノニムをインテリジェントに推論しますが、それでもトレーニング用の発話を作成するときは、変更することをお勧めします。
 
 ## <a name="example-utterances-in-each-intent"></a>各意図での発話の例

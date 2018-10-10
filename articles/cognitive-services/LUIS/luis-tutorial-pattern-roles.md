@@ -1,80 +1,70 @@
 ---
-title: パターンのロールを使用して LUIS の予測を向上させる方法のチュートリアル - Azure | Microsoft Docs
-titleSuffix: Cognitive Services
-description: このチュートリアルでは、文脈的に関連するエンティティについて、パターンのロールを使用して LUIS の予測を改善します。
+title: 'チュートリアル 4: 文脈的に関連するデータのパターン ロール'
+titleSuffix: Azure Cognitive Services
+description: パターンを使用して、正しい形式のテンプレート発話からデータを抽出します。 テンプレート発話は単純なエンティティとロールを使用して、移動元の場所や移動先の場所などの関連データを抽出します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 6f3e7c9db7bbdb6bc24d123208355fc7a1d8e7e8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2c3705d28d6496c3d20999231de98572bc26e3be
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161936"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160249"
 ---
-# <a name="tutorial-improve-app-with-pattern-roles"></a>チュートリアル: パターンのロールを使用してアプリを改善する
+# <a name="tutorial-4-extract-contextually-related-patterns"></a>チュートリアル 4: 文脈的に関連するパターンを抽出する
 
-このチュートリアルでは、パターンと組み合わさったロール付きのシンプル エンティティを使用して、意図とエンティティの予測を向上させます。  パターンを使用するとき、意図に必要な発話の例は少なくなります。
+このチュートリアルでは、パターンを使用して、正しい形式のテンプレート発話からデータを抽出します。 テンプレート発話は単純なエンティティとロールを使用して、移動元の場所や移動先の場所などの関連データを抽出します。  パターンを使用するとき、意図に必要な発話の例は少なくなります。
 
-> [!div class="checklist"]
-* パターンのロールを理解する
-* ロール付きシンプル エンティティを使用する 
-* ロール付きシンプル エンティティを使用して発話のパターンを作成する
-* パターン予測の改善を検証する方法
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>開始する前に
-[パターン](luis-tutorial-pattern.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-patterns-HumanResources-v2.json) GitHub リポジトリにあります。
-
-元の Human Resources アプリを保持する場合は、[[Settings]\(設定\)](luis-how-to-manage-versions.md#clone-a-version) ページでバージョンを複製し、`roles` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 
-
-## <a name="the-purpose-of-roles"></a>ロールの目的
 ロールの目的は、文脈的に関連するエンティティを発話から抽出することです。 「`Move new employee Robert Williams from Sacramento and San Francisco`」という発話で、移動元の都市と移動先の都市の値は互いに関連しており、それぞれの場所を表すのに共通の言語を使用しています。 
 
-パターンを使用するとき、パターン内のあらゆるエンティティは、パターンが発話に一致する_前に_検出されなければなりません。 
 
-パターンを作成するときは、まずパターンの意図を選択します。 意図を選択することにより、パターンが一致する場合、高いスコア (通常は 99 ～ 100%) で正しい意図が常に返されます。 
-
-### <a name="compare-hierarchical-entity-to-simple-entity-with-roles"></a>階層構造エンティティをロール付きシンプル エンティティと比較する
-
-[階層構造のチュートリアル](luis-quickstart-intent-and-hier-entity.md)では、既存の従業員をある建物やオフィスから別の場所へ移動させるとき、**MoveEmployee** の意図が検出されました。 発話の例には移動元の場所と移動先の場所がありましたが、ロールは使用していませんでした。 代わりに、移動元と移動先は階層構造エンティティの子でした。 
-
-このチュートリアルでは、新しい従業員をある都市から別の都市に移動させることについての発話を人事管理アプリが検出します。 これら 2 種類の発話は似ていますが、LUIS が持つ異なった能力によって解決されます。
-
-|チュートリアル|発話の例|移動元と移動先の場所|
-|--|--|--|
-|[階層構造 (ロールなし)](luis-quickstart-intent-and-hier-entity.md)|mv Jill Jones from **a-2349** to **b-1298**|a-2349、b-1298|
-|このチュートリアル (ロールあり)|Move Billy Patterson from **Yuma** to **Denver**.|Yuma、Denver|
-
-パターンでは階層構造の親しか使用されないため、パターンで階層構造エンティティを使用することはできません。 移動元と移動先の名前付きの場所を返すためには、パターンを使用する必要があります。
-
-### <a name="simple-entity-for-new-employee-name"></a>新しい従業員名のシンプル エンティティ
 新しい従業員の名前 Billy Patterson はまだリスト エンティティ **Employee** の一部ではありません。 外部のシステムに名前を送信して会社の資格情報を作成するために、まず新しい従業員の名前が抽出されます。 会社の資格情報が作成された後、その従業員の資格情報がリスト エンティティ **Employee** に追加されます。
 
-**Employee** リストは[リストのチュートリアル](luis-quickstart-intent-and-list-entity.md)で作成しました。
-
-**NewEmployee** エンティティはロールのないシンプル エンティティです。 
-
-### <a name="simple-entity-with-roles-for-relocation-cities"></a>移転都市のロールを持つシンプル エンティティ
 新しい従業員と家族を、現在の都市から、架空の会社が所在する都市に移動させる必要があります。 新しい従業員はどの都市からも来る可能性があるため、場所を検出する必要があります。 リスト エンティティのようなセット リストは、リスト内の都市しか抽出されないため、機能しません。
 
-移動元と移動先の都市に関連付けられたロール名は、すべてのエンティティ間で一意である必要があります。 ロールが一意であることを確認する簡単な方法は、命名方針によってそれらのロールを上位のエンティティと結び付けることです。 **NewEmployeeRelocation** エンティティは、2 つのロール **NewEmployeeReloOrigin** と **NewEmployeeReloDestination** を持つシンプル エンティティです。
+移動元と移動先の都市に関連付けられたロール名は、すべてのエンティティ間で一意である必要があります。 ロールが一意であることを確認する簡単な方法は、命名方針によってそれらのロールを上位のエンティティと結び付けることです。 **NewEmployeeRelocation** エンティティは、2 つのロール **NewEmployeeReloOrigin** と **NewEmployeeReloDestination** を持つシンプル エンティティです。 Relo は Relocation (配置換え) の略です。
 
-### <a name="simple-entities-need-enough-examples-to-be-detected"></a>シンプル エンティティの検出には十分な例が必要
 発話の例「`Move new employee Robert Williams from Sacramento and San Francisco`」には機械学習エンティティしか含まれていないため、エンティティが検出されるよう、十分な発話例を意図に提供することが重要です。  
 
 **パターンを使用すると提供される発話の例を少なくすることができますが、エンティティが検出されない場合、パターンは一致しません。**
 
 都市などの名前であるためシンプル エンティティの検出に問題がある場合、類似の値のフレーズ リストを追加することを検討してください。 これは、その種類の単語またはフレーズについて追加のシグナルを LUIS に与えることによって、都市名の検出を補助します。 フレーズ リストは、パターンが一致するために必要なエンティティ検出を補助することによってパターンを補助するにすぎません。 
 
+**このチュートリアルで学習する内容は次のとおりです。**
+
+> [!div class="checklist"]
+> * 既存のチュートリアル アプリを使用する
+> * 新しいエンティティの作成
+> * 新しい意図の作成
+> * トレーニング
+> * [発行]
+> * エンドポイントから意図とエンティティを取得する
+> * ロールを持つパターンを作成する
+> * 都市のフレーズ リストを作成する
+> * エンドポイントから意図とエンティティを取得する
+
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>既存のアプリを使用する
+最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
+
+以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+
+1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json)をダウンロードして保存します。
+
+2. JSON を新しいアプリにインポートします。
+
+3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `roles` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
+
 ## <a name="create-new-entities"></a>新しいエンティティの作成
-1. 上部メニューの **[ビルド]** を選択します。
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. 左側のナビゲーションから **[エンティティ]** を選択します。 
 
@@ -124,15 +114,15 @@ ms.locfileid: "44161936"
 
     keyPhrase エンティティを削除した場合、今すぐアプリに追加し直してください。
 
-## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
+## <a name="train"></a>トレーニング
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
+## <a name="publish"></a>[発行]
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-without-pattern"></a>パターンなしでエンドポイントにクエリを実行する
+## <a name="get-intent-and-entities-from-endpoint"></a>エンドポイントから意図とエンティティを取得する
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
@@ -224,9 +214,12 @@ ms.locfileid: "44161936"
 
 意図の予測スコアは約 50% にすぎません。 より高い数値がクライアント アプリケーションで必要な場合、これを修正する必要があります。 エンティティも予測されませんでした。
 
+場所の 1 つが抽出されましたが、他の場所が抽出できませんでした。 
+
 パターンは予測スコアを向上させますが、パターンが発話に一致する前にエンティティが正しく予測される必要があります。 
 
-## <a name="add-a-pattern-that-uses-roles"></a>ロールを使用するパターンの追加
+## <a name="pattern-with-roles"></a>ロールを持つパターン
+
 1. 上部のナビゲーションで **[ビルド]** を選択します。
 
 2. 左側のナビゲーションで **[Patterns]\(パターン\)** を選択します。
@@ -237,8 +230,8 @@ ms.locfileid: "44161936"
 
     エンドポイントをトレーニングし、公開し、クエリしたところ、エンティティが見つからないためパターンに一致せず、したがって予測が改善しなかったという結果に失望するかもしれません。 これは、ラベルが付けられたエンティティに十分な発話例がないことが原因です。 さらに例を追加する代わりに、フレーズ リストを追加してこの問題を修正します。
 
-## <a name="create-a-phrase-list-for-cities"></a>都市のフレーズ リストの作成
-人の名前のような都市名は、単語と句読点が入り混じる可能性がある点で厄介です。 しかし、地域や世界の都市は既知であるため、LUIS で学習を始めるためには都市のフレーズ リストが必要です。 
+## <a name="cities-phrase-list"></a>都市のフレーズ リスト
+人の名前のような都市名は、単語と句読点が入り混じる可能性がある点で厄介です。 地域や世界の都市は既知であるため、LUIS で学習を始めるためには都市のフレーズ リストが必要です。 
 
 1. 左側のメニューの **[Improve app performance]\(アプリのパフォーマンス改善\)** セクションから **[Phrase list]\(フレーズ リスト\)** を選択します。 
 
@@ -255,16 +248,13 @@ ms.locfileid: "44161936"
     |マイアミ|
     |ダラス|
 
-    世界のすべての都市、または地域のすべての都市を追加しないでください。 何という都市かを LUIS がリストから一般化できる必要があります。 
-
-    必ず、**[These values are interchangeable]\(これらの値は交換可能\)** は選択したままにしてください。 この設定は、リスト上の単語がシノニムとして扱われることを意味します。 これこそが、パターンでの単語の扱いのあるべき姿です。
-
-    [以前の](luis-quickstart-primary-and-secondary-data.md)チュートリアルのシリーズで作成したフレーズ リストには、シンプル エンティティの検出を強化するという目的もあったことを思い出してください。  
+    世界のすべての都市、または地域のすべての都市を追加しないでください。 何という都市かを LUIS がリストから一般化できる必要があります。 必ず、**[These values are interchangeable]\(これらの値は交換可能\)** は選択したままにしてください。 この設定は、リスト上の単語がシノニムとして扱われることを意味します。 
 
 3. アプリをトレーニングして公開します。
 
-## <a name="query-endpoint-for-pattern"></a>パターンのエンドポイントのクエリ
-1. **[Publish]\(公開\)** ページで、ページの下部にある**エンドポイント**のリンクを選択します。 別のブラウザー ウィンドウが開き、アドレス バーにエンドポイント URL が表示されます。 
+## <a name="get-intent-and-entities-from-endpoint"></a>エンドポイントから意図とエンティティを取得する
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. アドレスの URL の末尾に移動し、「`Move wayne berry from miami to mount vernon`」と入力します。 最後の querystring パラメーターは `q` です。これは発話の**クエリ**です。 
 
@@ -380,11 +370,24 @@ ms.locfileid: "44161936"
 
 意図スコアは大きく向上し、ロール名がエンティティの応答に含まれるようになりました。
 
+## <a name="hierarchical-entities-versus-roles"></a>階層エンティティとロール
+
+[階層構造のチュートリアル](luis-quickstart-intent-and-hier-entity.md)では、既存の従業員をある建物やオフィスから別の場所へ移動させるとき、**MoveEmployee** の意図が検出されました。 発話の例には移動元の場所と移動先の場所がありましたが、ロールは使用していませんでした。 代わりに、移動元と移動先は階層構造エンティティの子でした。 
+
+このチュートリアルでは、新しい従業員をある都市から別の都市に移動させることについての発話を人事管理アプリが検出します。 これら 2 種類の発話は同じですが、LUIS が持つ異なった能力によって解決されます。
+
+|チュートリアル|発話の例|移動元と移動先の場所|
+|--|--|--|
+|[階層構造 (ロールなし)](luis-quickstart-intent-and-hier-entity.md)|mv Jill Jones from **a-2349** to **b-1298**|a-2349、b-1298|
+|このチュートリアル (ロールあり)|Move Billy Patterson from **Yuma** to **Denver**.|Yuma、Denver|
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
+
+このチュートリアルでは、ロールを持つエンティティと、発話の例を持つ意図を追加しました。 エンティティを使用した最初のエンドポイント予測では意図が正しく予測されましたが、低い信頼度スコアが得られました。 2 つのエンティティのうち 1 つだけが検出されました。 次に、このチュートリアルでは、エンティティのロールを使用するパターン、および発話中の都市名の価値を高めるためのフレーズ リストが追加されました。 2 番目のエンドポイント予測では信頼性の高いスコアが返され、両方のエンティティのロールが見つかりました。 
 
 > [!div class="nextstepaction"]
 > [LUIS アプリのベスト プラクティスを学ぶ](luis-concept-best-practices.md)

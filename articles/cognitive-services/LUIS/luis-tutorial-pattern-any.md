@@ -1,42 +1,29 @@
 ---
-title: pattern.any エンティティを使用して LUIS の予測を向上させる方法のチュートリアル - Azure | Microsoft Docs
-titleSuffix: Cognitive Services
-description: このチュートリアルでは、pattern.any エンティティを使用して、LUIS による意図とエンティティの予測を向上させます。
+title: 'チュートリアル 5: 自由形式テキストのための Pattern.any エンティティ'
+titleSuffix: Azure Cognitive Services
+description: 発話が正しい形式であって、データの末尾が発話の残りの単語と混同しやすい可能性がある場合に、pattern.any エンティティを使用して発話からデータを抽出し ます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 43f169ae11191c2e98c4538189bce781821de980
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4ff4a7085a8caeedebe2a734014afb1cb46d9fbf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157856"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164397"
 ---
-# <a name="tutorial-improve-app-with-patternany-entity"></a>チュートリアル: pattern.any エンティティを使用してアプリを改善する
+# <a name="tutorial-5-extract-free-form-data"></a>チュートリアル 5: 自由形式のデータを抽出する
 
-このチュートリアルでは、pattern.any エンティティを使用して意図とエンティティの予測を向上させます。  
+このチュートリアルでは、発話が正しい形式であって、データの末尾が発話の残りの単語と混同しやすい可能性がある場合に、pattern.any エンティティを使用して発話からデータを抽出し ます。 
 
-> [!div class="checklist"]
-* pattern.any を使用するタイミングと方法について説明します
-* pattern.any を使用するパターンの作成
-* 予測の改善を検証する方法
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>開始する前に
-[パターン ロール](luis-tutorial-pattern-roles.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json) GitHub リポジトリにあります。
-
-元の Human Resources アプリを保持する場合は、[[Settings]\(設定\)](luis-how-to-manage-versions.md#clone-a-version) ページでバージョンを複製し、`patt-any` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 
-
-## <a name="the-purpose-of-patternany"></a>pattern.any の目的
 pattern.any エンティティは、エンティティの表現が原因で発話の残りの部分からエンティティの終わりを判別するのが難しい自由形式データを見つけるために使用できます。 
 
-この人事アプリは、従業員が会社のフォームを見つける際に役立ちます。 フォームは[正規表現チュートリアル](luis-quickstart-intents-regex-entity.md)で追加されました。 そのチュートリアルのフォーム名では、正規表現を使用して、次の発話表で太字になっているフォーム名など、正しい形式のフォーム名を抽出しました。
+この人事アプリは、従業員が会社のフォームを見つける際に役立ちます。 
 
 |発話|
 |--|
@@ -54,11 +41,38 @@ pattern.any エンティティは、エンティティの表現が原因で発�
 |誰が **"会社の新しい従業員からの配置換えリクエスト 2018 バージョン 5"** を作成しましたか?|
 |**会社の新しい従業員からの配置換えリクエスト 2018 バージョン 5** はフランス語で発行されますか?|
 
-さまざまな長さには、エンティティの末尾がどこであるかについて LUIS を混乱させる可能性のあるフレーズが含まれています。 パターンで Pattern.any エンティティを使用すると、フォーム名の先頭と末尾を指定できるため、LUIS はフォーム名を正しく抽出できます。
+さまざまな長さには、エンティティの末尾がどこであるかについて LUIS を混乱させる可能性のある単語が含まれています。 パターンで Pattern.any エンティティを使用すると、フォーム名の先頭と末尾を指定できるため、LUIS はフォーム名を正しく抽出できます。
 
-**パターンを使用すると提供される発話の例を少なくすることができますが、エンティティが検出されない場合、パターンは一致しません。**
+|テンプレート発話の例|
+|--|
+|{FormName} はどこですか[?]|
+|誰が {FormName} を作成しましたか[?]|
+|{FormName} はフランス語で発行されますか[?]|
 
-## <a name="add-example-utterances-to-the-existing-intent-findform"></a>既存の意図 FindForm に発話例を追加する 
+**このチュートリアルで学習する内容は次のとおりです。**
+
+> [!div class="checklist"]
+> * 既存のチュートリアル アプリを使用する
+> * 発話の例を既存のエンティティに追加する
+> * Pattern.any エンティティを作成する
+> * パターンを作成する
+> * トレーニング
+> * 新しいパターンをテストする
+
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>既存のアプリを使用する
+最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
+
+以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
+
+1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json)をダウンロードして保存します。
+
+2. JSON を新しいアプリにインポートします。
+
+3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `patt-any` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
+
+## <a name="add-example-utterances"></a>発話の例を追加する 
 FormName エンティティを作成してラベルを付けることが難しい場合、事前構築済みの keyPhrase エンティティを削除します。 
 
 1. 上部のナビゲーションから **[ビルド]** を選択し、左側のナビゲーションから **[Intents]\(意図\)** を選択します。
@@ -128,6 +142,8 @@ Pattern.any エンティティは、さまざまな長さのエンティティ�
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
+
+このチュートリアルでは、既存の意図に発話の例を追加し、フォーム名のために新しい Pattern.any を作成しました。 次に、チュートリアルでは新しい発話の例とエンティティを使用して、既存の意図のためのパターンを作成しました。 対話型テストにより、エンティティが見つかったことでパターンとその意図が予測されることが示されました。 
 
 > [!div class="nextstepaction"]
 > [パターンと共にロールを使用する方法について](luis-tutorial-pattern-roles.md)

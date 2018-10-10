@@ -2,24 +2,26 @@
 title: Azure SQL Database のデータの検出と分類 | Microsoft Docs
 description: Azure SQL Database のデータの検出と分類
 services: sql-database
-author: giladmit
-manager: craigg
-ms.reviewer: carlrab
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/10/2018
+author: giladmit
 ms.author: giladm
-ms.openlocfilehash: 6ef9a701f3a228e4c40da94f83310ef2884a3f59
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/10/2018
+ms.openlocfilehash: d34bb54729fe0adc4b26d213bfaa4ad4fb210ab7
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42144107"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064186"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database のデータの検出と分類
 データの検出と分類 (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの**検出**、**分類**、**ラベル付け** & **保護**を行う高度な機能が用意されます。
-最も機微なデータの検出と分類 (ビジネス/金融、医療、PII など) は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
+最も機微なデータの検出と分類 (ビジネス/金融、医療、個人を特定できる情報 (PII) など) は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
 * データのプライバシー基準および規制のコンプライアンス要件を満たす支援。
 * さまざまなセキュリティ シナリオ (機微なデータに対する異常なアクセスの監視 (監査) とアラートなど)。
 * 非常に機微なデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
@@ -42,6 +44,17 @@ ms.locfileid: "42144107"
 分類には 2 つのメタデータ属性が含まれます。
 * ラベル – メインの分類属性であり、列に格納されているデータの機密度レベルを定義するために使われます。  
 * 情報の種類 – 列に格納されているデータの種類に対する追加の細分性を提供します。
+
+## <a name="define-and-customize-your-classification-taxonomy"></a>分類法を定義してカスタマイズする
+
+SQL データの検出と分類には、組み込みの機密ラベル セット、および組み込みの情報の種類と検出ロジック セットが付属しています。 この分類法をカスタマイズし、一連の分類コンストラクトとその優先度を、ご自身の環境に合わせて定義できるようになりました。
+
+Azure テナント全体の分類法の定義とカスタマイズは 1 か所で行われます。 この処理は、[Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) で、セキュリティ ポリシーの一環として実施されます。 このタスクは、テナントのルート管理グループの管理者権限を持つユーザーのみが実行できます。
+
+Information Protection ポリシー管理の一環として、カスタム ラベルを定義し、優先度を設定し、そのラベルを、選択した一連の情報の種類に関連付けることができます。 独自のカスタム情報の種類を追加し、文字列パターンで構成することもできます。これは、ご自身のデータベース内のこの種類のデータを特定するために検出ロジックに追加されます。
+ご自身のポリシーのカスタマイズと管理の詳細については、[Information Protection ポリシーの攻略ガイド](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409)に関するページをご覧ください。
+
+テナント全体のポリシーが定義されたら、カスタマイズしたポリシーを使用して個別のデータベースの分類を続行できます。
 
 ## <a name="classify-your-sql-database"></a>SQL Database を分類する
 
@@ -104,9 +117,9 @@ T-SQL を使って、列の分類を追加/削除し、データベース全体�
 > [!NOTE]
 > T-SQL を使ってラベルを管理するとき、列に追加されるラベルが組織の情報保護ポリシー (ポータルのレコメンデーションに表示されるラベルのセット) に存在することの検証は行われません。 したがって、その検証はユーザーが行う必要があります。
 
-* 1 つまたは複数の列の分類の追加/更新: [ADD SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/en-us/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-* 1 つまたは複数の列の分類の削除: [DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/en-us/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-* データベースのすべての分類の表示: [sys.sensitivity_classifications](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+* 1 つまたは複数の列の分類の追加/更新: [ADD SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+* 1 つまたは複数の列の分類の削除: [DROP SENSITIVITY CLASSIFICATION](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+* データベースのすべての分類の表示: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 REST API を使用して、分類をプログラムで管理することもできます。 公開された REST API は、次の操作をサポートします。
 * [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): 指定された列の機密ラベルを作成または更新します

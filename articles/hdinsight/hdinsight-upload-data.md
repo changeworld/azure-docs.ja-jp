@@ -1,6 +1,6 @@
 ---
 title: HDInsight での Hadoop ジョブ用データのアップロード
-description: Azure CLI、Azure Storage エクスプローラー、Azure PowerShell、Hadoop コマンド ライン、または Sqoop を使用して、Hadoop ジョブ用データを HDInsight にアップロードする方法と HDInsight の Hadoop ジョブ用データにアクセスする方法について説明します。
+description: Azure クラシック CLI、Azure Storage エクスプローラー、Azure PowerShell、Hadoop コマンド ライン、または Sqoop を使用して、Hadoop ジョブ用データを HDInsight にアップロードする方法と HDInsight の Hadoop ジョブ用データにアクセスする方法について説明します。
 keywords: ETL Hadoop, Hadoop へのデータの取得, Hadoop ロード データ
 services: hdinsight
 author: jasonwhowell
@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 838444898500ce7127e1a9e999d0b5ee7b1e3687
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 44aaccee436011bd7d27bec87515fde0e898732e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051826"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985981"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>HDInsight での Hadoop ジョブ用データのアップロード
 
@@ -38,22 +38,22 @@ Microsoft では、Azure Storage を操作する次のユーティリティを�
 
 | ツール | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure コマンド ライン インターフェイス][azurecli] |✔ |✔ |✔ |
+| [Azure クラシック CLI][azurecli] |✔ |✔ |✔ |
 | [Azure PowerShell][azure-powershell] | | |✔ |
 | [AzCopy][azure-azcopy] |✔ | |✔ |
 | [Hadoop コマンド](#commandline) |✔ |✔ |✔ |
 
 > [!NOTE]
-> Azure CLI、Azure PowerShell、AzCopy はすべて Azure の外部から使用できますが、Hadoop コマンドは HDInsight クラスターでのみ使用できます。 また、このコマンドではデータをローカル ファイル システムから Azure Storage に読み込むことのみが可能です。
+> Azure クラシック CLI、Azure PowerShell、AzCopy はすべて Azure の外部から使用できますが、Hadoop コマンドは HDInsight クラスターでのみ使用できます。 また、このコマンドではデータをローカル ファイル システムから Azure Storage に読み込むことのみが可能です。
 >
 >
 
-#### <a id="xplatcli"></a>Azure CLI
-Azure CLI は、Azure サービスを管理できるクロスプラットフォーム ツールです。 次の手順を使用して、Azure Storage にデータをアップロードします。
+#### <a id="xplatcli"></a>Azure クラシック CLI
+Azure クラシック CLI は、Azure サービスを管理できるクロスプラットフォーム ツールです。 次の手順を使用して、Azure Storage にデータをアップロードします。
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-1. [Mac、Linux、Windows 用の Azure CLI をインストールして構成します](../cli-install-nodejs.md)。
+1. [Mac、Linux、Windows 用の Azure クラシック CLI をインストールして構成します](../cli-install-nodejs.md)。
 2. コマンド プロンプト、bash、その他のシェルを開き、次を使用して、Azure サブスクリプションを認証します。
 
     ```cli

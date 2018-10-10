@@ -1,20 +1,21 @@
 ---
-title: LUIS アプリのバッチ テスト - Azure | Microsoft Docs
+title: LUIS アプリのバッチ テスト - Language Understanding
+titleSuffix: Azure Cognitive Services
 description: バッチ テストを使用して、アプリケーションの改善とその言語解釈の向上に継続的に取り組みます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: bba3f2ff942fbe5dffc9b694990964e4e3078dbe
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 414862d7ba1956f9449fde3ba063906fae6ef01b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222655"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041610"
 ---
 # <a name="batch-testing-in-luis"></a>LUIS でのバッチ テスト
 

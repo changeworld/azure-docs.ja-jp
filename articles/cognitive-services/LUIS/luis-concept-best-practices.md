@@ -1,22 +1,23 @@
 ---
-title: LUIS のベスト プラクティスについて - Azure | Microsoft Docs
+title: LUIS を使用したアプリ構築のベスト プラクティス - Language Understanding
+titleSuffix: Azure Cognitive Services
 description: 最良の結果を得るための LUIS のベスト プラクティスについて説明します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 81a2523f37cac926d9f498953a831c2d877a7528
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 511e6c732613cc577644365e38b271135659f2d3
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224009"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042246"
 ---
-# <a name="best-practices"></a>ベスト プラクティス
+# <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Cognitive Services を使用して Language Understanding アプリを構築するためのベスト プラクティス
 アプリの作成プロセスを使用して、ご自身の LUIS アプリをビルドします。 
 
 * 言語モデルを構築する

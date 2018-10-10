@@ -1,26 +1,28 @@
 ---
-title: Node.js を使用して LUIS データを Application Insights に追加する | Microsoft Docs
-titleSuffix: Azure
+title: C# を使用した LUIS からの Application Insights データ
+titleSuffix: Azure Cognitive Services
 description: Node.js を使用して LUIS アプリケーションおよび Application Insights と統合されるボットを構築する
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 5b65747bea7d2496558c5b3b533bb8420eee6254
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 342c4f98d854d94426c3e4a1eb79bb2a6adffaad
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236841"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038002"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Web アプリ ボットから LUIS 結果を Application Insights に追加する
+# <a name="add-luis-results-to-application-insights"></a>LUIS の結果を Application Insights に追加する
 このチュートリアルでは、LUIS 要求と応答の情報を [Application Insights](https://azure.microsoft.com/services/application-insights/) テレメトリ データ ストレージに追加します。 データを用意したら、Kusto 言語または PowerBi を使用して、意図および発話のエンティティについてリアルタイムで分析、集計、およびレポートすることができます。 この分析は、LUIS アプリの意図およびエンティティを追加または編集する必要があるかどうかの判断に役立ちます。
 
-このチュートリアルで学習する内容は次のとおりです。
+ボットは、Bot Framework 3.x と Azure Web アプリ ボットで構築します。
+
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 * Application Insights ライブラリを Web アプリ ボットに追加する
@@ -151,7 +153,7 @@ Application Insights を使用すると、[Kusto](https://docs.microsoft.com/azu
     ![Analytics の最上位の意図](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
 
 
-[Kusto クエリ言語](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries)または [PowerBI へのデータのエクスポート](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)の詳細を確認してください。 
+[Kusto クエリ言語](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)または [PowerBI へのデータのエクスポート](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi)の詳細を確認してください。 
 
 ## <a name="next-steps"></a>次の手順
 

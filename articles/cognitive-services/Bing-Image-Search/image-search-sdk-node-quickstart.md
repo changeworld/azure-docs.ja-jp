@@ -1,58 +1,106 @@
 ---
-title: 'クイック スタート: Node.js で SDK を使用したイメージの要求とフィルター'
-description: このクイック スタートでは、Bing Image Search から返されたイメージを Node.js を使用して要求およびフィルターします。
-titleSuffix: Azure cognitive services
+title: 'クイック スタート: Node.js 用 Bing Image Search SDK を使用してイメージを検索する'
+description: このクイック スタートを利用し、Bing Image Search SDK を使用して最初のイメージ検索を行います。この SDK は、API のラッパーであり、同じ機能を含んでいます。 このシンプルな Node.js アプリケーションは、イメージ検索クエリを送信し、JSON 応答を解析して、返された最初のイメージの URL を表示します。
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
-ms.date: 02/12/2018
-ms.author: v-gedod
-ms.openlocfilehash: e88c045b220192a617e6b8caf5d8d53f70a25b5e
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.topic: quickstart
+ms.date: 08/28/2018
+ms.author: aahi
+ms.openlocfilehash: 2fa3a221d42a522f19b00a4cb5596d93039a85ac
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41929820"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220223"
 ---
-# <a name="quickstart-request-and-filter-images-using-the-sdk-and-nodejs"></a>クイック スタート: SDK および Node.js を使用したイメージの要求とフィルター
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-nodejs"></a>クイック スタート: Bing Image Search SDK と Node.js を使用してイメージを検索する
 
-Bing Image Search SDK には、画像クエリと結果解析のための REST API 機能が含まれています。 
+このクイック スタートを利用し、Bing Image Search SDK を使用して最初のイメージ検索を行います。この SDK は、API のラッパーであり、同じ機能を含んでいます。 このシンプルな JavaScript アプリケーションは、イメージ検索クエリを送信し、JSON 応答を解析して、返された最初のイメージの URL を表示します。
 
-Git Hub に [Node Bing Image Search SDK のサンプル ソース コード](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js)があります。
+このサンプルのソース コードは、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/imageSearch.js) で入手できます。
 
-## <a name="application-dependencies"></a>アプリケーションの依存関係
+## <a name="prerequisites"></a>前提条件
 
-Bing Image Search SDK を利用してコンソール アプリケーションを設定するには、ご利用の開発環境で `npm install azure-cognitiveservices-imagesearch` を実行します。
+* [Node.js 用の Cognitive Services Image Search SDK](https://www.npmjs.com/package/azure-cognitiveservices-imagesearch)
+    * `npm install azure-cognitiveservices-imagesearch` を使用してインストールする
+* [Node.js Azure Rest](https://www.npmjs.com/package/ms-rest-azure) モジュール
+    * `npm install ms-rest-azure` を使用してインストールする
 
-## <a name="image-search-client"></a>Image Search クライアント
-*[検索]* で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。 `CognitiveServicesCredentials` のインスタンスを作成します。
-```
-const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
-```
-次に、クライアントをインスタンス化します。
-```
-const ImageSearchAPIClient = require('azure-cognitiveservices-imagesearch');
-let client = new ImageSearchAPIClient(credentials);
-```
-クライアントを使用してクエリ テキスト (この場合は 'El Capitan') を検索します。
-```
-client.imagesOperations.search('El Capitan', function (err, result, request, response) {
-    if (err) throw err;
-    console.log(result.value);
-});
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-```
-<!-- Need to sanitize result
-The code prints `result.value` items to the console without parsing any text. The results will be:
-- _type: 'ImageObjectElementType'
+## <a name="create-and-initialize-the-application"></a>アプリケーションを作成して初期化する
 
-![Imageresults](media/node-sdk-quickstart-image-results.png)
--->
+1. 好みの IDE またはエディターで新しい JavaScript ファイルを作成し、厳格度、https、およびその他の要件を設定します。
+
+    ```javascript
+    'use strict';
+    https = require('https');
+    const Search = require('azure-cognitiveservices-imagesearch');
+    const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
+    ```
+
+2. プロジェクトの main メソッドでは、有効なサブスクリプション キー、Bing で返す必要のあるイメージの結果、および検索語句の変数を作成します。 その後、キーを使用してイメージ検索クライアントをインスタンス化します。
+
+    ```javascript
+    //replace this value with your valid subscription key.
+    let serviceKey = "ENTER YOUR KEY HERE";
+
+    //the search term for the request
+    let searchTerm = "canadian rockies";
+
+    //instantiate the image search client 
+    let credentials = new CognitiveServicesCredentials(serviceKey);
+    let imageSearchApiClient = new Search.ImageSearchAPIClient(credentials);
+
+    ```
+
+## <a name="create-an-asynchronous-helper-function"></a>非同期ヘルパー関数を作成する
+
+1. クライアントを非同期に呼び出す関数を作成し、Bing Image Search サービスから応答を返します。  
+    ```javascript
+    //a helper function to perform an async call to the Bing Image Search API
+    const sendQuery = async () => {
+        return await imageSearchApiClient.imagesOperations.search(searchTerm);
+    };
+    ```
+## <a name="send-a-query-and-handle-the-response"></a>クエリを送信して応答を処理する
+
+1. ヘルパー関数を呼び出して `promise` を処理し、応答で返されたイメージの結果を解析します。
+
+    応答に検索結果が含まれている場合は、最初の結果を格納して、返された URL の合計数と共にサムネイルの URL などの詳細を出力します。  
+    ```javascript
+    sendQuery().then(imageResults => {
+        if (imageResults == null) {
+        console.log("No image results were found.");
+        }
+        else {
+            console.log(`Total number of images returned: ${imageResults.value.length}`);
+            let firstImageResult = imageResults.value[0];
+            //display the details for the first image result. After running the application,
+            //you can copy the resulting URLs from the console into your browser to view the image.
+            console.log(`Total number of images found: ${imageResults.value.length}`);
+            console.log(`Copy these URLs to view the first image returned:`);
+            console.log(`First image thumbnail url: ${firstImageResult.thumbnailUrl}`);
+            console.log(`First image content url: ${firstImageResult.contentUrl}`);
+        }
+      })
+      .catch(err => console.error(err))
+    ```
 
 ## <a name="next-steps"></a>次の手順
 
-[Cognitive Services Node.js SDK サンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+> [!div class="nextstepaction"]
+> [Bing Image Search の単一ページ アプリのチュートリアル](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
+
+## <a name="see-also"></a>関連項目
+
+* [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
+* [Azure Cognitive Services SDK の Node.js サンプル](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+* [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
+* [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

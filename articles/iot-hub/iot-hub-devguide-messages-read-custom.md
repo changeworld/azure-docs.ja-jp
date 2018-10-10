@@ -1,6 +1,6 @@
 ---
 title: Azure IoT Hub のカスタム エンドポイントについて | Microsoft Docs
-description: 開発者ガイド - カスタム エンドポイントへの device-to-cloud メッセージのルーティングにルーティング ルールを使用します。
+description: 開発者ガイド - ルーティング クエリを使用して、カスタム エンドポイントに device-to-cloud メッセージのルーティングします。
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,31 +8,33 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: b035c7ef6dfe56c4b4534e081e70d95ea7c14847
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: af0b819c6c60835089c174a1f9f7c3a6215e362c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808028"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956963"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>device-to-cloud メッセージにメッセージ ルートとカスタム エンドポイントを使用する
 
-IoT Hub では、メッセージ プロパティに基づいて、IoT Hub サービス向けのエンドポイントに [device-to-cloud メッセージ][lnk-device-to-cloud]をルーティングできます。 ルーティング ルールによってメッセージ送信を柔軟に実行できるため、メッセージにサービスやカスタム コードを追加する必要はありません。 各ルーティング ルールには、次のプロパティがあります。
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-| プロパティ      | 説明 |
+IoT Hub の[メッセージ ルーティング](iot-hub-devguide-routing-query-syntax.md)を使用すると、サービスに接続するエンドポイントに device-to-cloud メッセージをルーティングすることができます。 また、ルーティングでは、エンドポイントにルーティングする前にデータをフィルター処理するクエリ機能も提供されています。 各ルーティング クエリには、次のプロパティがあります。
+
+| プロパティ      | [説明] |
 | ------------- | ----------- |
-| **名前**      | ルールを識別する一意の名前。 |
+| **名前**      | クエリを識別する一意の名前。 |
 | **ソース**    | 処理するデータ ストリームの元データ。 たとえば、デバイス テレメトリです。 |
-| **Condition** | メッセージのヘッダーと本文に対して実行され、エンドポイントと一致するかどうかを確認するルーティング ルールのクエリ式。 ルート条件の構築の詳細については、[リファレンス - デバイス ツインとジョブのクエリ言語][lnk-devguide-query-language]に関する記事を参照してください。 |
-| **エンドポイント**  | IoT Hub が条件に一致するメッセージを送信するエンドポイントの名前。 エンドポイントは、IoT Hub と同じリージョン内に存在する必要があり、そうでない場合は、リージョン間の書き込みに対して課金されるおそれがあります。 |
+| **Condition** | エンドポイントと一致するかどうかを確認するために、メッセージ アプリケーションのプロパティ、システムのプロパティ、メッセージ本文、デバイス ツインのタグ、デバイス ツインのプロパティに対して実行されるルーティング クエリのクエリ式。 クエリの作成方法について詳しくは、[メッセージ ルーティング クエリの構文](iot-hub-devguide-routing-query-syntax.md)に関するページをご覧ください。 |
+| **エンドポイント**  | クエリに一致するメッセージを IoT Hub が送信するエンドポイントの名前。 お使いの IoT ハブと同じリージョンのエンドポイントを選択することをお勧めします。 |
 
-1 つのメッセージが複数のルーティング ルールの条件と一致することがあり、その場合、IoT Hub は一致する各ルールに関連するエンドポイントにメッセージを送信します。 IoT Hub はメッセージ配信の重複を自動的に排除するため、あるメッセージが複数のルールに一致し、それらのルールの配信先が同じであった場合は、配信先には 1 度のみメッセージが書き込まれます。
+1 つのメッセージが複数のルーティング クエリの条件と一致することがあり、その場合、IoT Hub は一致する各クエリに関連するエンドポイントにメッセージを送信します。 IoT Hub はメッセージ配信の重複を自動的に排除するため、あるメッセージが複数のクエリに一致し、それらのルールの配信先が同じであった場合は、配信先には 1 度のみメッセージが書き込まれます。
 
 ## <a name="endpoints-and-routing"></a>エンドポイントとルーティング
 
 IoT hub は、既定の[組み込みのエンドポイント][lnk-built-in]を持ちます。 サブスクリプション内の他のサービスをハブにリンクして、メッセージをルーティングするカスタム エンドポイントを作成できます。 IoT Hub は現在、カスタム エンドポイントとして、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。
 
-ルーティングとカスタム エンドポイントを使用すると、メッセージは、規則に一致しない場合、組み込みのエンドポイントにのみ配信されます。 メッセージを組み込みのエンドポイントとカスタム エンドポイントに配信するには、**イベント** エンドポイントにメッセージを送信するルートを追加します。
+ルーティングとカスタム エンドポイントを使用すると、メッセージは、クエリに一致しない場合、組み込みのエンドポイントにのみ配信されます。 メッセージを組み込みのエンドポイントとカスタム エンドポイントに配信するには、**イベント** エンドポイントにメッセージを送信するルートを追加します。
 
 > [!NOTE]
 > IoT Hub は、Azure Storage コンテナーに BLOB としてデータを書き込む処理のみをサポートしています。
@@ -49,19 +51,11 @@ IoT Hub でのカスタム エンドポイントの作成の詳細について�
 * [Service Bus キュー][lnk-getstarted-queue]から読み取ります。
 * [Service Bus トピック][lnk-getstarted-topic]から読み取ります。
 
-## <a name="latency"></a>Latency
-
-組み込みのエンドポイントを使用して device-to-cloud テレメトリ メッセージをルーティングすると、最初のルーティングの作成後にエンド ツー エンドの待機時間が若干上昇します。
-
-ほとんどの場合、待機時間の平均増加は 1 秒未満です。 待機時間は、**d2c.endpoints.latency.builtIn.events** [IoT Hub metric](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) を使用して監視できます。 最初のルーティング後にルーティングを作成または削除してもエンド ツー エンドの待機時間には影響しません。
-
 ### <a name="next-steps"></a>次の手順
 
-IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント][lnk-devguide-endpoints]に関するページをご覧ください。
-
-ルーティング ルールの定義に使用するクエリ言語の詳細については、[デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語][lnk-devguide-query-language]に関するページをご覧ください。
-
-[ルートを使用した IoT Hub の device-to-cloud メッセージの処理][lnk-d2c-tutorial]に関するチュートリアルでは、ルーティング ルールおよびカスタム エンドポイントを使用する方法を説明します。
+* IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント][lnk-devguide-endpoints]に関するページをご覧ください。
+* ルーティング クエリの定義に使用するクエリ言語について詳しくは、[メッセージ ルーティング クエリの構文](iot-hub-devguide-routing-query-syntax.md)に関するページをご覧ください。
+* [ルートを使用した IoT Hub の device-to-cloud メッセージの処理][lnk-d2c-tutorial]に関するチュートリアルでは、ルーティング クエリおよびカスタム エンドポイントを使用する方法が説明されています。
 
 [lnk-built-in]: iot-hub-devguide-messages-read-builtin.md
 [lnk-device-to-cloud]: iot-hub-devguide-messages-d2c.md

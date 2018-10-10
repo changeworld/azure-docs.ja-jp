@@ -16,16 +16,19 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e6b431ee55ee73b4f5a69471cca3cc16270198c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 33b0b2b4148a8cfbe97413bf3cdec23d375206bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930241"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983890"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Linux 仮想マシンを作成する方法
-この記事では、Azure Resource Manager テンプレートと Azure CLI を使用してすばやく Linux 仮想マシン (VM) をデプロイする方法を説明します。 
 
+この記事では、Azure Resource Manager テンプレートと Azure CLI を使用してすばやく Linux 仮想マシン (VM) をデプロイする方法を説明します。 これらの手順は、[Azure クラシック CLI](create-ssh-secured-vm-from-template-nodejs.md) を使用して実行することもできます。
+
+
+この記事では、Azure Resource Manager テンプレートと Azure CLI を使用してすばやく Linux 仮想マシン (VM) をデプロイする方法を説明します。 
 
 ## <a name="templates-overview"></a>テンプレートの概要
 Azure Resource Manager テンプレートとは、Azure ソリューションのインフラストラクチャと構成を定義する JSON ファイルです。 テンプレートを使えば、ソリューションをそのライフサイクル全体で繰り返しデプロイできます。また、常にリソースが一貫した状態でデプロイされます。 テンプレートの形式とその構築方法については、「[初めての Azure Resource Manager テンプレートを作成する](../../azure-resource-manager/resource-manager-create-first-template.md)」を参照してください。 リソースの種類に関して JSON 構文を確認するには、「[Define resources in Azure Resource Manager templates (Azure Resource Manager テンプレートのリソースの定義)](/azure/templates/)」を参照してください。

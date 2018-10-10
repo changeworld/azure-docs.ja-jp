@@ -1,20 +1,21 @@
 ---
-title: Azure Cognitive Services の Computer Vision | Microsoft Docs
-description: Computer Vision の高度なアルゴリズムを使用すれば、Azure Cognitive Services でイメージを処理して情報を返すのに役立ちます。
+title: Computer Vision API とは
+titlesuffix: Azure Cognitive Services
+description: Computer Vision サービスを使用すると、開発者は、イメージを処理して情報を返すための高度なアルゴリズムにアクセスできます。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: v-deken
-ms.openlocfilehash: ec3ffa8599192ecd9a4092b026a8d249f50c64c9
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 030a8351a8f41c7404fa4ca8d243fff1ad818c2f
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248624"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433601"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -34,24 +35,24 @@ Computer Vision を使用してイメージを分析し、イメージの視覚�
 
 | アクションを表示します。 | 説明 |
 | ------ | ----------- |
-|**[視覚的特徴のタグ付け](quickstarts/csharp-analyze.md)**|2000 個を超える認識可能なオブジェクト、生物、風景、および動作に基づいて、イメージの視覚的特徴を識別してタグ付けします。 タグが不明瞭な場合や、常識的でない場合は、応答により、既知の設定のコンテキストでタグの意味を明確にするための "ヒント" が示されます。 タグ付けの対象は、前景の人物などの主題に限らず、背景 (屋内または屋外)、家具、道具、植物、動物、アクセサリ、ガジェットなども含まれます。|
-|**[イメージの分類](quickstarts/csharp-analyze.md)**|親/子で引き継がれる階層を備えた[カテゴリの分類](Category-Taxonomy.md)を使用して、イメージ全体を識別してタグ付けします。 カテゴリは単独で、または新しいタグ付けモデルと共に使用できます。<br/>現時点では、イメージのタグ付けと分類でサポートされている言語は、英語のみです。|
-|**[イメージの説明](quickstarts/csharp-analyze.md)**|完全な文を使用して、人間が判読できる言語でイメージ全体の説明を生成します。 Computer Vision のアルゴリズムでは、イメージ内の識別されるオブジェクトに基づいて、さまざまな説明が生成されます。 説明はそれぞれ評価され、信頼度スコアが生成されます。 その後、信頼度スコアが最も高いものから最も低いものの順に並べられたリストが返されます。<br/>このテクノロジを使用してイメージ キャプションを生成するボットの例については、[GitHub](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-ImageCaption) を参照してください。|
-|**[顔の検出](quickstarts/csharp-analyze.md)** |イメージ内の人物の顔を検出して、検出された各顔に関する情報を提示します。 Computer Vision は検出された各顔の座標、四角い枠、性別、および年齢を返します。<br/>Computer Vision は、[[Face]](/azure/cognitive-services/face/) で見つけられる機能のサブセットを提供しており、顔の識別やポーズの検出など、より詳細な分析に Face サービスを使用できます。|
-|**[イメージの種類の検出](quickstarts/csharp-analyze.md)**|イメージが線による描画かクリップ アートのようになっているかなど、イメージの性質を検出します。|
-|**[ドメイン固有のコンテンツの検出](quickstarts/python-domain.md)**|ドメイン モデルを使用して、有名人やランドマークなど、イメージ内のドメイン固有のコンテンツを検出して識別します。 たとえば、イメージに人物が含まれている場合、Computer Vision では、サービスに含まれている有名人用のドメイン モデルを使用して、イメージ内で検出された人物が既知の有名人と一致するかどうかを判定できます。|
-|**[配色の検出](quickstarts/csharp-analyze.md)**|イメージ内にある色の使用状況を分析します。 Computer Vision では、イメージが白黒かカラーかを特定すると共に、カラーのイメージの場合、主要な色やアクセントになる色を識別できます。|
-|**[サムネイルの生成](quickstarts/csharp-thumb.md)**|イメージのコンテンツを分析して、そのイメージの適切なサムネイルを生成します。 Computer Vision では最初に、高品質のサムネイルを生成し、イメージ内のオブジェクトを分析して*関心領域* (ROI) を特定します。 Computer Vision ではその後、関心領域の要件に合わせて、イメージがトリミングされます。 ユーザーのニーズに応じて、元のイメージの縦横比とは異なる縦横比を使用して、生成されたサムネイルを表示することができます。|
+|**[視覚的特徴のタグ付け](concept-tagging-images.md)**|2000 個を超える認識可能なオブジェクト、生物、風景、および動作に基づいて、イメージの視覚的特徴を識別してタグ付けします。 タグが不明瞭な場合や、常識的でない場合は、応答により、既知の設定のコンテキストでタグの意味を明確にするための "ヒント" が示されます。 タグ付けの対象は、前景の人物などの主題に限らず、背景 (屋内または屋外)、家具、道具、植物、動物、アクセサリ、ガジェットなども含まれます。|
+|**[イメージの分類](concept-categorizing-images.md)**|親/子で引き継がれる階層を備えた[カテゴリの分類](Category-Taxonomy.md)を使用して、イメージ全体を識別してタグ付けします。 カテゴリは単独で、または新しいタグ付けモデルと共に使用できます。<br/>現時点では、イメージのタグ付けと分類でサポートされている言語は、英語のみです。|
+|**[イメージの説明](concept-describing-images.md)**|完全な文を使用して、人間が判読できる言語でイメージ全体の説明を生成します。 Computer Vision のアルゴリズムでは、イメージ内の識別されるオブジェクトに基づいて、さまざまな説明が生成されます。 説明はそれぞれ評価され、信頼度スコアが生成されます。 その後、信頼度スコアが最も高いものから最も低いものの順に並べられたリストが返されます。<br/>このテクノロジを使用してイメージ キャプションを生成するボットの例については、[GitHub](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-ImageCaption) を参照してください。|
+|**[顔の検出](concept-detecting-faces.md)** |イメージ内の人物の顔を検出して、検出された各顔に関する情報を提示します。 Computer Vision は検出された各顔の座標、四角い枠、性別、および年齢を返します。<br/>Computer Vision は、[[Face]](/azure/cognitive-services/face/) で見つけられる機能のサブセットを提供しており、顔の識別やポーズの検出など、より詳細な分析に Face サービスを使用できます。|
+|**[イメージの種類の検出](concept-detecting-image-types.md)**|イメージが線による描画かクリップ アートのようになっているかなど、イメージの性質を検出します。|
+|**[ドメイン固有のコンテンツの検出](concept-detecting-domain-content.md)**|ドメイン モデルを使用して、有名人やランドマークなど、イメージ内のドメイン固有のコンテンツを検出して識別します。 たとえば、イメージに人物が含まれている場合、Computer Vision では、サービスに含まれている有名人用のドメイン モデルを使用して、イメージ内で検出された人物が既知の有名人と一致するかどうかを判定できます。|
+|**[配色の検出](concept-detecting-color-schemes.md)**|イメージ内にある色の使用状況を分析します。 Computer Vision では、イメージが白黒かカラーかを特定すると共に、カラーのイメージの場合、主要な色やアクセントになる色を識別できます。|
+|**[サムネイルの生成](concept-generating-thumbnails.md)**|イメージのコンテンツを分析して、そのイメージの適切なサムネイルを生成します。 Computer Vision では最初に、高品質のサムネイルを生成し、イメージ内のオブジェクトを分析して*関心領域* (ROI) を特定します。 Computer Vision ではその後、関心領域の要件に合わせて、イメージがトリミングされます。 ユーザーのニーズに応じて、元のイメージの縦横比とは異なる縦横比を使用して、生成されたサムネイルを表示することができます。|
 
 ## <a name="extracting-text-from-images"></a>イメージからのテキストの抽出
 
-Computer Vision を使用し、イメージからコンピューターが読み取り可能な文字のストリームへ、[OCR を使用してテキストを抽出](quickstarts/csharp-print-text.md)します。 必要に応じて、OCR では、認識されたテキストの回転を、イメージの水平軸を中心として度単位で修正し、各語句のフレーム座標を提供します。 OCR は 25 の言語をサポートし、抽出されたテキストの言語を自動的に検出します。
+Computer Vision を使用し、イメージからコンピューターが読み取り可能な文字のストリームへ、[OCR を使用してテキストを抽出](concept-extracting-text-ocr.md)します。 必要に応じて、OCR では、認識されたテキストの回転を、イメージの水平軸を中心として度単位で修正し、各語句のフレーム座標を提供します。 OCR は 25 の言語をサポートし、抽出されたテキストの言語を自動的に検出します。
 
-また、イメージから[印刷および手書きのテキストを認識](quickstarts/csharp-hand-text.md)することもできます。 Computer Vision では、レシート、ポスター、名刺、手紙、およびホワイトボードなど、異なるサーフェスや背景を持つさまざまなオブジェクトのイメージから、印刷および手書き両方のテキストを検出して、抽出できます。 現時点では、印刷および手書きのテキストの認識はプレビュー段階であり、サポートされている言語は英語のみです。  
+また、イメージから[印刷および手書きのテキストを認識](concept-recognizing-text.md)することもできます。 Computer Vision では、レシート、ポスター、名刺、手紙、およびホワイトボードなど、異なるサーフェスや背景を持つさまざまなオブジェクトのイメージから、印刷および手書き両方のテキストを検出して、抽出できます。 現時点では、印刷および手書きのテキストの認識はプレビュー段階であり、サポートされている言語は英語のみです。  
 
 ## <a name="moderating-content-in-images"></a>イメージ内のコンテンツを調整する
 
-Computer Vision を使用して、イメージ内の[成人向けや人種差別的コンテンツを検出](quickstarts/csharp-analyze.md)できます。イメージに成人向けまたは人種差別的なコンテンツが含まれている可能性を評価し、その両方に対して信頼度スコアを生成します。 成人向けできわどいコンテンツを検出するためのフィルターは、設定に合わせて、スライディング スケールで設定することができます。
+Computer Vision を使用して、イメージ内の[成人向けや人種差別的コンテンツを検出](concept-detecting-adult-content.md)できます。イメージに成人向けまたは人種差別的なコンテンツが含まれている可能性を評価し、その両方に対して信頼度スコアを生成します。 成人向けできわどいコンテンツを検出するためのフィルターは、設定に合わせて、スライディング スケールで設定することができます。
 
 ## <a name="image-requirements"></a>イメージの要件
 
@@ -60,12 +61,12 @@ Computer Vision では、次の要件に合ったイメージを分析できま�
 - イメージが、JPEG、PNG、GIF、または BMP で提示されている
 - イメージのファイル サイズが 4 メガバイト (MB) 未満である
 - イメージのディメンションが 50 x 50 ピクセルよりも大きい値である  
-  OCR では、イメージのディメンションを 40 x 40 ～ 3200 x 3200 ピクセルにする必要があり、イメージは 10 メガピクセルを超過できません。
+  OCR では、イメージのディメンションを 50 x 50 ～ 4200 x 4200 ピクセルにする必要があり、イメージは 10 メガピクセルを超過できません。
 
 ## <a name="next-steps"></a>次の手順
 
 以下のクイック スタートのいずれかに従って、実際に Computer Vision を使ってみましょう。
 
-- [イメージを分析する](/quickstarts-sdk/csharp-analyze-sdk.md)
-- [手書きのテキストを抽出する](/quickstarts-sdk/csharp-hand-text-sdk.md)
-- [サムネイルを生成する](/quickstarts-sdk/csharp-thumb-sdk.md)
+- [イメージを分析する](quickstarts-sdk/csharp-analyze-sdk.md)
+- [手書きのテキストを抽出する](quickstarts-sdk/csharp-hand-text-sdk.md)
+- [サムネイルを生成する](quickstarts-sdk/csharp-thumb-sdk.md)

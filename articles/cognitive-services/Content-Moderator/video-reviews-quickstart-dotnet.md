@@ -1,24 +1,25 @@
 ---
-title: Azure Content Moderator - .NET を使用してビデオ レビューを作成する | Microsoft Docs
-description: .NET 用の Azure Content Moderator SDK を使用してビデオ レビューを作成する方法
+title: .NET を使用してビデオ レビューを作成する - Content Moderator
+titlesuffix: Azure Cognitive Services
+description: .NET 用の Content Moderator SDK を使用してビデオ レビューを作成する方法
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/18/2018
 ms.author: sajagtap
-ms.openlocfilehash: fe321d08a44e7f843228668908c8b2c4ff3a3c32
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 284ee24bbb0a15d107acf85e2d58072a0ecbbc6e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41929913"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219042"
 ---
 # <a name="create-video-reviews-using-net"></a>.NET を使用してビデオ レビューを作成する
 
-この記事には、C# で Content Moderator SDK を使用して、次の操作をすぐに開始するために役立つ情報とコード サンプルが用意されています。
+この記事には、[C# で Content Moderator SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) を使用して、次の操作をすぐに開始するために役立つ情報とコード サンプルが用意されています。
 
 - 人間のモデレーター用のビデオ レビューを作成する
 - レビューにフレームを追加する
@@ -32,11 +33,22 @@ ms.locfileid: "41929913"
 
 また、この記事では Visual Studio と C# に精通していることも前提としています。
 
-### <a name="sign-up-for-content-moderator-services"></a>Content Moderator サービスにサインアップする
+## <a name="sign-up-for-content-moderator"></a>Content Moderator へのサインアップ
 
 REST API や SDK を通じて Content Moderator サービスを使用するには、サブスクリプション キーが必要です。
+キーを入手する方法については、[クイック スタート](quick-start.md)を参照してください。
 
-サブスクリプション キーは、Content Moderator のダッシュボードで、**[Setting]\(設定\)** > **[Credentials]\(資格情報\)** > **[API]** > **[Trial Ocp-Apim-Subscription-Key]\(試用版 Ocp-Apim-Subscription-Key\)** の順に選択すると表示されます。 詳しくは、[概要](overview.md)に関するページをご覧ください。
+## <a name="sign-up-for-a-review-tool-account-if-not-completed-in-the-previous-step"></a>前の手順で完了していない場合は、レビュー ツール アカウントにサインアップする
+
+Azure portal から Content Moderator を取得した場合は、[レビュー ツールのアカウントにもサインアップ](https://contentmoderator.cognitive.microsoft.com/)し、レビュー チームを作成します。 レビュー API を呼び出してジョブを開始し、レビュー ツールにレビューを表示するには、チーム ID とレビュー ツールが必要です。
+
+## <a name="ensure-your-api-key-can-call-the-review-api-for-review-creation"></a>お使いの API キーで、レビュー作成のためにレビュー API の呼び出しが可能であることを確認してください
+
+Azure portal から起動した場合は、前の手順の完了後に Content Moderator のキーが 2 つある状態になることがあります。 
+
+SDK サンプルで、Azure から提供される API キーを使用する予定の場合は、[レビュー API での Azure キーの使用](review-tool-user-guide/credentials.md#use-the-azure-account-with-the-review-tool-and-review-api)に関するセクションで説明されている手順に従って、アプリケーションがレビュー API を呼び出し、レビューを作成できるようにします。
+
+レビュー ツールによって生成される無料試用版のキーを使用する場合、そのキーは既にレビュー ツール アカウントによって知られています。そのため、追加の手順は必要ありません。
 
 ### <a name="prepare-your-video-and-the-video-frames-for-review"></a>レビュー用のビデオとビデオ フレームを準備する
 
@@ -118,9 +130,9 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
             /// </summary>
             /// <remarks>This must be the team name you used to create your 
             /// Content Moderator account. You can retrieve your team name from
-            /// the Conent Moderator web site. Your team name is the Id associated 
+            /// the Content Moderator web site. Your team name is the Id associated 
             /// with your subscription.</remarks>
-            public static readonly string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
+            private const string TeamName = "YOUR CONTENT MODERATOR TEAM ID";
 
             /// <summary>
             /// The base URL fragment for Content Moderator calls.
@@ -150,7 +162,7 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
     {
         return new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey))
         {
-            BaseUrl = AzureBaseURL
+            Endpoint = AzureBaseURL
         };
     }
 
@@ -207,7 +219,7 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 > [!NOTE]
 > お使いの Content Moderator のサービス キーは 1 秒ごとの要求数 (RPS) が制限されており、その上限を超えると、SDK が 429 エラー コードとともに例外をスローします。 
 >
-> Free レベルのキーの RPS は 1 に制限されています。
+> 無料レベルのキーの RPS は 1 に制限されています。
 
 ## <a name="add-video-frames-to-the-video-review"></a>ビデオ レビューにビデオ フレームを追加する
 
@@ -391,7 +403,7 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
             Console.WriteLine("Open your Content Moderator Dashboard and select Review > Video to see the review.");
             Console.WriteLine("Press any key to close the application.");
-            Console.Read();
+            Console.ReadKey();
         }
     }
 
@@ -536,8 +548,8 @@ TermLists プロジェクト用に次の NuGet パッケージをインストー
 
 ## <a name="next-steps"></a>次の手順
 
+[Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と、.NET 用のこのクイック スタートや他の Content Moderator のクイックスタートのための [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)をダウンロードする。
+
 ビデオ レビューに[トランスクリプト モデレーション](video-transcript-moderation-review-tutorial-dotnet.md)を追加する方法について学習する。 
 
 [完全なビデオ モデレーション ソリューション](video-transcript-moderation-review-tutorial-dotnet.md)を開発する方法に関する詳細なチュートリアルを確認する。
-
-.NET 用のこのクイック スタートや他の Content Moderator のクイックスタートの [Visual Studio ソリューションをダウンロードする](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: a8ba667e6af316620d7a8530f29a6640edada13d
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a40f4489e63c30a101dd708b5a175c25788fb04b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42146254"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976756"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>デバイスの X.509 証明書を展開する方法
 
@@ -41,7 +41,7 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
 サード パーティから証明書を取得した場合は、その証明書を展開する方法を確認する必要があります。 そのプロセスはサード パーティとの取り決めの中に含まれている場合もあれば、別個のサービスとして提供される場合もあります。 
 
-デバイスの証明書を自身で管理している場合は、証明書を更新するための独自のパイプラインをビルドする必要があります。 新旧のリーフ証明書が同じ共通名 (CN) を持つようにします。 同じ CN を持つことで、デバイスは重複した登録コードを作成することなく、再プロビジョニングできます。
+デバイスの証明書を自身で管理している場合は、証明書を更新するための独自のパイプラインをビルドする必要があります。 新旧のリーフ証明書が同じ共通名 (CN) を持つようにします。 同じ CN を持つことで、デバイスは重複した登録コードを作成することなく、再プロビジョニングできます。 
 
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>証明書を IoT ハブに展開する
@@ -78,10 +78,13 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
     ![個々の登録を管理する](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
-3. プロビジョニング サービスからセキュリティが侵害された証明書が削除されたら、IoT ハブに移動し、侵害された証明書に関連付けられているデバイスの登録を削除します。     
+3. プロビジョニング サービスからセキュリティが侵害された証明書が削除されても、その証明書に対するデバイスの登録が存在する限り、証明書を使用して IoT ハブにデバイスを接続できます。 これに対処するには 2 つの方法があります。 
+
+    1 番目の方法は、手動で IoT ハブに移動し、直ちに、侵害された証明書に関連付けられているデバイスの登録を削除することです。 その後、更新された証明書でデバイスが再びプロビジョニングされると、新しいデバイス登録が作成されます。     
 
     ![IoT ハブのデバイスの登録を削除する](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
+    2 番目の方法は、再プロビジョニングのサポートを使用して、同じ IoT ハブにデバイスを再度プロビジョニングすることです。 この方法を使用すると、IoT ハブ上のデバイス登録に対する証明書を置き換えることができます。 詳しくは、「[How to reprovision devices](how-to-reprovision.md)」(デバイスを再プロビジョニングする方法) をご覧ください。
 
 ## <a name="individual-enrollments-and-certificate-expiration"></a>個々の登録と証明書の期限切れ
 
@@ -118,9 +121,14 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
 
     ![新しいルート CA 証明書を選択する](./media/how-to-roll-certificates/select-new-root-cert.png)
 
-6. プロビジョニング サービスからセキュリティが侵害された証明書が削除されたら、侵害されたデバイスの登録が含まれるリンクされた IoT ハブに移動し、侵害された証明書に関連付けられている登録を削除します。
+6. プロビジョニング サービスからセキュリティが侵害された証明書が削除されても、その証明書に対するデバイスの登録が存在する限り、証明書を使用して IoT ハブにデバイスを接続できます。 これに対処するには 2 つの方法があります。 
+
+    1 番目の方法は、手動で IoT ハブに移動し、直ちに、侵害された証明書に関連付けられているデバイスの登録を削除することです。 その後、更新された証明書でデバイスが再びプロビジョニングされると、それぞれに対する新しいデバイス登録が作成されます。     
 
     ![IoT ハブのデバイスの登録を削除する](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    2 番目の方法は、再プロビジョニングのサポートを使用して、同じ IoT ハブにデバイスを再度プロビジョニングすることです。 この方法を使用すると、IoT ハブ上のデバイス登録に対する証明書を置き換えることができます。 詳しくは、「[How to reprovision devices](how-to-reprovision.md)」(デバイスを再プロビジョニングする方法) をご覧ください。
+
 
 
 #### <a name="update-compromised-intermediate-certificates"></a>侵害された中間証明書を更新する
@@ -134,9 +142,13 @@ IoT ソリューションのライフサイクルの間に、証明書を展開�
     ![個々の登録を管理する](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
-3. プロビジョニング サービスからセキュリティが侵害された証明書が削除されたら、そのデバイスの登録が含まれるリンクされた IoT ハブに移動し、侵害された証明書に関連付けられている登録を削除します。
+3. プロビジョニング サービスからセキュリティが侵害された証明書が削除されても、その証明書に対するデバイスの登録が存在する限り、証明書を使用して IoT ハブにデバイスを接続できます。 これに対処するには 2 つの方法があります。 
+
+    1 番目の方法は、手動で IoT ハブに移動し、直ちに、侵害された証明書に関連付けられているデバイスの登録を削除することです。 その後、更新された証明書でデバイスが再びプロビジョニングされると、それぞれに対する新しいデバイス登録が作成されます。     
 
     ![IoT ハブのデバイスの登録を削除する](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    2 番目の方法は、再プロビジョニングのサポートを使用して、同じ IoT ハブにデバイスを再度プロビジョニングすることです。 この方法を使用すると、IoT ハブ上のデバイス登録に対する証明書を置き換えることができます。 詳しくは、「[How to reprovision devices](how-to-reprovision.md)」(デバイスを再プロビジョニングする方法) をご覧ください。
 
 
 ## <a name="enrollment-groups-and-certificate-expiration"></a>登録グループと証明書の期限切れ

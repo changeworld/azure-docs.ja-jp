@@ -1,5 +1,5 @@
 ---
-title: チュートリアル - Azure Service Fabric mesh Web アプリケーションをデバッグする | Microsoft Docs
+title: チュートリアル - ローカル開発クラスター内で実行している Azure Service Fabric Mesh Web アプリケーションをデバッグする
 description: このチュートリアルでは、ローカル クラスター上で実行している Azure Service Fabric mesh アプリケーションをデバッグします。
 services: service-fabric-mesh
 documentationcenter: .net
@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/18/2018
 ms.author: twhitney
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c519d24a8401823039f3d6598276890ec6498bbc
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 27e4c8f6ac24d40a6afacf10175413745f5151d9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41917745"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997014"
 ---
-# <a name="tutorial-debug-a-service-fabric-mesh-web-application"></a>チュートリアル: Service Fabric mesh Web アプリケーションをデバッグする
+# <a name="tutorial-debug-a-service-fabric-mesh-application-running-in-your-local-development-cluster"></a>チュートリアル: ローカル開発クラスター内で実行している Service Fabric Mesh アプリケーションをデバッグする
 
-このチュートリアルはシリーズの第 2 部です。ローカル開発クラスター上の Azure Service Fabric mesh Web アプリケーションをデバッグする方法について説明します。
+このチュートリアルはシリーズの第 2 部です。ローカル開発クラスター上の Azure Service Fabric Mesh アプリをビルドしてデバッグする方法について説明します。
 
 このチュートリアルでは、次の事項について説明します。
 
@@ -34,9 +34,11 @@ ms.locfileid: "41917745"
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
-> * [Service Fabric mesh アプリケーションをビルドする](service-fabric-mesh-tutorial-create-dotnetcore.md)
-> * アプリをローカルでデバッグする
-> * [アプリを Azure に発行する](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Visual Studio で Service Fabric Mesh アプリを作成する](service-fabric-mesh-tutorial-create-dotnetcore.md)
+> * ローカル開発クラスター内で実行されている Service Fabric Mesh アプリをデバッグする
+> * [Service Fabric Mesh アプリをデプロイする](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> * [Service Fabric Mesh アプリをアップグレードする](service-fabric-mesh-tutorial-upgrade.md)
+> * [Service Fabric Mesh リソースをクリーンアップする](service-fabric-mesh-tutorial-cleanup-resources.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
 
@@ -105,4 +107,4 @@ Visual Studio で Service Fabric mesh アプリケーションをデバッグす
 
 次のチュートリアルに進みます。
 > [!div class="nextstepaction"]
-> [Service Fabric mesh Web アプリケーションを発行する](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+> [Service Fabric Mesh アプリをデプロイする](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

@@ -1,24 +1,26 @@
 ---
-title: Azure Content Moderator - .NET を使用して画像をモデレートする | Microsoft Docs
-description: Azure Content Moderator SDK for .NET を使用して画像をモデレートする方法
+title: 'クイック スタート: .NET を使用して画像をモデレートする - Content Moderator'
+titlesuffix: Azure Cognitive Services
+description: Content Moderator SDK for .NET を使用して画像をモデレートする方法
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
-ms.date: 01/04/2018
+ms.topic: quickstart
+ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: cc2329c233029a1ff6bd82da3d090c4e98a8bac8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d89d9b8a2e3b00155e82cc28105007ab39fc549c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373173"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226166"
 ---
-# <a name="moderate-images-using-net"></a>.NET を使用して画像をモデレートする
+# <a name="quickstart-moderate-images-using-net"></a>クイック スタート: .NET を使用して画像をモデレートする
 
-この記事では、Content Moderator SDK for .NET を初めて使用して次の処理を行うときに役立つ情報とコード サンプルを提供します。 
+この記事では、[Content Moderator SDK for .NET](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) を使用して次の操作をすぐに開始するために役立つ情報とコード サンプルを提供します。 
+
 - 成人向けまたはわいせつなコンテンツの画像を確認する
 - 画像のテキストの検出と抽出
 - 画像内の顔を検出する
@@ -27,8 +29,8 @@ ms.locfileid: "35373173"
 
 ## <a name="sign-up-for-content-moderator-services"></a>Content Moderator サービスにサインアップする
 
-REST API や SDK を通じて Content Moderator サービスを使用するには、サブスクリプション キーが必要です。
-キーを入手する方法については、[クイック スタート](quick-start.md)を参照してください。
+REST API や SDK を通じて Content Moderator サービスを使用するには、API キーと、お使いの API アカウントのリージョンが必要です。
+Content Moderator にサインアップして両方を入手する方法については、[クイック スタート](quick-start.md)を参照してください。
 
 ## <a name="create-your-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
@@ -38,7 +40,6 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
 
 1. このプロジェクトをソリューションのシングル スタートアップ プロジェクトとして選択します。
 
-1. [Content Moderator クライアント ヘルパーのクイックスタート](content-moderator-helper-quickstart-dotnet.md)で作成した **ModeratorHelper** プロジェクト アセンブリへの参照を追加します。
 
 ### <a name="install-required-packages"></a>必要なパッケージをインストールする
 
@@ -52,14 +53,63 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
 
 プログラムの using ステートメントを変更します。
 
+    using Microsoft.Azure.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator;
     using Microsoft.CognitiveServices.ContentModerator.Models;
-    using ModeratorHelper;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Threading;
+
+### <a name="create-the-content-moderator-client"></a>Content Moderator クライアントを作成する
+
+次のコードを追加して、サブスクリプションの Content Moderator クライアントを作成します。
+
+> [!IMPORTANT]
+> **AzureRegion** および **CMSubscriptionKey** フィールドをリージョン識別子とサブスクリプション キーの値で更新します。
+
+    /// <summary>
+    /// Wraps the creation and configuration of a Content Moderator client.
+    /// </summary>
+    /// <remarks>This class library contains insecure code. If you adapt this 
+    /// code for use in production, use a secure method of storing and using
+    /// your Content Moderator subscription key.</remarks>
+    public static class Clients
+    {
+        /// <summary>
+        /// The region/location for your Content Moderator account, 
+        /// for example, westus.
+        /// </summary>
+        private static readonly string AzureRegion = "YOUR API REGION";
+
+        /// <summary>
+        /// The base URL fragment for Content Moderator calls.
+        /// </summary>
+        private static readonly string AzureBaseURL =
+            $"https://{AzureRegion}.api.cognitive.microsoft.com";
+
+        /// <summary>
+        /// Your Content Moderator subscription key.
+        /// </summary>
+        private static readonly string CMSubscriptionKey = "YOUR API KEY";
+
+        /// <summary>
+        /// Returns a new Content Moderator client for your subscription.
+        /// </summary>
+        /// <returns>The new client.</returns>
+        /// <remarks>The <see cref="ContentModeratorClient"/> is disposable.
+        /// When you have finished using the client,
+        /// you should dispose of it either directly or indirectly. </remarks>
+        public static ContentModeratorClient NewClient()
+        {
+            // Create and initialize an instance of the Content Moderator API wrapper.
+            ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
+
+            client.Endpoint = AzureBaseURL;
+            return client;
+        }
+    }
 
 ### <a name="initialize-application-specific-settings"></a>アプリケーション固有の設定を初期化する
 
@@ -403,4 +453,4 @@ REST API や SDK を通じて Content Moderator サービスを使用するに�
 
 ## <a name="next-steps---get-the-source-code"></a>次の手順 - ソース コードを入手する
 
-.NET 用のこのクイック スタートや他の Content Moderator のクイック スタートの [Visual Studio ソリューションをダウンロード](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)し、統合を開始します。
+.NET 用のこのクイック スタートや他の Content Moderator のクイック スタートのために、[Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) と [Visual Studio ソリューション](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator)を入手し、統合を開始します。

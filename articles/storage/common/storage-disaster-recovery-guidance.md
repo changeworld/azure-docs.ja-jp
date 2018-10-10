@@ -6,15 +6,15 @@ author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/15/2018
+ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bca4b13ea2a003ea428351bcff44944630387e1b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 20db515e99f3e7535ba7b60bbd84f050e33b7acb
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528012"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033925"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Azure Storage の停止が発生した場合の対処方法
 Microsoft では、サービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス停止が 1 つまたは複数のリージョンで発生することがあります。 こうした状況はほとんど発生しませんが、発生した場合は、次のガイダンスに従って対応してください。
@@ -43,18 +43,16 @@ Azure サービスの状態は、 [Azure サービス正常性ダッシュボー
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Storage のフェールオーバーが発生した場合
 [Geo 冗長ストレージ (GRS)](storage-redundancy-grs.md) または[読み取りアクセス geo 冗長ストレージ (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (推奨) を選択した場合、Azure Storage では 2 つのリージョン (プライマリおよびセカンダリ) でデータの持続性が維持されます。 この両方のリージョンでは、データのレプリカが常に複数保持されています。
 
-地域的な災害がプライマリ リージョンに影響する場合、Microsoft では、まず、そのリージョン内のサービスを復元しようとします。 災害の性質とその影響によっては、まれではありますが、プライマリ リージョンを復元できないことがあります。 その場合は geo フェールオーバーを実行します。 リージョン間のデータ レプリケーションは非同期プロセスのため、遅延が発生することがあり、セカンダリ リージョンにレプリケートされていない変更は失われる可能性があります。 レプリケーション ステータスの詳細情報は、 [ストレージ アカウントの "最終同期時刻"](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) で確認することができます。
+地域的な災害がプライマリ リージョンに影響する場合、Microsoft では、まず、そのリージョン内のサービスを復元して、RTO と RPO の最適な組み合わせを提供しようとします。 災害の性質とその影響によっては、まれではありますが、プライマリ リージョンを復元できないことがあります。 その場合は geo フェールオーバーを実行します。 リージョン間のデータ レプリケーションは非同期プロセスのため、遅延が発生し、セカンダリ リージョンにレプリケートされていない変更は失われる可能性があります。
 
 ストレージ geo フェールオーバーに関する注意事項をいくつか次に示します。
 
-* ストレージ geo フェールオーバーは、Azure Storage チームによってのみトリガーされます。顧客の操作は不要です。
-* BLOB、テーブル、キュー、およびファイルに対する既存のストレージ サービス エンドポイントは、フェールオーバー後も同じままです。プライマリ リージョンからセカンダリ リージョンに切り替えるには、Microsoft 提供の DNS エントリを更新する必要があります。  Microsoft は、geo フェールオーバー プロセスの一環として自動的にこの更新を実行します。
+* ストレージ geo フェールオーバーは、Azure Storage チームによってのみトリガーされます。顧客の操作は不要です。 フェールオーバーは、Azure Storage チームが、同じリージョンにデータを復元するすべてのオプションを使い果たしたときにトリガーされ、これにより RTO と RPO の最適な組み合わせが提供されます。
+* BLOB、テーブル、キュー、およびファイルに対する既存のストレージ サービス エンドポイントは、フェールオーバー後も同じままです。プライマリ リージョンからセカンダリ リージョンに切り替えるには、Microsoft 提供の DNS エントリを更新する必要があります。 Microsoft は、geo フェールオーバー プロセスの一環として自動的にこの更新を実行します。
 * geo フェールオーバー前と geo フェールオーバー中は、障害の影響によりストレージ アカウントに書き込みアクセスできません。ただし、ストレージ アカウントが RA-GRS として構成されている場合、セカンダリ リージョンからの読み取りは引き続き可能です。
-* geo フェールオーバーが完了し、DNS の変更が反映されたら、ストレージ アカウントに再度読み取り/書き込みアクセスできるようになります。ポイント先は、以前のセカンダリ エンドポイントです。 
-* ストレージ アカウントに GRS または RA-GRS を構成した場合は、書き込みアクセス権があることに注意してください。 
-* 詳細情報は、[ストレージ アカウントの "最終 geo フェールオーバー時刻"](https://msdn.microsoft.com/library/azure/ee460802.aspx) で確認できます。
-* フェールオーバー後、ストレージ アカウントは完全に機能しますが、"低下" 状態になります。実際は、geo レプリケーションを利用できないスタンドアロン リージョンでホストされているためです。 このリスクを軽減するために、Microsoft では、元のプライマリ リージョンを復元してから、geo フェールバックを実行し、元の状態を復元します。 元のプライマリ リージョンが復旧できない場合は、別のセカンダリ リージョンを割り当てます。
-  Azure Storage geo レプリケーションのインフラストラクチャの詳細については、[冗長オプションと RA-GRS](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) に関する Storage チーム ブログの記事をご覧ください。
+* geo フェールオーバーが完了し、DNS の変更が反映されたとき、GRS または RA-GRS があると、お使いのストレージ アカウントへの読み取り/書き込みアクセスが復元されます。 以前セカンダリ エンドポイントだったエンドポイントが、プライマリ エンドポイントになります。 
+* プライマリの場所の状態を確認し、お使いのストレージ アカウントに対する最終 geo フェールオーバー時刻を照会できます。 詳細については、「[Storage Accounts - Get Properties (ストレージ アカウント - プロパティの取得)](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/getproperties)」を参照してください。
+* フェールオーバー後、ストレージ アカウントは完全に機能しますが、"低下" 状態になります。これは geo レプリケーションを利用できないスタンドアロン リージョンでホストされているためです。 このリスクを軽減するために、Microsoft では、元のプライマリ リージョンを復元してから、geo フェールバックを実行し、元の状態を復元します。 元のプライマリ リージョンが復旧できない場合は、別のセカンダリ リージョンを割り当てます。
 
 ## <a name="best-practices-for-protecting-your-data"></a>データ保護のベスト プラクティス
 ストレージ データを定期的にバックアップするための推奨アプローチがいくつかあります。

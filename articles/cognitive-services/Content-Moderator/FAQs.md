@@ -1,20 +1,21 @@
 ---
-title: Azure Content Moderator の FAQ | Microsoft Docs
+title: よく寄せられる質問 - Content Moderator
+titlesuffix: Azure Cognitive Services
 description: Content Moderator に関してよく寄せられる質問とその回答を紹介しています。
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: faq
 ms.date: 11/21/2016
 ms.author: sajagtap
-ms.openlocfilehash: 7bf6c67bd0a83d9455d14253f4f4b2becafd29ba
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ce61a89069caf90695a2cb6c54f61de8fa8cb112
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373021"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226935"
 ---
 # <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
 

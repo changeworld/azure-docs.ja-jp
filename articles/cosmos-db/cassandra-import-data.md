@@ -1,105 +1,113 @@
 ---
-title: Azure Cosmos DB への Cassandra データのインポート | Microsoft Docs
-description: CQL Copy コマンドを使用して Azure Cosmos DB に Cassandra データをコピーする方法を説明します。
+title: Azure Cosmos DB Cassandra API アカウントにデータを移行する
+description: CQL Copy コマンドと Spark を使用して、Apache Cassandra から Azure Cosmos DB Cassandra API にデータをコピーする方法について説明します。
 services: cosmos-db
 author: kanshiG
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
-ms.devlang: dotnet
-ms.topic: tutorial
-ms.date: 11/15/2017
 ms.author: govindk
-ms.custom: mvc
-ms.openlocfilehash: f8c84cc501ea6a979d90d254abeceea8fcc6bddf
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.topic: tutorial
+ms.date: 09/24/2018
+ms.reviewer: sngun
+ms.openlocfilehash: 0bf5e47513ded4b2c65e7291db497e53a42776a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053021"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976178"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API アカウントにデータを移行する
 
-このチュートリアルでは、Cassandra Query Language (CQL) の COPY コマンドを使用して Azure Cosmos DB に Cassandra データをインポートする手順について説明します。 
+このチュートリアルでは、Apache Cassandra のデータを Azure Cosmos DB Cassandra API に移行する方法を説明します。 
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
-> * 接続文字列の取得
-> * cqlsh COPY コマンドを使用したデータのインポート
-> * Spark コネクタを使用したインポート 
+> * 移行の計画
+> * 移行の前提条件
+> * cqlsh COPY コマンドを使用してデータを移行する
+> * Spark を使用してデータを移行する 
 
-# <a name="prerequisites"></a>前提条件
+## <a name="plan-for-migration"></a>移行の計画
 
-* [Apache Cassandra](http://cassandra.apache.org/download/) をインストールし、*cqlsh*　が存在することを明確に確認します。  
+Azure Cosmos DB Cassandra API にデータを移行する前に、ワークロードに必要なスループットを推定する必要があります。 一般に、CRUD 操作で必要な平均スループットで始めた後、抽出、変換、読み込み (ETL) またはスパイク性の操作に必要な追加スループットを含めることをお勧めします。 移行を計画するには次の詳細情報が必要です。 
 
-* スループットを上げます。データの移行にかかる時間は、テーブルに対してプロビジョニングしたスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 [Azure Portal](https://portal.azure.com) でスループットを上げることの詳細については、「[Azure Cosmos DB コンテナーのスループットの設定](set-throughput.md)」を参照してください。  
+* **既存データ サイズまたは推定データ サイズ:** 最小データベース サイズとスループット要件を定義します。 新しいアプリケーションのデータ サイズを推定する場合は、データが行に一様に分布しているものと見なし、データ サイズを掛けることによって値を推定できます。 
 
-* SSL を有効にする: Azure Cosmos DB には、厳密なセキュリティ要件と基準が存在します。 アカウントを操作するときは、SSL が有効になっていることを確認してください。 SSH で CQL を使用する場合は、SSL の情報を指定するオプションがあります。 
+* **必要なスループット:** 読み取り (クエリ/取得) および書き込み (更新/削除/挿入) の概算スループット レート。 この値は、必要な要求ユニット数と安定した状態データのサイズを計算するために必要です。  
 
-## <a name="get-your-connection-string"></a>接続文字列を取得する
+* **スキーマの取得:** cqlsh を使用して既存の Cassandra クラスターに接続し、Cassandra からスキーマをエクスポートします。 
 
-1. [Azure Portal](https://portal.azure.com) で、左側の **[Azure Cosmos DB]** をクリックします。
+  ```bash
+  cqlsh [IP] "-e DESC SCHEMA" > orig_schema.cql
+  ```
 
-2. **[サブスクリプション]** ウィンドウで、自分のアカウント名を選択します。
+既存のワークロードの要件を明らかにした後は、収集したスループットの要件に従って Azure Cosmos DB アカウント、データベース、およびコンテナーを作成する必要があります。  
 
-3. **[接続文字列]** をクリックします。 右側のウィンドウに、自分のアカウントに正常に接続するために必要なすべての情報が表示されます。
+* **操作の RU 料金の決定:** 任意の Azure Cosmos DB Cassandra API SDK を使用して、RU を決定できます。 この例では、.NET バージョンでの RU 負担取得方法を示します。
 
-    ![接続文字列のページ](./media/cassandra-import-data/keys.png)
+  ```csharp
+  var tableInsertStatement = table.Insert(sampleEntity);
+  var insertResult = await tableInsertStatement.ExecuteAsync();
 
-## <a name="migrate-data-by-using-cqlsh-copy"></a>cqlsh COPY を使用してデータを移行する
+  foreach (string key in insertResult.Info.IncomingPayload)
+    {
+       byte[] valueInBytes = customPayload[key];
+       string value = Encoding.UTF8.GetString(valueInBytes);
+       Console.WriteLine($"CustomPayload:  {key}: {value}");
+    }
+  ```
 
-Cassandra API で使用するために Cassandra データを Azure Cosmos DB にインポートするには、次のガイダンスに従います。
+* **必要なスループットの割り当て:** Azure Cosmos DB は、要件の増大に従って、ストレージとスループットを自動的にスケーリングできます。 [Azure Cosmos DB の要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)を使って、スループットのニーズを推定することができます。 
 
-1. ポータルからの接続情報を使用して cqhsh にログインします。
-2. [CQL COPY コマンド](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh)を使用してローカル データを Apache Cassandra API エンドポイントにコピーします。 待機時間の問題を最小限にするため、ソースとターゲットが同じデータ センター内にあるようにします。
+## <a name="prerequisites-for-migration"></a>移行の前提条件
 
-### <a name="steps-to-move-data-with-cqlsh"></a>cqlsh でデータを移動する手順
+* **Azure Cosmos DB Cassandra API アカウントでテーブルを作成する:** データの移行を開始する前に、Azure portal または cqlsh からすべてのテーブルを事前に作成します。
 
-1. テーブルを事前に作成し、拡大縮小します。
-    * 既定では、Azure Cosmos DB は毎秒 1,000 の要求ユニット (RU/秒) で新しい Cassandra API テーブルをプロビジョニングします (CQL ベースの作成は 400 RU/秒でプロビジョニングされます)。 cqlsh を使用して移行を開始する前に、[Azure Portal](https://portal.azure.com) または cqlsh からすべてのテーブルを事前作成します。 
+* **スループットを上げる:** データの移行にかかる時間は、Azure Cosmos DB のテーブルに対してプロビジョニングしたスループットの量に依存します。 移行の間だけスループットを高くします。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 移行が完了したら、コストを節約するためにスループットを下げます。 スループットの引き上げについて詳しくは、Azure Cosmos DB コンテナーに対する[スループットの設定](set-throughput.md)に関するページをご覧ください。 また、Azure Cosmos DB アカウントをソース データベースと同じリージョンにすることもお勧めします。 
 
-    * 移行の間は、[Azure Portal](https://portal.azure.com) から、テーブルのスループットを既定のスループット (400 または 1000 RU/秒) から 10,000 RU/秒に上げます。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 時間単位で課金される Azure Cosmos DB では、移行直後にスループットを低くすることでコストを削減できます。
+* **SSL を有効にする:** Azure Cosmos DB には、厳密なセキュリティ要件と基準が存在します。 アカウントを操作するときは、SSL が有効になっていることを確認してください。 SSH で CQL を使用する場合は、SSL の情報を指定するオプションがあります。
 
-2. 1 つの操作の RU 負担を決定します。 これは、Azure Cosmos DB の任意の Cassandra API SDK を使用して行えます。 この例では、.NET バージョンでの RU 負担取得方法を示します。 
+## <a name="options-to-migrate-data"></a>データを移行するためのオプション
 
-    ```csharp
-    var tableInsertStatement = table.Insert(sampleEntity);
-    var insertResult = await tableInsertStatement.ExecuteAsync();
+次のオプションを使用して、既存の Cassandra ワークロードから Azure Cosmos DB にデータを移動できます。
 
-    foreach (string key in insertResult.Info.IncomingPayload)
-            {
-                byte[] valueInBytes = customPayload[key];
-                string value = Encoding.UTF8.GetString(valueInBytes);
-                Console.WriteLine($"CustomPayload:  {key}: {value}");
-            }
- 
-    ``` 
+* [cqlsh COPY コマンドの使用](#using-cqlsh-copy-command)  
+* [Spark の使用](#using-spark) 
 
-3. マシンから Azure Cosmos DB サービスまでの待ち時間を決定します。 Azure データ センター内の場合、待機時間は 1 桁の短い方のミリ秒数にする必要があります。 Azure データ センター外の場合は、psping または azurespeed.com を使用して、マシンの場所からのおおよその待機時間を取得できます。   
+## <a name="migrate-data-using-cqlsh-copy-command"></a>cqlsh COPY コマンドを使用してデータを移行する
 
-4. 良好なパフォーマンスを提供するパラメーター (NUMPROCESS、INGESTRATE、MAXBATCHSIZE、または MINBATCHSIZE) の適切な値を計算します。 
+Azure Cosmos DB Cassandra API アカウントにローカル データをコピーするには、[CQL COPY コマンド](http://cassandra.apache.org/doc/latest/tools/cqlsh.html#cqlsh)を使用します。 データをコピーするには、次の手順を使用します。
 
-5. 最後の移行コマンドを実行します。 このコマンドの実行は、接続文字列情報を使用して cqlsh を開始したことを前提としています。
+1. Cassandra API アカウントの接続文字列情報を取得します。
+
+   * [Azure portal](https://portal.azure.com) にサインインし、Azure Cosmos DB アカウントに移動します。
+
+   * **[接続文字列]** ウィンドウを開きます。このウィンドウには、cqlsh から Cassandra API アカウントに接続するために必要なすべての情報が含まれます。
+
+2. ポータルからの接続情報を使用して cqhsh にサインインします。
+
+3. CQL COPY コマンドを使用して、ローカル データを Cassandra API アカウントにコピーします。
 
    ```bash
    COPY exampleks.tablename FROM filefolderx/*.csv 
    ```
 
-## <a name="migrate-data-by-using-spark"></a>Spark を使用してデータを移行する
+## <a name="migrate-data-using-spark"></a>Spark を使用してデータを移行する 
 
-Azure 仮想マシン内の既存のクラスターに置かれたデータの場合、Spark を使用してデータをインポートすることも、選択可能なオプションです。 これには、Spark を 1 回または定期的な取り込みの仲介者として設定する必要があります。 
+Spark を使用して Azure Cosmos DB Cassandra API にデータを移行するには、次の手順を使用します。
+
+- [Azure Databricks](cassandra-spark-databricks.md) または [HDInsight クラスター](cassandra-spark-hdinsight.md)をプロビジョニングします 
+
+- [テーブル コピー操作](cassandra-spark-table-copy-ops.md)を使用して、ターゲットの Cassandra API エンドポイントにデータを移動します 
+
+Azure 仮想マシンまたは他のクラウドの既存クラスターにデータが存在する場合は、Spark ジョブを使用したデータの移行が推奨されるオプションです。 これには、Spark を 1 回または定期的な取り込みの仲介者として設定する必要があります。 オンプレミスと Azure の間に ExpressRoute 接続を使用することで、この移行を速くできます。 
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、以下のタスクを完了する方法について学習しました。
-
-> [!div class="checklist"]
-> * 接続文字列の取得
-> * cql Copy コマンドを使用したデータのインポート
-> * Spark コネクタを使用したインポート 
-
-これで、「概念」セクションに進み、Azure Cosmos DB の詳細について学習できるようになりました。 
+このチュートリアルでは、Azure Cosmos DB Cassandra API アカウントにデータを移行する方法を学びました。 これで、概念セクションに進み、Azure Cosmos DB の詳細について学習できるようになりました。 
 
 > [!div class="nextstepaction"]
->[Azure Cosmos DB の調整可能なデータの一貫性レベル](../cosmos-db/consistency-levels.md)
+> [Azure Cosmos DB の調整可能なデータの一貫性レベル](../cosmos-db/consistency-levels.md)
+
+

@@ -3,18 +3,22 @@ title: Azure SQL Database サービスとは | Microsoft Docs
 description: 'SQL Database の概要: クラウド内の Microsoft のリレーショナル データベース管理システム (RDBMS) の技術の詳細と機能について説明します。'
 keywords: sql の概要,sql の紹介,sql database とは
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.topic: overview
-ms.date: 09/07/2018
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 6e793c0227300b836c0a14b4252eeaf63c1bc949
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 21350fe9a44ad801204b8288f3c49eda82ca6343
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054582"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163186"
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは 
 
@@ -23,7 +27,7 @@ SQL Database は、リレーショナル データ、JSON、空間、XML など�
 Azure SQL Database には、そのデータベースのデプロイに関して次の選択肢があります。
 - 単一データベースとしてデプロイし、それ専用の各種リソースを論理サーバーを介して管理する。 
 - プールされているデータベースとして[エラスティック プール](sql-database-elastic-pool.md)にデプロイし、各種の共有リソースを論理サーバーを介して管理する。
-- システム データベースとユーザー データベースを含んだデータベースのコレクションに含める形でデプロイする。このコレクションは、[マネージド インスタンス](sql-database-managed-instance.md) (パブリック プレビュー) と呼ばれ、各種リソースを共有します。
+- システム データベースとユーザー データベースを含んだデータベースのコレクションに含める形でデプロイする。このコレクションは、[マネージド インスタンス](sql-database-managed-instance.md)と呼ばれ、各種リソースを共有します
 
 これらのデプロイの選択肢を次の図に示します。
 
@@ -37,29 +41,27 @@ SQL Database は、そのコード ベースを [Microsoft SQL Server データ�
 > [!IMPORTANT]
 > SQL Database と SQL Server の機能の違いについては、[SQL の機能](sql-database-features.md)に関するページを参照してください。 
 
-SQL Database は、パフォーマンスを予測できる複数のサービス レベルで提供され、ダウンタイムがない動的なスケーラビリティ、組み込みのインテリジェントな最適化、グローバルなスケーラビリティと可用性、および高度なセキュリティ オプションを備えています。それらはすべてほぼ管理する必要がありません。 これらの機能を使用すると、貴重な時間とリソースを仮想マシンとインフラストラクチャの管理に奪われることなく、迅速なアプリケーション開発や、製品化に要する時間の短縮化に専念することができます。 SQL Database サービスは、現在、世界中の 38 か所のデータ センターで提供されていますが、新しいデータ センターが定期的に開設されているため、ご利用のデータベースを最寄りのデータ センターで実行することができます。
-
-> [!NOTE]
-> SQL Database Managed Instance は現在プレビュー段階であり、単一サービス レベルでの利用に限られます。 詳細については、[SQL Database Managed Instance](sql-database-managed-instance.md) に関するページを参照してください。
->
+SQL Database は、パフォーマンスを予測できる複数のリソースの種類、サービス レベル、およびコンピューティング サイズで提供され、ダウンタイムがない動的なスケーラビリティ、組み込みのインテリジェントな最適化、グローバルなスケーラビリティと可用性、および高度なセキュリティ オプションを備えています。それらはすべてほぼ管理する必要がありません。 これらの機能を使用すると、貴重な時間とリソースを仮想マシンとインフラストラクチャの管理に奪われることなく、迅速なアプリケーション開発や、製品化に要する時間の短縮化に専念することができます。 SQL Database サービスは、現在、世界中の 38 か所のデータ センターで提供されていますが、新しいデータ センターが定期的に開設されているため、ご利用のデータベースを最寄りのデータ センターで実行することができます。
 
 ## <a name="scalable-performance-and-pools"></a>スケーラブルなパフォーマンスとプール
 
-SQL Database では、各データベースは互いに分離しており、移植可能です。各データベースは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)または[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)内に独自のサービス レベルを備え、パフォーマンス レベルを保証しています。 SQL Database には、さまざまなニーズに対応するための複数のパフォーマンス レベルがあり、リソースを最大限に利用してコストの節約するためにデータベースをプールすることができます。
+SQL Database では、各データベースは互いに分離しており、移植可能です。各データベースは、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)または[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)内に独自のサービス レベルを備え、コンピューティング サイズを保証しています。 SQL Database には、さまざまなニーズに対応するための複数のコンピューティング サイズがあり、リソースを最大限に利用してコストの節約するためにデータベースをプールすることができます。
 
-SQL Database Managed Instance では、各インスタンスが他のインスタンスから分離され、リソースが保証されます。 詳細については、[SQL Database Managed Instance](sql-database-managed-instance.md) に関するページを参照してください 
+- [SQL Database Managed Instance](sql-database-managed-instance.md) では、各インスタンスが他のインスタンスから分離され、リソースが保証されます。 詳細については、[SQL Database Managed Instance](sql-database-managed-instance.md) に関するページを参照してください。
+- 仮想コア購入モデルの[ハイパースケール サービス レベル](sql-database-hyperscale.md) (プレビュー) では、高速バックアップと復元機能を使用して 100 TB にスケーリングできます。
 
 ### <a name="adjust-performance-and-scale-without-downtime"></a>ダウンタイムなしでのパフォーマンスの調整とスケール
 
 SQL Database には、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)と[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md) があります。 
-- DTU ベースの購入モデルには、データベースの軽量ワークロードから重量ワークロードまでをサポートする、計算リソース、メモリ リソース、および IO リソースの組み合わせがそれぞれ異なる、Basic、Standard、Premium の 3 つのサービス レベルがあります。 各レベルにおけるパフォーマンス レベルでは、これらのリソースのさまざまな組み合わせが提供され、ストレージ リソースを追加することができます。
+- DTU ベースの購入モデルには、データベースの軽量ワークロードから重量ワークロードまでをサポートする、計算リソース、メモリ リソース、および IO リソースの組み合わせがそれぞれ異なる、Basic、Standard、Premium の 3 つのサービス レベルがあります。 各レベルにおけるコンピューティング サイズでは、これらのリソースのさまざまな組み合わせが提供され、ストレージ リソースを追加することができます。
 - 仮想コアベースの購入モデルでは、仮想コアの数、メモリの量、およびストレージの量と速度を選択できます。
 
-最初にアプリを月数ドルの小さな 1 つのデータベースでビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを変更することができます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+最初に General Purpose サービス レベルで月額の安い小さなシングル データベースにアプリをビルドし、後でいつでもソリューションのニーズに合わせて手動またはプログラムでサービス レベルを Business Critical サービス レベルに変更できます。 アプリにも顧客にもダウンタイムを発生させずにパフォーマンスを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+
+> [!IMPORTANT]
+> General Purpose または Business Critical サービス レベルから[ハイパースケール サービス レベル](sql-database-hyperscale.md)にスケーリングすることはできません。 ただし、ハイパースケール サービス レベル内でパフォーマンス レベルを変更することはできます。
 
 動的スケーラビリティは自動スケールとは異なります。 自動スケールは、基準に基づいてサービスが自動的にスケールされるのに対し、動的スケーラビリティでは、ダウンタイムなしで手動スケールすることができます。 単一の Azure SQL Database は、手動の動的スケーラビリティをサポートしますが、自動スケールはサポートしていません。 *自動*操作を増やすには、エラスティック プールの使用を検討してください。エラスティック プールを使用すると、データベースが個々のデータベースのニーズに基づいてプール内のリソースを共有できます。 ただし、単一の Azure SQL Database のスケーラビリティを自動化できるスクリプトがあります。 例については、「[PowerShell を使用して単一の SQL データベースを監視およびスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md)」を参照してください。 
-
-SQL Database Managed Instance はプレビュー段階であり、単一サービス レベルでの提供となります。 詳細については、[SQL Database Managed Instance](sql-database-managed-instance.md) に関するページを参照してください
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>リソース使用率を最大化するためのエラスティック プール
 
@@ -86,13 +88,13 @@ SQL Database Managed Instance はプレビュー段階であり、単一サー�
 
 - **Azure Storage**: 大量のテレメトリを低価格でアーカイブします
 - **Azure Event Hub**: SQL Database のテレメトリを、カスタム監視ソリューションまたはホット パイプラインと統合します
-- **Azure Log Analytics**: レポート機能、アラート機能、および緩和機能を備えた組み込みの監視ソリューション用です。 これは、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) の機能です
+- **Azure Log Analytics**: レポート機能、アラート機能、および緩和機能を備えた組み込みの監視ソリューション用です。 Azure Log Analytics は、[Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) の機能です
 
     ![アーキテクチャ](./media/sql-database-metrics-diag-logging/architecture.png)
 
 ## <a name="availability-capabilities"></a>可用性に関する機能
 
-Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% のサービス レベル アグリーメント [(SLA)](http://azure.microsoft.com/support/legal/sla/) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。 すべての Azure SQL Database は Azure プラットフォームによって完全に管理され、データ損失ゼロおよび高いデータ可用性 (%) が保証されます。 基になるハードウェア、ソフトウェア、ネットワークの障害リスクへの対応や、パッチの適用、バックアップ、レプリケーション、障害検出、バグ修正、フェールオーバー、データベースのアップグレードなど、各種メンテナンス タスクは、Azure によって自動的に処理されます。 Standard の可用性は、計算レイヤーとストレージ レイヤーを分離することで得られます。 Premium の可用性は、計算とストレージを単一ノードに統合してパフォーマンスを確保し、そのうえで、Always On 可用性グループを導入することによって得られます。 Azure SQL Database の高可用性機能の詳細については、[SQL Database の可用性](sql-database-high-availability.md)に関するページを参照してください。 さらに、SQL Database には、次のような、組み込みの[ビジネス継続性とグローバルなスケーラビリティ](sql-database-business-continuity.md)の機能を備えています。
+Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% のサービス レベル アグリーメント [(SLA)](http://azure.microsoft.com/support/legal/sla/) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。 すべての Azure SQL Database は Azure プラットフォームによって完全に管理され、データ損失ゼロおよび高いデータ可用性 (%) が保証されます。 基になるハードウェア、ソフトウェア、ネットワークの障害リスクへの対応や、パッチの適用、バックアップ、レプリケーション、障害検出、バグ修正、フェールオーバー、データベースのアップグレードなど、各種メンテナンス タスクは、Azure によって自動的に処理されます。 Standard の可用性は、計算レイヤーとストレージ レイヤーを分離することで得られます。 Premium の可用性は、計算とストレージを単一ノードに統合してパフォーマンスを確保し、そのうえで、Always On 可用性グループを導入することによって得られます。 Azure SQL Database の高可用性機能の詳細については、[SQL Database の可用性](sql-database-high-availability.md)に関するページをご覧ください。 さらに、SQL Database には、次のような、組み込みの[ビジネス継続性とグローバルなスケーラビリティ](sql-database-business-continuity.md)の機能を備えています。
 
 - **[自動バックアップ](sql-database-automated-backups.md)**: SQL Database は、完全バックアップ、差分バックアップ、およびトランザクション ログ バックアップを自動的に実行します。
 - **[ポイントインタイム リストア](sql-database-recovery-using-backups.md)**: SQL Database は、自動バックアップのリテンション期間内の任意の時点への回復をサポートします。
@@ -177,8 +179,8 @@ SQL Database は、MacOS、Linux、および Windows での Python、Java、Node
 - すぐに始めるには、次のクイック スタートをご覧ください。
 
   - [Azure Portal で SQL データベースを作成する](sql-database-get-started-portal.md)  
-  - [Azure CLI で SQL データベースを作成する](sql-database-cli-samples.md)
-  - [PowerShell を使用して SQL データベースを作成する](sql-database-powershell-samples.md)
+  - [Azure CLI で SQL データベースを作成する](sql-database-get-started-cli.md)
+  - [PowerShell を使用して SQL データベースを作成する](sql-database-get-started-powershell.md)
 
 - Azure CLI と PowerShell の各種サンプルについては、以下のページをご覧ください。
   - [Azure SQL Database 用の Azure CLI サンプル](sql-database-cli-samples.md)

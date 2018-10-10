@@ -1,21 +1,21 @@
 ---
-title: LUIS アプリでのパターン テンプレートの追加 | Microsoft Docs
-titleSuffix: Azure
+title: LUIS アプリで発話の代わりにパターン テンプレートを追加する
+titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) アプリケーションでパターン テンプレートを追加して予測精度を改善する方法を説明します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: luis
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 8926ce48a8426aa667787f7bbe104e27e1a68669
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c97092385cdc28ba6e4d916ae8039f065f97d31d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124686"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030816"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>パターンを追加して予測精度を改善する方法
 LUIS アプリでエンドポイント発話を受信したら、パターンの[概念](luis-concept-patterns.md)を使用して、単語の順序や選択にパターンが現れる発話の予測精度を改善します。 パターンでは[エンティティ](luis-concept-entity-types.md)とそのロールを使用して、特定のパターン構文によってデータが抽出されます。 

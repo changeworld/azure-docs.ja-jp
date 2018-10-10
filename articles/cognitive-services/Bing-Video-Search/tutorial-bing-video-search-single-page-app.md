@@ -1,20 +1,21 @@
 ---
-title: Bing の単一ページ Video Search アプリ | Microsoft Docs
+title: 'チュートリアル: シングルページ Bing Video Search アプリを構築する'
+titlesuffix: Azure Cognitive Services
 description: シングルページ Web アプリケーションで Bing Video Search API を使用する方法を説明します。
 services: cognitive-services
 author: mikedodaro
-manager: ronakshah
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/01/2017
-ms.author: v-gedod
-ms.openlocfilehash: 55f662721e007e03c8f43f19d8b905e755cfe1d8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: a7c6646a69aec11797d354da28baca669b802ab0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377053"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226604"
 ---
 # <a name="tutorial-single-page-video-search-app"></a>チュートリアル: 単一ページ Video Search アプリ
 Bing Video Search API を使うと、Web を検索して、検索クエリに関連するビデオの結果を取得できます。 このチュートリアルでは、Bing Search API を使用して検索結果をページに表示する単一ページの Web アプリケーションを構築します。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。

@@ -1,25 +1,27 @@
 ---
-title: 'Computer Vision API C# クイック スタート SDK: 画像の分析 | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Computer Vision Windows C# クライアント ライブラリを使って、画像を分析します。
+title: 'クイック スタート: 画像の分析 - SDK、C# - Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Computer Vision Windows C# クライアント ライブラリを使って、画像を分析します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 3ff3a4702ab0b1fb663ee896f268065caf043809
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.date: 09/14/2018
+ms.author: nolachar
+ms.openlocfilehash: 0315b1c90eeae27d30a237aea76e66465818fba4
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43772330"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056086"
 ---
-# <a name="quickstart-analyze-an-image---sdk-c35"></a>クイック スタート: 画像の分析 - SDK、C&#35;
+# <a name="quickstart-analyze-an-image-using-the-computer-vision-sdk-and-c"></a>クイック スタート: Computer Vision SDK と C# による画像の分析
 
 このクイック スタートでは、Computer Vision Windows クライアント ライブラリを使ってローカル画像とリモート画像の両方を分析し、視覚的特徴を抽出します。
+
+サンプルのソース コードは、[Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,7 +50,7 @@ ms.locfileid: "43772330"
     1. **[Microsoft.Azure.CognitiveServices.Vision.ComputerVision]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
 1. `Program.cs` を以下のコードに置き換えます。
 1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. 必要に応じて、サブスクリプション キーを取得した場所に `computerVision.AzureRegion = AzureRegions.Westcentralus` を変更します。
+1. 必要に応じて、`computerVision.Endpoint` をサブスクリプション キーに関連付けられている Azure リージョンに変更します。
 1. `<LocalImage>` を、ローカル画像のパスとファイル名に置き換えます。
 1. 必要に応じて、`remoteImageUrl` を別の画像に設定します。
 1. プログラムを実行します。
@@ -86,33 +88,33 @@ namespace ImageAnalyze
 
         static void Main(string[] args)
         {
-            ComputerVisionAPI computerVision = new ComputerVisionAPI(
-                new ApiKeyServiceClientCredentials(subscriptionKey), 
+            ComputerVisionClient computerVision = new ComputerVisionClient(
+                new ApiKeyServiceClientCredentials(subscriptionKey),
                 new System.Net.Http.DelegatingHandler[] { });
 
             // You must use the same region as you used to get your subscription
             // keys. For example, if you got your subscription keys from westus,
-            // replace "Westcentralus" with "Westus".
+            // replace "westcentralus" with "westus".
             //
             // Free trial subscription keys are generated in the westcentralus
             // region. If you use a free trial subscription key, you shouldn't
             // need to change the region.
 
             // Specify the Azure region
-            computerVision.AzureRegion = AzureRegions.Westcentralus;
+            computerVision.Endpoint = "https://westcentralus.api.cognitive.microsoft.com";
 
             Console.WriteLine("Images being analyzed ...");
             var t1 = AnalyzeRemoteAsync(computerVision, remoteImageUrl);
             var t2 = AnalyzeLocalAsync(computerVision, localImagePath);
 
             Task.WhenAll(t1, t2).Wait(5000);
-            Console.WriteLine("Press any key to exit");
+            Console.WriteLine("Press ENTER to exit");
             Console.ReadLine();
         }
 
         // Analyze a remote image
         private static async Task AnalyzeRemoteAsync(
-            ComputerVisionAPI computerVision, string imageUrl)
+            ComputerVisionClient computerVision, string imageUrl)
         {
             if (!Uri.IsWellFormedUriString(imageUrl, UriKind.Absolute))
             {
@@ -128,7 +130,7 @@ namespace ImageAnalyze
 
         // Analyze a local image
         private static async Task AnalyzeLocalAsync(
-            ComputerVisionAPI computerVision, string imagePath)
+            ComputerVisionClient computerVision, string imagePath)
         {
             if (!File.Exists(imagePath))
             {
@@ -159,9 +161,9 @@ namespace ImageAnalyze
 
 成功した場合、各画像について最も関連性の高いキャプションが応答に表示されます。
 
-生の JSON 出力の例については、[C# を使ったローカル画像の分析に関する API クイック スタート](../QuickStarts/CSharp-analyze.md#analyze-image-response)をご覧ください。
+生の JSON 出力の例については、[C# を使ったローカル画像の分析に関する API クイック スタート](../QuickStarts/CSharp-analyze.md#examine-the-response)をご覧ください。
 
-```cmd
+```
 http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg
 a large waterfall over a rocky cliff
 ```

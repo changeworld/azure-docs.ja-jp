@@ -1,5 +1,5 @@
 ---
-title: アイドル タイムアウト時のロード バランサーの TCP リセット | Microsoft Docs
+title: アイドル時のロード バランサーの TCP リセット | Microsoft Docs
 description: アイドル タイムアウト時に双方向 TCP RST パケットを使用するロード バランサー
 services: load-balancer
 documentationcenter: na
@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/16/2018
+ms.date: 09/26/2018
 ms.author: kumud
-ms.openlocfilehash: 6ec8754e9a6e1afb9dcb400215570d08ebd4342b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0b533a48e94db880f23d42decc5c3fb39a27e5ac
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973730"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395646"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-timeout-public-preview"></a>アイドル タイムアウト時に TCP リセットを使用するロード バランサー (パブリック プレビュー)
+# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>アイドル時に TCP リセットを使用するロード バランサー (パブリック プレビュー)
 
 [Standard Load Balancer](load-balancer-standard-overview.md) を使用して、各構成可能なアイドル タイムアウトに対して双方向 TCP リセット (TCP RST パケット) を使用することで、シナリオに合わせたさらに予測可能なアプリケーションの動作を作成できます。  ロード バランサーの既定の動作では、フローのアイドル タイムアウトに達したときに、警告なしでフローを削除します。
+
+![ロード バランサー TCP リセット](media/load-balancer-tcp-reset/load-balancer-tcp-reset.png)
 
 >[!NOTE] 
 >アイドル タイムアウト時の TCP リセットを使用するロード バランサーは、現時点ではパブリック プレビューとして、限定された一連の[リージョン](#regions)で使用できます。 このプレビュー版はサービス レベル アグリーメントなしで提供されています。運用環境のワークロードに使用することはお勧めできません。 特定の機能はサポート対象ではなく、機能が制限されることがあります。 詳しくは、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」をご覧ください。
@@ -73,6 +75,8 @@ API バージョン 2018-07-01 を使用して、規則ごとにアイドル タ
 
 | リージョン |
 |---|
+| 東南アジア |
+| 西ヨーロッパ |
 | 米国東部 2 |
 | 英国北部 |
 | 米国西部 |
@@ -87,4 +91,4 @@ API バージョン 2018-07-01 を使用して、規則ごとにアイドル タ
 ## <a name="next-steps"></a>次の手順
 
 - [Standard Load Balancer](load-balancer-standard-overview.md) を参照します。
-- [送信の規則](https://aka.ms/lboutboundrules)を参照します。
+- [送信の規則](load-balancer-outbound-rules-overview.md)を参照します。

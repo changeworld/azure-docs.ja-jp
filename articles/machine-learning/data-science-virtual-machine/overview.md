@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 661c757cda2f70b03d136f3726c7afe633fbbe04
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 62c8ff225b9c649afa7532ad5edfdd627e573d81
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42023083"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032233"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure データ サイエンス仮想マシンの概要
 
@@ -137,3 +137,5 @@ ms.locfileid: "42023083"
 * Ubuntu DSVM の作成方法とその使用方法の詳細については、「[Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング](dsvm-ubuntu-intro.md)」を参照してください。 CentOS DSVM の作成方法とその使用方法の詳細については、「[Azure での Linux CentOS データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md)」を参照してください。
 * Linux VM (CentOS および Ubuntu) で一般的なデータ サイエンス タスクを実行する方法がわかるチュートリアルについては、「[Linux データ サイエンス仮想マシンでのデータ サイエンス](linux-dsvm-walkthrough.md)」をご覧ください。
 
+## <a name="next-steps"></a>次の手順
+[Azure での R 開発者向けガイド](../r-developers-guide.md)

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 4/03/2018
+ms.date: 9/11/2018
 ms.author: srrengar
-ms.openlocfilehash: 90a28162fb1f455c154ad4d2da7beac6bc785bc7
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: a73a288852eea713623b65324853761e10fad282
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36301038"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220468"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>クラスターに Log Analytics を設定する
 
@@ -36,7 +36,7 @@ ms.locfileid: "36301038"
 
 2. 「**Service Fabric Analytics**」を検索します。 表示されるリソースを選択します。
 
-3. **[作成]** を選択します。
+3. **作成**を選択します。
 
     ![Marketplace の Service Fabric Analytics](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
@@ -76,117 +76,22 @@ Windows を使っている場合は、次の手順に進み、クラスター �
 
 Resource Manager テンプレートを使用してクラスターをデプロイすると、テンプレートは新しい Log Analytics ワークスペースを作成し、Service Fabric ソリューションをそのワークスペースに追加し、適切なストレージ テーブルからデータを読み取るように構成します。
 
-[このサンプル テンプレート](https://github.com/krnese/azure-quickstart-templates/tree/master/service-fabric-oms)を使用し、要件に合うように変更できます。
+[このサンプル テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure)を使用し、要件に合うように変更できます。 このテンプレートは、次の処理を実行します
 
-次のように変更します。
-1. `omsWorkspaceName` と `omsRegion` をパラメーターに追加します。具体的には、*template.json* ファイルで定義されたパラメーターに、次のスニペットを追加します。 既定の値は、環境に応じて自由に変更してください。 また、新しい 2 つのパラメーターを *parameters.json* ファイルに追加して、その値をリソースのデプロイ向けに定義する必要もあります。
-    
-    ```json
-    "omsWorkspacename": {
-        "type": "string",
-        "defaultValue": "sfomsworkspace",
-        "metadata": {
-            "description": "Name of your Log Analytics Workspace"
-        }
-    },
-    "omsRegion": {
-        "type": "string",
-        "defaultValue": "East US",
-        "allowedValues": [
-            "West Europe",
-            "East US",
-            "Southeast Asia"
-        ],
-        "metadata": {
-            "description": "Specify the Azure Region for your Log Analytics workspace"
-        }
-    }
-    ```
+* 新しい 5 ノードの Service Fabric クラスターを作成する
+* Log Analytics ワークスペースと Service Fabric ソリューションを作成する
+* 2 つサンプル パフォーマンス カウンターを収集して、ワークスペースに送信するように OMS エージェントを構成する
+* Service Fabric を収集するように WAD を構成し、Azure sストレージ テーブル (WADServiceFabric*EventTable) に送信する
+* これらのテーブルからイベントを読み取るように Log Analytics ワークスペースを構成する
 
-    `omsRegion` の値は、特定の一連の値に一致している必要があります。 お使いのクラスターのデプロイに最も近いものを選択してください。
 
-2. Log Analytics に任意のアプリケーション ログを送信する場合は、`applicationDiagnosticsStorageAccountType` と `applicationDiagnosticsStorageAccountName` がテンプレートのパラメーターに含まれていることを最初に確認します。 含まれていない場合は、それらを変数のセクションに追加し、必要に応じてその値を編集します。 前の形式に従い、パラメーターとして含めることもできます。
+テンプレートを Resource Manager アップグレードとしてクラスターにデプロイするには、AzureRM PowerShell モジュールで `New-AzureRmResourceGroupDeployment` API を使用します。 以下はコマンド例です。
 
-    ```json
-    "applicationDiagnosticsStorageAccountType": "Standard_LRS",
-    "applicationDiagnosticsStorageAccountName": "[toLower(concat('oms', uniqueString(resourceGroup().id), '3' ))]"
-    ```
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -TemplateFile "<templatefile>.json" 
+``` 
 
-3. テンプレートの変数に Service Fabric ソリューションを追加します。
-
-    ```json
-    "solution": "[Concat('ServiceFabric', '(', parameters('omsWorkspacename'), ')')]",
-    "solutionName": "ServiceFabric"
-    ```
-
-4. リソース セクションの最後で、Service Fabric クラスター リソースの宣言の後に、次を追加します。
-
-    ```json
-    {
-        "apiVersion": "2015-11-01-preview",
-        "location": "[parameters('omsRegion')]",
-        "name": "[parameters('omsWorkspacename')]",
-        "type": "Microsoft.OperationalInsights/workspaces",
-        "properties": {
-            "sku": {
-                "name": "Free"
-            }
-        },
-        "resources": [
-            {
-                "apiVersion": "2015-11-01-preview",
-                "name": "[concat(parameters('applicationDiagnosticsStorageAccountName'),parameters('omsWorkspacename'))]",
-                "type": "storageinsightconfigs",
-                "dependsOn": [
-                    "[concat('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]",
-                    "[concat('Microsoft.Storage/storageAccounts/', parameters('applicationDiagnosticsStorageAccountName'))]"
-                ],
-                "properties": {
-                    "containers": [ ],
-                    "tables": [
-                        "WADServiceFabric*EventTable",
-                        "WADWindowsEventLogsTable",
-                        "WADETWEventTable"
-                    ],
-                    "storageAccount": {
-                        "id": "[resourceId('Microsoft.Storage/storageaccounts/', parameters('applicationDiagnosticsStorageAccountName'))]",
-                        "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('applicationDiagnosticsStorageAccountName')),'2015-06-15').key1]"
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "apiVersion": "2015-11-01-preview",
-        "location": "[parameters('omsRegion')]",
-        "name": "[variables('solution')]",
-        "type": "Microsoft.OperationsManagement/solutions",
-        "id": "[resourceId('Microsoft.OperationsManagement/solutions/', variables('solution'))]",
-        "dependsOn": [
-            "[concat('Microsoft.OperationalInsights/workspaces/', parameters('OMSWorkspacename'))]"
-        ],
-        "properties": {
-            "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('omsWorkspacename'))]"
-        },
-        "plan": {
-            "name": "[variables('solution')]",
-            "publisher": "Microsoft",
-            "product": "[Concat('OMSGallery/', variables('solutionName'))]",
-            "promotionCode": ""
-        }
-    }
-    ```
-    
-    > [!NOTE]
-    > 変数として `applicationDiagnosticsStorageAccountName` を追加した場合は、それに対する各参照を `parameters('applicationDiagnosticsStorageAccountName')` ではなく `variables('applicationDiagnosticsStorageAccountName')` に変更してください。
-
-5. AzureRM PowerShell モジュールで `New-AzureRmResourceGroupDeployment` API を使用することで、Resource Manager アップグレードとしてクラスターにテンプレートをデプロイします。 以下はコマンド例です。
-
-    ```powershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName "sfcluster1" -TemplateFile "<path>\template.json" -TemplateParameterFile "<path>\parameters.json"
-    ``` 
-
-    Azure Resource Manager は、このコマンドが既存のリソースに対する更新であると検出します。 既存のデプロイで使用されているテンプレートと、指定された新しいテンプレートの間の変更点だけを処理します。
+Azure Resource Manager は、このコマンドが既存のリソースに対する更新であると検出します。 既存のデプロイで使用されているテンプレートと、指定された新しいテンプレートの間の変更点だけを処理します。
 
 ## <a name="deploy-log-analytics-by-using-azure-powershell"></a>Azure PowerShell を使用して Log Analytics をデプロイする
 

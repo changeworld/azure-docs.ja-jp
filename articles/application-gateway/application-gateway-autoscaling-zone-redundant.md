@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.custom: ''
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: victorh
-ms.openlocfilehash: 5d051ed049964af708056e2963f04cb478c15906
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ab1c9405042de02183b8742fa940a3a5a482923a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951510"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165231"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)
 
@@ -54,6 +54,7 @@ Application Gateway と Web アプリケーション ファイアウォール (W
 |Web アプリケーション ファイアウォールの自動スケール|WAF は、自動スケール モードをサポートしていません。 固定容量モードはサポートされています。|
 
 ## <a name="next-steps"></a>次の手順
+- [Azure PowerShell を使用して、自動スケーリングの予約済み IP アドレスを持つゾーン冗長アプリケーション ゲートウェイを作成します](tutorial-autoscale-ps.md)
 - [Application Gateway](overview.md) の詳細を参照します。
 - [Azure Firewall](../firewall/overview.md) の詳細を参照します。 
 

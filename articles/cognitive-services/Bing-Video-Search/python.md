@@ -1,35 +1,37 @@
 ---
-title: Azure Cognitive Services、Bing Video Search API の Python のクイック スタート | Microsoft Docs
-description: Azure 上の Cognitive Services で Bing Video Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing Video Search (Python)'
+titlesuffix: Azure Cognitive Services
+description: Bing Video Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: ce4356f05e69540bc3bc3241e2ec1751ff7a7276
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 797eb476aa3386949b08efb957edf48a97e40d6b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374016"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220016"
 ---
-# <a name="quickstart-for-bing-video-search-api-with-python"></a>Python での Bing Video Search API のクイック スタート
+# <a name="quickstart-bing-video-search-api-with-python"></a>クイック スタート: Python での Bing Video Search API
 
 このチュートリアルでは、Azure 上の Microsoft Cognitive Services の一部である Bing Video Search API の使用方法を示します。 API の技術的な詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference)に関するページをご覧ください。
 
 バインダーの起動バッジをクリックして、次の例を [MyBinder](https://mybinder.org) 上で Jupyter Notebook として実行できます。 
 
-[![バインダー](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingVideoSearchAPI.ipynb)
 
 
 ## <a name="prerequisites"></a>前提条件
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search API** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search APIs** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
 
 ## <a name="running-the-walkthrough"></a>チュートリアルの実行
 
-まず、`subscription_key` を Bing API サービス用のお使いの API キーに設定します。
+まず、`subscription_key` に Bing API サービス用の API キーを設定します。
 
 
 ```python
@@ -37,7 +39,7 @@ subscription_key = None
 assert subscription_key
 ```
 
-次に、`search_url` エンドポイントが正しいことを確認します。 このドキュメントの作成時点では、Bing Search API にはエンドポイントは 1 つだけ使用されます。 承認エラーが発生した場合は、Azure ダッシュ ボードで Bing Search エンドポイントに対してこの値をダブルチェックしてください。
+次に、`search_url` エンドポイントが正しいことを確認します。 このドキュメントの作成時点では、Bing Search APIs にはエンドポイントは 1 つだけ使用されます。 承認エラーが発生した場合は、Azure ダッシュ ボードで Bing Search エンドポイントに対してこの値をダブルチェックしてください。
 
 
 ```python
@@ -80,4 +82,4 @@ HTML(search_results["value"][0]["embedHtml"].replace("autoplay=1","autoplay=0"))
 
 ## <a name="see-also"></a>関連項目 
 
- [ビデオの Web の検索](search-the-web.md) [お試しください](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)
+ [Web でビデオを検索する](search-the-web.md)[試してみる](https://azure.microsoft.com/services/cognitive-services/bing-video-search-api/)

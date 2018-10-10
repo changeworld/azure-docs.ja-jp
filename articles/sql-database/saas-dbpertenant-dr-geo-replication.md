@@ -1,21 +1,23 @@
 ---
 title: Azure SQL Database の Geo レプリケーションを使用した SaaS アプリのディザスター リカバリー | Microsoft Docs
 description: 障害が発生した場合に Azure SQL Database の geo レプリカを使用して、マルチテナント SaaS アプリを復旧する方法について説明します
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: AyoOlubeko
-manager: craigg
 ms.service: sql-database
-ms.custom: saas apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/09/2018
+author: AyoOlubeko
 ms.author: ayolubek
-ms.openlocfilehash: f2ad92118c00f08e5dcdd4a8a12f007308b3fbd1
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.reviewer: sstein
+manager: craigg
+ms.date: 04/09/2018
+ms.openlocfilehash: f24c76fb6b7ca24573a97aa122659fe5ca019550
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34645795"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056337"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>データベースの geo レプリケーションを使用したマルチテナント SaaS アプリケーションのディザスター リカバリー
 
@@ -51,9 +53,9 @@ geo レプリケーションに基づく DR プランは、3 つの部分から�
 すべての部分を慎重に検討する必要があり、規模が大きい場合は特に重要です。 全体として、計画では複数の目標を達成する必要があります。
 
 * セットアップ
-    * 復旧リージョン内にミラー イメージ環境を確立して維持します。 この復旧環境にエラスティック プールを作成し、スタンドアロンのデータベースをレプリケートして、復旧リージョンに容量を確保します。 この環境の維持には、プロビジョニングされた新しいテナント データベースのレプリケートが含まれます。  
+    * 復旧リージョン内にミラー イメージ環境を確立して維持します。 この復旧環境にエラスティック プールを作成し、任意の単一データベースをレプリケートして、復旧リージョンに容量を確保します。 この環境の維持には、プロビジョニングされた新しいテナント データベースのレプリケートが含まれます。  
 * 復旧
-    * スケールダウンされた復旧環境を使用して日常的なコストを最小にする場合は、プールとスタンドアロン データベースをスケールアップして復旧リージョンに完全な運用容量を取得する必要があります
+    * スケールダウンされた復旧環境を使用して日常的なコストを最小にする場合は、プールと単一データベースをスケールアップして復旧リージョンに完全な運用容量を取得する必要があります
     * できるだけ早く復旧リージョンで新しいテナントのプロビジョニングを有効にします  
     * 優先順でテナントが復元されるように最適化します
     * 可能であれば、並列で手順を実行して、できる限り速くテナントがオンラインになるように最適化します
@@ -158,7 +160,7 @@ Azure リージョンのマップで、元のリージョンのプライマリ�
 
 1. フェールオーバーする前に、復旧カタログの既存のすべてのテナントをオフラインとマークして、テナント データベースにアクセスできないようにします。
 
-1. 復旧リージョンのすべてのエラスティック プールとレプリケートされたスタンドアロン データベースの構成を更新し、元のリージョンでの構成をミラーリングします (このタスクは、復旧環境のプールまたはレプリケートされたデータベースが、コスト削減のために通常運用中にスケールダウンされている場合にのみ必要です)。
+1. 復旧リージョンのすべてのエラスティック プールとレプリケートされた単一データベースの構成を更新し、元のリージョンでの構成をミラーリングします。 (このタスクは、復旧環境のプールまたはレプリケートされたデータベースが、コスト削減のために通常運用中にスケールダウンされている場合にのみ必要です)。
 
 1. 復旧リージョンで Web アプリの Traffic Manager エンドポイントを有効にします。 このエンドポイントを有効にすると、アプリケーションは新しいテナントをプロビジョニングできるようになります。 この段階では、既存のテナントはまだオフラインです。
 
@@ -202,7 +204,7 @@ Traffic Manager でアプリケーション エンドポイントが無効にな
  
     ![オフラインのイベント ハブ](media/saas-dbpertenant-dr-geo-replication/events-hub-offlinemode.png) 
 
-    * オフラインのテナントの [イベント] ページを直接開いた場合は、"テナントはオフライン" であることを示す通知が表示されます。 たとえば、Contoso Concert Hall がオフラインのときに、http://events.wingtip-dpt.&lt;ユーザー&gt;.trafficmanager.net/contosoconcerthall を開いてみます。![Contoso オフライン ページ](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
+    * オフラインのテナントの [イベント] ページを直接開いた場合は、"テナントはオフライン" であることを示す通知が表示されます。 たとえば、Contoso Concert Hall がオフラインのときに、 http://events.wingtip-dpt.&lt;ユーザー&gt;.trafficmanager.net/contosoconcerthall を開いてみます。![Contoso オフライン ページ](media/saas-dbpertenant-dr-geo-replication/dr-in-progress-offline-contosoconcerthall.png) 
 
 ### <a name="provision-a-new-tenant-in-the-recovery-region"></a>復旧リージョン内に新しいテナントをプロビジョニングする
 既存のすべてのテナント データベースがフェールオーバーされる前であっても、復旧リージョンで新しいテナントをプロビジョニングできます。  

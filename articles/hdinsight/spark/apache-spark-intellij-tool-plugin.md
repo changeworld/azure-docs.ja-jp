@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk
-ms.openlocfilehash: ed0118584d51f08d64a88dc1e7e6e2ba5f95cb0a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 07c2b506007daccd53a8b06a43064e6e274ac43b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042593"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433360"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
 
@@ -181,8 +181,12 @@ Ambari マネージド ユーザー名を使用して、通常の HDInsight ク�
 
         ![[Select Main Class]\(メイン クラスの選択\) ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
 
-      * この例のアプリケーション コードでは、コマンドライン引数を必要とせず、JAR またはファイルを参照することもないので、残りのボックスは空のままでかまいません。 すべての情報を指定すると、ダイアログ ボックスは次の図のようになります。
+      * 必要な情報を提供できます。 **ジョブ構成**については、既定値があります。 キーの詳細については、[Apache Livy REST API](http://livy.incubator.apache.org./docs/latest/rest-api.html) を参照できます。 **[コマンドライン引数]**、**[Referenced JARs]\(参照される JAR\)** および **[Referenced Files]\(参照されるファイル\)** は、次の図のようになる必要があります。 **[Referenced JARs]\(参照される JAR\)** と **[Referenced Files]\(参照されるファイル\)** の詳細については、[Spark 構成](https://spark.apache.org/docs/latest/configuration.html#runtime-environment)を参照できます。 **[Referenced JARs]\(参照される JAR\)** と **[Referenced Files]\(参照されるファイル\)** を問題なく動作させるには、送信するクラスターにリソースを先にアップロードしておく必要があります。 [クラスターにリソースをアップロードする方法](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer)に関する記事を参照してください。送信ダイアログ ボックスは、次の図のようになります。
         
+        ![[Spark Submission]\(Spark 送信\) ダイアログ ボックスのジョブ構成の意味](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
+
+        ![[Spark Submission]\(Spark 送信\) ダイアログ ボックスの jar ファイルの意味](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
+
         ![[Spark Submission]\(Spark 送信\) ダイアログ ボックス](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
 
    c. ウィンドウの下部にある **[Spark Submission (Spark 送信)]** タブで、進行状況の表示が開始されます。 **[Spark Submission]\(Spark 送信\)** ウィンドウにある赤いボタンをクリックして、アプリケーションを停止することもできます。
@@ -207,7 +211,7 @@ Azure Toolkit for IntelliJ を使用してさまざまな操作を実行でき�
 1. 右側のウィンドウの **[Spark Job View (Spark ジョブ ビュー)]** タブに、クラスター上で実行されていたすべてのアプリケーションが表示されます。 詳細情報を確認したいアプリケーションの名前を選択します。
 
     ![Application details](./media/apache-spark-intellij-tool-plugin/view-job-logs.png)
-    >Note
+    >メモ
     >
 
 1. 実行中のジョブの基本情報が表示するには、ジョブ グラフにマウス ポインターを合わせます。 各ジョブについて生成されるステージのグラフと情報を確認するには、ジョブ グラフ上のノードを選択します。

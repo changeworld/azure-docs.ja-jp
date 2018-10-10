@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/22/2018
-ms.openlocfilehash: ba00d859dcfa968dcff7b321d571d61aea98463f
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 54eef98d85337f14ff9e10837f97ccd28a58afdf
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246832"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223459"
 ---
 # <a name="install-azure-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Azure Stream Analytics ツールのインストール
 Azure Stream Analytics ツールでは、Visual Studio 2017、2015、2013 がサポートされます。 この記事では、ツールのインストールとアンインストールの方法を説明します。
@@ -34,6 +34,9 @@ Azure Stream Analytics ツールでは、Visual Studio 2017、2015、2013 がサ
 
 ![[Azure の開発] ワークロードが選択される](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-2017-install-02.png)
 
+* [ツール] メニューの **[拡張機能と更新プログラム]** を選択します。 インストールされた拡張機能で Azure Data Lake および Stream Analytics ツールを見つけて、**[更新]** をクリックし、最新の拡張機能をインストールします。 
+
+![Visual Studio の拡張機能と更新プログラム](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-tools-for-vs-extensions-updates.png)
 
 ### <a name="visual-studio-2013-2015"></a>Visual Studio 2013、2015
 * Visual Studio 2015 または Visual Studio 2013 Update 4 をインストールします。 Enterprise (Ultimate/Premium)、Professional、Community の各エディションがサポートされています。 Express エディションはサポートされていません。 
@@ -43,7 +46,9 @@ Azure Stream Analytics ツールでは、Visual Studio 2017、2015、2013 がサ
 ## <a name="update"></a>アップデート
 
 ### <a name="visual-studio-2017"></a>Visual Studio 2017
-新しいバージョンの通知が Visual Studio の通知に表示されます。 
+新しいバージョンの通知が Visual Studio の通知に表示されます。
+
+![Visual Studio の新しいバージョンの通知](./media/stream-analytics-tools-for-visual-studio-install/stream-analytics-new-version-reminder-vs-tools.png)
 
 ### <a name="visual-studio-2013-and-visual-studio-2015"></a>Visual Studio 2013 および Visual Studio 2015
 インストールされている Visual Studio の Stream Analytics ツールによって、新しいバージョンが自動的に確認されます。 最新バージョンをインストールするにはポップアップ ウィンドウの指示に従います。 

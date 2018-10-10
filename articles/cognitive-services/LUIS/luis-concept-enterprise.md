@@ -1,20 +1,21 @@
 ---
-title: LUIS アプリのエンタープライズの概念 - Azure | Microsoft Docs
+title: LUIS アプリのエンタープライズの概念 - Language Understanding
+titleSuffix: Azure Cognitive Services
 description: 大規模な LUIS アプリの設計概念を理解します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/05/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fda4a089866950688d88f9f47988c1540abe1cc0
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3782874ac69b299e24cf1555b290a9d2d86b6285
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224862"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038342"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>LUIS アプリのエンタープライズ戦略
 エンタープライズ アプリについて以下の設計戦略を確認してください。
@@ -50,9 +51,7 @@ LUIS アプリで、1 つのキーのクォータで許可されているより�
 
 ![ディスパッチ アーキテクチャの概念図](./media/luis-concept-enterprise/dispatch-architecture.png)
 
-LUIS では、親ドメインは **V ディスパッチ** アプリと呼ばれます。 
-
-![ディスパッチ ツールによって作成された LUIS アプリを含む LUIS アプリ リストのスクリーン ショット](./media/luis-concept-enterprise/dispatch.png)
+LUIS では、親ドメインはアプリ一覧で `Dispatch` という名前のバージョンで示されます。 
 
 チャットボットは発話を受信し、予測するために親 LUIS アプリに送信します。 親アプリで予測されたトップの意図によって、次に呼び出す子 LUIS アプリが決定されます。 チャットボットは、より具体的な予測を得るために、発話を子アプリに送信します。
 
@@ -66,4 +65,4 @@ LUIS では、親ドメインは **V ディスパッチ** アプリと呼ばれ�
 * [バッチをテストする](luis-how-to-batch-test.md)方法を学習します。
 
 [dispatcher-application-tutorial]: https://aka.ms/bot-dispatch
-[dispatch-tool]: https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch
+[dispatch-tool]: https://aka.ms/dispatch-tool

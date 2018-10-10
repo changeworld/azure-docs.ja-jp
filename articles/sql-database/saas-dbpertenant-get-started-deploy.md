@@ -1,21 +1,23 @@
 ---
 title: テナント単位データベース SaaS チュートリアル - Azure SQL Database | Microsoft Docs
 description: Azure SQL Database を使用してテナント単位データベース パターンおよびその他の SaaS パターンを示す、Wingtip Tickets SaaS マルチ テナント アプリケーションをデプロイして操作します。
-keywords: SQL データベース チュートリアル
 services: sql-database
-author: MightyPen
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MightyPen
 ms.author: genemi
-ms.openlocfilehash: cc3e870d67f3c38fe4173275b6fd210d0c4ee05a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.reviewer: sstein
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 77e3cdcbd18a4a5313160b947ce278a75f3e3de3
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423561"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056388"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションをデプロイして操作する
 
@@ -242,7 +244,7 @@ Events Hub を更新すると、新しいテナントが一覧に表示されま
 - **Resource utilization** というラベルが付いた最初のグラフは、プールの eDTU 使用率を示しています。
 - 2 番目のグラフは、プール内のアクティブな上位 5 つのデータベースの eDTU 使用率を示しています。
 
-この 2 つのグラフは、エラスティック プールと SQL Database が予測できない SaaS アプリケーション ワークロードに適していることを示しています。 これらのグラフは、4 つのデータベースがそれぞれ 40 eDTU までバーストしても、50 eDTU プールで問題なくサポートされていることを示しています。 50 eDTU プールは、さらに重いワークロードをサポートできます。 データベースがスタンドアロン データベースとしてプロビジョニングされた場合は、バーストをサポートするために S2 (50 DTU) が必要になります。 4 つのスタンドアロン S2 データベースのコストは、プールの価格の約 3 倍になります。 実際の環境では、SQL Database のお客様用に最大 500 のデータベースが 200 eDTU のプールで実行されます。 詳細については、[パフォーマンスの監視](saas-dbpertenant-performance-monitoring.md)に関するチュートリアルを参照してください。
+この 2 つのグラフは、エラスティック プールと SQL Database が予測できない SaaS アプリケーション ワークロードに適していることを示しています。 これらのグラフは、4 つのデータベースがそれぞれ 40 eDTU までバーストしても、50 eDTU プールで問題なくサポートされていることを示しています。 50 eDTU プールは、さらに重いワークロードをサポートできます。 データベースが単一データベースとしてプロビジョニングされた場合は、バーストをサポートするために S2 (50 DTU) が必要になります。 4 つのスタンドアロン S2 データベースのコストは、プールの価格の約 3 倍になります。 実際の環境では、SQL Database のお客様用に最大 500 のデータベースが 200 eDTU のプールで実行されます。 詳細については、[パフォーマンスの監視](saas-dbpertenant-performance-monitoring.md)に関するチュートリアルを参照してください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

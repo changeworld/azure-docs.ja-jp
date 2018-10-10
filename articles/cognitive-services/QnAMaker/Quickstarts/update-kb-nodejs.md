@@ -1,24 +1,27 @@
 ---
-title: ナレッジ ベースの更新 - Node.js のクイック スタート - Azure Cognitive Services | Microsoft Docs
+title: 'クイック スタート: Node.js によるナレッジ ベースの更新 - QnA Maker'
+titleSuffix: Azure Cognitive Services
 description: QnA Maker に使用するナレッジ ベースを Node.js で更新する方法。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 06/18/2018
-ms.author: nolachar
-ms.openlocfilehash: 7023230c8f71bbe6f12799cc8d8d7d47b9393ad2
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: a987993da5202abc9b543aa2dba0f080a622e199
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "43771578"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033620"
 ---
 # <a name="update-a-knowledge-base-in-nodejs"></a>Node.js でナレッジ ベースを更新する
 
 次のコードでは、[Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) メソッドを利用し、既存のナレッジ ベースが更新されます。
+
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 
 まだナレッジ ベースがない場合は、[新しいナレッジ ベースの作成](create-new-kb-nodejs.md)に関するページを参照し、このクイック スタート用のサンプルを作成してください。
 

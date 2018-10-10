@@ -1,20 +1,21 @@
 ---
-title: 新しいナレッジ ベースを作成する - Go のクイック スタート - Microsoft QnA Maker API (v4) - Azure Cognitive Services | Microsoft Docs
-description: FAQ や製品マニュアルを保持するナレッジ ベースを Go で作成し、QnA Maker で使用できるようにします。
+title: 'クイック スタート: API Go - ナレッジ ベースの作成 - QnA Maker'
+titlesuffix: Azure Cognitive Services
+description: このクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: diberry
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: quickstart
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: fe763dada6d40822148423443be12df7c1626687
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: 17d4a03966b1d6e3f278d5a507e46f9f6fcafa05
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "43770778"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034061"
 ---
 # <a name="create-a-new-knowledge-base-in-go"></a>新しいナレッジ ベースを Go で作成する
 
@@ -24,9 +25,9 @@ ms.locfileid: "43770778"
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Microsoft QnA Maker API** を用意している必要があります。 [Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServices)の有料サブスクリプション キーが必要です。
 
-## <a name="create-knowledge-base"></a>ナレッジ ベースを作成する
+## <a name="create-knowledge-base"></a>サポート技術情報を作成する
 
-次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいナレッジ ベースが作成されます。
+次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいサポート技術情報が作成されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。

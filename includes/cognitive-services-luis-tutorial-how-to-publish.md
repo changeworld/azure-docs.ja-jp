@@ -3,26 +3,34 @@ title: インクルード ファイル
 description: インクルード ファイル
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 07/26/2018
+ms.date: 08/17/2018
 ms.author: diberry
-ms.openlocfilehash: 0d72cde105ad7043f1c063151a667298d50962df
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 29332f7f43932c115a4e80b9c66f747555c9c298
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163766"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47105819"
 ---
-チャットボットや他のアプリケーションで LUIS の予測を取得するには、アプリを公開する必要があります。 
-
-公開前またはエンドポイント URL をテストする前に、Azure portal で LUIS エンドポイント キーを作成する必要はありません。 すべての LUIS アプリケーションには、作成用の無料のスターター キーが用意されています。 無制限の作成と少数の[エンドポイント ヒット](../articles/cognitive-services/luis/luis-boundaries.md#key-limits)が提供されます。 
+チャットボットや他のクライアント アプリケーションで LUIS の予測を受け取るには、アプリをエンドポイントに公開する必要があります。 
 
 1. 右上のナビゲーションで **[Publish]\(公開\)** を選択します。
 
-2. [Production]\(運用\) スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
+    ![LUIS の右上のメニューにあるエンドポイントへの公開ボタン](./media/cognitive-services-luis/publish-button.png)
+
+2. **[Production]\(運用\)** スロットを選択し、**[Publish]\(公開\)** ボタンを選択します。
+
+    ![LUIS のエンドポイントへの公開](./media/cognitive-services-luis/publish-this-app-popup.png)
 
 3. 成功したことを示す緑色のステータス バーが Web サイトの上部に表示されたら、公開は完了しています。
+
+    ![LUIS のエンドポイントへの公開](./media/cognitive-services-luis/publish-to-endpoint-success.png)
+
+4. 緑色のステータス バーの **[endpoints]\(エンドポイント\)** リンクを選択して、**[Keys and endpoints]\(キーとエンドポイント\)** ページに進みます。 エンドポイント URL は下部に一覧表示されます。
+
+    <!-- TBD: add image -->

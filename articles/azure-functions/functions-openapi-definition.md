@@ -12,25 +12,28 @@ ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: f2f4e7d96c4d8725d9d34314854665440d86ce8d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a085d7e25854a928778802d2b4ef50cf9e57eff9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095081"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960925"
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>関数の OpenAPI 定義の作成
 REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swagger.io/) ファイル) を使用して記述されます。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。
 
 このチュートリアルでは、風力タービンの応急修復がコスト効率に優れているかどうかを確認する関数を作成します。 その後、その関数を他のアプリやサービスから呼び出せるように、関数アプリの OpenAPI 定義を作成します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure で関数を作成する
 > * OpenAPI ツールを使用して OpenAPI 定義を生成する
 > * 定義を変更して追加のメタデータを提供する
 > * 関数を呼び出して定義をテストする
+
+> [!IMPORTANT]
+> 現在、OpenAPI のプレビュー機能は、1.x ランタイムでのみ利用できます。 1.x 関数アプリを作成する方法については、[こちらにあります](./functions-versions.md#creating-1x-apps)。
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 

@@ -1,44 +1,59 @@
 ---
-title: 'チュートリアル: 複合エンティティを作成して複雑なデータを抽出する - Azure | Microsoft Docs'
-description: LUIS アプリで複合エンティティを作成して、さまざまな種類のエンティティ データを抽出する方法を説明します。
+title: 'チュートリアル 6: LUIS 複合エンティティを使用して複合データを抽出する'
+titleSuffix: Azure Cognitive Services
+description: さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 17a8110624975d8053ad69c5bf30477e6d715ee8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 99e0b22b663f6edab9646111b390186a6f89a90f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159828"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035183"
 ---
-# <a name="tutorial-6-add-composite-entity"></a>チュートリアル: 6.  複合エンティティを追加する 
-このチュートリアルでは、抽出されたデータを、包含するエンティティにバンドルするための複合エンティティを追加します。
+# <a name="tutorial-6-group-and-extract-related-data"></a>チュートリアル 6: 関連するデータのグループ化と抽出
+このチュートリアルでは、さまざまな種類の抽出されたデータを、1 つの包含するエンティティにバンドルするための複合エンティティを追加します。 データをバンドルすることにより、クライアント アプリケーションはさまざまなデータ型で関連データを簡単に抽出できます。
 
-このチュートリアルで学習する内容は次のとおりです。
+複合エンティティの目的は、関連するエンティティを親カテゴリのエンティティにグループ化することです。 複合エンティティが作成される前は、情報は個別のエンティティとして存在しています。 これは階層構造エンティティに似ていますが、異なる種類のエンティティを含むことができます。 
+
+複合エンティティは、データが次のようなものであるため、この種のデータに適しています。
+
+* 相互に関連している。 
+* さまざまなエンティティ型を使用する。
+* クライアント アプリによって情報の単位としてグループ化され、処理される必要がある。
+
+**このチュートリアルで学習する内容は次のとおりです。**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * 複合エンティティについて 
-> * データを抽出するための複合エンティティを追加する
-> * アプリをトレーニングして公開する
-> * アプリのエンドポイントをクエリして LUIS JSON の応答を表示する
+> * 既存のチュートリアル アプリを使用する
+> * 複合エンティティを追加する 
+> * トレーニング
+> * [発行]
+> * エンドポイントから意図とエンティティを取得する
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="before-you-begin"></a>開始する前に
-[階層エンティティ](luis-quickstart-intent-and-hier-entity.md) チュートリアルからの人事アプリを保持していない場合は、JSON を [LUIS](luis-reference-regions.md#luis-website) Web サイトの新しいアプリに[インポート](luis-how-to-start-new-app.md#import-new-app)します。 インポートするアプリは、[LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-hier-HumanResources.json) GitHub リポジトリにあります。
+## <a name="use-existing-app"></a>既存のアプリを使用する
+最後のチュートリアルで作成した、**HumanResources** という名前のアプリを引き続き使用します。 
 
-元の人事アプリを保持したい場合は、[[設定]](luis-how-to-manage-versions.md#clone-a-version) ページ上でバージョンを複製して、`composite` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。  
+以前のチュートリアルの HumanResources アプリがない場合は、次の手順を使用します。
 
-## <a name="composite-entity-is-a-logical-grouping"></a>複合エンティティは論理グループ 
-複合エンティティの目的は、関連するエンティティを親カテゴリのエンティティにグループ化することです。 複合エンティティが作成される前は、情報は個別のエンティティとして存在しています。 これは階層構造エンティティに似ていますが、より多くの種類のエンティティを含むことができます。 
+1.  [アプリの JSON ファイル](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-hier-HumanResources.json)をダウンロードして保存します。
 
- 個別のエンティティを論理的にグループ化できる場合は、複合エンティティを作成します。この論理的なグループ化は、クライアント アプリケーションに役立ちます。 
+2. JSON を新しいアプリにインポートします。
+
+3. **[管理]** セクションの **[バージョン]** タブで、バージョンを複製し、それに `composite` という名前を付けます。 複製は、元のバージョンに影響を及ぼさずに LUIS のさまざまな機能を使用するための優れた方法です。 バージョン名は URL ルートの一部として使用されるため、URL 内で有効ではない文字を名前に含めることはできません。
+
+
+## <a name="composite-entity"></a>複合エンティティ
+個別のエンティティを論理的にグループ化できる場合は、複合エンティティを作成します。この論理的なグループ化は、クライアント アプリケーションに役立ちます。 
 
 このアプリでは、従業員名は **[Employee] (従業員)** リスト エンティティで定義されており、名前のシノニム、メール アドレス、会社の内線番号、携帯電話番号、および米国連邦税 ID を含みます。 
 
@@ -51,12 +66,38 @@ ms.locfileid: "44159828"
 |John W.  Smith を a-2345 に移動する|
 |明日 x12345 を h-1234 にシフトする|
  
-この移動要求には、少なくともその従業員 (いずれかのシノニムを使用) と、最終的なビルとオフィスの場所を含める必要があります。 この要求にはまた、元のオフィスや、その移動が発生する日付も含めることができます。 
+この移動要求には、その従業員 (いずれかのシノニムを使用) と、最終的なビルとオフィスの場所を含める必要があります。 この要求にはまた、元のオフィスや、その移動が発生する日付も含めることができます。 
 
-エンドポイントから抽出されたデータはこれらの情報を含み、それを `RequestEmployeeMove` 複合エンティティで返す必要があります。 
+エンドポイントから抽出されたデータはこれらの情報を含み、それを `RequestEmployeeMove` 複合エンティティで返す必要があります。
 
-## <a name="create-composite-entity"></a>複合エンティティを作成する
-1. 人事アプリは必ず、LUIS の**ビルド** セクションに配置してください。 右上のメニュー バーの **[Build]\(ビルド\)** を選択すると、このセクションに変更できます。 
+```JSON
+"compositeEntities": [
+  {
+    "parentType": "RequestEmployeeMove",
+    "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
+    "children": [
+      {
+        "type": "builtin.datetimeV2.datetime",
+        "value": "march 3 2 p.m"
+      },
+      {
+        "type": "Locations::Destination",
+        "value": "z - 2345"
+      },
+      {
+        "type": "Employee",
+        "value": "jill jones"
+      },
+      {
+        "type": "Locations::Origin",
+        "value": "a - 1234"
+      }
+    ]
+  }
+]
+```
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[意図]** ページで、**[MoveEmployee]** 意図を選択します。 
 
@@ -75,17 +116,23 @@ ms.locfileid: "44159828"
     [![](media/luis-tutorial-composite-entity/hr-create-entity-1.png "複合内の最初のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-create-entity-1.png#lightbox)
 
 
-6. 次に、発話内の最後のエンティティ `datetimeV2` を直ちに選択します。 選択された単語の下に、複合エンティティを示す緑色のバーが描画されます。 ポップアップ メニューで、複合名 `RequestEmployeeMove` を入力してから、ポップアップ メニューの **[Create new composite] (新しい複合を作成する)** を選択します。 
+6. 次に、発話内の最後のエンティティ `datetimeV2` を直ちに選択します。 選択された単語の下に、複合エンティティを示す緑色のバーが描画されます。 ポップアップ メニューで、複合名 `RequestEmployeeMove` を入力して Enter キーを押します。 
 
     [![](media/luis-tutorial-composite-entity/hr-create-entity-2.png "複合内の最後のエンティティの選択とエンティティの作成が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-create-entity-2.png#lightbox)
 
 7. **[What type of entity do you want to create?] (どのような種類のエンティティを作成しますか?)** では、必要なほぼすべてのフィールドが一覧にあります。 元の場所だけがありません。 **[子エンティティを追加する]** を選択し、既存のエンティティの一覧から **[Locations::Origin]** を選択してから、**[完了]** を選択します。 
 
+    事前構築済みのエンティティ number が複合エンティティに追加されました。 複合エンティティの開始トークンと終了トークンの間に事前構築済みエンティティを出現させることができた場合、複合エンティティにはそれらの事前構築済みエンティティが含まれている必要があります。 事前構築済みエンティティが含まれていない場合、複合エンティティは正しく予測されませんが、個別の要素は正しく予測されます。
+
     ![ポップアップ ウィンドウで別のエンティティを追加している 'MoveEmployee' 意図での LUIS のスクリーンショット](media/luis-tutorial-composite-entity/hr-create-entity-ddl.png)
 
 8. ツールバーの虫眼鏡を選択してフィルターを削除します。 
 
+9. すべての発話例をもう一度確認できるよう、単語 `tomorrow` をフィルターから削除します。 
+
 ## <a name="label-example-utterances-with-composite-entity"></a>発話の例に複合エンティティのラベルを付ける
+
+
 1. 各発話の例で、複合に含まれている左端のエンティティを選択します。 次に、**[Wrap in composite entity] (複合エンティティにラップする)** を選択します。
 
     [![](media/luis-tutorial-composite-entity/hr-label-entity-1.png "複合内の最初のエンティティの選択が強調表示されている 'MoveEmployee' 意図での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-label-entity-1.png#lightbox)
@@ -98,15 +145,15 @@ ms.locfileid: "44159828"
 
     [![](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png "すべての発話にラベルが付いている 'MoveEmployee' での LUIS のスクリーンショット")](media/luis-tutorial-composite-entity/hr-all-utterances-labeled.png#lightbox)
 
-## <a name="train-the-luis-app"></a>LUIS アプリをトレーニングする
+## <a name="train"></a>トレーニング
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>アプリを公開してエンドポイント URL を取得する
+## <a name="publish"></a>[発行]
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint"></a>エンドポイントにクエリを実行する 
+## <a name="get-intent-and-entities-from-endpoint"></a>エンドポイントから意図とエンティティを取得する 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -247,7 +294,7 @@ ms.locfileid: "44159828"
         },
         {
           "entity": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
-          "type": "requestemployeemove",
+          "type": "RequestEmployeeMove",
           "startIndex": 5,
           "endIndex": 54,
           "score": 0.4027723
@@ -255,7 +302,7 @@ ms.locfileid: "44159828"
       ],
       "compositeEntities": [
         {
-          "parentType": "requestemployeemove",
+          "parentType": "RequestEmployeeMove",
           "value": "jill jones from a - 1234 to z - 2345 on march 3 2 p . m",
           "children": [
             {
@@ -276,28 +323,19 @@ ms.locfileid: "44159828"
             }
           ]
         }
-      ],
-      "sentimentAnalysis": {
-        "label": "neutral",
-        "score": 0.5
-      }
+      ]
     }
     ```
 
   この発話は、複合エンティティの配列を返します。 各エンティティには、型と値が与えられます。 子エンティティごとの精度を高めるには、複合の配列項目の型と値の組み合わせを使用して、エンティティの配列内の対応する項目を見つけます。  
-
-## <a name="what-has-this-luis-app-accomplished"></a>この LUIS アプリの処理内容
-このアプリは自然言語クエリの意図を識別し、抽出されたデータを名前付きグループとして返しました。 
-
-チャットボットには現在、主要なアクションと、発話内の関連する詳細を決定するための十分な情報が含まれています。 
-
-## <a name="where-is-this-luis-data-used"></a>この LUIS データの使用場所 
-LUIS はこの要求の処理を完了しています。 チャットボットなどの呼び出し元アプリケーションは、エンティティから topScoringIntent の結果とデータを取得して、次のステップに進むことができます。 LUIS は、ボットや呼び出し元アプリケーションのためにこのようなプログラムによる処理を実行するわけではありません。 LUIS はユーザーの意図を判断するだけです。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>次の手順
+
+このチュートリアルでは、既存のエンティティをカプセル化するための複合エンティティを作成しました。 これによりクライアント アプリケーションは、会話を続けるために、さまざまなデータ型の関連データのグループを見つけることができます。 この Human Resources アプリのクライアント アプリケーションは、移動が開始および終了する必要がある日時を問い合わせることができました。 電話機などのその他の物品の移動について問い合わせることもできました。 
+
 > [!div class="nextstepaction"] 
 > [フレーズ リストと共にシンプル エンティティを追加する方法について](luis-quickstart-primary-and-secondary-data.md)  

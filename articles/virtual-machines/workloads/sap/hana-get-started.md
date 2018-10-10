@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 09/15/2016
+ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 1948fb927c00e928a46c347bc6f1a01a43e155df
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 6355a7ce203f2bf75b5c93d225502f961deeee43
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43112141"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032085"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>クイックスタート ガイド: Azure VM への単一インスタンスの SAP HANA の手動インストール
 ## <a name="introduction"></a>はじめに
@@ -45,7 +45,9 @@ ms.locfileid: "43112141"
    * Azure で ASCS/SCS のマルチ SID インストールを活用して効率を向上させる方法の詳細。 「[SAP NetWeaver マルチ SID 構成の作成](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-multi-sid)」を参照してください。 
    * Azure での Linux 駆動型 VM ベースの SAP NetWeaver の実行の原則。 「[Microsoft Azure SUSE Linux VM での SAP NetWeaver の実行](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/suse-quickstart)」を参照してください。 このガイドには、Azure VM で Linux を使用する際のいくつかの特定の設定や、Azure Storage ディスクを Linux VM に正しく接続する方法が詳しく解説されています。
 
-現時点で、Azure VM は、SAP HANA スケールアップ構成でのみ SAP の認定を受けています。 SAP HANA ワークロードを含むスケールアウト構成はまだサポートされていません。 スケールアップ構成の場合の SAP HANA の高可用性については、「[Azure Virtual Machines (VM) 上の SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability)」を参照してください。
+運用環境シナリオで使用できる Azure VM の種類は、[IAAS の SAP マニュアル](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html)に記載されています。 運用環境以外のシナリオでは、さまざまなネイティブの Azure VM の種類が使用できます。
+VM の構成と運用の詳細については、「[Azure における SAP HANA インフラストラクチャの構成と運用](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)」を参照してください。
+SAP HANA の高可用性については、「[Azure 仮想マシンの SAP HANA の高可用性](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-availability-overview)」を参照してください。
 
 SAP HANA インスタンス、S/4HANA、または BW/4HANA システムを非常に迅速にデプロイする方法を探している場合は、[SAP Cloud Appliance Library](http://cal.sap.com) の使用を検討してください たとえば、Azure で SAP CAL を使用して S/4HANA システムを展開する場合、[このガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h)で関連するドキュメントを見つけることができます。 必要なのは、Azure サブスクリプションと SAP Cloud Appliance Library に登録できる SAP ユーザーだけです。
 
@@ -91,6 +93,11 @@ SAP NetWeaver または S/4HANA アプリケーション レイヤーに関し�
 >SAP-Linux-Azure 統合は、Azure Resource Manager でのみサポートされ、クラシック デプロイ モデルではサポートされません。 
 
 ## <a name="manual-installation-of-sap-hana"></a>SAP HANA の手動インストール
+
+> [!IMPORTANT]
+> 選択した OS が、使用している特定の VM の種類の SAP HANA に対して認定されていることを確認してください。 SAP HANA 認定 VM の種類と、その種類に対応する OS リリースの一覧は、[SAP HANA 認定 IaaS プラットフォーム](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)に関するページに記載されています。 表示されている VM の種類をクリックすると、特定の VM の種類に対して SAP HANA でサポートされている OS のリリースの一覧が表示され、詳細を確認できます。 このドキュメントの例では、M シリーズの VM で SAP HANA がサポートしていない SLES OS リリースが使用されていることに注意してください。
+>
+
 このガイドでは、Azure VM に SAP HANA を手動でインストールする方法を 2 とおり説明します。
 
 * NetWeaver 分散インストールの一環として、"データベース インスタンスのインストール" の手順で SAP Software Provisioning Manager (SWPM) を使う。

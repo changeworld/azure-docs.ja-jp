@@ -1,90 +1,104 @@
 ---
-title: LUIS を使用して新しいアプリを作成する | Microsoft Docs
+title: LUIS を使用して新しいアプリを作成する
 description: Language Understanding (LUIS) Web ページで、アプリケーションを作成し、管理します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3adeecd4a4e2040a92689b7c92be9630c9a0d93b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 401c4fb8942aee73c036ae2b248a030eaea4917a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225416"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031256"
 ---
 # <a name="create-an-app"></a>アプリを作成する
-新しいアプリはさまざまな方法で作成します。 
+LUIS アプリを作成するにはいくつかの方法があります。 [LUIS](https://www.luis.ai) ポータル内または LUIS オーサリング[API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) を使用して LUIS アプリを作成できます。
+
+## <a name="using-the-luis-portal"></a>LUIS ポータルを使用する
+LUIS ポータルでは、新しいアプリをいくつかの方法で作成できます。
 
 * 空のアプリから[始め](#create-new-app)て、意図、発話、およびエンティティを作成する
 * 空のアプリから[始め](#create-new-app)で、[事前構築済みのドメイン](luis-how-to-use-prebuilt-domains.md)を追加する
 * 意図、発話、およびエンティティが既に格納されている JSON ファイルから [LUIS アプリをインポート](#import-new-app)する
 
-## <a name="what-is-an-app"></a>アプリとは
-アプリには、モデルの[バージョン](luis-how-to-manage-versions.md)とアプリの[コラボレーター](luis-how-to-collaborate.md)が含まれます。 アプリケーションを作成するときにカルチャ ([言語](luis-supported-languages.md)) を選択します。これは**後で変更できません**。 
+## <a name="using-the-authoring-apis"></a>オーサリング API を使用する
+オーサリング API を使用していくつかの方法で新しいアプリを作成できます。
 
-新しいアプリの既定のバージョンは "0.1" です。 
+* 空のアプリから[始め](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f)て、意図、発話、およびエンティティを作成する
+* 事前構築済みのドメインから[始め](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5)る  
 
-アプリケーションは、**[マイ アプリ]** ページで作成および管理できます。 このページには、[LUIS](luis-reference-regions.md) Web サイトの上部にあるナビゲーション バーで **[マイ アプリ]** を選択するといつでもアクセスできます。 
 
-[![](media/luis-create-new-app/apps-list.png "アプリの一覧のスクリーンショット")](media/luis-create-new-app/apps-list.png#lightbox)
+<a name="export-app"></a>
+<a name="import-new-app"></a>
+<a name="delete-app"></a>
+ 
 
-## <a name="create-new-app"></a>新しいアプリの作成
+## <a name="create-new-app-in-luis"></a>LUIS で新しいアプリを作成する
 
 1. **[マイ アプリ]** ページで、**[新しいアプリの作成]** を選択します。
+
+    ![LUIS アプリの一覧](./media/luis-create-new-app/apps-list.png)
+
+
 2. ダイアログ ボックスで、アプリケーションに "TravelAgent" という名前を付けます。
 
     ![[新しいアプリの作成] ダイアログ ボックス](./media/luis-create-new-app/create-app.png)
 
 3. アプリケーションのカルチャを選択 (TravelAgent アプリの場合は、英語を選択) し、**[完了]** を選択します。 
 
-    >[!NOTE]
-    >カルチャは、アプリケーションを作成した後に変更できません。 
+    > [!NOTE]
+    > カルチャは、アプリケーションを作成した後に変更できません。 
 
-## <a name="import-new-app"></a>新しいアプリのインポート
-JSON ファイルに、アプリの名前 (最大 50 文字)、バージョン (最大 10 文字)、および説明を設定できます。 アプリケーション JSON ファイルの例については、[LUIS のサンプル](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/Examples-BookFlight)を入手できます。
+    
 
-1. **[マイ アプリ]** ページで、**[Import new app]\(新しいアプリのインポート\)** を選択します。
-2. **[Import new app]\(新しいアプリのインポート\)** ダイアログ ボックスで、LUIS アプリを定義している JSON ファイルを選択します。
+<!--
 
-    ![[Import new app]\(新しいアプリのインポート\) ダイアログ ボックス](./media/luis-create-new-app/import-app.png)
+## Import new app
+You can set the name (50 char max), version (10 char max), and description of an app in the JSON file. Examples of application JSON files are available at [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/Examples-BookFlight).
 
-## <a name="export-app"></a>アプリのエクスポート
-1. **[マイ アプリ]** ページで、アプリの行の末尾にある省略記号 (***...***) を選択します。
+1. On **My Apps** page, select **Import new app**.
+2. In the **Import new app** dialog, select the JSON file defining the LUIS app.
 
-    [![](media/luis-create-new-app/apps-list.png "アプリのアクションごとのポップアップ ダイアログのスクリーン ショット")](media/luis-create-new-app/three-dots.png#lightbox)
+    ![Import a new app dialog](./media/luis-create-new-app/import-app.png)
 
-2. メニューで **[Export app]\(アプリのエクスポート\)** を選択します。 
+## Export app
+1. On **My Apps** page, select the ellipsis (***...***) at the end of the app row.
 
-## <a name="rename-app"></a>アプリの名前の変更
+    [![](media/luis-create-new-app/apps-list.png "Screenshot of pop-up dialog of per-app actions")](media/luis-create-new-app/three-dots.png#lightbox)
 
-1. **[マイ アプリ]** ページで、アプリの行の末尾にある省略記号 (***...***) を選択します。 
-2. メニューで **[名前の変更]** を選択します。
-3. アプリの新しい名前を入力し、**[完了]** を選択します。
+2. Select **Export app** from the menu. 
 
-## <a name="delete-app"></a>アプリの削除
+## Rename app
+
+1. On **My Apps** page, select the ellipsis (***...***) at the end of the app row. 
+2. Select **Rename** from the menu.
+3. Enter the new name of the app and select **Done**.
+
+## Delete app
 
 > [!CAUTION]
-> すべてのコラボレーターと所有者について、アプリを削除することになります。 削除する前に、アプリを[エクスポート](#export-app)してください。 
+> You are deleting the app for all collaborators and the owner. [Export](#export-app) the app before deleting it. 
 
-1. **[マイ アプリ]** ページで、アプリの行の末尾にある省略記号 (***...***) を選択します。 
-2. メニューで **[削除]** を選択します。
-3. 確認ウィンドウで **[OK]** を選択します。
+1. On **My Apps** page, select the ellipsis (***...***) at the end of the app row. 
+2. Select **Delete** from the menu.
+3. Select **Ok** in the confirmation window.
 
-## <a name="export-endpoint-logs"></a>エンドポイント ログのエクスポート
-ログには、クエリ、UTC 時刻、および LUIS JSON 応答が含まれます。
+## Export endpoint logs
+The logs contain the Query, UTC time, and LUIS JSON response.
 
-1. **[マイ アプリ]** ページで、アプリの行の末尾にある省略記号 (***...***) を選択します。 
-2. メニューで **[Export endpoint logs]\(エンドポイント ログのエクスポート\)** を選択します。
+1. On **My Apps** page, select the ellipsis (***...***) at the end of the app row. 
+2. Select **Export endpoint logs** from the menu.
 
 ```
 Query,UTC DateTime,Response
 text i'm driving and will be 30 minutes late to the meeting,02/13/2018 15:18:43,"{""query"":""text I'm driving and will be 30 minutes late to the meeting"",""intents"":[{""intent"":""None"",""score"":0.111048922},{""intent"":""SendMessage"",""score"":0.987501}],""entities"":[{""entity"":""i ' m driving and will be 30 minutes late to the meeting"",""type"":""Message"",""startIndex"":5,""endIndex"":58,""score"":0.162995353}]}"
 ```
-
+-->
 ## <a name="next-steps"></a>次の手順
 
 アプリでの最初のタスクは、[意図の追加](luis-how-to-add-intents.md)です。

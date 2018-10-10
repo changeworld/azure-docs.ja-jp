@@ -1,6 +1,6 @@
 ---
-title: 'チュートリアル: Azure CLI 2.0 を使用したスケール セットの自動スケール | Microsoft Docs'
-description: Azure CLI 2.0 を使用して CPU 需要の増減に合わせて仮想マシンのスケール セットを自動的にスケーリングする方法について説明します
+title: 'チュートリアル: Azure CLI を使用したスケール セットの自動スケール | Microsoft Docs'
+description: Azure CLI を使用して CPU 需要の増減に合わせて仮想マシンのスケール セットを自動的にスケーリングする方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4dedf4a84d5eaa47018fe0cd1cb6fd9a92d8ef7e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7c3d536cd4fb99d6d83b973989279d289e8434a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630154"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995380"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>チュートリアル: Azure CLI 2.0 を使用して仮想マシン スケール セットを自動的にスケーリングする
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>チュートリアル: Azure CLI を使用して仮想マシン スケール セットを自動的にスケーリングする
 
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケールにより、顧客のニーズに対応したり、アプリのライフサイクル全体でアプリケーション パフォーマンスの変化に対応したりできます。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.32 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.32 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
 
@@ -216,7 +216,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、Azure CLI 2.0 を使用してスケール セットを自動的にスケールインまたはスケールアウトする方法について学習しました。
+このチュートリアルでは、Azure CLI を使用してスケール セットを自動的にスケールインまたはスケールアウトする方法について学習しました。
 
 > [!div class="checklist"]
 > * スケール セットの自動スケールを使用する
@@ -224,7 +224,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > * VM インスタンスのストレステストを行い、自動スケール ルールをトリガーする
 > * 需要の減少に合わせて元のサイズに自動的にスケーリングする
 
-実際に動作している仮想マシン スケール セットの例については、次のサンプルの Azure CLI 2.0 サンプル スクリプトを参照してください。
+実際に動作している仮想マシン スケール セットの例については、次のサンプルの Azure CLI サンプル スクリプトを参照してください。
 
 > [!div class="nextstepaction"]
-> [Azure CLI 2.0 用のスケール セット スクリプトのサンプル](cli-samples.md)
+> [Azure CLI 用のスケール セット スクリプトのサンプル](cli-samples.md)

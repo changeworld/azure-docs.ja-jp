@@ -1,5 +1,5 @@
 ---
-title: Azure CLI 2.0 を使って Web App for Containers を管理する | Microsoft Docs
+title: Azure CLI を使って Web App for Containers を管理する | Microsoft Docs
 description: Azure CLI を使って Web App for Containers を管理します。
 keywords: Azure App Service, Web アプリ, CLI, Linux, OSS
 services: app-service
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
-ms.openlocfilehash: 54c979313a6ffa43008aa9870332b92d2b2f182a
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 024ca5bcf9c1f82f07656691d6ef5358ca3d5111
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
-ms.locfileid: "24105391"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998493"
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Azure CLI を使って Web App for Containers を管理する
 
-この記事のコマンドを使用して、Azure CLI 2.0 を使って Web App for Containers を作成および管理できます。
+この記事のコマンドを使用して、Azure CLI を使って Web App for Containers を作成および管理できます。
 この CLI の新しいバージョンは、次の 2 つの方法で使用を開始できます。
 
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) をコンピューターにインストールする
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) をコンピューターにインストールする
 * [Azure Cloud Shell (プレビュー)](../../cloud-shell/overview.md) を使用する
 
 ## <a name="create-a-linux-app-service-plan"></a>Linux App Service プランの作成
@@ -102,10 +102,10 @@ az webapp config set -n sname -g rgname --linux-fx-version "node|6.11"
 az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> --branch <branch>
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure App Service on Linux とは](app-service-linux-intro.md)
-* [Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* [Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [Azure Cloud Shell (プレビュー)](../../cloud-shell/overview.md)
 * [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Web App for Containers での継続的デプロイ](app-service-linux-ci-cd.md)

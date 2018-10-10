@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 4af2e570b498e496e80b6aeee2b8aeae23c582cc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e5b44ed2435986ffd500cade1f7c8ff8047d353d
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952411"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452307"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>コンピューティング ターゲットを選択して使用し、モデルをトレーニングする
 
@@ -23,7 +23,7 @@ Azure Machine Learning サービスでは、いくつかの異なる環境でモ
 
 コンピューティング ターゲットは、トレーニング スクリプトを実行または Web サービスとしてモデルがデプロイされたときにモデルをホストするリソースです。 コンピューティング ターゲットは、Azure Machine Learning SDK または CLI を使用して作成および管理できます。 別のプロセス (たとえば、Azure Portal または Azure CLI) で作成されたコンピューティング ターゲットがある場合、これを Azure Machine Learning サービス ワークスペースに接続して使用できます。
 
-マシン上でのローカル実行から始め、GPU や Azure Batch AI を備えたリモート データ サイエンス仮想マシンなどの別の環境にスケール アップおよびスケール アウトできます。 
+マシン上でのローカル実行から始め、GPU や Azure Batch AI を備えたリモート データ サイエンス仮想マシンなどの別の環境にスケールアップおよびスケールアウトできます。 
 
 ## <a name="supported-compute-targets"></a>サポートされているコンピューティング ターゲット
 
@@ -90,6 +90,8 @@ run_config_user_managed.environment.python.user_managed_dependencies = True
 # You can choose a specific Python environment by pointing to a Python path 
 #run_config.environment.python.interpreter_path = '/home/ninghai/miniconda3/envs/sdk2/bin/python'
 ```
+
+ユーザーが管理する環境でのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb) を参照してください。
   
 ### <a name="system-managed-environment"></a>システム管理環境
 
@@ -110,6 +112,9 @@ run_config_system_managed.prepare_environment = True
 
 run_config_system_managed.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 ```
+
+システムが管理する環境でのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb) を参照してください。
+
 ## <a id="dsvm"></a>Data Science Virtual Machine
 
 モデルのトレーニングに必要な計算リソースまたは GPU リソースがローカル コンピューターにない場合があります。 このような状況では、トレーニング プロセスをスケール アップまたはスケール アウトできます。そのためには。Data Science Virtual Machine (DSVM) などコンピューティング ターゲットを追加します。
@@ -190,6 +195,8 @@ run_config_system_managed.environment.python.conda_dependencies = CondaDependenc
     dsvm_compute.delete()
     ```
 
+Data Science Virtual Machine でのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb) を参照してください。
+
 ## <a id="batch"></a>Azure Batch AI
 
 モデルのトレーニングに時間がかかる場合は、Azure Batch AI を使用して、クラウドの計算リソースのクラスター間にトレーニングを分散できます。 Batch AI を構成して GPU リソースを有効にすることも可能です。
@@ -232,14 +239,14 @@ if not found:
     print(compute_target.status.serialize())
 ```
 
-コンピューティング ターゲットとして既存の Batch AI クラスターに接続するには、Azure のリソース ID を入力する必要があります。Azure Portal からリソース ID を取得するには、次の手順を実行します。
+コンピューティング ターゲットとして既存の Batch AI クラスターに接続するには、Azure のリソース ID を入力する必要があります。 Azure portal からリソース ID を取得するには、次の手順を使用します。
 1. **[すべてのサービス]** で `Batch AI` サービスを検索します
 1. クラスターが属しているワークスペース名をクリックします
 1. クラスターを選択します
 1. **[プロパティ]** をクリックします
-1. **Id** をコピーします
+1. **ID** をコピーします
 
-次の例では、SDK を使用してクラスターをワークスペースに接続します。 この例では、`<name>` を計算の名前に置き換えます。 これはクラスターの名前と一致する必要はありません。 `<resource-id>` を上述の Azure リソース ID に置き換えます。
+次の例では、SDK を使用してクラスターをワークスペースに接続します。 この例では、`<name>` を計算の名前に置き換えます。 この名前は、クラスターの名前と一致させる必要はありません。 `<resource-id>` を上述の Azure リソース ID に置き換えます。
 
 ```python
 from azureml.core.compute import BatchAiCompute
@@ -253,7 +260,9 @@ BatchAiCompute.attach(workspace=ws,
 - クラスターの状態を確認します。 `az batchai cluster list` を使用して実行しているノードの数を確認できます。
 - ジョブの状態を確認します。 `az batchai job list` を使用して実行しているジョブの数を確認できます。
 
-Batch AI クラスターの作成には約 5 分かかります
+Batch AI クラスターの作成には約 5 分かかります。
+
+Batch AI クラスターでのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb) を参照してください。
 
 ## <a name='aci'></a>Azure コンテナー インスタンス (ACI)
 
@@ -296,6 +305,8 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
 ```
 
 ACI のコンピューティング ターゲットの作成には、数秒から数分 かかります。
+
+Azure コンテナー インスタンスでのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb) を参照してください。
 
 ## <a id="hdinsight"></a>HDInsight クラスターの接続 
 
@@ -352,6 +363,8 @@ run = exp.submit(src)
 run.wait_for_completion(show_output = True)
 ```
 
+Spark on HDInsight でのトレーニングを示す Jupyter Notebook については、[https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb) を参照してください。
+
 ## <a name="view-and-set-up-compute-using-the-azure-portal"></a>Azure Portal を使用した計算の表示および設定
 
 Azure Portal からワークスペースに関連付けられたコンピューティング ターゲットを表示できます。 一覧を取得するには、次の手順に従います。
@@ -403,6 +416,7 @@ Azure Portal からワークスペースに関連付けられたコンピュー�
 次のノートブックは、この記事の概念を示しています。
 * `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
 * `01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb`
+* `01.getting-started/03.train-on-aci/03.train-on-aci.ipynb`
 * `01.getting-started/05.train-in-spark/05.train-in-spark.ipynb`
 * `01.getting-started/07.hyperdrive-with-sklearn/07.hyperdrive-with-sklearn.ipynb`
 

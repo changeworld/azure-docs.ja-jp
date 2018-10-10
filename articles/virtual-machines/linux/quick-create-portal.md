@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/03/2018
+ms.date: 09/14/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f659c424f7d5e705343c113d2ba0971164ca622a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: fcc9f338ad69322091199ce9d5d2d1d6f9f2165e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108808"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227284"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート: Azure portal で Linux 仮想マシンを作成する
 
@@ -49,26 +49,27 @@ Azure Portal (http://portal.azure.com) にログインします
 
 1. Azure portal の左上隅にある **[リソースの作成]** を選択します。
 
-2. Azure Marketplace リソースの一覧の上にある検索ボックスで Canonical の **Ubuntu Server 16.04 LTS** を検索して選択し、**[作成]** を選択します。
+1. Azure Marketplace リソースの一覧の上にある検索ボックスで Canonical の **Ubuntu Server 16.04 LTS** を検索して選択し、**[作成]** を選択します。
 
-3. VM 名 (たとえば、*myVM*) を指定します。ディスクの種類を *[SSD]* のままにし、ユーザー名 (たとえば、*azureuser*) を指定します。
+1. **[基本]** タブの **[Project details] (プロジェクトの詳細)** で、正しいサブスクリプションが選択されていることを確認し、**[リソース グループ]** で **[新規作成]** を選択します。 ポップアップで、リソース グループの名前として「*myResourceGroup*」と入力し、**[OK]* を選択します。 
 
-4. **[認証の種類]** で **[SSH 公開鍵]** を選択し、公開キーをテキスト ボックスに貼り付けます。 公開キーの先頭と末尾の空白は削除するように注意してください。
+    ![VM の新しいリソース グループを作成する](./media/quick-create-portal/project-details.png)
 
-    ![ポータルのブレードで VM に関する基本情報を入力する](./media/quick-create-portal/create-vm-portal-basic-blade.png)
+1. **[Instance details] (インスタンスの詳細)** で、**[仮想マシン名]** として「*myVM*」と入力し、**[リージョン]** として *[米国東部]* を選択します。 他の既定値はそのままにします。
 
-5. リソース グループを**新規作成**し、名前 (たとえば、*myResourceGroup*) を指定します。 目的の**場所**を選択し、**[OK]** を選択します。
+    ![[Instance details] (インスタンスの詳細) セクション](./media/quick-create-portal/instance-details.png)
 
-4. VM のサイズを選択します。 たとえば、"*計算の種類*" または "*ディスクの種類*" でフィルター処理することができます。 推奨される VM サイズは *D2s_v3* です。
+1. **[Administrator account] (管理者アカウント)** で、**[SSH Public Key] (SSH 公開キー)** を選択し、ユーザー名を入力して公開キーをテキスト ボックスに貼り付けます。 公開キーの先頭または末尾の空白はすべて削除します。
 
-    ![VM のサイズを示すスクリーンショット](./media/quick-create-portal/create-linux-vm-portal-sizes.png)
+    ![[Administrator account] (管理者アカウント)](./media/quick-create-portal/administrator-account.png)
 
-5. **[設定]** ページの **[ネットワーク]** > **[ネットワーク セキュリティ グループ]** > **[Select public inbound ports]\(パブリック受信ポートの選択\)** の順に移動し、**[HTTP]** と **[SSH (22)]** を選択します。 残りの部分は既定値のままにし、**[OK]** を選択します。
+1. **[受信ポートの規則]** > **[Public inbound ports] (パブリック受信ポート)** で、**[Allow selected ports] (選択されたポートを許可する)** を選択してから、ドロップダウンから **[SSH (22)]** と **[HTTP (80)]** を選択します。 
 
-6. 概要ページで、**[作成]** を選択して、VM のデプロイを開始します。
+    ![RDP と HTTP のポートを開く](./media/quick-create-portal/inbound-port-rules.png)
 
-7. 対応する VM が、Azure portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。
+1. 残りの既定値はそのままにして、ページの一番下にある **[Review + create] (確認および作成)** ボタンを選択します。
 
+    
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
 VM との SSH 接続を作成します。

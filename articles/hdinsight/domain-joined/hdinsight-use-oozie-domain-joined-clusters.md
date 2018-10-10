@@ -1,22 +1,22 @@
 ---
-title: Azure HDInsight ドメイン参加済みクラスター内の Apache Hadoop Oozie ワークフロー
-description: Linux ベースの HDInsight ドメイン参加済み Enterprise セキュリティ パッケージで Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
+title: Enterprise セキュリティ パッケージを使用する Azure HDInsight クラスターでの Apache Hadoop Oozie ワークフロー
+description: Linux ベースの HDInsight Enterprise セキュリティ パッケージで Hadoop Oozie を使用します。 Oozie ワークフローを定義し、Oozie ジョブを送信する方法について説明します。
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/26/2018
-ms.openlocfilehash: 69bf885ad5d6244997c7ce9cf61bdee9e05c1826
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/24/2018
+ms.openlocfilehash: 563a4c14d78b7edd228c998817f44c6b3f14efe7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048976"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947499"
 ---
-# <a name="run-apache-oozie-in-domain-joined-hdinsight-hadoop-clusters"></a>ドメイン参加済み HDInsight Hadoop クラスターで Apache Oozie を実行する
+# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Enterprise セキュリティ パッケージを使用する HDInsight Hadoop クラスターで Apache Oozie を実行する
 Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Oozie は Hadoop スタックと統合されており、次のジョブをサポートしています。
 - Apache MapReduce
 - Apache Pig
@@ -26,12 +26,12 @@ Oozie は Hadoop ジョブを管理するワークフローおよび調整シス
 Oozie を使って、Java プログラムやシェル スクリプトなどの、システムに固有のジョブをスケジュールすることもできます。
 
 ## <a name="prerequisite"></a>前提条件
-- ドメイン参加済み Azure HDInsight Hadoop クラスター。 [ドメイン参加済み HDInsight クラスターの構成](./apache-domain-joined-configure-using-azure-adds.md)に関するページを参照してください。
+- Enterprise セキュリティ パッケージ (ESP) を使用する Azure HDInsight Hadoop クラスター。 [ESP を使用した HDInsight クラスターの構成](./apache-domain-joined-configure-using-azure-adds.md)に関するページをご覧ください。
 
     > [!NOTE]
-    > ドメインに参加していないクラスター上で Oozie を使用するための詳細な手順については、[Linux ベースの Azure HDInsight での Hadoop Oozie ワークフローの使用](../hdinsight-use-oozie-linux-mac.md)に関するページを参照してください。
+    > ESP を使用していないクラスター上で Oozie を使用するための手順について詳しくは、[Linux ベースの Azure HDInsight での Hadoop Oozie ワークフローの使用](../hdinsight-use-oozie-linux-mac.md)に関するページをご覧ください。
 
-## <a name="connect-to-a-domain-joined-cluster"></a>ドメイン参加済みクラスターへの接続
+## <a name="connect-to-an-esp-cluster"></a>ESP クラスターに接続する
 
 Secure Shell (SSH) の詳細については、「[SSH を使用して HDInsight (Hadoop) に接続する](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
@@ -166,7 +166,7 @@ nano workflow.xml
  ```
 4. `clustername` をクラスターの名前に置き換えます。 
 
-5. ファイルを保存するには、Ctrl + X キーを押します。 「`Y`」を入力します。 次に、**Enter** キーを押します。
+5. ファイルを保存するには、Ctrl + X キーを押します。 「 `Y` 」を入力します。 次に、**Enter** キーを押します。
 
     このワークフローは、次の 2 つの部分に分かれています。
     *   **資格情報セクション:**  このセクションでは、Oozie アクションを認証するために使用される資格情報を取得します。
@@ -262,7 +262,7 @@ nano workflow.xml
     ```
 
 ## <a name="submit-oozie-jobs"></a>Oozie ジョブの送信
-ドメイン参加済みクラスターの Oozie ジョブの送信は、ドメインに参加していないクラスター内の Oozie ジョブの送信と同様です。
+ESP クラスターの Oozie ジョブの送信は、非 ESP クラスター内の Oozie ジョブの送信と同様です。
 
 詳細については、「[Hadoop で Oozie を使用して Linux ベースの Azure HDInsight でワークフローを定義して実行する](../hdinsight-use-oozie-linux-mac.md)」を参照してください。
 
@@ -311,7 +311,7 @@ Oozie はそれ自体に、ユーザーが他のユーザーのジョブを停�
 Ranger プラグインが使用できないか、またはサポートされていない Hive server 1 などのコンポーネントの場合は、粒度の粗い HDFS 承認のみが可能です。 きめ細かい承認は、Ranger プラグインを通してのみ使用できます。
 
 ## <a name="get-the-oozie-web-ui"></a>Oozie Web UI の取得
-Oozie Web UI は、クラスターでの Oozie ジョブの状態を表示する Web ベースのビューを提供します。 Web UI を取得するには、ドメイン参加済みクラスターで次の手順を実行します。
+Oozie Web UI は、クラスターでの Oozie ジョブの状態を表示する Web ベースのビューを提供します。 Web UI を取得するには、ESP クラスターで次の手順を実行します。
 
 1. [エッジ ノード](../hdinsight-apps-use-edge-node.md)を追加し、[SSH Kerberos 認証](../hdinsight-hadoop-linux-use-ssh-unix.md)を有効にします。
 

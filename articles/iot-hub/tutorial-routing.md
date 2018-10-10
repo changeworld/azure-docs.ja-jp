@@ -6,21 +6,21 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
-ms.date: 05/01/2018
+ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: a52ab4ff65312088e65d56006b6f99a7470b88f6
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 575c8a5bec4c7763c75154835830ba350f009e93
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287252"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946938"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>チュートリアル: IoT Hub を使用してメッセージ ルーティングを構成する
 
-メッセージ ルーティングを使うと、IoT デバイスから組み込みイベント ハブ互換エンドポイントまたはカスタム エンドポイント (BLOB ストレージ、Service Bus キュー、Service Bus トピック、イベント ハブなど) に、利用統計情報を送信できます。 メッセージ ルーティングの構成中に、特定の規則と一致するルートをカスタマイズするためのルーティング規則を作成できます。 設定が済むと、受信データは IoT Hub によってエンドポイントに自動的にルーティングされるようになります。 
+[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)を使うと、IoT デバイスから組み込みイベント ハブ互換エンドポイントまたはカスタム エンドポイント (BLOB ストレージ、Service Bus キュー、Service Bus トピック、イベント ハブなど) に、利用統計情報を送信できます。 メッセージ ルーティングの構成中に、特定の条件と一致するルートをカスタマイズするための[ルーティング クエリ](iot-hub-devguide-routing-query-syntax.md)を作成できます。 設定が済むと、受信データは IoT Hub によってエンドポイントに自動的にルーティングされるようになります。 
 
-このチュートリアルでは、IoT Hub を使用してルーティング規則を設定および使用する方法を説明します。 IoT デバイスから Blob ストレージや Service Bus キューなどの複数のサービスのいずれかに、メッセージをルーティングします。 Service Bus キューへのメッセージは、ロジック アプリによって取得されて、メールで送信されます。 ルーティングが明示的に設定されていないメッセージは、既定のエンドポイントに送信され、Power BI の視覚エフェクトに表示されます。
+このチュートリアルでは、IoT Hub を使用してルーティング クエリを設定および使用する方法を説明します。 IoT デバイスから Blob ストレージや Service Bus キューなどの複数のサービスのいずれかに、メッセージをルーティングします。 Service Bus キューへのメッセージは、ロジック アプリによって取得されて、メールで送信されます。 ルーティングが明示的に設定されていないメッセージは、既定のエンドポイントに送信され、Power BI の視覚エフェクトに表示されます。
 
 このチュートリアルでは、以下のタスクを実行します。
 
@@ -39,58 +39,35 @@ ms.locfileid: "43287252"
 
 - Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-- [Visual Studio for Windows](https://www.visualstudio.com/) をインストールする。 
+- [Visual Studio](https://www.visualstudio.com/) のインストール。 
 
 - 既定のエンドポイントの Stream Analytics を分析するための Power BI アカウント。 ([Power BI を無料で試す](https://app.powerbi.com/signupredirect?pbi_source=web))
 
 - 通知メールを送信するための Office 365 アカウント。 
 
-このチュートリアルのセットアップ手順を実行するには、Azure CLI または Azure PowerShell が必要です。 
-
-Azure CLI を使う場合、ローカルに Azure CLI をインストールすることもできますが、Azure Cloud Shell を使うことをお勧めします。 Azure Cloud Shell は無料のインタラクティブ シェルであり、Azure CLI スクリプトの実行に使用できます。 Cloud Shell には一般的な Azure ツールが事前にインストールされて、アカウントで使用できるように構成されているので、ローカルにインストールする必要はありません。 
-
-PowerShell を使う場合は、以下の手順でローカルにインストールします。 
-
-### <a name="azure-cloud-shell"></a>Azure Cloud Shell
-
-Cloud Shell は、次のようにいくつかの方法で開くことができます。
-
-|  |   |
-|-----------------------------------------------|---|
-| コード ブロックの右上隅にある **[使ってみる]** を選択します。 | ![この記事の Cloud Shell](./media/tutorial-routing/cli-try-it.png) |
-| ブラウザーで Cloud Shell を開きます。 | [![https://shell.azure.com/bash](./media/tutorial-routing/launchcloudshell.png)](https://shell.azure.com) |
-| [Azure Portal](https://portal.azure.com) の右上隅にあるメニューの **[Cloud Shell]** ボタンを選択します。 |    ![ポータルの Cloud Shell](./media/tutorial-routing/cloud-shell-menu.png) |
-|  |  |
-
-### <a name="using-azure-cli-locally"></a>ローカルな Azure CLI の使用
-
-Cloud Shell ではなくローカルな CLI を使うほうがよい場合は、バージョン 2.0.30.0 以降の Azure CLI モジュールが必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
-
-### <a name="using-powershell-locally"></a>ローカルな PowerShell の使用
-
-このチュートリアルには、Azure PowerShell モジュール バージョン 5.7 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="set-up-resources"></a>リソースを設定する
 
-このチュートリアルでは、IoT ハブ、ストレージ アカウント、および Service Bus キューが必要です。 これらのリソースはすべて、Azure CLI または Azure PowerShell を使って作成できます。 すべてのリソースに同じリソース グループと場所を使います。 最後に、リソース グループを削除することによって、すべてのものを一度に削除できます。
+このチュートリアルでは、IoT ハブ、ストレージ アカウント、および Service Bus キューが必要です。 これらのリソースは、Azure CLI または Azure PowerShell を使って作成できます。 すべてのリソースに同じリソース グループと場所を使います。 最後に、リソース グループを削除することによって、すべてのものを一度に削除できます。
 
-以下のセクションでは、これらの必要な手順の実行方法を説明します。 CLI "*または*" PowerShell どちらかの手順に従ってください。
+以下のセクションでは、これらの必要な手順の実行方法を説明します。 CLI "*または*" PowerShell の手順に従ってください。
 
 1. [リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 
 
-    <!-- When they add the Basic tier, change this to use Basic instead of Standard. -->
+2. S1 レベルに IoT ハブを作成します。 コンシューマー グループを IoT ハブに追加します。 コンシューマー グループは、データを取得するときに Azure Stream Analytics によって使われます。
 
-1. S1 レベルに IoT ハブを作成します。 コンシューマー グループを IoT ハブに追加します。 コンシューマー グループは、データを取得するときに Azure Stream Analytics によって使われます。
+3. Standard_LRS レプリケーションで Standard V1 ストレージ アカウントを作成します。
 
-1. Standard_LRS レプリケーションで Standard V1 ストレージ アカウントを作成します。
+4. Service Bus の名前空間とキューを作成します。 
 
-1. Service Bus の名前空間とキューを作成します。 
+5. ハブにメッセージを送信するシミュレートされたデバイスのデバイス ID を作成します。 テスト フェーズ用にキーを保存します。
 
-1. ハブにメッセージを送信するシミュレートされたデバイスのデバイス ID を作成します。 テスト フェーズ用にキーを保存します。
+### <a name="set-up-your-resources-using-azure-cli"></a>Azure CLI を使用してリソースを設定する
 
-### <a name="azure-cli-instructions"></a>Azure CLI の手順
+次のスクリプトをコピーして Cloud Shell に貼り付けます。 既にログインしているものとすると、スクリプトが 1 行ずつ実行されます。 
 
-このスクリプトを使う最も簡単な方法は、コピーして、Cloud Shell に貼り付けることです。 既にログインしているものとすると、スクリプトが 1 行ずつ実行されます。 
+グローバルに一意でなければならない変数には `$RANDOM` が連結されています。 スクリプトが実行され、変数が設定されるときに、ランダムな数値文字列が生成され、固定文字列の末尾に連結されて一意の変数を作ります。
 
 ```azurecli-interactive
 
@@ -182,9 +159,11 @@ az iot hub device-identity show --device-id $iotDeviceName \
 
 ```
 
-### <a name="powershell-instructions"></a>PowerShell の手順
+### <a name="set-up-your-resources-using-azure-powershell"></a>Azure PowerShell を使用してリソースを設定する
 
-このスクリプトを使う最も簡単な方法としては、[PowerShell ISE](https://docs.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise?view=powershell-6) を開き、スクリプトをクリップボードにコピーしてから、スクリプト全体をスクリプト ウィンドウに貼り付けます。 その後、必要に応じてリソース名の値を変更してから、スクリプト全体を実行します。 
+次のスクリプトをコピーして Cloud Shell に貼り付けます。 既にログインしているものとすると、スクリプトが 1 行ずつ実行されます。
+
+グローバルに一意でなければならない変数には `$(Get-Random)` が連結されています。 スクリプトが実行され、変数が設定されるときに、ランダムな数値文字列が生成され、固定文字列の末尾に連結されて一意の変数を作ります。
 
 ```azurepowershell-interactive
 # Log into Azure account.
@@ -265,15 +244,15 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 1. [Azure portal](https://portal.azure.com) を開き、Azure アカウントにログインします。
 
-1. **[リソース グループ]** をクリックして、リソース グループを選びます。 このチュートリアルでは、**ContosoResources** を使います。
+2. **[リソース グループ]** をクリックして、リソース グループを選びます。 このチュートリアルでは、**ContosoResources** を使います。
 
-1. リソースの一覧で、お使いの IoT ハブをクリックします。 このチュートリアルでは、**ContosoTestHub** を使います。 [ハブ] ウィンドウで **[IoT デバイス]** を選びます。
+3. リソースの一覧で、お使いの IoT ハブをクリックします。 このチュートリアルでは、**ContosoTestHub** を使います。 [ハブ] ウィンドウで **[IoT デバイス]** を選びます。
 
-1. **[+ 追加]** をクリックします。 [デバイスの追加] ウィンドウで、デバイス ID を入力します。 このチュートリアルでは、**Contoso-Test-Device** を使います。 キーは空のままにし、**[キーの自動生成]** をオンにします。 **[デバイスを IoT Hub に接続]** を有効にします。 **[Save]** をクリックします。
+4. **[+ 追加]** をクリックします。 [デバイスの追加] ウィンドウで、デバイス ID を入力します。 このチュートリアルでは、**Contoso-Test-Device** を使います。 キーは空のままにし、**[キーの自動生成]** をオンにします。 **[デバイスを IoT Hub に接続]** を有効にします。 **[Save]** をクリックします。
 
    ![[デバイスの追加] 画面のスクリーンショット。](./media/tutorial-routing/add-device.png)
 
-1. デバイスが作成されたので、デバイスをクリックして生成されたキーを表示します。 プライマリ キーの [コピー] アイコンをクリックし、このチュートリアルのテスト フェーズのために、メモ帳などの場所に保存します。
+5. デバイスが作成されたので、デバイスをクリックして生成されたキーを表示します。 プライマリ キーの [コピー] アイコンをクリックし、このチュートリアルのテスト フェーズのために、メモ帳などの場所に保存します。
 
    ![キーを含む、デバイスの詳細を示すスクリーンショット。](./media/tutorial-routing/device-details.png)
 
@@ -289,69 +268,85 @@ New-AzureRmServiceBusQueue -ResourceGroupName $resourceGroup `
 
 ### <a name="routing-to-a-storage-account"></a>ストレージ アカウントへのルーティング 
 
-ストレージ アカウントへのルーティングを設定します。 エンドポイントを定義し、そのエンドポイントへのルートを設定します。 **level** プロパティが **storage** に設定されているメッセージは、ストレージ アカウントに自動的に書き込まれます。
+ストレージ アカウントへのルーティングを設定します。 [メッセージ ルーティング] ウィンドウに移動して、ルートを追加します。 ルートを追加するときは、ルートに対する新しいエンドポイントを定義します。 これを設定した後、**level** プロパティが **storage** に設定されているメッセージは、ストレージ アカウントに自動的に書き込まれます。
 
-1. [Azure portal](https://portal.azure.com) で **[リソース グループ]** をクリックし、使うリソース グループを選びます。 このチュートリアルでは、**ContosoResources** を使います。 リソース一覧の下で IoT ハブをクリックします。 このチュートリアルでは、**ContosoTestHub** を使います。 **[エンドポイント]** をクリックします。 **[エンドポイント]** ウィンドウで、**[+ 追加]** をクリックします。 次の情報を入力します。
+1. [Azure portal](https://portal.azure.com) で **[リソース グループ]** をクリックし、使うリソース グループを選びます。 このチュートリアルでは、**ContosoResources** を使います。 
 
-   **[名前]**: エンドポイントの名前を入力します。 このチュートリアルでは、**StorageContainer** を使います。
+2. リソース一覧の下で IoT ハブをクリックします。 このチュートリアルでは、**ContosoTestHub** を使います。 
+
+3. **[メッセージ ルーティング]** をクリックします。 **[メッセージ ルーティング]** ウィンドウで、**[+ 追加]** をクリックします。 次の図に示すように、**[Add a Route]\(ルートの追加\)** ウィンドウで、[エンドポイント] フィールドの隣にある **[+ 追加]** をクリックします。
+
+   ![ルートへのエンドポイントの追加を開始する方法を示すスクリーンショット。](./media/tutorial-routing/message-routing-add-a-route-w-storage-ep.png)
+
+4. **[Blob ストレージ]** を選択します。 **[Add Storage Endpoint]\(ストレージ エンドポイントの追加\)** ウィンドウが表示されます。 
+
+   ![エンドポイントの追加を示すスクリーンショット。](./media/tutorial-routing/message-routing-add-storage-ep.png)
+
+5. エンドポイントの名前を入力します。 このチュートリアルでは、**StorageContainer** を使います。
+
+6. **[コンテナーを選択します]** をクリックします。 ストレージ アカウントの一覧が表示されます。 準備ステップで設定したものを選択します。 このチュートリアルでは、**contosostorage** を使います。 そのストレージ アカウント内のコンテナーの一覧が表示されます。 準備ステップで設定したコンテナーを選択します。 このチュートリアルでは、**contosoresults** を使います。 **[選択]** をクリックします。 **[エンドポイントの追加]** ウィンドウに表示が戻ります。 
+
+7. 他のフィールドについては既定値を使用します。 **[作成]** をクリックしてストレージ エンドポイントを作成し、ルートに追加します。 **[Add a route]\(ルートの追加\)** ウィンドウに表示が戻ります。
+
+8.  ルーティング クエリ情報の残りの部分を完成します。 このクエリでは、エンドポイントとして追加したストレージ コンテナーにメッセージを送信するための条件を指定します。 画面のフィールドを入力します。 
+
+   **[名前]**: ルーティング クエリの名前を入力します。 このチュートリアルでは、「**StorageRoute**」を使います。
+
+   **[エンドポイント]**: 設定したエンドポイントが表示されます。 
    
-   **[エンドポイントのタイプ]**: ドロップダウン リストから **[Azure ストレージ コンテナー]** を選びます。
+   **[データ ソース]**: ドロップダウン リストから **[Device Telemetry Messages]\(デバイス テレメトリ メッセージ\)** を選びます。
 
-   **[コンテナーを選択します]** をクリックして、ストレージ アカウントの一覧を表示します。 使うストレージ アカウントを選びます。 このチュートリアルでは、**contosostorage** を使います。 次に、コンテナーを選びます。 このチュートリアルでは、**contosoresults** を使います。 **[選択]** をクリックすると、**[エンドポイントの追加]** ウィンドウに戻ります。 
+   **[Enable route]\(ルートを有効にする\)**: 必ず有効にします。
    
-   ![エンドポイントの追加を示すスクリーンショット。](./media/tutorial-routing/add-endpoint-storage-account.png)
-   
-   **[OK]** をクリックして、エンドポイントの追加を完了します。
-   
-1. お使いの IoT ハブで **[ルート]** をクリックします。 エンドポイントとして追加したストレージ コンテナーにメッセージをルーティングするルーティング規則を作成します。 [ルート] ウィンドウの上部にある **[+追加]** をクリックします。 画面のフィールドを入力します。 
+   **[Routing query]\(ルーティング クエリ\)**: クエリ文字列として「`level="storage"`」と入力します。 
 
-   **[名前]**: ルーティング規則の名前を入力します。 このチュートリアルでは、**StorageRule** を使います。
-
-   **[データ ソース]**: ドロップダウン リストから **[デバイス メッセージ]** を選びます。
-
-   **[エンドポイント]**: 設定したエンドポイントを選びます。 このチュートリアルでは、**StorageContainer** を使います。 
+   ![ストレージ アカウントのルーティング クエリの作成を示すスクリーンショット。](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
    
-   **[クエリ文字列]**: クエリ文字列として「`level="storage"`」と入力します。 
-
-   ![ストレージ アカウントのルーティング規則の作成を示すスクリーンショット。](./media/tutorial-routing/create-a-new-routing-rule-storage.png)
-   
-   **[Save]** をクリックします。 完了すると [ルート] ウィンドウに戻ります。そこで、ストレージの新しいルーティング規則を確認できます。 [ルート] ウィンドウを閉じて、[リソース グループ] ページに戻ります。
+   **[Save]** をクリックします。 完了すると [メッセージ ルーティング] ウィンドウに表示が戻り、そこでストレージの新しいルーティング クエリを確認できます。 [ルート] ウィンドウを閉じて、[リソース グループ] ページに戻ります。
 
 ### <a name="routing-to-a-service-bus-queue"></a>Service Bus キューへのルーティング 
 
-次に、Service Bus キューへのルーティングを設定します。 エンドポイントを定義し、そのエンドポイントへのルートを設定します。 **level** プロパティが **critical** に設定されているメッセージは、Service Bus キューに書き込まれます。それにより、ロジック アプリがトリガーされて、情報を含むメールが送信されます。 
+次に、Service Bus キューへのルーティングを設定します。 [メッセージ ルーティング] ウィンドウに移動して、ルートを追加します。 ルートを追加するときは、ルートに対する新しいエンドポイントを定義します。 これを設定した後、**level** プロパティが **critical** に設定されているメッセージは、Service Bus キューに書き込まれます。それにより、ロジック アプリがトリガーされて、情報を含むメールが送信されます。 
 
-1. [リソース グループ] ページで、お使いの IoT ハブをクリックし、**[エンドポイント]** をクリックします。 **[エンドポイント]** ウィンドウで、**[+ 追加]** をクリックします。 次の情報を入力します。
+1. [リソース グループ] ページで、お使いの IoT ハブをクリックし、**[メッセージ ルーティング]** をクリックします。 
 
-   **[名前]**: エンドポイントの名前を入力します。 このチュートリアルでは、**CriticalQueue** を使います。 
+2. **[メッセージ ルーティング]** ウィンドウで、**[+ 追加]** をクリックします。 
 
-   **[エンドポイントのタイプ]**: ドロップダウン リストから **[Service Bus キュー]** を選びます。
+3. **[Add a Route]\(ルートの追加\)** ウィンドウで、[エンドポイント] フィールドの隣にある **[+ 追加]** をクリックします。 **[Service Bus キュー]** を選択します。 **[Service Bus エンドポイントを追加する]** ウィンドウが表示されます。 
 
-   **[Service Bus 名前空間]**: ドロップダウン リストからこのチュートリアルの Service Bus 名前空間を選びます。 このチュートリアルでは、**ContosoSBNamespace** を使います。
+   ![Service Bus エンドポイントの追加のスクリーンショット](./media/tutorial-routing/message-routing-add-sbqueue-ep.png)
 
-   **[Service Bus キュー]**: ドロップダウン リストから Service Bus キューを選びます。 このチュートリアルでは、**contososbqueue** を使います。
+4. フィールドに入力します。
 
-   ![Service Bus キューのエンドポイントの追加を示すスクリーンショット。](./media/tutorial-routing/add-endpoint-sb-queue.png)
-
-   **[OK]** をクリックしてエンドポイントを保存します。 完了したら、[エンドポイント] ウィンドウを閉じます。 
-    
-1. お使いの IoT ハブで **[ルート]** をクリックします。 エンドポイントとして追加した Service Bus キューにメッセージをルーティングするルーティング規則を作成します。 [ルート] ウィンドウの上部にある **[+追加]** をクリックします。 画面のフィールドを入力します。 
-
-   **[名前]**: ルーティング規則の名前を入力します。 このチュートリアルでは、**SBQueueRule** を使います。 
-
-   **[データ ソース]**: ドロップダウン リストから **[デバイス メッセージ]** を選びます。
-
-   **[エンドポイント]**: 設定したエンドポイント (**CriticalQueue**) を選びます。
-
-   **[クエリ文字列]**: クエリ文字列として「`level="critical"`」と入力します。 
-
-   ![Service Bus キューのルーティング規則の作成を示すスクリーンショット。](./media/tutorial-routing/create-a-new-routing-rule-sbqueue.png)
+   **[エンドポイント名]**: エンドポイントの名前を入力します。 このチュートリアルでは、**CriticalQueue** を使います。
    
-   **[Save]** をクリックします。 [ルート] ウィンドウに戻ると、次のように、新しいルーティング規則が両方とも表示されます。
+   **[Service Bus 名前空間]**: このフィールドをクリックしてドロップダウン リストを表示し、準備ステップで設定した Service Bus 名前空間を選択します。 このチュートリアルでは、**ContosoSBNamespace** を使います。
 
-   ![設定したルートを示すスクリーンショット。](./media/tutorial-routing/show-routing-rules-for-hub.png)
+   **[Service Bus キュー]**: このフィールドをクリックして表示されるドロップダウン リストから Service Bus キューを選択します。 このチュートリアルでは、**contososbqueue** を使います。
 
-   [ルート] ウィンドウを閉じて、[リソース グループ] ページに戻ります。
+5. **[作成]** をクリックして Service Bus キュー エンドポイントを追加します。 **[Add a route]\(ルートの追加\)** ウィンドウに表示が戻ります。 
+
+6.  ルーティング クエリ情報の残りの部分を完成します。 このクエリでは、エンドポイントとして追加した Service Bus キューにメッセージを送信するための条件を指定します。 画面のフィールドを入力します。 
+
+   **[名前]**: ルーティング クエリの名前を入力します。 このチュートリアルでは、**SBQueueRoute** を使います。 
+
+   **[エンドポイント]**: 設定したエンドポイントが表示されます。
+
+   **[データ ソース]**: ドロップダウン リストから **[Device Telemetry Messages]\(デバイス テレメトリ メッセージ\)** を選びます。
+
+   **[Routing query]\(ルーティング クエリ\)**: クエリ文字列として「`level="critical"`」と入力します。 
+
+   ![Service Bus キューのルーティング クエリの作成を示すスクリーンショット。](./media/tutorial-routing/message-routing-finish-route-sbq-ep.png)
+
+7. **[Save]** をクリックします。 [ルート] ウィンドウに戻ると、次のように、新しいルートが両方とも表示されます。
+
+   ![設定したルートを示すスクリーンショット。](./media/tutorial-routing/message-routing-show-both-routes.png)
+
+8. **[カスタム エンドポイント]** タブをクリックすることで、設定したカスタム エンドポイントを確認できます。
+
+   ![設定したカスタム エンドポイントを示すスクリーンショット。](./media/tutorial-routing/message-routing-show-custom-endpoints.png)
+
+9. [メッセージ ルーティング] ウィンドウを閉じて、[リソース グループ] ウィンドウに戻ります。
 
 ## <a name="create-a-logic-app"></a>ロジック アプリの作成  
 

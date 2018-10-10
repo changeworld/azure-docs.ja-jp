@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 816ba560ccb9b06414dff8ffaea054e88d216b10
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7802aa8ea9798b18d5424c2342ba63c01406b25a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972385"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221708"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -230,7 +230,7 @@ PdM のもう 1 つの便利な手法は、データ内の異常を検出する�
 
 これまでに説明したデータの準備作業によって、データは以下に示すように整理されています。 トレーニング、テスト、および検証データには、この論理スキーマ (この例では、日単位) が含まれています。
 
-| 資産 ID | Time | <Feature Columns> | ラベル |
+| 資産 ID | Time | <Feature Columns> | Label |
 | ---- | ---- | --- | --- |
 | A123 |Day 1 | . . . | . |
 | A123 |Day 2 | . . . | . |
@@ -426,19 +426,19 @@ PdM では、通常の例よりも、少数派クラスを構成する故障の�
 
 ## <a name="training-resources-for-predictive-maintenance"></a>予測メンテナンスのためのトレーニング リソース
 
-[予測メンテナンスのための Azure AI ラーニング パス](https://github.com/Azure/AI-PredictiveMaintenance/blob/master/docs/azure-ai-learning-path-for-predictive-maintenance.md)では、アルゴリズムの背後にある概念や数学、および PdM 問題で使用される手法をより深く理解するための、トレーニング資料が提供されます。 
-
-Microsoft Azure では、一般的な AI の概念や実践に関するコンテンツとトレーニングを、無料で提供しています。
+Microsoft Azure では、一般的な AI の概念や実践に関するコンテンツとトレーニングのほか、PdM 手法の背後にある基本概念のラーニング パスを提供しています。
 
 | トレーニング用のリソース  | 可用性 |
 |:-------------------|--------------|
+| [ツリーおよびランダム フォレストを使用した PdM のラーニング パス](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | パブリック | 
+| [ディープ ラーニングを使用した PdM のラーニング パス](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | パブリック |
 | [Azure の AI 開発者](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | パブリック |
 | [Microsoft AI スクール](http://aischool.microsoft.com/learning-paths) | パブリック |
 | [GitHub からの Azure AI ラーニング](https://github.com/Azure/connectthedots/blob/master/readme.md) | パブリック |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | パブリック |
 | [Microsoft AI YouTube ウェビナー](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | パブリック |
 | [Microsoft AI Show](http://channel9.msdn.com/Shows/AI-Show) | パブリック |
-| [LearnAI@MS](http://learnanalytics.microsoft.com) | Microsoft パートナー用 |
-| [Microsoft Partner Network](http://learningportal.microsoft.com) | Microsoft パートナー用 |
+| [LearnAI@MS](http://learnanalytics.microsoft.com) | パートナー |
+| [Microsoft Partner Network](http://learningportal.microsoft.com) | パートナー |
 
 さらに、MIT などの教育機関やその他の教育的企業によって、AI に関する無料の MOOCS (Massive Open Online Courses) がオンラインで提供されています。

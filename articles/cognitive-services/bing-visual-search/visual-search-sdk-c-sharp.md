@@ -1,25 +1,25 @@
 ---
-title: Visual Search SDK C# のクイック スタート | Microsoft Docs
-description: Visual Search SDK C# コンソール アプリケーションの設定。
+title: 'クイック スタート: Bing Visual Search SDK の使用 (C#)'
 titleSuffix: Azure Cognitive Services
+description: Visual Search SDK C# コンソール アプリケーションの設定。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: e9b93c46cf0702dc58398e247fef79c3f31bb50c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 938768ad366611b8651adc3d554c44c16a3830ef
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213107"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224530"
 ---
-# <a name="visual-search-sdk-c-quickstart"></a>Visual Search SDK C# のクイック スタート
+# <a name="quickstart-bing-visual-search-sdk-c"></a>クイック スタート: Bing Visual Search SDK C#
 
-Bing Visual Search SDK では、Web 要求と結果解析のための REST API 機能が使用されます。
+Bing Visual Search SDK では、Web 要求と結果解析に REST API の機能を使用します。
 Git Hub に [C# Bing Visual Search SDK のサンプル ソース コード](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch)があります。
 
 コード シナリオは次の見出しのセクションに記載されています。
@@ -32,7 +32,7 @@ Git Hub に [C# Bing Visual Search SDK のサンプル ソース コード](http
 
 ## <a name="prerequisites"></a>前提条件
 
-* Visual Studio 2017。 必要に応じて、https://www.visualstudio.com/vs/community/ から無料のコミュニティ バージョンをダウンロードすることができます。
+* Visual Studio 2017。 必要に応じて、 https://www.visualstudio.com/vs/community/ から無料のコミュニティ バージョンをダウンロードすることができます。
 * SDK 呼び出しを認証するには、Cognitive Services API キーが必要です。 [無料試用版キー](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7)にサインアップしてください。 試用版キーは 1 秒あたり 1 回の呼び出しで 7 日間有効です。 運用環境のシナリオでは、[アクセス キーを購入](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)してください。 [価格情報](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/)も参照してください。
 * .NET コア SDK、.net コア 1.1 アプリを実行する機能。 https://www.microsoft.com/net/download/ から、Core、Framework、およびランタイムを入手できます。
 

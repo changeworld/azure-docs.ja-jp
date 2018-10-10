@@ -2,20 +2,22 @@
 title: スケールアウトされたクラウド データベース全体をレポートする | Microsoft Docs
 description: 行方向のパーティション分割でエラスティック クエリを設定する方法
 services: sql-database
-documentationcenter: ''
-manager: craigg
-author: MladjoA
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: MladjoA
 ms.author: mlandzic
-ms.openlocfilehash: fcb498542a496e4a887c825808642d3f586ef1d9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 906c6825dbfdf7d4873c765d0b3eba626ef52e1b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646356"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159365"
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体をレポートする (プレビュー)
 ![シャード間のクエリ][1]
@@ -49,7 +51,7 @@ ms.locfileid: "34646356"
     [;]
 
 > [!NOTE]
-> *"\<username\>"* にサフィックス *"@servername"* が含まれていないことを確認してください。 
+> *"\<username\>"* にサフィックス *"\@servername"* が含まれていないことを確認してください。 
 > 
 > 
 

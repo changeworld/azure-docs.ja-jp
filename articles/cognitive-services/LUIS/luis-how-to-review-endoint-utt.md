@@ -1,22 +1,23 @@
 ---
-title: LUIS で推奨される発話にラベルを付ける | Microsoft Docs
-description: Language Understanding (LUIS) を使用して、推奨される発話にラベルを付け、アクティブな機械学習の促進を支援します。
+title: Language Understanding (LUIS) のためのエンドポイントの発話の確認
+titleSuffix: Azure Cognitive Services
+description: LUIS の画期的な特長として、アクティブ ラーニングの概念が挙げられます。 LUIS でエンドポイントにクエリを実行すると、アクティブ ラーニングが不確かな発話を選択することによって結果の品質を向上させます。 これらの発話にラベルを付け、トレーニングして公開すると、LUIS による発話の識別の精度が向上します。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 5e195b8ef5aeb35b73c22438980fe2b2e3856977
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: a5e0dabe251d14389923df3efe41f6ba80f41bdd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224553"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030797"
 ---
-# <a name="review-endpoint-utterances"></a>エンドポイントの発話の確認
+# <a name="review-endpoint-utterances"></a>エンドポイントの発言の確認
 
 LUIS の画期的な特長として、アクティブ ラーニングの[概念](luis-concept-review-endpoint-utterances.md)が挙げられます。 LUIS でエンドポイントにクエリを実行すると、LUIS はアクティブ ラーニングを使用して結果の品質を向上させます。 アクティブ ラーニング プロセスでは、LUIS によってエンドポイントのすべての発話が検査され、不確かな発話が選択されます。 これらの発話にラベルを付け、トレーニングして公開すると、LUIS による発話の識別の精度が向上します。 
 
@@ -24,8 +25,6 @@ LUIS の画期的な特長として、アクティブ ラーニングの[概念]
 1. **[My Apps]\(マイ アプリ\)** ページでアプリ名を選択してアプリ (例: TravelAgent) を開き、上部のバーの **[Build]\(ビルド\)** を選択します。
 
 2. **[Improve app performance]\(アプリのパフォーマンス向上\)** で **[Review endpoint utterances]\(エンドポイントの発話の確認\)** を選択します。
-
-    ![発話を確認する](./media/label-suggested-utterances/review.png)
 
 3. **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで、**[Filter list by intent or entity]\(意図またはエンティティでリストをフィルター処理する\)** テキスト ボックス内を選択します。 このドロップダウン リストでは、**[INTENTS]\(意図\)** にすべての意図が含まれ、**[ENTITIES]\(エンティティ\)** にすべてのエンティティが含まれています。
 

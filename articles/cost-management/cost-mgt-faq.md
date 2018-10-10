@@ -1,31 +1,31 @@
 ---
-title: Azure Cost Management に関してよく寄せられる質問 | Microsoft Docs
-description: Azure Cost Management についてよく寄せられる質問にお答えします。
+title: Azure の Cloudyn に関してよく寄せられる質問 | Microsoft Docs
+description: Cloudyn についてよく寄せられる質問にお答えします。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/20/2018
+ms.date: 09/18/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 255056390cdbdbee49eba47f8168618929b386c8
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 4984332e1a149ae838bc76a24abec90364f5699e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187259"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221980"
 ---
-# <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure Cost Management に関してよく寄せられる質問
+# <a name="frequently-asked-questions-for-cloudyn"></a>Cloudyn に関してよく寄せられる質問
 
-この記事では、Azure Cost Management についてよく寄せられる質問にお応えします (Cloudyn とも呼ばれます)。 Cost Management について質問がある場合は、「[FAQs for Azure Cost Management (Azure Cost Management に関する FAQ)](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn)」で質問してください。
+この記事では、Cloudyn についてよく寄せられる質問にお答えします。 Cloudyn について質問がある場合は、[Cloudyn に関する FAQ](https://social.msdn.microsoft.com/Forums/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn) のページで質問してください。
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>間接加入契約のエンタープライズ設定に関する問題全般を解決するにはどうすればよいですか
 
 Cloudyn ポータルを始めて使用する際、Enterprise Agreement またはクラウド ソリューション プロバイダー (CSP) ユーザーのお客様の場合、次のメッセージが表示されることがあります。
 
-- **Azure Cost Management 設定**ウィザードに "The specified API key is not a top level enrollment key\(指定された API キーは、最上位レベルの登録キーではありません\)" と表示される。
+- **Cloudyn 設定**ウィザードに "The specified API key is not a top level enrollment key (指定された API キーは、最上位レベルの登録キーではありません)" と表示される。
 - Enterprise Agreement ポータルに "Direct Enrollment – No\(直接登録 – いいえ\)" と表示される。
 - Cloudyn ポータルに "No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account\(過去 30 日間に使用状況データが見つかりませんでした。ディストリビューターに連絡してお使いの Azure アカウントに対してマークアップが有効になっていることを確認してください\)" と表示される。
 
@@ -35,9 +35,9 @@ Cloudyn ポータルを始めて使用する際、Enterprise Agreement または
 
 1. 再販業者がユーザーのアカウントの "_マークアップ_" を有効にする。 手順については、「[間接加入契約者向けオンボード ガイド](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide)」をご覧ください。
 
-2. ユーザーが Cloudyn で使用する Azure Enterprise Agreement キーを生成する。 手順については、「[Adding Your Azure EA (Azure EA を追加する)](https://support.cloudyn.com/hc/en-us/articles/210429585-Adding-Your-AZURE-EA)」または[自分の EA 登録 ID と API キーを探す方法](https://youtu.be/u_phLs_udig)に関するビデオをご覧ください。
+2. ユーザーが Cloudyn で使用する Azure Enterprise Agreement キーを生成する。 手順については、「[Adding Your Azure EA (Azure EA を追加する)](https://support.cloudyn.com/hc/articles/210429585-Adding-Your-AZURE-EA)」または[自分の EA 登録 ID と API キーを探す方法](https://youtu.be/u_phLs_udig)に関するビデオをご覧ください。
 
-Cost Management を有効にできるのは Azure のサービス管理者のみです。 共同管理者のアクセス許可では不十分です。
+Cloudyn を有効にできるのは Azure のサービス管理者のみです。 共同管理者のアクセス許可では不十分です。
 
 Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前に、次の手順に従って Azure Billing API を有効にする必要があります。
 
@@ -74,7 +74,7 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 
 最初に、ユーザー アカウントが*initiallySuspended*する原因となる最も一般的なシナリオを見てみましょうです。
 
-> Admin1 は、Microsoft Cloud ソリューション プロバイダーまたはエンタープライズ契約ユーザーの可能性があります。 彼の組織では、Cost Management の使用を開始する準備が整いました。  彼は、Microsoft Azure portal で登録し、Cloudyn ポータルにサインインします。 彼は、 Cost Management サービスを登録し、Cloudyn ポータルにサインインする人として、*プライマリ管理者*になります。 Admin1 はユーザーアカウントを作成しません。 ただし、Cloudyn ポータルを使用すると、Azure アカウントを作成およびエンティティ階層を設定できます。 Admin1 は、テナント管理者である Admin2　に Cost Management で登録し、Cloudyn ポータルにサインインするよう通知します。
+> Admin1 は、Microsoft Cloud ソリューション プロバイダーまたはエンタープライズ契約ユーザーの可能性があります。 彼の組織では、Cloudyn の使用を開始する準備が整いました。  彼は、Microsoft Azure portal で登録し、Cloudyn ポータルにサインインします。 彼は、Cloudyn サービスを登録し、Cloudyn ポータルにサインインする人として、"*プライマリ管理者*" になります。 Admin1 はユーザーアカウントを作成しません。 ただし、Cloudyn ポータルを使用すると、Azure アカウントを作成およびエンティティ階層を設定できます。 Admin1 は、テナント管理者である Admin2 に Cloudyn で登録し、Cloudyn ポータルにサインインするよう通知します。
 
 > Admin2 は Azure portal を使用して登録します。 しかし、 Cloudyn ポータルにサインインしようとした時、彼はアカウントの**中断**を示すエラーを受け取ります。 プライマリ管理者の Admin1 に、アカウントの中断が通知されます。 Admin1 は、Admin2 のアカウントをアクティブにし、適したエンティティへの *管理エンティティへのアクセス*を付与して、ユーザーの管理アクセス権とユーザー アカウントをアクティブにするアクセスを許可する必要があります。
 
@@ -94,13 +94,13 @@ Cloudyn の電子メール アドレスを Azure の既定のアドレスから�
 
 一方のアカウントがロックアウトされた場合を考慮して、Cloudyn の管理者アカウントを 2 つ以上作成することをお勧めします。
 
-Cloudyn ポータルにサインインできない場合は、Azure Cost Management の正しい URL を使用して Cloudyn にサインインしていることを確認します。 [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade) を使用します。
+Cloudyn ポータルにサインインできない場合は、正しい URL を使用して Cloudyn にサインインしていることを確認します。 [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade) を使用します。
 
 Cloudyn のダイレクト URL https://app.cloudyn.com は使用しないでください。
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Azure の資格情報でアクティブになっていないアカウントをアクティブにする方法を教えてください
 
-Cloudyn で Azure のアカウントが見つかるとすぐに、コスト データがコストベースのレポートに提供されます。 ただし、Cloudyn が使用状況データとパフォーマンス データを提供するには、そのアカウントの Azure の資格情報を登録する必要があります。 手順については、[Azure Resource Manager の追加](https://support.cloudyn.com/hc/en-us/articles/212784085-Adding-Azure-Resource-Manager)に関するページを参照してください。
+Cloudyn で Azure のアカウントが見つかるとすぐに、コスト データがコストベースのレポートに提供されます。 ただし、Cloudyn が使用状況データとパフォーマンス データを提供するには、そのアカウントの Azure の資格情報を登録する必要があります。 手順については、[Azure Resource Manager の追加](https://support.cloudyn.com/hc/articles/212784085-Adding-Azure-Resource-Manager)に関するページを参照してください。
 
 アカウントの Azure の資格情報を追加するには、Cloudyn ポータルで、サブスクリプションではなく、アカウント名の右にある編集記号を選択します。
 
@@ -110,8 +110,8 @@ Cloudyn にお使いの Azure の資格情報が追加されるまで、アカ�
 
 追加のエンティティは、Cloudyn のサブスクリプションに Enterprise Agreement をさらに追加するために使用されます。 エンティティをさらに追加する方法については、次のリンクで説明されています。
 
-- 「[Adding an Entity (エンティティを追加する)](https://support.cloudyn.com/hc/en-us/articles/212016145-Adding-an-Entity)」の記事
-- [コスト エンティティでの階層の定義](https://support.cloudyn.com/hc/en-us/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities)に関するビデオ
+- 「[Adding an Entity (エンティティを追加する)](https://support.cloudyn.com/hc/articles/212016145-Adding-an-Entity)」の記事
+- [コスト エンティティでの階層の定義](https://support.cloudyn.com/hc/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities)に関するビデオ
 
 CSP の場合:
 
@@ -141,7 +141,7 @@ Azure から Cloudyn へのデータの送信が遅延した場合、データ�
 
 ## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Cloudyn コスト レポートでのコストの変動
 
-コスト レポートは、更新した課金ファイルをクラウド サービス プロバイダーが送信するたびに、コストの変動を表示できます。 コストの変動は、通常の日単位または月単位のレポート スケジュール以外でクラウド サービス プロバイダーから新しいファイルを受信したときに発生します。 Cloudyn の再計算に起因するコストの変更は発生しません。 
+コスト レポートは、更新した課金ファイルをクラウド サービス プロバイダーが送信するたびに、コストの変動を表示できます。 コストの変動は、通常の日単位または月単位のレポート スケジュール以外でクラウド サービス プロバイダーから新しいファイルを受信したときに発生します。 Cloudyn の再計算に起因するコストの変更は発生しません。
 
 1 か月にわたってクラウド サービス プロバイダーによって送信されるすべての課金ファイルは、毎日のコストの概算値です。 データが頻繁に更新される場合があり、1 日に複数回更新されることもあります。 更新は、Azure よりも AWS のほうが頻繁に行われます。 コストの合計は、前月の課金計算が完了し、最後の課金ファイルが受信されたときに、変動しなくなります。 通常は、毎月 10 日までには安定します。
 
@@ -155,7 +155,7 @@ Azure から Cloudyn へのデータの送信が遅延した場合、データ�
 
 Azure Resource Manager アクセスを追加し、データが収集されると、**オプティマイザー** オプションが表示されます。 Azure Resource Manager アクセスをアクティブにするには、「[Azure の資格情報でアクティブになっていないアカウントをアクティブにする方法を教えてください](#how-do-i-activate-unactivated-accounts-with-azure-credentials)」を参照してください
 
-## <a name="is-cost-managementcloudyn-agent-based"></a>Cost Management/Cloudyn エージェントがベースになっていますか
+## <a name="is-cloudyn-agent-based"></a>Cloudyn エージェントがベースになっていますか
 
 いいえ。 エージェントは使用されていません。 VM の Azure 仮想マシンのメトリック データは、Microsoft Insights API から収集されます。 Azure VM からメトリック データを収集する場合は、診断設定を有効にする必要があります。
 

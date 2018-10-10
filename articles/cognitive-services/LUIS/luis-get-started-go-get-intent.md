@@ -1,22 +1,23 @@
 ---
-title: Language Understanding (LUIS) の自然言語テキスト分析を GO を使って行う - Azure Cognitive Services | Microsoft Docs
+title: Go 言語クイック スタート - 意図の予測 - LUIS
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、提供されているパブリック LUIS アプリを使って、会話形式のテキストからユーザーの意図を判断します。 GO を使用して、パブリック アプリの HTTP 予測エンドポイントにユーザーの意図をテキストとして送信します。 エンドポイントでは、LUIS によってパブリック アプリのモデルが適用されます。これにより自然言語テキストの意味が分析され、全体的な意図が特定されて、アプリのサブジェクト ドメインに関連したデータが抽出されます。
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b00d815b712d98136b474d1e73afe7e35d1c7ef4
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f19c46fcc7dcff2e02786bb3a03082f831e880a2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160168"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032735"
 ---
-# <a name="quickstart-call-a-luis-endpoint-using-go"></a>クイック スタート: Go を使って LUIS エンドポイントを呼び出す
+# <a name="quickstart-get-intent-using-go"></a>クイック スタート: Go による意図の取得
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -32,11 +33,11 @@ ms.locfileid: "44160168"
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-## <a name="analyze-text-with-browser"></a>ブラウザーでテキストを分析する
+## <a name="get-intent-with-browser"></a>ブラウザーで意図を取得する
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="analyze-text-with-go"></a>Go でテキストを分析する
+## <a name="get-intent-programmatically"></a>プログラムで意図を取得する
 
 Go を使用して、前の手順でブラウザー ウィンドウに表示されたものと同じ結果にアクセスできます。 
 

@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b738cc2fc7db6987b8f4ad54a2c53cc9e69989b3
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: eaf7ff9f7f791fd6d04e6b76d256b4987c50cd13
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181336"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434094"
 ---
 # <a name="unity-sample-walkthrough"></a>Unity サンプルのチュートリアル
 これは Project Acoustics サンプルのチュートリアルです。 Project Acoustics の詳細については、[Project Acoustics の概要](what-is-acoustics.md)に関するページを参照してください。 Project Acoustics パッケージを既存の Unity プロジェクトに追加する方法については、[ファースト ステップ ガイド](getting-started.md)を使用してください。
@@ -29,13 +29,13 @@ ms.locfileid: "40181336"
 **MicrosoftAcoustics.Sample.unitypackage** をダウンロードしてインポートします。 インポートでは、**立体化**や**スクリプト ランタイム バージョン**を含むプロジェクト設定が、プラグインの要件を満たすように更新されます。 これが完了すると、スクリプト ランタイム バージョンを **.NET 4.x と同等**に変更することに関する **AcousticsGeometry.cs** からのエラーが Unity コンソールに表示されます。 この設定の変更はパッケージ インポートの一部として実行されますが、有効にするには Unity の再起動が必要です。 ここで Unity を再起動します。
 
 ## <a name="running-the-sample"></a>サンプルの実行
-このサンプルには、デモ シーン **Assets/AcousticsDemo/ProjectAcousticsDemo.unity** が含まれています。 このシーンには、浮かんでいる立方体 (**階層**での名前は **AudioHolder**) から再生される 1 つの立体化されたオーディオ ソースがあります。 汎用のナビゲーション スクリプトの作成に役立つように、Main Camera は CameraHolder オブジェクトの子です。 
+このサンプルには、デモ シーン **Assets/AcousticsDemo/ProjectAcousticsDemo.unity** が含まれています。 このシーンには 3 つの音源があります。 既定では、1 つの音源のみが再生中で、他の 2 つは一時停止しています。 これらは **[階層]** の **[Sound Sources]\(音源\)** の下にあります。 汎用のナビゲーション スクリプトの作成に役立つように、Main Camera は CameraHolder オブジェクトの子です。 
 
 ![階層ビュー](media/SampleHierarchyView.png)
 
 このシーンは既にベイクされており、**階層**内の **MicrosoftAcoustics** プレハブに関連付けられた ACE ファイルが含まれています。 
 
-Unity エディターの再生ボタンをクリックして、このシーンがどのように聞こえるかを確認します。 W、A、S、D、およびマウスを使用してあちこち移動します。 音響がある場合とない場合のシーンの聞こえ方を比較するには、マウスの左ボタンまたはプライマリ コントローラー ボタンをクリックします。 さまざまなサウンド ソースを繰り返し再生するには、マウスの右ボタンまたはコントローラーの [戻る] ボタンをクリックします。
+Unity エディターの再生ボタンをクリックして、このシーンがどのように聞こえるかを確認します。 デスクトップで、W、A、S、D、およびマウスを使用して場所を移動します。 音響があるシーンとないシーンがどのように聞こえるかを比較するには、オーバーレイ テキストが赤色で表示されるまで **R** ボタンを押して、「Acoustics: Disabled (音響: 無効)」と言います。 その他のコントロールのキーボード ショートカットを表示するには、**F1** を押します。 すべてのコントロールは、右クリックして実行するアクションを選択し、左クリックしてアクションを実行することによって使用できます。
 
 ## <a name="targeting-other-platforms"></a>他のプラットフォームをターゲットにする
 このサンプルには、Windows デスクトップ、UWP、Windows Mixed Reality、Android、および Oculus Go 上で実行するための設定が含まれています。 既定では、このプロジェクトは Windows デスクトップ用に構成されています。 VR プラットフォームをターゲットにするには、プレーヤー設定 (**[編集] > [プロジェクト設定] > [プレーヤー]**) に移動し、**[XR Settings] (XR 設定)** を見つけて、**[Virtual Reality Supported] (サポートされている仮想現実)** チェックボックスにチェックを入れます。

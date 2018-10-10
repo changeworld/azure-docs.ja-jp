@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.openlocfilehash: d6d40b1918422dc7e435c020a368f256c859ae27
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 4e1444f385859044b2dadd83c8e9841d8fc78bb0
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835051"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096413"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する
 Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。
@@ -45,7 +45,7 @@ Machine Learning Web サービス ポータルでは、次のことができま�
 
 ワークスペースの作成方法について詳しくは、「[Azure Machine Learning ワークスペースの作成と共有](create-workspace.md)」をご覧ください。
 
-アクセス許可の設定について詳しくは、「[Azure Portal のユーザーとグループのアクセス権の割り当てを表示 - パブリック プレビュー](../../role-based-access-control/role-assignments-users.md)」をご覧ください。
+アクセス許可の設定の詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 
 ## <a name="manage-new-web-services"></a>新しい Web サービスを管理する

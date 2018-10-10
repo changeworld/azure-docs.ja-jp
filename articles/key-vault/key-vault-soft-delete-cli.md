@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: bryanla
-ms.openlocfilehash: 0554e2e184ce3f3140d3b9e90eb33c20774ed789
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 73ece43c26c3957a1b7dba02a673099f7d35e8d6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303006"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951782"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>CLI で Key Vault の論理的な削除を使用する方法
 
@@ -25,9 +25,9 @@ Azure Key Vault の論理的な削除機能を使用すると、削除された�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure CLI 2.0 - お使いの環境にこのセットアップがない場合は、「[CLI 2.0 を使用した Key Vault の管理](key-vault-manage-with-cli2.md)」をご覧ください。
+- Azure CLI - お使いの環境にこのセットアップがない場合は、「[CLI 2.0 を使用した Key Vault の管理](key-vault-manage-with-cli2.md)」をご覧ください。
 
-Key Vault のCLI に関する具体的なリファレンス情報については、[Azure CLI 2.0 Key Vault のリファレンス](https://docs.microsoft.com/cli/azure/keyvault)に関するページをご覧ください。
+Key Vault のCLI に関する具体的なリファレンス情報については、[Azure CLI Key Vault のリファレンス](https://docs.microsoft.com/cli/azure/keyvault)に関するページをご覧ください。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
