@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 941c29506aa8f17dcb6262495b28dd26e78194d5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e0cdda629ddded121a424af61377c04ee8d958d3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036061"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867546"
 ---
 # <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>チュートリアル 7: Simple エンティティとフレーズ リストを使用して名前を抽出する
 
@@ -299,7 +299,7 @@ LUIS-Samples の GitHub リポジトリから [jobs-phrase-list.csv](https://git
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png "フレーズ リストの値ボックスに単語が入力されている、新しいフレーズ リストの作成ダイアログ ポップアップのスクリーンショット")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-2.png#lightbox)
 
-5. フレーズ リストが使用されるように、アプリを再度[トレーニング](#train-the-luis-app)して[発行](#publish-the-app-to-get-the-endpoint-URL)します。
+5. フレーズ リストが使用されるように、アプリを再度[トレーニング](#train)して[発行](#publish)します。
 
 6. 同じ発話 `This is the lead welder paperwork.` を含むエンドポイントにクエリを再実行します。
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.component: na
-ms.openlocfilehash: 0fe987b00da669daf3830e903d53793d9d1edab6
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.component: ''
+ms.openlocfilehash: 10eeb7a94bd6b2513dc36d0d8a1829eddb452835
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950126"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040052"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>自動スクリプトを使用した Service Manager Web アプリの作成
 

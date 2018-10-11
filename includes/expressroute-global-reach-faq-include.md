@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 343bd2bc4f0e875c84ddb69ea064e30f3f7671c4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b9c4cf6c90ef5507b318b4f13afb982aab151c79
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060343"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874147"
 ---
 ### <a name="what-is-expressroute-global-reach"></a>ExpressRoute Global Reach とは何ですか。
 
@@ -35,13 +35,13 @@ ExpressRoute は、オンプレミスのネットワークから Microsoft ク�
 
 ExpressRoute Global Reach は以下の国でサポートされています。 ExpressRoute 回線は、これらの国のピアリング拠点に作成する必要があります。
 
-* 米国
-* イギリス
+* オーストラリア
 * 香港特別行政区
 * アイルランド
-* オランダ
 * 日本
-
+* オランダ
+* イギリス
+* 米国
 
 ### <a name="i-have-more-than-two-on-premises-networks-each-connected-to-an-expressroute-circuit-can-i-enable-expressroute-global-reach-to-connect-all-of-my-on-premises-networks-together"></a>3 つ以上のオンプレミスのネットワークがあり、それぞれが ExpressRoute 回線に接続されています。 ExpressRoute Global Reach を使用して、オンプレミスのすべてのネットワークを互いに接続することはできますか。
 

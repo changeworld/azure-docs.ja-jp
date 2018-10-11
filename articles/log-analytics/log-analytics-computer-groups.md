@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 23ac75b4afb07c3f8d5f0d90755a5cf2087087e1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 7e4889148a752b552f8bd65702ea5dda450ded31
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130677"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044299"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
 
@@ -49,7 +49,7 @@ Log Analytics のコンピューター グループは、以下の表に示し�
 | プロパティ | 説明 |
 |:---|:---|
 | 表示名   | ポータルに表示する検索の名前。 |
-| カテゴリ       | ポータル内で検索を整理するためのカテゴリ。 |
+| Category       | ポータル内で検索を整理するためのカテゴリ。 |
 | クエリ          | コンピューター グループのクエリ。 |
 | 関数のエイリアス | クエリ内でコンピューター グループを識別するのに使用される一意のエイリアス。 |
 

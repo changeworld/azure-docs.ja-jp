@@ -2,18 +2,17 @@
 title: Azure Resource Manager テンプレートのサンプル - Azure Container Instances
 description: Azure Container Instances のための Azure Resource Manager テンプレートのサンプル
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 05/17/2018
-ms.author: marsma
-ms.openlocfilehash: fcc2e6c52e773d95bcdfe43d881fce036fae6513
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.author: danlep
+ms.openlocfilehash: e825e0bdd08db0e9c1b51c09859aba2e7c716f91
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259618"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856468"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances のための Azure Resource Manager テンプレート
 
@@ -38,7 +37,7 @@ ms.locfileid: "34259618"
 | **Azure リソース** ||
 | [Azure Storage アカウントおよび Azure Files 共有を作成する][az-files] | コンテナー インスタンスで Azure CLI を使用して、ストレージ アカウントと Azure Files 共有します。
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 
 Resource Manager テンプレートを使用してリソースを配置するには、いくつかのオプションがあります。
 

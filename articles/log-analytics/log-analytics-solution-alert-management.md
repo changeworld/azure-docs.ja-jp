@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: acf9e512e188c34c0124832a6a534135790f1e2d
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.component: ''
+ms.openlocfilehash: 29cc2cdc13d07d97bb1da872cbf53ea5353a0e16
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049203"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044588"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 

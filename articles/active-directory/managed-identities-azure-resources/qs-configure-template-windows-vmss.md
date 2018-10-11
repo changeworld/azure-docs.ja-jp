@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 4bfaed3d908574eff3521cedcef4b117d45e1ca2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c6bc77e5ee1fa5e180b41dca50640dc01fee0691
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220921"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017518"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>テンプレートを使用して Azure 仮想マシン スケール セットで Azure リソースのマネージド ID を構成する
 
@@ -146,7 +146,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
 
    お使いの apiVersion が `2018-06-01` であり、VM にシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、userAssignedIdentities ディクショナリ値と共に `UserAssigned` を保持します。
 
-   **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01 以前**
+   **Microsoft.Compute/virtualMachineScaleSets API バージョン 2018-06-01**
 
    お使いの apiVersion が `2017-12-01` であり、仮想マシン スケール セットにシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当てマネージド ID の `identityIds` 配列と共に `UserAssigned` を保持します。 
    
@@ -279,7 +279,7 @@ Azure portal とスクリプトを使う場合と同じように、[Azure Resour
     ]
    ```
 
-   **Microsoft.Compute/virtualMachines API バージョン 2017-12-01 以前**
+   **Microsoft.Compute/virtualMachines API バージョン 2017-12-01**
 
    ```json
    "resources": [

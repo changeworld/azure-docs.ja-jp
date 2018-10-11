@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/25/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 652d39b4d15569b9365543e02f170664a88715fa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.reviewer: anajod
+ms.openlocfilehash: a219ec1797ff74bd1a9ff458e34650d1545f1172
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953261"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585783"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack でハイブリッド クラウド接続を構成する
 

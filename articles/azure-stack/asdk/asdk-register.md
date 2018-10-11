@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/20/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: eacf8fc9335af2dacffa3e13da47ea39a2776f2b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d06ad47dc2962b249b4e7aef5667492e642be35e
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714566"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830125"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack の登録
 Azure Stack Development Kit (ASDK) インストールを Azure に登録して Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データを設定したりできます。 マーケットプレース シンジケーションを含む、Azure Stack のすべての機能をサポートするには、登録が必要です。 登録によって、マーケットプレース シンジケーションや使用状況レポートなどの Azure Stack の重要な機能をテストできるようになるので、登録することをお勧めします。 Azure Stack を登録すると、使用状況が Azure コマースにレポートされます。 使用状況は、登録に使用したサブスクリプションの下に表示されます。 ただし、ASDK のユーザーは、レポートする使用状況に対して課金されることはありません。
@@ -61,11 +61,14 @@ $ExecutionContext.SessionState.LanguageMode
     #Register Azure Stack
     $AzureContext = Get-AzureRmContext
     $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
+    $RegistrationName = "<unique-registration-name>"
+    $UsageReporting = True # Set to False if you using a Capacity Billing Model
     Set-AzsRegistration `
-    -PrivilegedEndpointCredential $CloudAdminCred `
-    -PrivilegedEndpoint AzS-ERCS01 `
-    -BillingModel Development `
-    -RegistrationName "<Unique-name>"
+        -PrivilegedEndpointCredential $CloudAdminCred `
+        -PrivilegedEndpoint AzS-ERCS01 `
+        -BillingModel Development `
+        -RegistrationName $RegistrationName `
+        -EnableUsageReporting $UsageReporting
     ```
 3. スクリプトが完了すると、"**Your environment is now registered and activated using the provided parameters** " (提供されたパラメーターを使用して環境が登録され、アクティブ化されました) というメッセージが表示されます。
 

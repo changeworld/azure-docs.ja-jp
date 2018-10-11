@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: bing-visual-search
+ms.component: bing-visual-search
 ms.topic: overview
 ms.date: 04/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 2ab73281eb050a52b596504ea9cc0e478144ff24
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 85240f1f44278cec0f76c9b4e2e79aa065224840
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226772"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886297"
 ---
 # <a name="what-is-bing-visual-search-api"></a>Bing Visual Search API とは
 

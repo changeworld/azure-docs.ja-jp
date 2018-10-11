@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
 ms.author: danoble
-ms.openlocfilehash: 7067a71eea3ffbfadf006a102ee926fb15347f63
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: a5481f9b2b443a0860ce0df5643427f357e1c294
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423648"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785373"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルの開発とテストでの Azure Cosmos DB Emulator の使用
 
@@ -311,7 +311,7 @@ Azure Cosmos DB Emulator で利用できるコレクションの数は次のよ�
 2. このフォルダー (C:\Users\user_name\AppData\Local\CosmosDBEmulator) 内のすべてのエミュレーター データを削除します。
 3. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、**[終了]** をクリックし、開いているインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
 4. 最新版の [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) をインストールします。
-5. PartitionCount フラグの値を 250 以下に設定して、エミュレーターを起動します。 たとえば、「 `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`」のように入力します。
+5. PartitionCount フラグの値を 250 以下に設定して、エミュレーターを起動します。 (例: `C:\Program Files\Azure Cosmos DB Emulator> CosmosDB.Emulator.exe /PartitionCount=100`)。
 
 ## <a name="controlling-the-emulator"></a>エミュレーターの制御
 
@@ -466,54 +466,6 @@ cd $env:LOCALAPPDATA\CosmosDBEmulatorCert
 2. Windows 検索ボックスに「**アプリと機能**」と入力し、**アプリと機能 (システム設定)** の検索結果をクリックします。
 3. アプリの一覧で、**Azure Cosmos DB Emulator** までスクロールして選択し、**[アンインストール]** をクリックし、確認して再度、**[アンインストール]** をクリックします。
 4. アプリがアンインストールされたら、`C:\Users\<user>\AppData\Local\CosmosDBEmulator` に移動して、フォルダーを削除します。 
-
-## <a name="change-list"></a>変更リスト
-
-タスクバーのローカル エミュレーター アイコンを右クリックし、[バージョン情報] メニュー項目をクリックすると、バージョン番号を確認できます。
-
-### <a name="1220-released-on-april-20-2018"></a>1.22.0. (2018 年 4 月 20 日リリース)
-
-Cosmos DB クラウド サービスと同等のエミュレーター サービスの更新に加えて、PowerShell のドキュメントの改善と、その他いくつかのバグ修正が行われています。
-
-### <a name="12106-released-on-march-27-2018"></a>1.21.0.6 (2018 年 3 月 27 日リリース)
-
-Cosmos DB クラウド サービスと同等のエミュレーター サービスの更新に加えて、このリリースでは 1 つの新機能の追加と、2 つのバグ修正が行われています。
-
-#### <a name="features"></a>機能
-
-1. Start-CosmosDbEmulator コマンドに、スタートアップ オプションが含まれるようになりました。
-
-#### <a name="bug-fixes"></a>バグの修正
-
-1. Microsoft.Azure.CosmosDB.Emulator PowerShell モジュールは、`ServiceControllerStatus` 列挙型が読み込まれていることを確認するようになりました。
-
-2. Microsoft.Azure.CosmosDB.Emulator PowerShell モジュールは、マニフェストを含むようになりました。最初のリリースでは除外されていました。
-
-### <a name="1201084-released-on-february-14-2018"></a>1.20.108.4 (2018 年 2 月 14 日リリース)
-
-このリリースには 1 つの新機能と 2 つのバグ修正があります。 これらの問題を見つけて修正することを支援していただいたお客様に感謝します。
-
-#### <a name="bug-fixes"></a>バグの修正
-
-1. エミュレーターは現在、1 または 2 個のコア (または仮想 CPU) を備えたコンピューター上で動作します。
-
-   Cosmos DB は、さまざまなサービスを実行するためにタスクを割り当てます。 割り当てられるタスクの数は、ホスト上のコアの数の倍数です。 既定の倍数は、コアの数が多い運用環境では適切に機能します。 ただし、1 または 2 個のプロセッサを備えたマシンでは、この倍数が適用された場合、これらのサービスを実行するためのタスクは割り当てられません。
-
-   エミュレーターに構成のオーバーライドを追加することによって、この問題を修正しました。 現在は、倍数 1 を適用します。 さまざまなサービスを実行するために割り当てられるタスクの数は現在、ホスト上のコアの数と同じです。
-
-   このリリースで他に何も行わなかったとしたら、この問題への対処だけになったでしょう。 エミュレーターをホストしている多くの開発/テスト環境は、1 または 2 個のコアを備えていることがわかりました。
-
-2. エミュレーターでは、Microsoft Visual C++ 2015 再頒布可能パッケージをインストールする必要がなくなりました。
-
-   Windows (デスクトップおよびサーバー エディション) の新規インストールには、この再頒布可能パッケージが含まれていないことがわかりました。 そのため、現在はエミュレーターに再頒布可能バイナリをバンドルしています。
-
-#### <a name="features"></a>機能
-
-話を伺った多くのお客様から、エミュレーターがスクリプト可能であったらいいのにとお聞きしました。 そのため、このリリースではいくつかのスクリプト機能を追加しました。 エミュレーターには現在、状態を起動、停止、取得したり、自身をアンインストールしたりするための PowerShell モジュール `Microsoft.Azure.CosmosDB.Emulator` が含まれています。 
-
-### <a name="120911-released-on-january-26-2018"></a>1.20.91.1 (2018 年 1 月 26 日リリース)
-
-* MongoDB 集計パイプラインは既定で有効です。
 
 ## <a name="next-steps"></a>次の手順
 

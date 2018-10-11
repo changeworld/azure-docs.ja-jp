@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 71579e28f389d91498ef5f37c5d43dc9d5140234
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b6fc04fc728f753dc8a3900b26c6c01f03cc7710
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963221"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077240"
 ---
 # <a name="enable-multi-master-for-azure-cosmos-db-accounts"></a>Azure Cosmos DB アカウントのマルチマスターを有効にする
 
@@ -54,9 +54,9 @@ ConnectionPolicy policy = new ConnectionPolicy
    ConnectionProtocol = Protocol.Tcp,
    UseMultipleWriteLocations = true,
 };
-policy.PreferredLocations.Add("West US");
-policy.PreferredLocations.Add("North Europe");
-policy.PreferredLocations.Add("Southeast Asia");
+policy.PreferredLocations.Add(LocationNames.WestUS);
+policy.PreferredLocations.Add(LocationNames.NorthEurope);
+policy.PreferredLocations.Add(LocationNames.SoutheastAsia);
 ```
 
 ## <a name="enable-multi-master-using-powershell"></a>PowerShell を使用してマルチマスターを有効にする

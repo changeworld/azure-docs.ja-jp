@@ -3,7 +3,7 @@ title: Azure Stack でのリージョン管理 | Microsoft Docs
 description: Azure Stack でのリージョン管理の概要。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: e94775d5-d473-4c03-9f4e-ae2eada67c6c
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: efemmano
-ms.openlocfilehash: 0286ed9c7b3fe320b936d33fe3beaddccd6ac0fa
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 401b81ceb7ab71528a4ad11bc7d8944b4d732933
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247536"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078867"
 ---
 # <a name="region-management-in-azure-stack"></a>Azure Stack でのリージョン管理
 

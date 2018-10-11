@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: giladmit
-ms.author: giladm
+author: ronitr
+ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 09/10/2018
-ms.openlocfilehash: d34bb54729fe0adc4b26d213bfaa4ad4fb210ab7
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/04/2018
+ms.openlocfilehash: e40f2f3f0a6551fd9fc38ad138d92f694a09879f
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064186"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803241"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database のデータの検出と分類
 データの検出と分類 (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの**検出**、**分類**、**ラベル付け** & **保護**を行う高度な機能が用意されます。

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/23/2018
 ms.author: douglasl
-ms.openlocfilehash: 53ea7425f0497eca7c95ddefeaa09aa40259672b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 38fbb62de60bc5604210c8ad7339368a04967c27
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216271"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867054"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>イベントに応答してパイプラインを実行するトリガーを作成する
 
@@ -58,11 +58,11 @@ ms.locfileid: "39216271"
 
 ### <a name="map-trigger-properties-to-pipeline-parameters"></a>トリガー プロパティをパイプライン パラメーターにマップする
 
-特定の BLOB に対してイベント トリガーが発生した場合、イベントはその BLOB のフォルダー パスとファイル名を、プロパティ `@triggerBody().folderPath` および `@triggerBody().fileName` にキャプチャします。 パイプラインでこれらのプロパティの値を使用するには、プロパティをパイプライン パラメーターにマップする必要があります。 プロパティをパラメーターにマップしたら、パイプライン全体で `@pipeline.parameters.parameterName` 式を使用して、トリガーでキャプチャされた値にアクセスできます。
+特定の BLOB に対してイベント トリガーが発生した場合、イベントはその BLOB のフォルダー パスとファイル名を、プロパティ `@triggerBody().folderPath` および `@triggerBody().fileName` にキャプチャします。 パイプラインでこれらのプロパティの値を使用するには、プロパティをパイプライン パラメーターにマップする必要があります。 プロパティをパラメーターにマップしたら、パイプライン全体で `@pipeline().parameters.parameterName` 式を使用して、トリガーでキャプチャされた値にアクセスできます。
 
 ![パイプライン パラメーターへのプロパティのマッピング](media/how-to-create-event-trigger/event-based-trigger-image4.png)
 
-たとえば、前のスクリーンショットでは、 `.csv` で終わる BLOB パスがストレージ アカウントで作成されたときに発生するようにトリガーが構成されています。 その結果、`.csv` 拡張子を持つ BLOB がストレージ アカウント内の任意の場所で作成されたときに、`folderPath` および `fileName` プロパティでは新しい BLOB の場所がキャプチャされます。 たとえば、`@triggerBody().folderPath` が `/containername/foldername/nestedfoldername` などの値を持ち、`@triggerBody().fileName` が `filename.csv` などの値を持つとします。 この例では、これらの値はパイプライン パラメーターの `sourceFolder` および `sourceFile` にマップされます。 これらをそれぞれ `@pipeline.parameters.sourceFolder` および `@pipeline.parameters.sourceFile` として、パイプライン全体で使用することができます。
+たとえば、前のスクリーンショットでは、 `.csv` で終わる BLOB パスがストレージ アカウントで作成されたときに発生するようにトリガーが構成されています。 その結果、`.csv` 拡張子を持つ BLOB がストレージ アカウント内の任意の場所で作成されたときに、`folderPath` および `fileName` プロパティでは新しい BLOB の場所がキャプチャされます。 たとえば、`@triggerBody().folderPath` が `/containername/foldername/nestedfoldername` などの値を持ち、`@triggerBody().fileName` が `filename.csv` などの値を持つとします。 この例では、これらの値はパイプライン パラメーターの `sourceFolder` および `sourceFile` にマップされます。 これらをそれぞれ `@pipeline().parameters.sourceFolder` および `@pipeline().parameters.sourceFile` として、パイプライン全体で使用することができます。
 
 ## <a name="json-schema"></a>JSON スキーマ
 

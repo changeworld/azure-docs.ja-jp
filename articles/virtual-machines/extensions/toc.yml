@@ -57,7 +57,7 @@ items:
       href: hpccompute-gpu-linux.md
     - name: Windows
       href: hpccompute-gpu-windows.md
-  - name: Operations Management Suite
+  - name: Log Analytics
     items:
     - name: Linux
       href: oms-linux.md
@@ -112,9 +112,9 @@ items:
     href: export-templates.md
   - name: トラブルシューティング
     href: troubleshoot.md
-ms.openlocfilehash: 0b7a1695409ae151cc904200b9d37a5a2818c8f2
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 61069b7530cd2c35cbf8b33f5999bc21a3f35a05
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053910"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49066685"

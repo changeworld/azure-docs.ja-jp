@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: 8d5f31f09d51794f9ad3c126edf2fd935f379221
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: fa19c932a18102107068303e1474abd992df3161
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296476"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48903030"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS オンプレミス アプリを Azure に移行する 
 
@@ -151,7 +151,7 @@ Azure AD で構成するには追加の手順が必要な構成もいくつか�
 - 名。
 - 姓。
 - Azure AD メール属性、メール プレフィックス、従業員 ID、拡張属性 1 から 15、オンプレミスの **SamAccountName** 属性など、SAML **NameID** のような代替属性。 詳細については、「[NameIdentifier 要求の編集](../develop/active-directory-saml-claims-customization.md)」を参照してください。
-- カスタム要求。 サポートされている要求のマッピングの詳細については、「[Azure Active Directory での要求のマッピング](../active-directory-claims-mapping.md)」および「[Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](../develop/active-directory-saml-claims-customization.md)」を参照してください。
+- カスタム要求。 サポートされている要求のマッピングの詳細については、「[Azure Active Directory での要求のマッピング](../develop/active-directory-claims-mapping.md)」および「[Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](../develop/active-directory-saml-claims-customization.md)」を参照してください。
 
 カスタム要求と **NameID** 要素のほかに、移行の一環として Azure AD で追加の構成手順を必要とする構成は、次のとおりです。
 - AD FS のカスタム承認または Multi-Factor Authentication 規則。 これらは、[Azure AD 条件付きアクセス](../active-directory-conditional-access-azure-portal.md)機能を使用して構成します。
@@ -171,7 +171,7 @@ Azure AD で構成するには追加の手順が必要な構成もいくつか�
 - トークン内の要求の機能:
     - 要求としてのオンプレミスのグループ名の発行。
     - Azure AD 以外のストアからの要求。
-    - 複雑な要求発行変換規則。 サポートされている要求のマッピングの詳細については、「[Azure Active Directory での要求のマッピング](../active-directory-claims-mapping.md)」および「[Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](../develop/active-directory-saml-claims-customization.md)」を参照してください。
+    - 複雑な要求発行変換規則。 サポートされている要求のマッピングの詳細については、「[Azure Active Directory での要求のマッピング](../develop/active-directory-claims-mapping.md)」および「[Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](../develop/active-directory-saml-claims-customization.md)」を参照してください。
     - 要求としてのディレクトリ拡張機能の発行。
     - **NameID** 形式のカスタム仕様。
     - 複数値属性の発行。

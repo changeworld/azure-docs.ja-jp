@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: bcc5f23c163a391639d916b8a50c2c05d228ee91
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.component: ''
+ms.openlocfilehash: c43f8acf7f9278ca412bee9ad15f2d51541cd27b
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432088"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044333"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Log Analytics レコードでの標準プロパティ
 [Log Analytics](../log-analytics/log-analytics-queries.md) のデータは、それぞれにプロパティの固有セットがある特定のデータ型を持つ、レコードのセットとして格納されます。 多くのデータ型には、複数の型にわたって共通の標準プロパティがあります。 この記事では、これらのプロパティについて説明し、プロパティをクエリで使用する方法の例を示します。

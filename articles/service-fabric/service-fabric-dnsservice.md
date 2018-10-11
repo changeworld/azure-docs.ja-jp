@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/20/2018
 ms.author: msfussell
-ms.openlocfilehash: 3c8eac98414fa43213136940fb4c91694a78a2c1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: a420033d96a1366a79f5f2032693c38d7eca4ac3
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397528"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830975"
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric の DNS サービス
 オプションのシステム サービスである DNS サービスをクラスターで有効にし、DNS プロトコルを使用して他のサービスを検出できます。 
@@ -132,7 +132,7 @@ Visual Studio またはお好みのエディターでプロジェクトを開い
 
 ![service endpoints](./media/service-fabric-dnsservice/service-fabric-explorer-dns.png)
 
-次の例では、ステートフル サービスの DNS 名を `statefulsvc.app` に設定しています。 このサービスは、名前付きパーティション構成を使用しています。 パーティション名が小文字になっていることに注目してください。 これは、DNS クエリで対象となるパーティションの要件です。詳細については、「[Making DNS queries on a stateful service partition (ステートフル サービス パーティションに対する DNS クエリの実行)](#making-dns-queries-on-a-stateful-service-partition)」を参照してください。
+次の例では、ステートフル サービスの DNS 名を `statefulsvc.app` に設定しています。 このサービスは、名前付きパーティション構成を使用しています。 パーティション名が小文字になっていることに注目してください。 これは、DNS クエリで対象となるパーティションの要件です。詳細については、「[Making DNS queries on a stateful service partition (ステートフル サービス パーティションに対する DNS クエリの実行)](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-dnsservice#preview-making-dns-queries-on-a-stateful-service-partition)」を参照してください。
 
 ```xml
     <Service Name="Stateful1" ServiceDnsName="statefulsvc.app" />

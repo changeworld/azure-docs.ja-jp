@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: fbbc5a199116e46aac0874f3dc6d6d9aa18c60cd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b0fb2cd79c0ee685ad2000c5444a84d53e462f24
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954024"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868277"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>Azure データ エクスプローラーのデータベース アクセス許可を管理する
 
@@ -31,7 +31,6 @@ Azure データ エクスプローラーには、次のロールがあります�
 |データベース ユーザー              |データベース内のすべてのデータとメタデータを読み取ることができます。 さらに、データベース内でテーブルを作成し (そのテーブルのテーブル管理者になり)、機能を作成することができます。|
 |データベース表示者            |データベース内のすべてのデータとメタデータを読み取ることができます。|
 |データベース取り込み者          |データベース内の既存のすべてのテーブルにデータを取り込むことはできますが、データを照会することはできません。|
-|データベース非制限表示者|**RestrictedViewAccess** ポリシーが有効になっているテーブルを照会することができます。 他のテーブルを照会することはできません。|
 |データベース監視者           |データベースおよびその子エンティティのコンテキストで ".show ..." コマンドを実行することができます。|
 |テーブル管理者                |特定のテーブルのスコープ内で何でも実行することができます。 |
 |テーブル取り込み者             |特定のテーブルのスコープ内でデータを取り込むことはできますが、データを照会することはできません。|

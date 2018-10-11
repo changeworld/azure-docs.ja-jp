@@ -6,15 +6,16 @@ author: rastala
 ms.author: roastala
 manager: cgronlun
 ms.service: machine-learning
+ms.component: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 9/24/2018
-ms.openlocfilehash: 260e209bcf00396ee545851684038578c4fd148a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f221d160685dd12fb18a611432911baa60ebc6f7
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971044"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888121"
 ---
 # <a name="development-environment-for-azure-machine-learning"></a>Azure Machine Learning の開発環境 
 

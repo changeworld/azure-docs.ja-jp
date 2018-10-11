@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 478b678f514959b8ae9f6492d4920faf894c321d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 5e0e4646b14a5bff5c40d0817ab8ecccf1046ea9
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004183"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077767"
 ---
 # <a name="set-up-additional-process-servers-for-scalability"></a>スケーラビリティのために追加のプロセス サーバーを設定する
 

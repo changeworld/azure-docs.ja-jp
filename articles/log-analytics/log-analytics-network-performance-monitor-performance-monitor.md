@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.component: na
-ms.openlocfilehash: 3d51399edbb9679d1cf7b62b075ba34aa5ede42f
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 1254afc1ad1c513c18d565be8a6543a6ee0ae94b
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131340"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040593"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor ソリューション: パフォーマンスの監視
 

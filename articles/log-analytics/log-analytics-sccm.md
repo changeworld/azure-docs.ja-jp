@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 611f3e70425cd6c80f8a976606dc6cd592571c6e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.component: ''
+ms.openlocfilehash: 433914bc4501b13ba65015d15b0c513a38bf1273
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503470"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041664"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Configuration Manager を Log Analytics に接続する
 お使いの System Center Configuration Manager 環境を Azure Log Analytics に接続して、デバイス コレクション データを同期し、Log Analytics と Azure Automation でこれらのコレクションを参照することができます。  
@@ -49,7 +49,7 @@ Configuration Manager と OMS の接続の詳細については、「[Sync data 
 > Log Analytics へのアクセス許可を Configuration Manager に指定する必要があります。 そうしないと、Configuration Manager で構成ウィザードを使用するときにエラー メッセージが表示されます。
 >
 
-1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure ポータル](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. Log Analytics ワークスペースの一覧で、変更するワークスペースを選びます。
 3. 左側のウィンドウで **[アクセス制御 (IAM)]** を選びます。
 4. [アクセス制御] ページで、**[追加]** をクリックして **[アクセス許可の追加]** ウィンドウを表示します。

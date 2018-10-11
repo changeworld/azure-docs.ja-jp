@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: b9701eae026522238424a21ae3ecf2baa40334fa
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 6c8498a43b127fecc02473177ac955ae51a647d6
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701767"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854118"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>.NET で Azure Relay WCF リレーを使用する方法
 この記事では、Azure Relay サービスの使用方法について説明します。 サンプルは、C# で記述され、Windows Communication Foundation (WCF) API と Service Bus アセンブリに含まれている拡張機能を使用しています。 Azure Relay の詳細については、[Azure Relay の概要](relay-what-is-it.md)に関するページをご覧ください。
@@ -220,7 +220,6 @@ using (var ch = cf.CreateChannel())
 これで、Azure Relay の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先をご覧ください。
 
 * [What is Azure Relay? (Azure Relay とは)](relay-what-is-it.md)
-* [Azure Service Bus アーキテクチャの概要](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md)
 * Service Bus のサンプルを [Azure のサンプル][Azure samples]からダウンロードするか、[Service Bus サンプルの概要][overview of Service Bus samples]をご覧ください。
 
 [Shared Access Signature Authentication with Service Bus]: ../service-bus-messaging/service-bus-shared-access-signature-authentication.md

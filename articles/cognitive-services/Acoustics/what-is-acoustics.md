@@ -1,20 +1,21 @@
 ---
-title: 音響効果の概要 - Cognitive Services
+title: Project Acoustics とは
+titlesuffix: Azure Cognitive Services
 description: VR や従来型の画面を対象にしたプロジェクトは、Project Acoustics Unity プラグインによって閉塞、反響、立体化の効果を利用することができます。
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
 ms.topic: overview
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 08c6d8b8e229aabcc05fdfde2d8ffadf3a6346c2
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 6a3c97ead40cfb24604edac0624e38a9b0713fc0
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181006"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901026"
 ---
 # <a name="what-is-project-acoustics"></a>Project Acoustics とは
 VR や従来型の画面を対象にしたプロジェクトは、Project Acoustics Unity プラグインによって閉塞、反響、立体化の効果を利用することができます。 物理学に基づく波形シミュレーションにデザイナーの意図を重ねるゲーム音響効果を設計する手段となります。

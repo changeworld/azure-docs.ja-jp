@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: anajod
-ms.openlocfilehash: 5b10ff3574259fcad329dfb5c7a5bc86861258c5
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e784185cfc7f2c588db354bab1cfb36934b9c417
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575866"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585868"
 ---
 # <a name="optimize-sql-server-performance"></a>SQL Server のパフォーマンスを最適化する
 

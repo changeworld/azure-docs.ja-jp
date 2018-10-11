@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 58ccc328281bb70e00294ccef054232108212ccc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 930e561c1777ccfcb8046c824853ebb12367cee5
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997660"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248102"
 ---
 # <a name="azure-database-for-mariadb-server-firewall-rules"></a>Azure Database for MariaDB サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
@@ -46,7 +46,9 @@ Azure からアプリケーションが Azure Database for MariaDB サーバー�
 ![ポータルで [Azure サービスへのアクセスを許可] を構成する](./media/concepts-firewall-rules/allow-azure-services.png)
 
 ## <a name="programmatically-managing-firewall-rules"></a>ファイアウォール規則のプログラムによる管理
-ファイアウォール規則は、Azure Portal に加え、Azure CLI を使用してプログラムで管理することができます。 <!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
+ファイアウォール規則は、Azure Portal に加え、Azure CLI を使用してプログラムで管理することができます。 
+
+<!--See also [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)-->
 
 ## <a name="troubleshooting-the-database-firewall"></a>データベース ファイアウォールのトラブルシューティング
 Microsoft Azure Database for MariaDB サーバー サービスに期待どおりにアクセスできない場合は、次の点を検討してください。

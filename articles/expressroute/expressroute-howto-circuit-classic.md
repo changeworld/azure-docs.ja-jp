@@ -7,17 +7,17 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: ganesr;cherylmc
-ms.openlocfilehash: 407782ff59147f227f5f34bc3318333093b4f57e
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 820caf1ef1b5a92ccea066ef1b5fc8e20737ef21
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39283573"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870421"
 ---
 # <a name="modify-an-expressroute-circuit-using-powershell-classic"></a>PowerShell を使用した ExpressRoute 回線の変更 (クラシック)
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](expressroute-howto-circuit-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
 > * [Azure CLI](howto-circuit-cli.md)
 > * [ビデオ - Azure Portal](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
@@ -34,7 +34,7 @@ ms.locfileid: "39283573"
 
 ## <a name="before-you-begin"></a>開始する前に
 
-Azure サービス管理 (SM) PowerShell モジュールと ExpressRoute モジュールの最新版をインストールしてください。  次の例を使用する場合は、バージョン番号 (この例では 5.1.1) がコマンドレットのリリース時の新しいバージョンに変更されることに注意してください。
+最新バージョンの Azure Service Management (SM) PowerShell モジュールと ExpressRoute モジュールをインストールします。  次の例を使用する場合は、コマンドレットの新しいバージョンがリリースされると、バージョン番号 (この例では、5.1.1) が変わることに注意してください。
 
 ```powershell
 Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
@@ -47,7 +47,7 @@ Azure アカウントにサインインするには、次の例を使用しま�
 
 1. 管理者特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
 
-  ```powershel
+  ```powershell
   Connect-AzureRmAccount
   ```
 2. アカウントのサブスクリプションを確認します。

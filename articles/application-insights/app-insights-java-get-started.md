@@ -3,7 +3,7 @@ title: Azure Application Insights を使用した Java Web アプリの分析 | 
 description: 'Application Insights を使用した Java Web アプリのアプリケーション パフォーマンス監視 '
 services: application-insights
 documentationcenter: java
-author: mrbullwinkle
+author: lgayhardt
 manager: carmonm
 ms.assetid: 051d4285-f38a-45d8-ad8a-45c3be828d91
 ms.service: application-insights
@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2018
-ms.author: mbullwin
-ms.openlocfilehash: 093124432314472da06065fad3a7cdff0f558d22
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/09/2018
+ms.author: lagayhar
+ms.openlocfilehash: 216cebe74b7661e0ca336480774a56ea953ddc75
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999819"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069473"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -177,49 +177,60 @@ Application Insights SDK は、次の順序でキーを探します。
 Application Insights の `WebRequestTrackingFilter` を Configuration クラスに登録します。
 
 ```Java
-package devCamp.WebApp.configurations;
+package <yourpackagename>.configurations;
 
-    import javax.servlet.Filter;
+import javax.servlet.Filter;
 
-    import org.springframework.boot.web.servlet.FilterRegistrationBean;
-    import org.springframework.context.annotation.Bean;
-    import org.springframework.core.Ordered;
-    import org.springframework.beans.factory.annotation.Value;
-    import org.springframework.context.annotation.Configuration;
-    import com.microsoft.applicationinsights.TelemetryConfiguration;
-    import com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.Ordered;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import com.microsoft.applicationinsights.TelemetryConfiguration;
+import com.microsoft.applicationinsights.web.internal.WebRequestTrackingFilter;
 
+@Configuration
+public class AppInsightsConfig {
 
-    @Configuration
-    public class AppInsightsConfig {
-
-    //Initialize AI TelemetryConfiguration via Spring Beans
-        @Bean
-        public String telemetryConfig() {
-            String telemetryKey = System.getenv("APPLICATION_INSIGHTS_IKEY");
-            if (telemetryKey != null) {
-                TelemetryConfiguration.getActive().setInstrumentationKey(telemetryKey);
-            }
-            return telemetryKey;
+    @Bean
+    public String telemetryConfig() {
+        String telemetryKey = System.getenv("<instrumentation key>");
+        if (telemetryKey != null) {
+            TelemetryConfiguration.getActive().setInstrumentationKey(telemetryKey);
         }
-    
-    //Set AI Web Request Tracking Filter
-        @Bean
-        public FilterRegistrationBean aiFilterRegistration(@Value("${spring.application.name:application}") String applicationName) {
-           FilterRegistrationBean registration = new FilterRegistrationBean();
-           registration.setFilter(new WebRequestTrackingFilter(applicationName));
-           registration.setName("webRequestTrackingFilter");
-           registration.addUrlPatterns("/*");
-           registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 10);
-           return registration;
-       } 
-
-    //Set up AI Web Request Tracking Filter
-        @Bean(name = "WebRequestTrackingFilter")
-        public Filter webRequestTrackingFilter(@Value("${spring.application.name:application}") String applicationName) {
-            return new WebRequestTrackingFilter(applicationName);
-        }   
+        return telemetryKey;
     }
+
+    /**
+     * Programmatically registers a FilterRegistrationBean to register WebRequestTrackingFilter
+     * @param webRequestTrackingFilter
+     * @return Bean of type {@link FilterRegistrationBean}
+     */
+    @Bean
+    public FilterRegistrationBean webRequestTrackingFilterRegistrationBean(WebRequestTrackingFilter webRequestTrackingFilter) {
+        FilterRegistrationBean registration = new FilterRegistrationBean();
+        registration.setFilter(webRequestTrackingFilter);
+        registration.addUrlPatterns("/*");
+        registration.setOrder(Ordered.HIGHEST_PRECEDENCE + 10);
+        return registration;
+    }
+
+
+    /**
+     * Creates bean of type WebRequestTrackingFilter for request tracking
+     * @param applicationName Name of the application to bind filter to
+     * @return {@link Bean} of type {@link WebRequestTrackingFilter}
+     */
+    @Bean
+    @ConditionalOnMissingBean
+
+    public WebRequestTrackingFilter webRequestTrackingFilter(@Value("${spring.application.name:application}") String applicationName) {
+        return new WebRequestTrackingFilter(applicationName);
+    }
+
+
+}
 ```
 
 > [!NOTE]
@@ -232,7 +243,6 @@ package devCamp.WebApp.configurations;
 このクラスにより、`WebRequestTrackingFilter` が http フィルター チェーンの最初のフィルターとして構成されます。 また、取得可能な場合は、オペレーティング システムの環境変数からインストルメンテーション キーがプルされます。
 
 > ここでは Spring MVC 構成ではなく Web http フィルター構成を使用しています。なぜなら、これは Spring Boot アプリケーションであり、独自の Spring MVC 構成があるためです。 Spring MVC に固有の構成については、以降のセクションを参照してください。
-
 
 ### <a name="applications-using-webxml"></a>Web.xml を使用するアプリケーション
 プロジェクトの web.xml ファイルを見つけて開きます。アプリケーション フィルターが構成されている web-app ノードの下に次のコードをマージします。
@@ -251,6 +261,11 @@ package devCamp.WebApp.configurations;
        <filter-name>ApplicationInsightsWebFilter</filter-name>
        <url-pattern>/*</url-pattern>
     </filter-mapping>
+
+   <!-- This listener handles shutting down the TelemetryClient when an application/servlet is undeployed. -->
+    <listener>
+      <listener-class>com.microsoft.applicationinsights.web.internal.ApplicationInsightsServletContextListener</listener-class>
+    </listener>
 ```
 
 #### <a name="if-youre-using-spring-web-mvc-31-or-later"></a>Spring Web MVC 3.1 以降を使用している場合

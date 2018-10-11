@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.openlocfilehash: d4fbbcb81433876e4c57763b8a90b3ff1168a699
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 5fc4ccacaaedfc3fe6c77fa9a0ad693530bdde93
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842449"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855427"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 用のオンプレミス データ ゲートウェイのインストール
 
@@ -101,7 +101,7 @@ Power BI、Microsoft Flow、PowerApps、Azure Analysis Services など、他の�
 
 ## <a name="install-data-gateway"></a>データ ゲートウェイをインストールする
 
-1. [ゲートウェイ インストーラーをローカル コンピューターにダウンロードして保存し、実行します](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)。
+1. [ゲートウェイ インストーラーをローカル コンピューターにダウンロードして保存し、実行します](https://aka.ms/on-premises-data-gateway-installer)。
 
 2. 既定のインストール パスをそのまま使用します。または、ゲートウェイをインストールしたいコンピューター上の場所を指定します。
 
@@ -182,7 +182,7 @@ Power BI、Microsoft Flow、PowerApps、Azure Analysis Services など、他の�
 
 1. コンピューターの**コントロール パネル**から、**[プログラムと機能]** に移動します。 プログラムの一覧で **[オンプレミス データ ゲートウェイ]** を選択してから、**[アンインストール]** を選択します。
 
-2. [オンプレミス データ ゲートウェイを再インストールします](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)。
+2. [オンプレミス データ ゲートウェイを再インストールします](https://aka.ms/on-premises-data-gateway-installer)。
 
 3. インストーラーが開いたら、ゲートウェイのインストールに使用したのと同じ職場または学校アカウントでサインインします。
 
@@ -211,7 +211,7 @@ Power BI、Microsoft Flow、PowerApps、Azure Analysis Services など、他の�
 > [!NOTE]
 > このコマンドは、ネットワーク接続と、Azure Service Bus への接続のみをテストします。 ゲートウェイ、または資格情報とゲートウェイの詳細を暗号化して格納するゲートウェイ クラウド サービスに対しては、何も行われません。 
 >
-> また、このコマンドは、Windows Server 2012 R2 以降と Windows 8.1 以降でのみ使用できます。 それより前のバージョンの OS では、Telnet を使用して接続をテストすることができます。 詳細については、[Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) に関するページを参照してください。
+> また、このコマンドは、Windows Server 2012 R2 以降と Windows 8.1 以降でのみ使用できます。 それより前のバージョンの OS では、Telnet を使用して接続をテストすることができます。 詳細については、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) に関するページを参照してください。
 
 結果は次の例のようになります。この例では、**TcpTestSucceeded** が **True** に設定されています。
 
@@ -232,7 +232,7 @@ Azure Service Bus から Azure データ センターへの接続も、ファイ
 
 ## <a name="configure-ports"></a>ポートの構成
 
-ゲートウェイによって [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) への送信接続が作成され、送信ポートの TCP 443 (既定)、5671、5672、9350 ～ 9354 で通信が行われます。 ゲートウェイでは受信ポートは必要ありません。 詳細については、[Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) に関するページを参照してください。
+ゲートウェイによって [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) への送信接続が作成され、送信ポートの TCP 443 (既定)、5671、5672、9350 ～ 9354 で通信が行われます。 ゲートウェイでは受信ポートは必要ありません。 詳細については、[Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) に関するページを参照してください。
 
 ゲートウェイでは、以下の完全修飾ドメイン名が使用されます。
 
@@ -362,7 +362,7 @@ Azure Service Bus 接続は、完全修飾ドメイン名ではなく IP アド�
 **Q**: ゲートウェイ Windows サービスは、Azure Active Directory アカウントを使用して実行できますか? <br/>
 **A**: いいえ。Windows サービスには有効な Windows アカウントが必要です。
 
-### <a name="disaster-recovery"></a>ディザスター リカバリー
+### <a name="disaster-recovery"></a>障害復旧
 
 **Q**: 障害復旧のためにはどのようなオプションを使用できますか? <br/>
 **A**: 回復キーを使用して、ゲートウェイを復元または移動することができます。 ゲートウェイをインストールするときに、回復キーを指定します。

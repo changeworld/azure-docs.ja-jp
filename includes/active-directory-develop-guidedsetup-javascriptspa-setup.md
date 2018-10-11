@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: navyasric
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 3274e5929985b2a78c5b463622be6cdbd7320d79
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: d7b78519f1e81fed1f74b6f3a2fd2720cd28cce4
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47061058"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48842925"
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Web サーバーまたはプロジェクトの設定
 

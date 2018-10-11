@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: container-instances
-author: mmacy
+author: dlepow
 ms.service: container-instances
 ms.topic: include
 ms.date: 03/20/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: be61695cc57eca3ddf2c03aeb4912348e9535741
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: da63a5418ab94623f6ce3c9f35a085dd8b198d1a
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060362"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48858096"
 ---
 このチュートリアルを完了するには、次の要件を満たす必要があります。
 

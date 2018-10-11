@@ -2,19 +2,18 @@
 title: クイックスタート - Azure Portal を使用した Azure のプライベート Docker レジストリの作成
 description: Azure Portal を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 55da52e0d314c353c669c56ad918c4dd6bef44c3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a75d7e599b10b1d56bd41db1d6785dace67d5d06
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32169807"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857841"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用したコンテナー レジストリの作成
 
@@ -24,7 +23,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal (https://portal.azure.com) にサインインします。
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 

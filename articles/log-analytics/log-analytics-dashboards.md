@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 7b17b23d30b15fe71dcf031ac67f0c54fc3cfe3e
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: bf5b37bfa2cb103ef8151203359041fa4bd10f0b
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129314"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043330"
 ---
 # <a name="create-a-custom-dashboard-for-use-in-log-analytics"></a>Log Analytics での使用するカスタム ダッシュボードの作成
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: d75f8654a33d670f107508b9e91661b1a7719755
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: adc9d64c4756e055b3ff9b772feebd80902d2c9f
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408557"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857875"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Shared Access Signature による Service Bus のアクセスの制御
 
@@ -31,7 +31,7 @@ SAS は、承認規則に基づいて Service Bus へのアクセスを保護し
 
 Shared Access Signature は、簡単なトークンを使う要求ベースの承認メカニズムです。 SAS を使うと、ネットワーク経由でキーが渡されることがなくなります。 キーは、後でサービスによって検証が可能な情報に暗号で署名するために使われます。 SAS は、承認規則と照合キーをクライアントが直接所有しているユーザー名とパスワードの方式と同じように使うことができます。 また、SAS は使用できます、フェデレーション セキュリティ モデルと同じように使うこともできます。その場合、クライアントは時間制限のある署名されたアクセス トークンをセキュリティ トークン サービスから受け取り、署名キーを所有することはありません。
 
-Service Bus での SAS 認証は、アクセス権が関連付けられている名前付きの [Shared Access Authorization 規則](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)と、プライマリおよびセカンダリの暗号化キーのペアによって構成されます。 キーは、Base64 で表された 256 ビットの値です。 規則の構成は、名前空間レベルおよび Service Bus の[リレー](service-bus-fundamentals-hybrid-solutions.md#relays)、[キュー](service-bus-fundamentals-hybrid-solutions.md#queues)、[トピック](service-bus-fundamentals-hybrid-solutions.md#topics)で行うことができます。
+Service Bus での SAS 認証は、アクセス権が関連付けられている名前付きの [Shared Access Authorization 規則](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)と、プライマリおよびセカンダリの暗号化キーのペアによって構成されます。 キーは、Base64 で表された 256 ビットの値です。 規則の構成は、名前空間レベルおよび Service Bus の[リレー](../service-bus-relay/relay-what-is-it.md)、[キュー](/service-bus-messaging/service-bus-messaging-overview.md#queues)、[トピック](/service-bus-messaging/service-bus-messaging-overview.md#topics)で行うことができます。
 
 [Shared Access Signature](/dotnet/api/microsoft.servicebus.sharedaccesssignaturetokenprovider) のトークンには、選択された承認規則、アクセスする必要があるリソースの URI、有効期限、および選択された承認規則のプライマリまたはセカンダリ暗号化キーを使ってこれらのフィールドについて計算された HMAC-SHA256 暗号化署名が含まれます。
 
@@ -301,7 +301,6 @@ AMQP メッセージには一連のプロパティと、簡単なメッセージ
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 * [Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)

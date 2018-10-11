@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 240e56e3e482b81d6336f7d6d2a1f5688953ecd8
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: e668b2e989571d911c967d08d8012b11adaebd4d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131553"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041035"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>OMS Agent for Linux の Log Analytics で Nagios と Zabbix からのアラートを収集する 
 [Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。 [他のソースからのアラート](log-analytics-alerts.md)と共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように OMS Agent for Linux を構成する方法について説明します。

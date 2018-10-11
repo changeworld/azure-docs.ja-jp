@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 20c3642bb9f9ad5089c37bb6da8562e570896cb4
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a54fe3099854e6e5200a50ec6ef5db1401a223bf
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38308482"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077614"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>フェールバックのために Azure でプロセス サーバーを設定する
 

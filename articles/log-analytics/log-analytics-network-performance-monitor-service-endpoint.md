@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.component: na
-ms.openlocfilehash: 3c9352e8e4aee7817b1195c15f74503e86e597ea
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.component: ''
+ms.openlocfilehash: 04e348d2b144bdb8fd626c52f990a560d76c08a2
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37434921"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044673"
 ---
 # <a name="service-connectivity-monitor"></a>サービス接続モニター
 

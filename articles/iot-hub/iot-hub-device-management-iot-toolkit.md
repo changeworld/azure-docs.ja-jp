@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 8/3/2018
 ms.author: junhan
-ms.openlocfilehash: ef99f4be97f5168add44d373a7e74de62347d110
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d79e5b0b5281d502523cd92fbdb21106ffde0c21
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450272"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040135"
 ---
 # <a name="use-azure-iot-toolkit-extension-for-visual-studio-code-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイスの管理に Visual Studio Code 用 Azure IoT Toolkit 拡張機能を使用する
 
@@ -23,8 +23,8 @@ ms.locfileid: "39450272"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| 管理オプション          | タスク                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| 管理オプション          | タスク                    |
+|----------------------------|--------------------------------|
 | ダイレクト メソッド             | メッセージの送信開始や停止、デバイスの再起動などの機能をデバイスに実行させます。                                        |
 | デバイス ツインの読み取り           | デバイスの報告される状態を取得します。 たとえば、デバイスは、現在 LED が点滅していることを報告します。                                    |
 | デバイス ツインの更新         | デバイスを特定の状態にします (LED を緑に設定したり、テレメトリの送信間隔を 30 分に設定したりします)。         |
@@ -44,18 +44,22 @@ ms.locfileid: "39450272"
 
 ## <a name="what-you-need"></a>必要なもの
 
-- 有効な Azure サブスクリプション
-- サブスクリプションの Azure IoT Hub。
-- [Visual Studio Code](https://code.visualstudio.com/)
-- [Azure IoT ツールキット](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
+* 有効な Azure サブスクリプション
+* サブスクリプションの Azure IoT Hub。
+* [Visual Studio Code](https://code.visualstudio.com/)
+* [Azure IoT ツールキット](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>サインインして IoT ハブにアクセスする
 
 1. VS Code の**エクスプローラー** ビューで、左下隅の **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** セクションを展開します。
-1. コンテキスト メニューで **[Select IoT Hub]\(IoT Hub の選択\)** をクリックします。
-1. 右下隅にポップアップが表示され、Azure への初めてのサインインを行うことができます。
-1. サインインすると、Azure サブスクリプションの一覧が表示されるので、Azure サブスクリプションと IoT Hub を選択します。
-1. 数秒で **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** タブにデバイスの一覧が表示されます。
+
+2. コンテキスト メニューで **[Select IoT Hub]\(IoT Hub の選択\)** をクリックします。
+
+3. 右下隅にポップアップが表示され、Azure への初めてのサインインを行うことができます。
+
+4. サインインすると、Azure サブスクリプションの一覧が表示されるので、Azure サブスクリプションと IoT Hub を選択します。
+
+5. 数秒で **[Azure IoT Hub Devices]\(Azure IoT Hub デバイス\)** タブにデバイスの一覧が表示されます。
 
    > [!Note]
    > **[Set IoT Hub Connection String]\(IoT Hub 接続文字列の設定\)** を選択して設定することもできます。 ポップアップ ウィンドウに、IoT デバイスの接続先 IoT ハブの接続文字列を入力します。
@@ -63,27 +67,34 @@ ms.locfileid: "39450272"
 ## <a name="direct-methods"></a>ダイレクト メソッド
 
 1. デバイスを右クリックし、**[ダイレクト メソッドの呼び出し]** を選択します。 
-1. 入力ボックスにメソッド名とペイロードを入力します。
-1. 結果が、**[OUTPUT]\(出力\)** > **[Azure IoT Toolkit]\(Azure IoT Toolkit\)** ビューに表示されます。
+
+2. 入力ボックスにメソッド名とペイロードを入力します。
+
+3. 結果が、**[OUTPUT]\(出力\)** > **[Azure IoT Toolkit]\(Azure IoT Toolkit\)** ビューに表示されます。
 
 ## <a name="read-device-twin"></a>デバイス ツインの読み取り
 
 1. デバイスを右クリックし、**[デバイス ツインの編集]** を選択します。 
-1. **azure-iot-device-twin.json** ファイルが開き、デバイス ツインの内容が表示されます。
+
+2. **azure-iot-device-twin.json** ファイルが開き、デバイス ツインの内容が表示されます。
 
 ## <a name="update-device-twin"></a>デバイス ツインの更新
 
 1. **tags** フィールドまたは **properties.desired** フィールドを編集します。
-1. **azure-iot-device-twin.json** ファイルを右クリックします。
-1. **[デバイス ツインの更新]** を選択してデバイス ツインを更新します。
+
+2. **azure-iot-device-twin.json** ファイルを右クリックします。
+
+3. **[デバイス ツインの更新]** を選択してデバイス ツインを更新します。
 
 ## <a name="send-cloud-to-device-messages"></a>C2D メッセージの送信
 
 IoT Hub からデバイスにメッセージを送信するには、次の手順に従います。
  
 1. デバイスを右クリックして、**[Send C2D Message to Device]\(C2D メッセージをデバイスに送信する\)** を選択します。 
-1. 入力ボックスにメッセージを入力します。
-1. 結果が、**[OUTPUT]\(出力\)** > **[Azure IoT Toolkit]\(Azure IoT Toolkit\)** ビューに表示されます。
+
+2. 入力ボックスにメッセージを入力します。
+
+3. 結果が、**[OUTPUT]\(出力\)** > **[Azure IoT Toolkit]\(Azure IoT Toolkit\)** ビューに表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -2,18 +2,17 @@
 title: Azure Container Registry へのイメージの保存
 description: Azure Container Registry に Docker コンテナー イメージが保存される方法について、セキュリティ、冗長性、および容量も含めて説明します。
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
-ms.author: marsma
-ms.openlocfilehash: 65ff60be992440c69e50a084b467a8efbb19574e
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.author: danlep
+ms.openlocfilehash: ba3c6a6bd4fb330eb64b5408eb72095f4de46a7b
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307151"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856650"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Azure Container Registry へのコンテナー イメージの保存
 
@@ -41,7 +40,7 @@ Azure では、geo 冗長ストレージ スキームを使用して、コンテ
 | イメージ | 制限なし |
 | レイヤー | 制限なし |
 | タグ | 制限なし|
-| ストレージ | 5 TB |
+| Storage | 5 TB |
 
 膨大な数のリポジトリとタグは、レジストリのパフォーマンスに影響する可能性があります。 レジストリのメンテナンス ルーチンの一部として、未使用のリポジトリ、タグ、およびイメージを定期的に削除してください。 リポジトリ、イメージ、タグなどの削除されたレジストリ リソースは、削除後に元に戻すことは*できません*。 レジストリのリソースを削除する方法については、「[Azure Container Registry 内のコンテナー イメージを削除する](container-registry-delete.md)」を参照してください。
 

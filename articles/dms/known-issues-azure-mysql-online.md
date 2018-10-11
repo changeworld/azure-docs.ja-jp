@@ -3,20 +3,20 @@ title: Azure Database for MySQL へのオンライン移行に関する既知の
 description: Azure Database for MySQL へのオンライン移行に関する既知の問題と移行の制限事項について学習します。
 services: database-migration
 author: HJToland3
-ms.author: jtoland
+ms.author: scphang
 manager: ''
 ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 08/24/2018
-ms.openlocfilehash: d1d1483edd31702b1b9f14eaf4aba1a3f38ed142
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 10/09/2018
+ms.openlocfilehash: 6e82c10d8e9109279045095c1b856520245a5a6f
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889187"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884512"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Azure DB for MySQL へのオンライン移行に関する既知の問題と移行の制限事項
 

@@ -2,17 +2,18 @@
 title: Azure Site Recovery を使用した Azure への VMware レプリケーションの容量とスケーリングを計画する | Microsoft Docs
 description: この記事では、Azure Site Recovery で Azure に VMware VM をレプリケートする場合の容量とスケーリングを計画する方法について説明します
 services: site-recovery
-author: rayne-wiselman
+author: nsoneji
+manager: garavd
 ms.service: site-recovery
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.topic: conceptual
 ms.author: rayne
-ms.openlocfilehash: b615ffa3571730ef9607893882f509b2fa490f35
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 833000cb09d315a996ebc9e2d66210c805160f2a
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056343"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067555"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-replication-with-azure-site-recovery"></a>Azure Site Recovery を使用した VMware レプリケーションの容量とスケーリングの計画
 

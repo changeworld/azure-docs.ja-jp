@@ -3,7 +3,7 @@ title: Azure パートナーと顧客の使用状況の属性
 description: Azure Marketplace ソリューションの顧客による使用状況を追跡する方法の概要
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: ellacroi
+author: yijenj
 manager: nunoc
 editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 07/26/2018
-ms.author: ellacroi
-ms.openlocfilehash: c3690c9be940a69bd2f8745493d4e2648bac6d9b
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.date: 10/05/2018
+ms.author: yijenj
+ms.openlocfilehash: 99df133b9f626f970189df578c6d107086b9dab9
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143761"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855002"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -157,7 +157,7 @@ Azure にサインインします。 スクリプトを実行する前に、検�
 ```
 Param(
     [GUID][Parameter(Mandatory=$true)]$guid,
-    [string][Parameter(Mandatory=$true)]$resourceGroupName'
+    [string][Parameter(Mandatory=$true)]$resourceGroupName
 )
 
 # Get the correlationId of the pid deployment

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/26/2018
+ms.date: 10/08/2018
 ms.author: kumud
-ms.openlocfilehash: 0b533a48e94db880f23d42decc5c3fb39a27e5ac
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 9aa3811eb03d38a4c6ab8203512f3e6699098122
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395646"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883637"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>アイドル時に TCP リセットを使用するロード バランサー (パブリック プレビュー)
 

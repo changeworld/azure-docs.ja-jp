@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: navyasric
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: b2950720ae7038f435a8e2dfb24333afc49984b1
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3cbcae9c02abaf11ded31304f97abdd74f905c6e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060673"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48842967"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 

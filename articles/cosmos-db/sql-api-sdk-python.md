@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 9/24/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8bfe815b9664e499f7ae458dfc42b88199e0ecb4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 75b5fd2f586a9122aa1248ba88d7ceab59b13215
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037934"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269294"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Python SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "47037934"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST ()](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -38,7 +38,7 @@ ms.locfileid: "47037934"
 
 <tr><td>**SDK のダウンロード**</td><td>[PyPI](https://pypi.org/project/azure-cosmos)</td></tr>
 
-<tr><td>**API ドキュメント**</td><td>[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/azure-cosmos)</td></tr>
+<tr><td>**API ドキュメント**</td><td>[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)</td></tr>
 
 <tr><td>**SDK のインストール手順**</td><td>[Python SDK のインストール手順](https://github.com/Azure/azure-cosmos-python)</td></tr>
 

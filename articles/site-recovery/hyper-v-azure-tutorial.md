@@ -3,23 +3,24 @@ title: Azure Site Recovery を使用して Azure にオンプレミス Hyper-V V
 description: Azure Site Recovery サービスを使用して Azure にオンプレミス Hyper-V VM (VMM なし) のディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: f09d66e069ac22e5b8203d9871d2e5645570086a
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 978b79fbd35178191ff5c95b8897045d00c7a272
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917950"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078038"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピューターと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行うことでディザスター リカバリー戦略に貢献します。
 
-このチュートリアルでは、Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する方法を紹介します。 このチュートリアルの対象は、System Center Virtual Machine Manager (VMM) で管理されない Hyper-V VM です。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する方法を紹介します。 このチュートリアルの対象は、System Center Virtual Machine Manager (VMM) で管理されない Hyper-V VM です。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * レプリケーションのソースとターゲットを選択します。

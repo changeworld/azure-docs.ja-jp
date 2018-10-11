@@ -6,16 +6,16 @@ description: >
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: b71fd48c884a3834c74175fa3687b79479b33923
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 02e6fa8c522384a1c3f0d69b456bf580c067a9c2
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946036"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883688"
 ---
 # <a name="recognize-speech-by-using-the-speech-sdk-for-java"></a>Speech SDK for Java を使用して音声を認識する
 

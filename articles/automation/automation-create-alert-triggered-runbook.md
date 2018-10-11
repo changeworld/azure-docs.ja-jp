@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac117994140f96ec993e4fed739626f736ad7efc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 98de7a84dc388f74c64d7c265d2ce8ed32995a5a
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965281"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784777"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Azure Automation Runbook をトリガーするアラートを使用する
 
@@ -211,7 +211,7 @@ Runbook は、VM に対する管理アクションを実行するために、**A
    ![[アクション グループの追加] ページ](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 1. アクション グループを作成するには、**[OK]** を選択します。
 
-このアクション グループは作成した[アクティビティ ログ アラート](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)と[ほぼリアルタイムのアラート](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=%2fazure%2fautomation%2ftoc.json#create-an-alert-rule-with-the-azure-portal)で使用することができます。
+このアクション グループは作成した[アクティビティ ログ アラート](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)と[ほぼリアルタイムのアラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)で使用することができます。
 
 ## <a name="classic-alert"></a>クラシック アラート
 
@@ -231,4 +231,4 @@ Runbook は、VM に対する管理アクションを実行するために、**A
 * webhook を使用して Automation Runbook を開始する方法の詳細については、[webhook を使用した Runbook の開始](automation-webhooks.md)に関する記事をご覧ください。
 * Runbook を起動するさまざまな方法については、「 [Runbook の開始](automation-starting-a-runbook.md)」を参照してください。
 * アクティビティ ログ アラートの構成方法については、「[アクティビティ ログ アラートの作成](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)」をご覧ください。
-* ほぼリアルタイムのアラートの作成方法については、「[Azure Portal でアラート ルールを作成する](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=%2fazure%2fautomation%2ftoc.json#create-an-alert-rule-with-the-azure-portal)」をご覧ください。
+* ほぼリアルタイムのアラートの作成方法については、「[Azure Portal でアラート ルールを作成する](../monitoring-and-diagnostics/alert-metric.md?toc=/azure/azure-monitor/toc.json)」をご覧ください。

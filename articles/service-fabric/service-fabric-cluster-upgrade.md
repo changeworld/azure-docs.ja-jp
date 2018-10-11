@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/10/2017
 ms.author: aljo
-ms.openlocfilehash: 3e5ef2cbc9d7bec82cadc0c7663de52636938505
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 2fd62f8709bddfd981f4b1358c97d0acbaf7f12d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207701"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269105"
 ---
 # <a name="upgrade-an-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターのアップグレード
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Microsoft からのリリース時に自動ファブリック アップグレー
 そのためには、クラスターの作成時に (または後から稼働中のクラスターに対して) Resource Manager を使用するか、またはポータルで "upgradeMode" クラスター構成を設定します。 
 
 > [!NOTE]
-> クラスターには必ず、サポートされているバージョンのファブリックを使用してください。 Microsoft が Service Fabric の新バージョン リリースをアナウンスした日から最短で 60 日後には、以前のバージョンがサポート期間の終了として指定されます。 新バージョンのリリースは、 [Service Fabric チーム ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/) でお知らせします。 その後間もなく新しいバージョンが利用できるようになります。 
+> クラスターには必ず、サポートされているバージョンのファブリックを使用してください。 Microsoft が Service Fabric の新バージョン リリースをアナウンスした日から最短で 60 日後には、以前のバージョンがサポート期間の終了として指定されます。 新バージョンのリリースは、 [Service Fabric チーム ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)でお知らせします。 その後間もなく新しいバージョンが利用できるようになります。 
 > 
 > 
 
@@ -196,7 +196,7 @@ Microsoft は、Azure クラスターで実行されるファブリック コー
 
 ### <a name="fabric-upgrade-settings---health-polices"></a>ファブリック アップグレード設定 - 正常性ポリシー
 ファブリックのアップグレードには、カスタム正常性ポリシーを指定できます。 指定したポリシーは、クラスターのファブリック アップグレードが Automatic に設定されている場合、自動ファブリック アップグレードのフェーズ 1 に適用されます。
-クラスターのファブリック アップグレードを Manual に設定した場合は、新しいバージョンを選択するたびにこれらのポリシーが適用され、クラスターのファブリック アップグレードが開始されます。 ポリシーを上書きしていない場合、既定の設定が使用されます。
+クラスターのファブリック アップグレードを Manual に設定した場合は、新しいバージョンを選択するたびにこれらのポリシーが適用され、クラスターのファブリック アップグレードが開始されます。 ポリシーをオーバーライドしていない場合、既定の設定が使用されます。
 
 カスタム正常性ポリシーを指定したり、現在の設定を確認したりするには、[ファブリック アップグレード] ブレードでアップグレードの詳細設定を選択します。 具体的な方法については、次の図を参照してください。 
 

@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 05/04/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: f1dc23729f32a7a9535b887acf638cf5464c24bd
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: faa3ad2376935aee4508b814f1b67fdacb98cf6e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36206117"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843522"
 ---
 ## <a name="register-your-application"></a>アプリケーションの登録
 

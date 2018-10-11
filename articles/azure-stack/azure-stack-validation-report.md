@@ -3,7 +3,7 @@ title: Azure Stack 用検証レポート | Microsoft Docs
 description: Azure Stack 適合性チェッカー レポートを使用して、検証結果を確認します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 06b5660a9428e98d2e99b5d447a05700968ec884
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 156b84e4941363716721b5cee6c19333ffe7594c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381915"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079448"
 ---
 # <a name="azure-stack-validation-report"></a>Azure Stack 検証レポート
 Azure Stack 適合性チェッカー ツールでは、Azure Stack 環境のデプロイとサービスをサポートする検証が実行されます。 このツールでは、結果が .json レポート ファイルに書き込まれます。 レポートには、Azure Stack デプロイの前提条件の状態に関する詳細データと概要データが表示されます。 また、既存のAzure Stack デプロイのシークレット ローテーションについての情報も表示されます。  

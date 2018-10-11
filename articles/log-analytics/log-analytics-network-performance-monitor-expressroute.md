@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.component: na
-ms.openlocfilehash: 27169193a468d98be879164b80e63fffde419002
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.component: ''
+ms.openlocfilehash: f08b9e60a632428a120f9cfa50d29f1454e0b1d5
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38633351"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041168"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute モニター
 

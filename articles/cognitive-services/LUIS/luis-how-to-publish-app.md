@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 54d3b66f6a452e97e1d354fa75eb1b21065ab3e2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6eb48fd0f3290fbc3a249bc3880c809ace9f9ddb
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031273"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886491"
 ---
 # <a name="publish-your-trained-app"></a>トレーニング済みのアプリを発行する
 
@@ -31,7 +31,7 @@ ms.locfileid: "47031273"
 
 ポップアップ ウィンドウが表示されたら、適切なスロットを選択します。ステージングまたは運用です。 2 つの発行スロットを使うことにより、2 つの異なるエンドポイントで異なるバージョンまたは同じバージョンを発行できます。 
 
-アプリは、LUIS ポータルで追加された LUIS リソースに関連付けられているすべてのリージョンに発行されます。 たとえば、[www.luis.ai](https://www.luis.ai) で作成されたアプリの場合、**westus** で LUIS リソースを作成してそれをリソースとしてアプリに追加すると、アプリはそのリージョンで発行されます。 LUIS のリージョンの詳細については、[リージョン](luis-reference-regions.md)に関するページを参照してください。
+アプリは、LUIS ポータルで追加された LUIS リソースと関連付けられているすべてのリージョンに発行されます。 たとえば、[www.luis.ai](https://www.luis.ai) で作成されたアプリの場合、**westus** で LUIS リソースを作成してそれをリソースとしてアプリに追加すると、アプリはそのリージョンで発行されます。 LUIS のリージョンの詳細については、[リージョン](luis-reference-regions.md)に関するページを参照してください。
  
 ![発行のポップアップ ウィンドウ](./media/luis-how-to-publish-app/publish-pop-up.png)
 

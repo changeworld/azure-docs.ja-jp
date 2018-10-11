@@ -17,12 +17,12 @@ ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4989d221ccc21b2dd454339f8d83245f1556c109
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8f24f25a4eb4db9e9f3e0b4569874dab94ef11b5
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971350"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900960"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML のトークン リファレンス
 
@@ -156,7 +156,7 @@ Azure Active Directory (Azure AD) は、各認証フローを処理する際に�
 
 ## <a name="related-content"></a>関連コンテンツ
 * Azure AD Graph API を使用したトークンの有効期間ポリシーの管理の詳細については、Azure AD Graph の[ポリシー操作](https://msdn.microsoft.com/library/azure/ad/graph/api/policy-operations)および[ポリシー エンティティ](https://msdn.microsoft.com/library/azure/ad/graph/api/entity-and-complex-type-reference#policy-entity)を参照してください。
-* PowerShell コマンドレットを使用したポリシー管理の詳細およびサンプルについては、「[Configurable token lifetimes in Azure AD](../active-directory-configurable-token-lifetimes.md) (Azure AD で構成可能なトークンの有効期間)」を参照してください。 
+* PowerShell コマンドレットを使用したポリシー管理の詳細およびサンプルについては、「[Configurable token lifetimes in Azure AD](active-directory-configurable-token-lifetimes.md) (Azure AD で構成可能なトークンの有効期間)」を参照してください。 
 * [カスタムの要求と省略可能な要求](active-directory-optional-claims.md)をアプリケーションのトークンに追加します。
 * [SAML で シングル サインオン (SSO)](single-sign-on-saml-protocol.md) を使用します。
 * [Azure シングル サイン アウト SAML プロトコル](single-sign-out-saml-protocol.md) を使用します

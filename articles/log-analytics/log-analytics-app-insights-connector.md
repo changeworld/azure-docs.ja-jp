@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 4d2837a99c10f1600eb457e20cd7473f9f931302
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.component: ''
+ms.openlocfilehash: 4157b812fbb17b524a21814f41e0e4ec43e39e70
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125989"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042089"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights Connector 管理ソリューション (プレビュー)
 

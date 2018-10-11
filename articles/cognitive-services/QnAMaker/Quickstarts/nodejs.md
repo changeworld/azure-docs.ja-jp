@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
-ms.topic: article
+ms.component: qna-maker
+ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 05a15ddf8d7668896052c38afc549bc7b3cb056a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 1bdaa2cd67e6ee772085fd8c3b60c55a74a8df16
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434332"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884901"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-nodejs"></a>Microsoft QnA Maker API の Node.js クイック スタート 
 <a name="HOLTop"></a>

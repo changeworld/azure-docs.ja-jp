@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d9b89329e2a9bdb26c9aa1d12bc181c61518dcb8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c125f503166e3f63599dbd09acf42c69fab8d2ce
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116165"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044656"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
@@ -544,6 +544,6 @@ sqlcmd を使用してクエリを実行します。
 Squirrel SQL を使用してクエリを実行することもできます。 Microsoft MSSQL Server JDBC Driver (***/usr/share/java/jdbcdrivers/sqljdbc42.jar*** で見つけることができます) を使用して、PostgreSQL の同様の手順に従います。
 
 ## <a name="next-steps"></a>次の手順
-Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [Team Data Science Process](http://aka.ms/datascienceprocess)に関するページをご覧ください。
+Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview)に関するページをご覧ください。
 
 シナリオごとの Team Data Science Process の手順を示したエンド ツー エンドのチュートリアルの詳細については、「 [Team Data Science Process のチュートリアル](../team-data-science-process/walkthroughs.md)」をご覧ください。 これらのチュートリアルでは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法についても説明します。

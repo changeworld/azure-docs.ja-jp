@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 0413357b6e17bf66b0ae9b504bc23b9702d03c91
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0f17cf7f2ef655f482b08b5c7163c0d85be77ce5
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220977"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068702"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor の概要
 
@@ -70,7 +70,7 @@ Azure Monitor では、[Data Collector API](../log-analytics/log-analytics-data-
 データの監視が役立つのは、コンピューティング環境の運用の可視性が高まる場合のみです。 Azure Monitor には、アプリケーションやそれが依存するリソースに対する貴重な洞察を提供するいくつかの機能やツールが含まれています。 [監視ソリューション](../monitoring/monitoring-solutions.md)や [Application Insights](../application-insights/app-insights-overview.md) および Container Insights などの機能は、アプリケーションや特定の Azure サービスのさまざまな側面に対する深い洞察を提供します。 
 
 ### <a name="application-insights"></a>Application Insights
-[Application Insights](http://azure.microsoft.com/documentation/services/application-insights) は、クラウドとオンプレミスのどちらにホストされているかにかかわらず、Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。 Log Analytics の強力なデータ分析プラットフォームを利用し、ユーザーの報告を待つことなく、アプリケーション運用やエラー診断に対する深い洞察を提供します。 Application Insights にはさまざまな開発ツールへの接続ポイントが含まれており、DevOps プロセスをサポートする Visual Studio とも統合されています。
+[Application Insights](../application-insights/app-insights-overview.md) は、クラウドとオンプレミスのどちらにホストされているかにかかわらず、Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。 Log Analytics の強力なデータ分析プラットフォームを利用し、ユーザーの報告を待つことなく、アプリケーション運用やエラー診断に対する深い洞察を提供します。 Application Insights にはさまざまな開発ツールへの接続ポイントが含まれており、DevOps プロセスをサポートする Visual Studio とも統合されています。
 
 ![App Insights](media/overview/app-insights.png)
 

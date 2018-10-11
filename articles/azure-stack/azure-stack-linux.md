@@ -3,7 +3,7 @@ title: Azure Stack への Linux イメージの追加
 description: Azure Stack へ Linux イメージを追加する方法について説明します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 64a860bc925b9c7499363c1fe39d03df88a9a51d
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: db52d145c3bfbd9415072be13ccb502969f07374
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33935718"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077649"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Azure Stack への Linux イメージの追加
 

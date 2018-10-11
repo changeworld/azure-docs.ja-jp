@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: bing-visual-search
+ms.component: bing-visual-search
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: scottwhi
-ms.openlocfilehash: 93c7b3f3f6d9cdbe328897669f1c56246ae16198
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 5bc25f950e7453be4c52d89a275f9693c2baf25c
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222558"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883159"
 ---
 # <a name="how-to-get-analytics-for-bing-visual-search-api"></a>Bing Visual Search API の分析を取得する方法
 

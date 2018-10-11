@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: rayne
-ms.openlocfilehash: 40a4b53229aad8f226cf3edcdba4ecbc6682e623
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: dc28611f4b27d263e19f76ce4313f8d531a8cba2
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917610"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077005"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-a-secondary-on-premises-site-after-failover"></a>フェールオーバー後にセカンダリ オンプレミス サイトに接続するように IP アドレス指定を設定する
 

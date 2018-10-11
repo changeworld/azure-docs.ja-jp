@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 10/03/2018
 ms.author: sethm
-ms.reviewer: jeffgo
-ms.openlocfilehash: 9e579123124615df83483e244ef11810ca590844
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.reviewer: avishwan
+ms.openlocfilehash: 40ecb474b4faa4031cb364dfc1151c6fe6f09dd6
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633965"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856451"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Marketplace アイテムを作成および発行する
 
@@ -29,12 +29,15 @@ ms.locfileid: "45633965"
 1. Azure Gallery Packager ツールおよびサンプルの Azure Stack Marketplace アイテムを[ダウンロード](http://www.aka.ms/azurestackmarketplaceitem)します。
 2. サンプルの Marketplace アイテムを開き、**SimpleVMTemplate** フォルダーの名前を変更します。 (自分の Marketplace アイテムと同じ名前を使用します。例: **Contoso.TodoList**)このフォルダーには、以下が格納されています。
    
-       /Contoso.TodoList/
-       /Contoso.TodoList/Manifest.json
-       /Contoso.TodoList/UIDefinition.json
-       /Contoso.TodoList/Icons/
-       /Contoso.TodoList/Strings/
-       /Contoso.TodoList/DeploymentTemplates/
+   ```shell
+   /Contoso.TodoList/
+   /Contoso.TodoList/Manifest.json
+   /Contoso.TodoList/UIDefinition.json
+   /Contoso.TodoList/Icons/
+   /Contoso.TodoList/Strings/
+   /Contoso.TodoList/DeploymentTemplates/
+   ```
+
 3. [Azure Resource Manager テンプレートを作成する](../azure-resource-manager/resource-group-authoring-templates.md)か、GitHub からテンプレートを選択します。 Marketplace アイテムでは、このテンプレートを使用して新しいリソースを作成します。
 
     > [!Note]  
@@ -52,22 +55,30 @@ ms.locfileid: "45633965"
 8. **manifest.json** ファイルで、**名前**を Marketplace アイテムの名前に変更します。 さらに**発行者**を自分の名前または会社に変更します。
 9. **artifacts** の下で、**名前**と**パス**を、含めた Azure Resource Manager テンプレートの正しい情報に変更します。
    
-         "artifacts": [
-            {
-                "name": "Type your template name",
-                "type": "Template",
-                "path": "DeploymentTemplates\\Type your path",
-                "isDefault": true
-            }
+   ```json
+   "artifacts": [
+      {
+          "name": "Type your template name",
+          "type": "Template",
+          "path": "DeploymentTemplates\\Type your path",
+          "isDefault": true
+      }
+   ```
+
 10. **[My Marketplace Items]** を Marketplace アイテムを表示するカテゴリの一覧に置き換えます。
     
-             "categories":[
-                 "My Marketplace Items"
-              ],
+   ```json
+   "categories":[
+   "My Marketplace Items"
+   ],
+   ```
+
 11. Manifest.json に対するその他の編集については、「[リファレンス: Marketplace アイテム manifest.json](#reference-marketplace-item-manifestjson)」をご覧ください。
 12. フォルダーを .azpkg ファイルにパッケージ化するには、コマンド プロンプトを開き、次のコマンドを実行します。
     
-        AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+   ```shell
+   AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+   ```
     
     > [!NOTE]
     > 出力パッケージへの完全パスが存在している必要があります。 たとえば、出力パスが C:\MarketPlaceItem\yourpackage.azpkg の場合は、C:\MarketPlaceItem フォルダーが存在する必要があります。
@@ -79,8 +90,10 @@ ms.locfileid: "45633965"
 2. Microsoft Azure Stack 環境のクライアント仮想マシンで、PowerShell セッションがサービス管理者の資格情報を使用して設定されていることを確認します。 Azure Stack で PowerShell を認証する方法についての説明は、[PowerShell を使用したテンプレートのデプロイ](user/azure-stack-deploy-template-powershell.md)に関するページにあります。
 3. [PowerShell 1.3.0]( azure-stack-powershell-install.md) 以降を使用する場合、**Add-AzsGalleryItem** PowerShell コマンドレットを使用して Marketplace アイテムを Azure Stack に発行できます。 PowerShell 1.3.0 を使用する前は、**Add-AzsGalleryItem** の代わりに、**Add-AzureRMGalleryitem** コマンドレットを使用します。  たとえば、PowerShell 1.3.0 以降を使用する場合
    
-       Add-AzsGalleryItem -GalleryItemUri `
-       https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
+   ```powershell
+   Add-AzsGalleryItem -GalleryItemUri `
+   https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
+   ```
    
    | パラメーター | 説明 |
    | --- | --- |
@@ -102,7 +115,9 @@ ms.locfileid: "45633965"
 
 6. Marketplace アイテムを削除するには、**Remove-AzureRMGalleryItem** コマンドレットを使用します。 例:
    
-        Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+   ```powershell
+   Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+   ```
    
    > [!NOTE]
    > アイテムを削除した後に Marketplace UI でエラーが表示される可能性があります。 このエラーを解決するには、ポータルで **[設定]** をクリックします。 次に、**[ポータルのカスタマイズ]** で **[変更を破棄する]** を選択します。

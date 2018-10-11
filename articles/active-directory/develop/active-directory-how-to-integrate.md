@@ -17,14 +17,15 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: fdc33f4009ce9434b241611851fecec451783a1a
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: cde2706db255746293ddc29c6d5bdd31d970e535
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495341"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901551"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
+
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
 Azure Active Directory は、クラウド アプリケーションに関するエンタープライズ レベルの ID 管理を提供します。 Azure AD の統合は、簡素化されたサインイン エクスペリエンスをユーザーに提供し、アプリケーションが IT ポリシーに準拠できるようにします。
@@ -78,8 +79,7 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 **オープン ソース ライブラリ。**  Microsoft は、開発時間短縮のため、一般的な言語とプラットフォームの完全にサポートされたオープン ソース ライブラリを提供します。 ソース コードは Apache 2.0 でライセンスされており、自由にフォークしてプロジェクトに役立てることができます。 [Azure AD 認証ライブラリ](active-directory-authentication-libraries.md)の詳細を参照してください。
 
 ### <a name="worldwide-presence-and-high-availability"></a>世界的なプレゼンスと高可用性
-
-  **Azure AD は、世界各地のデータセンターにデプロイされ、常に管理および監視されています。**  Azure AD は Microsoft Azure および Office 365 用の ID 管理システムであり、世界各地にある 28 のデータセンターにデプロイされています。 ディレクトリ データは、3 つ以上のデータセンターにレプリケートされることが保証されます。 グローバルなロード バランサーが、ユーザーが自分のデータを含む最も近い Azure AD のコピーにアクセスすることを保証し、問題が検出された場合は自動的に他のデータセンターに要求を再ルーティングします。
+**Azure AD は、世界各地のデータセンターにデプロイされ、常に管理および監視されています。**  Azure AD は Microsoft Azure および Office 365 用の ID 管理システムであり、世界各地にある 28 のデータセンターにデプロイされています。 ディレクトリ データは、3 つ以上のデータセンターにレプリケートされることが保証されます。 グローバルなロード バランサーが、ユーザーが自分のデータを含む最も近い Azure AD のコピーにアクセスすることを保証し、問題が検出された場合は自動的に他のデータセンターに要求を再ルーティングします。
 
 ## <a name="next-steps"></a>次の手順
 [コード作成の開始](azure-ad-developers-guide.md#get-started)

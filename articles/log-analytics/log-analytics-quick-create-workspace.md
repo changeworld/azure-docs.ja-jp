@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptal
 ms.date: 08/23/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: a52654ab620908b9c8c07edf3fcdfbf70068528d
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.component: ''
+ms.openlocfilehash: edebeec493b025a81a99c0458344aafe59e769e9
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220792"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040876"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Azure ポータルで Log Analytics ワークスペースを作成する
 Azure portal で Log Analytics ワークスペースを設定できます。このワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた Log Analytics 固有の環境です。  次のソースからデータを収集する場合は、この記事で説明する手順を実行する必要があります。

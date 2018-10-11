@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: manayar
-ms.openlocfilehash: ac64c73ac26c610c08dceff13cbd524916853146
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: eb28a3d165bcb6cc5e63162053029ce14b0d7f8f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916423"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078139"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute と Azure Site Recovery
 
@@ -30,8 +30,7 @@ ExpressRoute 回線は、接続プロバイダー経由のオンプレミス イ
 
 ExpressRoute 回線には、複数のルーティング ドメインが関連付けられます。
 -   [Azure Private peering](../expressroute/expressroute-circuit-peerings.md#azure-private-peering) - Azure Compute Services、つまり、仮想ネットワーク内にデプロイされる仮想マシン (IaaS) とクラウド サービス (PaaS) には、プライベート ピアリング ドメイン経由で接続できます。 プライベート ピアリング ドメインは、お客様のコア ネットワークを Microsoft Azure に信頼できる方法で拡張したものと言えます。
--   
-  [Azure Public peering](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) - Azure Storage、SQL Database、Websites などのサービスは、パブリック IP アドレスで提供されます。 パブリック ピアリング ルーティング ドメインを経由して、(クラウド サービスの VIP などの) パブリック IP アドレスでホストされているサービスにプライベート接続できます。 パブリック ピアリングの新規作成は非推奨とされており、Azure PaaS サービス用には、代わりに Microsoft ピアリングを使用する必要があります。
+-   [Azure Public peering](../expressroute/expressroute-circuit-peerings.md#azure-public-peering) - Azure Storage、SQL Database、Websites などのサービスは、パブリック IP アドレスで提供されます。 パブリック ピアリング ルーティング ドメインを経由して、(クラウド サービスの VIP などの) パブリック IP アドレスでホストされているサービスにプライベート接続できます。 パブリック ピアリングの新規作成は非推奨とされており、Azure PaaS サービス用には、代わりに Microsoft ピアリングを使用する必要があります。
 -   [Microsoft ピアリング](../expressroute/expressroute-circuit-peerings.md#microsoft-peering) - Microsoft オンライン サービス (Office 365、Dynamics 365、Azure PaaS サービスなど) への接続は Microsoft ピアリングを経由します。 Microsoft ピアリングは、Azure PaaS サービスに接続する場合に推奨されるルーティング ドメインです。
 
 ExpressRoute のルーティング ドメインの詳細と比較については、[ここ](../expressroute/expressroute-circuit-peerings.md#routing-domain-comparison)をご覧ください。
@@ -50,7 +49,7 @@ Azure Site Recovery によって、[Azure 仮想マシン](azure-to-azure-archit
 
 Azure VM のディザスター リカバリーの場合、既定では、レプリケーションのために ExpressRoute は必要ありません。 仮想マシンが Azure リージョンにフェールオーバーした後は、[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)を使ってアクセスできます。
 
-既に ExpressRoute を使用してオンプレミスのデータ センターからソース リージョンの Azure VM に接続している場合は、フェールオーバーのターゲット リージョンで ExpressRoute 接続を再確立することを計画できます。 同じ ExpressRoute 回線を使用して新しい仮想ネットワーク接続経由でターゲット リージョンに接続することも、ディザスター リカバリー用の別個の ExpressRoute 回線と接続を利用することもできます。 考えられるさまざまなシナリオの説明については、[ここ](azure-vm-disaster-recovery-with-expressroute.md#failover-models-with-expressroute)をご覧ください。
+既に ExpressRoute を使用してオンプレミスのデータ センターからソース リージョンの Azure VM に接続している場合は、フェールオーバーのターゲット リージョンで ExpressRoute 接続を再確立することを計画できます。 同じ ExpressRoute 回線を使用して新しい仮想ネットワーク接続経由でターゲット リージョンに接続することも、ディザスター リカバリー用の別個の ExpressRoute 回線と接続を利用することもできます。 考えられるさまざまなシナリオの説明については、[ここ](azure-vm-disaster-recovery-with-expressroute.md#fail-over-azure-vms-when-using-expressroute)をご覧ください。
 
 [ここ](../site-recovery/azure-to-azure-support-matrix.md#region-support)で説明しているように、同じ地理クラスター内で、Azure 仮想マシンを任意の Azure リージョンにレプリケートできます。 選択したターゲット Azure リージョンがソースと同じ地理的リージョン内にない場合は、ExpressRoute Premium を有効にすることが必要な場合があります。 詳しくは、「[ExpressRoute の場所](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region)」と「[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)」をご覧ください。
 

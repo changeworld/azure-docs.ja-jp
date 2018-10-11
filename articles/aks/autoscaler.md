@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 06b93273ea096f2d24df4411a64ce99d054892cf
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 3bac6534f43d62e6eb9381b8513025ba9117ed04
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141978"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857008"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Azure Kubernetes Service のクラスター オートスケーラー (AKS) - プレビュー
 
@@ -240,7 +240,7 @@ spec:
     spec:
       serviceAccountName: cluster-autoscaler
       containers:
-      - image: k8s.gcr.io/cluster-autoscaler:{{ ca_version }}
+      - image: gcr.io/google-containers/cluster-autoscaler:v1.2.2
         imagePullPolicy: Always
         name: cluster-autoscaler
         resources:

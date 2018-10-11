@@ -9,14 +9,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 6eb559f8971583afe9619fb41fe331bd3013bb69
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: ef85b82adf3b177678cc8175a7fb2d0eb44323fa
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41929902"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246861"
 ---
 # <a name="use-the-anomaly-finder-api-with-ruby"></a>Anomaly Finder API と Ruby の使用
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 この記事は、Anomaly Finder API と Ruby の使用をすぐに開始し、時系列データの異常検出結果を取得するタスクを実行するために役立つ情報とコード サンプルを提供します。
 

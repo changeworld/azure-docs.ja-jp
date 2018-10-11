@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2018
+ms.date: 09/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: 183075f7407b0a0ca6ea53871e239ab8c2d89490
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 0412d55fe60524cde404e6a640723d3259e020e1
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37098622"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586242"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft.Compute.CredentialsCombo UI 要素
 Windows と Linux のパスワードと SSH 公開キーの検証が組み込まれているコントロールのグループです。
@@ -53,8 +53,8 @@ Windows の場合、次のスキーマを使います。
   },
   "constraints": {
     "required": true,
-    "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
-    "customValidationMessage": "The password must contain at least 8 characters, with at least 1 letter and 1 number."
+    "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{12,}$",
+    "customValidationMessage": "The password must contain at least 12 characters, with at least 1 letter and 1 number."
   },
   "options": {
     "hideConfirmation": false
@@ -83,8 +83,8 @@ Windows の場合、次のスキーマを使います。
   },
   "constraints": {
     "required": true,
-    "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$",
-    "customValidationMessage": "The password must contain at least 8 characters, with at least 1 letter and 1 number."
+    "customPasswordRegex": "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{12,}$",
+    "customValidationMessage": "The password must contain at least 12 characters, with at least 1 letter and 1 number."
   },
   "options": {
     "hideConfirmation": false,
@@ -108,7 +108,7 @@ Windows の場合、次のスキーマを使います。
 ```json
 {
   "authenticationType": "password",
-  "password": "p4ssw0rd",
+  "password": "p4ssw0rddem0",
 }
 ```
 

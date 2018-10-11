@@ -6,16 +6,16 @@ description: >
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 842452028671ef3db91348886676a95120335d86
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c80f41a17c060d8f960fefff93145583fc100e0c
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972846"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886789"
 ---
 # <a name="recognize-speech-by-using-the-speech-sdk-for-c"></a>Speech SDK for C# を使用して音声を認識する
 

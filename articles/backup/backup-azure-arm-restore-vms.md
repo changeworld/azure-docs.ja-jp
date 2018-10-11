@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: eb47b1d8d3f2859b2b5c0b79633b2d37e5a40756
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: f7561ef4978e19439eafb6ef1a6ca1275c0f2bc7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380167"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804618"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Azure Portal を使用して仮想マシンを復元する
 定義された間隔でデータのスナップショットを取得してデータを保護します。 こうしたスナップショットは復旧ポイントと呼ばれ、Recovery Services コンテナーに格納されます。 仮想マシン (VM) を修復または再構築する必要がある場合は、保存されている復旧ポイントのいずれかから VM を復元できます。 復旧ポイントを復元すると、次のことが可能です。
@@ -37,6 +37,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 * 復元の種類を選択し、新しい VM を作成するかディスクを復元して、必要なパラメーターを指定します。 
 
 ## <a name="select-a-restore-point-for-restore"></a>復元を行うための復元ポイントを選択する
+
 1. [Azure Portal](http://portal.azure.com/) にサインインします。
 
 1. Azure メニューで **[参照]** を選択します。 サービスの一覧に「**Recovery Services**」と入力します。 入力した文字列に合わせて、サービスの一覧の内容が変更されます。 **[Recovery Services コンテナー]** が表示されたら、それを選択します。
@@ -102,7 +103,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 ポータルには、復元された VM の **[簡易作成]** オプションがあります。 VM 構成をカスタマイズするには、または、新しい VM 選択肢の作成操作の一環として作成されたリソースの名前をカスタマイズするには、PowerShell またはポータルを使用してバックアップ ディスクを復元し、 そのディスクを、PowerShell コマンドで VM 構成の選択肢にアタッチします。 また、復元ディスクに含まれるテンプレートを使用して、復元された VM をカスタマイズすることもできます。 複数の NIC を持つ VM、またはロード バランサーの VM を復元する方法については、「[特別なネットワーク構成を持つ VM の復元](#restore-vms-with-special-network-configurations)」を参照してください。 Windows VM が [HUB ライセンス](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を使用している場合は、この記事で指定したように、ディスクを復元し、PowerShell/テンプレートを使用して VM を作成します。 復元された VM で HUB の利点を利用するには、VM を作成する際に、**ライセンスの種類**を "Windows_Server" と指定します。 
  
 ## <a name="create-a-new-vm-from-a-restore-point"></a>復元ポイントから新しい VM を作成する
-1. 復元ポイントから新しい VM を作成する前に、[復元ポイントを選択](#restore-a vm-with-special-network-configurations)しておきます (まだ選択していない場合)。 復元ポイントを作成したら、**[復元の構成]** ブレードで、次の各フィールドの値を入力または選択します。
+1. 復元ポイントから新しい VM を作成する前に、[復元ポイントを選択](#select-a-restore-point-for-restore)しておきます (まだ選択していない場合)。 復元ポイントを作成したら、**[復元の構成]** ブレードで、次の各フィールドの値を入力または選択します。
 
     a. **復元の種類**。 仮想マシンを作成します。
 
@@ -239,9 +240,9 @@ VM は (他の VM と同様に) Azure Portal または PowerShell を使用し�
 
    b. [インターネットに接続されているロード バランサー](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/)に接続する VM を作成します。
 
-   c. [複数 NIC](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/) を持つ VM を作成します。
+   c. [複数 NIC](../virtual-machines/windows/multiple-nics.md) を持つ VM を作成します。
 
-   d. [複数の予約済み IP](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/) を持つ VM を作成します。
+   d. [複数の予約済み IP](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md) を持つ VM を作成します。
 
 ## <a name="next-steps"></a>次の手順
 これで、VM を復元することができます。VM で発生する一般的なエラーについては、トラブルシューティングの記事を参照してください。 また、VM を使用したタスク管理に関する記事もご覧ください。

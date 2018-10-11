@@ -1,20 +1,21 @@
 ---
-title: Project Answer Search の概要 - Microsoft Cognitive Services | Microsoft Docs
+title: Project Answer Search とは
+titlesuffix: Azure Cognitive Services
 description: Project Answer Search の概要。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: overview
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: d87cf1390970d2c815b94bcaee7e07c19bc03cce
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 5658054b3cc77db20edd64f6c560ee5d4a58eb46
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376384"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883722"
 ---
 # <a name="what-is-project-answer-search"></a>Project Answer Search とは
 Project Answer Search API は、疑問文を使ったクエリに対する回答の取得に Bing v7 エンドポイントを使用します。 "地球の円周はどのくらいですか?" などの質問には、 事実情報を記載した回答を返します。  人物、場所、または物に関するクエリの場合には、そのクエリで特定されているエンティティに関する情報を返します。 会話ボット、メッセージング アプリ、リーダーなどのアプリケーションでは、このようなシナリオが有用になります。  
@@ -251,7 +252,7 @@ Project Answer Search と Project Video Trends には、[Bing Search の使用�
 
 Project Answer Search の応答には、第三者が所有する情報が含まれます。 お客様は、ユーザー エクスペリエンスで利用するクリエイティブ コモンズ ライセンスがあればそれを遵守するなど、情報を適切に利用する責任を負います。  
   
-回答または結果に `contractualRules`、`attributions`、`provider` のいずれかのフィールドが含まれている場合には、データの帰属を表示する必要があります。 回答にこれらのいずれのフィールドも含まれていない場合は、帰属表示は必要ありません。 回答に `contractualRules` フィールドが含まれ、さらに `attributions` フィールドまたは `provider` フィールド (またはその両方) が存在する場合には、契約規則を使用してデータの帰属を表示する必要があります。  
+回答または結果に `contractualRules`、`attributions`、`provider` のいずれかのフィールドが含まれている場合、データをそれらの帰属を示す必要があります。 回答にこれらのいずれのフィールドも含まれていない場合は、属性は必要ありません。 回答に `contractualRules` フィールドと、`attributions` フィールドまたは `provider` フィールド (またはその両方) が含まれている場合は、契約上の規則を使用してデータがそれらの帰属を示す必要があります。  
   
 次の例では、MediaAttribution タイプの契約規則を含むエンティティと、`provider` フィールドを含む画像を示しています。 この MediaAttribution 規則では、規則の対象として画像を指定しています。このため、帰属の表示にあたっては画像の `provider` フィールドが無視され、代わりに MediaAttribution 規則が使用されることになります。  
   
@@ -318,7 +319,7 @@ Project Answer Search の応答には、第三者が所有する情報が含ま�
 
 [LinkAttribution](reference.md#linkattribution) と [TextAttribution](reference.md#textattribution) の規則は通常、データの提供元を明らかにする場合に使用します。 `targetPropertyName` フィールドは、規則が適用されるフィールドを特定するためのものです。  
   
-提供元を表示するには、帰属表示を適用するコンテンツ (対象となるフィールドなど) の直後に行を 1 つ追加します。 追加した行には、提供元がデータの出典であることを明確に示したラベルを付ける必要があります。 たとえば、"データの出典: en.wikipedia.org" のようにします。 `LinkAttribution` 規則の場合、提供元の Web サイトへのハイパーリンクを作成する必要があります。  
+プロバイダーの帰属を示すには属性を適用するコンテンツ (対象となるフィールドなど) の直後に 1 行含めます。 追加した行には、提供元がデータの出典であることを明確に示したラベルを付ける必要があります。 たとえば、"データの出典: en.wikipedia.org" のようにします。 `LinkAttribution` 規則の場合、提供元の Web サイトへのハイパーリンクを作成する必要があります。  
   
 `LinkAttribution` および `TextAttribution` の規則を含む例を次に示します。  
   

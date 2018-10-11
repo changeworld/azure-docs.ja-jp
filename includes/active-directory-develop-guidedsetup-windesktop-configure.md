@@ -1,9 +1,31 @@
-
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: jmprieur
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: jmprieur
+ms.custom: include file
+ms.openlocfilehash: fb521fc9d4927a953cdd66948101969dfc102de4
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843390"
+---
 ## <a name="register-your-application"></a>アプリケーションの登録
 2 つのどちらかの方法でアプリケーションを登録できます。
 
 ### <a name="option-1-express-mode"></a>オプション 1: 簡易モード
-次の操作を実行して、アプリケーションをすばやく登録できます。
+次の手順を実行すると、アプリケーションをすばやく登録できます。
 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=windowsDesktop&step=configure)に移動します。
 
 2. **[アプリの追加]** を選択します。

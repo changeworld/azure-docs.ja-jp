@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: 1f2863ac13a6b94a226cdc01a57f6554f75625ae
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: e1c76f65df13811a3dc3028e627b7c19c1437fb5
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103679"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585545"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Store を使用する
 
@@ -160,6 +160,7 @@ else
 }
 
 Login-AzureRmAccount
+Select-AzureRmSubscription -SubscriptionId $subscriptionId
 
 if($addNewCertKeyCredential)
 {
@@ -170,7 +171,6 @@ if($addNewCertKeyCredential)
     Start-Sleep -s 30
 }
 
-Select-AzureRmSubscription -SubscriptionId $subscriptionId
 Write-Host "Updating the certificate on HDInsight cluster..."
 
 Invoke-AzureRmResourceAction `

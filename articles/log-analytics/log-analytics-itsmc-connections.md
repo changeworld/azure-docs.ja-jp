@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.component: na
-ms.openlocfilehash: 661107779b74b6e21dec01aecf6d545ec2b7a702
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 50ab09d39fc0c224a97b6cf0c758c55026ac8ce7
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131754"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042846"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](log-analytics-itsmc-overview.md)に関する記事をご覧ください。
@@ -105,7 +105,7 @@ System Center Service Manager インスタンスを ITSMC に接続するには�
 
 - Azure サブスクリプションの詳細
 - リソース グループ名
-- リージョン
+- Location
 - Service Manager サーバーの詳細 (サーバー名、ドメイン、ユーザー名とパスワード)
 - Web アプリのサイト名のプレフィックス
 - ServiceBus 名前空間。

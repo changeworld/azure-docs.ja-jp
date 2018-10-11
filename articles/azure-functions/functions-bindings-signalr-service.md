@@ -15,14 +15,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
 ms.author: antchu
-ms.openlocfilehash: 435a581b065b94399006e60fec8d007296734373
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2892481dca9ce62d96e954656341925b4c8110f9
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993954"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802017"
 ---
-# <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR Service のバインド
+# <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR サービスのバインド
 
 この記事では、Azure Functions で SignalR Service のバインドを使用して、[Azure SignalR Service](https://azure.microsoft.com/services/signalr-service/) に接続されたクライアントに対して認証を行い、リアルタイム メッセージを送信する方法を説明します。 Azure Functions は、SignalR Service の入力および出力バインドをサポートしています。
 
@@ -35,8 +35,7 @@ SignalR Service のバインドは [Microsoft.Azure.WebJobs.Extensions.SignalRSe
 > [!NOTE]
 > Azure SignalR Service は一般公開されています。 ただし、Azure Functions における SignalR Service のバインドは現在プレビューの段階です。
 
-[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
-
+[!INCLUDE [functions-package-v2](../../includes/functions-package-v2-manual-portal.md)]
 
 ## <a name="signalr-connection-info-input-binding"></a>SignalR 接続情報入力バインド
 

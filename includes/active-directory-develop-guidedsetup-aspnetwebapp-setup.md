@@ -2,18 +2,24 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: active-directory
+documentationcenter: dev-center-name
 author: andretms
+manager: mtillman
+editor: ''
 ms.service: active-directory
+ms.devlang: na
 ms.topic: include
-ms.date: 05/08/2018
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 9c7daf7bc947b08835148f6d09c58b47c9e0186b
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 99eabd8f9c9b3ab86c348350e8924cea0eb668ba
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36204922"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843193"
 ---
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 

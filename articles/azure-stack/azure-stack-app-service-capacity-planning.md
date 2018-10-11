@@ -3,7 +3,7 @@ title: Azure Stack での Azure App Service サーバー ロールの容量計�
 description: Azure Stack での Azure App Service サーバー ロールの容量計画
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: f54481fe59df21b500ee860d1e9a202ed32bdd87
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: 7cdcd8b7e9814c206255077fae0af2029fab6583
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37097150"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078115"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Azure Stack での Azure App Service サーバー ロールの容量計画
 

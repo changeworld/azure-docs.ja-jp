@@ -5,16 +5,16 @@ titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: v-jerkin
 ms.service: cognitive-services
-ms.technology: speech
+ms.component: speech
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7ba62ce0cc2d391c96c31795aabaac9c8796f6d5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 52f1d9cb242f140d485ccf7b39a55a46ee575a3d
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165536"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883620"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Speech サービスを使用してカスタム ウェイク ワードを作成する
 
@@ -49,30 +49,29 @@ ms.locfileid: "47165536"
 
 1. [Custom Speech のサービス ポータル](https://cris.ai/)に移動します。
 
-2. Azure Active Directory の招待を受信したメール アドレスを使用して新しいアカウントを作成します。 
+1. Azure Active Directory の招待を受信したメール アドレスを使用して新しいアカウントを作成します。 
 
     ![新しいアカウントを作成する](media/speech-devices-sdk/wake-word-1.png)
  
-3.  サインインしたら、フォームに記入し、**[Start my journey]\(開始する)** を選択します。
+1.  サインインしたら、フォームに記入し、**[Start my journey]\(開始する)** を選択します。
 
     ![正常にサインイン](media/speech-devices-sdk/wake-word-3.png)
  
-4. **[Custom Wake Word]\(カスタム ウェイク ワード)** ページは公開されていないので、このページに直接移動するリンクはありません。 Custom Speech 機能を利用するには Azure のサブスクリプションが必要ですが、カスタム ウェイク ワード機能では不要です。 "**サブスクリプションが見つかりません。**" というエラー メッセージが表示される場合は、 URL 内の **"Subscriptions?errorMessage=No%20Subscriptions%20found"** を "**customkws**" にただ置き換えて、Enter キーを押します。 URL は、ご利用のリージョンに応じて、 https://westus.cris.ai/customkws、 https://eastasia.cris.ai/customkws、または https://northeurope.cris.ai/customkws のいずれかである必要があります。   
-
+1. **[Custom Wake Word]\(カスタム ウェイク ワード)** ページは公開されていないので、このページに直接移動するリンクはありません。 Custom Speech 機能を利用するには Azure のサブスクリプションが必要ですが、カスタム ウェイク ワード機能では不要です。 "**サブスクリプションが見つかりません。**" というエラー メッセージが表示される場合は、 URL 内の **"Subscriptions?errorMessage=No%20Subscriptions%20found"** を "**customkws**" にただ置き換えて、Enter キーを押します。 URL は、ご利用のリージョンに応じて、 https://westus.cris.ai/customkws、 https://eastasia.cris.ai/customkws、または https://northeurope.cris.ai/customkws のいずれかである必要があります。
 
     ![[Custom Wake Word]\(カスタム ウェイク ワード) ページは非表示](media/speech-devices-sdk/wake-word-4.png)
  
-6. 選択したウェイク ワードを入力して、**[Submit the word]\(ワードを送信する)** を選択します。
+1. 選択したウェイク ワードを入力して、**[Submit the word]\(ワードを送信する)** を選択します。
 
     ![ウェイク ワードを入力する](media/speech-devices-sdk/wake-word-5.png)
  
-7. ファイルが生成されるまで、数分かかる場合があります。 ブラウザー ウィンドウに、回転する円が表示されます。 しばらくすると、.zip ファイルをダウンロードするよう指示する情報バーが表示されます。
+1. ファイルが生成されるまで、数分かかる場合があります。 ブラウザー ウィンドウに、回転する円が表示されます。 しばらくすると、.zip ファイルをダウンロードするよう指示する情報バーが表示されます。
 
     ![.zip ファイルの受信](media/speech-devices-sdk/wake-word-6.png)
 
-8. .zip ファイルをコンピューターに保存します。 開発キットにカスタム ウェイク ワードを展開するには、このファイルが必要です。 カスタム ウェイク ワードを展開するには、「[Speech Devices SDK を使ってみる](speech-devices-sdk-qsg.md)」の手順に従います。
+1. .zip ファイルをコンピューターに保存します。 開発キットにカスタム ウェイク ワードを展開するには、このファイルが必要です。 カスタム ウェイク ワードを展開するには、「[Speech Devices SDK を使ってみる](speech-devices-sdk-qsg.md)」の手順に従います。
 
-9. **[サインアウト]** を選択します。
+1. **[サインアウト]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

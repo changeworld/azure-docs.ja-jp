@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/28/2018
-ms.openlocfilehash: 3484c402f85985a4de70ae2077404613539eaeb6
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.date: 10/02/2018
+ms.openlocfilehash: 9021f04dad41f81b935b9412900336687011e87a
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451801"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249266"
 ---
 # <a name="use-cli-to-monitor-and-scale-a-single-sql-database"></a>CLI を使用して単一の SQL データベースを監視し、スケーリングする
 

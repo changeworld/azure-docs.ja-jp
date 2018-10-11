@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5feefdb8fe6204bc8ef42a5e65bf1e30354e0cf9
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 39fd393e78a2b66749c6aa34a758b185b38effdf
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393929"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041189"
 ---
 # <a name="multi-master-conflict-resolution-in-azure-cosmos-db"></a>Azure Cosmos DB でのマルチマスターの競合解決 
 
@@ -157,7 +157,7 @@ function myUdpStoredProcedure(incomingDocument, existingDocument, isDeleteConfli
 
 * **conflictingDocuments:** データベース内のすべてのドキュメントのコミット済みバージョンのコレクションを指定します。これは、ID 列またはその他の一意のインデックス フィールドの incomingDocument と競合します。 incomingDocument と比較すると、これらのドキュメントは異なる "rid" 値を持ちます。
 
-ユーザー定義プロシージャーは、Cosmos DB パーティション キーへのフル アクセス権を持ち、競合を解決するすべてのストア操作を実行できます。 ユーザー定義プロシージャが競合バージョンをコミットしない場合、システムは競合を破棄し、existingDocument がコミットされたままになります。 ユーザー定義プロシージャが失敗するか存在しない場合、[非同期競合解決モード]()のように、Azure Cosmos DB は非同期で処理できる読み取り専用競合フィードに競合をすべて追加します。 
+ユーザー定義プロシージャーは、Cosmos DB パーティション キーへのフル アクセス権を持ち、競合を解決するすべてのストア操作を実行できます。 ユーザー定義プロシージャが競合バージョンをコミットしない場合、システムは競合を破棄し、existingDocument がコミットされたままになります。 ユーザー定義プロシージャが失敗するか存在しない場合、[非同期競合解決モード](#custom--asynchronous)のように、Azure Cosmos DB は非同期で処理できる読み取り専用競合フィードに競合をすべて追加します。 
 
 ### <a name="custom--asynchronous"></a>カスタム - 非同期  
 

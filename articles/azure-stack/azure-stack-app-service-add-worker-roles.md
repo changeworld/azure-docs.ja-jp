@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2018
 ms.author: anwestg
-ms.reviewer: brenduns
-ms.openlocfilehash: abfc75e40e146b1cf7cb237f18a1ff08626e5be1
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.reviewer: sethm
+ms.openlocfilehash: f4a3cd7d09c18506a85317db7a360b8de3a9630b
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092906"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077024"
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>Azure Stack 上の App Service: インフラストラクチャまたは worker ロールを追加する
 

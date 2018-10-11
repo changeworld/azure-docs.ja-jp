@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6a113169cb3f8fea1012643efcb56e5cf6c7e908
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4a92bfc9d682346c874ce91fc9835558402bae84
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915971"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078989"
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>オンプレミス マシンのレプリケーションために Azure リソースを準備する
 
@@ -23,7 +23,7 @@ ms.locfileid: "37915971"
 
 これらのチュートリアルは、シナリオの最も簡単な展開パスを示すことを目的として作られています。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 
 
-この記事では、オンプレミス VM (Hyper-V または VMware) や Windows/Linux 物理サーバーを Azure にレプリケートするときの Azure コンポーネントを準備する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
+この記事では、オンプレミス VM (Hyper-V または VMware) や Windows/Linux 物理サーバーを Azure にレプリケートするときの Azure コンポーネントを準備する方法について説明します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * お使いの Azure アカウントにレプリケーションのアクセス許可があることを確認します。
@@ -35,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-[Azure ポータル](http://portal.azure.com)にサインインします。
+[Azure Portal](http://portal.azure.com) にサインインします。
 
 ## <a name="verify-account-permissions"></a>アカウントのアクセス許可を確認する
 

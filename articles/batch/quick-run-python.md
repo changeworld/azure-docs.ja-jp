@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 69d31caf161e63233cee10e4820ea5150c6f9b61
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 424516a4a321227e4e79cfe33d40e8fdca24a779
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159336"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815275"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>クイック スタート: Python API で最初の Batch ジョブを実行する
 
@@ -65,6 +65,8 @@ _BATCH_ACCOUNT_URL = 'https://mybatchaccount.mybatchregion.batch.azure.com'
 _STORAGE_ACCOUNT_NAME = 'mystorageaccount'
 _STORAGE_ACCOUNT_KEY = 'xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ=='
 ```
+
+[!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
 
 ## <a name="run-the-app"></a>アプリの実行
 

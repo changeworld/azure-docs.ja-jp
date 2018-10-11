@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 528274844908f9a1b2a604de42d8e84f4dc7d6f2
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 5120fa869d9c3fe28630b189b84b9c3e3f5577e2
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127353"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044571"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Log Analytics で Linux アプリケーションのパフォーマンス カウンターを収集する 
 この記事では、特定のアプリケーションのパフォーマンス カウンターを収集するように [OMS Agent for Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) を構成するための詳細について説明します。  この記事に含まれるアプリケーションは次のとおりです。  

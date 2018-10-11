@@ -3,20 +3,22 @@ title: Site Recovery を使用して Azure にレプリケートされる Hyper-
 description: Azure Site Recovery を使用して Hyper-V VM を Azure にフェールオーバーする方法と、オンプレミスにフェールバックする方法について説明します
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: tutorial
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: f758939964045ed373703a211d4cbef00f0e42e7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.custom: MVC
+ms.openlocfilehash: 31de654e6746cecf5aedabbfe481ab99b2aa3510
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919548"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49076985"
 ---
 # <a name="failover-and-failback-hyper-v-vms-replicated-to-azure"></a>Azure にレプリケートされる Hyper-V VM のフェールオーバーとフェールバック
 
-このチュートリアルでは、Hyper-V VM と Azure にフェールオーバーする方法について説明します。 フェールオーバーした後、オンプレミス サイトが使用可能になったときにオンプレミス サイトにフェールバックします。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、Hyper-V VM と Azure にフェールオーバーする方法について説明します。 フェールオーバーした後、オンプレミス サイトが使用可能になったときにオンプレミス サイトにフェールバックします。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Hyper-V VM のプロパティで Azure の要件に準拠していることを確認する
@@ -49,7 +51,7 @@ VM にスナップショットがないことと、フェールバック中に�
 
 2. **[レプリケートされたアイテム]** ウィンドウには、VM 情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
 
-3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、および管理ディスクの設定を変更できます。
+3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、およびマネージド ディスクの設定を変更できます。
 
 4. ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示および変更できます。
 

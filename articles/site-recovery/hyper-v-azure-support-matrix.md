@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 08/14/2018
+ms.topic: conceptual
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: e363885afb77a60bfc0229a872fdb4e519d5979d
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 83d2fabbe3a1b0ab44cb97e53baf0aa40349aeed
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42145391"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079210"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Azure への Hyper-V レプリケーションのサポート マトリックス
 
@@ -59,16 +59,16 @@ VM 構成 | Azure にレプリケートする VM は、[Azure の要件](#azure-
 
 **コンポーネント** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-ホスト ネットワーク: NIC チーミング | はい
-ホスト ネットワーク: VLAN | はい
-ホスト ネットワーク: IPv4 | はい
-ホスト ネットワーク: IPv6 | いいえ 
-ゲスト VM ネットワーク: NIC チーミング | いいえ 
-ゲスト VM ネットワーク: IPv4 | はい
-ゲスト VM ネットワーク: IPv6 | いいえ 
-ゲスト VM ネットワーク: 静的 IP (Windows) | はい
-ゲスト VM ネットワーク: 静的 IP (Linux) | いいえ 
-ゲスト VM ネットワーク: マルチ NIC | はい
+ホスト ネットワーク: NIC チーミング | [はい] | [はい]
+ホスト ネットワーク: VLAN | [はい] | [はい]
+ホスト ネットワーク: IPv4 | [はい] | [はい]
+ホスト ネットワーク: IPv6 | いいえ  | いいえ 
+ゲスト VM ネットワーク: NIC チーミング | いいえ  | いいえ 
+ゲスト VM ネットワーク: IPv4 | [はい] | [はい]
+ゲスト VM ネットワーク: IPv6 | いいえ  | [はい]
+ゲスト VM ネットワーク: 静的 IP (Windows) | [はい] | [はい]
+ゲスト VM ネットワーク: 静的 IP (Linux) | いいえ  | いいえ 
+ゲスト VM ネットワーク: マルチ NIC | [はい] | [はい]
 
 
 
@@ -76,15 +76,15 @@ VM 構成 | Azure にレプリケートする VM は、[Azure の要件](#azure-
 
 **コンポーネント** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-Azure ExpressRoute | はい | はい
-ILB | はい | はい
-ELB | はい | はい
-Azure の Traffic Manager | はい | はい
-マルチ NIC | はい | はい
-予約済み IP | はい | はい
-IPv4 | はい | はい
-送信元 IP アドレスを保持する | はい | はい
-Azure Virtual Network サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | はい | はい
+Azure ExpressRoute | [はい] | [はい]
+ILB | [はい] | [はい]
+ELB | [はい] | [はい]
+Azure の Traffic Manager | [はい] | [はい]
+マルチ NIC | [はい] | [はい]
+予約済み IP | [はい] | [はい]
+IPv4 | [はい] | [はい]
+送信元 IP アドレスを保持する | [はい] | [はい]
+Azure Virtual Network サービス エンドポイント<br/> (Azure Storage ファイアウォールなし) | [はい] | [はい]
 高速ネットワーク | いいえ  | いいえ 
 
 
@@ -93,18 +93,18 @@ Azure Virtual Network サービス エンドポイント<br/> (Azure Storage フ
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | --- | ---
 NFS | 該当なし | 該当なし
-SMB 3.0 | はい | はい
-SAN (ISCSI) | はい | はい
-マルチパス (MPIO) 以下でテスト済み:<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM for CLARiiON | はい | はい
+SMB 3.0 | [はい] | [はい]
+SAN (ISCSI) | [はい] | [はい]
+マルチパス (MPIO) 以下でテスト済み:<br></br> Microsoft DSM、EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM for CLARiiON | [はい] | [はい]
 
 ## <a name="hyper-v-vm-guest-storage"></a>Hyper-V VM ゲスト ストレージ
 
 **Storage** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
 VMDK | 該当なし | 該当なし
-VHD/VHDX | はい | はい
-Generation 2 VM | はい | はい
-EFI/UEFI| はい | はい
+VHD/VHDX | [はい] | [はい]
+Generation 2 VM | [はい] | [はい]
+EFI/UEFI| [はい] | [はい]
 共有クラスター ディスク | いいえ  | いいえ 
 暗号化されたディスク | いいえ  | いいえ 
 NFS | 該当なし | 該当なし
@@ -112,26 +112,26 @@ SMB 3.0 | いいえ  | いいえ
 RDM | 該当なし | 該当なし
 1 TB より大きいディスク | はい、最大 4,095 GB | はい、最大 4,095 GB
 ディスク: 4K 論理および物理セクター | サポートされない: Gen 1/Gen 2 | サポートされない: Gen 1/Gen 2
-ディスク: 4K 論理および 512 バイトの物理セクター | はい |  はい
-論理ボリューム管理 (LVM)。 LVM は、データ ディスクでのみサポートされています。 Azure からは OS ディスクが 1 つだけ提供されます。 | はい | はい
-ストライピングされたディスクのボリューム > 1 TB | はい | はい
-記憶域 | はい | はい
+ディスク: 4K 論理および 512 バイトの物理セクター | [はい] |  [はい]
+論理ボリューム管理 (LVM)。 LVM は、データ ディスクでのみサポートされています。 Azure からは OS ディスクが 1 つだけ提供されます。 | [はい] | [はい]
+ストライピングされたディスクのボリューム > 1 TB | [はい] | [はい]
+記憶域 | [はい] | [はい]
 ディスクのホット アド/削除 | いいえ  | いいえ 
-ディスクの除外 | はい | はい
-マルチパス (MPIO) | はい | はい
+ディスクの除外 | [はい] | [はい]
+マルチパス (MPIO) | [はい] | [はい]
 
 ## <a name="azure-storage"></a>Azure Storage
 
 **コンポーネント** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-ローカル冗長ストレージ | はい | はい
-geo 冗長ストレージ | はい | はい
-読み取りアクセス geo 冗長ストレージ | はい | はい
+ローカル冗長ストレージ | [はい] | [はい]
+geo 冗長ストレージ | [はい] | [はい]
+読み取りアクセス geo 冗長ストレージ | [はい] | [はい]
 クール ストレージ | いいえ  | いいえ 
 ホット ストレージ| いいえ  | いいえ 
 ブロック blob | いいえ  | いいえ 
-保存時の暗号化 (SSE)| はい | はい
-Premium Storage | はい | はい
+保存時の暗号化 (SSE)| [はい] | [はい]
+Premium Storage | [はい] | [はい]
 インポート/エクスポート サービス | いいえ  | いいえ 
 ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成された仮想ネットワークの Azure Storage ファイアウォール | いいえ  | いいえ 
 
@@ -140,8 +140,8 @@ Premium Storage | はい | はい
 
 **機能** | **Hyper-V (Virtual Machine Manager あり)** | **Hyper-V (Virtual Machine Manager なし)**
 --- | --- | ---
-可用性セット | はい | はい
-ハブ | はい | はい  
+可用性セット | [はい] | [はい]
+ハブ | [はい] | [はい]  
 マネージド ディスク | はい、フェールオーバー用です。<br/><br/> マネージド ディスクのフェールバックはサポートされません。 | はい、フェールオーバー用です。<br/><br/> マネージド ディスクのフェールバックはサポートされません。
 
 ## <a name="azure-vm-requirements"></a>Azure VM の要件

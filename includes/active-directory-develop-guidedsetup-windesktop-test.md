@@ -1,3 +1,26 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: jmprieur
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: jmprieur
+ms.custom: include file
+ms.openlocfilehash: d333f8ecd7e1044575f570d893227f9dcb394974
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843040"
+---
 ## <a name="test-your-code"></a>コードのテスト
 
 Visual Studio で、お使いのプロジェクトを実行するには、**F5** キーを押します。 以下に示すように、アプリケーション **MainWindow** が表示されます。
@@ -16,7 +39,7 @@ Visual Studio で、お使いのプロジェクトを実行するには、**F5**
 ### <a name="view-application-results"></a>アプリケーションの結果を表示する
 サインインしたら、Microsoft Graph API の呼び出しによって返されたユーザー プロファイル情報が表示されます。 結果は、**[API Call Results]\(API コールの結果\)** ボックスに表示されます。 `AcquireTokenAsync` または `AcquireTokenSilentAsync` の呼び出しを介して取得されたトークンに関する基本情報は、**[Token Info]\(トークン情報\)** ボックスに表示されます。 結果には、以下のプロパティが含まれます。
 
-|プロパティ  |形式  |[説明] |
+|プロパティ  |形式  |説明 |
 |---------|---------|---------|
 |**名前** |ユーザーのフルネーム |ユーザーの姓と名。|
 |**ユーザー名** |<span>user@domain.com</span> |ユーザーの識別に使用されているユーザー名。|

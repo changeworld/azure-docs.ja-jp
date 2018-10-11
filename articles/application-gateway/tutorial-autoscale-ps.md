@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 9/26/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6c54706f45653c43e6b41d0adb3132583079e6b6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: d86ce2e1bac2fb58df8df748381a00eac21e65cb
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167532"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48016936"
 ---
 # <a name="tutorial-create-an-autoscaling-zone-redundant-application-gateway-with-a-reserved-virtual-ip-address-using-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して、自動スケールの予約済み IP アドレスを持つゾーン冗長アプリケーション ゲートウェイを作成する
 
@@ -35,7 +35,7 @@ ms.locfileid: "47167532"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-このチュートリアルでは、Azure PowerShell をローカルで実行する必要があります。 Azure PowerShell モジュール バージョン 6.9.0 以降がインストールされている必要があります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページをご覧ください。 PowerShell のバージョンを確認した後、`Login-AzureRmAccount` を実行して Azure との接続を作成します。
+このチュートリアルでは、Azure PowerShell をローカルで実行する必要があります。 Azure PowerShell モジュール バージョン 6.9.0 以降がインストールされている必要があります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell のバージョンを確認した後、`Login-AzureRmAccount` を実行して Azure との接続を作成します。
 
 ## <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
 
@@ -119,7 +119,7 @@ $rule02 = New-AzureRmApplicationGatewayRequestRoutingRule -Name "Rule2" -RuleTyp
 - **固定容量モード**。 このモードでは、アプリケーション ゲートウェイは自動スケールせず、固定されたスケール ユニットの容量で動作します。
 
    ```azurepowershell
-   $sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
+   $sku = New-AzureRmApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2 -Capacity 2
    ```
 - **自動スケール モード**。 このモードでは、アプリケーション ゲートウェイは、アプリケーションのトラフィック パターンに基づいて、自動スケールします。
 

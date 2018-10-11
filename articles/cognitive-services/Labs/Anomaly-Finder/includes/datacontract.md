@@ -5,17 +5,17 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-finder
+ms.component: anomaly-finder
 ms.topic: include
 ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
-ms.openlocfilehash: e37d3ef5b6f65ad31bc19f9f8c15350014d1c9ad
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9280790f6692096a0b3909c9d1dfab2e94a8c0d7
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375368"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48904630"
 ---
 [Anomaly Finder API](https://labs.cognitive.microsoft.com/en-us/project-anomaly-finder) を使用すると、JSON 形式の時系列データを API エンドポイントにアップロードし、API 応答から結果を読み取ることができます。 時系列データはアップロード可能で、各データ ポイントには以下が含まれています。  
 * Timestamp - データ ポイントのタイムスタンプ。 UTC で日時を示した文字列 (例: 2017-08-01T00:00:00Z) を使用するようにしてください

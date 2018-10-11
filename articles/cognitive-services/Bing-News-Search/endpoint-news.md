@@ -1,22 +1,23 @@
 ---
-title: Bing News search エンドポイント | Microsoft Docs
+title: Bing News Search エンドポイント
+titlesuffix: Azure Cognitive Services
 description: News Search API エンドポイントの概要。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: v-gedod
-ms.openlocfilehash: ab892e947566adf025499382b213a52ed3e96e35
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 0ed8b9048c04c4aff5214cea697810a0c573559e
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433686"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800547"
 ---
-# <a name="news-search-endpoints"></a>News Search エンドポイント
+# <a name="bing-news-search-endpoints"></a>Bing News Search エンドポイント
 **News Search API** は、ニュース記事、Web ページ、画像、動画、[エンティティ](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)を返します。 エンティティには、人物、場所、またはトピックに関する概要情報が含まれます。
 ## <a name="endpoints"></a>エンドポイント
 Bing API を使用してニュース検索の結果を取得するには、次のエンドポイントのいずれかに `GET` 要求を送信します。 ヘッダーと URL パラメーターは、さらに仕様を定義します。

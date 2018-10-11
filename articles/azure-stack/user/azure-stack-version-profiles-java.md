@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: ffd22f3612d55258737cb9c004b2b0f4e9326f07
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 5a97a683e7f25029199ba68ce3d5cee410c3cf29
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452515"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886826"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Azure Stack での Java による API バージョンのプロファイルの使用
 
@@ -40,7 +40,7 @@ API プロファイルは、リソース プロバイダーと API バージョ�
     
       - これは、Pom.xml ファイルに依存関係として指定するためです。これにより、.NET と同様に、ドロップダウン リストから適切なクラスを選択すると、モジュールが自動的に読み込まれます。
         
-          - 各モジュールの先頭は次のようになります。         
+      - 各モジュールの先頭は次のようになります。         
            `Import com.microsoft.azure.management.resources.v2018_03_01.ResourceGroup`
              
 
@@ -93,11 +93,11 @@ Azure Stack で Azure Java SDK を使用するには、次の値を指定した�
 
 | 値                     | 環境変数 | 説明                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| テナント ID                 | TENANT_ID            | Azure Stack の[<span class="underline">テナント ID</span>](../azure-stack-identity-overview.md) の値。                                                          |
-| クライアント ID                 | CLIENT_ID             | このドキュメントの前のセクションでサービス プリンシパルが作成されたときに保存した、サービス プリンシパル アプリケーション ID。                                                                                              |
-| サブスクリプション ID           | SUBSCRIPTION_ID      | [<span class="underline">サブスクリプション ID</span>](../azure-stack-plan-offer-quota-overview.md#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。                |
-| クライアント シークレット             | CLIENT_SECRET        | サービス プリンシパルの作成時に保存した、サービス プリンシパル アプリケーション シークレット 。                                                                                                                                   |
-| Resource Manager エンドポイント | ENDPOINT              | 「[<span class="underline">Azure Stack Resource Manager エンドポイント</span>](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)」をご覧ください。 |
+| テナント ID                 | AZURE_TENANT_ID            | Azure Stack の[<span class="underline">テナント ID</span>](../azure-stack-identity-overview.md) の値。                                                          |
+| クライアント ID                 | AZURE_CLIENT_ID             | このドキュメントの前のセクションでサービス プリンシパルが作成されたときに保存した、サービス プリンシパル アプリケーション ID。                                                                                              |
+| サブスクリプション ID           | AZURE_SUBSCRIPTION_ID      | [<span class="underline">サブスクリプション ID</span>](../azure-stack-plan-offer-quota-overview.md#subscriptions) は Azure Stack 内のオファーにアクセスするために必要です。                |
+| クライアント シークレット             | AZURE_CLIENT_SECRET        | サービス プリンシパルの作成時に保存した、サービス プリンシパル アプリケーション シークレット 。                                                                                                                                   |
+| Resource Manager エンドポイント | ARM_ENDPOINT              | 「[<span class="underline">Azure Stack Resource Manager エンドポイント</span>](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint)」をご覧ください。 |
 | Location                  | RESOURCE_LOCATION    | Azure Stack 用のローカル                                                                                                                                                                                                |
 
 Azure Stack のテナント ID を確認するには、[こちら](../azure-stack-csp-ref-operations.md)の手順に従ってください。 環境変数を設定するには、次の手順に従います。
@@ -107,7 +107,7 @@ Azure Stack のテナント ID を確認するには、[こちら](../azure-stac
 環境変数を設定するには、Windows コマンド プロンプトで次の形式を使用します。
 
 ```shell
-Set Azure_Tenant_ID=<Your_Tenant_ID>
+Set AZURE_TENANT_ID=<Your_Tenant_ID>
 ```
 
 ### <a name="macos-linux-and-unix-based-systems"></a>macOS、Linux、および Unix ベースのシステム
@@ -115,7 +115,7 @@ Set Azure_Tenant_ID=<Your_Tenant_ID>
 Unix ベースのシステムでは、次のコマンドを使用できます。
 
 ```shell
-Export Azure_Tenant_ID=<Your_Tenant_ID>
+Export AZURE_TENANT_ID=<Your_Tenant_ID>
 ```
 
 ### <a name="the-azure-stack-resource-manager-endpoint"></a>Azure Stack Resource Manager エンドポイント
@@ -162,7 +162,8 @@ Azure Stack および API プロファイルについて詳しくは、「[API �
 ```java
 AzureTokenCredentials credentials = new ApplicationTokenCredentials(client, tenant, key, AZURE_STACK)
                     .withDefaultSubscriptionId(subscriptionId);
-            Azure azureStack = Azure.configure().withLogLevel(com.microsoft.rest.LogLevel.BASIC)
+Azure azureStack = Azure.configure()
+                    .withLogLevel(com.microsoft.rest.LogLevel.BASIC)
                     .authenticate(credentials, credentials.defaultSubscriptionId());
 ```
 
@@ -182,7 +183,7 @@ AzureEnvironment AZURE_STACK = new AzureEnvironment(new HashMap<String, String>(
                     put("activeDirectoryResourceId", settings.get("audience"));
                     put("activeDirectoryGraphResourceId", settings.get("graphEndpoint"));
                     put("storageEndpointSuffix", armEndpoint.substring(armEndpoint.indexOf('.')));
-                    put("keyVaultDnsSuffix", ".adminvault" + armEndpoint.substring(armEndpoint.indexOf('.')));
+                    put("keyVaultDnsSuffix", ".vault" + armEndpoint.substring(armEndpoint.indexOf('.')));
                 }
             });
 ```
@@ -205,8 +206,7 @@ HttpGet getRequest = new
 HttpGet(String.format("%s/metadata/endpoints?api-version=1.0",
 armEndpoint));
 
-// Add additional header to getRequest which accepts application/xml
-data
+// Add additional header to getRequest which accepts application/xml data
 getRequest.addHeader("accept", "application/xml");
 
 // Execute request and catch response
@@ -217,37 +217,37 @@ HttpResponse response = httpClient.execute(getRequest);
 
 .NET と Azure Stack API のプロファイルを使用してソリューションを作成する場合は、次の GitHub のサンプルを参考資料として使用できます。
 
-  - [リソース グループの管理](https://github.com/viananth/resources-java-manage-resource-group/tree/stack/Hybrid)
+  - [リソース グループの管理](https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group)
 
-  - [ストレージ アカウントの管理](https://github.com/viananth/storage-java-manage-storage-accounts/tree/stack/Hybrid)
+  - [ストレージ アカウントの管理](https://github.com/Azure-Samples/hybrid-storage-java-manage-storage-accounts)
 
-  - [仮想マシンの管理](https://github.com/viananth/compute-java-manage-vm/tree/stack/Hybrid)
+  - [仮想マシンの管理](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm)
 
 ### <a name="sample-unit-test-project"></a>単体テスト プロジェクトのサンプル 
 
 1.  次のコマンドを使用して、リポジトリを複製します。
     
-    `git clone https://github.com/viananth/resources-java-manage-resource-group/tree/stack/Hybrid`
+    `git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
 
 2.  Azure サービス プリンシパルを作成し、サブスクリプションにアクセスするロールを割り当てます。 サービス プリンシパルの作成方法については、「[Azure PowerShell を使用して資格情報でのサービス プリンシパルを作成する](../azure-stack-create-service-principals.md)」をご覧ください。
 
 3.  次の必要な環境変数値を取得します。
     
-   1.  TENANT_ID
-   2.  CLIENT_ID
-   3.  CLIENT_SECRET
-   4.  SUBSCRIPTION_ID
-   5.  ARM_ENDPOINT
-   6.  RESOURCE_LOCATION
+    -  AZURE_TENANT_ID
+    -  AZURE_CLIENT_ID
+    -  AZURE_CLIENT_SECRET
+    -  AZURE_SUBSCRIPTION_ID
+    -  ARM_ENDPOINT
+    -  RESOURCE_LOCATION
 
 4.  コマンド プロンプトを使用して作成したサービス プリンシパルから取得した情報を使用して、次の環境変数を設定します。
     
-   1. export TENANT_ID={ご使用のテナント ID}
-   2. export CLIENT_ID={ご使用のテナント ID}
-   3. export CLIENT_SECRET={ご使用のクライアント シークレット}
-   4. export SUBSCRIPTION_ID={ご使用のサブスクリプション ID}
-   5. export ARM_ENDPOINT={ご使用の Azure Stack Resource Manager URL}
-   6. export RESOURCE_LOCATION={Azure Stack の場所}
+    - export AZURE_TENANT_ID={ご使用のテナント ID}
+    - export AZURE_CLIENT_ID={ご使用のクライアント ID}
+    - export AZURE_CLIENT_SECRET={ご使用のクライアント シークレット}
+    - export AZURE_SUBSCRIPTION_ID={ご使用のサブスクリプション ID}
+    - export ARM_ENDPOINT={ご使用の Azure Stack Resource Manager URL}
+    - export RESOURCE_LOCATION={Azure Stack の場所}
 
    Windows では、**export** ではなく **set** を使用します。
 

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: b5834bfd47cf2ab8462462c43394c8f05e43afa3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c626bd193d883f292bf8d20913ff21d86d0d761
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971401"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268481"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-service"></a>Azure Machine Learning サービスのサポートおよびトレーニングの取得
 
@@ -35,7 +35,7 @@ ms.locfileid: "46971401"
 
 + **テクニカル サポート**: [Azure のサポート](https://azure.microsoft.com/support/options/)にアクセスし、[Machine Learning] を選択します。 
 
-+ **ユーザー フォーラム**: [MSDN の Azure Machine Learning サービスのサポート フォーラム](https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning)では、質問したり質問に回答したりして他のユーザーとつながることができます。
++ **ユーザー フォーラム**: [MSDN の Azure Machine Learning サービスのサポート フォーラム](https://aka.ms/aml-forum-service)では、質問したり質問に回答したりして他のユーザーとつながることができます。
 
 + **StackOverflow**: "Azure-Machine-Learning" タグが付いた [StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) の Machine Learning コミュニティをご利用ください。
 

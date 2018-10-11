@@ -6,16 +6,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.topic: conceptual
 ms.service: site-recovery
-ms.date: 08/30/2018
+ms.date: 10/09/2018
 ms.author: raynew
-ms.openlocfilehash: c71f683355a09c8ba2381db406eeb1ccabdb7afa
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 802c2223a72a89dbe2a97404aab4b0fc85c391ed
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697698"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902826"
 ---
-# <a name="replicate-azure-stack-vms-to-azure-preview"></a>Azure Stack VM を Azure にレプリケートする (プレビュー)
+# <a name="replicate-azure-stack-vms-to-azure"></a>Azure Stack VM を Azure にレプリケートする
 
 この記事では、[Azure Site Recovery サービス](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview)を使用して、Azure Stack VM の Azure へのディザスター リカバリーを設定する方法について説明します。
 
@@ -27,11 +27,7 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 - すべてが再稼働したら、Azure VM をプライマリ サイトにフェールバックし、Azure ストレージへのへのレプリケーションを再び開始できます。
 
 
-> [!NOTE]
-> Azure Stack 向けの Site Recovery は、現在パブリック プレビュー段階です。
-
-
-この記事では、次のことについて説明します。
+この記事では、次のことについて説明します:
 
 > [!div class="checklist"]
 > * **手順 1: Azure Stack VM をレプリケーションできるように準備する**。 VM が Site Recovery の要件を満たしていることを確認し、Site Recovery モビリティ サービスをインストールする準備をします。 このサービスは、レプリケートする各 VM 上にインストールされます。
@@ -63,7 +59,7 @@ Site Recovery は、事業継続とディザスター リカバリー (BCDR) 戦
 5. 構成サーバーは、Azure とのレプリケーション管理を調整します(ポート HTTPS 443 送信)。
 6. プロセス サーバーは、ソース マシンからデータを受信し、そのデータを最適化して暗号化し、Azure ストレージに送信します (ポート 443 送信)。
 7. レプリケートされるマシンは、レプリケーション管理のために、構成サーバーと通信します (ポート HTTPS 443 受信)。 マシンは、レプリケーション データをプロセス サーバーに送信します (ポート HTTPS 9443 受信 - 変更可能)。
-8. トラフィックは、インターネット経由で Azure ストレージのパブリック エンドポイントにレプリケートされます。 また、Azure ExpressRoute のパブリック ピアリングを使用できます。 オンプレミス サイトから Azure へのサイト間 VPN を介したトラフィックのレプリケートはサポートされていません。
+8. トラフィックは、インターネット経由で Azure Storage のパブリック エンドポイントにレプリケートされます。 また、Azure ExpressRoute のパブリック ピアリングを使用できます。 オンプレミス サイトから Azure へのサイト間 VPN を介したトラフィックのレプリケートはサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -212,7 +208,7 @@ VM を実行中のオペレーティング システムが、表にまとめら�
 
 1. **[インフラストラクチャの準備]** > **[レプリケーションの設定]** をクリックします。
 2. **[レプリケーション ポリシーの作成]** で、ポリシー名を指定します。
-3. **[RPO しきい値]** で、復旧ポイントの目標 (RPO) の上限を指定します。
+3. **[RPO しきい値]** で、回復ポイントの目標 (RPO) の上限を指定します。
     - 設定時間に従って、レプリケートされたデータの復旧ポイントが作成されます。
     - この設定はレプリケーションには影響しません (レプリケーションは連続しています)。 それは、復旧ポイントが作成されずにしきい値の上限に達した場合にアラートを発行するだけです。
 4. **[復旧ポイントのリテンション期間]** で、各復旧ポイントがどれだけ長く保持されるかを指定します。 レプリケートされた VM は、指定された期間内の任意のポイントの状態に復旧できます。

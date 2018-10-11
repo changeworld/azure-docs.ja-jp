@@ -6,7 +6,6 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.devlang: na
 ms.topic: include
@@ -15,12 +14,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: bfdc89d9bc5d5a07c04e857c1a46e4b988c125ab
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3a141bcde75872f2384aedf982ffef5cba9666a3
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943557"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843190"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -45,7 +44,7 @@ Visual Studio でお使いのアプリケーションをテストするには、
 |---|---|---|
 |**名前** |ユーザーのフルネーム | ユーザーの姓と名。
 |**ユーザー名** |user<span>@domain.com</span> | ユーザーの識別に使用されているユーザー名。
-|**[件名]** |件名 |Web でユーザーを一意に特定する文字列。|
+|**[件名]** |Subject |Web でユーザーを一意に特定する文字列。|
 |**テナント ID** |Guid | ユーザーの Azure AD 組織を一意に表す **guid**。|
 
 さらに、認証要求内にあるすべての要求を示した表を確認する必要があります。 詳細については、[Azure AD ID トークンにある要求の一覧](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)をご覧ください。
@@ -54,7 +53,7 @@ Visual Studio でお使いのアプリケーションをテストするには、
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Authorize 属性を持つメソッドへのアクセスをテストする (省略可能)
 `Authorize` 属性で保護されているコント ローラーに対する匿名ユーザーとしてのアクセスをテストするには、次の手順に従います。
 1. ユーザーのサインアウトのリンクを選択し、サインアウトのプロセスを完了します。
-2. お使いのブラウザーで「http://<span></span>localhost:{ポート}/claims」を入力し、`Authorize` 属性で保護されているコントローラーにアクセスします。
+2. お使いのブラウザーで「 http://<span></span>localhost:{ポート}/claims」を入力し、`Authorize` 属性で保護されているコントローラーにアクセスします。
 
 #### <a name="expected-results-after-access-to-a-protected-controller"></a>保護されているコントローラーへアクセスした後に期待される結果
 保護されているコントローラー ビューを使用するために、認証を求めるメッセージが表示されます。
