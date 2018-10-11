@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/06/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: c1932f2ed0486fb56e467466c0fed53702e8f9b0
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 1cdf013325afe4b217f5f56043e06f60a4933419
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248688"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585630"
 ---
 # <a name="connect-to-azure-stack-development-kit"></a>Azure Stack Development Kit に接続する
 
@@ -39,7 +39,7 @@ ms.locfileid: "35248688"
 
 2. 開発キット コンピューターでサーバー マネージャーを開きます。 **[ローカル サーバー]** を選択し、**[Internet Explorer のセキュリティ強化]** チェック ボックスをオフにして、サーバー マネージャーを閉じます。
 
-3. [ユーザー ポータル](azure-stack-key-features.md#portal)を開くには、https://portal.local.azurestack.external/ に移動します。 ユーザー資格情報を使用してサインインします。 Azure Stack の[オペレーター ポータル](azure-stack-key-features.md#portal)を開くには、https://adminportal.local.azurestack.external/ に移動します。 インストール時に指定した Azure Active Directory (Azure AD) の資格情報を使用してサインインします。
+3. [ユーザー ポータル](azure-stack-key-features.md#portal)を開くには、 https://portal.local.azurestack.external/ に移動します。 ユーザー資格情報を使用してサインインします。 Azure Stack の[オペレーター ポータル](azure-stack-key-features.md#portal)を開くには、 https://adminportal.local.azurestack.external/ に移動します。 インストール時に指定した Azure Active Directory (Azure AD) の資格情報を使用してサインインします。
 
 <a name="connect-to-azure-stack-with-vpn"></a>
 ## <a name="connect-to-azure-stack-by-using-vpn"></a>VPN を使用して Azure Stack に接続する

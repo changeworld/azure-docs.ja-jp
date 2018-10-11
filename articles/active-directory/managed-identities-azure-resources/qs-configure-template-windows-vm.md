@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: bb62f892ec3d171958764d10f4b069bbd536d2ea
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f50714538cdfd1a0bd258a3b78d0885e3c7beed1
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223442"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018487"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>テンプレートを使用して Azure VM で Azure リソースのマネージド ID を構成する
 
@@ -188,7 +188,7 @@ VM でシステム割り当てマネージド ID を有効にしたら、作成�
 
    VM にシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、`userAssignedIdentities` ディクショナリ値と共に `UserAssigned` を保持します。
 
-   **Microsoft.Compute/virtualMachines API バージョン 2018-06-01 以前**
+   **Microsoft.Compute/virtualMachines API バージョン 2018-06-01**
    
    `apiVersion` が `2017-12-01` であり、VM にシステム割り当てマネージド ID とユーザー割り当てマネージド ID の両方が割り当てられている場合は、ID の種類から `SystemAssigned` を削除し、ユーザー割り当てマネージド ID の `identityIds` 配列と共に `UserAssigned` を保持します。  
    
@@ -235,7 +235,7 @@ VM でシステム割り当てマネージド ID を有効にしたら、作成�
    }
    ```
    
-   **Microsoft.Compute/virtualMachines API バージョン 2017-12-01 以前**
+   **Microsoft.Compute/virtualMachines API バージョン 2017-12-01**
     
    `apiVersion` が `2017-12-01` の場合、ユーザー割り当てマネージド ID は `identityIds` 配列に格納されます。`<USERASSIGNEDIDENTITYNAME>` 値は、テンプレートの `variables` セクションに定義された変数に格納する必要があります。
     
@@ -316,7 +316,7 @@ VM でシステム割り当てマネージド ID を有効にしたら、作成�
        }
     ]
    ```
-   **Microsoft.Compute/virtualMachines API バージョン 2017-12-01 以前**
+   **Microsoft.Compute/virtualMachines API バージョン 2017-12-01**
    
    ```JSON
    "resources": [
@@ -375,7 +375,7 @@ VM でシステム割り当てマネージド ID を有効にしたら、作成�
     }
    ```
    
-   **Microsoft.Compute/virtualMachines API バージョン 2018-06-01 以前**
+   **Microsoft.Compute/virtualMachines API バージョン 2018-06-01**
     
    VM から 1 つのユーザー割り当てマネージド ID を削除するには、`useraAssignedIdentities` ディクショナリからそれを削除します。
 

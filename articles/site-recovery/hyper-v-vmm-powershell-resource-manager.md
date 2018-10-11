@@ -2,18 +2,18 @@
 title: PowerShell (Azure Resource Manager) を使用して Virtual Machine Manager クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする | Microsoft Docs
 description: PowerShell (Resource Manager) を使用して Virtual Machine Manager クラウド内の Hyper-V VM をセカンダリ Virtual Machine Manager サイトにレプリケートする方法について説明します。
 services: site-recovery
-author: sujaytalasila
+author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: sutalasi
-ms.openlocfilehash: 0fecc7ba48daf396c3d25969cdda5891bdf08232
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 896b3cb3c40673dfbc7269cab1d37790f78912b0
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917967"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041358"
 ---
 # <a name="replicate-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して Hyper-V VM をセカンダリ サイトへレプリケートする
 

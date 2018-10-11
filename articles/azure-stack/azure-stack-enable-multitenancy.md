@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/28/2018
 ms.author: patricka
-ms.openlocfilehash: 0c49a895a3cd214bb6f9c88b5365cf980c60bf0a
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: c9b9e569cf643b85b41698bf29429d0b7ceec37e
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451773"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585103"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Azure Stack でのマルチテナント
 
@@ -103,17 +103,6 @@ Register-AzSWithMyDirectoryTenant `
 > このスクリプトは、ディレクトリ内の Azure Stack アプリケーションの状態を確認するためにいつでも実行できます。
 > 
 > VM をマネージド ディスク内に作成する操作 (1808 更新プログラムで導入) で問題が起きた場合は新しい**ディスク リソース プロバイダー**が追加されており、このスクリプトをもう一度実行する必要があります。
-
-### <a name="activate-the-administrator-and-tenant-portals"></a>管理者およびテナント ポータルのアクティブ化
-Azure AD を使用するデプロイの後は、Azure Stack の管理者とテナント ポータルの両方をアクティブにする必要があります。 アクティブにすることによって、ディレクトリの全ユーザーに関して適切なアクセス許可 (同意のページに一覧が表示されます) を Azure Stack ポータルと Azure Resource Manager に付与することに同意したことになります。
-
-- 管理者ポータルの場合は、 https://adminportal.local.azurestack.external/guest/signup に移動して情報を確認し、[承諾] をクリックします。 同意後は、ディレクトリ テナント管理者ではないサービス管理者を追加することができます。
-- テナント ポータルの場合は、 https://portal.local.azurestack.external/guest/signup に移動して情報を確認し、[承諾] をクリックします。 同意後は、ディレクトリのユーザーがテナント ポータルにサインインすることができます。 
- 
-> [!NOTE] 
-> ポータルがアクティブにされていない場合は、ディレクトリ管理者だけがポータルにサインインし、使用することができます。 他のユーザーがサインインすると、管理者が他のユーザーにアクセス許可を付与していないことを示すエラーが表示されます。 Azure Stack の登録先ディレクトリに管理者がネイティブに属していない場合は、Azure Stack ディレクトリをアクティベーション URL に追加する必要があります。 Azure Stack が fabrikam.onmicrosoft.com に登録されており、管理者ユーザーが admin@contoso.com の場合は、 https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com に移動してポータルをアクティブにします。
-
-
 
 ### <a name="direct-users-to-sign-in"></a>ユーザーをサインインに誘導する
 

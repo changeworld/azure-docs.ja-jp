@@ -3,7 +3,7 @@ title: Windows VM でパスワードまたはリモート デスクトップの�
 description: Azure Portal または Azure PowerShell を使用して、Windows VM でアカウントのパスワードまたはリモート デスクトップ サービスをリセットする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
+author: genlin
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
-ms.author: cynthn
-ms.openlocfilehash: a8db7ef82136bae51c99bcfd2a4743e09ebf5712
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: genli
+ms.openlocfilehash: 08461811203232d5db1ae9c8f34f4ac180b6b0ce
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412038"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268303"
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法
 Windows 仮想マシン (VM) に接続できない場合、ローカル管理者パスワードをリセットすることも、(Windows ドメイン コントローラーでサポートされていない) リモート デスクトップ サービスの構成をリセットすることもできます。 Azure ポータルまたは Azure PowerShell で VM アクセス拡張機能を使用して、パスワードをリセットできます。 VM にログインしたら、そのユーザーのパスワードをリセットしてください。  

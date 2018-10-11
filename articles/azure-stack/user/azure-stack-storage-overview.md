@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/21/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: d97a5f8aff57f4bbfd7d5222a87d258fa5c92da8
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 13fdf3257ed44212f45eeb3d2820a2022f54d777
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604388"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585240"
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Azure Stack Storage の概要
 
@@ -52,7 +52,7 @@ Azure Stack Storage アカウントは、Azure Stack Storage のサービスに�
 
 大量の非構造化オブジェクト データをクラウドに保存する場合は、Blob Storage を使用すると効率の高いスケーラブルなソリューションが実現します。 Blob Storage には、次のようなコンテンツを格納できます。
 
-- ドキュメント
+- Documents
 - 写真、ビデオ、音楽、ブログなどのソーシャル データ
 - ファイル、コンピューター、データベース、およびデバイスのバックアップ データ
 - Web アプリケーションのイメージとテキスト

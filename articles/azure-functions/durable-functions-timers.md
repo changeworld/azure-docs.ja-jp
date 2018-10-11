@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: azfuncdf
-ms.openlocfilehash: ff530d1af9a64383568aa53d3f53c59781d868a5
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e45a8b1d99ef7ccd89f38ec9402cda1a4d49c817
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090712"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238556"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Durable Functions のタイマー (Azure Functions)
 
@@ -57,7 +57,7 @@ public static async Task Run(
 const df = require("durable-functions");
 const moment = require("moment-js");
 
-module.exports = df(function*(context) {
+module.exports = df.orchestrator(function*(context) {
     for (let i = 0; i < 10; i++) {
         const dayOfMonth = context.df.currentUtcDateTime.getDate();
         const deadline = moment.utc(context.df.currentUtcDateTime).add(1, 'd');
@@ -111,7 +111,7 @@ public static async Task<bool> Run(
 const df = require("durable-functions");
 const moment = require("moment-js");
 
-module.exports = df(function*(context) {
+module.exports = df.orchestrator(function*(context) {
     const deadline = moment.utc(context.df.currentUtcDateTime).add(30, 's');
 
     const activityTask = context.df.callActivityAsync("GetQuote");

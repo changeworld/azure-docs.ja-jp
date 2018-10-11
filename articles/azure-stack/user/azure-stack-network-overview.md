@@ -6,15 +6,15 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 05/21/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: ee94fd8a9dac17e4db180b05208df66f3d33b901
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: ac842507cc52c9677e755d32b09758f787c5a1fb
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604568"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584563"
 ---
 # <a name="introduction-to-azure-stack-networking"></a>Azure Stack ネットワークの概要
 

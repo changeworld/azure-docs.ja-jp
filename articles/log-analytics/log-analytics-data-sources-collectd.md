@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 59b6f8b82d0f714d4526147b42f68e14bf0aa2bd
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: eb053ef8fc66ff9d71a9576b71eb4edfcd688638
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127698"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041292"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Log Analytics で Linux エージェント上の CollectD からデータを収集する
 [CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Log Analytics での CollectD からのパフォーマンス データの収集に関する情報を提供します。

@@ -14,13 +14,13 @@ ms.devlang: json
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 314b3b5ae331d562b13ba593d5f9b35b87786003
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.component: ''
+ms.openlocfilehash: f1cf38dd5687e14b0183de03b8eda41fe39808e3
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225550"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041376"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics を管理する
 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。

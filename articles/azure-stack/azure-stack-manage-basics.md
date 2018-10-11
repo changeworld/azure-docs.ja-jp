@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 39dc48b1357b07932efbccaf002f54ca58edae24
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ead76fd2f03a5d445f9fdbb6c10edb852fd046cf
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093298"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585766"
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack の管理の基本
 Azure Stack の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイドでは、Azure Stack オペレーターとしての役割の概要と、ユーザーがすばやく生産的になれるようにユーザーに伝える必要があることを説明します。

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.component: na
-ms.openlocfilehash: da37e7558f93bc5073cd4ee1726a409c7defe127
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 5f5b03090f374f936e03d487596ca0462feea348
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131720"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042430"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -180,7 +180,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 - サービス デスク接続名
 - サービス デスク ID
-- State
+- 状態
 - 緊急度
 - 影響
 - 優先順位
@@ -190,7 +190,7 @@ ServiceDeskWorkItemType_s="Incident"
 - 終了者
 - ソース
 - 割当先
-- カテゴリ
+- Category
 - タイトル
 - 説明
 - 作成日
@@ -213,7 +213,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - 割当先
 - タイトル
 - type
-- カテゴリ
+- Category
 - 状態
 - エスカレーション
 - 競合状態
@@ -238,7 +238,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics のフィールド | ServiceNow のフィールド |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | State |
+| IncidentState_s | 状態 |
 | Urgency_s |緊急度 |
 | Impact_s |影響|
 | Priority_s | 優先順位 |
@@ -247,7 +247,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s  | 終了者 |
 | Source_s| 連絡先の種類 |
 | AssignedTo_s | 割り当て先  |
-| Category_s | カテゴリ |
+| Category_s | Category |
 | Title_s|  簡単な説明 |
 | Description_s|  メモ |
 | CreatedDate_t|  開始済み |
@@ -265,8 +265,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | AssignedTo_s | 割り当て先  |
 | Title_s|  簡単な説明 |
 | Type_s|  type |
-| Category_s|  カテゴリ |
-| CRState_s|  State|
+| Category_s|  Category |
+| CRState_s|  状態|
 | Urgency_s|  緊急度 |
 | Priority_s| 優先順位|
 | Risk_s| リスク|

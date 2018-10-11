@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: richrund; bwren
-ms.component: na
-ms.openlocfilehash: c2bb802213d903290a0168623d7e6a302ba0e324
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.author: magoedte
+ms.component: ''
+ms.openlocfilehash: c078320ce31e0c51c7aef0bc0a2aa14e68ac2fc3
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127443"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042863"
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>サブスクリプションの Azure アクティビティ ログを Log Analytics に収集する
 
@@ -133,11 +133,11 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
    | Name           | ロジック アプリの一意の名前。 |
    | サブスクリプション   | ロジック アプリを含める Azure サブスクリプションを選択します。 |
    | リソース グループ | ロジック アプリのために、既存の Azure リソース グループを選択するか、新しいものを作成します。 |
-   | リージョン       | ロジック アプリをデプロイするデータセンターのリージョンを選択します。 |
+   | Location       | ロジック アプリをデプロイするデータセンターのリージョンを選択します。 |
    | Log Analytics  | ロジック アプリを実行するたびにその状態を Log Analytics に記録する場合に選択します。  |
 
     
-3. **[作成]** を選択します。 **[デプロイメントに成功しました]** という通知が表示されたら、**[リソースに移動]** をクリックしてロジック アプリを開きます。
+3. **作成**を選択します。 **[デプロイメントに成功しました]** という通知が表示されたら、**[リソースに移動]** をクリックしてロジック アプリを開きます。
 
 4. **[テンプレート]** で **[空のロジック アプリ]** を選択します。 
 
@@ -151,7 +151,7 @@ Logic Apps デザイナーには、使用可能なコネクタとそのトリガ
 
    ![イベント ハブ トリガーのロジック アプリへの追加の画像](media/log-analytics-activity-logs-subscriptions/logic-apps-event-hub-add-trigger.png)
 
-2. 資格情報の入力を求められたら、Event Hubs の名前空間に接続します。 コピーしておいた接続の名前と接続文字列を入力します。  **[作成]** を選択します。
+2. 資格情報の入力を求められたら、Event Hubs の名前空間に接続します。 コピーしておいた接続の名前と接続文字列を入力します。  **作成**を選択します。
 
    ![イベント ハブ接続のロジック アプリへの追加の画像](media/log-analytics-activity-logs-subscriptions/logic-apps-event-hub-add-connection.png)
 

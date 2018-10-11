@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: cb927c0bad69bb3b5b3001e4ba19b11acd1eb316
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.component: ''
+ms.openlocfilehash: 633bf2cf68449849c019ba940644d78d1478efc3
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389971"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042328"
 ---
 # <a name="manage-workspaces"></a>ワークスペースを管理する
 
@@ -99,7 +99,7 @@ Azure には、Log Analytics 用に、次の 2 つの組み込みユーザー �
 
 Log Analytics 閲覧者ロールには、次の Azure アクションが含まれています。
 
-| Type    | アクセス許可 | 説明 |
+| type    | アクセス許可 | 説明 |
 | ------- | ---------- | ----------- |
 | アクションを表示します。 | `*/read`   | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure 診断の構成 <br> すべてのリソースのすべてのプロパティと設定 |
 | アクションを表示します。 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | ログ検索 v2 クエリを実行する機能 |

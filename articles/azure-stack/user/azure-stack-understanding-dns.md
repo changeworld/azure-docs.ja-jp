@@ -10,16 +10,16 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 05/21/2018
+ms.topic: get-09/28/2018started-article
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: 100c444fb5b3109c197fff69062586f9facb0932
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 783262a5b55bd645ae3b85c1f00434648d7ee35f
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580584"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584969"
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Azure Stack 用の iDNS の概要
 

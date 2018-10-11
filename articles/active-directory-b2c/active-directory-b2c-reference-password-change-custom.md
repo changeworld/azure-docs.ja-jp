@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/05/2016
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 491b3988a6581387c71b4214907e689119fcb979
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 4166b79fc52475a03d5d09297cad748c88748b04
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344991"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239151"
 ---
 # <a name="azure-active-directory-b2c-configure-password-change-in-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーにパスワードの変更を構成する  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -85,8 +85,8 @@ ms.locfileid: "43344991"
             <Item Key="UserMessageIfInvalidPassword">Your password is incorrect</Item>
             <Item Key="UserMessageIfOldPasswordUsed">Looks like you used an old password</Item>
             <Item Key="ProviderName">https://sts.windows.net/</Item>
-            <Item Key="METADATA">https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/.well-known/openid-configuration</Item>
-            <Item Key="authorization_endpoint">https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/token</Item>
+            <Item Key="METADATA">https://login.microsoftonline.com/{tenant}.onmicrosoft.com/.well-known/openid-configuration</Item>
+            <Item Key="authorization_endpoint">https://login.microsoftonline.com/{tenant}.onmicrosoft.com/oauth2/token</Item>
             <Item Key="response_types">id_token</Item>
             <Item Key="response_mode">query</Item>
             <Item Key="scope">email openid</Item>
