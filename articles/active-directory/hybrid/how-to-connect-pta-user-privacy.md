@@ -72,7 +72,7 @@ Foreach ($file in $Files) {
 
 ### <a name="delete-authentication-agent-trace-log-files"></a>認証エージェント トレース ログ ファイルを削除する
 
-**%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\** の内容を定期的に確認して、48 時間ごとにこのフォルダーの内容を削除する必要があります。 
+**%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** の内容を定期的に確認して、48 時間ごとにこのフォルダーの内容を削除する必要があります。 
 
 >[!IMPORTANT]
 >認証エージェント サービスが実行中の場合は、フォルダー内の現在のログ ファイルを削除できません。 サービスを停止してから、再試行してください。 ユーザーのサインイン エラーを回避するには、[高可用性](how-to-connect-pta-quick-start.md#step-4-ensure-high-availability)に対応するパススルー認証を既に構成している必要があります。
