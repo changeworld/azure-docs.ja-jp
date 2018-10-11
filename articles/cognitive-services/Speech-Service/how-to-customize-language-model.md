@@ -8,12 +8,12 @@ ms.component: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: 54bf38bf5a5858a2d7ac7237f58fc4db386dbac1
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 01a386d37841c78e4aae96111e4671ec33b87e00
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423325"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017553"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>チュートリアル: カスタム言語モデルを作成する
 
@@ -63,7 +63,7 @@ Azure portal での Speech Services サブスクリプションの作成につ�
 
 ## <a name="language-support"></a>言語のサポート
 
-**音声テキスト変換**のカスタム言語モデルで[サポートされる言語](supported-languages.md)の完全な一覧を参照してください。
+**音声テキスト変換**のカスタム言語モデルで[サポートされる言語](language-support.md#text-to-speech)の完全な一覧を参照してください。
 
 
 

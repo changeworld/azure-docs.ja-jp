@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 822261e74f7da941ac89090e5d493c4be18bc307
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2bd9f8508f67a3c4b87533fb514854b5f66a5f6b
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038886"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017265"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
@@ -99,7 +99,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS または Red Hat Enterprise Linux 7.3 または 7.4
 
-1. カーネルを更新します (推奨)。 カーネルを更新しない場合は、`kernel-devel` と `dkms` のバージョンが確実にカーネルに対して適切であるようにします。
+1. カーネルを更新します (推奨)。 カーネルを更新しない場合は、`kernel-devel` と `dkms` のバージョンがカーネルに対して確実に適切であるようにします。
 
   ```
   sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -207,7 +207,7 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
 5. GRID ドライバーをダウンロードしてインストールします。
 
   ```bash
-  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
+  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
 
   chmod +x NVIDIA-Linux-x86_64-grid.run
 
@@ -272,7 +272,7 @@ NV シリーズまたは NVv2 シリーズの VM に NVIDIA GRID ドライバー
 5. GRID ドライバーをダウンロードしてインストールします。
 
   ```bash
-  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
+  wget -O NVIDIA-Linux-x86_64-grid.run https://go.microsoft.com/fwlink/?linkid=874272  
 
   chmod +x NVIDIA-Linux-x86_64-grid.run
 
