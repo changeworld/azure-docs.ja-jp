@@ -8,14 +8,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: tonyxing
-ms.openlocfilehash: 1080bb0ad1d901a8b9a5ace4993d4e0d46924a03
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2a0715d3becf695600ed84edbae38151acf055a8
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375352"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246844"
 ---
 # <a name="what-is-anomaly-finder"></a>Anomaly Finder とは
+
+[!INCLUDE [PrivatePreviewNote](../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 Anomaly Finder では、産業、シナリオ、データ量を問わず、適切な統計モデルを自動的に適用することによってユーザー独自のデータに適応する機械学習を使用し、ある時間にわたってデータを監視し、異常を検出することができます。 Anomaly Finder API は時系列を入力として使用し、データ ポイントが異常かどうかを返します。また、予期される値と、視覚化の上下の境界を特定します。 ビルド済みの AI サービスである Anomaly Finder では、RESTful API の使用方法を理解すること以外に、機械学習の専門知識は必要とされません。 これにより、開発はシンプルで用途が広いものになります。それは、どのような時系列データでも扱うことができ、ストリーミング データ システムに組み込むこともできるためです。 Anomaly Finder は、広範にわたるユース ケースを網羅しています。たとえば、詐欺、盗難、変化する市場、および潜在的なビジネス インシデントを管理するための財務ツールや、匿名性を維持しながらの IoT デバイスのトラフィック監視です。 このソリューションは、データ、支出、投資収益率、またはユーザー アクティビティの変化を理解するための、エンド カスタマー向けサービスの一部として収益化することもできます。
 Anomaly Finder API を試して、お持ちのデータについて理解を深めてください。 

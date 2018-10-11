@@ -15,13 +15,13 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.component: na
-ms.openlocfilehash: 2c7c1e71830eb3fe4f7240195dac828ac9dfed3a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: ''
+ms.openlocfilehash: 63095a707835b1518bc6722ecfd5c2abb4b26f8f
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951567"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042276"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 

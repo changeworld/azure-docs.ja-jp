@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: ce397b1ba8d77d2916caa2798c0161ba55f51dbb
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 0b14c13462f15dd90285ed9e37080487324a4d85
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42447066"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831281"
 ---
 # <a name="useful-operators-in-log-analytics-queries"></a>Log Analytics クエリでの役に立つ演算子
 
@@ -31,13 +31,13 @@ ms.locfileid: "42447066"
 Category                                |関連する分析関数
 ----------------------------------------|----------------------------------------
 選択と列の別名            |`project`、`project-away`、`extend`
-一時テーブルと定数          |`let scalar_alias_name = …;` <br> `let table_alias_name = (){ … &#124; … &#124; … };`
-比較演算子と文字列演算子         |`startswith`、`!startswith`、`has`、`!has` <br> `contains`、`!contains`、`containscs` <br> `hasprefix`、`!hasprefix`、`hassuffix`、`!hassuffix`、`in`、`!in` <br> `matches regex` <br> `==`、`=~`、`!=`、`!~`
+一時テーブルと定数          |`let scalar_alias_name = …;` <br> `let table_alias_name =  …  …  … ;`| 
+比較演算子と文字列演算子         |`startswith`、`!startswith`、`has`, `!has` <br> `contains`、`!contains`、`containscs` <br> `hasprefix`、`!hasprefix`、`hassuffix`、`!hassuffix`、`in`、`!in` <br> `matches regex` <br> `==`、`=~`、`!=`、`!~`
 一般的な文字列関数                 |`strcat()`、`replace()`、`tolower()`、`toupper()`、`substring()`、`strlen()`
 一般的な算術関数                   |`sqrt()`、`abs()` <br> `exp()`、`exp2()`、`exp10()`、`log()`、`log2()`、`log10()`、`pow()` <br> `gamma()`、`gammaln()`
 テキストの解析                            |`extract()`、`extractjson()`、`parse`、`split()`
-出力の制限                         |`take`、`limit`、`top`、`sample`
-データ関数                          |`now()`、`ago()` <br> `datetime()`、`datepart()`、`timespan` <br> `startofday()`、`startofweek()`、`startofmonth()`、`startofyear()` <br> `endofday()`、`endofweek()`、`endofmonth()`、`endofyear()` <br> `dayofweek()`、`dayofmonth()`、`dayofyear()` <br> `getmonth()`、`getyear()`、`weekofyear()`、`monthofyear()`
+出力の制限                         |`take`、`limit`、`top`, `sample`
+データ関数                          |`now()`、`ago()` <br> `datetime()`、`datepart()`、`timespan` <br> `startofday()`、`startofweek()`、`startofmonth()`, `startofyear()` <br> `endofday()`、`endofweek()`、`endofmonth()`, `endofyear()` <br> `dayofweek()`、`dayofmonth()`、`dayofyear()` <br> `getmonth()`、`getyear()`、`weekofyear()`, `monthofyear()`
 グループ化と集計                |`summarize by` <br> `max()`、`min()`、`count()`、`dcount()`、`avg()`、`sum()` <br> `stddev()`、`countif()`、`dcountif()`、`argmax()`、`argmin()` <br> `percentiles()`、`percentile_array()`
 結合と共用体                        |`join kind=leftouter`、`inner`、`rightouter`、`fullouter`、`leftanti` <br> `union`
 並べ替え、順序                             |`sort`、`order` 

@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 17d4a03966b1d6e3f278d5a507e46f9f6fcafa05
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b9c98596f14229e33e9286e8bda61def428b0afe
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034061"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887167"
 ---
 # <a name="create-a-new-knowledge-base-in-go"></a>新しいナレッジ ベースを Go で作成する
 

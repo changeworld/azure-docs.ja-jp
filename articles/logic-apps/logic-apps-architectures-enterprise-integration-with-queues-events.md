@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 2ffb1f7edef0cf92cbbf7adc4314967858bcfeb1
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8fbc84b4016659b6d0d6ce9ec47c05a0b241c3d9
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128645"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855376"
 ---
 # <a name="enterprise-integration-architecture-with-queues-and-events"></a>キューとイベントによるエンタープライズ統合アーキテクチャ
 
@@ -32,7 +32,7 @@ ms.locfileid: "43128645"
 
 - **Azure API Management**: [API Management](https://docs.microsoft.com/azure/api-management/) サービスは、HTTP API を公開、セキュリティ保護、および変換するためのフル マネージド プラットフォームです。
 
-- **Azure API Management 開発者ポータル**: Azure API Management の各インスタンスは、[開発者ポータル](../api-management/api-management-customize-styles.md)へのアクセスを提供します。 ポータルでは、ドキュメントとコード サンプルにアクセスできます。 開発者ポータル内で API をテストすることもできます。
+- **Azure API Management 開発者ポータル**: Azure API Management の各インスタンスは、[開発者ポータル](../api-management/api-management-customize-styles.md)へのアクセスを提供します。 このポータルでは、ドキュメントとコード サンプルにアクセスできます。 開発者ポータル内で API をテストすることもできます。
 
 - **Azure Logic Apps**: [Logic Apps](../logic-apps/logic-apps-overview.md) は、エンタープライズ ワークフローと統合を構築するためのサーバーレス プラットフォームです。
 
@@ -69,7 +69,7 @@ ms.locfileid: "43128645"
 
 ## <a name="recommendations"></a>Recommendations
 
-この記事で説明されている一般的なアーキテクチャとは異なる特定の要件がある場合があります。 このセクションに記載されている推奨事項は原案として使用してください。
+この記事で説明されている一般的なアーキテクチャとは異なる、特定の要件が生じる場合があります。 このセクションに記載されている推奨事項は原案として使用してください。
 
 ### <a name="service-bus-tier"></a>Service Bus のレベル
 
@@ -81,7 +81,7 @@ Event Grid では、サーバーレス モデルを使用します。 課金は�
 
 ### <a name="use-peeklock-to-consume-service-bus-messages"></a>PeekLock を使用して Service Bus メッセージを使用する
 
-Service Bus メッセージを使用するためにロジック アプリを作成する場合、[PeekLock](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#queues) を使用してメッセージのグループにアクセスするようにロジック アプリを設定します。 PeekLock を使用すると、ロジック アプリは、メッセージを完了または中止する前に、各メッセージを検証する手順を実行できます。 この方法によって、メッセージの誤損失から保護します。
+Service Bus メッセージを使用するためにロジック アプリを作成する場合、[PeekLock](../service-bus-messaging/service-bus-messaging-overview.md#queues) を使用してメッセージのグループにアクセスするようにロジック アプリを設定します。 PeekLock を使用すると、ロジック アプリは、メッセージを完了または中止する前に、各メッセージを検証する手順を実行できます。 この方法によって、メッセージの誤損失から保護します。
 
 ### <a name="check-for-multiple-objects-when-an-event-grid-trigger-fires"></a>Event Grid トリガーが発生した場合に複数のオブジェクトをチェックする
 
@@ -89,7 +89,7 @@ Event Grid トリガーが発生した場合、このアクションは、単に
 
 ### <a name="region"></a>リージョン
 
-ネットワーク待ち時間を最小限に抑えるには、API Management、Logic Apps、および Service Bus に対して同じリージョンを選択します。 通常は、ユーザーに最も近いリージョンを選択します。
+ネットワーク待機時間を最小限に抑えるには、API Management、Logic Apps、および Service Bus に対して同じリージョンを選択します。 通常は、ユーザーに最も近いリージョンを選択します。
 
 リソース グループにもリージョンがあります。 このリージョンによって、デプロイ メタデータを格納する場所と、デプロイ テンプレートを実行する場所が指定されます。 デプロイ時の可用性を向上させるには、リソース グループとそのリソースを同じリージョンに配置します。
 
@@ -103,7 +103,7 @@ Service Bus Premium レベルは、より高いスケーラビリティを実現
 
 * Azure Logic Apps の SLA は、現在 99.9% です。
 
-### <a name="disaster-recovery"></a>ディザスター リカバリー
+### <a name="disaster-recovery"></a>障害復旧
 
 重大な障害が発生した場合にフェールオーバーを有効にするために、Service Bus Premium で geo ディザスター リカバリーを実装することを検討します。 詳細については、「[Azure Service Bus の geo ディザスター リカバリー](../service-bus-messaging/service-bus-geo-dr.md)」を参照してください。
 

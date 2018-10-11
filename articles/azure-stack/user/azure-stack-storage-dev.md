@@ -4,17 +4,17 @@ description: Azure Stack ストレージの開発ツールの使用方法の概�
 services: azure-stack
 author: mabriggs
 ms.author: mabrigg
-ms.date: 07/03/2018
+ms.date: 10/10/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 40f256b7a2be5a5a1d642983fa6ce018ee602ac2
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 3eefa13a7283febbebd2adc16047b28ffcae55fe
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441714"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078377"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Azure Stack ストレージの開発ツールの概要
 
@@ -33,7 +33,7 @@ Azure Stack ストレージでサポートされる REST API のバージョン�
 
 ### <a name="1802-update-or-newer-versions"></a>1802 update 以降のバージョン
 
-| クライアント ライブラリ | Azure Stack でサポートされるバージョン | リンク | エンドポイントの指定 |
+| クライアント ライブラリ | Azure Stack でサポートされるバージョン | Link | エンドポイントの指定 |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
 | .NET | 8.7.0 | NuGet パッケージ:<br>https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0 | app.config ファイル |
 | Java | 6.1.0 | Maven パッケージ:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0<br> <br>GitHub リリース:<br>https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0 | 接続文字列の設定 |
@@ -62,7 +62,7 @@ Composer 経由でインストールするには (BLOB の例):
 
 ### <a name="previous-versions"></a>以前のバージョン
 
-|クライアント ライブラリ|Azure Stack でサポートされるバージョン|リンク|エンドポイントの指定|
+|クライアント ライブラリ|Azure Stack でサポートされるバージョン|Link|エンドポイントの指定|
 |---------|---------|---------|---------|
 |.NET     |6.2.0|NuGet パッケージ:<br>[https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0](https://www.nuget.org/packages/WindowsAzure.Storage/6.2.0)<br><br>GitHub リリース:<br>[https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1](https://github.com/Azure/azure-storage-net/releases/tag/v6.2.1)|app.config ファイル|
 |Java|4.1.0|Maven パッケージ:<br>[http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/4.1.0)<br><br>GitHub リリース:<br> [https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0](https://github.com/Azure/azure-storage-java/releases/tag/v4.1.0)|接続文字列の設定|

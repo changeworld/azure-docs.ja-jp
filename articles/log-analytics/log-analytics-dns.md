@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 56ad633807a59eaa7ae75dc334aa630fb3bf94a3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.component: ''
+ms.openlocfilehash: 9bb7adaeec89979ff86920b4bfd74c6399bda298
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436728"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043632"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -167,8 +167,7 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 
 [ログ検索] ページで、クエリを作成できます。 ファセット コントロールを使用して検索結果をフィルター処理できます。 検索結果に対して変換やフィルター処理、レポート作成などを実行する高度なクエリを作成することもできます。 まず、以下のクエリを使用します。
 
-1. 
-  **検索クエリ ボックス**に「`DnsEvents`」と入力して、ソリューションによって管理されている DNS サーバーで生成されたすべての DNS イベントを表示します。 結果には、ルックアップ クエリ、動的登録、構成変更に関連するすべてのイベントのログ データが表示されます。
+1. **検索クエリ ボックス**に「`DnsEvents`」と入力して、ソリューションによって管理されている DNS サーバーで生成されたすべての DNS イベントを表示します。 結果には、ルックアップ クエリ、動的登録、構成変更に関連するすべてのイベントのログ データが表示されます。
 
     ![DnsEvents ログ検索](./media/log-analytics-dns/log-search-dnsevents.png)  
 
@@ -178,8 +177,7 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 
     c. 構成変更のログ データを表示するには、左側のファセット コントロールから **[ConfigurationChange]** を選択して **[サブタイプ]** をフィルター処理します。 選択した期間の構成変更イベントが一覧になったテーブルが表示されます。
 
-1. 
-  **検索クエリ ボックス**に「`DnsInventory`」と入力して、ソリューションによって管理されている DNS サーバーのすべての DNS インベントリ関連データを表示します。 結果には、DNS サーバー、DNS ゾーン、リソース レコードのログ データが表示されます。
+1. **検索クエリ ボックス**に「`DnsInventory`」と入力して、ソリューションによって管理されている DNS サーバーのすべての DNS インベントリ関連データを表示します。 結果には、DNS サーバー、DNS ゾーン、リソース レコードのログ データが表示されます。
 
     ![DnsInventory ログ検索](./media/log-analytics-dns/log-search-dnsinventory.png)
 

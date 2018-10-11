@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 969f8cdf7b8cc406cd98bb5a4f30b5c395b0e8fc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0d77353b510dbeb18e96e2d8313e9010c04e25a7
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989364"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077935"
 ---
 # <a name="tutorial-order-azure-data-box"></a>チュートリアル: Azure Data Box を注文する
 
@@ -64,10 +64,10 @@ Azure Data Box は、迅速かつ簡単な信頼性の高い方法でオンプ�
     
    [![Azure Data Box 1 を検索する](media/data-box-deploy-ordered/search-azure-data-box1.png)](media/data-box-deploy-ordered/search-azure-data-box1.png#lightbox)
 
-3. **[作成]** をクリックします。
+3. **Create** をクリックしてください。
 
 4. ご利用のリージョンで Data Box サービスが利用可能かどうかを確認します。 次の情報を入力または選択し、**[適用]** をクリックします。 
-    |設定  |値  |
+    |Setting  |値  |
     |---------|---------|
     |サブスクリプション     | Data Box サービス用の サブスクリプションを選択します (EA、CSP、または従量課金制)。 <br> サブスクリプションは、課金アカウントにリンクされます。       |
     |転送の種類     | **[Azure へインポート]** を選択します。        |
@@ -80,9 +80,9 @@ Azure Data Box は、迅速かつ簡単な信頼性の高い方法でオンプ�
 
 6. **[注文]** で**注文の詳細**を指定します。 次の情報を入力または選択し、**[次へ]** をクリックします。
     
-    |設定  |値  |
+    |Setting  |値  |
     |---------|---------|
-    |名前     |  注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。      |
+    |Name     |  注文を追跡するためのフレンドリ名を指定します。 <br> 名前の長さは 3 ～ 24 文字で、文字、数字、ハイフンを使うことができます。 <br> 名前の最初と最後は、文字か数字とする必要があります。      |
     |リソース グループ     |   既存のグループを使用するか、新しいグループを作成します。 <br> リソース グループとは、まとめて管理したり、デプロイしたりできるリソースの論理コンテナーです。         |
     |宛先 Azure リージョン     | ストレージ アカウントのリージョンを選択します。 <br> 詳細については、[利用可能なリージョン](data-box-overview.md#region-availability)に関する記事をご覧ください。        |
     |ストレージ アカウント     | 指定した Azure リージョンに基づいて、既存のストレージ アカウントのフィルター処理された一覧から 1 つまたは複数のストレージ アカウントを選択します。 Data Box は、最大 10 個のストレージ アカウントにリンクできます。 <br> 新しい**汎用 v1 アカウント**、**汎用 v2 アカウント**、または **Blob Storage アカウント**を作成することもできます。        |

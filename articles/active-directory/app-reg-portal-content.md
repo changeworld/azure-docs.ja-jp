@@ -6,16 +6,15 @@ ms.author: mtillman
 manager: angrobe
 ms.date: 03/01/2018
 ms.topic: article
-ms.prod: ''
+ms.component: develop
 ms.service: active-directory
-ms.technology: app-mgmt
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 705836c2bfac42e72f1195ab80797db55b9ae4c0
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: c7aa13f85e61e0add98801bbdba5177e40bf6073
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47062919"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043364"
 ---
 # <a name="azure-active-directory-guided-setup-steps"></a>Azure Active Directory のガイド付きセットアップ手順
 

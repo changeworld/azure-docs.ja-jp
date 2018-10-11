@@ -11,12 +11,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/12/2018
-ms.openlocfilehash: d72f1b986671bfab1d79772ac50935918da7e681
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8177808fd4d666ea04b1bc097f261c7643931704
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963272"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885049"
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 既知の問題とトラブルシューティング ガイド 
 この記事は、Azure Machine Learning Workbench アプリケーションの使用の一環として発生したエラーや障害を見つけて修正するのに役立ちます。 
@@ -25,7 +25,7 @@ ms.locfileid: "46963272"
 サポート チームとやり取りするときは、Workbench アプリのビルド番号を確認しておくことが重要です。 Windows では、**[ヘルプ]** メニューをクリックし、**[About Azure ML Workbench]\(Azure ML Workbench のバージョン情報\)** を選択することで、ビルド番号を調べることができます。 Macos では、**[Azure ML Workbench]** メニューをクリックし、**[About Azure ML Workbench]\(Azure ML Workbench のバージョン情報\)** を選択します。
 
 ## <a name="machine-learning-msdn-forum"></a>Machine Learning MSDN フォーラム
-MSDN フォーラムに質問を投稿できます。 製品チームは、このフォーラムを積極的に監視しています。 フォーラムの URL は [https://aka.ms/azureml-forum](https://aka.ms/azureml-forum) です。 
+MSDN フォーラムに質問を投稿できます。 製品チームは、このフォーラムを積極的に監視しています。 フォーラムの URL は [https://aka.ms/aml-forum-service](https://aka.ms/aml-forum-service) です。 
 
 ## <a name="gather-diagnostics-information"></a>診断情報を収集する
 サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。 ここにログ ファイルが保存されます。

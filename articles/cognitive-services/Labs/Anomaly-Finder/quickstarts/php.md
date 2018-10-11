@@ -9,14 +9,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: f81c99b77f931b5b259633fa8fcd0bf3e358e281
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f5f055be584aa9c6afb66ff651fd3c01851afd76
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375333"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246397"
 ---
 # <a name="use-the-anomaly-finder-api-with-php"></a>Anomaly Finder API と PHP の使用
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 この記事は、Anomaly Finder API と PHP の使用をすぐに開始し、時系列データの異常結果を取得するタスクを実行するために役立つ情報とコード サンプルを提供します。
 

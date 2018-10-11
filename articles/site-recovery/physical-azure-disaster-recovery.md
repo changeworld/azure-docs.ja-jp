@@ -6,20 +6,20 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 3a82fa0464cd98c1e056e097018ba22ac19d72ac
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 6f2b4a83d4c13dcb866737d27c33b4f5a95c2f94
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "40246689"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078615"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミス マシンと Azure Virtual Machines (VM) のレプリケーション、フェールオーバー、フェールバックを管理し、調整することでディザスター リカバリー戦略に貢献します。
 
-このチュートリアルでは、Azure にオンプレミス物理 Windows/Linux サーバーのディザスター リカバリーを設定する方法を紹介します。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、Azure にオンプレミス物理 Windows/Linux サーバーのディザスター リカバリーを設定する方法を紹介します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure とオンプレミスの前提条件を設定する

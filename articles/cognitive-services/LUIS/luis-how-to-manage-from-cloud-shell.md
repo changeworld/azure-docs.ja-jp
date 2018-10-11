@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: diberry
-ms.openlocfilehash: b0a02d2e5e0a1f1765098e1b1e258424b6443878
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 42bd8ef95ac1b55e76fe1cf0702b79de91832741
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039580"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870181"
 ---
 # <a name="usage-data-for-luis-service-from-azure-cloud-shell"></a>Azure Cloud Shell からの LUIS サービスの使用状況データ
 Azure portal で PowerShell コマンドレットを使って、LUIS リソースを操作することができます。 
@@ -23,7 +23,7 @@ Azure portal で PowerShell コマンドレットを使って、LUIS リソー�
 これらのコマンドレットを使うと、LUIS サブスクリプションを[作成](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/new-azurermcognitiveservicesaccount?view=azurermps-6.0.0)し、サブスクリプションに関する[使用状況](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/get-azurermcognitiveservicesaccountusage?view=azurermps-6.0.0)などの情報を取得し、サブスクリプションを[削除](https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/remove-azurermcognitiveservicesaccount?view=azurermps-6.0.0)することができます。 
 
 ## <a name="cloud-shell-storage-account-and-authentication"></a>Cloud Shell のストレージ アカウントと認証
-Azure portal の [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell) で PowerShell を使うには、Azure ストレージ アカウントが必要です。 [ストレージ アカウント](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share)がない場合は、作成するよう要求されます。 ストレージ アカウントがあると、Cloud Shell に PowerShell スクリプトを保存することができます。  
+Azure portal の [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell) で PowerShell を使うには、Azure ストレージ アカウントが必要です。 [ストレージ アカウント](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)がない場合は、作成するよう要求されます。 ストレージ アカウントがあると、Cloud Shell に PowerShell スクリプトを保存することができます。  
 
 また、リソースにアクセスするには、Cloud Shell 内の Azure に対して認証を行う必要があります。 
 

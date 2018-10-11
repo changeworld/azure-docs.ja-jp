@@ -8,22 +8,16 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 571a005dd3f50690f291a7ffa3c1174ea15cb0ed
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 07ee05128333df963c2d8ff3dd3f6442a3843d07
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046900"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48866892"
 ---
 # <a name="delete-data-from-azure-data-explorer"></a>Azure データ エクスプローラーからデータを削除する
 
 Azure データ エクスプローラーでは、この記事で取り上げる一括削除のアプローチをいくつかサポートしています。 これでは高速な読み取りアクセスが最適化されているので、リアル タイムでのレコードごとの削除はサポートされていません。
-
-* 不要になったデータベースは、drop database コマンドを使用して削除します。
-
-    ```Kusto
-    .drop database <DatabaseName>
-    ```
 
 * 1 つ以上のテーブルが不要になった場合、drop table または drop tables コマンドを使用して削除します。
 
@@ -44,12 +38,5 @@ Azure データ エクスプローラーでは、この記事で取り上げる�
     ```
 
     詳細については、「[Retention policy](https://docs.microsoft.com/azure/kusto/concepts/retentionpolicy)」 (アイテム保持ポリシー) を参照してください。
-
-* 個々のレコードは、`where CustomerName == 'contoso'` などの述語を使用して、*purge* を使用して削除することができます。 ただし、Purge はリアルタイムでの削除用には設計されていない一括削除です。 次に purge の例を示します。
-
-    ```Kusto
-    .purge table Customer records
-    | where CustomerName =='contoso'
-    ```
 
 データの削除の問題でサポートが必要な場合は、[Azure portal](https://portal.azure.com) でサポート要求を開いてください。

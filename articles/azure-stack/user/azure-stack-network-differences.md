@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: mattbriggs
 manager: femila
-ms.author: brenduns
 ms.date: 08/02/2018
 ms.topic: article
 ms.service: azure-stack
+ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: 50fe3c0c7fda745047c71afb8eedf7fa8806c4ec
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 1863236a51d89dd311cd8aacfcd737faddf21ab0
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41946427"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079193"
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack ネットワークに関する考慮事項
 
@@ -27,7 +27,7 @@ Azure Stack ネットワークは、Azure ネットワークで提供される�
 
 ## <a name="cheat-sheet-networking-differences"></a>チート シート: ネットワークの違い
 
-| Service | Feature | Azure (グローバル) | Azure Stack |
+| Service | 機能 | Azure (グローバル) | Azure Stack |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | DNS | マルチテナント DNS | サポートされています | まだサポートされていません |
 |  | DNS AAAA レコード | サポートされています | サポートされていません |

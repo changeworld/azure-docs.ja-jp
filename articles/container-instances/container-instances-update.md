@@ -2,18 +2,17 @@
 title: Azure Container Instances のコンテナーを更新する
 description: Azure Container Instances のコンテナー グループに含まれる実行中のコンテナーを更新する方法について説明します。
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 08/01/2018
-ms.author: marsma
-ms.openlocfilehash: 5a42b0983b0f754b119fa304317e758a976fb4f6
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.author: danlep
+ms.openlocfilehash: 2df6a2724cbdcd6bbb6c6ca6636256b7e399da8e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432618"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854543"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Azure Container Instances のコンテナーを更新する
 
@@ -23,7 +22,7 @@ ms.locfileid: "39432618"
 
 コンテナー グループ内のコンテナーを更新するには、少なくとも 1 つのプロパティが変更された既存のグループを再デプロイします。 コンテナー グループを更新すると、そのグループに含まれる実行中のコンテナーがすべてインプレースで再起動されます。
 
-既存のコンテナー グループを再デプロイするには、create コマンドを実行して (または Azure Portal を使用して)、既存のグループの名前を指定します。 create コマンドを実行して再デプロイをトリガーする場合は、グループの有効なプロパティを少なくとも 1 つ変更してください。 コンテナー グループのすべてのプロパティが再デプロイに有効なわけではありません。 サポート対象外のプロパティの一覧については、「[コンテナーの削除が必要なプロパティ](#properties-that-require-delete)」をご覧ください。
+既存のコンテナー グループを再デプロイするには、create コマンドを実行して (または Azure Portal を使用して)、既存のグループの名前を指定します。 create コマンドを実行して再デプロイをトリガーする場合は、グループの有効なプロパティを少なくとも 1 つ変更してください。 コンテナー グループのすべてのプロパティが再デプロイに有効なわけではありません。 サポート対象外のプロパティの一覧については、「[コンテナーの削除が必要なプロパティ](#properties-that-require-container-delete)」をご覧ください。
 
 次に示す Azure CLI の例では、新しい DNS 名ラベルでコンテナー グループを更新します。 グループの DNS 名ラベルのプロパティが変更されるため、コンテナー グループが再デプロイされ、そのコンテナーが再起動されます。
 

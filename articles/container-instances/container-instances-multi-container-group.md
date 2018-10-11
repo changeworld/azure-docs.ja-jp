@@ -2,19 +2,18 @@
 title: Azure Container Instances に複数コンテナー グループをデプロイする
 description: 複数のコンテナーを含むコンテナー グループを Azure Container Instances にデプロイする方法を説明します。
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 8a3dbe67a835cc9f1b8deca6a103e3f4aaa66ff9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: adb284772291dc901dd5302124982948c1f37eea
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424683"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856481"
 ---
 # <a name="deploy-a-container-group"></a>コンテナー グループのデプロイ
 

@@ -2,17 +2,18 @@
 title: Azure Site Recovery で PowerShell を使用して VMware VM を Azure にレプリケートおよびフェールオーバーする | Microsoft Docs
 description: Azure Site Recovery で PowerShell を使用する VMware VM の Azure へのレプリケートおよびフェールオーバーをセットアップする方法を説明します。
 services: site-recovery
-author: bsiva
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
-ms.author: bsiva
-ms.openlocfilehash: a826817b8f2b4ebff8442da1fbee79a95990a9e8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.author: sutalasi
+ms.openlocfilehash: 070e51b132828e4fdf597d28fc2ad602adf76692
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917814"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042804"
 ---
 # <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>PowerShell を使用して VMware VM を Azure にレプリケートおよびフェールオーバーする
 
@@ -404,11 +405,11 @@ Win2K12VM1   Protected                       Normal
 * フェールオーバー時に作成される仮想マシンの名前
 * フェールオーバー時に作成される仮想マシンの VM サイズ
 * フェールオーバー時に仮想マシンの NIC を接続する必要がある Azure 仮想ネットワークとサブネット
-* 管理ディスクへのフェールオーバー
+* マネージド ディスクへのフェールオーバー
 * Azure Hybrid Use Benefit の適用
 * フェールオーバー時に仮想マシンに割り当てられるターゲット仮想ネットワークからの静的 IP アドレスの割り当て。
 
-この例では、フェールオーバー時に仮想マシン *Win2K12VM1* に対して作成される仮想マシンの VM サイズを更新し、フェールオーバー時に仮想マシンが管理ディスクを使うことを指定します。
+この例では、フェールオーバー時に仮想マシン *Win2K12VM1* に対して作成される仮想マシンの VM サイズを更新し、フェールオーバー時に仮想マシンがマネージド ディスクを使うことを指定します。
 
 ```azurepowershell
 $ReplicatedVM1 = Get-ASRReplicationProtectedItem -FriendlyName "Win2K12VM1" -ProtectionContainer $ProtectionContainer

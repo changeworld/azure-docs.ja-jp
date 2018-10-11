@@ -17,12 +17,12 @@ ms.date: 09/14/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 3d6692808bad2010779323cecc42778def32a38c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dd164882f9820cab970edd4d01f2f28c26771f88
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980272"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815221"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>方法: アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
@@ -39,7 +39,7 @@ ms.locfileid: "46980272"
 
 - フェデレーション アプリケーション (Open ID と SAML/WS-Fed) の場合、Azure AD ギャラリーに登録するにはアプリケーションで SaaS モデルをサポートする必要があります。 エンタープライズ ギャラリー アプリケーションは、特定の顧客ではなく複数の顧客構成をサポートする必要があります。
 
-- Open ID Connect の場合、アプリケーションはマルチテナントである必要があり、[Azure AD 同意フレームワーク](quickstart-v1-integrate-apps-with-azure-ad.md#overview-of-the-consent-framework)がアプリケーションに適切に実装されている必要があります。 ユーザーは、すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにログイン要求を送信できます。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。
+- Open ID Connect の場合、アプリケーションはマルチテナントである必要があり、[Azure AD 同意フレームワーク](consent-framework.md)がアプリケーションに適切に実装されている必要があります。 ユーザーは、すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにログイン要求を送信できます。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。
 
 - SAML 2.0/WS-Fed の場合、アプリケーションは、SP または IDP モードで SAML/WS-Fed SSO 統合を行う機能を備えている必要があります。 要求を送信する前に、これが正しく機能していることを確認してください。
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 49a53b68fd394772f38b6040b80ec80c93d9c46c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: baa81a52d4b007cd690a2b01df642cd3775f7d6b
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131771"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044138"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-linux-agent-for-log-analytics"></a>Log Analytics 用 Linux エージェントに関する問題のトラブルシューティング方法
 

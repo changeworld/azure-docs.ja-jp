@@ -1,20 +1,18 @@
 ---
 title: Azure Database for PostgreSQL サーバーでユーザーを作成する
 description: この記事では、Azure Database for PostgreSQL サーバーと対話する新しいユーザー アカウントを作成する方法について説明します。
-services: postgresql
 author: jasonwhowell
 ms.author: jasonh
 editor: jasonwhowell
-manager: jhubbard
-ms.service: postgresql-database
-ms.topic: article
+ms.service: postgresql
+ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: be3be5769f1d9ad6138fcef851179ddc5cf6c0da
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: 25d7838dafab873816a877bd53053c9244238df6
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144739"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236620"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーでユーザーを作成する 
 この記事では、Azure Database for PostgreSQL サーバーでユーザーを作成する方法について説明します。

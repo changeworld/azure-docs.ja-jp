@@ -6,16 +6,16 @@ services: cognitive-services
 author: swhite-msft
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: bing-visual-search
+ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 07/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: a5bc5197ecd1f35b4d0026caa076a844c9d57c40
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2e65313207e2bb29ae269425012cc6c340261ba4
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221324"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888341"
 ---
 # <a name="tutorial-breaking-down-bing-visual-search-upload"></a>チュートリアル: Bing Visual Search アップロードの解説
 

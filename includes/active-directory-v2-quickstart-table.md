@@ -6,8 +6,7 @@ documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
-ms.service: active-directory
+service: active-directory
 ms.component: develop
 ms.devlang: na
 ms.topic: include
@@ -16,12 +15,12 @@ ms.workload: identity
 ms.date: 05/01/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 1b00f8b400225857ed78688e8ea0b7f68b7442d8
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 196435a8bd260c7f1679c06127610aeee29c0fe3
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579733"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843576"
 ---
 | モバイル アプリとネイティブ アプリ | Web アプリと Web API | プロトコルと直接統合する |
 | --- | --- | --- |

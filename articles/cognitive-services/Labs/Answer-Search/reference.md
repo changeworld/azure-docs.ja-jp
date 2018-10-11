@@ -1,20 +1,21 @@
 ---
-title: Project Answer Search のリファレンス - Microsoft Cognitive Services | Microsoft Docs
+title: Project Answer Search リファレンス
+titlesuffix: Azure Cognitive Services
 description: Project Answer Search エンドポイントのリファレンス。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 28a73918b50d7b13248fe5b6a17f2c95287a1ba4
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 1149f4d5ec0a3ef55c435d0555f944329cf5b890
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666290"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869600"
 ---
 # <a name="project-answer-search-v7-reference"></a>Project Answer Search v7 のリファレンス
 
@@ -121,7 +122,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 |Name|値|type|  
 |----------|-----------|----------|  
 |_type|種類のヒント。|String|  
-|<a name="errors" />errors|要求が失敗した理由を示すエラーの一覧。|[エラー](#error)|  
+|<a name="errors" />errors|要求が失敗した理由を示すエラーの一覧。|[Error](#error)|  
 
   
   

@@ -3,7 +3,7 @@ title: Azure Stack の Azure ID を検証する | Microsoft Docs
 description: Azure Stack 適合性チェッカーを使用して、Azure ID を検証します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: fe5e7281cbe01ad11f667729df344f91ef1327d2
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 9c7ac89d1f12e8ec033b201f2c2dd845c11486e2
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937561"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077819"
 ---
 # <a name="validate-azure-identity"></a>Azure ID の検証 
 Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を使用して、対象の Azure Active Directory (Azure AD) を Azure Stack で使用する準備が整っていることを検証します。 Azure Stack のデプロイを開始する前に、Azure ID ソリューションを検証します。  
@@ -92,7 +92,7 @@ Azure Stack のユーザー、アプリケーション、グループ、およ�
 **解決策** - PowerShell で次を実行し、プロンプトに従ってパスワードをリセットします。  
 > `Login-AzureRMAccount`
 
-または、https://portal.azure.com にアカウントとしてログインします。この場合、ユーザーはパスワードの変更を強制されます。
+または、 https://portal.azure.com にアカウントとしてログインします。この場合、ユーザーはパスワードの変更を強制されます。
 ### <a name="unknown-user-type"></a>ユーザーの種類が不明 
  
 ![不明なユーザー](./media/azure-stack-validate-identity/unknown-user.png)

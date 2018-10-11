@@ -2,16 +2,17 @@
 title: Azure Site Recovery でのセカンダリ サイトのアーキテクチャへの Hyper-V レプリケーション | Microsoft Docs
 description: この記事では、Azure Site Recovery を使用してオンプレミスの Hyper-V VM をセカンダリ System Center VMM サイトにレプリケートするためのアーキテクチャの概要を説明します。
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 0319e4d1cdbd20c39772c659a3e5a1580d8b925b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 8f8b498164cc4a77cace470f7483aa572fefbaed
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919650"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078921"
 ---
 # <a name="hyper-v-replication-to-a-secondary-site"></a>セカンダリ サイトへの Hyper-V のレプリケーション
 

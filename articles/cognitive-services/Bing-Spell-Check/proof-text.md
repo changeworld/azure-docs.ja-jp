@@ -1,21 +1,21 @@
 ---
-title: Bing Spell Check API の概要 - Azure Cognitive Services | Microsoft Docs
+title: Bing Spell Check API とは
+titlesuffix: Azure Cognitive Services
 description: Bing Spell Check API では、コンテキストに応じたスペル チェックを行うために機械学習と統計的機械翻訳を使用しています。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
-ms.assetid: 64ABDFD4-0118-4B6C-A592-68E5EDDB8491
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 15c5f7eeb7d94d7e80533ee1fd12e33fa3bcd134
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 81c80ab6c8d10d263de96566f5554709a2404a24
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43114295"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802595"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Bing Spell Check API とは
 

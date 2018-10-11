@@ -3,7 +3,7 @@ title: この記事では、Azure Stack のオファーとプランを更新す�
 description: この記事では、既存の Azure Stack のオファーとプランを表示および変更する方法について説明します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.custom: mvc
 ms.date: 07/30/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: a35ba993e6fd1162fa4a18bc0d6bc9351fe7dfa2
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: f6b85d2197a4db9cdfc526e5857e4b6ce707beb2
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358280"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49076793"
 ---
 # <a name="azure-stack-add-on-plans"></a>Azure Stack のアドオン プラン
 
@@ -40,8 +40,7 @@ ms.locfileid: "39358280"
 アドオン プランは、既存のオファーを変更して作成します。
 
 1. Azure Stack 管理者ポータルにクラウド管理者としてサインインします。
-2. 
-  [新しい基本プランを作成](azure-stack-create-plan.md)したときと同じ手順で、これまでは提供されていなかったサービスを提供する新しいプランを作成します。 この例では、Key Vault (Microsoft.KeyVault) サービスが新しいプランに含められます。
+2. [新しい基本プランを作成](azure-stack-create-plan.md)したときと同じ手順で、これまでは提供されていなかったサービスを提供する新しいプランを作成します。 この例では、Key Vault (Microsoft.KeyVault) サービスが新しいプランに含められます。
 3. 管理者ポータルで **[オファー]** をクリックし、アドオン プランで更新するオファーを選択します。
 
    ![](media/create-add-on-plan/1.PNG)

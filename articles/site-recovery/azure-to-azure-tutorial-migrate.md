@@ -5,21 +5,21 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: a8f081ca9a0868bee11b27e1065a72806cb8c2c9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 9bd5c1b2bad475dbb2c8ce216ed7d3f57ace0696
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214603"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067616"
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移行する
 
 [Azure Site Recovery](site-recovery-overview.md) サービスを使用して、ビジネス継続性およびディザスター リカバリー (BCDR) の目的でオンプレミス マシンや Azure VM のディザスター リカバリーを管理よび調整する他に、Azure VM をセカンダリ リージョンに移行するためにも Site Recovery を使用できます。 Azure VM を移行するには、それらのレプリケーションを有効にして、プライマリ リージョンから選択したセカンダリ リージョンにフェールオーバーします。
 
-このチュートリアルでは、Azure VM を別のリージョンに移行する方法を説明します。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、Azure VM を別のリージョンに移行する方法を説明します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Recovery Services コンテナーを作成する

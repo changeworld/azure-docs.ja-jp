@@ -3,7 +3,7 @@ title: Azure Stack ユーザー サブスクリプションの所有者の更新
 description: Azure Stack ユーザー サブスクリプションの課金の所有者を変更します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
 ms.date: 06/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: shnatara
-ms.openlocfilehash: de8610944e11d8cf106ac484a0c6634c8661b5a2
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a784f169bfdf23255b27d50f0e135384db6b2b88
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011241"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077632"
 ---
 # <a name="change-the-owner-for-an-azure-stack-user-subscription"></a>Azure Stack ユーザー サブスクリプションの所有者の変更
 

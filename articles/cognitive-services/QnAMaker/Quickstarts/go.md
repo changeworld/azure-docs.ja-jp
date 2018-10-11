@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
-ms.topic: article
+ms.component: qna-maker
+ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 320eb7b643d785899482a00bfc0bda1d89e61b3b
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b34574ed7d94873a9a01222c944e1b4033848f91
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042382"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887508"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-go"></a>Microsoft QnA Maker API の Go クイック スタート 
 <a name="HOLTop"></a>

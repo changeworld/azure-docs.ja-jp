@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 96feb52bd5702c899faa8d845969ae8ba0995504
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.component: ''
+ms.openlocfilehash: 43f077ef07597604eaf42cb4af47cbc2f0e6c524
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495358"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042005"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Log Analytics エージェントを使用してハイブリッド環境でデータを収集する
 
@@ -69,10 +69,10 @@ Linux および Windows エージェントが Log Analytics と通信するた�
 
 |エージェントのリソース|ポート |方向 |バイパス HTTPS 検査|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |ポート 443 |受信および送信|はい |  
-|*.oms.opinsights.azure.com |ポート 443 |受信および送信|はい |  
-|*.blob.core.windows.net |ポート 443 |受信および送信|はい |  
-|*.azure-automation.net |ポート 443 |受信および送信|はい |  
+|*.ods.opinsights.azure.com |ポート 443 |受信および送信|[はい] |  
+|*.oms.opinsights.azure.com |ポート 443 |受信および送信|[はい] |  
+|*.blob.core.windows.net |ポート 443 |受信および送信|[はい] |  
+|*.azure-automation.net |ポート 443 |受信および送信|[はい] |  
 
 
 Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook を使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
@@ -88,7 +88,7 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 
 |プロパティ| 説明 |
 |--------|-------------|
-|Protocol | https |
+|プロトコル | https |
 |user | プロキシ認証のオプションのユーザー名 |
 |password | プロキシ認証のオプションのパスワード |
 |proxyhost | プロキシ サーバー/OMS ゲートウェイのアドレスまたは FQDN |

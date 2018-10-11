@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 06/12/2018
+ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: d065dd6db361c5c348713c6e1ceabe3a4c42c312
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 6a0b7139fd8d216397090154a4324c8e4305a939
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39577706"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816380"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Azure Storage アプリケーションから Azure Active Directory で認証を行う (プレビュー)
 
@@ -25,10 +25,7 @@ Azure Storage アプリケーションからセキュリティ プリンシパ�
 
 OAuth 2.0 コード付与フローの概要については、「[OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](../../active-directory/develop/v1-protocols-oauth-code.md)」を参照してください。
 
-> [!IMPORTANT]
-> このプレビューは、非運用環境でのみの使用を意図しています。 運用サービス レベル アグリーメント (SLA) は、Azure Storage 用の Azure AD 統合の一般公開が宣言されるまで利用できません。 ご利用のシナリオで Azure AD 統合がまだサポートされていない場合、お使いのアプリケーションでは共有キー承認か SAS トークンを引き続き使用してください。 プレビューの詳細については、「[Authenticate access to Azure Storage using Azure Active Directory (Preview) (Azure Active Directory を使用した Azure Storage へのアクセスの認証 (プレビュー))](storage-auth-aad.md)」を参照してください。
->
-> プレビュー期間中、RBAC ロールの割り当ての反映には最大で 5 分かかる場合があります。
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>アプリケーションを Azure AD テナントに登録する
 
@@ -36,7 +33,7 @@ Azure AD を使用してストレージ リソースへのアクセスを承認�
 
 アプリケーションの登録では、使用するアプリケーションに関する情報を Azure AD に提供します。 これで Azure AD から、実行時にアプリケーションを Azure AD と関連付ける際に使用するクライアント ID (*アプリケーション ID とも呼ばれます*) が提供されます。 クライアント ID の詳細については、「[Azure Active Directory のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](../../active-directory/develop/app-objects-and-service-principals.md)」を参照してください。
 
-Azure Storage アプリケーションを登録するには、「[Azure Active Directory とアプリケーションの統合](../../active-directory/active-directory-integrating-applications.md)」の「[アプリケーションの追加](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md#adding-an-application)」の手順に従います。 アプリケーションをネイティブ アプリケーションとして登録する場合は、**リダイレクト URI** 用に任意の有効な URI を指定できます。 値は実際のエンドポイントである必要はありません。
+Azure Storage アプリケーションを登録するには、「[Azure Active Directory とアプリケーションの統合](../../active-directory/active-directory-integrating-applications.md)」の「[アプリケーションの追加](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md)」の手順に従います。 アプリケーションをネイティブ アプリケーションとして登録する場合は、**リダイレクト URI** 用に任意の有効な URI を指定できます。 値は実際のエンドポイントである必要はありません。
 
 ![ストレージ アプリケーションを Azure AD に登録する方法を示すスクリーン ショット](./media/storage-auth-aad-app/app-registration.png)
 
@@ -176,8 +173,8 @@ CloudBlockBlob blob = new CloudBlockBlob(new Uri("https://storagesamples.blob.co
 ## <a name="next-steps"></a>次の手順
 
 - Azure Storage の RBAC ロールについては、[RBAC で Azure Storage データへのアクセス許可を管理する (プレビュー)](storage-auth-aad-rbac.md) 方法に関するページを参照してください。
-- Azure Storage でマネージド サービス ID を使用する方法については、「[Authenticate with Azure AD from an Azure Managed Service Identity (Preview) (Azure マネージド サービス ID から Azure AD で認証する (プレビュー))](storage-auth-aad-msi.md)」を参照してください。
-- Azure AD ID で Azure CLI と PowerShell にログインする方法については、「[Use an Azure AD identity to access Azure Storage with CLI or PowerShell (Preview) (Azure AD ID を使用し、CLI または PowerShell で Azure Storage にアクセスする (プレビュー))](storage-auth-aad-script.md)」を参照してください。
+- Azure Storage を使用して Azure リソースのマネージド ID を使用する方法については、「[Azure マネージド サービス ID (プレビュー) から Azure AD の認証を受ける](storage-auth-aad-msi.md)」を参照してください。
+- Azure AD ID で Azure CLI と PowerShell にログインする方法については、「[Azure AD ID を使用し、CLI または PowerShell で Azure Storage にアクセスする (プレビュー)](storage-auth-aad-script.md)」を参照してください。
 - Azure の BLOB とキューの Azure AD 統合に関する詳細については、Azure Storage チームのブログ投稿「[Announcing the Preview of Azure AD Authentication for Azure Storage](https://azure.microsoft.com/blog/announcing-the-preview-of-aad-authentication-for-storage/)」(Azure Storage の Azure AD Authentication のプレビューの発表) を参照してください。
 
 

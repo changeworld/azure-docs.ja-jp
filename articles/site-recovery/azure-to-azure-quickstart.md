@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: abba75e731d2550b4719eec70d475884bd7f3c8e
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: e10b5271caef5530c94cca73b3e2e1d435080676
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42023779"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49066923"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Azure VM を別の Azure リージョンにレプリケートする
 

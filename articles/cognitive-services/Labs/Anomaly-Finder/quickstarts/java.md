@@ -9,14 +9,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: kefre
-ms.openlocfilehash: 8152c23e6c5332d243d851be56bab1e4085dbe5a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84997b5d50f879fd4be286a3ca362e70f90c9202
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375357"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249187"
 ---
 # <a name="use-the-anomaly-finder-api-with-java"></a>Anomaly Finder API と Java の使用
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 この記事は、Anomaly Detection API と Java の使用をすぐに開始し、時系列データの異常検出結果を取得するタスクを実行するために役立つ情報とコード サンプルを提供します。
 

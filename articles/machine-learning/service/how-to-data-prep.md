@@ -10,12 +10,12 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 673b8ddf3ed07507cbce4b54e9b8a488cb3ac689
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 83373f5d6e4a2227bcafdbc4b25b686b0b8d651d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166607"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867189"
 ---
 # <a name="prepare-data-for-modeling-with-azure-machine-learning"></a>Azure Machine Learning を使用したモデリング用にデータを準備する
  
@@ -34,4 +34,4 @@ ms.locfileid: "47166607"
 ![データ準備プロセス](./media/concept-data-preparation/data-prep-process.png)
 
 ## <a name="next-steps"></a>次の手順
-Azure Machine Learning Data Prep SDK によるデータ準備の[サンプル ノートブック](https://github.com/Microsoft/PendletonDocs/blob/master/Scenarios/GettingStarted/getting-started.ipynb)を確認します。
+Azure Machine Learning Data Prep SDK によるデータ準備の[サンプル ノートブック](https://github.com/Microsoft/MSDataPrepDocs/blob/master/Scenarios/GettingStarted/getting-started.ipynb)を確認します。

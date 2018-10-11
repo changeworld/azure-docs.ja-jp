@@ -3,7 +3,7 @@ title: 'App Service の概要: Azure Stack | Microsoft Docs'
 description: Azure Stack 上の App Service の概要
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: anwestg
-ms.openlocfilehash: 42258a352b05d97341f20c13bf837e1398dd8979
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: cf2d65e7e2927aee99e533ea0bca0818f3ab98f6
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37099964"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079159"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Azure Stack 上の App Service の概要
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure App Service on Azure Stack は、Azure Stack で利用できる Microsoft Azure の、サービスとしてのプラットフォーム (PaaS) サービスです。 このサービスにより、お客様の (内部または外部の) ユーザーはあらゆるプラットフォームやデバイス用の Web、API、Azure Functions アプリケーションを作成できるようになります。 お客様のアプリとオンプレミスのアプリケーションを統合し、ビジネス プロセスを自動化できます。 Azure Stack クラウドの運用者は、指定した共有仮想マシン (VM) リソースまたは専用 VM を使用して、完全に管理された VM 上でユーザーのアプリを実行できます。
+Azure App Service on Azure Stack は、Azure Stack で利用できる Microsoft Azure の、サービスとしてのプラットフォーム (PaaS) サービスです。 このサービスにより、お客様の (内部または外部の) ユーザーはあらゆるプラットフォームやデバイス用の Web、API、Azure Functions アプリケーションを作成できるようになります。 お客様のアプリとオンプレミスのアプリケーションを統合し、ビジネス プロセスを自動化できます。 Azure Stack クラウドの運用者は、指定した共有仮想マシン (VM) リソースまたは専用 VM を使用して、フル マネージドの VM 上でユーザーのアプリを実行できます。
 
 Azure App Service を使用すると、ビジネス プロセスとホスティング クラウド API を自動化できます。 単一の統合サービスである Azure App Service では、さまざまなコンポーネント (Web サイト、RESTful API、ビジネス プロセス) を 1 つのソリューションにまとめることができます。
 

@@ -2,17 +2,17 @@
 title: Azure Container Registry におけるコンテンツの信頼
 description: Azure Container Registry でコンテンツの信頼を有効にし、署名済みのイメージをプッシュ/プルする方法について説明します。
 services: container-registry
-author: mmacy
+author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 08/20/2018
-ms.author: marsma
-ms.openlocfilehash: 5dd8bc4227fda4c5d4def4b59bd7ff9a707f47f9
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.author: danlep
+ms.openlocfilehash: 1f1e7ce41c00078c0181fc5f32c43b7e5885eef8
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40234070"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857671"
 ---
 # <a name="content-trust-in-azure-container-registry"></a>Azure Container Registry におけるコンテンツの信頼
 
