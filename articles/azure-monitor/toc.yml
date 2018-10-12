@@ -187,16 +187,16 @@ items:
       items:
       - name: エージェントの比較
         href: ../monitoring/monitoring-overview-azure-agents.md?toc=/azure/azure-monitor/toc.json
-      - name: ログ ストア エージェント
+      - name: Log Analytics エージェント
         items:
+        - name: ハイブリッド環境の監視
+          href: ../log-analytics/log-analytics-concept-hybrid.md?toc=/azure/azure-monitor/toc.json
         - name: Windows エージェント
           href: ../log-analytics/log-analytics-agent-windows.md?toc=/azure/azure-monitor/toc.json
         - name: Windows 用の VM 拡張機能
           href: ../virtual-machines/windows/extensions-oms.md?toc=/azure/azure-monitor/toc.json
         - name: Linux 用の VM 拡張機能
           href: ../virtual-machines/linux/extensions-oms.md?toc=/azure/azure-monitor/toc.json
-        - name: ハイブリッド環境の監視
-          href: ../log-analytics/log-analytics-concept-hybrid.md?toc=/azure/azure-monitor/toc.json
         - name: Operations Manager
           href: ../log-analytics/log-analytics-om-agents.md?toc=/azure/azure-monitor/toc.json
         - name: OMS ゲートウェイ
@@ -986,9 +986,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: ac610e912e0d1cc8cbf7f8b5ff63f58ce650f599
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 521bcef045b39c442e4a981b07fff8099ece0c1d
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079353"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116421"

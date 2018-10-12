@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5403be527e8591f0f0b658131b08632d6d1458ca
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: f7b1213b7c3a6074f85c74825ed30c0b7ba8b98b
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452243"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116004"
 documentType: LandingData
 title: Azure Machine Learning サービス (プレビュー) のドキュメント
 metadata:
@@ -44,13 +44,15 @@ sections:
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: 実験を設定して、モデルを運用化する方法について説明します。
+    text: '<b>チュートリアル</b>: 実験を設定してモデルを運用化する方法を学習してください。'
   - type: list
     style: unordered
     items:
     - html: <a href="tutorial-train-models-with-aml">独自の機械学習モデルをトレーニングする</a>
     - html: <a href="tutorial-auto-train-models">モデルの自動生成および自動調整を行ってみましょう</a>
     - html: <a href="tutorial-deploy-models-with-aml">モデルを Web サービスとしてデプロイする</a>
+  - type: paragraph
+    text: '<b>Notebook のサンプル</b>: GitHub で入手可能な <a href="http://aka.ms/aml-notebooks">Jupyter Notebook</a> を使って Azure Machine Learning を詳しく掘り下げてみてください。'
 - title: リファレンス
   items:
   - type: list

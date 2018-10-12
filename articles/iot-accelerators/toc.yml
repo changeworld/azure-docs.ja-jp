@@ -81,6 +81,17 @@ items:
       href: iot-accelerators-remote-monitoring-deploy-simulated-device.md
     - name: UI のカスタマイズ
       href: iot-accelerators-remote-monitoring-customize.md
+      items:
+      - name: ページの追加
+        href: iot-accelerators-remote-monitoring-customize-page.md
+      - name: サービスの追加
+        href: iot-accelerators-remote-monitoring-customize-service.md
+      - name: グリッドの追加
+        href: iot-accelerators-remote-monitoring-customize-grid.md
+      - name: フライアウトの追加
+        href: iot-accelerators-remote-monitoring-customize-flyout.md
+      - name: パネルの追加
+        href: iot-accelerators-remote-monitoring-customize-panel.md
     - name: マイクロサービスをカスタマイズして再展開する
       href: iot-accelerators-microservices-example.md
     - name: CLI を使用したデプロイ
@@ -201,9 +212,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: IoT ソリューション アクセラレータのラーニング パス
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: f0efa66bd9ed85ed4ab79f5937355bd19c404a64
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ff8e7cea540fcb722b5cc68bd811acaec3fac070
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884335"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091721"

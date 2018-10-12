@@ -1,5 +1,5 @@
 items:
-- name: ドキュメント - オンライン転送のための Azure Data Box
+- name: オンライン転送のための Azure Data Box のドキュメント
   href: /azure/databox-online/
   expanded: true
 - name: Data Box Gateway
@@ -26,6 +26,18 @@ items:
       href: data-box-gateway-system-requirements.md
     - name: 制限を理解する
       href: data-box-gateway-limits.md
+  - name: 方法
+    items:
+    - name: '[管理]'
+      items:
+      - name: 共有
+        href: data-box-gateway-manage-shares.md
+      - name: ユーザー
+        href: data-box-gateway-manage-users.md
+      - name: 帯域幅のスケジュール
+        href: data-box-gateway-manage-bandwidth-schedules.md
+    - name: トラブルシューティング
+      href: data-box-gateway-troubleshoot.md
   - name: リリース ノート
     items:
     - name: プレビュー
@@ -58,9 +70,9 @@ items:
     href: https://azure.microsoft.com/pricing/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=databox
-ms.openlocfilehash: bb224b730de352ca79c9264a16960bce83c9bef9
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: ddffcf431f93d81b2a91b81e5d1d1834c1e07883
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829530"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068011"

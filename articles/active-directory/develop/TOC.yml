@@ -149,11 +149,11 @@ items:
           href: active-directory-enterprise-app-role-management.md
         - name: 要求のカスタマイズ
           href: active-directory-saml-claims-customization.md
-        - name: 要求のカスタマイズ (パブリック プレビュー)
+        - name: 要求のカスタマイズ (プレビュー)
           href: active-directory-claims-mapping.md
-        - name: 省略可能な要求の構成 (パブリック プレビュー)
+        - name: 省略可能な要求の構成 (プレビュー)
           href: active-directory-optional-claims.md
-        - name: トークンの有効期間の構成 (パブリック プレビュー)
+        - name: トークンの有効期間の構成 (プレビュー)
           href: active-directory-configurable-token-lifetimes.md
       - name: ADAL のエラー処理のベスト プラクティス
         href: active-directory-devhowto-adal-error-handling.md
@@ -303,6 +303,8 @@ items:
           href: v2-oauth2-on-behalf-of-flow.md
         - name: OAuth 2.0 クライアント資格情報の付与
           href: v2-oauth2-client-creds-grant-flow.md
+        - name: OAuth 2.0 デバイス コード フロー
+          href: v2-oauth2-device-code.md
       - name: ID トークン
         href: id-tokens.md
       - name: アクセス トークン
@@ -334,11 +336,11 @@ items:
         href: active-directory-enterprise-app-role-management.md
       - name: 要求のカスタマイズ
         href: active-directory-saml-claims-customization.md
-      - name: 要求のカスタマイズ (パブリック プレビュー)
+      - name: 要求のカスタマイズ (プレビュー)
         href: active-directory-claims-mapping.md
-      - name: 省略可能な要求の構成 (パブリック プレビュー)
+      - name: 省略可能な要求の構成 (プレビュー)
         href: active-directory-optional-claims.md
-      - name: トークンの有効期間の構成 (パブリック プレビュー)
+      - name: トークンの有効期間の構成 (プレビュー)
         href: active-directory-configurable-token-lifetimes.md
       - name: Azure AD での認証と、OAuth 2.0 を使用した JWT トークンの取得
         href: active-directory-protocols-oauth-get-jwt-token.md
@@ -396,9 +398,9 @@ items:
     href: developer-support-help-options.md
   - name: Azure リソースのマネージド サービス ID
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: f7b8ce59f421c2a2c7cdb6269132910bd2b3ab4e
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 93161f9886541147254bc15ade9b51efd5c003f0
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901840"
+ms.locfileid: "49079295"
