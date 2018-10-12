@@ -44,7 +44,7 @@ Microsoft 音声テキスト変換エンジンは国際的レベルのもので�
 
 ## <a name="next-steps"></a>次の手順
 
-Custom Speech Service の使用方法について詳しくは、Custom Speech Service ポータル https://cris.ai)を参照してください。
+Custom Speech Service の使用方法について詳しくは、Custom Speech Service ポータル(https://cris.ai)を参照してください。
 
 * [作業の開始](cognitive-services-custom-speech-get-started.md)
 * [FAQ](cognitive-services-custom-speech-faq.md)
