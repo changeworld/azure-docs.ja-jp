@@ -60,8 +60,6 @@ items:
       href: concepts-servers.md
     - name: サポートされているバージョン
       href: concepts-supported-versions.md
-    - name: サーバー ログ
-      href: concepts-server-logs.md
     - name: 高可用性
       href: concepts-high-availability.md
   - name: リソース
@@ -85,7 +83,11 @@ items:
     - name: バックアップと復元
       href: concepts-backup.md
   - name: 監視
-    href: concepts-monitoring.md
+    items:
+    - name: 監視
+      href: concepts-monitoring.md
+    - name: サーバー ログ
+      href: concepts-server-logs.md
   - name: 開発
     items:
     - name: ドライバーとツールの互換性
@@ -212,9 +214,9 @@ items:
     href: partners-migration-mysql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: c4ce15c7c6260b179bf54f7f8bd78fcee735e3ac
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fa76f131e0dc968d4ae8f0da76f0b38ba4608c05
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036866"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115774"

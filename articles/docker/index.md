@@ -11,12 +11,12 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: 76afc558048f1890e5e2440fd002361172acbea2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: c1dab114ddd010daa88222f380ad7a47f1dd1767
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433837"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090707"
 ---
 <div class="content">
    <h1>Azure 上の Docker</h1>   
@@ -38,7 +38,7 @@ Docker は人気のあるコンテナー管理およびイメージング プラ
 </ol>
 <h2>リソース</h2>
 <p>Azure 上の Docker を操作するためのその他の参考資料やツールについては、次のリンクを参照してください。</p>
-<a href="https://www.docker.com/docker-azure">Docker for Azure サイト</a><br/>
+<a href="https://docs.docker.com/docker-for-azure/why/">Docker for Azure サイト</a><br/>
 <a href="https://docs.docker.com/machine/drivers/azure/">Docker の Azure ドライバー</a><br/>
 <a href="https://docker.com">Docker について</a><br/>
 </div>

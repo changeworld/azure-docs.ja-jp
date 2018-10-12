@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 01b288136036fc5ff719c179821801aeac95c5c5
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 7bfa1becd3eed5bcf3e2d0bec160a4b4e2f254a3
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830534"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091881"
 documentType: LandingData
 title: Speech Service SDK のドキュメント
 metadata:
@@ -26,15 +26,6 @@ metadata:
   ms.author: nitinme
 abstract:
   description: Speech Service と Speech SDK を使用して、音声認識機能をアプリに追加する方法について説明します。 Speech SDK を使用して、<i>音声テキスト変換</i> (音声認識/SR)、<i>意図</i>、<i>翻訳</i>、<i>テキスト読み上げ</i> (TTS) の各機能をアプリに追加できます。 Speech Service には、HTTP 要求を実行できるプログラミング言語で動作する REST API も含まれています。
-  aside:
-    image:
-      alt: 
-      height: 110
-      src: ../media/index/speech-landing-page-video.png
-      width: 250
-    title: Speech Service の概要 (10:34)
-    href: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-overview-of-advanced-speech-capabilities/
-    width: 250
 sections:
 - items:
   - type: list

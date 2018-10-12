@@ -257,8 +257,8 @@ items:
   items:
   - name: Azure コミュニティ サポート
     href: https://azure.microsoft.com/support/community/?product=search
-  - name: Azure のロードマップ
-    href: https://azure.microsoft.com/roadmap/?tag=azure-search
+  - name: Azure の更新情報
+    href: https://azure.microsoft.com/updates/?product=search
   - name: デモ サイト
     items:
     - name: 財務ファイルのデモ
@@ -275,13 +275,11 @@ items:
     href: search-faq-frequently-asked-questions.md
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/search/
-  - name: サービスの更新情報
-    href: https://azure.microsoft.com/updates/?product=search
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 473b6940dda9ea906cf6ad2ddb400357fc8df7b9
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 1ce3cf4ff32037d8e1e70a7c724aa4c53c2539ea
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831162"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116071"
