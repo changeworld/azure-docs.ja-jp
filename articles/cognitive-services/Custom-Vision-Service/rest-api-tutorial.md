@@ -36,7 +36,7 @@ Custom Vision REST API を使用してモデルを作成、トレーニング、
 
 * bash (Bourne Again Shell) と [curl](https://curl.haxx.se) ユーティリティ、または Windows PowerShell 3.0 (以上)。
 
-* Custom Vision アカウント。 詳細については、「[分類器の構築](getting-started-build-a-classifier.md)」ドキュメントを参照してください。
+* Custom Vision アカウント。 詳細については、「[分類子の構築](getting-started-build-a-classifier.md)」ドキュメントを参照してください。
 
 ## <a name="get-keys"></a>キーの取得
 
