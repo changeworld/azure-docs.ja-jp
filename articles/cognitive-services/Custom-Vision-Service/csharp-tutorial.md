@@ -42,7 +42,7 @@ C# アプリケーションから Custom Vision Service を使用する方法に
 
 Visual Studio で、SDK プロジェクトの `Samples/CustomVision.Sample/` ディレクトリにあるプロジェクトを開きます。
 
-このアプリケーションは、先ほど取得したトレーニング キーを使用して、__My New Project__ という名前の新しいプロジェクトを作成します。 その後、イメージをアップロードして分類器のトレーニングおよびテストを行います。 分類器は、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを識別します。
+このアプリケーションは、先ほど取得したトレーニング キーを使用して、__My New Project__ という名前の新しいプロジェクトを作成します。 その後、イメージをアップロードして分類子のトレーニングおよびテストを行います。 分類子は、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを識別します。
 
 この例の主な機能は、以下のコード スニペットに実装されています。
 
@@ -83,7 +83,7 @@ Visual Studio で、SDK プロジェクトの `Samples/CustomVision.Sample/` デ
     trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFiles, new List<Guid>() { japaneseCherryTag.Id }));
     ```
 
-* __分類器をトレーニングする__
+* __分類子をトレーニングする__
 
     ```csharp
     // Now there are images with tags start training the project
