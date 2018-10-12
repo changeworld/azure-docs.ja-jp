@@ -1,6 +1,6 @@
 ---
 title: Custom Vision Service の予測エンドポイントを使用する - Azure Cognitive Services | Microsoft Docs
-description: API を使用して、Custom Vision Service の分類器によるイメージのテストをプログラムから行う方法を説明します。
+description: API を使用して、Custom Vision Service の分類子によるイメージのテストをプログラムから行う方法を説明します。
 services: cognitive-services
 author: anrothMSFT
 manager: corncar
@@ -16,7 +16,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/31/2018
 ms.locfileid: "43341795"
 ---
-# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>予測エンドポイントを利用し、Custom Vision Service の分類器を使用してプログラムからイメージをテストします
+# <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>予測エンドポイントを利用し、Custom Vision Service の分類子を使用してプログラムからイメージをテストします
 
 モデルをトレーニングした後、イメージを Prediction API に送信することで、プログラムからイメージをテストできます。 
 
