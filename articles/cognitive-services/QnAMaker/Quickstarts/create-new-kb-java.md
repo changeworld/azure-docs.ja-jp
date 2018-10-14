@@ -35,7 +35,7 @@ ms.locfileid: "47037611"
 
 ## <a name="create-knowledge-base"></a>ナレッジ ベースを作成する
 
-次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいサポート技術情報が作成されます。
+次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいナレッジ ベースが作成されます。
 
 1. 適切な IDE で新しい Java プロジェクトを作成します。
 1. その Java プロジェクトに [Google GSON ライブラリ](https://github.com/google/gson)を追加します。任意のプロジェクト管理ツール (Maven など) に依存関係を追加するか、.jar ファイルを手動で[作成](https://stackoverflow.com/questions/5258159/how-to-make-an-executable-jar-file)してインポートしてください。

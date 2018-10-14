@@ -22,7 +22,7 @@ ms.locfileid: "48884901"
 
 この記事では、Node.js で [Microsoft QnA Maker API](../Overview/overview.md) を使用し、次を行う方法について説明します。
 
-- [新しいサポート技術情報を作成します。](#Create)
+- [新しいナレッジ ベースを作成します。](#Create)
 - [既存のナレッジ ベースを更新します。](#Update)
 - [ナレッジ ベースの作成または更新要求の状態を取得します。](#Status)
 - [既存のナレッジ ベースを公開します。](#Publish)
@@ -31,7 +31,7 @@ ms.locfileid: "48884901"
 - [ナレッジ ベースを使用し、質問の回答を取得します。](#GetAnswers)
 - [ナレッジ ベースに関する情報を取得します。](#GetKB)
 - [指定のユーザーに属するすべてのナレッジ ベースに関する情報を取得します。](#GetKBsByUser)
-- [サポート技術情報を削除します。](#Delete)
+- [ナレッジ ベースを削除します。](#Delete)
 - [現在のエンドポイント キーを取得します。](#GetKeys)
 - [現在のエンドポイント キーを再生成します。](#PutKeys)
 - [現在の一連の単語変更を取得します。](#GetAlterations)
@@ -47,9 +47,9 @@ ms.locfileid: "48884901"
 
 <a name="Create"></a>
 
-## <a name="create-knowledge-base"></a>サポート技術情報を作成する
+## <a name="create-knowledge-base"></a>ナレッジ ベースを作成する
 
-次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいサポート技術情報が作成されます。
+次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいナレッジ ベースが作成されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
 2. 下記のコードを追加します。
@@ -245,7 +245,7 @@ create_kb (path, content, function (result) {
 
 ## <a name="update-knowledge-base"></a>ナレッジ ベースを更新する
 
-次のコードでは、[Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) メソッドを利用し、既存のサポート技術情報が更新されます。
+次のコードでは、[Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) メソッドを利用し、既存のナレッジ ベースが更新されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
 2. 下記のコードを追加します。
@@ -438,7 +438,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>要求の状態を取得する
 
-[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、サポート技術情報の作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
+[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、ナレッジ ベースの作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
 
 [先頭に戻る](#HOLTop)
 
@@ -446,7 +446,7 @@ Press any key to continue.
 
 ## <a name="publish-knowledge-base"></a>ナレッジ ベースを公開する
 
-次のコードでは、[Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) メソッドを利用し、既存のサポート技術情報が公開されます。
+次のコードでは、[Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) メソッドを利用し、既存のナレッジ ベースが公開されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
 2. 下記のコードを追加します。
@@ -558,7 +558,7 @@ publish_kb (path, '', function (result) {
 
 ## <a name="replace-knowledge-base"></a>ナレッジ ベースを置換する
 
-次のコードでは、[Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) メソッドを利用し、指定のサポート技術情報のコンテンツが置換されます。
+次のコードでは、[Replace](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) メソッドを利用し、指定のナレッジ ベースのコンテンツが置換されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
 2. 下記のコードを追加します。
@@ -691,7 +691,7 @@ replace_kb (path, content, function (result) {
 
 ## <a name="download-the-contents-of-a-knowledge-base"></a>ナレッジ ベースのコンテンツをダウンロードする
 
-次のコードでは、[Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) メソッドを利用し、指定のサポート技術情報のコンテンツがダウンロードされます。
+次のコードでは、[Download knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) メソッドを利用し、指定のナレッジ ベースのコンテンツがダウンロードされます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
 2. 下記のコードを追加します。
@@ -822,13 +822,13 @@ get_qna (path, function (result) {
 
 ## <a name="get-answers-to-a-question-using-a-knowledge-base"></a>ナレッジ ベースを使用し、質問の回答を取得する
 
-次のコードでは、**Generate answers** メソッドを利用し、指定のサポート技術情報による質問の回答が生成されます。
+次のコードでは、**Generate answers** メソッドを利用し、指定のナレッジ ベースによる質問の回答が生成されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
 1. 次に示すコードを追加します。
 1. `host` の値を QnA Maker サブスクリプションの Web サイト名で置換します。 詳細については、「[QnA Maker サービスを作成する](../How-To/set-up-qnamaker-service-azure.md)」を参照してください。
 1. `endpoint_key` の値を、お使いのサブスクリプションで有効なエンドポイント キーに置き換えます。 これはサブスクリプション キーと同じではないことにご注意ください。 [Get endpoint keys](#GetKeys) メソッドでエンドポイント キーを取得できます。
-1. `kb` 値を、回答を求めてクエリを実行しようとするサポート技術情報の ID に置き換えます。 このナレッジ ベースは [Publish](#Publish) メソッドを利用して公開しておく必要があります。
+1. `kb` 値を、回答を求めてクエリを実行しようとするナレッジ ベースの ID に置き換えます。 このナレッジ ベースは [Publish](#Publish) メソッドを利用して公開しておく必要があります。
 1. プログラムを実行します。
 
 ```nodejs
@@ -953,7 +953,7 @@ get_answers (method, content, function (result) {
 
 ## <a name="get-information-about-a-knowledge-base"></a>ナレッジ ベースに関する情報を取得する
 
-次のコードでは、[Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) メソッドを利用し、指定のサポート技術情報に関する情報が取得されます。
+次のコードでは、[Get knowledge base details](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) メソッドを利用し、指定のナレッジ ベースに関する情報が取得されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
 2. 下記のコードを追加します。
@@ -1068,7 +1068,7 @@ get_kb (path, function (result) {
 
 ## <a name="get-all-knowledge-bases-for-a-user"></a>ユーザーのすべてのナレッジ ベースを取得する
 
-次のコードでは、[Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) メソッドを利用し、指定のユーザーのすべてのサポート技術情報に関する情報が取得されます。
+次のコードでは、[Get knowledge bases for user](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) メソッドを利用し、指定のユーザーのすべてのナレッジ ベースに関する情報が取得されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
 2. 下記のコードを追加します。
@@ -1196,7 +1196,7 @@ Press any key to continue.
 
 ## <a name="delete-a-knowledge-base"></a>ナレッジ ベースを削除する
 
-次のコードでは、[Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) メソッドを利用し、指定のサポート技術情報が削除されます。
+次のコードでは、[Delete knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) メソッドを利用し、指定のナレッジ ベースが削除されます。
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
 2. 下記のコードを追加します。
@@ -1292,7 +1292,7 @@ delete_kb (path, '', function (result) {
 });
 ```
 
-**サポート技術情報の応答を削除する**
+**ナレッジ ベースの応答を削除する**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 

@@ -25,9 +25,9 @@ ms.locfileid: "48887167"
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Microsoft QnA Maker API** を用意している必要があります。 [Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServices)の有料サブスクリプション キーが必要です。
 
-## <a name="create-knowledge-base"></a>サポート技術情報を作成する
+## <a name="create-knowledge-base"></a>ナレッジ ベースを作成する
 
-次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいサポート技術情報が作成されます。
+次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいナレッジ ベースが作成されます。
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
