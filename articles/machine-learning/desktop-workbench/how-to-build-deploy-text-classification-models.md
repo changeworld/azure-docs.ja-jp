@@ -37,7 +37,7 @@ AMLPTA を使用したモデルのテキスト分類モデルの構築と配置�
 
 1. データを読み込む
 2. モデルをトレーニングする
-3. 分類器を適用する
+3. 分類子を適用する
 4. モデルのパフォーマンスを評価する
 5. パイプラインを保存する
 6. パイプラインをテストする
@@ -71,7 +71,7 @@ AMLPTA を使用したモデルのテキスト分類モデルの構築と配置�
 > [Jupyter Notebook を取得する](https://aka.ms/aml-packages/text/notebooks/text_classification_sentiment_data)
 
 ### <a name="download-and-explore-the-sample-data"></a>サンプル データをダウンロードして探索する
-次の例では、scikit-learn ライブラリから入手できる [20 のニュースグループ データセット](http://qwone.com/~jason/20Newsgroups/) を使用して、Azure Machine Learning Package for Text Analytics でテキスト分類器を作成する方法を示します。
+次の例では、scikit-learn ライブラリから入手できる [20 のニュースグループ データセット](http://qwone.com/~jason/20Newsgroups/) を使用して、Azure Machine Learning Package for Text Analytics でテキスト分類子を作成する方法を示します。
 
 20 のニュースグループ データセットには、20 の異なるトピックに関する約 18,000 のニュースグループの投稿が含まれています。投稿は、トレーニング用のサブセットとパフォーマンス評価用のサブセットの 2 つに分割されます。 トレーニングとテストへの分割は、各メッセージの投稿日が特定の日付の前か後であるかによって行われます。
 
@@ -340,7 +340,7 @@ Jupypter Notebook を実行すると、前のコード ブロックの実行後�
 
 ## <a name="train-the-model"></a>モデルをトレーニングする
 
-### <a name="specify-scikit-learn-algorithm-and-define-the-text-classifier"></a>scikit-learn アルゴリズムを指定し、テキスト分類器を定義します。
+### <a name="specify-scikit-learn-algorithm-and-define-the-text-classifier"></a>scikit-learn アルゴリズムを指定し、テキスト分類子を定義します。
 
 この手順には、One-versus-Rest ロジスティック回帰を使用した scikit-learnt テキスト分類モデルのトレーニングが含まれます。
 
@@ -378,7 +378,7 @@ text_classifier = TextClassifier(estimator=log_reg_learner,
     
 ### <a name="fit-the-model"></a>モデルを適合させる
 
-パッケージの既定のパラメーターを使用します。 既定では、テキスト分類器は、以下を抽出します。
+パッケージの既定のパラメーターを使用します。 既定では、テキスト分類子は、以下を抽出します。
 + 単語の unigram と bigram
 + 文字の 4 gram
 
@@ -543,9 +543,9 @@ params_file_path = os.path.join(data_dir, "params.tsv")
 text_classifier.export_params(params_file_path)
 ```
 
-## <a name="apply-the-classifier"></a>分類器を適用する
+## <a name="apply-the-classifier"></a>分類子を適用する
 
-生成するトレーニング済みのテキスト分類器をテスト データセットに適用して、クラス予測を生成します。
+生成するトレーニング済みのテキスト分類子をテスト データセットに適用して、クラス予測を生成します。
 
 ```python
  df_test = text_classifier.predict(df_test)
@@ -625,7 +625,7 @@ text_classifier.export_params(params_file_path)
 </div>
 
 ## <a name="evaluate-model-performance"></a>モデルのパフォーマンスを評価する
-[評価モジュール](https://docs.microsoft.com/python/api/tatk.evaluation)は、テスト データセットに対するトレーニング済みのテキスト分類器の精度を評価します。 評価関数は、混同行列を生成し、macro-F1 スコアを提供します。
+[評価モジュール](https://docs.microsoft.com/python/api/tatk.evaluation)は、テスト データセットに対するトレーニング済みのテキスト分類子の精度を評価します。 評価関数は、混同行列を生成し、macro-F1 スコアを提供します。
 
 ```python
 text_classifier.evaluate(df_test)
