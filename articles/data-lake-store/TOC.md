@@ -28,6 +28,7 @@
 ### [アクセス制御](data-lake-store-access-control.md)
 ### [保存データのセキュリティ保護](data-lake-store-secure-data.md)
 ### [暗号化](data-lake-store-encryption.md)
+### [仮想ネットワークの統合 (プレビュー)](data-lake-store-network-security.md)
 
 ## Data Lake Storage Gen1 での認証
 ### [認証オプション](data-lakes-store-authentication-using-azure-active-directory.md)

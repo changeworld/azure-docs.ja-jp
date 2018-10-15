@@ -1,5 +1,5 @@
 # 概要
-## [はじめに](get-started.md)
+## [作業開始](get-started.md)
 ## [認定](sap-certifications.md)
 # SAP HANA on Azure (L インスタンス)
 ## 概要
@@ -77,6 +77,7 @@
 #### [(A)SCS インスタンス用の共有ディスクを使用した Windows の HA](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [(A)SCS インスタンス用の SOFS ファイル共有を使用した Windows の HA](sap-high-availability-guide-wsfc-file-share.md)
 #### [(A)SCS インスタンス用の SUSE Linux の HA](high-availability-guide-suse.md)
+#### [(A)SCS インスタンス用の Red Hat Enterprise Linux の HA](high-availability-guide-rhel.md)
 ### Azure インフラストラクチャの準備
 #### [(A)SCS インスタンス用の共有ディスクを使用した Windows](sap-high-availability-infrastructure-wsfc-shared-disk.md)
 #### [(A)SCS インスタンス用の SOFS ファイル共有を使用した Windows](sap-high-availability-infrastructure-wsfc-file-share.md)

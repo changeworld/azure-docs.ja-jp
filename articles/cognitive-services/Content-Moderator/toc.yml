@@ -4,6 +4,18 @@ items:
   items:
   - name: Content Moderator とは
     href: overview.md
+- name: クイック スタート
+  items:
+  - name: Content Moderator の概要
+    href: quick-start.md
+  - name: .NET SDK の使用
+    items:
+    - name: イメージ コンテンツの確認
+      href: image-moderation-quickstart-dotnet.md
+    - name: テキスト コンテンツの確認
+      href: text-moderation-quickstart-dotnet.md
+    - name: ビデオ コンテンツの確認
+      href: video-moderation-api.md
 - name: サンプル
   items:
   - name: .NET SDK のサンプル
@@ -26,30 +38,20 @@ items:
   items:
   - name: Content Moderator を試す
     items:
-    - name: Content Moderator の概要
-      href: quick-start.md
     - name: モデレート API
       items:
-      - name: ヘルパー ライブラリ - .NET
-        href: content-moderator-helper-quickstart-dotnet.md
       - name: イメージ - API コンソール
         href: try-image-api.md
-      - name: イメージ - .NET
-        href: image-moderation-quickstart-dotnet.md
+      - name: イメージをカスタム リストと照合する
+        href: image-lists-quickstart-dotnet.md
       - name: カスタム イメージ - API コンソール
         href: try-image-list-api.md
-      - name: カスタム イメージ - .NET
-        href: image-lists-quickstart-dotnet.md
       - name: テキスト - API コンソール
         href: try-text-api.md
-      - name: テキスト - .NET
-        href: text-moderation-quickstart-dotnet.md
+      - name: テキストをカスタム用語と照合する
+        href: term-lists-quickstart-dotnet.md
       - name: カスタム用語 - API コンソール
         href: try-terms-list-api.md
-      - name: カスタム用語 - .NET
-        href: term-lists-quickstart-dotnet.md
-      - name: ビデオ - .NET
-        href: video-moderation-api.md
     - name: API の確認
       items:
       - name: ジョブ - API コンソール
@@ -132,9 +134,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: オンデマンド ウェビナー
     href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
-ms.openlocfilehash: 32f0c64253836d3080cc815753e361d810e1f2e8
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 68febbe4e4206c774f75e1a07216eddf86dc5888
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433807"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309827"

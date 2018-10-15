@@ -144,6 +144,8 @@ items:
         href: active-directory-b2c-reference-kmsi-custom.md
     - name: リファレンス
       items:
+      - name: 要求リゾルバー
+        href: claim-resolver-overview.md
       - name: Identity Experience Framework のスキーマ
         items:
         - name: TrustFrameworkPolicy
@@ -321,9 +323,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 6bed0f5fd9710e9862529ede59e765074c779c9a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 87dbf2eb87d4761186e298e27da142ff8a0e789a
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167394"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310523"

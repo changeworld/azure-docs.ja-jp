@@ -318,12 +318,16 @@ items:
   - name: Cosmos DB
     tocHref: /azure/cosmos-db/
     topicHref: /azure/cosmos-db/
-  - name: Data Box
-    tocHref: /azure/databox/
-    topicHref: /azure/databox/
-  - name: Data Box Edge/Data Box Gateway
-    tocHref: /azure/databox-online/
-    topicHref: /azure/databox-online/
+  - name: Data Box ファミリ
+    tocHref: /azure/databox-family/
+    topicHref: /azure/databox-family/
+    items:
+    - name: Data Box のオフライン転送
+      tocHref: /azure/databox/
+      topicHref: /azure/databox/
+    - name: Data Box のオンライン転送
+      tocHref: /azure/databox-online/
+      topicHref: /azure/databox-online/
   - name: Data Catalog
     tocHref: /azure/data-catalog/
     topicHref: /azure/data-catalog/
@@ -626,9 +630,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: 5aeda58f43a95771621c40be9b59e8100913ea13
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 5e5bddc2e8c5878b8484ff844ded91943c030aef
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078547"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310778"
