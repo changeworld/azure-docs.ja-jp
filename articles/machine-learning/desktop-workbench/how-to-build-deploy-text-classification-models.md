@@ -24,20 +24,20 @@ ms.locfileid: "46994940"
 
 この記事では、**Azure Machine Learning Package for Text Analytics** を使用してテキスト分類モデルを構築して配置する方法について説明します。 テキスト分類の目的は、テキストの一部を 1 つまたは複数のクラスまたはカテゴリに割り当てることです。 このテキストは、ドキュメント、ニュース記事、検索クエリ、電子メール、ツイート、サポート チケットなどが可能です。
 
-テキスト分類には、以下のように幅広く応用できます。 
+テキスト分類には、以下のように幅広く応用できます。
 + 新聞の記事やニュース配信の内容のトピックへの分類
-+ Web ページの階層化されたカテゴリへの整理 
++ Web ページの階層化されたカテゴリへの整理
 + スパム メールのフィルター処理
 + センチメント分析
 + 検索クエリからのユーザーの意図の予測
 + サポート チケットのルーティング
-+ 顧客のフィードバックの分析 
++ 顧客のフィードバックの分析
 
 AMLPTA を使用したモデルのテキスト分類モデルの構築と配置のワークフローは次のとおりです。
 
 1. データを読み込む
 2. モデルをトレーニングする
-3. 分類器を適用する 
+3. 分類子を適用する
 4. モデルのパフォーマンスを評価する
 5. パイプラインを保存する
 6. パイプラインをテストする
@@ -47,16 +47,16 @@ AMLPTA を使用したモデルのテキスト分類モデルの構築と配置�
 
 この記事のサンプル コードでは、scikit-learn パイプラインを使用しています。
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
 1. Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 1. 次のアカウントとアプリケーションを設定してインストールする必要があります。
-   - Azure Machine Learning 実験アカウント 
+   - Azure Machine Learning 実験アカウント
    - Azure Machine Learning モデル管理アカウント
    - Azure Machine Learning Workbench のインストール
 
-   これら 3 つが作成またはインストールされていない場合は、[Azure Machine Learning のクイックスタートとワークベンチのインストール](../desktop-workbench/quickstart-installation.md)に関する記事に従ってください。 
+   これら 3 つが作成またはインストールされていない場合は、[Azure Machine Learning のクイックスタートとワークベンチのインストール](../desktop-workbench/quickstart-installation.md)に関する記事に従ってください。
 
 1. Azure Machine Learning Package for Text Analytics をインストールする必要があります。 このパッケージのインストール方法については、[こちら](https://aka.ms/aml-packages/text)を参照してください。
 
@@ -71,7 +71,7 @@ AMLPTA を使用したモデルのテキスト分類モデルの構築と配置�
 > [Jupyter Notebook を取得する](https://aka.ms/aml-packages/text/notebooks/text_classification_sentiment_data)
 
 ### <a name="download-and-explore-the-sample-data"></a>サンプル データをダウンロードして探索する
-次の例では、scikit-learn ライブラリから入手できる [20 のニュースグループ データセット](http://qwone.com/~jason/20Newsgroups/) を使用して、Azure Machine Learning Package for Text Analytics でテキスト分類器を作成する方法を示します。 
+次の例では、scikit-learn ライブラリから入手できる [20 のニュースグループ データセット](http://qwone.com/~jason/20Newsgroups/) を使用して、Azure Machine Learning Package for Text Analytics でテキスト分類子を作成する方法を示します。
 
 20 のニュースグループ データセットには、20 の異なるトピックに関する約 18,000 のニュースグループの投稿が含まれています。投稿は、トレーニング用のサブセットとパフォーマンス評価用のサブセットの 2 つに分割されます。 トレーニングとテストへの分割は、各メッセージの投稿日が特定の日付の前か後であるかによって行われます。
 
@@ -111,9 +111,9 @@ X_train, y_train = twenty_train.data, twenty_train.target
 df_train = pd.DataFrame({"text":X_train, "label":y_train})
 
 twenty_test = fetch_20newsgroups(data_home=data_dir, subset='test')
-X_test, y_test = twenty_test.data, twenty_test.target   
+X_test, y_test = twenty_test.data, twenty_test.target
 df_test = pd.DataFrame({"text":X_test, "label":y_test})
-    
+
 # Training Dataset Location
 #training_file_path = <specify-your-own-training-data-file-path-here>
 # df_train = pd.read_csv(training_file_path,
@@ -179,7 +179,7 @@ df_test.head()
 
 ```python
 int_to_categories = pd.DataFrame({'category':range(20), 'category_name': list(twenty_train.target_names)})
-int_to_categories 
+int_to_categories
 ```
 
 
@@ -299,7 +299,7 @@ int_to_categories
 </table>
 </div>
 
-次に、トレーニング データセットとテスト データセットにおけるクラスの周期の予備調査プロット ヒストグラムを作成できます。 
+次に、トレーニング データセットとテスト データセットにおけるクラスの周期の予備調査プロット ヒストグラムを作成できます。
 
 ```python
 import numpy as np
@@ -323,7 +323,7 @@ plt.show()
 data = df_test["label"].values
 labels = set(data)
 print(labels)
-bins = range(len(labels)+1) 
+bins = range(len(labels)+1)
 
 #plt.xlim([min(data)-5, max(data)+5])
 
@@ -340,7 +340,7 @@ Jupypter Notebook を実行すると、前のコード ブロックの実行後�
 
 ## <a name="train-the-model"></a>モデルをトレーニングする
 
-### <a name="specify-scikit-learn-algorithm-and-define-the-text-classifier"></a>scikit-learn アルゴリズムを指定し、テキスト分類器を定義します。
+### <a name="specify-scikit-learn-algorithm-and-define-the-text-classifier"></a>scikit-learn アルゴリズムを指定し、テキスト分類子を定義します。
 
 この手順には、One-versus-Rest ロジスティック回帰を使用した scikit-learnt テキスト分類モデルのトレーニングが含まれます。
 
@@ -378,12 +378,12 @@ text_classifier = TextClassifier(estimator=log_reg_learner,
     
 ### <a name="fit-the-model"></a>モデルを適合させる
 
-パッケージの既定のパラメーターを使用します。 既定では、テキスト分類器は、以下を抽出します。
+パッケージの既定のパラメーターを使用します。 既定では、テキスト分類子は、以下を抽出します。
 + 単語の unigram と bigram
 + 文字の 4 gram
 
 ```python
-text_classifier.fit(df_train)        
+text_classifier.fit(df_train)
 ```
    
     TextClassifier::fit ==> start
@@ -426,17 +426,17 @@ text_classifier.fit(df_train)
             weight_col=None)
 
 
-トレーニングの間、テキスト列とラベル列の両方を用意する必要があります。 ただし、予測にはテキスト列のみが必要となります。 
+トレーニングの間、テキスト列とラベル列の両方を用意する必要があります。 ただし、予測にはテキスト列のみが必要となります。
 
 ### <a name="examine-and-set-the-parameters-of-the-different-pipeline-steps"></a>異なるパイプライン手順のパラメーターを調べて設定する
-    
-通常、モデルを適合させる前に、パラメーターを設定します。 
 
-***text_word_ngrams を示す例*** 
+通常、モデルを適合させる前に、パラメーターを設定します。
 
-次のコード サンプルは、既定のパイプラインとモデル パラメーターを使用して、モデルをトレーニングする方法を示しています。 
+***text_word_ngrams を示す例***
 
-"text_word_ngrams" に含まれるパラメーターを確認するには、[get_step_param_names_by_name](https://docs.microsoft.com/python/api/tatk.core.base_text_model.basetextmodel) を使用します。 この関数は、lowercase、input_col、output_col などのパラメーターを返します。 
+次のコード サンプルは、既定のパイプラインとモデル パラメーターを使用して、モデルをトレーニングする方法を示しています。
+
+"text_word_ngrams" に含まれるパラメーターを確認するには、[get_step_param_names_by_name](https://docs.microsoft.com/python/api/tatk.core.base_text_model.basetextmodel) を使用します。 この関数は、lowercase、input_col、output_col などのパラメーターを返します。
 
 ```python
 text_classifier.get_step_param_names_by_name("text_word_ngrams")
@@ -472,7 +472,7 @@ text_classifier.get_step_param_names_by_name("text_word_ngrams")
 次に、"text_char_ngrams" のパラメーター値をチェックします。
 
 ```python
-text_classifier.get_step_params_by_name("text_char_ngrams")        
+text_classifier.get_step_params_by_name("text_char_ngrams")
 ```
     {'analyzer': 'char_wb',
      'binary': False,
@@ -501,10 +501,10 @@ text_classifier.get_step_params_by_name("text_char_ngrams")
      'use_idf': True,
      'vocabulary': None}
 
-必要であれば、既定のパラメーターを変更できます。  次のコードでは、抽出される文字の n-gram 範囲を (4, 4) から (3, 4) に変更して、文字の trigram と 4 gram の両方を抽出できます。
+必要であれば、既定のパラメーターを変更できます。 次のコードでは、抽出される文字の n-gram 範囲を (4, 4) から (3, 4) に変更して、文字の trigram と 4 gram の両方を抽出できます。
 
 ```python
-text_classifier.set_step_params_by_name("text_char_ngrams", ngram_range =(3,4)) 
+text_classifier.set_step_params_by_name("text_char_ngrams", ngram_range =(3,4))
 text_classifier.get_step_params_by_name("text_char_ngrams")
 ```
     {'analyzer': 'char_wb',
@@ -543,9 +543,9 @@ params_file_path = os.path.join(data_dir, "params.tsv")
 text_classifier.export_params(params_file_path)
 ```
 
-## <a name="apply-the-classifier"></a>分類器を適用する
+## <a name="apply-the-classifier"></a>分類子を適用する
 
-生成するトレーニング済みのテキスト分類器をテスト データセットに適用して、クラス予測を生成します。
+生成するトレーニング済みのテキスト分類子をテスト データセットに適用して、クラス予測を生成します。
 
 ```python
  df_test = text_classifier.predict(df_test)
@@ -625,10 +625,10 @@ text_classifier.export_params(params_file_path)
 </div>
 
 ## <a name="evaluate-model-performance"></a>モデルのパフォーマンスを評価する
-[評価モジュール](https://docs.microsoft.com/python/api/tatk.evaluation)は、テスト データセットに対するトレーニング済みのテキスト分類器の精度を評価します。 評価関数は、混同行列を生成し、macro-F1 スコアを提供します。
+[評価モジュール](https://docs.microsoft.com/python/api/tatk.evaluation)は、テスト データセットに対するトレーニング済みのテキスト分類子の精度を評価します。 評価関数は、混同行列を生成し、macro-F1 スコアを提供します。
 
 ```python
- text_classifier.evaluate(df_test)          
+text_classifier.evaluate(df_test)
 ```
 
     TextClassifier ::evaluate ==> start
@@ -673,12 +673,12 @@ Notebook を実行すると、混同行列が表示されます。
 
 ```python
 import os
-working_dir = os.path.join(data_dir, 'outputs')  
+working_dir = os.path.join(data_dir, 'outputs')
 if not os.path.exists(working_dir):
     os.makedirs(working_dir)
 
 # you can save the trained model as a folder or a zip file
-model_file = os.path.join(working_dir, 'sk_model.zip')    
+model_file = os.path.join(working_dir, 'sk_model.zip')
 text_classifier.save(model_file)
 # %azureml upload outputs/models/sk_model.zip
 
@@ -693,12 +693,12 @@ text_classifier.save(model_file)
 ```python
 # for debugging, you can save the word n-grams vocabulary to a text file
 word_vocab_file_path = os.path.join(working_dir, 'word_ngrams_vocabulary.tsv')
-text_classifier.get_step_by_name("text_word_ngrams").save_vocabulary(word_vocab_file_path) 
+text_classifier.get_step_by_name("text_word_ngrams").save_vocabulary(word_vocab_file_path)
 # %azureml upload outputs/dictionaries/word_ngrams_vocabulary.pkl
 
 # for debugging, you can save the character n-grams vocabulary to a text file
 char_vocab_file_path = os.path.join(working_dir, 'char_ngrams_vocabulary.tsv')
-text_classifier.get_step_by_name("text_char_ngrams").save_vocabulary(char_vocab_file_path) 
+text_classifier.get_step_by_name("text_char_ngrams").save_vocabulary(char_vocab_file_path)
 # %azureml upload outputs/dictionaries/char_ngrams_vocabulary.pkl
 ```
 
@@ -785,7 +785,7 @@ loaded_evaluator.get_metrics('macro_f1')
 
 **配置環境を作成してセットアップする**
 
-配置環境のセットアップは 1 度だけ行う必要があります。 配置環境がまだない場合は、[こちらの手順](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup)を使用してセットアップします。 
+配置環境のセットアップは 1 度だけ行う必要があります。 配置環境がまだない場合は、[こちらの手順](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup)を使用してセットアップします。
 
 1. Azure Machine Learning 環境、モデル管理アカウント、およびリソース グループが同じリージョン内にあることを確認してください。
 
@@ -807,7 +807,7 @@ loaded_evaluator.get_metrics('macro_f1')
 
    web_service = text_classifier.deploy(web_service_name= web_service_name, 
                           config_file_path=deployment_config_file_path,
-                          working_directory= working_directory)  
+                          working_directory= working_directory)
    ```
 
 1. トレーニング済みのモデルが正常に配置されていることを前提として、新しいデータセットに対してスコア付け Web サービスを呼び出します。
