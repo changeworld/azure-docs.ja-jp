@@ -3,5 +3,5 @@
 * [アプリケーションへのユーザーの割り当て](../articles/active-directory/active-directory-applications-guiding-developers-assigning-users.md)
 * [アプリケーションへのグループの割り当て](../articles/active-directory/active-directory-applications-guiding-developers-assigning-groups.md)
 * [Azure Active Directory とアプリケーションの統合](../articles/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)
-* [Article Index for Application Management in Azure Active Directory](../articles/active-directory/active-directory-apps-index.md)
+* [Azure Active Directory のアプリケーション管理](../articles/active-directory/manage-apps/what-is-application-management.md)
 
