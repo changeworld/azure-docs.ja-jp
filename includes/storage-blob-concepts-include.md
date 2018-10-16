@@ -8,14 +8,16 @@ ms.topic: include
 ms.date: 04/09/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 63593ff5f02f5e37fc25c988c4cef071a03a00b4
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: a934a1b75e85e03b6803be5c8afcd8fe74b0fad5
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37066035"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45739200"
 ---
 Azure Blob Storage は、Microsoft のクラウド用オブジェクト ストレージ ソリューションです。 BLOB ストレージは、テキスト データやバイナリ データなどの大量の非構造化データを格納するために最適化されています。
+
+高度なスケーラビリティを備えた非構造化データ用オブジェクト ストレージ
 
 BLOB ストレージは、次の目的に最適です。
 
@@ -36,7 +38,7 @@ BLOB ストレージでは、ストレージ アカウント、アカウント�
 
 ### <a name="storage-account"></a>ストレージ アカウント
 
-Azure Storage 内のデータ オブジェクトへのアクセスはすべて、ストレージ アカウント経由で行います。 詳細については、「[Azure ストレージ アカウントについて](../articles/storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
+Azure Storage 内のデータ オブジェクトへのアクセスはすべて、ストレージ アカウント経由で行います。 詳細については、「[Azure ストレージ アカウントの概要](../articles/storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
 ### <a name="container"></a>コンテナー
 
