@@ -32,7 +32,7 @@ ms.locfileid: "46971571"
 2. 画像の視覚化と注釈
 3. 画像の拡張
 4. ディープ ニューラル ネットワーク (DNN) モデルの定義
-5. 分類器のトレーニング
+5. 分類子のトレーニング
 6. 評価と視覚化
 7. Web サービスのデプロイ
 8. Web サービスのロード テスト
@@ -48,7 +48,7 @@ ms.locfileid: "46971571"
    - Azure Machine Learning モデル管理アカウント
    - Azure Machine Learning Workbench のインストール
 
-   これら 3 つが作成またはインストールされていない場合は、[Azure Machine Learning のクイックスタートとワークベンチのインストール](../desktop-workbench/quickstart-installation.md)に関する記事に従ってください。 
+   これら 3 つが作成またはインストールされていない場合は、[Azure Machine Learning のクイックスタートとワークベンチのインストール](../desktop-workbench/quickstart-installation.md)に関する記事に従ってください。
 
 1. Azure Machine Learning Package for Computer Vision をインストールする必要があります。 このパッケージのインストール方法については、[こちら](https://aka.ms/aml-packages/vision)を参照してください。
 
@@ -120,14 +120,14 @@ print("Select information for image 2: name={}, label={}, unique id={}.".format(
     dataset.images[2].name, dataset.images[2]._labels[0].name, dataset.images[2]._storage_id))
 ```
 
-    F1 2018-04-23 17:12:57,593 INFO azureml.vision:machine info {"is_dsvm": true, "os_type": "Windows"} 
-    F1 2018-04-23 17:12:57,599 INFO azureml.vision:dataset creating dataset for scenario=classification 
+    F1 2018-04-23 17:12:57,593 INFO azureml.vision:machine info {"is_dsvm": true, "os_type": "Windows"}
+    F1 2018-04-23 17:12:57,599 INFO azureml.vision:dataset creating dataset for scenario=classification
     Dataset consists of 63 images with 4 labels.
     Select information for image 2: name=msft-plastic-bowl20170725152154282.jpg, label=bowl, unique id=3.
 
-データセット オブジェクトは、[Bing Image Search API](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) を使用して画像をダウンロードする機能を提供します。 
+データセット オブジェクトは、[Bing Image Search API](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) を使用して画像をダウンロードする機能を提供します。
 
-2 種類の検索クエリがサポートされています。 
+2 種類の検索クエリがサポートされています。
 + 通常のテキスト クエリ
 + 画像 URL クエリ
 
@@ -160,7 +160,7 @@ print("Select information for image 2: name={}, label={}, unique id={}.".format(
 
 ## <a name="visualize-and-annotate-images"></a>画像を視覚化して注釈を付ける
 
-次のウィジェットを使用して、画像を視覚化し、データセット オブジェクト内のラベルを修正できます。 
+次のウィジェットを使用して、画像を視覚化し、データセット オブジェクト内のラベルを修正できます。
 
 "ウィジェット Javascript が検出されません" エラーが発生した場合は、次のコマンドを実行して解決してください。
 <br>`jupyter nbextension enable --py --sys-prefix widgetsnbextension`
@@ -183,14 +183,14 @@ display(annotation_ui.ui)
 
 
 ```python
-# Split the dataset into train and test  
+# Split the dataset into train and test
 train_set_orig, test_set = dataset.split(train_size = 0.66, stratify = "label")
 print("Number of training images = {}, test images = {}.".format(train_set_orig.size(), test_set.size()))
 ```
 
     F1 2018-04-23 17:13:01,780 INFO azureml.vision:splitter splitting a dataset 
-    F1 2018-04-23 17:13:01,805 INFO azureml.vision:dataset creating dataset for scenario=classification 
-    F1 2018-04-23 17:13:01,809 INFO azureml.vision:dataset creating dataset for scenario=classification 
+    F1 2018-04-23 17:13:01,805 INFO azureml.vision:dataset creating dataset for scenario=classification
+    F1 2018-04-23 17:13:01,809 INFO azureml.vision:dataset creating dataset for scenario=classification
     Number of training images = 41, test images = 22.
     
 
@@ -206,19 +206,19 @@ if augment_train_set:
     train_set = augment_dataset(train_set_orig, [aug_sequence])
     print("Number of original training images = {}, with augmented images included = {}.".format(train_set_orig.size(), train_set.size()))
 else:
-    train_set = train_set_orig  
+    train_set = train_set_orig
 ```
 
 ## <a name="define-dnn-models"></a>DNN モデルを定義する
 
-このパッケージでは、次のトレーニング済みのディープ ニューラル ネットワーク モデルがサポートされています。 
+このパッケージでは、次のトレーニング済みのディープ ニューラル ネットワーク モデルがサポートされています。
 + Resnet-18
 + Resnet-34
 + Resnet-50
 + Resnet-101
 + Resnet-152
 
-これらの DNN を、分類器または特徴抽出器として使用できます。 
+これらの DNN を、分類子または特徴抽出器として使用できます。
 
 ネットワークの詳細については[こちら](https://github.com/Microsoft/CNTK/blob/master/PretrainedModels/Image.md)を、転移学習の概要については[こちら](https://blog.slavv.com/a-gentle-intro-to-transfer-learning-2c0b674375a0)を参照してください。
 
@@ -246,20 +246,20 @@ dnn_model = CNTKTLModel(train_set.labels,
 ```
 
     Successfully downloaded ResNet18_ImageNet_CNTK
-    
 
-## <a name="train-the-classifier"></a>分類器をトレーニングする
+
+## <a name="train-the-classifier"></a>分類子をトレーニングする
 
 事前トレーニング済みの DNN に対して、次のいずれかの方法を選択できます。
 
   - **DNN の調整**: DNN をトレーニングして、分類を直接実行します。 DNN のトレーニングは遅くなりますが、トレーニング中にすべてのネットワークの重みを改善して最高の精度を得ることができるため、通常は最良の結果に至ります。
 
-  - **DNN の特徴抽出**: DNN をそのまま実行して、画像の低次元表現を取得します (512、2048、または 4096 の浮動小数点数)。 その表現が、別の分類器をトレーニングするための入力として使用されます。 DNN は変更されないため、この方法は DNN の調整に比べ、非常に高速で実行されますが、精度はそれほど高くありません。 それにもかかわらず、線形 SVM などの外部分類器のトレーニング (次のコードに示されています) は、強力なベースラインを提供でき、問題の実行可能性を理解するのに役立ちます。
+  - **DNN の特徴抽出**: DNN をそのまま実行して、画像の低次元表現を取得します (512、2048、または 4096 の浮動小数点数)。 その表現が、別の分類子をトレーニングするための入力として使用されます。 DNN は変更されないため、この方法は DNN の調整に比べ、非常に高速で実行されますが、精度はそれほど高くありません。 それにもかかわらず、線形 SVM などの外部分類子のトレーニング (次のコードに示されています) は、強力なベースラインを提供でき、問題の実行可能性を理解するのに役立ちます。
   
 TensorBoard を使用して、トレーニングの進行状況を視覚化できます。 TensorBoard をアクティブ化するには:
 1. 次のコードに示されているように、`tensorboard_logdir=PATH` パラメーターを追加します。
 1. 別のコンソールで `tensorboard --logdir=PATH` コマンドを使用して TensorBoard クライアントを起動します。
-1. TensorBoard の指示に従って Web ブラウザーを開きます。既定値は localhost:6006 です。 
+1. TensorBoard の指示に従って Web ブラウザーを開きます。既定値は localhost:6006 です。
 
 
 ```python
@@ -278,7 +278,7 @@ else:
 ```
 
     F1 2018-04-23 17:13:28,238 INFO azureml.vision:Fit starting in experiment  1541466320 
-    F1 2018-04-23 17:13:28,239 INFO azureml.vision:model starting training for scenario=classification 
+    F1 2018-04-23 17:13:28,239 INFO azureml.vision:model starting training for scenario=classification
     <class 'int'>
     1 worker
     Training transfer learning model for 15 epochs (epoch_size = 41).
@@ -322,12 +322,12 @@ else:
     Finished Epoch[15 of 15]: [Training] loss = 0.024865 * 41, metric = 0.00% * 41 0.688s ( 59.6 samples/s);
     Evaluation Set Error :: 4.88%
     Stored trained model at ../../../cvtk_output\model_trained\ImageClassification.model
-    F1 2018-04-23 17:13:45,097 INFO azureml.vision:Fit finished in experiment  1541466320 
+    F1 2018-04-23 17:13:45,097 INFO azureml.vision:Fit finished in experiment  1541466320
     
 
 
 ```python
-# Plot how the training and test accuracy increases during gradient descent. 
+# Plot how the training and test accuracy increases during gradient descent.
 if classifier_name == "dnn":
     [train_accs, test_accs, epoch_numbers] = classifier.train_eval_accs
     plt.xlabel("Number of training epochs") 
@@ -343,7 +343,7 @@ if classifier_name == "dnn":
 ## <a name="evaluate-and-visualize-model-performance"></a>モデルのパフォーマンスを視覚化して評価する
 
 評価モジュールを使用して、独立したテスト データセットに対するトレーニング済みモデルのパフォーマンスを評価できます。 計算される評価メトリックには、以下が含まれます。
- 
+
 + 精度 (既定ではクラス平均)
 + PR 曲線
 + ROC 曲線
@@ -370,15 +370,15 @@ graph_confusion_matrix(ce, ax=ax3)
 plt.show()
 ```
 
-    F1 2018-04-23 17:14:37,449 INFO azureml.vision:evaluation doing evaluation for scenario=classification 
-    F1 2018-04-23 17:14:37,450 INFO azureml.vision:model scoring dataset for scenario=classification 
+    F1 2018-04-23 17:14:37,449 INFO azureml.vision:evaluation doing evaluation for scenario=classification
+    F1 2018-04-23 17:14:37,450 INFO azureml.vision:model scoring dataset for scenario=classification
     Accuracy = 95.45%
     Confusion matrix = 
     [[ 0  1  0  1]
      [ 0  7  0  0]
      [ 0  0  2  0]
      [ 0  0  0 11]]
-    
+
 
 
 ![png](media/how-to-build-deploy-image-classification-models/output_20_1.png)
@@ -400,7 +400,7 @@ display(results_ui.ui)
 
 ```python
 # Precision / recall curve UI
-precisions, recalls, thresholds = ce.compute_precision_recall_curve() 
+precisions, recalls, thresholds = ce.compute_precision_recall_curve()
 thresholds = list(thresholds)
 thresholds.append(thresholds[-1])
 pr_ui = PrecisionRecallUI(100*precisions[::-1], 100*recalls[::-1], thresholds[::-1])
@@ -411,7 +411,7 @@ display(pr_ui.ui)
 
 ## <a name="operationalization-deploy-and-consume"></a>運用化: デプロイして使用する
 
-運用化は、モデルとコードを Web サービスとして公開し、これらのサービスを使用して、ビジネスの結果を生み出すプロセスです。 
+運用化は、モデルとコードを Web サービスとして公開し、これらのサービスを使用して、ビジネスの結果を生み出すプロセスです。
 
 モデルのトレーニングが終わったら、そのモデルを [Azure Machine Learning CLI](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/cli-for-azure-machine-learning) を使用して Web サービスとしてデプロイできます。 モデルは、ローカル コンピューターまたは Azure Container Service (ACS) クラスターに展開できます。 ACS では、Web サービスを手動で、または自動スケール機能を使用してスケーリングできます。
 
@@ -428,11 +428,11 @@ display(pr_ui.ui)
 
 **クラスター デプロイ環境を作成してセットアップする**
 
-配置環境のセットアップは 1 度だけ行う必要があります。 配置環境がまだない場合は、[こちらの手順](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup)を使用してセットアップします。 
+配置環境のセットアップは 1 度だけ行う必要があります。 配置環境がまだない場合は、[こちらの手順](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/deployment-setup-configuration#environment-setup)を使用してセットアップします。
 
 アクティブな配置環境を表示するには、するには、次の CLI コマンドを使用します。
 <br>`az ml env show`
-   
+
 配置環境を作成してセットアップするサンプル Azure CLI コマンド
 
 ```CLI
@@ -443,7 +443,7 @@ az ml env setup --cluster -n [your environment name] -l [Azure region e.g. westc
 az ml env set -n [environment name] -g [resource group]
 az ml env cluster
 ```
-    
+
 ### <a name="manage-web-services-and-deployments"></a>Web サービスの管理とデプロイ
 
 次の API を使用して、モデルを Web サービスとして配置し、それらの Web サービスの管理とデプロイを管理できます。
@@ -517,7 +517,7 @@ deploy_obj.deploy()
 print("Deployment DONE")
 ```
 
-### <a name="consume-the-web-service"></a>Web サービスを使用する 
+### <a name="consume-the-web-service"></a>Web サービスを使用する
 
 モデルを Web サービスとして配置したら、次のいずれかの方法を使用して、その Web サービスで画像をスコア付けできます。
 
