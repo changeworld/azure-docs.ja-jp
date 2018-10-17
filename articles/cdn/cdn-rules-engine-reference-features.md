@@ -1256,7 +1256,7 @@ Source & Pattern (ソースとパターン)| これらの設定により、リ�
         - 要求 URL (リダイレクト後): http:\//cdn.mydomain.com/resources/widgets.pdf  
     - サンプル シナリオ 2: 
         - サンプルの要求 (エッジ CNAME URL): http:\//marketing.mydomain.com/brochures/widgets.pdf 
-        - 要求 URL (リダイレクト後): http:\//cdn.mydomain.com/resources/widgets.pdf サンプル シナリオ
+        - 要求 URL (リダイレクト後): http:\//cdn.mydomain.com/resources/widgets.pdf
     - サンプル シナリオ 3: 
         - サンプルの要求 (エッジ CNAME URL): http:\//brochures.mydomain.com/campaignA/final/productC.ppt 
         - 要求 URL (リダイレクト後): http:\//cdn.mydomain.com/resources/campaignA/final/productC.ppt  
