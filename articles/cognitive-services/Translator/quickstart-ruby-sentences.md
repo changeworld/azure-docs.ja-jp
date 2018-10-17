@@ -1,21 +1,21 @@
 ---
-title: Translator Text と Ruby で文の長さを取得する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と Ruby を使って、テキストに含まれる文の長さを調べます。
+title: 'クイック スタート: 文の長さを取得する - Translator Text、Ruby'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Ruby で Translator Text API を使ってテキストに含まれる文の長さを調べます。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 3a4fc999961e06b084a0d7da42ed5576962e5722
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a39982555b281cfe0537a0033c9a67a7f5a1fe63
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43771045"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122571"
 ---
 # <a name="quickstart-get-sentence-lengths-with-ruby"></a>クイック スタート: 文の長さを Ruby で取得する
 

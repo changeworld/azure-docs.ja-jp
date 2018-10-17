@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/22/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1c933c9dcb3e3e2c2cb267073386d4b9c4e2022
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 8b6e543a4835410368e752e70e7e8cb6d8805c0e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746020"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735581"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -79,11 +79,13 @@ Azure Batch アカウントは、[Azure Portal](batch-account-create-portal.md) 
 
 ほとんどの Batch ソリューションでは、リソース ファイルまたは出力ファイルを格納するために Azure Storage を使用します。 たとえば、Batch タスク (標準タスク、開始タスク、ジョブ準備タスク、ジョブ解放タスクなど) では通常、ストレージ アカウントに存在するリソース ファイルを指定します。
 
-Batch では、次の Azure ストレージ [アカウント オプション](../storage/common/storage-account-options.md)がサポートされます。
+Batch では、次の Azure ストレージ アカウントの種類がサポートされます。
 
 * 汎用 v2 (GPv2) アカウント 
 * 汎用 v1 (GPv1) アカウント
 * BLOB ストレージ アカウント (現在、仮想マシン構成のプールに対してのみサポートされます)
+
+ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」をご覧ください。
 
 ストレージ アカウントは、Batch アカウントの作成時に (または後で) Batch アカウントに関連付けることができます。 ストレージ アカウントを選択するときに、コストとパフォーマンスの要件を検討してください。 たとえば、GPv2 アカウントおよび BLOB ストレージ アカウントのオプションでは、サポートされる[容量とスケーラビリティの上限](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)が GPv1 よりも高くなっています  (容量の上限の引き上げを希望する場合、Azure サポートにお問い合わせください)。これらのアカウント オプションでは、ストレージ アカウントからの読み取りまたはストレージ アカウントへの書き込みを行う多数の並列タスクが含まれた、Batch ソリューションのパフォーマンスを向上させることができます。
 
@@ -324,7 +326,7 @@ Batch には、ジョブ実行前の設定用にジョブ準備タスク、 ジ�
 
 Batch .NET ライブラリを使用して MPI ジョブを Batch で実行する方法の詳細な説明については、「 [Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](batch-mpi.md)」を参照してください。
 
-### <a name="task-dependencies"></a>Task dependencies
+### <a name="task-dependencies"></a>タスクの依存関係
 [タスクの依存関係](batch-task-dependencies.md)は、名前が示すとおり、あるタスクを実行するには、事前にその他のタスクが完了している必要があることを指定できる機能です。 この機能は、"下流" のタスクが "上流" のタスクの出力を使用するような状況や、下流のタスクで必要になる初期化を上流のタスクで実行するような状況に対応できます。 この機能を使用するには、まず Batch ジョブでタスクの依存関係を有効にする必要があります。 その後、別のタスク (または他の複数のタスク) に依存するタスクごとに、どのタスクに依存するかを指定します。
 
 タスクの依存関係がある場合、シナリオを次のように構成できます。
@@ -540,7 +542,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 [net_rdpfile]: https://msdn.microsoft.com/library/azure/Mt272127.aspx
 [vnet]: https://msdn.microsoft.com/library/azure/dn820174.aspx#bk_netconf
 
-[py_add_user]: https://docs.microsoft.com/en-us/python/azure/?view=azure-python
+[py_add_user]: https://docs.microsoft.com/python/azure/?view=azure-python
 
 [batch_rest_api]: https://msdn.microsoft.com/library/azure/Dn820158.aspx
 [rest_add_job]: https://msdn.microsoft.com/library/azure/mt282178.aspx

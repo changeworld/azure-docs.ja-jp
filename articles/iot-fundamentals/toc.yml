@@ -1,42 +1,51 @@
+items:
 - name: Azure IoT の基礎
   href: index.yml
 - name: 概要
   items:
-    - name: はじめに
-      href: iot-introduction.md
-    - name: Azure IoT のサービスとテクノロジ
-      href: iot-services-and-technologies.md
+  - name: はじめに
+    href: iot-introduction.md
+  - name: Azure IoT のサービスとテクノロジ
+    href: iot-services-and-technologies.md
 - name: 解決方法
   items:
-    - name: IoT ソリューション アクセラレータ
-      href: /azure/iot-suite
-    - name: IoT Central
-      href: 'https://docs.microsoft.com/microsoft-iot-central/'
+  - name: IoT ソリューション アクセラレータ
+    href: /azure/iot-suite
+  - name: IoT Central
+    href: https://docs.microsoft.com/microsoft-iot-central/
 - name: プラットフォーム サービス
   items:
-    - name: IoT Hub
-      href: /azure/iot-hub
-    - name: IoT Hub Device Provisioning Service
-      href: /azure/iot-dps
-    - name: Azure Maps
-      href: /azure/azure-maps
-    - name: サービス SDK
-      href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
-    - name: Time Series Insights
-      href: /azure/time-series-insights
+  - name: IoT Hub
+    href: /azure/iot-hub
+  - name: IoT Hub Device Provisioning Service
+    href: /azure/iot-dps
+  - name: Azure Digital Twins
+    href: /azure/digital-twins
+  - name: Azure Maps
+    href: /azure/azure-maps
+  - name: Time Series Insights
+    href: /azure/time-series-insights
+  - name: サービス SDK
+    href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
 - name: Microsoft Edge
   items:
-    - name: IoT Edge
-      href: /azure/iot-edge
-    - name: IoT デバイス SDK
-      href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+  - name: IoT Edge
+    href: /azure/iot-edge
+  - name: IoT デバイス SDK
+    href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
 - name: セキュリティ
   items:
-    - name: セキュリティのアーキテクチャ
-      href: iot-security-architecture.md
-    - name: セキュリティのベスト プラクティス
-      href: iot-security-best-practices.md
-    - name: セキュリティで保護されたデプロイ
-      href: iot-security-deployment.md
-    - name: 徹底的なセキュリティ
-      href: iot-security-ground-up.md
+  - name: セキュリティのアーキテクチャ
+    href: iot-security-architecture.md
+  - name: セキュリティのベスト プラクティス
+    href: iot-security-best-practices.md
+  - name: セキュリティで保護されたデプロイ
+    href: iot-security-deployment.md
+  - name: 徹底的なセキュリティ
+    href: iot-security-ground-up.md
+ms.openlocfilehash: df43416b0d1e72e152a2917846ba0407c861421b
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321370"

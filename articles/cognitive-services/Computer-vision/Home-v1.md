@@ -1,20 +1,21 @@
 ---
-title: Microsoft Cognitive Services の Computer Vision API | Microsoft Docs
-description: Computer Vision API の高度なアルゴリズムを使用すれば、Microsoft Cognitive Services でイメージを処理して情報を返すのに役立ちます。
+title: Computer Vision API とは
+titlesuffix: Azure Cognitive Services
+description: Computer Vision API を使用すると、開発者は、イメージを処理して情報を返すための高度なアルゴリズムにアクセスできます。
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
-ms.openlocfilehash: 86e0441c600162e479c678d3cb1dbeaad423ddb5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e2f3a5655b2fbedf3ad80d555421599e26225196
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377221"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982105"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Computer Vision API バージョン 1.0 とは
 
@@ -48,7 +49,7 @@ Computer Vision API では、2000 個を超える認識可能なオブジェク�
 イメージのアップロード後、またはイメージ URL の指定後に、Computer Vision API のアルゴリズムにより、イメージで識別されたオブジェクト、生物、動作に基づいて、タグが出力されます。 タグ付けの対象は、前景の人物などの主題に限らず、背景 (屋内または屋外)、家具、道具、植物、動物、アクセサリ、ガジェットなども含まれます。
 
 ### <a name="example"></a>例
-![House_Yard](./Images/house_yard.jpg) '
+![House_Yard](./Images/house_yard.png) '
 
 ```json
 Returned Json
@@ -95,15 +96,15 @@ Returned Json
 ### <a name="the-86-category-concept"></a>86 のカテゴリ概念
 以下の図に示されている 86 の概念のリストに基づき、イメージで検出された視覚特性を大きく分け、その中でさらに細かく分けることができます。 テキスト形式の完全な分類については、[カテゴリの分類](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)に関するページを参照してください。
 
-![カテゴリの分析](./Images/analyze_categories.jpg)
+![カテゴリの分析](./Images/analyze_categories.png)
 
 イメージ                                                  | Response
 ------------------------------------------------------ | ----------------
-![屋上にいる女性](./Images/woman_roof.jpg)                 | people
-![家族写真](./Images/family_photo.jpg)             | people_crowd
-![かわいい犬](./Images/cute_dog.jpg)                     | animal_dog
-![屋外の山](./Images/mountain_vista.jpg)       | outdoor_mountain
-![Vision Analyze パン](./Images/bread.jpg)       | food_bread
+![屋上にいる女性](./Images/woman_roof.png)                 | people
+![家族写真](./Images/family_photo.png)             | people_crowd
+![かわいい犬](./Images/cute_dog.png)                     | animal_dog
+![屋外の山](./Images/mountain_vista.png)       | outdoor_mountain
+![Vision Analyze パン](./Images/bread.png)       | food_bread
 
 ## <a name="identifying-image-types"></a>イメージの種類の識別
 イメージを分類するにはいくつかの方法があります。 Computer Vision API では、ブール型のフラグを設定して、イメージが白黒であるかカラーであるかを示すことができます。 また、イメージが線画であるかどうかを示すフラグを設定することもできます。 イメージがクリップ アートであるかどうかや、0 から 3 のスケールなどでその品質を示すこともできます。
@@ -120,16 +121,16 @@ Returned Json
 
 イメージ|Response
 ----|----
-![Vision Analyze チーズのクリップ アート](./Images/cheese_clipart.jpg)|3 good-clip-art
-![Vision Analyze 家の庭](./Images/house_yard.jpg)|0 Non-clip-art
+![Vision Analyze チーズのクリップ アート](./Images/cheese_clipart.png)|3 good-clip-art
+![Vision Analyze 家の庭](./Images/house_yard.png)|0 Non-clip-art
 
 ### <a name="line-drawing-type"></a>線画タイプ
 イメージが線画であるかどうかを検出します。
 
 イメージ|Response
 ----|----
-![Vision Analyze ライオンの線画](./Images/lion_drawing.jpg)|True
-![Vision Analyze 花](./Images/flower.jpg)|False
+![Vision Analyze ライオンの線画](./Images/lion_drawing.png)|True
+![Vision Analyze 花](./Images/flower.png)|False
 
 ### <a name="faces"></a>顔
 写真内の人間の顔を検出し、顔の座標と、顔、性別、年齢の四角形を生成します。 これらの視覚特性は、顔に対して生成されるメタデータのサブセットです。 顔に対して生成されるより広範なメタデータの場合 (顔識別や姿勢検出など)、Face API を使用します。  
@@ -159,7 +160,7 @@ HTTP POST 呼び出しを行うことで、選択したモデルのみを分析�
 Computer Vision API のアルゴリズムでは、イメージのコンテンツを分析します。 この分析では、完全な文章で人間が判読できる言語として表示される "説明" の基礎が形成されます。 説明には、イメージで検出された内容の概要が示されます。 Computer Vision API のアルゴリズムでは、イメージで識別されるオブジェクトに基づき、さまざまな説明が生成されます。 説明はそれぞれ評価され、信頼度スコアが生成されます。 その後、信頼度スコアが最も高いものから最も低いものの順に並べられたリストが返されます。 このテクノロジを使用してイメージ キャプションを生成するボットの例については、[こちら](https://github.com/Microsoft/BotBuilder-Samples/tree/master/CSharp/intelligence-ImageCaption)を参照してください。  
 
 ### <a name="example-description-generation"></a>説明の生成例
-![白黒のビル](./Images/bw_buildings.jpg) '
+![白黒のビル](./Images/bw_buildings.png) '
 ```json
  Returned Json
 
@@ -202,18 +203,18 @@ Computer Vision アルゴリズムでは、イメージから色を抽出しま�
 
 イメージ                                                       | 前景 |バックグラウンド| 色
 ----------------------------------------------------------- | --------- | ------- | ------
-![屋外の山](./Images/mountain_vista.jpg)            | 黒     | 黒   | 白
-![Vision Analyze 花](./Images/flower.jpg)               | 黒     | 白   | 白、黒、緑
-![Vision Analyze 鉄道の駅](./Images/train_station.jpg) | 黒     | 黒   | 黒
+![屋外の山](./Images/mountain_vista.png)            | 黒     | 黒   | 白
+![Vision Analyze 花](./Images/flower.png)               | 黒     | 白   | 白、黒、緑
+![Vision Analyze 鉄道の駅](./Images/train_station.png) | 黒     | 黒   | 黒
 
 ### <a name="accent-color"></a>アクセント カラー
 ドミナント カラーと彩度の組み合わせによって、最もユーザーの目を引く色を表すように設計された、イメージから抽出された色。
 
 イメージ                                                       | Response
 ----------------------------------------------------------- | ----
-![屋外の山](./Images/mountain_vista.jpg)            | #BC6F0F
-![Vision Analyze 花](./Images/flower.jpg)               | #CAA501
-![Vision Analyze 鉄道の駅](./Images/train_station.jpg) | #484B83
+![屋外の山](./Images/mountain_vista.png)            | #BC6F0F
+![Vision Analyze 花](./Images/flower.png)               | #CAA501
+![Vision Analyze 鉄道の駅](./Images/train_station.png) | #484B83
 
 
 ### <a name="black--white"></a>白黒
@@ -221,8 +222,8 @@ Computer Vision アルゴリズムでは、イメージから色を抽出しま�
 
 イメージ                                                      | Response
 ---------------------------------------------------------- | ----
-![Vision Analyze ビル](./Images/bw_buildings.jpg)      | True
-![Vision Analyze 家の庭](./Images/house_yard.jpg)      | False
+![Vision Analyze ビル](./Images/bw_buildings.png)      | True
+![Vision Analyze 家の庭](./Images/house_yard.png)      | False
 
 ## <a name="flagging-adult-content"></a>成人向けコンテンツへのフラグ設定
 さまざまな視覚カテゴリの中には、成人向けできわどいグループがあり、成人向けマテリアルを検出し、性的なコンテンツを含むイメージの表示を制限することができます。 成人向けできわどいコンテンツを検出するためのフィルターは、ユーザーの設定に合わせて、スライディング スケールで設定することができます。

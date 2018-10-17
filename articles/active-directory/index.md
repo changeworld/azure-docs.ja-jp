@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 09/20/2018
 ms.author: mtillman
-ms.openlocfilehash: 646d1639c7cdd4f9a21ec1c8ac65587cab4f4e12
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 3be7c42b52f6af36451a79ea8592e983cc98f42b
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585205"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354361"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -74,7 +74,7 @@ ms.locfileid: "47585205"
                                                                     </div>
                                                                 </div>
                                                                 <div class="cardText" style="padding-left: 0px">
-                                                                    <h3><a href="">Microsoft Learn でスキルを身に付ける</a></h3> 
+                                                                    <h3><a href="/learn/">Microsoft Learn でスキルを身に付ける</a></h3> 
                                                                     <p>
                                                                         <a href="/learn/modules/secure-azure-resources-with-conditional-access/">条件付きアクセスを使用して Azure リソースをセキュリティ保護する</a><br>
                                                                         <a href="/learn/browse/?products=azure-active-directory">対話型学習の詳細...</a><br>

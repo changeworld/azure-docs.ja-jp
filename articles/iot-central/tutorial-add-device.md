@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: dd68b65825c9c22453e0191d42a0fcce3b65ca64
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 2e01f61ff915a8fe4327aa78c8867d666dc36fda
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236088"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983228"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>チュートリアル: Azure IoT Central アプリケーションに実デバイスを追加する
 
@@ -25,7 +25,7 @@ ms.locfileid: "35236088"
 1. まず、オペレーター向けに、Azure IoT Central アプリケーションで実デバイスを追加して構成する方法について説明します。 この部分の最後では、2 つ目の部分で使用する接続文字列を取得します。
 2. 次に、デバイス開発者向けに、実デバイスのコードについて説明します。 最初の部分で取得した接続文字列をサンプル コードに追加します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 新しい実デバイスの追加
@@ -56,7 +56,7 @@ ms.locfileid: "35236088"
 
    ![コネクテッド空調機の新しい実デバイスの追加の開始](media/tutorial-add-device/newreal.png)
 
-3. 必要に応じて、デバイス名を選択し、値を編集して、新しいデバイスの名前を変更できます。
+3. デバイス ID (**小文字**) を入力するか、推奨デバイス ID を使います。新しいデバイスの名前を入力することもできます。  
 
    ![デバイス名の変更](media/tutorial-add-device/rename.png)
 
@@ -68,23 +68,36 @@ ms.locfileid: "35236088"
 
     ![同期状態が表示されている [設定]](media/tutorial-add-device/settingssyncing.png)
 
-2. コネクテッド空調機の新しい実デバイスの **[プロパティ]** ページで、**[Serial Number]** を **rcac0010** に、**[Firmware version]** を 9.75 に設定します。 次に、**[保存]** を選択します。
+2. コネクテッド空調機の新しい実デバイスの **[プロパティ]** ページで、**[シリアル番号]** を **10001** に、**[ファームウェアのバージョン]** を 9.75 に設定します。 次に、**[保存]** を選択します。
 
     ![実デバイスのプロパティの設定](media/tutorial-add-device/setproperties.png)
 
 3. 作成者は、実デバイスの **[Measurements]\(測定\)**、**[ルール]**、**[ダッシュボード]** の各ページを表示できます。
 
-## <a name="get-connection-string-for-real-device-from-application"></a>アプリケーションからの実デバイスの接続文字列の取得
+## <a name="get-connection-details-for-real-device-from-application"></a>アプリケーションからの実デバイスの接続の詳細の取得
 
-デバイス開発者は、実デバイスの "*接続文字列*" をデバイス上で実行されるコードに埋め込む必要があります。 接続文字列により、デバイスが Azure IoT Central アプリケーションに安全に接続できます。 どのデバイス インスタンスにも一意の接続文字列があります。 次の手順では、アプリケーションのデバイス インスタンスの接続文字列を見つける方法を示します。
+デバイス開発者は、実デバイスの "*デバイスの接続の詳細*" をデバイス上で実行されるコードに埋め込む必要があります。 接続文字列により、デバイスが Azure IoT Central アプリケーションに安全に接続できます。 次の手順では、アプリケーションのデバイス インスタンスの接続文字列を見つける方法を示します。
 
 1. コネクテッド空調機の実デバイスの **[デバイス]** 画面で、**[Connect this device]\(このデバイスの接続\)** を選択します。
 
     ![接続情報の表示リンクが表示されている [デバイス] ページ](media/tutorial-add-device/connectionlink.png)
 
-2. **[接続]** ページで、**プライマリ接続文字列**をコピーし、保存します。 このチュートリアルの後半でこの値を使用します。 デバイス開発者がデバイス上で実行されるクライアント アプリケーションでこの値を使用します。
+2. **[接続]** ページで、**スコープ ID、デバイス ID、およびプライマリ キー**をコピーして保存します。
 
-    ![接続文字列の値](media/tutorial-add-device/connectionstring.png)
+   ![接続の詳細](media/tutorial-add-device/device-connect.PNG)
+
+   次のコマンド ライン ツールを使用してデバイスの接続文字列を取得します。  
+
+    ```cmd/sh
+    npm i -g dps-keygen
+    ```
+    **使用方法**
+    
+    接続文字列を作成するには、bin/ フォルダーでバイナリを見つけます。
+    ```cmd/sh
+    dps_cstr <scope_id> <device_id> <Primary Key(for device)>
+    ```
+    コマンド ライン ツールについて詳しくは、[こちら](https://www.npmjs.com/package/dps-keygen)をご覧ください。
 
 ## <a name="prepare-the-client-code"></a>クライアント コードの準備
 
@@ -130,14 +143,17 @@ ms.locfileid: "35236088"
 
 8. このファイルに次の変数宣言を追加します。
 
+ 
+
    ```javascript
    var connectionString = '{your device connection string}';
    var targetTemperature = 0;
    var client = clientFromConnectionString(connectionString);
    ```
+   
 
    > [!NOTE]
-   > 後の手順で、プレースホルダー `{your device connection string}` を更新します。
+   > 後の手順で、プレースホルダー `{your device connection string}` を更新します。 
 
 9. これまでに行った変更を保存しますが、ファイルは開いたままにしておきます。
 
@@ -248,8 +264,7 @@ ms.locfileid: "35236088"
 
 ## <a name="configure-client-code-for-the-real-device"></a>実デバイスのクライアント コードの構成
 
-<!-- Add the connection string to the sample code, build, and run -->
-Azure IoT Central アプリケーションに接続するようにクライアント コードを構成するには、このチュートリアルの前の方でメモした実デバイスの接続文字列を追加する必要があります。
+<!-- Add the connection string to the sample code, build, and run --> Azure IoT Central アプリケーションに接続するようにクライアント コードを構成するには、このチュートリアルの前の方でメモした実デバイスの接続文字列を追加する必要があります。
 
 1. **ConnectedAirConditioner.js** ファイルで、次のコード行を見つけます。
 

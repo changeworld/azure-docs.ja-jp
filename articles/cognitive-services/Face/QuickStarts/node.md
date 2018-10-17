@@ -1,21 +1,21 @@
 ---
-title: Face API Node.js クイック スタート | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: 'クイック スタート: 画像の中にある顔を検出する - Face API、Node.js'
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Node.js から Cognitive Services の Face API を使って画像から顔を検出します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 06/08/2018
 ms.author: nolachar
-ms.openlocfilehash: 15e6db9c9d92e60f18bf2d7708403fd8b0b7a990
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 53d5ed6c13c2f2822374134d8b403493079e1956
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "43770583"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123999"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-nodejs"></a>クイック スタート: Node.js を使って画像の中にある顔を検出する
 
@@ -27,7 +27,7 @@ ms.locfileid: "43770583"
 
 ## <a name="face---detect-request"></a>顔検出要求
 
-"[Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)" メソッドを使用すると、画像の中にある顔を検出して、次のような属性を取得することができます。
+"[顔 - 検出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)" メソッドを使用すると、画像の中にある顔を検出して、次のような属性を取得することができます。
 
 * Face ID: Face API の各種シナリオで使用される一意の ID。
 * 顔四角形: 画像内での顔の位置を示す値 (左、上、幅、高さ)。

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a798b64e0b6b8b90ce902d99b779f31e6558f90e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 87d068208b90e86ff64cec3e84f3f96411f6c878
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947399"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340989"
 documentType: LandingData
 title: Azure Service Bus メッセージングのドキュメント
 metadata:
@@ -21,7 +21,7 @@ metadata:
   ms.date: 05/16/2018
   ms.author: spelluru
 abstract:
-  description: Azure Service Bus は、アプリケーションとサービスの間で情報を送信するマルチテナント クラウド メッセージング サービスです。 非同期操作により、柔軟なブローカー メッセージング、構造化された先入れ先出し型 (FIFO) のメッセージング、および発行/購読機能が可能になります。
+  description: Azure Service Bus は、アプリケーションとサービスの間で情報を送信するマルチテナント クラウド メッセージング サービスです。 非同期操作により、柔軟なブローカー メッセージング、構造化された先入れ先出し型 (FIFO) のメッセージング、および発行/購読機能が可能になります。<p>Azure Service Bus のメッセージング サービスを使用して、キューとの間でメッセージを送受信し、トピックとサブスクリプションを使用してメッセージを発行、サブスクライブする方法を説明します。</p>
   aside:
     image:
       alt: 
@@ -35,18 +35,79 @@ sections:
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: Service Bus との間でメッセージを送信および受信する方法について説明します。
+    text: Service Bus <b>キュー</b>との間でメッセージを送受信する方法について説明します。
   - type: list
     style: icon48
     items:
     - image:
+        src: /azure/service-bus-messaging/media/index/logo_net.svg
+      text: .NET
+      href: /azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues
+    - image:
+        src: /azure/service-bus-messaging/media/index/logo_java.svg
+      text: Java
+      href: /azure/service-bus-messaging/service-bus-java-how-to-use-queues
+    - image:
+        src: /azure/service-bus-messaging/media/index/logo_nodejs.svg
+      text: Node.js
+      href: /azure/service-bus-messaging/service-bus-nodejs-how-to-use-queues
+    - image:
+        src: /azure/service-bus-messaging/media/index/logo_python.svg
+      text: Python
+      href: /azure/service-bus-messaging/service-bus-python-how-to-use-queues
+    - image:
+        src: /azure/service-bus-messaging/media/index/ruby.svg
+      text: Ruby
+      href: /azure/service-bus-messaging/service-bus-ruby-how-to-use-queues
+    - image:
         src: /azure/service-bus-messaging/media/index/portal.svg
       text: Azure ポータル
-      href: /azure/service-bus-messaging/service-bus-quickstart-portal?branch=release-mvc-service-bus
+      href: /azure/service-bus-messaging/service-bus-quickstart-portal
     - image:
         src: /azure/service-bus-messaging/media/index/cli.svg
       text: Azure CLI
-      href: /azure/service-bus-messaging/service-bus-quickstart-cli?branch=release-mvc-service-bus
+      href: /azure/service-bus-messaging/service-bus-quickstart-cli
+    - image:
+        src: /azure/service-bus-messaging/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/service-bus-messaging/service-bus-quickstart-powershell
+  - type: paragraph
+    text: Service Bus の<b>トピックとサブスクリプション</b>を使用してメッセージを発行、サブスクライブする方法を説明します。
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: /azure/service-bus-messaging/media/index/logo_net.svg
+      text: .NET
+      href: /azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions
+    - image:
+        src: /azure/service-bus-messaging/media/index/logo_java.svg
+      text: Java
+      href: /azure/service-bus-messaging/service-bus-java-how-to-use-topics-subscriptions
+    - image:
+        src: /azure/service-bus-messaging/media/index/logo_nodejs.svg
+      text: Node.js
+      href: /azure/service-bus-messaging/service-bus-nodejs-how-to-use-topics-subscriptions
+    - image:
+        src: /azure/service-bus-messaging/media/index/logo_php.svg
+      text: PHP
+      href: /azure/service-bus-messaging/service-bus-php-how-to-use-topics-subscriptions
+    - image:
+        src: /azure/service-bus-messaging/media/index/logo_python.svg
+      text: Python
+      href: /azure/service-bus-messaging/service-bus-python-how-to-use-topics-subscriptions
+    - image:
+        src: /azure/service-bus-messaging/media/index/ruby.svg
+      text: Ruby
+      href: /azure/service-bus-messaging/service-bus-ruby-how-to-use-topics-subscriptions
+    - image:
+        src: /azure/service-bus-messaging/media/index/portal.svg
+      text: Azure ポータル
+      href: /azure/service-bus-messaging/service-bus-quickstart-portal
+    - image:
+        src: /azure/service-bus-messaging/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/service-bus-messaging/service-bus-quickstart-cli
     - image:
         src: /azure/service-bus-messaging/media/index/logo_powershell.svg
       text: Azure PowerShell

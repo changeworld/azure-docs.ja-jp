@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: 9168a66c3afcd8dd0b05de15f5833c516ddb2250
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: abed9fd8d466b582b534b365f4be4257f4986435
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38767104"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736004"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>クイック スタート - Azure Media Services アカウントを作成する
 
@@ -58,7 +58,7 @@ az group create -n <myresourcegroup> -l westus2
 
 Media Services アカウントを作成するときは、Azure Storage アカウント リソースの ID を指定する必要があります。 指定されたストレージ アカウントは、Media Services アカウントに関連付けられます。 
 
-1 つの**プライマリ** ストレージ アカウントを持つ必要があります。Media Services アカウントに関連付けられた任意の数の **セカンダリ** ストレージ アカウントを持つことができます。 Media Services は、**汎用 v2** (GPv2) アカウントまたは**汎用 v1** (GPv1) アカウントをサポートします。 BLOB のみのアカウントを**プライマリ**として使用することはできません。 ストレージ アカウントについて詳しくは、「[Azure Storage アカウントの種類](../../storage/common/storage-account-options.md)」をご覧ください。 
+1 つの**プライマリ** ストレージ アカウントを持つ必要があります。Media Services アカウントに関連付けられた任意の数の **セカンダリ** ストレージ アカウントを持つことができます。 Media Services は、**汎用 v2** アカウントまたは **汎用 v1** アカウントをサポートします。 BLOB ストレージ アカウントを**プライマリ**として使用することはできません。 ストレージ アカウントについて詳しくは、「[Azure ストレージ アカウントの概要](../../storage/common/storage-account-overview.md)」をご覧ください。 
 
 次のコマンドでは、Media Services アカウント (プライマリ) と関連付けるストレージ アカウントを作成します。 次のスクリプトの *storageaccountforams* プレースホルダーを置き換えます。 "account_name" は 24 文字未満にする必要があります。
 

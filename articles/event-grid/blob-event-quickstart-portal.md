@@ -8,12 +8,12 @@ ms.author: tomfitz
 ms.date: 08/13/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: a47beb3e4299c62ec4b7959b4834d0440fee06f7
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 17fba267e85c7b1421e632930c8bea2bfaf6ff5f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42744587"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736497"
 ---
 # <a name="create-and-route-blob-storage-events-with-the-azure-portal-and-event-grid"></a>Azure portal と Event Grid を使用した BLOB ストレージ イベントの作成とルーティング
 
@@ -37,7 +37,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
    ![[ストレージ] を選択する](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. イベントのために、[BLOB ストレージ アカウント](../storage/common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts)と[汎用 v2 ストレージ アカウント](../storage/common/storage-account-options.md#general-purpose-v2-accounts)のどちらかを作成する必要があります。 ブロックまたは追加 Blob Storage のみを必要とするアプリケーションでは、BLOB ストレージ アカウントを使用することをお勧めします。 BLOB アカウントまたは StorageV2 アカウントの値を指定します。 アカウントには一意の名前を指定してください。 値の指定が完了したら、**[作成]** を選択します。
+1. イベントに対してサブスクライブするには、汎用 v2 ストレージ アカウントまたは BLOB ストレージ アカウントのどちらかを作成します。 詳しくは、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」をご覧ください。
 
    ![手順の開始](./media/blob-event-quickstart-portal/provide-blob-values.png)
 

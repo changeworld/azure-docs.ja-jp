@@ -193,6 +193,10 @@ items:
           href: working-with-dates.md
         - name: GeoSpatial
           href: geospatial.md
+        - name: Bulk Executor - .NET ライブラリ
+          href: bulk-executor-dot-net.md
+        - name: Bulk Executor - Java ライブラリ
+          href: bulk-executor-java.md
     - name: リファレンス
       items:
       - name: .NET
@@ -460,10 +464,6 @@ items:
     items:
     - name: Bulk Executor ライブラリについて
       href: bulk-executor-overview.md
-    - name: Bulk Executor - .NET ライブラリ
-      href: bulk-executor-dot-net.md
-    - name: Bulk Executor - Java ライブラリ
-      href: bulk-executor-java.md
 - name: リソース
   items:
   - name: Microsoft Learn でスキルを身に付ける
@@ -492,9 +492,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: dac79ee7d4a8810cce0a2e77e8dcd8d06842454c
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: f87f429439c338809a59a09760fc0c381faaeea9
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888019"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365443"

@@ -1,29 +1,30 @@
 ---
-title: Knowledge Exploration Service の作業を開始する | Microsoft Docs
-description: Knowledge Exploration Service (KES) を使用して、Microsoft Cognitive Services の教育パブリケーションにわたる対話形式の検索エクスペリエンスのためのエンジンを作成できます。
+title: '例: 使用開始 - Knowledge Exploration Service API'
+titlesuffix: Azure Cognitive Services
+description: Knowledge Exploration Service (KES) API を使用して、教育パブリケーションにわたる対話形式の検索エクスペリエンスのためのエンジンを作成できます。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 02dc9368eef02d6fa507335ef3171e923412acca
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6cee339793269af0e8060cce56f94fa81db6a6c5
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374245"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124017"
 ---
-<a name="getting-started"></a>
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Knowledge Exploration Service の作業を開始する
+
 このチュートリアルでは、Knowledge Exploration Service (KES) を使用して、教育パブリケーションを対話形式で検索するエンジンを作成します。 [Knowledge Exploration Service SDK](https://www.microsoft.com/en-us/download/details.aspx?id=51488) から、コマンド ライン ツール [`kes.exe`](CommandLine.md) とすべてのサンプル ファイルをインストールできます。
 
 教育パブリケーションのサンプルには、マイクロソフトの調査担当者によって発行された 1000 個の学術論文の例が含まれています。  各論文は、論文名、発行年、著者、およびキーワードに関連付けられています。 各著者は、ID、氏名、および発行時の所属組織で表されます。 各キーワードは、一連のシノニムを関連付けることができます (たとえば、キーワード「サポート ベクター マシン」をシノニム "svm" に関連付けられます)。
 
-<a name="defining-schema"></a>
 ## <a name="define-the-schema"></a>スキーマを定義する
+
 スキーマは、ドメイン内のオブジェクトの属性の構造を記述します。 スキーマは、JSON ファイルの形式で、各属性の名前とデータ型を指定します。 *Academic.schema* ファイルの内容は、次の例のようになります。
 
 ```json
@@ -61,8 +62,8 @@ ms.locfileid: "35374245"
 
 スキーマの定義の詳細については、[スキーマ形式](SchemaFormat.md)に関する記事を参照してください。
 
-<a name="generating-data"></a>
 ## <a name="generate-data"></a>データを生成する
+
 データ ファイルは、各行が [JSON 形式](http://json.org/)で論文の属性値を指定し、インデックスを作成するパブリケーションの一覧を記述します。  次の例は、読みやすいように書式を設定したデータ ファイル *Academic.data* からの 1 行です。
 
 ```
@@ -93,16 +94,16 @@ ms.locfileid: "35374245"
 
 詳細については、[データ形式](DataFormat.md)に関するページを参照してください。
 
-<a name="building-index"></a>
 ## <a name="build-a-compressed-binary-index"></a>圧縮バイナリ インデックスを構築する
+
 スキーマ ファイルとデータ ファイルを作成したら、[`kes.exe build_index`](CommandLine.md#build_index-command) を使用してデータ オブジェクトの圧縮バイナリ インデックスを構築します。 この例では、インデックス ファイル *Academic.index* を入力スキーマ ファイル *Academic.schema* とデータ ファイル *Academic.data* から作成します。 次のコマンドを使用します。
 
 `kes.exe build_index Academic.schema Academic.data Academic.index`
 
 Azure の外でプロトタイプを簡単に作成するために、[`kes.exe build_index`](CommandLine.md#build_index-command) は、最大 10,000 個のオブジェクトを含むデータ ファイルから小型のインデックスをローカルに構築できます。 サイズが大きいデータ ファイルの場合は、[Azure の Windows 仮想マシン](../../../articles/virtual-machines/windows/quick-create-portal.md)内から実行するか、または Azure でリモート ビルドを実行します。 詳細については、[スケールアップ](#scaling-up)に関する記事を参照してください。
 
-<a name="authoring-grammar"></a>
 ## <a name="use-an-xml-grammar-specification"></a>XML 文法仕様を使用する
+
 文法は、サービスが解釈できる自然言語のクエリのセットと、これらの自然言語のクエリをセマンティック クエリ式に翻訳する方法を指定します。 この例では、*academic.xml* に指定された文法を使用します。
 
 ```xml
@@ -198,15 +199,15 @@ Azure の外でプロトタイプを簡単に作成するために、[`kes.exe b
 
 文法仕様構文の詳細については、[文法形式](GrammarFormat.md)に関する記事を参照してください。
 
-<a name="compiling-grammar"></a>
 ## <a name="compile-the-grammar"></a>文法をコンパイルする
+
 XML 文法仕様を指定したら、[`kes.exe build_grammar`](CommandLine.md#build_grammar-command) を使用してバイナリ文法にコンパイルできます。 文法でスキーマをインポートする場合は、文法 XML と同じパスにスキーマ ファイルを保存する必要があることに注意してください。 この例では、入力 XML 文法ファイル *Academic.xml* からバイナリ文法ファイル *Academic.grammar* を構築します。 次のコマンドを使用します。
 
 `kes.exe build_grammar Academic.xml Academic.grammar`
 
-<a name="hosting-index"></a>
 ## <a name="host-the-grammar-and-index-in-a-web-service"></a>Web サービスで文法とインデックスをホストする
-迅速なプロトタイプ作成のため、[`kes.exe host_service`](CommandLine.md#host_service-command) を使用してローカル コンピューター上の Web サービス内の文法とインデックスをホストできます。 これにより、[web API](WebAPI.md) 経由でサービスにアクセスし、データの正確性と文法の設計を検証できます。 この例では、文法ファイル *Academic.grammar* とインデックス ファイル *Academic.index* をhttp://localhost:8000/ でホストします。 次のコマンドを使用します。
+
+迅速なプロトタイプ作成のため、[`kes.exe host_service`](CommandLine.md#host_service-command) を使用してローカル コンピューター上の Web サービス内の文法とインデックスをホストできます。 これにより、[web API](WebAPI.md) 経由でサービスにアクセスし、データの正確性と文法の設計を検証できます。 この例では、文法ファイル *Academic.grammar* とインデックス ファイル *Academic.index* を http://localhost:8000/ でホストします。 次のコマンドを使用します。
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
 
@@ -221,8 +222,8 @@ XML 文法仕様を指定したら、[`kes.exe build_grammar`](CommandLine.md#bu
 
 Azure の外部では、[`kes.exe host_service`](CommandLine.md#host_service-command) は最大 10,000 個のオブジェクトのインデックスに制限されます。 その他の制限には、1 秒あたり要求 10 個の API 速度や、プロセスが自動的に終了する前に、合計 1000 要求が含まれます。 これらの制限を回避するには、[Azure の Windows 仮想マシン](../../../articles/virtual-machines/windows/quick-create-portal.md)内からコマンドを実行するか、[`kes.exe deploy_service`](CommandLine.md#deploy_service-command) コマンドを使用して Azure クラウド サービスに展開します。 詳細については、[サービスの展開](#deploying-service)に関する記事を参照してください。
 
-<a name="scaling-up"></a>
 ## <a name="scale-up-to-host-larger-indices"></a>より大規模なインデックスをホストするためにスケールアップする
+
 Azure の外で `kes.exe` を実行している場合は、インデックスは 10,000 オブジェクトに制限されます。 Azure を使用してより大規模なインデックスを構築しホストできます。 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップします。 また、Visual Studio または MSDN をサブスクライブしている場合は、[サブスクライバー特典を利用](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)できます。 これらの特典は、毎月 Azure クレジットを提供します。
 
 `kes.exe` が Azure アカウントにアクセスできるようにするには、Azure Portal から [Azure 発行設定ファイルをダウンロード](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade)します。 メッセージが表示されたら、必要な Azure アカウントにサインインします。 ファイルを、`kes.exe` を実行する作業ディレクトリに *AzurePublishSettings.xml* として保存します。
@@ -243,8 +244,8 @@ Azure の外で `kes.exe` を実行している場合は、インデックスは
 
 ページングを使用すると、ビルド処理の速度が遅くなります。 ページングを避けるには、インデックス構築に使用する入力データ ファイルのサイズの 3 倍の容量の RAM を備えた VM を使用します。 ホストするインデックスのサイズよりも 1 GB 多い RAM を備えた VM を使用します。 利用可能な VM サイズの一覧については、「[Azure の Windows 仮想マシンのサイズ](../../../articles/virtual-machines/virtual-machines-windows-sizes.md)」を参照してください。
 
-<a name="deploying-service"></a>
 ## <a name="deploy-the-service"></a>サービスをデプロイする
+
 文法とインデックスを構築したら、Azure クラウド サービスにサービスをデプロイできます。 Azure クラウド サービスの構成の詳細については、「[クラウド サービスを作成してデプロイする方法](../../../articles/cloud-services/cloud-services-how-to-create-deploy-portal.md)」をご覧ください。 この時点では、展開パッケージは指定しないでください。  
 
 クラウド サービスを作成したら、[`kes.exe deploy_service`](CommandLine.md#deploy_service-command) を使用してサービスをデプロイします。 Azure クラウド サービスには、運用環境とステージングの 2 つのデプロイ スロットがあります。 ライブ ユーザー トラフィックを受信するサービスの場合は、まずステージング スロットに展開する必要があります。 サービスが起動され、初期化されるまで待ちます。 次に、いくつかの要求を送信して、デプロイを検証し、基本的なテストに合格することを確認できます。
@@ -259,8 +260,8 @@ Azure の外で `kes.exe` を実行している場合は、インデックスは
 
 サービスを展開したら、さまざまな [web API](WebAPI.md) を直接呼び出すことによって、自然言語の解釈、クエリの完了、構造化されたクエリの評価、およびヒストグラムの計算をテストできます。  
 
-<a name="testing-service"></a>
 ## <a name="test-the-service"></a>サービスをテストする
+
 ライブ サービスをデバッグするには、Web ブラウザーからホスト コンピューターを参照します。 [host_service](#hosting-service) 経由で展開されているローカル サービスの場合は、`http://localhost:<port>/` を参照してください。  [deploy_service](#deploying-service) 経由で展開されている Azure クラウド サービスの場合は、`http://<serviceName>.cloudapp.net/` を参照してください。
 
 このページには、基本的な API 呼び出しの統計情報だけでなく、このサービスでホストされている文法とインデックスに関する情報へのリンクが含まれています。 このページには、web API の使用方法を示す対話形式の検索インターフェイスも含まれています。 検索ボックスにクエリを入力し、API 呼び出しの[解釈](interpretMethod.md)、[評価](evaluateMethod.md)、および [calchistogram](calchistogramMethod.md) の結果を確認してください。 このページの基になる HTML ソースは、web API をアプリに統合し、対話型の多機能な検索エクスペリエンスを作成する方法の例としても機能します。

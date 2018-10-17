@@ -1,26 +1,27 @@
 ---
-title: Microsoft Translator Text API の概要 - Azure Cognitive Services | Microsoft Docs
-description: Microsoft Translator Text API をアプリケーション、Web サイト、ツール、またはその他のソリューションに統合して、多言語ユーザー エクスペリエンスを提供することができます。
+title: Translator Text API とは
+titlesuffix: Azure Cognitive Services
+description: Translator Text API をアプリケーション、Web サイト、ツール、またはその他のソリューションに統合して、多言語ユーザー エクスペリエンスを提供できます。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
 ms.author: nolachar
-ms.openlocfilehash: bfbb316ac41045add7f424b5d478581aa226fc19
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 47ac3c81b85424a5cacab00863cd88fab9463fb9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42889259"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124662"
 ---
-# <a name="what-is-microsoft-translator"></a>Microsoft Translator とは
+# <a name="what-is-translator-text-api"></a>Translator Text API とは
 
-Microsoft Translator Text API は、アプリケーション、Web サイト、ツール、またはその他のソリューションにシームレスに統合して、[60 言語を超える](languages.md)多言語ユーザー エクスペリエンスを提供することができます。 使用しているハードウェア プラットフォーム上やオペレーティング システムにかかわらず、テキストからテキストへの言語翻訳を実行できます。
+Translator Text API は、アプリケーション、Web サイト、ツール、またはその他のソリューションにシームレスに統合して、[60 言語を超える](languages.md)多言語ユーザー エクスペリエンスを提供できます。 使用しているハードウェア プラットフォーム上やオペレーティング システムにかかわらず、テキストからテキストへの言語翻訳を実行できます。
 
-Microsoft Translator Text API は、機械学習と AI のアルゴリズムをクラウドで提供する [Microsoft Cognitive Services API コレクション](https://docs.microsoft.com/azure/#pivot=products&panel=ai)の一部です。この API は、開発プロジェクトですぐに利用できます。
+Translator Text API は、機械学習と AI のアルゴリズムをクラウドで提供する Azure の [Cognitive Services API ](https://docs.microsoft.com/azure/#pivot=products&panel=ai) コレクションの一部です。この API は、開発プロジェクトですぐに利用できます。
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator について
 

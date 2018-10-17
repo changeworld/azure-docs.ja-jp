@@ -1,21 +1,21 @@
 ---
-title: Translator Text と Ruby で翻訳の代替候補を探す | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と Ruby を使って、文脈中における用語の例と翻訳の代替候補を探します。
+title: 'クイック スタート: 翻訳の代替候補を探す - Translator Text、Ruby'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Translator Text API と Ruby を使って、文脈中における用語の例と翻訳の代替候補を探します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 6462a48c2f15c8ac4a6b9bce49d23ea3d38dcbd5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7cd34e3482df666de8b974380302ee6b4c592496
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43771073"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122809"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-ruby"></a>クイック スタート: Ruby を使って翻訳の代替候補と用法を探す
 

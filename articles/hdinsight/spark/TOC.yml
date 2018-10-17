@@ -413,7 +413,7 @@ items:
 - name: リファレンス
   items:
   - name: コード サンプル
-    href: https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight
+    href: https://azure.microsoft.com/resources/samples/?service=hdinsight
   - name: Azure PowerShell
     href: /powershell/module/azurerm.hdinsight
   - name: .NET SDK
@@ -454,9 +454,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 911fdde576e931053b6558a41cc365e1292c0e21
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 17ce2876fecd8ced03f5ddbced3657ac6b76c1e8
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033313"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364440"
