@@ -1,8 +1,7 @@
 ---
-title: Azure AD Premium へのサインアップ | Microsoft Docs
-description: Azure Active Directory Premium Edition にサインアップする方法について説明します。
+title: Azure Active Directory Premium Edition にサインアップする方法 | Microsoft Docs
+description: Azure Active Directory Premium Edition にサインアップする方法の詳細な手順について説明します。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.service: active-directory
@@ -12,89 +11,90 @@ ms.topic: quickstart
 ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.custom: it-pro;
-ms.openlocfilehash: a5ede142b7f3dd314d1a6b3eb8f100ec55a4ea4e
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.custom: it-pro
+ms.openlocfilehash: bce7a060908e8043390fdce729161cad48a644be
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42023246"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731072"
 ---
-# <a name="quickstart-sign-up-for-azure-active-directory-premium"></a>クイックスタート: Azure Active Directory Premium へのサインアップ
-Azure Active Directory (Azure AD) Premium を使用するためには、ライセンスを購入のうえご利用の Azure サブスクリプションに関連付けてください。 新しい Azure サブスクリプションを作成する場合は、以降のセクションの説明に従ってライセンス プランと Azure AD サービス アクセスをアクティブ化する必要もあります。 
-
-## <a name="sign-up-for-active-directory-premium"></a>Active Directory Premium へのサインアップ
-Active Directory Premium にはいくつかの方法でサインアップできます。 
-* Azure サブスクリプションまたは Office 365 サブスクリプションを使用する
-* Enterprise Mobility + Security ライセンス プランを使用する
-* マイクロソフト ボリューム ライセンス プランを使用する
-
-### <a name="azure-or-office-365"></a>Azure または Office 365 
-Azure または Office 365 のサブスクライバーである場合、Azure Active Directory Premium をオンラインでご購入いただけます。 
-
-詳細な手順については、「[How to Purchase Azure Active Directory Premium - Existing Customers (Azure Active Directory Premium を購入する方法 - 既存のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)」または「[How to Purchase Azure Active Directory Premium - New Customers (Azure Active Directory Premium を購入する方法 - 新規のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)」をご覧ください。  
-
-### <a name="enterprise-mobility--security"></a>Enterprise Mobility + Security
-Enterprise Mobility + Security (EMS) は、Azure Active Directory Premium、Azure Information Protection、および Microsoft Intune のサービスを 1 つのライセンス プランでまとめて使用できる、組織にとってコスト効果の高い方法です。 EMS の詳細については、[Enterprise Mobility + Security の Web サイト](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)を参照してください。また、購入できる EMS ライセンスの種類の詳細については、「[Enterprise Mobility + Security 料金](https://www.microsoft.com/cloud-platform/enterprise-mobility-security-pricing)」ページを参照してください。  
-
-EMS ライセンスでは、次のいずれかのライセンス オプションを使って Azure AD の使用を開始できます。
-
-- 無料の [Enterprise Mobility + Security E5 試用版サブスクリプション](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)で EMS を試用する
-- [Enterprise Mobility + Security E5 ライセンス](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)を購入する
-- [Enterprise Mobility + Security E3 ライセンス](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)を購入する
-
-### <a name="microsoft-volume-licensing"></a>マイクロソフト ボリューム ライセンス
-Azure Active Directory Premium は、[Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (250 個以上のライセンス) または [Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx) (5 ～ 250 個のライセンス) プログラムを通じてご購入いただけます。
-
-ボリューム ライセンス購入オプションの詳細については、「[ボリューム ライセンスでのライセンスの購入方法](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx)」ページを参照してください。
+# <a name="how-to-sign-up-for-azure-active-directory-premium"></a>方法: Azure Active Directory Premium へのサインアップ
+Azure Active Directory (Azure AD) Premium を購入して、お使いの Azure サブスクリプションと関連付けることができます。 新しい Azure サブスクリプションを作成する必要がある場合は、ライセンス プランと Azure AD サービス アクセスをアクティブにする必要もあります。
 
 > [!NOTE]
-> Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory Premium および Basic エディションを使用できます。 中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。 詳細については、 [Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
+>Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure AD Premium および Basic エディションを使用できます。 中国の 21Vianet が運営する Azure サービスでは、Azure AD Premium および Basic エディションは現在サポートされていません。 詳細については、[Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)を利用してお問い合わせください。
 
-前の手順で使用したものと同じ Azure サブスクリプションに関して、過去に Azure AD ライセンスを購入してアクティブ化したことがある場合は、そのライセンスが同じディレクトリで自動的にアクティブ化されます。 それ以外の場合は、以降この記事に記載されている手順に従ってください。
+Active Directory Premium 1 または Premium 2 にサインアップする前に、まず、使用する既存のサブスクリプションまたはプランを決定する必要があります。
 
-## <a name="activate-your-license-plan"></a>ライセンス プランをアクティブ化する
-Microsoft から購入した初めての Azure AD ライセンス プランである場合、 購入が完了したときに確認のメールが生成されて送信されます。 最初のライセンス プランをアクティベートするにはそのメールが必要になります。
+    - 既存の Azure または Office 365 サブスクリプションを利用する
 
-**ライセンス プランをアクティブ化するには、次の手順のいずれかを行います。**
+    - Enterprise Mobility + Security ライセンス プランを利用する
 
-1. アクティブ化を開始するには、**[サインイン]** または **[サインアップ]** をクリックします。
+    - マイクロソフト ボリューム ライセンス プランを利用する
+
+以前に購入してアクティブ化した Azure AD ライセンスで、Azure サブスクリプションを使ってサインアップし、同じディレクトリのライセンスを自動的にアクティブ化します。 このように動作しない場合、引き続きお使いのライセンス プランと Azure AD アクセスをアクティブ化する必要があります。 ライセンス プランのアクティブ化の詳細については、「[新しいライセンス プランをアクティブ化する](#activate-your-new-license-plan)」を参照してください。 Azure AD アクセスのアクティブ化の詳細については、「[Azure AD アクセスをアクティブ化する](#activate-your-azure-ad-access)」を参照してください。 
+
+## <a name="sign-up-using-your-existing-azure-or-office-365-subscription"></a>既存の Azure または Office 365 サブスクリプションを使用してサインアップする
+Azure または Office 365 のサブスクライバーである場合、Azure Active Directory Premium Edition をオンラインでご購入いただけます。 詳細な手順については、「[How to Purchase Azure Active Directory Premium - Existing Customers (Azure Active Directory Premium を購入する方法 - 既存のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)」または「[How to Purchase Azure Active Directory Premium - New Customers (Azure Active Directory Premium を購入する方法 - 新規のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)」をご覧ください。
+
+## <a name="sign-up-using-your-enterprise-mobility--security-licensing-plan"></a>Enterprise Mobility + Security ライセンス プランを使用してサインアップする
+Enterprise Mobility + Security は Azure AD Premium、Azure Information Protection、および Microsoft Intune で構成されるスイートです。 EMS ライセンスを既にお持ちの場合は、次のいずれかのライセンス オプションを使って Azure AD の使用を開始できます。
+
+EMS の詳細については、[Enterprise Mobility + Security の Web サイト](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)をご覧ください。
+
+    - 無料の [Enterprise Mobility + Security E5 試用版サブスクリプション](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)で EMS を試用する
+
+    - [Enterprise Mobility + Security E5 ライセンス](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)を購入する
+
+    - [Enterprise Mobility + Security E3 ライセンス](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)を購入する
+
+## <a name="sign-up-using-your-microsoft-volume-licensing-plan"></a>マイクロソフト ボリューム ライセンス プランを使用してサインアップする
+マイクロソフト ボリューム ライセンス プランを利用して、取得したいライセンス数に基づいて、次の 2 つのプログラムのどちらかを使って Azure AD Premium にサインアップできます。
+
+    - **ライセンス数が 250 以上の場合。** [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
+
+    - **ライセンス数が 5～ 250 の場合。** [オープン** ボリューム ライセンス](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
+
+    ボリューム ライセンス購入オプションの詳細については、「[How to purchase through Volume Licensing](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx)」(ボリューム ライセンスでの購入方法) を参照してください。
+
+## <a name="activate-your-new-license-plan"></a>新しいライセンス プランをアクティブ化する
+新しい Azure AD ライセンス プランを使用してサインアップした場合は、購入後に送信された確認メールを使用して、所属する組織に対してそのプランをアクティブ化する必要があります。
+
+### <a name="to-activate-your-license-plan"></a>ライセンス プランをアクティブ化するには、次の手順を実行します。
+- サインアップした後に Microsoft から受信した確認の電子メールを開き、**[サインイン]** または **[サインアップ]** のどちらかをクリックします。
    
     ![[サインイン]](media/active-directory-get-started-premium/MOLSEmail.png)
 
-    - 既存のテナントがある場合は、 **[サインイン]** をクリックし、既存の管理者アカウントでサインインします。 ライセンスをアクティブ化する必要があるテナントのグローバル管理者の資格情報でサインインしてください。
+    - **[サインイン]**。 既存のテナントがある場合は、このリンクをクリックし、既存の管理者アカウントを使ってサインインします。 ライセンスがアクティブ化されているテナント上で、グローバル管理者になっている必要があります。
 
-    - 自分のライセンス プランで使用する新しい Azure AD テナントを作成する場合は、**[サインアップ]** をクリックして、**[アカウント プロファイルの作成]** ダイアログを開きます。
+    - **[サインアップ]**。 **[アカウント プロファイルの作成]** ページを開いて、自分のライセンス プラン用に新しい Azure AD テナントを作成する場合は、このリンクを選択します。
 
         ![[アカウント プロファイルの作成]](media/active-directory-get-started-premium/MOLSAccountProfile.png)
 
-完了すると、テナントのライセンス プランのアクティブ化の確定として次のダイアログが表示されます。
+完了したら、テナントに対してライセンス プランをアクティブ化したことへの謝意を示した確認ボックスが表示されます。
 
 ![確認](media/active-directory-get-started-premium/MOLSThankYou.png)
 
-## <a name="activate-your-azure-active-directory-access"></a>Azure Active Directory のアクセスをアクティブ化する
-新しい Azure AD Premium ライセンスを既存のサブスクリプションに追加する場合は、あらかじめ Azure AD アクセスがアクティブ化されている必要があります。 それ以外の場合は、**ウェルカム メール**を受信した後で Azure AD アクセスをアクティブ化する必要があります。  
+## <a name="activate-your-azure-ad-access"></a>Azure AD アクセスをアクティブ化する
+新しい Azure AD Premium ライセンスを既存のサブスクリプションに追加している場合は、あらかじめ Azure AD アクセスがアクティブ化されている必要があります。 それ以外の場合は、**ウェルカム メール**を受信した後で Azure AD アクセスをアクティブ化する必要があります。  
 
-購入したライセンスがディレクトリにプロビジョニングされると、**ウェルカム メール**が届きます。 そのメールで、Azure Active Directory Premium または Enterprise Mobility + Security のライセンスと機能の管理を開始できることが確認されます。 
+購入済みのライセンスがディレクトリでプロビジョニングされた後、**ウェルカム メール**を受信します。 このメールで、Azure AD Premium または Enterprise Mobility + Security のライセンスと機能の管理を開始できることを確認します。 
 
 > [!TIP]
-> ライセンス プロビジョニング プロセスの完了時に自動的に送信されるウェルカム メールを使って Azure AD ディレクトリ アクセスをアクティブ化するまでは、新しいテナントの Azure AD にはアクセスできません。 
+> ウェルカム メールから Azure AD ディレクトリをアクティブ化するまで、新しいテナントの Azure AD にはアクセスできません。
 
-**Azure AD へのアクセスをアクティブ化するには、次の手順を行います。**
+### <a name="to-activate-your-azure-ad-access"></a>Azure AD アクセスをアクティブ化するには、次の手順を実行します。
 
-1. **ウェルカム メール**の **[サインイン]** をクリックします。 
+1. **[ウェルカム メール]** を開いて、**[サインイン]** をクリックします。
    
     ![ウェルカム メール](media/active-directory-get-started-premium/AADEmail.png)
-2. 正常にサインインしたら、モバイル デバイスを使って第 2 要素認証も行う必要があります。
+
+2. 正常にサインインした後は、モバイル デバイスを使用して 2 段階認証へ進みます。
    
     ![Mobile verification](media/active-directory-get-started-premium/SignUppage.png)
 
-アクティブ化にかかる時間はほんの数分であり、その後、Azure AD を管理するためのアクセス権が付与されます。 
+通常、アクティブ化のプロセスにかかる時間は数分のみで、その後は、お使いの Azure AD テナントを使用できるようになります。 
 
 ## <a name="next-steps"></a>次の手順
-このクイック スタートでは、Azure AD Premium にサインアップして、Azure Active Directory アクセスをアクティブ化する方法について説明しました。 
-
-既に Azure サブスクリプションをお持ちの場合は、次のリンクを使って Azure Portal から試用版を試すか、Azure AD Premium ライセンスをご購入いただけます。
-
-> [!div class="nextstepaction"]
-> [Azure AD Premium ライセンスのアクティブ化](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/TryBuyProductBlade)
+Azure AD Premium を利用できるようになったので、[ドメインのカスタマイズ](add-custom-domain.md)、[企業ブランド](customize-branding.md)の追加、[テナントの作成](active-directory-access-create-new-tenant.md)、および[グループ](active-directory-groups-create-azure-portal.md)と[ユーザー](add-users-azure-active-directory.md)の追加が可能です。

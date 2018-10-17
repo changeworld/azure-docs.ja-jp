@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 87d068208b90e86ff64cec3e84f3f96411f6c878
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: a0e2b643d9214e9db2e0304c4e17762b9cdc5590
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340989"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363896"
 documentType: LandingData
 title: Azure Service Bus メッセージングのドキュメント
 metadata:
@@ -29,7 +29,7 @@ abstract:
       src: https://docs.microsoft.com/en-us/azure/service-bus-messaging/media/index/azure-messaging-and-event-based-architecture.png
       width: 250
     title: Azure メッセージングおよびイベントベースのアーキテクチャ (1:24:32)
-    href: https://azure.microsoft.com/en-us/resources/videos/build-2018-azure-messaging-and-event-based-architecture-in-the-real-world-lessons-learned-rebuilding-microsoft-s-supply-chain-on-azure-serverless/
+    href: https://azure.microsoft.com/resources/videos/build-2018-azure-messaging-and-event-based-architecture-in-the-real-world-lessons-learned-rebuilding-microsoft-s-supply-chain-on-azure-serverless/
     width: 250
 sections:
 - title: 5 分間のクイック スタート

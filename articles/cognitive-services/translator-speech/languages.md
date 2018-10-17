@@ -1,22 +1,24 @@
 ---
-title: Microsoft Translator Speech API でサポートされている言語 | Microsoft Docs
-description: Microsoft Translator Speech API でサポートされている言語を確認できます。
+title: サポートされている言語 - Translator Speech API
+titlesuffix: Azure Cognitive Services
+description: Translator Speech API でサポートされている言語を確認できます。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0d33033442a012290baa78d80f1b8bde0499b3f1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3c0d0e17026dc0c970138c30f83dc9eb98db4228
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378421"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950184"
 ---
-# <a name="languages-supported-by-the-microsoft-translator-speech-api"></a>Microsoft Translator Speech API でサポートされている言語
+# <a name="languages-supported-by-the-translator-speech-api"></a>Translator Speech API でサポートされている言語
 音声翻訳では、次の言語がサポートされています。 両方の言語が音声翻訳でサポートされている場合、音声間翻訳または音声テキスト変換を利用できます。 ターゲット言語が音声翻訳でサポートされていない場合は、音声テキスト変換のみを利用できます。 
 
 | 音声言語    |
@@ -32,7 +34,7 @@ ms.locfileid: "35378421"
 | ロシア語      |
 | スペイン語      | 
 
-Microsoft Translator Speech API では、音声テキスト変換のターゲット言語として、次の言語がサポートされています。 
+Translator Speech API では、音声テキスト変換のターゲット言語として、次の言語がサポートされています。 
 
 | テキスト言語    | 言語コード |
 |:----------- |:-------------:|
@@ -102,7 +104,7 @@ Microsoft Translator Speech API では、音声テキスト変換のターゲッ
 
 ## <a name="access-the-list-programmatically"></a>プログラミングによるリストへのアクセス
 
-言語リソースを使用すると、サポート対象言語のリストにプログラミングを使用してアクセスできます。 この一覧には、各言語コードと、英語表記またはサポートされているその他の言語表記による言語名が記載されています。 リストは、新しい言語が使用できるようになると、Microsoft Translator サービスによって自動的に更新されます。
+言語リソースを使用すると、サポート対象言語のリストにプログラミングを使用してアクセスできます。 この一覧には、各言語コードと、英語表記またはサポートされているその他の言語表記による言語名が記載されています。 リストは、新しい言語が使用できるようになると、Translator Speech サービスによって自動的に更新されます。
 
 言語リソースは、音声、テキスト、およびテキスト読み上げに対してサポートされている言語の一覧を返します。 言語リソースに認証は必要ありません。
 

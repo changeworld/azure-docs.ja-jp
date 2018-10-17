@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: df4730078b890353c697b0e9213fb66cdb4e7f9b
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e9d1f77a85d4b5cfb5bb7d3cb80380be3c79315d
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436694"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378280"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する #
 
@@ -56,7 +56,7 @@ ILB ASE を使用する際に実行できないことがいくつかあります
 
 ILB ASE を作成する方法は次のとおりです。
 
-1. Azure Portal で、**[リソースの作成]** > **[Web + モバイル]** > **[App Service Environment]** の順に選択します。
+1. Azure portal で、**[リソースの作成]** > **[Web]** > **[App Service Environment]** の順に選択します。
 
 1. サブスクリプションを選択します。
 
@@ -209,7 +209,7 @@ SCM サイト名をクリックすると、Azure Portal 内の Kudu コンソー
 
 マルチテナント App Service と外部 ASE では、Azure Portal と Kudu コンソールの間にシングル サインオンが存在します。 ただし、ILB ASE の場合は発行証明書を使用して Kudu コンソールにサインインする必要があります。
 
-インターネット ベースの CI システム (GitHub や Visual Studio Team Services など) は、ビルド エージェントがインターネットにアクセス可能であり、かつ ILB ASE と同じネットワーク上に存在すれば、引き続き機能します。 したがって、Visual Studio Team Services の場合、ビルド エージェントが ILB ASE と同じ VNET 上に作成されていれば (サブネットは異なっていてもかまいません)、VSTS git からコードをプルして ILB ASE にデプロイできます。 独自のビルド エージェントを作成しない場合は、プル モデルを使用している CI システム (Dropbox など) を使用する必要があります。
+インターネット ベースの CI システム (GitHub や Azure DevOps など) は、ビルド エージェントがインターネットにアクセス可能であり、かつ ILB ASE と同じネットワーク上に存在すれば、引き続き機能します。 したがって、Azure DevOps の場合、ビルド エージェントが ILB ASE と同じ VNET 上に作成されていれば (サブネットは異なっていてもかまいません)、Azure DevOps git からコードをプルして ILB ASE にデプロイできます。 独自のビルド エージェントを作成しない場合は、プル モデルを使用している CI システム (Dropbox など) を使用する必要があります。
 
 ILB ASE 内のアプリには、その ILB ASE の作成時に使用されたドメインが、発行エンドポイントとして使用されます。 このドメインは、アプリの発行プロファイルとアプリのポータル ブレード (**[概要]** > **[要点]**、**[プロパティ]** など) に表示されます。 サブドメインが *contoso.net* でアプリ名が *mytest* の ILB ASE では、FTP で *mytest.contoso.net* を使用し、Web デプロイで *mytest.scm.contoso.net* を使用します。
 

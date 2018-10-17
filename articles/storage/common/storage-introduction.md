@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 07/11/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 59e6f4126e8a39ab695015fae2a2013529383418
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 693ba07e46900ba6f3e025d97cb34aad9e244ace
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41920855"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027046"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -93,7 +93,7 @@ Azure Storage には、仮想マシンで使用されるマネージド ディ�
 
 |**ストレージ アカウントの種類**|**汎用 (Standard)**|**汎用 (Premium)**|**Blob Storage (ホット アクセス レベルとクール アクセス レベル)**|
 |-----|-----|-----|-----|
-|**サポートされるサービス**| Blob service、File サービス、Queue サービス | Blob service | Blob service|
+|**サポートされるサービス**| Blob service、File サービス、Queue サービス、Table service | Blob service | Blob service|
 |**サポートされる BLOB の種類**|ブロック BLOB、ページ BLOB、追加 BLOB | ページ blob | ブロック BLOB と追加 BLOB|
 
 ### <a name="general-purpose-storage-accounts"></a>汎用ストレージ アカウント

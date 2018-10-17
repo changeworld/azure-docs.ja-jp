@@ -1,22 +1,24 @@
 ---
-title: トラブルシューティング | Microsoft Docs
-description: Microsoft Speech Service 使用時の問題を解決する方法。
+title: Bing Speech のトラブルシューティング | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: Bing Speech 使用時の問題を解決する方法です。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 04f3da19939d523d201d357b2b0293db1508431d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 532916106f62e0236b8dd53cf7988a648355aef4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373808"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991863"
 ---
-# <a name="troubleshooting"></a>トラブルシューティング
+# <a name="troubleshooting-bing-speech"></a>Bing Speech のトラブルシューティング
 
 ## <a name="error-http-403-forbidden"></a>エラー `HTTP 403 Forbidden`
 
@@ -24,7 +26,7 @@ Speech Recognition API の使用中に `HTTP 403 Forbidden` エラーが返さ�
 
 ### <a name="cause"></a>原因
 
-多くの場合、このエラーは認証の問題が原因で発声します。 有効な `Ocp-Apim-Subscription-Key` や `Authorization` ヘッダーがない接続要求は、`HTTP 403 Forbidden` 応答によりサービスによって拒否されます。
+多くの場合、このエラーは、認証の問題が原因で発生します。 有効な `Ocp-Apim-Subscription-Key` や `Authorization` ヘッダーがない接続要求は、`HTTP 403 Forbidden` 応答によりサービスによって拒否されます。
 
 認証にサブスクリプション キーを使用している場合、理由は次のいずれかが考えられます。
 
@@ -127,7 +129,7 @@ curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive
 
 ## <a name="the-recognitionstatus-in-the-response-is-initialsilencetimeout"></a>要求内の `RecognitionStatus` は `InitialSilenceTimeout` である
 
-通常、問題を引き起こしている原因はオーディオ データです。 たとえば、次のように入力します。
+この問題の原因は、通常はオーディオ データです。 たとえば、次のように入力します。
 
 - オーディオの最初に長い無音時間がある。 数秒後、サービスは認識を停止し、`InitialSilenceTimeout` を返します。
 - オーディオがサポートされていないコーデック形式を使用している。これにより、オーディオ データが無音として扱われます。

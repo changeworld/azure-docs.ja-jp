@@ -14,20 +14,20 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 07/17/2018
 ms.author: barclayn
-ms.openlocfilehash: b509bf9575c3fdeedd1673d4ffe1395d46e3d919
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: aae7836448ff27b4c80d7bb53e108034ee52db1c
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051614"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586293"
 ---
 # <a name="what-is-azure-key-vault"></a>Azure Key Vault とは
 
 Azure Key Vault は、次の問題の解決に役立ちます
-- Azure Key Vault を使用すると、トークン、パスワード、証明書、API キー、その他のシークレットを安全に格納し、それらへのアクセスを厳密に制御できます。
-- Azure Key Vault は、キー管理ソリューションとしても使用できます。 Azure Key Vault により、データの暗号化に使用される暗号化キーの作成と制御が簡単になります。 
-- Azure Key Vault は、Azure および内部の接続されているリソースで使用するためのパブリックおよびプライベートの Secure Sockets Layer/Transport Layer Security (SSL/TLS) 証明書を簡単にプロビジョニング、管理、展開することができるサービスでもあります。 
-- シークレットとキーは、ソフトウェアまたは FIPS 140-2 レベル 2 検証済み HSM で保護できます
+- **シークレットの管理** - Azure Key Vault を使用すると、トークン、パスワード、証明書、API キー、その他のシークレットを安全に格納し、それらへのアクセスを厳密に制御できます。
+- **キー管理** - Azure Key Vault は、キー管理ソリューションとしても使用できます。 Azure Key Vault により、データの暗号化に使用される暗号化キーの作成と制御が簡単になります。 
+- **証明書の管理** - Azure Key Vault は、Azure および内部の接続されているリソースで使用するためのパブリックおよびプライベートの Secure Sockets Layer/Transport Layer Security (SSL/TLS) 証明書を簡単にプロビジョニング、管理、展開することができるサービスでもあります。 
+- **ハードウェア セキュリティ モジュールに基づくシークレットの格納** - シークレットとキーは、ソフトウェアまたは FIPS 140-2 レベル 2 検証済み HSM で保護できます。
 
 ## <a name="why-use-azure-key-vault"></a>Azure Key Vault を使用する理由
 
@@ -65,7 +65,7 @@ Azure Key Vault は、ソフトウェアまたはハードウェアの HSM で�
 
 - ハードウェア セキュリティ モジュールに関するインハウスの知識の必要性を排除する。
 - 組織の使用量の急増に対応するために急なスケールアップを可能にする。
-- リージョン内およびセカンダリ リージョンに Key Vault の内容をレプリケートする。 Key Vault によって高可用性が確保され、フェールオーバーをトリガーするための管理者の操作が不要になります。
+- リージョン内およびセカンダリ リージョンに Key Vault の内容をレプリケートする。 これにより、高可用性が保証され、フェールオーバーをトリガーするための管理者の操作が不要になります。
 - ポータル、Azure CLI、および PowerShell を使用した標準 Azure 管理オプションを提供する。
 - パブリック CA から購入した証明書に関する特定のタスク (登録や更新など) を自動化する。
 
@@ -73,7 +73,7 @@ Azure Key Vault は、ソフトウェアまたはハードウェアの HSM で�
 
 ### <a name="integrate-with-other-azure-services"></a>他の Azure サービスとの統合
 
-Key Vault は、Azure の安全なストアとして、[Azure Disk Encryption](../security/azure-security-disk-encryption.md)、SQL サーバーと Azure SQL の [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 機能、[Azure Web アプリ]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site)のようなシナリオを単純化するために使用されてきました。 Key Vault 自体は、ストレージ アカウント、イベント ハブ、ログ分析と統合できます。
+Key Vault は、Azure の安全なストアとして、[Azure Disk Encryption](../security/azure-security-disk-encryption.md)、SQL サーバーと Azure SQL Database の [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) 機能、[Azure Web アプリ]( https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site)のようなシナリオを単純化するために使用されてきました。 Key Vault 自体は、ストレージ アカウント、イベント ハブ、およびログ分析と統合できます。
 
 ## <a name="next-steps"></a>次の手順
 

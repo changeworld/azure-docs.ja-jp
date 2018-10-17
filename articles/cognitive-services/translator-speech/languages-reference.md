@@ -1,25 +1,26 @@
 ---
-title: Microsoft Translator Speech API 言語メソッド | Microsoft Docs
-titleSuffix: Cognitive Services
-description: Microsoft Translator Speech API 言語メソッドを使用します。
+title: Translator Speech API 言語メソッド
+titleSuffix: Azure Cognitive Services
+description: Translator Speech API 言語メソッドを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-speech
+ms.topic: conceptual
 ms.date: 05/18/18
 ms.author: v-jansko
-ms.openlocfilehash: 5396e3be17345c3c36197a9b6cbace86e1f574c1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9fbbba7ed5e81cae1d30c5a480b9f7f7a13342c5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378463"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986423"
 ---
-# <a name="speech-api-languages"></a>Speech API: 言語
+# <a name="translator-speech-api-languages"></a>Translator Speech API: 言語
 
-Microsoft Translator は、そのサービスでサポートされる言語の一覧を継続的に拡張しています。 音声翻訳サービスで現在使用可能な言語のセットを取得するには、この API を使います。
+Translator Speech は、そのサービスでサポートされる言語の一覧を継続的に拡張しています。 Translator Speech サービスで現在使用可能な言語のセットを取得するには、この API を使います。
 
 使用可能な言語を取得するための API の使用例を示すコード サンプルは、[Microsoft Translator Github サイト](https://github.com/MicrosoftTranslator)から入手できます。
 
@@ -35,7 +36,7 @@ GET /languages
 * **テキスト翻訳:** 文字起こししたテキストを翻訳するために使用できる言語のセットを取得するには、クエリ パラメーター `scope=text` を使用します。
 * **テキスト読み上げ:** 翻訳されたテキストから音声を合成するために使用できる言語と音声のセットを取得するには、クエリ パラメーター `scope=tts` を使用します。
 
-クライアントは、コンマ区切りの選択肢リストを指定することによって、複数のセットを同時に取得できます。 たとえば、「`scope=speech,text,tts`」のように入力します。
+クライアントは、コンマ区切りの選択肢リストを指定することによって、複数のセットを同時に取得できます。 たとえば、「 `scope=speech,text,tts` 」のように入力します。
 
 正常な応答は、要求されたセットごとに 1 つのプロパティを持つ JSON オブジェクトです。
 
@@ -131,22 +132,22 @@ Langagues { speech (object, optional), text (object, optional), tts (object, opt
 
 |ヘッダー|説明|type|
 :--|:--|:--|
-X-RequestId|要求を識別するためにサーバーによって生成され、トラブルシューティングのために使用される値。|文字列|
+X-RequestId|要求を識別するためにサーバーによって生成され、トラブルシューティングのために使用される値。|string|
 
 ### <a name="parameters"></a>parameters
 
 |パラメーター|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|
-|api-version    |クライアントによって要求される API のバージョン。 使用できる値: `1.0`。|クエリ|文字列|
-|scope  |クライアントに返す、サポートされている言語または音声のセット。 このパラメーターは、キーワードのコンマ区切り一覧として指定されます。 次のキーワードを使用できます。<ul><li>`speech`: 音声の文字起こしにサポートされている言語のセットを提供します。</li><li>`tts`: テキスト音声変換にサポートされている音声のセットを提供します。</li><li>`text`: テキストの翻訳にサポートされている言語のセットを提供します。</li></ul>値が指定されていない場合、`scope` の既定値は `text` です。|クエリ|文字列|
-|X-ClientTraceId    |クライアントによって生成される GUID であり、要求を追跡するのに使用されます。 問題のトラブルシューティングを容易にするため、クライアントは要求のたびに新しい値を指定し、それを記録する必要があります。|ヘッダー|文字列|
+|api-version    |クライアントによって要求される API のバージョン。 使用できる値: `1.0`。|クエリ|string|
+|scope  |クライアントに返す、サポートされている言語または音声のセット。 このパラメーターは、キーワードのコンマ区切り一覧として指定されます。 次のキーワードを使用できます。<ul><li>`speech`: 音声の文字起こしにサポートされている言語のセットを提供します。</li><li>`tts`: テキスト音声変換にサポートされている音声のセットを提供します。</li><li>`text`: テキストの翻訳にサポートされている言語のセットを提供します。</li></ul>値が指定されていない場合、`scope` の既定値は `text` です。|query|文字列|
+|X-ClientTraceId    |クライアントによって生成される GUID であり、要求を追跡するのに使用されます。 問題のトラブルシューティングを容易にするため、クライアントは要求のたびに新しい値を指定し、それを記録する必要があります。|ヘッダー|string|
 |Accept-Language    |応答内のフィールドには、言語や地域の名前などがあります。 名前が返される言語を定義するには、このパラメーターを使用します。 言語は、整形式の BCP 47 言語タグを使用して指定します。 `text` スコープで返される言語識別子の一覧からタグを選択します。 サポートされていない言語の場合、名前は英語で提供されます。<br/>たとえば、フランス語の名前を要求するには値 `fr` を使用し、繁体字中国語の名前を要求するには値 `zh-Hant` を使用します。|ヘッダー|文字列|
     
 ### <a name="response-messages"></a>応答メッセージ
 
 |HTTP 状態コード|理由|
 |:--|:--|
-|400|無効な要求です。 入力パラメーターを調べて正しいことを確認します。 応答オブジェクトには、エラーに関する詳細な説明が含まれています。|
+|400|要求が正しくありません。 入力パラメーターを調べて正しいことを確認します。 応答オブジェクトには、エラーに関する詳細な説明が含まれています。|
 |429|要求が多すぎます。|
 |500|エラーが発生しました。 エラーが解決しない場合は、それをクライアント トレース識別子 (X-ClientTraceId) または要求識別子 (X-RequestId) と一緒にご報告ください。|
 |503|サーバーが一時的に使用できません。 要求を再試行してください。 エラーが解決しない場合は、それをクライアント トレース識別子 (X-ClientTraceId) または要求識別子 (X-RequestId) と一緒にご報告ください。|

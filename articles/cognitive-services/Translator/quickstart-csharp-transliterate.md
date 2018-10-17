@@ -1,25 +1,27 @@
 ---
-title: Translator Text と C# でテキストの表記を変換する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と C# を使って、1 つの言語の中でテキストの表記を変換します。
+title: 'クイック スタート: テキスト スクリプトを変換する - Translator Text、C#'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、C# で Translator Text API を使って、1 つの言語の中でテキストの表記を変換します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 66d649c0015be8c6a74e9925af68297334bfdb30
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 53ac3f4aa85e889c86d09927ece7df012427e4a9
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "43770612"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367595"
 ---
 # <a name="quickstart-transliterate-text-with-c35"></a>クイック スタート: C&#35; を使ったテキストの表記変換
 
 このクイック スタートでは、Translator Text API を使って、1 つの言語の中でテキストの表記を変換します。
+
+サンプルのソース コードは、[Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 

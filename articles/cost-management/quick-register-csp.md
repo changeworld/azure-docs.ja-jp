@@ -1,25 +1,25 @@
 ---
-title: CSP パートナー情報を使用して Azure Cost Management に登録する | Microsoft Docs
-description: CSP パートナー情報を使用して、Azure Cost Management に登録します。
+title: Azure で CSP パートナー情報を使用して Cloudyn に登録する | Microsoft Docs
+description: CSP パートナー情報を使用して、Cloudyn に登録します。
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/06/2018
+ms.date: 09/18/2018
 ms.topic: quickstart
 ms.custom: ''
 ms.service: cost-management
 manager: dougeby
-ms.openlocfilehash: e97ac06d5740a793d5f811e1a7ac01fef1a32806
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 698ddab4f5bca5aacf79cb952a51c385a67eee32
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39578060"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985448"
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>CSP パートナー プログラムに登録してコスト データを確認する
 
-CSP パートナーであれば、Azure Cost Management に登録できます。 この登録によって、Cloudyn ポータルにアクセスできるようになります。 このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。 コスト データの表示を今すぐに開始する方法についても説明します。
+CSP パートナーであれば、Cloudyn に登録できます。 この登録によって、Cloudyn ポータルにアクセスできるようになります。 このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。 コスト データの表示を今すぐに開始する方法についても説明します。
 
 
 >[!NOTE]
@@ -35,12 +35,12 @@ CSP パートナーであれば、Azure Cost Management に登録できます。
 
 - Azure Portal ( http://portal.azure.com ) にサインインします。
 
-## <a name="register-with-azure-cost-management"></a>Azure Cost Management に登録する
+## <a name="register-with-cloudyn"></a>Cloudyn に登録する
 
 1. Azure Portal で、サービスの一覧の **[Cost Management + Billing]\(コスト管理 + 課金\)** をクリックします。
-2. **[概要]** の **[コスト管理]** をクリックします。  
-    ![コスト管理ページ](./media/quick-register-csp/cost-mgt-billing-service.png)
-3. **[コスト管理]** ページで **[Go to Cost Management]\(コスト管理に移動\)** をクリックし、新しいウィンドウで [Cloudyn registration]\(Cloudyn 登録\) ページを開きます。
+2. **[概要]** の **[Cloudyn]** をクリックします｡  
+    ![Cloudyn のページ](./media/quick-register-csp/cost-mgt-billing-service.png)
+3. **[Cloudyn]** ページで **[Cloudyn に移動します]** をクリックします。新しいウィンドウで Cloudyn 登録ページが開きます。
 4. Cloudyn ポータル試用版登録のページで、会社名を入力し、**[Microsoft CSP Partner Program Administrator]\(Microsoft CSP パートナー プログラム管理者\)** を選択し、**[次へ]** をクリックします。  
 5. **[アプリケーション ID]**、**[Commerce ID]\(コマース ID\)**、**[Application Secret key]\(アプリケーションの秘密鍵\)** を入力し、**[Default Pricing Plan]\(既定の料金プラン\)** を選択します。 手元に情報がない場合は、パートナー センター ポータル ([https://partnercenter.microsoft.com](https://partnercenter.microsoft.com)) にプライマリ管理者アカウントでサインインして、次の手順を実行します。
   1. **ダッシュボード**に移動して**設定**の記号をクリックし、**[パートナーの設定]** をクリックして **[アプリの管理]** をクリックします。
@@ -62,7 +62,7 @@ CSP パートナーであれば、Azure Cost Management に登録できます。
 間接 CSP 顧客またはパートナーのアクセスを有効にするには、「[試用版の登録を作成する](#create-a-trial-registration)」の手順に従って試用版の登録を設定します。 次に、以下の手順を完了して、Cloudyn エンティティ グループを使用して間接 CSP データをセグメント化します。 次に、エンティティ グループに適切なユーザーのアクセス許可を割り当てます。
 
 1. [エンティティの作成](tutorial-user-access.md#create-and-manage-entities)に関する情報を参照して、エンティティ グループを作成します。
-2. 「[Assigning subscriptions to Cost Entities](https://support.cloudyn.com/hc/en-us/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities)」(サブスクリプションをコスト エンティティに割り当てる) の手順に従って実行します。 間接 CSP 顧客のアカウントとその Azure サブスクリプションを、以前に作成したエンティティに関連付けます。
+2. 「[Assigning subscriptions to Cost Entities](https://support.cloudyn.com/hc/articles/115005139425-Video-Assigning-subscriptions-to-Cost-Entities)」(サブスクリプションをコスト エンティティに割り当てる) の手順に従って実行します。 間接 CSP 顧客のアカウントとその Azure サブスクリプションを、以前に作成したエンティティに関連付けます。
 3. 「[Create a user with admin access](tutorial-user-access.md#create-a-user-with-admin-access)」(管理者アクセス権をユーザーを作成する) の手順に従って、管理者アクセス権を使用してユーザー アカウントを作成します。 次に、間接アカウント用に以前に作成した特定のエンティティに対して、ユーザー アカウントが管理者アクセス権を持っていることを確認します。
 
 間接 CSP パートナーは、パートナー用に作成されたアカウントを使用して Cloudyn ポータルにサインインします。
@@ -72,7 +72,7 @@ CSP パートナーであれば、Azure Cost Management に登録できます。
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、CSP 情報を使用して、Cost Management に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。 Azure Cost Management については、Cost Management のチュートリアルで続きを説明します。
+このクイックスタートでは、CSP 情報を使用して、Cloudyn に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。 Cloudyn に関する詳細は、Cloudyn のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [使用状況とコストを確認する](./tutorial-review-usage.md)

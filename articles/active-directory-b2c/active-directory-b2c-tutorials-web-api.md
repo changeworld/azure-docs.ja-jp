@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 469a3662b5bc4db467dde3285d557ac8bbae368e
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 2b70ed174331b88f9afc9aa30d14a585986496a5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39609091"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604343"
 ---
 # <a name="tutorial-grant-access-to-an-aspnet-web-api-from-a-web-app-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用して Web アプリから ASP.NET Web API へのアクセスを許可する
 
 このチュートリアルでは、Azure Active Directory (Azure AD) B2C で保護された Web API リソースを ASP.NET Web アプリから呼び出す方法について説明します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure AD B2C テナントに Web API を登録する
@@ -40,19 +40,13 @@ ms.locfileid: "39609091"
 
 Web API リソースは、Azure Active Directory からの[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を表す[クライアント アプリケーション](../active-directory/develop/developer-glossary.md#client-application)で[保護されたリソース要求](../active-directory/develop/developer-glossary.md#resource-server)を受け取って処理できるように、テナントに登録しておく必要があります。 登録により、テナント内に[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/developer-glossary.md#application-object)が確立されます。 
 
-1. Azure AD B2C テナントの全体管理者として、[Azure Portal](https://portal.azure.com/) にログインします。
+Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. Azure Portal の右上隅でディレクトリを切り替えて、Azure AD B2C テナントが含まれるディレクトリを使用していることを確認してください。 サブスクリプション情報を選択し、**[ディレクトリの切り替え]** を選択します。
+[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-    ![ディレクトリの切り替え](./media/active-directory-b2c-tutorials-web-api/switch-directories.png)
+1. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。 これで、前のチュートリアルで作成したテナントが使用されます。
 
-3. テナントが含まれるディレクトリを選択します。
-
-    ![新しいディレクトリを選択する](./media/active-directory-b2c-tutorials-web-api/select-directory.png)
-
-4. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。 これで、前のチュートリアルで作成したテナントが使用されます。
-
-5. **[アプリケーション]** を選択し、**[追加]** を選択します。
+2. **[アプリケーション]** を選択し、**[追加]** を選択します。
 
     テナントにサンプル Web API を登録するには、以下の設定を使用します。
     
@@ -67,7 +61,7 @@ Web API リソースは、Azure Active Directory からの[アクセス トー�
     | **アプリケーション ID/URI** | myAPISample | この URI は、テナント内の API を一意に識別します。 これにより、テナントごとに複数の API を登録することができます。 [スコープ](../active-directory/develop/developer-glossary.md#scopes)は、保護された API リソースへのアクセスを統制し、App ID URI ごとに定義されます。 |
     | **ネイティブ クライアント** | いいえ  | これはネイティブ クライアントではなく Web API のため、[いいえ] を選択します。 |
     
-6. **[作成]** をクリックして API を登録します。
+3. **[作成]** をクリックして API を登録します。
 
 登録された API は、Azure AD B2C テナントのアプリケーション一覧に表示されます。 一覧から Web API を選択します。 Web API のプロパティ ウィンドウが表示されます。
 
@@ -192,7 +186,7 @@ Visual Studio で **B2C-WebAPI-DotNet** ソリューションを開きます。
 5. **F5** キーを押して両方のアプリを実行します。 各アプリケーションは、それぞれ別のブラウザー タブで開かれます。`https://localhost:44316/` は Web アプリです。
     `https://localhost:44332/` は Web API です。
 
-6. Web アプリで、メニュー バーナーのサインアップ/サインイン リンクをクリックして、Web アプリにサインアップします。 [Web アプリのチュートリアル](active-directory-b2c-tutorials-web-app.md)で作成したアカウントを使用します。 
+6. Web アプリで、メニュー バーナーのサインアップ/サインイン リンクをクリックして、Web アプリケーションにサインアップします。 [Web アプリのチュートリアル](active-directory-b2c-tutorials-web-app.md)で作成したアカウントを使用します。 
 7. サインインしたら、**To Do リスト**のリンクをクリックして To Do リスト アイテムを作成します。
 
 To Do リスト アイテムを作成すると、Web アプリは To Do リスト アイテムを生成するよう Web API に要求します。 保護されている Web アプリは、Azure AD B2C テナントで保護された Web API を呼び出しています。

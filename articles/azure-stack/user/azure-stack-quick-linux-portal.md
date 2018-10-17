@@ -7,16 +7,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 08/15/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: c692bc461c116b4c0497c2378ae4e21e1b841c8f
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: e82c3de4461e2d663496cd4ae4a98c10e7819466
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "43775081"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025412"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>クイック スタート: Azure Stack ポータルで Linux サーバー仮想マシンを作成する
 
@@ -27,6 +27,10 @@ Azure Stack ポータルを使用して、Ubuntu Server 16.04 LTS 仮想マシ�
 * リモート クライアントを使用して仮想マシンに接続する。
 * NGINX Web サーバーをインストールする。
 * リソースをクリーンアップする。
+
+> [!NOTE]  
+> この記事の画面の画像は、Azure Stack バージョン 1808 で導入された変更に合わせて更新されます。 1808 では、アンマネージド ディスクに加え、"*マネージド ディスク*" の使用のサポートが追加されています。 以前のバージョンを使用する場合は、ディスクの選択など、タスクの一部の画像が、この記事に示されているものとは異なります。  
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -66,7 +70,9 @@ Azure Stack ポータルにサインインします。 Azure Stack ポータル�
 1. Azure Stack ポータルの左上隅にある **[リソースの作成]** をクリックします。
 
 2. **[コンピューティング]**、**[Ubuntu Server 16.04 LTS]** の順に選択します。
-3. **Create** をクリックしてください。
+   
+   ![Linux サーバーの選択](media/azure-stack-quick-linux-portal/select.png)
+1. **Create** をクリックしてください。
 
 4. 仮想マシンの情報を入力します。 **[認証の種類]** には **[SSH 公開キー]** を選択します。 保存した SSH 公開キーを貼り付け、**[OK]** をクリックします。
 
@@ -75,24 +81,28 @@ Azure Stack ポータルにサインインします。 Azure Stack ポータル�
 
    ![基本パネル - 仮想マシンの構成](media/azure-stack-quick-linux-portal/linux-01.PNG)
 
-5. 仮想マシンとして **[D1_V2]** を選択します。
+5. 仮想マシンとして **[D1]** を選択します。
 
    ![サイズパネル - 仮想マシンのサイズを選択する](media/azure-stack-quick-linux-portal/linux-02.PNG)
 
-6. **[設定]** ページで、既定値をそのままにして **[OK]** をクリックします。
+6. **[設定]** ページで、必要に応じて既定値を変更します。
+   
+    - Azure Stack バージョン 1808 以降では、**ストレージ**を構成できます。ここで "*マネージド ディスク*" の使用を選択できます。 バージョン 1808 より前は、アンマネージド ディスクのみを使用できます。    
+      ![マネージド ディスクのストレージを構成する](media/azure-stack-quick-linux-portal/linux-03.PNG)
+    
+    お使いの構成の準備が整ったら、**[OK]** を選択して続行します。
 
-7. **[概要]** ページで、**[OK]** をクリックして仮想マシンの展開を開始します。
+7. **[概要]** ページで、**[OK]** をクリックして仮想マシンの展開を開始します。  
+   ![デプロイする](media/azure-stack-quick-linux-portal/deploy.png)
 
 ## <a name="connect-to-the-virtual-machine"></a>仮想マシンへの接続
 
-1. 仮想マシンのページで **[接続]** をクリックします。 これにより、仮想マシンに接続するために必要な SSH 接続文字列が表示されます。
-
-   ![仮想マシンを接続する](media/azure-stack-quick-linux-portal/linux-03.PNG)
+1. 仮想マシンのページで **[接続]** をクリックします。 これにより、仮想マシンに接続するために必要な SSH 接続文字列が表示されます。 
 
 2. PuTTY を開きます。
-3. **[PuTTY Configuration]\(PuTTY の構成\)** 画面で、**[Category]\(カテゴリ\)** ウィンドウを使用して上下にスクロールします。 **[SSH]** までスクロールして **[SSH]** を展開し、**[Auth]\(認証\)** をクリックします。**[参照]** をクリックし、保存した秘密キー ファイルを選択します。
 
-   ![PuTTY 秘密キーを選択する](media/azure-stack-quick-linux-portal/Putty03.PNG)
+3. **[PuTTY Configuration]\(PuTTY の構成\)** 画面で、**[Category]\(カテゴリ\)** ウィンドウを使用して上下にスクロールします。 **[SSH]** までスクロールして **[SSH]** を展開し、**[Auth]\(認証\)** をクリックします。**[参照]** をクリックし、保存した秘密キー ファイルを選択します。
+   ![仮想マシンを接続する](media/azure-stack-quick-linux-portal/putty03.PNG)
 
 4. **[Category]\(カテゴリ\)** ウィンドウで上にスクロールし、**[Session]\(セッション\)** をクリックします。
 5. **[Host Name (or IP address)]\(ホスト名 (または IP アドレス)\)** ボックスで、Azure Stack ポータルに表示されている接続文字列を貼り付けます。 この例では、この文字列は ```asadmin@192.168.102.34``` です。
@@ -136,7 +146,7 @@ NGINX がインストールされ、仮想マシン上のポート 80 が開か�
 
 Web ブラウザーを開き、```http://<public IP address>``` を参照します。
 
-![NGINX Web サーバーのようこそページ](media/azure-stack-quick-linux-portal/linux-04.PNG)
+![NGINX Web サーバーのようこそページ](media/azure-stack-quick-linux-portal/linux-05.PNG)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

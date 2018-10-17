@@ -1,22 +1,24 @@
 ---
-title: C# で物体検出プロジェクトを構築する - Custom Vision Service - Azure Cognitive Services | Microsoft Docs
-description: Microsoft Cognitive Services で Custom Vision API を使用する基本的な Windows アプリについて確認します。 既定のエンドポイントを利用し、プロジェクトを作成し、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、予測を行います。
+title: 'チュートリアル: C# で物体検出プロジェクトを構築する - Custom Vision Service'
+titlesuffix: Azure Cognitive Services
+description: プロジェクトを作成し、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、既定のエンドポイントを利用して予測を行います。
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: areddish
-ms.openlocfilehash: e3def864267a590c86a2dd6663561d8488081ad6
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: d04fb86abbc0f174e895c166d97fc5467831206f
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "36301082"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366915"
 ---
-# <a name="use-custom-vision-api-to-build-an-object-detection-project-in-c35"></a>Custom Vision API を使用し、C&#35; で物体検出プロジェクトを構築する 
+# <a name="tutorial-use-custom-vision-api-to-build-an-object-detection-project-in-c"></a>チュートリアル: Custom Vision API を使用し、C# で物体検出プロジェクトを構築する
+
 Computer Vision API を使用する基本的な Windows アプリケーションを使用し、物体検出プロジェクトを作成する方法について説明します。 作成後、タグ付きのリージョンを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用して画像をプログラミングでテストできます。 Custom Vision API を利用し、Windows 用の独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
 
 ## <a name="prerequisites"></a>前提条件

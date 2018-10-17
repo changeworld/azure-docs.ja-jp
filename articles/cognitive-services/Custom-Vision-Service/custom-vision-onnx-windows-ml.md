@@ -1,20 +1,21 @@
 ---
-title: Windows ML で Custom Vision ONNX モデルを使用する - Cognitive Services | Microsoft Docs
-description: Cognitive Services からエクスポートされた ONNX モデルを使用する Windows UWP アプリの作成方法について説明します。
+title: 'チュートリアル: Windows ML で ONNX モデルを使用する - Custom Vision Service'
+titlesuffix: Azure Cognitive Services
+description: Azure Cognitive Services からエクスポートされた ONNX モデルを使用する Windows UWP アプリの作成方法について説明します。
 services: cognitive-services
 author: larryfr
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 06/19/2018
 ms.author: larryfr
-ms.openlocfilehash: 0b128ba1800e74c20c09a9c5711c8473f1dd00d0
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 3a9e9bc92ce38c4bb8d6d83c8017fa223342e7d2
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36939431"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365606"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>チュートリアル: Custom Vision からエクスポートされた ONNX モデルを Windows ML (プレビュー) で使用する
 

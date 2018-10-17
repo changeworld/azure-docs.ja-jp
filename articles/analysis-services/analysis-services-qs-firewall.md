@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c16a189e72edd94cf6fc60580d89dd4cfd1742e8
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9af0c0a32706c6745412401c9136e032e2e3f9ff
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37443445"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268920"
 ---
 # <a name="quickstart-configure-server-firewall---portal"></a>クイック スタート: サーバーのファイアウォールの構成 - ポータル
 
@@ -32,7 +32,7 @@ ms.locfileid: "37443445"
 
 1. サーバーをクリックして [概要] ページを開きます。 
 2. **[設定]** > **[ファイアウォール]** > **[ファイアウォールを有効にする]** で、**[オン]** をクリックします。
-3. Power BI サービスからの DirectQuery アクセスを許可するには、**[Allow accesss from Power BI]\(Power BI からのアクセスを許可する\)** で **[オン]** をクリックします。  
+3. Power BI サービスからの DirectQuery アクセスを許可するには、**[Allow access from Power BI]\(Power BI からのアクセスを許可する\)** で **[オン]** をクリックします。  
 4. (省略可能) 1 つまたは複数の IP アドレス範囲を指定します。 各範囲の名前、開始 IP アドレス、終了 IP アドレスを入力します。 
 5. **[Save]** をクリックします。
 

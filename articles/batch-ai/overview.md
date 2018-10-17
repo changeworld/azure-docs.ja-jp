@@ -1,5 +1,5 @@
 ---
-title: Azure Batch AI サービスの概要 | Microsoft Docs
+title: Azure Batch AI サービス - AI トレーニング | Microsoft Docs
 description: 管理された Azure Batch AI サービスを使用して、GPU と CPU のクラスター上で人工知能 (AI) やその他の機械学習モデルをトレーニングする方法について説明します。
 services: batch-ai
 documentationcenter: ''
@@ -12,86 +12,63 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/13/2017
-ms.author: asutton
-ms.custom: ''
-ms.openlocfilehash: 504504f278907536e89055cd5c912d2d1f280931
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.date: 08/01/2018
+ms.author: danlep
+ms.openlocfilehash: 98497812e75d07fc153e0e351331c05484164fdd
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627204"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052701"
 ---
-# <a name="what-is-batch-ai-in-azure"></a>Azure の Batch AI とは
-Batch AI は、Azure 仮想マシン (GPU をサポートする VM を含む) のクラスター上で、データ サイエンティストや AI 研究者が AI およびその他の機械学習モデルをトレーニングすることを可能にする管理されたサービスです。 ジョブの要件、入力の取得元、出力の保存先を記述すれば、後の処理は Batch AI が行います。  
- 
-## <a name="why-batch-ai"></a>Batch AI を使用する理由 
-強力な AI アルゴリズムの開発は、計算集中型の反復的なプロセスです。 データ サイエンティストや AI 研究者が取り扱うデータ セットはますます大きくなる一方です。 彼らは、ハイパーパラメーターの調整に関するネットワーク設計を数多く試しながら、より多くのレイヤーを備えるモデルを開発しています。 これを効率的に行うには、モデルごとに複数の CPU または GPU を用意し、実験を並列に実行して、トレーニング データ、ログ、モデル出力の共有ストレージを用意する必要があります。   
- 
-![Batch AI プロセス](media/overview/batchai-context.png)
+# <a name="what-is-azure-batch-ai"></a>Azure Batch AI とは
 
-データ サイエンティストや AI 研究者はそれぞれの分野の専門家ですが、大規模なインフラストラクチャの管理は、本来の仕事の妨げになる可能性があります。 AI を大規模に開発するには、インフラストラクチャ関連の多くのタスクが必要になります。これには、VM のクラスターのプロビジョニング、ソフトウェアとコンテナーのインストール、作業のキューへの登録、ジョブの優先順位付けとスケジューリング、障害の処理、データの分散、結果の共有、コスト管理のためのリソースのスケーリング、ツールやワークフローとの統合が含まれます。 Batch AI は、これらのタスクを処理します。 
- 
-## <a name="what-is-batch-ai"></a>Batch AI とは 
+Azure Batch AI は、データ サイエンティストと AI 研究者が複雑なインフラストラクチャを管理することなく、Azure で機械学習と AI のモデルを大規模にトレーニングしてテストするのに役立つマネージド サービスです。 コンピューティング リソース、実行するジョブ、モデルの入力と出力の保存先を記述すれば、残りは Batch AI が処理します。
 
-Batch AI は、AI のトレーニングとテストに特化したリソース管理とジョブ スケジューリングを提供します。 主な機能は次のとおりです。 
+Batch AI は、スタンドアロンで使用することも、より大規模な開発ワークフローの一環としてモデル トレーニングを実行するために使用することもできます。
 
-* 実行時間の長いバッチ ジョブ、反復的な実験、および対話型トレーニングの実行 
-* GPU または CPU を使用した VM クラスターの自動スケーリングまたは手動スケーリング 
-* VM 間およびリモート アクセス用の SSH 通信の構成 
-* [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK) (CNTK)、[TensorFlow](https://www.tensorflow.org/)、[Chainer](https://chainer.org/) などの一般的なツールキット向けに最適化された構成に基づく、ディープ ラーニングまたは機械学習フレームワークのサポート 
-* 優先度ベースのジョブ キューによる、クラスターの共有と、優先度の低い VM と Azure Reservations の利用  
-* Azure Files とマネージド NFS サーバーを含む柔軟なストレージ オプション 
-* VM とオプションのコンテナーへのリモート ファイル共有のマウント 
-* VM の障害発生時におけるジョブ状態の提供と再起動 
-* Azure Storage からのストリーミングを含む、出力ログ、stdout、stderr、およびモデルへのアクセス 
-* Azure [コマンド ライン インターフェイス](/cli/azure) (CLI)、各種 SDK ([Python](https://github.com/Azure/azure-sdk-for-python)、[C#](https://www.nuget.org/packages/Microsoft.Azure.Management.BatchAI/1.0.0-preview)、Java 向け)、Azure Portal での監視、Microsoft AI ツールとの統合 
+* Batch AI を単独で使用して、[GPU](../virtual-machines/linux/sizes-gpu.md) または CPU のクラスター上で、機械学習および AI モデルのトレーニング、テスト、バッチ スコアリングを実行します。 
 
-Batch AI SDK は、トレーニング パイプラインを管理し、ツールと統合するためのスクリプトまたはアプリケーションの作成をサポートしています。 現在、SDK には Python、C#、Java、および REST API が用意されています。  
- 
+* [Azure Machine Learning](../machine-learning/service/overview-what-is-azure-ml.md) や他の [Azure AI プラットフォーム ツール](https://azure.microsoft.com/overview/ai-platform/)を使用して、ワークフローで Batch AI クラスターを対象にします。 Azure ML は、データ準備、実験、ジョブ履歴のための豊富なエクスペリエンスを提供します。 また、Azure ML では、トレーニング済みモデルをコンテナーにパッケージ化し、推論のモデルをデプロイしたり、IoT デバイスにデプロイしたりできます。  
 
-Batch AI では、Azure Resource Manager を使用してコントロールプレーンの操作 (作成、一覧表示、取得、削除) を行います。 Azure Active Directory は、認証とロールベースのアクセス制御に使用されます。  
- 
-## <a name="how-to-use-batch-ai"></a>Batch AI の使用方法 
+## <a name="train-machine-learning-and-ai-models"></a>機械学習および AI モデルのトレーニング
 
-Batch AI を使用するには、"*クラスター*" と "*ジョブ*" を定義して管理します。 
+Batch AI を使用して、機械学習モデルおよびディープ ニューラル ネットワーク (ディープ ラーニング) や他の AI アプローチをトレーニングします。 Batch AI には、一般的なオープンソースの AI ライブラリとフレームワーク ([TensorFlow](https://github.com/tensorflow/tensorflow)、[PyTorch](https://github.com/pytorch/pytorch)、[Chainer](https://github.com/chainer/chainer)、[Microsoft Cognitive Toolkit (CNTK)](https://github.com/Microsoft/CNTK) など) のサポートが組み込まれています。
 
- 
-**クラスター**は、次のような計算要件を表します。 
-* 処理を実行する Azure リージョン 
-* 使用する VM のファミリとサイズ。たとえば、4 つの NVIDIA K80 GPU を含む NC24 VM 
-* VM の数、または自動スケールの最小数と最大数 
-* VM イメージ。たとえば、Ubuntu 16.04 LTS または [Microsoft ディープ ラーニング仮想マシン](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
-* (たとえば、Azure Files または Batch AI によって管理される NFS サーバーから) マウントする任意のリモート ファイル共有ボリューム 
-* デバッグのための対話型ログイン用に VM に構成するユーザー名と SSH キーまたはパスワード  
- 
+問題領域を特定し、データを準備したら、Batch AI を対話的に操作してモデルのアイデアをテストします。 その後、大規模に実験を行う準備が整ったら、MPI などの通信ライブラリを使用して複数の GPU でジョブを開始し、多数の実験を並列で実行します。
 
-**ジョブ**は、次のことを表します。 
-* 使用するクラスターとリージョン 
-* ジョブに使用する VM の数 
-* ジョブの開始時に渡す入力および出力ディレクトリ。 通常は、クラスターのセットアップ中にマウントされた共有ファイル システムを使用します 
-* ソフトウェアまたはインストール スクリプトを実行するためのオプションのコンテナー 
-* AI フレームワーク固有の構成、またはジョブを開始するためのコマンド ラインとパラメーター 
- 
+Batch AI を使用すると、さまざまな方法でモデルを大規模にトレーニングできます。 例:  
 
-[Azure CLI](/cli/azure) のほか、クラスターとジョブの構成ファイルを利用して、Batch AI を使ってみましょう。 このアプローチを使用すれば、必要に応じてクラスターを迅速に作成し、ネットワーク設計またはハイパーパラメーターを試すためのジョブを実行できます。  
- 
+|  |  |
+|---------|---------|
+| **トレーニングの分散**<br/>![分散トレーニング](./media/overview/distributed-training.png)  | ネットワークに接続された多数の GPU 間で 1 つのジョブのトレーニングをスケールアップして、大量のデータを含むより大規模なネットワークをトレーニングします。|
+| **実験**<br/>![実験](./media/overview/experimentation.png) | 複数のジョブを使用してトレーニングをスケールアウトします。 パラメーター スイープを実行して新しいアイデアを試したり、ハイパーパラメーターを調整して精度とパフォーマンスを最適化したりします。 |
+| **並列実行**![並列実行](./media/overview/parallel-execution.png) | ジョブを短時間で完了するために、サーバー群でジョブを並列実行して、一度に多数のモデルのトレーニングやスコア付けを行います。|
 
-Batch AI を使用すると、複数の GPU の並列操作が容易になります。 複数の GPU にわたってジョブをスケーリングする必要がある場合、Batch AI では VM 間にセキュリティで保護されたネットワーク接続が設定されます。 InfiniBand を使用する場合は、Batch AI によってドライバーが構成され、ジョブ内のノード間で MPI が開始されます。  
+モデルをトレーニングしたら、Batch AI を使用してモデルをテストするか (トレーニング スクリプトに含まれていない場合)、バッチ スコアリングを実行します。
 
-## <a name="data-management"></a>[データ管理]
-Batch AI には、トレーニング スクリプト、データ、出力に関して柔軟なオプションが用意されています。
-  
-* 初期の実験や小さなデータセットには、**ローカル ディスク**を使用します。 このシナリオでは、SSH 経由で仮想マシンに接続してスクリプトを編集し、ログを読み取ります。 
+## <a name="how-it-works"></a>動作のしくみ
 
-* **Azure Files** を使用して、複数のジョブ間でトレーニング データを共有し、出力ログとモデルを単一の場所に保存します 
+Batch AI SDK、コマンド ライン スクリプト、または Azure portal を使用して、コンピューティング リソースを管理し、AI のトレーニングとテストのジョブをスケジュールします。 
 
-* **NFS サーバー**を設定して、トレーニング用の大規模なデータと VM をサポートします。 Batch AI では、Azure Storage に基づくディスクを備えた特殊なクラスター タイプの NFS サーバーを自動的に設定できます。 
- 
-* **並列ファイル システム**により、データと並列トレーニングのためのスケーラビリティがさらに向上します。 Batch AI は並列ファイル システムを管理しませんが、Lustre、Gluster、および BeeGFS 用のサンプルのデプロイ テンプレートが用意されています。  
+* **VM のクラスターのプロビジョニングとスケーリング** - ノード (VM) 数を選択し、トレーニングのニーズに応じて、GPU 対応の VM サイズまたは他の VM サイズを選択します。 リソースを必要なときだけ使用するために、ノード数を自動または手動でスケールアップまたはスケールダウンします。 
+
+* **依存関係とコンテナーの管理** - 既定では、Batch AI クラスターは、GPU または CPU でコンテナー ベースのトレーニング フレームワークを実行するための依存関係が事前インストールされた Linux VM イメージを実行します。 追加の構成では、カスタム イメージを提供するか、スタートアップ スクリプトを実行します。
+
+* **データの分散** - 1 つまたは複数のストレージ オプション (Azure Files、Azure Blob Storage、マネージド NFS サーバー) を選択して、入力データ、スクリプト、ジョブ出力を管理します。 Batch AI では、高性能並列ファイル システムなどのカスタム ストレージ ソリューションもサポートされています。 単純な構成ファイルを使用して、クラスター ノードとジョブ コンテナーにストレージ ファイル システムをマウントします。
+
+* **ジョブのスケジュール** - 優先度ベースのジョブ キューにジョブを送信してクラスター リソースを共有し、低優先度 VM と予約済みインスタンスを利用します。
+
+* **障害への対応** - ジョブの状態を監視し、長時間実行される可能性のあるジョブで VM の障害が発生した場合にジョブを再開します。
+
+* **結果の収集** - 出力ログ、Stdout、Stderr、トレーニング済みモデルに簡単にアクセスできます。 マウントされたストレージに出力を直接プッシュするように Batch AI ジョブを構成します。
+
+Azure サービスの 1 つである Batch AI では、セキュリティを確保するために、ロールベースのアクセス制御 (RBAC) や Azure 仮想ネットワークなどの一般的なツールがサポートされています。  
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure CLI](quickstart-cli.md) または [Python](quickstart-python.md) を使用した最初の Batch AI トレーニング ジョブの作成を開始する。
-* さまざまなフレームワークのサンプル [トレーニング レシピ](https://github.com/Azure/BatchAI)を確認する。
+* 機械学習または AI モデルのトレーニングに使用する [Batch AI リソース](resource-concepts.md)の詳細を確認する。
 
+* Batch AI を使用して、[サンプル ディープ ラーニング モデルのトレーニング](quickstart-tensorflow-training-cli.md)を開始する。
+
+* 一般的な AI フレームワークのサンプル [トレーニング レシピ](https://github.com/Azure/BatchAI/blob/master/recipes)を確認する。

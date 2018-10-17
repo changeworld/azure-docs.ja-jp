@@ -1,21 +1,21 @@
 ---
-title: Translator Text と Node.js でテキストの表記を変換する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と Node.js を使って、1 つの言語の中でテキストの表記を変換します。
+title: 'クイック スタート: テキスト スクリプトを変換する - Translator Text、Node.js'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Node.js で Translator Text API を使って 1 つの言語の中でテキストの表記を変換します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: b16af911e5822deaa7cc7bcfe792245ae154eb26
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 53ebcd6c37141a783303dd71666d5c8d4805ca49
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43770826"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127695"
 ---
 # <a name="quickstart-transliterate-text-with-nodejs"></a>クイック スタート: Node.js を使ったテキストの表記変換
 

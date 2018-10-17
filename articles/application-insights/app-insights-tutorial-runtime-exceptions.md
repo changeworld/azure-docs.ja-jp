@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 7c2e67605cd2489f2c8d9da5ac80386056464afa
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: f45cb6a47756fae7b75d8c3df80a0bc754742063
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42815115"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299006"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 
@@ -101,6 +101,15 @@ Application Insights によって収集されたすべてのデータはAzure Lo
     ![コード](media/app-insights-tutorial-runtime-exceptions/codelens.png)
 
 9. **[影響の分析]** をクリックして、Application Insights Analytics を開きます。  影響を受けたユーザー、ブラウザー、リージョンなどの失敗した要求に関する詳細情報を提供するいくつかのクエリが表示されます。<br><br>![Analytics](media/app-insights-tutorial-runtime-exceptions/analytics.png)<br>
+
+## <a name="add-work-item"></a>作業項目を追加する
+Application Insights を Azure DevOps や GitHub などの追跡システムに接続する場合は、Application Insights から直接、作業項目を作成できます。
+
+1. Application Insights の **[Exception Properties]\(例外プロパティ\)** パネルに戻ります。
+2. **[新しい作業項目]** をクリックします。
+3. **[新しい作業項目]** パネルが開き、既に取り込まれている例外の詳細が表示されます。  保存する前にその他の情報を追加できます。
+
+    ![新しい作業項目](media/app-insights-tutorial-runtime-exceptions/new-work-item.png)
 
 ## <a name="next-steps"></a>次の手順
 これで、ランタイムの例外を特定する方法を学習しました。次のチュートリアルに進んで、パフォーマンスの問題を特定して診断する方法をご覧ください。

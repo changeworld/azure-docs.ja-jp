@@ -1,20 +1,21 @@
 ---
-title: Bing の単一ページ News Search アプリ | Microsoft Docs
+title: 'チュートリアル: Bing News Search シングルページ アプリ'
+titlesuffix: Azure Cognitive Services
 description: シングルページ Web アプリケーションで Bing News Search API を使用する方法を説明します。
 services: cognitive-services
 author: mikedodaro
-manager: ronakshah
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/30/2017
 ms.author: v-gedod
-ms.openlocfilehash: fb8cd24dfdfb03500cc86ee1b1f0126ec044a873
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1d27751d12c82736ca519bb3a0e9bcd49bef4a47
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377437"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803649"
 ---
 # <a name="tutorial-single-page-news-search-app"></a>チュートリアル: 単一ページの News Search アプリ
 Bing News Search API を使うと、Web を検索して、検索クエリに関連するニュースの種類の結果を取得できます。 このチュートリアルでは、Bing News Search API を使用して検索結果をページに表示する単一ページの Web アプリケーションを構築します。 このアプリケーションには、HTML、CSS、JavaScript のコンポーネントが含まれます。

@@ -13,16 +13,16 @@ ms.topic: overview
 ms.date: 03/07/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ff4e5322ac9ccc0bbfd0706ca9f4863670bbf1b5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: af93ade2a7031aeda5b4108649c59a8d6c1393ce
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186213"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465862"
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
-組織内のアクセス権は、Azure Active Directory (AD) Privileged Identity Management で管理、制御、監視することができます。 その対象には、Azure AD や Azure リソース (プレビュー) をはじめとする各種 Microsoft Online Services (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
+組織内のアクセス権は、Azure Active Directory (Azure AD) Privileged Identity Management を使用して管理、制御、監視することができます。 その対象には、Azure AD や Azure リソースをはじめとする各種 Microsoft Online Services (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
 
 > [!NOTE]
 > テナントの Privileged Identity Management を有効にすると、サービスを使用するユーザーまたはサービスから利益を受けるユーザーごとに、有効な Azure AD Premium P2 または Enterprise Mobility および Security E5 の有料または試用版のライセンスが必要になります。 例には、以下のユーザーまたはグループ内のユーザーが含まれます。
@@ -39,11 +39,11 @@ ms.locfileid: "43186213"
 
 Azure AD Privileged Identity Management は組織が次の作業を行うのに役立ちます。
 
-- Azure リソース (プレビュー) を管理するための特権ロールがどのユーザーに割り当てられているかや、Azure AD の管理者ロールがどのユーザーに割り当てられているかを確認する
-- Office 365 や Intune などの Microsoft Online Services のほか、サブスクリプション、リソース グループ、個々のリソース (Virtual Machines など) といった Azure リソース (プレビュー) へのオンデマンドの "ジャスト イン タイム" な管理アクセスを有効にする 
--   管理者によるアクティブ化の履歴 (Azure リソース (プレビュー) に対して管理者が行った変更を含む) を確認する
+- Azure リソースを管理するための特権ロールがどのユーザーに割り当てられているかや、Azure AD の管理者ロールがどのユーザーに割り当てられているかを確認する
+- Office 365 や Intune などの Microsoft Online Services のほか、サブスクリプション、リソース グループ、個々のリソース (Virtual Machines など) といった Azure リソースへのオンデマンドの "ジャスト イン タイム" な管理アクセスを有効にする 
+- 管理者によるアクティブ化の履歴 (Azure リソースに対して管理者が行った変更を含む) を確認する
 - 管理者の割り当てに生じた変更についてのアラートを受け取る
-- Azure AD の特権管理者ロール (プレビュー) をアクティブにするための承認を要求する。 
+- Azure AD の特権管理者ロールをアクティブにするための承認を要求する。
 - 管理者ロールのメンバーシップをレビューしたり、メンバーシップの継続についてその正当性を説明するようユーザーに要求したりする。
 
 Azure AD では、組織の組み込みロール (グローバル管理者など) に割り当てられているユーザーを Azure AD Privileged Identity Management で管理することができます。 Azure では、所有者や共同作成者など、Azure RBAC ロールを介して割り当てられているユーザーとグループを Azure AD Privileged Identity Management で管理することができます。
@@ -100,17 +100,17 @@ Azure RBAC ロールについては、サブスクリプション管理者、リ
 
 ## <a name="privileged-identity-management-overview-entry-point"></a>Privileged Identity Management の概要 (エントリ ポイント)
 
-Azure AD Privileged Identity Management は、Azure AD ディレクトリのロールおよび Azure リソース (プレビュー) のロールの管理を支援します。 Azure リソースに使用されるロールの機能は、Azure AD における管理者ロールとは異なります。 Azure リソース ロールでは、その割り当て先となるリソースとその階層におけるすべての下位リソース (継承) を対象とした、きめ細かなアクセス許可が得られます。 RBAC、リソース階層、継承について詳しくは[こちら](../../role-based-access-control/role-assignments-portal.md)を参照してください。 Azure AD ディレクトリ ロールと Azure リソース (プレビュー) のどちらについても、PIM の管理は、エントリ ポイント (PIM の概要) の左側のナビゲーション メニューにある [管理] セクションで適切なリンクにアクセスして行います。
+Azure AD Privileged Identity Management は、Azure AD ディレクトリのロールおよび Azure リソースのロールの管理を支援します。 Azure リソースに使用されるロールの機能は、Azure AD における管理者ロールとは異なります。 Azure リソース ロールでは、その割り当て先となるリソースとその階層におけるすべての下位リソース (継承) を対象とした、きめ細かなアクセス許可が得られます。 RBAC、リソース階層、継承について詳しくは[こちら](../../role-based-access-control/role-assignments-portal.md)を参照してください。 Azure AD ディレクトリ ロールと Azure リソースのどちらについても、PIM の管理は、エントリ ポイント (PIM の概要) の左側のナビゲーション メニューにある [管理] セクションで適切なリンクにアクセスして行います。
 
 PIM はロールのアクティブ化、保留中のアクティブ化/要求の表示、保留中の承認 (Azure AD ディレクトリ ロールの場合) の表示のためのアクセスを簡単にし、左側のナビゲーション メニューの [タスク] セクションの応答に対する保留をレビューします。
 
-概要のエントリ ポイントから [タスク] メニュー項目のいずれかにアクセスして表示されるビューには、Azure AD ディレクトリ ロールと Azure リソース ロール (プレビュー) の両方の結果が含まれています。
+概要のエントリ ポイントから [タスク] メニュー項目のいずれかにアクセスして表示されるビューには、Azure AD ディレクトリ ロールと Azure リソース ロールの両方の結果が含まれています。
 
 ![クイック スタート](./media/pim-configure/quick-start.png)
 
-[自分のロール] には、Azure AD ディレクトリ ロールと Azure リソース ロール (プレビュー) に関して、アクティブで資格のあるロールの割り当てが一覧表示されます。 資格のあるロールの割り当てのアクティブ化について詳しくは、[こちら](pim-how-to-activate-role.md)を参照してください。
+[自分のロール] には、Azure AD ディレクトリ ロールと Azure リソース ロールに関して、アクティブで資格のあるロールの割り当てが一覧表示されます。 資格のあるロールの割り当てのアクティブ化について詳しくは、[こちら](pim-how-to-activate-role.md)を参照してください。
 
-Azure リソース (プレビュー) のロールをアクティブにすると、適格なロール メンバーが将来の日付/時刻でアクティブ化をスケジュールしたり、特定の (管理者によって許可された) アクティブ化最大期間を選択できるようになります。
+Azure リソースのロールをアクティブにすると、適格なロール メンバーが将来の日付/時刻でアクティブ化をスケジュールしたり、特定の (管理者によって許可された) アクティブ化最大期間を選択できるようになります。
 
 ![](./media/pim-configure/activations.png)
 
@@ -126,15 +126,15 @@ Azure AD Privileged Identity Manager には、次のような重要な情報を�
 * 各特権ロールに割り当てられているユーザーの数  
 * 管理者候補および永続的管理者の数
 * ディレクトリの特権ロール アクティブ化のグラフ
-*   Azure リソース ロール (プレビュー) のジャストインタイム、期限付き、および永続の割り当ての数
-*   過去 30 日に新たにロールが割り当てられたユーザーとグループ (Azure リソース ロール)
+* Azure リソース ロールのジャストインタイム、期限付き、および永続の割り当ての数
+* 過去 30 日に新たにロールが割り当てられたユーザーとグループ (Azure リソース ロール)
 
 
 ![PIM dashboard - screenshot](./media/pim-configure/PIM_Admin_Overview.png)
 
 ## <a name="privileged-role-management"></a>特権ロールの管理
 
-Azure AD Privileged Identity Management では、Azure AD ディレクトリ ロールの各ロールに永続的管理者または管理者候補を追加または削除することによって、管理者を管理できます。 テナント内のサブスクリプション管理に対応した所有者、ユーザー アクセス管理者、グローバル管理者は、Azure リソース (プレビュー) の PIM を使用して、ジャストインタイム アクセス (候補)、開始/終了日時が指定された期限付き (アクティブ化不要) アクセス、永続 (ロールの設定で有効になっている場合) のいずれかとして、ユーザーまたはグループを Azure リソース ロールに割り当てることができます。
+Azure AD Privileged Identity Management では、Azure AD ディレクトリ ロールの各ロールに永続的管理者または管理者候補を追加または削除することによって、管理者を管理できます。 テナント内のサブスクリプション管理に対応した所有者、ユーザー アクセス管理者、グローバル管理者は、Azure リソースの PIM を使用して、ジャストインタイム アクセス (候補)、開始/終了日時が指定された期限付き (アクティブ化不要) アクセス、永続 (ロールの設定で有効になっている場合) のいずれかとして、ユーザーまたはグループを Azure リソース ロールに割り当てることができます。
 
 ![PIM の管理者の追加/削除 - スクリーンショット](./media/pim-configure/PIM_AddRemove.png)
 
@@ -146,13 +146,13 @@ Azure AD ディレクトリ ロールには、[ロールの設定](pim-how-to-ch
 * ロールのアクティブ化の通知
 * ロール アクティブ化プロセス中にユーザーが提供する必要のある情報
 * サービス チケットまたはインシデントの番号
-* [承認ワークフロー要件 - プレビュー](./azure-ad-pim-approval-workflow.md)
+* [承認ワークフロー要件](./azure-ad-pim-approval-workflow.md)
 
 ![PIM 設定 - 管理者アクティブ化 - スクリーンショット](./media/pim-configure/PIM_Settings_w_Approval_Disabled.png)
 
 上図で、 **多要素認証** のボタンが無効化されていることに注意してください。 特定の高い特権を持つロールでは、MFA を使用して保護を強化する必要があります。
 
-Azure リソース ロール (プレビュー) のロール設定では、ジャストインタイム割り当て設定と直接割り当て設定に関して、管理者が次の構成を実行できます。
+Azure リソース ロールのロール設定では、ジャストインタイム割り当て設定と直接割り当て設定に関して、管理者が次の構成を実行できます。
 
 - ロールに対してユーザーまたはグループを無期限に割り当てること (永続的な割り当て) の可否
 - 既定の割り当て期間 (永続的な割り当てを行わない場合)
@@ -173,7 +173,7 @@ Azure リソース ロール (プレビュー) のロール設定では、ジャ
 
 ## <a name="review-role-activity"></a>ロール アクティビティの確認
 
-従業員および管理者がどのように特権ロールを使用しているかを追跡するには、2 つの方法があります。 1 つ目の方法は、[ディレクトリ ロール監査履歴](pim-how-to-use-audit-log.md)を使用する方法です。 監査履歴ログは、特権ロールの割り当てとロールのアクティブ化の履歴における変更、および Azure リソース ロール (プレビュー) の設定に対する変更を追跡します。 
+従業員および管理者がどのように特権ロールを使用しているかを追跡するには、2 つの方法があります。 1 つ目の方法は、[ディレクトリ ロール監査履歴](pim-how-to-use-audit-log.md)を使用する方法です。 監査履歴ログは、特権ロールの割り当てとロールのアクティブ化の履歴における変更、および Azure リソース ロールの設定に対する変更を追跡します。 
 
 ![PIM アクティブ化履歴 - スクリーンショット](./media/pim-configure/PIM_ActivationHistory.png)
 

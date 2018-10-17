@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/10/2018
+ms.date: 10/05/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: de744a4a23b246223ed0f42f3d079b1ac2e5521a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 761b68ca99df8ae5b4d379b95e7d2a300f7e6238
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47008825"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874039"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Azure 仮想ネットワーク ゲートウェイ (VPN Gateway) と Azure Virtual WAN vpngateway の違いは何ですか。
 
@@ -21,7 +21,11 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>ローンチ段階でどのデバイス プロバイダー (Virtual WAN パートナー) がサポートされていますか。 
 
-現時点で、Citrix と Riverbed が、完全に自動化された Virtual WAN エクスペリエンスをサポートしています。 詳細については、[Virtual WAN パートナー](https://go.microsoft.com/fwlink/p/?linkid=2019615)に関するページを参照してください。
+現時点で、多くのパートナーが、完全に自動化された Virtual WAN エクスペリエンスをサポートしています。 詳細については、[Virtual WAN パートナー](https://go.microsoft.com/fwlink/p/?linkid=2019615)に関するページを参照してください。 
+
+### <a name="what-are-the-virtual-wan-partner-automation-steps"></a>Virtual WAN パートナーの自動化手順はどのようになっていますか。
+
+パートナーの自動化手順については、[Virtual WAN パートナーの自動化](../articles/virtual-wan/virtual-wan-configure-automation-providers.md)に関するページを参照してください。
 
 ### <a name="am-i-required-to-use-a-preferred-partner-device"></a>推奨パートナー デバイスを使用する必要がありますか。
 
@@ -41,7 +45,7 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
 
 ### <a name="how-many-vpn-devices-can-connect-to-a-single-hub"></a>1 つのハブにはいくつの VPN デバイスを接続できますか。
 
-1 つの仮想ハブにつき、最大で 100 件の接続がサポートされます。 各接続は、アクティブ/アクティブ構成の 2 つのトンネルで構成されます。 トンネルは、Azure Virtual Hub vpngateway で終了します。
+1 つの仮想ハブにつき、最大で 1,000 件の接続がサポートされます。 各接続は、アクティブ/アクティブ構成の 2 つのトンネルで構成されます。 トンネルは、Azure Virtual Hub vpngateway で終了します。
 
 ### <a name="can-the-on-premises-vpn-device-connect-to-multiple-hubs"></a>オンプレミスの VPN デバイスは、複数のハブに接続できますか。
 
@@ -66,7 +70,6 @@ Virtual WAN は、大規模なサイト間接続を提供し、スループッ�
 ### <a name="is-there-support-for-bgp"></a>BGP のサポートはありますか。
 
 はい。BGP はサポートされています。 NVA VNet からのルートが適切にアドバタイズされるようにするために、仮想ハブに接続されている NVA VNet にスポークが接続されている場合は BGP を無効にする必要があります。 さらに、スポーク VNet を仮想ハブに接続し、スポーク Vnet ルートがオンプレミス システムに確実に伝達されるようにします。
-仮想ハブで UDR を使用してトラフィックを転送できますか。
 
 ### <a name="can-i-direct-traffic-using-udr-in-the-virtual-hub"></a>仮想ハブで UDR を使用してトラフィックを転送できますか。
 
@@ -94,7 +97,7 @@ azurevirtualwan@microsoft.com に電子メールを送信する。 理想的な�
 
 ### <a name="how-is-virtual-wan-different-from-the-existing-azure-virtual-network-gateway"></a>Virtual WAN と既存の Azure Virtual Network Gateway は、どんな点が違いますか。
 
-Virtual Network Gateway VPN は、トンネル数が 30 に制限されています。 大規模な VPN の場合、接続するには、Virtual WAN を使用する必要があります。 ハブ内では、最大 100 個の支社接続を 2 Gbps で接続できます。 接続は、オンプレミス VPN デバイスから仮想ハブへのアクティブ/アクティブ型トンネルです。 リージョンごとに 1 つのハブを持つことができます。これは、ハブ間で 100 を超えるブランチを接続できることを意味します。
+Virtual Network Gateway VPN は、トンネル数が 30 に制限されています。 大規模な VPN の場合、接続するには、Virtual WAN を使用する必要があります。 中西部リージョンを除くすべてのリージョンで、ハブ内で最大 1,000 個の支店接続を 2 Gbps で接続できます。 中西部リージョンでは、20 Gbps が利用可能です。 将来的には、他のリージョンにも 20 Gbps がロールアウトされる予定です。 接続は、オンプレミス VPN デバイスから仮想ハブへのアクティブ/アクティブ型トンネルです。 リージョンごとに 1 つのハブを持つことができます。これは、ハブ間で 1,000 を超える支店を接続できることを意味します。
 
 ### <a name="does-this-virtual-wan-require-expressroute-from-each-site"></a>この Virtual WAN では、各サイトからの ExpressRoute が必要ですか。
 
@@ -102,7 +105,7 @@ Virtual Network Gateway VPN は、トンネル数が 30 に制限されていま
 
 ### <a name="is-there-a-network-throughput-limit-when-using-azure-virtual-wan"></a>Azure Virtual WAN を使用する場合、ネットワーク スループットに制限はありますか。
 
-支店の数は、ハブ/リージョンあたり 100 接続に制限されています。ハブ内では合計 2 G までです。
+支店の数は、ハブ/リージョンあたり 1,000 接続に制限されています。ハブ内では合計 2 G までです。 米国中西部は例外で、合計で 20 Gbps を利用できます。 将来的には、他のリージョンにも 20 Gbps がロールアウトされる予定です。
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>Virtual WAN では、オンプレミス デバイスで複数の ISP を並行して利用できますか、それとも常に単一の VPN トンネルですか。
 
@@ -110,7 +113,7 @@ Virtual Network Gateway VPN は、トンネル数が 30 に制限されていま
 
 ### <a name="how-is-traffic-routed-on-the-azure-backbone"></a>Azure バックボーン上では、トラフィックはどのようにルーティングされますか。
 
-トラフィックは、支店のデバイス -> ISP -> Microsoft Edge -> Microsoft DC -> Microsoft Edge -> ISP -> 支店のデバイスというパターンに従います。
+トラフィックは、支店のデバイス -> ISP -> Microsoft Edge -> Microsoft DC -> Microsoft Edge -> ISP -> 支店のデバイスというパターンに従います
 
 ### <a name="in-this-model-what-do-you-need-at-each-site-just-an-internet-connection"></a>このモデルでは、各サイトでどのようなものが必要ですか。 インターネット接続は必要ですか。
 

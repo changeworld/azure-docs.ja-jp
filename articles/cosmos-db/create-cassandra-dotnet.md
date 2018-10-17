@@ -1,22 +1,21 @@
 ---
-title: 'クイック スタート: Cassandra API (.NET) - Azure Cosmos DB |Microsoft Docs'
+title: 'クイック スタート: Cassandra API (.NET) - Azure Cosmos DB'
 description: このクイックスタートでは、Azure Cosmos DB の Cassandra API を使用して、Azure Portal と .NET でプロファイル アプリケーションを作成する方法を示します。
 services: cosmos-db
-author: SnehaGunda
-manager: kfile
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
+author: SnehaGunda
+ms.author: sngun
 ms.custom: quick start connect, mvc
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/15/2017
-ms.author: sngun
-ms.openlocfilehash: 6ab7c0fa5f7e4d10b38ecee8f75372dda3b11a1c
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.date: 09/24/2018
+ms.openlocfilehash: 3708027b766ff9070831dd3677e821565e0dd4fa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700582"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994957"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>クイックスタート: .NET と Azure Cosmos DB で Cassandra アプリをビルドする
 
@@ -27,7 +26,7 @@ ms.locfileid: "43700582"
 > * [Python](create-cassandra-python.md)
 >  
 
-このクイックスタートでは、GitHub から例を複製することで、.NET と Azure Cosmos DB の [Cassandra API](cassandra-introduction.md) を使用してプロファイル アプリを作成する方法を示します。 このクイックスタートでは、Web ベースの Azure Portal を使って Azure Cosmos DB アカウントを作成する手順についても説明します。   
+このクイックスタートでは、GitHub から例を複製することで、.NET と Azure Cosmos DB の [Cassandra API](cassandra-introduction.md) を使用してプロファイル アプリを作成する方法を示します。 このクイック スタートでは、Web ベースの Azure portal を使用して Azure Cosmos DB アカウントを作成する方法も示します。
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、テーブル、キーと値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
@@ -35,9 +34,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]または、Azure サブスクリプションを使わず、課金も契約もなしで [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
 
-Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスする必要があります。 まだアクセスを申し込んでいない場合は、[今すぐサインアップ](cassandra-introduction.md#sign-up-now)してください。
-
-加えて次の作業を行います。 
+さらに、次のものが必要です。 
 * まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
 * [Git](https://www.git-scm.com/) をインストールして例を複製します。
 
@@ -51,7 +48,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
 次は、コードを使った作業に移りましょう。 GitHub から Cassandra API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
-1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+1. コマンド プロンプトを開きます。 `git-samples` という名前の新しいフォルダーを作成します。 その後、コマンド プロンプトを閉じます。
 
     ```bash
     md "C:\git-samples"
@@ -69,11 +66,11 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
     git clone https://github.com/Azure-Samples/azure-cosmos-db-cassandra-dotnet-getting-started.git
     ```
 
-3. Visual Studio で CassandraQuickStartSample ソリューション ファイルを開きます。 
+4. 次に、Visual Studio で CassandraQuickStartSample ソリューション ファイルを開きます。 
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 これらのスニペットはすべて C:\git-samples\azure-cosmos-db-cassandra-dotnet-getting-started\CassandraQuickStartSample フォルダーにインストールされている Program.cs ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。
+この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 スニペットはすべて `C:\git-samples\azure-cosmos-db-cassandra-dotnet-getting-started\CassandraQuickStartSample` フォルダーにインストールされている `Program.cs` ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。
 
 * Cassandra クラスター エンドポイントに接続することによって、セッションを初期化します。 Azure Cosmos DB の Cassandra API は、TLSv1.2 のみをサポートしています。 
 
@@ -121,7 +118,7 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 アプリはこの接続文字列情報によって、ホストされているデータベースと通信できます。
 
-1. [Azure Portal](http://portal.azure.com/) で **[接続文字列]** をクリックします。 
+1. [Azure portal](http://portal.azure.com/) で **[接続文字列]** を選択します。
 
     画面右側の ![コピー ボタン](./media/create-cassandra-dotnet/copy.png) を使用してユーザー名の値をコピーします。
 
@@ -149,9 +146,9 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
 5. Program.cs ファイルを保存します。
     
-## <a name="run-the-app"></a>アプリの実行
+## <a name="run-the-net-app"></a>.Net アプリを実行する
 
-1. Visual Studio で、**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順にクリックします。
+1. Visual Studio で、**[ツール]** > **[NuGet パッケージ マネージャー]** > **[パッケージ マネージャー コンソール]** の順に選択します。
 
 2. コマンド プロンプトで、次のコマンドを使って .NET ドライバーの NuGet パッケージをインストールします。 
 
@@ -160,11 +157,11 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
     ```
 3. Ctrl + F5 キーを押してアプリケーションを実行します。 コンソール ウィンドウにアプリが表示されます。 
 
-    ![出力を表示して検証します。](./media/create-cassandra-dotnet/output.png)
+    ![出力を表示して検証する](./media/create-cassandra-dotnet/output.png)
 
     Ctrl + C キーを押してプログラムの実行を停止し、コンソール ウィンドウを閉じます。 
     
-    これで、Azure Portal でデータ エクスプローラーを開いて、この新しいデータの表示、クエリ、変更、操作を行うことができます。 
+4. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。
 
     ![データ エクスプローラーでのデータの表示](./media/create-cassandra-dotnet/data-explorer.png)
 

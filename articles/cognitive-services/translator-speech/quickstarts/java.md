@@ -1,25 +1,27 @@
 ---
-title: Azure Cognitive Services、Microsoft Translator Speech API の Java のクイック スタート | Microsoft Docs
-description: Azure 上の Microsoft Cognitive Services で Microsoft Translator Speech API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Java での Translator Speech API'
+titlesuffix: Azure Cognitive Services
+description: Translator Speech API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0db55f4064d3415cb647519ea9030936012a8446
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ROBOTS: NOINDEX
+ms.openlocfilehash: dde7d3dc7c1a744da9a22c0e4c0a483a186aa327
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41929803"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46969463"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-java"></a>Java での Microsoft Translator Speech API のクイック スタート 
+# <a name="quickstart-translator-speech-api-with-java"></a>クイック スタート: Java での Translator Speech API 
 <a name="HOLTop"></a>
 
-この記事では、Microsoft Translator Speech API を使用して、.wav ファイルで話されている言葉を翻訳する方法について説明します。
+この記事では、Translator Speech API を使用して、.wav ファイルで話されている言葉を翻訳する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

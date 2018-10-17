@@ -1,25 +1,27 @@
 ---
-title: Emotion API を使用したリアルタイムのビデオ分析 | Microsoft Docs
-description: ライブ ビデオ ストリームから取得したフレームに対して、Cognitive Services の Emotion API を使用して、ほぼリアルタイムに分析を実行します。
+title: '例: リアルタイムのビデオ分析 - Emotion API'
+titlesuffix: Azure Cognitive Services
+description: ライブ ビデオ ストリームから取得したフレームに対し、Emotion API を使用して、ほぼリアルタイムに分析を実行します。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: sample
 ms.date: 01/25/2017
 ms.author: anroth
-ms.openlocfilehash: 3a809e729e3b697b92d9fc59351a200748bcb884
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: df955a23393c82565e8f31e59e148798a0f89bbf
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374165"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236482"
 ---
-# <a name="how-to-analyze-videos-in-real-time"></a>リアルタイムにビデオを分析する方法
+# <a name="example-how-to-analyze-videos-in-real-time"></a>例: リアルタイムでビデオを分析する方法
 
 > [!IMPORTANT]
-> Video API のプレビューは 2017 年 10 月 30 日をもって終了します。 新しい [Video Indexer API のプレビュー](https://azure.microsoft.com/services/cognitive-services/video-indexer/)をお試しください。ビデオから分析情報を手軽に抽出でき、ビデオ内で話される言葉や表情、性格、感情を検知することで、検索結果などのコンテンツの検索エクスペリエンスを強化できます。 [詳細情報](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)。
+> Emotion API は、2019 年 2 月 15 日に非推奨となる予定です。 現在は、[Face API](https://docs.microsoft.com/azure/cognitive-services/face/) の一部として感情認識機能が一般提供されています。
 
 このガイドでは、ライブ ビデオ ストリームから取得したフレームに対して、ほぼリアルタイムに分析を実行する方法を示します。 そのようなシステムの基本コンポーネントは、次のとおりです。
 - ビデオ ソースからフレームを取得する
@@ -49,13 +51,14 @@ while (true)
 
 ### <a name="parallelizing-api-calls"></a>API 呼び出しの並列化
 単純な単一スレッドのループは、軽量のクライアント側アルゴリズムに適していますが、クラウド API 呼び出しに関わる待ち時間には十分には適合しません。 この問題の解決策は、実行時間の長い API 呼び出しを、フレームの取り込みと並列に実行できるようにすることです。 C# の場合、タスクベースの並列化を使用して実現できます。
-```CSharp
+
+```csharp
 while (true)
 {
     Frame f = GrabFrame();
     if (ShouldAnalyze(f))
     {
-        var t = Task.Run(async () => 
+        var t = Task.Run(async () =>
         {
             AnalysisResult r = await Analyze(f);
             ConsumeResult(r);
@@ -63,25 +66,26 @@ while (true)
     }
 }
 ```
-これはそれぞれの分析を個別のタスクで起動しますが、タスクはバックグラウンドで実行でき、新しいフレームを取得し続けられます。 このため、API 呼び出しが返されるまで待機してメイン スレッドがブロックされることはなくなります。ただし、単純なバージョンで得られているいくつかの保証は失われます。複数の API 呼び出しが並列に行われ、結果が間違った順序で返されることがあります。 また、これにより、複数のスレッドが同時に ConsumeResult() 関数に入る可能性も生じますが、関数がスレッドセーフでない場合は、それが危険である可能性があります。 最後に、この単純なコードは作成されるタスクを追跡しないので、例外は自動的に表示されなくなります。 したがって、追加する最終的な構成要素は、分析タスクを追跡し、例外を発生させ、実行時間の長いタスクを強制終了し、一度に 1 つずつ正しい順序で結果が消費されるようにする "consumer" スレッドになります。
+
+このコードはそれぞれの分析を個別のタスクで起動しますが、タスクはバックグラウンドで実行でき、新しいフレームを取得し続けられます。 このため、API 呼び出しが返されるまで待機してメイン スレッドがブロックされることはなくなります。ただし、単純なバージョンで得られているいくつかの保証は失われます。複数の API 呼び出しが並列に行われ、結果が間違った順序で返されることがあります。 また、これにより、複数のスレッドが同時に ConsumeResult() 関数に入る可能性も生じますが、関数がスレッドセーフでない場合は、それが危険である可能性があります。 最後に、この単純なコードは作成されるタスクを追跡しないので、例外は自動的に表示されなくなります。 したがって、追加する最終的な構成要素は、分析タスクを追跡し、例外を発生させ、実行時間の長いタスクを強制終了し、一度に 1 つずつ正しい順序で結果が消費されるようにする "consumer" スレッドになります。
 
 ### <a name="a-producer-consumer-design"></a>プロデューサー/コンシューマー デザイン
 最後の「プロデューサー/コンシューマー」システムでは、以前の無限ループに非常に類似したプロデューサー スレッドを使用します。 ただし、プロデューサーは、利用できるようになるとすぐに分析結果を消費するのではなく、単にタスクをキュー入れて追跡します。
 ```CSharp
-// Queue that will contain the API call tasks. 
+// Queue that will contain the API call tasks.
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
      
-// Producer thread. 
+// Producer thread.
 while (true)
 {
-    // Grab a frame. 
+    // Grab a frame.
     Frame f = GrabFrame();
  
-    // Decide whether to analyze the frame. 
+    // Decide whether to analyze the frame.
     if (ShouldAnalyze(f))
     {
-        // Start a task that will run in parallel with this thread. 
-        var analysisTask = Task.Run(async () => 
+        // Start a task that will run in parallel with this thread.
+        var analysisTask = Task.Run(async () =>
         {
             // Put the frame, and the result/exception into a wrapper object.
             var output = new ResultWrapper(f);
@@ -95,24 +99,24 @@ while (true)
             }
             return output;
         }
-        
-        // Push the task onto the queue. 
+
+        // Push the task onto the queue.
         taskQueue.Add(analysisTask);
     }
 }
 ```
 また、コンシューマー スレッドもあり、これはタスクをキューから取り出し、タスクが完了するのを待機して、結果を表示するか、スローされた例外を発生させます。 キューの使用により、システムの最大フレーム レートを制限せずに一度に 1 つずつ正しい順序で結果が使用されることを保証できます。
 ```CSharp
-// Consumer thread. 
+// Consumer thread.
 while (true)
 {
-    // Get the oldest task. 
+    // Get the oldest task.
     Task<ResultWrapper> analysisTask = taskQueue.Take();
  
-    // Await until the task is completed. 
+    // Await until the task is completed.
     var output = await analysisTask;
      
-    // Consume the exception or result. 
+    // Consume the exception or result.
     if (output.Exception != null)
     {
         throw output.Exception;
@@ -143,22 +147,22 @@ namespace VideoFrameConsoleApplication
     {
         static void Main(string[] args)
         {
-            // Create grabber, with analysis type Face[]. 
+            // Create grabber, with analysis type Face[].
             FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
-            
+
             // Create Face API Client. Insert your Face API key here.
             FaceServiceClient faceClient = new FaceServiceClient("<subscription key>");
 
             // Set up our Face API call.
             grabber.AnalysisFunction = async frame => return await faceClient.DetectAsync(frame.Image.ToMemoryStream(".jpg"));
 
-            // Set up a listener for when we receive a new result from an API call. 
+            // Set up a listener for when we receive a new result from an API call.
             grabber.NewResultAvailable += (s, e) =>
             {
                 if (e.Analysis != null)
                     Console.WriteLine("New result received for frame acquired at {0}. {1} faces detected", e.Frame.Metadata.Timestamp, e.Analysis.Length);
             };
-            
+
             // Tell grabber to call the Face API every 3 seconds.
             grabber.TriggerAnalysisOnInterval(TimeSpan.FromMilliseconds(3000));
 
@@ -168,7 +172,7 @@ namespace VideoFrameConsoleApplication
             // Wait for keypress to stop
             Console.WriteLine("Press any key to stop...");
             Console.ReadKey();
-            
+
             // Stop, blocking until done.
             grabber.StopProcessingAsync().Wait();
         }
@@ -177,7 +181,7 @@ namespace VideoFrameConsoleApplication
 ```
 2 つ目のサンプル アプリはさらに少し興味深いもので、ビデオ フレームに対してどの API を呼び出すかの選択が可能になっています。 左側では、アプリはライブ ビデオのプレビューを表示し、右側では、対応するフレームにオーバーレイされる最新の API 結果を表示します。
 
-ほとんどのモードで、左のライブ ビデオと右に表示された分析との間に視覚的な遅延が生じます。 この遅延は、API 呼び出しにかかった時間です。 これに該当しないのは、"EmotionsWithClientFaceDetect" モードになっているときで、このモードでは、Cognitive Services にイメージを送信する前に、OpenCV を使用してクライアント コンピューターでローカルに顔検出が実行されます。 こうすることで、検出した顔をすぐに表示し、その後 API 呼び出しが戻ったときに後から感情を更新できます。 これは「ハイブリッド」アプローチの可能性を示しており、このアプローチでは、クライアント上でいくつかの単純な処理を行ってから、必要に応じて、Cognitive Services APIs を使用して、より高度な分析でこれを膨らませることができます。
+ほとんどのモードで、左のライブ ビデオと右に表示された分析との間に視覚的な遅延が生じます。 この遅延は、API 呼び出しにかかった時間です。 これに該当しないのは、"EmotionsWithClientFaceDetect" モードになっているときで、このモードでは、Cognitive Services にイメージを送信する前に、OpenCV を使用してクライアント コンピューターでローカルに顔検出が実行されます。 こうすることで、検出した顔をすぐに表示し、その後 API 呼び出しが戻ったときに後から感情を更新できます。 これは "ハイブリッド" アプローチの可能性を示しており、クライアント上で単純な処理をいくつか実行してから、必要に応じて Cognitive Services APIs を使用し、より高度な分析によって処理を強化することができます。
 
 ![HowToAnalyzeVideo](../../Video/Images/FramebyFrame.jpg)
 
@@ -193,21 +197,20 @@ namespace VideoFrameConsoleApplication
 3. Visual Studio 2015 でサンプルを開き、サンプル アプリケーションをビルドして実行します。
     - BasicConsoleSample の場合、Face API キーは、[BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) 内に直接ハードコードされています。
     - LiveCameraSample の場合、アプリの設定ウィンドウにキーを入力する必要があります。 これらは、セッションを移動してもユーザー データとして残されます。
-        
 
-統合する準備ができたら、**自分のプロジェクトから単純に VideoFrameAnalyzer ライブラリを参照します。** 
+
+統合する準備ができたら、**自分のプロジェクトから単純に VideoFrameAnalyzer ライブラリを参照します。**
 
 
 
 ## <a name="developer-code-of-conduct"></a>開発者の倫理規定
-あらゆる Cognitive Services と同様に、API とサンプルを使用して開発している開発者は、「[Microsoft Cognitive Services 開発者の倫理規定](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)」に従う必要があります。 
+あらゆる Cognitive Services と同様に、API とサンプルを使用して開発している開発者は、[Azure Cognitive Services 開発者の倫理規定](https://azure.microsoft.com/support/legal/developer-code-of-conduct/)に従う必要があります。
 
 
-VideoFrameAnalyzer のイメージ、音声、ビデオ、またはテキストの解釈機能は、Microsoft Cognitive Services を使用しています。 Microsoft は、開発者が (このアプリから) アップロードするイメージ、音声、ビデオ、およびその他のデータを受け取り、サービス向上の目的でそれらを使用する場合があります。 アプリによって Microsoft Cognitive Services に送信されるデータの所有者の保護にご協力をお願いします。 
+VideoFrameAnalyzer のイメージ、音声、ビデオ、またはテキストの解釈機能は、Azure Cognitive Services を使用しています。 Microsoft は、開発者が (このアプリから) アップロードするイメージ、音声、ビデオ、およびその他のデータを受け取り、サービス向上の目的でそれらを使用する場合があります。 アプリによって Azure Cognitive Services に送信されるデータの所有者の保護にご協力をお願いします。
 
 
 ## <a name="summary"></a>まとめ
-このガイドでは、Face、Computer Vision、Emotion API を使用してライブ ビデオ ストリームでほぼリアルタイムの分析を実行する方法と、サンプル コードを使用して作業を開始する方法について説明しました。  [Microsoft Cognitive Services のサインアップ ページ](https://azure.microsoft.com/try/cognitive-services/)で取得した無料の API キーを使用して、アプリのビルドを開始できます。 
+このガイドでは、Face、Computer Vision、Emotion API を使用してライブ ビデオ ストリームでほぼリアルタイムの分析を実行する方法と、サンプル コードを使用して作業を開始する方法について説明しました。  [Azure Cognitive Services のサインアップ ページ](https://azure.microsoft.com/try/cognitive-services/)で取得した無料の API キーを使用して、アプリのビルドを開始できます。
 
 [GitHub リポジトリ](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)では、お気軽にフィードバックや提案を提供してください。API に関するより幅広いフィードバックについては、[UserVoice サイト](https://cognitive.uservoice.com/)にお寄せください。
-

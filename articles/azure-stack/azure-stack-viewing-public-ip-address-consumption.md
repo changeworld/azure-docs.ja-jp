@@ -6,24 +6,23 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 0f77be49-eafe-4886-8c58-a17061e8120f
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/28/2018
+ms.date: 09/10/2018
 ms.author: mabrigg
-ms.openlocfilehash: 50bf01d6de6105d3041c6bb88e803f3d110f751d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6207a77555d0d4656c0728dddec769e483f4d762
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
-ms.locfileid: "29742460"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378246"
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>Azure Stack でパブリック IP アドレスの使用量を表示する
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 クラウド管理者は、以下を表示できます。
  - テナントに割り当てられたパブリック IP アドレスの数。
@@ -39,9 +38,8 @@ ms.locfileid: "29742460"
 ## <a name="view-the-public-ip-address-usage-information"></a>パブリック IP アドレスの使用量情報を表示する
 リージョンで使用されているパブリック IP アドレスの合計数を表示するには:
 
-1. Azure Stack 管理者ポータルで、**[管理リソース]** の下の **[その他のサービス]** を選択し、**[リソース プロバイダー]** を選択します。
-2. **[リソース プロバイダー]** の一覧から **[ネットワーク]** を選択します。
-3. **[ネットワーク]** ウィンドウの **[概要]** セクションに、**[Public IP pools usage]\(パブリック IP プールの使用量\)** タイルが表示されます。
+1. Azure Stack 管理者ポータルで、**[すべてのサービス]** を選択します。 次に、**[管理]** カテゴリで **[ネットワーク]** を選択します。
+1. **[ネットワーク]** ウィンドウの **[概要]** セクションに、**[Public IP pools usage]\(パブリック IP プールの使用量\)** タイルが表示されます。
 
 ![ネットワーク リソース プロバイダーのウィンドウ](media/azure-stack-viewing-public-ip-address-consumption/image01.png)
 

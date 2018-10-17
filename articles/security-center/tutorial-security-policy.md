@@ -3,7 +3,7 @@ title: 'Azure Security Center チュートリアル: セキュリティ ポリ�
 description: 'Azure Security Center チュートリアル: セキュリティ ポリシーの定義と評価'
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 2d248817-ae97-4c10-8f5d-5c207a8019ea
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/30/2018
-ms.author: terrylan
-ms.openlocfilehash: 15c69bce87ede96eb3a7bc0bada4e4f6a6669abb
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.date: 08/30/2018
+ms.author: rkarlin
+ms.openlocfilehash: fcd3c2a95cea0a838fc16149a0a74fad95ea3300
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39358610"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44027063"
 ---
 # <a name="tutorial-define-and-assess-security-policies"></a>チュートリアル: セキュリティ ポリシーの定義と評価
 Security Center は、ワークロードの望ましい構成を定義するセキュリティ ポリシーを使用して、会社や規制のセキュリティ要件に確実に準拠できるようにします。 Azure サブスクリプションでポリシーを定義し、それらをワークロードの種類またはデータの機密度に合わせて調整すると、計算、アプリケーション、ネットワーク、データとストレージ、ID とアクセスの各リソースについてのセキュリティ推奨事項を Security Center から得ることができます。 このチュートリアルで学習する内容は次のとおりです。
@@ -42,8 +42,7 @@ Security Center では、Azure サブスクリプションごとに自動で既�
 
   ![セキュリティ ポリシー](./media/tutorial-security-policy/tutorial-security-policy-fig1.png)  
 
-3. **[ポリシー コンポーネント]** で、**[セキュリティ ポリシー]** を選択します。
-4. 監視したい各セキュリティ構成について、**[オン]** を選択します。 Security Center は環境の構成を継続的に評価し、脆弱性が存在する場合にセキュリティの推奨事項を生成します。 セキュリティ構成が非推奨の場合や適切でない場合は、**[オフ]** を選択してください。 たとえば、開発/テスト環境では、運用環境と同じレベルのセキュリティが必要でない場合があります。 環境に適用できるポリシーを選択した後、**[保存]** をクリックします。
+3. **[計算とアプリ]**、**[ネットワーク]**、**[データ]** で、監視する各セキュリティ構成を **[オン]** に設定します。 Security Center は環境の構成を継続的に評価し、脆弱性が存在する場合にセキュリティの推奨事項を生成します。 セキュリティ構成が非推奨の場合や適切でない場合は、**[オフ]** を選択してください。 たとえば、開発/テスト環境では、運用環境と同じレベルのセキュリティが必要でない場合があります。 環境に適用できるポリシーを選択した後、**[保存]** をクリックします。
 
   ![セキュリティ構成](./media/tutorial-security-policy/tutorial-security-policy-fig6.png)  
 

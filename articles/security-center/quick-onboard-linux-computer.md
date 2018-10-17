@@ -3,7 +3,7 @@ title: Azure Security Center クイックスタート - Linux コンピュータ
 description: このクイック スタートでは、Linux コンピューターで Security Center の利用を開始する方法を説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: terrylan
-ms.openlocfilehash: 05e4bed0f9b4dfb6d1879408085447ef53db8655
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 09/02/2018
+ms.author: rkarlin
+ms.openlocfilehash: 1eab54d16dcc0facace9a51a4cf5b5d1243baf4f
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630099"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025395"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>クイックスタート: Linux コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Linux エージェントをプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されている Linux リソースに対して Security Center を有効にできます。
@@ -39,13 +39,12 @@ Azure サブスクリプションの利用を開始した後で、Linux エー�
 
  ![Security Center の概要][2]
 
-3. Security Center のメイン メニューで、**[高度なセキュリティへのオンボード]** を選択します。
-4. **[Azure 以外のコンピューターを追加しますか?]** を選択します。
-   ![高度なセキュリティへのオンボード][3]
+3. Security Center メイン メニューの **[作業の開始]** を選択します。
+4. **[作業の開始]** タブを選択します。![[作業の開始]][3]
 
-5. **[Azure 以外のコンピューターの新規追加]** に、Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
+5. **[Azure 以外のコンピューターの新規追加]** の **[構成]** をクリックします。Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
 
-    ![Azure 以外のコンピューターの追加][4]
+    ![Azure 以外のコンピューターの追加](./media/quick-onboard-linux-computer/non-azure.png)
 
 6.  **[直接エージェント]** ページの **[Linux 用エージェントのインストールとオンボード]** で、**[コピー]** を選択して *wget*コマンドをコピーします。
 
@@ -91,7 +90,7 @@ Linux 用の Security Center エージェントのログは */var/opt/microsoft/
 <!--Image references-->
 [1]: ./media/quick-onboard-linux-computer/portal.png
 [2]: ./media/quick-onboard-linux-computer/overview.png
-[3]: ./media/quick-onboard-linux-computer/onboard-windows-computer.png
+[3]: ./media/quick-onboard-linux-computer/get-started.png
 [4]: ./media/quick-onboard-linux-computer/add-computer.png
 [5]: ./media/quick-onboard-linux-computer/pgrep-command.png
 [6]: ./media/quick-onboard-linux-computer/logs-for-agent.png

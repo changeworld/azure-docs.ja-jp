@@ -26,6 +26,10 @@ items:
     href: azure-stack-tutorial-tenant-vm.md
   - name: SQL データベースの提供
     href: azure-stack-tutorial-sql-server.md
+  - name: 高可用性 SQL データベースの提供
+    href: azure-stack-tutorial-sql.md
+  - name: 高可用性 MySQL データベースの提供
+    href: azure-stack-tutorial-mysql.md
   - name: Web アプリの提供
     href: azure-stack-tutorial-app-service.md
   - name: Ethereum のデプロイ
@@ -380,9 +384,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 7bb089d4a10f6c30318befc5ccca71ac5bdb9017
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 6fc6652110dbc8b459e7961632b3b6e654773a5c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249555"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362502"

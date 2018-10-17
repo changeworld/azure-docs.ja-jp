@@ -3,7 +3,7 @@ title: Azure Security Center クイックスタート - Windows コンピュー�
 description: このクイック スタートでは、Windows コンピューターで Microsoft Monitoring Agent をプロビジョニングする方法を示します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
-ms.author: terrylan
-ms.openlocfilehash: b872153278810ce92f19c7c71fe473a2b77def35
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 09/2/2018
+ms.author: rkarlin
+ms.openlocfilehash: 55bb7242427bf85d10fac0a44e2b2eac3a5181ad
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38702659"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023002"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイックスタート: Windows コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Microsoft Monitoring Agent をプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されているリソースに対して Security Center を有効にできます。
@@ -39,14 +39,14 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 
  ![Security Center の概要][2]
 
-3. Security Center のメイン メニューで、**[高度なセキュリティへのオンボード]** を選択します。
-4. **[Azure 以外のコンピューターを追加しますか?]** を選択します。
+3. Security Center メイン メニューの **[作業の開始]** を選択します。
+4. **[作業の開始]** タブを選択します。
 
-   ![高度なセキュリティへのオンボード][3]
+   ![作業開始][3]
 
-5. **[Azure 以外のコンピューターの新規追加]** に、Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
+5. **[Azure 以外のコンピューターの新規追加]** の **[構成]** をクリックします。 Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
 
-    ![Azure 以外のコンピューターの追加][4]
+    ![Azure 以外のコンピューターの追加](./media/quick-onboard-windows-computer/non-azure.png)
 
   **[ダイレクト エージェント]** ブレードに、Windows エージェントをダウンロードするためのリンクと、エージェントの構成時に使用するワークスペース ID のキーが表示されます。
 
@@ -104,7 +104,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 
 <!--Image references-->
 [2]: ./media/quick-onboard-windows-computer/overview.png
-[3]: ./media/quick-onboard-windows-computer/onboard-windows-computer.png
+[3]: ./media/quick-onboard-windows-computer/get-started.png
 [4]: ./media/quick-onboard-windows-computer/add-computer.png
 [5]: ./media/quick-onboard-windows-computer/log-analytics-mma-setup-laworkspace.png
 [6]: ./media/quick-onboard-windows-computer/compute.png

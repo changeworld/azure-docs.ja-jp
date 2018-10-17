@@ -1,43 +1,48 @@
 ---
-title: Computer Vision API JavaScript クイック スタート | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Computer Vision と JavaScript を使って、手書きテキストを抽出します。
+title: 'クイック スタート: 手書きテキストの抽出 - REST、JavaScript - Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、JavaScript と Computer Vision API を使って、画像から手書きテキストを抽出します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: c6b52bfdf1c42499772da1e5f72897baa65a4786
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 82c51c95bf8a538ce50dd190cce737b0295abc6e
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43771925"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634678"
 ---
-# <a name="quickstart-extract-handwritten-text---rest-javascript"></a>クイック スタート: 手書きテキストの抽出 - REST、JavaScript
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-javascript-in-computer-vision"></a>クイック スタート: Computer Vision の REST API および JavaScript を使用して手書きテキストを抽出する
 
-このクイック スタートでは、Computer Vision を使って、画像から手書きテキストを抽出します。
+このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドと[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを使うと、画像内の手書きテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
+
+> [!IMPORTANT]
+> [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドとは異なり、[テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドは非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、テキスト認識メソッドは、`Operation-Content` 応答ヘッダー フィールドの値に URI を返します。 その後、[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを表したこの URI を呼び出して、ステータスをチェックすると共に、テキスト認識メソッドの呼び出しの結果を返します。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Computer Vision を使用するにはサブスクリプション キーが必要です。「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
+Computer Vision のサブスクリプション キーが必要です。 「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
 
-## <a name="recognize-text-request"></a>テキスト認識要求
+## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
 
-[テキスト認識](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドと[テキスト認識操作結果の取得](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを使うと、画像内の手書きテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
+このサンプルを作成して実行するには、次の手順を実行します。
 
-このサンプルを実行するには、次の手順を実行します。
-
-1. 次をコピーし、`handwriting.html` などのファイルに保存します。
-1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. 必要に応じて `uriBase` の値を、サブスクリプション キーを取得した場所に変更します。
-1. お使いのブラウザーにファイルをドラッグ アンド ドロップします。
-1. `Read image` ボタンをクリックします。
-
-このサンプルでは、jQuery 1.9.0 を使用します。 jQuery なしで JavaScript を使うサンプルについては、「[サムネイルをインテリジェントに生成する](javascript-thumb.md)」をご覧ください。
+1. テキスト エディターに次のコードをコピーします。
+1. 必要に応じて、コードに次の変更を加えます。
+    1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
+    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの[テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
+    1. 必要に応じて、手書きのテキストを抽出したい別の画像の URL で、`inputImage` コントロールの `value` 属性の値を置き換えます。
+1. `.html` 拡張子のファイルとして、コードを保存します。 たとえば、「 `get-handwriting.html` 」のように入力します。
+1. ブラウザー ウィンドウを開きます。
+1. ブラウザーで、ブラウザー ウィンドウにファイルをドラッグ アンド ドロップします。
+1. ブラウザーに Web ページが表示されたら、**[Read image]\(画像の読み取り\)** ボタンをクリックします。
 
 ```html
 <!DOCTYPE html>
@@ -57,19 +62,18 @@ Computer Vision を使用するにはサブスクリプション キーが必要
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
 
-        // You must use the same region in your REST call as you used to get your
-        // subscription keys. For example, if you got your subscription keys from
-        // westus, replace "westcentralus" in the URI below with "westus".
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
+        // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the West Central US region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
             "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
 
         // Request parameter.
-        // Note: The request parameter changed for APIv2.
-        // For APIv1, it is "handwriting": "true".
         var params = {
             "mode": "Handwritten",
         };
@@ -186,11 +190,9 @@ Image to read:
 </html>
 ```
 
-## <a name="recognize-text-response"></a>テキスト認識応答
+## <a name="examine-the-response"></a>結果の確認
 
-成功応答が JSON で返されます。 返される手書きの結果には、テキストのほか、領域、線、単語を囲む境界ボックスが含まれます。
-
-このプログラムによって、次のような JSON 出力が生成されます。
+成功応答が JSON で返されます。 サンプル Web ページによって成功応答が解析され、次の例のようにブラウザー ウィンドウに表示されます。
 
 ```json
 {
@@ -467,6 +469,10 @@ Image to read:
   }
 }
 ```
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+不要になったら、ファイルを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,21 +1,21 @@
 ---
-title: Translator Text と PHP でテキストの言語を認識する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と PHP を使って、ソース テキストの言語を認識します。
+title: 'クイック スタート: テキストの言語を認識する - Translator Text、PHP'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、PHP で Translator Text API を使ってソース テキストの言語を認識します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 2888ea96ac31d56f6870b2f2ccbb04ff8328a1b8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: cb643503f72f9cf21c83f35477ca6878d8938339
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43771186"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125971"
 ---
 # <a name="quickstart-identify-language-from-text-with-php"></a>クイック スタート: PHP を使ってテキストの言語を認識する
 

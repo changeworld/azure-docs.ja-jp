@@ -1,21 +1,23 @@
 ---
-title: 記事のパーソナル化 - Azure Cognitive Services | Microsoft Docs
-description: コンテキストに応じた意思決定を行うことができるクラウドベースの API である、Azure Custom Decision Service を使用した記事のパーソナル化に関するチュートリアル。
+title: 'チュートリアル: 記事のパーソナル化 - Custom Decision Service'
+titlesuffix: Azure Cognitive Services
+description: コンテキストに応じた意思決定のための記事のパーソナル化に関するチュートリアル。
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: tutorial
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh;marossi
-ms.openlocfilehash: 35d0567f81a23d4726461059eb6fd31e04228697
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: slivkins
+ms.openlocfilehash: b142fe2051c017d0c0ec3c4cac6aaedd563f6cd7
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377013"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366337"
 ---
-# <a name="article-personalization"></a>記事のパーソナル化
+# <a name="tutorial-article-personalization-for-contextual-decision-making"></a>チュートリアル: コンテキストに応じた意思決定のための記事のパーソナル化
 
 このチュートリアルでは、Web サイトのフロント ページにある記事の選択をパーソナル化することに焦点を当てています。 Custom Decision Service は、たとえば、フロント ページの記事の "*複数の*" リストに影響を与えます。 おそらく、このページは、政治とスポーツのみを扱うニュース Web サイトです。 このページには、政治、スポーツ、最新ニュースの、3 つのランク付けされた記事リストが示されます。
 

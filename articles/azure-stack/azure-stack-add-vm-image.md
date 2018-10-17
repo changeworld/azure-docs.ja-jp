@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 08/30/2018
+ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: 7f16f53af7d1c2f46c5c61974601833fafc8f828
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7a5c6875f080655e69f549e45ec474958128754f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698776"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575815"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Azure Stack で仮想マシン イメージを使用できるようにする
 
@@ -54,7 +54,7 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
 
    ![BLOB のアクセスを公開に設定](./media/azure-stack-add-vm-image/image2.png)
 
-2. Azure Stack にオペレーターとしてサインインします。 メニューの **[その他のサービス]** を選択します。 次に、**[Compute]** > **[VM イメージ]** > **[追加]** を選択します。
+2. Azure Stack にオペレーターとしてサインインします。 メニューで、**[すべてのサービス]** を選択します。 次に、**[管理]** カテゴリで、**[コンピューティング]** > **[VM イメージ]** > **[追加]** の順に選択します。
 
 3. **[Add a VM Image]\(VM イメージの追加\)** で、パブリッシャー、プラン、SKU、および仮想マシン イメージのバージョンを入力します。 これらの名前セグメントによって、Resource Manager テンプレートで VM イメージが参照されます。 正しい **osType** の値を選択してください。 **[OS Disk Blob URI]\(OS ディスク BLOB URI\)** には、イメージがアップロードされた BLOB URI を入力します。 その後 **[作成]** をクリックすると VM イメージの作成が開始されます。
 
@@ -75,7 +75,7 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
 ## <a name="add-a-vm-image-to-the-marketplace-by-using-powershell"></a>PowerShell を使用して VM イメージを Marketplace に追加する
 
 > [!Note]  
-> イメージを追加すると、そのイメージは Azure Resource Manager ベースのテンプレートと PowerShell の展開のみで使用できるようになります。 イメージを Marketplace 項目としてユーザーが使用できるようにするには、「[Marketplace アイテムを作成および発行する](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)」の手順を使用して Marketplace 項目を公開してください。
+> イメージを追加すると、そのイメージは Azure Resource Manager ベースのテンプレートと PowerShell の展開のみで使用できるようになります。 イメージを Marketplace 項目としてユーザーが使用できるようにするには、「[Marketplace アイテムを作成および発行する](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)」の手順を使用して Marketplace 項目を公開してください。
 
 1. [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。  
 
@@ -115,7 +115,7 @@ Azure Stack でユーザーが仮想マシン イメージを使用できるよ�
     詳しくは、[Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) コマンドレットおよび [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) コマンドレットの PowerShell リファレンスをご覧ください。
 
 ## <a name="add-a-custom-vm-image-to-the-marketplace-by-using-powershell"></a>PowerShell を使用してカスタム VM イメージを Marketplace に追加する
-
+ 
 1. [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。
 
   ```PowerShell  

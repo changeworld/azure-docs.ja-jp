@@ -1,24 +1,26 @@
 ---
-title: 認識モードを選択する方法 | Microsoft Docs
-description: 最適な認識モードを選択する方法。
+title: Bing Speech 認識モードを選択する方法 | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: Bing Speech で最適な認識モードを選択する方法。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 4f02b683dde16b537ae5554e6435c068f0fcb808
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: a39b357a26823e322d4e902f2d99b67488bbf2df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373792"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950881"
 ---
-# <a name="speech-recognition-modes"></a>音声認識モード
+# <a name="bing-speech-recognition-modes"></a>Bing Speech の認識モード
 
-Microsoft の *Speech to Text* API は、複数のモードの音声認識をサポートします。 お使いのアプリケーションに最も適した認識結果を生成するモードを選択してください。
+Bing Speech to Text API では、複数の音声認識モードがサポートされています。 お使いのアプリケーションに最も適した認識結果を生成するモードを選択してください。
 
 | Mode | 説明 |
 |---|---|

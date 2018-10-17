@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, devcenter, cc996988-fb4f-47
-ms.openlocfilehash: d1062b3a873462443e0e91085850658e04d5ab0a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a1a593dc037901f6661bc8c7268d835bc5a48c94
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974189"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900618"
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
-Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)環境でコードを実行できます。 このトピックでは、Functions を使用して Azure Portal で "hello world" 関数を作成する方法について説明します。
+Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.microsoft.com/solutions/serverless/)環境でコードを実行できます。 このトピックでは、Functions を使用して Azure Portal で "hello world" 関数を作成する方法について説明します。
 
 ![Azure Portal での Function App の作成](./media/functions-create-first-azure-function/function-app-in-portal-editor.png)
 
@@ -44,13 +44,15 @@ Azure アカウントで Azure Portal (<http://portal.azure.com>) にサイン�
 
 ## <a name="create-function"></a>HTTP によってトリガーされる関数の作成
 
-1. 新しい Function App を展開し、**[関数]** の横にある **+** ボタンをクリックします。
+1. 新しい関数アプリを展開し、**[関数]** の横にある **[+]** ボタン、**[ポータル内]**、**[続行]** の順に選択します。
 
-2.  **[関数への早道]** ページで、**[webhook + API]** を選択し、関数の**言語を選択**して、**[この関数を作成する]** をクリックします。 
-   
+    ![Functions のクイック スタート: プラットフォームを選択する。](./media/functions-create-first-azure-function/function-app-quickstart-choose-portal.png)
+
+1. **[webhook + API]** を選択し、**[作成]** を選択します。
+
     ![Azure Portal での関数のクイック スタート。](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
-HTTP によってトリガーされる関数のテンプレートを使用して、選択した言語で関数が作成されます。 このトピックでは Portal での C# スクリプト関数を示していますが、[サポートされている言語](supported-languages.md)で関数を作成することもできます。 
+HTTP によってトリガーされる関数の言語固有のテンプレートを使用して、関数が作成されます。
 
 ここで、HTTP 要求を送信することで、新しい関数を実行できます。
 
@@ -62,13 +64,13 @@ HTTP によってトリガーされる関数のテンプレートを使用して
 
 2. 関数 URL をブラウザーのアドレス バーに貼り付けます。 この URL の末尾にクエリ文字列 `&name=<yourname>` を追加し、キーボードで`Enter` キーを押して要求を実行します。 ブラウザーに表示される関数によって返される応答が表示されます。  
 
-    次に、Microsoft Edge ブラウザーでの応答の例を示します (その他のブラウザーには表示されている XML が含まれることがあります)。
+    次の例は、ブラウザーでの応答を示しています。
 
     ![ブラウザーでの関数の応答。](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
-    要求 URL には、既定では HTTP 経由で関数にアクセスするために必要なキーが含まれています。   
+    要求 URL には、既定では HTTP 経由で関数にアクセスするために必要なキーが含まれています。
 
-3. 関数が実行されると、ログにトレース情報が書き込まれます。 前の実行からのトレース出力を表示するには、ポータルで関数に戻り、画面の下部にある矢印をクリックして **[ログ]** を展開します。 
+3. 関数が実行されると、ログにトレース情報が書き込まれます。 前の実行からのトレース出力を表示するには、ポータルで関数に戻り、画面の下部にある矢印をクリックして **[ログ]** を展開します。
 
    ![Azure Portal の関数ログ ビューアー。](./media/functions-create-first-azure-function/function-view-logs.png)
 
@@ -83,6 +85,3 @@ HTTP によってトリガーされる単純な関数を含む Function App を�
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
 詳細は、「[Azure Functions の HTTP バインド](functions-bindings-http-webhook.md)」を参照してください。
-
-
-

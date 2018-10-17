@@ -1,41 +1,45 @@
 ---
-title: Computer Vision API JavaScript クイック スタート | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Computer Vision と JavaScript を使って、画像からサムネイルを生成します。
+title: 'クイック スタート: サムネイルの生成 - REST、JavaScript - Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Computer Vision API と JavaScript を使って、画像からサムネイルを生成します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 60da5216ed6b1bfc8d5e5ec04c02e93e1e85335c
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: ef0cdad796623b4453f71e8b593ba4304a41ee0f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43772162"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629456"
 ---
-# <a name="quickstart-generate-a-thumbnail---rest-javascript"></a>クイック スタート: サムネイルの生成 - REST、JavaScript
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-javascript-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と JavaScript を使用したサムネイルの生成
 
-このクイック スタートでは、Computer Vision を使って、画像からサムネイルを生成します。
+このクイック スタートでは、Computer Vision の REST API を使って、画像からサムネイルを生成します。 [サムネイル取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)メソッドを使うと、画像のサムネイルを生成することができます。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision は、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Computer Vision を使用するにはサブスクリプション キーが必要です。「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
+Computer Vision のサブスクリプション キーが必要です。 「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
 
-## <a name="get-thumbnail-request"></a>サムネイル取得要求
+## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
 
-[サムネイル取得メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)を使うと、画像のサムネイルを生成することができます。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision は、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
+このサンプルを作成して実行するには、次の手順を実行します。
 
-このサンプルを実行するには、次の手順を実行します。
-
-1. 次をコピーし、`thumbnail.html` などのファイルに保存します。
-1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. 必要に応じて `uriBase` の値を、サブスクリプション キーを取得した場所に変更します。
-1. お使いのブラウザーにファイルをドラッグ アンド ドロップします。
-1. `Generate thumbnail` ボタンをクリックします。
+1. テキスト エディターに次のコードをコピーします。
+1. 必要に応じて、コードに次の変更を加えます。
+    1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
+    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの[サムネイル取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
+    1. 必要に応じて、分析する別の画像の URL で、`inputImage` コントロールの `value` 属性の値を置き換えます。
+1. `.html` 拡張子のファイルとして、コードを保存します。 たとえば、「 `get-thumbnail.html` 」のように入力します。
+1. ブラウザー ウィンドウを開きます。
+1. ブラウザーで、ブラウザー ウィンドウにファイルをドラッグ アンド ドロップします。
+1. ブラウザーに Web ページが表示されたら、**[Generate thumbnail]\(サムネイルの生成\)** ボタンをクリックします。
 
 ```html
 <!DOCTYPE html>
@@ -54,11 +58,12 @@ Computer Vision を使用するにはサブスクリプション キーが必要
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "<Subscription Key>";
 
-        // You must use the same region in your REST call as you used to get your
-        // subscription keys. For example, if you got your subscription keys from
-        // westus, replace "westcentralus" in the URI below with "westus".
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
+        // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the West Central US region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         var uriBase =
@@ -155,15 +160,13 @@ Image for thumbnail:
 </html>
 ```
 
-## <a name="get-thumbnail-response"></a>サムネイル取得応答
+## <a name="examine-the-response"></a>結果の確認
 
-成功時の応答には、サムネイル画像のバイナリが格納されます。 要求が失敗した場合は、原因の特定につながるエラー コードとメッセージが応答に格納されます。 次のテキストは、成功時の応答の例です。
+成功応答は、サムネイル画像データを表すバイナリ データとして返されます。 要求が成功すると、応答内のバイナリ データからサムネイルが生成され、ブラウザー ウィンドウに表示されます。 要求が失敗した場合、応答がコンソール ウィンドウに表示されます。 失敗した要求の応答には、原因の特定につながるエラー コードとメッセージが格納されています。
 
-```text
-Response:
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-"Content-Type: image/jpeg\r\n"
-```
+不要になったら、ファイルを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

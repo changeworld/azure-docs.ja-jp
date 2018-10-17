@@ -3,7 +3,7 @@ title: Azure Security Center クイックスタート - Azure サブスクリプ
 description: このクイックスタートでは、セキュリティを強化するために Security Center の Standard 価格レベルにアップグレードする方法を示します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2018
-ms.author: terrylan
-ms.openlocfilehash: d10cef33ef0c325d41c9539107b9a4cab5e916d8
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.date: 09/2/2018
+ms.author: rkarlin
+ms.openlocfilehash: dc4c07b54085dfea6d97f2ca43a8cdddfcb9e57c
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059856"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025466"
 ---
 # <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>クイックスタート: Azure サブスクリプションでの Security Center Standard の利用開始
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と脅威保護を実現します。 Free レベルでは Azure リソースのみの制限付きセキュリティが提供されますが、Standard レベルではこれらの機能がオンプレミスと他のクラウドに拡張されます。 Security Center Standard は、セキュリティの脆弱性の検出と修正、悪意のあるアクティビティをブロックするためのアクセス制御とアプリケーション制御の適用、分析とインテリジェンスを使用した脅威の検出、攻撃を受けたときのすばやい対応を支援します。 Security Center Standard は最初の 60 日間、無料でお試しいただけます。
@@ -53,20 +53,18 @@ Security Center をフルに活用するには、次の手順に従って Standa
 ## <a name="upgrade-to-the-standard-tier"></a>Standard レベルにアップグレードする
 Security Center のクイックスタートおよびチュートリアルの目的上、Standard レベルにアップグレードする必要があります。 最初の 60 日間は無料で、いつでも Free レベルに戻すことができます。
 
-1. Security Center のメイン メニューで、**[高度なセキュリティへのオンボード]** を選択します。
+1. Security Center メイン メニューの **[作業の開始]** を選択します。
+ 
+  ![作業開始][4]
 
-2. Security Center の **[高度なセキュリティへのオンボード]** に、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。 一覧からサブスクリプションを選択します。
+2. Security Center の **[アップグレード]** に、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。 
+   - 展開可能な **[Apply your trial]\(試用版を適用\)** をクリックすると、すべてのサブスクリプションと、試用版の資格の状態の一覧が表示されます。
+   -    試用版の対象にならないサブスクリプションとワークスペースをアップグレードできます。
+   -    対象となるワークスペースとサブスクリプションを選択すると、ご自身の試用版を開始できます。
+3.  **[無料体験する]** をクリックして、選択したサブスクリプションでご自身の試用版を開始します。
 
-  ![サブスクリプションの選択][4]
 
-3. **[セキュリティ ポリシー]** に、そのサブスクリプションに含まれるリソース グループの情報が表示されます。 **[価格]** も開きます。
-4. **[価格]** で **[Standard]** を選択して、Free から Standard にアップグレードし、**[保存]** をクリックします。
-
-  ![[Standard] の選択][5]
-
-これで Standard レベルにアップグレードされました。**適応型アプリケーション制御**、**Just In Time VM アクセス**、**セキュリティの警告**、**脅威インテリジェンス**、**自動プレイブック**などの追加の Security Center 機能にアクセスできます。 セキュリティの警告は、Security Center が悪意のあるアクティビティを検出した場合にのみ表示されます。
-
-  ![セキュリティのアラート][7]
+  ![セキュリティのアラート][9]
 
 ## <a name="automate-data-collection"></a>自動データ収集
 Security Center では、セキュリティの脆弱性と脅威を監視するために、Azure VM と非 Azure コンピューターからデータを収集します。 データは、Microsoft Monitoring Agent を使用して収集されます。Microsoft Monitoring Agent は、セキュリティ関連のさまざまな構成とイベント ログをマシンから読み取り、分析のためにデータをワークスペースにコピーします。 既定では、Security Center によって新しいワークスペースが作成されます。
@@ -76,11 +74,10 @@ Security Center では、セキュリティの脆弱性と脅威を監視する�
 Microsoft Monitoring Agent の自動プロビジョニングを有効にするには、次の手順に従います。
 
 1. Security Center のメイン メニューで、**[セキュリティ ポリシー]** を選択します。
-2. サブスクリプションを選択します。
-3. **[セキュリティ ポリシー]** で **[データ収集]** を選択します。
-4. **[データ収集]** の **[オン]** を選択して、自動プロビジョニングを有効にします。
-5. **[保存]** を選択します。
-
+2. サブスクリプションの行で、**[設定の編集>]** を選択します。
+3. **[データ収集]** タブで、**[自動プロビジョニング]** を **[オン]** に設定します。
+4. **[保存]** を選択します。
+****
   ![自動プロビジョニングを有効にする][6]
 
 Azure VM のこの新たな洞察により、Security Center は、システムの更新状態、OS セキュリティ構成、エンドポイント保護に関連する追加の推奨事項を提供し、追加のセキュリティ警告を生成できます。
@@ -91,16 +88,15 @@ Azure VM のこの新たな洞察により、Security Center は、システム�
 このコレクションの他のクイックスタートとチュートリアルは、このクイックスタートに基づいています。 引き続き次のクイックスタートとチュートリアルを行う予定の場合、Standard レベルの実行を継続して、自動プロビジョニングを有効のままにしてください。 続行しないまたは Free レベルに戻したい場合:
 
 1. Security Center のメイン メニューに戻り、**[セキュリティ ポリシー]** を選択します。
-2. Free に戻したいサブスクリプションまたはポリシーを選択します。 **[セキュリティ ポリシー]** が開きます。
-3. **[ポリシー コンポーネント]** で、**[価格レベル]** を選択します。
-4. **[Free]** を選択して、Standard レベルから Free レベルにサブスクリプションを変更します。
+2. Free に戻すサブスクリプションの行で、**[設定の編集>]** を選択します。
+3. **[価格レベル]**、**[Free]** の順に選択して、Standard レベルから Free レベルにサブスクリプションを変更します。
 5. **[保存]** を選択します。
 
 自動プロビジョニングを無効にする場合:
 
 1. Security Center のメイン メニューに戻り、**[セキュリティ ポリシー]** を選択します。
-2. 自動プロビジョニングを無効にするサブスクリプションを選択します。
-3. **[セキュリティ ポリシー - データ収集]** で、**[オンボード]** の **[オフ]** を選択して、自動プロビジョニングを無効にします。
+2. 自動プロビジョニングを無効にするサブスクリプションの行で、**[設定の編集>]** を選択します。
+3. **[データ収集]** タブで、**[自動プロビジョニング]** を **[オフ]** に設定します。
 4. **[保存]** を選択します。
 
 >[!NOTE]
@@ -115,8 +111,9 @@ Azure VM のこの新たな洞察により、Security Center は、システム�
 
 <!--Image references-->
 [2]: ./media/security-center-get-started/overview.png
-[4]: ./media/security-center-get-started/onboarding.png
+[4]: ./media/security-center-get-started/get-started.png
 [5]: ./media/security-center-get-started/pricing.png
 [6]: ./media/security-center-get-started/enable-automatic-provisioning.png
 [7]: ./media/security-center-get-started/security-alerts.png
 [8]: ./media/security-center-get-started/recommendations.png
+[9]: ./media/security-center-get-started/select-subscription.png

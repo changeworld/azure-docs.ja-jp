@@ -8,32 +8,32 @@ manager: sumedhb
 ms.service: key-vault
 ms.workload: identity
 ms.topic: quickstart
-ms.date: 08/08/2018
+ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 4592b256dfda75e81a94034545cd54dbf0d71532
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 860294ebc7fbadd3eeefc4298ec740ca7f704587
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42022915"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714396"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-a-node-web-app"></a>クイック スタート: Node Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う 
 
-このクイック スタートでは、Web アプリを使って Key Vault にシークレットを格納する方法とシークレットを取得する方法について説明します。 シークレット値を確認するには、Azure でこれを実行する必要があります。 このクイック スタートでは Node.js とマネージド サービス ID (MSI) を使用します。
+このクイック スタートでは、Web アプリを使って Key Vault にシークレットを格納する方法とシークレットを取得する方法について説明します。 シークレット値を確認するには、Azure でこれを実行する必要があります。 クイック スタートでは、Node.js と Azure リソースのマネージド ID を使用します。
 
 > [!div class="checklist"]
 > * キー コンテナーを作成する
 > * キー コンテナーにシークレットを格納する
 > * キー コンテナーからシークレットを取得する
 > * Azure AD Web アプリケーションを作成する
-> * [マネージド サービス ID を有効にする](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)
+> * Web アプリの[マネージド ID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) を有効にする
 > * Web アプリケーションに必要なアクセス許可を付与して、キー コンテナーからデータを読み取る
 
 先に進む前に、[基本的な概念](key-vault-whatis.md#basic-concepts)を理解しておいてください。
 
 >[!NOTE]
-下記のチュートリアルがベスト プラクティスである理由を理解するには、いくつかの概念を理解する必要があります。 Key Vault は、プログラムでシークレットを格納できる中央リポジトリです。 しかしこれを実行するには、アプリケーション/ユーザーが最初に Key Vault に対する認証を行う (シークレットを提示する) 必要があります。 セキュリティのベスト プラクティスに従うために、最初のシークレットのローテーションが定期的に行われる必要もあります。 しかし、Azure で実行される[マネージド サービス ID](../active-directory/managed-service-identity/overview.md) アプリケーションでは、Azure によって自動で管理される ID が提供されます。 これにより、**シークレット導入問題**が解決されます。ユーザー/アプリケーションはベスト プラクティスに従うことができ、最初のシークレットのローテーションについて心配する必要がありません
+下記のチュートリアルがベスト プラクティスである理由を理解するには、いくつかの概念を理解する必要があります。 Key Vault は、プログラムでシークレットを格納できる中央リポジトリです。 しかしこれを実行するには、アプリケーション/ユーザーが最初に Key Vault に対する認証を行う (シークレットを提示する) 必要があります。 セキュリティのベスト プラクティスに従うために、最初のシークレットのローテーションが定期的に行われる必要もあります。 しかし、Azure で実行される[ Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) アプリケーションでは、Azure によって自動で管理される ID が付与されます。 これにより、**シークレット導入問題**が解決されます。ユーザー/アプリケーションはベスト プラクティスに従うことができ、最初のシークレットのローテーションについて心配する必要がありません
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -156,9 +156,9 @@ git clone https://github.com/Azure-Samples/key-vault-node-quickstart.git
     git remote add azure <url>
     ```
 
-## <a name="enable-managed-service-identity"></a>マネージド サービス ID を有効にする
+## <a name="enable-a-managed-identity-for-the-web-app"></a>Web アプリのマネージド ID を有効にする
 
-Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 管理対象サービス ID (MSI) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
+Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
 
 assign-identity コマンドを実行して、このアプリケーションの ID を作成します。
 
@@ -166,7 +166,7 @@ assign-identity コマンドを実行して、このアプリケーションの 
 az webapp identity assign --name <app_name> --resource-group "<YourResourceGroupName>"
 ```
 
-このコマンドは、ポータルに移動して、Web アプリケーション プロパティの **[マネージド サービス ID]** を **[オン]** に切り替えることと同等です。
+このコマンドは、ポータルに移動して、Web アプリケーション プロパティの **[Identity / System assigned]\(ID/システム割り当て済み\)** を **[オン]** に切り替えることと同等です。
 
 ### <a name="assign-permissions-to-your-application-to-read-secrets-from-key-vault"></a>アプリケーションにアクセス許可を割り当ててキー コンテナーからシークレットを読み取る
 

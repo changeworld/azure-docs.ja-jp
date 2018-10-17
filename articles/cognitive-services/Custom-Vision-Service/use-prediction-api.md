@@ -1,20 +1,21 @@
 ---
-title: Custom Vision Service の予測エンドポイントを使用する - Azure Cognitive Services | Microsoft Docs
+title: '例: 予測エンドポイントを使用してプログラムで分類器を指定してテストする - Custom Vision'
+titlesuffix: Azure Cognitive Services
 description: API を使用して、Custom Vision Service の分類子によるイメージのテストをプログラムから行う方法を説明します。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: sample
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: d7f9b90db06811e16cd0cd6ad2b32a27912cfee5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 3a81f3cef6aaeb5c98022d9fc93f4d84f3f58a6e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341795"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363651"
 ---
 # <a name="use-the-prediction-endpoint-to-test-images-programmatically-with-a-custom-vision-service-classifier"></a>予測エンドポイントを利用し、Custom Vision Service の分類子を使用してプログラムからイメージをテストします
 
@@ -28,10 +29,10 @@ ms.locfileid: "43341795"
 [Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__ \(パフォーマンス) タブを選択します。__予測キー__を含む Prediction API の使用に関する情報を表示するには、__[Prediction URL]\(Prediction の URL\)__ を選択します。 Azure リソースに関連付けられているプロジェクトの場合、__予測キー__は、関連付けられている Azure リソースの [Azure portal](https://portal.azure.com) ページの __[キー]__ で確認することもできます。 アプリケーションで使用するため、次の情報をコピーします。
 
 * __[URL]__: __イメージファイル__を使用するため。
-* __[Prediction-key]__ \(予測キー) の値。
+* __[Prediction-key]__(予測キー) の値。
 
 > [!TIP]
-> 複数のイテレーションがある場合は、既定値として設定することで、どのイテレーションを使用するかを制御できます。 __[Iterations]__ \(イテレーション) セクションから目的のイテレーションを選択し、ページの上部にある __[Make default]__ \(既定値に設定) を選択します。
+> 複数のイテレーションがある場合は、既定値として設定することで、どのイテレーションを使用するかを制御できます。 __[Iterations]__(イテレーション) セクションから目的のイテレーションを選択し、ページの上部にある __[Make default]__(既定値に設定) を選択します。
 
 ![パフォーマンスのタブが、[Prediction URL]\(Prediction の URL) を囲む赤色の四角形と共に表示されています。](./media/use-prediction-api/prediction-url.png)
 

@@ -1,5 +1,5 @@
 
-1. [Azure CLI 1.0 からの Azureへの接続](/cli/azure/authenticate-azure-cli)に関する記事で示されている手順を使用して、Azure サブスクリプションにサインインします。
+1. [Azure クラシック CLI からの Azureへの接続](/cli/azure/authenticate-azure-cli)に関する記事で示されている手順を使用して、Azure サブスクリプションにサインインします。
 
 2. 以下を使用して、クラシック デプロイ モードであることを確認します。
 
@@ -52,5 +52,5 @@
     ```
 
 ## <a name="next-steps"></a>次の手順
-これらすべての Azure CLI 1.0 仮想マシン コマンドについて詳しくは、[クラシック デプロイメント API での Azure CLI 1.0 コマンドの使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)に関する記事をご覧ください。
+これらすべての Azure クラシック CLI 仮想マシン コマンドの詳細については、[クラシック デプロイ API での Azure クラシック CLI コマンドの使用](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)に関するページをご覧ください。
 

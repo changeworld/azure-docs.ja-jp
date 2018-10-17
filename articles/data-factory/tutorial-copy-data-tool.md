@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 06/21/2018
+ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 1be4769a8a07ac5d4a968ed5aa15ed2e0a2b6db2
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c1f94c04db69ad44203ef1ada1c3b9fa3df2d779
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43086828"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718091"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>データのコピー ツールを使用して Azure Blob Storage から SQL データベースにデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -72,13 +72,7 @@ ms.locfileid: "43086828"
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-1. Azure サービスに SQL Server へのアクセスを許可します。 SQL Server が実行されているサーバーの **[Azure サービスへのアクセスを許可]** 設定が有効になっていることを確認します。 この設定により、Data Factory が SQL Server インスタンスにデータを書き込むことができます。 この設定を確認して有効にするには、次の手順を実行します。
-
-    a. 画面の左側にある **[その他のサービス]** を選択し、**[SQL Server]** を選択します。
-
-    b. 目的のサーバーを選択し、**[設定]** > **[ファイアウォール]** を選択します。
-
-    c. **[ファイアウォール設定]** ページの **[Azure サービスへのアクセスを許可]** オプションを **[オン]** に設定します。
+2. Azure サービスに SQL Server へのアクセスを許可します。 SQL Database が実行されているサーバーの **[Azure サービスへのアクセスを許可]** 設定が有効になっていることを確認します。 この設定により、Data Factory はお使いのデータベース インスタンスにデータを書き込むことができます。 この設定を確認して有効にするには、お使いの Azure SQL サーバーで **[セキュリティ]** > **[Firewalls and virtual networks]\(ファイアウォールおよび仮想ネットワーク\)** の順に移動して、**[Allow access to Azure services]\(Azure サービスへのアクセスを許可する\)** オプションを **[オン]** に設定します。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 

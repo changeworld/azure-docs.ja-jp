@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: f12fc0baa055e62d4f15c0e42eb7add3661ea6fc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 3e019f02d13ade6a42f4739eacae55f5bf6ac2af
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32162111"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973594"
 ---
 # <a name="introduction-to-azure-container-service-for-kubernetes"></a>Kubernetes 向け Azure Container Service の概要
 
@@ -28,7 +28,7 @@ Azure Container Service を使用することで、Kubernetes とDocker イメ�
 Azure Container Service は、今日お客様に人気のあるオープンソースのツールとテクノロジを使用することで、コンテナー ホスト環境を提供することを目的としています。 この目的のために、標準の Kubernetes API エンドポイントを公開します。 これらの標準のエンドポイントを使用することにより、Kubernetes クラスターと通信できる任意のソフトウェアを活用できます。 たとえば、[kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)、[helm](https://helm.sh/)、[draft](https://github.com/Azure/draft) を選択できます。
 
 ## <a name="creating-a-kubernetes-cluster-using-azure-container-service"></a>Azure Container Service を使用した Kubernetes クラスターの作成
-Azure Container Service の使用を開始するには、[Azure CLI 2.0](container-service-kubernetes-walkthrough.md) を使用するか、ポータル (Marketplace で **Azure Container Service** を検索) 経由で、Azure Container Service クラスターをデプロイします。 Azure Resource Manager テンプレートを細かく制御する必要がある上級ユーザーの場合は、オープン ソースの [acs-engine](https://github.com/Azure/acs-engine) プロジェクトを使用して、独自のカスタム Kubernetes クラスターを構築し、これを `az` CLI 経由でデプロイできます。
+Azure Container Service の使用を開始するには、[Azure CLI](container-service-kubernetes-walkthrough.md) を使用するか、ポータル (Marketplace で **Azure Container Service** を検索) 経由で、Azure Container Service クラスターをデプロイします。 Azure Resource Manager テンプレートを細かく制御する必要がある上級ユーザーの場合は、オープン ソースの [acs-engine](https://github.com/Azure/acs-engine) プロジェクトを使用して、独自のカスタム Kubernetes クラスターを構築し、これを `az` CLI 経由でデプロイできます。
 
 ### <a name="using-kubernetes"></a>Kubernetes の使用
 この Kubernetes により、コンテナー化されたアプリケーションのデプロイ、スケーリング、および管理が自動化されます。 Kubernetes には、次に示す豊富な機能セットが用意されています。

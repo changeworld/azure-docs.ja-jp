@@ -5,19 +5,23 @@ services: event-grid
 keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 07/05/2018
+ms.date: 10/02/2018
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: ec85a866279412232aa23fad8f975d1642525772
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 630130bde0440a8a5f51589386f42214f27af59a
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42023529"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040628"
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Azure Portal と Event Grid を使ったカスタム イベントの作成とルーティング
 
-Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure Portal を使用して、カスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 イベントは、イベント データを記録する Azure Functions に対して送信します。 最後に、イベント データがエンドポイントに送信され、記録されたことを確認します。
+Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure portal を使用し、カスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 ただし、この記事では、単純化するために、メッセージを収集して表示する Web アプリにイベントを送信します。
+
+最後に、イベント データが Web アプリに送信されたことを確認します。
+
+![結果の表示](./media/custom-event-quickstart-portal/view-result.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -27,7 +31,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 Event Grid のトピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
+1. [Azure ポータル](https://portal.azure.com/)にサインインします。
 
 1. カスタム トピックを作成するには、**[リソースの作成]** を選択します。 
 
@@ -61,77 +65,61 @@ Event Grid のトピックは、イベントの送信先となるユーザー定
 
    ![名前の競合](./media/custom-event-quickstart-portal/name-conflict.png)
 
-## <a name="create-an-azure-function"></a>Azure 関数の作成
+## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 
-トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 この記事では、Azure Functions を使用してエンドポイントの関数アプリを作成します。
+カスタム トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 通常、エンドポイントは、イベント データに基づくアクションを実行します。 このクイック スタートを簡素化するために、イベント メッセージを表示する[構築済みの Web アプリ](https://github.com/Azure-Samples/azure-event-grid-viewer)をデプロしします。 デプロイされたソリューションには、App Service プラン、App Service Web アプリ、および GitHub からのソース コードが含まれています。
 
-1. 関数を作成するには、**[リソースの作成]** を選択します。
+1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
 
-   ![リソースの作成](./media/custom-event-quickstart-portal/create-resource-small.png)
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-1. **[Compute]** と **[Function App]** を選択します。
+1. デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
 
-   ![関数の作成](./media/custom-event-quickstart-portal/create-function.png)
+1. サイトは表示されますが、イベントはまだ送信されていません。
 
-1. Azure Functions の一意の名前を指定します。 画像に示されている名前は使用しないでください。 この記事で作成したリソース グループを選択します ホスティング プランには、**[従量課金プラン]** を使用します。 提示された新しいストレージ アカウントを使用してください。 ユーザーは Application Insights を無効にできます。 連の値を指定したら、**[作成]** をクリックします
+   ![新しいサイトを表示する](./media/custom-event-quickstart-portal/view-site.png)
 
-   ![関数の値の指定](./media/custom-event-quickstart-portal/provide-function-values.png)
+## <a name="subscribe-to-custom-topic"></a>カスタム トピックのサブスクライブ
 
-1. デプロイが完了したら、**[リソースに移動]** を選択します。
+どのイベントを追跡し、どこにイベントを送信するかは、イベント グリッド トピックをサブスクライブすることによって Event Grid に伝えます。
 
-   ![リソースに移動](./media/custom-event-quickstart-portal/go-to-resource.png)
+1. ポータルでカスタム トピックを選択します。
 
-1. **[関数]** の横の **+** を選択します。
+   ![カスタム トピックの選択](./media/custom-event-quickstart-portal/select-custom-topic.png)
 
-   ![関数の追加](./media/custom-event-quickstart-portal/add-function.png)
+1. **[+ イベント サブスクリプション]** を選択します。
 
-1. 表示されたオプションから、**[カスタム関数]** を選択します。
+   ![イベント サブスクリプションの追加](./media/custom-event-quickstart-portal/new-event-subscription.png)
 
-   ![カスタム関数](./media/custom-event-quickstart-portal/select-custom-function.png)
+1. エンドポイントの種類には **Web hook** を選択します。 イベント サブスクリプションの名前を指定します。
 
-1. **[イベント グリッド トリガー]** が表示されるまで下へスクロールします。 **[C#]** を選択します。
+   ![イベント サブスクリプションの値の指定](./media/custom-event-quickstart-portal/provide-subscription-values.png)
 
-   ![イベント グリッド トリガーを選択](./media/custom-event-quickstart-portal/select-event-grid-trigger.png)
+1. **[エンドポイントの選択]** を選択します。 
 
-1. 既定値のままにして **[作成]** を選択します。
+1. Web hook エンドポイントに対して、Web アプリの URL を入力し、ホーム ページの URL に `api/updates` を追加します。 **[選択の確認]** を選択します。
 
-   ![新しい関数](./media/custom-event-quickstart-portal/new-function.png)
+   ![エンドポイントの URL の指定](./media/custom-event-quickstart-portal/provide-endpoint.png)
 
-関数でイベントを受信する準備が整いました。
+1. イベント サブスクリプションの値を指定したら、**[作成]** を選択します。
 
-## <a name="subscribe-to-a-topic"></a>トピックのサブスクライブ
+Web アプリをもう一度表示し、その Web アプリにサブスクリプションの検証イベントが送信されたことに注目します。 目のアイコンを選択してイベント データを展開します。 Event Grid は検証イベントを送信するので、エンドポイントはイベント データを受信することを確認できます。 Web アプリには、サブスクリプションを検証するコードが含まれています。
 
-どのイベントを追跡し、どこにイベントを送信するかは、トピックを購読することによって Event Grid に伝えます。
-
-1. 対象の Azure 関数で、**[Event Grid サブスクリプションの追加]** を選択します。
-
-   ![Event Grid サブスクリプションの追加](./media/custom-event-quickstart-portal/add-event-grid-subscription.png)
-
-1. サブスクリプションの値を指定します。 トピックの種類には、**[Event Grid トピック]** を選択します。 サブスクリプションとリソース グループには、カスタム トピックを作成したサブスクリプションとリソース グループを選択してください。 たとえば、カスタム トピックの名前を選択します。 サブスクライバー エンドポイントには、関数の URL が事前設定されています。
-
-   ![サブスクリプション値の指定](./media/custom-event-quickstart-portal/provide-subscription-values.png)
-
-1. イベント データが送信されたときに確認できるよう、イベントをトリガーする前に関数のログを開いておきます。 該当する Azure関数の一番下にある **[ログ]** を選択します。
-
-   ![ログの選択](./media/custom-event-quickstart-portal/select-logs.png)
-
-では、イベントをトリガーして、Event Grid がメッセージをエンドポイントに配信するようすを見てみましょう。 この記事では、単純化するために、Cloud Shell を使用してサンプルのイベント データをカスタム トピックに送信します。 通常はイベント データをアプリケーションまたは Azure サービスから送信することになります。
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+![サブスクリプション イベントの表示](./media/custom-event-quickstart-portal/view-subscription-event.png)
 
 ## <a name="send-an-event-to-your-topic"></a>トピックへのイベントの送信
 
-Azure CLI または PowerShell を使用して、テスト イベントをカスタム トピックに送信します。
+では、イベントをトリガーして、Event Grid がメッセージをエンドポイントに配信するようすを見てみましょう。 Azure CLI または PowerShell を使用して、テスト イベントをカスタム トピックに送信します。 通常はイベント データをアプリケーションまたは Azure サービスから送信することになります。
 
-最初の例では、Azure CLI を使用しています。 この例では、トピックの URL とキー、およびサンプル イベント データを取得します。 `<topic_name>` には、実際のトピック名を使用します。 イベント全体を確認するには、`echo "$body"` を使用します。 JSON の `data` 要素がイベントのペイロードです。 このフィールドには、適切な形式の JSON であればどのようなものでも格納することができます。 また、高度なルーティングやフィルタリングを行う場合には、subject フィールドを使用することもできます。 CURL は、HTTP 要求を送信するユーティリティです。
+最初の例では、Azure CLI を使用しています。 この例では、カスタム トピックの URL とキー、およびサンプル イベント データを取得します。 `<topic_name>` には、実際のカスタム トピック名を使用してください。 これによりサンプルのイベント データが作成されます。 JSON の `data` 要素がイベントのペイロードです。 このフィールドには、適切な形式の JSON であればどのようなものでも格納することができます。 また、高度なルーティングやフィルタリングを行う場合には、subject フィールドを使用することもできます。 CURL は、HTTP 要求を送信するユーティリティです。
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name <topic_name> -g myResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name <topic_name> -g myResourceGroup --query "key1" --output tsv)
 
-body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
+event='[ {"id": "'"$RANDOM"'", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "'`date +%Y-%m-%dT%H:%M:%S%z`'", "data":{ "make": "Ducati", "model": "Monster"},"dataVersion": "1.0"} ]'
 
-curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
 2 番目の例では、PowerShell を使用して、同様の手順を実行します。
@@ -165,9 +153,25 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 ログを見てイベント データを確認してください。
+以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 Web アプリを表示して、送信したイベント確認します。
 
-![ログを表示する。](./media/custom-event-quickstart-portal/view-log-entry.png)
+```json
+[{
+  "id": "1807",
+  "eventType": "recordInserted",
+  "subject": "myapp/vehicles/motorcycles",
+  "eventTime": "2017-08-10T21:03:07+00:00",
+  "data": {
+    "make": "Ducati",
+    "model": "Monster"
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/{topic}"
+}]
+```
+
+
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b2bb187e5ad55b466da0b9b06ffbb047ac539717
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 20a57a0d528fa6a291aa66f91ff6ddd71053f478
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105001"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297062"
 ---
 # <a name="tutorial-prepare-an-application-for-azure-kubernetes-service-aks"></a>チュートリアル: Azure Kubernetes Service (AKS) 用のアプリケーションの準備
 
@@ -35,7 +35,7 @@ ms.locfileid: "43105001"
 
 このチュートリアルの前提として、コンテナー、コンテナー イメージ、`docker` コマンドなど、Docker のコア概念を基本的に理解している必要があります。 コンテナーの基礎については、[Docker の入門][docker-get-started]に関するドキュメントを参照してください。
 
-このチュートリアルを完了するには、ローカルの Docker 開発環境が必要です。 Docker では、[Mac][docker-for-mac]、[Windows][docker-for-windows]、または [Linux][docker-for-linux] システムで Docker を構成できるパッケージが提供されています。
+このチュートリアルを完了するには、Linux コンテナーを実行するローカルの Docker 開発環境が必要です。 Docker では、[Mac][docker-for-mac]、[Windows][docker-for-windows]、または [Linux][docker-for-linux] システムで Docker を構成できるパッケージが提供されています。
 
 Azure Cloud Shell には、これらのチュートリアルのすべてのステップを完了するために必要な Docker コンポーネントが含まれているわけではありません。 そのため、完全な Docker 開発環境の使用をお勧めします。
 

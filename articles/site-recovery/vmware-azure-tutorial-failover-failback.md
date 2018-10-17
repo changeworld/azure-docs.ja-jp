@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1f7856edef3bb93300fce0ff00d9434400e239f8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: e9ed0ba8d24f30f67dbb315848dc4c260cae4f50
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917048"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391370"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた VMware VM と物理サーバーのフェールオーバーとフェールバック
 
@@ -56,7 +56,7 @@ VM のプロパティで、VM が [Azure の要件](vmware-physical-azure-suppor
 
 2. **[レプリケートされたアイテム]** ウィンドウには、VM 情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
 
-3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、および[管理ディスクの設定](#managed-disk-considerations)を変更できます。
+3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、および[マネージド ディスクの設定](#managed-disk-considerations)を変更できます。
 
 4. ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示および変更できます。
 
@@ -64,10 +64,10 @@ VM のプロパティで、VM が [Azure の要件](vmware-physical-azure-suppor
 
 ## <a name="run-a-failover-to-azure"></a>Azure へのフェールオーバーを実行する
 
-1. **[設定]** > **[レプリケートされたアイテム]** で、[VM] > **[フェールオーバー]** をクリックします。
+1. **[設定]** > **[レプリケートされたアイテム]** で、対象の VM、**[フェールオーバー]** の順にクリックします。
 
 2. **[フェールオーバー]** で、フェールオーバー先の**復旧ポイント**を選択します。 次のいずれかのオプションを使うことができます。
-   - **[最新]** (既定値): 最初に、Site Recovery に送信されるすべてのデータを処理します。 フェールオーバー後に作成された Azure VM は、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータを保持しているため、RPO (目標復旧時点) を最も低くすることができます。
+   - **[最新]**: 最初に、Site Recovery に送信されるすべてのデータを処理します。 フェールオーバー後に作成された Azure VM は、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータを保持しているため、RPO (目標復旧時点) を最も低くすることができます。
    - **[最後に処理があった時点]**: Site Recovery によって処理された最新の復旧ポイントに VM をフェールオーバーします。 このオプションを使用すると、未処理のデータの処理に時間がかからないため、RTO (目標復旧時間) を低くできます。
    - **[最新のアプリ整合性]**: Site Recovery によって処理されたアプリ整合性の最新の復旧ポイントに VM をフェールオーバーします。
    - **カスタム**: 復旧ポイントを指定します。
@@ -82,11 +82,14 @@ VM のプロパティで、VM が [Azure の要件](vmware-physical-azure-suppor
 
 ## <a name="connect-to-failed-over-virtual-machine-in-azure"></a>Azure のフェールオーバーされた仮想マシンに接続する
 
-1. フェールオーバー後は、仮想マシンに移動し、それに[接続する](../virtual-machines/windows/connect-logon.md)ことで検証します。
-2. 検証が終わったら、**[コミット]** をクリックして、フェールオーバー後の仮想マシンの復旧ポイントを最終処理します。 コミットすると、その他有効なすべての復旧ポイントが削除されます。 これにより、フェールオーバー アクティビティが完了します。
+1. フェールオーバー後に RDP/SSH を使用して Azure VM に接続する場合は、[こちら](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)の表に示されている要件に従います。
+2. フェールオーバー後は、仮想マシンに移動し、それに[接続する](../virtual-machines/windows/connect-logon.md)ことで検証します。
+3. 検証が終わったら、**[コミット]** をクリックして、フェールオーバー後の仮想マシンの復旧ポイントを最終処理します。 コミットすると、その他有効なすべての復旧ポイントが削除されます。 これにより、フェールオーバー アクティビティが完了します。
 
 >[!TIP]
 > **[復旧ポイントの変更]** は、フェールオーバー後、フェールオーバーされた仮想マシンに満足していない場合に、異なる復旧ポイントを選択するのに役立ちます。 **コミット**後、このオプションは使用できなくなります。
+
+フェールオーバー後の接続の問題をトラブルシューティングするには、[こちら](site-recovery-failover-to-azure-troubleshoot.md)に記載されている手順に従ってください。
 
 ## <a name="preparing-for-reprotection-of-azure-vm"></a>Azure VM の再保護の準備
 

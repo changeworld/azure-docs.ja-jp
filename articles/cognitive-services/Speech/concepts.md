@@ -1,5 +1,6 @@
 ---
-title: 概念 | Microsoft Docs
+title: Bing Speech の概念 | Microsoft Docs
+titlesuffix: Azure Cognitive Services
 description: Microsoft Speech Serviceで使用される基本概念について説明します。
 services: cognitive-services
 author: zhouwangzw
@@ -7,14 +8,15 @@ manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: bc23f4fb7dfc045a0f8cc87155c31875c4de8450
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 08790d73dd4fd182d8129c755a291fd99b6136a2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373973"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954111"
 ---
 # <a name="basic-concepts"></a>基本的な概念
 
@@ -156,13 +158,13 @@ https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservic
 
 - `RecognitionStatus`: 認識の状態を示します。 使用される値は、次の表のとおりです。
 
-| 状態 | 説明 |
+| Status | 説明 |
 | ------------- | ---------------- |
 | 成功 | 認識が成功し、DisplayText フィールドが存在する |
 | NoMatch | 音声ストリーム内に音声が検出されたが、ターゲット言語の単語は見つからなかった。 詳しくは、「NoMatch 認識状態」(#nomatch-recognition-status) をご覧ください  |
 | InitialSilenceTimeout | 音声ストリームの先頭に無音状態しか含まれておらず、音声の待機中にサービスがタイムアウトした |
 | BabbleTimeout | 音声ストリームの先頭に雑音しか含まれておらず、音声の待機中にサービスがタイムアウトした |
-| エラー | 認識サービスで内部エラーが発生し、処理を継続できない |
+| Error | 認識サービスで内部エラーが発生し、処理を継続できない |
 
 - `DisplayText` は、大文字/小文字、句読点、および逆テキスト正規化が適用され、不適切表現がアスタリスクでマスクされた後の、認識済み文字列を表します。 DisplayText フィールドは、`RecognitionStatus` フィールドの値が `Success` である場合に*のみ*返されます。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: ''
 ms.date: 05/03/2018
 ms.author: mlearned
-ms.openlocfilehash: eef71aabaab71f908f950a4467da918dca1787fa
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 39dffad597b8382dea4df6fa1b0726d9582d67d1
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492546"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44293628"
 ---
 # <a name="overview-of-azure-devops-project"></a>Azure DevOps Projects の概要
 
@@ -35,8 +35,8 @@ Azure DevOps Projects は、初期 Git リポジトリの設定、CI/CD パイ�
 Azure DevOps Projects を使って次のことができます。
 
 * アプリケーションを Azure に短時間で展開します
-* VSTS CI/CD パイプラインのセットアップを自動化します
-* DevOps Projects をテンプレートとして使って VSTS で Azure に CI/CD を正しく設定する方法を確認して理解します
+* Azure CI/CD パイプラインのセットアップを自動化します
+* DevOps Projects をテンプレートとして使って Azure DevOps で Azure に CI/CD を正しく設定する方法を確認して理解します
 * Azure への CI/CD パイプラインを開始した後、特定のシナリオに基づいてリリース パイプラインをさらにカスタマイズします
 
 ## <a name="how-do-i-use-the-azure-devops-project"></a>Azure DevOps Projects を使用する方法
@@ -49,16 +49,16 @@ Azure DevOps Projects は Azure portal から利用できます。  他の Azure
 * アプリの言語を選びます
 * 言語に基づいてアプリのフレームワークを選びます
 * Azure サービス (展開ターゲット) を選びます
-* VSTS アカウント (新規または既存)
+* Azure DevOps 組織 (新規または既存)
 * Azure サブスクリプションを選びます
 * Azure サービスの場所を選びます
 * Azure サービスのさまざまな価格レベルから選びます
 
 Azure DevOps Projects を使用した後は、Azure portal 上の Azure DevOps Projects ダッシュボードから一元的に、すべてのリソースを削除することもできます。
 
-## <a name="azure-devops-project-and-vsts-integration"></a>Azure DevOps Projects と VSTS の統合
+## <a name="azure-devops-project-and-azure-devops-integration"></a>Azure DevOps Projects と Azure DevOps の統合
 
-DevOps Projects は VSTS を利用しています。  DevOps Projects は、VSTS で Azure への CI/CD を設定するために必要なすべての作業を自動化します。  新規または既存の VSTS アカウントに、Git リポジトリが作成されます。  DevOps Projects は、サンプル アプリケーションまたは既存のコードを、新しい Git リポジトリにコミットします。  オートメーションはまた、新しいコードがコミットされるたびにビルドが開始するように、ビルドに対する CI トリガーも確立します。  また、DevOps Projects は CD トリガーを作成し、新しく成功したすべてのビルドを、ユーザーが選んだ Azure サービスに展開します。  ビルドとリリースの定義は、他のシナリオに合わせてカスタマイズできます。  また、他のプロジェクトで使用するために、ビルドとリリースの定義を複製することもできます。
+DevOps Projects は Azure DevOps を利用しています。  DevOps Projects は、Azure DevOps で Azure への CI/CD を設定するために必要なすべての作業を自動化します。  新規または既存の Azure DevOps 組織内に、Git リポジトリが作成されます。  DevOps Projects は、サンプル アプリケーションまたは既存のコードを、新しい Git リポジトリにコミットします。  オートメーションはまた、新しいコードがコミットされるたびにビルドが開始するように、ビルドに対する CI トリガーも確立します。  また、DevOps Projects は CD トリガーを作成し、新しく成功したすべてのビルドを、ユーザーが選んだ Azure サービスに展開します。  ビルド パイプラインとリリース パイプラインは、他のシナリオに合わせてカスタマイズできます。  また、他のプロジェクトで使用するために、ビルド パイプラインとリリース パイプラインを複製することもできます。
 
 DevOps Projects を作成した後は、次のことができます。
 

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 09/27/2018
 ms.author: cephalin;msangapu
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 05dd53fdfda5446cf848a7b8503a09bc5e5c2d20
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 347fc291fc7357481bfdc88c9019c3d688925c2f
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433465"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067519"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Azure で Node.js Web アプリを作成する
 
@@ -46,10 +46,15 @@ ms.locfileid: "47433465"
 
 [https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip](https://github.com/Azure-Samples/nodejs-docs-hello-world/archive/master.zip) からサンプル Node.js プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
 
-ターミナル ウィンドウで、Node.js のサンプル プロジェクトのルート ディレクトリに移動します (_index.js_ が含まれるディレクトリ)。
+_index.js_ を開き、次の行を見つけます。
 
-> [!NOTE]
-> このサンプル アプリを使用する必要はなく、必要な場合は独自の Node コードを使用できます。 ただし、アプリの PORT が実行時に Azure によって設定され、`process.env.PORT` として使用可能なことに注意してください。 Express を使用している場合は、`process.env.PORT || 3000` に対する起動時のチェック (`app.listen`) を行うようにしてください。 これを行わず、ポートが実行時に Azure によって設定される内容に一致しない場合は、`Service Unavailable` メッセージが表示されます。 
+```javascript
+var port = process.env.PORT || 1337;
+```
+
+App Service はアプリケーションに process.env.PORT を挿入し、コードが変数を使用して、どのポートをリッスンするかを知るようにします。 
+
+ターミナル ウィンドウで、Node.js のサンプル プロジェクトのルート ディレクトリに移動します (_index.js_ が含まれるディレクトリ)。
 
 ## <a name="run-the-app-locally"></a>アプリをローカルで実行する
 
@@ -68,7 +73,7 @@ Web ブラウザーを開き、`http://localhost:1337` のサンプル アプリ
 ターミナル ウィンドウで **Ctrl + C** キーを押して、Web サーバーを終了します。
 
 > [!NOTE]
-> Azure App Service では、アプリは、[iisnode](https://github.com/tjanczuk/iisnode) を使用して IIS で実行されます。 Iisnode でアプリを実行できるようにするために、アプリのルート ディレクトリに web.config ファイルが含まれています。 このファイルが IIS によって読み取られます。iisnode 関連の設定については、[iisnode GitHub リポジトリ](https://github.com/tjanczuk/iisnode/blob/master/src/samples/configuration/web.config)を参照してください。
+> Azure App Service では、アプリは、[iisnode](https://github.com/Azure/iisnode) を使用して IIS で実行されます。 Iisnode でアプリを実行できるようにするために、アプリのルート ディレクトリに web.config ファイルが含まれています。 このファイルが IIS によって読み取られます。iisnode 関連の設定については、[iisnode GitHub リポジトリ](https://github.com/Azure/iisnode/blob/master/src/samples/configuration/web.config)を参照してください。
 
 [!INCLUDE [Create ZIP file](../../includes/app-service-web-create-zip.md)]
 

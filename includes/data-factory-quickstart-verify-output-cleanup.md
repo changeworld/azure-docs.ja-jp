@@ -17,6 +17,8 @@
 Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
+リソース グループの削除には、しばらく時間がかかることがあります。 処理が完了するまでお待ちください。
+
 リソース グループ全体ではなく、データ ファクトリだけを削除する場合は、次のコマンドを実行します。 
 
 ```powershell

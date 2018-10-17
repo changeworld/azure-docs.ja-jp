@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/14/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 030774716e1af4a7d6817d64ae66ded2bcaf4081
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: fde063cb593ca1f610dc35cd044fe41e34ab9202
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41920062"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578370"
 ---
 # <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポート
 
@@ -29,9 +29,9 @@ Azure Active Directory は、ユーザー アカウントに関連する疑わ�
 
 検出されたリスク イベントは、以下のものの計算に使用されます。
 
-- **リスクの高いサインイン** - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 詳細については、「[リスクの高いサインイン](../identity-protection/overview.md#risky-sign-ins)」を参照してください。 
+- **リスクの高いサインイン** - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 詳細については、[サインイン リスク ポリシーを構成する方法](../identity-protection/howto-sign-in-risk-policy.md)に関するページをご覧ください。 
 
-- **リスクのフラグ付きユーザー** - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 詳細については、「[リスクのフラグ付きユーザー](../identity-protection/overview.md#users-flagged-for-risk)」を参照してください。  
+- **リスクのフラグ付きユーザー** - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 詳細については、[ユーザー リスク ポリシーを構成する方法](../identity-protection/howto-user-risk-policy.md)に関するページをご覧ください。  
 
 Azure Portal では、**[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、セキュリティ レポートを確認できます。  
 
@@ -78,13 +78,13 @@ Azure Active Directory の Free および Basic エディションのリスク�
 
 Azure Active Directory Premium エディションのリスクのフラグ付きユーザー レポートで提供される情報を以下に示します。
 
-- 侵害された可能性のある[ユーザー アカウントの一覧](../identity-protection/overview.md#users-flagged-for-risk) 
+- 侵害された可能性のあるユーザー アカウントの一覧 
 
 - 検出された[リスク イベントの種類](concept-risk-events.md)に関する集計情報
 
 - レポートをダウンロードするオプション
 
-- [ユーザー リスク修復ポリシー](../identity-protection/overview.md#user-risk-security-policy)を構成するオプション  
+- [ユーザー リスク修復ポリシー](../identity-protection/howto-user-risk-policy.md)を構成するオプション  
 
 
 ![リスクの高いサインイン](./media/concept-user-at-risk/71.png)
@@ -103,7 +103,7 @@ Azure Active Directory Premium エディションのリスクのフラグ付き�
 ![リスクの高いサインイン](./media/concept-user-at-risk/324.png)
 
 
-リスク イベントを調査するには、一覧からリスク イベントを 1 つ選択してその **[詳細]** ブレードを表示します。 **[詳細]** ブレードで、[リスク イベントを手動で閉じる](../identity-protection/overview.md#closing-risk-events-manually)か、手動で閉じたリスク イベントを再アクティブ化することができます。 
+リスク イベントを調査するには、一覧からリスク イベントを 1 つ選択してその **[詳細]** ブレードを表示します。 **[詳細]** ブレードで、リスク イベントを手動で閉じるか、手動で閉じたリスク イベントを再アクティブ化することができます。 
 
 
 ![リスクの高いサインイン](./media/concept-user-at-risk/325.png)

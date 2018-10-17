@@ -208,6 +208,13 @@ items:
   - name: Batch アカウント
     href: /azure/templates/Microsoft.Batch/batchAccounts
     items:
+    - name: '[アプリケーション]'
+      href: /azure/templates/Microsoft.Batch/batchAccounts/applications
+      items:
+      - name: バージョン
+        href: /azure/templates/Microsoft.Batch/batchAccounts/applications/versions
+        maintainContext: true
+      maintainContext: true
     - name: 証明書
       href: /azure/templates/Microsoft.Batch/batchAccounts/certificates
       maintainContext: true
@@ -225,6 +232,23 @@ items:
     maintainContext: true
   - name: '[ジョブ]'
     href: /azure/templates/Microsoft.BatchAI/jobs
+    maintainContext: true
+  - name: ワークスペース
+    href: /azure/templates/Microsoft.BatchAI/workspaces
+    items:
+    - name: クラスター
+      href: /azure/templates/Microsoft.BatchAI/workspaces/clusters
+      maintainContext: true
+    - name: 実験
+      href: /azure/templates/Microsoft.BatchAI/workspaces/experiments
+      items:
+      - name: '[ジョブ]'
+        href: /azure/templates/Microsoft.BatchAI/workspaces/experiments/jobs
+        maintainContext: true
+      maintainContext: true
+    - name: ファイル サーバー
+      href: /azure/templates/Microsoft.BatchAI/workspaces/fileServers
+      maintainContext: true
     maintainContext: true
 - name: キャッシュ
   items:
@@ -407,6 +431,10 @@ items:
       maintainContext: true
     - name: トリガー
       href: /azure/templates/Microsoft.DataFactory/factories/triggers
+      items:
+      - name: トリガーの再実行
+        href: /azure/templates/Microsoft.DataFactory/factories/triggers/rerunTriggers
+        maintainContext: true
       maintainContext: true
     maintainContext: true
 - name: Data Lake Analytics
@@ -623,6 +651,11 @@ items:
     maintainContext: true
   - name: Web テスト
     href: /azure/templates/Microsoft.insights/webtests
+    maintainContext: true
+- name: IoT Central
+  items:
+  - name: IoT アプリ
+    href: /azure/templates/Microsoft.IotCentral/IotApps
     maintainContext: true
 - name: Key Vault
   items:
@@ -1433,9 +1466,9 @@ items:
         maintainContext: true
       maintainContext: true
     maintainContext: true
-ms.openlocfilehash: ca2143fbe061561b27f8d8f6f0181820181634a0
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 773ae8c38cb98e9c8daff6ef2819d4a3dc687739
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902656"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353953"

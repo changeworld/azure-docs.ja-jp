@@ -1,20 +1,22 @@
 ---
-title: JavaScript での Microsoft Speech Recognition API の利用 | Microsoft Docs
-description: Cognitive Services の Microsoft Speech Recognition API を使用して、連続して音声をテキストに変換するアプリケーションを開発します。
+title: JavaScript での Bing Speech Recognition API の利用 | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: Cognitive Services の Bing Speech Recognition API を使用して、連続して音声をテキストに変換するアプリケーションを開発します。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 12/21/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 04332c453d22122e65a758a65b09e17300e07f02
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ROBOTS: NOINDEX
+ms.openlocfilehash: c4fb331076f88d4f14f56201aa31a00160f395aa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040540"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995348"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>JavaScript での Speech Recognition API の利用
 
@@ -38,7 +40,7 @@ Speech API は、Cognitive Services の一部です。 無料試用版のサブ�
 
 ### <a name="open-the-sample-directly"></a>サンプルを直接開く
 
-上記のようにサブスクリプション キーを取得します。 その後、[サンプルへのリンク](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html)を開きます。 これにより、既定のブラウザーでページが読み込まれます ([htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) を使用してレンダリングされます)。
+上記のようにサブスクリプション キーを取得します。 その後、[サンプルへのリンク](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html)を開きます。 これにより、既定のブラウザーでページが読み込まれます ([htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) を使用してレンダリングされます)。
 
 ### <a name="open-the-sample-from-a-local-copy"></a>ローカル コピーからサンプルを開く
 

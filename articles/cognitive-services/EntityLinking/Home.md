@@ -1,24 +1,25 @@
 ---
-title: Entity Linking Intelligence Service API | Microsoft Docs
-description: Cognitive Services でのエンティティ リンク設定タスクで、Entity Linking Intelligence Service API を使用する方法を説明します。
+title: Entity Linking Intelligence Service API の概要
+titlesuffix: Azure Cognitive Services
+description: エンティティ リンク設定タスクで、Entity Linking Intelligence Service API を使用する方法を説明します。
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: entity-linking-intelligence
-ms.topic: article
+ms.topic: overview
 ms.date: 03/28/2016
 ms.author: davl
-ms.openlocfilehash: 662295c42a421fe76892e6e5aac7b7e7178d6155
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b0f839e8f33e9ff48d2ad526621167a89e3b9be8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373005"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366184"
 ---
-# <a name="entity-linking-intelligence-service-api"></a>Entity Linking Intelligence Service API
+# <a name="what-is-the-entity-linking-intelligence-service-api"></a>Entity Linking Intelligence Service API の概要
 
-Microsoft Entity Linking Intelligence Service は、エンティティ リンク設定に関するタスクで開発者を支援するために作成された Web サービスです。
+Entity Linking Intelligence Service は、エンティティ リンク設定に関するタスクで開発者を支援するために作成された Web サービスです。
 
 ## <a name="entity-linking"></a>Entity Linking
 

@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/28/2018
+ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 596c4b15ea6ef76d4471bca6994377bf4d5ddc01
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: b4ec329fc5b1f3df9e6641bee3e1378c3a4d09c6
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143425"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378348"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>クイック スタート: Azure portal を使用して Azure Data Box Disk をデプロイする (プレビュー)
 
@@ -68,12 +68,12 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
 
 この手順には約 5 分かかります。
 
-1. 同梱されているケーブルを使用して、サポート対象バージョンの Windows が実行されているコンピューターにディスクを接続します。 サポート対象 OS バージョンについて詳しくは、「[Azure Data Box Disk system requirements (Azure Data Box Disk のシステム要件)](data-box-disk-system-requirements.md)」を参照してください。 
+1. 同梱されているケーブルを使用して、サポート対象バージョンの Windows/Linux が実行されているコンピューターにディスクを接続します。 サポート対象 OS バージョンについて詳しくは、「[Azure Data Box Disk system requirements (Azure Data Box Disk のシステム要件)](data-box-disk-system-requirements.md)」を参照してください。 
 2. 次の手順に従って、ディスクのロックを解除します。
 
     1. Azure portal で **[全般] > [デバイスの詳細]** に移動し、パスキーを取得します。
-    2. ディスクへのデータのコピーに使用するコンピューターに、Data Box Disk のロック解除ツールをダウンロードして抽出します。 
-    3. *DataBoxDiskUnlock.exe* を実行してパスキーを指定します。 ディスクの再挿入に対応するには、ロック解除ツールをもう一度実行し、パスキーを指定します。 **BitLocker ダイアログまたは BitLocker キーを使用したディスクのロック解除は行わないでください。** 
+    2. ディスクへのデータのコピーに使用するコンピューターに、オペレーティング システム固有の Data Box Disk のロック解除ツールをダウンロードして展開します。 
+    3. Data Box Disk ロック解除ツールを実行して、このパスキーを指定します。 ディスクの再挿入に対応するには、ロック解除ツールをもう一度実行し、パスキーを指定します。 **BitLocker ダイアログまたは BitLocker キーを使用したディスクのロック解除は行わないでください。** ディスクのロック解除方法の詳細については、[Windows クライアントでのディスクのロック解除]()または [Linux クライアントでのディスクのロック解除]()に関するページを参照してください。
     4. ディスクに割り当てられたドライブ文字が、ツールによって表示されます。 ディスクのドライブ文字をメモしておいてください。 以降の手順で使用します。
 
 ## <a name="copy-data-and-verify"></a>データのコピーと確認
@@ -86,9 +86,9 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
 
     > [!NOTE] 
     > - すべてのコンテナーと BLOB は、[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions)に準拠している必要があります。 これらの規則に従っていない場合、Azure へのデータのアップロードに失敗します。
-    > - ファイルが約 4.7 TiB (ブロック BLOB の場合) および約 8 TiB (ページ BLOB の場合) を超えないようにしてください。
+    > - ファイルが約 4.75 TiB (ブロック BLOB の場合) および約 8 TiB (ページ BLOB の場合) を超えないようにしてください。
 
-2. (省略可) コピーが完了したら、*AzureImportExport* フォルダーに格納されている `AzureExpressDiskService.cmd` を実行して、検証のためにチェックサムを生成することをお勧めします。 データのサイズによっては、この手順に時間がかかることがあります。 
+2. (省略可) コピーが完了したら、*AzureImportExport* フォルダーに格納されている `DataBoxDiskValidation.cmd` を実行して、検証のためにチェックサムを生成することをお勧めします。 データのサイズによっては、この手順に時間がかかることがあります。 
 3. ドライブを取り外します。 
 
 

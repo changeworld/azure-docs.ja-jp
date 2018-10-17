@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 09/06/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b2a96aad793d956b3ea3de06fba74bcf68e50786
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: afee9450bc1485f781eb0d70b5d4dd2f50424573
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30197075"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44343156"
 ---
 エンタープライズ ソリューション (推奨) を使って生成されたルート証明書を使用するか、または自己署名証明書を生成してください。 ルート証明書の作成後、(秘密キーではなく) 公開証明書データを、Base-64 でエンコードされた X.509 .cer ファイルとしてエクスポートし、公開証明書データを Azure にアップロードします。
 
@@ -22,3 +22,4 @@ ms.locfileid: "30197075"
 
   * [Windows 10 PowerShell の手順](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md): これらの手順で証明書を生成するには、Windows 10 および PowerShell が必要です。 ルート証明書から生成されるクライアント証明書は、サポートされている任意の P2S クライアントにインストールすることができます。
   * [MakeCert の手順](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): 証明書を生成するために使用する Windows 10 コンピューターにアクセスできない場合は、MakeCert を使用します。 MakeCert は非推奨になりましたが、まだ MakeCert を使用して証明書を生成することができます。 ルート証明書から生成されるクライアント証明書は、サポートされている任意の P2S クライアントにインストールすることができます。
+  * [Linux の手順](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md)

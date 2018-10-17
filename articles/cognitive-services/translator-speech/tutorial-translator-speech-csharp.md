@@ -1,26 +1,26 @@
 ---
-title: Translator Speech のチュートリアル (C#) | Microsoft Docs
-titleSuffix: Cognitive Services
-description: Translator Speech サービスを使用して、テキストをリアルタイムに翻訳する方法について説明します。
+title: 'チュートリアル: Translator Speech API C#'
+titleSuffix: Azure Cognitive Services
+description: Translator Speech API を使用して、テキストをリアルタイムに翻訳します。
 services: cognitive-services
 author: v-jerkin
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.devlang: csharp
-ms.topic: article
+ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 010ad8b5ceeaf046c8d361ff352e6058154a482d
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2de56366c3204e77eb2e6775ddd88b6fc4f0c219
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41929749"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993869"
 ---
-# <a name="tutorial-microsoft-translator-wpf-application-in-c"></a>チュートリアル: C# での Microsoft Translator WPF アプリケーション
+# <a name="tutorial-translator-speech-application-in-c"></a>チュートリアル: C# での Translator Speech アプリケーション
 
-このチュートリアルでは、Microsoft Translator Speech 翻訳サービス (Azure の Microsoft Cognitive Services の一部) を使用した、対話型音声翻訳ツールについて説明します。 学習内容は次のとおりです。
+このチュートリアルでは、Translator Speech API (Azure Cognitive Services の一部) を使用した、対話型音声翻訳ツールについて説明します。 学習内容:
 
 > [!div class="checklist"]
 > * サービスでサポートされている言語の一覧を要求する
@@ -42,7 +42,7 @@ Visual Studio ソリューションでは、アプリケーションのインス
 
 ## <a name="trying-the-translation-app"></a>翻訳アプリの使用
 
-Visual Studio で Microsoft Speech Translator ソリューション (`SpeechTranslator.sln`) を開いたら、F5 キーを押してアプリケーションをビルドし、起動します。  プログラムのメイン ウィンドウが表示されます。
+Visual Studio で Speech Translator ソリューション (`SpeechTranslator.sln`) を開いたら、F5 キーを押してアプリケーションをビルドし、起動します。  プログラムのメイン ウィンドウが表示されます。
 
 ![[Speech Translator のメイン ウィンドウ]](media/speech-translator-main-window.png)
 
@@ -50,7 +50,7 @@ Visual Studio で Microsoft Speech Translator ソリューション (`SpeechTran
 
 ![[Speech Translator のメイン ウィンドウ]](media/speech-translator-settings-window.png)
 
-このウィンドウで、Microsoft Translator Speech のサブスクリプション キーを貼り付け、**[保存]** をクリックします。 キーはアプリの実行ごとに保存されます。
+このウィンドウで、Translator Speech のサブスクリプション キーを貼り付け、**[保存]** をクリックします。 キーはアプリの実行ごとに保存されます。
 
 メイン ウィンドウに戻り、使用する音声入出力デバイスを選択して、どの言語からどの言語に翻訳するかを選択します。 翻訳の音声を再生する場合は、**[TTS]**(テキスト読み上げ) オプションをオンにします。 発話中に部分的な予測翻訳を表示するには、**[Partial Results]\(部分結果\)** オプションをオンにします。
 
@@ -58,7 +58,7 @@ Visual Studio で Microsoft Speech Translator ソリューション (`SpeechTran
 
 ## <a name="obtaining-supported-languages"></a>サポートされている言語の取得
 
-このドキュメントの作成時点で、Microsoft Translator サービスではテキスト翻訳の対象として 60 以上の言語をサポートしています。 音声翻訳については、サポートされている言語の数はこれより少なくなっています。 これらの言語については、トランスクリプション (音声認識) とテキスト読み上げ (音声合成) の両方のサポートが必要となります。
+このドキュメントの作成時点で、Translator Speech サービスではテキスト翻訳の対象として 60 以上の言語をサポートしています。 音声翻訳については、サポートされている言語の数はこれより少なくなっています。 これらの言語については、トランスクリプション (音声認識) とテキスト読み上げ (音声合成) の両方のサポートが必要となります。
 
 つまり、音声翻訳の場合は、トランスクリプション用にサポートされている言語をソース言語にする必要があります。 出力言語は、結果をテキストで出力するのであれば、テキスト翻訳用にサポートされている任意の言語を指定できます。 音声出力する場合は、テキスト読み上げ用にサポートされている言語しか翻訳できません。
 

@@ -1,22 +1,23 @@
 ---
-title: Entity Linking API の概要 | Microsoft Docs
-description: Cognition Services の Entity Linking API を使用して、テキストを分析し、名前付きエンティティをナレッジ ベースの関連エントリにリンクします。
+title: 'チュートリアル: エンティティ リンク アプリを構築する - C#'
+titlesuffix: Azure Cognitive Services
+description: Entity Linking API を使用して、テキストを分析し、名前付きエンティティをナレッジ ベースの関連エントリにリンクします。
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: entity-linking-intelligence
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/06/2016
 ms.author: davl
-ms.openlocfilehash: 54c4a3bbb3637c248bd7705ed291633368b542c9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 907b4cab483f1bf63a864094530784f9c632a1c8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373256"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365640"
 ---
-# <a name="get-started-with-entity-linking-api-in-c35"></a>C&#35; での Entity Linking API の概要
+# <a name="tutorial-build-an-entity-linking-app-with-c"></a>チュートリアル: C# でエンティティ リンク アプリを構築する
 
 Microsoft の Entity Linking は、テキストを分析し、名前付きエンティティをナレッジ ベース内の関連エントリにリンクする自然言語処理ツールです。 
 

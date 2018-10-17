@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 08/24/2018
-ms.openlocfilehash: 762c14b5b6e30f6410a8d572d69651c803f079c2
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.date: 09/11/2018
+ms.openlocfilehash: 3512cb7eda9f9e5a6e18dc83f6523029b17a9de2
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918088"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391472"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Ansible を使用して Azure 内の仮想マシン スケール セットにアプリケーションをデプロイする
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 また、Ansible を使用して、Azure にアプリケーションをデプロイすることもできます。 この記事では、Java アプリケーションを Azure 仮想マシン スケール セット (VMSS) にデプロイする方法について説明します。  
@@ -31,7 +31,7 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
 
 ## <a name="get-host-information"></a>ホスト情報を取得する
 
-このセクションでは、Ansible を使用して、Azure 仮想マシン グループのホスト情報を取得する方法について説明します。 サンプルの Ansible プレイブックを次に示します。 このコードは、指定されたリソース グループ内のパブリック IP アドレスとロード バランサーを取得し、**saclesethosts** という名前のホスト グループをインベントリ内に作成します。 
+このセクションでは、Ansible を使用して、Azure 仮想マシン グループのホスト情報を取得する方法について説明します。 サンプルの Ansible プレイブックを次に示します。 このコードは、指定されたリソース グループ内のパブリック IP アドレスとロード バランサーを取得し、**scalesethosts** という名前のホスト グループをインベントリ内に作成します。 
 
 このサンプルのプレイブックは、`get-hosts-tasks.yml` という名前で保存します。 
 

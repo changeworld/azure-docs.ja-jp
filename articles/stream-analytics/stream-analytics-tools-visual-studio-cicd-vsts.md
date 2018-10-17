@@ -1,6 +1,6 @@
 ---
-title: VSTS を使用して CI/CD で Azure Stream Analytics ジョブを配置する方法に関するチュートリアル
-description: この記事では、VSTS を使用して CI/CD で Stream Analytics ジョブを配置する方法について説明します。
+title: Azure DevOps Services を使用して CI/CD で Azure Stream Analytics ジョブをデプロイするチュートリアル
+description: この記事では、Azure DevOps Services を使用して CI/CD で Stream Analytics ジョブをデプロイする方法について説明します。
 services: stream-analytics
 author: su-jie
 ms.author: sujie
@@ -9,22 +9,22 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 7/10/2018
-ms.openlocfilehash: d4f1e188a1a145ba3be5fb45d2b0ea4d0bfd57a7
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: adacbaf718c5ef293b4ee3fa833083704aa41f5c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41918260"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297944"
 ---
-# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-vsts"></a>チュートリアル: VSTS を使用して CI/CD で Azure Stream Analytics ジョブを配置する
-このチュートリアルでは、Visual Studio Team Services を使用して、Azure Stream Analytics ジョブの継続的インテグレーションと継続的配置を設定する方法について説明します。 
+# <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>チュートリアル: Azure Pipelines を使用して CI/CD で Azure Stream Analytics ジョブをデプロイする
+このチュートリアルでは、Azure Pipelines を使用して、Azure Stream Analytics ジョブの継続的インテグレーションと継続的配置を設定する方法について説明します。 
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * プロジェクトにソース管理を追加する
-> * Team Services でビルド定義を作成する
-> * Team Services でリリース定義を作成する
+> * Azure Pipelines にビルド パイプラインを作成する
+> * Azure Pipelines にリリース パイプラインを作成する
 > * アプリケーションを自動的にデプロイおよびアップグレードする
 
 ## <a name="prerequisites"></a>前提条件
@@ -33,7 +33,7 @@ ms.locfileid: "41918260"
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 * [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) と、**Azure 開発**ワークロードまたは**データの保存と処理**ワークロードをインストールします。
 * [Visual Studio で Stream Analytics プロジェクト](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs)を作成します。
-* [Visual Studio Team Services](https://visualstudio.microsoft.com/team-services/) アカウントを作成します。
+* [Azure DevOps](https://visualstudio.microsoft.com/team-services/) 組織を作成します。
 
 ## <a name="configure-nuget-package-dependency"></a>NuGet パッケージの依存関係を構成する
 任意のマシンで自動ビルドと自動配置を実行するには、NuGet パッケージ `Microsoft.Azure.StreamAnalytics.CICD` を使用する必要があります。 これは、Stream Analytics Visual Studio プロジェクトの継続的インテグレーションおよびデプロイ プロセスをサポートする MSBuild、ローカル実行、デプロイ ツールを提供します。 詳細については、[Stream Analytics の CI/CD ツール](stream-analytics-tools-for-visual-studio-cicd.md)に関するページを参照してください。
@@ -47,34 +47,35 @@ ms.locfileid: "41918260"
 </packages>
 ```
 
-## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>新しい Team Services の Git リポジトリで Visual Studio ソリューションを共有する
-ビルドを生成できるよう、Team Services のチーム プロジェクトで、アプリケーションのソース ファイルを共有します。  
+## <a name="share-your-visual-studio-solution-to-a-new-azure-repos-git-repo"></a>新しい Azure Repos の Git リポジトリで Visual Studio ソリューションを共有する
+
+ビルドを生成できるように、Azure DevOps のプロジェクトで、アプリケーションのソース ファイルを共有します。  
 
 1. Visual Studio の右下隅のステータス バーで **[ソース管理に追加]**、**[Git]** の順に選択して、プロジェクトの新しいローカル Git リポジトリを作成します。 
 
-2. **チーム エクスプローラー**の **[同期]** ビューで、**[Visual Studio Team Services へのプッシュ]** にある **[Git リポジトリの発行]** ボタンを選択します。
+2. **チーム エクスプローラー**の **[同期]** ビューで、**[Push to Azure DevOps Services]\(Azure DevOps Services へのプッシュ\)** にある **[Git リポジトリの発行]** ボタンを選択します。
 
    ![Git リポジトリのプッシュ](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishgitrepo.png)
 
-3. 電子メールを確認し、**[Team Services ドメイン]** ドロップダウンから自分のアカウントを選択します。 リポジトリ名を入力し、**[リポジトリの発行]** を選択します。
+3. 電子メールを確認し、**[Azure DevOps Services Domain]\(Azure DevOps Services ドメイン\)** ドロップダウンからご自身の組織を選択します。 リポジトリ名を入力し、**[リポジトリの発行]** を選択します。
 
    ![Git リポジトリのプッシュ](./media/stream-analytics-tools-visual-studio-cicd-vsts/publishcode.png)
 
-    リポジトリを公開すると、ローカル リポジトリと同じ名前の新しいチーム プロジェクトが自分のアカウントに作成されます。 既存のチーム プロジェクトでリポジトリを作成するには、**[リポジトリ名]** の横にある **[詳細]** をクリックして、チーム プロジェクトを選択します。 **[See it on the web]\(Web を参照\)** を選択すると、ブラウザーでコードを表示できます。
+    リポジトリを公開すると、ローカル リポジトリと同じ名前の新しいプロジェクトがご自身の組織に作成されます。 既存のプロジェクトでリポジトリを作成するには、**[リポジトリ名]** の横にある **[詳細]** をクリックして、プロジェクトを選択します。 **[See it on the web]\(Web を参照\)** を選択すると、ブラウザーでコードを表示できます。
  
-## <a name="configure-continuous-delivery-with-vsts"></a>VSTS で継続的デリバリーを構成する
-Team Services のビルド定義では、順次実行されるビルド ステップで構成されたワークフローを記述します。 Team Services のビルド定義の詳細については、[こちら](https://www.visualstudio.com/docs/build/define/create)をご覧ください。 
+## <a name="configure-continuous-delivery-with-azure-devops"></a>Azure DevOps で継続的デリバリーを構成する
+Azure Pipelines のビルド パイプラインでは、順次実行されるビルド ステップで構成されたワークフローを記述します。 Azure Pipelines のビルド パイプラインの詳細については、[こちら](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav)をご覧ください。 
 
-Team Services のリリース定義では、クラスターにアプリケーション パッケージをデプロイするワークフローを記述します ビルド定義とリリース定義を併用すると、ソース ファイルから始まり、クラスターでのアプリケーションの実行で終わるワークフロー全体を実行できます。 Team Services のリリース定義の詳細については、 [こちら](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)をご覧ください。
+Azure Pipelines のリリース パイプラインでは、クラスターにアプリケーション パッケージをデプロイするワークフローを記述します。 ビルド パイプラインとリリース パイプラインを併用すると、ソース ファイルから始まり、クラスターでのアプリケーションの実行で終わるワークフロー全体を実行できます。 Azure Pipelines のリリース パイプラインの詳細については、[こちら](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)をご覧ください。
 
-### <a name="create-a-build-definition"></a>ビルド定義の作成
-Web ブラウザーを開き、[Visual Studio Team Services](https://app.vsaex.visualstudio.com/) で先ほど作成したチーム プロジェクトに移動します。 
+### <a name="create-a-build-pipeline"></a>ビルド パイプラインを作成する
+Web ブラウザーを開き、[Azure DevOps](https://app.vsaex.visualstudio.com/) で先ほど作成したプロジェクトに移動します。 
 
-1. **[ビルドとリリース]** タブで、**[ビルド]**、**[+ 新規]** の順に選択します。  **[VSTS Git]**、**[続行]** の順に選択します。
+1. **[ビルドとリリース]** タブで、**[ビルド]**、**[+ 新規]** の順に選択します。  **[Azure DevOps Services Git]** と **[続行]** を選択します。
     
     ![ソースの選択](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source.png)
 
-2. **[テンプレートの選択]** で **[空のプロセス]** をクリックし、空の定義を使って開始します。
+2. **[テンプレートの選択]** で **[空のプロセス]** をクリックし、空のパイプラインを使って開始します。
     
     ![ビルド テンプレートを選択する](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template.png)
 
@@ -82,7 +83,7 @@ Web ブラウザーを開き、[Visual Studio Team Services](https://app.vsaex.v
     
     ![トリガー状態](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger.png)
 
-4. ビルドは、プッシュ時またはチェックイン時にもトリガーされます。 ビルドの進行状況を確認するには、**[ビルド]** タブに切り替えます。ビルドが正常に実行されることを確認したら、アプリケーションをクラスターに配置するリリース定義を定義する必要があります。 ビルド定義の横にある省略記号を右クリックして、**[編集]** を選択します。
+4. ビルドは、プッシュ時またはチェックイン時にもトリガーされます。 ビルドの進行状況を確認するには、**[ビルド]** タブに切り替えます。ビルドが正常に実行されることを確認したら、アプリケーションをクラスターにデプロイするリリース パイプラインを定義する必要があります。 ビルド パイプラインの横にある省略記号を右クリックして、**[編集]** を選択します。
 
 5.  **[タスク]** の **[エージェント キュー]** に「Hosted」と入力します。
     
@@ -125,17 +126,17 @@ Web ブラウザーを開き、[Visual Studio Team Services](https://app.vsaex.v
     
     ![プロパティの設定](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deploy-2.png)
 
-12. **[保存してキューに登録]** をクリックして、ビルド定義をテストします。
+12. **[保存してキューに登録]** をクリックして、ビルド パイプラインをテストします。
     
     ![パラメーターのオーバーライドの設定](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-queue.png)
 
 ### <a name="failed-build-process"></a>ビルド プロセスの失敗
-ビルド定義の **[Azure リソース グループの配置]** タスクでテンプレート パラメーターをオーバーライドしなかった場合、null 値の配置パラメーターに関するエラーが発生する可能性があります。 エラーを解決するには、ビルド定義に戻って null 値のパラメーターをオーバーライドします。
+ビルド パイプラインの **[Azure リソース グループの配置]** タスクでテンプレート パラメーターをオーバーライドしなかった場合、null 値の配置パラメーターに関するエラーが発生する可能性があります。 エラーを解決するには、ビルド パイプラインに戻って null 値のパラメーターをオーバーライドします。
 
    ![失敗したビルド プロセス](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-process-failed.png)
 
 ### <a name="commit-and-push-changes-to-trigger-a-release"></a>リリースをトリガーする変更のコミットとプッシュ
-Team Services へのコード変更をチェックインして、継続的インテグレーション パイプラインが機能していることを確認します。    
+Azure DevOps へのコード変更をチェックインして、継続的インテグレーション パイプラインが機能していることを確認します。    
 
 コードを記述すると、変更内容は Visual Studio によって自動的に追跡されます。 右下のステータス バーで [保留中の変更] アイコンを選択して、ローカル Git リポジトリに変更をコミットします。
 
@@ -143,11 +144,11 @@ Team Services へのコード変更をチェックインして、継続的イン
 
     ![変更のコミットとプッシュ](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes.png)
 
-2. 発行されていない変更のステータス バー アイコンを選択するか、またはチーム エクスプローラーで [同期] ビューを選択します。 **[プッシュ]** を選択して、Team Services と TFS へコードを更新します。
+2. 発行されていない変更のステータス バー アイコンを選択するか、またはチーム エクスプローラーで [同期] ビューを選択します。 **[プッシュ]** を選択して、Azure DevOps のコードを更新します。
 
     ![変更のコミットとプッシュ](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-push-changes-2.png)
 
-Team Services へ変更をプッシュすると、ビルドが自動的にトリガーされます。  ビルド定義が正常に完了すると、リリースは自動的に作成され、クラスター上のジョブの更新が開始されます。
+Azure DevOps Services へ変更をプッシュすると、ビルドが自動的にトリガーされます。  ビルド パイプラインが正常に完了すると、リリースは自動的に作成され、クラスター上のジョブの更新が開始されます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

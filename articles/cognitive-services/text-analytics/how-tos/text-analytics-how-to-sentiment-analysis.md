@@ -1,22 +1,23 @@
 ---
-title: Text Analytics REST API で感情分析を実行する方法 (Azure 上の Microsoft Cognitive Services) | Microsoft Docs
-description: このチュートリアルでは、Azure 上の Microsoft Cognitive Services の Text Analytics REST API を使用して、センチメントを検出する方法を説明します。
+title: '例: Text Analytics REST API でセンチメントを分析する'
+titleSuffix: Azure Cognitive Services
+description: Text Analytics REST API を使用したセンチメントの検出方法について説明します。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 12/11/2017
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 7ffd8bbe47409b459fdd308cd8d670d32f56649b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 981e663b6a93abed1da9c2765a1b43063c70ad43
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373877"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605897"
 ---
-# <a name="how-to-detect-sentiment-in-text-analytics"></a>Text Analytics でセンチメントを検出する方法
+# <a name="example-how-to-detect-sentiment-in-text-analytics"></a>例: Text Analytics でセンチメントを検出する方法
 
 [Sentiment Analysis API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) はテキスト入力を評価し、ドキュメントごとに 0 (負) から 1 (正) のセンチメント スコアを返します。
 

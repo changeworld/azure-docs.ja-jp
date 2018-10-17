@@ -1,22 +1,24 @@
 ---
 title: C# サービス ライブラリを使用した Microsoft Speech Recognition API の利用 | Microsoft Docs
-description: Microsoft 音声認識サービス ライブラリを使用して、発話された言語をテキストに変換します。
+titlesuffix: Azure Cognitive Services
+description: Bing Speech 認識サービス ライブラリを使用して、発話された言語をテキストに変換します。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/17/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 0320f41658a7ac4d6bf9e88ed998c853b665d485
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5716f7a0af16bd3e40dea4468e2fae884f911718
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373933"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967559"
 ---
-# <a name="get-started-with-the-speech-recognition-service-library-in-c35-for-net-windows"></a>.NET Windows 用の C&#35; での音声認識サービス ライブラリの利用
+# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>クイック スタート: .NET Windows 用に C&#35; で Bing Speech 認識サービス ライブラリを使用する
 
 このサービス ライブラリは、独自のクラウド サービスを保有していて、それらのサービスから Speech Service を呼び出そうとしている開発者向けのものです。 デバイス バインド アプリから音声認識サービスを呼び出す場合は、この SDK を使わないでください (他のクライアント ライブラリや、それに対応した REST API を使ってください)。
 

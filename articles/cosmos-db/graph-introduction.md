@@ -8,57 +8,42 @@ ms.service: cosmos-db
 ms.component: cosmosdb-graph
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/05/2017
+ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: a0eec8aec315eefcbcc859828fa68ea0ccee6190
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 143aa1f26110b68e4dcf417c93b04f65e2993e89
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695352"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051648"
 ---
 # <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB の概要: Gremlin API
 
-[Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 Azure Cosmos DB は、次の機能を提供します。これらの機能はすべて、[業界最先端の SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。
+[Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 また、マルチモデル データベースでもあり、ドキュメント、キーと値、グラフ、列指向の各データ モデルがサポートされています。 Azure Cosmos DB Gremlin API は、グラフ データの保存と操作に使用されます。 Gremlin API ではグラフ データのモデル化がサポートされており、グラフ データを走査する API が用意されています。
 
-* [ターンキー グローバル配信](distribute-data-globally.md)
-* 世界規模での[スループットとストレージのエラスティック スケーリング](partition-data.md)
-* 99 パーセンタイルで 10 ミリ秒未満の待ち時間
-* [明確に定義された 5 種類の整合性レベル](consistency-levels.md)
-* 高可用性の保証 
+この記事では、Azure Cosmos DB Gremlin API の概要と、これを使用して何十億もの頂点と辺のある大規模なグラフを保存する方法について説明します。 ミリ秒の待機時間で、グラフにクエリを実行し、グラフの構造とスキーマを簡単に改善できます。 Azure Cosmos DB にクエリを実行するには、[Apache TinkerPop](http://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) を使用できます。
 
-Azure Cosmos DB は、[データのインデックスを自動的に作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。
-
-Azure Cosmos DB Gremlin API には次のものが含まれています。
-
-- グラフのモデリング。
-- トラバーサル API。
-- ターンキー グローバル配信。
-- 10 ミリ秒未満の読み取り待ち時間と 99 パーセンタイルで 15 ミリ秒未満を実現したストレージとスループットのエラスティック スケーリング。
-- インスタント クエリの可用性による自動インデックス設定。
-- 調整可能な整合性レベル。
-- 包括的な SLA。すべての単一リージョン アカウントと厳密でない一貫性のすべての複数リージョン アカウントで 99.99% の可用性 SLA、すべての複数リージョン データベース アカウントで 99.999% の読み取り可用性。
-
-Azure Cosmos DB にクエリを実行するには、[Apache TinkerPop](http://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) を使用できます。
-
-この記事では、Azure Cosmos DB Gremlin API の概要と、これを使用して何十億もの頂点と辺のある大規模なグラフを保存する方法について説明します。 ミリ秒の待機時間で、グラフにクエリを実行し、グラフの構造とスキーマを簡単に改善できます。
-
-## <a name="graph-database"></a>グラフ データベース
+## <a name="what-is-a-graph-database"></a>グラフ データベースとは
 実世界で出現するデータは、自然に結び付けられています。 従来のデータ モデリングはエンティティに重点を置いています。 しかし、多くのアプリケーションでは、当然、エンティティとリレーションシップの両方をモデル化するというニーズがあります。
 
-[グラフ](http://mathworld.wolfram.com/Graph.html)とは、[頂点](http://mathworld.wolfram.com/GraphVertex.html)と[辺](http://mathworld.wolfram.com/GraphEdge.html)で構成された構造です。 頂点と辺は、いずれも任意の数のプロパティを持つことができます。 頂点は、ユーザー、場所、イベントなどの個々のオブジェクトを表します。 辺は、頂点間のリレーションシップを表します。 たとえば、あるユーザーは、別のユーザーと知り合いで、あるイベントに関連があり、ある場所に最近行ったような場合です。 プロパティは頂点と辺に関する情報を表します。 プロパティの例には、名前や年齢、辺を持つ頂点が含まれ、タイムスタンプや重みなどを持ちます。 正式には、このモデルは[プロパティ グラフ](http://tinkerpop.apache.org/docs/current/reference/#intro)と呼ばれます。 Azure Cosmos DB は、プロパティ グラフ モデルをサポートしています。
+[グラフ](http://mathworld.wolfram.com/Graph.html)とは、[頂点](http://mathworld.wolfram.com/GraphVertex.html)と[辺](http://mathworld.wolfram.com/GraphEdge.html)で構成された構造です。 頂点と辺は、いずれも任意の数のプロパティを持つことができます。 
+
+* **頂点** - 頂点は、人、場所、イベントなどの個々のオブジェクトを表します。 
+
+* **辺** - 辺は、頂点間のリレーションシップを表します。 たとえば、あるユーザーは、別のユーザーと知り合いで、あるイベントに関連があり、ある場所に最近行ったような場合です。 
+
+* **プロパティ** - プロパティは頂点と辺に関する情報を表します。 プロパティの例として、名前と年齢を持つ頂点があります。 辺には、タイム スタンプや重みなどのプロパティがあります。 正式には、このモデルは[プロパティ グラフ](http://tinkerpop.apache.org/docs/current/reference/#intro)と呼ばれます。 Azure Cosmos DB は、プロパティ グラフ モデルをサポートしています。
 
 たとえば、次のサンプル グラフは、ユーザー、モバイル デバイス、関心事、オペレーティング システムの間のリレーションシップを示しています。
 
 ![ユーザー、デバイス、関心事を示すサンプル データベース](./media/graph-introduction/sample-graph.png)
 
-グラフは、科学、テクノロジ、ビジネスにおけるさまざまなデータセットを理解するうえで役立ちます。 グラフ データベースにより、グラフを効率的かつ自然にモデル化して格納できるので、さまざまなシナリオでグラフが有益なものになります。 これらのユース ケースでは、スキーマの柔軟性と迅速な反復処理も必要であることが多いため、通常、グラフ データベースは NoSQL データベースです。
-
-グラフは斬新で強力なデータ モデリング手法です。 ただし、この事実だけでは、グラフ データベースを使用する十分な理由にはなりません。 グラフ トラバーサルを必要とする多くのユース ケースやパターンでは、グラフは従来の SQL データベースや NoSQL データベースよりもパフォーマンスがはるかに優れています。 このパフォーマンスの違いは、友人の友人のような複数のリレーションシップをトラバースするときにさらに増幅されます。
+グラフ データベースにより、グラフを効率的かつ自然にモデル化して格納できるので、さまざまなシナリオでグラフが有益なものになります。 これらのユース ケースでは、スキーマの柔軟性と迅速な反復処理も必要であることが多いため、通常、グラフ データベースは NoSQL データベースです。
 
 グラフ データベースが提供する高速トラバーサルと、深さ優先探索、幅優先探索、ダイクストラ法などのグラフ アルゴリズムを組み合わせることで、ソーシャル ネットワーク、コンテンツ管理、レコメンデーションなどのさまざまな分野の問題を解決できます。
 
-## <a name="planet-scale-graphs-with-azure-cosmos-db"></a>Azure Cosmos DB による地球規模のグラフ
+## <a name="features-of-azure-cosmos-db-graph-database"></a>Azure Cosmos DB グラフ データベースの機能
+ 
 Azure Cosmos DB は、グローバル配布、ストレージとスループットのエラスティック スケーリング、自動インデックス作成とクエリ、調整可能な整合性レベルを提供し、TinkerPop 標準をサポートする、完全に管理されたグラフ データベースです。
 
 ![Azure Cosmos DB グラフ アーキテクチャ](./media/graph-introduction/cosmosdb-graph-architecture.png)
@@ -96,7 +81,8 @@ Azure Cosmos DB は、市場の他のグラフ データベースと比較した
 Azure Cosmos DB では、同じコンテナーやデータベース内でドキュメントやグラフなどの複数のモデルを使用することもできます。 ドキュメント コンテナーを使用してグラフ データをドキュメントと共に格納できます。 JSON に対する SQL クエリと Gremlin クエリの両方を使用して、同じデータをグラフとして照会できます。
 
 ## <a name="get-started"></a>作業開始
-Gremlin API をサポートする Azure コマンド ライン インターフェイス (CLI)、Azure PowerShell、または Azure portal を使用して、Azure Cosmos DB アカウントを作成できます。 アカウントを作成すると、Gremlin の WebSocket フロントエンドを提供する `https://<youraccount>.gremlin.cosmosdb.azure.com` などのサービス エンドポイントが Azure Portal で提供されます。 [Gremin コンソール](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)などの TinkerPop 互換ツールを構成してこのエンドポイントに接続し、Java、Node.js、または任意の Gremlin クライアント ドライバーでアプリケーションを構築できます。
+
+Azure コマンド ライン インターフェイス (CLI)、Azure PowerShell、または Azure portal を使用して Azure Cosmos DB Gremlin API アカウントを作成し、アカウントにアクセスできます。 アカウントを作成したら、Gremlin の WebSocket フロントエンドを提供する Gremlin API サービス エンドポイント (`https://<youraccount>.gremlin.cosmosdb.azure.com`) を使用して、そのアカウント内のグラフ データベースにアクセスできます。 [Gremin コンソール](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console)などの TinkerPop 互換ツールを構成してこのエンドポイントに接続し、Java、Node.js、または任意の Gremlin クライアント ドライバーでアプリケーションを構築できます。
 
 次の表に、Azure Cosmos DB に対して使用できる一般的な Gremlin ドライバーを示します。
 
@@ -109,7 +95,33 @@ Gremlin API をサポートする Azure コマンド ライン インターフ�
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Github の Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [PHP を使用してグラフを作成する](create-graph-php.md) |
 | [Gremlin コンソール](https://tinkerpop.apache.org/downloads.html) | [TinkerPop ドキュメント](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gremlin コンソールを使用してグラフを作成する](create-graph-gremlin-console.md) |
 
-## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Azure Cosmos DB のグラフ サポートのシナリオ
+## <a name="graph-database-design-considerations"></a>グラフ データベースの設計に関する考慮事項
+
+グラフを設計するときに、他の頂点エンティティのプロパティとしてではなく、自身の頂点としてエンティティをモデル化すると、パフォーマンスとコストに影響を及ぼします。 これを決定するかどうかは、主に、データに対するクエリの実行方法と、モデル自体のスケーラビリティによって左右されます。
+
+エンティティをモデル化する方法を計画する前に、次の質問を検討してください。
+
+* ほとんどのクエリで頂点として取得する必要があるエンティティは何か。
+
+* データをフィルター処理するために追加されるグラフに含める情報は何か。
+
+* 値を使用するために取得される他のエンティティへの単なる接続であるエンティティはどれか。
+
+* クエリで取得する必要があるのはどのような情報か。また、それらによってどのような RU 料金が発生するか。
+
+たとえば、次のようなグラフの設計があるとします。
+
+![グラフの設計に関する考慮事項の例](./media/graph-introduction/graph-design-considerations-example.png)
+
+* クエリによっては、District->Store のリレーションシップが、Store 頂点をフィルター処理するために独自に使用される可能性があります。 たとえば、クエリが "特定の地区に属するすべての店舗を取得する"形式であるとします。 この場合、District エンティティを自身の頂点から Store 頂点のプロパティに折りたたむことを検討する価値があります。 
+
+* このアプローチには、一度に 3 つのグラフ オブジェクト (District、District->Store、Store) を取得するのではなく、1 つの Store 頂点を取得することによって、各 Store 頂点を取得するコストが削減されるという利点があります。 これにより、パフォーマンスが向上するだけでなく、クエリあたりのコストも削減できます。
+
+* Store 頂点は、Employee と Product という 2 つの異なるエンティティにリンクしているためです。 これにより、走査される可能性が増えるので、Store は必要な頂点になります。  
+
+
+
+## <a name="scenarios-that-can-use-gremlin-api"></a>Gremlin API を使用できるシナリオ
 Azure Cosmos DB のグラフ サポートを使用できるシナリオを以下に示します。
 
 * ソーシャル ネットワーク

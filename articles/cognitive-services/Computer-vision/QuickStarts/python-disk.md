@@ -1,52 +1,49 @@
 ---
-title: 'Computer Vision Python クイック スタート: ローカル画像の分析 | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Computer Vision と Python を使ってローカル画像を分析します。
+title: 'クイック スタート: ローカル画像の分析 - REST、Python - Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Python で Computer Vision API を使用してローカル画像を分析します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: a1f3fce5a547f143f7c4884c6642e78f53d160e9
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 48a6602c9f3029cc008f3db7d4701499c14e7ce1
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43771911"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633862"
 ---
-# <a name="quickstart-analyze-a-local-image---rest-python"></a>クイック スタート: ローカル画像の分析 - REST、Python
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と Python を使用してローカル画像を分析する
 
-このクイック スタートでは、Computer Vision を使ってローカル画像を分析します。 リモート画像の分析については、[Python を使ったリモート画像の分析](python-analyze.md)に関するページをご覧ください。
+このクイック スタートでは、Computer Vision の REST API を使用して、ローカルに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使うと、画像の内容に基づいて視覚的特徴を抽出できます。
 
 このクイック スタートは、[MyBinder](https://mybinder.org) 上で Jupyter Notebook を使い、ステップ バイ ステップで実行することができます。 Binder を起動するには、次のボタンを選択します。
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
+
 ## <a name="prerequisites"></a>前提条件
 
-Computer Vision を使用するにはサブスクリプション キーが必要です。「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
+- サンプルをローカルで実行するには、[Python](https://www.python.org/downloads/) がインストールされている必要があります。
+- Computer Vision のサブスクリプション キーが必要です。 「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
 
-## <a name="analyze-a-local-image"></a>ローカル画像の分析
+## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
 
-このサンプルは [Python を使ったリモート画像の分析](python-analyze.md)と似ていますが、分析する画像はローカルのディスクから読み取ります。 次の 2 つの点について変更が必要です。
+このサンプルを作成して実行するには、次の手順を実行します。
 
-- `{"Content-Type": "application/octet-stream"}` ヘッダーを要求に追加します。
-- 要求の本文に画像データ (バイト配列) を追加します。
-
-このサンプルを実行するには、次の手順を実行します。
-
-1. 次のコードを新しい Python スクリプト ファイルにコピーします。
-1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. 必要に応じて `vision_base_url` の値を、サブスクリプション キーを取得した場所に変更します。
-1. `image_path` の値をローカル画像のパスに変更します。
-1. スクリプトを実行します。
-
-次のコードでは、Python `requests` ライブラリを使って、Computer Vision Analyze Image API を呼び出します。 その結果は、JSON オブジェクトとして返されます。 API キーは `headers` ディクショナリで渡します。 認識する特徴の種類は `params` ディクショナリで渡します。 バイナリの画像データは、`data` パラメーターで `requests.post` に渡します。
-
-## <a name="analyze-image-request"></a>画像分析要求
+1. テキスト エディターに次のコードをコピーします。
+1. 必要に応じて、コードに次の変更を加えます。
+    1. `subscription_key` 値を、サブスクリプション キーに置き換えます。
+    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの Computer Vision リソースのエンドポイント URL で `vision_base_url` 値を置き換えます。
+    1. 必要に応じて、分析したい別の画像のパスとファイル名で `image_path` 値を置き換えます。
+1. `.py` 拡張子のファイルとして、コードを保存します。 たとえば、「 `analyze-local-image.py` 」のように入力します。
+1. コマンド プロンプト ウィンドウを開きます。
+1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python analyze-local-image.py` 」のように入力します。
 
 ```python
 import requests
@@ -96,9 +93,9 @@ plt.axis("off")
 _ = plt.title(image_caption, size="x-large", y=-0.1)
 ```
 
-## <a name="analyze-image-response"></a>画像分析応答
+## <a name="examine-the-response"></a>結果の確認
 
-成功応答が JSON で返されます。その例を次に示します。
+成功応答が JSON で返されます。 サンプルの Web ページによって成功応答が解析され、次の例のようにコマンド プロンプト ウィンドウに表示されます。
 
 ```json
 {
@@ -171,6 +168,10 @@ _ = plt.title(image_caption, size="x-large", y=-0.1)
   }
 }
 ```
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+不要になったら、ファイルを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

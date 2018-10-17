@@ -1,21 +1,21 @@
 ---
-title: Translator Text と Python でテキストの言語を認識する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と Python を使って、ソース テキストの言語を認識します。
+title: 'クイック スタート: テキストの言語を認識する - Translator Text、Python'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Python で Translator Text API を使ってソース テキストの言語を認識します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 07a16e419bfdd4d73108fcdaa12695e99fecabee
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: 31fb36421dd2aef21f77b4941771e4d3db813730
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43770857"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125002"
 ---
 # <a name="quickstart-identify-language-from-text-with-python"></a>クイック スタート: Python を使ってテキストの言語を認識する
 

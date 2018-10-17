@@ -1,21 +1,21 @@
 ---
-title: Translator Text と Node.js でテキストの言語を認識する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と Node.js を使って、ソース テキストの言語を認識します。
+title: 'クイック スタート: テキストの言語を認識する - Translator Text、Node.js'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Node.js で Translator Text API を使ってソース テキストの言語を認識します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 8e6fecf74d1291e9660076572d385bb234edc222
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: bb2118c9c05cff093bb5affe91a388986ba85a38
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43770809"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126209"
 ---
 # <a name="quickstart-identify-language-from-text-with-nodejs"></a>クイック スタート: Node.js を使ってテキストの言語を認識する
 

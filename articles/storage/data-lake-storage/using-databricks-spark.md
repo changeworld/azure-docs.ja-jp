@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 6/27/2018
 ms.author: dineshm
-ms.openlocfilehash: 7d951a959da28187a5971ee218f2bd921d331727
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: fd9dfaa2042cae0923c919f4e76d7b59a170918e
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301800"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466032"
 ---
 # <a name="tutorial-access-azure-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>チュートリアル: Spark を使用して Azure Databricks で Azure Data Lake Storage Gen2 プレビューのデータにアクセスする
 
@@ -22,7 +22,6 @@ ms.locfileid: "43301800"
 > [!div class="checklist"]
 > * Databricks クラスターを作成する
 > * 非構造化データをストレージ アカウントに取り込む
-> * データを処理する Azure 関数をトリガーする
 > * Blob Storage 内でデータ分析を実行する
 
 ## <a name="prerequisites"></a>前提条件
@@ -36,11 +35,8 @@ ms.locfileid: "43301800"
 
 開始するには、新しい [Azure Data Lake Storage Gen2 アカウント](quickstart-create-account.md)を作成し、一意の名前を指定します。 ストレージ アカウントに移動し、構成設定を取得します。
 
-> [!IMPORTANT]
-> プレビュー中は、Azure Functions は、フラットな名前空間で作成された Azure Data Lake Storage Gen2 アカウントのみで機能します。
-
 1. **[設定]** で **[アクセス キー]** をクリックします。
-3. **[key1]** の隣にある **[コピー]** をクリックしてキーの値をコピーします。
+2. **[key1]** の隣にある **[コピー]** をクリックしてキーの値をコピーします。
 
 このチュートリアルの後の手順で、アカウント名とキーの両方が必要になります。 テキスト エディターを開き、後で参照できるようにアカウント名とキーをメモしておきます。
 
@@ -74,7 +70,7 @@ ms.locfileid: "43301800"
 
 ### <a name="copy-source-data-into-the-storage-account"></a>ソース データをストレージ アカウントにコピーする
 
-次のタスクでは、AzCopy を使用して、*.csv* ファイルから Azure storage にデータをコピーします。 コマンド プロンプト ウィンドウを開き、次のコマンドを入力します。 `<DOWNLOAD_FILE_PATH>`、`<ACCOUNT_NAME>`、および `<ACCOUNT_KEY>` の各プレースホルダーを、前の手順でメモしておいた対応する値で必ず置き換えてください。
+次のタスクでは、AzCopy を使用して、*.csv* ファイルから Azure storage にデータをコピーします。 コマンド プロンプト ウィンドウを開き、次のコマンドを入力します。 `<DOWNLOAD_FILE_PATH>`、`<ACCOUNT_KEY>` の各プレースホルダーを、前の手順でメモしておいた対応する値で必ず置き換えてください。
 
 ```bash
 set ACCOUNT_NAME=<ACCOUNT_NAME>
@@ -159,7 +155,7 @@ dbutils.fs.ls(source + "/temp/parquet/flights")
 acDF = spark.read.format('csv').options(header='true', inferschema='true').load(accountsource + "/<YOUR_CSV_FILE_NAME>.csv")
 acDF.write.parquet(accountsource + '/parquet/airlinecodes')
 
-#read the existing parquet file for the flights database that was created via the Azure Function
+#read the existing parquet file for the flights database that was created earlier
 flightDF = spark.read.format('parquet').options(header='true', inferschema='true').load(accountsource + "/parquet/flights")
 
 #print the schema of the dataframes
