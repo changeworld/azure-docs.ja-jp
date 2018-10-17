@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/08/2018
+ms.date: 09/12/2018
 ms.author: mattbriggs
 ms.reviewer: shnatara
-ms.openlocfilehash: 9feb2e538d3578fe259aa3fbc693a1e953f2f894
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d402b2bcd5187cbb6ece78d7e981068c279c1f75
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440353"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804431"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Service Fabric クラスターを Azure Stack にデプロイする
 
@@ -120,7 +120,7 @@ KeyVault を作成してそこに "*クラスター証明書*" を追加する�
 
 ## <a name="deploy-the-marketplace-item"></a>Marketplace 項目のデプロイ
 
-1. ユーザー ポータルで **[新規]** > **[Compute]** > **[Service Fabric クラスター]** の順に移動します。 
+1. ユーザー ポータルで **[+ リソースの作成]** > **[Compute]** > **[Service Fabric クラスター]** の順に移動します。 
 
    ![[Service Fabric クラスター] を選択](./media/azure-stack-solution-template-service-fabric-cluster/image2.png)
 
@@ -134,10 +134,10 @@ KeyVault を作成してそこに "*クラスター証明書*" を追加する�
 
 1. *[セキュリティ]* ページには、[Azure KeyVault の作成](#add-a-secret-to-key-vault)とシークレットのアップロードによって得られた値を追加します。
 
-   *[Admin Client Certificate Thumbprint]\(管理用クライアント証明書の拇印\)* には、"*管理用クライアント証明書*" の拇印を入力します  ([前提条件](#prerequisites)を参照してください)。
+   *[Admin Client Certificate Thumbprint]\(管理用クライアント証明書の拇印\)* には、"*管理用クライアント証明書*" の拇印を入力します  (「[前提条件](#prerequisites)」を参照してください)。
    
    - [ソース Key Vault]: スクリプトの実行結果から得られる *keyVault id* 文字列全体を指定します。 
-   - (クラスター証明書 URL\): スクリプトの実行結果から得られる *Secret Id* の URL 全体を指定します。 
+   - [Cluster Certificate URL]\(クラスター証明書 URL\): スクリプトの実行結果から得られる *Secret Id* の URL 全体を指定します。 
    - [クラスター証明書の拇印]: スクリプトの実行結果から得られる "*クラスター証明書の拇印*" を指定します。
    - [Admin Client Certificate Thumbprints]\(管理用クライアント証明書の拇印\): 「前提条件」で作成した "*管理用クライアント証明書の拇印*" を指定します。 
 
