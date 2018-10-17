@@ -56,7 +56,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 この例を実行するための前提条件は次のとおりです。
 
 1. [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
-2. [クイック スタート インストール ガイド](quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成するための [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md)。  
+2. [クイック スタート インストール ガイド](quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成するための [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md)。
 3. Windows マシン。 Workbench は Windows と MacOS のみをサポートしており、Microsoft の Cognitive Toolkit (ディープ ラーニング ライブラリとして使用する) は Windows と Linux のみをサポートしているため、Windows OS が必要です。
 4. 専用 GPU は、パート 1 で SVM トレーニングを実行するためには必要ありませんが、パート 2 で説明されている DNN の調整に必要です。 強力な GPU がないか、複数の GPU でトレーニングする必要があるか、または Windows マシンがない場合は、Windows オペレーティング システムで Azure のディープ ラーニング仮想マシンを使用することを検討してください。 ワンクリック デプロイ ガイドについては、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)を参照してください。 デプロイ後、リモート デスクトップ接続経由で VM に接続し、そこで Workbench をインストールして、VM からローカルでコードを実行します。
 5. OpenCV などのさまざまな Python ライブラリをインストールする必要があります。 Workbench の *[ファイル]* メニューから *[コマンド プロンプトを開く]* をクリックし、次のコマンドを実行してこれらの依存関係をインストールします。  
@@ -75,7 +75,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 - 執筆時に、Azure Machine Learning Workbench には 5 MB を超えるノートブックの表示の問題がありました。 この大きなサイズのノートブックは、すべてのセル出力が表示された状態でノートブックが保存された場合に発生する可能性があります。 このエラーが発生した場合は、Workbench 内の [ファイル] メニューからコマンド プロンプトを開き、`jupyter notebook` を実行して、ノートブックを開き、すべての出力をクリアして、ノートブックを保存します。 この手順を実行すると、Azure Machine Learning Workbench 内で、再度ノートブックが正しく開きます。
 - このサンプルで提供されているすべてのスクリプトは、ローカルで実行する必要があります。docker などのリモート環境では実行しないでください。 すべてのノートブックは、カーネルを "PROJECTNAME local" (例: "myImgClassUsingCNTK local") という名前のローカル プロジェクト カーネルに設定して実行する必要があります。
 
-    
+
 ## <a name="create-a-new-workbench-project"></a>新しいワークベンチ プロジェクトの作成
 
 この例をテンプレートとして使用して新しいプロジェクトを作成するには
@@ -162,7 +162,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 ### <a name="step-4-support-vector-machine-training"></a>手順 4: サポート ベクター マシン トレーニング
 `Script: 4_trainSVM.py`
 
-最後の手順で計算された 512 個の浮動小数点数表現を使用して、SVM 分類器をトレーニングします。入力として画像を指定すると、SVM は存在する各属性のスコアを出力します。 このサンプル データセットでは、これは 'ストライプ'、'ドット'、'ヒョウ柄' のスコアを意味します。
+最後の手順で計算された 512 個の浮動小数点数表現を使用して、SVM 分類子をトレーニングします。入力として画像を指定すると、SVM は存在する各属性のスコアを出力します。 このサンプル データセットでは、これは 'ストライプ'、'ドット'、'ヒョウ柄' のスコアを意味します。
 
 スクリプト `4_trainSVM.py` はトレーニング画像を読み込み、正則化 (スラック) パラメーター C のさまざまな値で SVM をトレーニングし、最高精度で SVM を保持します。 分類精度は、コンソールに出力され、Workbench にプロットされます。 提供されたテクスチャ データの場合、これらの値はそれぞれ約 100% と 88% になるはずです。 最後に、トレーニング済み SVM がファイル *DATA_DIR/proc/fashionTexture/cntkFiles/svm.np* に書き込まれます。
 
@@ -175,7 +175,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 ### <a name="step-5-evaluation-and-visualization"></a>手順 5: 評価と視覚化
 `Script: 5_evaluate.py. Notebook: showResults.ipynb`
 
-トレーニング済み画像分類器の精度は、スクリプト `5_evaluate.py` を使用して測定できます。 スクリプトは、トレーニング済み SVM 分類器を使用してすべてのテスト 画像にスコアを付け、各画像に最高スコアの属性を割り当て、予測された属性をグラウンド トゥルース注釈と比較します。
+トレーニング済み画像分類子の精度は、スクリプト `5_evaluate.py` を使用して測定できます。 スクリプトは、トレーニング済み SVM 分類子を使用してすべてのテスト 画像にスコアを付け、各画像に最高スコアの属性を割り当て、予測された属性をグラウンド トゥルース注釈と比較します。
 
 スクリプト `5_evaluate.py` の出力を次に示します。 個々のクラスの分類精度に加えて、完全なテスト セットの精度 ('全体の精度') と個々の精度の平均 ('全体のクラス平均精度') が計算されます。 100% は可能な限り最高の精度に対応し、0% は最低です。 平均のあて推量によって、属性数全体で 1 のクラス平均精度が生成されます。ここの例では、この精度は 33.33% になります。 これらの結果は、`rf_inputResoluton = 1000` などの高い入力解像度を使用した場合に大幅に向上しますが、DNN の計算時間が長くなる犠牲を伴います。
 
@@ -238,7 +238,7 @@ SVM の代わりのニューラル ネットワークのトレーニングは、
 
 Azure Machine Learning Workbench は、Azure での実行ごとの履歴を保存しているため、数週間離れている複数の実行でも比較できます。 これについては、[Iris チュートリアル](tutorial-classifying-iris-part-2.md)で詳しく説明しています。 これについては、次のスクリーン ショットにも示しています。ここでは DNN の調整を使用した実行、つまり `classifier = "dnn"` (実行番号 148) と SVM トレーニングを使用した実行、つまり `classifier = "svm"` (実行番号 150) の 2 つの `5_evaluate.py` スクリプトの実行を比較しています。
 
-最初のスクリーンショットで、DNN の調整により、すべてのクラスの SVM トレーニングよりも精度が向上しています。 2 番目のスクリーン ショットでは、分類器が何かなど、追跡対象のすべてのメトリックを示しています。 この追跡は、スクリプト `5_evaluate.py` で Azure Machine Learning Workbench ロガーを呼び出すことによって行われます。 さらに、スクリプトは、ROC 曲線と混同行列を *outputs* フォルダーに保存します。 この *outputs* フォルダーは、その内容も、Workbench 履歴機能によって追跡される点で特別であり、そのためにローカル コピーが上書きされているかどうかに関係なく、出力ファイルにいつでもアクセスできます。
+最初のスクリーンショットで、DNN の調整により、すべてのクラスの SVM トレーニングよりも精度が向上しています。 2 番目のスクリーン ショットでは、分類子が何かなど、追跡対象のすべてのメトリックを示しています。 この追跡は、スクリプト `5_evaluate.py` で Azure Machine Learning Workbench ロガーを呼び出すことによって行われます。 さらに、スクリプトは、ROC 曲線と混同行列を *outputs* フォルダーに保存します。 この *outputs* フォルダーは、その内容も、Workbench 履歴機能によって追跡される点で特別であり、そのためにローカル コピーが上書きされているかどうかに関係なく、出力ファイルにいつでもアクセスできます。
 
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/run_comparison1.jpg" alt="alt text" width="700"/>
@@ -264,11 +264,11 @@ Azure Machine Learning Workbench は、Azure での実行ごとの履歴を保�
 
 - DNN のオーバーフィット: DNN の調整時 (パート 2 の最初の図) は、トレーニングとテストの精度の大きな差を回避します。 この差を縮小するには、0.5 以上のドロップアウト率 `rf_dropoutRate` を使用し、正則化の重み `rf_l2RegWeight` を増やします。 高いドロップアウト率を使用すると、DNN 入力画像の解像度が高い場合に特に役立つことがあります。
 
-- `rf_pretrainedModelFilename` を `ResNet_18.model` から `ResNet_34.model` または `ResNet_50.model` のいずれかに変更することで、深い DNN を使用してみます。 Resnet-50 モデルは、深いだけでなく、最後から 2 番目のレイヤーの出力が、2048 個の浮動小数点数値になります (ResNet-18 および ResNet-34 モデルの 512 個の浮動小数点数値に対して)。 この大きいディメンションは、SVM 分類器のトレーニング時に特に有益です。
+- `rf_pretrainedModelFilename` を `ResNet_18.model` から `ResNet_34.model` または `ResNet_50.model` のいずれかに変更することで、深い DNN を使用してみます。 Resnet-50 モデルは、深いだけでなく、最後から 2 番目のレイヤーの出力が、2048 個の浮動小数点数値になります (ResNet-18 および ResNet-34 モデルの 512 個の浮動小数点数値に対して)。 この大きいディメンションは、SVM 分類子のトレーニング時に特に有益です。
 
 ## <a name="part-3---custom-dataset"></a>パート 3 - カスタム データセット
 
-パート 1 および 2 では、提供された上衣のテクスチャ画像を使用して、画像分類モデルをトレーニングし、評価しました。 ここでは、代わりにユーザーが提供したカスタム データセットを使用する方法を示します。 
+パート 1 および 2 では、提供された上衣のテクスチャ画像を使用して、画像分類モデルをトレーニングし、評価しました。 ここでは、代わりにユーザーが提供したカスタム データセットを使用する方法を示します。
 
 ### <a name="using-a-custom-dataset"></a>カスタム データセットの使用
 
@@ -287,8 +287,8 @@ datasetName = "fashionTexture"
 
 トレーニングとテストのために十分な数の注釈付き画像を収集することは困難な場合があります。 この問題に対処する 1 つの方法は、インターネットから画像をスクラップすることです。
 
-> [!IMPORTANT] 
-> 使用する画像については、画像の著作権およびライセンスを侵害していないことを確認してください。 
+> [!IMPORTANT]
+> 使用する画像については、画像の著作権およびライセンスを侵害していないことを確認してください。
 
 <!--
 For example, see below the Bing Image Search results for the query *t-shirt striped*. As expected, most images indeed are striped t-shirts. The few incorrect or ambiguous images (such as column 1, row 1; or column 3, row 2) can be identified and removed easily:
@@ -320,5 +320,5 @@ Rather than manually downloading images from Bing Image Search, it is much easie
 
 ## <a name="references"></a>参照
 
-[1] Alex Krizhevsky、Ilya Sutskever、および Geoffrey E. Hinton、「[_ImageNet Classification with Deep Convolutional Neural Networks_](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)」 (ディープ畳み込みニューラル ネットワークによる ImageNet の分類)。 NIPS 2012。  
+[1] Alex Krizhevsky、Ilya Sutskever、および Geoffrey E. Hinton、「[_ImageNet Classification with Deep Convolutional Neural Networks_](https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf)」 (ディープ畳み込みニューラル ネットワークによる ImageNet の分類)。 NIPS 2012。
 [2] Kaiming He、Xiangyu Zhang、Shaoqing Ren、および Jian Sun、「[_Deep Residual Learning for Image Recognition_](https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)」 (画像認識のための Deep Residual Learning)。 CVPR 2016。
