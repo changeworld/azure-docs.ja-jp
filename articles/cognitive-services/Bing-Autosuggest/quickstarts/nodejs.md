@@ -1,23 +1,23 @@
 ---
-title: Node.js での Bing Autosuggest API のクイック スタート | Microsoft Docs
-description: Azure Cognitive Services で Bing Autosuggest API をすぐに使い始めるために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing Autosuggest API (Node.js)'
+titlesuffix: Azure Cognitive Services
+description: Bing Autosuggest API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: d327f3da493259793c2a4adfd6e87d756610f920
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 498953625907aad85d8ea5999905cad21bf245da
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377232"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829989"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-nodejs"></a>Node.js での Bing Autosuggest API のクイック スタート
-<a name="HOLTop"></a>
 
 この記事では、Node.js で [Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) を使用する方法について説明します。 Bing Autosuggest API は、ユーザーが検索ボックスに入力した部分的なクエリ文字列に基づいて、推奨されるクエリの一覧を返します。 通常は、ユーザーが検索ボックスに新しい文字を入力するたびにこの API を呼び出して、検索ボックスのドロップダウン リストに候補を表示します。 この記事では、*sail* に対するクエリ文字列の候補を返す要求を送信する方法を示します。
 
@@ -25,12 +25,12 @@ ms.locfileid: "35377232"
 
 このコードを実行するには [Node.js 6](https://nodejs.org/en/download/) が必要です。
 
-**Bing Autosuggest API v7** を使用するには [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)が必要です。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/#search)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+**Bing Autosuggest API v7** を使用するには [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)が必要です。 このクイックスタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/#search)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
 
 ## <a name="get-autosuggest-results"></a>Autosuggest の結果を取得する
 
 1. 好みの IDE で新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -88,7 +88,7 @@ get_suggestions ();
 
 ### <a name="response"></a>Response
 
-次の例で示すように、正常な応答が JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {

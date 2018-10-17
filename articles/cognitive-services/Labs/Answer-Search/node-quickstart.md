@@ -1,21 +1,22 @@
 ---
-title: Microsoft Cognitive Services、Project Answer Search の Node のクイック スタート | Microsoft Docs
-description: Azure 上で Microsoft Cognitive Services の Project Answer Search の使用を開始します。
+title: 'クイック スタート: Project Answer Search、Node'
+description: Node で Project Answer Search の使用を開始します。
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 36b2709d39230aae7929164ba4c9306f57043b43
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 99dba482c9dec4448110301201c7c9e79a7a6380
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376192"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867427"
 ---
-# <a name="project-answer-search-node-quickstart"></a>Project Answer Search の Node のクイック スタート
+# <a name="quickstart-project-answer-search-with-node"></a>クイック スタート: Node での Project Answer Search
 
 次の Node の例では、ヨセミテ国立公園に関する情報を問い合わせるクエリを作成します。
 

@@ -1,20 +1,21 @@
 ---
-title: Microsoft Academic Graph 用 Academic Knowledge API | Microsoft Docs
-description: Academic Knowledge API を使用してユーザーのクエリを解釈し、Microsoft Cognitive Services の Academic Graph から豊富な情報を取得します。
+title: Academic Knowledge API とは
+titlesuffix: Azure Cognitive Services
+description: Academic Knowledge API を使用してユーザーのクエリを解釈し、Academic Graph から豊富な情報を取得します。
 services: cognitive-services
 author: mvorvoreanu
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: overview
 ms.date: 03/27/2017
 ms.author: mivorvor
-ms.openlocfilehash: e241f9a87cd58b62eafd754bd3cb4283aa0a1e92
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d08cd7124b232e50365e72753eba97c6309f401c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374021"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901212"
 ---
 # <a name="academic-knowledge-api"></a>Academic Knowledge API
 
@@ -24,7 +25,7 @@ MAG データは、Bing Web インデックスだけではなく、Bing から�
 
 Microsoft Academic Graph については、[http://aka.ms/academicgraph](http://aka.ms/academicgraph) を参照してください。
 
-Academic Knowledge API は、Cognitive Services Preview から Cognitive Services Labs に移動されました。 プロジェクトの新しいホームページは [https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge) です。 既存の API キーは、2018 年 5 月 24日 まで機能します。 この日を過ぎたら、新しい API キーを生成してください。 既存のキーの有効期限が切れた後、有料プレビューは使用できなくなることに注意してください。 この API の Free レベルでは目的を十分に果たせない場合は、Microsoft のチームにお問い合わせください。 
+Academic Knowledge API は、Cognitive Services Preview から Cognitive Services Labs に移動されました。 プロジェクトの新しいホームページは [https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge) です。 既存の API キーは、2018 年 5 月 24日 まで機能します。 この日を過ぎたら、新しい API キーを生成してください。 既存のキーの有効期限が切れた後、有料プレビューは使用できなくなることに注意してください。 この API の無料レベルでは目的を十分に果たせない場合は、Microsoft のチームにお問い合わせください。 
 
 ## <a name="features"></a>機能
 Academic Knowledge API は、次の 4 つの関連する REST エンドポイントで構成されます。  
@@ -39,5 +40,5 @@ Academic Knowledge API は、次の 4 つの関連する REST エンドポイン
 
 **graph search** メソッドには、*json* と *lambda* という 2 つのモードがあります。 *Json* モードでは、JSON オブジェクトによって指定されたグラフ パターンに従ったグラフ パターン マッチングを実行できます。 *ラムダ* モードでは、ユーザーが指定したラムダ式に従って、グラフの走査中にサーバー側の計算を実行できます。
 
-## <a name="getting-started"></a>使用の開始 
+## <a name="getting-started"></a>Getting Started (概要) 
 左側にあるサブトピックで、詳細なドキュメントを確認してください。  例の読みやすさを向上させるために、REST API 呼び出しには URL エンコードされていない文字 (スペースなど) が含まれていることに注意してください。  コードには、適切な URL エンコードを適用する必要があります。

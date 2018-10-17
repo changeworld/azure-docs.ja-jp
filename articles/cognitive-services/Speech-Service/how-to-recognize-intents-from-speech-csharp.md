@@ -6,16 +6,16 @@ description: >
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
-ms.technology: Speech
+ms.component: Speech
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 16424c44003be14e3ba04f6b5cce0ce518a0d7e8
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9210aaf2ddfa917ff480f4126c02137f46788dc3
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063032"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884344"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>チュートリアル: Speech SDK for C# を使用して音声から意図を認識する
 
@@ -123,7 +123,7 @@ static async Task RecognizeIntentAsync()
 音声から意図を認識するための最初の手順は、LUIS のエンドポイント キーとリージョンから音声構成を作成することです。 音声構成は、Speech SDK のさまざまな機能のための認識エンジンを作成するために使用できます。 音声構成では、使用するサブスクリプションを指定する複数の方法があります。ここでは `FromSubscription` を使用し、この方法ではサブスクリプション キーとリージョンを受け取ります。
 
 > [!NOTE]
-> Speech サブスクリプションではなく LUIS サブスクリプションのキーおよびリージョンを使用してください。
+> Speech Service サブスクリプションではなく LUIS サブスクリプションのキーおよびリージョンを使用してください。
 
 次に、`new IntentRecognizer(config)` を使用して意図認識エンジンを作成します。 構成で使用するサブスクリプションは既にわかっているため、認識エンジンを作成するときにサブスクリプション キーとエンドポイントをもう一度指定する必要はありません。
 
@@ -166,7 +166,7 @@ result.Properties.GetProperty(PropertyId.LanguageUnderstandingServiceResponse_Js
 
 ## <a name="specify-recognition-language"></a>認識言語を指定する
 
-既定では、LUIS は意図を米国英語 (`en-us`) で認識します。 音声構成の `SpeechRecognitionLanguage` プロパティにロケール コードを割り当てることで、意図を他の言語で認識することができます。 たとえば、認識エンジンを作成する前にチュートリアル アプリケーションに `config.SpeechRecognitionLanguage = "de-de";` を追加すると、意図はドイツ語で認識されます。 [サポートされている言語](supported-languages.md#speech-to-text)を参照してください。
+既定では、LUIS は意図を米国英語 (`en-us`) で認識します。 音声構成の `SpeechRecognitionLanguage` プロパティにロケール コードを割り当てることで、意図を他の言語で認識することができます。 たとえば、認識エンジンを作成する前にチュートリアル アプリケーションに `config.SpeechRecognitionLanguage = "de-de";` を追加すると、意図はドイツ語で認識されます。 [サポートされている言語](language-support.md#speech-to-text)を参照してください。
 
 ## <a name="continuous-recognition-from-a-file"></a>ファイルからの継続的な認識
 

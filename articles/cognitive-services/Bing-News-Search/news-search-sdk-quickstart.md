@@ -1,23 +1,23 @@
 ---
-title: News Search SDK C# のクイック スタート | Microsoft Docs
-description: News Search SDK コンソール アプリケーションの設定。
-titleSuffix: Azure cognitive services News search SDK C# quickstart
+title: 'クイック スタート: Bing News Search SDK (C#)'
+titleSuffix: Azure Cognitive Services
+description: Bing News Search SDK コンソール アプリケーションの設定。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 01/30/2018
 ms.author: v-gedod
-ms.openlocfilehash: e803fd579c6b71b8b1754546446715795a12087a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 416557b11ebef953411fb6fabcddb72d08dcb5af
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377928"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802986"
 ---
-# <a name="news-search-sdk-c-quickstart"></a>News Search SDK C# のクイック スタート
+# <a name="quickstart-bing-news-search-sdk-with-c"></a>クイック スタート: Bing News Search SDK (C#)
 
 Bing News Search SDK には、ニュースのクエリと結果解析のための REST API 機能が含まれています。 
 

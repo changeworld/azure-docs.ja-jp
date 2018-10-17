@@ -1,23 +1,23 @@
 ---
-title: Java での Bing Autosuggest API のクイック スタート | Microsoft Docs
-description: Azure Cognitive Services で Bing Autosuggest API をすぐに使い始めるために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing Autosuggest API (Java)'
+titlesuffix: Azure Cognitive Services
+description: Bing Autosuggest API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: c3a6b7119521772dbb60f3702c84e9bbd94217c4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6f79416c28631a47209558fd0c415ae79cff93bc
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377256"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831400"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-java"></a>Java での Bing Autosuggest API のクイック スタート
-<a name="HOLTop"></a>
 
 この記事では、Java で [Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) を使用する方法について説明します。 Bing Autosuggest API は、ユーザーが検索ボックスに入力した部分的なクエリ文字列に基づいて、候補となるクエリの一覧を返します。 通常は、ユーザーが検索ボックスに新しい文字を入力するたびにこの API を呼び出して、検索ボックスのドロップダウン リストに候補を表示します。 この記事では、*sail* に対するクエリ文字列の候補を返す要求を送信する方法を示します。
 
@@ -30,8 +30,8 @@ ms.locfileid: "35377256"
 ## <a name="get-autosuggest-results"></a>Autosuggest の結果を取得する
 
 1. 適当な IDE で新しい Java プロジェクトを作成します。
-2. 下記のコードを追加します。
-3. `subscriptionKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+2. 次に示すコードを追加します。
+3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
 ```java

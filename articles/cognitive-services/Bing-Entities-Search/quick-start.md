@@ -1,25 +1,24 @@
 ---
-title: Entities Search API クイック スタート | Microsoft Docs
-description: Bing Entities Search API の使用方法の概要について説明します。
+title: 'クイック スタート: Bing Entity Search API'
+description: Bing Entity Search API の使用方法の概要について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: B206A254-B7E9-49FF-AFD5-87B1E4D6D30B
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 07/06/2017
 ms.author: scottwhi
-ms.openlocfilehash: 12031d2447920c7e2d6180f35cf4fb29aa1b6150
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ffc9ebb21c6646b1a39af4659053adf4157d204b
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372928"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48813959"
 ---
-# <a name="making-your-first-entities-request"></a>最初のエンティティ要求を行う
+# <a name="quickstart-making-your-first-bing-entity-search-request"></a>クイック スタート: 初めての Bing Entity Search 要求
 
-Entity Search API は、Bing に検索クエリを送信して、エンティティと場所を含む検索結果を取得します。 場所の結果には、レストラン、ホテルやその他の地元企業が含まれます。 場所の場合、クエリではローカル ビジネスの名前を指定したり、一覧 (たとえば、近くのレストラン) を尋ねたりできます。 エンティティの結果には、人、場所、または物が含まれます。 このコンテキストでの場所とは、観光名所、州、国などです。 
+Bing Entity Search API は、Bing に検索クエリを送信して、エンティティと場所を含む検索結果を取得します。 場所の結果には、レストラン、ホテルやその他の地元企業が含まれます。 場所の場合、クエリではローカル ビジネスの名前を指定したり、一覧 (たとえば、近くのレストラン) を尋ねたりできます。 エンティティの結果には、人、場所、または物が含まれます。 このコンテキストでの場所とは、観光名所、州、国などです。 
 
 ## <a name="first-steps"></a>最初の手順
 
@@ -50,7 +49,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/entities
 
 クライアント IP と場所のヘッダーは、場所に対応したコンテンツを返すために重要です。  
 
-すべての要求ヘッダーと応答ヘッダーの一覧は、「[Headers](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers)」(ヘッダー) をご覧ください。
+すべての要求ヘッダーと応答ヘッダーの一覧については、「[Headers (ヘッダー)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#headers)」を参照してください。
 
 ## <a name="the-request"></a>要求
 

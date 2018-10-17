@@ -1,21 +1,23 @@
 ---
-title: Project URL Preview の Java のクイック スタート - Microsoft Cognitive Services | Microsoft Docs
-description: Azure 上で Microsoft Cognitive Services の Project URL Preview の使用を開始するためのスクリプト サンプル。
+title: 'クイック スタート: Project URL Preview、Java'
+titlesuffix: Azure Cognitive Services
+description: Java で Project URL Preview の使用を開始するためのスクリプト サンプル。
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 04/24/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 2de74f48882605bfcf05f65723ba5d8993587f51
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 95e33ceddc2fbbab51d3c4f0164b410847430244
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376269"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867118"
 ---
-# <a name="url-preview-java-quickstart"></a>URL Preview の Java のクイック スタート
+# <a name="quickstart-url-preview-with-java"></a>クイック スタート: Java での URL Preview
 
 次の Java の例では、SwiftKey Web サイト (https://swiftkey.com/en) の URL プレビューを作成します。
 
@@ -23,7 +25,7 @@ ms.locfileid: "35376269"
 
 [Cognitive Services Labs](https://aka.ms/answersearchsubscription) で無料試用版のアクセス キーを取得します
 
-## <a name="request"></a>要求 
+## <a name="request"></a>Request 
 
 次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定し、"https://swiftkey.com/en" のクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
 

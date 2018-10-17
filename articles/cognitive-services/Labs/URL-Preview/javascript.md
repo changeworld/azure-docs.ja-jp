@@ -1,21 +1,23 @@
 ---
-title: Project URL Preview の JavaScript のクイック スタート - Microsoft Cognitive Services | Microsoft Docs
-description: Azure 上で Microsoft Cognitive Services の Bing URL Preview API の使用をすぐに開始するためのスクリプト サンプル。
+title: 'クイック スタート: Project URL Preview、JavaScript'
+titlesuffix: Azure Cognitive Services
+description: JavaScript で Bing URL Preview API の使用をすぐに開始するためのスクリプト サンプル。
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: dda6f7c105dfbadc3c22f0c008aa8759fe12fa03
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.author: rosh
+ms.openlocfilehash: b10e33a0947057c35bb6227cc43f92c4f0a56ceb
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301354"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869467"
 ---
-# <a name="url-preview-in-javascript"></a>JavaScript による URL Preview 
+# <a name="quickstart-url-preview-in-javascript"></a>クイック スタート: JavaScript による URL Preview 
 
 次のシングルページ アプリケーションでは、JavaScript を使用して SwiftKey サイト (https://swiftkey.com/en) の URL プレビューを作成します。 
 

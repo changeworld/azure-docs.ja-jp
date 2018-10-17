@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 92b6327cbb97ed871cd4b10977bcd73a81494e20
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a469bc600715b2e276d6654596da50d75659aadb
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042127"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831026"
 ---
 # <a name="tutorial-5-extract-contextually-related-data"></a>チュートリアル 5: 文脈的に関連するデータを抽出する
 このチュートリアルでは、コンテキストに基づいて関連するデータを検索します。 たとえば、あるビルやオフィスから別のビルやオフィスへの物理的な移動の出発地と到着地が関連します。 作業指示を生成するには、両方のデータが必要である可能性があり、これらは互いに関連しています。  
@@ -61,7 +61,7 @@ ms.locfileid: "47042127"
 
 2. 左側のメニューから **[Entities]\(エンティティ\)** を選択します。
 
-3. 一覧内の番号エンティティの右にある省略記号 ***(...)*** ボタンを選択します。 **[削除]** を選択します。 
+3. 一覧で番号エンティティの左側にあるチェック ボックスをオンにします。 **[削除]** を選択します。 
 
 ## <a name="add-utterances-to-moveemployee-intent"></a>MoveEmployee 意図に発話を追加する
 

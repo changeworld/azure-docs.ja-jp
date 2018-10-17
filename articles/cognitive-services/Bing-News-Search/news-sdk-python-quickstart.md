@@ -1,23 +1,23 @@
 ---
-title: News Search SDK の Python 向けクイック スタート | Microsoft Docs
-description: News Search SDK コンソール アプリケーションの設定。
-titleSuffix: Azure News Search SDK Python quickstart
+title: 'クイック スタート: Bing News Search SDK (Python)'
+titleSuffix: Azure Cognitive Services
+description: Bing News Search SDK コンソール アプリケーションの設定。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/14/2018
 ms.author: v-gedod
-ms.openlocfilehash: 6d212d1477ecf583a038e33e72aab3d60f6aa050
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8e4343b053835c0fc2219373ad60f96c7b80636a
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377925"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803343"
 ---
-# <a name="news-search-sdk-python-quickstart"></a>News Search SDK Python のクイック スタート
+# <a name="quickstart-bing-news-search-sdk-with-python"></a>クイック スタート: Bing News Search SDK (Python)
 
 News Search SDK には、Web クエリと結果解析のための REST API 機能が含まれています。 
 

@@ -3,7 +3,7 @@ title: Azure Stack の証明書に関する問題を修復する | Microsoft Doc
 description: Azure Stack 適合性チェッカーを使用して、証明書の問題を確認し、修復します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,17 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/08/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 0d2c4d848f861e4e07dbd0de4609344955ca26f7
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5e96c731496d79ca081091e2059a35545f963bd6
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937573"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078638"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Azure Stack PKI 証明書に関する一般的な問題を修復する
 この記事の情報は、Azure Stack PKI 証明書の一般的な問題について理解し、解決するうえで役立ちます。 Azure Stack 適合性チェッカー ツールを使用して [Azure Stack PKI 証明書を検証](azure-stack-validate-pki-certs.md)すると、問題を見つけることができます。 このツールは、証明書が Azure Stack デプロイと Azure Stack シークレット ローテーションの PKI 要件を満たしていることを確認し、その結果のログを [report.json ファイル](azure-stack-validation-report.md)に出力します。  
+
+## <a name="pfx-encryption"></a>PFX の暗号化
+**エラー** - PFX 暗号化は TripleDES-SHA1 ではありません。   
+**解決策** - **TripleDES-SHA1** 暗号化を使用して PFX ファイルをエクスポートします。 これは、証明書スナップインからエクスポートするか Export-PFXCertificate を使用するときの、すべての Windows 10 クライアントの既定の設定です。 
 
 ## <a name="read-pfx"></a>PFX の読み取り
 **警告** - 証明書の個人情報がパスワードのみで保護されています。  
@@ -66,6 +70,7 @@ ms.locfileid: "33937573"
 
 ## <a name="fix-common-packaging-issues"></a>パッケージに関する一般的な問題の修正
 AzsReadinessChecker は、PFX ファイルをインポートしてから、エクスポートし、次のようなパッケージに関する一般的な問題を修正できます。 
+ - "*PFX 暗号化*" が TripleDES-SHA1 ではない
  - "*秘密キー*" にローカル コンピューター 属性がない。
  - "*証明書チェーン*" が完全ではないか、間違っている  (PFX パッケージに証明書チェーンが含まれない場合、ローカル コンピューターに証明書チェーンを含める必要があります)。 
  - "*他の証明書*"。

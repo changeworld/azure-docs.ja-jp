@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018s
+ms.date: 10/10/2018
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 9092629c7bef46cdb7c464fca5e22d4aea0da9fc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 12b7a605350b07565660e9e4d1334b286aa5ac00
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041542"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079108"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>クイック スタート: コスト分析を使用してコストを調査および分析する
 
@@ -34,13 +34,21 @@ Azure コストを正しく制御して最適化するには、コストが組�
 
 コスト分析は、すべての [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) 顧客が使用できます。 コスト データを表示するには、次に示す 1 つ以上のスコープへの読み取りアクセス権が必要です。
 
-- 請求先アカウント
-- 部署
-- 登録アカウント
-- 管理グループ
-- サブスクリプション
-- リソース グループ
+- "*請求先アカウント*" のスコープは https://ea.azure.com で定義されており、エンタープライズ管理者アクセスが必要です。 前提条件となる EA 設定はありません。 コスト分析での課金情報は、マイクロソフト エンタープライズ契約のすべてのサブスクリプションのものが統合されます。 請求先アカウントは、しばしば "*マイクロソフト エンタープライズ契約*" または "*登録*" と呼ばれます。
 
+- "*部署*" のスコープは https://ea.azure.com で定義されており、部署管理者アクセスが必要です。 EA ポータルで **DA ビュー料金**の設定を有効にする必要があります。 コスト分析での課金情報は、部署にリンクされている、登録アカウントに属しているすべてのサブスクリプションのものが統合されます。
+
+- "*登録アカウント*" のスコープは https://ea.azure.com で定義されており、アカウント所有者アクセスが必要です。 EA ポータルで **AO ビュー料金**の設定を有効にする必要があります。 コスト分析での課金情報は、登録アカウントに属しているすべてのサブスクリプションのものが統合されます。 登録アカウントは、しばしば "*アカウント所有者*" と呼ばれます。
+
+- "*管理グループ*" のスコープは https://portal.azure.com で定義されており、Cost Management 閲覧者 (または閲覧者) アクセスが必要です。 EA ポータルで **AO ビュー料金**の設定を有効にする必要があります。 コスト分析での課金情報は、管理グループの下のすべてのサブスクリプションのものが統合されます。
+
+- "*サブスクリプション*" のスコープは https://portal.azure.com で定義されており、Cost Management 閲覧者 (または閲覧者) アクセスが必要です。 EA ポータルで **AO ビュー料金**の設定を有効にする必要があります。 コスト分析での課金情報は、サブスクリプションのすべてのリソースとリソース グループのものが統合されます。
+
+- "*リソース グループ*" のスコープは https://portal.azure.com で定義されており、Cost Management 閲覧者 (または閲覧者) アクセスが必要です。 EA ポータルで **AO ビュー料金**の設定を有効にする必要があります。 コスト分析での課金情報は、リソース グループのすべてのリソースのものが統合されます。
+
+
+
+**DA ビュー料金**と **AO ビュー料金**の設定の構成の詳細については、「[コストへのアクセスを有効にする](../billing/billing-enterprise-mgmt-grp-troubleshoot-cost-view.md#enabling-access-to-costs)」を参照してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -94,6 +102,11 @@ Azure コストを正しく制御して最適化するには、コストが組�
 ![現在のビューのすべてのデータ](./media/quick-acm-cost-analysis/full-data-set.png)
 
 上の図は、リソース グループ名を示しています。 リソースのタグの表示は、コスト分析のビュー、フィルター、またはグループのいずれでも使用できません。
+
+特定の属性によってコストをグループ化すると、上位 10 個のコスト要因が高いものから順に表示されます。 グループが 10 個を超える場合は、上位 9 個のコスト要因と、**[その他]** グループが表示されます。このグループに、残りのすべてのグループが含まれます。
+
+"*クラシック*" (Azure サービス管理: ASM) の仮想マシン、ネットワーク、およびストレージ リソースは、詳細な課金データを共有しません。 それらは、コストをグループ化する場合、**クラシック サービス**としてマージされます。
+
 
 ## <a name="download-cost-analysis-data"></a>コスト分析データをダウンロードする
 

@@ -7,14 +7,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: overview
-ms.date: 08/15/2018
+ms.date: 10/06/2018
 ms.author: diberry
-ms.openlocfilehash: a8e9deb7c677d04634b223045adc2d31fa74ba6e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0520c00ab20ca7210b3bb13567f9998e7231be43
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033041"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867674"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -151,7 +151,7 @@ An example [utterance](luis-how-to-add-example-utterances.md) is text input from
 
 ## <a name="improve-model-prediction"></a>モデルの予測の改善
 
-LUIS モデルが発行され、ユーザーの実際の発話を受信した後、LUIS はさまざまな方法で予測精度を改善できます ([アクティブ ラーニング](#active-learning)ドメインの単語を含む[フレーズ リスト](#phrase-lists)、および必要な発話の数を減少させる[パターン](#patterns))。
+LUIS モデルが発行され、ユーザーの実際の発話を受信した後、LUIS はさまざまな方法で予測精度を改善できます ([アクティブ ラーニング](luis-concept-review-endpoint-utterances.md)ドメインの単語を含む[フレーズ リスト](luis-concept-feature.md)、および必要な発話の数を減少させる[パターン](luis-concept-patterns.md))。
 <!--
 ### Active learning
 
@@ -171,25 +171,37 @@ Patterns allow you to simplify an intent's utterance collection into common [tem
 Author LUIS from the [authoring](https://aka.ms/luis-authoring-apis) APIs or from the LUIS portal. Query the published prediction endpoint of the model from the [endpoint](https://aka.ms/luis-endpoint-apis) APIs.
 -->
 
-## <a name="integrating-with-luis"></a>LUIS を使用した統合
+## <a name="development-lifecycle"></a>開発ライフサイクル
+LUIS は、ツール、バージョン管理、および他の LUIS 作成者とのコラボレーションを提供して、クライアント アプリケーションと言語モデルのレベルで完全な開発ライフ サイクルに統合されます。 
+
+## <a name="implementing-luis"></a>LUIS の実装
 LUIS は、REST API として、HTTP 要求を送信するあらゆる製品、サービス、フレームワークで使用できます。 以下に、LUIS で使用される Microsoft の代表的な製品とサービスを列挙しています。
 
-Microsoft の LUIS 向けクライアント アプリケーションの例:
+LUIS のトップ クライアント アプリケーション:
 * [Web アプリ ボット](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-3.0): テキスト入力を介してユーザーと会話する LUIS 対応のチャット ボットをすばやく作成します。 完成度の高いボット エクスペリエンスを実現するために、[Bot Framework][bot-framework] バージョン [3.x](https://github.com/Microsoft/BotBuilder) または [4.x](https://github.com/Microsoft/botbuilder-dotnet) を使用してください。
-* [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/): 詳細については、LUIS を使った [Mixed Reality のコース](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303)を参照してください。 
 
-ボットで LUIS を使用するための Microsoft ツール:
+LUIS をボットですばやく簡単に使用するためのツール:
+* [LUIS CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUIS): この NPM パッケージは、スタンドアロンのコマンド ライン ツールまたはインポートとして、作成と予測を提供します。 
+* [LUISGen](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/LUISGen): LUISGen は、エクスポートされた LUIS モデルから厳密に型指定された C# および typescript のソース コードを生成するためのツールです。
 * [Dispatch](https://aka.ms/dispatch-tool): ディスパッチャー モデルを使うことで、いくつかの LUIS アプリや QnA Maker アプリを親アプリから使用できます。
-* [Conversation Learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview): LUIS を使ったボットの会話を短時間で構築できます。
-* [Project Personality Chat](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview): ボットの短い会話を扱います。
+* [LUDown](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Ludown): LUDown は、ボットの言語モデルを管理するのに役立つコマンド ライン ツールです。
 
 LUIS で使用されるその他の Cognitive Services:
 * [QnA Maker][qnamaker] は、多種多様なテキストを質問と回答のナレッジ ベースに統合できるようにします。
 * [Bing Spell Check API](../bing-spell-check/proof-text.md) は、予測を行う前にテキストを修正します。 
 * [Speech サービス](../Speech-Service/overview.md)は、話し言葉による要求をテキストに変換します。 
+* [Conversation Learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview): LUIS を使ったボットの会話を短時間で構築できます。
+* [Project Personality Chat](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview): ボットの短い会話を扱います。
+<!--
+## Other ways of implementing LUIS
+
+A client application for LUIS is:
+* [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/) - learn more with this [Mixed reality course](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303) with LUIS. 
 
 
+Labs: 
 
+-->
 ## <a name="next-steps"></a>次の手順
 
 [構築済み](luis-get-started-create-app.md)または[カスタム ](luis-quickstart-intents-only.md) ドメインを使用して、新しい LUIS アプリを作成します。 公開 IoT アプリの[予測エンドポイントに対してクエリを実行](luis-get-started-cs-get-intent.md)します。

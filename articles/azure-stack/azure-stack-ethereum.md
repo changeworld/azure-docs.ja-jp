@@ -1,40 +1,45 @@
 ---
 title: Azure Stack Ethereum ブロックチェーン ソリューション テンプレート
-description: カスタム ソリューション テンプレートを使用して、Azure Stack 上にコンソーシアム Ethereum ブロックチェーン ネットワークをデプロイおよび構成します
+description: カスタム ソリューション テンプレートを使用して、Azure Stack 上にコンソーシアム Ethereum ブロックチェーン ネットワークをデプロイおよび構成するチュートリアル
 services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 07/03/2018
-ms.topic: article
+ms.date: 09/13/2018
+ms.topic: tutorial
 ms.service: azure-stack
-ms.reviewer: coborn
+ms.reviewer: seyadava
+ms.custom: mvc
 manager: femila
-ms.openlocfilehash: 0e03b524834f528ddb7555a344fbebe720b4d9ff
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: acfa94799f36728f4e0041f1a51403edf6ffe37e
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446976"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239474"
 ---
-# <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Azure Stack Ethereum ブロックチェーン ソリューション テンプレート
+# <a name="tutorial-use-the-azure-stack-ethereum-blockchain-solution-template"></a>チュートリアル: Azure Stack Ethereum ブロックチェーン ソリューション テンプレートを使用する
 
 Ethereum ソリューション テンプレートは、Azure と Ethereum の最小限の知識で、マルチメンバー コンソーシアム Ethereum ブロックチェーン ネットワークを簡単かつ短時間でデプロイおよび構成できるように設計されています。
 
 Azure Stack テナント ポータルでわずかなユーザー入力とワンクリック デプロイを行うことで、各メンバーはネットワーク フットプリントをプロビジョニングできます。 各メンバーのネットワーク フットプリントは、アプリケーションまたはユーザーがトランザクションを送信するために対話できる一連の負荷分散型トランザクション ノード、トランザクションを記録する一連のマイニング ノード、および Network Virtual Appliance (NVA) から構成されます。 以降の接続手順では、NVA を接続して、完全に構成されたマルチメンバー ブロックチェーン ネットワークを作成します。
 
+これを設定するには、次のことを行います。
+
+> [!div class="checklist"]
+> * デプロイ アーキテクチャを選択する
+> * スタンドアロン、コンソーシアム リーダー、またはコンソーシアム メンバー ネットワークをデプロイする
+
 ## <a name="prerequisites"></a>前提条件
 
-[Marketplace](azure-stack-download-azure-marketplace-item.md) から次の項目をダウンロードしてください。
+[Marketplace から](azure-stack-download-azure-marketplace-item.md)最新版をダウンロードしてください。
 
-* Ubuntu Server 16.04 LTS バージョン 16.04.201802220
-* Windows Server 2016 
-* Linux 2.0 用のカスタム スクリプト 
-* カスタム スクリプト拡張機能 
+* Ubuntu Server 16.04 LTS
+* Windows Server 2016
+* Linux 2.0 用のカスタム スクリプト
+* Windows でのカスタムのスクリプト拡張機能
 
-Azure でのブロックチェーン シナリオの詳細については、「[Ethereum プルーフオブワーク コンソーシアム ソリューション テンプレート](../blockchain-workbench/ethereum-deployment-guide.md)」を参照してください。
-
-複数の仮想マシンのデプロイをサポートできる Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
+ブロックチェーン シナリオの詳細については、「[Ethereum プルーフオブワーク コンソーシアム ソリューション テンプレート](../blockchain/templates/ethereum-deployment.md)」を参照してください。
 
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
 
@@ -43,6 +48,7 @@ Azure でのブロックチェーン シナリオの詳細については、「[
 ## <a name="deployment-use-cases"></a>デプロイのユース ケース
 
 このテンプレートでは、リーダーとメンバーが参加する Ethereum コンソーシアムをさまざまな方法でデプロイすることができます。テスト済みのものを次に示します。
+
 - Azure AD または AD FS を使用したマルチノードの Azure Stack では、同じサブスクリプションまたは異なるサブスクリプションを使用してリードとメンバーをデプロイします。
 - (Azure AD を使用した) 単一ノードの Azure Stack では、同じサブスクリプションを使用してリードとメンバーをデプロイします。
 
@@ -51,7 +57,7 @@ Azure でのブロックチェーン シナリオの詳細については、「[
 コンソーシアム リーダー テンプレートは、ネットワーク内の最初のメンバーのフットプリントを構成します。 
 
 1. [リーダー テンプレートを GitHub から](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/ConsortiumLeader/mainTemplate.json)ダウンロードします
-2. Azure Stack 管理ポータルで、**[新規] > [テンプレートのデプロイ]** を選択して、カスタム テンプレートからデプロイします。
+2. Azure Stack 管理ポータルで、**[+ リソースの作成] > [テンプレートのデプロイ]** を選択して、カスタム テンプレートからデプロイします。
 3. **[テンプレートの編集]** を選択して、新しいカスタム テンプレートを編集します。
 4. 右側の編集ウィンドウで、前の手順でダウンロードしたリーダー テンプレート JSON をコピーして貼り付けます。
     
@@ -91,9 +97,9 @@ Azure でのブロックチェーン シナリオの詳細については、「[
     ---------------|-------------|----------------|-------------
     サブスクリプション | コンソーシアム ネットワークをデプロイするサブスクリプション | | 消費サブスクリプション
     リソース グループ | コンソーシアム ネットワークをデプロイするリソース グループ | | EthereumResources
-    リージョン | リソース グループの Azure リージョン。 | | local
+    Location | リソース グループの Azure リージョン。 | | local
 
-8. **[作成]** を選択します。
+8. **作成**を選択します。
 
 デプロイが完了するまで 20 分以上かかる場合があります。
 
@@ -106,7 +112,7 @@ Azure でのブロックチェーン シナリオの詳細については、「[
 ### <a name="joining-consortium-member-deployment"></a>コンソーシアム メンバー参加デプロイ
 
 1. [コンソーシアム メンバー テンプレートを GitHub から](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/JoiningMember/mainTemplate.json)ダウンロードします
-2. Azure Stack 管理ポータルで、**[新規] > [テンプレートのデプロイ]** を選択して、カスタム テンプレートからデプロイします。
+2. Azure Stack 管理ポータルで、**[+ リソースの作成] > [テンプレートのデプロイ]** を選択して、カスタム テンプレートからデプロイします。
 3. **[テンプレートの編集]** を選択して、新しいカスタム テンプレートを編集します。
 4. 右側の編集ウィンドウで、前の手順でダウンロードしたリーダー テンプレート JSON をコピーして貼り付けます。
 5. **[保存]** を選択します。
@@ -139,9 +145,9 @@ Azure でのブロックチェーン シナリオの詳細については、「[
     ---------------|-------------|----------------|-------------
     サブスクリプション | コンソーシアム ネットワークをデプロイするサブスクリプション | | 消費サブスクリプション
     リソース グループ | コンソーシアム ネットワークをデプロイするリソース グループ | | MemberResources
-    リージョン | リソース グループの Azure リージョン。 | | local
+    Location | リソース グループの Azure リージョン。 | | local
 
-8. **[作成]** を選択します。
+8. **作成**を選択します。
 
 デプロイが完了するまで 20 分以上かかる場合があります。
 
@@ -158,7 +164,7 @@ Azure でのブロックチェーン シナリオの詳細については、「[
 このテンプレートは、リーダーからリモート メンバーへの接続を作成します。 
 
 1. [メンバーとリーダーの接続テンプレートを GitHub から](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/Connection/mainTemplate.json)ダウンロードします
-2. Azure Stack 管理ポータルで、**[新規] > [テンプレートのデプロイ]** を選択して、カスタム テンプレートからデプロイします。
+2. Azure Stack 管理ポータルで、**[+ リソースの作成] > [テンプレートのデプロイ]** を選択して、カスタム テンプレートからデプロイします。
 3. **[テンプレートの編集]** を選択して、新しいカスタム テンプレートを編集します。
 4. 右側の編集ウィンドウで、前の手順でダウンロードしたリーダー テンプレート JSON をコピーして貼り付けます。
     
@@ -189,9 +195,9 @@ Azure でのブロックチェーン シナリオの詳細については、「[
     ---------------|-------------|----------------|-------------
     サブスクリプション | リーダーのサブスクリプション。 | | 消費サブスクリプション
     リソース グループ | リーダーのリソース グループ。 | | EthereumResources
-    リージョン | リソース グループの Azure リージョン。 | | local
+    Location | リソース グループの Azure リージョン。 | | local
 
-8. **[作成]** を選択します。
+8. **作成**を選択します。
 
 デプロイが完了した後、リーダーとメンバーが通信を開始するまでに数分かかります。 デプロイを確認するには、メンバーの管理サイトを更新します。 メンバーのノードの状態が [実行中] と表示されます。 
 
@@ -199,5 +205,13 @@ Azure でのブロックチェーン シナリオの詳細については、「[
 
 ## <a name="next-steps"></a>次の手順
 
-- Ethereum と Azure の詳細については、「[ブロックチェーン テクノロジとアプリケーション | Microsoft Azure](https://azure.microsoft.com/solutions/blockchain/)」を参照してください。
-- Azure でのブロックチェーン シナリオの詳細については、「[Ethereum プルーフオブワーク コンソーシアム ソリューション テンプレート](../blockchain-workbench/ethereum-deployment-guide.md)」を参照してください。
+このチュートリアルでは、以下の内容を学習しました。
+
+> [!div class="checklist"]
+> * デプロイ アーキテクチャを選択する
+> * スタンドアロン、コンソーシアム リーダー、またはコンソーシアム メンバー ネットワークをデプロイする
+
+Ethereum と Azure の詳細については、次のページを参照してください。
+
+> [!div class="nextstepaction"]
+> [ブロックチェーン テクノロジとアプリケーション](https://azure.microsoft.com/solutions/blockchain/)

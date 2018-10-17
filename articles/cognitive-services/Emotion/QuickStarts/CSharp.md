@@ -1,27 +1,29 @@
 ---
-title: Emotion API C# クイック スタート | Microsoft Docs
-description: Cognitive Services で Emotion API と C# を使用することで、素早く開始するために役立つ情報とコード サンプルを取得します。
+title: 'クイック スタート: 画像から顔の表情を認識する - Emotion API (C#)'
+titlesuffix: Azure Cognitive Services
+description: Emotion API と C# を使用することで、すばやく開始するために役立つ情報とコード サンプルを取得します。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/02/2017
 ms.author: anroth
-ms.openlocfilehash: 89735ae54395447e3cb421f45db3d6b99001ecd6
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 530d05887e585884b184635e01031c1332fad3fb
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37016567"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239372"
 ---
-# <a name="emotion-api-c-quick-start"></a>Emotion API C# クイック スタート
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>クイック スタート: 画像から顔の表情を認識するアプリの作成
 
 > [!IMPORTANT]
-> Video API のプレビューは 2017 年 10 月 30 日に終了しました。 ビデオから分析情報を簡単に抽出するには、新しい [Video Indexer API のプレビュー](https://azure.microsoft.com/services/cognitive-services/video-indexer/)を試してください。 それを使用して、話し言葉、顔、文字、感情の検出による検索結果などのコンテンツ検出を強化することもできます。 詳細については、[Video Indexer のプレビュー](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)の概要を参照してください。
+> Emotion API は、2019 年 2 月 15 日に非推奨となる予定です。 現在は、[Face API](https://docs.microsoft.com/azure/cognitive-services/face/) の一部として感情認識機能が一般提供されています。
 
-この記事では、[Emotion API の Recognize メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) と C# を使用することで、素早く開始するために役立つ情報とコード サンプルを取得します。 それを使用して、画像内の 1 人または複数の人物が表している感情を認識できます。 
+この記事では、[Emotion API の Recognize メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) と C# を使用することで、素早く開始するために役立つ情報とコード サンプルを取得します。 それを使用して、画像内の 1 人または複数の人物が表している感情を認識できます。
 
 ## <a name="prerequisites"></a>前提条件
 * Cognitive Services [Emotion API Windows SDK](https://www.nuget.org/packages/Microsoft.ProjectOxford.Emotion/)の取得。
@@ -71,10 +73,10 @@ namespace CSHttpClientSample
             var client = new HttpClient();
 
             // Request headers - replace this example key with your valid key.
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "<your-subscription-key>"); // 
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", "<your-subscription-key>"); //
 
             // NOTE: You must use the same region in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
             //   URI below with "westcentralus".
             string uri = "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?";
             HttpResponseMessage response;
@@ -124,10 +126,10 @@ namespace CSHttpClientSample
 呼び出しが成功すると、顔エントリとそれらに関連付けられた感情スコアの配列が返ります。 それらは、顔の四角形のサイズによって降順で順位付けされます。 空の応答は、顔が認識されなかったことを示します。 顔エントリには、次のフィールドが含まれます。
 
 * faceRectangle: 画像内の顔の四角形の位置
-* スコア: 画像内のそれぞれの顔の感情スコア 
+* スコア: 画像内のそれぞれの顔の感情スコア
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {

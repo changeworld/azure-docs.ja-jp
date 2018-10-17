@@ -1,29 +1,29 @@
 ---
-title: Azure Cognitive Services、Bing Entity Search API の C# のクイック スタート | Microsoft Docs
-description: Azure 上の Cognitive Services で Bing Entity Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing Entity Search API (C#)'
+titlesuffix: Azure Cognitive Services
+description: Bing Entity Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 928cddf5017890bddd25b9da3584d230cc44483a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8d9ee2944b00b8a877b166c23979ed5f6a9b7951
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377389"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814805"
 ---
-# <a name="quickstart-for-microsoft-bing-entity-search-api-with-c"></a>C# での Microsoft Bing Entity Search API のクイック スタート 
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-entity-search-api-with-c"></a>Bing Entity Search API のクイック スタート (C#) 
 
 この記事では、C# で [Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API を使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です。 (無料の Community Edition でかまいません。)
+このコードを Windows 上で実行するには、[Visual Studio 2017](https://www.visualstudio.com/downloads/) が必要です  (無料の Community Edition でかまいません。)
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Entity Search API** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
 
@@ -143,7 +143,7 @@ namespace EntitySearchSample
 
 **応答**
 
-次の例で示すように、正常な応答が JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {

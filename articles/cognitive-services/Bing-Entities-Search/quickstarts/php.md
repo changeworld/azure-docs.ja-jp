@@ -1,23 +1,23 @@
 ---
-title: Azure Cognitive Services、Bing Entity Search API の PHP のクイック スタート | Microsoft Docs
-description: Azure 上の Cognitive Services で Bing Entity Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing Entity Search API (PHP)'
+titlesuffix: Azure Cognitive Services
+description: Bing Entity Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 448064de764775c497de467b235837d66ef7093b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 30cfa98fc38f92d834e908b6d77306bed1d2b5cb
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377352"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815530"
 ---
-# <a name="quickstart-for-microsoft-bing-entity-search-api-with-php"></a>PHP での Microsoft Bing Entity Search API のクイック スタート 
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-entity-search-api-with-php"></a>Bing Entity Search API のクイック スタート (PHP)
 
 この記事では、PHP で [Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API を使用する方法について説明します。
 
@@ -32,7 +32,7 @@ ms.locfileid: "35377352"
 このアプリケーションを削除するには、次の手順に従います。
 
 1. 適切な IDE で新しい PHP プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `key` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -82,7 +82,7 @@ echo json_encode (json_decode ($result), JSON_PRETTY_PRINT);
 
 **応答**
 
-次の例で示すように、正常な応答が JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {

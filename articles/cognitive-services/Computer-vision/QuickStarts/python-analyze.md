@@ -1,63 +1,56 @@
 ---
-title: 'Computer Vision Python クイック スタート: リモート画像の分析 | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Computer Vision と Python を使ってリモート画像を分析します。
+title: 'クイック スタート: リモート画像の分析 - REST、Python - Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Python で Computer Vision API を使用してリモート画像を分析します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: v-deken
-ms.openlocfilehash: 65f9b0d4fb007a6a9b8ef489ca59f384e047a0dd
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 1fc7c58ec4e5c200ae62c70698db7ec813d82703
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43772344"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883943"
 ---
-# <a name="quickstart-analyze-a-remote-image---rest-python"></a>クイック スタート: リモート画像の分析 - REST、Python
+# <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と Python を使用してリモート画像を分析する
 
-このクイック スタートでは、Computer Vision を使ってリモート画像を分析します。 ローカル画像の分析については、[Python を使ったローカル画像の分析](python-disk.md)に関するページをご覧ください。
+このクイック スタートでは、Computer Vision の REST API を使用して、リモートに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使用すると、画像の内容に基づいて視覚的特徴を抽出できます。
 
 このクイック スタートは、[MyBinder](https://mybinder.org) 上で Jupyter Notebook を使い、ステップ バイ ステップで実行することができます。 Binder を起動するには、次のボタンを選択します。
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
+
 ## <a name="prerequisites"></a>前提条件
 
-Computer Vision を使用するにはサブスクリプション キーが必要です。「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
+- サンプルをローカルで実行するには、[Python](https://www.python.org/downloads/) がインストールされている必要があります。
+- Computer Vision のサブスクリプション キーが必要です。 「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
 
-## <a name="analyze-a-remote-image"></a>リモート画像の分析
+## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
 
-[画像分析メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)を使うと、画像の内容に基づいて視覚的特徴を抽出できます。 画像をアップロードするか、画像の URL を指定して、取得する特徴を選択することができます。その例を次に示します。
+このサンプルを作成して実行するには、次の手順を実行します。
 
-* 画像の内容に関連するタグの詳細なリスト。
-* 画像の内容を完全な文章で説明したもの。
-* 画像に含まれている顔の座標、性別、年齢。
-* ImageType (クリップ アートまたは線画)。
-* ドミナント カラー、アクセント カラー、白黒画像かどうか。
-* こちらの[分類](../Category-Taxonomy.md)で定義されているカテゴリ。
-* 成人向けのコンテンツや性的な含みのあるコンテンツが画像に含まれているか。
-
-このサンプルを実行するには、次の手順を実行します。
-
-1. 次のコードを新しい Python スクリプト ファイルにコピーします。
-1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. 必要に応じて `vision_base_url` の値を、サブスクリプション キーを取得した場所に変更します。
-1. 必要に応じて `image_url` の値を、別の画像に変更します。
-1. スクリプトを実行します。
-
-次のコードでは、Python `requests` ライブラリを使って、Computer Vision Analyze Image API を呼び出します。 その結果は、JSON オブジェクトとして返されます。 API キーは `headers` ディクショナリで渡します。 認識する特徴の種類は `params` ディクショナリで渡します。
-
-## <a name="analyze-image-request"></a>画像分析要求
+1. テキスト エディターに次のコードをコピーします。
+1. 必要に応じて、コードに次の変更を加えます。
+    1. `subscription_key` 値を、サブスクリプション キーに置き換えます。
+    1. 必要に応じて、`vision_base_url` 値を、サブスクリプション キーを取得した Azure リージョンの Computer Vision リソースのエンドポイント URL に置き換えます。
+    1. 必要に応じて、`image_url` 値を、分析したい別の画像の URL に置き換えます。
+1. `.py` という拡張子を付けたファイルにコードを保存します。 たとえば、「 `analyze-image.py` 」のように入力します。
+1. コマンド プロンプト ウィンドウを開きます。
+1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python analyze-image.py` 」のように入力します。
 
 ```python
 import requests
 # If you are using a Jupyter notebook, uncomment the following line.
 #%matplotlib inline
 import matplotlib.pyplot as plt
+import json
 from PIL import Image
 from io import BytesIO
 
@@ -89,7 +82,7 @@ response.raise_for_status()
 # The 'analysis' object contains various fields that describe the image. The most
 # relevant caption for the image is obtained from the 'description' property.
 analysis = response.json()
-print(analysis)
+print(json.dumps(response.json()))
 image_caption = analysis["description"]["captions"][0]["text"].capitalize()
 
 # Display the image and overlay it with the caption.
@@ -97,11 +90,12 @@ image = Image.open(BytesIO(requests.get(image_url).content))
 plt.imshow(image)
 plt.axis("off")
 _ = plt.title(image_caption, size="x-large", y=-0.1)
+plt.show()
 ```
 
-## <a name="analyze-image-response"></a>画像分析応答
+## <a name="examine-the-response"></a>結果の確認
 
-成功応答が JSON で返されます。その例を次に示します。
+成功応答が JSON で返されます。 サンプルの Web ページによって成功応答が解析され、次の例のようにコマンド プロンプト ウィンドウに表示されます。
 
 ```json
 {
@@ -174,6 +168,10 @@ _ = plt.title(image_caption, size="x-large", y=-0.1)
   }
 }
 ```
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+不要になったら、ファイルを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

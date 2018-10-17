@@ -1,22 +1,25 @@
 ---
-title: 異常検出のための C# アプリ - Microsoft Cognitive Services | Microsoft Docs
-description: Microsoft Cognitive Services の異常検出 API を使用する C# アプリについて説明します。 API に元のデータ ポイントを送信し、予期される値と異常なポイントを取得します。
+title: 'チュートリアル: 異常検出、C#'
+titlesuffix: Azure Cognitive Services
+description: 異常検出 API を使用する C# アプリについて説明します。 API に元のデータ ポイントを送信し、予期される値と異常なポイントを取得します。
 services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
-ms.topic: article
+ms.component: anomaly-detection
+ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 7d4f6a12c94620f447b5d6df4d7715d32eac2d98
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: f99ce765c1d9417fd5ca88b49214eca8a3b0bf49
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41929899"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887651"
 ---
-# <a name="anomaly-detection-c-application"></a>異常検出のための C# アプリケーション
+# <a name="tutorial-anomaly-detection-with-c-application"></a>チュートリアル: C# アプリケーションによる異常検出
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 異常検出 API を使用して入力から異常を検出する基本的な Windows アプリケーションについて説明します。 例では、サブスクリプション キーを使用して、Anomaly Detection API に時系列データを送信し、その後 API から、データ ポイントごとの異常ポイントと予期された値をすべて取得します。
 

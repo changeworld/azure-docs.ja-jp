@@ -1,39 +1,40 @@
 ---
-title: Azure Cognitive Services、Bing News Search API の Ruby のクイック スタート | Microsoft Docs
-description: Azure 上の Cognitive Services で Bing News Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing News Search API (Ruby)'
+titlesuffix: Azure Cognitive Services
+description: Bing News Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 2c4074a5bf63a2b4d6301e81608c0cfafd9de8e8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c6c004469b86e443dc1fcc04106d0c7b8b749334
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377349"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803819"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-ruby"></a>Ruby での Bing News Search API のクイック スタート
 
 この記事では、Azure 上の Microsoft Cognitive Services の一部である Bing News Search API の使用方法を示します。 この記事では Ruby を使用しますが、この API は HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある RESTful Web サービスです。 
 
-コード例は、Ruby 2.4 で実行するように作成されています。
+コード例は、Ruby 2.4 で実行するように記述されています。
 
-API の技術的な詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)をご覧ください。
+API の技術的な詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search API** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search APIs** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
 
 ## <a name="bing-news-search"></a>Bing News Search
 
 [Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) は、Bing 検索エンジンからニュースの結果を返します。
 
 1. 適切な IDE またはエディターで新しい Ruby プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `accessKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -84,7 +85,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 **応答**
 
-次の例で示すように、正常な応答が JSON で返されます。
+成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {

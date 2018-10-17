@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
 ms.author: v-deken
-ms.openlocfilehash: 030a8351a8f41c7404fa4ca8d243fff1ad818c2f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 9a0acae20a6361f5a9b69e427d46dd1b9c7db05e
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433601"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869348"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -61,7 +61,7 @@ Computer Vision では、次の要件に合ったイメージを分析できま�
 - イメージが、JPEG、PNG、GIF、または BMP で提示されている
 - イメージのファイル サイズが 4 メガバイト (MB) 未満である
 - イメージのディメンションが 50 x 50 ピクセルよりも大きい値である  
-  OCR では、イメージのディメンションを 50 x 50 ～ 4200 x 4200 ピクセルにする必要があり、イメージは 10 メガピクセルを超過できません。
+  OCR 用に、画像の寸法が 50 x 50 から 4,200 x 4,200 ピクセルの間である
 
 ## <a name="next-steps"></a>次の手順
 

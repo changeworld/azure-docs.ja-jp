@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 702d247bf331a4231b4b71ae6661ff88c9e0be2e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ea74d7893a55e37b5a198de17d71754b6f23a09e
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982768"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870062"
 ---
 # <a name="quickstart-deploy-a-java-spring-boot-application-to-service-fabric"></a>クイック スタート: Java Spring Boot アプリケーションを Service Fabric にデプロイする
 
@@ -140,7 +140,7 @@ git clone https://github.com/spring-guides/gs-spring-boot.git
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-    Mac を使用する場合、Docker イメージからローカル クラスターを開始します ([前提条件](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-a-local-container-and-set-up-service-fabric)に従って MAC のローカル クラスターをセットアップした場合)。 
+    Mac を使用する場合、Docker イメージからローカル クラスターを開始します ([前提条件](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac#create-a-local-container-and-set-up-service-fabric)に従って Mac のローカル クラスターをセットアップした場合)。 
 
     ```bash
     docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 -p 8080:8080 mysfcluster

@@ -1,21 +1,23 @@
 ---
-title: Project URL Preview の Node.js のクイック スタート - Microsoft Cognitive Services | Microsoft Docs
+title: 'クイック スタート: Project URL Preview、Node.js'
+titlesuffix: Azure Cognitive Services
 description: Azure 上で Microsoft Cognitive Services の URL Preview の使用を開始します。
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: quickstart
 ms.date: 03/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 195033d2740b11873baae095cec028dc8d19ce49
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: b8410127ed9a0444ab400eb3242868a85bd5b2c9
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376245"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883569"
 ---
-# <a name="url-preview-node-quickstart"></a>URL Preview の Node のクイック スタート
+# <a name="quickstart-url-preview-with-nodejs"></a>クイック スタート: Node.js での URL Preview 
 
 次の Node の例では、SwiftKey Web サイト (https://swiftkey.com/en) の URL プレビューを作成します。
 

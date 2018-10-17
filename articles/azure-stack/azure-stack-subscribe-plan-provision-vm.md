@@ -3,7 +3,7 @@ title: Azure Stack でのオファーのサブスクライブ | Microsoft Docs
 description: Azure Stack でオファーのサブスクリプションを作成する
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 7f3f8683-ef09-4838-92ed-41f2fddbbbed
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/11/2018
-ms.author: brenduns
-ms.openlocfilehash: 9153649774a67533649fb62da83a3f50abd592da
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 09/05/2018
+ms.author: sethm
+ms.openlocfilehash: b6739a194f6374cf90e6508f4a4316892daaf3dd
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295212"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079244"
 ---
 # <a name="create-subscriptions-to-offers-in-azure-stack"></a>Azure Stack でオファーのサブスクリプションを作成する
 
@@ -46,9 +46,9 @@ ms.locfileid: "35295212"
    - **[表示名]** - "*ユーザー サブスクリプション名*" として表示される、サブスクリプションを識別するための表示名。
    - **[ユーザー]** - このサブスクリプションで使用可能なディレクトリ テナントからユーザーを指定します。 このユーザー名は "*所有者*" として表示されます。  ユーザー名の形式は、ID ソリューションによって異なります。 例: 
 
-     - **Azure AD:** *&lt;user1>@&lt;contoso.onmicrosoft.com>*
+     - **Azure AD:** `<user1>@<contoso.onmicrosoft.com>`
 
-     - **AD FS:** *&lt;user1>@&lt;azurestack.local>*
+     - **AD FS:** `<user1>@<azurestack.local>` 
 
    - **[ディレクトリ テナント]** - ユーザー アカウントが属しているディレクトリ テナントを選択します。 マルチテナントを有効にしていない場合は、ローカルのディレクトリ テナントのみが使用可能です。
 
@@ -60,7 +60,7 @@ ms.locfileid: "35295212"
 
 クラウド オペレーターは、以前に作成したサブスクリプションにいつでもアドオン プランを追加できます。
 
-1. 管理ポータルで、**[その他のサービス]** > **[ユーザー サブスクリプション]** の順に選択します。 変更するサブスクリプションを選択します。
+1. 管理者ポータルで **[すべてのサービス]** を選択し、**[管理リソース]** カテゴリで **[ユーザー サブスクリプション]** を選択します。 変更するサブスクリプションを選択します。
 
 2. **[アドオン]** を選択し、**[+ 追加]** を選択します。  
 
@@ -84,13 +84,13 @@ ms.locfileid: "35295212"
    ![オファーの作成](media/azure-stack-subscribe-plan-provision-vm/image02.png)
   
 3. オファーをサブスクライブしたら、ポータルを更新して、どのサービスが新しいサブスクリプションの一部であるかを確認します。
-4. 作成したサブスクリプションを表示するには、**[その他のサービス]** を選択し、**[サブスクリプション]** を選択します。 サブスクリプションを選択してそのサブスクリプションの詳細を表示します。  
+4. 作成したサブスクリプションを表示するには、**[すべてのサービス]** を選択し、**[全般]** カテゴリの **[サブスクリプション]** を選択します。 サブスクリプションを選択してそのサブスクリプションの詳細を表示します。  
 
 ### <a name="to-subscribe-to-an-add-on-plan"></a>アドオン プランをサブスクライブするには
 
 オファーにアドオン プランがある場合は、そのプランをいつでもサブスクリプションに追加できます。  
 
-1. ユーザー ポータルで、**[その他のサービス]** > **[サブスクリプション]** の順に選択し、変更するサブスクリプションを選択します。 使用可能なアドオン プランがある場合は **[+ プランの追加]** がアクティブになり、**[アドオン プラン]** のタイルが表示されます。
+1. ユーザー ポータルで **[すべてのサービス]** を選択します。 次に、**[全般]** カテゴリの **[サブスクリプション]** を選択し、変更するサブスクリプションを選択します。 使用可能なアドオン プランがある場合は **[+ プランの追加]** がアクティブになり、**[アドオン プラン]** のタイルが表示されます。
 
    >[!NOTE]
    >**[+ プランの追加]** がアクティブでない場合は、そのサブスクリプションに関連付けられているオファーのアドオン プランがありません。

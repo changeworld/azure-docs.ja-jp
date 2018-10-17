@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 7196cd6c18680583494a485c136081d90960464d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cabc4f2212e18d774066efad70d9654bb70020d5
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991285"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831502"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>クイック スタート: ASP.NET Web アプリへの "Microsoft でサインイン" の追加
 
@@ -33,19 +33,19 @@ ms.locfileid: "46991285"
 > [!div renderon="docs"]
 > ## <a name="register-your-application-and-download-your-quickstart-app"></a>アプリケーションの登録とクイック スタート アプリのダウンロード
 >
-> ### <a name="register-and-configure-your-application-and-code-sample"></a>アプリケーションとコード サンプルの登録と構成
+> ### <a name="register-and-configure-your-application-and-code-sample"></a>アプリケーションとサンプル コードの登録と構成
 > #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
 > 
 > 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動します。
-> 1. アプリケーションの名前を入力し、**ガイド付きセットアップ**のオプションがオフになっていることを確認して、**[作成]** をクリックします。
+> 1. アプリケーションの名前を入力し、**ガイド付きセットアップ**のオプションがオフになっていることを確認し、**[作成]** をクリックします。
 > 1. `Add Platform` をクリックし、`Web` を選択します。
-> 1. **[暗黙的フローを許可する]** に*チェックが付いている*ことを確認します。
+> 1. **[暗黙的フローを許可する]** が "*オンになっている*" ことを確認します。
 > 1. **[リダイレクト URL]** に「`https://localhost:44368/`」と入力します。
 > 1. ページの下部までスクロールし、**[保存]** をクリックします。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
-> このクイック スタートのコード サンプルを動作させるには、応答 URL として `https://localhost:44368/` を追加する必要があります。
+> このクイック スタートのサンプル コードを動作させるには、応答 URL として `https://localhost:44368/` を追加する必要があります。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [この変更を行う]()
 >
@@ -58,7 +58,7 @@ ms.locfileid: "46991285"
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>手順 3: Visual Studio プロジェクトの構成
 
-1. ローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを解凍します。
+1. ルート フォルダーに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
 1. Visual Studio でソリューションを開きます (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
 1. **Web.config** を編集し、`Enter_the_Application_Id_here` を登録したアプリケーションのアプリケーション ID に置き換えます。
 

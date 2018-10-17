@@ -6,17 +6,17 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: f7af86687a8a61fb7aed028d2868752faaa8045a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 85b4630492d5f5b3fb71d563b0947d8a72ae4e1d
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030256"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886565"
 ---
-# <a name="create-train-and-publish-your-knowledge-base"></a>ナレッジ ベースの作成、トレーニングおよび公開
+# <a name="quickstart-create-train-and-publish-your-knowledge-base"></a>クイック スタート: ナレッジ ベースの作成、トレーニング、および公開
 
 QnA Maker のナレッジ ベース (KB) は、よくあるご質問や製品マニュアルなど、独自のコンテンツから作成できます。 この例では、BitLocker キー回復に関する単純なよくあるご質問の Web ページから QnA Maker KB を作成します。
 

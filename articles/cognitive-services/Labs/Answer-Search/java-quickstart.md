@@ -1,22 +1,23 @@
 ---
-title: Project Answer Search の Java クイック スタート - Microsoft Cognitive Services | Microsoft Docs
+title: 'クイック スタート: Project Answer Search、Java'
+titlesuffix: Azure Cognitive Services
 description: Java で Project Answer Search の使用を開始します。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 4e1f606e1564981589e638e0e51a8b42633ca7b0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 1e10ecf685aaf5b60b94a5e9e0d8e118f45e5168
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376149"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867036"
 ---
-# <a name="project-answer-search-query-in-java"></a>Java での Project Answer Search クエリ
+# <a name="quickstart-project-answer-search-query-in-java"></a>クイック スタート: Java での Project Answer Search クエリ
 この記事では、Java を使用して、Azure 上の Microsoft Cognitive Services の一部である Bing Answer Search API をデモンストレーションします。 API は HTTP 要求の発行と JSON の解析が可能な任意のプログラミング言語と互換性がある REST Web サービスです。
  
 コード例では、最小限の外部依存関係と共に Java を使用しています。  また、Mono を使用して Linux または Mac OS X 上でこのコード例を実行することもできます。
@@ -25,7 +26,7 @@ ms.locfileid: "35376149"
 
 [Cognitive Services Labs](https://aka.ms/answersearchsubscription) で無料試用版のアクセス キーを取得します
 
-## <a name="request"></a>要求 
+## <a name="request"></a>Request 
 
 次のコードでは、`WebRequest` を作成し、アクセス キー ヘッダーを設定し、"Gibraltar" というクエリ文字列を追加します。  次に、要求を送信し、応答を文字列に割り当てて JSON テキストを格納します。
 
@@ -53,7 +54,7 @@ Bing Answer Search API は、Bing 検索エンジンから結果を返します�
 1. gson ライブラリをダウンロードまたはインストールします。
 2. 適当な IDE またはエディターで新しい Java プロジェクトを作成します。
 3. 次に示すコードを追加します。
-4. subscriptionKey の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+4. subscriptionKey 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 5. プログラムを実行します。
 
 ````
