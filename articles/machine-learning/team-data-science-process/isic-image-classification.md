@@ -26,7 +26,7 @@ ms.locfileid: "49392814"
 
 この記事では、[Azure Machine Learning Package for Computer Vision](https://docs.microsoft.com/python/api/overview/azure-machine-learning/computer-vision?view=azure-ml-py-latest) を使用して、*画像分類*モデルのトレーニング、テスト、およびデプロイを行う方法について示します。 このサンプルでは、[Azure Machine Learning Workbench](https://docs.microsoft.com/azure/machine-learning/service/quickstart-installation) で Team Data Science Process (TDSP) 構造とテンプレートを使用します。 このチュートリアルには、完全なサンプルが用意されています。 ディープ ラーニング フレームワークとして [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/) が使用され、[データ サイエンス仮想マシン](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) GPU マシンでトレーニングが実行されます。 デプロイでは、Azure Machine Learning の操作化 CLI を使用します。
 
-コンピューター ビジョンの分野における多くのアプリケーションは、画像分類の問題として構成されます。 これには、"画像にオブジェクトが存在するか?" などの簡単な質問に答えるモデルの構築が含まれます。 ここで、オブジェクトは犬、自動車、船などです。 また、"この患者の網膜のスキャンには、どの程度の眼病の深刻度が示されているか?" といったより複雑な質問への回答となるモデルの構築も含まれます。 Azure Machine Learning Package for Computer Vision では、イメージ分類のデータ処理とモデリング パイプラインが効率化されます。 
+コンピューター ビジョンの分野における多くのアプリケーションは、画像分類の問題として構成されます。 これには、"画像にオブジェクトが存在するか?" などの簡単な質問に答えるモデルの構築が含まれます。 ここで、オブジェクトは犬、自動車、船などです。 また、"この患者の網膜のスキャンには、どの程度の眼病の深刻度が示されているか?" といったより複雑な質問への回答となるモデルの構築も含まれます。 Azure Machine Learning Package for Computer Vision では、イメージ分類のデータ処理とモデリング パイプラインが効率化されます。
 
 ## <a name="link-to-the-github-repository"></a>GitHub リポジトリへのリンク
 この記事はサンプルの概要を説明するドキュメントです。 さらに詳細なドキュメントについては、[GitHub サイト](https://github.com/Azure/MachineLearningSamples-AMLVisionPackage-ISICImageClassification)でご確認ください。
@@ -43,7 +43,7 @@ ms.locfileid: "49392814"
 
 #### <a name="dataset-creation"></a>データセットの作成
 
-Azure Machine Learning Package for Computer Vision でデータセット オブジェクトを作成するには、ローカル ディスク上の画像のルート ディレクトリを指定します。 
+Azure Machine Learning Package for Computer Vision でデータセット オブジェクトを作成するには、ローカル ディスク上の画像のルート ディレクトリを指定します。
 
 #### <a name="image-visualization-and-annotation"></a>画像の視覚化と注釈
 
@@ -57,7 +57,7 @@ Azure Machine Learning Package for Computer Vision でデータセット オブ�
 
 トレーニングの手順で使用されるモデルのアーキテクチャを定義します。 Azure Machine Learning Package for Computer Vision では、次の 6 つのトレーニング済みのディープ ニューラル ネットワーク モデルがサポートされています: AlexNet、Resnet-18、Resnet-34、Resnet-50、Resnet-101、Resnet-152。
 
-#### <a name="classifier-training"></a>分類器のトレーニング
+#### <a name="classifier-training"></a>分類子のトレーニング
 
 既定またはカスタム パラメーターでニューラル ネットワークをトレーニングします。
 
