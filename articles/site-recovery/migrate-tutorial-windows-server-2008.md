@@ -11,18 +11,18 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/23/2018
+ms.date: 09/22/2018
 ms.author: bsiva
-ms.openlocfilehash: 6e5946f3f9dcf1c7d941054c844adcf683b485ab
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: d15a5b62a148e971c0740f01744fce308e502340
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308645"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056038"
 ---
 # <a name="migrate-servers-running-windows-server-2008-to-azure"></a>Windows Server 2008 を実行しているサーバーを Azure に移行する
 
-このチュートリアルでは、Azure Site Recovery を使用して Windows Server 2008 または 2008 R2 を実行しているオンプレミスのサーバーを Azure に移行する方法を示します。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、Azure Site Recovery を使用して Windows Server 2008 または 2008 R2 を実行しているオンプレミスのサーバーを Azure に移行する方法を示します。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 移行対象のオンプレミス環境を準備する
@@ -59,14 +59,11 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 
-- Windows Server 2008 SP2 サーバーの移行に使用される構成サーバー、追加のプロセス サーバー、およびモビリティ サービスは、Azure Site Recovery ソフトウェアのバージョン 9.18.0.1 を実行している必要があります。 バージョン 9.18.0.1 の構成サーバーとプロセス サーバーの統合セットアップは、[https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) からダウンロードできます。
-
-- 既存の構成サーバーまたはプロセスサーバーは、Windows Server 2008 SP2 を実行しているサーバーの移行には使用できません。 新しい構成サーバーは、Azure Site Recovery ソフトウェアのバージョン 9.18.0.1 を使ってプロビジョニングする必要があります。 この構成サーバーは、Windows サーバーの Azure への移行だけに使用する必要があります。
+- Windows Server 2008 SP2 サーバーの移行に使用される構成サーバー、追加のプロセス サーバー、およびモビリティ サービスは、Azure Site Recovery ソフトウェアのバージョン 9.19.0.0 以降を実行している必要があります。
 
 - Windows Server 2008 SP2 を実行しているサーバーのレプリケーションでは、アプリケーション整合性復旧ポイントおよびマルチ VM 整合性機能はサポートされません。 Windows Server 2008 SP2 サーバーは、クラッシュ整合性復旧ポイントに移行する必要があります。 クラッシュ整合性復旧ポイントは既定で、5 分ごとに生成されます。 構成済みのアプリケーション整合性スナップショットの頻度を備えたレプリケーション ポリシーを使用すると、アプリケーション整合性復旧ポイントの不足が原因で、レプリケーションの正常性が致命的な状態に変わります。 誤検知を避けるために、レプリケーション ポリシーのアプリケーション整合性スナップショットの頻度を "オフ" に設定します。
 
 - 移行されるサーバーは、モビリティ サービスが動作するように .NET Framework 3.5 Service Pack 1 を備えている必要があります。
-
 
 - サーバーに動的ディスクがある場合、特定の構成では、フェイルオーバーされたサーバー上のこれらのディスクはオフラインとしてマークされ、形式の異なるディスクとして表示されることが確認できます。 また、複数の動的ディスクにわたるミラー ボリュームのミラー化設定ステータスは、"Failed redundancy"\(冗長に失敗しました\) とマークされます。 これらのディスクを手動でインポートして再アクティブ化することで、diskmgmt.msc からこの問題を修正できます。
 
@@ -109,48 +106,8 @@ Windows Server 2008 または Windows Server 2008 R2 を実行している Hyper
 
 ## <a name="prepare-your-on-premises-environment-for-migration"></a>移行対象のオンプレミス環境を準備する
 
-- [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) から構成サーバーのインストーラー (統合セットアップ) をダウンロードする
-- 次の手順に従って、前の手順でダウンロードされたインストーラー ファイルを使用して、ソース環境を設定します。
-
-> [!IMPORTANT]
-> - 構成サーバーをインストールして登録するために、上記の最初の手順でダウンロードした、セットアップ ファイルを使用していることを確認してください。 Azure Portal からセットアップ ファイルをダウンロードしないでください。 [https://aka.ms/asr-w2k8-migration-setup](https://aka.ms/asr-w2k8-migration-setup) で使用可能なセットアップ ファイルは、Windows Server 2008 の移行をサポートする唯一のバージョンです。
->
-> - 既存の構成サーバーを使用して、Windows Server 2008 を実行しているマシンを移行することはできません。 上記のリンクを使用して、新しい構成サーバーをセットアップする必要があります。
->
-> - 次の手順に従って、構成サーバーをインストールします。 統合セットアップを直接実行して、GUI ベースのインストール手順を使用しないでください。 これを行うと、インターネット接続がないことを示す誤ったエラーでインストールの試行が失敗します。
-
- 
-1) ポータルからコンテナーの資格情報ファイルをダウンロード: Azure portal で、前の手順で作成された Recovery Services コンテナーを選択します。 コンテナー ページのメニューから、**[Site Recovery インフラストラクチャ]** > **[構成サーバー]** を選択します。 **[+サーバー]** をクリックします。 表示されたページのドロップダウン フォームから、*[Configuration Server for Physical]\(物理用構成サーバー\)* を選択します。 手順 4 でダウンロード ボタンをクリックして、コンテナーの資格情報ファイルをダウンロードします。
-
- ![コンテナー登録キーをダウンロードする](media/migrate-tutorial-windows-server-2008/download-vault-credentials.png) 
-
-2) 前の手順でダウンロードしたコンテナーの資格情報ファイルと、以前にダウンロードした統合セットアップ ファイルを、構成サーバー マシン (構成サーバー ソフトウェアをインストールする Windows Server 2012 R2 または Windows Server 2016 コンピューター) のデスクトップにコピーします。
-
-3) 構成サーバーにインターネット接続があることと、コンピューターのシステム クロックとタイム ゾーンの設定が正しく構成されていることを確認します。 [MySQL 5.7](https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi) インストーラーをダウンロードして、*C:\Temp\ASRSetup* (ディレクトリが存在しない場合は作成する) に配置します。 
-
-4) 次の行を使用して MySQL の資格情報ファイルを作成し、それをデスクトップ上の **C:\Users\Administrator\MySQLCreds.txt** に配置します。 次の "Password~1" を適切で強力なパスワードに置き換えます。
-
-```
-[MySQLCredentials]
-MySQLRootPassword = "Password~1"
-MySQLUserPassword = "Password~1"
-```
-
-5) 次のコマンドを実行して、デスクトップにダウンロードした統合セットアップ ファイルのコンテンツを抽出します。
-
-```
-cd C:\Users\Administrator\Desktop
-
-MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Users\Administrator\Desktop\9.18
-```
-  
-6) 次のコマンドを実行して、抽出したコンテンツを使用して、構成サーバー ソフトウェアをインストールします。
-
-```
-cd C:\Users\Administrator\Desktop\9.18.1
-
-UnifiedSetup.exe /AcceptThirdpartyEULA /ServerMode CS /InstallLocation "C:\Program Files (x86)\Microsoft Azure Site Recovery" /MySQLCredsFilePath "C:\Users\Administrator\Desktop\MySQLCreds.txt" /VaultCredsFilePath <vault credentials file path> /EnvType VMWare /SkipSpaceCheck
-```
+- VMware で実行されている Windows Server 2008 の仮想マシンを移行するには、[VMware にオンプレミス構成サーバーをセットアップします](vmware-azure-tutorial.md#set-up-the-source-environment)。
+- 構成サーバーを VMware 仮想マシンとしてセットアップできない場合は、[オンプレミス物理サーバーまたは仮想マシンに構成サーバーをセットアップします](physical-azure-disaster-recovery.md#set-up-the-source-environment)。
 
 ## <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
 

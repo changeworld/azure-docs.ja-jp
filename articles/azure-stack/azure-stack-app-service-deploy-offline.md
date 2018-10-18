@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9e36e470c3516c55089ce1e44540b6b1eacbb6b2
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4b6ad2e237d73d5d8ca414bffc3a679ee552105f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41947759"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718731"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>App Service リソースプロバイダーを AD FS によって保護されているオフラインの Azure Stack 環境に追加する
 
@@ -226,7 +226,7 @@ App Service on Azure Stack を使うアプリケーションを作るには、�
 >
 3 番目のテクニカル プレビューの時点では、Web アプリ、API アプリ、Azure Functions アプリを作るには、テナント ポータルを使う必要があり、テナント サブスクリプションがある必要があります。
 
-1. Azure Stack テナント ポータルで、**[新規]**  >  **[Web + モバイル]**  >  **[Web アプリ]** の順にクリックします。
+1. Azure Stack テナント ポータルで、**[+ リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** の順にクリックします。
 
 2. **[Web アプリ]** ブレードで、**[Web アプリ]** ボックスに名前を入力します。
 

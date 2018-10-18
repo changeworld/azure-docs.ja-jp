@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/26/2018
+ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 386c2ecfdac44158f5d87034657491fa9598e3ad
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: b621c6b9af60637e8bb818545746923c22926ac4
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018235"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984983"
 ---
 # <a name="my-first-python-runbook"></a>初めての Python Runbook
 
@@ -92,15 +92,15 @@ Runbook を発行するときは、既存の発行済みバージョンをドラ
 ## <a name="add-authentication-to-manage-azure-resources"></a>Azure リソースを管理するための認証を追加する
 
 Runbook をテストして発行しましたが、これまでのところ役に立つことは何もしていません。 Azure リソースを管理させることにします。
-Azure リソースを管理するには、スクリプトがご利用の [Automation アカウント](automation-offering-get-started.md)の資格情報を使用して認証する必要があります。
+Azure リソースを管理するには、スクリプトがご利用の Automation アカウントの資格情報を使用して認証する必要があります。 [Azure Automation ユーティリティ パッケージ](https://github.com/azureautomation/azure_automation_utility)を使用して、Azure リソースの認証とやりとりをより容易にできます。
 
 > [!NOTE]
-> この Automation アカウントは、Run As 証明書を作成するため、サービス プリンシパルの機能を使用して作成されている必要があります。
+> この Automation アカウントは、実行証明書を作成するため、サービス プリンシパルの機能を使用して作成されている必要があります。
 > ご利用の Automation アカウントがサービス プリンシパルを使用せずに作成された場合は、「[Python 用 Azure 管理ライブラリを使用した認証](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate)」で説明されている方法で認証できます。
 
 1. MyFirstRunbook-Python のウィンドウで **[編集]** をクリックして、テキスト エディターを開きます。
 
-1. Azure への認証に、次のコードを追加します。
+2. Azure への認証に、次のコードを追加します。
 
    ```python
    import os
@@ -160,7 +160,7 @@ async_vm_start = compute_client.virtual_machines.start("MyResourceGroup", "TestV
 async_vm_start.wait()
 ```
 
-VM を含むリソース グループの名前は _[MyResourceGroup]_ で、起動する VM の名前は _[TestVM]_ です。 
+VM を含むリソース グループの名前は _[MyResourceGroup]_ で、起動する VM の名前は _[TestVM]_ です。
 
 Runbook をテストし、もう一度実行して、VM が起動するか確認します。
 
@@ -203,7 +203,7 @@ Python Runbook を開始 (**[テスト]** ページ上で、または発行済�
 
 ## <a name="next-steps"></a>次の手順
 
-- PowerShell Runbook の使用を開始するには、「 [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
+- PowerShell Runbook の使用を開始するには、「 [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md) を参照してください。
 - グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 - PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
 - Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)

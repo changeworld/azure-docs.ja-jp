@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: dfe584532efeab1dbc0d2928b7afb0a6695a21ee
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: f059c57396610a10f9e35a6dad8408c6be1d89cb
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39184947"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604310"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>リモート監視ソリューション アクセラレータの概要
 
@@ -42,9 +42,15 @@ ms.locfileid: "39184947"
 
 ソリューションには、論理アーキテクチャのデバイス接続部分に、次のコンポーネントが含まれています。
 
-### <a name="simulated-devices"></a>シミュレートされたデバイス
+### <a name="physical-devices"></a>物理デバイス
 
-ソリューションには、ソリューション内のフローのエンドツーエンド試験用にシミュレートされたデバイス プールを管理するためのマイクロサービスが含まれています。 シミュレートされたデバイスは、以下を実行します。
+ソリューションには、物理デバイスを接続できます。 Azure IoT device SDK を使用して、シミュレートされたデバイスの動作を実装できます。
+
+ソリューション ポータルのダッシュ ボードから物理デバイスをプロビジョニングできます。
+
+### <a name="device-simulation-microservice"></a>デバイス シミュレーション マイクロサービス
+
+ソリューションには、ソリューション内のフローのエンドツーエンド試験用にシミュレートされたデバイス プールを、ソリューション ポータルから管理するための[デバイス シミュレーション マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-simulation)が含まれています。 シミュレートされたデバイスは、以下を実行します。
 
 * デバイスとクラウド間の利用統計情報を生成します。
 * IoT Hub から送信された、クラウドとデバイス間で通信するためのメソッド呼び出しに応答します。
@@ -53,24 +59,24 @@ ms.locfileid: "39184947"
 
 ソリューション ポータルのダッシュ ボードからシミュレートされたデバイスをプロビジョニングすることができます。
 
-### <a name="physical-devices"></a>物理デバイス
+### <a name="iot-hub"></a>IoT Hub
 
-ソリューションには、物理デバイスを接続できます。 Azure IoT device SDK を使用して、シミュレートされたデバイスの動作を実装できます。
-
-ソリューション ポータルのダッシュ ボードから物理デバイスをプロビジョニングできます。
-
-### <a name="iot-hub-and-the-iot-manager-microservice"></a>IoT Hub と IoT manager マイクロサービス
-
-[IoT Hub ](../iot-hub/index.yml)は、デバイスから送信されたデータをクラウドに取り込んで、`telemetry-agent` マイクロサービスに提供します。
+[IoT ハブ](../iot-hub/index.yml)は、物理デバイスおよびシミュレートされたデバイスの両方からクラウドに送信されたテレメトリを取り込みます。 IoT ハブは、そのテレメトリを IoT ソリューション バックエンドでサービスが処理のために使用できるようにします。
 
 ソリューションの IoT ハブは、以下の操作も行います。
 
-* ポータルへの接続を許可されているすべてのデバイスの ID と認証キーを格納する ID レジストリを維持します。 ID レジストリを通じて、デバイスを有効および無効にすることができます。
-* ソリューション ポータルに代わって、デバイスのメソッドを呼び出します。
+* ポータルへの接続を許可されているすべてのデバイスの ID と認証キーを格納する ID レジストリを維持します。
+* ソリューション アクセラレータに代わって、デバイスのメソッドを呼び出します。
 * すべての登録済みデバイスのデバイス ツインを保持します。 デバイス ツインは、デバイスによって報告されたプロパティの値を格納します。 また、デバイスが次回の接続時に取得できるように、ソリューション ポータルで設定された必要なプロパティも格納します。
 * 複数のデバイスのプロパティを設定したり、複数のデバイスに対してメソッドを呼び出したりするジョブをスケジュールします。
 
-ソリューションには、IoT hub との次のような交信を処理するための `iot-manager` マイクロサービスが含まれます。
+## <a name="data-processing-and-analytics"></a>データ処理と分析
+
+ソリューションには、論理アーキテクチャのデータ処理および分析部分に、次のコンポーネントが含まれています。
+
+### <a name="iot-hub-manager-microservice"></a>IoT Hub マネージャー マイクロサービス
+
+ソリューションには、IoT ハブとの次のような交信を処理するための [IoT Hub マネージャー マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager)が含まれます。
 
 * IoT デバイスの作成と管理
 * デバイス ツインの管理
@@ -81,36 +87,54 @@ ms.locfileid: "39184947"
 
 マイクロサービスは、デバイスおよびデバイス ツインの管理、メソッドの呼び出しや IoT Hub クエリを実行するための RESTful エンドポイントを提供します。
 
-## <a name="data-processing-and-analytics"></a>データ処理と分析
+### <a name="device-telemetry-microservice"></a>デバイス テレメトリ マイクロサービス
 
-ソリューションには、論理アーキテクチャのデータ処理および分析部分に、次のコンポーネントが含まれています。
+[デバイス テレメトリ マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-telemetry)は、Time Series Insights に格納されているデバイス テレメトリへの読み取りアクセスに RESTful エンドポイントを提供します。 RESTful エンドポイントは、ルールでの CRUD 操作とストレージからのアラーム定義への読み取り/書き込みアクセスも可能にします。
 
-### <a name="device-telemetry"></a>デバイス テレメトリ
+### <a name="storage-adapter-microservice"></a>ストレージ アダプター マイクロサービス
 
-ソリューションには、デバイスのテレメトリを処理する 2 つのマイクロサービスが含まれています。
+[ストレージ アダプター マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/storage-adapter)は、キーと値のペアの管理、ストレージ サービス セマンティクスの抽象化、および Azure Cosmos DB を使用して任意の形式のデータを格納するシンプルなインターフェイスの提供を行います。
 
-[telemetry-agent](https://github.com/Azure/telemetry-agent-dotnet) マイクロサービス。
+値はコレクションにまとめられます。 個別の値を使用することも、コレクション全体をフェッチすることもできます。 複雑なデータ構造は、クライアントによってシリアル化され、単純なテキスト ペイロードとして管理されます。
 
-* Azure Cosmos DB に利用統計情報を格納します。
-* デバイスからの利用統計情報ストリームを分析します。
-* 定義された規則に従ってアラームを生成します。
+このサービスは、キーと値のペアに対する CRUD 操作に RESTful エンドポイントを提供します。 値
 
-アラームは Azure Cosmos DB に格納されます。
+### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-[telemetry-agent](https://github.com/Azure/telemetry-agent-dotnet) マイクロサービスを使用することにより、ソリューション ポータルで、デバイスから送信された利用統計情報を読み取ることができます。 ソリューション ポータルは、以下の目的でもこのサービスを使用します。
+ソリューション アクセラレータのデプロイでは、[Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) を使用してルール、アラーム、構成設定、その他のすべてのコールド ストレージを格納します。
 
-* アラームをトリガーするしきい値などの監視ルールを定義する
-* 過去のアラームの一覧を取得する
+### <a name="azure-stream-analytics-manager-microservice"></a>Azure Stream Analytics マネージャー マイクロサービス
 
-このマイクロサービスによって提供される RESTful エンドポイントを使用しテレメトリ、ルール、およびアラームを管理できます。
+[Azure Stream Analytics マネージャー マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/asa-manager)は、Azure Stream Analytics (ASA) ジョブを管理します。これには、ASA ジョブの構成の設定、開始と停止、および状態の監視が含まれます。
 
-### <a name="storage"></a>Storage
+ASA ジョブは、2 つの参照データ セットによってサポートされます。 1 つのデータ セットはルールを定義し、もう 1 つはデバイス グループを定義します。 ルールの参照データは、デバイス テレメトリ マイクロサービスによって管理されている情報から生成されます。 Azure Stream Analytics マネージャー マイクロサービスは、テレメトリ ルールをストリーム処理ロジックに変換します。
 
-[storage-adapter](https://github.com/Azure/pcs-storage-adapter-dotnet) マイクロサービスは、ソリューション アクセラレータに使用されるメイン ストレージ サービスの前にあるアダプターです。 単純なコレクションおよびキー値のためのストレージを提供します。
+デバイス グループの参照データは、テレメトリの受信メッセージに適用するルールのグループを識別するために使用されます。 デバイス グループは、構成マイクロサービスによって管理され、Azure IoT Hub デバイス ツイン クエリを使用します。
 
-ソリューション アクセラレータの標準的な展開では、メイン ストレージ サービスとして Azure Cosmos DB が使用されます。
+ASA ジョブは、Time Series Insights に接続されたデバイスからのテレメトリをストレージと分析のために提供します。
 
-Azure Cosmos DB データベースでは、ソリューション アクセラレータにデータを格納します。 **storage-adapter** マイクロサービスは、ソリューション内の他のマイクロサービスがストレージ サービスにアクセスするためのアダプターとして機能します。
+### <a name="azure-stream-analytics"></a>Azure Stream Analytics
+
+[Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) は、デバイスからの大量のデータ ストリームを分析することができるイベント処理エンジンです。
+
+### <a name="azure-time-series-insights"></a>Azure Time Series Insights
+
+[Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) は、ソリューション アクセラレータに接続されたデバイスからのテレメトリを格納します。 また、ソリューション Web UI でのデバイス テレメトリの視覚化とクエリを実行することもできます。
+
+> [!NOTE]
+> Azure China クラウドでは、現在、Time Series Insights はご利用になれません。 Azure China クラウドでの新しいリモート監視ソリューション アクセラレータのデプロイでは、すべてのストレージに Cosmos DB を使用します。
+
+### <a name="configuration-microservice"></a>構成マイクロサービス
+
+[構成マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config)は、ソリューション アクセラレータでのデバイス グループ、ソリューション設定、およびユーザー設定に対する CRUD 操作に RESTful エンドポイントを提供します。 これはストレージ アダプター マイクロサービスと連携して、構成データを保持します。
+
+### <a name="authentication-and-authorization-microservice"></a>認証および承認マイクロサービス
+
+[認証および承認マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth)は、ソリューション アクセラレータにアクセスする権限を持つユーザーを管理します。 ユーザー管理は、[OpenId Connect](http://openid.net/connect/) をサポートする任意の ID サービス プロバイダーを使用して行うことができます。
+
+### <a name="azure-active-directory"></a>Azure Active Directory
+
+ソリューション アクセラレータのデプロイでは、OpenID Connect プロバイダーとして [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) が使用されます。 Azure Active Directory は、ユーザー情報を格納し、JWT トークン署名を検証する証明書を提供します。
 
 ## <a name="presentation"></a>プレゼンテーション
 
@@ -122,18 +146,20 @@ Azure Cosmos DB データベースでは、ソリューション アクセラレ
 * CSS スタイルを使用します。
 * AJAX 呼び出しを通してパブリックのマイクロサービスと交信します。
 
-ユーザー インターフェイスがソリューション アクセラレータの機能を表し、次のような他のサービスと交信します。
+ユーザー インターフェイスは、ソリューション アクセラレータのすべての機能を提供し、次のような他のマイクロサービスと交信します。
 
-* [authentication](https://github.com/Azure/pcs-auth-dotnet) マイクロサービスと交信してユーザー データを保護します。
-* [iothub-manager](https://github.com/Azure/iothub-manager-dotnet) サービスと交信してサービスを一覧表示し、IoT デバイスを管理します。
+* ユーザー データを保護する認証および承認マイクロサービス。
+* IoT デバイスを一覧表示して管理する IoT Hub マネージャー マイクロサービス。
 
-[ui-config](https://github.com/Azure/pcs-config-dotnet) マイクロサービスと交信して、構成設定を保存および取得するためのユーザー インターフェイスを実装します。
+ユーザー インターフェイスには、デバイス テレメトリのクエリと分析を可能にする Azure Time Series Insights エクスプローラーが統合されています。
+
+構成マイクロサービスは、ユーザー インターフェイスで構成設定を保存および取得できるようにします。
 
 ## <a name="next-steps"></a>次の手順
 
-ソース コードと開発者のマニュアルを参照する場合は、次の 2 つのメイン GitHub リポジトリのいずれかを参照してください。
+ソース コードと開発者のマニュアルを参照する場合は、次の 2 つの GitHub リポジトリのいずれかを参照してください。
 
-* [Azure IoT を使用するリモート監視のソリューション アクセラレータ (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/)。
+* [Azure IoT を使用するリモート監視のソリューション アクセラレータ (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)。
 * [Azure IoT を使用するリモート監視のソリューション アクセラレータ (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)。
 
 詳細なソリューションのアーキテクチャ図:

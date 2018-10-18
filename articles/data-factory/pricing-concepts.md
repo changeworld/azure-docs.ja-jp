@@ -8,15 +8,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: 16ff5650f1c33031487bbdf166ffb614367d73fb
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: fae74d3912bb608afec93b7aa587885f66af4e53
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221266"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115061"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Data Factory の価格を実例から理解する
 

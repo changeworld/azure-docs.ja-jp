@@ -12,17 +12,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/26/2018
+ms.date: 09/17/2018
 ms.author: ryanwi
-ms.openlocfilehash: e3da081f9b327031d6d1e0afd2f2fb52383bf933
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b670b767a631e453bd58069fd69720bd1ab7c20a
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212070"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983561"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric の用語の概要
-Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 この記事では、Service Fabric 関連ドキュメントで使用される用語の意味を理解するうえで参考となるように、Service Fabric で使用される用語について詳しく説明します。
+Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  Azure、オンプレミスのデータセンター、任意のクラウド プロバイダーなど、[任意の場所に Service Fabric クラスターをホスト](service-fabric-deploy-anywhere.md)できます。  Service Fabric は [Azure Service Fabric Mesh](/azure/service-fabric-mesh) の動力となるオーケストレーターです。 あらゆるフレームワークを利用してサービスを記述したり、複数の環境からアプリケーションを実行する場所を選択したりできます。 この記事では、Service Fabric 関連ドキュメントで使用される用語の意味を理解するうえで参考となるように、Service Fabric で使用される用語について詳しく説明します。
 
 このセクションで示す概念は、<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">主要概念</a>、<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tlkI046yC_2906218965">デザイン時の概念</a>、<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=x7CVH56yC_1406218965">実行時の概念</a>に関する Microsoft Virtual Academy のビデオでも説明しています。
 
@@ -31,14 +31,44 @@ Azure Service Fabric は、拡張性と信頼性に優れたマイクロサー�
 
 **ノード**: クラスターに属しているコンピューターまたは VM を "*ノード*" といいます。 それぞれのノードには、ノード名 (文字列) が割り当てられます。 ノードには、配置プロパティなどの特性があります。 それぞれのコンピューターまたは VM には、自動的に開始される Windows サービス (`FabricHost.exe`) が存在します。このサービスがコンピューターまたは VM の起動時に開始され、`Fabric.exe` と `FabricGateway.exe` の 2 つの実行可能ファイルを起動します。 ノードは、この 2 つの実行可能ファイルから成ります。 テストのシナリオでは、`Fabric.exe` と `FabricGateway.exe` の複数のインスタンスを実行することによって、1 台のコンピューターまたは VM で複数のノードをホストできます。
 
-## <a name="application-concepts"></a>アプリケーションの概念
+## <a name="application-and-service-concepts"></a>アプリケーションとサービスの概念
+
+**Service Fabric Mesh アプリケーション**: Service Fabric Mesh アプリケーションは、リソース モデル (YAML および JSON リソース ファイル) によって記述され、Service Fabric が実行される任意の環境にデプロイできます。
+
+**Service Fabric ネイティブ アプリケーション**: Service Fabric ネイティブ アプリケーションは、ネイティブ アプリケーション モデル (XML ベースのアプリケーションおよびサービス マニフェスト) で示されます。  Service Fabric ネイティブ アプリケーションは、Service Fabric Mesh では実行できません。
+
+### <a name="service-fabric-mesh-application-concepts"></a>Service Fabric Mesh アプリケーションの概念
+
+**アプリケーション**: アプリケーションは、Mesh アプリケーションのデプロイ、バージョン管理、有効期間の単位です。 各アプリケーション インスタンスのライフサイクルを個別に管理できます。  アプリケーションは、1 つ以上のサービス コード パッケージと設定で構成されます。 アプリケーションは、Azure Resource Model (RM) スキーマを使用して定義されます。  サービスは、RM テンプレート内でアプリケーション リソースのプロパティとして記述されます。  アプリケーションによって使用されるネットワークとボリュームは、アプリケーションから参照されます。  アプリケーションを作成すると、アプリケーション、サービス、ネットワーク、ボリュームは、Service Fabric Resource Model を使用してモデル化されます。
+
+**サービス**: アプリケーション内のサービスはマイクロサービスを表し、完全なスタンドアロンの機能を実行します。 各サービスは 1 つまたは複数のコード パッケージで構成されます。コード パッケージには、コード パッケージに関連付けられたコンテナー イメージの実行に必要なすべてが示されています。  アプリケーション内のサービス数は、スケールアップまたはスケールダウンすることができます。
+
+**ネットワーク**: ネットワーク リソースによって、アプリケーションのプライベート ネットワークが作成されます。ネットワーク リソースは、それを参照するアプリケーションやサービスとは独立しています。 異なるアプリケーションの複数のサービスは、同じネットワークに属することができます。 ネットワークは、アプリケーションによって参照されるデプロイ可能なリソースです。
+
+**コード パッケージ**: コード パッケージには、以下のようにコード パッケージに関連付けられたコンテナー イメージの実行に必要なすべてが記述されています。
+
+* コンテナー名、バージョン、およびレジストリ
+* 各コンテナーに必要な CPU およびメモリ リソース
+* ネットワーク エンドポイント
+* 別のボリューム リソースを参照して、コンテナーでマウントされるボリューム。
+
+アプリケーション リソースの一部として定義されたすべてのコード パッケージは、グループとしてまとめてデプロイおよびアクティブ化されます。
+
+**ボリューム**: ボリュームは、コンテナー インスタンス内にマウントされ、状態を保持するために使用できるディレクトリです。 Azure Files ボリューム ドライバーによって Azure Files 共有はコンテナーにマウントされ、ファイル ストレージをサポートする任意の API を介して信頼できるデータ ストレージが提供されます。 ボリュームは、アプリケーションによって参照されるデプロイ可能なリソースです。
+
+### <a name="service-fabric-native-application-concepts"></a>Service Fabric ネイティブ アプリケーションの概念
+
+**アプリケーション**: アプリケーションは、特定のまたは複数の関数を実行する構成サービスのコレクションです。 各アプリケーション インスタンスのライフサイクルを個別に管理できます。
+
+**サービス**: サービスは完全なスタンドアロンの機能を実行し、他のサービスから独立して開始および実行することができます。 サービスはコード、構成、データから成ります。 各サービスに対して、コードは実行可能ファイルのバイナリで構成され、構成は実行時に読み込まれるサービス設定で構成され、データはサービスが消費する任意の静的データで構成されます。
+
 **アプリケーションの種類**: 一連のサービスの種類に割り当てられる名前またはバージョン。 これは `ApplicationManifest.xml` ファイルで定義されて、アプリケーション パッケージ ディレクトリ内に埋め込まれます。 ディレクトリは、Service Fabric クラスターのイメージ ストアにコピーされます。 このアプリケーションの種類に基づいて、特定の名前のアプリケーションをクラスター内で作成することができます。
 
 詳細については、[アプリケーション モデル](service-fabric-application-model.md)に関する記事をご覧ください。
 
 **アプリケーション パッケージ**: アプリケーションの種類を定義した `ApplicationManifest.xml` ファイルが格納されるディスク上のディレクトリ。 アプリケーションの種類を構成するサービスの種類ごとに、対応するサービス パッケージを参照します。 アプリケーション パッケージ ディレクトリ内のファイルは、Service Fabric クラスターのイメージ ストアにコピーされます。 たとえば電子メール アプリケーション タイプのアプリケーション パッケージであれば、キューサービス パッケージやフロントエンドサービス パッケージ、データベースサービス パッケージへの参照が含まれることが考えられます。
 
-**名前付きアプリケーション**: アプリケーション パッケージをイメージ ストアにコピーした後、アプリケーションのインスタンスをクラスター内に作成します。 対応する名前またはバージョンを使用して、アプリケーション パッケージのアプリケーションの種類を指定するときにインスタンスが作成されます。 アプリケーションの種類のインスタンスにはそれぞれ、URI (Uniform Resource Identifier) 名 (`"fabric:/MyNamedApp"` など) が割り当てられます。 1 つのアプリケーションの種類から複数の名前付きアプリケーションをクラスター内で作成することが可能です。 異なるアプリケーションの種類から名前付きアプリケーションを作成することもできます。 個々の名前付きアプリケーションは別々に管理され、バージョニングされます。      
+**名前付きアプリケーション**: アプリケーション パッケージをイメージ ストアにコピーした後、アプリケーションのインスタンスをクラスター内に作成します。 対応する名前またはバージョンを使用して、アプリケーション パッケージのアプリケーションの種類を指定するときにインスタンスが作成されます。 アプリケーションの種類のインスタンスにはそれぞれ、URI (Uniform Resource Identifier) 名 (`"fabric:/MyNamedApp"` など) が割り当てられます。 1 つのアプリケーションの種類から複数の名前付きアプリケーションをクラスター内で作成することが可能です。 異なるアプリケーションの種類から名前付きアプリケーションを作成することもできます。 個々の名前付きアプリケーションは別々に管理され、バージョニングされます。
 
 **サービスの種類**: サービスのコード パッケージとデータ パッケージ、構成パッケージに割り当てられる名前またはバージョン。 サービスの種類は `ServiceManifest.xml` ファイルで定義されて、サービス パッケージ ディレクトリ内に埋め込まれます。 サービス パッケージ ディレクトリは、アプリケーション パッケージの `ApplicationManifest.xml` ファイルから参照されます。 クラスターには、名前付きアプリケーションを作成した後、そのアプリケーションの種類を構成するいずれかのサービスの種類から名前付きサービスを作成することができます。 サービスは、そのサービスの種類に対応する `ServiceManifest.xml` ファイルによって記述されます。
 
@@ -60,7 +90,7 @@ Azure Service Fabric は、拡張性と信頼性に優れたマイクロサー�
 **コード パッケージ**: 特定の種類のサービスで使用される実行可能ファイル (通常、EXE または DLL ファイル) が格納されるディスク上のディレクトリ。 コード パッケージ ディレクトリ内のファイルは、サービスの種類を定義した `ServiceManifest.xml` ファイルから参照されます。 名前付きサービスの作成時に、名前付きサービスを実行するために選択されたノードにコード パッケージがコピーされます。 その後、コードが実行を開始します。 コード パッケージの実行可能ファイルには次の 2 種類があります。
 
 * **ゲスト実行可能ファイル**: ホスト オペレーティング システム (Windows または Linux) 上において単体で動作する実行可能ファイル。 これらの実行可能ファイルは、Service Fabric のランタイム ファイルと連動したりそれらのファイルを参照したりしないため、Service Fabric のプログラミング モデルは一切使用しません。 これらの実行可能ファイルは、エンドポイント検出用のネーム サービスなどの Service Fabric の一部の機能を使用できません。 ゲスト実行可能ファイルは、各サービス インスタンスに固有のロード メトリックを報告できません。
-* **サービス ホスト実行可能ファイル**: Service Fabric のランタイム ファイルと連動することによって Service Fabric のプログラミング モデルを使用し、Service Fabric の機能を有効にする実行可能ファイルです。 たとえば名前付きサービスのインスタンスが、Service Fabric のネーム サービスにエンドポイントを登録できるほか、負荷のメトリックを報告することもできます。      
+* **サービス ホスト実行可能ファイル**: Service Fabric のランタイム ファイルと連動することによって Service Fabric のプログラミング モデルを使用し、Service Fabric の機能を有効にする実行可能ファイルです。 たとえば名前付きサービスのインスタンスが、Service Fabric のネーム サービスにエンドポイントを登録できるほか、負荷のメトリックを報告することもできます。
 
 **データ パッケージ**: 特定の種類のサービスで使用される読み取り専用の静的なデータ ファイル (通常、写真、サウンド、ビデオ ファイル) が格納されるディスク上のディレクトリ。 データ パッケージ ディレクトリ内のファイルは、サービスの種類を定義した `ServiceManifest.xml` ファイルから参照されます。 名前付きサービスの作成時に、名前付きサービスを実行するために選択されたノードにデータ パッケージがコピーされます。 コードが実行を開始し、データ ファイルにアクセスできるようになります。
 
@@ -94,8 +124,17 @@ Image Store サービスの詳細については、「[ImageStoreConnectionStrin
    - [Silver および Gold 持続性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric クラスター上での Azure メンテナンス修復の実行。
    - [パッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md)のための修復アクションの実行
 
-## <a name="built-in-programming-models"></a>組み込みのプログラミング モデル
-Service Fabric サービスをビルドできるように、次の .NET Framework および Java プログラミング モデルが使用可能になっています。
+## <a name="deployment-and-application-models"></a>デプロイとアプリケーション モデル 
+
+サービスをデプロイするには、その実行方法を記述する必要があります。 Service Fabric では、3 つの異なるデプロイ モデルをサポートしています。
+
+### <a name="resource-model-preview"></a>リソース モデル (プレビュー)
+Service Fabric リソースは、アプリケーション、サービス、ネットワーク、ボリュームなど、Service Fabric に個別にデプロイできるあらゆるものです。 リソースは、クラスター エンドポイントにデプロイできる JSON ファイルを使用して定義されます。  Service Fabric Mesh では、Azure Resource Model スキーマが使用されます。 YAML ファイル スキーマを使用して、定義ファイルをより簡単に作成することもできます。 リソースは Service Fabric が実行されているあらゆる場所にデプロイできます。 リソース モデルは、Service Fabric アプリケーションを記述する最も簡単な方法です。 その中心は、コンテナー化されたサービスの単純なデプロイと管理にあります。 詳細については、「[Service Fabric リソース モデルの概要](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)」を参照してください。
+
+### <a name="native-model"></a>ネイティブ モデル
+ネイティブ アプリケーション モデルからアプリケーションに Service Fabric への完全な低レベル アクセスが与えられます。 アプリケーションとサービスは、XML マニフェスト ファイルに登録済みタイプとして定義されます。
+
+ネイティブ モデルは Reliable Services および Reliable Actors フレームワークに対応しています。このフレームワークは、C# と Java で、Service Fabric ランタイム API とクラスター管理 API へのアクセスを提供します。 ネイティブ モデルは任意のコンテナーと実行可能ファイルにも対応しています。 [Service Fabric Mesh 環境](/azure/service-fabric-mesh/service-fabric-mesh-overview)では、ネイティブ モデルがサポートされていません。
 
 **Reliable Services**: ステートレス サービスとステートフル サービスを構築するための API。 ステートフル サービスの状態は、Reliable Collection (ディクショナリ、キューなど) に格納されます。 他にも、Web API や Windows Communication Foundation (WCF) など、さまざまな通信スタックを組み込むことができます。
 
@@ -109,6 +148,33 @@ Service Fabric サービスをビルドできるように、次の .NET Framewor
 
 詳細については、[サービスのプログラミング モデルの選択](service-fabric-choose-framework.md)に関する記事をご覧ください。
 
+### <a name="docker-compose"></a>Docker Compose 
+[Docker Compose](https://docs.docker.com/compose/) は Docker プロジェクトの一部です。 Service Fabric は、[Docker Compose モデルを利用したアプリケーションのデプロイ](service-fabric-docker-compose.md)に一部対応しています。
+
+## <a name="environments"></a>環境
+
+Service Fabric はオープンソースのプラットフォーム テクノロジであり、いくつかのサービスと製品がこれを基盤としています。 Microsoft では、次のオプションを提供しています。
+
+ - **Azure Service Fabric Mesh**: Microsoft Azure で Service Fabric アプリケーションを実行するための完全マネージド サービス。
+ - **Azure Service Fabric**: Azure がホストする Service Fabric クラスター サービス。 Service Fabric と Azure インフラストラクチャの統合や、Service Fabric クラスターのアップグレードと構成管理を提供します。
+ - **Service Fabric スタンドアロン**: さまざまな場所に (オンプレミスまたはクラウド プロバイダーに) [Service Fabric クラスターをデプロイする](/azure/service-fabric/service-fabric-deploy-anywhere)ための一連のインストール ツールと構成ツール。 Azure によって管理されません。
+ - **Service Fabric 開発クラスター**: Windows、Linux、Mac で Service Fabric アプリケーションをローカル開発できます。
+
+## <a name="environment-framework-and-deployment-model-support-matrix"></a>環境、フレームワーク、デプロイ モデルのサポート マトリックス
+環境が異なると、フレームワークやデプロイ モデルのサポート レベルも異なります。 次の表では、サポートされているフレームワーク/デプロイ モデルの組み合わせをまとめてあります。
+
+| アプリケーションの種類 | 記述モデル | Azure Service Fabric Mesh | Azure Service Fabric クラスター (任意の OS)| ローカル クラスター | スタンドアロン クラスター |
+|---|---|---|---|---|---|---|---|---|---|
+| Service Fabric Mesh アプリケーション | リソース モデル (YAML と JSON) | サポートされています |サポートされていません | Windows - サポートされています、Linux と Mac - サポートされていません | Windows - サポートされていません |
+|Service Fabric ネイティブ アプリケーション | ネイティブ アプリケーション モデル (XML) | サポートされていません| サポートされています|サポートされています|Windows - サポートされています|
+
+次の表では、Service Fabric に対してさまざまなアプリケーション モデルとそのツールをまとめています。
+
+| アプリケーションの種類 | 記述モデル | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
+|---|---|---|---|---|---|---|---|---|---|
+| Service Fabric Mesh アプリケーション | リソース モデル (YAML と JSON) | VS 2017 |サポートされていません |サポートされていません | サポートされています - Mesh 環境のみ | サポートされていません|
+|Service Fabric ネイティブ アプリケーション | ネイティブ アプリケーション モデル (XML) | VS 2017 と VS 2015| サポートされています|サポートされています|サポートされています|サポートされています|
+
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>次の手順
 Service Fabric の詳細については、以下の情報を参照してください。
@@ -117,4 +183,6 @@ Service Fabric の詳細については、以下の情報を参照してくだ�
 * [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
 * [アプリケーションのシナリオ](service-fabric-application-scenarios.md)
 
+Service Fabric Mesh の詳細については、以下の情報を参照してください。
 
+* [Service Fabric Mesh の概要](/azure/service-fabric-mesh/service-fabric-mesh-overview)

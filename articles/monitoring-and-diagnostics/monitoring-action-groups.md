@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/1/2018
+ms.date: 09/12/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 998f35c8957b63d73d7a3d15be76711198fa4833
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 6163a099894a823614355f71a3e1af4a6a9026ec
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745709"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717677"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
@@ -33,9 +33,9 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 1. [ポータル](https://portal.azure.com)で、**[モニター]** を選択します。 **[モニター]** ブレードでは、すべての監視設定とデータが 1 つのビューにまとめられています。
 
     ![[モニター] サービス](./media/monitoring-action-groups/home-monitor.png)
-1. **[設定]** セクションで **[アクション グループ]** を選択します。
+1. **[アラート]**、**[アクション グループの管理]** の順に選択します。
 
-    ![[アクション グループ] タブ](./media/monitoring-action-groups/action-groups-blade.png)
+    ![[アクション グループの管理] ボタン](./media/monitoring-action-groups/manage-action-groups.png)
 1. **[アクション グループの追加]** を選択し、フィールドに入力します。
 
     ![[アクション グループの追加] コマンド](./media/monitoring-action-groups/add-action-group.png)
@@ -83,6 +83,7 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
 <dt>Runbook</dt>
 <dd>アクション グループには、最大 10 個の Runbook アクションがあります。</dd>
+<dd>Runbook ペイロードの制限については、[Azure サブスクリプション サービスの制限](../azure-subscription-service-limits.md)に関するページを参照してください</dd>
 
 <dt>SMS</dt>
 <dd>アクション グループには、最大 10 個の SMS アクションがあります。</dd>
@@ -96,6 +97,17 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 <dt>webhook</dt>
 <dd>アクション グループには、最大 10 個の webhook アクションがあります。
 <dd>再試行ロジック - 応答のタイムアウト期間は 10 秒です。 HTTP 状態コードの 408、429、503、504 が返されるか、または HTTP エンドポイントが応答しない場合、webhook の呼び出しが最大 2 回再試行されます。 1 回目の再試行は 10 秒後に実行されます。 2 回目となる最後の再試行は 100 秒後に実行されます。</dd>
+<dd>発信元 IP アドレスの範囲
+<ul>
+    <li>13.106.57.181</li>
+    <li>13.106.54.3</li>
+    <li>13.106.54.19</li>
+    <li>13.106.38.142</li>
+    <li>13.106.38.148</li>
+    <li>13.106.57.196</li>
+</ul>
+これらの IP アドレスへの変更に関する更新情報を受け取るには、アクション グループ サービスに関する情報の通知を監視する[サービス正常性アラート](./monitoring-service-notifications.md)を構成することをお勧めします。
+</dd>
 </dl>
 
 ## <a name="manage-your-action-groups"></a>アクション グループの管理 ##

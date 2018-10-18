@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ff1d51021038909c132bef4cb680589b9951f218
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7aa7cd2e5b1cf1346a5a7b1f82ec9c7933dd1112
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041427"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542482"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Azure portal を使用してデバイスを管理する方法
 
@@ -123,7 +123,7 @@ Azure Portal を使ってデバイスを管理するには、デバイスが Azu
 
 ### <a name="manage-an-intune-device"></a>Intune デバイスの管理
 
-Intune 管理者の場合は、**Microsoft Intune** としてマークされているデバイスを管理することができます。 管理者にはその他のデバイスも表示されます 
+Intune 管理者の場合は、**Microsoft Intune** としてマークされているデバイスを管理することができます。 
 
 ![Intune デバイスの管理](./media/device-management-azure-portal/31.png)
 

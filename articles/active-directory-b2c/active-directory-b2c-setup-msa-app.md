@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 338c2a197cb50091c3b272e0ce590341ffda1d7f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: e9c42429a8feb60ade27afe998cb9a267f1603dd
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43341085"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47180906"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Microsoft アカウントでのサインアップおよびサインインを設定する
 
@@ -25,23 +25,16 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microso
 
 1. Microsoft アカウントの資格情報で [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)にサインインします。
 2. 右上隅から **[Add an app (アプリの追加)]** を選択します。
-3. アプリケーションの**名前**を入力し、**[Create (作成)]** をクリックします。
-4. 登録ページで、**[アプリケーション ID]** の値をコピーします。この値は、テナントの ID プロバイダーとして Microsoft アカウントを構成するために使用します。
+3. アプリケーションの **[名前]** を入力します。 たとえば、 *MSAapp1* です。
+4. **[新しいパスワードを生成する]** を選択し、ID プロバイダーを構成するときに使用するパスワードをコピーします。 **[アプリケーション ID]** もコピーします。 
 5. **[プラットフォームの追加]** を選択し、**[Web]** を選択します。
-6. **[リダイレクト URI]** に「`https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`」と入力します。 **{tenant}** を実際のテナントの名前 (例: contosob2c) に置き換えます。
-7. **[アプリケーション シークレット]** で **[新しいパスワードを生成]** をクリックします。 画面に表示される新しいパスワードをコピーします。 この値は、テナントの ID プロバイダーとして Microsoft アカウントを構成するために必要となります。 このパスワードは重要なセキュリティ資格情報です。
+4. **[リダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` をテナントの名前に置き換えます。
+5. **[保存]** を選択します。
 
 ## <a name="configure-a-microsoft-account-as-an-identity-provider"></a>ID プロバイダーとして Microsoft account アカウントを構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-2. Azure Portal の右上隅でディレクトリを切り替えて、Azure AD B2C テナントが含まれるディレクトリを使用していることを確認してください。 サブスクリプション情報を選択し、**[ディレクトリの切り替え]** を選択します。 
-
-    ![Azure AD B2C テナントに切り替え](./media/active-directory-b2c-setup-msa-app/switch-directories.png)
-
-    テナントが含まれるディレクトリを選択します。
-
-    ![新しいディレクトリを選択する](./media/active-directory-b2c-setup-msa-app/select-directory.png)
-
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認するために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
 4. **[ID プロバイダー]**、**[追加]** の順に選択します。
 5. **[名前]** を入力します。 たとえば、「*MSA*」と入力します。

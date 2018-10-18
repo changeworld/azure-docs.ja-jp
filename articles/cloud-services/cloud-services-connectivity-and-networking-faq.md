@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: ab0fa22e9ba776db3d4af301499545f6e0822478
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 034d59c39628a08c389c5ceb67c5872bbea10d59
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070173"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223170"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題についてよくあるご質問 (FAQ)
 
@@ -52,8 +52,7 @@ RDP の設定で構成されている有効期限の日付を無視すると、"
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、お使いのクラウド サービスに移動して、**[リモート デスクトップ]** タブを選びます。
 
-2. 
-  **[運用]** または **[ステージング]** のデプロイ スロットを選びます。
+2. **[運用]** または **[ステージング]** のデプロイ スロットを選びます。
 
 3. **[有効期限]** の日付を変更し、構成を保存します。
 
@@ -111,3 +110,19 @@ IIS の URL の書き換えモジュールを使って、クラウド サービ�
 ## <a name="how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services"></a>Azure Resource Manager 仮想ネットワークをクラウド サービスと共に使用するにはどうすればよいですか。 
 
 クラウド サービスを Azure Resource Manager 仮想ネットワークに配置することはできません。 Resource Manager 仮想ネットワークと従来のデプロイ仮想ネットワークは、ピアリングによって接続できます。 詳細については、「[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)」をご覧ください。
+
+
+## <a name="how-can-i-get-the-list-of-public-ips-used-by-my-cloud-services"></a>Cloud Services で使用されるパブリック IP アドレスの一覧を取得する方法はありますか。
+
+次の PS スクリプトを使用してお使いのサブスクリプションのクラウド サービスのパブリック IP の一覧を取得します。
+
+    $services = Get-AzureService  | Group-Object -Property ServiceName
+
+    foreach ($service in $services) 
+    {
+        "Cloud Service '$($service.Name)'"
+
+        $deployment = Get-AzureDeployment -ServiceName $service.Name 
+        "VIP - " +  $deployment.VirtualIPs[0].Address
+        "================================="
+    }

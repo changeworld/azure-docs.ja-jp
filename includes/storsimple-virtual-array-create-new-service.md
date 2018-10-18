@@ -1,3 +1,20 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: storage
+author: alkohli
+ms.service: storage
+ms.topic: include
+ms.date: 09/15/2018
+ms.author: alkohli
+ms.custom: include file
+ms.openlocfilehash: 4285ee94d2f2a9b5fff9d1896cdf7013f88801ab
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979508"
+---
 #### <a name="to-create-a-new-service"></a>新しいサービスを作成するには
 
 1.  Microsoft アカウントの資格情報を使用して、この URL (<https://portal.azure.com/>) から Azure Portal にサインインします。 Government ポータルでデバイスをデプロイする場合、<https://portal.azure.us/> でサインインします。
@@ -18,7 +35,7 @@
 
         -   Azure 内の既存のワークロードも StorSimple デバイスと一緒にデプロイする場合、そのデータセンターを使用する必要があります。
 
-        -   StorSimple デバイス マネージャーと Azure Storage は別々の場所に置くことができます。 その場合、StorSimple デバイス マネージャーと Azure ストレージ アカウントを別々に作成する必要があります。 Azure ストレージ アカウントを作成するには、Azure Portal で Azure Storage サービスに移動し、「[ストレージ アカウントの作成](https://azure.microsoft.com/documentation/articles/storage-create-storage-account/#create-a-storage-account)」に記載されている手順に従います。 このアカウントを作成したら、「[サービスの新しいストレージ アカウントを構成する](https://azure.microsoft.com/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service)」に記載されている手順に従って、StorSimple デバイス マネージャー サービスにアカウントを追加します。
+        -   StorSimple デバイス マネージャーと Azure Storage は別々の場所に置くことができます。 その場合、StorSimple デバイス マネージャーと Azure ストレージ アカウントを別々に作成する必要があります。 Azure ストレージ アカウントを作成するには、Azure portal で Azure Storage に移動し、「[ストレージ アカウントの作成](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)」に記載されている手順を行います。 このアカウントを作成したら、「[サービスの新しいストレージ アカウントを構成する](https://azure.microsoft.com/documentation/articles/storsimple-deployment-walkthrough/#configure-a-new-storage-account-for-the-service)」に記載されている手順に従って、StorSimple デバイス マネージャー サービスにアカウントを追加します。
 
         -   Government ポータルに仮想デバイスをデプロイする場合、米国アイオワ州と米国バージニア州で StorSimple デバイス マネージャー サービスを使用できます。
 

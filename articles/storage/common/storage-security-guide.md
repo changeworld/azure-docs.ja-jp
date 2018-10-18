@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
 ms.component: common
-ms.openlocfilehash: 912ae17fb7bb5d5cecad0af5b53d817b2faeef02
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 268459fde7a622079656e637d2c51562cea358a4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522203"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730951"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
@@ -142,20 +142,13 @@ Azure Key Vault を使用すると、ストレージ キーのセキュリティ
 
 Azure Key Vault を使用するもう 1 つの利点は、Azure Active Directory を使用してキーへのアクセス権を制御することもできる点です。 つまり、Azure Key Vault からキーを取得する必要がある多数のアプリケーションに対してアクセス権を付与できます。また、アクセス許可が明示的に付与されていない他のアプリケーションが、キーにアクセスできないことを把握できます。
 
-注: すべてのアプリケーションで、同時にいずれかのキーのみを使用することをお勧めします。 キー 1 を使用する場所とキー 2 を使用する場所がある場合、キーを循環させるときに、一部のアプリケーションがアクセス権を失います。
+> [!NOTE]
+> Microsoft では、すべてのアプリケーションで、同時にいずれかのキーのみを使用することをお勧めします。 キー 1 を使用する場所とキー 2 を使用する場所がある場合、キーを循環させるときに、一部のアプリケーションがアクセス権を失います。
 
 #### <a name="resources"></a>リソース
-* [Azure ストレージ アカウントについて](storage-create-storage-account.md#regenerate-storage-access-keys)
 
-  この記事では、ストレージ アカウントの概要と、ストレージ アカウント キーの表示、コピー、再生成について説明しています。
+* [Azure portal でストレージ アカウント設定を管理する](storage-account-manage.md)
 * [Azure Storage Resource Provider REST API リファレンス](https://msdn.microsoft.com/library/mt163683.aspx)
-
-  この記事では、REST API を使用した Azure アカウントのストレージ アカウント キーの取得および再生成に関する記事のリンクを紹介しています。 注: Resource Manager ストレージ アカウント向けの記事です。
-* [Operations on storage accounts (ストレージ アカウントに対する操作)](https://msdn.microsoft.com/library/ee460790.aspx)
-
-  Storage Service Manager REST API リファレンスのこの記事では、REST API を使用したストレージ アカウント キーの取得および再生成に関する記事のリンクを紹介しています。 注: クラシック ストレージ アカウント向けの記事です。
-
-  この記事では、Active Directory を使用して、Azure Key Vault 内の Azure Storage キーへのアクセスを制限する方法について説明しています。 また、Azure Automation ジョブを使用して 1 時間ごとにキーを再生成する方法についても説明しています。
 
 ## <a name="data-plane-security"></a>データ プレーンのセキュリティ
 データ プレーンのセキュリティとは、Azure Storage に格納されているデータ オブジェクト (BLOB、キュー、テーブル、ファイル) をセキュリティで保護するために使用される方法のことを指します。 これまで、データの転送中にデータを暗号化する方法とセキュリティについて説明してきましたが、オブジェクトへのアクセスを制御するにはどうすればよいのでしょうか。

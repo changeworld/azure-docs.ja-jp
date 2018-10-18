@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 55ce85702804d99d806220d7f0a4ea0820975f4f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 8a5d880d0238e38fbbaa9de22fc1baf604f0fc07
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206039"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733466"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>汎用のクライアント アプリケーションを Azure IoT Central アプリケーションに接続する (Node.js)
 
@@ -64,7 +64,7 @@ Azure IoT Central アプリケーションでは、次の測定およびデバ�
 
 | 表示名 | フィールド名  | severity |
 | ------------ | ----------- | -------- |
-| 過熱  | overheat    | エラー    |
+| 過熱  | overheat    | Error    |
 
 > [!NOTE]
   イベント測定のデータ型は文字列です。
@@ -129,7 +129,11 @@ Azure IoT Central アプリケーションでは、作成したデバイス テ�
     var client = clientFromConnectionString(connectionString);
     ```
 
-    プレースホルダー `{your device connection string}` をデバイスの接続文字列に更新します。 この値は、実デバイスを追加したときに接続の詳細ページからコピーしました。 このサンプルでは、`targetTemperature` を 0 に初期化します。必要に応じて、デバイスから現在の読み取りを取得したり、デバイス ツインから値を取得したりできます。 
+  > [!NOTE]
+   > Azure IoT Central は、すべてのデバイス接続に対して Azure IoT Hub Device Provisioning Service (DPS) を使用するようになりました。手順に従って[デバイスの接続文字列を取得](concepts-connectivity.md#getting-device-connection-string)し、チュートリアルの残りを続けてください。
+
+
+    プレースホルダー `{your device connection string}` をデバイスの接続文字列に更新します。 このサンプルでは、`targetTemperature` を 0 に初期化します。必要に応じて、デバイスから現在の読み取りを取得したり、デバイス ツインから値を取得したりできます。 
 
 1. テレメトリ、状態、およびイベント測定を Azure IoT Central アプリケーションに送信するには、ファイルに次の関数を追加します。
 

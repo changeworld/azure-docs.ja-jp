@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2017
-ms.author: vikdesai
-ms.openlocfilehash: 7329b06171bd538cc6e9aa8172380a2d4dd47dae
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.author: cwatson
+ms.openlocfilehash: 623856f05eed44eca3752d56f047f9bb282bdc8e
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33204124"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392087"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>ロールに基づくアクセス制御を使用した Azure の課金情報へのアクセスの管理
 
@@ -71,7 +71,7 @@ Azure 課金情報へのアクセス権をチームのメンバーに与える�
 
 ## <a name="adding-users-to-other-roles"></a>ユーザーをその他のロールに追加する
 
-所有者または共同作成者など他のロールのユーザーは、課金状況だけではなく、Azure サービスにもアクセスできます。 これらのロールを管理するには、「[サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する](billing-add-change-azure-subscription-administrator.md)」を参照してください。
+所有者または共同作成者など他のロールのユーザーは、課金状況だけではなく、Azure サービスにもアクセスできます。 これらのロールの管理については、「[RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="who-can-access-the-account-centerhttpsaccountwindowsazurecom"></a>[アカウント センター](https://account.windowsazure.com)にアクセスできるユーザー
 

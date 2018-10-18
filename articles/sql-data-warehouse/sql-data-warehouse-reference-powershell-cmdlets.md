@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 222bc8ee15fdc8802dacd5a5b74cfd84961aa397
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: f38c9e3bed93a77cd9b35c6d23983ee5785a34a7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300755"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714470"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>SQL Data Warehouse の PowerShell コマンドレットと REST API
 SQL Data Warehouse の管理タスクの多くは、Azure PowerShell コマンドレットまたは REST API を使用して管理できます。  以下に示す例では、PowerShell コマンドを使用して、SQL Data Warehouse で一般的なタスクを自動化する方法を示しています。  適切な REST の例については、[REST を使用したスケーラビリティの管理][Manage scalability with REST]に関する記事をご覧ください。
@@ -88,7 +88,7 @@ PowerShell のその他の例については、次のトピックをご覧くだ
 * [PowerShell を使用して SQL Data Warehouse を作成する][Create a SQL Data Warehouse using PowerShell]
 * [データベースの復元][Database restore]
 
-PowerShell で自動化できるその他のタスクについては、[Azure SQL Database コマンドレット][Azure SQL Database Cmdlets]に関するページを参照してください。 Azure SQL Data Warehouse ではサポートされていない Azure SQL Database コマンドレットがあります。  REST で自動化できるタスクの一覧については、「[Operations for Azure SQL Databases (Azure SQL データベースの操作)][Operations for Azure SQL Databases]」をご覧ください。
+PowerShell で自動化できるその他のタスクについては、[Azure SQL Database コマンドレット][Azure SQL Database Cmdlets]に関するページを参照してください。 Azure SQL Data Warehouse ではサポートされていない Azure SQL Database コマンドレットがあります。  REST で自動化できるタスクの一覧については、「[Operations for Azure SQL Database][Operations for Azure SQL Database]」 (Azure SQL Database の操作) を参照してください。
 
 <!--Image references-->
 
@@ -100,7 +100,7 @@ PowerShell で自動化できるその他のタスクについては、[Azure SQ
 
 <!--MSDN references-->
 [Azure SQL Database Cmdlets]: https://docs.microsoft.com/powershell/module/azurerm.sql
-[Operations for Azure SQL Databases]: https://msdn.microsoft.com/library/azure/dn505719.aspx
+[Operations for Azure SQL Database]: https://msdn.microsoft.com/library/azure/dn505719.aspx
 [Get-AzureRmSqlDatabase]: https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabase
 [Get-AzureRmSqlDeletedDatabaseBackup]: https://docs.microsoft.com/powershell/module/azurerm.sql/get-AzureRmSqlDeletedDatabaseBackup
 [Get-AzureRmSqlDatabaseRestorePoints]: https://docs.microsoft.com/powershell/module/azurerm.sql/get-AzureRmSqlDatabaseRestorePoints

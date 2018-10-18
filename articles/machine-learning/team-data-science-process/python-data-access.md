@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 9f84686f8689a40cf002035053236b415481488f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 496ffdcb5cc2e7b208a53dc8c1d8ba4c0818945f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838352"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719972"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -65,7 +65,7 @@ Python クライアント ライブラリは、次の環境でテストされて
 ## <a name="datasetAccess"></a>Studio Code スニペットを使ってデータ セットにアクセスする
 Python クライアント ライブラリを使うと、実行している実験から既存のデータ セットへプログラムでアクセスできるようになります。
 
-Studio Web インターフェイスから、ローカル マシンでデータ セットを Pandas DataFrame オブジェクトとしてダウンロードして逆シリアル化するために必要なすべての情報を含むコード スニペットを生成できます。
+Studio Web インターフェイスから、ローカル マシンでデータ セットを pandas DataFrame オブジェクトとしてダウンロードして逆シリアル化するために必要なすべての情報を含むコード スニペットを生成できます。
 
 ### <a name="security"></a>データ アクセスのためのセキュリティ
 Python クライアント ライブラリで使用するために Studio で提供されるコード スニペットには、ワークスペース ID や認証トークンが含まれます。 これらを使用すればワークスペースにフル アクセスできますので、パスワードなどで保護する必要があります。
@@ -197,7 +197,7 @@ Azure ML によって割り当てられるその他の値には次のものが�
 使用できるメタデータの詳細については、 `SourceDataset` クラスをご覧ください。
 
 ### <a name="read-contents"></a>コンテンツを読み込む
-Machine Learning Studio で提供されるコード スニペットは、データ セットを自動的にダウンロードして Pandas DataFrame オブジェクトに逆シリアル化します。 これは次の `to_dataframe` メソッドで実行されます。
+Machine Learning Studio で提供されるコード スニペットは、データ セットを自動的にダウンロードして pandas DataFrame オブジェクトに逆シリアル化します。 これは次の `to_dataframe` メソッドで実行されます。
 
     frame = ds.to_dataframe()
 
@@ -220,7 +220,7 @@ Machine Learning Studio で提供されるコード スニペットは、デー�
 ### <a name="create-a-new-dataset"></a>新しいデータセットを作成する
 Python クライアント ライブラリでは、Python プログラムからデータセットをアップロードできます。 これらのデータセットは、その後、ご利用のワークスペースで使用できます。
 
-Pandas DataFrame にデータがある場合は、次のコードを使用します。
+pandas DataFrame にデータがある場合は、次のコードを使用します。
 
     from azureml import DataTypeIds
 
@@ -242,7 +242,7 @@ Pandas DataFrame にデータがある場合は、次のコードを使用しま
         description='my description'
     )
 
-Python クライアント ライブラリは、Pandas DataFrame を次の形式にシリアル化できます ( `azureml.DataTypeIds` クラスの定数)。
+Python クライアント ライブラリは、pandas DataFrame を次の形式にシリアル化できます (`azureml.DataTypeIds` クラスの定数)。
 
 * PlainText
 * GenericCSV

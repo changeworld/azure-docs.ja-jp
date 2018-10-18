@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 6643db7b732cc5b01ce7602eb3d679c130c46720
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eab55f6e2bf909ccdbdb30a8ced34dbc58d3954a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972198"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721332"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 
@@ -167,8 +167,7 @@ Azure のアクセス制御では、最初に課金に注目します。 [Azure 
 
 サブスクリプションは、ディレクトリとも関連付けられています。 ディレクトリでは、一連のユーザーを定義します。 たとえば、ディレクトリを作成した職場や学校のユーザーや、外部ユーザー (つまり、Microsoft アカウント) として定義できます。 サブスクリプションは、サービス管理者 (SA) または共同管理者 (CA) のいずれかとして割り当てられているディレクトリ ユーザーのサブセットからアクセス可能です。唯一の例外は、従来版との兼ね合いから、Microsoft アカウント (旧 Windows Live ID) はディレクトリに存在しなくても SA または CA として割り当てることができる、という点です 。
 
-セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員が業務を効率的に遂行できなくなる可能性があります。 
-  [Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
+セキュリティを重視する企業は、実際に必要となるアクセス許可を従業員に付与することに注力する必要があります。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員が業務を効率的に遂行できなくなる可能性があります。 [Azure のロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) は、Azure のアクセス許可を詳細に管理を実現することでこの問題に対処できます。
 
 ![セキュリティで保護されたリソース アクセス ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 

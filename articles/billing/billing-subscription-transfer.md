@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: genli
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6055dbab85acb1e5fed9679a5072144bc84712c
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 7e9b5d1a84417cf6e6264211ea6e542ab712f9fe
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917125"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422604"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの所有権を別のアカウントに譲渡する
 
@@ -77,12 +77,11 @@ ms.locfileid: "42917125"
 
 ## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>サブスクリプションの所有権を受け取った後の次のステップ
 
-1. これで、アカウント管理者になりました。サービス管理者、共同管理者、その他の RBAC ロールを見直して更新します。 詳細については、「[サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する](billing-add-change-azure-subscription-administrator.md)」をご覧ください。
+1. これで、アカウント管理者になりました。サービス管理者、共同管理者、その他の RBAC ロールを見直して更新します。 詳細については、「[Azure サブスクリプション管理者を追加または変更する](billing-add-change-azure-subscription-administrator.md)」と「[RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)」を参照してください。
 1. このサブスクリプションのサービスに関連付けられている以下の資格情報を更新します。
    1. サブスクリプションのリソースに対する管理者権限をユーザーに付与する管理証明書。 詳細については、「 [Azure の管理証明書の作成とアップロード](../cloud-services/cloud-services-certs-create.md)
    1. Storage などのサービス用のアクセス キー。 詳細については、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」を参照してください。
    1. Azure Virtual Machines などのサービス用のリモート アクセス資格情報。 
-1. [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)で、[このサブスクリプション用の課金アラートを更新します](billing-set-up-alerts.md)。 
 1. パートナーがいる場合は、このサブスクリプションのパートナー ID を更新することを検討します。 パートナー ID は、[Azure Portal](https://portal.azure.com) で更新できます。
 
 <a id="supported"></a>

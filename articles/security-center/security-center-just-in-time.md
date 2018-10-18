@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/05/2018
+ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2a079456813a67eb40d5cf42bcdd2c91fbc631d3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: cb13da7ad9387b7170882752b1620c2756bc3675
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297041"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124152"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>ジャスト イン タイムを使用して仮想マシンへのアクセスを管理する
 
@@ -108,6 +108,9 @@ Security Center でジャスト イン タイムの有効化が推奨される�
 
 3. **[OK]** を選択します。
 
+> [!NOTE]
+>VM に対して JIT VM アクセスが有効になっている場合、Azure Security Center では、関連付けられているネットワーク セキュリティ グループ内の選択されたポートについて、すべての受信トラフィックを拒否というルールが作成されます。 このルールはネットワーク セキュリティ グループの最優先事項となります。あるいは、そこに既にある既存のルールより優先度が低くなります。 これは、ルールが安全であるかどうかを判断する、Azure Security Center によって行われる分析に依存します。
+>
 ## <a name="requesting-access-to-a-vm"></a>VM へのアクセス権の要求
 
 VM へのアクセス権を要求するには、以下の手順に従います。
@@ -162,8 +165,6 @@ VM の既存のジャスト イン タイム ポリシーを編集するには�
 
   **[アクティビティ ログ]** には、選択した VM の前回の操作、時間、日付、サブスクリプションがフィルター処理されて表示されます。
 
-  ![アクティビティ ログを表示する][5]
-
 **[すべての項目を csv としてダウンロードするにはここをクリックしてください。]** を選択すると、ログ情報をダウンロードできます。
 
 フィルターを変更し、**[適用]** を選択して検索ログを作成します。
@@ -172,15 +173,62 @@ VM の既存のジャスト イン タイム ポリシーを編集するには�
 
 Just In Time VM アクセス機能は、Azure Security Center API を通じて使用できます。 この API を使用すると、構成済みの VM に関する情報を取得したり、新しい VM を追加したり、VM へのアクセスを要求したりすることができます。 Just In Time REST API について詳しくは、「[Jit Network Access Policies (JIT ネットワーク アクセス ポリシー)](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies)」をご覧ください。
 
-### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>VM のジャスト イン タイム ポリシーの構成
+## <a name="using-just-in-time-vm-access-via-powershell"></a>PowerShell によるジャスト イン タイム VM アクセスの使用 
 
-特定の VM でジャスト イン タイム ポリシーを構成するには、PowerShell セッションで次のコマンドを実行する必要があります: Set-ASCJITAccessPolicy。
-詳細については、コマンドレットに関するドキュメントを参照してください。
+PowerShell による Just In Time VM アクセス ソリューションを使用するには、公式の Azure Security Center の PowerShell コマンド (つまり、`Set-AzureRmJitNetworkAccessPolicy`) を使用します。
+
+次の例では、特定の VM に Just In Time VM アクセス ポリシーを設定し、以下のように設定します。
+1.  ポート 22 と 3389 を閉じます。
+2.  承認された要求ごとに開けるように、それぞれ最大 3 時間の時間枠を設定します。
+3.  アクセス権を要求するユーザーがソース IP アドレスを制御できるようにし、承認された Just In Time アクセス要求時に正常なセッションを確立できるようにします。
+
+これを実現するには、PowerShell で以下を実行します。
+
+1.  VM に対する Just In Time VM アクセス ポリシーを保持する変数を割り当てます。
+
+        $JitPolicy = (@{
+         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
+        ports=(@{
+             number=22;
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
+             maxRequestAccessDuration="PT3H"},
+             @{
+             number=3389;
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
+             maxRequestAccessDuration="PT3H"})})
+
+2.  VM の Just In Time VM アクセス ポリシーを配列に挿入します。
+    
+        $JitPolicyArr=@($JitPolicy)
+
+3.  選択した VM で Just In Time VM アクセス ポリシーを構成します。
+    
+        Set-AzureRmJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
 ### <a name="requesting-access-to-a-vm"></a>VM へのアクセス権の要求
 
-ジャスト イン タイム ソリューションで保護されている特定の VM にアクセスするには、PowerShell セッションで次のコマンドを実行する必要があります: Invoke-ASCJITAccess。
-詳細については、コマンドレットに関するドキュメントを参照してください。
+次の例では、特定の IP アドレスおよび特定の期間にポート 22 を開くことを要求する、特定の VM への Just In Time VM アクセス要求が示されています。
+
+PowerShell で以下を実行します。
+1.  VM 要求アクセス プロパティを構成します。
+
+        $JitPolicyVm1 = (@{
+          id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
+        ports=(@{
+           number=22;
+           endTimeUtc="2018-09-17T17:00:00.3658798Z";
+           allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
+2.  配列内に VM アクセス要求パラメーターを挿入します。
+
+        $JitPolicyArr=@($JitPolicyVm1)
+3.  要求アクセスを送信します (手順 1 で取得したリソース ID を使用)。
+
+        Start-AzureRmJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
+
+詳細については、PowerShell コマンドレットのドキュメントをご覧ください。
+
 
 ## <a name="next-steps"></a>次の手順
 この記事では、Security Center のジャスト イン タイム VM アクセスを活用して Azure 仮想マシンへのアクセスを制御する方法について説明しました。

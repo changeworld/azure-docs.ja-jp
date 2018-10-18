@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: b261ec5fb0ad437202df1a8fd8683a095cb1bb96
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 03280f87b4b49b3e42091c6b1572a7f050afb336
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42146424"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983163"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Files の共有スナップショットの概要 
 Azure Files には、ファイル共有の共有スナップショットを作成する機能があります。 共有スナップショットは、その時点の共有状態をキャプチャします。 この記事では、共有スナップショットで提供される機能と、それらをカスタムのユース ケースに活用する方法を説明します。
@@ -32,7 +32,7 @@ Azure Files には、ファイル共有の共有スナップショットを作�
 ## <a name="capabilities"></a>機能
 共有スナップショットは、特定の時点のデータの読み取り専用コピーです。 REST API を使用してスナップショットを作成、削除、管理することができます。 同じ機能をクライアント ライブラリ、Azure CLI、Azure Portal でも使用できます。 
 
-REST API と SMB の両方を使用して、共有のスナップショットを表示することができます。 ディレクトリまたはファイルのバージョンの一覧を取得することができ、特定のバージョンをドライブとして直接マウントすることができます。 
+REST API と SMB の両方を使用して、共有のスナップショットを表示することができます。 ディレクトリまたはファイルのバージョンの一覧を取得することができ、特定のバージョンをドライブとして直接マウントすることができます (Windows 上でのみ使用できます - 「[制限](#limits)」を参照してください)。 
 
 作成された共有スナップショットは、読み取り、コピー、削除はできますが、変更はできません。 別のストレージ アカウントに共有スナップショット全体をコピーすることはできません。 AzCopy またはその他のコピー メカニズムを使用して、ファイルごとにコピーする必要があります。
 
@@ -62,6 +62,8 @@ http://storagesample.file.core.windows.net/myshare?snapshot=2011-03-09T01:42:34.
 Azure Files で現在許可されている共有スナップショットの最大数は 200 です。 共有スナップショットの数が 200 を超えると、新しい共有スナップショットを作成するために、古い共有スナップショットを削除する必要があります。 
 
 共有スナップショットを作成するための同時呼び出しに制限はありません。 特定のファイル共有の共有スナップショットが利用できる領域の量に制限はありません。 
+
+現在、Linux では共有スナップショットをマウントすることはできません。 これは、Linux SMB クライアントが Windows のようにスナップショットのマウントをサポートしていないためです。
 
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>共有スナップショットから共有へのデータのコピー
 ファイルや共有スナップショットに関連するコピー操作は次のルールに従います。

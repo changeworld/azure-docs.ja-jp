@@ -7,44 +7,38 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 09/19/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 6d8e9245e95c08aad69cd05f338b6260e554469b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 819e6364aebab11097260c54575ab65914293ce7
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337792"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47180531"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Twitter アカウントでのサインアップおよびサインインを設定する
 
-## <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
+## <a name="create-an-application"></a>アプリケーションの作成
 
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Twitter アカウントを使用するには、テナントにそれを表すアプリケーションを作成する必要があります。 まだ Twitter アカウントを持っていない場合は、[https://twitter.com/signup](https://twitter.com/signup) で取得できます。
+Azure AD B2C で ID プロバイダーとして Twitter を使用するには、Twitter アプリケーションを作成する必要があります。 まだ Twitter アカウントを持っていない場合は、[https://twitter.com/signup](https://twitter.com/signup) で取得できます。
 
-1. Twitter の資格情報を使用して [Twitter アプリ](https://apps.twitter.com/)にサインインします。
-2. **[Create New App]** を選択します。
-3. **[名前]**、**[説明]**、および **[Web サイト]** を入力します。
-4. **[Callback URL] (コールバック URL)** に「`https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/{policyId}/oauth1/authresp`」と入力します。 **{tenant}** をテナントの名前 (contosob2c など) に、**{policyId}** をポリシー ID (b2c_1_policy など) に置き換えます。 Twitter アカウントを使用するすべてのポリシーのコールバック URL を追加する必要があります。 
-5. **[Developer Agreement] (開発者契約)** に同意し、**[Create your Twitter application] (Twitter アプリケーションを作成する)** を選択します。
-7. **[Keys and Access Tokens]** タブをクリックします。
-8. **[Consumer Key]** と **[Consumer Secret]** の値をコピーします。 テナントで ID プロバイダーとして Twitter アカウントを構成するには、この両方が必要です。
+1. Twitter アカウント資格情報を使用して [Twitter Developers](https://developer.twitter.com/en/apps) Web サイトにサインインします。
+2. **[アプリの作成]** を選択します。
+3. **アプリ名**と**アプリケーションの説明**を入力します。
+4. **Web サイトの URL** で、`https://your-tenant.b2clogin.com`を入力します。 `your-tenant` をテナントの名前に置き換えます。 たとえば、「 https://contosob2c.b2clogin.com 」のように入力します。
+5. **[Callback URL]** に「`https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-policy-Id/oauth1/authresp`」と入力します。 ご自身のテナント名の名前を`your-tenant`と置換し、ポリシーの識別子を`your-policy-Id`と置換してください。 たとえば、「 `b2c_1A_signup_signin_twitter` 」のように入力します。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
+6. ページ下部の使用条件を確認して同意し、**[作成]** を選択します。
+7. **[アプリの詳細]** ページで、**[編集 > 詳細の編集]** を選択して、**[Twitter でサインインを有効にする]** のチェック ボックスにチェックを入れ、**[保存]** を選択します。
+8. **[キーとトークン]** を選択し、後で使用される **[コンシューマー API キー]** と **[コンシューマー API のシークレット キー]** の値を記録します。
 
 ## <a name="configure-twitter-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして Twitter を構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-2. Azure Portal の右上隅でディレクトリを切り替えて、Azure AD B2C テナントが含まれるディレクトリを使用していることを確認してください。 サブスクリプション情報を選択し、**[ディレクトリの切り替え]** を選択します。 
-
-    ![Azure AD B2C テナントに切り替え](./media/active-directory-b2c-setup-twitter-app/switch-directories.png)
-
-    テナントが含まれるディレクトリを選択します。
-
-    ![新しいディレクトリを選択する](./media/active-directory-b2c-setup-twitter-app/select-directory.png)
-
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認するためにトップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
 4. **[ID プロバイダー]**、**[追加]** の順に選択します。
 5. **[名前]** を入力します。 たとえば、「*Twitter*」と入力します。
 6. **[ID プロバイダーの種類]**、**[Twitter]** の順に選択し、**[OK]** をクリックします。
-7. **[この ID プロバイダーをセットアップします]** を選択し、**[クライアント ID]** としてコンシューマー キーを入力し、**[クライアント シークレット]** として**コンシューマー シークレット**を入力します。
+7. **[この ID プロバイダーをセットアップする]** を選択し、**[クライアント ID]** のAPI キーと **[クライアント シークレット]** のAPI シークレット キーを入力します。
 8. **[OK]** をクリックし、**[作成]** をクリックして Twitter の構成を保存します。

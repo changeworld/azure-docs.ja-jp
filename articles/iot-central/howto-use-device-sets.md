@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: d0b802842d60d68bab36e87913a84c5e40b8e431
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 28706ad77f48ae826b621ebdd920d26f3b87178a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206073"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731983"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイス セットを使用する
 
@@ -50,7 +50,7 @@ ms.locfileid: "39206073"
 
 1. **[ダッシュボード]** タブを選択します。
 
-1. **[Design Mode] (デザイン モード)** をオンにします。
+1. **[テンプレートの編集]** をクリックします。
 
     ![[Design Mode] (デザイン モード) オン](media/howto-use-device-sets/image3.png)
 
@@ -58,9 +58,6 @@ ms.locfileid: "39206073"
 
 1. リンク タイルを追加します。
     1. 右側のウィンドウで **[Link] (リンク)** を選択します。
-
-        ![リンクの選択](media/howto-use-device-sets/image6.png)
-
     1. リンクに**タイトル**を指定します。
     1. リンクをクリックしたときに開く URL を選択します。
     1. **[Title] (タイトル)** の下に表示される説明をリンクに指定します。
@@ -87,38 +84,26 @@ ms.locfileid: "39206073"
     > [!NOTE]
     > 複数のイメージ、リンク、およびグリッドを追加することができます。
   
-    1. **[Design Mode] (デザイン モード)** をオフにします。
+    1. **[Done]** をクリックします。
 
     ![[Design Mode] (デザイン モード) オフ](media/howto-use-device-sets/image10.png)
 
 
 ### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>デバイス セット ダッシュボードでの場所マップの構成 
-場所マップを追加して、マップでデバイス セットの場所を視覚化することができます。 
+場所マップを追加して、マップでデバイス セットの場所を視覚化することができます。
 
 デバイス セット ダッシュボードに場所マップを追加するには、デバイス テンプレートで場所プロパティを構成している必要があります (「[Create a Location Property powered by Azure Maps](howto-set-up-template.md)」 (Azure Maps を利用する場所プロパティを作成する) を参照)。
 
 
-1. デバイス セット ダッシュボードで、ライブラリからマップを選択します。 
+1. ご利用のデバイス セット ダッシュボードで、ライブラリからマップを選択します。
 
     ![デバイス セット ダッシュボードのマップ](media/howto-use-device-sets/LocationMaps1.png)
 
-
-2. タイトルを付け、以前にデバイス プロパティの一部として構成した場所プロパティを選択します。
-
-    ![ダッシュボード マップの構成](media/howto-use-device-sets/LocationMaps2.png)
-
+2. タイトルを付けて、以前にデバイス プロパティの一部として構成した場所プロパティを選択します。
 3. 保存すると、デバイス セットにデバイスの場所を示すマップ タイルが表示されます。
-
-    ![ダッシュボード マップの保存](media/howto-use-device-sets/LocationMaps3.png)
-
-
-5. これで、オペレーターがデバイス セット ダッシュボードを表示したときに、場所マップを含む、構成済みのすべてのタイルが表示され、すべてのデバイスの場所がひとめでわかるようになります。 
-
-    ![ダッシュボード マップのオペレーター ビュー](media/howto-use-device-sets/LocationMaps4.png)
-
-    マップは任意のサイズに変更することができます。
-
-    マップでピンをクリックすると、デバイスの情報、名前と場所が表示されます。 ポップアップをクリックして、デバイスのプロパティ ページに移動できます。  
+4. これで、オペレーターがデバイス セット ダッシュボードを表示したときに、場所マップを含む、構成済みのすべてのタイルが表示され、すべてのデバイスの場所がひとめでわかるようになります。 
+    
+[!NOTE] マップは任意のサイズに変更することができます。 マップでピンをクリックすると、デバイスの情報、名前と場所が表示されます。 ポップアップをクリックして、デバイスのプロパティ ページに移動できます。  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>デバイス セットのリストの構成

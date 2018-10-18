@@ -1,20 +1,21 @@
 ---
-title: Microsoft Translator Text API を使用してテキストを変換する | Microsoft Docs
-description: Microsoft Translator Text API を使用してテキストを変換します。
+title: テキストを変換する - Translator Text API
+titlesuffix: Azure Cognitive Services
+description: Translator Text API を使用してテキストを変換します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 5aa88f471a33a668b8385e46c2105a3139c142cb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e5061e322b4f0edb416f321cefef73776b9165ff
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374336"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123948"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>TransformText メソッドの使用方法
 
@@ -30,8 +31,8 @@ TransformText メソッドは、ソーシャル メディア用のテキスト�
 | パラメーター | 説明 |
 |:---|:---|
 | Authorization header (Authorization ヘッダー) | **必須**: アプリケーションを識別するために使用される HTTP ヘッダー。 キーとして "Authorization" を、値として "Bearer" + " " + アクセス トークンを使用します。 詳細については、ここを参照してください。|
-| 言語 | **必須**: 言語コードを表す文字列。 このパラメーターは、言語名として **en** を指定する英語のみをサポートしています。|
-| カテゴリ | **省略可能**: 翻訳のカテゴリまたは領域を含む文字列。 このパラメーターは、既定のオプション **general** のみをサポートしています。|
+| language | **必須**: 言語コードを表す文字列。 このパラメーターは、言語名として **en** を指定する英語のみをサポートしています。|
+| category | **省略可能**: 翻訳のカテゴリまたは領域を含む文字列。 このパラメーターは、既定のオプション **general** のみをサポートしています。|
 | sentence | **必須**: 修正する文。 |
 
 ## <a name="return-value"></a>戻り値

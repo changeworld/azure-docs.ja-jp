@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 478afe81ed739b98487973eb092ee9cad0aa17fd
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 234651ad3672982e4de9617561a926712697945a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37055685"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734035"
 ---
 # <a name="ocr-cognitive-skill"></a>OCR 認知スキル
 
@@ -28,6 +28,8 @@ ms.locfileid: "37055685"
 + .BMP
 + .GIF
 
+> [!NOTE]
+> コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行および画像の抽出と正規化は、現在無料で提供されています。 これらの機能の価格は後日発表される予定です。 
 
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
@@ -49,7 +51,7 @@ ms.locfileid: "37055685"
 ## <a name="skill-outputs"></a>スキルの出力
 | 出力名     | 説明                   |
 |---------------|-------------------------------|
-| テキスト          | イメージから抽出されたプレーン テキスト｡   |
+| text          | イメージから抽出されたプレーン テキスト｡   |
 | layoutText    | 抽出されたテキストと､そのテキストが検出された場所を記述した複合型｡|
 
 

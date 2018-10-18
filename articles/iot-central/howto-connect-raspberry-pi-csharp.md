@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 63843797cca7fe84cdb9ce91d2282b1c0c288f0c
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: a9390ac9046ad1e0ec5a1689052ee99bf76ec6f4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205138"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734237"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi を Azure IoT Central アプリケーションに接続する (C#)
 
@@ -263,6 +263,9 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 
 デバイスが Azure IoT Central で認証されるためのコードにデバイス固有の接続文字列を追加します。 この接続文字列は、実デバイスを Azure IoT Central アプリケーションに追加したときに書きとめました。
 
+  > [!NOTE]
+   > Azure IoT Central は、すべてのデバイス接続に対して Azure IoT Hub Device Provisioning Service (DPS) を使用するようになりました。手順に従って[デバイスの接続文字列を取得](concepts-connectivity.md#getting-device-connection-string)し、チュートリアルの残りを続けてください。
+
 1. **Program.cs** ファイル内の `{your device connection string}` を、前に書きとめた接続文字列に置き換えます。
 
 1. コマンドライン環境で次のコマンドを実行します。
@@ -347,7 +350,7 @@ Azure IoT Central アプリケーションでは、**Raspberry Pi** デバイス
 
 ### <a name="properties"></a>Properties
 
-| Type            | 表示名 | フィールド名 | データ型 |
+| type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
 | Text            | Location     | location   | 該当なし       |

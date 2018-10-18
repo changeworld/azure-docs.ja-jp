@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e4d625cd123583baa30fde8e9826f5b57da49fe
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: ef8809afa2da36f44384d784e32532b7b121e3a9
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393590"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379146"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>チュートリアル: Azure Database for PostgreSQL を監視およびチューニングします
 
@@ -28,7 +28,7 @@ Azure Database for PostgreSQL は、サーバーのパフォーマンスの理�
 PostgreSQL バージョン 9.6 または 10 の Azure Database for PostgreSQL が必要です。 [Create チュートリアル](tutorial-design-database-using-azure-portal.md) の手順に従ってサーバー作成できます。
 
 > [!IMPORTANT]
-> 限定された地域において、**クエリ ストア**、**Query Performance Insight**、および**パフォーマンスの推奨事項**は、パブリック プレビュー内にあります。
+> **クエリ ストア**、 **Query Performance Insight**、および**パフォーマンスの推奨事項**はパブリック プレビュー内にあります。
 
 ## <a name="enabling-data-collection"></a>データ収集の有効化
 [クエリ ストア](concepts-query-store.md)は、サーバー上のクエリと待機統計の履歴をキャプチャし、サーバー上の **azure_sys** データベース内に格納します。 これはオプトイン機能です。 これを有効にするには:

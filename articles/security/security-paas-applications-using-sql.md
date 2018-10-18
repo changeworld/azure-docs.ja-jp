@@ -1,6 +1,6 @@
 ---
 title: Azure で Paas データベースをセキュリティで保護する | Microsoft Docs
-description: " PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure SQL Database と SQL Data Warehouse のセキュリティ ベスト プラクティスについて説明します。 "
+description: 'PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure SQL Database と SQL Data Warehouse のセキュリティ ベスト プラクティスについて説明します。 '
 services: security
 documentationcenter: na
 author: techlake
@@ -12,30 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 09/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 00b2b249f5889888f34d57fd1577ccfea776d00c
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 72d5ec09becc1f1d9e23e284e18bcc037ccb3072
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347972"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452481"
 ---
-# <a name="securing-paas-databases-in-azure"></a>Azure で Paas データベースをセキュリティで保護する
+# <a name="best-practices-for-securing-paas-databases-in-azure"></a>Azure で PaaS データベースを保護するベスト プラクティス
 
-この記事では、PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) と [SQL Data Warehouse](https://azure.microsoft.com/services/sql-data-warehouse/) の一連のセキュリティ ベスト プラクティスについて説明します。 このベスト プラクティスは、Azure に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
+この記事では、PaaS (platform-as-a-service) の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、[Azure SQL Database](../sql-database/sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) の一連のセキュリティ ベスト プラクティスについて説明します。 このベスト プラクティスは、Azure に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
-## <a name="azure-sql-database-and-sql-data-warehouse"></a>Azure SQL Database と SQL Data Warehouse
-[Azure SQL Database](../sql-database/sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、インターネット ベースのアプリケーション用のリレーショナル データベース サービスを提供します。 PaaS デプロイで Azure SQL Database と SQL Data Warehouse を使用するときに、アプリケーションとデータの保護に役立つサービスを見ていきましょう。
+Azure SQL Database と SQL Data Warehouse は、インターネット ベースのアプリケーション用のリレーショナル データベース サービスを提供します。 PaaS デプロイで Azure SQL Database と SQL Data Warehouse を使用するときに、アプリケーションとデータの保護に役立つサービスを見ていきましょう。
 
 - Azure Active Directory 認証 (SQL Server 認証ではない)
 - Azure SQL ファイアウォール
 - 透過的なデータ暗号化 (TDE)
 
-## <a name="best-practices"></a>ベスト プラクティス
-
-### <a name="use-a-centralized-identity-repository-for-authentication-and-authorization"></a>認証と承認に一元化された ID レポジトリを使用する
-
+## <a name="use-a-centralized-identity-repository"></a>一元化された ID レポジトリを使用
 Azure SQL Database は、次の 2 種類の認証のいずれかを使用するように構成できます。
 
 - **SQL 認証**では、ユーザー名とパスワードを使用します。 データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。 これらの資格情報を使用すると、データベース所有者として、そのサーバーにある任意のデータベースを認証できます。
@@ -44,42 +40,41 @@ Azure SQL Database は、次の 2 種類の認証のいずれかを使用する�
 
 [Azure Active Directory 認証](../active-directory/develop/authentication-scenarios.md)は、Azure Active Directory (AD) の ID を使用して Azure SQL Database と SQL Data Warehouse に接続するメカニズムです。 Azure AD では、SQL Server 認証とは別の認証が提供されるため、データベース サーバー間でユーザー ID が拡散されるのを防ぐことができます。 Azure AD 認証を使用すると、データベース ユーザーの ID や他の Microsoft サービスを一元管理できます。 ID の一元管理では、1 か所でデータベース ユーザーを管理できるようになるため、アクセス許可の管理が容易になります。  
 
-SQL 認証ではなく Azure AD 認証を使用する利点は次のとおりです。
-
+### <a name="benefits-of-using-azure-ad-instead-of-sql-authentication"></a>SQL 認証ではなく Azure AD を使用する利点
 - 1 か所でのパスワードのローテーションを許可します。
 - 外部の Azure AD グループを使用してデータベースのアクセス許可を管理できます。
 - 統合 Windows 認証や、Azure AD でサポートされる他の認証形式を有効にすると、パスワードが保存されません。
 - 包含データベース ユーザーを使用して、データベース レベルで ID を認証します。
 - SQL Database に接続するアプリケーション向けにトークンベース認証をサポートしています。
-- ADFS (ドメイン フェデレーション) またはドメインを同期しないローカル Azure AD のネイティブ ユーザー/パスワード認証をサポートします。
-- [Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) を含む Active Directory ユニバーサル認証を使用する SQL Server Management Studio からの接続をサポートします。 MFA には、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知など、簡単な各種確認オプションによる強力な認証が含まれます。 詳細については、「 [SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート](../sql-database/sql-database-ssms-mfa-authentication.md)」を参照してください。
+- Azure AD 認証は、ADFS (Active Directory フェデレーション サービス) またはドメインを同期しないローカル Azure AD のためのネイティブ ユーザー/パスワード認証でドメインフェデレーションをサポートします。
+- [Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) を含む Active Directory ユニバーサル認証を使用する SQL Server Management Studio からの接続をサポートします。 MFA には、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知など、簡単な各種確認オプションによる強力な認証が含まれます。 詳細については、「[SQL Database と SQL Data Warehouse を使ったユニバーサル認証](../sql-database/sql-database-ssms-mfa-authentication.md)」を参照してください。
 
 Azure AD 認証の詳細については、次を参照してください。
 
-- [Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse に接続する](../sql-database/sql-database-aad-authentication.md)
+- [Azure Active Directory 認証を使用して SQL Database、マネージド インスタンス、または SQL Data Warehouse を認証する](../sql-database/sql-database-aad-authentication.md)
 - [Azure SQL Data Warehouse への認証](../sql-data-warehouse/sql-data-warehouse-authentication.md)
-- [Azure AD 認証を使用して Azure SQL DB のトークンベース認証をサポート](https://blogs.msdn.microsoft.com/sqlsecurity/2016/02/09/token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/)
+- [Azure AD 認証を使用して Azure SQL DB のトークンベース認証をサポート](../sql-database/sql-database-aad-authentication.md)
 
 > [!NOTE]
-> Azure Active Directory を環境に確実に適合させるには、「[Azure AD の機能と制限事項](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)」の、特に「追加の考慮事項」を参照してください。
+> Azure Active Directory を環境に確実に適合させるには、「[Azure AD の機能と制限事項](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)」を参照してください。
 >
 >
 
-### <a name="restrict-access-based-on-ip-address"></a>IP アドレスに基づいてアクセスを制限する
+## <a name="restrict-access-based-on-ip-address"></a>IP アドレスに基づいてアクセスを制限する
 受け入れ可能な IP アドレスの範囲を指定するファイアウォール規則を作成できます。 これらの規則は、サーバー レベルとデータベース レベルの両方を対象にすることができます。 ただし、セキュリティを強化しデータベースの移植性を高めるため、可能な限りデータベース レベルのファイアウォール規則を使用することをお勧めします。 アクセス要件が同じデータベースが多数存在し、それぞれのデータベースの設定に時間を費やしたくない場合は、管理者向けのサーバー レベルのファイアウォール規則を使用します。
 
-SQL Database の既定のソース IP アドレスの制限では、どの Azure アドレス (他のサブスクリプションやテナントを含む) からのアクセスも許可されます。 これを、自分の IP アドレスのみがインスタンスへのアクセスを許可されるように制限することができます。 SQL ファイアウォールと IP アドレス制限を使用していても、強力な認証が必要です。 この記事で前述した推奨事項を参照してください。
+SQL Database 既定ソース IP アドレス制限では、他のサブスクリプションやテナントを含む、どの Azure アドレスからでもアクセスできます。 これを、自分の IP アドレスのみがインスタンスへのアクセスを許可されるように制限することができます。 SQL ファイアウォールと IP アドレス制限を使用していても、強力な認証が必要です。 この記事で前述した推奨事項を参照してください。
 
 Azure SQL ファイアウォールと IP の制限については、次を参照してください。
 
-- [Azure SQL Database のアクセス制御](../sql-database/sql-database-control-access.md)
-- [Azure SQL Database ファイアウォール規則の構成 - 概要](../sql-database/sql-database-firewall-configure.md)
-- [Azure Portal を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](../sql-database/sql-database-configure-firewall-settings.md)
+- [Azure SQL Database と SQL Data Warehouse へのアクセスの制御](../sql-database/sql-database-control-access.md)
+- [Azure SQL Database と SQL Data Warehouse のファイアウォール規則](../sql-database/sql-database-firewall-configure.md)
 
-### <a name="encryption-of-data-at-rest"></a>保存データの暗号化
-[Transparent Data Encryption (TDE)](https://msdn.microsoft.com/library/azure/bb934049) は既定で有効になっています。 TDE は SQL Server、Azure SQL Database、および Azure SQL Data Warehouse のデータ ファイルとログ ファイルを透過的に暗号化します。 TDE はファイルやそのバックアップへの直接アクセスによる侵害から保護します。 これにより、既存のアプリケーションを変更することなく保存データを暗号化できます。 TDE は常に有効にしておく必要があります。ただし、通常のアクセス パスを使用する攻撃者を阻止することはできません。 TDE は多数の法律、規制、さまざまな業界で制定されたガイドラインに準拠する機能を提供します。
 
-Azure SQL は TDE のキーに関連する問題を管理します。 TDE については、データベースを移動する際には復旧可能性を確保するために、オンプレミスで特別な注意が必要です。 より高度なシナリオでは、Azure Key Vault で拡張可能なキー管理を通じてキーを明示的に管理できます ([Enable TDE on SQL Server Using EKM](/sql/relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm) (EKM を使用して SQL Server で TDE を有効にする) をご覧ください)。 またこれにより、Bring Your Own Key (BYOK) が Azure Key Vault の BYOK 機能を通じて有効になります。
+## <a name="encrypt-data-at-rest"></a>保存データを暗号化
+[Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) は既定で有効になっています。 TDE は SQL Server、Azure SQL Database、および Azure SQL Data Warehouse のデータ ファイルとログ ファイルを透過的に暗号化します。 TDE はファイルやそのバックアップへの直接アクセスによる侵害から保護します。 これにより、既存のアプリケーションを変更することなく保存データを暗号化できます。 TDE は常に有効にしておく必要があります。ただし、通常のアクセス パスを使用する攻撃者を阻止することはできません。 TDE は多数の法律、規制、さまざまな業界で制定されたガイドラインに準拠する機能を提供します。
+
+Azure SQL は TDE のキーに関連する問題を管理します。 TDE については、データベースを移動する際には復旧可能性を確保するために、オンプレミスで特別な注意が必要です。 より高度なシナリオでは、Azure Key Vault で拡張可能なキー管理を通じてキーを明示的に管理できます。 [EKM を使用して SQL Server で TDE を有効にする](/sql/relational-databases/security/encryption/enable-tde-on-sql-server-using-ekm)を参照してください。 またこれにより、Bring Your Own Key (BYOK) が Azure Key Vault の BYOK 機能を通じて有効になります。
 
 Azure SQL では [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) を通じて列を暗号化できます。 これにより、許可されているアプリケーションのみが重要な列にアクセスできます。 このような暗号化を使用することで、暗号化された列に対する SQL クエリを等値ベースの値に制限します。
 

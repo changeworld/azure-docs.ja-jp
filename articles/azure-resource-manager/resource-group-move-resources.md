@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 09/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 35bd895636bcedf0fd3fad073819d238c7850326
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 33d5560f2bfef04678cf7a2236fd920385d68aac
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783340"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452158"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -163,7 +163,7 @@ Authorization: Bearer <access-token>
 
 ## <a name="services-that-can-be-moved"></a>移動可能なサービス
 
-新しいリソース グループへの移動と新しいサブスクリプションへの移動の両方が可能なサービスは、次のとおりです。
+次のリストは、新しいリソース グループとサブスクリプションに移動させることのできる Azure サービスの概要を示しています。 詳しくは、[リソースの操作のサポート移動](move-support-resources.md)を参照してください。
 
 * Analysis Services
 * API Management
@@ -173,6 +173,9 @@ Authorization: Bearer <access-token>
 * Automation
 * Azure Active Directory B2C
 * Azure Cosmos DB
+* Azure Database for MySQL
+* Azure Database for PostgreSQL
+* Azure DevOps - Microsoft 以外の拡張機能を購入している Azure DevOps 組織は、[それらの購入をキャンセル](https://go.microsoft.com/fwlink/?linkid=871160)してからでなければ、アカウントを異なるサブスクリプションに移動できません。
 * Azure Maps
 * Azure Relay
 * Azure Stack - 登録
@@ -193,6 +196,7 @@ Authorization: Bearer <access-token>
 * DNS
 * Event Grid
 * Event Hubs
+* フロントドア
 * HDInsight クラスター - 「[HDInsight の制限事項](#hdinsight-limitations)」を参照
 * Iot Central
 * IoT Hub
@@ -201,44 +205,41 @@ Authorization: Bearer <access-token>
 * Log Analytics
 * Logic Apps
 * Machine Learning - Machine Learning Studio Web サービスは、同じサブスクリプション内のリソース グループには移動できますが、別のサブスクリプションには移動できません。 他の Machine Learning リソースは、異なるサブスクリプションに移動できます。
+* マネージド ディスク - 「[制約に関するVirtual Machines の制限事項](#virtual-machines-limitations)」を参照してください
 * マネージド ID - ユーザー割り当て
 * Media Services
-* Mobile Engagement
 * Notification Hubs
 * Operational Insights
 * Operations Management
 * ポータルのダッシュボード
 * Power BI - Power BI Embedded と Power BI ワークスペース コレクションの両方
 * パブリック IP - 「[パブリック IP の制限事項](#pip-limitations)」を参照
-* Redis Cache
+* Redis Cache - Redis Cache インスタンスが仮想ネットワークで構成されている場合、インスタンスを別のサブスクリプションに移動させることはできません。 [Virtual Networks の制限事項](#virtual-networks-limitations)を参照してください。
 * Scheduler
 * Search
 * Service Bus
 * Service Fabric
 * Service Fabric Mesh
 * SignalR Service
-* Storage
+* ストレージ - 別のリージョンのストレージ アカウントは、同一操作で移動させることはできません。 その代わり、リージョンごとの個別操作を使用します。
 * Storage (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Stream Analytics - 実行中状態の Stream Analytics ジョブは移動できません。
 * SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。 この動作は、Azure SQL Database と Azure SQL Data Warehouse データベースに適用されます。
 * Time Series Insights
 * Traffic Manager
-* Virtual Machines - マネージド ディスクを使用する VM を移動することはできません。 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
+* Virtual Machines - マネージド ディスクを使用したVMに関しては、[Virtual Machines の制限事項](#virtual-machines-limitations)を参照してください
 * Virtual Machines (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Virtual Machine Scale Sets - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Virtual Networks - 「[Virtual Networks の制限事項](#virtual-networks-limitations)」を参照してください。
-* Visual Studio Team Services - Microsoft 以外の拡張機能を購入している VSTS アカウントは、[それらの購入をキャンセル](https://go.microsoft.com/fwlink/?linkid=871160)してからでないと、アカウントを異なるサブスクリプションに移動できません。
 * VPN Gateway
 
 ## <a name="services-that-cannot-be-moved"></a>移動不可能なサービス
 
-現在、リソースの移動が不可能なサービスは、次のとおりです。
+次のリストは、新しいリソース グループとサブスクリプションに移動させることのできない Azure サービスの概要を示しています。 詳しくは、[リソースの操作のサポート移動](move-support-resources.md)を参照してください。
 
 * AD Domain Services
 * AD Hybrid Health Service
 * Application Gateway
-* Azure Database for MySQL
-* Azure Database for PostgreSQL
 * Azure Database Migration
 * Azure Databricks
 * Azure Migrate
@@ -254,7 +255,6 @@ Authorization: Bearer <access-token>
 * Lab Services - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
 * Load Balancer - 「[Load Balancer の制限事項](#lb-limitations)」を参照
 * Managed Applications
-* Managed Disks - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
 * Microsoft Genomics
 * NetApp
 * パブリック IP - 「[パブリック IP の制限事項](#pip-limitations)」を参照
@@ -267,22 +267,62 @@ Authorization: Bearer <access-token>
 
 ## <a name="virtual-machines-limitations"></a>Virtual Machines の制限事項
 
-マネージド ディスクは移動をサポートしていません。 この制限は、いくつかの関連リソースも移動できないことを意味します。 以下を移動することはできません。
+2018 年 9 月 24 日現在、移動へのマネージド ディスクはサポートされています。 
 
-* マネージド ディスク
+1. この機能を有効にするように登録する必要があります。
+
+  ```azurepowershell-interactive
+  Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az feature register --namespace Microsoft.Compute --name ManagedResourcesMove
+  ```
+
+1. 登録要求は、最初に`Registering`の状態に戻します。 現在の状態を確認できます。
+
+  ```azurepowershell-interactive
+  Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az feature show --namespace Microsoft.Compute --name ManagedResourcesMove
+  ```
+
+1. 状態が`Registered`に変わるのを数分待ちます。
+
+1. 機能が登録されたら、`Microsoft.Compute`リソース プロバイダーを登録します。 リソース プロバイダーが以前に登録されていた場合でも、この手順を実行します。
+
+  ```azurepowershell-interactive
+  Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+  ```
+
+  ```azurecli-interactive
+  az provider register --namespace Microsoft.Compute
+  ```
+
+このサポートにより、以下を移動させることができます。
+
 * マネージド ディスクを使用する仮想マシン
-* マネージド ディスクから作成されたイメージ
-* マネージド ディスクから作成されたスナップショット
+* マネージドイメージ
+* マネージドスナップショット
 * マネージド ディスクを使用する仮想マシンの可用性セット
 
-マネージド ディスクは移動できませんが、コピーを作成した後、その既存のマネージド ディスクから新しい仮想マシンを作成できます。 詳細については、次を参照してください。
+サポートされていない制約を次に示します。
 
-* [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) または [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md) で、マネージド ディスクを同じサブスクリプションまたは別のサブスクリプションにコピーする
-* [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) or [Azure CLI](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md)で既存のマネージド OS ディスクを使用して仮想マシンを作成する
+* 証明書が Key Vault に格納されている Virtual Machines は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
+* Azure Backup で構成された Virtual Machines。 これらの Virtual Machines を移動させるには以下の回避策を使用します
+  * Virtual Machines の場所を特定します
+  * 例えば、`AzureBackupRG_<location of your VM>_1` AzureBackupRG_westus2_1などのような名前付けパターンを持つリソース グループを特定します
+  * Azure portal の場合、「非表示の型」を確認します
+  * PowerShell の場合、`Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1`コマンドレットを使用します
+  * CLI の場合、`az resource list -g AzureBackupRG_<location of your VM>_1`を使用します
+  * `Microsoft.Compute/restorePointCollections`名前付けパターンを持つ `AzureBackup_<name of your VM that you're trying to move>_###########`タイプのリソースを特定します
+  * このリソースを削除します
+  * 削除が完了した後は、Virtual Machines を移動させることができます
+* Standard SKU Load Balancer、または、Standard SKU パブリック IP を使用した Virtual Machine Scale Sets を移動することはできません
+* プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
 
-プランが添付された Marketplace リソースから作成された仮想マシンは、リソース グループまたはサブスクリプションの間で移動できません。 現在のサブスクリプションで仮想マシンをプロビジョニング解除し、新しいサブスクリプションにデプロイし直す必要があります。
-
-証明書が Key Vault に格納されている Virtual Machines は、同じサブスクリプション内の新しいリソース グループへの移動は可能ですが、サブスクリプション間の移動は可能ではありません。
 
 ## <a name="virtual-networks-limitations"></a>Virtual Networks の制限事項
 

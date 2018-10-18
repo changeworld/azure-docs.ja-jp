@@ -3,12 +3,12 @@ layout: HubPage
 hide_bc: true
 title: Microsoft Azure のドキュメント
 description: Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。
-ms.openlocfilehash: 16d1466180e90d45b7c2adf00ab699bb39d5d785
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: db35de8eead8ce0242fd67fbcee8a43a3b2498cc
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302458"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056759"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -905,12 +905,6 @@ ms.locfileid: "44302458"
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/mobile-engagement/">
-                                                <img src="media/index/MobileEngagement.svg" alt="" />
-                                                <p>Mobile Engagement</p>
-                                            </a>
-                                        </li>
-                                        <li>
                                             <a href="/azure/notification-hubs/">
                                                 <img src="media/index/NotificationHubs.svg" alt="" />
                                                 <p>Notification Hubs</p>
@@ -1635,25 +1629,6 @@ ms.locfileid: "44302458"
                                                 <div class="cardText">
                                                     <h3>Search</h3>
                                                     <p>フル マネージドの、サービスとしての検索</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/mobile-engagement/">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage">
-                                                        <img src="media/index/MobileEngagement.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Mobile Engagement</h3>
-                                                    <p>アプリの使用率とユーザーのリテンション期間を増加</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3313,12 +3288,12 @@ ms.locfileid: "44302458"
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>Azure CLI 2.0 </h3>
+                                                <h3>Azure CLI </h3>
                                                 <p>
                                                     <a href="/cli/azure">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/cli/azure/install-azure-cli">Azure CLI 2.0 のダウンロード</a>
+                                                    <a href="/cli/azure/install-azure-cli">Azure CLI のダウンロード</a>
                                                 </p>
                                                 <p>
                                                     <a href="/cli/azure">リファレンス</a>
@@ -3363,7 +3338,7 @@ ms.locfileid: "44302458"
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>Azure CLI </h3>
+                                                <h3>Azure クラシック CLI </h3>
                                                 <p>
                                                     <a href="/azure/xplat-cli-install?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json">作業開始</a>
                                                 </p>

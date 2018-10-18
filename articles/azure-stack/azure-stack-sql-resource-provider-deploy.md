@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: d063e4b79819a881dbf018979654d4d7d96b904a
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 47d31ac08d2cda59eac6ee5c939894b58d4576a0
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390929"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576988"
 ---
 # <a name="deploy-the-sql-server-resource-provider-on-azure-stack"></a>SQL Server リソース プロバイダーを Azure Stack にデプロイする
 
@@ -83,7 +83,7 @@ DeploySqlProvider.ps1 スクリプトを実行すると、次のタスクが完�
 | **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
 | **VMLocalCredential** | SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報。 | _必須_ |
 | **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ |
-| **AzureEnvironment** | Azure Stack のデプロイに使用したサービス管理者アカウントの Azure 環境。 ADFS でない場合にのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure Active Directory を使用している場合は **AzureChinaCloud** です。 | AzureCloud |
+| **AzureEnvironment** | Azure Stack のデプロイに使用したサービス管理者アカウントの Azure 環境。 Azure AD のデプロイでのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure Active Directory を使用している場合は **AzureChinaCloud** です。 | AzureCloud |
 | **DependencyFilesLocalPath** | 統合システムの場合のみ、証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 必要に応じて、ここで 1 つの Windows Update MSU パッケージをコピーできます。 | _省略可能_ (統合システムでは_必須_) |
 | **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ |
 | **MaxRetryCount** | エラーが 発生した場合に各操作を再試行する回数。| 2 |
@@ -93,9 +93,9 @@ DeploySqlProvider.ps1 スクリプトを実行すると、次のタスクが完�
 
 ## <a name="deploy-the-sql-resource-provider-using-a-custom-script"></a>カスタム スクリプトを使用して SQL リソース プロバイダーをデプロイする
 
-<a name="to-eliminate-any-manual-configuration-when-deploying-the-resource-provider-you-can-customize-the-following-script"></a>リソース プロバイダーをデプロイする際の手動による構成を除外するには、次のスクリプトをカスタマイズできます。  
--  
-- 必要に応じて、Azure Stack のデプロイに適した既定のアカウント情報とパスワードを変更します。
+リソース プロバイダーをデプロイする際の手動による構成を除外するには、次のスクリプトをカスタマイズできます。  
+
+必要に応じて、Azure Stack のデプロイに適した既定のアカウント情報とパスワードを変更します。
 
 
 ```powershell
@@ -109,6 +109,9 @@ $domain = "AzureStack"
 
 # For integrated systems, use the IP address of one of the ERCS virtual machines
 $privilegedEndpoint = "AzS-ERCS01"
+
+# Provide the Azure environment used for deploying Azure Stack. Required only for Azure AD deployments. Supported environment names are AzureCloud, AzureUSGovernment, or AzureChinaCloud. 
+$AzureEnvironment = "<EnvironmentName>"
 
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\SQLRP'
@@ -135,6 +138,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
     -VMLocalCredential $vmLocalAdminCreds `
     -CloudAdminCredential $cloudAdminCreds `
     -PrivilegedEndpoint $privilegedEndpoint `
+    -AzureEnvironment $AzureEnvironment `
     -DefaultSSLCertificatePassword $PfxPass `
     -DependencyFilesLocalPath $tempDir\cert
 

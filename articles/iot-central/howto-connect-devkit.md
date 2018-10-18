@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ea9ff8f93ede3b9ec5e7eed83c6049b0c23de7e8
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 94de5566db2395a3daf24c99a43cca6853e12cce
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205461"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736973"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -43,26 +43,34 @@ ms.locfileid: "39205461"
 
 ## <a name="add-a-real-device"></a>実デバイスの追加
 
-Azure IoT Central アプリケーションでは、**MXChip** デバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
+Azure IoT Central アプリケーションでは、**MXChip** デバイス テンプレートから実デバイスを追加し、デバイスの接続の詳細 (**スコープ ID、デバイス ID、主キー**) を書き留めます。
+
+1. Device Explorer から**実際のデバイス**を追加し、**[+ 新規] > [Real]\(リアル\)** をクリックして実際のデバイスを追加します。
+    * デバイス ID **<span style="color:Red">(小文字のみ)</span>** を入力するか、推奨デバイス ID を使います。
+    * デバイス名を入力するか、推奨名を使います
+    
+    ![デバイスの追加](media\concepts-connectivity\add-device.png)
+
+
+1. デバイス ページの **[接続]** をクリックして、追加したデバイスの **スコープ ID、デバイス ID、プライマリ キー**などの接続の詳細を取得します。
+ 
+    ![接続の詳細](media\concepts-connectivity\device-connect.PNG)
+
+3. これらの詳細を保存します。DevKit デバイスを準備するときに、インターネットから一時的に切断します。 
+
 
 ### <a name="prepare-the-devkit-device"></a>DevKit デバイスを準備する
 
 > [!NOTE]
 > 以前にデバイスを使用したことがあり、WiFi の資格情報が保存されていて、別の WiFi ネットワーク、接続文字列、またはテレメトリ測定を使用するようにデバイスを再構成するには、ボード上の **A** ボタンと **B** ボタンの両方を同時に押します。 それで機能しない場合は、**reset** ボタンを押して再試行します。
 
-#### <a name="before-you-start-configuring-the-device"></a>デバイスの構成を開始する前に:
-1. IoT Central の**サンプル Devkit**で、`Device Explorer`-> `select MXChip Template` -> `Click on +New and choose **Real** Device` -> `Connect this device` に移動します (右側) 
-2. プライマリ接続文字列をコピーします。
-3. 接続文字列を保存します。DevKit デバイスを準備するときに、インターネットから一時的に切断します。 
 
 
 #### <a name="to-prepare-the-devkit-device"></a>DevKit デバイスを準備するには:
 
 
-1. GitHub 上の[リリース](https://github.com/Azure/iot-central-firmware/releases) ページから、MXChip 用の事前に構築された最新の Azure IoT Central ファームウェアをダウンロードします。 リリース ページ上のダウンロード ファイル名は `AZ3166-IoT-Central-X.X.X.bin` のようになります。
-
+1. GitHub 上の[リリース](http://aka.ms/iotcentral-docs-MXChip-releases) ページから、MXChip 用の事前に構築された最新の Azure IoT Central ファームウェアをダウンロードします。
 1. USB ケーブルを使用して、DevKit デバイスを開発用コンピューターに接続します。 Windows では、DevKit デバイス上のストレージにマッピングされたドライブでファイル エクスプローラー ウィンドウが開きます。 たとえば、このドライブは **AZ3166 (D:)** と呼ばれることがあります。
-
 1. **iotCentral.bin** ファイルをドライブ ウィンドウにドラッグします。 コピーが完了すると、デバイスが新しいファームウェアで再起動します。
 
 1. DevKit デバイスが再起動すると、次の画面が表示されます。
@@ -75,7 +83,7 @@ Azure IoT Central アプリケーションでは、**MXChip** デバイス テ�
     ```
 
     > [!NOTE]
-    > 画面に何か表示されている場合は、デバイスの **A** ボタンと **B** ボタンを同時に押して、デバイスを再起動します。 
+    > 画面に何か表示されている場合は、デバイスをリセットし、デバイスの **A** ボタンと **B** ボタンを同時に押して、デバイスを再起動します。 
 
 1. これで、デバイスがアクセス ポイント (AP) モードになりました。 コンピューターまたはモバイル デバイスからこの WiFi アクセス ポイントに接続できます。
 
@@ -89,7 +97,7 @@ Azure IoT Central アプリケーションでは、**MXChip** デバイス テ�
     - WiFi ネットワークの名前を追加する 
     - WiFi ネットワークのパスワード
     - PIN コードがデバイス LCD に表示される 
-    - デバイスの接続文字 (手順に従って既に保存しているはずです) 接続文字列は `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device` (右上) で確認できます
+    - デバイスの接続の詳細である**スコープ ID、デバイス ID、主キー** (手順に従っている場合、この情報は書き留めてあるはずです)      
     - すべての使用可能なテレメトリ測定を選択する 
 
 1. **[デバイスの構成]** を選択すると、次のページが表示されます。
@@ -99,7 +107,6 @@ Azure IoT Central アプリケーションでは、**MXChip** デバイス テ�
 1. デバイス上の **Reset** ボタンを押します。
 
 
-
 ## <a name="view-the-telemetry"></a>テレメトリを表示する
 
 DevKit デバイスが再起動すると、デバイスの画面に次のものが表示されます。
@@ -107,6 +114,9 @@ DevKit デバイスが再起動すると、デバイスの画面に次のもの�
 * 送信されたテレメトリ メッセージの数。
 * エラーの数。
 * 受信された必要なプロパティの数、および送信された報告されるプロパティの数。
+
+> [!NOTE]
+> 接続中にデバイスがループしているように見える場合は、IoT Central でデバイスが *[ブロック済み]* かどうかを確認し、アプリに接続できるようにデバイスを *[ブロック解除]* します。
 
 デバイスを揺さぶると、送信された報告されるプロパティの数が増えます。 デバイスは、**[Die Number] (サイコロの数字)** デバイス プロパティとして乱数を送信します。
 
@@ -220,7 +230,7 @@ git clone https://github.com/Azure/iot-central-firmware
 
 ### <a name="properties"></a>Properties
 
-| Type            | 表示名 | フィールド名 | データ型 |
+| type            | 表示名 | フィールド名 | データ型 |
 | --------------- | ------------ | ---------- | --------- |
 | デバイス プロパティ | サイコロの数字   | dieNumber  | number    |
 | デバイス プロパティ | デバイスの場所   | location  | location    |

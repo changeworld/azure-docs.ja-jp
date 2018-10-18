@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して HubSpot からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して HubSpot からデータをコピーする (プレビュー) | Microsoft Docs
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、HubSpot のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: ca989dece43df56b648820accb0610b3b27a6b13
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 69994d0e2f945f54ccc10bcf067fa46bb3befd23
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045570"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121874"
 ---
-# <a name="copy-data-from-hubspot-using-azure-data-factory"></a>Azure Data Factory を使用して HubSpot からデータをコピーする
+# <a name="copy-data-from-hubspot-using-azure-data-factory-preview"></a>Azure Data Factory を使用して HubSpot からデータをコピーする (プレビュー)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、HubSpot からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
@@ -112,7 +112,7 @@ HubSpot からデータをコピーするは、コピー アクティビティ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティを **HubSpotSource** に設定する必要があります | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Companies where Company_Id = xxx"`」のように入力します。 | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Companies where Company_Id = xxx"`」のように入力します。 | [はい] |
 
 **例:**
 

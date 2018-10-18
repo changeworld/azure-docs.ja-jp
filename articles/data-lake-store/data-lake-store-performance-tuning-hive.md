@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Store Hive のパフォーマンス チューニング ガイドライン | Microsoft Docs
-description: Azure Data Lake Store Hive のパフォーマンス チューニング ガイドライン
+title: Azure Data Lake Storage Gen1 の Hive パフォーマンス チューニング ガイドライン | Microsoft Docs
+description: Azure Data Lake Storage Gen1 の Hive パフォーマンス チューニング ガイドライン
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: c46eb1b2da62d70337e60066ed0706c3a4fdedcf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e9d0ad0398dfc238d48060247cdb6f29b0f34a60
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198971"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123336"
 ---
-# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>HDInsight と Azure Data Lake Store の Hive のパフォーマンス チューニング ガイダンス
+# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight の Hive と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス
 
-既定の設定は、多種多様なユース ケースで適切なパフォーマンスを提供するように設定されています。  I/O 集中型のクエリでは、ADLS を使用してパフォーマンスを向上させるように Hive をチューニングできます。  
+既定の設定は、多種多様なユース ケースで適切なパフォーマンスを提供するように設定されています。  I/O 集中型クエリの場合、Hive は Azure Data Lake Storage Gen1 でパフォーマンスが高くなるように調整できます。  
 
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
-* Data Lake Store アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Store を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
+* **Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
+* Data Lake Storage Gen1 アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Storage Gen1 を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
 * **HDInsight での Hive の実行**。  HDInsight の Hive ジョブを実行する方法については、「[Use Hive on HDInsight] (https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive))」 (HDInsight での Hive の使用) を参照してください。
-* **ADLS のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、「[Data Lake Store のパフォーマンス チューニング ガイドライン](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)」を参照してください。
+* **Data Lake Storage Gen1 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)に関するページを参照してください。
 
 ## <a name="parameters"></a>parameters
 
-ADLS のパフォーマンスを向上させるためにチューニングする重要な設定を次に示します。
+Data Lake Storage Gen1 のパフォーマンスを向上するためのチューニングに重要な設定を次に示します。
 
 * **hive.tez.container.size** – 各タスクで使用されるメモリの量
 
@@ -63,7 +63,7 @@ I/O 集中型のワークロードでは、Tez コンテナーのサイズの削
 
         Total YARN memory = nodes * YARN memory per node
         # of YARN containers = Total YARN memory / Tez container size
-ADLS を使用してパフォーマンスを向上させる鍵は、同時実行性をできるだけ高くすることです。  作成する必要があるタスクの数は Tez が自動的に計算するため、設定する必要はありません。   
+Data Lake Storage Gen1 を使用してパフォーマンスを向上させる鍵は、コンカレンシーをできるだけ高くすることです。  作成する必要があるタスクの数は Tez が自動的に計算するため、設定する必要はありません。   
 
 ## <a name="example-calculation"></a>計算例
 
@@ -75,9 +75,9 @@ ADLS を使用してパフォーマンスを向上させる鍵は、同時実行
 
 ## <a name="limitations"></a>制限事項
 
-**ADLS の調整** 
+**Data Lake Storage Gen1 の調整** 
 
-ADLS によって提供される帯域幅の限界に達すると、タスクの失敗が発生し始めます。 このことは、タスク ログの調整エラーを監視することで確認できます。  コンテナーのサイズを増やすことで、並列処理を軽減できます。  ジョブのためにより高い同時実行性が必要な場合は、お問い合わせください。
+Data Lake Storage Gen1 によって提供される帯域幅の制限に達した場合は、タスクが失敗する可能性があります。 このことは、タスク ログの調整エラーを監視することで確認できます。  コンテナーのサイズを増やすことで、並列処理を軽減できます。  ジョブのためにより高い同時実行性が必要な場合は、お問い合わせください。
 
 調整されているかどうかを確認するには、クライアント側でデバッグ ログを有効にする必要があります。 その方法は次のとおりです。
 

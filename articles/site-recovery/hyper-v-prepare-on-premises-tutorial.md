@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fb820d124fd9b5e882cad538ad436532d7865fbc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: f1899817ee2d0efec4ab561a64f24e49cb173c29
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37923490"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720771"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス Hyper-V サーバーを準備する
 
@@ -60,13 +60,15 @@ VMM を使用している場合、[ネットワーク マッピング](site-reco
 ## <a name="verify-internet-access"></a>インターネット アクセスを確認する
 
 1. このチュートリアルの目的として、最も簡単な構成は、Hyper-V ホストと VMM サーバーがプロキシを使用せずにインターネットに直接アクセスする方法です。 
-2. Hyper-V ホストと VMM サーバー (関連する場合) が次の URL にアクセスできることを確認します。 
-
-    [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
-    
+2. Hyper-V ホストと VMM サーバー (関連する場合) が下の必須 URL にアクセスできることを確認します。   
 3. IP アドレスでアクセスをコントロールしている場合は、次のことを確認してください。
     - IP アドレスベースのファイアウォール ルールが [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)および HTTPS (443) ポートに接続できること。
     - お使いのサブスクリプションの Azure リージョンの IP アドレス範囲を許可します。
+    
+### <a name="required-urls"></a>必須 URL
+
+
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする

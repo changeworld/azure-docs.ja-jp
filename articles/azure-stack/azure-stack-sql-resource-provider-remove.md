@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: b73deebb10d0c81a06df9cd192eaa2ef28de744d
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 42d8a5a8073d2650b9e023305472f28d4f1c738f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083042"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580101"
 ---
 # <a name="remove-the-sql-resource-provider"></a>SQL リソース プロバイダーの削除
 
@@ -52,6 +52,7 @@ _DeploySqlProvider.ps1_ スクリプトを実行してリソース プロバイ�
 
     * **Uninstall**。 リソース プロバイダーと関連付けられているすべてのリソースを削除します。
     * **PrivilegedEndpoint**。 特権エンドポイントの IP アドレスまたは DNS 名。
+    * **AzureEnvironment**。 Azure Stack のデプロイに使用する Azure 環境。 Azure AD のデプロイでのみ必須です。
     * **CloudAdminCredential**。 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。
     * **AzCredential**。 Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。
 

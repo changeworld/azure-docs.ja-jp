@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: e124ea3f932a81634191785e7ee69c2492cb32fa
-ms.sourcegitcommit: 6e43006c88d5e1b9461e65a73b8888340077e8a2
+ms.openlocfilehash: 75c6b5c34559ad17f662c895352bff5a58da00d4
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/01/2018
-ms.locfileid: "32312544"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395850"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド
 
@@ -47,7 +47,7 @@ AMQP は、フレーミングと転送のプロトコルです。 フレーミ�
 
 このプロトコルは、ピア ツー ピアの対称な通信で、キュー エンティティや発行/購読エンティティをサポートするメッセージ ブローカー (Azure Service Bus など) との対話を目的として使用できます。 また、Azure Event Hubs のように、通常のキューと対話パターンの異なるメッセージング インフラストラクチャとの対話にも使用できます。 イベント ハブは、イベントを受け取る際にはキューのような働きをする一方、そこからイベントが読み取られるときには、シリアル ストレージ サービスのような働きをします。テープ ドライブとやや似た動作といってもいいでしょう。 クライアントがデータ ストリームに対するオフセットを選ぶと、そのオフセットを起点として、ストリームの末尾まですべてのイベントがクライアントに配信されます。
 
-AMQP 1.0 プロトコルでは拡張性を意図した設計が採用され、さらなる仕様によって、その機能を拡張できるようになっています。 この点に関して、このドキュメントでは 3 つの拡張仕様を紹介しています。 既存の HTTPS/WebSocket インフラストラクチャでは、ネイティブの AMQP TCP ポートを構成することが難しい場合があります。このようなインフラストラクチャを介した通信については、WebSocket 上に AMQP を階層化する方法が、バインディング仕様によって定義されています。 管理上の用途や高度な機能を実現することを目的とし、要求/応答の形式でメッセージング インフラストラクチャとやり取りするために必要な基本的な対話の要素は、AMQP Management 仕様に規定されています。 フェデレーション承認モデルの統合に関して、承認トークンをリンクに関連付けたり、リンクに関連付けられている承認トークンを更新したりする方法については、AMQP の CBS (Claims Based Security) 仕様で規定されています。
+AMQP 1.0 プロトコルでは拡張性を意図した設計が採用され、さらなる仕様によって、その機能を拡張できるようになっています。 この点に関して、このドキュメントでは 3 つの拡張仕様を紹介しています。 既存の Https/websocket インフラストラクチャ上の通信では、ネイティブの AMQP TCP ポートを構成することが難しいことがあります｡ バインディング仕様では、Websocket 経由の AMQP を階層化する方法を定義します。 管理上の用途や高度な機能を実現することを目的とし、要求/応答の形式でメッセージング インフラストラクチャとやり取りするために必要な基本的な対話の要素は、AMQP Management 仕様に規定されています。 フェデレーション承認モデルの統合に関して、承認トークンをリンクに関連付けたり、リンクに関連付けられている承認トークンを更新したりする方法については、AMQP の CBS (Claims Based Security) 仕様で規定されています。
 
 ## <a name="basic-amqp-scenarios"></a>基本的な AMQP のシナリオ
 
@@ -78,7 +78,7 @@ Service Bus では、接続と TLS のセットアップ後、SASL の機構に�
 
 基本的にこのウィンドウ型のモデルは、TCP のウィンドウ型フロー制御の概念と似ていますが、ソケット内のセッション レベルの概念である点が異なります。 このプロトコルの概念は、複数の同時セッションを可能にするものであり、ちょうど高速道路の追い越し車線のように、優先度の高いトラフィックが、抑制された通常のトラフィックを追い越すことができるようになっています。
 
-現在、Azure Service Bus では各接続につき厳密に 1 つのセッションが使用されます。 Service Bus の最大フレーム サイズは、Service Bus Standard と Event Hubs の場合で 262,144 バイト (256 KB) となります。 Service Bus Premium の場合は、これが 1,048,576 (1 MB) になります。 セッション レベルで特定のスロットル ウィンドウを Service Bus が強制的に適用することはありませんが、リンク レベルのフロー制御の一環として Service Bus は、ウィンドウを定期的にリセットします ([次のセクション](#links)を参照)。
+現在、Azure Service Bus では各接続につき厳密に 1 つのセッションが使用されます。 Service Bus Standard と Event Hubs の場合､Service Bus の最大フレーム サイズは 262,144 バイト (256KB) です｡ Service Bus Premium の場合は、これが 1,048,576 (1 MB) になります。 セッション レベルで特定のスロットル ウィンドウを Service Bus が強制的に適用することはありませんが、リンク レベルのフロー制御の一環として Service Bus は、ウィンドウを定期的にリセットします ([次のセクション](#links)を参照)。
 
 接続、チャネル、セッションは一時的にしか存在しません。 根底の接続がダウンした場合、接続、TLS トンネル、SASL 承認コンテキスト、セッションを再度確立する必要があります。
 
@@ -94,7 +94,7 @@ AMQP では、メッセージがリンクを介して転送されます。 リ�
 
 リンクは名前を持ち、ノードに関連付けられます。 冒頭で述べたようにノードは、コンテナー内で通信を行うエンティティです。
 
-Service Bus におけるノードは、キューやトピック、サブスクリプション (またはキューやサブスクリプションの配信不能サブキュー) と一対一で対応します。 そのため AMQP で使用されるノード名は、Service Bus の名前空間内のエンティティの相対名になります。 キューに **myqueue** という名前を付けた場合、それが AMQP のノード名としても使用されます。 トピックのサブスクリプションは HTTP API の命名規則を踏襲し、"subscriptions" というリソース コレクションに分類されます。したがって、サブスクリプションが **sub** で、トピックが **mytopic** である場合、対応する AMQP ノード名は **mytopic/subscriptions/sub** となります。
+Service Bus におけるノードは、キューやトピック、サブスクリプション (またはキューやサブスクリプションの配信不能サブキュー) と一対一で対応します。 そのため AMQP で使用されるノード名は、Service Bus の名前空間内のエンティティの相対名になります。 キューに `myqueue` という名前を付けた場合、その名前は AMQP のノード名にもなります｡ トピックのサブスクリプションは HTTP API の命名規則を踏襲し、"subscriptions" というリソース コレクションに分類されます。したがって、サブスクリプションが **sub** で、トピックが **mytopic** である場合、対応する AMQP ノード名は **mytopic/subscriptions/sub** となります。
 
 ローカル ノード名は、接続する側のクライアントがリンクを作成するときにも必要となります。つまり Service Bus は、こうしたノード名について関与せず、そもそもノード名を解釈しません。 AMQP 1.0 クライアント スタックが、そのクライアントのスコープにおいてこれらの短期ノード名に重複がないことを特定のスキームを使って保証するのが一般的です。
 
@@ -106,7 +106,7 @@ Service Bus におけるノードは、キューやトピック、サブスク�
 
 最も単純なケースとして、送信側はメッセージを "未解決" の状態で送信することができます。これはクライアントが転送の結果に関心がなく、受信側からは、その操作の結果についてのフィードバックが一切得られないことを意味します。 このモードは、Service Bus により AMQP プロトコル レベルでサポートされますが、いずれのクライアント API にも公開されていません。
 
-通常のケースでは、未解決の状態で送信されたメッセージに対して、受信側が *disposition* パフォーマティブを使用して受理または拒否を表明します。 拒否されるのは、受信側が何らかの理由でメッセージを受け入れることができないときです。拒否されたメッセージには、その理由についての情報 (AMQP によって定義されたエラーの構造体) が格納されます。 Service Bus の内部的なエラーが原因でメッセージが拒否された場合、追加情報が構造体に格納されてサービスから返されます。サポート リクエストを申請する場合は、この構造体を使用して、診断の手掛かりをサポート担当者に提出することができます。 エラーについては、後で詳しく説明します。
+通常のケースでは、未解決の状態で送信されたメッセージに対して、受信側が *disposition* パフォーマティブを使用して受理または拒否を表明します。 拒否されるのは、受信側が何らかの理由でメッセージを受け入れることができないときです。拒否されたメッセージには、その理由についての情報 (AMQP によって定義されたエラーの構造体) が格納されます。 Service Bus の内部的なエラーが原因でメッセージが拒否された場合、追加情報が構造体に格納されてサービスから返されます。サポート リクエストを申請する場合は、この構造体を使用して、診断の手掛かりをサポート担当者に提出することができます。 エラーについては、後ほど詳しく説明します。
 
 特殊な拒否の形態として *released* 状態があります。これは、その転送に反対する技術的な理由が受信側にあるわけではないものの、転送を解決することにも関心がないことを意味します。 たとえば、Service Bus クライアントにメッセージが配信されたとき、メッセージの配信そのものに問題があるわけではないものの、そのメッセージを処理することによって発生する作業を実行できないために、そのメッセージを "破棄" することをクライアントが選ぶケースです。 この状態のバリエーションとして *modified* があります。これは、released 状態のメッセージへの変更を許可するものです。 現在のところ、Service Bus ではこの状態は使用されていません。
 
@@ -114,7 +114,7 @@ AMQP 1.0 仕様では、disposition 状態としてさらに *received* が規�
 
 Service Bus は、リンクの復旧をサポートしていません。クライアントと Service Bus との接続が喪失し、未解決のメッセージ転送が保留状態となった場合、そのメッセージ転送は失われます。この場合、クライアントは再度接続してリンクを確立し直し、転送を再試行する必要があります。
 
-そのようなこともあって、Service Bus と Event Hubs でサポートされる転送は "At Least Once (1 回以上)" となっています。送信側は、メッセージが保存され受理されたという確信を得ることができます。一方、"Exactly Once (1 回限り)" の転送 (重複するメッセージ転送を回避するために、リンクを復旧し、配信状態をネゴシエートする手法) は AMQP レベルではサポートされません。
+そのようなこともあって、Service Bus と Event Hubs は "At Least Once (1 回以上)" 転送をサポートしています｡こうして､送信側は、メッセージが保存され受け付けられたことを確信することができます。ただし､AMQP レベル (メッセージ転送の重複を回避するために、リンクを復旧し、配信状態をネゴシエートし続ける) での "Exactly Once (1 回限り)" 転送はサポートされていません。
 
 送信の重複のリスクを回避する手段として、Service Bus は、キューやトピックに対するオプション機能として重複検出をサポートしています。 重複検出では、ユーザー定義の時間内に受信したすべてのメッセージの ID が記録され、その時間内に同じ ID で送信されたメッセージはすべて警告なしで削除されます。
 
@@ -146,21 +146,21 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 
 | クライアント | Service Bus |
 | --- | --- |
-| --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={entity name},<br/>target={client link id}<br/>) |クライアントがエンティティに受信側として接続 |
-| Service Bus がそのリンクの終端を接続して応答 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={entity name},<br/>target={client link id}<br/>) |
+| --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={entity name},<br/>target={client link ID}<br/>) |クライアントがエンティティに受信側として接続 |
+| Service Bus がそのリンクの終端を接続して応答 |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={entity name},<br/>target={client link ID}<br/>) |
 
 #### <a name="create-message-sender"></a>メッセージの送信側の作成
 
 | クライアント | Service Bus |
 | --- | --- |
-| --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |アクションなし |
-| アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link id},<br/>target={entity name}<br/>) |
+| --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link ID},<br/>target={entity name}<br/>) |アクションなし |
+| アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source={client link ID},<br/>target={entity name}<br/>) |
 
 #### <a name="create-message-sender-error"></a>メッセージの送信側の作成 (エラー)
 
 | クライアント | Service Bus |
 | --- | --- |
-| --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link id},<br/>target={entity name}<br/>) |アクションなし |
+| --> attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**sender**,<br/>source={client link ID},<br/>target={entity name}<br/>) |アクションなし |
 | アクションなし |<-- attach(<br/>name={link name},<br/>handle={numeric handle},<br/>role=**receiver**,<br/>source=null,<br/>target=null<br/>)<br/><br/><-- detach(<br/>handle={numeric handle},<br/>closed=**true**,<br/>error={error info}<br/>) |
 
 #### <a name="close-message-receiversender"></a>メッセージ受信側/送信側のクローズ
@@ -175,14 +175,14 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 | クライアント | Service Bus |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |アクションなし |
-| アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
+| アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**accepted**<br/>) |
 
 #### <a name="send-error"></a>送信 (エラー)
 
 | クライアント | Service Bus |
 | --- | --- |
 | --> transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,,more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |アクションなし |
-| アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={error info}<br/>)<br/>) |
+| アクションなし |<-- disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**rejected**(<br/>error={error info}<br/>)<br/>) |
 
 #### <a name="receive"></a>受信
 
@@ -190,7 +190,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 | --- | --- |
 | --> flow(<br/>link-credit=1<br/>) |アクションなし |
 | アクションなし |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
-| --> disposition(<br/>role=**receiver**,<br/>first={delivery id},<br/>last={delivery id},<br/>settled=**true**,<br/>state=**accepted**<br/>) |アクションなし |
+| --> disposition(<br/>role=**receiver**,<br/>first={delivery ID},<br/>last={delivery ID},<br/>settled=**true**,<br/>state=**accepted**<br/>) |アクションなし |
 
 #### <a name="multi-message-receive"></a>複数メッセージの受信
 
@@ -200,7 +200,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 | アクションなし |< transfer(<br/>delivery-id={numeric handle},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
 | アクションなし |< transfer(<br/>delivery-id={numeric handle+1},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
 | アクションなし |< transfer(<br/>delivery-id={numeric handle+2},<br/>delivery-tag={binary handle},<br/>settled=**false**,<br/>more=**false**,<br/>state=**null**,<br/>resume=**false**<br/>) |
-| --> disposition(<br/>role=receiver,<br/>first={delivery id},<br/>last={delivery id+2},<br/>settled=**true**,<br/>state=**accepted**<br/>) |アクションなし |
+| --> disposition(<br/>role=receiver,<br/>first={delivery ID},<br/>last={delivery ID+2},<br/>settled=**true**,<br/>state=**accepted**<br/>) |アクションなし |
 
 ### <a name="messages"></a>メッセージ
 
@@ -218,7 +218,7 @@ API レベルでの "receive" 呼び出しは、*flow* パフォーマティブ�
 | first-acquirer |- |- |
 | delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) |
 
-#### <a name="properties"></a>プロパティ
+#### <a name="properties"></a>properties
 
 | フィールド名 | 使用法 | API 名 |
 | --- | --- | --- |
@@ -256,7 +256,7 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 トランザクションにより、複数の操作が 1 つの実行スコープにグループ化されます。 性質上、このようなトランザクションによって、操作の特定のグループに属する操作がすべて成功するか、すべて失敗するかのいずれかになる必要があります。
 操作は、識別子 `txn-id` によってグループ化されます。
 
-トランザクション操作の場合、クライアントは、グループ化する必要がある操作を制御する `transaction controller` を機能させます。 Service Bus サービスは、`transactional resource` として機能し、`transaction controller` による要求に従って作業を実行します。
+トランザクション操作の場合、クライアントは、グループ化する必要がある操作を制御する `transaction controller` として機能します｡ Service Bus サービスは、`transactional resource` として機能し、`transaction controller` による要求に従って作業を実行します。
 
 クライアントとサービスは、クライアントによって確立された `control link` 経由で通信します。 `declare` および `discharge` メッセージは、トランザクションを個別に割り当てて完了するために、制御リンク経由でコントローラーから送信されます (トランザクション作業の区別を表しているわけではありません)。 実際の送受信は、このリンク上では実行されません。 要求された各トランザクション操作は、目的の `txn-id` によって明示的に識別されるため、接続上の任意のリンクで実行される可能性があります。 作成した未送信のトランザクションが存在するときに、制御リンクが閉じられると、このようなトランザクションはすべて、ただちにローグバックされ、これらに対してさらにトランザクション作業の実行を試行した場合は、エラーが発生します。 制御リンク上のメッセージが事前に確定されることはありません。
 
@@ -264,26 +264,26 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 #### <a name="starting-a-transaction"></a>トランザクションの開始
 
-トランザクションの作業を開始するには、 コントローラーがコーディネータから `txn-id` を取得する必要があります。 `declare` 型のメッセージを送信することで、これを行います。 宣言が成功すると、コーディネーターは、割り当てられた `txn-id` を伝送する `declared` の処理出力で応答します。
+トランザクションの作業を開始するには、 コントローラーがコーディネータから `txn-id` を取得する必要があります。 `declare` 型のメッセージを送信することで、これを行います。 宣言が成功すると、コーディネーターは処理出力で応答し､こうして､割り当てられた `txn-id` が伝えられます｡
 
 | クライアント (コント ローラー) | | Service Bus (コーディネーター) |
 | --- | --- | --- |
 | attach(<br/>name={link name},<br/>... ,<br/>role=**sender**,<br/>target=**Coordinator**<br/>) | ------> |  |
 |  | <------ | attach(<br/>name={link name},<br/>... ,<br/>target=Coordinator()<br/>) |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (**Declare()**)}| ------> |  |
-|  | <------ | disposition( <br/> first=0, last=0, <br/>state=**Declared**(<br/>**txn-id**={transaction id}<br/>))|
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=**Declared**(<br/>**txn-id**={transaction ID}<br/>))|
 
 #### <a name="discharging-a-transaction"></a>トランザクションの送信
 
-コントローラーは、`discharge` メッセージをコーディネーターに送信することで、トランザクション作業を完了します。 コントローラーは、discharge の本文に `fail` フラグを設定して、トランザクション作業をコミットまたはロールバックするという目的を示します。 コーディネーターが送信を完了できない場合、`transaction-error` を伝送する次のような出力と共にメッセージが拒否されます。
+コントローラーは、`discharge` メッセージをコーディネーターに送信することで、トランザクション作業を完結します。 コントローラーは、送信の本文に `fail` フラグを設定することでトランザクション作業をコミットまたはロールバックしようとしていることを示します。 コーディネーターが送信を完了できない場合、`transaction-error` を伝送する次のような出力と共にメッセージが拒否されます。
 
 > 注: fail=true はトランザクションのロールバックを示し、fail=false はコミットを示します。
 
 | クライアント (コント ローラー) | | Service Bus (コーディネーター) |
 | --- | --- | --- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
-| | ... <br/>トランザクション作業<br/>(別のリンク上で)<br/> ... |
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
+| | . . . <br/>トランザクション作業<br/>(別のリンク上で)<br/> . . . |
 | transfer(<br/>delivery-id=57, ...)<br/>{ AmqpValue (<br/>**Discharge(txn-id=0,<br/>fail=false)**)}| ------> |  |
 | | <------ | disposition( <br/> first=57, last=57, <br/>state=**Accepted()**)|
 
@@ -294,7 +294,7 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 | クライアント (コント ローラー) | | Service Bus (コーディネーター) |
 | --- | --- | --- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | transfer(<br/>handle=1,<br/>delivery-id=1, <br/>**state=<br/>TransactionalState(<br/>txn-id=0)**)<br/>{ payload }| ------> |  |
 | | <------ | disposition( <br/> first=1, last=1, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))|
 
@@ -305,7 +305,7 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 | クライアント (コント ローラー) | | Service Bus (コーディネーター) |
 | --- | --- | --- |
 | transfer(<br/>delivery-id=0, ...)<br/>{ AmqpValue (Declare())}| ------> |  |
-|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction id}<br/>))|
+|  | <------ | disposition( <br/> first=0, last=0, <br/>state=Declared(<br/>txn-id={transaction ID}<br/>))|
 | | <------ |transfer(<br/>handle=2,<br/>delivery-id=11, <br/>state=null)<br/>{ payload }|  
 | disposition( <br/> first=11, last=11, <br/>state=**TransactionalState(<br/>txn-id=0,<br/>outcome=Accepted()**))| ------> |
 
@@ -338,7 +338,7 @@ AMQP メッセージ プロパティの一部ではなく、かつ、メッセ�
 
 管理プロトコルやそれと同じパターンを使用するすべてのプロトコルのメッセージ交換は、アプリケーション レベルで実行され、新たに AMQP プロトコル レベルのジェスチャは定義されていません。 これは意図的な措置です。こうした拡張機能と仕様に準拠している AMQP 1.0 スタックの利点をアプリケーションがそのまま活かせるようになっています。
 
-Service Bus には現在、管理仕様の核となる機能が実装されていませんが、管理仕様によって定義されている要求/応答パターンは、CBS (Claims Based Security) 機能の基礎となるものです。以降のセクションで取り上げる高度な機能でも、ほぼ例外なくこのパターンが使用されています。
+Service Bus には現在、管理仕様の核となる機能が実装されていませんが、管理仕様によって定義されている要求/応答パターンは、CBS (Claims Based Security) 機能および､以降のセクションで取り上げる高度な機能のほぼすべてで基礎となるものです。
 
 ### <a name="claims-based-authorization"></a>Claims-Based Authorization
 
@@ -361,9 +361,9 @@ CBS には、メッセージング インフラストラクチャによって提
 
 | キー | 省略可能 | 値の型 | 値の内容 |
 | --- | --- | --- | --- |
-| operation |いいえ  |文字列 |**put-token** |
-| 型 |いいえ  |文字列 |格納されるトークンの種類。 |
-| name |いいえ  |文字列 |発行先 (トークンの適用先)。 |
+| operation |いいえ  |string |**put-token** |
+| type |いいえ  |string |格納されるトークンの種類。 |
+| name |いいえ  |string |発行先 (トークンの適用先)。 |
 | expiration |[はい] |timestamp |トークンの有効期限。 |
 
 トークンの関連付けの対象となるエンティティは、*name* プロパティによって識別されます。 Service Bus では、キュー (またはトピック/サブスクリプション) のパスになります。 トークンの種類は、*type* プロパティによって識別されます。
@@ -381,7 +381,7 @@ CBS には、メッセージング インフラストラクチャによって提
 | キー | 省略可能 | 値の型 | 値の内容 |
 | --- | --- | --- | --- |
 | status-code |いいえ  |int |HTTP 応答コード **[RFC2616]**。 |
-| status-description |[はい] |文字列 |ステータスの説明。 |
+| status-description |[はい] |string |ステータスの説明。 |
 
 クライアントは、メッセージング インフラストラクチャ内の任意のエンティティに対し、*put-token* を繰り返し呼び出すことができます。 トークンの有効範囲は現在のクライアントに限定され、現在の接続に固定されます。つまり、保持されているトークンは、接続が失われた時点でサーバーによって破棄されます。
 
@@ -391,20 +391,20 @@ Service Bus の現在の実装では、SASL の "ANONYMOUS" 方式との組み�
 
 許可される操作は、接続とセッションが確立された後、*$cbs* ノードにリンクを割り当て、*put-token* 要求を送信することだけです。 接続が確立されてから 20 秒以内に、*put-token* 要求を使用して特定のエンティティ ノードに有効なトークンを正しく設定する必要があります。それに失敗すると、接続は Service Bus によって一方的に破棄されます。
 
-以後トークンの期限を追跡する役割は、クライアントが果たすこととなります。 トークンの有効期限が切れるとすぐ、個々のエンティティとの間でその接続上に形成されていたリンクはすべて Service Bus によって破棄されます。 それを防ぐためにクライアントは随時、仮想 *$cbs* 管理ノードを介し、同じ *put-token* ジェスチャを使用して、ノードのトークンを新しいトークンに差し替えることができます。このとき、他のリンク上を流れるペイロード トラフィックに悪影響が生じることはありません。
+以後トークンの期限を追跡する役割は、クライアントが果たすこととなります。 トークンの有効期限が切れるとすぐ、個々のエンティティとの間でその接続上に形成されていたリンクはすべて Service Bus によって破棄されます。 問題の発生を防ぐためにクライアントは随時、仮想 *$cbs* 管理ノードを介し、同じ *put-token* ジェスチャを使用して、ノードのトークンを新しいトークンに差し替えることができます。このとき、他のリンク上を流れるペイロード トラフィックの障害になることはありません。
 
 ### <a name="send-via-functionality"></a>経由送信の機能
 
-[経由送信 / 送信元の転送](service-bus-transactions.md#transfers-and-send-via)は、Service Bus が指定されたメッセージを別のエンティティ経由で宛先エンティティに転送できる機能です。 これは主に、単一のトランザクション内の複数のエンティティにわたる操作を実行するために使用されます。
+[経由送信 / 送信元の転送](service-bus-transactions.md#transfers-and-send-via)は、Service Bus が指定されたメッセージを別のエンティティ経由で宛先エンティティに転送できる機能です。 これは、単一のトランザクション内の複数のエンティティにわたる操作を実行するために使用されます。
 
-この機能により、送信元を作成して `via-entity` へのリンクを確立します。 リンクの確立中に、このリンクでのメッセージ/転送の実際の宛先を確立するために、追加の情報が渡されます。 接続に成功すると、以降はこのリンク上で送信されたすべてのメッセージが、*via-entity* 経由で *destination-entity* へ自動的に転送されます。 
+この機能により、送信元を作成して `via-entity` へのリンクを確立します。 リンクの確立中に、このリンクでのメッセージ/転送の実際の宛先を確立するために、追加の情報が渡されます。 接続に成功すると、以降はこのリンク上で送信されるすべてのメッセージは自動的に *via-entity* 経由で *destination-entity* に転送されます。 
 
 > 注: このリンクを確立する前に、*via-entity* と *destination-entity* の両方に対して認証が実行される必要があります。
 
 | クライアント | | Service Bus |
 | --- | --- | --- |
-| attach(<br/>name={link name},<br/>role=sender,<br/>source={client link id},<br/>target=**{via-entity}**,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
-| | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link id},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
+| attach(<br/>name={link name},<br/>role=sender,<br/>source={client link ID},<br/>target=**{via-entity}**,<br/>**properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )]** ) | ------> | |
+| | <------ | attach(<br/>name={link name},<br/>role=receiver,<br/>source={client link ID},<br/>target={via-entity},<br/>properties=map [(<br/>com.microsoft:transfer-destination-address=<br/>{destination-entity} )] ) |
 
 ## <a name="next-steps"></a>次の手順
 

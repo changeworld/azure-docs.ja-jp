@@ -6,20 +6,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 149840157c5e9bb47be70f669b2078585fe4b56c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 03f22a7975e8f331efa9dcc30fd088f32bee1649
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953029"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393493"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>クエリ ストアによるパフォーマンスの監視
 
 **適用対象:** Azure Database for PostgreSQL 9.6 および 10
 
 > [!IMPORTANT]
-> クエリ ストア機能はパブリック プレビュー段階にあります。
+> 少数ですが､クエリ ストア機能がパブリック プレビュー段階のリージョンがあります。
 
 
 Azure Database for PostgreSQL のクエリ ストア機能では、一定期間にわたってクエリ パフォーマンスを追跡する手段が提供されます。 クエリ ストアを使用すると、実行時間が最長のクエリおよびリソースを最も消費しているクエリを迅速に特定できるので、パフォーマンスのトラブルシューティングが簡単になります。 クエリ ストアでは、クエリおよびランタイム統計の履歴が自動的にキャプチャされて保持されるので、それらを確認できます。 データベースの使用パターンを確認できるように、データが時間枠で区切られます。 すべてのユーザー、データベース、クエリに関するデータが Azure Database for PostgreSQL インスタンス内の **azure_sys** という名前のデータベースに格納されます。
@@ -117,7 +117,7 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |query_id   |bigint  || ステートメントの解析ツリーから計算される内部ハッシュ コード|
 |query_sql_text |Varchar(10000)  || 代表的なステートメントのテキスト。 同じ構造を持つ複数の異なるクエリがまとめてクラスター化されます。このテキストは、クラスター内の最初のクエリのテキストです。|
 |plan_id    |bigint |   |まだ使用できない、このクエリに対応するプランの ID|
-|start_time |timestamp  ||  クエリは、タイム バケットによって集計されます (バケットの期間は既定で 15 分ですが、構成可能です)。 これは、このエントリのタイム バケットに対応する開始時刻です。|
+|start_time |timestamp  ||  クエリは、タイム バケットによって集計されます｡バケットの期間は既定で 15 分です。 これは、このエントリのタイム バケットに対応する開始時刻です。|
 |end_time   |timestamp  ||  このエントリのタイム バケットに対応する終了時刻。|
 |calls  |bigint  || クエリの実行回数|
 |total_time |double precision   ||  クエリの合計実行時間 (ミリ秒)|
@@ -168,6 +168,10 @@ Query_store.qs_reset() returns void
 Query_store.staging_data_reset() returns void
 
 `staging_data_reset` では、クエリ ストアによってメモリ内で収集されたすべての統計 (つまり、データベースにまだフラッシュされていないメモリ内のデータ) が破棄されます。 この関数は、サーバー管理者ロールによってのみ実行できます。
+
+## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
+- PostgreSQL サーバーのパラメーター default_transaction_read_only がオンの場合、クエリ ストアはデータをキャプチャできません。
+- 時間がかかる Unicode クエリ (> = 6000 バイト) が発生した場合は、クエリ ストア機能の実行が中断されることがあります。
 
 
 ## <a name="next-steps"></a>次の手順

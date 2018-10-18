@@ -1,32 +1,34 @@
 ---
-title: Emotion API for Video を呼び出す | Microsoft Docs
+title: 'サンプル: ビデオ用に Emotion API を呼び出す'
+titlesuffix: Azure Cognitive Services
 description: Cognitive Services で Emotion API for Video を呼び出す方法を説明します。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
-ms.openlocfilehash: 0875013b2061a84e3e23ae90c1106382672fdca6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2687145a89c11efb4a3bcb1494a39806e9aae551
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374157"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238609"
 ---
-# <a name="how-to-call-emotion-api-for-video"></a>Emotion API for Video を呼び出す方法
+# <a name="example-call-emotion-api-for-video"></a>サンプル: ビデオ用に Emotion API を呼び出す
 
 > [!IMPORTANT]
-> Video API のプレビューは 2017 年 10 月 30 日をもって終了します。 新しい [Video Indexer API のプレビュー](https://azure.microsoft.com/services/cognitive-services/video-indexer/)をお試しください。ビデオから分析情報を手軽に抽出でき、ビデオ内で話される言葉や表情、性格、感情を検知することで、検索結果などのコンテンツの検索エクスペリエンスを強化できます。 [詳細情報](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)。
+> Emotion API は、2019 年 2 月 15 日に非推奨となる予定です。 現在は、[Face API](https://docs.microsoft.com/azure/cognitive-services/face/) の一部として感情認識機能が一般提供されています。 
 
 このガイドでは、Emotion API for Video を呼び出す方法を示します。 サンプルは、Emotion API for Video クライアント ライブラリを使用して C# で記述されています。
 
-### <a name="Prep">準備</a> 
+### <a name="Prep">準備</a>
 Emotion API for Video を使用するには、人が映っているビデオが必要になります。望ましいのは、人がカメラに向いているビデオです。
 
-### <a name="Step1">手順 1: API 呼び出しを承認する</a> 
+### <a name="Step1">手順 1: API 呼び出しを承認する</a>
 Emotion API for Video の呼び出しごとに、サブスクリプション キーが必要です。 このキーは、クエリ文字列パラメーターによって渡すか、要求ヘッダー内で指定する必要があります。 クエリ文字列によってサブスクリプション キーを渡す場合は、例として、下記の Emotion API for Video の要求 URL を参照してください。
 
 ```
@@ -44,7 +46,7 @@ ocp-apim-subscription-key: <Your subscription key>
 ```
 var emotionServiceClient = new emotionServiceClient("Your subscription key");
 ```
-サブスクリプション キーを取得するには、サブスクリプションについてのページ を参照してください (https://azure.microsoft.com/try/cognitive-services/)。 
+サブスクリプション キーを取得するには、サブスクリプションについてのページ を参照してください (https://azure.microsoft.com/try/cognitive-services/)。
 
 ### <a name="Step2">手順 2: サービスにビデオをアップロードして状態を確認する</a>
 Emotion API for Video のいずれかの呼び出しを実行する場合の最も基本的な方法は、ビデオを直接アップロードすることです。 これを行うには、コンテンツの種類を application/octet-stream と指定し、同時にデータの読み取りはビデオ ファイルからだと指定して、"POST" 要求を送信します。 ビデオの最大サイズは 100 MB です。
@@ -71,7 +73,7 @@ Operation videoOperation = await videoServiceClient.CreateOperationAsync(videoUr
 
 ```
 
-このアップロード方法は、すべての Emotion API for Video 呼び出しで共通です。 
+このアップロード方法は、すべての Emotion API for Video 呼び出しで共通です。
 
 ビデオをアップロードしたら、次に実行する操作は、ビデオの状態を確認することです。 ビデオ ファイルは通常、他のファイルよりもサイズが大きく多様なため、ユーザーはこの手順で長い処理時間を予想できます。 時間は、ファイルのサイズと長さによって異なります。
 
@@ -115,7 +117,7 @@ var emotionRecognitionJsonString = ((VideoOperationInfoResult<VideoAggregateReco
 
 Attribute | 説明
 -------------|-------------
-version | Emotion API for Video の JSON のバージョンを指します。
+Version | Emotion API for Video の JSON のバージョンを指します。
 タイムスケール | ビデオの 1 秒あたりの "ティック数" です。
 offset  |タイムスタンプの時間オフセットです。 バージョン 1.0 の Emotion API for Video では、これは常に 0 になります。 この値は、今後サポートされるシナリオで変更される可能性があります。
 framerate | ビデオの 1 秒あたりのフレーム数です。

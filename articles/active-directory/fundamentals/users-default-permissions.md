@@ -1,26 +1,25 @@
 ---
-title: Azure AD の既定のユーザー アクセス許可を比較する | Microsoft Docs
-description: メンバー、ゲスト、アプリ所有者、グループ所有者のアクセス許可を比較します。
+title: Azure Active Directory の既定のユーザー アクセス許可とは | Microsoft Docs
+description: Azure Active Directory で利用できるさまざまなユーザー アクセス許可について説明します。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
-ms.workload: identity
 ms.component: fundamentals
-ms.topic: overview
+ms.workload: identity
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
-ms.openlocfilehash: e2571a6854d2c3de2425547b69c5435286182ef7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+custom: it-pro
+ms.openlocfilehash: 9a9bd33dce4b2be9e15df2745dd25338cdb42702
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448154"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730481"
 ---
-# <a name="default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可
+# <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可とは
 
 Azure Active Directory (Azure AD) では、すべてのユーザーに既定のアクセス許可のセットが付与されます。 ユーザーのアクセスは、ユーザーの種類、ユーザーの[ロール メンバーシップ](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal)、および個々のオブジェクトの所有権で構成されます。 この記事では、これらの既定のアクセス許可について説明し、メンバーとゲスト ユーザーの既定値を比較します。
 
@@ -52,7 +51,7 @@ Directory | 会社のすべての情報を読み取る<br>すべてのドメイ�
 ---------- | ------------
 セキュリティ グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーはセキュリティ グループを作成できません。 その場合でも、全体管理者とユーザー アカウント管理者はセキュリティ グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)」をご覧ください。
 Office 365 グループを作成できる | このオプションを [いいえ] に設定すると、ユーザーは Office 365 グループを作成できません。 このオプションを [一部] に設定すると、選ばれたユーザーのセットは Office 365 グループを作成できます。 その場合でも、全体管理者とユーザー アカウント管理者は Office 365 グループを作成できます。 方法については、「[グループの設定を構成するための Azure Active Directory コマンドレット](../users-groups-roles/groups-settings-cmdlets.md)」をご覧ください。
-Azure AD 管理ポータルへのアクセスを制限する | このオプションを [いいえ] に設定すると、ユーザーは Azure Active Directory ポータルにアクセスできません。
+Azure AD 管理ポータルへのアクセスを制限する | このオプションを [いいえ] に設定すると、ユーザーは Azure Active Directory にアクセスできません。
 他のユーザーを読み取ることができる | この設定は PowerShell のみでご利用いただけます。 これを $false に設定すると、管理者以外のすべてのユーザーはディレクトリからユーザー情報を読み取ることができなくなります。 Exchange Online などの他の Microsoft サービスのユーザー情報の読み取りは妨げられません。 この設定は特殊な状況を想定しているため、これを $false に設定することは推奨されません。
 
 ## <a name="object-ownership"></a>オブジェクトの所有権
@@ -70,7 +69,7 @@ When a user adds a new enterprise application, they are automatically added as a
 
 ## <a name="next-steps"></a>次の手順
 
-* Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../../billing/billing-add-change-azure-subscription-administrator.md)
+* Azure AD の管理者ロールを割り当てる方法の詳細については、「[Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)」を参照してください
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](../../role-based-access-control/rbac-and-directory-admin-roles.md)
 * Azure Active Directory と Azure サブスクリプションの関係の詳細については、「 [Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)
 * [ユーザーの管理](add-users-azure-active-directory.md)

@@ -12,14 +12,14 @@ ms.workload: naS
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 6231ee760902618afedf64443690be0b02c4d0eb
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: fdcc4f51f49e8eb133deeeecd070c55511cda464
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41946535"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985798"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>管理ポータルで Azure Stack のバックアップを有効にする
 Azure Stack でバックアップを生成できるように、管理ポータルでインフラストラクチャ バックアップ サービスを有効にします。 [壊滅的な障害](.\azure-stack-backup-recover-data.md)が発生した場合、これらのバックアップとクラウドの復旧を使って環境を復元できます。 クラウドを復旧する目的は、復旧の完了後に、作業者とユーザーがポータルに再度ログインできるということを確認することです。 ユーザーのサブスクリプションが復元され、これにはロールベースのアクセス許可とロール、当初のプラン、オファー、および以前に定義されていたコンピューティング、ストレージ、およびネットワークのクォータが含まれます。
@@ -36,7 +36,7 @@ Azure Stack でバックアップを生成できるように、管理ポータ�
 ## <a name="enable-or-reconfigure-backup"></a>バックアップの有効化または再構成
 
 1. [Azure Stack 管理者ポータル](azure-stack-manage-portals.md)を開きます。
-2. **[その他のサービス]** > **[Infrastructure backup]\(インフラストラクチャ バックアップ\)** の順に選択します。 **[Infrastructure backup]\(インフラストラクチャ バックアップ\)** ブレードで **[構成]** を選択します。
+2. **[すべてのサービス]** を選択し、**[管理]** カテゴリで **[インフラストラクチャ バックアップ]** を選びます。 **[Infrastructure backup]\(インフラストラクチャ バックアップ\)** ブレードで **[構成]** を選択します。
 3. **バックアップ ストレージの場所**のパスを入力します。 別のデバイスでホストされるファイル共有へのパスの場合、汎用名前付け規則 (UNC) の文字列を使用します。 UNC 文字列は、共有ファイルやデバイスといった、リソースの場所を指定します。 サービスの場合は、IP アドレスを使用できます。 障害発生後にバックアップ データを確実に利用できるようにするためには、保存デバイスは別の場所に配置する必要があります。
 
     > [!Note]  
@@ -62,7 +62,7 @@ Azure Stack でバックアップを生成できるように、管理ポータ�
 ## <a name="start-backup"></a>バックアップの開始
 バックアップを開始するには、**[今すぐバックアップ]** をクリックして、オンデマンド バックアップを開始します。 オンデマンド バックアップを実行しても、次回のスケジュール済みバックアップの時間は変更されません。 タスクの完了後、**[基本]** で設定を確認できます。
 
-![Azure Stack - オンデマンド バックアップ](media\azure-stack-backup\scheduled-backup.png).
+![Azure Stack - オンデマンド バックアップ](media\azure-stack-backup\scheduled-backup.png)
 
 また、Azure Stack 管理コンピューターで PowerShell コマンドレット **Start-AzsBackup** を実行することもできます。 詳細については、「[Back up Azure Stack (Azure Stack のバックアップ)](azure-stack-backup-back-up-azure-stack.md)」をご覧ください。
 

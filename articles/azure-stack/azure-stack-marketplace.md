@@ -3,7 +3,7 @@ title: Azure Stack でのカスタム Marketplace アイテムの発行 (クラ�
 description: Azure Stack オペレーターとして、Azure Stack でカスタム Marketplace アイテムを発行する方法について説明します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 60871cbb-eed2-433c-a76d-d605c7aec06c
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
-ms.author: brenduns
+ms.date: 09/12/2018
+ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 4ea23ed01e6432f24024d7e8cc07c2dfe42ac639
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 12310c088777d65bef211747806f942433857e40
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605571"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632350"
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Azure Stack Marketplace の概要
 
@@ -33,12 +33,12 @@ Azure Stack オペレーターとして、Marketplace に追加 (公開) する�
 > [!Caution]  
 > Azure Stack Marketplace で利用できるようにした後、イメージや JSON ファイルと呼ばれるすべてのギャラリー アイテムのアーティファクトに、認証することなくアクセスできます。 Marketplace アイテムを発行するときの考慮事項については、「[Marketplace アイテムを作成および発行する](azure-stack-create-and-publish-marketplace-item.md)」を参照してください。
 
-Marketplace を開くには、管理者コンソールで **[新規]** を選択します。
+Marketplace を開くには、管理者コンソールで **[+ リソースの作成]** を選択します。
 
 ![](media/azure-stack-publish-custom-marketplace-item/image1.png)
 
 ## <a name="marketplace-items"></a>Marketplace アイテム
-Azure Stack Marketplace の項目は、ユーザーがダウンロードおよび使用できるサービス、アプリケーション、またはリソースです。 すべての Azure Stack Marketplace アイテムは、プランやサービスなどの管理アイテムを含め、すべてのユーザーに表示されます。 これらのアイテムを表示するためにサブスクリプションは必要ありませんが、ユーザーに対しては機能しません。
+Azure Stack Marketplace の項目は、ユーザーがダウンロードおよび使用できるサービス、アプリケーション、またはリソースです。 すべての Azure Stack Marketplace アイテムは、プランやオファーなどの管理アイテムを含め、すべてのユーザーに表示されます。 これらのアイテムを表示するためにサブスクリプションは必要ありませんが、ユーザーに対しては機能しません。
 
 各 Marketplace アイテムには以下のものが含まれます。
 

@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: heidist
-ms.openlocfilehash: 72d1630ecaeada3acf8b49952a31ccd3ae8634aa
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 68d546fc4c853f1a19230b8aee7e86519aaa7e4c
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617960"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729053"
 ---
 # <a name="what-is-cognitive-search"></a>コグニティブ検索とは
 
@@ -31,7 +31,7 @@ Azure Search における認知スキルは、[名前付きエンティティ認
 自然言語および画像処理はデータ インジェスト フェーズで適用され、結果は Azure Search における検索可能なインデックス内のドキュメントの構成の一部になります。 データは Azure データ セットとして調達され、必要な[組み込みのスキル](cognitive-search-predefined-skills.md)を使用してインデックス パイプライン経由でプッシュされます。 アーキテクチャは拡張可能なため、組み込みのスキルでは不十分な場合は、[カスタム スキル](cognitive-search-create-custom-skill-example.md)を作成して追加し、カスタム処理を統合できます。 例としては、金融、科学出版物、医療などの専門分野を対象としたカスタム エンティティ モジュールまたはドキュメント分類子が挙げられます。
 
 > [!NOTE]
-> 認知検索はパブリック プレビューの段階にあり、スキルセットの実行は現在無料で提供されています。 この機能の価格は後日発表される予定です。 
+> コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行および画像の抽出と正規化は、現在無料で提供されています。 これらの機能の価格は、後日、発表される予定です。 
 
 ## <a name="components-of-cognitive-search"></a>コグニティブ検索のコンポーネント
 

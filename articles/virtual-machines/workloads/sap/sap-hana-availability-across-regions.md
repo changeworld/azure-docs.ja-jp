@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/26/2018
+ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: edbd1885dd529e4ccd38f2012d56865a2147f64d
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: ae03e1498d948e7d044561c3e6bea8c343d7b165
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30842273"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713971"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>Azure リージョンの枠を越えた SAP HANA の可用性
 
@@ -41,8 +41,13 @@ Azure Virtual Network では、異なる IP アドレス範囲を使用します
 
 1 つのリージョン内に可用性構成を配置しないことを選択しても、災害が発生した場合にはワークロードを処理することが必要な場合があります。 このようなシステムの一般的な例として、非運用環境システムがあります。 システムを半日または 1 日停止することには耐えられても、48 時間以上システムを利用不可にすることはできません。 セットアップ コストを低く抑えるには、重要度の低い別のシステムを VM で実行します。 他のシステムは同期先として機能します。 セカンダリ リージョンの VM のサイズを小さくして、データを事前に読み込まないことも選択できます。 フェールオーバーは手動で行われ、完全なアプリケーション スタックをフェールオーバーするには手順が増えるため、VM を停止し、サイズを変更して VM を再起動するための追加の時間は許容されます。
 
-> [!NOTE]
-> HANA システム レプリケーション ターゲットでデータの事前読み込みを使用しない場合でも、少なくとも 64 GB のメモリが必要です。 64 GB に加えて、ターゲット インスタンスのメモリに行ストア データを保持するための十分なメモリも必要です。
+1 つの VM 内の QA システムでディザスター リカバリーのターゲットを共有するシナリオを使用している場合、次の点を考慮する必要があります。
+
+- delta_datashipping と logreplay の 2 つの[操作モード](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)があり、このようなシナリオに利用できます
+- どちらの操作モードにも、データをプリロードしない、異なるメモリ要件があります
+- delta_datashipping では、プリロード オプションを使用することなく、logreplay よりも必要なメモリが大幅に少なくなる場合があります。 SAP ドキュメント「[How To Perform System Replication for SAP HANA](https://archive.sap.com/kmuuid2/9049e009-b717-3110-ccbd-e14c277d84a3/How%20to%20Perform%20System%20Replication%20for%20SAP%20HANA.pdf)」 (SAP HANA に対してシステム レプリケーションを実行する方法) の第 4.3 章を参照してください
+- プリロードなしの logreplay 操作モードにおけるメモリ要件は明確ではなく、読み込まれた列ストア構造によって異なります。 極端な場合では、プライマリ インスタンスの 50% のメモリが必要なことがあります。 logreplay 操作モードでのメモリは、プリロードされたデータが設定されていることを選んだかどうかに依存しません。
+
 
 ![2 つのリージョン上の 2 つの VM のダイアグラム](./media/sap-hana-availability-two-region/two_vm_HSR_async_2regions_nopreload.PNG)
 
@@ -63,10 +68,10 @@ Azure Virtual Network では、異なる IP アドレス範囲を使用します
 
 ![2 つのリージョン上の 3 つの VM のダイアグラム](./media/sap-hana-availability-two-region/three_vm_HSR_async_2regions_ha_and_dr.PNG)
 
-この構成は、プライマリ リージョン内に RPO = 0、低 RTO を提供します。 構成は、2 つ目のリージョンへの移行が必要な場合にも適切な RPO を提供します。 2 つ目のリージョンの RTO 時間は、データが事前に読み込まれるかどうかによって変わります。 多くのお客様は、セカンダリ リージョンの VMを 使用してテスト システムを実行します。 このユース ケースでは、データを事前読み込みできません。
+操作モードとして logreplay を使用すると、この構成は、プライマリ リージョン内に RPO = 0、低 RTO を提供します。 構成は、2 つ目のリージョンへの移行が必要な場合にも適切な RPO を提供します。 2 つ目のリージョンの RTO 時間は、データが事前に読み込まれるかどうかによって変わります。 多くのお客様は、セカンダリ リージョンの VMを 使用してテスト システムを実行します。 このユース ケースでは、データを事前読み込みできません。
 
-> [!NOTE]
-> 階層 1 から階層 2 (プライマリ リージョンの同期レプリケーション) の方向の HANA システム レプリケーションでは、**logreplay** 操作モードを使用しているため、階層 2 と階層 3 (セカンダリ サイトへのレプリケーション) 間のレプリケーションを **delta_datashipping** 操作モードにすることはできません。 操作モードと一部の制限事項について詳しくは、SAP の [SAP HANA システム レプリケーションの操作モード](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)に関する記事をご覧ください。 
+> [!IMPORTANT]
+> 異なる階層間の操作モードは、同じ種類にする必要があります。 階層 1 と階層 2 の間の操作モードとして logreply を使用し、階層 3 の指定で delta_datashipping を使用することは**できません**。 すべての階層に一貫性がある必要がある、いずれか一方の操作モードのみを選ぶことができます。 RPO=0 を提供するために delta_datashipping は適していないため、このような多層構成に適切な唯一の操作モードである logreplay が保持されます。 操作モードと一部の制限事項について詳しくは、SAP の [SAP HANA システム レプリケーションの操作モード](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html)に関する記事をご覧ください。 
 
 ## <a name="next-steps"></a>次の手順
 

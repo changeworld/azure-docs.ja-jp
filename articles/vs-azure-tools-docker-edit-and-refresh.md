@@ -1,43 +1,33 @@
 ---
 title: ローカルの Docker コンテナーでアプリをデバッグする | Microsoft Docs
 description: 編集と更新を使用して、ローカルの Docker コンテナーで実行されているアプリに変更を加え、デバッグのブレークポイントを設定する方法について説明します。
-services: azure-container-service
-documentationcenter: na
+services: container-service
 author: ghogen
 manager: douge
-editor: ''
 ms.assetid: 480e3062-aae7-48ef-9701-e4f9ea041382
 ms.service: multiple
-ms.devlang: dotnet
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 07/22/2016
-ms.author: mlearned
-ms.openlocfilehash: 01741ba25ac3a6ab187a08636b7e26ee58dbee90
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.date: 09/11/2018
+ms.author: ghogen
+ms.openlocfilehash: 0f3f323cb4486c06f6f18de4c695efaf8dce4d99
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038629"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715722"
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>ローカルの Docker コンテナーでアプリをデバッグする
 ## <a name="overview"></a>概要
-Visual Studio 2017 を使用すると、一貫した方法でアプリケーションの開発と検証を Linux Docker コンテナーでローカルで実行できます。
+Visual Studio 2017 を使用すると、一貫した方法でアプリケーションの開発と検証を Docker コンテナーでローカルで実行できます。
 コード変更のたびにコンテナーを再起動する必要はありません。
 この記事では、"編集と更新" の機能を使用して、ローカルの Docker コンテナーで ASP.NET Core Web アプリを起動し、必要な変更を行い、その変更を反映するためにブラウザーの表示を更新する方法について説明します。
 また、デバッグ用のブレークポイントを設定する方法についても説明します。
 
-> [!NOTE]
-> Windows コンテナーのサポートは今後のリリースで開始する予定です
->
->
-
 ## <a name="prerequisites"></a>前提条件
 次のツールをインストールする必要があります。
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/)
-* [Microsoft ASP.NET Core 1.0 SDK](https://go.microsoft.com/fwlink/?LinkID=809122)
+* Web 開発ワークロードがインストールされている [Visual Studio 2017](https://www.visualstudio.com/downloads/)。
 
 ローカルで Docker コンテナーを実行するには、ローカルの Docker クライアントが必要です。
 Hyper-V を無効にして、[Docker Toolbox](https://www.docker.com/products/docker-toolbox) を使用するか、または Hyper-V を使用し、Windows 10 が必要な [Docker for Windows](https://www.docker.com/get-docker) を使用することができます。
@@ -47,10 +37,7 @@ Docker Toolbox を使用する場合は、[Docker クライアントを構成す
 ## <a name="1-create-a-web-app"></a>1.Web アプリを作成する
 [!INCLUDE [create-aspnet5-app](../includes/create-aspnet5-app.md)]
 
-## <a name="2-add-docker-support"></a>2.Docker サポートの追加
-[!INCLUDE [Add docker support](../includes/vs-azure-tools-docker-add-docker-support.md)]
-
-## <a name="3-edit-your-code-and-refresh"></a>手順 3.コードを編集して更新する
+## <a name="2-edit-your-code-and-refresh"></a>2.コードを編集して更新する
 変更をすばやく反復処理するには、コンテナー内でアプリケーションを起動して変更を行うと、IIS Express を使用する場合のように表示できます。
 
 1. ソリューション構成を `Debug` に設定して **Ctrl + F5** キーを押すと、Docker イメージが作成され、ローカルで実行されます。
@@ -70,19 +57,20 @@ Docker Toolbox を使用する場合は、[Docker クライアントを構成す
    Now listening on: http://*:80
    Application started. Press Ctrl+C to shut down
    ```
+
 6. 変更が適用されました。
 
-## <a name="4-debug-with-breakpoints"></a>4.ブレークポイントを使ってデバッグする
+## <a name="3-debug-with-breakpoints"></a>手順 3.ブレークポイントを使ってデバッグする
 多くの場合、変更にはさらなる検査が必要になります。この場合、Visual Studio のデバッグ機能を活用します。
 
-1. Visual Studio に戻り、`Controllers\HomeController.cs` を開きます。
-2. About() メソッドの内容を次のように置き換えます。
+1. Visual Studio に戻り、`About.cshtml.cs` を開きます。
+2. OnGet() メソッドの内容を次のように置き換えます。
 
+   ```cs
+       Message = "Your application description page from within a Container";
    ```
-   string message = "Your application description page from within a Container";
-   ViewData["Message"] = message;
-   ````
-3. ブレークポイントを `string message`... 行の左側に設定します。
+
+3. ブレークポイントをコード行の左側に設定します。
 4. **F5** キーを押して、デバッグを開始します。
 5. [About] ページに移動して、ブレークポイントを探します。
 6. Visual Studio に切り替えてブレークポイントを表示し、メッセージの値を検査します。
@@ -96,11 +84,11 @@ Visual Studio 2017 の Docker のサポートにより、Docker コンテナー�
 [Docker エラーのトラブルシューティング](vs-azure-tools-docker-troubleshooting-docker-errors.md)
 
 ## <a name="more-about-docker-with-visual-studio-windows-and-azure"></a>Visual Studio、Windows、および Azure での Docker の詳細について
-* [Visual Studio Team Services 用 Docker ツール](http://aka.ms/dockertoolsforvsts) - Docker コンテナーの構築およびデプロイ
+* [Visual Studio でのコンテナー開発](/visualstudio/containers) - コンテナー開発のハブ ページ
+* [Azure Pipelines 向けの Docker の統合](http://aka.ms/dockertoolsforvsts) - Docker コンテナーの構築とデプロイ
 * [Visual Studio Code 用 Docker ツール](http://aka.ms/dockertoolsforvscode) - Docker ファイルを編集するための言語サービス (e2e シナリオは増加予定)
 * [Windows コンテナー情報](http://aka.ms/containers)- Windows Server および Nano Server の情報
-* [Azure Container Service](https://azure.microsoft.com/services/container-service/) - [Azure Container Service の内容](http://aka.ms/AzureContainerService)
-* Docker を使用した作業の例については、[HealthClinic.biz](https://github.com/Microsoft/HealthClinic.biz) 2015 Connect の[デモ](https://blogs.msdn.microsoft.com/visualstudio/2015/12/08/connectdemos-2015-healthclinic-biz/)の「[Working with Docker (Docker を使用した作業)](https://github.com/Microsoft/HealthClinic.biz/wiki/Working-with-Docker)」を参照してください。 HealthClinic.biz のデモに関連する他のクイック スタートについては、「 [Azure Developer Tools Quickstarts (Azure 開発者ツールのクイック スタート)](https://github.com/Microsoft/HealthClinic.biz/wiki/Azure-Developer-Tools-Quickstarts)」を参照してください。
+* [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service/) - [Azure Kubernetes Service ドキュメント](/azure/aks)
 
 ## <a name="various-docker-tools"></a>さまざまな Docker ツール
 [Some great docker tools (Steve Lasker's blog) (いくつかの優れた Docker ツール (Steve Lasker のブログ))](https://blogs.msdn.microsoft.com/stevelasker/2016/03/25/some-great-docker-tools/)

@@ -4,7 +4,7 @@ description: Azure Portal で Data Factory パイプラインの開発とデバ�
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 05/14/2018
+ms.date: 09/26/2018
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -12,12 +12,12 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: a4d3f991dbba8a686c7242aabff11d9228300777
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 610f0c8691714bf30415347dd2775b6fa3625c11
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865167"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391099"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Azure Data Factory での反復開発とデバッグ
 
@@ -40,13 +40,22 @@ Azure Data Factory では、Data Factory パイプラインの開発とデバッ
 
 ![テストの実行をキャンセルする](media/iterative-development-debugging/iterative-development-image3.png)
 
-テストの実行を行うときは、**[デバッグ]** を選択する前に、Data Factory に変更を発行する必要はありません。 これは、Data Factory ワークフローを更新する前に、変更が期待どおりに動作することを確認する場合に便利です。
+テストの実行を行うときは、**[デバッグ]** を選択する前に、Data Factory に変更を発行する必要はありません。 この機能は、Data Factory ワークフローを更新する前に、変更が期待どおりに動作することを確認する場合に便利です。
 
-## <a name="more-info-about-debugging"></a>デバッグの詳細
+> [!IMPORTANT]
+> **[デバッグ]** を選択すると、パイプラインが実際に実行されます。 そのため、たとえばパイプラインにコピー アクティビティが含まれていれば、テストの実行では、データがコピー元からコピー先にコピーされます。 その結果、デバッグ時のコピー アクティビティとその他のアクティビティでは、テスト フォルダーを使用することをお勧めします。 パイプラインのデバッグが終わったら、通常の操作で使用する実際のフォルダーに切り替えます。
 
-1. **デバッグ**機能を使用して開始するテストの実行は、**[モニター]** タブの一覧では利用できません。**[モニター]** タブの **[Trigger now]\(今すぐトリガー\)**、**[スケジュール]**、または **[タンブリング ウィンドウ]** トリガーでトリガーされた実行のみを確認できます。パイプライン キャンバスの**出力**ウィンドウで、**デバッグ**機能を使用して開始された最後のテストの実行を確認できます。
+## <a name="visualizing-debug-runs"></a>デバッグ実行の可視化
 
-2. **[デバッグ]** を選択すると、パイプラインが実際に実行されます。 そのため、たとえばパイプラインにコピー アクティビティが含まれていれば、テストの実行では、データがコピー元からコピー先にコピーされます。 その結果、デバッグ時のコピー アクティビティとその他のアクティビティでは、テスト フォルダーを使用することをお勧めします。 パイプラインのデバッグが終わったら、通常の操作で使用する実際のフォルダーに切り替えます。
+1 つの場所で、データ ファクトリの進行中のすべてのデバッグの実行を可視化することができます。 ページの右上隅にある **View debug runs (デバッグ実行を表示)** を選択します｡ この機能は、子パイプラインに対してマスター パイプラインにデバッグ実行を開始させていて､1 つのビューでアクティブなデバッグ実行のすべてを確認したい場合に便利です｡
+
+![[View active debug runs] アイコンを選択](media/iterative-development-debugging/view-debug-runs-image1.png)
+
+![アクティブなデバッグ実行のサンプル一覧](media/iterative-development-debugging/view-debug-runs-image2.png)
+
+## <a name="monitoring-debug-runs"></a>デバッグ実行の監視
+
+**デバッグ**機能を使用して開始するテストの実行は、**[モニター]** タブの一覧では利用できません。**[モニター]** タブの **[Trigger now]\(今すぐトリガー\)**、**[スケジュール]**、または **[タンブリング ウィンドウ]** トリガーでトリガーされた実行のみを確認できます。パイプライン キャンバスの**出力**ウィンドウで、**デバッグ**機能を使用して開始された最後のテストの実行を確認できます。
 
 ## <a name="setting-breakpoints-for-debugging"></a>デバッグ用のブレークポイントの設定
 

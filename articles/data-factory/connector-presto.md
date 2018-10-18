@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Presto からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Presto からデータをコピーする (プレビュー) | Microsoft Docs
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Presto のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.author: jingwang
-ms.openlocfilehash: 4b3e022bd22242bdc246e1dd30aa6cc3e00134e0
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 29ac668ddb9d5df88d5f743630eaf2d9288b8727
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052625"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123438"
 ---
-# <a name="copy-data-from-presto-using-azure-data-factory"></a>Azure Data Factory を使用して Presto からデータをコピーする
+# <a name="copy-data-from-presto-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Presto からデータをコピーする (プレビュー)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Presto からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
@@ -49,7 +49,7 @@ Presto のリンクされたサービスでは、次のプロパティがサポ�
 | host | Presto サーバーの IP アドレスまたはホスト名。 (例: 192.168.222.160)  | [はい] |
 | serverVersion | Presto サーバーのバージョン。 (例: 0.148-t)  | [はい] |
 | catalog | サーバーに対するすべての要求のカタログ コンテキスト。  | [はい] |
-| ポート | Presto サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は 8080 です。  | いいえ  |
+| port | Presto サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は 8080 です。  | いいえ  |
 | authenticationType | Presto サーバーへの接続に使用する認証メカニズム。 <br/>使用可能な値: **Anonymous**、**LDAP** | [はい] |
 | username | Presto サーバーへの接続に使用されるユーザー名。  | いいえ  |
 | password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
@@ -116,7 +116,7 @@ Presto からデータをコピーするには、コピー アクティビティ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは **PrestoSource** に設定する必要があります。 | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
 
 **例:**
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2018
 ms.author: ryanwi
-ms.openlocfilehash: 8e1c194ea2ebc0e06918c8389c9ee6f72afb3e86
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: fb7ec0a6e96a9665782f85cf8a7fc496e20a9a5e
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887790"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576036"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを追加して Service Fabric クラスターをスケールアウトする
 この記事では、既存のクラスターに新しい仮想マシン スケール セットを追加することで、Azure Service Fabric クラスターをスケーリングする方法について説明します。 Service Fabric クラスターは、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 クラスターに属しているコンピューターまたは VM を "ノード" と呼びます。 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用する Azure コンピューティング リソースです。 Azure クラスターで定義されているすべてのノードの種類は、[異なるスケール セットとしてセットアップされます](service-fabric-cluster-nodetypes.md)。 その後は、ノードの種類ごとに個別に管理できます。 Service Fabric クラスターを作成した後は、クラスターのノード タイプを垂直方向にスケーリング (ノードのリソースを変更) したり、ノード タイプの VM のオペレーティング システムをアップグレードしたり、新しい仮想マシン スケール セットを既存のクラスターに追加したりすることができます。  クラスターは、クラスターでワークロードを実行中であっても、いつでもスケーリングできます。  クラスターをスケーリングすると、アプリケーションも自動的にスケーリングされます。
@@ -34,7 +34,7 @@ ms.locfileid: "42887790"
 ここでは、プライマリ ノード タイプの VM の VM サイズとオペレーティング システムを更新するプロセスについて説明します。  アップグレード後、プライマリ ノード タイプの VM は、サイズが Standard D4_V2 で、コンテナー搭載 Windows Server 2016 Datacenter を実行します。
 
 > [!WARNING]
-> 運用クラスターでこの手順を実行する前に、サンプル テンプレートを調べて、テスト クラスターに対してプロセスを検証することをお勧めします。 クラスターも一時的に使用できなくなります。
+> 運用クラスターでこの手順を実行する前に、サンプル テンプレートを調べて、テスト クラスターに対してプロセスを検証することをお勧めします。 クラスターも一時的に使用できなくなります。 同じ NodeType として宣言されている複数の VMSS を平行して変更することはできません。各 NodeType の VMSS を変更するには、個別にデプロイ操作を実行する必要があります。
 
 1. これらのサンプル [テンプレート](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.json)および[パラメーター](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-2ScaleSets.parameters.json) ファイルを使用して、2 つのノード タイプと 2 つのスケール セット (ノード タイプごとに 1 つのスケール セット) を持つ初期クラスターを展開します。  どちらのスケール セットも、サイズは Standard D2_V2 で、Windows Server 2012 R2 Datacenter を実行しています。  クラスターがベースラインのアップグレードを完了するまで待ちます。   
 2. (省略可能) ステートフル サンプルをクラスターに展開します。

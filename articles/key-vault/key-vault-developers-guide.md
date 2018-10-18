@@ -5,16 +5,16 @@ services: key-vault
 author: bryanla
 manager: mbaldwin
 ms.service: key-vault
-ms.topic: article
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/12/2017
+ms.date: 09/05/2018
 ms.author: bryanla
-ms.openlocfilehash: d8554d235fdfeb5b192ddf1268e60b7bc32aabe7
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 3dc80c97a43c35295deacefc37a76471912c9b42
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140744"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603993"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -53,11 +53,9 @@ Key Vault の新機能のパブリック プレビューは定期的にリリー
 
 ## <a name="creating-and-managing-key-vaults"></a>Key Vaults の作成と管理
 
-Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 管理対象サービス ID (MSI) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。 
+Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 Azure リソースのマネージド ID は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。 
 
-MSI の詳細については、[Azure リソースの管理対象サービス ID (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview) を参照してください。
-
-AAD の操作の詳細については、[Azure Active Directory とアプリケーションの統合](/azure/active-directory/develop/active-directory-integrating-applications)に関するページを参照してください。
+Azure リソースのマネージド ID の詳細については、[マネージド ID の概要](../active-directory/managed-identities-azure-resources/overview.md)に関するページを参照してください。 AAD の操作の詳細については、[Azure Active Directory とアプリケーションの統合](/azure/active-directory/develop/active-directory-integrating-applications)に関するページを参照してください。
 
 キー コンテナーでキー、シークレット、または証明書を使用する前に、次の記事に従って、CLI、PowerShell、Resource Manager テンプレートまたは REST でキーを作成し、管理します。
 
@@ -110,14 +108,14 @@ Node.js では、キー コンテナー管理 API とキー コンテナー オ�
 ### <a name="quick-start-guides"></a>クイック スタート ガイド
 
 - [Key Vault の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
-- [Node.js を使用した Key Vault の概要](https://azure.microsoft.com/resources/samples/key-vault-node-getting-started/)
+- [Node.js を使用した Key Vault の概要](https://github.com/Azure-Samples/key-vault-node-getting-started)
 
 ### <a name="code-examples"></a>コード例
 
 アプリケーションで Key Vault を使用する詳細な例については、以下をご覧ください。
 
-- [Azure Key Vault コード サンプル](http://www.microsoft.com/download/details.aspx?id=45343) - .NET サンプル アプリケーション *HelloKeyVault* と Azure Web サービスの例。 
-- [Web アプリケーションからの Azure Key Vault の使用](key-vault-use-from-web-application.md) - このチュートリアルでは、Azure の Web アプリケーションから Azure Key Vault を使用する方法について学習できます。 
+- [Azure Key Vault のコード サンプル](https://azure.microsoft.com/resources/samples/?service=key-vault) - Azure Key Vault のコード サンプル。 
+- [Web アプリケーションからの Azure Key Vault の使用](quick-create-net.md) - このチュートリアルでは、Azure の Web アプリケーションから Azure Key Vault を使用する方法について学習できます。 
 
 ## <a name="how-tos"></a>方法
 
@@ -130,9 +128,8 @@ Node.js では、キー コンテナー管理 API とキー コンテナー オ�
 - [Key Vault を使用して SQL Server で拡張キーを管理する方法](https://msdn.microsoft.com/library/dn198405.aspx) - Azure Key Vault 用の SQL Server Connector により、SQL Server と VM 内の SQL で拡張キー管理 (EKM) プロバイダーとして Azure Key Vault サービスを利用して、Transparent Data Encryption (透過的なデータ暗号化、TDE)、バックアップ暗号化、Column Level Encryption (列レベル暗号化、CLE)など、アプリケーション リンクの暗号化キーを保護できます。
 - [Key Vault から VM に証明書をデプロイする方法](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) - Azure の VM で実行するクラウド アプリケーションには証明書が必要です。 今すぐこの VM で証明書を取得する方法を説明します。
 - [エンド ツー エンドのキー ローテーションと監査で Key Vault を設定する方法](key-vault-key-rotation-log-monitoring.md): Azure Key Vault を使用して、キー ローテーションと監査を設定する方法について説明します。
-- 
-  [Key Vault を使用した Azure Web App Certificate のデプロイ]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/): Key Vault に格納されている証明書を、[App Service 証明書](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)の提供の一部としてデプロイするための手順について説明します。
-- [Key Vault にアクセスするためのアクセス許可を多数のアプリケーションに付与する](key-vault-group-permissions-for-apps.md): Key Vault のアクセス制御ポリシーでは、16 のエントリのみをサポートします。 ただし、Azure Active Directory セキュリティ グループを作成することができます。 関連するすべてのサービス プリンシパルをこのセキュリティ グループに追加し、そのセキュリティ グループに Key Vault へのアクセスを許可してください。
+- [Key Vault を使用した Azure Web App Certificate のデプロイ]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/): Key Vault に格納されている証明書を、[App Service 証明書](https://azure.microsoft.com/blog/internals-of-app-service-certificate/)の提供の一部としてデプロイするための手順について説明します。
+- [Key Vault にアクセスするためのアクセス許可を多数のアプリケーションに付与する](key-vault-group-permissions-for-apps.md): Key Vault のアクセス制御ポリシーでは、最大 1024 のエントリをサポートします。 ただし、Azure Active Directory セキュリティ グループを作成することができます。 関連するすべてのサービス プリンシパルをこのセキュリティ グループに追加し、そのセキュリティ グループに Key Vault へのアクセスを許可してください。
 - Key Vault と Azure の統合と使用に関するその他のタスク固有のガイダンスについては、[Ryan Jones による Key Vault 向け Azure Resource Manager テンプレート サンプル](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples)をご覧ください。
 - 「[CLI で Key Vault の論理的な削除を使用する方法](key-vault-soft-delete-cli.md)」では、キー コンテナーの使用方法とライフサイクルおよび論理的な削除が有効な各種キー コンテナー オブジェクトを紹介します。
 - 「[How to use Key Vault soft-delete with PowerShell](key-vault-soft-delete-powershell.md)」(PowerShell で Key Vault の論理的な削除を使用する方法) では、キー コンテナーの使用方法とライフサイクルおよび論理的な削除が有効な各種キー コンテナー オブジェクトを紹介します。
@@ -148,8 +145,7 @@ Key Vault を使用したり、Key Vault と統合したりする他のシナリ
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault の概要と概念
 
 - [Key Vault の論理的な削除の動作](key-vault-ovw-soft-delete.md)に関するページでは、削除が偶発的なものか意図的なものかにかかわらず、削除されたオブジェクトの回復を可能にする機能について説明します。
-- 
-  [Key Vault のクライアント調整](key-vault-ovw-throttling.md)に関するページでは、調整の基本的な概念を説明するとともに、アプリへのアプローチも紹介します。
+- [Key Vault のクライアント調整](key-vault-ovw-throttling.md)に関するページでは、調整の基本的な概念を説明するとともに、アプリへのアプローチも紹介します。
 - [Key Vault のストレージ アカウント キーの概要](key-vault-ovw-storage-keys.md)に関するページでは、Key Vault 統合 Azure ストレージ アカウント キーについて説明します。
 - [Key Vault のセキュリティ ワールド](key-vault-ovw-security-worlds.md)に関するページでは、リージョンとセキュリティ領域の関係について説明します。
 

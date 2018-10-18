@@ -10,16 +10,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 73ffcf5e2ced63fddaf0f5ef2ca7e72a7d94b966
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 653a4675d546432eea8478ba6203be1df71ec4f4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786821"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731395"
 ---
 #    <a name="named-entity-recognition-cognitive-skill"></a>名前付きエンティティの認識コグニティブ スキル
 
 **名前付きエンティティ認識** スキルは、テキストから名前付きエンティティを抽出します。 使用可能なエンティティ タイプには、`person`、`location`、`organization` が含まれます。
+
+> [!NOTE]
+> コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行および画像の抽出と正規化は、現在無料で提供されています。 これらの機能の価格は、後日、発表される予定です。 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
@@ -28,7 +31,7 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 パラメーターの大文字と小文字は区別されます。
 
-| パラメーター名     | [説明] |
+| パラメーター名     | 説明 |
 |--------------------|-------------|
 | categories    | 抽出する必要があるカテゴリの配列。  可能なカテゴリの型は、`"Person"`、`"Location"`、`"Organization"` です。 カテゴリが指定されていない場合、すべての型が返されます。|
 |defaultLanguageCode |  入力テキストの言語コード。 次の言語がサポートされます。`ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`|
@@ -36,17 +39,17 @@ Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 ## <a name="skill-inputs"></a>スキルの入力
 
-| 入力名      | [説明]                   |
+| 入力名      | 説明                   |
 |---------------|-------------------------------|
 | languageCode  | 省略可能。 既定値は `"en"` です。  |
-| テキスト          | 分析するテキスト。          |
+| text          | 分析するテキスト。          |
 
 ## <a name="skill-outputs"></a>スキルの出力
 
-| 出力名     | [説明]                   |
+| 出力名     | 説明                   |
 |---------------|-------------------------------|
 | persons      | 各文字列が人物の名前を表す文字列の配列。 |
-| 場所  | 各文字列が場所を表す文字列の配列。 |
+| locations  | 各文字列が場所を表す文字列の配列。 |
 | organizations  | 各文字列が組織を表す文字列の配列。 |
 | entities | 複合型の配列。 各複合型には、次のフィールドが含まれます。 <ul><li>category (`"person"`、`"organization"`、または `"location"`)</li> <li>value (実際のエンティティ名)</li><li>offset (テキスト内で見つかった場所)</li><li>confidence (値が実際のエンティティの信頼度を表す 0 から 1 の値)</li></ul> |
 

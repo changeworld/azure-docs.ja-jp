@@ -2,19 +2,19 @@
 title: Azure Database for MySQL によるビジネス継続性の概要
 description: Azure Database for MySQL でのビジネス継続性の概要について説明します。
 services: mysql
-author: kamathsun
-ms.author: sukamat
+author: ajlam
+ms.author: andrela
 manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 127255514c434717be07886b1b1739027d3a14ea
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 8d0a8ac1aedcac26f6ac67e0e1f2a9d265a9b576
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263574"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714346"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Azure Database for MySQL によるビジネス継続性の概要
 
@@ -32,7 +32,7 @@ Azure Database for MySQL で提供されるビジネス継続性機能には、�
 | Geo レプリケーション バックアップからの geo リストア | サポートされていません | ERT < 12 時間<br/>RPO < 1 時間 | ERT < 12 時間<br/>RPO < 1 時間 |
 
 > [!IMPORTANT]
-> サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 削除されたサーバーを復元することはできません。
+> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>ユーザーまたはアプリケーション エラーの後でサーバーを復旧する
 
@@ -49,7 +49,7 @@ Azure Database for MySQL で提供されるビジネス継続性機能には、�
 もう 1 つのオプションは、geo 冗長バックアップを使ってサーバーを復元する Azure Database for MySQL の geo リストア機能を使うことです。 これらのバックアップは、サーバーがホストされているリージョンがオフラインのときでもアクセスできます。 これらのバックアップから他の任意のリージョンに復元し、サーバーをオンラインに戻すことができます。
 
 > [!IMPORTANT]
-> geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。
+> geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。 既存のサーバーに対してローカル冗長を geo 冗長バックアップに切り替える場合は、既存のサーバーの pg_dump を使用してダンプを取得し、geo 冗長バックアップで構成された新しく作成したサーバーに復元する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

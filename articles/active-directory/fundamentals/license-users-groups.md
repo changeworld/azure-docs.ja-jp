@@ -1,97 +1,144 @@
 ---
-title: Azure AD でのユーザーへのライセンス付与 | Microsoft Docs
-description: Azure Active Directory で自分とユーザーにライセンスを付与する方法について説明します。
+title: Azure Active Directory ライセンスを割り当てる方法、または削除する方法 | Microsoft Docs
+description: Azure Active Directory を使用して、ユーザーまたはグループからの Azure Active Directory ライセンスの割り当てまたは削除を行います。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: quickstart
-ms.date: 08/22/2017
+ms.topic: conceptual
+ms.date: 09/05/2018
 ms.author: lizross
-ms.reviewer: jeffgilb
+ms.reviewer: jeffsta
 custom: it-pro
-ms.openlocfilehash: 6fc1d808fb712f7acb60e490663cb7301e22153c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: e1b0b2f84c67e30c3bb998554dc662b002744003
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856091"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603890"
 ---
-# <a name="quickstart-license-users-in-azure-active-directory"></a>クイックスタート: Azure Active Directory におけるライセンス ユーザー
-ライセンス ベースの Azure AD サービスは、Azure テナントの Azure Active Directory (Azure AD) サブスクリプションをアクティブにすることで有効になります。 サブスクリプションがアクティブになると、サービスの機能は Azure AD 管理者が管理し、ライセンスを付与されたユーザーが使用できるようになります。 Enterprise Mobility + Security、Azure AD Premium、Azure AD Basic を購入すると、有効期間や前払いライセンスを含め、サブスクリプションでテナントが更新されます。 割り当てられているライセンスの数や使用可能なライセンスの数などのサブスクリプション情報は、Azure Portal で **Azure Active Directory** の **[ライセンス]** タイルを開いて確認できます。 **[ライセンス]** ブレードは、ライセンスの割り当ての管理にも最適です。
+# <a name="how-to-assign-or-remove-azure-active-directory-licenses"></a>方法: Azure Active Directory ライセンスを割り当てる、または削除する
+多くの Azure Active Directory (Azure AD) サービスでは、Azure AD 製品をアクティブ化し、ユーザーまたはグループ (および関連するメンバー) ごとにその製品のライセンスを付与する必要があります。 アクティブなライセンスを持つユーザーのみが、ライセンスされている Azure AD サービスにアクセスおよび使用できるようになります。
 
-有料機能を構成するうえで必要なことはサブスクリプションの入手だけですが、さらにユーザーに有料 Azure AD の有料機能のライセンスを割り当てる必要があります。 Azure AD の有料機能へのアクセスが必要なユーザーや Azure AD の有料機能で管理されているユーザーには、ライセンスを割り当てる必要があります。 ライセンスの割り当てとは、ユーザーと、Azure AD Premium、Basic、Enterprise Mobility + Security などの購入済みのサービスとのマッピングです。
+## <a name="available-product-editions"></a>使用可能な製品エディション
+Azure AD 製品に利用できるいくつかのエディションがあります。
 
-[グループベースのライセンス割り当て](active-directory-licensing-whatis-azure-portal.md)を使用して、次のような規則を設定することができます。
-* ディレクトリ内のすべてのユーザーが自動的にライセンスを取得する
-* 適切な役職を持つすべてのユーザーがライセンスを取得する
-* 組織内の他の管理者に決定を委任することができる ([セルフサービス グループ](../users-groups-roles/groups-self-service-management.md)を使用)
+- Azure AD Free
 
-> [!TIP]
-> 高度なシナリオや Office 365 ライセンスのシナリオを含め、グループにライセンスを割り当てる方法の詳細については、「[Azure Active Directory でのユーザーのグループへのライセンスの割り当て](../users-groups-roles/licensing-groups-assign.md)」を参照してください。
+- Azure AD Basic
 
-## <a name="assign-licenses-to-users-and-groups"></a>ユーザーとグループにライセンスを割り当てる
-アクティブなサブスクリプションを使用して、最初に自分自身にライセンスを割り当て、ご使用のブラウザーを最新の情報に更新して、サブスクリプションに含まれている必要な機能がすべて表示されることを確認する必要があります。 次の手順では、Azure AD の有料機能へのアクセスが必要なユーザーにライセンスを割り当てます。 ライセンスを割り当てる簡単な方法は、個人ではなくユーザーのグループに割り当てることです。 ライセンスをグループに割り当てると、グループ メンバー全員にライセンスが割り当てられます。 グループに追加されたユーザーには該当するライセンスが自動的に割り当てられ、グループから削除されたユーザーからは該当するライセンスが自動的に削除されます。 
+- Azure AD Premium 1 (Azure AD P1)
 
-> [!NOTE]
-> Microsoft サービスの中には、すべての場所では利用できないものもあります。 ライセンスをユーザーに割り当てる前に、管理者はユーザーの **[利用場所]** プロパティを指定しておく必要があります。 このプロパティは、Azure Portal の **[ユーザー]** &gt; **[プロファイル]** &gt; **[設定]** で設定できます。 グループ ライセンスの割り当てを使用するとき、利用場所が指定されていないユーザーは、ディレクトリの場所を継承します。
+- Azure AD Premium 2 (Azure AD P2)
 
-ライセンスを割り当てるには、**Azure Active Directory** &gt; **[ライセンス]** &gt; **[すべての製品]** で、1 つ以上の製品を選択し、コマンド バーの **[割り当て]** を選択します。
+各製品エディションと関連するライセンスの詳細に関する固有の情報については、「[必要なライセンス](../authentication/concept-sspr-licensing.md)」をご覧ください。
 
-![割り当てるライセンスを選択する](./media/license-users-groups/select-license-to-assign.png)
+## <a name="view-your-product-edition-and-license-details"></a>ご利用の製品エディションとライセンスの詳細を表示する
+保留中の有効期限および利用可能な割り当て数を確認して、個別のライセンスなどの使用可能な製品を表示できます。
 
-**[ユーザーとグループ]** ブレードを使用して、複数のユーザーまたはグループを選択したり、製品内のサービス プランを無効にしたりできます。 上部の検索ボックスを使用して、ユーザーやグループの名前を検索します。
+### <a name="to-find-your-product-and-license-details"></a>ご利用の製品とライセンスの詳細を確認するには
+1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 
-![ライセンスを割り当てるユーザーまたはグループを選択する](./media/license-users-groups/select-user-for-license-assignment.png)
+2. **[Azure Active Directory]** を選択し、**[ライセンス]** を選択します。
 
-ライセンスをグループに割り当てるとき、グループのサイズによっては、すべてのユーザーがライセンスを継承するまでに少し時間がかかることがあります。 処理の状態は、**[ライセンス]** タイルの下の **[グループ]** ブレードで確認できます。
+    **[ライセンス]** ページが表示されます。
 
-![ライセンスの割り当て状態](./media/license-users-groups/license-assignment-status.png)
+    ![購入した製品数と割り当てられたライセンスを示す [ライセンス] ページ](media/license-users-groups/license-details-blade.png)
+    
+3. **購入した製品**のリンクを選択して **[製品]** ページを表示し、特定の製品エディションごとに **[割り当て済み]**、**[利用可能]**、**[まもなく有効期限切れ]** の詳細情報を確認します。
 
-Azure AD および Enterprise Mobility + Security 製品を管理しているとき、Azure AD ライセンスの割り当て中に割り当てエラーが発生する可能性がありますが、発生するのは比較的まれです。 割り当てで発生する可能性があるエラーは次の内容に限定されます。
-- 割り当て競合: ユーザーが、現在のライセンスと互換性のないライセンスに以前から割り当てられている状況です。 この場合は、新しいライセンスを割り当てるために現在のライセンスを削除する必要があります。
-- "利用可能なライセンス数の上限を超えました" は、割り当てられているグループ内のユーザーの数が利用可能なライセンスを超えたときに、ライセンスの不足のため、ユーザーの割り当ての状態に割り当ての失敗が反映されます。
+    ![製品エディションと関連するライセンス情報を含む [製品] ページ](media/license-users-groups/license-products-blade-with-products.png)
 
-### <a name="azure-ad-b2b-collaboration-licensing"></a>Azure AD B2B コラボレーションのライセンス
+4. 製品エディション名を選択して、そのライセンスされているユーザーとグループを確認します。
 
-B2B コラボレーションでは、Azure AD テナントにゲスト ユーザーを招待して、Azure AD サービスおよび利用可能な Azure リソースへのアクセスを提供することができます。  
+## <a name="assign-licenses-to-users-or-groups"></a>ユーザーまたはグループにライセンスを割り当てる
+ライセンスされている Azure AD サービスを使用する必要がある任意のユーザーに適切なライセンスがあることを確認します。 個別のユーザーまたはグループ全体にライセンスの権限を追加するかどうかの判断はお客様にお任せします。
 
-B2B ユーザーを招待し、Azure AD でアプリケーションに割り当てる際に料金は発生しません。 また、ゲスト ユーザーあたり最大 10 個のアプリと、3 つの基本レポートが、B2B コラボレーション ユーザーに対して無料となります。 パートナーの Azure AD テナントでゲスト ユーザーに適切なライセンスが割り当てられている場合は、ご使用のテナントでもライセンスが適用されます。
+>![注] グループベースのライセンスは Azure AD のパブリック プレビュー機能であり、すべての有料 Azure AD ライセンス プランに付属します。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。<br><br>ユーザーを追加する方法に関する詳細については、「[クイック スタート: Azure Active Directory に新しいユーザーを追加する](add-users-azure-active-directory.md)」をご覧ください。 グループを作成してメンバーを追加する方法に関する詳細については、「[基本グループを作成してメンバーを追加する](active-directory-groups-create-azure-portal.md)」を参照してください。
 
-必須ではありませんが、Azure AD の有料機能へのアクセスを提供する場合は、それらの B2B ゲスト ユーザーは適切な Azure AD ライセンスを持っている必要があります。 Azure AD の有料ライセンスを持つ招待元のテナントは、そのテナントに招待された追加の 5 人のゲスト ユーザーに B2B コラボレーション ユーザーの権利を割り当てることができます。 シナリオおよび情報については、[B2B コラボレーションのライセンスに関するガイダンス](../b2b/licensing-guidance.md)を参照してください。
+### <a name="to-assign-a-license-to-a-specific-user"></a>ライセンスを特定のユーザーに割り当てるには
+1. **[製品]** ページで、ユーザーに割り当てる必要があるエディション名を選択します。 たとえば、_Azure Active Directory Premium プラン 2_ です。
 
-## <a name="view-assigned-licenses"></a>割り当てられたライセンスを表示する
+    ![製品エディションが強調表示されている [製品] ページ](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-割り当て済みライセンスと割り当て可能なライセンスの概要ビューが、**[Azure Active Directory]** &gt; **[ライセンス]** &gt; **[すべての製品]** に表示されます。
+2. **[Azure Active Directory Premium プラン 2]** ページで、**[割り当て]** を選択します。
 
-![ライセンスの概要を表示する](./media/license-users-groups/view-license-summary.png)
+    ![[割り当て] オプションが強調表示されている [製品] ページ](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-特定の製品を選択すると、割り当てられたユーザーとグループの詳しい一覧を表示できます。 **[ライセンスされているユーザー]** 一覧に、現在ライセンスを使用しているすべてのユーザーと、ライセンスがユーザーに直接割り当てられたかどうか、またはグループから継承されているかどうかが表示されます。
+3. **[割り当て]** ページで **[ユーザーとグループ]** を選択し、ライセンスを割り当てるユーザーを検索して選択します。 たとえば、_Mary Parker_ などです。
 
-![ライセンスの詳細を表示する](./media/license-users-groups/view-license-detail.png)
+    ![検索と [選択] オプションが強調表示されている [ライセンスの割り当て] ページ](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-同様に、**[ライセンスされているグループ]** 一覧には、ライセンスが割り当てられているすべてのグループが表示されます。 ユーザーまたはグループを選択して、**[ライセンス]** ブレードを開くと、そのオブジェクトに割り当てられているすべてのライセンスが表示されます。
+4. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、**[OK]** を選択します。
+
+    ![エディションで利用可能なすべてのオプションを示している [ライセンス オプション] ページ](media/license-users-groups/license-option-blade-assignments.png)
+
+    **[ライセンスの割り当て]** ページが更新され、ユーザーが選択され、割り当てが構成されていることが示されます。
+
+    >[!NOTE]
+    >すべての Microsoft サービスが、すべての場所で利用できるわけではありません。 ライセンスをユーザーに割り当てる前に、お客様は **[利用場所]** を指定しておく必要があります。 この値は Azure AD の **[Azure Active Directory] &gt; [ユーザー] &gt; [プロファイル] &gt; [設定]** 領域で設定できます。
+
+5. **[割り当て]** を選択します。
+
+    ユーザーがライセンスされているユーザーの一覧に追加され、含まれる Azure AD サービスにアクセスできます。
+
+### <a name="to-assign-a-license-to-an-entire-group"></a>ライセンスをグループ全体に割り当てるには
+1. **[製品]** ページで、ユーザーに割り当てる必要があるエディション名を選択します。 たとえば、_Azure Active Directory Premium プラン 2_ です。
+
+    ![製品エディションが強調表示されている [製品] ブレード](media/license-users-groups/license-products-blade-with-product-highlight.png)
+
+2. **[Azure Active Directory Premium プラン 2]** ページで、**[割り当て]** を選択します。
+
+    ![[割り当て] オプションが強調表示されている [製品] ページ](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
+
+3. **[割り当て]** ページで **[ユーザーとグループ]** を選択し、ライセンスを割り当てるグループを検索して選択します。 たとえば、_[MDM policy - West]\(MDM ポリシー - 西部\)_ です。
+
+    ![検索と [選択] オプションが強調表示されている [ライセンスの割り当て] ページ](media/license-users-groups/assign-group-license-blade-with-highlight.png)
+
+4. **[割り当てオプション]** を選択して、適切なライセンス オプションをオンにしていることを確認し、**[OK]** を選択します。
+
+    ![エディションで利用可能なすべてのオプションを示している [ライセンス オプション] ページ](media/license-users-groups/license-option-blade-group-assignments.png)
+
+    **[ライセンスの割り当て]** ページが更新され、ユーザーが選択され、割り当てが構成されていることが示されます。
+
+    >[!NOTE]
+    >すべての Microsoft サービスが、すべての場所で利用できるわけではありません。 ライセンスをグループに割り当てる前に、お客様はすべてのメンバーに対して **[利用場所]** を指定しておく必要があります。 この値は Azure AD の **[Azure Active Directory] &gt; [ユーザー] &gt; [プロファイル] &gt; [設定]** 領域で設定できます。 利用場所が指定されていないユーザーは、テナントの場所を継承します。
+
+5. **[割り当て]** を選択します。
+
+    グループはライセンスされているグループのリストに追加され、そのすべてのメンバーが含まれる Azure AD サービスにアクセスできます。
+
 
 ## <a name="remove-a-license"></a>ライセンスを削除する
+**[ライセンス]** ページからユーザーまたはグループのいずれかからライセンスを削除できます。
 
-ライセンスを削除するには、ユーザーまたはグループに移動して、**[ライセンス]** タイルを開きます。 ライセンスを選択し、**[削除]** をクリックします。
+### <a name="to-remove-a-license-from-a-specific-user"></a>特定のユーザーからライセンスを削除するには
+1. 製品エディションの **[ライセンスされているユーザー]** ページで、ライセンスが必要なくなったユーザーを選択します。 たとえば、_Alain Charon_ にします。
 
-![ライセンスを削除する](./media/license-users-groups/remove-license.png)
+2. **[ライセンスを削除する]** を選択します。
 
-ユーザーがグループから継承したライセンスを直接削除することはできません。 代わりに、ライセンスを継承したグループからユーザーを削除します。
+    ![[ライセンスを削除する] オプションが強調表示されている [ライセンスされているユーザー] ページ](media/license-users-groups/license-products-user-blade-with-remove-option-highlight.png)
 
+### <a name="to-remove-a-license-from-a-group"></a>グループからライセンスを削除するには
+1. 製品エディションの **[ライセンスされているグループ]** ページで、ライセンスが必要なくなったグループを選択します。 たとえば、_[MDM policy - West]\(MDM ポリシー - 西部\)_ です。
+
+2. **[ライセンスを削除する]** を選択します。
+
+    ![[ライセンスを削除する] が強調表示されている [ライセンスされているグループ] ページ](media/license-users-groups/license-products-group-blade-with-remove-option-highlight.png)
+
+>[!Important]
+>ユーザーがグループから継承したライセンスを直接削除することはできません。 代わりに、ライセンスを継承したグループからユーザーを削除する必要があります。
 
 ## <a name="next-steps"></a>次の手順
-このクイック スタートでは、Azure AD ディレクトリのユーザーとグループにライセンスを割り当てる方法を説明しました。 
+ライセンスを割り当てた後、次のプロセスを実行できます。
 
-次のリンクを使用して、Azure Portal から、Azure AD のサブスクリプション ライセンス割り当てを構成することができます。
+- [ライセンスの割り当てに関する問題を特定して解決する](../users-groups-roles/licensing-groups-resolve-problems.md)
 
-> [!div class="nextstepaction"]
-> [Azure AD のライセンスを割り当てる](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Overview) 
+- [ライセンス付与の目的でライセンスされているユーザーをグループに追加する](../users-groups-roles/licensing-groups-migrate-users.md)
+
+- [Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題](../users-groups-roles/licensing-group-advanced.md)
+
+- [ユーザー プロファイル情報の追加または変更](active-directory-users-profile-azure-portal.md)

@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 418f399213f2b1b60d4d4f464fd9fe89c6f35ba7
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 45afd0d4c038123a1daf5f57de18e5f2799faa31
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338209"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181262"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して WeChat アカウントでのサインアップおよびサインインを設定する
 
@@ -32,20 +32,13 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして WeChat 
 1. WeChat 資格情報を使用して、[ https://open.weixin.qq.com/ ](https://open.weixin.qq.com/) にサインインします。
 2. **[管理中心 (管理センター)]** を選択します。
 3. 新しいアプリケーションを登録するための手順に従います。
-4. **[授权回调域 (コールバック URL)]** に、「`https://{tenant_name}.b2clogin.com/te/{tenant_name}.onmicrosoft.com/oauth2/authresp`」と入力します。 たとえば、`tenant_name` が contoso の場合は URL を `https://contoso.b2clogin.com/te/contoso.onmicrosoft.com/oauth2/authresp` に設定します。
+4. **[授权回调域 (コールバック URL)]** に、「`https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 たとえば、テナント名が contoso の場合、URL を`https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`に設定します。
 5. **アプリ ID** と**アプリ キー**をコピーします。 ID プロバイダーをテナントに追加するには、これらが必要です。
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>テナントで ID プロバイダーとして WeChat を構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-2. Azure Portal の右上隅でディレクトリを切り替えて、Azure AD B2C テナントが含まれるディレクトリを使用していることを確認してください。 サブスクリプション情報を選択し、**[ディレクトリの切り替え]** を選択します。 
-
-    ![Azure AD B2C テナントに切り替え](./media/active-directory-b2c-setup-wechat-app/switch-directories.png)
-
-    テナントが含まれるディレクトリを選択します。
-
-    ![新しいディレクトリを選択する](./media/active-directory-b2c-setup-wechat-app/select-directory.png)
-
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認するために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
 4. **[ID プロバイダー]**、**[追加]** の順に選択します。
 5. **[名前]** を入力します。 たとえば、「*WeChat*」と入力します。

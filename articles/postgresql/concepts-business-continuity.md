@@ -2,19 +2,19 @@
 title: Azure Database for PostgreSQL によるビジネス継続性の概要
 description: Azure Database for PostgreSQL でのビジネス継続性の概要について説明します。
 services: postgresql
-author: kamathsun
-ms.author: sukamat
+author: rachel-msft
+ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 1b981b650d75556f4521aaf0f089443bb88d064a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: a0ff57037d6639f5778e27d6cf697b90038ab3b3
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29693120"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717065"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Azure Database for PostgreSQL によるビジネス継続性の概要
 
@@ -32,7 +32,7 @@ Azure Database for PostgreSQL で提供されるビジネス継続性機能に�
 | Geo レプリケーション バックアップからの geo リストア | サポートされていません | ERT < 12 時間<br/>RPO < 1 時間 | ERT < 12 時間<br/>RPO < 1 時間 |
 
 > [!IMPORTANT]
-> サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 削除されたサーバーを復元することはできません。
+> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。
 
 ## <a name="recover-a-server-after-a-user-or-application-error"></a>ユーザーまたはアプリケーション エラーの後でサーバーを復旧する
 
@@ -49,7 +49,7 @@ Azure Database for PostgreSQL で提供されるビジネス継続性機能に�
 もう 1 つのオプションは、geo 冗長バックアップを使ってサーバーを復元する Azure Database for PostgreSQL の geo リストア機能を使うことです。 これらのバックアップは、サーバーがホストされているリージョンがオフラインのときでもアクセスできます。 これらのバックアップから他の任意のリージョンに復元し、サーバーをオンラインに戻すことができます。
 
 > [!IMPORTANT]
-> geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。
+> geo リストアは、geo 冗長バックアップ ストレージでサーバーをプロビジョニングした場合にのみ可能です。 既存のサーバーに対してローカル冗長を geo 冗長バックアップに切り替える場合は、既存のサーバーの mysqldump を使用してダンプを取得し、geo 冗長バックアップで構成された新しく作成したサーバーに復元する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 - 自動バックアップについて詳しくは、[Azure Database for PostgreSQL でのバックアップ](concepts-backup.md)に関するページをご覧ください。 

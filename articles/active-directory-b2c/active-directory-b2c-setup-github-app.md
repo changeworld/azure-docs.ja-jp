@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 11f3f190c0f55e45c549a8bd1de35f78eb7b752d
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7f8b2c6dc570f7a610c0d661da0c6df7491647bd
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337431"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182180"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して GitHub アカウントでのサインアップおよびサインインを設定する
 
@@ -28,23 +28,16 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして GitHub 
 ## <a name="create-a-github-oauth-application"></a>GitHub OAuth アプリケーションを作成する
 
 1. GitHub 資格情報を使用して [GitHub Developer](https://github.com/settings/developers) Web サイトにサインインします。
-2. **[OAuth Apps]**(OAuth アプリ) を選択してから、**[新しいアプリケーションの登録]** を選択します。
+2. **OAuth アプリ**を選択し、**新規 OAuth アプリ**を選択します。
 3. **アプリケーション名**と**ホームページ URL** を入力します。
-4. **[Authorization callback URL]**(承認コールバック URL) に `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` を入力します。 **{tenant}** を実際の Azure AD B2C テナントの名前 (例: contosob2c) に置き換えます。
+4. **[Authorization callback URL]**(承認コールバック URL) に `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` を入力します。 `your-tenant-name`を Azure AD B2C テナントの名前に置き換えます。
 5. **[Register application (アプリケーションを登録する)]** をクリックします。
 6. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。 ID プロバイダーをテナントに追加するには、両方が必要です。
 
 ## <a name="configure-a-github-account-as-an-identity-provider"></a>ID プロバイダーとして GitHub アカウントを構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-2. Azure Portal の右上隅でディレクトリを切り替えて、Azure AD B2C テナントが含まれるディレクトリを使用していることを確認してください。 サブスクリプション情報を選択し、**[ディレクトリの切り替え]** を選択します。 
-
-    ![Azure AD B2C テナントに切り替え](./media/active-directory-b2c-setup-github-app/switch-directories.png)
-
-    テナントが含まれるディレクトリを選択します。
-
-    ![新しいディレクトリを選択する](./media/active-directory-b2c-setup-github-app/select-directory.png)
-
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[Directory and subscription filter] (ディレクトリとサブスクリプション フィルター)** をクリックして、お使いのテナントを含むディレクトリを選択します。
 3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
 4. **[ID プロバイダー]**、**[追加]** の順に選択します。
 5. **[名前]** を入力します。 たとえば、「*GitHub*」と入力します。

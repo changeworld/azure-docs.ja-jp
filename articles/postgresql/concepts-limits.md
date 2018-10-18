@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 52dfac826de86f67b3143cce49c35088547c4b39
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0bd894e99fd575fca734a101a1cde0f0a2979682
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171774"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983760"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の制限事項
 次のセクションでは、データベース サービス容量と機能の制限について説明します。
@@ -47,10 +47,7 @@ Azure システムでは、Azure Database for PostgreSQL サーバーを監視�
 - 現在、サーバー ストレージを減らすことはできません。
 
 ### <a name="server-version-upgrades"></a>サーバー バージョンのアップグレード
-- データベース エンジンのメジャー バージョン間での自動移行は現在サポートされていません。
-
-### <a name="subscription-management"></a>サブスクリプション管理
-- サブスクリプションとリソース グループ間でのサーバーの動的な移動は現在サポートされていません。
+- データベース エンジンのメジャー バージョン間での自動移行は現在サポートされていません。 次のメジャー バージョンにアップグレードする場合は、新しいエンジンのバージョンで作成されたサーバーに[ダンプを復元](./howto-migrate-using-dump-and-restore.md)します。
 
 ### <a name="vnet-service-endpoints"></a>VNet サービス エンドポイント
 - VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。

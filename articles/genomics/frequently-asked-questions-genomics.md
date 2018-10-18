@@ -1,22 +1,20 @@
 ---
-title: 'Microsoft Genomics: よく寄せられる質問 | Microsoft Docs'
+title: 'Microsoft Genomics: 一般的な質問 - FAQ | Microsoft Docs'
 titleSuffix: Azure
 description: Microsoft Genomics についてよく寄せられる質問に回答します。
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: b3f30dc5d185615370a8273f71554f784d286cd9
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 804076fdc653622336ac3b99c15df0bc027510d9
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31517020"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730149"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: よく寄せられる質問
 

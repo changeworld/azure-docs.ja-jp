@@ -1,25 +1,23 @@
 ---
-title: 'Microsoft Genomics: トラブルシューティング ガイド | Microsoft Docs'
+title: Microsoft Genomics トラブルシューティング ガイド
 titleSuffix: Azure
 description: トラブルシューティング戦略の詳細について説明します。
 keywords: トラブルシューティング, エラー, デバッグ
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: article
 ms.date: 07/18/2018
-ms.openlocfilehash: 9bd1690003fd37b6c2edd0f0421cf8d0e74f8cb5
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: bd946f84023345c68a01a48a4dc310b7afb68397
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144178"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735388"
 ---
-# <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
+# <a name="troubleshooting-guide-for-microsoft-genomics"></a>Microsoft Genomics のトラブルシューティング ガイド
 この概要では、Microsoft Genomics サービスを使用する際の一般的な問題に対応するための戦略について説明します。 一般的な FAQ については、「[よく寄せられる質問](frequently-asked-questions-genomics.md)」を参照してください。 
 
 

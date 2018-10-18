@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 09/12/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 77dca29b0c60726f0a072dd662aba0d12730502a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 650fead700afcc1f6d1d18c7356324074fb9365b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413690"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716453"
 ---
 # <a name="create-mysql-databases"></a>MySQL データベースの作成
 
@@ -28,7 +28,7 @@ ms.locfileid: "39413690"
 ## <a name="test-your-deployment-by-creating-a-mysql-database"></a>MySQL データベースを作成してデプロイをテストする
 
 1. Azure Stack ユーザー ポータルにサインインします。
-2. **[+ 新規]** > **[データ + ストレージ]** > **[MySQL データベース]** > **[追加]** を選択します。
+2. **[+ リソースの作成]** > **[データ + ストレージ]** > **[MySQL データベース]** > **[追加]** の順に選択します。
 3. **[MySQL Database の作成]** でデータベース名を入力し、環境で必要な他の設定を構成します。
 
     ![テスト MySQL データベースの作成](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)

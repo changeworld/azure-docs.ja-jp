@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: 9ee5bf94b13b671dc6be89ce07c37d28d24650db
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: de272e3a8ca316d46efafc0af637b6f783f9cdd3
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37906248"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579532"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-pci-dss"></a>Azure のセキュリティとコンプライアンスのブループリント: PCI DSS のための分析
 
@@ -27,17 +27,17 @@ PCI DSS への準拠を達成するには、お客様の実稼働ソリューシ
 
 ## <a name="architecture-diagram-and-components"></a>アーキテクチャ ダイアグラムとコンポーネント
 
-この Azure のセキュリティとコンプライアンスのブループリントは、独自の分析ツールをビルドできる分析プラットフォームを提供します。 リファレンス アーキテクチャは、SQL/データの管理者による一括データのインポートを利用するか、または操作ユーザーによるオペレーショナル データの更新を利用して、お客様がデータを入力する汎用的なユース ケースの枠組みとなります。 どちらの作業ストリームにも、Azure SQL Database にデータをインポートするために、Azure Functions を組み込みます。 Azure Functions は、それぞれのお客様独自の分析要件に固有のインポート タスクを処理するために、Azure Portal 経由でお客様が構成する必要があります。
+この Azure のセキュリティとコンプライアンスのブループリントは、独自の分析ツールをビルドできる分析プラットフォームを提供します。 参照アーキテクチャは、SQL/データ管理者によるデータの一括インポートまたは操作ユーザーによる運用データの更新を通してデータを入力する一般的な使用事例の要点を示しています。 どちらの作業ストリームにも、Azure SQL Database にデータをインポートするために、Azure Functions を組み込みます。 Azure Functions は、それぞれのお客様独自の分析要件に固有のインポート タスクを処理するために、Azure Portal 経由でお客様が構成する必要があります。
 
 Azure では、お客様向けのさまざまなレポートと分析サービスを提供しています。 このソリューションでは、迅速にデータを参照し、高度なモデリングによって迅速に結果を出すために、Azure SQL Database と連動する Azure Machine Learning サービスを組み込みます。 Azure Machine Learning は、データセット間の新しいリレーションシップを見つけることでクエリ速度を上げます。 複数の統計関数を使ってデータがトレーニングされた後は、クエリ ワークロードを分散させて応答時間を削減するために、同じ表形式モデルを使って最大 7 個の追加のクエリ プール (顧客のサーバーを含めた場合、合計 8 個) を同期できます。
 
-分析とレポートを強化するために、Azure SQL Database を列ストア インデックスを使って構成できます。 Azure Machine Learning と SQL Database は両方とも、顧客の用途に対応するために、スケールアップ、スケールダウン、または完全な切り離しが可能です。 すべての SQL トラフィックは、自己署名証明書を含めることによって、SSL で暗号化されます。 ベスト プラクティスとして、Azure では、セキュリティ強化のために信頼された証明書機関を利用することをお勧めします。
+分析とレポートを強化するために、Azure SQL データベースを列ストア インデックスを使って構成できます。 Azure Machine Learning と Azure SQL データベースは両方とも、お客様の用途に対応するために、スケールアップ、スケールダウン、または完全な切り離しが可能です。 すべての SQL トラフィックは、自己署名証明書を含めることによって、SSL で暗号化されます。 ベスト プラクティスとして、Azure では、セキュリティ強化のために信頼された証明書機関を利用することをお勧めします。
 
-データが Azure SQL Database にアップロードされ Azure Machine Learning によってトレーニングされた後、そのデータは Power BI を利用する操作ユーザーと SQL/データ管理者の両方によって使用されます。 Power BI はデータを直感的に表示し、複数のデータセットに及ぶ情報を同時にプルして、より優れた分析情報を描画します。 Power BI の高度な適応性と Azure SQL Database との容易な連携によって、業務ニーズに応じた幅広いシナリオを処理するように Power BI を構成できます。
+データが Azure SQL Database にアップロードされ Azure Machine Learning によってトレーニングされた後、そのデータは Power BI を利用する操作ユーザーと SQL/データ管理者の両方によって使用されます。 Power BI はデータを直感的に表示し、複数のデータセットに及ぶ情報をまとめて、より優れた分析情報を引き出します。 高度な適応性と Azure SQL Database との容易な連携によって、業務ニーズに応じた幅広いシナリオを処理するように構成できます。
 
 このソリューションでは、Azure Storage アカウントを使用します。お客様は、Storage Service Encryption を使用して保存データの機密性を保持するように、Azure Storage アカウントを構成できます。 Azure は、回復性のために、お客様が選択したデータセンター内にデータの 3 つのコピーを保存します。 geo 冗長ストレージにより、データは数百マイル離れたセカンダリ データセンターにレプリケートされ、そのデータセンター内に 3 つのコピーとして再度保存されます。これにより、プライマリ データ センターでの有害事象によってデータが失われるのを防ぐことができます。
 
-セキュリティ強化のために、このソリューションのすべてのリソースは、Azure Resource Manager を通じてリソース グループとして管理されます。 デプロイされたリソースへのアクセス (Azure Key Vault 内のキーへのアクセスを含む) を制御するために、Azure Active Directory のロールベースのアクセス制御が使用されます。 システムの正常性は、Azure Security Center と Azure Monitor によって監視されます。 両方の監視サービスを構成してログをキャプチャし、簡単にナビゲートできる単一のダッシュボードにシステムの正常性を表示できします。
+セキュリティ強化のために、このソリューションのすべてのリソースは、Azure Resource Manager を通じてリソース グループとして管理されます。 デプロイされたリソースへのアクセス (Azure Key Vault 内のキーへのアクセスを含む) を制御するために、Azure Active Directory のロールベースのアクセス制御が使用されます。 システムの正常性は、Azure Security Center と Azure Monitor によって監視されます。 お客様が両方の監視サービスを構成してログをキャプチャし、簡単にナビゲートできる単一のダッシュボードにシステムの正常性を表示できます。
 
 Azure SQL Database は一般的に、SQL Server Management Studio (SSMS) 経由で管理されます。SSMS は、セキュアな VPN または ExpressRoute 接続経由で Azure SQL Database にアクセスするように構成されたローカル コンピューターから実行されます。 **Microsoft では参照アーキテクチャのリソース グループに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています**。
 
@@ -68,7 +68,7 @@ Azure SQL Database は一般的に、SQL Server Management Studio (SSMS) 経由�
 
 次のセクションで、デプロイと実装の要素について詳しく説明します。
 
-**Azure Event Grid**: [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) によって、イベント ベースのアーキテクチャを備えたアプリケーションを簡単にビルドできます。 ユーザーは、サブスクライブする Azure リソースを選択し、イベントの送信先となるイベント ハンドラーまたは webhook エンドポイントを指定します。 イベント サブスクリプションを作成するときに、webhook URL にクエリ パラメーターを追加することで、webhook エンドポイントをセキュリティで保護できます。 Azure Event Grid は、 HTTPS webhook エンドポイントのみをサポートします。 Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な管理操作を実行する各ユーザーに付与するアクセス レベルを制御できます。 Event Grid は、Azure のロール ベースのアクセス制御を利用します。
+**Azure Event Grid**: [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) によって、イベント ベースのアーキテクチャを備えたアプリケーションを簡単にビルドできます。 ユーザーは、サブスクライブする Azure リソースを選択し、イベントの送信先となるイベント ハンドラーまたは webhook エンドポイントを指定します。 お客様はイベント サブスクリプションを作成するときに、webhook URL にクエリ パラメーターを追加することで、webhook エンドポイントをセキュリティで保護できます。 Azure Event Grid は、 HTTPS webhook エンドポイントのみをサポートします。 Azure Event Grid を使用すると、お客様はイベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な管理操作を実行する各ユーザーに付与するアクセス レベルを制御できます。 Event Grid は、Azure のロール ベースのアクセス制御を利用します。
 
 **Azure Functions**: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) は、インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できるサーバーレス コンピューティング サービスです。 Azure Functions を使用すると、各種のイベントに応じてスクリプトまたはコードの一部を実行できます。
 
@@ -76,7 +76,7 @@ Azure SQL Database は一般的に、SQL Server Management Studio (SSMS) 経由�
 
 **Azure Data Catalog**: [Data Catalog](https://docs.microsoft.com/azure/data-catalog/data-catalog-what-is-data-catalog) は、データを管理しているユーザーが、データ ソースを容易に検出し、把握できるようにします。 一般的なデータ ソースの登録、タグ付け、財務データの検索を実行できます。 データは元の場所に残りますが、メタデータのコピーと、データ ソースの場所に対する参照が Data Catalog に追加されます。 このメタデータのインデックスも作成されるので、検索で簡単に各データ ソースを見つけられるようになり、データ ソースを検出するユーザーが理解しやすくなります。
 
-### <a name="virtual-network"></a>Virtual network
+### <a name="virtual-network"></a>仮想ネットワーク
 
 このアーキテクチャは、10.200.0.0/16 のアドレス空間 を使用してプライベート仮想ネットワークを定義します。
 
@@ -140,7 +140,7 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 
 **Azure Security Center**: [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) を使用すると、お客様はワークロード全体へのセキュリティ ポリシーの一元的な適用と管理、脅威にさらされる状態の軽減、攻撃の検出とその対応を行うことができます。 さらに、Azure Security Center は、Azure サービスの既存の構成にアクセスして、セキュリティ状況の改善とデータの保護に役立つ、構成とサービスに関する推奨事項を提供します。
 
-Azure Security Center では、さまざまな検出機能を使用して、お客様の環境を対象とする攻撃の可能性を通知します。 これらのアラートには、アラートをトリガーした要因、対象となったリソース、攻撃元に関する重要な情報が含まれています。 Azure Security Center には、事前定義された一連の[セキュリティ アラート](https://docs.microsoft.com/en-us/azure/security-center/security-center-alerts-type)が用意されています。これらは、脅威または疑わしいアクティビティが発生した際にトリガーされます。 Azure Security Center の[カスタム アラート ルール](https://docs.microsoft.com/en-us/azure/security-center/security-center-custom-alert)を使用すると、お客様が環境から既に収集されているデータに基づいて、新しいセキュリティ アラートを定義できます。
+Azure Security Center では、さまざまな検出機能を使用して、お客様の環境を対象とする攻撃の可能性を通知します。 これらのアラートには、アラートをトリガーした要因、対象となったリソース、攻撃元に関する重要な情報が含まれています。 Azure Security Center には、事前定義された一連の[セキュリティ アラート](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)が用意されています。これらは、脅威または疑わしいアクティビティが発生した際にトリガーされます。 Azure Security Center の[カスタム アラート ルール](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)を使用すると、お客様が環境から既に収集されているデータに基づいて、新しいセキュリティ アラートを定義できます。
 
 Azure Security Center では、お客様の潜在的なセキュリティの問題の検出と対処が簡単になるように、優先度付けしたセキュリティの警告とインシデントを提供しています。 インシデント対応チームによる脅威の調査と修復を支援するために、検出された脅威ごとに[脅威インテリジェンス レポート](https://docs.microsoft.com/azure/security-center/security-center-threat-report)が生成されます。
 
@@ -154,8 +154,8 @@ Azure サービスは、システムの正常性だけではなく、システ�
 
 このアーキテクチャの一部として、次の Log Analytics [管理ソリューション](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)が含まれます。
 -   [Active Directory Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): この Active Directory 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
-- [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): この SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
-- [Agent Health](https://docs.microsoft.com/en-us/azure/operations-management-suite/oms-solution-agenthealth): Agent Health ソリューションは、デプロイされたエージェント数とその地理的配置に加え、応答しないエージェント数やオペレーショナル データを送信しているエージェント数を報告します。
+- [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): この SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧をお客様に提供します。
+- [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Agent Health ソリューションは、デプロイされたエージェント数とその地理的配置に加え、応答しないエージェント数やオペレーショナル データを送信しているエージェント数を報告します。
 -   [Activity Logs Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Activity Log Analytics ソリューションは、すべての Azure サブスクリプション間の Azure アクティビティ ログの分析に役立ちます。
 
 **Azure Automation**: [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker) は、Runbook の格納、実行、管理を行います。 このソリューションでは、Runbook を使用して、Azure SQL Database からログを収集できます。 Automation [Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking) ソリューションは、お客様が環境の変更を簡単に識別できるようにします。
@@ -166,7 +166,7 @@ Azure サービスは、システムの正常性だけではなく、システ�
 
 ## <a name="threat-model"></a>脅威モデル
 
-この参照アーキテクチャのデータ フロー ダイアグラムを[ダウンロード](https://aka.ms/PCIAnalyticsTM)するか、下記を参照してください。 このモデルは、システム インフラストラクチャ内の潜在的なリスク箇所を把握する上で役立ちます。
+この参照アーキテクチャのデータ フロー ダイアグラムを[ダウンロード](https://aka.ms/PCIAnalyticsTM)するか、下記を参照してください。 このモデルは、修正を行う際に、お客様がシステム インフラストラクチャの潜在的なリスクを理解するために役立ちます。
 
 ![PCI DSS のための分析の脅威モデル](images/pcidss-analytics-threat-model.png "PCI DSS のための分析の脅威モデル")
 
@@ -180,9 +180,9 @@ Azure サービスは、システムの正常性だけではなく、システ�
 
 ### <a name="vpn-and-expressroute"></a>VPN と ExpressRoute
 
-このデータ分析参照アーキテクチャの一部としてデプロイされるリソースへの接続を安全に確立するために、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) またはセキュリティ保護された VPN トンネルを構成する必要があります。 ExpressRoute または VPN を適切に設定することで、転送中のデータに対して保護のレイヤーを追加できます。
+このデータ分析参照アーキテクチャの一部としてデプロイされるリソースへの接続を安全に確立するために、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) またはセキュリティ保護された VPN トンネルを構成する必要があります。 ExpressRoute または VPN を適切に設定することで、お客様は転送中のデータに対して保護のレイヤーを追加できます。
 
-Azure を使用してセキュリティ保護された VPN トンネルを実装することにより、オンプレミス ネットワークと Azure 仮想ネットワークの間で仮想プライベート接続を作成できます。 この接続はインターネットをまたいでいるため、自社ネットワークと Azure の間の暗号化されたリンクの "トンネル" を通して情報を送信できます。 サイト間 VPN は、数十年にわたってあらゆる規模の企業に導入されている安全で成熟したテクノロジです。 このオプションでは、暗号化メカニズムとして [IPsec トンネル モード](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))が使用されています。
+Azure を使用してセキュリティ保護された VPN トンネルを実装することにより、オンプレミス ネットワークと Azure 仮想ネットワークの間で仮想プライベート接続を作成できます。 この接続はインターネットをまたいでいるため、お客様は自社ネットワークと Azure の間の暗号化されたリンクの "トンネル" を通して情報を送信できます。 サイト間 VPN は、数十年にわたってあらゆる規模の企業に導入されている安全で成熟したテクノロジです。 このオプションでは、暗号化メカニズムとして [IPsec トンネル モード](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))が使用されています。
 
 VPN トンネル内のトラフィックはサイト間 VPN を使用してインターネット上を転送されるため、Microsoft は、さらに高いセキュリティで保護されたもう 1 つの接続オプションを提供します。 Azure ExpressRoute は、オンプレミスの場所または Exchange ホスティング プロバイダーと Azure の間に確立される専用 WAN リンクです。 ExpressRoute 接続はインターネットを経由しないため、これらの接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 さらに、これはお客様の通信プロバイダーの直接接続であり、データがインターネット上を移動しないため、インターネットに公開されることはありません。
 

@@ -1,22 +1,23 @@
 ---
-title: Text Analytics API へのサインアップ (Azure の Microsoft Cognitive Services) | Microsoft Docs
+title: Text Analytics API へのサインアップ
+titleSuffix: Azure Cognitive Services
 description: テキスト解析を使用するためのサインアップ手順と限度内で運用するための手引き
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: get-started-article
-ms.date: 3/07/2018
+ms.topic: conceptual
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: dfa5ba138a2e0db75dfc097ca2430fe9c82e826f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: a369d6028cc2957113de01dab0371ad5305a0c68
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623252"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605533"
 ---
-# <a name="how-to-sign-up-for-text-analytics-api"></a>Text Analytics API へのサインアップ方法
+# <a name="how-to-sign-up-for-the-text-analytics-api"></a>Text Analytics API へのサインアップ方法
 
 Text Analytics のリソースは、曜日を問わず 24 時間クラウドで利用できます。 解析対象のコンテンツをアップロードするためには、あらかじめサインアップしてアクセス キーを入手する必要があります。 API を呼び出す際は、その都度、アクセス キーが要求に必要となります。
 

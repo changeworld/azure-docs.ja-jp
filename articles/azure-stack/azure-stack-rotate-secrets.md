@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2018
+ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 8ac151a70a81f78dab5ed1f30df51a1121a42cbd
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: b0fe9acc187aab87e8ee0528cf998e2ef923f897
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029018"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722012"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack でシークレットをローテーションする
 
@@ -42,7 +42,7 @@ Azure Stack オペレーターによって提供される、外部に接続さ�
     - ADFS<sup>*</sup>
     - Graph<sup>*</sup>
 
-    > <sup>*</sup> 環境の ID プロバイダーが Active Directory フェデレーション サービス (AD FS) の場合にのみ適用されます。
+   <sup>*</sup> 環境の ID プロバイダーが Active Directory フェデレーション サービス (AD FS) の場合にのみ適用されます。
 
 > [!NOTE]
 > BMC やスイッチ パスワードなどの他のすべてのセキュリティで保護されたキーと文字列、ユーザーおよび管理者アカウントのパスワードは、まだ管理者が手動で更新します。 
@@ -54,7 +54,7 @@ Azure Stack インフラストラクチャの整合性を維持するため、�
 Azure Stack では、次のようなコンテキストで、新しい証明書機関 (CA) からの外部証明書を使用したシークレットのローテーションをサポートしています。
 
 |インストール済みの証明書 CA|ローテーション先の CA|サポートされています|サポートされる Azure Stack のバージョン|
-|-----|-----|-----|-----|-----|
+|-----|-----|-----|-----|
 |自己署名済みから|Enterprise へ|サポートされていません||
 |自己署名済みから|自己署名済みへ|サポートされていません||
 |自己署名済みから|公開へ<sup>*</sup>|サポートされています|1803 以降|
@@ -79,12 +79,11 @@ Azure Stack では、次のようなコンテキストで、新しい証明書�
 
 ## <a name="pre-steps-for-secret-rotation"></a>シークレット ローテーションの事前手順
 
+   > [!IMPORTANT]  
+   > シークレット ローテーションが環境で正常に実行されていないことを確認します。 シークレット ローテーションが既に実行されている場合、Azure Stack をバージョン 1807 以降に更新してからシークレット ローテーションを実行します。 
 1.  メンテナンス操作をユーザーに通知します。 可能な限り非営業時間中に、通常のメンテナンス期間をスケジュールします。 メンテナンス操作は、ユーザーのワークロードとポータル操作の両方に影響を及ぼす可能性があります。
-
     > [!note]  
     > 次の手順は、Azure Stack 外部シークレットのローテーションに対してのみ適用されます。
-
-2. シークレット ローテーションが過去 1 か月以内に環境内で正常に実行されていないことを確認します。 現在、Azure Stack でサポートされているシークレット ローテーションは、1 か月につき 1 回のみです。 
 3. 代わりの外部証明書の新しいセットを準備します。 新しいセットは、「[Azure Stack 公開キー インフラストラクチャ証明書の要件](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)」で説明されている証明書の仕様と一致します。
 4.  ローテーションに使われる証明書のバックアップを安全なバックアップ場所に格納します。 ローテーションを実行して失敗した場合は、ローテーションを再実行する前に、ファイル共有内の証明書をバックアップ コピーに置き換えます。 バックアップ コピーはセキュリティで保護されたバックアップ場所に保存するよう注意してください。
 5.  ERCS VM からアクセスできるファイル共有を作成します。 ファイル共有は、**CloudAdmin** ID で読み書きできる必要があります。
@@ -111,6 +110,8 @@ Azure Stack では、次のようなコンテキストで、新しい証明書�
     作成されるすべての pfx 証明書ファイルに使われるパスワードのセキュリティで保護された文字列です。
 4. シークレットのローテーションが済むまで待ちます。  
 シークレットのローテーションが正常に完了すると、コンソールに **[Overall action status: Success]\(全体的なアクションの状態: 成功\)** と表示されます。 
+    > [!note]  
+    > シークレット ローテーションが失敗した場合、エラー メッセージの指示に従い、**-Rerun** パラメーターを付けて start-secretrotation を再実行します。 シークレット ローテーションの失敗が繰り返される場合、サポートにお問い合わせください。 
 5. シークレットのローテーションが正常に完了した後、事前手順で作成した共有から証明書を削除し、セキュリティで保護されたバックアップ場所に保存します。 
 
 ## <a name="walkthrough-of-secret-rotation"></a>シークレットのローテーションのチュートリアル
@@ -137,6 +138,10 @@ Azure Stack の内部シークレットのローテーションを行うには:
 
 1. [特権エンドポイント](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)で PowerShell セッションを作成します。
 2. 特権エンドポイント セッションで、引数を指定せずに **Start-SecretRotation** を実行します。
+3. シークレットのローテーションが済むまで待ちます。  
+シークレットのローテーションが正常に完了すると、コンソールに **[Overall action status: Success]\(全体的なアクションの状態: 成功\)** と表示されます。 
+    > [!note]  
+    > シークレット ローテーションが失敗した場合、エラー メッセージの指示に従い、**-Rerun** パラメーターを付けて start-secretrotation を再実行します。 シークレット ローテーションの失敗が繰り返される場合、サポートにお問い合わせください。 
 
 ## <a name="start-secretrotation-reference"></a>Start-SecretRotation のリファレンス
 
@@ -158,9 +163,10 @@ Start-SecretRotation コマンドレットは、Azure Stack システムのイ�
 
 | パラメーター | type | 必須 | 位置 | 既定値 | 説明 |
 | -- | -- | -- | -- | -- | -- |
-| PfxFilesPath | String  | False  | named  | なし  | すべての外部ネットワーク エンドポイント証明書を含む **\Certificates** ディレクトリへのファイル共有パスです。 内部と外部のシークレットのローテーションを行う場合にのみ必要です。 最後のディレクトリは **\Certificates** にする必要があります。 |
+| PfxFilesPath | String  | False  | named  | なし  | すべての外部ネットワーク エンドポイント証明書を含む **\Certificates** ディレクトリへのファイル共有パスです。 外部シークレットまたはすべてのシークレットのローテーションを行う場合にのみ必要です。 最後のディレクトリは **\Certificates** にする必要があります。 |
 | CertificatePassword | SecureString | False  | named  | なし  | -PfXFilesPath で提供されているすべての証明書のパスワード。 内部と外部両方のシークレットのローテーションを行うときに PfxFilesPath を指定する場合は、必須の値です。 |
-|
+| PathAccessCredential | PSCredential | False  | named  | なし  | すべての外部ネットワーク エンドポイント証明書を含む **\Certificates** ディレクトリへのファイル共有の PowerShell 資格情報。 外部シークレットまたはすべてのシークレットのローテーションを行う場合にのみ必要です。  |
+| Rerun | SwitchParameter | False  | named  | なし  | 再実行は、失敗した試行後、シークレット ローテーションが再試行されるとき、常に使用する必要があります。 |
 
 ### <a name="examples"></a>例
  

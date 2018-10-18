@@ -9,11 +9,12 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 16580307193bbb7eb9b401eb1b14356e8589d6e2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: e9896a34e835646e17328482c07d8031c624e858
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544032"
 ---
 # <a name="monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>Azure Kubernetes クラスターを CoScale を使用して監視する
 

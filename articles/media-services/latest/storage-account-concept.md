@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: juliako
-ms.openlocfilehash: 6d4c21867b0b46508f348300ae2b9553a75d23b2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 883aecaa82f1a83af22bf345d364c2b43776e559
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782571"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732211"
 ---
 # <a name="storage-accounts"></a>ストレージ アカウント
 
@@ -27,7 +27,7 @@ Media Services アカウントの作成では、Azure Storage アカウント �
 >[!NOTE]
 > BLOB のみのアカウントを**プライマリ**として使用することはできません。 
 
-ホット ストレージ層とクール ストレージ層の選択を活用できるように、GPv2 を使用することをお勧めします。 ストレージ アカウントの詳細については、「[Azure Storage アカウントの種類](../../storage/common/storage-account-options.md)」を参照してください。 
+ホット ストレージ層とクール ストレージ層の選択を活用できるように、GPv2 を使用することをお勧めします。 ストレージ アカウントの詳細については、「[Azure ストレージ アカウントの概要](../../storage/common/storage-account-overview.md)」を参照してください。 
 
 ## <a name="assets-in-a-storage-account"></a>ストレージ アカウント内の資産
 

@@ -1,81 +1,59 @@
 ---
-title: Azure ID 管理の基礎 | Microsoft Docs
-description: ユーザーが企業のアプリケーションやデータにいつ、どのようにアクセスしたかを制御し可視化する最良の方法は、現時点ではクラウド ベース識別です。
-keywords: ''
+title: Azure の ID およびアクセス管理の基礎とは - Azure Active Directory | Microsoft Docs
+description: Azure Active Directory Premium エディションで利用できる高度な保護機能およびその他のツールについて説明します。
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.reviewer: jsnow
 ms.author: lizross
-ms.date: 08/07/2018
-ms.topic: overview
-ms.prod: ''
 ms.service: active-directory
 ms.component: fundamentals
-ms.technology: ''
-ms.assetid: ''
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 09/13/2018
+ms.reviewer: jsnow
 ms.custom: it-pro
-ms.openlocfilehash: 327cecd129befb56c33d7fcf2d59ee5b58a18549
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: f7baa29c77ae4af9813bfc755a39cc07288a3ad2
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42022420"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734677"
 ---
-# <a name="fundamentals-of-azure-identity-management"></a>Azure ID 管理の基礎
-
-企業のデジタル リソースは、企業ネットワーク外部のクラウドやデバイスに置かれるものがますます増え、クラウド ベースの優れた ID とアクセス管理ソリューションが不可欠になっています。 ユーザーが企業のアプリケーションやデータにいつ、どのようにアクセスしたかを制御し可視化する最良の方法は、現時点ではクラウド ベース識別です。
-
-Microsoft は、10 年以上にわたってクラウド ベースの ID を保護してきました。そして現在、[Azure Active Directory (AD)](active-directory-whatis.md) によって、同じ保護システムをお客様にご利用いただけるようになりました。 Azure AD を使用すると、エンタープライズ管理者はこれまでにない優れたセキュリティとガバナンスで、ユーザーと管理者の説明責任を簡単に確保できます。
-
-Azure AD Premium は、高度な保護機能を備えた、クラウド ベースの ID およびアクセス管理ソリューションです。これにより、すべてのアプリに対する 1 つの安全な ID、([Microsoft インテリジェンス セキュリティ グラフ](https://www.microsoft.com/security/intelligence)によって強化された) ID 保護、Privileged Identity Management が実現します。 Azure AD Premium は、よくある監視およびレポート ツールではなく、ユーザーの ID をリアルタイムで保護したり、組織のデータを保護するためにリスク ベースで適応性の高いアクセス ポリシーを作成できるようにしたりできます。
+# <a name="what-are-the-fundamentals-of-azure-identity-and-access-management"></a>Azure の ID およびアクセス管理の基礎とは
+Azure AD Premium は高度な保護機能を備えた、クラウド ベースの ID およびアクセス管理ソリューションです。 これらの高度な機能により、ご利用のすべてのアプリに対するセキュリティで保護された ID、ID 保護 ([Microsoft インテリジェンス セキュリティ グラフで強化された](https://www.microsoft.com/security/intelligence))、および [Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md) を容易に実現できます。 Azure AD を使用するとユーザーの ID をリアルタイムで保護することができ、これは、組織のデータに関して適応性の高いリスク ベースのアクセス ポリシーを作成するのに役立ちます。
 
 Azure AD の ID 管理および保護の概要については、この簡単なビデオをご覧ください。
 >[!VIDEO https://www.youtube.com/embed/9LGIJ2-FKIM]
 
-Microsoft は、どこでも使用できる ID だけでなく、組織の IT の自動化、セキュリティ支援、管理のための一連のツールも提供しています。 クラウド コンピューティングの登場後も、ヘルプデスクへのユーザー パスワードのリセット依頼、ユーザー グループ管理、アプリケーションの要求など、IT タスクの管理と制御の需要はまだ存在します。 さらに複雑なことに、従業員は個人のデバイスを職場に持ち込み、利用できる状態の SaaS アプリケーションを使用しています。そのため、企業のデータセンターやパブリック クラウド プラットフォーム全体のアプリケーションに対する制御を維持することが非常に困難になっています。
+Azure AD にはまた、ご利用の環境のセキュリティ保護、自動化、および管理 (パスワードのリセット、ユーザーおよびグループの管理、アプリの要求など) を支援する一連のツールが用意されています。 さらに Azure AD を使用すると、ユーザー所有のデバイスを管理、およびサービスとしてのソフトウェア (SaaS) アプリに対するアクセスと制御を管理するのが楽になります。
 
-[!INCLUDE [identity](../../../includes/azure-ad-licenses.md)]
+Azure Active Directory Premium エディションと関連ツールのコストの詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」を参照してください。
 
 ## <a name="connect-on-premises-active-directory-with-azure-ad-and-office-365"></a>オンプレミスの Active Directory を Azure AD と Office 365 に接続する
-オンプレミスの Active Directory に大規模な投資を行った組織は、オンプレミスのディレクトリと Azure AD を[ハイブリッド ID 管理](https://aka.ms/aadframework)に統合することによって、その投資をクラウドに拡張することができます。 こうすると、場所に関係なくリソースにアクセスするための共通 ID を提供できるため、ユーザーの生産性が向上します。 ユーザーと組織は、シングル サインオン (SSO) を使用して、オンプレミス リソースとクラウド サービス (Office 365 など) の両方にアクセスできます。
+ご利用のオンプレミスのディレクトリと Azure AD を[ハイブリッド ID 管理](https://aka.ms/aadframework)を通して統合することにより、ご利用のオンプレミスの Active Directory 実装をクラウドに拡張することができます。 この統合は [Azure AD Connect](../connect/active-directory-aadconnect.md) によって実現されます。これにより、ユーザーは単一の ID およびシングル サインオン (SSO) を使用して、貴社のオンプレミス リソースとクラウド サービス (Office 365 など) の両方にアクセスできるようになります。
 
-[Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) は、統合の実施に必要な唯一のツールです。 Azure AD Connect は、ID 同期のニーズをサポートするための機能を備えた、DirSync や Azure AD Sync などの古いバージョンの ID 統合ツールに代わる機能です。Azure AD Connect を使用すると、次の機能によってオンプレミスと Azure AD 間の ID 管理と同期が可能になります。
+Azure AD Connect は、DirSync や Azure AD Sync などの古いバージョンの ID 統合ツールに代わるものであり、オンプレミスと Azure AD の間での貴社の ID 同期ニーズをサポートするのに役立ちます。 Azure AD Connect の同期は、次の方法によって有効にされます。
 
-- 同期 - ユーザーやグループなどのオブジェクトを作成するためのコンポーネントです。 さらに、オンプレミス ユーザーやオンプレミス グループの ID 情報をクラウド側と一致させる働きをします。 ユーザーが Azure AD でパスワードを更新したときにオンプレミスのディレクトリを同期した状態にしておくために、パスワード ライトバックも有効にすることができます。
-- 認証 - 新しいコントロール プレーンとして Azure AD を採用する場合、認証がクラウド アクセスの基盤です。 正しい認証方法の選択は、Azure AD ハイブリッド ID ソリューションのセットアップにおける重要な決定です。 クラウド認証 (パスワード ハッシュ同期/パススルー認証) とフェデレーション認証 (AD FS) のどちらを社内で採用するかについては、[こちらのガイド](https://aka.ms/auth-options)を参考にしてください。
-- 正常性の監視 - [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health) により、厳重に監視し、Azure Portal でこのアクティビティを一元的に表示できます。
+- **同期。** ユーザー、グループ、およびその他のオブジェクトを作成する役割を果たします。 さらに、オンプレミス ユーザーの ID 情報を Azure AD 内のものと一致させる働きをします。 ユーザーが Azure AD 内でパスワードを更新したときにオンプレミスのディレクトリを同期した状態にしておくために、パスワード ライトバックも有効にすることもできます。
+
+- 認証 使用する Azure AD ハイブリッド ID ソリューションを設定する際は、正しい認証方法を選択することが重要です。 組織用に選択できるのは、クラウド認証 (パスワード ハッシュ同期/パススルー認証) またはフェデレーション認証 (AD FS) です。 利用できるオプションの詳細については、「[Azure Active Directory ハイブリッド ID ソリューションの適切な認証方法を選択する](https://aka.ms/auth-options)」を参照してください。
+
+- **正常性の監視。** Azure AD Connect Health では監視機能が提供され、Azure portal 上の中央の場所でこのアクティビティを確認することができます。 詳細については、「[クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](../connect-health/active-directory-aadconnect-health.md)」を参照してください。
 
 ## <a name="increase-productivity-and-reduce-helpdesk-costs-with-self-service-and-single-sign-on-experiences"></a>セルフサービスとシングル サインオン エクスペリエンスで生産性の向上とヘルプデスクのコスト削減を実現する
+複数のユーザーが単一のユーザー名とパスワードを使用し、すべてのデバイス上のエクスペリエンスに一貫性があれば、それらのユーザーは時間の節約になります。 また、[忘れたパスワードのリセット](../user-help/active-directory-passwords-update-your-own-password.md)やアプリケーションへのアクセスの要求などのタスクを、ヘルプデスクの支援を待たずにセルフサービスで実行することにより、時間の節約になります。
 
-従業員は、記憶するユーザー名とパスワードが 1 つで、すべてのデバイスからのエクスペリエンスが一貫している場合に生産性が向上します。 また、[忘れたパスワードのリセット](https://docs.microsoft.com/azure/active-directory/active-directory-passwords)、アプリケーションへのアクセスの要求などのタスクを、ヘルプデスクの支援を待たずにセルフサービスで実行できると、時間の節約にもなります。
+SSO および一貫したエクスペリエンスを促進することにより、Azure AD では[オンプレミスの Active Directory](../connect/active-directory-aadconnect.md) がクラウドに拡張されます。これにより、ユーザーは、ドメイン参加デバイスと会社のリソースにも、業務で使用する必要があるすべての Web アプリケーションと SaaS アプリケーションにもプライマリ組織アカウントを使用できるようになります。 
 
-Azure AD は[オンプレミスの Active Directory をクラウドに拡張](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)するため、ユーザーは、ドメイン参加デバイスと会社のリソースにも、業務で使用する必要があるすべての Web アプリケーションと SaaS アプリケーションにもプライマリ組織アカウントを使用できます。 複数のユーザー名とパスワードのセットを覚える必要がなくなるだけでなく、組織のグループ メンバーシップや従業員としての地位に基づいて、ユーザーのアプリケーション アクセスも自動的にプロビジョニング (またはプロビジョニング解除) されるようにすることができます。 また、ギャラリー アプリ、または [Azure AD アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)で開発および公開した独自のオンプレミス アプリについてそのアクセスを制御できます。
+さらに、グループ メンバーシップおよびユーザーの従業員ステータスに基づいて、アプリケーション アクセスを自動的にプロビジョニング (またはプロビジョニング解除) することができます、これにより、ギャラリー アプリへのアクセス、または開発してから [Azure AD アプリケーション プロキシ](../manage-apps/application-proxy.md)を介して発行した独自のオンプレミスのアプリへのアクセスを制御するのが容易になります。
 
-## <a name="manage-and-control-access-to-corporate-resources"></a>会社のリソースへのアクセスを管理および制御する
-Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、[他要素認証](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next)や[条件付きアクセス ポリシー](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)などの追加レベルの検証を可能にします。 高度なセキュリティ報告、監査、および警告によって疑わしいアクティビティを監視し、潜在的なセキュリティ上の問題を軽減できます。
+## <a name="manage-and-control-access-to-your-organizational-resources"></a>ご自分の組織のリソースへのアクセスを管理および制御する
+Microsoft ID およびアクセス管理ソリューションは、組織のデータ センター全体およびクラウドのアプリとリソースへのアクセスを保護するのに役立ちます。 このアクセス管理は、[Multi-Factor Authentication](../authentication/concept-mfa-howitworks.md) や[条件付きアクセス ポリシー](../conditional-access/overview.md)などの追加レベルの検証を行うのに役立ちます。 高度なセキュリティ報告、監査、および警告によって疑わしいアクティビティを監視することは、潜在的なセキュリティ上の問題の軽減にも役立ちます。
 
-Azure AD Premium の条件付きアクセス ポリシーを使用すると、エンタープライズ管理者は、Azure AD に接続されたどんなアプリケーション (SaaS アプリ、クラウドで実行されているカスタム アプリ、またはオンプレミス Web アプリケーション) に対しても、ポリシー ベースのアクセス規則を作成できます。 Azure AD はこれらのポリシーをリアルタイムで評価し、ユーザーがアプリケーションにアクセスしようとするたびにポリシーを適用します。 Azure ID 保護ポリシーを使用すると、疑わしいアクティビティが検出された場合に自動的に対処できます。 たとえば、リスクの高いユーザーへのアクセスのブロック、多要素認証の適用、資格情報が侵害されたと思われる場合のユーザー パスワードのリセットなどです。
-
+Azure AD Premium での条件付きアクセス ポリシーを使用すると、Azure AD に接続された任意のアプリ (SaaS アプリ、クラウド内またはオンプレミスで実行されているカスタム アプリ、Web アプリなど) に対してポリシー ベースのアクセス規則を作成することができます。 それらの規則は、Azure AD によってリアルタイムで評価され、ユーザーがアプリにアクセスしようとするたびに適用されます。 Azure ID 保護ポリシーを使用すると、不審なアクティビティが検出された場合にアクションが自動的に実行されるようにすることができます (アクセスのブロック、Multi-Factor Authentication の適用、またはユーザー パスワードのリセットによって)。
 
 ## <a name="azure-active-directory-privileged-identity-management"></a>Azure Active Directory Privileged Identity Management
-
-Azure Active Directory Premium P2 契約に含まれている [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started) を使用すると、管理者アカウントと、Azure Active Directory およびその他の Microsoft オンライン サービス内のリソースへのアクセスを検出、制限、および監視することができます。 また、必要とされる正確な期間にわたって、オンデマンドの管理アクセスを管理するためにも役立ちます。
-
-Privileged Identity Management は、管理者が多要素認証される一時的な特権の昇格を要求できるように、オンデマンドで管理者権限を適用できます。そのアカウントが通常のユーザーの状態に戻るまでの期間は、事前に構成できます。
-
-## <a name="benefits-of-azure-identity"></a>Azure ID の利点
-
-Azure の ID 管理では、次のことが可能です。
-
--   エンタープライズ全体でユーザーごとに 1 つの ID を作成して管理し、ユーザー、グループ、デバイスが [Azure Active Directory Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) と同期された状態を維持する。
-
--   何千もの事前統合された SaaS アプリを含むアプリケーションにシングル サインオン アクセスを提供したり、[Azure AD アプリケーション プロキシ](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started)を使用してオンプレミス SaaS アプリケーションへのセキュリティで保護されたリモート アクセスを提供したりする。
-
--   ルール ベースの[多要素認証](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next)をオンプレミス アプリケーションとクラウド アプリケーションの両方に適用することによって、アプリケーション アクセスのセキュリティを有効にする。
-
--   [セルフサービスによるパスワードのリセット](https://docs.microsoft.com/azure/active-directory/active-directory-passwords)、[MyApps ポータル](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-user-help)を使用したグループおよびアプリケーション アクセス要求によって、ユーザーの生産性を向上させる。
-
--   世界規模でエンタープライズ レベルでクラウド ベースの ID およびアクセス管理ソリューションの[高可用性および信頼性](https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications)の利点を活用する。
+Azure Active Directory Premium 2 エディションに含まれている [Privileged Identity Management (PIM)](../privileged-identity-management/pim-getting-started.md) は、管理者アカウントと、Azure Active Directory およびその他の Microsoft Online Services 内のリソースへのそれらのアクセスを検出、制限、監視するのに役立ちます。 また、PIM は必要とされる正確な期間にわたって、オンデマンドの管理アクセスを管理するためにも役立ちます。つまり、多要素認証されていて、事前に構成された期間の一時的な特権の昇格を要求することを管理者に許可し、その期間が経過するとそのアカウントが通常のユーザーの状態に戻るようにすることができます。
 
 ## <a name="next-steps"></a>次の手順
-[Azure ID ソリューションの詳細を確認する](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions)
+Azure AD アーキテクチャの詳細については、[Azure AD のアーキテクチャ](active-directory-architecture.md)に関するページを参照してください。

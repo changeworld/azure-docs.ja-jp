@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: pullabhk
-ms.openlocfilehash: 309e817426fff1eb877ab02ae9aa16ddc8f5cf16
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: acb675d750eb54bdbdde8873f6994255a07eb229
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751899"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605914"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>Azure Stack 上の SharePoint ファームのバックアップ
 Microsoft Azure Backup Server (MABS) を使用して Azure Stack 上の SharePoint ファームを Microsoft Azure にバックアップする方法は、他のデータ ソースのバックアップとよく似ています。 Azure Backup ではバックアップのスケジュールを柔軟に設定して日、週、月、年の単位でバックアップ ポイントを作成でき、さまざまなバックアップ ポイントに対応する保有ポリシー オプションがあります。 また、目標復旧時間 (RTO) 短縮のためにはローカル ディスク コピーを保存でき、コスト効率に優れた長期リテンション期間のためには Azure にコピーできます。
@@ -22,8 +22,8 @@ Microsoft Azure Backup Server (MABS) を使用して Azure Stack 上の SharePoi
 MABS 用 Azure Backup は、次のシナリオをサポートします。
 
 | ワークロード | バージョン | SharePoint のデプロイ | 保護と回復 |
-| --- | --- | --- | --- | --- | --- |
-| SharePoint |SharePoint 2013、SharePoint 2010、SharePoint 2007、SharePoint 3.0 |物理サーバーまたは Hyper-V/VMware 仮想マシンとしてデプロイされた SharePoint  <br> -------------- <br> SQL AlwaysOn | SharePoint ファームの保護の回復オプション: ディスク回復ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
+| --- | --- | --- | --- |
+| SharePoint |SharePoint 2016、SharePoint 2013、SharePoint 2010 |Azure Stack 仮想マシンとしてデプロイされた SharePoint <br> -------------- <br> SQL AlwaysOn | SharePoint ファームの保護の回復オプション: ディスク回復ポイントからのファーム、データベース、およびファイルまたはリスト項目の回復。  Azure の回復ポイントからのファームとデータベースの回復。 |
 
 ## <a name="before-you-start"></a>開始する前に
 SharePoint ファームを Azure にバックアップする前に、確認する必要がある点がいくつかあります。

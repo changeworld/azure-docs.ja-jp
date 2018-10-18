@@ -4,17 +4,17 @@ description: この記事では、Azure Automation の Desired State Configurati
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
-ms.date: 08/08/2018
+author: bobbytreed
+ms.author: robreed
+ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 03b22e3a4c2c0b8eb87ee0b61edba3c6f0923170
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: fae415d158a9fced0c63078cd09c0cc070c88372
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42443817"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630003"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Azure Automation State Configuration での DSC 構成のコンパイル
 
@@ -156,7 +156,7 @@ DSC の**複合リソース**を追加するには、リソース モジュー�
 ```powershell
 Node ($AllNodes.Where{$_.Role -eq 'WebServer'}).NodeName
 {
-    JoinDomain DomainJoin
+    DomainConfig myCompositeConfig
     {
         DomainName = $DomainName
         Admincreds = $Admincreds
@@ -164,7 +164,7 @@ Node ($AllNodes.Where{$_.Role -eq 'WebServer'}).NodeName
 
     PSWAWebServer InstallPSWAWebServer
     {
-        DependsOn = '[JoinDomain]DomainJoin'
+        DependsOn = '[DomainConfig]myCompositeConfig'
     }
 }
 ```
@@ -235,7 +235,7 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 ### <a name="credential-assets"></a>資格情報資産
 
-Azure Automation の DSC 構成は、`Get-AzureRmAutomationCredential` を使用して Automation の資格情報資産を参照できます。 構成に **PSCredential** 型のパラメーターがある場合、Azure Automation の資格情報資産の文字列名をコマンドレットに渡して資格情報を取得することで、`Get-AutomationRmAutomationCredential` コマンドレットを使用できます。 次に、**PSCredential** オブジェクトを必要とするパラメーターに、そのオブジェクトを使用できます。 バックグラウンドで、この名前の Azure Automation 資格情報資産が取得され、構成に渡されます。 実際の動作例を次に示します。
+Azure Automation の DSC 構成は、`Get-AutomationPSCredential` コマンドレットを使用して Automation の資格情報資産を参照できます。 構成に **PSCredential** 型のパラメーターがある場合、Azure Automation の資格情報資産の文字列名をコマンドレットに渡して資格情報を取得することで、`Get-AutomationPSCredential` コマンドレットを使用できます。 次に、**PSCredential** オブジェクトを必要とするパラメーターに、そのオブジェクトを使用できます。 バックグラウンドで、この名前の Azure Automation 資格情報資産が取得され、構成に渡されます。 実際の動作例を次に示します。
 
 ノード構成 (MOF 構成ドキュメント) で資格情報を安全に保持するには、ノード構成 MOF ファイルで資格情報を暗号化する必要があります。 ただし、現時点では、ノード構成 MOF 作成時に資格情報をプレーンテキストで出力することを許可するように PowerShell DSC に指定する必要があります。PowerShell DSC は、コンパイル ジョブによって生成された MOF ファイル全体を Azure Automation が暗号化することを認識していないためです。
 

@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 03/15/2018
-ms.openlocfilehash: af90fb4c89cf552d4c5637db08ef0acd9984b31b
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/17/2018
+ms.openlocfilehash: 3c9e0acfe9f8ffb159cacf50923f249be175ea77
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264699"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981939"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Azure Database for MySQL での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MySQL には、MySQL サーバーをサポートするリソースの動作への洞察を提供する各種のメトリックが用意されています。 
@@ -31,11 +31,16 @@ ms.locfileid: "35264699"
 |memory_percent|メモリの割合|Percent|使用されているメモリの割合|
 |io_consumption_percent|IO の割合|Percent|使用されている IO の割合|
 |storage_percent|ストレージの割合|Percent|サーバーの最大数のうち使用されているストレージの割合|
-|storage_used|使用済みストレージ|Bytes|使用されているストレージの量。 サービスで使用されるストレージには、データベース ファイル、トランザクション ログ、およびサーバー ログが含まれます。|
+|storage_used|使用済みストレージ|Bytes|使用されているストレージの量。 サービスで使用されるストレージには、データベース ファイル、トランザクション ログ、サーバー ログが含まれることがあります。|
+|serverlog_storage_percent|サーバー ログ ストレージの割合|Percent|サーバーの最大サーバー ログ ストレージのうち、使用されているサーバー ログ ストレージの割合。|
+|serverlog_storage_usage|サーバー ログ ストレージの使用量|Bytes|使用されているサーバー ログ ストレージの量。|
+|serverlog_storage_limit|サーバー ログ ストレージの上限|Bytes|このサーバーの最大サーバー ログ ストレージ。|
 |storage_limit|ストレージの制限|Bytes|このサーバーの最大のストレージ|
-|active_connections|アクティブな接続の合計|Count|サーバーへのアクティブな接続の数|
-|connections_failed|失敗した接続の合計|Count|サーバーへの失敗した接続の数|
-
+|active_connections|アクティブな接続|Count|サーバーへのアクティブな接続の数|
+|connections_failed|失敗した接続|Count|サーバーへの失敗した接続の数|
+|seconds_behind_master|レプリケーションのラグ (秒単位)|Count|レプリカ サーバーがマスター サーバーから遅延している秒数。|
+|network_bytes_egress|ネットワーク送信|Bytes|アクティブな接続全体のネットワーク送信。|
+|network_bytes_ingress|Network In|Bytes|アクティブな接続全体のネットワーク受信。|
 
 ## <a name="next-steps"></a>次の手順
 - メトリックに対するアラートの作成のガイダンスについては、[アラートを設定する方法](howto-alert-on-metric.md)に関するページをご覧ください。

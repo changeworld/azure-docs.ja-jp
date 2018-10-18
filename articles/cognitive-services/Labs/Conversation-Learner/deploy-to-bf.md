@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: bb977df92cf0ada1e50a929a9ea714313a70165a
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0bcb6262201b3399ca4d759bb306a570bea33b00
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171478"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578771"
 ---
 # <a name="how-to-deploy-a-conversation-learner-bot"></a>Conversation Learner ボットをデプロイする方法
 
@@ -94,9 +94,9 @@ Conversation Learner UI の外部でボットを実行するには、ボット�
 
 他のボットを公開する場合とほぼ同じ方法で、Conversation Learner ボットを公開します。 大まかな手順としては、ホストされている Web サイトにコードをアップロードし、適切な設定値を設定して、さまざまなチャネルでボットを登録します。 詳細な手順は、Azure Bot Service を使用してボットを公開する方法を示した動画に示されています。
 
-ボットがデプロイされ実行されたら、Azure Bot Channel Registration を使用して Facebook、Teams、Skype などのさまざまなチャネルにボットを接続できます。 このプロセスの詳細については、 https://docs.microsoft.com/en-us/bot-framework/bot-service-quickstart-registration を参照してください。
+ボットがデプロイされ実行されたら、Azure Bot Channel Registration を使用して Facebook、Teams、Skype などのさまざまなチャネルにボットを接続できます。 このプロセスの詳細については、 https://docs.microsoft.com/bot-framework/bot-service-quickstart-registration を参照してください。
 
-Conversation Learner Bot を Azure にデプロイするための手順を以下に示します。  これらの手順では、VSTS、GitHub、BitBucket、OneDrive などのクラウド ベースのソースからボット ソースを使用できることを前提とし、継続的デプロイ用にボットを構成します。
+Conversation Learner Bot を Azure にデプロイするための手順を以下に示します。  これらの手順では、Azure DevOps Services、GitHub、BitBucket、OneDrive などのクラウド ベースのソースからご自分のボット ソースを使用できることを前提とし、継続的デプロイ用にボットを構成します。
 
 1. https://portal.azure.com で、Azure Portal にログインします。
 

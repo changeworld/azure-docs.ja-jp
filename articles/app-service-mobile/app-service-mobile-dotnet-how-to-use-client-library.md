@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: f0f28d4b6573e4e6fecf0e6dd84814d4fc66cd60
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5e399a237fe533b46997365c16b75dce14149dec
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050500"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064324"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Azure Mobile Apps 用の管理されたクライアントの使用方法
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -75,6 +75,9 @@ Mobile Apps バックエンドにテーブルを作成する方法について�
 ```
 using Microsoft.WindowsAzure.MobileServices;
 ```
+
+> [!NOTE]
+> Android プロジェクトで参照されるすべてのサポート パッケージのバージョンが同じである必要があることに注意してください。 SDK には、Android プラットフォームに関して `Xamarin.Android.Support.CustomTabs` の依存関係があるため、プロジェクトで新しいサポート パッケージを使用する場合は、必要なバージョンを使用してこのパッケージを直接インストールし、競合を回避する必要があります。
 
 ### <a name="symbolsource"></a>方法: Visual Studio でデバッグ シンボルを使用する
 Microsoft.Azure.Mobile 名前空間用のシンボルは、[SymbolSource][10] で入手できます。  SymbolSource を Visual Studio と統合する場合は、[SymbolSource の説明][11]をご覧ください。
@@ -135,7 +138,7 @@ IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");
 > すべての行が返されるのを防ぐために、サーバー側で設定されたページ サイズが適用されます。  ページングは、大きなデータ セットの既定の要求がサービスに悪影響を与えるのを防ぎます。  50 行を超える行を返すには、「[ページにデータを返す](#paging)」で説明するように、`Skip` メソッドと `Take` メソッドを使用します。
 
 ### <a name="filtering"></a>方法: 返されるデータをフィルター処理する
-次のコードは、クエリに `Where` 句を含めることによってデータをフィルター処理する方法を示しています。 このコードは、`Complete` プロパティが `false` に等しい `todoTable` からすべての項目を返します。 [Where] 関数は、テーブルに対するクエリに行のフィルタリング述語を適用します。
+次のコードは、クエリに `Where` 句を含めることによってデータをフィルター処理する方法を示しています。 このコードは、`Complete` プロパティが `false` に等しい `todoTable` からすべての項目を返します。 [where] 関数は、テーブルに対するクエリに行のフィルタリング述語を適用します。
 
 ```
 // This query filters out completed TodoItems and items without a timestamp.
@@ -478,7 +481,7 @@ ListBox lb = new ListBox();
 lb.ItemsSource = items;
 ```
 
-マネージ ランタイムの一部のコントロールでは、 [ISupportIncrementalLoading]というインターフェイスがサポートされます。 このインターフェイスにより、コントロールはユーザーによるスクロールの際に追加のデータを要求することができます。 このインターフェイスには、コントロールからの呼び出しを自動的に処理する、 [MobileServiceIncrementalLoadingCollection]によるユニバーサル Windows アプリのサポートが組み込まれています。 次のように、Windows アプリで `MobileServiceIncrementalLoadingCollection` を使用します。
+マネージド ランタイムの一部のコントロールでは、 [ISupportIncrementalLoading]というインターフェイスがサポートされます。 このインターフェイスにより、コントロールはユーザーによるスクロールの際に追加のデータを要求することができます。 このインターフェイスには、コントロールからの呼び出しを自動的に処理する、 [MobileServiceIncrementalLoadingCollection]によるユニバーサル Windows アプリのサポートが組み込まれています。 次のように、Windows アプリで `MobileServiceIncrementalLoadingCollection` を使用します。
 
 ```
 MobileServiceIncrementalLoadingCollection<TodoItem,TodoItem> items;

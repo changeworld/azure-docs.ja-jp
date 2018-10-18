@@ -10,12 +10,12 @@ ms.date: 08/31/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0707726ec86b0a0c69d1ec752ebd6761327f3f0f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 713c0f676067cb32a84361dd7801031295e2244f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669485"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634440"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
@@ -33,13 +33,23 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 
 次の Linux ディストリビューションは公式にサポートされています。 ただし、Linux エージェントは、ここに記載されていないディストリビューションでも動作する可能性があります。 記載されている各メジャー バージョンのマイナー リリースは、特に記載がない限りすべてサポートされます。  
 
-* Amazon Linux 2012.09 ～ 2015.09 (x86/x64)
-* CentOS Linux 5、6、および 7 (x86/x64)  
-* Oracle Linux 5、6、および 7 (x86/x64)
-* Red Hat Enterprise Linux Server 5、6、および 7 (x86/x64)
-* Debian GNU/Linux 6、7、および 8 (x86/x64)
-* Ubuntu 12.04 LTS、14.04 LTS, 16.04 LTS (x86/x64)
-* SUSE Linux Enterprise Server 11 および 12 (x86/x64)
+### <a name="64-bit"></a>64 ビット
+
+* CentOS 6 および 7
+* Amazon Linux 2017.09
+* Oracle Linux 6 および 7
+* Red Hat Enterprise Linux Server 6 および 7
+* Debian GNU/Linux 8 および 9
+* Ubuntu Linux 14.04 LTS、16.04 LTS、および 18.04 LTS
+* SUSE Linux Enterprise Server 12
+
+### <a name="32-bit"></a>32 ビット
+
+* CentOS 6
+* Oracle Linux 6
+* Red Hat Enterprise Linux Server 6
+* Debian GNU/Linux 8 および 9
+* Ubuntu Linux 14.04 LTS および 16.04 LTS
 
 ## <a name="enable-change-tracking-and-inventory"></a>Change Tracking と Inventory の有効化
 
@@ -146,6 +156,7 @@ Windows と Linux の両方でファイルの変更を追跡する場合、フ�
 現在、Change Tracking ソリューションでは、以下の問題が発生しています。
 
 * Windows 10 Creators Update および Windows Server 2016 Core RS3 マシンについては、修正プログラムの更新は収集されていません。
+* Windows ファイルの場合、現在のところ、追跡対象のフォルダー パスに新しいファイルが追加されたタイミングは Change Tracking によって検出されません
 
 ## <a name="change-tracking-data-collection-details"></a>変更の追跡データ収集の詳細
 

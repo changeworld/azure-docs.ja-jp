@@ -1,6 +1,6 @@
 ---
-title: 'REST API: Azure Data Lake Store に対するアカウント管理操作 | Microsoft Docs'
-description: Azure Data Lake Store と WebHDFS REST API を使用して、Data Lake Store に対するアカウント管理操作を実行します
+title: 'REST API: Azure Data Lake Storage Gen1 のアカウント管理操作 | Microsoft Docs'
+description: Azure Data Lake Storage Gen1 と WebHDFS REST API を使用し、Data Lake Storage Gen1 でアカウント管理操作を実行します
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 5b31188eb5618d0ec5ac1f89c590913e4e284d9f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7f22fe7d1c3962e59922bc4e2795ed4f899e3eca
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36337150"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121670"
 ---
-# <a name="account-management-operations-on-azure-data-lake-store-using-rest-api"></a>REST API を使用した Azure Data Lake Store に対するアカウント管理操作
+# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>REST API を使用した Azure Data Lake Storage Gen1 に対するアカウント管理操作
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-get-started-net-sdk.md)
 > * [REST API](data-lake-store-get-started-rest-api.md)
@@ -27,26 +27,26 @@ ms.locfileid: "36337150"
 >
 >
 
-この記事では、REST API を使用して Data Lake Store に対するアカウント管理操作を実行する方法について説明します。 アカウント管理操作には、Data Lake Store アカウントの作成、Data Lake Store アカウントの削除などがあります。REST API を使用して Data Lake Store に対するファイルシステム操作を実行する方法については、[REST API を使用した Data Lake Store に対するファイルシステム操作](data-lake-store-data-operations-rest-api.md)に関するページを参照してください。
+この記事では、REST API を使用して Azure Data Lake Storage Gen1 に対するアカウント管理操作を実行する方法について説明します。 アカウント管理操作には、Data Lake Storage Gen1 アカウントの作成、Data Lake Storage Gen1 アカウントの削除などがあります。Python を使用して Data Lake Storage Gen1 に対するファイルシステム操作を実行する方法については、「[Filesystem operations on Data Lake Storage Gen1 using REST API](data-lake-store-data-operations-rest-api.md)」 (REST API を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作) をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* **[cURL](http://curl.haxx.se/)**。 この記事では、cURL を使用して、Data Lake Store アカウントに対して REST API 呼び出しを行う方法を説明します。
+* **[cURL](http://curl.haxx.se/)**。 この記事では、cURL を使用して、Data Lake Storage Gen1 アカウントに対して REST API 呼び出しを行う方法を説明します。
 
 ## <a name="how-do-i-authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する方法
 Azure Active Directory を使用した認証方法には 2 つあります。
 
-* アプリケーションのエンドユーザー認証 (対話型) については、「[End-user authentication with Data Lake Store using .NET SDK (.NET SDK を使用した Data Lake Store に対するエンドユーザー認証)](data-lake-store-end-user-authenticate-rest-api.md)」を参照してください。
-* アプリケーションのサービス間認証 (非対話型) については、「[Service-to-service authentication with Data Lake Store using .NET SDK (.NET SDK を使用した Data Lake Store に対するサービス間認証)](data-lake-store-service-to-service-authenticate-rest-api.md)」を参照してください。
+* アプリケーションのエンドユーザー認証 (対話型) については、「[End-user authentication with Data Lake Storage Gen1 using .NET SDK](data-lake-store-end-user-authenticate-rest-api.md)」 (.NET SDK を使用した Data Lake Storage Gen1 に対するエンドユーザー認証) を参照してください。
+* アプリケーションのサービス間認証 (非対話型) については、「[Service-to-service authentication with Data Lake Storage Gen1 using .NET SDK](data-lake-store-service-to-service-authenticate-rest-api.md)」 (.NET SDK を使用した Data Lake Storage Gen1 に対するサービス間認証) を参照してください。
 
 
-## <a name="create-a-data-lake-store-account"></a>Data Lake Store アカウントを作成する
-この操作は、 [ここ](https://docs.microsoft.com/en-us/rest/api/datalakestore/accounts/create)で定義されている REST API 呼び出しをベースにしています。
+## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントの作成
+この操作は、 [ここ](https://docs.microsoft.com/rest/api/datalakestore/accounts/create)で定義されている REST API 呼び出しをベースにしています。
 
-次の cURL コマンドを使用します。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
+次の cURL コマンドを使用します。 **\<yourstoragegen1name>** を自分の Data Lake Storage Gen1 名に変更します。
 
-    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstorename>?api-version=2015-10-01-preview -d@"C:\temp\input.json"
+    curl -i -X PUT -H "Authorization: Bearer <REDACTED>" -H "Content-Type: application/json" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview -d@"C:\temp\input.json"
 
 上記のコマンドで、\<`REDACTED`\> を以前に取得した承認トークンに置き換えます。 このコマンドの要求ペイロードは、上記の `-d` パラメーターで指定した **input.json** ファイルに含まれています。 input.json ファイルの内容は、次のスニペットのようになります。
 
@@ -58,12 +58,12 @@ Azure Active Directory を使用した認証方法には 2 つあります。
     "properties": {}
     }    
 
-## <a name="delete-a-data-lake-store-account"></a>Data Lake Store アカウントを削除する
-この操作は、 [ここ](https://docs.microsoft.com/en-us/rest/api/datalakestore/accounts/delete)で定義されている REST API 呼び出しをベースにしています。
+## <a name="delete-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1 アカウントの削除
+この操作は、 [ここ](https://docs.microsoft.com/rest/api/datalakestore/accounts/delete)で定義されている REST API 呼び出しをベースにしています。
 
-Data Lake Store アカウントを削除するには、次の cURL コマンドを使用します。 **\<yourstorename>** を実際の Data Lake Store 名に置き換えます。
+Data Lake Storage Gen1 アカウントを削除するには、次の cURL コマンドを使用します。 **\<yourstoragegen1name>** を自分の Data Lake Storage Gen1 アカウント名に変更します。
 
-    curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstorename>?api-version=2015-10-01-preview
+    curl -i -X DELETE -H "Authorization: Bearer <REDACTED>" https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.DataLakeStore/accounts/<yourstoragegen1name>?api-version=2015-10-01-preview
 
 次のスニペットのような出力が表示されます。
 
@@ -72,9 +72,9 @@ Data Lake Store アカウントを削除するには、次の cURL コマンド�
     ...
 
 ## <a name="next-steps"></a>次の手順
-* [REST API を使用した Data Lake Store に対するファイルシステム操作](data-lake-store-data-operations-rest-api.md)。
+* [REST API を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作](data-lake-store-data-operations-rest-api.md)。
 
 ## <a name="see-also"></a>関連項目
-* [Azure Data Lake Store REST API リファレンス](https://docs.microsoft.com/rest/api/datalakestore/)
-* [Azure Data Lake Store と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
+* [Azure Data Lake Storage Gen1 REST API リファレンス](https://docs.microsoft.com/rest/api/datalakestore/)
+* [Azure Data Lake Storage Gen1 と互換性のあるオープン ソースのビッグ データ アプリケーション](data-lake-store-compatible-oss-other-applications.md)
 

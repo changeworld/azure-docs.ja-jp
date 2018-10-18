@@ -6,14 +6,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 09/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 821d9bf3c844da030d1d351e895704a81678fb4e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2ca2063158634dfa42da094b77c70a2730e82176
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699473"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423172"
 ---
 # <a name="partitioned-queues-and-topics"></a>パーティション分割されたキューとトピック
 
@@ -140,7 +140,7 @@ Service Bus では、パーティション分割されたエンティティを�
 
 現在、Service Bus は、パーティション分割されたキューまたはトピックに以下の制限を適用します。
 
-* Premium メッセージング レベルでは、パーティション分割されたキューとトピックをサポートしていません。
+* Premium メッセージング レベルでは、パーティション分割されたキューとトピックをサポートしていません。 セッションは、SessionId を使用することで Premier レベルでサポートされます。 
 * パーティション分割されたキューまたはトピックは、単一のトランザクションの別々のセッションに属するメッセージの送信はサポートしていません。
 * Service Bus は、現在、名前空間あたり最大 100 のパーティション分割されたキューまたはトピックをサポートします。 パーティション分割された各キューまたはトピックは、名前空間あたり 10,000 エンティティのクォータに対してカウントされます (Premium レベルには適用されません)。
 

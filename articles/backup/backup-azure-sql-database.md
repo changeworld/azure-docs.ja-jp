@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: c3321fb64c423b1b3c80f48fb97a70cc7dbc83f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: aab0ac2dfba47741eaf5a75ef46d9ca5f8873d50
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433567"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434247"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Azure への SQL Server データベースのバックアップ
 
@@ -823,6 +823,10 @@ SQL データベースの保護を停止するときに **[バックアップ �
 ### <a name="can-i-protect-sql-always-on-availability-groups-where-the-primary-replica-is-on-premises"></a>プライマリ レプリカがオンプレミスにある SQL Always On 可用性グループを保護できますか?
 
 いいえ。 Azure Backup では、Azure で実行している SQL Server を保護します。 Azure とオンプレミスのマシンの間にまたがっている可用性グループ (AG) は、プライマリ レプリカが Azure で実行されている場合にのみ保護できます。 また、Azure Backup では、Recovery Services コンテナーと同じ Azure リージョンで実行されているノードのみ保護します。
+
+### <a name="can-i-protect-sql-always-on-availability-groups-which-are-spread-across-azure-regions"></a>Azure リージョンにわたって分散されているSQL Always On 可用性グループを保護できますか。
+Azure Backup Recovery Services コンテナーは、Recovery Services コンテナーと同じリージョン内にあるすべてのノードを検出および保護できます。 複数の Azure リージョンにまたがる SQL Always On 可用性グループがある場合は、プライマリ ノードのあるリージョンからのバックアップを構成する必要があります。 Azure Backup によって、バックアップ設定に従って、可用性グループのすべてのデータベースを検出および保護することができるようになります。 バックアップの設定条件が満たされていない場合は、バックアップに失敗し、エラー通知が表示されます。
+
 
 ## <a name="next-steps"></a>次の手順
 

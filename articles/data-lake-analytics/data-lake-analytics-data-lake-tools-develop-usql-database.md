@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 98dc33cc961c5c90fc3f6737a1cc470d4a753fd0
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4518011fbeaefbb32403f5b37e434e7315beffa0
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048759"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734926"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>U-SQL データベース プロジェクトを使った Azure Data Lake 用 U-SQL データベースの開発
 
@@ -57,7 +57,7 @@ U-SQL データベース プロジェクトを右クリックします。 **[追
 
 U-SQL データベース プロジェクトのビルド出力は、名前に `.usqldbpack` というサフィックスのついた U-SQL データベース展開パッケージです。 `.usqldbpack` パッケージは .zip ファイルで、**DDL** フォルダー内の単一の U-SQL スクリプトにはすべての DDL ステートメントが、**Temp** フォルダーにはアセンブリのすべての DLL と追加ファイルが含まれています。
 
-詳細については、[MSBuild コマンド ラインと Visual Studio Team Services ビルド タスクを使った U-SQL データベース プロジェクトのビルド方法](data-lake-analytics-cicd-overview.md)をご覧ください。
+詳細については、[MSBuild コマンド ラインと Azure DevOps Services ビルド タスクを使用して U-SQL データベース プロジェクトをビルドする方法](data-lake-analytics-cicd-overview.md)に関するページをご覧ください。
 
 ## <a name="deploy-a-u-sql-database"></a>U-SQL データベースの配置
 
@@ -94,7 +94,7 @@ Visual Studio で、U-SQL データベース プロジェクトまたは .usqldb
 
 `PackageDeploymentTool.exe` は、U-SQL データベースを配置する際に役立つプログラミングとコマンド ライン インターフェイスを提供します。 この SDK は [U-SQL SDK Nuget パッケージ](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)に含まれており、`build/runtime/PackageDeploymentTool.exe` の場所にあります。
 
-[SDK と、U-SQL データベースを配置する CI/CD パイプラインの設定方法の詳細については、こちらを参照してください](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-visual-studio-team-service)。
+[SDK と、U-SQL データベースを配置する CI/CD パイプラインの設定方法の詳細については、こちらを参照してください](data-lake-analytics-cicd-overview.md)。
 
 ## <a name="reference-a-u-sql-database-project"></a>U-SQL データベース プロジェクトの参照
 

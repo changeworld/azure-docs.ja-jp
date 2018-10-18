@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: glenga
-ms.openlocfilehash: ee5b11bc04a7e13354c30b64dc55c165eea4f028
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 51b2bd7956f775dbc7f737be33bd0fd6f9246524
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303967"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604537"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -27,13 +27,13 @@ ms.locfileid: "44303967"
 
 ## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
-Service Bus のバインドは [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet パッケージ、バージョン 2.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.ServiceBus/) GitHub リポジトリにあります。
+Service Bus のバインドは [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet パッケージ、バージョン 2.x で提供されます。 
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="packages---functions-2x"></a>パッケージ - Functions 2.x
 
-Service Bus のバインドは [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/) GitHub リポジトリにあります。
+Service Bus のバインドは [Microsoft.Azure.WebJobs.Extensions.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.ServiceBus) NuGet パッケージ、バージョン 3.x で提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/) GitHub リポジトリにあります。
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -45,10 +45,10 @@ Service Bus トリガーを使用して、Service Bus キューまたはトピ�
 
 言語固有の例をご覧ください。
 
-* [C#](#trigger---c-example)
+* [C# を選択した場合](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
+* [JavaScript を選択した場合](#trigger---javascript-example)
 * [Java](#trigger---java-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
@@ -214,7 +214,7 @@ Java コードを次に示します。
 
 [C# クラス ライブラリ](functions-dotnet-class-library.md)では、以下の属性を使用して Service Bus トリガーを構成します。
 
-* [ServiceBusTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusTriggerAttribute.cs)
+* [ServiceBusTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusTriggerAttribute.cs)
 
   属性のコンストラクターは、キューの名前、またはトピックとサブスクリプションを受け取ります。 Azure Functions バージョン 1.x では、接続のアクセス権を指定することもできます。 アクセス権を指定しない場合、既定値は `Manage` になります。 詳細については、「[トリガー - 構成](#trigger---configuration)」セクションをご覧ください。
 
@@ -243,7 +243,7 @@ Java コードを次に示します。
 
   完全な例については、「[トリガー - C# の例](#trigger---c-example)」を参照してください。
 
-* [ServiceBusAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs)
+* [ServiceBusAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
   使用する Service Bus アカウントを指定する別の方法を示します。 コンストラクターは、Service Bus 接続文字列を含むアプリ設定の名前を受け取ります。 属性は、パラメーター、メソッド、またはクラス レベルで適用できます。 次の例では、クラス レベルとメソッド レベルを示します。
 
@@ -344,10 +344,10 @@ Service Bus トリガーには、いくつかの[メタデータ プロパティ
 
 言語固有の例をご覧ください。
 
-* [C#](#output---c-example)
+* [C# を選択した場合](#output---c-example)
 * [C# スクリプト (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
-* [JavaScript](#output---javascript-example)
+* [JavaScript を選択した場合](#output---javascript-example)
 * [Java](#output--java-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例
@@ -525,7 +525,7 @@ public String pushToQueue(
 
 ## <a name="output---attributes"></a>出力 - 属性
 
-[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[ServiceBusAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[ServiceBusAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs) 属性を使用します。
 
 属性のコンストラクターは、キューの名前、またはトピックとサブスクリプションを受け取ります。 接続のアクセス権を指定することもできます。 アクセス権の設定を選択する方法については、「[出力 - 構成](#output---configuration)」セクションで説明されています。 関数の戻り値に適用される属性に適用される属性を示す例は次のとおりです。
 

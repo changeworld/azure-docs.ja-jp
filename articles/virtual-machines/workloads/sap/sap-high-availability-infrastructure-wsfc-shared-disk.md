@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 223c038155d16f41f1599aa76081560739cd7095
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 12decd07934b45c3f2e8b9b098af305303641176
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34657378"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634780"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>SAP ASCS/SCS 用の Windows フェールオーバー クラスターと共有ディスクを使用して SAP HA 向けに Azure インフラストラクチャを準備する
 
@@ -305,7 +305,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
   -  **[System Availability]\(システムの可用性\)**: **[HA]\(高可用性\)** を選びます。
   -  **[Admin Username and Admin Password]\(管理者の名前とパスワード\)**: マシンへのサインインに使うことができる新しいユーザーを作成します。
   -  **[New Or Existing Subnet]\(新規または既存のサブネット\)**: 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使うかを設定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、**[existing (既存)]** を選択します。
-  -  **[Subnet Id]\(サブネット ID\)**: 仮想マシンを接続するサブネットの ID を設定します。 仮想マシンをオンプレミス ネットワークに接続するための VPN または ExpressRoute 仮想ネットワークのサブネットを選びます。 ID は、通常、次のようになります。
+  -  **[Subnet Id]\(サブネット ID\)**: VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 ID は、通常、次のようになります。
 
    /subscriptions/\<サブスクリプション ID\>/resourceGroups/\<リソース グループ名\>/providers/Microsoft.Network/virtualNetworks/\<仮想ネットワーク名\>/subnets/\<サブネット名\>
 
@@ -552,7 +552,7 @@ Azure Load Balancer は、設定されている時間 (アイドル タイムア
 
 SAP ASCS/SCS インスタンスの両方のクラスター ノードでレジストリ エントリを追加するには、まず、SAP ASCS/SCS の両方の Windows クラスター ノードに次の Windows レジストリ エントリを追加します。
 
-| パス | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 変数名 |`KeepAliveTime` |
 | 変数の型 |REG_DWORD (Decimal) |
@@ -563,7 +563,7 @@ SAP ASCS/SCS インスタンスの両方のクラスター ノードでレジス
 
 次に、SAP ASCS/SCS の両方の Windows クラスター ノードで次の Windows レジストリ エントリを追加します。
 
-| パス | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 変数名 |`KeepAliveInterval` |
 | 変数の型 |REG_DWORD (Decimal) |

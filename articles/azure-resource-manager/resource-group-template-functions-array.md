@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: cdc8222675a9f0099edccb24310bcea03bf963f4
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 81638136589fc474d5183341d2fe0f9f896d6b41
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929680"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434468"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数 
 
@@ -330,7 +330,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 ## <a name="contains"></a>contains
 `contains(container, itemToFind)`
 
-配列に値が含まれるかどうか、オブジェクトにキーが含まれるかどうか、または文字列に部分文字列が含まれるかどうかを確認します。
+配列に値が含まれるかどうか、オブジェクトにキーが含まれるかどうか、または文字列に部分文字列が含まれるかどうかを確認します。 文字列比較では大文字・小文字を区別します。 ただし、オブジェクトにキーが含まれているかどうかをテストする場合、比較で大文字・小文字を区別しません。
 
 ### <a name="parameters"></a>parameters
 
@@ -731,12 +731,16 @@ JSON オブジェクトを返します。
 
 | パラメーター | 必須 | type | 説明 |
 |:--- |:--- |:--- |:--- |
-| arg1 |[はい] |文字列 |JSON に変換する値。 |
+| arg1 |[はい] |string |JSON に変換する値。 |
 
 
 ### <a name="return-value"></a>戻り値
 
 **null** が指定された場合は、指定された文字列の JSON オブジェクト、または空のオブジェクト。
+
+### <a name="remarks"></a>解説
+
+JSON オブジェクトにパラメーター値または変数を含める必要がある場合、 [concat](resource-group-template-functions-string.md#concat)関数を使用し、関数に渡す文字列を作成します。
 
 ### <a name="example"></a>例
 
@@ -746,6 +750,12 @@ JSON オブジェクトを返します。
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
+    "parameters": {
+        "testValue": {
+            "type": "string",
+            "defaultValue": "demo value"
+        }
+    },
     "resources": [
     ],
     "outputs": {
@@ -756,6 +766,10 @@ JSON オブジェクトを返します。
         "nullOutput": {
             "type": "bool",
             "value": "[empty(json('null'))]"
+        },
+        "paramOutput": {
+            "type": "object",
+            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
         }
     }
 }
@@ -766,7 +780,8 @@ JSON オブジェクトを返します。
 | Name | type | 値 |
 | ---- | ---- | ----- |
 | jsonOutput | オブジェクト | {"a": "b"} |
-| nullOutput | ブール | True |
+| nullOutput | Boolean | True |
+| paramOutput | オブジェクト | {「a」:「値のデモ」}
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
 
@@ -994,7 +1009,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="min" />
 
-## <a name="min"></a>Min
+## <a name="min"></a>min
 `min(arg1)`
 
 整数の配列または整数のコンマ区切りリストから最小値を返します。

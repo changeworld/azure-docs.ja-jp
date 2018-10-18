@@ -6,20 +6,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 25ab2f735cfd4b0870729cb86992665fa8984580
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 6de302dbcfa9d6d1d2b311f41b03d8e54aeb63f6
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976378"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395442"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のパフォーマンスに関する推奨事項
 
 **適用対象:** Azure Database for PostgreSQL 9.6 および 10
 
 > [!IMPORTANT]
-> パフォーマンスに関する推奨事項はパブリック プレビュー段階です。
+> 少数ですが､パフォーマンスに関する推奨事項がパブリック プレビュー段階のリージョンがあります｡
 
 パフォーマンスに関する推奨事項機能は、パフォーマンスを向上させるために、Azure Database for PostgreSQL サーバーで作成できる最上位のインデックスを識別します。 推奨インデックスを作成するために、この機能は、クエリ ストアから報告されたスキーマ、ワークロードなどのさまざまなデータベースの特性を考慮します。 顧客は、パフォーマンスに関する推奨事項を実装した後、パフォーマンスをテストし、変更の影響を評価する必要があります。 
 

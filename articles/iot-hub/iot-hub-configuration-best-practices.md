@@ -7,12 +7,12 @@ ms.date: 06/24/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 571aa5a080ae4622a23fdb20d712327d4ec6fbf9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 5eb0ba659961d809d0ae471034b03263f87e3894
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141378"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985500"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>IoT ソリューション内のデバイス構成のベスト プラクティス
 
@@ -55,7 +55,7 @@ Azure IoT Hub の自動デバイス管理では、大規模なデバイス集団
 
 Azure ベースのシステムを構築する IoT ソリューション開発者のベスト プラクティスを次に示します。
 
-* **[デバイス ツイン](iot-hub-devguide-device-twins.md)の実装:** デバイス ツインは、クラウドからの必要な構成の同期と、現在の構成とデバイスのプロパティの報告を可能にします。 クラウド ソリューション アプリケーション内のデバイス ツインを実装する最善の方法は、[Azure IoT SDK](https://github.com/Azure/azure-iot-sdks.) を使用することです。デバイス ツインは、次の理由で構成に最適です。
+* **[デバイス ツイン](iot-hub-devguide-device-twins.md)の実装:** デバイス ツインは、クラウドからの必要な構成の同期と、現在の構成とデバイスのプロパティの報告を可能にします。 クラウド ソリューション アプリケーション内のデバイス ツインを実装する最善の方法は、[Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) を使用することです。 デバイス ツインは、次の理由で構成に最適です。
 
     * 双方向通信をサポートします。
     * 接続と切断の両方のデバイス状態に対応します。 

@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: 475a4ad72a1c2fc2ebf99387e193713797cc2586
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: cwatson
+ms.openlocfilehash: a1e90f946508f1ffc0a1ee812dde46ee733d715a
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070619"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392441"
 ---
 # <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Azure Portal または Azure アカウント センターでの「サブスクリプションが見つかりません」エラー
 
@@ -43,7 +43,7 @@ ms.locfileid: "34070619"
 * 右上にある自分のアカウントをクリックして、適切な Azure ディレクトリが選択されていることを確認します。
 
   ![Azure ポータルの右上にあるディレクトリを選択する](./media/billing-no-subscriptions-found/directory-switch.png)
-* 適切な Azure ディレクトリが選択されていてもエラー メッセージが表示される場合は、[アカウントを所有者として追加](billing-add-change-azure-subscription-administrator.md)します。
+* 適切な Azure ディレクトリが選択されていてもエラー メッセージが表示される場合は、[アカウントに所有者ロールを割り当て](../role-based-access-control/role-assignments-portal.md)ます。
 
 ### <a name="scenario-2-error-message-is-received-in-the-azure-account-centerhttpsaccountwindowsazurecomsubscriptions"></a>シナリオ 2: [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)でエラー メッセージが表示される
 

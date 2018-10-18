@@ -1,44 +1,68 @@
 ---
-title: Azure Active Directory でユーザーを管理者ロールに割り当てる | Microsoft Docs
-description: Azure Active Directory でユーザーの管理情報を変更する方法
+title: Azure Active Directory でユーザーにディレクトリ ロールを割り当てる方法 | Microsoft Docs
+description: Azure Active Directory でユーザーにディレクトリ ロールを割り当てる方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: quickstart
-ms.date: 06/25/2018
+ms.topic: conceptual
+ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: ec30f1507bfa45c29709a7f4b7dc1e91aa25ca57
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: b73df5ec0381e83c54c8cd9f8c0335448def0c6d
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440750"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733044"
 ---
-# <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>Azure Active Directory でユーザーを管理者ロールに割り当てる
-この記事では、Azure Active Directory (Azure AD) でユーザーに管理者ロールを割り当てる方法について説明します。 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](../add-users-azure-active-directory.md)に関する記事をご覧ください。 既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
+# <a name="how-to-assign-roles-and-administrators-to-users-with-azure-active-directory"></a>方法: Azure Active Directory でユーザーにロールと管理者を割り当てる
+組織内のユーザーが Azure Active Directory (Azure AD) のリソースを管理するためのアクセス許可を必要としている場合は、ユーザーが実行するアクションに基づいて、Azure AD で適切なロールをユーザーに割り当てる必要があります。
 
-## <a name="assign-a-role-to-a-user"></a>ユーザーにロールを割り当てる
-1. ディレクトリの全体管理者または特権ロール管理者であるアカウントで [Azure portal](https://portal.azure.com) にサインインします。
+使用可能なロールについて詳しくは、[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)に関するページを参照してください。 ユーザーの追加について詳しくは、「[Azure Active Directory に新しいユーザーを追加する](add-users-azure-active-directory.md)」をご覧ください。
 
-2. **[Azure Active Directory]** を選択し、**[ユーザー]** を選択して、一覧から特定のユーザーを選択します。
+## <a name="assign-roles"></a>ロールを割り当てる
+ユーザーに Azure AD ロールを割り当てる一般的な方法は、ユーザーの **[ディレクトリ ロール]** ページです。
 
-    ![ユーザー管理を開く](./media/active-directory-users-assign-role-azure-portal/create-users-user-management.png)
+Privileged Identity Management (PIM) を使用してロールを割り当てることもできます。 PIM の使用方法について詳しくは、「[Privileged Identity Management のドキュメント](https://docs.microsoft.com/azure/active-directory/privileged-identity-management)」をご覧ください。
 
-3. 選択したユーザーに対して、**[ディレクトリ ロール]**、**[ロールの追加]** の順に選択し、**[ディレクトリ ロール]** の一覧から適切な管理者ロール (**[条件付きアクセス管理者]** など) を選択します。 管理ロールの詳細については、[Azure AD での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)に関するページを参照してください。 
+### <a name="to-assign-a-role-to-a-user"></a>ユーザーにロールを割り当てるには
+1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com/) にサインインします。
 
-    ![ユーザーをロールに割り当てる](./media/active-directory-users-assign-role-azure-portal/create-users-assign-role.png)
+2. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、ロールを割り当てるユーザーを検索して選択します。 たとえば、_Alain Charon_ にします。
 
-1. **[選択]** を押して保存します。
+3. **[Alain Charon - プロファイル]** ページで、**[ディレクトリ ロール]** を選択します。
+
+    **[Alain Charon - ディレクトリ ロール]** ページが表示されます。
+
+4. **[ロールの追加]** を選択し、Alain に割り当てるロールを選択して (たとえば _[アプリケーション管理者]_)、**[選択]** を選択します。
+
+    ![選択されたロールが示されているディレクトリ ロール ページ](media/active-directory-users-assign-role-azure-portal/directory-role-select-role.png)
+
+    アプリケーション管理者ロールが Alain Charon に割り当てられて、**[Alain Charon - ディレクトリ ロール]** ページに表示されます。
+
+## <a name="remove-a-role-assignment"></a>ロールの割り当てを削除する
+ユーザーからロールの割り当てを削除する必要がある場合も、**[Alain Charon - ディレクトリ ロール]** ページから行うことができます。
+
+### <a name="to-remove-a-role-assignment-from-a-user"></a>ユーザーからロールの割り当てを削除するには
+
+1. **[Azure Active Directory]**、**[ユーザー]** の順に選択し、ロールの割り当てを削除するユーザーを検索して選択します。 たとえば、_Alain Charon_ を選びます。
+
+2. **[ディレクトリ ロール]**、**[アプリケーション管理者]**、**[ロールを削除します]** の順に選択します。
+
+    ![選択されたロールと削除オプションが示されているディレクトリ ロール ページ](media/active-directory-users-assign-role-azure-portal/directory-role-remove-role.png)
+
+    アプリケーション管理者ロールが Alain Charon から削除されて、**[Alain Charon - ディレクトリ ロール]** ページに表示されなくなります。
 
 ## <a name="next-steps"></a>次の手順
-* [クイックスタート : Azure Active Directory でのユーザーの追加または削除](add-users-azure-active-directory.md)
-* [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
-* [別のディレクトリからのゲスト ユーザーの追加](../b2b/what-is-b2b.md) 
-* [Azure AD でのロールへのユーザーの割り当て](active-directory-users-assign-role-azure-portal.md)
-* [削除済みユーザーの復元](active-directory-users-restore.md)
+- [ユーザーを追加または削除する](add-users-azure-active-directory.md)
+
+- [プロファイル情報を追加または変更する](active-directory-users-profile-azure-portal.md)
+
+- [別のディレクトリからのゲスト ユーザーの追加](../b2b/what-is-b2b.md)
+
+または、委任の割り当て、ポリシーの使用、ユーザー アカウントの共有など、他のユーザー管理タスクを実行することもできます。 他の使用可能なアクションについて詳しくは、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」をご覧ください。
+
+

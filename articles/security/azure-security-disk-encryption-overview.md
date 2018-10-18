@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: ea72e4ac778e52d4f6e4f5597d38a1de59ba43fc
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 09/14/2018
+ms.openlocfilehash: 193aa8f87a90eb7bbf1e2c49132ad480881d41fe
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348941"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633471"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>IaaS VM の Azure Disk Encryption 
 Microsoft Azure では、データのプライバシーおよびデータ主権の確保に積極的に取り組んでおり、暗号化キーの暗号化、制御、管理、また、データ アクセスの制御と監査を行うための幅広い先進テクノロジを介して Azure でホストされるデータを制御できます。 この制御により、Azure の顧客はビジネス ニーズに最適なソリューションを柔軟に選択することができます。 この記事では、"Windows および Linux IaaS VM の Azure Disk Encryption" というテクノロジ ソリューションを紹介します。このソリューションは、組織のセキュリティおよびコンプライアンス コミットメントを満たすためのデータの保護に役立ちます。 
@@ -78,7 +78,10 @@ Azure Disk Encryption ソリューションでは、次の顧客シナリオが�
 * 従来の VM の作成方法を使用して作成された IaaS VM
 * Linux IaaS VM ユーザーのカスタム イメージでの暗号化を有効にする
 * オンプレミス キー管理サービスとの統合
-* Azure Files (共有ファイル システム)、ネットワーク ファイル システム (NFS)、ダイナミック ボリューム、およびソフトウェアベースの RAID システムで構成されている Windows VM
+* Azure Files (共有ファイル システム)
+* ネットワーク ファイル システム (NFS)
+* 動的ボリューム
+* ソフトウェア ベースの RAID システムを使用して構成されている Windows VM
 
 ## <a name="encryption-features"></a>暗号化機能
 Azure IaaS VM の Azure Disk Encryption を有効にしてデプロイすると、指定された構成に応じて、以下の機能が有効になります。

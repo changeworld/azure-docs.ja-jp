@@ -14,23 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 143d0d4b66fc8e6e62364090e3d3187c4aa7bb51
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 4dc61258df2311c4e7ccd4c05ebe077b3e2343eb
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919008"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222286"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してマルチ VM 環境と PaaS リソースを作成する
 
 [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) を使用すると、簡単に [1 度に 1 台の VM をラボに追加する](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-add-vm)ことができます。 ところが、環境に複数の VM が含まれる場合は、各 VM を個別に作成する必要があります。 多層 Web アプリや SharePoint ファームのようなシナリオでは、シングル ステップで複数の VM を作成できるメカニズムが必要です。 Azure Resource Manager テンプレートを使用することで、Azure のソリューションのインフラストラクチャと構成を定義して、複数の VM を一貫した状態で繰り返しデプロイできるようになりました。 この機能には次のような利点があります。
 
-- Azure Resource Manager テンプレートが、ソース管理リポジトリ (GitHub や Team Services Git) から直接読み込まれます。
+- Azure Resource Manager テンプレートが、ソース管理リポジトリ (GitHub や Azure DevOps Services Git) から直接読み込まれます。
 - 構成したら、ユーザーは、他の種類の [VM ベース](./devtest-lab-comparing-vm-base-image-types.md)を使用する場合と同様に、Azure Portal から Azure Resource Manager テンプレートを選択して環境を作成できます。
 - Azure PaaS のリソースを、IaaS VM だけでなく Azure Resource Manager テンプレートから環境にプロビジョニングできます。
 - 環境のコストを、他の種類のベースによって作成された個々の VM だけでなくラボで追跡できます。
 - PaaS のリソースが作成され、コスト管理に表示されます。ただし、VM の自動シャットダウンは PaaS リソースに適用されません。
-- ユーザーは、単一のラボの VM と同じ VM ポリシー コントロールをさまざまな環境で使用できます。
 
 Resource Manager テンプレートを使用してラボのすべてのリソースを単一の操作でデプロイ、更新、または削除することには多くの利点があります。詳細については、[こちらで](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#the-benefits-of-using-resource-manager)ご確認ください。
 
@@ -42,7 +41,7 @@ Resource Manager テンプレートを使用してラボのすべてのリソー
 Azure DevTest Labs には、[Azure Resource Manager テンプレートのパブリック リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Environments)が装備されています。このテンプレートを使用すると、自分で外部 GitHub ソースに接続しなくても、環境を作成できます。 このリポジトリには、Azure Web Apps、Service Fabric クラスター、開発の SharePoint ファーム環境など、頻繁に使用されるテンプレートが含まれています。 この機能は、作成するすべてのラボに含まれている成果物のパブリック リポジトリに似ています。 環境リポジトリを使用すると、事前に作成されている環境テンプレートに最低限の入力パラメーターを指定して、すばやく作業を開始できます。こうして、ラボ内の PaaS リソースでスムーズに作業を開始できます。 詳細については、「[Azure DevTest Labs でのパブリックな環境の構成と使用](devtest-lab-configure-use-public-environments.md)」を参照してください。
 
 ## <a name="configure-your-own-template-repositories"></a>独自のテンプレート リポジトリを構成する
-コードとしてのインフラストラクチャとコードとしての構成のベスト プラクティスの 1 つとして、環境テンプレートをソース管理で管理する必要があります。 Azure DevTest Labs は、このベスト プラクティスに従って、GitHub または VSTS の Git リポジトリから直接すべての Azure Resource Manager テンプレートを読み込みます。 その結果、Resource Manager のテンプレートは、テスト環境から運用環境まで、リリース サイクル全体で使用することができます。
+コードとしてのインフラストラクチャとコードとしての構成のベスト プラクティスの 1 つとして、環境テンプレートをソース管理で管理する必要があります。 Azure DevTest Labs は、このベスト プラクティスに従って、GitHub または Azure DevOps Services Git リポジトリから直接すべての Azure Resource Manager テンプレートを読み込みます。 その結果、Resource Manager のテンプレートは、テスト環境から運用環境まで、リリース サイクル全体で使用することができます。
 
 DevTest Labs チームが[パブリック GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Environments)内に作成したテンプレートをチェックアウトします。 このパブリック リポジトリでは、他のユーザーによって共有されているテンプレートを表示し、必要に応じてそのまま使用したり、カスタマイズしたりすることができます。 テンプレートを作成した後、それを他のユーザーと共有するには、このリポジトリに格納します。 クラウド内に環境をセットアップするために使用できるテンプレートを使用して、独自の Git リポジトリを設定することもできます。 
 
@@ -79,9 +78,9 @@ DevTest Labs チームが[パブリック GitHub リポジトリ](https://github
 1. **[追加+]** を選択し、Azure Resource Manager テンプレートのリポジトリを追加します。
 1. 2 つ目の **[リポジトリ]** ウィンドウが開いたら、必要な情報を次のように入力します。
     - **名前** - ラボで使用するリポジトリ名を入力します。
-    - **Git クローン URL** - GitHub または Visual Studio Team Services の GIT HTTPS クローン URL を入力します。  
+    - **Git クローン URL** - GitHub または Azure DevOps Services の GIT HTTPS クローン URL を入力します。  
     - **分岐** - Azure Resource Manager テンプレートの定義にアクセスするための分岐名を入力します。 
-    - **個人用アクセス トークン** - 個人用アクセス トークンは、リポジトリに安全にアクセスするために使用されます。 Visual Studio Team Services からトークンを取得するには、**&lt;自分の名前>、[マイ プロファイル]、[セキュリティ]、[Public access token (パブリック アクセス トークン)]** の順に選択します。 GitHub からトークンを入手するには、アバターを選択した後に、**[設定]、[Public access token (パブリック アクセス トークン)]** の順に選択します。 
+    - **個人用アクセス トークン** - 個人用アクセス トークンは、リポジトリに安全にアクセスするために使用されます。 Azure DevOps Services からトークンを取得するには、**&lt;[自分の名前] > [マイ プロファイル] > [セキュリティ] > [パブリック アクセス トークン]** の順に選択します。 GitHub からトークンを入手するには、アバターを選択した後に、**[設定]、[Public access token (パブリック アクセス トークン)]** の順に選択します。 
     - **フォルダー パス** - 2 つの入力フィールドのいずれかを使用して、アーティファクトの定義 (最初の入力フィールド) または Azure Resource Manager テンプレートの定義に、フォワード スラッシュ (/) で始まり、Git クローン URI に対して相対的なフォルダー パスを入力します。   
     
         ![Public Repo](./media/devtest-lab-create-environment-from-arm/repo-values.png)

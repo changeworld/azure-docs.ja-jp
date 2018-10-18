@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: cf803c03d266f2a400e47fc551dea62936456177
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 4b4ded86075e49277bca84f5261b6762b0f4fcae
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36937620"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737313"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでデバイスを管理する
 
@@ -51,12 +51,9 @@ Azure IoT Central アプリケーションへ新しいデバイスを追加す�
 
 ## <a name="import-devices"></a>デバイスのインポート
 
-アプリケーションに多数のデバイスを接続するために、Azure IoT Central では、CSV ファイルを使用してデバイスを一括インポートする機能が提供されています。 
-
-CSV ファイルの要件:
-1. CSV ファイルには、デバイス ID を含む列が 1 つのみ含まれている必要があります。
-
-1. ファイルにはヘッダーを含めないでください。
+アプリケーションに多数のデバイスを接続するために、Azure IoT Central では、CSV ファイルを使用してデバイスを一括インポートする機能が提供されています。 CSV ファイルには次の列 (とヘッダー) が必要です
+1.  IOTC_DeviceID **<span style="color:Red">(小文字にする必要があります)</span>**
+1.  IOTC_DeviceName (省略可能)
 
 
 アプリケーションにデバイスを一括登録する方法:
@@ -119,11 +116,13 @@ IoT Central に接続するデバイスをプロビジョニングするには�
 
     [![エクスポート - 成功](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
 
-1. エクスポートされた CSV ファイルでは、次の情報が得られます。
-    1. Name
-    1. Device ID
-    1. プライマリ接続文字列
-
+1. エクスポートされた CSV ファイルには、**デバイス ID、デバイス名、デバイスの主キー/セカンダリ キー、プライマリ/セカンダリ証明書サムプリント**の列情報が含まれます
+    *   IOTC_DEVICEID
+    *   IOTC_DEVICENAME
+    *   IOTC_SASKEY_PRIMARY
+    *   IOTC_SASKEY_SECONDARY
+    *   IOTC_X509THUMBPRINT_PRIMARY 
+    *   IOTC_X509THUMBPRINT_SECONDARY
 
 ## <a name="delete-a-device"></a>デバイスを削除する
 

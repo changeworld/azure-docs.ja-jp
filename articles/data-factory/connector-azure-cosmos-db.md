@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/28/2018
+ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 1afd64fbd7019164f0e1f5c850f2dcd8250cdbfc
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: db2f3086da41e990e6f87d8086d6e8defa447532
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600338"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543443"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB をコピー先またはコピー元としてデータをコピーする
 
@@ -34,10 +34,14 @@ Azure Cosmos DB のデータをサポートされる任意のシンク データ
 
 具体的には、この Azure Cosmos DB コネクタは、以下をサポートします。
 
-- Cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction)
+- Cosmos DB [SQL API](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction) との間でデータをコピーします。
+- INSERT または UPSERT として Cosmos DB に書き込みます。
 - JSON ドキュメントをそのままインポートまたはエクスポートするか、表形式のデータセット (SQL Database、CSV ファイルなど) をコピー元またはコピー先としてデータをコピーします。JSON ファイルまたは他の Cosmos DB コレクションをコピー先またはコピー元としてドキュメントをそのままコピーするには、「[JSON ドキュメントのインポート/エクスポート](#importexport-json-documents)」を参照してください。
 
 Data Factory は、Cosmos DB への書き込みの際に最適なパフォーマンスを提供するために [Cosmos DB Bulk Executor ライブラリ](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)と統合されます。
+
+>[!TIP]
+>[このビデオ](https://youtu.be/5-SRNiC_qOU)をご覧ください。Azure Blob ストレージから Cosmos DB にデータをコピーする手順を示し、Cosmos DB にデータを取り込むためのパフォーマンス チューニングの全般的な考慮事項について説明します。
 
 ## <a name="getting-started"></a>使用の開始
 

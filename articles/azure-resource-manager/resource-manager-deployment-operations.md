@@ -5,22 +5,20 @@ services: azure-resource-manager,virtual-machines
 documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
-ms.date: 04/23/2018
+ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 523ea3bf5d41231ab3281f9d8eb1fac8c3dfb55f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 9320e3089e02e1ca6b6bcce0287946baaf0558d9
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359147"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452039"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ操作の表示
 
@@ -67,7 +65,13 @@ ms.locfileid: "34359147"
   Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
-2. 各デプロイには、複数の操作が含まれます。 各操作は、デプロイ プロセスの手順を表します。 デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。 操作の状態は、 **Get-AzureRmResourceGroupDeploymentOperation**で確認できます。
+1. 相関 ID を取得するには、以下を使用します。
+
+  ```powershell
+  (Get-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
+  ```
+
+1. 各デプロイには、複数の操作が含まれます。 各操作は、デプロイ プロセスの手順を表します。 デプロイメントの問題を検出するには、通常デプロイメント操作に関する詳細を確認する必要があります。 操作の状態は、 **Get-AzureRmResourceGroupDeploymentOperation**で確認できます。
 
   ```powershell 
   Get-AzureRmResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
@@ -85,7 +89,7 @@ ms.locfileid: "34359147"
                    serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
   ```
 
-3. 失敗した操作についての詳しい情報を得るには、状態が **Failed** である操作のプロパティを取得します。
+1. 失敗した操作についての詳しい情報を得るには、状態が **Failed** である操作のプロパティを取得します。
 
   ```powershell
   (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
@@ -108,7 +112,7 @@ ms.locfileid: "34359147"
   ```
 
     操作の serviceRequestId と trackingId に注目してください。 serviceRequestId は、デプロイのトラブルシューティングを行うためにテクニカル サポートと共に作業を行うときに有用である可能性があります。 trackingId は、次の手順で特定の操作に対象を絞り込むために必要となります。
-4. 失敗した特定の操作のステータス メッセージを取得するには、次のコマンドを使用します。
+1. 失敗した特定の操作のステータス メッセージを取得するには、次のコマンドを使用します。
 
   ```powershell
   ((Get-AzureRmResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
@@ -121,7 +125,7 @@ ms.locfileid: "34359147"
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-4. Azure でのすべてのデプロイ操作には、要求と応答のコンテンツが含まれます。 要求コンテンツは、デプロイ中に Azure に送信するものです (たとえば、VM、OS ディスク、その他のリソースの作成)。 応答コンテンツは、Azure がデプロイメント要求に対して返信するものです。 デプロイの際に **DeploymentDebugLogLevel** パラメーターを使用して、要求または応答 (あるいは両方) がログに保存されるように指定できます。 
+1. Azure でのすべてのデプロイ操作には、要求と応答のコンテンツが含まれます。 要求コンテンツは、デプロイ中に Azure に送信するものです (たとえば、VM、OS ディスク、その他のリソースの作成)。 応答コンテンツは、Azure がデプロイメント要求に対して返信するものです。 デプロイの際に **DeploymentDebugLogLevel** パラメーターを使用して、要求または応答 (あるいは両方) がログに保存されるように指定できます。 
 
   次の PowerShell コマンドを使用すると、ログから情報を取得して、ローカルに保存できます。
 

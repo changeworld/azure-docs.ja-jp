@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: f3cf1232861239069894a8e5fa60c911053f038d
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 41d27b9a173cc019549f1dea0c66ffcaa51fbb10
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841983"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719445"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Azure Stack のデプロイ計画に関する考慮事項
 Azure Stack Development Kit (ASDK) をデプロイする前に、開発キットのホスト コンピューターがこの記事で説明されている要件を満たしていることをご確認ください。
@@ -93,6 +93,8 @@ Azure AD アカウントを使って Azure Stack をデプロイするには、�
    | 有効なパブリック Azure サブスクリプションの Microsoft アカウント |[はい] |
    | 有効な中国の Azure サブスクリプションのある職場または学校アカウント |[はい] |
    | 有効な米国政府の Azure サブスクリプションのある職場または学校アカウント |[はい] |
+
+デプロイの後、Azure Active Directory の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 たとえば、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に再配置するか、*既定のプロバイダー サブスクリプション*の所有者である個別の全体管理者アカウントを使用するかのいずれかを行うことができます。
 
 ## <a name="network"></a>ネットワーク
 ### <a name="switch"></a>スイッチ

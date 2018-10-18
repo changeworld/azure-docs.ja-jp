@@ -1,6 +1,6 @@
 ---
-title: Azure Portal での Service Fabric クラスターの作成 | Microsoft Docs
-description: この記事では、Azure ポータルと Azure Key Vault を使用して Azure でセキュリティ保護された Service Fabric クラスターを設定する方法について説明します。
+title: Azure portal で Service Fabric クラスターを作成する | Microsoft Docs
+description: Azure portal と Azure Key Vault を使用して Azure でセキュリティ保護された Service Fabric クラスターを設定する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/09/2018
+ms.date: 09/06/2018
 ms.author: aljo
-ms.openlocfilehash: 5d8f1d2634fd2efd624d1000f2fbc0400af4af11
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: fbca9c746863b852a9ddd46d00a65d4133961718
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136810"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984375"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -78,15 +78,18 @@ Service Fabric を操作するために、クライアント認証証明書を K
 アプリケーションのニーズを満たす運用クラスターを作成するには、いくつかの計画を立てる必要があります。この作業に役立つ[「Service Fabric Cluster planning considerations」(Service Fabric クラスターを計画する際の考慮事項)][service-fabric-cluster-capacity] ドキュメントを読んで理解することを強くお勧めします。 
 
 ### <a name="search-for-the-service-fabric-cluster-resource"></a>Service Fabric クラスター リソースの検索
+
+[Azure Portal][azure-portal] にサインインします。
+**[リソースの作成]** をクリックし、新しいリソース テンプレートを追加します。 **[Marketplace]** の **[すべて]** で、Service Fabric クラスター テンプレートを検索します。
+一覧から **[Service Fabric クラスター]** を選択します。
+
 ![Azure ポータルで Service Fabric クラスター テンプレートを検索します。][SearchforServiceFabricClusterTemplate]
 
-1. [Azure Portal][azure-portal] にサインインします。
-2. **[リソースの作成]** をクリックし、新しいリソース テンプレートを追加します。 **[Marketplace]** の **[すべて]** で、Service Fabric クラスター テンプレートを検索します。
-3. 一覧から **[Service Fabric クラスター]** を選択します。
-4. **[Service Fabric クラスター]** ブレードに移動し、**[作成]** をクリックします。
-5. **[Service Fabric クラスターの作成]** ブレードには次の 4 つの手順があります。
+**[Service Fabric クラスター]** ブレードに移動し、**[作成]** をクリックします。
 
-#### <a name="1-basics"></a>1.基本
+**[Service Fabric クラスターの作成]** ブレードには次の 4 つの手順があります。
+
+### <a name="1-basics"></a>1.基本
 ![新しいリソース グループを作成するスクリーン ショット。][CreateRG]
 
 [基本] ブレードでは、クラスターの基本情報を指定する必要があります。
@@ -94,15 +97,15 @@ Service Fabric を操作するために、クライアント認証証明書を K
 1. クラスターの名前を入力します。
 2. VM 向けリモート デスクトップの**ユーザー名**と**パスワード**を入力します。
 3. クラスターをデプロイする **サブスクリプション** を選択します (特に、複数のサブスクリプションがある場合)。
-4. **新しいリソース グループ**を作成します。 クラスター名と同じにすると、後で検索が楽になります。デプロイメントを変更したり、クラスターを削除したりするときに特に便利です。
+4. 新しい**リソース グループ**を作成します。 クラスター名と同じにすると、後で検索が楽になります。デプロイメントを変更したり、クラスターを削除したりするときに特に便利です。
    
    > [!NOTE]
    > 既存のリソース グループを使用することもできますが、新しいリソース グループを作成することをお勧めします。 これにより、クラスターとそれが使用するすべてのリソースを簡単に削除できるようになります。
    > 
    > 
-5. クラスターを作成する **リージョン** を選択します。 既にキー コンテナーにアップロードされている既存の証明書を使用する場合は、キー コンテナーが存在するのと同じリージョンを使用する必要があります。 
+5. クラスターを作成する**場所**を選択します。 既にキー コンテナーにアップロードされている既存の証明書を使用する場合は、キー コンテナーが存在するのと同じリージョンを使用する必要があります。 
 
-#### <a name="2-cluster-configuration"></a>2.クラスター構成
+### <a name="2-cluster-configuration"></a>2.クラスター構成
 ![ノード タイプの作成][CreateNodeType]
 
 クラスター ノードを構成します。 ノードのタイプには、VM のサイズ、VM の数、プロパティが定義されています。 クラスターには複数のノードのタイプを指定できますが、プライマリ ノードのタイプ (ポータルに最初に定義したノード) には、少なくとも 5 つの VM が必要です。これが Service Fabric システム サービスが配置されるノードのタイプになります。 "NodeTypeName" の既定の配置プロパティは自動的に追加されるため、**[配置プロパティ]** を構成しないでください。
@@ -110,53 +113,52 @@ Service Fabric を操作するために、クライアント認証証明書を K
 > [!NOTE]
 > 複数のノードのタイプの一般的なシナリオは、フロントエンド サービスとバックエンド サービスを含むアプリケーションです。 フロントエンド サービスは、小規模の VM (D2_V2 のような VM サイズ) に配置して、インターネットへのポートを開きます。また、バックエンド サービスは、大規模な VM (D3_V2、D6_V2、D15_V2 などの VM サイズ) に配置して、インターネットに面するポートは開きません。
 > 
-> 
 
 1. ノードのタイプの名前を選択します (英字と数字のみを含む 1 ～ 12 文字)。
-2. プライマリ ノード タイプの最小 VM **サイズ**は、クラスターに選択した**耐久性**レベルによって決まります。 既定の耐久性レベルはブロンズです。 耐久性の詳細については、[Service Fabric クラスターの耐久性の選択方法に関する記事][service-fabric-cluster-durability]を参照してください。
-3. VM のサイズを選択します。 D シリーズ VM には SSD ドライブが備わっており、ステートフルなアプリケーションに最適です。 部分的なコアを持つ VM SKU や使用可能なディスク容量が 10 GB 未満の VM SKU は使用しないでください。 VM サイズの選択については、[「Service Fabric Cluster planning considerations」(Service Fabric クラスターを計画する際の考慮事項) ドキュメント][service-fabric-cluster-capacity]を参照してください。
-4. ノードのタイプの VM 数を選択します。 後でノード タイプの VM 数を増減できますが、プライマリ ノード タイプの場合は、運用ワークロード用に 5 つ以上の VM が必要です。 他のノード タイプは、1 つ以上の VM を持つことができます。プライマリ ノード タイプの最小**数**の VM により、クラスターの**信頼性**が実現されます。  
-5. **1 つのノード クラスターと 3 つのノード クラスター** - これは、テストで使用することのみを目的としています。 運用ワークロードの実行では、サポートされません。
-6. カスタム エンドポイントを構成します。 このフィールドでは、アプリケーション用にパブリック インターネットに Azure Load Balancer 経由で公開するポートのコンマ区切りのリストを入力できます。 たとえば、Web アプリケーションをクラスターにデプロイする予定がある場合は、「80」と入力して、クラスターへのポート 80 でのトラフィックを許可します。 エンドポイントの詳細については、[アプリケーションとの通信][service-fabric-connect-and-communicate-with-services]に関する記事を参照してください。
-7. クラスター **診断**を構成します。 既定では、問題のトラブルシューティングのためクラスターで診断が有効になります。 診断を無効にするには、**[ステータス]** を **[オフ]** に切り替えます。 診断をオフにすることは **推奨されません** 。 Application Insights プロジェクトが既に作成されている場合は、キーを付与し、アプリケーション トレースがそのプロジェクトにルーティングされるようにします。
-8. クラスターを設定するファブリック アップグレード モードを選択します。 使用可能な最新バージョンをシステムで自動的に選択し、クラスターをそのバージョンにアップグレード場合は、 **[自動]** を選択します。 サポートされるバージョンを選択する場合は、 **マニュアル**モードに設定します。 ファブリックのアップグレード モードの詳細については、[service-fabric-cluster-upgrade document.][service-fabric-cluster-upgrade] を参照してください。
+2. プライマリ ノード タイプの最小 VM **サイズ**は、クラスターに選択した**耐久性レベル**によって決まります。 既定の耐久性レベルはブロンズです。 耐久性の詳細については、[Service Fabric クラスターの耐久性の選択方法に関する記事][service-fabric-cluster-durability]を参照してください。
+3. **仮想マシンのサイズ**を選択します。 D シリーズ VM には SSD ドライブが備わっており、ステートフルなアプリケーションに最適です。 部分的なコアを持つ VM SKU や使用可能なディスク容量が 10 GB 未満の VM SKU は使用しないでください。 VM サイズの選択については、[「Service Fabric Cluster planning considerations」(Service Fabric クラスターを計画する際の考慮事項) ドキュメント][service-fabric-cluster-capacity]を参照してください。
+4. ノード タイプに対する**最初の VM スケール セットの容量**を選択します。 後でノード タイプの VM 数を増減できますが、プライマリ ノード タイプの場合は、運用ワークロード用に 5 つ以上の VM が必要です。 他のノード タイプには、VM 数に最小値の 1 を設定できます。 プライマリ ノード タイプの最小 VM **数**によって、クラスターの**信頼性**が決まります。  
+5. **1 つのノード クラスターと 3 つのノード クラスター**は、テストでの使用のみを目的としています。 運用ワークロードの実行では、サポートされません。
+6. **カスタム エンドポイント**を構成します。 このフィールドでは、アプリケーション用にパブリック インターネットに Azure Load Balancer 経由で公開するポートのコンマ区切りのリストを入力できます。 たとえば、Web アプリケーションをクラスターにデプロイする予定がある場合は、「80」と入力して、クラスターへのポート 80 でのトラフィックを許可します。 エンドポイントの詳細については、[アプリケーションとの通信][service-fabric-connect-and-communicate-with-services]に関する記事を参照してください。
+7. **リバース プロキシを有効にします**。  [Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)は、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
+8. **[+ オプションの設定を表示する]** で、クラスターの**診断**を構成します。 既定では、問題のトラブルシューティングのためクラスターで診断が有効になります。 診断を無効にするには、**[ステータス]** を **[オフ]** に切り替えます。 診断をオフにすることは **推奨されません** 。 Application Insights プロジェクトが既に作成されている場合は、キーを付与し、アプリケーション トレースがそのプロジェクトにルーティングされるようにします。
+9. **DNS サービスを含めます**。  [DNS サービス](service-fabric-dnsservice.md)は DNS プロトコルを使用して他のサービスを検索できるオプションのサービスです。
+10. クラスターを設定する**ファブリック アップグレード モード**を選択します。 使用可能な最新バージョンをシステムで自動的に選択し、クラスターをそのバージョンにアップグレード場合は、 **[自動]** を選択します。 サポートされるバージョンを選択する場合は、 **マニュアル**モードに設定します。 Fabric のアップグレード モードの詳細については、[service-fabric-cluster-upgrade ドキュメント][service-fabric-cluster-upgrade]を参照してください。
 
 > [!NOTE]
-> サポートされるバージョンの Service Fabric を実行しているクラスターのみがサポート対象になります。 **マニュアル** モードを選択すると、自身の責任でクラスターをサポートされるバージョンにアップグレードする必要があります。 > 
+> サポートされるバージョンの Service Fabric を実行しているクラスターのみがサポート対象になります。 **マニュアル** モードを選択すると、自身の責任でクラスターをサポートされるバージョンにアップグレードする必要があります。
 > 
 
-#### <a name="3-security"></a>手順 3.セキュリティ
+### <a name="3-security"></a>手順 3.セキュリティ
 ![Azure ポータルのセキュリティ構成のスクリーン ショット。][BasicSecurityConfigs]
 
-セキュア テスト クラスターを簡単に設定できるようにするために、**[Basic]** オプションが用意されています。 既に証明書があり、キー コンテナーにアップロードしている場合 (また、デプロイでキー コンテナーが使用可能になっている場合) は、**[カスタム]** オプションを使用します。
+セキュア テスト クラスターを簡単に設定できるようにするために、**[Basic]** オプションが用意されています。 既に証明書があり、[キー コンテナー](/azure/key-vault/)にアップロードしている場合 (また、デプロイでキー コンテナーが使用可能になっている場合) は、**[カスタム]** オプションを使用します
 
-##### <a name="basic-option"></a>[Basic] オプション
+#### <a name="basic-option"></a>[Basic] オプション
 画面の指示に従って、既存のキー コンテナーを追加または再利用し、証明書を追加します。 証明書の追加は、同期処理です。そのため、証明書が作成されるのを待機する必要があります。
-
 
 この処理が完了するまで、画面から移動しないでください。
 
 ![CreateKeyVault]
 
-キー コンテナーに証明書が追加されたので、次の画面が表示され、キー コンテナーのアクセス ポリシーを編集するように求められる場合があります。 **[Edit access policies for]\(アクセス ポリシーの編集\)** ボタンを選択します。
+キー コンテナーが作成されたので、お使いのキー コンテナーのアクセス ポリシーを編集します。 
 
 ![CreateKeyVault2]
 
-[高度なアクセス ポリシー] をクリックし、デプロイに対して Virtual Machines へのアクセスを有効にします。 テンプレートのデプロイも有効にすることをお勧めします。 選択を行ったら、忘れずに **[保存]** ボタンをクリックし、**[アクセス ポリシー]** ウィンドウを終了します。
+**[Edit access policies]\(アクセス ポリシーの編集\)** をクリックし、**高度なアクセス ポリシーを表示して**、デプロイのための Azure Virtual Machines へのアクセスを有効にします。 テンプレートのデプロイも有効にすることをお勧めします。 選択を行ったら、忘れずに **[保存]** ボタンをクリックし、**[アクセス ポリシー]** ウィンドウを終了します。
 
 ![CreateKeyVault3]
 
-クラスター作成プロセスの残りの部分に進む準備が整いました。
+証明書の名前を入力して **[OK]** をクリックします。
 
 ![CreateKeyVault4]
 
-##### <a name="custom-option"></a>カスタム オプション
+#### <a name="custom-option"></a>カスタム オプション
 **[Basic]** オプションの手順を既に実行している場合は、このセクションをスキップします。
 
 ![SecurityCustomOption]
 
 [セキュリティ] ページを完了するには、CertificateThumbprint、SourceVault、および CertificateURL の情報が必要です。 この情報が手近にない場合は、別のブラウザー ウィンドウを開き、以下の手順を実行します。
-
 
 1. お使いのキー コンテナーに移動して、証明書を選択します。 
 2. [プロパティ] タブを選択し、"リソース ID"  を別のブラウザー ウィンドウの "ソース キー コンテナー" にコピーします。 
@@ -165,24 +167,22 @@ Service Fabric を操作するために、クライアント認証証明書を K
 
 3. [証明書] タブを選択します。
 4. 証明書の拇印をクリックすると、[バージョン] ページに移動します。
-5. 現在のバージョンの下に表示されている Guid をクリックします。
+5. 現在のバージョンの下に表示されている GUID をクリックします。
 
     ![CertInfo1]
 
 6. 以下のような画面が表示されます。 "拇印" を別のブラウザー ウィンドウの [証明書の拇印] にコピーします。
 7. [シークレット識別子] の情報を別のブラウザー ウィンドウの [証明書 URL] にコピーします。
 
-
-![CertInfo2]
-
+    ![CertInfo2]
 
 **[詳細設定の構成]** ボックスをオンにして、**管理用クライアント**と**読み取り専用クライアント**のクライアント証明書を入植します。 該当する場合は、これらのフィールドに管理用クライアント証明書の拇印と、読み取り専用ユーザー クライアント証明書の拇印を入力します。 管理者がクラスターに接続しようとした場合、ここに入力した拇印値に一致する拇印を持つ証明書がある場合にのみアクセスが許可されます。  
 
-#### <a name="4-summary"></a>4.まとめ
+### <a name="4-summary"></a>4.まとめ
 
 以上でクラスターをデプロイする準備が整いました。 クラスターをデプロイする前に、大きな青い情報ボックスの中を確認し、リンクを探して、証明書をダウンロードします。 証明書は、必ず安全な場所に保管してください。 証明書がないと、クラスターに接続できません。 ダウンロードした証明書には、パスワードが設定されていないので、パスワードを追加することをお勧めします。
 
-クラスターの作成を完了するには、**[作成]** をクリックします。 必要に応じて、テンプレートをダウンロードすることもできます。 
+クラスターの作成を完了するには、**[作成]** をクリックします。 必要に応じて、テンプレートをダウンロードすることもできます。
 
 ![まとめ]
 
@@ -190,7 +190,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 
 Powershell または CLI を使用してクラスターで管理操作を実行するには、クラスターに接続する必要があります。詳細については、[クラスターへの接続に関する記事](service-fabric-connect-to-secure-cluster.md)を参照してください。
 
-### <a name="view-your-cluster-status"></a>クラスターの状態を表示する
+## <a name="view-your-cluster-status"></a>クラスターの状態を表示する
 ![ダッシュボードのクラスターの詳細のスクリーン ショット。][ClusterDashboard]
 
 クラスターの作成後、ポータルでクラスターを検査できます。
@@ -225,7 +225,8 @@ Powershell または CLI を使用してクラスターで管理操作を実行�
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md
-<!--[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node --> [remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md [service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.mdd
+[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md
+[service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.md
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: wesmc
-ms.openlocfilehash: 6733891213f15e9ceaf08ef7fb50380db47a695f
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: b48235b1c1912ac767070d5890d4768138a9db8b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259196"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732093"
 ---
 # <a name="import-and-export-data-in-azure-redis-cache"></a>Azure Redis Cache でデータをインポートまたはエクスポートする
 Import/Export は Azure Redis Cache のデータ管理操作です。Redis Cache データベース (RDB) のスナップショットを Premium キャッシュからエクスポートし、Azure ストレージ アカウント内の BLOB にインポートすることで、Azure Redis Cache との間でデータのインポートとエクスポートを実行できます。 
@@ -78,7 +78,7 @@ Import は、任意のクラウドまたは環境で稼働している任意の 
 2. **[ストレージ コンテナーの選択]** をクリックし、目的のストレージ アカウントを選択します。 ストレージ アカウントは、キャッシュと同じサブスクリプションおよびリージョン内にある必要があります。
 
    > [!IMPORTANT]
-   > Export が機能するページ BLOB はクラシック ストレージ アカウントと Resource Manager ストレージ アカウントの両方でサポートされていますが、現時点では [Blob ストレージ アカウント](../storage/common/storage-account-options.md#blob-storage-accounts)ではサポートされていません。
+   > エクスポートが機能するページ BLOB は、クラシック ストレージ アカウントと Resource Manager ストレージ アカウントの両方でサポートされていますが、現時点では BLOB ストレージ アカウントではサポートされていません。 詳細については、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」を参照してください。
    >
    >
 
@@ -156,7 +156,7 @@ Import/Export では、Azure Redis Cache へのデータの取り込みと Azure
 これを解決するには、インポート操作またはエクスポート操作を 15 分以内に開始してください。
 
 ### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Azure Blob Storage にデータをエクスポートしているときにエラーが発生しました。 なぜでしょうか?
-Export は、ページ BLOB として格納されている RDB ファイルでのみ機能します。 それ以外のタイプの BLOB は、クール層またはホット層の Blob Storage アカウントも含め、現時点ではサポートされていません。 詳細については、「[BLOB ストレージ アカウント](../storage/common/storage-account-options.md#blob-storage-accounts)」を参照してください。
+Export は、ページ BLOB として格納されている RDB ファイルでのみ機能します。 それ以外のタイプの BLOB は、ホット層とクール層の BLOB ストレージ アカウントも含め、現時点ではサポートされていません。 詳細については、「[Azure ストレージ アカウントの概要](../storage/common/storage-account-overview.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 Premium キャッシュ機能をさらに使用する方法を学習します。

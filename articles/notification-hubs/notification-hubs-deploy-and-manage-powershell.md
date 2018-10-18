@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 5a134e14768e0576c501232b6aedb1f836bc05b1
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 8312841b5f8e4b9979de8abf32ce1009b4243f06
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141176"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388165"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>PowerShell を使用した Notification Hubs のデプロイと管理
 ## <a name="overview"></a>概要
@@ -155,11 +155,10 @@ else
 * [Service Bus PowerShell Scripts](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
 
 [購入オプション]: http://azure.microsoft.com/pricing/purchase-options/
-
-  [メンバー オファー]: http://azure.microsoft.com/pricing/member-offers/
+[メンバー オファー]: http://azure.microsoft.com/pricing/member-offers/
 [無料試用版]: http://azure.microsoft.com/pricing/free-trial/
 [Azure PowerShell のインストールと構成に関するページ]: /powershell/azureps-cmdlets-docs
-[.NET API for Notification Hubs]: https://docs.microsoft.com/en-us/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+[.NET API for Notification Hubs]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace
 [New-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/new-azuresbnamespace
 [Get-AzureSBAuthorizationRule]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbauthorizationrule

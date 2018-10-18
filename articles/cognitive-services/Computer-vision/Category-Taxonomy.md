@@ -1,22 +1,24 @@
 ---
-title: Computer Vision API の 86 カテゴリの分類| Microsoft Docs
-description: Microsoft Cognitive Services で Computer Vision API の 86 カテゴリの分類を取得します。
+title: Computer Vision API の 86 カテゴリの分類
+titlesuffix: Azure Cognitive Services
+description: Azure Cognitive Services で Computer Vision API の 86 カテゴリの分類を取得します。
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: reference
 ms.date: 12/19/2016
 ms.author: kefre
-ms.openlocfilehash: c44345ac1829f09cc855483278198883ca021159
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b5da9a19d51bef6ae31b89c5b8fc8ae4b7c5177e
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373048"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984909"
 ---
-##<a name="86-categories-taxonomy"></a>86 カテゴリの分類
+# <a name="86-categories-taxonomy"></a>86 カテゴリの分類
+
 abstract_
 
 abstract_net

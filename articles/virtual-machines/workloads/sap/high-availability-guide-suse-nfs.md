@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 6ad943d2ae98093f7e5b94df59757ff603083cfe
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 99b7b83ca2d7f6f19df137e6ecf5deaf411e9a5e
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668957"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634746"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上の Azure VM での NFS の高可用性
 
@@ -119,7 +119,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
    4. [管理ユーザー名] と[管理パスワード]  
       コンピューターへのログオンで使用できる新しいユーザーが作成されます。
    5. サブネット ID  
-      仮想マシンを接続するサブネットの ID。 新しい仮想ネットワークを作成する場合は空のままにしておきます。または、仮想マシンをオンプレミス ネットワークに接続する場合は、VPN または Express Route 仮想ネットワークのサブネットを選択します。 通常、この ID は、/subscriptions/**&lt;サブスクリプション ID&gt;**/resourceGroups/**&lt;リソース グループ名&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;仮想ネットワーク名&gt;**/subnets/**&lt;サブネット名&gt;** のようになります。
+      VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、この ID は、/subscriptions/**&lt;サブスクリプション ID&gt;**/resourceGroups/**&lt;リソース グループ名&gt;**/providers/Microsoft.Network/virtualNetworks/**&lt;仮想ネットワーク名&gt;**/subnets/**&lt;サブネット名&gt;** のようになります。
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Azure Portal を使用した手動による Linux のデプロイ
 

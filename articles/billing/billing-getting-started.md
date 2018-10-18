@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
-ms.author: tonguyen
-ms.openlocfilehash: 9396e954305ecc9ff6cbdd664c6cb71846bd5bfa
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: cwatson
+ms.openlocfilehash: 6b497fd9f4280c36adcbeb4d94e469525c9dad6e
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919128"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423002"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -54,17 +54,6 @@ Azure にサインアップしたら、支出を把握するために行える�
 通常、Azure Portal でサービスを追加すると、類似する推定月額料金を示すビューが表示されます。 たとえば、Windows VM のサイズを選択すると、コンピューティング時間の推定月額料金が表示されます。
 
 ![例: A1 Windows VM の推定月額料金は 66.96 米ドル](./media/billing-getting-started/vm-size-cost.PNG)
-
-### <a name="set-up-billing-alerts"></a>課金アラートのセットアップ
-
-使用料金が指定した金額を超えたときに電子メールを受け取るには、課金アラートを設定します。 毎月のクレジットがある場合は、指定した金額まで使用したときのアラートを設定します。 詳細については、「[Microsoft Azure サブスクリプションの課金アラートの設定](billing-set-up-alerts.md)」を参照してください。
-
-![課金アラートの電子メールのスクリーンショット](./media/billing-getting-started/billing-alert.png)
-
-> [!NOTE]
-> この機能はまだプレビュー段階であるため、使用状況を定期的に確認してください。
-
-最初のアラートのガイドラインとして、料金計算ツールで取得したコスト見積もりを使用することをお勧めします。
 
 ### <a name="spending-limit"></a>使用制限が有効になっているかどうかを確認する
 
@@ -166,7 +155,7 @@ Enterprise コスト ビューは、現在、パブリック プレビューの�
     - お客様は部門管理者者であり、登録管理者が、"DA ビュー料金" 設定を無効にした。  登録管理者に問い合わせて、アクセスできるように設定してもらってください。 
     - チャネル パートナーを通して Azure を購入し、パートナーが価格情報を公開していない。  
 - エンタープライズ ポータル内でコストのアクセスに関連する設定が更新されても、Azure ポータルで、変更が反映されるまで、数分の遅延があります。
-- 使用制限、請求の通知と請求書ガイダンスは EA サブスクリプションとは関係ありません。
+- 使用制限と請求書ガイダンスは、EA サブスクリプションには適用されません。
 
 ### <a name="check-your-subscription-and-access"></a>サブスクリプションとアクセスを確認する
 

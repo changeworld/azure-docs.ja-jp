@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 9e7e853ad7562bf5d449479ad730a5dabd6a97b8
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2173a24eb3bbaafe9dcf25461eb5357ba3a6e7ad
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585426"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166901"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus と Event Grid の統合の概要
 
@@ -179,7 +179,7 @@ New-AzureRmEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBS
 * [Event Grid](https://docs.microsoft.com/azure/event-grid/) の詳細を確認します。
 * [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) について学習します。
 * [Logic Apps](https://docs.microsoft.com/azure/logic-apps/) の詳細を見る
-* [Service Bus](https://docs.microsoft.com/azure/azure-functions/) の詳細を確認します。
+* [Service Bus](https://docs.microsoft.com/azure/service-bus/) の詳細を確認します。
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

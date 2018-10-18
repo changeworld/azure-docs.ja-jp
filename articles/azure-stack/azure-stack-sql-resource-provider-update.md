@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 3517114d5bc267aa32cea49161d0d34156a2ed1e
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 84306d832464249d614942d85a1069ad42dd2eba
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390911"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578125"
 ---
 # <a name="update-the-sql-resource-provider"></a>SQL リソース プロバイダーの更新
 
@@ -38,8 +38,8 @@ Azure Stack が新しいビルドに更新される際に、新しい SQL リソ
 
 *UpdateSQLProvider.ps1* スクリプトは、最新のリソース プロバイダーのコードで新しい仮想マシン (VM) を作成します。
 
->[!NOTE]
->Marketplace の管理から最新の Windows Server 2016 Core のイメージをダウンロードすることをお勧めします。 更新プログラムをインストールする必要がある場合は、ローカルの依存関係のパスに MSU パッケージを **1 つ**配置できます。 この場所に複数の MSU ファイルがある場合、スクリプトは失敗します。
+> [!NOTE]
+> Marketplace の管理から最新の Windows Server 2016 Core のイメージをダウンロードすることをお勧めします。 更新プログラムをインストールする必要がある場合は、ローカルの依存関係のパスに MSU パッケージを **1 つ**配置できます。 この場所に複数の MSU ファイルがある場合、スクリプトは失敗します。
 
 *UpdateSQLProvider.ps1* スクリプトは、新しい VM を作成した後、古いプロバイダー VM から次の設定を移行します。
 
@@ -49,9 +49,9 @@ Azure Stack が新しいビルドに更新される際に、新しい SQL リソ
 
 ### <a name="update-script-powershell-example"></a>PowerShell 更新スクリプトの例
 
-<a name="you-can-edit-and-run-the-following-script-from-an-elevated-powershell-ise"></a>管理者特権の PowerShell ISE セッションで次のスクリプトを編集して実行できます。 
--  
-- 必要に応じて、環境に適したアカウント情報とパスワードに変更することを忘れないでください。
+管理者特権の PowerShell ISE セッションで次のスクリプトを編集して実行できます。 
+
+必要に応じて、環境に適したアカウント情報とパスワードに変更することを忘れないでください。
 
 > [!NOTE]
 > この更新プロセスは、Azure Stack 統合システムにのみ適用されます。
@@ -66,6 +66,9 @@ $domain = "AzureStack"
 
 # For integrated systems, use the IP address of one of the ERCS virtual machines.
 $privilegedEndpoint = "AzS-ERCS01"
+
+# Provide the Azure environment used for deploying Azure Stack. Required only for Azure AD deployments. Supported environment names are AzureCloud, AzureUSGovernment, or AzureChinaCloud. 
+$AzureEnvironment = "<EnvironmentName>"
 
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\SQLRP'
@@ -92,6 +95,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
   -VMLocalCredential $vmLocalAdminCreds `
   -CloudAdminCredential $cloudAdminCreds `
   -PrivilegedEndpoint $privilegedEndpoint `
+  -AzureEnvironment $AzureEnvironment `
   -DefaultSSLCertificatePassword $PfxPass `
   -DependencyFilesLocalPath $tempDir\cert `
 
@@ -107,7 +111,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 | **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
 | **VMLocalCredential** | SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報。 | _必須_ |
 | **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ |
-| **AzureEnvironment** | Azure Stack のデプロイに使用したサービス管理者アカウントの Azure 環境。 ADFS でない場合にのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure Active Directory を使用している場合は **AzureChinaCloud** です。 | AzureCloud |
+| **AzureEnvironment** | Azure Stack のデプロイに使用したサービス管理者アカウントの Azure 環境。 Azure AD のデプロイでのみ必須です。 サポートされている環境名は **AzureCloud**、**AzureUSGovernment**、または中国の Azure AD を使用している場合は **AzureChinaCloud** です。 | AzureCloud |
 | **DependencyFilesLocalPath** | このディレクトリには、証明書 .pfx ファイルも配置する必要があります。 | "_1 つのノードの場合は省略可能。複数のノードの場合は必須_" |
 | **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ |
 | **MaxRetryCount** | エラーが 発生した場合に各操作を再試行する回数。| 2 |

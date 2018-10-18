@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 1fd5905b8ea3f87fe6cfc2a830b73b8120a717dd
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: d73c0cc6416145fa3764d2ef938d6de7a4195c1b
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341479"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982880"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL の制限事項
 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。 MySQL データベース エンジンに適用できる[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)も確認してください。
@@ -72,7 +72,7 @@ ms.locfileid: "37341479"
 - サーバー ストレージを減らすことはできません。
 
 ### <a name="server-version-upgrades"></a>サーバー バージョンのアップグレード
-- データベース エンジンのメジャー バージョン間での自動移行は現在サポートされていません。
+- データベース エンジンのメジャー バージョン間での自動移行は現在サポートされていません。 次のメジャー バージョンにアップグレードする場合は、新しいエンジンのバージョンで作成されたサーバーに[ダンプを復元](./concepts-migrate-dump-restore.md)します。
 
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 - PITR 機能を使うと、基になっているサーバーと同じ構成で新しいサーバーが作成されます。
@@ -80,9 +80,6 @@ ms.locfileid: "37341479"
 
 ### <a name="vnet-service-endpoints"></a>VNet サービス エンドポイント
 - VNet サービス エンドポイントは、汎用サーバーとメモリ最適化サーバーでのみサポートされています。
-
-### <a name="subscription-management"></a>サブスクリプション管理
-- サブスクリプションとリソース グループ間での事前作成されたサーバーの動的な移動は現在サポートされていません。
 
 ## <a name="current-known-issues"></a>現時点での既知の問題
 - MySQL サーバー インスタンスでは、接続が確立された後に不正確なサーバー バージョンが表示されます。 正確なサーバー インスタンス エンジンのバージョンを取得するには、`select version();` コマンドを使用します。

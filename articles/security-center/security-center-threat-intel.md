@@ -1,40 +1,34 @@
 ---
-title: Azure Security Center の脅威インテリジェンス | Microsoft Docs
-description: Azure Security Center の脅威インテリジェンス機能を使用して、VM とコンピューターの潜在的な脅威を特定する方法について説明します。
+title: Azure Security Center の脅威インテリジェンスとセキュリティ アラート マップ | Microsoft Docs
+description: Azure Security Center のセキュリティ アラート マップと脅威インテリジェンス機能を使用して、VM とコンピューターの潜在的な脅威を特定する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: a771a3a1-2925-46ca-8e27-6f6a0746f58b
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: 8f1c6aa2e691a11e8920db8ca8bfdef5b8eb61b9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 09/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: d82d52e05d85fbd5197f84f032a55dd9c74f9d1f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434192"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714430"
 ---
-# <a name="threat-intelligence-in-azure-security-center"></a>Azure Security Center の脅威インテリジェンス
-この記事は、Azure Security Center の脅威インテリジェンスを使用して、セキュリティ関連の問題に対処する際に役立ちます。
+# <a name="security-alerts-map-and-threat-intelligence"></a>セキュリティ アラート マップと脅威インテリジェンス
+この記事は、Azure Security Center のセキュリティ アラート マップとセキュリティ イベント ベースの脅威インテリジェンス マップを使用して、セキュリティ関連の問題を解決するのに役立ちます。
 
-## <a name="what-is-threat-intelligence"></a>脅威インテリジェンスとは
-IT 管理者は、Security Center で利用可能な脅威インテリジェンス オプションを使用することで、環境に対するセキュリティの脅威を特定することができます。 たとえば、ある特定のコンピューターがボットネットの一部であるかどうかを特定できます。 コンピューターをひそかにコマンド アンド コントロール サーバーに接続するマルウェアが攻撃者によって不正にインストールされた場合、そのコンピューターはボットネットのノードになる可能性があります。 また、脅威インテリジェンスでは、闇サイトなどのアンダーグラウンド通信チャネルに由来する潜在的な脅威を特定することもできます。
+## <a name="how-the-security-alerts-map-works"></a>セキュリティ アラート マップのしくみ
+Security Center では、その環境に対するセキュリティ上の脅威を特定するのに役立つマップを提供します。 たとえば、ある特定のコンピューターがボットネットの一部であるかどうか、および脅威の発生元を特定することができます。 ボットネットを管理するコマンド アンド コントロールでひそかにやりとりするマルウェアが攻撃者によって不正にインストールされた場合、コンピューターはボットネットのノードになる可能性があります。 
 
-Security Center では、この脅威インテリジェンスを構築するために、Microsoft 内部の複数のソースから取得したデータが使用されています。 Security Center は、このデータを使用して、環境に対する潜在的な脅威を特定します。 **[脅威インテリジェンス]** ウィンドウは、3 つの主要なオプションで構成されています。
+このマップを構築するために、Security Center では Microsoft 内部の複数のソースから取得したデータが使用されます。 Security Center では、このデータを使用して、ご利用の環境に対する潜在的な脅威をマップします。 
 
-- Detected threat types
-- 脅威の発生元
-- 脅威インテリジェンス マップ
-
-
-## <a name="when-should-you-use-threat-intelligence"></a>脅威インテリジェンスを使用する状況
 [セキュリティ インシデント対応プロセス](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide#incident-response)の手順の 1 つは、侵害されたシステムの重大度を特定することです。 このフェーズでは、次のタスクを実行する必要があります。
 
 - 攻撃の性質を特定する。
@@ -43,29 +37,38 @@ Security Center では、この脅威インテリジェンスを構築するた�
 - 侵害されたシステムを特定する。
 - アクセスされたファイルを特定して、そのファイルの機密度を判定する。
 
-これらのタスクには、Security Center の脅威インテリジェンス情報を活用できます。
+Security Center のセキュリティ アラート マップを使用して、これらのタスクに役立てることができます。
 
-## <a name="access-the-threat-intelligence"></a>脅威インテリジェンスへのアクセス
-現在の環境の脅威インテリジェンスを視覚化するには、まず、情報が存在するワークスペースを選択する必要があります。 ワークスペースが複数ない場合、ワークスペース セレクターは表示されず、**[脅威インテリジェンス]** ダッシュボードに直接移動します。 ダッシュボードにアクセスするには:
+## <a name="access-the-security-alerts-map"></a>セキュリティ アラート マップにアクセスする
+ご利用の環境で現在の脅威を視覚化するには、セキュリティ アラート マップを開きます。
+
+1. **[Security Center]** ダッシュボードを開きます。
+2. 左側のウィンドウの **[脅威の防止]** で、**[セキュリティ アラート マップ]** を選択します。 マップが開きます。
+3. アラートに関する詳細情報を取得して修正手順を受け取るには、マップ上のアラート ドットをクリックして、手順に従います。 
+ 
+セキュリティ アラート マップはアラートに基づいています。 これらのアラートは、IP アドレスが既知の危険な IP アドレス (例: 既知の Cryptominer) か、以前には危険として認識されていない IP アドレスかどうかにかかわらず、ネットワーク通信が正常に解決された IP アドレスに関連付けられているアクティビティに基づいています。 このマップによって、Azure で以前に選択したサブスクリプション全体でアラートが提供されます。 
+
+マップ上のアラートは、発生元として検出された場所の地理的な位置に基づいて表示され、重大度によって色分けされます。 
+    ![脅威インテリジェンス情報](./media/security-center-threat-intel/security-center-alert-map.png)
+
+## <a name="viewing-the-event-based-threat-intelligence-dashboard"></a>イベント ベースの脅威インテリジェンス ダッシュボードを表示する
+基本的なセキュリティ イベントに基づいて脅威インテリジェンス マップを表示するには、この手順に従います。 このマップには、既知のボットネットの IP アドレスなど、危険と見なされる IP アドレスを含むイベントのみが表示されます。
 
 1. **[Security Center]** ダッシュボードを開きます。
 
-1. 左側のウィンドウの **[Threat Protection] (脅威からの保護)** で、**[脅威インテリジェンス]** を選択します。 マップが開きます。
+1. 左側のウィンドウの **[脅威の防止]** で、**[セキュリティ アラート マップ]** を選択します。 マップが開きます。
+2. 右上隅の **[セキュリティ イベント マップに移動]** をクリックします。
+3. ダッシュボードを表示するワークスペースを選択します。
+4. マップの上部で、**[View classic threat intelligence] (従来の脅威インテリジェンスを表示する)** を選択します。 **[脅威インテリジェンス]** ダッシュボードが開きます。
 
-    ![脅威インテリジェンス マップ](./media/security-center-threat-intel/security-center-threat-intel.png)
-
-1. マップの上部で、**[View classic threat intelligence] (従来の脅威インテリジェンスを表示する)** を選択します。 **[脅威インテリジェンス]** ダッシュボードが開きます。
-
-    ![[脅威インテリジェンス] ダッシュボード](./media/security-center-threat-intel/security-center-threat-intel-fig1.png)
-
-    > [!NOTE]
-    > 右端の列に **[アップグレード プラン]** と表示されている場合、このワークスペースでは無料のサブスクリプションが使用されています。 この機能を使用するには、Standard にアップグレードしてください。 右端の列に **[REQUIRES UPDATE]\(更新が必要\)** と表示されている場合は、この機能を使用するために [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) を更新してください。 料金プランの詳細については、「Azure Security Center の価格」を参照してください。
-    >
-1. 調査するワークスペースが複数ある場合は、**[悪意のある IP]** 列に従って調査に優先順位を付けます。 ここには、このワークスペースに含まれている悪意のある IP の現在の数が表示されます。 使用するワークスペースを選択すると、**[脅威インテリジェンス]** ダッシュボードが表示されます。
+   > [!NOTE]
+   > 右端の列に **[アップグレード プラン]** と表示されている場合、このワークスペースでは無料のサブスクリプションが使用されています。 この機能を使用するには、Standard にアップグレードしてください。 右端の列に **[REQUIRES UPDATE]\(更新が必要\)** と表示されている場合は、この機能を使用するために [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) を更新してください。 料金プランの詳細については、「Azure Security Center の価格」を参照してください。
+   >
+5. 調査するワークスペースが複数ある場合は、**[悪意のある IP]** 列に従って調査に優先順位を付けます。 ここには、このワークスペースに含まれている悪意のある IP の現在の数が表示されます。 使用するワークスペースを選択すると、**[脅威インテリジェンス]** ダッシュボードが表示されます。
 
     ![脅威インテリジェンス情報](./media/security-center-threat-intel/security-center-threat-intel-fig5.png)
 
-1. このダッシュボードは、4 つのタイルに分かれています。
+6. このダッシュボードは、4 つのタイルに分かれています。
 
     a.  **[脅威の種類]**。 選択したワークスペースで検出された脅威の種類が示されます。
 

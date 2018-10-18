@@ -12,16 +12,16 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: f65ff3e38e3768dccf04e9eaa4345ffcea4daa9e
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: ef5459b2b31b67afe187612ffc1ab079a5045a8c
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451122"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114912"
 ---
 # <a name="create-your-first-function-from-the-command-line"></a>コマンド ラインから最初の関数を作成する
 
-このクイックスタート トピックでは、コマンド ラインまたはターミナルから最初の関数を作成する方法について説明します。 Azure CLI を使用して、関数をホストする[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/) インフラストラクチャである Function App を作成します。 関数コード プロジェクトは、[Azure Functions Core Tools](functions-run-local.md) を使用してテンプレートから生成されます。このツールは、関数アプリ プロジェクトを Azure にデプロイするためにも使用されます。
+このクイックスタート トピックでは、コマンド ラインまたはターミナルから最初の関数を作成する方法について説明します。 Azure CLI を使用して、関数をホストする[サーバーレス](https://azure.microsoft.com/solutions/serverless/) インフラストラクチャである Function App を作成します。 関数コード プロジェクトは、[Azure Functions Core Tools](functions-run-local.md) を使用してテンプレートから生成されます。このツールは、関数アプリ プロジェクトを Azure にデプロイするためにも使用されます。
 
 以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行することができます。
 

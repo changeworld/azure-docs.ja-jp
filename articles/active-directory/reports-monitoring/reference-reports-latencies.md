@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 12/15/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f0de2f8700bef83b5a8a9303e90c97aab29722a3
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: b81c66acc0a90ba9b74cf1f4fb34ef7a545837f9
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42145777"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736608"
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 
@@ -34,22 +34,15 @@ Azure Active Directory の[レポート](../active-directory-preview-explainer.m
 
 アクティビティ レポートには次の 2 つの領域があります。
 
-- 
-  **サインイン アクティビティ** – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報
-- 
-  **監査ログ** - ユーザーとグループの管理や、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報
+- **サインイン アクティビティ** – マネージド アプリケーションの使用状況とユーザー サインイン アクティビティに関する情報
+- **監査ログ** - ユーザーとグループの管理や、マネージド アプリケーションとディレクトリのアクティビティに関するシステム アクティビティ情報
 
 次の表に、アクティビティ レポートの待機時間情報を一覧表示します。
 
-| レポート | 待ち時間 (P95) |待ち時間 (P99)|
+| レポート | 待機時間 (95%) |待機時間 (99%)|
 | :-- | --- | --- | 
 | 監査ログ | 2 分  | 5 分  |
 | サインイン | 2 分  | 5 分 |
-
-
-
-
-
 
 
 ## <a name="security-reports"></a>セキュリティ レポート
