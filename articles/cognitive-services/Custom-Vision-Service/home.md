@@ -1,7 +1,7 @@
 ---
 title: Custom Vision Service とは
 titlesuffix: Azure Cognitive Services
-description: Custom Vision Service を使用すると、Azure クラウド内にカスタム画像分類器を構築できます。
+description: Custom Vision Service を使用すると、Azure クラウド内にカスタム画像分類子を構築できます。
 services: cognitive-services
 author: anrothMSFT
 manager: cgronlun
@@ -19,7 +19,7 @@ ms.locfileid: "46365861"
 ---
 # <a name="what-is-the-custom-vision-service"></a>Custom Vision Service とは
 
-Custom Vision Service は、カスタム画像分類器を構築できる Azure Cognitive Service です。 画像の分類器を簡単に素早く構築、デプロイし、その性能を向上させることができます。 Custom Vision Service には、画像をアップロードして分類器をトレーニングするための REST API や Web インターフェイスが用意されています。
+Custom Vision Service は、カスタム画像分類子を構築できる Azure Cognitive Service です。 画像の分類子を簡単に素早く構築、デプロイし、その性能を向上させることができます。 Custom Vision Service には、画像をアップロードして分類子をトレーニングするための REST API や Web インターフェイスが用意されています。
 
 ## <a name="what-does-custom-vision-service-do-well"></a>Custom Vision Service でできること
 
