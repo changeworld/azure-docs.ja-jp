@@ -36,7 +36,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. [Azure Portal](https://portal.azure.com/) に Azure AD 管理者としてサインインします。
 2. 左ウィンドウで、**[Azure Active Directory]** を選択します。
-3.  **[管理]** にある **[Users]** を選択します。
+3.  **[管理]** にある **[ユーザー]** を選択します。
 
     ![[Azure Active Directory] を選択します。](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
 
@@ -85,7 +85,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 3.  **[管理]** で、**[エンタープライズ アプリケーション]** を選択します。
 4.  **Salesforce** アプリケーションを開き、**[削除]** を選択します。
 5.  左ウィンドウで、**[Azure Active Directory]** を選択します。
-6.  **[管理]** にある **[Users]** を選択します。
+6.  **[管理]** にある **[ユーザー]** を選択します。
 7.  テスト ユーザーを選択し、**[ユーザーの削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
