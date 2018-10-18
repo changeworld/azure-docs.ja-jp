@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 2c6db85763b448133d53b22c0600b27b533b2041
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d298cfe22328db68cfbb6b4c7fc82b2de0c186b1
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424230"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423597"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -58,12 +58,11 @@ Web アプリ、モバイル アプリ バックエンド、および API アプ
 
 上に示した 3 つのアプリケーションの種類は、いずれも App Service ランタイムを共有しているため、1 つのプロジェクトやソリューションから、Web サイトのホスト、モバイル クライアントのサポート、自作 API を Azure で公開することのすべてを行うことができます。 App Service の詳細については、「[Web Apps の概要](../../app-service/app-service-web-overview.md)」を参照してください。
 
-App Service は DevOps を念頭に置いて設計されています。 GitHub webhook、Jenkins、Visual Studio Team Services、TeamCity など、公開と継続的インテグレーション デプロイに対応する多様なツールをサポートしています。
+App Service は DevOps を念頭に置いて設計されています。 GitHub webhooks、Jenkins、Azure DevOps、TeamCity など、公開と継続的インテグレーション デプロイに対応する多様なツールをサポートしています。
 
 [オンライン移行ツール](https://www.migratetoazure.net/)を使用して、既存のアプリケーションを App Service に移行することができます。
 
->
-  **使用する場合**: App Service を使用するのは、既存の Web アプリケーションを Azure に移行する場合、および Web アプリ用にフル マネージドのホスティング プラットフォームが必要な場合です。 また、モバイル クライアントをサポートする必要がある場合、またはアプリと共に REST API を公開する必要がある場合にも App Service を使用できます。
+>**使用する場合**: App Service を使用するのは、既存の Web アプリケーションを Azure に移行する場合、および Web アプリ用にフル マネージドのホスティング プラットフォームが必要な場合です。 また、モバイル クライアントをサポートする必要がある場合、またはアプリと共に REST API を公開する必要がある場合にも App Service を使用できます。
 
 >**作業開始**: App Service を使用すると、初めての [Web アプリ](../../app-service/app-service-web-get-started-dotnet.md)、[モバイル アプリ](../../app-service-mobile/app-service-mobile-ios-get-started.md)、[API アプリ](../../app-service/app-service-web-tutorial-rest-api.md)でも簡単に作成、デプロイできます。
 
@@ -81,8 +80,7 @@ VM の場合は細かいレベルで制御できるため、Azure 上で PaaS �
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (サーバーレス)
 
-アプリケーションまたはコードを実行するインフラストラクチャ全体を構築し、管理する心配は不要です。 コードを作成し、イベントやスケジュールに応答して実行させるだけでよいとしたらどうしますか。  
-  [Azure Functions](../../azure-functions/functions-overview.md) は、必要なコードを作成するだけで済む "サーバーレス" スタイルのサービスです。 Functions を使用すると、コードの実行は HTTP 要求、webhook、クラウド サービス イベント、またはスケジュールに応じてトリガーされます。 C\#、F\#、Node.js、Python、PHP など、好きな言語でコードを開発することもできます。 使用量ベースの課金の場合、コードの実行時にのみ課金されます。また、必要に応じて Azure は拡大縮小されます。
+アプリケーションまたはコードを実行するインフラストラクチャ全体を構築し、管理する心配は不要です。 コードを作成し、イベントやスケジュールに応答して実行させるだけでよいとしたらどうしますか。  [Azure Functions](../../azure-functions/functions-overview.md) は、必要なコードを作成するだけで済む "サーバーレス" スタイルのサービスです。 Functions を使用すると、コードの実行は HTTP 要求、webhook、クラウド サービス イベント、またはスケジュールに応じてトリガーされます。 C\#、F\#、Node.js、Python、PHP など、好きな言語でコードを開発することもできます。 使用量ベースの課金の場合、コードの実行時にのみ課金されます。また、必要に応じて Azure は拡大縮小されます。
 
 >**使用する場合**: 他の Azure サービス、Web ベースのイベント、またはスケジュールに応じてトリガーされるコードがある場合に、Azure Functions を使用します。 また、完全なホスト型プロジェクトのオーバーヘッドが必要ない場合、またはコードの実行時にのみ料金を支払いたい場合にも Functions を使用できます。 詳細については、「[Azure Functions の作業開始](../../azure-functions/functions-overview.md)」を参照してください。
 
@@ -113,8 +111,7 @@ Azure では、アプリケーション ホスティングに加え、クラウ�
 
     >**開始**: [Azure Cosmos DB Web アプリをビルドします](../../cosmos-db/create-sql-api-dotnet.md)。 MongoDB 開発者でない場合は、[Azure Cosmos DB を使用した MongoDB Web アプリのビルド](../../cosmos-db/create-mongodb-dotnet.md)に関する記事をご覧ください。
 
--   
-  **Azure Storage**: BLOB、クエリ、ファイルなどの非リレーショナル データに対して、耐久性があり、高可用な記憶域を提供します。 Storage は、VM 向けに記憶域の基盤を提供します。
+-   **Azure Storage**: BLOB、クエリ、ファイルなどの非リレーショナル データに対して、耐久性があり、高可用な記憶域を提供します。 Storage は、VM 向けに記憶域の基盤を提供します。
 
     >**使用する場合**: キーと値のペア (テーブル)、BLOB、ファイル共有、メッセージ (キュー) など、非リレーショナル データを格納するアプリケーションの場合。
 
@@ -189,7 +186,7 @@ Azure でアプリケーションを起動し、実行する場合、パフォ�
 
 ### <a name="devops-integration"></a>DevOps 統合
 
-VM をプロビジョニングするか、継続的インテグレーションによって Web アプリを発行するかにかかわらず、Azure は人気のある DevOps ツールの多くと統合できます。 Jenkins、GitHub、Puppet、Chef、TeamCity、Ansible、VSTS などのツールがサポートされているので、既に所有しているツールを利用し、経験を最大限に活用することができます。
+VM をプロビジョニングするか、継続的インテグレーションによって Web アプリを発行するかにかかわらず、Azure は人気のある DevOps ツールの多くと統合できます。 Jenkins、GitHub、Puppet、Chef、TeamCity、Ansible、Azure DevOps などのツールがサポートされているため、既に所有しているツールを利用し、経験を最大限に活用することができます。
 
 >**今すぐ試す:** [DevOps 統合のいくつかを試しましょう](https://azure.microsoft.com/try/devops/)。
 
@@ -264,7 +261,7 @@ Azure Resource Manager では、関連するリソースを論理的にグルー
 
 ### <a name="what-is-an-azure-account"></a>Azure アカウントとは
 
-Azure サブスクリプションの作成または使用には、Azure アカウントを持っている必要があります。 Azure アカウントは、Azure AD、または Azure AD から信頼されているディレクトリ (職場、学校組織など) の単なる ID です。 このような組織に属していない場合でも、Azure AD から信頼されている Microsoft アカウントを使用して、常にサブスクリプションを作成できます。 オンプレミス Windows Server Active Directory を Azure AD と統合する方法については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../../active-directory/active-directory-aadconnect.md)」を参照してください。
+Azure サブスクリプションの作成または使用には、Azure アカウントを持っている必要があります。 Azure アカウントは、Azure AD、または Azure AD から信頼されているディレクトリ (職場、学校組織など) の単なる ID です。 このような組織に属していない場合でも、Azure AD から信頼されている Microsoft アカウントを使用して、常にサブスクリプションを作成できます。 オンプレミス Windows Server Active Directory を Azure AD と統合する方法については、「[オンプレミスのディレクトリと Azure Active Directory の統合](../../active-directory/hybrid/whatis-hybrid-identity.md)」を参照してください。
 
 すべての Azure サブスクリプションには、Azure AD インスタンスとの間に信頼関係があります。 つまり、ディレクトリを信頼してユーザー、サービス、デバイスを認証します。 複数のサブスクリプションが同じディレクトリを信頼できますが、1 つのサブスクリプションは 1 つのディレクトリだけを信頼します。 詳細については、「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)」を参照してください。
 
@@ -272,19 +269,7 @@ Azure AD では、個々の Azure アカウント ID (*ユーザー*とも呼ば
 
 ### <a name="manage-your-subscriptions"></a>サブスクリプションを管理する
 
-サブスクリプションは、Azure アカウントにリンクされている Azure サービスの論理ユニットです。 サブスクリプションには、関連付けられている各アカウントに 1 つのロールがあります。 Azure サービスの課金は、サブスクリプションごとに行われます。 使用できるサブスクリプション オファーの種類別一覧については、「[Microsoft Azure オファーの詳細](https://azure.microsoft.com/support/legal/offer-details/)」を参照してください。
-
-#### <a name="administrator-roles"></a>管理者ロール
-
-Azure サブスクリプションには複数のアカウント管理者ロールがあり、いつでも割り当てることができます。
-
--   **アカウント管理者**: このロールは、サブスクリプションを完全に制御します。また、課金を担当するアカウントです。
-
--   **サービス管理者**: このロールは、サブスクリプション内のすべてのサービスを制御します。 既定では、これはアカウント管理者と同じアカウントです。
-
--   **共同管理者**: このロールは、サブスクリプションと Azure ディレクトリの関連付けを変更できないという点を除き、サービス アカウントと同じアクセス権を持ちます。
-
-管理者ロールの詳細については、「[サブスクリプションの管理者を追加する](../../billing/billing-add-change-azure-subscription-administrator.md#add-an-admin-for-a-subscription)」を参照してください。
+サブスクリプションは、Azure アカウントにリンクされている Azure サービスを論理的にグループ化したものです。 1 つの Azure アカウントに複数のサブスクリプションを含めることができます。 Azure サービスの課金は、サブスクリプションごとに行われます。 使用できるサブスクリプション オファーの種類別一覧については、「[Microsoft Azure オファーの詳細](https://azure.microsoft.com/support/legal/offer-details/)」を参照してください。 Azure サブスクリプションにはアカウント管理者とサービス管理者が割り当てられます。アカウント管理者にはサブスクリプションを制御する権限が与えられ、サービス管理者にはサブスクリプションに含まれるすべてのサービスを制御する権限が与えられます。 従来のサブスクリプション管理者の詳細については、「[Azure サブスクリプション管理者を追加または変更する](../../billing/billing-add-change-azure-subscription-administrator.md)」を参照してください。 管理者に加え、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を使用して Azure リソースを細かく管理する権限が個々のアカウントに与えられます。
 
 #### <a name="resource-groups"></a>リソース グループ
 
@@ -296,11 +281,11 @@ Azure Resource Explorer は、サブスクリプションで作成済みのリ�
 
 Azure リソースへのアクセス権を許可する場合、そのタスクの実行に必要最小限の特権をユーザーに付与することが常にベスト プラクティスです。
 
--   **ロールベースのアクセス制御 (RBAC)**: Azure では、指定したスコープ (サブスクリプション、リソース グループ、または個々のリソース) でユーザー アカウント (プリンシパル) にアクセス権を付与することができます。 RBAC を使用すると、リソースのセットをリソース グループにデプロイし、特定のユーザーまたはグループにアクセス許可を付与できます。 また、対象のリソース グループに属するリソースにのみアクセスを制限することもできます。 仮想マシンや仮想ネットワークなど、1 つのリソースにアクセス権を付与することもできます。 アクセス権を付与するには、ロールをユーザー、グループ、またはサービス プリンシパルに割り当てます。 定義済みのロールが多数ありますが、独自のカスタム ロールを定義することもできます。
+-   **ロールベースのアクセス制御 (RBAC)**: Azure では、指定したスコープ (サブスクリプション、リソース グループ、または個々のリソース) でユーザー アカウント (プリンシパル) にアクセス権を付与することができます。 RBAC を使用すると、リソースのセットをリソース グループにデプロイし、特定のユーザーまたはグループにアクセス許可を付与できます。 また、対象のリソース グループに属するリソースにのみアクセスを制限することもできます。 仮想マシンや仮想ネットワークなど、1 つのリソースにアクセス権を付与することもできます。 アクセス権を付与するには、ロールをユーザー、グループ、またはサービス プリンシパルに割り当てます。 定義済みのロールが多数ありますが、独自のカスタム ロールを定義することもできます。 詳細については、「[ロールベースのアクセス制御 (RBAC) とは](../../role-based-access-control/overview.md)」を参照してください。
 
-    >**使用する場合**: ユーザーとグループについて細かく調整されたアクセス管理が必要な場合。
+    >**使用目的**: ユーザーやグループに対する詳細なアクセス管理が必要な場合、またはユーザーをサブスクリプションの所有者にする必要がある場合に使用します。
 
-    >**作業開始**: 詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../../role-based-access-control/overview.md)」を参照してください。
+    >**作業開始**: 詳細については、「[RBAC と Azure ポータルを使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 -   **サービス プリンシパル オブジェクト**: ユーザー プリンシパルとグループへのアクセス権を付与するだけでなく、サービス プリンシパルに同じアクセス権を付与することができます。
 
@@ -325,9 +310,3 @@ Azure には、Azure サブスクリプションのリソース使用状況と�
 コストを事前に見積もることは困難ですが、Azure には、デプロイされているリソースのコストを見積もるときに使用できる[料金計算ツール](https://azure.microsoft.com/pricing/calculator/)があります。 ポータルと Billing REST API で [課金] ブレードを使用し、現在の使用状況に基づいて、今後のコストを見積もることもできます。
 
 >**使用開始**: 「[Azure Billing API を使用して、Azure の使用状況に関する詳細なデータをプログラムによって取得する](../../billing-usage-rate-card-overview.md)」を参照してください。
-
-#### <a name="set-up-billing-alerts"></a>課金アラートのセットアップ
-
-Azure でアプリケーションまたはソリューションをデプロイした後は、アラートを作成して、アラートに定義されている使用制限に近づいたときに電子メールを送信することができます。
-
->**使用開始**: 詳細については、「[Microsoft Azure サブスクリプションの課金アラートまたはクレジット アラートの設定](../../billing-set-up-alerts.md)」を参照してください。

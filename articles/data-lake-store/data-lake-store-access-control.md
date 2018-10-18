@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ca1ea5fb95ba1c49b5c1e3660c598e8f1443b43c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: fce96cf5be9e70863fd75e5d4b3045bc49f638cf
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666269"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432625"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Store Gen1 のアクセス制御
 
-Azure Data Lake Store Gen1 は、POSIX アクセス制御モデルから派生した HDFS からさらに派生したアクセス制御モデルを実装します。 この記事では、Data Lake Store Gen1 のアクセス制御モデルの基本について説明します。 HDFS アクセス制御モデルの詳細については、「[HDFS Permissions Guide (HDFS アクセス許可ガイド)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)」を参照してください。
+Azure Data Lake Store Gen1 は、POSIX アクセス制御モデルから派生した HDFS からさらに派生したアクセス制御モデルを実装します。 この記事では、Data Lake Store Gen1 のアクセス制御モデルの基本について説明します。 
 
 ## <a name="access-control-lists-on-files-and-folders"></a>ファイルとフォルダーのアクセス制御リスト
 
@@ -31,11 +31,8 @@ Azure Data Lake Store Gen1 は、POSIX アクセス制御モデルから派生�
 
 * **既定の ACL**: フォルダーに関連付けられた ACL の "テンプレート" です。この ACL によって、そのフォルダーの下に作成されるすべての子項目のアクセス ACL が決まります。 ファイルには既定の ACL がありません。
 
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-acls-1.png)
 
 アクセス ACL と既定の ACL は両方とも同じ構造です。
-
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-acls-2.png)
 
 
 
@@ -43,18 +40,6 @@ Azure Data Lake Store Gen1 は、POSIX アクセス制御モデルから派生�
 > 親の既定の ACL を変更しても、既存の子項目のアクセス ACL または既定の ACL には影響しません。
 >
 >
-
-## <a name="users-and-identities"></a>ユーザーと ID
-
-すべてのファイルとフォルダーは、以下の ID の個別のアクセス許可を持っています。
-
-* ファイルの所有ユーザー
-* 所有グループ
-* 名前付きユーザー
-* 名前付きグループ
-* その他のすべてのユーザー
-
-ユーザーとグループの ID は、Azure Active Directory (Azure AD) の ID です。 そのため、注記がない限り、Data Lake Store Gen1 のコンテキストでの "ユーザー" は、Azure AD ユーザーまたは Azure AD セキュリティ グループを意味します。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -72,10 +57,10 @@ Azure Data Lake Store Gen1 は、POSIX アクセス制御モデルから派生�
 
 | 数値形式 | 短縮形式 |      意味     |
 |--------------|------------|------------------------|
-| 7            | RWX        | 読み取り + 書き込み + 実行 |
-| 5            | R-X        | 読み取り + 実行         |
-| 4            | R--        | 読み取り                   |
-| 0            | ---        | アクセス許可なし         |
+| 7            | `RWX`        | 読み取り + 書き込み + 実行 |
+| 5            | `R-X`        | 読み取り + 実行         |
+| 4            | `R--`        | 読み取り                   |
+| 0            | `---`        | アクセス許可なし         |
 
 
 ### <a name="permissions-do-not-inherit"></a>アクセス許可が継承されない
@@ -86,27 +71,15 @@ Data Lake Store Gen1 で使用されている POSIX 形式のモデルでは、�
 
 Data Lake Store Gen1 アカウントに対する特定の操作の実行に必要なアクセス許可について理解できるように、一般的なシナリオを次に示します。
 
-### <a name="permissions-needed-to-read-a-file"></a>ファイルの読み取りに必要なアクセス許可
-
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-acls-3.png)
-
-* 読み取り対象のファイルに対して、呼び出し元には**読み取り**アクセス許可が必要です。
-* ファイルを含むフォルダー構造内のすべてのフォルダーに対して、呼び出し元には**実行**アクセス許可が必要です。
-
-### <a name="permissions-needed-to-append-to-a-file"></a>ファイルへの追加に必要なアクセス許可
-
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-acls-4.png)
-
-* 追加対象のファイルに対して、呼び出し元には**書き込み**アクセス許可が必要です。
-* ファイルを含むすべてのフォルダーに対して、呼び出し元には**実行**アクセス許可が必要です。
-
-### <a name="permissions-needed-to-delete-a-file"></a>ファイルの削除に必要なアクセス許可
-
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-acls-5.png)
-
-* 親フォルダーに対して、呼び出し元には**書き込み + 実行**アクセス許可が必要です。
-* ファイルのパスにあるその他すべてのフォルダーに対して、呼び出し元には**実行**アクセス許可が必要です。
-
+|    Operation             |    /    | Seattle/ | Portland/ | Data.txt     |
+|--------------------------|---------|----------|-----------|--------------|
+| Read Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Append to Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Delete Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Create Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| List /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| List /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| List /Seattle/Portland/  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -114,48 +87,30 @@ Data Lake Store Gen1 アカウントに対する特定の操作の実行に必�
 >
 >
 
-### <a name="permissions-needed-to-enumerate-a-folder"></a>フォルダーの列挙に必要なアクセス許可
 
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-acls-6.png)
+## <a name="users-and-identities"></a>ユーザーと ID
 
-* 列挙するフォルダーに対して、呼び出し元には**読み取り + 実行**アクセス許可が必要です。
-* すべての親フォルダーに対して、呼び出し元には**実行**アクセス許可が必要です。
+すべてのファイルとフォルダーは、以下の ID の個別のアクセス許可を持っています。
 
-## <a name="viewing-permissions-in-the-azure-portal"></a>Azure Portal でのアクセス許可の表示
+* 所有ユーザー
+* 所有グループ
+* 名前付きユーザー
+* 名前付きグループ
+* その他のすべてのユーザー
 
-Data Lake Store Gen1 アカウントの **[データ エクスプローラー]** ブレードで、**[アクセス]** をクリックすると、データ エクスプローラーで表示されているファイルまたはフォルダーの ACL が表示されます。 **[アクセス]** をクリックして、**mydatastore** アカウントにある **catalog** フォルダーの ACL を表示します。
+ユーザーとグループの ID は、Azure Active Directory (Azure AD) の ID です。 そのため、注記がない限り、Data Lake Store Gen1 のコンテキストでの "ユーザー" は、Azure AD ユーザーまたは Azure AD セキュリティ グループを意味します。
 
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
+### <a name="the-super-user"></a>スーパー ユーザー
 
-このブレードの一番上のセクションには、所有者のアクセス許可が表示されます  (スクリーンショットでは、Bob が所有ユーザーです)。その下に、割り当てられているアクセス ACL が表示されます。 
-
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
-
-**[詳細ビュー]** をクリックして、より詳しいビューを表示します。このビューには、既定の ACL、マスク、スーパー ユーザーの説明が表示されます。  このブレードには、現在のフォルダーのアクセス許可に基づき、子のファイルとフォルダーにアクセス ACL と 既定の ACL を再帰的に設定する手段も用意されています。
-
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
-
-## <a name="the-super-user"></a>スーパー ユーザー
-
-スーパー ユーザーは、Data Lake Store 内のすべてのユーザーの中で、最高の権限を持ちます。 スーパー ユーザーには、次の特長があります。
+スーパー ユーザーは、Data Lake Storage Gen1 アカウント 内のすべてのユーザーの中で最高の権限を持ちます。 スーパー ユーザーには、次の特長があります。
 
 * **すべて**のファイルとフォルダーに対して、RWX アクセス許可を持ちます。
 * 任意のファイルまたはフォルダーのアクセス許可を変更できます。
 * 任意のファイルまたはフォルダーの所有ユーザーまたは所有グループを変更できます。
 
-Azure では、Data Lake Store Gen1 アカウントは、次のようないくつかの Azure ロールを持ちます。
+Data Lake Storage Gen1 アカウントの**所有者**ロールに含まれるすべてのユーザーは、自動的にスーパーユーザーになります。
 
-* 所有者
-* 共同作成者
-* 閲覧者
-
-Data Lake Store Gen1 アカウントの **所有者** ロールのすべてのユーザーは、自動的にそのアカウントのスーパー ユーザーになります。 詳細については、[ロール ベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)に関するページを参照してください。
-スーパー ユーザー アクセス許可を持つ、カスタムのロール ベースのアクセス制御 (RBAC) ロールを作成する場合は、以下のアクセス許可を持っている必要があります。
-- Microsoft.DataLakeStore/accounts/Superuser/action
-- Microsoft.Authorization/roleAssignments/write
-
-
-## <a name="the-owning-user"></a>所有ユーザー
+### <a name="the-owning-user"></a>所有ユーザー
 
 項目を作成したユーザーは、自動的に項目の所有ユーザーになります。 所有ユーザーは、次のことができます。
 
@@ -167,16 +122,18 @@ Data Lake Store Gen1 アカウントの **所有者** ロールのすべての�
 >
 >
 
-## <a name="the-owning-group"></a>所有グループ
+### <a name="the-owning-group"></a>所有グループ
 
-POSIX ACL では、すべてのユーザーが "プライマリ グループ" に関連付けられています。 たとえば、ユーザー "alice" が "finance" グループに属しているとします。 Alice は複数のグループに属している可能性がありますが、1 つのグループが常にプライマリ グループとして指定されています。 POSIX では、Alice がファイルを作成すると、そのファイルの所有グループが彼女のプライマリ グループに設定されます。ここでは、"finance" グループです。
+**バックグラウンド**
 
-新しいファイル システム項目が作成されると、Data Lake Store Gen1 は所有グループに値を割り当てます。
+POSIX ACL では、すべてのユーザーが "プライマリ グループ" に関連付けられています。 たとえば、ユーザー "alice" が "finance" グループに属しているとします。 Alice は複数のグループに属している可能性がありますが、1 つのグループが常にプライマリ グループとして指定されています。 POSIX では、Alice がファイルを作成すると、そのファイルの所有グループが彼女のプライマリ グループに設定されます。ここでは、"finance" グループです。 その他の点では、所有グループの動作は、他のユーザー/グループに割り当てられているアクセス許可と同様です。
+
+**新しいファイルまたはフォルダーに対する所有グループの割り当て**
 
 * **ケース 1**: ルート フォルダー "/"。 このフォルダーは、Data Lake Store Gen1 アカウントの作成時に作成されます。 この場合、所有グループは、アカウントを作成したユーザーに設定されます。
 * **ケース 2** (その他すべての場合): 新しい項目が作成されると、所有グループが親フォルダーからコピーされます。
 
-その他の点では、所有グループの動作は、他のユーザー/グループに割り当てられているアクセス許可と同様です。
+**所有グループの変更**
 
 所有グループを変更できるユーザーは次のとおりです。
 * すべてのスーパー ユーザー
@@ -184,6 +141,7 @@ POSIX ACL では、すべてのユーザーが "プライマリ グループ" �
 
 > [!NOTE]
 > 所有グループが、ファイルやフォルダーの ACL を変更することは "*できません*"。  ルート フォルダーの場合 (上記の**ケース 1**)、所有グループはアカウントを作成したユーザーに設定されますが、所有グループを介したアクセス許可の付与に関して、単一ユーザー アカウントは有効ではありません。  この権限は、有効なユーザー グループに対して、該当する場合に割り当てることができます。
+
 
 ## <a name="access-check-algorithm"></a>アクセス確認アルゴリズム
 
@@ -197,119 +155,94 @@ def access_check( user, desired_perms, path ) :
   # path is the file or folder
   # Note: the "sticky bit" is not illustrated in this algorithm
   
-# Handle super users
-    if (is_superuser(user)) :
-      return True
+# Handle super users.
+  if (is_superuser(user)) :
+    return True
 
-  # Handle the owning user. Note that mask is not used.
-    if (is_owning_user(path, user))
-      perms = get_perms_for_owning_user(path)
-      return ( (desired_perms & perms) == desired_perms )
+  # Handle the owning user. Note that mask IS NOT used.
+  entry = get_acl_entry( path, OWNER )
+  if (user == entry.identity)
+      return ( (desired_perms & e.permissions) == desired_perms )
 
-  # Handle the named user. Note that mask is used.
-  if (user in get_named_users( path )) :
-      perms = get_perms_for_named_user(path, user)
-      mask = get_mask( path )
-      return ( (desired_perms & perms & mask ) == desired_perms)
+  # Handle the named users. Note that mask IS used.
+  entries = get_acl_entries( path, NAMED_USER )
+  for entry in entries:
+      if (user == entry.identity ) :
+          mask = get_mask( path )
+          return ( (desired_perms & entry.permmissions & mask) == desired_perms)
 
-  # Handle groups (named groups and owning group)
-  belongs_to_groups = [g for g in get_groups(path) if is_member_of(user, g) ]
-  if (len(belongs_to_groups)>0) :
-    group_perms = [get_perms_for_group(path,g) for g in belongs_to_groups]
-    perms = 0
-    for p in group_perms : perms = perms | p # bitwise OR all the perms together
-    mask = get_mask( path )
-    return ( (desired_perms & perms & mask ) == desired_perms)
-
+  # Handle named groups and owning group
+  member_count = 0
+  perms = 0
+  entries = get_acl_entries( path, NAMED_GROUP | OWNING_GROUP )
+  for entry in entries:
+    if (user_is_member_of_group(user, entry.identity)) :
+      member_count += 1
+      perms | =  entry.permissions
+  if (member_count>0) :
+    return ((desired_perms & perms & mask ) == desired_perms)
+ 
   # Handle other
   perms = get_perms_for_other(path)
   mask = get_mask( path )
   return ( (desired_perms & perms & mask ) == desired_perms)
 ```
 
-## <a name="the-mask-and-effective-permissions"></a>マスクと "有効なアクセス許可"
+### <a name="the-mask"></a>マスク
 
-**マスク**は、アクセス確認アルゴリズムの実行時に、**名前付きユーザー**、**所有グループ**、**名前付きグループ**のアクセスを制限するために使用される RWX 値です。 マスクの主な概念は次のとおりです。
-
-* マスクは、"有効なアクセス許可" を作成します。 つまり、アクセス確認時にアクセス許可を変更します。
-* ファイル所有者とすべてのスーパー ユーザーは、マスクを直接編集できます。
-* マスクは、有効なアクセス許可を作成するためにアクセス許可を削除することができます。 マスクが有効なアクセス許可にアクセス許可を追加することは "*できません*"。
-
-いくつかの例を見てみましょう。 次の例では、マスクは **RWX** に設定されています。つまり、マスクはどのアクセス許可も削除しません。 アクセス確認中に、名前付きユーザー、所有グループ、名前付きグループの有効なアクセス許可は変更されません。
-
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-acls-mask-1.png)
-
-次の例では、マスクは **R-X** に設定されています。 そのため、アクセス確認時に、**名前付きユーザー**、**所有グループ**、**名前付きグループ**の**書き込みアクセス許可が無効**になります。
-
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-acls-mask-2.png)
-
-参考までに、ファイルまたはフォルダーのマスクが Azure Portal で表示されているところを示します。
-
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
+アクセス確認アルゴリズムに示されているように、マスクによって、**名前付きユーザー**、**所有グループ**、および**名前付きグループ**のアクセスが制限されます。  
 
 > [!NOTE]
 > 新しい Data Lake Store Gen1 アカウントでは、ルート フォルダー ("/") のアクセス ACL のマスクが既定で RWX に設定されています。
 >
 >
 
-## <a name="permissions-on-new-files-and-folders"></a>新しいファイルとフォルダーのアクセス許可
+### <a name="the-sticky-bit"></a>スティッキー ビット
+
+スティッキー ビットは、POSIX ファイル システムのより高度な機能です。 Data Lake Storage Gen1 のコンテキストでは、スティッキー ビットが必要になることはあまりありません。 つまり、フォルダーでスティッキー ビットが有効になっている場合、子項目を削除または名前変更できるのは、子項目を所有しているユーザーのみです。
+
+スティッキー ビットは、Azure Portal には表示されません。
+
+## <a name="default-permissions-on-new-files-and-folders"></a>新しいファイルとフォルダーの既定のアクセス許可
 
 既存のフォルダーの下に新しいファイルまたはフォルダーが作成されると、親フォルダーの既定の ACL によって、次のものが決定します。
 
 - 子フォルダーの既定の ACL とアクセス ACL。
 - 子ファイルのアクセス ACL (ファイルには既定の ACL がありません)。
 
-### <a name="the-access-acl-of-a-child-file-or-folder"></a>子ファイルまたはフォルダーのアクセス ACL
+### <a name="umask"></a>umask
 
-子ファイルまたはフォルダーが作成されると、親の既定の ACL が子ファイルまたはフォルダーのアクセス ACL としてコピーされます。 また、**他の**ユーザーが親の既定の ACL で RWX アクセス許可を持っている場合、そのアクセス許可は子項目のアクセス ACL から削除されます。
+ファイルまたはフォルダーを作成するときに、umask を使用して、子項目に既定の ACL がどのように設定されるかを変更します。 umask は親フォルダーに設定される 9 ビットの値であり、**所有ユーザー**、**所有グループ**、および**その他**に対する RWX 値が含まれています。
 
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-acls-child-items-1.png)
+Azure Data Lake Storage Gen1 に対する umask は、007 に設定される定数値です。 この値の変換値
 
-ほとんどのシナリオでは、子項目のアクセス ACL の決定方法について知っておく必要があることは、上記の情報がすべてです。 しかし、POSIX システムを使い慣れていて、この変換のしくみの詳細を理解したい場合は、この記事の後の方の「 [新しいファイルとフォルダーのアクセス ACL を作成する際の umask の役割](#umasks-role-in-creating-the-access-acl-for-new-files-and-folders) 」を参照してください。
+| umask コンポーネント     | 数値形式 | 短縮形式 | 意味 |
+|---------------------|--------------|------------|---------|
+| umask.owning_user   |    0         |   `---`      | 所有ユーザーの場合、親の既定 ACL を子の Access ACL にコピーします | 
+| umask.owning_group  |    0         |   `---`      | 所有グループの場合、親の既定 ACL を子の Access ACL にコピーします | 
+| umask.other         |    7         |   `RWX`      | その他の場合、子の Access ACL 上のすべてのアクセス許可を削除します |
 
+Azure Data Lake Storage Gen1 で umask の値が使用されると、実際上は、既定の ACL が何を示しているかに関係なく、既定では、other に対する値は、新しい子では決して送信されないことを意味します。 
 
-### <a name="a-child-folders-default-acl"></a>子フォルダーの既定の ACL
+次の疑似コードは、子項目に ACL を作成するときに、unmask がどのように適用されるかを示しています。
 
-親フォルダーの下に子フォルダーが作成されると、親フォルダーの既定の ACL がそのまま子フォルダーの既定の ACL にコピーされます。
-
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-acls-child-items-2.png)
-
-## <a name="advanced-topics-for-understanding-acls-in-data-lake-storage-gen1"></a>Data Lake Store Gen1 の ACL を理解するための高度なトピック
-
-Data Lake Store Gen1 のファイルまたはフォルダーの ACL がどのように決定されるかを理解するために役立ついくつかの高度なトピックを次に示します。
-
-### <a name="umasks-role-in-creating-the-access-acl-for-new-files-and-folders"></a>新しいファイルとフォルダーのアクセス ACL を作成する際の umask の役割
-
-POSIX に準拠しているシステムの一般概念では、umask は、新しい子ファイルまたはフォルダーのアクセス ACL で**所有ユーザー**、**所有グループ**、**その他**のアクセス許可を変換するために使用される、親フォルダーでの 9 ビット値です。 umask のビットは、子項目のアクセス ACL でどのビットがオフになるかを特定します。 つまり、**所有ユーザー**、**所有グループ**、および**その他**で、アクセス許可の継承を選択的に禁止するために使用されます。
-
-HDFS システムでは、umask は一般的にサイト全体の構成オプションであり、管理者によって制御されます。 Data Lake Store Gen1 は、変更することができない、 **アカウント全体の umask** を使用します。 次の表に、Data Lake Store Gen1 の umask を示します。
-
-| ユーザー グループ  | Setting | 新しい子項目のアクセス ACL への効果 |
-|------------ |---------|---------------------------------------|
-| 所有ユーザー | ---     | 効果なし                             |
-| 所有グループ| ---     | 効果なし                             |
-| その他       | RWX     | 読み取り + 書き込み + 実行を削除         |
-
-次の図は、この umask の動作を示しています。 実際の効果は、**その他**のユーザーの**読み取り + 書き込み + 実行**の削除です。 umask で**所有ユーザー**と**所有グループ**のビットを指定しなかったため、これらのアクセス許可は変換されません。
-
-![Data Lake Storage Gen1 の ACL](./media/data-lake-store-access-control/data-lake-store-acls-umask.png)
-
-### <a name="the-sticky-bit"></a>スティッキー ビット
-
-スティッキー ビットは、POSIX ファイル システムのより高度な機能です。 Data Lake Storage Gen1 のコンテキストでは、スティッキー ビットが必要になることはあまりありません。
-
-次の表は、Data Lake Storage Gen1 でスティッキー ビットがどのように動作するかを示しています。
-
-| ユーザー グループ         | ファイル    | フォルダー |
-|--------------------|---------|-------------------------|
-| スティッキー ビット **OFF** | 効果なし   | 効果なし。           |
-| スティッキー ビット **ON**  | 効果なし   | 子項目の**スーパー ユーザー**と**所有ユーザー**以外のユーザーが、その子項目の削除や名前変更を実行できないようにします。               |
-
-スティッキー ビットは、Azure Portal には表示されません。
+```
+def set_default_acls_for_new_child(parent, child):
+    child.acls = []
+    for entry in parent.acls :
+        new_entry = None
+        if (entry.type == OWNING_USER) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.owning_user))
+        elif (entry.type == OWNING_GROUP) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.owning_group))
+        elif (entry.type == OTHER) :
+            new_entry = entry.clone(perms = entry.perms & (~umask.other))
+        else :
+            new_entry = entry.clone(perms = entry.perms )
+        child_acls.add( new_entry )
+```
 
 ## <a name="common-questions-about-acls-in-data-lake-storage-gen1"></a>Data Lake Storage Gen1 の ACL に関する一般的な質問
-
-Data Lake Storage Gen1 の ACL に関してよくある質問のいくつかを次に示します。
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>ACL のサポートを有効にする必要はありますか
 
@@ -349,31 +282,15 @@ GUID が表示されるのは、そのユーザーがもう Azure AD に存在�
 
 いいえ。ただし、親フォルダーに新たに作成される子ファイルや子フォルダーについては、既定の ACL を使用して ACL を設定できます。  
 
-### <a name="what-is-the-difference-between-mask-and-umask"></a>mask と umask の違いは何ですか
-
-| mask | umask|
-|------|------|
-| **mask** プロパティは、すべてのファイルおよびフォルダーで使用できます。 | **umask** は、Data Lake Storage Gen1 アカウントのプロパティです。 そのため、Data Lake Storage Gen1 には umask が 1 つしかありません。    |
-| ファイルまたはフォルダーの mask プロパティを変更できるのは、ファイルの所有ユーザーまたは所有グループ、あるいはスーパー ユーザーです。 | umask プロパティは、スーパー ユーザーも含めて、どのユーザーも変更できません。 変更不可の定数値です。|
-| mask プロパティは、実行時にアクセス確認アルゴリズムで使用され、ファイルまたはフォルダーに対する操作を実行する権限がユーザーにあるかどうかを判断します。 mask の役割は、アクセス確認時の "有効なアクセス許可" を作成することです。 | umask は、アクセス確認中はまったく使用されません。 umask は、フォルダーの新しい子項目のアクセス ACL を判断するために使用されます。 |
-| マスクは、アクセス確認時に名前付きユーザー、所有グループ、名前付きグループに適用される 3 ビット RWX 値です。| umask は、新しい子の所有ユーザー、所有グループ、および**その他**に適用される 9 ビット値です。|
-
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>POSIX アクセス制御モデルの詳細はどこで確認できますか
 
 * [POSIX Access Control Lists on Linux (Linux での POSIX アクセス制御リスト)](https://www.linux.com/news/posix-acls-linux)
-
 * [HDFS Permission Guide (HDFS アクセス許可ガイド)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
-
 * [POSIX FAQ (POSIX のよく寄せられる質問)](http://www.opengroup.org/austin/papers/posix_faq.html)
-
 * [POSIX 1003.1 2008](http://standards.ieee.org/findstds/standard/1003.1-2008.html)
-
 * [POSIX 1003.1 2013](http://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
-
 * [POSIX 1003.1 2016](http://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
-
 * [Ubuntu での POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
-
 * [ACL using access control lists on Linux (Linux でのアクセス制御リストを使用した ACL)](http://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
 ## <a name="see-also"></a>関連項目

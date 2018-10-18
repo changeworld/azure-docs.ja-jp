@@ -4,18 +4,20 @@ description: Azure IoT Central アプリケーションからデータをエク�
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 07/3/2018
-ms.topic: article
-ms.prod: azure-iot-central
+ms.date: 09/18/2018
+ms.topic: conceptual
+ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 3ca2bc56c03e5bbabbd9b2f17edc621bdd94b02f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 86128abd82ee41459a84fc7d9169042179807793
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622485"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034911"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Azure IoT Central でデータをエクスポートする
+
+*このトピックでは、管理者に適用されます。*
 
 この記事では、定期的にデータを Azure BLOB ストレージ アカウントにエクスポートする Azure IoT Central の連続データ エクスポート機能の使用方法について説明します。 **測定**、**デバイス**、**デバイス テンプレート**を [Apache AVRO](https://avro.apache.org/docs/current/index.html) 形式のファイルにエクスポートできます。 エクスポートしたデータは、Azure Machine Learning のトレーニング モデルや Microsoft Power BI の長期傾向分析などのコールド パス分析に使用できます。
 
@@ -33,10 +35,10 @@ ms.locfileid: "39622485"
 
 ### <a name="measurements"></a>測定
 
-デバイスが送信する測定は、1 分ごとにストレージ アカウントにエクスポートされます。 データには、その間にすべてのデバイスから IoT Central が受信したすべての新しいメッセージが含まれます。 エクスポートされる AVRO ファイルでは、[IoT Hub メッセージ ルーティング](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-csharp-csharp-process-d2c)によって BLOB ストレージにエクスポートされるメッセージ ファイルと同じ形式が使われます。
+デバイスが送信する測定は、1 分ごとにストレージ アカウントにエクスポートされます。 データには、その間にすべてのデバイスから IoT Central が受信したすべての新しいメッセージが含まれます。 エクスポートされる AVRO ファイルでは、[IoT Hub メッセージ ルーティング](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c)によって BLOB ストレージにエクスポートされるメッセージ ファイルと同じ形式が使われます。
 
 > [!NOTE]
-> 測定を送信するデバイスは、デバイス ID で表されます (以下のセクションを参照)。 デバイスの名前を取得するには、デバイスのスナップショットをエクスポートします。 デバイス ID と一致する **connectionDeviceId** を使って、各メッセージ レコードを関連付けます。
+> 測定を送信するデバイスは、デバイス ID で表されます (以下のセクションを参照)。 デバイスの名前を取得するには、デバイスのスナップショットをエクスポートします。 デバイスレコードの**デバイス ID** と一致する **connectionDeviceId** を使っデバイスて、各メッセージ レコードを関連付けます。
 
 次の例では、デコードされた AVRO ファイル内のレコードを示します。
 
@@ -45,9 +47,9 @@ ms.locfileid: "39622485"
     "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
     "Properties": {},
     "SystemProperties": {
-        "connectionDeviceId": "2383d8ba-c98c-403a-b4d5-8963859643bb",
+        "connectionDeviceId": "<connectionDeviceId>",
         "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "636614021491644195",
+        "connectionDeviceGenerationId": "<generationId>",
         "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
     },
     "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
@@ -56,11 +58,12 @@ ms.locfileid: "39622485"
 
 ### <a name="devices"></a>デバイス
 
-連続データ エクスポートを初めて有効にしたときに、すべてのデバイスを含む単一のスナップショットがエクスポートされます。 スナップショットには次の値が含まれます。
-- デバイス ID。
-- デバイス名。
-- デバイス テンプレート ID。
-- プロパティ値。
+連続データ エクスポートを初めて有効にしたときに、すべてのデバイスを含む単一のスナップショットがエクスポートされます。 各デバイスは次のとおりです。
+- `id` IoT Central でデバイスの
+- デバイスの `name`
+- `deviceId`Device Provisioning Service[ の](https://aka.ms/iotcentraldocsdps)
+- デバイステンプレート情報
+- プロパティ値
 - 設定値。
 
 1 分に 1 回、新しいスナップショットが書き込まれます。 スナップショットには次の値が含まれます。
@@ -73,15 +76,16 @@ ms.locfileid: "39622485"
 >
 > 各デバイスが属するデバイス テンプレートは、デバイス テンプレート ID によって表されます。 デバイス テンプレートの名前を取得するには、デバイス テンプレートのスナップショットをエクスポートします。
 
-デコードされた AVRO ファイルの各レコードは次のようになります。
+デコードされた AVRO ファイル内のレコードはできるようになります。
 
 ```json
 {
-    "id": "2383d8ba-c98c-403a-b4d5-8963859643bb",
+    "id": "<id>",
     "name": "Refrigerator 2",
     "simulated": true,
+    "deviceId": "<deviceId>",
     "deviceTemplate": {
-        "id": "c318d580-39fc-4aca-b995-843719821049",
+        "id": "<template id>",
         "version": "1.0.0"
     },
     "properties": {
@@ -104,8 +108,10 @@ ms.locfileid: "39622485"
 
 ### <a name="device-templates"></a>デバイス テンプレート
 
-連続データ エクスポートを初めて有効にしたときに、すべてのデバイス テンプレートを含む単一のスナップショットがエクスポートされます。 スナップショットには次の値が含まれます。 
-- デバイス テンプレート ID。
+連続データ エクスポートを初めて有効にしたときに、すべてのデバイス テンプレートを含む単一のスナップショットがエクスポートされます。 各デバイスのテンプレートは次のとおりです。
+- デバイス テンプレートの`id`
+- デバイス テンプレートの`name`
+- デバイス テンプレートの`version`
 - 測定のデータ型および最小/最大値。
 - プロパティのデータ型と既定値。
 - 設定のデータ型と既定値。
@@ -122,7 +128,7 @@ ms.locfileid: "39622485"
 
 ```json
 {
-    "id": "c318d580-39fc-4aca-b995-843719821049",
+    "id": "<id>",
     "name": "Refrigerated Vending Machine",
     "version": "1.0.0",
     "measurements": {
@@ -209,16 +215,19 @@ ms.locfileid: "39622485"
 
 4. **[管理]** で、**[データのエクスポート]** を選択します。
 
-   ![連続データ エクスポートを構成する](media/howto-export-data/continuousdataexport.PNG)
-
 5. **[ストレージ アカウント]** ドロップダウン リスト ボックスで、お使いのストレージ アカウントを選択します。 **[コンテナー]** ドロップダウン リスト ボックスで、お使いのコンテナーを選択します。 **[Data to export]\(エクスポートするデータ\)** で、エクスポートするデータの種類を **[オン]** に設定して指定します。
 
 6. 連続データ エクスポートを有効にするには、**[データのエクスポート]** を **[オン]** に設定します。 **[保存]** を選択します。
 
+  ![連続データ エクスポートを構成する](media/howto-export-data/continuousdataexport.PNG)
+
 7. 数分後に、データがストレージ アカウントに表示されます。 ストレージ アカウントを参照します。 **[BLOB の参照]** を選択し、お使いのコンテナーを選択します。 エクスポート データの 3 つのフォルダーが表示されます。 エクスポート データの AVRO ファイルの既定のパスは次のとおりです。
-    - メッセージ: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
-    - デバイス: {container}/devices/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
-    - デバイス テンプレート: {container}/deviceTemplates/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
+    - メッセージ: 
+{container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+    - デバイス: 
+{container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+    - デバイス テンプレート: 
+{container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
 
 ## <a name="read-exported-avro-files"></a>エクスポートされた AVRO ファイルを読み取る
 
@@ -280,7 +289,7 @@ def parse(filePath):
     transformed = pd.DataFrame()
 
     # The device ID is available in the id column.
-    transformed["device_id"] = devices["id"]
+    transformed["device_id"] = devices["deviceId"]
 
     # The template ID and version are present in a dictionary under
     # the deviceTemplate column.
@@ -395,7 +404,7 @@ public static async Task Run(string filePath)
                 {
                     // Get the field value directly. You can also yield return
                     // records and make the function IEnumerable<AvroRecord>.
-                    var deviceId = record.GetField<string>("id");
+                    var deviceId = record.GetField<string>("deviceId");
 
                     // The device template information is stored in a sub-record
                     // under the deviceTemplate field.
@@ -411,7 +420,7 @@ public static async Task Run(string filePath)
                     var fanSpeed = deviceSettingsRecord["fanSpeed"];
                     
                     Console.WriteLine(
-                        "ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
+                        "Device ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
                         deviceId,
                         templateId,
                         templateVersion,
@@ -524,8 +533,8 @@ const avro = require('avsc');
 async function parse(filePath) {
     const records = await load(filePath);
     for (const record of records) {
-        // Fetch the device ID from the id property.
-        const deviceId = record.id;
+        // Fetch the device ID from the deviceId property.
+        const deviceId = record.deviceId;
 
         // Fetch the template ID and version from the deviceTemplate property.
         const deviceTemplateId = record.deviceTemplate.id;
@@ -535,7 +544,7 @@ async function parse(filePath) {
         const fanSpeed = record.settings.device.fanSpeed;
 
         // Log the retrieved device ID and humidity.
-        console.log(`ID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
+        console.log(`deviceID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
     }
 }
 

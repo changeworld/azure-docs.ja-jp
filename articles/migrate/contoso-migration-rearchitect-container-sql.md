@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 09/20/2018
 ms.author: raynew
-ms.openlocfilehash: eacad4acbae0565cbd894d3f51665d751eb9a6e2
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 80234610eda264976f3ec20da2a0ef12c73ccba6
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783136"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035710"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso の移行: Azure コンテナーと Azure SQL Database でオンプレミス アプリを再構築する
 
@@ -32,11 +32,11 @@ ms.locfileid: "43783136"
 [記事 8: Azure VM と Azure MySQL への Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Azure Site Recovery を使用して Linux osTicket アプリを Azure VM に移行する方法、および MySQL Workbench を使用してアプリのデータベースを Azure MySQL Server インスタンスに移行します。 | 使用可能
 [記事 9: Azure Web Apps および Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。 | 使用可能
 [記事 10: Azure Web Apps と Azure MySQL での Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Azure Traffic Manager を使用し、その Linux osTicket アプリを、複数の Azure リージョンの Azure Web アプリに移行します。この Azure Web アプリは、継続的デリバリーを目的として GitHub と統合されます。 Contoso は、アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | 使用可能 
-[記事 11: VSTS での TFS のリファクター](contoso-migration-tfs-vsts.md) | Contoso がオンプレミスの Team Foundation Server の展開を Azure の Visual Studio Team Services に移行します。 | 使用可能
-記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築 | Contoso が SmartHotel360 アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 | この記事の内容は次のとおりです。
-[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel360 アプリをリビルドします。 | 使用可能  
+[記事 11: Azure DevOps Services での TFS のリファクター](contoso-migration-tfs-vsts.md) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。 | 使用可能
+記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築 | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 | この記事の内容は次のとおりです。
+[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel アプリをリビルドします。 | 使用可能 
 
-この記事では、Contoso は、VMware VM で実行されている 2 階層の Windows . VMware VM 上で実行されている NET SmartHotel360 アプリを Azure に移行します。 このアプリを使用したい場合は、オープン ソースとして提供されていますので、[GitHub](https://github.com/Microsoft/SmartHotel360) からダウンロードしてください。
+この記事では、Contoso が VMware VM で実行されている 2 層 Windows WPF XAML フォーム SmartHotel360 アプリを Azure に移行します。 このアプリを使用したい場合は、オープン ソースとして提供されていますので、[GitHub](https://github.com/Microsoft/SmartHotel360) からダウンロードしてください。
 
 ## <a name="business-drivers"></a>ビジネス ドライバー
 
@@ -57,7 +57,7 @@ Contoso クラウド チームは、この移行の目標を設定しました�
 **アプリの要件** | Azure のアプリの重要度は、現在と同様に今後も変わりません。<br/><br/> 現在の VMWare と同じくらいのパフォーマンス機能が必要です。<br/><br/> Contoso は、アプリが現在実行されている Windows Server 2008 R2 のサポートを終了し、アプリに投資したいと考えています。<br/><br/> Contoso は、SQL Server 2008 R2 から最新の PaaS Database プラットフォームに移行したいと考えています。これにより、管理の必要性を最小限に抑えられます。<br/><br/> Contoso は、可能であれば、SQL Server のライセンスとソフトウェア アシュアランスへのこれまでの投資を利用したいと考えています。<br/><br/> Contoso は、アプリの Web 階層をスケールアップできるようにしたいと考えています。
 **制限事項** | このアプリは、同じ VM 上で実行されている ASP.NET アプリと WCF サービスで構成されています。 Contoso は、Azure App Service を使用して 2 つの Web アプリに分割したいと考えています。 
 **Azure の要件** | Contoso は、アプリを Azure に移行し、そのアプリをコンテナーで実行してアプリの寿命を延ばしたいと考えています。 Azure でのアプリの実装を完全に最初から始めたくはありません。 
-**DevOps** | Contoso は、コード ビルドとリリース パイプラインに Visual Studio Team Services (VSTS) を使用して DevOps モデルに移行したいと考えています。
+**DevOps** | Contoso は、コード ビルドとリリース パイプラインに Azure DevOps Services を使用して DevOps モデルに移行したいと考えています。
 
 ## <a name="solution-design"></a>ソリューション設計
 
@@ -79,10 +79,10 @@ Contoso は目標と要件を決定した後、デプロイ ソリューショ�
     - Contoso は、軽量な Data Migration Assistant (DMA) を利用して、オンプレミス データベースを評価し、Azure SQL に移行することができます。
     - Contoso はソフトウェア アシュアランスに基づき、SQL Database では SQL Server 用の Azure ハイブリッド特典を利用して、既存のライセンスを割引料金のライセンスに交換することができます。 この方法なら最大 30% の節約が可能です。
     - SQL Database には、常に暗号化された動的データ マスキング、行レベルのセキュリティ/脅威検出など、さまざまなセキュリティ機能があります。
-- アプリの Web 層については、Contoso は Visual Studio を使用して Windows コンテナーに変換することを決定しました。
+- アプリの Web 層については、Contoso は Azure DevOps Services を使用して Windows コンテナーに変換することを決定しました。
     - Contoso は Azure Service Fabric を使用してアプリをデプロイし、Azure Container Registry (ACR) から Windows コンテナー イメージをプルします。
     - センチメント分析を含むようにアプリを拡張するプロトタイプは、Cosmos DB に接続された Service Fabric の別のサービスとして実装されます。  ツイートから情報が読み取られ、アプリに表示されます。
-- DevOps パイプラインを実装するために、Contoso はソース コード管理 (SCM) に Git リポジトリと共に VSTS を使用します。  自動的なビルドとリリースを使用してコードを作成し、Azure Container Registry と Azure Service Fabric にデプロイします。
+- DevOps パイプラインを実装するために、Contoso はソース コード管理 (SCM) に Git リポジトリと共に Azure DevOps を使用します。  自動的なビルドとリリースを使用してコードを作成し、Azure Container Registry と Azure Service Fabric にデプロイします。
 
     ![シナリオのアーキテクチャ](./media/contoso-migration-rearchitect-container-sql/architecture.png) 
 
@@ -114,6 +114,7 @@ Contoso は、長所と短所の一覧をまとめて、提案されたデザイ
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) | インテリジェントなフル マネージド リレーショナル クラウド データベース サービスを提供します。 | 機能、スループット、サイズに基づくコスト。 [詳細情報](https://azure.microsoft.com/pricing/details/sql-database/managed/)。
 [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) | あらゆる種類のコンテナー デプロイのイメージを保存します。 | コストは機能、ストレージ、使用期間に基づいて発生します。 [詳細情報](https://azure.microsoft.com/pricing/details/container-registry/)。
 [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) | 常時接続可能でスケーラブルな分散アプリを構築し、運用します | コンピューティング ノードのサイズ、場所、期間に基づくコスト。 [詳細情報](https://azure.microsoft.com/pricing/details/service-fabric/)。
+[Azure DevOps](https://docs.microsoft.com/azure/azure-portal/tutorial-azureportal-devops) | 継続的インテグレーションと継続的デプロイ (CI/CD) パイプラインをアプリの開発に提供します。 パイプラインは、アプリ コードを管理する Git リポジトリで始まり、パッケージおよびその他のビルド成果物を生成するためのビルド システム、開発、テスト、および運用環境での変更を配置するリリース管理システムへと続きます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -135,10 +136,10 @@ Contoso が移行を実行する方法を次に示します。
 > * **手順 1: Azure に SQL Database インスタンスをプロビジョニングする**: Contoso は Azure に SQL インスタンスをプロビジョニングします。 フロントエンド Web VM が Azure コンテナーに移行された後、アプリ Web フロントエンドを含むコンテナー インスタンスは、このデータベースを示すようになります。
 > * **手順 2: Azure Container Registry (ACR) を作成する**: Contoso は、Docker コンテナー イメージのエンタープライズ コンテナー レジストリをプロビジョニングします。
 > * **手順 3: Azure Service Fabric をプロビジョニングする**: Service Fabric クラスターをプロビジョニングします。
-> * **手順 4: サービス ファブリック証明書を管理する**: Contoso は VSTS がクラスターにアクセスするための証明書を設定します。
+> * **手順 4: サービス ファブリック証明書を管理する**: Contoso は Azure DevOps Services がクラスターにアクセスするための証明書を設定します。
 > * **手順 5: DMA を使用してデータベースを移行する**: Data Migration Assistant を使用してアプリ データベースを移行します。
-> * **手順 6: VSTS を設定する**: Contoso は VSTS で新しいプロジェクトを設定し、コードを Git リポジトリにインポートします。
-> * **手順 7: アプリを変換する**: Contoso は Visual Studio と SDK ツールを使用してアプリをコンテナーに変換します。
+> * **手順 6: Azure DevOps Services を設定する**: Contoso は Azure DevOps Services で新しいプロジェクトを設定し、コードを Git リポジトリにインポートします。
+> * **手順 7: アプリを変換する**: Contoso は Azure DevOps と SDK ツールを使用してアプリをコンテナーに変換します。
 > * **手順 8: ビルドとリリースを設定する**: Contoso は、アプリを作成して ACR および Service Fabric Cluster に発行するためのビルド パイプラインとリリース パイプラインを設定します。
 > * **手順 9: アプリを拡張する**: アプリが発行された後、Contoso は Azure の機能を利用するように拡張し、パイプラインを使用してそれを Azure に再発行します。
 
@@ -254,7 +255,7 @@ SmartHotel360 コンテナーは、Azure Service Fabric クラスターで実行
 
 ## <a name="step-4-manage-service-fabric-certificates"></a>手順 4: Service Fabric 証明書を管理する
 
-Contoso は、クラスターへの VSTS アクセスを許可するクラスター証明書が必要です。 Contoso 管理者がこれを設定します。
+Contoso は、クラスターへの Azure DevOps Services アクセスを許可するクラスター証明書が必要です。 Contoso 管理者がこれを設定します。
 
 1. Azure portal を開き、KeyVault を参照します。
 2. 証明書を開き、プロビジョニング プロセス中に作成された証明書の拇印をコピーします。
@@ -262,7 +263,7 @@ Contoso は、クラスターへの VSTS アクセスを許可するクラスタ
     ![拇印をコピーする](./media/contoso-migration-rearchitect-container-sql/cert1.png)
  
 3. 後で参照できるようにテキスト ファイルにコピーします。
-4. これでクライアント証明書が追加され、その証明書がクラスター上の管理用クライアント証明書になります。 これにより、VSTS は、リリース パイプラインでアプリをデプロイするためにクラスターに接続できます。 これらの処理を実行するために、ポータルで KeyVault を開き、**[証明書]** > **[生成/インポート]** の順に選択します。
+4. これでクライアント証明書が追加され、その証明書がクラスター上の管理用クライアント証明書になります。 これにより、Azure DevOps Services は、リリース パイプラインでアプリをデプロイするためにクラスターに接続できます。 これらの処理を実行するために、ポータルで KeyVault を開き、**[証明書]** > **[生成/インポート]** の順に選択します。
 
     ![クライアント証明書を生成する](./media/contoso-migration-rearchitect-container-sql/cert2.png)
 
@@ -278,7 +279,7 @@ Contoso は、クラスターへの VSTS アクセスを許可するクラスタ
 
      ![クライアント証明書の拇印](./media/contoso-migration-rearchitect-container-sql/cert5.png)
 
-8. VSTS デプロイの場合、証明書の Base64 値を決定する必要があります。 これは、PowerShell を使用してローカルの開発者用ワークステーションで行います。 後で使用するために、出力をテキスト ファイルに貼り付けます。
+8. Azure DevOps Services デプロイの場合、証明書の Base64 値を決定する必要があります。 これは、PowerShell を使用してローカルの開発者用ワークステーションで行います。 後で使用するために、出力をテキスト ファイルに貼り付けます。
 
     ```
         [System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes("C:\path\to\certificate.pfx")) 
@@ -359,21 +360,18 @@ Contoso 管理者はデータベースを移動できるようになりました
      ![DMA](./media/contoso-migration-rearchitect-container-sql/dma-9.png)
 
 
-## <a name="step-6-set-up-vsts"></a>手順 6: VSTS を設定する
+## <a name="step-6-set-up-azure-devops-services"></a>手順 6: Azure DevOps Services を設定する
 
-Contoso は、アプリケーションのために DevOps インフラストラクチャとパイプラインを構築する必要があります。  これを行うために、Contoso 管理者は新しい VSTS プロジェクトを作成し、コードをインポートしてから、パイプラインを構築してリリースします。
+Contoso は、アプリケーションのために DevOps インフラストラクチャとパイプラインを構築する必要があります。  これを行うために、Contoso 管理者は新しい Azure DevOps プロジェクトを作成し、コードをインポートしてから、パイプラインを構築してリリースします。
 
-1.   Contoso VSTS アカウントで、新しいプロジェクト (**ContosoSmartHotelRearchitect**) を作成し、バージョン コントロールに **[Git]** を選択します。
-
-    ![新しいプロジェクト](./media/contoso-migration-rearchitect-container-sql/vsts1.png)
+1.   Contoso Azure DevOps アカウントで、新しいプロジェクト (**ContosoSmartHotelRearchitect**) を作成し、バージョン コントロールに **[Git]** を選択します。
+![新しいプロジェクト](./media/contoso-migration-rearchitect-container-sql/vsts1.png)
 
 2. アプリ コードを現在保持している Git リポジトリをインポートします。 [パブリック リポジトリ](https://github.com/Microsoft/SmartHotel360-internal-booking-apps)内にあるので、ダウンロードすることができます。
 
     ![アプリ コードをダウンロードする](./media/contoso-migration-rearchitect-container-sql/vsts2.png)
 
 3. コードをインポートしたら、Visual Studio をリポジトリに接続し、チーム エクスプローラーを使用してコードを複製します。
-
-    ![リポジトリに接続する](./media/contoso-migration-rearchitect-container-sql/vsts3.png)
 
 4. リポジトリが開発者用マシンに複製された後に、アプリのソリューション ファイルを開きます。 Web アプリと wcf サービスは、ファイル内にそれぞれ別のプロジェクトを持っています。
 
@@ -424,19 +422,19 @@ Contoso 管理者は、以下のように Visual Studio と SDK Tools を使用�
 
     ![接続文字列](./media/contoso-migration-rearchitect-container-sql/container8.png)
 
-10. 更新されたコードをコミットし、VSTS にプッシュします。
+10. 更新されたコードをコミットし、Azure DevOps Services にプッシュします。
 
     ![コミット](./media/contoso-migration-rearchitect-container-sql/container9.png)
 
-## <a name="step-8-build-and-release-pipelines-in-vsts"></a>手順 8: VSTS でパイプラインをビルドおよびリリースする
+## <a name="step-8-build-and-release-pipelines-in-azure-devops-services"></a>手順 8: Azure DevOps Services でパイプラインをビルドおよびリリースする
 
-次に、Contoso 管理者は、DevOps が実行するアクションに対するビルドおよびリリース プロセスを実行するように VSTS を構成します。
+次に、Contoso 管理者は、DevOps が実行するアクションに対するビルドおよびリリース プロセスを実行するように Azure DevOps Services を構成します。
 
-1. VSTS では、**[Build and release]\(ビルドとリリース\)** > **[ 新しいパイプライン]** の順にクリックします。
+1. Azure DevOps Services では、**[Build and release]\(ビルドとリリース\)** > **[ 新しいパイプライン]** の順にクリックします。
 
     ![新しいパイプライン](./media/contoso-migration-rearchitect-container-sql/pipeline1.png)
 
-2. **[VSTS Git]** を選択し、関連するリポジトリを選択します。
+2. **[Azure DevOps Services Git]** と 関連するリポジトリを選択します。
 
     ![Git とリポジトリ](./media/contoso-migration-rearchitect-container-sql/pipeline2.png)
 
@@ -444,7 +442,7 @@ Contoso 管理者は、以下のように Visual Studio と SDK Tools を使用�
 
      ![ファブリックと Docker](./media/contoso-migration-rearchitect-container-sql/pipeline3.png)
     
-4. タグ イメージを変更してイメージをビルドし、プロビジョニングされた ACR を使用するようにタスクを構成します。
+4. アクション タグ イメージを変更して**イメージをビルド**し、プロビジョニングされた ACR を使用するようにタスクを構成します。
 
      ![レジストリ](./media/contoso-migration-rearchitect-container-sql/pipeline4.png)
 
@@ -454,15 +452,15 @@ Contoso 管理者は、以下のように Visual Studio と SDK Tools を使用�
     ![トリガー](./media/contoso-migration-rearchitect-container-sql/pipeline5.png)
 
 7. **[Save and Queue]\(保存とキュー\)** をクリックしてビルドを開始します。
-8. ビルドが成功したら、リリース パイプラインに移動します。 VSTS で、**[リリース]** > **[新しいパイプライン]** の順にクリックします。
+8. ビルドが成功したら、リリース パイプラインに移動します。 Azure DevOps Services では、**[リリース]** > **[新しいパイプライン]** の順にクリックします。
 
     ![リリース パイプライン](./media/contoso-migration-rearchitect-container-sql/pipeline6.png)    
 
-9. **Azure Service Fabric デプロイ** テンプレートを選択し、環境に名前 (**SmartHotelSF**) を付けます。
+9. **Azure Service Fabric デプロイ** テンプレートを選択し、ステージに名前 (**SmartHotelSF**) を付けます。
 
     ![環境](./media/contoso-migration-rearchitect-container-sql/pipeline7.png)
 
-10. パイプライン名を指定します (**ContosoSmartHotelRearchitect**)。 環境には **[1 phase, 1 task]\(1 フェーズ、1 タスク\)** をクリックして Service Fabric デプロイを構成します。
+10. パイプライン名を指定します (**ContosoSmartHotel360Rearchitect**)。 ステージには **[1 job, 1 task]\(1 ジョブ、1 タスク\)** をクリックして Service Fabric デプロイを構成します。
 
     ![フェーズとタスク](./media/contoso-migration-rearchitect-container-sql/pipeline8.png)
 
@@ -470,7 +468,7 @@ Contoso 管理者は、以下のように Visual Studio と SDK Tools を使用�
 
     ![新しい接続](./media/contoso-migration-rearchitect-container-sql/pipeline9.png)
 
-12. **[Add Service Fabric service connection]\(Service Fabric サービス接続の追加\)** で、接続を構成し、アプリを開発するために VSTS に使用される認証設定を構成します。 クラスター エンドポイントは、Azure portal で確認できます。Contoso はプレフィックスに **tcp://** を追加しています。
+12. **[Add Service Fabric service connection]\(Service Fabric サービス接続の追加\)** で、接続を構成し、アプリをデプロイするために Azure DevOps Services に使用される認証設定を構成します。 クラスター エンドポイントは、Azure portal で確認できます。Contoso はプレフィックスに **tcp://** を追加しています。
 13. 収集した証明書情報は、**[Server Certificate Thumbprint]\(サーバー証明書の拇印\)** および **[クライアント証明書]** に入力されます。
 
     ![証明書](./media/contoso-migration-rearchitect-container-sql/pipeline10.png)
@@ -580,7 +578,7 @@ Cosmos DB がプロビジョニングされたら、Contoso 管理者はそれ�
 
 アプリを拡張した後、Contoso 管理者はパイプラインを使用して Azure に再発行します。
 
-1. コードをコミットして VSTS にプッシュします。 これでビルドとリリース パイプラインが開始されます。
+1. コードをコミットして Azure DevOps Services にプッシュします。 これでビルドとリリース パイプラインが開始されます。
 
 2. ビルドとデプロイが完了すると、SmartHotel360 で Service Fabric が実行されます。 Servie Fabric 管理コンソールに 3 つのサービスが表示されるようになりました。
 

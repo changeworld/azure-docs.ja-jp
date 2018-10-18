@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center のセキュリティ ポリシーを Azure Policy に統合する | Microsoft Docs
-description: このドキュメントでは、Azure Security Center のセキュリティ ポリシーを Azure Policy に統合するための構成方法について説明します。
+title: 個別にまたは Azure ポリシーの一部として、azure Security Center セキュリティ ポリシーを設定することができます |Microsoft Docs
+description: このドキュメントでは、Azure Security Center で、または Azure Policy では、ポリシーを設定できます。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -9,20 +9,27 @@ editor: ''
 ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/21/2018
+ms.date: 09/5/2018
 ms.author: terrylan
-ms.openlocfilehash: b3d6d15d41fece613290deb2c77e980caa5dcfef
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 3c198ea44953c0b2e72a544cd0e83b6592d9a81f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37018565"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032079"
 ---
-# <a name="integrate-security-center-security-policies-with-azure-policy"></a>Security Center のセキュリティ ポリシーを Azure Policy に統合する
-この記事では、[Azure Policy](../azure-policy/azure-policy-introduction.md) を利用する Azure Security Center のセキュリティ ポリシーの構成方法について説明します。
+# <a name="setting-security-policies-in-security-center-or-in-azure-policy"></a>Azure Policy によって提供される Security Center のセキュリティ ポリシーの設定
+
+この記事は、Azure Security Center でのセキュリティ ポリシーを構成する場合に役立ちます。 設定できるようにしてセキュリティ センターのいずれかまたは特定のサブスクリプションで Azure のポリシーと azure セキュリティ センター ポリシーを統合[Azure Policy](../azure-policy/azure-policy-introduction.md)、管理グループ間で、複数のポリシーを設定できますサブスクリプション.
+
+## <a name="what-are-security-policies"></a>セキュリティ ポリシーとは
+セキュリティ ポリシーは、ワークロードの必要な構成を定義し、会社や規制のセキュリティ要件に確実に準拠できるようにします。 Azure Security Center では、Azure サブスクリプションのポリシーを定義でき、ワークロードの種類やデータの機密性に合わせて調整できます。 たとえば、個人を特定できる情報のような、規制されたデータが使用されるアプリケーションには、他のワークロードより高いレベルのセキュリティが必要です。 設定を管理グループまたはサブスクリプション間でのポリシーを設定する [Azure Policy](../azure-policy/azure-policy-introduction.md) します。
+
+> [!NOTE]
+> 管理グループの一部または複数のポリシー割り当てがサブスクリプションで以前のセキュリティ ポリシーが構成されている場合これらのポリシー灰色で表示されます Security Center で、Azure を使用して管理グループ レベルでポリシーを管理することができます。ポリシーのページです。 
 
 ## <a name="how-security-policies-work"></a>セキュリティ ポリシーのしくみ
 Security Center では、Azure サブスクリプションごとに自動で既定のセキュリティ ポリシーが作成されます。 Security Center でポリシーを編集するか、Azure Policy を使用して、以下の操作を行うことができます。
@@ -40,8 +47,17 @@ Azure ポリシーは、次のコンポーネントで構成されています�
 
 リソースは、割り当てられたポリシーに対して評価され、リソースが準拠しているポリシーの数に従ってコンプライアンス比率が計算されます。
 
+## <a name="who-can-edit-security-policies"></a>セキュリティ ポリシーを編集できるユーザーは誰ですか。
+Security Center ではロールベースのアクセス制御 (RBAC) が使用されています。RBAC が提供する組み込みのロールは、Azure でユーザー、グループ、サービスに割り当てることができます。 ユーザーが Security Center を開くと、アクセス権のあるリソースに関する情報のみが表示されます。 これは、サブスクリプションまたはリソースが属するリソース グループについて、所有者、共同作成者、閲覧者のいずれかのロールがユーザーに割り当てられていることを意味します。 これらのロールに加え、Security Center には、次の 2 つの固有のロールがあります。
+
+- セキュリティ閲覧者: Security Center に対する閲覧権限を持ちます。推奨事項、アラート、ポリシー、および正常性を確認できますが、変更を加えることはできません。
+- セキュリティ管理者: セキュリティ閲覧者と同じ閲覧権限を持ちますが、セキュリティ ポリシーの更新と推奨事項とアラートの解除を実行することもできます。
+
 ## <a name="edit-security-policies"></a>セキュリティ ポリシーの編集
 Security Center では、各 Azure サブスクリプションおよび管理グループの既定のセキュリティ ポリシーを編集できます。 セキュリティ ポリシーを変更するには、サブスクリプションまたはそれが含まれる管理グループの所有者、共同作成者、セキュリティ管理者のいずれかである必要があります。 Security Center でセキュリティ ポリシーを表示するには:
+
+> [!NOTE]
+> すべてのポリシー設定を管理グループの一部または複数のポリシー割り当てがサブスクリプションでは、Security Center に灰色で表示されます。 これらのポリシーを編集する [Azure Policy](../azure-policy/azure-policy-introduction.md) します。 
 
 1. **Security Center** ダッシュボードの **[ポリシーとコンプライアンス]** で、**[セキュリティ ポリシー]** を選択します。 **[ポリシー管理]** が開きます。
 
@@ -95,7 +111,7 @@ Security Center では、各 Azure サブスクリプションおよび管理グ
 組織に多数のサブスクリプションがある場合は、これらのサブスクリプションのアクセス、ポリシー、およびコンプライアンスを効率的に管理する方法が必要になることがあります。 Azure 管理グループの範囲は、サブスクリプションを上回ります。 "管理グループ" と呼ばれるコンテナーにサブスクリプションを整理して、管理グループに管理ポリシーを適用できます。 管理グループ内のすべてのサブスクリプションは、管理グループに適用されたポリシーを自動的に継承します。 各ディレクトリには、"ルート" 管理グループと呼ばれる 1 つの最上位管理グループがあります。 このルート管理グループは階層に組み込まれており、すべての管理グループとサブスクリプションはルート管理グループにまとめられます。 ルート管理グループにより、グローバル ポリシーと RBAC の割り当てをディレクトリ レベルで適用できます。 Azure Security Center で使用する管理グループを設定するには、「[Gain tenant-wide visibility for Azure Security Center (Azure Security Center のテナント全体の可視性の獲得)](security-center-management-groups.md)」の指示に従ってください。 
 
 > [!NOTE]
-> 管理グループとサブスクリプションの階層を理解することが重要です。 管理グループ、ルート管理、および管理グループへのアクセスの詳細については、「[Organize your resources with Azure Management Groups (Azure 管理グループを使用してリソースを整理する)](../azure-resource-manager/management-groups-overview.md#root-management-group-for-each-directory)」を参照してください。
+> 管理グループとサブスクリプションの階層を理解することが重要です。 管理グループ、ルート管理、および管理グループへのアクセスの詳細については、「[Organize your resources with Azure Management Groups (Azure 管理グループを使用してリソースを整理する)](../governance/management-groups/index.md#root-management-group-for-each-directory)」を参照してください。
 >
 >
 

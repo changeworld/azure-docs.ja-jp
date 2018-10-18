@@ -4,19 +4,19 @@ description: Media Services のジョブ状態変更イベントをサブスク�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 09/20/2018
 ms.author: juliako
-ms.openlocfilehash: e9df0cd24ef890765b78c25a073d671889be10a7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e7268a066acf41c454de0c66aa21603199d85a60
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38723744"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034843"
 ---
 # <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>CLI を使用して Azure Media Services のイベントをカスタム Web エンドポイントにルーティングする
 
@@ -26,17 +26,14 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 この記事の手順の最後に、イベント データがエンドポイントに送信済みであることを確認できます。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+## <a name="prerequisites"></a>前提条件
 
-[Azure portal](http://portal.azure.com) にログインし、以降の手順で示すように CLI コマンドを実行するために **CloudShell** を起動します。
+- 有効な Azure サブスクリプションを持っている。
+- [Media Services アカウントを作成する](create-account-cli-how-to.md)
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+    Media Services アカウント名、ストレージ名、およびリソース名として使用した値を覚えておいてください。
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
-
-Media Services アカウント名、ストレージ名、およびリソース名として使用した値を覚えておいてください。
+- [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールします。 この記事では、Azure CLI バージョン 2.0.46 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 [Azure Cloud Shell](https://shell.azure.com/bash) を使用することもできます。
 
 ## <a name="enable-event-grid-resource-provider"></a>Event Grid リソース プロバイダーを有効にする
 
@@ -132,7 +129,7 @@ public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
 
 どのイベントを追跡するかを Event Grid に通知するアーティクルをサブスクライブします。次の例では、作成した Media Services アカウントをサブスクライブし、イベント通知のエンドポイントとして作成した Azure Function webhook の URL を渡します。 
 
-`<event_subscription_name>` をイベント サブスクリプションの一意の名前に置き換えます。 `<resource_group_name>` と `<ams_account_name>` には、先ほど作成した値を使用します。  `<endpoint_URL>` には、エンドポイント URL を貼り付けます。 URL から "*&clientID=default*" を削除します。 サブスクライブ時にエンドポイントを指定することによって、そのエンドポイントに対するイベントのルーティングが Event Grid によって行われます。 
+`<event_subscription_name>` をイベント サブスクリプションの一意の名前に置き換えます。 `<resource_group_name>`と`<ams_account_name>`、Media Services アカウントを作成するときに使用した値を使用します。 `<endpoint_URL>` には、エンドポイント URL を貼り付けます。 URL から "*&clientID=default*" を削除します。 サブスクライブ時にエンドポイントを指定することによって、そのエンドポイントに対するイベントのルーティングが Event Grid によって行われます。 
 
 ```cli
 amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -145,7 +142,9 @@ az eventgrid event-subscription create \
 
 Media Services アカウントのリソース ID 値は、次のようになります。
 
+```
 /subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amstestaccount
+```
 
 ## <a name="test-the-events"></a>イベントをテストする
 
@@ -153,7 +152,7 @@ Media Services アカウントのリソース ID 値は、次のようになり�
 
 以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 先ほど作成した webhook を参照します。 **[監視]** と **[更新]** をクリックします。 ジョブの状態変更イベントが表示されます。"Queued"、"Scheduled"、"Processing"、"Finished"、"Error"、"Canceled"、"Canceling"。  詳細については、「[Media Services イベントのスキーマ](media-services-event-schemas.md)」を参照してください。
 
-例: 
+次の例は、JobStateChange イベントのスキーマを示しています。
 
 ```json
 [{
@@ -172,16 +171,6 @@ Media Services アカウントのリソース ID 値は、次のようになり�
 ```
 
 ![イベントのテスト](./media/job-state-events-cli-how-to/test_events.png)
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-引き続きこのストレージ アカウントとイベント サブスクリプションを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 引き続き使用する予定がない場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
-
-`<resource_group_name>` は、先ほど作成したリソース グループに置き換えます。
-
-```azurecli-interactive
-az group delete --name <resource_group_name>
-```
 
 ## <a name="next-steps"></a>次の手順
 
