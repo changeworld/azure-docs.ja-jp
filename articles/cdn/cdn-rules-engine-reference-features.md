@@ -3,8 +3,8 @@ title: Azure CDN ルール エンジンの機能 | Microsoft Docs
 description: Azure CDN ルール エンジン機能に関するリファレンス ドキュメント。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: v-deasim
-ms.openlocfilehash: 57648486e515b5438f937c4295b33843583e622e
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.author: magattus
+ms.openlocfilehash: d5be292c66a07f43b40d12e10e4939d9d91559e1
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42141333"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395243"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Azure CDN ルール エンジンの機能
 このトピックでは、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できる機能の詳しい説明を一覧表示します。
@@ -885,7 +885,7 @@ Disabled|既定の動作を復元します。 既定の動作では、アクセ�
 
 オプション|説明|例
 -|-|-
-追加|指定された値が、既存の要求ヘッダー値の末尾に追加されます。|**要求ヘッダー値 (クライアント):**<br/>Value1<br/>**要求ヘッダー値 (ルール エンジン):**<br/>Value2 <br/>**新しい要求ヘッダー値:** <br/>Value1Value2
+Append|指定された値が、既存の要求ヘッダー値の末尾に追加されます。|**要求ヘッダー値 (クライアント):**<br/>Value1<br/>**要求ヘッダー値 (ルール エンジン):**<br/>Value2 <br/>**新しい要求ヘッダー値:** <br/>Value1Value2
 上書き|要求ヘッダー値が、指定された値に設定されます。|**要求ヘッダー値 (クライアント):**<br/>Value1<br/>**要求ヘッダー値 (ルール エンジン):**<br/>Value2<br/>**新しい要求ヘッダー値:**<br/> Value2 <br/>
 削除|指定された要求ヘッダーを削除します。|**要求ヘッダー値 (クライアント):**<br/>Value1<br/>**クライアント要求ヘッダー構成の修正:**<br/>問題の要求ヘッダーを削除します。<br/>**結果:**<br/>指定された要求ヘッダーは、配信元サーバーに転送されません。
 
@@ -923,7 +923,7 @@ Disabled|既定の動作を復元します。 既定の動作では、アクセ�
 
 オプション|説明|例
 -|-|-
-追加|指定された値が、既存の応答ヘッダー値の末尾に追加されます。|**応答ヘッダー値 (クライアント):**<br />Value1<br/>**応答ヘッダー値 (ルール エンジン):**<br/>Value2<br/>**新しい応答ヘッダー値:**<br/>Value1Value2
+Append|指定された値が、既存の応答ヘッダー値の末尾に追加されます。|**応答ヘッダー値 (クライアント):**<br />Value1<br/>**応答ヘッダー値 (ルール エンジン):**<br/>Value2<br/>**新しい応答ヘッダー値:**<br/>Value1Value2
 上書き|応答ヘッダー値が、指定された値に設定されます。|**応答ヘッダー値 (クライアント):**<br/>Value1<br/>**応答ヘッダー値 (ルール エンジン):**<br/>Value2 <br/>**新しい応答ヘッダー値:**<br/>Value2 <br/>
 削除|指定された応答ヘッダーを削除します。|**応答ヘッダー値 (クライアント):**<br/>Value1<br/>**クライアント応答ヘッダー構成の修正:**<br/>問題の応答ヘッダーを削除します。<br/>**結果:**<br/>指定された応答ヘッダーは、要求元に転送されません。
 

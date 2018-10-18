@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 339029f14c4fd9a0158f2b7a4fb80bf03bd83cf3
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: b0aa61c86b08a4fe2eddb5eb1fb5b33c4cb901a0
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42141771"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386589"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Python で Notification Hubs を使用する方法
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -261,7 +261,7 @@ REST ラッパーすべての実装の詳細については、 [MSDN の記事](
 これらのメソッドは、通知ハブの /messages エンドポイントに、通知を送信するための正しい本文とヘッダーを含む HTTP POST 要求を送信します。
 
 ### <a name="using-debug-property-to-enable-detailed-logging"></a>デバッグ プロパティを使用して、詳細なログ記録を有効にする
-Notification Hub の初期化中にデバッグ プロパティを有効にすると、HTTP 要求に関する詳細なログ情報や応答ダンプ、さらには詳細な通知メッセージの送信結果が書き込まれます。 [Notification Hubs TestSend プロパティ](https://docs.microsoft.com/en-us/previous-versions/azure/reference/dn495827(v=azure.100))は、通知の送信結果に関する詳細情報を返します。 これを使用するには、次のコードを使用して初期化します。
+Notification Hub の初期化中にデバッグ プロパティを有効にすると、HTTP 要求に関する詳細なログ情報や応答ダンプ、さらには詳細な通知メッセージの送信結果が書き込まれます。 [Notification Hubs TestSend プロパティ](https://docs.microsoft.com/previous-versions/azure/reference/dn495827(v=azure.100))は、通知の送信結果に関する詳細情報を返します。 これを使用するには、次のコードを使用して初期化します。
 
     hub = NotificationHub("myConnectionString", "myNotificationHubName", isDebug)
 

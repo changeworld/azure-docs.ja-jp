@@ -10,16 +10,17 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ROBOTS: NOINDEX
-ms.openlocfilehash: 7d1f5968fe6ddffce3194f070b6a17aca4d3d9ab
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 224a0ab83720bb9605f2dad9c2612630e90fea2a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995042"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341737"
 ---
 # <a name="quickstart-translator-speech-api-with-c"></a>クイック スタート: C# での Translator Speech API 
 <a name="HOLTop"></a>
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 この記事では、Translator Speech API を使用して、.wav ファイルで話されている言葉を翻訳する方法について説明します。
 
@@ -67,11 +68,12 @@ namespace TranslateSpeechQuickStart
 
             /* Make sure the audio file is followed by silence.
              * This lets the service know that the audio input is finished. */
-            var silence = new byte[3200000];
+            var silence = new byte[32000];
             var silence_buffer = new ArraySegment<byte>(silence);
             await client.SendAsync(silence_buffer, WebSocketMessageType.Binary, true, CancellationToken.None);
 
             Console.WriteLine("Done sending.");
+            System.Threading.Thread.Sleep(3000);
             await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "", CancellationToken.None);
         }
 

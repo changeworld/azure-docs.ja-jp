@@ -2,25 +2,19 @@
 title: Microsoft Azure Data Box Disk のクイック スタート | Microsoft Docs
 description: このクイック スタートを使用して、Azure portal からすばやく Azure Data Box Disk をデプロイしましょう。
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: disk
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: b4ec329fc5b1f3df9e6641bee3e1378c3a4d09c6
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ca0fb177c8b6a16cf624fd4533c9c9040e6d9dee
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378348"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365236"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>クイック スタート: Azure portal を使用して Azure Data Box Disk をデプロイする (プレビュー)
 
@@ -28,7 +22,7 @@ ms.locfileid: "44378348"
 
 デプロイと追跡の手順をステップ バイ ステップで詳しく紹介した記事については、[Azure Data Box Disk の注文に関するチュートリアル](data-box-disk-deploy-ordered.md)を参照してください。 
 
-Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 > [!IMPORTANT]
 > Data Box Disk はプレビュー段階にあります。 このソリューションを展開する前に、[プレビューに関する Azure のサービス利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。

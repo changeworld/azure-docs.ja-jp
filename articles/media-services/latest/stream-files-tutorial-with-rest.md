@@ -4,20 +4,20 @@ description: Azure Media Services で REST を使用してファイルのアッ�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 07/16/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 5cc109467f9affa9cf5f43342203e8d4298269e0
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: e49b450ef2c731e9ddbafa0c8366d9eae29dc5ef
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115208"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377433"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-with-rest"></a>チュートリアル: REST を使用してビデオのアップロード、エンコード、ストリーム配信を行う
 
@@ -96,7 +96,7 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 このセクションでは、ファイルをストリーム配信できるように、URL のエンコードと作成に関連する要求を送信します。 具体的には、次の要求が送信されます。
 
 1. サービス プリンシパルの認証のために Azure AD トークンを取得する
-2. 出力アセットを作成する
+2. 出力資産を作成する
 3. 変換を作成する
 4. ジョブを作成する 
 5. ストリーミング ロケーターを作成する
@@ -125,8 +125,8 @@ Postman コレクションと環境ファイルを含む GitHub リポジトリ�
 
 出力[アセット](https://docs.microsoft.com/rest/api/media/assets)には、対象のエンコード ジョブの結果が格納されます。 
 
-1. Postman の左側のウィンドウで、[Assets]\(資産\) を選択します。
-2. 次に、[Create or update an Asset]\(資産を作成または更新する\) を選択します。
+1. Postman の左側のウィンドウで、[Assets]\(アセット\) を選択します。
+2. 次に、[Create or update an Asset]\(アセットを作成または更新する\) を選択します。
 3. **[送信]** をクリックします。
 
     * 次の **PUT** 操作が送信されます。

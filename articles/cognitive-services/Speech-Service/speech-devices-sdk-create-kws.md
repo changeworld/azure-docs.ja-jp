@@ -3,18 +3,18 @@ title: カスタム ウェイク ワードを作成する
 description: Speech Devices SDK 用のカスタム ウェイク ワードを作成する方法について説明します。
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech
 ms.topic: article
 ms.date: 04/28/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 52f1d9cb242f140d485ccf7b39a55a46ee575a3d
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: erhopf
+ms.openlocfilehash: ab2bc9a83feadd9ece8876559e730e7bc955908a
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883620"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165472"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Speech サービスを使用してカスタム ウェイク ワードを作成する
 

@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: cfe67fbed61b4af9b4a4f5b490397ca1a6e1d752
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4e91c0287bfe50b297b9a3ef118ececb67909f21
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299493"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388493"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>チュートリアル: Jenkins と Azure DevOps Services を使用して Azure の Linux 仮想マシンにアプリをデプロイする
 
@@ -26,7 +26,7 @@ ms.locfileid: "44299493"
 
 このチュートリアルでは、Jenkins を使用して Node.js Web アプリをビルドします。 次に、Azure DevOps を使用して、
 
-Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.com/en-us/azure/devops/pipelines/release/deployment-groups/index?view=vsts)にアプリをデプロイします。 学習内容は次のとおりです。
+Linux 仮想マシン (VM) を含む[配置グループ](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups/index?view=vsts)にアプリをデプロイします。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * サンプル アプリを入手する。

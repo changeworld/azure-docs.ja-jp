@@ -4,7 +4,7 @@ description: Azure CLI スクリプトを使って、Azure Media Services アカ
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/11/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 0d6d2af598a587cf263612780b419a092ce76d75
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9e6279b2f93cb68043fa96866d8269b7d60b9b25
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450064"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379248"
 ---
 # <a name="cli-example-create-an-azure-media-services-account"></a>CLI の例: Azure Media Services アカウントを作成する
 

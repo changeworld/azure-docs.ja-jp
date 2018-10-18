@@ -10,15 +10,16 @@ ms.component: translator-speech
 ms.topic: tutorial
 ms.date: 3/5/2018
 ms.author: v-jerkin
-ROBOTS: NOINDEX
-ms.openlocfilehash: 2de56366c3204e77eb2e6775ddd88b6fc4f0c219
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6a53eaf2154162ab9ec85a5a75c2cd52962b53a9
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993869"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340428"
 ---
 # <a name="tutorial-translator-speech-application-in-c"></a>チュートリアル: C# での Translator Speech アプリケーション
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 このチュートリアルでは、Translator Speech API (Azure Cognitive Services の一部) を使用した、対話型音声翻訳ツールについて説明します。 学習内容:
 

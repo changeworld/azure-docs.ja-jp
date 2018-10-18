@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: a12c9b5325898afe508398f67939c39e591eb1cc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7c4a5029208854528afdfdbfcdc63434a2a94e24
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954502"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338702"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>クイック スタート: iOS 上の Objective-C で Bing Speech Recognition API を使用する
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Speech Recognition API を使用すると、クラウドベースの Speech Service を使って音声をテキストに変換する、iOS アプリケーションを開発できます。 この API はリアルタイム ストリーミングをサポートしているので、アプリケーションは音声をサービスへ送信するのと同時に、部分的な認識結果を非同期で受け取ることができます。
 

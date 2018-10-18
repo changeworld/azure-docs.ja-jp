@@ -4,27 +4,27 @@ description: このトピックでは、Azure Media Services v3 を使用して�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cflower
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 05/17/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: d298070877a366d04b2df1ef8ac63b08f8771de0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c3318020b54beb121ac48d993a8ce794ac8e377f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660151"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376637"
 ---
 # <a name="how-to-encode-with-a-custom-transform"></a>カスタム変換を使用してエンコードする方法
 
 Azure Media Services でエンコードする場合、[ファイルのストリーミング](stream-files-tutorial-with-api.md)に関するチュートリアルに示されている業界のベスト プラクティスに基づき、推奨される組み込みプリセットのいずれかを使用して、すぐに作業を開始することができます。また、特定のシナリオやデバイスの要件を対象とする場合には、カスタム プリセットを作成することを選択できます。 
 
 > [!Note]
-> Azure Media Services v3 では、エンコード ビット レートはすべてビット/秒単位となります。 これは、REST v2 Media Encoder Standard のプリセットとは異なります。 たとえば、v2 のビットレートは 128 として指定されますが、v3 では 128000 となります。
+> Azure Media Services v3 では、エンコード ビット レートはすべてビット/秒単位となります。 これは、REST v2 Media Encoder Standard のプリセットとは異なります。 たとえば、v2 のビットレートは 128 と指定されていますが、v3 では 128,000 です。
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 

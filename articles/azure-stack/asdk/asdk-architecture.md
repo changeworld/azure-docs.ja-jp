@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 68da3ac0eb135f5956dfea76e186d9c57beea79c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 21c54e2e996bb987f7a27ac3e6333df6f74d6f4b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
-ms.locfileid: "29974139"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338626"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack Development Kit のアーキテクチャ
 Azure Stack Development Kit (ASDK) は、Azure Stack の単一ノード デプロイです。 すべてのコンポーネントは、1 台のホスト マシンで実行されている仮想マシンにインストールされます。 
@@ -33,7 +33,7 @@ Azure Stack Development Kit (ASDK) は、Azure Stack の単一ノード デプ�
 ## <a name="virtual-machine-roles"></a>仮想マシンのロール
 ASDK は、開発キットのホスト コンピューターにホストされている次の VM を使ってサービスを提供します。
 
-| Name | [説明] |
+| Name | 説明 |
 | ----- | ----- |
 | **AzS-ACS01** | Azure Stack ストレージ サービス。|
 | **AzS-ADFS01** | Active Directory フェデレーション サービス (ADFS)。  |

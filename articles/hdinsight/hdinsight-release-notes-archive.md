@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: jasonh
-ms.openlocfilehash: 1dd0e33b3ec6cc5521d5087d48e9e5467911c2b6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f3be4b5e74c0c5cac9acd281b86e55c96b011763
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109765"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363794"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Azure HDInsight のリリース ノート (アーカイブ)
 
@@ -24,7 +24,7 @@ ms.locfileid: "43109765"
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[HDInsight のバージョン管理に関する記事](hdinsight-component-versioning.md)に関するページを参照してください。
 
 ## <a name="notes-for-06272018---release-of-new-open-source-versions-adls-gen2-etc-on-hdinsight-36"></a>2018 年 6 月 27 日のメモ: HDInsight 3.6 上の新しいオープン ソース バージョン (ADLS Gen2 など) のリリース
-HDInsight の 2018 年 6 月のリリースは、ユーザーに役立つ多数の新しい更新と機能を追加した重要なリリースです。 詳細については、こちらの[投稿](https://azure.microsoft.com/en-us/blog/enterprises-get-deeper-insights-with-hadoop-and-spark-updates-on-azure-hdinsight/)を参照してください。
+HDInsight の 2018 年 6 月のリリースは、ユーザーに役立つ多数の新しい更新と機能を追加した重要なリリースです。 詳細については、こちらの[投稿](https://azure.microsoft.com/blog/enterprises-get-deeper-insights-with-hadoop-and-spark-updates-on-azure-hdinsight/)を参照してください。
 
 主な特長は次のとおりです。 詳細なリリース ノート、バグの修正、既知の問題については、「[Azure HDInsight の Hadoop コンポーネントのリリース ノート](hdinsight-release-notes.md)」をご覧ください。
 

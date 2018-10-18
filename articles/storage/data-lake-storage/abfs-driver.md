@@ -9,12 +9,12 @@ ms.author: jamesbak
 ms.date: 06/27/2018
 ms.service: storage
 ms.component: data-lake-storage-gen2
-ms.openlocfilehash: dedf398064dd0a49e5691e952ea7c9b6d16e34fd
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: f618b925839d6f501635748734327293a2073b64
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42142146"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384857"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Azure BLOB ファイルシステム ドライバー (ABFS): Hadoop 専用の Azure Storage ドライバー
 
@@ -26,7 +26,7 @@ Windows Azure Storage Blob ドライバーまたは [WASB ドライバー](https
 
 ## <a name="the-azure-blob-file-system-driver"></a>Azure BLOB ファイル システム ドライバー
 
-[Azure Data Lake Storage REST インターフェイス](https://docs.microsoft.com/en-us/rest/api/storageservices/data-lake-storage-gen2)は Azure Blob Storage 上のファイル システムのセマンティクスをサポートするように設計されています。 Hadoop FileSystem も同じセマンティクスをサポートするように設計されている場合、ドライバー内での複雑なマッピングは必要ありません。 したがって、Azure BLOB ファイル システム ドライバー (または ABFS) は、REST API の単なるクライアント shim です。
+[Azure Data Lake Storage REST インターフェイス](https://docs.microsoft.com/rest/api/storageservices/data-lake-storage-gen2)は Azure Blob Storage 上のファイル システムのセマンティクスをサポートするように設計されています。 Hadoop FileSystem も同じセマンティクスをサポートするように設計されている場合、ドライバー内での複雑なマッピングは必要ありません。 したがって、Azure BLOB ファイル システム ドライバー (または ABFS) は、REST API の単なるクライアント shim です。
 
 ただし、ドライバーが実行する必要のある機能がいくつかあります。
 

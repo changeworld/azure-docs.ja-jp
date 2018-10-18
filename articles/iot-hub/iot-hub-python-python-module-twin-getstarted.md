@@ -9,17 +9,18 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 5a4d9debfcc48279bbb56df076a77a5c8b44e231
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 615dfc789db805e51ed3e7c11fed9da6d7079e96
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42140129"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319100"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Python バックエンドおよび Python デバイスを使用した IoT Hub モジュール ID とモジュール ツインの概要
 
 > [!NOTE]
 > [モジュール ID とモジュール ツイン](iot-hub-devguide-module-twins.md)は Azure IoT Hub のデバイス ID とデバイス ツインに類似していますが、より細かい粒度で設定できます。 Azure IoT Hub のデバイス ID とデバイス ツインを使用した場合、バックエンド アプリケーションからデバイスを構成し、デバイスの状態を可視化できるのに対し、モジュール ID とモジュール ツインでは、デバイスの各コンポーネントごとにこれらの機能を実現できます。 複数のコンポーネントで構成され、この機能をサポートしているデバイス (オペレーティング システム ベースのデバイスやファームウェア デバイスなど) であれば、各コンポーネントの状態を可視化し、個別に構成することができます。
+>
 
 このチュートリアルの最後には、次の 2 つの Python アプリが完成します。
 
@@ -28,13 +29,13 @@ ms.locfileid: "42140129"
 
 > [!NOTE]
 > デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 Azure IoT SDK については、「[Azure IoT SDK][lnk-hub-sdks]」を参照してください。
+>
 
 このチュートリアルを完了するには、以下が必要です。
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 * IoT Hub。
 * 最新の [Python SDK](https://github.com/Azure/azure-iot-sdk-python) をインストールします。
-
 
 IoT Hub の作成は以上です。以降の作業に必要なホスト名と IoT Hub 接続文字列が得られました。
 
@@ -44,7 +45,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 次のコードを Python ファイルに追加します。
 
-```Python
+```python
 import sys
 import iothub_service_client
 from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod, IoTHubError
@@ -78,6 +79,7 @@ except KeyboardInterrupt:
 
 > [!NOTE]
 > IoT ハブの ID レジストリには、IoT ハブに対するセキュリティで保護されたアクセスを有効にするためのデバイス ID とモジュール ID のみが格納されます。 ID レジストリには、セキュリティ資格情報として使用されるデバイス ID とキーが格納されます。 ID レジストリには、そのデバイスのアクセスを無効にするために使用できる各デバイスの有効/無効フラグも格納されます。 その他デバイス固有のメタデータをアプリケーションで保存する必要がある場合は、アプリケーション固有のストアを使用する必要があります。 モジュール ID 用の有効/無効フラグはありません。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]をご覧ください。
+>
 
 ## <a name="update-the-module-twin-using-python-device-sdk"></a>Python デバイス SDK を使用してモジュール ツインを更新する
 
@@ -85,11 +87,11 @@ except KeyboardInterrupt:
 
 1. **モジュールの接続文字列を取得する** -- [Azure Portal][lnk-portal] にログインします。 IoT Hub に移動し、[IoT デバイス] をクリックします。 myFirstDevice を検索して開くと、myFirstModule が作成されていることを確認できます。 モジュールの接続文字列をコピーします。 これは、次の手順で必要になります。
 
-    ![Azure Portal モジュールの詳細][15]
+  ![Azure Portal モジュールの詳細][15]
 
-2. **UpdateModuleTwinReportedProperties アプリを作成する** - **Program.cs** ファイルの最上部に、次の `using` ステートメントを追加します。
+1. **UpdateModuleTwinReportedProperties アプリを作成する** - **Program.cs** ファイルの最上部に、次の `using` ステートメントを追加します。
 
-    ```Python
+    ```python
     import sys
     import iothub_service_client
     from iothub_service_client import IoTHubRegistryManager, IoTHubRegistryManagerAuthMethod, IoTHubDeviceTwin, IoTHubError
@@ -122,9 +124,10 @@ except KeyboardInterrupt:
 このコード サンプルは、モジュール ツインを取得し、報告されたプロパティを AMQP プロトコルを使って更新する方法を示したものです。 
 
 ## <a name="get-updates-on-the-device-side"></a>デバイス側を更新する
+
 上記のコードに加え、デバイス上のツイン更新メッセージを取得する以下のコード ブロックを追加できます。
 
-```Python
+```python
 import random
 import time
 import sys
@@ -166,7 +169,7 @@ except KeyboardInterrupt:
 
 
 <!-- Images. -->
-[15]: ./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
+[15]:./media\iot-hub-csharp-csharp-module-twin-getstarted/module-detail.JPG
 <!-- Links -->
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/

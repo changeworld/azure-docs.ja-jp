@@ -3,19 +3,19 @@ title: 'クイック スタート: 画像の中にある顔を検出する - Fac
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# で Face API を使って画像から顔を検出します。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/10/2018
-ms.author: nolachar
-ms.openlocfilehash: ffeb20fdd39bc5e4579fc708e0902bd8d3630b23
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: pafarley
+ms.openlocfilehash: 080e616067bb0b8a640ded6faec184030314d79a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129371"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341023"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-c"></a>クイック スタート: C# を使って画像の中にある顔を検出する
 

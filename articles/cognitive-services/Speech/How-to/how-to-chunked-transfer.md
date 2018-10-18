@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: cf21b11f76592f5df2d81e6bdc10413c79fe895e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 510bc258aae80582e85478936c3281198e89d755
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979228"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343165"
 ---
 # <a name="chunked-transfer-encoding"></a>チャンク転送エンコーディング
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 音声を文字に起こすために、Microsoft Speech Recognition API では、オーディオを 1 つの大きなチャンクとして、または小さなチャンクに切って送信できます。 オーディオのストリーミングを効率化し、文字起こしの待ち時間を減らすために、[チャンク転送エンコーディング](https://en.wikipedia.org/wiki/Chunked_transfer_encoding)を使用してオーディオをサービスにストリームすることをお勧めします。 その他の実装は、ユーザーが感じる待ち時間が長くなる場合があります。 詳しくは、「[Audio Streams](../concepts.md#audio-streams)」(オーディオ ストリーム) をご覧ください。
 

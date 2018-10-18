@@ -2,18 +2,18 @@
 title: 'クイック スタート: Azure データ エクスプローラーの Python ライブラリを使用してデータのクエリを実行する'
 description: このクイック スタートでは、Python を使用して Azure データ エクスプ ローラーからデータをクエリする方法について説明します。
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: fee982812456548ed6d1e15d86151df88532389f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 17504cec6ddf98aca8ddfc6c91d21d34055902f6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956100"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394855"
 ---
 # <a name="quickstart-query-data-using-the-azure-data-explorer-python-library"></a>クイック スタート: Azure データ エクスプローラーの Python ライブラリを使用してデータのクエリを実行する
 
@@ -32,7 +32,7 @@ Azure データ エクスプローラーは、ログと利用統計情報デー�
 *azure-kusto-data* をインストールします。
 
 ```python
-pip install azure-kusto-data
+pip install azure-kusto-data==0.0.13
 ```
 
 ## <a name="add-import-statements-and-constants"></a>import ステートメントおよび定数を追加する
@@ -42,6 +42,7 @@ pip install azure-kusto-data
 ```python
 from azure.kusto.data.request import KustoClient, KustoConnectionStringBuilder
 from azure.kusto.data.exceptions import KustoServiceError
+from azure.kusto.data.helpers import dataframe_from_result_table
 import pandas as pd
 ```
 
@@ -51,10 +52,10 @@ Azure データ エクスプ ローラーでは、アプリケーションを認
 https://login.windows.net/<YourDomain>/.well-known/openid-configuration/
 ```
 
-たとえば、ドメインが *contoso.com* の場合、URL は [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/) になります。 結果を表示するには、この URL をクリックします。最初の行は次のとおりです。 
+たとえば、ドメインが *contoso.com* の場合、URL は [https://login.windows.net/contoso.com/.well-known/openid-configuration/](https://login.windows.net/contoso.com/.well-known/openid-configuration/) になります。 結果を表示するには、この URL をクリックします。最初の行は次のとおりです。
 
 ```
-`"authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"`
+"authorization_endpoint":"https://login.windows.net/6babcaad-604b-40ac-a9d7-9fd97c0b779f/oauth2/authorize"
 ```
 
 この場合のテナント ID は `6babcaad-604b-40ac-a9d7-9fd97c0b779f` です。 このコードを実行する前に、AAD_TENANT_ID の値を設定します。
@@ -80,7 +81,7 @@ KCSB.authority_id = AAD_TENANT_ID
 KUSTO_CLIENT  = KustoClient(KCSB)
 KUSTO_QUERY  = "StormEvents | sort by StartTime desc | take 10"
 
-df = KUSTO_CLIENT.execute_query(KUSTO_DATABASE, KUSTO_QUERY).primary_results[0].to_dataframe()
+RESPONSE = KUSTO_CLIENT.execute(KUSTO_DATABASE, KUSTO_QUERY)
 ```
 
 ## <a name="explore-data-in-dataframe"></a>データフレームでデータを確認する
@@ -88,6 +89,7 @@ df = KUSTO_CLIENT.execute_query(KUSTO_DATABASE, KUSTO_QUERY).primary_results[0].
 サインインを入力すると、クエリによって結果が返され、データ フレームに格納されます。 他のすべてのデータ フレームと同様に、結果を操作できます。
 
 ```python
+df = dataframe_from_result_table(RESPONSE.primary_results[0])
 df
 ```
 

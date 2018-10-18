@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2018
 ms.author: shlo
-ms.openlocfilehash: d0f36551fb06e04b50af464bac6953dda64c6202
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 2e8c5b3d9624d3a622f16d770f68bc8614993d36
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054150"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387484"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Azure Monitor を使用して、データ ファクトリをアラートおよび監視する
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 監視では、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 この知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
@@ -231,7 +231,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-[詳細情報はこちら](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings)
+[詳細情報はこちら](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings)
 
 ## <a name="schema-of-logs--events"></a>ログとイベントのスキーマ
 

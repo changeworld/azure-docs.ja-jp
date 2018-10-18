@@ -3,19 +3,19 @@ title: 'クイック スタート: リモート画像の分析 - REST、Node.js 
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Node.js で Computer Vision API を使用して画像を分析します。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 76174a14720502a444fb86a337445caf1910ff78
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 22497d07133a9ab717d319524c3e2825c832ddaa
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631585"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342588"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-with-nodejs-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と Node.js を使用してリモート画像を分析する
 

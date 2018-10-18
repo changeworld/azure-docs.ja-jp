@@ -51,7 +51,7 @@ items:
 - name: リファレンス
   items:
   - name: CLI リファレンス
-    href: https://docs.microsoft.com/en-us/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
+    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
   - name: PowerShell リファレンス
     href: https://aka.ms/azure-powershell-cognitiveservices
   - name: Text Analytics API
@@ -76,9 +76,9 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/555922-text-analytics
-ms.openlocfilehash: f480ec189eb780c9cf2257f6b8be1128db06cafd
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: bb48c8573621a2d43f8daf4552b5e663f702b146
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247009"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389844"

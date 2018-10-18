@@ -3,19 +3,19 @@ title: 'クイック スタート: サムネイルの生成 - REST、PHP - Compu
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision API と PHP を使って、画像からサムネイルを生成します。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 5cc432a2f6a471ec1d5dfd4acae8733df7065e4f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.author: pafarley
+ms.openlocfilehash: 3a652e4b937dc3600ffe7af7231322b14bd52e05
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631658"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342063"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-php-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と PHP によるサムネイルの生成
 

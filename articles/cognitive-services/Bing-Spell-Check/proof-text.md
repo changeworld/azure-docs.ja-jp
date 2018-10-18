@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 81c80ab6c8d10d263de96566f5554709a2404a24
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4caa05ffa96dbc15922fed85edfdefdb68ead68b
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802595"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361713"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Bing Spell Check API とは
 
@@ -36,7 +36,7 @@ Bing Spell Check API を使用して、コンテキストに応じた文法と�
 
 ## <a name="spell-check-modes"></a>スペル チェック モード
 
-API は、2 つの校正モード (`Proof` と `Spell`) をサポートします。  [こちら](https://azure.microsoft.com/en-us/services/cognitive-services/spell-check/)の例を参照してください。
+API は、2 つの校正モード (`Proof` と `Spell`) をサポートします。  [こちら](https://azure.microsoft.com/services/cognitive-services/spell-check/)の例を参照してください。
 ### <a name="proof---for-documents-scenario"></a>Proof - ドキュメント シナリオ用
 既定のモードは `Proof` です。 `Proof` スペル チェック モードでは最も包括的なチェックが行われ、大文字と小文字の修正、基本的な句読点の調整、ドキュメントの作成を支援するその他の機能が提供されます。 ただし、これは、en-US (英語 (米国))、es-ES (スペイン語)、pt-BR (プルとガル語) 市場でのみ利用できます (注: スペイン語とポルトガル語はベータ版です)。 その他のすべての市場では、mode クエリ パラメーターを Spell に設定してください。 
 <br /><br/>**注:** クエリ テキストの長さが 4,096 を超える場合は 4.096 文字に切り捨てられた後で処理されます。 

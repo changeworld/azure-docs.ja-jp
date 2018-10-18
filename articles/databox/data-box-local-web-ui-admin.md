@@ -2,25 +2,18 @@
 title: Microsoft Azure Data Box ローカルWeb UI 管理 | データ内の Microsoft Docs
 description: ローカル Web UI を使用して Data Box デバイスを管理する方法について説明します
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: overview
-ms.custom: ''
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 09/11/2018
 ms.author: alkohli
-ms.openlocfilehash: a5f3f1b4d0d67a12ee0ebaa40935b8494e53dab3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9dd519f8efc9700f7a747aa37a9c02414f3e1865
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956304"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093886"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box"></a>ローカル Web UI を使用して Data Box を管理する
 

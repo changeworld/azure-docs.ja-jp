@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: a24e27f4258a1bd003e8cde3f6241744372bd539
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388410"
 documentType: LandingData
 title: Batch のドキュメント
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/30/2017
   ms.author: carolz
-  ms.openlocfilehash: 6ab5c490887a6b8f9b1330438188f6463a37c54d
-  ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/28/2018
-  ms.locfileid: "29686573"
 abstract:
   description: Batch を使用すると、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行することができます。 インフラストラクチャを手動で構成または管理することなく、アプリケーションを並列で実行したり大規模に実行したりするように Azure コンピューティング リソースを定義します。 コンピューティング集中型のタスクのスケジュールを設定し、要件に基づいてコンピューティング リソースを動的に追加または削除します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Batch の使用方法を確認してください。
 sections:
@@ -30,19 +30,19 @@ sections:
     style: icon48
     items:
     - image:
-        src: https://docs.microsoft.com/en-us/media/common/i_cligeneric.svg
+        src: https://docs.microsoft.com/media/common/i_cligeneric.svg
       text: Azure CLI
       href: quick-create-cli
     - image:
-        src: https://docs.microsoft.com/en-us/media/common/i_portal.svg
+        src: https://docs.microsoft.com/media/common/i_portal.svg
       text: Azure Portal
       href: quick-create-portal
     - image:
-        src: https://docs.microsoft.com/en-us/media/logos/logo_NET.svg
+        src: https://docs.microsoft.com/media/logos/logo_NET.svg
       text: .NET
       href: quick-run-dotnet
     - image:
-        src: https://docs.microsoft.com/en-us/media/logos/logo_python.svg
+        src: https://docs.microsoft.com/media/logos/logo_python.svg
       text: Python
       href: quick-run-python
 - title: ステップバイステップのチュートリアル
@@ -71,7 +71,7 @@ sections:
     items:
     - title: コマンド ライン
       html: <p><a href="/cli/azure/batch">Azure CLI</a></p><p><a href="/powershell/module/azurerm.batch">Azure PowerShell</a></p>
-    - title: 言語
+    - title: Languages
       html: <p><a href="/dotnet/api/overview/azure/batch">.NET</a></p><p><a href="/java/api/overview/azure/batch">Java</a></p><p><a href="/javascript/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
     - title: REST ()
       html: <p><a href="/rest/api/batchservice">Batch Service REST API</a></p><p><a href="/rest/api/batchmanagement/">Batch Management REST API</a></p>

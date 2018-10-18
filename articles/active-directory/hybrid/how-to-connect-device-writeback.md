@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/08/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: b98b9e0a10f142cb0177e7e5ea831b61f79a4b7a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 389c519d5f63b311b2e9c2b1d48d6e09e02c7d81
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46304661"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361071"
 ---
 # <a name="azure-ad-connect-enabling-device-writeback"></a>Azure AD Connect: デバイスの書き戻しの有効化
 > [!NOTE]
@@ -32,7 +32,7 @@ ms.locfileid: "46304661"
 
 * AD FS (2012 R2 以降) で保護されたアプリケーション (証明書利用者の信頼) へのデバイスに基づく条件付きアクセスを有効にします。
 
-これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。 条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access-azure-portal.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory-conditional-access-automatic-device-registration-setup.md)」をご覧ください。
+これにより、セキュリティが強化され、アプリケーションへのアクセスが信頼されたデバイスに対してのみ許可されることが保証されます。 条件付きアクセスの詳細については、「[条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access-azure-portal.md)」および「[Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../../active-directory/active-directory-device-registration-on-premises-setup.md)」をご覧ください。
 
 > [!IMPORTANT]
 > <li>デバイスは、ユーザーと同じフォレスト内にある必要があります。 デバイスは単一のフォレストに書き戻される必要があるため、この機能では現在、複数のユーザー フォレストでのデプロイはサポートされていません。</li>
@@ -81,7 +81,7 @@ ms.locfileid: "46304661"
    ![Active Directory 管理センター登録済みのデバイス一覧](./media/how-to-connect-device-writeback/devicewriteback6.png)
 
 ## <a name="enable-conditional-access"></a>条件付きアクセスを有効にする
-このシナリオを有効にする詳細な手順については、「 [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory-conditional-access-automatic-device-registration-setup.md)」をご覧ください。
+このシナリオを有効にする詳細な手順については、「 [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../../active-directory/active-directory-device-registration-on-premises-setup.md)」をご覧ください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="the-writeback-checkbox-is-still-disabled"></a>書き戻しのチェックボックスがオフのままです。
@@ -125,7 +125,7 @@ Active Directory の構成を確認します。
 
 ## <a name="additional-information"></a>追加情報
 * [条件付きアクセス ポリシーを使用したリスクの管理](../active-directory-conditional-access-azure-portal.md)
-* [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../active-directory-device-registration-on-premises-setup.md)
+* [Azure Active Directory Device Registration を使用したオンプレミスの条件付きアクセスの設定](../../active-directory/active-directory-device-registration-on-premises-setup.md)
 
 ## <a name="next-steps"></a>次の手順
 「 [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)」をご覧ください。

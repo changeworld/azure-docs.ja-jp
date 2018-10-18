@@ -5,21 +5,20 @@ services: azure-stack
 author: mattbriggs
 manager: femila
 cloud: azure-stack
-ms.assetid: D44641CB-BF3C-46FE-BCF1-D7F7E1D01AFA
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 10/15/2018
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: a70c736489b25f6e8fd0d838c4c7b4b4db96a4f2
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 3f4dc6e4136d8d2e3eb1ca5e822306aae2217e3b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188263"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340853"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Azure Stack の検証テストを実行する
 
@@ -60,16 +59,16 @@ Azure Stack の状態を検証します。 このコマンドレットは、Azur
   Test-AzureStack
 ````
 
-#### <a name="parameters"></a>パラメーター
+#### <a name="parameters"></a>parameters
 
 | パラメーター               | 値           | 必須 | 既定値 |
 | ---                     | ---             | ---      | ---     |
-| ServiceAdminCredentials | PSCredential    | いいえ        | FALSE   |
+| ServiceAdminCredentials | String    | いいえ        | FALSE   |
 | DoNotDeployTenantVm     | SwitchParameter | いいえ        | FALSE   |
 | AdminCredential         | PSCredential    | いいえ        | 該当なし      |
 | List                    | SwitchParameter | いいえ        | FALSE   |
 | Ignore                  | String          | いいえ        | 該当なし      |
-| Include                 | String          | いいえ        | 該当なし      |
+| Include (含める)                 | String          | いいえ        | 該当なし      |
 | BackupSharePath         | String          | いいえ        | 該当なし      |
 | BackupShareCredential   | PSCredential    | いいえ        | 該当なし      |
 
@@ -177,7 +176,7 @@ PEP セッションで、次を実行します。
 
 次の表は、**Test-AzureStack** によって実行される検証テストをまとめたものです。
 
-| 名前                                                                                                                              |
+| Name                                                                                                                              |
 |-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
 | Azure Stack クラウド ホスティング インフラストラクチャの概要                                                                                  |
 | Azure Stack ストレージ サービスの概要                                                                                              |

@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 5a5e14c2a8501ce2672923545df8d32a32dee8fa
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 4809c09b5aa7b8212981cc13589602a365a23a37
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093988"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113616"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
 
-Azure Functions を使用して、定義したスケジュールに基づいて実行する[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数を作成する方法について説明します。
+Azure Functions を使用して、定義したスケジュールに基づいて実行する[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数を作成する方法について説明します。
 
 ![Azure Portal での Function App の作成](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 

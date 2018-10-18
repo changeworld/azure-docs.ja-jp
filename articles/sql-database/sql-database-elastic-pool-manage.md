@@ -11,23 +11,24 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: 6418694097c472afd6a2c706e55a9026ab03dcff
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 6c43e5bf311d94ff2e5b5c31217c5071ea26746c
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162720"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351864"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Azure SQL Database でのエラスティック プールの作成と管理
 
-エラスティック プールを使用する場合、データベースのワークロードを処理するためにエラスティック プールに必要なリソースのサイズと、プールされた各データベースのリソースのサイズを決定します。 
+エラスティック プールを使用する場合、データベースのワークロードを処理するためにエラスティック プールに必要なリソースのサイズと、プールされた各データベースのリソースのサイズを決定します。
 
 ## <a name="azure-portal-manage-elastic-pools-and-pooled-databases"></a>Azure portal: エラスティック プールとプールされたデータベースの管理
 
 すべてのプール設定は、**[プールの構成]** ブレードという 1 つの場所で見つけることができます。 このブレードを表示するには、ポータルでエラスティック プールを検索し、ブレードの上部または左側のリソース メニューのいずれかから **[プールの構成]** をクリックします。
 
 このブレードから、以下のような変更を任意に組み合わせて行い、そららの変更すべてを 1 回にまとめて保存できます。
+
 1. プールのサービス レベルの変更
 2. パフォーマンス (DTU または vCores) およびストレージをスケール アップまたはスケール ダウンする
 3. プールに対してデータベースを追加または削除する
@@ -36,7 +37,7 @@ ms.locfileid: "47162720"
 
 ![エラスティック プールの構成のブレード](./media/sql-database-elastic-pool-manage-portal/configure-pool.png)
 
-## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell: エラスティック プールとプールされたデータベースの管理 
+## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell: エラスティック プールとプールされたデータベースの管理
 
 Azure PowerShell を使用して SQL Database エラスティック プールとプールされたデータベースを作成および管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 エラスティック プールの論理サーバーを作成および管理する方法については、[論理サーバーの作成と管理](sql-database-logical-servers.md)に関する記事を参照してください。 ファイアウォール ルールを作成および管理する方法については、[PowerShell を使用したファイアウォール ルールの作成と管理](sql-database-firewall-configure.md#manage-firewall-rules-using-azure-powershell)に関する記事を参照してください。
 
@@ -56,10 +57,8 @@ Azure PowerShell を使用して SQL Database エラスティック プールと
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|データベースのプロパティを設定するか、または既存のデータベースをエラスティック プール内に、エラスティックから外に、またはエラスティック間で移動します。|
 |[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|データベースを削除します。|
 
-
 > [!TIP]
 > ポータルまたは PowerShell コマンドレットで一度に作成できるデータベースは 1 つのみであるため、エラスティック プールに多数のデータベースを作成しようとすると時間がかかることがあります。 エラスティック プールへの作成を自動化するには、「[CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae)」を参照してください。
->
 
 ## <a name="azure-cli-manage-elastic-pools-and-pooled-databases"></a>Azure CLI: エラスティック プールとプールされたデータベースの管理
 
@@ -100,18 +99,18 @@ SQL Database エラスティック プールとプールされたデータベー
 
 | コマンド | 説明 |
 | --- | --- |
-|[エラスティック プール - 作成または更新](/rest/api/sql/elasticpools/createorupdate)|新しいエラスティック プールを作成するか、既存のエラスティック プールを更新します。|
-|[エラスティック プール - 削除](/rest/api/sql/elasticpools/delete)|エラスティック プールを削除します。|
-|[エラスティック プール - 取得](/rest/api/sql/elasticpools/get)|エラスティック プールを取得します。|
-|[エラスティック プール - サーバーごとの一覧取得](/rest/api/sql/elasticpools/listbyserver)|サーバー内のエラスティック プールの一覧を返します。|
-|[エラスティック プール - 更新](/rest/api/sql/elasticpools/update)|既存のエラスティック プールを更新します。|
-|[エラスティック プールのアクティビティ](/rest/api/sql/elasticpoolactivities)|エラスティック プールのアクティビティを返します。|
-|[エラスティック プール データベースのアクティビティ](/rest/api/sql/elasticpooldatabaseactivities)|エラスティック プール内のデータベースのアクティビティを返します。|
-|[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
-|[データベース - 取得](/rest/api/sql/databases/get)|データベースを取得します。|
-|[データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
-|[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
-|[データベース - 更新](/rest/api/sql/databases/update)|既存のデータベースを更新します。|
+|[エラスティック プール - 作成または更新](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_createorupdate)|新しいエラスティック プールを作成するか、既存のエラスティック プールを更新します。|
+|[エラスティック プール - 削除](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_delete)|エラスティック プールを削除します。|
+|[エラスティック プール - 取得](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_get)|エラスティック プールを取得します。|
+|[エラスティック プール - サーバーごとの一覧取得](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|サーバー内のエラスティック プールの一覧を返します。|
+|[エラスティック プール - 更新](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|既存のエラスティック プールを更新します。|
+|[エラスティック プールのアクティビティ](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|エラスティック プールのアクティビティを返します。|
+|[エラスティック プール データベースのアクティビティ](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|エラスティック プール内のデータベースのアクティビティを返します。|
+|[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
+|[データベース - 取得](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|データベースを取得します。|
+|[データベース - エラスティック プールごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
+|[データベース - サーバーごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|サーバー内のデータベースの一覧を返します。|
+|[データベース - 更新](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|既存のデータベースを更新します。|
 
 ## <a name="next-steps"></a>次の手順
 

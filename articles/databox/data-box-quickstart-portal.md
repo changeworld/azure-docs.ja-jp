@@ -2,24 +2,18 @@
 title: Microsoft Azure Data Box のクイック スタート | Microsoft Docs
 description: Azure portal からすばやく Azure Data Box をデプロイする方法の学習
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 10/04/2018
 ms.author: alkohli
-ms.openlocfilehash: fe15167a5e88dbc9a97383c9a074a32c91f4219a
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: a2f8d295ca161ff2263f53b8faa407c7a42a4c6b
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784639"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385845"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Azure Data Box をデプロイする
 
@@ -35,7 +29,7 @@ ms.locfileid: "48784639"
     - Microsoft Enterprise Agreement (EA)。 [EA サブスクリプション](https://azure.microsoft.com/pricing/enterprise-agreement/)に関する詳細をご覧ください。
     - Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)です。
     - 使用量 - 従量課金制。 Azure の従量課金制サブスクリプションについての詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0003p/)です。
-    - Microsoft Azure スポンサー プラン。 Azure スポンサー プラン プログラムの詳細は[こちら](https://azure.microsoft.com/en-in/offers/ms-azr-0036p/)です。 
+    - Microsoft Azure スポンサー プラン。 Azure スポンサー プラン プログラムの詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0036p/)です。 
 
 - Data Box の注文を作成するサブスクリプションに対して、所有者または共同作成者アクセス権があることを確認します。
 - [ Data Box の安全性のガイドライン](data-box-safety.md)を確認します。

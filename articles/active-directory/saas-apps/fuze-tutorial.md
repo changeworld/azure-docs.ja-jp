@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeedes
-ms.openlocfilehash: 0b50e317fc8a94a5cd8ddd19dbe24d4f9125fedc
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6a3fa8db14f2b155a471fd42d0d20ccf543fdbba
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39432995"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115757"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fuze"></a>チュートリアル: Azure Active Directory と Fuze の統合
 
@@ -48,7 +48,7 @@ Fuze と Azure AD の統合を構成するには、次のものが必要です�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の試用環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の試用版を入手できます。
+- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
 
 
 ## <a name="scenario-description"></a>シナリオの説明
@@ -93,7 +93,7 @@ Azure AD への Fuze の統合を構成するには、ギャラリーから管�
 
 Fuze で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Fuze テスト ユーザーの作成](#creating-a-fuze-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを Fuze で作成します。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。

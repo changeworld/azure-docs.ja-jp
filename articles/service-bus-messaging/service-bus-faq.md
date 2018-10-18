@@ -8,16 +8,16 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 87a6ccf61e10a6a8c7feeccad3690cdcb9b63641
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c851c8a9384acf909dc88d3565d49021e1ee67e9
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857858"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362020"
 ---
 # <a name="service-bus-faq"></a>Service Bus に関する FAQ
 
-この記事では、Microsoft Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答について説明します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/en-us/support/faq/)」も参照してください。
+この記事では、Microsoft Azure Service Bus についてよく寄せられる質問 (FAQ) とその回答について説明します。 Azure の価格およびサポートに関する一般的な情報については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」も参照してください。
 
 ## <a name="general-questions-about-azure-service-bus"></a>Azure Service Bus に関する一般的な質問
 ### <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
@@ -56,7 +56,7 @@ ms.locfileid: "48857858"
 
 「[Service Bus の料金と課金](service-bus-pricing-billing.md)」の記事では、Service Bus の課金メーターについて説明しています。 Service Bus の価格オプションの特定の情報については、[Service Bus の価格の詳細](https://azure.microsoft.com/pricing/details/service-bus/)に関するページをご覧ください。
 
-Azure の全般的な価格情報については、[Azure サポートに関する FAQ](https://azure.microsoft.com/en-us/support/faq/) も参照してください。 
+Azure の全般的な価格情報については、[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/) も参照してください。 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>Service Bus の課金方法を教えてください
 Service Bus の価格の詳細については、 [Service Bus の価格の詳細][Pricing overview]に関するページを参照してください。 既に説明した価格に加え、ご利用のアプリケーションがプロビジョニングされているデータ センターから外部に送信される関連データ転送に料金が発生します。

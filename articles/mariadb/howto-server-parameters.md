@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c992783db3b63c73feb18c8c493ca1b43f9ea370
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 865a95a5e6f6feb945475e50bbd9f6692688c12b
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975209"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310047"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Azure portal を使用して Azure Database for MariaDB のサーバー パラメーターを構成する方法
 
@@ -52,29 +52,6 @@ InnoDB バッファー プールと最大接続数は構成できず、[価格�
 |メモリ最適化| 4| 15360| 1250|
 |メモリ最適化| 8| 30720| 2500|
 |メモリ最適化| 16| 62464| 5000|
-
-<!-- 
-|**Pricing Tier**| **Compute Generation**|**vCore(s)**|**InnoDB Buffer Pool (MB)**| **Max Connections**|
-|---|---|---|---|--|
-|Basic| Gen 4| 1| 1024| 50|
-|Basic| Gen 4| 2| 2560| 100|
-|Basic| Gen 5| 1| 1024| 50|
-|Basic| Gen 5| 2| 2560| 100|
-|General Purpose| Gen 4| 2| 3584| 300|
-|General Purpose| Gen 4| 4| 7680| 625|
-|General Purpose| Gen 4| 8| 15360| 1250|
-|General Purpose| Gen 4| 16| 31232| 2500|
-|General Purpose| Gen 4| 32| 62976| 5000|
-|General Purpose| Gen 5| 2| 3584| 300|
-|General Purpose| Gen 5| 4| 7680| 625|
-|General Purpose| Gen 5| 8| 15360| 1250|
-|General Purpose| Gen 5| 16| 31232| 2500|
-|General Purpose| Gen 5| 32| 62976| 5000|
-|Memory Optimized| Gen 5| 2| 7168| 600|
-|Memory Optimized| Gen 5| 4| 15360| 1250|
-|Memory Optimized| Gen 5| 8| 30720| 2500|
-|Memory Optimized| Gen 5| 16| 62464| 5000|
--->
 
 次に示す追加のサーバー パラメーターは、システム内で構成できません。
 

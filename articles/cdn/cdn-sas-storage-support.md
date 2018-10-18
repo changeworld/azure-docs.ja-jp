@@ -3,8 +3,8 @@ title: SAS を利用した Azure CDN の使用 | Microsoft Docs
 description: Azure CDN では、Shared Access Signature (SAS) を使用した、プライベート ストレージ コンテナーへの制限付きアクセス権限の付与がサポートされています。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2018
-ms.author: v-deasim
-ms.openlocfilehash: 15a4e0a8d62b38fa7aa542d95e53d29621965666
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.author: magattus
+ms.openlocfilehash: 7180e51a6ac1392e4a3f072097b1aeef3648c605
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36316570"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093291"
 ---
 # <a name="using-azure-cdn-with-sas"></a>SAS を利用した Azure CDN の使用
 
@@ -135,7 +135,7 @@ SAS パラメーターは Azure CDN からは認識できないため、Azure CD
 
 | SAS パラメーター名 | 説明 |
 | --- | --- |
-| 開始 | Azure CDN が BLOB ファイルにアクセスを開始できる時刻。 クロックのずれ (クロック シグナルが各コンポーネントで受信された時刻が異なる) のため、アセットをすぐ使用する必要がある場合は、15 分早い時刻を選択してください。 |
+| start | Azure CDN が BLOB ファイルにアクセスを開始できる時刻。 クロックのずれ (クロック シグナルが各コンポーネントで受信された時刻が異なる) のため、アセットをすぐ使用する必要がある場合は、15 分早い時刻を選択してください。 |
 | End | Azure CDN が BLOB ファイルにアクセスできなくなる時刻。 これより以前に Azure CDN にキャッシュされたファイルは引き続きアクセスできます。 ファイルの有効期限を制御するためには、Azure CDN のセキュリティ トークンに適切な有効期限を設定するか、アセットを削除します。 |
 | 許可された IP アドレス | 省略可能。 **Azure CDN from Verizon** を使用する場合は、このパラメーターを「[Azure CDN from Verizon Edge Server IP Ranges](https://msdn.microsoft.com/library/mt757330.aspx)」(Azure CDN from Verizon Edge Server の IP 範囲) で定義されている範囲に設定できます。 **Azure CDN from Akamai** を使用する場合、IP アドレスは静的でないため、IP 範囲パラメーターを設定できません。|
 | 許可されるプロトコル | アカウント SAS を使用して行われた要求に対して許可されるプロトコル。 HTTPS 設定をお勧めします。|

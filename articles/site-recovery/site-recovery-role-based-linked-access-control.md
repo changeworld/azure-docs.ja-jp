@@ -5,16 +5,16 @@ ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/06/2018
-author: mayanknayar
+ms.date: 10/16/2018
+author: mayurigupta13
 ms.topic: conceptual
-ms.author: manayar
-ms.openlocfilehash: dfd880b6ff3a7e199ea259acc5e5ec59f89c897d
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.author: mayg
+ms.openlocfilehash: 9ec9acab4ad83af22504058c21b102df94b8692d
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919728"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353239"
 ---
 # <a name="use-role-based-access-control-to-manage-site-recovery-access"></a>ロールベースのアクセス制御を使用して Site Recovery のアクセスを管理する
 

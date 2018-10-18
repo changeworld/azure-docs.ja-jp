@@ -4,15 +4,15 @@ description: この記事では、Hyper-V から Azure へのレプリケーシ�
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 432e1164e56c6afadfc76ec980de99837c106dc5
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9da79884973c620bbf8b6a191f3dd6db5bd19064
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37919992"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094192"
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Azure Site Recovery Deployment Planner の実行 (Hyper-V から Azure)
 
@@ -177,7 +177,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport /?
 | -StartDate | (省略可) 開始日時を MM-DD-YYYY:HH:MM (24 時間形式) で指定します。 StartDate は EndDate と一緒に指定する必要があります。 StartDate を指定した場合、StartDate から EndDate までの間に収集されたプロファイリング データを対象にレポートが生成されます。 |
 | -EndDate | (省略可) 終了日時を MM-DD-YYYY:HH:MM (24 時間形式) で指定します。 EndDate は StartDate と一緒に指定する必要があります。 EndDate を指定した場合、StartDate から EndDate までの間に収集されたプロファイリング データを対象にレポートが生成されます。 |
 | -GrowthFactor | (省略可) 増加率 (%)。 既定値は 30% です。 |
-| -UseManagedDisks | (省略可) UseManagedDisks: Yes/No。 既定値は Yes です。 1 つのストレージ アカウントに配置できる仮想マシンの数は、仮想マシンのフェールオーバー/テスト フェールオーバーが、非管理対象ディスクではなく、管理ディスクに対して実行されるかどうかに基づいて計算されます。 |
+| -UseManagedDisks | (省略可) UseManagedDisks: Yes/No。 既定値は Yes です。 1 つのストレージ アカウントに配置できる仮想マシンの数は、仮想マシンのフェールオーバー/テスト フェールオーバーが、非管理対象ディスクではなく、マネージド ディスクに対して実行されるかどうかに基づいて計算されます。 |
 |-SubscriptionId |(省略可) サブスクリプションの GUID。 サブスクリプション、それに関連付けられているオファー、ターゲット Azure リージョンに基づき、指定した通貨で最新の料金に関するコスト見積もりレポートを生成する場合に、このパラメーターを使用します。|
 |-TargetRegion|(省略可) レプリケーション先となる Azure リージョン。 Azure のコストはリージョンによって異なるので、特定のターゲット Azure リージョンでレポートを生成するために、このパラメーターを使用します。 既定値は、WestUS2 または最近使用したターゲット リージョンです。 「[サポートされるターゲット リージョン](hyper-v-deployment-planner-cost-estimation.md#supported-target-regions)」の一覧を参照してください。|
 |-OfferId|(省略可) サブスクリプションに関連付けられているオファー。 既定値は MS-AZR-0003P (従量課金制) です。|

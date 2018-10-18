@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 4aeb37d656dcb5ebca1a48253c418186dfca0a7a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: eeaa0e9a940f16c2416418959c98cd17e4816afc
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575422"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387635"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Azure Service Fabric の定期バックアップ構成を理解する
 
@@ -155,23 +155,23 @@ Service fabric では、アプリケーション、サービス、およびパ�
 
 これらのデータのバックアップ要件に対処するには、バックアップ ポリシー BP_1 から BP_5 を作成し、以下のようにバックアップを有効にします。
 1. MyApp_A
-    1. バックアップ ポリシー _BP_1_ を作成します。これは頻度ベースのバックアップ スケジュールであり、頻度は 24 時間間隔に設定され、 バックアップ ストレージは保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Application Backup](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API を使用して、アプリケーション _MyApp_A_ に対してこのポリシーを有効にします。 このアクションによって、アプリケーション _MyApp_A_ に属する _Reliable Stateful Services_ と _Reliable Actors_ のすべてのパーティションに対して、バックアップ ポリシー _BP_1_ を使用したデータのバックアップが有効になります。
+    1. バックアップ ポリシー _BP_1_ を作成します。これは頻度ベースのバックアップ スケジュールであり、頻度は 24 時間間隔に設定され、 バックアップ ストレージは保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableapplicationbackup) API を使用して、アプリケーション _MyApp_A_ に対してこのポリシーを有効にします。 このアクションによって、アプリケーション _MyApp_A_ に属する _Reliable Stateful Services_ と _Reliable Actors_ のすべてのパーティションに対して、バックアップ ポリシー _BP_1_ を使用したデータのバックアップが有効になります。
 
-    2. バックアップ ポリシー _BP_2_ を作成します。これは頻度ベースのバックアップ スケジュールであり、頻度は 1 時間間隔に設定され、 バックアップ ストレージは保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Application Backup](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enableservicebackup) API を使用して、サービス _SvcA3_ に対してこのポリシーを有効にします。 このアクションによって、伝達されたポリシー_BP_1_ が、サービス _SvcA3_ のすべてのパーティションに対して明示的に有効化されたバックアップ ポリシー _BP_2_ によって上書きされ、これらのパーティションでバックアップ ポリシー _BP_2_ が使用されるようになります。
+    2. バックアップ ポリシー _BP_2_ を作成します。これは頻度ベースのバックアップ スケジュールであり、頻度は 1 時間間隔に設定され、 バックアップ ストレージは保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API を使用して、サービス _SvcA3_ に対してこのポリシーを有効にします。 このアクションによって、伝達されたポリシー_BP_1_ が、サービス _SvcA3_ のすべてのパーティションに対して明示的に有効化されたバックアップ ポリシー _BP_2_ によって上書きされ、これらのパーティションでバックアップ ポリシー _BP_2_ が使用されるようになります。
 
-    3. バックアップ ポリシー _BP_3_ を作成します。これは頻度ベースのバックアップ スケジュールであり、頻度は 24 時間間隔に設定され、 バックアップ ストレージは保存場所 _BackupStore2_ を使用するように構成されます。 [Enable Partition Backup](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API を使用して、パーティション _SvcA1_P2_ に対してこのポリシーを有効にします。 このアクションによって、伝達されたポリシー _BP_1_ が、パーティション _SvcA1_P2_ に対して明示的に有効化されたバックアップ ポリシー _BP_3_ によって上書きされます。
+    3. バックアップ ポリシー _BP_3_ を作成します。これは頻度ベースのバックアップ スケジュールであり、頻度は 24 時間間隔に設定され、 バックアップ ストレージは保存場所 _BackupStore2_ を使用するように構成されます。 [Enable Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API を使用して、パーティション _SvcA1_P2_ に対してこのポリシーを有効にします。 このアクションによって、伝達されたポリシー _BP_1_ が、パーティション _SvcA1_P2_ に対して明示的に有効化されたバックアップ ポリシー _BP_3_ によって上書きされます。
 
 2. MyApp_B
-    1. バックアップ ポリシー _BP_4_ を作成します。これは時刻ベースのバックアップ スケジュールであり、スケジュールの頻度の種類は週次に設定され、実行日は日曜日に設定され、実行時刻は午前 8 時に設定されます。 バックアップ ストレージは、保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Application Backup](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enableservicebackup) API を使用して、サービス _SvcB1_ に対してこのポリシーを有効にします。 このアクションによって、サービス _SvcB1_ のすべてのパーティションに対して、バックアップ ポリシー _BP_4_ を使用したデータのバックアップが有効になります。
+    1. バックアップ ポリシー _BP_4_ を作成します。これは時刻ベースのバックアップ スケジュールであり、スケジュールの頻度の種類は週次に設定され、実行日は日曜日に設定され、実行時刻は午前 8 時に設定されます。 バックアップ ストレージは、保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enableservicebackup) API を使用して、サービス _SvcB1_ に対してこのポリシーを有効にします。 このアクションによって、サービス _SvcB1_ のすべてのパーティションに対して、バックアップ ポリシー _BP_4_ を使用したデータのバックアップが有効になります。
 
-    2. バックアップ ポリシー _BP_5_ を作成します。これは時刻ベースのバックアップ スケジュールであり、スケジュールの頻度の種類は日次に設定され、実行時刻は午前 8 時に設定されます。 バックアップ ストレージは、保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Partition Backup](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API を使用して、パーティション _SvcB2_P1_ に対してこのポリシーを有効にします。 このアクションによって、パーティション _SvcB2_P1_ に対して、バックアップ ポリシー _BP_5_ を使用したデータのバックアップが有効になります。
+    2. バックアップ ポリシー _BP_5_ を作成します。これは時刻ベースのバックアップ スケジュールであり、スケジュールの頻度の種類は日次に設定され、実行時刻は午前 8 時に設定されます。 バックアップ ストレージは、保存場所 _BackupStore1_ を使用するように構成されます。 [Enable Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-enablepartitionbackup) API を使用して、パーティション _SvcB2_P1_ に対してこのポリシーを有効にします。 このアクションによって、パーティション _SvcB2_P1_ に対して、バックアップ ポリシー _BP_5_ を使用したデータのバックアップが有効になります。
 
 次の図は、明示的に有効になっているバックアップ ポリシーと、伝達されたバックアップ ポリシーを示しています。
 
 ![Service Fabric アプリケーションの階層][0]
 
 ## <a name="disable-backup"></a>バックアップを無効にする
-データをバックアップする必要がない場合は、バックアップ ポリシーを無効にできます。 "_アプリケーション_" で有効なバックアップ ポリシーは、[Disable Application Backup](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-disableapplicationbackup) API を使用して、同じ "_アプリケーション_" でのみ無効にでき、"_サービス_" で有効なバックアップ ポリシーは、[Disable Service Backup](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-disableservicebackup) API を使用して、同じ "_サービス_" で無効にでき、"_パーティション_" で有効なバックアップ ポリシーは、 [Disable Partition Backup](https://docs.microsoft.com/en-in/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API を使用して、同じ "_パーティション_" で無効にできます。
+データをバックアップする必要がない場合は、バックアップ ポリシーを無効にできます。 "_アプリケーション_" で有効なバックアップ ポリシーは、[Disable Application Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableapplicationbackup) API を使用して、同じ "_アプリケーション_" でのみ無効にでき、"_サービス_" で有効なバックアップ ポリシーは、[Disable Service Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disableservicebackup) API を使用して、同じ "_サービス_" で無効にでき、"_パーティション_" で有効なバックアップ ポリシーは、 [Disable Partition Backup](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-disablepartitionbackup) API を使用して、同じ "_パーティション_" で無効にできます。
 
 * "_アプリケーション_" に対するバックアップ ポリシーを無効にすると、Reliable Stateful Services パーティションまたは Reliable Actors パーティションへのバックアップ ポリシーの伝達の結果発生するすべてのデータの定期バックアップが停止します。
 

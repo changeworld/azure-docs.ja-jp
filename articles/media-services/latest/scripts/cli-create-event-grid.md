@@ -4,7 +4,7 @@ description: このトピックの Azure CLI スクリプトは、ジョブの�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/11/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 5293ac55fdb13bba85996f5ed81034d4ebeeff12
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: eae9947b7dcbd6f2c52fb0d4abc65375aed7766e
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093022"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378790"
 ---
 # <a name="cli-example-create-an-azure-event-grid-subscription"></a>CLI の例: Azure Event Grid サブスクリプションの作成 
 

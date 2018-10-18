@@ -15,17 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 03/06/2018
 ms.author: danlep
-ms.openlocfilehash: 437c475735ec3823de51c5f9e996a5303fe9cfa7
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 7bb49e48f3777304aa6f40cee40e0b7147994201
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852542"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345239"
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)
 並列 Message Passing Interface (MPI) アプリケーションを実行するように、[Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) と [RDMA 対応 HPC VM サイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#rdma-capable-instances)を使って Azure の Windows RDMA クラスターを設定します。 HPC Pack クラスターで RDMA 対応の Windows Server ベースのノードを設定すると、MPI アプリケーションは、リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく Azure の低待機時間で高スループットのネットワークを介して効率的に通信します。
-
-Linux VM 上で Azure RDMA ネットワークにアクセスする MPI ワークロードを実行する場合は、「 [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../../linux/classic/rdma-cluster.md)」を参照してください。
 
 ## <a name="hpc-pack-cluster-deployment-options"></a>HPC Pack クラスターのデプロイ オプション
 Microsoft HPC Pack は、追加コストなしで提供され、Windows または Linux HPC アプリケーションを実行するための HPC クラスターをオンプレミスまたは Azure で作成するために使用できます。 HPC Pack には、Microsoft が実装する Windows 用 Message Passing Interface (MS-MPI) のランタイム環境が含まれています。 サポートされている Windows Server オペレーティング システムを実行している RDMA 対応のインスタンスで使用する場合、HPC Pack は、Azure RDMA ネットワークにアクセスする Windows MPI アプリケーションを実行するための効率的なオプションとなります。 
@@ -84,7 +82,7 @@ Microsoft HPC Pack は、追加コストなしで提供され、Windows また�
    ジョブの実行が完了したら、HPC クラスター マネージャーでノードをオフラインにし、 **[停止]** 操作を使用します。
 
 ## <a name="scenario-2-deploy-compute-nodes-in-compute-intensive-vms-iaas"></a>シナリオ 2: 計算ノードをコンピューティング集中型 VM にデプロイする (IaaS)
-このシナリオでは、Azure 仮想ネットワークの VM に HPC Pack ヘッド ノードとクラスター計算ノードをデプロイします。 HPC Pack には、自動デプロイ スクリプトや Azure クイックスタート テンプレートなど、[Azure VM でのデプロイ オプション](../../linux/hpcpack-cluster-options.md)がいくつか用意されています。 例として、下記の考慮事項と手順は、[HPC Pack IaaS デプロイ スクリプト](hpcpack-cluster-powershell-script.md) を使用して Azure での HPC Pack 2012 R2 クラスターのデプロイを自動化する方法を示しています。
+このシナリオでは、Azure 仮想ネットワークの VM に HPC Pack ヘッド ノードとクラスター計算ノードをデプロイします。 HPC Pack には、自動デプロイ スクリプトや Azure クイックスタート テンプレートなど、[Azure VM でのデプロイ オプション](../../windows/hpcpack-cluster-options.md)がいくつか用意されています。 例として、下記の考慮事項と手順は、[HPC Pack IaaS デプロイ スクリプト](hpcpack-cluster-powershell-script.md) を使用して Azure での HPC Pack 2012 R2 クラスターのデプロイを自動化する方法を示しています。
 
 ![Cluster in Azure VMs][iaas]
 
@@ -100,7 +98,7 @@ Microsoft HPC Pack は、追加コストなしで提供され、Windows また�
    * **仮想ネットワーク**: 使用する H シリーズ、A8、A9 のサイズが使用可能なリージョンで、新しい仮想ネットワークを指定します。 [リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/) を参照してください。
 
    * **Windows Server オペレーティング システム**: RDMA 接続をサポートするには、計算ノード VM に Windows Server 2012 R2 などの互換性のある Windows Server オペレーティング システムを指定します。
-   * **クラウド サービス**: スクリプトでクラシック展開モデルが使用されているため、クラスター VM は Azure クラウド サービスを使用して展開されます (構成ファイルの `ServiceName` 設定)。 1 つのクラウド サービスにヘッド ノードを展開し、コンピューティング ノードは異なるクラウド サービスにデプロイすることをお勧めします。 
+   * **クラウド サービス**: スクリプトでクラシック デプロイ モデルが使用されているため、クラスター VM は Azure クラウド サービスを使用して展開されます (構成ファイルの `ServiceName` 設定)。 1 つのクラウド サービスにヘッド ノードを展開し、コンピューティング ノードは異なるクラウド サービスにデプロイすることをお勧めします。 
    * **ヘッド ノードのサイズ**: このシナリオでは、ヘッド ノードに少なくとも A4 (XL) サイズを用意することを検討してください。
    * **HpcVmDrivers 拡張機能**: デプロイ スクリプトは、Windows Server オペレーティング システムを持つ A8 または A9 サイズの計算ノードをデプロイするときに、Azure VM エージェントと HpcVmDrivers 拡張機能を自動的にインストールします。 HpcVmDrivers は、RDMA ネットワークに接続するためのドライバーを計算ノード VM にインストールします。 RDMA 対応の H シリーズの VM では、HpcVmDrivers 拡張機能を手動でインストールする必要があります。 「[ハイ パフォーマンス コンピューティング VM のサイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
    * **クラスター ネットワークの構成**: デプロイ スクリプトにより、HPC Pack クラスターはトポロジ 5 (Enterprise ネットワークのすべてのノード) で自動的にセットアップされます。 このトポロジは、VM でのすべての HPC Pack クラスターのデプロイに必要です。 クラスター ネットワークのトポロジを後で変更しないでください。
@@ -185,7 +183,6 @@ Azure で HPC Pack を使用して MPI アプリケーションを実行する�
 
 ## <a name="next-steps"></a>次の手順
 * HPC Pack を使用する代わりに、Azure Batch サービスを開発し、Azure の計算ノードの管理されたプールで MPI アプリケーションを実行します。 「 [Azure Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行](../../../batch/batch-mpi.md)」をご覧ください。
-* Azure RDMA ネットワークにアクセスする Linux MPI ワークロードを実行する場合は、「 [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../../linux/classic/rdma-cluster.md)」を参照してください。
 
 <!--Image references-->
 [burst]:media/hpcpack-rdma-cluster/burst.png

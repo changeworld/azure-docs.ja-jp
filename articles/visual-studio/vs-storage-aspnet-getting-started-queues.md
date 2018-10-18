@@ -12,14 +12,15 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: 26f303318320eb8b039503666841e518f75348e4
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: a114833b40fe834aa0108d1a2f3821f0b7cbddbc
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42142455"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321854"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Azure Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
+
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>概要
@@ -28,7 +29,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 
 このチュートリアルでは、Azure Queue Storage エンティティを使用していくつかの一般的なシナリオの ASP.NET コードを記述する方法を示します。 これらのシナリオでは、Azure キューの作成や、キュー メッセージの追加、変更、読み取り、削除などの一般的なタスクについて説明します。
 
-##<a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Storage アカウント](../storage/common/storage-quickstart-create-account.md)
@@ -452,7 +453,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     queue.FetchAttributes();
     ```
 
-6. **CloudQueue.ApproximateMessageCount** プロパティにアクセスして、キューの長さを取得します。
+1. **CloudQueue.ApproximateMessageCount** プロパティにアクセスして、キューの長さを取得します。
  
     ```csharp
     int? nMessages = queue.ApproximateMessageCount;

@@ -3,8 +3,8 @@ title: キャッシュのしくみ | Microsoft Docs
 description: キャッシュは、後でデータに対する要求があった場合により迅速にアクセスできるように、そのデータをローカルに保存するプロセスです。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
-ms.author: v-deasim
-ms.openlocfilehash: bb0824995972b49febdb1695e41f45fbd0966cd1
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.author: magattus
+ms.openlocfilehash: 563c073e781e2a2bee88b4ecdcdc82541c21ec4f
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765792"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092392"
 ---
 # <a name="how-caching-works"></a>キャッシュのしくみ
 
@@ -71,12 +71,12 @@ Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダ�
 
 **Cache-Control:**
 - HTTP 1.1 で導入されました。Web 発行元がコンテンツを詳細に制御できるようにします。また、`Expires` ヘッダーの制限に対処します。
-- `Expires` ヘッダーを上書きします (これと `Cache-Control` の両方が定義されている場合)。
+- `Expires` ヘッダーをオーバーライドします (これと `Cache-Control` の両方が定義されている場合)。
 - クライアントから CDN POP への HTTP 要求で使用すると、`Cache-Control` は、既定ですべての Azure CDN プロファイルによって無視されます。
 - クライアントから CDN POP への HTTP 応答で使用された場合は、次のようになります。
      - **Azure CDN Standard/Premium from Verizon** と **Microsoft Azure CDN Standard** はすべての `Cache-Control` ディレクティブをサポートします。
      - **Azure CDN Standard from Akamai** は、次の `Cache-Control` ディレクティブのみをサポートし、その他はすべて無視します。
-         - `max-age`: キャッシュは、指定された秒数だけコンテンツを格納できます。 たとえば、「`Cache-Control: max-age=5`」のように入力します。 このディレクティブは、コンテンツが新鮮であると見なされる最大時間を指定します。
+         - `max-age`: キャッシュは、指定された秒数だけコンテンツを格納できます。 たとえば、「 `Cache-Control: max-age=5` 」のように入力します。 このディレクティブは、コンテンツが新鮮であると見なされる最大時間を指定します。
          - `no-cache`: コンテンツをキャッシュします。ただし、キャッシュから配信する前に、そのコンテンツを検証します。 `Cache-Control: max-age=0` と同等です。
          - `no-store`: コンテンツをキャッシュしません。 以前に保存されている場合は、そのコンテンツを削除します。
 
@@ -98,14 +98,14 @@ Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダ�
 
 **ETag:**
 - **Azure CDN Standard/Premium from Verizon** では、`ETag` が既定でサポートされますが、**Microsoft Azure CDN Standard** と **Azure CDN Standard from Akamai** ではサポートされていません。
-- `ETag` は、すべてのファイルとファイルのバージョンに対して一意の文字列を定義します。 たとえば、「`ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"`」のように入力します。
+- `ETag` は、すべてのファイルとファイルのバージョンに対して一意の文字列を定義します。 たとえば、「 `ETag: "17f0ddd99ed5bbe4edffdd6496d7131f"` 」のように入力します。
 - HTTP 1.1 で導入され、`Last-Modified` よりも新しいものです。 最終更新日を判断するのが難しいときに便利です。
 - 強い検証と弱い検証の両方をサポートしますが、Azure CDN では、強い検証のみがサポートされます。 強い検証では、2 つのリソース表現がバイト単位で同一である必要があります。 
-- キャッシュは、要求で 1 つ以上の `ETag` 検証コントロールを含む `If-None-Match` ヘッダーを送信することで、`ETag` が使用されているファイルを検証します。 たとえば、「`If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"`」のように入力します。 サーバーのバージョンが一覧の `ETag` 検証コントロールと一致する場合、応答で状態コード 304 (変更なし) が送信されます。 バージョンが異なる場合、サーバーは、状態コード 200 (OK) と、更新されたリソースで応答します。
+- キャッシュは、要求で 1 つ以上の `ETag` 検証コントロールを含む `If-None-Match` ヘッダーを送信することで、`ETag` が使用されているファイルを検証します。 たとえば、「 `If-None-Match: "17f0ddd99ed5bbe4edffdd6496d7131f"` 」のように入力します。 サーバーのバージョンが一覧の `ETag` 検証コントロールと一致する場合、応答で状態コード 304 (変更なし) が送信されます。 バージョンが異なる場合、サーバーは、状態コード 200 (OK) と、更新されたリソースで応答します。
 
 **Last-Modified:**
 - **Azure CDN Standard/Premium from Verizon** でのみ、`ETag` が HTTP 応答に含まれない場合、`Last-Modified` が使用されます。 
-- リソースが最後に更新されたことが配信元サーバーによって確認された日時を指定します。 たとえば、「`Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT`」のように入力します。
+- リソースが最後に更新されたことが配信元サーバーによって確認された日時を指定します。 たとえば、「 `Last-Modified: Thu, 19 Oct 2017 09:28:00 GMT` 」のように入力します。
 - キャッシュは、要求で日時を含む `If-Modified-Since` ヘッダーを送信することで、`Last-Modified` が使用されているファイルを検証します。 配信元サーバーは、その日付と、最新リソースの `Last-Modified` ヘッダーを比較します。 指定されている時刻以降、リソースが変更されていない場合、サーバーは、応答で状態コード 304 (変更なし) を返します。 リソースが変更されている場合、サーバーは、状態コード 200 (OK) と、更新されたリソースを返します。
 
 ## <a name="determining-which-files-can-be-cached"></a>キャッシュできるファイルの確認
@@ -126,7 +126,7 @@ Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダ�
 
 |    | Microsoft: 一般的な Web 配信 | Verizon: 一般的な Web 配信 | Verizon: DSA | Akamai: 一般的な Web 配信 | Akamai: DSA | Akamai: 大きなファイルのダウンロード | Akamai: 一般的なメディア ストリーミングまたは VOD メディア ストリーミング |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **配信元を優先**       | [はい]    | [はい]   | いいえ    | [はい]    | いいえ    | 可能    | [はい]    |
+| **配信元を優先**       | [はい]    | [はい]   | いいえ    | はい    | いいえ    | 可能    | [はい]    |
 | **CDN キャッシュ期間** | 2 日 |7 日 | なし | 7 日 | なし | 1 日 | 1 年 |
 
 **配信元を優先**: [サポートされているキャッシュ ディレクティブ ヘッダー](#http-cache-directive-headers)を優先するかどうかを指定します (配信元サーバーからの HTTP 応答にヘッダーが存在する場合)。
@@ -135,7 +135,7 @@ Azure CDN では、次の HTTP キャッシュ ディレクティブ ヘッダ�
 
 ## <a name="next-steps"></a>次の手順
 
-- キャッシュ規則を使用して CDN の既定のキャッシュ動作をカスタマイズおよび上書きする方法については、[キャッシュ規則による Azure CDN キャッシュ動作の制御](cdn-caching-rules.md)に関するページをご覧ください。 
+- キャッシュ規則を使用して CDN の既定のキャッシュ動作をカスタマイズおよびオーバーライドする方法については、[キャッシュ規則による Azure CDN キャッシュ動作の制御](cdn-caching-rules.md)に関するページをご覧ください。 
 - クエリ文字列を使用してキャッシュ動作を制御する方法については、[クエリ文字列による Azure CDN キャッシュ動作の制御](cdn-query-string.md)に関するページをご覧ください。
 
 

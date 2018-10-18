@@ -3,18 +3,18 @@ title: Azure ExpressRoute と Azure Site Recovery | Microsoft Docs
 description: Azure ExpressRoute と Azure Site Recovery を使ってディザスター リカバリーと移行を行う方法を説明します
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: eb28a3d165bcb6cc5e63162053029ce14b0d7f8f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 13d07546f1d82782e211213816b53373913e80b3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078139"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353885"
 ---
 # <a name="azure-expressroute-with-azure-site-recovery"></a>Azure ExpressRoute と Azure Site Recovery
 

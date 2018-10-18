@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 07/19/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: fe20cae4c316462e3af3f0a5e7e6052f6ba5719d
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 487e0c763ca4b247f1818b2beaf3282734fc4e27
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344425"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388444"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>よくある質問 - VMware から Azure へのレプリケーション
 
@@ -22,7 +22,7 @@ ms.locfileid: "43344425"
 
 ## <a name="general"></a>全般
 ### <a name="how-is-site-recovery-priced"></a>Site Recovery の価格
-詳しくは、「[Site Recovery の価格](https://azure.microsoft.com/en-in/pricing/details/site-recovery/)」をご覧ください。
+詳しくは、「[Site Recovery の価格](https://azure.microsoft.com/pricing/details/site-recovery/)」をご覧ください。
 
 ### <a name="how-do-i-pay-for-azure-vms"></a>Azure VM の支払い方法
 レプリケーションの間に、データは Azure ストレージにレプリケートされ、VM 変更の料金は発生しません。 Azure へのフェールオーバーを実行すると、Site Recovery は Azure IaaS 仮想マシンを自動的に作成します。 その後は、Azure で消費するコンピューティング リソースに対して課金されます。

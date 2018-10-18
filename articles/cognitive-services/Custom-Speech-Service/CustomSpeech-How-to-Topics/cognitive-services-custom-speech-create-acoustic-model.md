@@ -1,24 +1,24 @@
 ---
-title: 'チュートリアル: 音響モデルを作成する - Custom Speech Service'
-titlesuffix: Azure Cognitive Services
-description: このチュートリアルでは、Custom Speech Service を使用して音響モデルを作成する方法について説明します。
+title: Custom Speech Service を使用して音響モデルを作成するためのチュートリアル - Microsoft Cognitive Services | Microsoft Docs
+description: このチュートリアルでは、Microsoft Cognitive Services の Custom Speech Service を使用して音響モデルを作成する方法について説明します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
 ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 72c5a0dfb8f33f273ba850378c1fefeef82b4d7a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 53e93a08782ba66e69b903c32c4c3c7417e5a801
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220233"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344576"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>チュートリアル: カスタム音響モデルを作成する
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 このチュートリアルでは、音声データをアプリケーションに認識させるためのカスタム音響モデルを作成します。 カスタム音響モデルを作成することは、特定の環境 (ノイズが多い工場など) で、または特定のユーザーによって、使用されるようにアプリケーションが設計されている場合に便利です。
 
@@ -140,4 +140,4 @@ Azure Portal での Custom Search Service サブスクリプションの作成�
 このチュートリアルでは、オーディオ ファイルと文字起こしで使用するためのカスタム音響モデルを作成しました。 テキスト ファイルで使用するためのカスタムの言語ファイルを作成するには、カスタム言語モデルの作成についてのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [カスタム音響モデルを作成する](cognitive-services-custom-speech-create-language-model.md)
+> [カスタム言語モデルを作成する](cognitive-services-custom-speech-create-language-model.md)

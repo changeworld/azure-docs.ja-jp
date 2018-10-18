@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/05/2018
 ms.author: jdial
-ms.openlocfilehash: 124653f95dedbb1606e85cbfcd8229c026cf7341
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d57f34da261d51707caf499bfdf1fffa344b72a9
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960653"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385517"
 ---
 # <a name="check-resource-usage-against-limits"></a>制限に照らしたリソース使用量の確認
 
@@ -49,7 +49,7 @@ ms.locfileid: "46960653"
 
 以下のコマンドは、[Azure Cloud Shell](https://shell.azure.com/powershell) で、またはコンピューターから PowerShell を実行することで実行できます。 Azure Cloud Shell は無料の対話型シェルです。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 お使いのコンピューターから PowerShell を実行する場合は、*AzureRM* PowerShell モジュール、バージョン 6.0.1 以降が必要です。 コンピューターで `Get-Module -ListAvailable AzureRM` を実行して、インストールされているバージョンを確認してください。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure にログインする必要もあります。
 
-制限に照らして使用量を確認するには、[Get AzureRmNetworkUsage](https://docs.microsoft.com/en-us/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.8.0) を使用します。 次の例では、米国東部の場所に少なくとも 1 つのリソースがデプロイされているリソースの使用量が取得されます。
+制限に照らして使用量を確認するには、[Get AzureRmNetworkUsage](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.8.0) を使用します。 次の例では、米国東部の場所に少なくとも 1 つのリソースがデプロイされているリソースの使用量が取得されます。
 
 ```azurepowershell-interactive
 Get-AzureRmNetworkUsage `

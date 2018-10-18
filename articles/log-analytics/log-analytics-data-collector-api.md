@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 297ba626d8b80d9362476ca4578e34140df5f91a
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: f0a982e8a0cb358e29375e05c1752a33b15ec255
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248655"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319712"
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Log Analytics にデータを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Log Analytics に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -101,7 +101,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 ## <a name="request-body"></a>要求本文
 メッセージの本文は JSON 形式である必要があります。 次の形式でプロパティ名と値をペアにして、レコードを 1 つ以上含める必要があります。
 
-```
+```json
 [
     {
         "property 1": "value1",
@@ -114,7 +114,7 @@ Signature=Base64(HMAC-SHA256(UTF8(StringToSign)))
 
 次の形式を使用して複数のレコードを 1 つの要求にまとめることができます。 すべてのレコードは同じレコード型である必要があります。
 
-```
+```json
 [
     {
         "property 1": "value1",
@@ -218,7 +218,7 @@ Log Analytics HTTP データ コレクター API によって送信されたデ�
 別の方法として、ログの種類および JSON データの変数を変更することもできます。
 
 ### <a name="powershell-sample"></a>PowerShell のサンプル
-```
+```powershell
 # Replace with your Workspace ID
 $CustomerId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"  
 
@@ -301,7 +301,7 @@ Post-LogAnalyticsData -customerId $customerId -sharedKey $sharedKey -body ([Syst
 ```
 
 ### <a name="c-sample"></a>C# のサンプル
-```
+```csharp
 using System;
 using System.Net;
 using System.Net.Http;
@@ -387,7 +387,7 @@ namespace OIAPIExample
 ```
 
 ### <a name="python-2-sample"></a>Python 2 のサンプル
-```
+```python
 import json
 import requests
 import datetime

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 6c715f07f75c9196b7cf2cc8659c6e541e1260da
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 999017e24f6c4c24735b7e0cc818bf20aaabab62
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30167901"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338575"
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Microsoft Azure Stack Development Kit (ASDK) のトラブルシューティング
 このドキュメントでは、ASDK の一般的なトラブルシューティング情報を提供します。 記載されていない問題が発生している場合は、[Azure Stack MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)で追加のサポートと情報についてご確認ください。  
@@ -30,7 +30,7 @@ ms.locfileid: "30167901"
 
 このセクションで説明されている問題のトラブルシューティングの推奨事項は、複数のソースから取得しており、特定の問題を解決できない場合があります。 コード例は "そのまま" 提供されており、期待される結果を保証できません。 このセクションは、製品の機能強化の実装に合わせて、頻繁に編集および更新されます。
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 ### <a name="deployment-failure"></a>デプロイの失敗
 インストール時に障害が発生した場合、次の例に示すように、デプロイ スクリプトの -rerun オプションを使用して、失敗した手順からデプロイを再開できます。
 

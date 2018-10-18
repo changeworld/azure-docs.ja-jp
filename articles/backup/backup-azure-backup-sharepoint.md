@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/29/2016
 ms.author: adigan
-ms.openlocfilehash: 728850fe70fb3f9e64b0fa25b4ceebb1a1b51cd4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7331b1c99425500b58d186cedab1e83dd20e3684
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34606655"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389821"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint ファームの Azure へのバックアップ
 System Center Data Protection Manager (DPM) を使用して SharePoint ファームを Microsoft Azure にバックアップする方法は、他のデータ ソースのバックアップとよく似ています。 Azure Backup ではバックアップのスケジュールを柔軟に設定して日、週、月、年の単位でバックアップ ポイントを作成でき、さまざまなバックアップ ポイントに対応する保有ポリシー オプションがあります。 DPM では、目標復旧時間 (RTO) 短縮のためにはローカル ディスク コピーを保存でき、コスト効率に優れた長期リテンション期間のためには Azure にコピーできます。
@@ -123,7 +123,7 @@ DPM を使用して SharePoint を保護する前に、 **ConfigureSharePoint.ex
     ![Online_backup_schedule](./media/backup-azure-backup-sharepoint/specify-online-backup-schedule.png)
     
     > [!NOTE]
-    > DPM では、一日当たり最大で 2 回、それぞれ異なる時刻に Azure へのバックアップを行うことができます。 Azure Backup では、 [Azure Backup ネットワーク調整](https://azure.microsoft.com/en-in/documentation/articles/backup-configure-vault/#enable-network-throttling)を使用することで、ピーク時間帯とピーク外の時間帯のバックアップに使用できる WAN 帯域幅の量を制御することもできます。
+    > DPM では、一日当たり最大で 2 回、それぞれ異なる時刻に Azure へのバックアップを行うことができます。 Azure Backup では、 [Azure Backup ネットワーク調整](https://azure.microsoft.com/documentation/articles/backup-configure-vault/#enable-network-throttling)を使用することで、ピーク時間帯とピーク外の時間帯のバックアップに使用できる WAN 帯域幅の量を制御することもできます。
     > 
     > 
 11. 選択したバックアップ スケジュールに応じて、 **[オンライン保持ポリシーの指定]** ページで、日、週、月、年単位のバックアップ ポイントの保持ポリシーを選択します。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: abfe7f0b39463a842b1eb167661af7da90bc9eca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bed0c15504323aba4ebf680273870720a8ff833a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980850"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388312"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Azure Monitor でのログのメトリック アラートの作成  
 
@@ -58,11 +58,11 @@ Log Analytics データで収集されたログのメトリックを機能させ
 - 選択した "*Log Analytics ワークスペース*" のメトリック アラート用に選択したシグナルの種類が**メトリック**であることを確認します。
 - ディメンション フィルターを使用して、特定の条件またはリソースをフィルター処理します。ログのメトリックは多次元です。
 - "*シグナル ロジック*" を構成すると、ディメンション (コンピューターなど) の複数の値にまたがる単一のアラートを作成できます。
-- 選択した "*Log Analytics ワークスペース*" のメトリック アラートを作成する際に Azure portal を使用**しない**場合は、まず、[Azure Monitor のスケジュールされたクエリ ルール](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules
+- 選択した "*Log Analytics ワークスペース*" のメトリック アラートを作成する際に Azure portal を使用**しない**場合は、まず、[Azure Monitor のスケジュールされたクエリ ルール](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules
 )を使用してログ データをメトリックに変換するための明示的なルールを手動で作成する必要があります。
 
 > [!NOTE]
-> Azure portal を使用して Log Analytics ワークスペースのメトリック アラートを作成すると、[Azure Monitor のスケジュールされたクエリ ルール](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules)を使用してログ データをメトリックに変換するための対応するルールがバックグラウンドで自動的に作成されます。*ユーザーの介入や操作は不要です*。 Azure portal 以外の方法を使用してログのメトリック アラートを作成する場合は、「[ログのメトリック アラートのリソース テンプレート](#resource-template-for-metric-alerts-for-logs)」をご覧ください。このセクションには、メトリック アラートを作成する前に、ScheduledQueryRule ベースのログからメトリックへの変換ルールを作成する方法のサンプルが示されています。このルールがないと、ログのメトリック アラートを作成するためのデータが存在しなくなります。
+> Azure portal を使用して Log Analytics ワークスペースのメトリック アラートを作成すると、[Azure Monitor のスケジュールされたクエリ ルール](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)を使用してログ データをメトリックに変換するための対応するルールがバックグラウンドで自動的に作成されます。*ユーザーの介入や操作は不要です*。 Azure portal 以外の方法を使用してログのメトリック アラートを作成する場合は、「[ログのメトリック アラートのリソース テンプレート](#resource-template-for-metric-alerts-for-logs)」をご覧ください。このセクションには、メトリック アラートを作成する前に、ScheduledQueryRule ベースのログからメトリックへの変換ルールを作成する方法のサンプルが示されています。このルールがないと、ログのメトリック アラートを作成するためのデータが存在しなくなります。
 
 ## <a name="resource-template-for-metric-alerts-for-logs"></a>ログのメトリック アラートのリソース テンプレート
 前述のように、ログからのメトリック アラートの作成は次の 2 段階のプロセスです。

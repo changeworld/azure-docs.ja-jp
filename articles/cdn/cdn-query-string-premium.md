@@ -3,8 +3,8 @@ title: クエリ文字列による Azure CDN キャッシュ動作の制御 - Pr
 description: Azure CDN クエリ文字列のキャッシュにより、Web 要求にクエリ文字列が含まれる場合のファイルのキャッシュ方法を制御します。 この記事では、Azure CDN Premium from Verizon 製品でのクエリ文字列のキャッシュについて説明します。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 99db4a85-4f5f-431f-ac3a-69e05518c997
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
-ms.author: v-deasim
-ms.openlocfilehash: 3777689af72f580645826a1ca4e31ca84bd65dab
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.author: magattus
+ms.openlocfilehash: 2f0a361d53489e22ccc8e41406e5b86b423ea2f6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260836"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091404"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---premium-tier"></a>クエリ文字列による Azure CDN キャッシュ動作の制御 - Premium レベル
 > [!div class="op_single_selector"]

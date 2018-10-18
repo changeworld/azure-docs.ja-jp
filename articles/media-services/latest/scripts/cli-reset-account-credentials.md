@@ -4,7 +4,7 @@ description: Azure CLI スクリプトを使用して、アカウントの資格
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/11/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 7f9868b0fb53eb75ccf4742c0bf522d35f6ff902
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: f97cf87288f5efbeef11a27e98ab3fc2caf27b40
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091814"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376415"
 ---
 # <a name="cli-example-reset-the-account-credentials"></a>CLI の例: アカウント資格情報のリセット
 

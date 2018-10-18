@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: e8a876d1e5416547d0eead0882b69bdf68818c5d
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 572895e51d579efb3b141322a87e374283af1648
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886213"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384703"
 ---
 # <a name="create-a-new-knowledge-base-in-java"></a>新しいナレッジ ベースを Java で作成する
 
@@ -224,7 +224,7 @@ public class CreateKB {
 
     /**
      * Sends a sample request to create a knowledge base. To understand
-     * this 'kb' object, refer to the <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/QnAMaker/concepts/knowledge-base">Knowledge base</a> concept page.
+     * this 'kb' object, refer to the <a href="https://docs.microsoft.com/azure/cognitive-services/QnAMaker/concepts/knowledge-base">Knowledge base</a> concept page.
      * @return A new knowledge base.
      */
     public static KB GetKB () {
@@ -243,7 +243,8 @@ public class CreateKB {
         q.metadata = new Metadata[]{md};
 
         kb.qnaList = new Question[]{q};
-        kb.urls = new String[]{"https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",     "https://docs.microsoft.com/en-us/bot-framework/resources-bot-framework-faq"};
+        kb.urls = new String[]{"https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",     "https://docs.microsoft.com/bot-framework/resources-bot-framework-faq"};
+
 
         return kb;
     }

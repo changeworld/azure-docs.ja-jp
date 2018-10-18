@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 06/04/2018
-ms.openlocfilehash: 9b6a7187827622443c3cb29566dfb5eef840d595
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 7ae97274b03dda4dcf5150c8faacc7d406dad9fd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666197"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389617"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Terraform を使用して Azure 仮想マシン スケール セットを作成する
 
@@ -38,7 +38,7 @@ ms.locfileid: "43666197"
 
 - **Terraform のインストール**: [Terraform および Azure へのアクセスの構成](/azure/virtual-machines/linux/terraform-install-configure)に関する記事の指示に従ってください
 
-- **SSH キー ペアの作成**: SSH キー ペアをまだ持っていない場合は、[Azure 内に Linux VM 用の SSH 公開/秘密キーの組を作成して使用する方法](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys)に関する記事の手順に従います。
+- **SSH キー ペアの作成**: SSH キー ペアをまだ持っていない場合は、[Azure 内に Linux VM 用の SSH 公開/秘密キーの組を作成して使用する方法](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)に関する記事の手順に従います。
 
 ## <a name="create-the-directory-structure"></a>ディレクトリ構造を作成する
 

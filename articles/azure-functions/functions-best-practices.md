@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dbb21e63a25d6e357287f2f91181f2326850a898
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: aecd68734999c30f3dc8e7a2ea8c7d5e9cdfacb0
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952853"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166340"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 
-この記事では、[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数アプリのパフォーマンスと信頼性を向上させるためのガイダンスを紹介しています。 
+この記事では、[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数アプリのパフォーマンスと信頼性を向上させるためのガイダンスを紹介しています。 
 
 ## <a name="general-best-practices"></a>一般的なベスト プラクティス
 
@@ -104,13 +104,13 @@ Function App 内の関数はリソースを共有します。 たとえば、メ
 
 C# 関数の場合、型を厳密に型指定された配列に変更できます。  たとえば、メソッド シグネチャに、`EventData sensorEvent` ではなく `EventData[] sensorEvent` を指定できます。  他の言語の場合、バッチ処理を有効にするには、[こちら](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)に示すように、`function.json` の cardinality プロパティを明示的に `many` に設定する必要があります。
 
-### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>同時実行を適切に処理するようにホストの動作を構成する
+### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>コンカレンシーを適切に処理するようにホストの動作を構成する
 
-関数アプリの `host.json` ファイルでは、ホストのランタイムとトリガーの動作を構成できます。  バッチ処理の動作に加え、多数のトリガーの同時実行を管理できます。  多くの場合、これらのオプションの値を調整することで、呼び出された関数の要求に合わせて各インスタンスを適切にスケールできます。
+関数アプリの `host.json` ファイルでは、ホストのランタイムとトリガーの動作を構成できます。  バッチ処理の動作に加え、多数のトリガーのコンカレンシーを管理できます。  多くの場合、これらのオプションの値を調整することで、呼び出された関数の要求に合わせて各インスタンスを適切にスケールできます。
 
 hosts ファイルの設定は、アプリ内のすべての関数 (関数の "*1 つのインスタンス*") に適用されます。 たとえば、2 つの HTTP 関数が含まれ、同時要求数が 25 に設定された関数アプリがある場合、一方の HTTP トリガーに対する要求は共有された 25 の同時要求にカウントされます。  その関数アプリが 10 インスタンスにスケールされた場合、2 つの関数は 250 個の同時要求に効果的に対応できます (10 インスタンス * インスタンスあたり 25 個の同時要求)。
 
-**HTTP 同時実行ホストのオプション**
+**HTTP コンカレンシー ホストのオプション**
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 

@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: ce3629a140db97e922a28792c6230d9566682982
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: a5223b026705cef5abbcd0be6f64cf0c98fd0930
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269328"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309027"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: C# を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
@@ -68,12 +68,13 @@ namespace ConsoleApp1
     {
         /// <summary>
         /// Container for subscription credentials. Make sure to enter your valid key.
+        string subscriptionKey = ""; //Insert your Text Anaytics subscription key
         /// </summary>
         class ApiKeyServiceClientCredentials : ServiceClientCredentials
         {
             public override Task ProcessHttpRequestAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
-                request.Headers.Add("Ocp-Apim-Subscription-Key", "4d4705adaf4a4656b1118b68d671d5b6");
+                request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
                 return base.ProcessHttpRequestAsync(request, cancellationToken);
             }
         }

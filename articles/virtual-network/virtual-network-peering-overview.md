@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: c20375d42786b817f677be22dee8f4e71e710bc5
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 493beb254852464765d506c61c7ae6ce3b3835d3
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41919824"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362893"
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -92,7 +92,7 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 
 仮想ネットワーク ピアリング接続を利用するイグレス トラフィックとエグレス トラフィックには少額の料金が発生します。 VNet ピアリングとグローバル VNet ピアリングの料金の詳細については、[価格に関するページ](https://azure.microsoft.com/pricing/details/virtual-network)を参照してください。
 
-ゲートウェイ転送は、1 つの仮想ネットワークがクロスプレミス接続または VNet 間接続用にピアリングされた仮想ネットワーク内の VPN ゲートウェイを活用できるようにするピアリング プロパティです。 このシナリオのリモート ゲートウェイを通過するトラフィックに対しては、[VPN ゲートウェイの料金](https://azure.microsoft.com/en-us/pricing/details/vpn-gateway/)が発生しますが、[VNet ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は発生しません。 たとえば、VNetA にオンプレミス接続用の VPN ゲートウェイがあり、VNetB が適切なプロパティを構成して VNetA にピアリングされている場合、VNetB からオンプレミスへのトラフィックに対しては、VPN ゲートウェイあたりのエグレス料金のみが発生します。 VNet ピアリングの料金は適用されません。 [仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法について学習してください。
+ゲートウェイ転送は、1 つの仮想ネットワークがクロスプレミス接続または VNet 間接続用にピアリングされた仮想ネットワーク内の VPN ゲートウェイを活用できるようにするピアリング プロパティです。 このシナリオのリモート ゲートウェイを通過するトラフィックに対しては、[VPN ゲートウェイの料金](https://azure.microsoft.com/pricing/details/vpn-gateway/)が発生しますが、[VNet ピアリングの料金](https://azure.microsoft.com/pricing/details/virtual-network)は発生しません。 たとえば、VNetA にオンプレミス接続用の VPN ゲートウェイがあり、VNetB が適切なプロパティを構成して VNetA にピアリングされている場合、VNetB からオンプレミスへのトラフィックに対しては、VPN ゲートウェイあたりのエグレス料金のみが発生します。 VNet ピアリングの料金は適用されません。 [仮想ネットワーク ピアリングの VPN ゲートウェイ転送を構成する](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法について学習してください。
 
 ## <a name="next-steps"></a>次の手順
 

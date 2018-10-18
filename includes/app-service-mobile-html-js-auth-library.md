@@ -19,7 +19,7 @@ client.login("facebook").done(function (results) {
 
 この場合は、Azure App Service が OAuth 2.0 認証フローを管理します。  選択されたプロバイダーのサインイン ページを表示し、ID プロバイダーでのサインインが成功した後で App Service 認証トークンを生成します。 login 関数は、完了すると、userId フィールドのユーザー ID と authenticationToken フィールドの App Service 認証トークンの両方を公開する JSON オブジェクトを返します。 このトークンをキャッシュし、有効期限が切れるまで再利用できます。
 
-###<a name="client-auth"></a>方法: プロバイダーでの認証 (クライアント フロー)
+### <a name="client-auth"></a>方法: プロバイダーでの認証 (クライアント フロー)
 
 アプリケーションは個別に ID プロバイダーにアクセスして、返されたトークンを認証のために App Service に提供することもできます。 このクライアント フローでは、ユーザーにシングル サインイン エクスペリエンスを提供したり、ID プロバイダーから追加のユーザー データを取得したりすることができます。
 
@@ -61,7 +61,7 @@ WL.login({ scope: "wl.basic"}).then(function (result) {
 
 この例では、トークンを Live Connect から取得します。このトークンは、login 関数を呼び出すことによって、App Service に渡されます。
 
-###<a name="auth-getinfo"></a>方法: 認証されたユーザーに関する情報の取得
+### <a name="auth-getinfo"></a>方法: 認証されたユーザーに関する情報の取得
 
 認証情報は、AJAX ライブラリによる HTTP 呼び出しを使用して `/.auth/me` エンドポイントから取得できます。  `X-ZUMO-AUTH` ヘッダーを認証トークンに設定していることを確認してください。  認証トークンは `client.currentUser.mobileServiceAuthenticationToken`に格納されています。  たとえば、次のフェッチ API を使用します。
 

@@ -4,7 +4,7 @@ description: この記事では、Azure Media Services v3 で導入された変�
 services: media-services
 documentationcenter: na
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 tags: ''
 keywords: Azure Media Services, ストリーム, ブロードキャスト, ライブ, オフライン
@@ -13,19 +13,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 06/12/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: a382af644d30f9f0ebb586273c982ef1766f50b0
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: a17bad5beb651aaa085c626296c200a00c30647e
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36292047"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376364"
 ---
 # <a name="migrate-from-media-services-v2-to-v3"></a>Media Services v2 から v3 への移行
-
-> [!NOTE]
-> Azure Media Services の最新バージョンはプレビュー段階であり、v3 と呼ばれることがあります。
 
 この記事では、Azure Media Services (AMS) v3 で導入された変更点と、2 つのバージョンの違いについて説明します。
 

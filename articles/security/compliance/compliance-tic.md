@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: 637f837ec2421f0bef5131a33c709087b891aa0f
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d52785dd7569560f4b6986080b14723762537ec8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505113"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388322"
 ---
 # <a name="trusted-internet-connections-guidance"></a>信頼できるインターネット接続のガイダンス
 
@@ -223,7 +223,7 @@ Azure Policy は、サブスクリプション レベルを対象としていま
 
 ### <a name="network-watcher-traffic-analytics"></a>Network Watcher のトラフィック分析
 
-Network Watcher の[トラフィック分析](https://azure.microsoft.com/en-in/blog/traffic-analytics-in-preview/)は、フロー ログ データや他のログを利用して、ネットワーク トラフィックの概要を提供します。 このデータは、TIC コンプライアンスの監査と問題点の特定に役立ちます。 概要ダッシュボードを使って、インターネットと通信している仮想マシンをすばやく選別し、TIC ルーティングのための絞り込んだリストを取得できます。
+Network Watcher の[トラフィック分析](https://azure.microsoft.com/blog/traffic-analytics-in-preview/)は、フロー ログ データや他のログを利用して、ネットワーク トラフィックの概要を提供します。 このデータは、TIC コンプライアンスの監査と問題点の特定に役立ちます。 概要ダッシュボードを使って、インターネットと通信している仮想マシンをすばやく選別し、TIC ルーティングのための絞り込んだリストを取得できます。
 
 ![トラフィック分析](media/tic-traffic-analytics-1.png)
 

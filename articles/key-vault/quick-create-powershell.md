@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: f3ea500c8e48f4a509782657ad2fe750bf3a7ed6
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: ae09442c1ebec878e15b5149d0634f8dc3568f7a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025657"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362420"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>クイック スタート: PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -54,7 +54,7 @@ New-AzureRmResourceGroup -Name ContosoResourceGroup -Location EastUS
 - **場所**: 米国東部。
 
 ```azurepowershell-interactive
-New-AzureRmKeyVault -VaultName 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
+New-AzureRmKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
 ```
 
 このコマンドレットの出力では、新しく作成したキー コンテナーのプロパティが示されます。 次の 2 つのプロパティをメモしておきます。

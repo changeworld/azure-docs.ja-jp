@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.component: compliance
 ms.date: 09/04/2018
 ms.author: rolyon
-ms.openlocfilehash: 9fa966999e220ea4357d5b5c37f0038c75fe2339
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607112"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393985"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、Azure AD Terms of use の使用を開始する方法について説明します。
@@ -242,4 +242,4 @@ A: [以前に同意した使用条件を確認する](#how-users-can-review-thei
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Active Directory の条件付きアクセスのベスト プラクティス](../../cognitive-services/qnamaker/concepts/best-practices.md)
+- [Azure Active Directory の条件付きアクセスのベスト プラクティス](../../active-directory/conditional-access/best-practices.md)

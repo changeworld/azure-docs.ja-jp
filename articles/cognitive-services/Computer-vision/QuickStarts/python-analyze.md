@@ -3,23 +3,23 @@ title: 'クイック スタート: リモート画像の分析 - REST、Python -
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python で Computer Vision API を使用してリモート画像を分析します。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 1fc7c58ec4e5c200ae62c70698db7ec813d82703
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.author: pafarley
+ms.openlocfilehash: 8f8503277ec03bd6036431bcacd3719dac7378de
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883943"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338742"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート: Computer Vision で REST API と Python を使用してリモート画像を分析する
 
-このクイック スタートでは、Computer Vision の REST API を使用して、リモートに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使用すると、画像の内容に基づいて視覚的特徴を抽出できます。
+このクイック スタートでは、Computer Vision の REST API を使用して、リモートに格納されている画像を分析し、視覚的特徴を抽出します。 [画像分析](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)メソッドを使うと、画像の内容に基づいて視覚的特徴を抽出できます。
 
 このクイック スタートは、[MyBinder](https://mybinder.org) 上で Jupyter Notebook を使い、ステップ バイ ステップで実行することができます。 Binder を起動するには、次のボタンを選択します。
 
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     1. `subscription_key` 値を、サブスクリプション キーに置き換えます。
     1. 必要に応じて、`vision_base_url` 値を、サブスクリプション キーを取得した Azure リージョンの Computer Vision リソースのエンドポイント URL に置き換えます。
     1. 必要に応じて、`image_url` 値を、分析したい別の画像の URL に置き換えます。
-1. `.py` という拡張子を付けたファイルにコードを保存します。 たとえば、「 `analyze-image.py` 」のように入力します。
+1. `.py` 拡張子のファイルとして、コードを保存します。 たとえば、「 `analyze-image.py` 」のように入力します。
 1. コマンド プロンプト ウィンドウを開きます。
 1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python analyze-image.py` 」のように入力します。
 

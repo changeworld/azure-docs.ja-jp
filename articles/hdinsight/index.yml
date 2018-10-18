@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2d6ee894a80267247b927b7575c8aed2f2bdfdc3
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 77707525533079630807f472e2106dc3fbadbc75
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43184877"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386486"
 documentType: LandingData
 title: Azure HDInsight のドキュメント
 metadata:
@@ -84,7 +84,7 @@ sections:
     className: cardsD
     items:
     - title: ツール
-      html: <p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-intellij-tool-plugin">HDInsight IntelliJ ツール</a></p><p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin">HDInsight Eclipse ツール</a></p><p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-for-vscode">HDInsight VSCode ツール</a></p><p><a href="https://docs.microsoft.com/en-us/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started">HDInsight Visual Studio ツール</a></p>
+      html: <p><a href="https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-intellij-tool-plugin">HDInsight IntelliJ ツール</a></p><p><a href="https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin">HDInsight Eclipse ツール</a></p><p><a href="https://docs.microsoft.com/azure/hdinsight/hdinsight-for-vscode">HDInsight VSCode ツール</a></p><p><a href="https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started">HDInsight Visual Studio ツール</a></p>
     - title: コマンド ライン
       html: <p><a href="/powershell/module/azurerm.hdinsight">Azure PowerShell</a></p>
     - title: 言語

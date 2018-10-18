@@ -3,8 +3,8 @@ title: チュートリアル - Azure CDN キャッシュ規則の設定 | Micros
 description: このチュートリアルでは、Azure CDN のグローバル キャッシュ規則およびカスタム キャッシュ規則を設定します。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.service: cdn
 ms.workload: tbd
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/20/2018
-ms.author: v-deasim
+ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: a4b5a6a44fe9271f6ff9627c1c5623f0031f23ca
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 10d06d2e792b476a4c973029241d6cb98c0dd444
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608969"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49094073"
 ---
 # <a name="tutorial-set-azure-cdn-caching-rules"></a>チュートリアル: Azure CDN キャッシュ規則の設定
 
@@ -32,7 +32,7 @@ ms.locfileid: "34608969"
 
 - カスタム キャッシュ規則: プロファイルのエンドポイントごとに、1 つ以上のカスタム キャッシュ規則を設定できます。 カスタム キャッシュ規則は、特定のパスおよびファイル拡張子と一致し、順番に処理され、グローバル キャッシュ規則が設定されている場合はそれをオーバーライドします。 
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > - キャッシュ規則のページを開きます。
 > - グローバル キャッシュ規則を作成します。
@@ -77,8 +77,7 @@ ms.locfileid: "34608969"
 
 1. **[カスタム キャッシュ ルール]** で、**[一致条件]** を **[パス]** に、**[一致する値]** を「`/images/*.jpg`」に設定します。
     
-2. 
-  **[キャッシュ動作]** を **[オーバーライド]** に設定し、**[日]** フィールドに「30」と入力します。
+2. **[キャッシュ動作]** を **[オーバーライド]** に設定し、**[日]** フィールドに「30」と入力します。
        
     このカスタム キャッシュ規則は、エンドポイントの `/images` フォルダーにあるすべての `.jpg` イメージ ファイルについて、キャッシュの有効期間を 30 日に設定します。 要求元のサーバーによって送信された `Cache-Control` または `Expires` HTTP ヘッダーを、この規則はオーバーライドします。
 
@@ -104,7 +103,7 @@ ms.locfileid: "34608969"
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > - キャッシュ規則のページを開きます。

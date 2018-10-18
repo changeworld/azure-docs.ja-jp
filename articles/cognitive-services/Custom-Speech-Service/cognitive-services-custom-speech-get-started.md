@@ -1,24 +1,24 @@
 ---
-title: Custom Speech Service の使用開始
-titlesuffix: Azure Cognitive Services
+title: Azure 上の Custom Speech Service の概要 | Microsoft Docs
 description: Custom Speech Service にサブスクライブし、サービス アクティビティを Azure サブスクリプションにリンクしてモデルをトレーニングし、展開を実行します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: ae72edd626bd91dea7cd2812a3ef821b905f59a4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4bbd4c57556fd4bfd176c915e26be4a4d198418a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225244"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339935"
 ---
 # <a name="get-started-with-custom-speech-service"></a>Custom Speech Service の概要
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 Custom Speech Service の主な機能を確認し、アプリケーションのニーズに合わせて音響モデルと言語モデルを構築、展開、および使用する方法について説明します。 Custom Speech Service ポータルにサインアップすると、より広範なドキュメントと手順の説明を参照できます。
 
@@ -52,7 +52,7 @@ Microsoft が提供しているお勧めの基本的なサンプルについて�
 カスタム speech-text エンドポイントの作成方法の詳細については、[こちら](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md)を参照してください。
 
 ## <a name="using-a-custom-speech-endpoint"></a>Custom Speech エンドポイントを使用する
-要求は、既定の Azure Cognitive Services 音声エンドポイントとよく似た方法で CRIS Speech-to-Text エンドポイントに送信できます。 これらのエンドポイントは、Speech API の既定のエンドポイントと機能的には同じである点に注意してください。 そのため、Speech API のクライアント ライブラリまたは REST API を介して使用できる同じ機能を、カスタム エンドポイントでも使用できます。
+要求は、既定の Microsoft Cognitive Services 音声エンドポイントとよく似た方法で CRIS Speech-to-Text エンドポイントに送信できます。 これらのエンドポイントは、Speech API の既定のエンドポイントと機能的には同じである点に注意してください。 そのため、Speech API のクライアント ライブラリまたは REST API を介して使用できる同じ機能を、カスタム エンドポイントでも使用できます。
 
 カスタム Speech-to-Text エンドポイントの使用方法の詳細については、[こちら](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-use-endpoint.md)を参照してください。
 

@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 215773d14b98db52c4de62bab70457c134c0b47d
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: fc2792086d93e584535389c8c0f162fc1e592cbd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854390"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388247"
 ---
 # <a name="update-a-knowledge-base-in-java"></a>Java でナレッジ ベースを更新する
 
@@ -312,8 +312,8 @@ public class UpdateKB {
 
         req.add = new Add ();
         req.add.qnaList = new Question[]{q};
-        req.add.urls = new String[]{"https://docs.microsoft.com/en-in/azure/cognitive-services"
-        + "/qnamaker/faqs", "https://docs.microsoft.com/en-us/bot-framework/resources-bot-"
+        req.add.urls = new String[]{"https://docs.microsoft.com/azure/cognitive-services"
+        + "/qnamaker/faqs", "https://docs.microsoft.com/bot-framework/resources-bot-"
         + "framework-faq"};
 
         return req;

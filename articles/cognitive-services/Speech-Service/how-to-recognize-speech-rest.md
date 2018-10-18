@@ -3,18 +3,18 @@ title: REST API を使用して音声を認識する
 description: Cognitive Services Speech サービスの Speech to Text API の使用方法について説明します。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/16/2018
-ms.author: v-jerkin
-ms.openlocfilehash: eafec2dd262098bc4b7e485293818b79debe3d27
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.author: erhopf
+ms.openlocfilehash: 4e87feae7e3321efe7adcdbf1302762f539f034d
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126848"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167275"
 ---
 # <a name="recognize-speech-by-using-the-rest-api"></a>REST API を使用して音声を認識する
 

@@ -10,15 +10,16 @@ ms.component: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: 46aeab52014a28d1a962195de802d0e000b62509
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1fc48687141ea8a7e8cb30d3438d81e8f1088e4f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978711"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340445"
 ---
 # <a name="translator-speech-api"></a>Translator Speech API
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 このサービスには、ある言語の会話音声を別の言語のテキストに書き起こすストリーミング API が用意されています。 この API では、翻訳されたテキストを読み上げるテキスト読み上げ機能も統合されています。 Translator Speech API では、Skype 翻訳で提供されている会話のリアルタイムの翻訳のようなシナリオを実現できます。
 

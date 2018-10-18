@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: 2f286c48822956c82f99808092c26f6637be5cb1
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.reviewer: quying
+ms.openlocfilehash: 604e96d03d66cfde049316a1e6e99f07fee5032a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968828"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362379"
 ---
 # <a name="create-sql-databases"></a>SQL データベースの作成
 

@@ -1,25 +1,19 @@
 ---
 title: Azure Data Box Gateway (プレビュー) リリース ノート | Microsoft Docs
 description: Azure Data Box Gateway の現行プレビュー リリースの重大な未解決の問題と解決策について説明します。
-services: databox-edge-gateway
-documentationcenter: ''
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 2668279b33d2d8d1c0adf92c138cc6347c95bd4d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f5e19d59dfddc3be849700f3678519179b5b39ba
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035353"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49164571"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Azure Data Box Gateway (プレビュー) リリース ノート
 
@@ -35,7 +29,7 @@ ms.locfileid: "47035353"
 
 次の表に、このリリースで修正された問題の概要を示します。
 
-| No。 | 問題 |
+| いいえ。 | 問題 |
 | --- | --- |
 | 1 | このリリースでは、別のツール (AzCopy) によってアップロードされたファイルが最新の情報に更新された後で、ファイル サイズが増えるように更新されると、"*[Error 400: InvalidBlobOrBlock (The specified blob or block content is invalid.)]\(Error 400: InvalidBlobOrBlock (指定された BLOB またはブロック コンテンツが無効です。)\)*" エラーが検出されます。|
 
@@ -44,7 +38,7 @@ ms.locfileid: "47035353"
 
 次の表に、Data Box Gateway 現行プレビュー リリースの既知の問題の概要を示します。
 
-| No。 | Feature | 問題 | 対応策/コメント |
+| いいえ。 | 機能 | 問題 | 対応策/コメント |
 | --- | --- | --- | --- |
 | **1.** |更新プログラム |以前のプレビュー リリースで作成された Data Box Gateway デバイスをこのバージョンに更新することはできません。 |新しいリリースから仮想ディスク イメージをダウンロードし、新しいデバイスを構成してデプロイします。 詳細については、[Azure Data Box Gateway のデプロイ準備](data-box-gateway-deploy-prep.md)に関する記事をご覧ください。 |
 | **2.** |プロビジョニング済みのデータ ディスク |特定の指定されたサイズのデータ ディスクをプロビジョニングし、対応する Data Box Gateway を作成した後は、データ ディスクを縮小することはできません。 ディスクを縮小しようとすると、デバイスのローカル データすべてが失われます。 | |

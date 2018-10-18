@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 07/02/2018
 ms.author: rogarana
-ms.openlocfilehash: d3f7978f9aac2ced688e483ccdbece2d4d6a9808
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dfd04aa0c8f314327afaefa67f1c63b1ff605e9b
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986287"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387210"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-the-java-storage-sdk-v10-preview"></a>クイック スタート: Java Storage SDK V10 (プレビュー) を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -116,16 +116,16 @@ Cleaning up the sample and exiting!
 
 1. ストレージ アカウントを指す **StorageURL** オブジェクトのインスタンスを作成します。
 
-    * [StorageURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._storage_u_r_l?view=azure-java-preview) オブジェクトは、ストレージ アカウントを表したものです。 このオブジェクトは、新しいパイプラインを生成するために使用します。 
+    * [StorageURL](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._storage_u_r_l?view=azure-java-preview) オブジェクトは、ストレージ アカウントを表したものです。 このオブジェクトは、新しいパイプラインを生成するために使用します。 
     * パイプラインは、承認、ログの記録、および再試行のメカニズムを使用して要求と応答を操作するために使用される一連のポリシーです。 詳細については、「[HTTP パイプラインに関する記事](https://github.com/Azure/azure-storage-java/wiki/Azure-Storage-Java-V10-Overview#url-types--http-pipeline)」を参照してください。  
-    * パイプラインを使用して、[ServiceURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._service_u_r_l?view=azure-java-preview) オブジェクトのインスタンスを作成します。
-    * **ServiceURL** オブジェクトを使用して、[ContainerURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview) のインスタンスを作成します。
+    * パイプラインを使用して、[ServiceURL](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._service_u_r_l?view=azure-java-preview) オブジェクトのインスタンスを作成します。
+    * **ServiceURL** オブジェクトを使用して、[ContainerURL](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview) のインスタンスを作成します。
     * **ContainerURL** は、BLOB コンテナーに対して操作を実行するために必要です。
 
 2. アクセスしているコンテナーを表す **ContainerURL** オブジェクトのインスタンスを作成します。 コンテナーが BLOB を整理する方法は、コンピューター上のフォルダーがファイルを整理する方法と同じです。
 
     * **ContainerURL** は、コンテナー サービスへのアクセス ポイントとして利用できます。 
-    * [BlobURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._blob_u_r_l?view=azure-java-preview) オブジェクトのインスタンスを作成するには、[ContainerURL](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview) を使用します。
+    * [BlobURL](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._blob_u_r_l?view=azure-java-preview) オブジェクトのインスタンスを作成するには、[ContainerURL](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._container_u_r_l?view=azure-java-preview) を使用します。
     * **BlobURL** は、BLOB を作成するために必要です。
 
 3. 関心がある特定の BLOB を指す **BlobURL** オブジェクトのインスタンスを作成します。 
@@ -137,7 +137,7 @@ Cleaning up the sample and exiting!
 
 このセクションでは、**ContainerURL** のインスタンスを作成し、 このインスタンスと共に新しいコンテナーを作成します。 このサンプルのコンテナーは **quickstartblobs** という名前です。 
 
-この例では、[ContainerURL.create](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.create?view=azure-java-preview) を使用します。そのため、サンプルを実行するたびに新しいコンテナーを作成できます。 または、コードから作成する必要がないように、前もってコンテナーを作成しておいてもかまいません。
+この例では、[ContainerURL.create](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._container_u_r_l.create?view=azure-java-preview) を使用します。そのため、サンプルを実行するたびに新しいコンテナーを作成できます。 または、コードから作成する必要がないように、前もってコンテナーを作成しておいてもかまいません。
 
 ```java
 // Create a ServiceURL to call the Blob service. We will also use this to construct the ContainerURL
@@ -168,9 +168,9 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
 1. ファイルを BLOB にアップロードするには、ターゲット コンテナーの BLOB に対する参照を取得します。 
 2. BLOB 参照を取得すると、次のいずれかの API を使用してファイルを BLOB にアップロードできます。
 
-    * 低レベルの API。 たとえば、**BlockBlobURL** のインスタンス内に [BlockBlobURL.upload](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-preview) (PutBlob とも呼ばれる) や [BlockBlobURL.stageBlock](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-preview#com_microsoft_azure_storage_blob__block_blob_u_r_l_stageBlock_String_Flowable_ByteBuffer__long_LeaseAccessConditions_) (PutBLock とも呼ばれる) があります。 
+    * 低レベルの API。 たとえば、**BlockBlobURL** のインスタンス内に [BlockBlobURL.upload](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.upload?view=azure-java-preview) (PutBlob とも呼ばれる) や [BlockBlobURL.stageBlock](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._block_blob_u_r_l.stageblock?view=azure-java-preview#com_microsoft_azure_storage_blob__block_blob_u_r_l_stageBlock_String_Flowable_ByteBuffer__long_LeaseAccessConditions_) (PutBLock とも呼ばれる) があります。 
 
-    * [TransferManager クラス](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-preview)内で提供される高レベル API。 たとえば、[TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-preview) メソッドがあります。 
+    * [TransferManager クラス](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager?view=azure-java-preview)内で提供される高レベル API。 たとえば、[TransferManager.uploadFileToBlockBlob](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._transfer_manager.uploadfiletoblockblob?view=azure-java-preview) メソッドがあります。 
 
     この操作では、BLOB がまだ存在しない場合は、BLOB が作成されます。 既に存在する場合は、BLOB が上書きされます。
 
@@ -195,7 +195,7 @@ static void uploadFile(BlockBlobURL blob, File sourceFile) throws IOException {
 
 ### <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-[ContainerURL.listBlobsFlatSegment](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.listblobsflatsegment?view=azure-java-preview) を使用して、コンテナー内のオブジェクトの一覧を取得できます。 このメソッドは、最大 5,000 個のオブジェクトを一度に返します。コンテナー内に一覧表示するアイテムがまだある場合は、継続マーカー (次マーカー) も返します。 前回の **listBlobsFlatSegment** 応答に次マーカーがあるときは、自身を繰り返し呼び出すヘルパー関数を作成します。
+[ContainerURL.listBlobsFlatSegment](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._container_u_r_l.listblobsflatsegment?view=azure-java-preview) を使用して、コンテナー内のオブジェクトの一覧を取得できます。 このメソッドは、最大 5,000 個のオブジェクトを一度に返します。コンテナー内に一覧表示するアイテムがまだある場合は、継続マーカー (次マーカー) も返します。 前回の **listBlobsFlatSegment** 応答に次マーカーがあるときは、自身を繰り返し呼び出すヘルパー関数を作成します。
 
 ```java
 static void listBlobs(ContainerURL containerURL) {
@@ -253,7 +253,7 @@ private static Single <ContainersListBlobFlatSegmentResponse> listAllBlobs(Conta
 
 ### <a name="download-blobs"></a>BLOB をダウンロードする
 
-[BlobURL.download](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._blob_u_r_l.download?view=azure-java-preview) を使用して、ローカル ディスクに BLOB をダウンロードします。
+[BlobURL.download](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._blob_u_r_l.download?view=azure-java-preview) を使用して、ローカル ディスクに BLOB をダウンロードします。
 
 次のコードは、前のセクションでアップロードされた BLOB をダウンロードします。 **_DOWNLOADED** は、ローカル ディスク上で両方のファイルを確認できるように、BLOB の名前にサフィックスとして追加されます。 
 
@@ -278,7 +278,7 @@ static void getBlob(BlockBlobURL blobURL, File sourceFile) {
 
 ### <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このクイック スタートでアップロードした BLOB が不要になった場合は、[ContainerURL.delete](https://docs.microsoft.com/en-us/java/api/com.microsoft.azure.storage.blob._container_u_r_l.delete?view=azure-java-preview) を使用してコンテナー全体を削除できます。 このメソッドで、コンテナー内のファイルも削除されます。
+このクイック スタートでアップロードした BLOB が不要になった場合は、[ContainerURL.delete](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.blob._container_u_r_l.delete?view=azure-java-preview) を使用してコンテナー全体を削除できます。 このメソッドで、コンテナー内のファイルも削除されます。
 
 ```java
 containerURL.delete(null).blockingGet();
@@ -290,5 +290,5 @@ containerURL.delete(null).blockingGet();
 
 > [!div class="nextstepaction"]
 > [Storage SDK V10 for Java のソース コード](https://github.com/Azure/azure-storage-java/tree/New-Storage-SDK-V10-Preview)
-> [API リファレンス](https://docs.microsoft.com/en-us/java/api/overview/azure/storage/client?view=azure-java-preview)
+> [API リファレンス](https://docs.microsoft.com/java/api/overview/azure/storage/client?view=azure-java-preview)
 > [RxJava の詳細](https://github.com/ReactiveX/RxJava)
