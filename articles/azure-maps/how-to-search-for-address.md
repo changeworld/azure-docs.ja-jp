@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 293b6af1d591c0c9763c2914713fe892392ae7ea
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d25142cecd62fc34a08939d5f1915ba9b2cee749
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578142"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387431"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Azure Maps Search サービスを使用して住所を検索する
 
@@ -59,7 +59,7 @@ Maps サービス API を呼び出すには、Maps アカウントとキーが�
 
 4. **[送信]** をクリックして、応答の本体を確認します。
 
-    あいまいなクエリ文字列 "pizza" によって、"pizza" と "restaurant" のカテゴリに含まれる 10 [か所の関心地点](https://docs.microsoft.com/en-us/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI) の結果が返されました。 各結果は、該当の場所の所在地住所、緯度/経度の値、ビュー ポート、およびエントリ ポイントを返します。
+    あいまいなクエリ文字列 "pizza" によって、"pizza" と "restaurant" のカテゴリに含まれる 10 [か所の関心地点](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI) の結果が返されました。 各結果は、該当の場所の所在地住所、緯度/経度の値、ビュー ポート、およびエントリ ポイントを返します。
   
     特定の参照場所に結び付けられておらず、このクエリの結果は変化します。 **countrySet** パラメーターを使用して、お使いのアプリケーションで対応する必要がある国のみを指定することができます。既定の動作では全世界を検索するため、潜在的に不要な結果が返されます。
 

@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: glenga
-ms.openlocfilehash: 51b2bd7956f775dbc7f737be33bd0fd6f9246524
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: baf08f18fae7f82fff57616e2d86d3426e32a237
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604537"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387737"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -45,10 +45,10 @@ Service Bus トリガーを使用して、Service Bus キューまたはトピ�
 
 言語固有の例をご覧ください。
 
-* [C# を選択した場合](#trigger---c-example)
+* [C#](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript を選択した場合](#trigger---javascript-example)
+* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
@@ -293,7 +293,7 @@ C# と C# スクリプトでは、キューまたはトピック メッセージ
 * `string` - メッセージがテキストである場合。
 * `byte[]` - バイナリ データの場合に便利です。
 * カスタム型 - メッセージに JSON が含まれている場合、Azure Functions は JSON データの逆シリアル化を試みます。
-* `BrokeredMessage` - [BrokeredMessage.GetBody<T>()](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) メソッドで逆シリアル化されたメッセージを返します。
+* `BrokeredMessage` - [BrokeredMessage.GetBody<T>()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) メソッドで逆シリアル化されたメッセージを返します。
 
 これらのパラメーターは Azure Functions バージョン 1.x 用です。2.x では、`BrokeredMessage` の代わりに [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) を使用してください。
 
@@ -344,10 +344,10 @@ Service Bus トリガーには、いくつかの[メタデータ プロパティ
 
 言語固有の例をご覧ください。
 
-* [C# を選択した場合](#output---c-example)
+* [C#](#output---c-example)
 * [C# スクリプト (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
-* [JavaScript を選択した場合](#output---javascript-example)
+* [JavaScript](#output---javascript-example)
 * [Java](#output--java-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例

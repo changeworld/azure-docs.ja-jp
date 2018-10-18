@@ -4,17 +4,16 @@ description: この記事では、Azure Database for PostgreSQL サーバーを�
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 05/22/2018
-ms.openlocfilehash: f877f6df51cd7aed29260331d27d5c96f0584afc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.date: 09/27/2018
+ms.openlocfilehash: 8fcb5e8371d6c813eb7f0ab4d23a5aac5c41fb3b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640015"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404641"
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL サーバー
 この記事では、Azure Database for PostgreSQL サーバーを操作するための考慮事項とガイドラインを示します。
@@ -56,6 +55,7 @@ PostgreSQL スーパー ユーザー属性は、管理対象サービスに属�
 Azure Database for PostgreSQL サーバーには 2 つの既定のデータベースがあります。 
 - **postgres** - サーバーが作成された後で接続できる既定のデータベース。
 - **azure_maintenance** - このデータベースは、ユーザーの操作から管理対象サービスを提供するプロセスを分離するために使用します。 このデータベースへのアクセス権がありません。
+- **azure_sys** - クエリ ストアのデータベース。 クエリ ストアがオフの場合は、このデータベースがデータを蓄積することはありません。これは、既定の設定です。 詳細は、[クエリ ストアの概要](concepts-query-store.md)を参照してください｡
 
 
 ## <a name="server-parameters"></a>サーバー パラメーター

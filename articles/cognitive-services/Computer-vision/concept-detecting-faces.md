@@ -3,19 +3,19 @@ title: 顔の検出 - Computer Vision
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用した顔の検出に関連する概念。
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: v-deken
-ms.openlocfilehash: df1cd989d82fa5541c2d81fe6629671d6e063bc4
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.author: pafarley
+ms.openlocfilehash: bf358d1e8f60f989ced8db966bbf0a5179fab25b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984556"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342315"
 ---
 # <a name="detecting-faces"></a>顔の検出
 

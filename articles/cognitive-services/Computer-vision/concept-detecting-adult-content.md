@@ -3,19 +3,19 @@ title: 成人向けコンテンツとわいせつなコンテンツの検出 - C
 titleSuffix: Azure Cognitive Services
 description: Computer Vision API を使用したイメージの成人向けコンテンツとわいせつなコンテンツの検出に関連する概念。
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: v-deken
-ms.openlocfilehash: b1ba8e7556b6ba134624548142bf73e84d875c6a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.author: pafarley
+ms.openlocfilehash: 71866149e3d2dca4b39585ce8da73aae658a4d59
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984524"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344916"
 ---
 # <a name="detecting-adult-and-racy-content"></a>成人向けコンテンツとわいせつなコンテンツの検出
 

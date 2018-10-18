@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: cd0195796189158650c9c2655062950b71130ad7
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.reviewer: quying
+ms.openlocfilehash: dcd1c40717cb35fe4daa9ab9e2c66f334ffff5fe
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578482"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361500"
 ---
 # <a name="remove-the-mysql-resource-provider"></a>MySQL リソースプロバイダーを削除する
 

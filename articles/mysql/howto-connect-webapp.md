@@ -8,13 +8,13 @@ editor: jasonwhowell
 manager: kfile
 ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: ff4a28e2f9a0149016d0e47c24e4665ab2e0500d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/26/2018
+ms.openlocfilehash: 4aecc4941f2181216ea537c0019152ce822ac4b0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265505"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408937"
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>既存の Azure App Service と Azure Database for MySQL サーバーの接続
 このトピックでは、既存の Azure App Service を Azure Database for MySQL サーバーに接続する方法について説明します。
@@ -24,24 +24,15 @@ ms.locfileid: "35265505"
 
 現在、Azure App Service から Azure Database for MySQL へのアクセスを有効にする方法は 2 つあります。 どちらの方法でも、サーバー レベルのファイアウォール ルールの設定を行います。
 
-## <a name="solution-1---create-a-firewall-rule-to-allow-all-ips"></a>方法 1 - すべての IP アドレスを許可するファイアウォール ルールを作成する
-Azure Database for MySQL では、ファイアウォールを使用してデータを保護するアクセス セキュリティが提供されます。 Azure App Service から Azure Database for MySQL サーバーに接続するときには、App Service の送信 IP アドレスが本来動的であることに注意してください。 
-
-Azure App Service の可用性を確保するには、この方法を使用してすべてのIP アドレスを許可することをお勧めします。
-
-> [!NOTE]
-> Microsoft では、Azure サービスのすべての IP が Azure Database for MySQL に接続可能とならないようにする長期的な解決策に取り組んでいます。
+## <a name="solution-1---allow-azure-services"></a>解決策 1 - Azure サービスを許可する
+Azure Database for MySQL では、ファイアウォールを使用してデータを保護するアクセス セキュリティが提供されます。 Azure App Service から Azure Database for MySQL サーバーに接続するときには、App Service の送信 IP アドレスが本来動的であることに注意してください。 「Azure サービスへのアクセスを許可する」オプションを選択すると、アプリ サービスが MySQL サーバーに接続できるるようにします｡
 
 1. MySQL サーバー ブレードの [設定] で、**[接続のセキュリティ]** をクリックして Azure Database for MySQL の [接続のセキュリティ] ブレードを開きます。
 
-   ![Azure Portal - [接続のセキュリティ] のクリック](./media/howto-manage-firewall-using-portal/1-connection-security.png)
+   ![Azure Portal - [接続のセキュリティ] のクリック](./media/howto-connect-webapp/1-connection-security.png)
 
-2. **ルール名**、**開始 IP**、および**終了 IP** を入力し、**[保存]** をクリックします。
-   - ルール名: Allow-All-IPs
-   - 開始 IP: 0.0.0.0
-   - 終了 IP: 255.255.255.255
-
-   ![Azure Portal - すべての IP の追加](./media/howto-connect-webapp/1_2-add-all-ips.png)
+2. **Azure サービスへのアクセスを許可する** で **ON** を選択して､**保存**を選択します。
+   ![Azure portal - Azure アクセスを許可する](./media/howto-connect-webapp/allow-azure.png)
 
 ## <a name="solution-2---create-a-firewall-rule-to-explicitly-allow-outbound-ips"></a>方法 2 - 送信 IP を明示的に許可するファイアウォール ルールを作成する
 Azure App Service のすべての送信 IP を明示的に追加することができます。

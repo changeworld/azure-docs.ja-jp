@@ -1,97 +1,119 @@
 ---
-title: Azure Kubernetes Service (AKS) クラスターからエグレス トラフィックをホワイトリストに登録する
-description: Azure Kubernetes Service (AKS) クラスターからエグレス トラフィックをホワイトリストに登録する
+title: Azure Kubernetes Service (AKS) におけるエグレス トラフィックの静的 IP アドレス
+description: Azure Kubernetes Service (AKS) クラスターでエグレス トラフィックの静的パブリック IP アドレスを作成して使用する方法を説明します
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: e2793a72fcbc20b79bdd564e331426fedf1ae34b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 175fa625a94626cde4d782abd1e9629530cab8b4
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347802"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408524"
 ---
-# <a name="azure-kubernetes-service-aks-egress"></a>Azure Kubernetes Service (AKS) のエグレス
+# <a name="use-a-static-public-ip-address-for-egress-traffic-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でエグレス トラフィックに静的パブリック IP アドレスを使用する
 
-既定では、Azure Kubernetes Service (AKS) クラスターからのエグレス アドレスはランダムに割り当てられます。 この構成は、外部サービスにアクセスするための IP アドレスを識別する必要がある場合には適していません。 このドキュメントでは、AKS クラスターで静的に割り当てられたエグレス IP アドレスを作成および維持する方法について詳しく説明します。
+既定では、Azure Kubernetes Service (AKS) クラスターからのエグレス アドレスはランダムに割り当てられます。 この構成は、外部サービスにアクセスするための IP アドレスを識別する必要がある場合には適していません。 場合によっては､サービスへのアクセスのホワイト リストに登録できる静的 IP アドレスの割り当てが必要なことがあります｡
 
-## <a name="egress-overview"></a>エグレスの概要
+この記事では、AKS クラスターでエグレス トラフィックに使用する静的パブリック IP アドレスを作成して使用する方法を示します。
 
-AKS クラスターからの送信トラフィックは Azure Load Balancer の規則に従っており、[こちら][outbound-connections]に記載されています。 `LoadBalancer` 型の最初の Kubernetes サービスが作成される前は、エージェント ノードは Azure Load Balancer プールの一部ではありません。 この構成では、ノードにはインスタンス レベルのパブリック IP アドレスがありません。 Azure では、送信フローを構成可能でも決定論的でもないパブリック ソース IP アドレスに変換します。
+## <a name="before-you-begin"></a>開始する前に
 
-`LoadBalancer` 型の Kubernetes サービスが作成されると、エージェント ノードは Azure Load Balancer プールに追加されます。 送信フローの場合、Azure はこれをロード バランサーで構成された最初のパブリック IP アドレスに変換します。
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+
+また、Azure CLI バージョン 2.0.46 以降がインストール、構成されていること必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
+
+## <a name="egress-traffic-overview"></a>エグレス トラフィックの概要
+
+AKS クラスターからの送信トラフィックは [Azure Load Balancer の規則に従っています｡][outbound-connections] `LoadBalancer` 型の最初の Kubernetes サービスが作成される前、エーAKS クラスターのエージェント ノードはどれも Azure Load Balancer プールのメンバーではありません。 この構成では、どのノードもインスタンス レベルのパブリック IP アドレスが持たないことになります｡ Azure では、送信フローを構成可能でも決定論的でもないパブリック ソース IP アドレスに変換します。
+
+`LoadBalancer` 型の Kubernetes サービスが作成されると、エージェント ノードは Azure Load Balancer プールに追加されます。 送信フローの場合、Azure はこれをロード バランサーで構成された最初のパブリック IP アドレスに変換します。 このパブリック IP アドレスで、そのリソースの有効期間の間のみ有効です。 Kubernetes LoadBalancer サービスを削除すると、関連付けられているロード バランサーと IP アドレスも削除されます。 デプロイし直された Kubernetes サービスに対して特定の IP アドレスを割り当てるか､あるいは IP アドレスを保持する場合は、静的パブリック IP アドレスを作成して､使用することができます。
 
 ## <a name="create-a-static-public-ip"></a>静的パブリック IP を作成する
 
-ランダム IP アドレスが使用されないようにするには、静的 IP アドレスを作成し、ロード バランサーがこのアドレスを使用することを確認します。 AKS **ノード** リソース グループで、IP アドレスが作成される必要があります。
+AKS で使用する静的パブリック IP アドレスを作成する場合 その IP アドレス リソースは **ノード**リソース グループに作成する必要があります。 [az aks show][az-aks-show] コマンドを使用してリソース グループ名を取得し、 `--query nodeResourceGroup`クエリ パラメーターを追加します｡ 次の例では、リソース グループ名 *myResourceGroup* にある AKS クラスター名のノード リソース グループ *myAKSCluster* を取得しています｡
 
-[az resource show][az-resource-show] コマンドを使用して、リソース グループの名前を取得します。 リソース グループの名前とクラスターの名前は、お使いの環境に合わせて更新してください。
-
-```
-$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
+```azurecli
+$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-次に、[az network public-ip create][public-ip-create] コマンドを使用して、静的パブリック IP アドレスを作成します。 最後の手順で収集した名前と一致するように、リソース グループ名を更新してください。
+次に、[az network public-ip create][az-network-public-ip-create] コマンドを使用して、静的パブリック IP アドレスを作成します。 上記コマンドで取得したノードのリソース グループ名を指定して､その IP アドレス リソースに対して､*myAKSPublicIP* などの名前を指定します｡
 
-```console
-$ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static --query publicIp.ipAddress -o table
+```azurecli
+az network public-ip create \
+    --resource-group MC_myResourceGroup_myAKSCluster_eastus \
+    --name myAKSPublicIP \
+    --allocation-method static
+```
 
-Result
--------------
-23.101.128.81
+次の出力例 (一部) に見られるように IP アドレスが表示されます｡
+
+```json
+{
+  "publicIp": {
+    "dnsSettings": null,
+    "etag": "W/\"6b6fb15c-5281-4f64-b332-8f68f46e1358\"",
+    "id": "/subscriptions/<SubscriptionID>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/Microsoft.Network/publicIPAddresses/myAKSPublicIP",
+    "idleTimeoutInMinutes": 4,
+    "ipAddress": "40.121.183.52",
+    [..]
+  }
+````
+
+このパブリック IP アドレスは､後で [az network public ip list][ az-network-public-ip-list]コマンド を使用して取得することができます｡ 次の例に示すように､ノードのリソース グループ名を指定して、*ipAddress* に対するクエリを指定します｡
+
+```azurecli
+$ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv
+
+40.121.183.52
 ```
 
 ## <a name="create-a-service-with-the-static-ip"></a>静的 IP を使用してサービスを作成する
 
-これで IP アドレスを取得したので、`LoadBalancer` 型の Kubernetes サービスを作成し、IP アドレスをサービスに割り当てます。
-
-`egress-service.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 お使いの環境に合わせて IP アドレスを更新します。
+静的パブリック IP アドレスを使用してサービスに作成するには､YAML マニフェストに `loadBalancerIP` プロパティと静的パブリック IP の値を追加します｡ `egress-service.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 以前の手順で作成した独自のパブリック IP アドレスを指定します。
 
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: aks-egress
+  name: azure-egress
 spec:
-  loadBalancerIP: 23.101.128.81
+  loadBalancerIP: 40.121.183.52
   type: LoadBalancer
   ports:
-  - port: 8080
+  - port: 80
 ```
 
 `kubectl apply` コマンドを使用して、サービスとデプロイを作成します。
 
 ```console
-$ kubectl apply -f egress-service.yaml
-
-service "aks-egress" created
+kubectl apply -f egress-service.yaml
 ```
 
 このサービスを作成すると、Azure Load Balancer に新しいフロントエンド IP が構成されます。 他の IP が構成されていない場合は、**すべての**エグレス トラフィックがこのアドレスを使用するようになります。 Azure Load Balancer に複数のアドレスが構成されている場合、エグレスはそのロード バランサーの最初の IP を使用します。
 
 ## <a name="verify-egress-address"></a>エグレス アドレスを確認する
 
-パブリック IP アドレスが使用されていることを確認するには、`checkip.dyndns.org` などのサービスを使用します。
+静的パブリック IP アドレスが使用されていることの確認には、`checkip.dyndns.org` などの DNS 検索サービスを利用できます｡
 
-ポッドを起動して接続します。
-
-```console
-$ kubectl run -it --rm aks-ip --image=debian
-```
-
-必要に応じて、コンテナーに curl をインストールします。
+基本的な*Debian* pod を起動してアタッチします｡
 
 ```console
-$ apt-get update && apt-get install curl -y
+kubectl run -it --rm aks-ip --image=debian
 ```
 
-Curl `checkip.dyndns.org` は、エグレス IP アドレスを返します。
+コンテナー内から web サイトにアクセスするには、`apt-get` を使用して､コンテナーに `curl` をインストールします｡
+
+```console
+apt-get update && apt-get install curl -y
+```
+
+これで､Curl を使用して *checkip.dyndns.org*サイトにアクセスできます｡ 次の出力例に示すように､エグレス IP アドレスが表示されます。 この IP アドレスは、loadBalancer サービスに対して作成､定義される静的パブリック IP アドレスと同じです｡
 
 ```console
 $ curl -s checkip.dyndns.org
@@ -99,30 +121,18 @@ $ curl -s checkip.dyndns.org
 <html><head><title>Current IP Check</title></head><body>Current IP Address: 23.101.128.81</body></html>
 ```
 
-IP アドレスが、Azure Load Balancer に接続されている静的 IP アドレスと一致していることが分かります。
-
-## <a name="ingress-controller"></a>イングレス コントローラー
-
-Azure Load Balancer に複数のパブリック IP アドレスを維持しないようにするには、イングレス コントローラーの使用を検討してください。 イングレス コントローラーを使用すると、負荷分散、SSL/TLS の終了、URI 書き換えサポート、アップストリーム SSL/TLS 暗号化などの利点があります。 AKS のイングレス コントローラーの詳細については、「[AKS クラスターで NGINX イングレス コントローラーを構成する][ingress-aks-cluster]」ガイドを参照してください。
-
 ## <a name="next-steps"></a>次の手順
 
-このドキュメントで示されているソフトウェアについてさらに学習してください。
-
-- [Helm CLI][helm-cli-install]
-- [NGINX イングレス コントローラー][nginx-ingress]
-- [Azure Load Balancer の送信接続][outbound-connections]
+Azure Load Balancer に複数のパブリック IP アドレスを保持しないようしたい場合は、イングレス コントローラーの使用を検討してください。 イングレス コントローラーを使用すると、負荷分散、SSL/TLS の終了、URI 書き換えサポート、アップストリーム SSL/TLS 暗号化などの利点があります。 詳細は、[AKS での基本的なイングレス コント ローラーの作成][ingress-aks-cluster]を参照してください｡
 
 <!-- LINKS - internal -->
-[az-resource-show]: /cli/azure/resource#az-resource-show
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
+[az-aks-show]: /cli/azure/aks#az-aks-show
 [azure-cli-install]: /cli/azure/install-azure-cli
-[azure-cloud-shell]: ../cloud-shell/overview.md
-[aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
-[create-aks-cluster]: ./kubernetes-walkthrough.md
-[helm-cli-install]: ./kubernetes-helm.md#install-helm-cli
 [ingress-aks-cluster]: ./ingress-basic.md
 [outbound-connections]: ../load-balancer/load-balancer-outbound-connections.md#scenarios
 [public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
-
-<!-- LINKS - external -->
-[nginx-ingress]: https://github.com/kubernetes/ingress-nginx
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: f79b1d4c1afc4d5a516a46a9bf6cb1790034b279
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 58fd3afa37d965cfbe21dcf23823ddb8425442b9
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45987233"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116713"
 ---
 # <a name="time-sync-for-linux-vms-in-azure"></a>Azure での Linux VM の時刻同期
 
@@ -44,7 +44,7 @@ Azure ホストは内部の Microsoft タイム サーバーに同期されて�
 
 時刻同期が動作しないと、VM のクロックでエラーが蓄積されます。 VM が 1 つのみであれば、ワークロードで高精度のタイムキーピングが必要でない限り、影響は大きくならない場合があります。 しかし、ほとんどの場合、相互接続された VM が複数あり、それらの VM ではトランザクションを追跡するために時間を使用し、その時間はデプロイ全体で一貫している必要があります。 VM 間の時間が異なると、次のような影響が見られる場合があります。
 
-- Kerberos または証明書に依存するテクノロジのようなセキュリティ プロトコルでは、システム全体で時間が一貫していることが前提となります。 
+- 認証は失敗します。 Kerberos または証明書に依存するテクノロジのようなセキュリティ プロトコルでは、システム全体で時間が一貫していることが前提となります。
 - ログ (またはその他のデータ) が時間と一致しない場合、システムで何が発生したかを把握するのは非常に困難です。 異なる時間に同じイベントが発生したように見え、関連付けが困難になります。
 - クロックに誤差がある場合、請求額を正しく計算できません。
 
