@@ -11,12 +11,12 @@ ms.topic: quickstart
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: a5bcd814cce6612c0074f2a85bb8757b50f183ca
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: abceef1d73cafdc24099f9ac9ca67bb36e7e96d1
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585596"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318063"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-vs-code"></a>クイック スタート: Azure Dev Spaces を使用して Kubernetes 開発環境を作成する (.NET Core および VS Code)
 
@@ -37,8 +37,8 @@ ms.locfileid: "47585596"
 - 米国東部、米国中部、米国西部 2、西ヨーロッパ、カナダ中部、カナダ東部のいずれかのリージョンに存在し、**[HTTP アプリケーションのルーティング]** が有効になっていて、Kubernetes 1.9.6 以降が実行されている Kubernetes クラスター。
 
     ```cmd
-    az group create --name MyResourceGroup --region <region>
-    az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing
+    az group create --name MyResourceGroup --location <region>
+    az aks create -g MyResourceGroup -n MyAKS --location <region> --kubernetes-version 1.11.2 --enable-addons http_application_routing --generate-ssh-keys
     ```
 
 ## <a name="set-up-azure-dev-spaces"></a>Azure Dev Spaces をセットアップする

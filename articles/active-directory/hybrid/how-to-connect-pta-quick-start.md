@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 29517f057599c7bf108d1c4d525b6c67c1b6b46a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 8b45acebf95d5bf24ff2045f5739c8584f374842
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305171"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320460"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory パススルー認証: クイック スタート
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 2. [最新バージョンの Azure AD Connect](https://www.microsoft.com/download/details.aspx?id=47594) を、前の手順で特定したサーバーにインストールします。 Azure AD Connect が既に実行されている場合は、バージョンが 1.1.750.0 以降であることを確認します。
 
     >[!NOTE]
-    >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用_しない_場合については、[Azure AD Connect のリリース ノート](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470)をご覧ください。
+    >Azure AD Connect のバージョン 1.1.557.0、1.1.558.0、1.1.561.0、1.1.614.0 には、パスワード ハッシュ同期に関連する問題があります。 パスワード ハッシュ同期をパススルー認証と組み合わせて使用_しない_場合については、[Azure AD Connect のリリース ノート](https://docs.microsoft.com/azure/active-directory/hybrid/reference-connect-version-history#116470)をご覧ください。
 
 3. Windows Server 2012 R2 以降が実行されている 1 つまたは複数の追加のサーバーを特定します。このサーバーでは、スタンドアロンの認証エージェントを実行できます。 これらの追加のサーバーは、サインイン要求の高可用性を確保するために必要です。 これらのサーバーを、パスワードの検証が必要なユーザーと同じ Active Directory フォレストに追加します。
 
@@ -57,13 +57,13 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
 4. サーバーと Azure AD の間にファイアウォールがある場合は、次の項目を構成します。
    - 認証エージェントが次のポートを使用して Azure AD に*送信*リクエストを送れるようにします。
-   
+
     | ポート番号 | 用途 |
     | --- | --- |
     | **80** | SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードする |
     | **443** | サービスを使用したすべての送信方向の通信を処理する |
     | **8080** (省略可能) | ポート 443 が使用できない場合、認証エージェントは、ポート 8080 経由で 10 分ごとにその状態を報告します。 この状態は Azure AD ポータルに表示されます。 ポート 8080 は、ユーザー サインインには_使用されません_。 |
-   
+
     ご利用のファイアウォールが送信元ユーザーに応じて規則を適用している場合は、ネットワーク サービスとして実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
    - ファイアウォールまたはプロキシが DNS ホワイトリストを許可している場合は、**\*.msappproxy.net** と **\*.servicebus.windows.net** への接続をホワイトリストに登録できます。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。
    - 認証エージェントは初回の登録のために **login.windows.net** と **login.microsoftonline.com** にアクセスする必要があるため、 これらの URL にもファイアウォールを開きます。
@@ -132,13 +132,13 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 
 1. 次のコマンドを実行して、認証エージェント `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q` をインストールしてください。
 2. 認証エージェントは、Windows PowerShell を使用して Microsoft のサービスに登録できます。 テナントのグローバル管理者のユーザー名とパスワードを格納する PowerShell 資格情報オブジェクト `$cred` を作成します。 *\<username\>* と *\<password\>* を置き換えて、次のコマンドを実行します。
-   
+
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
 3. **C:\Program Files\Microsoft Azure AD Connect 認証エージェント**に移動し、作成済みの `$cred` オブジェクトを使用して次のスクリプトを実行します。
-   
+
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
 
 ## <a name="next-steps"></a>次の手順
@@ -151,4 +151,3 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 - [セキュリティの詳細](how-to-connect-pta-security-deep-dive.md): パススルー認証機能に関する技術情報を取得します。
 - [Azure AD シームレス SSO](how-to-connect-sso.md): この補完的な機能の詳細を確認します。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Azure Active Directory フォーラムで、新しい機能の要望を出します。
-

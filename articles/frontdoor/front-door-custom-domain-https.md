@@ -10,14 +10,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/20/2018
+ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 8e3bdd402cbd16469fb333cc470471629f85538c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3df96451838fe90b7d45d1aedd272fc10d798e57
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045425"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883977"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>チュートリアル: Front Door カスタム ドメインで HTTPS を構成する
 
@@ -45,15 +45,14 @@ Azure Front Door Service では、既定で、Front Door の既定のホスト�
 
 このチュートリアルの手順を完了するには、最初に Front Door と、オンボードされる 1 つ以上のカスタム ドメインを作成する必要があります。 詳細については、「[Tutorial: Add a custom domain to your Front Door](front-door-custom-domain.md)」 (チュートリアル: カスタム ドメインを Front Door に追加する) を参照してください。
 
----
-
 ## <a name="ssl-certificates"></a>SSL 証明書の数
+
 Front Door カスタム ドメインでコンテンツを安全に配信するために HTTPS プロトコルを有効にするには、SSL 証明書を使用する必要があります。 Azure Front Door Service で管理された証明書、または独自の証明書を使用できます。
 
 
-# <a name="option-1-default-enable-https-with-an-afd-managed-certificatetaboption-1-default-enable-https-with-an-afd-managed-certificate"></a>[オプション 1 (既定): AFD で管理された証明書を使用して HTTPS を有効にする](#tab/option-1-default-enable-https-with-an-afd-managed-certificate)
+### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>オプション 1 (既定): Front Door によって管理される証明書を使用する
 
-AFD で管理された証明書を使用する場合、HTTPS 機能は数回クリックするだけで有効にできます。 Azure Front Door Service では、調達や更新などの証明書管理タスクが完全に処理されます。 この機能を有効にすると、プロセスがすぐに開始します。 カスタム ドメインが既に Front Door の既定のフロントエンド ホストにマップされている場合 (`{hostname}.azurefd.net`)、これ以上のアクションは必要ありません。 Front Door によって手順が処理され、要求が自動的に完了します。 一方、カスタム ドメインが別の場所でマップされている場合は、電子メールを使用してドメインの所有権を検証する必要があります。
+Azure Front Door Service で管理された証明書を使用する場合、HTTPS 機能は、数回クリックするだけで有効にできます。 Azure Front Door Service では、調達や更新などの証明書管理タスクが完全に処理されます。 この機能を有効にすると、プロセスがすぐに開始します。 カスタム ドメインが既に Front Door の既定のフロントエンド ホストにマップされている場合 (`{hostname}.azurefd.net`)、これ以上のアクションは必要ありません。 Front Door によって手順が処理され、要求が自動的に完了します。 一方、カスタム ドメインが別の場所でマップされている場合は、電子メールを使用してドメインの所有権を検証する必要があります。
 
 カスタム ドメインで HTTPS を有効にするには、次の手順のようにします。
 
@@ -68,11 +67,11 @@ AFD で管理された証明書を使用する場合、HTTPS 機能は数回ク�
 5. [ドメインの検証](#validate-the-domain)に進みます。
 
 
-# <a name="option-2-enable-https-with-your-own-certificatetaboption-2-enable-https-with-your-own-certificate"></a>[オプション 2: 独自の証明書を使用して HTTPS を有効にする](#tab/option-2-enable-https-with-your-own-certificate)
+### <a name="option-2-use-your-own-certificate"></a>オプション 2: 独自の証明書を使用する
 
 独自の証明書を使用して、HTTPS 機能を有効にできます。 このプロセスは、Azure Key Vault との統合を通じて行われます。これにより、お使いの証明書を安全に格納できます。 Azure Front Door Service では、お使いの証明書の取得に、セキュリティで保護されたこのメカニズムが使用されます。それには、追加の手順がいくつか必要です。 SSL 証明書を作成するときには、許可された証明書機関 (CA) を使用して作成する必要があります。 許可されていない CA を使用すると、要求が拒否されます。 許可された CA のリストについては、「[Azure Front Door Service でカスタム HTTPS を有効にするために許可された認証機関](front-door-troubleshoot-allowed-ca.md)」を参照してください。
 
-### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Azure Key Vault のアカウントと証明書を準備する
+#### <a name="prepare-your-azure-key-vault-account-and-certificate"></a>Azure Key Vault のアカウントと証明書を準備する
  
 1. Azure Key Vault: カスタム HTTPS を有効にする Front Door と同じサブスクリプションで、Azure Key Vault アカウントを実行している必要があります。 Azure Key Vault アカウントがない場合は作成します。
  
@@ -83,7 +82,7 @@ AFD で管理された証明書を使用する場合、HTTPS 機能は数回ク�
 > </br> - Azure Front Door Service では、現在、[シークレット] セクションで格納されている Key Vault 証明書のみがサポートされています。 [シークレット] セクションではなく、[証明書] セクションで証明書を格納した場合、証明書のインポートは失敗します。
 > </br> - Azure Front Door Service では、現在、パスワード**なし**の PFX でアップロードされた証明書のみがサポートされています。
 
-### <a name="register-azure-front-door-service"></a>Azure Front Door Service を登録する
+#### <a name="register-azure-front-door-service"></a>Azure Front Door Service を登録する
 
 PowerShell を使用して、Azure Active Directory にアプリとして Azure Front Door Service 用のサービス プリンシパルを登録します。
 
@@ -93,7 +92,7 @@ PowerShell を使用して、Azure Active Directory にアプリとして Azure 
 
      `New-AzureRmADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
-### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>キー コンテナーへの Azure Front Door Service のアクセス権を付与する
+#### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>キー コンテナーへの Azure Front Door Service のアクセス権を付与する
  
 Azure Key Vault アカウント内の [シークレット] の証明書にアクセスするには、Azure Front Door Service のアクセス許可を付与します。
 
@@ -108,7 +107,7 @@ Azure Key Vault アカウント内の [シークレット] の証明書にアク
 
     これで、Azure Front Door Service でこのキー コンテナーと、このキー コンテナーに格納されている証明書 (シークレット) にアクセスできるようになりました。
  
-### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>デプロイする Azure Front Door Service の証明書を選択する
+#### <a name="select-the-certificate-for-azure-front-door-service-to-deploy"></a>デプロイする Azure Front Door Service の証明書を選択する
  
 1. ポータルで Front Door に戻ります。 
 
@@ -126,8 +125,6 @@ Azure Key Vault アカウント内の [シークレット] の証明書にアク
     - 利用可能な証明書バージョン。 
  
 5. 独自の証明書を使用する場合には、ドメインの検証は必要ありません。 「[伝達を待機する](#wait-for-propagation)」に進んでください。
-
----
 
 ## <a name="validate-the-domain"></a>ドメインを検証する
 
@@ -264,5 +261,5 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="next-steps"></a>次の手順
 
-- [Front Door の作成](quickstart-create-front-door.md)方法について説明します。
-- [Front Door の機能](front-door-routing-architecture.md)について説明します。
+- [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
+- [Front Door のしくみ](front-door-routing-architecture.md)について学習します。

@@ -9,20 +9,20 @@ ms.assetid: 9b7d065e-1979-4397-8298-eeba3aec4792
 ms.service: key-vault
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 10/09/2018
 ms.author: barclayn
-ms.openlocfilehash: ff59e39e54433aa673b093e2ee1fbe8c74010e54
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: b66c9912ba0b6508c2beb786d2327efa779c6645
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171325"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079465"
 ---
 # <a name="tutorial-use-azure-key-vault-from-a-web-application"></a>チュートリアル: Web アプリから Azure Key Vault を使用する
 
 このチュートリアルを使用すると、Azure の Web アプリケーションから Azure Key Vault を使用する方法について学習できます。 Web アプリで使うために Azure Key Vault のシークレットにアクセスするプロセスを示します。 その後、このプロセスで、クライアント シークレットではなく証明書を使います。 このチュートリアルは、Azure 上での Web アプリケーション作成の基本を理解している Web 開発者向けに設計されています。
 
-このチュートリアルで学習する内容は次のとおりです。 
+このチュートリアルでは、以下の内容を学習します。 
 
 > [!div class="checklist"]
 > * アプリケーションの設定を web.config ファイルに追加する
@@ -40,10 +40,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * Key Vault にアクセスできる Azure Active Directory に登録された Web アプリケーションのクライアント ID とクライアント シークレット
 * Web アプリケーション。 このチュートリアルでは、Web アプリとして Azure に展開される ASP.NET MVC アプリケーションの手順を示します。
 
-「[Azure Key Vault の概要](key-vault-get-started.md)」の手順を完了して、シークレット、クライアント ID、クライアント シークレットの URI を取得し、アプリケーションを登録します。 この Web アプリは、コンテナーにアクセスします。また、Azure Active Directory に登録する必要があります。 Key Vault へのアクセス権も必要です。 ない場合は、概要のチュートリアルにあるアプリケーションの登録に関するトピックに戻り、記載されている手順を繰り返します。 Azure Web Apps の作成について詳しくは、「[Web Apps の概要](../app-service/app-service-web-overview.md)」をご覧ください。
+「[Azure Key Vault の概要](key-vault-get-started.md)」の手順を完了して、シークレット、クライアント ID、クライアント シークレットの URI を取得し、アプリケーションを登録します。 Web アプリケーションはコンテナーにアクセスするので、Azure Active Directory に登録されている必要があります。 Key Vault へのアクセス権も必要です。 ない場合は、概要のチュートリアルにあるアプリケーションの登録に関するトピックに戻り、記載されている手順を繰り返します。 Azure Web Apps の作成について詳しくは、「[Web Apps の概要](../app-service/app-service-web-overview.md)」をご覧ください。
 
-このサンプルは、Azure Active Directory ID の手動プロビジョニングに依存します。 ただし、[マネージド サービス ID (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview) を代わりに使用する必要があります。 MSI は、Azure AD の ID を自動的にプロビジョニングできます。 詳しくは、[GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) のサンプルと、関連する[App Service と Functions での MSI に関するチュートリアル](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)をご覧ください。 また、Key Vault 固有の [MSI チュートリアル](tutorial-web-application-keyvault.md)もご覧ください。
-
+このサンプルは、Azure Active Directory ID の手動プロビジョニングに依存します。 しかしその代わりに、Azure AD の ID を自動的にプロビジョニングする [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用する必要があります。 詳細については、[GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) のサンプルと、関連する [App Service と Functions に関するチュートリアル](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity)を参照してください。 Key Vault 固有の「[キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成するためのチュートリアル](tutorial-web-application-keyvault.md)」を参照することもできます。
 
 ## <a id="packages"></a>NuGet パッケージを追加する
 
@@ -124,7 +123,7 @@ var sec = await kv.GetSecretAsync(WebConfigurationManager.AppSettings["SecretUri
 Utils.EncryptSecret = sec.Value;
 ```
 
-## <a id="portalsettings"></a>Azure portal でアプリの設定を追加する (省略可能)
+## <a id="portalsettings"></a>Azure portal でアプリの設定を追加する
 
 Azure Web アプリでは、Azure portal でアプリ設定の実際の値を追加できます。 これにより、実際の値は web.config ファイルに存在しなくなりますが、個別のアクセス制御機能があるポータルによって保護されます。 これらの値は、web.config で入力した値の代わりに使用されます。名前が同じであるかどうかを確認してください。
 
@@ -145,14 +144,19 @@ Azure Web アプリでは、Azure portal でアプリ設定の実際の値を追
 
 ```powershell
 #Create self-signed certificate and export pfx and cer files 
-$PfxFilePath = "c:\data\KVWebApp.pfx" 
-$CerFilePath = "c:\data\KVWebApp.cer" 
-$DNSName = "MyComputer.Contoso.com" 
-$Password ="MyPassword" 
+$PfxFilePath = 'KVWebApp.pfx'
+$CerFilePath = 'KVWebApp.cer'
+$DNSName = 'MyComputer.Contoso.com'
+$Password = 'MyPassword"'
+
+$StoreLocation = 'CurrentUser' #be aware that LocalMachine requires elevated privileges
+$CertBeginDate = Get-Date
+$CertExpiryDate = $CertBeginDate.AddYears(1)
+
 $SecStringPw = ConvertTo-SecureString -String $Password -Force -AsPlainText 
-$Cert = New-SelfSignedCertificate -DnsName $DNSName -CertStoreLocation "cert:\LocalMachine\My" -NotBefore 05/15/2018 -NotAfter 05/15/2019 
-Export-PfxCertificate -cert $cert -FilePath $PFXFilePath -Password $SecStringPw 
-Export-Certificate -cert $cert -FilePath $CerFilePath 
+$Cert = New-SelfSignedCertificate -DnsName $DNSName -CertStoreLocation "cert:\$StoreLocation\My" -NotBefore $CertBeginDate -NotAfter $CertExpiryDate -KeySpec Signature
+Export-PfxCertificate -cert $Cert -FilePath $PFXFilePath -Password $SecStringPw 
+Export-Certificate -cert $Cert -FilePath $CerFilePath 
 ```
 
 終了日と .pfx のパスワードをメモしておきます (この例では、2019 年 5 月 15 日と MyPassword)。 次のスクリプトに必要です。 
@@ -172,7 +176,7 @@ $adapp = New-AzureRmADApplication -DisplayName "KVWebApp" -HomePage "http://kvwe
 $sp = New-AzureRmADServicePrincipal -ApplicationId $adapp.ApplicationId
 
 
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName "http://kvwebapp" -PermissionsToSecrets all -ResourceGroupName 'contosorg'
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'contosokv' -ServicePrincipalName "http://kvwebapp" -PermissionsToSecrets get,list,set,delete,backup,restore,recover,purge -ResourceGroupName 'contosorg'
 
 # get the thumbprint to use in your app settings
 $x509.Thumbprint

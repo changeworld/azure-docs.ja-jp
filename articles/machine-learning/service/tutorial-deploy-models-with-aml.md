@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: eda4a1dabd20eee73cfbfa4dc0dd2b0eaa56788e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b1ae3fb5de3e28f44ef39731f49a33e2086255a1
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031239"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785343"
 ---
 # <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>チュートリアル 2: Azure Container Instances (ACI) に画像分類モデルをデプロイする
 
@@ -35,14 +35,14 @@ ACI は運用環境のデプロイに最適ではありませんが、ワーク�
 
 ## <a name="get-the-notebook"></a>ノートブックを入手する
 
-便利なように、このチュートリアルは Jupyter Notebook として提供されています。 `tutorials/02.deploy-models.ipynb` ノートブックを実行するには、以下のいずれかの方式を使用します。
+便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/02.deploy-models.ipynb)として提供されています。 `02.deploy-models.ipynb`Azure Notebook またはご自身の Jupyter notebook サーバー内のいずれかのノートを実行します。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 
 ## <a name="prerequisites"></a>前提条件
 
-「[チュートリアル #1: Azure Machine Learning で画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」ノートブックのモデルのトレーニングを完了します。  
+「[チュートリアル #1: Azure Machine Learning サービスで画像分類モデルをトレーニングする](tutorial-train-models-with-aml.md)」ノートブックのモデルのトレーニングを完了します。  
 
 
 ## <a name="set-up-the-environment"></a>環境をセットアップする
@@ -374,7 +374,7 @@ service.delete()
 
 ## <a name="next-steps"></a>次の手順
 
-この Azure Machine Learning のチュートリアルでは、Python を使用して次の作業を行いました。
+この Azure Machine Learning サービスのチュートリアルでは、Python を使用して次の作業を行いました。
 
 > [!div class="checklist"]
 > * テスト環境を設定する
@@ -383,4 +383,4 @@ service.delete()
 > * モデルを ACI にデプロイする
 > * デプロイしたモデルをテストする
  
-また、[自動アルゴリズムの選択]()に関するチュートリアルを試して、Azure Machine Learning でモデルに最適なアルゴリズムを自動的に選択して調整し、そのモデルを自動的に構築する方法を確認することもできます。
+また、[自動アルゴリズムの選択]()に関するチュートリアルを試して、Azure Machine Learning サービスでモデルに最適なアルゴリズムを自動的に選択して調整し、そのモデルを自動的に構築する方法を確認することもできます。

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 97a68704e5c116f48dc55a1b0631a6d181674907
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 3739ad3d90dd9d97d755bc0e2fa41e0962396cb1
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410138"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354242"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのメトリック アラートの作成
 
@@ -242,7 +242,7 @@ Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>
  
 New-AzureRmResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupofTargetResource `
-  -TemplateFile simplemetricalert.json -TemplateParametersFile simplemetricalert.parameters.json
+  -TemplateFile simplemetricalert.json -TemplateParameterFile simplemetricalert.parameters.json
 ```
 
 
@@ -459,7 +459,7 @@ Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>
  
 New-AzureRmResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceGroupofTargetResource `
-  -TemplateFile advancedmetricalert.json -TemplateParametersFile advancedmetricalert.parameters.json
+  -TemplateFile advancedmetricalert.json -TemplateParameterFile advancedmetricalert.parameters.json
 ```
 
 
@@ -769,7 +769,7 @@ Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>
 
 New-AzureRmResourceGroupDeployment -Name MultiResourceAlertDeployment -ResourceGroupName ResourceGroupWhereRuleShouldbeSaved `
-  -TemplateFile all-vms-in-resource-group.json -TemplateParametersFile all-vms-in-resource-group.parameters.json
+  -TemplateFile all-vms-in-resource-group.json -TemplateParameterFile all-vms-in-resource-group.parameters.json
 ```
 
 Azure CLI の使用
@@ -1061,7 +1061,7 @@ Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>
 
 New-AzureRmResourceGroupDeployment -Name MultiResourceAlertDeployment -ResourceGroupName ResourceGroupWhereRuleShouldbeSaved `
-  -TemplateFile all-vms-in-subscription.json -TemplateParametersFile all-vms-in-subscription.parameters.json
+  -TemplateFile all-vms-in-subscription.json -TemplateParameterFile all-vms-in-subscription.parameters.json
 ```
 
 Azure CLI の使用
@@ -1356,7 +1356,7 @@ Connect-AzureRmAccount
 Select-AzureRmSubscription -SubscriptionName <yourSubscriptionName>
 
 New-AzureRmResourceGroupDeployment -Name MultiResourceAlertDeployment -ResourceGroupName ResourceGroupWhereRuleShouldbeSaved `
-  -TemplateFile list-of-vms.json -TemplateParametersFile list-of-vms.parameters.json
+  -TemplateFile list-of-vms.json -TemplateParameterFile list-of-vms.parameters.json
 ```
 
 Azure CLI の使用

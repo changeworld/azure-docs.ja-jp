@@ -12,18 +12,18 @@ ms.topic: overview
 ms.workload: tbd
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 380b70ac55bb1f9b447eb07dc475e354956f409e
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: af100c015845d095f39ee4245f71689a4d2a43c0
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267353"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385008"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>Azure SignalR サービスによる ASP.NET Core SignalR アプリケーションのスケーリング
 
 ## <a name="developing-signalr-apps"></a>SignalR のアプリの開発
 
-現時点では、Web アプリケーションで使用できる SignalR には [2 つのバージョン](https://docs.microsoft.com/en-us/aspnet/core/signalr/version-differences)があります。SignalR for ASP.NET と、最新バージョンの ASP.NET Core SignalR です。 Azure SignalR サービスは、ASP.NET Core SignalR 上に構築された Azure のマネージド サービスです。 
+現時点では、Web アプリケーションで使用できる SignalR には [2 つのバージョン](https://docs.microsoft.com/aspnet/core/signalr/version-differences)があります。SignalR for ASP.NET と、最新バージョンの ASP.NET Core SignalR です。 Azure SignalR サービスは、ASP.NET Core SignalR 上に構築された Azure のマネージド サービスです。 
 
 ASP.NET Core SignalR は、以前のバージョンのリライトです。 そのため、ASP.NET Core SignalR は、以前のバージョンの SignalR と下位互換性がありません。 API および動作が異なります。 ASP.NET Core SignalR SDK は .NET Standard を対象としているため、.NET Framework と共に使用することができます。 ただし、以前の API ではなく新しい API を使用する必要があります。 SignalR を使用していて、ASP.NET Core SignalR または Azure SignalR サービスに移行する場合は、API の違いを処理するためにコードを変更する必要があります。
 

@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: c21236026af960af0697978e49a0075fc9cf77ef
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2e4d625cd123583baa30fde8e9826f5b57da49fe
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960296"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393590"
 ---
 # <a name="tutorial-monitor-and-tune-azure-database-for-postgresql"></a>チュートリアル: Azure Database for PostgreSQL を監視およびチューニングします
 
@@ -28,7 +28,7 @@ Azure Database for PostgreSQL は、サーバーのパフォーマンスの理�
 PostgreSQL バージョン 9.6 または 10 の Azure Database for PostgreSQL が必要です。 [Create チュートリアル](tutorial-design-database-using-azure-portal.md) の手順に従ってサーバー作成できます。
 
 > [!IMPORTANT]
-> **クエリ ストア**、 **Query Performance Insight**、および**パフォーマンスの推奨事項**はパブリック プレビュー内にあります。
+> 限定された地域において、**クエリ ストア**、**Query Performance Insight**、および**パフォーマンスの推奨事項**は、パブリック プレビュー内にあります。
 
 ## <a name="enabling-data-collection"></a>データ収集の有効化
 [クエリ ストア](concepts-query-store.md)は、サーバー上のクエリと待機統計の履歴をキャプチャし、サーバー上の **azure_sys** データベース内に格納します。 これはオプトイン機能です。 これを有効にするには:
@@ -74,24 +74,24 @@ Query Performance Insight で、クエリのテキストを表示するために
 ## <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 [パフォーマンスに関する推奨事項](concepts-performance-recommendations.md)機能は、パフォーマンスを向上させる可能性のあるインデックスを識別するために、サーバーの間でワークロードを分析します。
 
-1. PostgreSQL サーバーの Azure portal ページで、メニュー バーの**サポート + トラブルシューティング**セクションから、**パフォーマンスに関する推奨事項**を開きます。
+1. PostgreSQL サーバーの Azure Portal ページで、メニュー バーの**サポート + トラブルシューティング**セクションから、**パフォーマンスに関する推奨事項**を開きます。
    
-   ![パフォーマンスに関する推奨事項ランディングページ](./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png)
+   ![パフォーマンスに関する推奨事項ランディング ページ](./media/tutorial-performance-intelligence/performance-recommendations-landing-page.png)
 
 2. **分析**を選択し、データベースを選択します。 これにより、分析が開始されます。
 
 3. ワークロードによって完了するまで数分かかる場合があります。 分析が完了すると、ポータルで通知があります。
 
-4. **パフォーマンスに関する推奨事項**ウィンドウは、いずれかがわかった場合に、推奨事項の一覧に表示されます。 
+4. **パフォーマンスに関する推奨事項**ウィンドウには、何かがわかった場合に、推奨事項の一覧に表示されます。 
 
 5. 推奨事項は、該当する**データベース**、**テーブル**、**列**、および**インデックス サイズ**に関する情報を表示します。
 
    ![パフォーマンスに関する推奨事項の結果](./media/tutorial-performance-intelligence/performance-recommendations-result.png)
 
-6. 推奨事項を実装するためにクエリ テキストをコピーし、任意のクライアントから実行します。
+6. 推奨事項を実装するには、クエリ テキストをコピーし、任意のクライアントから実行します。
 
 ### <a name="permissions"></a>アクセス許可
-パフォーマンスに関する推奨事項機能を使用して分析を実行するために必要な**所有者**または**共同作成者**のアクセス許可。
+パフォーマンスに関する推奨事項機能を使用して分析を実行するには、**所有者**または**共同作成者**の許可が必要です。
 
 ## <a name="next-steps"></a>次の手順
 - Azure Database for PostgreSQL での[監視およびチューニング](concepts-monitoring.md)の詳細を確認する。

@@ -6,19 +6,19 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 06/18/2018
+ms.date: 09/25/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f721af16e894ec24e85cdb1ff100d83d58ffadd8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ff52c0fa647dd0e86b22bcfdf7af04062a135f94
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954604"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392807"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル: Azure Batch を使用したシーンのレンダリング 
 
-Azure Batch は、クラウド規模のレンダリング機能を従量課金ベースで提供します。 Batch Rendering サービスでは、Autodesk Maya、3DS Max、Arnold、V-Ray などのレンダリング アプリがサポートされます。 このチュートリアルでは、Azure コマンド ライン インターフェイスを使用して Batch で小さいシーンをレンダリングする手順を紹介します。 学習内容は次のとおりです。
+Azure Batch は、クラウド規模のレンダリング機能を従量課金ベースで提供します。 Azure Batch は、Autodesk Maya、3ds Max、Arnold、V-Ray などのレンダリング アプリをサポートしています。 このチュートリアルでは、Azure コマンド ライン インターフェイスを使用して Batch で小さいシーンをレンダリングする手順を紹介します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Azure Storage にシーンをアップロードする
@@ -27,11 +27,11 @@ Azure Batch は、クラウド規模のレンダリング機能を従量課金�
 > * プールをスケーリングしてマルチフレーム シーンをレンダリングする
 > * レンダリングされる出力をダウンロードする
 
-このチュートリアルでは、[Arnold](https://www.autodesk.com/products/arnold/overview) レイ トレース レンダラーを使用して Batch で 3DS Max シーンをレンダリングします。 
-
-[!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
+このチュートリアルでは、[Arnold](https://www.autodesk.com/products/arnold/overview) レイ トレース レンダラーを使用して Batch で 3DS Max シーンをレンダリングします。 Batch プールは、従量課金制ライセンスを提供しているプリインストール済のグラフィックス アプリケーションやレンダリング アプリケーションによって Microsoft Azure Marketplace イメージを使用します。
 
 ## <a name="prerequisites"></a>前提条件
+
+Batch で従量課金制のレンダリング アプリケーションを使用するには、従量課金制サブスクリプションまたはその他の Azure 購入オプションが必要です。 金融クレジットを提供する無料の Azure オファーを使用する場合、従量課金制ライセンスはサポートされません。
 
 このチュートリアル用のサンプル 3DS Max シーンは、サンプルの Bash スクリプトと JSON 構成ファイルと共に [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) にあります。 3DS Max シーンは、[Autodesk 3DS Max サンプル ファイル](http://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe)に含まれています  (Autodesk 3DS Max のサンプル ファイルは、Creative Commons Attribution-NonCommercial-Share Alike ライセンスで入手可能です。 Copyright © Autodesk, Inc.)。
 

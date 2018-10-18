@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 70269fc71fcb2ef9158b50d3bb281097abee0740
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 6d826702d8302246a225ebfcdf0a5987cf9d2045
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992416"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167054"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 Web ページまたはアプリのパフォーマンスと使用状況について調べます。 [Application Insights](app-insights-overview.md) をページ スクリプトに追加すると、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。 エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。 また、JavaScript コードにトレースの呼び出しを挿入することで、Web ページ アプリケーションのさまざまな機能がどのように使用されているかを追跡できます。
@@ -48,12 +48,6 @@ Application Insights リソースは、ページのパフォーマンスと使�
 *質問がございますか?* [リソースの作成に関する詳細はここにあります](app-insights-create-new-resource.md)のサブスクリプションが必要です。
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>アプリや Web ページに SDK スクリプトを追加する
-クイック スタートで、Web ページのスクリプトを取得します。
-
-![アプリの概要ブレードで、クイック スタートを選択し、マイ Web ページを監視するためのコードを取得します。 スクリプトをコピーします。](./media/app-insights-javascript/02-monitor-web-page.png)
-
-> [!NOTE]
-> "*作業の開始*" エクスペリエンスは、Application Insights リソースの作成時に選んだアプリケーションの種類によって異なります。 実際のアプリに関して、先ほどのスクリーンショットで紹介したようなスクリプトが存在しない場合は、次のスクリプトを使用してください。
 
 ```HTML
 <!-- 
@@ -127,7 +121,7 @@ Web アプリが Application Insights に送信している利用統計情報を
 
 ![In portal.azure.com, open your app's resource and click Settings, Browser](./media/app-insights-javascript/03.png)
 
-まだデータが表示されませんか?  ページの上部にある **[更新]** をクリックします。 まだ何も表示されませんか? [トラブルシューティング](app-insights-troubleshoot-faq.md)に関するページを参照します。
+まだデータが表示されませんか?  ページの上部にある **[更新] をクリックします。 まだは何も表示されませんか? [トラブルシューティング](app-insights-troubleshoot-faq.md)に関するページを参照します。
 
 [ブラウザー] ブレードは、あらかじめ設定されたフィルターと一連のグラフで構成された [メトリックス エクスプローラーのブレード](app-insights-metrics-explorer.md) です。 時間範囲、フィルター、グラフの構成を必要に応じて編集し、その結果をお気に入りとして保存することができます。 **[既定値に戻す]** をクリックすると、元のブレード構成に戻ります。
 

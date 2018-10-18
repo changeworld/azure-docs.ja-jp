@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2018
+ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 24add63639f5fffe18e4b4468bfd78600a38c5f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: dc73bbd775da31faecf236716a2b028171438b7c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969293"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220889"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
 アプリケーションのインフラストラクチャは通常、仮想マシン、ストレージ アカウント、仮想ネットワーク、Web アプリ、データベース、データベース サーバー、サード パーティのサービスなど、複数のコンポーネントで構成されます。 これらのコンポーネントは別々のエンティティではなく、1 つのエンティティの中で互いに関連付けられ相互依存しています。 これらのコンポーネントを、1 つのグループとしてデプロイ、管理、および監視するのが好ましいです。 Azure Resource Manager を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。 
@@ -155,6 +155,12 @@ Resource Manager では、セットアップ時に含まれていなかった特
 * [Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ](resource-group-template-deploy-portal.md)
 * [Resource Manager テンプレートと Resource Manager REST API を使用したリソースのデプロイ](resource-group-template-deploy-rest.md)
 
+## <a name="safe-deployment-practices"></a>安全なデプロイ プラクティス
+
+Azure に複雑なサービスをデプロイするときには、サービスを複数のリージョンにデプロイし、次のステップに進む前に正常性チェックする必要がある場合があります。 サービスの段階的なロールアウトをうまく調整するには、[Azure Deployment Manager](deployment-manager-overview.md) を使用します。 サービスのロールアウトを段階的に行えば、すべてのリージョンにサービスがデプロイされる前に潜在的な問題を見つけることができます。 これらの用心が必要でない場合は、前のセクションのデプロイ操作が、より適した選択肢となります。
+
+現在、Deployment Manager はパブリック プレビュー段階にあります。
+
 ## <a name="tags"></a>タグ
 Resource Manager では、管理や課金の要件に合わせてリソースを分類できる、タグ付け機能を使用できます。 リソース グループとリソースが複雑に絡み合っており、これらの資産をわかりやすく視覚化する必要がある場合は、タグを使用してください。 たとえば、組織内で同じロールを果たしている複数リソース、または同じ部門に属している複数リソースにタグを付けることができます。 タグがないと、組織内のユーザーは複数のリソースを作成できるものの、作成したリソースを後で特定して管理することが困難になる場合があります。 たとえば、特定のプロジェクトに関するすべてのリソースを削除したい場合があります。 これらのリソースに対してプロジェクトに関するタグが設定されていない場合、手動で探す必要があります。 タグ付けは、サブスクリプションの不要なコストを削減するための重要な方法です。 
 
@@ -176,20 +182,6 @@ Resource Manager では、管理や課金の要件に合わせてリソースを
   }
 ]
 ```
-
-タグ値が設定されているすべてのリソースを取得するには、次の PowerShell コマンドレットを使用します。
-
-```powershell
-Find-AzureRmResource -TagName costCenter -TagValue Finance
-```
-
-または、次の Azure CLI コマンドを使用します。
-
-```azurecli
-az resource list --tag costCenter=Finance
-```
-
-Azure Portal からタグ付きのリソースを表示することもできます。
 
 サブスクリプションの[使用状況レポート](../billing/billing-understand-your-bill.md)にはタグ名と値が含まれます。これにより、タグを使ってコストの計算を分けることができます。 タグの詳細については、 [タグを使用した Azure リソースの整理](resource-group-using-tags.md)を参照してください。
 
@@ -228,29 +220,8 @@ Azure には、リソースに固有のロールもいくつかあります。 �
 
 重要なリソースを、ユーザーによって削除または変更されないように、明示的にロックすることもできます。 詳細については、[「Azure Resource Manager によるリソースのロック」](resource-group-lock-resources.md)を参照してください。
 
-## <a name="activity-logs"></a>アクティビティ ログ
-Resource Manager では、リソースを作成、変更、削除するすべての操作が記録されます。 アクティビティ ログを使用して、トラブルシューティングを行うときにエラーを探したり、組織のユーザーがどのようにリソースを変更したかを監視したりできます。 操作を開始したユーザーなど、さまざまな値でログをフィルター処理できます。 アクティビティ ログの使用については、[Azure リソースを管理するためのアクティビティ ログの表示](resource-group-audit.md)に関するページを参照してください。
-
 ## <a name="customized-policies"></a>カスタマイズされたポリシー
 リソース マネージャーでは、リソースを管理するためにカスタマイズされたポリシーを作成できます。 多様なシナリオに対応した各種ポリシーを作成できます。 リソースに対して名前付け規則を適用できるほか、デプロイできるリソースの種類とインスタンスや、特定の種類のリソースをホストできるリージョンを制限できます。 また、部門別に課金を整理するために、リソースへのタグ値の設定を義務付けることができます。 コストを削減し、サブスクリプション内での一貫性を維持できるようにポリシーを作成します。 
-
-JSON でポリシーを定義し、サブスクリプション全体またはリソース グループ内で適用します。 ポリシーは、リソースの種類に適用されるものであるため、ロールベースのアクセス制御とは異なります。
-
-次の例は、すべてのリソースに costCenter タグが含まれるように指定することでタグの整合性を確保するポリシーを示しています。
-
-```json
-{
-  "if": {
-    "not" : {
-      "field" : "tags",
-      "containsKey" : "costCenter"
-    }
-  },
-  "then" : {
-    "effect" : "deny"
-  }
-}
-```
 
 作成できるポリシーの種類はほかにも多数あります。 詳細については、「[Azure Policy とは](../azure-policy/azure-policy-introduction.md)」を参照してください。
 

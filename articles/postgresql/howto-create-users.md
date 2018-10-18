@@ -6,13 +6,13 @@ ms.author: jasonh
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 25d7838dafab873816a877bd53053c9244238df6
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.date: 10/16/2018
+ms.openlocfilehash: 05bdc841108bf1fb909375b6f2c6399f8121ceeb
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48236620"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344653"
 ---
 # <a name="create-users-in-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーでユーザーを作成する 
 この記事では、Azure Database for PostgreSQL サーバーでユーザーを作成する方法について説明します。

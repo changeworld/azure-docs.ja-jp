@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: msangapu
-ms.openlocfilehash: 012f78fc07f237e8ed532246c81a3c86bb6ab4ac
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c619ae164f8f8b6e94d9061c4346de58bd6cb795
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33764344"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319440"
 ---
 # <a name="custom-image-multi-container-or-built-in-platform-image"></a>カスタム イメージか、複数コンテナーか、組み込みのプラットフォーム イメージか
 
@@ -30,7 +30,7 @@ ms.locfileid: "33764344"
 - **複数コンテナーのデプロイ**: Docker Compose または Kubernetes 構成ファイルを使用して複数コンテナーにわたってアプリを"Docker 化" します。 詳細については、[複数コンテナー アプリ](#multi-container-apps-supportability)に関するページをご覧ください。
 - **組み込みのプラットフォーム イメージを使ったアプリのデプロイ**: 組み込みのプラットフォーム イメージには、共通の Web アプリ ランタイムとノードや PHP などの依存関係が含まれています。 いずれかの [Azure App Service のデプロイ方法](../app-service-deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)を使って、お使いの Web アプリのストレージにアプリをデプロイし、組み込みのプラットフォーム イメージを使用してアプリを実行します。
 
-##<a name="which-method-is-right-for-your-app"></a>お使いのアプリにとって最適な方法は? 
+## <a name="which-method-is-right-for-your-app"></a>お使いのアプリにとって最適な方法は? 
 
 考慮すべき主な要素は次のとおりです。
 

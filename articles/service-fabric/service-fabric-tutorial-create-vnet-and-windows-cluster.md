@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 1ee3000ab26dbb0eea33de828812959fe709aaa2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 2f503a534f79440e6e6c572b7fb29ce3048ee7bc
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410019"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831571"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>チュートリアル: Azure 仮想ネットワークに Service Fabric Windows クラスターをデプロイする
 
@@ -88,7 +88,7 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 
 ### <a name="service-fabric-cluster"></a>Service Fabric クラスター
 
-次の特性を備えた Windows クラスターがデプロイされます。
+**Microsoft.ServiceFabric/clusters** リソースでは、以下の特性によって Windows クラスターが構成されます。
 
 * 単一ノード型
 * プライマリ ノード型に 5 つのノード (テンプレート パラメーターで構成可能)
@@ -103,7 +103,7 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-ロード バランサーがデプロイされ、次のポートのプローブと規則が設定されます。
+**Microsoft.Network/loadBalancers** リソースでは、ロード バランサーが構成され、以下のポートに対してプローブとルールが設定されます。
 
 * クライアント接続エンドポイント: 19000
 * HTTP ゲートウェイ エンドポイント: 19080
@@ -111,16 +111,16 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 * アプリケーション ポート: 443
 * Service Fabric リバース プロキシ: 19081
 
-他のアプリケーション ポートが必要な場合は、Microsoft.Network/loadBalancers resource リソースと Microsoft.Network/networkSecurityGroups リソースを調整してトラフィックを許可する必要があります。
+その他のアプリケーション ポートが必要な場合は、トラフィックが入ることを許可するように **Microsoft.Network/loadBalancers** リソースと **Microsoft.Network/networkSecurityGroups** リソースを調整する必要があります。
 
 ### <a name="virtual-network-subnet-and-network-security-group"></a>仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループ
 
-仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループの名前は、テンプレート パラメーターで宣言されます。  仮想ネットワークとサブネットのアドレス空間もテンプレート パラメーターで宣言されます。
+仮想ネットワーク、サブネット、およびネットワーク セキュリティ グループの名前は、テンプレート パラメーターで宣言されます。  仮想ネットワークとサブネットのアドレス空間も、テンプレート パラメーターで宣言され、**Microsoft.Network/virtualNetworks** リソース内に構成されます。
 
 * 仮想ネットワークのアドレス空間: 172.16.0.0/20
 * Service Fabric サブネットのアドレス空間: 172.16.2.0/23
 
-ネットワーク セキュリティ グループでは、次の受信トラフィック規則が有効になっています。 テンプレートの変数を変更することで、ポートの値を変更できます。
+**Microsoft.Network/networkSecurityGroups** リソースでは、以下の受信トラフィック ルールが有効になります。 テンプレートの変数を変更することで、ポートの値を変更できます。
 
 * ClientConnectionEndpoint (TCP): 19000
 * HttpGatewayEndpoint (HTTP/TCP): 19080
@@ -131,7 +131,7 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 * アプリケーションのポート範囲 - 49152 ～ 65534 (サービス間通信用に使用され、他のポートはロード バランサーで開かれません)
 * 他のすべてのポートをブロック
 
-他のアプリケーション ポートが必要な場合は、Microsoft.Network/loadBalancers resource リソースと Microsoft.Network/networkSecurityGroups リソースを調整してトラフィックを許可する必要があります。
+その他のアプリケーション ポートが必要な場合は、トラフィックが入ることを許可するように **Microsoft.Network/loadBalancers** リソースと **Microsoft.Network/networkSecurityGroups** リソースを調整する必要があります。
 
 ## <a name="set-template-parameters"></a>テンプレート パラメーターの設定
 
@@ -143,7 +143,7 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 |adminPassword|Password#1234| クラスター VM の管理者パスワード。 [VM のパスワード要件](https://docs.microsoft.com/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm)|
 |clusterName|mysfcluster123| クラスターの名前。 使用できる文字はアルファベットと数字のみです。 長さは 3 から 23 文字で指定できます。|
 |location|southcentralus| クラスターの場所。 |
-|certificateThumbprint|| <p>自己署名証明書を作成する場合または証明書ファイルを提供する場合は、値を空にする必要があります。</p><p>以前にキー コンテナーにアップロードされた既存の証明書を使用するには、証明書の SHA1 サムプリントの値を入力します。 例: "6190390162C988701DB5676EB81083EA608DCCF3"</p>. |
+|certificateThumbprint|| <p>自己署名証明書を作成する場合または証明書ファイルを提供する場合は、値を空にする必要があります。</p><p>以前にキー コンテナーにアップロードされた既存の証明書を使用するには、証明書の SHA1 サムプリントの値を入力します。 例: "6190390162C988701DB5676EB81083EA608DCCF3"</p>。 |
 |certificateUrlValue|| <p>自己署名証明書を作成する場合または証明書ファイルを提供する場合は、値を空にする必要があります。 </p><p>以前にキー コンテナーにアップロードされた既存の証明書を使用するには、証明書の URL を入力します。 (例: "https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346")。</p>|
 |sourceVaultValue||<p>自己署名証明書を作成する場合または証明書ファイルを提供する場合は、値を空にする必要があります。</p><p>以前にキー コンテナーにアップロードされた既存の証明書を使用するには、ソース コンテナー値を入力します。 たとえば、"/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT" と入力します。</p>|
 

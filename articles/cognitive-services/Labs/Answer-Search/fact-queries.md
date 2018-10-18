@@ -1,22 +1,23 @@
 ---
-title: Project Answer Search のファクト クエリ - Microsoft Cognitive Services | Microsoft Docs
+title: 'クイック スタート: Project Answer Search のファクト クエリ'
+titlesuffix: Azure Cognitive Services
 description: Project Answer Search を使ったファクト クエリ
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 0a9d1925d5ae26f40824676fbebdcb0ffc450c53
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: ae8a42b95df70cff9cb845d4d553fbbb33cbdec9
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376173"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868348"
 ---
-# <a name="query-for-facts"></a>ファクトのクエリ
+# <a name="quickstart-query-for-facts"></a>クイック スタート: ファクトのクエリ
 
 日付や識別可能な知識など、ファクトに向けたクエリの場合、応答には `facts` 回答を含むことができます。 ファクトの回答には、Web ドキュメント内の段落から抽出された関連する結果が含まれます。  これらのクエリでは常に Web ページが返されます。これに対して、[ファクト](fact-queries.md)と[エンティティ](entity-queries.md)のいずれかまたは両方が返されるかどうかはクエリによって異なります。
 

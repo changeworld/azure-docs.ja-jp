@@ -1,23 +1,23 @@
 ---
-title: Azure Cognitive Services、Bing Entity Search API の Node.JS のクイック スタート | Microsoft Docs
-description: Azure 上の Cognitive Services で Bing Entity Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing Entity Search API (Node.js)'
+titlesuffix: Azure Cognitive Services
+description: Bing Entity Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 7396976453c240d5ea9a767f8c26ac96d10d1e1f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b14bcece77b17e79ec9e39bbb6bb64ae34abd3a0
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377360"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815156"
 ---
-# <a name="quickstart-for-microsoft-bing-entity-search-api-with-nodejs"></a>Node.JS での Microsoft Bing Entity Search API のクイック スタート 
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-entity-search-api-with-nodejs"></a>Bing Entity Search API のクイック スタート (Node.js)
 
 この記事では、Node.JS で [Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API を使用する方法について説明します。
 
@@ -90,7 +90,7 @@ Search ();
 
 **応答**
 
-次の例で示すように、正常な応答が JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {

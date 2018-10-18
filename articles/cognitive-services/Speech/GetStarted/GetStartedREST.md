@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 0f98182a73cebdd4df9f7849b2306f89c620f24b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a9f74f4032a78ee51ea2a8f020cd1418bb3330ca
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973951"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345358"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>クイック スタート: Bing Speech 認識 REST API を使用する
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 クラウドベースの Bing Speech Service を使用すれば、REST API を使用して音声をテキストに変換することにより、アプリケーションを開発できます。
 
@@ -134,7 +135,7 @@ $RecoResponse
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
 ```
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/CSharp)
+# <a name="ctabcsharp"></a>[C#](#tab/CSharp)
 
 ```cs
 HttpWebRequest request = null;
@@ -198,7 +199,7 @@ ConvertTo-Json $RecoResponse
 curl -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE | jq
 ```
 
-# <a name="ctabcsharp"></a>[C# を選択した場合](#tab/CSharp)
+# <a name="ctabcsharp"></a>[C#](#tab/CSharp)
 
 ```cs
 /*

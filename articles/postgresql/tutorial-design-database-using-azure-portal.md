@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 181e31530960f031dd2785b852c0ae15c21af782
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 6a3241e15cc72d1d50862a9dec14c23712ec4226
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30186310"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406384"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して Azure Database for PostgreSQL を設計する
 
@@ -54,7 +54,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
     - サブスクリプション: 複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。
     - リソース グループ: **myresourcegroup**
     - サーバー管理者のログインとパスワード
-    - 場所
+    - Location
     - PostgreSQL のバージョン
 
    > [!IMPORTANT]
@@ -85,7 +85,7 @@ Azure Database for PostgreSQL サービスは、サーバーレベルでファ�
 
 2.  サーバーのページで、**[接続のセキュリティ]** を選択します。 
 
-3.  **[規則名]** の下のテキスト ボックス内をクリックし、接続を許可する IP の範囲をホワイトリストに追加する新しいファイアウォール規則を追加します。 このチュートリアルではすべての IP を許可するため、「**規則名 = AllowAllIps**」、「**開始 IP = 0.0.0.0**」、「**終了 IP = 255.255.255.255**」と入力し、**[保存]** をクリックします。 ネットワークからの接続が可能な IP 範囲をより小さく指定する明示的なファイアウォール規則を設定することができます。
+3.  **[規則名]** の下のテキスト ボックス内をクリックし、接続を許可する IP の範囲をホワイトリストに追加する新しいファイアウォール規則を追加します。 IP 範囲を入力します。 **[Save]** をクリックします。
 
    ![Azure Database for PostgreSQL - ファイアウォール規則の作成](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
 

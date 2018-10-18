@@ -1,20 +1,21 @@
 ---
-title: Azure Cognitive Services、Bing News Search API の Node.js のクイック スタート | Microsoft Docs
-description: Azure 上の Cognitive Services で Bing News Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing News Search API (Node.js)'
+titlesuffix: Azure Cognitive Services
+description: Bing News Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jerkin
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 9/21/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 1c68e75319a34f4ac9726c047fc7d6d0269634ba
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 923566dc2764037164725f795e411beef939d92a
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377373"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802072"
 ---
 # <a name="quickstart-for-bing-news-search-api-with-nodejs"></a>Node.js での Bing News Search API のクイック スタート
 
@@ -22,18 +23,18 @@ ms.locfileid: "35377373"
 
 この例は JavaScript で書かれており、Node.js 6 で実行されます。
 
-API の技術的な詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)をご覧ください。
+API の技術的な詳細については、[API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search API** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
+[Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Search APIs** を取得している必要があります。 このクイック スタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
 
 ## <a name="bing-news-search"></a>Bing News Search
 
 [Bing News Search API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference) は、Bing 検索エンジンからニュースの結果を返します。
 
 1. 適切な IDE またはエディターで新しい Node.js プロジェクトを作成します。
-2. 次に示すコードを追加します。
+2. 下記のコードを追加します。
 3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
@@ -97,7 +98,7 @@ bing_news_search(term);
 
 **応答**
 
-次の例で示すように、正常な応答が JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {

@@ -1,23 +1,23 @@
 ---
-title: News Search API クイック スタート | Microsoft Docs
+title: 'クイック スタート: Bing News Search API'
+titlesuffix: Azure Cognitive Services
 description: Bing News Search API の使用方法の概要について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 9CF6EAF3-42D8-4321-983C-4AC3896E8E03
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: b3f2b36034ab33b4f5eec2d138103c3e4d8e21f4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bc3d2e43983791cf8f666660675a7dd537f04d77
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034333"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802527"
 ---
-# <a name="your-first-news-search-query"></a>初めてのニュース検索クエリ
+# <a name="quickstart-your-first-news-search-query"></a>クイック スタート: 初めてのニュース検索クエリ
 
 最初の呼び出しを行う前に、Cognitive Services のサブスクリプション キーを入手する必要があります。 キーの入手については、「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)」をご覧ください。
 

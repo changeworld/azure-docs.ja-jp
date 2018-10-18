@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2018
+ms.date: 10/09/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 776f70b6b24288006d52cb0e91797d1074180160
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7eb17138f42cdada10edd5ef08873eb2afee91fe
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452617"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068980"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル: Azure Data Box Disk にデータをコピーして確認する
 
@@ -163,7 +163,75 @@ ms.locfileid: "47452617"
 > -  データのコピー中は、そのサイズが [Azure Storage と Data Box Disk の制限](data-box-disk-limits.md)に関するページに記載されたサイズ制限に準拠していることを確認してください。 
 > - Data Box Disk によってアップロードされているデータが、Data Box Disk の外部で別のアプリケーションによって同時にアップロードされた場合、アップロード ジョブ エラーやデータの破損が生じる可能性があります。
 
-## <a name="verify-data"></a>データの確認 
+### <a name="split-and-copy-data-to-disks"></a>データを分割してディスクにコピーする
+
+このオプションの手順は、複数のディスクを使用しており、大きなデータセットをそれらのすべてのディスクに分割してコピーする必要がある場合に使用できます。 Data Box 分割コピー ツールは、Windows コンピューター上でデータを分割してコピーするのに役立ちます。
+
+1. Windows コンピューターで、Data Box 分割コピー ツールがダウンロードされ、ローカル フォルダーに抽出されていることを確認します。 このツールは、Windows 用の Data Box Disk ツールセットをダウンロードしたときにダウンロードされました。
+2. エクスプローラーを開きます。 Data Box Disk に割り当てられたデータ ソース ドライブと ドライブ文字をメモしておきます。 
+
+     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-1.png)
+ 
+3. コピーするソース データを特定します。 たとえば、この場合:
+    - 以下のブロック BLOB データが特定されました。
+
+         ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+
+    - 以下のページ BLOB データが特定されました。
+
+         ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+ 
+4. ソフトウェアが抽出されるフォルダーに移動します。 そのフォルダー内で SampleConfig.json ファイルを見つけます。 これは、変更して保存できる読み取り専用ファイルです。
+
+   ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+ 
+5. SampleConfig.json ファイルを変更します。
+ 
+    - ジョブ名を指定します。 これにより、Data Box Disk にフォルダーが作成され、最終的にこれらのディスクに関連付けられた Azure ストレージ アカウント内のコンテナーになります。 ジョブ名は、Azure コンテナーの名前付け規則に従う必要があります。 
+    - ソース パスを指定して SampleConfigFile.json のパス形式をメモします。 
+    - ターゲット ディスクに対応するドライブ文字を入力します。 データはソース パスから取得され、複数のディスクにコピーされます。
+    - ログ ファイルのパスを指定します。 既定では、.exe がある現在のディレクトリに送信されます。
+
+     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+
+6. ファイル形式を検証するには、JSONlint に移動します。 ConfigFile.json として保存します。 
+
+     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+ 
+7. コマンド プロンプト ウィンドウを開きます。 
+
+8. DataBoxDiskSplitCopy.exe を実行します。 type
+
+    `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
+
+     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+ 
+9. Enter キーを押してスクリプトを続行します。
+
+    ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+  
+10. データセットを分割してコピーすると、コピー セッションの分割コピー ツールの概要が表示されます。 サンプル出力を次に示します。
+
+    ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+ 
+11. データがターゲット ディスク間で分割されていることを確認します。 
+ 
+    ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![データの分割コピー](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+     
+    n: ドライブの内容をさらに調べると、ブロック BLOB およびページ BLOB 形式データに対応して 2 つのサブフォルダーが作成されていることがわかります。
+    
+     ![データの分割コピー ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+
+12. コピー セッションが失敗した場合、復旧して再開するには、次のコマンドを使用します。
+
+    `DataBoxDiskSplitCopy.exe PrepImport /config:<configFile.json> /ResumeSession`
+
+
+データのコピーが完了したら、次にデータを検証します。 
+
+
+## <a name="validate-data"></a>データの検証 
 
 データを確認するには、次の手順を実行します。
 

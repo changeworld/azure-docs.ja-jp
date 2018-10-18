@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: 6a64d85cc476c7494a1730959b96e9480115cd90
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 56f48f6676b3c878effe788316024e642c17ff5a
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047005"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49400151"
 ---
 共有イメージ ギャラリーは、カスタム VM イメージに関連する構造および組織を構築できるサービスです。 共有イメージ ギャラリーでは、次の 3 つの価値を提案しています。
 - シンプルな管理
@@ -146,7 +146,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 
 **Q.** 特殊なディスクからイメージ バージョンを作成できますか?
 
- A. いいえ、特殊なディスクは現在、イメージとしてサポートしていません。 特殊なディスクがある場合、新しい VM にそのディスクをアタッチして、[VHD から VM を作成する](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk)必要があります。 VM が実行されたら、Windows VM (https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-custom-images) または [Linux VM](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-custom-images)) からマネージド イメージを作成する手順を実行する必要があります。 汎用のマネージド イメージができたら、共有イメージの説明とイメージ バージョンを作成するプロセスを開始できます。
+ A. いいえ、特殊なディスクは現在、イメージとしてサポートしていません。 特殊なディスクがある場合、新しい VM にそのディスクをアタッチして、[VHD から VM を作成する](https://docs.microsoft.com/azure/virtual-machines/windows/create-vm-specialized-portal#create-a-vm-from-a-disk)必要があります。 VM が実行されたら、Windows VM (https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-custom-images) または [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-custom-images)) からマネージド イメージを作成する手順を実行する必要があります。 汎用のマネージド イメージができたら、共有イメージの説明とイメージ バージョンを作成するプロセスを開始できます。
 
 
 **Q.** 共有イメージ ギャラリー、イメージ定義、およびイメージ バージョンを Azure portal 経由で作成できますか?

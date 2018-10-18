@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: a0fa11633efc610407755ebc109649f3fefdcb55
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2682236ae9f9256b91d1259248e72139c907c8e5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585817"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345018"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>Bing Speech Service クライアント ライブラリを使ってみる
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 REST API を介して HTTP 要求を直接行う以外に、Bing Speech Service には開発者向けに Speech クライアント ライブラリがさまざまな言語で用意されています。 Speech クライアント ライブラリには、次の機能が備わっています。
 
@@ -33,9 +34,6 @@ REST API を介して HTTP 要求を直接行う以外に、Bing Speech Service 
 - [JavaScript ライブラリ](GetStartedJSWebsockets.md)
 - [Android 用 Java ライブラリ](GetStartedJavaAndroid.md)
 - [iOS 用 Objective-C ライブラリ](Get-Started-ObjectiveC-iOS.md)
-
-> [!NOTE] 
-2018 年 9 月以降、新しい[音声サービス](../../speech-service/index.yml)が一般公開されました。 ぜひ[無料でお試し](../../speech-service/get-started.md)ください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 

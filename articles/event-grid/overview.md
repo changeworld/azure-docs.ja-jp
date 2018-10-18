@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 08/17/2018
 ms.author: babanisa
-ms.openlocfilehash: 90e8d6a3ef093046c5ee6324f6e6590e59124da7
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: fbe9b79cd407f74686d572aa1e5c7ac1d837cd25
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42022417"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223416"
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event Grid の概要
 
@@ -80,7 +80,7 @@ Azure Event Grid の主要な特長を次に示します。
 * **イベントごとの支払** - Event Grid の使用量に対して料金を支払います。
 * **高スループット** - 1 秒あたり数百万イベントをサポートして、Event Grid での大量ワークロードを作成できます。
 * **組み込みイベント** - リソース定義の組み込みイベントにより、迅速に開始および実行できます。
-* **カスタム イベント** - Event Grid ルートとフィルター処理を使用して、アプリで信頼性の高いカスタム イベント配信を実現します。
+* **カスタム イベント** - Event Grid ルートを使用し、フィルター処理を行い、信頼性の高い方法でアプリにカスタム イベントを配信します。
 
 Event Grid、Event Hubs、および Service Bus の比較については、「[Choose between Azure services that deliver messages (メッセージを配信する Azure サービスの選択)](compare-messaging-services.md)」を参照してください。
 

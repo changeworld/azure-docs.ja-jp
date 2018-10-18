@@ -4,22 +4,21 @@ description: このトピックでは、ライブ ストリーミングに関す
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: 3a7f6c1d-ce57-4fa4-a7a6-edb526b3ffbf
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 84e3e9fc18671d7199eeaf638377a6681cf09fb4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: e6b135e14f06ecf4edfbb97913c411f55711854a
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33940926"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351454"
 ---
 # <a name="troubleshooting-guide-for-live-streaming"></a>ライブ ストリーミングのトラブルシューティング ガイド
 この記事では、一部のライブ ストリーミングの問題のトラブルシューティング方法に関する推奨事項を説明します。
@@ -54,9 +53,6 @@ ms.locfileid: "33940926"
 > このトラブルシューティングの手順に従っても正常にストリーミングできない場合は、Azure Portal を使用して、サポート チケットを送信してください。
 > 
 > 
-
-## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
-[!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]

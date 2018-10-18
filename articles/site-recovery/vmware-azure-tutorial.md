@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure Site Recovery を使用して Azure にオンプレミス VMware VM のディザスター リカバリーを設定する |Microsoft Docs
 description: Azure Site Recovery を使用して Azure にオンプレミス VMware VM のディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
@@ -6,22 +6,22 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 93626e6a8f199841b285fb8a6e302e6c3054db0d
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: b1b903b945a60cebe2001a1ae41201b9b665c556
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918035"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078819"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
 
 [Azure Site Recovery](site-recovery-overview.md) は、計画された停止や計画外の停止の際にビジネス アプリを実行し続け、使用できるようにすることで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、フェールバックなど、オンプレミスのマシンと Azure Virtual Machines (VM) のディザスター リカバリーを管理し、調整します。
 
 
-このチュートリアルでは、Azure Site Recovery を使用し、VMware VM のレプリケーションを設定して有効にする方法について説明します。 チュートリアルは、基本設定を備えた Site Recovery をデプロイする方法を示すように設計されています。 最も簡単なパスを使用し、すべてのオプションは表示しません。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、Azure Site Recovery を使用し、VMware VM のレプリケーションを設定して有効にする方法について説明します。 チュートリアルは、基本設定を備えた Site Recovery をデプロイする方法を示すように設計されています。 最も簡単なパスを使用し、すべてのオプションは表示しません。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * レプリケーションのソースとターゲットを入力します。
@@ -88,7 +88,7 @@ OVF テンプレートに付属するライセンスは、180 日間有効な評
 
 ## <a name="import-the-template-in-vmware"></a>VMware にテンプレートをインポートする
 
-1. VMware vSphere Client を使用して、VMware vCenter サーバーまたは vSphere ESXi ホストにサインインします。
+1. VMWare vSphere Client を使用して、VMware vCenter サーバーまたは vSphere ESXi ホストにサインインします。
 2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選択し、**[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** ウィザードを起動します。 
 
      ![OVF テンプレート](./media/vmware-azure-tutorial/vcenter-wizard.png)
@@ -115,7 +115,7 @@ OVF テンプレートに付属するライセンスは、180 日間有効な評
 
 ## <a name="register-the-configuration-server"></a>構成サーバーを登録する 
 
-1. VMware vSphere Client のコンソールで、VM をオンにします。
+1. VMWare vSphere Client のコンソールで、VM をオンにします。
 2. VM が Windows Server 2016 のインストール エクスペリエンスで起動します。 使用許諾契約書に同意し、管理者パスワードを入力します。
 3. インストールの完了後に、管理者として VM にサインインします。
 4. 初めてサインインすると、数秒後に Azure Site Recovery 構成ツールが起動します。
@@ -132,7 +132,7 @@ OVF テンプレートに付属するライセンスは、180 日間有効な評
 4. **[VMware PowerCLI のインストール]** を選択します。 この操作を行う前に、すべてのブラウザー ウィンドウを閉じてください。 その後 **[続行]** を選択します。
 5. **[アプライアンス構成の検証]** で、続行する前に前提条件が検証されます。
 6. **[Configure vCenter Server/vSphere ESXi server]\(vCenter Server/vSphere ESXi サーバーの構成\)** で、レプリケートする VM が存在している vCenter サーバーまたは vSphere ホストの FQDN または IP アドレスを入力します。 サーバーがリッスンするポートを入力します。 コンテナーで VMware サーバーに使うフレンドリ名を入力します。
-7. VMware サーバーに接続するために構成サーバーによって使われる資格情報を入力します。 Site Recovery はこれらの資格情報を使って、レプリケーションに利用できる VMware VM を自動的に検出します。 **[追加]**、**[続行]** の順に選択します。
+7. VMware サーバーに接続するために構成サーバーによって使用される、ユーザー資格情報を入力します。 ユーザー名とパスワードが正しいこと、および保護する仮想マシンの管理者グループの一部であることを確認してください。 Site Recovery はこれらの資格情報を使って、レプリケーションに利用できる VMware VM を自動的に検出します。 **[追加]**、**[続行]** の順に選択します。
 8. **[仮想マシンの資格情報の構成]** で、レプリケーションが有効になったときにモビリティ サービスを VM に自動的にインストールするために使用されるユーザー名とパスワードを入力します。
     - Windows マシンの場合、このアカウントは、レプリケートするマシンに対するローカル管理者特権を持っている必要があります。
     - Linux の場合は、ルート アカウントの詳細を指定します。

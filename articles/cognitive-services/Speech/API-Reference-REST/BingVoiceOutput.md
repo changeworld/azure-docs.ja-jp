@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
-ROBOTS: NOINDEX
-ms.openlocfilehash: 664b696d5323177eaac2e7ce7b80a7c81ce601f1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: db69a9e3beb819600109603a8c0129547db57fa5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949402"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343029"
 ---
 # <a name="bing-text-to-speech-api"></a>Bing のテキスト読み上げ API
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 ## <a name="Introduction"></a>はじめに
 

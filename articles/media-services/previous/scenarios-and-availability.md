@@ -4,21 +4,21 @@ description: このトピックでは、Microsoft Azure Media Services のシナ
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/10/2017
-ms.author: juliako;anilmur
-ms.openlocfilehash: 8381cdfffd34ffa25d1b87be3a3aca3de69c2802
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.date: 10/15/2018
+ms.author: juliako
+ms.openlocfilehash: 0e9537f09049d5fe056819e6f8b9718cfc52f489
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809281"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352816"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Media Services のシナリオとデータ センターにおける機能の可用性
 
@@ -158,7 +158,7 @@ AMS のお客様は、AMS アカウントのストリーミング エンドポ�
     詳細については、[メディア処理のスケーリング](media-services-portal-scale-media-processing.md)に関するページを参照してください。
 * ストレージ アカウントを追加して、Media Services アカウントの規模を設定することもできます。 各ストレージ アカウントの上限は 500 TB (テラバイト) です。 既定の上限を超えるストレージ容量を設定するために、複数のストレージ アカウントを単一の Media Services アカウントにアタッチすることを選択できます。 詳細については、[ストレージ アカウントの管理](meda-services-managing-multiple-storage-accounts.md)に関するページを参照してください。
 
-##<a id="availability"></a> データ センターにおける Media Services 機能の可用性
+## <a id="availability"></a> データ センターにおける Media Services 機能の可用性
 
 このセクションでは、データ センターにおける Media Services 機能の可用性について詳しく説明します。
 
@@ -166,7 +166,7 @@ AMS のお客様は、AMS アカウントのストリーミング エンドポ�
 
 #### <a name="availability"></a>可用性
 
-データ センターで Media Services が使用可能かどうかを確認するには、https://azure.microsoft.com/status/ にアクセスして、「メディア」テーブルまでスクロールします。
+データ センターで Media Services が使用可能かどうかを確認するには、 https://azure.microsoft.com/status/ にアクセスして、「メディア」テーブルまでスクロールします。
 
 ### <a name="streaming-endpoints"></a>ストリーミング エンドポイント 
 
@@ -174,10 +174,10 @@ Media Services のお客様は、**Standard** と **Premium** のいずれかの
 
 #### <a name="availability"></a>可用性
 
-|Name|状態|データ センター
+|Name|Status|データ センター
 |---|---|---|
-|標準|一般公開|すべて|
-|Premium|一般公開|すべて|
+|標準|一般公開|All|
+|Premium|一般公開|All|
 
 ### <a name="live-encoding"></a>ライブ エンコード
 
@@ -191,9 +191,9 @@ AMS には、**Media Encoder Standard** と **Media Encoder Premium ワークフ
 
 #### <a name="availability"></a>可用性
 
-|メディア プロセッサ名|状態|データ センター
+|メディア プロセッサ名|Status|データ センター
 |---|---|---|
-|メディア エンコーダー スタンダード|一般公開|すべて|
+|メディア エンコーダー スタンダード|一般公開|All|
 |メディア エンコーダー Premium ワークフロー|一般公開|中国を除くすべて|
 
 ### <a name="analytics-media-processors"></a>Analytics メディア プロセッサ
@@ -202,16 +202,16 @@ Media Analytics は音声および視覚コンポーネントの集合体であ�
 
 #### <a name="availability"></a>可用性
 
-|メディア プロセッサ名|状態|データ センター
+|メディア プロセッサ名|Status|データ センター
 |---|---|---|
-|Azure Media Face Detector|プレビュー|すべて|
-|Azure Media Hyperlapse|プレビュー|すべて|
-|Azure Media Indexer|一般公開|すべて|
-|Azure Media Motion Detector|プレビュー|すべて|
-|Azure Media OCR|プレビュー|すべて|
-|Azure Media Redactor|プレビュー|すべて|
-|Azure Media Stabilizer|プレビュー|すべて|
-|Azure Media Video Thumbnails|プレビュー|すべて|
+|Azure Media Face Detector|プレビュー|All|
+|Azure Media Hyperlapse|プレビュー|All|
+|Azure Media Indexer|一般公開|All|
+|Azure Media Motion Detector|プレビュー|All|
+|Azure Media OCR|プレビュー|All|
+|Azure Media Redactor|プレビュー|All|
+|Azure Media Stabilizer|プレビュー|All|
+|Azure Media Video Thumbnails|プレビュー|All|
 |Azure Media Indexer 2|プレビュー|中国および連邦政府リージョンを除くすべて|
 
 ### <a name="protection"></a>保護
@@ -220,12 +220,12 @@ Microsoft Azure Media Services を使用すると、メディアがコンピュ�
 
 #### <a name="availability"></a>可用性
 
-|暗号化|状態|データ センター|
+|暗号化|Status|データ センター|
 |---|---|---| 
-|Storage|一般公開|すべて|
-|AES-128 キー|一般公開|すべて|
-|FairPlay|一般公開|すべて|
-|PlayReady|一般公開|すべて|
+|Storage|一般公開|All|
+|AES-128 キー|一般公開|All|
+|FairPlay|一般公開|All|
+|PlayReady|一般公開|All|
 |Widevine|一般公開|ドイツ、連邦政府、中国を除くすべて
 
 ### <a name="reserved-units-rus"></a>予約ユニット (RU)
@@ -246,9 +246,9 @@ Media Services アカウントは、メディア処理タスクを処理する�
 
 #### <a name="availability"></a>可用性
 
-|RU の種類の名前|状態|データ センター
+|RU の種類の名前|Status|データ センター
 |---|---|---|
-|S1|一般公開|すべて|
+|S1|一般公開|All|
 |S2|一般公開|ブラジル南部とインド西部を除くすべて|
 |S3|一般公開|インド西部を除くすべて|
 

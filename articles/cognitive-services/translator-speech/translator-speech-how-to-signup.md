@@ -10,17 +10,18 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ROBOTS: NOINDEX
-ms.openlocfilehash: 9a448f150e5dbd7bb3a0ba787d8af68032deecb6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3790994c94a1d62d8afb0e2f3b9e6d029ba9ecc1
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966953"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340394"
 ---
 # <a name="how-to-sign-up-for-the-translator-speech-api"></a>Translator Speech API にサインアップする方法
 
 Translator Speech API にサインアップするには、次の手順のようにします。
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
 ## <a name="1-sign-into-azure"></a>1: Azure にサインインする
 

@@ -480,6 +480,9 @@ items:
     - name: v2
       tocHref: /azure/media-services/previous/
       topicHref: /azure/media-services/previous/
+    - name: Video Indexer
+      tocHref: /azure/media-services/video-indexer/
+      topicHref: /azure/media-services/video-indexer/
   - name: Mobile Engagement
     tocHref: /azure/mobile-engagement/
     topicHref: /azure/mobile-engagement/
@@ -630,9 +633,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: 5e5bddc2e8c5878b8484ff844ded91943c030aef
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: d5accdc05b632921d62c083772c4f289ca901ab2
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310778"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377575"

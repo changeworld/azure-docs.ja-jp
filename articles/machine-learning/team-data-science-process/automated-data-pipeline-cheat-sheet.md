@@ -4,7 +4,7 @@ description: データがオンプレミスであるか、ストリーミング�
 services: machine-learning
 documentationcenter: ''
 author: garyericson
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 22674d6b-4491-4805-a3ac-d423611177bb
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: garye
-ms.openlocfilehash: 54a3aca4c3519948a9e18d035565f746964b38bc
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: cd08f6a31f431900a2cb7ed9ed222409f9583b55
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836162"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393373"
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート
 **Microsoft Azure Machine Learning 自動化データ パイプライン チート シート** は、予測分析モデルによってデータをスコア付けできる Machine Learning Web サービスに対してデータを送信するために使用できるテクノロジを確認するのに役立ちます。

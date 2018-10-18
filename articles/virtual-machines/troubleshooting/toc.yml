@@ -115,6 +115,8 @@ items:
     href: troubleshoot-vm-boot-configure-update.md
   - name: 重要なサービスが失敗しました
     href: troubleshoot-critical-service-failed-boot-error.md
+  - name: 再起動ループ
+    href: troubleshoot-reboot-loop.md
   - name: Windows Update でのスタック
     href: troubleshoot-stuck-updating-boot-error.md
 - name: 調整エラー
@@ -123,9 +125,9 @@ items:
   href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: システムの再起動を理解する
   href: understand-vm-reboot.md
-ms.openlocfilehash: 95c1a53d1c271bf5a274ba8dbb27401e9b785dad
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bc20944fa18251a5ee9e7c5d5cf90955305b45b4
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354089"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376219"

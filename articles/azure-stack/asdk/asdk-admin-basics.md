@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: fa2ee4df9a0a28c08237f30fcf6a4bac50c21100
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: 555bf95367ab0d3e6c4afe09edb6777899400dd8
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849510"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344670"
 ---
 # <a name="asdk-administration-basics"></a>ASDK の管理の基本 
 Azure Stack Development Kit (ASDK) の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイダンスでは、評価環境での Azure Stack オペレーターとしての役割の概要と、テスト ユーザーの生産性を迅速に向上させる方法を示します。
@@ -32,7 +32,7 @@ Azure と同様に、Azure Stack はイノベーションが迅速であるた�
 ## <a name="what-account-should-i-use"></a>使用するアカウントについて
 Azure Stack を管理する場合に注意するいくつかのアカウントに関する考慮事項があります。 特に、Azure Active Directory (Azure AD) ではなく ID プロバイダーとして Windows Server Active Directory Federation Services (AD FS) を使用する展開では注意が必要です。 次のアカウントに関する考慮事項は、Azure Stack 統合システムと ASDK 展開の両方に適用されます。
 
-|アカウント|Azure AD|AD FS|
+|Account|Azure AD|AD FS|
 |-----|-----|-----|
 |ローカル管理者 (.\Administrator)|ASDK ホスト管理者|ASDK ホスト管理者|
 |AzureStack\AzureStackAdmin|ASDK ホスト管理者<br><br>Azure Stack 管理者ポータルにログインできます<br><br>Service Fabric リングを表示および管理するためのアクセス権|ASDK ホスト管理者<br><br>Azure Stack 管理者ポータルへのアクセス権なし<br><br>Service Fabric リングを表示および管理するためのアクセス権<br><br>既定のプロバイダー サブスクリプション (DPS) の所有者ではなくなりました|

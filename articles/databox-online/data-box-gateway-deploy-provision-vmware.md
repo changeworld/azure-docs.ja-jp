@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2018
+ms.date: 10/01/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: 5a173340be424c74c76da659816b1b95b74c465f
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: a96aa2ee8b474bcc4e3e9362d6b1ba755e3fdbc3
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419544"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017450"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>チュートリアル: VMware で Azure Data Box Gateway をプロビジョニングする (プレビュー)
 
@@ -96,7 +96,7 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
 1. システム上にある仮想デバイスのイメージをコピーします。 この仮想イメージ (2 つのファイル) は、Azure portal からダウンロードしています。 このイメージは後で使用するため、コピー先はメモしておいてください。
 
-2. vSphere client を使用して、ESXi サーバーにログインします。 仮想マシンを作成するには、管理者特権が必要です。
+2. vSphere web client を使用して、ESXi サーバーにログインします。 仮想マシンを作成するには、管理者特権が必要です。
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -104,7 +104,10 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image2.png)
 
-4. 右側のウィンドウの **[Datastores]** で VMDK をアップロードするデータストアを選択します。 データストアの種類は、VMFS 5 である必要があります。 データストアには、OS とデータ ディスク用の十分な空き領域も必要です。
+4. 右側のウィンドウの **[Datastores]** で VMDK をアップロードするデータストアを選択します。 
+
+    - データストアの種類は、VMFS5 である必要があります。 
+    - データストアには、OS とデータ ディスク用の十分な空き領域も必要です。
    
 5. 右クリックして **[Browse Datastore]** を選択します。
 
@@ -145,11 +148,11 @@ VMware ESXi 6.0 または 6.5 を実行しているホスト システムで仮�
 15. **[Select storage]\(ストレージの選択\)** ページで、VM のプロビジョニングに使用するデータストアを選択します。 **[次へ]** をクリックします。
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. **[Customize settings]\(設定のカスタマイズ\)** ページで、**[CPU]** を [4] に、**[Memory]\(メモリ\)** を [8192 MB] (以上) に、**[Hard disk 1]\(ハード ディスク 1\)** を [2 TB] (以上) に設定します。 追加する **SCSI ハード ディスク**の種類を選択します。 ここでは、それは LSI Logic SAS でした。 **静的 IDE ディスクはサポートされていません。** **[Hard disk 1]\(ハード ディスク 1\)** は仮想データ ディスクです。 一度ディスクをプロビジョニングすると、圧縮できなくなることに注意してください。
+16. **[Customize settings]\(設定のカスタマイズ\)** ページで、**[CPU]** を [4] に、**[Memory]\(メモリ\)** を [8192 MB] (以上) に、**[Hard disk 1]\(ハード ディスク 1\)** を [2 TB] (以上) に設定します。 追加する **SCSI ハード _ ディスク** を選択します。 ここでは、それは LSI Logic SAS でした。 **静的 IDE ディスクはサポートされていません。** **[Hard disk 1]\(ハード ディスク 1\)** は仮想データ ディスクです。 一度ディスクをプロビジョニングすると、圧縮できなくなることに注意してください。
 
     ![](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
-    同じページで、**[Add hard disk]\(ハード ディスクの追加\)** をクリックし、**[Existing hard disk]\(既存のハード ディスク\)** を選択します。 これは OS ディスクを追加します。 
+    同じページで、**[Add hard disk]\(ハード ディスクの追加\)** をクリックし、**[Existing hard disk]\(既存のハード ディスク\)** を選択します。 データ ストア内の VMDK ファイルを選択します。 これにより、OS ディスクが追加されます。 
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 

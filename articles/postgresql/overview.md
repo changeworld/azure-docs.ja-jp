@@ -2,20 +2,20 @@
 title: Azure Database for PostgreSQL リレーショナル データベース サービスの概要
 description: Azure Database for PostgreSQL リレーショナル データベース サービスについて概説します。
 services: postgresql
-author: kamathsun
-ms.author: sukamat
+author: rachel-msft
+ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 06/02/2018
-ms.openlocfilehash: fab3aa7d0b1fe0f4fafd4b2fdca24ad0e8a3d03c
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.date: 06/15/2018
+ms.openlocfilehash: 86a8b824479173024b1a14bb8612073ffbfac468
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34737233"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092159"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Azure Database for PostgreSQL とは
 

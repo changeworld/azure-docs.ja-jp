@@ -1,20 +1,21 @@
 ---
-title: Bing Custom Search とは | Microsoft Docs
+title: Bing Custom Search とは
+titlesuffix: Azure Cognitive Services
 description: Bing Custom Search の概要を示します
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: overview
 ms.date: 09/29/2017
 ms.author: v-brapel
-ms.openlocfilehash: b6f50844d6571cca6d63c1db7a85863e3d22d411
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2483bf36bb18af21bc454e08f3321b33094c43c8
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948079"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814306"
 ---
 # <a name="what-is-bing-custom-search"></a>Bing Custom Search とは
 

@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ef04e6dab2aa2a257713f7fe3cca3dd0dd090a53
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 20c12891d629cb3e3f7f3c0e0013dffc28b14c63
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991710"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248673"
 ---
 # <a name="provision-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Azure Data Factory に Azure-SSIS 統合ランタイムをプロビジョニングする
 このチュートリアルでは、Azure Portal を使用して Azure-SSIS 統合ランタイム (IR) を Azure Data Factory にプロビジョニングする手順について説明します。 その後、SQL Server Data Tools または SQL Server Management Studio を使用して、Azure 上のこのランタイムに SQL Server Integration Services (SSIS) パッケージをデプロイして実行できます。 Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概要](concepts-integration-runtime.md#azure-ssis-integration-runtime)に関する記事を参照してください。
@@ -32,10 +32,10 @@ ms.locfileid: "46991710"
 ## <a name="prerequisites"></a>前提条件
 - **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。 
 - **Azure SQL Database サーバー**。 まだデータベース サーバーをお持ちでない場合は、あらかじめ Azure Portal でデータベース サーバーを作成しておいてください。 Azure Data Factory は、このデータベース サーバーに SSIS カタログ (SSISDB データベース) を作成します。 このデータベース サーバーは、統合ランタイムと同じ Azure リージョンに作成することをお勧めします。 この構成により、統合ランタイムは、Azure リージョンにまたがることなく SSISDB データベースに実行ログを書き込むことができます。 
-- SSISDB は、選択したデータベース サーバーに基づいて、1 つのデータベースやエラスティック プールの一部として、または Managed Instance 上に自動的に作成できます。SSISDB には、パブリック ネットワークで、または仮想ネットワークに参加することでアクセスできます。 仮想ネットワーク サービス エンドポイント/マネージド インスタンスで Azure SQL Database を使用して、SSISDB をホストするか、オンプレミスのデータにアクセスする必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。[仮想ネットワークでの Azure-SSIS IR の作成](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime)に関する記事を参照してください。 
+- SSISDB は、選択したデータベース サーバーに基づいて、1 つのデータベースやエラスティック プールの一部として、またはマネージド インスタンス上に自動的に作成でき､パブリック ネットワークから､または仮想ネットワークに参加することでアクセスできます。 仮想ネットワーク サービス エンドポイント/マネージド インスタンスで Azure SQL Database を使用して、SSISDB をホストするか、オンプレミスのデータにアクセスする必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。[仮想ネットワークでの Azure-SSIS IR の作成](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime)に関する記事を参照してください。 
 - データベース サーバーで **[Azure サービスへのアクセスを許可]** の設定が有効になっていることを確認します。 仮想ネットワーク サービス エンドポイント/マネージド インスタンスで Azure SQL Database を使用して SSISDB をホストする場合、この設定は適用されません。 詳細については、「[Azure SQL データベースのセキュリティ保護](../sql-database/sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal)」を参照してください。 PowerShell を使用してこの設定を有効にするには、「[New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule?view=azurermps-4.4.1)」を参照してください。 
 - クライアント マシンの IP アドレス、またはクライアント マシンの IP アドレスを含む IP アドレスの範囲を、データベース サーバーのファイアウォール設定にあるクライアント IP アドレスの一覧に追加します。 詳細については、「[Azure SQL Database のサーバーレベルとデータベースレベルのファイアウォール規則](../sql-database/sql-database-firewall-configure.md)」を参照してください。 
-- SQL 認証とサーバー管理者の資格情報、または Azure Active Directory (AAD) 認証と Azure Data Factory (ADF) マネージド サービス ID (MSI) を使用して、データベース サーバーに接続できます。  後者の場合、データベース サーバーへのアクセス許可が割り当てられている AAD グループに ADF MSI を追加する必要があります。[AAD 認証を使用する場合の Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。 
+- SQL 認証とサーバー管理者の資格情報、または Azure Active Directory (AAD) 認証と Azure リソースのための Azure Data Factory (ADF) マネージドID を使用して、データベース サーバーに接続できます。  後者の場合、データベース サーバーへのアクセス許可が割り当てられている AAD グループに ADF MSI を追加する必要があります。[AAD 認証を使用する場合の Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。 
 - Azure SQL Database サーバーに SSIS カタログ (SSISDB データベース) がないことを確認します。 Azure SSIS IR のプロビジョニングでは、既存の SSIS カタログの使用がサポートされていません。 
 
 > [!NOTE]
@@ -115,13 +115,13 @@ ms.locfileid: "46991710"
 
    c. **[Catalog Database Server Endpoint]\(カタログ データベース サーバー エンドポイント\)** で、SSISDB をホストするデータベース サーバーのエンドポイントを選択します。 SSISDB は、選択したデータベース サーバーに基づいて、スタンドアロン データベースやエラスティック プールの一部として、またはマネージド インスタンス上に自動的に作成できます。SSISDB には、パブリック ネットワークで、または仮想ネットワークに参加することでアクセスできます。 SSISDB をホストするためにデータベース サーバーの種類を選択する際のガイダンスについては、[SQL Database 論理サーバーとマネージド インスタンスの比較](../data-factory/create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance)に関する記事を参照してください。 仮想ネットワーク サービス エンドポイント/マネージド インスタンスで Azure SQL Database を選択して、SSISDB をホストするか、オンプレミスのデータにアクセスする必要がある場合は、Azure-SSIS IR を仮想ネットワークに参加させる必要があります。 [仮想ネットワークでの Azure-SSIS IR の作成](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。 
 
-   d. **[Use AAD authentication with your ADF MSI]\(ADF MSI で AAD 認証を使用する\)** チェック ボックスで、SSISDB をホストするデータベース サーバーの認証方法 (SQL または Azure Active Directory (AAD) と Azure Data Factory (ADF) マネージド サービス ID (MSI)) を選択します。 オンにした場合、データベース サーバーへのアクセス許可が割り当てられている AAD グループに ADF MSI を追加する必要があります。[AAD 認証を使用する場合の Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。 
+   d. **[Use AAD authentication with your ADF MSI]\(ADF MSI で AAD 認証を使用する\)** チェック ボックスで、SSISDB をホストするデータベース サーバーの認証方法 (SQL、または Azure Active Directory (AAD) と、Azure リソースのための Azure Data Factory (ADF) マネージド ID) を選択します。 オンにした場合、データベース サーバーへのアクセス許可が割り当てられている AAD グループに ADF MSI を追加する必要があります。[AAD 認証を使用する場合の Azure-SSIS IR の作成](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime)に関するページを参照してください。 
 
    e. **[管理者ユーザー名]** に、SSISDB をホストするデータベース サーバーの SQL 認証ユーザー名を入力します。 
 
    f. **[管理者パスワード]** に、SSISDB をホストするデータベース サーバーの SQL 認証パスワードを入力します。 
 
-   g. **[Catalog Database Service Tier]\(カタログ データベース サービス層\)** で、SSISDB をホストするデータベース サーバーのサービス層 (Basic/Standard/Premium 層またはエラスティック プール名) を選択します。 
+   g. **[Catalog Database Service Tier]\(カタログ データベース サービス階層)** で、SSISDB をホストするデータベース サーバーのサービス階層 (Basic/Standard/Premium 階層またはエラスティック プール名) を選択します。 
 
    h. **[接続テスト]** をクリックし、成功した場合は **[次へ]** をクリックします。 
 
@@ -179,7 +179,7 @@ SSIS ドキュメントの次の記事をご覧ください。
 - [Windows 認証を使用したオンプレミス データ ソースへの接続](/sql/integration-services/lift-shift/ssis-azure-connect-with-windows-auth) 
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルで学習した内容は次のとおりです。 
+このチュートリアルでは、以下の内容を学習しました。 
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。

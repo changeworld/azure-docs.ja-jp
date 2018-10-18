@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a0ee180475c0264d8fce5856b6354830a42ff963
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: ceb148953952228e3c1c277454f93fe44f478b44
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352522"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386673"
 documentType: LandingData
 title: Azure Event Hubs のドキュメント
 metadata:
@@ -118,7 +118,12 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-tutorial-visualize-anomalies">Azure Stream Analytics を使用して Event Hubs データのストリームを読み取り、異常を視覚化する</a>
+    - html: <a href="https://docs.microsoft.com/azure/event-hubs/event-hubs-tutorial-visualize-anomalies">Azure Stream Analytics を使用して Event Hubs データのストリームを読み取り、異常を視覚化する</a>
+    - html: <a href="https://docs.microsoft.com/azure/event-hubs/store-captured-data-data-warehouse">Event Grid と Azure Functions を使用してキャプチャされた Event Hubs データを処理して SQL Data Warehouse に移行する</a>
+    - html: <a href="https://docs.microsoft.com/azure/azure-databricks/databricks-stream-from-eventhubs">Event Hubs を使用してデータを Azure Databricks にストリーム配信する</a>
+    - html: <a href="https://docs.microsoft.com/azure/event-hubs/event-hubs-kafka-mirror-maker-tutorial">Kafka 対応イベント ハブでの Kafka ブローカーのミラーリング</a>
+    - html: <a href="https://docs.microsoft.com/azure/event-hubs/event-hubs-kafka-flink-tutorial">Kafka 対応イベント ハブへの Apache Flink の接続</a>
+    - html: <a href="https://docs.microsoft.com/azure/event-hubs/event-hubs-kafka-akka-streams-tutorial">Kafka 対応イベント ハブへの Akka Streams の接続</a>
 - title: Microsoft Learn でスキルを身に付ける
   items:
   - type: list
@@ -138,21 +143,44 @@ sections:
     style: cards
     className: cardsFTitle
     items:
-    - title: .NET を用いた Azure での開発
-      href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
+    - title: .NET 開発者向け Azure Event Hubs - 基礎
+      href: https://www.pluralsight.com/courses/azure-event-hubs-dotnet-developers-fundamentals
       image:
         src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
+        href: https://www.pluralsight.com/courses/azure-event-hubs-dotnet-developers-fundamentals
 - title: サンプル
   items:
-  - type: paragraph
-    text: 一般的なタスクを管理するためのスクリプトを探します。
   - type: list
-    style: unordered
-    className: spaced noBullet
+    style: icon48
     items:
-    - html: <a href="https://github.com/Azure/azure-event-hubs/tree/master/samples/Management">Azure PowerShell</a>
-    - html: <a href="https://github.com/Azure/azure-event-hubs/tree/master/samples/Management">Azure CLI</a>
+    - image:
+        src: /azure/event-hubs/media/index/logo_net.svg
+      text: .NET Framework
+      href: https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet
+    - image:
+        src: /azure/event-hubs/media/index/logo_java.svg
+      text: Java
+      href: https://github.com/Azure/azure-event-hubs/tree/master/samples/Java
+    - image:
+        src: /azure/event-hubs/media/index/logo_python.svg
+      text: Python
+      href: https://github.com/Azure/azure-event-hubs-python/tree/master/examples
+    - image:
+        src: /azure/event-hubs/media/index/logo_nodejs.svg
+      text: Node.js
+      href: https://github.com/Azure/azure-event-hubs-node
+    - image:
+        src: /azure/event-hubs/media/index/logo_go.svg
+      text: Go
+      href: https://github.com/Azure/azure-event-hubs-go/tree/master/_examples
+    - image:
+        src: /azure/event-hubs/media/index/cli.svg
+      text: Azure CLI
+      href: https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/CLI
+    - image:
+        src: /azure/event-hubs/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: https://github.com/Azure/azure-event-hubs/tree/master/samples/Management/PowerShell
 - title: リファレンス
   items:
   - type: list

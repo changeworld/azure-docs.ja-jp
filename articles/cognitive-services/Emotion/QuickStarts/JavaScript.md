@@ -1,25 +1,27 @@
 ---
-title: Emotion API JavaScript クイック スタート | Microsoft Docs
-description: Cognitive Services の Emotion API と JavaScript の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: 画像から顔の表情を認識する - Emotion API (JavaScript)'
+titlesuffix: Azure Cognitive Services
+description: Emotion API と JavaScript の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/23/2017
 ms.author: anroth
-ms.openlocfilehash: fb9cc2335582c4ec75ec45635e519346d65d7e08
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ROBOTS: NOINDEX
+ms.openlocfilehash: eeaf2ea080d8c0b604b9831532028e31b8306169
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072094"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239491"
 ---
-# <a name="emotion-api-javascript-quick-start"></a>Emotion API JavaScript クイック スタート
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>クイック スタート: 画像から顔の表情を認識するアプリの作成
 
 > [!IMPORTANT]
-> Video API のプレビューは 2017 年 10 月 30 日をもって終了します。 新しい [Video Indexer API のプレビュー](https://azure.microsoft.com/services/cognitive-services/video-indexer/)をお試しください。ビデオから分析情報を手軽に抽出でき、ビデオ内で話される言葉や表情、性格、感情を検知することで、検索結果などのコンテンツの検索エクスペリエンスを強化できます。 [詳細情報](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)。
+> Emotion API は、2019 年 2 月 15 日に非推奨となる予定です。 現在は、[Face API](https://docs.microsoft.com/azure/cognitive-services/face/) の一部として感情認識機能が一般提供されています。 
 
 この記事では、[Emotion API Recognize メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) と JavaScript を使って、画像内の 1 人以上の個人が表す感情を認識するための、役立つ情報とコード サンプルを提供します。
 
@@ -30,7 +32,7 @@ ms.locfileid: "39072094"
 
 ## <a name="recognize-emotions-javascript-example-request"></a>感情認識 JavaScript の要求の例
 
-次をコピーし、`test.html` などのファイルに保存します。 要求 `url` をサブスクリプション キーの取得元の場所を使用するように変更し、"Ocp-Apim-Subscription-Key" の値を有効なサブスクリプション キーに置き換えてください。 これらはそれぞれ、Azure portal の Emotion API リソースの概要のセクションとキーのセクションにあります。 
+次をコピーし、`test.html` などのファイルに保存します。 要求 `url` をサブスクリプション キーの取得元の場所を使用するように変更し、"Ocp-Apim-Subscription-Key" の値を有効なサブスクリプション キーに置き換えてください。 これらはそれぞれ、Azure portal の Emotion API リソースの概要のセクションとキーのセクションにあります。
 
 ![API エンドポイント](../Images/api-url.png)
 
@@ -62,10 +64,10 @@ ms.locfileid: "39072094"
     $(function() {
         // No query string parameters for this API call.
         var params = { };
-      
+
         $.ajax({
             // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the 
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
             //   URL below with "westcentralus".
             url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
             beforeSend: function(xhrObj){
@@ -87,7 +89,7 @@ ms.locfileid: "39072094"
             for (var prop in faceRectangle) {
                 faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
             }
-            
+
             // Get emotion confidence scores
             var scores = data[0].scores;
             var scoresList = $('#scores');
@@ -108,10 +110,10 @@ ms.locfileid: "39072094"
 ## <a name="recognize-emotions-sample-response"></a>感情認識の応答例
 呼び出しが成功すると、顔エントリとそれらに関連付けられた感情スコアの配列が、顔の四角形サイズの降順で返されます。 空の応答は、顔が検出されなかったことを示します。 感情エントリには次のフィールドが含まれます。
 * faceRectangle - 画像内の顔の四角形の位置。
-* scores - 画像内のそれぞれの顔の Emotion スコア。 
+* scores - 画像内のそれぞれの顔の Emotion スコア。
 
 ```json
-application/json 
+application/json
 [
   {
     "faceRectangle": {

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
 ms:custom: mvc
-ms.openlocfilehash: 67d514fe6315604016dc10b7dfc8154c3919f914
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: e197d5306d0df93c243b765ba9154dd8661c6908
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616545"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319526"
 ---
 # <a name="get-started"></a>クイック スタート: Azure PowerShell を使用して Standard Load Balancer を作成する
 このクイック スタートでは、Azure PowerShell を使用して Standard Load Balancer を作成する方法について説明します ロード バランサーをテストするには、Windows Server を実行する 2 つの仮想マシン (VM) をデプロイし、VM 間で Web アプリの負荷を分散します。 Standard Load Balancer の詳細については、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページを参照してください。
@@ -209,7 +209,7 @@ $nsg = New-AzureRmNetworkSecurityGroup`
 -SecurityRules $rule1,$rule2
 ```
 
-###<a name="create-nics"></a>NIC の作成
+### <a name="create-nics"></a>NIC の作成
 [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) を使用して仮想 NIC を作成します。 次の例では、2 つの仮想 NIC を作成します  (以降の手順では、アプリ用に作成する VM ごとに仮想 NIC を 1 つ)。 いつでも追加の仮想 NIC と VM を作成してロード バランサーに追加することができます。
 
 ```azurepowershell-interactive

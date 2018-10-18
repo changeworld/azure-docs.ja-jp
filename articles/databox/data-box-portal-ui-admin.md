@@ -2,25 +2,18 @@
 title: Azure Data Box Disk ポータル管理ガイド | Microsoft Docs
 description: Azure portal を使用して Azure Data Box を管理する方法について説明します。
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: disk
 ms.topic: overview
-ms.custom: mvc
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 08/28/2018
 ms.author: alkohli
-ms.openlocfilehash: 7bf88a4e9d7af1033f014939d95783f9430dd84a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: b98653ea0896e617a666147d243f24cb55483a28
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124965"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091692"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk-preview"></a>Azure portal を使用して Data Box Disk を管理する (プレビュー)
 
@@ -141,7 +134,7 @@ Data Box Disk の管理は、Azure portal から行うことができます。 �
 |データがコピーされました     |データのコピーが進行中です。<br> データのコピーが完了するまでお待ちください。         |
 |完了       |注文が正常に完了しました。<br> オンプレミスのデータをサーバーから削除する前に、データが Azure に存在することを確認してください。         |
 |完了 (エラーあり)| データのコピーは完了しましたが、エラーが発生しました。 <br> **[概要]** に示されているパスを使用してコピー ログを確認してください。 詳細については、「[Download diagnostic logs (診断ログのダウンロード)](data-box-disk-troubleshoot.md#download-diagnostic-logs)」を参照してください。   |
-|キャンセル済み            |注文はキャンセルされました。 <br> お客様によって注文がキャンセルされたか、またはエラーが発生したために、サービスによって注文がキャンセルされました。     |
+|Canceled            |注文はキャンセルされました。 <br> お客様によって注文がキャンセルされたか、またはエラーが発生したために、サービスによって注文がキャンセルされました。     |
 
 
 

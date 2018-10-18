@@ -3,8 +3,8 @@ title: 国に応じて Azure CDN コンテンツへのアクセスを制限 | Mi
 description: geo フィルタリング機能を使用して Azure CDN コンテンツへのアクセスを国に応じて制限する方法について説明します。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: 12c17cc5-28ee-4b0b-ba22-2266be2e786a
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
-ms.author: v-deasim
-ms.openlocfilehash: 661356aeb2369bc1bbddd6caee57b256dd9e1212
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.author: magattus
+ms.openlocfilehash: 471a7e3704f10674c8a1d9bdf26df5f0aaf8519b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285017"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093308"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>国に応じて Azure CDN コンテンツへのアクセスを制限
 

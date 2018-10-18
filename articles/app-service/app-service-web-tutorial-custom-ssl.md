@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 2aca366e6a433e3e71cccb49a13638dedacc38d6
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 700465279a43a8490c5863e7181c4c4d009ee97b
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887508"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857926"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-web-apps"></a>チュートリアル: 既存のカスタム SSL 証明書を Azure Web Apps にバインドする
 
@@ -28,7 +28,7 @@ Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホ
 
 ![カスタム SSL 証明書付きの Web アプリ](./media/app-service-web-tutorial-custom-ssl/app-with-custom-ssl.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * アプリの価格レベルをアップグレードする
@@ -66,7 +66,7 @@ App Service で証明書を使用するには、証明書が次のすべての�
 
 ## <a name="prepare-your-web-app"></a>Web アプリの準備
 
-カスタム SSL 証明書を Web アプリにバインドするには、[App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が **Basic**、**Standard** または **Premium** のいずれかのレベルである必要があります。 この手順では、Web アプリが、サポートされている価格レベルであることを確認します。
+カスタム SSL 証明書を Web アプリにバインドするには、[App Service プラン](https://azure.microsoft.com/pricing/details/app-service/)が **Basic**、**Standard**、**Premium**、または **Isolated** のいずれかのレベルである必要があります。 この手順では、Web アプリが、サポートされている価格レベルであることを確認します。
 
 ### <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -304,7 +304,7 @@ New-AzureRmWebAppSSLBinding `
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * アプリの価格レベルをアップグレードする

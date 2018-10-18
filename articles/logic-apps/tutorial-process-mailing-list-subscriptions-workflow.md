@@ -10,19 +10,19 @@ ms.reviewer: klam, LADocs
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
-ms.openlocfilehash: 4ac5861dabbc473099886b4f099824cde60f38b9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 96a151b3de5d59ad74eaf7061b1a3ff91d602759
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122871"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044418"
 ---
-# <a name="manage-mailing-list-requests-with-a-logic-app"></a>ロジック アプリでメーリング リストの登録申請を管理する
+# <a name="manage-mailing-list-requests-with-azure-logic-apps"></a>Azure Logic Apps でメーリング リスト要求を管理する
 
 Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを初めとする各種の SaaS (サービスとしてのソフトウェア) アプリとオンプレミス システムの垣根を越えてワークフローを自動化したりデータを統合したりすることができます。 このチュートリアルでは、[MailChimp](https://mailchimp.com/) サービスによって管理されたメーリング リストの登録申請を処理する[ロジック アプリ](../logic-apps/logic-apps-overview.md)の作成方法を紹介します。
 このロジック アプリは、登録申請用のメール アカウントを監視して承認依頼を送信し、承認済みのメンバーをメーリング リストに追加するものです。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 空のロジック アプリを作成します。
@@ -59,11 +59,11 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-process-mailing-list-subscriptions-workflow/create-logic-app-settings.png)
 
-   | 設定 | 値 | 説明 | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **名前** | LA-MailingList | ロジック アプリの名前 | 
    | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
-   | **リソース グループ** | LA-MailingList-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
+   | **[リソース グループ]** | LA-MailingList-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
    | **場所** | 米国東部 2 | ロジック アプリに関する情報の保存先となるリージョン | 
    | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    |||| 
@@ -92,11 +92,11 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![メールをチェックするフォルダー、間隔、頻度を指定](./media/tutorial-process-mailing-list-subscriptions-workflow/add-trigger-set-up-email.png)
 
-      | 設定 | 値 | 説明 | 
+      | Setting | 値 | 説明 | 
       | ------- | ----- | ----------- | 
-      | **フォルダー** | 受信トレイ | 監視するメール フォルダー | 
+      | **フォルダー** | Inbox | 監視するメール フォルダー | 
       | **間隔** | 1 | チェックの間隔 (単位数) | 
-      | **頻度** | 時間 | チェックの間隔に使う時間の単位  | 
+      | **頻度** | Hour | チェックの間隔に使う時間の単位  | 
       |  |  |  | 
 
    2. **[詳細オプションを表示する]** を選択します。 トリガーでメールの件名から探すテキストとして「```subscribe-test-members-ML```」を **[件名フィルター]** ボックスに入力します。
@@ -124,11 +124,11 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![承認依頼メールの設定](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-approval-email-settings.png)
 
-   | 設定 | 値 | 説明 | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
-   | **宛先** | <*approver-email-address*> | 承認者のメール アドレス。 テスト目的のため、ご自身のアドレスを使ってください。 | 
-   | **ユーザー オプション** | 承認、拒否 | 承認者が選ぶことのできる回答の選択肢。 既定では、承認者が回答として [Approve] または [Reject] を選択できます。 | 
-   | **件名** | test-members-ML のメンバー申請の承認 | わかりやすいメールの件名 | 
+   | **To** | <*approver-email-address*> | 承認者のメール アドレス。 テスト目的のため、ご自身のアドレスを使ってください。 | 
+   | **ユーザー オプション** | Approve, Reject | 承認者が選ぶことのできる回答の選択肢。 既定では、承認者が回答として [Approve] または [Reject] を選択できます。 | 
+   | **[件名]** | test-members-ML のメンバー申請の承認 | わかりやすいメールの件名 | 
    |  |  |  | 
 
    特定の編集ボックス内をクリックしたときに表示される動的コンテンツ リストまたはインライン パラメーター リストは、ここでは無視してください。 
@@ -193,10 +193,10 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![[メンバーをリストに追加する] の情報を入力](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-mailchimp-add-member-settings.png)
 
-   | 設定 | 値 | 説明 | 
+   | Setting | 値 | 説明 | 
    | ------- | ----- | ----------- | 
    | **リスト ID** | test-members-ML | MailChimp メーリング リストの名前 | 
-   | **状態** | 登録済み | 新しいメンバーの登録ステータス。 詳細については、「<a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">Manage subscribers with the MailChimp API (MailChimp API を使った購読者管理)</a>」を参照してください。 | 
+   | **状態** | subscribed | 新しいメンバーの登録ステータス。 詳細については、「<a href="https://developer.mailchimp.com/documentation/mailchimp/guides/manage-subscribers-with-the-mailchimp-api/" target="_blank">Manage subscribers with the MailChimp API (MailChimp API を使った購読者管理)</a>」を参照してください。 | 
    | **メール アドレス** | <*new-member-email-address*> | パラメーター リストまたは動的コンテンツ リストから、**[新しい電子メールが届いたとき]** の **[差出人]** を選択します。ここから、新しいメンバーのメール アドレスが渡されます。 
    |  |  |  | 
 
@@ -245,10 +245,10 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![成功時に送信されるメールの情報を入力](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-success-settings.png)
 
-   | 設定 | 値 | 説明 | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
-   | **宛先** | <*your-email-address*> | 成功時のメールの送信先アドレス。 テスト目的で自分の電子メール アドレスを使用できます。 | 
-   | **件名** | <*subject-for-success-email*> | 成功時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、**[メンバーをリストに追加する]** 下の指定したフィールドを選択します。 <p>"Success! Member added to 'test-members-ML': **<メール アドレス>**" | 
+   | **To** | <*your-email-address*> | 成功時のメールの送信先アドレス。 テスト目的で自分の電子メール アドレスを使用できます。 | 
+   | **[件名]** | <*subject-for-success-email*> | 成功時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、**[メンバーをリストに追加する]** 下の指定したフィールドを選択します。 <p>"Success! Member added to 'test-members-ML': **<メール アドレス>**" | 
    | **本文** | <*body-for-success-email*> | 成功時に送信されるメールの本文の内容。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、**[メンバーをリストに追加する]** 下の指定したフィールドを選択します。  <p>"New member has joined 'test-members-ML': **<メール アドレス>**"</br>"Member opt-in status: **<ステータス>**" | 
    | | | | 
 
@@ -270,10 +270,10 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![失敗時に送信されるメールの情報を入力](./media/tutorial-process-mailing-list-subscriptions-workflow/add-action-email-failed-settings.png)
 
-   | 設定 | 値 | 説明 | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
-   | **宛先** | <*your-email-address*> | 失敗時のメールの送信先アドレス。 テスト目的で自分の電子メール アドレスを使用できます。 | 
-   | **件名** | <*subject-for-failure-email*> | 失敗時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、**[メンバーをリストに追加する]** 下の指定したフィールドを選択します。 <p>"Failed, member not added to 'test-members-ML': **<メール アドレス>**" | 
+   | **To** | <*your-email-address*> | 失敗時のメールの送信先アドレス。 テスト目的で自分の電子メール アドレスを使用できます。 | 
+   | **[件名]** | <*subject-for-failure-email*> | 失敗時に送信されるメールの件名。 このチュートリアルでは、次のテキストを入力し、パラメーター リストまたは動的コンテンツ リストから、**[メンバーをリストに追加する]** 下の指定したフィールドを選択します。 <p>"Failed, member not added to 'test-members-ML': **<メール アドレス>**" | 
    | **本文** | <*body-for-failure-email*> | 失敗時に送信されるメールの本文の内容。 このチュートリアルでは、次のテキストを入力します。 <p>"Member might already exist. Check your MailChimp account." | 
    | | | | 
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: ff2a161cbc39cdb4cf35cad2b8bd403ef2d3260c
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: b3a3baaf22fa9c382bb45a5b2a2065ef7678faf5
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222169"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855956"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル: マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -68,7 +68,7 @@ Azure AD Connect が、Azure AD に参加するハイブリッド Azure AD に�
 - https://device.login.microsoftonline.com
 - https://autologon.microsoftazuread-sso.com (シームレス SSO を使用している場合、または使用する予定の場合)
 
-Windows 10 1709 以降では、組織が送信プロキシ経由でインターネットにアクセスする必要がある場合に、グループ ポリシー オブジェクト (GPO) を使用してコンピューターのプロキシ設定を構成できます。 お使いのコンピューターで Windows 10 1709 より古いバージョンが実行されている場合は、Web Proxy Auto-Discovery (WPAD) を実装して、Windows 10 コンピューターが Azure AD にデバイスを登録できるようにする必要があります。 
+Windows 10 1709 以降では、組織が送信プロキシ経由でインターネットにアクセスする必要がある場合に、[グループ ポリシー オブジェクト (GPO) を使用してコンピューターのプロキシ設定を構成できます](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。 お使いのコンピューターで Windows 10 1709 より古いバージョンが実行されている場合は、Web Proxy Auto-Discovery (WPAD) を実装して、Windows 10 コンピューターが Azure AD にデバイスを登録できるようにする必要があります。 
 
 組織が認証された送信プロキシ経由でインターネットにアクセスする必要がある場合は、Windows 10 コンピューターが送信プロキシに対して正常に認証されることを確認する必要があります。 Windows 10 コンピューターではマシン コンテキストを使用してデバイス登録が実行されるため、マシン コンテキストを使用して送信プロキシ認証を構成する必要があります。 構成要件については、送信プロキシ プロバイダーに確認してください。 
 

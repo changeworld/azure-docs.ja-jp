@@ -1,21 +1,23 @@
 ---
-title: Azure Cognitive Services、Text Analytics API の Python のクイック スタート | Microsoft Docs
+title: 'クイック スタート: Python を使用して Text Analytics API を呼び出す'
+titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: ashmaka
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 05/02/2018
+ms.topic: quickstart
+ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: b4c02767320b71912050ad511811767e6b5decf4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 07b7327b01987d79a6447ed67de27b69c02c14ee
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374517"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268361"
 ---
-# <a name="quickstart-for-text-analytics-api-with-python"></a>Python での Text Analytics API のクイック スタート 
+# <a name="quickstart-using-python-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Python を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
 
 このチュートリアルでは、T[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を Python で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、および[キー フレーズの抽出](#KeyPhraseExtraction)を行う方法について説明します。
@@ -24,7 +26,7 @@ ms.locfileid: "35374517"
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=TextAnalytics.ipynb)
 
-API の技術ドキュメントについては、[API 定義](//go.microsoft.com/fwlink/?LinkID=759346)を参照してください。
+API の技術ドキュメントについては、[API の定義](//go.microsoft.com/fwlink/?LinkID=759346)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -166,7 +168,7 @@ pprint(sentiments)
 
 ## <a name="extract-key-phrases"></a>キー フレーズを抽出する
 
-キー フレーズ抽出 API では、[キー フレーズ メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 チュートリアルのこのセクションでは、英語とスペイン語の両方のドキュメントのキー フレーズを抽出します。
+Key Phrase Extraction API では、[Key Phrases メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 チュートリアルのこのセクションでは、英語とスペイン語の両方のドキュメントのキー フレーズを抽出します。
 
 キー フレーズ抽出サービス用のサービス エンドポイントは、次の URL 経由でアクセスされます。
 
@@ -218,9 +220,9 @@ for document in key_phrases["documents"]:
 HTML("<table><tr><th>Text</th><th>Key phrases</th></tr>{0}</table>".format("\n".join(table)))
 ```
 
-## <a name="identify-linked-entities"></a>リンクされたエンティティを識別する
+## <a name="identify-entities"></a>エンティティの識別
 
-Entity Linking API は、[エンティティ リンク メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 次の例では、英語のドキュメントのエンティティを識別します。
+Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 次の例では、英語のドキュメントのエンティティを識別しています。
 
 エンティティ リンク サービス用のサービス エンドポイントは、次の URL 経由でアクセスされます。
 
@@ -230,7 +232,7 @@ entity_linking_api_url = text_analytics_base_url + "entities"
 print(entity_linking_api_url)
 ```
 
-    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.0/entities
+    https://westcentralus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities
 
 
 ドキュメントのコレクションを次に示します。
@@ -238,8 +240,8 @@ print(entity_linking_api_url)
 
 ```python
 documents = {'documents' : [
-  {'id': '1', 'text': 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.'},
-  {'id': '2', 'text': 'The Seattle Seahawks won the Super Bowl in 2014.'}
+  {'id': '1', 'text': 'Jeff bought three dozen eggs because there was a 50% discount.'},
+  {'id': '2', 'text': 'The Great Depression began in 1929. By 1933, the GDP in America fell by 25%.'}
 ]}
 ```
 
@@ -250,63 +252,162 @@ headers   = {"Ocp-Apim-Subscription-Key": subscription_key}
 response  = requests.post(entity_linking_api_url, headers=headers, json=documents)
 entities = response.json()
 ```
-    {
-        "documents": [
-            {
-                "id": "1",
-                "entities": [
-                    {
-                        "name": "Xbox One",
-                        "matches": [
-                            {
-                                "text": "XBox One",
-                                "offset": 23,
-                                "length": 8
-                            }
-                        ],
-                        "wikipediaLanguage": "en",
-                        "wikipediaId": "Xbox One",
-                        "wikipediaUrl": "https://en.wikipedia.org/wiki/Xbox_One",
-                        "bingId": "446bb4df-4999-4243-84c0-74e0f6c60e75"
-                    },
-                    {
-                        "name": "Ultra-high-definition television",
-                        "matches": [
-                            {
-                                "text": "4K",
-                                "offset": 63,
-                                "length": 2
-                            }
-                        ],
-                        "wikipediaLanguage": "en",
-                        "wikipediaId": "Ultra-high-definition television",
-                        "wikipediaUrl": "https://en.wikipedia.org/wiki/Ultra-high-definition_television",
-                        "bingId": "7ee02026-b6ec-878b-f4de-f0bc7b0ab8c4"
-                    }
-                ]
-            },
-            {
-                "id": "2",
-                "entities": [
-                    {
-                        "name": "2013 Seattle Seahawks season",
-                        "matches": [
-                            {
-                                "text": "Seattle Seahawks",
-                                "offset": 4,
-                                "length": 16
-                            }
-                        ],
-                        "wikipediaLanguage": "en",
-                        "wikipediaId": "2013 Seattle Seahawks season",
-                        "wikipediaUrl": "https://en.wikipedia.org/wiki/2013_Seattle_Seahawks_season",
-                        "bingId": "eb637865-4722-4eca-be9e-0ac0c376d361"
-                    }
-                ]
-            }
-        ],
-        "errors": []
-    }
+
+```json
+{
+    "Documents": [
+        {
+            "Id": "1",
+            "Entities": [
+                {
+                    "Name": "Jeff",
+                    "Matches": [
+                        {
+                            "Text": "Jeff",
+                            "Offset": 0,
+                            "Length": 4
+                        }
+                    ],
+                    "Type": "Person"
+                },
+                {
+                    "Name": "three dozen",
+                    "Matches": [
+                        {
+                            "Text": "three dozen",
+                            "Offset": 12,
+                            "Length": 11
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50",
+                    "Matches": [
+                        {
+                            "Text": "50",
+                            "Offset": 49,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50%",
+                    "Matches": [
+                        {
+                            "Text": "50%",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
+                }
+            ]
+        },
+        {
+            "Id": "2",
+            "Entities": [
+                {
+                    "Name": "Great Depression",
+                    "Matches": [
+                        {
+                            "Text": "The Great Depression",
+                            "Offset": 0,
+                            "Length": 20
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Great Depression",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+                    "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
+                },
+                {
+                    "Name": "1929",
+                    "Matches": [
+                        {
+                            "Text": "1929",
+                            "Offset": 30,
+                            "Length": 4
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "By 1933",
+                    "Matches": [
+                        {
+                            "Text": "By 1933",
+                            "Offset": 36,
+                            "Length": 7
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "Gross domestic product",
+                    "Matches": [
+                        {
+                            "Text": "GDP",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Gross domestic product",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+                    "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
+                },
+                {
+                    "Name": "United States",
+                    "Matches": [
+                        {
+                            "Text": "America",
+                            "Offset": 56,
+                            "Length": 7
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "United States",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
+                    "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
+                    "Type": "Location"
+                },
+                {
+                    "Name": "25",
+                    "Matches": [
+                        {
+                            "Text": "25",
+                            "Offset": 72,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "25%",
+                    "Matches": [
+                        {
+                            "Text": "25%",
+                            "Offset": 72,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
+                }
+            ]
+        }
+    ],
+    "Errors": []
+}
+```
 
 ## <a name="next-steps"></a>次の手順
 

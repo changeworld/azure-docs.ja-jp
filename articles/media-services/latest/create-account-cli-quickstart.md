@@ -4,25 +4,22 @@ description: Azure Media Services アカウントを作成するには、この�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cflower
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/27/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: abed9fd8d466b582b534b365f4be4257f4986435
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: de54571308b737b9160a39ee4ba5d4b2d9f15775
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736004"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376535"
 ---
 # <a name="quickstart-create-an-azure-media-services-account"></a>クイック スタート - Azure Media Services アカウントを作成する
-
-> [!NOTE]
-> Azure Media Services の最新バージョン (2018-03-30) はプレビューです。 このバージョンは v3 とも呼ばれます。 
 
 開発者でもメディア コンテンツ作成者でも、Azure でメディア コンテンツを保存、暗号化、エンコード、管理、ストリーム配信するには、Media Services アカウントを作成する必要があります。 Media Services アカウントを作成するときは、Azure Storage アカウント リソースの ID を指定する必要があります。 指定されたストレージ アカウントは、Media Services アカウントに関連付けられます。 このストレージ アカウント リソースは、Media Services アカウントと同じリージョンに配置する必要があります。  
 

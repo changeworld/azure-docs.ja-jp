@@ -4,15 +4,15 @@ description: Azure Migrate サービスの概要を示します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 08/08/2018
+ms.date: 09/25/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 8371a160d129586f63b2f14946ed34a8d0637f6c
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: d2a8885ffb9148d408eff0e8a7d2ef09121e5359
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714242"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162040"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -33,9 +33,12 @@ Azure Migrate によって次のことが可能になります。
 - Hyper-V 仮想マシンと物理サーバーを評価する必要がある場合、Hyper-V には [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) を、物理マシンには Microsoft の [パートナーのツール](https://azure.microsoft.com/migration/partners/)を使用してください。
 - 1 回の検出で最大 1,500 個の VM を検出でき、1 つのプロジェクトで最大 1,500 個の VM を検出できます。 さらに、一度に最大 1,500 個の VM を評価できます。
 - より大規模な環境を検出する場合は、検出を分割して、複数のプロジェクトを作成できます。 [詳細情報](how-to-scale-assessment.md) Azure Migrate では、サブスクリプションあたり最大 20 個のプロジェクトをサポートしています。
-- Azure Migrate プロジェクトを作成できるのは、米国中西部または米国東部リージョンに限られます。 このことが、対象となる Azure リージョンへの移行計画の可否に影響することはありません。 移行プロジェクトの場所は単に、オンプレミス環境から検出されたメタデータを保存するためにのみ使用されます。
 - Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
+- Azure Migrate プロジェクトを作成できるのは米国の地理的な場所のみです。 このことが、対象となる Azure リージョンへの移行計画の可否に影響することはありません。 移行プロジェクトの地理的な場所は、オンプレミス環境から検出されたメタデータを保存するためにのみ使用されます。 Azure Migrate によって収集されるメタデータの詳細については、[こちら](https://docs.microsoft.com/azure/migrate/resources-faq#discovery-and-assessment)を参照してください。 収集されたメタデータは、選択した [Azure の地理的な場所](https://azure.microsoft.com/global-infrastructure/geographies/)のリージョンのいずれかに格納されます。
 
+**地理的な場所** | **リージョン**
+--- | ---
+米国 | 米国中西部、米国東部
 
 ## <a name="what-do-i-need-to-pay-for"></a>支払い対象について
 
@@ -49,14 +52,14 @@ Azure Migrate の価格について、[詳しくはこちら](https://azure.micr
 **プロパティ** | **詳細**
 --- | ---
 **ターゲットの場所** | Azure 上の移行先となる場所。<br/><br/>現在 Azure Migrate は 30 のリージョンをサポートしています。 [リージョンを確認](https://azure.microsoft.com/global-infrastructure/services/)してください。 既定では、ターゲット リージョンが "米国西部 2" に設定されます。
-**ストレージの種類** | Azure に割り当てるディスクの種類。 サイズ変更の設定基準が**オンプレミス準拠**のときに適用されます。 ターゲット ディスクの種類は、Premium (既定) マネージド ディスクまたは Standard マネージド ディスクとして指定します。 サイズ変更がパフォーマンス ベースの場合、VM のパフォーマンス データに基づいて、ディスクのサイズ変更のレコメンデーションが自動的に行われます。 
-**サイズ変更の設定基準** | サイズは、オンプレミス VM の**パフォーマンス履歴**に基づいて変更するか、またはパフォーマンス履歴を考慮せずに "**オンプレミス準拠**" (既定) にすることができます。 
+**ストレージの種類** | Azure に割り当てるディスクの種類。 サイズ変更の設定基準が**オンプレミス準拠**のときに適用されます。 ターゲット ディスクの種類は、Premium (既定) マネージド ディスクまたは Standard マネージド ディスクとして指定します。 サイズ変更がパフォーマンス ベースの場合、VM のパフォーマンス データに基づいて、ディスクのサイズ変更のレコメンデーションが自動的に行われます。
+**サイズ変更の設定基準** | サイズは、オンプレミス VM の**パフォーマンス履歴**に基づいて変更するか、またはパフォーマンス履歴を考慮せずに "**オンプレミス準拠**" (既定) にすることができます。
 **Azure オファー** | 登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate はそれに応じてコストを見積もります。
 **Azure ハイブリッド特典** | ソフトウェア アシュアランスがあり、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を利用してコストの割引を受ける資格があるかどうか。
 **予約インスタンス** |  Azure に[予約インスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)があるかどうか。 Azure Migrate はそれに応じてコストを見積もります。
 **VM のアップタイム** | Azure において VM が動作する期間。 それに応じてコスト見積もりが行われます。
 **[価格レベル]** | ターゲット Azure VM の[価格レベル (Basic/Standard)](../virtual-machines/windows/sizes-general.md)。 たとえば、運用環境の移行を計画している場合は、Standard レベルを検討します。この場合、VM の待ち時間は短くなりますが、コストは高くなります。 一方、テスト環境の場合は、Basic レベルを使用することが可能です。この場合、待ち時間は長くなり、コストは安くなります。 既定では [Standard](../virtual-machines/windows/sizes-general.md) レベルが使用されます。
-**パフォーマンス履歴** | 既定では、オンプレミスのマシンのパフォーマンスが、過去 1 日のパフォーマンス履歴の 95% パーセンタイル値を使用して評価されます。 
+**パフォーマンス履歴** | 既定では、オンプレミスのマシンのパフォーマンスが、過去 1 日のパフォーマンス履歴の 95% パーセンタイル値を使用して評価されます。
 **VM シリーズ** | サイズ見積もりに使用する VM シリーズ。 たとえば、Azure で A シリーズ VM に移行する予定がない運用環境がある場合は、リストまたはシリーズから A シリーズを除外することができます。 サイズ変更は、選択したシリーズに基づいてのみ実行されます。   
 **快適性係数** | Azure Migrate では、評価時にバッファー (快適性係数) が考慮されます。 VM のマシン使用率データ (CPU、メモリ、ディスク、ネットワーク) に加えて、このバッファーが適用されます。 快適性係数は、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 一方、快適性係数を 2.0x とした場合は、結果が 4 コア VM になります。 既定の快適性設定は 1.3x です。
 
@@ -80,10 +83,10 @@ Azure Migrate の価格について、[詳しくはこちら](https://azure.micr
 次の表は、Azure Migrate の通信に必要なポートをまとめたものです。
 
 コンポーネント | 通信先 |  詳細
---- | --- |--- 
+--- | --- |---
 コレクター  | Azure Migrate サービス | コレクターは、SSL ポート 443 経由でサービスに接続します。
-コレクター | vCenter Server | 既定では、コレクターはポート 443 で vCenter Server に接続します。 他のポートでサーバーがリッスンしている場合、それをコレクター VM で送信ポートとして構成する必要があります。 
-オンプレミス VM | Log Analytics ワークスペース | [TCP 443] | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) は TCP ポート 443 を使用して Log Analytics に接続します。 MMA エージェントを必要とする依存関係の視覚化機能を使用している場合のみ、このポートが必要になります。 
+コレクター | vCenter Server | 既定では、コレクターはポート 443 で vCenter Server に接続します。 他のポートでサーバーがリッスンしている場合、それをコレクター VM で送信ポートとして構成する必要があります。
+オンプレミス VM | Log Analytics ワークスペース | [TCP 443] | [Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) は TCP ポート 443 を使用して Log Analytics に接続します。 MMA エージェントを必要とする依存関係の視覚化機能を使用している場合のみ、このポートが必要になります。
 
 
 ## <a name="what-happens-after-assessment"></a>評価後の流れ
@@ -91,7 +94,7 @@ Azure Migrate の価格について、[詳しくはこちら](https://azure.micr
 オンプレミスのマシンを評価したら、いくつかのツールを使用して移行を実行できます。
 
 - **Azure Site Recovery**: Azure Site Recovery を使用して Azure に移行することができます。 そのためには、ストレージ アカウントや仮想ネットワークなど、必要な [Azure コンポーネントを準備](../site-recovery/tutorial-prepare-azure.md)します。 オンプレミスで、[VMware 環境を準備](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md)します。 すべての準備が整ったら、Azure へのレプリケーションを設定して有効にし、VM を移行します。 [詳細情報](../site-recovery/vmware-azure-tutorial.md)。
-- **Azure Database Migration**: オンプレミスのマシンで SQL Server、MySQL、Oracle などのデータベースを実行している場合は、[Azure Database Migration Service](../dms/dms-overview.md) を使用して Azure に移行することができます。 
+- **Azure Database Migration**: オンプレミスのマシンで SQL Server、MySQL、Oracle などのデータベースを実行している場合は、[Azure Database Migration Service](../dms/dms-overview.md) を使用して Azure に移行することができます。
 
 
 ## <a name="next-steps"></a>次の手順

@@ -1,21 +1,23 @@
 ---
-title: 機械学習 - Azure Cognitive Services | Microsoft Docs
-description: コンテキストに応じた意思決定を行うことができるクラウドベースの API である、Azure Custom Decision Service での機械学習に関するチュートリアル。
+title: 'チュートリアル: 特性付けおよび特性仕様 - Custom Decision Service'
+titlesuffix: Azure Cognitive Services
+description: Custom Decision Service における機械学習の特性付けおよび特性仕様に関するチュートリアル
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: tutorial
 ms.date: 05/08/2018
-ms.author: slivkins;marcozo;alekh
-ms.openlocfilehash: 50814d67ee39c6657954610358462d877843416e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: slivkins
+ms.openlocfilehash: 1e5d012706d1de5a201eecb8ad805b4d6faaf411
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377024"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869592"
 ---
-# <a name="machine-learning"></a>機械学習
+# <a name="tutorial-featurization-and-feature-specification"></a>チュートリアル: 特性付けおよび特性仕様
 
 このチュートリアルでは、Custom Decision Service の高度な機械学習機能について説明します。 このチュートリアルは、[特性付け](#featurization-concepts-and-implementation)および[特性仕様](#feature-specification-format-and-apis)という 2 つの部分で構成されています。 機械学習では、特性付けはデータを "特性" として表すことを指します。 特性仕様では、特性を指定するための JSON 形式と補助的な API について説明します。
 

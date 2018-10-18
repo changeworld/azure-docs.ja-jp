@@ -1,23 +1,23 @@
 ---
-title: Custom Search SDK C# のクイック スタート | Microsoft Docs
-titleSuffix: Cognitive Services
+title: 'クイック スタート: Custom Search SDK, C#'
+titleSuffix: Azure Cognitive Services
 description: Custom Search SDK C# コンソール アプリケーションの設定。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/06/2018
 ms.author: scottwhi
-ms.openlocfilehash: 6c9917e3a63515f36b386e444edcc53de07799fc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5abf1027059bed9c685e0eb44f17ab41dfabf655
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949929"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816771"
 ---
-# <a name="c-sdk-quickstart"></a>C# SDK のクイック スタート
+# <a name="quickstart-using-the-bing-custom-search-sdk-with-c"></a>クイック スタート: C# による Bing Custom Search SDK の使用
 
 Bing Custom Search SDK は、Bing Custom Search REST API よりも簡単なプログラミング モデルを提供します。 このセクションでは、C# SDK を使用して、最初のカスタム検索呼び出しを行う方法について説明します。
 

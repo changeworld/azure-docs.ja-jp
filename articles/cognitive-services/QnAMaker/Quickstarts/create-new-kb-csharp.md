@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 10/01/2018
 ms.author: diberry
-ms.openlocfilehash: 260ec46d292e244dfe51a3714e8b97e9d4689068
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e6b8c769082b688b07bac78bca5e2dca59a2d9c2
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883417"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389413"
 ---
 # <a name="quickstart-create-a-qna-maker-knowledge-base-in-c"></a>クイック スタート: QnA Maker ナレッジ ベースを C# で作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "48883417"
 ## <a name="prerequisites"></a>前提条件
 
 * 最新の [**Visual Studio Community エディション**](https://www.visualstudio.com/downloads/)。
-* [QnA Maker サービスが必要](../How-To/set-up-qnamaker-service-azure.md)です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。 
+* [QnA Maker サービス](../How-To/set-up-qnamaker-service-azure.md)が必要です。 キーを取得するには、ダッシュボードで **[リソース管理]** の **[キー]** を選択します。 
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-csharp-repo-note.md)]
 
@@ -69,8 +69,8 @@ static string kb = @"
     }
   ],
   'urls': [
-    'https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs',
-    'https://docs.microsoft.com/en-us/bot-framework/resources-bot-framework-faq'
+    'https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs',
+    'https://docs.microsoft.com/bot-framework/resources-bot-framework-faq'
   ],
   'files': []
 }

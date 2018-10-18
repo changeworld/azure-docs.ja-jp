@@ -10,23 +10,21 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: ca1045bcec889e1de47b44a44322579f8b60598f
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 960d2d402f223b306aa6ff05b567d13525e3d525
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586191"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340360"
 ---
 # <a name="what-is-bing-speech"></a>Bing Speech とは
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 クラウドベースの Microsoft Bing Speech API は、音声コマンド制御、自然な言葉での会話を使用したユーザー ダイアログ、文字起こしやディクテーションなど、強力な音声認識機能をアプリケーションで実現する簡単な方法を開発者に提供します。 Microsoft Speech API は、*Speech to Text* と *Text to Speech* の両方の変換をサポートします。
 
 - **Speech to Text** API は、人間の音声を、アプリケーションを制御する入力またはコマンドとして使用できるテキストに変換します。
 - **Text to Speech** API は、テキストを、アプリケーションのユーザーが再生できるオーディオ ストリームに変換します。
-
-> [!NOTE] 
-> 2018 年 9 月以降、新しい[音声サービス](../speech-service/index.yml)が一般公開されました。 ぜひ[無料でお試し](../speech-service/get-started.md)ください。
 
 ## <a name="speech-to-text-speech-recognition"></a>Speech to Text (音声認識)
 

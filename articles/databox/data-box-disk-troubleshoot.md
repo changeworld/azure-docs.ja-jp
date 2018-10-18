@@ -2,25 +2,17 @@
 title: Azure Data Box Disk のトラブルシューティング | Microsoft Docs
 description: Azure Data Box Disk で見られる問題のトラブルシューティングを行う方法について説明します。
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
 ms.topic: overview
-ms.custom: mvc
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 9b2c03c13cf687af7cdebc9c4d2624a6a7c5907f
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 776108b109bc27e0f8059d287e87c67aeca9fbd2
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069201"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091852"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk-preview"></a>Azure Data Box Disk (プレビュー) の問題のトラブルシューティング
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: 548111a6c2b9e0cf8c5b20eee5cc8fa45fe02da8
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 1d1e0d8f5a030daadb8dab1233dee52d5485c8fb
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47453117"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237485"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル: Linux VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
 
 [!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Linux 仮想マシン (VM) のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスし、そのグループ メンバーシップを取得する方法について説明します。 Azure リソースのマネージド ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。  
+このチュートリアルでは、Linux 仮想マシン (VM) 向けのシステム割り当てマネージド ID を使用して、Azure AD Graph API にアクセスし、そのグループ メンバーシップを取得する方法について説明します。 Azure リソースのマネージド ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD 認証をサポートするサービスへの認証を有効にします。  
 
 このチュートリアルでは、Azure AD グループ内での VM ID のメンバーシップをクエリします。 グループの情報は承認の判断によく使用されます。 実際には、VM のマネージド ID は Azure AD 内の**サービス プリンシパル**によって表されます。 
 
@@ -137,7 +137,7 @@ Azure AD Graph:
    curl "https://graph.windows.net/myorganization/servicePrincipals/<VM Object ID>/appRoleAssignments?api-version=1.6" -X POST -d '{"id":"5778995a-e1bf-45b8-affa-663a9f3f4d04","principalId":"<VM Object ID>","resourceId":"81789304-ff96-402b-ae73-07ec0db26721"}'-H "Content-Type: application/json" -H "Authorization: Bearer <ACCESS TOKEN>"
    ``` 
  
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-ad-graph"></a>VM の ID を使用してアクセス トークンを取得し、それを使用して Azure AD Graph を呼び出す 
+## <a name="get-an-access-token-using-the-vms-identity-to-call-azure-ad-graph"></a>VM ID を使用してアクセス トークンを取得し、 Azure AD Graph を呼び出す 
 
 これらの手順を完了するには、SSH クライアントが必要です。 Windows を使用している場合は、[Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about) で SSH クライアントを使用することができます。 SSH クライアント キーの構成について支援が必要な場合は、「[Azure 上の Windows で SSH キーを使用する方法](../../virtual-machines/linux/ssh-from-windows.md)」または「[Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法](../../virtual-machines/linux/mac-create-ssh-keys.md)」をご覧ください。
 

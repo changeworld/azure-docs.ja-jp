@@ -3,8 +3,8 @@ title: Azure CDN での課金について | Microsoft Docs
 description: このよくあるご質問では、Azure CDN での課金のしくみについて説明します。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
-ms.author: v-deasim
-ms.openlocfilehash: 218c493c772dc8fd212efaf60a0599fa2e896411
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: magattus
+ms.openlocfilehash: 0bb52943eac3e35b5012e3f54bfb841cf491ed18
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32161285"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091813"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Azure CDN での課金について
 

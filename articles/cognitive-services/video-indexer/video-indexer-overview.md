@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: overview
-ms.date: 09/15/2018
+ms.date: 10/10/2018
 ms.author: nolachar
-ms.openlocfilehash: fd92e91989bd1a37626227b327d644c9d704ab6c
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: cf761342bb434100920c3888f2f441b9f8c8de08
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983017"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077919"
 ---
 # <a name="what-is-video-indexer"></a>Video Indexer とは
 
@@ -38,8 +38,8 @@ Azure Video Indexer は、Azure Media Analytics、Azure Search、Cognitive Servi
 - **ブランドの抽出**: 音声と視覚テキストからブランドを抽出します。
 - **顔検出**: ビデオに現れる顔を検出し、グループ化します。
 - **顔のサムネイルの抽出 (「一番の表情」)**: 顔の各グループで最適にキャプチャされた顔を (品質、サイズ、および正面位置に基づいて) 自動的に識別し、それをイメージ アセットとして抽出します。
-- **著名人の識別**: 100 万人の著名人データベースに基づいて、ビデオ内の著名人を認識します。 出典のソースは、IMDB、Wikipedia、Linkedin のトップ インフルエンサーです。
-- **カスタムの顔識別**: 特定のアカウント用にトレーニングされたカスタム モデルに基づいて、ビデオ内の顔を認識します。
+- **著名人の識別**: Video Indexer は、世界中のリーダー、男優と女優、アスリート、研究者、ビジネス リーダーおよび技術リーダーなど、100 万人以上の著名人を自動的に識別します。 これらの著名人に関するデータは、IMDB や Wikipedia などのさまざまな有名な web サイトにも記載されています。
+- **アカウントベースの顔識別**: Video Indexer は、特定のアカウントのモデルをトレーニングします。 その後、そのアカウントのビデオ専用にトレーニングされたモデルに基づいてビデオ内の顔を認識します。
 - **テキストのコンテンツ モデレーション**: 音声トランスクリプト内の性表現があからさまなテキストを検出します。
 - **ショット検出**: ビデオ内でシーンが変化するタイミングを判定します。
 - **ブラック フレームの検出**: ビデオに表示されたブラック フレームを識別します。

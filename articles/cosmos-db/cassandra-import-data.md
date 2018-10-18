@@ -9,12 +9,12 @@ ms.author: govindk
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 0bf5e47513ded4b2c65e7291db497e53a42776a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f73a201a25bb2f975e8a261a6c21aa7b066c3a7c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976178"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247852"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API アカウントにデータを移行する
 
@@ -62,7 +62,7 @@ Azure Cosmos DB Cassandra API にデータを移行する前に、ワークロ�
 
 ## <a name="prerequisites-for-migration"></a>移行の前提条件
 
-* **Azure Cosmos DB Cassandra API アカウントでテーブルを作成する:** データの移行を開始する前に、Azure portal または cqlsh からすべてのテーブルを事前に作成します。
+* **Azure Cosmos DB Cassandra API アカウントでテーブルを作成する:** データの移行を開始する前に、Azure portal または cqlsh からすべてのテーブルを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行しようとしている場合は、Azure Cosmos DB コンテナーの作成時に必ずパーティション キーを提供するようにしてください。
 
 * **スループットを上げる:** データの移行にかかる時間は、Azure Cosmos DB のテーブルに対してプロビジョニングしたスループットの量に依存します。 移行の間だけスループットを高くします。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 移行が完了したら、コストを節約するためにスループットを下げます。 スループットの引き上げについて詳しくは、Azure Cosmos DB コンテナーに対する[スループットの設定](set-throughput.md)に関するページをご覧ください。 また、Azure Cosmos DB アカウントをソース データベースと同じリージョンにすることもお勧めします。 
 

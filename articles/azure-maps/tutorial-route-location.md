@@ -3,18 +3,18 @@ title: Azure Maps を使ってルートを検索する | Microsoft Docs
 description: Azure Maps を使って目的地へのルートを検索する
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/04/2018
+ms.date: 10/02/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 68d7df575e3d413780b8181c11dd59a22469708b
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3bf1aa6d1b9bd65c28ef99ddbac71fb75daf99e7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578939"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816720"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Azure Maps を使って目的地へのルートを検索する
 
@@ -126,14 +126,16 @@ ms.locfileid: "45578939"
         padding: 50
     });
 
-    // Add pins to the map for the start and end point of the route
-    map.addPins([startPin, destinationPin], {
-        name: "route-pins",
-        textFont: "SegoeUi-Regular",
-        textOffset: [0, -20]
+    map.addEventListener("load", function () { 
+        // Add pins to the map for the start and end point of the route
+        map.addPins([startPin, destinationPin], {
+            name: "route-pins",
+            textFont: "SegoeUi-Regular",
+            textOffset: [0, -20]
+        });
     });
     ```
-    **map.setCameraBounds** では、起点と終点の座標に従ってマップ ウィンドウを調整しています。 API **map.addPins** は、点をビジュアル コンポーネントとしてマップ コントロールに追加します。
+    **map.setCameraBounds** では、起点と終点の座標に従ってマップ ウィンドウを調整しています。 **map.addEventListener** は、マップが完全に読み込まれた後、マップに追加されたすべてのマップ関数が確実に読み込まれるようにしています。 イベント リスナー内の API **map.addPins** は、点をビジュアル コンポーネントとしてマップ コントロールに追加します。
 
 3. **MapRoute.html** ファイルを保存し、ブラウザーを更新します。 マップの中心がシアトルに設定され、起点を示す丸い青色のピンと、終点を示す青色のピンが表示されます。
 
@@ -143,7 +145,7 @@ ms.locfileid: "45578939"
 
 ## <a name="get-directions"></a>道順の取得
 
-ここでは、Maps のルート サービス API を使って、指定した起点から目的地までのルートを検索する方法について説明します。 ルート サービスの API では、2 つの場所の間の、*最速*、*最短*、*エコ*、または*スリリング*なルートを計画できます。 また、Azure の広範な履歴トラフィック データベースを使い、任意の日時のルート所要時間を予測することによって、将来のルートを計画することもできます。 詳しくは、「[Get route directions (ルートの道順を取得する)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)」をご覧ください。
+ここでは、Maps のルート サービス API を使って、指定した起点から目的地までのルートを検索する方法について説明します。 ルート サービスの API では、2 つの場所の間の、*最速*、*最短*、*エコ*、または*スリリング*なルートを計画できます。 また、Azure の広範な履歴トラフィック データベースを使い、任意の日時のルート所要時間を予測することによって、将来のルートを計画することもできます。 詳しくは、「[Get route directions (ルートの道順を取得する)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)」をご覧ください。 **マップを読み込む eventListener 内に**以下の機能をすべて追加し、マップが完全に読み込まれた後に、それらが読み込まれるようにする必要があります。
 
 1. まずは、マップ上に新しいレイヤーを追加して、ルートのパス (*ラインストリング*) を表示します。 次の JavaScript コードを、*script* ブロックに追加します。
 
@@ -198,12 +200,16 @@ ms.locfileid: "45578939"
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * マップ コントロール API を使って新しい Web ページを作成する
 > * 住所の座標を設定する
 > * ルート サービスで目的地までの道順を照会する
+
+以下から、このチュートリアルのコード サンプルにアクセスできます。
+
+> [Azure Maps を使ってルートを検索する](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/route.html)
 
 次のチュートリアルでは、移動のモードや積み荷の種類など、制限を設定したルート クエリを作成し、同じマップ上に複数のルートを表示する方法について説明します。
 

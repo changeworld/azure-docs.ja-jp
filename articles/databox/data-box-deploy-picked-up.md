@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.openlocfilehash: d649095a6b1b9f692a6795e96c9f15631d36e3e2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05bfba9fffa7db75ef4e1a1167b3170a775e1d34
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974512"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785462"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>チュートリアル: Azure Data Box の返送と Azure へのデータ アップロードの確認
 
@@ -39,7 +39,10 @@ ms.locfileid: "46974512"
 ## <a name="ship-data-box-back"></a>Data Box を返送する
 
 1. デバイスの電源をオフにして、ケーブル類を取り外します。 デバイスに付属していた電源ケーブルは巻き取り、デバイスの背面に固定します。
-2. 配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 ラベルを破損または紛失した場合、または電子インク ディスプレイに表示されていない場合は、配送先住所ラベルを Azure portal からダウンロードして、デバイスに貼り付けてください。 **[概要] > [出荷ラベルをダウンロード]** に移動します。
+2. デバイスを米国で配送する場合、配送先住所ラベルが電子インク ディスプレイに表示されていることを確認し、運送業者の集荷をスケジュールします。 ラベルを破損または紛失した場合、または電子インク ディスプレイに表示されていない場合は、配送先住所ラベルを Azure portal からダウンロードして、デバイスに貼り付けてください。 **[概要] > [出荷ラベルをダウンロード]** に移動します。 
+
+    デバイスをヨーロッパで配送する場合、電子インク ディスプレイは配送先住所ラベルを表示しません。 代わりに、先積み配送先住所ラベルの下のクリアポーチ内に返送用配送先住所ラベルがあります。 古い配送先住所ラベルを取り除き、配送先住所ラベルがはっきり見えることを確認してください。
+    
 3. 米国内でデバイスを返送する場合は、UPS での集荷をスケジュールします。 ヨーロッパで DHL を使ってデバイスを返送する場合は、DHL の Web サイトにアクセスし、航空貨物運送状番号を指定して、DHL に集荷を依頼します。 該当する国の DHL Express の Web サイトにアクセスし、**[Book a Courier Collection]\(宅配便の予約\) > [eReturn Shipment]\(電子返送\)** を選択します。 
 
     貨物運送状番号を指定し、**[Schedule Pickup]\(集荷のスケジュール\)** をクリックして集荷の手配を行います。

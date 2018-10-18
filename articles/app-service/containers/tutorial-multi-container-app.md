@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: ff3659bd0f4001424ce27484f08a645f364c2ef6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c8002b10e2c7c0823cd59bf300283d04fca5ce2e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054640"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390212"
 ---
 # <a name="tutorial-create-a-multi-container-preview-app-in-web-app-for-containers"></a>チュートリアル: Web App for Containers でマルチコンテナー (プレビュー) アプリを作成する
 
@@ -235,7 +235,7 @@ az mysql db create --resource-group myResourceGroup --server-name <mysql_server_
 
 ### <a name="configure-database-variables-in-wordpress"></a>WordPress でデータベース変数を構成する
 
-WordPress アプリをこの新しい MySQL サーバーに接続するには、`MYSQL_SSL_CA` によって定義された SSL CA パスなど、いくつかの WordPress 固有の環境変数を構成します。 [DigiCert](http://www.digicert.com/) の [Baltimore CyberTrust Root](https://www.digicert.com/digicert-root-certificates.htm) は、以下の[カスタム イメージ](https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-multi-container-app#use-a-custom-image-for-mysql-ssl-and-other-configurations)にあります。
+WordPress アプリをこの新しい MySQL サーバーに接続するには、`MYSQL_SSL_CA` によって定義された SSL CA パスなど、いくつかの WordPress 固有の環境変数を構成します。 [DigiCert](http://www.digicert.com/) の [Baltimore CyberTrust Root](https://www.digicert.com/digicert-root-certificates.htm) は、以下の[カスタム イメージ](https://docs.microsoft.com/azure/app-service/containers/tutorial-multi-container-app#use-a-custom-image-for-mysql-ssl-and-other-configurations)にあります。
 
 これらの変更を行うには、Cloud Shell で [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) コマンドを使用します。 アプリケーション設定は、大文字と小文字を区別し、スペースで区切られます。
 
@@ -705,7 +705,7 @@ Redis を使用するには、[WordPress を Redis に接続する](#connect-wor
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 > [!div class="checklist"]
 > * Web App for Containers で使用できるように Docker Compose の構成を変換する
 > * Web App for Containers で使用できるように Kubernetes の構成を変換する

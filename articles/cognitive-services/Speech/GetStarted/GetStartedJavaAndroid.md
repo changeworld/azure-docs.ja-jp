@@ -10,14 +10,15 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 3b1e82d65a3eafb9e41277a18569270ef02cd8e5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4c5243ec14a4494222168bb33b3e840b96f8465e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989042"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345256"
 ---
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
+
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>クイック スタート: Android 上の Java で Bing Speech 認識 API を使用する
 
 Bing Speech API を使用すると、クラウドベースの Bing Speech サービスを使って音声をテキストに変換する、Android アプリケーションを開発できます。 この API はリアルタイム ストリーミングをサポートしているので、アプリケーションは音声をサービスへ送信するのと同時に、部分的な認識結果を非同期で受け取ることができます。

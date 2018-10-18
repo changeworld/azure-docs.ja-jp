@@ -1,22 +1,23 @@
 ---
-title: Python を利用してエンドポイントを呼び出す - Bing Custom Search - Microsoft Cognitive Services
+title: 'クイック スタート: Python を使用してエンドポイントを呼び出す - Bing Custom Search'
+titlesuffix: Azure Cognitive Services
 description: このクイックスタートでは、Python を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 3666e92372e9bed80e5c0c7991dcac730cebb588
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d16b7354b0ef727ba3c670b97105e1bd6f99034e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967594"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815462"
 ---
-# <a name="call-bing-custom-search-endpoint-python"></a>Bing Custom Search エンドポイントを呼び出す (Python)
+# <a name="quickstart-call-bing-custom-search-endpoint-python"></a>クイック スタート: Bing Custom Search エンドポイントを呼び出す (Python)
 
 このクイックスタートでは、Python を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。 
 

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: bc2b391457d7652b62558c9a752376b07b50a8c1
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 2f020bdf79811c959e07d753231fc133fe597861
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391810"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855182"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル: フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -78,7 +78,9 @@ Azure AD にデバイスを設定して、クラウドとオンプレミスの�
 - 組織の STS (フェデレーション ドメイン)
 - https://autologon.microsoftazuread-sso.com (シームレス SSO を使用している場合、または使用する予定の場合)
 
-Windows 10 1709 以降では、組織が送信プロキシ経由でインターネットにアクセスする必要がある場合に、グループ ポリシー オブジェクト (GPO) を使用してコンピューターのプロキシ設定を構成できます。 お使いのコンピューターで Windows 10 1709 より古いバージョンが実行されている場合は、Web Proxy Auto-Discovery (WPAD) を実装して、Windows 10 コンピューターが Azure AD にデバイスを登録できるようにする必要があります。 
+Windows 10 1803 以降、AD FS のようなフェデレーション ドメインの即時的なハイブリッド Azure AD 参加が失敗した場合は、Azure AD Connect を利用して Azure AD のコンピューター オブジェクトを同期させます。これは後で、ハイブリッド Azure AD 参加のデバイス登録を完了するために使用されます。
+
+Windows 10 1709 以降では、組織が送信プロキシ経由でインターネットにアクセスする必要がある場合に、 [グループ ポリシー オブジェクト (GPO) を使用してコンピューターのプロキシ設定を構成できます](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。 お使いのコンピューターで Windows 10 1709 より前のバージョンが実行されている場合は、Web Proxy Auto-Discovery (WPAD) を実装して、Windows 10 コンピューターが Azure AD にデバイスを登録できるようにする必要があります。 
 
 組織が認証された送信プロキシ経由でインターネットにアクセスする必要がある場合は、Windows 10 コンピューターが送信プロキシに対して正常に認証されることを確認する必要があります。 Windows 10 コンピューターではマシン コンテキストを使用してデバイス登録が実行されるため、マシン コンテキストを使用して送信プロキシ認証を構成する必要があります。 構成要件については、送信プロキシ プロバイダーに確認してください。 
 

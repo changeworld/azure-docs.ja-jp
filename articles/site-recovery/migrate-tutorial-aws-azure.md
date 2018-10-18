@@ -6,19 +6,19 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 08/24/2018
+ms.date: 10/10/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 48714d71edcf54726eb362c7f56950a1350fd52b
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 04e7506562d29e37abb65b7a760fbc9bd707e2c6
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885327"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078938"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
-このチュートリアルでは、Azure Site Recovery を使用してアマゾン ウェブ サービス (AWS) の仮想マシン (VM) を Azure VM に移行する方法について説明します。 AWS EC2 インスタンスを Azure に移行するとき、VM はオンプレミスの物理コンピューターのように扱われます。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、Azure Site Recovery を使用してアマゾン ウェブ サービス (AWS) の仮想マシン (VM) を Azure VM に移行する方法について説明します。 AWS EC2 インスタンスを Azure に移行するとき、VM はオンプレミスの物理コンピューターのように扱われます。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 前提条件を確認する
@@ -239,10 +239,9 @@ VM のレプリケーションを有効にすると、変更が反映されて�
 EC2 インスタンスで実際のフェールオーバーを実行して Azure VM に移行します。
 
 1. **[保護されたアイテム]** > **[レプリケートされたアイテム]** で、AWS インスタンスを選択し、**[フェールオーバー]** を選択します。
-2. **[フェールオーバー]** で、フェールオーバーする**復旧ポイント**を選択します。 最新の復旧ポイントを選択します。
-3. Site Recovery でフェールオーバーを開始する前にそのソース仮想マシンをシャットダウンする場合は、**[フェールオーバーを開始する前にマシンをシャットダウンします]** を選択します。 仮にシャットダウンが失敗したとしても、フェールオーバーは続行されます。 フェールオーバーの進行状況は **[ジョブ]** ページで確認できます。
-4. **[レプリケートされたアイテム]** に VM が表示されることを確認します。
-5. 各 VM を右クリックし、**[移行の完了]** を選択します。 これによって、移行プロセスが終了し、AWS VM のレプリケーションが停止して、その VM での Site Recovery の課金が停止します。
+2. **[フェールオーバー]** で、フェールオーバーする**復旧ポイント**を選択します。 最新の復旧ポイントを選択し、フェールオーバーを開始します。 フェールオーバーの進行状況は **[ジョブ]** ページで確認できます。
+1. **[レプリケートされたアイテム]** に VM が表示されることを確認します。
+2. 各 VM を右クリックし、**[移行の完了]** を選択します。 これによって、移行プロセスが終了し、AWS VM のレプリケーションが停止して、その VM での Site Recovery の課金が停止します。
 
     ![移行の完了](./media/migrate-tutorial-aws-azure/complete-migration.png)
 

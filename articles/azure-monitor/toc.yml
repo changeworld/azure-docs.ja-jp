@@ -21,6 +21,8 @@ items:
       href: ../application-insights/app-insights-java-quick-start.md?toc=/azure/azure-monitor/toc.json
     - name: モバイル アプリケーション
       href: ../application-insights/app-insights-mobile-center-quickstart.md?toc=/azure/azure-monitor/toc.json
+    - name: Web アプリケーション
+      href: ../application-insights/app-insights-website-monitoring.md?toc=/azure/azure-monitor/toc.json
   - name: 仮想マシン
     items:
     - name: 収集 - Azure VM
@@ -885,6 +887,8 @@ items:
       href: ../application-insights/auto-collect-dependencies.md?toc=/azure/azure-monitor/toc.json
     - name: テレメトリの関連付け
       href: ../application-insights/application-insights-correlation.md?toc=/azure/azure-monitor/toc.json
+    - name: NuGet パッケージ
+      href: ../application-insights/app-insights-nuget.md?toc=/azure/azure-monitor/toc.json
   - name: Application Insights データ モデル
     items:
     - name: 概要
@@ -978,9 +982,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 5efb13f6270e3a06a1a61d19b4908891f5882ecc
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 93a8fe3db1136f94b562165fa986506677bccf57
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353851"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378977"

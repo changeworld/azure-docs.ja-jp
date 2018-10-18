@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/01/2016
+ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: abc4fa4129a596c3f3304dc37af3a9b659f45473
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a3b039b1ea492c44505c427ec171cf7a4a5fad01
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38595503"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47062437"
 ---
 # <a name="create-a-xamarinandroid-app"></a>Xamarin.Android アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -64,6 +64,11 @@ Xamarin Android アプリケーションの他のすべての Mobile Apps のチ
    > モバイル アプリ バックエンドにアクセスしてデータのクエリと挿入を行うコードを確認できます (ToDoActivity.cs C# ファイルにあります)。
    >
    >
+
+## <a name="troubleshooting"></a>トラブルシューティング
+ソリューションのビルドで問題が発生した場合は、NuGet パッケージ マネージャーを実行し、`Xamarin.Android` サポート パッケージを更新します。 クイック スタート プロジェクトには、必ずしも最新バージョンが含まれていません。
+
+プロジェクトで参照されるすべてのサポート パッケージのバージョンが同じである必要があることに注意してください。 [Azure Mobile Apps の NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)には、Android プラットフォームに関して `Xamarin.Android.Support.CustomTabs` の依存関係があるため、プロジェクトで新しいサポート パッケージを使用する場合は、必要なバージョンを使用してこのパッケージを直接インストールし、競合を回避する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 * [アプリへのオフライン同期の追加](app-service-mobile-xamarin-android-get-started-offline-data.md)

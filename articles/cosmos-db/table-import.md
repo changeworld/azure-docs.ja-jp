@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: sngun
-ms.openlocfilehash: 905815259707116759e0b980690fac108ab81c7b
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 8614bf7009afab8c005d2ffb8b1a78f3694d2af7
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186832"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247511"
 ---
 # <a name="migrate-your-data-to-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントにデータを移行する
 
@@ -30,7 +30,9 @@ ms.locfileid: "43186832"
 
 ## <a name="prerequisites"></a>前提条件
 
-* スループットを上げる: データの移行にかかる時間は、個別のコンテナーまたは一連のコンテナーに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 Azure Portal でスループットを上げることの詳細については、Azure Cosmos DB のパフォーマンス レベルと価格レベルに関するページを参照してください。
+* **スループットを上げる:** データの移行にかかる時間は、個別のコンテナーまたは一連のコンテナーに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 Azure Portal でスループットを上げることの詳細については、Azure Cosmos DB のパフォーマンス レベルと価格レベルに関するページを参照してください。
+
+* **Azure Cosmos DB リソースを作成する:** データの移行を開始する前に、Azure portal からすべてのテーブルを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行しようとしている場合は、Azure Cosmos DB テーブルの作成時に必ずパーティション キーを提供するようにしてください。
 
 ## <a name="data-migration-tool"></a>データ移行ツール
 

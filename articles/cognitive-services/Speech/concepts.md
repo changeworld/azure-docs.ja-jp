@@ -10,15 +10,16 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ROBOTS: NOINDEX
-ms.openlocfilehash: 08790d73dd4fd182d8129c755a291fd99b6136a2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6089f053472faaa7fa8c957904f73c7061cb2d3f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954111"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344927"
 ---
 # <a name="basic-concepts"></a>基本的な概念
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 このページでは、Microsoft 音声認識サービスの基本的な概念について説明します。 アプリケーションで Microsoft 音声認識 API を使用する前に、このページを読むことをお勧めします。
 
@@ -160,7 +161,7 @@ https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservic
 
 | Status | 説明 |
 | ------------- | ---------------- |
-| 成功 | 認識が成功し、DisplayText フィールドが存在する |
+| Success | 認識が成功し、DisplayText フィールドが存在する |
 | NoMatch | 音声ストリーム内に音声が検出されたが、ターゲット言語の単語は見つからなかった。 詳しくは、「NoMatch 認識状態」(#nomatch-recognition-status) をご覧ください  |
 | InitialSilenceTimeout | 音声ストリームの先頭に無音状態しか含まれておらず、音声の待機中にサービスがタイムアウトした |
 | BabbleTimeout | 音声ストリームの先頭に雑音しか含まれておらず、音声の待機中にサービスがタイムアウトした |

@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 08/24/2018
+ms.date: 09/07/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 540aabc9164e43776d2166926430f4512dd23f49
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a2b4c4824960c21011876a7c0adf029fc56d93d2
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106051"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419119"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>クイック スタート: Visual Studio Code を使って Azure Resource Manager テンプレートを作成する
 
@@ -96,22 +96,38 @@ Visual Studio Code を使用してテンプレートを編集する方法を確�
 
     ![Azure portal の Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell.png)
 
-    画面の下部に Cloud Shell が開きます。
+    ウィンドウの下部に Cloud Shell が開きます。
 
-3. Cloud Shell の左上隅に、**PowerShell** または **Bash** のいずれかが表示されます。 CLI を使用するには、Bash セッションを開く必要があります。 PowerShell を実行するには、PowerShell セッションを開く必要があります。 切り替えるには、下向き矢印を選択し、インタープリターを選択します。 次の図は、PowerShell から Bash への切り替えを示しています。
+3. Cloud Shell の左上隅に、**PowerShell** または **Bash** のいずれかが表示されます。 CLI を使用するには、Bash セッションを開く必要があります。 PowerShell を実行するには、PowerShell セッションを開く必要があります。 下矢印を選択して、Bash と PowerShell を切り替えます。 次の図は、PowerShell から Bash への切り替えを示しています。
 
     ![Azure portal の Cloud Shell の CLI](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
 
     切り替えた場合は、シェルを再起動する必要があります。
 4. **[ファイルのアップロード/ダウンロード]** を選択し、**[アップロード]** を選択します。
 
+    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+
     ![Azure portal の Cloud Shell のファイルのアップロード](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file.png)
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ![Azure portal の Cloud Shell のファイルのアップロード](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-upload-file-powershell.png)
+    
+    ---
 
     シェルからデプロイする前に、テンプレート ファイルをアップロードする必要があります。
 5. クイック スタートで前に保存したファイルを選択します。 既定の名前は **azuredeploy.json** です。
 6. Cloud Shell から **Is** コマンドを実行し、ファイルが適切にアップロードされていることを確認します。 **cat** コマンドを使用して、テンプレートの内容を確認することもできます。 次の図は、Bash からのコマンドの実行を示しています。  PowerShell セッションでも同じコマンドを使用します。
 
+    # <a name="clitabcli"></a>[CLI](#tab/CLI)
+
     ![Azure portal の Cloud Shell のファイルの一覧表示](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file.png)
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ![Azure portal の Cloud Shell のファイルの一覧表示](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-list-file-powershell.png)
+    
+    ---
 7. Cloud Shell で次のコマンドを実行します。 PowerShell コードまたは CLI コードを表示するタブを選択します。
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
@@ -131,9 +147,17 @@ Visual Studio Code を使用してテンプレートを編集する方法を確�
     
     ---
 
-    次のスクリーンショットは、サンプル CLI のデプロイを示しています。
+    次のスクリーンショットは、サンプルのデプロイを示しています。
+
+    # <a name="clitabcli"></a>[CLI](#tab/CLI)
 
     ![Azure portal の Cloud Shell のテンプレートのデプロイ](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template.png)
+   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
+    
+    ![Azure portal の Cloud Shell のテンプレートのデプロイ](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-deploy-template-powershell.png)
+    
+    ---
 
     スクリーンショットでは、次の値が使用されています。
 
@@ -170,7 +194,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルの主な目的は、Visual Studio Code を使用して、Azure クイック スタート テンプレートの既存のテンプレートを編集することです。 Azure Cloud Shell から CLI または PowerShell を使用してテンプレートをデプロイする方法も学習しました。 Azure クイック スタート テンプレートのテンプレートでは、必要なものすべてを得ることができないことがあります。 次のチュートリアルでは、テンプレート リファレンスから情報を検索して、暗号化された Azure Storage アカウントを作成できるようにする方法を示します。
+このクイックスタートの主な目的は、Visual Studio Code を使用して、Azure クイック スタート テンプレートの既存のテンプレートを編集することです。 Azure Cloud Shell から CLI または PowerShell を使用してテンプレートをデプロイする方法も学習しました。 Azure クイック スタート テンプレートのテンプレートでは、必要なものすべてを得ることができないことがあります。 次のチュートリアルでは、テンプレート リファレンスから情報を検索して、暗号化された Azure Storage アカウントを作成できるようにする方法を示します。
 
 > [!div class="nextstepaction"]
 > [暗号化されたストレージ アカウントを作成する](./resource-manager-tutorial-create-encrypted-storage-accounts.md)

@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/19/2017
+ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: d1f638c9825ea5eedf6eaee0e0ca2ccfd5a491bc
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 00e6f2ed866afd13343df37de625e2913f613dfa
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "33933710"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47092405"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>開発者ポータル ページのスタイルをカスタマイズする
 
@@ -29,7 +29,7 @@ Azure API Management で開発者ポータルをカスタマイズするもっ�
 * 開発者ポータル全体のページ要素で使用されるスタイルを更新する (このガイドで説明します)
 * [ポータルで生成されたページで使用されるテンプレートを変更する](api-management-developer-portal-templates.md) (例: API ドキュメント、製品、ユーザー認証など)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * **開発者ポータル**のページで要素のスタイルをカスタマイズする
@@ -76,11 +76,10 @@ Azure API Management で開発者ポータルをカスタマイズするもっ�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * **開発者ポータル**のページで要素のスタイルをカスタマイズする
 > * 変更を確認する
 
-> [!div class="nextstepaction"]
-> [Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする](api-management-developer-portal-templates.md)
+[Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法](api-management-developer-portal-templates.md)についての説明も参照してください。

@@ -3,18 +3,18 @@ title: 音声サービスとは
 description: Microsoft の Cognitive Services の一部である Speech Service では、これまで別々に提供されていた複数の Azure 音声サービス (Bing Speech (音声認識とテキスト読み上げで構成)、Custom Speech、Speech Translation) が統合されています。
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: overview
 ms.date: 09/24/2018
-ms.author: v-jerkin
-ms.openlocfilehash: b014144dd819aa354596175068bfb2c5905a4377
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.author: erhopf
+ms.openlocfilehash: 7a61d85d96b993d49a536c38c2907a3d6ef55e65
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857994"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365460"
 ---
 # <a name="what-is-the-speech-service"></a>音声サービスとは
 
@@ -29,11 +29,10 @@ Speech Service の主要機能には、音声テキスト変換 (音声認識ま
 
 |関数|機能|
 |-|-|
-|[音声テキスト変換](speech-to-text.md)| <ul><li>連続するリアルタイムの音声をテキストに書き起こします。<li>音声録音から音声を一括で文字起こしできます。 <li>中間結果、音声の終わりの検出、テキストの自動的な書式設定、および不適切な表現のマスキングをサポートします。 <li>[Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) を呼び出して、文字起こしされた音声からユーザーの意図を導き出すことができます。\*|
-|[テキスト読み上げ](text-to-speech.md)| <ul><li>テキストを自然な音声に変換します。 <li>複数の性別やサポートされている多くの言語の方言が用意されています。 <li>プレーンテキストの入力または音声合成マークアップ言語 (SSML) をサポートします。 |
-|[音声翻訳](speech-translation.md)| <ul><li>トリーミング オーディオをほぼリアルタイムで翻訳します。<li> 録音された音声も処理できます。<li>テキストまたは合成された音声として結果を提供します。 |
+|[音声テキスト変換](speech-to-text.md)| <li>連続するリアルタイムの音声をテキストに書き起こします。<li>音声録音から音声を一括で文字起こしできます。 <li>中間結果、音声の終わりの検出、テキストの自動的な書式設定、および不適切な表現のマスキングをサポートします。 <li>[Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) を呼び出して、文字起こしされた音声からユーザーの意図を導き出すことができます。\*|
+|[テキスト読み上げ](text-to-speech.md)| <li>テキストを自然な音声に変換します。 <li>複数の性別やサポートされている多くの言語の方言が用意されています。 <li>プレーンテキストの入力または音声合成マークアップ言語 (SSML) をサポートします。 |
+|[音声翻訳](speech-translation.md)| <li>トリーミング オーディオをほぼリアルタイムで翻訳します。<li> 録音された音声も処理できます。<li>テキストまたは合成された音声として結果を提供します。 |
 
-\* *意図認識には、LUIS のサブスクリプションが必要です。*
 
 ## <a name="customize-speech-features"></a>音声機能のカスタマイズ
 
@@ -69,41 +68,6 @@ Websocket 経由で Bing Speech または Translator Speech を使用するコ�
 
 [Speech Devices SDK](speech-devices-sdk.md) は、音声対応デバイスの開発者向けのハードウェアとソフトウェアの統合プラットフォームです。 Microsoft のハードウェア パートナーによって、参照設計と開発ユニットが提供されています。 Microsoft では、ハードウェアの機能を最大限に活用する、デバイスに最適化された SDK を提供しています。
 
-## <a name="why-move-to-the-speech-service"></a>Speech Service に移行する理由
-
-Speech Service では、Bing Speech API および他の 3 つの Azure 音声サービス (Custom Speech、Custom Voice、Translator Speech) のすべての機能だけでなく他の機能も提供されます。 これらのサービスのユーザーには Speech Service に移行することをお勧めします。
-
-Speech Service には、次のように、これらの他のサービスに対する多くのアップグレードが組み込まれています。
-
-* より高い音声認識精度。 サービスで使用されるモデルは定期的に改良されます。
-
-* より高いスケーラビリティ。 このサービスは複数の同時要求を処理でき、遅延時間が短縮されます。
-
-* Speech Service では、時間ベースの価格モデルが使用されます。 詳しくは、[Speech Service の価格](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/)に関するページをご覧ください。
-
-* Speech Service は[複数のリージョン](regions.md)で利用でき、お客様の世界的なニーズに対応します。 アプリケーションで使用されるリージョンごとに、[Azure サブスクリプション](https://docs.microsoft.com/azure/cognitive-services/welcome)が必要です。
-
-* 1 つの Speech Service サブスクリプション キーで、次の機能にアクセスできます。 それぞれが個別に測定されるため、課金は使用した機能に対するものだけです。
-
-    * [音声テキスト変換](speech-to-text.md)
-    * [カスタム音声テキスト変換](https://cris.ai/CustomSpeech)
-    * [テキスト読み上げ](text-to-speech.md)
-    * [カスタム テキスト音声読み上げ](https://cris.ai/CustomVoice)
-    * [音声翻訳](speech-translation.md) ([テキスト翻訳](https://docs.microsoft.com/azure/cognitive-services/translator/translator-info-overview)は含まれません)
-
-* Speech Service の音声テキスト変換機能は [Language Understanding Service](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) と統合して、話者の意図を認識します。 LUIS のエンドポイント キーは、Speech Service でも使用できます。 詳しくは、[意図認識チュートリアル](how-to-recognize-intents-from-speech-csharp.md)に関するページをご覧ください。
-
-* 音声テキスト変換では、認識モードを指定する必要がなくなりました。
-
-* Speech Service はテキスト読み上げに 24 KHz の音声をサポートし、オーディオ品質が向上します。 この記事を書いている時点で、そのような音声は `Jessa24kRUS` と `Guy24kRUS` の 2 つです (英語のみ)。
-
-* Speech Service の[バッチ文字起こし](batch-transcription.md)では、コール センターの録音などの大量に録音された音声を効率よくテキストに文字起こしでき、簡単に分析および検索できます。
-
-* Speech SDK を使用する場合、音声テキスト変換文字起こしのストリーミングに時間制限はありません。
-
-* [Speech SDK](speech-sdk.md) では、複数のプログラミング言語と実行環境 (Windows 10、UWP、.NET Core など) で一貫性のある API が Speech Service に提供され、開発が容易になります (特に複数プラットフォームで)。
-
-* Speech Service は、他の Azure 音声サービスで使用される REST API および WebSocket プロトコルと互換性があるため、既存のクライアント アプリケーションを Speech Service に簡単に移行できます。
 
 ## <a name="speech-scenarios"></a>音声のシナリオ
 
@@ -123,8 +87,6 @@ Speech Service のユース ケースには、以下が含まれます。
 医療や IT などの特定のドメインでアプリが使用される場合、[言語モデル](how-to-customize-language-model.md)を作成できます。 このモデルを使用して、アプリで使用される特別な用語を Speech Service に教えることができます。
 
 工場などの雑音が多い環境でアプリを使用する場合、カスタムの[音響モデル](how-to-customize-acoustic-models.md)を作成できます。 このモデルは、Speech Service が雑音と音声を区別するのに役立ちます。
-
-また、簡単に使い始めることができます。 [Speech SDK](speech-sdk.md) をダウンロードし、関連する[クイック スタート](quickstart-csharp-dotnet-windows.md)記事に従うだけです。
 
 ### <a name="call-center-transcription"></a>コール センターの文字起こし
 

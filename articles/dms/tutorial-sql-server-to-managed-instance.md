@@ -2,31 +2,28 @@
 title: DMS を使用して Azure SQL Database Managed Instance に移行する | Microsoft Docs
 description: Azure Database Migration Service を使用して、オンプレミスの SQL Server から Azure SQL Database Managed Instance に移行する方法を学習します。
 services: dms
-author: edmacauley
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: craigg
 ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/24/2018
-ms.openlocfilehash: dbf71b1fcc15743f4670c4072921f1a167a90e97
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.date: 10/10/2018
+ms.openlocfilehash: 2e8e9706a9572b85030a636dd75d4809447eabbc
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887304"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067893"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance-offline-using-dms"></a>DMS を使用してオフラインで SQL Server を Azure SQL Database Managed Instance に移行する
 Azure Database Migration Service を使用して、オンプレミスの SQL Server インスタンスから [Azure SQL Database Managed Instance](../sql-database/sql-database-managed-instance.md) にデータベースを移行することができます。 一定の手作業が必要になる可能性のあるその他の方法については、記事「[Azure SQL Database Managed Instance への SQL Server インスタンスの移行](../sql-database/sql-database-managed-instance-migrate.md)」を参照してください。
 
-> [!IMPORTANT]
-> SQL Server から Azure SQL Database Managed Instance へのプロジェクトの移行はプレビュー段階にあり、[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)の対象です。
-
 このチュートリアルでは、Azure Database Migration Service を使用して、オンプレミスの SQL Server インスタンスから Azure SQL Database Managed Instance に **Adventureworks2012** データベースを移行します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Azure Database Migration Service のインスタンスを作成する。
 > * Azure Database Migration Service を使用して移行プロジェクトを作成する。
@@ -102,7 +99,7 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
     ![Azure Database Migration Service のすべてのインスタンスを検索する](media\tutorial-sql-server-to-managed-instance\dms-search.png)
 
-2. **[Azure Database Migration Service]** 画面で、作成したインスタンスの名前を検索して選択します。
+2. **[Azure Database Migration Service]** 画面で、作成したインスタンスの名前を検索して、そのインスタンスを選択します。
  
 3. **[+ 新しい移行プロジェクト]** を選択します。
 
@@ -137,7 +134,7 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
 1.  **[移行のターゲットの詳細]** 画面で、ターゲットの接続情報を指定します。このターゲットは、**AdventureWorks2012** データベースの移行先である、事前プロビジョニング済みの Azure SQL Database Managed Instance です。
 
-    Azure SQL Database Managed Instance のプロビジョニングがまだ済んでいない場合は、インスタンスのプロビジョニングに役立つリンクの **[いいえ]** を選択します。 そのままプロジェクトの作成を続行し、Azure SQL Database Managed Instance の準備ができたら、この特定のプロジェクトに戻って移行を実行できます。   
+    Azure SQL Database Managed Instance のプロビジョニングがまだ済んでいない場合は、インスタンスをプロビジョニングするのに役立つリンクである **[いいえ]** を選択します。 そのままプロジェクトの作成を続行し、Azure SQL Database Managed Instance の準備ができたら、この特定のプロジェクトに戻って移行を実行できます。   
  
        ![ターゲットを選択する](media\tutorial-sql-server-to-managed-instance\dms-target-details2.png)
 
@@ -173,7 +170,7 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
     |**ユーザー名** | 上で指定したネットワーク共有に対するフル コントロール権限が Windows ユーザーにあることを確認してください。 Azure Database Migration Service は、ユーザーの資格情報を借用して、復元操作のために、Azure ストレージ コンテナーにバックアップ ファイルをアップロードします。 TDE 対応データベースが選択されている場合、Azure Database Migration Service で証明書ファイルをアップロードしたり削除したりするために、上記の Windows ユーザーはビルトイン Administrator アカウントでなければならず、[ユーザー アカウント制御](https://docs.microsoft.com/windows/security/identity-protection/user-account-control/user-account-control-overview)は無効にする必要があります。 |
     |**パスワード** | ユーザーのパスワード。 |
     |**ストレージ アカウントの設定** | サービスがバックアップ ファイルをアップロードするストレージ アカウント コンテナーへのアクセスを、Azure Database Migration Service に提供する SAS URI。これが、データベースを Azure SQL Database Managed Instance に移行するために使用されます。 [Blob コンテナーの SAS URI を取得する方法について説明します](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)。|
-    |**TDE の設定** | Transparent Data Encryption (TDE) が有効になっているソース データベースを移行する場合は、ターゲット Azure SQL DB Managed Instance に対する書き込み権限が必要です。  Azure SQL DB Managed Instance がプロビジョニングされているサブスクリプションをドロップダウン メニューから選択してください。  ドロップダウン メニューからターゲット Azure SQL DB Managed Instance を選択します。 |
+    |**TDE の設定** | Transparent Data Encryption (TDE) が有効になっているソース データベースを移行する場合は、ターゲット Azure SQL Database Managed Instance に対する書き込み特権が必要です。  Azure SQL DB Managed Instance がプロビジョニングされているサブスクリプションをドロップダウン メニューから選択してください。  ドロップダウン メニューでターゲットの **[Azure SQL Database Managed Instance]** を選択します。 |
     
     ![移行設定の構成](media\tutorial-sql-server-to-managed-instance\dms-configure-migration-settings3.png)
 
