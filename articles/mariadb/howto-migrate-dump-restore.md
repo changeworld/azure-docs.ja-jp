@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9b22890bceba6205c995a01105cdf11a08a9c10b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 551fe303994f6c72f8a4bf39e76f12c62f58026b
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998748"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309537"
 ---
 # <a name="migrate-your-mariadb-database-to-azure-database-for-mariadb-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MariaDB への MariaDB データベースの移行
 この記事では、Azure Database for MariaDB でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
@@ -30,7 +30,9 @@ ms.locfileid: "46998748"
 MySQL Workbench、mysqldump、Toad、Navicat などの一般的なユーティリティとツールを使用して、Azure Database for MariaDB にリモートで接続し、データを復元します。 こうしたツールは、インターネットに接続されたクライアント マシンで、Azure Database for MariaDB に接続するときに使用します。 SSL で暗号化された接続を使ってセキュリティを強化するために、[Azure Database for MariaDB での SSL 接続の構成](concepts-ssl-connection-security.md)に関するページもご覧ください。 Azure Database for MariaDB に移行するとき、ダンプ ファイルをクラウドの特別な場所に移動する必要はありません。 
 
 ## <a name="common-uses-for-dump-and-restore"></a>ダンプと復元の一般的な使用法
-いくつかの一般的なシナリオでは、mysqldump や mysqlpump などの MySQL ユーティリティを使用して、データベースをダンプし、Azure Database for MariaDB サーバーに読み込むことができます。 <!--In other scenarios, you may use the [Import and Export](concepts-migrate-import-export.md) approach instead.-->
+いくつかの一般的なシナリオでは、mysqldump や mysqlpump などの MySQL ユーティリティを使用して、データベースをダンプし、Azure Database for MariaDB サーバーに読み込むことができます。 
+
+<!--In other scenarios, you may use the [Import and Export](howto-migrate-import-export.md) approach instead.-->
 
 - データベース全体を移行するときは、データベース ダンプを使用します。 この推奨事項は、大量のデータを移動するときや、ライブ サイトやライブ アプリケーションのためにサービスの中断を最小限に抑える必要がある場合に有効です。 
 -  Azure Database for MariaDB にデータを読み込むときは、データベースのすべてのテーブルで InnoDB ストレージ エンジンが使用されていることを確認します。 Azure Database for MariaDB でサポートされるのは InnoDB ストレージ エンジンだけであるため、代替のストレージ エンジンはサポートされません。 テーブルが他のストレージ エンジンで構成されている場合は、Azure Database for MariaDB に移行する前に、それらのテーブルを InnoDB エンジン形式に変換します。

@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/25/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: ba67acec778a48c084897095aa457e5637240a57
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 4ab3d0b74e8305d67af862020197c69b15221086
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227435"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830227"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>ASP.NET Core Web アプリに Microsoft サインインを追加する
 
@@ -42,7 +42,7 @@ ms.locfileid: "47227435"
 > 1. アプリケーションの名前を入力し、**ガイド付きセットアップ**のオプションがオフになっていることを確認し、**[作成]** をクリックします。
 > 1. `Add Platform` をクリックし、`Web` を選択します。
 > 1. **[暗黙的フローを許可する]** が "*オンになっている*" ことを確認します。
-> 1. **[リダイレクト URL]** に「`https://localhost:3110/`」と入力します。
+> 1. **[リダイレクト URL]** に「`http://localhost:3110/`」と入力します。
 > 1. ページの下部までスクロールし、**[保存]** をクリックします。
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -60,7 +60,7 @@ ms.locfileid: "47227435"
 
 #### <a name="step-3-configure-your-project"></a>手順 3: プロジェクトの構成
 
-1. ローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを解凍します。
+1. ルート フォルダーに近いローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを展開します。
 1. Visual Studio 2017 を使用する場合は、Visual Studio でプロジェクトを開きます (任意)。
 1. **appsettings.json** を編集し、`ClientId` の値を今登録したアプリケーションのアプリケーション ID に置き換えます。
 
