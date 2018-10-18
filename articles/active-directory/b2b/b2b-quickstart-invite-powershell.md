@@ -1,6 +1,6 @@
 ---
 title: PowerShell を使用して Azure Active Directory B2B コラボレーション用のゲスト ユーザーを追加するためのクイック スタート | Microsoft Docs
-description: このクイック スタートでは、PowerShell を使用して、外部の Azure AD B2B コラボレーション ユーザーに招待状を送信する方法について説明します。
+description: このクイック スタートでは、PowerShell を使用して、外部の Azure AD B2B コラボレーション ユーザーに招待メールを送信する方法について説明します。
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
@@ -57,7 +57,7 @@ Get-Module -ListAvailable AzureAD*
 
 ### <a name="get-a-test-email-account"></a>テスト用の電子メール アカウントを取得する
 
-招待状の送信先となるテスト用の電子メール アカウントが必要です。 このアカウントは、組織外にある必要があります。 gmail.com や outlook.com のアドレスなどのソーシャル アカウントを含む任意の種類のアカウントを使用できます。
+招待メールの送信先となるテスト用の電子メール アカウントが必要です。 このアカウントは、組織外にある必要があります。 gmail.com や outlook.com のアドレスなどのソーシャル アカウントを含む任意の種類のアカウントを使用できます。
 
 ## <a name="sign-in-to-your-tenant"></a>テナントにサインインする
 
@@ -70,14 +70,14 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 メッセージが表示されたら、資格情報を入力します。
 
-## <a name="send-an-invitation"></a>招待状を送信する
+## <a name="send-an-invitation"></a>招待メールを送信する
 
-1. テスト用の電子メール アカウントに招待状を送信するには、次の PowerShell コマンドを実行します (**"Sanda"** と **sanda@fabrikam.com** をテスト用の電子メール アカウント名と電子メール アドレスに置き換えます)。 
+1. テスト用の電子メール アカウントに招待メールを送信するには、次の PowerShell コマンドを実行します (**"Sanda"** と **sanda@fabrikam.com** をテスト用の電子メール アカウント名と電子メール アドレスに置き換えます)。 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
    ```
-2. このコマンドは、指定した電子メール アドレスに招待状を送信します。 出力をチェックします。出力は次のようになります。
+2. このコマンドは、指定した電子メール アドレスに招待メールを送信します。 出力をチェックします。出力は次のようになります。
 
    ![保留中のユーザーの同意を示す PowerShell の出力](media/quickstart-invite-powershell/powershell-azureadmsinvitation-result.png)
 
@@ -88,7 +88,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. 出力をチェックして、招待したユーザーが表示されていることを確認します。*emailaddress*#EXT#@*domain* 形式のユーザー プリンシパル名 (UPN) になっています。 たとえば、*sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com* では、contoso.onmicrosoft.com が招待状を送信した組織になります。
+3. 出力をチェックして、招待したユーザーが表示されていることを確認します。*emailaddress*#EXT#@*domain* 形式のユーザー プリンシパル名 (UPN) になっています。 たとえば、*sanda_fabrikam.com#EXT#@contoso.onmicrosoft.com* では、contoso.onmicrosoft.com が招待メールを送信した組織になります。
 
    ![ゲスト ユーザーが追加されたことを示す PowerShell の出力](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 
