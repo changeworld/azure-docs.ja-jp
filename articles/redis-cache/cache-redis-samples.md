@@ -22,12 +22,12 @@ ms.lasthandoff: 01/19/2018
 ms.locfileid: "27909698"
 ---
 # <a name="azure-redis-cache-samples"></a>Azure Redis Cache のサンプル
-このトピックでは、キャッシュへの接続、キャッシュ内のデータの読み取りと書き込み、ASP.NET Redis Cache プロバイダーの使用などのシナリオを対象とする、Azure Redis Cache のサンプルの一覧を示します。 サンプルの一部はダウンロード可能なプロジェクトです。ステップ バイ ステップ ガイダンスが用意されているサンプルやコード スニペットが含まれているサンプルもありますが、ダウンロード可能なプロジェクトにはリンクしていません。
+このトピックでは、キャッシュへの接続、キャッシュ内のデータの読み取りと書き込み、Redis Cache の ASP.NET プロバイダーの使用などのシナリオを対象とする、Azure Redis Cache のサンプルの一覧を示します。 サンプルの一部はダウンロード可能なプロジェクトです。ステップ バイ ステップ ガイダンスが用意されているサンプルやコード スニペットが含まれているサンプルもありますが、ダウンロード可能なプロジェクトにはリンクしていません。
 
 ## <a name="hello-world-samples"></a>Hello world サンプル
 このセクションのサンプルでは、Azure Redis Cache インスタンスへの接続およびさまざまな言語と Redis クライアントを使用したキャッシュ内のデータの読み取りと書き込みの基本を示します。
 
-[Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルは [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) .NET クライアントを利用してさまざまなキャッシュ操作を実行する方法を示しています。
+[Hello world](https://github.com/rustd/RedisSamples/tree/master/HelloWorld) サンプルは .NET 向けの Redis クライアントである [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) を利用してさまざまなキャッシュ操作を実行する方法を示しています。
 
 このサンプルは次の方法を示しています。
 
@@ -40,7 +40,7 @@ ms.locfileid: "27909698"
 * Redis セットを使用し、タグ付けを実装する
 * Redis クラスターの操作
 
-詳細については、github の「[StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)」文書を参照してください。他の用途シナリオについては、「[StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/StackExchange.Redis.Tests)」ユニット テストを参照してください。
+詳細については、GitHub の「[StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)」文書を参照してください。他の用途シナリオについては、「[StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/StackExchange.Redis.Tests)」ユニット テストを参照してください。
 
 「[Python で Azure Redis Cache を使用する方法](cache-python-get-started.md)」では、Python と [redis-py](https://github.com/andymccurdy/redis-py) クライアントを使用して Azure Redis Cache を使用する方法を説明しています。
 
