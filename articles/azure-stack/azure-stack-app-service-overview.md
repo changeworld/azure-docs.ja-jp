@@ -35,7 +35,7 @@ Azure App Service を使用すると、ビジネス プロセスとホスティ�
 App Service のいくつかの主要機能を次に示します。
 
 - **複数の言語とフレームワーク**: App Service は、ASP.NET、Node.js、Java、PHP、Python を最高レベルでサポートしています。 また、App Service VM では、Windows PowerShell などのスクリプトや実行可能ファイルを実行することもできます。
-- **DevOps の最適化**: 継続的インテグレーションと継続的配置を GitHub、ローカルの Git または BitBucket でセットアップできます。 テスト環境やステージング環境を介して更新を反映できます。 App Service でのアプリの管理には、Azure PowerShell またはクロスプラットフォーム コマンド ライン インターフェイス (CLI) を使用します。
+- **DevOps の最適化**: 継続的インテグレーションとデプロイを GitHub、ローカルの Git または BitBucket でセットアップできます。 テスト環境やステージング環境を介して更新を反映できます。 App Service でのアプリの管理には、Azure PowerShell またはクロスプラットフォーム コマンド ライン インターフェイス (CLI) を使用します。
 - **Visual Studio の統合**: Visual Studio の専用ツールを使えば、アプリケーションの作成やデプロイ作業が効率的になります。
 
 ## <a name="app-types-in-app-service"></a>App Service でのアプリの種類
