@@ -1,47 +1,54 @@
+items:
 - name: Azure DevOps プロジェクト のドキュメント
   href: index.yml
 - name: 概要
   items:
-    - name: Azure DevOps プロジェクトとは
-      href: overview.md
+  - name: Azure DevOps プロジェクトとは
+    href: overview.md
 - name: クイック スタート
-  expanded: true
   items:
-    - name: .NET
-      href: /azure/devops-project/azure-devops-project-aspnet-core
-      maintainContext: true
-    - name: Node.js
-      href: /azure/devops-project/azure-devops-project-nodejs
-      maintainContext: true
-    - name: Java
-      href: /azure/devops-project/azure-devops-project-java
-      maintainContext: true
-    - name: Python
-      href: /azure/devops-project/azure-devops-project-python
-      maintainContext: true
-    - name: PHP
-      href: /azure/devops-project/azure-devops-project-php
-      maintainContext: true
-    - name: Ruby
-      href: /azure/devops-project/azure-devops-project-ruby
-      maintainContext: true
-    - name: Go
-      href: /azure/devops-project/azure-devops-project-go
-      maintainContext: true
+  - name: .NET
+    href: /azure/devops-project/azure-devops-project-aspnet-core
+    maintainContext: true
+  - name: Node.js
+    href: /azure/devops-project/azure-devops-project-nodejs
+    maintainContext: true
+  - name: Java
+    href: /azure/devops-project/azure-devops-project-java
+    maintainContext: true
+  - name: Python
+    href: /azure/devops-project/azure-devops-project-python
+    maintainContext: true
+  - name: PHP
+    href: /azure/devops-project/azure-devops-project-php
+    maintainContext: true
+  - name: Ruby
+    href: /azure/devops-project/azure-devops-project-ruby
+    maintainContext: true
+  - name: Go
+    href: /azure/devops-project/azure-devops-project-go
+    maintainContext: true
+  expanded: true
 - name: チュートリアル
   items:
-    - name: 1 - GitHub と DevOps プロジェクト
-      href: azure-devops-project-github.md
-      maintainContext: true
-    - name: 2 - VM にデプロイする
-      href: azure-devops-project-vms.md
-      maintainContext: true
-    - name: 3 - Azure SQL Database にデプロイする
-      href: azure-devops-project-sql-database.md
-      maintainContext: true
-    - name: 4 - AKS にデプロイする
-      href: azure-devops-project-aks.md
-      maintainContext: true
-    - name: 5 - Azure Service Fabric にデプロイする
-      href: azure-devops-project-service-fabric.md
-      maintainContext: true
+  - name: 1 - GitHub と DevOps プロジェクト
+    href: azure-devops-project-github.md
+    maintainContext: true
+  - name: 2 - VM にデプロイする
+    href: azure-devops-project-vms.md
+    maintainContext: true
+  - name: 3 - Azure SQL Database にデプロイする
+    href: azure-devops-project-sql-database.md
+    maintainContext: true
+  - name: 4 - AKS にデプロイする
+    href: azure-devops-project-aks.md
+    maintainContext: true
+  - name: 5 - Azure Service Fabric にデプロイする
+    href: azure-devops-project-service-fabric.md
+    maintainContext: true
+ms.openlocfilehash: ef50f014401d5137e787e79b8114a32499925482
+ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37951946"
