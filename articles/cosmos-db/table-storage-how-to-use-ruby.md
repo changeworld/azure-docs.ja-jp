@@ -49,7 +49,7 @@ require "azure/storage/table"
 ```
 
 ## <a name="add-an-azure-storage-connection"></a>Azure Storage 接続を追加する
-Azure Storage モジュールは、Azure Storage アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、**Azure::Storage::Table::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+Azure Storage モジュールは、Azure ストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE_STORAGE_ACCOUNT** と **AZURE_STORAGE_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、**Azure::Storage::Table::TableService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
 
 ```ruby
 Azure.config.storage_account_name = "<your Azure Storage account>"
