@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: 0750ea0877d5f27a8ceb091f8c3904048c9314aa
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 09/14/2018
+ms.openlocfilehash: ad8bf0217dcd07a7272a220f2d91ed6bc40523bc
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348278"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498591"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure Disk Encryption の前提条件 
  この記事「Azure Disk Encryption の前提条件」では、Azure Disk Encryption を使用する前に用意する必要がある項目について説明します。 Azure Disk Encryption は、暗号化キーを管理できるように [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) と統合されています。 [Azure PowerShell](/powershell/azure/overview)、[Azure CLI](/cli/azure/)、または [Azure portal](https://portal.azure.com) を使用して、Azure Disk Encryption を構成できます。
@@ -67,7 +67,7 @@ Azure Disk Encryption は、次のオペレーティング システムでサポ
     - [Windows 用 Azure Powershell をインストールして構成します](/powershell/azure/install-azurerm-ps)。 
         - PowerShellGet、Azure PowerShell をインストールし、AzureRM モジュールを読み込みます。 
     - [macOS および Linux に Azure PowerShell をインストールし、構成します](/powershell/azure/install-azurermps-maclinux)。
-        -  PowerShell Core、Azure PowerShell for .NET Core をインストールし、AzureRM.Netcore モジュールを読み込みます。
+        -  PowerShell Core、Azure PowerShell for .NET Core をインストールし、Az モジュールを読み込みます。
 
 2. AzureRM モジュールのインストールされているバージョンを確認します。 必要な場合は、[Azure PowerShell モジュールを更新](/powershell/azure/install-azurerm-ps#update-the-azure-powershell-module)します。
     -  AzureRM モジュールのバージョン 6.0.0 以降が必要です。
@@ -127,6 +127,9 @@ Azure Disk Encryption に関する Key Vault と Azure AD の前提条件に既�
 1. 必要な場合は、リソース グループを作成します。
 2. Key Vault を作成します。 
 3. キー コンテナーに高度なアクセス ポリシーを設定します。
+
+>[!WARNING]
+>キー コンテナーを削除する前に、そのキー コンテナーを使用して既存の VM を暗号化していないかどうかを確認します。 コンテナーが誤って削除されないようにするには、コンテナーで[論理的な削除](../key-vault/key-vault-soft-delete-powershell.md#enabling-soft-delete)と[リソースのロック](../azure-resource-manager/resource-group-lock-resources.md)を有効にしてください。 
  
 ## <a name="bkmk_KeyVault"></a> キー コンテナーを作成する 
 Azure Disk Encryption は [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) と統合されており、ディスクの暗号化キーとシークレットは Key Vault サブスクリプションで制御および管理できます。 Azure Disk Encryption ではキー コンテナーを作成するか、既存のコンテナーを使用することができます。 キー コンテナーの詳細については、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」と「[キー コンテナーのセキュリティ保護](../key-vault/key-vault-secure-your-key-vault.md)」を参照してください。 Resource Manager テンプレート、Azure PowerShell、または Azure CLI を使用してキー コンテナーを作成できます。 

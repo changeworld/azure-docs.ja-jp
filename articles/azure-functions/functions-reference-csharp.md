@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3bdb5bc2aa47a51cc95a4274fbf20ba5d0515130
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 9a75e7ed8ce25384d39afb22ef50b5453ef543ba
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094283"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129677"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# スクリプト (.csx) 開発者向けリファレンス
 
@@ -34,7 +34,30 @@ Azure Functions の C# スクリプト エクスペリエンスは、[Azure WebJ
 
 *.csx* の形式では、"定型" の記述が少なく、C# 関数のみの記述に重点が置かれています。 名前空間およびクラスにすべてをラップするのではなく、`Run` メソッドを定義するだけです。 通常どおり、すべてのアセンブリ参照と名前空間をファイルの先頭に含めます。
 
-関数アプリの *.csx* ファイルは、インスタンスの初期化時にコンパイルされます。 このコンパイル手順は、C# クラス ライブラリと比較して C# スクリプト関数のコールド スタートに長い時間がかかることなどを意味します。 このコンパイル手順は、C# クラス ライブラリが編集可能でないのに対し、C# スクリプト関数が Azure Portal で編集可能である理由でもあります。
+関数アプリの *.csx* ファイルは、インスタンスの初期化時にコンパイルされます。 このコンパイル手順は、C# クラス ライブラリと比較して C# スクリプト関数のコールド スタートに長い時間がかかることなどを意味します。 このコンパイル手順は、C# クラス ライブラリが編集可能でないのに対し、C# スクリプト関数が Azure portal 上で編集可能である理由でもあります。
+
+## <a name="folder-structure"></a>フォルダー構造
+
+C# スクリプト プロジェクトのフォルダー構造は、次のようになります。
+
+```
+FunctionsProject
+ | - MyFirstFunction
+ | | - run.csx
+ | | - function.json
+ | | - function.proj
+ | - MySecondFunction
+ | | - run.csx
+ | | - function.json
+ | | - function.proj
+ | - host.json
+ | - extensions.csproj
+ | - bin
+```
+
+関数アプリの構成に使用できる共有 [host.json] (functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.csx) とバインディング構成ファイル (function.json) があります。
+
+Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインディング拡張機能を登録](functions-triggers-bindings.md#local-development-azure-functions-core-tools)する必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 ## <a name="binding-to-arguments"></a>引数へのバインド
 
@@ -336,8 +359,10 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 ## <a name="referencing-custom-assemblies"></a>カスタム アセンブリの参照
 
 カスタム アセンブリを参照するために、*共有*アセンブリまたは*プライベート* アセンブリのいずれかを使用できます。
-- 共有アセンブリは、関数アプリ内のすべての関数にわたって共有されます。 カスタム アセンブリを参照するには、そのアセンブリをご自分の[関数アプリのルート フォルダー](functions-reference.md#folder-structure) (wwwroot) 内の `bin` という名前のフォルダーにアップロードします。 
-- プライベート アセンブリは、特定の関数のコンテキストの一部であり、異なるバージョンのサイドローディングをサポートします。 プライベート アセンブリを関数ディレクトリ の `bin` フォルダーにアップロードする必要があります。 `#r "MyAssembly.dll"` などのファイル名を使用してアセンブリを参照します。 
+
+* 共有アセンブリは、関数アプリ内のすべての関数にわたって共有されます。 カスタム アセンブリを参照するには、そのアセンブリをご自分の[関数アプリのルート フォルダー](functions-reference.md#folder-structure) (wwwroot) 内の `bin` という名前のフォルダーにアップロードします。
+
+* プライベート アセンブリは、特定の関数のコンテキストの一部であり、異なるバージョンのサイドローディングをサポートします。 プライベート アセンブリを関数ディレクトリ の `bin` フォルダーにアップロードする必要があります。 `#r "MyAssembly.dll"` などのファイル名を使用してアセンブリを参照します。
 
 関数フォルダーにファイルをアップロードする方法については、[パッケージ管理](#using-nuget-packages)に関するセクションをご覧ください。
 

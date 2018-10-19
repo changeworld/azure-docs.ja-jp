@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 09/20/2018
 ms.author: alkohli
-ms.openlocfilehash: 8f34d5a38f09f015547f52cc4b44819b780932bb
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 5da67b5141eb61823d3e376b6f0e6b0b3895ca68
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818860"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498285"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>StorSimple 5000-7000 シリーズのデータを移行するためのオプション 
 
@@ -75,13 +75,22 @@ A. はい。 他のストレージ ソリューションへの移行には、デ
 
 A. 5000 または 7000 シリーズからの移行は完全にサポートされています。 実際、Microsoft では、移行を開始する前に、サポートに問い合わせることをお勧めしています。 現在、移行操作には Microsoft サポートの支援が必要です。 StorSimple 5000-7000 シリーズのデバイスからデータを移行する場合は、[サポート チケットを開いてください](storsimple-8000-contact-microsoft-support.md)。
 
-### <a name="q-how-does-the-cost-compare-for-the-two-listed-migrations-to-azure-hybrid-services"></a>Q. Azure ハイブリッド サービスへの移行で示されている 2 つのオプションのコストはどのように異なりますか。 
+### <a name="q-what-is-the-pricing-model-for-both-the-migration-options"></a>Q. 2 つの移行オプションの価格モデルはどのようなものですか。
 
-A. 移行のコストは、選択するオプションによって異なります。 移行自体は無料ですが、StorSimple 8000 シリーズにアップグレードする場合は、ハードウェア デバイスのコストがかかります。 同様に、Azure File Sync を使用する場合は、サービスに対するサブスクリプション料金が適用されます。 いずれの場合も、お客様はストレージ コストも継続的に支払う必要があります。 見積もりについては、[サービスごとに Microsoft の料金計算ツール](https://azure.microsoft.com/pricing/#product-picker)をご利用ください。  
+A. 移行のコストは、選択するオプションによって異なります。 移行自体は無料ですが、StorSimple 8000 シリーズにアップグレードする場合は、ハードウェア デバイスのコストがかかります。 
+
+同様に、Azure File Sync を使用する場合は、サービスに対するサブスクリプション料金が適用されます。 いずれの場合も、お客様はストレージ コストも継続的に支払う必要があります。 見積もりについては、以下を参照してください。 
+- [StorSimple の価格](https://azure.microsoft.com/pricing/details/storsimple/)  
+- [AFS の価格]( https://azure.microsoft.com/pricing/details/storage/files/)
 
 ### <a name="q--how-long-does-it-take-to-complete-a-migration"></a>Q.  移行が完了するまでの時間はどのくらいですか。
 
 A. データの移行にかかる時間は、データ量と選択したアップグレード オプションによって異なります。 
+
+### <a name="q-what-is-the-end-of-support-date-for-storsimple-8000-series"></a>Q. StorSimple 8000 シリーズのサポート終了日はいつですか。
+
+A. StorSimple 8000 シリーズのサポート終了日については、[こちら](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series)で公開されています。
+
 
 ## <a name="next-steps"></a>次の手順
  - [StorSimple 5000-7000 シリーズ デバイスのデータを 8000 シリーズ デバイスに移行する](storsimple-8000-migrate-from-5000-7000.md)。

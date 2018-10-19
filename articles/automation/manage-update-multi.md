@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 231a9876c7a84953a7d9a88b761a1da9475d1f48
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 23f86581b5ecc5257ccb246c7199eef4246efb08
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248143"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498234"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>複数のマシンの更新プログラムの管理
 
@@ -50,7 +50,7 @@ Update Management は、次のオペレーティング システムでサポー�
 
 Linux エージェントは、更新リポジトリへのアクセスが必要です。
 
-このソリューションでは、Operations Management Suite (OMS) Agent for Linux が複数の Azure Log Analytics ワークスペースにレポートする構成はサポートされていません。
+このソリューションでは、Log Analytics エージェント for Linux が複数の Azure Log Analytics ワークスペースにレポートする構成はサポートされていません。
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Update Management を Azure 仮想マシンに対して有効にする
 
@@ -127,6 +127,7 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
 
 - **[名前]**: 更新プログラムの展開を識別する一意の名前を入力します。
 - **オペレーティング システム**: **［Windows］** または **［Linux］** を選択します。
+- **[Groups to update (preview)]\(更新するグループ (プレビュー)\)**: サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 詳細については、[動的グループ](automation-update-management.md#using-dynamic-groups)に関するページを参照してください。
 - **[更新するマシン]**: 保存した検索条件、インポートしたグループを選択するか、[マシン] を選択し、更新するマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 更新プログラムの展開をスケジュールする前にマシンの正常性状態を確認できます。 Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください
 
   ![[新しい更新プログラムの展開] ウィンドウ](./media/manage-update-multi/update-select-computers.png)
@@ -141,13 +142,15 @@ Update Management が有効になると、**[更新の管理]** ウィンドウ�
   - ツール
   - 更新プログラム
 
-- **除外する更新プログラム**: このオプションを選択すると、**[除外]** ウィンドウが開きます。 除外するサポート技術情報の記事またはパッケージ名を入力します。
+- **[Updates to include/exclude]\(含める/除外する更新プログラム\)**: **[Include/Exclude]\(含める/除外する\)** ページが開きます。 含めるまたは除外する更新プログラムは別のタブに表示されます。 包含を処理する方法については、[包含の動作](automation-update-management.md#inclusion-behavior)に関するページを参照してください。
 
 - **[スケジュール設定]**: 既定の日時 (現在の時刻から 30 分後) をそのまま使用できます。 別の時刻を指定することもできます。
 
    展開を 1 回だけ行うか、定期的なスケジュールで行うかを指定することもできます。 定期的なスケジュールを設定するには、**[繰り返し]** の下の **[繰り返し]** を選択します。
 
    ![[スケジュール設定] ダイアログ ボックス](./media/manage-update-multi/update-set-schedule.png)
+
+- **[Pre-scripts + Post-scripts]\(事前スクリプト + 事後スクリプト\)**: デプロイの前後に実行するスクリプトを選択します。 詳細については、[事前および事後スクリプトの管理](pre-post-scripts.md)に関するページを参照してください。
 - **メンテナンス期間 (分)**: 更新プログラムを展開する期間を指定します。 この設定により、定義したサービス期間内は変更が確実に実行されます。
 
 - **[Reboot control]\(再起動制御\)** - この設定は、更新デプロイでの再起動の処理方法を決定します。

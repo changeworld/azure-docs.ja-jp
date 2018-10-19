@@ -1,26 +1,25 @@
 ---
-title: "Java SDK: Azure Data Lake Store に対するファイルシステム操作 | Microsoft Docs"
-description: "Azure Data Lake Store Java SDK を使用して、Data Lake Store に対してフォルダーの作成などのファイルシステム操作を実行します。"
+title: 'Java SDK: Azure Data Lake Storage Gen1 に対するファイルシステム操作 | Microsoft Docs'
+description: Azure Data Lake Storage Gen1 Java SDK を使用して、Data Lake Storage Gen1 に対してフォルダーの作成などのファイルシステム操作を実行します。
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: d10e09db-5232-4e84-bb50-52efc2c21887
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: fdae36c3cbdda16f9392a113502c7c6c62b25534
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: a91593c1bae3002be8b7e423b627f1baf19e86e2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129195"
 ---
-# <a name="filesystem-operations-on-data-lake-store-using-java-sdk"></a>Java SDK を使用した Data Lake Store に対するファイルシステム操作
+# <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Java SDK を使用した Azure Data Lake Storage Gen1 に対するファイルシステム操作
 > [!div class="op_single_selector"]
 > * [.NET SDK](data-lake-store-data-operations-net-sdk.md)
 > * [Java SDK](data-lake-store-get-started-java-sdk.md)
@@ -29,13 +28,13 @@ ms.lasthandoff: 01/10/2018
 >
 > 
 
-Azure Data Lake Store Java SDK を使用して、フォルダーの作成、データ ファイルのアップロードとダウンロードなどの基本操作を実行する方法について説明します。Data Lake の詳細については、[Azure Data Lake Store](data-lake-store-overview.md) に関する記事をご覧ください。
+Azure Data Lake Storage Gen1 Java SDK を使用して、フォルダーの作成、データ ファイルのアップロードとダウンロードなどの基本操作を実行する方法について説明します。Data Lake Storage Gen1 について詳しくは、[Azure Data Lake Storage Gen1](data-lake-store-overview.md) に関する記事をご覧ください。
 
-[Azure Data Lake Store Java API ドキュメント](https://azure.github.io/azure-data-lake-store-java/javadoc/)で、Azure Data Lake Store に関する Java SDK API ドキュメントにアクセスできます。
+[Azure Data Lake Storage Gen1 Java API ドキュメント](https://azure.github.io/azure-data-lake-store-java/javadoc/)で、Data Lake Storage Gen1 に関する Java SDK API ドキュメントにアクセスできます。
 
 ## <a name="prerequisites"></a>前提条件
 * Java Development Kit (JDK 7 以降、Java バージョン 1.7 以降を使用)。
-* Azure Data Lake Store アカウント。 「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。
+* Data Lake Storage Gen1 アカウント。 「[Azure portal で Azure Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。
 * [Maven](https://maven.apache.org/install.html)。 このチュートリアルでは、ビルドとプロジェクトの依存関係に Maven を使用します。 Maven や Gradle などのビルド システムを使用しなくてもビルドすることはできますが、これらのシステムを使用すると、依存関係の管理が容易になります。
 * (オプション) [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) や [Eclipse](https://www.eclipse.org/downloads/) などの IDE。
 
@@ -59,7 +58,7 @@ Azure Data Lake Store Java SDK を使用して、フォルダーの作成、デ�
           </dependency>
         </dependencies>
    
-    最初の依存関係では、maven リポジトリから Data Lake Store SDK (`azure-data-lake-store-sdk`) を使用します。 2 番目の依存関係では、このアプリケーションで使用するログ記録フレームワーク (`slf4j-nop`) を指定します。 Data Lake Store SDK では、[slf4j](http://www.slf4j.org/) ログ ファサードを使用します。slf4j を使用すると、log4j、Java ログ、logback などの多数の一般的なログ記録フレームの中から選択することも、ログを記録しないようにすることもできます。 この例ではログを無効にするため、**slf4j-nop** バインドを使用します。 アプリケーションで他のログ オプションを使用する場合は、[こちら](http://www.slf4j.org/manual.html#projectDep)をご覧ください。
+    最初の依存関係では、maven リポジトリから Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) を使用します。 2 番目の依存関係では、このアプリケーションで使用するログ記録フレームワーク (`slf4j-nop`) を指定します。 Data Lake Storage Gen1 SDK では、[slf4j](http://www.slf4j.org/) ログ ファサードを使用します。slf4j を使用すると、log4j、Java ログ、logback などの多数の一般的なログ記録フレームの中から選択することも、ログを記録しないようにすることもできます。 この例ではログを無効にするため、**slf4j-nop** バインドを使用します。 アプリケーションで他のログ オプションを使用する場合は、[こちら](http://www.slf4j.org/manual.html#projectDep)をご覧ください。
 
 3. アプリケーションに次の import ステートメントを追加します。
 
@@ -74,22 +73,22 @@ Azure Data Lake Store Java SDK を使用して、フォルダーの作成、デ�
         import java.util.Arrays;
         import java.util.List;
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
-* アプリケーションのエンドユーザー認証については、「[End-user-authentication with Data Lake Store using Java (Java を使用した Data Lake Store に対するエンドユーザー認証)](data-lake-store-end-user-authenticate-java-sdk.md)」を参照してください。
-* アプリケーションのサービス間認証については、「[Service-to-service authentication with Data Lake Store using Java (Java を使用した Data Lake Store に対するサービス間認証)](data-lake-store-service-to-service-authenticate-java.md)」を参照してください。
+* アプリケーションのエンドユーザー認証については、[Data Lake Storage Gen1 による Java を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-java-sdk.md)に関する記事をご覧ください。
+* アプリケーションのサービス間認証については、[Data Lake Storage Gen1 による Java を使用したサービス間認証](data-lake-store-service-to-service-authenticate-java.md)に関する記事をご覧ください。
 
-## <a name="create-an-azure-data-lake-store-client"></a>Azure Data Lake Store クライアントを作成する
-[ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) オブジェクトを作成するには、Data Lake Store アカウント名と Data Lake Store に対する認証時に生成したトークン プロバイダーを指定する必要があります (「[認証](#authentication)」セクションを参照)。 Data Lake Store アカウント名は、完全修飾ドメイン名である必要があります。 たとえば、**FILL-IN-HERE** を **mydatalakestore.azuredatalakestore.net** などに置き換えます。
+## <a name="create-a-data-lake-storage-gen1-client"></a>Data Lake Storage Gen1 クライアントの作成
+[ADLStoreClient](https://azure.github.io/azure-data-lake-store-java/javadoc/) オブジェクトを作成するには、Data Lake Storage Gen1 アカウント名と、Data Lake Storage Gen1 による認証時に生成したトークン プロバイダーを指定する必要があります (「[認証](#authentication)」セクションを参照)。 Data Lake Storage Gen1 アカウント名は、完全修飾ドメイン名である必要があります。 たとえば、**FILL-IN-HERE** を **mydatalakestoragegen1.azuredatalakestore.net** などに置き換えます。
 
     private static String accountFQDN = "FILL-IN-HERE";  // full account FQDN, not just the account name
     ADLStoreClient client = ADLStoreClient.createClient(accountFQDN, provider);
 
-次のセクションのコード スニペットには、一般的なファイルシステム操作の例が含まれています。 他の操作については、**ADLStoreClient** オブジェクトの完全な [Data Lake Store Java SDK API ドキュメント](https://azure.github.io/azure-data-lake-store-java/javadoc/)で確認できます。
+次のセクションのコード スニペットには、一般的なファイルシステム操作の例が含まれています。 他の操作については、**ADLStoreClient** オブジェクトの完全な [Data Lake Storage Gen1 Java SDK API ドキュメント](https://azure.github.io/azure-data-lake-store-java/javadoc/)で確認できます。
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
 
-次のスニペットを使用して、指定した Data Lake Store アカウントのルートにディレクトリ構造を作成します。
+次のスニペットを使用して、指定した Data Lake Storage Gen1 アカウントのルートにディレクトリ構造を作成します。
 
     // create directory
     client.createDirectory("/a/b/w");
@@ -135,7 +134,7 @@ Azure Data Lake Store Java SDK を使用して、フォルダーの作成、デ�
 
 ## <a name="read-a-file"></a>ファイルを読み取る
 
-次のスニペットを使用して、Data Lake Store アカウントのファイルから内容を読み取ります。
+次のスニペットを使用して、Data Lake Storage Gen1 アカウントのファイルから内容を読み取ります。
 
     // Read File
     InputStream in = client.getReadStream(filename);
@@ -150,7 +149,7 @@ Azure Data Lake Store Java SDK を使用して、フォルダーの作成、デ�
 
 ## <a name="concatenate-files"></a>ファイルを連結する
 
-次のスニペットを使用して、Data Lake Store アカウントの 2 つのファイルを連結します。 成功した場合、既存の 2 つのファイルは連結されたファイルで置き換えられます。
+次のスニペットを使用して、Data Lake Storage Gen1 アカウントの 2 つのファイルを連結します。 成功した場合、既存の 2 つのファイルは連結されたファイルで置き換えられます。
 
     // concatenate the two files into one
     List<String> fileList = Arrays.asList("/a/b/c.txt", "/a/b/d.txt");
@@ -159,7 +158,7 @@ Azure Data Lake Store Java SDK を使用して、フォルダーの作成、デ�
 
 ## <a name="rename-a-file"></a>ファイル名を変更する
 
-次のスニペットを使用して、Data Lake Store アカウントのファイルの名前を変更します。
+次のスニペットを使用して、Data Lake Storage Gen1 アカウントのファイルの名前を変更します。
 
     //rename the file
     client.rename("/a/b/f.txt", "/a/b/g.txt");
@@ -167,7 +166,7 @@ Azure Data Lake Store Java SDK を使用して、フォルダーの作成、デ�
 
 ## <a name="get-metadata-for-a-file"></a>ファイルのメタデータを取得する
 
-次のスニペットを使用して、Data Lake Store アカウントのファイルのメタデータを取得します。
+次のスニペットを使用して、Data Lake Storage Gen1 アカウントのファイルのメタデータを取得します。
 
     // get file metadata
     DirectoryEntry ent = client.getDirectoryEntry(filename);
@@ -198,7 +197,7 @@ Azure Data Lake Store Java SDK を使用して、フォルダーの作成、デ�
 
 ## <a name="delete-files-and-folders"></a>ファイルとフォルダーを削除する
 
-次のスニペットを使用して、Data Lake Store アカウントの指定したファイルとフォルダーを再帰的に削除します。
+次のスニペットを使用して、Data Lake Storage Gen1 アカウントの指定したファイルとフォルダーを再帰的に削除します。
 
     // delete directory along with all the subdirectories and files in it
     client.deleteRecursive("/a");
@@ -211,6 +210,6 @@ Azure Data Lake Store Java SDK を使用して、フォルダーの作成、デ�
 
 ## <a name="next-steps"></a>次の手順
 * [Java SDK の JavaDoc を確認する](https://azure.github.io/azure-data-lake-store-java/javadoc/)
-* [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
+* [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
 
 

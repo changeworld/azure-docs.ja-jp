@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Couchbase からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Couchbase からデータをコピーする (プレビュー) | Microsoft Docs
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Couchbase からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 9806ec19df0a68ac71cf639f5cb9b2b600a574ba
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: fee9deb43b4619f26cb9e4c0044b25bd34af93d2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053924"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126836"
 ---
-# <a name="copy-data-from-couchbase-using-azure-data-factory"></a>Azure Data Factory を使用して Couchbase からデータをコピーする
+# <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Couchbase からデータをコピーする (プレビュー)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Couchbase からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
@@ -102,7 +102,7 @@ Couchbase からデータをコピーするには、コピー アクティビテ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティを **CouchbaseSource** に設定する必要があります | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM MyTable"`」のように入力します。 | [はい] |
 
 **例:**
 

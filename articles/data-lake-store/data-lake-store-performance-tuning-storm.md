@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Store の Storm パフォーマンス チューニング ガイドライン | Microsoft Docs
-description: Azure Data Lake Store の Storm パフォーマンス チューニング ガイドライン
+title: Azure Data Lake Storage Gen1 の Storm パフォーマンス チューニング ガイドライン | Microsoft Docs
+description: Azure Data Lake Storage Gen1 の Storm パフォーマンス チューニング ガイドライン
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -12,28 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 5ebca90ffd679de1c30d1bc324bf4f1c3b9f6f70
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: aa4d42a53e6fb8ea236a9d544102aab3dff19013
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198862"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129235"
 ---
-# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-store"></a>HDInsight での Storm と Azure Data Lake Store のパフォーマンス チューニング ガイダンス
+# <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight と Azure Data Lake Storage Gen1 上の Storm に対するパフォーマンス チューニング ガイダンス
 
 Azure Storm トポロジのパフォーマンスを調整する際に考慮すべき要素について説明します。 たとえば、スパウトとボルトによる処理 (I/O とメモリのどちらを大量に消費する場合でも) の特性を理解しておくことが重要です。 この記事では、一般的な問題のトラブルシューティングを含む、さまざまなパフォーマンス チューニング ガイドラインについて説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、[Azure Data Lake Store の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
-* Data Lake Store アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Store を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
-* **Data Lake Store で Storm クラスターを実行している**。 詳細については、[HDInsight での Storm](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview) に関する記事を参照してください。
-* **Data Lake Store のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Store のパフォーマンス チューニング ガイダンス](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)に関する記事を参照してください。  
+* **Azure Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関する記事をご覧ください。
+* Data Lake Storage Gen1 アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Storage Gen1 を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページをご覧ください。 クラスターのリモート デスクトップが有効になっていることを確認します。
+* **Data Lake Storage Gen1 上で Storm クラスターを実行している**。 詳細については、[HDInsight での Storm](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview) に関する記事を参照してください。
+* **Data Lake Storage Gen1 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)に関する記事をご覧ください。  
 
 ## <a name="tune-the-parallelism-of-the-topology"></a>トポロジの並列処理のチューニング
 
-Data Lake Store との間で I/O の同時実行性を高めることで、パフォーマンスを向上できる場合があります。 Storm トポロジでは、並列処理を決定する一連の設定が用意されています。
+Data Lake Storage Gen1 との間で I/O のコンカレンシーを高めることで、パフォーマンスを向上できる場合があります。 Storm トポロジでは、並列処理を決定する一連の設定が用意されています。
 * ワーカー プロセスの数 (ワーカーは VM 間で均等に分散されます)。
 * スパウトの Executor インスタンスの数。
 * ボルトの Executor インスタンスの数。
@@ -51,9 +51,9 @@ Storm に関連するさまざまなコンポーネントと、それらが並�
 * スパウトとボルトの Executor インスタンス。 各 Executor インスタンスは、ワーカー (JVM) 内で実行されるスレッドに対応します。
 * Storm のタスク。 各スレッドで実行される論理タスクです。 これによって並列処理のレベルが変わることはないので、Executor ごとに複数のタスクが必要かどうかを評価する必要があります。
 
-### <a name="get-the-best-performance-from-data-lake-store"></a>Data Lake Store でパフォーマンスを最大限に高める
+### <a name="get-the-best-performance-from-data-lake-storage-gen1"></a>Data Lake Storage Gen1 でパフォーマンスを最大限に高める
 
-Data Lake Store を使用する場合、次の方法でパフォーマンスを最大限高めることができます。
+Data Lake Storage Gen1 を使用する場合、次の方法でパフォーマンスを最大限高めることができます。
 * 小さなサイズの追加データを大きなサイズのデータに結合する (4 MB が理想的)。
 * 同時要求をできる限り多く実行する。 各ボルト スレッドではブロッキング読み取りが行われるため、コアごとに 8 ～ 12 個のスレッドが必要です。 これにより、NIC と CPU の使用率が適切に保たれます。 VM が大きくなると、より多くの同時要求が可能になります。  
 
@@ -66,7 +66,7 @@ D13v2 Azure VM を含む 8 つのワーカー ノードから成るクラスタ�
 ## <a name="tune-additional-parameters"></a>追加パラメーターのチューニング
 基本的なトポロジを作成したら、次のパラメーターをチューニングするかどうかを検討できます。
 * **ワーカー ノードごとの JVM の数。** 大規模なデータ構造 (ルックアップ テーブルなど) をメモリ内でホストしている場合、JVM ごとに個別のコピーが必要になります。 また、JVM の数が少ない場合は、データ構造を多くのスレッド間で使用できます。 JVM の数を変更しても、ボルトの I/O には、これらの JVM 間で追加されたスレッドの数ほどの大きな変化は発生しません。 わかりやすくするために、JVM はワーカーごとに 1 つにしておくことをお勧めします。 ただし、ボルトの処理内容や必要なアプリケーション処理によっては、この数を変更することが必要になる場合があります。
-* **スパウトの Executor の数。** 前の例では Data Lake Store への書き込みにボルトを使用しているため、スパウトの数は直接、ボルトのパフォーマンスには関連しません。 ただし、スパウトで発生する処理または I/O の量によっては、最良のパフォーマンスを得るためにスパウトをチューニングすることをお勧めします。 ボルトをビジー状態に保つために十分なスパウトがあることを確認してください。 スパウトの出力レートはボルトのスループットと一致する必要があります。 実際の構成は、スパウトによって異なります。
+* **スパウトの Executor の数。** 前の例では Data Lake Storage Gen1 への書き込みにボルトを使用しているため、スパウトの数は、ボルトのパフォーマンスに直接には関連しません。 ただし、スパウトで発生する処理または I/O の量によっては、最良のパフォーマンスを得るためにスパウトをチューニングすることをお勧めします。 ボルトをビジー状態に保つために十分なスパウトがあることを確認してください。 スパウトの出力レートはボルトのスループットと一致する必要があります。 実際の構成は、スパウトによって異なります。
 * **タスクの数。** 各ボルトは 1 つのスレッドとして実行されます。 ボルトごとにタスクを追加しても、同時実行数が増えることはありません。 タスクを追加する利点があるのは、タプルの受信確認処理に要する時間がボルトの実行時間の大部分を占める場合のみです。 ボルトから受信確認を送信する前に、数が多いタプルを大きな追加データとしてグループ化することをお勧めします。 したがって、ほとんどの場合、タスクを増やす利点はありません。
 * **ローカルまたはシャッフル グループ化。** この設定を有効にすると、タプルは同じワーカー プロセス内のボルトに送信されます。 これにより、プロセス間での通信とネットワーク呼び出しが減少します。 ほとんどのトポロジにおいてこれをお勧めします。
 
@@ -85,17 +85,17 @@ D13v2 Azure VM を含む 8 つのワーカー ノードから成るクラスタ�
  適切な計算を行うには、まず各タプルのサイズを見積もります。 次に、1 つのスパウト スレッドにどれだけのメモリがあるかを確認します。 1 つのスレッドに割り当てられたメモリの合計をこの値で割ると、スパウトでの保留パラメーターの最大値が得られます。
 
 ## <a name="tune-the-bolt"></a>ボルトのチューニング
-Data Lake Store に書き込む場合は、サイズ同期ポリシー (クライアント側のバッファー) を 4 MB に設定します。 これにより、フラッシュまたは hsync() は、バッファーのサイズがこの値である場合にのみ実行されるようになります。 hsync() を明示的に実行しない限り、ワーカー VM 上の Data Lake Store ドライバーはこのバッファー処理を自動的に行います。
+Data Lake Storage Gen1 に書き込む場合は、サイズ同期ポリシー (クライアント側のバッファー) を 4 MB に設定します。 これにより、フラッシュまたは hsync() は、バッファーのサイズがこの値である場合にのみ実行されるようになります。 hsync() を明示的に実行しない限り、ワーカー VM 上の Data Lake Storage Gen1 ドライバーはこのバッファー処理を自動的に行います。
 
-既定の Data Lake Store Storm ボルトには、このパラメーターのチューニングに使用できるサイズ同期ポリシー パラメーター (fileBufferSize) が用意されています。
+既定の Data Lake Storage Gen1 Storm ボルトには、このパラメーターのチューニングに使用できるサイズ同期ポリシー パラメーター (fileBufferSize) が用意されています。
 
 I/O 集中型のトポロジでは、各ボルト スレッドによって独自のファイルへの書き込みとファイルのローテーション ポリシー (fileRotationSize) の設定が行われるようにすることをお勧めします。 ファイルが特定のサイズに達すると、ストリームは自動的にフラッシュされ、新しいファイルに書き込まれます。 ローテーションにあたってのファイルの推奨サイズは 1 GB です。
 
 ### <a name="handle-tuple-data"></a>タプル データの処理
 
-Storm では、タプルがボルトによって明示的に受信確認されるまで、スパウトがそのタプルを保持し続けます。 タプルがボルトによって読み取られた場合でも、まだ受信確認されていない場合は、スパウトが Data Lake Store のバックエンドへの保持の処理を行っていない可能性があります。 タプルが受信確認されると、ボルトによる保持がスパウトに保証されるので、スパウトは読み取り元にかかわらずソース データを削除できます。  
+Storm では、タプルがボルトによって明示的に受信確認されるまで、スパウトがそのタプルを保持し続けます。 タプルがボルトによって読み取られた場合でも、まだ受信確認されていない場合は、スパウトが Data Lake Storage Gen1 のバックエンドへの保持の処理を行っていない可能性があります。 タプルが受信確認されると、ボルトによる保持がスパウトに保証されるので、スパウトは読み取り元にかかわらずソース データを削除できます。  
 
-Data Lake Store のパフォーマンスを最適化するには、ボルトでのタプル データのバッファーを 4 MB にします。 その後、Data Lake Store バックエンドへの書き込みを 1 つの 4 MB の書き込みとして実行します。 (hflush() の呼び出しによって) データがストアに正常に書き込まれると、ボルトはスパウトにデータの受信確認を送信できます。 これが、ここで解説されているサンプルのボルトが行っている処理です。 hflush() の呼び出しとタプルの受信確認までに保持するタプルの数を増やすこともできます。 ただし、この場合、スパウトで保持する必要があるフライト中のタプルの数が増えるので、JVM ごとに必要なメモリの量は増加します。
+Data Lake Storage Gen1 のパフォーマンスを最大化するには、ボルトによって 4 MB のタプル データがバッファー処理されるようにします。 その後、Data Lake Storage Gen1 バックエンドへの書き込みを 1 つの 4 MB の書き込みとして実行します。 (hflush() の呼び出しによって) データがストアに正常に書き込まれると、ボルトはスパウトにデータの受信確認を送信できます。 これが、ここで解説されているサンプルのボルトが行っている処理です。 hflush() の呼び出しとタプルの受信確認までに保持するタプルの数を増やすこともできます。 ただし、この場合、スパウトで保持する必要があるフライト中のタプルの数が増えるので、JVM ごとに必要なメモリの量は増加します。
 
 > [!NOTE]
 アプリケーションによっては、パフォーマンス以外の他の理由から、タプルの受信確認をより頻繁に行わなければならない場合があります (データのサイズが 4 MB 未満)。 ただし、これによってストレージ バックエンドへの I/O のスループットに影響が及ぶ可能性があります。 ボルトの I/O のパフォーマンスとのトレードオフを慎重に評価する必要があります。
@@ -127,13 +127,13 @@ Data Lake Store のパフォーマンスを最適化するには、ボルトで�
 
 * **ボルトの execute の待ち時間が長い。** これは、ボルトの execute() メソッドに時間がかかりすぎていることを示します。 コードを最適化するか、書き込みのサイズとフラッシュの動作を確認してください。
 
-### <a name="data-lake-store-throttling"></a>Data Lake Store の調整
-Data Lake Store によって提供される帯域幅の制限に達すると、タスクの失敗が生じる可能性があります。 タスク ログで調整エラーを確認してください。 コンテナーのサイズを増やすことで、並列処理を減らせます。    
+### <a name="data-lake-storage-gen1-throttling"></a>Data Lake Storage Gen1 の調整
+Data Lake Storage Gen1 によって提供される帯域幅の制限に達した場合は、タスクが失敗する可能性があります。 タスク ログで調整エラーを確認してください。 コンテナーのサイズを増やすことで、並列処理を減らせます。    
 
 調整されているかどうかを確認するには、クライアント側でデバッグ ログを有効にしてください。
 
 1. **[Ambari]** > **[Storm]** > **[構成]** > **[Advanced storm-worker-log4j (storm-worker-log4j の詳細)]** の順に移動し、**&lt;root level="info"&gt;** を **&lt;root level="debug"&gt;** に変更します。 すべてのノードとサービスを再起動して構成を有効にします。
-2. ワーカー ノード (/var/log/storm/worker-artifacts/&lt;トポロジ名&gt;/&lt;ポート&gt;/worker.log の直下) の Storm トポロジ ログで、Data Lake Store 調整の例外を監視します。
+2. ワーカー ノード (/var/log/storm/worker-artifacts/&lt;トポロジ名&gt;/&lt;ポート&gt;/worker.log の直下) の Storm トポロジ ログで、Data Lake Storage Gen1 調整の例外を監視します。
 
 ## <a name="next-steps"></a>次の手順
 Storm におけるその他のパフォーマンスのチューニングについては、[こちらのブログ](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)を参照してください。

@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 09/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15fe97e39fbc1c669762ddb7523cfd043638d3de
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: adef9d2f2d859c62d3b3b3a542536698fa668f9a
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144231"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498302"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Azure Event Grid のイベント ソース
 
@@ -58,7 +58,7 @@ Azure サブスクリプションでのリソースの変更に対応するた�
 | [PowerShell: カスタム トピックのイベントのサブスクライブ](./scripts/event-grid-powershell-subscribe-custom-topic.md)|カスタム トピックのサブスクリプションを作成するサンプル スクリプトです。 Webhook にイベントを送信します。|
 | [Resource Manager テンプレート: カスタム トピックと Webhook エンドポイント](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | カスタム トピックとそのカスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Webhook にイベントを送信します。 |
 |
-| [Resource Manager テンプレート: カスタム トピックと Event Hubs エンドポイント](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeCustomTopicToEventHub.json)| カスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Azure Event Hubs にイベントを送信します。 |
+| [Resource Manager テンプレート: カスタム トピックと Event Hubs エンドポイント](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| カスタム トピックのサブスクリプションを作成する Resource Manager テンプレート。 Azure Event Hubs にイベントを送信します。 |
 | [イベント スキーマ](event-schema.md) | カスタム イベントのフィールドを示します。 |
 
 ## <a name="event-hubs"></a>Event Hubs
@@ -104,7 +104,7 @@ Capture ファイル イベントに対応するために、Event Hubs のイベ
 | [Azure CLI: リソース グループのイベントのサブスクライブとリソースのフィルタリング](./scripts/event-grid-cli-resource-group-filter.md) | リソース グループのイベントにサブスクライブし、1 つのリソースのイベントをフィルター処理するサンプル スクリプトです。 |
 | [PowerShell: リソース グループのイベントのサブスクライブ](./scripts/event-grid-powershell-resource-group.md) | リソース グループのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
 | [PowerShell: リソース グループのイベントのサブスクライブとリソースのフィルタリング](./scripts/event-grid-powershell-resource-group-filter.md) | リソース グループのイベントにサブスクライブし、1 つのリソースのイベントをフィルター処理するサンプル スクリプトです。 |
-| [Resource Manager テンプレート: リソース グループのサブスクリプション](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeResourceGroupToWebHook.json) | リソース グループのイベントをサブスクライブします。 Webhook にイベントを送信します。 |
+| [Resource Manager テンプレート: リソースのサブスクリプション](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Azure サブスクリプションまたはリソース グループのイベントにサブスクライブします。 Webhook にイベントを送信します。 |
 | [イベント スキーマ](event-schema-resource-groups.md) | リソース グループ イベントのフィールドを示します。 |
 
 ## <a name="service-bus"></a>Service Bus
@@ -128,7 +128,7 @@ BLOB の作成および削除のイベントに対応するために、Blob Stor
 | [クイック スタート: Azure portal を使用した Blob Storage イベントの作成とルーティング](blob-event-quickstart-portal.md) | ポータルを使って Blob Storage イベントを Webhook に送信する方法を示します。 |
 | [Azure CLI: Blob Storage アカウントのイベントのサブスクライブ](./scripts/event-grid-cli-blob.md) | BLOB ストレージ アカウントのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
 | [PowerShell: Blob Storage アカウントのイベントのサブスクライブ](./scripts/event-grid-powershell-blob.md) | BLOB ストレージ アカウントのイベントにサブスクライブするサンプル スクリプトです。 Webhook にイベントを送信します。 |
-| [Resource Manager テンプレート: BLOB ストレージとサブスクリプションの作成](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/createBlobAndSubscribe.json) | Azure Blob Storage アカウントをデプロイし、そのストレージ アカウントのイベントをサブスクライブします。 Webhook にイベントを送信します。 |
+| [Resource Manager テンプレート: BLOB ストレージとサブスクリプションの作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Azure Blob Storage アカウントをデプロイし、そのストレージ アカウントのイベントをサブスクライブします。 Webhook にイベントを送信します。 |
 | [概要: Blob Storage イベントへの対応](../storage/blobs/storage-blob-event-overview.md) | Blob Storage と Event Grid の統合の概要です。 |
 | [イベント スキーマ](event-schema-blob-storage.md) | Blob Storage イベントのフィールドを示します。 |
 

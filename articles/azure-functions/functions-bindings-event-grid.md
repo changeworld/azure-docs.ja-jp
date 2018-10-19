@@ -9,14 +9,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 08/23/2018
+ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: 6d15405ef22f47dc8a94c07d9d09d343a743408e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: a52ba16d7c8548d378d1b13a85fc1fd1070144e8
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094554"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128385"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions の Event Grid トリガー
 
@@ -46,9 +46,9 @@ Event Grid トリガーは、[Microsoft.Azure.WebJobs.Extensions.EventGrid](http
 
 Event Grid トリガーの言語固有の例をご覧ください。
 
-* [C#](#c-example)
+* [C# を選択した場合](#c-example)
 * [C# スクリプト (.csx)](#c-script-example)
-* [JavaScript](#javascript-example)
+* [JavaScript を選択した場合](#javascript-example)
 * [Java](#trigger---java-example)
 
 HTTP トリガーの例については、後の「[HTTP トリガーを使用する方法](#use-an-http-trigger-as-an-event-grid-trigger)」をご覧ください。
@@ -308,23 +308,40 @@ Azure Portal を使ってサブスクリプションを作成する方法につ�
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest) を使ってサブスクリプションを作成するには、[az eventgrid event-subscription create](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-create) コマンドを使います。
 
-このコマンドには、関数を呼び出すエンドポイント URL が必要です。 URL パターンの例を次に示します。
+このコマンドには、関数を呼び出すエンドポイント URL が必要です。 バージョン固有の URL パターンの例を次に示します。
 
-```
-https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
-```
+#### <a name="version-2x-runtime"></a>バージョン 2.x ランタイム
+
+    https://{functionappname}.azurewebsites.net/runtime/webhooks/eventgrid?functionName={functionname}&code={systemkey}
+
+#### <a name="version-1x-runtime"></a>バージョン 1.x ランタイム
+
+    https://{functionappname}.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName={functionname}&code={systemkey}
 
 システム キーは、Event Grid トリガー用のエンドポイント URL に含める必要のある承認キーです。 次のセクションでは、システム キーを取得する方法について説明します。
 
 BLOB ストレージ アカウントをサブスクライブする例を次に示します (システム キーのプレースホルダーを含みます)。
 
+#### <a name="version-2x-runtime"></a>バージョン 2.x ランタイム
+
 ```azurecli
 az eventgrid resource event-subscription create -g myResourceGroup \
 --provider-namespace Microsoft.Storage --resource-type storageAccounts \
---resource-name glengablobstorage --name myFuncSub  \
+--resource-name myblobstorage12345 --name myFuncSub  \
 --included-event-types Microsoft.Storage.BlobCreated \
 --subject-begins-with /blobServices/default/containers/images/blobs/ \
---endpoint https://glengastorageevents.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName=imageresizefunc&code=LUwlnhIsNtSiUjv/sNtSiUjvsNtSiUjvsNtSiUjvYb7XDonDUr/RUg==
+--endpoint https://mystoragetriggeredfunction.azurewebsites.net/runtime/webhooks/eventgrid?functionName=imageresizefunc&code=<key>
+```
+
+#### <a name="version-1x-runtime"></a>バージョン 1.x ランタイム
+
+```azurecli
+az eventgrid resource event-subscription create -g myResourceGroup \
+--provider-namespace Microsoft.Storage --resource-type storageAccounts \
+--resource-name myblobstorage12345 --name myFuncSub  \
+--included-event-types Microsoft.Storage.BlobCreated \
+--subject-begins-with /blobServices/default/containers/images/blobs/ \
+--endpoint https://mystoragetriggeredfunction.azurewebsites.net/admin/extensions/EventGridExtensionConfig?functionName=imageresizefunc&code=<key>
 ```
 
 サブスクリプションを作成する方法について詳しくは、[BLOB ストレージのクイック スタート](../storage/blobs/storage-blob-event-quickstart.md#subscribe-to-your-storage-account)または他の Event Grid クイック スタートのページをご覧ください。
@@ -334,10 +351,10 @@ az eventgrid resource event-subscription create -g myResourceGroup \
 次の API (HTTP GET) を使って、システム キーを取得できます。
 
 ```
-http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={adminkey}
+http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextensionconfig_extension?code={masterkey}
 ```
 
-これは管理 API なので、お使いの関数アプリの[マスター キー](functions-bindings-http-webhook.md#authorization-keys)が必要です。 システム キー (Event Grid トリガー関数を呼び出す場合) とマスター キー (関数アプリで管理タスクを実行する場合) を混同しないでください。 Event Grid トピックをサブスクライブするときは、システム キーを使います。 
+これは管理 API なので、お使いの関数アプリの[マスター キー](functions-bindings-http-webhook.md#authorization-keys)が必要です。 システム キー (Event Grid トリガー関数を呼び出す場合) とマスター キー (関数アプリで管理タスクを実行する場合) を混同しないでください。 Event Grid トピックをサブスクライブするときは、システム キーを使います。
 
 システム キーを提供する応答の例を次に示します。
 
@@ -354,7 +371,12 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 }
 ```
 
-詳しくは、HTTP トリガーのリファレンス記事の「[承認キー](functions-bindings-http-webhook.md#authorization-keys)」をご覧ください。 
+ポータルの **[Function App の設定]** タブから関数アプリのマスター キーを取得できます。
+
+> [!IMPORTANT]
+> マスター キーでは、関数アプリへの管理者アクセス権が提供されます。 このキーを第三者と共有したり、ネイティブ クライアント アプリケーションで配布したりしないでください。
+
+詳しくは、HTTP トリガーのリファレンス記事の「[承認キー](functions-bindings-http-webhook.md#authorization-keys)」をご覧ください。
 
 代わりに、HTTP PUT を送信して自分でキーの値を指定することもできます。
 
@@ -475,7 +497,7 @@ https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionN
 ``` 
 Functions 2.x に対して、次のようにこのエンドポイント パターンを使用します。
 ```
-https://{subdomain}.ngrok.io/runtime/webhooks/EventGridExtensionConfig?functionName={functionName}
+https://{subdomain}.ngrok.io/runtime/webhooks/eventgrid?functionName={functionName}
 ``` 
 `functionName` パラメーターには、`FunctionName` 属性で指定されている名前を指定する必要があります。
 
