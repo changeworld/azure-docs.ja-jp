@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 931c3d8beb9f2ed12228c74f09f84bbdee1798b8
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4013b7136fd365b1d37348cfc1f0b46cce787ce2
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41946486"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363125"
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Azure Stack ポータルを使用したテンプレートのデプロイ
 
@@ -30,7 +30,7 @@ ms.locfileid: "41946486"
 
 ## <a name="to-deploy-a-template"></a>テンプレートをデプロイするには
 
-1. ポータルにサインインし、**[新規]**、**[カスタム]** の順に選択します。
+1. ポータルにサインインし、**[+ リソースの作成]** を選択し、**[カスタム]** を選択します。
 2. **[テンプレートのデプロイ]** を選択します。
 3. **[テンプレートの編集]** を選択してから、JSON テンプレート コードをコード ウィンドウに貼り付けます。 **[保存]** を選択します。
 4. **[パラメーターの編集]** を選択し、表示されているパラメーターの値を指定して、**[OK]** を選択します。
@@ -40,4 +40,6 @@ ms.locfileid: "41946486"
 
 ## <a name="next-steps"></a>次の手順
 
-* [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
+テンプレートをデプロイする方法の詳細については、次をご覧ください。
+
+[PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)

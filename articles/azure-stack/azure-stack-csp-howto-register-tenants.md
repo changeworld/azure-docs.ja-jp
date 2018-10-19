@@ -3,7 +3,7 @@ title: Azure Stack に使用量と課金のためのテナントを追加する 
 description: クラウド サービス プロバイダー (CSP) によって管理されている Azure Stack にエンド ユーザーを追加する手順を説明します。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
-ms.author: brenduns
+ms.date: 09/19/2018
+ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: d3fc3ef6c5fdcf5a87c691c73169ef2bec95805e
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: eef1a2f82dc73a1c53b89bb3c9d145f87212ffcc
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382690"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498574"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Azure Stack に使用量と課金のためのテナントを追加する
 
@@ -69,9 +69,9 @@ ms.locfileid: "43382690"
 ### <a name="new-azurermresource-powershell-parameters"></a>PowerShell の New-AzureRmResource パラメーター
 | パラメーター | 説明 |
 | --- | --- | 
-|registrationSubscriptionID | Azure Stack の初期登録に使用された Azure サブスクリプション。 |
-| customerSubscriptionID | 登録される顧客の Azure サブスクリプション (Azure Stack ではありません)。 CSP のサービス内で作成される必要があるので、実際にはパートナー センターを介して作成されます。 顧客が複数の Azure Active Directory テナントを持っている場合は、Azure Stack へのログインに使用されるテナントでこのサブスクリプションを作成する必要があります。
-| resourceGroup | 登録が格納されている Azure 内のリソース グループ。 
+|registrationSubscriptionID | Azure Stack の初期登録に使用された Azure サブスクリプション。|
+| customerSubscriptionID | 登録される顧客の Azure サブスクリプション (Azure Stack ではありません)。 CSP のサービス内で作成される必要があるので、実際にはパートナー センターを介して作成されます。 顧客が複数の Azure Active Directory テナントを持っている場合は、Azure Stack へのログインに使用されるテナントでこのサブスクリプションを作成する必要があります。 顧客サブスクリプション ID には、小文字を使用する必要があります。 |
+| resourceGroup | 登録が格納されている Azure 内のリソース グループ。 |
 | registrationName | Azure Stack の登録名。 Azure にオブジェクトとして格納されています。 | 
 | Properties | リソースのプロパティを指定します。 このパラメーターを使用して、リソースの種類に固有のプロパティの値を指定します。
 

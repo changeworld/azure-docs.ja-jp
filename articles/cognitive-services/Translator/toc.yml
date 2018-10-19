@@ -166,7 +166,7 @@ items:
     href: https://cognitive.uservoice.com/knowledgebase/topics/132647-translator
   - name: 言語とリージョンのサポート
     href: language-support.md
-  - name: 価格
+  - name: 料金と制限
     href: https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/global-infrastructure/services/
@@ -174,9 +174,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/microsoft-translator
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/558796-translator
-ms.openlocfilehash: adea86473e69a1ea346dbf63b6976642d201dcb9
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: cd559b41832e83b4251531bc6af6a7fe4f7d80ea
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434451"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406485"

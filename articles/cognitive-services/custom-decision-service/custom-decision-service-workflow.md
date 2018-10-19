@@ -1,19 +1,21 @@
 ---
-title: Custom Decision Service のワークフロー - Azure Cognitive Services | Microsoft Docs
-description: この記事では、Azure Custom Decision Service のワークフローの概要を示します。
+title: Custom Decision Service のワークフロー
+titlesuffix: Azure Cognitive Services
+description: この記事では、Azure Custom Decision Service の推奨されるワークフローについて説明します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: nolachar
-ms.openlocfilehash: 851d7f8cc47b455dbced26ff53d841ed0a5ff0db
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: b3bc7f90c9238ce58fd9dc8ac630987803d79bfd
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35378858"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368020"
 ---
 # <a name="custom-decision-service-workflow"></a>Custom Decision Service のワークフロー
 
@@ -21,7 +23,7 @@ ms.locfileid: "35378858"
 
 ![Custom Decision Service のワークフロー](media/custom-decision-service-workflow.png)
 
-[Azure Storage 接続文字列](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string)を追加します。
+[Azure Storage 接続文字列](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string)を追加します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -76,22 +76,22 @@ items:
     href: create-account-cli-how-to.md
   - name: API へのアクセス - CLI
     href: access-api-cli-how-to.md
-  - name: Event Grid の使用
-    items:
-    - name: イベントの監視 - ポータル
-      href: monitor-events-portal-how-to.md
-    - name: イベントの監視 - CLI
-      href: job-state-events-cli-how-to.md
-  - name: エンコード
-    items:
-    - name: 変換プリセットのカスタマイズ - .NET Core
-      href: customize-encoder-presets-how-to.md
   - name: アップロード
     items:
     - name: HTTP(s) から - .NET
       href: job-input-from-http-how-to.md
     - name: ローカル ファイルから - .NET
       href: job-input-from-local-file-how-to.md
+  - name: エンコード
+    items:
+    - name: 変換プリセットのカスタマイズ - .NET Core
+      href: customize-encoder-presets-how-to.md
+  - name: Event Grid の使用
+    items:
+    - name: イベントの監視 - ポータル
+      href: monitor-events-portal-how-to.md
+    - name: イベントの監視 - CLI
+      href: job-state-events-cli-how-to.md
   - name: 保護
     items:
     - name: AES-128 の使用 - .NET
@@ -156,9 +156,9 @@ items:
     href: limits-quotas-constraints.md
   - name: FAQ
     href: frequently-asked-questions.md
-ms.openlocfilehash: bdbc91876dc08558881a44c52144d1c2ed28cc47
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: bf3836af892b68b41e166c62fb49ec47ecc5fb75
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378910"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403881"

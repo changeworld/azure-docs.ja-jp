@@ -70,14 +70,22 @@ items:
   - name: ストレージ エミュレーターを使用する方法
     href: /azure/storage/common/storage-use-emulator
     maintainContext: true
+  - name: データの転送
+    items:
+    - name: AzCopy (v10)
+      href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: AzCopy on Windows (v8)
+      href: ../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: AzCopy on Linux (v8)
+      href: ../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
 - name: リソース
   items:
   - name: Table Storage REST API
     href: https://docs.microsoft.com/rest/api/storageservices/table-service-rest-api
     maintainContext: true
-ms.openlocfilehash: 08c4f97011d8eef508c96bb2d1d7d62122094245
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 229677b65ac833e3cd7b599c0111798f95ae61f3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45728982"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428642"
