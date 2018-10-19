@@ -1,6 +1,6 @@
 ---
-title: Stream Analytics から Data Lake Store へのデータのストリーム | Microsoft Docs
-description: Azure Stream Analytics を使用した Azure Data Lake Store へのデータのストリーム
+title: Stream Analytics から Azure Data Lake Storage Gen1 へのデータのストリーム | Microsoft Docs
+description: Azure Stream Analytics を使用した Azure Data Lake Storage Gen1 へのデータのストリーム
 services: data-lake-store,stream-analytics
 documentationcenter: ''
 author: nitinme
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 396d514d0d75c43f20ab7b0fcdf8c7351cb3dd89
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0d9ddbeae3a666d3b3cf56f80ae633a7ecaa650a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213454"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294035"
 ---
-# <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Azure Stream Analytics を使用した Azure Storage BLOB から Data Lake Store へのデータ ストリーム
-この記事では、Azure Data Lake Store を Azure Stream Analytics ジョブの出力として使用する方法について説明します。 ここでは、Azure Storage BLOB (入力) からデータを読み取り、そのデータを Data Lake Store (出力) に書き込む簡単なシナリオを紹介します。
+# <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Azure Stream Analytics を使用した Azure Storage Blob から Azure Data Lake Storage Gen1 へのデータ ストリーム
+この記事では、Azure Data Lake Storage Gen1 を Azure Stream Analytics ジョブの出力として使用する方法について説明します。 ここでは、Azure Storage BLOB (入力) からデータを読み取り、そのデータを Azure Data Lake Storage Gen1 (出力) に書き込む簡単なシナリオを紹介します。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
@@ -29,10 +29,10 @@ ms.locfileid: "39213454"
 
 * **Azure Storage アカウント**。 このアカウントから BLOB コンテナーを使用して、Stream Analytics ジョブ向けのデータを入力します。 このチュートリアルでは、**storageforasa** という名前のストレージ アカウントと、そのアカウント内に **storageforasacontainer** という名前のコンテナーを持っていることを前提とします。 コンテナーを作成したら、サンプル データ ファイルをアップロードします。 
   
-* **Azure Data Lake Store アカウント**。 「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。 **asadatalakestore** という名前の Data Lake Store アカウントを持っているとします。 
+* **Data Lake Storage Gen1 アカウント**。 「[Azure portal で Azure Data Lake Storage Gen1 の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。 **myadlsg1** という Data Lake Storage Gen1 アカウントを持っているとします。 
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
-まず、入力ソースと出力先を含む Stream Analytics ジョブを作成します。 このチュートリアルでは、ソースは Azure BLOB コンテナー、出力先は Data Lake Store です。
+まず、入力ソースと出力先を含む Stream Analytics ジョブを作成します。 このチュートリアルでは、ソースは Azure BLOB コンテナー、出力先は Data Lake Storage Gen1 です。
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
 
@@ -67,9 +67,9 @@ ms.locfileid: "39213454"
     **Create** をクリックしてください。 これで、ポータルは、この入力を追加して接続をテストします。
 
 
-## <a name="create-a-data-lake-store-output-for-the-job"></a>ジョブに Data Lake Store 出力を作成
+## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>ジョブに Data Lake Storage Gen1 出力を作成
 
-1. Stream Analytics ジョブのページを開き、**[出力]** タブをクリックし、**[追加]** をクリックします。
+1. Stream Analytics ジョブのページを開き、**[出力]** タブをクリックしてから **[追加]** をクリックし、**[Data Lake Storage Gen1]** を選択します。
 
     ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.1.png "ジョブへの出力の追加")
 
@@ -77,16 +77,15 @@ ms.locfileid: "39213454"
 
     ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.2.png "ジョブへの出力の追加")
 
-    * **[出力のエイリアス]** で、このジョブ出力の一意名を入力します。 クエリの出力をこの Data Lake Store に出力するためにクエリで使用されるわかりやすい名前です。
-    * **[シンク]** で、**[Data Lake Store]** を選択します。
-    * Data Lake Store アカウントへのアクセスを承認することを求められます。 **[承認]** をクリックします。
+    * **[出力のエイリアス]** で、このジョブ出力の一意名を入力します。 クエリの出力をこの Data Lake Storage Gen1 アカウントに出力するためにクエリで使用されるわかりやすい名前です。
+    * Data Lake Storage Gen1 アカウントへのアクセスを承認することを求められます。 **[承認]** をクリックします。
 
 3. **[新しい出力]** ブレードで、引き続き次の値を指定します。
 
     ![ジョブへの出力の追加](./media/data-lake-store-stream-analytics/create.output.3.png "ジョブへの出力の追加")
 
-    * **[アカウント名]** で、ジョブ出力の送信先として作成済みの Data Lake Store アカウントを選択します。
-    * **[パス プレフィックスのパターン]** で、指定した Data Lake Store アカウント内にファイルを書き込むために使用するファイル パスを入力します。
+    * **[アカウント名]** で、ジョブ出力の送信先として作成済みの Data Lake Storage Gen1 アカウントを選択します。
+    * **[パス プレフィックスのパターン]** で、指定した Data Lake Storage Gen1 アカウント内にファイルを書き込むために使用するファイル パスを入力します。
     * プレフィックス パスで日付トークンを使用する場合は、**[日付形式]** でファイルを編成する日付形式を選択できます。
     * プレフィックス パスで時刻トークンを使用する場合は、**[時刻形式]** でファイルを編成する時刻形式を選択できます。
     * **[イベントのシリアル化の形式]** で、**[CSV]** を選択します。
@@ -113,11 +112,11 @@ ms.locfileid: "39213454"
 
     ![ジョブの監視](./media/data-lake-store-stream-analytics/run.query.3.png "ジョブの監視")
 
-5. 最後に、ジョブの出力データが Data Lake Store アカウントで使用可能であることを確認できます。 
+5. 最後に、ジョブの出力データが Data Lake Storage Gen1 アカウントで使用可能であることを確認できます。 
 
     ![出力の確認](./media/data-lake-store-stream-analytics/run.query.4.png "出力の確認")
 
-    [データ エクスプローラー] ウィンドウで、Data Lake Store 出力設定 (`streamanalytics/job/output/{date}/{time}`) で指定したフォルダー パスに出力が書き込まれていることがわかります。  
+    [データ エクスプローラー] ウィンドウで、Data Lake Storage Gen1 出力設定 (`streamanalytics/job/output/{date}/{time}`) で指定したフォルダー パスに出力が書き込まれていることがわかります。  
 
 ## <a name="see-also"></a>関連項目
-* [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)

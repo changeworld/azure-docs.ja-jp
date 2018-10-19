@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: f9d51869b9a6ba63c73637c50f5a19e864bc23e4
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 5a48a86e324af44143a7df64ca08fb71018711d3
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33942304"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364926"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念
 このトピックでは、Media Services の最も重要な概念の概要を説明します。
 
 ## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>資産とストレージ
-### <a name="assets"></a>資産
-[資産](https://docs.microsoft.com/rest/api/media/operations/asset) には、デジタル ファイル (ビデオ、オーディオ、画像、サムネイルのコレクション、テキスト トラック、クローズド キャプション ファイルなど) と、それらのファイルに関するメタデータが含まれます。 デジタル ファイルが資産にアップロードされた後は、Media Services エンコードおよびストリーミング ワークフローで使用できます。
+### <a name="assets"></a>アセット
+[アセット](https://docs.microsoft.com/rest/api/media/operations/asset) には、デジタル ファイル (ビデオ、オーディオ、画像、サムネイルのコレクション、テキスト トラック、クローズド キャプション ファイルなど) と、それらのファイルに関するメタデータが含まれます。 デジタル ファイルがアセットにアップロードされた後は、Media Services エンコードおよびストリーミング ワークフローで使用できます。
 
 資産は Azure ストレージ アカウント内の BLOB コンテナーにマップされ、資産内のファイルはブロック BLOB としてそのコンテナーに格納されます。 ページ BLOB は Azure Media Services ではサポートされていません。
 
@@ -147,7 +147,7 @@ Media Services で資産を暗号化する場合は、暗号化キー (CommonEnc
 プレーヤーがストリームを要求すると、Media Services は指定されたキーを使用して、エンベロープ暗号化 (AES を使用) か共通暗号化 (PlayReady または Widevine を使用) でコンテンツを動的に暗号化します。 ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーのキーの取得が承認されているかどうかを判断するために、サービスはキーに指定した承認ポリシーを評価します。
 
 ### <a name="token-restriction"></a>トークン制限
-コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープン、トークン制限、IP 制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、Simple Web Tokens (SWT) 形式と JSON Web Token (JWT) 形式のトークンがサポートされます。 Media Services では、Secure Token Services は提供されません。 トークンを発行するには、カスタム STS を作成するか、Microsoft Azure ACS を活用できます。 STS は、トークン、トークンの制限の構成で指定した、指定されたキーと問題要求で署名を作成するように構成する必要があります。 トークンが有効であり、なおかつトークンに含まれる要求とキー (またはライセンス) に対して構成されている要求とが一致した場合、Media Services キー配信サービスは、キー (またはライセンス) をクライアントに返します。
+コンテンツ キー承認ポリシーには、1 つまたは複数の承認制限 (オープン、トークン制限、IP 制限) を指定できます。 トークン制限ポリシーには、STS (セキュリティ トークン サービス) によって発行されたトークンを含める必要があります。 Media Services では、Simple Web Tokens (SWT) 形式と JSON Web Token (JWT) 形式のトークンがサポートされます。 Media Services では、Secure Token Services は提供されません。 カスタム STS を作成できます。 STS は、トークン、トークンの制限の構成で指定した、指定されたキーと問題要求で署名を作成するように構成する必要があります。 トークンが有効であり、なおかつトークンに含まれる要求とキー (またはライセンス) に対して構成されている要求とが一致した場合、Media Services キー配信サービスは、キー (またはライセンス) をクライアントに返します。
 
 トークン制限ポリシーを構成する際は、プライマリ検証キー、発行者、対象ユーザーの各パラメーターを指定する必要があります。 プライマリ検証キーには、トークンの署名に使用されたキーが含まれ、発行者は、トークンを発行するセキュリティ トークン サービスです。 対象ユーザー (スコープとも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 

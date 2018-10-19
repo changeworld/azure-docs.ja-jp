@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f1683321e23eff82e73dc9bb44941fc390633b8c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c2e131776fb9f2c5e87c363d0d57e655bc34448f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146897"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294222"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory レポートに関する FAQ
 
@@ -169,3 +169,7 @@ ms.locfileid: "42146897"
 **Q: すべてのサインイン レポートのポリシー名が CA のポリシー名と一致しません。なぜですか?**
 
 **A:** すべてのサインイン レポートのポリシー名は、サインイン時の CA ポリシー名に基づいています。 後で (つまりサインイン後に) ポリシー名を更新した場合、CA のポリシー名と一致しなくなることがあります。
+
+**Q: 条件付きアクセス ポリシーのためにサインインがブロックされましたが、サインイン アクティビティ レポートにはサインインは成功したと表示されます。なぜですか?**
+
+**A:** 現在、条件付きアクセスが適用されている場合、サインイン レポートに Exchange ActiveSync シナリオの正確な結果が表示されないことがあります。 レポートのサインイン結果にサインインの成功と表示されても、条件付きアクセス ポリシーのために実際にはサインインが失敗している場合があります。 

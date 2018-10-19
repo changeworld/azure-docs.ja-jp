@@ -4,37 +4,42 @@ description: インクルード ファイル
 services: functions
 author: ggailey777
 manager: jeconnoc
-ms.service: functions
+ms.service: azure-functions
 ms.topic: include
-ms.date: 08/12/2018
+ms.date: 09/12/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 3cbe634d862682a5f6b06c2cfc77a4d3b03954f9
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 2808264b4641bda49a53677ebe216a3b53b7d0d9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42809721"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293753"
 ---
-特定の関数アプリ内のすべての関数のコードは、ホスト構成ファイルと 1 つ以上のサブフォルダーを含むルート フォルダー (`wwwroot`) にあります。 各サブフォルダーには、次の例のように、個別の関数のコードが含まれています。
+特定の関数アプリ内のすべての関数のコードは、ホスト構成ファイルと 1 つ以上のサブフォルダーを含むルート プロジェクト フォルダーにあります。 各サブフォルダーには、次の図のように、個別の関数のコードが含まれています。
 
 ```
-wwwroot
+FunctionApp
  | - host.json
- | - mynodefunction
+ | - Myfirstfunction
  | | - function.json
- | | - index.js
- | | - node_modules
- | | | - ... packages ...
- | | - package.json
- | - mycsharpfunction
+ | | - ...  
+ | - mysecondfunction
  | | - function.json
- | | - run.csx
+ | | - ...  
+ | - SharedCode
  | - bin
- | | - mycompiledcsharp.dll
 ```
 
-host.json ファイルにはランタイム固有の構成が含まれています。このファイルは関数アプリのルート フォルダーにあります。 使用可能な設定の詳細については、[host.json のリファレンス](../articles/azure-functions/functions-host-json.md)に関するページを参照してください。
+Functions ランタイムのバージョン 2.x では、関数アプリ内のすべての関数が同じ言語ワーカーを共有する必要があります。  
 
-関数にはそれぞれ、1 つ以上のコード ファイル、function.json 構成、およびその他の依存関係を含むフォルダーがあります。 C# クラス ライブラリ プロジェクトの場合、コンパイル済みのクラス ライブラリ (.dll) ファイルは `bin` サブフォルダーにデプロイされます。
+[host.json](../articles/azure-functions/functions-host-json.md) ファイルにはランタイム固有の構成が含まれています。このファイルは関数アプリのルート フォルダーにあります。 `bin` フォルダーには、関数アプリに必要なパッケージやその他のライブラリ ファイルが保存されています。 関数アプリ プロジェクトの言語固有の要件を参照してください。
+
+* [C# クラス ライブラリ (.csproj)](../articles/azure-functions/functions-dotnet-class-library.md#functions-class-library-project)
+* [C# スクリプト (.csx)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
+* [F# スクリプト](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
+* [Java](../articles/azure-functions/functions-reference-java.md#folder-structure)
+* [JavaScript を選択した場合](../articles/azure-functions/functions-reference-node.md#folder-structure)
+
+
 

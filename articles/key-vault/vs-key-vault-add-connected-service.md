@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: d2ab34b3737ec00e4adc464f6d2255203fb6ae08
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 9cf49ae97da3bf67300bdc222c86bb712aeaed37
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840621"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465794"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
 
@@ -39,7 +39,8 @@ ms.locfileid: "43840621"
 
    ![[Secure Secrets With Azure Key Vault]\(Azure Key Vault でシークレットを保護する\) を選択する](media/vs-key-vault-add-connected-service/KeyVaultConnectedService1.PNG)
 
-   Visual Studio にサインインしたときに、アカウントに関連付けられている Azure サブスクリプションがある場合は、サブスクリプションのドロップダウン リストがページに表示されます。
+   Visual Studio にサインインしたときに、アカウントに関連付けられている Azure サブスクリプションがある場合は、サブスクリプションのドロップダウン リストがページに表示されます。 Visual Studio にサインインしていること、サインインしたアカウントが Azure サブスクリプションを使用するためのアカウントと同じであることを確認します。
+
 1. 使用するサブスクリプションを選択し、新規または既存の Key Vault を選択するか、自動的に生成された名前を変更するために [編集] リンクを選択します。
 
    ![サブスクリプションを選択します。](media/vs-key-vault-add-connected-service/KeyVaultConnectedService3.PNG)

@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 99848cf4ba1e6e65a8c41c682916ca391128eb21
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 3f92eac79e9524aa6ded9f898d582ce46c99bf97
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42146647"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363294"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスのアップグレードとスケーリングを行う  
 
@@ -67,5 +67,5 @@ Azure API Management (APIM) インスタンスは、ユニットを追加する�
 
 ## <a name="next-steps"></a>次の手順
 
-*[複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法](api-management-howto-deploy-multi-region.md)
-*[Azure API Management サービス インスタンスを自動的にスケーリングする方法](api-management-howto-autoscale.md)
+- [複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法](api-management-howto-deploy-multi-region.md)
+- [Azure API Management サービス インスタンスを自動的にスケーリングする方法](api-management-howto-autoscale.md)

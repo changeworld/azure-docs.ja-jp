@@ -10,14 +10,22 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: b05b824d8d35351030ca466566f14e4249d4b99d
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 399c7b000360a73a9bab06b046be21c9d93a1c70
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626622"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367130"
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Time Series Insights 環境の問題を診断して解決する
+
+この記事では、Time Series Insights 環境で発生する可能性があるいくつかの問題について説明します。 ここでは、考えられる原因と解決のためのソリューションを示します。
+
+## <a name="video"></a>ビデオ: 
+
+### <a name="in-this-video-we-cover-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>この動画では、Time Series Insights でお客様が直面する一般的な課題とその軽減策を紹介します。</br>
+
+> [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
 ## <a name="problem-1-no-data-is-shown"></a>問題 1: データが表示されない
 [Azure Time Series Insights エクスプローラー](https://insights.timeseries.azure.com)でデータが表示されない一般的な理由はいくつかあります。
@@ -31,7 +39,7 @@ Azure Time Series Insights は JSON データのみをサポートしていま�
    ![IoT Hub のサービス接続アクセス許可](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
 
    上の図に示すように、ポリシー **iothubowner** と **service** は両方とも**サービス接続**アクセス許可が設定されているため、どちらも使用できます。
-   
+
 * イベント ハブの場合は、**リッスン** アクセス許可を持つキーを指定する必要があります。
 
    ![イベント ハブのリッスン アクセス許可](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)

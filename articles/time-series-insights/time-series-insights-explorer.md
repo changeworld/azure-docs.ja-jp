@@ -11,17 +11,27 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: dfdc538719b0c7571ba04f4134819d7142f109d3
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: f4a9d09aa701d490e8391d68435e672ff49c771c
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629142"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364234"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights エクスプローラー
 この記事では、Time Series Insights エクスプローラー Web アプリ内で使用できるさまざまな機能とオプションについて説明します。 Web ブラウザーで Time Series Insights エクスプローラーを使用して、データを視覚化します。
  
 Azure Time Series Insights は、数十億件の IoT イベントを同時に簡単に調査および分析できるようにする、フル マネージドの分析、ストレージ、および視覚化サービスです。 データの全体像が示され、これを使用してすばやく IoT ソリューションを検証したり、ミッション クリティカルなデバイスに発生するコストのかかるダウンタイムを回避したりできます。 ほぼリアルタイムで隠れた傾向を発見したり、異常を特定したり、根本原因分析を実施したりできます。 現在、Time Series Insights エクスプローラーはパブリック プレビュー段階にあります。
+
+## <a name="video"></a>ビデオ:
+
+このビデオでは、Time Series Insights エクスプ ローラーを使用してデータのクエリを実行する方法について説明します。 
+
+このビデオは、Video Time Series Insights に基づきます。  
+<span style="color:blue">Azure IoT Solution Accelerator を利用して、Time Series Insights の使用を開始します。</span>
+</br>
+
+> [!VIDEO https://www.youtube.com/embed/SHFPZvrR71s]
 
 ## <a name="prerequisites"></a>前提条件
 

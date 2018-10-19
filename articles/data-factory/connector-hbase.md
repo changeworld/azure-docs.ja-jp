@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: f47e85b47f262e30e9160f11604220aa8055be5d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 10867974c6f1c3fae6965b1888db3c4448b26a38
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701719"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364106"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Azure Data Factory を使用して HBase からデータをコピーする 
 
@@ -45,7 +45,7 @@ HBase のリンクされたサービスでは、次のプロパティがサポ�
 | type | type プロパティを **HBase** に設定する必要があります | [はい] |
 | host | HBase サーバーの IP アドレスまたはホスト名。 (つまり、`[clustername].azurehdinsight.net`、192.168.222.160)  | [はい] |
 | port | HBase インスタンスがクライアント接続のリッスンに使用する TCP ポート。 既定値は 9090 です。 Azure HDInsights に接続する場合は、port を 443 と指定します。 | いいえ  |
-| httpPath | HBase サーバーに対応する部分的な URL。 (`/hbaserest0` など)  | いいえ  |
+| httpPath | `/hbaserest0`HDInsights クラスターを使用している場合など、HBase サーバーに対応する部分的な URL。 | いいえ  |
 | authenticationType | HBase サーバーへの接続に使用する認証メカニズム。 <br/>使用可能な値: **Anonymous**、**Basic** | [はい] |
 | username | HBase インスタンスへの接続に使用されるユーザー名。  | いいえ  |
 | password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |

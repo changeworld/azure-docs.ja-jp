@@ -9,15 +9,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 723006d37ed0570e32790a0bb70a3dce5a87ade8
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7e0a68efc93d0f907edfb38dbc548ac95a35b3e1
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43346456"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465811"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Monitor でリソース グループを監視する (プレビュー)
 
@@ -109,6 +109,11 @@ App Service を選択すると、Azure Monitor Workbook テンプレートのギ
 この場合、編集を選択すると、Azure Monitor メトリックによってこの一連の視覚化が行われていることがわかります。
 
  ![Azure メトリックが表示されたパフォーマンス ビューのスクリーンショット](.\media\resource-group-insights\0012-performance-metrics.png)
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+### <a name="enabling-access-to-alerts"></a>アラートへのアクセスを有効にする
+リソース グループ用の Azure Monitor には、リソース グループ内のリソースのアラート状態にアクセスするための特定のアクセス許可が必要です。 アラートを読み込むときにエラー メッセージが表示された場合は、十分なアクセス許可がありません。 管理者に依頼して、リソース グループを含むサブスクリプションの**所有者**ロールまたは**共同作成者**ロールを付与してもらってください。
 
 ## <a name="next-steps"></a>次の手順
 

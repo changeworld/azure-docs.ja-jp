@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5b4d8317d565528f896bf6823ddaefd010d0a845
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 308ab9d35e07c8376fb183c794fcad77a74a1df9
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528631"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295565"
 ---
 # <a name="define-the-order-for-deploying-resources-in-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでのリソース デプロイ順序の定義
 リソースによっては、デプロイする前に、他のリソースが存在している必要がある場合があります。 たとえば、SQL データベースをデプロイするには、先に SQL Server が存在している必要があります。 このリレーションシップは、一方のリソースがもう一方のリソースに依存しているとマークすることで定義します。 依存関係を定義するには、**dependsOn** 要素または **reference** 関数を使用します。 
 
 Resource Manager により、リソース間の依存関係が評価され、リソースは依存する順にデプロイされます。 相互依存していないリソースは、平行してデプロイされます。 同じテンプレートでデプロイされるリソースの依存関係だけを定義する必要があります。 
+
+チュートリアルについては、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md)」を参照してください。
 
 ## <a name="dependson"></a>dependsOn
 テンプレート内で dependsOn 要素を使用すると、1 つのリソースが 1 つ以上のリソースに依存していることを定義できます。 その値には、リソース名のコンマ区切りリストを指定できます。 
@@ -164,6 +166,8 @@ Resource Manager では、テンプレートの検証中に循環依存関係を
 デプロイ順序の評価と依存関係のエラーの解決については、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](resource-manager-common-deployment-errors.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
+
+* チュートリアルについては、「[チュートリアル: 依存リソースを含む Azure Resource Manager テンプレートを作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md)」を参照してください。
 * デプロイ中の依存関係のトラブルシューティングについては、「[Troubleshoot common Azure deployment errors with Azure Resource Manager (Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング)](resource-manager-common-deployment-errors.md)」を参照してください。
 * Azure リソース マネージャーのテンプレートの作成の詳細については、 [テンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。 
 * テンプレートで使用可能な関数の一覧については、 [テンプレートの関数](resource-group-template-functions.md)に関するページを参照してください。

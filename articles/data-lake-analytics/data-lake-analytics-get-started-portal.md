@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 0830f4a6cffb8c1b2dacc8452e52477bb3a3ec91
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 1e6c71a68c4357d82d086f3e2ca098e4039def5a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43039370"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295759"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Azure portal で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "43039370"
 
 ## <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成する
 
-次に、Data Lake Analytics アカウントと Data Lake Store アカウントを同時に作成します。  この手順は単純であり、所要時間は約 60 秒です。
+次に、Data Lake Analytics と Azure Data Lake Storage Gen1 アカウントを同時に作成します。  この手順は単純であり、所要時間は約 60 秒です。
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. **[リソースの作成]** >  **[データ + 分析]** > **[Data Lake Analytics]** の順にクリックします。
@@ -36,14 +36,14 @@ ms.locfileid: "43039370"
    * **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。
    * **リソース グループ**。 既存の Azure リソース グループを選択するか、新しいものを作成します。
    * **場所**。 Data Lake Analytics アカウントの Azure データ センターを選択します。
-   * **Data Lake Store**: 以下の指示に従って、新しい Data Lake Store アカウントを作成するか、既存のものを選択します。 
+   * **Data Lake Storage Gen1**: 以下の指示に従って、新しい Data Lake Storage Gen1 アカウントを作成するか、既存のものを選択します。 
 4. 必要に応じて、Data Lake Analytics アカウントの価格レベルを選択します。
 5. **Create** をクリックしてください。 
 
 
 ## <a name="your-first-u-sql-script"></a>最初の U-SQL スクリプト
 
-次のテキストは、非常に単純な U-SQL スクリプトです。 このスクリプトが実行するのは、スクリプト内に小さなデータセットを定義し、そのデータセットを `/data.csv` という名前のファイルとして既定の Data Lake Store に書き出すことだけです。
+次のテキストは、非常に単純な U-SQL スクリプトです。 このスクリプトが実行するのは、スクリプト内に小さなデータセットを定義し、そのデータセットを `/data.csv` という名前のファイルとして既定の Data Lake Storage Gen1 アカウントに書き出すことだけです。
 
 ```
 @a  = 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 849253dd4a2e66acc6a509a0515a22309c90e081
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 99a1832d82005fabd6f8b62aea6ad7722b317a13
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42142346"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367884"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -25,7 +25,7 @@ Azure Monitor には、さまざまな Azure サービスで監視を実施す�
 
 Azure Monitor では、複数の方法でメトリックにアクセスできます。 たとえば、[Azure Portal](https://portal.azure.com)、Azure Monitor API (REST および .Net) のほか、Operation Management Suite や Event Hubs などの分析ソリューションからアクセスできます。 詳細については、[Azure Monitor のメトリック](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関するページをご覧ください。
 
-メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)で構成されます。
+メトリックは既定で有効になっており、過去 93 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)で構成されます。
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Azure Portal でメトリックにアクセスする
 
@@ -51,7 +51,7 @@ Azure Monitor には、メトリックの定義と値を読み取るための [R
 # Login to Azure and enter your credentials when prompted.
 > armclient login
 
-> armclient GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/providers/microsoft.insights/metricdefinitions?api-version=2017-05-01-preview
+> armclient GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/providers/microsoft.insights/metricdefinitions?api-version=2018-01-01
 
 ```
 
@@ -95,7 +95,7 @@ BLOB、テーブル、ファイル、またはキューのメトリック定義�
 次の例は、アカウント レベルでメトリック データを読み取る方法を示しています。
 
 ```
-> armclient GET "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/providers/microsoft.insights/metrics?metric=Availability&api-version=2017-05-01-preview&aggregation=Average&interval=PT1H"
+> armclient GET "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/providers/microsoft.insights/metrics?metricnames=Availability&api-version=2018-01-01&aggregation=Average&interval=PT1H"
 
 ```
 
@@ -312,7 +312,7 @@ Storage は、Azure Monitor を使用して、ストレージ アカウント �
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 `
 * File サービスのリソース ID `
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/default
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 `
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>Azure Monitor REST API のリソース ID

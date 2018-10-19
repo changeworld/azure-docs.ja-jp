@@ -1,6 +1,6 @@
 ---
 title: 'クイック スタート: Azure portal でゲスト ユーザーを追加する'
-description: このクイックスタートでは、Azure AD 管理者が Azure portal で B2B ゲスト ユーザーを追加する方法と B2B 招待ワークフローについて説明します。
+description: このクイックスタートでは、Azure AD 管理者が Azure Portal で B2B ゲスト ユーザーを追加する方法と B2B 招待ワークフローについて説明します。
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
@@ -17,11 +17,11 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 09/18/2018
 ms.locfileid: "45986547"
 ---
-# <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>クイック スタート: Azure portal でディレクトリにゲスト ユーザーを追加する
+# <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>クイック スタート: Azure Portal でディレクトリにゲスト ユーザーを追加する
 
 組織とコラボレーションするユーザーをゲスト ユーザーとしてディレクトリに追加することで、そのユーザーを招待できます。 受諾リンクを含む招待メールを送信するか、共有するアプリへの直接リンクを送信できます。 ゲスト ユーザーは、自分の職場、学校、またはソーシャルの ID を使用してサインインできます。
 
-このクイック スタートでは、Azure AD に新しいゲスト ユーザーを追加し、招待状を送信し、ゲスト ユーザーの招待の受諾プロセスがどのようになるかを確認します。
+このクイック スタートでは、Azure AD に新しいゲスト ユーザーを追加し、招待メールを送信し、ゲスト ユーザーの招待の受諾プロセスがどのようになるかを確認します。
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -36,7 +36,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 1. [Azure Portal](https://portal.azure.com/) に Azure AD 管理者としてサインインします。
 2. 左ウィンドウで、**[Azure Active Directory]** を選択します。
-3.  **[管理]** にある **[Users]** を選択します。
+3.  **[管理]** にある **[ユーザー]** を選択します。
 
     ![[Azure Active Directory] を選択します。](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
 
@@ -53,7 +53,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="assign-an-app-to-the-guest-user"></a>ゲスト ユーザーにアプリを割り当てる
 テスト テナントに Salesforce アプリを追加し、テスト用のゲスト ユーザーをアプリに割り当てます。
-1.  Azure portal に Azure AD 管理者としてサインインします。
+1.  Azure Portal に Azure AD 管理者としてサインインします。
 2.  左側のウィンドウで、**[エンタープライズ アプリケーション]** を選択します。
 3.  **[新しいアプリケーション]** を選択します。
 4. **[ギャラリーから追加する]** で、「**Salesforce**」を検索して選択します。
@@ -80,13 +80,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 不要になったら、テスト用のゲスト ユーザーとテスト アプリを削除します。
-1.  Azure portal に Azure AD 管理者としてサインインします。
+1.  Azure Portal に Azure AD 管理者としてサインインします。
 2.  左ウィンドウで、**[Azure Active Directory]** を選択します。
 3.  **[管理]** で、**[エンタープライズ アプリケーション]** を選択します。
 4.  **Salesforce** アプリケーションを開き、**[削除]** を選択します。
 5.  左ウィンドウで、**[Azure Active Directory]** を選択します。
-6.  **[管理]** にある **[Users]** を選択します。
+6.  **[管理]** にある **[ユーザー]** を選択します。
 7.  テスト ユーザーを選択し、**[ユーザーの削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Azure portal でゲスト ユーザーを作成し、アプリを共有するための招待を送信しました。 その後、ゲスト ユーザーの視点から受諾プロセスをレビューし、ゲスト ユーザーのアクセス パネルにアプリが表示されることを確認しました。 コラボレーションするためのゲスト ユーザーを追加する方法の詳細については、「[Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](add-users-administrator.md)」を参照してください。
+このチュートリアルでは、Azure Portal でゲスト ユーザーを作成し、アプリを共有するための招待を送信しました。 その後、ゲスト ユーザーの視点から受諾プロセスをレビューし、ゲスト ユーザーのアクセス パネルにアプリが表示されることを確認しました。 コラボレーションするためのゲスト ユーザーを追加する方法の詳細については、「[Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](add-users-administrator.md)」を参照してください。

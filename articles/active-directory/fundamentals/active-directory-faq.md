@@ -1,26 +1,22 @@
 ---
-title: Azure AD に関する FAQ | Microsoft Docs
-description: Azure Active Directory に関する FAQ では、Azure と Azure Active Directory、パスワード管理、およびアプリケーション アクセスに関する一般的な質問に答えます。
+title: Azure Active Directory - FAQ | Microsoft Docs
+description: Azure と Azure Active Directory、パスワード管理、およびアプリケーション アクセスに関する一般的な質問とその回答について説明します。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: b8207760-9714-4871-93d5-f9893de31c8f
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 12/14/2017
 ms.author: lizross
-ms.openlocfilehash: 419b5d480ebd1f978eb2a870231d151b549b25ea
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: eb9eebb4f5fff4a0c3dc7729387cfbc4b13a12f1
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42142669"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294911"
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory に関する FAQ
 Azure Active Directory (Azure AD) は、包括的なサービスとしての ID (IDaaS) ソリューションです。その範囲は ID、アクセス管理、セキュリティのあらゆる面に及びます。
@@ -48,14 +44,13 @@ Azure AD 有料サービス (Enterprise Mobility + Security など) は、エン
 
 - - -
 
-**Q: サブスクリプション管理者とディレクトリ管理者の違いは何ですか?**
+**Q: 所有者と全体管理者の違いは何ですか?**
 
-**A:** 既定では、Azure にサインアップすると、サブスクリプション管理者ロールが割り当てられます。 サブスクリプション管理者は、Microsoft アカウントと、Azure サブスクリプションが関連付けられているディレクトリの職場または学校アカウントのどちらも使用できます。  このロールには、Azure Portal でのサービスの管理が許可されます。
+**A:** 既定では、Azure サブスクリプションにサインアップしたユーザーには、Azure リソースの所有者ロールが割り当てられます。 所有者は、Microsoft アカウントと、Azure サブスクリプションが関連付けられているディレクトリの職場または学校アカウントのどちらも使用できます。  このロールには、Azure Portal でのサービスの管理が許可されます。
 
-他のユーザーが同じサブスクリプションを使用してサインインし、サービスにアクセスする必要がある場合は、共同管理者として追加できます。 このロールには、サービス管理者と同じアクセス特権がありますが、サブスクリプションと Azure ディレクトリの関連付けを変更することはできません。  サブスクリプション管理者の詳細については、「[How to add or change Azure administrator roles (Azure 管理者ロールを追加または変更する方法)](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator)」と「[Azure サブスクリプションを Azure Active Directory に関連付ける方法](active-directory-how-subscriptions-associated-directory.md)」を参照してください。
+他のユーザーが同じサブスクリプションを使用してサービスにサインインしてアクセスする必要がある場合は、適切な[組み込みロール](../../role-based-access-control/built-in-roles.md)を割り当てることができます。 詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
-
-Azure AD には、ディレクトリと ID に関連した機能を管理するために別の管理ロールのセットがあります。  これらの管理者は、Azure Portal または Azure ポータルのさまざまな機能にアクセスできるようになります。 管理者のロールによって、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理など、管理者が実行できる操作が決まります。  Azure AD ディレクトリ管理者とそのロールの詳細については、「[Azure Active Directory での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
+既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 全体管理者は、すべての Azure AD ディレクトリ機能にアクセスできます。 Azure AD には、ディレクトリおよび ID 関連の機能を管理するために異なる管理者ロールのセットがあります。 これらの管理者は、Azure portal のさまざまな機能にアクセスできるようになります。 管理者のロールによって、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理など、管理者が実行できる操作が決まります。  Azure AD ディレクトリ管理者とそのロールの詳細については、「[Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)」と「[Azure Active Directory での管理者ロールのアクセス許可](../users-groups-roles/directory-assign-admin-roles.md)」を参照してください。
 
 さらに、Azure AD 有料サービス (Enterprise Mobility + Security など) は、エンタープライズ規模の包括的な管理ソリューションとセキュリティ ソリューションによって、Office 365 や Microsoft Azure などの他の Web サービスを補完します。
 
@@ -77,7 +72,7 @@ Azure AD には、ディレクトリと ID に関連した機能を管理する�
 
 **A:** Azure AD Connect を使用すると、オンプレミスのディレクトリを Azure AD に接続できます。
 
-詳細については、「[オンプレミス ID と Azure Active Directory の統合](../connect/active-directory-aadconnect.md)」を参照してください。
+詳細については、「[オンプレミス ID と Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)」を参照してください。
 
 - - -
 **Q: オンプレミスのディレクトリとクラウド アプリケーションの間で SSO を設定するにはどうすればよいですか?**
@@ -86,7 +81,7 @@ Azure AD には、ディレクトリと ID に関連した機能を管理する�
 
 オンプレミスからの SSO は、Active Directory フェデレーション サービス (ADFS) などのフェデレーション ソリューションを使用するか、パスワード ハッシュ同期を構成すると、簡単に実装できます。どちらのオプションも Azure AD Connect 構成ウィザードを使って簡単にデプロイできます。
 
-詳細については、「[オンプレミス ID と Azure Active Directory の統合](../connect/active-directory-aadconnect.md)」を参照してください。
+詳細については、「[オンプレミス ID と Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)」を参照してください。
 
 - - -
 **Q: Azure AD には、所属する組織のユーザーのためのセルフサービス ポータルが用意されていますか?**
@@ -100,7 +95,7 @@ Azure AD には、ディレクトリと ID に関連した機能を管理する�
 
 **A:** はい。 Azure AD Premium Edition には Azure AD Connect Health が用意されています。 Azure AD Connect Health では、オンプレミスの ID インフラストラクチャと同期サービスを監視、分析できます。  
 
-詳細については、「[クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](../connect-health/active-directory-aadconnect-health.md)」を参照してください。  
+詳細については、「[クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視](../hybrid/whatis-hybrid-identity-health.md)」を参照してください。  
 
 - - -
 ## <a name="password-management"></a>パスワード管理
@@ -116,8 +111,7 @@ Azure AD には、ディレクトリと ID に関連した機能を管理する�
 詳細については、「[パスワード管理の概要](../authentication/quickstart-sspr.md)」を参照してください。
 
 - - -
-
-  **Q: 管理者によって管理されるパスワードでパスワード ライトバックを使用できますか?**
+**Q: 管理者によって管理されるパスワードでパスワード ライトバックを使用できますか?**
 
 **A:** はい。パスワード ライトバックが有効な状態であれば、管理者によって実行されるパスワード操作は、オンプレミスの環境に書き戻されます。  
 
@@ -164,7 +158,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 詳細については、次を参照してください。
 
-* [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)
+* [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](../manage-apps/use-scim-to-provision-users-and-groups.md)
 
 - - -
@@ -209,7 +203,7 @@ Azure AD アカウントの場合、管理者は、次のいずれかの方法�
 
 **A:** Azure AD を使用すると、多くの一般的なクラウド SaaS アプリでユーザー ID の作成、保守、削除を自動化できます。
 
-詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」を参照してください。
+詳細については、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」を参照してください。
 
 - - -
 **Q: Azure AD で Secure LDAP 接続をセットアップできますか?**
