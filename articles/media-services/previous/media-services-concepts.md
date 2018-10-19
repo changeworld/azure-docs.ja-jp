@@ -4,22 +4,21 @@ description: このトピックでは、Azure Media Services の概念の概要�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: dcefc8bc-e2ea-4b38-a643-9010f4436fb5
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/07/2017
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 5a48a86e324af44143a7df64ca08fb71018711d3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 06c6451a7c8532b32a1c130f6b71df97857d2e7f
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364926"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353705"
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services の概念
 このトピックでは、Media Services の最も重要な概念の概要を説明します。

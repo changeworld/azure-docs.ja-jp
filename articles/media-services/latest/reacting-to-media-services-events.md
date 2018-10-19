@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 143fec2ddb168b0fff0e419fa5767e9718637241
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 3541a5b33aa0bb98d9381b51caefc63b6aa677ad
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465539"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377550"
 ---
-# <a name="reacting-to-media-services-events"></a>Media Services イベントへの対応
+# <a name="handling-event-grid-events"></a>Event Grid イベントの処理
 
 Media Services イベントは、アプリケーションがモダンなサーバーレス アーキテクチャを使用してさまざまなイベント (ジョブ状態変更イベントなど) に対応できるようにします。 複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。 代わりに、イベントが [Azure Event Grid](https://azure.microsoft.com/services/event-grid/) を通してイベント ハンドラー ([Azure Functions](https://azure.microsoft.com/services/functions/) や [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) の他にユーザー独自の Webhook も可) にプッシュされるため、支払いは使用した分だけで済みます。 価格の詳細については、[Event Grid の価格](https://azure.microsoft.com/pricing/details/event-grid/)に関する記事をご覧ください。
 

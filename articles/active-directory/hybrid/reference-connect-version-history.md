@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f3b80af1dfaca921efbe656356e85aeb353a576b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 93bd141b591cda5ec6ff1d9d042222070d3146e6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310681"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390314"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -112,7 +112,7 @@ SQL Always On 可用性が ADSync DB に対して構成されている場合に 
 
 ### <a name="fixed-issues"></a>修正された問題 
 
-- このリリースでは、SQL Server 2012 SP4 への SQL Server Express のインストールを更新します。とりわけ、複数のセキュリティの脆弱性の修正プログラムを提供します。  SQL Server 2012 SP4 の詳細については、[こちら](https://support.microsoft.com/en-ca/help/4018073/sql-server-2012-service-pack-4-release-information)を参照してください。
+- このリリースでは、SQL Server 2012 SP4 への SQL Server Express のインストールを更新します。とりわけ、複数のセキュリティの脆弱性の修正プログラムを提供します。  SQL Server 2012 SP4 の詳細については、[こちら](https://support.microsoft.com/help/4018073/sql-server-2012-service-pack-4-release-information)を参照してください。
 - 同期ルールの処理: 親同期規則が適用可能でなくなった場合、結合条件のない送信結合同期規則は適用されない
 - 複数のアクセシビリティの修正が Synchronization Service Manager の UI と Sync Rules Editor に適用されている
 - Azure AD Connect ウィザード: Azure AD Connect がワークグループに含まれている場合の AD Connect アカウント作成エラー
@@ -601,7 +601,7 @@ CBool(
     |CertFriendlyName|CertThumbprint|CertExtensionOids|
     |CertFormat|CertNotAfter|CertPublicKeyOid|
     |CertSerialNumber|CertNotBefore|CertPublicKeyParametersOid|
-    |CertVersion|CertSignatureAlgorithmOid|elect|
+    |CertVersion|CertSignatureAlgorithmOid|Select|
     |CertKeyAlgorithmParams|CertHashString|Where|
     |||With|
 
