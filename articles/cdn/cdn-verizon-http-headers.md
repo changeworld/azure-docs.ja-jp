@@ -3,8 +3,8 @@ title: Azure CDN ルール エンジンの Verizon 固有 HTTP ヘッダー | Mi
 description: この記事では、Azure CDN ルール エンジンで Verizon 固有 HTTP ヘッダーを使用する方法について説明します。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: akucer
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
-ms.author: v-deasim
-ms.openlocfilehash: 1a4bb48efe2a91c85b773341bb38b0f3ce4c7d9b
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: magattus
+ms.openlocfilehash: 7fa76a2c5b01e623e490edd0091f7fb372b7085f
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31516296"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093240"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN ルール エンジンの Verizon 固有 HTTP ヘッダー
 
@@ -33,7 +33,7 @@ ms.locfileid: "31516296"
 
 次の表では、Verizon CDN POP が要求内に追加できるヘッダーについて説明します。
 
-要求ヘッダー | [説明] | 例
+要求ヘッダー | 説明 | 例
 ---------------|-------------|--------
 [Via](#via-request-header) | 配信元サーバーへの要求をプロキシ処理した POP サーバーを識別します。 | HTTP/1.1 ECS (dca/1A2B)
 X-Forwarded-For | 要求者の IP アドレスを示します。| 10.10.10.10

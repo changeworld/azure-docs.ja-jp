@@ -1,22 +1,25 @@
 ---
-title: 異常検出のための Javascript アプリ - Microsoft Cognitive Services | Microsoft Docs
-description: Microsoft Cognitive Services で異常検出 API を使用する Javascript Web アプリについて説明します。 API に元のデータ ポイントを送信し、予期される値と異常なポイントを取得します。
+title: 'チュートリアル: JavaScript による異常検出'
+titlesuffix: Azure Cognitive Services
+description: 異常検出 API を使用する JavaScript Web アプリについて説明します。 API に元のデータ ポイントを送信し、予期される値と異常なポイントを取得します。
 services: cognitive-services
 author: wenya
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
-ms.topic: article
+ms.component: anomaly-detection
+ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: 42c3941a05efe8b74f818cd99f3606b3073892a9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: cd65a5275fac651968197c9000b2d4cd3962693b
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38453171"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883705"
 ---
-# <a name="anomaly-detection-javascript-application"></a>異常検出 Javascript アプリケーション
+# <a name="tutorial-anomaly-detection-with-javascript-application"></a>チュートリアル: JavaScript アプリケーションによる異常検出
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 異常検出 REST API を使用して異常を検出する Web アプリケーションについて説明します。 例では、サブスクリプション キーを使用して、異常検出 API に時系列データを送信し、続いて API から、データ ポイントごとの異常ポイントと予期された値をすべて取得します。
 

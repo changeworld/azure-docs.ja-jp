@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 6193a515f0d8136e0d420b7554cf26fee8f50953
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: a80577bb226cbec080edf5e06dbd0f31c80a5890
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173103"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321429"
 ---
 # <a name="how-to-use-multi-value-entities-with-a-conversation-learner-model"></a>Conversation Learner モデルで複数値エンティティを使用する方法
 このチュートリアルでは、エンティティの "複数値" プロパティを示します。
@@ -24,7 +24,7 @@ ms.locfileid: "39173103"
 
 [![チュートリアル 6 のプレビュー](http://aka.ms/cl-tutorial-06-preview)](http://aka.ms/blis-tutorial-06)
 
-##<a name="requirements"></a>必要条件
+## <a name="requirements"></a>必要条件
 このチュートリアルでは、general tutorial ボットが実行されている必要があります。
 
     npm run tutorial-general
@@ -58,13 +58,13 @@ ms.locfileid: "39173103"
 1. [アクション] をクリックし、[新しいアクション] をクリックします。
 2. [応答] に、「What toppings do you want?」と入力します。
 3. [Disqualifying Entities]\(不適格エンティティ\) に「Toppings」と入力します。
-3. Click Create
+3. Create をクリックしてください。
 
 次に、アクションをもう 1 つ作成します。
 
 1. [アクション] をクリックし、[新しいアクション] をクリックして 2 つ目のアクションを作成します。
 3. [応答] に、「Here are your toppings: $Toppings」と入力します。
-4. Click Create
+4. Create をクリックしてください。
 
 これでアクションが 2 つできました。
 

@@ -1,22 +1,25 @@
 ---
-title: iOS 上の Objective-C での Microsoft Speech Recogniton API の利用 | Microsoft Docs
-description: Microsoft Speech Recognition API を使って、音声をテキストに変換する iOS アプリケーションを開発します。
+title: iOS 上の Objective-C での Bing Speech Recogniton API の利用 | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: Bing Speech Recognition API を使って、音声をテキストに変換する iOS アプリケーションを開発します。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: bbb8d3975cdab537135b97ca9bbf6e845aa3fa0e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 7c4a5029208854528afdfdbfcdc63434a2a94e24
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373880"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338702"
 ---
-# <a name="get-started-with-the-speech-recognition-api-in-objective-c-on-ios"></a>iOS 上の Objective-C での Speech Recognition API の利用
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>クイック スタート: iOS 上の Objective-C で Bing Speech Recognition API を使用する
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Speech Recognition API を使用すると、クラウドベースの Speech Service を使って音声をテキストに変換する、iOS アプリケーションを開発できます。 この API はリアルタイム ストリーミングをサポートしているので、アプリケーションは音声をサービスへ送信するのと同時に、部分的な認識結果を非同期で受け取ることができます。
 
@@ -34,7 +37,7 @@ iOS 用の Speech クライアント ライブラリとサンプルは、[iOS �
 
 ### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Speech Recognition API をサブスクライブし、無料試用版のサブスクリプション キーを取得する
 
-Speech API は、Cognitive Services (以前の Project Oxford) の一部です。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、**[Get API Key]\(API キーの取得\)** を選択してキーを取得します。 主キーおよび 2 次キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
+Speech API は、Cognitive Services (以前の Project Oxford) の一部です。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、**[Get API Key]**(API キーの取得) を選択してキーを取得します。 プライマリ キーおよびセカンダリ キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
 
 "*意図を使った認識機能*" を使用する場合は、[Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) にもサインアップする必要があります。
 

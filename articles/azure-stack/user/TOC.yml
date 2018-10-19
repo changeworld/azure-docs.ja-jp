@@ -28,10 +28,6 @@ items:
       href: azure-stack-subscribe-services.md
     - name: テンプレートからの VM の作成
       href: azure-stack-create-vm-template.md
-    - name: 高可用性 SQL データベースの作成
-      href: azure-stack-tutorial-sql.md
-    - name: 高可用性 MySQL データベースの作成
-      href: azure-stack-tutorial-mysql.md
   - name: ハイブリッド クラウド パターン
     items:
     - name: Azure と Azure Stack へのアプリのデプロイ
@@ -80,6 +76,8 @@ items:
         href: azure-stack-managed-disk-considerations.md
       - name: VM の保護
         href: azure-stack-manage-vm-protect.md
+      - name: VM の更新と管理
+        href: vm-update-management.md
       - name: SQL Server VM に関する考慮事項
         href: azure-stack-sql-server-vm-considerations.md
     - name: Storage
@@ -216,9 +214,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 34582adac206beea94abde500f351ab37764f517
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 2b65408f4d2171d57031a442725df935f1616764
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113412"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364797"

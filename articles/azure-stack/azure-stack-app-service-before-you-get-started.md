@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: anwestg
-ms.openlocfilehash: e5fc6b5d396a45d15548cfdd8f445158147ad12f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 08fcaa44fc807f986324b8304010792af99fd838
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41946539"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388004"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
@@ -32,7 +32,7 @@ Azure App Service on Azure Stack をデプロイする前に、この記事に�
 
 ## <a name="download-the-installer-and-helper-scripts"></a>インストーラーおよびヘルパー スクリプトをダウンロードする
 
-1. [App Service on Azure Stack デプロイ ヘルパー スクリプト](https://aka.ms/appsvconmashelpers)をダウンロードします。
+1. [App Service on Azure Stack 展開ヘルパー スクリプト](https://aka.ms/appsvconmashelpers)をダウンロードします。
 2. [App Service on Azure Stack インストーラー](https://aka.ms/appsvconmasinstaller)をダウンロードします。
 3. ヘルパー スクリプトの .zip ファイルからファイルを展開します。 次のファイルとフォルダーが展開されます。
 
@@ -310,7 +310,7 @@ Azure AD サービス プリンシパルで以下の操作をサポートする�
 3. [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。
 4. **Create-AADIdentityApp.ps1** スクリプトを実行します。 メッセージが表示されたら、Azure Stack デプロイのために使用している Azure AD テナント ID を入力します。 たとえば、「**myazurestack.onmicrosoft.com**」と入力します。
 5. **[資格情報]** ウィンドウで、Azure AD サービスの管理者アカウントとパスワードを入力します。 **[OK]** を選択します。
-6. [先ほど作った証明書](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
+6. [先ほど作った証明書](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
 7. このスクリプトは、テナント Azure AD インスタンス内に新しいアプリケーションを作成します。 PowerShell の出力で返されるアプリケーション ID を書き留めておきます。 インストール時にこの情報が必要になります。
 8. 新しいブラウザー ウィンドウを開き、Azure Active Directory サービス管理者として [Azure Portal](https://portal.azure.com) にサインインします。
 9. Azure AD リソース プロバイダーを開きます。
@@ -350,11 +350,11 @@ AD FS によって保護されている Azure Stack 環境の場合、 AD FS サ
 次の手順に従います。
 
 1. azurestack\AzureStackAdmin として PowerShell インスタンスを開きます。
-2. [前提条件の手順](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts)でダウンロードして展開したスクリプトの場所に移動します。
+2. [前提条件の手順](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts)でダウンロードして展開したスクリプトの場所に移動します。
 3. [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。
 4. **Create-ADFSIdentityApp.ps1** スクリプトを実行します。
 5. **[資格情報]** ウィンドウで、AD FS クラウドの管理者アカウントとパスワードを入力します。 **[OK]** を選択します。
-6. [先ほど作った証明書](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
+6. [先ほど作った証明書](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、**sso.appservice.local.azurestack.external.pfx** です。
 
 ```PowerShell
     Create-ADFSIdentityApp.ps1

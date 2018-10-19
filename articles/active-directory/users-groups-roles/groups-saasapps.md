@@ -14,12 +14,12 @@ ms.date: 03/14/2017
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 8c04f2723466ea7abc8ea3c3cc1f1efb953da764
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 5d8e6c0db2ce6c35935c2b00aa40de2a5d5a050f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449385"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297624"
 ---
 # <a name="using-a-group-to-manage-access-to-saas-applications"></a>SaaS アプリケーションへのアクセスをグループで管理する
 Azure Active Directory (Azure AD) の Azure AD Premium ライセンスまたは Azure AD Basic ライセンスでは、Azure AD と連携する SaaS アプリケーションへのアクセス権を、グループを使って割り当てることができます。 たとえばマーケティング部門を対象に 5 つの SaaS アプリケーションを使用するためのアクセス権を割り当てる場合、同部門のユーザーから成るグループを作成したうえで、マーケティングで必要となる 5 つの SaaS アプリケーションにそのグループを割り当てます。 このようにマーケティング部門のメンバーシップを一元的に管理することで時間を節約することが可能です。 この場合アプリケーションに対するユーザーの割り当ては、そのユーザーがマーケティング グループのメンバーとして追加されたときに行われます。同様に、マーケティング グループからユーザーが削除されると、アプリケーションからもその割り当てが削除されます。 この機能は、Azure AD アプリケーション ギャラリー内から追加できる多数のアプリケーションで利用することができます。
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) の Azure AD Premium ライセンスまたは 
 次の記事は、Azure Active Directory に関する追加情報を示します。
 
 * [Azure Active Directory グループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md)
-* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](../active-directory-apps-index.md)
+* [Azure Active Directory のアプリケーション管理](../manage-apps/what-is-application-management.md)
 * [グループの設定を構成するための Azure Active Directory コマンドレット](groups-settings-cmdlets.md)
 * [Azure Active Directory とは](../fundamentals/active-directory-whatis.md)
-* [オンプレミス ID と Azure Active Directory の統合](../connect/active-directory-aadconnect.md)
+* [オンプレミス ID と Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)

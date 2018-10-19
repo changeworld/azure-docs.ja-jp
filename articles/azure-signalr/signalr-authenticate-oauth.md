@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 696139a3e37f7bd1e32b4e7cec836b3c66df16a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8751e3485b97b67fd8dd4821480fecd7735c08cd
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974325"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268514"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>チュートリアル: Azure SignalR Service の認証
 
@@ -29,7 +29,7 @@ ms.locfileid: "46974325"
 
 クイック スタートのチャット ルーム アプリケーションで最初に使用した認証は、現実のシナリオでは単純すぎます。 アプリケーションでは各クライアントが自分の ID を主張することができ、サーバーは単にそれを受け入れます。 このアプローチは、悪意のあるユーザーが機密データにアクセスするために他人を偽装する可能性がある現実のアプリケーションではあまり役に立ちません。 
 
-[GitHub](https://github.com/) は、[OAuth](https://oauth.net/) と呼ばれる一般的な業界標準プロトコルに基づく認証 API を提供します。 これらの API により、サード パーティ アプリケーションは GitHub アカウントを認証できます。 このチュートリアルでは、これらの API を使用して、チャット ルーム アプリケーションへのクライアント ログインを許可する前の Github アカウントによる認証を実装します。 GitHub アカウントの認証後、アカウント情報は Web クライアントが認証に使用できるように Cookie として追加されます。
+[GitHub](https://github.com/) は、[OAuth](https://oauth.net/) と呼ばれる一般的な業界標準プロトコルに基づく認証 API を提供します。 これらの API により、サード パーティ アプリケーションは GitHub アカウントを認証できます。 このチュートリアルでは、これらの API を使用して、チャット ルーム アプリケーションへのクライアント ログインを許可する前の GitHub アカウントによる認証を実装します。 GitHub アカウントの認証後、アカウント情報は Web クライアントが認証に使用できるように Cookie として追加されます。
 
 GitHub を通じて提供される OAuth 認証 API の詳細については、「[Basics of Authentication (認証の基礎)](https://developer.github.com/v3/guides/basics-of-authentication/)」を参照してください。
 

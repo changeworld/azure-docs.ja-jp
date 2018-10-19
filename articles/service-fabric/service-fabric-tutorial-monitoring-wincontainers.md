@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 06/08/2018
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9eea0cabebb67095d4c6c813e7d13c885a447db4
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 24b4cbe0eb13a41ccd6ae98db90d4bf0cf7d22a7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378892"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311220"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>チュートリアル: Log Analytics を使用して Service Fabric 上の Windows コンテナーを監視する
 
 これはチュートリアルの第 3 部です。Service Fabric で調整された Windows コンテナーを監視するように Log Analytics を設定する手順について説明します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Service Fabric クラスターの Log Analytics を構成する
@@ -42,7 +42,7 @@ ms.locfileid: "44378892"
 
 ## <a name="setting-up-log-analytics-with-your-cluster-in-the-resource-manager-template"></a>Resource Manager テンプレートでクラスターを使用して Log Analytics を設定する
 
-このチュートリアルの第 1 部で[提供されたテンプレート](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Tutorial)を使用した場合、汎用の Service Fabric Azure Resource Manager テンプレートに次の追加を行う必要があります。 Log Analytics を使用したコンテナーの監視を設定するために独自のクラスターを用意した場合:
+このチュートリアルの第 1 部で[提供されたテンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure)を使用した場合、汎用の Service Fabric Azure Resource Manager テンプレートに次の追加を行う必要があります。 Log Analytics を使用したコンテナーの監視を設定するために独自のクラスターを用意した場合:
 
 * Resource Manager テンプレートに次の変更を加えます。
 * PowerShell を使用してデプロイし、[テンプレートをデプロイ](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)してクラスターをアップグレードします。 Azure Resource Manager はリソースが存在することを認識しているので、アップグレードとして展開されます。
@@ -231,7 +231,7 @@ Log Analytics ワークスペースに移動します。ここでは、ソリュ
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Service Fabric クラスターの Log Analytics を構成する

@@ -394,11 +394,11 @@ items:
     href: https://azure.microsoft.com/develop/identity/signin/
   - name: ヘルプの表示
     href: developer-support-help-options.md
-  - name: Azure リソースのマネージド サービス ID
+  - name: Azure リソースのマネージド ID
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: d74af98cc33e6b598223f9a8f22d1af5a59461b2
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 0ddc490f14ca266f0492837ace7ebbe9128595c1
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49090758"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340326"

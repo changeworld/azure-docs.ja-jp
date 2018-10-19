@@ -6,29 +6,29 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 8df9054e069540398c137290e682bb4160b4a799
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 46c65cd7ac5734134fa7c4ad6fd85f39d1188e28
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40036477"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392555"
 ---
 # <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>チュートリアル: Batch Explorer を使って Blender のシーンをレンダリングする
 
 このチュートリアルでは、Blender のデモ シーンから複数のフレームをレンダリングする方法について説明します。 このチュートリアルでは、クライアント VM とレンダリング VM のどちらにも無料で利用できる Blender を使っていますが、仮に他のアプリケーション (Maya、3ds Max など) を使った場合でも手順はほぼ同じです。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * Azure Storage に Blender のシーンをアップロードする
 > * レンダリングを実行するための複数のノードを含んだ Batch プールを作成する
 > * 複数のフレームをレンダリングする
 > * レンダリングされたフレーム ファイルを確認してダウンロードする
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
-
 ## <a name="prerequisites"></a>前提条件
 
-ストレージ アカウントが関連付けられている Azure Batch アカウント。  Batch アカウントの作成については、Batch のいずれかのクイック スタート記事 ([CLI に関する記事](https://docs.microsoft.com/azure/batch/quick-create-cli) など) を参照してください。
+Batch で従量課金制のレンダリング アプリケーションを使用するには、従量課金制サブスクリプションまたはその他の Azure 購入オプションが必要です。 金融クレジットを提供する無料の Azure オファーを使用する場合、従量課金制ライセンスはサポートされません。
+
+ストレージ アカウントが関連付けられている Azure Batch アカウントが必要です。  Batch アカウントの作成については、Batch のいずれかのクイック スタート記事 ([CLI に関する記事](https://docs.microsoft.com/azure/batch/quick-create-cli) など) を参照してください。
 
 このチュートリアルに記載されている VM サイズと VM 数には、少なくとも 50 コアから成る低優先度コア クォータが必要です。既定のクォータを使用することはできますが、より小さい VM サイズを使用しなければならなくなります。つまり、画像のレンダリングにかかる時間が長くなります。 コア クォータの引き上げを要求する手順については、[こちらの記事](https://docs.microsoft.com/azure/batch/batch-quota-limit)を参照してください。
 

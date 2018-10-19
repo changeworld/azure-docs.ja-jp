@@ -6,7 +6,7 @@
 | type |type プロパティを **AzureStorage** |[はい] |
 | connectionString |connectionString プロパティのために Azure Storage に接続するために必要な情報を指定します。 |[はい] |
 
-Azure Storage のアカウント キーを表示またはコピーする手順については、[ストレージ アクセス キーの表示、コピー、再生成](../articles/storage/common/storage-create-storage-account.md#manage-your-storage-account)に関するページを参照してください。
+Azure Storage のアカウント キーを表示またはコピーする手順については、[アクセス キー](../articles/storage/common/storage-account-manage.md#access-keys)に関する次のセクションを参照してください。
 
 **例:**  
 

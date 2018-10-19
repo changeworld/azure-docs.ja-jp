@@ -1,21 +1,21 @@
 ---
-title: Face API Go クイック スタート | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Go から Cognitive Services の Face API を使って画像から顔を検出します。
+title: 'クイック スタート: 画像の中にある顔を検出する - Face API、Go'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Go で Face API を使って画像から顔を検出します。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: PatrickFarley
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 06/25/2018
-ms.author: nolachar
-ms.openlocfilehash: e4d7f3f605b110f51488d9a7f483fc2832a149b9
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.author: pafarley
+ms.openlocfilehash: 1717d32f679d0f5196d8ff03a27415c9e41e0c23
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "43771241"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344952"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-go"></a>クイック スタート: Go を使って画像の中にある顔を検出する
 
@@ -27,7 +27,7 @@ ms.locfileid: "43771241"
 
 ## <a name="face---detect-request"></a>顔検出要求
 
-"[Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)" メソッドを使用すると、画像の中にある顔を検出して、次のような属性を取得することができます。
+"[顔 - 検出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)" メソッドを使用すると、画像の中にある顔を検出して、次のような属性を取得することができます。
 
 * Face ID: Face API の各種シナリオで使用される一意の ID。
 * 顔四角形: 画像内での顔の位置を示す値 (左、上、幅、高さ)。

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: b9ba2bb89bb0d7e16a28a165cf14530a7a10f71b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 35f4d2adfe3ca64496139cdd708fb5f52f8721ee
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35234752"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023479"
 ---
 # <a name="tutorial-make-sql-databases-available-to-your-azure-stack-users"></a>チュートリアル: SQL データベースを Azure Stack ユーザーから使用できるようにする
 
@@ -59,7 +59,7 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が自�
 1. Azure Stack ポータル (https://portal.local.azurestack.external) にテナントとしてサインインします。
 2. **[サブスクリプションの取得]** を選択し、**[表示名]** の下に「**TestSQLServerSubscription**」と入力します。
 3. **[オファーの選択]** > **[TestSQLServerOffer]** > **[作成]** の順に選択します。
-4. **[その他のサービス]** > **[サブスクリプション]** > **[TestSQLServerSubscription]** > **[リソース プロバイダー]** の順に選択します。
+4. **[すべてのサービス]** > **[サブスクリプション]** > **[TestSQLServerSubscription]** > **[リソース プロバイダー]** の順に選択します。
 5. **[Microsoft.SQLAdapter]** プロバイダーの横にある **[登録]** を選択します。
 
 ### <a name="create-a-sql-database"></a>SQL Database の作成
@@ -72,7 +72,7 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が自�
     - **[リソース グループ]**: SQL-RG
 3. **[Login Settings]\(ログイン設定\)** を選択し、データベースの資格情報を入力して、**[OK]** をクリックします。
 4. **[SKU]** で、SQL ホスティング サーバーに対して作成した SQL SKU を選択して、**[OK]** をクリックします。
-5. **[作成]** を選択します。
+5. **作成**を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

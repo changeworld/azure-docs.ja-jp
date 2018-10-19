@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: 54a81e6c5c6e1fe5c37b985e40174dc369edfe6d
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: cf6604730ab3bd9ee04fac36e703022f63dcb949
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630411"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090367"
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Azure Stack 使用状況データの Azure への報告 
 
@@ -95,10 +95,6 @@ Azure Stack マルチモード システムでは、Enterprise Agreement (EA) �
 ## <a name="does-usage-data-reporting-work-in-sovereign-clouds"></a>使用状況データ レポートはソブリン クラウドで機能しますか?
 
 Azure Stack Development Kit では、使用状況データ レポートにはグローバルな Azure システムで作成されたサブスクリプションが必要です。 ソブリン クラウド (Azure Government、Azure Germany、および Azure China クラウド) のいずれかで作成されたサブスクリプションは Azure に登録できないため、使用状況データ レポートをサポートしません。
-
-## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>ユーザーが Azure 課金ポータルで Azure Stack 使用状況データを識別するにはどうすればよいですか?
-
-ユーザーは、使用状況の詳細ファイルで Azure Stack 使用状況データを確認できます。 使用状況の詳細ファイルを取得する方法については、「[download usage file from the Azure Account Center (Azure アカウント センターからの使用状況ファイルのダウンロード)](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)」を参照してください。 使用状況の詳細ファイルには、Azure Stack ストレージおよび VM を識別する Azure Stack メーターが含まれています。 Azure Stack で使用されるリソースはすべて、"Azure Stack" という名前のリージョンのもとに報告されます。
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Azure Stack で報告された使用状況が Azure アカウント センターから生成されたレポートと一致しないのはなぜですか?
 

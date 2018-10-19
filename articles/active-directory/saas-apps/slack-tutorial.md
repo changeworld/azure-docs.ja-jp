@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 09/14/2018
 ms.author: jeedes
-ms.openlocfilehash: 8f79926d0d4729c6ad939bc604e9eb885dbe9f03
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 5b1099e46cf1aa2fd4b948fee8407cfd859390ce
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421259"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129118"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>チュートリアル: Azure Active Directory と Slack の統合
 
@@ -114,11 +114,8 @@ Slack で Azure AD のシングル サインオンを構成してテストする
 
     a. **[サインオン URL]** ボックスに、`https://<companyname>.slack.com` のパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに次の URL を入力します。`https://slack.com`
+    b. **[識別子]** テキストボックスの値をサインオン URL で更新します。 これは、ワークスペース ドメインです。 次に例を示します。`https://contoso.slack.com`
 
-    > [!NOTE] 
-    > この値は実際のものではありません。 この値は実際のサインオン URL で更新する必要があります。 この値を取得するには、[Slack サポート チーム](https://slack.com/help/contact)にお問い合わせください。
-     
 1. Slack アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
     
     ![Configure single sign-on](./media/slack-tutorial/tutorial_slack_attribute.png)
@@ -220,6 +217,9 @@ Slack で Azure AD のシングル サインオンを構成してテストする
 
 > [!NOTE]
 > ユーザーを手動で作成する必要がある場合は、[Slack のサポート チーム](https://slack.com/help/contact)にお問い合わせください。
+
+> [!NOTE]
+> Azure AD Connect はオンプレミスの Active Directory の ID を Azure AD と同期できる同期ツールで、これらの同期済みユーザーはアプリケーションを他のクラウド ユーザーと同じように使用することもできます。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

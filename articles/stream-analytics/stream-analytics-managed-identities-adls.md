@@ -7,18 +7,18 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/27/2018
-ms.openlocfilehash: 72bf467cc0f2ba195aa4f25228bc9e08605cd4ee
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 41b3dcc03f7cfbfee11798738a3b2daaf5e96741
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018596"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365290"
 ---
 # <a name="use-managed-identities-to-authenticate-azure-stream-analytics-jobs-to-azure-data-lake-storage-gen1-output-preview"></a>Azure Stream Analytics ジョブを認証するマネージド ID を Azure Data Lake Storage Gen1 出力で使用する (プレビュー)
 
 Azure Stream Analytics では、Azure Data Lake Storage (ADLS) Gen1 出力でのマネージド ID 認証をサポートします。 ID は、特定の Stream Analytics ジョブを表す Azure Active Directory に登録済みのマネージド アプリケーションであり、対象のリソースを認証するために使用できます。 マネージド ID は、パスワードの変更や 90 日ごとに発生するユーザー トークンの有効期限切れによる再認証の必要性などのユーザー ベースの認証方法の制限を排除します。 さらに、マネージド ID は、Azure Data Lake Storage Gen1 に出力する Stream Analytics ジョブのデプロイの自動化で役に立ちます。
 
-ブログ記事「[Eight new features in Azure Stream Analytics](https://azure.microsoft.com/en-us/blog/eight-new-features-in-azure-stream-analytics/)」(Azure Stream Analytics の 8 つの新機能) で、このプレビューにサインアップする方法と新機能の詳細を参照してください。
+ブログ記事「[Eight new features in Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/)」(Azure Stream Analytics の 8 つの新機能) で、このプレビューにサインアップする方法と新機能の詳細を参照してください。
 
 この記事では、Azure Data Lake Storage Gen1 に出力する Azure Stream Analytics ジョブでマネージド ID を有効にする 2 つの方法 (Azure portal による方法と Azure Resource Manager テンプレートのデプロイによる方法) を示します。
 

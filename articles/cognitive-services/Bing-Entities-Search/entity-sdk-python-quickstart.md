@@ -1,23 +1,23 @@
 ---
-title: Entity Search SDK Python クイック スタート | Microsoft Docs
-description: Entity Search SDK コンソール アプリケーションの設定。
-titleSuffix: Azure Entity Search SDK Python quickstart
+title: 'クイック スタート: Bing Entity Search SDK (Python)'
+titlesuffix: Azure Cognitive Services
+description: Bing Entity Search SDK コンソール アプリケーションの設定。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/15/2018
 ms.author: v-gedod
-ms.openlocfilehash: 95449fa3753291269e1a83d1431df3bf0cbe372f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 908373a216d0b14bb2dd41d3bb740b5582ac3ab1
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377896"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814238"
 ---
-# <a name="entity-search-sdk-python-quickstart"></a>Entity Search SDK の Python 向けクイック スタート
+# <a name="quickstart-bing-entity-search-sdk-with-python"></a>クイック スタート: Bing Entity Search SDK (Python)
 
 Entity Search SDK には、Web クエリと結果解析のための REST API 機能が含まれています。
 

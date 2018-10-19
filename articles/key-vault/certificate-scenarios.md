@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: bryanla
-ms.openlocfilehash: d5cc634451c5412f9a3339c8d2d26654c4d5c1b8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 60920aaa62d8472eaca8f929c62ce1c0af08f9a4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298915"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385636"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 証明書の概要
 次のシナリオでは、キー コンテナー内に最初の証明書を作成するために必要な追加の手順を含め、Key Vault の証明書管理サービスの主な使用方法をいくつか概説します。
@@ -83,7 +83,7 @@ ms.locfileid: "44298915"
       -   更新情報 - > 例: 有効期限まで 90 日  
 
   - 証明書の作成プロセスは、通常は非同期プロセスで、キー コンテナーへの証明書の作成操作の状態のポーリングが含まれます。  
-[証明書の取得操作](https://docs.microsoft.com/en-us/rest/api/keyvault/getcertificateoperation)  
+[証明書の取得操作](https://docs.microsoft.com/rest/api/keyvault/getcertificateoperation)  
       -   状態: 完了、エラー情報ありで失敗、またはキャンセル済み  
       -   作成の遅延のため、キャンセル操作を開始できます。 キャンセルは、有効な場合と有効でない場合とがあります。  
 

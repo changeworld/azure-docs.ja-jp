@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 6997d40603bd6ebf39f8797a3e354e92c04da58d
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: de856aed32b596209f7af2861b76ed6648d0caca
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47422747"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067824"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>チュートリアル: Azure Stream Analytics を IoT Edge モジュールとして展開する (プレビュー)
 
@@ -139,7 +139,9 @@ Azure portal で Stream Analytics ジョブが作成されたら、ジョブの�
 
 IoT Edge デバイスにデプロイされるように Stream Analytics ジョブを準備するには、ジョブをストレージ アカウント内のコンテナーに関連付ける必要があります。 ジョブをデプロイしようとすると、ジョブ定義がストレージ コンテナーにエクスポートされます。 
 
-1. **[構成]** で、**[IoT Edge の設定]** を選択します。
+1. **[構成]** で、**[Storage account settings]\(ストレージ アカウントの設定)** を選択します。
+
+1. **[Add storage account]\(ストレージ アカウントの追加)** を選択します。 
 
 1. ドロップダウン メニューから **[ストレージ アカウント]** を選択します。
 

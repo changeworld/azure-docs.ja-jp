@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e5915157c1ff2c1f58779e5c3b1d784241464b32
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 372670a482ec984fcc9bd9c28ca3a8625e959a77
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669048"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320664"
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の入手方法
 
@@ -23,6 +23,7 @@ ms.locfileid: "43669048"
 
 > [!IMPORTANT]
 > この記事は、Azure Multi-Factor Authentication を購入するための各種の方法についてわかりやすく説明することを主眼としています。 具体的な料金と課金の詳細については、必ず「[Multi-Factor Authentication の価格](https://azure.microsoft.com/pricing/details/multi-factor-authentication/)」を参照してください。
+>
 
 ## <a name="available-versions-of-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の使用可能なバージョン
 
@@ -43,8 +44,9 @@ ms.locfileid: "43669048"
 
 > [!NOTE]
 > この比較表では、各バージョンの Multi-Factor Authentication に含まれる機能について説明します。 完全な Azure Multi-Factor Authentication サービスを使用している場合、[クラウドの MFA とオンプレミスの MFA](concept-mfa-whichversion.md) のどちらを使用するかによって、一部の機能を利用できない可能性があります。
+>
 
-| Feature | Office 365 の多要素認証 | Azure AD 管理者用の Multi-Factor Authentication | Azure Multi-Factor Authentication |
+| 機能 | Office 365 の多要素認証 | Azure AD 管理者用の Multi-Factor Authentication | Azure Multi-Factor Authentication |
 | --- |:---:|:---:|:---:|
 | MFA で Azure AD 管理者アカウントを保護する |● |● (Azure AD グローバル管理者アカウントの場合のみ) |● |
 | モバイル アプリを 2 番目の要素にする |● |● |● |
@@ -93,11 +95,13 @@ Azure Multi-Factor Authentication プロバイダーには次の 2 つの使用�
   > 課金例 1: MFA が有効になっているユーザーが今日の時点で 5,000 人いるとします。 この人数が MFA システムによって 31 で除算され、その日のユーザー数として 161.29 が報告されます。 翌日さらに 15 ユーザーについて MFA を有効にした場合、その日のユーザー数が 161.77 として報告されます。 課金サイクルの最後には、Azure サブスクリプションに対して課金されるユーザーの総数が約 5,000 ユーザーになります。
   >
   > 課金例 2: ライセンスを持つユーザーと持たないユーザーとが混在している場合、その不足分は、ユーザーごとの Azure MFA プロバイダーによって埋め合わせすることになります。 テナントにある Enterprise Mobility + Security のライセンス数が 4,500 であるとき、5,000 ユーザーに対して MFA を有効にしたとします。 Azure サブスクリプションには 500 ユーザー分の料金が課金されます。料金は日割り計算され、16.13 ユーザーとして毎日報告されます。
+  >
 
-2. **認証ごと** - 頻繁に認証する必要がない大規模グループのユーザーに対して、2 段階認証を有効にしたい企業向けです。 認証が成功したかどうかに関係なく、2 段階認証要求の件数に基づいて請求額が決定されます。 この請求額は、Azure の使用量明細書に 10 認証単位で記載され、毎日報告されます。
+1. **認証ごと** - 頻繁に認証する必要がない大規模グループのユーザーに対して、2 段階認証を有効にしたい企業向けです。 認証が成功したかどうかに関係なく、2 段階認証要求の件数に基づいて請求額が決定されます。 この請求額は、Azure の使用量明細書に 10 認証単位で記載され、毎日報告されます。
 
   > [!NOTE]
   > 課金例 3: 今日、Azure MFA サービスに 2 段階認証要求が 3,105 件送信されたとします。 Azure サブスクリプションには、310.5 認証単位分が課金されます。
+  >
 
 使用量ベースの構成に関しては、ライセンスを所有しているかどうかに関係なく別途料金が発生することに注意してください。 "認証ごと" の Azure MFA プロバイダーをセットアップした場合、2 段階認証の要求者であるユーザーがライセンスを有しているかどうかに関係なく、要求ごとに課金されます。 "ユーザーごと" の Azure MFA プロバイダーを、Azure AD テナントにリンクされていないドメインでセットアップした場合、Azure AD 上におけるライセンスの有無に関係なく、2 段階認証が有効にされているユーザーごとに料金が発生します。
 

@@ -10,12 +10,12 @@ ms.component: implement
 ms.date: 04/11/2018
 ms.author: elbutter
 ms.reviewer: igorstan
-ms.openlocfilehash: fcc3fd39f9ea4de64faa3a53af98ff9909dc32f3
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: d861e1d4cd891e1f1e1be3209ae4dfdbf4420165
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247955"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718300"
 ---
 # <a name="best-practices-for-using-elastic-query-in-azure-sql-database-to-access-data-in-azure-sql-data-warehouse"></a>Azure SQL Database でエラスティック クエリを使用し、Azure SQL Data Warehouse のデータにアクセスするときのベスト プラクティス
 エラスティック クエリを使用して Azure SQL Data Warehouse のデータに Azure SQL Database からアクセスするときのベスト プラクティスについて説明します。 

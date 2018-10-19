@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: d3a615e3b92a62709a787d0463dfa3148f14d07e
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.reviewer: quying
+ms.openlocfilehash: dcd1c40717cb35fe4daa9ab9e2c66f334ffff5fe
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37088374"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361500"
 ---
 # <a name="remove-the-mysql-resource-provider"></a>MySQL リソースプロバイダーを削除する
 
@@ -53,6 +53,7 @@ DeployMySqlProvider.ps1 スクリプトを実行してリソース プロバイ�
 5. 次のパラメーターを使用して、DeployMySqlProvider.ps1 スクリプトを実行します。
     - **Uninstall**。 リソース プロバイダーと関連付けられているすべてのリソースを削除します。
     - **PrivilegedEndpoint**。 特権エンドポイントの IP アドレスまたは DNS 名。
+    - **AzureEnvironment**。 Azure Stack のデプロイに使用する Azure 環境。 Azure AD のデプロイでのみ必須です。
     - **CloudAdminCredential**。 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。
     - **DirectoryTenantID**
     - **AzCredential**。 Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。

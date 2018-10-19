@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/12/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 70bbeabe2c2b14e8e0dcccac9ffa63f2e19230a2
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 27167b011e23befda5d0c3703adeafc1581f4b98
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41918501"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268937"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>チュートリアル: Kestrel を使用して ASP.NET Core Web API フロントエンド サービスに HTTPS エンドポイントを追加する
 
@@ -41,7 +41,7 @@ ms.locfileid: "41918501"
 > * [.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [アプリケーションをリモート クラスターにデプロイする](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * ASP.NET Core フロントエンド サービスに HTTPS エンドポイントを追加する
-> * [Visual Studio Team Services を使用して CI/CD を構成する](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [Azure Pipelines を使用して CI/CD を構成する](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>前提条件
@@ -232,6 +232,7 @@ powershell.exe -ExecutionPolicy Bypass -Command ".\SetCertAccess.ps1"
 ```
 
 *Setup.bat* ファイルのプロパティを変更して **[出力ディレクトリにコピー]** を [新しい場合はコピーする] に設定します。
+
 ![ファイルのプロパティを設定する][image1]
 
 ソリューション エクスプローラーで、**[VotingWeb]** を右クリックし、**[追加]**->**[新しい項目]** の順に選択し、"SetCertAccess.ps1" という名前の新しいファイルを追加します。  *SetCertAccess.ps1* ファイルを編集して、次のスクリプトを追加します。
@@ -265,7 +266,7 @@ if ($cert -eq $null)
     $hasPermissionsAlready = ($acl.Access | where {$_.IdentityReference.Value.Contains($userGroup.ToUpperInvariant()) -and $_.FileSystemRights -eq [System.Security.AccessControl.FileSystemRights]::FullControl}).Count -eq 1
 
     if ($hasPermissionsAlready){
-        Write-Host "Account $userGroupCertificate already has permissions to certificate '$subject'." -ForegroundColor Green
+        Write-Host "Account $userGroup already has permissions to certificate '$subject'." -ForegroundColor Green
         return $false;
     } else {
         Write-Host "Need add permissions to '$subject' certificate..." -ForegroundColor DarkYellow
@@ -281,8 +282,9 @@ if ($cert -eq $null)
     }
 }
 
-Modify the *SetCertAccess.ps1* file properties to set **Copy to Output Directory** to "Copy if newer".
 ```
+
+*SetCertAccess.ps1* ファイルのプロパティを変更して **[出力ディレクトリにコピー]** を [新しい場合はコピーする] に設定します。
 
 ### <a name="run-the-setup-script-as-a-local-administrator"></a>セットアップ スクリプトをローカル管理者として実行する
 
@@ -442,7 +444,7 @@ $slb | Set-AzureRmLoadBalancer
 
 次のチュートリアルに進みます。
 > [!div class="nextstepaction"]
-> [Visual Studio Team Services を使用して CI/CD を構成する](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> [Azure Pipelines を使用して CI/CD を構成する](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
 [image1]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/SetupBatProperties.png
 [image2]: ./media/service-fabric-tutorial-dotnet-app-enable-https-endpoint/VotingAppLocal.png

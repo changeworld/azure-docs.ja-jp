@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: cb143998ac46f7f86b2dbf47b69cee7843418f5d
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: e42b0e7bd1bce40b7c58d75cb07f5a3f8afa5836
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191456"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385043"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>Azure Container Service (ACS) から Azure Kubernetes Service (AKS) に移行する
 
@@ -29,7 +29,7 @@ ACS と AKS では、移行に影響を与える重要な部分に違いがあ�
     * Azure ディスクのカスタム `StorageClass` オブジェクトは、`unmanaged` から `managed` に変更する必要があります
     * すべての `PersistentVolumes` で、`kind: Managed` を使用する必要があります
 * 現在、AKS はエージェント プールを 1 つだけサポートしています
-* Windows Server ベースのノードは現在で[プライベート プレビュー](https://azure.microsoft.com/en-us/blog/kubernetes-on-azure/)段階にあります
+* Windows Server ベースのノードは現在で[プライベート プレビュー](https://azure.microsoft.com/blog/kubernetes-on-azure/)段階にあります
 * AKS の[サポートされているリージョン](https://docs.microsoft.com/azure/aks/container-service-quotas)の一覧を確認してください
 * AKS は、ホストされた Kubernetes コントロール プレーンを使用するマネージド サービスです。 以前に ACS マスターの構成を変更した場合は、アプリケーションの変更が必要な場合があります
 
@@ -53,7 +53,7 @@ Kubernetes コントロール プレーンは AKS によって管理されます
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
 | agentpool1 | 1 | Standard_D2_v2 | Windows |
 
-移行中に追加の仮想マシンがサブスクリプションに展開されるため、クォータと制限がこれらのリソースに十分であることを確認する必要があります。 詳しくは、[Azure サブスクリプションとサービスの制限](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits)に関するページをご覧ください。 現在のクォータを確認するには、Azure portal で[サブスクリプション ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動し、サブスクリプションを選択して、[`Usage + quotas`] を選択します。
+移行中に追加の仮想マシンがサブスクリプションに展開されるため、クォータと制限がこれらのリソースに十分であることを確認する必要があります。 詳しくは、[Azure サブスクリプションとサービスの制限](https://docs.microsoft.com/azure/azure-subscription-service-limits)に関するページをご覧ください。 現在のクォータを確認するには、Azure portal で[サブスクリプション ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動し、サブスクリプションを選択して、[`Usage + quotas`] を選択します。
 
 ### <a name="networking"></a>ネットワーク
 
@@ -86,7 +86,7 @@ Kubernetes コントロール プレーンは AKS によって管理されます
 2. ディスクのスナップショットを取得します
 3. スナップショットから新しい Managed Disks を作成します
 4. AKS で永続ボリュームを作成します
-5. PersistentVolumeClaims (静的プロビジョニング) ではなく[既存のボリュームを使用する](https://docs.microsoft.com/en-us/azure/aks/azure-disk-volume)ようにポッドの指定を更新します
+5. PersistentVolumeClaims (静的プロビジョニング) ではなく[既存のボリュームを使用する](https://docs.microsoft.com/azure/aks/azure-disk-volume)ようにポッドの指定を更新します
 6. アプリケーションを AKS に展開します
 7. 検証
 8. AKS クラスターにトラフィックを送ります
@@ -112,7 +112,7 @@ Managed Disks を作成して Kubernetes クラスター間でボリュームを
 4. 検証
 5. AKS クラスターにトラフィックを送ります
 
-共有を空にして開始し、ソース データをコピーしたい場合は、[`az storage file copy`](https://docs.microsoft.com/en-us/cli/azure/storage/file/copy?view=azure-cli-latest) コマンドを使用してデータを移行できます。
+共有を空にして開始し、ソース データをコピーしたい場合は、[`az storage file copy`](https://docs.microsoft.com/cli/azure/storage/file/copy?view=azure-cli-latest) コマンドを使用してデータを移行できます。
 
 ### <a name="deployment-strategy"></a>展開戦略
 
@@ -134,7 +134,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 ### <a name="1-create-an-aks-cluster"></a>1.AKS クラスターの作成
 
-ドキュメントに従って、Azure portal、Azure CLI、または Resource Manager テンプレートを使用して [AKS クラスターを作成する](https://docs.microsoft.com/en-us/azure/aks/create-cluster)ことができます。
+ドキュメントに従って、Azure portal、Azure CLI、または Resource Manager テンプレートを使用して [AKS クラスターを作成する](https://docs.microsoft.com/azure/aks/create-cluster)ことができます。
 
 > GitHub の [Azure/AKS](https://github.com/Azure/AKS/tree/master/examples/vnet) リポジトリには、AKS 用の Azure Resource Manager テンプレートのサンプルがあります
 

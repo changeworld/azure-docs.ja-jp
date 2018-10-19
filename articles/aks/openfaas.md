@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: b5484233c7d3d32e51098baad8c22ec51df8f0d8
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: dc0f4bd1e5b07e30f3c89807fbbbc908b3149810
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260619"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542533"
 ---
 # <a name="using-openfaas-on-aks"></a>AKS での OpenFaaS の使用
 

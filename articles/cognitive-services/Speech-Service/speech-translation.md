@@ -3,18 +3,18 @@ title: Speech Translation について
 description: Speech Translation の機能の概要を説明します。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
-ms.author: v-jerkin
-ms.openlocfilehash: f80c0f3cdc114b53c002266820e8d9b8773acc5d
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: erhopf
+ms.openlocfilehash: f3c22589270ccee2c60ca5ea5b15047d9c81fabe
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432191"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165439"
 ---
 # <a name="about-the-speech-translation-api"></a>Speech Translation API について
 

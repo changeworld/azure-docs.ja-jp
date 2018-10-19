@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f8f91a4c039e07b636395ab953b8031d5ffe9958
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: cb423fb43e2e7620aef989c0ead99f9bdb5a58e3
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43343508"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389379"
 ---
 # <a name="tutorial-install-the-sql47iis47net-stack-in-a-windows-vm-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用して Windows VM に SQL&#47;IIS&#47;.NET スタックをインストールする
 
@@ -116,7 +116,7 @@ New-AzureRmVm `
     -OpenPorts 3389,1401 
 ```
 
-[Set-AzureRmVMSqlServerExtension](/powershell/module/azurerm.compute/set-azurermvmsqlserverextension) を使用して [ SQL Server 拡張機能](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) を Azure SQL 仮想マシンに追加します。
+[Set-AzureRmVMSqlServerExtension](/powershell/module/azurerm.compute/set-azurermvmsqlserverextension) を使用して [ SQL Server 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) を Azure SQL 仮想マシンに追加します。
 
 ```azurepowershell-interactive
 Set-AzureRmVMSqlServerExtension `

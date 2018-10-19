@@ -1,44 +1,46 @@
 ---
-title: 'Computer Vision API Go クイック スタート: OCR | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Computer Vision と Go を使って、画像内の印刷されたテキストを抽出します。
+title: 'クイック スタート: 印刷されたテキストの抽出 (OCR) - REST、Go - Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Go と Computer Vision API を使って、画像内の印刷されたテキストを抽出します。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: PatrickFarley
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: b0de66e31c3537198831dd0f31590dbaf3fda89b
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.author: pafarley
+ms.openlocfilehash: 55ea5adc9ca6378367cf26ac679d8fa63c2ab5f6
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43772191"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340377"
 ---
-# <a name="quickstart-extract-printed-text-ocr---rest-go"></a>クイック スタート: 印刷されたテキストの抽出 (OCR) - REST、Go
+# <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-go-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と Go を使用して印刷されたテキストを抽出する (OCR)
 
-このクイック スタートでは、Computer Vision を使って、画像内の印刷されたテキストを抽出します。これを光学式文字認識 (OCR) と呼ぶこともあります。
+このクイック スタートでは、Computer Vision の REST API を使って、光学式文字認識 (OCR) で印刷されたテキストを抽出しています。 [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドを使って画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Computer Vision を使用するにはサブスクリプション キーが必要です。「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
+- [Go](https://golang.org/dl/) がインストールされている必要があります。
+- Computer Vision のサブスクリプション キーが必要です。 「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
 
-## <a name="ocr-request"></a>OCR 要求
+## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
 
-[OCR メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)を使って画像内の印刷されたテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出します。
+このサンプルを作成して実行するには、次の手順を実行します。
 
-このサンプルを実行するには、次の手順を実行します。
-
-1. エディターに次のコードをコピーします。
-1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. 必要に応じて `uriBase` の値を、サブスクリプション キーを取得した場所に変更します。
-1. 必要に応じて `imageUrl` の値を、分析する画像に変更します。
-1. `.go` という拡張子でファイルを保存します。
-1. Go がインストールされているコンピューターのコマンド プロンプトを開きます。
-1. ファイルをビルドします (例: `go build get-printed-text.go`)。
-1. ファイルを実行します (例: `get-printed-text`)。
+1. テキスト エディターに次のコードをコピーします。
+1. 必要に応じて、コードに次の変更を加えます。
+    1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
+    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
+    1. 必要に応じて、分析したい別の画像の URL で `imageUrl` 値を置き換えます。
+1. `.go` 拡張子のファイルとして、コードを保存します。 たとえば、「 `get-printed-text.go` 」のように入力します。
+1. コマンド プロンプト ウィンドウを開きます。
+1. プロンプトで、`go build` コマンドを実行して、ファイルからパッケージをコンパイルします。 たとえば、「 `go build get-printed-text.go` 」のように入力します。
+1. プロンプトで、コンパイル済みのパッケージを実行します。 たとえば、「 `get-printed-text` 」のように入力します。
 
 ```go
 package main
@@ -53,12 +55,17 @@ import (
 )
 
 func main() {
-    // For example, subscriptionKey = "0123456789abcdef0123456789ABCDEF"
+    // Replace <Subscription Key> with your valid subscription key.
     const subscriptionKey = "<Subscription Key>"
 
-    // You must use the same location in your REST call as you used to get your
-    // subscription keys. For example, if you got your subscription keys from
-    // westus, replace "westcentralus" in the URL below with "westus".
+    // You must use the same Azure region in your REST API method as you used to
+    // get your subscription keys. For example, if you got your subscription keys
+    // from the West US region, replace "westcentralus" in the URL
+    // below with "westus".
+    //
+    // Free trial subscription keys are generated in the West Central US region.
+    // If you use a free trial subscription key, you shouldn't need to change
+    // this region.
     const uriBase =
         "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/ocr"
     const imageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/" +
@@ -110,9 +117,9 @@ func main() {
 }
 ```
 
-## <a name="ocr-response"></a>OCR 応答
+## <a name="examine-the-response"></a>結果の確認
 
-成功時に返される OCR の結果には、テキストのほか、領域、線、単語を囲む境界ボックスが含まれます。その例を次に示します。
+成功応答が JSON で返されます。 サンプル アプリケーションによって成功応答が解析され、次の例のようにコマンド プロンプト ウィンドウに表示されます。
 
 ```json
 {
@@ -213,9 +220,13 @@ func main() {
 }
 ```
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+不要になった場合は、コンパイル済みのパッケージと、そのパッケージのコンパイル元のファイルを削除して、コマンド プロンプト ウィンドウとテキスト エディターを閉じます。
+
 ## <a name="next-steps"></a>次の手順
 
 画像の分析、著名人やランドマークの検出、サムネイルの作成、印刷されたテキストや手書きテキストの抽出に使用される Computer Vision API の詳細を確認します。 Computer Vision API を簡単に試す場合は、[Open API テスト コンソール](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console)をお試しください。
 
 > [!div class="nextstepaction"]
-> [Computer Vision API の詳細](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Computer Vision API の詳細を確認する](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)

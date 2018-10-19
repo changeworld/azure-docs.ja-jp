@@ -3,14 +3,14 @@ title: Azure Site Recovery での VMware から Azure へのレプリケーシ�
 description: この記事では、Azure Site Recovery を使ってオンプレミスの VMware VM を Azure にレプリケートするときに使われるコンポーネントとアーキテクチャの概要を説明します
 author: rayne-wiselman
 ms.service: site-recovery
-ms.date: 08/29/2018
+ms.date: 09/12/2018
 ms.author: raynew
-ms.openlocfilehash: 4a97c44226d875a08f81a6306fc9ddd4ee29c409
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 498c41324bfc85f6f91acc8000df4c34856cf428
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288143"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715756"
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>VMware から Azure へのレプリケーション アーキテクチャ
 
@@ -36,16 +36,23 @@ ms.locfileid: "43288143"
 
 ## <a name="replication-process"></a>レプリケーション プロセス
 
-1. VM のレプリケーションを有効にすると、レプリケーション ポリシーに従ってレプリケーションが開始されます。 
+1. VM に対してレプリケーションを有効にした場合、指定したレプリケーション ポリシーを使用して、Azure Storage への最初のレプリケーションが開始されます。 以下の点に注意してください。
+    - VMware VM の場合、レプリケーションは、VM 上で実行されているモビリティ サービス エージェントを使用しているブロックレベル (ほぼ連続的) です。
+    - 任意のレプリケーション ポリシー設定が適用されます。
+        - **[RPO しきい値]**。 この設定は、レプリケーションには影響しません。 これは監視に役立ちます。 現在の RPO が指定したしきい値の上限を超えた場合、イベントが発生し、必要に応じて電子メールが送信されます。
+        - **[復旧ポイントのリテンション期間]**。 この設定は、中断が発生したときに、どこまで戻るかを時間で指定します。 Premium Storage の最大リテンション期間は 24 時間です。 Standard Storage では 72 時間です。 
+        - **[App-consistent snapshots]\(アプリ整合性スナップショット\)**。 ご利用のアプリのニーズに応じて、アプリ整合性のスナップショットを 1 から 12 時間ごとに取得できます。 スナップショットは標準の Azure BLOB スナップショットです。 VM 上で実行されているモビリティ エージェントでは、この設定に従って VSS スナップショットが要求され、レプリケーション ストリームのアプリケーション整合性ポイントとして特定の時点がブックマークされます。
+
 2. トラフィックは、インターネット経由で Azure Storage のパブリック エンドポイントにレプリケートされます。 別の方法として、Azure ExpressRoute と[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)を使用できます。 オンプレミス サイトから Azure へのサイト間仮想プライベート ネットワーク (VPN) を介したトラフィックのレプリケートはサポートされていません。
-3. VM のデータの最初のコピーが Azure ストレージにレプリケートされます。
-4. 初回のレプリケーションの終了後、Azure への差分変更のレプリケーションが開始されます。 マシンの追跡された変更は .hrl ファイルに保持されます。
-5. 通信は、次のように行われます。
+3. 初回のレプリケーションの終了後、Azure への差分変更のレプリケーションが開始されます。 マシンに対する追跡された変更は、プロセス サーバーに送信されます。
+4. 通信は、次のように行われます。
 
     - VM は、レプリケーション管理のために、受信ポート HTTPS 443 でオンプレミスの構成サーバーと通信します。
     - 構成サーバーは、送信ポート HTTPS 443 経由で Azure によるレプリケーションを調整します。
     - VM は、受信ポート HTTPS 9443 でレプリケーション データを (構成サーバー マシン上で実行されている) プロセス サーバーに送信します。 このポートは変更可能です。
     - プロセス サーバーは、レプリケーション データを受信し、データを最適化して暗号化し、送信ポート 443 経由で Azure ストレージに送信します。
+
+
 
 
 **VMware から Azure へのレプリケーション プロセス**

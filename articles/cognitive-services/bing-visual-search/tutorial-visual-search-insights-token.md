@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: bda4bdeea019d8cf3ae677d5eaf81e631ca38d16
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 06d6bc8e53276b5542210c2843d7221d6fd79c09
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222575"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386436"
 ---
 # <a name="tutorial-bing-visual-search-sdk-imageinsightstoken-and-results"></a>チュートリアル: Bing Visual Search SDK の ImageInsightsToken と結果
 Visual Search SDK には、前に実行された `ImageInsightsToken` を返す検索からオンラインで画像を検索するオプションがあります。  この例では `ImageInsightsToken` を取得し、このトークンをその後の検索で使用します。  コードでは、`ImageInsightsToken` を Bing に送信し、Bing Search URL とオンラインで見つかった類似する画像の URL を含む結果を返します。
@@ -25,7 +25,7 @@ Visual Studio 2017。 必要に応じて、 https://www.visualstudio.com/vs/comm
 SDK の呼び出しを認証するには、Cognitive Services API キーが必要です。 無料試用版キーにサインアップしてください。 試用版キーは 1 秒あたり 1 回の呼び出しが可能で、有効期間は 7 日間です。 運用環境のシナリオでは、アクセス キーを購入してください。 価格情報も参照してください。
 .NET Core SDK、.NET Core 1.1 アプリを実行する機能。 https://www.microsoft.com/net/download/ から、Core、Framework、およびランタイムを入手できます。
 
-##<a name="application-dependencies"></a>アプリケーションの依存関係
+## <a name="application-dependencies"></a>アプリケーションの依存関係
 Bing Web Search SDK を使用してコンソール アプリケーションを設定するには、Visual Studio のソリューション エクスプローラーで [NuGet パッケージの管理] オプションに移動します。 次の項目を追加します。
 * Microsoft.Azure.CognitiveServices.Search.VisualSearch
 * Microsoft.Azure.CognitiveServices.Search.ImageSearchpackage パッケージ。
@@ -37,7 +37,8 @@ NuGet Web Search SDK パッケージをインストールすると、次の項�
 * Newtonsoft.Json
 
 ## <a name="get-the-imageinsightstoken-from-image-search"></a>Image Search から ImageInsightsToken を取得する
-この例では、次のメソッドで取得した `ImageInsightsToken` を使用しています。  この呼び出しの詳細については、「[Image Search SDK C# quickstart (Image Search SDK C# のクイック スタート)](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)」を参照してください。
+
+この例では、次のメソッドで取得した `ImageInsightsToken` を使用しています。  この呼び出しの詳細については、「[Image Search SDK C# quickstart (Image Search SDK C# のクイック スタート)](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart)」を参照してください。
 
 このコードでは、"Canadian Rockies" のクエリ結果を検索し、ImageInsightsToken を取得します。 最初の画像の分析情報トークン、サムネイル URL、画像コンテンツ URL を印刷します。  このメソッドは、後続の Visual Search 要求で使用するための `ImageInsightsToken` を返します。
 
@@ -86,12 +87,15 @@ NuGet Web Search SDK パッケージをインストールすると、次の項�
 ```
 
 ## <a name="specify-the-imageinsightstoken-for-visual-search-request"></a>Visual Search 要求に ImageInsightsToken を指定する
+
 この例では、前のメソッドから返される分析情報トークンを使用します。 次のコードは、`ImageInfo` オブジェクトを `ImageInsightsToken` から作成し、ImageInfo オブジェクトを `VisualSearchRequest` に読み込みます。 `ImageInsightsToken` を `VisualSearchRequest` の `ImageInfo` に指定します
 
 ```
 ImageInfo ImageInfo = new ImageInfo(imageInsightsToken: insightsTok);
 ```
+
 ## <a name="use-visual-search-to-find-images-from-an-imageinsightstoken"></a>Visual Search を使用して ImageInsightsToken から画像を検索する
+
 `VisualSearchRequest` では、検索する画像に関する情報を `ImageInfo` オブジェクトに格納します。  `VisualSearchMethodAsync` メソッドを使用して結果を取得します。
 ```
 // An image binary is not necessary here, as the image is specified by insights token.
@@ -135,7 +139,8 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
         }
     }
 ```
-これらのデータ型の詳細については、「[Images - Visual Search (画像 - Visual Search)](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)」を参照してください。
+これらのデータ型の詳細については、「[Images - Visual Search (画像 - Visual Search)](https://docs.microsoft.com/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)」を参照してください。
+
 ## <a name="complete-code"></a>完成したコード
 
 前の例を実行するコードを次に示します。 次のコードは、投稿要求で `ImageInsightsToken` を送信します。 次に、各 ActionType の Bing Search URL を出力します。 ActionType が `PagesIncluding` の場合、`Data` 内の `ImageObject` 項目が取得されます。  `Data` には、Web ページ上の画像の URL である値のリストが含まれています。  結果の Visual Search URL をコピーしてブラウザーに貼り付け、結果を表示します。 ContentUrl 項目をコピーしてブラウザーに貼り付け、画像を表示します。
@@ -283,5 +288,6 @@ namespace VisualSearchFeatures
 }
 
 ```
+
 ## <a name="next-steps"></a>次の手順
 [Visual Search 応答](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview#the-response)

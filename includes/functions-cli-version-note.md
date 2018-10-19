@@ -1,1 +1,1 @@
-このスクリプトで作成される関数アプリは、[Azure Functions ランタイム](..\articles\azure-functions\functions-versions.md)のバージョン 1.x を使用します。 プレビュー段階であるバージョン 2.x にアップグレードする方法については、「[Azure CLI を使用してバージョンをターゲットにする](..\articles\azure-functions\set-runtime-version.md#target-a-version-using-azure-cli)」を参照してください。 
+このスクリプトで作成される関数アプリは、[Azure Functions ランタイム](..\articles\azure-functions\functions-versions.md)のバージョン 1.x を使用します。 バージョン 2.x にアップグレードする方法については、「[Azure CLI を使用してバージョンをターゲットにする](../articles/azure-functions/set-runtime-version.md#view-and-update-the-runtime-version-using-azure-cli)」を参照してください。 

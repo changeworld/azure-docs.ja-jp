@@ -3,6 +3,7 @@
 > * [.NET でのシミュレートされたデバイス](../articles/iot-hub/quickstart-send-telemetry-dotnet.md)
 > * [Java でのシミュレートされたデバイス](../articles/iot-hub/quickstart-send-telemetry-java.md)
 > * [Node.js でのシミュレートされたデバイス](../articles/iot-hub/quickstart-send-telemetry-node.md)
+> * [Python でのシミュレートされたデバイス](../articles/iot-hub/quickstart-send-telemetry-python.md)
 > * [VS Code での IoT DevKit AZ3166](../articles/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started.md)
 > * [Node.js での Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)
 > * [Python での Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-python-get-started.md)
@@ -12,3 +13,4 @@
 > * [Arduino IDE での Adafruit Feather HUZZAH ESP8266](../articles/iot-hub/iot-hub-arduino-huzzah-esp8266-get-started.md)
 > * [Arduino IDE での Sparkfun ESP8266 Thing Dev](../articles/iot-hub/iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
 > * [Arduino IDE での Adafruit Feather M0](../articles/iot-hub/iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+> * [Swift での iOS](../articles/iot-hub/quickstart-send-telemetry-ios.md)

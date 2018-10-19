@@ -1,24 +1,24 @@
 ---
-title: Face API の概要 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: Face API サービスとは
+titleSuffix: Azure Cognitive Services
 description: 用語集では、Face API サービスの使用中に目にする可能性のある用語について説明します。
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: overview
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: fb1d14ff80bf53adc3008d79cc998739ffffde1b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 15de899be5ab85e9fe84ba1b6284bc9419fcf8a1
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048671"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123472"
 ---
-# <a name="what-is-face-api"></a>Face API とは
+# <a name="what-is-the-face-api-service"></a>Face API サービスとは
 
-Microsoft Face API へようこそ。Face API は、最先端の顔認識アルゴリズムを提供するクラウド ベースのサービスです。 Face API には、属性による顔検出と顔認識の 2 つの主要な機能があります。
+Face API サービスへようこそ。Face API は、最先端の顔認識アルゴリズムを提供するクラウドベースのサービスです。 Face API には、属性による顔検出と顔認識の 2 つの主要な機能があります。
 
 ## <a name="face-detection"></a>顔検出
 
@@ -38,7 +38,7 @@ Face API の検証は、検出された 2 つの顔に対する認証、また�
 
 ### <a name="finding-similar-face"></a>似た顔の検索
 
-ターゲットの検出された顔と、検索対象の顔の候補のセットを提供すると、サービスはターゲットの顔に最もよく似た少数の顔のセットを検索します。 `matchFace` と `matchPerson` の 2 つの動作モードがサポートされています。 `matchPerson` モードは、[Face - Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)で得られた同一人物のしきい値を適用した後で、似た顔を返します。 `matchFace` モードは、同一人物のしきい値を無視して、上位の似た顔候補を返します。 次に例を示します。候補の顔のリストは次のとおりです。
+ターゲットの検出された顔と、検索対象の顔の候補のセットを提供すると、サービスはターゲットの顔に最もよく似た少数の顔のセットを検索します。 `matchFace` と `matchPerson` の 2 つの動作モードがサポートされています。 `matchPerson` モードは、[顔 - 検証](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)で得られた同一人物のしきい値を適用した後で、似た顔を返します。 `matchFace` モードは、同一人物のしきい値を無視して、上位の似た顔候補を返します。 次に例を示します。候補の顔のリストは次のとおりです。
 ![概要 - 似た顔の検索](./Images/FaceFindSimilar.Candidates.jpg) そして次の顔を照会します。![概要 - 似た顔の検索](./Images/FaceFindSimilar.QueryFace.jpg)
 
 4 つの似た顔を検索した場合、`matchPerson` モードは照会している顔と同じ人である (a) と (b) を返します。 `matchFace` モードは、類似性が低くても厳密に 4 つの候補を返すので、(a)、(b)、(c)、(d) が返されます。 詳しくは、「[Face - Find Similar](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237)」(顔 -類似の検索) をご覧ください。

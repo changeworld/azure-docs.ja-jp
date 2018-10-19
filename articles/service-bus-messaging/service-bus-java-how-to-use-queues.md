@@ -11,23 +11,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 09/13/2018
 ms.author: spelluru
-ms.openlocfilehash: e4099c8228e9434276242a3c49ebcb4fc2e995b2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 804e0dd4b510b40c1ebbc5790308a429c2715724
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696467"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573316"
 ---
 # <a name="how-to-use-service-bus-queues-with-java"></a>Java で Service Bus キューを使用する方法
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
 この記事では、Service Bus キューの使用方法について説明します。 サンプルは Java で記述され、[Azure SDK for Java][Azure SDK for Java] を使用しています。 紹介するシナリオは、**キューの作成**、**メッセージの送受信**、**キューの削除**です。
 
+> [!NOTE]
+> GitHub の [azure-service-bus のリポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples/Java)には、Java のサンプルがあります。
+
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
+## <a name="create-a-service-bus-namespace"></a>Service Bus 名前空間を作成する
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+
+## <a name="create-a-service-bus-queue"></a>Service Bus キューを作成する
+[!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 このサンプルを作成する前に、[Azure SDK for Java][Azure SDK for Java] がインストールされていることを確認してください。 Eclipse を使用している場合は、Azure SDK for Java が含まれている [Azure Toolkit for Eclipse][Azure Toolkit for Eclipse] をインストールできます。 これで **Microsoft Azure Libraries for Java** をプロジェクトに追加できます。
@@ -38,83 +45,72 @@ ms.locfileid: "43696467"
 
 ```java
 // Include the following imports to use Service Bus APIs
-import com.microsoft.windowsazure.services.servicebus.*;
-import com.microsoft.windowsazure.services.servicebus.models.*;
-import com.microsoft.windowsazure.core.*;
-import javax.xml.datatype.*;
+import com.google.gson.reflect.TypeToken;
+import com.microsoft.azure.servicebus.*;
+import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
+import com.google.gson.Gson;
+
+import static java.nio.charset.StandardCharsets.*;
+
+import java.time.Duration;
+import java.util.*;
+import java.util.concurrent.*;
+
+import org.apache.commons.cli.*;
+
 ```
-
-## <a name="create-a-queue"></a>キューを作成する
-Service Bus キューの管理処理は **ServiceBusContract** クラスを使用して実行できます。 **ServiceBusContract** オブジェクトは SAS をカプセル化する構成とそれを管理するアクセス許可で構築されます。**ServiceBusContract** クラスでのみ Azure Service Bus トピックとのやり取りが可能です。
-
-**ServiceBusService** クラスには、キューの作成、列挙、削除のためのメソッドが用意されています。 次の例では、**ServiceBusService** オブジェクトを使用して、`HowToSample` 名前空間の `TestQueue` という名前のキューを作成する方法を示しています。
-
-```java
-Configuration config =
-    ServiceBusConfiguration.configureWithSASAuthentication(
-            "HowToSample",
-            "RootManageSharedAccessKey",
-            "SAS_key_value",
-            ".servicebus.windows.net"
-            );
-
-ServiceBusContract service = ServiceBusService.create(config);
-QueueInfo queueInfo = new QueueInfo("TestQueue");
-try
-{
-    CreateQueueResult result = service.createQueue(queueInfo);
-}
-catch (ServiceException e)
-{
-    System.out.print("ServiceException encountered: ");
-    System.out.println(e.getMessage());
-    System.exit(-1);
-}
-```
-
-`QueueInfo` には、キューのプロパティを調整できるメソッドが用意されています (たとえば、キューに送信されるメッセージに対して既定の有効期間 (TTL) 値が適用されるように設定できます)。 次の例では、名前が `TestQueue`、最大サイズが 5 GB であるキューを作成する方法を示しています。
-
-````java
-long maxSizeInMegabytes = 5120;
-QueueInfo queueInfo = new QueueInfo("TestQueue");
-queueInfo.setMaxSizeInMegabytes(maxSizeInMegabytes);
-CreateQueueResult result = service.createQueue(queueInfo);
-````
-
-**ServiceBusContract** オブジェクトの `listQueues` メソッドを使用すると、指定した名前のキューがサービス名前空間に既に存在するかどうかを確認できます。
 
 ## <a name="send-messages-to-a-queue"></a>メッセージをキューに送信する
-メッセージを Service Bus キューに送信するには、アプリケーションで **ServiceBusContract** オブジェクトを取得します。 次のコードでは、上のコードで `HowToSample` 名前空間内で作成した `TestQueue` キューにメッセージを送信する方法を示しています。
+Service Bus キューにメッセージを送信する場合、アプリケーションによって **QueueClient** オブジェクトがインスタンス化され、非同期的にメッセージが送信されます。 次のコードでは、ポータルを使用して作成されたキューにメッセージを送信する方法を示しています。
 
 ```java
-try
-{
-    BrokeredMessage message = new BrokeredMessage("MyMessage");
-    service.sendQueueMessage("TestQueue", message);
+public void run() throws Exception {
+    // Create a QueueClient instance and then asynchronously send messages.
+    // Close the sender once the send operation is complete.
+    QueueClient sendClient = new QueueClient(new ConnectionStringBuilder(ConnectionString, QueueName), ReceiveMode.PEEKLOCK);
+    this.sendMessageAsync(sendClient).thenRunAsync(() -> sendClient.closeAsync());
+
+    sendClient.close();
 }
-catch (ServiceException e)
-{
-    System.out.print("ServiceException encountered: ");
-    System.out.println(e.getMessage());
-    System.exit(-1);
-}
+
+    CompletableFuture<Void> sendMessagesAsync(QueueClient sendClient) {
+        List<HashMap<String, String>> data =
+                GSON.fromJson(
+                        "[" +
+                                "{'name' = 'Einstein', 'firstName' = 'Albert'}," +
+                                "{'name' = 'Heisenberg', 'firstName' = 'Werner'}," +
+                                "{'name' = 'Curie', 'firstName' = 'Marie'}," +
+                                "{'name' = 'Hawking', 'firstName' = 'Steven'}," +
+                                "{'name' = 'Newton', 'firstName' = 'Isaac'}," +
+                                "{'name' = 'Bohr', 'firstName' = 'Niels'}," +
+                                "{'name' = 'Faraday', 'firstName' = 'Michael'}," +
+                                "{'name' = 'Galilei', 'firstName' = 'Galileo'}," +
+                                "{'name' = 'Kepler', 'firstName' = 'Johannes'}," +
+                                "{'name' = 'Kopernikus', 'firstName' = 'Nikolaus'}" +
+                                "]",
+                        new TypeToken<List<HashMap<String, String>>>() {}.getType());
+
+        List<CompletableFuture> tasks = new ArrayList<>();
+        for (int i = 0; i < data.size(); i++) {
+            final String messageId = Integer.toString(i);
+            Message message = new Message(GSON.toJson(data.get(i), Map.class).getBytes(UTF_8));
+            message.setContentType("application/json");
+            message.setLabel("Scientist");
+            message.setMessageId(messageId);
+            message.setTimeToLive(Duration.ofMinutes(2));
+            System.out.printf("\nMessage sending: Id = %s", message.getMessageId());
+            tasks.add(
+                    sendClient.sendAsync(message).thenRunAsync(() -> {
+                        System.out.printf("\n\tMessage acknowledged: Id = %s", message.getMessageId());
+                    }));
+        }
+        return CompletableFuture.allOf(tasks.toArray(new CompletableFuture<?>[tasks.size()]));
+    }
+
 ```
 
-Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、[BrokeredMessage][BrokeredMessage] クラスのインスタンスになります。 [BrokeredMessage][BrokeredMessage] オブジェクトには、([Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label)、[TimeToLive](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.timetolive#Microsoft_ServiceBus_Messaging_BrokeredMessage_TimeToLive) などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。 アプリケーションでは、[BrokeredMessage][BrokeredMessage] のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切なシリアライザーを使用してオブジェクトをシリアル化します。 または、**java.IO.InputStream** オブジェクトを提供することもできます。
+Service Bus キューに送信されたメッセージ (および Service Bus キューから受信したメッセージ) は、[Message](/java/api/com.microsoft.azure.servicebus._message?view=azure-java-stable) クラスのインスタンスになります。 Message オブジェクトには、(Label、TimeToLive などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、任意のアプリケーション データの本体が備わっています。 アプリケーションでは、Message のコンストラクターにシリアル化可能なオブジェクトを渡すことによってメッセージの本文を設定できます。その後で、適切なシリアライザーを使用してオブジェクトをシリアル化します。 または、**java.IO.InputStream** オブジェクトを提供することもできます。
 
-以下の例では、上のコード スニペットで取得した `TestQueue` **MessageSender** にテスト メッセージを 5 件送信する方法を示しています。
-
-```java
-for (int i=0; i<5; i++)
-{
-     // Create message, passing a string message for the body.
-     BrokeredMessage message = new BrokeredMessage("Test message " + i);
-     // Set an additional app-specific property.
-     message.setProperty("MyProperty", i);
-     // Send message to the queue
-     service.sendQueueMessage("TestQueue", message);
-}
-```
 
 Service Bus キューでサポートされているメッセージの最大サイズは、[Standard レベル](service-bus-premium-messaging.md)では 256 KB、[Premium レベル](service-bus-premium-messaging.md)では 1 MB です。 標準とカスタムのアプリケーション プロパティが含まれるヘッダーの最大サイズは 64 KB です。 キューで保持されるメッセージ数には上限がありませんが、キュー 1 つあたりが保持できるメッセージの合計サイズには上限があります。 このキュー サイズは作成時に定義され、上限は 5 GB です。
 
@@ -122,63 +118,60 @@ Service Bus キューでサポートされているメッセージの最大サ�
 キューからメッセージを受信する主な方法は、**ServiceBusContract** オブジェクトを使用することです。 メッセージは、**ReceiveAndDelete** と **PeekLock** の 2 つの異なるモードで受信できます。
 
 **ReceiveAndDelete** モードを使用する場合、受信が 1 回ずつの動作になります。つまり、Service Bus はキュー内のメッセージに対する読み取り要求を受け取ると、メッセージを読み取り中としてマークし、アプリケーションに返します。 **ReceiveAndDelete** モード (既定) は最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 このことを理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。
-Service Bus はメッセージを読み取り済みとしてマークするため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされることになります。
+Service Bus はメッセージを読み取り済みとしてマークしているため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされます。
 
 **PeekLock** モードでは、メッセージの受信処理が 2 段階の動作になり、メッセージが失われることが許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取られるメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。 アプリケーションがメッセージの処理を終えた後 (または後で処理するために確実に保存した後)、受信したメッセージに対して **Delete** を呼び出して受信処理の第 2 段階を完了します。 Service Bus が **Delete** の呼び出しを確認すると、メッセージが読み取り中としてマークされ、キューから削除されます。
 
 次の例では、(既定モードではなく) **PeekLock** モードを使用したメッセージの受信および処理の方法を示しています。 次の例では、無限ループを使用して、`TestQueue` にメッセージが到着するごとに処理しています。
 
 ```java
-try
-{
-    ReceiveMessageOptions opts = ReceiveMessageOptions.DEFAULT;
-    opts.setReceiveMode(ReceiveMode.PEEK_LOCK);
+    public void run() throws Exception {
+        // Create a QueueClient instance for receiving using the connection string builder
+        // We set the receive mode to "PeekLock", meaning the message is delivered
+        // under a lock and must be acknowledged ("completed") to be removed from the queue
+        QueueClient receiveClient = new QueueClient(new ConnectionStringBuilder(ConnectionString, QueueName), ReceiveMode.PEEKLOCK);
+        this.registerReceiver(receiveClient);
 
-    while(true)  {
-         ReceiveQueueMessageResult resultQM =
-                 service.receiveQueueMessage("TestQueue", opts);
-        BrokeredMessage message = resultQM.getValue();
-        if (message != null && message.getMessageId() != null)
-        {
-            System.out.println("MessageID: " + message.getMessageId());
-            // Display the queue message.
-            System.out.print("From queue: ");
-            byte[] b = new byte[200];
-            String s = null;
-            int numRead = message.getBody().read(b);
-            while (-1 != numRead)
-            {
-                s = new String(b);
-                s = s.trim();
-                System.out.print(s);
-                numRead = message.getBody().read(b);
-            }
-            System.out.println();
-            System.out.println("Custom Property: " +
-                message.getProperty("MyProperty"));
-            // Remove message from queue.
-            System.out.println("Deleting this message.");
-            //service.deleteMessage(message);
-        }  
-        else  
-        {
-            System.out.println("Finishing up - no more messages.");
-            break;
-            // Added to handle no more messages.
-            // Could instead wait for more messages to be added.
-        }
+        // shut down receiver to close the receive loop
+        receiveClient.close();
     }
-}
-catch (ServiceException e) {
-    System.out.print("ServiceException encountered: ");
-    System.out.println(e.getMessage());
-    System.exit(-1);
-}
-catch (Exception e) {
-    System.out.print("Generic exception encountered: ");
-    System.out.println(e.getMessage());
-    System.exit(-1);
-}
+    void registerReceiver(QueueClient queueClient) throws Exception {
+        // register the RegisterMessageHandler callback
+        queueClient.registerMessageHandler(new IMessageHandler() {
+        // callback invoked when the message handler loop has obtained a message
+            public CompletableFuture<Void> onMessageAsync(IMessage message) {
+            // receives message is passed to callback
+                if (message.getLabel() != null &&
+                    message.getContentType() != null &&
+                    message.getLabel().contentEquals("Scientist") &&
+                    message.getContentType().contentEquals("application/json")) {
+
+                        byte[] body = message.getBody();
+                        Map scientist = GSON.fromJson(new String(body, UTF_8), Map.class);
+
+                        System.out.printf(
+                            "\n\t\t\t\tMessage received: \n\t\t\t\t\t\tMessageId = %s, \n\t\t\t\t\t\tSequenceNumber = %s, \n\t\t\t\t\t\tEnqueuedTimeUtc = %s," +
+                            "\n\t\t\t\t\t\tExpiresAtUtc = %s, \n\t\t\t\t\t\tContentType = \"%s\",  \n\t\t\t\t\t\tContent: [ firstName = %s, name = %s ]\n",
+                            message.getMessageId(),
+                            message.getSequenceNumber(),
+                            message.getEnqueuedTimeUtc(),
+                            message.getExpiresAtUtc(),
+                            message.getContentType(),
+                            scientist != null ? scientist.get("firstName") : "",
+                            scientist != null ? scientist.get("name") : "");
+                    }
+                    return CompletableFuture.completedFuture(null);
+                }
+
+                // callback invoked when the message handler has an exception to report
+                public void notifyException(Throwable throwable, ExceptionPhase exceptionPhase) {
+                    System.out.printf(exceptionPhase + "-" + throwable.getMessage());
+                }
+        },
+        // 1 concurrent call, messages are auto-completed, auto-renew duration
+        new MessageHandlerOptions(1, true, Duration.ofMinutes(1)));
+    }
+
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>アプリケーションのクラッシュと読み取り不能のメッセージを処理する方法

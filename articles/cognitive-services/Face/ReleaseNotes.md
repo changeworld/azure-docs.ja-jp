@@ -1,25 +1,25 @@
 ---
-title: Face API サービスのリリース ノート | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
+title: リリース ノート - Face API サービス
+titleSuffix: Azure Cognitive Services
 description: Face API サービスのリリース ノートには、さまざまなバージョンのリリース変更履歴が含まれています。
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 918b3ea5dbaaa44e4eee1a679354c7becffd4686
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6fd3d33d40b0ed142127e46dd7c9173de39947c7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377669"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121993"
 ---
 # <a name="face-api-release-notes"></a>Face API リリース ノート
 
-この記事は、Microsoft Face API Service バージョン 1.0 に関連します。
+この記事は、Face API Service バージョン 1.0 に関連します。
 
 ### <a name="release-changes-in-may-2018"></a>2018 年 5 月のリリース変更
 

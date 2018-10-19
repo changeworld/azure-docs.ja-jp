@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 50e4b9b8b8f9433ec725aaa982e969cec7afb91c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.date: 09/17/2018
+ms.openlocfilehash: ac5be20815b552c08e5cd1054bf24d7a10b56498
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265787"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124271"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバー ログ
 Azure Database for MySQL では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。 
@@ -29,9 +29,9 @@ Azure Portal で、ご利用の Azure Database for MySQL サーバーを選択�
 Azure CLI の詳細については、「[Configure and access server logs using Azure CLI (Azure CLI を使用したサーバー ログの構成とアクセス)](howto-configure-server-logs-in-cli.md)」を参照してください。
 
 ## <a name="log-retention"></a>ログのリテンション期間
-ログは、作成日から最大 7 日間使用できます。 使用可能なログの合計サイズが 7.5 GB を超える場合は、空き領域を利用できるようになるまで、古いファイルから削除されます。 
+ログは、作成日から最大 7 日間使用できます。 使用可能なログの合計サイズが 7 GB を超える場合は、空き領域を利用できるようになるまで、古いファイルから削除されます。 
 
-ログのローテーションは、24 時間ごとか 7.5 GB ごとのどちらか早い方のタイミングで行われます。
+ログのローテーションは、24 時間ごとか 7 GB ごとのどちらか早い方のタイミングで行われます。
 
 
 ## <a name="configure-logging"></a>ログの構成 

@@ -6,15 +6,15 @@ author: vhorne
 manager: jpconnock
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/5/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: ff8df51011ef664950ecfeb9eef0b201306c8ad5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 8fb459d197c15cf7760a924c7161fed59cc1caac
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221655"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801881"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>チュートリアル: Azure portal を使用して Azure Firewall をデプロイして構成する
 
@@ -186,6 +186,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 10. **[サブネット]**、**[関連付け]** の順にクリックします。
 11. **[仮想ネットワーク]** をクリックし、**[Test-FW-VN]** を選択します。
 12. **[サブネット]** で、**[Workload-SN]** をクリックします。
+
+    > [!IMPORTANT]
+    > 必ずこのルートの **Workload-SN** サブネットのみを選択してください。それ以外の場合、ファイアウォールが正常に動作しません。
+
 13. Click **OK**.
 14. **[ルート]** をクリックし、**[追加]** をクリックします。
 15. **[ルート名]** に「**FW-DG**」と入力します。
@@ -193,8 +197,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 17. **[次ホップの種類]** で、**[仮想アプライアンス]** を選択します。
 
     Azure Firewall は実際はマネージド サービスですが、この状況では仮想アプライアンスが動作します。
-1. **[次ホップ アドレス]** に、前にメモしておいたファイアウォールのプライベート IP アドレスを入力します。
-2. Click **OK**.
+18. **[次ホップ アドレス]** に、前にメモしておいたファイアウォールのプライベート IP アドレスを入力します。
+19. Click **OK**.
 
 
 ## <a name="configure-application-rules"></a>アプリケーション ルールを構成する

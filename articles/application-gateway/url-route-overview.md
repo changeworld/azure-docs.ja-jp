@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/23/2018
 ms.author: victorh
-ms.openlocfilehash: f706e267675dbb3d5465977157f40824efc96e48
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: cf3e051e4833c6b654e5ff89cd084911521b3d67
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389244"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049241"
 ---
-# <a name="azure-application-gatewaty-url-path-based-routing-overview"></a>Azure Application Gatewaty URL パス ベースのルーティングの概要
+# <a name="azure-application-gateway-url-path-based-routing-overview"></a>Azure Application Gateway URL パス ベースのルーティングの概要
 
 URL パス ベースのルーティングを使用すると、要求の URL パスに基づいてバックエンド サーバー プールにトラフィックをルーティングできます。 
 
@@ -29,7 +29,7 @@ URL パス ベースのルーティングを使用すると、要求の URL パ�
 
 ![imageURLroute](./media/url-route-overview/figure1.png)
 
-http://contoso.com/video/ * の要求は、VideoServerPool にルーティングされ、http://contoso.com/images/* は ImageServerPool にルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
+http://contoso.com/video/* の要求は、VideoServerPool にルーティングされ、 http://contoso.com/images/* は ImageServerPool にルーティングされます。 一致するパス パターンがない場合は、DefaultServerPool が選択されます。
 
 > [!IMPORTANT]
 > 規則は、ポータルにおける表示順に処理されます。 基本リスナーを構成する前に、まずマルチサイト リスナーを構成することを強くお勧めします。  そうすることで、トラフィックが確実に適切なバックエンドにルーティングされます。 基本リスナーが先に表示されていて、なおかつ受信要求と一致した場合、そのリスナーによって要求が処理されます。

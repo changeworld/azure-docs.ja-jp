@@ -1,6 +1,6 @@
 ---
-title: Azure Functions における HTTP と Webhook のバインド
-description: Azure Functions で HTTP トリガー、Webhook トリガー、バインドを使用する方法について説明します。
+title: Azure Functions のトリガーとバインド
+description: Azure Functions で HTTP トリガーとバインドを使用する方法を説明します。
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 41870f4f3cf4a0aba461021b4787e1ba004e5ead
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e989152ece19168138597a96d1246ec64498ce69
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095115"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227556"
 ---
-# <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions における HTTP と Webhook のバインド
+# <a name="azure-functions-http-triggers-and-bindings"></a>Azure Functions のトリガーとバインド
 
-この記事では、Azure Functions で HTTP バインドを使用する方法について説明します。 Azure Functions は、HTTP のトリガーと出力バインドをサポートしています。
+この記事では、Azure Functions で HTTP トリガーと出力バインドを操作する方法について説明します。
 
-HTTP トリガーは [webhook](https://en.wikipedia.org/wiki/Webhook) に応答するようにカスタマイズすることができます。 webhook トリガーは JSON ペイロードのみを受け入れ、JSON を検証します。 webhook トリガーには特別なバージョンがあり、そのバージョンでは特定のプロバイダー (GitHub や Slack など) の webhook の処理が容易になります。
+HTTP トリガーは [webhook](https://en.wikipedia.org/wiki/Webhook) に応答するようにカスタマイズすることができます。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -50,10 +50,10 @@ HTTP トリガーでは、HTTP 要求で関数を呼び出すことができま�
 
 言語固有の例をご覧ください。
 
-* [C#](#trigger---c-example)
+* [C# を選択した場合](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
+* [JavaScript を選択した場合](#trigger---javascript-example)
 * [Java](#trigger---java-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
@@ -276,7 +276,7 @@ module.exports = function(context, req) {
 
 ### <a name="trigger---java-example"></a>トリガー - Java の例
 
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Java 関数](functions-reference-java.md)を示しています。 この関数は、要求元の要求本文にあいさつの "Hello" が追加された要求本文と HTTP 状態コード 200 応答を返します。
+次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [Java 関数](functions-reference-java.md)を示しています。 この関数は、要求元の要求本文の前に「Hello」 あいさつが追加された要求本文と HTTP 状態コード 200 応答を返します。
 
 
 *function.json* ファイルを次に示します。
@@ -312,164 +312,6 @@ public HttpResponseMessage<String> hello(@HttpTrigger(name = "req", methods = {"
     }
 }
 ```
-     
-## <a name="trigger---webhook-example"></a>トリガー - webhook の例
-
-言語固有の例をご覧ください。
-
-* [C#](#webhook---c-example)
-* [C# スクリプト (.csx)](#webhook---c-script-example)
-* [F#](#webhook---f-example)
-* [JavaScript](#webhook---javascript-example)
-
-### <a name="webhook---c-example"></a>webhook - C# の例
-
-次の例は、一般的な JSON 要求への応答で HTTP 200 を送信する [C# 関数](functions-dotnet-class-library.md)を示しています。
-
-```cs
-[FunctionName("HttpTriggerCSharp")]
-public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous, WebHookType = "genericJson")] HttpRequestMessage req)
-{
-    return req.CreateResponse(HttpStatusCode.OK);
-}
-```
-
-### <a name="webhook---c-script-example"></a>webhook - C# スクリプトの例
-
-次の例は、*function.json* ファイルの webhook トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、GitHub の問題に対するコメントをログに記録します。
-
-*function.json* ファイルを次に示します。
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "webHookType": "github",
-      "name": "req"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ],
-  "disabled": false
-}
-```
-
-これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
-
-C# スクリプト コードを次に示します。
-
-```csharp
-#r "Newtonsoft.Json"
-
-using System;
-using System.Net;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
-{
-    string jsonContent = await req.Content.ReadAsStringAsync();
-    dynamic data = JsonConvert.DeserializeObject(jsonContent);
-
-    log.Info($"WebHook was triggered! Comment: {data.comment.body}");
-
-    return req.CreateResponse(HttpStatusCode.OK, new {
-        body = $"New GitHub comment: {data.comment.body}"
-    });
-}
-```
-
-### <a name="webhook---f-example"></a>webhook - F# の例
-
-次の例は、*function.json* ファイルの webhook トリガー バインドと、そのバインドが使用される [F# 関数](functions-reference-fsharp.md)を示しています。 この関数は、GitHub の問題に対するコメントをログに記録します。
-
-*function.json* ファイルを次に示します。
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "webHookType": "github",
-      "name": "req"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ],
-  "disabled": false
-}
-```
-
-これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
-
-F# コードを次に示します。
-
-```fsharp
-open System.Net
-open System.Net.Http
-open FSharp.Interop.Dynamic
-open Newtonsoft.Json
-
-type Response = {
-    body: string
-}
-
-let Run(req: HttpRequestMessage, log: TraceWriter) =
-    async {
-        let! content = req.Content.ReadAsStringAsync() |> Async.AwaitTask
-        let data = content |> JsonConvert.DeserializeObject
-        log.Info(sprintf "GitHub WebHook triggered! %s" data?comment?body)
-        return req.CreateResponse(
-            HttpStatusCode.OK,
-            { body = sprintf "New GitHub comment: %s" data?comment?body })
-    } |> Async.StartAsTask
-```
-
-### <a name="webhook---javascript-example"></a>webhook - JavaScript の例
-
-次の例は、*function.json* ファイルの webhook トリガー バインドと、そのバインドが使用される [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、GitHub の問題に対するコメントをログに記録します。
-
-*function.json* ファイルのバインディング データを次に示します。
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "webHookType": "github",
-      "name": "req"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ],
-  "disabled": false
-}
-```
-
-これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
-
-JavaScript コードを次に示します。
-
-```javascript
-module.exports = function (context, data) {
-    context.log('GitHub WebHook triggered!', data.comment.body);
-    context.res = { body: 'New GitHub comment: ' + data.comment.body };
-    context.done();
-};
-```
 
 ## <a name="trigger---attributes"></a>トリガー - 属性
 
@@ -480,7 +322,7 @@ module.exports = function (context, data) {
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
 public static HttpResponseMessage Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous, WebHookType = "genericJson")] HttpRequestMessage req)
+    [HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequestMessage req)
 {
     ...
 }
@@ -500,29 +342,18 @@ public static HttpResponseMessage Run(
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |関数を呼び出すために、要求にどのキーが存在する必要があるかを決定します。 承認レベルは、次のいずれかの値になります。 <ul><li><code>anonymous</code>&mdash;API キーは必要ありません。</li><li><code>function</code>&mdash;関数固有の API キーが必要です。 何も指定されなかった場合は、これが既定値になります。</li><li><code>admin</code>&mdash;マスター キーが必要です。</li></ul> 詳しくは、[承認キー](#authorization-keys)に関するセクションをご覧ください。 |
 | **methods** |**メソッド** | 関数が応答する HTTP メソッドの配列。 指定しない場合、関数はすべての HTTP メソッドに応答します。 「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |
 | **route** | **Route** | 関数がどの要求 URL に応答するかを制御するルート テンプレートを定義します。 何も指定しなかった場合の既定値は `<functionname>` です。 詳しくは、「[HTTP エンドポイントのカスタマイズ](#customize-the-http-endpoint)」をご覧ください。 |
-| **webHookType** | **WebHookType** |指定したプロバイダーの [webhook](https://en.wikipedia.org/wiki/Webhook) レシーバーとして機能する HTTP トリガーを構成します。 このプロパティを設定する場合は、`methods` プロパティを設定しないでください。 webhook の種類は、次のいずれかの値になります。<ul><li><code>genericJson</code>&mdash;特定のプロバイダー用のロジックを持たない汎用 webhook エンドポイントです。 この設定では、要求が、HTTP POST を使用していてコンテンツの種類が `application/json` であるものだけに制限されます。</li><li><code>github</code>&mdash;関数は [GitHub webhook](https://developer.github.com/webhooks/) に応答します。 GitHub webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「GitHub webhook」セクションをご覧ください。</li><li><code>slack</code>&mdash;関数は [Slack webhook](https://api.slack.com/outgoing-webhooks) に応答します。 Slack webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「Slack webhook」セクションをご覧ください。</li></ul>|
+| **webHookType** | **WebHookType** | _バージョン 1.x ランタイムでのみサポートされます。_<br/><br/>指定したプロバイダーの [webhook](https://en.wikipedia.org/wiki/Webhook) レシーバーとして機能する HTTP トリガーを構成します。 このプロパティを設定する場合は、`methods` プロパティを設定しないでください。 webhook の種類は、次のいずれかの値になります。<ul><li><code>genericJson</code>&mdash;特定のプロバイダー用のロジックを持たない汎用 webhook エンドポイントです。 この設定では、要求が、HTTP POST を使用していてコンテンツの種類が `application/json` であるものだけに制限されます。</li><li><code>github</code>&mdash;関数は [GitHub webhook](https://developer.github.com/webhooks/) に応答します。 GitHub webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「GitHub webhook」セクションをご覧ください。</li><li><code>slack</code>&mdash;関数は [Slack webhook](https://api.slack.com/outgoing-webhooks) に応答します。 Slack webhook に対して _authLevel_ プロパティを使用しないでください。 詳しくは、この記事で後述する「Slack webhook」セクションをご覧ください。</li></ul>|
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
 
-C# および F# の関数では、トリガー入力の型を `HttpRequestMessage` 型かカスタム型として宣言できます。 `HttpRequestMessage` を選択した場合は、要求オブジェクトへのフル アクセスが取得されます。 カスタム型 の場合、関数は JSON 要求本文を解析して、オブジェクトのプロパティを設定しようとします。 
+C# および F# の関数では、トリガー入力の型を `HttpRequestMessage` 型かカスタム型として宣言できます。 `HttpRequestMessage` を選択した場合は、要求オブジェクトへのフル アクセスが取得されます。 カスタム型 の場合、ランタイムは JSON 要求本文を解析して、オブジェクトのプロパティを設定しようとします。
 
 JavaScript 関数の場合、Functions ランタイムは request オブジェクトではなく、要求本文を提供します。 詳しくは、[JavaScript トリガーの例](#trigger---javascript-example)をご覧ください。
 
-### <a name="github-webhooks"></a>GitHub webhook
-
-GitHub webhook に応答するには、まず、HTTP トリガーで関数を作成し、**webHookType** プロパティを `github` に設定します。 次に、その URL と API キーを GitHub リポジトリの **[webhook の追加]** ページにコピーします。 
-
-![](./media/functions-bindings-http-webhook/github-add-webhook.png)
-
-例については、「[GitHub webhook でトリガーされる関数の作成](functions-create-github-webhook-triggered-function.md)」を参照してください。
-
-### <a name="slack-webhooks"></a>Slack webhook
-
-Slack webhook では、指定しなくてもトークンが自動的に生成されます。そのため、Slack によって生成されたトークンで、関数固有のキーを構成する必要があります。 「[承認キー](#authorization-keys)」をご覧ください。
 
 ### <a name="customize-the-http-endpoint"></a>HTTP エンドポイントのカスタマイズ
 
-既定では、HTTP トリガーまたは WebHook の関数を作成する際に、次の形式のルートを使用して関数のアドレスを指定できます。
+既定では、HTTP トリガーの関数を作成する際に、次の形式のルートを使用して関数のアドレスを指定できます。
 
     http://<yourapp>.azurewebsites.net/api/<funcname> 
 
@@ -603,45 +434,90 @@ module.exports = function (context, req) {
 
 ### <a name="authorization-keys"></a>承認キー
 
-HTTP トリガーを使用すると、セキュリティを強化するためにキーを利用できます。 標準的な HTTP トリガーは、それらを API キーとして使用できます。キーは、要求内に存在する必要があります。 webhook はキーを使用して、プロバイダーで何がサポートされているかに応じてさまざまな方法で要求を承認することができます。
+関数を使用すると、開発中に HTTP 関数のエンドポイントにアクセスするのをより困難にするようにキーを使用できます。  標準の HTTP トリガーでは、そのような API キーが要求内に存在する必要があります。 
+
+> [!IMPORTANT]
+> キーは開発中に HTTP エンドポイントを難読化するのに役立つかもしれませんが、運用環境で HTTP トリガーを確保する方法としては意図されていません。 詳細については、[運用環境で HTTP エンドポイントを保護する](#secure-an-http-endpoint-in-production)を参照してください。
 
 > [!NOTE]
-> 関数をローカルで実行している場合、`function.json` で設定された `authLevel` に関係なく、承認は無効になります。 Azure Functions に発行すると、`authLevel` は直ちに有効になります。
-
-キーは関数アプリの一部として Azure に格納され、保存中は暗号化されます。 キーを表示するには、新しいキーを作成するか、キーを新しい値にロールし、ポータル内でいずれかの関数に移動して、[管理] を選択します。 
+> Functions 1.x ランタイムでは、Webhook プロバイダーは、プロバイダーがサポートするものに応じて、さまざまな方法で要求を認可するためにキーを使用することがあります。 これについては、[Webhook とキー](#webhooks-and-keys)を参照してください。 バージョン 2.x ランタイムには、Webhook プロバイダーの組み込みサポートは含まれていません。
 
 キーには、次の 2 つの種類があります。
 
-- **ホスト キー**: これらのキーは、関数アプリ内のすべての関数で共有されます。 API キーとして使用した場合は、関数アプリ内のすべての関数がアクセスできます。
-- **関数キー**: これらのキーは、それらが定義されている特定の関数にのみ適用されます。 API キーとして使用した場合は、その関数だけがアクセスできます。
+* **ホスト キー**: これらのキーは、関数アプリ内のすべての関数で共有されます。 API キーとして使用した場合は、関数アプリ内のすべての関数がアクセスできます。
+* **関数キー**: これらのキーは、それらが定義されている特定の関数にのみ適用されます。 API キーとして使用した場合は、その関数だけがアクセスできます。
 
 各キーには、参照用に名前が付けられており、関数レベルおよびホスト レベルで "default" という名前の既定のキーがあります。 関数キーが、ホスト キーよりも優先されます。 2 つのキーが同じ名前で定義されている場合は、関数キーが使用されます。
 
-**マスター キー**は "_master" という名前の既定のホスト キーであり、関数アプリごとに定義されています。 このキーを取り消すことはできません。 このキーによって、ランタイム API に対する管理アクセスが可能になります。 バインド JSON で `"authLevel": "admin"` を使用するには、要求内にこのキーが存在する必要があります。他のキーである場合は、承認エラーになります。
+各関数アプリには特別な**マスター キー**もあります。 このキーは`_master`という名前のホスト キーで、ランタイム API への管理アクセスを提供します。 このキーを取り消すことはできません。 認可レベルを`admin`に設定すると、要求でマスター キーを使用する必要があります。 その他のキーを使用すると認可エラーになります。
 
-> [!IMPORTANT]  
-> マスター キーは管理者特権を付与するものであるため、このキーを第三者と共有したり、ネイティブ クライアント アプリケーションで配布したりしないでください。 管理者承認レベルを選択する場合は注意が必要です。
+> [!CAUTION]  
+> マスター キーによって付与された関数 app の権限が昇格しているため、このキーを第三者と共有したり、ネイティブ クライアント アプリケーションに配布したりしないでください。 管理者承認レベルを選択する場合は注意が必要です。
+
+### <a name="obtaining-keys"></a>キーを入手する
+
+キーは関数アプリの一部として Azure に格納され、保存中は暗号化されます。 キーを表示には、新しい値を作成したり、新しい値にキーをロールしたり、[Azure ポータル](https://portal.azure.com)で HTTP トリガー機能に移動して、**管理**を選択します。
+
+![ポータルでのファンクション キーを管理します。](./media/functions-bindings-http-webhook/manage-function-keys.png)
+
+ファンクション キーをプログラムで取得するためのサポートされている API はありません。
 
 ### <a name="api-key-authorization"></a>API キーの承認
 
-既定では、HTTP トリガーには HTTP 要求内の API キーが必要です。 そのため、HTTP 要求は、通常は次のようになります。
+ほとんどの HTTP トリガー テンプレートには、要求内の API キーが必要です。 そのため、HTTP 要求は、通常は次の URL のようになります。
 
     https://<yourapp>.azurewebsites.net/api/<function>?code=<ApiKey>
 
-キーは、上記のように `code` という名前のクエリ文字列変数に含めることも、`x-functions-key` HTTP ヘッダーに含めることもできます。 キーの値には、関数のために定義されている任意の関数キーまたは任意のホスト キーを指定できます。
+上記のように、キーは`code`というクエリ文字列変数に含めることができます。 `x-functions-key`HTTP ヘッダーに含めることもできます。 キーの値には、関数のために定義されている任意の関数キーまたは任意のホスト キーを指定できます。
 
 匿名要求を許可できます。この要求ではキーが不要です。 マスター キーを使用するように要求することもできます。 既定の承認レベルを変更するには、バインド JSON の `authLevel` プロパティを使用します。 詳しくは、「[トリガー - 構成](#trigger---configuration)」をご覧ください。
 
-### <a name="keys-and-webhooks"></a>キーと webhook
+> [!NOTE]
+> 機能をローカルで実行する場合、指定された認証レベルの設定に関係なく、許可は無効になります。 Azure に発行した後、トリガーの`authLevel`設定が適用されます。
+
+
+
+### <a name="secure-an-http-endpoint-in-production"></a>運用環境で HTTP エンドポイントを保護します。
+
+運用環境で、関数エンドポイントを完全に保護するには、次の関数アプリ レベルのセキュリティ オプションのいずれかの実装を検討してください。
+
+* 機能アプリの App サービス認証/認可をオンにします。 App Service プラットフォームでは、Azure Active Directory (AAD) といくつかのサード パーティの ID プロバイダーを使用してクライアントを認証することができます。 これを使用して、関数のカスタム認可ルールを実装し、関数コードのユーザー情報を操作できます。 詳細については、「 [Azure App Service での認証および認可](../app-service/app-service-authentication-overview.md)」を参照してください。
+
+* 要求の認証に Azure API Management (APIM) を使用します。 APIM では、受信要求用のさまざまな API のセキュリティ オプションを提供します。 詳細については、 [API Management の認証ポリシー](../api-management/api-management-authentication-policies.md)を参照してください。 APIM を適切に配置すると、APIM インスタンスの IP アドレスからの要求のみを受け入れるように関数アプリを設定できます。 詳細については、[IP アドレス制限](ip-addresses.md#ip-address-restrictions)を参照してください。
+
+* Azure App Service 環境 (ASE) で関数アプリをデプロイします。 ASE では、関数を実行するための専用のホスティング環境を提供します。 ASE では、すべての着信要求の認証に使用できる 1 つのフロント エンド ゲートウェイを構成できます。 詳細情報については、[App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)を参照してください。
+
+これらの関数アプリレベル セキュリティ メソッドのいずれかを使用する場合は、HTTP トリガー関数認証レベルを`anonymous`に設定する必要があります。
+
+### <a name="webhooks"></a>Webhook
+
+> [!NOTE]
+> Webhook モードは、関数ランタイムのバージョン 1.x でのみ使用できます。
+
+Webhook モードは、Webhook ペイロードの追加検証を提供します。 バージョン 2.x では、基本 HTTP トリガーは引き続き機能し、Webhook の推奨アプローチです。
+
+#### <a name="github-webhooks"></a>GitHub webhook
+
+GitHub webhook に応答するには、まず、HTTP トリガーで関数を作成し、**webHookType** プロパティを `github` に設定します。 次に、その URL と API キーを GitHub リポジトリの **[webhook の追加]** ページにコピーします。 
+
+![](./media/functions-bindings-http-webhook/github-add-webhook.png)
+
+例については、「[GitHub webhook でトリガーされる関数の作成](functions-create-github-webhook-triggered-function.md)」を参照してください。
+
+#### <a name="slack-webhooks"></a>Slack webhook
+
+Slack webhook では、指定しなくてもトークンが自動的に生成されます。そのため、Slack によって生成されたトークンで、関数固有のキーを構成する必要があります。 「[承認キー](#authorization-keys)」をご覧ください。
+
+### <a name="webhooks-and-keys"></a>Webhook とキー
 
 webhook の承認は、HTTP トリガーの一部である webhook レシーバー コンポーネントによって処理されますが、そのメカニズムは webhook の種類によって異なります。 ただし、各メカニズムはキーに依存します。 既定では、"default" という名前の関数キーが使用されます。 別のキーを使用するには、次のいずれかの方法で、要求と共にキー名を送信するように webhook プロバイダーを構成します。
 
-- **クエリ文字列**: プロバイダーが `clientid` クエリ文字列パラメーターでキー名を渡します (`https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>` など)。
-- **要求ヘッダー**: プロバイダーが `x-functions-clientid` ヘッダーでキー名を渡します。
+* **クエリ文字列**: プロバイダーが `clientid` クエリ文字列パラメーターでキー名を渡します (`https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>` など)。
+* **要求ヘッダー**: プロバイダーが `x-functions-clientid` ヘッダーでキー名を渡します。
 
 ## <a name="trigger---limits"></a>トリガー - 制限
 
-HTTP 要求の長さは 100MB (104,857,600 バイト) に、URL の長さは 4KB (4,096 バイト) バイトに制限されています。 これらの制限は、ランタイムの [Web.config ファイル](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)の `httpRuntime` 要素で指定されています。
+HTTP 要求の長さは 100 MB (104,857,600 バイト) に、URL の長さは 4 KB (4,096 バイト) バイトに制限されています。 これらの制限は、ランタイムの [Web.config ファイル](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)の `httpRuntime` 要素で指定されています。
 
 HTTP トリガーを使用する関数が約 2.5 分以内に完了しない場合、ゲートウェイでタイムアウトが発生し、HTTP 502 エラーが返されます。 この関数は実行を継続しますが、HTTP 応答を返すことはできません。 実行時間が長い関数の場合は、非同期パターンに従い、要求の状態について ping で確認できる場所を返すことをお勧めします。 関数を実行できる時間については、[スケールとホスティングに関するページの「従量課金プラン」](functions-scale.md#consumption-plan)を参照してください。 
 
@@ -669,7 +545,7 @@ HTTP 要求送信者に応答するには、HTTP 出力バインドを使用し�
 
 HTTP 応答を送信するには、言語標準の応答パターンを使います。 C# またはで C# スクリプトでは、関数の戻り値の型を `HttpResponseMessage` または `Task<HttpResponseMessage>` にします。 C# の場合、戻り値の属性は必要ありません。
 
-応答の例については、[トリガーの例](#trigger---example)および[webhook の例](#trigger---webhook-example)をご覧ください。
+応答の例のため、[トリガー例](#trigger---example)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 7d164fea62afac83c4fe2216c56a9980d9279f3a
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8a11f9c9ebc2dd0b0eabf7a34d5ef38ae4e29309
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207130"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719074"
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>ImageStoreConnectionString 設定を理解する
 
-いくつかのドキュメントで、"ImageStoreConnectionString" パラメーターの存在について、それが何を意味するかの説明なしで、簡単に触れられています。 「[PowerShell を使用してアプリケーションのデプロイと削除を実行する][10]」などの記事を読み進めると、自分がすることは、ターゲット クラスターのクラスター マニフェストに出現する値をコピー/貼り付けすることだけのように思えます。 このように、この設定はクラスターごとに構成可能ではありますが、[Azure Portal][11] を使用してクラスターを作成する場合はこの設定を構成するというオプションはなく、常に "fabric: ImageStore" が使用されます。 それでは、この設定は何のためにあるのでしょうか。
+いくつかのドキュメントで、"ImageStoreConnectionString" パラメーターの存在について、それが何を意味するかの説明なしで、簡単に触れられています。 「[PowerShell を使用してアプリケーションのデプロイと削除を実行する][10]」などの記事を読み進めると、自分がすることは、ターゲット クラスターのクラスター マニフェストに表示される値をコピー/貼り付けすることだけのように思えます。 このように、この設定はクラスターごとに構成可能ではありますが、[Azure Portal][11] を使用してクラスターを作成する場合はこの設定を構成するというオプションはなく、常に "fabric: ImageStore" が使用されます。 それでは、この設定は何のためにあるのでしょうか。
 
 ![クラスター マニフェスト][img_cm]
 
@@ -45,9 +45,9 @@ Service Fabric は、マイクロソフトの社内で数多くの多様なチ�
 
 ファイル システム プロバイダーは、ローカルのワンボックス クラスターの開発時に、クラスターのブート処理を少しでも速くするためにイメージ ストア サービスの代わりに使用されます。 通常、その違いは小さいものですが、開発時には有効な最適化です。 ローカルのワンボックス クラスターを他の種類のストレージ プロバイダーでデプロイすることもできますが、プロバイダーが何であっても、開発/テスト ワークフローは変わらないため、通常はそうする理由がありません。 Azure Storage プロバイダーは、イメージ ストア サービス プロバイダーがリリースされる前にデプロイされた古いクラスターをサポートする目的でのみ存在します。
 
-また、ファイル システム プロバイダーも Azure Storage プロバイダーも、複数のクラスター間で 1 つのイメージ ストアを共有する手段として使うことは避けてください。それぞれのクラスターによってイメージ ストアに競合するデータが書き込まれる可能性があるため、クラスターの構成データの破損につながります。 プロビジョニングしたアプリケーション パッケージを複数のクラスター間で共有する場合は、[sfpkg][12] ファイルを使用してください。このファイルは、ダウンロード URI で任意の外部ストアにアップロードすることができます。
+また、ファイル システム プロバイダーも Azure Storage プロバイダーも、複数のクラスター間で 1 つの Image Store を共有する手段として使うことは避けてください。それぞれのクラスターによって Image Store に競合するデータが書き込まれる可能性があるため、クラスターの構成データの破損につながります。 プロビジョニングしたアプリケーション パッケージを複数のクラスター間で共有する場合は、[sfpkg][12] ファイルを使用してください。このファイルは、ダウンロード URI で任意の外部ストアにアップロードすることができます。
 
-したがって、ImageStoreConnectionString は構成可能ではありますが、通常は、単純に既定の設定を使用します。 Visual Studio から Azure に発行する場合、パラメーターは、状況に応じて自動的に設定されます。 Azure でホストされるクラスターにプログラムでデプロイする場合、接続文字列は常に "fabric:ImageStore" です。 不確かな場合は、[PowerShell](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest)、[.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx)、または[REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) でクラスター マニフェストを取得することで、その値を常に検証できます。 オンプレミス テストと運用クラスターはどちらも、常にイメージ ストア サービス プロバイダーを使用するように構成する必要があります。
+したがって、ImageStoreConnectionString を構成することはできますが、単純に既定の設定を使用します。 Visual Studio から Azure に発行する場合、パラメーターは、状況に応じて自動的に設定されます。 Azure でホストされるクラスターにプログラムでデプロイする場合、接続文字列は常に "fabric:ImageStore" です。 不確かな場合は、[PowerShell](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricclustermanifest)、[.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx)、または[REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) でクラスター マニフェストを取得することで、その値を常に検証できます。 オンプレミス テストと運用クラスターはどちらも、常にイメージ ストア サービス プロバイダーを使用するように構成する必要があります。
 
 ### <a name="next-steps"></a>次の手順
 [PowerShell を使用してアプリケーションのデプロイと削除を実行する][10]

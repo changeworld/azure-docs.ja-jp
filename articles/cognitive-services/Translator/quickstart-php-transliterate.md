@@ -1,21 +1,21 @@
 ---
-title: Translator Text と PHP でテキストの表記を変換する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と PHP を使って、1 つの言語の中でテキストの表記を変換します。
+title: 'クイック スタート: テキスト スクリプトを変換する - Translator Text、PHP'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、PHP で Translator Text API を使って 1 つの言語の中でテキストの表記を変換します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: aec4dfe9c99f95eb971148ace4a9e692a01998c2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b2b1773bc6eeea3a19d197faae75039511e77cf9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43771060"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123868"
 ---
 # <a name="quickstart-transliterate-text-with-php"></a>クイック スタート: PHP を使ったテキストの表記変換
 

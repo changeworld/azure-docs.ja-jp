@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/20/2018
 ms.author: kgremban
-ms.openlocfilehash: dbc1cc4a72d0346c92d506358c39a66a4d780b32
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: aecb9a1819060e0da6338e8e16bf681fad42dd22
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38309747"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161919"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>クイック スタート: デバイスから IoT ハブへの利用統計情報の送信 (iOS)
 
@@ -32,17 +32,11 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 - [Azure サンプル](https://github.com/Azure-Samples/azure-iot-samples-ios/archive/master.zip)のページからコード サンプルをダウンロードします 
 - iOS SDK の最新バージョンを実行している最新バージョンの [XCode](https://developer.apple.com/xcode/)。 このクイック スタートは、XCode 9.3 と iOS 11.3 でテストされました。
-- [CocoaPods](https://guides.cocoapods.org/using/getting-started.html) の最新バージョン。
-- IoT Hub から利用統計情報を読み取る iothub-explorer CLI ユーティリティ。 インストールするには、[Node.js](https://nodejs.org) v4.x.x 以上をインストールした後に次のコマンドを実行します。 
-
-   ```sh
-   sudo npm install -g iothub-explorer
-   ```
+- 最新バージョンの [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
 [!INCLUDE [iot-hub-quickstarts-create-hub](../../includes/iot-hub-quickstarts-create-hub.md)]
-
 
 ## <a name="register-a-device"></a>デバイスの登録
 
@@ -64,14 +58,6 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    ```
 
    `Hostname=...=` のようなデバイス接続文字列をメモしておきます。 この値は、この記事の後の方で使用します。
-
-1. また、バックエンド アプリケーションが IoT ハブに接続し、デバイスからクラウドへのメッセージを取得できるようにするには、"_サービス接続文字列_" が必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
-
-   ```azurecli-interactive
-   az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
-   ```
-
-   `Hostname=...=` のようなサービス接続文字列をメモしておきます。 この値は、この記事の後の方で使用します。
 
 ## <a name="send-simulated-telemetry"></a>シミュレートされた利用統計情報の送信
 
@@ -119,19 +105,19 @@ pod install
 
 ## <a name="read-the-telemetry-from-your-hub"></a>ハブから利用統計情報を読み取る
 
-XCode エミュレーターで実行したサンプル アプリは、デバイスから送信されたメッセージに関するデータを表示します。 データの受信時に IoT ハブを経由するデータを表示することもできます。 `iothub-explorer` CLI ユーティリティは、IoT Hub のサービス側 **Events** エンドポイントに接続します。 
+XCode エミュレーターで実行したサンプル アプリは、デバイスから送信されたメッセージに関するデータを表示します。 データの受信時に IoT ハブを経由するデータを表示することもできます。 IoT Hub CLI 拡張機能は、IoT ハブ上のサービス側 **Events** エンドポイントに接続できます。 この拡張機能は、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージ受信して処理します。
 
-新しいターミナル ウィンドウを開きます。 次のコマンドを実行します。このとき、{your hub service connection string} を、この記事の冒頭で取得したサービス接続文字列に置き換えます。
+次の Azure CLI コマンドを実行します。`{YourIoTHubName}` は IoT ハブの名前に置き換えます。
 
-```sh
-iothub-explorer monitor-events myiOSdevice --login "{your hub service connection string}"
+```azurecli-interactive
+az iot hub monitor-events --device-id myiOSdevice --hub-name {YourIoTHubName}
 ```
+
+次のスクリーンショットは、シミュレートされたデバイスからハブに送信された利用統計情報を拡張機能が受信したときの出力を示しています。
 
 次のスクリーンショットは、ターミナル ウィンドウに表示される利用統計情報の種類を示しています。
 
 ![利用統計情報データを表示する](media/quickstart-send-telemetry-ios/view-telemetry.png)
-
-iothub-explorer コマンドを実行したときにエラーが発生した場合は、IoT デバイスの "*デバイス接続文字列*" ではなく、IoT デバイスの "*サービス接続文字列*" を使用していることを再確認してください。 どちらの接続文字列も **Hostname={iothubname}** で始まりますが、サービス接続文字列には **SharedAccessKeyName** プロパティが含まれ、デバイス接続文字列には **DeviceID** が含まれます。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

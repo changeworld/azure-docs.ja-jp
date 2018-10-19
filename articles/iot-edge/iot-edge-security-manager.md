@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9b4801048c391aae6e95f4181464255ecf6151fc
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 4594685291396b8b80e62abe57be109f0abbd81d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359541"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126345"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge セキュリティ マネージャー
 
@@ -109,7 +109,7 @@ IoT Edge ランタイムは、IoT Edge セキュリティ デーモンのバー�
 
 ### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>ハードウェア セキュリティ モジュール プラットフォーム抽象化レイヤー (HSM PAL)
 
-HSM PAL は、すべての信頼のルート ハードウェアを抽象化して、IoT Edge の開発者やユーザーをそれらの複雑さから切り離します。  HSM PAL は、アプリケーション プログラマー インターフェイス (API) と、ドメイン内通信手順 (標準実行環境とセキュリティで保護されたエンクレーブとの間の通信など) の組み合わせで構成されます。  HSM PAL の実際の実装は、使用されている特定のセキュリティ保護されたハードウェアに依存します。  HSM PAL が存在することにより、IoT エコシステムではほとんどすべてのセキュア シリコン ハードウェアを使用できます。
+HSM PAL は、すべての信頼のルート ハードウェアを抽象化して、IoT Edge の開発者やユーザーをそれらの複雑さから切り離します。  これは、アプリケーション プログラミング インターフェイス (API) と、ドメイン内通信手順 (標準実行環境とセキュリティで保護されたエンクレーブとの間の通信など) の組み合わせで構成されます。  HSM PAL の実際の実装は、使用されている特定のセキュリティ保護されたハードウェアに依存します。  HSM PAL が存在することにより、IoT エコシステムではほとんどすべてのセキュア シリコン ハードウェアを使用できます。
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>信頼のセキュア シリコン ルート ハードウェア
 

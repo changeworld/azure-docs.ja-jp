@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 2a90e70a9e7951b298be408992ee5e5fc6332131
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: d13eb22bd58dc7e680a27738549665bc2b691898
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729328"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392212"
 ---
 # <a name="integrate-azure-ad-logs-with-sumologic-by-using-azure-monitor-preview"></a>Azure Monitor (プレビュー) を使用して Azure AD のログを SumoLogic と統合する
 
@@ -45,4 +45,4 @@ ms.locfileid: "45729328"
 
 * [Azure Monitor で監査ログのスキーマを解釈する](reference-azure-monitor-audit-log-schema.md)
 * [Azure Monitor でサインイン ログのスキーマを解釈する](reference-azure-monitor-sign-ins-log-schema.md)
-* [よく寄せられる質問と既知の問題](concept-activity-logs-in-azure-monitor.md#frequently-asked-questions)
+* [よく寄せられる質問と既知の問題](concept-activity-logs-azure-monitor.md#frequently-asked-questions)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/26/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 97f33a1c0c42b534dafd1e4ed378b655b339395a
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: aa84dc4cb23a0fa2fa854e1f3d6da1234ec00bd6
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143246"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386639"
 ---
 # <a name="certificates-and-security-on-linux-clusters"></a>Linux クラスター上の証明書とセキュリティ
 
@@ -35,7 +35,7 @@ Linux クラスターの場合、Service Fabric が証明書として受け付�
 
 ## <a name="certificates-referenced-in-the-application-manifest"></a>アプリケーション マニフェストで参照される証明書
 
-[**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) 要素や [**EndpointCertificate**](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) 要素を使用してアプリケーション マニフェスト内に指定された証明書は、*/var/lib/sfcerts* ディレクトリに置かれている必要があります。 アプリケーション マニフェスト内で証明書を指定するために使用される要素はパス属性を取らないため、証明書は既定のディレクトリに置かれる必要があります。 これらの要素は、オプションの **X509StoreName** 属性を取ります。 既定値は "My" です。これは、Linux ノード上の */var/lib/sfcerts* ディレクトリを指します。 その他の値は、Linux クラスター上では定義されません。 Linux クラスター上で実行されるアプリについては、**X509StoreName** 属性を省略することをお勧めします。 
+[**SecretsCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#secretscertificate-element) 要素や [**EndpointCertificate**](https://docs.microsoft.com/azure/service-fabric/service-fabric-service-model-schema-elements#endpointcertificate-element) 要素を使用してアプリケーション マニフェスト内に指定された証明書は、*/var/lib/sfcerts* ディレクトリに置かれている必要があります。 アプリケーション マニフェスト内で証明書を指定するために使用される要素はパス属性を取らないため、証明書は既定のディレクトリに置かれる必要があります。 これらの要素は、オプションの **X509StoreName** 属性を取ります。 既定値は "My" です。これは、Linux ノード上の */var/lib/sfcerts* ディレクトリを指します。 その他の値は、Linux クラスター上では定義されません。 Linux クラスター上で実行されるアプリについては、**X509StoreName** 属性を省略することをお勧めします。 
 
 ## <a name="certificates-referenced-in-the-configuration-package-settingsxml"></a>構成パッケージ (Settings.xml) で参照される証明書
 

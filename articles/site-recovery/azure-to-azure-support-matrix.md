@@ -7,14 +7,14 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2018
+ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 32bdf1080aa6e7c5884747eeecad3f42c7334c3a
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 0e9c5c7ebaaa0a51d723340751e8ea82bfb96b5e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444828"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433669"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Azure リージョン間でレプリケートするためのマトリックスのサポート
 
@@ -38,8 +38,8 @@ ms.locfileid: "42444828"
 --- | --- | ---
 **リソース グループ間の資格情報コンテナーの移動** | サポートされていません<br/><br/> リソース グループ間で Recovery Services コンテナーを移動できません。
 **リソース グループ間のコンピューティング、ストレージ、およびネットワークの移動** | サポートされていません。<br/><br/> レプリケート後に VM または関連コンポーネント (ストレージやネットワークなど) を移動する場合、レプリケーションを無効にして VM のレプリケーションを再び有効にする必要があります。
-**ディザスター リカバリーのためにあるサブスクリプションから別のサブスクリプションに Azure VM をレプリケートする** | 同じ Azure Active Directory テナント内でサポートされます。
-**サブスクリプション間の VM の移行** | サポートされていません。
+**ディザスター リカバリーのためにあるサブスクリプションから別のサブスクリプションに Azure VM をレプリケートする** | 同じ Azure Active Directory テナント内でサポートされます。 クラシックVM に関してはサポートされていません。
+**サポートされている地理的なクラスター (サブスクリプション内外) 内のさまざまなリージョンにわたって VM を移行します。** | 同じ「リソースマネージャーデプロイ モデル」の VMの Azure Active Directory テナント内でサポートされています。 「クラシック デプロイ モデル」の VM に関してはサポートされません。
 **同じリージョン内の VM の移行** | サポートされていません。
 
 
@@ -60,8 +60,8 @@ ms.locfileid: "42444828"
 
 #### <a name="linux"></a>Linux
 
-- Red Hat Enterprise Linux 6.7、6.8、6.9、7.0、7.1、7.2、7.3、7.4、7.5   
-- CentOS 6.5、6.6、6.7、6.8、6.9、7.0、7.1、7.2、7.3、7.4、7.5
+- Red Hat Enterprise Linux 6.7、6.8、6.9、 6.10、7.0、7.1、7.2、7.3、7.4、7.5   
+- CentOS 6.5、6.6、6.7、6.8、6.9、6.10、7.0、7.1、7.2、7.3、7.4、7.5
 - Ubuntu 14.04 LTS Server[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Ubuntu 16.04 LTS Server[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Debian 7 [ (サポートされるカーネルのバージョン)](#supported-debian-kernel-versions-for-azure-virtual-machines)
@@ -69,7 +69,7 @@ ms.locfileid: "42444828"
 - SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [ (サポートされるカーネルのバージョン)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
-- Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5
+- Red Hat 互換カーネルまたは Unbreakable Enterprise カーネル リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、 6.5、6.6、6.7
 
 (レプリケートするマシンの SLES 11 SP3 から SLES 11 SP4 へのアップグレードはサポートされていません。 レプリケートされるマシンが SLES 11SP3 から SLES 11 SP4 にアップグレードされた場合は、アップグレード後にレプリケーションを無効にし、再度マシンを保護する必要があります。)
 
@@ -81,31 +81,33 @@ ms.locfileid: "42444828"
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
+14.04 LTS | 9.19 | 3.13.0-24-generic から 3.13.0-153-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-131-generic |
 14.04 LTS | 9.18 | 3.13.0-24-generic から 3.13.0-151-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-128-generic |
 14.04 LTS | 9.17 | 3.13.0-24-generic から 3.13.0-147-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-124-generic |
 14.04 LTS | 9.16 | 3.13.0-24-generic ～ 3.13.0-144-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-119-generic、 |
-14.04 LTS | 9.15 | 3.13.0-24-generic ～ 3.13.0-143-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-116-generic |
 |||
+16.04 LTS | 9.19 | 4.4.0-21-generic ～ 4.4.0-131-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic ～ 4.15.0-30-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure ～ 4.15.0-1019-azure|
 16.04 LTS | 9.18 | 4.4.0-21-generic から 4.4.0-128-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure |
 16.04 LTS | 9.17 | 4.4.0-21-generic から 4.4.0-124-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-41-generic、<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1016-azure |
 16.04 LTS | 9.16 | 4.4.0-21-generic ～ 4.4.0-119-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic ～ 4.13.0-38-generic、<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure ～ 4.13.0-1012-azure |
-16.04 LTS | 9.15 | 4.4.0-21-generic ～ 4.4.0-116-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic ～ 4.13.0-37-generic、<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure ～ 4.13.0-1012-azure |
 
 
 ### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる Debian カーネル バージョン
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
-Debian 7 | 9.17,9.18 | 3.2.0-4-amd64 から 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
-Debian 7 | 9.15、9.16 | 3.2.0-4-amd64 ～ 3.2.0-5-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.17、9.18、9.19 | 3.2.0-4-amd64 から 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.16 | 3.2.0-4-amd64 ～ 3.2.0-5-amd64、3.16.0-0.bpo.4-amd64 |
 |||
+Debian 8 | 9.19 | 3.16.0-4-amd64 から 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.7-amd64 |
 Debian 8 | 9.17、9.18 | 3.16.0-4-amd64 から 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.6-amd64 |
-Debian 8 | 9.15、9.16 | 3.16.0-4-amd64 ～ 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 ～ 4.9.0-0.bpo.5-amd64 |
+Debian 8 | 9.16 | 3.16.0-4-amd64 ～ 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 ～ 4.9.0-0.bpo.5-amd64 |
 
 ### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる SUSE Linux Enterprise Server 12 カーネル バージョン
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.19 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default から 4.4.140-94.42-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.18 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default から 4.4.138-94.39-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.17 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.88-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default</br></br>SP3 4.4.73-5-default から 4.4.126-94.22-default |
 
@@ -124,7 +126,7 @@ SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.17 | SP1 3.12.49-11-defaul
 アメリカ | カナダ東部、カナダ中部、米国中南部、米国中西部、米国東部、米国東部 2、米国西部、米国西部 2、米国中部、米国中北部
 ヨーロッパ | 英国西部、英国南部、北ヨーロッパ、西ヨーロッパ、フランス中部、フランス南部
 アジア | インド南部、インド中部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部
-オーストラリア   | オーストラリア東部、オーストラリア南東部
+オーストラリア   | オーストラリア東部、オーストラリア南東部、オーストラリア中部、オーストラリア中部 2
 Azure Government    | 米国政府バージニア、US Gov アイオワ、米国政府アリゾナ、米国政府テキサス、米国防総省東部、米国防総省中部
 ドイツ | ドイツ中部、ドイツ北東部
 中国 | 中国東部、中国北部
@@ -147,6 +149,7 @@ Azure Government    | 米国政府バージニア、US Gov アイオワ、米国
 --- | --- | ---
 サイズ | 少なくとも 2 つの CPU コアと 1 GB の RAM を備えた任意の Azure VM サイズ | [Azure 仮想マシンのサイズ](../virtual-machines/windows/sizes.md)に関するページをご覧ください
 可用性セット | サポートされています | ポータルで既定のオプションを使用して "レプリケーションの有効化" 手順を実行する場合、可用性セットは、ソース リージョンの構成に基づいて自動的に作成されます。 ターゲットの可用性セットは、[レプリケートされたアイテム] > [設定] > [コンピューティングとネットワーク] > [可用性セット] でいつでも変更できます。
+可用性ゾーン | サポートされていません | 可用性ゾーンにデプロイされた VM は現在サポートされていません。
 Hybrid Use Benefit (HUB) VM | サポートされています | ソース VM で HUB ライセンスが有効になっている場合、テスト フェールオーバーまたはフェールオーバー VM でも HUB ライセンスが使用されます。
 仮想マシン スケール セット | サポートされていません |
 Azure ギャラリー イメージ - Microsoft が公開 | サポートされています | Site Recovery によってサポートされるオペレーティング システムで VM が実行されている場合に、サポートされます
@@ -169,7 +172,8 @@ Standard 管理ディスク | Azure Site Recovery がサポートされている
 Premium 管理ディスク | Azure Site Recovery がサポートされている Azure リージョンでサポートされます。 |
 記憶域スペース | サポートされています |         
 保存時の暗号化 (SSE) | サポートされています | SSE はストレージ アカウントでの既定の設定です。   
-Azure Disk Encryption (ADE) | サポートされていません |
+Windows OS 用 Azure Disk Encryption (ADE) | [Azure AD アプリでの暗号化](https://aka.ms/ade-aad-app)を有効になっているVMはサポートされています。 |
+Linux OS 用 Azure Disk Encryption (ADE) | サポートされていません |
 ディスクのホット アド/削除 | サポートされていません | VM 上でデータ ディスクを追加または削除する場合は、レプリケーションを無効にしてから、もう一度 VM に対してレプリケーションを有効にする必要があります。
 ディスクの除外 | サポートされていません|   一時ディスクは既定で除外されます。
 記憶域スペース ダイレクト  | サポートされていません|
@@ -205,7 +209,7 @@ Azure 管理 DNS | サポートされています |
 オンプレミスでのサイト間 VPN (ExpressRoute あり/なし)| サポートされています | Site Recovery トラフィックがオンプレミスにルーティングされないように、UDR と NSG が構成されていることを確認します。 [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。  
 VNet 間接続 | サポートされています | [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。  
 仮想ネットワーク サービス エンドポイント | サポートされています | 仮想ネットワークの Azure Storage ファイアウォールはサポートされていません。 レプリケートされたデータの格納に使用するキャッシュ ストレージ アカウントで、特定の Azure 仮想ネットワークへのアクセスを許可することはサポートされていません。
-高速ネットワーク | サポートされていません | Accelerated Networking が有効になっている VM をレプリケートすることはできますが、フェールオーバー VM では Accelerated Networking が有効になりません。 Accelerated Networking はフェールバックのソース VM でも無効になります。
+高速ネットワーク | サポートされています | 高速ネットワークは、ソース VM で有効にする必要があります。 [詳細情報](azure-vm-disaster-recovery-with-accelerated-networking.md)。
 
 
 ## <a name="next-steps"></a>次の手順

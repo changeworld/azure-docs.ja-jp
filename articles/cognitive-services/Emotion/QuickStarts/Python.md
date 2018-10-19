@@ -1,27 +1,28 @@
 ---
-title: Emotion API Python クイック スタート | Microsoft Docs
-description: Cognitive Services の Emotion API と Python の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: 画像から顔の表情を認識する - Emotion API (Python)'
+description: Emotion API と Python の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: emotion-api
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/05/2018
 ms.author: anroth
-ms.openlocfilehash: ff1f6b2ddc872d0ee63d9885b04b1f007bc86e33
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: c7611628918cf40800d173dc9404b0948b9a68a4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373069"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236569"
 ---
-# <a name="emotion-api-python-quickstart"></a>Emotion API Python クイック スタート
+# <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>クイック スタート: 画像から顔の表情を認識するアプリの作成
 
 > [!IMPORTANT]
-> Video API のプレビューは 2017 年 10 月 30 日に終了しました。 新しい [Video Indexer API のプレビュー](https://azure.microsoft.com/services/cognitive-services/video-indexer/)をお試しください。ビデオから分析情報を手軽に抽出でき、ビデオ内で話される言葉や表情、性格、感情を検知することで、検索結果などのコンテンツの検索エクスペリエンスを強化できます。 [詳細情報](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview)。
+> Emotion API は、2019 年 2 月 15 日に非推奨となる予定です。 現在は、[Face API](https://docs.microsoft.com/azure/cognitive-services/face/) の一部として感情認識機能が一般提供されています。 
 
-このチュートリアルでは、[Emotion API Recognize メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) と Python を使って、画像内の 1 人以上の個人が表す感情を認識するための、役立つ情報とコード サンプルを提供します。 
+このチュートリアルでは、[Emotion API Recognize メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/5639d931ca73072154c1ce89/operations/563b31ea778daf121cc3a5fa) と Python を使って、画像内の 1 人以上の個人が表す感情を認識するための、役立つ情報とコード サンプルを提供します。
 
 バインダーの起動バッジ [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=EmotionAPI.ipynb) をクリックして、次の例を [MyBinder](https://mybinder.org) 上で Jupyter Notebook として実行できます。
 
@@ -101,7 +102,7 @@ analysis
 
 
 
-返される JSON オブジェクトでは、認識された顔に対して、境界ボックスと検出された感情が表示されます。 それぞれの感情には 0 から 1 までのスコアが付いており、高いスコアは低いスコアよりも感情がはっきりしています。 
+返される JSON オブジェクトでは、認識された顔に対して、境界ボックスと検出された感情が表示されます。 それぞれの感情には 0 から 1 までのスコアが付いており、高いスコアは低いスコアよりも感情がはっきりしています。
 
 次に示すコード行では、`matplotlib` ライブラリを使用して画像の顔の感情が検出されます。 見やすくするため、上位 3 つの感情のみが表示されます。
 

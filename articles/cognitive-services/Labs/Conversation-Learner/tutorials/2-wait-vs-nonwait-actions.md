@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a8f7ccf79e750c9f3c21c25c50c3e275db7e4195
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: f349dab23b9156d3a5656e8275533ebe6a82cdf9
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173086"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540919"
 ---
 # <a name="wait-and-non-wait-actions"></a>待機アクションと非待機アクション
 
@@ -54,14 +54,14 @@ ms.locfileid: "39173086"
 1. [新しいアクション] をクリックします。
 2. [応答] に「Cows say moo」と入力します。
 3. [Wait for Response]\(応答を待機する\) チェック ボックスをオフにします。
-4. Click Create
+4. Create をクリックしてください。
 
 ### <a name="create-a-second-non-wait-action"></a>2 つ目の非待機アクションの作成
 
 1. [新しいアクション] をクリックします。
 2. [応答] に「Ducks say quack」と入力します。
 3. [Wait for Response]\(応答を待機する\) チェック ボックスをオフにします。
-4. Click Create
+4. Create をクリックしてください。
 
 ![](../media/tutorial2_actions.PNG)
 

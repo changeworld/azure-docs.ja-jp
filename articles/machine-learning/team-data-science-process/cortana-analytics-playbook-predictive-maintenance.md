@@ -4,7 +4,7 @@ description: 複数の垂直的業界向けのメンテナンス ソリューシ
 services: machine-learning
 author: fboylu
 manager: cgronlun
-editor: ''
+editor: cgronlun
 ms.assetid: 2e8b66db-91eb-432b-b305-6abccca25620
 ms.service: machine-learning
 ms.component: team-data-science-process
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 7802aa8ea9798b18d5424c2342ba63c01406b25a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 2a5d8540dba491dec8b2da227b0e84c10ff09c77
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221708"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395005"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>予測メンテナンス ソリューションのための Azure AI ガイド
 
@@ -232,12 +232,12 @@ PdM のもう 1 つの便利な手法は、データ内の異常を検出する�
 
 | 資産 ID | Time | <Feature Columns> | Label |
 | ---- | ---- | --- | --- |
-| A123 |Day 1 | . . . | . |
-| A123 |Day 2 | . . . | . |
-| ...  |...   | . . . | . |
-| B234 |Day 1 | . . . | . |
-| B234 |Day 2 | . . . | . |
-| ...  |...   | . . . | . |
+| A123 |Day 1 | 。 . . | 。 |
+| A123 |Day 2 | 。 . . | 。 |
+| ...  |...   | 。 . . | 。 |
+| B234 |Day 1 | 。 . . | 。 |
+| B234 |Day 2 | 。 . . | 。 |
+| ...  |...   | 。 . . | 。 |
 
 特徴エンジニア リングの最後の手順は、ターゲット変数の "**ラベル付け**" です。 このプロセスは、モデリング手法に依存します。 さらに、モデリング手法はビジネス上の問題と、使用可能なデータの特性に依存します。 ラベル付けについては次のセクションで説明します。
 

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 06/28/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4aac44d46b6c5d202431aa34a1dc7b962466c799
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 1af74cc44391c95fba781cbce14e9118ca36c14b
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37346190"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078496"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>チュートリアル: ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
 
@@ -40,7 +40,7 @@ ms.locfileid: "37346190"
 > * .NET Service Fabric アプリケーションを構築する
 > * [アプリケーションをリモート クラスターにデプロイする](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [ASP.NET Core フロントエンド サービスに HTTPS エンドポイントを追加する](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
-> * [Visual Studio Team Services を使用して CI/CD を構成する](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+> * [Azure Pipelines を使用して CI/CD を構成する](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>前提条件
@@ -456,6 +456,9 @@ Service Fabric は、Reliable Services との通信方法において完全な�
 
 このチュートリアルでは、[ASP.NET Core Web API](service-fabric-reliable-services-communication-aspnetcore.md) と [Service Fabric リバース プロキシ](service-fabric-reverseproxy.md)を使用して、VotingWeb フロントエンド Web サービスがバックエンドの VotingData サービスと通信できるようにします。 リバース プロキシは、ポート 19081 を使用するように既定で構成され、このチュートリアルで動作するはずです。 ポートは、クラスターをセットアップするために使用される ARM テンプレートで設定されます。 使用されているポートを確認するには、**Microsoft.ServiceFabric/clusters** リソースでクラスター テンプレートを調べるか、またはクラスターのマニフェストで HttpApplicationGatewayEndpoint 要素を調べます。
 
+> [!NOTE]
+> リバース プロキシがサポートされるのは、Windows 8 以降または Windows Server 2012 以降を実行しているクラスターでのみです。
+
 <u>Microsoft.ServiceFabric/clusters reverseProxyEndpointPort リソース</u>
 
 ```json
@@ -470,7 +473,7 @@ Service Fabric は、Reliable Services との通信方法において完全な�
         ],
 ```
 ローカル Service Fabric クラスター マニフェストで HttpApplicationGatewayEndpoint 要素を確認するには:
-1. ブラウザー ウィンドウを開き、http://localhost:19080 に移動します。
+1. ブラウザー ウィンドウを開き、 http://localhost:19080 に移動します。
 2. **[マニフェスト]** をクリックします。
 3. HttpApplicationGatewayEndpoint 要素のポートをメモします。 既定では、これは 19081 のはずです。 19081 ではない場合は、次の VotesController.cs コードの GetProxyAddress メソッドで、ポートを変更する必要があります。
 

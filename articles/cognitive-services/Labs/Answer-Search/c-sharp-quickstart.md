@@ -1,21 +1,23 @@
 ---
-title: Microsoft Cognitive Services、Project Answer Search の C# のクイック スタート | Microsoft Docs
-description: Azure 上の Microsoft Cognitive Services の Project Answer Search の使用を開始するためのコード サンプルです。
+title: 'クイック スタート: Project Answer Search、C#'
+titlesuffix: Azure Cognitive Services
+description: C# で Project Answer Search の使用を開始するためのコード サンプル。
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: c8e2a6a7fc3609932a7a1139d7b34553e5f9c291
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.author: rosh
+ms.openlocfilehash: bea98ac4c4f7da42d0b41a279508253b987ad9a6
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888325"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867223"
 ---
-# <a name="project-answer-search-query-in-c"></a>C# での Project Answer Search クエリ
+# <a name="quickstart-project-answer-search-query-in-c"></a>クイック スタート: C# での Project Answer Search クエリ
 
 次の C# の例では、微分積分の第 3 法則の情報についてのクエリを作成して送信します。
 

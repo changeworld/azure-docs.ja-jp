@@ -1,6 +1,6 @@
 ---
-title: Azure Stack の PowerShell 環境の構成 | Microsoft Docs
-description: Azure Stack の PowerShell 環境の構成方法について説明します。
+title: オペレーターとして PowerShell を使用して Azure Stack に接続する | Microsoft Docs
+description: オペレーターとして PowerShell を使用して Azure Stack に接続する方法について説明します。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,17 +11,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 06/22/2018
+ms.date: 09/17/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.openlocfilehash: 74a5a9408a78dd0da12fb3f8ed721774030cc438
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.openlocfilehash: aa86b44364ee84a9640fe0b39b6279982f5594ad
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36749863"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982527"
 ---
-# <a name="configure-the-azure-stack-powershell-environment"></a>Azure Stack の PowerShell 環境を構成する
+# <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>オペレーターとして PowerShell を使用して Azure Stack に接続する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
@@ -44,8 +44,7 @@ PowerShell を使用する Azure Stack オペレーター環境を構成しま�
     $ArmEndpoint = "<Admin Resource Manager endpoint for your environment>"
 
     # Register an AzureRM environment that targets your Azure Stack instance
-    Add-AzureRMEnvironment `
-        -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
+    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint $ArmEndpoint
 
     # After signing in to your environment, Azure Stack cmdlets
     # can be easily targeted at your Azure Stack instance.

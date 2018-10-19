@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/06/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: 5c54505625f40d7c0bd00111e2ff260dc9afaf1c
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: c7d2211ca69fcd18588ea1b20b638b2970b8439c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288006"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318845"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-july-2018"></a>Azure SQL Data Warehouse の新機能 2018 年 7 月
 Azure SQL Data Warehouse では、継続的に機能強化を図っています。 この記事では、2018 年 7 月に導入された新しい機能と変更点について説明します。
@@ -30,10 +30,10 @@ Azure SQL Data Warehouse では、継続的に機能強化を図っています�
 ![Azure SQL Data Warehouse は Amazon Redshift よりも高速で安価です](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/cb76447e-621e-414b-861e-732ffee5345a.png)
 <sub>出典: [Gigaom Research Analyst Report: Data Warehouse in the Cloud Benchmark](https://gigaom.com/report/data-warehouse-in-the-cloud-benchmark/)</sub>
 
-###<a name="query-concurrency"></a>クエリの同時実行
+### <a name="query-concurrency"></a>クエリのコンカレンシー
 SQL Data Warehouse は、組織内でのデータの可用性を確保するうえでも役立ちます。 サービスが強化され、128 件のクエリを同時実行できるようになったことで、他の要求によってブロックされることなく、同じデータベースに対してより多くのユーザーがクエリを実行できるようになりました。 これに対し、Amazon Redshift ではクエリの同時実行数が最大 50 件であるため、組織内でのデータ アクセスが大きく制限されます。
 
-SQL Data Warehouse では、ストレージとコンピューティングを分離した独自のアーキテクチャにより、価格を一切引き上げることなく、これらのクエリ パフォーマンスとクエリ同時実行数を実現しています。
+SQL Data Warehouse では、ストレージとコンピューティングを分離した独自のアーキテクチャにより、価格を一切引き上げることなく、これらのクエリ パフォーマンスとクエリのコンカレンシー数を実現しています。
 
 ## <a name="finer-granularity-for-cross-region-and-server-restores"></a>リージョンやサーバーの垣根を越えた復元で、さらに細かい粒度を実現
 24 時間おきに作成される geo 冗長バックアップを選択する代わりに、任意の復元ポイントを使い、リージョンやサーバーの垣根を越えて復元できるようになりました。 リージョンやサーバーの垣根を越えた復元は、ユーザー定義の復元ポイントと自動の復元ポイントのどちらでもサポートされるので、粒度が細かくなりデータ保護の強化につながります。 利用できる復元ポイントが増えることで、リージョンをまたいで復元する際にデータ ウェアハウスの論理的整合性が保たれることへの安心感が得られます。

@@ -6,20 +6,19 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 23322a49-fb7e-4dc2-8d0e-43de8cd41f80
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/07/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4239eb31afd4abc8b3555f0ee353f5d96716d623
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e35a63a36a84316815d609afa178f9a896415c2b
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068978"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584118"
 ---
 # <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Azure Stack Key Vault に格納されているセキュリティ保護されたパスワードを使用して仮想マシンを作成する
 
@@ -38,7 +37,7 @@ Azure Stack Key Vault にはパスワードなどの値をシークレットと�
 
 * ユーザーは、Key Vault サービスを含むプランをサブスクライブする必要があります。
 * [PowerShell for Azure Stack のインストール。](azure-stack-powershell-install.md)
-* [Azure Stack ユーザーの PowerShell 環境を構成します](azure-stack-powershell-configure-user.md)。
+* [PowerShell 環境の構成。](azure-stack-powershell-configure-user.md)
 
 次の手順では、Key Vault に格納されているパスワードを取得することによって仮想マシンを作成するために必要なプロセスについて説明します。
 
@@ -46,13 +45,14 @@ Azure Stack Key Vault にはパスワードなどの値をシークレットと�
 2. azuredeploy.parameters.json ファイルを更新します。
 3. テンプレートをデプロイします。
 
->注: この手順は、Azure Stack Development Kit から、または VPN 経由で接続している場合は外部クライアントから実行できます。
+> 注  
+> この手順は、Azure Stack Development Kit から、または VPN 経由で接続している場合は外部クライアントから実行できます。
 
 ## <a name="create-a-key-vault-secret"></a>Key Vault シークレットを作成する
 
 次のスクリプトは、Key Vault を作成し、パスワードをシークレットとして Key Vault に格納します。 Key Vault を作成するときは、`-EnabledForDeployment` パラメーターを使います。 このパラメーターを指定すると、Azure Resource Manager テンプレートから Key Vault を参照できるようになります。
 
-```powershell
+```PowerShell
 
 $vaultName = "contosovault"
 $resourceGroup = "contosovaultrg"
@@ -117,7 +117,7 @@ Set-AzureKeyVaultSecret `
 
 次の PowerShell スクリプトを使用して、テンプレートをデプロイします。
 
-```powershell
+```PowerShell  
 New-AzureRmResourceGroupDeployment `
   -Name KVPwdDeployment `
   -ResourceGroupName $resourceGroup `

@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: e3e8c843437558c6d5d3a3c39bed1e647f852b18
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: f7e500fb5856c7eec48a371042244b44dd944779
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27593400"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063779"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Xamarin Forms アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -187,6 +187,12 @@ Xamarin Forms プロジェクトで認証するには、アプリのポータブ
 
     このコードにより、アプリの読み込み前に Authenticator が初期化されるようになります。
 8. アプリをリビルドして実行します。その後で、選択した認証プロバイダーを使用してサインインし、認証されたユーザーとしてデータにアクセスできることを確認します。
+
+### <a name="troubleshooting"></a>トラブルシューティング
+
+**アプリケーションが**  でクラッシュした`Java.Lang.NoSuchMethodError: No static method startActivity`
+
+場合によっては、Visual Studio で単なる警告として表示されるサポート パッケージの競合が実行時にこの例外としてアプリケーション クラッシュとして表示されます。 この場合、プロジェクトで参照されるすべてのサポート パッケージのバージョンが同じであることを確認する必要があります。 [Azure Mobile Apps の NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)には、Android プラットフォームに関して `Xamarin.Android.Support.CustomTabs` の依存関係があるため、プロジェクトで新しいサポート パッケージを使用する場合は、必要なバージョンを使用してこのパッケージを直接インストールし、競合を回避する必要があります。
 
 ## <a name="add-authentication-to-the-ios-app"></a>iOS アプリに認証を追加する
 このセクションでは、iOS アプリ プロジェクト内に **IAuthenticate** インターフェイスを実装する方法について説明します。 iOS デバイスをサポートしない場合、このセクションはスキップしてください。

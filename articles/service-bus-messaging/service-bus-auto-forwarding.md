@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 563fa6f38bb5baffb9a4ae86f944b7597d325d30
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 608510f76d54cc5f3e10587a6f9d1306612672ad
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698997"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391108"
 ---
-# <a name="chaining-service-bus-entities-with-auto-forwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
+# <a name="chaining-service-bus-entities-with-autoforwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
 
-Service Bus の*自動転送*機能を使用すると、キューまたはサブスクリプションを同じ名前空間に属する別のキューまたはトピックにチェーンできます。 自動転送が有効な場合は、Service Bus は、一方のキューまたはサブスクリプション (転送元) にあるメッセージを自動的に削除し、もう一方のキューまたはトピック (転送先) に追加します。 ここで、転送先エンティティにメッセージを直接送信できることに注意してください。 配信不能キューなどのサブキューを別のキューまたはトピックにチェーンすることはできません。
+Service Bus の*自動転送*機能を使用すると、キューまたはサブスクリプションを同じ名前空間に属する別のキューまたはトピックにチェーンできます。 自動転送が有効な場合、Service Bus は元のキューまたはサブスクリプション (転送元) にあるメッセージを自動的に削除し、そのメッセージを転送先のキューまたはトピックに入れます。 転送先エンティティには､メッセージを直接送信することもできます｡ 配信不能キューなどのサブキューを別のキューまたはトピックにチェーンすることはできません。
 
-## <a name="using-auto-forwarding"></a>自動転送の使用
+## <a name="using-autoforwarding"></a>自動転送の利用
 
-ソースの [QueueDescription][QueueDescription] オブジェクトまたは [SubscriptionDescription][SubscriptionDescription] オブジェクトの [QueueDescription.ForwardTo][QueueDescription.ForwardTo] または [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] プロパティを、次の例のように設定することにより自動転送を有効にできます。
+自動転送は､以下の例のように､ソースの [QueueDescription][QueueDescription] オブジェクトまたは [SubscriptionDescription][SubscriptionDescription] オブジェクトの [QueueDescription.ForwardTo][QueueDescription.ForwardTo] または [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] プロパティを、次の例のように設定することで有効にできます。
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -37,17 +37,17 @@ namespaceManager.CreateSubscription(srcSubscription));
 
 転送先エンティティは、ソース エンティティの作成時に存在している必要があります。 転送先エンティティが存在しない場合、Service Bus は、ソース エンティティを作成するように要求されたときに例外を返します。
 
-自動転送を使用すると、個々のトピックをスケールアウトできます。 Service Bus は、[特定のトピックのサブスクリプションの数](service-bus-quotas.md)を 2,000 に制限します。 第 2 レベルのトピックを作成することで、追加のサブスクリプションに対応できます。 Service Bus のサブスクリプションの数に関する制限がない場合でも、トピックの 2 番目のレベルを追加することで、トピック全体のスループットを向上させることができます。
+自動転送を使用すると、トピックを個々にスケールアウトできます。 Service Bus は、[特定のトピックのサブスクリプションの数](service-bus-quotas.md)を 2,000 に制限します。 第 2 レベルのトピックを作成することで、追加のサブスクリプションに対応できます。 Service Bus のサブスクリプションの数に関する制限がない場合でも、トピックの 2 番目のレベルを追加することで、トピック全体のスループットを向上させることができます。
 
 ![自動転送のシナリオ][0]
 
-また、自動転送を使用して、メッセージの送信者と受信者を分離することができます。 たとえば、注文処理、在庫管理、顧客関係管理の 3 つのモジュールで構成される ERP システムがあるとします。 これらのモジュールはそれぞれ、対応するトピックにエンキューされるメッセージを生成します。 Alice と Bob は、顧客に関連するすべてのメッセージに関心のある営業担当者です。 これらのメッセージを受信するため、Alice と Bob は、ERP トピックごとに個人用のキューとサブスクリプションを作成して、自動的にすべてのメッセージが自分のキューに転送されるようにします。
+また、自動転送を使用して、メッセージの送信者と受信者を分離することもできます。 たとえば、注文処理、在庫管理、顧客関係管理の 3 つのモジュールで構成される ERP システムがあるとします。 これらのモジュールはそれぞれ、対応するトピックにエンキューされるメッセージを生成します。 Alice と Bob は、顧客に関連するすべてのメッセージに関心のある営業担当者です。 これらのメッセージを受信するため、Alice と Bob は、ERP トピックごとに個人用のキューとサブスクリプションを作成して、自動的にすべてのメッセージが自分のキューに転送されるようにします。
 
 ![自動転送のシナリオ][1]
 
 Alice が休暇中の場合、ERP トピックではなく、個人用のキューがいっぱいになります。 このシナリオでは、1 人の営業担当者がメッセージをまったく受信しないため、すべての ERP トピックがクォータに達しません。
 
-## <a name="auto-forwarding-considerations"></a>自動転送に関する考慮事項
+## <a name="autoforwarding-considerations"></a>自動転送に関する考慮事項
 
 転送先エンティティに蓄積されたメッセージが多すぎてクォータを超過した場合や、転送先エンティティが無効な場合、ソース エンティティは転送先に領域ができるまで (またはエンティティが再度有効になるまで)、[配信不能キュー](service-bus-dead-letter-queues.md)にメッセージを追加します。 これらのメッセージは、配信不能キューに残り続けるので、配信不能キューで明示的に受信して処理する必要があります。
 
@@ -59,7 +59,7 @@ Service Bus では、メッセージの転送ごとに 1 操作を請求しま�
 
 ## <a name="next-steps"></a>次の手順
 
-自動転送の詳細については、次のリファレンス トピックを参照してください。
+自動転送についての詳細は、次のリファレンス トピックを参照してください。
 
 * [ForwardTo][QueueDescription.ForwardTo]
 * [QueueDescription][QueueDescription]

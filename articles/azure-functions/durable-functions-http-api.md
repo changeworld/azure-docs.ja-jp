@@ -3,23 +3,19 @@ title: Azure のDurable Functions での HTTP API
 description: Azure Functions の Durable Functions 拡張機能で HTTP API を実装する方法を説明します。
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 09/29/2017
+ms.topic: conceptual
+ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3c000e268c4c926991c3f1928f226065a436c6d2
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: c6d7268a8501c602354d21edc5a0feaae9b1a0b2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "36264887"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575476"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) での HTTP API
 
@@ -49,6 +45,7 @@ Durable Task 拡張機能は、次のタスクの実行で使用できる一連�
 | statusQueryGetUri |オーケストレーション インスタンスの状態の URL。 |
 | sendEventPostUri  |オーケストレーション インスタンスの "イベント発生" URL。 |
 | terminatePostUri  |オーケストレーション インスタンスの "終了" URL。 |
+| rewindPostUri     |オーケストレーション インスタンスの "rewind" URL。 |
 
 次は応答の例です。
 
@@ -56,13 +53,14 @@ Durable Task 拡張機能は、次のタスクの実行で使用できる一連�
 HTTP/1.1 202 Accepted
 Content-Length: 923
 Content-Type: application/json; charset=utf-8
-Location: https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 
 {
     "id":"34ce9a28a6834d8492ce6a295f1a80e2",
-    "statusQueryGetUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "sendEventPostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
-    "terminatePostUri":"https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
+    "statusQueryGetUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "sendEventPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "terminatePostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX",
+    "rewindPostUri":"https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d8492ce6a295f1a80e2/rewind?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code=XXX"
 }
 ```
 > [!NOTE]
@@ -103,7 +101,7 @@ Location: https://{host}/runtime/webhooks/DurableTaskExtension/instances/34ce9a2
 
 指定されたオーケストレーション インスタンスの状態を取得します。
 
-#### <a name="request"></a>要求
+#### <a name="request"></a>Request
 
 Functions 1.0 の場合、要求形式は次のようになります。
 
@@ -114,7 +112,7 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。
 
 ```http
-GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
+GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
 ```
 
 #### <a name="response"></a>Response
@@ -125,17 +123,18 @@ GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 * **HTTP 202 (Accepted)**: 指定されたインスタンスが処理中。
 * **HTTP 400 (Bad Request)**: 指定されたインスタンスが失敗したか終了した。
 * **HTTP 404 (Not Found)**: 指定されたインスタンスが存在しないか実行開始されていない。
+* **HTTP 500 (Internal Server Error)**: 指定されたインスタンスがハンドルされない例外で失敗した。
 
 **HTTP 200** と **HTTP 202** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
 | フィールド           | データ型 | 説明 |
 |-----------------|-----------|-------------|
-| runtimeStatus   | 文字列    | インスタンスの実行時状態。 値には、*Running*、*Pending*、*Failed*、*Canceled*、*Terminated*、*Completed* があります。 |
+| runtimeStatus   | string    | インスタンスの実行時状態。 値には、*Running*、*Pending*、*Failed*、*Canceled*、*Terminated*、*Completed* があります。 |
 | input           | JSON      | インスタンスを初期化するために使用される JSON データ。 |
 | customStatus    | JSON      | カスタム オーケストレーションの状態に使用された JSON データ。 セットされていない場合、このフィールドは`null`です。 |
 | output          | JSON      | インスタンスの JSON の出力。 インスタンスが完了状態でない場合、このフィールドは `null` です。 |
-| createdTime     | 文字列    | インスタンスが作成された時刻。 ISO 8601 の拡張された表記を使用します。 |
-| lastUpdatedTime | 文字列    | インスタンスが最後に保持されていた時刻。 ISO 8601 の拡張された表記を使用します。 |
+| createdTime     | string    | インスタンスが作成された時刻。 ISO 8601 の拡張された表記を使用します。 |
+| lastUpdatedTime | string    | インスタンスが最後に保持されていた時刻。 ISO 8601 の拡張された表記を使用します。 |
 | historyEvents   | JSON      | オーケストレーションの実行履歴を含む JSON 配列。 このフィールドは、`showHistory` クエリ文字列パラメーターが `true`に設定されていない限り、`null` です。  | 
 
 オーケストレーションの実行履歴とアクティビティの出力を含む応答ペイロードの例を次に示します (読みやすい形式になっています)。
@@ -199,7 +198,7 @@ GET /runtime/webhooks/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 
 すべてのインスタンス ステータスを照会することも可能です。 'Get instance status' 要求から `instanceId` を削除します。 パラメーターは、'Get instance status' と同じです。 
 
-#### <a name="request"></a>要求
+#### <a name="request"></a>Request
 
 Functions 1.0 の場合、要求形式は次のようになります。
 
@@ -210,7 +209,7 @@ GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connecti
 Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。 
 
 ```http
-GET /runtime/webhooks/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 #### <a name="response"></a>Response
@@ -267,14 +266,14 @@ GET /runtime/webhooks/DurableTaskExtension/instances/?taskHub={taskHub}&connecti
 ```
 
 > [!NOTE]
-> この操作は、インスタンスのテーブルに多数の行がある場合、Azure Storage の I/O の観点から非常にコスト効率が悪くなることがあります。 インスタンス テーブルの詳細については、「[Durable Functions のパフォーマンスとスケーリング (Azure Functions)](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-perf-and-scale#instances-table)」のドキュメントを参照してください。
+> この操作は、インスタンスのテーブルに多数の行がある場合、Azure Storage の I/O の観点から非常にコスト効率が悪くなることがあります。 インスタンス テーブルの詳細については、「[Durable Functions のパフォーマンスとスケーリング (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table)」のドキュメントを参照してください。
 > 
 
 ### <a name="raise-event"></a>イベントを発生させる
 
 実行中のオーケストレーション インスタンスにイベント通知メッセージを送信します。
 
-#### <a name="request"></a>要求
+#### <a name="request"></a>Request
 
 Functions 1.0 の場合、要求形式は次のようになります。
 
@@ -285,14 +284,14 @@ POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/raiseEvent/{e
 Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。
 
 ```http
-POST /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
 ```
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
 | フィールド       | パラメーターのタイプ  | データ型 | 説明 |
 |-------------|-----------------|-----------|-------------|
-| eventName   | URL             | 文字列    | ターゲット オーケストレーション インスタンスが待機しているイベントの名前。 |
+| eventName   | URL             | string    | ターゲット オーケストレーション インスタンスが待機しているイベントの名前。 |
 | {content}   | 要求内容 | JSON      | JSON 形式のイベント ペイロード。 |
 
 #### <a name="response"></a>Response
@@ -320,25 +319,25 @@ Content-Length: 6
 
 実行中のオーケストレーション インスタンスを終了します。
 
-#### <a name="request"></a>要求
+#### <a name="request"></a>Request
 
 Functions 1.0 の場合、要求形式は次のようになります。
 
 ```http
-DELETE /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。
 
 ```http
-DELETE /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+POST /runtime/webhooks/durabletask/instances/{instanceId}/terminate?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
 ```
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
 | フィールド       | パラメーターのタイプ  | データ型 | 説明 |
 |-------------|-----------------|-----------|-------------|
-| reason      | クエリ文字列    | 文字列    | 省略可能。 オーケストレーション インスタンスの終了の理由。 |
+| reason      | クエリ文字列    | string    | 省略可能。 オーケストレーション インスタンスの終了の理由。 |
 
 #### <a name="response"></a>Response
 
@@ -351,7 +350,47 @@ DELETE /runtime/webhooks/DurableTaskExtension/instances/{instanceId}/terminate?r
 実行中のインスタンスを終了させ、**バグ**の理由を示す要求の例を次に示します。
 
 ```
-DELETE /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason=buggy&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
+```
+
+この API の応答には内容は含まれません。
+
+## <a name="rewind-instance-preview"></a>rewind インスタンス (プレビュー)
+
+最後に失敗した操作を再実行することにより、失敗したオーケストレーション インスタンスを実行状態に復元します。
+
+#### <a name="request"></a>Request
+
+Functions 1.0 の場合、要求形式は次のようになります。
+
+```http
+POST /admin/extensions/DurableTaskExtension/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。
+
+```http
+POST /runtime/webhooks/durabletask/instances/{instanceId}/rewind?reason={reason}&taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
+
+| フィールド       | パラメーターのタイプ  | データ型 | 説明 |
+|-------------|-----------------|-----------|-------------|
+| reason      | クエリ文字列    | string    | 省略可能。 オーケストレーション インスタンスを rewind する理由。 |
+
+#### <a name="response"></a>Response
+
+返される可能性がある状態コード値は、いくつかあります。
+
+* **HTTP 202 (Accepted)**: 巻き戻し要求が受け入れられて処理された。
+* **HTTP 404 (Not Found)**: 指定されたインスタンスが見つからなかった。
+* **HTTP 410 (Gone)**: 指定されたインスタンスが完了したか終了した。
+
+失敗したインスタンスを rewind し、**修正**の理由を指定する要求の例を次に示します。
+
+```
+POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/rewind?reason=fixed&taskHub=DurableFunctionsHub&connection=Storage&code=XXX
 ```
 
 この API の応答には内容は含まれません。

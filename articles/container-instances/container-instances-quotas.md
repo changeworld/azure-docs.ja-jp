@@ -2,18 +2,17 @@
 title: Azure Container Instances のクォータとリージョンの可用性
 description: Azure Container Instances サービスの既定のクォータとリージョンの可用性。
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: overview
 ms.date: 02/27/2018
-ms.author: marsma
-ms.openlocfilehash: 1bc890abc8b406ae75f292f37775e4cb62cf0473
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.author: danlep
+ms.openlocfilehash: 427dd8bd4abb72e2750752d828e189921401e9e0
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39115277"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902355"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure Container Instances のクォータとリージョンの可用性
 
@@ -29,11 +28,11 @@ Azure Container Instances は、指定された CPU とメモリ制限を備え�
 
 | Location | OS | CPU | メモリ (GB) |
 | -------- | -- | :---: | :-----------: |
-| 米国西部、米国東部、西ヨーロッパ、北ヨーロッパ | Linux | 4 | 14 |
-| 米国西部 2、東南アジア | Linux | 2 | 7 |
-| オーストラリア東部、米国東部 2、米国中部 | Linux | 1 | 1.5 |
-| 米国西部、米国東部、西ヨーロッパ、北ヨーロッパ | Windows | 4 | 14 |
-| 米国西部 2、東南アジア | Windows | 2 | 3.5 |
+| 米国東部、北ヨーロッパ、西ヨーロッパ、米国西部、米国西部 2 | Linux | 4 | 14 |
+| オーストラリア東部、米国東部 2、東南アジア | Linux | 2 | 7 |
+| インド中部、米国中南部 | Linux | 2 | 3.5 |
+| 米国東部、西ヨーロッパ、米国西部 | Windows | 4 | 14 |
+| オーストラリア東部、インド中部、米国東部 2、北ヨーロッパ、米国中南部、東南アジア、米国西部 2 | Windows | 2 | 3.5 |
 
 これらのリソース制限内で作成されたコンテナー インスタンスは、デプロイ リージョン内での利用の対象になります。 リージョンでの負荷が高い場合、インスタンスのデプロイ時に失敗することがあります。 このようなデプロイの失敗を減らすために、より低い CPU とメモリの設定でインスタンスをデプロイしてみるか、デプロイを後で試してみてください。
 

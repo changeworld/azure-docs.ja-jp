@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: f79be44d33a327f3ead8d950885cb5d47ce3a015
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 67778a269aa962b3184bf55c692154570e8357ba
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412519"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387392"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure 仮想マシンのパフォーマンス診断
 
@@ -103,7 +103,7 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
 **[設定]** ツールバーのボタンを使用して、診断の分析情報と出力を保存できるストレージ アカウントを変更します。 パフォーマンス診断を使用する複数の VM に対して同じストレージ アカウントを使用できます。 ストレージ アカウントを変更しても、以前のレポートと分析情報は削除されません。 ただし、診断レポートの一覧には表示されなくなります。 
 
 ## <a name="review-insights-and-performance-diagnostics-report"></a>分析情報とパフォーマンス診断レポートを確認する
-各診断の実行には、分析情報と推奨事項、影響を受けるリソース、ログ ファイル、収集されたその他のさまざまな診断情報、およびオフラインで表示するためのレポートの一覧が含まれています。 収集されたすべての診断データの詳細な一覧については、「[What kind of information is collected by PerfInsights?](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights)」(PerfInsights で収集される情報の種類) を参照してください。 
+各診断の実行には、分析情報と推奨事項、影響を受けるリソース、ログ ファイル、収集されたその他のさまざまな診断情報、およびオフラインで表示するためのレポートの一覧が含まれています。 収集されたすべての診断データの詳細な一覧については、「[What kind of information is collected by PerfInsights?](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#what-kind-of-information-is-collected-by-perfinsights)」(PerfInsights で収集される情報の種類) を参照してください。 
 
 ### <a name="select-a-performance-diagnostics-report"></a>パフォーマンス診断レポートを選択する
 診断レポート一覧から、実行されたすべての診断レポートを見つけることができます。 この一覧には、使用された分析、検出された分析情報、およびそれらの影響レベルに関する詳細情報が含まれています。 詳細を表示する行を選択します。
@@ -123,7 +123,7 @@ Windows 10、Windows 8、Windows 8 Enterprise、Windows 8 Pro、Windows 8.1、Wi
 ![[パフォーマンス診断の分析情報の詳細] のスクリーンショット](media/performance-diagnostics/insight-detail.png)
 
 ### <a name="download-and-review-the-full-performance-diagnostics-report"></a>詳細なパフォーマンス診断レポートをダウンロードして確認する
-**[レポートのダウンロード]** ボタンを使用して、ストレージとネットワークの構成、パフォーマンス カウンター、トレース、プロセスの一覧、ログなど、その他のさまざまな診断情報を含む HTML レポートをダウンロードできます。 内容は選択した分析によって変わります。 高度なトラブルシューティングのために、高い CPU 使用率、高いディスク使用量、過剰なメモリを使用するプロセスに関連する追加情報や対話型のグラフをレポートに含めることができます。 パフォーマンス診断レポートの詳細については、「[Review diagnostics report](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report)」(診断レポートの確認) を参照してください。
+**[レポートのダウンロード]** ボタンを使用して、ストレージとネットワークの構成、パフォーマンス カウンター、トレース、プロセスの一覧、ログなど、その他のさまざまな診断情報を含む HTML レポートをダウンロードできます。 内容は選択した分析によって変わります。 高度なトラブルシューティングのために、高い CPU 使用率、高いディスク使用量、過剰なメモリを使用するプロセスに関連する追加情報や対話型のグラフをレポートに含めることができます。 パフォーマンス診断レポートの詳細については、「[Review diagnostics report](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-use-perfinsights#review-the-diagnostics-report)」(診断レポートの確認) を参照してください。
 
 ## <a name="manage-performance-diagnostics-reports"></a>パフォーマンス診断レポートを管理する
 1 つまたは複数のパフォーマンス診断レポートを削除するには、**[レポートの削除]** ボタンを使用します。

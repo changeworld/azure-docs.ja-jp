@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 56df09f461458071093088159d3b468755b0e4ad
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 71d8bfa116fd4d0e824d80da26df7271121a595c
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434944"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311373"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming を有効にする
 Enterprise State Roaming は、Azure AD Premium または Enterprise Mobility + Security (EMS) ライセンスを所有しているすべての組織が利用できます。 Azure AD サブスクリプションの取得方法の詳細について、[Azure AD の製品ページ](https://azure.microsoft.com/services/active-directory)を参照してください。
@@ -32,9 +32,9 @@ Enterprise State Roaming を有効にすると、組織には、Azure Informatio
 
 1. [Azure AD 管理センター](https://aad.portal.azure.com/)にサインインします。
 
-2. **[Azure Active Directory]** &gt; **[デバイス]** &gt; **[Enterprise State Roaming]** を選択します。
+1. **[Azure Active Directory]** &gt; **[デバイス]** &gt; **[Enterprise State Roaming]** を選択します。
 
-3. **[デバイス間での設定とアプリ データの同期が許可されるユーザー]** を選択します。 詳細については、[デバイス設定の構成方法](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)に関するページをご覧ください。
+1. **[デバイス間での設定とアプリ データの同期が許可されるユーザー]** を選択します。 詳細については、[デバイス設定の構成方法](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)に関するページをご覧ください。
   
   ![[デバイス間での設定とアプリ データの同期が許可されるユーザー] のデバイス設定のイメージ](./media/active-directory-windows-enterprise-state-roaming-enable/device-settings.png)
   
@@ -57,15 +57,15 @@ APAC。オーストラリア、ニュージーランドなど | アジア内の 
 
 1. [Azure AD 管理センター](https://aad.portal.azure.com/)にサインインします。
 
-2. **[Azure Active Directory]** &gt; **[ユーザー]** &gt; **[すべてのユーザー]** の順に選択します。
+1. **[Azure Active Directory]** &gt; **[ユーザー]** &gt; **[すべてのユーザー]** の順に選択します。
 
-3. ユーザーを選択し、**[デバイス]** を選択します。
+1. ユーザーを選択し、**[デバイス]** を選択します。
 
-4. **[表示]** で、**[Devices syncing settings and app data]\(設定やアプリ データを同期しているデバイス)** を選択して、同期状態を表示します。
+1. **[表示]** で、**[Devices syncing settings and app data]\(設定やアプリ データを同期しているデバイス)** を選択して、同期状態を表示します。
   
   ![デバイス同期データ設定のイメージ](./media/active-directory-windows-enterprise-state-roaming-enable/sync-status.png)
   
-5. このユーザーに対して同期しているデバイスがある場合は、そのデバイスは次のように表示されます。
+1. このユーザーに対して同期しているデバイスがある場合は、そのデバイスは次のように表示されます。
   
   ![デバイス同期列指向データのイメージ](./media/active-directory-windows-enterprise-state-roaming-enable/device-status-row.png)
 

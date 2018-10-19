@@ -1,22 +1,23 @@
 ---
-title: 最初の Bing Custom Search インスタンスの作成 - Microsoft Cognitive Services
+title: 'クイック スタート: 初めての Bing Custom Search インスタンスを作成する'
+titlesuffix: Azure Cognitive Services
 description: Bing Custom Search を使用するには、Web のビューまたはスライスを定義するカスタム検索のインスタンスを作成する必要があります。 インスタンスには、Bing で検索するパブリック ドメイン、サブサイト、および Web ページを定義する設定と、ランク付けの調整が含まれています。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/07/2017
 ms.author: v-brapel
-ms.openlocfilehash: 25d622772fe47ffad001834d476e612f8c606904
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 866d32aa4de45076fcbc4e413d8c2e67d5346878
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981660"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816240"
 ---
-# <a name="create-your-first-bing-custom-search-instance"></a>最初の Bing Custom Search インスタンスの作成
+# <a name="quickstart-create-your-first-bing-custom-search-instance"></a>クイック スタート: 初めての Bing Custom Search インスタンスを作成する
 Bing Custom Search を使用するには、Web のビューまたはスライスを定義するカスタム検索のインスタンスを作成する必要があります。 インスタンスには、Bing で検索するパブリック ドメイン、Web サイト、および Web ページを定義する設定と、ランク付けの調整が含まれています。 インスタンスを作成するには、Bing Custom Search の[ポータル](https://customsearch.ai)を使用します。 
 
 ## <a name="create-a-custom-search-instance"></a>カスタム検索インスタンスの作成

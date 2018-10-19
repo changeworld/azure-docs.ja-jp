@@ -1,22 +1,25 @@
 ---
-title: Bing Speech クライアント ライブラリを使用した Microsoft Speech Recognition API を使ってみる | Microsoft Docs
-description: Microsoft Cognitive Services の Microsoft Speech Service クライアント ライブラリを使用して、音声をテキストに変換するアプリケーションを開発します。
+title: クライアント ライブラリを使用した Bing Speech Recognition API の開始 | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: Microsoft Cognitive Services の Bing Speech クライアント ライブラリを使用して、音声をテキストに変換するアプリケーションを開発します。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 6fb490def6807204943a1ce3ba3c53186055102b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 2682236ae9f9256b91d1259248e72139c907c8e5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048459"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345018"
 ---
 # <a name="get-started-with-bing-speech-service-client-libraries"></a>Bing Speech Service クライアント ライブラリを使ってみる
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 REST API を介して HTTP 要求を直接行う以外に、Bing Speech Service には開発者向けに Speech クライアント ライブラリがさまざまな言語で用意されています。 Speech クライアント ライブラリには、次の機能が備わっています。
 
@@ -32,9 +35,6 @@ REST API を介して HTTP 要求を直接行う以外に、Bing Speech Service 
 - [Android 用 Java ライブラリ](GetStartedJavaAndroid.md)
 - [iOS 用 Objective-C ライブラリ](Get-Started-ObjectiveC-iOS.md)
 
-> [!NOTE] 
-2018 年 5 月に、新しい [Speech service](../../speech-service/index.yml) もパブリック プレビューでリリースされました。 ぜひ[無料でお試し](../../speech-service/get-started.md)ください。 
-
 ## <a name="additional-resources"></a>その他のリソース
 
 - [サンプル](../samples.md) ページには、Speech クライアント ライブラリを使用するためのすべてのサンプルが用意されています。
@@ -43,3 +43,4 @@ REST API を介して HTTP 要求を直接行う以外に、Bing Speech Service 
 ## <a name="license"></a>ライセンス
 
 すべての Cognitive Services SDK およびサンプルは、MIT ライセンスがあります。 詳しくは、[ライセンス](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md)に関するページをご覧ください。
+

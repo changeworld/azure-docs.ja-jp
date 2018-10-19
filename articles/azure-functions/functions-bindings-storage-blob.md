@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
-ms.openlocfilehash: 9efe3c3d65dc1d809285eb760ca373c648ad66c0
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 40ed6105dca5ea14c64fb2b103c5623cd56333af
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094572"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393368"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -29,7 +29,7 @@ ms.locfileid: "44094572"
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> BLOB 専用ストレージ アカウントの場合、高スケールの場合、またはコールド スタート遅延を回避する場合は、Blob ストレージ トリガーではなく、Event Grid トリガーを使用してください。 詳しくは、「[トリガー](#trigger)」セクションをご覧ください。 
+> BLOB ストレージ アカウントや高スケールに対して、あるいはコールド スタート遅延を回避したい場合は、Blob ストレージ トリガーではなく、Event Grid トリガーを使用してください。 詳しくは、「[トリガー](#trigger)」セクションをご覧ください。 
 
 ## <a name="packages---functions-1x"></a>パッケージ - Functions 1.x
 
@@ -53,13 +53,13 @@ Blob ストレージ トリガーは、新しいまたは更新された BLOB �
 
 次のシナリオの場合は、Blob ストレージ トリガーではなく Event Grid を使用してください。
 
-* BLOB 専用ストレージ アカウント
+* BLOB ストレージ アカウント
 * 高スケール
 * コールド スタート遅延の最小化
 
-### <a name="blob-only-storage-accounts"></a>BLOB 専用ストレージ アカウント
+### <a name="blob-storage-accounts"></a>BLOB ストレージ アカウント
 
-[BLOB 専用ストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)は、BLOB の入力と出力のバインドでサポートされ、BLOB トリガーではサポートされません。 Blob Storage のトリガーには、汎用のストレージ アカウントが必要です。
+BLOB の入力と出力のバインドでは､[BLOB ストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)がサポートされていますが､BLOB トリガーではサポートされていません。 Blob Storage のトリガーには、汎用のストレージ アカウントが必要です。
 
 ### <a name="high-scale"></a>高スケール
 
@@ -77,9 +77,9 @@ Event Grid 以外の BLOB を処理するための別の方法として、Queue 
 
 言語固有の例をご覧ください。
 
-* [C#](#trigger---c-example)
+* [C# を選択した場合](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
+* [JavaScript を選択した場合](#trigger---javascript-example)
 * [Java](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
@@ -284,7 +284,7 @@ Java コードを次に示します。
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 例外は、[使用方法](#trigger---usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。 | 
 |**path** | **BlobPath** |監視するコンテナー。  [BLOB 名パターン](#trigger-blob-name-patterns)の場合があります。 | 
-|**connection** | **Connection** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
+|**connection** | **Connection** | このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB ストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -424,9 +424,9 @@ Blob Storage 入力バインディングを使用して BLOB を読み取りま�
 
 言語固有の例をご覧ください。
 
-* [C#](#input---c-example)
+* [C# を選択した場合](#input---c-example)
 * [C# スクリプト (.csx)](#input---c-script-example)
-* [JavaScript](#input---javascript-example)
+* [JavaScript を選択した場合](#input---javascript-example)
 * [Java](#input---java-example)
 
 ### <a name="input---c-example"></a>入力 - C# の例
@@ -602,7 +602,7 @@ public static void Run(
 |**direction** | 該当なし | `in` に設定する必要があります。 例外は、[使用方法](#input---usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。|
 |**path** |**BlobPath** | BLOB へのパス。 | 
-|**connection** |**Connection**| このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
+|**connection** |**Connection**| このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB ストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
 |該当なし | **Access (アクセス)** | 読み取りと書き込みのどちらを行うかを示します。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -638,9 +638,9 @@ Blob Storage 出力バインディングを使用して BLOB を書き込みま�
 
 言語固有の例をご覧ください。
 
-* [C#](#output---c-example)
+* [C# を選択した場合](#output---c-example)
 * [C# スクリプト (.csx)](#output---c-script-example)
-* [JavaScript](#output---javascript-example)
+* [JavaScript を選択した場合](#output---javascript-example)
 * [Java](#output---java-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例
@@ -834,7 +834,7 @@ public static void Run(
 |**direction** | 該当なし | 出力バインディングの場合は `out` に設定する必要があります。 例外は、[使用方法](#output---usage)のセクションに記載しています。 |
 |**name** | 該当なし | 関数コード内の BLOB を表す変数の名前。  `$return` に設定して、関数の戻り値を参照します。|
 |**path** |**BlobPath** | BLOB へのパス。 | 
-|**connection** |**Connection**| このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB のみのストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
+|**connection** |**Connection**| このバインドに使用するストレージ接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、ここで名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyStorage" に設定した場合、Functions ランタイムは "AzureWebJobsMyStorage" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の `AzureWebJobsStorage` という名前の既定のストレージ接続文字列を使用します。<br><br>接続文字列は、[BLOB ストレージ アカウント](../storage/common/storage-account-overview.md#types-of-storage-accounts)ではなく汎用ストレージ アカウントに対するものである必要があります。|
 |該当なし | **Access (アクセス)** | 読み取りと書き込みのどちらを行うかを示します。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -878,8 +878,9 @@ JavaScript では、`context.bindings.<name from function.json>` を使用して
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [Blob Storage のトリガーを使用するクイック スタートに進む](functions-create-storage-blob-triggered-function.md)
+* [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
 
+<!---
 > [!div class="nextstepaction"]
-> [Azure Functions のトリガーとバインドの詳細情報](functions-triggers-bindings.md)
+> [Go to a quickstart that uses a Blob storage trigger](functions-create-storage-blob-triggered-function.md)
+--->

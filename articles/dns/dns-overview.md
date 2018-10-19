@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: overview
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: e3e04bf7e35b22a56465810f476323ed217e047a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f68281f71ed525798410fb80b0d0175d38050c40
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967627"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829921"
 ---
 # <a name="what-is-azure-dns"></a>Azure DNS とは
 
@@ -24,11 +24,11 @@ Azure DNS には、次の機能が含まれています。
 
 ## <a name="reliability-and-performance"></a>信頼性とパフォーマンス
 
-Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Azure のグローバル ネットワーク上でホストされます。 Azure DNS ではエニーキャスト ネットワークが使用されるため、各 DNS クエリには、使用できる最も近い DNS サーバーが応答します。 これによって、ドメインには高速なパフォーマンスと高可用性の両方が提供されます。
+Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Azure のグローバル ネットワーク上でホストされます。 Azure DNS ではエニーキャスト ネットワークが使用されるため、各 DNS クエリには、使用できる最も近い DNS サーバーが応答します。これによって、ドメインには高速なパフォーマンスと高可用性の両方が提供されます。
 
 ## <a name="security"></a>セキュリティ
 
-この Azure DNS サービスは、Azure Resource Manager に基づいています。 そのため、Resource Manager の次のような機能を利用できます。
+この Azure DNS サービスは、Azure Resource Manager に基づいており、次のような機能が利用できます。
 
 * [ロールベースのアクセス制御](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control) - 組織のユーザーがアクセスできるアクションを制御できます。
 
@@ -43,7 +43,7 @@ Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Az
 
 Azure DNS サービスでは、Azure サービスの DNS レコードを管理したり、外部リソースに DNS を提供したりできます。 Azure DNS は Azure Portal に統合されており、他の Azure サービスと同じ資格情報、サポート契約、課金を使用します。 
 
-DNS の課金は、Azure でホストされている DNS ゾーンの数と、DNS クエリの数に基づきます。 価格の詳細については、「[Azure DNS の価格](https://azure.microsoft.com/pricing/details/dns/)」を参照してください。
+DNS の課金は、Azure でホストされている DNS ゾーンの数と、受信した DNS クエリの数に基づきます。 価格の詳細については、「[Azure DNS の価格](https://azure.microsoft.com/pricing/details/dns/)」を参照してください。
 
 ドメインとレコードは、Azure Portal、Azure PowerShell コマンドレット、およびクロス プラットフォームの Azure CLI を使用して管理できます。 DNS の自動管理を必要とするアプリケーションは、REST API および SDK を使用してサービスと統合できます。
 

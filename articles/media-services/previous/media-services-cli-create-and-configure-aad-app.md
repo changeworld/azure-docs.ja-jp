@@ -1,6 +1,6 @@
 ---
-title: CLI 2.0 で Azure AD アプリを作成し、Azure Media Services API にアクセスするよう構成する | Microsoft Docs
-description: このトピックでは、CLI 2.0 を使用して Azure AD アプリを作成し、Azure Media Services API にアクセスするよう構成する方法を説明します。
+title: Azure CLI で Azure AD アプリを作成し、Azure Media Services API にアクセスするよう構成する | Microsoft Docs
+description: このトピックでは、Azure CLI を使用して Azure AD アプリを作成し、Azure Media Services API にアクセスするよう構成する方法を説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 7685be97213f0b298499d474c0a6a772ca608fb2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fcd0ea10bd39f9e7252e114e8d6401a4fe0ecadb
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782731"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096550"
 ---
-# <a name="use-cli-20-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>CLI 2.0 で AAD アプリを作成し、Azure Media Services API にアクセスするよう構成する
+# <a name="use-azure-cli-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>Azure CLI で AAD アプリを作成し、Azure Media Services API にアクセスするよう構成する
 
-このトピックでは、CLI 2.0 を使用して、Azure Media Services リソースにアクセスする Azure Active Directory (Azure AD) アプリケーションとサービス プリンシパルを作成する方法について説明します。 
+このトピックでは、Azure CLI を使用して、Azure Media Services リソースにアクセスする Azure Active Directory (Azure AD) アプリケーションとサービス プリンシパルを作成する方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -38,7 +38,7 @@ ms.locfileid: "33782731"
 
 詳細については、[Azure Cloud Shell の概要](../../cloud-shell/overview.md)に関するページを参照してください。
 
-## <a name="create-an-azure-ad-app-and-configure-access-to-the-media-account-with-cli-20"></a>CLI 2.0 を使用した Azure AD アプリの作成とメディア アカウントへのアクセスの構成
+## <a name="create-an-azure-ad-app-and-configure-access-to-the-media-account-with-azure-cli"></a>Azure CLI を使用した Azure AD アプリの作成とメディア アカウントへのアクセスの構成
  
 ```azurecli
 az login
@@ -60,7 +60,7 @@ az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role
 * **リソース グループ** レベル。
 * **リソース** レベル (例: メディア アカウント)。
 
-詳細については、「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)」を参照してください。
+詳細については、「[Azure CLI で Azure サービス プリンシパルを作成する](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)」を参照してください
 
 また、「[Azure コマンド ライン インターフェイスを使用したロールベースの Access Control の管理](../../role-based-access-control/role-assignments-cli.md)」も参照してください。 
 

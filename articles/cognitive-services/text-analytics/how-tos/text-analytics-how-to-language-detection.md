@@ -1,22 +1,23 @@
 ---
-title: Text Analytics REST API で言語を検出する方法 (Azure 上の Microsoft Cognitive Services) | Microsoft Docs
-description: このチュートリアルでは、Azure 上の Microsoft Cognitive Services の Text Analytics REST API を使用して、言語を検出する方法を説明します。
+title: '例: Text Analytics REST API による言語の検出'
+titleSuffix: Azure Cognitive Services
+description: Text Analytics REST API を使用した言語の検出方法について説明します。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 3/07/2018
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: f8e2d9a36533c298addcf42d3cb2061e9c2d1ac7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: fa71e4ce2e5cb5967bb583c7314072830de08051
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373869"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604554"
 ---
-# <a name="how-to-detect-language-in-text-analytics"></a>Text Analytics で言語を検出する方法
+# <a name="example-how-to-detect-language-in-text-analytics"></a>例: Text Analytics で言語を検出する方法
 
 [言語検出 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) では、テキスト入力が評価され、各ドキュメントについて言語識別子と、分析の強度を示すスコアが返されます。 Text Analytics では、最大 120 の言語が認識されます。
 

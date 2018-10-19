@@ -7,14 +7,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 09/24/2018
 ms.author: spelluru
-ms.openlocfilehash: b4865c1ba7532910ef0b4a41a5a19d2880e37d6e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 293cde00e53171e848263df8564ec85f273c1a40
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698963"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166335"
 ---
 # <a name="azure-service-bus-metrics-in-azure-monitor-preview"></a>Azure Monitor での Azure Service Bus メトリック (プレビュー)
 
@@ -27,7 +27,7 @@ Azure Monitor には、さまざまな Azure サービスにわたって監視�
 
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
-Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Log Analytics や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor metrics](../monitoring-and-diagnostics/monitoring-overview-metrics.md#access-metrics-via-the-rest-api)」(Azure Monitor メトリック) を参照してください。
+Azure Monitor では、複数の方法でメトリックにアクセスできます。 メトリックには [Azure Portal](https://portal.azure.com) 経由でアクセスするか、または Azure Monitor API (REST および .NET) と Log Analytics や Event Hubs などの分析ソリューションを使用できます。 詳細については、「[Azure Monitor によって収集された監視データ](../monitoring/monitoring-data-collection.md)」をご覧ください。
 
 メトリックは既定で有効になっており、過去 30 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings)で構成されます。
 
@@ -37,7 +37,7 @@ Azure Monitor では、複数の方法でメトリックにアクセスできま
 
 ![][1]
 
-また、名前空間経由でメトリックに直接アクセスすることもできます。 それを行うには、名前空間を選択してから、**[Metrics (Peview)]\(メトリック (プレビュー)\)** をクリックします。 エンティティのスコープにフィルター処理されたメトリックを表示するには、エンティティを選択してから、**[Metrics (preview)] (メトリック (プレビュー))** をクリックします。
+また、名前空間経由でメトリックに直接アクセスすることもできます。 それを行うには、名前空間を選択してから、**[Metrics (Peview)]\(メトリック (プレビュー))** をクリックします。 エンティティのスコープにフィルター処理されたメトリックを表示するには、エンティティを選択してから、**[Metrics (preview)] (メトリック (プレビュー))** をクリックします。
 
 ![][2]
 
@@ -90,6 +90,9 @@ Azure Monitor でのメトリックの使用は、プレビュー段階にある
 |閉じられた接続 (プレビュー)|閉じられている接続の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName |
 
 ## <a name="resource-usage-metrics"></a>リソース使用状況のメトリック
+
+> [!NOTE] 
+> 次のメトリックは**プレミアム**層でのみ使用可能です。 
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |

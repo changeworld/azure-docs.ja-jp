@@ -1,22 +1,20 @@
 ---
 title: Microsoft Genomics とは | Microsoft Docs
 titleSuffix: Azure
-description: Microsoft Genomics が二次的な分析のために BWA-GATK のクラウド実装を提供して、ゲノム シーケンシングを強化する方法について説明します。
-services: microsoft-genomics
+description: Microsoft Genomics ならゲノム シーケンシングを強化して、二次的な分析のために、Burrows-Wheeler Aligner (BWA) と Genome Analysis Toolkit (GATK) のクラウド実装を提供できます。ここではその方法を説明します。 また、ISO に認定され、HIPAA 法に準拠しています。
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 8743905d6e415049a563bcd6b4736d6569f59b7f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4b4510a02c4212724f8a592c7318aecab3d06275
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333259"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733263"
 ---
 # <a name="what-is-microsoft-genomics"></a>Microsoft Genomics とは
 Microsoft Genomics は、二次的な分析のために Burrows-Wheeler Aligner (BWA) と Genome Analysis Toolkit (GATK) のクラウド実装を提供します。 このサービスは ISO の認定を受け、HIPAA の法規に準拠しており、ゲノム シーケンシングのニーズに対する価格の予測を可能にします。 クイックスタート、チュートリアル、ドキュメントを読んで、Microsoft Genomics サービスの使用方法および API との統合方法を学習しましょう。

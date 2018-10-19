@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/25/2018
 ms.author: diberry
-ms.openlocfilehash: f8350d46fecff726dd9f591fe3df0272f556b3e7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 3ccec4fbd0fd69539e29e2f15f71115444bf0a48
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47168193"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389294"
 ---
 # <a name="tutorial-luis-bot-in-c"></a>チュートリアル: C# の LUIS ボット
 C# を使用して、Language Understanding (LUIS) と統合されたチャット ボットを作成することができます。 このボットは、HomeAutomation アプリを使用してボット ソリューションを実装します。 このボットは、[Bot Framework バージョン](https://github.com/Microsoft/botbuilder-js) v4 と Azure [Web アプリ ボット](https://docs.microsoft.com/azure/bot-service/)で作成します。
@@ -52,7 +52,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
     |Location|Azure リージョン - これは LUIS の作成または公開リージョンと同じである必要はありません。|`westus`|
     |[価格レベル] |サービス要求の制限と課金に使用されます。|`F0` は無料レベルです。
     |アプリの名前|この名前は、ボットがクラウドにデプロイされるときに、サブドメインとして使用されます (humanresourcesbot.azurewebsites.net など)。|`luis-csharp-bot-` + `<your-name>` (例: `luis-csharp-bot-johnsmith`)|
-    |ボット テンプレート|Bot framework の設定 - 次の表を参照|
+    |ボット テンプレート|Bot Framework の設定 - 次の表を参照|
     |LUIS アプリの場所|LUIS リソース リージョンと同じである必要があります|`westus`|
 
 4. **[Bot template settings]\(ボット テンプレートの設定)** で、次の項目を選択して、それらの設定の下にある **[選択]** ボタンを選択します。
@@ -60,7 +60,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
     |Setting|目的|選択肢番号|
     |--|--|--|
     |SDK バージョン|Bot Framework のバージョン|**SDK v4**|
-    |SDK 言語|ボットのプログラミング言語|**C# を選択した場合**|
+    |SDK 言語|ボットのプログラミング言語|**C#**|
     |エコー/基本ボット|ボットの種類|**基本ボット**|
     
 5. **作成**を選択します。 これによって、ボット サービスが作成され、Azure にデプロイされます。 このプロセスの一環として、`luis-csharp-bot-XXXX` という LUIS アプリが作成されます。 この名前は、前のセクションのボットとアプリの名前に基づいています。
@@ -83,7 +83,7 @@ C# を使用して、Language Understanding (LUIS) と統合されたチャッ�
 
 1. [LUIS](https://www.luis.ai) ポータルに移動し、サインインします。
 2. **[マイ アプリ]** ページで **[作成日]** 列を選択して、アプリが作成された日付順に並べ替えます。 Azure Bot Service では、前のセクションで新しいアプリを作成しました。 その名前は、`luis-csharp-bot-` + `<your-name>` + 4 つのランダムな文字です。
-3. アプリを開き、上部のナビゲーションの **[ビルド]** セクションを選択します。
+3. アプリを開き、上部のナビゲーションの **ビルド** セクションを選択します。
 4. 左側のナビゲーションから **[Prebuilt Domains]\(事前構築済みドメイン)** を選択します。
 5. そのカード上の **[ドメインの追加]** を選択して、**HomeAutomation** ドメインを選択します。
 6. 右上のメニューの **[トレーニング]** を選択します。
@@ -286,20 +286,20 @@ Web アプリ ボットのコードを開発するためには、コードをダ
 
     ```JSON
     TurnOn intent found, JSON response: {"$instance":{“HomeAutomation_Device”:[{“startIndex”:23,“endIndex”:29,“score”:0.9776345,“text”:“lights”,“type”:“HomeAutomation.Device”}],“HomeAutomation_Room”:[{“startIndex”:12,“endIndex”:22,“score”:0.9079433,“text”:“livingroom”,“type”:“HomeAutomation.Room”}]},“HomeAutomation_Device”:[“lights”],“HomeAutomation_Room”:[“livingroom”]}
-    ```    ```
+    ```    
 
-## Learn more about Bot Framework
-Azure Bot service uses the Bot Framework SDK. Learn more about the SDK and bot framework:
+## <a name="learn-more-about-bot-framework"></a>Bot Framework の詳細
+Azure Bot Service は、Bot Framework SDK を使用します。 SDK と Bot Framework の詳細を確認してください。
 
-* [Azure Bot Service](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 documentation
-* [Bot Builder Samples](https://github.com/Microsoft/botbuilder-samples)
-* [Bot Builder SDK](https://docs.microsoft.com/en-us/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
-* [Bot Builder tools](https://github.com/Microsoft/botbuilder-tools):
+* [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0) v4 のドキュメント
+* [Bot Builder のサンプル](https://github.com/Microsoft/botbuilder-samples)
+* [Bot Builder SDK](https://docs.microsoft.com/javascript/api/botbuilder-core/?view=botbuilder-ts-latest)
+* [Bot Builder ツール](https://github.com/Microsoft/botbuilder-tools):
 
-## Next steps
+## <a name="next-steps"></a>次の手順
 
-You created an Azure bot service, copied the bot secret and `.bot` file path, downloaded the zip file of the code. You added the prebuilt HomeAutomation domain to the LUIS app created as part of the new Azure bot service, then trained and published the app again. You extracted the code project, created an environment file (`.env`), and set the bot secret and the `.bot` file path. In the bot.js file, you added code to handle the two new intents. Then you tested the bot in the bot emulator to see the LUIS response for an utterance of one of the new intents. 
+Azure ボット サービスを作成し、ボット シークレットと `.bot` ファイル パスをコピーし、コードの zip ファイルをダウンロードしました。 事前構築済みの HomeAutomation ドメイン LUIS アプリを、新しい Azure Bot Service の一部として作成した LUIS アプリに追加してから、アプリを再度トレーニングして発行しました。 コード プロジェクトを抽出し、環境ファイル (`.env`) を作成して、ボット シークレットと `.bot` ファイル パスを設定しました。 bot.js ファイルで、2 つの新しい意図を処理するコードを追加しました。 その後、ボット エミュレーターでボットをテストし、新しい意図の 1 つの発話に対する LUIS の返答を設定しました。 
 
 
 > [!div class="nextstepaction"]
-> [Build a custom domain in LUIS](luis-quickstart-intents-only.md)
+> [LUIS でカスタム ドメインをビルドする](luis-quickstart-intents-only.md)

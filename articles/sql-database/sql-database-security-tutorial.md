@@ -12,12 +12,12 @@ ms.author: daredis
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 09/07/2018
-ms.openlocfilehash: 7db0276f03511273e2607378f993957ce3a6c094
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ceed69503900b38d7f6a29bbe116ab9a4d54e396
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160436"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857960"
 ---
 # <a name="secure-your-azure-sql-database"></a>Azure SQL データベースのセキュリティ保護
 
@@ -174,7 +174,7 @@ Azure SQL Database の監査では、データベース イベントを追跡し
 
 1. 左側のメニューの **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 
-2. [設定] ブレードで、**[監査と脅威の検出]** を選択します。 サーバーレベルの監査が無効になっており、このコンテキストでサーバーの監査設定を表示または変更する **[サーバー設定を表示]** リンクがあることをご確認ください。
+2. [設定] ブレードで、**[監査と脅威の検出]** を選択します。 サーバーレベルの監査が無効になっていること、およびこのコンテキストからサーバーの監査設定を表示または変更することができる **[サーバー設定を表示]** リンクがあることに注目してください。
 
     ![監査ブレード](./media/sql-database-security-tutorial/auditing-get-started-settings.png)
 

@@ -6,15 +6,15 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 9981db7e2994b9a4f20f99f4997a89b0368d343c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7a91217e35ae7a32714478171dcebc002e384fcb
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423676"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093597"
 ---
 # <a name="site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Hyper-V から Azure 用の Site Recovery Deployment Planner
 

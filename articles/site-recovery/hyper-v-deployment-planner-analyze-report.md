@@ -5,15 +5,15 @@ services: site-recovery
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: 78350f8e0ab86c7c87c321397bd4e4a4849368b6
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: d5e8038aea547977ed11d0bd5d2675322921d8ef
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918851"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092917"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポートの分析
 この記事では、Azure Site Recovery Deployment Planner で、Hyper-V から Azure へのシナリオに関して生成される Excel レポート内のシートについて取り上げます。
@@ -240,7 +240,7 @@ Site Recovery Deployment Planner によって生成される Excel レポート�
 
 * VM サイズの合計 (レプリケーション + テスト フェールオーバー) が、サポートされている Premium ストレージ アカウントの上限サイズ (35 TB) を超えている。 これは通常、VM にあるいずれか 1 台のディスクのパフォーマンス特性が、Azure または Site Recovery でサポートされる Standard ストレージの上限を超えている場合に発生します。 そのような VM は Premium Storage の領域に分類されます。 一方、Premium ストレージ アカウントでサポートされる最大サイズは 35 TB です。 保護対象となる単一の VM を複数のストレージ アカウントにまたがって保護することはできません。 
 
-    テスト フェールオーバー用に構成されているのが非管理対象ディスクである場合、保護対象 VM で実行されるテスト フェールオーバーは、レプリケーション処理と同じストレージ アカウントで実行されます。 この場合、レプリケーションの記憶域と同じ容量の記憶域が別途必要となります。 レプリケーションの進行と同時にテスト フェールオーバーを正常に完了できるようにするためです。 テスト フェールオーバー用に構成されているのが管理ディスクである場合、テスト フェールオーバー VM のための追加の領域は不要です。
+    テスト フェールオーバー用に構成されているのが非管理対象ディスクである場合、保護対象 VM で実行されるテスト フェールオーバーは、レプリケーション処理と同じストレージ アカウントで実行されます。 この場合、レプリケーションの記憶域と同じ容量の記憶域が別途必要となります。 レプリケーションの進行と同時にテスト フェールオーバーを正常に完了できるようにするためです。 テスト フェールオーバー用に構成されているのがマネージド ディスクである場合、テスト フェールオーバー VM のための追加の領域は不要です。
 
 * レプリケーション元の IOPS が、ストレージでサポートされている IOPS の上限 (ディスクあたり 7,500 IOPS) を超えている。
 

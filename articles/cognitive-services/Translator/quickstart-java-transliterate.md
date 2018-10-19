@@ -1,21 +1,21 @@
 ---
-title: Translator Text と Java でテキストの表記を変換する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と Java を使って、1 つの言語の中でテキストの表記を変換します。
+title: 'クイック スタート: テキスト スクリプトを変換する - Translator Text、Java'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Java で Translator Text API を使って 1 つの言語の中でテキストの表記を変換します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 6f7353ba0a51bdeec2450d7435f3b738687db766
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 47d0462dcf7e54a3c2b2e2ea8b713b02af2baf37
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "43770697"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297433"
 ---
 # <a name="quickstart-transliterate-text-with-java"></a>クイック スタート: Java を使ったテキストの表記変換
 

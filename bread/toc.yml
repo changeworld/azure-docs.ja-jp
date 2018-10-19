@@ -318,12 +318,16 @@ items:
   - name: Cosmos DB
     tocHref: /azure/cosmos-db/
     topicHref: /azure/cosmos-db/
-  - name: Data Box
-    tocHref: /azure/databox/
-    topicHref: /azure/databox/
-  - name: Data Box Edge/Data Box Gateway
-    tocHref: /azure/databox-online/
-    topicHref: /azure/databox-online/
+  - name: Data Box ファミリ
+    tocHref: /azure/databox-family/
+    topicHref: /azure/databox-family/
+    items:
+    - name: Data Box のオフライン転送
+      tocHref: /azure/databox/
+      topicHref: /azure/databox/
+    - name: Data Box のオンライン転送
+      tocHref: /azure/databox-online/
+      topicHref: /azure/databox-online/
   - name: Data Catalog
     tocHref: /azure/data-catalog/
     topicHref: /azure/data-catalog/
@@ -476,6 +480,9 @@ items:
     - name: v2
       tocHref: /azure/media-services/previous/
       topicHref: /azure/media-services/previous/
+    - name: Video Indexer
+      tocHref: /azure/media-services/video-indexer/
+      topicHref: /azure/media-services/video-indexer/
   - name: Mobile Engagement
     tocHref: /azure/mobile-engagement/
     topicHref: /azure/mobile-engagement/
@@ -626,9 +633,9 @@ items:
   - name: VPN Gateway
     tocHref: /azure/vpn-gateway/
     topicHref: /azure/vpn-gateway/
-ms.openlocfilehash: 5aeda58f43a95771621c40be9b59e8100913ea13
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: d5accdc05b632921d62c083772c4f289ca901ab2
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078547"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377575"

@@ -33,7 +33,6 @@
 ### [Ruby on Rails Web アプリケーション](ruby-rails-web-app.md)
 ### [Cassandra および Node.js クライアント](cassandra-nodejs.md)
 ### [Tomcat](setup-tomcat.md)
-### [MPI アプリケーションを実行するための RDMA クラスター](rdma-cluster.md)
 ### HPC Pack
 #### [Linux ワークロード用のクラスターの作成](hpcpack-cluster-powershell-script.md)
 #### [Linux ノードを含むクラスターの管理](hpcpack-cluster.md)

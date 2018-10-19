@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 09/13/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 88ff30ec90427f16ebd82259c17ee8cbb2644be2
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: c66165c7a737c7eb0873ef3c6714e340716d6866
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071596"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603471"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
 
@@ -23,19 +23,19 @@ ms.locfileid: "39071596"
 
 |[ダウンロード]  |製品バージョン  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.1.594      |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.1.594      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.3.1.0    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.3.1.0     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.1.795      |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.1.795      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.5.0.0    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.5.0.0     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO と ADOMD (NuGet パッケージ)
 
 Analysis Services 管理オブジェクト (AMO) と ADOMD クライアント ライブラリは、インストール可能なパッケージとして [NuGet.org](https://www.nuget.org/) で入手できます。Windows インストーラーを使用する代わりに、NuGet 参照へ移行することをお勧めします。 
 
-|パッケージ  | 製品バージョン  | 
+|Package  | 製品バージョン  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.3.1     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.3.1     |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.5.0     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.5.0     |
 
 NuGet パッケージ アセンブリの AssemblyVersion は、セマンティック バージョニングである MAJOR.MINOR.PATCH に従います。 NuGet 参照では、(MSI のインストールの結果として得られる) GAC 内に別のバージョンがある場合でも、必要なバージョンが読み込まれます。 PATCH は、リリースごとにインクリメントされます。 AMO と ADOMD のバージョンは常に同期されます。
 

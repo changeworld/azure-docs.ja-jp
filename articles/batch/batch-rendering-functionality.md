@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3f2fa055af63ab3920fec79ad93c25b8ea7e5ed9
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 6d79cdf279022320f654fbbeadb870f82db88cab
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42139897"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392787"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch Rendering の機能
 
@@ -50,9 +50,12 @@ Windows 2016 のイメージと CentOS のイメージがあります。  [Azure
 * [プールの作成](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body)時に `applicationLicenses` プロパティを指定します。  文字列の配列 "vray"、"arnold"、"3dsmax"、"maya" で、次の値を指定できます。
 * 1 つまたは複数のアプリケーションを指定すると、それらのアプリケーションのコストが VM のコストに追加されます。  アプリケーションの料金は、[Azure Batch の料金ページ](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering)で確認できます。
 
+> [!NOTE]
+> レンダリング アプリケーションを使用するためにライセンス サーバーに接続しない場合は、`applicationLicenses`プロパティを指定しないでください｡
+
 Azure portal または Batch Explorer を使用してアプリケーションを選択し、そのアプリケーションの料金を表示できます。
 
-アプリケーションを使用する試行が行われたものの、そのアプリケーションがプール構成の `applicationLicenses` プロパティで指定されていない場合、アプリケーションの実行はライセンス エラーとゼロ以外の終了コードで失敗します。
+プールの構成設定の `applicationLicenses` プロパティでアプリケーションを指定しないで､アプリケーションを使用しようとした場合、あるいはライセンス サーバーにアクセスできなかった場合､アプリケーションの実行はライセンス エラーとゼロ以外の終了コードで失敗します。
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>事前インストールされているアプリケーションの環境変数
 

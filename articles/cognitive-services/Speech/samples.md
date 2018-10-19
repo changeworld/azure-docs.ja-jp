@@ -1,5 +1,6 @@
 ---
-title: Microsoft Speech Service を使用するためのサンプル | Microsoft Docs
+title: Bing Speech の使用に関するサンプル | Microsoft Docs
+titlesuffix: Azure Cognitive Services
 description: 音声をテキストに変換する Microsoft Speech Service を使用するためのサンプル。
 services: cognitive-services
 author: zhouwangzw
@@ -7,18 +8,20 @@ manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 20ffba69d9f0f5b6648b19967c086e23e1dcb923
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 778a9e1e2767d5bae8d661dcd70a42d0d7d0caae
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41929946"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339408"
 ---
-# <a name="microsoft-speech-client-samples"></a>Microsoft の音声クライアントのサンプル
+# <a name="bing-speech-client-samples"></a>Bing Speech のクライアント サンプル
 
-Microsoft Speech Service は、コマンド認識、連続的認識、意図検出など、さまざまなユースケースで Microsoft Speech Recognition API を使用する方法を示す、エンドツーエンドのサンプルを提供します。 すべてのサンプルは GitHub で入手可能で、次のリンクからダウンロードできます。サンプルをビルドして実行する方法について詳しくは、各リポジトリ内の README.md と[クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md)をご覧ください。
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
+ 
+Bing Speech では、コマンド認識、連続的認識、意図検出など、さまざまなユースケースを示すエンドツーエンドのサンプルが提供されます。 すべてのサンプルは GitHub で入手可能で、次のリンクからダウンロードできます。サンプルをビルドして実行する方法について詳しくは、各リポジトリ内の README.md と[クライアント ライブラリ](GetStarted/GetStartedClientLibraries.md)をご覧ください。
 
 - [REST API のサンプル](https://github.com/Azure-Samples/SpeechToText-REST)
 

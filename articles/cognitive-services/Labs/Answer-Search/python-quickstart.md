@@ -1,21 +1,23 @@
 ---
-title: Microsoft Cognitive Services、Project Answer Search の Python のクイック スタート | Microsoft Docs
-description: Azure 上で、Microsoft Cognitive Services の Project Answer Search の使用を開始する Python の例です。
+title: 'クイック スタート: Project Answer Search、Python'
+titlesuffix: Azure Cognitive Services
+description: Project Answer Search の使用を開始する Python の例。
 services: cognitive-services
 author: mikedodaro
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 9cb5406c616ed8e96d73c00c788a0d20f66dcabd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c33a88b65dcdf5ddddff9f5109afbe0cca7247c4
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376136"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869831"
 ---
-# <a name="project-answer-search-python-quickstart"></a>Project Answer Search の Python のクイック スタート
+# <a name="quickstart-project-answer-search-with-python"></a>クイック スタート: Python での Project Answer Search
 
 Python での次の例では、"Rock of Gibraltar".に関する情報の要求を作成し、送信しています。
 
@@ -27,7 +29,7 @@ Python での次の例では、"Rock of Gibraltar".に関する情報の要求�
 
 ## <a name="code-scenario"></a>シナリオのコードを書く 
 
-次のコードでは、URL プレビューを作成しています。
+次のコードは、URL Preview を作成します。
 これは、次の手順で実装されます。
 1. エンドポイントをホストとパスで指定する変数を宣言します。
 2. プレビューするクエリ URL を指定し、クエリ パラメーターを追加します。  
@@ -66,5 +68,5 @@ print (json.dumps(json.loads(result), indent=4))
 ````
 ## <a name="next-steps"></a>次の手順
 - [C# のクイック スタート](c-sharp-quickstart.md)
-- [Java のクイックスタート](java-quickstart.md)
+- [Java のクイック スタート](java-quickstart.md)
 - [Node のクイックスタート](node-quickstart.md)

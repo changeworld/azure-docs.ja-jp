@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 52730ae24f4917ab593914c390df798f7f58dbde
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: e791ddd3ade2ff486f1c3ec123695ecc155353d6
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42143753"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541906"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric クラスターのセキュリティに関するシナリオ
 Azure Service Fabric クラスターは、ユーザーが所有するリソースの 1 つです。 承認されていないユーザーが接続できないように、クラスターをセキュリティで保護する必要があります。 クラスターで実稼働ワークロードを実行している場合、セキュリティで保護されたクラスターは特に重要です。 セキュリティで保護されていないクラスターを作成することはできますが、パブリック インターネットに管理エンドポイントを公開している場合に、匿名ユーザーがそのクラスターに接続できるようになります。 セキュリティで保護されていないクラスターは、運用ワークロードでサポートされません。 
@@ -92,6 +92,7 @@ Azure クラスターについては、クライアントの認証に Azure AD �
 * 運用環境のワークロードを実行しているクラスター用に証明書を作成するには、正しく構成された Windows Server 証明書サービスを使用するか、認定済みの[証明機関 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) の証明書を使用する必要があります。
 * MakeCert.exe などのツールを使用して作成した一時証明書やテスト証明書は実稼働環境では使用しないでください。
 * 自己署名証明書は、テスト クラスターでのみで使用できます。 自己署名証明書は実稼働環境では使用しないでください。
+* 証明書の拇印を生成するとき、必ず SHA1 拇印を生成してください。 SHA1 は、クライアントとクラスターの証明書拇印を構成するときに使用される拇印です。
 
 ### <a name="cluster-and-server-certificate-required"></a>クラスターとサーバーの証明書 (必須)
 これらの証明書 (1 つのプライマリと省略可能なセカンダリ) は、クラスターをセキュリティで保護し、クラスターに対する不正なアクセスを防ぐために必要です。 これらの証明書は、クラスターとサーバーの認証を提供します。

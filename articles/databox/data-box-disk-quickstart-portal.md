@@ -2,25 +2,19 @@
 title: Microsoft Azure Data Box Disk のクイック スタート | Microsoft Docs
 description: このクイック スタートを使用して、Azure portal からすばやく Azure Data Box Disk をデプロイしましょう。
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: disk
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 08/28/2018
+ms.date: 09/07/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 596c4b15ea6ef76d4471bca6994377bf4d5ddc01
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: ca0fb177c8b6a16cf624fd4533c9c9040e6d9dee
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143425"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365236"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal-preview"></a>クイック スタート: Azure portal を使用して Azure Data Box Disk をデプロイする (プレビュー)
 
@@ -28,7 +22,7 @@ ms.locfileid: "43143425"
 
 デプロイと追跡の手順をステップ バイ ステップで詳しく紹介した記事については、[Azure Data Box Disk の注文に関するチュートリアル](data-box-disk-deploy-ordered.md)を参照してください。 
 
-Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/en-us/free/?WT.mc_id=A261C142F)を作成してください。
+Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
 > [!IMPORTANT]
 > Data Box Disk はプレビュー段階にあります。 このソリューションを展開する前に、[プレビューに関する Azure のサービス利用規約](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
@@ -68,12 +62,12 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
 
 この手順には約 5 分かかります。
 
-1. 同梱されているケーブルを使用して、サポート対象バージョンの Windows が実行されているコンピューターにディスクを接続します。 サポート対象 OS バージョンについて詳しくは、「[Azure Data Box Disk system requirements (Azure Data Box Disk のシステム要件)](data-box-disk-system-requirements.md)」を参照してください。 
+1. 同梱されているケーブルを使用して、サポート対象バージョンの Windows/Linux が実行されているコンピューターにディスクを接続します。 サポート対象 OS バージョンについて詳しくは、「[Azure Data Box Disk system requirements (Azure Data Box Disk のシステム要件)](data-box-disk-system-requirements.md)」を参照してください。 
 2. 次の手順に従って、ディスクのロックを解除します。
 
     1. Azure portal で **[全般] > [デバイスの詳細]** に移動し、パスキーを取得します。
-    2. ディスクへのデータのコピーに使用するコンピューターに、Data Box Disk のロック解除ツールをダウンロードして抽出します。 
-    3. *DataBoxDiskUnlock.exe* を実行してパスキーを指定します。 ディスクの再挿入に対応するには、ロック解除ツールをもう一度実行し、パスキーを指定します。 **BitLocker ダイアログまたは BitLocker キーを使用したディスクのロック解除は行わないでください。** 
+    2. ディスクへのデータのコピーに使用するコンピューターに、オペレーティング システム固有の Data Box Disk のロック解除ツールをダウンロードして展開します。 
+    3. Data Box Disk ロック解除ツールを実行して、このパスキーを指定します。 ディスクの再挿入に対応するには、ロック解除ツールをもう一度実行し、パスキーを指定します。 **BitLocker ダイアログまたは BitLocker キーを使用したディスクのロック解除は行わないでください。** ディスクのロック解除方法の詳細については、[Windows クライアントでのディスクのロック解除]()または [Linux クライアントでのディスクのロック解除]()に関するページを参照してください。
     4. ディスクに割り当てられたドライブ文字が、ツールによって表示されます。 ディスクのドライブ文字をメモしておいてください。 以降の手順で使用します。
 
 ## <a name="copy-data-and-verify"></a>データのコピーと確認
@@ -86,9 +80,9 @@ Data Box Disk は、UPS Express Box で郵送されます。 開梱して同梱�
 
     > [!NOTE] 
     > - すべてのコンテナーと BLOB は、[Azure の名前付け規則](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions)に準拠している必要があります。 これらの規則に従っていない場合、Azure へのデータのアップロードに失敗します。
-    > - ファイルが約 4.7 TiB (ブロック BLOB の場合) および約 8 TiB (ページ BLOB の場合) を超えないようにしてください。
+    > - ファイルが約 4.75 TiB (ブロック BLOB の場合) および約 8 TiB (ページ BLOB の場合) を超えないようにしてください。
 
-2. (省略可) コピーが完了したら、*AzureImportExport* フォルダーに格納されている `AzureExpressDiskService.cmd` を実行して、検証のためにチェックサムを生成することをお勧めします。 データのサイズによっては、この手順に時間がかかることがあります。 
+2. (省略可) コピーが完了したら、*AzureImportExport* フォルダーに格納されている `DataBoxDiskValidation.cmd` を実行して、検証のためにチェックサムを生成することをお勧めします。 データのサイズによっては、この手順に時間がかかることがあります。 
 3. ドライブを取り外します。 
 
 

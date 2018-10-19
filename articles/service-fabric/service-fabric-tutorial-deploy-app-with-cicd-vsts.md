@@ -1,6 +1,6 @@
 ---
-title: Azure で継続的インテグレーションを使用して Service Fabric アプリをデプロイする (Team Services) | Microsoft Docs
-description: このチュートリアルでは、Visual Studio Team Services を使用して、継続的インテグレーションと Service Fabric アプリケーションのデプロイをセットアップする方法について説明します。
+title: Azure で継続的インテグレーション (Azure DevOps Services) を使用して Service Fabric アプリをデプロイする | Microsoft Docs
+description: このチュートリアルでは、Azure DevOps Services を使用して、Service Fabric アプリケーションの継続的インテグレーションと継続的配置をセットアップする方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,23 +15,23 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 2122b6d9c385e1137d0fc6df5229975359fa20d5
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 7f14151224a9e2baa74183696c92bca06695bf4f
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41919535"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380150"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
 
-このチュートリアルはシリーズの第 4 部です。Visual Studio Team Services を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションとデプロイを設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、[.NET アプリケーション ビルド](service-fabric-tutorial-create-dotnet-app.md)で作成されたアプリケーションを例として使用します。
+このチュートリアルはシリーズの第 4 部です。Azure DevOps を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションと継続的配置を設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、[.NET アプリケーション ビルド](service-fabric-tutorial-create-dotnet-app.md)で作成されたアプリケーションを例として使用します。
 
 シリーズの第 3 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * プロジェクトにソース管理を追加する
-> * Team Services でビルド定義を作成する
-> * Team Services でリリース定義を作成する
+> * Azure DevOps にビルド パイプラインを作成する
+> * Azure DevOps にリリース パイプラインを作成する
 > * アプリケーションを自動的にデプロイおよびアップグレードする
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
@@ -39,7 +39,7 @@ ms.locfileid: "41919535"
 > * [.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)
 > * [アプリケーションをリモート クラスターにデプロイする](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * [ASP.NET Core フロントエンド サービスに HTTPS エンドポイントを追加する](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)
-> * Visual Studio Team Services を使用して CI/CD を構成する
+> * Azure Pipelines を使用して CI/CD を構成する
 > * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>前提条件
@@ -50,7 +50,7 @@ ms.locfileid: "41919535"
 * [Visual Studio 2017 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 * [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 * [このチュートリアルに従って](service-fabric-tutorial-create-vnet-and-windows-cluster.md)、たとえば、Azure 上に Windows Service Fabric クラスターを作成します。
-* [Team Services アカウント](https://docs.microsoft.com/vsts/organizations/accounts/create-organization-msa-or-work-student) を作成します。
+* [Azure DevOps 組織](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)を作成します。
 
 ## <a name="download-the-voting-sample-application"></a>投票サンプル アプリケーションをダウンロードする
 
@@ -62,43 +62,43 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="prepare-a-publish-profile"></a>発行プロファイルの準備
 
-ここまでで、[アプリケーションを作成し](service-fabric-tutorial-create-dotnet-app.md)、[アプリケーションを Azure にデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)しました。これで、継続的インテグレーションをセットアップする準備ができました。  まず、Team Services 内で実行されるデプロイ プロセスで使用する発行プロファイルを、アプリケーション内に準備します。  発行プロファイルは、あらかじめ作成したクラスターを対象とするように構成する必要があります。  Visual Studio を起動し、既存の Service Fabric アプリケーション プロジェクトを開きます。  **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[発行]** を選択します。
+ここまでで、[アプリケーションを作成し](service-fabric-tutorial-create-dotnet-app.md)、[アプリケーションを Azure にデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)しました。これで、継続的インテグレーションをセットアップする準備ができました。  まず、Azure DevOps 内で実行されるデプロイ プロセスで使用する発行プロファイルを、アプリケーション内に準備します。  発行プロファイルは、あらかじめ作成したクラスターを対象とするように構成する必要があります。  Visual Studio を起動し、既存の Service Fabric アプリケーション プロジェクトを開きます。  **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[発行]** を選択します。
 
-継続的インテグレーション ワークフローに使用するアプリケーション プロジェクト内で目標一覧表 (たとえば Cloud) を選択します。  クラスター接続エンドポイントを指定します。  Team Services 内の各デプロイ用にアプリケーションがアップグレードされるよう、**[アプリケーションのアップグレード]** チェックボックスをオンにします。  **[保存]** ハイパーリンクをクリックして設定を発行プロファイルに保存し、**[キャンセル]** をクリックしてダイアログ ボックスを閉じます。
+継続的インテグレーション ワークフローに使用するアプリケーション プロジェクト内で目標一覧表 (たとえば Cloud) を選択します。  クラスター接続エンドポイントを指定します。  Azure DevOps 内の各デプロイ用にアプリケーションがアップグレードされるよう、**[アプリケーションのアップグレード]** チェックボックスをオンにします。  **[保存]** ハイパーリンクをクリックして設定を発行プロファイルに保存し、**[キャンセル]** をクリックしてダイアログ ボックスを閉じます。
 
 ![プロファイルのプッシュ][publish-app-profile]
 
-## <a name="share-your-visual-studio-solution-to-a-new-team-services-git-repo"></a>新しい Team Services の Git リポジトリで Visual Studio ソリューションを共有する
+## <a name="share-your-visual-studio-solution-to-a-new-azure-devops-git-repo"></a>新しい Azure DevOps の Git リポジトリで Visual Studio ソリューションを共有する
 
-ビルドを生成できるよう、Team Services のチーム プロジェクトで、アプリケーションのソース ファイルを共有します。
+ビルドを生成できるように、Azure DevOps のプロジェクトで、アプリケーションのソース ファイルを共有します。
 
 Visual Studio の右下隅のステータス バーにある **[ソース管理** ->  **Git に追加]** を選択して、プロジェクトの新しいローカル Git リポジトリを作成します。
 
-**チーム エクスプローラー**の **[プッシュ]** ビューで、**[Visual Studio Team Services へのプッシュ]** の下にある **[Git リポジトリの発行**] ボタンを選択します。
+**チーム エクスプローラー**の **[プッシュ]** ビューで、**[Push to Azure DevOps]\(Azure DevOps へのプッシュ\)** の下にある **[Git リポジトリの発行]** ボタンを選択します。
 
 ![Git リポジトリのプッシュ][push-git-repo]
 
-電子メールを確認し、**[Team Services ドメイン]** ドロップダウンから自分のアカウントを選択します。 リポジトリ名を入力し、**[リポジトリの発行]** を選択します。
+電子メールを確認し、**[Azure DevOps ドメイン]** ドロップダウンからご自身のアカウントを選択します。 リポジトリ名を入力し、**[リポジトリの発行]** を選択します。
 
 ![Git リポジトリのプッシュ][publish-code]
 
-リポジトリを公開すると、ローカル リポジトリと同じ名前の新しいチーム プロジェクトが自分のアカウントに作成されます。 既存のチーム プロジェクトでリポジトリを作成するには、**[リポジトリ]** 名の横にある **[詳細]** をクリックして、チーム プロジェクトを選択します。 **[See it on the web]\(Web を参照\)** を選択すると、Web でコードを表示できます。
+リポジトリを公開すると、ローカル リポジトリと同じ名前の新しいプロジェクトがご自身のアカウントに作成されます。 既存のプロジェクトでリポジトリを作成するには、**[リポジトリ名]** の横にある **[詳細]** をクリックして、プロジェクトを選択します。 **[See it on the web]\(Web を参照\)** を選択すると、Web でコードを表示できます。
 
-## <a name="configure-continuous-delivery-with-vsts"></a>VSTS を利用した継続的配信を設定する
+## <a name="configure-continuous-delivery-with-azure-devops"></a>Azure DevOps で継続的デリバリーを構成する
 
-Team Services のビルド定義では、順次実行される一連のビルド ステップで構成されたワークフローを記述します。 Service Fabric クラスターをデプロイするため、Service Fabric アプリケーション パッケージおよび他のアーティファクトを生成するビルド定義を作成します。 Team Services のビルド定義の詳細については、[こちら](https://www.visualstudio.com/docs/build/define/create)をご覧ください。 
+Azure DevOps のビルド パイプラインでは、順次実行される一連のビルド ステップで構成されたワークフローを記述します。 Service Fabric クラスターをデプロイするため、Service Fabric アプリケーション パッケージおよび他のアーティファクトを生成するビルド パイプラインを作成します。 Azure DevOps のビルド パイプラインの詳細については、[こちら](https://www.visualstudio.com/docs/build/define/create)をご覧ください。 
 
-Team Services のリリース定義では、クラスターにアプリケーション パッケージをデプロイするワークフローを記述します ビルド定義とリリース定義を併用すると、ソース ファイルから始まり、クラスターでのアプリケーションの実行で終わるワークフロー全体を実行できます。 Team Services のリリース定義の詳細については、 [こちら](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)をご覧ください。
+Azure DevOps のリリース パイプラインでは、クラスターにアプリケーション パッケージをデプロイするワークフローを記述します。 ビルド パイプラインとリリース パイプラインを併用すると、ソース ファイルから始まり、クラスターでのアプリケーションの実行で終わるワークフロー全体を実行できます。 Azure DevOps のリリース パイプラインの詳細については、[こちら](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)をご覧ください。
 
-### <a name="create-a-build-definition"></a>ビルド定義の作成
+### <a name="create-a-build-pipeline"></a>ビルド パイプラインを作成する
 
-Web ブラウザーを開き、新しいチーム プロジェクト ([https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting)) に移動します。
+Web ブラウザーを開き、新しいプロジェクト ([https://&lt;myaccount&gt;.visualstudio.com/Voting/Voting%20Team/_git/Voting](https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting)) に移動します。
 
 **[ビルドとリリース]** タブ、**[ビルド]**、**[新しいパイプライン]** の順に選択します。
 
 ![新しいパイプライン][new-pipeline]
 
-ソースとして **[VSTS Git]** を選択し、**[Voting]** チーム プロジェクト、**[Voting]** リポジトリ、**[マスター]** 既定ブランチまたは手動のビルドおよびスケジュールされたビルドを選択します。  **[Continue]\(続行\)** をクリックします。
+ソースとして **[Azure DevOps Git]** を選択し、**[Voting]** プロジェクト、**[Voting]** リポジトリ、**[マスター]** 既定ブランチまたは手動のビルドおよびスケジュールされたビルドを選択します。  **[Continue]\(続行\)** をクリックします。
 
 **[テンプレートの選択]** で **[Azure Service Fabric アプリケーション]** テンプレートを選択し、**[適用]** をクリックします。
 
@@ -114,9 +114,9 @@ Web ブラウザーを開き、新しいチーム プロジェクト ([https://&
 
 ![トリガーを選択する][save-and-queue2]
 
-プッシュまたはチェックイン時にもビルドがトリガーされます。 ビルドの進行状況を確認するには、**[ビルド]** タブに切り替えます。ビルドが正常に実行されることを確認したら、クラスターにアプリケーションをデプロイするリリース定義を定義します。
+プッシュまたはチェックイン時にもビルドがトリガーされます。 ビルドの進行状況を確認するには、**[ビルド]** タブに切り替えます。ビルドが正常に実行されることを確認したら、クラスターにアプリケーションをデプロイするリリース パイプラインを定義します。
 
-### <a name="create-a-release-definition"></a>リリース定義の作成
+### <a name="create-a-release-pipeline"></a>リリース パイプラインを作成する
 
 **[ビルドとリリース]** タブ、**[リリース]**、**[+ 新しいパイプライン]** の順に選択します。  **[テンプレートの選択]** で一覧から **[Azure Service Fabric の配置]** テンプレートを選択し、**[適用]** を選択します。
 
@@ -134,11 +134,11 @@ Azure Active Directory の資格情報の場合は、クラスターの作成に
 
 **[追加]** をクリックして、クラスター接続を保存します。
 
-次に、ビルド成果物をパイプラインに追加して、リリース定義でビルドの出力を見つけられるようにします。 **[パイプライン]** を選択し、**[成果物]**->**[+ 追加]** の順に選択します。  **[ソース (ビルド定義)]** で、前に作成したビルド定義を選択します。  **[追加]** をクリックして、ビルド成果物を保存します。
+次に、ビルド成果物をパイプラインに追加して、リリース パイプラインでビルドの出力を見つけられるようにします。 **[パイプライン]** を選択し、**[成果物]**->**[+ 追加]** の順に選択します。  **[ソース (ビルド定義)]** で、前に作成したビルド パイプラインを選択します。  **[追加]** をクリックして、ビルド成果物を保存します。
 
 ![成果物を追加する][add-artifact]
 
-ビルドの完了時にリリースが自動的に作成されるように、継続的配置トリガーを有効にします。 成果物の稲妻のアイコンをクリックし、トリガーを有効にします。次に、**[保存]** をクリックして、リリース定義を保存します。
+ビルドの完了時にリリースが自動的に作成されるように、継続的配置トリガーを有効にします。 成果物の稲妻のアイコンをクリックし、トリガーを有効にします。次に、**[保存]** をクリックして、リリース パイプラインを保存します。
 
 ![トリガーを有効にする][enable-trigger]
 
@@ -148,7 +148,7 @@ Azure Active Directory の資格情報の場合は、クラスターの作成に
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>変更のコミットとプッシュ、リリースのトリガー
 
-Team Services へのコード変更をチェックインして、継続的インテグレーション パイプラインが機能していることを確認します。
+Azure DevOps へのコード変更をチェックインして、継続的インテグレーション パイプラインが機能していることを確認します。
 
 コードを記述すると、変更内容は Visual Studio によって自動的に追跡されます。 右下のステータス バーから [保留中の変更] アイコン (![Pending][pending]) を選択して、ローカル Git リポジトリへ変更をコミットします。
 
@@ -156,13 +156,13 @@ Team Services へのコード変更をチェックインして、継続的イン
 
 ![すべてコミットする][changes]
 
-発行されていない変更のステータス バー アイコンを選択 (![発行されていない変更][unpublished-changes]) するか、またはチーム エクスプローラーで [同期] ビューを選択します。 **[プッシュ]** を選択して、Team Services と TFS へコードを更新します。
+発行されていない変更のステータス バー アイコンを選択 (![発行されていない変更][unpublished-changes]) するか、またはチーム エクスプローラーで [同期] ビューを選択します。 **[プッシュ]** を選択して、Azure DevOps Services と TFS のコードを更新します。
 
 ![変更をプッシュする][push]
 
-Team Services へ変更をプッシュすると、ビルドが自動的にトリガーされます。  ビルド定義が正常に完了すると、リリースは自動的に作成され、クラスター上のアプリケーションのアップグレードが開始されます。
+Azure DevOps へ変更をプッシュすると、ビルドが自動的にトリガーされます。  ビルド パイプラインが正常に完了すると、リリースは自動的に作成され、クラスター上のアプリケーションのアップグレードが開始されます。
 
-ビルドの進行状況を確認するには、Visual Studio の**チーム エクスプローラー**で **[ビルド]** タブに切り替えます。  ビルドが正常に実行されることを確認したら、クラスターにアプリケーションをデプロイするリリース定義を定義します。
+ビルドの進行状況を確認するには、Visual Studio の**チーム エクスプローラー**で **[ビルド]** タブに切り替えます。  ビルドが正常に実行されることを確認したら、クラスターにアプリケーションをデプロイするリリース パイプラインを定義します。
 
 デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開いて、[http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.southcentralus.cloudapp.azure.com:19080/Explorer/) にアクセスします。  この例では、アプリケーション バージョンが "1.0.0.20170815.3" である点に注意してください。
 
@@ -186,12 +186,11 @@ Team Services へ変更をプッシュすると、ビルドが自動的にトリ
 
 > [!div class="checklist"]
 > * プロジェクトにソース管理を追加する
-> * ビルド定義の作成
-> * リリース定義の作成
+> * ビルド パイプラインを作成する
+> * リリース パイプラインを作成する
 > * アプリケーションを自動的にデプロイおよびアップグレードする
 
 次のチュートリアルに進みます。
-> [!div class="nextstepaction"]
 > [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md)
 
 <!-- Image References -->
@@ -214,6 +213,6 @@ Team Services へ変更をプッシュすると、ビルドが自動的にトリ
 [changes]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/Changes.png
 [unpublished-changes]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/UnpublishedChanges.png
 [push]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/Push.png
-[continuous-delivery-with-VSTS]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/VSTS-Dialog.png
+[continuous-delivery-with-AzureDevOpsServices]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/VSTS-Dialog.png
 [new-service-endpoint]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewServiceEndpoint.png
 [new-service-endpoint-dialog]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewServiceEndpointDialog.png

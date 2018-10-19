@@ -10,16 +10,19 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: dbb9261cfce0a8437cfe76121fa16aa87c4b3393
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 583d2ac5a8ac4c236612cdfe78595da1812c56fa
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786801"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730768"
 ---
 #   <a name="text-split-cognitive-skill"></a>テキスト分割コグニティブ スキル
 
 **テキスト分割**スキルは、テキストをテキストのチャンクに分割します。 テキストを特定の長さの文章またはページに分割するかどうかを指定できます。 このスキルは、他のスキル ダウンストリームでテキストの最大長の要件がある場合に、特に便利です。 
+
+> [!NOTE]
+> コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行および画像の抽出と正規化は、現在無料で提供されています。 これらの機能の価格は、後日、発表される予定です。 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SplitSkill 
@@ -28,7 +31,7 @@ Microsoft.Skills.Text.SplitSkill
 
 パラメーターの大文字と小文字は区別されます。
 
-| パラメーター名     | [説明] |
+| パラメーター名     | 説明 |
 |--------------------|-------------|
 | textSplitMode      | "pages" または "sentences" のいずれか | 
 | maximumPageLength | textSplitMode が "pages" に設定されている場合、`String.Length` で測定されるため、これは ページの最大長を指します。 最小値は 100 です。 | 
@@ -37,14 +40,14 @@ Microsoft.Skills.Text.SplitSkill
 
 ## <a name="skill-inputs"></a>スキルの入力
 
-| パラメーター名       | [説明]      |
+| パラメーター名       | 説明      |
 |----------------------|------------------|
-| テキスト  | 部分文字列に分割するテキスト。 |
+| text  | 部分文字列に分割するテキスト。 |
 | languageCode  | (省略可能) ドキュメントの言語コード。  |
 
 ## <a name="skill-outputs"></a>スキルの出力 
 
-| パラメーター名     | [説明] |
+| パラメーター名     | 説明 |
 |--------------------|-------------|
 | textItems | 抽出された部分文字列の配列。 |
 

@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dfb565803746ecdda9b36a4e12a3c3f2b4d9e0d0
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 98ae7fe0fde922aee28ffc05b64d223a40085447
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31426291"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340921"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Azure Stack Development Kit (ASDK) の起動と終了
 ASDK ホスト コンピューターをただ再起動することはお勧めしません。 この記事の手順に従い、正しくシャット ダウンして ASDK サービスを再起動してください。 
@@ -89,4 +89,4 @@ ASDK ホスト コンピューターの電源投入後 2 時間以内に Azure S
 **Start-AzureStack**の実行が失敗した場合、[Azure Stack サポート フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack)で ASDK トラブルシューティングのサポートを得てください。 
 
 ## <a name="next-steps"></a>次の手順 
-Azure Stack 診断ツールと問題のログ記録について説明します。[Azure Stack の診断ツール](.\.\azure-stack-diagnostics.md)をご覧ください。
+Azure Stack 診断ツールと問題のログ記録については、「[Azure Stack の診断ツール](.\.\azure-stack-diagnostics.md)」をご覧ください。

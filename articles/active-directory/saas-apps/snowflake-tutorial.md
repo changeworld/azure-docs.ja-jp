@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2018
+ms.date: 09/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 3ad3f42563878d829f900d5cddb0c6866d2deab5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c611fd7893a96113a4a9f2454bcd0b11db02be29
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43310960"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>チュートリアル: Azure Active Directory と Snowflake の統合
 
@@ -39,6 +39,7 @@ Snowflake と Azure AD の統合を構成するには、次のものが必要で
 
 - Azure AD サブスクリプション
 - Snowflake でのシングル サインオンが有効なサブスクリプション
+- Snowflake アカウントをお持ちでなく、Azure AD アプリ ギャラリーを使用してお試しになりたいお客様は、[この](https://trial.snowflake.net/?cloud=azure&utm_source=azure-marketplace&utm_medium=referral&utm_campaign=self-service-azure-mp)リンクを参照してください。
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -103,22 +104,22 @@ Snowflake で Azure AD のシングル サインオンを構成してテスト�
  
     ![[シングル サインオン] ダイアログ ボックス](./media/snowflake-tutorial/tutorial_snowflake_samlbase.png)
 
-3. アプリケーションを **IDP** 開始モードで構成する場合は、**[Snowflake のドメインと URL]** セクションで次の手順を実行します。
+3. **[Snowflake のドメインと URL]** セクションで、次の手順を実行します。
 
     ![[Snowflake のドメインと URL] のシングル サインオン情報](./media/snowflake-tutorial/tutorial_snowflake_url.png)
 
-    a. **[識別子]** ボックスに、`https://<SNOWFLAKE-URL>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<SNOWFLAKE-URL>.snowflakecomputing.com` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<SNOWFLAKE-URL>/fed/login` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、`https://<SNOWFLAKE-URL>.snowflakecomputing.com/fed/login` のパターンを使用して URL を入力します。
 
 4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
     ![[Snowflake のドメインと URL] のシングル サインオン情報](./media/snowflake-tutorial/tutorial_snowflake_url1.png)
 
-    **[サインオン URL]** ボックスに、`https://<SNOWFLAKE-URL>` のパターンを使用して URL を入力します。
+    **[サインオン URL]** ボックスに、`https://<SNOWFLAKE-URL>.snowflakecomputing.com` のパターンを使用して URL を入力します。
      
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[Snowflake クライアント サポート チーム](https://support.snowflake.net/s/snowflake-support)に問い合わせてください。 
+    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。
 
 5. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -132,7 +133,22 @@ Snowflake で Azure AD のシングル サインオンを構成してテスト�
 
     ![Snowflake 構成](./media/snowflake-tutorial/tutorial_snowflake_configure.png) 
 
-8. **Snowflake** 側にシングル サインオンを構成するには、ダウンロードした**証明書 (Base64)** および **SAML シングル サインオン サービス URL** を [Snowflake サポート チーム](https://support.snowflake.net/s/snowflake-support)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+8. 別の Web ブラウザー ウィンドウで、セキュリティ管理者として Snowflake にログインします。
+
+9. 次に示されているように、**certificate** 値を**ダウンロードした証明書**に設定し、**ssoUrl** を Azure AD からコピーした **SAML シングル サインオン サービスの URL** の値に設定して、ワークシート上で次の SQL クエリを実行します。
+
+    ![Snowflake sql](./media/snowflake-tutorial/tutorial_snowflake_sql.png) 
+
+    ```
+    use role accountadmin;
+    alter account set saml_identity_provider = '{
+    "certificate": "<Paste the content of downloaded certificate from Azure portal>",
+    "ssoUrl":"<SAML single sign-on service URL value which you have copied from the Azure portal>",
+    "type":"custom",
+    "label":"AzureAD"
+    }';
+    alter account set sso_login_page = TRUE;
+    ```
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -168,7 +184,25 @@ Snowflake で Azure AD のシングル サインオンを構成してテスト�
  
 ### <a name="create-a-snowflake-test-user"></a>Snowflake テスト ユーザーの作成
 
-このセクションでは、Snowflake で Britta Simon というユーザーを作成します。 [Snowflake サポート チーム](https://support.snowflake.net/s/snowflake-support)と連携し、Snowflake プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。
+Azure AD ユーザーが Snowflake にログインできるようにするには、そのユーザーを Snowflake にプロビジョニングする必要があります。 Snowflake では、プロビジョニングは手動のタスクです。
+
+**ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
+
+1. セキュリティ管理者として Snowflake にログインします。
+
+2. ページの右上で **[プロファイル]** をクリックして、**[Switch Role]\(ロールの切り替え\)** で **[ACCOUNTADMIN]** を選択します。  
+
+    ![Snowflake 管理者 ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+
+3. 次に示すように、"Login name" がワークシートの Azure AD ユーザー名に設定されていることを確認して、次の SQL クエリを実行してユーザーを作成します。
+
+    ![Snowflake adminsql ](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+
+    ```
+
+    use role accountadmin;
+    CREATE USER britta_simon PASSWORD = '' LOGIN_NAME = 'BrittaSimon@contoso.com' DISPLAY_NAME = 'Britta Simon';
+    ```
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 

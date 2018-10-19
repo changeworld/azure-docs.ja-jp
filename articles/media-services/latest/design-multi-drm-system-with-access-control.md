@@ -4,21 +4,21 @@ description: Microsoft Smooth Streaming Client Porting Kit のライセンスを
 services: media-services
 documentationcenter: ''
 author: willzhan
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/05/2018
-ms.author: willzhan;juliako
-ms.openlocfilehash: 724d9779293a520cf843013d096f8a99f6b06c0f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/15/2018
+ms.author: willzhan
+ms.openlocfilehash: d7026c9f41043ea03c870c2c81edc11d122d6d0b
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952130"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379079"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>アクセス制御を使用したマルチ DRM コンテンツ保護システムの設計 
 

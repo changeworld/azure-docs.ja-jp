@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8055faad3cd546e538def5e7292287b49ce96cb4
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 4ae84ff481b25f1e91a29c067dea74ba25f924aa
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46309541"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320324"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証によるユーザー サインイン
 
@@ -69,7 +69,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 ## <a name="next-steps"></a>次の手順
 
 - [クイック スタート](how-to-connect-pta-quick-start.md) - Azure AD パススルー認証を起動および実行します。
-- [AD FS からパススルー認証への移行](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
+- [AD FS からパススルー認証への移行](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) - AD FS (または他のフェデレーション テクノロジ) からパススルー認証に移行するための詳細なガイドです。
 - [スマート ロックアウト](../authentication/howto-password-smart-lockout.md) - ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
 - [現在の制限](how-to-connect-pta-current-limitations.md) - サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [技術的な詳細](how-to-connect-pta-how-it-works.md) - この機能のしくみについて学習します。

@@ -5,11 +5,12 @@ Resource Manager のコマンドとテンプレートで Azure CLI を使用し�
 ## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
 次のいずれかの CLI バージョンを使用してタスクを完了できます。
 
-- Azure CLI 1.0 - クラシック デプロイメント モデルと Resource Manager デプロイメント モデル用の CLI (本記事)
-- [Azure CLI 2.0](../articles/virtual-machines/linux/cli-manage.md) - Resource Manager デプロイ モデル用の次世代 CLI
+- Azure クラシック CLI - クラシック デプロイ モデルと Resource Manager デプロイ モデル用の CLI (本記事)
+- [Azure CLI](../articles/virtual-machines/linux/cli-manage.md) - Resource Manager デプロイ モデル用の次世代 CLI
 
-## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Azure CLI での 基本的な Azure Resource Manager コマンド
-この記事では、Azure サブスクリプションでリソース (主に VM) を管理および操作するために Azure CLI で使用する基本的なコマンドについて説明します。  特定のコマンド ライン スイッチやオプションの詳細については、「`azure <command> <subcommand> --help`」または「`azure help <command> <subcommand>`」と入力して、コマンド ラインのオンライン ヘルプとオプションを使用します。
+## <a name="basic-azure-resource-manager-commands-in-azure-classic-cli"></a>Azure クラシック CLI での 基本的な Azure Resource Manager コマンド
+
+この記事では、Azure サブスクリプションでリソース (主に VM) を管理および操作するために Azure クラシック CLI で使用する基本的なコマンドについて説明します。  特定のコマンド ライン スイッチやオプションの詳細については、「`azure <command> <subcommand> --help`」または「`azure help <command> <subcommand>`」と入力して、コマンド ラインのオンライン ヘルプとオプションを使用します。
 
 > [!NOTE]
 > これらの例には、リソース マネージャーでの VM のデプロイにおいて一般的に推奨される、テンプレート ベースの操作は含まれていません。 詳細については、[Azure Resource Manager での Azure CLI の使用](../articles/xplat-cli-azure-resource-manager.md)に関するページと「[Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
@@ -40,5 +41,5 @@ Resource Manager のコマンドとテンプレートで Azure CLI を使用し�
 | VM リソースの使用量の取得 |`azure vm list-usage [options] <location>` |
 | 使用可能なすべての VM サイズの取得 |`azure vm sizes [options]` |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 基本的な VM 管理の範囲を超えた CLI コマンドのその他の例については、 [Azure Resource Manager での Azure CLI の使用](../articles/virtual-machines/azure-cli-arm-commands.md)に関する記事をご覧ください。

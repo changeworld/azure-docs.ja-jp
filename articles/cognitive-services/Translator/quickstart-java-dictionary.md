@@ -1,21 +1,21 @@
 ---
-title: Translator Text と Java で翻訳の代替候補を探す | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と Java を使って、文脈中における用語の例と翻訳の代替候補を探します。
+title: 'クイック スタート: 翻訳の代替候補を探す - Translator Text、Java'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Translator Text API と Java を使って、文脈中における用語の例と翻訳の代替候補を探します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 0abb9c1a39b8183730bacde285eff05607754191
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c0e7fc3d51772df40bd5da7c762c15c40ad5744f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43771130"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127076"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-java"></a>クイック スタート: Java を使って翻訳の代替候補と用法を探す
 

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: sasolank
-ms.openlocfilehash: ce4fd27c89f529b9c12999689152c3025648d2ce
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: c85aa2f7a41511d809405f3b92c9ded2eb0693ad
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038397"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319865"
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>内部 VNET 内の API Management と Application Gateway の統合
 
-##<a name="overview"> </a> 概要
+## <a name="overview"> </a> 概要
 
 API Management サービスは、内部モードで仮想ネットワーク内に構成できます。これにより、API Management サービスを仮想ネットワーク内からのみアクセスできるようにします。 Azure Application Gateway は、レイヤー 7 のロード バランサーを提供する PAAS サービスです。 リバースプロキシ サービスとしての役目を果たすものであり、その機能の 1 つとして Web アプリケーション ファイアウォール (WAF) を備えています。
 
@@ -43,7 +43,7 @@ API Management サービスは、内部モードで仮想ネットワーク内�
 
 * 証明書 - API ホスト名の場合は pfx および cer、開発者ポータルのホスト名の場合は pfx です。
 
-##<a name="scenario"> </a> シナリオ
+## <a name="scenario"> </a> シナリオ
 
 この記事では、内部コンシューマーと外部コンシューマーの両方で単一の API Management サービスを使用し、オンプレミスとクラウド双方の API の単一フロントエンドとして機能させる方法について説明します。 さらに、Application Gateway のルーティング機能を使用して、これらの API のうち外部消費用に公開するものを一部のみ (例の中で緑色で記載しています) に制限する方法について説明します。
 
@@ -349,7 +349,7 @@ Application Gateway の DNS 名を使用して、この DNS 名に対して構�
 Get-AzureRmPublicIpAddress -ResourceGroupName $resGroupName -Name "publicIP01"
 ```
 
-##<a name="summary"> </a> まとめ
+## <a name="summary"> </a> まとめ
 VNET で構成された Azure API Management は、ホスト先がオンプレミスかクラウドかにかかわらず、すべての構成済みの API に単一のゲートウェイ インターフェイスを提供します。 Application Gateway を API Management と統合すると、インターネット上で特定の API に選択的にアクセスできる柔軟性が提供されるほか、API Management インスタンスのフロントエンドとして Web アプリケーション ファイアウォールを利用できるようになります。
 
 ##<a name="next-steps"> </a> 次のステップ

@@ -1,23 +1,23 @@
 ---
-title: Entity Search SDK Node のクイック スタート | Microsoft Docs
-description: Entity Search SDK コンソール アプリケーションの設定。
-titleSuffix: Azure cognitive services
+title: 'クイック スタート: Bing Entity Search SDK (Node)'
+titleSuffix: Azure Cognitive Services
+description: Node を使用した Entity Search SDK コンソール アプリケーションの設定。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 02/12/2018
 ms.author: v-gedod
-ms.openlocfilehash: 2904ecfed33334458f9b6a9ca2500cd0bfef13bc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1f2a5f6a1473cde40928ada6e30f6bd9b780543d
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378499"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814884"
 ---
-# <a name="entity-search-sdk-node-quickstart"></a>Entity Search SDK Node のクイック スタート
+# <a name="quickstart-bing-entity-search-sdk-with-node"></a>クイック スタート: Bing Entity Search SDK (Node)
 
 Bing Entity Search SDK には、エンティティ クエリと結果解析のための REST API 機能が含まれています。 
 

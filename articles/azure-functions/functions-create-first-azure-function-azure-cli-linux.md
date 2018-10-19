@@ -11,16 +11,16 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 608d15afaaff15ad960a0fe8b7a56854f41662b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1cf20a4a93ef1b5bfb9c7818f35be5e75e45a3d2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993410"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901092"
 ---
 # <a name="create-your-first-function-running-on-linux-using-the-azure-cli-preview"></a>Azure CLI を使用して Linux で実行する関数を初めて作成する (プレビュー)
 
-Azure Functions を使うと、既定の Azure App Service コンテナー内の Linux で関数をホストできます。 [独自のカスタム コンテナーを利用する](functions-create-function-linux-custom-image.md)こともできます。 この機能は現在プレビュー段階であり、同じくプレビュー段階の [Functions 2.0 ランタイム](functions-versions.md)が必要です。
+Azure Functions を使うと、既定の Azure App Service コンテナー内の Linux で関数をホストできます。 [独自のカスタム コンテナーを利用する](functions-create-function-linux-custom-image.md)こともできます。 この機能は現在プレビュー段階であり、[Functions 2.0 ランタイム](functions-versions.md)が必要です。
 
 このクイックスタート トピックでは、Azure CLI で Azure Functions を使って、既定の App Service コンテナーでホストされている Linux で初めての関数アプリを作成する方法について説明します。 関数コード自体は、GitHub サンプル リポジトリからイメージにデプロイされます。    
 
@@ -83,6 +83,18 @@ az functionapp create --name <app_name> --storage-account  <storage_name>  --res
 
 >[!NOTE]  
 >現在、サンプル リポジトリには、2 つのスクリプト ファイル [deploy.sh](https://github.com/Azure-Samples/functions-quickstart-linux/blob/master/deploy.sh) と [.deployment](https://github.com/Azure-Samples/functions-quickstart-linux/blob/master/.deployment) が含まれます。 .deployment ファイルは、デプロイ プロセスに対し、[カスタム デプロイ スクリプト](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)として deploy.sh を使うように指示します。 現在のプレビュー リリースでは、Linux イメージに関数アプリをデプロイするにはスクリプトが必要です。  
+
+## <a name="configure-the-function-app"></a>Function App を構成する
+
+GitHub リポジトリのプロジェクトには、Functions ランタイムのバージョン 1.x が必要です。 `FUNCTIONS_WORKER_RUNTIME` アプリケーション設定を `~1` に設定すると、関数アプリが最新の 1.x バージョンに固定されます。 [az functionapp config appsettings set](https://docs.microsoft.com/cli/azure/functionapp/config/appsettings#set) コマンドを使用して、アプリケーション設定を行います。
+
+次の Azure CLI コマンドの `<app_name> は、お使いの関数アプリの名前です。
+
+```azurecli-interactive
+az functionapp config appsettings set --name <app_name> \
+--resource-group myResourceGroup \
+--settings FUNCTIONS_WORKER_RUNTIME=~1
+```
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
 

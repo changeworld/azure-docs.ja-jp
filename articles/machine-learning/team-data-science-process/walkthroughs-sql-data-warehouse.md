@@ -4,7 +4,7 @@ description: SQL Data Warehouse を使用して予測分析を行う例を紹介
 services: machine-learning
 documentationcenter: ''
 author: deguhath
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: deguhath
-ms.openlocfilehash: d026fc8240a7f48a80c4f6bed37c33f4b6146565
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 9fcc4f9c8a3adc6443ea99606758a00ef8cc2e77
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838909"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49392745"
 ---
 # <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Azure 上の T-SQL と Python を使用した SQL Data Warehouse データ サイエンスのチュートリアル
 

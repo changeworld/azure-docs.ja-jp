@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: aefb9142e5954b2e4598c73eb36fa25de99e9584
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 255fe84f0d155902b2a3ac477a1e677efef42bb4
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452260"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386659"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -65,7 +65,7 @@ Linux エージェントは複数の OS で実行されますが、拡張機能�
 > [!IMPORTANT]
 > ゲスト ファイアウォールを使用して *168.63.129.1* へのアクセスをブロックした場合、上記のアクセス許可とは関係なく、拡張機能はエラーになります。
 
-エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 たとえば、拡張機能が Azure Storage へのアクセスを必要とする場合、[ストレージ](https://docs.microsoft.com/en-us/azure/virtual-network/security-overview#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
+エージェントは、拡張機能パッケージおよびレポート ステータスをダウンロードするためだけに使用できます。 たとえば、拡張機能のインストール時に GitHub からスクリプトをダウンロードする必要がある場合 (カスタム スクリプト)、または Azure Storage へのアクセスが必要な場合 (Azure Backup) は、追加のファイアウォール/ネットワーク セキュリティ グループ ポートが開かれている必要があります。 拡張機能はそれぞれ、独自のアプリケーションになっているため、要件も異なります。 たとえば、拡張機能が Azure Storage へのアクセスを必要とする場合、[ストレージ](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)の Azure NSG サービス タグを使用してアクセスを許可できます。
 
 エージェントのトラフィック要求をリダイレクトするために、Linux エージェントはプロキシ サーバーのサポートを備えています。 ただし、このプロキシ サーバーのサポートは拡張機能には適用されません。 プロキシを使用するには、個々の拡張機能を構成する必要があります。
 
@@ -259,7 +259,7 @@ Goal state agent: 2.2.18
 
 'Goal state agent' は自動更新バージョンです。
 
-エージェントの自動更新を常に有効にする ([AutoUpdate.Enabled=y](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent)) ことを強くお勧めします。 有効にしていない場合、エージェントを手動で更新し続ける必要があり、バグおよびセキュリティの修正プログラムは提供されません。
+エージェントの自動更新を常に有効にする ([AutoUpdate.Enabled=y](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)) ことを強くお勧めします。 有効にしていない場合、エージェントを手動で更新し続ける必要があり、バグおよびセキュリティの修正プログラムは提供されません。
 
 #### <a name="extension-updates"></a>拡張機能の更新プログラム
 
@@ -408,7 +408,7 @@ az vm extension delete \
 | Linux 用カスタム スクリプト拡張機能 |Azure 仮想マシンに対してスクリプトを実行します。 |[Linux 用カスタム スクリプト拡張機能](custom-script-linux.md) |
 | VM アクセス拡張機能 |Azure 仮想マシンへのアクセスを回復します。 |[VM アクセス拡張機能](https://github.com/Azure/azure-linux-extensions/tree/master/VMAccess) |
 | Azure 診断拡張機能 |Azure 診断を管理します |[Azure 診断拡張機能](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
-| Azure VM アクセス拡張機能 |ユーザーと資格情報を管理します。 |[Linux 用 VM アクセス拡張機能](https://azure.microsoft.com/en-us/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
+| Azure VM アクセス拡張機能 |ユーザーと資格情報を管理します。 |[Linux 用 VM アクセス拡張機能](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
 ## <a name="next-steps"></a>次の手順
 

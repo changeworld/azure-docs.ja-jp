@@ -3,8 +3,8 @@ title: キャッシュ規則で Azure CDN キャッシュの動作を制御す�
 description: CDN のキャッシュ規則を使って、グローバルと、URL パスやファイル拡張子などの条件付きの両方で、既定のキャッシュ期限切れ動作を設定または変更することができます。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.service: cdn
 ms.workload: tbd
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
-ms.author: v-deasim
-ms.openlocfilehash: 4095ed763de378a673908d033d87b2aa6d72f13c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.author: magattus
+ms.openlocfilehash: 10275b2938ce66a2816b1d4a5589a5e88ee22e80
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35260008"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093920"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>キャッシュ規則で Azure CDN キャッシュの動作を制御する
 
@@ -56,8 +56,7 @@ Azure Content Delivery Network (CDN) には、ファイルのキャッシュ方�
 
 - **[キャッシュのバイパス]**: キャッシュを行わず、もともと指定されているキャッシュ ディレクティブ ヘッダーを無視します。
 
-- 
-  **[オーバーライド]**: もともと指定されているキャッシュ ディレクティブ ヘッダーを無視し、代わりに指定したキャッシュ期間を使います。
+- **[オーバーライド]**: もともと指定されているキャッシュ ディレクティブ ヘッダーを無視し、代わりに指定したキャッシュ期間を使います。
 
 - **[存在しない場合に設定]**: キャッシュ ディレクティブ ヘッダーがもともと指定されていた場合はそれに従い、指定されていなかった場合は、設定したキャッシュ期間を使います。
 
@@ -68,8 +67,7 @@ Azure Content Delivery Network (CDN) には、ファイルのキャッシュ方�
 ## <a name="cache-expiration-duration"></a>キャッシュの有効期間
 グローバル キャッシュ規則とカスタム キャッシュ規則では、日数、時間、分、および秒でキャッシュの有効期間を指定できます。
 
-- 
-  **[オーバーライド]** と **[存在しない場合に設定]** の**キャッシュ動作**設定の場合、有効なキャッシュ期間は 0 秒から 366 日の範囲です。 値が 0 秒の場合は、CDN はコンテンツをキャッシュしますが、要求ごとに送信元のサーバーを再検証する必要があります。
+- **[オーバーライド]** と **[存在しない場合に設定]** の**キャッシュ動作**設定の場合、有効なキャッシュ期間は 0 秒から 366 日の範囲です。 値が 0 秒の場合は、CDN はコンテンツをキャッシュしますが、要求ごとに送信元のサーバーを再検証する必要があります。
 
 - **[キャッシュのバイパス]** 設定の場合は、キャッシュ期間は自動的に 0 秒に設定されて、変更できません。
 

@@ -6,15 +6,15 @@ author: seanmck
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: overview
-ms.date: 07/19/2018
+ms.date: 10/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 953d1dfd633f2fee52a2e6d197c6f32e7ab053f7
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 33d6d89e91ecdec00c1b17ecddf91128e9d07526
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160452"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802102"
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -24,7 +24,7 @@ Azure Container Instances は、単純なアプリケーション、タスク自
 
 ## <a name="fast-startup-times"></a>高速なスタートアップ時間
 
-コンテナーは、スタートアップにおいて、仮想マシンよりもはるかに優れています。 Azure Container Instances を使用すると、VM をプロビジョニングして管理する必要なく、数秒で Azure でコンテナーを開始できます。
+コンテナーは、スタートアップにおいて、仮想マシン (VM) よりもはるかに優れています。 Azure Container Instances を使用すると、VM をプロビジョニングして管理する必要なく、数秒で Azure でコンテナーを開始できます。
 
 ## <a name="public-ip-connectivity-and-dns-name"></a>パブリック IP 接続と DNS 名
 
@@ -54,9 +54,19 @@ Azure Container Instances では、長期的なサービス チャネル (LTSC) 
 
 Azure Container Instances は、ホスト コンピューター、ローカル ネットワーク、ストレージ、およびライフサイクルを共有する[複数コンテナー グループ](container-instances-container-groups.md)のスケジュール設定をサポートします。 これにより、メイン アプリケーション コンテナーを、サイドカーのように主要な機能と併走しながら補助的な役割をつかさどるコンテナー (ログ記録など) と結合することができます。
 
+## <a name="virtual-network-deployment-preview"></a>仮想ネットワークのデプロイ (プレビュー)
+
+これは [Azure 仮想ネットワークにコンテナー インスタンスをデプロイ](container-instances-vnet.md)する機能です。Azure Container Instances の機能であり、現在はプレビュー段階となっています。 コンテナー インスタンスを仮想ネットワーク内のサブネットにデプロイすることで、オンプレミス上のリソースとの ([VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) または [ExpressRoute](../expressroute/expressroute-introduction.md) 経由での) 通信も含め、仮想ネットワークに存在する他のリソースとの通信を安全に行うことができます。
+
+> [!IMPORTANT]
+> 仮想ネットワークに対するコンテナー グループのデプロイは現在プレビュー段階であり、いくつかの[制限が適用](container-instances-vnet.md#preview-limitations)されます。 プレビュー版は、[追加使用条件][terms-of-use]に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+
 ## <a name="next-steps"></a>次の手順
 
 クイックスタート ガイドを使用して、1 つのコマンドでコンテナーを Azure にデプロイしてみてください。
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances のクイックスタート](container-instances-quickstart.md)
+
+<!-- LINKS - External -->
+[terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

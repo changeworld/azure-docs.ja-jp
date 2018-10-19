@@ -12,15 +12,15 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/06/2018
+ms.date: 010/01/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: da9e1ce17e21f4d87286c0be5d425419f6ed0300
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 1af4cdb361c1db378991201fc42f17dcbf67fe67
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408512"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238767"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure で Service Fabric クラスターをスケーリングする
 
@@ -121,7 +121,7 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 > [!NOTE]
 > このパートは *Bronze* 耐久性レベルにのみ適用されます。 耐久性の詳細については、[Service Fabric クラスターの容量計画][durability]に関する記事をご覧ください。
 
-仮想マシン スケール セットをスケールインする場合、スケール セットでは (ほとんどの場合) 最後に作成された仮想マシン インスタンスが削除されます。 したがって、条件に合った最後に作成された Service Fabric ノードを検索する必要があります。 この最後のノードを検索するには、Service Fabric ノードで最大の `NodeInstanceId` プロパティ値をチェックします。 次のコードの例は、ノード インスタンスでソートし、最大の ID 値を持つインスタンスの詳細を返します。
+クラスターのノードをアップグレード ドメインと障害ドメインに均等に分散させ続け、それによって均等な使用を実現するためには、最も最近作成されたノードが最初に削除されるようにする必要があります。 言い換えれば、ノードは作成とは逆の順序で削除される必要があります。 最も最近作成されたノードは、`virtual machine scale set InstanceId` プロパティの値が最大のノードです。 下のコード例では、最も最近作成されたノードが返されます。
 
 ```powershell
 Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
@@ -232,7 +232,7 @@ sfctl node remove-state --node-name _nt1vm_5
 
 ### <a name="scale-in-the-scale-set"></a>スケール セットのスケールイン
 
-Service Fabric ノードがクラスターから削除されたので、仮想マシン スケール セットをスケールインできます。 次の例では、スケール セットの容量が 1 ずつ減少します。
+これで Service Fabric ノードがクラスターから削除されたので、仮想マシン スケール セットをスケールインできます。 次の例では、スケール セットの容量が 1 ずつ減少します。
 
 ```powershell
 $scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm

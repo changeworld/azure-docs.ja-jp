@@ -1,6 +1,6 @@
 ---
 title: Azure Storage を使用して PaaS アプリケーションをセキュリティで保護する | Microsoft Docs
-description: " PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage のセキュリティ ベスト プラクティスについて説明します。 "
+description: PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage のセキュリティ ベスト プラクティスについて説明します。
 services: security
 documentationcenter: na
 author: TomShinder
@@ -12,52 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/20/2018
+ms.date: 09/28/2018
 ms.author: TomShinder
-ms.openlocfilehash: ffc04973a003c65f52f3387292f11fede65edce3
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: ac01aaca8c147b1f474b59ac57424f5cdc5f8a8d
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36295297"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451869"
 ---
-# <a name="securing-paas-web-and-mobile-applications-using-azure-storage"></a>Azure Storage を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する
-
-この記事では、PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage の一連のセキュリティ ベスト プラクティスについて説明します。 このベスト プラクティスは、Azure に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
-
-[Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)には、Azure Storage とセキュリティに関する詳細な情報が記載されています。  この記事では、セキュリティ ガイドに記載されているいくつかの概念をおおまかに説明し、セキュリティ ガイドへのリンクなど、詳細を確認するためのソースを紹介しています。
-
-## <a name="azure-storage"></a>Azure Storage
+# <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Azure Storage を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護するベスト プラクティス
+この記事では、PaaS (platform-as-a-service) の Web アプリケーションとモバイル アプリケーションをセキュリティ保護するための、Azure Storage の一連のセキュリティ ベスト プラクティスについて説明します。 このベスト プラクティスは、Azure に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
 Azure は、オンプレミスでは簡単に実現できない方法で、ストレージをデプロイして使用することを可能にしています。 Azure Storage を使用すれば、比較的少ない労力で高レベルのスケーラビリティと可用性を実現できます。 Azure Storage は、Windows と Linux の Azure Virtual Machines の基盤となるだけでなく、大規模な分散アプリケーションもサポートしています。
 
 Azure Storage では、4 つのサービスが提供されます。Blob Storage、Table Storage、Queue Storage、および File Storage です。 詳細については、「[Introduction to Microsoft Azure Storage (Microsoft Azure Storage の概要)](../storage/storage-introduction.md)」をご覧ください。
 
-## <a name="best-practices"></a>ベスト プラクティス
+[Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)には、Azure Storage とセキュリティに関する詳細な情報が記載されています。 このベスト プラクティス記事では、セキュリティ ガイドに記載されているいくつかの概念をおおまかに説明し、セキュリティ ガイドへのリンクなど、詳細を確認するためのソースを紹介しています。
 
 この記事では、以下のベスト プラクティスを扱います。
 
-- アクセスの保護:
-   - Shared Access Signatures (SAS)
-   - ロール ベースのアクセス制御 (RBAC)
+- Shared Access Signatures (SAS)
+- ロール ベースのアクセス制御 (RBAC)
+- 価値の高いデータのクライアント側暗号化
+- Storage Service Encryption
 
-- ストレージ暗号化:
-   - 価値の高いデータのクライアント側暗号化
-   - Storage Service Encryption
 
-## <a name="access-protection"></a>アクセスの保護
-
-### <a name="use-shared-access-signature-instead-of-a-storage-account-key"></a>ストレージ アカウント キーの代わりに Shared Access Signature を使用する
-
-通常、IaaS ソリューションでは、Windows Server または Linux の仮想マシンの実行中は、アクセス制御メカニズムを使用して漏えいや改ざんの脅威からファイルを保護します。 Windows では[アクセス制御リスト (ACL)](../virtual-network/virtual-networks-acl.md) を使用し、Linux ではおそらく [chmod](https://en.wikipedia.org/wiki/Chmod) を使用することになります。 基本的には、データ センターにあるサーバーのファイルを保護するのであれば、これが現在取り得る適切な手段です。
-
-PaaS の場合は異なります。 Microsoft Azure にファイルを格納する最も一般的な方法の 1 つは、[Azure Blob Storage](../storage/storage-dotnet-how-to-use-blobs.md) を使用することです。 Blob Storage と他のファイル ストレージとの違いは、ファイル I/O と、ファイル I/O を含めた保護方法です。
-
-アクセス制御は非常に重要です。 Azure Storage のアクセス制御のために、[ストレージ アカウント作成](../storage/common/storage-create-storage-account.md)時に、システムは 2 つの 512 ビット ストレージ アカウント キー (SAK) を生成します。 このレベルのキーの冗長性があれば、ルーチン キーの交換中にサービスを中断せずに済みます。
+## <a name="use-a-shared-access-signature-instead-of-a-storage-account-key"></a>ストレージ アカウント キーの代わりに Shared Access Signature を使用する
+アクセス制御は非常に重要です。 Azure Storage のアクセス制御のために、ストレージ アカウント作成時に、2 つの 512 ビット ストレージ アカウント キー (SAK) を生成します。 このレベルのキーの冗長性があれば、ルーチン キーの交換中にサービスを中断せずに済みます。 
 
 ストレージ アクセス キーは優先度の高い機密情報であり、ストレージ アクセス制御の担当者のみがこれにアクセスできるようにする必要があります。 悪意のあるユーザーがキーにアクセスできてしまうと、ストレージの制御を完全に奪われ、ストレージのファイルの置換、削除、追加が行われる危険があります。 これにはマルウェアや、お客様の組織や顧客を侵害する可能性のある他のタイプのコンテンツが含まれます。
 
-それでも、ストレージ内のオブジェクトにアクセスする手段は必要です。 より詳細なアクセス制御を行う必要がある場合は、[Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (SAS) が役立ちます。 SAS を使用すれば、事前に定義した期間に特定の許可を与えて、ストレージ内の特定のオブジェクトを共有できます。 Shared Access Signature では、次のことを定義できます。
+それでも、ストレージ内のオブジェクトにアクセスする手段は必要です。 より詳細なアクセス制御を行う必要がある場合は、Shared Access Signature (SAS) が役立ちます。 SAS を使用すれば、事前に定義した期間に特定の許可を与えて、ストレージ内の特定のオブジェクトを共有できます。 Shared Access Signature では、次のことを定義できます。
 
 - SAS が有効な間隔 (開始時刻と有効期限など)。
 - SAS によって付与されるアクセス許可。 たとえば、BLOB 上の SAS では BLOB への読み取りと書き込み許可がユーザーに付与されますが、アクセス許可は削除されません。
@@ -66,36 +52,29 @@ PaaS の場合は異なります。 Microsoft Azure にファイルを格納す�
 
 SAS を使用すれば、ストレージ アカウント キーを知らせることなく、望む方法でコンテンツを共有できます。 アプリケーションで常に SAS を使用すれば、ストレージ アカウント キーを侵害されることなくストレージ リソースを共有できます。
 
-詳細については、「[Using Shared Access Signatures (SAS) (Shared Access Signature (SAS) の使用)](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。 潜在的なリスクと、リスクを軽減するための推奨事項の詳細については、[SAS 使用時のベスト プラクティス](../storage/common/storage-dotnet-shared-access-signature-part-1.md)に関する記事をご覧ください。
+Shared Access Signature の詳細については、「[Shared Access Signatures の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。 
 
-### <a name="use-role-based-access-control"></a>ロールベースのアクセス制御を使用する
+## <a name="use-role-based-access-control"></a>ロールベースのアクセス制御を使用する
+アクセスを管理する別の方法として、[ロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC) を使用する方法があります。 RBAC を使用すれば、知る必要性と最小権限という 2 つのセキュリティ原則に基づいて、実際に必要となるアクセス許可を従業員に付与することに注力できます。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員は業務を効率的に遂行できなくなる可能性があります。 RBAC は、Azure の詳細なアクセス管理によってこの問題を解決します。 これは、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。
 
-Shared Access Signature (SAS) を使用すれば、ストレージ アカウント キーを知らせずに、ストレージ アカウントのオブジェクトに制限付きでアクセスする権限を他のクライアントに付与できることは既に述べました。 ストレージ アカウントに対する特定の操作に関連するリスクが、SAS の利点より重大である場合もあります。 別の方法でアクセスを管理した方が容易である場合もあります。
+Azure の組み込み RBAC ロールを使用して、ユーザーに権限を割り当てることができます。 例えば、クラウド事業者は、ストレージ アカウントを管理する必要がある場合はストレージ アカウント共同作業者ロール、従来のストレージ アカウントを管理する場合は従来のストレージ アカウント共同作業者ロールの使用します。 VM を管理する必要はあるが接続先の仮想ネットワークまたはストレージ アカウントを管理する必要がないというクラウド事業者は、作業者に仮想マシン共同作業者ロールを追加できます。
 
-アクセスを管理する別の方法として、[Azure のロールベースのアクセス制御](../role-based-access-control/overview.md) (RBAC) を使用する方法があります。 RBAC を使用すれば、知る必要性と最小権限という 2 つのセキュリティ原則に基づいて、実際に必要となるアクセス許可を従業員に付与することに注力できます。 アクセス許可が多すぎると、アカウントが攻撃者による悪用の対象になりかねません。 アクセス許可が少なすぎると、従業員は業務を効率的に遂行できなくなる可能性があります。 RBAC は、Azure の詳細なアクセス管理によってこの問題を解決します。 これは、データ アクセスにセキュリティ ポリシーを適用する必要がある組織にとって、絶対に欠かせないものです。
-
-Azure の組み込み RBAC ロールを利用して、ユーザーに権限を割り当てることができます。 クラウド事業者は、ストレージ アカウントを管理する必要がある場合はストレージ アカウント共同作業者ロール、従来のストレージ アカウントを管理する場合は従来のストレージ アカウント共同作業者ロールの使用を検討してください。 VM を管理する必要はあるが接続先の仮想ネットワークまたはストレージ アカウントを管理する必要がないというクラウド事業者は、作業者に仮想マシン共同作業者ロールを追加することを検討してください。
-
-RBAC などの機能を利用したデータ アクセス制御を適用しない場合、ユーザーに必要以上の権限が付与される可能性があります。 これにより、一部のユーザーが最初の段階でアクセスすべきではないデータにアクセスできてしまい、データのセキュリティ侵害につながる恐れがあります。
+RBAC などの機能を使用したデータ アクセス制御を適用しない場合、ユーザーに必要以上の権限が付与される可能性があります。 これにより、一部のユーザーが最初の段階でアクセスすべきではないデータにアクセスできてしまい、データのセキュリティ侵害につながる恐れがあります。
 
 RBAC の詳細については、次の記事をご覧ください。
 
-- [Azure のロールベースのアクセス制御](../role-based-access-control/role-assignments-portal.md)
-- [Azure ロールベースのアクセス制御の組み込みロール](../role-based-access-control/built-in-roles.md)
-- RBAC を使用してストレージ アカウントをセキュリティ保護する方法の詳細については、[Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)をご覧ください。
+- [RBAC と Azure portal を使用してアクセスを管理する](../role-based-access-control/role-assignments-portal.md)
+- [Azure リソースの組み込みロール](../role-based-access-control/built-in-roles.md)
+- [Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md) 
 
-## <a name="storage-encryption"></a>ストレージ暗号化
+## <a name="use-client-side-encryption-for-high-value-data"></a>価値の高いデータのクライアント側暗号化を使用する
+クライアント側暗号化を使用すると、Azure Storage にアップロードする前に転送中データをプログラムで暗号化でき、取得するときにデータをプログラムで複合化できます。 これは転送中のデータの暗号化ですが、保存データの暗号化も可能です。 クライアント側暗号化が最も安全にデータを暗号化できる方法ですが、アプリケーションのプログラムを変更し、キー管理プロセスを組み込む必要があります。
 
-### <a name="use-client-side-encryption-for-high-value-data"></a>価値の高いデータのクライアント側暗号化を使用する
+また、クライアント側暗号化では、暗号化キーを制御できる担当者を 1 人に限定できます。 独自の暗号化キーを生成し、管理することができます。 エンベロープ手法を使用して、Azure ストレージ クライアント ライブラリでコンテンツ暗号化キー (CEK) を生成し、キーの暗号化キー (KEK) を使用して CEK をラップ (暗号化) します。 KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルで管理することも、[Azure Key Vault](../key-vault/key-vault-whatis.md) に格納することもできます。
 
-クライアント側暗号化を使用すると、Azure Storage にアップロードする前に転送中データをプログラムで暗号化でき、ストレージから取得するときにデータをプログラムで複合化できます。  これは転送中のデータの暗号化ですが、保存データの暗号化も可能です。  クライアント側暗号化が最も安全にデータを暗号化できる方法ですが、アプリケーションのプログラムを変更し、キー管理プロセスを組み込む必要があります。
+クライアント側暗号化は、Java と .NET のストレージ クライアント ライブラリに組み込まれています。 クライアント アプリケーション内のデータの暗号化と、独自の暗号化キーの生成および管理の詳細については、「[Client-side encryption and Azure Key Vault for Microsoft Azure Storage (Microsoft Azure Storage のクライアント側暗号化と Azure Key Vault)](../storage/storage-client-side-encryption.md)」をご覧ください。
 
-また、クライアント側暗号化では、暗号化キーを制御できる担当者を 1 人に限定できます。  独自の暗号化キーを生成し、管理することができます。  クライアント側暗号化は、エンベロープ手法を使用して、Azure ストレージ クライアント ライブラリでコンテンツ暗号化キー (CEK) を生成し、キーの暗号化キー (KEK) を使用して CEK をラップ (暗号化) します。 KEK は、キー識別子によって識別され、非対称キー ペアまたは対称キーのどちらでもよく、ローカルで管理することも、[Azure Key Vault](../key-vault/key-vault-whatis.md) に格納することもできます。
-
-クライアント側暗号化は、Java と .NET のストレージ クライアント ライブラリに組み込まれています。  クライアント アプリケーション内のデータの暗号化と、独自の暗号化キーの生成および管理の詳細については、「[Client-Side Encryption and Azure Key Vault for Microsoft Azure Storage (Microsoft Azure Storage のクライアント側暗号化と Azure Key Vault)](../storage/storage-client-side-encryption.md)」をご覧ください。
-
-### <a name="storage-service-encryption"></a>Storage Service Encryption
-
+## <a name="enable-storage-service-encryption-for-data-at-rest"></a>保存データ用の Storage Service Encryption を有効にする
 File Storage の [Storage Service Encryption](../storage/storage-service-encryption.md) を有効にすると、データは自動的に AES-256 暗号化で暗号化されます。 Microsoft がすべての暗号化、復号化、キー管理を処理します。 この機能は、LRS と GRS という種類の冗長性を使用します。
 
 ## <a name="next-steps"></a>次の手順

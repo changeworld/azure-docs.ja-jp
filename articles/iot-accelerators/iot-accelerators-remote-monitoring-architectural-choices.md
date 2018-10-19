@@ -6,14 +6,14 @@ manager: camerons
 ms.author: timlav
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 04/30/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6c4bf0e4bf0a6c1a791cf762ec9bb44ed5c0b1bd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 09c5981701ffdee5f2e5dba47cc98c91d5df7526
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627690"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603908"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>リモート監視のアーキテクチャの選択
 
@@ -40,7 +40,10 @@ Azure IoT Hub は、リモート監視ソリューションのクラウド ゲ�
 ストリーム処理については、リモート監視ソリューションでは複雑なルールの処理に Azure Stream Analytics を使用します。  シンプルなルールを希望するお客様向けに、シンプルなルールの処理をサポートするカスタム マイクロサービスも用意していますが、そのセットアップは既定のデプロイには含まれていません。 リファレンス アーキテクチャでは、単純なルールの処理には Azure Functions を使用し、複雑なルールの処理には Azure Stream Analytics (ASA) を使用することを推奨しています。  
 
 ### <a name="storage"></a>Storage
-ストレージには、コールド ストレージ、ウォーム ストレージ、ルール ストレージ、アラームのすべてのストレージ ニーズに対して Azure Cosmos DB を使用します。 リファレンス アーキテクチャの推奨に従って、現在 Azure Blob Storage への移行を進めています。  Azure Time Series Insights や Azure Data Lake などのソリューションは多くの用途に適していますが、IoT アプリケーション向けの推奨の汎用ウォーム ストレージ ソリューションは Azure Cosmos DB です。
+ストレージに対しては、リモート監視ソリューション アクセラレータは Azure Time Series Insights と Azure Cosmos DB の両方を使用します。 Azure Time Series Insights は、接続されたデバイスから IoT Hub を介して送信されるメッセージを格納します。 このソリューション アクセラレータでは、コールド ストレージ、ルール定義、アラーム、構成設定など、その他のすべてのストレージに Azure Cosmos DB を使用します。 Azure Time Series Insights や Azure Data Lake などのソリューションは多くの用途に適していますが、IoT アプリケーション向けの推奨の汎用ウォーム ストレージ ソリューションは Azure Cosmos DB です。 Azure Time Series Insights を使用すると、傾向や異常に焦点を当てることで時系列のセンサー データのより深い分析情報を得ることができ、根本原因の分析を行ってコストのかかるダウンタイムを防ぐことができます。 
+
+> [!NOTE]
+> Azure China クラウドでは、現在、Time Series Insights はご利用になれません。 Azure China クラウドでの新しいリモート監視ソリューション アクセラレータのデプロイでは、すべてのストレージに Cosmos DB を使用します。
 
 ### <a name="business-integration"></a>ビジネス統合
 リモート監視ソリューションのビジネス統合は、ウォーム ストレージに配置されるアラームの生成に制限されています。 このソリューションを Azure Logic Apps と統合することで、さらなるビジネス統合を実行できます。

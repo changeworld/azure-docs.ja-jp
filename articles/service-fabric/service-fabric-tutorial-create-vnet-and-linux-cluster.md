@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 27600cd4656f70b4cd01745667c0e0fd2a2f4997
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 33b95c1b0e3d654ce8bb6eda3e96b7b3e9c9bc13
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405821"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831485"
 ---
 # <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>チュートリアル: Azure 仮想ネットワークに Linux Service Fabric クラスターをデプロイする
 
@@ -85,7 +85,7 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 
 ### <a name="service-fabric-cluster"></a>Service Fabric クラスター
 
-次の特性を備えた Linux クラスターがデプロイされます。
+**Microsoft.ServiceFabric/clusters** リソースでは、以下の特性によって Linux クラスターがデプロイされます。
 
 * 単一ノード型
 * プライマリ ノード型に 5 つのノード (テンプレート パラメーターで構成可能)
@@ -99,7 +99,7 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-ロード バランサーがデプロイされ、次のポートのプローブと規則が設定されます。
+**Microsoft.Network/loadBalancers** リソースでは、ロード バランサーが構成され、以下のポートに対してプローブとルールが設定されます。
 
 * クライアント接続エンドポイント: 19000
 * HTTP ゲートウェイ エンドポイント: 19080
@@ -108,7 +108,7 @@ Azure Key Vault を使用して、Azure で Service Fabric クラスター用の
 
 ### <a name="virtual-network-and-subnet"></a>仮想ネットワークとサブネット
 
-仮想ネットワークとサブネットの名前は、テンプレート パラメーターで宣言されています。  仮想ネットワークとサブネットのアドレス空間もテンプレート パラメーターで宣言されます。
+仮想ネットワークとサブネットの名前は、テンプレート パラメーターで宣言されています。  仮想ネットワークとサブネットのアドレス空間も、テンプレート パラメーターで宣言され、**Microsoft.Network/virtualNetworks** リソース内に構成されます。
 
 * 仮想ネットワークのアドレス空間: 10.0.0.0/16
 * Service Fabric サブネットのアドレス空間: 10.0.2.0/24

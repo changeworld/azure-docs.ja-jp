@@ -1,0 +1,111 @@
+items:
+- name: Azure IoT の基礎
+  href: /azure/iot-fundamentals
+- name: Azure Digital Twins
+  href: index.yml
+- name: 概要
+  items:
+  - name: Azure Digital Twins について
+    href: about-digital-twins.md
+- name: クイック スタート
+  items:
+  - name: 使用可能な部屋を確認する
+    href: quickstart-view-occupancy-dotnet.md
+- name: チュートリアル
+  items:
+  - name: Digital Twins によるビルディングの監視
+    items:
+    - name: デプロイと構成
+      href: tutorial-facilities-setup.md
+    - name: 状態のプロビジョニングと監視
+      href: tutorial-facilities-udf.md
+    - name: Logic Apps を使用した通知
+      href: tutorial-facilities-events.md
+    - name: TSI によるイベントの視覚化
+      href: tutorial-facilities-analyze.md
+- name: 概念
+  items:
+  - name: Digital Twins オブジェクト モデルと空間インテリジェンス グラフ
+    href: concepts-objectmodel-spatialgraph.md
+  - name: デバイスの接続性とテレメトリの受信
+    href: concepts-device-ingress.md
+  - name: データ処理とユーザー定義関数
+    href: concepts-user-defined-functions.md
+  - name: ルーティング イベントおよびメッセージ
+    href: concepts-events-routing.md
+  - name: パブリック プレビューのサービスの制限
+    href: concepts-service-limits.md
+  - name: セキュリティ
+    items:
+    - name: セキュリティのベスト プラクティス
+      href: security-best-practices.md
+    - name: ロールベースのアクセス制御
+      href: security-role-based-access-control.md
+    - name: ロールの割り当てを作成および管理する
+      href: security-create-manage-role-assignments.md
+    - name: 管理 API の認証
+      href: security-authenticating-apis.md
+- name: ハウツー ガイド
+  items:
+  - name: マルチテナント アプリケーションを有効にする方法
+    href: how-to-multitenant-applications.md
+  - name: ユーザー定義関数を作成する方法
+    href: how-to-user-defined-functions.md
+  - name: エンドポイントを使ってイベントとメッセージをルーティングする方法
+    href: how-to-egress-endpoints.md
+  - name: Digital Twins Swagger を使用する方法
+    href: how-to-use-swagger.md
+- name: 関連項目
+  items:
+  - name: 解決方法
+    items:
+    - name: IoT ソリューション アクセラレータ
+      href: /azure/iot-accelerators
+    - name: IoT Central
+      href: https://docs.microsoft.com/microsoft-iot-central/
+  - name: プラットフォーム サービス
+    items:
+    - name: IoT Hub
+      href: /azure/iot-hub
+    - name: IoT Hub Device Provisioning Service
+      href: /azure/iot-dps
+    - name: IoT サービスの SDK
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
+    - name: マップ
+      href: /azure/azure-maps
+    - name: Time Series Insights
+      href: /azure/time-series-insights
+  - name: Microsoft Edge
+    items:
+    - name: IoT Edge
+      href: /azure/iot-edge
+    - name: IoT デバイス SDK
+      href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
+- name: リソース
+  items:
+  - name: C# 用 Azure Digital Twins サンプル (.NET)
+    href: https://github.com/Azure-Samples/digital-twins-samples-csharp
+  - name: Azure Digital Twins の REST API
+    href: https://docs.westcentralus.azuresmartspaces.net/management/swagger
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/digital-twins/
+  - name: 料金計算ツール
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: スタック オーバーフロー
+    href: https://stackoverflow.com/questions/tagged/azure-digital-twins
+  - name: MSDN フォーラム
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=azuredigitaltwins
+  - name: 顧客事例
+    href: https://blogs.microsoft.com/iot/2018/09/24/announcing-azure-digital-twins-create-digital-replicas-of-spaces-and-infrastructure-using-cloud-ai-and-iot/
+  - name: Azure IoT デベロッパー センター
+    href: https://azure.microsoft.com/develop/iot/
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/?category=iot
+  - name: ビデオ
+    href: https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true
+ms.openlocfilehash: ac70217527d885eeaaa52d4715421d2560393d91
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49323031"

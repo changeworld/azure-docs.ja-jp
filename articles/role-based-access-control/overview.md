@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: d0d140a1656719b406567fee431d8e48a51852c5
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 37498394bc163852d397337cf5728b4941ae45a7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714453"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956508"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) とは
 
@@ -89,7 +89,7 @@ Azure では、複数のレベル ([管理グループ](../azure-resource-manage
 - [閲覧者](built-in-roles.md#reader)ロールをサブスクリプション スコープでグループに割り当てた場合、そのグループのメンバーは、サブスクリプション内のすべてのリソース グループとリソースを見ることができます。
 - [共同作成者](built-in-roles.md#contributor)ロールをリソース グループ スコープでアプリケーションに割り当てた場合、そのアプリケーションは、そのリソース グループ内のすべての種類のリソースを管理できますが、サブスクリプション内の他のリソース グループは管理できません。
 
-### <a name="role-assignment"></a>ロール割り当て
+### <a name="role-assignments"></a>ロールの割り当て
 
 "*ロールの割り当て*" は、アクセスの許可を目的として、特定のスコープで、ユーザー、グループ、またはサービス プリンシパルにロールの定義をバインドするプロセスです。 アクセスは、ロールの割り当てを作成することによって許可され、ロールの割り当てを削除することによって取り消されます。
 
@@ -98,6 +98,32 @@ Azure では、複数のレベル ([管理グループ](../azure-resource-manage
 ![アクセスを制御するためのロールの割り当て](./media/overview/rbac-overview.png)
 
 ロールの割り当ては、Azure portal、Azure CLI、Azure PowerShell、Azure SDK、または REST API を使用して作成できます。 各サブスクリプションには、最大 2,000 個のロールの割り当てを保持できます。 ロールの割り当てを作成および削除するには、`Microsoft.Authorization/roleAssignments/*` アクセス許可が必要です。 このアクセス許可は、[所有者](built-in-roles.md#owner)ロールまたは[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)ロールを通じて許可されます。
+
+## <a name="deny-assignments"></a>拒否割り当て
+
+これまでの RBAC は拒否のない許可のみのモデルでしたが、限定的にですが RBAC で拒否の割り当てがサポートされるようになりました。 ロールの割り当てと同様に、"*拒否割り当て*" ではアクセスの拒否を目的として、特定のスコープでユーザー、グループ、またはサービス プリンシパルに一連の拒否アクションがバインドされます。 ロールの割り当てでは "*許可される*" アクションのセットを定義しますが、拒否割り当てでは "*許可されない*" アクションのセットを定義します。 つまり、拒否割り当てでは、ロールの割り当てでアクセスを許可されている場合であっても、指定したアクションがユーザーによって実行されるのをブロックします。 ロールの割り当てより拒否割り当ての方が優先されます。
+
+現在、拒否割り当ては**読み取り専用**であり、Azure によってのみ設定されます。 独自の拒否割り当てを作成することはできませんが、有効なアクセス許可に影響を与える可能性があるので、拒否割り当てを一覧表示することはできます。 拒否割り当てに関する情報を取得するには、`Microsoft.Authorization/denyAssignments/read` アクセス許可が必要です。このアクセス許可は、ほとんどの[組み込みロール](built-in-roles.md#owner)に含まれています。 詳しくは、「[拒否割り当てについて](deny-assignments.md)」をご覧ください。
+
+## <a name="how-rbac-determines-if-a-user-has-access-to-a-resource"></a>ユーザーがリソースへのアクセス権を持っているどうかを RBAC が特定する方法
+
+管理プレーン上のリソースへのアクセス権をユーザーが持っているかどうかを判断するために RBAC が使用する手順の概要を次に示します。 これは、アクセスの問題のトラブルシューティングを行う場合に理解していると役に立ちます。
+
+1. ユーザー (またはサービス プリンシパル) は、Azure Resource Manager に対するトークンを取得します。
+
+    トークンには、ユーザーのグループ メンバーシップが含まれています (推移的なグループ メンバーシップを含みます)。
+
+1. ユーザーは、トークンを添付して Azure Resource Manager への REST API の呼び出しを行います。
+
+1. Azure Resource Manager では、アクション実行対象リソースに適用されるすべてのロール割り当てと拒否割り当てが取得されます。
+
+1. Azure Resource Manager は、このユーザーまたはユーザーのグループに適用されるロールの割り当てを絞り込み、このリソースに対してユーザーが持っているロールを特定します。
+
+1. Azure Resource Manager は、API 呼び出しでのアクションが、このリソースに対してユーザーが持っているロールに含まれるかどうかを判別します。
+
+1. 要求されたスコープでのアクションを含むロールをユーザーが持っていない場合、アクセスは許可されません。 それ以外の場合、Azure Resource Manager は拒否割り当てが適用されるかどうかを確認します。
+
+1. 拒否割り当てが適用される場合、アクセスはブロックされます。 それ以外の場合、アクセスは許可されます。
 
 ## <a name="next-steps"></a>次の手順
 

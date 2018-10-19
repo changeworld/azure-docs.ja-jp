@@ -1,27 +1,27 @@
 ---
-title: Azure Security Center のファイルの整合性の監視 (プレビュー) | Microsoft Docs
+title: Azure Security Center のファイルの整合性の監視 | Microsoft Docs
 description: " Azure Security Center のファイルの整合性の監視を有効にする方法を説明します。 "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2018
-ms.author: terrylan
-ms.openlocfilehash: 722a4fd11f35f04ed22d73638f07d15c49ea3c26
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.date: 09/21/2018
+ms.author: rkarlin
+ms.openlocfilehash: 56aa756230dc908157a5a3d244d379215935cd2f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161835"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124118"
 ---
-# <a name="file-integrity-monitoring-in-azure-security-center-preview"></a>Azure Security Center のファイルの整合性の監視 (プレビュー)
+# <a name="file-integrity-monitoring-in-azure-security-center"></a>Azure Security Center のファイルの整合性の監視
 このチュートリアルを使用して、Azure Security Center のファイルの整合性の監視 (FIM) を構成する方法を説明します。
 
 ## <a name="what-is-fim-in-security-center"></a>Security Center の FIM とは
@@ -183,6 +183,14 @@ Security Center では、ファイルとレジストリの変更を伴う既知�
 
 6. **[保存]** を選択します。
 
+## <a name="folder-and-path-monitoring-using-wildcards"></a>ワイルドカードを使用するフォルダーとパスの監視
+
+ワイルドカードを使用して、ディレクトリ全体の追跡を簡略化します。 ワイルドカードを使用するフォルダーの監視を構成する場合、次のルールが適用されます。
+-   複数のファイルを追跡するにはワイルドカードが必要です。
+-   ワイルドカードを使用できるのは、C:\folder\file or /etc/*.conf など、パスの最後のセグメントでのみです。
+-   環境変数に有効でないパスが含まれている場合、検証は成功しますが、インベントリの実行時にそのパスはエラーになります。
+-   パスを設定するときは、漠然としたパス (\* など) は避けてください。走査の対象になるフォルダーが膨大な数になります。
+
 ## <a name="disable-fim"></a>FIM を無効にする
 FIM を無効にすることができます。 FIM は、Azure Change Tracking ソリューションを使用して、ユーザーの環境内の変更を追跡して識別します。 FIM を無効にすることで、選択したワークスペースから Change Tracking ソリューションを削除します。
 
@@ -195,7 +203,7 @@ FIM を無効にすることができます。 FIM は、Azure Change Tracking �
 4. 無効にするには、**[削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
-この記事では、Security Center のファイルの整合性の監視 (FIM) を使用する方法について説明しました。 Security Center の詳細については、次を参照してください。
+この記事では、Security Center のファイルの整合性の監視 (FIM) を使用する方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
 * [セキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
 * [セキュリティに関する推奨事項の管理](security-center-recommendations.md) -- 推奨事項に従って Azure リソースを保護する方法について説明します。

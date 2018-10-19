@@ -5,15 +5,15 @@ services: site-recovery
 author: nsoneji
 manager: garavd
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: d5b3bf62999c197c437e55a66ee6ba935bdc6ea8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 40a8e2e6d994608d4aa26f6d9b3723c0ee27d3db
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39428532"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387244"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート 
 
@@ -90,8 +90,7 @@ Azure の料金総額に対して何らかの割引を受ける資格のある A
 このテーブルには、Windows VM の数と非 Windows VM の数、さらに、それぞれの DR ドリルのコンピューティング コストが表示されます。
 
 ### <a name="settings"></a>設定 
-
-  **[Using Managed disk]\(管理ディスクの使用\)**: DR ドリル時にマネージド ディスクが使用されているかどうかを指定する設定です。 既定値は **[はい]** です。 **-UseManagedDisks** を **[No]\(いいえ\)** に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
+**[Using Managed disk]\(管理ディスクの使用\)**: DR ドリル時にマネージド ディスクが使用されているかどうかを指定する設定です。 既定値は **[はい]** です。 **-UseManagedDisks** を **[No]\(いいえ\)** に設定した場合、非管理対象ディスクの料金がコスト計算に使用されます。
 
 **[Currency]\(通貨\)**: レポートの生成に使用される通貨。
 
@@ -144,7 +143,7 @@ VM を手動で追加するには、次の手順に従います。
 
 **[Number of DR-Drills in a year]\(年間 DR ドリル数\)**: 1 年間に実行する DR ドリルの回数。 既定では、年間 4 回です。 特定の VM の期間を変更できるほか、すべての VM に新しい値を適用することができます。 一番上の行に新しい値を入力し、**[Apply to all]\(すべてに適用\)** を選択してください。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。 
 
-**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**: 各 DR ドリルの期間。 [ディザスター リカバリーのソフトウェア アシュアランス特典](https://azure.microsoft.com/en-in/pricing/details/site-recovery)により、90 日ごとに 7 日が既定値となります。 特定の VM の期間を変更できるほか、すべての VM に新しい値を適用することができます。 一番上の行に新しい値を入力し、**[Apply to all]\(すべてに適用\)** を選択してください。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。
+**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**: 各 DR ドリルの期間。 [ディザスター リカバリーのソフトウェア アシュアランス特典](https://azure.microsoft.com/pricing/details/site-recovery)により、90 日ごとに 7 日が既定値となります。 特定の VM の期間を変更できるほか、すべての VM に新しい値を適用することができます。 一番上の行に新しい値を入力し、**[Apply to all]\(すべてに適用\)** を選択してください。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。
  
 **[OS の種類]**: VM のオペレーティングシステム (OS) の種類。 Windows または Linux を指定できます。 OS の種類が Windows の場合は、その VM に Azure ハイブリッド使用特典を適用できます。 
 

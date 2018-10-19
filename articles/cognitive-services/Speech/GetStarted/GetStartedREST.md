@@ -1,5 +1,6 @@
 ---
-title: REST を使用した Microsoft 音声認識 API の開始 | Microsoft Docs
+title: REST を使用した Bing Speech 認識 API の開始 | Microsoft Docs
+titlesuffix: Azure Cognitive Services
 description: REST を使用して Microsoft Cognitive Services の音声認識 API にアクセスし、音声をテキストに変換します。
 services: cognitive-services
 author: zhouwangzw
@@ -7,22 +8,24 @@ manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 53785cdfd75c23910802f2be20e6305817b3b097
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a9f74f4032a78ee51ea2a8f020cd1418bb3330ca
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373920"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345358"
 ---
-# <a name="get-started-with-speech-recognition-by-using-the-rest-api"></a>REST API を使用した音声認識を始めましょう
+# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>クイック スタート: Bing Speech 認識 REST API を使用する
 
-クラウド ベースの音声サービスを使用すれば、REST API を使用して音声をテキストに変換することにより、アプリケーションを開発できます。
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
+
+クラウドベースの Bing Speech Service を使用すれば、REST API を使用して音声をテキストに変換することにより、アプリケーションを開発できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Speech API にサブスクライブし、無料試用版サブスクリプション キーを取得する
+### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Speech API をサブスクライブし、無料試用版のサブスクリプション キーを取得する
 
 Speech API は、Cognitive Services (以前の Project Oxford) の一部です。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、**[Get API Key]**(API キーの取得) を選択してキーを取得します。 プライマリ キーおよびセカンダリ キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
 
@@ -60,14 +63,14 @@ https://speech.platform.bing.com/speech/recognition/<RECOGNITION_MODE>/cognitive
 
 サービスの URI の一部の例が、次の表に一覧表示されます。
 
-| 認識モード  | 言語 | 出力形式 | サービス URI |
+| 認識モード  | Language | 出力形式 | サービス URI |
 |---|---|---|---|
 | `interactive` | pt-BR | 既定値 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | `conversation` | en-US | 詳細 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |
 | `dictation` | fr-FR | シンプル | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
-> サービス URI は、アプリケーションでは、REST API を使用して、音声認識サービスを呼び出す場合にのみ必要です。 いずれかの[クライアント ライブラリ](GetStartedClientLibraries.md)を使用する場合、通常、どの URI が使用されるかを知っている必要はありません。 クライアント ライブラリは異なるサービス URI を使用することがあり、それぞれ特定のクライアント ライブラリにのみ適用できます。 詳細については、選択したクライアント ライブラリをご覧ください。
+> サービス URI は、アプリケーションでは、REST API を使用して、音声認識サービスを呼び出す場合にのみ必要です。 いずれかの[クライアント ライブラリ](GetStartedClientLibraries.md)を使用する場合、通常、どの URI が使用されるかを知っている必要はありません。 クライアント ライブラリは異なるサービス URI を使用することがあり、それぞれ特定のクライアント ライブラリにのみ適用できます。 詳しくは、ご使用のクライアント ライブラリをご覧ください。
 
 ### <a name="request-headers"></a>要求ヘッダー
 
@@ -95,7 +98,7 @@ Expect: 100-continue
 次の例では、音声 REST エンドポイントに音声認識要求を送信する方法を示します。 `interactive` 認識モードを使用します。
 
 > [!NOTE]
-> `YOUR_AUDIO_FILE` を、録音済みのオーディオ ファイルへのパスに置き換えます。 `YOUR_SUBSCRIPTION_KEY` を、お使いのサブスクリプション キーに置き換えます。
+> `YOUR_AUDIO_FILE` を、録音済みのオーディオ ファイルへのパスに置き換えます。 `YOUR_SUBSCRIPTION_KEY` を自身のサブスクリプション キーに置き換えます。
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/Powershell)
 
@@ -254,4 +257,4 @@ REST API にはいくつかの制限があります。
 
 ### <a name="license"></a>License
 
-すべての Cognitive Services SDK およびサンプルは、MIT ライセンスがあります。 詳細については、[ライセンス](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md)に関するページをご覧ください。
+すべての Cognitive Services SDK およびサンプルは、MIT ライセンスがあります。 詳しくは、[ライセンス](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md)に関するページをご覧ください。

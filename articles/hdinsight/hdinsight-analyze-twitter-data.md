@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: abf9cd311af141a646c56f452ded77a914bc1d2f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 294353cfcfba617ab19e703f11f35402bcf7ea82
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093300"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387583"
 ---
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>HDInsight での Hive を使用した Twitter データの分析
 ビッグ データの多くはソーシャル Website からもたらされます。 Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。
@@ -95,7 +95,7 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
 
 **ツイートを取得するには**
 
-1. Windows PowerShell Integrated Scripting Environment (ISE) を開きます  (Windows 8 のスタート画面では、「**PowerShell_ISE**」と入力してから、**[Windows PowerShell ISE]** をクリックします。 「[Start Windows PowerShell on Windows 8 and Windows](https://docs.microsoft.com/en-us/powershell/scripting/setup/starting-windows-powershell?view=powershell-6)」(Windows 8 と Windows での Windows PowerShell の起動) を参照してください。
+1. Windows PowerShell Integrated Scripting Environment (ISE) を開きます  (Windows 8 のスタート画面では、「**PowerShell_ISE**」と入力してから、**[Windows PowerShell ISE]** をクリックします。 「[Start Windows PowerShell on Windows 8 and Windows](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell?view=powershell-6)」(Windows 8 と Windows での Windows PowerShell の起動) を参照してください。
 2. 次のスクリプトをスクリプト ウィンドウにコピーします。
 
     ```powershell

@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/16/2017
+ms.date: 10/09/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 5ab5452aec5b0371caaf437b6e364ed7b922db3a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 9efa6dc8427c58c82702fd5b3449fcd4805bf9e3
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162259"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902095"
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -33,12 +33,12 @@ App Service on Linux では、開発者の生産性を向上させるために�
 
 | Language | サポートされているバージョン |
 |---|---|
-| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、9.4 |
+| Node.js | 4.4、4.5、4.8、6.2、6.6、6.9、6.10、6.11、8.0、8.1、8.2、8.8、8.9、8.11、9.4、10.1 |
 | Java * | 8.0 |
 | PHP | 5.6、7.0、7.2 |
+| Python (プレビュー) | 3.7 |
 | .NET Core | 1.0、1.1、2.0 |
 | Ruby | 2.3 |
-| Go | 1.0 |
 | Apache Tomcat | 8.5、9.0 |
 
 詳細については、「[App Service on Linux で Java Web アプリを作成する](https://docs.microsoft.com/azure/app-service/containers/quickstart-java)」を参照してください。
@@ -91,15 +91,25 @@ SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]**
 
 ## <a name="next-steps"></a>次の手順
 
-App Service on Linux の使用を開始するには、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
+以下の記事では、さまざまな言語で記述した Web アプリを使用して App Service on Linux での作業を開始することができます。
 
-* [Web App for Containers のカスタム Docker イメージを使用する方法](quickstart-docker-go.md)
-* [Azure App Service on Linux で .NET Core を使用する](quickstart-dotnetcore.md)
-* [Azure App Service on Linux で Ruby を使用する](quickstart-ruby.md)
-* [Azure App Service Web App for Containers の FAQ](app-service-linux-faq.md)
-* [Azure App Service on Linux での SSH のサポート](app-service-linux-ssh-support.md)
-* [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Web App for Containers による Docker Hub の継続的なデプロイ](./app-service-linux-ci-cd.md)
+* [.NET Core](quickstart-dotnetcore.md)
+* [PHP](quickstart-dotnetcore.md)
+* [Node.js](quickstart-nodejs.md)
+* [Java](quickstart-java.md)
+* [Python](quickstart-python.md)
+* [Ruby](quickstart-ruby.md)
+* [Go](quickstart-docker-go.md)
+* [複数コンテナー アプリ](quickstart-multi-container.md)
+
+App Service on Linux の詳細については、以下の記事も参照してください。
+
+* [App Service on Linux の FAQ](app-service-linux-faq.md)
+* [App Service on Linux での SSH のサポート](app-service-linux-ssh-support.md)
+* [App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Docker Hub の継続的なデプロイ](app-service-linux-ci-cd.md)
+
+質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png

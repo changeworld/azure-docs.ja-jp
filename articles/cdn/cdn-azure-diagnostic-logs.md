@@ -3,8 +3,8 @@ title: Azure 診断ログ | Microsoft Docs
 description: 顧客は、Azure CDN のログ分析を有効にすることができます。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
-ms.author: v-deasim
-ms.openlocfilehash: 0baa43977099af9c6c0d9c2e4c03abc121ec279d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: magattus
+ms.openlocfilehash: 6834222ec2befa305b558abf0976a1c9899a7086
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47097008"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093028"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -49,7 +49,7 @@ Azure 診断ログにより、基本的な使用メトリックを CDN エンド
 
 CDN コア分析を使用してログ記録を有効にするには、次の手順に従います。
 
-[Azure ポータル](http://portal.azure.com)にサインインします。 ワークフローの CDN をまだ有効にしていない場合は、[Azure CDN のプロファイルとエンドポイントを作成](cdn-create-new-endpoint.md)してから続行してください。
+[Azure Portal](http://portal.azure.com) にサインインします。 ワークフローの CDN をまだ有効にしていない場合は、[Azure CDN のプロファイルとエンドポイントを作成](cdn-create-new-endpoint.md)してから続行してください。
 
 1. Azure Portal で、**CDN プロファイル** に移動してください。
 

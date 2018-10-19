@@ -88,7 +88,7 @@ items:
         href: iot-accelerators-remote-monitoring-customize-service.md
       - name: グリッドの追加
         href: iot-accelerators-remote-monitoring-customize-grid.md
-      - name: フライアウトの追加
+      - name: ポップアップの追加
         href: iot-accelerators-remote-monitoring-customize-flyout.md
       - name: パネルの追加
         href: iot-accelerators-remote-monitoring-customize-panel.md
@@ -212,9 +212,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: IoT ソリューション アクセラレータのラーニング パス
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: ff8e7cea540fcb722b5cc68bd811acaec3fac070
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: e28f7e30378291c3384ddbd90af6fe02d1aa365b
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091721"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165337"

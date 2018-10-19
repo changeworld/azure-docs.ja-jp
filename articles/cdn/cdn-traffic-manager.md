@@ -3,8 +3,8 @@ title: Azure Traffic Manager を使用した複数の Azure CDN エンドポイ�
 description: Azure Traffic Manager を Azure CDN エンドポイントと共に設定する方法について説明します。
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2018
-ms.author: v-deasim
+ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 88739cb299e453e32c69f5d0d0189da849b345a7
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 2d184cc849eb3da60bbf0c387655da9fdf878853
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573877"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091608"
 ---
 # <a name="set-up-failover-across-multiple-azure-cdn-endpoints-with-azure-traffic-manager"></a>Azure Traffic Manager を使用した複数の Azure CDN エンドポイント間でのフェールオーバーの設定
 

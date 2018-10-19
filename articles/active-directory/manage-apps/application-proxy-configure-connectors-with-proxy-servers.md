@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2017
+ms.date: 09/12/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 7f9d74ce60d2a433f6bb63be4f131ac430452036
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e67428116c66c05d83efbb217d7ec81f75124051
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363416"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540846"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 
@@ -77,7 +77,7 @@ ms.locfileid: "39363416"
 
 環境内で WPAD を有効にし、適切に構成している場合、コネクタは送信プロキシ サーバーを自動的に検出して使用を試みます。 一方で、送信プロキシを経由するようにコネクタを明示的に構成することができます。
 
-これを行うには、次のコード例に示すように、C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config ファイルを編集し、*system.net* セクションを追加します。 ローカルのプロキシ サーバー名または IP アドレスとリッスンしているポートを反映するように、*proxyserver:8080* を変更します。
+これを行うには、次のコード例に示すように、C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config ファイルを編集し、*system.net* セクションを追加します。 ローカルのプロキシ サーバー名または IP アドレスとリッスンしているポートを反映するように、*proxyserver:8080* を変更します。 IP アドレスを使用している場合でも、値にはプレフィックス http:// を付ける必要があります。
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>

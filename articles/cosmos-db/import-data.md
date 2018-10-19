@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: 771c4a33603ddf262df3b35992d318d34de6c2dc
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: af6faa6abcc54ef11e066d3a348dac28b23c7af4
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698113"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079091"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>データ移行ツールを使用して Azure Cosmos DB にデータを移行する 
 
@@ -42,7 +42,9 @@ Azure Cosmos DB で使用する API を教えてください。
 
 * [Microsoft .NET Framework 4.51](https://www.microsoft.com/download/developer-tools.aspx) 以降
 
-* スループットを上げる: データの移行にかかる時間は、個別のコレクションまたは一連のコレクションに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 Azure Portal でスループットを上げることの詳細については、Azure Cosmos DB のパフォーマンス レベルと価格レベルに関するページを参照してください。
+* **スループットを上げる**: データの移行にかかる時間は、個別のコレクションまたは一連のコレクションに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 Azure Portal でスループットを上げることの詳細については、Azure Cosmos DB のパフォーマンス レベルと価格レベルに関するページを参照してください。
+
+* **Azure Cosmos DB リソースを作成する:** データの移行を開始する前に、Azure portal のすべてのコレクションを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行しようとしている場合は、Azure Cosmos DB コレクションの作成時に必ずパーティション キーを提供するようにしてください。
 
 ## <a id="Overviewl"></a>概要
 データ移行ツールはオープン ソース ソリューションで、次のような各種ソースからデータを Azure Cosmos DB にインポートします。
@@ -171,7 +173,7 @@ SQL ソース インポーター オプションを使用して、個々の SQL 
 
 ![SQL クエリ結果のスクリーンショット](./media/import-data/sqlqueryresults.png)
 
-Address.AddressType や Address.Location.StateProvinceName などのエイリアスに注目してください。 入れ子の区切り記号 "." を指定することで、インポート時に Address や Address.Location のサブドキュメントが作成されています。 Azure Cosmos DB で生成されるドキュメントの例を以下に示します。
+Address.AddressType や Address.Location.StateProvinceName などのエイリアスに注目してください。 入れ子の区切り記号 "." を指定することで、インポート ツールによって、インポート中に Address や Address.Location のサブドキュメントが作成されます。 Azure Cosmos DB で生成されるドキュメントの例を以下に示します。
 
 *{ "id": "956", "Name": "Finer Sales and Service", "Address": { "AddressType": "Main Office", "AddressLine1": "#500-75 O'Connor Street", "Location": { "City": "Ottawa", "StateProvinceName": "Ontario" }, "PostalCode": "K4B 1S2", "CountryRegionName": "Canada" } }*
 
@@ -192,7 +194,7 @@ SQL ソースの場合と同様、[入れ子の区切り記号] プロパティ�
 
 ![CSV サンプル レコードのスクリーンショット - CSV から JSON へ](./media/import-data/csvsample.png)
 
-DomainInfo.Domain_Name や RedirectInfo.Redirecting などのエイリアスに注目してください。 入れ子の区切り記号 "." を指定することで、インポート時に DomainInfo や RedirectInfo のサブドキュメントが作成されます。 Azure Cosmos DB で生成されるドキュメントの例を以下に示します。
+DomainInfo.Domain_Name や RedirectInfo.Redirecting などのエイリアスに注目してください。 入れ子の区切り記号 "." を指定することで、インポート ツールによって、インポート中に DomainInfo や RedirectInfo のサブドキュメントが作成されます。 Azure Cosmos DB で生成されるドキュメントの例を以下に示します。
 
 *{ "DomainInfo": { "Domain_Name": "ACUS.GOV", "Domain_Name_Address": "http://www.ACUS.GOV" }, "Federal Agency": "Administrative Conference of the United States", "RedirectInfo": { "Redirecting": "0", "Redirect_Destination": "" }, "id": "9cc565c5-ebcd-1c03-ebd3-cc3e2ecd814d" }*
 
@@ -522,6 +524,14 @@ Azure Cosmos DB JSON エクスポーターを使用して、使用可能な任�
       }
     ]
     }]
+
+JSON ファイルを Azure Blob ストレージにエクスポートするためのコマンドライン サンプルを以下に示します。
+
+```
+dt.exe /ErrorDetails:All /s:DocumentDB /s.ConnectionString:"AccountEndpoint=<CosmosDB Endpoint>;AccountKey=<CosmosDB Key>;Database=<CosmosDB database_name>" /s.Collection:<CosmosDB collection_name>
+/t:JsonFile /t.File:"blobs://<Storage account key>@<Storage account name>.blob.core.windows.net:443/<Container_name>/<Blob_name>"
+/t.Overwrite
+```
 
 ## <a name="advanced-configuration"></a>詳細な構成
 詳細な構成画面では、発生したエラーが書き込まれるログ ファイルの場所を指定します。 このページには、次の規則が適用されます。

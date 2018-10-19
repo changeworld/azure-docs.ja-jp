@@ -6,25 +6,25 @@ keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 07/20/2018
+ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5732f6986750dfee49084e2744052bb54e3a8139
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 3ec7f6043c1d2e8e8f090ffc60822768ab9bc9d9
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382569"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984003"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge の C モジュールを開発し、デバッグする
 
 ビジネス ロジックを Azure IoT Edge のモジュールにすることができます。 この記事では、主なツールとして Visual Studio Code (VS Code) を使用して C モジュールを開発してデバッグする方法を説明します。
 
 ## <a name="prerequisites"></a>前提条件
-この記事では、Windows または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 また、開発マシンで IoT Edge デバイスをシミュレートします。
+この記事では、Windows または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 また、IoT Edge のセキュリティ デーモンを使った開発マシンで IoT Edge デバイスをシミュレートします。
 
 > [!NOTE]
-> このデバッグに関する記事では、モジュール コンテナーのプロセスをアタッチして、これを VS Code でデバッグする方法を示します。 デバッグできるのは、linux-amd64 コンテナー内の C モジュールだけです。 Visual Studio Code のデバッグ機能をよく知らない場合は、[デバッグ](https://code.visualstudio.com/Docs/editor/debugging)に関するページを確認してください。 
+> このデバッグに関する記事では、モジュール コンテナーのプロセスをアタッチして、これを VS Code でデバッグする方法を示します。 デバッグできるのは、linux-amd64 コンテナー内の C モジュールだけです。 Visual Studio Code のデバッグ機能をよく知らない場合は、[デバッグ](https://code.visualstudio.com/Docs/editor/debugging)に関するページを確認してください。
 
 この記事ではメインの開発ツールとして Visual Studio Code を使うため、VS Code をインストールします。 その後、必要な拡張機能を追加します。
 * [Visual Studio Code](https://code.visualstudio.com/) 
@@ -37,7 +37,7 @@ ms.locfileid: "43382569"
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) または [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
    * プロトタイプおよびテスト目的で、クラウド レジストリの代わりに Docker のローカル レジストリを使用できます。 
 
-デバイス上でお使いのモジュールをテストするには、1 つ以上の IoT Edge デバイスを使用するアクティブな IoT ハブが必要になります。 コンピューターを IoT Edge デバイスとして使用するには、[Windows](quickstart.md) または [Linux](quickstart-linux.md) 用のクイックスタートの手順に従ってください。 
+デバイス上でお使いのモジュールをテストするには、1 つ以上の IoT Edge デバイスを使用するアクティブな IoT ハブが必要になります。 コンピューターを IoT Edge デバイスとして使用するには、[Linux](quickstart-linux.md)用のクイックスタートの手順に従ってください。 
 
 ## <a name="create-a-new-solution-template"></a>新しいソリューション テンプレートを作成する
 
@@ -97,7 +97,7 @@ C テンプレートを独自のコードでカスタマイズする準備がで
     "createOptions": "{\"HostConfig\": {\"Privileged\": true}}"
     ```
 
-2. VS Code コマンド パレットで、**Edge: Build IoT Edge solution** コマンドを入力して実行します。
+2. VS Code コマンド パレットで、**Azure IoT Edge: Build and Push IoT Edge solution** コマンドを入力して実行します。
 3. コマンド パレットからお使いのソリューションの `deployment.template.json` ファイルを選択します。 
 4. Azure IoT Hub Device Explorer で、IoT Edge デバイス ID を右クリックします。 次に、**[Create deployment for Single Device]\(単一デバイスのデプロイの作成\)** を選択します。 
 5. ソリューションの **config** フォルダーを開きます。 `deployment.json` ファイルを選択します。 **[Select Edge Deployment Manifest]\(Edge 配置マニフェストの選択\)** を選択します。 
@@ -111,7 +111,7 @@ VS Code では、ワークスペースの `.vscode` フォルダーにある `la
 
 1. VS Code デバッグ ビューに移動します。 モジュールのデバッグ構成ファイルを選択します。 デバッグ オプション名は、**ModuleName Remote Debug (C)** のようになります。
 
-   ![デバッグ構成を選択します](./media/how-to-develop-c-module/debug-config.png).
+   ![デバッグ構成を選択します](./media/how-to-develop-c-module/debug-config.png)
 
 2. `main.c` に移動します。 このファイルにブレークポイントを追加します。
 

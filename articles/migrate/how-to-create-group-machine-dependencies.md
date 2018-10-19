@@ -4,24 +4,39 @@ description: Azure Migrate サービスでマシンの依存関係を使用し�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 09/21/2018
 ms.author: raynew
-ms.openlocfilehash: 4b83380558c10bc4f96d56f89a5cc2b7b53edc2e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: ac1cf5a30dee29f2737a05133aed774e86f78932
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621081"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163428"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>マシンの依存関係マッピングを使用したマシンのグループ化
 
 この記事では、[Azure Migrate](migrate-overview.md) でのアセスメントのために、マシンの依存関係を視覚化してマシンのグループを作成する方法について説明します。 アセスメントを実行する前に、マシンの依存関係を照合して信頼度レベルの高い VM のグループを評価する場合、通常はこの方法を使用します。 依存関係の視覚化により、Azure への移行を効率よく計画できます。 こうすることで、Azure に移行する際に、何も残すことがなく、突然障害が発生することもなくなります。 同時に移行する必要のある、相互依存しているシステムをすべて検出し、稼働中のシステムがまだユーザーにサービス提供しているのか、あるいは移行せず使用中止する対象となるのかを特定することができます。
 
 
-## <a name="prepare-machines-for-dependency-mapping"></a>依存関係マッピング用のマシンの準備
-マシンの依存関係を表示するには、評価するオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。 また、インターネットに接続されていないマシンの場合、[OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)をダウンロードしてインストールする必要があります。
+## <a name="prepare-for-dependency-visualization"></a>依存関係視覚化を準備する
+Azure Migrate は、マシンの依存関係を視覚化できるように Log Analytics の Service Map ソリューションを活用します。
+
+### <a name="associate-a-log-analytics-workspace"></a>Log Analytics ワークスペースを関連付ける
+依存関係の視覚化を利用するために、新規または既存の Log Analytics ワークスペースを Azure Migrate プロジェクトに関連付ける必要があります。 Migrate プロジェクトが作成されている同じサブスクリプションのみにワークステーションを作成する、またはアタッチすることができます。
+
+- プロジェクトに Log Analytics ワークスペースをアタッチするには、**[概要]** からプロジェクトの **[基本]** セクションに移動し、**[構成が必要]** をクリックします
+
+    ![Log Analytics ワークスペースを関連付ける](./media/concepts-dependency-visualization/associate-workspace.png)
+
+- 新しいワークスペースを作成する場合は、ワークスペースの名前を指定する必要があります。 ワークスペースは Migrate プロジェクトが作成されている同じサブスクリプションに、および Migration プロジェクトと同じ [Azure 地理](https://azure.microsoft.com/global-infrastructure/geographies/)のリージョンに作成されます。
+- **[既存のものを使用]** オプションでは、Service Map が使用可能なリージョンに作成されたワークスペースのみが一覧表示されます。 Service Map が使用できないリージョンにワークスペースがある場合、ドロップダウンには一覧されません。
+
+> [!NOTE]
+> Migration プロジェクトに関連付けられているワークスペースは変更できません。
 
 ### <a name="download-and-install-the-vm-agents"></a>VM エージェントをダウンロードしてインストールする
+ワークステーションを構成したら、評価するオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。 また、インターネットに接続されていないマシンの場合、[OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)をダウンロードしてインストールする必要があります。
+
 1. **[概要]** で **[管理]** > **[マシン]** をクリックし、必要なマシンを選択します。
 2. **[依存関係]** 列で、**[エージェントのインストール]** をクリックします。
 3. **[依存関係]** ページで、評価する各 VM に Microsoft Monitoring Agent (MMA) と依存関係エージェントをダウンロードしてインストールします。
@@ -40,6 +55,7 @@ Windows マシンにエージェントをインストールするには、次の
 4. **[エージェントのセットアップ オプション]** で、**[Azure Log Analytics]** > **[次へ]** の順にクリックします。
 5. **[追加]** をクリックして、新しい Log Analytics ワークスペースを追加します。 ポータルからコピーしたワークスペース ID とキーを貼り付けます。 **[次へ]** をクリックします。
 
+MMA でサポートされる Windows オペレーティング システムの一覧は、[ここ](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)をご覧ください。
 
 Linux マシンにエージェントをインストールするには、次の手順に従います。
 
@@ -48,6 +64,7 @@ Linux マシンにエージェントをインストールするには、次の�
 
     ```sudo sh ./omsagent-<version>.universal.x64.sh --install -w <workspace id> -s <workspace key>```
 
+MMA でサポートされる Linux オペレーティング システムの一覧は、[ここ](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)をご覧ください。
 
 ### <a name="install-the-dependency-agent"></a>依存関係エージェントをインストールする
 1. Windows マシンに依存関係エージェントをインストールするには、セットアップ ファイルをダブルクリックし、ウィザードに従います。
@@ -87,5 +104,6 @@ Linux マシンにエージェントをインストールするには、次の�
 
 ## <a name="next-steps"></a>次の手順
 
+- [依存関係の可視化の詳細については](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization)、よく寄せられる質問を確認します。
 - グループの依存関係を視覚化してグループを絞り込む[方法を確認](how-to-create-group-dependencies.md)をします。
 - 評価の計算方法の[詳細を確認](concepts-assessment-calculation.md)します。

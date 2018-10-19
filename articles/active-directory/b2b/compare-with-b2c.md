@@ -4,22 +4,28 @@ description: Azure Active Directory B2B コラボレーションと Azure AD B2C
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: overview
 ms.date: 03/15/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: b59dba541394c105370cfd3af0768a8477ddb4e6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 42fbb8b08a2dc24ced436c4a6104f03ae3bca1e9
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39347839"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982812"
 ---
 # <a name="compare-b2b-collaboration-and-b2c-in-azure-active-directory"></a>Azure Active Directory での B2B コラボレーションと B2C の比較
 
 Azure Active Directory (Azure AD) B2B コラボレーションと Azure AD B2C は、両方とも Azure AD で外部ユーザーと共同で作業できます。 しかし、どのような違いがあるのでしょうか。
+
+**Azure AD B2B** は、ファイルとリソースを外部ユーザーと安全に共有してコラボレーションできるようにすることを望んでいる企業向けです。 Azure 管理者が Azure portal で B2B を設定し、Azure AD が貴社と外部パートナー間のフェデレーションを処理します。 ユーザーは、職場または学校アカウント、または電子メール アカウントによる単純な招待と受諾プロセスを使用して、共有リソースにサインインします。
+ 
+**Azure AD B2C** は、主に顧客向けのアプリを作成する企業と開発者向けです。 Azure AD B2C では、開発者はアプリケーション用の完全な機能を備えた ID システムとして Azure AD を使用でき、顧客は既に確立している ID (Facebook や Gmail など) を使用してサインインできます。
+
+次の表に、詳細な比較を示します。
 
 
 B2B コラボレーション機能 |     Azure AD B2C スタンドアロン製品

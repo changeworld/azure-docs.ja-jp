@@ -1,22 +1,25 @@
 ---
-title: C# デスクトップ ライブラリを使用した Microsoft Speech Recognition API の利用 | Microsoft Docs
-description: Microsoft Speech Recognition API を使って音声をテキストに変換する、基本的な Windows アプリケーションを開発します。
+title: C# デスクトップ ライブラリを使用した Bing Speech Recognition API の利用 | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: Bing Speech Recognition API を使って音声をテキストに変換する、基本的な Windows アプリケーションを開発します。
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e59b0e25401fb5182edd52f82985ffed9052286d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f79b148558e7881f852ccd57916b0b0f31a98219
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373888"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342332"
 ---
-# <a name="get-started-with-the-speech-recognition-api-in-c35-for-net-on-windows"></a>Windows 上の .NET 用 C&#35; での Speech Recognition API の利用
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>クイック スタート: Windows 上の .NET 用に C&#35; で Bing Speech Recognition API を使用する
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 このページでは、Speech Recognition API を使って音声をテキストに変換する、基本的な Windows アプリケーションの開発方法について説明します。 クライアント ライブラリを使うと、リアルタイム ストリーミングが可能になります。つまり、クライアント アプリケーションがサービスに音声を送信する際に、部分的な認識結果を同時かつ非同期的に受信できるようになります。
 
@@ -89,7 +92,7 @@ Speech API は、Cognitive Services (以前の Project Oxford) の一部です�
 
 * **部分結果イベント**: このイベントは、ユーザーが言おうとしていることを Speech Service が予測するたびに呼び出されます。これは、ユーザーの発話 (`MicrophoneRecognitionClient` を使用した場合) やデータの送信 (`DataRecognitionClient` を使用した場合) が完了する前であっても呼び出されます。
 * **エラー イベント**: サービスがエラーを検出したときに呼び出されます。
-* **インテント イベント**: 最終的な認識結果が解析され、構造化された JSON インテントが生成された後、"WithIntent" クライアント (ShortPhrase モードの場合のみ) で呼び出されます。
+* **意図イベント**: 最終的な認識結果が解析され、構造化された JSON 意図が生成された後、"WithIntent" クライアント (ShortPhrase モードの場合のみ) で呼び出されます。
 * **結果イベント**:
   * `ShortPhrase` モードでは、このイベントは発話の完了後に呼び出され、n-best 結果を返します。
   * `LongDictation` モードでは、サービスによって特定された文の区切り目に基づいて、イベント ハンドラーが複数回呼び出されます。

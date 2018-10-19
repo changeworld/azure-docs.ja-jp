@@ -1,22 +1,23 @@
 ---
-title: Computer Vision API Python チュートリアル | Microsoft Docs
-description: Microsoft Cognitive Services で Jupyter Notebook を使用することで、Computer Vision API を Python で使用する方法について説明します。 人気のあるライブラリを使用して結果を視覚化します。
+title: 'チュートリアル: Computer Vision API Python'
+titlesuffix: Azure Cognitive Services
+description: Jupyter Notebook を使用することで、Computer Vision API を Python で使用する方法について説明します。 人気のあるライブラリを使用して結果を視覚化します。
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 02/25/2017
 ms.author: kefre
-ms.openlocfilehash: a093c2d066e70a8daf1fe1cd33ccf794ecb196af
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 59e88ecb253bc6da803ddf34a4a02229b99e259d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374064"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981713"
 ---
-# <a name="computer-vision-api-python-tutorial"></a>Computer Vision API Python チュートリアル
+# <a name="tutorial-computer-vision-api-python"></a>チュートリアル: Computer Vision API Python
 
 このチュートリアルでは、Python で Computer Vision API を使用する方法と、広く使われているいくつかのライブラリを使用して結果を視覚化する方法を示します。 Jupyter を使用してチュートリアルを実行します。 対話型の Jupyter Notebook を使い始める方法については、[Jupyter のドキュメント](http://jupyter.readthedocs.io/en/latest/index.html)を参照してください。 
 
@@ -30,7 +31,7 @@ ms.locfileid: "35374064"
 
 ### <a name="running-the-tutorial"></a>チュートリアルを実行する
 
-このノートブック使用するには、Computer Vision API のサブスクリプション キーが必要です。 サインアップするため、[サブスクリプション ページ](https://azure.microsoft.com/try/cognitive-services/)に移動します。 [サインイン] ページで、Microsoft アカウントを使用してサインインすると、サブスクライブして無料のキーを取得できます。 サインアップ プロセスを完了したら、ノートブックの変数のセクション (下の例を参照) にキーを貼り付けます。 プライマリ キーまたはセカンダリ キーのどちらでもかまいません。 キーは引用符で囲み、文字列になるようにしてください。
+このノートブック使用するには、Computer Vision API のサブスクリプション キーが必要です。 サインアップするため、[サブスクリプション ページ](https://azure.microsoft.com/try/cognitive-services/)に移動します。 [サインイン] ページで、Microsoft アカウントを使用してサインインすると、サブスクライブして無料のキーを取得できます。 サインアップ プロセスを完了したら、ノートブックの変数のセクション (下の例を参照) にキーを貼り付けます。 プライマリ キーとセカンダリ キーのどちらでもかまいません。 キーは引用符で囲み、文字列になるようにしてください。
 
 ```python
 # Variables

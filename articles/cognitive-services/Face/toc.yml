@@ -80,7 +80,7 @@ items:
     href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face
   - name: FAQ
     href: FAQ.md
-  - name: 価格
+  - name: 料金と制限
     href: https://azure.microsoft.com/pricing/details/cognitive-services/face-api
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/430315-face-api
@@ -92,9 +92,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: リリース ノート
     href: ReleaseNotes.md
-ms.openlocfilehash: fc83e1725be4969d12f244f865ecca64777c39e0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 493a08f156c41c2fc098ab265cc386dfc5390a39
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731994"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430002"

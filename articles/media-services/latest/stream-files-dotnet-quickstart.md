@@ -4,28 +4,26 @@ description: このクイック スタートの手順では、新しい Azure Me
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 keywords: Azure Media Services, ストリーム配信
 ms.service: media-services
 ms.workload: media
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/08/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 48f85311f38d7e4ab1414dfc22c111b92163740e
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 92321b5e919f6703cb481d88f312a20fc7c62826
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42024268"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49375464"
 ---
 # <a name="quickstart-stream-video-files---net"></a>クイック スタート: 動画ファイルをストリーム配信する - .NET
 
-> [!NOTE]
-> Azure Media Services の最新バージョンはプレビュー段階であり、v3 と呼ばれることがあります。 v3 API を使い始めるには、このクイック スタートの説明に従って、新しい Azure Media Services アカウントを作成する必要があります。 
-
-このクイック スタートは、Azure Media Services を使うとさまざまなブラウザーおよびデバイスへの動画のストリーム配信を簡単に始められることを示します。 このトピックのサンプルでは、HTTPS URL を使用してアクセスできるようにするコンテンツをエンコードします。 
+このクイック スタートでは、Azure Media Services を利用すると、さまざまなブラウザーおよびデバイスを対象とした動画のエンコードとストリーム配信の開始がいかに容易であるかを示します。 HTTPS URL、SAS URL、または Azure Blob Storage 内に存在するファイルへのパスを使って入力コンテンツを指定できます。
+このトピックのサンプルでは、HTTPS URL を使用してアクセスできるようにするコンテンツをエンコードします。 現在 AMS v3 では、HTTPS URL でのチャンク転送エンコーディングをサポートしていないことに注意してください。
 
 このクイック スタートを最後まで行うと、動画をストリーム配信できるようになります。  
 

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.component: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/11/18
+ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: e382f53678806aa3442151703277c3a57bb30830
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 1caf69ee822ec11e8797ca23c9c163d36344edc7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302279"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719989"
 ---
 # <a name="what-is-the-myapps-portal"></a>MyApps ポータルとは
 
@@ -49,7 +49,7 @@ MyApps ポータルにアクセスするには、`http://myapps.microsoft.com` �
 
 URL は、Azure AD と統合されたアプリケーションにサインインするすべてのユーザーに配布します。
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
 MyApps ポータルにアクセスするには、Azure AD で職場または学校アカウントによる認証を行う必要があります。 Azure AD で直接認証を行うことができます。 または、組織が Active Directory フェデレーション サービス (AD FS) などのテクノロジを使ってフェデレーションを構成している場合は、Windows Server Active Directory で認証を行うこともできます。
 
@@ -109,16 +109,6 @@ Azure または Office 365 のサブスクリプションを持っていて、Az
 
 > [!NOTE]
 > Azure AD とのフェデレーションをサポートするアプリケーション (Salesforce、Google Apps、Dropbox、Box、Concur、Workday、Office 365 など 70 を超えるアプリケーション) には、プラグインやモバイル アプリがなくても、事実上すべてのデバイスのすべての Web ブラウザーからサインインすることができます。 他の[MyApps ポータル エクスペリエンス](https://myapps.microsoft.com/)についても、マイ アプリ モバイル アプリがインストールされていないモバイル デバイスで使用できます。
->
->
-
-### <a name="my-apps-for-android"></a>Android 用のマイ アプリ
-
-Android 用のマイ アプリは、Android バージョン 4.1 以降を実行するすべての Android デバイスでサポートされています。  
-
-これは、[Google Play ストア](https://play.google.com/store/apps/details?id=com.microsoft.myapps)で入手できます。
-
-![Android 用のマイ アプリ][3]   
 
 ### <a name="my-apps-for-iphone-and-ipad"></a>IPhone および iPad 用のマイ アプリ
 
@@ -129,13 +119,13 @@ iOS 用のマイ アプリは、iOS バージョン 7 以降を実行するす�
 ![iOS 用のマイ アプリ][4]    
 
 
-## <a name="managed-browser-for-my-apps"></a>マイ アプリ用の Managed Browser
+## <a name="intune-managed-browser-for-my-apps"></a>マイ アプリ用の Intune Managed Browser
 
-マイ アプリは、Intune Managed Browser にも統合されています。 iOS および Android デバイス用の Intune Managed Browser は、モバイル デバイス上のデータの安全性を確保するうえで重要な役割を果たします。 ブラウザーを使用すると、会社の情報が含まれる Web ページを安全に表示して Web ページ内を移動できます。これはセキュリティで保護された Web 閲覧環境を提供するのに役立ちます。  
+マイ アプリは、Intune Managed Browser にも統合されています。 iOS デバイスと Android デバイス向けの Intune Managed Browser では、会社情報が含まれる可能性がある Web ページをより安全に表示、移動でき、Web 閲覧が安全になります。  
 
-Managed Browser のホーム ページおよびブックマークではマイ アプリに簡単にアクセスでき、目的のアプリケーションに到達するまでのクリック数が少なくなります。
+Managed Browser ホーム ページとブックマークの両方から [マイ アプリ] にアクセスできます。つまり、ほんの数回のクリックでアプリにアクセスできます。
 
-Intune Managed Browser は、[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) および [Google Play ストア](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser&hl=en)で入手できます。
+Intune Managed Browser は、[Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) および [Google Play ストア](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser)で入手できます。
 
 ![マイ アプリ用の Managed Browser][5]    
 
@@ -210,17 +200,16 @@ Azure Portal でアプリケーションの SSO を構成する場合、第 3 �
 
 ## <a name="next-steps"></a>次の手順
 
-- アプリケーション管理に関するトピックの一覧については、[Azure Active Directory でのアプリケーション管理に関する記事の索引](../active-directory-apps-index.md)をご覧ください。
+- アプリケーション管理に関する詳細については、「[Azure Active Directory でのアプリケーション管理](../manage-apps/what-is-application-management.md)」を参照してください。
  
 - SaaS アプリを Azure AD に統合する方法については、[SaaS アプリの統合方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)をご覧ください。
  
 - Azure AD でのアプリの管理について詳しくは、[Azure Active Directory でのシングル サインオンとアプリのアクセスの管理の概要](../manage-apps/what-is-single-sign-on.md)に関する記事をご覧ください。
  
-- ユーザーのプロビジョニングについて詳しくは、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../active-directory-saas-app-provisioning.md)」をご覧ください。
+- ユーザーのプロビジョニングについて詳しくは、「[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)」をご覧ください。
 
 <!--Image references-->
 [1]: ./media/active-directory-saas-access-panel-introduction/01.png
 [2]: ./media/active-directory-saas-access-panel-introduction/02.png
-[3]: ./media/active-directory-saas-access-panel-introduction/03.png
 [4]: ./media/active-directory-saas-access-panel-introduction/04.png
 [5]: ./media/active-directory-saas-access-panel-introduction/05.png

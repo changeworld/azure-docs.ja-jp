@@ -1,23 +1,23 @@
 ---
-title: Azure Cognitive Services、Bing Entity Search API の Python のクイック スタート | Microsoft Docs
-description: Azure 上の Cognitive Services で Bing Entity Search API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing Entity Search API (Python)'
+titlesuffix: Azure Cognitive Services
+description: Bing Entity Search API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 88e954af0254b158ea59a88ed4523e3b141a135e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 80265c883214812acbd0af3bd186a0fbd3703132
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377328"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814340"
 ---
-# <a name="quickstart-for-microsoft-bing-entity-search-api-with-python"></a>Python での Microsoft Bing Entity Search API のクイック スタート 
-<a name="HOLTop"></a>
+# <a name="quickstart-for-bing-entity-search-api-with-python"></a>Bing Entity Search API のクイック スタート (Python)
 
 この記事では、Python で [Bing Entity Search](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) API を使用する方法について説明します。
 
@@ -70,7 +70,7 @@ print (json.dumps(json.loads(result), indent=4))
 
 **応答**
 
-次の例で示すように、正常な応答が JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {

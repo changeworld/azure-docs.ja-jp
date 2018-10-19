@@ -13,12 +13,12 @@ ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: c08a0a4892d1c0f5780f5b6ef9cc437078489971
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1a886ff49c0ee0a087f03277b874caf1511a6020
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38547104"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267333"
 ---
 # <a name="import-an-api"></a>API のインポート
 

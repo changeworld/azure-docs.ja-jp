@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: d314c04a40155fccc99660bacdb9f646ce77b22f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a4e41408a3af2e6bb68c14f2e34bf1141bf349c1
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107590"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017809"
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>データのコピー ツールを使用してデータをコピーする 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -52,13 +52,9 @@ ms.locfileid: "43107590"
 1. **[バージョン]** で、**[V2]** を選択します。
 1. **[場所]** で、データ ファクトリの場所を選択します。 
 
-   このリストに表示されるのは、サポートされている場所のみです。 Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他の場所/リージョンに配置できます。
+   この一覧に表示されるのは、Data Factory でサポートされ、かつ Azure Data Factory のメタ データが格納される場所のみです。 Data Factory で使用する関連データ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他のリージョンで実行できることに注意してください。
 
-1. **[ダッシュボードにピン留めする]** をオンにします。     
 1. **作成**を選択します。
-1. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。 
-
-    ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media/quickstart-create-data-factory-copy-data-tool/deploying-data-factory.png)
 1. 作成が完了すると、**[Data Factory]** ページが表示されます。 **[作成と監視]** タイルを選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
    
    ![[作成と監視] タイルが表示された、データ ファクトリのホーム ページ](./media/quickstart-create-data-factory-copy-data-tool/data-factory-home-page.png)

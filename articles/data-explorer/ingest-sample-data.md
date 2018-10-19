@@ -2,18 +2,18 @@
 title: Azure のデータ エクスプローラーにサンプル データを取り込む
 description: Azure のデータ エクスプローラーに気象関連のサンプル データ (負荷) を取り込む方法を説明します。
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 7eb0e48a5b66775ac97ed0cab751db0ef367f667
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7fdd32f9263b4d1694a0516a98b681ba8744ab6b
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964617"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394580"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Azure のデータ エクスプローラーにサンプル データを取り込む
 
@@ -24,7 +24,7 @@ ms.locfileid: "46964617"
 
 ## <a name="prerequisites"></a>前提条件
 
-[テスト クラスターとデータベース](create-cluster-database-portal.md)
+[テスト用のクラスターとデータベース](create-cluster-database-portal.md)
 
 ## <a name="ingest-data"></a>データの取り込み
 
@@ -32,7 +32,7 @@ ms.locfileid: "46964617"
 
 1. [https://dataexplorer.azure.com](https://dataexplorer.azure.com) にサインインします。
 
-1. アプリケーションの左上にある **Add cluster** を選択します。
+1. アプリケーションの左上にある **[Add cluster]\(クラスターの追加\)** を選択します。
 
 1. **[Add cluster]** ダイアログ ボックスで `https://<ClusterName>.<Region>.kusto.windows.net/` の形式でラスターの URL を入力して､**[追加]** を選択します。
 

@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 84783472adda9a4a74670f0579790aac69feb23d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e48eac4cdc1e98e21a122850b1dc7d3e8f4efe07
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094996"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854526"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Functions を使用して Azure Storage キューにメッセージを追加する
 
@@ -25,7 +25,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 ![ストレージ エクスプローラーに表示されたキュー メッセージ](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを完了するには、以下が必要です。
 
@@ -39,15 +39,19 @@ Azure Functions では、入力および出力バインディングによって�
 
 1. Azure Portal で、「[Azure Portal で初めての関数を作成する](functions-create-first-azure-function.md)」で作成した Function App の Function App ページを開きます。 そのためには、**[すべてのサービス]、[Function App]** の順に選択して、関数アプリを選択します。
 
-2. 前のクイックスタートで作成した関数を選択します。
+1. 前のクイックスタートで作成した関数を選択します。
 
 1. **[統合] > [新しい出力] > [Azure Queue Storage]** の順に選択します。
 
 1. **[選択]** をクリックします。
-    
+
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. **[Azure Queue Storage の出力]** の下で、このスクリーンショットの次の表で指定されている設定を使用します。 
+1. メッセージ "**拡張機能がインストールされていません**" が表示された場合は、**[インストール]** を選択して、関数アプリに Storage バインディング拡張機能をインストールします。 これには 1 ～ 2 分ほどかかることがあります。
+
+    ![Storage バインディング拡張機能をインストールする](./media/functions-integrate-storage-queue-output-binding/functions-integrate-install-binding-extension.png)
+
+1. **[Azure Queue Storage の出力]** の下で、このスクリーンショットの次の表で指定されている設定を使用します。 
 
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -57,52 +61,58 @@ Azure Functions では、入力および出力バインディングによって�
     | **ストレージ アカウント接続** | AzureWebJobsStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |
     | **キュー名**   | outqueue    | ストレージ アカウント内の接続先のキューの名前。 |
 
-4. **[保存]** をクリックしてバインディングを追加します。
- 
+1. **[保存]** をクリックしてバインディングを追加します。
+
 出力バインディングが定義されたので、コードを更新し、バインディングを使用して、メッセージをキューに追加する必要があります。  
 
 ## <a name="add-code-that-uses-the-output-binding"></a>出力バインディングを使用するコードを追加する
 
 このセクションでは、出力キューにメッセージを書き込むコードを追加します。 メッセージには、クエリ文字列の HTTP トリガーに渡される値が含まれています。 たとえば、クエリ文字列に `name=Azure` が含まれる場合、キュー メッセージは *Name passed to the function: Azure* になります。
 
-1. 関数を選択し、エディターに関数コードを表示します。 
+1. 関数を選択し、エディターに関数コードを表示します。
 
-2. C# 関数の場合、バインディングのメソッド パラメーターを追加して、使用するコードを記述します。
+1. 関数の言語に応じて関数コードを更新します。
 
-   次の例で示すように、**outputQueueItem** パラメーターをメソッド シグネチャに追加します。 パラメーター名は、バインディングを作成したときに **[メッセージ パラメーター名]** に入力したものと同じです。
+    # <a name="ctabcsharp"></a>[C\#](#tab/csharp)
 
-   ```cs   
-   public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, 
-       ICollector<string> outputQueueItem, TraceWriter log)
-   {
-       ...
-   }
-   ```
+    次の例で示すように、**outputQueueItem** パラメーターをメソッド シグネチャに追加します。
 
-   `return` ステートメントの直前の C# 関数の本体で、パラメーターを使用してキュー メッセージを作成するコードを追加します。
+    ```cs
+    public static async Task<IActionResult> Run(HttpRequest req,
+        ICollector<string> outputQueueItem, ILogger log)
+    {
+        ...
+    }
+    ```
 
-   ```cs
-   outputQueueItem.Add("Name passed to the function: " + name);     
-   ```
+    `return` ステートメントの直前の関数の本体で、パラメーターを使用してキュー メッセージを作成するコードを追加します。
 
-3. JavaScript 関数の場合は、`context.bindings` オブジェクトの出力バインディングを使用してキュー メッセージを作成するコードを追加します。 このコードを `context.done` ステートメントの前に追加します。
+    ```cs
+    outputQueueItem.Add("Name passed to the function: " + name);
+    ```
 
-   ```javascript
-   context.bindings.outputQueueItem = "Name passed to the function: " + 
-               (req.query.name || req.body.name);
-   ```
+    # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
-4. **[保存]** を選択して変更を保存します。
- 
-## <a name="test-the-function"></a>関数をテストする 
+    `context.bindings` オブジェクトの出力バインディングを使用してキュー メッセージを作成するコードを追加します。 このコードを `context.done` ステートメントの前に追加します。
+
+    ```javascript
+    context.bindings.outputQueueItem = "Name passed to the function: " + 
+                (req.query.name || req.body.name);
+    ```
+
+    ---
+
+1. **[保存]** を選択して変更を保存します。
+
+## <a name="test-the-function"></a>関数をテストする
 
 1. コードの変更が保存されたら、**[実行]** を選択します。 
 
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/functions-test-run-function.png)
 
-   **要求本文**に `name` 値 *Azure* が含まれていることに注意してください。 この値は、関数が呼び出されたときに作成されるキュー メッセージに表示されます。
-
-   ここで **[実行]** を選択する代わりに、ブラウザーで URL を入力してクエリ文字列に `name` 値を指定することで、関数を呼び出すことができます。 このブラウザーの方法は、[前のクイック スタート](functions-create-first-azure-function.md#test-the-function)で示されています。
+    **要求本文**に `name` 値 *Azure* が含まれていることに注意してください。 この値は、関数が呼び出されたときに作成されるキュー メッセージに表示されます。
+    
+    ここで **[実行]** を選択する代わりに、ブラウザーで URL を入力してクエリ文字列に `name` 値を指定することで、関数を呼び出すことができます。 このブラウザーの方法は、[前のクイック スタート](functions-create-first-azure-function.md#test-the-function)で示されています。
 
 2. ログを確認して、関数が成功したことを確認します。 
 

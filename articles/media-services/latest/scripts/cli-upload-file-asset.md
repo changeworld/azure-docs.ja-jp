@@ -4,7 +4,7 @@ description: Azure CLI スクリプトを使用して、ローカル ファイ�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/11/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 61a5a59336878976a20a6ffd7b4e4d6d27061453
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: d317c39a1a4bd409aff02d85a5a924f7d2c99597
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094948"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376739"
 ---
 # <a name="cli-example-upload-a-local-file-to-a-container"></a>CLI サンプル: コンテナーへのローカル ファイルのアップロード 
 

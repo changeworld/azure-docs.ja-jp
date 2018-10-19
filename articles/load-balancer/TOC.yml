@@ -147,7 +147,7 @@ items:
 - name: リファレンス
   items:
   - name: コード サンプル
-    href: https://azure.microsoft.com/en-us/resources/samples/?service=load-balancer
+    href: https://azure.microsoft.com/resources/samples/?service=load-balancer
   - name: Azure PowerShell
     href: /powershell/module/azurerm.network
   - name: Azure CLI
@@ -192,9 +192,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=load-balancer
-ms.openlocfilehash: c39ce7c491d1f13c0d32a0c77de32821478f2cc7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f21d5432414679ee2a12b41ffc6865e329e73f9f
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948555"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364270"

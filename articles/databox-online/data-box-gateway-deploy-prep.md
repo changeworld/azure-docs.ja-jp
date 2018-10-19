@@ -2,25 +2,18 @@
 title: 'チュートリアル: Data Box Gateway をデプロイするための Azure portal の準備 | Microsoft Docs'
 description: Azure Data Box Gateway をデプロイする最初のチュートリアルでは、Azure portal の準備を行います。
 services: databox-edge-gateway
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: 4c21245e05625f65b6b5dcf5f7081f5f5d1abb52
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b8aac8a6a666bf3f360ef2867ff15933ad72dbd7
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030607"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166986"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>チュートリアル: Azure Data Box Gateway のデプロイを準備する (プレビュー)
 

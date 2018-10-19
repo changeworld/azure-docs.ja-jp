@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 57d3566e973f2bcd0ecea43173df5f65c96b404f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1b2f6df1e5688bf9bc47056c7b05cf6ac16026c6
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658419"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634865"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
 
@@ -802,9 +802,7 @@ ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マ�
   -  **System Availability (システムの可用性)**。 **[HA]** を選択します。
   -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
   -  **New Or Existing Subnet (新規または既存のサブネット)**。 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを設定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、**[existing (既存)]** を選択します。
-  -  **Subnet Id (サブネット ID)**。仮想マシンを接続するサブネットの ID を設定します。 仮想マシンをオンプレミス ネットワークに接続するには、仮想プライベート ネットワーク (VPN) または ExpressRoute 仮想ネットワークのサブネットを選択します。 ID は、通常、次のようになります。
-
-   /subscriptions/<*サブスクリプション ID*>/resourceGroups/<*リソース グループ名*>/providers/Microsoft.Network/virtualNetworks/<*仮想ネットワーク名*>/subnets/<*サブネット名*>
+  -  **Subnet Id (サブネット ID)**。VM を既存の VNet にデプロイする場合、その VNet で VM の割り当て先サブネットが定義されているときは、その特定のサブネットの ID を指定します。 通常、ID は /subscriptions/<*サブスクリプション ID*>/resourceGroups/<*リソース グループ名*>/providers/Microsoft.Network/virtualNetworks/<*仮想ネットワーク名*>/subnets/<*サブネット名*> のようになります
 
 テンプレートは 1 つの Azure Load Balancer インスタンスをデプロイし、これにより、複数の SAP システムがサポートされます。
 
@@ -1048,7 +1046,7 @@ Azure Load Balancer は、設定されている時間 (アイドル タイムア
 
 SAP ASCS/SCS インスタンスの両方のクラスター ノードでレジストリ エントリを追加するには、まず、SAP ASCS/SCS の両方の Windows クラスター ノードに次の Windows レジストリ エントリを追加します。
 
-| パス | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 変数名 |`KeepAliveTime` |
 | 変数の型 |REG_DWORD (Decimal) |
@@ -1059,7 +1057,7 @@ _**表 3:** 第 1 の TCP/IP パラメーターの変更_
 
 次に、SAP ASCS/SCS の両方の Windows クラスター ノードで次の Windows レジストリ エントリを追加します。
 
-| パス | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
+| Path | HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters |
 | --- | --- |
 | 変数名 |`KeepAliveInterval` |
 | 変数の型 |REG_DWORD (Decimal) |
@@ -1234,7 +1232,7 @@ SAP ASCS/SCS インスタンスの Windows Server フェールオーバー ク�
 
   _**図 38:** クラスターを再構成したことを確認する_
 
-Windows フェールオーバー クラスターが正常にインストールされた後、フェールオーバーの検出を Azure での条件に合わせるように、いくつかのしきい値を変更する必要があります。 変更されるパラメーターは、https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/のブログに記載されています。 ASCS/SCS 用に Windows クラスター構成を構築する 2 つの VM が同じサブネットにあることを前提とした場合、次のパラメーターを次の値に変更する必要があります。
+Windows フェールオーバー クラスターが正常にインストールされた後、フェールオーバーの検出を Azure での条件に合わせるように、いくつかのしきい値を変更する必要があります。 変更されるパラメーターは、 https://blogs.msdn.microsoft.com/clustering/2012/11/21/tuning-failover-cluster-network-thresholds/のブログに記載されています。 ASCS/SCS 用に Windows クラスター構成を構築する 2 つの VM が同じサブネットにあることを前提とした場合、次のパラメーターを次の値に変更する必要があります。
 - SameSubNetDelay = 2
 - SameSubNetThreshold = 15
 

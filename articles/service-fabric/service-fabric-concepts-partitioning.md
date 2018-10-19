@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 9072a25b55bf461ad7dcc8393b98a66d87866d48
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: ae7eba9997c4f567eb7b07e23ab42c9ac7740698
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143216"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388111"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
 この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。
@@ -88,8 +88,7 @@ Service Fabric では、シナリオで想定されるパーティション数�
 
 実行中のクラスターでリソースの上限に達した場合はどうなるでしょうか。 クラスターをスケールアウトするだけで、この新しい要件に対応できます。
 
-
-  [容量計画ガイド](service-fabric-capacity-planning.md) では、クラスターに必要なノード数を決定する方法に関するガイダンスを説明しています。
+[容量計画ガイド](service-fabric-capacity-planning.md) では、クラスターに必要なノード数を決定する方法に関するガイダンスを説明しています。
 
 ## <a name="get-started-with-partitioning"></a>パーティション分割の使用
 ここでは、サービスをパーティション分割する基本的な方法について説明します。
@@ -366,7 +365,7 @@ Service Fabric には、3 つのパーティション スキーマが用意さ�
 サンプルの完全なソース コードについては、 [Github](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)を参照してください。
 
 ## <a name="reliable-services-and-actor-forking-subprocesses"></a>Reliable Services および Reliable Actor によるサブプロセスのフォーク
-Service Fabric では、Reliable Services とそれに続く Reliable Actor によるサブプロセスのフォークはサポートされていません。 これがサポートされない理由は、サブプロセスを登録するために [CodePackageActivationContext](https://docs.microsoft.com/en-us/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) を使用することができないこと、およびキャンセル トークンが登録済みのプロセスにのみ送信されることにあります。その結果、親プロセスがキャンセル トークンを受け取った後にサブプロセスが終了しない場合、アップグレードの失敗など、あらゆる種類の問題が発生します。 
+Service Fabric では、Reliable Services とそれに続く Reliable Actor によるサブプロセスのフォークはサポートされていません。 これがサポートされない理由は、サブプロセスを登録するために [CodePackageActivationContext](https://docs.microsoft.com/dotnet/api/system.fabric.codepackageactivationcontext?view=azure-dotnet) を使用することができないこと、およびキャンセル トークンが登録済みのプロセスにのみ送信されることにあります。その結果、親プロセスがキャンセル トークンを受け取った後にサブプロセスが終了しない場合、アップグレードの失敗など、あらゆる種類の問題が発生します。 
 
 ## <a name="next-steps"></a>次の手順
 Service Fabric の概念についての詳細は、次を参照してください。

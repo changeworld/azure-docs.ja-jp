@@ -1,26 +1,32 @@
 ---
-title: 'クイックスタート: Cassandra API (Node.js) - Azure Cosmos DB | Microsoft Docs'
+title: 'クイック スタート: Cassandra API (Node.js) - Azure Cosmos DB'
 description: このクイックスタートでは、Azure Cosmos DB の Cassandra API を使って、Node.js でプロファイル アプリケーションを作成する方法を示します
 services: cosmos-db
 author: SnehaGunda
-manager: kfile
+ms.author: sngun
 ms.service: cosmos-db
 ms.component: cosmosdb-cassandra
 ms.custom: quick start connect, mvc
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/15/2017
-ms.author: sngun
-ms.openlocfilehash: e86b80328c3717220b2771a1bf8f4232f9a51748
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.date: 09/24/2018
+ms.openlocfilehash: e7b4bc51ab71fa1043afdab019d27fd089d0356c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215866"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980085"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>クイックスタート: Node.js と Azure Cosmos DB で Cassandra アプリを構築する
 
-このクイックスタートでは、GitHub から例を複製することで、Node.js と Azure Cosmos DB の [Cassandra API](cassandra-introduction.md) を使ってプロファイル アプリを作成する方法を示します。 このクイックスタートでは、Web ベースの Azure Portal を使って Azure Cosmos DB アカウントを作成する手順についても説明します。
+> [!div class="op_single_selector"]
+> * [.NET](create-cassandra-dotnet.md)
+> * [Java](create-cassandra-java.md)
+> * [Node.js](create-cassandra-nodejs.md)
+> * [Python](create-cassandra-python.md)
+>  
+
+このクイックスタートでは、GitHub から例を複製することで、Node.js と Azure Cosmos DB の [Cassandra API](cassandra-introduction.md) を使ってプロファイル アプリを作成する方法を示します。 このクイック スタートでは、Web ベースの Azure portal を使用して Azure Cosmos DB アカウントを作成する方法も示します。
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、テーブル、キーと値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
@@ -28,9 +34,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]または、Azure サブスクリプションを使わず、課金も契約もなしで [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
 
-Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスする必要があります。 まだアクセスを申し込んでいない場合は、[今すぐサインアップ](cassandra-introduction.md#sign-up-now)してください。
-
-加えて次の作業を行います。
+さらに、次のものが必要です。
 * [Node.js](https://nodejs.org/en/) バージョン v0.10.29 以降
 * [Git](http://git-scm.com/)
 
@@ -44,13 +48,13 @@ Azure Cosmos DB Cassandra API プレビュー プログラムにアクセスす�
 
 GitHub から Cassandra API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
-1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+1. コマンド プロンプトを開きます。 `git-samples` という名前の新しいフォルダーを作成します。 その後、コマンド プロンプトを閉じます。
 
     ```bash
     md "C:\git-samples"
     ```
 
-2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。
+2. Git ターミナル ウィンドウ (Git Bash など) を開きます。 `cd` コマンドを使用して新しいフォルダーに移動し、サンプル アプリをインストールします。
 
     ```bash
     cd "C:\git-samples"
@@ -64,9 +68,9 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 これらのスニペットはすべて、C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started フォルダーの uprofile.js ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
+この手順は省略可能です。 コードでデータベース リソースを作成する方法に関心がある場合は、次のスニペットで確認できます。 スニペットはすべて `C:\git-samples\azure-cosmos-db-cassandra-nodejs-getting-started` フォルダーの `uprofile.js` ファイルからのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
 
-* ユーザー名とパスワードは、Azure Portal の接続文字列ページを使って設定します。 "path\to\cert" では、X509 証明書へのパスを指定します。 
+* ユーザー名とパスワードの値は、Azure portal の接続文字列ページを使って設定されています。 `path\to\cert` では、X509 証明書へのパスを指定します。 
 
    ```nodejs
    var ssl_option = {
@@ -152,9 +156,9 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
 
-ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。
+ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 アプリはこの接続文字列によって、ホストされているデータベースと通信できます。
 
-1. [Azure Portal](http://portal.azure.com/) で **[接続文字列]** をクリックします。 
+1. [Azure portal](http://portal.azure.com/) で **[接続文字列]** を選択します。 
 
     画面右側の ![コピー ボタン](./media/create-cassandra-nodejs/copy.png) ボタンを使って、一番上にある [CONTACT POINT]\(コンタクト ポイント\) の値をコピーします。
 
@@ -180,17 +184,19 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
     `config.password = '2Ggkr662ifxz2Mg==';`
 
-6. config.js ファイルを保存します。
+6. `config.js` ファイルを保存します。
     
-## <a name="use-the-x509-certificate"></a>X509 証明書を使う 
+## <a name="use-the-x509-certificate"></a>X509 証明書を使う
 
-1. Baltimore CyberTrust Root を追加する必要がある場合、そのシリアル番号は ‎02:00:00:b9、SHA1 フィンガープリントは d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74 です。 これは https://cacert.omniroot.com/bc2025.crt からダウンロードし、拡張子が .cer のローカル ファイルに保存できます。 
+1. Baltimore CyberTrust Root 証明書を [https://cacert.omniroot.com/bc2025.crt](https://cacert.omniroot.com/bc2025.crt) からローカルにダウンロードします。 ファイル拡張子 `.cer` を使用して、ファイルの名前を変更します。
 
-2. uprofile.js を開き、"path\to\cert" を新しい証明書を示すように変更します。 
+   証明書のシリアル番号は `02:00:00:b9`、SHA1 フィンガープリントは `d4🇩🇪20:d0:5e:66:fc:53:fe:1a:50:88:2c:78:db:28:52:ca:e4:74` です。
 
-3. uprofile.js を保存します。 
+2. `uprofile.js` を開き、`path\to\cert` を新しい証明書を指すように変更します。
 
-## <a name="run-the-app"></a>アプリの実行
+3. `uprofile.js` を保存します。
+
+## <a name="run-the-nodejs-app"></a>Node.js アプリを実行する
 
 1. git ターミナル ウィンドウで `npm install` を実行して、必要な npm モジュールをインストールします。
 
@@ -202,7 +208,7 @@ GitHub から Cassandra API アプリを複製し、接続文字列を設定し�
 
     Ctrl + C キーを押してプログラムの実行を停止し、コンソール ウィンドウを閉じます。 
 
-    これで、Azure Portal でデータ エクスプローラーを開いて、この新しいデータの表示、クエリ、変更、操作を行うことができます。 
+4. Azure portal で **Data Explorer** を開き、この新しいデータのクエリ、変更、操作を行います。 
 
     ![データ エクスプローラーでのデータの表示](./media/create-cassandra-nodejs/data-explorer.png) 
 

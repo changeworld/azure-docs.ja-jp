@@ -1,22 +1,23 @@
 ---
-title: C# を利用してエンドポイントを呼び出す - Bing Custom Search - Microsoft Cognitive Services
+title: 'クイック スタート: C# を使用してエンドポイントを呼び出す - Bing Custom Search'
+titlesuffix: Azure Cognitive Services
 description: このクイックスタートでは、C# を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: ed00b75fa956d0197d3672d84b097f99ec3c35ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1c3b1031c2d08b1f346216b54d351c99f01db933
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956388"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167309"
 ---
-# <a name="call-bing-custom-search-endpoint-c"></a>Bing Custom Search エンドポイントを呼び出す (C#)
+# <a name="quickstart-call-bing-custom-search-endpoint-c"></a>クイック スタート: Bing Custom Search エンドポイントを呼び出す (C#)
 
 このクイック スタートでは、C# を使用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。 
 
@@ -26,7 +27,7 @@ ms.locfileid: "46956388"
 
 - すぐに使用できるカスタム検索インスタンス。 「[Create your first Bing Custom Search instance](quick-start.md)」 (最初の Bing Custom Search インスタンスを作成する) を参照してください。
 - [.Net Core](https://www.microsoft.com/net/download/core) がインストールされている。
-- サブスクリプション キー。 [無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)を起動すると、サブスクリプション キーを取得できます。または、Azure ダッシュボードの有料サブスクリプション キーを使用できます ([Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)に関するページを参照)。    
+- サブスクリプション キー。 [無料試用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search)をアクティブにすると、サブスクリプション キーを取得できます。または Azure ダッシュボードから有料のサブスクリプション キーを使用することもできます ([Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を参照してください)。    
 
 
 ## <a name="run-the-code"></a>コードの実行

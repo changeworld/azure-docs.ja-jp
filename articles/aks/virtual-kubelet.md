@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: 6ff28443dda65e91fa69fececaff95aa8e872603
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b52e491162dcf17eff2ca07bc067586358aa9a35
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604251"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393294"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Virtual Kubelet の使用
 
@@ -36,7 +36,7 @@ Virtual Kubelet をインストールするには、[Helm](https://docs.helm.sh/
 
 ### <a name="for-rbac-enabled-clusters"></a>RBAC 対応クラスターの場合
 
-AKS クラスターが RBAC に対応している場合、Tiller で使用するためのサービス アカウントとロール バインディングを作成する必要があります。 詳細については、[Helm でのロール ベースのアクセス制御に関する説明][helm-rbac]を参照してください。 サービス アカウントとロールのバインドを作成するには、*rbac-virtualkubelet.yaml* という名前のファイルを作成して次の定義を貼り付けます。
+AKS クラスターが RBAC に対応している場合、Tiller で使用するためのサービス アカウントとロール バインディングを作成する必要があります。 詳細については、[Helm でのロール ベースのアクセス制御に関する説明][helm-rbac]を参照してください。 サービス アカウントとロールのバインドを作成するには、*rbac-virtual-kubelet.yaml* という名前のファイルを作成して次の定義を貼り付けます。
 
 ```yaml
 apiVersion: v1
@@ -45,7 +45,7 @@ metadata:
   name: tiller
   namespace: kube-system
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: tiller
@@ -59,7 +59,7 @@ subjects:
     namespace: kube-system
 ```
 
-次の例に示すように、[kubectl apply][kubectl-apply] でサービス アカウントとバインドを適用し、*rbac-virtualkubelet.yaml* ファイルを指定します。
+次の例に示すように、[kubectl apply][kubectl-apply] でサービス アカウントとバインドを適用し、*rbac-virtual-kubelet.yaml* ファイルを指定します。
 
 ```
 $ kubectl apply -f rbac-virtual-kubelet.yaml
@@ -118,12 +118,15 @@ virtual-kubelet-virtual-kubelet-win     Ready     agent     4m        v1.8.3
 `virtual-kubelet-linux.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 `kubernetes.io/hostname` の値を Linux Virtual Kubelet ノードの名前に置き換えます。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と [toleration][toleration] が使用されている点に気を付けてください。
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: aci-helloworld
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: aci-helloworld
   template:
     metadata:
       labels:
@@ -163,12 +166,15 @@ aci-helloworld-2559879000-8vmjw     1/1       Running   0          39s       52.
 `virtual-kubelet-windows.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 `kubernetes.io/hostname` の値を Windows Virtual Kubelet ノードの名前に置き換えます。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と [toleration][toleration] が使用されている点に気を付けてください。
 
 ```yaml
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nanoserver-iis
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: aci-helloworld
   template:
     metadata:
       labels:
@@ -182,7 +188,9 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: virtual-kubelet-virtual-kubelet-win
       tolerations:
-      - key: azure.com/aci
+      - key: virtual-kubelet.io/provider
+        operator: Equal
+        value: azure
         effect: NoSchedule
 ```
 

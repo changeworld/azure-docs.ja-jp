@@ -15,12 +15,12 @@ ms.workload: identity
 ms.component: pim
 ms.date: 03/30/2018
 ms.author: rolyon
-ms.openlocfilehash: aee172bc6fc77aaac8d2d52037a481fdb976d308
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: ce7c96d92938c4e3b4cc0b53271df48350083754
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188970"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465233"
 ---
 # <a name="view-who-has-azure-resource-roles-in-pim"></a>PIM で Azure リソース ロールを割り当てられているユーザーを表示する
 
@@ -38,7 +38,7 @@ ms.locfileid: "43188970"
 
 ## <a name="view-activation-and-azure-resource-activity"></a>アクティブ化と Azure リソースのアクティビティを表示する
 
-各リソースに対して特定ユーザーが実行した操作を確認する必要がある場合は、指定したアクティブ化期間に関連付けられている Azure リソース アクティビティを表示することができます (適格なユーザーに限ります)。 最初に、[メンバー] ビューまたは特定のロールのメンバー一覧からユーザーを選択します。 結果には Azure リソースに対する日別のユーザーの操作と、同一期間の最近のロールのアクティブ化がグラフィカルに表示されます。
+各リソースに対して特定のユーザーが実行した操作を確認する必要がある場合は、指定したアクティブ化期間に関連付けられている Azure リソース アクティビティを表示できます (適格なユーザーに限ります)。 最初に、[メンバー] ビューまたは特定のロールのメンバー一覧からユーザーを選択します。 結果には Azure リソースに対する日別のユーザーの操作と、同一期間の最近のロールのアクティブ化がグラフィカルに表示されます。
 
 ![](media/azure-pim-resource-rbac/user-details.png)
 

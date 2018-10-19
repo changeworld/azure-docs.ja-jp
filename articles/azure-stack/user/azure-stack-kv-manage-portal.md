@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: sethm
-ms.openlocfilehash: 91035f84d02810d838127ecf6a2f6424ef5df6cf
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 51c04a567ff953c4e84930e3feae448f78627683
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41948135"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713937"
 ---
 # <a name="manage-key-vault-in-azure-stack-by-using-the-portal"></a>ポータルを使って Azure Stack の Key Vault を管理する
 
@@ -33,7 +33,7 @@ Azure Key Vault サービスを含むプランをサブスクライブする必�
 
 1. [ユーザー ポータル](https://portal.local.azurestack.external)にサインインします。
 
-2. ダッシュボードで、**[新規]** > **[セキュリティ + ID]** > **[Key Vault]** の順に選択します。
+2. ダッシュボードで、**[+ リソースの作成]** > **[セキュリティ + ID]** > **[Key Vault]** の順に選択します。
 
     ![Key Vault 画面](media/azure-stack-kv-manage-portal/image1.png)
 

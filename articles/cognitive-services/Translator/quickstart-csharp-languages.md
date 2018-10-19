@@ -1,25 +1,27 @@
 ---
-title: サポートされている言語を Translator Text と C# で取得する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Cognitive Services の Translator Text API と C# を使った例を紹介しています。
+title: 'クイック スタート: サポートされている言語を取得する - Translator Text API、C#'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、C# で Translator Text API を使った例を紹介しています。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 001f4bc67170d28dd56d6f8a773586c5e6968503
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 967e978518debb5aef071807b1482d6f225c062f
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "43770611"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367714"
 ---
 # <a name="quickstart-get-supported-languages-with-c35"></a>クイック スタート: サポートされている言語を C&#35; で取得する
 
 このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Translator Text API を使った例を紹介しています。
+
+サンプルのソース コードは、[Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 

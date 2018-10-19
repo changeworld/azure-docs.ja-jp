@@ -1,6 +1,6 @@
 items:
-- name: ドキュメント - オフライン転送のための Azure Data Box
-  href: /azure/databox/
+- name: Azure Data Box のドキュメント - オフライン転送
+  href: /azure/databox
   items:
   - name: Data Box
     items:
@@ -90,17 +90,13 @@ items:
         href: data-box-heavy-overview.md
   - name: リソース
     items:
-    - name: Azure のロードマップ
-      href: https://azure.microsoft.com/roadmap/?category=storage
-    - name: Azure Data Box のマーケティング
-      href: https://azure.microsoft.com/services/storage/databox/
+    - name: Data Box 製品
+      href: https://azure.microsoft.com/services/storage/databox/data/
     - name: 価格
       href: https://azure.microsoft.com/pricing/details/storage/databox/
-    - name: サービスの更新情報
-      href: https://azure.microsoft.com/updates/?product=databox
-ms.openlocfilehash: 2c436e372df4cb42a52db9df35adfa5e0b48594f
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: aa95ba5708ec72d6a4665fb18126a6eadead6ff2
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068436"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309142"

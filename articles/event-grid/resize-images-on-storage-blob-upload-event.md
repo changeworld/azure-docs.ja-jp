@@ -9,15 +9,15 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/20/2018
+ms.date: 09/29/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 922c87f2d577aff86d51a1fde53f221ebd2fa82c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 2d94389ade02cb6e61f192e9b9e8adb8f8ceec31
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446692"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585579"
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -29,7 +29,7 @@ ms.locfileid: "39446692"
 
 ![Microsoft Edge ブラウザーでの発行された Web アプリ](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 一般 Azure ストレージ アカウントを作成します
@@ -43,6 +43,16 @@ ms.locfileid: "39446692"
 前の Blob Storage チュートリアル「[Upload image data in the cloud with Azure Storage][previous-tutorial]」(Azure Storage でクラウドにイメージ データをアップロードする) を完了している必要があります。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+以前サブスクリプションに Event Grid リソース プロバイダーを登録していない場合は、それが登録されるようにします。
+
+```azurepowershell-interactive
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.EventGrid
+```
+
+```azurecli-interactive
+az provider register --namespace Microsoft.EventGrid
+```
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -91,8 +101,10 @@ storageConnectionString=$(az storage account show-connection-string \
 az functionapp config appsettings set --name <function_app> \
 --resource-group myResourceGroup \
 --settings myblobstorage_STORAGE=$storageConnectionString \
-myContainerName=thumbnails
+myContainerName=thumbnails FUNCTIONS_EXTENSION_VERSION=~2
 ```
+
+`FUNCTIONS_EXTENSION_VERSION=~2` 設定によって、関数アプリは Azure Functions ランタイムのバージョン 2.x で動作するようになります。
 
 この Function App に関数コード プロジェクトをデプロイできるようになります。
 
@@ -111,8 +123,7 @@ az functionapp deployment source config --name <function_app> \
 ```
 
 # <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-Node.js のサイズ変更関数のサンプルは、[GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node) で入手できます。 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) コマンドを使って、この Functions コード プロジェクトを関数アプリにデプロイします。 
-
+Node.js のサイズ変更関数のサンプルは、[GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node) で入手できます。 [az functionapp deployment source config](/cli/azure/functionapp/deployment/source#config) コマンドを使って、この Functions コード プロジェクトを関数アプリにデプロイします。
 
 次のコマンドの `<function_app>` は、先ほど作成した関数アプリの名前です。
 
@@ -177,7 +188,7 @@ Web アプリでイメージのサイズ変更をテストするには、公開�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * 一般 Azure ストレージ アカウントを作成します

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory レポート | Microsoft Docs
-description: Azure Active Directory レポートの概要を紹介します。
+title: Azure Active Directory レポートの概要 | Microsoft Docs
+description: Azure Active Directory レポートの概要について説明します。
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -9,23 +9,23 @@ editor: ''
 ms.assetid: 6141a333-38db-478a-927e-526f1e7614f4
 ms.service: active-directory
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.component: report-monitor
 ms.date: 01/15/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 96faeaefc6c58f03328a85b626528267396121a5
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 220f27ccf2d3eaefd8347e1d52824be2d601d9c9
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42140102"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364396"
 ---
-# <a name="azure-active-directory-reporting"></a>Azure Active Directory レポート
+# <a name="what-are-azure-active-directory-reports"></a>Azure Active Directory レポートの概要
 
-Azure Active Directory レポートを通じて、自分が管理する環境がどのような状態にあるのか、洞察を得ることができます。  
+Azure Active Directory レポートを通じて、自分が管理する環境の状態に関する分析情報を得ることができます。  
 レポートから得たデータによって次のことが可能となります。
 
 - 管理下にあるユーザーがアプリとサービスをどのように利用しているかを明らかにする。
@@ -50,6 +50,7 @@ Azure Active Directory には、次の 2 種類のセキュリティ レポー�
 - **危険なサインイン** - [危険なサインイン セキュリティ レポート](concept-risky-sign-ins.md)は、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 
 
 **セキュリティ レポートにアクセスするために必要な Azure AD ライセンス**  
+
 "リスクのフラグ付きユーザー" レポートと "危険なサインイン" レポートは、Azure Active Directory の全エディションで利用できます。  
 ただしエディションによってレポートの粒度が異なります。 
 
@@ -69,9 +70,7 @@ Azure Active Directory には、次の 2 種類のアクティビティ レポ�
 - **サインイン** -  監査ログ レポートによって報告されたタスクをだれが実行したかは、[サインイン アクティビティ レポート](concept-sign-ins.md)で明らかにすることができます。
 
 
-
-**監査ログ レポート**から得られるシステム アクティビティの記録は、コンプライアンスに利用することができます。
-特に、レポートから得たデータによって、日常的に発生する次のようなシナリオに対処することができます。
+**監査ログ レポート**から得られるシステム アクティビティの記録は、コンプライアンスに利用することができます。 このデータを使用して、次のような一般的なシナリオに対処することができます。
 
 - テナント内のだれかが管理者グループにアクセスした。 だれがアクセス権を与えたのか。 
 
@@ -81,10 +80,10 @@ Azure Active Directory には、次の 2 種類のアクティビティ レポ�
 
 
 **監査ログ レポートにアクセスするために必要な Azure AD ライセンス**  
+
 監査ログ レポートは、自分がライセンスを所有している機能に関して利用できます。 特定の機能のライセンスがある場合、その機能の監査ログ情報にもアクセスすることができます。
 
 詳細については、「[Azure Active Directory の機能と働き](https://www.microsoft.com/cloud-platform/azure-active-directory-features)」の「**Free、Basic、および Premium エディションの一般公開されている機能の比較**」を参照してください。   
-
 
 
 **サインイン アクティビティ レポート**によって、次のような疑問に対する答えを見つけることができます。
@@ -95,8 +94,8 @@ Azure Active Directory には、次の 2 種類のアクティビティ レポ�
 
 
 **サインイン アクティビティ レポートにアクセスするために必要な Azure AD ライセンス**  
-サインイン アクティビティ レポートにアクセスするためには、ご利用のテナントに Azure AD Premium ライセンスが関連付けられている必要があります。
 
+サインイン アクティビティ レポートにアクセスするためには、ご利用のテナントに Azure AD Premium ライセンスが関連付けられている必要があります。
 
 ## <a name="programmatic-access"></a>プログラムによるアクセス
 
@@ -105,17 +104,6 @@ Azure Active Directory レポートでは、ユーザー インターフェイ�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Active Directory における各種レポートの詳細については、次のページを参照してください。
-
-- [リスクのフラグ付きユーザー レポート](concept-user-at-risk.md)
 - [リスクの高いサインイン レポート](concept-risky-sign-ins.md)
 - [監査ログ レポート](concept-audit-logs.md)
 - [サインイン ログ レポート](concept-sign-ins.md)
-
-レポート API を使ったレポート データへのアクセスについて詳しくは、次のページを参照してください。 
-
-- [Azure Active Directory Reporting API の概要](concept-reporting-api.md)
-
-
-<!--Image references-->
-[1]: ./media/active-directory-reporting-azure-portal/ic195031.png

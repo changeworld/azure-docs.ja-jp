@@ -8,15 +8,15 @@ manager: jeconnoc
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
 ms.service: azure-functions
 ms.topic: tutorial
-ms.date: 12/12/2017
+ms.date: 09/24/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 23db8d307892b100f291a1f32c9b77c73a60f23e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 0b2e0ff800ab80a2c638293ce23fc1911390f2dd
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090765"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221117"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
@@ -26,7 +26,7 @@ Azure Functions は、Logic Apps デザイナーで Azure Logic Apps と統合�
 
 ![Logic Apps デザイナーでのアプリの最初の 2 つの手順の画像](media/functions-twitter-email/designer1.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Cognitive Services API リソースを作成します。
@@ -84,6 +84,8 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
     ![HTTP トリガーの選択](./media/functions-twitter-email/select-http-trigger-portal.png)
 
+    この関数アプリに追加される後続の関数はすべて、C# 言語のテンプレートを使用します。
+
 3. 使用する関数の **[名前]** を入力し、**[[認証レベル]](functions-bindings-http-webhook.md#http-auth)** として `Function` を選択し、**[作成]** を選択します。 
 
     ![HTTP によってトリガーされる関数の作成](./media/functions-twitter-email/select-http-trigger-portal-2.png)
@@ -93,28 +95,35 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 4. この `run.csx` ファイルの内容を次のコードに置き換えて、**[保存]** をクリックします。
 
     ```csharp
-    using System.Net;
+    #r "Newtonsoft.Json"
     
-    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    using System;
+    using System.Net;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Primitives;
+    using Newtonsoft.Json;
+    
+    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     {
-        // The sentiment category defaults to 'GREEN'. 
         string category = "GREEN";
     
-        // Get the sentiment score from the request body.
-        double score = await req.Content.ReadAsAsync<double>();
-        log.Info(string.Format("The sentiment score received is '{0}'.",
-                    score.ToString()));
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        log.LogInformation(string.Format("The sentiment score received is '{0}'.", requestBody));
     
-        // Set the category based on the sentiment score.
-        if (score < .3)
+        double score = Convert.ToDouble(requestBody);
+    
+        if(score < .3)
         {
             category = "RED";
         }
-        else if (score < .6)
+        else if (score < .6) 
         {
             category = "YELLOW";
         }
-        return req.CreateResponse(HttpStatusCode.OK, category);
+    
+        return requestBody != null
+            ? (ActionResult)new OkObjectResult(category)
+            : new BadRequestObjectResult("Please pass a value on the query string or in the request body");
     }
     ```
     この関数コードは、要求で受信したセンチメント スコアに基づいて、色のカテゴリを返します。 
@@ -267,7 +276,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Cognitive Services API リソースを作成します。

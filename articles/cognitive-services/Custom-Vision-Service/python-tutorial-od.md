@@ -1,22 +1,23 @@
 ---
-title: Python と Custom Vision API による物体検出 - Azure Cognitive Services | Microsoft Docs
-description: Microsoft Cognitive Services で Custom Vision API を使用する基本的な Windows アプリについて確認します。 既定のエンドポイントを利用し、プロジェクトを作成し、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、予測を行います。
+title: 'チュートリアル: 物体検出プロジェクトを作成する - Custom Vision API、Python'
+titlesuffix: Azure Cognitive Services
+description: 既定のエンドポイントを利用し、プロジェクトを作成し、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、予測を行います。
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: areddish
-ms.openlocfilehash: 37bdb9ebf7c74586c728e171a9897903b8ad2ee8
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: f49f5ab32d834b32de54be2d96c3671ad46f79f3
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213583"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363702"
 ---
-# <a name="use-custom-vision-api-to-build-an-object-detection-project-with-python"></a>Custom Vision API を使用し、Python で物体検出プロジェクトを構築する
+# <a name="tutorial-build-an-object-detection-project-with-python"></a>チュートリアル: Python で物体検出プロジェクトを構築する
 
 Computer Vision API を使用する基本的な Python スクリプトを使用し、物体検出プロジェクトを作成する方法について説明します。 作成後、タグ付きのリージョンを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用して画像をプログラミングでテストできます。 Custom Vision API を利用し、独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
 

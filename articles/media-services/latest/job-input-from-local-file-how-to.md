@@ -4,19 +4,19 @@ description: このトピックでは、ローカル ファイルからジョブ
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 94e7192e13397ad8ec973d92f4c538f430c9cd60
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 3b4c11c359c15f1275a16774b490c08b543572c3
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160007"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378712"
 ---
 # <a name="create-a-job-input-from-a-local-file"></a>ローカル ファイルからジョブの入力を作成する
 
@@ -36,4 +36,4 @@ Media Services v3 では、ビデオを処理するジョブを送信すると�
 
 ## <a name="next-steps"></a>次の手順
 
-[HTTP(S) URL からジョブの入力を作成する](job-input-from-http-how-to.md)
+[HTTPS URL からジョブの入力を作成する](job-input-from-http-how-to.md)

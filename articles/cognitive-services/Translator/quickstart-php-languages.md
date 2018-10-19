@@ -1,21 +1,21 @@
 ---
-title: サポートされている言語を Translator Text と PHP で取得する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Cognitive Services の Translator Text API と PHP を使った例を紹介しています。
+title: 'クイック スタート: サポートされている言語を取得する - Translator Text、PHP'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、PHP で Translator Text API を使った例を紹介しています。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: 95b48f15ffe8cea14f9ffb7612193b819e03f5f3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2924a61a31037fcf52986d250007b906ffb40b98
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43771074"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128709"
 ---
 # <a name="quickstart-get-supported-languages-with-php"></a>クイック スタート: サポートされている言語を PHP で取得する
 

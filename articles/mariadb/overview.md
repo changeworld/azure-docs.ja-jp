@@ -9,12 +9,12 @@ ms.service: mariadb
 ms.topic: overview
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 1ba4a9bd597473b71ac7561c41b81783b899766a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3649a173d5707179ca8547a8169b7d308c4f7f1c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971605"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249164"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Azure Database for MariaDB とは
 Azure Database for MariaDB は、Microsoft クラウドにおける、[MariaDB コミュニティ エディション](https://mariadb.org/download/)のデータベース エンジンを基にしたリレーショナル データベース サービスです。 このサービスは、パブリック プレビューの段階です。 Azure Database for MariaDB では次のものが提供されます。
@@ -51,7 +51,7 @@ Azure データベース サービスは、アクセスの制限、保存デー�
 
 Azure Database for MariaDB サービスでは、保存されるデータにストレージ暗号化が使用されます。 バックアップを含むデータはディスク上で暗号化されます (ただし、クエリの実行中にエンジンによって作成された一時ファイルを除きます)。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
 
-既定では、Azure Database for MariaDB サービスは、ネットワーク全体で移動中のデータに SSL 接続セキュリティ<!--[SSL connection security](./concepts-ssl-connection-security.md)-->を要求するように構成されています。 データベース サーバーとクライアント アプリケーションの間に SSL 接続を適用すると、サーバーとアプリケーションの間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。 クライアント アプリケーションが SSL 接続をサポートしていない場合は、必要に応じて、データベース サービスに接続するための SSL 要求を無効にできます。
+既定では、Azure Database for MariaDB サービスは、ネットワーク全体で移動中のデータに [SSL 接続セキュリティ](./concepts-ssl-connection-security.md)を要求するように構成されています。 データベース サーバーとクライアント アプリケーションの間に SSL 接続を適用すると、サーバーとアプリケーションの間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。 クライアント アプリケーションが SSL 接続をサポートしていない場合は、必要に応じて、データベース サービスに接続するための SSL 要求を無効にできます。
 
 ## <a name="contacts"></a>連絡先
 Azure Database for MariaDB についての質問や提案は、Azure Database for MariaDB チームにメール ([@Ask Azure DB for MariaDB](mailto:AskAzureDBforMariaDB@service.microsoft.com)) でお送りください。 これはテクニカル サポートの別名ではないことに注意してください。

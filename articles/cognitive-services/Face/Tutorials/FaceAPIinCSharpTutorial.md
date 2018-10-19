@@ -3,19 +3,19 @@ title: 'チュートリアル: 画像内の顔を検出してフレームに収�
 titleSuffix: Azure Cognitive Services
 description: このチュートリアルでは、Face API を使用して画像内の顔を検出し、フレームに収める Windows アプリを作成します。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.author: nolachar
-ms.openlocfilehash: 657c471761c36de5095763623210909308f55c2a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.author: pafarley
+ms.openlocfilehash: ba850c1d4f9d8018f333662eead56f8e91b3fbd7
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162613"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340955"
 ---
 # <a name="tutorial-create-a-wpf-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル: 画像の中にある顔を検出してフレームに収める WPF アプリの作成
 

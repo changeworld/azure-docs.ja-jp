@@ -1,21 +1,21 @@
 ---
-title: サポートされている言語を Translator Text と Java で取得する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Cognitive Services の Translator Text API と Java を使った例を紹介しています。
+title: 'クイック スタート: サポートされている言語を取得する - Translator Text、Java'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Java で Translator Text API を使った例を紹介しています。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: af8b50d6600354601c8516c20a079028cefe2b16
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 64954c06d90ff8110b77874846fe57072faf2f76
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "43770698"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126974"
 ---
 # <a name="quickstart-get-supported-languages-with-java"></a>クイック スタート: サポートされている言語を Java で取得する
 

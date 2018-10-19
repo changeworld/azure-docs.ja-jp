@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 06365e4397075d18150095f7e77367f457e3308c
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: c10e071100410f6d5d995d88657bdd85c08a9715
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190427"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423495"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT オペレーター向けのファースト ステップ
 
@@ -149,7 +149,7 @@ Azure を使用する利点の 1 つは、世界中のさまざまなデータ�
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure portal は [Shell.Azure.com](https://portal.azure.com) にあります。 Azure リソースを管理するためのダッシュボードとツールがあり、カスタマイズも可能です。 課金とサブスクリプションに関する情報も確認できます。 詳細は、「[Microsoft Azure Portal の概要](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)」と「[ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)」を参照してください。
+Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure ポータルは、[portal.azure.com](https://portal.azure.com) にあります。 Azure リソースを管理するためのダッシュボードとツールがあり、カスタマイズも可能です。 課金とサブスクリプションに関する情報も確認できます。 詳細は、「[Microsoft Azure Portal の概要](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)」と「[ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)」を参照してください。
 
 ### <a name="resources"></a>リソース
 
@@ -185,7 +185,7 @@ Azure は、Azure Portal UI をサポートする REST API のセットに基づ
 
 ## <a name="azure-subscriptions"></a>Azure サブスクリプション
 
-サブスクリプションは、Azure アカウントにリンクされている Azure サービスを論理的にグループ化したものです。 1 つの Azure アカウントに複数のサブスクリプションを含めることができます。 Azure サービスの課金は、サブスクリプションごとに行われます。 Azure サブスクリプションにはアカウント管理者とサービス管理者が割り当てられます。アカウント管理者にはサブスクリプションを制御する権限が、サービス管理者にはサブスクリプションに含まれるすべてのサービスを制御する権限が与えられます。 管理者に加え、ロールベースのアクセス制御 (RBAC) 経由で Azure リソースを細かく管理する権限が個々のアカウントに与えられます。
+サブスクリプションは、Azure アカウントにリンクされている Azure サービスを論理的にグループ化したものです。 1 つの Azure アカウントに複数のサブスクリプションを含めることができます。 Azure サービスの課金は、サブスクリプションごとに行われます。 Azure サブスクリプションにはアカウント管理者とサービス管理者が割り当てられます。アカウント管理者にはサブスクリプションを制御する権限が与えられ、サービス管理者にはサブスクリプションに含まれるすべてのサービスを制御する権限が与えられます。 従来のサブスクリプション管理者の詳細については、「[Azure サブスクリプション管理者を追加または変更する](../../billing/billing-add-change-azure-subscription-administrator.md)」を参照してください。 管理者に加え、[ロールベースのアクセス制御 (RBAC)](../../role-based-access-control/overview.md) を使用して Azure リソースを細かく管理する権限が個々のアカウントに与えられます。
 
 ### <a name="select-and-enable-an-azure-subscription"></a>Azure サブスクリプションを選択し、有効にする
 
@@ -205,13 +205,9 @@ Azure サービスを利用するには、サブスクリプションが必要�
 
 ### <a name="grant-administrative-access-to-an-azure-subscription"></a>Azure サブスクリプションに管理アクセスを与える
 
-複数のアカウント管理者ロールが利用できます。ロールはいつでも変更できます。 2 つの主要ロール:
+RBAC にはいくつかの組み込みロールがあり、それらを使用して、アクセス許可を割り当てることができます。 ユーザーを Azure サブスクリプションの管理者にするには、サブスクリプション スコープで、そのユーザーに[所有者](../../role-based-access-control/built-in-roles.md#owner)ロールを割り当てます。 これにより、他のユーザーへアクセス権を委任する権限を含め、サブスクリプションにあるすべてのリソースへのフル アクセスがユーザーに付与されます。
 
-- **サービス管理者**: このロールには、Azure サービスを管理する権限が与えられます。 既定では、アカウント管理者と同じアカウントへのアクセスが与えられます。
-
-- **共同管理者**: このロールには、サービス管理者と同じアクセスが与えられます。 ただし、Azure ディレクトリへのサブスクリプションの関連付けを変更することはできません。
-
-詳細については、「[Azure 管理者ロールを追加または変更する方法](../../billing/billing-add-change-azure-subscription-administrator.md)」をご覧ください。
+詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ### <a name="view-billing-information-in-the-azure-portal"></a>Azure Portal で請求情報を表示する
 
@@ -232,10 +228,6 @@ Azure の使用で重要になることの 1 つが請求情報を表示する�
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>料金計算ツールでコストを予測する
 
 Azure では、サービスごとに価格が異なります。 多くの Azure サービスでは、Basic、Standard、Premium という価格層を提供しています。 通常、階層ごとにいくつかの価格レベルとパフォーマンス レベルが用意されています。 [オンライン料金計算ツール](http://azure.microsoft.com/pricing/calculator)を利用すれば、価格を見積もることができます。 このツールでは、1 つのリソースまたはリソース グループのコストを柔軟に見積もることができます。
-
-### <a name="set-up-billing-alerts"></a>課金アラートのセットアップ
-
-Azure でアプリケーションまたはソリューションをデプロイした後は、アラートを作成し、アラートに定義されている使用制限に近づいたときに電子メールを送信できます。 詳細については、「[Microsoft Azure サブスクリプションの課金アラートの設定](../../billing/billing-set-up-alerts.md)」を参照してください。
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 
@@ -307,7 +299,7 @@ Resource Manager テンプレートはあらゆるテキスト エディター�
 
 アクセス権を付与するには、ロールをユーザーまたはユーザー グループに割り当てます。 さまざまなロールが事前定義されています。 独自のロールを定義することもできます。
 
-Azure に組み込まれているロールの例:
+[Azure に組み込まれているロール](../../role-based-access-control/built-in-roles.md)の例:
 
 - **所有者**: このロールが与えられたユーザーは、アクセスを含め、すべてを管理できます。
 
@@ -319,9 +311,9 @@ Azure に組み込まれているロールの例:
 
 - **SQL セキュリティ管理者**: このロールが与えられたユーザーは、SQL のサーバーとデータベースのセキュリティ関連ポリシーを管理できます。
 
-- **ストレージ アカウント共同作成者** : このロールが与えられたユーザーはストレージ アカウントを管理できますが、ストレージ アカウントへのアクセスを管理することはできません。
+- **ストレージ アカウント共同作成者**: このロールが与えられたユーザーはストレージ アカウントを管理できますが、ストレージ アカウントへのアクセスを管理することはできません。
 
-詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
+詳細については、「[RBAC と Azure portal を使用してアクセスを管理する](../../role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 ## <a name="azure-virtual-machines"></a>Azure Virtual Machines
 

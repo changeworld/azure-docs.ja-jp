@@ -3,7 +3,7 @@ title: ExpressRoute を使用して Azure Stack を Azure に接続する
 description: ExpressRoute を使用して Azure Stack 内の仮想ネットワークを Azure 内の仮想ネットワークに接続する方法について説明します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/14/2018
-ms.author: brenduns
+ms.date: 09/12/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 878b7952938c7ec534bc09e27ee8b859c1aaeefb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: c30e70802d125744432f428f903f6ac6789f631e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "43050380"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389227"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Azure ExpressRoute を使用して Azure Stack を Azure に接続する
 
@@ -98,7 +98,7 @@ Azure Stack 内でテナントに必要なネットワーク リソースを作�
 #### <a name="create-the-virtual-network-and-vm-subnet"></a>仮想ネットワークと VM サブネットを作成する
 
 1. ユーザー (テナント) アカウントを使用してユーザー ポータルにサインインします。
-1. ポータルで **[新規]** を選択します。
+1. ポータルで **[+ リソースの作成]** を選択します。
 
 1. **[Azure Marketplace]** の **[ネットワーク]** を選択します。
 
@@ -131,7 +131,7 @@ Azure Stack 内でテナントに必要なネットワーク リソースを作�
 
 #### <a name="create-the-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成する
 
-1. Azure Stack ユーザー ポータルで **[新規]** を選択します。
+1. Azure Stack ユーザー ポータルで、**[+ リソースの作成]** を選択します。
 1. **[Azure Marketplace]** の **[ネットワーク]** を選択します。
 1. ネットワーク リソースの一覧から **[仮想ネットワーク ゲートウェイ]** を選択します。
 1. **[名前]** フィールドに「**GW1**」と入力します。
@@ -146,7 +146,7 @@ Azure Stack 内でテナントに必要なネットワーク リソースを作�
 
 ローカル ネットワーク ゲートウェイ リソースは、VPN 接続のもう一方の端にあるリモート ゲートウェイを識別します。 この例の場合、接続のリモート側の終端は ExpressRoute ルーターの LAN サブインターフェイスです。 テナント 1 では、"*図 2*" に示したように、10.60.3.255 がリモート アドレスになります。
 
-1. ユーザー アカウントを使用して Azure Stack ユーザー ポータルにサインインし、**[新規]** を選択します。
+1. ユーザー アカウントを使用して Azure Stack ユーザー ポータルにサインインし、**[+ リソースの作成]** を選択します。
 1. **[Azure Marketplace]** の **[ネットワーク]** を選択します。
 1. リソースの一覧から **[ローカル ネットワーク ゲートウェイ]** を選択します。
 1. **[名前]** フィールドに「**ER-Router-GW**」と入力します。
@@ -163,7 +163,7 @@ Azure Stack 内でテナントに必要なネットワーク リソースを作�
 
 #### <a name="create-the-connection"></a>接続の作成
 
-1. Azure Stack ユーザー ポータルで **[新規]** を選択します。
+1. Azure Stack ユーザー ポータルで、**[+ リソースの作成]** を選択します。
 1. **[Azure Marketplace]** の **[ネットワーク]** を選択します。
 1. リソースの一覧から **[接続]** を選択します。
 1. **[基本]** で、**[接続の種類]** として **[サイト間 (IPSec)]** を選択します。
@@ -187,7 +187,7 @@ Azure Stack 内でテナントに必要なネットワーク リソースを作�
 
 VPN 接続上のデータ トラフィックをテストするには、Azure Stack VNet でデータを送受信する仮想マシンが必要です。 仮想マシンを作成して、目的の仮想ネットワークの VM サブネットにデプロイします。
 
-1. Azure Stack ユーザー ポータルで **[新規]** を選択します。
+1. Azure Stack ユーザー ポータルで、**[+ リソースの作成]** を選択します。
 1. **[Azure Marketplace]** の **[計算]** を選択します。
 1. 仮想マシンのイメージの一覧で、**Windows Server 2016 Datacenter Eval** イメージを選択します。
 
@@ -313,7 +313,7 @@ Azure でデプロイするリソースは、Azure Stack でデプロイした�
 
 この例の Azure ネットワーク インフラストラクチャは、次のように構成されています。
 
-* 標準的なハブ (192.168.2.0/24) とスポーク (10.100.0.0./16) の VNet モデル。 ハブスポーク ネットワーク トポロジの詳細については、「[Azure にハブスポーク ネットワーク トポロジを実装する](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)」を参照してください。
+* 標準的なハブ (192.168.2.0/24) とスポーク (10.100.0.0./16) の VNet モデル。 ハブスポーク ネットワーク トポロジの詳細については、「[Azure にハブスポーク ネットワーク トポロジを実装する](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)」を参照してください。
 * ワークロードはスポーク VNet でデプロイされ、ExpressRoute 回線はハブ VNet に接続されています。
 * 2 つの VNet は、VNet ピアリングを使用して接続されています。
 

@@ -1,25 +1,28 @@
 ---
-title: Azure Cognitive Services、Microsoft Translator Speech API の Python のクイック スタート | Microsoft Docs
-description: Azure 上の Microsoft Cognitive Services で Microsoft Translator Speech API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Python での Translator Speech API'
+titlesuffix: Azure Cognitive Services
+description: Translator Speech API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 07/17/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a24ccd456df533542e7cbd2315fc1050cd82afbf
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: f6386fbb54ab78def289f5eee9f957bb7a11ff65
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41937535"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341221"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-python"></a>Python での Microsoft Translator Speech API のクイック スタート 
+# <a name="quickstart-translator-speech-api-with-python"></a>クイック スタート: Python での Translator Speech API
 <a name="HOLTop"></a>
 
-この記事では、Microsoft Translator Speech API を使用して、.wav ファイルで話されている言葉を翻訳する方法について説明します。
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
+
+この記事では、Translator Speech API を使用して、.wav ファイルで話されている言葉を翻訳する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -1,5 +1,5 @@
 ---
-title: .NET を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する | Microsoft Docs
+title: .NET を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 description: Azure Table Storage または Azure Cosmos DB Table API を使用して、構造化データをクラウドに格納します。
 services: cosmos-db
 author: SnehaGunda
@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: sample
 ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: c084a08ffef868af751d065c5857a9b67a12485f
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 00bc950493e7b4eaad4a2165779f5c8151070aee
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41919976"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042582"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>.NET を使用して Azure Table Storage と Azure Cosmos DB Table API を使用する
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -105,7 +105,7 @@ NuGet パッケージを取得するには、次の手順に従います。
 * クラウド内の Azure Cosmos DB アカウントに対してコードを実行できます。
 * Azure ストレージ エミュレーターに対してコードを実行できます。 ストレージ エミュレーターは、クラウド内の Azure ストレージ アカウントをエミュレートするローカル環境です。 エミュレーターを使用すると、アプリケーションの開発中にコードのテストとデバッグを無料で実行できます。 エミュレーターでは既知のアカウントとキーを使用します。 詳細については、「[Azure ストレージ エミュレーターを使用した開発とテスト](../storage/common/storage-use-emulator.md)」を参照してください。
 
-クラウドのストレージ アカウントをターゲットにする場合は、Azure Portal からストレージ アカウントのプライマリ アクセス キーをコピーします。 詳細については、「 [ストレージ アクセス キーの表示とコピー](../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
+クラウドのストレージ アカウントをターゲットにする場合は、Azure Portal からストレージ アカウントのプライマリ アクセス キーをコピーします。 詳細については、「[ストレージ アカウントのアクセス キー](../storage/common/storage-account-manage.md#access-keys)」を参照してください。
 
 > [!NOTE]
 > ストレージ エミュレーターをターゲットにすると、Azure Storage に関連する利用料金の発生を回避できます。 ただし、クラウド内の Azure ストレージ アカウントをターゲットとしても、このサンプルを実行するための利用料金はごくわずかです。
@@ -121,7 +121,6 @@ Azure Cosmos DB アカウントをターゲットにする場合は、Azure Port
 
 > [!NOTE]
 > アカウント キーは、ストレージ アカウントの root パスワードに似ています。 ストレージ アカウント キーは常に慎重に保護してください。 このキーを他のユーザーに配布したり、ハードコーディングしたり、他のユーザーがアクセスできるプレーン テキスト ファイルに保存したりしないでください。 キーが侵害されたと思われる場合は、Azure Portal を使用してキーを再生成してください。
-> 
 > 
 
 接続文字列を構成するには、Visual Studio のソリューション エクスプローラーから `app.config` ファイルを開きます。 次に示す `<appSettings>` 要素の内容を追加します。 `account-name` をアカウントの名前に置き換え、`account-key` をアカウントのアクセス キーに置き換えます。

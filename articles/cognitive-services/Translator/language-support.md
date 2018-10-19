@@ -19,7 +19,7 @@ ms.locfileid: "47435378"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
-Translator Text API では、テキスト対テキストの翻訳について、以下の言語をサポートしています。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator Text API の V3 を使用して既定で提供されます。 "generalnn" カテゴリを使用する V2 のニューラル機械翻訳が使用可能です。
+Translator Text API では、テキスト対テキストの翻訳について、以下の言語をサポートしています。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator Text API の V3 を使用して既定で提供されます。 V2 では "generalnn" カテゴリを使用することでニューラル機械翻訳が使用可能です。
 
 [機械翻訳の詳細](https://www.microsoft.com/translator/mt.aspx)
 
@@ -64,7 +64,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | リトアニア語      | ニューラル |`lt`          |
 | マダガスカル語      | 統計 |`mg`          |
 | マレー語      | 統計 |`ms`          |
-| マルタ人      | 統計 |`mt`          |
+| マルタ語      | 統計 |`mt`          |
 | ノルウェー語        |  ニューラル |`nb`          |
 | ペルシャ語      | 統計 |`fa`          |
 | ポーランド語        |  ニューラル |`pl`          |
@@ -237,7 +237,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | スペイン語 |
 | スワヒリ語 |
 | スウェーデン語 |
-| Tagalog |
+| タガログ語 |
 | テルグ語 |
 | タイ語 |
 | トルコ語 |

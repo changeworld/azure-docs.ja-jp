@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: spelluru
-ms.openlocfilehash: 4f7aa0b0c5142237f3b6fc66bb8593302c95f5af
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: e66a1651a46cfaeb7fb8b232eeb7cf6a2fb8044d
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41919195"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451224"
 ---
 # <a name="get-started-with-relay-hybrid-connections-http-requests-in-net"></a>.NET での Relay ハイブリッド接続 HTTP 要求の概要
 [!INCLUDE [relay-selector-hybrid-connections](../../includes/relay-selector-hybrid-connections.md)]
@@ -64,9 +64,14 @@ Visual Studio で C# コンソール アプリケーションを作成して、R
 [!INCLUDE [relay-hybrid-connections-http-requests-dotnet-get-started-client](../../includes/relay-hybrid-connections-http-requests-dotnet-get-started-client.md)]
 
 ## <a name="5-run-the-applications"></a>5.アプリケーションの実行
-1. サーバー アプリケーションを実行します。
-2. クライアント アプリケーションを実行し、何かテキストを入力します。
-3. サーバー アプリケーション コンソールに、クライアント アプリケーションで入力したテキストが表示されることを確認します。
+1. サーバー アプリケーションを実行します。 コンソール ウィンドウに次のテキストが表示されます。
+
+    ```
+    Online
+    Server listening
+    ```
+1. クライアント アプリケーションを実行します。 クライアント ウィンドウに `hello!` が表示されます。 クライアントは HTTP 要求をサーバーに送信し、サーバーは `hello!` で応答しました。 
+3. ここで、コンソール ウィンドウを閉じるには、両方のコンソール ウィンドウで **Enter** キーを押します。 
 
 これで、エンド ツー エンドのハイブリッド接続アプリケーションを作成できました。
 

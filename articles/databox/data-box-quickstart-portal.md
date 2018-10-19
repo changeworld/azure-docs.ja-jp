@@ -2,24 +2,18 @@
 title: Microsoft Azure Data Box のクイック スタート | Microsoft Docs
 description: Azure portal からすばやく Azure Data Box をデプロイする方法の学習
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: quickstart
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/04/2018
 ms.author: alkohli
-ms.openlocfilehash: 514b2a026ea34f4bd82f13ebc73c09f71637ce30
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a2f8d295ca161ff2263f53b8faa407c7a42a4c6b
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978354"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385845"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>クイック スタート: Azure portal を使用して Azure Data Box をデプロイする
 
@@ -31,17 +25,18 @@ ms.locfileid: "46978354"
 
 作業を開始する前に、次のことを行います。
 
-- Data Box サービスに使用するサブスクリプションが、次のいずれかのタイプであることを確認します。
+- Data Box サービスで使用するサブスクリプションが、次のいずれかの種類であることを確認します。
     - Microsoft Enterprise Agreement (EA)。 [EA サブスクリプション](https://azure.microsoft.com/pricing/enterprise-agreement/)に関する詳細をご覧ください。
     - Cloud Solution Provider (CSP)。 Azure CSP プログラムの詳細は[こちら](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview)です。
     - 使用量 - 従量課金制。 Azure の従量課金制サブスクリプションについての詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0003p/)です。
+    - Microsoft Azure スポンサー プラン。 Azure スポンサー プラン プログラムの詳細は[こちら](https://azure.microsoft.com/offers/ms-azr-0036p/)です。 
 
-- Data Box の注文を作成するためのサブスクリプションに対する所有者または共同作成者のアクセスがあることを確認します。
+- Data Box の注文を作成するサブスクリプションに対して、所有者または共同作成者アクセス権があることを確認します。
 - [ Data Box の安全性のガイドライン](data-box-safety.md)を確認します。
 - Data Box にコピーするデータが格納されているホスト コンピューターがあること。 このホスト コンピューターは次の条件を満たしている必要があります。
     - [サポート対象のオペレーティング システム](data-box-system-requirements.md)が実行されていること。
     - 高速ネットワークに接続していること。 少なくとも 1 本の 10 GbE 接続を利用することを強くお勧めします。 10 GbE 接続を利用できない場合は、1 GbE データ リンクを使用できますが、コピーの速度が影響を受けます。 
-- Data Box を設置できる平らな場所があること。 デバイスを標準的なラック棚に設置しようとする場合は、データ センター ラックに 7U のスロットが必要です。 デバイスはラックに横向きまたは縦向きに置くことができます。
+- Data Box を設置できる平らな場所があること。 デバイスを標準的なラック棚に設置しようとする場合は、データ センター ラックに 7U のスロットが必要です。 デバイスは平面に置くことも、ラックに立てて置くこともできます。
 - Data Box をホスト コンピューターに接続するために以下のケーブルを用意していること。
     - 10 GbE SFP+ Twinax 銅線ケーブル 2 本 (DATA 1、DATA 2 ネットワーク インターフェイスで使用)
     - RJ-45 CAT 6 ネットワーク ケーブル 1 本 (MGMT ネットワーク インターフェイスで使用)

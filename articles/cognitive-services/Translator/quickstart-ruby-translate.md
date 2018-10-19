@@ -1,21 +1,21 @@
 ---
-title: Translator Text と Ruby でテキストを翻訳する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と Ruby を使って、テキストを別の言語に翻訳します。
+title: 'クイック スタート: テキストを翻訳する - Translator Text、Ruby'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Ruby で Translator Text API を使ってテキストを別の言語に翻訳します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: b4d2e04d67fea140148e626ee94b46fdfcd6bac7
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 38b4ee3a2122e0151490ef1a29ee02d498a06b7d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43771200"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126549"
 ---
 # <a name="quickstart-translate-text-with-ruby"></a>クイック スタート: Ruby を使ったテキストの翻訳
 

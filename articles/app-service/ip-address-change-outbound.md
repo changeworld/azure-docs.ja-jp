@@ -10,12 +10,12 @@ ms.workload: web
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: cephalin
-ms.openlocfilehash: dfc0a13c1804d8ea74c78a61bfa85e9f5bdd1685
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 2355fa5e3e7fd83b5d9f22d87c19f8152659fc97
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819072"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309353"
 ---
 # <a name="how-to-prepare-for-an-outbound-ip-address-change"></a>送信 IP アドレスの変更に備える方法
 

@@ -1,6 +1,6 @@
 ---
-title: VMware から Azure への Azure Site Recovery のトラブルシューティング | Microsoft Docs
-description: Azure 仮想マシンのレプリケート時に発生するエラーのトラブルシューティングを行います。
+title: レプリケーション (VMware から Azure へ) を有効にする際のモビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング | Microsoft Docs
+description: Azure 仮想マシンのレプリケート時にモビリティ サービス/プッシュ インストールに関するエラーをトラブルシューティングします。
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,93 +8,95 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.author: ramamill
-ms.date: 07/06/2018
-ms.openlocfilehash: 8d5db03eeebb659414ea1f554e5b34c938fd2795
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 09/19/2018
+ms.openlocfilehash: 4c57d048f4c3222ac180355a6a700562415f601c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952911"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390195"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>モビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング
 
-この記事では、保護を有効にするためにソース サーバーに Azure Site Recovery モビリティ サービスをインストールするときに発生する可能性がある、一般的な問題のトラブルシューティング方法について説明します。
+モビリティ サービスのインストールは、レプリケーションを有効にする際の重要な手順です。 前提条件を満たしていて、サポート対象の構成を使用していれば、この手順は成功します。 モビリティ サービスのインストール時に直面する最も一般的な問題の原因は次のとおりです。
 
-## <a name="error-78007---the-requested-operation-could-not-be-completed"></a>エラー 78007 - 要求された操作を完了できませんでした
-このエラーは、複数の理由により、サービスでスローされる可能性があります。 具体的なトラブルシューティングを行うには対応するプロバイダー エラーを選択します。
+* 資格情報/特権のエラー
+* 接続エラー
+* サポート対象外のオペレーティング システム
 
-* [エラー 95103](#error-95103---protection-could-not-be-enabled-ep0854) 
-* [エラー 95105](#error-95105---protection-could-not-be-enabled-ep0856) 
-* [エラー 95107](#error-95107---protection-could-not-be-enabled-ep0858) 
-* [エラー 95108](#error-95108---protection-could-not-be-enabled-ep0859) 
-* [エラー 95117](#error-95117---protection-could-not-be-enabled-ep0865) 
-* [エラー 95213](#error-95213---protection-could-not-be-enabled-ep0874) 
-* [エラー 95224](#error-95224---protection-could-not-be-enabled-ep0883) 
-* [エラー 95265](#error-95265---protection-could-not-be-enabled-ep0902) 
+レプリケーションを有効にすると、Azure Site Recovery はモビリティ サービス エージェントを仮想マシンにプッシュ インストールしようとします。 その一環として、構成サーバーは仮想マシンとの接続およびエージェントのコピーを試行します。 インストールを成功させるには、以下に示す段階的なトラブルシューティング ガイダンスに従ってください。
 
+## <a name="credentials-check-errorid-95107--95108"></a>資格情報チェック (ErrorID: 95107 および 95108)
 
-## <a name="error-95105---protection-could-not-be-enabled-ep0856"></a>エラー 95105 - 保護を有効にできませんでした (EP0856)
+* レプリケーションを有効にする際に選択したユーザー アカウントが**有効かつ正確**なものであることを確認します。
+* Azure Site Recovery には、プッシュ インストールを実行するための**管理者特権**が必要です。
+  * Windows の場合は、ソース マシンに対する管理用のアクセス権 (ローカルまたはドメイン) がユーザー アカウントにあること確認します。
+  * ドメイン アカウントを使用していない場合、ローカル コンピューターでリモート ユーザー アクセス制御を無効にする必要があります。
+    * リモート ユーザー アクセス制御を無効にするには、HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System レジストリ キーに新しい DWORD として LocalAccountTokenFilterPolicy を追加します。 値を 1 に設定します。 この手順を実行するには、コマンド プロンプトで次のコマンドを実行します。
 
-**エラー コード** | **考えられる原因** | **エラー固有の推奨事項**
---- | --- | ---
-95105 </br>**メッセージ:** ソース マシンに対するモビリティ サービスのプッシュ インストールが、エラー コード **EP0856** で失敗しました。 <br> **[ファイルとプリンターの共有]** がソース マシンで許可されていないか、プロセス サーバーとソース マシン間のネットワーク接続に問題があります。| **[ファイルとプリンターの共有]** が有効になっていません。 | Windows ファイアウォールでソース マシンの **[ファイルとプリンターの共有]** を許可します。 ソース マシンで、**[Windows ファイアウォール]** > **[ファイアウォールを介したアプリまたは機能を許可する]** の順に移動し、すべてのプロファイルで **[ファイルとプリンターの共有]** を選択します。 </br> さらに、次の前提条件を確認して、プッシュ インストールを正常に完了します。<br> 詳細については、「[WMI の問題のトラブルシューティング](#troubleshoot-wmi-issues)」を参照してください。
+         `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+  * Linux でモビリティ エージェントのインストールを成功させるには、ルート アカウントを選択する必要があります。
 
+選択したユーザー アカウントの資格情報を変更する場合は、[ここ](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation)に示す手順に従ってください。
 
-## <a name="error-95107---protection-could-not-be-enabled-ep0858"></a>エラー 95107 - 保護を有効にできませんでした (EP0858)
+## <a name="connectivity-check-errorid-95117--97118"></a>**接続チェック (ErrorID: 95117 および 97118)**
 
-**エラー コード** | **考えられる原因** | **エラー固有の推奨事項**
---- | --- | ---
-95107 </br>**メッセージ:** ソース マシンに対するモビリティ サービスのプッシュ インストールが、エラー コード **EP0858** で失敗しました。 <br> モビリティ サービスをインストールするために指定した資格情報が正しくないか、ユーザー アカウントに十分な権限がありません。 | ソース マシンにモビリティ サービスをインストールするために指定したユーザー資格情報が正しくありません。 | 構成サーバー上のソース マシンに対して指定したユーザー資格情報が正しいことを確認します。 <br> ユーザー資格情報を追加または編集するには、構成サーバーに移動して、**[Cspsconfigtool]** > **[アカウントの管理]** の順に選択します。 </br> さらに、次の[前提条件](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery)を確認して、プッシュ インストールを正常に完了します。
+* 構成サーバーからソース マシンに ping を実行できることを確認します。 レプリケーションを有効にする際にスケールアウト プロセス サーバーを選択した場合は、プロセス サーバーからソース マシンに ping を実行できることを確認します。
+  * ソース サーバー マシンのコマンド ラインから、Telnet を使用して、次のように https ポート (既定値は 9443) を指定して構成サーバー/スケールアウト プロセス サーバーを ping し、ネットワーク接続の問題であるか、ファイアウォールのポート ブロックの問題であるかを確認します。
 
+     `telnet <CS/ scale-out PS IP address> <port>`
 
-## <a name="error-95117---protection-could-not-be-enabled-ep0865"></a>エラー 95117 - 保護を有効にできませんでした (EP0865)
+  * 接続できない場合は、構成サーバー/スケールアウト プロセス サーバーで受信ポート 9443 を許可します。
+  * サービス **InMage Scout VX Agent – Sentinel/Outpost** の状態を確認します。 実行されていない場合は、サービスを開始します。
 
-**エラー コード** | **考えられる原因** | **エラー固有の推奨事項**
---- | --- | ---
-95117 </br>**メッセージ:** ソース マシンに対するモビリティ サービスのプッシュ インストールが、エラー コード **EP0865** で失敗しました。 <br> ソース マシンが実行されていないか、プロセス サーバーとソース マシン間のネットワーク接続に問題があります。 | プロセス サーバーとソース サーバー間のネットワーク接続の問題です。 | プロセス サーバーとソース サーバー間の接続を確認します。 </br> さらに、次の[前提条件](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery)を確認して、プッシュ インストールを正常に完了します。|
+* また、**Linux VM** の場合は次のことを確認します。
+  * 最新の openssh、openssh-server、および openssl パッケージがインストールされているかどうかを確認します。
+  * SSH (Secure Shell) が有効になっており、ポート 22 で実行中であることを確認します。
+  * SFTP サービスが実行中である必要があります。 sshd_config ファイルで SFTP サブシステムとパスワード認証を有効にするには、次の手順を実行します。
+    * root としてサインインします。
+    * /etc/ssh/sshd_config ファイルに移動し、PasswordAuthentication で始まる行を見つけます。
+    * この行のコメントを解除し、値を yes に変更します。
+    * Subsystem で始まる行を見つけ、その行のコメントを解除します。
+    * sshd サービスを再起動します。
+* 一定の期間が経過した後に適切な応答がない場合は、接続の試行が失敗した可能性があります。または、接続されたホストが応答しなかったため接続を確立できませんでした。
+* 接続/ネットワーク/ドメインに関連する問題である可能性があります。 また、DNS 名解決の問題または TCP ポート消費の問題が原因である可能性もあります。 ドメインにそのような既知の問題がないかどうかを確認してください。
 
-## <a name="error-95103---protection-could-not-be-enabled-ep0854"></a>エラー 95103 - 保護を有効にできませんでした (EP0854)
+## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>ファイルとプリンターの共有サービス チェック (ErrorID: 95105 および 95106)
 
-**エラー コード** | **考えられる原因** | **エラー固有の推奨事項**
---- | --- | ---
-95103 </br>**メッセージ:** ソース マシンに対するモビリティ サービスのプッシュ インストールが、エラー コード **EP0854** で失敗しました。 <br> Windows Management Instrumentation (WMI) がソース マシンで許可されていないか、プロセス サーバーとソース マシン間のネットワーク接続に問題があります。| WMI が Windows ファイアウォールでブロックされています。 | Windows ファイアウォールで WMI を許可します。 **[Windows ファイアウォール]** > **[ファイアウォールを介したアプリまたは機能を許可]** の順に選択し、すべてのプロファイルで **[WMI]** を選択します。 </br> さらに、次の[前提条件](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery)を確認して、プッシュ インストールを正常に完了します。|
+接続チェックが完了したら、ファイルとプリンターの共有サービスが仮想マシンで有効になっているかどうかを確認します。
 
-## <a name="error-95213---protection-could-not-be-enabled-ep0874"></a>エラー 95213 - 保護を有効にできませんでした (EP0874)
+**Windows 2008 R2 およびそれ以前のバージョン**の場合は、次の手順を実行します。
 
-**エラー コード** | **考えられる原因** | **エラー固有の推奨事項**
---- | --- | ---
-95213 </br>**メッセージ:** ソース マシン %SourceIP; に対するモビリティ サービスのインストールが、エラー コード **EP0874** で失敗しました。 <br> | ソース マシンのオペレーティング システムのバージョンがサポートされていません。 <br>| ソース マシンの OS バージョンがサポートされていることを確認します。 [サポート マトリックス](https://aka.ms/asr-os-support)を参照してください。 </br> さらに、次の[前提条件](https://aka.ms/pushinstallerror)を確認して、プッシュ インストールを正常に完了します。| 
+* Windows ファイアウォールを介してファイルとプリンターの共有を有効にする
+  * コントロール パネルを開きます。[システムとセキュリティ]、[Windows ファイアウォール] の順に選択し、左側のウィンドウで [詳細設定] をクリックし、コンソール ツリーの [受信の規則] をクリックします。
+  * [ファイルとプリンターの共有 (NB セッション受信)] 規則と [ファイルとプリンターの共有 (SMB 受信)] 規則を探します。 各規則を右クリックして、**[規則の有効化]** をクリックします。
+* グループ ポリシーを使用してファイル共有を有効にする
+  * [スタート] メニューに移動し、「gpmc.msc」と入力して検索します。
+  * ナビゲーション ウィンドウで、[ローカル コンピューター ポリシー]、[ユーザーの構成]、[管理用テンプレート]、[Windows コンポーネント]、および [ネットワーク共有] の各フォルダーを順に開きます。
+  * 詳細ウィンドウで、**[ユーザーがプロファイル内のファイルを共有できないようにします]** をダブルクリックします。 グループ ポリシー設定を無効にして、ユーザーがファイルを共有できるようにするには、[無効] をクリックします。 [OK] をクリックして変更を保存します。 詳細については、 [ここ](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10))をクリックしてください。
 
+**より新しいバージョン**の場合は、[ここ](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery)に記載されている手順に従ってファイルとプリンターの共有を有効にします。
 
-## <a name="error-95108---protection-could-not-be-enabled-ep0859"></a>エラー 95108 - 保護を有効にできませんでした (EP0859)
+## <a name="windows-management-instrumentation-wmi-configuration-check"></a>Windows Management Instrumentation (WMI) の構成チェック
 
-**エラー コード** | **考えられる原因** | **エラー固有の推奨事項**
---- | --- | ---
-95108 </br>**メッセージ:** ソース マシンに対するモビリティ サービスのプッシュ インストールが、エラー コード **EP0859** で失敗しました。 <br>| モビリティ サービスをインストールするために指定した資格情報が正しくないか、ユーザー アカウントに十分な権限がありません。 <br>| 指定された資格情報が**ルート** アカウントの資格情報であることを確認します。 ユーザー資格情報を追加または編集するには、構成サーバーに移動して、デスクトップにある **[Cspsconfigtool]** ショートカット アイコンを選択します。 **[アカウントの管理]** を選択して資格情報を追加または編集します。|
+ファイルとプリンターのサービスのチェックが完了したら、ファイアウォール経由で WMI サービスを有効にします。
 
-## <a name="error-95265---protection-could-not-be-enabled-ep0902"></a>エラー 95265 - 保護を有効にできませんでした (EP0902)
+* コントロール パネルで、[セキュリティ] をクリックし、[Windows ファイアウォール] をクリックします。
+* [設定の変更] をクリックし、[例外] タブをクリックします。
+* [例外] ウィンドウで、Windows Management Instrumentation (WMI) のチェック ボックスをオンにして、ファイアウォール経由の WMI トラフィックを有効にします。 
 
-**エラー コード** | **考えられる原因** | **エラー固有の推奨事項**
---- | --- | ---
-95265 </br>**メッセージ:** ソース マシンへのモビリティ サービスのプッシュ インストールが成功しましたが、システムの変更内容を有効にするために再起動が必要です。 <br>| 古いバージョンのモビリティ サービスが、サーバーに既にインストールされています。| 仮想マシンのレプリケーションはシームレスに継続されます。<br> 次のメンテナンス期間中にサーバーを再起動して、モビリティ サービスの新しい拡張機能のメリットを活用します。|
+また、コマンド プロンプトで、ファイアウォール経由の WMI トラフィックを有効にすることもできます。 次のコマンドを使用します。`netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+WMI のトラブルシューティングに関するその他の記事を次に示します。
 
-
-## <a name="error-95224---protection-could-not-be-enabled-ep0883"></a>エラー 95224 - 保護を有効にできませんでした (EP0883)
-
-**エラー コード** | **考えられる原因** | **エラー固有の推奨事項**
---- | --- | ---
-95224 </br>**メッセージ:** ソース マシン %SourceIP; に対するモビリティ サービスのプッシュ インストールが、エラー コード **EP0883** で失敗しました。 前のインストールまたは更新からのシステムの再起動が保留されています。| 古いまたは互換性のないバージョンのモビリティ サービスをアンインストールしたところ、システムが再起動しませんでした。| サーバー上にモビリティ サービスのバージョンが存在しないことを確認します。 <br> サーバーを再起動し、保護の有効化ジョブを再実行します。|
-
-## <a name="resource-to-troubleshoot-push-installation-problems"></a>プッシュ インストールの問題をトラブルシューティングするためのリソース
-
-#### <a name="troubleshoot-file-and-print-sharing-issues"></a>ファイルと印刷の共有の問題をトラブルシューティングする
-* [グループ ポリシーを使用してファイルの共有を有効または無効にする](https://technet.microsoft.com/library/cc754359(v=ws.10).aspx)
-* [Windows ファイアウォールを介してファイルおよび印刷の共有を有効にする](https://technet.microsoft.com/library/ff633412(v=ws.10).aspx)
-
-#### <a name="troubleshoot-wmi-issues"></a>WMI の問題のトラブルシューティング
 * [基本的な WMI テスト](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
 * [WMI のトラブルシューティング](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
 * [WMI スクリプトと WMI サービスに関する問題のトラブルシューティング](https://technet.microsoft.com/library/ff406382.aspx#H22)
+
+## <a name="unsupported-operating-systems"></a>サポート対象外のオペレーティング システム
+
+問題が発生するもう 1 つの最も一般的な理由は、サポート対象外のオペレーティング システムです。 モビリティ サービスのインストールを成功させるには、サポート対象のオペレーティング システム/カーネルのバージョンを使用してください。
+
+Azure Site Recovery でサポートされているオペレーティング システムについては、[サポート マトリックス ドキュメント](vmware-physical-azure-support-matrix.md#replicated-machines)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

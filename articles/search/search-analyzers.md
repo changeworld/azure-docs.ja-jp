@@ -8,12 +8,12 @@ ms.date: 09/11/2017
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
-ms.openlocfilehash: e858966fb5a15b84af1952399a5eff3ca50d0d59
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 68ce4fa5536f21d6d66245a9383a4b58c42febff
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31795699"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116372"
 ---
 # <a name="analyzers-in-azure-search"></a>Azure Search のアナライザー
 
@@ -26,13 +26,13 @@ ms.locfileid: "31795699"
 
 言語アナライザーは、テキスト入力を情報の保存と取得に効率的な原型または原形に変換します。 変換は、インデックスが構築されるときにインデックスの作成中に実行され、インデックスの読み取り時の検索中にも実行されます。 両方の操作に同じテキスト アナライザーを使用すると、期待する検索結果が得られる可能性が高くなります。
 
-Azure Search で既定で使用されるのは、[Lucene の標準アナライザー](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)です。 フィールド単位で既定値を上書きすることができます。 この記事では、さまざまな選択肢と、カスタム分析のベスト プラクティスについて説明しています。 また、主なシナリオの構成例も示します。
+Azure Search で既定で使用されるのは、[Lucene の標準アナライザー](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)です。 フィールド単位で既定値をオーバーライドすることができます。 この記事では、さまざまな選択肢と、カスタム分析のベスト プラクティスについて説明しています。 また、主なシナリオの構成例も示します。
 
 ## <a name="supported-analyzers"></a>サポートされているアナライザー
 
 次の一覧では、Azure Search でサポートされているアナライザーについて説明しています。
 
-| カテゴリ | [説明] |
+| Category | 説明 |
 |----------|-------------|
 | [標準 Lucene のアナライザー](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | [既定]。 指定や構成は必要ありません。 この汎用アナライザーは、ほとんどの言語とシナリオで適切に実行されます。|
 | 定義済みアナライザー | そのまま使用するように完成した製品として提供されます。カスタマイズは制限されています。 <br/>特殊と言語という 2 種類があります。 "定義済み" とは、カスタマイズなしで、名前で参照するためです。 <br/><br/>[特殊 (言語を選ばない) アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable)は、特殊な処理または最小限の処理が必要なテキスト入力に使用します。 非言語の定義済みアナライザーには、**Asciifolding**、**Keyword**、**Pattern**、**Simple**、**Stop**、**Whitespace** などがあります。<br/><br/>[言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)は、各言語に合わせて高度の言語サポートが必要な場合に使用されます。 Azure Search は、35 個の Lucene 言語アナライザーと 50 個の Microsoft 自然言語処理アナライザーをサポートしています。 |
@@ -67,7 +67,7 @@ Azure Search では、追加の `indexAnalyzer` および `searchAnalyzer` フ�
 
 ### <a name="test-during-active-development"></a>アクティブな開発中のテスト
 
-標準アナライザーを上書きするには、インデックスの再構築が必要です。 可能であれば、アクティブな開発中に使用するアナライザーを決めてから、インデックスを運用環境に展開します。
+標準アナライザーをオーバーライドするには、インデックスの再構築が必要です。 可能であれば、アクティブな開発中に使用するアナライザーを決めてから、インデックスを運用環境に展開します。
 
 ### <a name="inspect-tokenized-terms"></a>トークン化された用語の検査
 
@@ -134,7 +134,7 @@ Azure Search では、追加の `indexAnalyzer` および `searchAnalyzer` フ�
      "tokenizers":[
         {
            "name":"my_standard_tokenizer",
-           "@odata.type":"#Microsoft.Azure.Search.StandardTokenizer",
+           "@odata.type":"#Microsoft.Azure.Search.StandardTokenizerV2",
            "maxTokenLength":20
         }
      ],
@@ -149,11 +149,11 @@ Azure Search では、追加の `indexAnalyzer` および `searchAnalyzer` フ�
 ~~~~
 
 <a name="Example2"></a>
-### <a name="example-2-override-the-default-analyzer"></a>例 2: 既定のアナライザーを上書きする
+### <a name="example-2-override-the-default-analyzer"></a>例 2: 既定のアナライザーをオーバーライドする
 
 標準アナライザーが既定です。 たとえば、既定のアナライザーを、パターン アナライザーなど、別の定義済みアナライザーで置き換えるとします。 カスタム オプションを設定していない場合、フィールド定義で名前を使用して指定する必要があります。
 
-"analyzer" 要素は、フィールドごとに標準アナライザーを上書きします。 グローバルな上書きはありません。 この例で、`text1` はパターン アナライザーと `text2` を使用します。これはアナライザーを指定せず、既定値を使用します。
+"analyzer" 要素は、フィールドごとに標準アナライザーをオーバーライドします。 グローバルなオーバーライドはありません。 この例で、`text1` はパターン アナライザーと `text2` を使用します。これはアナライザーを指定せず、既定値を使用します。
 
 ~~~~
   {

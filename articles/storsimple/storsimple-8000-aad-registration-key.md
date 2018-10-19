@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: e6e792c31f9856bcaf1d777e534dcac8d8be3dd3
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: b1ea195ab0b06c4ca0fab37fe7e5701229b34938
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37113529"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387040"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>StorSimple の新しい認証を使用する
 
@@ -28,7 +28,7 @@ ms.locfileid: "37113529"
 StorSimple デバイス マネージャー サービスは Microsoft Azure で実行され、複数の StorSimple デバイスに接続します。 これまで、StorSimple デバイス マネージャー サービスは、StorSimple デバイスへのサービスの認証に Access Control Service (ACS) を使用しました。 ACS メカニズムは間もなく非推奨となり、Azure Active Directory (AAD) 認証に置き換えられる予定です。 詳細については、次の ACS 廃止と AAD 認証の使用に関するお知らせをご覧ください。
 
 - [Azure ACS の後継、Azure Active Directory](https://cloudblogs.microsoft.com/enterprisemobility/2015/02/12/the-future-of-azure-acs-is-azure-active-directory/)
-- [Microsoft Access Control Service に対する今後の変更](https://azure.microsoft.com/en-in/blog/acs-access-control-service-namespace-creation-restriction/)
+- [Microsoft Access Control Service に対する今後の変更](https://azure.microsoft.com/blog/acs-access-control-service-namespace-creation-restriction/)
 
 この記事では、StorSimple デバイスに適用される AAD 認証と、これに関連付けられている新しいサービス登録キー、およびファイアウォール規則の変更について詳しく説明します。 この記事に記載されている内容は、StorSimple 8000 シリーズ デバイスにのみ適用されます。
 

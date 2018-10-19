@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: get-started-article
-ms.date: 02/15/2018
+ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 2b6f46c10603e54f0f77a635b3233073aadac0cd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2173a24eb3bbaafe9dcf25461eb5357ba3a6e7ad
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700125"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166901"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus と Event Grid の統合の概要
 
@@ -129,9 +129,9 @@ Service Bus 名前空間の Event Grid サブスクリプションは、次の 3
 2. 左側のウィンドウで **[Event Grid]** を選択します。 
 3. **[イベント サブスクリプション]** を選びます。  
 
-   次の画像に表示されている名前空間には、いくつかの Event Grid サブスクリプションが存在します。
+   次の画像には、Event Grid サブスクリプションがある名前空間が表示されています。
 
-   ![20][]
+   ![Event Grid サブスクリプション](./media/service-bus-to-event-grid-integration-concept/sbtoeventgridportal.png)
 
    次の画像には、特定のフィルターなしで関数または webhook をサブスクライブする方法が示されています。
 
@@ -176,10 +176,10 @@ New-AzureRmEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBS
 ## <a name="next-steps"></a>次の手順
 
 * Service Bus と Event Grid の[例](service-bus-to-event-grid-integration-example.md)を確認します。
-* [Event Grid](https://docs.microsoft.com/azure/azure-functions/) の詳細を確認します。
+* [Event Grid](https://docs.microsoft.com/azure/event-grid/) の詳細を確認します。
 * [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) について学習します。
 * [Logic Apps](https://docs.microsoft.com/azure/logic-apps/) の詳細を見る
-* [Service Bus](https://docs.microsoft.com/azure/azure-functions/) の詳細を確認します。
+* [Service Bus](https://docs.microsoft.com/azure/service-bus/) の詳細を確認します。
 
 [1]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgrid1.png
 [19]: ./media/service-bus-to-event-grid-integration-concept/sbtoeventgriddiagram.png

@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/06/2018
+ms.date: 06/15/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f982e859892965379b7ffb08e15dd1cf51b9801f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 333161042e968b4baf4b962869d688fd0b696b24
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31515681"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094137"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -98,7 +98,7 @@ Batch アカウントで使うストレージ アカウントは "*専用*" の�
 > 現時点では、[ファイアウォール規則](../storage/common/storage-network-security.md)で構成されている Azure Storage アカウントでアプリケーション パッケージを使用することはできません。
 > 
 
-Batch サービスは、Azure Storage を使ってアプリケーション パッケージをブロック BLOB として格納します。 ブロック BLOB データは[通常どおり課金されます][storage_pricing]。 アプリケーション パッケージのサイズと数に気を配り、使用されていないパッケージを定期的に削除して、コストを最小限に抑えてください。
+Batch サービスは、Azure Storage を使ってアプリケーション パッケージをブロック BLOB として格納します。 ブロック BLOB データの[通常料金を課金][storage_pricing]され、各パッケージのサイズは[最大ブロック BLOB サイズ](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets)を超えることはできません。 アプリケーション パッケージのサイズと数に気を配り、非推奨のパッケージを定期的に削除して、コストを最小限に抑えてください。
 > 
 > 
 
@@ -204,8 +204,8 @@ CloudPool myCloudPool =
     batchClient.PoolOperations.CreatePool(
         poolId: "myPool",
         targetDedicatedComputeNodes: 1,
-        virtualMachineSize: "small",
-        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
+        virtualMachineSize: "standard_d1_v2",
+        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
 
 // Specify the application and version to install on the compute nodes
 myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>

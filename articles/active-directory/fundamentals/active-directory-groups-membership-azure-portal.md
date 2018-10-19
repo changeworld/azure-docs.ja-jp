@@ -1,56 +1,84 @@
 ---
-title: Azure AD で自分のグループが属するグループを管理する | Microsoft Docs
-description: Azure Active Directory でグループに他のグループを含めることができます。 ここでは、これらのメンバーシップを管理する方法について説明します。
+title: Azure Active Directory の別のグループからグループを追加または削除する方法 | Microsoft Docs
+description: Azure Active Directory を使用して別のグループからグループを追加または削除する方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: quickstart
-ms.date: 10/10/2017
+ms.topic: conceptual
+ms.date: 08/28/2018
 ms.author: lizross
 ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: 8a71677ae3ceb5617f0a817a8eff438d5e3f2774
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: c28fe5ef226fac993fde221b16bfa875ba4845ca
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860449"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579770"
 ---
-# <a name="manage-to-which-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでグループが属するグループを管理する
-Azure Active Directory でグループに他のグループを含めることができます。 ここでは、これらのメンバーシップを管理する方法について説明します。
+# <a name="how-to-add-or-remove-a-group-from-another-group-using-azure-active-directory"></a>方法: Azure Active Directory を使用して別のグループからグループを追加または削除する
+この記事は、Azure Active Directory を使用して別のグループからグループを追加および削除するのに役立ちます。
 
-## <a name="how-do-i-find-the-groups-of-which-my-group-is-a-member"></a>自分のグループが属するグループを見つける方法
-1. ディレクトリのグローバル管理者のアカウントで [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
-2. **[ユーザーとグループ]** を選択します。
+>[!Note]
+>親グループを削除しようとする場合は、[グループとそのメンバーを更新または削除する方法](active-directory-groups-delete-group.md)に関するページをご覧ください。
 
-   ![ユーザーとグループを開く画像](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
-1. **[すべてのグループ]** を選択します。
+## <a name="add-a-group-as-a-member-to-another-group"></a>メンバーとしてグループを別のグループに追加する
+メンバー グループ (サブグループ) と親グループを作成して、既存のグループを別の既存のグループに追加できます。 メンバー グループには親グループの属性とプロパティが継承され、構成時間を節約できます。
 
-   ![グループの選択の画像](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
-1. グループを選びます。
-2. **[グループ メンバーシップ]** を選びます。
+### <a name="to-add-a-group-as-a-member-to-another-group"></a>メンバーとしてグループを別のグループに追加するには
 
-   ![グループ メンバーシップを開く画像](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-1. グループを別のグループのメンバーとして追加するには、**[グループ - グループ メンバーシップ]** ブレードで、**[追加]** をクリックします。
-2. **[グループの選択]** ブレードでグループを選択し、ブレードの下部にある **[選択]** をクリックします。 グループは、一度に 1 つのグループにのみ追加できます。 **[ユーザー]** ボックスでは、入力内容とユーザー名またはデバイス名の一部との一致に基づいて表示がフィルター処理されます。 このボックスではワイルドカード文字は使用できません。
+1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 
-   ![グループ メンバーシップを追加する](./media/active-directory-groups-membership-azure-portal/add-group-membership.png)
-8. 別のグループのメンバーであるグループを削除するには、 **[グループ - グループ メンバーシップ]** ブレードでグループを選択します。
-9. **[削除]** コマンドを選び、表示されたメッセージで削除を確定します。
+2. **[Azure Active Directory]** を選択し、**[グループ]** を選択します。
 
-   ![メンバーシップの [削除] コマンド](./media/active-directory-groups-membership-azure-portal/remove-group-membership.png)
-10. グループのグループ メンバーシップの変更が完了したら、 **[保存]** をクリックします。
+3. **[グループ - すべてのグループ]** ページで、別のグループのメンバーになるグループを検索して選択します。 この演習では、**[MDM policy - West]\(MDM ポリシー - 西部\)** グループを使用します。
+
+    >[!Note]
+    >グループはメンバーとして、一度に 1 つのグループにのみ追加できます。 さらに、**[グループの選択]** ボックスでは、入力内容とユーザー名またはデバイス名の一部との一致に基づいて表示がフィルター処理されます。 ただし、ワイルドカード文字はサポートされません。
+
+    ![[MDM policy - West]\(MDM ポリシー - 西部\) グループが選択された [グループ - すべてのグループ] ページ](media/active-directory-groups-membership-azure-portal/group-all-groups-screen.png)
+
+4. **[MDM policy - West - Group memberships]\(MDM ポリシー - 西部 - グループ メンバーシップ\)** ページで、**[グループ メンバーシップ]**、**[追加]** の順に選択し、ご自分のグループをメンバーにする対象グループを検索して、**[選択]** を選びます。 この演習では、**[MDM policy - All org]\(MDM ポリシー - すべての組織\)** グループを使用します。
+
+    現在、**[MDM policy - West]\(MDM ポリシー - 西部\)** グループは、[MDM policy - All org]\(MDM ポリシー - すべての組織\) グループのプロパティと構成をすべて継承して、**[MDM policy - All org]\(MDM ポリシー - すべての組織\)** グループのメンバーになっています。
+
+    ![グループを別のグループに追加してグループ メンバーシップを作成する](media/active-directory-groups-membership-azure-portal/add-group-membership.png)
+
+5. **[MDM policy - West - Group memberships]\(MDM ポリシー - 西部 - グループ メンバーシップ\)** ページを表示して、グループとメンバー リレーションを確認します。
+
+    ![親グループを表示している [MDM policy - West - Group memberships]\(MDM ポリシー - 西部 - グループ メンバーシップ\) ページ](media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
+
+6. グループとメンバー リレーションシップのより詳細な表示については、グループ名 (**[MDM policy - All org]\(MDM ポリシー - すべての組織\)**) を選択して、**[MDM policy - West]\(MDM ポリシー - 西部\)** ページの詳細を確認します。
+
+    ![メンバーとグループの両方の詳細を表示している [グループ メンバーシップ] ページ](media/active-directory-groups-membership-azure-portal/group-membership-review.png)
+
+## <a name="remove-a-member-group-from-another-group"></a>他のグループからメンバー グループを削除する
+別のグループから既存のメンバー グループを削除できます。 しかし、メンバーシップを削除すると、ご自分のユーザーに継承された属性とプロパティもすべて削除されます。
+
+### <a name="to-remove-a-member-group-from-another-group"></a>別のグループからメンバー グループを削除するには
+1. **[グループ - すべてのグループ]** ページで、別のグループのメンバーとして削除されるグループを検索して選択します。 この演習では、もう一度 **[MDM ポリシー - 西部]** グループを使用します。
+
+2. **[MDM policy - West]\(MDM ポリシー - 西部\)** 概要ページで、**[グループ メンバーシップ]** を選択します。
+
+    ![[MDM policy - West]\(MDM ポリシー - 西部\) 概要ページ](media/active-directory-groups-membership-azure-portal/group-membership-overview.png)
+
+3. **[MDM policy - West - Group memberships]\(MDM ポリシー - 西部 - グループ メンバーシップ\)** ページから **[MDM policy - All org]\(MDM ポリシー - すべての組織\)** グループを選択して、**[MDM policy - West]\(MDM ポリシー - 西部\)** ページの詳細から **[削除]** を選択します。
+
+    ![メンバーとグループの両方の詳細を表示している [グループ メンバーシップ] ページ](media/active-directory-groups-membership-azure-portal/group-membership-remove.png)
+
 
 ## <a name="additional-information"></a>追加情報
 次の記事は、Azure Active Directory に関する追加情報を示します。
 
-* [既存のグループの表示](active-directory-groups-view-azure-portal.md)
-* [新しいグループの作成とメンバーの追加](active-directory-groups-create-azure-portal.md)
-* [グループの設定の管理](active-directory-groups-settings-azure-portal.md)
-* [グループのメンバーの管理](active-directory-groups-members-azure-portal.md)
-* [グループ内のユーザーの動的ルールの管理](../users-groups-roles/groups-dynamic-membership.md)
+- [グループとメンバーを表示する](active-directory-groups-view-azure-portal.md)
+
+- [基本的なグループを作成し、メンバーを追加する](active-directory-groups-create-azure-portal.md)
+
+- [グループからメンバーを追加または削除する](active-directory-groups-members-azure-portal.md)
+
+- [グループの設定を編集する](active-directory-groups-settings-azure-portal.md)
+
+- [グループによるユーザーへのライセンスの割り当て](../users-groups-roles/licensing-groups-assign.md)

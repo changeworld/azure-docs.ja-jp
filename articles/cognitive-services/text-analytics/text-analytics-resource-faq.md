@@ -1,22 +1,23 @@
 ---
-title: Text Analytics API についてよく寄せられる質問 - Azure Cognitive Services | Microsoft Docs
-description: Azure の Microsoft Cognitive Services Text Analytics API についてよく寄せられる質問に対する回答をご覧いただけます。
+title: Text Analytics API に関してよく寄せられる質問
+titleSuffix: Azure Cognitive Services
+description: Text Analytics API に関する一般的な質問の回答を表示します。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: conceptual
-ms.date: 3/07/2018
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: bf82899b4317f0f5ce0f6ca5096dccef7cddd931
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: aa1c5b048c3ef339d01a3a63fd1d565b888ffbbb
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377792"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603398"
 ---
-# <a name="frequently-asked-questions-faq-about-the-text-analytics-api"></a>Text Analytics API に関してよく寄せられる質問 (FAQ)
+# <a name="frequently-asked-questions-faq-about-the-text-analytics-cognitive-service"></a>Text Analytics Cognitive Service に関してよく寄せられる質問 (FAQ)
 
  Azure の Microsoft Cognitive Services Text Analytics API に関連する概念、コード、シナリオについてよく寄せられる質問に対する回答を示します。
 

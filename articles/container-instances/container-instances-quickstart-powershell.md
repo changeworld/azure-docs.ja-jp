@@ -1,26 +1,25 @@
 ---
-title: クイック スタート - PowerShell を使用した最初の Azure Container Instances コンテナーの作成
-description: このクイック スタートでは、Azure PowerShell を使用して Azure Container Instances に Windows コンテナーをデプロイします。
+title: クイック スタート - Azure Container Instances でアプリケーションを実行する
+description: このクイック スタートでは、Azure PowerShell を使用して、Docker コンテナーで実行されているアプリケーションを Azure Container Instances にデプロイします
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 05/11/2018
-ms.author: marsma
+ms.date: 10/02/2018
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 4a1d338304dbd5e2845768b7bf0273eed23af0ec
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 33444e810a2deebee11e535c73ce3e249f42b340
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38453568"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854645"
 ---
-# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>クイック スタート: Azure Container Instances での最初のコンテナーの作成
+# <a name="quickstart-run-an-application-in-azure-container-instances"></a>クイック スタート: Azure Container Instances でアプリケーションを実行する
 
-Azure Container Instances を使用すると、仮想マシンをプロビジョニングしたり、より高度なレベルのサービスを採用したりしなくても、Azure の Docker コンテナーを簡単に作成、管理できます。 このクイック スタートでは、Azure で Windows コンテナーを作成し、完全修飾ドメイン名 (FQDN) を使用してインターネットに公開します。 この操作は、1 つのコマンドで完結します。 少し時間が経てば、以下のように、実行中のアプリケーションをブラウザーで確認できるようになります。
+Docker コンテナーを Azure で簡単にすばやく実行するには、Azure Container Instances を使用します。 仮想マシンをデプロイしたり、Kubernetes などの完全なコンテナー オーケストレーション プラットフォームを使用したりする必要はありません。 このクイック スタートでは、Azure portal を使用して Azure で Windows コンテナーを作成し、そのアプリケーションを完全修飾ドメイン名 (FQDN) を介して使用できるようにします。 1 つのデプロイ コマンドを実行して数秒後には、実行中のアプリケーションを参照できます。
 
-![Azure Container Instances を使用してデプロイされたアプリのブラウザーでの表示][qs-powershell-01]
+![Azure Container Instances にデプロイされたアプリのブラウザーでの表示][qs-powershell-01]
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
@@ -30,7 +29,9 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[New-AzureRmResourceGroup][New-AzureRmResourceGroup] を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+Azure のコンテナー インスタンスは、すべての Azure リソースと同様に、リソース グループにデプロイする必要があります。 リソース グループを使用すると、関連する Azure リソースを整理して管理できます。
+
+まず、次の [New-AzureRmResourceGroup][New-AzureRmResourceGroup] コマンドを使用して、*myResourceGroup* という名前のリソース グループを *eastus* の場所に作成します。
 
  ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
@@ -38,15 +39,15 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-コンテナーを作成するには、名前、Docker イメージ、および Azure リソース グループを [New-AzureRmContainerGroup][New-AzureRmContainerGroup] コマンドレットに指定します。 必要に応じて、DNS 名ラベルを使用してコンテナーをインターネットに公開できます。
+リソース グループを作成すると、Azure でコンテナーを実行できます。 Azure PowerShell を使用してコンテナー インスタンスを作成するには、リソース グループ名、コンテナー インスタンス名、および Docker コンテナー イメージを [New-AzureRmContainerGroup][New-AzureRmContainerGroup] コマンドレットに渡します。 1 つまたは複数の開くポート、DNS 名ラベル、またはその両方を指定することで、コンテナーをインターネットに公開することができます。 このクイック スタートでは、DNS 名ラベルを指定して、Nano Server で実行されているインターネット インフォメーション サービス (IIS) をホストするコンテナーをデプロイします。
 
-次のコマンドを実行して、インターネット インフォメーション サービス (IIS) を実行している Nano Server コンテナーを起動します。 `-DnsNameLabel` の値は、インスタンスを作成する Azure リージョン内で一意である必要があります。そのため、場合によっては一意性を確保するためにこの値を変更する必要があります。
+次のコマンドを実行して、コンテナー インスタンスを開始します。 `-DnsNameLabel` の値は、インスタンスを作成する Azure リージョン内で一意である必要があります。 エラー メッセージ "DNS 名ラベルは利用できません" が表示された場合は、別の DNS 名ラベルを試してください。
 
  ```azurepowershell-interactive
 New-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
 ```
 
-数秒で、要求に対する応答が得られます。 コンテナーは最初は **[作成中]** の状態ですが、1 から 2 分で起動されます。 [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] コマンドレットを使用して、デプロイの状態を確認することができます。
+数秒以内に、Azure から応答を受信します。 コンテナーの `ProvisioningState` は、最初は **Creating** と表示されますが、1、2 分で **Succeeded** に変わります。 [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] コマンドレットを使用して、デプロイ状態を確認します。
 
  ```azurepowershell-interactive
 Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
@@ -78,7 +79,7 @@ State                    : Pending
 Events                   : {}
 ```
 
-コンテナーの **ProvisioningState** が `Succeeded` に移行したら、ブラウザーでその `Fqdn` に移動します。
+コンテナーの `ProvisioningState` が **Succeeded** になったら、ブラウザーでその `Fqdn` に移動します。 次のような Web ページが表示されたら成功です。 Docker コンテナーで実行されているアプリケーションが Azure に正常にデプロイされました。
 
 ![ブラウザーに表示された、Azure Container Instances を使用してデプロイされた IIS][qs-powershell-01]
 
@@ -92,7 +93,7 @@ Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontaine
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、パブリック Docker Hub レジストリ内のイメージから Azure コンテナー インスタンスを作成しました。 コンテナー イメージを自分でビルドし、プライベート Azure コンテナー レジストリから Azure Container Instances にデプロイする場合は、Azure Container Instances のチュートリアルに進んでください。
+このクイック スタートでは、パブリック Docker Hub レジストリ内のイメージから Azure コンテナー インスタンスを作成しました。 コンテナー イメージをビルドし、プライベート Azure コンテナー レジストリからデプロイする場合は、Azure Container Instances のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances のチュートリアル](./container-instances-tutorial-prepare-app.md)

@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 560d96b188a02f8df0d41b040c90db9b813e3c0a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 89802722e9e848b5cd5ede952287d5c934c142c3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063253"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351321"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 用の 1433 以外のポート
 このトピックでは、クライアントで ADO.NET 4.5 以降のバージョンが使用される場合の Azure SQL Database の接続動作について説明します。 
@@ -69,7 +69,7 @@ Azure クラウド境界内でクライアントを実行している場合、�
 * ADO.NET 4.5 は、2012 年 8 月 15 日にリリースされました。 .NET チームのブログのお知らせは [こちら](http://blogs.msdn.com/b/dotnet/archive/2012/08/15/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)からご利用になれます。 
   * ADO.NET 4.5.1 についてのブログの投稿は、 [こちら](http://blogs.msdn.com/b/dotnet/archive/2013/06/26/announcing-the-net-framework-4-5-1-preview.aspx)からご利用になれます。
 
-* Microsoft® ODBC Driver 17 for SQL Server® - Windows、Linux、macOS https://www.microsoft.com/en-us/download/details.aspx?id=56567
+* Microsoft® ODBC Driver 17 for SQL Server® - Windows、Linux、macOS https://www.microsoft.com/download/details.aspx?id=56567
 
 * リダイレクト https://blogs.msdn.microsoft.com/sqlcat/2016/09/08/connect-to-azure-sql-database-v12-via-redirection/ を介して Azure SQL Database V12 に接続する
 

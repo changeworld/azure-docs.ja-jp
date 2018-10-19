@@ -52,7 +52,7 @@
 
 ## [コンテンツのエンコード](media-services-encode-asset.md)
 ### [エンコーダーの比較](media-services-compare-encoders.md)
-### [エンコードの速度と同時実行の管理](media-services-manage-encoding-speed.md)
+### [エンコードの速度とコンカレンシーの管理](media-services-manage-encoding-speed.md)
 ### Media Encoder Standard (MES)
 #### [Media Encoder Standard の形式とコーデック](media-services-media-encoder-standard-formats.md)
 #### [MES を使用したビットレート ラダーの自動生成](media-services-autogen-bitrate-ladder-with-mes.md)
@@ -64,6 +64,7 @@
 ##### [Media Encoder Standard のプリセットのカスタマイズ](media-services-custom-mes-presets-with-dotnet.md)
 ##### [.NET で Media Encoder Standard を使用してサムネイルを生成する方法](media-services-dotnet-generate-thumbnail-with-mes.md)
 ##### [Media Encoder Standard を使用してビデオをトリミングする](media-services-crop-video.md)
+##### [サムネイル スプライトを生成する](generate-thumbnail-sprite.md)
 #### MES スキーマ
 ##### [Media Encoder Standard スキーマ](media-services-mes-schema.md)
 ##### [入力メタデータ](media-services-input-metadata-schema.md)
@@ -151,7 +152,7 @@
 #### [Widevine ライセンス テンプレート](media-services-widevine-license-template-overview.md)
 ### 資産配信ポリシーを構成する
 #### [.NET](media-services-dotnet-configure-asset-delivery-policy.md)
-#### [REST](media-services-rest-configure-asset-delivery-policy.md)
+#### [REST ()](media-services-rest-configure-asset-delivery-policy.md)
 ### コンテンツ キー承認ポリシーを構成する
 #### [Azure Portal](media-services-portal-configure-content-key-auth-policy.md)
 #### [.NET](media-services-dotnet-configure-content-key-auth-policy.md)

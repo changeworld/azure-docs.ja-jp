@@ -2,16 +2,17 @@
 ms.assetid: ''
 title: Azure Key Vault の論理的な削除 | Microsoft Docs
 ms.service: key-vault
+ms.topic: conceptual
 author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: ccdefc83642285194635ffe7b561e9e322360533
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: ac34f03c896e9e2180b653c41faa7f7525a40e33
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42141762"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407877"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
@@ -36,9 +37,26 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 
 ### <a name="soft-delete-behavior"></a>論理的な削除の動作
 
-この機能を使用すると、キー コンテナーまたはキー コンテナー オブジェクトの DELETE 操作は論理的な削除となり、見かけ上はオブジェクトが削除されていても、実際には指定したリテンション期間だけリソースが保持されます。 さらに、削除されたオブジェクトを回復する、実質的には削除を元に戻すメカニズムも用意されています。 
+この機能を使用すると、キー コンテナーまたはキー コンテナー オブジェクトの DELETE 操作は論理的な削除となり、見かけ上はオブジェクトが削除されていても、実際には指定した保持期間 (90 日間) だけリソースが保持されます。 さらに、削除されたオブジェクトを回復する、実質的には削除を元に戻すメカニズムも用意されています。 
 
 論理的な削除は Key Vault のオプションの動作であり、このリリースでは**既定では有効になっていません**。 
+
+### <a name="purge-protection--flag"></a>保護の消去フラグ
+Azure CLI の既定では､保護の消去 (**--enable-purge-protection** ) フラグはオフです。 このフラグが有効の場合、削除状態のコンテナーまたはオブジェクトは､90 日間の保持期間が経過するまで削除することはできません｡ このようなコンテナーまたはオブジェクトは回復することもできます。 このフラグは、保持期間が経過するまでコンテナーまたはオブジェクトを完全には削除できないことの追加保証を与えます｡ 保護の消去フラグをオンにできるのは､soft-delete フラグがオンか､コンテナー作成時に､soft-delete と保護の消去の両方がオンになっている場合だけです｡
+
+[!NOTE] 保護の消去を有効にするには､論理的な削除を有効にしておく必要があります｡ このための Azure CLI 2 コマンドは
+
+```
+az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true
+```
+
+### <a name="permitted-purge"></a>許可された消去
+
+プロキシ リソースで POST 操作によってキー コンテナーを完全削除、つまり消去することが可能ですが、それには特別な権限が必要です。 一般的に、サブスクリプションの所有者だけが、キー コンテナーを消去できます。 POST 操作では、コンテナーが直ちに削除されます。この削除は元に戻すことができません。 
+
+これに対する例外は､
+- Azure サブスクリプションが "*削除不可*" とマークされている場合です｡ この場合は、サービスのみが実際の削除を実行できます。これは、スケジュールされたプロセスとして行われます。 
+- コンテナー自体で --enable-purge-protection フラグが有効な場合｡ この場合、Key Vault では、元のシークレット オブジェクトは、オブジェクトを完全に削除する削除対象としてマークされたときから 90 日間待機します。
 
 ### <a name="key-vault-recovery"></a>キー コンテナーの回復
 
@@ -62,12 +80,6 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 - 特別な権限を持つユーザーのみが、対応するプロキシ リソースで削除コマンドを発行して、キー コンテナーまたはキー コンテナー オブジェクトを強制的に削除できます。
 
 論理的に削除されたキー コンテナーまたはキー コンテナー オブジェクトとそのコンテンツは、そのキー コンテナーまたはキー コンテナー オブジェクトを回復しない限り、リテンション期間の終わりに消去されます。 リソースの削除は、再スケジュールできません。
-
-### <a name="permitted-purge"></a>許可された消去
-
-プロキシ リソースで POST 操作によってキー コンテナーを完全削除、つまり消去することが可能ですが、それには特別な権限が必要です。 一般的に、サブスクリプションの所有者だけが、キー コンテナーを消去できます。 POST 操作では、コンテナーが直ちに削除されます。この削除は元に戻すことができません。 
-
-ただし、Azure サブスクリプションが "*削除不可*" とマークされている場合は例外です。 この場合は、サービスのみが実際の削除を実行できます。これは、スケジュールされたプロセスとして行われます。 
 
 ### <a name="billing-implications"></a>課金への影響
 

@@ -2,18 +2,18 @@
 title: Site Recovery とクラウド ソリューション プロバイダー (CSP) プログラムを使用してマルチ テナント環境での Azure への VMware レプリケーションをセットアップする | Microsoft Docs
 description: CSP を使用してテナント サブスクリプションを作成および管理し、Azure Site Recovery をマルチテナント設定でデプロイする方法について説明します。
 services: site-recovery
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: d384a77054cdcab0305b9e6d3fe5bb824e49bb16
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: bd356a7e4285f8663b91da1f200cc2ae3c266bf3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37916804"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354123"
 ---
 # <a name="set-up-vmware-replication-in-a-multi-tenancy-environment-with-the-cloud-solution-provider-csp-program"></a>クラウド ソリューション プロバイダー (CSP) プログラムを使用してマルチ テナント環境での VMware レプリケーションをセットアップする
 
@@ -65,7 +65,7 @@ VMware のレプリケーションをセットアップするには、次のこ�
 
 ## <a name="assign-tenant-access-to-the-subscription"></a>サブスクリプションにテナント アクセスを割り当てる
 
-1. ディザスター リカバリー インフラストラクチャがセットアップされていることを確認します。 ディザスター リカバリーがマネージかセルフサービスかに関係なく、パートナーは CSP ポータルからテナント サブスクリプションにアクセスします。 パートナーは自社のコンテナーをセットアップし、インフラストラクチャをテナント サブスクリプションに登録します。
+1. ディザスター リカバリー インフラストラクチャがセットアップされていることを確認します。 ディザスター リカバリーがマネージドかセルフサービスかに関係なく、パートナーは CSP ポータルからテナント サブスクリプションにアクセスします。 パートナーは自社のコンテナーをセットアップし、インフラストラクチャをテナント サブスクリプションに登録します。
 2. テナントに、[作成したアカウント](#create-a-tenant-account)を提供します。
 3. パートナーは CSP ポータルを通じ、テナント サブスクリプションに新しいユーザーを追加することもできます。手順は次のとおりです。
 

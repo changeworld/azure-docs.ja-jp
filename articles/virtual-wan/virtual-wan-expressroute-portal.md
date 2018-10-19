@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/26/2018
+ms.date: 10/5/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporoate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 0b8de4d04d9cca47423634164e458e8699154f30
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 10b73843e2ca2e0ee0af766ef1ad7ee9cbf61f94
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405310"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854608"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>チュートリアル: Azure Virtual WAN を使用して ExpressRoute の関連付けを作成する (プレビュー)
 
@@ -41,28 +41,12 @@ ms.locfileid: "47405310"
 
 ## <a name="register"></a>この機能を登録する
 
-Azure Cloud Shell を使用してこの機能を簡単に登録するには、**[TryIt]** をクリックします。
+Virtual WAN を構成する前に、まずプレビューにサブスクリプションを登録する必要があります。 これを行わないと、ポータルで Virtual WAN を使用できません。 登録するには、サブスクリプション ID を明記して、**azurevirtualwan@microsoft.com** にメールを送信します。 サブスクリプションが登録されると、メールが届きます。
 
->[!NOTE]
->この機能を登録しないと、それを使用できなくなるか、またはポータルで表示できなくなります。
->
->
+**プレビュー考慮事項:**
 
-**[TryIt]** をクリックした後、Azure Cloud Shell を開くには、次のコマンドをコピーして貼り付けます。
-
-```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowCortexExpressRouteGateway
-```
- 
-```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowCortexExpressRouteGateway
-```
-
-機能が登録済みと表示されたら、サブスクリプションを Microsoft.Network 名前空間に再登録します。
-
-```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-```
+* 利用可能なリージョン: 米国中西部
+* [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) をサポートする国で、ExpressRoute 回線を有効にする必要があります
 
 ## <a name="vnet"></a>1.仮想ネットワークの作成
 

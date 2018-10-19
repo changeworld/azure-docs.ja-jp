@@ -1,22 +1,23 @@
 ---
-title: Text Analytics REST API でキー フレーズを抽出する方法 (Azure 上の Microsoft Cognitive Services) | Microsoft Docs
-description: このチュートリアルでは、Azure 上の Microsoft Cognitive Services の Text Analytics REST API を使用して、キー フレーズを抽出する方法を説明します。
+title: '例: Text Analytics でキー フレーズを抽出する方法'
+titleSuffix: Azure Cognitive Services
+description: Text Analytics REST API を使用してキー フレーズを抽出する方法について説明します。
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 3/07/2018
+ms.topic: sample
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: 78b100e737242fa9f56e50275ef2038d8895349e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 62c078a8a72cd0a3633b7dd5fda1545f01067dbc
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373872"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605489"
 ---
-# <a name="how-to-extract-key-phrases-in-text-analytics"></a>Text Analytics でキー フレーズを抽出する方法
+# <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>例: Text Analytics でキー フレーズを抽出する方法
 
 [キー フレーズ抽出](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) API は、非構造化テキストを評価し、各 JSON ドキュメントに対してキー フレーズのリストを返します。 
 
@@ -30,7 +31,7 @@ ms.locfileid: "35373872"
 
 JSON ドキュメントは、id、text、language の形式である必要があります。
 
-ドキュメントのサイズは、ドキュメントごとに 5,000 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 次の例では、キー フレーズの抽出用に送信するコンテンツを示しています。
+ドキュメントのサイズは、ドキュメントあたり 5,000 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 次の例では、キー フレーズの抽出用に送信するコンテンツを示しています。
 
 ```
     {

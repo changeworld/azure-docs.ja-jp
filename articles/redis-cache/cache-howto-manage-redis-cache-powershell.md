@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 980a183261c394bd83292170ab133fe17229013d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 11b399bdbbbe92d1e1544f4cbae0824140ce52c1
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145409"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364508"
 ---
 # <a name="manage-azure-redis-cache-with-azure-powershell"></a>Azure PowerShell を使用した Azure Redis Cache の管理
 > [!div class="op_single_selector"]
@@ -783,7 +783,7 @@ Azure での Windows PowerShell の使用の詳細については、次のリソ
 * [MSDN 上の Azure Redis Cache コマンドレットのドキュメント](https://docs.microsoft.com/powershell/module/azurerm.rediscache/?view=azurermps-6.6.0)
 * [Azure Resource Manager コマンドレットに関するページ](http://go.microsoft.com/fwlink/?LinkID=394765): Azure Resource Manager モジュールのコマンドレットを使用する方法について説明します。
 * [リソース グループを使用した Azure リソースの管理](../azure-resource-manager/resource-group-template-deploy-portal.md): Azure ポータルでリソース グループを作成して管理する方法について説明します。
-* [Azure blog (Azure のブログ)](https://azure.microsoft.com/en-us/blog/): Azure の新機能について説明します。
+* [Azure blog (Azure のブログ)](https://azure.microsoft.com/blog/): Azure の新機能について説明します。
 * [Windows PowerShell blog (Windows PowerShell ブログ)](http://blogs.msdn.com/powershell): Windows PowerShell の新機能について説明します。
 * ["Hey, Scripting Guy!"ブログ](http://blogs.technet.com/b/heyscriptingguy/): 実践で使えるヒントとテクニックを Windows PowerShell コミュニティから得られます。
 

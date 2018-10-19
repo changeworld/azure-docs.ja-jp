@@ -3,7 +3,7 @@ title: Azure Stack サービス ポリシー | Microsoft Docs
 description: Azure Stack サービス ポリシーの詳細と、サポートを受けられる状態に統合システムを維持する方法を説明します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: caac3d2f-11cc-4ff2-82d6-52b58fee4c39
@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
-ms.author: brenduns
+ms.date: 09/05/2018
+ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: a76cf1394dc2c4900b370b52f3479dc03d1d8afe
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 523be365e8b66c157546470a70ddec73d3e1e5d1
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41946609"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630683"
 ---
 # <a name="azure-stack-servicing-policy"></a>Azure Stack サービス ポリシー
 この記事では、Azure Stack 統合システムのサービス ポリシーについて、およびサポートを受けられる状態にシステムを維持する必要があることについて説明します。 
@@ -38,9 +38,10 @@ ms.locfileid: "41946609"
 Microsoft は、毎月ソフトウェア更新プログラム パッケージをリリースします。 ただし、1 か月に複数の更新プログラムをリリースすることや、1 つも更新プログラムをリリースしないこともあります。 OEM ハードウェア ベンダーは、必要に応じて随時更新プログラムをリリースします。 
 
 更新を計画し、更新プログラムを管理する方法と、現在のバージョンを確認する方法については、[更新プログラムの管理の概要](azure-stack-updates.md)にあるドキュメントをご確認ください。 更新プログラムのダウンロード方法など、特定の更新プログラムに関する情報については、リリース ノートを参照してください。 
+- [Azure Stack 1808 更新プログラム](azure-stack-update-1808.md)
 - [Azure Stack 1807 更新プログラム](azure-stack-update-1807.md)
 - [Azure Stack 1805 更新プログラム](azure-stack-update-1805.md)
-- [Azure Stack 1804 更新プログラム](azure-stack-update-1804.md)
+
 
 ## <a name="hotfixes"></a>修正プログラム
 Microsoft は、随時、Azure Stack に関する予防可能な、または緊急の問題に対応するため、修正プログラムを提供します。  各修正プログラムは、問題、原因、および解決方法の詳細が記載された Microsoft のナレッジ ベースの記事に対応してリリースされます。 

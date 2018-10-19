@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/20/2018
 ms.author: daveba
-ms.openlocfilehash: a6e5e96757caeda267aa068db0868b1aa8ddb0fd
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: e208c8b52c14b99129bf3fce9ae54ba11f1c0a28
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220672"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584304"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>チュートリアル: Windows VM のシステム割り当てマネージド ID を使用して Azure AD Graph API にアクセスする
 
@@ -136,7 +136,7 @@ Azure AD Graph:
    Remove-AzureADServiceAppRoleAssignment -AppRoleAssignmentId $ServiceAppRoleAssignment.ObjectId -ObjectId $ManagedIdentitiesServicePrincipal.ObjectId
    ```
  
-## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-call-azure-ad-graph"></a>VM の ID を使用してアクセス トークンを取得し、それを使用して Azure AD Graph を呼び出す 
+## <a name="get-an-access-token-using-the-vms-identity-to-call-azure-ad-graph"></a>VM ID を使用してアクセス トークンを取得し、 Azure AD Graph を呼び出す 
 
 VM のシステム割り当てマネージド ID を Azure AD Graph への認証で使用するには、VM から要求を行う必要があります。
 

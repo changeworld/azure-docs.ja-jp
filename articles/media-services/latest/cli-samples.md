@@ -4,20 +4,20 @@ description: Azure Media Services 用の Azure CLI の例
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 04/15/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: acc92662aa5b727656a8eda368ba6d78a87d9ecd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5559f9055da3a2a852427c0f27d367159cdc7655
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640891"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388512"
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Azure Media Services 用の Azure CLI の例
 
@@ -39,4 +39,4 @@ ms.locfileid: "34640891"
 
 ## <a name="see-also"></a>関連項目
 
-[CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)
+[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

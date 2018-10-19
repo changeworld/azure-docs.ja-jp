@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 11bb5bf132103bed9e154a12c0e628177ca6a57a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 23e44763b773835583d255104771d2329851aac8
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344926"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181416"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して QQ アカウントでのサインアップおよびサインインを設定する
 
@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして QQ ア�
 1. [https://connect.qq.com/index.html](https://connect.qq.com/index.html) に移動します。
 2. **[应用管理 (アプリの管理)]** を選択します。
 5. **[创建应用 (アプリの作成)]** を選択し、必要な情報を入力します。
-7. **[授权回调域 (コールバック URL)]** に、「`https://{tenant_name}.b2clogin.com/te/{tenant_name}.onmicrosoft.com/oauth2/authresp`」と入力します。 たとえば、`tenant_name` が contoso の場合は URL を `https://contoso.b2clogin.com/te/contoso.onmicrosoft.com/oauth2/authresp` に設定します。
+7. **[授权回调域 (コールバック URL)]** に、「`https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp`」と入力します。 たとえば、`tenant_name` が contoso の場合は、URL を `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` に設定します。
 8. **[创建应用 (アプリの作成)]** を選択します。
 9. 確認ページで、**[应用管理 (アプリの管理)]** を選択してアプリの管理ページに戻ります。
 10. 作成したアプリの横の **[查看 (表示)]** を選択します。
@@ -50,14 +50,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして QQ ア�
 ## <a name="configure-qq-as-an-identity-provider"></a>QQ を ID プロバイダーとして構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-2. Azure Portal の右上隅でディレクトリを切り替えて、Azure AD B2C テナントが含まれるディレクトリを使用していることを確認してください。 サブスクリプション情報を選択し、**[ディレクトリの切り替え]** を選択します。 
-
-    ![Azure AD B2C テナントに切り替え](./media/active-directory-b2c-setup-qq-app/switch-directories.png)
-
-    テナントが含まれるディレクトリを選択します。
-
-    ![新しいディレクトリを選択する](./media/active-directory-b2c-setup-qq-app/select-directory.png)
-
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認するために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
 4. **[ID プロバイダー]**、**[追加]** の順に選択します。
 5. **[名前]** を入力します。 たとえば、「*QQ*」と入力します。

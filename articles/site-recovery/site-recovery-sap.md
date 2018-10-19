@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: asgang
-ms.openlocfilehash: 95e5c53da2556293fc676fa5b1db9b4585038300
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: a498ac9f973bbcf87bec104f18b542cc7e8b5800
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37922740"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318692"
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Site Recovery を使用して多層 SAP NetWeaver アプリケーションのデプロイを保護する
 
@@ -71,10 +71,10 @@ Site Recovery をデプロイする前に、このインフラストラクチャ
 #### <a name="vms-running-sap-web-dispatcher-pool"></a>SAP Web Dispatcher プールを実行する VM 
 Web Dispatcher コンポーネントは、SAP アプリケーション サーバー間の SAP トラフィックのロード バランサーとして使用されます。 Web Dispatcher コンポーネントの高可用性を実現するために、Azure Load Balancer を使って Web Dispatcher セットアップがラウンドロビン構成で並列に実装されます。これにより、HTTP (S) トラフィックはバランサー プール内の使用可能 Web Dispatcher 間で分散されます。 これは、Azure Site Recovery (ASR) を使ってレプリケートされます。ディザスター リカバリー リージョンのロード バランサーの構成には、オートメーション スクリプトが使用されます。 
 
-####<a name="vms-running-application-servers-pool"></a>アプリケーション サーバー プールを実行する VM
+#### <a name="vms-running-application-servers-pool"></a>アプリケーション サーバー プールを実行する VM
 ABAP アプリケーション サーバーのログオン グループの管理には、SMLG トランザクションが使用されます。 この場合、セントラル サービスのメッセージ サーバー内の負荷分散機能を使って、SAPGUI および RFC トラフィックの SAP アプリケーション サーバーのプールにワークロードが分散されます。 これは、Azure Site Recovery を使ってレプリケートされます。 
 
-####<a name="vms-running-sap-central-services-cluster"></a>SAP セントラル サービス クラスターを実行する VM
+#### <a name="vms-running-sap-central-services-cluster"></a>SAP セントラル サービス クラスターを実行する VM
 この参照アーキテクチャでは、アプリケーション層の VM でセントラル サービスが実行されます。 セントラル サービスは、1 つの VM にデプロイすると単一障害点 (SPOF) になる可能性があります (これは高可用性が不要な場合の一般的なデプロイです)。<br>
 
 高可用性ソリューションの実装には、共有ディスク クラスターまたはファイル共有クラスターのいずれかを使用できます。VM を共有ディスク クラスター用に構成するには、Windows Server フェールオーバー クラスターを使用します。 クォーラム監視としてクラウド監視をお勧めします。 
@@ -110,7 +110,7 @@ Azure Site Recovery を使用することで、複数の Azure リージョン�
 **Active Directory 仮想マシン** |  Active Directory レプリケーション 
 **SQL データベース サーバー** |  SQL Always On レプリケーション
 
-##<a name="replicate-virtual-machines"></a>仮想マシンのレプリケート
+## <a name="replicate-virtual-machines"></a>仮想マシンのレプリケート
 
 Azure ディザスター リカバリー データ センターへのすべての SAP アプリケーション仮想マシンのレプリケートを開始するには、「[仮想マシンを Azure にレプリケートする](azure-to-azure-walkthrough-enable-replication.md)」セクションの手順に従います。
 

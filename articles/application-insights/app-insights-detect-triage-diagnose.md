@@ -12,14 +12,14 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.custom: mvc
 ms.topic: overview
-ms.date: 06/26/2017
+ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: b83d08b9dac4fccc033ad4537afd343a6fbe02c2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 799593758bf24924d91d38bd6a626b945247183b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
-ms.locfileid: "23660597"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050240"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>DevOps のための Application Insights の概要
 
@@ -64,7 +64,7 @@ Marcela Markova は OBS チームの上級開発者で、オンライン パフ�
 ## <a name="monitor-performance"></a>パフォーマンスの監視
 Application Insights の概要ページには、さまざまな[主要メトリック](app-insights-web-monitor-performance.md)を示す 1 つのグラフがあります。
 
-![さまざまなメトリック](./media/app-insights-detect-triage-diagnose/05-perfMetrics.png)
+![概要パフォーマンス KPI グラフのスクリーン ショット](./media/app-insights-detect-triage-diagnose/overview-graphs.png)
 
 ブラウザーのページの読み込み時間は、Web ページから直接送信される製品利用統計情報から生成されます。 サーバー応答時間、サーバー要求の数、失敗した要求の数はすべて Web サーバーで計算され、そこから Application Insights に送信されます。
 
@@ -72,7 +72,7 @@ Marcela は、サーバー応答のグラフに少し懸念を抱いています
 
 そこで、サーバーのグラフを開きました。
 
-![さまざまなメトリック](./media/app-insights-detect-triage-diagnose/06.png)
+![さまざまなメトリック](./media/app-insights-detect-triage-diagnose/002-servers.png)
 
 リソースの制限に達している兆候はないようなので、サーバー応答のグラフの急上昇は単に偶然かもしれません。
 
@@ -154,7 +154,7 @@ TrackException はスタックのコピーを送信するので、例外を報�
 ## <a name="monitor-proactively"></a>予防的な監視
 Marcela は、ただ座ってアラートを待っているのではありません。 再デプロイの後には、いつもすぐに、例外数だけでなく、[応答時間](app-insights-web-monitor-performance.md)に関して、全体的な数値と最も遅い要求の表の両方を確認しています。  
 
-![応答時間のグラフとサーバー応答時間のグリッド](./media/app-insights-detect-triage-diagnose/09-dependencies.png)
+![応答時間のグラフとサーバー応答時間のグリッド](./media/app-insights-detect-triage-diagnose/response-time.png)
 
 これをもとに、各デプロイメントがパフォーマンスに与える影響を評価できます。Marcela は通常は各週の値を前週の値と比較しています。 急な悪化が見られる場合は、関連する開発者に連絡します。
 
@@ -168,8 +168,6 @@ Marcela は、ただ座ってアラートを待っているのではありませ
 トリアージに役立つ戦術は、"自分でやってみる" です。 同じ問題に遭遇すれば、それが現実であることがわかります。
 
 どれくらいの割合のユーザーが影響を受けているのか。 そのおおよその答えは、障害発生率をセッション数で割って得ることができます。
-
-![失敗した要求およびセッションのチャート](./media/app-insights-detect-triage-diagnose/10-failureRate.png)
 
 応答速度の低下の場合は、最も反応が遅い要求の表を各ページの使用頻度と比較します。
 
@@ -203,7 +201,6 @@ Fabrikam 銀行の開発チームは、Application Insights を使用する前�
 * Application Insights の [概要] ページで特定の測定値についてパフォーマンスの目標を設定しました。
 * "じょうご" 内のユーザーの進み具合を測定するメトリックなど、パフォーマンスの測定値を最初からアプリケーションに組み込みました。  
 
-
 ## <a name="monitor-user-activity"></a>ユーザー アクティビティの監視
 応答時間が一貫して良好で例外がほとんどない場合、開発チームは使いやすさに目を向けることができます。 ユーザーの操作性の向上や、より多くのユーザーの目標達成を促進する方法について検討できます。
 
@@ -211,7 +208,7 @@ Application Insights を使用して、ユーザーによるアプリの使用�
 
 一例を挙げると、Web サイトを利用するユーザーは、明らかに "ふるい" にかけられたように流れていきます。 多数の顧客が各種ローンの金利を調べます。 そのうちの一部が見積もりフォームに入力します。 見積もりを取得した顧客のうちの一部が実際にローンを組みます。
 
-![ページ ビュー数](./media/app-insights-detect-triage-diagnose/12-funnel.png)
+![ページ ビュー数](./media/app-insights-detect-triage-diagnose/funnel.png)
 
 顧客の数が低下する場所を考慮することで、このじょうごの下部にわたりより多くのユーザーを確保する方法について、業務で取り組むことができます。 たとえば、[次へ] ボタンが簡単に見つからない、指示が明確でないなどのユーザーの操作性 (UX) の問題が原因である場合もあります。 ローンの金利が高すぎるなど、より重要なビジネス上の理由から低下している可能性もあります。
 
@@ -228,7 +225,7 @@ Application Insights を使用して、ユーザーによるアプリの使用�
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 アプリケーションの特性に応じて、いくつかの開始方法があります。 最適なものを選択してください。
 
 * [ASP.NET Web アプリケーション](app-insights-asp-net.md)

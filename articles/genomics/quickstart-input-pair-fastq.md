@@ -1,24 +1,22 @@
 ---
-title: 'クイックスタート: FASTQ ファイルの入力を使用したワークフローの送信 | Microsoft Docs'
+title: 'クイック スタート: FASTQ ファイルの入力を使用してワークフローを送信する - Microsoft Genomics'
 titleSuffix: Azure
 description: このクイックスタートでは、msgen クライアントがインストールされており、そのサービスを通じてサンプル データが正常に実行されていることを前提としています。
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: f093397803f21c023a2c32e42709ecfcd0e3aec7
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: acbcceb32ec54ab85db05ef743e9c10cd8cf025c
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
-ms.locfileid: "26684485"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735851"
 ---
-# <a name="submit-a-workflow-using-fastq-file-inputs"></a>FASTQ ファイルの入力を使用したワークフローの送信
+# <a name="submit-a-workflow-using-fastq-file-inputs-in-microsoft-genomics"></a>Microsoft Genomics で FASTQ ファイルの入力を使用してワークフローを送信する
 
 このクイックスタートでは、入力ファイルが一組の FASTQ ファイルである場合に、Microsoft Genomics サービスへワークフローを送信する方法を示します。 このトピックでは、`msgen` クライアントを既にインストールして実行していること、また、Azure Storage の使用方法をよく理解していることを前提とします。 提供されたサンプル データを使用してワークフローの送信に成功した場合、このクイックスタートを進める準備ができています。 
 
@@ -83,5 +81,5 @@ output_storage_account_container: outputs
 
 `msgen submit -f config.txt` という呼び出しを使って、`config.txt` ファイルを送信します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、一組の FASTQ ファイルを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 ワークフローの送信と Microsoft Genomics サービスで使用できるその他のコマンド関連の詳細情報については、[FAQ](frequently-asked-questions-genomics.md) に関するページをご覧ください。 

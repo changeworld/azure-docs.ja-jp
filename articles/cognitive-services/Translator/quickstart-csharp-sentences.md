@@ -1,25 +1,27 @@
 ---
-title: Translator Text と C# で文の長さを取得する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と C# を使って、テキストに含まれる文の長さを調べます。
+title: 'クイック スタート: 文の長さを取得する - Translator Text API、C#'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、C# で Translator Text API を使ってテキストに含まれる文の長さを調べます。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: b3e7f1099b1a7584435646fe3fae237cd458967f
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: 4569a580dfdad3a71201e607ae5b7895d0d01099
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "43770625"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364348"
 ---
 # <a name="quickstart-get-sentence-lengths-with-c35"></a>クイック スタート: 文の長さを C&#35; で取得する
 
 このクイック スタートでは、Translator Text API を使って、テキストに含まれる文の長さを調べます。
+
+このサンプルのソース コードは、[GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 

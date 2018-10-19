@@ -6,13 +6,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4e133458476a61538c2bddaaeb2f6d56d4ea5a26
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 54a86a7ea1852efba0776451291820f4174a1f1f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954910"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377585"
 ---
 # <a name="best-practices-for-query-store"></a>クエリ ストア関連のベスト プラクティス
 

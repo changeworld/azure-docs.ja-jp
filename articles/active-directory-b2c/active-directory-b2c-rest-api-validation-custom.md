@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b4fda38834782be502e2581b7b3d1097000b07bb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 0ac9b98a9dfe06492775481cd590bfb4d0db4b55
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440665"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542584"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>チュートリアル: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
 
@@ -118,7 +118,7 @@ IEF は、Azure 関数が返す `userMessage` 要求を予期しています。 
 
 1. TrustFrameworkBase.xml ファイルを開き、`<TechnicalProfile Id="SelfAsserted-ProfileUpdate">` を検索します。
 2. この技術プロファイルの構成を確認します。 ユーザーとの交換が、ユーザーに対する要求 (入力要求) とセルフ アサート プロバイダーから返されることが期待される要求 (出力要求) として、どのように定義されているかを確認します。
-3. `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate` を検索します。このプロファイルは、オーケストレーション手順 4 `<UserJourney Id="ProfileEdit">` として呼び出されます。
+3. `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate` を検索します。このプロファイルは、オーケストレーション手順 5 `<UserJourney Id="ProfileEdit">` として呼び出されます。
 
 ## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>手順 4: プロファイルの編集 RP ポリシー ファイルをアップロードしてテストする
 

@@ -3,19 +3,19 @@ title: 'クイック スタート: サムネイルの生成 - REST、Java - Comp
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision API と Java を使って、画像からサムネイルを生成します。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 8627a3b2e5f0a1e250401bdddc1870381979dca8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.author: pafarley
+ms.openlocfilehash: a29fd161e788a0c10e5fcb5cd5cd735e1f2cf1b4
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225916"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343579"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-java-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と Java によるサムネイルの生成
 

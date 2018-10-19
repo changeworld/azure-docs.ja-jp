@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: 893b0ee70f577d9240d577e76062eea36b704058
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2a3c317dc9abdb861a007be9aaed714089e9f453
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989874"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388196"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向け仮想マシン イメージ作成ガイド
 この記事 ( **手順 2**) では、Azure Marketplace にデプロイする仮想ハード ディスク (VHD) の準備について説明します。 VHD は SKU の基礎です。 プロセスは、Linux ベースの SKU または Windows ベースの SKU のどちらを提供するかによって異なります。 この記事では、両方のシナリオについて説明します。 このプロセスは、[アカウントの作成および登録][link-acct-creation]と並行して実行できます。
@@ -433,7 +433,7 @@ Azure クラシック CLI を使用して SAS URL を生成するための手順
 
 [!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 
-1.  Azure クラシック CLI を[ここから](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/)ダウンロードします。 **[Windows](http://aka.ms/webpi-azure-cli)** 向けと **[MAC OS](http://aka.ms/mac-azure-cli)** 向けのリンクがあります。
+1.  Azure クラシック CLI を[ここから](https://azure.microsoft.com/documentation/articles/xplat-cli-install/)ダウンロードします。 **[Windows](http://aka.ms/webpi-azure-cli)** 向けと **[MAC OS](http://aka.ms/mac-azure-cli)** 向けのリンクがあります。
 
 2.  ダウンロードしたら、インストールしてください。
 

@@ -2,19 +2,19 @@
 title: Azure Data Lake Tools for Visual Studio Code の使用
 description: Azure Data Lake Tools for Visual Studio Code を使用して U-SQL スクリプトを作成、テスト、実行する方法について説明します。
 services: data-lake-analytics
+ms.service: data-lake-analytics
 author: Jejiang
 ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
-ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: b06b4c4484e3f41b64ff2d60ce558726c555a2e3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: e470d27ccfea68f628b793f9afd695bb363e295a
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047913"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630837"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Azure Data Lake Tools for Visual Studio Code の使用
 
@@ -24,7 +24,7 @@ ms.locfileid: "43047913"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Data Lake Tools for VS Code では、Windows、Linux、および MacOS がサポートされます。  
+Azure Data Lake Tools for VS Code では、Windows、Linux、および macOS がサポートされます。 U-SQL のローカル実行とローカル デバッグは Windows でのみ動作します。
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
@@ -220,6 +220,8 @@ U-SQL ローカル実行は、Data Lake Analytics にコードを発行する前
 - C# 分離コードをデバッグする。 
 - コードをステップ実行する。 
 - スクリプトをローカルで検証する。
+
+ローカル実行およびローカル デバッグ機能は Windows 環境でのみ動作し、macOS および Linux ベースのオペレーティング システムではサポートされていません。
 
 ローカル実行とローカル デバッグの手順については、「[Visual Studio Code を使用した U-SQL ローカル実行とローカル デバッグ](data-lake-tools-for-vscode-local-run-and-debug.md)」を参照してください。
 

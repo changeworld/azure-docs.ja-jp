@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 6acea70ca929310fe37f36fe98698e6adb76101b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 922e7ed5d55f50b2069dad71ead73d9ef4475ed0
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997830"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389906"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Premium ストレージ層 (プレビュー)、ホット ストレージ層、クール ストレージ層、アーカイブ ストレージ層
 
@@ -113,7 +113,7 @@ BLOB 層が最後に変更された時間は、BLOB の**アクセス層変更�
 Premium アクセス層に格納されているデータは、[BLOB 層の設定](/rest/api/storageservices/set-blob-tier)または Azure Blob Storage のライフ サイクル管理を使用して、ホット層、クール層またはアーカイブ層に階層化することはできません。 データを移動するには、[Put Block From URL API](/rest/api/storageservices/put-block-from-url) を使用するか、この API をサポートするバージョンの AzCopy を使用して BLOB を Premium アクセス層からホット アクセス層に同期的にコピーする必要があります。 *Put Block From URL* API は、サーバー上でデータを同期的にコピーします。つまり、呼び出しは、すべてのデータが元のサーバーの場所から移動先の場所に移動された場合にのみ完了します。
 
 ### <a name="blob-lifecycle-management"></a>BLOB のライフサイクル管理
-Blob Storage のライフサイクル管理 (プレビュー) には優れたルールベースのポリシーが用意されており、これを使用して、最適なアクセス層にデータを移行し、ライフサイクルの最後にデータを期限切れにすることができます。 詳細については、「[Azure Blob Storage のライフサイクルの管理](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts)」を参照してください。  
+Blob Storage のライフサイクル管理 (プレビュー) には優れたルールベースのポリシーが用意されており、これを使用して、最適なアクセス層にデータを移行し、ライフサイクルの最後にデータを期限切れにすることができます。 詳細については、「[Azure Blob Storage のライフサイクルの管理](https://docs.microsoft.com/azure/storage/common/storage-lifecycle-managment-concepts)」を参照してください。  
 
 ### <a name="blob-level-tiering-billing"></a>BLOB レベルの階層制御の課金
 

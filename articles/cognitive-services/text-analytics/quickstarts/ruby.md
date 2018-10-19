@@ -1,22 +1,23 @@
 ---
-title: Azure Cognitive Services、Text Analytics API の Ruby クイック スタート | Microsoft Docs
+title: 'クイック スタート: Ruby を使用して Text Analytics API を呼び出す'
+titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
-author: ashmaka
+author: noellelacharite
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: article
-ms.date: 08/30/2018
-ms.author: ashmaka
-ms.openlocfilehash: 75c6476e86ee4a742e32ae0e7ffd27842f591843
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.topic: quickstart
+ms.date: 10/01/2018
+ms.author: nolachar
+ms.openlocfilehash: 39aeef8b8c88737a7e50f7dc1db5e874279176c0
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841764"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784657"
 ---
-# <a name="quickstart-for-text-analytics-api-with-ruby"></a>Ruby での Text Analytics API のクイック スタート 
+# <a name="quickstart-using-ruby-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Ruby を使用して Text Analytics Cognitive Service を呼び出す
 <a name="HOLTop"></a>
 
 この記事では、[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を Ruby で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされたエンティティの識別](#Entities)を行う方法について説明します。
@@ -51,7 +52,7 @@ require 'json'
 # **********************************************
 
 # Replace the accessKey string value with your valid access key.
-accessKey = 'ENTER KEY HERE'
+accessKey = 'enter key here'
 
 # Replace or verify the region.
 #
@@ -62,9 +63,9 @@ accessKey = 'ENTER KEY HERE'
 # NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
 # a free trial access key, you should not need to change this region.
 uri = 'https://westus.api.cognitive.microsoft.com'
-path = '/text/analytics/v2.0/'
+path = '/text/analytics/v2.0/languages'
 
-uri = URI(uri + path + 'languages')
+uri = URI(uri + path)
 
 documents = { 'documents': [
     { 'id' => '1', 'text' => 'This is a document written in English.' },
@@ -136,12 +137,38 @@ puts JSON::pretty_generate (JSON (response.body))
 
 ## <a name="analyze-sentiment"></a>センチメントを分析する
 
-感情分析 API では、[Sentiment メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)を使用して、テキスト レコードのセットのセンチメントを検出します。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
+感情分析 API では、[Sentiment メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)を使用して、テキスト レコードのセットのセンチメントを検出します。 次の例では、英語とスペイン語で書かれた 2 つのドキュメントをスコア付けします。
 
-[前のセクション](#Detect)のコードに次のコードを追加します。
+1. お気に入りの IDE で新しい Ruby プロジェクトを作成します。
+2. 下記のコードを追加します。
+3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+4. `uri` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+5. プログラムを実行します。
 
 ```ruby
-uri = URI(uri + path + 'sentiment')
+require 'net/https'
+require 'uri'
+require 'json'
+
+# **********************************************
+# *** Update or verify the following values. ***
+# **********************************************
+
+# Replace the accessKey string value with your valid access key.
+accessKey = 'enter key here'
+
+# Replace or verify the region.
+#
+# You must use the same region in your REST API call as you used to obtain your access keys.
+# For example, if you obtained your access keys from the westus region, replace 
+# "westcentralus" in the URI below with "westus".
+#
+# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
+# a free trial access key, you should not need to change this region.
+uri = 'https://westus.api.cognitive.microsoft.com'
+path = '/text/analytics/v2.0/sentiment'
+
+uri = URI(uri + path)
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -186,12 +213,39 @@ puts JSON::pretty_generate (JSON (response.body))
 
 ## <a name="extract-key-phrases"></a>キー フレーズを抽出する
 
-Key Phrase Extraction API では、[Key Phrases メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 次の例では、英語とスペイン語、両方のドキュメントのキー フレーズを抽出しています。
+Key Phrase Extraction API では、[Key Phrases メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)を使用して、テキスト ドキュメントからキー フレーズを抽出します。 次の例では、英語とスペイン語の両方のドキュメントのキー フレーズを抽出します。
 
-[前のセクション](#SentimentAnalysis)のコードに次のコードを追加します。
+1. お気に入りの IDE で新しい Ruby プロジェクトを作成します。
+2. 下記のコードを追加します。
+3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+4. `uri` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+5. プログラムを実行します。
+
 
 ```ruby
-uri = URI(uri + path + 'keyPhrases')
+require 'net/https'
+require 'uri'
+require 'json'
+
+# **********************************************
+# *** Update or verify the following values. ***
+# **********************************************
+
+# Replace the accessKey string value with your valid access key.
+accessKey = 'enter key here'
+
+# Replace or verify the region.
+#
+# You must use the same region in your REST API call as you used to obtain your access keys.
+# For example, if you obtained your access keys from the westus region, replace 
+# "westcentralus" in the URI below with "westus".
+#
+# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
+# a free trial access key, you should not need to change this region.
+uri = 'https://westus.api.cognitive.microsoft.com'
+path = '/text/analytics/v2.0/keyPhrases'
+
+uri = URI(uri + path)
 
 documents = { 'documents': [
     { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
@@ -215,7 +269,7 @@ puts JSON::pretty_generate (JSON (response.body))
 
 **キー フレーズ抽出の応答**
 
-成功した応答は、次の例に示すように、JSON で返されます。 
+成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
@@ -254,18 +308,45 @@ puts JSON::pretty_generate (JSON (response.body))
 ```
 <a name="Entities"></a>
 
-## <a name="identify-linked-entities"></a>リンクされているエンティティを識別する
+## <a name="identify-entities"></a>エンティティの特定
 
-Entity Linking API は、[エンティティ リンク設定メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 次の例では、英語のドキュメントのエンティティを識別しています。
+Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のエンティティを抽出します。 次の例では、英語のドキュメントのエンティティを識別しています。
 
-[前のセクション](#KeyPhraseExtraction)のコードに次のコードを追加します。
+1. お気に入りの IDE で新しい Ruby プロジェクトを作成します。
+2. 下記のコードを追加します。
+3. `accessKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+4. `uri` の場所 (現在は `westus`) を、サインアップしたリージョンで置き換えます。
+5. プログラムを実行します。
+
 
 ```ruby
-uri = URI(uri + path + 'entities')
+require 'net/https'
+require 'uri'
+require 'json'
+
+# **********************************************
+# *** Update or verify the following values. ***
+# **********************************************
+
+# Replace the accessKey string value with your valid access key.
+accessKey = 'enter key here'
+
+# Replace or verify the region.
+#
+# You must use the same region in your REST API call as you used to obtain your access keys.
+# For example, if you obtained your access keys from the westus region, replace 
+# "westcentralus" in the URI below with "westus".
+#
+# NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
+# a free trial access key, you should not need to change this region.
+uri = 'https://westus.api.cognitive.microsoft.com'
+path = '/text/analytics/v2.1-preview/entities'
+
+uri = URI(uri + path)
 
 documents = { 'documents': [
-    { 'id' => '1', 'language' => 'en', 'text' => 'I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable.' },
-    { 'id' => '2', 'language' => 'en', 'text' => 'The Seattle Seahawks won the Super Bowl in 2014.' },
+    { 'id' => '1', 'language' => 'en', 'text' => 'Jeff bought three dozen eggs because there was a 50% discount.' },
+    { 'id' => '2', 'language' => 'en', 'text' => 'The Great Depression began in 1929. By 1933, the GDP in America fell by 25%.' },
 ]}
 
 puts 'Please wait a moment for the results to appear.'
@@ -282,67 +363,163 @@ end
 puts JSON::pretty_generate (JSON (response.body))
 ```
 
-**エンティティ リンク設定の応答**
+**エンティティ抽出の応答**
 
 成功した応答は、次の例に示すように JSON で返されます。 
 
 ```json
 {
-    "documents": [
+    "Documents": [
         {
-            "id": "1",
-            "entities": [
+            "Id": "1",
+            "Entities": [
                 {
-                    "name": "Xbox One",
-                    "matches": [
+                    "Name": "Jeff",
+                    "Matches": [
                         {
-                            "text": "XBox One",
-                            "offset": 23,
-                            "length": 8
+                            "Text": "Jeff",
+                            "Offset": 0,
+                            "Length": 4
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Xbox One",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Xbox_One",
-                    "bingId": "446bb4df-4999-4243-84c0-74e0f6c60e75"
+                    "Type": "Person"
                 },
                 {
-                    "name": "Ultra-high-definition television",
-                    "matches": [
+                    "Name": "three dozen",
+                    "Matches": [
                         {
-                            "text": "4K",
-                            "offset": 63,
-                            "length": 2
+                            "Text": "three dozen",
+                            "Offset": 12,
+                            "Length": 11
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Ultra-high-definition television",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ultra-high-definition_television",
-                    "bingId": "7ee02026-b6ec-878b-f4de-f0bc7b0ab8c4"
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50",
+                    "Matches": [
+                        {
+                            "Text": "50",
+                            "Offset": 49,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50%",
+                    "Matches": [
+                        {
+                            "Text": "50%",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         },
         {
-            "id": "2",
-            "entities": [
+            "Id": "2",
+            "Entities": [
                 {
-                    "name": "2013 Seattle Seahawks season",
-                    "matches": [
+                    "Name": "Great Depression",
+                    "Matches": [
                         {
-                            "text": "Seattle Seahawks",
-                            "offset": 4,
-                            "length": 16
+                            "Text": "The Great Depression",
+                            "Offset": 0,
+                            "Length": 20
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "2013 Seattle Seahawks season",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/2013_Seattle_Seahawks_season",
-                    "bingId": "eb637865-4722-4eca-be9e-0ac0c376d361"
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Great Depression",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+                    "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
+                },
+                {
+                    "Name": "1929",
+                    "Matches": [
+                        {
+                            "Text": "1929",
+                            "Offset": 30,
+                            "Length": 4
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "By 1933",
+                    "Matches": [
+                        {
+                            "Text": "By 1933",
+                            "Offset": 36,
+                            "Length": 7
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "Gross domestic product",
+                    "Matches": [
+                        {
+                            "Text": "GDP",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Gross domestic product",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+                    "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
+                },
+                {
+                    "Name": "United States",
+                    "Matches": [
+                        {
+                            "Text": "America",
+                            "Offset": 56,
+                            "Length": 7
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "United States",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
+                    "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
+                    "Type": "Location"
+                },
+                {
+                    "Name": "25",
+                    "Matches": [
+                        {
+                            "Text": "25",
+                            "Offset": 72,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "25%",
+                    "Matches": [
+                        {
+                            "Text": "25%",
+                            "Offset": 72,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         }
     ],
-    "errors": []
+    "Errors": []
 }
 ```
 

@@ -1,21 +1,21 @@
 ---
-title: 'Computer Vision クイック スタート: 概要 | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: これらのクイック スタートでは、Cognitive Services の Computer Vision を使って、画像の分析やサムネイルの作成、印刷されたテキストの抽出、手書きテキストの抽出を行います。
+title: Computer Vision クイック スタートの概要
+titleSuffix: Azure Cognitive Services
+description: これらのクイック スタートでは、Computer Vision API を使って、画像の分析やサムネイルの作成、印刷されたテキストの抽出、手書きテキストの抽出を行います。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: PatrickFarley
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 94424de3f175e82cf8490bad98f4a775761979e4
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.author: pafarley
+ms.openlocfilehash: e44eb52323a93bddd629f3591cdbfbf021768629
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43772288"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344097"
 ---
 # <a name="quickstart-summary"></a>クイック スタート: 概要
 

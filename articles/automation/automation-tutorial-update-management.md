@@ -6,15 +6,15 @@ author: zjalexander
 ms.service: automation
 ms.component: update-management
 ms.topic: tutorial
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 8458aaee9f8d328d959fb47fb3e32af176d545b1
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 4d504e0488d35c5c606468faa35bece1318503b4
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247370"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498523"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Azure Automation を使用して Windows 更新プログラムを管理する
 
@@ -22,7 +22,7 @@ Update Management のソリューションを使用すると、仮想マシン�
 
 価格情報については、[Update Management の Automation の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページをご覧ください。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Update Management のために VM をオンボードする
@@ -158,7 +158,9 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
 * **[オペレーティング システム]**: 更新プログラムの展開の対象となる OS を選択します。
 
-* **[更新するマシン]**: 保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください。
+* **[Groups to update (preview)]\(更新するグループ (プレビュー)\)**: サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 詳細については、[動的グループ](automation-update-management.md#using-dynamic-groups)に関するページを参照してください。
+
+* **[更新するマシン]**: 保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。 Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください
 
 * **更新プログラムの分類**: 更新プログラムの展開によって展開に追加されたソフトウェアの種類を選択します。 このチュートリアルでは、すべての種類を選択したままにします。
 
@@ -171,17 +173,20 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
    分類の種類の詳細については、「[Update classifications (更新プログラムの分類)](automation-update-management.md#update-classifications)」をご覧ください。
 
+* **[Updates to include/exclude]\(含める/除外する更新プログラム\)**: **[Include/Exclude]\(含める/除外する\)** ページが開きます。 含めるまたは除外する更新プログラムは別のタブに表示されます。 包含を処理する方法については、[包含の動作](automation-update-management.md#inclusion-behavior)に関するページを参照してください。
+
 * **[スケジュール設定]**: **[スケジュール設定]** ウィンドウが開きます。 既定の開始時刻は、現在の時刻の 30 分後です。 開始時刻は、10 分後以降の将来の任意の時点に設定できます。
 
    展開を 1 回行うか、定期的なスケジュールを設定するかを指定することもできます。 **[繰り返し]** で **[1 回]** を選択します。 既定値の 1 日のままにし、**[OK]** を選択します。 これで定期的なスケジュールが設定されます。
 
+* **[Pre-scripts + Post-scripts]\(事前スクリプト + 事後スクリプト\)**: デプロイの前後に実行するスクリプトを選択します。 詳細については、[事前および事後スクリプトの管理](pre-post-scripts.md)に関するページを参照してください。
 * **[メンテナンス期間 (分)]**: 既定値のままにします。 更新プログラムを展開する時間の範囲を設定できます。 この設定により、定義したサービス期間内は変更が確実に実行されます。
 
 * **[再起動のオプション]**: この設定によって、再起動の処理方法が決まります。 使用できるオプションは次のとおりです。
   * 必要に応じて再起動 (既定値)
   * 常に再起動
   * 再起動しない
-  * 再起動のみ - 更新プログラムのインストールは行われません
+  * Only reboot - will not install updates (再起動のみ - 更新プログラムをインストールしない)
 
 スケジュールの構成が完了したら、**[作成]** を選択します。
 

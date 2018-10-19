@@ -4,19 +4,19 @@ description: 常に最新の開発情報を把握していただけるよう、�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 09/25/2018
 ms.author: juliako
-ms.openlocfilehash: fc6c5ba6cd97c261dd44eade33bf21e8d1b74bf0
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ed2550c1df4645933fb968c54ee536995c810136
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782641"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219331"
 ---
 # <a name="azure-media-services-v3-preview-release-notes"></a>Azure Media Services v3 (プレビュー) リリース ノート 
 
@@ -25,7 +25,7 @@ ms.locfileid: "33782641"
 * 最新のリリース
 * 既知の問題
 * バグの修正
-* 非推奨になった機能
+* 非推奨の機能
 * 変更の計画
 
 ## <a name="may-07-2018"></a>2018 年 5 月 7 日
@@ -43,9 +43,7 @@ ms.locfileid: "33782641"
 
 ### <a name="known-issues"></a>既知の問題
 
-既知の問題:
-
-ソース コンテンツを指す HTTPS URL (JobInputHttp) を使用してジョブを送信する場合は、HTTP サーバーが "HEAD" 要求をサポートしていることを確認してください。 それ以外の場合、ジョブは拒否されます。
+* ジョブを送信するときに、Azure Blob storage 内にあるファイルへの HTTPS URL、SAS の URL またはパスを使用して、ソース ビデオを取り込むように指定できます。 現時点では、AMS v3 には、HTTPS URL 経由でチャンク転送エンコード処理がサポートされていません。
 
 ## <a name="next-steps"></a>次の手順
 

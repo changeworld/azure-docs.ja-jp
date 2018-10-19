@@ -1,21 +1,21 @@
 ---
-title: Face API PHP クイック スタート | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、PHP から Cognitive Services の Face API を使って画像から顔を検出します。
+title: 'クイック スタート: 画像の中にある顔を検出する - Face API、PHP'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、PHP で Face API を使って画像から顔を検出します。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: PatrickFarley
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/30/2018
-ms.author: nolachar
-ms.openlocfilehash: 972def677a8ac0abd86bc436fc1b1373b5496df9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: pafarley
+ms.openlocfilehash: 62434efdaf161463de7492535a49cf879da32e43
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "43770556"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339663"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-php"></a>クイック スタート: PHP を使って画像の中にある顔を検出する
 
@@ -27,7 +27,7 @@ ms.locfileid: "43770556"
 
 ## <a name="face---detect-request"></a>顔検出要求
 
-"[Face - Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)" メソッドを使用すると、画像の中にある顔を検出して、次のような属性を取得することができます。
+"[顔 - 検出](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)" メソッドを使用すると、画像の中にある顔を検出して、次のような属性を取得することができます。
 
 * Face ID: Face API の各種シナリオで使用される一意の ID。
 * 顔四角形: 画像内での顔の位置を示す値 (左、上、幅、高さ)。

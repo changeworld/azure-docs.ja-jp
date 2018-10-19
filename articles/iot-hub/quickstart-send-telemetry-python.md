@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 04/30/2018
+ms.date: 09/07/2018
 ms.author: dobett
-ms.openlocfilehash: 7d5f2246eec20144a30e0abbc31038bdf04ab2b0
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2d851bc8d5af7f824512cc9f14e6b1120026dd07
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339278"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785157"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-python"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (Python) でハブから利用統計情報を読み取る
 
@@ -33,7 +33,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このクイック スタートで実行する 2 つのサンプル アプリケーションは、Python を使って書かれています。 Python 2.7.x または 3.5.x が開発コンピューター上に必要です。
 
-複数のプラットフォームに対応する Python を [Python.org](https://www.python.org/downloads/) からダウンロードできます。
+複数のプラットフォームに対応する Python を [Python.org](https://www.python.org/downloads/) からダウンロードできます。選択する Python インストーラーは、ご使用のシステムのアーキテクチャによって異なります。 ご使用のシステムの CPU アーキテクチャが 32 ビットである場合は、Python.org から x86 (既定のインストーラー) をダウンロードします。64 ビット アーキテクチャの場合は、x86-64 インストーラーをダウンロードする必要があります。
 
 開発コンピューターに現在インストールされている Python のバージョンは、次のいずれかのコマンドを使って確認できます。
 
@@ -46,20 +46,6 @@ python3 --version
 ```
 
 https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip からサンプル Python プロジェクトをダウンロードし、ZIP アーカイブを抽出します。
-
-IoT ハブから利用統計情報を読み取る CLI ユーティリティをインストールするには、最初に、Node.js v4.x.x 以降を開発用コンピューターにインストールします。 複数のプラットフォームに対応する Node.js を [nodejs.org](https://nodejs.org) からダウンロードできます。
-
-開発コンピューターに現在インストールされている Node.js のバージョンは、次のコマンドを使って確認できます。
-
-```cmd/sh
-node --version
-```
-
-`iothub-explorer` CLI ユーティリティをインストールするには、次のコマンドを実行します。
-
-```cmd/sh
-npm install -g iothub-explorer
-```
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
@@ -85,14 +71,6 @@ npm install -g iothub-explorer
     ```
 
     `Hostname=...=` のようなデバイス接続文字列をメモしておきます。 この値は、このクイック スタートの後の方で使います。
-
-1. また、`iothub-explorer` CLI ユーティリティが IoT ハブに接続してメッセージを取得できるようにするには、"_サービス接続文字列_" が必要です。 次のコマンドを実行すると、IoT ハブのサービス接続文字列が取得されます。
-
-    ```azurecli-interactive
-    az iot hub show-connection-string --hub-name {YourIoTHubName} --output table
-    ```
-
-    `Hostname=...=` のようなサービス接続文字列をメモしておきます。 この値は、このクイック スタートの後の方で使います。 サービス接続文字列はデバイス接続文字列とは異なります。
 
 ## <a name="send-simulated-telemetry"></a>シミュレートされた利用統計情報の送信
 
@@ -122,15 +100,15 @@ npm install -g iothub-explorer
 
 ## <a name="read-the-telemetry-from-your-hub"></a>ハブから利用統計情報を読み取る
 
-`iothub-explorer` CLI ユーティリティは、IoT Hub のサービス側 **Events** エンドポイントに接続します。 このユーティリティは、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージ受信して処理します。
+IoT Hub CLI 拡張機能は、IoT ハブ上のサービス側 **Events** エンドポイントに接続できます。 この拡張機能は、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージ受信して処理します。
 
-別のターミナル ウィンドウで、次のコマンドを実行します。`{your hub service connection string}` は、前にメモしたデバイス接続文字列に置き換えます。
+次の Azure CLI コマンドを実行します。`{YourIoTHubName}` は IoT ハブの名前に置き換えます。
 
-```cmd/sh
-iothub-explorer monitor-events MyPythonDevice --login "{your hub service connection string}"
+```azurecli-interactive
+az iot hub monitor-events --device-id MyPythonDevice --hub-name {YourIoTHubName}
 ```
 
-次のスクリーンショットは、シミュレートされたデバイスがハブに送信した利用統計情報をユーティリティが受信したときの出力を示しています。
+次のスクリーンショットは、シミュレートされたデバイスからハブに送信された利用統計情報を拡張機能が受信したときの出力を示しています。
 
 ![バックエンド アプリケーションを実行する](media/quickstart-send-telemetry-python/ReadDeviceToCloud.png)
 

@@ -5,18 +5,17 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 08/03/2018
+ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 9dbd230e431b2bc3041cfc854c0161ce8d453870
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 673faff51c3d06e50941a6982a9f654c28598d86
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "40133682"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47006509"
 ---
-  <a name="virtual-networking-limits-classic">
-  </a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
+<a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
@@ -61,6 +60,8 @@ ms.locfileid: "40133682"
 | ユーザー定義ルート テーブル |200 |
 | ルート テーブルあたりのユーザー定義ルート |400 |
 | VPN Gateway ごとのポイント対サイト ルート証明書 |20 |
+| 仮想ネットワーク TAP |100 |
+| 仮想ネットワーク TAP ごとのネットワーク インターフェイス TAP 構成数 |100 |
 
 #### <a name="publicip-address"></a>パブリック IP アドレスの制限
 
@@ -76,17 +77,17 @@ ms.locfileid: "40133682"
 | リソース | 既定の制限 | 上限 |
 | --- | --- | --- |
 | ロード バランサー | 100 | 1,000 |
-| リソースあたりのルール数、Basic | 150 | 250 |
-| リソースあたりのルール数、Standard | 1250 | 1500 |
+| リソースあたりのルール数、Basic | 250 | 250 |
+| リソースあたりのルール数、Standard | 1500 | 1500 |
 | IP 構成あたりのルール数 | 299 |299 |
 | フロントエンド IP の構成、Basic | 10 | 200 |
 | フロントエンド IP の構成、Standard | 10 | 600 |
 | バックエンド プール、Basic | 100、1 つの可用性セット | 100、1 つの可用性セット |
 | バックエンド プール、Standard | 1000、1 つの VNet | 1000、1 つの VNet |
-| ロード バランサーあたりのバックエンド リソース数、Standard&ast; | 50 | 150 |
+| ロード バランサーあたりのバックエンド リソース数、Standard* | 150 | 150 |
 | HA ポート、Standard | 内部フロント エンドごとに 1 個 | 内部フロント エンドごとに 1 個 |
 
-&ast;最大 150 のリソース (スタンドアロン仮想マシン、可用性セット、および仮想マシン スケール セットの任意の組み合わせ)。
+** 最大 150 のリソース (スタンドアロン仮想マシン、可用性セット、および仮想マシン スケール セットの任意の組み合わせ)。
 
 制限値を既定値から引き上げる必要がある場合は、[サポートにお問い合わせ](../articles/azure-supportability/resource-manager-core-quotas-request.md )ください。
 

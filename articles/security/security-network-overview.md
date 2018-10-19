@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2018
+ms.date: 09/19/2018
 ms.author: terrylan
-ms.openlocfilehash: ec8e4b1edfe815670664de83edf98a9e478101d2
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 309dddcea1022d9f14c1d4492f5564f2a4ad3b6f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142763"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498506"
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 
-Azure には、アプリケーションとサービスの接続要件をサポートする堅牢なネットワーク インフラストラクチャが組み込まれています。 ネットワーク接続は、Azure に配置されているリソース間、オンプレミスのリソースと Azure でホストされているリソース間、インターネットと Azure 間で可能です。
+ネットワーク セキュリティは、ネットワーク トラフィックに制御を適用することにより、リソースを未承認のアクセスや攻撃から保護するプロセスとして定義することが可能でした。 その目的は、正当なトラフィックだけを許可することです。 Azure には、アプリケーションとサービスの接続要件をサポートする堅牢なネットワーク インフラストラクチャが組み込まれています。 ネットワーク接続は、Azure に配置されているリソース間、オンプレミスのリソースと Azure でホストされているリソース間、インターネットと Azure 間で可能です。
 
 この記事では、Azure がネットワーク セキュリティの領域で提供しているオプションについて説明します。 以下について説明します。
 
@@ -77,7 +77,11 @@ NSG はアプリケーション層検査も、認証済みのアクセス制御�
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC Just In Time VM アクセス
 
-[Azure セキュリティ センター (ASC)](../security-center/security-center-just-in-time.md) は、VM の NSG を管理し、適切なロール ベースのアクセス制御 ([RBAC](../role-based-access-control/overview.md)) のアクセス許可を持つユーザーがアクセスを要求するまで、VM へのアクセスをロックします。 ユーザーが正常に承認されると、ASC は、選択されたポートに対して指定された時間にわたってアクセスできるように NSG を変更します。 時間切れになると、NSG は、前のセキュリティで保護された状態に戻ります。
+[Azure セキュリティ センター (ASC)](../security-center/security-center-intro.md) は、VM の NSG を管理し、適切なロール ベースのアクセス制御 ([RBAC](../role-based-access-control/overview.md)) のアクセス許可を持つユーザーがアクセスを要求するまで、VM へのアクセスをロックします。 ユーザーが正常に承認されると、ASC は、選択されたポートに対して指定された時間にわたってアクセスできるように NSG を変更します。 時間切れになると、NSG は、前のセキュリティで保護された状態に戻ります。
+
+詳細情報:
+
+* [Azure Security Center の Just In Time](../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>サービス エンドポイント
 

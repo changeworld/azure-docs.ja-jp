@@ -1,20 +1,21 @@
 ---
-title: Custom Vision Service モデルをモバイルにエクスポートする - Custom Vision Service - Azure Cognitive Services | Microsoft Docs
+title: モデルをモバイルにエクスポートする - Custom Vision Service
+titlesuffix: Azure Cognitive Services
 description: モバイル アプリケーションの作成で利用する目的でモデルをエクスポートする方法について説明します。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: ce8f42d6239867dd217cddfc61a27d7835dc9c9b
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 50417e9e1722e69c24185c05ea5e286e6b13e8c7
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35378679"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364943"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>モバイル デバイスで使用するためにモデルをエクスポートする
 
@@ -73,5 +74,5 @@ Custom Vision Service は次のエクスポートに対応しています。
 * [エクスポートした CoreML モデルを iOS アプリケーションで使用](https://go.microsoft.com/fwlink/?linkid=857726)し、Swift で画像をリアルタイム分類するためのサンプル
 * [エクスポートした CoreML モデルと Xamarin を使用](https://github.com/xamarin/ios-samples/tree/master/ios11/CoreMLAzureModel)し、画像をリアルタイム分類するためのサンプル iOS アプリケーション 
 * [エクスポートした Tensorflow モデルを Android アプリケーションで使用](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)し、Swift で画像をリアルタイム分類するためのサンプル 
-* [Windows で Tensorflow モデルを使用する](https://docs.microsoft.com/en-us/azure/cognitive-services/custom-vision-service/export-model-python)
-* [エクスポートした ONNX モデルを Windows Machine Learning で使用する](https://azure.microsoft.com/en-us/resources/samples/cognitive-services-onnx-customvision-sample/)ためのサンプル
+* [Windows で Tensorflow モデルを使用する](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/export-model-python)
+* [エクスポートした ONNX モデルを Windows Machine Learning で使用する](https://azure.microsoft.com/resources/samples/cognitive-services-onnx-customvision-sample/)ためのサンプル

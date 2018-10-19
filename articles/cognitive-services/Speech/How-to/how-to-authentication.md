@@ -1,31 +1,34 @@
 ---
-title: Microsoft Speech Service を認証する | Microsoft Docs
-description: Microsoft Speech API を使用するための認証を要求する
+title: Bing Speech に対する認証を行う | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: Bing Speech API を使用するための認証を要求します
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: e36168cf3ff938af44f1028c2d26fd475d60b148
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e3bfdcfaaf752321997636811b282ea920e6144a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373840"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344202"
 ---
 # <a name="authenticate-to-the-speech-api"></a>Speech API を認証する
 
-Speech Service の認証には、次を使用できます。
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
+
+Bing Speech の認証には、次を使用できます。
 
 - サブスクリプション キー。
 - 承認トークン。
 
 ## <a name="use-a-subscription-key"></a>サブスクリプション キーを使用する
 
-Speech Service を使用するには、まず Cognitive Services (旧 Project Oxford) の一部である Speech API にサブスクライブする必要があります。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、**[Get API Key]\(API キーの取得\)** を選択してキーを取得します。 主キーおよび 2 次キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
+Speech Service を使用するには、まず Cognitive Services (旧 Project Oxford) の一部である Speech API にサブスクライブする必要があります。 無料試用版のサブスクリプション キーは、[Cognitive Services サブスクリプション](https://azure.microsoft.com/try/cognitive-services/) ページから取得できます。 Speech API を選択したら、**[Get API Key]**(API キーの取得) を選択してキーを取得します。 プライマリ キーおよびセカンダリ キーを返します。 両方のキーが同じクォータに関連付けられているため、どちらのキーでも使用できます。
 
 長期間使用する場合や、クォータが増加した場合は、[Azure アカウント](https://azure.microsoft.com/free/)にサインアップしてください。
 

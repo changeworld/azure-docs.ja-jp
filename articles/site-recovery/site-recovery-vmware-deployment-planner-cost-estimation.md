@@ -6,14 +6,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 10/11/2018
 ms.author: nisoneji
-ms.openlocfilehash: a946ecb31697591a7490c80496c02c5f907c6f36
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 7470dab537a8ab248228b9c445e1124e7ec9c444
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182384"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387805"
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート  
 
@@ -125,7 +125,7 @@ VM を手動で追加するには、次の手順に従います。
 
 **[Number of DR-Drills in a year]\(年間 DR ドリル数\)**: 1 年間に実行する DR ドリルの回数。 既定では、年間 4 回です。 特定の VM の期間を変更できるほか、一番上の行に新しい値を入力し、[Apply to all]\(すべてに適用\) ボタンをクリックすることで、すべての VM に新しい値を適用することができます。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。  
 
-**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**: 各 DR ドリルの期間。 [ディザスター リカバリーのソフトウェア アシュアランス特典](https://azure.microsoft.com/en-in/pricing/details/site-recovery)により、90 日ごとに 7 日が既定値となります。 特定の VM の期間を変更できるほか、一番上の行に新しい値を入力し、[Apply to all]\(すべてに適用\) ボタンをクリックすることで、すべての VM に新しい値を適用することができます。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。
+**[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)**: 各 DR ドリルの期間。 [ディザスター リカバリーのソフトウェア アシュアランス特典](https://azure.microsoft.com/pricing/details/site-recovery)により、90 日ごとに 7 日が既定値となります。 特定の VM の期間を変更できるほか、一番上の行に新しい値を入力し、[Apply to all]\(すべてに適用\) ボタンをクリックすることで、すべての VM に新しい値を適用することができます。 年間 DR ドリル数と各 DR ドリル期間に基づいて、合計 DR ドリル コストが計算されます。
   
 **[OS の種類]**: VM の OS の種類。 Windows または Linux を指定できます。 OS の種類が Windows の場合は、その VM に Azure ハイブリッド使用特典を適用できます。 
 

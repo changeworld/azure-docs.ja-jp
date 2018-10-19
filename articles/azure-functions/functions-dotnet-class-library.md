@@ -9,14 +9,14 @@ keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピ�
 ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 12/12/2017
+ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 9f538b48918bdde923c6dbf3999302e45b955035
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 54ac616f97ba034893721ff62fc6157dd045b5f8
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092412"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126827"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -36,10 +36,24 @@ Azure Functions では、C# および C# スクリプト プログラミング�
 Visual Studio では、**Azure Functions** プロジェクト テンプレートは、次のファイルを含む C# クラス ライブラリ プロジェクトを作成します。
 
 * [host.json](functions-host-json.md) - ローカルまたは Azure 内で実行される場合に、プロジェクト内のすべての関数に影響を及ぼす構成設定を格納します。
-* [local.settings.json](functions-run-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。
+* [local.settings.json](functions-run-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。 このファイルにはシークレットが含まれていて、Azure の関数アプリには公開されません。 代わりに、[関数アプリにアプリ設定を追加](functions-develop-vs.md#function-app-settings)する必要があります。
+
+プロジェクトをビルドするときに、次のようなフォルダー構造がビルドの出力ディレクトリに作成されます。
+
+```
+<framework.version>
+ | - bin
+ | - MyFirstFunction
+ | | - function.json
+ | - MySecondFunction
+ | | - function.json
+ | - host.json
+```
+
+このディレクトリは、Azure 上で関数アプリにデプロイされるディレクトリです。 Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は、[NuGet パッケージとしてプロジェクトに追加](functions-triggers-bindings.md#c-class-library-with-visual-studio-2017)されます。
 
 > [!IMPORTANT]
-> ビルド処理では、関数ごとに *function.json* ファイルが作成されます。 この *function.json* ファイルに対しては、直接編集は行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 関数を無効にするには、[Disable](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) 属性を使用します。 たとえば、ブール値アプリ設定 MY_TIMER_DISABLED を追加し、`[Disable("MY_TIMER_DISABLED")]` を関数に適用します。 アプリ設定を変更して有効と無効を切り替えることができます。
+> ビルド処理では、関数ごとに *function.json* ファイルが作成されます。 この *function.json* ファイルに対しては、直接編集は行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 関数を無効にする方法については、[関数を無効にする方法](disable-function.md#functions-2x---c-class-libraries)に関するページをご覧ください。
 
 ## <a name="methods-recognized-as-functions"></a>関数として認識されるメソッド
 

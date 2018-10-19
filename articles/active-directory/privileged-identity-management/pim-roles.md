@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: fc45cde1a5f0f287274302541ac0115569e2239d
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 63f4c4c48dd0fed3130dc99929a0e84c3cba2026
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666338"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466049"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>PIM で管理できる Azure AD のディレクトリ ロール
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -35,19 +35,19 @@ Azure AD Privileged Identity Management (PIM) は、Azure AD でのユーザー�
 Privileged Identity Management を使用して、以下を含む共通の管理者ロールにユーザーを割り当てることができます。
 
 * **全体管理者** (会社の管理者とも呼ばれます) は、すべての管理機能にアクセスできます。 組織内のグローバル管理者を複数にすることができます。 Office 365 の購入にサインアップするユーザーが、自動的にグローバル管理者になります。
-* **特権ロール管理者** は、Azure AD PIM を管理し、他のユーザーへのロールの割り当てを更新します。  
-* **課金管理者** : 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
-* **パスワード管理者** : パスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。 パスワード管理者は、ユーザーのパスワードのリセットのみできます。
-* **サービス管理者** : サービス要求の管理とサービス正常性の監視を行います。
+* **特権ロール管理者**は、Azure AD PIM を管理し、他のユーザーへのロールの割り当てを更新します。  
+* **課金管理者**は購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
+* **パスワード管理者**はパスワードのリセット、サービス要求の管理、サービス正常性の監視を行います。 パスワード管理者は、ユーザーのパスワードのリセットのみできます。
+* **サービス管理者**はサービス要求の管理とサービス正常性の監視を行います。
   
   > [!NOTE]
   > Office 365 を使用している場合、サービス管理者ロールをユーザーに割り当てる前に、ユーザー管理権限を Exchange Online などのサービスに割り当ててください。
   > 
   > 
-* **ユーザー管理の管理者** は、パスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、およびサービス要求の管理を行います。 ユーザー管理の管理者は、グローバル管理者の削除、他の管理者ロールの作成、または課金管理者、グローバル管理者、サービス管理者のパスワードのリセットを行うことができません。
-* **Exchange 管理者** は、Exchange 管理センター (EAC) を通じた Exchange Online への管理アクセスが可能で、Exchange Online でのほぼすべてのタスクを実行できます。
-* **SharePoint 管理者 (プレビュー)** は、SharePoint Online 管理センターを通じた SharePoint Online への管理アクセスが可能で、SharePoint Online でのほぼすべてのタスクを実行できます。 このロールは現在プレビューの段階です。 対象となるユーザーは、PIM でアクティブにした後に SharePoint 内でこのロールを使用すると、遅延が発生する場合があります。
-* **Skype for Business 管理者** は、Skype for Business 管理センターを通じた Skype for Business への管理アクセスが可能で、Skype for Business Online でのほぼすべてのタスクを実行できます。
+* **ユーザー管理者**はパスワードのリセット、サービス正常性の監視、ユーザー アカウント、ユーザー グループ、サービス要求の管理を行います。 ユーザー管理者は、グローバル管理者の削除、他の管理者ロールの作成、課金管理者、グローバル管理者、サービス管理者のパスワードのリセットを行うことができません。
+* **Exchange 管理者**は、Exchange 管理センター (EAC) を通じた Exchange Online への管理アクセスが可能で、Exchange Online でのほぼすべてのタスクを実行できます。
+* **SharePoint サービス管理者**は、SharePoint Online 管理センターを通じた SharePoint Online への管理アクセスが可能で、SharePoint Online でのほぼすべてのタスクを実行できます。 対象となるユーザーは、PIM でアクティブにした後に SharePoint 内でこのロールを使用すると、遅延が発生する場合があります。
+* **Skype for Business 管理者**は、Skype for Business 管理センターを通じた Skype for Business への管理アクセスが可能で、Skype for Business Online でのほぼすべてのタスクを実行できます。
 
 [Azure AD での管理者ロールの割り当て](../users-groups-roles/directory-assign-admin-roles.md)および [Office 365 での管理者ロールの割り当て](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504)の詳細については、これらの記事を参照してください。
 
@@ -63,21 +63,19 @@ PIM 自体で管理するためのアクセス権を別のユーザーに付与�
 ## <a name="roles-not-managed-in-pim"></a>PIM で管理されないロール
 Exchange Online または SharePoint Online 内のロールについて、上述以外のロールは Azure AD で表示されないため、PIM でも表示されません。 これらの Office 365 サービスでのきめ細かなロールの割り当てを変更する方法の詳細については、「 [Office 365 の権限](https://support.office.com/article/Permissions-in-Office-365-da585eea-f576-4f55-a1e0-87090b6aaa9d)」を参照してください。
 
-Azure サブスクリプションとリソース グループも、Azure AD では表示されません。 Azure サブスクリプションを管理するには「[Azure 管理者ロールを追加または変更する方法](../../billing/billing-add-change-azure-subscription-administrator.md)」を、Azure RBAC の詳細については、[Azure のロールベースのアクセス制御](../../role-based-access-control/role-assignments-portal.md)に関する記事を参照してください。
-
 <!--**The above links might be replaced by ones that are from within this documentation repository **-->
 
 
 ## <a name="user-roles-and-signing-in"></a>ユーザーのロールとサインイン
 一部の Microsoft サービスとアプリケーションでは、ロールにユーザーを割り当てるだけでは、そのユーザーを管理者にするには十分でない場合があります。
 
-Azure Portal にアクセスするには、ユーザーは Azure サブスクリプションを管理する必要がない場合でも、Azure サブスクリプションのサービス管理者または共同管理者である必要があります。  たとえば、Azure AD の構成設定を管理するには、ユーザーは Azure AD のグローバル管理者と Azure サブスクリプションのサブスクリプション共同管理者の両方である必要があります。  Azure サブスクリプションにユーザーを追加する方法については、「 [Azure 管理者ロールを追加または変更する方法](../../billing/billing-add-change-azure-subscription-administrator.md)」を参照してください。
+Azure Portal にアクセスするには、ユーザーは Azure サブスクリプションを管理する必要がない場合でも、Azure サブスクリプションの所有者である必要があります。  たとえば、Azure AD の構成設定を管理するには、ユーザーは Azure AD のグローバル管理者と Azure サブスクリプションの所有者の両方である必要があります。  Azure サブスクリプションにユーザーを追加する方法については、「[RBAC と Azure portal を使用してアクセスを管理する](../..//role-based-access-control/role-assignments-portal.md)」を参照してください。
 
 Microsoft Online Services へのアクセスでは、ユーザーがサービスのポータルを開いたり、管理タスクを実行したりできるようになるには、ユーザーにライセンスを割り当てる必要もある場合があります。
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>Azure AD でのユーザーへのライセンスの割り当て
 
-1. 全体管理者アカウントまたは共同管理者アカウントを使用して [Azure portal](http://portal.azure.com) にサインインします。
+1. [Azure portal](http://portal.azure.com) にグローバル管理者または所有者ロールでサインインします。
 
 1. ライセンスが関連付けられている、対象の Azure AD ディレクトリを選択します。
 

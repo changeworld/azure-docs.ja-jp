@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/01/2017
 ms.author: rogardle
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d89e9b4dcfe44648f1e3ddd95fb01b62a36295df
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6bb13ad19f9b0b6137cdb2b4a9afbb2f325b9d36
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166339"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975058"
 ---
 # <a name="introduction-to-docker-container-hosting-solutions-with-azure-container-service"></a>Azure Container Service を使用した Docker コンテナー ホスティング ソリューションの概要 
 
@@ -30,7 +30,7 @@ Azure Container Service を使用することで、オーケストレーショ�
 Azure Container Service は、今日お客様に人気のあるオープンソースのツールとテクノロジを使用することで、コンテナー ホスト環境を提供することを目的としています。 これに対応するために、選択したオーケストレーター (DC/OS、Docker Swarm、または Kubernetes) 用の標準 API エンドポイントを公開しています。 これらのエンドポイントを使用することにより、それらのエンドポイントと通信できる任意のソフトウェアを活用できます。 たとえば、Docker Swarm エンドポイントの場合、Docker コマンド ライン インターフェイス (CLI) を使用することができます。 DC/OS の場合は、DCOS CLI を選択できます。 Kubernetes の場合は、`kubectl` を選択できます。
 
 ## <a name="creating-a-docker-cluster-by-using-azure-container-service"></a>Azure Container Service を使用した Docker クラスターの作成
-Azure Container Service を使用するには、ポータル経由か (Marketplace で **Azure Container Service** を検索)、Azure Resource Manager テンプレート ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)、[DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)、または [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) を使用するか、[Azure CLI 2.0](container-service-create-acs-cluster-cli.md) を使用して、Azure Container Service クラスターをデプロイします。 提供されたクイック スタート テンプレートを変更して、Azure の追加または高度な構成を含めることができます。 詳細については、[Azure Container Service クラスターのデプロイ](container-service-deployment.md)に関するページをご覧ください。
+Azure Container Service を使用するには、ポータル経由か (Marketplace で **Azure Container Service** を検索)、Azure Resource Manager テンプレート ([Docker Swarm](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-swarm)、[DC/OS](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-dcos)、または [Kubernetes](https://github.com/Azure/azure-quickstart-templates/tree/master/101-acs-kubernetes)) を使用するか、[Azure CLI](container-service-create-acs-cluster-cli.md) を使用して、Azure Container Service クラスターをデプロイします。 提供されたクイック スタート テンプレートを変更して、Azure の追加または高度な構成を含めることができます。 詳細については、[Azure Container Service クラスターのデプロイ](container-service-deployment.md)に関するページをご覧ください。
 
 ## <a name="deploying-an-application"></a>アプリケーションのデプロイ
 Azure Container Service では、オーケストレーション用に Docker Swarm、DC/OS、または Kubernetes を選択できます。 アプリケーションをデプロイする方法は、選択したオーケストレーターによって異なります。
@@ -55,7 +55,8 @@ Azure Container Service 上で実行される DC/OS には、ワークロード�
 ![Azure コンテナー サービスの DC/OS Universe](media/dcos/universe.png)
 
 #### <a name="using-marathon"></a>Marathon の使用
-Marathon は、クラスター全体の cgroups (または Azure Container Service の場合は Docker 形式コンテナー) のサービスを、初期化および制御するシステムです。 Marathon には、アプリケーションをデプロイできる Web UI があります。 これには、`http://DNS_PREFIX.REGION.cloudapp.azure.com` のような URL からアクセスできます (この DNS\_PREFIX と REGION はいずれもデプロイ時に定義します)。 独自の DNS 名を作成することも可能です。 Marathon Web UI を使用したコンテナーの実行の詳細については、[Marathon Web UI での DC/OS コンテナー管理](container-service-mesos-marathon-ui.md)に関するページをご覧ください。
+Marathon は、クラスター全体の cgroups (または Azure Container Service の場合は Docker 形式コンテナー) のサービスを、初期化および制御するシステムです。 Marathon には、アプリケーションをデプロイできる Web UI があります。 これには、`http://DNS_PREFIX.REGION.cloudapp.azure.com` のような URL でアクセスできます。
+DNS\_PREFIX と REGION はどちらもデプロイ時に定義されます。 独自の DNS 名を作成することも可能です。 Marathon Web UI を使用したコンテナーの実行の詳細については、[Marathon Web UI での DC/OS コンテナー管理](container-service-mesos-marathon-ui.md)に関するページをご覧ください。
 
 ![Marathon アプリケーションの一覧](media/dcos/marathon-applications-list.png)
 
@@ -102,4 +103,4 @@ Azure Container Service を使用したアプリケーションの構築 (Build 
 
 ## <a name="next-steps"></a>次の手順
 
-[ポータル](container-service-deployment.md)または [Azure CLI 2.0](container-service-create-acs-cluster-cli.md) を使用して、コンテナー サービス クラスターをデプロイする。
+[ポータル](container-service-deployment.md)または [Azure CLI](container-service-create-acs-cluster-cli.md) を使用して、コンテナー サービス クラスターをデプロイする。

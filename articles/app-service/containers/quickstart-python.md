@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/13/2018
+ms.date: 10/09/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c3089ad11dc951d3105b25b6857b7697f8c38d1a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 52429d44c41d990fb0de4c01c63d4af9fe5863d4
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432071"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902894"
 ---
 # <a name="create-a-python-web-app-in-azure-app-service-on-linux-preview"></a>Azure App Service on Linux で Python Web アプリを作成する (プレビュー)
 
@@ -172,13 +172,13 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 
 ## <a name="next-steps"></a>次の手順
 
-App Service on Linux の組み込み Python イメージは現在プレビュー段階です。 代わりにカスタム コンテナーを使用して運用環境向け Python アプリを作成できます。
+App Service on Linux の組み込み Python イメージは現在プレビュー段階であり、アプリを開始するために使用するコマンドをカスタマイズすることができます。 代わりにカスタム コンテナーを使用して運用環境向け Python アプリを作成することもできます。
 
 > [!div class="nextstepaction"]
 > [Python と PostgreSQL](tutorial-python-postgresql-app.md)
 
 > [!div class="nextstepaction"]
-> [組み込み Python イメージを構成する](how-to-configure-python.md)
+> [カスタム スタートアップ コマンドを構成する](how-to-configure-python.md#custom-startup-command)
 
 > [!div class="nextstepaction"]
 > [カスタム イメージを使用する](tutorial-custom-docker-image.md)

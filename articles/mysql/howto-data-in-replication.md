@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 08/31/2018
-ms.openlocfilehash: 83d970cf41dde4141fcba84c39b9b750783e54e0
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: da39d4132190a7dea661779c507fa817758c3e17
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667159"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497928"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Azure Database for MySQL のデータイン レプリケーションを構成する方法
 
@@ -158,6 +158,9 @@ ms.locfileid: "43667159"
    - master_log_pos: `show master status` を実行することによって得たバイナリ ログの位置
    - master_ssl_ca: CA 証明書のコンテキスト。 SSL を使用していない場合は、空の文字列を渡します。
        - このパラメーターは変数で渡すことをお勧めします。 詳細については、以降の例を参照してください。
+
+> [!NOTE]
+> マスター サーバーが Azure VM にホストされる場合は、[Azure サービスへのアクセスを許可] を [有効] に設定して、マスター サーバーとレプリカ サーバーが相互に通信できるようにします。 この設定は、**[接続のセキュリティ]** オプションから変更できます。 詳細については、[ポータルを使用したファイアウォール規則の管理](howto-manage-firewall-using-portal.md)に関するページを参照してください。
 
    **例**
 

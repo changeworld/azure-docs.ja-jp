@@ -1,23 +1,23 @@
 ---
-title: Python での Bing Autosuggest API のクイック スタート | Microsoft Docs
-description: Azure Cognitive Services で Bing Autosuggest API をすぐに使い始めるために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: Bing Autosuggest API (Python)'
+titlesuffix: Azure Cognitive Services
+description: Bing Autosuggest API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 721dba50e1d296066c06e0f00c9f36227391018d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 60585b2d5884962d0f988597ef1e50107e548122
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377253"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830619"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-python"></a>Python での Bing Autosuggest API のクイック スタート
-<a name="HOLTop"></a>
 
 この記事では、Python で [Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) を使用する方法について説明します。 Bing Autosuggest API は、ユーザーが検索ボックスに入力した部分的なクエリ文字列に基づいて、候補となるクエリの一覧を返します。 通常は、ユーザーが検索ボックスに新しい文字を入力するたびにこの API を呼び出して、検索ボックスのドロップダウン リストに候補を表示します。 この記事では、*sail* に対するクエリ文字列の候補を返す要求を送信する方法を示します。
 
@@ -31,7 +31,7 @@ ms.locfileid: "35377253"
 
 1. 適当な IDE で新しい Python プロジェクトを作成します。
 2. 次に示すコードを追加します。
-3. `subscriptionKey` 値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
+3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
 4. プログラムを実行します。
 
 ```python

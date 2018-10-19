@@ -1,27 +1,27 @@
 ---
-title: Face API Python チュートリアル | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Python SDK で Face API を使用して Cognitive Services 内の画像から人の顔を検出する方法を説明します。
+title: 'チュートリアル: 画像内の顔を検出してフレームに収める - Face API、Python'
+titleSuffix: Azure Cognitive Services
+description: Python SDK で Face API を使用して画像から人の顔を検出する方法を説明します。
 services: cognitive-services
 author: SteveMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 90d74d8df2ed59e6f3313ef7c620284d1022a667
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 6cc3ac25d2196c0275b445503b79b9ac06a791d3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37049113"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127739"
 ---
-# <a name="getting-started-with-face-api-in-python-tutorial"></a>Python での Face API の使用開始チュートリアル
+# <a name="tutorial-detect-and-frame-faces-with-the-face-api-and-python"></a>チュートリアル: Face API と Python を使用して顔を検出してフレームに収める 
 
 このチュートリアルでは、Python SDK から Face API を呼び出して画像内の人の顔を検出する方法を説明します。
 
-## <a name="prerequisites"></a> 前提条件
+## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを使用するには、次の作業が必要となります。
 
@@ -35,7 +35,7 @@ pip install cognitive_face
 
 - Microsoft Cognitive Services の[サブスクリプション キー](https://azure.microsoft.com/try/cognitive-services/)を入手します。 このチュートリアルでは、プライマリ キーまたはセカンダリ キーのどちらでも使用できます。 (Face API を使用するには、有効なサブスクリプション キーが必要であることに注意してください。)
 
-## <a name="sdk-example"></a> 画像内の顔を検出する
+## <a name="detect-a-face-in-an-image"></a>画像内の顔を検出する
 
 ```python
 import cognitive_face as CF
@@ -93,7 +93,7 @@ for face in faces:
 img.show()
 ```
 
-## <a name='further'></a> さらに探索する
+## <a name="further-exploration"></a>さらに探索する
 
 Face API をさらに調べることができるように、このチュートリアルでは GUI のサンプルを提供します。 これを実行するには、[wxPython](https://wxpython.org/pages/downloads/) をインストールした後、次のコマンドを実行します。
 
@@ -103,11 +103,11 @@ cd Cognitive-Face-Python
 python sample
 ```
 
-## <a name="summary"></a> まとめ
+## <a name="summary"></a>まとめ
 
 このチュートリアルでは、Python SDK の呼び出しから Face API を使用する基本プロセスについて説明しました。 API についてさらに詳しくは、ハウツー記事と [API リファレンス](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)をご覧ください。
 
-## <a name="related"></a> 関連トピック
+## <a name="related-topics"></a>関連トピック
 
 - [C# での Face API の使用開始](FaceAPIinCSharpTutorial.md)
 - [Java for Android での Face API の使用開始](FaceAPIinJavaForAndroidTutorial.md)

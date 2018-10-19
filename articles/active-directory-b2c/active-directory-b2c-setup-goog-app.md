@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 477bd6047da639dcf21592a7ec0c1b80844e031e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 1ddcbba4eacad040420efaf087f170e6c06ab2a0
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337736"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182401"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Google アカウントでのサインアップおよびサインインを設定する
 
@@ -25,26 +25,19 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Google 
 
 1. Google アカウントの資格情報で [Google Developers Console](https://console.developers.google.com/) にサインインします。
 2. **[Create project (プロジェクトの作成)]** を選択し、**[作成]** をクリックします。 前にプロジェクトを作成した場合、プロジェクトの一覧を選択し、**[New Project (新しいプロジェクト)]** を選択します。
-3. **[プロジェクト名]** に入力し、**[作成]** をクリックします。
+3. **プロジェクト名**を入力し、**[作成]** をクリックして、新しいプロジェクトを使用していることを確認します。
 3. 左側のメニューで **[Credentials (資格情報)]** を選択して、**[Create credentials (資格情報を作成)]**  >  **[Oauth client ID (Oauth クライアント ID)]** を選択します。
 4. **[Configure consent screen (同意画面の構成)]** を選択します。
 5. 有効な **[メール アドレス]** を選択または指定し、**[Product name shown to users (ユーザーに表示する製品名)]** を入力して、**[保存]** をクリックします。
 6. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。
-7. アプリケーションの**名前**を指定します。**[承認済みの JavaScript 生成元]** に「`https://{tenant}.b2clogin.com`」と入力し、**[承認済みのリダイレクト URI]** に「`https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`」と入力します。 **{tenant}** を実際のテナントの名前 (例: contosob2c) に置き換えます。
+7. アプリケーションの**名前**を指定します。**[承認済みの JavaScript 生成元]** に「`https://your-tenant-name.b2clogin.com`」と入力し、**[承認済みのリダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
 8. **Create** をクリックしてください。
 9. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。 テナントで ID プロバイダーとして Google を構成するには、両方の値が必要です。 **[クライアント シークレット]** は、重要なセキュリティ資格情報です。
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>ID プロバイダーとして Google アカウントを構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-2. Azure Portal の右上隅でディレクトリを切り替えて、Azure AD B2C テナントが含まれるディレクトリを使用していることを確認してください。 サブスクリプション情報を選択し、**[ディレクトリの切り替え]** を選択します。 
-
-    ![Azure AD B2C テナントに切り替え](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
-
-    テナントが含まれるディレクトリを選択します。
-
-    ![新しいディレクトリを選択する](./media/active-directory-b2c-setup-fb-app/select-directory.png)
-
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
 3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
 4. **[ID プロバイダー]**、**[追加]** の順に選択します。
 5. **[名前]** を入力します。 たとえば、「*Google*」などと入力します。

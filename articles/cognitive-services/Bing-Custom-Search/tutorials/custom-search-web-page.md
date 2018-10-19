@@ -1,22 +1,23 @@
 ---
-title: 'Bing Custom Search: カスタム検索 Web ページの作成 | Microsoft Docs'
-description: カスタム検索インスタンスを構成して、Web ページに統合する方法について説明します
+title: 'チュートリアル: カスタム検索 Web ページを作成する - Bing Custom Search'
+titlesuffix: Azure Cognitive Services
+description: カスタム検索インスタンスを構成して、Web ページに統合する方法について説明します。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/16/2017
 ms.author: v-brapel
-ms.openlocfilehash: 8bc1520325afc256ac62cc1f1dfaf24c53da4b83
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3e892131a0109d2fff924940542b5d8b2b701950
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980000"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815377"
 ---
-# <a name="build-a-custom-search-web-page"></a>Custom Search Web ページの作成
+# <a name="tutorial-build-a-custom-search-web-page"></a>チュートリアル: Custom Search Web ページを作成する
 
 Bing Custom Search を使用すると、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。 たとえば、検索エクスペリエンスを提供する武術に関する Web サイトを所有している場合は、Bing が検索するドメイン、サブサイト、および Web ページを指定できます。 ユーザーは、関係のないコンテンツが含まれる可能性がある通常の検索結果のページを移動し続けるのではなく、関心のあるコンテンツに合わせてカスタマイズされた検索結果を参照できます。 
 

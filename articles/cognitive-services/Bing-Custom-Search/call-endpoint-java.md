@@ -1,22 +1,23 @@
 ---
-title: Java を利用してエンドポイントを呼び出す - Bing Custom Search - Microsoft Cognitive Services
+title: 'クイック スタート: Java を使用してエンドポイントを呼び出す - Bing Custom Search'
+titlesuffix: Azure Cognitive Services
 description: このクイックスタートでは、Java を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: conceptual
+ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 7ef4de749d5b9152bbe043a26d3c60fe7f09f869
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ba1eb9799bc95dede081c6f1a6d972896c126da6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951816"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814119"
 ---
-# <a name="call-bing-custom-search-endpoint-java"></a>Bing Custom Search エンドポイントを呼び出す (Java)
+# <a name="quickstart-call-bing-custom-search-endpoint-java"></a>クイック スタート: Bing Custom Search エンドポイントを呼び出す (Java)
 
 このクイックスタートでは、Java を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。 
 

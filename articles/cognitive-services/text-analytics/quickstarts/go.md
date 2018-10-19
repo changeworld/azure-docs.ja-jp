@@ -1,22 +1,23 @@
 ---
-title: Azure Cognitive Services、Text Analytics API の Go のクイック スタート | Microsoft Docs
+title: 'クイック スタート: Go を使用して Text Analytics API を呼び出す'
+titleSuffix: Azure Cognitive Services
 description: Azure 上の Microsoft Cognitive Services の Text Analytics API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: quickstart
-ms.date: 07/09/2018
+ms.date: 10/01/2018
 ms.author: nolachar
-ms.openlocfilehash: 0969700434e3f848aebfa833f0816c6f9f019560
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f1907ef46f508bea81065e15f83c6e97000e0862
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "43771437"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268091"
 ---
-# <a name="quickstart-for-text-analytics-api-with-go"></a>Go での Text Analytics API のクイック スタート 
+# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>クイック スタート: Go を使用して Text Analytics Cognitive Service を呼び出す 
 <a name="HOLTop"></a>
 
 この記事では、[Text Analytics API](//go.microsoft.com/fwlink/?LinkID=759711) を Go で使用して、[言語の検出](#Detect)、[センチメントの分析](#SentimentAnalysis)、[キー フレーズの抽出](#KeyPhraseExtraction)、および[リンクされているエンティティの識別](#Entities)を行う方法について説明します。
@@ -176,7 +177,7 @@ func main() {
 
 ## <a name="analyze-sentiment-request"></a>センチメント分析要求
 
-感情分析 API では、[Sentiment メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)を使用して、テキスト レコードのセットのセンチメントを検出します。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
+Sentiment Analysis API では、[Sentiment メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)を使用して、一連のテキスト レコードのセンチメントを検出します。 次の例では、英語とスペイン語の 2 つのドキュメントをスコア付けしています。
 
 1. 任意のコード エディターで新しい Go プロジェクトを作成します。
 1. 次に示すコードを追加します。
@@ -429,9 +430,9 @@ func main() {
 
 <a name="Entities"></a>
 
-## <a name="identify-linked-entities-request"></a>リンクされているエンティティの識別要求
+## <a name="identify-entities-request"></a>エンティティの特定要求
 
-Entity Linking API は、[エンティティ リンク設定メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 次の例では、英語のドキュメントのエンティティを識別しています。
+Entities API は、[Entities メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)を使用して、テキスト ドキュメント内のよく知られたエンティティを識別します。 次の例では、英語のドキュメントのエンティティを識別しています。
 
 1. 任意のコード エディターで新しい Go プロジェクトを作成します。
 1. 次に示すコードを追加します。
@@ -463,19 +464,19 @@ func main() {
 
     You must use the same region in your REST API call as you used to obtain your access keys.
     For example, if you obtained your access keys from the westus region, replace 
-    "westcentralus" in the URI below with "westus".
+    "westus" in the URI below with "westcentralus".
 
     NOTE: Free trial access keys are generated in the westcentralus region, so if you are using
     a free trial access key, you should not need to change this region.
     */
-    const uriBase =    "https://westcentralus.api.cognitive.microsoft.com"
-    const uriPath = "/text/analytics/v2.0/entities"
+    const uriBase =    "https://westus.api.cognitive.microsoft.com"
+    const uriPath = "/text/analytics/v2.1-preview/entities"
 
     const uri = uriBase + uriPath
 
     data := []map[string]string{
-        {"id": "1", "language": "en", "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."},
-        {"id": "2", "language": "en", "text": "The Seattle Seahawks won the Super Bowl in 2014."},
+        {"id": "1", "language": "en", "text": "Jeff bought three dozen eggs because there was a 50% discount."},
+        {"id": "2", "language": "en", "text": "The Great Depression began in 1929. By 1933, the GDP in America fell by 25%."},
     }
 
     documents, err := json.Marshal(&data)
@@ -524,81 +525,163 @@ func main() {
 }
 ```
 
-## <a name="identify-linked-entities-response"></a>リンクされているエンティティの識別応答
+## <a name="entity-extraction-response"></a>エンティティ抽出の応答
 
 成功した応答は、次の例に示すように JSON で返されます。
 
 ```json
 {
-    "documents": [
+    "Documents": [
         {
-            "id": "1",
-            "entities": [
+            "Id": "1",
+            "Entities": [
                 {
-                    "name": "Xbox One",
-                    "matches": [
+                    "Name": "Jeff",
+                    "Matches": [
                         {
-                            "text": "XBox One",
-                            "offset": 23,
-                            "length": 8
+                            "Text": "Jeff",
+                            "Offset": 0,
+                            "Length": 4
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Xbox One",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Xbox_One",
-                    "bingId": "446bb4df-4999-4243-84c0-74e0f6c60e75"
+                    "Type": "Person"
                 },
                 {
-                    "name": "4K resolution",
-                    "matches": [
+                    "Name": "three dozen",
+                    "Matches": [
                         {
-                            "text": "4K",
-                            "offset": 63,
-                            "length": 2
+                            "Text": "three dozen",
+                            "Offset": 12,
+                            "Length": 11
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "4K resolution",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/4K_resolution",
-                    "bingId": "1d4d689e-9cbf-b9eb-6ecf-f3296aaa96d8"
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50",
+                    "Matches": [
+                        {
+                            "Text": "50",
+                            "Offset": 49,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50%",
+                    "Matches": [
+                        {
+                            "Text": "50%",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         },
         {
-            "id": "2",
-            "entities": [
+            "Id": "2",
+            "Entities": [
                 {
-                    "name": "Seattle Seahawks",
-                    "matches": [
+                    "Name": "Great Depression",
+                    "Matches": [
                         {
-                            "text": "Seattle Seahawks",
-                            "offset": 4,
-                            "length": 16
+                            "Text": "The Great Depression",
+                            "Offset": 0,
+                            "Length": 20
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Seattle Seahawks",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle_Seahawks",
-                    "bingId": "1bf844db-8225-f90c-a78e-1787fb8af0ce"
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Great Depression",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+                    "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
                 },
                 {
-                    "name": "Super Bowl",
-                    "matches": [
+                    "Name": "1929",
+                    "Matches": [
                         {
-                            "text": "Super Bowl",
-                            "offset": 29,
-                            "length": 10
+                            "Text": "1929",
+                            "Offset": 30,
+                            "Length": 4
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Super Bowl",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Super_Bowl",
-                    "bingId": "ce1fece8-34c4-6249-a1aa-2e779294760e"
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "By 1933",
+                    "Matches": [
+                        {
+                            "Text": "By 1933",
+                            "Offset": 36,
+                            "Length": 7
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "Gross domestic product",
+                    "Matches": [
+                        {
+                            "Text": "GDP",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Gross domestic product",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+                    "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
+                },
+                {
+                    "Name": "United States",
+                    "Matches": [
+                        {
+                            "Text": "America",
+                            "Offset": 56,
+                            "Length": 7
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "United States",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
+                    "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
+                    "Type": "Location"
+                },
+                {
+                    "Name": "25",
+                    "Matches": [
+                        {
+                            "Text": "25",
+                            "Offset": 72,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "25%",
+                    "Matches": [
+                        {
+                            "Text": "25%",
+                            "Offset": 72,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         }
     ],
-    "errors": []
+    "Errors": []
 }
 ```
 

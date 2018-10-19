@@ -147,18 +147,14 @@ items:
       href: stream-analytics-edge-csharp-udf-methods.md
   - name: トラブルシューティング
     items:
-    - name: トラブルシューティングの手順
-      href: stream-analytics-troubleshooting-guide.md
-    - name: 一般的な問題
-      href: stream-analytics-common-troubleshooting-issues.md
-    - name: ジョブ ダイアグラム
-      href: stream-analytics-job-diagram-with-metrics.md
+    - name: 入力接続
+      href: stream-analytics-troubleshoot-input.md
+    - name: 出力接続
+      href: stream-analytics-troubleshoot-output.md
+    - name: クエリ ロジック
+      href: stream-analytics-troubleshoot-query.md
     - name: 診断ログ
       href: stream-analytics-job-diagnostic-logs.md
-    - name: SELECT INTO ステートメント
-      href: stream-analytics-select-into.md
-    - name: イベント ハブ レシーバー
-      href: stream-analytics-event-hub-consumer-groups.md
   - name: Machine Learning との統合
     items:
     - name: ML モデルを利用したセンチメント分析
@@ -167,6 +163,8 @@ items:
       href: stream-analytics-machine-learning-anomaly-detection.md
     - name: REST API の使用
       href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
+  - name: ジョブ ダイアグラムを使用したデバッグ
+    href: stream-analytics-job-diagram-with-metrics.md
 - name: リファレンス
   items:
   - name: Azure PowerShell
@@ -203,9 +201,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: ホワイトペーパー - リアルタイム イベント処理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 85e4a1bdc05f48a842a183bfa6db80d0bd3f946f
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: f032292835e01b86fdc9ca0b8a3dd00f8a45cd29
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854764"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340870"

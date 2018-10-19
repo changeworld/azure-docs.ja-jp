@@ -1,21 +1,21 @@
 ---
-title: サポートされている言語を Translator Text と Python で取得する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Cognitive Services の Translator Text API と Java を使った例を紹介しています。
+title: 'クイック スタート: サポートされている言語を取得する - Translator Text、Python'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Java で Translator Text API を使った例を紹介します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: nolachar
-ms.openlocfilehash: 3ae3c6be814f79541e39eddd3be137b71cc1a494
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a68a1b31cb844a4873bf34c6a292beeb2a4b61c0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "43771002"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121738"
 ---
 # <a name="quickstart-get-supported-languages-with-python"></a>クイック スタート: サポートされている言語を Python で取得する
 

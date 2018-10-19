@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 281d74b6836516e03771d82c96fab628eac12f1a
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 62d675e4b91e3e22cf01e09d1a1a021f225310a9
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395833"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321888"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-1x"></a>Azure Functions 1.x の Azure Cosmos DB バインド
 
 > [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
-> * [バージョン 1 - 一般公開](functions-bindings-cosmosdb.md)
-> * [バージョン 2 - プレビュー](functions-bindings-cosmosdb-v2.md)
+> * [Version 1](functions-bindings-cosmosdb.md)
+> * [Version 2](functions-bindings-cosmosdb-v2.md)
 
 この記事では、Azure Functions で [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) のバインドを操作する方法について説明します。 Azure Functions は、Azure Cosmos DB のトリガー、入力、出力のバインドをサポートしています。
 

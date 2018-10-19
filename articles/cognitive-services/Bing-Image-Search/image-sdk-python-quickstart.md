@@ -1,116 +1,91 @@
 ---
-title: 'クイック スタート: Python で SDK を使用したイメージの要求とフィルター'
-description: このクイック スタートでは、Bing Image Search から返されたイメージを Python を使用して要求およびフィルターします。
-titleSuffix: Azure Image Search SDK Python quickstart
+title: 'クイック スタート: Python 用 Bing Image Search SDK を使用して画像を検索する'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートを利用し、Bing Image Search SDK を使用して最初の画像検索を行います。この SDK は、API のラッパーであり、同じ機能を含んでいます。 このシンプルな Python アプリケーションは、画像検索クエリを送信し、JSON 応答を解析して、返された最初の画像の URL を表示します。
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: aahill
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
-ms.date: 02/14/2018
-ms.author: v-gedod
-ms.openlocfilehash: 4729f103bb9b50d4ff039907db8eb677f3dc290a
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.topic: quickstart
+ms.date: 08/28/2018
+ms.author: aahi
+ms.openlocfilehash: 7afe19cf0167784a5c8b3e2751ec869a2664935d
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41936740"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296619"
 ---
- # <a name="quickstart-request-and-filter-images-using-the-sdk-and-python"></a>クイック スタート: SDK および Python を使用したイメージの要求とフィルター
+# <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-and-python"></a>クイック スタート: Bing Image Search SDK と Python を使用して画像を検索する
 
-Bing Image Search SDK には、Web クエリと結果解析のための REST API 機能が含まれています。 
+このクイック スタートを利用し、Bing Image Search SDK を使用して最初の画像検索を行います。この SDK は、API のラッパーであり、同じ機能を含んでいます。 このシンプルな Python アプリケーションは、画像検索クエリを送信し、JSON 応答を解析して、返された最初の画像の URL を表示します。
 
-[Python 向けの Image Search SDK のサンプル ソース コード](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image_search_samples.py)は、GitHub で公開しています。
+このサンプルのソース コードは、追加のエラー処理と注釈を含め、[GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/image-search-quickstart.py) で入手できます。
 
-## <a name="application-dependencies"></a>アプリケーションの依存関係
-Python をまだインストールしていない場合は、インストールします。 この SDK は、Python 2.7、3.3、3.4、3.5、3.6 と互換性があります。
+## <a name="prerequisites"></a>前提条件
 
-Python 開発では、一般的に、[仮想環境](https://docs.python.org/3/tutorial/venv.html)を使用することをお勧めします。 [venv モジュール](https://pypi.python.org/pypi/virtualenv)を使用して仮想環境をインストールして初期化します。 Python 2.7 向けの virtualenv をインストールする必要があります。
-```
-python -m venv mytestenv
-```
-Bing Image Search SDK 依存関係をインストールします。
-```
-cd mytestenv
-python -m pip install azure-cognitiveservices-search-imagesearch
-```
-## <a name="image-search-client"></a>Image Search クライアント
-*[検索]* で [Cognitive Services のアクセス キー](https://azure.microsoft.com/try/cognitive-services/)を取得します。 インポートを追加します。
-```
-from azure.cognitiveservices.search.imagesearch import ImageSearchAPI
-from azure.cognitiveservices.search.imagesearch.models import ImageType, ImageAspect, ImageInsightModule
-from msrest.authentication import CognitiveServicesCredentials
+* [Python 2.7 または 3.4](https://www.python.org/) 以降。
 
-subscription_key = "YOUR-SUBSCRIPTION-KEY"
-```
-`CognitiveServicesCredentials` のインスタンスを作成し、クライアントをインスタンス化します。
-```
-client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
-```
-クエリ (Yosemite) で画像を検索します。アニメーション Gif と広アスペクトで絞り込みます。 結果数を確認し、最初の結果の分析情報トークン、サムネイル URL、Web URL を出力します。
-```
-image_results = client.images.search(
-        query="Yosemite",
-        image_type=ImageType.animated_gif, # Could be the str "AnimatedGif"
-        aspect=ImageAspect.wide # Could be the str "Wide"
-    )
-    print("\r\nSearch images for \"Yosemite\" results that are animated gifs and wide aspect")
+* Python 用 [Azure Image Search SDK](https://pypi.org/project/azure-cognitiveservices-search-imagesearch/)
+    * `pip install azure-cognitiveservices-search-imagesearch` を使用してインストールする
 
-    if image_results.value:
-        first_image_result = image_results.value[0]
-        print("Image result count: {}".format(len(image_results.value)))
-        print("First image insights token: {}".format(first_image_result.image_insights_token))
-        print("First image thumbnail url: {}".format(first_image_result.thumbnail_url))
-        print("First image web search url: {}".format(first_image_result.web_search_url))
-    else:
-        print("Couldn't find image results!")
+[!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-```
-クエリ (Yosemite) で画像を検索し、アニメーション Gif と広アスペクトで絞り込みます。  結果数を確認します。  最初の結果の `insightsToken`、`thumbnail url`、`web url` を出力します。
-```
-image_results = client.images.search(
-    query="Yosemite",
-    image_type=ImageType.animated_gif, # Could be the str "AnimatedGif"
-    aspect=ImageAspect.wide # Could be the str "Wide"
-)
-print("\r\nSearch images for \"Yosemite\" results that are animated gifs and wide aspect")
+## <a name="create-and-initialize-the-application"></a>アプリケーションの作成と初期化
 
+1. お気に入りの IDE またはエディターで新しい Python スクリプトを作成し、次のインポートを行います。
+
+    ```python
+    from azure.cognitiveservices.search.imagesearch import ImageSearchAPI
+    from msrest.authentication import CognitiveServicesCredentials
+    ```
+
+2. サブスクリプション キーと検索用語の変数を作成します。
+
+    ```python
+    subscription_key = "Enter your key here"
+    search_term = "canadian rockies"
+    ```
+
+## <a name="create-the-image-search-client"></a>画像検索クライアントを作成する
+
+3. `CognitiveServicesCredentials` のインスタンスを作成し、それを使用してクライアントをインスタンス化します。
+
+    ```python
+    client = ImageSearchAPI(CognitiveServicesCredentials(subscription_key))
+    ```
+4. Bing Image Search API に検索クエリを送信します。
+    ```python
+    image_results = client.images.search(query=search_term)
+    ```
+## <a name="process-and-view-the-results"></a>結果の処理と表示
+
+応答で返された画像の結果を解析します。
+
+
+応答に検索結果が含まれている場合は、最初の結果を格納して、返された URL の合計数と共にサムネイルの URL などの詳細を出力します。  
+
+```python
 if image_results.value:
     first_image_result = image_results.value[0]
-    print("Image result count: {}".format(len(image_results.value)))
-    print("First image insights token: {}".format(first_image_result.image_insights_token))
+    print("Total number of images returned: {}".format(len(image_results.value)))
     print("First image thumbnail url: {}".format(first_image_result.thumbnail_url))
-    print("First image web search url: {}".format(first_image_result.web_search_url))
+    print("First image content url: {}".format(first_image_result.content_url))
 else:
-    print("Couldn't find image results!")
-
-```
-
-トレンドの結果を取得します。
-```
-trending_result = client.images.trending()
-print("\r\nSearch trending images")
-
-# Categorires
-if trending_result.categories:
-    first_category = trending_result.categories[0]
-    print("Category count: {}".format(len(trending_result.categories)))
-    print("First category title: {}".format(first_category.title))
-    if first_category.tiles:
-        first_tile = first_category.tiles[0]
-        print("Subcategory tile count: {}".format(len(first_category.tiles)))
-        print("First tile text: {}".format(first_tile.query.text))
-        print("First tile url: {}".format(first_tile.query.web_search_url))
-    else:
-        print("Couldn't find subcategory tiles!")
-    else:
-        print("Couldn't find categories!")
-
+    print("No image results returned!")
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-[Cognitive Services の Python 向け SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
+> [!div class="nextstepaction"]
+> [Bing Image Search の単一ページ アプリのチュートリアル](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/tutorial-bing-image-search-single-page-app)
 
+## <a name="see-also"></a>関連項目
 
+* [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
+* [Azure Cognitive Services SDK の Python サンプル](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)  
+* [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
+* [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

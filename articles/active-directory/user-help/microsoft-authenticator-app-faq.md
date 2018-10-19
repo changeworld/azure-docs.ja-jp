@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 6120ef39c4eb91c4b595f6b97a0eb4b96621b6f2
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 8ac6bc3ee042fee9757577dfa0e7ddab0f261645
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42142687"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498319"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator アプリに関する FAQ
 
@@ -44,7 +44,7 @@ Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換
 |Microsoft Authenticator アプリで、デバイスのロックを解除せずに要求を承認できるのはなぜですか?|本人を確認するために必要なことは、電話を所持していることだけなので、検証要求を承認するためにデバイスのロックを解除する必要はありません。 2 段階認証では、2 つのもの、つまりユーザーが知っているものとユーザーが持っているものを証明する必要があります。 知っているものは、パスワードです。 持っているものは、(Microsoft Authenticator アプリで設定され、MFA の確認手段として登録された) 電話です。したがって、電話を持っていて要求を承認することは、認証の 2 番目の要素に関する条件を満たします。|
 |Apple Watch で Microsoft Authenticator アプリを開いたときに、自分が持っているアカウントの一部のみが表示されす。なぜですか?|Microsoft Authenticator アプリは、Apple Watch コンパニオン アプリに関するプッシュ通知が有効な個人の Microsoft アカウント、職場アカウント、または学校アカウントのみをサポートします。 Google や Facebook など、他のアカウントでは、スマートフォンで Authenticator アプリを開いて確認コードを表示する必要があります。|
 |Apple Watch で通知を承認も拒否もできません。なぜですか?|まず、iPhone 上で Microsoft Authenticator アプリが 6.0.0 以降にアップグレードされていることを確認します。 その後、Apple Watch で Microsoft Authenticator コンパニオン アプリを開き、その下に **[設定]** ボタンが表示されているアカウントを探します。 これらのアカウントの通知を承認するには、設定プロセスを完了する必要があります。|
-|「**Apple Watch 上の Microsoft Authenticator コンパニオン アプリの使用中にスマートフォンと通信できません**」エラーが発生します。なぜですか?|スマートフォンと Watch が通信していない場合は、以下を試すことができます。<ol><li>iPhone 上の Microsoft Authenticator アプリを強制終了し、iPhone でもう一度開きます。</li><li>Apple Watch 上のコンパニオン アプリを強制終了します。<ol><li> Watch で Microsoft Authenticator コンパニオン アプリを開きます。</li><li>**[シャット ダウン]** 画面が表示されるまで、サイド ボタンを押し続けます。</li><li>サイド ボタンを放し、デジタル クラウンを押し続けて、アクティブなアプリを強制終了します。</li></ol></li><li>スマートフォンと Watch の両方で、Bluetooth と Wi-fi の両方をオフにした後、オンに戻します。</li><li>IPhone と Watch を再起動します。</li></ol>|
+|Apple Watch とスマートフォン間で通信エラーが発生します。 トラブルシューティングを行うにはどうすればよいですか?|このエラーは、スマートフォンとの通信を終了する前に Watch 画面がスリープ状態になったときに発生します。<br><br><b>セットアップ中にこのエラーが発生した場合:</b><br>セットアップをもう一度実行し、プロセスが完了するまで Watch が起動状態を保つようにしてください。 同時に、スマートフォンでアプリを開き、表示されるプロンプトに応答します。<br><br>それでもスマートフォンと Watch が通信しない場合は、以下を試すことができます。<ol><li>iPhone 上の Microsoft Authenticator アプリを強制終了し、iPhone でもう一度開きます。</li><li>Apple Watch 上のコンパニオン アプリを強制終了します。<ol><li> Watch で Microsoft Authenticator コンパニオン アプリを開きます。</li><li>**[シャット ダウン]** 画面が表示されるまで、サイド ボタンを押し続けます。</li><li>サイド ボタンを放し、デジタル クラウンを押し続けて、アクティブなアプリを強制終了します。</li></ol></li><li>スマートフォンと Watch の両方で、Bluetooth と Wi-fi の両方をオフにした後、オンに戻します。</li><li>IPhone と Watch を再起動します。</li></ol><b>通知を承認しようとしているときにこのエラーが発生した場合:</b><br>次回 Apple Watch で通知の承認を試行するときに、要求が完了し、要求が成功したことを示す音が聞こえるまで画面が起動状態を保つようにしてください。|
 |Apple Watch 用の Microsoft Authenticator コンパニオン アプリが、Watch と同期も表示も行いません。なぜですか?|アプリが Watch に表示されない場合は、以下を試してください。 <ol><li>Watch が watchOS 4.0 以降で実行されていることを確認します。</li><li>Watch を再度同期します。</li></ol>|
 |Apple Watch コンパニオン アプリがクラッシュしました。 調査できるようにクラッシュ ログを送信できますか? |まず、分析を Microsoft と共有することを選択しているかどうかを確認する必要があります。 TestFlight ユーザーであれば、既にサインアップしています。 それ以外の場合は、**[設定] > [プライバシー] > [解析]** の順に移動し、**[iPhone と Watch 解析を共有]** オプションと **[App デベロッパと共有]** オプションの両方を選択します。<br><br>サインアップした後、調査のためにクラッシュ ログが自動的に送信されるように、クラッシュの再現を試みることができます。 ただし、クラッシュを再現できなくても、ログ ファイルを手動でコピーして送信できます。<ol><li>スマートフォン上で Watch アプリを開き、**[設定] > [一般]** の順に移動し、**[Watch 解析のコピー]** をクリックします。</li><li>**[設定] > [プライバシー] > [解析] > [解析データ]** で、該当するクラッシュを探し、テキスト全体を手動でコピーします。</li><li>スマートフォン上で Microsoft Authenticator アプリを開き、**[ログの送信]** ページの **[App デベロッパと共有]** テキスト ボックスに、コピーしたテキストを貼り付けます。</li></ol>|
 

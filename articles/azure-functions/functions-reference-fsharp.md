@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: ec4260363aa0af3062a6d61db44a75d9ebd599db
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 5593f76511f43106d6743a158b051e118ef2a4a6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090746"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125257"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開発者向けリファレンス
 
@@ -29,6 +29,29 @@ Azure Functions 用 F# は、小規模なコード ("関数") をクラウドで
 `.fsx` ファイルは、F# スクリプトです。 1 つのファイルに含まれている F# プロジェクトとして考えることができます。 ファイルには、プログラムのためのコード (この場合は、Azure 関数) と、依存関係を管理するためのディレクティブの両方が含まれています。
 
 Azure 関数に対して `.fsx` を使用すると、一般に必要とされるアセンブリが自動的に含められるため、"定型" コードではなく、関数のコードに集中できます。
+
+## <a name="folder-structure"></a>フォルダー構造
+
+F# スクリプト プロジェクトのフォルダー構造は、次のようになります。
+
+```
+FunctionsProject
+ | - MyFirstFunction
+ | | - run.fsx
+ | | - function.json
+ | | - function.proj
+ | - MySecondFunction
+ | | - run.fsx
+ | | - function.json
+ | | - function.proj
+ | - host.json
+ | - extensions.csproj
+ | - bin
+```
+
+関数アプリの構成に使用できる共有 [host.json] (functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.fsx) とバインディング構成ファイル (function.json) があります。
+
+Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインディング拡張機能を登録](functions-triggers-bindings.md#local-development-azure-functions-core-tools)する必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 ## <a name="binding-to-arguments"></a>引数へのバインド
 「[Azure Functions のトリガーとバインドの開発者用リファレンス](functions-triggers-bindings.md)」で詳しく説明されているように、各バインドはいくつかの引数のセットをサポートしています。 たとえば、BLOB トリガーでサポートされている引数バインドの 1 つは、POCO です。これは、F# レコードを使用して表すことができます。 例: 

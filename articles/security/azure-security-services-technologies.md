@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2018
 ms.author: barclayn
-ms.openlocfilehash: 0addad1db4d9f897736a7793c5489897bca2cd38
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 32174af9edcd6da7b87b6b38c0824fa7f07aa8f9
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093428"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384889"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Azure で利用できるセキュリティ サービスとテクノロジ
 
@@ -48,7 +48,7 @@ ms.locfileid: "47093428"
 | [Azure Storage Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md)|Shared Access Signature を使用すると、ストレージ アカウント内のリソースへの委任アクセスが可能になります。  |
 |[Azure ストレージ アカウント キー](../storage/common/storage-create-storage-account.md)| ストレージ アカウントへのアクセス時に、Azure ストレージの認証で使用されるアクセス制御メソッドです。 |
 |[SMB 3.0 の暗号化を使用した Azure ファイル共有](../storage/files/storage-files-introduction.md)|ネットワークで、サーバー メッセージ ブロック (SMB) ファイル共有プロトコルの自動的な暗号化を有効にするネットワーク セキュリティ テクノロジです。 |
-|[Azure Storage Analytics](https://docs.microsoft.com/en-us/rest/api/storageservices/Storage-Analytics)| ストレージ アカウントのデータのログとメトリックを生成するテクノロジです。 |
+|[Azure Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/Storage-Analytics)| ストレージ アカウントのデータのログとメトリックを生成するテクノロジです。 |
 
 <!------>
 
@@ -58,8 +58,8 @@ ms.locfileid: "47093428"
 | [Azure&nbsp;SQL&nbsp;Firewall](../sql-database/sql-database-firewall-configure.md)|データベースへのネットワーク経由の攻撃から保護するためのネットワークのアクセス制御機能です。 |
 |[Azure&nbsp;SQL&nbsp;Cell&nbsp;Level Encryption](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/)| 詳細なレベルで暗号化を提供するデータベース セキュリティ テクノロジです。  |
 | [Azure&nbsp;SQL&nbsp;接続暗号化](../sql-database/sql-database-control-access.md)|SQL Database では、セキュリティを提供するために、IP アドレスで接続を制限するファイアウォール規則、ユーザーに ID の指定を要求する認証メカニズム、およびユーザーを特定の操作とデータに限定する承認メカニズムによって、アクセスを制御します。 |
-| [Azure SQL Always Encryption (Azure SQL の常時暗号化)](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Azure SQL Database や SQL Server データベースに格納された、クレジット カード番号や国民識別番号 (米国の社会保障番号など) のような機密データを保護することを目的とした機能です。  |
-| [Azure&nbsp;SQL&nbsp;Transparent Data Encryption](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| データベース全体のストレージを暗号化するデータベース セキュリティ機能です。 |
+| [Azure SQL Always Encryption (Azure SQL の常時暗号化)](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine?view=sql-server-2017)|Azure SQL Database や SQL Server データベースに格納された、クレジット カード番号や国民識別番号 (米国の社会保障番号など) のような機密データを保護することを目的とした機能です。  |
+| [Azure&nbsp;SQL&nbsp;Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql?view=azuresqldb-current)| データベース全体のストレージを暗号化するデータベース セキュリティ機能です。 |
 | [Azure SQL Database 監査](../sql-database/sql-database-auditing.md)|データベース イベントを追跡し、それを Azure Storage アカウントの監査ログに書き込むデータベース監査機能です。  |
 
 

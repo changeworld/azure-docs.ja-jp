@@ -1,49 +1,52 @@
 ---
-title: 'Computer Vision Python クイック スタート: 手書きテキスト | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Computer Vision と Python を使って、手書きテキストを抽出します。
+title: 'クイック スタート: 手書きテキストの抽出 - REST、Python - Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Python と Computer Vision API を使って、画像から手書きテキストを抽出します。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: PatrickFarley
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 43b541daf8632af7fb8111886b53981c4c646772
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.author: pafarley
+ms.openlocfilehash: 58860fa1f65f90cdd314eb2c8cb7e1f54faa2344
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43771966"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341754"
 ---
-# <a name="quickstart-extract-handwritten-text---rest-python"></a>クイック スタート: 手書きテキストの抽出 - REST、Python
+# <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-python-in-computer-vision"></a>クイック スタート: Computer Vision の REST API および Python を使用して手書きテキストを抽出する
 
-このクイック スタートでは、Computer Vision を使って、画像から手書きテキストを抽出します。
+このクイック スタートでは、Computer Vision の REST API を使って、画像から手書きテキストを抽出します。 [テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドと[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを使うと、画像内の手書きテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
+
+> [!IMPORTANT]
+> [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) メソッドとは異なり、[テキスト認識](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドは非同期で実行されます。 このメソッドは、正常な応答の本文では任意の情報を返しません。 代わりに、テキスト認識メソッドは、`Operation-Content` 応答ヘッダー フィールドの値に URI を返します。 その後、[テキスト認識操作結果の取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを表したこの URI を呼び出して、ステータスをチェックすると共に、テキスト認識メソッドの呼び出しの結果を返します。
 
 このクイック スタートは、[MyBinder](https://mybinder.org) 上で Jupyter Notebook を使い、ステップ バイ ステップで実行することができます。 Binder を起動するには、次のボタンを選択します。
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=VisionAPI.ipynb)
 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
+
 ## <a name="prerequisites"></a>前提条件
 
-Computer Vision を使用するにはサブスクリプション キーが必要です。「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
+- サンプルをローカルで実行するには、[Python](https://www.python.org/downloads/) がインストールされている必要があります。
+- Computer Vision のサブスクリプション キーが必要です。 「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
 
-## <a name="extract-handwritten-text"></a>手書きのテキストの抽出
+## <a name="create-and-run-the-sample"></a>サンプルの作成と実行
 
-[テキスト認識](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200)メソッドと[テキスト認識操作結果の取得](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201)メソッドを使うと、画像内の手書きテキストを検出し、認識した文字をマシンで扱うことができる文字ストリームに抽出することができます。
+このサンプルを作成して実行するには、次の手順を実行します。
 
-このサンプルを実行するには、次の手順を実行します。
-
-1. 次のコードを新しい Python スクリプト ファイルにコピーします。
-1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. 必要に応じて `vision_base_url` の値を、サブスクリプション キーを取得した場所に変更します。
-1. 必要に応じて `image_url` の値を、別の画像に変更します。
-1. スクリプトを実行します。
-
-次のコードでは、Python `requests` ライブラリを使って、Computer Vision Analyze Image API を呼び出します。 その結果は、JSON オブジェクトとして返されます。 API キーは `headers` ディクショナリで渡します。
-
-## <a name="recognize-text-request"></a>テキスト認識要求
+1. テキスト エディターに次のコードをコピーします。
+1. 必要に応じて、コードに次の変更を加えます。
+    1. `subscription_key` 値を、サブスクリプション キーに置き換えます。
+    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの Computer Vision リソースのエンドポイント URL で `vision_base_url` 値を置き換えます。
+    1. 必要に応じて、手書きテキストを抽出したい別の画像の URL で `image_url` 値を置き換えます。
+1. `.py` 拡張子のファイルとして、コードを保存します。 たとえば、「 `get-handwritten-text.py` 」のように入力します。
+1. コマンド プロンプト ウィンドウを開きます。
+1. プロンプトで、`python` コマンドを使用してサンプルを実行します。 たとえば、「 `python get-handwritten-text.py` 」のように入力します。
 
 ```python
 import requests
@@ -122,9 +125,9 @@ for polygon in polygons:
 _ = plt.axis("off")
 ```
 
-## <a name="recognize-text-response"></a>テキスト認識応答
+## <a name="examine-the-response"></a>結果の確認
 
-成功応答が JSON で返されます。その例を次に示します。
+成功応答が JSON で返されます。 サンプルの Web ページによって成功応答が解析され、次の例のようにコマンド プロンプト ウィンドウに表示されます。
 
 ```json
 {
@@ -401,6 +404,10 @@ _ = plt.axis("off")
   }
 }
 ```
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+不要になったら、ファイルを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,22 +1,20 @@
 ---
-title: 'クイックスタート: BAM ファイルの入力を使用したワークフローの送信 | Microsoft Docs'
+title: 'クイック スタート: BAM ファイルの入力を使用したワークフローの送信 - Microsoft Genomics'
 titleSuffix: Azure
 description: このクイックスタートでは、msgen クライアントがインストールされており、そのサービスを通じてサンプル データが正常に実行されていることを前提としています。
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 9887121593cad4931c86b55012f1c22686adf25f
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 91bc13dbf024df20ac23ca0ff83a73ed246dce28
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
-ms.locfileid: "26684519"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729506"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>BAM ファイルの入力を使用したワークフローの送信
 
@@ -83,5 +81,5 @@ output_storage_account_container: outputs
 
 `msgen submit -f config.txt` という呼び出しを使って、`config.txt` ファイルを送信します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、BAM ファイルを Azure Storage にアップロードして、`msgen` Python クライアント経由で Microsoft Genomics サービスにワークフローを送信しました。 ワークフローの送信と Microsoft Genomics サービスで使用できるその他のコマンド関連の詳細情報については、[FAQ](frequently-asked-questions-genomics.md) に関するページをご覧ください。 

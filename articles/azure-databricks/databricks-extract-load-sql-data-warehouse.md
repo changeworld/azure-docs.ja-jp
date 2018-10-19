@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 07/26/2018
-ms.openlocfilehash: 11046089bd25e1ca9e117d5d8908471858450e6d
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: c416937f98f6bcb49f86fce18213ca4ed349c513
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308798"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902061"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用したデータの抽出、変換、読み込み
 
@@ -47,7 +47,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルを開始する前に、次の要件を満たしてください。
 - Azure SQL Data Warehouse を作成し、サーバー レベルのファイアウォール規則を作成して、サーバー管理者としてサーバーに接続します。[Azure SQL Data Warehouse の作成に関するクイック スタート](../sql-data-warehouse/create-data-warehouse-portal.md)の手順に従ってください。
 - Azure SQL Data Warehouse に使用するデータベース マスター キーを作成します。 「[データベース マスター キーの作成](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-a-database-master-key)」の手順に従ってください。
-- Azure Blob Storage アカウントを作成し、そこにコンテナーを作成します。 また、ストレージ アカウントにアクセスするためのアクセス キーを取得します。 [Azure Blog Storage アカウントの作成に関するクイック スタート](../storage/blobs/storage-quickstart-blobs-portal.md)の手順に従ってください。
+- Azure Blob Storage アカウントを作成し、そこにコンテナーを作成します。 また、ストレージ アカウントにアクセスするためのアクセス キーを取得します。 [Azure BLOB ストレージ アカウントの作成に関するクイック スタート](../storage/blobs/storage-quickstart-blobs-portal.md)の手順に従ってください。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 

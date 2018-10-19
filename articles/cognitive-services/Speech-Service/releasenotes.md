@@ -4,34 +4,45 @@ description: リリース ノート - 最新リリースの変更点
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: bbf3c5930de2ec6c709b6b527ae3eac107382420
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: cfc8f973ac9bced9396a081f7fb2ab6a4a1b2f7f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047801"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963085"
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services Speech SDK 1.0.0: 2018-September リリース
+
+**新機能**
+
+* iOS での Objective-C のサポート。 [iOS での Objective-C のクイック スタート](quickstart-objectivec-ios.md)に関するページをご覧ください。
+* ブラウザーでの JavaScript のサポート。 [JavaScript のクイック スタート](quickstart-js-browser.md)に関するページをご覧ください。
+
+**重大な変更**
+
+* このリリースでは、重大な変更がいくつか行われています。
+  詳しくは、[こちらのページ](https://aka.ms/csspeech/breakingchanges_1_0_0)をご覧ください。
 
 ## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Cognitive Services Speech SDK 0.6.0: 2018-August リリース
 
 **新機能**
 
 * Speech SDK で構築された UWP アプリは、Windows アプリ認定キット (WACK) に合格できるようになりました。
-  当社の [UWP クイック スタート](quickstart-csharp-uwp.md)をチェックアウトします。
+  [UWP のクイック スタート](quickstart-csharp-uwp.md)に関するページをご覧ください。
 * Linux (Ubuntu 16.04 x 64) 上の .NET Standard 2.0 のサポート。
 * 試験段階: Windows (64 ビット) および Linux (Ubuntu 16.04 x 64) での Java 8 サポート。
-  [Java ランタイム環境のクイック スタート](quickstart-java-jre.md)に関する記事をご確認ください。
+  [Java ランタイム環境のクイック スタート](quickstart-java-jre.md)に関するページをご覧ください。
 
 **機能の変更点**
 
-* 接続エラーに関する追加エラーの詳細情報の公開。
+* 接続エラーに関する追加エラーの詳細情報が公開されました。
 
 **重大な変更**
 
@@ -49,19 +60,17 @@ ms.locfileid: "43047801"
 
 **新機能**
 
-* Android プラットフォーム (API 23: Android 6.0 Marshmallow 以降) をサポートします。
-  [Android クイック スタート](quickstart-java-android.md)をチェックアウトします。
-* Windows 上の .NET Standard 2.0 をサポートします。
-  [.NET Core クイック スタート](quickstart-csharp-dotnetcore-windows.md)をチェックアウトします。
-* 試験段階: Windows 上での UWP のサポート (バージョン 1709 以降)
-  * 当社の [UWP クイック スタート](quickstart-csharp-uwp.md)をチェックアウトします。
+* Android プラットフォーム (API 23: Android 6.0 Marshmallow 以降) をサポートします。 [Android クイック スタート](quickstart-java-android.md)をチェックアウトします。
+* Windows 上の .NET Standard 2.0 をサポートします。 [.NET Core クイック スタート](quickstart-csharp-dotnetcore-windows.md)をチェックアウトします。
+* 試験段階: Windows 上での UWP のサポート (バージョン 1709 以降)。
+  * [UWP のクイック スタート](quickstart-csharp-uwp.md)に関するページをご覧ください。
   * 注: Speech SDK で構築された UWP アプリは、まだ Windows アプリ認定キット (WACK) に合格していません。
 * 自動再接続を使用して、実行時間の長い認識をサポートします。
 
 **機能の変更点**
 
 * `StartContinuousRecognitionAsync()` は、実行時間の長い認識をサポートします。
-* 認識結果には、認識されたテキストのオーディオの開始からのオフセットと期間 (どちらも単位はティック)、認識状態を表す追加の値 (`InitialSilenceTimeout` や `InitialBabbleTimeout` など) という多くのフィールドが含まれます。
+* 認識結果に含まれるフィールドが増えました。 認識されたテキストのオーディオの開始からのオフセットと期間 (どちらも単位はティック)、および認識状態を表す追加の値 (`InitialSilenceTimeout` や `InitialBabbleTimeout` など) です。
 * ファクトリ インスタンスを作成するための AuthorizationToken をサポートします。
 
 **重大な変更**
@@ -77,13 +86,12 @@ ms.locfileid: "43047801"
 **バグの修正**
 
 * `RecognizeAsync()` がタイムアウトしたときの結果にある正しくない戻り値が修正されました。
-* Windows 上のメディア ファンデーション ライブラリへの依存関係が削除されました。 この SDK は現在、コア オーディオ API を使用しています。
+* Windows 上のメディア ファンデーション ライブラリへの依存関係が削除されました。 SDK で Core Audio API が使用されるようになりました。
 * ドキュメントの修正: サポートされるリージョンを説明するための[リージョン](regions.md) ページが追加されました。
 
 **既知の問題**
 
-* Android 用の Speech SDK では、翻訳のための音声合成の結果が報告されません。
-  これは次のリリースで修正される予定です。
+* Android 用の Speech SDK では、翻訳のための音声合成の結果が報告されません。 この問題は次のリリースで修正される予定です。
 
 ## <a name="cognitive-services-speech-sdk-040-2018-june-release"></a>Cognitive Services Speech SDK 0.4.0: 2018-June リリース
 
@@ -95,11 +103,11 @@ ms.locfileid: "43047801"
 
 - 出力形式の詳細
 
-  `SpeechRecognizer` を作成する一方で、`Detailed` または `Simple` 出力形式を要求できます。 `DetailedSpeechRecognitionResult` には、信頼度スコア、認識されるテキスト、生の語彙形式、正規化形式、および不適切な内容がマスクされた正規化形式が含まれます。
+  `SpeechRecognizer` を作成するときに、`Detailed` または `Simple` 出力形式を要求できます。 `DetailedSpeechRecognitionResult` には、信頼度スコア、認識されるテキスト、生の語彙形式、正規化形式、および不適切な内容がマスクされた正規化形式が含まれます。
 
 **重大な変更**
 
-- C# では `SpeechRecognitionResult.Text` から `SpeechRecognitionResult.RecognizedText` に変更されます。
+- C# で `SpeechRecognitionResult.Text` から `SpeechRecognitionResult.RecognizedText` に変更されました。
 
 **バグの修正**
 
@@ -123,4 +131,4 @@ ms.locfileid: "43047801"
 
 ## <a name="cognitive-services-speech-sdk-0212733-2018-may-release"></a>Cognitive Services Speech SDK 0.2.12733: 2018-May リリース
 
-Cognitive Services Speech SDK の最初のパブリック プレビュー リリースです。
+このリリースは、Cognitive Services Speech SDK の最初のパブリック プレビュー リリースです。

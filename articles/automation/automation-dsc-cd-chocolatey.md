@@ -4,17 +4,17 @@ description: Azure Automation State Configuration と Chocolatey パッケージ
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc0e49f2857468338f6e1f16462ed814893ea6e7
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 43f4a37ce0425503337cffa58570f3468fca6b29
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038644"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634254"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>使用例: Automation State Configuration と Chocolatey を使用した仮想マシンへの継続的なデプロイ
 
@@ -182,7 +182,7 @@ Get-AzureRmAutomationDscCompilationJob `
 ## <a name="step-6-tying-it-all-together"></a>手順 6. まとめ
 
 バージョンを QA に渡し、デプロイが承認されるたびに、パッケージが作成され、nuspec と nupkg が更新あれて、NuGet サーバーにデプロイされます。 さらに、構成 (前の手順 4) も、新しいバージョン番号を承認するために更新する必要があります。 構成はプル サーバーに送られ、コンパイルされる必要があります。
-ここからの先の、更新をプルし、インストールする方法は、構成に依存する VM によって異なります。 これらの更新はいずれも単純で、PowerShell でほんの 1 ～ 2 行です。 Visual Studio Team Services では、これらの更新の一部は、ビルドに連結できるビルド タスクとしてカプセル化されています。 詳細については、この[記事](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery)を参照してください。 この [GitHub のリポジトリ](https://github.com/Microsoft/vso-agent-tasks) で、使用できるさまざまなビルド タスクを列挙しています。
+ここからの先の、更新をプルし、インストールする方法は、構成に依存する VM によって異なります。 これらの更新はいずれも単純で、PowerShell でほんの 1 ～ 2 行です。 Azure DevOps の場合、これらの更新の一部は、ビルドに連結できるビルド タスク内でカプセル化されます。 詳細については、この[記事](https://www.visualstudio.com/docs/alm-devops-feature-index#continuous-delivery)を参照してください。 この [GitHub のリポジトリ](https://github.com/Microsoft/vso-agent-tasks) で、使用できるさまざまなビルド タスクを列挙しています。
 
 ## <a name="notes"></a>メモ
 

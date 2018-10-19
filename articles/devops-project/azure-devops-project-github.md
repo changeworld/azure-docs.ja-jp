@@ -1,5 +1,5 @@
 ---
-title: Azure DevOps プロジェクトを使用して既存のコードの CI/CD パイプラインを作成する | VSTS チュートリアル
+title: Azure DevOps プロジェクトを使用して既存のコードの CI/CD パイプラインを作成する | Azure DevOps Services チュートリアル
 description: DevOps プロジェクトを利用すると、Azure を使い始めるのが簡単になります。 独自のコードと GitHub リポジトリを使用して、いくつかの簡単な手順で任意の Azure サービス上でアプリを起動できます。
 services: vsts
 documentationcenter: vs-devops-build
@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 192992917432a64c2f9f81761e22bf7d9205703a
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 4e0e28ff9ea14e42e1df7ce35bb90e8720a0d0b6
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205563"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407299"
 ---
 # <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>Azure DevOps プロジェクトを使用して既存のコードの CI/CD パイプラインを作成する
 
@@ -33,9 +33,9 @@ Azure DevOps プロジェクトにより、既存のコードと Git リポジ�
 > [!div class="checklist"]
 > * Azure DevOps プロジェクトを作成する
 > * GitHub リポジトリへのアクセスを構成し、フレームワークを選択する
-> * VSTS と Azure サブスクリプションを構成する 
+> * Azure DevOps Services と Azure サブスクリプションを構成する 
 > * GitHub への変更をコミットし、Azure に自動的にデプロイする
-> * VSTS CI/CD パイプラインを調べる
+> * Azure DevOps Services CI/CD パイプラインを確認する
 > * Azure Application Insights の監視を構成する
 
 ## <a name="prerequisites"></a>前提条件
@@ -45,11 +45,11 @@ Azure DevOps プロジェクトにより、既存のコードと Git リポジ�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
-Azure DevOps プロジェクトによって、VSTS に CI/CD パイプラインが作成されます。  **新しい VSTS** アカウントを作成することも、**既存のアカウント**を使用することもできます。  Azure DevOps プロジェクトでは、選択した **Azure サブスクリプション**に **Azure リソース**も作成されます。
+Azure DevOps プロジェクトによって、Azure DevOps Services に CI/CD パイプラインが作成されます。  **新しい Azure DevOps Services** 組織を作成するか、**既存の組織**を使用できます。  Azure DevOps プロジェクトでは、選択した **Azure サブスクリプション**に **Azure リソース**も作成されます。
 
 1. [Microsoft Azure portal](https://portal.azure.com) にサインインします。
 
-1. 左側のナビゲーション バーで **[+新規]** アイコンを選択し、**DevOps project** を検索します。  **[作成]** を選択します。
+1. 左側のナビゲーション バーで **[+新規]** アイコンを選択し、**DevOps プロジェクト** を検索します。  **[作成]** を選択します。
 
     ![継続的デリバリーの開始](_img/azure-devops-project-github/fullbrowser.png)
 
@@ -65,13 +65,11 @@ Azure DevOps プロジェクトによって、VSTS に CI/CD パイプライン�
 
 1. 前の手順で選択したアプリケーション フレームワークによって、ここで使用可能な Azure サービスのデプロイ ターゲットの種類が決まります。  任意の**ターゲット サービス**を選択します。  完了したら、**[次へ]** を選びます。
 
-## <a name="configure-vsts-and-an-azure-subscription"></a>VSTS と Azure サブスクリプションを構成する 
+## <a name="configure-azure-devops-services-and-an-azure-subscription"></a>Azure DevOps Services と Azure サブスクリプションを構成する 
 
-1. **新しい** VSTS アカウントを作成することも、**既存の**アカウントを選択することもできます。  VSTS オブジェクトの**名前**を選択します。  アプリケーションの **Azure サブスクリプション**、**場所**、**名前**を選択します。  完了したら、**[完了]** を選びます。
+1. **新しい** Azure DevOps Services 組織を作成するか、**既存**の組織を選択します。  ご自身の Azure DevOps プロジェクトの**名前**を選択します。  アプリケーションの **Azure サブスクリプション**、**場所**、**名前**を選択します。  完了したら、**[完了]** を選びます。
 
-    ![VSTS 情報の入力](_img/azure-devops-project-github/vstsazureinfo.png)
-
-1. 数分で、**プロジェクト ダッシュボード**が Azure portal に読み込まれます。  サンプル アプリケーションが VSTS アカウント内のリポジトリに設定され、ビルドが実行され、アプリケーションが Azure にデプロイされます。  このダッシュボードでは、GitHub **コード リポジトリ**、**VSTS CI/CD パイプライン**、**Azure のアプリケーション**が可視化されます。  ダッシュボードの右側にある **[参照]** を選択して、実行中のアプリケーションを表示します。
+1. 数分間で、**Azure DevOps プロジェクト ダッシュボード**が Azure portal に読み込まれます。  サンプル アプリケーションが Azure DevOps Services 組織内のリポジトリに設定され、ビルドが実行され、アプリケーションが Azure にデプロイされます。  このダッシュボードでは、GitHub **コード リポジトリ**、**Azure DevOps Services CI/CD パイプライン**、**Azure のアプリケーション**が可視化されます。  ダッシュボードの右側にある **[参照]** を選択して、実行中のアプリケーションを表示します。
 
     ![ダッシュボード ビュー](_img/azure-devops-project-github/dashboardnopreview.png) 
     
@@ -79,41 +77,41 @@ Azure DevOps プロジェクトによって、CI ビルドおよびリリース 
 
 ## <a name="commit-changes-to-github-and-automatically-deploy-to-azure"></a>GitHub への変更をコミットし、Azure に自動的にデプロイする 
 
-Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、アプリに対してチームで共同作業を行う準備ができました。  GitHub リポジトリに対する各変更により、VSTS でビルドが開始し、VSTS Release Management 定義によって Azure へのデプロイが実行されます。
+Web サイトに最新の作業を自動的にデプロイする CI/CD プロセスを使用して、アプリに対してチームで共同作業を行う準備ができました。  GitHub リポジトリに対する各変更により、Azure DevOps でビルドが開始し、Azure DevOps CD パイプラインによって Azure へのデプロイが実行されます。
 
 1.  アプリケーションに変更を加え、変更を GitHub リポジトリに**コミット**します。
-2.  しばらくすると、VSTS でビルドが開始します。  DevOps プロジェクト ダッシュボードを使用するか、VSTS アカウントを使用してブラウザーで、ビルドの状態を監視することができます。
+2.  しばらくすると、Azure DevOps Services でビルドが開始します。  Azure DevOps プロジェクト ダッシュボードを使用するか、ご自身の Azure DevOps Services 組織を使用してブラウザーで、ビルドの状態を監視することができます。
 3.  ビルドが完了したら、ブラウザーで**アプリケーションを最新の情報に更新**し、変更内容を確認します。
 
-## <a name="examine-the-vsts-cicd-pipeline"></a>VSTS CI/CD パイプラインを調べる
+## <a name="examine-the-azure-devops-services-cicd-pipeline"></a>Azure DevOps Services CI/CD パイプラインを確認する
 
-Azure DevOps プロジェクトによって、VSTS アカウントに完全な VSTS CI/CD パイプラインが自動的に構成されました。  パイプラインを探索し、必要に応じてカスタマイズします。  VSTS のビルドおよびリリース定義について理解するには、次の手順に従います。
+Azure DevOps プロジェクトによって、ご自身の Azure DevOps Services 組織に Azure DevOps Services CI/CD パイプラインが自動的に構成されます。  パイプラインを探索し、必要に応じてカスタマイズします。  Azure DevOps Services ビルドとリリース パイプラインについて理解するには、次の手順に従います。
 
-1. Azure DevOps プロジェクト ダッシュボードの**上部**から **[ビルド パイプライン]** を選択します。  このリンクは、ブラウザー タブを開き、新しいプロジェクトの VSTS ビルド定義を開きます。
+1. Azure DevOps プロジェクト ダッシュボードの**上部**から **[ビルド パイプライン]** を選択します。  このリンクによって、ブラウザー タブが開き、ご自身の新しいプロジェクトの Azure DevOps Services ビルド パイプラインが開きます。
 
-1. **[状態]** フィールドの横にあるビルド定義の右にマウス カーソルを移動します。 表示される**省略記号**を選択します。  このアクションにより、キューへの新しいビルドの挿入、ビルドの一時停止、ビルド定義の編集などのいくつかのアクティビティを開始できるメニューが開きます。
+1. **[状態]** フィールドの横にあるビルド パイプラインの右にマウス カーソルを移動します。 表示される**省略記号**を選択します。  このアクションにより、キューへの新しいビルドの挿入、ビルドの一時停止、ビルド パイプラインの編集などのいくつかのアクティビティを開始できるメニューが開きます。
 
 1. **[編集]** を選択します。
 
-1. このビューから、ビルド定義の**さまざまなタスクについて調べます**。  ビルドでは、Git リポジトリからのソースのフェッチ、依存関係の復元、デプロイに使用した出力の公開など、さまざまなタスクが実行されます。
+1. このビューから、ビルド パイプラインの**さまざまなタスクについて調べます**。  ビルドでは、Git リポジトリからのソースのフェッチ、依存関係の復元、デプロイに使用した出力の公開など、さまざまなタスクが実行されます。
 
-1. ビルド定義の上部で、**ビルド定義名**を選択します。
+1. ビルド パイプラインの上部で、**ビルド パイプラインの名前**を選択します。
 
-1. ビルド定義の**名前**をわかりやすい名前に変更します。  **[保存してキューに登録]** を選択し、**[保存]** を選択します。
+1. ご自身のビルド パイプラインの**名前**をわかりやすい名前に変更します。  **[保存してキューに登録]** を選択し、**[保存]** を選択します。
 
-1. ビルド定義名で、**[履歴]** を選択します。  ビルドの最近の変更の監査証跡が表示されます。  VSTS は、ビルド定義に対する変更を追跡し、バージョンを比較できるようにします。
+1. ご自身のビルド パイプラインの名前で、**[履歴]** を選択します。  ビルドの最近の変更の監査証跡が表示されます。  Azure DevOps Services は、ビルド パイプラインに対する変更を追跡し、バージョンを比較できるようにします。
 
 1. **[トリガー]** を選択します。  Azure DevOps プロジェクトでは、CI トリガーが自動的に作成され、リポジトリに対してコミットするたびに新しいビルドが開始されます。  必要に応じて、CI プロセスのブランチを含めるか除外するかを選択できます。
 
 1. **[保持]** を選択します。  シナリオに基づいて、特定の数のビルドを保持または削除するポリシーを指定できます。
 
-1. **[ビルドとリリース]** を選択し、**[リリース]** を選択します。  Azure DevOps プロジェクトにより、Azure へのデプロイを管理する VSTS リリース定義が作成されました。
+1. **[ビルドとリリース]** を選択し、**[リリース]** を選択します。  Azure DevOps プロジェクトにより、Azure へのデプロイを管理する Azure DevOps Services リリース パイプラインが作成されました。
 
-1. ブラウザーの左側で、リリース定義の横にある**省略記号**を選択し、**[編集]** を選択します。
+1. ブラウザーの左側で、リリース パイプラインの横にある**省略記号**を選択し、**[編集]** を選択します。
 
-1. リリース定義には、リリース プロセスを定義する**パイプライン**が含まれています。  **[成果物]** で、**[ドロップ]** を選択します。  前の手順で調べたビルド定義では、成果物に使用される出力が生成されます。 
+1. リリース パイプラインには、リリース プロセスを定義する**パイプライン**が含まれています。  **[成果物]** で、**[ドロップ]** を選択します。  前の手順で調べたビルド パイプラインでは、成果物に使用される出力が生成されます。 
 
-1. **[ドロップ]** アイコンの右側にある **[継続的配置トリガー]** を選択します。  このリリース定義では、新しいビルド成果物が使用可能になるたびにデプロイを実行する有効な CD トリガーがあります。  必要に応じて、トリガーを無効にできるので、デプロイでは手動での実行が必要です。 
+1. **[ドロップ]** アイコンの右側にある **[継続的配置トリガー]** を選択します。  このリリース パイプラインでは、新しいビルド成果物が使用可能になるたびにデプロイを実行する有効な CD トリガーがあります。  必要に応じて、トリガーを無効にできるので、デプロイでは手動での実行が必要です。 
 
 1. ブラウザーの左側の **[タスク]** を選択します。  タスクは、デプロイ プロセスによって実行されるアクティビティです。  この例では、**Azure App Service** にデプロイするタスクが作成されました。
 
@@ -159,17 +157,17 @@ Azure Application Insights を使うと、アプリケーションのパフォ�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで CI/CD プロセスを構成したときに、ビルドおよびリリース定義が VSTS プロジェクトに自動的に作成されました。 チームのニーズを満たすようにこれらのビルドおよびリリース定義を変更できます。 以下の方法について学習しました。
+このチュートリアルで CI/CD プロセスを構成したときに、ビルドとリリース パイプラインが Azure DevOps プロジェクトに自動的に作成されました。 チームのニーズを満たすようにこれらのビルドおよびリリース パイプラインを変更できます。 以下の方法について学習しました。
 
 > [!div class="checklist"]
 > * Azure DevOps プロジェクトを作成する
 > * GitHub リポジトリへのアクセスを構成し、フレームワークを選択する
-> * VSTS と Azure サブスクリプションを構成する 
+> * Azure DevOps Services と Azure サブスクリプションを構成する 
 > * GitHub への変更をコミットし、Azure に自動的にデプロイする
-> * VSTS CI/CD パイプラインを調べる
+> * Azure DevOps Services CI/CD パイプラインを確認する
 > * Azure Application Insights の監視を構成する
 
-VSTS パイプラインについて詳しくは、このチュートリアルをご覧ください。
+Azure DevOps Services CI/CD パイプラインについて詳しくは、このチュートリアルをご覧ください。
 
 > [!div class="nextstepaction"]
-> [CD プロセスをカスタマイズする](https://docs.microsoft.com/vsts/pipelines/release/define-multistage-release-process?view=vsts)
+> [CD プロセスをカスタマイズする](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

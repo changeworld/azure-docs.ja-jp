@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 74a81901c8ad38a84357a9f3c2e1d948aa81e8bc
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 2bdda273a32167f70633096d463be59884eca033
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084333"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718227"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Azure Stack Development Kit (ASDK) のインストール
 [ASDK ホスト コンピューターの準備](asdk-prepare-host.md)ができたら、この記事の次の手順に従って ASDK を CloudBuilder.vhdx イメージにデプロイできます。
@@ -38,7 +38,7 @@ ms.locfileid: "37084333"
     ![](media/asdk-install/1.PNG) 
 
 3. ID プロバイダーの **[タイプ]** ドロップダウン ボックスで、**[Azure クラウド]** または **[AD FS]** を選択します。 **[ローカル管理者のパスワード]** の **[パスワード]** ボックスに、(現在の構成済みのローカル管理者パスワードと同じ) ローカル管理者パスワードを入力し、**[次へ]** をクリックします。
-    - **Azure クラウド**: Azure Active Directory (Azure AD) を ID プロバイダーとして構成します。 このオプションを使うには、インターネット接続、Azure AD ディレクトリ テナントのフル ネーム (*domainname*.onmicrosoft.com 形式) または Azure AD 確認済みカスタム ドメイン名、および指定したディレクトリのグローバル管理者資格情報が必要です。 
+    - **Azure クラウド**: Azure Active Directory (Azure AD) を ID プロバイダーとして構成します。 このオプションを使うには、インターネット接続、Azure AD ディレクトリ テナントのフル ネーム (*domainname*.onmicrosoft.com 形式) または Azure AD 確認済みカスタム ドメイン名、および指定したディレクトリのグローバル管理者資格情報が必要です。 デプロイの後、Azure Active Directory の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 たとえば、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に再配置するか、*既定のプロバイダー サブスクリプション*の所有者である個別の全体管理者アカウントを使用するかのいずれかを行うことができます。
     - **AD FS**: 既定のスタンプ ディレクトリ サービスが ID プロバイダーとして使われます。 サインインに使用する既定のアカウントは azurestackadmin@azurestack.local であり、使用するパスワードは、セットアップの一部として指定したものです。
 
     ![](media/asdk-install/2.PNG) 

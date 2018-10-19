@@ -4,19 +4,19 @@ description: Media Services を使用するときは、ビデオを処理する�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: b755e0573098d3dbed1bea18a40af634be609f76
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: 214d4d3d11255e417f3df1e5f6e648b2a30225ea
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34272082"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377310"
 ---
 # <a name="transforms-and-jobs"></a>Transform と Job
 
@@ -32,15 +32,15 @@ Azure Media Services REST API (v3) の最新バージョンには、ビデオの
 
 次の表は、変換のプロパティとその定義を示しています。
 
-|Name|type|[説明]|
+|Name|type|説明|
 |---|---|---|
-|ID|文字列|リソースの完全修飾リソース ID。|
-|name|文字列|リソースの名前。|
-|properties.created |文字列|変換の作成時の UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式です。|
-|properties.description |文字列|変換の省略可能な詳細説明。|
-|properties.lastModified |文字列|変換が最後に更新されたときの UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式です。|
+|ID|string|リソースの完全修飾リソース ID。|
+|name|string|リソースの名前。|
+|properties.created |string|変換の作成時の UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式です。|
+|properties.description |string|変換の省略可能な詳細説明。|
+|properties.lastModified |string|変換が最後に更新されたときの UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式です。|
 |properties.outputs |TransformOutput[]|変換を生成する必要のある 1 つ以上の TransformOutput の配列。|
-|型|文字列|リソースの種類。|
+|type|string|リソースの種類。|
 
 完全な定義については、「[Transforms](https://docs.microsoft.com/rest/api/media/transforms)」(変換) をご覧ください。
 
@@ -48,17 +48,17 @@ Azure Media Services REST API (v3) の最新バージョンには、ビデオの
 
 次の表は、ジョブのプロパティとその定義を示しています。
 
-|Name|type|[説明]|
+|Name|type|説明|
 |---|---|---|
-|ID|文字列|リソースの完全修飾リソース ID。|
-|name|文字列|リソースの名前。|
-|properties.created |文字列|変換の作成時の UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式です。|
-|properties.description |文字列|ジョブの省略可能な詳細説明。|
-|properties.lastModified |文字列|変換が最後に更新されたときの UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式です。|
+|ID|string|リソースの完全修飾リソース ID。|
+|name|string|リソースの名前。|
+|properties.created |string|変換の作成時の UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式です。|
+|properties.description |string|ジョブの省略可能な詳細説明。|
+|properties.lastModified |string|変換が最後に更新されたときの UTC 日時で、'YYYY-MM-DDThh:mm:ssZ' の形式です。|
 |properties.outputs |JobOutput[]:JobOutputAsset[] |ジョブの出力。|
 |properties.priority |優先順位 |ジョブの処理の優先順位。 優先順位が高いジョブは、優先順位が低いジョブより前に処理されます。 設定されていない場合、既定値は normal です。
 |properties.state |JobState |ジョブの現在の状態。
-|型|文字列|リソースの種類。|
+|type|string|リソースの種類。|
 
 完全な定義については、「[Jobs](https://docs.microsoft.com/rest/api/media/jobs)」(ジョブ) をご覧ください。
 
@@ -78,5 +78,4 @@ Azure Media Services REST API (v3) の最新バージョンには、ビデオの
 
 ## <a name="next-steps"></a>次の手順
 
-> [!div class="nextstepaction"]
-> [ビデオ ファイルのストリーミング](stream-files-dotnet-quickstart.md)
+[ビデオ ファイルのストリーミング](stream-files-dotnet-quickstart.md)

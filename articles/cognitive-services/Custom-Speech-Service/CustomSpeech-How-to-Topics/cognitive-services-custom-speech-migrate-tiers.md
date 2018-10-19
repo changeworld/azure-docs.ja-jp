@@ -1,24 +1,25 @@
 ---
-title: エンドポイントの価格レベルを移行する - Custom Speech Service
-titlesuffix: Azure Cognitive Services
-description: 階層 S0 および S1 のデプロイを S2 の Custom Speech Service エンドポイントに移行する方法を説明します。
+title: Azure 上の Custom Speech Service からエンドポイントの価格レベルを移行する | Microsoft Docs
+description: 階層 S0、S1 から、デプロイを Cognitive Services の S2 の Custom Speech Service エンドポイントに移行する方法を説明します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 07/05/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 560aa0a7b9748f75cdde99691db7f33e2fc10221
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a9bdb257137db0063d39f028a69e2164eccbdc31
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224853"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340462"
 ---
 # <a name="migrate-deployments-to-the-new-pricing-model"></a>新しい価格モデルへ展開を移行する
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 Custom Speech Service は、2017 年 7 月の時点で、[新しい価格モデル](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/)を提供します。 新しいモデルは*わかりやすく*、*より簡単にコストを計算でき*、スケーリングの観点から*より柔軟*です。 スケーリングについて、マイクロソフトは、スケール ユニットの概念を導入しました。 各スケール ユニットは、5 つの同時要求を処理できます。 同時要求のスケーリングは、古いモデルの S0 層では同時要求が 5 つに、S1 層では 12 の同時要求に設定されていました。 お客様のユース ケース要件の柔軟性を高めるために、これらの制限を撤廃しました。
 
 古い S0 層または S1 層を実行しているお客様には、既存の展開を新しい S2 層に移行することをお勧めします。 新しい S2 層は、S0 と S1 の両方の階層に対応できます。 次の図で使用できるオプションをご確認ください。

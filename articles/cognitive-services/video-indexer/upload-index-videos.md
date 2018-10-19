@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: sample
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: e84411535b82b3e4861b529f490bdde0eb25fd42
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: f3889d1cddce92cbdd3049d4421bfdffc69da41e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983887"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884308"
 ---
 # <a name="example-upload-and-index-your-videos"></a>例: ビデオをアップロードしてインデックスを付ける  
 
@@ -36,6 +36,11 @@ ms.locfileid: "45983887"
 - URL に基づいてビデオをアップロードする場合 (推奨)、エンドポイントは TLS 1.2 (またはそれ以降) を使用してセキュリティで保護する必要があります。
 - このバイト配列オプションは 2 GB に制限され、30 分後にタイムアウトします
 - `videoURL` パラメーターに指定する URL はエンコードする必要があります
+
+> [!Tip]
+> .NET Framework バージョン 4.6.2 以上を使用することをお勧めします。 これは、それ以前の .NET Framework では既定で TLS 1.2 に設定されていないためです。
+>
+> 以前の .NET Framework を使用する必要がある場合は、REST API の呼び出しを行う前に、コードに次の 1 行を追加します。  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
 ## <a name="configurations-and-params"></a>構成とパラメーター
 
@@ -243,8 +248,14 @@ public class AccountContractSlim
     public string AccessToken { get; set; }
 }
 ```
+## <a name="common-errors"></a>一般的なエラー
 
+アップロード操作によって返される場合がある状態コードを次の表に示します。
 
+|状態コード|ErrorType (応答本体内)|説明|
+|---|---|---|
+|400|VIDEO_ALREADY_IN_PROGRESS|指定されたアカウントで既に同じビデオの処理が進行中です。|
+|400|VIDEO_ALREADY_FAILED|指定されたアカウントで 2 時間以内に同じビデオの処理に失敗しました。 API クライアントは、ビデオを再アップロードする前に少なくとも 2 時間待つ必要があります。|
 
 ## <a name="next-steps"></a>次の手順
 

@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.openlocfilehash: 7ca29ee359349f69c3d5ff21bd9db3f93358206a
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 7ccf746cfd9645b63c2810bff83cfb0c4fa55d65
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34724314"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713742"
 ---
 # <a name="use-the-azure-stack-portal"></a>Azure Stack ポータルの使用
 
@@ -30,14 +30,14 @@ Azure Stack ポータルを使用して、パブリック プランをサブス�
 
 Azure Stack オペレーター (サービス プロバイダーまたは組織内の管理者のどちらか) から、ポータルにアクセスするための正しい URL が通知されます。
 
-- 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
+- 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、 https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
 - Azure Stack Development Kit を使用している場合、ポータルのアドレスは https://portal.local.azurestack.external になります。
 
 ![Azure Stack ユーザー ポータルの画面キャプチャ](media/azure-stack-use-portal/UserPortal.png)
 
 ## <a name="customize-the-dashboard"></a>ダッシュボードのカスタマイズ
 
-ダッシュボードには、タイルの既定のセットが含まれています。 **[ダッシュボードの編集]** を選択して既定のダッシュボードを変更したり、**[新しいダッシュボード]** を選択してカスタムのダッシュボードを作成したりできます。 タイルを追加または削除して、ダッシュボードを簡単にカスタマイズすることができます。 たとえば、コンピューティング タイルを追加するには、**[新規]** を選択します。 **[コンピューティング]** を右クリックし、**[ダッシュボードにピン留め]** を選択します。
+ダッシュボードには、タイルの既定のセットが含まれています。 **[ダッシュボードの編集]** を選択して既定のダッシュボードを変更したり、**[新しいダッシュボード]** を選択してカスタムのダッシュボードを作成したりできます。 タイルを追加または削除して、ダッシュボードを簡単にカスタマイズすることができます。 たとえば、[コンピューティング] タイルを追加するには、**[+ リソースの作成]** を選択します。 **[コンピューティング]** を右クリックし、**[ダッシュボードにピン留め]** を選択します。
 
 ## <a name="create-subscription-and-browse-available-resources"></a>サブスクリプションの作成と使用可能リソースの参照
 
@@ -45,7 +45,7 @@ Azure Stack オペレーター (サービス プロバイダーまたは組織�
 
 - ダッシュボードで **[Marketplace]** タイルを選択します。
 - **[すべてのリソース]** タイルで、**[リソースの作成]** を選択します。
-- 左側のナビゲーション ウィンドウで、**[新規]** を選択します。
+- 左側のナビゲーション ウィンドウで、**[+ リソースの作成]** を選択します。
 
 ## <a name="learn-how-to-use-available-services"></a>使用可能なサービスの使用方法を学ぶ
 

@@ -8,15 +8,15 @@ ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 01/23/2018
+ms.date: 09/07/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a9772ae9ac346daa205c146263a4632a641ee038
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 02b715ade9a9a537f6bd0e476ada299140bff4bb
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38722815"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815513"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>チュートリアル: .NET API を使用して Azure Batch で並列ワークロードを実行する
 
@@ -37,7 +37,7 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Visual Studio 2017](https://www.visualstudio.com/vs)。 
+* [Visual Studio 2017](https://www.visualstudio.com/vs) (または Linux、macOS、Windows 用 [.NET Core 2.1](https://www.microsoft.com/net/download/dotnet-core/2.1))。
 
 * Batch アカウントおよびリンクされた Azure ストレージ アカウント。 これらのアカウントを作成するには、[Azure Portal](quick-create-portal.md) または [Azure CLI](quick-create-cli.md) を使用した Batch のクイック スタートを参照してください。
 
@@ -46,7 +46,6 @@ Azure Batch を使用すると、大規模な並列コンピューティング�
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
-
 
 ## <a name="add-an-application-package"></a>アプリケーション パッケージの追加
 
@@ -85,13 +84,18 @@ private const string StorageAccountName = "mystorageaccount";
 private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfwpbIC5aAWA8wDu+AFXZB827Mt9lybZB1nUcQbQiUrkPtilK5BQ==";
 ```
 
+[!INCLUDE [batch-credentials-include](../../includes/batch-credentials-include.md)]
+
 また、ソリューション内の ffmpeg アプリケーション パッケージの参照が Batch アカウントにアップロードした ffmpeg パッケージの ID およびバージョンと一致することを確認します。
 
 ```csharp
 const string appPackageId = "ffmpeg";
 const string appPackageVersion = "3.4";
 ```
+
 ### <a name="build-and-run-the-sample-project"></a>サンプル プロジェクトのビルドと実行
+
+Visual Studio またはコマンド ライン (`dotnet build` コマンドと `dotnet run` コマンド) でアプリケーションをビルドして実行します。 アプリケーションの実行後に、コードを確認して、アプリケーションの各部分での処理内容を学習します。 たとえば Visual Studio で次の操作を実行します。
 
 * ソリューション エクスプローラーでソリューションを右クリックし、**[ソリューションのビルド]** をクリックします。 
 
@@ -134,7 +138,7 @@ Elapsed time: 00:09:14.3418742
 
 ## <a name="review-the-code"></a>コードの確認
 
-以降のセクションでは、サンプル アプリケーションを、Batch サービスでワークロードを処理するために実行する複数の手順に分けます。 サンプルのすべてのコード行について説明しているわけではないので、この記事の残りの部分を読む際は Visual Studio で開いているソリューションを参照してください。
+以降のセクションでは、サンプル アプリケーションを、Batch サービスでワークロードを処理するために実行する複数の手順に分けます。 サンプルのすべてのコード行について説明しているわけではないので、この記事の残りの部分を読む際は、ソリューション内のファイル `Program.cs` を参照してください。
 
 ### <a name="authenticate-blob-and-batch-clients"></a>BLOB クライアントと Batch クライアントの認証
 
@@ -143,7 +147,7 @@ Elapsed time: 00:09:14.3418742
 ```csharp
 // Construct the Storage account connection string
 string storageConnectionString = String.Format("DefaultEndpointsProtocol=https;AccountName={0};AccountKey={1}",
-StorageAccountName, StorageAccountKey);
+                                StorageAccountName, StorageAccountKey);
 
 // Retrieve the storage account
 CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnectionString);
@@ -162,41 +166,43 @@ using (BatchClient batchClient = BatchClient.Open(sharedKeyCredentials))
 
 ### <a name="upload-input-files"></a>入力ファイルのアップロード
 
-アプリは、`blobClient` オブジェクトを `CreateContainerIfNotExist` メソッドに渡して、入力ファイル (MP4 形式) 用のストレージ コンテナーとタスク出力用のコンテナーを作成します。
+アプリは、`blobClient` オブジェクトを `CreateContainerIfNotExistAsync` メソッドに渡して、入力ファイル (MP4 形式) 用のストレージ コンテナーとタスク出力用のコンテナーを作成します。
 
 ```csharp
-  CreateContainerIfNotExist(blobClient, inputContainerName;
-  CreateContainerIfNotExist(blobClient, outputContainerName);
+CreateContainerIfNotExistAsync(blobClient, inputContainerName;
+CreateContainerIfNotExistAsync(blobClient, outputContainerName);
 ```
 
 その後、ファイルは、ローカルの `InputFiles` フォルダーから入力用コンテナーにアップロードされます。 ストレージ内のファイルは、Batch の [ResourceFile](/dotnet/api/microsoft.azure.batch.resourcefile) オブジェクトとして定義されており、Batch が後でコンピューティング ノードにダウンロードできます。 
 
 `Program.cs` 内の 2 つのメソッドは、ファイルのアップロードに関連しています。
 
-* `UploadResourceFilesToContainer`: ResourceFile オブジェクトのコレクションを返し、内部的に `UploadResourceFileToContainer` を呼び出して、`filePaths` パラメーターで渡される各ファイルをアップロードします。
-* `UploadResourceFileToContainer`: 各ファイルを BLOB として入力用コンテナーにアップロードします。 ファイルのアップロード後、BLOB の Shared Access Signature (SAS) を取得し、それを表す ResourceFile オブジェクトを返します。 
+* `UploadResourceFilesToContainerAsync`: ResourceFile オブジェクトのコレクションを返し、内部的に `UploadResourceFileToContainerAsync` を呼び出して、`inputFilePaths` パラメーターで渡される各ファイルをアップロードします。
+* `UploadResourceFileToContainerAsync`: 各ファイルを BLOB として入力用コンテナーにアップロードします。 ファイルのアップロード後、BLOB の Shared Access Signature (SAS) を取得し、それを表す ResourceFile オブジェクトを返します。 
 
 ```csharp
-  List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(@"..\..\InputFiles", "*.mp4",
-      SearchOption.TopDirectoryOnly));
+string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
 
-  List<ResourceFile> inputFiles = UploadResourceFilesToContainer(
-    blobClient,
-    inputContainerName,
-    inputFilePaths);
+List<string> inputFilePaths = new List<string>(Directory.GetFileSystemEntries(inputPath, "*.mp4",
+    SearchOption.TopDirectoryOnly));
+
+List<ResourceFile> inputFiles = await UploadResourceFilesToContainerAsync(
+  blobClient,
+  inputContainerName,
+  inputFilePaths);
 ```
 
-.NET を使用してファイルを BLOB としてストレージ アカウントにアップロードする方法の詳細については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。
+.NET を使用してファイルを BLOB としてストレージ アカウントにアップロードする方法の詳細については、「[.NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する](../storage/blobs/storage-quickstart-blobs-dotnet.md)」を参照してください。
 
 ### <a name="create-a-pool-of-compute-nodes"></a>コンピューティング ノードのプールの作成
 
-次に、`CreatePoolIfNotExist` が呼び出されて、コンピューティング ノードのプールが Batch アカウントに作成されます。 この定義済みのメソッドは、[BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) メソッドを使用してノードの数、VM のサイズ、プールの構成を設定します。 ここで、[VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) オブジェクトでは、[ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) に、Azure Marketplace で公開されている Windows Server イメージを指定します。 Batch は、Azure Marketplace のさまざまな VM イメージだけでなく、カスタム VM イメージもサポートしています。
+次に、`CreatePoolIfNotExistAsync` が呼び出されて、コンピューティング ノードのプールが Batch アカウントに作成されます。 この定義済みのメソッドは、[BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) メソッドを使用してノードの数、VM のサイズ、プールの構成を設定します。 ここで、[VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration) オブジェクトでは、[ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) に、Azure Marketplace で公開されている Windows Server イメージを指定します。 Batch は、Azure Marketplace のさまざまな VM イメージだけでなく、カスタム VM イメージもサポートしています。
 
 ノードの数と VM のサイズは、定義済みの定数を使用して設定されます。 Batch では専用ノードと[低優先度ノード](batch-low-pri-vms.md)がサポートされているため、ご利用のプールではそのいずれかまたは両方を使用できます。 専用ノードは、プール用に予約されています。 低優先度ノードは、Azure の VM の余剰容量から割引価格で提供されます。 低優先度ノードは、Azure に十分な容量がない場合に使用できなくなります。 このサンプルは、既定で、サイズ *Standard_A1_v2* の低優先度ノードが 5 つだけ含まれているプールを作成します。 
 
 ffmpeg アプリケーションは、プールの構成に [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) を追加することで、コンピューティング ノードにデプロイされます。 
 
-[Commit](/dotnet/api/microsoft.azure.batch.cloudpool.commit) メソッドは、プールを Batch サービスに送信します。
+[CommitAsync](/dotnet/api/microsoft.azure.batch.cloudpool.commitasync) メソッドは、プールを Batch サービスに送信します。
 
 ```csharp
 ImageReference imageReference = new ImageReference(
@@ -223,30 +229,30 @@ pool.ApplicationPackageReferences = new List<ApplicationPackageReference>
     ApplicationId = appPackageId,
     Version = appPackageVersion}};
 
-pool.Commit();  
+await pool.CommitAsync();  
 ```
 
 ### <a name="create-a-job"></a>ジョブを作成する
 
-Batch ジョブでは、タスクの実行対象となるプールと、作業の優先順位やスケジュールなどのオプションの設定を指定します。 このサンプルでは、`CreateJobIfNotExist` の呼び出しを使用してジョブを作成します。 この定義済みのメソッドは、[BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) メソッドを使用してプールにジョブを作成します。 
+Batch ジョブでは、タスクの実行対象となるプールと、作業の優先順位やスケジュールなどのオプションの設定を指定します。 このサンプルでは、`CreateJobAsync` の呼び出しを使用してジョブを作成します。 この定義済みのメソッドは、[BatchClient.JobOperations.CreateJob](/dotnet/api/microsoft.azure.batch.joboperations.createjob) メソッドを使用してプールにジョブを作成します。 
 
-[Commit](/dotnet/api/microsoft.azure.batch.cloudjob.commit) メソッドは、ジョブを Batch サービスに送信します。 最初、ジョブにはタスクがありません。
+[CommitAsync](/dotnet/api/microsoft.azure.batch.cloudjob.commitasync) メソッドは、ジョブを Batch サービスに送信します。 最初、ジョブにはタスクがありません。
 
 ```csharp
 CloudJob job = batchClient.JobOperations.CreateJob();
-    job.Id = JobId;
-    job.PoolInformation = new PoolInformation { PoolId = PoolId };
+job.Id = JobId;
+job.PoolInformation = new PoolInformation { PoolId = PoolId };
 
-job.Commit();        
+await job.CommitAsync();
 ```
 
 ### <a name="create-tasks"></a>タスクの作成
 
-このサンプルでは、`AddTasks` メソッドの呼び出しを使用してジョブにタスクを作成します。これにより、[CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) オブジェクトの一覧が作成されます。 各 `CloudTask` は、[CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) プロパティを使用することで、ffmpeg を実行して入力の `ResourceFile` オブジェクトを処理します。 ffmpeg は、以前にプールが作成されたときに各ノードにインストールされています。 ここでは、コマンド ラインで ffmpeg を実行して、各入力 MP4 (ビデオ) ファイルを MP3 (オーディオ) ファイルに変換します。
+このサンプルでは、`AddTasksAsync` メソッドの呼び出しを使用してジョブにタスクを作成します。これにより、[CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) オブジェクトの一覧が作成されます。 各 `CloudTask` は、[CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) プロパティを使用することで、ffmpeg を実行して入力の `ResourceFile` オブジェクトを処理します。 ffmpeg は、以前にプールが作成されたときに各ノードにインストールされています。 ここでは、コマンド ラインで ffmpeg を実行して、各入力 MP4 (ビデオ) ファイルを MP3 (オーディオ) ファイルに変換します。
 
 このサンプルでは、コマンド ラインの実行後に MP3 ファイルの [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) オブジェクトを作成します。 各タスクの出力ファイル (この場合は 1 つ) は、タスクの [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) プロパティを使用して、リンクされているストレージ アカウントのコンテナーにアップロードされます。
 
-その後、このサンプルは、[AddTask](/dotnet/api/microsoft.azure.batch.joboperations.addtask) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。 
+その後、このサンプルは、[AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) メソッドを使用してジョブにタスクを追加します。これにより、タスクは、コンピューティング ノードで実行するためにキューに登録されます。 
 
 ```csharp
 for (int i = 0; i < inputFiles.Count; i++)
@@ -264,7 +270,6 @@ for (int i = 0; i < inputFiles.Count; i++)
     // Create a cloud task (with the task ID and command line) 
     CloudTask task = new CloudTask(taskId, taskCommandLine);
     task.ResourceFiles = new List<ResourceFile> { inputFiles[i] };
-   
 
     // Task output file
     List<OutputFile> outputFileList = new List<OutputFile>();
@@ -278,7 +283,8 @@ for (int i = 0; i < inputFiles.Count; i++)
 }
 
 // Add tasks as a collection
-batchClient.JobOperations.AddTask(jobId, tasks);
+await batchClient.JobOperations.AddTaskAsync(jobId, tasks);
+return tasks
 ```
 
 ### <a name="monitor-tasks"></a>タスクの監視
@@ -291,21 +297,23 @@ Batch によってタスクがジョブに追加されると、関連付けら�
 TaskStateMonitor taskStateMonitor = batchClient.Utilities.CreateTaskStateMonitor();
 try
 {
-    batchClient.Utilities.CreateTaskStateMonitor().WaitAll(addedTasks, TaskState.Completed, timeout);
+    await taskStateMonitor.WhenAll(addedTasks, TaskState.Completed, timeout);
 }
 catch (TimeoutException)
 {
-    batchClient.JobOperations.TerminateJob(jobId, failureMessage);
-    Console.WriteLine(failureMessage);
+    batchClient.JobOperations.TerminateJob(jobId);
+    Console.WriteLine(incompleteMessage);
+    return false;
 }
-batchClient.JobOperations.TerminateJob(jobId, successMessage);
+batchClient.JobOperations.TerminateJob(jobId);
+ Console.WriteLine(completeMessage);
 ...
 
 ```
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-タスクの実行後、自動的に、作成された入力用ストレージ コンテナーが削除され、Batch プールとジョブを削除するためのオプションが表示されます。 BatchClient の [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) クラスと [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) クラスの両方に対応する削除メソッドがあります。このメソッドは、削除を確定すると呼び出されます。 ジョブとタスク自体は課金対象ではありませんが、コンピューティング ノードは課金対象です。 そのため、必要な場合にのみプールを割り当てることをお勧めします。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 ただし、入力ファイルと出力ファイルはストレージ アカウントに残ります。
+タスクの実行後、自動的に、作成された入力用ストレージ コンテナーが削除され、Batch プールとジョブを削除するためのオプションが表示されます。 BatchClient の [JobOperations](/dotnet/api/microsoft.azure.batch.batchclient.joboperations) クラスと [PoolOperations](/dotnet/api/microsoft.azure.batch.batchclient.pooloperations) クラスの両方に対応する削除メソッドがあります。このメソッドは、削除を確定すると呼び出されます。 ジョブとタスク自体は課金対象ではありませんが、コンピューティング ノードは課金対象です。 そのため、必要な場合にのみプールを割り当てることをお勧めします。 プールを削除すると、ノード上のタスク出力はすべて削除されます。 ただし、出力ファイルはストレージ アカウントに残ります。
 
 リソース グループ、Batch アカウント、ストレージ アカウントは、不要になったら削除します。 Azure Portal でこれを行うには、Batch アカウントのリソース グループを選択し、**[リソース グループの削除]** をクリックしてください。
 
@@ -325,4 +333,4 @@ batchClient.JobOperations.TerminateJob(jobId, successMessage);
 .NET API を使用して Batch ワークロードのスケジュール設定と処理を行う他の例については、GitHub のサンプルを参照してください。
 
 > [!div class="nextstepaction"]
-> [Batch C# のサンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp)
+> [Batch C# のサンプル](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp)

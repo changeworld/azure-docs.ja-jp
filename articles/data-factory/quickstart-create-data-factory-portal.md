@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 0638aaa9165bcf760dabca330f6ee396807e4597
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: fc4b1dce1b01d9294cf422c910f39d68cbd49c87
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43087956"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018249"
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Azure Data Factory UI を使用してデータ ファクトリを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [現在のバージョン](quickstart-create-data-factory-portal.md)
 
-このクイックスタートでは、Azure Data Factory UI を使用してデータ ファクトリを作成および監視する方法について説明します。 このデータ ファクトリに作成したパイプラインは、データを Azure Blob Storage 内のあるフォルダーから別のフォルダーに "*コピー*" します。 Azure Data Factory を使用してデータを "*変換*" する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](tutorial-transform-data-spark-portal.md)を参照してください。 
+このクイックスタートでは、Azure Data Factory UI を使用してデータ ファクトリを作成および監視する方法について説明します。 このデータ ファクトリに作成したパイプラインは、データを Azure Blob Storage 内のあるフォルダーから別のフォルダーに "*コピー*" します。 Azure Data Factory を使用してデータを "*変換*" する方法のチュートリアルについては、[Spark を使用したデータ変換のチュートリアル](tutorial-transform-data-spark-portal.md)を参照してください。
 
 > [!NOTE]
 > Azure Data Factory を初めて使用する場合は、このクイック スタートを実行する前に、「[Azure Data Factory の概要](data-factory-introduction.md)」を参照してください。 
@@ -38,7 +38,7 @@ ms.locfileid: "43087956"
 
 1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。 
-1. 左側のメニューの **[新規]** を選択し、**[データ + 分析]** を選択して、**[Data Factory]** を選択します。 
+1. 左側のメニューの **[リソースの作成]** を選択し、**[分析]** を選択して、**[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 1. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**ADFTutorialDataFactory**」と入力します。 
@@ -58,12 +58,10 @@ ms.locfileid: "43087956"
 1. **[バージョン]** で、**[V2]** を選択します。
 1. **[場所]** で、データ ファクトリの場所を選択します。
 
-   この一覧に表示されるのは、Data Factory でサポートされている場所のみです。 Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他の場所に配置できます。
-1. **[ダッシュボードにピン留めする]** をオンにします。     
-1. **作成**を選択します。
-1. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。 
+   この一覧に表示されるのは、Data Factory でサポートされ、かつ Azure Data Factory のメタ データが格納される場所のみです。 Data Factory で使用する関連データ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (Azure HDInsight など) は他のリージョンで実行できることに注意してください。
 
-   ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media//quickstart-create-data-factory-portal/deploying-data-factory.png)
+1. **作成**を選択します。
+
 1. 作成が完了すると、**[Data Factory]** ページが表示されます。 **[作成と監視]** タイルを選択して、別のタブで Azure Data Factory ユーザー インターフェイス (UI) アプリケーションを起動します。
    
    ![[作成と監視] タイルが表示された、データ ファクトリのホーム ページ](./media/quickstart-create-data-factory-portal/data-factory-home-page.png)
@@ -88,7 +86,7 @@ ms.locfileid: "43087956"
 
    c. **[テスト接続]** を選択して、Data Factory サービスがストレージ アカウントに接続できることを確認します。 
 
-   d. **[保存]** を選択して、リンクされたサービスを保存します。 
+   d. **[完了]** を選択して、リンクされたサービスを保存します。 
 
    ![Azure Storage のリンクされたサービスの設定](./media/quickstart-create-data-factory-portal/azure-storage-linked-service.png) 
 
@@ -128,7 +126,7 @@ ms.locfileid: "43087956"
 
    c. **[全般]** テーブルで、名前として「**OutputDataset**」と指定します。
 
-   d. **[接続]** タブで、リンクされたサービスとして **[AzureStorageLinkedService]** を選択し、フォルダーとして「**adftutorial/output**」と入力します。 **output** フォルダーが存在しない場合、コピー アクティビティにより実行時に作成されます。
+   d. **[接続]** タブで、リンクされたサービスとして **[AzureStorageLinkedService]** を選択し、ディレクトリ フィールドに、フォルダーとして「**adftutorial/output**」と入力します。 **output** フォルダーが存在しない場合、コピー アクティビティにより実行時に作成されます。
 
 ## <a name="create-a-pipeline"></a>パイプラインを作成する。 
 この手順では、入力データセットと出力データセットを使用するコピー アクティビティを持つパイプラインを作成および検証します。 コピー アクティビティにより、入力データセットの設定で指定されたファイルから、出力データセットの設定で指定されたファイルにデータがコピーされます。 入力データセットで、ファイル名を指定せず、フォルダーのみを指定すると、コピー アクティビティはソース フォルダーのすべてのファイルをターゲットにコピーします。 
@@ -138,7 +136,7 @@ ms.locfileid: "43087956"
    ![新しいパイプラインを作成するためのメニュー](./media/quickstart-create-data-factory-portal/new-pipeline-menu.png)
 1. **[全般]** タブで、**[名前]** に「**CopyPipeline**」と指定します。 
 
-1. **[アクティビティ]** ツールボックスで **[データ フロー]** を展開します。 **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[コピー]** アクティビティをドラッグします。 **[アクティビティ]** ツールボックスで、アクティビティを検索することもできます。 **[名前]** に「**CopyFromBlobToBlob**」と指定します。
+1. **[アクティビティ]** ツールボックスで **[Move & Transform]\(移動と変換\)** を展開します。 **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[コピー]** アクティビティをドラッグします。 **[アクティビティ]** ツールボックスで、アクティビティを検索することもできます。 **[名前]** に「**CopyFromBlobToBlob**」と指定します。
 
    ![コピー アクティビティの全般設定](./media/quickstart-create-data-factory-portal/copy-activity-general-settings.png)
 1. コピー アクティビティの設定で **[ソース]** タブに切り替えて、**[Source Dataset]\(ソース データセット\)** で **[InputDataset]** を選択します。
@@ -205,7 +203,7 @@ ms.locfileid: "43087956"
    **[トリガー元]** 列の値に注意してください。 手動のトリガー実行は、前に行った手順 (**[Trigger Now]\(今すぐトリガー\)**) によるものでした。 
 
    ![トリガーされた実行の一覧](./media/quickstart-create-data-factory-portal/monitor-triggered-runs.png)
-1. **[Pipeline Runs]\(パイプラインの実行\)** の横にある下向き矢印を選択して、**[Trigger Runs]\(トリガーの実行\)** ビューに切り替えます。 
+1. **[Trigger Runs]\(トリガーの実行\)** ビューへの切り替え 
 
    ![[Trigger Runs]\(トリガーの実行\) ビューへの切り替え](./media/quickstart-create-data-factory-portal/monitor-trigger-runs.png)    
 1. **output** フォルダー内に、指定した終了日時までパイプラインが実行されるたびに出力ファイルが作成されていることを確認します。 

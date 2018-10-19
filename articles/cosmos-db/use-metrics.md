@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 792e0b3f8fdfe4ab1b79fec5f45d0587033eca0d
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5c9dded95fe3ae36a716544368e3dc44c9b86afe
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055201"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365494"
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 
@@ -54,7 +54,8 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 ## <a name="comparing-data-size-against-index-size"></a>データ サイズとインデックス サイズの比較
 
-Azure Cosmos DB の合計使用ストレージは、データ サイズとインデックス サイズ両方の組み合わせです。 通常、インデックス サイズは、データ サイズよりもはるかに小さいサイズです。 [Azure Portal](https://portal.azure.com) の [メトリック] ブレードの [ストレージ] タブには、データとインデックスに基づくストレージ使用量の内訳が表示されます。 (おそらく) イメージまたは SDK から、読み取ったコレクションの現在のストレージ使用量を見つけることができます。
+Azure Cosmos DB の合計使用ストレージは、データ サイズとインデックス サイズ両方の組み合わせです。 通常、インデックス サイズは、データ サイズよりもはるかに小さいサイズです。 [Azure Portal](https://portal.azure.com) の [メトリック] ブレードの [ストレージ] タブには、データとインデックスに基づくストレージ使用量の内訳が表示されます。 
+
 ```csharp
 // Measure the document size usage (which includes the index size)  
 ResourceResponse<DocumentCollection> collectionInfo = await client.ReadDocumentCollectionAsync(UriFactory.CreateDocumentCollectionUri("db", "coll")); 

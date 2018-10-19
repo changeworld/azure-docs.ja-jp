@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: 50448691fb136278cf7fdf3687ffb3b13fbb54ca
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: ae09442c1ebec878e15b5149d0634f8dc3568f7a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122265"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362420"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>クイック スタート: PowerShell を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -54,7 +54,7 @@ New-AzureRmResourceGroup -Name ContosoResourceGroup -Location EastUS
 - **場所**: 米国東部。
 
 ```azurepowershell-interactive
-New-AzureRmKeyVault -VaultName 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
+New-AzureRmKeyVault -Name 'Contoso-Vault2' -ResourceGroupName 'ContosoResourceGroup' -Location 'East US'
 ```
 
 このコマンドレットの出力では、新しく作成したキー コンテナーのプロパティが示されます。 次の 2 つのプロパティをメモしておきます。
@@ -105,4 +105,4 @@ Remove-AzureRmResourceGroup -Name ContosoResourceGroup
 このクイック スタートでは、Key Vault を作成してソフトウェア キーを格納しました。 Key Vault の詳細とアプリケーションでの使用方法については、Key Vault と連携する Web アプリのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> マネージド サービス ID を使用する Web アプリケーションから、Key Vault からのシークレットを読み取る方法を学習するには、[キー コンテナーからシークレットを読み取るように Azure Web アプリを構成する](quick-create-net.md)チュートリアルに進んでください。
+> Azure リソースのマネージド ID を使用する Web アプリケーションから、Key Vault のシークレットを読み取る方法を学習するには、[キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](quick-create-net.md)チュートリアルに進んでください。

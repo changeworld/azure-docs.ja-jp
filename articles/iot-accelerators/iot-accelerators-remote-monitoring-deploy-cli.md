@@ -6,14 +6,14 @@ manager: timlt
 ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 01/29/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: dd696330c9ee78ef84ac9fcf85946c837ad5b824
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 56f233afed8c403d19c9b668e98ecfec45470b64
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39188018"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721621"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLI を使用してリモート監視ソリューション アクセラレータをデプロイする
 
@@ -54,7 +54,7 @@ pcs login
 | SKU    | `basic`、`standard`、`local` | _基本_デプロイは、テストおよびデモを目的としており、すべてのマイクロサービスを単一の仮想マシンにデプロイします。 _標準_デプロイは、実稼働を目的としており、マイクロサービスを複数の仮想マシンにデプロイします。 _ローカル_ デプロイは、ローカル コンピューターでマイクロサービスを実行するように Docker コンテナーを構成し、クラウドで Azure サービス (ストレージや Cosmos DB など) を使用します。 |
 | ランタイム | `dotnet`、`java` | マイクロサービスの言語の実装を選択します。 |
 
-ローカル デプロイの使用方法の詳細については、「[Running the remote monitoring solution locally](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables)」(リモート監視ソリューションのローカルでの実行) をご覧ください。
+ローカル デプロイの使用方法の詳細については、「[Running the remote monitoring solution locally](iot-accelerators-remote-monitoring-deploy-local.md)」(リモート監視ソリューションのローカルでの実行) をご覧ください。
 
 ## <a name="basic-vs-standard-deployments"></a>Basic デプロイとStandard デプロイ
 
@@ -65,27 +65,39 @@ Standard デプロイ オプションは、スケーリングと拡張性のた�
 
 Basic ソリューションを作成すると、有料で次の Azure サービスが Azure サブスクリプションにプロビジョニングされます。 
 
-| Count | Resource                       | Type         | 用途 |
+| Count | リソース                       | type         | 用途 |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux Virtual Machine](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | マイクロサービスのホスト |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard レベル | デバイス管理との通信 |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | 標準        | 構成データ、およびルール、アラーム、メッセージなどのデバイス テレメトリの格納 |  
+| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | 標準        | 構成データ、ルール、アラーム、その他のコールド ストレージを格納する |  
 | 1     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | 標準        | VM およびストリーミング チェックポイントのストレージ |
 | 1     | [Web アプリケーション](https://azure.microsoft.com/services/app-service/web/)        |                 | フロント エンド Web アプリケーションのホスト |
+| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | ユーザー ID とセキュリティを管理する |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | 標準                | アセットの場所を表示する |
+| 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 ユニット              | リアルタイム分析を有効にする |
+| 1     | [Azure デバイス プロビジョニング サービス](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | デバイスの大規模プロビジョニング |
+| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 ユニット              | メッセージ データの格納とテレメトリの詳細分析の有効化 |
+
+
 
 ### <a name="standard"></a>標準
 標準デプロイは、開発者がニーズに合わせてカスタマイズし、拡張できる運用対応デプロイです。 信頼性と拡張性のため、アプリケーション マイクロサービスは Docker コンテナーとして構築され、オーケストレーター (既定では [Kubernetes](https://kubernetes.io/)) を使用してデプロイされます。 オーケストレーターは、デプロイ、拡張、およびアプリケーションの管理を担当します。
 
 標準ソリューションを作成すると、有料で次の Azure サービスが Azure サブスクリプションにプロビジョニングされます。
 
-| Count | Resource                                     | SKU/サイズ      | 用途 |
+| Count | リソース                                     | SKU/サイズ      | 用途 |
 |-------|----------------------------------------------|-----------------|----------|
 | 4     | [Linux virtual machines](https://azure.microsoft.com/services/virtual-machines/)   | Standard D2 V2  | 冗長性を備えたマイクロサービスをホストするための 1 つのマスターと 3 つのエージェント |
 | 1     | [Azure Container Service](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) オーケストレーター |
-| 1     | [Azure IoT Hub][https://azure.microsoft.com/services/iot-hub/]                     | S2 – Standard レベル | デバイス管理、コマンドとコントロール |
+| 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standard レベル | デバイス管理、コマンドとコントロール |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 標準        | 構成データ、およびルール、アラーム、メッセージなどのデバイス テレメトリの格納 |
 | 5     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | 標準        | VM ストレージ用に 4 つ、およびストリーミング チェックポイント用に 1 つ |
 | 1     | [App Service](https://azure.microsoft.com/services/app-service/web/)             | S1 Standard     | SSL 経由のアプリケーション ゲートウェイ |
+| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | ユーザー ID とセキュリティを管理する |
+| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | 標準                | アセットの場所を表示する |
+| 1     | [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)        |   3 ユニット              | リアルタイム分析を有効にする |
+| 1     | [Azure デバイス プロビジョニング サービス](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | デバイスの大規模プロビジョニング |
+| 1     | [Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 ユニット              | メッセージ データの格納とテレメトリの詳細分析の有効化 |
 
 > これらのサービスの価格情報については、[こちら](https://azure.microsoft.com/pricing)をご覧ください。 サブスクリプションの使用量と請求の詳細については、[Azure Portal](https://portal.azure.com/) をご覧ください。
 

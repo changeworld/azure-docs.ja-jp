@@ -1,20 +1,21 @@
 ---
-title: モデルのテストと再トレーニング - Custom Vision Service - Azure Cognitive Services | Microsoft Docs
+title: モデルをテストおよび再トレーニングする - Custom Vision Service
+titlesuffix: Azure Cognitive Services
 description: イメージをテストし、それを使ってモデルを再トレーニングする方法について説明します。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 1933b1a45844ac99308baebe59b49687a957abfa
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5830257cf246e059cbccb654462f709df981e06b
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375269"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367952"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Custom Vision Service を使用したモデルのテストと再トレーニング
 

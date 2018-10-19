@@ -1,23 +1,23 @@
 ---
-title: Bing Spell Check API を使用してスペル チェックの結果を取得する (Azure 上の Microsoft Cognitive Services) | Microsoft Docs
+title: 'チュートリアル: Bing Spell Check API を使用してスペル チェックの結果を取得する'
+titlesuffix: Azure Cognitive Services
 description: Bing Spell Check の使用方法を示します。
 services: cognitive-services
 author: v-jaswel
-manager: kamrani
-ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-spell-check
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/28/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 4e4cdbb8a3d6ab01888d8f273083155c33eb06c1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d7afcd18e00e820ad63b8b12bbc352faaca24c84
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374048"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803598"
 ---
-# <a name="build-a-web-page-spell-check-client"></a>Web ページのスペル チェック クライアントを構築する
+# <a name="tutorial-build-a-web-page-spell-check-client"></a>チュートリアル: Web ページのスペル チェック クライアントを構築する
 
 このチュートリアルでは、ユーザーが Bing Spell Check API にクエリを実行できる Web ページを作成します。
 
@@ -31,7 +31,7 @@ ms.locfileid: "35374048"
 
 このチュートリアルを進めるには、 Bing Spell Check API のサブスクリプション キーが必要です。 お持ちでない場合は、[無料試用版にサインアップ](https://azure.microsoft.com/try/cognitive-services/?api=spellcheck-api)してください。
 
-## <a name="create-a-new-web-page"></a>新しい Web アプリを作成する
+## <a name="create-a-new-web-page"></a>新しい Web ページを作成する
 
 テキスト エディターを開きます。 新しいファイルを作成します (例: spellcheck.html)。
 
@@ -68,7 +68,7 @@ HTML ヘッダー情報を追加し、スクリプトのセクションを次の
 
 GetSubscriptionKey 関数は、Bing Spell Check API キーを返します。 ローカル ストレージ (つまり cookie) から取得するか、必要な場合はユーザーに入力を求めます。
 
-GetSubscriptionKey 関数を開始し、cookie 名を次のように宣言します。
+GetSubscriptionKey 関数を開始し、Cookie 名を次のように宣言します。
 
 ```html
 getSubscriptionKey = function() {

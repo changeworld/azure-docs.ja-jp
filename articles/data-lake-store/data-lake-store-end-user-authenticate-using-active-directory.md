@@ -1,6 +1,6 @@
 ---
-title: 'エンドユーザー認証: Data Lake Store と Azure Active Directory | Microsoft Docs'
-description: Data Lake Store での Azure Active Directory を使用したエンドユーザー認証を行う方法について説明します
+title: 'エンドユーザー認証: Azure Active Directory を使用した Azure Data Lake Storage Gen1 | Microsoft Docs'
+description: Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,33 +11,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 7280cd971e9857c494dfd1cb77d528e4737ed9d2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2f0638b2449bfd582cb68e26d2043b7bc85342b6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624150"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125954"
 ---
-# <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>Data Lake Store での Azure Active Directory を使用したエンドユーザーの認証
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
 > * [エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)
 > * [サービス間認証](data-lake-store-service-to-service-authenticate-using-active-directory.md)
 > 
 > 
 
-Azure Data Lake Store では、認証するために Azure Active Directory を使用します。 Azure Data Lake Store または Azure Data Lake Analytics と組み合わせて動作するアプリケーションを作成する前に、Azure Active Directory (Azure AD) でアプリケーションを認証する方法を決めておく必要があります。 2 種類のオプションを使用できます。
+Azure Data Lake Storage Gen1 では、認証するために Azure Active Directory を使用します。 Data Lake Storage Gen1 または Azure Data Lake Analytics と組み合わせて動作するアプリケーションを作成する前に、Azure Active Directory (Azure AD) でアプリケーションを認証する方法を決めておく必要があります。 2 種類のオプションを使用できます。
 
 * エンドユーザー認証 (この記事)
 * サービス間の認証 (上のドロップダウンからこのオプションを選択します)
 
-どちらのオプションでも、OAuth 2.0 トークンがアプリケーションに提供され、このトークンが Azure Data Lake Store または Azure Data Lake Analytics に対するすべての要求にアタッチされます。
+どちらのオプションでも、OAuth 2.0 トークンがアプリケーションに提供され、このトークンが Azure Data Lake Storage Gen1 または Azure Data Lake Analytics に対する各要求にアタッチされます。
 
-この記事では、**エンドユーザー認証用の Azure AD ネイティブ アプリケーション**の作成方法について説明します。 サービス間認証用に Azure AD アプリケーションを構成する方法については、「[Data Lake Store での Azure Active Directory を使用したサービス間認証](data-lake-store-authenticate-using-active-directory.md)」を参照してください。
+この記事では、**エンドユーザー認証用の Azure AD ネイティブ アプリケーション**の作成方法について説明します。 サービス間認証用に Azure AD アプリケーションを構成する方法については、[Data Lake Storage Gen1 による Azure Active Directory を使用したサービス間認証](data-lake-store-authenticate-using-active-directory.md)に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 * Azure サブスクリプション。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* サブスクリプション ID。 これは Azure Portal から取得できます。 たとえば、[Data Lake Store アカウント] ブレードから入手できます。
+* サブスクリプション ID。 これは Azure Portal から取得できます。 たとえば、[Data Lake Storage Gen1 アカウント] ブレードから入手できます。
   
     ![サブスクリプション ID の取得](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
@@ -50,7 +50,7 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 ## <a name="end-user-authentication"></a>エンドユーザー認証
 この認証メカニズムは、エンド ユーザーに Azure AD 経由でアプリケーションにログインしてもらう場合に推奨する方法です。 アプリケーションは、ログインしたエンド ユーザーと同じアクセス レベルで Azure リソースにアクセスできます。 エンド ユーザーは、アプリケーションのアクセスを維持するために、資格情報を定期的に入力する必要があります。
 
-エンド ユーザーがログインすると、アクセス トークンと更新トークンがアプリケーションに付与されます。 アクセス トークンは Data Lake Store または Data Lake Analytics に対するすべての要求にアタッチされ、既定では 1 時間有効です。 更新トークンは、新しいアクセス トークンを取得するために使用でき、既定では最大 2 週間有効です。 エンド ユーザーのログインには、2 つの異なる方法を使用できます。
+エンド ユーザーがログインすると、アクセス トークンと更新トークンがアプリケーションに付与されます。 アクセス トークンは Data Lake Storage Gen1 または Data Lake Analytics に対する各要求にアタッチされ、既定では 1 時間有効です。 更新トークンは、新しいアクセス トークンを取得するために使用でき、既定では最大 2 週間有効です。 エンド ユーザーのログインには、2 つの異なる方法を使用できます。
 
 ### <a name="using-the-oauth-20-pop-up"></a>OAuth 2.0 ポップアップの使用
 アプリケーションで、エンド ユーザーが資格情報を入力できる OAuth 2.0 認証ポップアップをトリガーできます。 このポップアップは、必要であれば、Azure AD の 2 要素認証 (2FA) プロセスでも機能します。 
@@ -74,7 +74,7 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 
 ## <a name="step-1-create-an-active-directory-native-application"></a>手順 1: Active Directory ネイティブ アプリケーションを作成する
 
-Azure Active Directory を使用して Azure Data Lake Store でのエンドユーザー間認証を行う Azure AD ネイティブ アプリケーションを作成および構成する方法について説明します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。
+Azure Active Directory を使用して Data Lake Storage Gen1 によるエンドユーザー間認証を行う Azure AD ネイティブ アプリケーションを作成および構成します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。
 
 リンクの指示に従うときは、次のスクリーンショットに示すように、アプリケーションの種類として **[ネイティブ]** を必ず選択してください。
 
@@ -116,10 +116,10 @@ Azure Active Directory を使用して Azure Data Lake Store でのエンドユ�
 5. 最後の 2 つの手順を繰り返して、**Windows Azure Service Management API** にも、アクセス許可を与えます。
    
 ## <a name="next-steps"></a>次の手順
-この記事では、Azure AD ネイティブ アプリケーションを作成し、.NET SDK、Java SDK、REST API などを使用して作成するクライアント アプリケーションに必要な情報を収集しました。これで、以下の記事に進むことができます。これらの記事では、Azure AD Web アプリケーションを使用して、最初に Data Lake Store で認証を行ってからストアで他の操作を実行する方法について説明しています。
+この記事では、Azure AD ネイティブ アプリケーションを作成し、.NET SDK、Java SDK、REST API などを使用して作成するクライアント アプリケーションに必要な情報を収集しました。これで、以下の記事に進むことができます。これらの記事では、Azure AD Web アプリケーションを使用して、最初に Data Lake Storage Gen1 による認証を行ってからストアに対して他の操作を実行する方法について説明しています。
 
-* [Data Lake Store での Java SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-java-sdk.md)
-* [Data Lake Store での .NET SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-net-sdk.md)
-* [Data Lake Store での Python を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-python.md)
-* [Data Lake Store での REST API を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-rest-api.md)
+* [Data Lake Storage Gen1 による Java SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-java-sdk.md)
+* [Data Lake Storage Gen1 による .NET SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-net-sdk.md)
+* [Data Lake Storage Gen1 による Python を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-python.md)
+* [Data Lake Storage Gen1 による REST API を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-rest-api.md)
 

@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 07/11/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 59e6f4126e8a39ab695015fae2a2013529383418
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: f03872a125e4e4d2f1e0b458a31d67a07802f2c8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41920855"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387449"
 ---
 # <a name="introduction-to-azure-storage"></a>Azure Storage の概要
 
@@ -85,7 +85,7 @@ Azure Cosmos DB に、新たに Azure Table Storage が加わりました。 Azu
 
 ## <a name="disk-storage"></a>Disk Storage
 
-Azure Storage には、仮想マシンで使用されるマネージド ディスクと非管理対象ディスクの機能も含まれています。 これらの機能の詳細については、[コンピューティング サービスのドキュメント](https://docs.microsoft.com/en-gb/azure/#pivot=products&panel=Compute)を参照してください。
+Azure Storage には、仮想マシンで使用されるマネージド ディスクと非管理対象ディスクの機能も含まれています。 これらの機能の詳細については、[コンピューティング サービスのドキュメント](https://docs.microsoft.com/azure/#pivot=products&panel=Compute)を参照してください。
 
 ## <a name="types-of-storage-accounts"></a>ストレージ アカウントの種類
 
@@ -93,7 +93,7 @@ Azure Storage には、仮想マシンで使用されるマネージド ディ�
 
 |**ストレージ アカウントの種類**|**汎用 (Standard)**|**汎用 (Premium)**|**Blob Storage (ホット アクセス レベルとクール アクセス レベル)**|
 |-----|-----|-----|-----|
-|**サポートされるサービス**| Blob service、File サービス、Queue サービス | Blob service | Blob service|
+|**サポートされるサービス**| Blob service、File サービス、Queue サービス、Table service | Blob service | Blob service|
 |**サポートされる BLOB の種類**|ブロック BLOB、ページ BLOB、追加 BLOB | ページ blob | ブロック BLOB と追加 BLOB|
 
 ### <a name="general-purpose-storage-accounts"></a>汎用ストレージ アカウント

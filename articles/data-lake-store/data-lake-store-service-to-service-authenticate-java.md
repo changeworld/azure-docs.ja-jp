@@ -1,6 +1,6 @@
 ---
-title: 'サービス間認証: Java から Azure Active Directory を使用して Data Lake Store に対する認証を行う | Microsoft Docs'
-description: Java から Azure Active Directory を使用して Data Lake Store に対するサービス間認証を行う方法について説明します
+title: 'サービス間認証: Java から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対する認証を行う | Microsoft Docs'
+description: Java から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: c8ef983871f3fb1ec47522571ce95843bdd2d313
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 86cc5148c862c18c01cec2951fc58e2932c17ca8
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625867"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298151"
 ---
-# <a name="service-to-service-authentication-with-data-lake-store-using-java"></a>Data Lake Store に対する Java を使用したサービス間認証
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Azure Data Lake Storage Gen1 に対する Java を使用したサービス間認証
 > [!div class="op_single_selector"]
 > * [Java の使用](data-lake-store-service-to-service-authenticate-java.md)
 > * [.NET SDK の使用](data-lake-store-service-to-service-authenticate-net-sdk.md)
@@ -27,12 +27,12 @@ ms.locfileid: "34625867"
 > 
 >  
 
-この記事では、Java SDK を使用して、Azure Data Lake Store に対するサービス間認証を行う方法について説明します。 Java SDK を使った Data Lake Store に対するエンド ユーザー認証はサポートされません。
+この記事では、Java SDK を使用して、Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します。 Java SDK を使った Azure Data Lake Storage Gen1 に対するエンド ユーザー認証はサポートされません。
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* **Azure Active Directory "Web" アプリケーションを作成します**。 [Data Lake Store に対する Azure Active Directory を使用したサービス間認証](data-lake-store-service-to-service-authenticate-using-active-directory.md)の手順を完了している必要があります。
+* **Azure Active Directory "Web" アプリケーションを作成します**。 [Data Lake Storage Gen1 に対する Azure Active Directory を使用したサービス間認証](data-lake-store-service-to-service-authenticate-using-active-directory.md)の手順を完了している必要があります。
 
 * [Maven](https://maven.apache.org/install.html)。 このチュートリアルでは、ビルドとプロジェクトの依存関係に Maven を使用します。 Maven や Gradle などのビルド システムを使用しなくてもビルドすることはできますが、これらのシステムを使用すると、依存関係の管理が容易になります。
 
@@ -56,7 +56,7 @@ ms.locfileid: "34625867"
           </dependency>
         </dependencies>
    
-    最初の依存関係では、maven リポジトリから Data Lake Store SDK (`azure-data-lake-store-sdk`) を使用します。 2 番目の依存関係では、このアプリケーションで使用するログ記録フレームワーク (`slf4j-nop`) を指定します。 Data Lake Store SDK では、[slf4j](http://www.slf4j.org/) ログ ファサードを使用します。slf4j を使用すると、log4j、Java ログ、logback などの多数の一般的なログ記録フレームの中から選択することも、ログを記録しないようにすることもできます。 この例ではログを無効にするため、**slf4j-nop** バインドを使用します。 アプリケーションで他のログ オプションを使用する場合は、[こちら](http://www.slf4j.org/manual.html#projectDep)をご覧ください。
+    最初の依存関係では、maven リポジトリから Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) を使用します。 2 番目の依存関係では、このアプリケーションで使用するログ記録フレームワーク (`slf4j-nop`) を指定します。 Data Lake Storage Gen1 SDK では、[slf4j](http://www.slf4j.org/) ログ ファサードを使用します。slf4j を使用すると、log4j、Java ログ、logback などの多数の一般的なログ記録フレームの中から選択することも、ログを記録しないようにすることもできます。 この例ではログを無効にするため、**slf4j-nop** バインドを使用します。 アプリケーションで他のログ オプションを使用する場合は、[こちら](http://www.slf4j.org/manual.html#projectDep)をご覧ください。
 
 3. アプリケーションに次の import ステートメントを追加します。
 
@@ -77,11 +77,11 @@ ms.locfileid: "34625867"
     
         AccessTokenProvider provider = new ClientCredsTokenProvider(authTokenEndpoint, clientId, clientKey);   
 
-Data Lake Store SDK には、Data Lake Store アカウントとの対話に必要なセキュリティ トークンを管理できる便利な方法が用意されています。 ただし、使用する方法はこれらに限定されるわけではありません。 [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) や独自のカスタム コードの使用など、トークンを取得するその他の方法も使用できます。
+Data Lake Storage Gen1 SDK には、Data Lake Storage Gen1 アカウントとの対話に必要なセキュリティ トークンを管理できる便利な方法が用意されています。 ただし、使用する方法はこれらに限定されるわけではありません。 [Azure Active Directory SDK](https://github.com/AzureAD/azure-activedirectory-library-for-java) や独自のカスタム コードの使用など、トークンを取得するその他の方法も使用できます。
 
 ## <a name="next-steps"></a>次の手順
-この記事では、Azure Data Lake Store に対し、Java SDK からエンドユーザー認証を使って認証を行う方法について説明しました。 これで、Java SDK を使用して Azure Data Lake Store を使用する方法について説明した次の記事に進めるようになりました。
+この記事では、Data Lake Storage Gen1 に対し、Java SDK からエンドユーザー認証を使って認証を行う方法について説明しました。 これで、Java SDK を使用して Data Lake Storage Gen1 を使用する方法について説明した次の記事に進めるようになりました。
 
-* [Java SDK を使用した Data Lake Store に対するデータ操作](data-lake-store-get-started-java-sdk.md)
+* [Java SDK を使用した Data Lake Storage Gen1 に対するデータ操作](data-lake-store-get-started-java-sdk.md)
 
 

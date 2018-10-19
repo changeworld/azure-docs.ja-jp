@@ -9,14 +9,16 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/09/2018
-ms.author: mbullwin; sergkanz
-ms.openlocfilehash: 12b46b4abaa17fe9dd0e9055bca5463312bbd15d
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 696843363bc6617bb11c01cdccb9dbbb7b719a82
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298202"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -72,6 +74,34 @@ STOCKS API という名前の外部 API を使用して株の現在の市場価�
 この標準は、`Request-Id` 生成の 2 つのスキーマ (フラットと階層) も定義します。 フラット スキーマには、`Correlation-Context` コレクションに対して定義された、よく知られた `Id` キーがあります。
 
 Application Insights は、相関付け HTTP プロトコル用の[拡張機能](https://github.com/lmolkova/correlation/blob/master/http_protocol_proposal_v2.md)を定義します。 それは、`Request-Context` の名前と値のペアを使用して、直前の呼び出し元または呼び出し先によって使用されたプロパティのコレクションを伝達します。 Application Insights SDK は、このヘッダーを使用して、`dependency.target` フィールドと `request.source` フィールドを設定します。
+
+### <a name="w3c-distributed-tracing"></a>W3C 分散トレース
+
+W3C 分散トレース形式 (https://w3c.github.io/distributed-tracing/report-trace-context.html) への切り替えを実施しています。 次のように定義します。
+- `traceparent` - 呼び出しのグローバルな一意操作 ID と一意識別子を伝送します。
+- `tracestate` - トレース システム固有のコンテキストを伝送します。
+
+#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-classic-apps"></a>ASP.NET Classic アプリの W3C 分散トレース サポートを有効にする
+
+この機能は、バージョン 2.8.0 ベータ1 以降の Microsoft.ApplicationInsights.Web および Microsoft.ApplicationInsights.DependencyCollector パッケージで利用可能です。
+既定で **[オフ]** になっています。有効にするには、`ApplicationInsights.config` を次のように変更します。
+
+* `RequestTrackingTelemetryModule` 下に、値が `true` に設定されている `EnableW3CHeadersExtraction` 要素を追加します。
+* `DependencyTrackingTelemetryModule` 下に、値が `true` に設定されている `EnableW3CHeadersInjection` 要素を追加します。
+
+#### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>ASP.NET Core アプリの W3C 分散トレース サポートを有効にする
+
+この機能は、Microsoft.ApplicationInsights.AspNetCore バージョン 2.5.0 ベータ 1 および Microsoft.ApplicationInsights.DependencyCollector バージョン 2.8.0 ベータ 1 で利用可能です。
+既定で **[オフ]** になっています。有効にするには、`ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` を `true` に変更します。
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddApplicationInsightsTelemetry(o => 
+        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
+    // ....
+}
+```
 
 ## <a name="open-tracing-and-application-insights"></a>Open Tracing と Application Insights
 
@@ -135,3 +165,5 @@ telemetry.getContext().getDevice().setRoleName("My Component Name");
 - Application Insights でマイクロ サービスのすべてのコンポーネントの利用を開始します。 [サポートされているプラットフォームを調べます](app-insights-platforms.md)。
 - Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
 - [テレメトリの拡張とフィルター処理](app-insights-api-filtering-sampling.md)を行う方法を確認します。
+- [Application Insights 構成リファレンス](app-insights-configuration-with-applicationinsights-config.md)
+

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: get-started-article
-ms.date: 09/07/2017
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 8254f6c72141f7a9babfc5af3c319e7e66f30bbf
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 7966705df2a352f2011d5f7611277e92d8e2d11a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448671"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294239"
 ---
 # <a name="set-up-azure-active-directory-for-self-service-group-management"></a>セルフサービス グループ管理に必要な Azure Active Directory の設定
 Azure Active Directory (Azure AD) では、管理下のユーザーが自分でセキュリティ グループまたは Office 365 グループを作成して管理することができます。 ユーザーはセキュリティ グループまたは Office 365 グループのメンバーシップを要求することもできます。要求されたメンバーシップは、グループの所有者が承認または拒否できます。 グループの業務上の趣旨を理解している人物に日常的なメンバーシップ管理を委任することができます。 セルフサービスによるグループ管理機能を使用できるのはセキュリティ グループと Office 365 グループだけであり、メールを有効にしたセキュリティ グループまたは配布リストでは使用できません。
@@ -46,6 +46,6 @@ Azure Active Directory (Azure AD) では、管理下のユーザーが自分で�
 
 * [Azure Active Directory のグループによるリソースへのアクセス管理](../fundamentals/active-directory-manage-groups.md)
 * [グループの設定を構成するための Azure Active Directory コマンドレット](groups-settings-cmdlets.md)
-* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](../active-directory-apps-index.md)
+* [Azure Active Directory のアプリケーション管理](../manage-apps/what-is-application-management.md)
 * [Azure Active Directory とは](../fundamentals/active-directory-whatis.md)
-* [オンプレミス ID と Azure Active Directory の統合](../connect/active-directory-aadconnect.md)
+* [オンプレミス ID と Azure Active Directory の統合](../hybrid/whatis-hybrid-identity.md)

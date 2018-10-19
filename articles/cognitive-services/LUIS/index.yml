@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 585a16280583acf7ab9952a9c76d4557ea0d3b0d
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 987eea72ff991eb90eb4e6f9acba6ccb4b8a750f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867755"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406553"
 documentType: LandingData
 title: Language Understanding (LUIS) のドキュメント
 metadata:
@@ -62,34 +62,22 @@ sections:
     - image:
         src: media/index/logo_java.svg
     - image:
-        src: media/index/logo_js.svg
-    - image:
         src: media/index/logo_nodejs.svg
     - image:
         src: media/index/logo_python.svg
-    - image:
-        src: media/index/logo_php.svg
-    - image:
-        src: media/index/logo_ruby.svg
     rows:
     - title: エンドポイント API
       values:
       - href: luis-get-started-cs-get-intent
       - href: luis-get-started-java-get-intent
-      - href: luis-get-started-js-get-intent
       - href: luis-get-started-node-get-intent
       - href: luis-get-started-python-get-intent
-      - href: luis-get-started-php-get-intent
-      - href: luis-get-started-ruby-get-intent
     - title: オーサリング API
       values:
       - href: luis-get-started-cs-add-utterance
       - href: luis-get-started-java-add-utterance
-      - href: luis-get-started-javascript-add-utterance
       - href: luis-get-started-node-add-utterance
       - href: luis-get-started-python-add-utterance
-      - href: luis-get-started-php-add-utterance
-      - href: luis-get-started-ruby-add-utterance
 - title: ステップバイステップのチュートリアル
   items:
   - type: list

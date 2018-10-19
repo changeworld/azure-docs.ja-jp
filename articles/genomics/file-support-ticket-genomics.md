@@ -1,23 +1,21 @@
 ---
 title: 'Microsoft Genomics: サポート リクエストを提出する方法 | Microsoft Docs'
 titleSuffix: Azure
-description: サポート チケットを提出する方法について説明します。
+description: この概要では、Microsoft Genomics に連絡してサポート リクエストを提出する方法について説明します。 この情報は、トラブルシューティング ガイドや FAQ を使用しても問題が解決できない場合に役立ちます。
 keywords: トラブルシューティング, エラー, デバッグ, サポート
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: article
 ms.date: 05/23/2018
-ms.openlocfilehash: b50de691c9ac6085a416405ece600afcb5575e92
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5e33f5b22012b297cdceacbe38425934f0f65b4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34659946"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734371"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>Microsoft Genomics サポートに問い合わせる方法
 この概要では、Microsoft Genomics に連絡してサポート リクエストを提出する方法について説明します。 この情報は、[トラブルシューティング ガイド](troubleshooting-guide-genomics.md)や [FAQ](frequently-asked-questions-genomics.md) を使用しても問題が解決できない場合に役立ちます。 

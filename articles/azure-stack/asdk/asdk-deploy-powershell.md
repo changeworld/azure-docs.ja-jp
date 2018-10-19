@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 06/07/2018
+ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: f0d7daa479f6e6ea345e010962488c1ecad5b7e2
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: c6b2387360973cd4e65b5a1e4ba483abf5ea9070
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34849959"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716028"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>ASDK をコマンド ラインからデプロイする
 ASDK は、Azure Stack の機能やサービスを評価したり実演したりするためにデプロイできるテスト/開発環境です。 この環境を準備するには、環境ハードウェアを用意し、いくつかのスクリプトを実行する必要があります (これには数時間かかります)。 その後、管理者ポータルとユーザー ポータルにサインインし、Azure Stack の使用を開始することができます。
@@ -91,6 +91,8 @@ Azure AD を使用して開発キットをデプロイするには、次の Powe
   ```
 
 ASDK のインストールを開始して数分後に、Azure AD 資格情報の入力を求めるメッセージが表示されます。 Azure AD テナントのグローバル管理者の資格情報を指定する必要があります。 
+
+デプロイの後、Azure Active Directory の全体管理者のアクセス許可は必要ありません。 ただし、一部の操作では、全体管理者の資格情報が必要な場合があります。 たとえば、リソース プロバイダーのインストーラー スクリプトや、アクセス許可を付与する必要のある新機能などがあります。 アカウントの全体管理者のアクセス許可を一時的に再配置するか、*既定のプロバイダー サブスクリプション*の所有者である個別の全体管理者アカウントを使用するかのいずれかを行うことができます。
 
 ### <a name="deploy-azure-stack-using-ad-fs"></a>AD FS を使用して Azure Stack をデプロイする 
 **AD FS を ID プロバイダーとして使用**して開発キットをデプロイするには、次の PowerShell コマンドを実行します (-UseADFS パラメーターを追加するだけです)。 

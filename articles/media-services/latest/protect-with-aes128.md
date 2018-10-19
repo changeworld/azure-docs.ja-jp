@@ -4,21 +4,21 @@ description: Microsoft Azure Media Services を使用して、AES 128 ビット�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 3e5de521570a587b049702dabd3e3692c4227796
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: 8d071f64df0097b4029884a9efa84c6f2708fd44
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114795"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376603"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用
 
@@ -27,16 +27,16 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 この記事は、[EncryptWithAES](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES) サンプルに基づいています。 このサンプルでは、適応型ビットレート エンコードのための組み込みプリセットを使用し、[HTTPs ソース URL](job-input-from-http-how-to.md) からファイルを直接取り込むエンコード Transform を作成する方法を示します。 次に、出力資産が AES (ClearKey) 暗号化を使用して公開されます。 サンプルからの出力は、DASH マニフェストとコンテンツを再生するために必要な AES トークンの両方を含む、Azure Media Player への URL です。 このサンプルでは、JWT トークンの有効期限を 1 時間に設定しています。 ブラウザーを開いて結果の URL を貼り付けると、URL とトークンが既に入力されている Azure Media Player のデモ ページが起動します (形式は次のとおりです: ```https://ampdemo.azureedge.net/?url= {dash Manifest URL} &aes=true&aestoken=Bearer%3D{ JWT Token here}```)。
 
 > [!NOTE]
-> 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各資産を暗号化することができます。 合理的な組み合わせについては、「[Streaming protocols and encryption types](content-protection-overview.md#streaming-protocols-and-encryption-types)」(ストリーミング プロトコルと暗号化の種類) を参照してください。
+> 複数の暗号化の種類 (AES-128、PlayReady、Widevine、FairPlay) を使用して各アセットを暗号化することができます。 合理的な組み合わせについては、「[ストリーミング プロトコルと暗号化の種類](content-protection-overview.md#streaming-protocols-and-encryption-types)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 チュートリアルを完了するには次のものが必要です。
 
-* 「[Content protection overview (コンテンツ保護の概要)](content-protection-overview.md)」の記事を確認する。
+* 「[コンテンツ保護の概要](content-protection-overview.md)」の記事を確認します。
 * Visual Studio Code または Visual Studio をインストールする
 * [このクイックスタート](create-account-cli-quickstart.md)の説明に従って、新しい Azure Media Services アカウントを作成します。
-* [API へのアクセス](access-api-cli-how-to.md)に関するページに従って、Media Services API を使用するために必要な資格情報を入手する
+* [API へのアクセス](access-api-cli-how-to.md)に関するページに従って、Media Services API を使用するために必要な資格情報を入手します。
 
 ## <a name="download-code"></a>コードをダウンロードする
 
@@ -57,7 +57,7 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithAES/Program.cs#CreateMediaServicesClient)]
 
-## <a name="create-an-output-asset"></a>出力資産を作成する  
+## <a name="create-an-output-asset"></a>出力アセットを作成する  
 
 出力[アセット](https://docs.microsoft.com/rest/api/media/assets)には、対象のエンコード ジョブの結果が格納されます。  
 
@@ -89,7 +89,7 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 
 ## <a name="create-a-contentkeypolicy"></a>ContentKeyPolicy を作成する
 
-コンテンツ キーにより、資産に安全にアクセスすることができます。 エンド クライアントにコンテンツ キーを配信する方法を構成する **ContentKeyPolicy** ポリシーを作成する必要があります。 コンテンツ キーは、**StreamingLocator** に関連付けられます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 
+コンテンツ キーにより、アセットに安全にアクセスすることができます。 エンド クライアントにコンテンツ キーを配信する方法を構成する **ContentKeyPolicy** ポリシーを作成する必要があります。 コンテンツ キーは、**StreamingLocator** に関連付けられます。 Media Services には、権限のあるユーザーに暗号化キーを配信する、キー配信サービスも用意されています。 
 
 プレーヤーがストリームを要求すると、Media Services は、指定されたキーを使用してコンテンツを動的に暗号化します (この場合は AES 暗号化を使用します)。ストリームの暗号化を解除するには、プレーヤーはキー配信サービスからキーを要求します。 ユーザーによるキーの取得が承認されているかどうかを判断するために、キーに指定されたコンテンツ キー ポリシーがサービスにより評価されます。
 
@@ -100,7 +100,7 @@ Media Services では、AES 128 ビット暗号化キーを使用して暗号化
 エンコードが完了し、コンテンツ キー ポリシーを設定したら、次に、出力アセット内のビデオを、クライアントが再生に利用できるようにします。 これは 2 つの手順で実行します。 
 
 1. [StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成します。
-2. クライアントが使用できるストリーミング URL を構築します。 
+2. クライアントが使用できるストリーミング URL を作成します。 
 
 **StreamingLocator** を作成するプロセスは発行と呼ばれます。 既定では、**StreamingLocator** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
 

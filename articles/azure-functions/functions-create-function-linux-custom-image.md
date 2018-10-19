@@ -11,16 +11,16 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: eb03d2dae42d656e62b8f02eeccf1f7312f07732
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a77018d5ee1738f24518742c2386e6e261a7c6a8
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962441"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901450"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>カスタム イメージを使用して Linux で関数を作成する (プレビュー)
 
-Azure Functions を使用して、独自のカスタム コンテナー内の Linux 上で関数をホストできます。 [既定の Azure App Service コンテナー上でホストする](functions-create-first-azure-function-azure-cli-linux.md)こともできます。 この機能は現在プレビュー段階であり、同じくプレビュー段階の [Functions 2.0 ランタイム](functions-versions.md)が必要です。
+Azure Functions を使用して、独自のカスタム コンテナー内の Linux 上で関数をホストできます。 [既定の Azure App Service コンテナー上でホストする](functions-create-first-azure-function-azure-cli-linux.md)こともできます。 この機能は現在プレビュー段階であり、[Functions 2.0 ランタイム](functions-versions.md)が必要です。
 
 このチュートリアルでは、カスタム Docker イメージとして Function App をデプロイする方法について説明します。 このパターンは、組み込みの App Service コンテナー イメージをカスタマイズする必要がある場合に便利です。 特定の言語バージョン、特定の依存関係、または組み込みイメージで提供されない構成が関数に必要になるときに、カスタム イメージを使用することがあります。
 
@@ -217,7 +217,7 @@ AzureWebJobsStorage=$storageConnectionString
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Docker を使用してカスタム イメージをビルドします。

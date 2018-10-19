@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: language-understanding
-ms.topic: article
+ms.component: language-understanding
+ms.topic: tutorial
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 14956fd716a6939d5e7dd9d670cc78b58adf7f45
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f98d640f032fed5f91df8e9d4fb55d3f20550339
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042076"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883926"
 ---
 # <a name="integrate-speech-service"></a>音声サービスを統合する
 [音声サービス](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/)を使用すると、1 回の要求を使用して音声を受け取り、LUIS 予測 JSON オブジェクトを返せます。 この記事では、C# プロジェクトをダウンロードして Visual Studio で使用し、マイクに向かって発話して LUIS 予測情報を受け取ります。 プロジェクトでは、参照として既に含まれている Speech [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) パッケージを使用します。 
@@ -26,7 +26,7 @@ ms.locfileid: "47042076"
 Azure Portal で、**Language Understanding** (LUIS) キーを[作成](luis-how-to-azure-subscription.md#create-luis-endpoint-key)します。 
 
 ## <a name="import-human-resources-luis-app"></a>人事管理 LUIS アプリをインポートする
-この記事のインテントと発話は、[LUIS サンプル](https://github.com/Microsoft/LUIS-Samples) Github リポジトリにある LUIS アプリからのものです。 [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/HumanResources.json) ファイルをダウンロードし、*.json 拡張子を付けて保存し、LUIS に[インポート](luis-how-to-start-new-app.md#import-new-app)します。 
+この記事のインテントと発話は、[LUIS サンプル](https://github.com/Microsoft/LUIS-Samples) Github リポジトリにある LUIS アプリからのものです。 [HumanResources.json](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources.json) ファイルをダウンロードし、`.json` 拡張子を付けて保存し、LUIS に[インポート](luis-how-to-start-new-app.md#import-new-app)します。 
 
 このアプリには、人事分野に関連するインテント、エンティティ、および発話があります。 発話の例を次に示します。
 
@@ -68,57 +68,29 @@ Speech SDK が既に参照として含まれています。
 [![](./media/luis-tutorial-speech-to-intent/nuget-package.png "Microsoft.CognitiveServices.Speech NuGet パッケージを表示した Visual Studio 2017 のスクリーン ショット")](./media/luis-tutorial-speech-to-intent/nuget-package.png#lightbox)
 
 ## <a name="modify-the-c-code"></a>C# コードを編集する
-**LUIS_samples.cs** ファイルを開き、次の変数を変更します。
+`Program.cs` ファイルを開き、次の変数を変更します。
 
 |変数名|目的|
 |--|--|
-|luisSubscriptionKey|[発行] ページからのエンドポイント URL のサブスクリプション キーの値に対応しています|
-|luisRegion|エンドポイント URL の最初のサブドメインに対応しています|
-|luisAppId|**apps/** の後に続く、エンドポイント URL のルートに対応します|
+|LUIS_assigned_endpoint_key|[発行] ページからのエンドポイント URL の割り当てられたサブスクリプション キーの値に対応しています|
+|LUIS_endpoint_key_region|エンドポイント URL の最初のサブドメインに対応しています (例: `westus`)|
+|LUIS_app_ID|**apps/** の後に続く、エンドポイント URL のルートに対応します|
 
-[![](./media/luis-tutorial-speech-to-intent/change-variables.png "Visual Studio 2017 LUIS_samples.cs 変数を表示したスクリーン ショット")](./media/luis-tutorial-speech-to-intent/change-variables.png#lightbox)
-
-ファイルには既に人事インテントがマップされています。
-
-[![](./media/luis-tutorial-speech-to-intent/intents.png "LUIS_samples.cs インテントを表示した Visual Studio 2017 のスクリーン ショット")](./media/luis-tutorial-speech-to-intent/intents.png#lightbox)
+`Program.cs` ファイルには既に人事意図がマップされています。
 
 アプリケーションをビルドし、実行します。 
 
 ## <a name="test-code-with-utterance"></a>発話を使ってコードをテストする
-**1** を選択し、マイクに向かって「John Smith の上司は誰ですか」と話します。
+マイクに向かって "Who are the approved dentists in Redmond" と話します。
 
-```cmd
-1. Speech recognition of LUIS intent.
-0. Stop.
-Your choice: 1
-LUIS...
-Say something...
-ResultId:cc83cebc9d6040d5956880bcdc5f5a98 Status:Recognized IntentId:<GetEmployeeOrgChart> Recognized text:<Who is the manager of John Smith?> Recognized Json:{"DisplayText":"Who is the manager of John Smith?","Duration":25700000,"Offset":9200000,"RecognitionStatus":"Success"}. LanguageUnderstandingJson:{
-  "query": "Who is the manager of John Smith?",
-  "topScoringIntent": {
-    "intent": "GetEmployeeOrgChart",
-    "score": 0.617331
-  },
-  "entities": [
-    {
-      "entity": "manager of john smith",
-      "type": "builtin.keyPhrase",
-      "startIndex": 11,
-      "endIndex": 31
-    }
-  ]
-}
+[!code-console[Command line response from spoken utterance](~/samples-luis/documentation-samples/tutorial-speech-intent-recognition/console-output.txt "Command line response from spoken utterance")]
 
-Recognition done. Your Choice:
-
-```
-
-正しいインテント、**GetEmployeeOrgChart** が61% の信頼度で見つかりました。 keyPhrase エンティティが返されました。 
+正しい意図の **GetEmployeeBenefits** が 85% の信頼度で見つかりました。 keyPhrase エンティティが返されました。 
 
 Speech SDK は、LUIS の応答全体を返します。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-不要になったら、LUIS HumanResources アプリを削除します。 それを行うには、アプリの一覧内のアプリ名の右にある省略記号 (***...***) ボタンを選択し、**[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
+不要になったら、LUIS HumanResources アプリを削除します。 これを行うには、アプリを選択し、一覧の上のコンテキスト ツール バーの **[削除]** を選択します。 **[Delete app?]\(アプリを削除しますか?\)** ポップアップ ダイアログで、**[OK]** をクリックします。
 
 サンプル コードの使用が終わったら、LUIS Samples ディレクトリを削除します。
 

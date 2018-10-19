@@ -5,7 +5,7 @@ services: machine-learning
 documentationcenter: ''
 author: deguhath
 manager: cgronlun
-editor: ''
+editor: cgronlun
 ms.assetid: bf1f4a6c-7711-4456-beb7-35fdccd46a44
 ms.service: machine-learning
 ms.component: team-data-science-process
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: deguhath
-ms.openlocfilehash: eb81d6726b083d864a58b6c11eed67f95aeda350
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 89c4e6e6db087e27426598c3ead5142ad540c0c1
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42146643"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393883"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>SQL と Python を使用して SQL Server のデータの特徴を作成する
 このドキュメントでは、Azure の SQL Server VM に保存されたデータから、アルゴリズムの学習効率を高めることのできる特徴を生成する方法について説明します。 このタスクを実行するには、SQL または Python のようなプログラミング言語を使用できます。 ここでは、両方の方法を説明しています。
@@ -37,7 +37,7 @@ ms.locfileid: "42146643"
 ## <a name="prerequisites"></a>前提条件
 この記事では、以下のことを前提としています。
 
-* Azure のストレージ アカウントが作成されている。 手順については、「[Azure ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)」をご覧ください。
+* Azure のストレージ アカウントが作成されている。 手順については、「 [Azure ストレージ アカウントの作成](../../storage/common/storage-quickstart-create-account.md)
 * データが SQL Server に格納されている。 格納されていない場合、データの移動手順については、「 [Azure Machine Learning 用にデータを Azure SQL Database に移動する](move-sql-azure.md) 」をご覧ください。
 
 ## <a name="sql-featuregen"></a>SQL を使用した特徴の生成

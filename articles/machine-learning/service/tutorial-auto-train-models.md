@@ -9,18 +9,18 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 1db13ee31ea826833d2b13f20b3b0a2be8ef4444
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: df1c19c0e16b9862b09dcc652ef2831e0c5bf3a5
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220870"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802357"
 ---
-# <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning"></a>チュートリアル: Azure Machine Learning の自動機械学習で分類モデルをトレーニングする
+# <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>チュートリアル: Azure Machine Learning サービスにおいて、自動機械学習で分類モデルをトレーニングする
 
-このチュートリアルでは、自動機械学習 (自動 ML) を使用して機械学習モデルを生成する方法を学習します。  Azure Machine Learning では、データの事前処理、アルゴリズムの選択、ハイパーパラメーターの選択をユーザーに代わって自動的に実行できます。 その後、「[Deploy a model](tutorial-deploy-models-with-aml.md)」 (モデルをデプロイする) のチュートリアルのワークフローに従って最終的なモデルをデプロイできます。
+このチュートリアルでは、自動機械学習 (自動 ML) を使用して機械学習モデルを生成する方法を学習します。  Azure Machine Learning サービスでは、データの事前処理、アルゴリズムの選択、ハイパーパラメーターの選択をユーザーに代わって自動的に実行できます。 その後、「[Deploy a model](tutorial-deploy-models-with-aml.md)」 (モデルをデプロイする) のチュートリアルのワークフローに従って最終的なモデルをデプロイできます。
 
-[ ![フロー図](./media/tutorial-auto-train-models/flow2.png) ](./media/tutorial-auto-train-models/flow2.png#lightbox)
+![フロー図](./media/tutorial-auto-train-models/flow2.png)
 
 [モデルのトレーニングに関するチュートリアル](tutorial-train-models-with-aml.md)と同様に、このチュートリアルでは [MNIST](http://yann.lecun.com/exdb/mnist/) データセットから、手書きの数字 (0 - 9) 画像を分類します。 ただし、今回はアルゴリズムを指定したり、ハイパーパラメーターを調整しません。 自動 ML テクニックでは、アルゴリズムとハイパーパラメーターの多数の組み合わせをイテレーションして、条件上最適なモデルを探します。
 
@@ -38,7 +38,8 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="get-the-notebook"></a>ノートブックを入手する
 
-便利なように、このチュートリアルは Jupyter Notebook として提供されています。 `tutorials/03.auto-train-models.ipynb` ノートブックを実行するには、以下のいずれかの方式を使用します。
+便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/03.auto-train-models.ipynb)として提供されています。 `03.auto-train-models.ipynb`Azure Notebook またはご自身の Jupyter notebook サーバー内のいずれかのノートを実行します。
+
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -104,13 +105,9 @@ from sklearn import datasets
 
 digits = datasets.load_digits()
 
-# only take the first 100 rows if you want the training steps to run faster
-X_digits = digits.data[:100,:]
-y_digits = digits.target[:100]
-
-# use full dataset
-#X_digits = digits.data
-#y_digits = digits.target
+# Exclude the first 100 rows from training so that they can be used for test.
+X_train = digits.data[100:,:]
+y_train = digits.target[100:]
 ```
 
 ### <a name="display-some-sample-images"></a>複数のサンプル イメージの表示
@@ -121,13 +118,13 @@ y_digits = digits.target[:100]
 count = 0
 sample_size = 30
 plt.figure(figsize = (16, 6))
-for i in np.random.permutation(X_digits.shape[0])[:sample_size]:
+for i in np.random.permutation(X_train.shape[0])[:sample_size]:
     count = count + 1
     plt.subplot(1, sample_size, count)
     plt.axhline('')
     plt.axvline('')
-    plt.text(x = 2, y = -2, s = y_digits[i], fontsize = 18)
-    plt.imshow(X_digits[i].reshape(8, 8), cmap = plt.cm.Greys)
+    plt.text(x = 2, y = -2, s = y_train[i], fontsize = 18)
+    plt.imshow(X_train[i].reshape(8, 8), cmap = plt.cm.Greys)
 plt.show()
 ```
 ランダムなイメージのサンプルは、以下のように表示されます。
@@ -151,9 +148,9 @@ plt.show()
 |**primary_metric**|AUC Weighted | 最適化したいメトリック。|
 |**max_time_sec**|12,000|各イテレーションの秒単位での時間制限|
 |**iterations**|20|イテレーションの回数。 各イテレーションでは、特定のパイプラインを使用してモデルがデータをトレーニングします。|
-|**n_cross_validations**|3|クロス検証の分割の回数。|
+|**n_cross_validations**|3|クロス検証の分割の数|
 |**preprocess**|False| *True または False* 実験が入力に対して前処理を実行できるようにします。  前処理では*不足しているデータ*を処理し、いくつかの一般的な*機能抽出*を行います。|
-|**exit_score**|0.995|*primary_metric* のターゲットを示す *double* 値。 ターゲットを超過すると、実行は終了します。|
+|**exit_score**|0.9985|*primary_metric* のターゲットを示す *double* 値。 ターゲットを超過すると、実行は終了します。|
 |**blacklist_algos**|['kNN','LinearSVM']|無視するアルゴリズムを示す、*文字列*の*配列*。
 |
 
@@ -167,10 +164,10 @@ Automl_config = AutoMLConfig(task = 'classification',
                              iterations = 20,
                              n_cross_validations = 3,
                              preprocess = False,
-                             exit_score = 0.995,
+                             exit_score = 0.9985,
                              blacklist_algos = ['kNN','LinearSVM'],
-                             X = X_digits,
-                             y = y_digits,
+                             X = X_train,
+                             y = y_train,
                              path=project_folder)
 ```
 
@@ -497,8 +494,10 @@ local_run.model_id # Use this id to deploy the model as a web service in Azure
 ```python
 # find 30 random samples from test set
 n = 30
-sample_indices = np.random.permutation(X_digits.shape[0])[0:n]
-test_samples = X_digits[sample_indices]
+X_test = digits.data[:100, :]
+y_test = digits.target[:100]
+sample_indices = np.random.permutation(X_test.shape[0])[0:n]
+test_samples = X_test[sample_indices]
 
 
 # predict using the  model
@@ -514,11 +513,11 @@ for s in sample_indices:
     plt.axvline('')
     
     # use different color for misclassified sample
-    font_color = 'red' if y_digits[s] != result[i] else 'black'
-    clr_map = plt.cm.gray if y_digits[s] != result[i] else plt.cm.Greys
+    font_color = 'red' if y_test[s] != result[i] else 'black'
+    clr_map = plt.cm.gray if y_test[s] != result[i] else plt.cm.Greys
     
     plt.text(x = 2, y = -2, s = result[i], fontsize = 18, color = font_color)
-    plt.imshow(X_digits[s].reshape(8, 8), cmap = clr_map)
+    plt.imshow(X_test[s].reshape(8, 8), cmap = clr_map)
     
     i = i + 1
 plt.show()
@@ -534,7 +533,7 @@ plt.show()
 
 ## <a name="next-steps"></a>次の手順
 
-この Azure Machine Learning のチュートリアルでは、Python を使用して次の作業を行いました。
+この Azure Machine Learning サービスのチュートリアルでは、Python を使用して次の作業を行いました。
 
 > [!div class="checklist"]
 > * 開発環境を設定する

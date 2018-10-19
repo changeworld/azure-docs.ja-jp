@@ -2,24 +2,18 @@
 title: Microsoft Azure Data Box にデータをコピーする | Microsoft Docs
 description: Azure Data Box にデータをコピーする方法について説明します。
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 09/25/2018
+ms.date: 10/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 9bc84a9b08c4cfbdf7f24416c923e0dbd7076556
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b59830677ac8c07c6b7adbab24c82ca25d71f5a0
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161932"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093461"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>チュートリアル: データを Azure Data Box にコピーする 
 
@@ -88,11 +82,11 @@ Windows Server ホスト コンピューターを使用している場合は、�
     The command completed successfully.
     ```
 
-4. Windows キーを押しながら R キーを押します。**[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>`」と入力します。 Click **OK**. これによりエクスプローラーが開きます。
+4. Windows キーを押しながら R キーを押します。**[ファイル名指定して実行]** ウィンドウで、「`\\<device IP address>`」と入力します。 Click **OK**. これによりエクスプローラーが開きます。 フォルダーとして共有が表示されます。
     
     ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
-5. フォルダーとして共有が表示されます。 コピーするファイル用のフォルダーを作成します (この例では templates)。 フォルダーにグレーのバツ印が表示されることがあります。 このバツ印はエラー状態を示すものではありません。 フォルダーは、状態を追跡するようアプリケーションでフラグを設定されています。
+5.  **常にコピーしようとするファイル用のフォルダーを共有下に作成してから、ファイルをそのフォルダーにコピーします**。 フォルダーにグレーのバツ印が表示されることがあります。 このバツ印はエラー状態を示すものではありません。 フォルダーは、状態を追跡するようアプリケーションでフラグを設定されています。
     
     ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) ![エクスプローラーで共有に接続する 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png) 
 
@@ -239,11 +233,14 @@ Linux ホスト コンピューターを使用している場合は、Robocopy �
 
  - Linux クライアントで使用されているファイル システムに応じて、**CIFS Utils** または **NFS Utils** パッケージをインストールします。
 
-    `sudo apt-get install cifs-utils` `sudo apt-get install nfs-utils`
+    `sudo apt-get install cifs-utils`
+
+    `sudo apt-get install nfs-utils`
 
  -  **Rsync** および **Parallel** をインストールします (Linux ディストリビューションのバージョンによって異なります)。
 
     `sudo apt-get install rsync`
+   
     `sudo apt-get install parallel` 
 
  - マウント ポイントを作成します。

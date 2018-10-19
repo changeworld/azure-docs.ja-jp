@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/09/2018
+ms.date: 09/10/2018
 ms.author: raynew
-ms.openlocfilehash: d19aa4c3765beecc853a1b800a7ba1d3ebd74e9c
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 25db7d1f0a546cb5c6071ec4d625a7a52867053a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004329"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433925"
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware および物理サーバーの Azure へのレプリケーションのサポート マトリックス
 
@@ -64,7 +64,7 @@ Site Recovery は、サポートされているマシンで実行されている
 --- | ---
 マシンの設定 | Azure にレプリケートするマシンは、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
 Windows オペレーティング システム | 64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降。 </br></br>  [Windows Server 2008 SP2 以降 - 32 ビットおよび 64 ビット](migrate-tutorial-windows-server-2008.md) (移行のみ)。 </br></br> Windows 2016 の Nano Server はサポートされていません。
-Linux オペレーティング システム | Red Hat Enterprise Linux: 5.2 から 5.11<b>\*\*</b>、6.1 から 6.9<b>\*\*</b>、7.0 から 7.5 <br/><br/>CentOS: 5.2 から 5.11<b>\*\*</b>、6.1 から 6.9<b>\*\*</b>、7.0 から 7.5 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (サポートされるカーネルのバージョン)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [ (サポートされるカーネルのバージョン)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b> または SUSE Linux Enterprise Server 11 SP4 * </br></br>Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/></br>* *レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。*</br></br><b>\*\*</b> *Azure の Linux およびオープン ソース テクノロジのサポートについては、[Azure の Linux 仮想マシンのサポート](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)に関するページを参照してください。Azure Site Recovery を使用すると、Azure で Linux サーバーをフェールオーバーして実行できますが、Linux ベンダーはサポートが終了していないバージョンのディストリビューションのみにサポートを制限している場合があります。*
+Linux オペレーティング システム | Red Hat Enterprise Linux: 5.2 から 5.11<b>\*\*</b>, 6.1 から 6.10<b>\*\*</b>, 7.0 から 7.5 <br/><br/>CentOS: 5.2 から 5.11<b>\*\*</b>、6.1 から 6.10<b>\*\*</b>、7.0 から 7.5 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (サポートされるカーネルのバージョン)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1、SP2、SP3 [ (サポートされるカーネルのバージョン)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b> または SUSE Linux Enterprise Server 11 SP4 * </br></br>Red Hat 互換カーネルまたは Unbreakable Enterprise カーネル リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5、6.6、6.7 <br/><br/></br>* *レプリケートされたマシンの SUSE Linux Enterprise Server 11 SP3 から SP4 へのアップグレードはサポートされていません。アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。*</br></br><b>\*\*</b> *Azure の Linux およびオープン ソース テクノロジのサポートについては、[Azure の Linux 仮想マシンのサポート](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure)に関するページを参照してください。Azure Site Recovery を使用すると、Azure で Linux サーバーをフェールオーバーして実行できますが、Linux ベンダーはサポートが終了していないバージョンのディストリビューションのみにサポートを制限している場合があります。*
 
 
 >[!NOTE]
@@ -73,22 +73,22 @@ Linux オペレーティング システム | Red Hat Enterprise Linux: 5.2 か�
 >
 > - 保護されているマシンの Linux ディストリビューションのメジャー バージョン間のアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にしてオペレーティング システムをアップグレードしてから、レプリケーションを再び有効にします。
 >
-> - Azure でマシンが起動するには、Red Hat Enterprise Linux 5.2 から 5.11 または CentOS 5.2 から 5.11 を実行しているサーバーに Linux Integration Services (LIS) コンポーネントがインストールされている必要があります。
+> - Azure でマシンが起動するには、Red Hat Enterprise Linux 5.2 から 5.11 または CentOS 5.2 から 5.11 を実行しているサーバーに [Linux Integration Services (LIS) コンポーネント](https://www.microsoft.com/en-us/download/details.aspx?id=55106)がインストールされている必要があります。
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu カーネルのバージョン
 
 
 **サポートされているリリース** | **Azure Site Recovery モビリティ サービスのバージョン** | **カーネル バージョン** |
 --- | --- | --- |
+14.04 LTS | 9.19 | 3.13.0-24-generic から 3.13.0-153-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-131-generic |
 14.04 LTS | 9.18 | 3.13.0-24-generic から 3.13.0-153-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-130-generic |
 14.04 LTS | 9.17 | 3.13.0-24-generic から 3.13.0-149-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-127-generic |
 14.04 LTS | 9.16 | 3.13.0-24-generic ～ 3.13.0-144-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-119-generic、 |
-14.04 LTS | 9.15 | 3.13.0-24-generic ～ 3.13.0-144-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-119-generic、 |
 |||
+16.04 LTS | 9.19 | 4.4.0-21-generic ～ 4.4.0-131-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic、<br/>4.15.0-13-generic ～ 4.15.0-30-generic<br/>4.11.0-1009-azure ～ 4.11.0-1016-azure、<br/>4.13.0-1005-azure から 4.13.0-1018-azure <br/>4.15.0-1012-azure ～ 4.15.0-1019-azure|
 16.04 LTS | 9.18 | 4.4.0-21-generic から 4.4.0-130-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-45-generic |
 16.04 LTS | 9.17 | 4.4.0-21-generic から 4.4.0-127-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-43-generic |
 16.04 LTS | 9.16 | 4.4.0-21-generic ～ 4.4.0-119-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-38-generic |
-16.04 LTS | 9.15 | 4.4.0-21-generic ～ 4.4.0-119-generic、<br/>4.8.0-34-generic ～ 4.8.0-58-generic、<br/>4.10.0-14-generic ～ 4.10.0-42-generic、<br/>4.11.0-13-generic ～ 4.11.0-14-generic、<br/>4.13.0-16-generic から 4.13.0-38-generic |
 
 
 ### <a name="debian-kernel-versions"></a>Debian カーネルのバージョン
@@ -96,17 +96,18 @@ Linux オペレーティング システム | Red Hat Enterprise Linux: 5.2 か�
 
 **サポートされているリリース** | **Azure Site Recovery モビリティ サービスのバージョン** | **カーネル バージョン** |
 --- | --- | --- |
-Debian 7 | 9.17、9.18 | 3.2.0-4-amd64 から 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
-Debian 7 | 9.15、9.16 | 3.2.0-4-amd64 ～ 3.2.0-5-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.17、9.18、9.19 | 3.2.0-4-amd64 から 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.16 | 3.2.0-4-amd64 ～ 3.2.0-5-amd64、3.16.0-0.bpo.4-amd64 |
 |||
+Debian 8 | 9.19 | 3.16.0-4-amd64 から 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.7-amd64 |
 Debian 8 | 9.17、9.18 | 3.16.0-4-amd64 から 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.6-amd64 |
 Debian 8 | 9.16 | 3.16.0-4-amd64 から 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 から 4.9.0-0.bpo.6-amd64 |
-Debian 8 | 9.15 | 3.16.0-4-amd64 ～ 3.16.0-5-amd64、4.9.0-0.bpo.4-amd64 ～ 4.9.0-0.bpo.5-amd64 |
 
 ### <a name="suse-linux-enterprise-server-12-supported-kernel-versions"></a>SUSE Linux Enterprise Server 12 のサポートされるカーネルのバージョン
 
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.19 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.96-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.85-default</br></br>SP3 4.4.73-5-default から 4.4.140-94.42-default |
 SUSE Linux Enterprise Server 12 (SP1、SP2、SP3) | 9.18 | SP1 3.12.49-11-default から 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default から 3.12.74-60.64.96-default</br></br> SP2 4.4.21-69-default から 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default から 4.4.121-92.85-default</br></br>SP3 4.4.73-5-default から 4.4.138-94.39-default |
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux ファイル システム/ゲストのストレージ
@@ -245,7 +246,7 @@ VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文
 
 ## <a name="download-latest-azure-site-recovery-components"></a>Azure Site Recovery コンポーネントのダウンロード
 
-**名前** | **説明** | **最新バージョンのダウンロード手順** 
+**名前** | **説明** | **最新バージョンのダウンロード手順**
 --- | --- | --- | --- | ---
 構成サーバー | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/> オンプレミスの VMware サーバーにインストールされます | 新規インストールについては、[こちら](vmware-azure-deploy-configuration-server.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)をクリックしてください。
 プロセス サーバー|構成サーバーに既定でインストールされます。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。 デプロイの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行する独立したプロセス サーバーを追加できます。| 新規インストールについては、[こちら](vmware-azure-set-up-process-server-scale.md)をクリックしてください。 最新バージョンへの既存のコンポーネントのアップグレードについては、[こちら](vmware-azure-manage-process-server.md#upgrade-a-process-server)をクリックしてください。

@@ -5,16 +5,16 @@ ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/06/2018
-author: mayanknayar
+ms.date: 10/16/2018
+author: mayurigupta13
 ms.topic: conceptual
-ms.author: manayar
-ms.openlocfilehash: d9753f4359e1123ec9051dc303416a74e7aee847
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.author: mayg
+ms.openlocfilehash: 4260a4487480c42b518374965d8deda1e7803e62
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920418"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353324"
 ---
 # <a name="ip-address-retention-for-azure-virtual-machine-failover"></a>Azure 仮想マシンのフェールオーバーでの IP アドレスの保持
 

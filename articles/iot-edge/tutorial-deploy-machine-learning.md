@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c9350704943bebada217338488e51b97acc550ca
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 188e3c0e8b9a9d421b40e142e534aca2741fee56
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423614"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248889"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>チュートリアル: Azure Machine Learning を IoT Edge モジュールとして展開する (プレビュー)
 
@@ -46,11 +46,8 @@ Azure IoT Edge デバイス:
 クラウド リソース:
 
 * Azure の Free レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
-* Azure Machine Learning アカウント。 [Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/desktop-workbench/quickstart-installation.md)に関するセクションの手順に従います。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
+* Azure Machine Learning ワークスペース。 「[IoT Edge にモデルをデプロイするための準備](../machine-learning/service/how-to-deploy-to-iot.md)」の指示に従って、1 つ作成します。
 
-開発リソース:
-
-* Azure ML のモデル管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](../machine-learning/desktop-workbench/deployment-setup-configuration.md)」の手順に従います。 デプロイのセットアップ中に、可能であれば、クラスターではなく、ローカルの手順を選択することをお勧めします。
 
 ### <a name="disable-process-identification"></a>プロセス ID を無効にする
 
@@ -94,18 +91,7 @@ export IOTEDGE_HOST="http://172.17.0.1:15580"
 ## <a name="create-the-azure-ml-container"></a>Azure ML コンテナーを作成する
 このセクションでは、トレーニング済みのモデル ファイルをダウンロードして、Azure ML コンテナーに変換します。
 
-Azure ML のモデル管理を実行しているマシンで、GitHub の Azure ML IoT Toolkit から [iot_score.py](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/iot_score.py) と [model.pkl](https://github.com/Azure/ai-toolkit-iot-edge/blob/master/IoT%20Edge%20anomaly%20detection%20tutorial/model.pkl) をダウンロードして保存します。 これらのファイルにはトレーニング済みの機械学習モデルが定義されており、このモデルを IoT Edge デバイスに展開します。
-
-このトレーニング済みモデルを使用して、IoT Edge デバイスに展開できるコンテナーを作成します。 次のコマンドを使用します。
-
-   * モデルを登録する。
-   * マニフェストを作成します。
-   * *machinelearningmodule* という名前の Docker コンテナー イメージを作成する。
-   * Azure Kubernetes Service (AKS) クラスターにイメージをデプロイする。
-
-```cmd
-az ml service create realtime --model-file model.pkl -f iot_score.py -n machinelearningmodule -r python
-```
+「[IoT Edge にモデルをデプロイするための準備](../machine-learning/service/how-to-deploy-to-iot.md)」というドキュメントの指示に従って、用意した機械学習モデルを含む Docker コンテナーを作成します。  Docker イメージに必要なすべてのコンポーネントは、[Azure IoT Edge 用 AI ツールキットの Git リポジトリ](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)にあります。
 
 ### <a name="view-the-container-repository"></a>コンテナー リポジトリを表示する
 

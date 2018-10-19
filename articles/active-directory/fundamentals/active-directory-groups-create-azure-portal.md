@@ -1,59 +1,92 @@
 ---
-title: Azure AD でのユーザー グループの作成 | Microsoft Docs
-description: Azure Active Directory でグループを作成し、メンバーをそのグループに追加する方法
+title: Azure Active Directory を使用して基本グループを作成してメンバーを追加する方法 | Microsoft Docs
+description: Azure Active Directory を使用した基本グループの作成方法について説明します。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: quickstart
-ms.date: 08/04/2017
+ms.date: 08/22/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 3c71c9c49413045e3a730c10e90ea3c12648b4cb
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 36bd0ca06859c1952a75b1aa8397fba88dc22d40
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857725"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574914"
 ---
-# <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Azure Active Directory でグループを作成し、メンバーを追加する
-> [!div class="op_single_selector"]
-> * [Azure Portal](active-directory-groups-create-azure-portal.md)
-> * [PowerShell](../users-groups-roles/groups-settings-v2-cmdlets.md)
+# <a name="how-to-create-a-basic-group-and-add-members-using-azure-active-directory"></a>方法: Azure Active Directory を使用して基本グループを作成してメンバーを追加する
 
-この記事では、Azure Active Directory で新しいグループを作成して設定する方法について説明します。 グループを使用して管理タスクを実行します。たとえば、複数のユーザーやデバイスにライセンスまたはアクセス許可を一度に割り当てることができます。
+Azure Active Directory (Azure AD) ポータルを使用して、基本グループを作成できます。 この記事の目的に合わせて、基本グループは、リソース所有者 (管理者) によって単一リソースに追加され、そのリソースにアクセスする必要がある特定のメンバー (従業員) を含みます。 動的なメンバーシップやルールの作成など、より複雑なシナリオについては、「[Azure Active Directory のユーザー管理のドキュメント](../users-groups-roles/index.yml)」を参照してください。
 
-## <a name="how-do-i-create-a-group"></a>どのようにしてグループを作成しますか?
-1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[すべてのサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
+## <a name="create-a-basic-group-and-add-members"></a>基本グループを作成してメンバーを追加する
+基本グループを作成し、それと同時にメンバーを追加できます。
 
-   ![ユーザー管理を開く](./media/active-directory-groups-create-azure-portal/search-user-management.png)
-3. **[ユーザーとグループ]** ブレードで、**[すべてのグループ]** を選択します。
+### <a name="to-create-a-basic-group-and-add-members"></a>基本グループを作成してメンバーを追加するには、次の手順を実行します。
+1. ディレクトリの全体管理者アカウントを使用して、[Azure portal](https://portal.azure.com) にサインインします。
 
-   ![グループ ブレードを開く](./media/active-directory-groups-create-azure-portal/view-groups-blade.png)
-4. **[Users and groups - All groups (ユーザーとグループ - すべてのグループ)]** ブレードで、**[追加]** をクリックします。
+2. **[Azure Active Directory]**、**[グループ]**、**[新しいグループ]** と選択します。
 
-   ![[追加] をクリックする](./media/active-directory-groups-create-azure-portal/add-group-command.png)
-5. **[グループ]** ブレードで、グループの名前と説明を追加します。
-6. グループに追加するメンバーを選択するには、**[メンバーシップの種類]** ボックスで **[割り当て済み]** を選択し、**[メンバー]** を選択します。 グループのメンバーシップを動的に管理する方法の詳細については、 [属性を使用したグループ メンバーシップの高度なルールの作成](../users-groups-roles/groups-dynamic-membership.md)を参照してください。
+    ![[グループ] を表示した Azure AD](media/active-directory-groups-create-azure-portal/group-full-screen.png)
 
-   ![追加するメンバーを選択する](./media/active-directory-groups-create-azure-portal/select-members.png)
-7. **[メンバー]** ブレードで、グループに追加する 1 人以上のユーザーまたは 1 つ以上のデバイスを選択し、ブレードの下部にある **[選択]** をクリックしてグループに追加します。 **[ユーザー]** ボックスでは、入力内容とユーザー名またはデバイス名の一部との一致に基づいて表示がフィルター処理されます。 このボックスではワイルドカード文字は使用できません。
-8. グループへのメンバーの追加が完了したら、**[グループ]** ブレードの **[作成]** をクリックします。    
+3. **[グループ]** ページで、必要な情報を入力します。
 
-   ![グループの作成の確認](./media/active-directory-groups-create-azure-portal/create-group-confirmation.png)
+    ![情報の例が入力されている新しいグループ ページ](media/active-directory-groups-create-azure-portal/new-group-blade.png)
 
+    - **[グループの種類] (必須)。** 事前に定義されたグループの種類を選択します。 次のトピックがあります。
+        
+        - **セキュリティ**。 メンバーを管理し、グループ ユーザーの共有リソースへのコンピューター アクセスを管理するために、使用されます。 たとえば、特定のセキュリティ ポリシーのセキュリティ グループを作成できます。 この方法で作成すると、すべてのメンバーに一連のアクセス許可を一度に付与でき、各メンバーにアクセス許可を個別に追加する必要はありません。 リソースへのアクセス管理の詳細については、[Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)に関するページを参照してください。
+        
+        - **Office 365**。 共有メールボックス、カレンダー、ファイル、SharePoint サイトなどへのアクセスをメンバーに付与することで、共同作業の機会を提供します。 また、このオプションでは、組織外のユーザーにグループへのアクセス権を付与することもできます。 Office 365 グループの詳細については、「[Office 365 グループの概要](https://support.office.com/article/learn-about-office-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2)」を参照してください。
+
+    - **[グループ名] (必須)。** グループの名前を追加します。覚えやすい、意味のある名前にします。
+
+    - **[グループの説明]。** 任意で、グループに説明を追加します。
+
+    - **[メンバーシップの種類] (必須)。** 事前に定義されたメンバーシップの種類を選択します。 次のトピックがあります。
+
+        - **[割り当て済み]。** このグループのメンバーとなり、一意のアクセス許可を保持するように、特定のメンバーを追加できます。 この記事の目的に合わせて、このオプションを使用しています。
+
+        - **[動的ユーザー]。** 動的なグループ ルールを使用して、自動的にメンバーを追加および削除できます。 メンバーの属性が変更されると、システムは、ディレクトリの動的なグループ ルールを確認して、そのメンバーがルール要件を満たしているか (追加される)、またはルール要件を満たさなくなったか (削除される) を判定します。
+
+        - **[動的デバイス]。** 動的なグループ ルールを使用して、自動的にデバイスを追加および削除できます。 デバイスの属性が変更されると、システムは、ディレクトリの動的なグループ ルールを確認して、そのデバイスがルール要件を満たしているか (追加される)、またはルール要件を満たさなくなったか (削除される) を判定します。
+
+        >[!Important]
+        >デバイスまたはユーザーのどちらかに対して動的グループを作成することは可能ですが、両方に対して作成することはできません。 また、デバイス所有者の属性に基づいてデバイス グループを作成することはできません。 デバイス メンバーシップ ルールで参照できるのは、デバイスの属性のみです。 ユーザーとデバイスの動的グループの作成に関する詳細については、「[動的グループの作成と状態チェックを行う](../users-groups-roles/groups-create-rule.md)」を参照してください。
+
+4. **作成**を選択します。
+
+    グループが作成され、メンバーを追加する準備ができました。
+
+5. **[グループ]** ページから **[メンバー]** 領域を選択して、**[メンバーの選択]** ページからグループに追加するメンバーの検索を開始します。
+
+    ![グループの作成プロセスの間に、グループのメンバーを選択する](media/active-directory-groups-create-azure-portal/select-members-create-group.png)
+
+6. メンバーの追加が完了したら、**[選択]** をクリックします。
+
+    **[グループの概要]** ページが更新され、グループに追加されたメンバー数が表示されるようになりました。
+
+    ![[グループの概要] ページで、メンバー数が強調されている](media/active-directory-groups-create-azure-portal/group-overview-blade-number-highlight.png)
 
 ## <a name="next-steps"></a>次の手順
-次の記事は、Azure Active Directory に関する追加情報を示します。
+グループと、少なくとも 1 人のユーザーを追加したので、次の作業が可能になりました。
 
-* [既存のグループの表示](active-directory-groups-view-azure-portal.md)
-* [グループの設定の管理](active-directory-groups-settings-azure-portal.md)
-* [グループのメンバーの管理](active-directory-groups-members-azure-portal.md)
-* [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
-* [グループ内のユーザーの動的ルールの管理](../users-groups-roles/groups-dynamic-membership.md)
+- [グループとメンバーを表示する](active-directory-groups-view-azure-portal.md)
+
+- [グループ メンバーシップを管理する](active-directory-groups-membership-azure-portal.md)
+
+- [グループ内のユーザーの動的ルールの管理](../users-groups-roles/groups-create-rule.md)
+
+- [グループの設定を編集する](active-directory-groups-settings-azure-portal.md)
+
+- [グループを使用してリソースへのアクセスを管理する](active-directory-manage-groups.md)
+
+- [グループを使用して SaaS アプリへのアクセスを管理する](../users-groups-roles/groups-saasapps.md)
+
+- [PowerShell コマンドを使用してグループを管理する](../users-groups-roles/groups-settings-v2-cmdlets.md)
+
+- [Azure サブスクリプションを Azure Active Directory に関連付けまたは追加する](active-directory-how-subscriptions-associated-directory.md)

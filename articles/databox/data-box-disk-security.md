@@ -2,25 +2,18 @@
 title: Microsoft Azure Data Box Disk の概要 | Microsoft Docs in data
 description: 大量のデータを Azure に転送できるクラウド ソリューションである Azure Data Box Disk について説明します。
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: disk
 ms.topic: overview
-ms.custom: mvc
-ms.tgt_pltfrm: NA
-ms.workload: TBD
 ms.date: 07/10/2018
 ms.author: alkohli
-ms.openlocfilehash: ecdf604cf15ec68875b67f2a4c990103b3375243
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 569442f5dfdf96f03a95f7210bfe1ed7dc3af8de
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009741"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091489"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection-preview"></a>Azure Data Box Disk のセキュリティとデータ保護 (プレビュー)
 
@@ -87,7 +80,7 @@ Azure Data Box Disk は、同サービスにおける次の主要なインスタ
     - 番地
     - City
     - 郵便番号
-    - State
+    - 状態
     - 国/地方/地域
     - ドライブ ID
     - 運送業者のアカウント番号
@@ -103,5 +96,5 @@ Azure Data Box Disk は、同サービスにおける次の主要なインスタ
 ## <a name="next-steps"></a>次の手順
 
 - [Data Box Disk の要件](data-box-disk-system-requirements.md)を確認する。
-- [Data Box Disk の制限](data-box-disk-limits.md)を理解する。
-- Azure portal で [Azure Data Box Disk](data-box-disk-quickstart-portal.md) を迅速に展開する。
+- [Data Box Disk の制限事項](data-box-disk-limits.md)を理解する。
+- Azure portal で [Azure Data Box Disk](data-box-disk-quickstart-portal.md) をすばやく展開する。

@@ -104,7 +104,7 @@ items:
 - name: サンプル
   items:
   - name: コード サンプル
-    href: https://azure.microsoft.com/en-us/resources/samples/?service=data-factory
+    href: https://azure.microsoft.com/resources/samples/?service=data-factory
   - name: Azure PowerShell
     href: samples-powershell.md
 - name: 概念
@@ -458,16 +458,16 @@ items:
   - name: FAQ
     href: frequently-asked-questions.md
   - name: ロードマップ
-    href: https://azure.microsoft.com/en-us/roadmap/?tag=data-factory
+    href: https://azure.microsoft.com/roadmap/?tag=data-factory
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/data-factory/
   - name: リージョンごとの可用性
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 7a6734c34acc91a602840c554c5204cbc722c910
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: c450dae15fc5a03854d0c9c78af0d29306fc3c01
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901823"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363930"

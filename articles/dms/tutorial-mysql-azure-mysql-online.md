@@ -3,20 +3,20 @@ title: Azure Database Migration Service を使用して MySQL の Azure Database
 description: Azure Database Migration Service を使用して、オンプレミスの MySQL から Azure Database for MySQL にオンライン移行を実行する方法を説明します。
 services: dms
 author: HJToland3
-ms.author: jtoland
+ms.author: scphang
 manager: craigg
 ms.reviewer: ''
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 08/31/2018
-ms.openlocfilehash: c36a771266f595f6d8dc8575d100fa5bb9496584
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.date: 10/06/2018
+ms.openlocfilehash: 4825985253f5525314a496f2adbc40657231f5d5
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714932"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829853"
 ---
 # <a name="migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>DMS を使用して MySQL をオンラインの Azure Database for MySQL に移行する
 Azure Database Migration Service を使用して、最小限のダウンタイムでデータベースをオンプレミスの MySQL インスタンスから [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) に移行できます。 つまり、アプリケーションにとって最小限のダウンタイムで移行を実現できます。 このチュートリアルでは、Azure Database Migration Service のオンライン移行アクティビティを使用して、**Employees** サンプル データベースを MySQL 5.7 のオンプレミス インスタンスから Azure Database for MySQL に移行します。
@@ -50,13 +50,23 @@ Azure Database Migration Service を使用して、最小限のダウンタイ�
 - Azure Database for MySQL は、InnoDB テーブルのみをサポートします。 MyISAM テーブルを InnoDB に変換するには、[MyISAM から InnoDB へのテーブルの変換](https://dev.mysql.com/doc/refman/5.7/en/converting-tables-to-innodb.html)に関する記事を参照してください。 
 
 - 次の構成を使用して、ソース データベースの my.ini (Windows) または my.cnf (Unix) ファイルのバイナリ ログを有効にします。
+
+    - **server_id** = 1 以上 (MySQL 5.6 にのみ関連)
+    - **log-bin** =<path> (MySQL 5.6 にのみ関連)
+
+        例: log-bin = E:\MySQL_logs\BinLog
+    - **binlog_format** = row
+    - **Expire_logs_days** = 5 (0 を使用しないことをお勧めします。MySQL 5.6 にのみ関連)
+    - **Binlog_row_image** = full (MySQL 5.6 にのみ関連)
+    - **log_slave_updates** = 1
+ 
 - ユーザーは、次の特権がある ReplicationAdmin ロールを持っている必要があります:
     - **レプリケーション クライアント** - 変更処理タスクでのみ必須です。 つまり、全体の読み込みのみのタスクではこの特権は必要ありません。
     - **レプリケーション レプリカ** - 変更処理タスクでのみ必須です。 つまり、全体の読み込みのみのタスクではこの特権は必要ありません。
     - **スーパー** - MySQL 5.6.6 より前のバージョンでのみ必須です。
 
 ## <a name="migrate-the-sample-schema"></a>サンプル スキーマを移行する
-テーブル スキーマ、インデックス、ストアド プロシージャなどのすべてのデータベース オブジェクトを完了するには、ソース データベースからスキーマを抽出し、データベースに適用する必要があります。 スキーマを抽出するには、mysqldump と - - no-data パラメーターを使用できます。
+テーブル スキーマ、インデックス、ストアド プロシージャなどのすべてのデータベース オブジェクトを完了するには、ソース データベースからスキーマを抽出し、データベースに適用する必要があります。 スキーマを抽出するには、mysqldump と `--no-data` パラメーターを使用できます。
  
 オンプレミス システム内に MySQL employees サンプル データベースがあると仮定した場合、mysqldump を使用してスキーマを移行するためのコマンドは次のようになります。
 ```

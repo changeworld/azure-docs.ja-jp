@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: c894fed56393e1504f54999e57bba6f9ffed27a7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 18a6234eb56902625fdcc8f150a41b7551d229cc
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288256"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318539"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での監査
 
@@ -112,7 +112,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 
 ## <a id="subheading-3"></a>監査ログとレポートを分析する
 
-###<a name="server-level-policy-audit-logs"></a>サーバーレベルのポリシーの監査ログ
+### <a name="server-level-policy-audit-logs"></a>サーバーレベルのポリシーの監査ログ
 サーバーレベルの監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます。 これらは **sqldbauditlogs** という名前のコンテナー内に BLOB ファイルのコレクションとして保存されます。
 
 ストレージ フォルダーの階層、命名規則、およびログ形式の詳細については、[BLOB 監査ログ形式のリファレンス](https://go.microsoft.com/fwlink/?linkid=829599)を参照してください。
@@ -147,7 +147,7 @@ BLOB 監査ログを表示するには、いくつかの方法が使用できま
 
 
 <br>
-###<a name="database-level-policy-audit-logs"></a>データベースレベルのポリシーの監査ログ
+### <a name="database-level-policy-audit-logs"></a>データベースレベルのポリシーの監査ログ
 データベースレベルの監査ログは、設定時に選択した Azure ストレージ アカウントで、**SQLDBAuditLogs** というプレフィックスが付いたストア テーブルのコレクションに集計されます。 [Azure ストレージ エクスプローラー](http://azurestorageexplorer.codeplex.com)などのツールを使用してログ ファイルを表示できます。
 
 事前に構成されたダッシュボード レポート テンプレートが[ダウンロードできる Excel スプレッドシート](http://go.microsoft.com/fwlink/?LinkId=403540)として用意されているので、ログ データをすぐに分析できます。 監査ログでテンプレートを使用するには、Excel 2013 以降および Power Query ([ここ](http://www.microsoft.com/download/details.aspx?id=39379)でダウンロードできます) が必要です。

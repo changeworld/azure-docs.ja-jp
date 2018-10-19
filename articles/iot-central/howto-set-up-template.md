@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f71d4c7dc94fedfd598ab87c51366ba9fb1f184a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: a076ee5275a4d053613902a1980542590263385c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063037"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034279"
 ---
 # <a name="set-up-a-device-template"></a>デバイス テンプレートを設定する
 
@@ -63,7 +63,7 @@ ms.locfileid: "37063037"
 - **[状態]** の測定値は、一定期間にわたるデバイスまたはそのコンポーネントの状態を表します。 たとえば、**Operating** (動作中) と **Stopped** (停止) という 2 つの状態があるファン モードを定義できます。
 
 ### <a name="create-a-telemetry-measurement"></a>テレメトリの測定を作成する
-新しいテレメトリの測定を追加するには、**[+ New Measurement]\(+ 新規の測定\)** ボタンを選択します。 測定の種類として **[Telemetry]\(テレメトリ\)** を選択し、**[Create Telemetry]\(テレメトリの作成\)** フォームで詳細を入力します。
+新しいテレメトリの測定値を追加するには、選択**テンプレートの編集**、順にクリックします、 **+ 新しい測定**ボタンをクリックします。 測定の種類として **[Telemetry]\(テレメトリ\)** を選択し、**[Create Telemetry]\(テレメトリの作成\)** フォームで詳細を入力します。
 
 > [!NOTE]
 > 実際のデバイスが接続されたときは、デバイスが報告する測定の名前に注意してください。 名前は測定の **[Field Name]\(フィールド名\)** と正確に一致している必要があります。
@@ -72,12 +72,13 @@ ms.locfileid: "37063037"
 
 ![温度測定の詳細が表示された [Create Telemetry]\(テレメトリの作成\) フォーム](./media/howto-set-up-template/measurementsform.png)
 
-**[Save]\(保存\)** を選択すると、測定の一覧に **[Temperature]\(温度\)** の測定が表示されます。 オペレーターは、デバイスが収集している温度データの視覚化を確認できます。
+**[Done]\(完了\)** を選択すると、測定の一覧に **[Temperature]\(温度\)** の測定が表示されます。 オペレーターは、デバイスが収集している温度データの視覚化を確認できます。
 
-![測定グラフ](./media/howto-set-up-template/measurementsgraph.png)
+> [!NOTE]
+  テレメトリ測定のデータ型は倍精度浮動小数点です。
 
 ### <a name="create-an-event-measurement"></a>イベントの測定を作成する
-新しいイベントの測定を追加するには、**[+ New Measurement]\(+ 新規の測定\)** ボタンを選択します。 測定の種類として **[Event]\(イベント\)** を選択し、**[Create Event]\(イベントの作成\)** フォームで詳細を入力します。
+新しいイベントの測定値を追加するには、選択**テンプレートの編集**、順にクリックします、 **+ 新しい測定**ボタンをクリックします。 測定の種類として **[Event]\(イベント\)** を選択し、**[Create Event]\(イベントの作成\)** フォームで詳細を入力します。
 
 イベントの **[Display Name]\(表示名\)**、**[Field Name]\(フィールド名\)**、**[Severity]\(重大度\)** の詳細を入力します。 **[Error]\(エラー\)**、**[Warning]\(警告\)**、**[Information]\(情報\)** という 3 つの重大度から選択できます。  
 
@@ -85,7 +86,7 @@ ms.locfileid: "37063037"
 
 ![ファン モーター イベントの詳細が表示された [Create Event]\(イベントの作成\) フォーム](./media/howto-set-up-template/eventmeasurementsform.png)
 
-**[Save]\(保存\)** を選択すると、測定の一覧に **[Fan Motor Error]\(ファン モーター エラー\)** の測定が表示されます。 オペレーターは、デバイスが送信しているイベント データの視覚化を確認できます。
+**[Done]\(完了\)** を選択すると、測定の一覧に **[Fan Motor Error]\(ファン モーター エラー\)** の測定が表示されます。 オペレーターは、デバイスが送信しているイベント データの視覚化を確認できます。
 
 ![イベント測定グラフ](./media/howto-set-up-template/eventmeasurementschart.png)
 
@@ -93,9 +94,11 @@ ms.locfileid: "37063037"
 
 !["Fan Motor Error" (ファン モーター エラー) イベントの詳細](./media/howto-set-up-template/eventmeasurementsdetail.png)
 
+> [!NOTE]
+  イベント測定のデータ型は文字列です。
 
 ### <a name="create-a-state-measurement"></a>状態の測定を作成する
-新しい状態の測定を追加するには、**[+ New Measurement]\(+ 新規の測定\)** ボタンを選択します。 測定の種類として **[State]\(状態\)** を選択し、**[Create State]\(状態の作成\)** フォームで詳細を入力します。
+新しい状態測定を追加するには、選択**テンプレートの編集**、順にクリックします、 **+ 新しい測定**ボタンをクリックします。 測定の種類として **[State]\(状態\)** を選択し、**[Create State]\(状態の作成\)** フォームで詳細を入力します。
 
 状態の **[Display Name]\(表示名\)**、**[Field Name]\(フィールド名\)**、および **[Values]\(値\)** の詳細を入力します。 それぞれの値には、グラフやテーブルに値を表示するときに使用される表示名を付けることもできます。
 
@@ -103,14 +106,14 @@ ms.locfileid: "37063037"
 
 ![ファン モードの詳細が表示された [Edit State]\(状態の編集\)](./media/howto-set-up-template/statemeasurementsform.png)
 
-**[Save]\(保存\)** を選択すると、測定の一覧に **[Fan Mode]\(ファン モード\)** の状態の測定が表示されます。 オペレーターは、デバイスが送信している状態データの視覚化を確認できます。
+**[Done]\(完了\)** を選択すると、測定の一覧に **[Fan Mode]\(ファン モード\)** の状態の測定が表示されます。 オペレーターは、デバイスが送信している状態データの視覚化を確認できます。
 
 ![状態の測定グラフ](./media/howto-set-up-template/statemeasurementschart.png)
 
 短期間にデバイスから送信されたデータ ポイントが多すぎる場合、状態の測定は、次のスクリーンショットのように異なるビジュアルで表示されます。 グラフをクリックすると、その期間内のすべてのデータ ポイントが、時系列に表示されます。 時間の範囲を狭くしても、グラフにプロットされる測定を表示できます。
 
-!["Static Fan Mode" (静的ファン モード) 状態の測定の詳細](./media/howto-set-up-template/statemeasurementsdetail.png)
-
+> [!NOTE]
+  状態測定のデータ型は文字列です。
 
 ## <a name="settings"></a>設定
 
@@ -127,13 +130,13 @@ ms.locfileid: "37063037"
 
 - **エラー**: デバイスはエラーを返しました。
 
-たとえば、新しいファン速度の設定を追加できます。
+たとえば、新しいファン速度の設定を追加選択して**テンプレートの編集**に新しい設定を入力して。
 
 ![速度設定の詳細が表示された [Configure Number]\(数値の構成\) フォーム](./media/howto-set-up-template/settingsform.png)
 
 **[Save]\(保存\)** を選択した後、**[Fan Speed]\(ファン速度\)** 設定はタイルとして表示され、デバイスのファン速度を変更するために使用する準備が整います。
 
-タイルの作成後、新しい設定を試すことができます。 まず画面の右上で [Design Mode]\(デザイン モード\) を [Off]\(オフ\) にします。
+タイルの作成後、新しい設定を試すことができます。 最初に、選択**完了**画面の右上部分にします。
 
 ![タイルの [Design Mode]\(デザイン モード\) スイッチが表示された [Settings]\(設定\) タブ](./media/howto-set-up-template/settingstile.png)
 
@@ -149,7 +152,7 @@ ms.locfileid: "37063037"
 > [!NOTE]
 > デバイス プロパティについては、実際のデバイスが接続されたときは、デバイスが報告するプロパティの名前に注意してください。 名前はプロパティの **[Field Name]\(フィールド名\)** と正確に一致している必要があります。 アプリケーションのプロパティについては、名前がデバイス テンプレート内で一意である限り、任意のフィールド名を指定できます。
 
-たとえば、新しいプロパティとして、デバイスの場所を追加できます。
+選択して、新しいプロパティとしてデバイスの場所を追加するなど、**テンプレートの編集**し、新しいプロパティに入力します。
 
 ![[Properties]\(プロパティ\) タブの [Configure Text]\(テキストの構成\) フォーム](./media/howto-set-up-template/propertiesform.png)
 
@@ -157,7 +160,7 @@ ms.locfileid: "37063037"
 
 ![[Location]\(場所\) タイル](./media/howto-set-up-template/propertiestile.png)
 
-タイルの作成後、プロパティの値を変更できます。 まず画面の右上で [Design Mode]\(デザイン モード\) を [Off]\(オフ\) にします。
+タイルの作成後、プロパティの値を変更できます。 最初に、選択 **[Done]\(完了\)** 画面の右上部分でします。
 
 ### <a name="create-a-location-property-through-azure-maps"></a>Azure Maps で場所プロパティを作成する
 Azure IoT Central 内で場所データに地理的コンテキストを追加し、番地の緯度と経度の座標をマッピングすることができます。 または、単に緯度と経度の座標を渡すことができます。 IoT Central の Azure Maps でこの機能を使用できます。
@@ -169,7 +172,7 @@ Azure IoT Central 内で場所データに地理的コンテキストを追加�
 #### <a name="add-location-as-an-application-property"></a>場所をアプリケーション プロパティとして追加する 
 Azure IoT Central アプリケーション内で Azure Maps を使用することで、場所プロパティをアプリケーション プロパティとして作成することができます。 たとえば、デバイスの設置先アドレスを追加できます。 
 
-1. **[Properties]\(プロパティ\)** タブで **[Design Mode]\(デザイン モード\)** が **[On]\(オン\)** であることを確認します。
+1. **プロパティ**] タブで [**テンプレートの編集**します。
 
    ![[Design Mode]\(デザイン モード\) が [On]\(オン\) の [Properties]\(プロパティ\)](./media/howto-set-up-template/locationcloudproperty1.png)
 
@@ -182,17 +185,13 @@ Azure IoT Central アプリケーション内で Azure Maps を使用するこ�
    - **住所としての場所**
    - **座標としての場所** 
 
-4. **[保存]** を選択します。 
-
-   ![インストール アドレスが追加された場所プロパティ](./media/howto-set-up-template/locationcloudproperty3.png)
-
-場所フィールドのフォームで場所の値を更新できるようになります。 
+4. [**保存**および**完了**] を選択します。 場所フィールドのフォームで場所の値を更新できるようになります。 
 
 #### <a name="add-location-as-a-device-property"></a>デバイス プロパティとして場所を追加する 
 
 場所プロパティは、デバイスから報告されるデバイス プロパティとして作成できます。 たとえば､デバイスの場所を追跡する場合です。
 
-1. **[Properties]\(プロパティ\)** タブで **[Design Mode]\(デザイン モード\)** が **[On]\(オン\)** であることを確認します。
+1. **プロパティ**] タブで [**テンプレートの編集**します。
 
    ![[Design Mode]\(デザイン モード\) が [On]\(オン\) の [Properties]\(プロパティ\)](./media/howto-set-up-template/locationdeviceproperty1.png)
 
@@ -216,13 +215,13 @@ Azure IoT Central アプリケーション内で Azure Maps を使用するこ�
 
 * **コマンド**: コマンドは、IoT Central からリモートでデバイスに対してすぐにコマンドを実行する場合に使用します。 デバイスが接続されていない場合、コマンドはタイムアウトして失敗します。 たとえば、デバイスを再起動するとします。  
 
-コマンドを実行すると、デバイスがコマンドを受け取ったかどうかによって、3 つの状態のいずれかになります。 
+コマンドを実行すると、デバイスがコマンドを受け取ったかどうかによって、3 つの状態のいずれかになります。
 
-たとえば、新しい **Echo** コマンドを作成できます。
+たとえば、ことができますを追加する新しい**エコー**コマンドを選択して**テンプレートの編集**、 をクリックし、 **+ 新しいコマンド**に新しいコマンドを入力して。
 
 ![Echo の詳細が表示された [Configure Command]\(コマンドの構成\) フォーム](./media/howto-set-up-template/commandsecho.png)
 
-**[Save]\(保存\)** を選択すると、**Echo** コマンドがタイルとして表示され、デバイスの echo に使用できる状態になります。
+**[Save]\(保存\)** および **[Done]\(完了)\** を選択すると、**Echo** コマンドがタイルとして表示され、デバイスの echo に使用できる状態になります。
 
 タイルの作成後、新しいコマンドを試すことができます。
 
@@ -236,7 +235,7 @@ Azure IoT Central アプリケーション内で Azure Maps を使用するこ�
 
 ダッシュボードは、オペレーターがアクセスして、デバイスに関する情報を参照できる場所です。 ビルダーは、デバイスがどのように動作しているかをオペレーターが理解する助けになるタイルをこのページに追加できます。 デバイス テンプレートには複数のダッシュボード タイルを追加できます。 追加できるダッシュボード タイルの種類は、画像、折れ線グラフ、棒グラフ、KPI、設定、プロパティ、およびラベルの 6 つです。
 
-たとえば、**[Settings and Properties]** タイルを追加して、設定とプロパティの現在の値から、選択したものを表示できます。
+たとえば、追加、**設定とプロパティ**タイルを選択して設定とプロパティの現在の値の選択範囲を表示する**テンプレートの編集**と、ライブラリからそのタイル。
 
 ![設定とプロパティの詳細が表示された [Configure Device Details]\(デバイスの詳細の構成\) フォーム](./media/howto-set-up-template/dashboardsettingsandpropertiesform.png)
 
@@ -248,7 +247,7 @@ Azure IoT Central アプリケーション内で Azure Maps を使用するこ�
 
 前述の「[Azure Maps を使用して場所プロパティを作成する](#create-a-location-property-through-azure-maps)」で場所プロパティを構成した場合、デバイス ダッシュボードのマップを使用して場所を視覚化することができます。
 
-1. **[Dashboard]\(ダッシュボード\)** タブで **[Design Mode]\(デザイン モード\)** が **[On]\(オン\)** であることを確認します。
+1. **ダッシュ ボード**] タブで [**テンプレートの編集**します。
 
    ![[Design Mode]\(デザイン モード\) が [On]\(オン\) の [Dashboard]\(ダッシュボード\) タブ](./media/howto-set-up-template/locationcloudproperty4map.png)
 
@@ -261,11 +260,7 @@ Azure IoT Central アプリケーション内で Azure Maps を使用するこ�
 
    ![選択した場所が表示された [Map]\(マップ\) タイル](./media/howto-set-up-template/locationcloudproperty6map.png) 
 
-マップは任意のサイズに変更することができます。
-
-オペレーターがダッシュボードを表示すると、場所マップを含め、構成したすべてのダッシュボード タイルを見ることができるようになりました。
-
-![ダッシュボード上のタイル](./media/howto-set-up-template/locationcloudproperty7map.png) 
+マップは任意のサイズに変更することができます。 オペレーターがダッシュボードを表示すると、場所マップを含め、構成したすべてのダッシュボード タイルを見ることができるようになりました。
 
 ## <a name="next-steps"></a>次の手順
 

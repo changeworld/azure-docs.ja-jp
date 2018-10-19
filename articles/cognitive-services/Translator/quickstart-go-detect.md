@@ -1,21 +1,21 @@
 ---
-title: Translator Text と Go でテキストの言語を認識する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と Go を使って、ソース テキストの言語を認識します。
+title: 'クイック スタート: テキストの言語を認識する - Translator Text、Go'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Go で Translator Text API を使ってソース テキストの言語を認識します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
 ms.author: nolachar
-ms.openlocfilehash: 29fac1a079455a65cc3d430c3030fed99f5cfce1
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 25834fae2ce60d93ebeb3a25298b97294748bf9b
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "43771284"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129711"
 ---
 # <a name="quickstart-identify-language-from-text-with-go"></a>クイック スタート: Go を使ってテキストの言語を認識する
 

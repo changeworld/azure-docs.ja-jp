@@ -1,48 +1,47 @@
 ---
-title: 'Computer Vision API C# クイック スタート: サムネイルの作成 | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Computer Vision と C# を使って、画像からサムネイルを生成します。
+title: 'クイック スタート: サムネイルの生成 - REST、C# - Computer Vision'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Computer Vision API と C# を使って、画像からサムネイルを生成します。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: PatrickFarley
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
-ms.author: v-deken
-ms.openlocfilehash: 0f5e3be75ce34d10c223e6a157a89fca12b9c3dc
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.author: pafarley
+ms.openlocfilehash: b3822fee5d729064375e5088cb207aebfa74f8ac
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43772121"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342049"
 ---
-# <a name="quickstart-generate-a-thumbnail---rest-c35"></a>クイック スタート: サムネイルの生成 - REST、C&#35;
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c35-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と C&#35; を使用したサムネイルの生成
 
-このクイック スタートでは、Computer Vision を使って、画像からサムネイルを生成します。
+このクイック スタートでは、Computer Vision の REST API を使って、画像からサムネイルを生成します。 [サムネイル取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)メソッドを使うと、画像のサムネイルを生成することができます。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision は、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Computer Vision を使用するにはサブスクリプション キーが必要です。「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
+- [Visual Studio 2015 ](https://visualstudio.microsoft.com/downloads/)以降が必要です。
+- Computer Vision のサブスクリプション キーが必要です。 「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
 
-## <a name="get-thumbnail-request"></a>サムネイル取得要求
+## <a name="create-and-run-the-sample-application"></a>サンプル アプリケーションを作成して実行する
 
-[サムネイル取得メソッド](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)を使うと、画像のサムネイルを生成することができます。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision は、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
+Visual Studio でサンプルを作成するには、次の手順を実行します。
 
-このサンプルを実行するには、次の手順を実行します。
-
-1. Visual Studio で、新しい Visual C# コンソール アプリを作成します。
+1. Visual C# コンソール アプリ テンプレートを使用して、Visual Studio で新しい Visual Studio ソリューションを作成します。
 1. Newtonsoft.Json NuGet パッケージをインストールします。
     1. メニューの **[ツール]** で **[NuGet パッケージ マネージャー]** を選択し、**[ソリューションの NuGet パッケージの管理]** を選択します。
     1. **[参照]** タブをクリックし、**[検索]** ボックスに「Newtonsoft.Json」と入力します。
     1. **[Newtonsoft.Json]** が表示されたら選択し、対象のプロジェクト名の横のチェック ボックスをオンにして、**[インストール]** をクリックします。
-1. `Program.cs` を以下のコードに置き換えます。
-1. `<Subscription Key>` を、有効なサブスクリプション キーに置き換えます。
-1. 必要に応じて `uriBase` の値を、サブスクリプション キーを取得した場所に変更します。
+1. `Program.cs` のコードを次のコードに置き換えて、必要に応じてコードに次の変更を加えます。
+    1. `subscriptionKey` 値を、サブスクリプション キーに置き換えます。
+    1. 必要に応じて、サブスクリプション キーを取得した Azure リージョンの[サムネイル取得](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)メソッドのエンドポイント URL で `uriBase` 値を置き換えます。
 1. プログラムを実行します。
 1. プロンプトで、ローカル画像のパスを入力します。
-
-サムネイルは、元の名前に "_thumb" というサフィックスで、ローカル画像と同じフォルダーに保存されます。
 
 ```csharp
 using Newtonsoft.Json.Linq;
@@ -59,12 +58,12 @@ namespace CSHttpClientSample
         // Replace <Subscription Key> with your valid subscription key.
         const string subscriptionKey = "<Subscription Key>";
 
-        // You must use the same region in your REST call as you used to
-        // get your subscription keys. For example, if you got your
-        // subscription keys from westus, replace "westcentralus" in the URL
+        // You must use the same Azure region in your REST API method as you used to
+        // get your subscription keys. For example, if you got your subscription keys
+        // from the West US region, replace "westcentralus" in the URL
         // below with "westus".
         //
-        // Free trial subscription keys are generated in the westcentralus region.
+        // Free trial subscription keys are generated in the West Central US region.
         // If you use a free trial subscription key, you shouldn't need to change
         // this region.
         const string uriBase =
@@ -80,7 +79,7 @@ namespace CSHttpClientSample
 
             if (File.Exists(imageFilePath))
             {
-                // Make the REST API call.
+                // Call the REST API method.
                 Console.WriteLine("\nWait a moment for the results to appear.\n");
                 MakeThumbNailRequest(imageFilePath).Wait();
             }
@@ -108,35 +107,41 @@ namespace CSHttpClientSample
                     "Ocp-Apim-Subscription-Key", subscriptionKey);
 
                 // Request parameters.
+                // The width and height parameters specify a thumbnail that's 
+                // 200 pixels wide and 150 pixels high.
+                // The smartCropping parameter is set to true, to enable smart cropping.
                 string requestParameters = "width=200&height=150&smartCropping=true";
 
-                // Assemble the URI for the REST API Call.
+                // Assemble the URI for the REST API method.
                 string uri = uriBase + "?" + requestParameters;
 
                 HttpResponseMessage response;
 
-                // Request body.
-                // Posts a locally stored JPEG image.
+                // Read the contents of the specified local image
+                // into a byte array.
                 byte[] byteData = GetImageAsByteArray(imageFilePath);
 
+                // Add the byte array as an octet stream to the request body.
                 using (ByteArrayContent content = new ByteArrayContent(byteData))
                 {
-                    // This example uses content type "application/octet-stream".
+                    // This example uses the "application/octet-stream" content type.
                     // The other content types you can use are "application/json"
                     // and "multipart/form-data".
                     content.Headers.ContentType =
                         new MediaTypeHeaderValue("application/octet-stream");
 
-                    // Make the REST API call.
+                    // Asynchronously call the REST API method.
                     response = await client.PostAsync(uri, content);
                 }
 
+                // Check the HTTP status code of the response. If successful, display
+                // display the response and save the thumbnail.
                 if (response.IsSuccessStatusCode)
                 {
                     // Display the response data.
                     Console.WriteLine("\nResponse:\n{0}", response);
 
-                    // Get the image data.
+                    // Get the image data for the thumbnail from the response.
                     byte[] thumbnailImageData =
                         await response.Content.ReadAsByteArrayAsync();
 
@@ -169,9 +174,11 @@ namespace CSHttpClientSample
         /// <returns>The byte array of the image data.</returns>
         static byte[] GetImageAsByteArray(string imageFilePath)
         {
+            // Open a read-only file stream for the specified file.
             using (FileStream fileStream =
                 new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
             {
+                // Read the file's contents into a byte array.
                 BinaryReader binaryReader = new BinaryReader(fileStream);
                 return binaryReader.ReadBytes((int)fileStream.Length);
             }
@@ -180,9 +187,11 @@ namespace CSHttpClientSample
 }
 ```
 
-## <a name="get-thumbnail-response"></a>サムネイル取得応答
+## <a name="examine-the-response"></a>結果の確認
 
-成功時の応答には、サムネイル画像のバイナリが格納されます。 要求が失敗した場合は、原因の特定につながるエラー コードとメッセージが応答に格納されます。
+成功応答は、サムネイル画像データを表すバイナリ データとして返されます。 要求に成功すると、サムネイルは、元の名前に "_thumb" というサフィックスを使用して、ローカル画像と同じフォルダーに保存されます。 要求が失敗した場合は、原因の特定につながるエラー コードとメッセージが応答に格納されます。
+
+サンプル アプリケーションによって、次の例のように成功応答がコンソール ウィンドウに表示されます。
 
 ```text
 Response:
@@ -202,6 +211,10 @@ StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.Stre
   Expires: -1
 }
 ```
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+不要になった場合は、Visual Studio ソリューションを削除します。 これを行うには、エクスプ ローラーを開き、Visual Studio ソリューションを作成したフォルダーに移動して、そのフォルダーを削除します。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 10/2/2018
 ms.author: victorh
-ms.openlocfilehash: 919051a945d423a104b286e9c5703c5b749cf026
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 27221ac4b23f52dd6976a959e6e5529eb0cc89fa
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946461"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856073"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>チュートリアル: Azure PowerShell を使用してハイブリッド ネットワークに Azure Firewall をデプロイして構成する
 
@@ -134,6 +134,28 @@ $VNetSpoke = New-AzureRmVirtualNetwork -Name $VnetNameSpoke -ResourceGroupName $
 -Location $Location1 -AddressPrefix $VNetSpokePrefix -Subnet $Spokesub,$GWsubSpoke
 ```
 
+## <a name="create-and-configure-the-onprem-vnet"></a>OnPrem VNet を作成して構成する
+
+VNet に含めるサブネットを定義します。
+
+```azurepowershell
+$Onpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNNameOnprem -AddressPrefix $SNOnpremPrefix
+$GWOnpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWOnpremPrefix
+```
+
+ここで、OnPrem VNet を作成します。
+
+```azurepowershell
+$VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
+-Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
+```
+VNet 用に作成するゲートウェイに割り当てるパブリック IP アドレスを要求します。 *AllocationMethod* が **Dynamic** であることに注意してください。 使用する IP アドレスを指定することはできません。 IP アドレスはゲートウェイに動的に割り当てられます。 
+
+  ```azurepowershell
+  $gwOnprempip = New-AzureRmPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
+  -Location $Location1 -AllocationMethod Dynamic
+```
+
 ## <a name="configure-and-deploy-the-firewall"></a>ファイアウォールを構成してデプロイする
 
 ここで、ファイアウォールをハブ VNet にデプロイします。
@@ -154,11 +176,13 @@ $AzfwPrivateIP
 
 ### <a name="configure-network-rules"></a>ネットワーク ルールを構成する
 
+<!--- $Rule2 = New-AzureRmFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
+   -DestinationAddress $VNetSpokePrefix -DestinationPort *--->
+
 ```azurepowershell
 $Rule1 = New-AzureRmFirewallNetworkRule -Name "AllowWeb" -Protocol TCP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort 80
-$Rule2 = New-AzureRmFirewallNetworkRule -Name "AllowPing" -Protocol ICMP -SourceAddress $SNOnpremPrefix `
-   -DestinationAddress $VNetSpokePrefix -DestinationPort *
+
 $Rule3 = New-AzureRmFirewallNetworkRule -Name "AllowRDP" -Protocol TCP -SourceAddress $SNOnpremPrefix `
    -DestinationAddress $VNetSpokePrefix -DestinationPort 3389
 
@@ -182,7 +206,7 @@ Set-AzureRmFirewall -AzureFirewall $Azfw
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>VPN ゲートウェイを作成して接続する
 
-ハブと OnPrem VNet は、VPN ゲートウェイを介して接続されます。
+ハブと OnPrem VNet は、VPN ゲートウェイ経由で接続されます。
 
 ### <a name="create-a-vpn-gateway-for-the-hub-vnet"></a>ハブ VNet の VPN ゲートウェイを作成する
 
@@ -262,27 +286,7 @@ Get-AzureRmVirtualNetworkGatewayConnection -Name $ConnectionNameHub -ResourceGro
 "egressBytesTransferred": 4142431
 ```
 
-## <a name="create-and-configure-the-onprem-vnet"></a>OnPrem VNet を作成して構成する
 
-VNet に含めるサブネットを定義します。
-
-```azurepowershell
-$Onpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNNameOnprem -AddressPrefix $SNOnpremPrefix
-$GWOnpremsub = New-AzureRmVirtualNetworkSubnetConfig -Name $SNnameGW -AddressPrefix $SNGWOnpremPrefix
-```
-
-ここで、OnPrem VNet を作成します。
-
-```azurepowershell
-$VNetOnprem = New-AzureRmVirtualNetwork -Name $VNetnameOnprem -ResourceGroupName $RG1 `
--Location $Location1 -AddressPrefix $VNetOnpremPrefix -Subnet $Onpremsub,$GWOnpremsub
-```
-VNet 用に作成するゲートウェイに割り当てるパブリック IP アドレスを要求します。 *AllocationMethod* が **Dynamic** であることに注意してください。 使用する IP アドレスを指定することはできません。 IP アドレスはゲートウェイに動的に割り当てられます。 
-
-  ```azurepowershell
-  $gwOnprempip = New-AzureRmPublicIpAddress -Name $GWOnprempipName -ResourceGroupName $RG1 `
-  -Location $Location1 -AllocationMethod Dynamic
-```
 
 ## <a name="peer-the-hub-and-spoke-vnets"></a>ハブとスポーク VNet をピアリングする
 
@@ -300,6 +304,9 @@ Add-AzureRmVirtualNetworkPeering -Name SpoketoHub -VirtualNetwork $VNetSpoke -Re
 次に、2 つのルートを作成します。 
 - ファイアウォール ハブ IP アドレスを介したハブ ゲートウェイ サブネットからスポーク サブネットへのルート
 - ファイアウォール ハブ IP アドレスを介したスポーク サブネットからの既定ルート
+
+> [!NOTE]
+> Azure Firewall は、BGP を使用してオンプレミス ネットワークを学習します。 これには、インターネット トラフィックをオンプレミス ネットワーク経由で戻す既定のルートが含まれている場合があります。 代わりに、インターネット トラフィックをファイアウォールからインターネットに直接送信する場合は、次のホップ タイプ **インターネット**を伴う AzureFirewallSubnet にユーザー定義の既定のルート (0.0.0.0/0) を追加します。 オンプレミスの宛先トラフィックは、BGP で学習されたより多くの特定ルートを使用して、これまでと同じように、VPN/ExpressRoute ゲートウェイ経由で強制的にトンネリングされます。
 
 ```azurepowershell
 #Create a route table
@@ -397,8 +404,9 @@ Set-AzureRmVMExtension `
     -TypeHandlerVersion 1.4 `
     -SettingString '{"commandToExecute":"powershell Add-WindowsFeature Web-Server"}' `
     -Location $Location1
+```
 
-#Create a host firewall rule to allow ping in
+<!---#Create a host firewall rule to allow ping in
 Set-AzureRmVMExtension `
     -ResourceGroupName $RG1 `
     -ExtensionName IIS `
@@ -407,8 +415,8 @@ Set-AzureRmVMExtension `
     -ExtensionType CustomScriptExtension `
     -TypeHandlerVersion 1.4 `
     -SettingString '{"commandToExecute":"powershell New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4"}' `
-    -Location $Location1
-```
+    -Location $Location1--->
+
 
 ### <a name="create-the-onprem-virtual-machine"></a>OnPrem 仮想マシンを作成する
 これは単純な仮想マシンで、リモート デスクトップを使用してパブリック IP アドレスに接続できます。 そこから、ファイアウォールを介して OnPrem サーバーに接続できます。 プロンプトが表示されたら、仮想マシンの HTTPS ユーザー名とパスワードを入力します。
@@ -431,10 +439,10 @@ $NIC.IpConfigurations.privateipaddress
 ```
 
 1. Azure portal から、**VM-Onprem** 仮想マシンに接続します。
-2. **VM-Onprem** 上で Windows PowerShell コマンド プロンプトを開き、**VM-spoke-01** のプライベート IP に対して ping を実行します。
+<!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
-   応答を取得する必要があります。
-1. **VM-Onprem** 上で Web ブラウザーを開き、 http://\<VM-spoke-01 private IP\> にアクセスします。
+   You should get a reply.--->
+2. **VM-Onprem** 上で Web ブラウザーを開き、 http://\<VM-spoke-01 private IP\> にアクセスします。
 
    インターネット インフォメーション サービスの既定ページが表示されます。
 
@@ -444,7 +452,7 @@ $NIC.IpConfigurations.privateipaddress
 
 これで、ファイアウォール ルールが動作していることを確認できました。
 
-- スポーク VNet 上のサーバーに対して ping を実行できます。
+<!---- You can ping the server on the spoke VNet.--->
 - スポーク VNet 上の Web サーバーを閲覧できます。
 - RDP を使用してスポーク VNet 上のサーバーに接続できます。
 
@@ -468,7 +476,7 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * ネットワーク環境を設定する

@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: cea59d061dadfa3e10330cbce7b6005a286524cc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 058e1f9abbf094fb49a21191f60195df53615451
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024168"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985296"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Azure Stack の管理者ポータルの使用
 
@@ -70,7 +70,9 @@ Azure Stack オペレーターは、管理者ポータルからユーザー (自
 
 ### <a name="customize-the-dashboard"></a>ダッシュボードのカスタマイズ
 
-ダッシュボードには、既定のタイルのセットが含まれています。 **[ダッシュボードの編集]** を選択して既定のダッシュボードを変更したり、**[新しいダッシュボード]** を選択してカスタムのダッシュボードを追加したりできます。 ダッシュボードにはタイルを簡単に追加できます。 たとえば、**[新規]** を選択し、**[プラン]** を右クリックし、**[ダッシュボードにピン留めする]** を選択します。
+ダッシュボードには、既定のタイルのセットが含まれています。 **[ダッシュボードの編集]** を選択して既定のダッシュボードを変更したり、**[新しいダッシュボード]** を選択してカスタムのダッシュボードを追加したりできます。 ダッシュボードにはタイルを簡単に追加できます。 たとえば、**[+ リソースの作成]** を選択し、**[オファー + プラン]** を右クリックし、**[ダッシュボードにピン留めする]** を選択します。
+
+ポータルに空のダッシュボードが表示されることがあります。 ダッシュボードを回復するには、**[ダッシュボードの編集]** をクリックし、右クリックして、**[既定の状態にリセット]** を選びます。
 
 ### <a name="quick-access-to-online-documentation"></a>オンライン ドキュメントへのクイック アクセス
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
-ms.openlocfilehash: 3ea57a834bfbb1583c53bbb1be80daffe1f05de6
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 097aa128affb6a7ac0770c861ab70ec9d04e2d98
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380269"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319117"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>仮想マシンの OS ドライブを展開する方法
 
@@ -210,9 +210,6 @@ VM 用にディスクを拡張したら、OS に移動して、新しいスペ�
 4.  **DISKPART** プロンプトで「`extend [size=<size>]`」と入力します。 これにより、選択したボリュームがメガバイト (MB) 単位の *size* で拡張されます。
 
 
-##<a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 
 また、[Azure portal](attach-managed-disk-portal.md) を使用してディスクを接続することもできます。
-
-
-

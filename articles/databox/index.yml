@@ -1,23 +1,22 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f4ef48157896d7cf4947fbc8ef6eba8b59ec414b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7056f5478838eec1cccf6329e172d86ea90d4dd8
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986518"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311050"
 documentType: LandingData
-title: オフライン転送のための Azure Data Box
+title: Azure Data Box のドキュメント - オフライン転送
 metadata:
-  title: オンライン転送のための Azure Data Box のドキュメント
-  description: Azure Data Box ファミリーでは、信頼性が高く、迅速かつ安価な方法で、数百テラバイトのデータを Azure に転送できます。 時間、ネットワーク、またはコストによって制限されている場合は、オフライン データ転送用の Data Box デバイスを使用します。
+  title: Azure Data Box のドキュメント - オフライン転送
+  description: 時間、ネットワーク、またはコストによって制限されている場合は、Azure へのオフライン データ転送に Data Box デバイスを使用します。
   services: databox
   author: alkohli
   manager: twooley
   ms.service: databox
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.subservice: pod
   ms.topic: landing-page
-  ms.date: 09/24/2018
+  ms.date: 10/12/2018
   ms.author: alkohli
 abstract:
   description: Azure Data Box ファミリーでは、信頼性が高く、迅速かつ安価な方法で、数百テラバイトのデータを Azure に転送できます。 時間、ネットワーク、またはコストによって制限されている場合は、オフライン データ転送用の Data Box デバイスを使用します。<p>ご利用のデータ サイズに応じて、Data Box Disk、Data Box <SUP>プレビュー</SUP>、または Data Box Heavy<SUP> プレビュー</SUP>の中から選択します。 各デバイスについて、データの注文、データの受信、デバイスへのデータのコピー、Azure へのデバイスの返却という、4 つの簡単な手順で Azure への転送を行います。 Azure データ センターでは、データはアップロードされてから消去されます。</p><p>Microsoft が提供するクイック スタートとチュートリアルを使用して、オフライン データ転送のために Data Box を活用する方法を学習します。</p>

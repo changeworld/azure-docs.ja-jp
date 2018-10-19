@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Azure Machine Learning で画像分類モデルをトレーニングする'
+title: 'チュートリアル: Azure Machine Learning サービスで画像分類モデルをトレーニングする'
 description: このチュートリアルでは、Azure Machine Learning サービスを使用して、Python Jupyter ノートブックの scikit-learn で画像分類モデルをトレーニングする方法について説明します。 このチュートリアルは、2 部構成のシリーズのパート 1 です。
 services: machine-learning
 ms.service: machine-learning
@@ -9,18 +9,18 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 6fbca5e83d8ab4b3c34c6448c7a2303697da623b
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 7110d8df5ee837829f97fec8ab26d929689e3436
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181400"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785140"
 ---
-# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning"></a>チュートリアル #1: Azure Machine Learning で画像分類モデルをトレーニングする
+# <a name="tutorial-1-train-an-image-classification-model-with-azure-machine-learning-service"></a>チュートリアル #1: Azure Machine Learning サービスで画像分類モデルをトレーニングする
 
 このチュートリアルでは、機械学習モデルのトレーニングをローカルに行ったり、リモートのコンピューティング リソース上で行ったりします。 Python Jupyter Notebook 内の Azure Machine Learning サービス (プレビュー) に関するトレーニングとデプロイのワークフローを使用します。  それからノートブックをテンプレートとして使用し、独自のデータで独自の機械学習モデルをトレーニングできます。 このチュートリアルは、**2 部構成のチュートリアル シリーズのパート 1 です**。  
 
-このチュートリアルでは、Azure Machine Learning で [MNIST](http://yann.lecun.com/exdb/mnist/) データセットや [scikit-learn](http://scikit-learn.org) を使用して、単純なロジスティック回帰をトレーニングします。  MNIST は、70,000 ものグレースケールのイメージから成る、人気のあるデータセットです。 各イメージは、0 から 9 までの数値を表す 28x28 ピクセルの手書き数字です。 多クラス分類子を作成して、特定のイメージが表す数字を識別することが目標です。 
+このチュートリアルでは、Azure Machine Learning サービスで [MNIST](http://yann.lecun.com/exdb/mnist/) データセットや [scikit-learn](http://scikit-learn.org) を使用して、単純なロジスティック回帰をトレーニングします。  MNIST は、70,000 ものグレースケールのイメージから成る、人気のあるデータセットです。 各イメージは、0 から 9 までの数値を表す 28x28 ピクセルの手書き数字です。 多クラス分類子を作成して、特定のイメージが表す数字を識別することが目標です。 
 
 以下の項目について説明します。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="get-the-notebook"></a>ノートブックを入手する
 
-便利なように、このチュートリアルは Jupyter Notebook として提供されています。 次の 2 つのいずれかの方法を使用して、[Machine Learning サンプル ノートブックの GitHub リポジトリ](https://github.com/Azure/MachineLearningNotebooks)を複製して、`tutorials/01.train-models.ipynb` ノートブックを実行します。
+便利なように、このチュートリアルは[ Jupyter notebook ](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb)として提供されています。 `01.train-models.ipynb`Azure Notebook またはご自身の Jupyter notebook サーバー内のいずれかのノートを実行します。
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
@@ -454,7 +454,7 @@ compute_target.delete()
 
 ## <a name="next-steps"></a>次の手順
 
-この Azure Machine Learning のチュートリアルでは、Python を使用して次の作業を行いました。
+この Azure Machine Learning サービスのチュートリアルでは、Python を使用して次の作業を行いました。
 
 > [!div class="checklist"]
 > * 開発環境を設定する

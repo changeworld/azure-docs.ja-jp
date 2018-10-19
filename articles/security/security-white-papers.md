@@ -9,22 +9,23 @@ editor: ''
 ms.assetid: ''
 ms.service: security
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 8/17/2018
+ms.date: 9/10/2018
 ms.author: tomsh
-ms.openlocfilehash: cc922762f84b3a0658d503c4bfa6eb0079173e4e
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 9ecdc0b7d2d21962dbfc7c14e9fff3fd969dd018
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841549"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721094"
 ---
 # <a name="azure-security-white-papers"></a>Azure セキュリティ ホワイト ペーパー
 | | |
 |-|-|
 |[Azure セキュリティの概要](azure-security.md)&nbsp;&nbsp;&nbsp;|Azure で実装されているセキュリティ コントロールのコレクションについて、顧客と Microsoft の運用の両方の観点から説明します。 Azure で利用できる顧客向けセキュリティ コントロールについて、包括的に説明します。|
+|[Azure ソリューションのセキュリティに関するベスト プラクティス](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions)|Azure を利用してクラウド ソリューションを設計、デプロイ、管理するときに使用するセキュリティのベスト プラクティスのコレクション。|
 |[高度な脅威検出](azure-threat-detection.md)|脅威に対する脆弱性の評価、診断、および分析に向けた Azure の取り組みについて説明します。 Microsoft が高度な脅威検出メカニズムを使用して、プラットフォームをセキュリティで保護している方法を説明します。 Microsoft がこれらのメカニズムをパブリックに公開される機能とサービスに組み込んでいる方法についても説明します。|
 |[保存時の Azure データの暗号化](azure-security-encryption-atrest.md)|Azure とデータ保護の実装に参加するさまざまなコンポーネント間で、保存時にデータを保護する方法に注目します。 さまざまなキー管理保護アプローチの長所と短所を確認します。|
 |[Azure のログと監査](azure-log-audit.md)|Azure でホストされているサービスからのセキュリティ ログの生成、収集、および分析の概要について説明します。 これらのログは、Azure のデプロイに対するセキュリティの詳細情報を得るために役立ちます。 |

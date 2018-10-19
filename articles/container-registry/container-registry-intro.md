@@ -3,18 +3,17 @@ title: Azure のプライベート Docker コンテナー レジストリ
 description: クラウド ベースの管理されたプライベート Docker レジストリを提供する Azure Container Registry サービスの紹介です。
 services: container-registry
 author: stevelas
-manager: jeconnoc
 ms.service: container-registry
 ms.topic: overview
-ms.date: 05/08/2018
+ms.date: 09/25/2018
 ms.author: stevelas
 ms.custom: mvc
-ms.openlocfilehash: f282d7d6950278d0c270009256cf054a0d630e60
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5d60144c6b3aada74e4b89c905085835dd5b32d2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43120637"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031334"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure のプライベート Docker コンテナー レジストリの概要
 
@@ -28,12 +27,12 @@ Docker およびコンテナーに関する背景情報は､[Docker概要](http
 
 Azure コンテナー レジストリからさまざまなデプロイ ターゲットにイメージをプルできます。
 
-* [DC/OS](https://docs.mesosphere.com/)、[Docker Swarm](https://docs.docker.com/swarm/)、[Kubernetes](http://kubernetes.io/docs/) など、ホストのクラスターのコンテナー化されたアプリケーションを管理する**スケーラブルなオーケストレーション システム**。
+* [Kubernetes](http://kubernetes.io/docs/)、[DC/OS](https://docs.mesosphere.com/)、[Docker Swarm](https://docs.docker.com/swarm/) など、ホストから成るクラスターにわたってコンテナー化されたアプリケーションを管理する**スケーラブルなオーケストレーション システム**。
 * [Azure Kubernetes Service (AKS)](../aks/index.yml) や  [App Service](../app-service/index.yml)､[Batch](../batch/index.yml)､[Service Fabric](/azure/service-fabric/) など､大規模なアプリケーション のビルドと実行をサポートしている **Azure サービス**｡
 
-開発者は、コンテナー開発ワークフローの一環としてコンテナー レジストリにプッシュすることもできます。 たとえば、[Visual Studio Team Services](https://www.visualstudio.com/docs/overview) や [Jenkins](https://jenkins.io/) などの継続的な統合とデプロイ ツールからコンテナー レジストリを対象にすることができます。
+開発者は、コンテナー開発ワークフローの一環としてコンテナー レジストリにプッシュすることもできます。 たとえば、[Azure DevOps Services](https://www.visualstudio.com/docs/overview) や [Jenkins](https://jenkins.io/) などの継続的インテグレーションとデプロイのツールからコンテナー レジストリを対象にします。
 
-[ACR Build](#azure-container-registry-build) ビルド タスクの設定では､ベース イメージが更新されたときに自動的にアプリケーションイメージのリビルドされるように指定できます｡ ACR Build を利用して､Git レポジトリにコードが コミットされたときのイメージ ビルドを自動化してください｡ *ACR Build は現在プレビュー段階です｡*
+ベース イメージが更新されたときに自動的にアプリケーションイメージをリビルドするように [ACR タスク](#azure-container-registry-build)を設定します。 Git レポジトリにコードが コミットされたときのイメージ ビルドを自動化するために、ACR タスクを利用します。
 
 ## <a name="key-concepts"></a>主要な概念
 
@@ -51,14 +50,14 @@ Azure コンテナー レジストリからさまざまなデプロイ ターゲ
 
 * **コンテナー** - コンテナーでは、ソフトウェア アプリケーションと、コード、ランタイム、システム ツール、ライブラリを含む完全なファイル システム内にラップされた依存関係を定義します。 コンテナー レジストリからプルした Windows または Linux イメージに基づいて Docker コンテナーを実行します。 1 台のコンピューターで実行されているすべてのコンテナーでは、オペレーティング システムのカーネルを共有します。 Docker コンテナーは、主要なすべての Linux ディストリビューション、macOS、および Windows に完全に移植できます。
 
-## <a name="azure-container-registry-build-preview"></a>Azure Container Registry Build (プレビュー)
+## <a name="azure-container-registry-tasks"></a>Azure Container Registry タスク
 
-[Azure Container Registry Build](container-registry-build-overview.md) (ACR Build) は､Azure 上で簡略化し効率的な Docker コンテナー イメージ ビルドを行えるようにする､Azure Container Registry の機能一式です｡ ACR Build を利用して､`docker build` オペレーションを Azure にオフロードすることで開発内部ループをクラウドにまで拡大することができます｡ ビルド タスクの設定では､コンテナーの OS およびフレームワーク パッチ適用 パイプラインを自動化し､ソース コントロールにコードがコミットされたときに自動的にイメージがビルドされるよう指定できます｡
+[Azure Container Registry タスク](container-registry-tasks-overview.md) (ACR タスク) は､Azure における Docker コンテナーのイメージ ビルドを簡素化し、効率的に行えるようにする、Azure Container Registry 内の一連の機能です。 ACR タスクを利用して､`docker build` オペレーションを Azure にオフロードすることで、開発の社内ループをクラウドへと拡張します。 ビルド タスクの設定では､コンテナーの OS およびフレームワーク パッチ適用 パイプラインを自動化し､ソース コントロールにコードがコミットされたときに自動的にイメージがビルドされるよう指定できます｡
 
-[!INCLUDE [container-registry-build-preview-note](../../includes/container-registry-build-preview-note.md)]
+ACR タスクのプレビュー機能である[マルチステップ タスク](container-registry-tasks-overview.md#multi-step-tasks-preview)では、クラウドでのコンテナー イメージのビルド、テスト、および修正プログラムの適用のために、ステップ ベースでタスクの定義と実行を行えます。 タスクのステップでは、コンテナー イメージのビルド操作とプッシュ操作を個々に定義します。 各ステップで実行環境としてコンテナーを使用するように、1 つまたは複数のコンテナーの実行を定義することもできます。
 
 ## <a name="next-steps"></a>次の手順
 
 * [Azure Portal を使用したコンテナー レジストリの作成](container-registry-get-started-portal.md)
 * [Azure CLI を使用したコンテナー レジストリの作成](container-registry-get-started-azure-cli.md)
-* [ACR Build による OS および フレームワーク パッチ適用の自動化](container-registry-build-overview.md) (プレビュー)
+* [ACR タスクを使用して OS とフレームワークの修正プログラムの適用を自動化する](container-registry-tasks-overview.md)

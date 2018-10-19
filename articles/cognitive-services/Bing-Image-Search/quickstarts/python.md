@@ -1,37 +1,41 @@
 ---
-title: 'クイック スタート: Python で Bing Image Search API 用の REST API を使用して検索クエリを送信する'
-description: このクイック スタートでは、検索クエリを Bing Search API に送信し、Python を使用して関連するイメージの一覧を取得します。
+title: 'クイック スタート: Python で画像検索を実行する - Bing Image Search API'
+description: このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 このシンプルな Python アプリケーションは、検索クエリを API に送信し、生の結果を表示します。
 services: cognitive-services
-author: v-jerkin
+author: aahill
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
-ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: bc527ba39b580935f113f56aa63f7bdd283ba304
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.topic: quickstart
+ms.date: 8/20/2018
+ms.author: aahi
+ms.openlocfilehash: 44cc556e68234fb9957c01fa9f04861293e96e6a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41929872"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298168"
 ---
 # <a name="quickstart-send-search-queries-using-the-rest-api-and-python"></a>クイック スタート: REST API および Python を使用した検索クエリの送信
 
-Bing Image Search API は、Bing.com/Images と同様、ユーザーの検索クエリを Bing に送信して関連性の高い一連の画像を取得する機能を備えています。
+このクイック スタートを使用すると、Bing Image Search API への最初の呼び出しを行い、JSON 応答を受け取ることができます。 このシンプルな Python アプリケーションは、検索クエリを API に送信し、生の結果を表示します。
 
-このチュートリアルでは、Bing Image Search API の呼び出しと、結果として得られる JSON オブジェクトの事後処理を行う簡単な例を示します。 詳細については、[Bing Image Search のドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)を参照してください。
+このアプリケーションは Python で記述されていますが、API はほとんどのプログラミング言語と互換性のある RESTful Web サービスです。
 
-この例は、起動 Binder バッジ上でクリックすることで、[MyBinder](https://mybinder.org) の Jupyter Notebook として実行できます。 
+この例は、起動 Binder バッジ上でクリックすることで、[MyBinder](https://mybinder.org) の Jupyter Notebook として実行できます。
 
 [![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
+
+
+また、このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingImageSearchv7.py) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="running-the-walkthrough"></a>チュートリアルの実行
-このチュートリアルを続行するには、`subscription_key` に Bing API サービス用 API キーを設定します。
+## <a name="running-the-quickstart"></a>クイックスタートの実行
 
+まず、`subscription_key` を Bing API サービスの有効なサブスクリプション キーに設定します。
 
 ```python
 subscription_key = None
@@ -72,7 +76,7 @@ search_results = response.json()
 thumbnail_urls = [img["thumbnailUrl"] for img in search_results["value"][:16]]
 ```
 
-次に、`PIL` ライブラリを使用してサムネイル画像をダウンロードし、`matplotlib` ライブラリを使用してそれらの画像を 4 列 x 4 行のグリッドに出力できます。
+次に、`PIL` ライブラリを使用してサムネイル画像をダウンロードし、`matplotlib` ライブラリを使用してそれらの画像を 4 列 x 4 行のグリッドに出力します。
 
 
 ```python
@@ -89,6 +93,55 @@ for i in range(4):
         image = Image.open(BytesIO(image_data.content))        
         axes[i][j].imshow(image)
         axes[i][j].axis("off")
+plt.show()
+```
+
+## <a name="sample-json-response"></a>サンプルの JSON 応答
+
+Bing Image Search API からの応答は、JSON として返されます。 このサンプル応答は、1 つの結果だけを表示するように切り詰められています。
+
+```json
+{
+"_type":"Images",
+"instrumentation":{
+    "_type":"ResponseInstrumentation"
+},
+"readLink":"images\/search?q=tropical ocean",
+"webSearchUrl":"https:\/\/www.bing.com\/images\/search?q=tropical ocean&FORM=OIIARP",
+"totalEstimatedMatches":842,
+"nextOffset":47,
+"value":[
+    {
+        "webSearchUrl":"https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=tropical+ocean&id=8607ACDACB243BDEA7E1EF78127DA931E680E3A5&simid=608027248313960152",
+        "name":"My Life in the Ocean | The greatest WordPress.com site in ...",
+        "thumbnailUrl":"https:\/\/tse3.mm.bing.net\/th?id=OIP.fmwSKKmKpmZtJiBDps1kLAHaEo&pid=Api",
+        "datePublished":"2017-11-03T08:51:00.0000000Z",
+        "contentUrl":"https:\/\/mylifeintheocean.files.wordpress.com\/2012\/11\/tropical-ocean-wallpaper-1920x12003.jpg",
+        "hostPageUrl":"https:\/\/mylifeintheocean.wordpress.com\/",
+        "contentSize":"897388 B",
+        "encodingFormat":"jpeg",
+        "hostPageDisplayUrl":"https:\/\/mylifeintheocean.wordpress.com",
+        "width":1920,
+        "height":1200,
+        "thumbnail":{
+        "width":474,
+        "height":296
+        },
+        "imageInsightsToken":"ccid_fmwSKKmK*mid_8607ACDACB243BDEA7E1EF78127DA931E680E3A5*simid_608027248313960152*thid_OIP.fmwSKKmKpmZtJiBDps1kLAHaEo",
+        "insightsMetadata":{
+        "recipeSourcesCount":0,
+        "bestRepresentativeQuery":{
+            "text":"Tropical Beaches Desktop Wallpaper",
+            "displayText":"Tropical Beaches Desktop Wallpaper",
+            "webSearchUrl":"https:\/\/www.bing.com\/images\/search?q=Tropical+Beaches+Desktop+Wallpaper&id=8607ACDACB243BDEA7E1EF78127DA931E680E3A5&FORM=IDBQDM"
+        },
+        "pagesIncludingCount":115,
+        "availableSizesCount":44
+        },
+        "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
+        "accentColor":"0050B2"
+    }
+}
 ```
 
 ## <a name="next-steps"></a>次の手順
@@ -96,9 +149,10 @@ for i in range(4):
 > [!div class="nextstepaction"]
 > [Bing Image Search の単一ページ アプリのチュートリアル](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>関連項目 
+## <a name="see-also"></a>関連項目
 
-[Bing Image Search の概要](../overview.md)  
-[試してみる](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-[無料試用版のアクセス キーを入手する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-[Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Bing Image Search とは](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [オンラインの対話型デモを試す](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [無料の Cognitive Services アクセス キーを取得する](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Azure Cognitive Services のドキュメント](https://docs.microsoft.com/azure/cognitive-services)
+* [Bing Image Search API リファレンス](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

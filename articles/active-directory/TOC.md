@@ -105,6 +105,7 @@
 #### [Azure ストレージ アカウントへのアクティビティ ログのアーカイブ](reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 #### [Azure Monitor を使用したアクティビティ ログと Splunk の統合](reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md)
 #### [Azure Monitor を使用したアクティビティ ログと SumoLogic の統合](reports-monitoring/howto-integrate-activity-logs-with-sumologic.md)
+#### [Azure Monitor を使用したアクティビティ ログと Log Analytics の統合](reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 ### リファレンス
 #### [保持](reports-monitoring/reference-reports-data-retention.md)

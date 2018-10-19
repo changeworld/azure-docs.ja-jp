@@ -1,21 +1,22 @@
 ---
-title: 優先度付けを使用した検索結果の表示 | Microsoft Docs
+title: 順位を使用して検索結果を表示する
+titleSuffix: Azure Cognitive Services
 description: Bing RankingResponse の回答を使用して優先度順に検索結果を表示する方法について説明します。
 services: cognitive-services
 author: bradumbaugh
-manager: bking
+manager: cgronlun
 ms.assetid: 2575A80C-FC74-4631-AE5D-8101CF2591D3
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: brumbaug
-ms.openlocfilehash: 0dd3a2057e73adda3224e7cebe7c492572f94105
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 3e55830fcfdbea91581a75fcfc343fd522485c5a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41936753"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123404"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>C# でのコンソール アプリ検索クライアントのビルド
 
@@ -45,8 +46,8 @@ Visual Studio で、`Ctrl` + `Shift` + `N` キーを押してプロジェクト�
 
 JSON.net では、API によって返される JSON 応答を使用することができます。 NuGet パッケージをプロジェクトに追加します。
 
-- **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理...]** を選びます。 
-- **[参照]** タブで `Newtonsoft.Json` を検索します。 最新のバージョンを選択し、**[インストール]** をクリックします。 
+- **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理...]** を選びます。
+- **[参照]** タブで `Newtonsoft.Json` を検索します。 最新のバージョンを選択し、**[インストール]** をクリックします。
 - **[変更のレビュー]** ウィンドウで **[OK]** ボタンをクリックします。
 - **NuGet: MyConsoleSearchApp** という Visual Studio タブを閉じます。
 
@@ -60,7 +61,7 @@ JSON.net では、API によって返される JSON 応答を使用すること�
 
 ## <a name="add-some-necessary-using-statements"></a>複数の必要な using ステートメントを追加する
 
-このチュートリアルのコードでは、3 つの追加 using ステートメントが必要です。 **Program.cs** の上部にある既存の `using` ステートメントの下に、これらのステートメントを追加します。 
+このチュートリアルのコードでは、3 つの追加 using ステートメントが必要です。 **Program.cs** の上部にある既存の `using` ステートメントの下に、これらのステートメントを追加します。
 
 ```csharp
 using System.Web;
@@ -145,7 +146,7 @@ static void RunQueryAndDisplayResults(string userQuery)
 
 ## <a name="display-ranked-results"></a>順位付けされた結果を表示する
 
-優先度順に結果を表示する方法を示す前に、Web 検索応答サンプルを見てください。 
+優先度順に結果を表示する方法を示す前に、Web 検索応答サンプルを見てください。
 
 ```json
 {
@@ -171,7 +172,7 @@ static void RunQueryAndDisplayResults(string userQuery)
         },
 
         ...
-        
+
         ],
         "someResultsRemoved" : true
     },
@@ -184,7 +185,7 @@ static void RunQueryAndDisplayResults(string userQuery)
         }
 
         ...
-        
+
         ]
     },
     "rankingResponse" : {
@@ -220,7 +221,7 @@ static void RunQueryAndDisplayResults(string userQuery)
 }
 ```
 
-`rankingResponse` JSON オブジェクト ([ドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) には、検索結果の適切な表示順序が記されます。 そこには優先度が付けられた次の 1 つまたは複数のグループが含まれます。 
+`rankingResponse` JSON オブジェクト ([ドキュメント](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse)) には、検索結果の適切な表示順序が記されます。 そこには優先度が付けられた次の 1 つまたは複数のグループが含まれます。
 
 - `pole`: 最も見やすい取り扱い (メインラインとサイドバーの上に表示されるなど) を受ける検索結果。
 - `mainline`: メインラインに表示する検索結果。
@@ -273,7 +274,7 @@ static void DisplayAllRankedResults(Newtonsoft.Json.Linq.JObject responseObjects
 このメソッドは以下の操作を行います。
 
 - 応答に含まれる `rankingResponse` グループ応答をループ処理する
-- `DisplaySpecificResults(...)` を呼び出して、各グループ内の項目を表示する 
+- `DisplaySpecificResults(...)` を呼び出して、各グループ内の項目を表示する
 
 **Program.cs** で次の 2 つのメソッドを追加します。
 

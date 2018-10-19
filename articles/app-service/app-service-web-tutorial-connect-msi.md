@@ -1,6 +1,6 @@
 ---
-title: マネージド サービス ID を使用した App Service からの Secure Azure SQL Database 接続のセキュリティ保護 | Microsoft Docs
-description: マネージド サービス ID を使用してデータベース接続をより安全にする方法と、これを他の Azure サービスに適用する方法について説明します。
+title: マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護 | Microsoft Docs
+description: マネージド ID を使用してデータベース接続をより安全にする方法と、これを他の Azure サービスに適用する方法について説明します。
 services: app-service\web
 documentationcenter: dotnet
 author: cephalin
@@ -14,24 +14,24 @@ ms.topic: tutorial
 ms.date: 04/17/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 173588c0200666c52f3ac0a5d2e70d667cfe3294
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 3125db03dc13f70524fd094736f50b563ef712a4
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445563"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379929"
 ---
-# <a name="tutorial-secure-sql-database-connection-with-managed-service-identity"></a>チュートリアル: マネージド サービス ID による SQL Database 接続のセキュリティ保護
+# <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>チュートリアル: マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護
 
-[App Service](app-service-web-overview.md) では、Azure の高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、[Azure SQL Database](/azure/sql-database/) やその他の Azure サービスへのアクセスをセキュリティ保護するためのターンキー ソリューションである[マネージド サービス ID](app-service-managed-service-identity.md) もアプリ向けに提供しています。 App Service のマネージド サービス ID を使用すると、接続文字列内の認証情報などのシークレットをアプリから排除することで、アプリのセキュリティを強化できます。 このチュートリアルでは、「[チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する](app-service-web-tutorial-dotnet-sqldatabase.md)」で構築したサンプル ASP.NET Web アプリにマネージド サービス ID を追加します。 作業が完了すると、サンプル アプリは、ユーザー名とパスワードを必要とせずに SQL Database に安全に接続するようになります。
+[App Service](app-service-web-overview.md) では、Azure の高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、[Azure SQL Database](/azure/sql-database/) やその他の Azure サービスへのアクセスをセキュリティ保護するためのターンキー ソリューションである[マネージド ID](app-service-managed-service-identity.md) もアプリ向けに提供しています。 App Service のマネージド ID を使用すると、接続文字列内の認証情報などのシークレットをアプリから排除することで、アプリのセキュリティを強化できます。 このチュートリアルでは、「[チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する](app-service-web-tutorial-dotnet-sqldatabase.md)」で構築したサンプル ASP.NET Web アプリにマネージド ID を追加します。 作業が完了すると、サンプル アプリは、ユーザー名とパスワードを必要とせずに SQL Database に安全に接続するようになります。
 
 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * マネージド サービス ID を有効にする
-> * SQL Database へのアクセスをサービス ID に許可する
+> * マネージド ID を有効にする
+> * SQL Database へのアクセスをマネージド ID に付与する
 > * Azure Active Directory 認証を使用して SQL Database で認証するようにアプリケーション コードを構成する
-> * SQL Database 内でサービス ID に最小限の特権を付与する
+> * SQL Database 内でマネージド ID に最小限の特権を付与する
 
 > [!NOTE]
 > Azure Active Directory 認証は、オンプレミスの Active Directory (AD DS) の[統合 Windows 認証](/previous-versions/windows/it-pro/windows-server-2003/cc758557(v=ws.10))とは_異なります_。 AD DS と Azure Active Directory はまったく異なる認証プロトコルを使用しています。 詳細については、「[The difference between Windows Server AD DS and Azure AD](../active-directory/fundamentals/understand-azure-identity-solutions.md#the-difference-between-windows-server-ad-ds-and-azure-ad)」(Windows Server AD DS と Azure AD の違い) を参照してください。
@@ -46,9 +46,9 @@ ms.locfileid: "39445563"
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="enable-managed-service-identity"></a>マネージド サービス ID を有効にする
+## <a name="enable-managed-identities"></a>マネージド ID を有効にする
 
-Azure アプリのサービス ID を有効にするには、Cloud Shell で [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) コマンドを使用します。 次のコマンドで、*\<app name>* を置き換えます。
+Azure アプリのマネージド ID を有効にするには、Cloud Shell で [az webapp identity assign](/cli/azure/webapp/identity?view=azure-cli-latest#az-webapp-identity-assign) コマンドを使用します。 次のコマンドで、*\<app name>* を置き換えます。
 
 ```azurecli-interactive
 az webapp identity assign --resource-group myResourceGroup --name <app name>
@@ -73,13 +73,13 @@ az ad sp show --id <principalid>
 
 ## <a name="grant-database-access-to-identity"></a>データベースへのアクセスを ID に許可する
 
-次に、Cloud Shell 内で [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) コマンドを使用して、データベースへのアクセスをアプリのサービス ID に許可します。 次のコマンドで、*\<server_name>* と <principalid_from_last_step> を置き換えます。 *\<admin_user>* には管理者名を入力します。
+次に、Cloud Shell 内で [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin_create) コマンドを使用して、データベースへのアクセスをアプリのマネージド ID に許可します。 次のコマンドで、*\<server_name>* と <principalid_from_last_step> を置き換えます。 *\<admin_user>* には管理者名を入力します。
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server_name> --display-name <admin_user> --object-id <principalid_from_last_step>
 ```
 
-これで、マネージド サービス ID を使用して Azure SQL Database サーバーにアクセスできるようになりました。
+これで、マネージド ID を使用して Azure SQL Database サーバーにアクセスできるようになりました。
 
 ## <a name="modify-connection-string"></a>接続文字列を変更する
 
@@ -119,7 +119,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 }
 ```
 
-このコンストラクターは、App Service からの Azure SQL Database のアクセス トークンを使用するためのカスタム SqlConnection オブジェクトを構成します。 このアクセス トークンにより、App Service アプリは、マネージド サービス ID を使用して Azure SQL Database で認証されます。 詳細については、「[Azure リソースのトークンの取得](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources)」を参照してください。 `if` ステートメントにより、続いて LocalDB を使用してアプリをローカルでテストできます。
+このコンストラクターは、App Service からの Azure SQL Database のアクセス トークンを使用するためのカスタム SqlConnection オブジェクトを構成します。 このアクセス トークンにより、App Service アプリは、マネージド ID を使用して Azure SQL Database で認証されます。 詳細については、「[Azure リソースのトークンの取得](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources)」を参照してください。 `if` ステートメントにより、続いて LocalDB を使用してアプリをローカルでテストできます。
 
 > [!NOTE]
 > `SqlConnection.AccessToken` は、現在、.NET Framework 4.6 以降でのみサポートされています。[.NET Core](https://www.microsoft.com/net/learn/get-started/windows) ではサポートされていません。
@@ -141,7 +141,7 @@ private MyDatabaseContext db = new MyDatabaseContext(new SqlConnection());
 
 ![ソリューション エクスプローラーから発行する](./media/app-service-web-tutorial-dotnet-sqldatabase/solution-explorer-publish.png)
 
-発行ページで **[発行]** をクリックします。 新しい Web ページに To-Do リストを表示するとき、アプリはマネージド サービス ID を使用してデータベースに接続しています。
+発行ページで **[発行]** をクリックします。 新しい Web ページに To-Do リストを表示するとき、アプリはマネージド ID を使用してデータベースに接続しています。
 
 ![Code First Migration の手順後の Azure Web アプリ](./media/app-service-web-tutorial-dotnet-sqldatabase/this-one-is-done.png)
 
@@ -151,11 +151,11 @@ private MyDatabaseContext db = new MyDatabaseContext(new SqlConnection());
 
 ## <a name="grant-minimal-privileges-to-identity"></a>ID に最小限の特権を付与する
 
-これまでの手順で、マネージド サービス ID が Azure AD 管理者として SQL Server に接続されていることに気付いたことでしょう。 マネージド サービス ID に最小限の特権を付与するには、Azure AD 管理者として Azure SQL Database サーバーにサインインし、対象のサービス ID を含む Azure Active Directory グループを追加する必要があります。 
+これまでの手順で、マネージド ID が Azure AD 管理者として SQL Server に接続されていることに気付いたことでしょう。 マネージド ID に最小限の特権を付与するには、Azure AD 管理者として Azure SQL Database サーバーにサインインし、対象のマネージド ID を含む Azure Active Directory グループを追加する必要があります。 
 
-### <a name="add-managed-service-identity-to-an-azure-active-directory-group"></a>Azure Active Directory グループにマネージド サービス ID を追加する
+### <a name="add-managed-identity-to-an-azure-active-directory-group"></a>Azure Active Directory グループにマネージド ID を追加する
 
-Cloud Shell 内で、アプリのマネージド サービス ID を、次のスクリプトに示す _myAzureSQLDBAccessGroup_ という新しい Azure Active Directory グループに追加します。
+Cloud Shell 内で、次のスクリプトに示すように、アプリのマネージド ID を _myAzureSQLDBAccessGroup_ という新しい Azure Active Directory グループに追加します。
 
 ```azurecli-interactive
 groupid=$(az ad group create --display-name myAzureSQLDBAccessGroup --mail-nickname myAzureSQLDBAccessGroup --query objectId --output tsv)
@@ -168,7 +168,7 @@ az ad group member list -g $groupid
 
 ### <a name="reconfigure-azure-ad-administrator"></a>Azure AD 管理者を再構成する
 
-以前の手順では、マネージド サービス ID を SQL Database の Azure AD 管理者として割り当てました。 この ID は (データベース ユーザーを追加するための) 対話型サインインに使用できないため、実際の Azure AD ユーザーを使用する必要があります。 Azure AD ユーザーを追加するには、「[Azure SQL Database サーバーの Azure Active Directory 管理者をプロビジョニングする](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)」の手順を実行します。 
+以前の手順では、マネージド ID を SQL Database の Azure AD 管理者として割り当てました。 この ID は (データベース ユーザーを追加するための) 対話型サインインに使用できないため、実際の Azure AD ユーザーを使用する必要があります。 Azure AD ユーザーを追加するには、「[Azure SQL Database サーバーの Azure Active Directory 管理者をプロビジョニングする](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)」の手順を実行します。 
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>Azure Active Directory グループにアクセス許可を付与する
 
@@ -204,10 +204,10 @@ GO
 ここで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * マネージド サービス ID を有効にする
-> * SQL Database へのアクセスをサービス ID に許可する
+> * マネージド ID を有効にする
+> * SQL Database へのアクセスをマネージド ID に付与する
 > * Azure Active Directory 認証を使用して SQL Database で認証するようにアプリケーション コードを構成する
-> * SQL Database 内でサービス ID に最小限の特権を付与する
+> * SQL Database 内でマネージド ID に最小限の特権を付与する
 
 次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
 

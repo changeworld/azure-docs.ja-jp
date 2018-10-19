@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/02/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b704db0b79d056f5c7081d3fed117e1d1f22b336
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b4b81546a267e6fd082f83db8b23010f0742771f
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978830"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237907"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure および Azure Stack を使用して Staged Data Analytics ソリューションを作成する 
 
@@ -55,7 +55,7 @@ ms.locfileid: "46978830"
 
 -   [Microsoft Azure ストレージ エクスプローラーをダウンロードしてインストールする](http://storageexplorer.com/)。
 
--   これらの関数で処理されるデータが提供されていません。 データは生成する必要があり、Azure Stack ストレージ Blob コンテナーへのアップロードに使用できる必要があります。
+-   関数で処理するデータは独自に用意することが必要。 データは生成する必要があり、Azure Stack ストレージ Blob コンテナーへのアップロードに使用できる必要があります。
 
 ## <a name="issues-and-considerations"></a>問題と注意事項
 
@@ -123,17 +123,11 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
 
 クリーン データを Azure Stack から Azure に移動する新しい Azure Stack 関数を作成します。
 
-1.  **[関数]**、続いて **[+New Function] (+ 新しい関数)** ボタンをクリックして、新しい関数を作成します。
+### <a name="create-the-azure-stack-function-app"></a>Azure Stack 関数アプリを作成する
 
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image3.png)
-
-2.  **[タイマー トリガー]** を選択します。
-
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image4.png)
-
-3.  言語として **[C]\#** を選択し、関数に `upload-to-azure` という名前を付けます。スケジュールを `0 0 * * * *` に設定します。これは CRON 表記では 1 時間に 1 回です。
-
-    ![Alt text](media\azure-stack-solution-staged-data-analytics\image5.png)
+1. [Azure Stack ポータル](https://portal.local.azurestack.external)にサインインします。
+2. **[すべてのサービス]** を選択します。
+3. **[Web + モバイル]** グループの **[Function Apps]** を選択します。
 
 4.  イメージの下にある表で指定された設定を使用して、関数アプリを作成します。
 
@@ -148,7 +142,7 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
     | 従量課金プラン | Function App にどのようにリソースが割り当てられるかを定義するホスティング プラン。 既定の [従量課金プラン] では、リソースは関数の必要に応じて動的に追加されます。 このサーバーなしのホスティングでは、関数が実行された時間にのみ課金されます。 |  |
     | Location | 最寄りのリージョン | ユーザーに近いリージョン、または関数がアクセスする他のサービスの近くのリージョンを選択します。 |
     | **ストレージ アカウント** |  |  |
-    | \<上記で作成したストレージ アカウント> | Function App によって使用される新しいストレージ アカウントの名前。 ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。 既存のアカウントを使用することもできます。 |  |
+    | \<上記で作成したストレージ アカウント> | Function App によって使用される新しいストレージ アカウントの名前。 ストレージ アカウント名の長さは 3 文字から 24 文字でなければなりません。 名前に使用できるのは、数字と小文字のみです。 既存のアカウントを使用することもできます。 |  |
 
     **例:**
 
@@ -164,13 +158,25 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
 
 ![Function App が正常に作成されました。](media\azure-stack-solution-staged-data-analytics\image8.png)
 
+### <a name="add-a-function-to-the-azure-stack-function-app"></a>Azure Stack 関数アプリに関数を追加する
+
+1.  **[関数]**、続いて **[+New Function] (+ 新しい関数)** ボタンをクリックして、新しい関数を作成します。
+
+    ![Alt text](media\azure-stack-solution-staged-data-analytics\image3.png)
+
+2.  **[タイマー トリガー]** を選択します。
+
+    ![Alt text](media\azure-stack-solution-staged-data-analytics\image4.png)
+
+3.  言語として **[C]\#** を選択し、関数に `upload-to-azure` という名前を付けます。スケジュールを `0 0 * * * *` に設定します。これは CRON 表記では 1 時間に 1 回です。
+
+    ![Alt text](media\azure-stack-solution-staged-data-analytics\image5.png)
+
 ## <a name="create-a-blob-storage-triggered-function"></a>Blob Storage でトリガーされる関数の作成
 
-1.  Function App を展開し、**[関数]** の横にある **[+]** ボタンを選択します。 これが Function App で初めての関数の場合、**[カスタム関数]** を選びます。 関数テンプレートの完全なセットが表示されます。
+1.  Function App を展開し、**[関数]** の横にある **[+]** ボタンを選択します。
 
-  ![Azure Portal での関数のクイック スタート ページ](media\azure-stack-solution-staged-data-analytics\image9.png)
-
-2.  検索フィールドに、「blob」と入力し、Blob Storage トリガー テンプレート用の目的の言語を選択します。
+2.  検索フィールドに、「`blob`」と入力し、**BLOB トリガー** テンプレート用の目的の言語を選択します。
 
   ![Blob Storage トリガー テンプレートを選択します。](media\azure-stack-solution-staged-data-analytics\image10.png)
 
@@ -200,7 +206,7 @@ Azure の関数とストレージ ソリューションは、データ ボリュ
 
 4.  [ファイルのアップロード] ダイアログ ボックスで、[ファイル] フィールドを選択します。 画像ファイルなど、ローカル コンピューター上のファイルを参照して選択し、**[開く]**、**[アップロード]** の順に選択します。
 
-5.  関数ログに戻り、BLOB が読み取られたことを確認します。
+5.  関数ログに戻り、Blob が読み取られたことを確認します。
 
     **例:**
 

@@ -56,11 +56,39 @@ items:
       href: troubleshoot-database-table.md
 - name: リファレンス
   items:
-  - name: 言語のリファレンス
-    href: https://aka.ms/kustolangref
-ms.openlocfilehash: 9a14c56c049bae31f2a741e7ddab1d01df1209fb
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+  - name: クエリ言語
+    href: /azure/kusto/query/
+  - name: 管理コマンド
+    href: /azure/kusto/management/
+  - name: API
+    href: /azure/kusto/api/
+  - name: ツール
+    href: /azure/kusto/tools/
+  - name: 概念
+    href: /azure/kusto/concepts/
+- name: リソース
+  items:
+  - name: ブログ
+    href: https://azure.microsoft.com/blog/tag/azure-data-explorer/
+  - name: フォーラム
+    items:
+    - name: スタック オーバーフロー
+      href: https://stackoverflow.com/questions/tagged/azure-data-explorer
+    - name: Microsoft Tech Community
+      href: https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto
+    - name: MSDN フォーラム
+      href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto
+  - name: 製品フィードバック
+    href: http://aka.ms/adefeedback
+  - name: 価格
+    href: https://azure.microsoft.com/pricing/details/data-explorer/
+  - name: Cost Estimator
+    href: http://aka.ms/adecostestimator
+  - name: サービスの更新情報
+    href: https://azure.microsoft.com/updates/?product=data-explorer
+ms.openlocfilehash: 49d8f70c130cf9b1fe90b82f49c8f728845a335f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031188"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393302"

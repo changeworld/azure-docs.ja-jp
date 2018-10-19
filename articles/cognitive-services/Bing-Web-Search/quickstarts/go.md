@@ -1,20 +1,22 @@
 ---
-title: 'クイック スタート: Go を使用して Bing Web Search API を呼び出す'
+title: 'クイック スタート: Go で検索を実行する - Bing Web Search API'
+titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Go を使用して Bing Web Search API を初めて呼び出し、JSON 応答を受け取る方法について説明します。
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
-ms.openlocfilehash: 3f5fc8461103b2f4ee04750ceba35e05eaa5515c
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 729338799fd8b0d143de7ee0a643bd71684b2789
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886624"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385925"
 ---
 # <a name="quickstart-use-go-to-call-the-bing-web-search-api"></a>クイック スタート: Go を使用して Bing Web Search API を呼び出す  
 
@@ -310,8 +312,8 @@ Bing Web Search API からの応答は、JSON として返されます。 この
 ```go
 Microsoft Cognitive Services || https://www.microsoft.com/cognitive-services
 Cognitive Services | Microsoft Azure || https://azure.microsoft.com/services/cognitive-services/
-Cognitive Service Try experience | Microsoft Azure || https://azure.microsoft.com/en-us/try/cognitive-services/
-What is Microsoft Cognitive Services? | Microsoft Docs || https://docs.microsoft.com/en-us/azure/cognitive-services/Welcome
+Cognitive Service Try experience | Microsoft Azure || https://azure.microsoft.com/try/cognitive-services/
+What is Microsoft Cognitive Services? | Microsoft Docs || https://docs.microsoft.com/azure/cognitive-services/Welcome
 Microsoft Cognitive Toolkit || https://www.microsoft.com/en-us/cognitive-toolkit/
 Microsoft Customers || https://customers.microsoft.com/en-us/search?sq=%22Microsoft%20Cognitive%20Services%22&ff=&p=0&so=story_publish_date%20desc
 Microsoft Enterprise Services - Microsoft Enterprise || https://enterprise.microsoft.com/en-us/services/

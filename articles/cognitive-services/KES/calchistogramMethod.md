@@ -1,33 +1,34 @@
 ---
-title: Knowledge Exploration Service API の CalcHistogram メソッド | Microsoft Docs
-description: Cognitive Services の Knowledge Exploration Service (KES) API で CalcHistogram メソッドを使用する方法について説明します。
+title: CalcHistogram メソッド - Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: Knowledge Exploration Service (KES) API で CalcHistogram メソッドを使用する方法について説明します。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 6ed694b0cc9cf41b815cc54b9f6d12adb2b7cd64
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0ca43d6f6879198b8f80794c1948439e15f312ad
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373061"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122758"
 ---
 # <a name="calchistogram-method"></a>calchistogram メソッド
 *calchistogram* メソッドは、構造化クエリ式と一致するオブジェクトを計算し、属性値の分布を計算します。
 
-## <a name="request"></a>要求
+## <a name="request"></a>Request
 `http://<host>/calchistogram?expr=<expr>[&options]` 
 
 Name|値|説明
 ----|-----|-----------
 expr | テキスト文字列 | ヒストグラムの計算の対象となるインデックス エンティティを指定する構造化クエリ式。
 attributes | テキスト文字列 (既定値 ="") | 応答に含める属性のコンマ区切りリスト。
-count   | 数 (既定値 =10) | 返す結果の数。
-offset  | 数 (既定値 =0) | 返す最初の結果のインデックス。
+count   | 数値 (既定値 =10) | 返す結果の数。
+offset  | 数値 (既定値 =0) | 返す最初の結果のインデックス。
 
 ## <a name="response-json"></a>応答 (JSON)
 JSONPath | 説明

@@ -1,20 +1,21 @@
 ---
-title: Custom Vision Service を使用して分類器を構築する - Azure Cognitive Services | Microsoft Docs
+title: 分類器の構築 - Custom Vision Service
+titlesuffix: Azure Cognitive Services
 description: Custom Vision Service を使用して、写真内のオブジェクトを識別できる分類器を作成する方法について説明します。
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/02/2018
 ms.author: anroth
-ms.openlocfilehash: c5183078d2f9d5eb16abef4f5df240f77eea6b8b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 998900e72511a95336e4a94289c794e2a8e59feb
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223371"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364248"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Custom Vision で分類器を構築する方法
 
@@ -82,7 +83,7 @@ Custom Vision Service を使用するには、最初に分類器を構築する�
 
     Custom Vision Service で使用できる画像は、.jpg、.png、.bmp の形式で、画像あたり最大 6 MB です。 (予測画像は画像あたり 4 MB まで可能です)。画像は短辺が 256 ピクセルのものにすることをお勧めします。 短辺が 256 ピクセルよりも短い画像は Custom Vision Service によって拡大されます。
 
-    ![[Add Images](画像の追加) コントロールは左上に表示され、下部中央にもボタンとして表示されます。](./media/getting-started-build-a-classifier/add-images01.png)
+    ![[Add Images]\(画像の追加) コントロールは左上に表示され、下部中央にもボタンとして表示されます。](./media/getting-started-build-a-classifier/add-images01.png)
 
     >[!NOTE] 
     > URL からトレーニング画像を読み込むために、REST API を使用できます。

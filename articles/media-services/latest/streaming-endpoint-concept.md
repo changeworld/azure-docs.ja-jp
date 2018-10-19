@@ -4,19 +4,19 @@ description: この記事では、ストリーミング エンドポイントと
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/02/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: c91a538acda44efe55777ec76c5804075a43c322
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 5ba80df26731f9687ec4518d7f12f3c2e3cb0665
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43670027"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379180"
 ---
 # <a name="streaming-endpoints"></a>ストリーミング エンドポイント
 

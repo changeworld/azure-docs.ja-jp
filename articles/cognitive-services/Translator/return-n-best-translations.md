@@ -1,20 +1,21 @@
 ---
-title: Microsoft Translator Text API を使用して N-Best の翻訳結果を返す | Microsoft Docs
+title: N-Best の翻訳結果を返す - Translator Text API
+titlesuffix: Azure Cognitive Services
 description: Microsoft Translator Text API を使用して N-Best の翻訳結果を返します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 3eafe50f69ae1a6748342e64a414ecee4467d0d1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e1d310cecb41de00c1d3e3986fe715d1519ceeff
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374360"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123455"
 ---
 # <a name="how-to-return-n-best-translations"></a>N-Best の翻訳結果を返す方法
 
@@ -28,7 +29,7 @@ Microsoft Translator API の GetTranslations() メソッドと GetTranslationsAr
 
 **構文**
 
-| C# |
+| C#の場合 |
 |:---|
 | GetTranslationsResponse Microsoft.Translator.GetTranslations(appId, text, from, to, maxTranslations, options); |
 
@@ -46,7 +47,7 @@ Microsoft Translator API の GetTranslations() メソッドと GetTranslationsAr
 * Category: 唯一サポートされていて、既定値となっているオプションは "general" です。
 * ContentType: 唯一サポートされていて、既定値となっているオプションは "text/plain" です。
 * State: 要求と応答を関連付ける助けとなるユーザーの状態。 応答では同じ内容が返されます。
-* IncludeMultipleMTAlternatives: MT エンジンから複数の候補訳を返すかどうかを決定するフラグ。 既定値は false で、候補役訳は 1 つだけ含まれます。
+* IncludeMultipleMTAlternatives: MT エンジンから複数の候補訳を返すかどうかを決定するフラグ。 既定値は false で、翻訳候補が 1 つだけ含まれます。
 
 ## <a name="ratings"></a>Ratings
 評価は、最善の自動翻訳が評価 5 となるように適用されます。

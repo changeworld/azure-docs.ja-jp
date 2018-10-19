@@ -1,21 +1,21 @@
 ---
-title: Translator Text と Go でテキストの表記を変換する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と Go を使って、1 つの言語の中でテキストの表記を変換します。
+title: 'クイック スタート: テキスト スクリプトを変換する - Translator Text、Go'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Go で Translator Text API を使って 1 つの言語の中でテキストの表記を変換します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
 ms.author: nolachar
-ms.openlocfilehash: f01fe38ef0605ad399edc03b52dc5b8ecc75275b
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: c4930e03f5d366eb3f21b44c5be90c20230065c3
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "43771298"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126753"
 ---
 # <a name="quickstart-transliterate-text-with-go"></a>クイック スタート: Go を使ったテキストの表記変換
 

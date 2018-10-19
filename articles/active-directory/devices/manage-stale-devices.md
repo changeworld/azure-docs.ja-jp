@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/20/2018
+ms.date: 10/03/2018
 ms.author: markvi
-ms.reviewer: jairoc
-ms.openlocfilehash: f9664e22be5d7a17dd2a2a7c328593d8168c26f0
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.reviewer: spunukol
+ms.openlocfilehash: 1b8a6e6a6b5f482a4e3575c4da18a02a958c4081
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434740"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249368"
 ---
 # <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>方法: Azure AD で古いデバイスを管理する
 
@@ -111,7 +111,7 @@ Azure AD でデバイスを更新するには、次のいずれかのロール�
 
 ### <a name="system-managed-devices"></a>システム管理デバイス
 
-システム管理デバイスは削除しないでください。 これらは一般に、オートパイロットなどのデバイスです。 一度削除すると、これらのデバイスは再プロビジョニングできません。 新しい Get-MmsolDevice コマンドレットは、システム管理デバイスを既定で除外します。 
+システム管理デバイスは削除しないでください。 これらは一般に、オートパイロットなどのデバイスです。 一度削除すると、これらのデバイスは再プロビジョニングできません。 新しい `get-msoldevice` コマンドレットは、システム管理デバイスを既定で除外します。 
 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>ハイブリッド Azure AD 参加済みデバイス
@@ -137,7 +137,7 @@ Azure AD 内の Azure AD 登録済みデバイスを無効化または削除し�
 
 
 
-## <a name="cleanup-stale-devices-in-the-azure-portal"></a>Azure portal での古いデバイスのクリーンアップ  
+## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Azure portal での古いデバイスのクリーンアップ  
 
 Azure portal で古いデバイスをクリーンアップすることはできますが、PowerShell スクリプトを使用してこのプロセスを処理したほうが効率的です。 最新の PowerShell V1 モジュールを使い、タイムスタンプ フィルターを使用してオートパイロットなどのシステム管理デバイスを除外します。 現時点では、PowerShell V2 の使用は推奨されていません。
 
@@ -150,7 +150,9 @@ Azure portal で古いデバイスをクリーンアップすることはでき�
 
 3. [Disable-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/disable-msoldevice?view=azureadps-1.0) コマンドレットを使用してデバイスを無効にします。 
 
-4. [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) コマンドレットを使用してデバイスを削除します。
+4. デバイスが削除されるまでの猶予期間として設けた日数が経過するのを待ちます。
+
+5. [Remove-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/remove-msoldevice?view=azureadps-1.0) コマンドレットを使用してデバイスを削除します。
 
 ### <a name="get-the-list-of-devices"></a>デバイスの一覧を取得する
 

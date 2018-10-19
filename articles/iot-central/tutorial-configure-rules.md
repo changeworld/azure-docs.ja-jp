@@ -9,20 +9,20 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: af2aa8d7b01d973da400808fd3e97d0739693cd2
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: fb13bcee411b4fa27bf3ce5cd62fa3a483ea23e6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236333"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731894"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>チュートリアル: Azure IoT Central でデバイスのルールとアクションを構成する
 
-このチュートリアルでは、作成者として Microsoft Azure IoT Central アプリケーションでテレメトリベースのルールとアクションを構成する方法について説明します。
+*この記事は、オペレーター、ビルダー、および管理者に適用されます。*
 
 このチュートリアルでは、コネクテッド空調デバイスの温度が華氏 90&deg; 度を超えた場合にメールが送信されるルールを作成します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * テレメトリベースのルールを作成する
@@ -36,44 +36,48 @@ ms.locfileid: "35236333"
 
 1. 新しいテレメトリベースのルールをアプリケーションに追加するには、左側のナビゲーション メニューで **[Device Explorer]** を選択します。
 
-    ![Device Explorer のページ](media/tutorial-configure-rules/explorerpage.png)
+    ![Device Explorer のページ](media/tutorial-configure-rules/explorerpage1.png)
 
     前のチュートリアルで作成した **Connected Air Conditioner (1.0.0)** デバイス テンプレートと **Connected Air Conditioner-1** デバイスが表示されます。
 
 2. コネクテッド空調デバイスのカスタマイズを開始するには、前のチュートリアルで作成したデバイスを選択します。
 
-    ![コネクテッド空調機のページ](media/tutorial-configure-rules/builderdevicelist.png)
+    ![コネクテッド空調機のページ](media/tutorial-configure-rules/builderdevicelist1.png)
 
-3. **[ルール]** ビューでルールの追加を開始するには、**[ルール]** を選択します。
+3. **[ルール]** ビューでルールの追加を開始するには、**[ルール]** を選択し、**[テンプレートの編集]** をクリックします。
 
-    ![[ルール] ビュー](media/tutorial-configure-rules/builderrulesview.png)
+    ![[ルール] ビュー](media/tutorial-configure-rules/builderedittemplate.png)
 
-4. しきい値に基づいたテレメトリ ルールの作成を開始するには、**[新しいルール]**、**[テレメトリ]** の順に選択します。
+4. しきい値に基づくテレメトリ ルールを作成するには、**[新しいルール]** をクリックし、**[テレメトリ]** をクリックします。
+
+    ![Edit Template](media/tutorial-configure-rules/buildernewrule.png)
 
 5. ルールを定義するには、次の表の情報を使用します。
 
-    | Setting     | 値                          |
-    | ----------- | ------------------------------ |
-    | Name        | Air conditioner temperature    |
-    | ルールの有効化 | On                             |
-    | 条件   | Temperature is greater than 90 |
+    | 設定                                      | 値                             |
+    | -------------------------------------------- | ------------------------------    |
+    | 名前                                         | 空調機の温度アラート |
+    | [Enable rule for all devices of this template]\(このテンプレートのすべてのデバイスに対してルールを有効にする\) | On                                |
+    | [Enable rule on this device]\(このデバイス上でルールを有効にする\)                   | On                                |
+    | 条件                                    | 温度が 90 度を超えている    |
+    | 集計                                  | なし                              |
 
-    ![温度ルールの条件](media/tutorial-configure-rules/buildertemperaturerule.png)
+    ![温度ルールの条件](media/tutorial-configure-rules/buildertemperaturerule1.png)
 
 ## <a name="add-an-action"></a>アクションを追加する
 
 ルールを定義する場合、ルールの条件が満たされたときに実行されるアクションも定義します。 このチュートリアルでは、ルールによってトリガーされた通知としてメールが送信されるというアクションを追加します。
 
-1. **アクション**を追加するには、**[Configure Telemetry Rule]\(テレメトリ ルールの構成\)** パネルまで下へスクロールし、**[アクション]** の横にある **[+]** を選択してから **[メール]** を選択します。
+1. **アクション**を追加するには、まずルールを **[保存]** してから **[Configure Telemetry Rule]\(テレメトリ ルールの構成\)** パネルまで下へスクロールし、**[アクション]** の横にある **[+]** を選択してから **[メール]** を選択します。
 
-    ![温度ルールのアクション](media/tutorial-configure-rules/builderaddaction.png)
+    ![温度ルールのアクション](media/tutorial-configure-rules/builderaddaction1.png)
 
 2. アクションを定義するには、次の表の情報を使用します。
 
-    | Setting   | 値                          |
+    | 設定   | 値                          |
     | --------- | ------------------------------ |
     | ターゲット        | メール アドレス             |
-    | メモ     | Temperature in air conditioner exceeded threshold. |
+    | メモ     | 空調機の温度がしきい値を超えました。 |
 
     > [!NOTE]
     > メール通知を受け取るには、メール アドレスが[アプリケーションのユーザー ID](howto-administer.md) である必要があります。また、そのユーザーが少なくとも一度アプリケーションにサインインしている必要があります。
@@ -82,7 +86,10 @@ ms.locfileid: "35236333"
 
 3. **[保存]** を選択します。 ルールが **[ルール]** ページに表示されます。
 
-    ![アプリケーション ビルダーのルール](media/tutorial-configure-rules/builderrules.png)
+    ![アプリケーション ビルダーのルール](media/tutorial-configure-rules/builderrules1.png)
+
+4. **[完了]** を選択して、**[テンプレートの編集]** モードを終了します。
+ 
 
 ## <a name="test-the-rule"></a>ルールをテストする
 

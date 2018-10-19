@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 05/23/2018
-ms.openlocfilehash: c9a533ed9b9eb9ac53a02439b98a78954c7aaa11
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 1b6dded1521489353e65b630ef5432ba6ff8f3e8
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35265250"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631567"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>サポートされている Azure Database for MySQL サーバー バージョン
 Azure Database for MySQL は、InnoDB エンジンを使用して [MySQL Community Edition](https://www.mysql.com/products/community/) から開発されました。  Azure Database for MySQL では現在、次のバージョンがサポートされています。
@@ -26,10 +26,10 @@ MySQL 5.6.39 の機能強化と修正については、MySQL の[ドキュメン
 MySQL 5.7.21 の機能強化と修正については、MySQL の[ドキュメント](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-21.html)を参照してください。
 
 > [!NOTE]
-> サービスでは、接続をサーバー インスタンスにリダイレクトするためにゲートウェイが使用されます。 接続が確立すると、MySQL には、MySQL サーバー インスタンスで実行されている実際のバージョンではなく、ゲートウェイに設定されている MySQL のバージョンが表示されます。 MySQL サーバー インスタンスのバージョンを判断するには、MySQL プロンプトで `SELECT VERSION();` コマンドを使用します。 
+> サービスでは、接続をサーバー インスタンスにリダイレクトするためにゲートウェイが使用されます。 接続が確立すると、MySQL には、MySQL サーバー インスタンスで実行されている実際のバージョンではなく、ゲートウェイに設定されている MySQL のバージョンが表示されます。 MySQL サーバー インスタンスのバージョンを判断するには、MySQL プロンプトで `SELECT VERSION();` コマンドを使用します。
 
 ## <a name="managing-updates-and-upgrades"></a>更新プログラムとアップグレードの管理
-このサービスでは、マイナー バージョンの更新プログラムの適用が自動管理されます。 メジャー バージョンのアップグレードには対応していません ( MySQL 5.6 から MySQL 5.7 へのアップグレードなど)。
+このサービスでは、マイナー バージョンの更新プログラムの適用が自動管理されます。 現在、メジャー バージョンのアップグレードはサポートされていません。 たとえば、MySQL 5.6 から MySQL 5.7 へのアップグレードはサポートされません。 次のメジャー バージョンにアップグレードする場合は、新しいエンジンのバージョンで作成されたサーバーに[ダンプを復元](./concepts-migrate-dump-restore.md)します。
 
 ## <a name="next-steps"></a>次の手順
 

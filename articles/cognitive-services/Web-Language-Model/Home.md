@@ -1,22 +1,27 @@
 ---
-title: Web Language Model API の概要 - Azure Cognitive Services | Microsoft Docs
+title: Web Language Model API の概要
+titleSuffix: Azure Cognitive Services
 description: Microsoft Cognitive Services の Web Language Model API には、自然言語処理のための最新ツールが用意されています。
 services: cognitive-services
 author: piyushbehre
-manager: yanbo
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: web-language-model
 ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
-ms.openlocfilehash: dc5dc0519e33e024014033ac5260004482b419c2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ROBOTS: NOINDEX
+ms.openlocfilehash: 79b126fc33175b7cd6df96ab07cd7b726d6065a7
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47096957"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389940"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>Web Language Model API とは (プレビュー)
+
+> [!IMPORTANT]
+> Web Language Model プレビューは、2018 年 8 月 9 日に使用停止になりました。 テキスト処理と分析には、[Azure Machine Learning テキスト解析モジュール](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)の使用をお勧めします。
 
 Microsoft Web Language Model API は、自然言語処理のための最新ツールを提供する REST ベースのクラウド サービスです。 アプリケーションでこの API を使用すると、Bing が en-US マーケットで収集した Web 規模のコーパスでトレーニングした言語モデルを通じて、ビッグ データの力を活用できます。
 

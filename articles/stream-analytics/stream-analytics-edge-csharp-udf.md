@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: cad5ec059c88290b94919c58ff6bd1071a2b8fdf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d593930705c7455d03e20af2affd2de3c418d4a5
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972106"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389070"
 ---
 # <a name="tutorial-write-a-c-user-defined-function-for-an-azure-stream-analytics-edge-job-in-visual-studio-preview"></a>チュートリアル: Visual Studio で Azure Stream Analytics Edge ジョブ用の C# ユーザー定義関数を作成する (プレビュー)
 
@@ -37,7 +37,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 
 ## <a name="create-a-container-in-your-azure-storage-account"></a>Azure ストレージ アカウントでコンテナーを作成する
 
-作成したコンテナーは、コンパイル済みの C# パッケージの格納と、IoT Edge デバイスへのパッケージのデプロイに使用されます。 Stream Analytics ジョブごとに専用のコンテナーを使用します。 複数の Stream Analytics Edge ジョブで同じコンテナーを再利用することはサポートされていません。 既存のコンテナーを含むストレージ アカウントが既にある場合は、それを使用できます。 ない場合は、[新しいコンテナーを作成する](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-quickstart-blobs-portal)必要があります。 
+作成したコンテナーは、コンパイル済みの C# パッケージの格納と、IoT Edge デバイスへのパッケージのデプロイに使用されます。 Stream Analytics ジョブごとに専用のコンテナーを使用します。 複数の Stream Analytics Edge ジョブで同じコンテナーを再利用することはサポートされていません。 既存のコンテナーを含むストレージ アカウントが既にある場合は、それを使用できます。 ない場合は、[新しいコンテナーを作成する](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)必要があります。 
 
 ## <a name="create-a-stream-analytics-edge-project-in-visual-studio"></a>Visual Studio で Stream Analytics Edge プロジェクトを作成する
 
@@ -146,7 +146,7 @@ Visual Studio で作成した C# ユーザー定義関数 (UDF) を使用する�
 ![Visual Studio から Azure に Stream Analytics Edge ジョブを送信する](./media/stream-analytics-edge-csharp-udf/stream-analytics-udf-submit-job.png)
 
 ## <a name="deploy-to-iot-edge-devices"></a>IoT Edge デバイスにデプロイする
-Stream Analytics ジョブは、IoT Edge モジュールとして展開する準備ができました。 [IoT Edge クイック スタート](https://docs.microsoft.com/en-us/azure/iot-edge/quickstart)に従って、IoT ハブを作成し、IoT Edge デバイスを登録し、デバイスに IoT Edge ランタイムをインストールして開始します。 次に「[ジョブのデプロイ](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job)」チュートリアルに従って、Stream Analytics ジョブを IoT Edge モジュールとしてデプロイします。 
+Stream Analytics ジョブは、IoT Edge モジュールとして展開する準備ができました。 [IoT Edge クイック スタート](https://docs.microsoft.com/azure/iot-edge/quickstart)に従って、IoT ハブを作成し、IoT Edge デバイスを登録し、デバイスに IoT Edge ランタイムをインストールして開始します。 次に「[ジョブのデプロイ](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics#deploy-the-job)」チュートリアルに従って、Stream Analytics ジョブを IoT Edge モジュールとしてデプロイします。 
 
 ## <a name="next-steps"></a>次の手順
 

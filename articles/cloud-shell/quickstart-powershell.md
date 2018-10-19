@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Shell (プレビュー) の PowerShell のクイック スタート | Microsoft Docs
+title: Azure Cloud Shell クイックスタートのPowerShell | Microsoft Docs
 description: Cloud Shell の PowerShell のクイックスタート
 services: Azure
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/27/2018
 ms.author: damaerte
-ms.openlocfilehash: cb4b7f8851c6c891ca43f6c215ba812a0c784d28
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 83fb07d718681a9d14176868d11b45a199f60543
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108140"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166204"
 ---
-# <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) の PowerShell のクイックスタート
+# <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell の PowerShell のクイックスタート
 
-このドキュメントでは、[Azure Portal](https://aka.ms/PSCloudPreview) で Cloud Shell の PowerShell を使う方法について詳しく説明します。
+このドキュメントでは、[Azure Portal](https://portal.azure.com/) で Cloud Shell の PowerShell を使う方法について詳しく説明します。
 
 > [!NOTE]
 > [Azure Cloud Shell の Bash](quickstart.md) のクイックスタートもあります。

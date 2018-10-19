@@ -1,6 +1,6 @@
 ---
 title: CLI を使用した Azure Key Vault の管理 | Microsoft Docs
-description: この記事を活用し、CLI 2.0 を使用した Key Vault での一般的なタスクを自動化します
+description: この記事を活用し、Azure CLI を使用した Key Vault での一般的なタスクを自動化します
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: f88e98561a88380fbe40ecc9627ffabe39b0071c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ba39ba2d4206fa86ed32bddf0538a2e997a79339
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295176"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220569"
 ---
-# <a name="manage-key-vault-using-cli-20"></a>CLI 2.0 を使用した Key Vault の管理
+# <a name="manage-key-vault-using-the-azure-cli"></a>Azure CLI を使用して Key Vault を管理します。 
 
-この記事では、Azure CLI 2.0 を使用した Azure Key Vault の操作の概要について説明します。 以下の情報をご覧いただけます。
+この記事では、Azure CLI を使用した Azure Key Vault の操作の概要について説明します。  以下の情報をご覧いただけます。
 
-- 前提条件
 - 強化されたコンテナー (資格情報コンテナー) を Azure に作成する方法
 - キー コンテナーにキー、シークレット、または証明書を追加する
 - Azure Active Directory にアプリケーションを登録する
@@ -50,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この記事にある Azure CLI コマンドを使用するには、以下を用意する必要があります。
 
 * Microsoft Azure サブスクリプション。 サブスクリプションがない場合でも、[無料試用版](https://azure.microsoft.com/pricing/free-trial)にサインアップできます。
-* コマンドライン インターフェイス バージョン 2.0 以降。 最新バージョンをインストールする方法については、[Azure クロスプラットフォーム コマンドライン インターフェイス 2.0 のインストールと構成](/cli/azure/install-azure-cli)に関するページを参照してください。
+* Azure コマンドライン インターフェイス バージョン 2.0 以降。 最新バージョンをインストールするには、 [Azure CLI をインストールする](/cli/azure/install-azure-cli)を参照してください。
 * この記事で作成したキーやパスワードを使用して構成されるアプリケーション。 サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/download/details.aspx?id=45343)から入手できます。 手順については、付属の Readme ファイルをご覧ください。
 
 ### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Azure クロスプラットフォーム コマンドライン インターフェイスでのヘルプの取得
@@ -67,7 +66,7 @@ az account set -h
 また、次の記事を読めば、Azure クロスプラットフォーム コマンド ライン インターフェイスでの Azure Resource Manager について詳しく理解できます。
 
 * [Azure CLI のインストール](/cli/azure/install-azure-cli)
-* [Azure CLI 2.0 の概要](/cli/azure/get-started-with-azure-cli)
+* [Azure CLI の概要](/cli/azure/get-started-with-azure-cli)
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>強化されたコンテナー (資格情報コンテナー) を Azure に作成する方法
 
@@ -200,7 +199,7 @@ Key Vault を使用するアプリケーションは、Azure Active Directory �
 
 アプリケーションは、トークンを取得するために、この 2 つの値を Azure Active Directory に示す必要があります。 トークンを取得するようにアプリケーションを構成する方法は、アプリケーションによって変わります。 [Key Vault のサンプル アプリケーション](https://www.microsoft.com/download/details.aspx?id=45343)の場合は、アプリケーション所有者がこれらの値を app.config ファイルに設定します。
 
-Azure Active Directory にアプリケーションを登録する手順の詳細については、「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)」、「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)」、「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」の各記事をご確認ください。
+Azure Active Directory にアプリケーションを登録する手順の詳細については、「[Azure Active Directory とアプリケーションの統合](../active-directory/develop/active-directory-integrating-applications.md)」、「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)」、「[Azure CLI で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」の各記事をご確認ください。
 
 Azure Active Directory にアプリケーションを登録するには:
 

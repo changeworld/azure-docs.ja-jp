@@ -2,19 +2,18 @@
 title: クイック スタート - Azure CLI を使用した Azure のプライベート Docker レジストリの作成
 description: Azure CLI を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: quickstart
 ms.date: 03/03/2018
-ms.author: marsma
+ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: b17df81dd1d972f3e559140e9f43963e9c8cab2a
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 57c72056b669865278fa8109cd7f4963a1f0887a
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42024249"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855240"
 ---
 # <a name="quickstart-create-a-container-registry-using-the-azure-cli"></a>クイック スタート: Azure CLI を使用したコンテナー レジストリの作成
 
@@ -22,7 +21,7 @@ Azure Container Registry は、プライベート Docker コンテナー イメ�
 
 このクイック スタートでは、Azure CLI バージョン 2.0.27 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli]に関するページを参照してください。
 
-Docker もローカルにインストールする必要があります。 Docker では、[Mac][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
+Docker もローカルにインストールする必要があります。 Docker では、[macOS][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 

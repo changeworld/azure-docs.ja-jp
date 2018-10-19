@@ -4,20 +4,20 @@ description: サンプル
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
-ms.technology: Speech to Text
+ms.component: Speech
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: b6fb39ef5941157cfe0d18324deeb9d836d7ab09
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 8f9a033ebf9cdfdb96ae8511b14202e49ec0a85e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377623"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884461"
 ---
 # <a name="batch-transcription"></a>バッチ文字起こし
 
-Batch 文字起こしは大量のオーディオがある場合に最適です。 オーディオ ファイルを指定して、文字起こしを非同期モードで受け取ることができます。
+Batch 文字起こしは大量のオーディオがある場合に最適です。 URI でオーディオ ファイルを指定して、文字起こしを非同期モードで受け取ることができます。
 
 ## <a name="batch-transcription-api"></a>バッチ文字起こし API
 
@@ -59,36 +59,38 @@ wav |  ステレオ  |
 
 ## <a name="authorization-token"></a>承認トークン
 
-統合音声認識サービスの他の機能と同様に、[Azure portal](https://portal.azure.com) でサブスクリプション キーを作成します。 さらに、Speech ポータルから API キーを取得します。 
+Speech Service の他の機能と同様に、[使用開始ガイド](get-started.md)に従って [Azure portal](https://portal.azure.com) でサブスクリプション キーを作成します。 ベースライン モデルから文字起こしを取得する場合は、行う必要があるのはこれだけです。 
+
+カスタム モデルをカスタマイズして使用する場合は、次のようにこのサブスクリプション キーを Custom Speech ポータルに追加する必要があります。
 
 1. [Custom Speech](https://customspeech.ai) にサインインします。
 
 2. **[サブスクリプション]** を選択します。
 
-3. **[Generate API Key]\(API キーの生成\)** を選択します。
+3. **[Connect Existing Subscription]\(既存のサブスクリプションに接続\)** を選択します。
+
+4. ポップアップ表示されるビューで、サブスクリプション キーと別名を追加します
 
     ![Custom Speech サブスクリプション ページのスクリーンショット](media/stt/Subscriptions.jpg)
 
-4. そのキーをコピーし、下のサンプルのクライアント コードに貼り付けます。
+5. そのキーをコピーし、下のサンプルのクライアント コードに貼り付けます。
 
 > [!NOTE]
-> カスタム モデルを使用する場合は、そのモデルの ID も必要です。 これは [エンドポイントの詳細] ビューに表示される展開 ID またはエンドポイント ID ではないことに注意してください。 これは、そのモデルの詳細を選択すると取得できるモデル ID です。
+> カスタム モデルを使用する場合は、そのモデルの ID も必要です。 これは [エンドポイントの詳細] ビューに表示されるエンドポイント ID ではないことに注意してください。 これは、そのモデルの詳細を選択すると取得できるモデル ID です。
 
 ## <a name="sample-code"></a>サンプル コード
 
 サブスクリプション キーと API キーで次のサンプル コードをカスタマイズします。 これにより、ベアラー トークンを取得することができます。
 
 ```cs
-    public static async Task<CrisClient> CreateApiV1ClientAsync(string username, string key, string hostName, int port)
+     public static CrisClient CreateApiV2Client(string key, string hostName, int port)
+
         {
             var client = new HttpClient();
             client.Timeout = TimeSpan.FromMinutes(25);
             client.BaseAddress = new UriBuilder(Uri.UriSchemeHttps, hostName, port).Uri;
-
-            var tokenProviderPath = "/oauth/ctoken";
-            var clientToken = await CreateClientTokenAsync(client, hostName, port, tokenProviderPath, username, key).ConfigureAwait(false);
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", clientToken.AccessToken);
-
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+         
             return new CrisClient(client);
         }
 ```
@@ -98,8 +100,8 @@ wav |  ステレオ  |
 ```cs
    static async Task TranscribeAsync()
         { 
-            private const string SubscriptionKey = "<your Speech[Preview] subscription key>";
-            private const string HostName = "cris.ai";
+            private const string SubscriptionKey = "<your Speech subscription key>";
+            private const string HostName = "westus.cris.ai";
             private const int Port = 443;
     
             // Creating a Batch transcription API Client
@@ -167,7 +169,7 @@ wav |  ステレオ  |
 ```
 
 > [!NOTE]
-> 上のコードで示されているサブスクリプション キーは、Azure portal で作成する Speech(Preview) リソースからのキーです。 Custom Speech Service リソースから取得したキーでは動きません。
+> 上のコードで示されているサブスクリプション キーは、Azure portal で作成する Speech リソースからのキーです。 Custom Speech Service リソースから取得したキーでは動きません。
 
 オーディオを渡して文字起こしの状態を受け取る非同期セットアップに注意してください。 作成されるクライアントは .NET HTTP クライアントです。 `PostTranscriptions` メソッドはオーディオ ファイルの詳細を送信し、`GetTranscriptions` メソッドは結果を受け取ります。 `PostTranscriptions` はハンドルを返し、`GetTranscriptions` はそのハンドルを使用して文字起こしの状態を取得するためのハンドルを作成します。
 

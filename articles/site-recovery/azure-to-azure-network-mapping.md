@@ -3,23 +3,23 @@ title: Azure Site Recovery の 2 つの Azure リージョン間で仮想ネッ�
 description: Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、回復を調整します。 Azure またはセカンダリ データセンターへのフェールオーバーについて説明します。
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 editor: ''
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
 ms.service: site-recovery
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: aed804a257376308c668ce0c2f3e8ce652ee9b3f
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: 95e6a388d0638d2fd477d33aaf7c39cf120e29aa
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42141120"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353435"
 ---
 # <a name="map-virtual-networks-in-different-azure-regions"></a>異なる Azure リージョン間で仮想ネットワークをマッピングする
 
@@ -106,7 +106,7 @@ Azure リージョンに配置されている Azure 仮想ネットワーク (�
 サブネット アドレス範囲の末尾から順に IP が使用されるため、フェールオーバーされた VM には 10.0.0.254 が割り当てられます。 </br>
 
 **注意:** **運用 vNet** という用語は、ディザスター リカバリー構成でマップされるターゲット ネットワークを意味します。
-####<a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2.選択されたターゲット ネットワークが運用 vNet ではないが、運用ネットワークとサブネット範囲が同じ場合 
+#### <a name="2-if-the-target-network-chosen-is-not-the-production-vnet-but-has-the-same-subnet-range-as-production-network"></a>2.選択されたターゲット ネットワークが運用 vNet ではないが、運用ネットワークとサブネット範囲が同じ場合
 
 - 回復用の IP (ターゲット IP) は、フェールオーバー用に予約されているのと**同じ IP アドレス** (静的 IP として構成されている) の静的 IP になります。 これは、同じ IP アドレスが使用可能な場合です。
 - 構成済みの静的 IP が既に他の VM/デバイスに割り当てられている場合は、回復用 IP としてサブネット アドレス範囲の末尾から順に IP が順に使用されます。

@@ -9,28 +9,28 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 620d8b370b050a4d91ee6d94cba2c133b4313aed
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 88e7dad15a7080c4132a6983d949f9451ad5ce69
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159986"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239263"
 ---
-# <a name="what-happened-to-workbench-in-azure-machine-learning-preview"></a>Azure Machine Learning の Workbench の変更点 (プレビュー)
+# <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Azure Machine Learning の Workbench の変更点 (プレビュー)
 
-Workbench アプリケーションとその他のいくつかの初期機能は、2018 年 9 月のリリースで非推奨とされ、改善された[アーキテクチャ](concept-azure-machine-learning-architecture.md)に移行されました。 このリリースには、エクスペリエンスの向上のための顧客からのフィールドによって促進された、多くの重要な更新プログラムが含まれています。 実験の実行からモデルのデプロイまでのコア機能は変更されていませんが、機械学習のタスクとパイプラインを実現するために堅牢 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> と [CLI](reference-azure-machine-learning-cli.md) を使用できるようになりました。  
+Workbench アプリケーションとその他のいくつかの初期機能は、2018 年 9 月のリリースでリプレースされ、改善された[アーキテクチャ](concept-azure-machine-learning-architecture.md)に移行されました。 このリリースには、エクスペリエンスの向上のための顧客からのフィールドによって促進された、多くの重要な更新プログラムが含まれています。 実験の実行からモデルのデプロイまでのコア機能は変更されていませんが、機械学習のタスクとパイプラインを実現するために堅牢 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> と [CLI](reference-azure-machine-learning-cli.md) を使用できるようになりました。  
 
 この記事では、Azure Machine Learning サービスの変更点と、既存の作業に与える影響について説明します。
 
 ## <a name="what-changed"></a>変更箇所
 
-Azure Machine Learning の最終リリースには、次のものが含まれています。
+Azure Machine Learning サービスの最終リリースには、次のものが含まれています。
 + [簡略化された Azure リソースのモデル](concept-azure-machine-learning-architecture.md)
 + [新しいポータル UI](how-to-track-experiments.md) による、実験とコンピューティング ターゲットの管理
 + 新しい、より包括的な Python <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a>
 + 機械学習のための拡張された新しい [Azure CLI 拡張機能](reference-azure-machine-learning-cli.md)
 
-この[アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすさを考慮して再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning ワークスペース](concept-azure-machine-learning-architecture.md#workspace)だけです。  ワークスペースは、[Azure portal](quickstart-get-started.md) ですばやく作成することができます。  1 つのワークスペースを複数のユーザーが、トレーニングやデプロイのコンピューティングのターゲット、モデルの実験、Docker イメージ、デプロイしたモデルなどを格納するために使用することができます。
+この[アーキテクチャ](concept-azure-machine-learning-architecture.md)は、使いやすさを考慮して再設計されました。 複数の Azure リソースやアカウントは不要で、必要なものは [Azure Machine Learning サービス ワークスペース](concept-azure-machine-learning-architecture.md#workspace)だけです。  ワークスペースは、[Azure portal](quickstart-get-started.md) ですばやく作成することができます。  1 つのワークスペースを複数のユーザーが、トレーニングやデプロイのコンピューティングのターゲット、モデルの実験、Docker イメージ、デプロイしたモデルなどを格納するために使用することができます。
 
 現在のリリースには新しい強化された CLI と SDK クライアントがありますが、デスクトップ Workbench アプリケーション自体は非推奨です。 現在は、[Azure Web ポータルのワークスペース ダッシュボード](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)で実験を監視できるようになっています。 ダッシュボードを使用して、実験履歴の取得、ワークスペースに接続されているコンピューティング ターゲットの管理、モデルと Docker イメージの管理、さらには Web サービスのデプロイも行います。
 
@@ -73,7 +73,7 @@ Azure Machine Learning の最終リリースには、次のものが含まれて
 
 ## <a name="will-projects-persist"></a>プロジェクトは保持されますか。
 
-コードや作業が失われることはありません。 以前のバージョンでは、プロジェクトは、ローカル ディレクトリのあるクラウド エンティティです。 最新バージョンでは、ローカルの構成ファイルを使用して、ローカル ディレクトリを Azure Machine Learning ワークスペースに接続します。 [最新アーキテクチャの図をご覧ください](concept-azure-machine-learning-architecture.md)。
+コードや作業が失われることはありません。 以前のバージョンでは、プロジェクトは、ローカル ディレクトリのあるクラウド エンティティです。 最新バージョンでは、ローカルの構成ファイルを使用して、ローカル ディレクトリを Azure Machine Learning サービス ワークスペースに接続します。 [最新アーキテクチャの図をご覧ください](concept-azure-machine-learning-architecture.md)。
 
 プロジェクト コンテンツのほとんどが既にローカル マシン上にあったため、ワークスペースに接続するには、そのディレクトリ内に構成ファイルを作成し、それをコードで参照するだけで済みます。 [既存のプロジェクトの移行方法を確認してください。](how-to-migrate.md#projects)
 

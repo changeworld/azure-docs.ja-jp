@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: efdcf57fb0f175be51e6b9f8e72e4a02fcbeb5f3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 76024266a8ae3eb03e910e140184a07ae363e881
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162323"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384954"
 ---
 # <a name="qna-maker-limits"></a>QnA Maker の制限
 QnA Maker における制限の包括的な一覧です。
@@ -29,7 +29,7 @@ QnA Maker における制限の包括的な一覧です。
 |許可される発行済みナレッジ ベースの最大数 (最大インデックス数 - 1 (テスト用に予約済み))|2|14|49|199|199|2999|
 
 ## <a name="extraction-limits"></a>抽出の制限
-* 抽出できるファイルの最大数と最大のファイル サイズ: [QnA Maker の価格](https://azure.microsoft.com/en-in/pricing/details/cognitive-services/qna-maker/)に関するページを参照してください。
+* 抽出できるファイルの最大数と最大のファイル サイズ: [QnA Maker の価格](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)に関するページを参照してください。
 * よくあるご質問の HTML ページから QnA を抽出するためにクロールできるディープリンクの最大数: 20
 
 ## <a name="metadata-limits"></a>メタデータの制限
@@ -49,7 +49,7 @@ QnA Maker における制限の包括的な一覧です。
 * ファイル名の長さ: 200
 * サポートされるファイル形式: ".tsv"、".pdf"、".txt"、".docx"、".xlsx"
 * 代替の質問の最大数: 100
-* 質問と回答のペアの最大数: 選択した [Azure Search 層](https://docs.microsoft.com/en-in/azure/search/search-limits-quotas-capacity#document-limits)によって異なります。 
+* 質問と回答のペアの最大数: 選択した [Azure Search 層](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)によって異なります。 
 
 ## <a name="create-knowledge-base-call-limits"></a>ナレッジ ベースの作成の呼び出しの制限
 これらは、ナレッジ ベース作成操作 (つまり、*[KB を作成する]* のクリック、または CreateKnowledgeBase API の呼び出し) ごとの制限を表します。

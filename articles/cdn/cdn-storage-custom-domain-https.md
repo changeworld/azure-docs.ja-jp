@@ -3,8 +3,8 @@ title: チュートリアル - HTTPS 経由で Azure CDN のカスタム ドメ�
 description: ''
 services: cdn
 documentationcenter: ''
-author: dksimpson
-manager: cfowler
+author: mdgattuso
+manager: danielgi
 editor: ''
 ms.assetid: ''
 ms.service: cdn
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/15/2018
-ms.author: v-deasim
+ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: a1a86f28c9650c86df7c333ca52d772a09597efd
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 7aaf4be23c806dda621430c4d1b0c142f41feb1f
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091057"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49090384"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>チュートリアル - HTTPS 経由で Azure CDN のカスタム ドメインを使用してストレージ BLOB にアクセスする
 

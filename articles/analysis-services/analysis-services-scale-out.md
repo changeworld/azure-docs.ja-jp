@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 10/13/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 730b11fb5038e5d6c4f9b00fbc4eb07d673757f9
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 8cfbc72e239a7a5b38cee6752803e79735e2adc9
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43840991"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321276"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Azure Analysis Services のスケールアウト
 
@@ -27,9 +27,11 @@ ms.locfileid: "43840991"
 
 クエリ プール内にあるクエリ レプリカの数に関わらず、ワークロードの処理はクエリ レプリカ間で分散されません。 単一のサーバーが処理サーバーとして機能します。 クエリ レプリカは、クエリ プール内の各クエリ レプリカ間で同期されているモデルに対するクエリのみを処理します。 
 
-スケールアウトすると、新しいクエリ レプリカがクエリ プールに増分的に追加されます。 新しいクエリ レプリカ リソースがクエリ プールに追加され、クライアント接続とクエリを受信できるようになるまで最大 5 分かかることがあります。 すべての新しいクエリ レプリカが稼働すると、新しいクライアント接続はすべてのクエリ プール リソースに負荷分散されます。 既存のクライアント接続は、現在の接続先のリソースから変更されることはありません。  スケールインすると、クエリ プールから削除されるクエリ プール リソースへの既存のクライアント接続が終了します。 これらは、スケールイン操作が完了した時点で、残りのクエリ プール リソースに再接続されます。
+スケールアウトすると、新しいクエリ レプリカがクエリ プールに増分的に追加されます。 新しいクエリ レプリカ リソースがクエリ プールに追加されるまで最大 5 分かかることがあります。 すべての新しいクエリ レプリカが稼働すると、新しいクライアント接続はすべてのクエリ プール リソースに負荷分散されます。 既存のクライアント接続は、現在の接続先のリソースから変更されることはありません。  スケールインすると、クエリ プールから削除されるクエリ プール リソースへの既存のクライアント接続が終了します。 これらは、スケールイン操作が完了した時点で、残りのクエリ プール リソースに再接続されます。これには最大 5 分かかる場合があります。
 
 モデルを処理するときは、処理操作の完了後に、処理サーバーとクエリ レプリカ間で同期を実行する必要があります。 処理操作を自動化する場合は、処理操作が問題なく完了した際に同期操作が行われるよう構成することが重要です。 同期は、ポータルで手動で実行するか、PowerShell または REST API を使用して実行することができます。 
+
+### <a name="separate-processing-from-query-pool"></a>クエリ プールから分離した処理
 
 処理操作とクエリ操作の両方のパフォーマンスを最大限にするために、処理サーバーをクエリ プールから分離することができます。 分離すると、既存および新規のクライアント接続は、クエリ プール内のクエリ レプリカにのみ割り当てられます。 処理操作にそれほど時間がかからない場合は、、処理操作と同期操作を実行している間だけ処理サーバーをクエリ プールから分離し、その後、クエリ プールに戻すこともできます。 
 
@@ -53,14 +55,13 @@ ms.locfileid: "43840991"
 
 1. ポータルで、**[スケールアウト]** をクリックします。スライダーを使用してクエリ レプリカ サーバーの数を選択します。 選択したレプリカの数は既存のサーバーの数に追加されます。
 
-2. **[処理中のサーバーと照会中のプールを分けてください]** で、[はい] を選択してクエリ サーバーから処理中のサーバーを除外します。
+2. **[処理中のサーバーと照会中のプールを分けてください]** で、[はい] を選択してクエリ サーバーから処理中のサーバーを除外します。 既定の接続文字列 (:rw なし) を利用するクライアント接続は、クエリ プールのレプリカにリダイレクトされます。 
 
    ![スケールアウト スライダー](media/analysis-services-scale-out/aas-scale-out-slider.png)
 
 3. **[保存]** をクリックして新しいクエリ レプリカ サーバーをプロビジョニングします。 
 
 プライマリ サーバー上の表形式モデルはレプリカ サーバーと同期されます。 同期が完了すると、クエリ プールがレプリカ サーバー間で受信クエリの分散を開始します。 
-
 
 ## <a name="synchronization"></a>同期 
 
@@ -79,7 +80,7 @@ ms.locfileid: "43840991"
 `POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
 #### <a name="get-sync-status"></a>同期状態を取得する  
-`GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
+`GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
 
 ### <a name="powershell"></a>PowerShell
 PowerShell を使用する前に、[最新の AzureRM モジュールをインストールまたは更新します](https://github.com/Azure/azure-powershell/releases)。 
@@ -87,8 +88,6 @@ PowerShell を使用する前に、[最新の AzureRM モジュールをイン�
 クエリ レプリカの数を設定するには、[Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver)を使用します。 省略可能な `-ReadonlyReplicaCount` パラメーターを指定します。
 
 同期を実行するには、[Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance) を使用します。
-
-
 
 ## <a name="connections"></a>Connections
 
@@ -99,6 +98,12 @@ Power BI Desktop、Excel、カスタム アプリなどのエンドユーザー 
 SSMS、SSDT、および PowerShell、Azure 関数アプリ、AMO の接続文字列については、**[管理サーバー名]** を使用します。 管理サーバー名は特殊な `:rw` (読み取り/書き込み) 修飾子を含みます。 すべての処理操作は管理サーバーで発生します。
 
 ![サーバー名](media/analysis-services-scale-out/aas-scale-out-name.png)
+
+## <a name="troubleshoot"></a>トラブルシューティング
+
+**問題:** ユーザーに "**Cannot find server '\<Name of the server>' instance in connection mode 'ReadOnly'**" (接続モード 'ReadOnly' でサーバー '<サーバーの名前>' インスタンスが見つかりません) というエラーが表示されます。
+
+**解決方法:** **[処理中のサーバーと照会中のプールを分けてください]** オプションが選択されているとき、既定の接続文字列 (:rw なし) を利用するクライアント接続は、クエリ プールのレプリカにリダイレクトされます。 同期が完了していないため、クエリ プールのレプリカがオンラインになっていない場合、リダイレクトのクライアント接続は失敗することがあります。 接続の失敗を防ぐには、スケールアウト/同期操作が完了するまで、処理中のサーバーと照会中のプールを分けないことを選択してください。 メモリと QPU のメトリックを使用し、同期の状態を監視できます。
 
 ## <a name="related-information"></a>関連情報
 

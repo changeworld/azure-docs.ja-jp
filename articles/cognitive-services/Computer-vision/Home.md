@@ -3,19 +3,19 @@ title: Computer Vision API とは
 titlesuffix: Azure Cognitive Services
 description: Computer Vision サービスを使用すると、開発者は、イメージを処理して情報を返すための高度なアルゴリズムにアクセスできます。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: overview
 ms.date: 08/22/2018
-ms.author: v-deken
-ms.openlocfilehash: 030a8351a8f41c7404fa4ca8d243fff1ad818c2f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: pafarley
+ms.openlocfilehash: 03cf2fab1200cd617f456a6fcfb9067673d01a19
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433601"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340904"
 ---
 # <a name="what-is-computer-vision"></a>Computer Vision とは
 
@@ -61,7 +61,7 @@ Computer Vision では、次の要件に合ったイメージを分析できま�
 - イメージが、JPEG、PNG、GIF、または BMP で提示されている
 - イメージのファイル サイズが 4 メガバイト (MB) 未満である
 - イメージのディメンションが 50 x 50 ピクセルよりも大きい値である  
-  OCR では、イメージのディメンションを 50 x 50 ～ 4200 x 4200 ピクセルにする必要があり、イメージは 10 メガピクセルを超過できません。
+  OCR 用に、画像の寸法が 50 x 50 から 4,200 x 4,200 ピクセルの間である
 
 ## <a name="next-steps"></a>次の手順
 

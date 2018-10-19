@@ -6,16 +6,16 @@ services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 5dfea3a8b4b5a79585b910fd2fad4ffbda4729fd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 572895e51d579efb3b141322a87e374283af1648
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037611"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384703"
 ---
 # <a name="create-a-new-knowledge-base-in-java"></a>新しいナレッジ ベースを Java で作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "47037611"
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードをコンパイルして実行するには、[JDK 7 または 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) が必要です。 好みの Java IDE がある場合はそれを使用してください。テキスト エディターでも問題ありません。
+このコードをコンパイルして実行するには、[JDK 7 または 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) が必要です。 好みの Java IDE がある場合はそれを使用してください。テキスト エディターでも問題ありません。
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を所有していること、また使用リソースとして **QnA Maker** が選択されていることが必要です。 [Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServices)で新しい API アカウントの有料サブスクリプション キーが必要となります。 このクイック スタートでは、どちらのキーでも問題ありません。
 
@@ -224,7 +224,7 @@ public class CreateKB {
 
     /**
      * Sends a sample request to create a knowledge base. To understand
-     * this 'kb' object, refer to the <a href="https://docs.microsoft.com/en-us/azure/cognitive-services/QnAMaker/concepts/knowledge-base">Knowledge base</a> concept page.
+     * this 'kb' object, refer to the <a href="https://docs.microsoft.com/azure/cognitive-services/QnAMaker/concepts/knowledge-base">Knowledge base</a> concept page.
      * @return A new knowledge base.
      */
     public static KB GetKB () {
@@ -243,7 +243,8 @@ public class CreateKB {
         q.metadata = new Metadata[]{md};
 
         kb.qnaList = new Question[]{q};
-        kb.urls = new String[]{"https://docs.microsoft.com/en-in/azure/cognitive-services/qnamaker/faqs",     "https://docs.microsoft.com/en-us/bot-framework/resources-bot-framework-faq"};
+        kb.urls = new String[]{"https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs",     "https://docs.microsoft.com/bot-framework/resources-bot-framework-faq"};
+
 
         return kb;
     }

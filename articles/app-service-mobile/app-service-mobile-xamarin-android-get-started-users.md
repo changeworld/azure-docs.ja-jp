@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: 97207b722b65ccf98c57304cd559b0927aacd5a4
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: d496801894560310a4225eae8a32fced52bcc428
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27595297"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063542"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Xamarin.Android アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -125,6 +125,12 @@ Visual Studio または Xamarin Studio で、デバイスまたはエミュレ�
         </activity>
 
 6. Visual Studio または Xamarin Studio で、デバイスまたはエミュレーターでクライアント プロジェクトを実行し、選択した ID プロバイダーを使用してサインインします。 ログインに成功すると、アプリケーションにログイン ID と todo 項目の一覧が表示され、データを更新することができます。
+
+## <a name="troubleshooting"></a>トラブルシューティング
+
+**アプリケーションが**  でクラッシュした`Java.Lang.NoSuchMethodError: No static method startActivity`
+
+場合によっては、Visual Studio で単なる警告として表示されるサポート パッケージの競合が実行時にこの例外としてアプリケーション クラッシュとして表示されます。 この場合、プロジェクトで参照されるすべてのサポート パッケージのバージョンが同じであることを確認する必要があります。 [Azure Mobile Apps の NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)には、Android プラットフォームに関して `Xamarin.Android.Support.CustomTabs` の依存関係があるため、プロジェクトで新しいサポート パッケージを使用する場合は、必要なバージョンを使用してこのパッケージを直接インストールし、競合を回避する必要があります。
 
 <!-- URLs. -->
 [Xamarin.Android アプリの作成]: app-service-mobile-xamarin-android-get-started.md

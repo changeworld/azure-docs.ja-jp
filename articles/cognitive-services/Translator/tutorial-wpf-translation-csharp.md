@@ -1,21 +1,21 @@
 ---
-title: 'チュートリアル: C# を使用して Translator Text の WPF アプリケーションを作成する | Microsoft Docs'
-titleSuffix: Microsoft Cognitive Services
+title: 'チュートリアル: C# を使用して Translator Text 向けの WPF アプリケーションを作成する'
+titleSuffix: Azure Cognitive Services
 description: このチュートリアルで は、C# を使って WPF アプリケーションをビルドすることで、Translator Text API を使用してテキストの翻訳、サポートされている言語のローカライズされた一覧を取得するなどの方法を説明します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: tutorial
 ms.date: 07/20/2018
 ms.author: nolachar
-ms.openlocfilehash: 353c1d91b7925a84667ef1bb7c38ab87c6a89cc1
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 97660985b275bbe4384acb3fc92be8aaa0b57881
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716374"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123965"
 ---
 # <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>チュートリアル: C&#35; を使用して Translator Text の WPF アプリケーションを作成する
 
@@ -40,7 +40,7 @@ ms.locfileid: "39716374"
 
 また、プログラムで使用される 3 つの Azure サービスのサブスクリプション キーも必要です。 Translator Text サービスのキーは、Azure ダッシュボードから取得できます。 毎月最大 200 万文字を無料で翻訳できる、無料価格レベルを利用できます。
 
-Text Analytics と Bing Spell Check の両方のサービスには、無料試用版が用意されており、[Cognitive Services の試行](https://azure.microsoft.com/try/cognitive-services/)でサインアップできます。 また、Azure ダッシュボードを介してどちらかのサブスクリプションも作成できます。 Text Analytics には Free レベルがあります。
+Text Analytics と Bing Spell Check の両方のサービスには、無料試用版が用意されており、[Cognitive Services の試行](https://azure.microsoft.com/try/cognitive-services/)でサインアップできます。 また、Azure ダッシュボードを介してどちらかのサブスクリプションも作成できます。 Text Analytics には無料レベルがあります。
 
 このチュートリアルのソース コードは下に示されています。 お使いのサブスクリプション キーは、`MainWindow.xaml.cs` 内で `TEXT_TRANSLATION_API_SUBSCRIPTION_KEY` などの変数としてソース コードにコピーする必要があります。
 

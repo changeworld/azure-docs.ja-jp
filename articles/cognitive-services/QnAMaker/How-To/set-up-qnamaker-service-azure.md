@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 87bcd23983c1d973f7e90caf806092c909b7b9e4
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 103da0c65bcf9b9bd24130082f844b9bd12a9a02
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032548"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389719"
 ---
 # <a name="create-a-qna-maker-service"></a>QnA Maker サービスを作成する
 
@@ -41,10 +41,10 @@ QnA Maker のナレッジ ベースを作成する前に、まず Azure で QnA 
     * QnA Maker リソースのデプロイ先となる**サブスクリプション**を選択します。
     * QnA Maker 管理サービス (ポータルおよび Management API) の**管理価格レベル**を選択します。 SKU の価格の詳細については、[こちら](https://aka.ms/qnamaker-pricing)を参照してください。
     * この QnA Maker リソースのデプロイ先として、新しい**リソース グループ** (推奨) を作成するか、または既存のリソース グループを使用します。
-    * Azure Search サービスの**検索価格レベル**を選択します。 Free レベル オプションが灰色表示されている場合、ご利用のサブスクリプションには、既に Free Azure Search レベルがデプロイされていることを意味します。 その場合、Basic Azure Search レベルから開始する必要があります。 Azure Search 価格の詳細については、[こちら](https://azure.microsoft.com/en-us/pricing/details/search/)を参照してください。
+    * Azure Search サービスの**検索価格レベル**を選択します。 Free レベル オプションが灰色表示されている場合、ご利用のサブスクリプションには、既に Free Azure Search レベルがデプロイされていることを意味します。 その場合、Basic Azure Search レベルから開始する必要があります。 Azure Search 価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/search/)を参照してください。
     * Azure Search データのデプロイ先となる**検索場所**を選択します。 Azure Search に使用する場所の選択肢は、顧客データの保管場所の制限に基づいて与えられます。
     * **[アプリ名]** で App Service に名前を付けます。
-    * App Service の既定のレベルは Standard (S1) になります。 このプランは、作成後に変更することができます。 App Service の価格の詳細については、[こちら](https://azure.microsoft.com/en-in/pricing/details/app-service/)を参照してください。
+    * App Service の既定のレベルは Standard (S1) になります。 このプランは、作成後に変更することができます。 App Service の価格の詳細については、[こちら](https://azure.microsoft.com/pricing/details/app-service/)を参照してください。
     * App Service のデプロイ先となる **Web サイトの場所**を選択します。
 
         > [!NOTE]

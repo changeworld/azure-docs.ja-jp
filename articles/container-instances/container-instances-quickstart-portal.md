@@ -1,30 +1,29 @@
 ---
-title: クイックスタート - Azure ポータルでの最初の Azure Container Instances コンテナーの作成
-description: このクイック スタートでは、Azure Portal を使用して Azure Container Instances にコンテナーをデプロイします
+title: クイック スタート - Azure Container Instances でアプリケーションを実行する
+description: このクイック スタートでは、Azure portal を使用して、Docker コンテナーで実行されているアプリケーションを Azure Container Instances にデプロイします
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 05/11/2018
-ms.author: marsma
+ms.date: 10/02/2018
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 6aa6fb27b2aa7c8b9614e5812fadc629b1e185f8
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: 6ab7680559400c0a270142563ecf7e251c2cd1b8
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34076240"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857722"
 ---
-# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>クイック スタート: Azure Container Instances での最初のコンテナーの作成
+# <a name="quickstart-run-an-application-in-azure-container-instances"></a>クイック スタート: Azure Container Instances でアプリケーションを実行する
 
-Azure Container Instances を使用すると、仮想マシンをプロビジョニングしたり、より高度なレベルのサービスを採用したりしなくても、Azure の Docker コンテナーを簡単に作成、管理できます。 このクイック スタートでは、Azure portal を使用して Azure でコンテナーを作成し、完全修飾ドメイン名 (FQDN) を使用してインターネットに公開します。 いくつかの設定の構成後、ブラウザーに次のように表示されます。
+Docker コンテナーを Azure で簡単にすばやく実行するには、Azure Container Instances を使用します。 仮想マシンをデプロイしたり、Kubernetes などの完全なコンテナー オーケストレーション プラットフォームを使用したりする必要はありません。 このクイック スタートでは、Azure portal を使用して Azure でコンテナーを作成し、そのアプリケーションを完全修飾ドメイン名 (FQDN) を介して使用できるようにします。 いくつかの設定を構成し、コンテナーをデプロイした後は、実行中のアプリケーションを参照できます。
 
-![Azure Container Instances を使用してデプロイされたアプリのブラウザーでの表示][aci-portal-07]
+![Azure Container Instances にデプロイされたアプリのブラウザーでの表示][aci-portal-07]
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Azure Portal (https://portal.azure.com) にサインインします。
+Azure Portal ( https://portal.azure.com ) にサインインします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][azure-free-account]を作成してください。
 
@@ -38,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 * [Container name] (コンテナー名): `mycontainer`
 * [Container image] (コンテナー イメージ): `microsoft/aci-helloworld`
-* リソース グループ: `myResourceGroup`
+* リソース グループ: **[新規作成]** > `myResourceGroup`
 
 ![Azure ポータルで新しいコンテナー インスタンスの基本設定を構成][aci-portal-03]
 
@@ -54,11 +53,11 @@ Azure Container Instances では、Windows コンテナーと Linux コンテナ
 
 ![Azure ポータルでの新しいコンテナー インスタンスの設定概要][aci-portal-05]
 
-デプロイが開始されると、ポータル ダッシュボードにデプロイの進行状況を示すタイルが表示されます。 デプロイが完了したら、このタイルに新しいコンテナー インスタンスが表示されます。
+デプロイが開始されると、デプロイが進行中であることを示す通知が表示されます。 コンテナー グループがデプロイされると、別の通知が表示されます。
 
 ![Azure ポータルでの新しいコンテナー インスタンスの作成進捗状況][aci-portal-08]
 
-**mycontainer** コンテナー インスタンスを選択してプロパティを表示します。 コンテナー インスタンスの **FQDN** (完全修飾ドメイン名) を書き留め、インスタンスの **[状態]** を確認します。
+**[リソース グループ]** > **[myResourceGroup]** > **[mycontainer]** の順に移動して、コンテナー グループの概要を開きます。 コンテナー インスタンスの **FQDN** (完全修飾ドメイン名) を書き留め、インスタンスの **[状態]** を確認します。
 
 ![Azure ポータルでのコンテナー グループ概要][aci-portal-06]
 
@@ -88,7 +87,7 @@ Azure Container Instances では、Windows コンテナーと Linux コンテナ
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、パブリック Docker Hub レジストリ内のイメージから Azure コンテナー インスタンスを作成しました。 コンテナー イメージを自分でビルドし、プライベート Azure コンテナー レジストリから Azure Container Instances にデプロイする場合は、Azure Container Instances のチュートリアルに進んでください。
+このクイック スタートでは、パブリック Docker Hub レジストリ内のイメージから Azure コンテナー インスタンスを作成しました。 コンテナー イメージをビルドし、プライベート Azure コンテナー レジストリからデプロイする場合は、Azure Container Instances のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances のチュートリアル](./container-instances-tutorial-prepare-app.md)

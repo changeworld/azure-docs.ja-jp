@@ -1,25 +1,25 @@
 ---
-title: 'クイックスタート: Microsoft Genomics サービス経由でのワークフローの実行 | Microsoft Docs'
+title: 'クイック スタート: Microsoft Genomics 経由でのワークフローの実行'
 description: このクイックスタートでは、Azure Blob Storage に入力データを読み込み、Microsoft Genomics サービス経由でワークフローを実行する方法を示します。
-services: microsoft-genomics
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 4387e1c935ada99e1f9c335fb7e1b67905c01188
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: e1d10b578d33ba8d96f43666b82e94ef5503fe77
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42022687"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731089"
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>クイックスタート: Microsoft Genomics サービス経由でのワークフローの実行
 
-Microsoft Genomics は、Raw 読み取りから始まり、アライメントされたリードの作成およびバリアント呼び出しなどのゲノムを迅速に処理できる二次解析のための、スケーラブルでセキュリティに保護されたサービスです。 次のいくつかの手順のみで、使用を開始できます。 
+このクイック スタートでは、Azure Blob Storage に入力データを読み込み、Microsoft Genomics サービス経由でワークフローを実行する方法を示します。 Microsoft Genomics は、Raw 読み取りから始まり、アライメントされたリードの作成およびバリアント呼び出しなどのゲノムを迅速に処理できる二次解析のための、スケーラブルでセキュリティに保護されたサービスです。 
+
+次のいくつかの手順のみで、使用を開始できます。 
 1.  設定: Azure Portal 経由で Microsoft Genomics アカウントを作成して、ローカル環境に Microsoft Genomics Python クライアントをインストールします。 
 2.  入力データのアップロード: Azure Portal 経由で Microsoft Azure Storage アカウントを作成し、入力ファイルをアップロードします。 入力ファイルは、paired end 読み取り (fastq または bam ファイル) にする必要があります。
 3.  実行: Microsoft Genomics コマンドライン インターフェイスを使用して、Microsoft Genomics サービス経由でワークフローを実行します。 
@@ -41,7 +41,7 @@ Microsoft Genomics アカウントを作成するには、[Azure Portal](https:/
  |アカウント名         | MyGenomicsAccount     |一意のアカウント識別子を選択します。 有効な名前については、「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」をご覧ください。 |
  |サブスクリプション         | お使いのサブスクリプション名|これは、Azure サービスの課金単位です。サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
  |リソース グループ       | MyResourceGroup       |  リソース グループを使用すると、複数の Azure リソース (Storage アカウント、Genomics アカウントなど) を1 つのグループにまとめて、管理を簡単にできます。 詳細については、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)に関する記事をご覧ください。 有効なリソース グループ名については、「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」をご覧ください。 |
- |Location                   | 米国西部 2                    |    サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。 |
+ |場所                   | 米国西部 2                    |    サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。 |
 
 
 
@@ -117,17 +117,17 @@ Microsoft Genomics サービスでは、Azure Storage アカウントのブロ�
 
  |**設定**          |  **推奨値**  | **フィールドの説明** |
  |:-------------------------       |:-------------         |:----------            |
- |Name         | MyStorageAccount     |一意のアカウント識別子を選択します。 有効な名前については、「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」をご覧ください。 |
+ |名前         | MyStorageAccount     |一意のアカウント識別子を選択します。 有効な名前については、「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」をご覧ください。 |
  |デプロイメント モデル         | リソース マネージャー| リソース マネージャーは、推奨されるデプロイ モデルです。 詳細については、[リソース マネージャー デプロイの理解](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)に関するページをご覧ください。 |      
  |アカウントの種類       | BLOB ストレージ       |  BLOB ストレージでは、汎用的な目的の場合より、2 ～ 5 倍のダウンロードおよびアップロードの高速化が可能です。 |
- |[パフォーマンス]                  | 標準                   | 既定値は Standard です。 Standard および Premium Storage アカウントの詳細については、「[Microsoft Azure Storage の概要](https://docs.microsoft.com/azure/storage/common/storage-introduction)」をご覧ください。    |
+ |パフォーマンス                  | 標準                   | 既定値は Standard です。 Standard および Premium Storage アカウントの詳細については、「[Microsoft Azure Storage の概要](https://docs.microsoft.com/azure/storage/common/storage-introduction)」をご覧ください。    |
  |レプリケーション                  | ローカル冗長ストレージ                  | ローカル冗長ストレージでは、お使いのストレージ アカウントが作成されたリージョンのデータセンター内に、データをレプリケートします。 詳細については、「[Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy)」をご覧ください。    |
- |安全な転送が必須                  | Disabled                 | 既定では無効になっています。 データ転送セキュリティの詳細については、[安全な転送が必要](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)であることに関するページをご覧ください。    |
+ |安全な転送が必須                  | 無効                 | 既定では無効になっています。 データ転送セキュリティの詳細については、[安全な転送が必要](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)であることに関するページをご覧ください。    |
  |アクセス層                  | ホット                   | ホット アクセスは、ストレージ アカウント内のオブジェクトへのアクセス頻度が高いことを示します。    |
  |サブスクリプション         | お使いの Azure サブスクリプション |サブスクリプションの詳細については、[サブスクリプション](https://account.azure.com/Subscriptions)に関するページをご覧ください。 |      
  |リソース グループ       | MyResourceGroup       |  お使いの genomics アカウントと同じリソース グループを選択できます。 有効なリソース グループ名については、「[名前付け規則](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)」をご覧ください。 |
- |Location                  | 米国西部 2                  | お使いの genomics アカウントの場所と同じ場所を使用し、送信費を削減すると共に待機時間を短縮します。 Genomics サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。    |
- |仮想ネットワーク                | Disabled                   | 既定では無効になっています。 詳細については、[Azure Virtual Networks](https://docs.microsoft.com/azure/storage/common/storage-network-security) に関するページをご覧ください。    |
+ |場所                  | 米国西部 2                  | お使いの genomics アカウントの場所と同じ場所を使用し、送信費を削減すると共に待機時間を短縮します。 Genomics サービスは、米国西部 2、西ヨーロッパ、および東南アジアで利用可能です。    |
+ |仮想ネットワーク                | 無効                   | 既定では無効になっています。 詳細については、[Azure Virtual Networks](https://docs.microsoft.com/azure/storage/common/storage-network-security) に関するページをご覧ください。    |
 
 
 

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: c8d7f1f5b793fcb684e9896bb93213a23d489860
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 163972329161f90ad364b25e7e60e9e5a04324d5
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448545"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720006"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Azure AD とのアカウントの共有
 ## <a name="overview"></a>概要
@@ -71,7 +71,7 @@ Azure AD を使ってアカウントを共有するには、次の操作が必�
 Multi-Factor Authentication (MFA) で共有アカウントの安全性を強化 (詳細については「[Azure AD によるアプリケーションのセキュリティ保護](authentication/concept-mfa-whichversion.md)」を参照) すると共に、[Azure AD のセルフ サービス](users-groups-roles/groups-self-service-management.md)のグループ管理を使用してアプリケーションへのアクセス権限を有するユーザーを管理する機能を委任することもできます。
 
 ## <a name="related-articles"></a>関連記事
-* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](active-directory-apps-index.md)
+* [Azure Active Directory のアプリケーション管理](manage-apps/what-is-application-management.md)
 * [条件付きアクセスを使用したアプリケーションの保護](active-directory-conditional-access-azure-portal.md)
 * [セルフサービス グループの管理/SSAA](users-groups-roles/groups-self-service-management.md)
 

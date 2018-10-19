@@ -10,12 +10,12 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
-ms.openlocfilehash: 2cf9c8baf715acf0eef36d640c22f355435c9ca5
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 45520a556d109158987dd47e33a1efb52a1cd356
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631046"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364739"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Azure Portal を使用して Time Series Insights 環境の参照データ セットを作成する
 
@@ -24,6 +24,12 @@ ms.locfileid: "39631046"
 参照データ セットは、イベント ソースからのイベントを増幅する項目の集まりです。 イベント ソースから受信した各イベントは、Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の対応するデータ行と結合されます。 こうして増幅されたイベントをクエリで利用することができます。 この結合操作は、参照データ セットに定義されている主キー列に基づいて行われます。
 
 参照データは、遡及的に結合されることはありません。 つまり、データが構成されてアップロードされると、現在および将来のイングレス データのみが対応付けられ、参照日付セットに結合されます。
+
+## <a name="video"></a>ビデオ: 
+
+### <a name="in-this-video-we-cover-time-series-insights-reference-data-modelbr"></a>このビデオでは、Time Series Insight の参照データ モデルについて説明します。</br>
+
+> [!VIDEO https://www.youtube.com/embed/Z0NuWQUMv1o]
 
 ## <a name="add-a-reference-data-set"></a>参照データ セットを追加する
 

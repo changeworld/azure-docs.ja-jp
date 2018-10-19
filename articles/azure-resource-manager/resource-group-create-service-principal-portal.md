@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: fc0ccd84f493fd69c84515331386592ec11a887e
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2f053f6dd98b9f4e97d69e51bce933a003633277
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025295"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497945"
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -27,7 +27,7 @@ ms.locfileid: "44025295"
 この記事では、ポータル経由でそれらの手順を実行する方法を示しています。 ここでは、シングル テナント アプリケーション (1 つの組織内でのみ実行することを目的としたアプリケーション) に焦点を絞って説明します。 一般に、組織内で実行される基幹業務アプリケーションには、シングル テナント アプリケーションが使用されます。
 
 > [!IMPORTANT]
-> サービス プリンシパルを作成する代わりに、アプリケーション ID 用に Azure AD の管理対象サービス ID を使用することを検討します。 Azure AD の MSI は、コードのために ID の作成を簡略化する、Azure Active Directory のパブリック プレビュー機能です。 コードが、Azure AD の MSI をサポートするサービス上で実行され、Azure Active Directory 認証をサポートするリソースにアクセスする場合、Azure AD の MSI は優れた選択肢となります。 Azure AD の MSI の詳細 (どのサービスが現在 MSI をサポートしているかなど) については、「[Azure リソースの管理対象サービス ID](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
+> サービス プリンシパルを作成する代わりに、アプリケーション ID 用に Azure リソースのマネージド ID を使用することを検討します。 コードが、マネージド ID をサポートするサービス上で実行され、Azure Active Directory 認証をサポートするリソースにアクセスする場合、マネージド ID は優れた選択肢となります。 Azure リソースのマネージド ID の詳細 (どのサービスが現在マネージド ID をサポートしているかなど) については、「[Azure リソースのマネージド ID とは](../active-directory/managed-identities-azure-resources/overview.md)」を参照してください。
 
 ## <a name="required-permissions"></a>必要なアクセス許可
 
@@ -71,7 +71,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
 ## <a name="create-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを作成する
 
-1. [Azure Portal](https://portal.azure.com) で Azure アカウントにログインします。
+1. [Azure Portal](https://portal.azure.com) で Azure アカウントにサインインします。
 1. **[Azure Active Directory]** を選択します。
 
    ![[Azure Active Directory] を選択する](./media/resource-group-create-service-principal-portal/select-active-directory.png)
@@ -114,7 +114,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
    ![キーを保存する](./media/resource-group-create-service-principal-portal/save-key.png)
 
-   キーを保存すると、キーの値が表示されます。 キーは後で取得できないため、この値をコピーしておきます。 キー値は、アプリケーションとしてログインする際にアプリケーション ID と共に入力します。 アプリケーションが取得できる場所にキー値を保存します。
+   キーを保存すると、キーの値が表示されます。 キーは後で取得できないため、この値をコピーしておきます。 キー値は、アプリケーションとしてサインインする際にアプリケーション ID と共に入力します。 アプリケーションが取得できる場所にキー値を保存します。
 
    ![保存されたキー](./media/resource-group-create-service-principal-portal/copy-key.png)
 

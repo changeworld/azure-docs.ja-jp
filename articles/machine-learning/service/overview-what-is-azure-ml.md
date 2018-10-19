@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: 6e0294f99d1c2291e84bf2ac5d5b1f771222b551
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 660e5515b765e133d5bc9309be5439209b957353
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433414"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238518"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>Azure Machine Learning サービス (プレビュー) の概要
 
@@ -48,7 +48,7 @@ Azure Machine Learning サービスを使用すると、ローカル マシン�
 Azure Machine Learning サービスを使用すると、モデルを自動生成し、自動調整することができます。
 例については、[自動化された Azure Machine Learning で分類モデルを自動的にトレーニングするチュートリアル](tutorial-auto-train-models.md)に関する記事を参照してください。
 
-また、Azure Machine Learning <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> for Python とオープンソースの Python パッケージを使用すると、Azure Machine Learning ワークスペースで極めて正確な機械学習およびディープ ラーニング モデルを構築し、トレーニングすることができます。
+また、Azure Machine Learning <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> for Python とオープンソースの Python パッケージを使用すると、Azure Machine Learning サービス ワークスペースできわめて正確な機械学習およびディープ ラーニング モデルを構築し、トレーニングすることができます。
 以下のようなオープンソースの Python パッケージで使用できる多数の機械学習コンポーネントから選択することができます。
 
 - <a href="http://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>
@@ -80,7 +80,7 @@ Machine Learning サービスを使用するのは、Python 環境で作業し�
 
 ## <a name="next-steps"></a>次の手順
 
-- [まず Azure portal の使用](quickstart-get-started.md)に関する記事を参照して機械学習ワークスペースを作成します
+- [Azure portal の使用](quickstart-get-started.md)に関する記事を参照して機械学習サービス ワークスペースを作成します
  
 - 詳細なチュートリアルの「[Train an image classification model with Azure Machine Learning](tutorial-train-models-with-aml.md)」(Azure Machine Learning を使用して画像の分類モデルをトレーニングする) に従って、Azure Machine Learning サービスでモデルをトレーニングおよびデプロイする方法を学びます。
 

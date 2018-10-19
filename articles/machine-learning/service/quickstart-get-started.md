@@ -1,6 +1,6 @@
 ---
-title: 'クイック スタート: 機械学習ワークスペースの作成 - Azure'
-description: Azure portal を使用して Azure Machine Learning ワークスペースを作成します。 Azure Machine Learning サービスで機械学習モデルの実験、トレーニング、デプロイを行うとき、このワークスペースがクラウドに置いて基礎ブロックとなります。
+title: 'クイック スタート: Azure portal で機械学習サービス ワークスペースを作成する - Azure Machine Learning'
+description: Azure portal を使用して Azure Machine Learning サービス ワークスペースを作成します。 Azure Machine Learning サービスで機械学習モデルの実験、トレーニング、デプロイを行うとき、このワークスペースがクラウドに置いて基礎ブロックとなります。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,16 +9,16 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: c1610291e06255e2c724268f63d740f7e4debea4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b6f0201a36a676e7647b9f5e60bc2df3415b9594
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959990"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831332"
 ---
-# <a name="quickstart-get-started-with-azure-machine-learning-service"></a>クイック スタート: Azure Machine Learning サービスの基本操作
+# <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning-service"></a>クイック スタート: Azure portal を使用した Azure Machine Learning サービスの基本操作
 
-このクイック スタートでは、Azure portal を使用して Azure Machine Learning ワークスペースを作成します。 Azure Machine Learning サービスで機械学習モデルの実験、トレーニング、デプロイを行うとき、このワークスペースがクラウドに置いて基礎ブロックとなります。 
+このクイック スタートでは、Azure portal を使用して Azure Machine Learning サービス ワークスペースを作成します。 Azure Machine Learning サービスで機械学習モデルの実験、トレーニング、デプロイを行うとき、このワークスペースがクラウドに置いて基礎ブロックとなります。 
 
 このチュートリアルでは、次のことについて説明します。
 
@@ -28,7 +28,7 @@ ms.locfileid: "46959990"
 
 利用者の便宜を図る目的で、リージョンによっては Azure リソースの[コンテナー レジストリ](https://azure.microsoft.com/services/container-registry/)、[ストレージ](https://azure.microsoft.com/services/storage/)、[Application Insights](https://azure.microsoft.com/services/application-insights/)、[キー コンテナー](https://azure.microsoft.com/services/key-vault/)がワークスペースに自動的に追加されます。
 
-作成したリソースは、Azure Machine Learning に関連したその他のチュートリアルとハウツー記事の前提条件として使用できます。 他の Azure サービスと同様に、 Azure Machine Learning サービスに関連する一部のリソース (BatchAI クラスター サイズなど) には上限があります。 既定の上限とクォータの追加を要求する方法については[こちら](how-to-manage-quotas.md)の記事をお読みください。
+作成するリソースは、Azure Machine Learning サービスに関連したその他のチュートリアルおよびハウツー記事の前提条件として使用できます。 他の Azure サービスと同様に、 Azure Machine Learning サービスに関連する一部のリソース (BatchAI クラスター サイズなど) には上限があります。 既定の上限とクォータの追加を要求する方法については[こちら](how-to-manage-quotas.md)の記事をお読みください。
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal.md)]
 
-ワークスペース ページで、`Explore your Azure Machine Learning Workspace` をクリックします。
+ワークスペース ページで、`Explore your Azure Machine Learning service workspace` をクリックします。
 
  ![ワークスペースを試す](./media/quickstart-get-started/explore_aml.png)
 
@@ -69,9 +69,9 @@ Azure Notebooks では、Jupyter ノートブック向けの無料のクラウ�
 
 `01.run-experiment.ipynb` をクリックしてノートブックを開きます。
 
-`Shift`+`Enter` を使用し、セルを一度に 1 つ実行できます。  あるいは、メニュー `Cells` > `Run All` を使用し、ノートブック全体を実行します。
+`Shift`+`Enter` を使用し、セルを一度に 1 つ実行できます。  あるいは、メニュー `Cells` > `Run All` を使用し、ノートブック全体を実行します。  セルの横に [*] が表示されているときは実行中です。  そのセルのコードが完了すると、数値が表示されます。
 
-ログインを求められることがあります。  メッセージに含まれるコードをコピーし、リンクをクリックしてコードを新しいウィンドウに貼り付けます。  コードの前後にスペースが入らないようにしてください。
+サインインを要求される場合があります。  メッセージに含まれるコードをコピーし、リンクをクリックしてコードを新しいウィンドウに貼り付けます。  コードの前後にスペースが入らないようにしてください。  サインインには、Azure portal で使用したアカウントを使用します。
 
  ![login](./media/quickstart-get-started/login.png)
 

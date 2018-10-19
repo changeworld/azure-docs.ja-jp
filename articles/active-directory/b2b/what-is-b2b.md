@@ -1,90 +1,85 @@
 ---
 title: Azure Active Directory B2B コラボレーションとは | Microsoft Docs
-description: Azure Active Directory B2B コラボレーションは、会社のアプリケーションにビジネス パートナーが選択的にアクセスできるようにすることで会社間のリレーションシップをサポートします。
+description: Azure Active Directory B2B コラボレーションでは、リソースを外部パートナーと安全に共有してコラボレーションできるように、ゲスト ユーザー アクセスをサポートしています。
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
-ms.date: 04/26/2018
-ms.author: twooley
-author: twooley
+ms.topic: overview
+ms.date: 09/14/2018
+ms.author: mimart
+author: msmimart
 manager: mtillman
-ms.reviewer: sasubram
-ms.openlocfilehash: 2bc405e6356113e0423f833868c86890c0c3d5d2
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.reviewer: mal
+ms.openlocfilehash: 609f48d0c2ba41d658850ade367d9b225941b105
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259593"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982610"
 ---
-# <a name="what-is-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションとは
+# <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Azure Active Directory B2B のゲスト ユーザー アクセスとは
 
-Azure Active Directory (Azure AD) の B2B (Business-To-Business) コラボレーション機能を利用する組織は、Azure AD を使って他の任意の組織のユーザーと安全に共同作業を行うことができます。相手となる組織の規模の大小は関係がありません。 相手の組織が Azure AD を使用しているかどうかは関係なく、IT 部門を持っている必要さえありません。
+Azure Active Directory (Azure AD) の企業間 (B2B) コラボレーションによって、貴社のデータに対するコントロールを維持した状態で、他の組織からアクセスするゲスト ユーザーとアプリケーションとサービスを安全に共有できます。 外部パートナーの規模に関係なく、Azure AD を所有していない場合や IT 部門が存在していない場合でも、外部パートナーとセキュリティで保護された安全な状態で作業できます。 単純な招待と受諾プロセスによって、パートナーは各自の資格情報を使用して、貴社のリソースにアクセスできます。 開発者は、Azure AD の B2B API を使用して、招待プロセスをカスタマイズしたり、セルフサービス サインアップ ポータルなどのアプリケーションを作成ししたりできます。
 
-Azure AD を使用する組織は、独自の社内データに対するコントロールを維持した状態で、そのパートナーに対してドキュメントやリソース、アプリケーションへのアクセスを提供することができます。 開発者は、Azure AD B2B API を使えば、2 つの組織を安全につなぐアプリケーションを開発することができます。 また、これにより、エンド ユーザーが移動しやすくなります。
+次のビデオを視聴して、ゲスト ユーザーが各自の ID を使用して貴社のアプリとサービスにサインインするように招待することで、ゲスト ユーザーと安全にコラボレーションする方法を確認してください。
 
 次のビデオでは、役に立つ概要を提供します。
+
 >[!VIDEO https://www.youtube.com/embed/AhwrweCBdsc]
 
-## <a name="key-benefits-of-azure-ad-b2b-collaboration"></a>Azure AD B2B コラボレーションの主要な利点
-
-### <a name="work-with-any-user-from-any-partner"></a>あらゆるパートナーのユーザーと連携可能
-
-- パートナーはそれぞれ独自の資格情報を使用する
-- Azure AD を使用するパートナーには負担が一切ない
-- 外部のディレクトリや複雑なセットアップが不要
-
-### <a name="simple-and-secure-collaboration"></a>単純かつ安全なコラボレーション
-
-- 完成度の高い Azure AD の強力な承認ポリシーを適用しながら会社のあらゆるアプリやデータへのアクセスを提供
-- ユーザーにとって容易
-- エンタープライズ レベルのセキュリティをアプリとデータに確保
-
-### <a name="no-management-overhead"></a>管理のオーバーヘッドを排除
-
-- 外部アカウントやパスワードの管理が不要
-- 同期や手動によるアカウント ライフサイクル管理が不要
-- 外部の管理オーバーヘッドが発生しない
-
-## <a name="easily-add-b2b-collaboration-users"></a>B2B コラボレーション ユーザーを簡単に追加できる
-
-管理者は、[Azure portal](https://portal.azure.com) を使って簡単に B2B コラボレーション (ゲスト) ユーザーを組織に追加できます。
-
-![ゲスト ユーザーの追加](media/what-is-b2b/adding-b2b-users-admin.png)
-
-### <a name="enable-your-collaborators-to-bring-their-own-identity"></a>コラボレーターによる ID の持ち込みの実現
-
-B2B のコラボレーターは、自分が選んだ任意の ID でサインインすることができます。 Microsoft アカウントも Azure AD アカウントも持っていなければ、オファーに応じた時点でシームレスに作成されます。
-
-### <a name="delegate-to-application-and-group-owners"></a>アプリケーションとグループの所有者への委任
-
-アプリケーションまたはグループの所有者は、Microsoft のアプリケーションであるかどうかに関係なく、自分が管理する任意のアプリケーションに対して B2B ユーザーを直接追加することができます。 管理者は、非管理者ユーザーに対し、B2B ユーザーを追加する権限を委任することができます。 非管理者は、[Azure AD のアプリケーション アクセス パネル](https://myapps.microsoft.com)を使って、B2B コラボレーション ユーザーをアプリケーションまたはグループに追加できます。
-
-![アクセス パネル](media/what-is-b2b/access-panel.png)
+## <a name="collaborate-with-any-partner-using-their-identities"></a>パートナーの ID を使用してパートナーとコラボレーションする
+Azure AD B2B では、パートナーが各自の ID 管理ソリューションを使用するため、組織には外部管理を行うためのオーバーヘッドがありません。 
+- パートナーは、各自の ID と資格情報を使用するため、Azure AD は必要ありません。 
+- 外部アカウントまたはパスワードを管理する必要はありません。 
+- アカウントの同期もアカウントのライフ サイクルの管理も必要ありません。  
 
 ![メンバーの追加](media/what-is-b2b/add-member.png)
 
-### <a name="authorization-policies-protect-your-corporate-content"></a>承認ポリシーによる会社のコンテンツの保護
+## <a name="invite-guest-users-with-a-simple-invitation-and-redemption-process"></a>単純な招待と受諾プロセスを使用してゲスト ユーザーを招待する
+ゲスト ユーザーは、各自の職場、学校、またはソーシャルの ID を使用して、アプリとサービスにサインインします。 ゲスト ユーザーが Microsoft アカウントも Azure AD アカウントも持っていない場合は、招待を受諾した時点でアカウントが作成されます。 
+- 任意の電子メール ID を使用して、ゲスト ユーザーを招待します。
+- アプリへの直接リンクを送信するか、ゲスト ユーザーのアクセス パネルに招待を送信します。 
+- ゲスト ユーザーは、いくつかの簡単な受諾手順に従ってサインインします。
 
-多要素認証などの条件付きアクセス ポリシーを次のように適用できます。
-- テナント レベルで
-- アプリケーション レベルで
-- 特定のユーザーが会社のアプリケーションとデータを保護するために
+![アクセス パネル](media/what-is-b2b/consentscreen.png)
 
-### <a name="use-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>API とサンプル コードを使用した、ユーザー受け入れのためのアプリケーションの容易な構築
+## <a name="use-policies-to-securely-share-your-apps-and-services"></a>ポリシーを使用してアプリとサービスを安全に共有する
+貴社のコンテンツを保護する承認ポリシーを使用できます。 多要素認証などの条件付きアクセス ポリシーを次のように適用できます。
+- テナント レベルで。
+- アプリケーション レベルで。
+- 会社のアプリケーションとデータを保護する特定のユーザーに対して。
+
+![ゲスト ユーザーの追加](media/what-is-b2b/tutorial-mfa-policy-2.png)
+
+
+## <a name="easily-add-guest-users-in-the-azure-ad-portal"></a>Azure AD ポータルでゲスト ユーザーを簡単に追加する
+
+管理者は、Azure portal でゲスト ユーザーを組織に簡単に追加できます。
+- 新しいユーザーを追加する方法と同じような方法で Azure AD に新しいゲスト ユーザーを追加します。
+- ゲスト ユーザーは、ゲスト ユーザーのアクセス パネルにサインインできるようにするカスタマイズ可能な招待をすぐに受信します。
+- ディレクトリ内のゲスト ユーザーにアプリまたはグループを割り当てることができます。  
+
+![ゲスト ユーザーの追加](media/what-is-b2b/adding-b2b-users-admin.png)
+
+## <a name="let-application-and-group-owners-manage-their-own-guest-users"></a>アプリケーションとグループの所有者が自分のゲスト ユーザーを管理できるようにする
+
+ゲスト ユーザーの管理をアプリケーションの所有者に委任できます。これにより、所有者は、共有したいアプリケーションにゲストユーザーを直接追加できるようになります。アプリケーションは Microsoft のapplicationでもそれ以外でもかまいません。 
+ - 管理者は、セルフサービス アプリとグループ管理を設定します。
+ - 管理者以外のユーザーは、自分の[アクセス パネル](https://myapps.microsoft.com)を使用して、アプリケーションまたはグループにゲスト ユーザーを追加します。
+
+![ゲスト ユーザーの追加](media/what-is-b2b/access-panel-manage-app.png)
+
+## <a name="use-apis-and-sample-code-to-easily-build-applications-to-onboard"></a>API とサンプル コードを使用した、ユーザー受け入れのためのアプリケーションの容易な構築
 
 貴社のニーズに応じて、外部のパートナーの受け入れ方法をカスタマイズすることができます。
-
-[B2B コラボレーションの招待 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) を使用すると、セルフサービス サインアップ ポータルの作成など、オンボーディング エクスペリエンスをカスタマイズすることができます。 セルフサービス ポータル用のサンプル コードは [Github](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) で提供しています。
+- [B2B コラボレーションの招待 API](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) を使用すると、セルフサービス サインアップ ポータルの作成など、オンボーディング エクスペリエンスをカスタマイズすることができます。 
+- [Github](https://github.com/Azure/active-directory-dotnet-graphapi-b2bportal-web) に提供されているセルフサービス ポータル用のサンプル コードを使用します。
 
 ![サインアップ ポータル](media/what-is-b2b/sign-up-portal.png)
 
-Azure AD B2B コラボレーションを利用すれば、Azure AD の強みをフルに活かしながら、エンド ユーザーにとって簡単かつ直感的な方法でパートナー関係を保護することができます。
-
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](add-users-administrator.md)
-- [インフォメーション ワーカーが B2B コラボレーション ユーザーを追加する方法](add-users-information-worker.md)
-- [B2B コラボレーションの招待の利用](redemption-experience.md)
-- [Azure AD B2B コラボレーションのライセンス](licensing-guidance.md)
+- [Azure AD B2B コラボレーションのライセンスに関するガイダンス](licensing-guidance.md)
+- [ポータルで B2B コラボレーションのゲスト ユーザーを追加する](add-users-administrator.md)
+- [招待の受諾プロセスを理解する](redemption-experience.md)
 - また、フィードバックやご意見、ご提案があれば、[Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b) からいつでも製品チームにお寄せください。

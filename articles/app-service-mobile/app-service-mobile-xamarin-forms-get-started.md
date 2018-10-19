@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/25/2018
+ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: b2dafbcf0e41e7387157590e145f74430686321c
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: ef371447e851fece207d77fe656283abe3dc4164
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307121"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063865"
 ---
 # <a name="create-a-xamarinforms-app-with-azure"></a>Azure での Xamarin.Forms アプリの作成
 
@@ -58,7 +58,7 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 
 ### <a name="visual-studio"></a>Visual Studio
 
-1. [Azure ポータル]にアクセスします。
+1. [Azure Portal]にアクセスします。
 
 2. モバイル アプリの [設定] ブレードで、**[クイックスタート]** ([デプロイメント] の下) > **[Xamarin.Forms]** の順にクリックします。 手順 3 で、まだ選択されていない場合は **[新しいアプリの作成]** をクリックします。  次に、 **[ダウンロード]** ボタンをクリックします。
 
@@ -72,7 +72,7 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 
 ### <a name="visual-studio-for-mac"></a>Visual Studio for Mac
 
-1. [Azure ポータル]にアクセスします。
+1. [Azure Portal]にアクセスします。
 
 2. モバイル アプリの [設定] ブレードで、**[クイックスタート]** ([デプロイメント] の下) > **[Xamarin.Forms]** の順にクリックします。 手順 3 で、まだ選択されていない場合は **[新しいアプリの作成]** をクリックします。  次に、 **[ダウンロード]** ボタンをクリックします。
 
@@ -181,7 +181,9 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-ソリューションのビルドで問題が発生した場合は、NuGet パッケージ マネージャーを実行し、Xamarin.Forms の最新バージョンに更新します。また、Android プロジェクトで Xamarin.Android サポート パッケージを更新します。 クイック スタート プロジェクトには、必ずしも最新バージョンが含まれていません。
+ソリューションのビルドで問題が発生した場合は、NuGet パッケージ マネージャーを実行し、最新バージョンの `Xamarin.Forms` に更新します。また、Android プロジェクトで `Xamarin.Android` サポート パッケージを更新します。 クイック スタート プロジェクトには、必ずしも最新バージョンが含まれていません。
+
+Android プロジェクトで参照されるすべてのサポート パッケージのバージョンが同じである必要があることに注意してください。 [Azure Mobile Apps の NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/)には、Android プラットフォームに関して `Xamarin.Android.Support.CustomTabs` の依存関係があるため、プロジェクトで新しいサポート パッケージを使用する場合は、必要なバージョンを使用してこのパッケージを直接インストールし、競合を回避する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -211,4 +213,4 @@ Node.js または .NET バックエンドを使用するようにサーバー �
 <!-- URLs. -->
 [Install Xamarin]: https://docs.microsoft.com/xamarin/cross-platform/get-started/installation/
 [Mobile app SDK]: http://go.microsoft.com/fwlink/?LinkId=257545
-[Azure ポータル]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

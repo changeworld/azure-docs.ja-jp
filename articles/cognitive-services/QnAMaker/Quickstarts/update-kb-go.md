@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: 03287a2c7a79f0a19d12d7246b2aba679f4ae1a9
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: b447b77eb1fdd9135f7d15a791414d166194b2dd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040161"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389311"
 ---
 # <a name="update-a-knowledge-base"></a>ナレッジ ベースの更新
 
@@ -111,7 +111,7 @@ var req string = `{
       }
     ],
     'urls': [
-      'https://docs.microsoft.com/en-us/azure/cognitive-services/Emotion/FAQ'
+      'https://docs.microsoft.com/azure/cognitive-services/Emotion/FAQ'
     ]
   },
   'update' : {

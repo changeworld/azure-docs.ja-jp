@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 09/21/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c64b32656db2d3b821833450b4e866b9e33e44cd
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5bc1e0faf01125f498eb339bba841b96f6de9d82
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337347"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181806"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Azure Active Directory B2C を使用して Amazon アカウントでのサインアップおよびサインインを設定する
 
@@ -26,22 +26,15 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Amazon 
 1. Amazon アカウントの資格情報で [Amazon Developer Center](https://login.amazon.com/) にサインインします。
 2. まだ行っていない場合は、 **[Sign Up (サインアップ)]** をクリックして、開発者登録手順に従い、ポリシーを受け入れます。
 3. **[Register new application (新しいアプリケーションの登録)]** を選択します。
-4. **[Name (名前)]**、**[Description (説明)]**、および **[Privacy Notice URL (プライバシーに関する声明の URL)]** を入力して、**[Save (保存)]** をクリックします。
+4. **[Name (名前)]**、**[Description (説明)]**、および **[Privacy Notice URL (プライバシーに関する声明の URL)]** を入力して、**[Save (保存)]** をクリックします。 プライバシーに関する声明は、プライバシー情報をユーザーに提供するページです。
 5. **[Web Settings (Web 設定)]** セクションで、**[Client ID (クライアント ID)]** の値をコピーします。 **[Show Secret (シークレットの表示)]** を選択して、クライアント シークレットを取得しコピーします。 テナントで ID プロバイダーとして Amazon アカウントを構成するには、この両方が必要です。 **[Client Secret]** は、重要なセキュリティ資格情報です。
-6. **[Web Settings (Web 設定)]** セクションで、**[Edit (編集)]** を選択し、**[Allowed JavaScript Origins (許可される JavaScript の配信元)]** で「`https://{tenant}.b2clogin.com`」を入力し、**[Allowed Return URLs (許可されるリターン URL)]** で「`https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`」を入力します。 **{tenant}** を実際のテナントの名前 (例: contosob2c) に置き換えます。 
+6. **[Web Settings (Web 設定)]** セクションで、**[Edit (編集)]** を選択し、**[Allowed JavaScript Origins (許可される JavaScript の配信元)]** で「`https://your-tenant-name.b2clogin.com`」を入力し、**[Allowed Return URLs (許可されるリターン URL)]** で「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」を入力します。 `your-tenant-name` をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
 7. **[Save]** をクリックします。
 
 ## <a name="configure-an-amazon-account-as-an-identity-provider"></a>ID プロバイダーとして Amazon アカウントを構成する
 
 1. Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
-2. Azure Portal の右上隅でディレクトリを切り替えて、Azure AD B2C テナントが含まれるディレクトリを使用していることを確認してください。 サブスクリプション情報を選択し、**[ディレクトリの切り替え]** を選択します。 
-
-    ![Azure AD B2C テナントに切り替え](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
-
-    テナントが含まれるディレクトリを選択します。
-
-    ![新しいディレクトリを選択する](./media/active-directory-b2c-setup-fb-app/select-directory.png)
-
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。トップ メニューにある **[Directory and subscription filter] (ディレクトリとサブスクリプション フィルター)** をクリックして、お使いのテナントを含むディレクトリを選択します。
 3. Azure Portal の左上隅の **[すべてのサービス]** を選択し、**[Azure AD B2C]** を検索して選択します。
 4. **[ID プロバイダー]**、**[追加]** の順に選択します。
 5. **[名前]** を入力します。 たとえば、「*Amazon*」などと入力します。

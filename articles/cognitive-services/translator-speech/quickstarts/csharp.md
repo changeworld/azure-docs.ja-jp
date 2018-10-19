@@ -1,25 +1,28 @@
 ---
-title: Azure Cognitive Services、Microsoft Translator Speech API の C# のクイック スタート | Microsoft Docs
-description: Azure 上の Microsoft Cognitive Services で Microsoft Translator Speech API の使用をすぐに開始するために役立つ情報とコード サンプルを提供します。
+title: 'クイック スタート: C# での Translator Speech API'
+titlesuffix: Azure Cognitive Services
+description: Translator Speech API をすぐに使い始めるのに役立つ情報とコード サンプルを提供します。
 services: cognitive-services
-documentationcenter: ''
 author: v-jaswel
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-speech
-ms.topic: article
+ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c8c1945d8343ad966fe4b09f67099bccdae4be29
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 224a0ab83720bb9605f2dad9c2612630e90fea2a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128539"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341737"
 ---
-# <a name="quickstart-for-microsoft-translator-speech-api-with-c"></a>C# での Microsoft Translator Speech API のクイック スタート 
+# <a name="quickstart-translator-speech-api-with-c"></a>クイック スタート: C# での Translator Speech API 
 <a name="HOLTop"></a>
 
-この記事では、Microsoft Translator Speech API を使用して、.wav ファイルで話されている言葉を翻訳する方法について説明します。
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
+
+この記事では、Translator Speech API を使用して、.wav ファイルで話されている言葉を翻訳する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -65,11 +68,12 @@ namespace TranslateSpeechQuickStart
 
             /* Make sure the audio file is followed by silence.
              * This lets the service know that the audio input is finished. */
-            var silence = new byte[3200000];
+            var silence = new byte[32000];
             var silence_buffer = new ArraySegment<byte>(silence);
             await client.SendAsync(silence_buffer, WebSocketMessageType.Binary, true, CancellationToken.None);
 
             Console.WriteLine("Done sending.");
+            System.Threading.Thread.Sleep(3000);
             await client.CloseAsync(WebSocketCloseStatus.NormalClosure, "", CancellationToken.None);
         }
 

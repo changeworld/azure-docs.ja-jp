@@ -1,24 +1,27 @@
 ---
-title: Microsoft 音声認識 WebSocket プロトコル | Microsoft Docs
-description: Websocket に基づく Speech Service のプロトコル ドキュメント
+title: Bing Speech の WebSocket プロトコル | Microsoft Docs
+titlesuffix: Azure Cognitive Services
+description: WebSocket に基づく Bing Speech のプロトコル ドキュメント
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 17954536e8bdb49c09204c2e522586b79cb1bef5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0bbc6b638d11335e6d46501fa651996f05957dd5
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373984"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341822"
 ---
-# <a name="speech-service-websocket-protocol"></a>Speech Service WebSocket プロトコル
+# <a name="bing-speech-websocket-protocol"></a>Bing Speech の WebSocket プロトコル
 
-  Speech Service サービスは、発話された音声をテキストに変換するためのきわめて高度なアルゴリズムを採用した、クラウド ベースのプラットフォームです。 Speech Service プロトコルは、クライアント アプリケーションとサービスの間の[接続設定](#connection-establishment)や、双方の間でやりとりされる音声認識メッセージ ([クライアント発のメッセージ](#client-originated-messages)と[サービス発のメッセージ](#service-originated-messages)) を定義したものです。 なお、この記事では、[テレメトリ メッセージ](#telemetry-schema)と[エラー処理](#error-handling)についても説明しています。
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
+
+Bing Speech サービスは、発話された音声をテキストに変換するためのきわめて高度なアルゴリズムを採用した、クラウドベースのプラットフォームです。 Bing Speech プロトコルは、クライアント アプリケーションとサービスの間の[接続設定](#connection-establishment)や、双方の間でやりとりされる音声認識メッセージ ([クライアント発のメッセージ](#client-originated-messages)と[サービス発のメッセージ](#service-originated-messages)) を定義したものです。 なお、この記事では、[テレメトリ メッセージ](#telemetry-schema)と[エラー処理](#error-handling)についても説明しています。
 
 ## <a name="connection-establishment"></a>接続の確立
 
@@ -57,7 +60,7 @@ Date: Wed, 17 Aug 2016 15:03:52 GMT
 
 Speech Service では、すべてのクライアントに、接続を識別する一意の ID が必要となります。 クライアントは、WebSocket ハンドシェイクを開始する際、*X ConnectionId* ヘッダーを含める*必要があります*。 *X ConnectionId* ヘッダーの値は、[ユニバーサル一意識別子](https://en.wikipedia.org/wiki/Universally_unique_identifier) (UUID) である必要があります。 WebSocket アップグレード要求に *X ConnectionId* がない場合や、*X ConnectionId* ヘッダーの値が指定されていない場合、または有効な UUID 値が含まれていない場合は、要求がサービスから拒否され、`400 Bad Request` 応答が返されます。
 
-### <a name="authorization"></a>承認
+### <a name="authorization"></a>Authorization
 
 音声認識要求では、標準の WebSocket ハンドシェイク ヘッダーに加えて、*Authorization* ヘッダーも必須となります。 このヘッダーがない接続要求はサービスから拒否され、HTTP の `403 Forbidden` 応答が返されます。
 
@@ -94,9 +97,9 @@ Content-Length: 0
 
 クライアントは、Speech Service の適切なエンドポイントを使用する*必要があります*。 エンドポイントは、認識モードと言語に基づいて決まります。 次の表に例を示します。
 
-| Mode | パス | サービス URI |
+| Mode | Path | サービス URI |
 | -----|-----|-----|
-| 対話 | /speech/recognition/interactive/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
+| Interactive | /speech/recognition/interactive/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | 会話 | /speech/recognition/conversation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
 | ディクテーション | /speech/recognition/dictation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
@@ -148,7 +151,7 @@ Speech Service プロトコルでは、テキストとバイナリの両方の W
 
 | ヘッダー | 値 |
 |----|----|
-| パス | このドキュメントで説明されているメッセージ パス |
+| Path | このドキュメントで説明されているメッセージ パス |
 | X-RequestId | "ダッシュのない" 形式の UUID |
 | X-Timestamp | クライアントの UTC クロックのタイムスタンプ (ISO 8601 形式) |
 
@@ -170,14 +173,14 @@ Speech Service では、最善の音声認識機能を提供するため、お�
 
 | フィールド | 説明 |
 |----|----|
-| WebSocket message encoding | テキスト |
+| WebSocket message encoding | Text |
 | 本文 | ペイロード (JSON 構造) |
 
 #### <a name="required-message-headers"></a>必須のメッセージ ヘッダー
 
 | ヘッダー名 | 値 |
 |----|----|
-| パス | `speech.config` |
+| Path | `speech.config` |
 | X-Timestamp | クライアントの UTC クロックのタイムスタンプ (ISO 8601 形式) |
 | Content-Type | application/json; charset=utf-8 |
 
@@ -248,7 +251,7 @@ Speech Service は、一意の要求識別子を含んだ最初の `audio` メ�
 
 | ヘッダー         |  値     |
 | ------------- | ---------------- |
-| パス | `audio` |
+| Path | `audio` |
 | X-RequestId | "ダッシュのない" 形式の UUID |
 | X-Timestamp | クライアントの UTC クロックのタイムスタンプ (ISO 8601 形式) |
 | Content-Type | 音声コンテンツの種類。 種類は、*audio/x-wav* (PCM) か *audio/silk* (SILK) のいずれかである必要があります。 |
@@ -303,8 +306,8 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 
 | フィールド | 説明 |
 | ------------- | ---------------- |
-| WebSocket message encoding | テキスト |
-| パス | `telemetry` |
+| WebSocket message encoding | Text |
+| Path | `telemetry` |
 | X-Timestamp | クライアントの UTC クロックのタイムスタンプ (ISO 8601 形式) |
 | Content-Type | `application/json` |
 | 本文 | ターンに関するクライアント情報を含んだ JSON 構造体 |
@@ -325,8 +328,8 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 
 | フィールド | 説明 |
 | ------------- | ---------------- |
-| WebSocket message encoding | テキスト |
-| パス | `speech.startDetected` |
+| WebSocket message encoding | Text |
+| Path | `speech.startDetected` |
 | Content-Type | application/json; charset=utf-8 |
 | 本文 | 発話の開始が検出された状況に関する情報を含んだ JSON 構造体。 この構造体の *Offset* フィールドは、音声ストリーム内で発話が検知された箇所のオフセット (100 ナノ秒単位) を示します。このオフセットは、音声ストリームの先頭からの相対位置で示されます。 |
 
@@ -350,8 +353,8 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 | フィールド | 説明 |
 | ------------- | ---------------- |
-| WebSocket message encoding | テキスト |
-| パス | `speech.hypothesis` |
+| WebSocket message encoding | Text |
+| Path | `speech.hypothesis` |
 | X-RequestId | "ダッシュのない" 形式の UUID |
 | Content-Type | application/json |
 | 本文 | 音声認識仮説の JSON 構造体 |
@@ -382,8 +385,8 @@ Speech Service では、確定された認識結果を生成するための十�
 
 | フィールド | 説明 |
 | ------------- | ---------------- |
-| WebSocket message encoding | テキスト |
-| パス | `speech.phrase` |
+| WebSocket message encoding | Text |
+| Path | `speech.phrase` |
 | Content-Type | application/json |
 | 本文 | 音声フレーズの JSON 構造体 |
 
@@ -410,8 +413,8 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 | フィールド | 説明 |
 | ------------- | ---------------- |
-| WebSocket message encoding | テキスト |
-| パス | `speech.endDetected` |
+| WebSocket message encoding | Text |
+| Path | `speech.endDetected` |
 | 本文 | 発話の終了が検知された箇所のオフセットを含んだ JSON 構造体。 オフセットは、認識に使用された音声の先頭を基点に、100 ナノ秒単位で表されます。 |
 | Content-Type | application/json; charset=utf-8 |
 
@@ -435,8 +438,8 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 | フィールド | 説明 |
 | ------------- | ---------------- |
-| WebSocket message encoding | テキスト |
-| パス | `turn.start` |
+| WebSocket message encoding | Text |
+| Path | `turn.start` |
 | Content-Type | application/json; charset=utf-8 |
 | 本文 | JSON 構造体 |
 
@@ -462,8 +465,8 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 | フィールド | 説明 |
 | ------------- | ---------------- |
-| WebSocket message encoding | テキスト |
-| パス | `turn.end` |
+| WebSocket message encoding | Text |
+| Path | `turn.end` |
 | 本文 | なし |
 
 #### <a name="sample-message"></a>サンプル メッセージ
@@ -506,13 +509,13 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | ----- | ----------- | ----- |
 | Name | `Connection` | 必須 |
 | ID | この接続要求の *X-ConnectionId* ヘッダーに使用された接続識別子の値 | 必須 |
-| 開始 | クライアントが接続要求を送信した時刻 | 必須 |
+| start | クライアントが接続要求を送信した時刻 | 必須 |
 | End | 接続が正常に確立されたという通知をクライアントが受信した時刻 (エラーが発生した場合は、接続が拒否された時刻や失敗した時刻) | 必須 |
-| エラー | 発生したエラーの説明 (発生した場合)。 接続に成功した場合は、このフィールドは省略してください。 このフィールドの最大長は 50 文字です。 | エラーの場合は必須 (その他の場合は省略) |
+| Error | 発生したエラーの説明 (発生した場合)。 接続に成功した場合は、このフィールドは省略してください。 このフィールドの最大長は 50 文字です。 | エラーの場合は必須 (その他の場合は省略) |
 
 エラーの説明は最大 50 文字とし、なるべく、次の表に示す値を使用してください。 エラー状況がこれらの値と一致しない場合は、空白なしの[キャメルケース](https://en.wikipedia.org/wiki/Camel_case)を使用して、エラー状況を簡潔に説明できます。 *telemetry* メッセージをサービスへ送信するには、サービスへの接続が必要となるため、*telemetry* メッセージで報告できるのは、一時的なエラー状況に限られます。 クライアントからサービスへの接続確立が*永続的に*できなくなるエラー状況においては、*telemetry* メッセージを含め、一切のメッセージをサービスに送信できなくなります。
 
-| エラー | 使用法 |
+| Error | 使用法 |
 | ----- | ----- |
 | DNSfailure | ネットワーク スタック内の DNS エラーにより、クライアントがサービスに接続できなかった。 |
 | NoNetwork | クライアントが接続を試行したが、ネットワーク スタックから、利用可能な物理ネットワークがないと報告された。 |
@@ -545,9 +548,9 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | フィールド | 説明 | 使用法 |
 | ----- | ----------- | ----- |
 | Name | Microphone | 必須 |
-| 開始 | クライアントが、マイクまたはその他の音声ストリームからの音声入力の使用を開始した時刻。または、キーワード スポッターからトリガーを受信した時刻 | 必須 |
+| start | クライアントが、マイクまたはその他の音声ストリームからの音声入力の使用を開始した時刻。または、キーワード スポッターからトリガーを受信した時刻 | 必須 |
 | End | クライアントがマイクや音声ストリームの使用を停止した時刻 | 必須 |
-| エラー | 発生したエラーの説明 (発生した場合)。 マイクの操作が正常に実行された場合は、このフィールドは省略してください。 このフィールドの最大長は 50 文字です。 | エラーの場合は必須 (その他の場合は省略) |
+| Error | 発生したエラーの説明 (発生した場合)。 マイクの操作が正常に実行された場合は、このフィールドは省略してください。 このフィールドの最大長は 50 文字です。 | エラーの場合は必須 (その他の場合は省略) |
 
 ### <a name="metric-listeningtrigger"></a>メトリック `ListeningTrigger`
 `ListeningTrigger` メトリックは、音声入力を開始するアクションをユーザーが実行した時間を測定するものです。 `ListeningTrigger` メトリックはオプションですが、このメトリックを提供できるクライアントでは、これを使用することをお勧めします。
@@ -565,9 +568,9 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 | フィールド | 説明 | 使用法 |
 | ----- | ----------- | ----- |
 | Name | ListeningTrigger | 省略可能 |
-| 開始 | クライアントのリスニング トリガーが開始された時刻 | 必須 |
+| start | クライアントのリスニング トリガーが開始された時刻 | 必須 |
 | End | クライアントのリスニング トリガーが終了した時刻 | 必須 |
-| エラー | 発生したエラーの説明 (発生した場合)。 トリガー操作に成功した場合は、このフィールドは省略してください。 このフィールドの最大長は 50 文字です。 | エラーの場合は必須 (その他の場合は省略) |
+| Error | 発生したエラーの説明 (発生した場合)。 トリガー操作に成功した場合は、このフィールドは省略してください。 このフィールドの最大長は 50 文字です。 | エラーの場合は必須 (その他の場合は省略) |
 
 #### <a name="sample-message"></a>サンプル メッセージ
 

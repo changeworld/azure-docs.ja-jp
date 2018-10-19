@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 879dd4e9b20a57257dd7b93fddb54168d6bceb33
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ac2b928e73031adb77616161f844f3f7fabdf146
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095067"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339850"
 documentType: LandingData
 title: Translator Speech API のドキュメント
 metadata:
@@ -21,8 +21,12 @@ metadata:
   ms.date: 3/5/2018
   ms.author: v-jansko
 abstract:
-  description: Microsoft Cognitive Services API コレクションの一部である Microsoft Translator Speech API は、音声から音声、音声からテキストに変換するクラウドベースの機械翻訳サービスです。 業界標準の REST テクノロジに基づいて、対象となる OS や開発言語に関係なく、多言語音声翻訳を必要とするアプリケーション、ツール、ソリューションに、エンドツーエンドのリアルタイム音声翻訳を追加するために使用できます。 サポートされている言語の一覧については、「<a href="languages.md">サポートされている言語</a>」をご覧ください。
+  description: Microsoft Cognitive Services API コレクションの一部である Microsoft Translator Speech API は、音声から音声、音声からテキストに変換するクラウドベースの機械翻訳サービスです。 業界標準の REST テクノロジに基づいて、対象となる OS や開発言語に関係なく、多言語音声翻訳を必要とするアプリケーション、ツール、ソリューションに、エンドツーエンドのリアルタイム音声翻訳を追加するために使用できます。 サポートされている言語の一覧については、<a href="languages.md">サポートされている言語</a>に関する記事をご覧ください。
 sections:
+- title: 
+  items:
+  - type: paragraph
+    text: '<b>注: 新しい Speech Service および SDK は、2019 年 10 月 15 日に廃止される予定の Translator Speech API の後継です。Speech Service に切り替える方法について詳しくは、「<a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-migrate-from-translator-speech-api">Migrating from the Translator Speech API to the Speech Service</a></b>」(Translator Speech API から Speech Service への移行) をご覧ください。'
 - title: 5 分間のクイック スタート
   items:
   - type: paragraph

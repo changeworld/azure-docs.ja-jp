@@ -1,5 +1,5 @@
 ---
-title: Azure Data Factory を使用して Concur からデータをコピーする | Microsoft Docs
+title: Azure Data Factory を使用して Concur からデータをコピーする (プレビュー) | Microsoft Docs
 description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Concur のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 9414107e92bfb48bbf28348aa45c8ec6795dbd3f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 00dd74ccd317799ca3afcbe0ed1ca85e19bb3cbe
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045410"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123879"
 ---
-# <a name="copy-data-from-concur-using-azure-data-factory"></a>Azure Data Factory を使用して Concur からデータをコピーする
+# <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Concur からデータをコピーする (プレビュー)
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Concur からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
@@ -107,7 +107,7 @@ Concur からデータをコピーするには、コピー アクティビティ
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティは **ConcurSource** に設定する必要があります。 | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Opportunities where Id = xxx "`」のように入力します。 | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Opportunities where Id = xxx "`」のように入力します。 | [はい] |
 
 **例:**
 

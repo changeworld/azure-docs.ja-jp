@@ -1,24 +1,24 @@
 ---
-title: よく寄せられる質問 - Custom Speech Service
-titlesuffix: Azure Cognitive Services
+title: Azure 上の Custom Speech Service についてよく寄せられる質問 | Microsoft Docs
 description: Custom Speech Service についてよく寄せられる質問 (FAQ) とその回答を紹介します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: faq
+ms.topic: article
 ms.date: 11/21/2016
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: 2de2efe3287cbb0b915434c2c9ad982fe162d741
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 8e3d5e0e2b70d8f97099103ed369e48dd74d56e2
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223725"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341363"
 ---
 # <a name="custom-speech-service-frequently-asked-questions"></a>Custom Speech Service についてよく寄せられる質問
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-custom-speech-deprecation-note.md)] 
 
 この FAQ で質問に対する回答が見つからない場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) および [UserVoice](https://cognitive.uservoice.com/) の Custom Speech Service コミュニティに質問してください。
 
@@ -53,7 +53,7 @@ Microsoft では、電子メール通知など、通信処理状態に関する�
 新しいデータ セットがあり、既存のモデルをカスタマイズする場合は、新しいデータと、使用していた古いデータ セットを使用してモデルを再調整する必要があります。
 古いデータ セットと新しいデータ セットは、1 つの .zip ファイル (音響データの場合) または .txt ファイル (言語データの場合) に結合する必要があります。調整が完了したら、新しい更新されたモデルのデプロイを解除して新しいエンドポイントを取得する必要があります。
 
-**質問**: 既定値より高い同時実行性が必要な場合はどうすればよいですか。 
+**質問**: 既定値より高いコンカレンシーが必要な場合はどうすればよいですか。 
 
 **回答**: モデルは同時要求 (スケール ユニットと呼びます) を 5 ずつ処理するようスケールアップできます。 各スケール ユニットは、モデルが 5 つのオーディオ ストリームを同時に処理できることを保証しています。 最大 100 個のスケール ユニット (または 500 件の同時要求) を購入できます。
 

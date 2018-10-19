@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 04/09/2018
 ms.author: seguler
-ms.openlocfilehash: 90858501cbf20af032c98ca8703f9e74b475e9c1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 93dc651767fc2be815fb706f71386ce72b382a37
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398578"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981723"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>クイック スタート: Go を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -23,11 +23,14 @@ ms.locfileid: "39398578"
 
 このクイック スタートを完了するには、以下が必要です。 
 * [Go 1.8 以上](https://golang.org/dl/)をインストールする
-* `go get -u github.com/azure/azure-storage-blob-go/2016-05-31/azblob` を使用して [Go 用の Azure Storage Blob SDK](https://github.com/azure/azure-storage-blob-go/) をダウンロードしてインストールする。 
+* `go get -u github.com/Azure/azure-storage-blob-go/2016-05-31/azblob` を使用して [Go 用の Azure Storage Blob SDK](https://github.com/azure/azure-storage-blob-go/) をダウンロードしてインストールする。 
+
+> [!WARNING]
+> URL では Azure の先頭文字を必ず大文字にしてください。 そうしないと、SDK を使用するときに大文字と小文字の区別に関連するインポートの問題が発生する可能性があります。 インポート ステートメントでも Azure の先頭文字を大文字にする必要があります。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="download-the-sample-application"></a>サンプル アプリケーションのダウンロード
 このクイックスタートで使う[サンプル アプリケーション](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git)は、基本的な Go アプリケーションです。  

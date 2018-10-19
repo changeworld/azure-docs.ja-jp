@@ -8,14 +8,14 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 375990f095d3a6cbbbfa18db70466c274fd7e17b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: de67d71a209ea0889b4dc5c87fed254700cb9916
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702597"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395139"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -118,6 +118,10 @@ Azure Cosmos DB は、「[Azure リージョン](https://azure.microsoft.com/reg
 
 現在、パーティション キー スループットを使ってコレクションを作成するには、.Net SDK の [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) メソッドを使用するか、[Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create) を使用します。 Azure Portal を使用した固定のコレクションの作成は、現在サポートされていません。  
 
+### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Azure CosmosDB では、時系列分析がサポートされていますか。 
+はい。Azure CosmosDB では、時系列分析がサポートされています。時系列パターンのサンプルについては、[こちら](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/samples/Patterns)をご覧ください。 このサンプルでは、変更フィードを利用し、時系列データを集計したビューを構築する方法をご確認いただけます。 Spark Streaming やその他のストリーム データ プロセッサを使用することでこの手法を拡張できます。
+
+
 ## <a name="sql-api"></a>SQL API
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>SQL API に対する開発を開始するにはどうすればよいですか?
@@ -156,10 +160,10 @@ SQL API アカウントでサポートされる SQL クエリ言語は、SQL Ser
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>SQL API は SQL 集計関数をサポートしていますか?
 SQL API は、SQL 文法の `COUNT`、`MIN`、`MAX`、`AVG`、`SUM` の各集計関数を使用した、あらゆるスケールでの低待機時間の集計をサポートしています。 詳細については、「[集計関数](sql-api-sql-query.md#Aggregates)」をご覧ください。
 
-### <a name="how-does-the-sql-api-provide-concurrency"></a>SQL API はどのようにして同時実行を提供しますか?
-SQL API は、HTTP エンティティ タグ (ETag) によるオプティミスティック同時実行制御 (OCC) をサポートしています。 すべての SQL API リソースに ETag があり、ドキュメントが更新されるたびにサーバーで ETag が設定されます。 すべての応答メッセージに ETag ヘッダーと現在の値が含まれます。 ETag を If-Match ヘッダーと共に使用することで、サーバーはリソースを更新する必要があるかどうかを判断できるようになります。 If-Match 値は、チェック対象の ETag 値です。 対象の ETag 値がサーバーの ETag 値と一致する場合に、リソースが更新されます。 ETag が最新ではない場合、サーバーは操作を拒否して "HTTP 412 Precondition failure" 応答コードを返します。 この場合、クライアントは、リソースを再フェッチしてリソースの最新の ETag 値を取得します。 また、ETag を If-None-Match ヘッダーと共に使用すると、リソースの再フェッチが必要かどうかを判断できます。
+### <a name="how-does-the-sql-api-provide-concurrency"></a>SQL API はどのようにしてコンカレンシーを提供しますか?
+SQL API は、HTTP エンティティ タグ (ETag) によるオプティミスティック コンカレンシー (OCC) をサポートしています。 すべての SQL API リソースに ETag があり、ドキュメントが更新されるたびにサーバーで ETag が設定されます。 すべての応答メッセージに ETag ヘッダーと現在の値が含まれます。 ETag を If-Match ヘッダーと共に使用することで、サーバーはリソースを更新する必要があるかどうかを判断できるようになります。 If-Match 値は、チェック対象の ETag 値です。 対象の ETag 値がサーバーの ETag 値と一致する場合に、リソースが更新されます。 ETag が最新ではない場合、サーバーは操作を拒否して "HTTP 412 Precondition failure" 応答コードを返します。 この場合、クライアントは、リソースを再フェッチしてリソースの最新の ETag 値を取得します。 また、ETag を If-None-Match ヘッダーと共に使用すると、リソースの再フェッチが必要かどうかを判断できます。
 
-.NET でオプティミスティック同時実行制御を使用するには、 [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) クラスを使用します。 .NET サンプルについては、GitHub にある DocumentManagement サンプルの [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) を参照してください。
+.NET でオプティミスティック コンカレンシーを使用するには、 [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) クラスを使用します。 .NET サンプルについては、GitHub にある DocumentManagement サンプルの [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) を参照してください。
 
 ### <a name="how-do-i-perform-transactions-in-the-sql-api"></a>どのようにして SQL API のトランザクションを実行しますか?
 SQL API は、JavaScript のストアド プロシージャとトリガーによる、統合された言語のトランザクションをサポートしています。 スクリプト内のすべてのデータベース操作は、スナップショット分離下で実行されます。 単一パーティション コレクションの場合は、コレクションが実行対象となります。 コレクションがパーティション分割されている場合は、コレクション内の同じパーティション キー値を持つドキュメントが実行対象となります。 ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。 JavaScript がエラーをスローした場合、トランザクションはロールバックされます。 詳細については、「[Azure Cosmos DB のサーバー側プログラミング](programming.md)」を参照してください。
@@ -208,6 +212,10 @@ MongoDB 用 API には、一般的な MongoDB エラー コードのほかに、
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | 使用された要求ユニットの合計数が、コレクションのプロビジョニング済み要求ユニット レートを超えたため調整されました。 | Azure Portal からコンテナーまたはコンテナーのセットに割り当てられているスループットをスケーリングするか、再試行することを検討してください。 |
 | ExceededMemoryLimit | 16501 | マルチ テナント サービスとして、操作がクライアントのメモリ配分を超えました。 | より制限の厳しいクエリ条件によって操作のスコープを減らすか、[Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) からサポートに連絡してください。 <br><br>例: *&nbsp;&nbsp;&nbsp;&nbsp;db.getCollection('users').aggregate([<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$match: {name: "Andy"}}, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$sort: {age: -1}}<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
+
+### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmosdb-mongodb-api"></a>MongoDB 向けの Simba ドライバーは Azure CosmosDB MongoDB API で使用できますか。
+はい。Simba の Mongo ODBC ドライバーは Azure CosmosDB MongoDB API で使用できます。
+
 
 ## <a id="table"></a>Table API
 
@@ -287,8 +295,8 @@ Azure Portal を使用してデータを参照できます。 また、Table API
 
 以前に指定した形式の接続文字列を取得する柔軟性を備えたツールは、新しい Table API に対応できます。 テーブル ツールの一覧については、「[Azure Storage クライアント ツール](../storage/common/storage-explorers.md)」をご覧ください。 
 
-### <a name="is-the-concurrency-on-operations-controlled"></a>操作の同時実行は制御されますか?
-はい。オプティミスティック同時実行制御は、ETag メカニズムを使用して提供されます。 
+### <a name="is-the-concurrency-on-operations-controlled"></a>操作のコンカレンシーは制御されますか?
+はい。オプティミスティック コンカレンシーは、ETag メカニズムを使用して提供されます。 
 
 ### <a name="is-the-odata-query-model-supported-for-entities"></a>エンティティの OData クエリ モデルはサポートされていますか? 
 はい。Table API は、OData クエリと LINQ クエリをサポートしています。 
@@ -441,15 +449,132 @@ Azure Table Storage と Azure Cosmos DB Table API は同じ SDK を使ってい�
 Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証する SLA ベースのシステムです。 Azure Cosmos DB はプロビジョニングされるシステムであるため、これらの要件を保証するためにリソースが予約されています。 テーブルを次々に作成すると、その作成ペースが検出され、調整が行われます。 テーブルの作成ペースを確認し、1 分あたり 5 つ未満に抑えることをお勧めします。 Table API はプロビジョニングされるシステムであることに注意してください。 プロビジョニングした時点から料金が発生します。 
 
 ## <a name="gremlin-api"></a>Gremlin API
-### <a name="how-can-i-apply-the-functionality-of-gremlin-api-to-azure-cosmos-db"></a>Gremlin API の機能を Azure Cosmos DB に適用するにはどうすればよいですか?
-拡張ライブラリを使用して、Gremlin API の機能を適用できます。 このライブラリは Microsoft Azure Graphs と呼ばれ、[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Graphs) で提供されます。 
 
-### <a name="it-looks-like-you-support-the-gremlin-graph-traversal-language-do-you-plan-to-add-more-forms-of-query"></a>グラフ トラバーサル言語の Gremlin がサポートされているようですが、 クエリの他の形式を追加する予定はありますか?
-はい。将来、クエリの他のメカニズムを追加する予定です。 
+### <a name="for-cnet-development-should-i-use-the-microsoftazuregraphs-package-or-gremlinnet"></a>C#/.NET 開発の場合、Microsoft.Azure.Graphs パッケージまたは Gremlin.NET を使用するべきですか。 
 
-### <a name="how-can-i-use-the-new-gremlin-api-offering"></a>新しい Gremlin API を使用するにはどうすればよいですか? 
-まず、[Gremlin API](../cosmos-db/create-graph-dotnet.md) のクイック スタートを完了してください。
+Azure Cosmos DB Gremlin API では、サービスのメイン コネクタとしてオープンソースのドライバーが活用されます。 そのため、[Apache Tinkerpop でサポートされているドライバー](http://tinkerpop.apache.org/)の使用をお勧めします。
 
+### <a name="how-are-rus-charged-when-running-queries-on-a-graph-database"></a>グラフ データベースでクエリを実行するとき、RU/秒はどのように課金されますか。 
+
+グラフのオブジェクト、頂点、端はすべて、バックエンドで JSON ドキュメントとして表示されます。 1 つの Gremlin クエリで 1 つまたは複数のグラフ オブジェクトを一度に変更できるため、それに関連付けられるコストは、クエリで処理されるオブジェクトや端に直接関連します。 このプロセスは、その他すべての API に対して Azure Cosmos DB で使用されるプロセスと同じです。 詳細については、「[Azure Cosmos DB の要求ユニット](request-units.md)」をご覧ください。
+
+RU 課金は、結果セットではなく、トラバーサルの作業データ セットに基づきます。 たとえば、結果として頂点を 1 つ得ることがクエリの目的であるが、その過程で他の複数のオブジェクトを走査する必要がある場合、結果として頂点を 1 つ計算するために必要なすべてのグラフ オブジェクトに基づいてコストが算出されます。
+
+### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API でグラフ データベースに与えられる最大スケールは何ですか。 
+
+Azure Cosmos DB では、[行方向のパーティション分割](partition-data.md)を利用し、ストレージ要件とスループット要件の増加に自動的に対処します。 ワークロードの最大スループットと最大ストレージ容量は、指定されたコレクションに関連付けられているパーティションの容量により決定されます。 しかしながら、Gremlin API コレクションには、大規模でも適切なパフォーマンスを得るために、一連のガイドラインが指定されています。 ベスト プラクティスの詳細については、[パーティション分割のベスト プラクティス](partition-data.md#best-practices-when-choosing-a-partition-key)ドキュメントを参照してください。 
+
+### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Gremlin ドライバーを利用したインジェクション攻撃はどのように防ぎますか。 
+
+ネイティブ Tinkerpop Gremlin ドライバーのほとんどでは、クエリ実行にパラメーター ディクショナリを提供できます。 この方法のサンプルは、[Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) と [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js) にあります。
+
+### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>"Gremlin Query Compilation Error: Unable to find any method" (Gremlin クエリ コンパイル エラー: メソッドが見つかりません) エラーが表示されるのはなぜですか。
+
+Azure Cosmos DB Gremlin API では、Gremlin セキュリティに定義されている機能サブセットが実装されます。 サポートされている手順と詳細については、「[Gremlin サポート](gremlin-support.md)」という記事を参照してください。
+
+最良の回避策は、Gremlin の必須手順をサポートされている機能で書き直すことです。Gremlin の必須手順はすべて、Azure Cosmos DB でサポートされているためです。
+
+### <a name="why-am-i-getting-the-websocketexception-the-server-returned-status-code-200-when-status-code-101-was-expected-error"></a>"WebSocketException: The server returned status code '200' when status code '101' was expected" (WebSocketException: 状態コード '101' が予想されるとき、サーバーから '200' が返されました) エラーが表示されるのはなぜですか。
+
+このエラーはおそらく、間違ったエンドポイントが使用されているときにスローされます。 このエラーを生成するエンドポイントには次のパターンがあります。
+
+`https:// YOUR_DATABASE_ACCOUNT.documents.azure.com:443/` 
+
+これは、ご利用のグラフ データベースのドキュメント エンドポイントです。  使用すべき正しいエンドポイントは Gremlin エンドポイントです。この形式は次のようになっています。 
+
+`https://YOUR_DATABASE_ACCOUNT.gremlin.cosmosdb.azure.com:443/`
+
+### <a name="why-am-i-getting-the-requestrateistoolarge-error"></a>"RequestRateIsTooLarge" エラーが表示されるのはなぜですか。
+
+このエラーは、秒あたりで割り当てられている要求ユニットではクエリに十分なサービスを提供できないことを意味します。 このエラーは通常、すべての頂点を取得するクエリを実行すると表示されます。
+
+```
+// Query example:
+g.V()
+```
+
+このクエリでは、グラフからすべての頂点を取得するように試行されます。 そのため、このクエリのコストは、RU の観点からは、少なくとも頂点の数と等しくなります。 RU/秒の設定を調整してこのクエリに対処してください。
+
+### <a name="why-do-my-gremlin-driver-connections-get-dropped-eventually"></a>Gremlin ドライバーの接続が最後には切断されます。なぜですか。
+
+Gremlin 接続は WebSocket 接続経由で行われます。 WebSocket 接続には有効時間が指定されませんが、Azure Cosmos DB Gremlin API では、アイドル時間が 30 分間続くと接続が強制終了されます。 
+
+### <a name="why-cant-i-use-fluent-api-calls-in-the-native-gremlin-drivers"></a>ネイティブ Gremlin ドライバーで Fluent API 呼び出しを使用できません。なぜですか。
+
+Fluent API 呼び出しは、Azure Cosmos DB Gremlin API ではまだサポートされていません。 Fluent API 呼び出しにはバイトコード サポートと呼ばれている内部書式設定機能が必要ですが、これは現在のところ、Azure Cosmos DB Gremlin API ではサポートされていません。 同じ理由から、最新の Gremlin-JavaScript ドライバーも現在のところサポートされていません。 
+
+### <a name="how-can-i-evaluate-the-efficiency-of-my-gremlin-queries"></a>自分の Gremlin クエリの効率性を評価する方法は?
+
+**executionProfile()** というプレビュー手順を利用し、クエリ実行プランを分析できます。 次の例のように、この手順は Gremlin クエリの最後に追加する必要があります。
+
+**クエリの例**
+
+```
+g.V('mary').out('knows').executionProfile()
+```
+
+**出力例**
+
+```json
+[
+  {
+    "gremlin": "g.V('mary').out('knows').executionProfile()",
+    "totalTime": 8,
+    "metrics": [
+      {
+        "name": "GetVertices",
+        "time": 3,
+        "annotations": {
+          "percentTime": 37.5
+        },
+        "counts": {
+          "resultCount": 1
+        }
+      },
+      {
+        "name": "GetEdges",
+        "time": 5,
+        "annotations": {
+          "percentTime": 62.5
+        },
+        "counts": {
+          "resultCount": 0
+        },
+        "storeOps": [
+          {
+            "partitionsAccessed": 1,
+            "count": 0,
+            "size": 0,
+            "time": 0.6
+          }
+        ]
+      },
+      {
+        "name": "GetNeighborVertices",
+        "time": 0,
+        "annotations": {
+          "percentTime": 0
+        },
+        "counts": {
+          "resultCount": 0
+        }
+      },
+      {
+        "name": "ProjectOperator",
+        "time": 0,
+        "annotations": {
+          "percentTime": 0
+        },
+        "counts": {
+          "resultCount": 0
+        }
+      }
+    ]
+  }
+]
+```
+
+上記プロファイルの出力には、頂点オブジェクトと端オブジェクトの取得にかかった時間と作業データ セットのサイズが表示されています。 これは Azure Cosmos DB クエリの標準コスト測定に関連します。
 
 ## <a id="cassandra"></a> Cassandra API
 

@@ -10,18 +10,18 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: 98c86f5613116dce5423aa9ca6a2ff43e5414592
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: b8cdf6cb07215f4c1e2a472f60513aff765dcfb5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39594782"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603196"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>チュートリアル: Azure Active Directory B2C を使用してデスクトップ アプリから Node.js Web API へのアクセスを許可する
 
 このチュートリアルでは、Azure Active Directory (Azure AD) B2C で保護された Node.js Web API リソースを Windows Presentation Foundation (WPF) デスクトップ アプリから呼び出す方法について説明します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure AD B2C テナントに Web API を登録する
@@ -41,7 +41,7 @@ ms.locfileid: "39594782"
 
 Web API リソースは、Azure Active Directory からの[アクセス トークン](../active-directory/develop/developer-glossary.md#access-token)を表す[クライアント アプリケーション](../active-directory/develop/developer-glossary.md#client-application)で[保護されたリソース要求](../active-directory/develop/developer-glossary.md#resource-server)を受け取って処理できるように、テナントに登録しておく必要があります。 登録により、テナント内に[アプリケーション オブジェクトとサービス プリンシパル オブジェクト](../active-directory/develop/developer-glossary.md#application-object)が確立されます。 
 
-Azure AD B2C テナントの全体管理者として、[Azure Portal](https://portal.azure.com/) にログインします。
+Azure AD B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にサインインします。
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
@@ -110,7 +110,7 @@ API のスコープを構成するには、次のエントリを追加します�
 
 5. Click **OK**.
 
-**My Sample WPF App** は、保護された **My sample Node.js web API** を呼び出すために登録されています。 ユーザーは、この WPF デスクトップ アプリを使用するために Azure AD B2C で[認証](../active-directory/develop/developer-glossary.md#authentication)を行います。 このデスクトップ アプリは、保護された Web API にアクセスするために、Azure AD B2C から[承認付与](../active-directory/develop/developer-glossary.md#authorization-grant)を取得します。
+**My Sample WPF App** は、保護された **My sample Node.js web API** を呼び出すために登録されています。 ユーザーは、WPF デスクトップ アプリケーションを使用するために Azure AD B2C で[認証](../active-directory/develop/developer-glossary.md#authentication)を行います。 このデスクトップ アプリケーションは、保護された Web API にアクセスするために、Azure AD B2C から[承認付与](../active-directory/develop/developer-glossary.md#authorization-grant)を取得します。
 
 ## <a name="update-web-api-code"></a>Web API コードの更新
 

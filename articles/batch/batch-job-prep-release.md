@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 543c03c22b31389c3d6e048cc9f13c24add5aae7
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: da69cc22fbb071ce3fa4b2c53aaf0b1ec4ba5e46
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30314723"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096312"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Batch コンピューティング ノードでのジョブ準備タスクとジョブ解放タスクの実行
 
@@ -118,7 +118,7 @@ await myBatchClient.JobOperations.TerminateJobAsync("JobPrepReleaseSampleJob");
 ## <a name="code-sample-on-github"></a>GitHub 上のサンプル コード
 ジョブの準備タスクとジョブの解放タスクの動作を確認するには、GitHub の [JobPrepRelease][job_prep_release_sample] サンプル プロジェクトをご覧ください。 このコンソール アプリケーションは次のことを行います。
 
-1. 2 つの "小さい" ノードを含むプールを作成します。
+1. 2 つのノードを含むプールを作成します。
 2. ジョブ準備タスク、ジョブ解放タスク、標準タスクを含むジョブを作成します。
 3. ノードの "共有" ディレクトリ内のテキスト ファイルに最初にノード ID を書き込むジョブ準備タスクを実行します。
 4. 同じテキスト ファイルにタスク ID を書き込むタスクを各ノードで実行します。
@@ -131,7 +131,7 @@ await myBatchClient.JobOperations.TerminateJobAsync("JobPrepReleaseSampleJob");
 
 ```
 Attempting to create pool: JobPrepReleaseSamplePool
-Created pool JobPrepReleaseSamplePool with 2 small nodes
+Created pool JobPrepReleaseSamplePool with 2 nodes
 Checking for existing job JobPrepReleaseSampleJob...
 Job JobPrepReleaseSampleJob not found, creating...
 Submitting tasks and awaiting completion...

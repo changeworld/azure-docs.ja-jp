@@ -104,6 +104,8 @@ items:
         href: active-directory-b2c-custom-rest-api-netfw-secure-cert.md
     - name: OIDC プロバイダーおよび OAuth プロバイダー
       items:
+      - name: Amazon
+        href: setup-amazon-custom.md
       - name: Azure AD (シングルテナント)
         href: active-directory-b2c-setup-aad-custom.md
       - name: Azure AD (マルチテナント)
@@ -142,6 +144,8 @@ items:
         href: active-directory-b2c-reference-kmsi-custom.md
     - name: リファレンス
       items:
+      - name: 要求リゾルバー
+        href: claim-resolver-overview.md
       - name: Identity Experience Framework のスキーマ
         items:
         - name: TrustFrameworkPolicy
@@ -319,9 +323,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 6263bc6fdaa1ae7bce80e85110e36c5c4b4ddf42
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 87dbf2eb87d4761186e298e27da142ff8a0e789a
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802000"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310523"

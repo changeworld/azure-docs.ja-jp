@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: c6817fa20d4177efd3e38f1454f3142f6d40a07d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: f1cc1b728a91c22f9b4b2062ed5c423314e561c8
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108620"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017586"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
 このチュートリアルでは、Azure Portal を使用して Azure Data Factory パイプラインを作成します。 このパイプラインは、Spark アクティビティとオンデマンドの Azure HDInsight のリンクされたサービスを使用して、データを変換します。 
@@ -34,6 +34,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure ストレージ アカウント**。 Python スクリプトと入力ファイルを作成し、Azure Storage にアップロードします。 Spark プログラムからの出力は、このストレージ アカウントに格納されます。 オンデマンドの Spark クラスターでは、同じストレージ アカウントがプライマリ ストレージとして使用されます。  
+
+> [!NOTE]
+> HDInsight は、Standard レベルで、汎用ストレージ アカウントのみをサポートしています。 アカウントが Premium または BLOB のみのストレージ アカウントでないことを確認してください。
+
 * **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページに記載されている手順に従います。
 
 
@@ -99,11 +103,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **[場所]** で、データ ファクトリの場所を選択します。 
 
    現在 Data Factory が利用できる Azure リージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/global-infrastructure/services/)」ページで目的のリージョンを選択し、**[分析]** を展開して **[Data Factory]** を探してください。 Data Factory で使用するデータ ストア (Azure Storage、Azure SQL Database など) やコンピューティング (HDInsight など) は他のリージョンに配置できます。
-1. **[ダッシュボードにピン留めする]** をオンにします。     
-1. **作成**を選択します。
-1. ダッシュボードに、**[Deploying Data Factory]\(Data Factory をデプロイしています\)** というステータスを示した次のタイルが表示されます。 
 
-   ![[Deploying data factory]\(データ ファクトリをデプロイしています\) タイル](media//tutorial-transform-data-spark-portal/deploying-data-factory.png)
+1. **作成**を選択します。
+
 1. 作成が完了すると、**[データ ファクトリ]** ページが表示されます。 **[作成と監視]** タイルを選択して、別のタブで Data Factory UI アプリケーションを起動します。
 
     ![[作成と監視] タイルが表示された、データ ファクトリのホーム ページ](./media/tutorial-transform-data-spark-portal/data-factory-home-page.png)
@@ -157,11 +159,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    
    h. **[OS の種類]** を展開します。
    
-   i. クラスター ユーザーの名前を入力します。 
+   i. **[クラスター ユーザー名]** に名前を入力します。 
    
-   j. ユーザーのパスワードを入力します。 
+   j. そのユーザーの**クラスター パスワード**を入力します。 
    
-   k. **[保存]** を選択します。 
+   k. **[完了]** を選択します。 
 
    ![HDInsight のリンクされたサービスの設定](./media/tutorial-transform-data-spark-portal/azure-hdinsight-linked-service-settings.png)
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 08/27/2018
+ms.date: 10/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ae2d312feb0fcefab85bcbbd2db7ac46c328213f
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a23e9dc8fad52bac85de834c53d2c710423211c7
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104984"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269243"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -39,7 +39,7 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 
 ### <a name="developer-tier"></a>Developer レベル
 
-このレベルは、評価、開発、およびテスト シナリオで推奨されます。 プランには Standard レベルと同じ機能が含まれますが、処理能力、QPU、およびメモリ サイズが制限されています。 クエリ レプリカのスケール アウト は、このレベルでは利用できません。 このレベルでは、SLA は適用されません。
+このレベルは、評価、開発、およびテスト シナリオで推奨されます。 プランには Standard レベルと同じ機能が含まれますが、処理能力、QPU、およびメモリ サイズが制限されています。 クエリ レプリカのスケール アウトは、このレベルでは*利用できません*。 このレベルでは、SLA は適用されません。
 
 |プラン  |QPU  |メモリ (GB)  |
 |---------|---------|---------|
@@ -48,7 +48,7 @@ Azure Analysis Services は、**Developer** レベル、**Basic** レベル、�
 
 ### <a name="basic-tier"></a>Basic レベル
 
-このレベルは、表形式モデルが小さく、ユーザーの同時実行数が少なく、データの更新要件がシンプルな運用ソリューションで推奨されます。 クエリ レプリカのスケール アウトは、このレベルでは*利用できません*。 パースペクティブ、複数のパーティション、および DirectQuery 表形式モデル機能*は、このレベルではサポートされません*。  
+このレベルは、表形式モデルが小さく、ユーザーのコンカレンシー数が少なく、データの更新要件がシンプルな運用ソリューションで推奨されます。 クエリ レプリカのスケール アウトは、このレベルでは*利用できません*。 パースペクティブ、複数のパーティション、および DirectQuery 表形式モデル機能*は、このレベルではサポートされません*。  
 
 |プラン  |QPU  |メモリ (GB)  |
 |---------|---------|---------|
@@ -102,6 +102,7 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |オーストラリア南東部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
+|オーストラリア東部     |    B1、B2、S0、S1、S2、S4    <br>S8、S9    |    3<br>1     |
 |東日本  |   B1、B2、S0、S1、S2、S4、D1       |    1     |
 |東南アジア     |     B1、B2、S0、S1、S2、S4、S8、S9、D1     |   1      |
 |インド西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |

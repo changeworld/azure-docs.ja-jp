@@ -3,18 +3,18 @@ title: Azure Site Recovery でのネットワーク セキュリティ グルー
 description: Azure Site Recovery でディザスター リカバリーと移行にネットワーク セキュリティ グループを使用する方法を説明します
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
-ms.author: manayar
-ms.openlocfilehash: b0570a7fe0cb6f334d18f82b1f06d5fa770b5af8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: fc4beb9f664bb3be52907cb6cd746dad0aa37e64
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921316"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352729"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Azure Site Recovery でのネットワーク セキュリティ グループ
 

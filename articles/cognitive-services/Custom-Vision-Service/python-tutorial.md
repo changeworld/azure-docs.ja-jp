@@ -1,22 +1,23 @@
 ---
-title: Custom Vision Service Python による作成のチュートリアル - Azure Cognitive Services | Microsoft Docs
-description: Microsoft Cognitive Services で Custom Vision API を使用する基本的な Python アプリについて確認します。 既定のエンドポイントを利用し、プロジェクトを作成し、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、予測を行います。
+title: 'チュートリアル: 画像分類プロジェクトを作成する - Custom Vision Service、Python'
+titlesuffix: Azure Cognitive Services
+description: 既定のエンドポイントを利用し、プロジェクトを作成し、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、予測を行います。
 services: cognitive-services
 author: areddish
-manager: chbuehle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
-ms.date: 05/07/2018
+ms.topic: tutorial
+ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 0359935bf266d4f2a5cf845dd0d23183f4f77b72
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 14b805a60637a889698132e169d5a41670a8bce0
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35375277"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363379"
 ---
-# <a name="custom-vision-api-python-tutorial"></a>Custom Vision API Python チュートリアル
+# <a name="tutorial-create-an-image-classification-project-using-the-custom-vision-service-with-python"></a>チュートリアル: Custom Vision Service と Python を使用して画像分類プロジェクトを作成する
 
 Custom Vision Service および基本の Python スクリプトを使って、画像分類プロジェクトを作成する方法について説明します。 作成後、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、このエンドポイントを使用して画像をプログラミングでテストできます。 Custom Vision API を利用し、独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
 
@@ -35,7 +36,7 @@ Custom Vision Service および基本の Python スクリプトを使って、�
 
 ## <a name="install-the-custom-vision-service-sdk"></a>Custom Vision Service SDK をインストールする
 
-Custom VIsion Service SDK をインストールするには、以下のコマンドを使用します。
+Custom Vision Service SDK をインストールするには、以下のコマンドを使用します。
 
 ```
 pip install azure-cognitiveservices-vision-customvision

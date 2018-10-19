@@ -10,12 +10,12 @@ ms.component: video-indexer
 ms.topic: sample
 ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 0d75a58ddf0607286d41867828119fdd05e07d22
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 3d9e00a97355c03da5360846d4cd9f27a8540ed6
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985582"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017434"
 ---
 # <a name="example-embed-video-indexer-widgets-into-your-applications"></a>例: アプリケーションに Video Indexer ウィジェットを埋め込む
 
@@ -47,15 +47,16 @@ ms.locfileid: "45985582"
 ## <a name="embedding-public-content"></a>パブリック コンテンツの埋め込み
 
 1. [Video Indexer](https://www.videoindexer.ai/) Web サイトに移動してサインインします。
-2. ビデオの下に表示される "埋め込み" ボタンをクリックします。
+2. 作業するビデオをクリックします。
+3. ビデオの下に表示される "埋め込み" ボタンをクリックします。
 
     ![ウィジェット](./media/video-indexer-embed-widgets/video-indexer-widget01.png)
 
     ボタンをクリックすると、画面に埋め込みモーダルが表示され、アプリケーションに埋め込むウィジェットを選択できます。
     ウィジェット (**プレーヤー**または**コグニティブな分析情報**) を選択すると、アプリケーションに貼り付けるための埋め込みコードが生成されます。
  
-3. 目的のウィジェットの種類 (**コグニティブな分析情報**または**プレーヤー**) を選択します。
-4. 埋め込みコードをコピーし、アプリケーションに追加します。 
+4. 目的のウィジェットの種類 (**コグニティブな分析情報**または**プレーヤー**) を選択します。
+5. 埋め込みコードをコピーし、アプリケーションに追加します。 
 
     ![ウィジェット](./media/video-indexer-embed-widgets/video-indexer-widget02.png)
 

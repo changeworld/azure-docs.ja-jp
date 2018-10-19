@@ -1,21 +1,21 @@
 ---
-title: Translator Text と Ruby でテキストの言語を認識する | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このクイック スタートでは、Cognitive Services の Translator Text API と Ruby を使って、ソース テキストの言語を認識します。
+title: 'クイック スタート: テキストの言語を識別する - Translator Text、Ruby'
+titleSuffix: Azure Cognitive Services
+description: このクイック スタートでは、Ruby で Translator Text API を使ってソース テキストの言語を認識します。
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: nolachar
-ms.openlocfilehash: b692b66454cc86e6d81aec9c3139b39a905d0d66
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: e2b138b5c28047487da2ca7a72169a10a125eaf5
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "43771059"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121705"
 ---
 # <a name="quickstart-identify-language-from-text-with-ruby"></a>クイック スタート: Ruby を使ってテキストの言語を認識する
 

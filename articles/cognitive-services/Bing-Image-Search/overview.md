@@ -1,6 +1,7 @@
 ---
-title: Bing Image Search とは | Microsoft Docs
-description: Bing Images Search API を使用して Web から画像を検索する方法について説明します。
+title: Bing Image Search とは
+titleSuffix: Azure Cognitive Services
+description: Bing Image Search API では、アプリケーションで Bing の認知画像検索機能を使用できます。 この API を使用してユーザーの検索クエリを送信すると、Bing Images のような関連性のある高品質の画像を取得して表示できます。
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: overview
 ms.date: 10/11/2017
 ms.author: aahi
-ms.openlocfilehash: ebf8c28b843768a9081a0086b10e4adf04572ea1
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 5d5d69eea3a064679cbc5ddc41891a73e77e55ea
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42889272"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295361"
 ---
 # <a name="what-is-bing-image-search"></a>Bing Image Search とは
 
@@ -40,9 +41,9 @@ Bing Image Search は、検索クエリから主に関連する画像を検索�
 
 Bing Image Search API は RESTfulWeb サービスです。HTTP 要求を作成して JSON を解析できる任意のプログラミング言語から簡単に呼び出すことができます。 [REST API](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/quickstarts/csharp?) または [SDK](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/image-search-sdk-quickstart) のいずれかを使用してサービスを使用できます。
 
-1. Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)できます。 
+1. Bing Search API が利用できる [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)を作成します。 Azure サブスクリプションをお持ちでない場合は、無料で[アカウントを作成](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)できます。
 2. 有効な[検索クエリ](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)を使用して API に要求を送信します。
-3. 返された JSON メッセージを解析して API 応答を処理します。 
+3. 返された JSON メッセージを解析して API 応答を処理します。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -64,4 +65,4 @@ API を呼び出す準備ができたら、[Cognitive Services API アカウン�
 
 * 「[Bing Image Search API で Web から画像を取得する](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images)」トピックでは、Web から画像を検索して取得する方法について説明しています。
 
-* [検索クエリの送信と使用](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)に関するトピックでは、クエリの作成、カスタマイズ、およびピボットの方法について説明しています。 
+* [検索クエリの送信と使用](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries)に関するトピックでは、クエリの作成、カスタマイズ、およびピボットの方法について説明しています。

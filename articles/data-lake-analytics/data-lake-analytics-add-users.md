@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.openlocfilehash: 0386406f5fc81a007d55bd5358e7a6b333f63b04
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f48dc07e27c6cb01a842f1f6d720ed6476028ef7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048335"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542314"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Azure portal でユーザーを追加する
 
@@ -31,12 +31,12 @@ ms.locfileid: "43048335"
 必要に応じて、入力データと出力データが保存されているフォルダーに対して "R-X" または "RWX" を付与します。
 
 
-## <a name="optionally-add-the-user-to-the-azure-data-lake-store-role-reader-role"></a>必要に応じて、ユーザーを Azure Data Lake Store ロールの**閲覧者**ロールに追加します。
-1.  自分の Azure Data Lake Store アカウントを探します。
+## <a name="optionally-add-the-user-to-the-azure-data-lake-storage-gen1-role-reader-role"></a>必要に応じて、ユーザーを Azure Data Lake Storage Gen1 ロールの**閲覧者**ロールに追加します。
+1.  Azure Data Lake Storage Gen1 アカウントを見つけます。
 2.  **[ユーザー]** をクリックします。
 3. **[追加]** をクリックします。
 4.  このグループを割り当てる Azure RBAC ロールを選択します。
-5.  閲覧者ロールを割り当てます。 このロールには、ADLS に格納されているデータの参照/管理に必要な最小限のアクセス許可が割り当てられています。 Azure サービスの管理を目的としていないグループの場合は、このロールに割り当てます。
+5.  閲覧者ロールを割り当てます。 このロールには、ADLSGen1 に格納されているデータの参照/管理に必要な最小限のアクセス許可が割り当てられています。 Azure サービスの管理を目的としていないグループの場合は、このロールに割り当てます。
 6.  グループの名前を入力します。
 7.  Click **OK**.
 

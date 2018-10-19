@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.reviewer: ramach
 ms.author: mbullwin
-ms.openlocfilehash: 2da281f52a85992c6fade360c94fbf473c38dc20
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: eb2ec0c0b77e71a54d1e7f852a22d82203abf7b6
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424026"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091982"
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Azure VM、Service Fabric、および Azure Cloud Services で Application Insights Profiler を有効化する
 
@@ -48,7 +48,7 @@ Profiler を完全に有効にするには、次の 3 つの箇所で構成を�
 
    ![インストルメンテーション キーの場所](./media/enable-profiler-compute/CopyAIKey.png)
 
-1. 「プロファイラーを有効にする」の手順を実行して、Profiler 用の Application Insights インスタンスの設定を完了します。 アプリ サービス リソースに固有の手順であるため、Web アプリをリンクする必要はありません。 **[Configure Profiler]\(Application Insights Profiler の構成\)** ウィンドウで、プロファイラーが有効になっていることを確認してください。
+1. 「[プロファイラーを有効にする](https://docs.microsoft.com/azure/application-insights/app-insights-profiler)」の手順を実行して、Profiler 用の Application Insights インスタンスの設定を完了します。 アプリ サービス リソースに固有の手順であるため、Web アプリをリンクする必要はありません。 **[Configure Profiler]\(Application Insights Profiler の構成\)** ウィンドウで、プロファイラーが有効になっていることを確認してください。
 
 
 ## <a name="set-up-the-application-source-code"></a>アプリケーションのソース コードを設定する

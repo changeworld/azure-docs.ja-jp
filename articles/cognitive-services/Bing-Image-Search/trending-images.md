@@ -1,23 +1,24 @@
 ---
-title: 注目の画像を Web で検索する | Microsoft Docs
+title: 注目の画像を Web で検索する | Bing Image Search API
+titleSuffix: Azure Cognitive Services
 description: Bing Images Search API を使用して Web で注目の画像を検索する方法について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: EAB92D35-5C0B-4A0A-8F49-02DF7FAD44B4
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: b12524cd4c1896501820209b3a45746b8f38b210
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 00d992da1d061ddbbee59e93898a92b6701f1ffb
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372861"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296313"
 ---
-# <a name="get-trending-images"></a>注目の画像の取得  
+# <a name="get-trending-images-from-the-bing-image-search-api"></a>Bing Image Search API から注目の画像を取得する
 
 今日の注目の画像を取得するには、次の GET 要求を送信します。  
 
@@ -38,7 +39,7 @@ Trending Images API では、現在、次の市場のみがサポートされて
 - zh-CN (中国語、中国)
 
 応答には、画像をカテゴリ別に一覧表示する [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#trendingimages) オブジェクトが含まれています。 カテゴリの `title` を使用して、ユーザー エクスペリエンスの画像をグループ化します。 カテゴリは、毎日変わる可能性があります。  
-  
+
 ```json
 {
     "_type" : "TrendingImages",  
@@ -85,8 +86,8 @@ Trending Images API では、現在、次の市場のみがサポートされて
     }]  
 }  
 ```  
-  
-各タイルには、画像と、関連画像を取得するオプションが含まれています。 関連画像を取得するには、クエリ `text` を使用して [Image Search API](./search-the-web.md) を呼び出し、関連画像を自分で表示します。 または、`webSearchUrl` 内の URL を使用して、関連画像を含む Bing の画像検索結果ページに移動することもできます。 
+
+各タイルには、画像と、関連画像を取得するオプションが含まれています。 関連画像を取得するには、クエリ `text` を使用して [Image Search API](./search-the-web.md) を呼び出し、関連画像を自分で表示します。 または、`webSearchUrl` 内の URL を使用して、関連画像を含む Bing の画像検索結果ページに移動することもできます。
 
 Image Search API を呼び出して関連画像を取得する場合は、[id](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) クエリ パラメーターを `id` フィールド内の ID に設定します。 ID を指定すると、応答に画像 (応答内の最初の画像) とその関連画像が含まれます。 また、[q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#q) クエリ パラメーターを `query` オブジェクトの `text` フィールドのテキストに設定します。
 

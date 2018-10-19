@@ -1,22 +1,23 @@
 ---
-title: Project Answer Search のエンティティ クエリ - Microsoft Cognitive Services | Microsoft Docs
+title: 'クイック スタート: Project Answer Search エンティティ クエリ'
+titlesuffix: Azure Cognitive Services
 description: Project Answer Search を使ったエンティティ クエリ
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: quickstart
 ms.date: 04/16/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 2b8382b791c02514e5110097700e223d98fafd6a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 0845f491772b905599bb60e8ec555d14b6d6b15f
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376200"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48883603"
 ---
-# <a name="query-for-entities"></a>エンティティのクエリ
+# <a name="quickstart-query-for-entities"></a>クイック スタート: エンティティのクエリ
 
 クエリで特定の人物、場所、または物に関する情報が要求された場合には、応答に `entities` の回答を含めることができます。  クエリでは常に Web ページが返されます。これに対して、[事実](fact-queries.md)と[エンティティ](entity-queries.md)が返されるかどうかはクエリによって異なります。
 

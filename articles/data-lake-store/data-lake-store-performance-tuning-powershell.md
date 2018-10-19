@@ -1,6 +1,6 @@
 ---
-title: Data Lake Store で PowerShell を使用するためのパフォーマンス チューニング ガイダンス | Microsoft Docs
-description: Data Lake Store で Azure PowerShell を使用するときにパフォーマンスを改善する方法に関するヒント
+title: Azure Data Lake Storage Gen1 で PowerShell を使用するためのパフォーマンス チューニング ガイダンス | Microsoft Docs
+description: Azure Data Lake Storage Gen1 で Azure PowerShell を使用するときにパフォーマンスを改善する方法に関するヒント
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -11,29 +11,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: 7b19972ed4a75ac899a4b78b28ab36ba305a5a64
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: fff26406b036edeb48371b89f7e585160ddc58e0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198652"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123319"
 ---
-# <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-store"></a>Azure Data Lake Store で PowerShell を使用するためのパフォーマンス チューニング ガイダンス
+# <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 で PowerShell を使用するためのパフォーマンス チューニング ガイダンス
 
-この記事では、PowerShell を使用して Data Lake Store を操作する際のパフォーマンスを改善するために調整できるプロパティについて説明します。
+この記事では、PowerShell を使用して Azure Data Lake Storage Gen1 を操作する際のパフォーマンスを改善するために調整できるプロパティについて説明します。
 
 ## <a name="performance-related-properties"></a>パフォーマンス関連のプロパティ
 
-| プロパティ            | 既定値 | [説明] |
+| プロパティ            | 既定値 | 説明 |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | このパラメーターを使用すると、各ファイルをアップロードまたはダウンロードする場合の並列スレッドの数を選択できます。 この数値は、1 ファイルに割り当てることができる最大スレッド数を表しますが、シナリオに応じてスレッドが少なくなる場合があります (たとえば、1 KB のファイルをアップロードする場合、20 個のスレッドを要求してもスレッドは 1 つになります)。  |
 | ConcurrentFileCount | 10      | このパラメーターは、ファイルのアップロードまたはダウンロード専用です。 このパラメーターによって、同時にアップロードまたはダウンロードできるファイルの数が決まります。 この数値は、一度にアップロードまたはダウンロードできる同時実行ファイルの最大数を表しますが、シナリオに応じて同時実行の数が少なくなる場合があります (たとえば、2 つのファイルをアップロードしている場合、15 を要求しても同時に行われるファイルのアップロードは 2 つになります)。 |
 
 **例**
 
-次のコマンドは、1 ファイルにつき 20 個のスレッドと、100 個の同時実行ファイルを使用して、ファイルを Azure Data Lake Store からユーザーのローカル ドライブにダウンロードします。
+次のコマンドは、1 ファイルにつき 20 個のスレッドと、100 個の同時実行ファイルを使用して、ファイルを Data Lake Storage Gen1 からユーザーのローカル ドライブにダウンロードします。
 
-    Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Store account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
+    Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
 
 ## <a name="how-do-i-determine-the-value-for-these-properties"></a>これらのプロパティの値を決める方法
 
@@ -93,8 +93,8 @@ ms.locfileid: "34198652"
 * **調整エラー**: 同時実行があまりに多くなると、調整エラーが表示される場合があります。 調整エラーが表示される場合は、同時実行を減らすか、Microsoft にお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
-* [ビッグ データの要件に対する Azure Data Lake Store の使用](data-lake-store-data-scenarios.md) 
-* [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
-* [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Data Lake Storage Gen1 を使用してビッグ データの要件に対応する](data-lake-store-data-scenarios.md) 
+* [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
+* [Data Lake Storage Gen1 で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Data Lake Storage Gen1 で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
 

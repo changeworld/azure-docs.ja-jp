@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/10/2018
 ms.author: barclayn
-ms.openlocfilehash: 958fbd507efeb161b169c01abf32012883017f18
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 0214d6cf09795605bca60774604ecd1fec94fdc6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42022345"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989430"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>クイック スタート: Azure CLI を使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -29,7 +29,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用する場合、このクイック スタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 CLI を使用して Azure にログインするには、次のように入力します。
 
@@ -37,7 +37,7 @@ CLI を使用して Azure にログインするには、次のように入力し
 az login
 ```
 
-CLI を使用したログイン オプションの詳細については、「[Azure CLI 2.0 を使用してログインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」を参照してください
+CLI を使用したログイン オプションの詳細については、「[Azure CLI を使用してログインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」を参照してください
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -100,4 +100,4 @@ az group delete --name ContosoResourceGroup
 このクイック スタートでは、Key Vault を作成してシークレットを格納しました。 Key Vault の詳細とアプリケーションでの使用方法については、Key Vault と連携する Web アプリのチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> マネージド サービス ID を使用する Web アプリケーションから、Key Vault からのシークレットを読み取る方法を学習するには、「[キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](quick-create-net.md)」チュートリアルに進んでください
+> Azure リソースのマネージド ID を使用する Web アプリケーションから、Key Vault のシークレットを読み取る方法を学習するには、[キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する](quick-create-net.md)チュートリアルに進んでください

@@ -8,16 +8,22 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 05/24/2018
 ms.author: anshan
-ms.openlocfilehash: 11bea78315ff7ebb4b0c167dbb687ce940907527
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: b9d5e922a9a0a5f50e2ced896f5957fbc90d7eb4
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628914"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364369"
 ---
 # <a name="how-to-shape-json-to-maximize-query-performance"></a>クエリのパフォーマンスを最大化するための JSON の調整方法 
 
 この記事では、Azure Time Series Insights (TSI) クエリの効率を最大化するよう JSON を調整するためのガイダンスを提供します。
+
+## <a name="video"></a>ビデオ: 
+
+### <a name="in-this-video-we-cover-best-practices-around-shaping-json-to-meet-your-storage-needsbr"></a>このビデオでは、ストレージ要件を満たすように、JSON の調整に関するベスト プラクティスについて説明します。</br>
+
+> [!VIDEO https://www.youtube.com/embed/b2BD5hwbg5I]
 
 ## <a name="best-practices"></a>ベスト プラクティス
 

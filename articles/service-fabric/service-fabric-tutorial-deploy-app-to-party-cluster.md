@@ -15,18 +15,18 @@ ms.workload: NA
 ms.date: 07/12/2018
 ms.author: ryanwi,mikhegn
 ms.custom: mvc
-ms.openlocfilehash: dc105c02354e0e83c4f9a1bad7c94a98643effd0
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 443d37f5b45db9495c09d68300c9ea4978466eb9
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41920720"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388230"
 ---
 # <a name="tutorial-deploy-a-service-fabric-application-to-a-cluster-in-azure"></a>チュートリアル: Azure のクラスターに Service Fabric アプリケーションをデプロイする
 
 このチュートリアルは、シリーズの第 2 部です。 Azure の新しいクラスターに Azure Service Fabric アプリケーションをデプロイする方法を示します。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * パーティ クラスターを作成する。
 > * Visual Studio を使用してリモート クラスターにアプリケーションをデプロイする。
@@ -36,7 +36,7 @@ ms.locfileid: "41920720"
 > * [.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)。
 > * アプリケーションをリモート クラスターにデプロイする。
 > * [ASP.NET Core フロントエンド サービスに HTTPS エンドポイントを追加する](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md)。
-> * [Visual Studio Team Services を使用して CI/CD を構成する](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)。
+> * [Azure Pipelines を使用して CI/CD を構成する](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)。
 > * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md)。
 
 ## <a name="prerequisites"></a>前提条件
@@ -57,8 +57,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 
 ## <a name="publish-to-a-service-fabric-cluster"></a>Service Fabric クラスターに発行する
 
-これでアプリケーションの準備ができたので、Visual Studio から直接クラスターにデプロイできます。 
-  [Service Fabric クラスター](https://docs.microsoft.com/en-gb/azure/service-fabric/service-fabric-deploy-anywhere)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。
+これでアプリケーションの準備ができたので、Visual Studio から直接クラスターにデプロイできます。 [Service Fabric クラスター](https://docs.microsoft.com/azure/service-fabric/service-fabric-deploy-anywhere)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。
 
 このチュートリアルでは、Visual Studio を使用して投票アプリケーションを Service Fabric クラスターにデプロイするために、次の 2 つのオプションがあります。
 
@@ -66,7 +65,7 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 * サブスクリプションで既存のクラスターに発行します。 [Azure portal](https://portal.azure.com) で [PowerShell](./scripts/service-fabric-powershell-create-secure-cluster-cert.md) または [Azure CLI](./scripts/cli-create-cluster.md) スクリプトを使用するか、[Azure Resource Manager テンプレート](service-fabric-tutorial-create-vnet-and-windows-cluster.md)から、Service Fabric クラスターを作成することができます。
 
 > [!NOTE]
-> 多くのサービスは、リバース プロキシを使用して相互に通信します。 Visual Studio で作成されたクラスターとパーティ クラスターでは、既定でリバース プロキシが有効です。 既存のクラスターを使用する場合、[クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy-setup.md#)必要があります。
+> 多くのサービスは、リバース プロキシを使用して相互に通信します。 Visual Studio で作成されたクラスターとパーティ クラスターでは、既定でリバース プロキシが有効です。 既存のクラスターを使用する場合、[クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy-setup.md)必要があります。
 
 
 ### <a name="find-the-voting-web-service-endpoint-for-your-azure-subscription"></a>Azure サブスクリプションの投票 Web サービス エンドポイントを見つける

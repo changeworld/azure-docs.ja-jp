@@ -32,7 +32,7 @@ ms.locfileid: "46971571"
 2. 画像の視覚化と注釈
 3. 画像の拡張
 4. ディープ ニューラル ネットワーク (DNN) モデルの定義
-5. 分類器のトレーニング
+5. 分類子のトレーニング
 6. 評価と視覚化
 7. Web サービスのデプロイ
 8. Web サービスのロード テスト
@@ -218,7 +218,7 @@ else:
 + Resnet-101
 + Resnet-152
 
-これらの DNN を、分類器または特徴抽出器として使用できます。 
+これらの DNN を、分類子または特徴抽出器として使用できます。 
 
 ネットワークの詳細については[こちら](https://github.com/Microsoft/CNTK/blob/master/PretrainedModels/Image.md)を、転移学習の概要については[こちら](https://blog.slavv.com/a-gentle-intro-to-transfer-learning-2c0b674375a0)を参照してください。
 

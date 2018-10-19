@@ -4,7 +4,7 @@ description: この記事では、Media Services の概要を説明し、詳細�
 services: media-services
 documentationcenter: na
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 tags: ''
 keywords: Azure Media Services, ストリーム, ブロードキャスト, ライブ, オフライン
@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 07/14/2018
+ms.date: 09/25/2018
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 6c3fb7391c25628ba12526a04c022215bdbd9d40
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 3641806870c3eab0b3a05f538015a72d9a0b34ef
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39325933"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221936"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Azure Media Services v3 の概要
 
@@ -55,7 +55,7 @@ v3 は、Azure Resource Manager 上に構築された管理と操作の両方の
 このバージョンでは次の機能が提供されます。  
 
 * メディア処理タスクまたは分析タスクの簡単なワークフローを定義するのに役立つ**変換**。 変換は、ビデオ ファイルとオーディオ ファイルを処理するためのレシピです。 変換にジョブを送信することで、変換を繰り返し適用して、コンテンツ ライブラリ内のすべてのファイルを処理できます。
-* ビデオを処理 (エンコードまたは分析) するための**ジョブ**。 HTTP(S) URL、SAS URL、または Azure Blob Storage 内に存在するファイルへのパスを使って、ジョブで入力コンテンツを指定できます。 
+* ビデオを処理 (エンコードまたは分析) するための**ジョブ**。 HTTPS URL、SAS URL、または Azure Blob Storage 内に存在するファイルへのパスを使って、ジョブで入力コンテンツを指定できます。 現時点では、AMS v3 は、HTTPS URL でのチャンク転送エンコーディングをサポートしていません。
 * ジョブの進行状況や状態、またはライブ チャネルの開始/停止とエラー イベントを監視する**通知**。 通知は、Azure Event Grid の通知システムに統合されています。 Azure Media Services の複数のリソースでのイベントを簡単にサブスクライブすることができます。 
 * **Azure Resource Management** テンプレートを使って、変換、ストリーミング エンドポイント、チャネル、その他を作成して展開できます。
 * **ロールベースのアクセス制御**をリソース レベルで設定でき、変換やチャネルなどの特定のリソースへのアクセスをロックダウンできます。

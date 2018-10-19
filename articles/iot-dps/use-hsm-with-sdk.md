@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: arjmands
 ms.custom: mvc
-ms.openlocfilehash: c94b5d4800f5776b51247c6ec2f6662a6ab26abc
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 4ab558b680a0d00d1b9bdfbcb1529219f6c37b37
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42146747"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319254"
 ---
 # <a name="how-to-use-different-attestation-mechanisms-with-device-provisioning-service-client-sdk-for-c"></a>C 言語用 Device Provisioning Service クライアント SDK で各種構成証明メカニズムを使用する方法
 
@@ -143,6 +143,7 @@ cmake -Ddps_auth_type=tpm_simulator ..
 TPM を使用する場合は、「[シミュレートされたデバイスを作成して IoT Hub Device Provisioning Service でプロビジョニングする](./quick-create-simulated-device.md)」の手順に従って、Device Provisioning Service にデバイス登録エントリを作成し、初回ブートをシミュレートします。
 
 ### <a name="x509"></a>X **.** 509
+
 1. プロビジョニング サービスにデバイスを登録するためには、各デバイスの保証キーと登録 ID を書き留めておく必要があります。これらの情報は、クライアント SDK に含まれるプロビジョニング ツールに表示されます。 次のコマンドを実行して、ルート CA 証明書 (グループ登録用) とリーフ証明書 (個別登録用) を出力してください。
       ```
       ./azure-iot-sdk-c/dps_client/tools/x509_device_provision/x509_device_provision.exe
@@ -185,4 +186,3 @@ TPM を使用する場合は、「[シミュレートされたデバイスを作
   ```
   IOTHUB_CLIENT_LL_HANDLE handle = IoTHubClient_LL_CreateFromDeviceAuth(iothub_uri, device_id, iothub_transport);
   ```
-

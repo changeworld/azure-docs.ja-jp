@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: 8dfc2448861ca9b376246ac42f7563e44422d6de
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: d1476eac798190104e0fcabce0a0fa9537f76c20
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122435"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49322041"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Azure Data Factory でのパイプラインの実行とトリガー
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -36,43 +36,43 @@ Azure Data Factory の "_パイプライン実行_" により、パイプライ�
 
 ```json
 {
-  "name": "copyPipeline",
-  "properties": {
-    "activities": [
-      {
-        "type": "Copy",
-        "typeProperties": {
-          "source": {
-            "type": "BlobSource"
-          },
-          "sink": {
-            "type": "BlobSink"
-          }
-        },
-        "name": "CopyBlobtoBlob",
-        "inputs": [
-          {
-            "referenceName": "sourceBlobDataset",
-            "type": "DatasetReference"
-          }
+    "name": "copyPipeline",
+    "properties": {
+        "activities": [
+            {
+                "type": "Copy",
+                "typeProperties": {
+                    "source": {
+                        "type": "BlobSource"
+                    },
+                    "sink": {
+                        "type": "BlobSink"
+                    }
+                },
+                "name": "CopyBlobtoBlob",
+                "inputs": [
+                    {
+                        "referenceName": "sourceBlobDataset",
+                        "type": "DatasetReference"
+                    }
+                ],
+                "outputs": [
+                    {
+                        "referenceName": "sinkBlobDataset",
+                        "type": "DatasetReference"
+                    }
+                ]
+            }
         ],
-        "outputs": [
-          {
-            "referenceName": "sinkBlobDataset",
-            "type": "DatasetReference"
-          }
-        ]
-      }
-    ],
-    "parameters": {
-      "sourceBlobContainer": {
-        "type": "String"
-      },
-      "sinkBlobContainer": {
-        "type": "String"
-      }
+        "parameters": {
+            "sourceBlobContainer": {
+                "type": "String"
+            },
+            "sinkBlobContainer": {
+                "type": "String"
+            }
+        }
     }
-  }
 }
 ```
 
@@ -146,12 +146,11 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 ### <a name="basic-trigger-definition"></a>基本的なトリガー定義
 
 ```json
+{
     "properties": {
         "name": "MyTrigger",
         "type": "<type of trigger>",
-        "typeProperties": {
-            …
-        },
+        "typeProperties": {...},
         "pipelines": [
             {
                 "pipelineReference": {
@@ -161,13 +160,14 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
                 "parameters": {
                     "<parameter 1 Name>": {
                         "type": "Expression",
-                          "value": "<parameter 1 Value>"
+                        "value": "<parameter 1 Value>"
                     },
-                    "<parameter 2 Name>" : "<parameter 2 Value>"
+                    "<parameter 2 Name>": "<parameter 2 Value>"
                 }
             }
         ]
     }
+}
 ```
 
 ## <a name="schedule-trigger"></a>スケジュール トリガー
@@ -187,40 +187,39 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
     "typeProperties": {
       "recurrence": {
         "frequency": <<Minute, Hour, Day, Week, Year>>,
-        "interval": <<int>>,             // How often to fire
+        "interval": <<int>>, // How often to fire
         "startTime": <<datetime>>,
         "endTime": <<datetime>>,
-        "timeZone": "UTC"
-        "schedule": {                    // Optional (advanced scheduling specifics)
+        "timeZone": "UTC",
+        "schedule": { // Optional (advanced scheduling specifics)
           "hours": [<<0-24>>],
-          "weekDays": ": [<<Monday-Sunday>>],
+          "weekDays": [<<Monday-Sunday>>],
           "minutes": [<<0-60>>],
           "monthDays": [<<1-31>>],
           "monthlyOccurences": [
-               {
-                    "day": <<Monday-Sunday>>,
-                    "occurrence": <<1-5>>
-               }
-           ] 
+            {
+              "day": <<Monday-Sunday>>,
+              "occurrence": <<1-5>>
+            }
+          ]
         }
       }
     },
-   "pipelines": [
-            {
-                "pipelineReference": {
-                    "type": "PipelineReference",
-                    "referenceName": "<Name of your pipeline>"
-                },
-                "parameters": {
-                    "<parameter 1 Name>": {
-                        "type": "Expression",
-                        "value": "<parameter 1 Value>"
-                    },
-                    "<parameter 2 Name>" : "<parameter 2 Value>"
-                }
-           }
-      ]
-  }
+  "pipelines": [
+    {
+      "pipelineReference": {
+        "type": "PipelineReference",
+        "referenceName": "<Name of your pipeline>"
+      },
+      "parameters": {
+        "<parameter 1 Name>": {
+          "type": "Expression",
+          "value": "<parameter 1 Value>"
+        },
+        "<parameter 2 Name>": "<parameter 2 Value>"
+      }
+    }
+  ]}
 }
 ```
 
@@ -278,10 +277,10 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 
 | JSON プロパティ | type | 必須 | 既定値 | 有効な値 | 例 |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | 文字列 | [はい] | なし | ISO 8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **startTime** | string | [はい] | なし | ISO 8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | オブジェクト | [はい] | なし | recurrence オブジェクト | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | number | いいえ  | 1 | 1 から 1,000 | `"interval":10` |
-| **endTime** | 文字列 | [はい] | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | string | [はい] | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | オブジェクト | いいえ  | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime プロパティ
@@ -371,8 +370,8 @@ client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, 
 |:--- |:--- |:--- |
 | **バックフィル シナリオ** | サポートされています。 パイプライン実行は、過去のウィンドウ用にスケジュールを設定できます。 | サポートされていません。 パイプライン実行は、現時点および将来の期間のみに対して実行できます。 |
 | **信頼性** | 100% の信頼性です。 パイプライン実行は、指定した開始日から隙間なくすべてのウィンドウでスケジュールできます。 | 信頼性は低くなります。 |
-| **再試行機能** | サポートされています。 失敗したパイプライン実行には、既定の再試行ポリシー 0 か、トリガー定義でユーザーが指定したポリシーがあります。 同時実行/サーバー/調整の制限が原因でパイプライン実行に失敗した場合は、自動的に再試行されます (たとえば、状態コードは 400 ユーザー エラー、429 要求が多すぎます、500 内部サーバー エラー)。 | サポートされていません。 |
-| **同時実行** | サポートされています。 ユーザーは、トリガーの同時実行の制限を明示的に設定できます。 1 から 50 個の同時実行のトリガーされたパイプライン実行が許可されます。 | サポートされていません。 |
+| **再試行機能** | サポートされています。 失敗したパイプライン実行には、既定の再試行ポリシー 0 か、トリガー定義でユーザーが指定したポリシーがあります。 コンカレンシー/サーバー/調整の制限が原因でパイプライン実行に失敗した場合は、自動的に再試行されます (たとえば、状態コードは 400 ユーザー エラー、429 要求が多すぎます、500 内部サーバー エラー)。 | サポートされていません。 |
+| **コンカレンシー** | サポートされています。 ユーザーは、トリガーのコンカレンシーの制限を明示的に設定できます。 1 から 50 個の同時実行のトリガーされたパイプライン実行が許可されます。 | サポートされていません。 |
 | **システム変数** | **WindowStart** および **WindowEnd** システム変数の使用がサポートされます。 ユーザーは、トリガー定義のトリガー システム変数として `triggerOutputs().windowStartTime` および `triggerOutputs().windowEndTime` にアクセスできます。 値はそれぞれ、ウィンドウの開始時刻と終了時刻として使用されます。 たとえば、1 時間ごとに実行されるタンブリング ウィンドウ トリガーの場合、午前 1 時から午前 2 時までのウィンドウの定義は `triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z` と `triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z` です。 | サポートされていません。 |
 | **パイプラインとトリガーのリレーションシップ** | 一対一のリレーションシップをサポートします。 トリガーできるパイプラインは 1 つだけです。 | 多対多のリレーションシップをサポートします。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。 | 
 

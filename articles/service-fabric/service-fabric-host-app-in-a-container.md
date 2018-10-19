@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: a1e8c53263093554bb616ec130cd17a0d6d4339c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 7573746b91f057d83a299d54801785118cc1c878
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302917"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380133"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル: Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -225,7 +225,7 @@ $vnetRuleObject1 = New-AzureRmSqlServerVirtualNetworkRule `
 ![Fabrikam の Web のサンプル][fabrikam-web-page-deployed]
 
 ## <a name="set-up-continuous-integration-and-deployment-cicd-with-a-service-fabric-cluster"></a>Service Fabric クラスターを使用した継続的インテグレーションとデプロイ (CI/CD) の設定
-VSTS を使用して、Service Fabric クラスターへの CI/CD アプリケーションのデプロイを構成する方法については、「[チュートリアル: CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)」を参照してください。 このチュートリアルで説明されているプロセスは、この (FabrikamFiber) プロジェクトと同じですが、投票サンプルのダウンロードはスキップし、リポジトリ名として Voting の代わりに FabrikamFiber を指定してください。
+Azure DevOps を使用して、Service Fabric クラスターへの CI/CD アプリケーションのデプロイを構成する方法については、「[チュートリアル: CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)」を参照してください。 このチュートリアルで説明されているプロセスは、この (FabrikamFiber) プロジェクトと同じですが、投票サンプルのダウンロードはスキップし、リポジトリ名として Voting の代わりに FabrikamFiber を指定してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 一連の作業が終わったら、作成したリソースをすべて削除してください。  最も簡単なのは、Service Fabric クラスター、Azure SQL DB、Azure コンテナー レジストリが含まれるリソース グループを削除するという方法です。
@@ -254,8 +254,7 @@ Remove-AzureRmResourceGroup -Name $clusterresourcegroupname
 > * Azure コンテナー レジストリの作成
 > * Azure への Service Fabric アプリケーションのデプロイ
 
-チュートリアルの次の部分で、[コンテナーの監視](service-fabric-tutorial-monitoring-wincontainers.md)をセットアップする方法を学習します。
-
+このチュートリアルの次の部分では、[CI/CD を使用して Service Fabric クラスターへコンテナー アプリケーションをデプロイする](service-fabric-tutorial-deploy-container-app-with-cicd-vsts.md)方法について説明します。
 
 [link-fabrikam-github]: https://aka.ms/fabrikamcontainer
 [link-azure-powershell-install]: /powershell/azure/install-azurerm-ps

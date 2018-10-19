@@ -1,28 +1,29 @@
 ---
-title: Web Search API クイック スタート | Microsoft Docs
+title: Web Search API クイック スタート
+titleSuffix: Azure Cognitive Services
 description: Bing Web Search API の使用方法の概要について説明します。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: 27B4B51A-D017-44C8-8E4E-9684DC553886
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 0b8c4678a518985a4be3ee426a85b0a85dd2365d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: af32abe1c61c44b14d0f70033aee54aa7eba7c8b
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373224"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126243"
 ---
 # <a name="your-first-bing-search-query"></a>初めての Bing 検索クエリ
 
 最初の呼び出しを行う前に、Cognitive Services のサブスクリプション キーを入手する必要があります。 キーを取得するには、「[Cognitive Services を試す](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)」を参照してください。
 
 Web 検索の結果を取得するには、次のエンドポイントに GET 要求を送信します。  
-  
+
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search
 ```  
@@ -30,24 +31,24 @@ https://api.cognitive.microsoft.com/bing/v7.0/search
 要求では、HTTPS プロトコルを使う必要があります。
 
 すべての要求をサーバーから送信することをお勧めします。 クライアント アプリケーションの一部としてキーを配布すると、悪意のあるサードパーティがアクセスする可能性が高くなります。 また、サーバーから呼び出しを行うと、API の将来のバージョンでアップグレードする場所が 1 つで済みます。  
-  
+
 要求では、ユーザーの検索語句が含まれている [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query) クエリ パラメーターを指定する必要があります。 必須ではありませんが、要求では [mkt](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#mkt) クエリ パラメーターも指定するべきです。このパラメーターは、結果取得元の市場を示します。 `responseFilter` や `textDecorations` などの省略可能なクエリ パラメーターのリストについては、[クエリ パラメーター](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#query-parameters)に関するセクションを参照してください。 すべてのクエリ パラメーターの値は、URL でエンコードする必要があります。  
-  
+
 要求では、[Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#subscriptionkey) ヘッダーを指定する必要があります。 省略可能ですが、次のヘッダーも指定することをお勧めします。  
-  
+
 -   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#useragent)  
 -   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#clientid)  
 -   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#clientip)  
 -   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#location)  
 
-クライアント IP と場所のヘッダーは、場所に対応したコンテンツを返すために重要です。 たとえば、ユーザーのクエリが*セーリング+レッスン*の場合、おそらく現在地の近くにあるレッスンに興味があります。 ユーザーの現在地の近くで利用できるレッスンを結果に含めるには、場所ヘッダーと、必要に応じてクライアント IP ヘッダーを含める必要があります。 クエリの用語が明示的に場所を示している場合はあまり重要ではありません (たとえば、セーリング+レッスン+フロリダ+キー)。 
+クライアント IP と場所のヘッダーは、場所に対応したコンテンツを返すために重要です。 たとえば、ユーザーのクエリが*セーリング+レッスン*の場合、おそらく現在地の近くにあるレッスンに興味があります。 ユーザーの現在地の近くで利用できるレッスンを結果に含めるには、場所ヘッダーと、必要に応じてクライアント IP ヘッダーを含める必要があります。 クエリの用語が明示的に場所を示している場合はあまり重要ではありません (たとえば、セーリング+レッスン+フロリダ+キー)。
 
 すべての要求ヘッダーと応答ヘッダーのリストについては、「[Headers](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#headers)」(ヘッダー) を参照してください。
 
 ## <a name="the-request"></a>要求
 
-すべての推奨されるクエリ パラメーターとヘッダーを含む検索要求を次に示します。 いずれかの Bing API を初めて呼び出す場合は、クライアント ID ヘッダーを含めないでください。 クライアント ID を含めるのは、過去に Bing API を呼び出したことがあり、かつユーザーとデバイスの組み合わせに対応するクライアント ID が Bing から返されたことがある場合だけです。 
-  
+すべての推奨されるクエリ パラメーターとヘッダーを含む検索要求を次に示します。 いずれかの Bing API を初めて呼び出す場合は、クライアント ID ヘッダーを含めないでください。 クライアント ID を含めるのは、過去に Bing API を呼び出したことがあり、かつユーザーとデバイスの組み合わせに対応するクライアント ID が Bing から返されたことがある場合だけです。
+
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+lessons+seattle&mkt=en-us HTTP/1.1  
 Ocp-Apim-Subscription-Key: 123456789ABCDE  
@@ -265,6 +266,6 @@ BingAPIs-Market: en-US
 
 ## <a name="next-steps"></a>次の手順
 
-API を試してみます。 [Web Search API のテスト コンソール](https://dev.cognitive.microsoft.com/docs/services/56b43eeccf5ff8098cef3807/operations/56b4447dcf5ff8098cef380d)に関するページを参照してください。 
+API を試してみます。 [Web Search API のテスト コンソール](https://dev.cognitive.microsoft.com/docs/services/56b43eeccf5ff8098cef3807/operations/56b4447dcf5ff8098cef380d)に関するページを参照してください。
 
 応答オブジェクトの使用の詳細については、[Web の検索](./search-the-web.md)に関するページを参照してください。

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 08/20/18
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: be80c637a250e8a86727ce34f86832fef10426b7
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 7c3e5c0cc8297ba60925d36d667e0b72a5072553
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616397"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380048"
 ---
 # <a name="tutorial-create-and-manage-standard-load-balancer-using-the-azure-portal"></a>チュートリアル: Azure portal を使用して Standard Load Balancer を作成して管理する
 

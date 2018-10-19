@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a4bd20f9f8a6a8317e161b1d84e948391cd08140
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d0e7c3f7aeb42fd1525519b7908b1be6fc48aa65
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034928"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362519"
 ---
 # <a name="keys-in-luis"></a>LUIS でのキー
 LUIS では、[オーサリング](#programmatic-key)と[エンドポイント](#endpoint-key)の 2 つのキーを使用します。 オーサリング キーは、LUIS アカウントの作成時に自動的に作成されます。 LUIS アプリを公開する準備ができたら、[エンドポイント キーを作成](luis-how-to-azure-subscription.md#create-luis-endpoint-key)して LUIS アプリに[割り当て](luis-how-to-manage-keys.md#assign-endpoint-key)、これを[エンドポイント クエリで使用](#use-endpoint-key-in-query)する必要があります。 
@@ -60,7 +60,7 @@ LUIS エンドポイントでは、2 つのスタイルでクエリを使用し�
 |[GET](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)|`https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=your-endpoint-key-here&verbose=true&timezoneOffset=0&q=turn%20on%20the%20lights`<br><br>`subscription-key` のクエリ文字列値<br><br>LUIS エンドポイント キーのクォータ レートを使用するために、`subscription-key` のエンドポイント クエリ値をオーサリング (スターター) キーから新しいエンドポイント キーに変更します。 キーを作成する場合、キーを割り当てるが、サブスクリプション キーのエンドポイント クエリ値を変更しないときは、エンドポイント キー クォータは使用しません。|
 |[POST](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)| `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2`<br><br> `Ocp-Apim-Subscription-Key` のヘッダー値<br><br>LUIS エンドポイント キーのクォータ レートを使用するために、`Ocp-Apim-Subscription-Key` のエンドポイント クエリ値をオーサリング (スターター) キーから新しいエンドポイント キーに変更します。 キーを作成する場合、キーを割り当てるが、`Ocp-Apim-Subscription-Key` のエンドポイント クエリ値を変更しないときは、エンドポイント キー クォータは使用しません。|
 
-前の URL `df67dcdb-c37d-46af-88e1-8b97951ca1c2` で使用されたアプリ ID は、[対話型デモ](https://azure.microsoft.com/en-us/services/cognitive-services/language-understanding-intelligent-service/)に使用されるパブリック IoT アプリです。 
+前の URL `df67dcdb-c37d-46af-88e1-8b97951ca1c2` で使用されたアプリ ID は、[対話型デモ](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/)に使用されるパブリック IoT アプリです。 
 
 ## <a name="api-usage-of-ocp-apim-subscription-key"></a>API での Ocp-Apim-Subscription-Key の使用法
 LUIS API では、ヘッダー `Ocp-Apim-Subscription-Key` を使用します。 ヘッダー名は、使用するキーと API のセットに基づいて変更されません。 ヘッダーにオーサリング API のオーサリング キーを設定します。 エンドポイントを使用している場合は、ヘッダーにエンドポイント キーを設定します。 

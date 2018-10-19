@@ -7,12 +7,12 @@ ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 09/10/2018
-ms.openlocfilehash: 510ca032f77da25238ec060d4122a25345c9fb90
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 6d08dbe1976363be414597401d7a4efbae82c9b4
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346650"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498438"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Azure Disk Encryption の前提条件 (以前のリリース)
 
@@ -70,7 +70,7 @@ Azure Disk Encryption は、次のオペレーティング システムでサポ
     - [Windows 用 Azure Powershell をインストールして構成します](/powershell/azure/install-azurerm-ps)。 
         - PowerShellGet、Azure PowerShell をインストールし、AzureRM モジュールを読み込みます。 
     - [macOS および Linux に Azure PowerShell をインストールし、構成します](/powershell/azure/install-azurermps-maclinux)。
-        -  PowerShell Core、Azure PowerShell for .NET Core をインストールし、AzureRM.Netcore モジュールを読み込みます。
+        -  PowerShell Core、Azure PowerShell for .NET Core をインストールし、Az モジュールを読み込みます。
 2. [Azure Active Directory PowerShell モジュール](/powershell/azure/active-directory/install-adv2#installing-the-azure-ad-module)をインストールします。 
 
      ```powershell

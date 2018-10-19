@@ -3,19 +3,19 @@ title: 言語サポート - Speech Service API
 description: Speech Service でサポートされる自然言語の一覧。
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 09/25/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 9a867289cffa17030e397ef170e9055451057410
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.author: erhopf
+ms.openlocfilehash: 5bf680d22f990e6a93c622271bbb8ccd4c19437e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237740"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166918"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Speech Service API の言語と地域のサポート
 
@@ -156,11 +156,11 @@ zh-TW | 中国語 (台湾)|女性 | "Microsoft Server Speech Text to Speech Voic
 音声のカスタマイズは、米国英語 (en-US)、本土中国語 (zh-CN)、およびイタリア語 (it-IT) で使用できます。
 
 > [!NOTE]
-> イタリア語の音声トレーニングは、2,000 件以上の発話のデータセットから始まります。 中国語と英語のバイリンガル モデルも、2,000 件以上の発話の初期データセットでサポートされています。
+> イタリア語の音声トレーニングは、2,000 件以上の発話のデータセットから始まります。 また、中国語-英語 2 か国語モデルは 2,000 以上の発話の初期データ セットでサポートされます。
 
 ## <a name="speech-translation"></a>音声翻訳
 
-**Speech Translation** API では、音声を音声に翻訳し、音声をテキストに翻訳するために、さまざまな言語をサポートしています。 ソース言語は、次の音声言語表に含まれている必要があります。 使用可能なターゲット言語は、何に翻訳するか (音声かテキストか) によって決まります。
+**Speech Translation** API では、音声を音声に翻訳し、音声をテキストに翻訳するために、さまざまな言語をサポートしています。 ソース言語は常に次の音声言語テーブルからのものである必要があります。 使用可能なターゲット言語は、何に翻訳するか (音声かテキストか) によって決まります。
 
 ### <a name="speech-languages"></a>音声言語
 

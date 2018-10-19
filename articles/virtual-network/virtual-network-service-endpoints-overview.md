@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: anithaa
 ms.custom: ''
-ms.openlocfilehash: dcc0456637c17e779593b121025596149398afba
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 3bae20a7d6eea298dd09d24c0c5b53365784b3d0
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410223"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239185"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -49,7 +49,7 @@ ms.locfileid: "47410223"
 
 サービス エンドポイントには次の利点があります。
 
-- **Azure サービス リソースのセキュリティ向上**: サービス エンドポイントを使用すると、Azure サービス リソースへのアクセスをご利用の仮想ネットワークに限定することができます。 サービス リソースを仮想ネットワークに限定することで、リソースへのパブリック インターネット アクセスを完全に排除し、ご利用の仮想ネットワークからのトラフィックのみを許可することにより、セキュリティが向上します。
+- **Azure サービス リソースのセキュリティ強化**: VNet のプライベート アドレス空間は重複することがあるため、VNet からのトラフィックを一意に識別するためには使用できません。 サービス エンドポイントは、VNet の ID をサービスまで拡張することで、仮想ネットワークに対する Azure サービス リソースをセキュリティで保護する機能を提供します。 ご利用の仮想ネットワークでサービス エンドポイントが有効になったら、Azure サービス リソースに仮想ネットワーク ルールを追加することで、このリソースへのアクセスを仮想ネットワークに限定することができます。 こうして、リソースへのパブリック インターネット アクセスを完全に排除し、仮想ネットワークからのトラフィックのみを許可することにより、セキュリティが強化されます。
 - **ご利用の仮想ネットワークから Azure サービスへの最適なトラフィック ルーティング**: 現在、お客様の構内および 仮想アプライアンスの両方、またはそのいずれかへのインターネット トラフィックが、ご利用の仮想ネットワーク内のすべてのルートにおいて強制されている場合 (強制トンネリング)、Azure サービス へのトラフィックにもそのインターネット トラフィックと同じルートが強制されます。 サービス エンドポイントを使用することで、Azure トラフィックのルーティングを最適化することができます。 
 
   エンドポイントは常に、ご利用の仮想ネットワークから Microsoft Azure のバックボーン ネットワーク上のサービスへのサービス トラフィックを直接受け取ります。 Azure のバックボーン ネットワーク上でトラフィックを維持することで、サービス トラフィックに影響を与えることなく、強制トンネリングを通じて、ご利用の仮想ネットワークからの送信インターネット トラフィックの監査と監視を続けることができます。 詳細については、[ユーザー定義のルートと強制トンネリング](virtual-networks-udr-overview.md)に関するページをご覧ください。
@@ -129,7 +129,7 @@ Azure サービス リソース (Azure Storage アカウントなど) の場合�
 
 ## <a name="next-steps"></a>次のステップ
 
-- [仮想ネットワーク サービス エンドポイントを構成する](tutorial-restrict-network-access-to-resources.md)方法を学習する
+- [仮想ネットワークのサービス エンドポイントを構成する](tutorial-restrict-network-access-to-resources.md)方法を学習する
 - [Azure Storage アカウントを仮想ネットワークに限定する](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法を学習する
 - [Azure SQL Database を仮想ネットワークに限定する](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法を学習する
 - [仮想ネットワーク内の Azure サービス統合](virtual-network-for-azure-services.md)について学習する

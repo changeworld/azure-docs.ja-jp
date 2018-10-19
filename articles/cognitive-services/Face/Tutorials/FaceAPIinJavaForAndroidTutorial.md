@@ -1,21 +1,21 @@
 ---
-title: Face API Java for Android チュートリアル | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: このチュートリアルでは、Cognitive Services Face サービスを利用して画像の中にある顔を検出し、フレームに収める単純な Android アプリを作成します。
+title: 'チュートリアル: 画像内の顔を検出してフレームに収める - Face API、Java for Android'
+titleSuffix: Azure Cognitive Services
+description: このチュートリアルでは、Face API を使用して画像内の顔を検出し、フレームに収めるシンプルな Android アプリを作成します。
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: PatrickFarley
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: tutorial
 ms.date: 07/12/2018
-ms.author: nolachar
-ms.openlocfilehash: ad7b85b378db9e9687b5f8081bc9832e91e9ee5e
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.author: pafarley
+ms.openlocfilehash: 08344e21d4f425a021bdefe840390ede8b3fb01e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125638"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342383"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>チュートリアル: 画像の中にある顔を検出してフレームに収める Android アプリの作成
 

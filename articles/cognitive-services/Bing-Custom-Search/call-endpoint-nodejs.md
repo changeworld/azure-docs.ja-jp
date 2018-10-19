@@ -1,22 +1,23 @@
 ---
-title: Node.js を利用してエンドポイントを呼び出す - Bing Custom Search - Microsoft Cognitive Services
+title: 'クイック スタート: Node.js を使用してエンドポイントを呼び出す - Bing Custom Search'
+titlesuffix: Azure Cognitive Services
 description: このクイックスタートでは、Node.js を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法について紹介します。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 73c31c7175bd4dfcb182fb76784937c176ac7702
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: af77b4c06b61cda4fd18d19ac3578129004c4914
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977878"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167207"
 ---
-# <a name="call-bing-custom-search-endpoint-nodejs"></a>Bing Custom Search エンドポイントを呼び出す (Node.js)
+# <a name="quickstart-call-bing-custom-search-endpoint-nodejs"></a>クイック スタート: Bing Custom Search エンドポイントを呼び出す (Node.js)
 
 このクイック スタートでは、Node.js を利用して Bing Custom Search エンドポイントを呼び出すことで、カスタム検索インスタンスから検索結果を要求する方法を紹介します。 
 

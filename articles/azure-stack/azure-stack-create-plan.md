@@ -3,7 +3,7 @@ title: Azure Stack でのプランの作成 | Microsoft Docs
 description: クラウド管理者として、サブスクライバーが仮想マシンをプロビジョニングできるプランを作成する方法を説明します。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/07/2018
-ms.author: brenduns
+ms.date: 09/12/2018
+ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 1fa01d23108ce92fbd7c854442c0474b19395d25
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: ec8fabfce8c26aef98217947da33a56222288b3c
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248705"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077564"
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Azure Stack でのプランの作成
 
@@ -30,7 +30,7 @@ ms.locfileid: "35248705"
 
 1. Azure Stack 管理者ポータル (https://adminportal.local.azurestack.external) にサインインします。
 
-2. ユーザーがサブスクライブできるプランやオファーを作成するには、**[新規]** > **[プラン]** > **[プラン]** の順にクリックします。
+2. ユーザーがサブスクライブできるプランやオファーを作成するには、**[+ リソースの作成]** > **[オファー + プラン]** > **[プラン]** の順に選択します。
   
    ![プランを選択する](media/azure-stack-create-plan/select-plan.png)
 

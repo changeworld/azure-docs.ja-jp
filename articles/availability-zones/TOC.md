@@ -15,9 +15,9 @@
 #### [PowerShell を使用して可用性ゾーン内に Windows VM を作成する](../virtual-machines/windows/create-powershell-availability-zone.md)
 #### [Azure Portal を使用して可用性ゾーン内に Windows VM を作成する](../virtual-machines/windows/create-portal-availability-zone.md)
 
-### 管理ディスク
-#### [CLI を使用して可用性ゾーン内に管理ディスクを追加する](../virtual-machines/linux/add-disk.md#use-managed-disks)
-#### [PowerShell を使用して可用性ゾーン内に管理ディスクを追加する](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
+### マネージド ディスク
+#### [CLI を使用して可用性ゾーン内にマネージド ディスクを追加する](../virtual-machines/linux/add-disk.md#use-managed-disks)
+#### [PowerShell を使用して可用性ゾーン内にマネージド ディスクを追加する](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 
 ### 仮想マシン スケール セット
 #### [可用性ゾーン内にスケール セットを作成する](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
@@ -38,7 +38,7 @@
 ### [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 ### SQL Database
-#### [SQL Database での可用性ゾーン](../sql-database/sql-database-high-availability.md#availability-zones)
+#### [SQL Database での可用性ゾーン](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 
 ### Storage
 #### [ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md)

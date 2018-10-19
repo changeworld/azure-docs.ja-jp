@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: cherylmc
-ms.openlocfilehash: c1fbc99702e077e600f01959224f3321e7543e59
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 8ef231982cfdc9a2c4387ee47e651fdf1af0baaf
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044401"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388427"
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute 回線とルーティング ドメイン
  接続プロバイダーを経由してオンプレミス インフラストラクチャを Microsoft に接続するには、 *ExpressRoute 回線* を注文する必要があります。 下の図は、お客様の WAN と Microsoft の接続を論理的に表現したものです。
@@ -82,7 +82,7 @@ Azure Storage、SQL Database、Websites などのサービスは、パブリッ�
 ## <a name="expressroute-health"></a>ExpressRoute の正常性
 [Network Performance Monitor](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) を使用して、ExpressRoute 回線の可用性、VNet の接続、および帯域幅の使用状況を監視できます。
 
-NPM は、Azure プライベート ピアリングと Microsoft ピアリングの正常性を監視します。  詳細については、こちらの[ブログ](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/)を参照してください。
+NPM は、Azure プライベート ピアリングと Microsoft ピアリングの正常性を監視します。  詳細については、こちらの[ブログ](https://azure.microsoft.com/blog/monitoring-of-azure-expressroute-in-preview/)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * サービス プロバイダーを検索します。 [ExpressRoute のサービス プロバイダーと提供地域](expressroute-locations.md)に関するページをご覧ください。

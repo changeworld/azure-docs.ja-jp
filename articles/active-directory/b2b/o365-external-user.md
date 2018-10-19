@@ -4,18 +4,18 @@ description: O365 および Azure Active Directory B2B コラボレーション�
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/24/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7e0a65e4a5807cb9a6b39feecfd2d5b2643ea4a9
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: fc789283e56d220f0068277544cb6494e265ee39
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39330708"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981924"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 の外部共有と Azure Active Directory B2B コラボレーション
 
@@ -38,9 +38,14 @@ OneDrive/SharePoint Online と Azure AD B2B コラボレーションの外部共
 
 ![OneDrive/SharePoint Online の外部共有の設定](media/o365-external-user/odsp-sharing-setting.png)
 
+外部共有を有効にした後、SharePoint Online (SPO) のユーザー選択ウィンドウで既存のゲスト ユーザーを検索する機能は、従来の動作と一致させるために、既定ではオフになっています。
+
+この機能は、テナントとサイト コレクション レベルで 'ShowPeoplePickerSuggestionsForGuestUsers' 設定を使用することで有効にできます。 この機能は、Set-SPOTenant コマンドレットと Set-SPOSite コマンドレットを使用して設定できます。これにより、メンバーは、ディレクトリ内のすべての既存のゲスト ユーザーを検索することができます。 テナントのスコープの変更は、既にプロビジョニングされている SPO サイトには影響しません。
+
 ## <a name="next-steps"></a>次の手順
 
 * [Azure AD B2B コラボレーションとは](what-is-b2b.md)
 * [B2B コラボレーション ユーザーのロールへの追加](add-guest-to-role.md)
 * [B2B コラボレーションの招待の委任](delegate-invitations.md)
 * [動的グループと B2B コラボレーション](use-dynamic-groups.md)
+* [Azure Active Directory B2B コラボレーションのトラブルシューティング](troubleshoot.md)

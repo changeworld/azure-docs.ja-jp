@@ -7,13 +7,13 @@ author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 07/23/2018
-ms.openlocfilehash: d3d3ed8aaac16bc0a8cf817f4972ed3b771ed8d0
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 10/11/2018
+ms.openlocfilehash: 6cd3938844d7f6977c7b0912acffbfb1679dc42e
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093556"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387387"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Jenkins とブルー/グリーン デプロイ パターンを使用した Azure Kubernetes Service (AKS) へのデプロイ
 
@@ -32,7 +32,7 @@ Azure Kubernetes Service (AKS) を使用すると、ホストされている Kub
 
 ## <a name="prerequisites"></a>前提条件
 - [GitHub アカウント](https://github.com): サンプル リポジトリを複製するために GitHub アカウントが必要です。
-- [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest): Kubernetes クラスターを作成するために Azure CLI 2.0 を使用します。
+- [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest): Kubernetes クラスターを作成するために Azure CLI 2.0 を使用します。
 - [Chocolatey](https://chocolatey.org): kubectl をインストールするために使用するパッケージ マネージャーです。
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/): Kubernetes クラスターに対してコマンドを実行するために使用する、コマンド ライン インターフェイスです。
 - [jq](https://stedolan.github.io/jq/download/): 簡便なコマンドライン JSON プロセッサです。
@@ -82,9 +82,6 @@ GitHub の Microsoft リポジトリに、Jenkins とブルー/グリーン パ�
 - Azure CLI 2.0 を使用してマネージド Kubernetes クラスターを作成する。
 - セットアップ スクリプトを使用するか、手動で、クラスターを設定する方法を学ぶ。
 - Azure Container Registry サービスのインスタンスを作成する。
-
-> [!NOTE]   
-> AKS は現在プレビューの段階です。 Azure サブスクリプションのプレビューの有効化に関する詳細については、[クイック スタート: Azure Kubernetes Service (AKS) クラスターのデプロイ](/azure/aks/kubernetes-walkthrough#enabling-aks-preview-for-your-azure-subscription)に関するページを参照してください。
 
 ### <a name="use-the-azure-cli-20-to-create-a-managed-kubernetes-cluster"></a>Azure CLI 2.0 を使用したマネージド Kubernetes クラスターの作成
 [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) を使用してマネージド Kubernetes クラスターを作成する場合は、Azure CLI バージョン 2.0.25 以降を使用していることを確認してください。
@@ -268,7 +265,7 @@ AKS でのブルー/グリーン デプロイの設定は、手動で行うこ�
 
 1. ジョブが実行されたことを確認するには、次の URL を参照します。
     - パブリック エンドポイント: `http://aks-todoapp<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
-    - ブルーのエンドポイント - `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
+    - 青のエンドポイント - `http://aks-todoapp-blue<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
     - グリーンのエンドポイント - `http://aks-todoapp-green<your-dns-name-suffix>.<your-location>.cloudapp.azure.com`
 
 パブリックおよびブルーのテスト エンドポイントでは同じ更新が行われますが、グリーンのエンドポイントでは既定の tomcat イメージが表示されます。  

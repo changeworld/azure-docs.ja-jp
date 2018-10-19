@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: becczhang
-ms.author: ryzhang26
+author: aliceku
+ms.author: aliceku
 ms.reviewer: vanto
 manager: jhubbard
 ms.date: 08/07/2017
-ms.openlocfilehash: 365cb020bb6b2786a89a98e008d1b62c23c1c0e7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: fc8660b6fa6d9778a4eac9ce939181aa24d5097d
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166590"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309640"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>PowerShell を使用して Transparent Data Encryption (TDE) 保護機能をローテーションする 
 

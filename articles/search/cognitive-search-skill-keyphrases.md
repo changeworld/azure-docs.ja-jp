@@ -10,18 +10,21 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: a12efaa020e626e4a10a0708c9b84d8fe125588c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 694271115626c652523be34160ad6a07053f6387
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786811"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735800"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>キー フレーズ抽出コグニティブ スキル
 
 **キー フレーズ抽出**スキルは、非構造化テキストを評価し、各レコードに対してキー フレーズのリストを返します。
 
 この機能は、レコード内の要点をすばやく特定する必要がある場合に便利です。 たとえば、「食べ物はおいしくて、すばらしいスタッフがいた」というテキストを入力すると、 "食べ物" と "すばらしいスタッフ" がサービスによって返されます。
+
+> [!NOTE]
+> コグニティブ検索はパブリック プレビュー段階です。 スキルセットの実行および画像の抽出と正規化は、現在無料で提供されています。 これらの機能の価格は後日発表される予定です。 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.KeyPhraseExtractionSkill 
@@ -32,15 +35,15 @@ Microsoft.Skills.Text.KeyPhraseExtractionSkill
 ## <a name="skill-parameters"></a>スキルのパラメーター
 
 パラメーターの大文字と小文字は区別されます。
-| 入力                | [説明] |
+| 入力                | 説明 |
 |---------------------|-------------|
 | defaultLanguageCode | (省略可能) 言語を明示的に指定しないドキュメントに適用する言語コード。  既定の言語コードが指定されていない場合、既定の言語コードとして英語 (en) が使用されます。 <br/> [サポートされる言語の完全な一覧](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)を参照してください。 |
 | maxKeyPhraseCount   | (省略可能) 生成するキー フレーズの最大数。 |
 
 ## <a name="skill-inputs"></a>スキルの入力
-| 入力     | [説明] |
+| 入力     | 説明 |
 |--------------------|-------------|
-| テキスト | 分析されるテキスト。|
+| text | 分析されるテキスト。|
 | languageCode  |  レコードの言語を示す文字列。 このパラメーターが指定されていない場合、既定の言語コードがレコードを分析するために使用されます。 <br/>[サポートされる言語の完全な一覧](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)を参照|
 
 ##  <a name="sample-definition"></a>定義例

@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 0183261a561e139105a93421af06f581b67fb926
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393592"
 documentType: LandingData
 title: Azure Stack のオペレーター ドキュメント
 metadata:
@@ -12,14 +18,8 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/13/2018
+  ms.date: 10/16/2018
   ms.author: jeffgilb
-  ms.openlocfilehash: 9da39d733c51c637fdf13d1fb9c5649276ea8a23
-  ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-  ms.translationtype: HT
-  ms.contentlocale: ja-JP
-  ms.lasthandoff: 04/23/2018
-  ms.locfileid: "31786538"
 abstract:
   description: Microsoft Azure Stack は、データセンターからの Azure サービスの提供を可能にするハイブリッド クラウド プラットフォームです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、Azure Stack 統合システム インフラストラクチャを管理する方法とサービスを提供する方法を確認してください。<br/><br/>Azure Stack でサービスを使用するかアプリを作成する Azure Stack ユーザーは、<a href="/azure/azure-stack/user">ユーザー ドキュメント</a>を参照してください。<br/><br/>Azure Stack Development Kit (ASDK) は、Azure Stack の単一ノード デプロイであり、無料でダウンロードして使用できます。この ASDK に興味をお持ちの Azure Stack オペレーターの方は、<a href="/azure/azure-stack/asdk">ASDK のドキュメント</a>をご覧ください。
 sections:
@@ -43,6 +43,8 @@ sections:
     items:
     - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">Azure Stack で仮想マシンを提供する</a>
     - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">Azure Stack で SQL データベースを提供する</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql">高可用性 SQL データベースを作成する</a>
+    - html: <a href="/azure/azure-stack/azure-stack-tutorial-mysql">高可用性 MySQL データベースを作成する</a>
     - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">Azure Stack で Web アプリを提供する</a>
 - title: 無料の Pluralsight ビデオ トレーニング
   items:

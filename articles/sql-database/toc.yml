@@ -97,6 +97,8 @@ items:
         href: sql-database-service-tiers-general-purpose-business-critical.md
       - name: ハイパースケール
         href: sql-database-service-tier-hyperscale.md
+      - name: ハイパースケールに関する FAQ
+        href: sql-database-service-tier-hyperscale-faq.md
     - name: DTU サービス レベル
       href: sql-database-service-tiers-dtu.md
     - name: 予約容量の前払い
@@ -161,6 +163,8 @@ items:
       href: sql-database-business-continuity.md
     - name: 高可用性
       href: sql-database-high-availability.md
+    - name: 高速データベースの復旧
+      href: sql-database-accelerated-database-recovery.md
     - name: データベースのバックアップ
       href: sql-database-automated-backups.md
     - name: 長期のバックアップ リテンション期間
@@ -179,13 +183,13 @@ items:
         href: sql-database-geo-replication-portal.md
       - name: レプリカのセキュリティの構成
         href: sql-database-geo-replication-security-config.md
-    - name: データベースの回復
+    - name: データベースの復旧オプション
       items:
-      - name: データベースの回復
+      - name: バックアップを使用した復元
         href: sql-database-recovery-using-backups.md
-      - name: 障害からの回復
+      - name: 障害復旧ガイダンス
         href: sql-database-disaster-recovery.md
-      - name: 復旧訓練の実行
+      - name: 復旧の演習
         href: sql-database-disaster-recovery-drills.md
     - name: アプリの設計
       items:
@@ -319,7 +323,7 @@ items:
         href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
   - name: SQL 機能の比較
     href: sql-database-features.md
-  - name: パフォーマンスとチューニング
+  - name: パフォーマンスと監視
     items:
     - name: インテリジェント パフォーマンス
       items:
@@ -630,9 +634,9 @@ items:
     href: /azure/architecture/
   - name: 顧客事例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: abafd9d9022b306ce090b618ecc9477cd95c714e
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: e39e94ccbf1da42b10cd8c618cd27c2a7eb214de
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869246"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353512"

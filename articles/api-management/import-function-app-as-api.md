@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: ea6078088417099045006f81dcaf1f769bbd64d7
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: b5a38b9f16224c8b2b128b464106fe83d018b308
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246817"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129762"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Azure API Management で Azure Function App を API としてインポートする
 
@@ -71,9 +71,11 @@ Azure API Management は、Azure Function App の新しい API としてのイ�
     > [!NOTE]
     > HTTP トリガーに基づかない Function のみをインポートして、承認レベル設定を *Anonymous* または *Function* に設定できます。
 
-7. 必要に応じて、事前に設定されたフィールドを編集します。 **Create** をクリックしてください。
+7. **[完全]** ビューに切り替え、**[製品]** を新しい API に割り当てます。 必要に応じて、他の事前に設定されているフィールドを編集します。
 
     ![Function App から追加する](./media/import-function-app-as-api/add-06.png)
+
+8. **Create** をクリックしてください。
 
 ## <a name="append-azure-function-app-to-api"></a> Azure Function App を既存の API に追加する
 

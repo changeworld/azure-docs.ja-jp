@@ -1,23 +1,23 @@
 ---
-title: Bing Web Search API の応答 | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Bing Web Search API から返される回答の種類と応答について説明します。
+title: 検索の応答 - Bing Web Search API
+titleSuffix: Azure Cognitive Services
+description: Bing Web Search API の答えの種類と応答について説明します。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 8/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 13e9792f3d5765047dabb4cdef59e85a47a69aba
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: f3a4c8bb024aa5e92365b72b8cc2180cc6f4d6d4
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889402"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123778"
 ---
-# <a name="bing-web-search-responses"></a>Bing Web Search の応答  
+# <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Web Search API の応答の構造と答えの種類  
 
 Bing Web Search に検索要求を送信すると、応答本文で [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) オブジェクトが返されます。 このオブジェクトには、クエリとの関連性が高いと Bing が判断した各回答に対応するフィールドが含まれています。 次の例は、Bing からすべての回答が返された場合の応答オブジェクトを示しています。
 
@@ -305,7 +305,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 |------------|-----------------|
 |Pi|3.14159...|
 |Degree|Degree|
-|i|虚数|
+|度|虚数|
 |e|自然対数の底 (2.71828...)|
 |GoldenRatio|黄金比 (1.61803...)|
 

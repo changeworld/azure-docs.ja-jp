@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: a2b9a06e8e3b1bda91050e1607c7265d6fe66bb1
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: eb227b4b4cbdc40a4e708726bbe0f5d0c7eacb74
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37931791"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364675"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Azure で Windows クライアントを開発/テスト シナリオに使用する
 適切な Visual Studio (以前は MSDN) サブスクリプションがある場合は、Azure で Windows 7、Windows 8、または Windows 10 Enterprise (x64) を開発/テストのシナリオに使用できます。 この記事では、Windows 7、Windows 8.1、Windows 10 Enterprise を Azure で実行するための資格要件と、次の Azure ギャラリーのイメージの使用について説明します。
@@ -48,7 +48,7 @@ ms.locfileid: "37931791"
 | [Visual Studio Premium with MSDN (特典)](https://azure.microsoft.com/offers/ms-azr-0061p/) |0061P |Windows 10 |
 | [Visual Studio Enterprise サブスクライバー](https://azure.microsoft.com/offers/ms-azr-0063p/) |0063P |Windows 10 |
 | [Visual Studio Enterprise (BizSpark) サブスクライバー](https://azure.microsoft.com/offers/ms-azr-0064p/) |0064P |Windows 10 |
-| [Enterprise Dev/Test](https://azure.microsoft.com/en-us/offers/ms-azr-0148p/) |0148P |Windows 10 |
+| [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/) |0148P |Windows 10 |
 
 ## <a name="check-your-azure-subscription"></a>Azure サブスクリプションの確認
 プラン ID を把握していない場合は、次の 2 つの方法で Azure ポータルから取得できます。  
@@ -57,8 +57,7 @@ ms.locfileid: "37931791"
 
   ![Azure ポータルからのプラン ID の詳細](./media/client-images/offer-id-azure-portal.png) 
 
-- または、**[課金情報]** をクリックした後、サブスクリプション ID をクリックします。 
-  *[課金情報]* ウィンドウにプラン ID が表示されます。
+- または、**[課金情報]** をクリックした後、サブスクリプション ID をクリックします。 *[課金情報]* ウィンドウにプラン ID が表示されます。
 
 また、Azure アカウント ポータルの ['サブスクリプション' タブ](http://account.windowsazure.com/Subscriptions) からオファー ID を表示することもできます。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 73a23ace23d2373e238c6887c4a41c6037d233de
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 12f7e466bdfd6d9b6cf1c36df4daf1e76cc417f2
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189006"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729826"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>Windows IoT Core デバイスを Azure IoT Central アプリケーションに接続する
 
@@ -46,9 +46,12 @@ Azure IoT Central アプリケーションでは、**Windows IoT Core** デバ�
 
 Windows IoT Core デバイスを設定するにはには、「Windows IoT Core デバイスを設定する」(https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device)) にあるステップ バイ ステップ ガイドに従ってください。
 
-### <a name="add-a-real-device"></a>実デバイスを追加する
+### <a name="add-a-real-device"></a>実デバイスの追加
 
-Azure IoT Central アプリケーションでは、**Windows IoT Core** デバイス テンプレートから実デバイスを追加し、デバイスの接続文字列を書きとめます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
+ご利用の Azure IoT Central アプリケーションでは、**Windows IoT Core** デバイス テンプレートから実デバイスを追加し、デバイスの接続の詳細 (**スコープ ID、デバイス ID、主キー**) を書き留めます。 詳細については、「[Azure IoT Central アプリケーションに実デバイスを追加する](tutorial-add-device.md)」を参照してください。
+
+ > [!NOTE]
+   > Azure IoT Central は、すべてのデバイス接続に対して Azure IoT Hub Device Provisioning Service (DPS) を使用するようになりました。手順に従って[デバイスの接続文字列を取得](concepts-connectivity.md#getting-device-connection-string)し、チュートリアルの残りを続けてください。
 
 ## <a name="prepare-the-windows-10-iot-core-device"></a>Windows 10 IoT Core デバイスを準備する
 
@@ -66,7 +69,7 @@ Azure IoT Central と通信できるクライアント アプリケーション�
 * デスクトップで、接続文字列を connection.string.iothub という名前のテキスト ファイルに保存します。
 * このテキスト ファイルをデバイスのドキュメント フォルダーにコピーします。`[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
 
-それが完了したら、任意のブラウザーに「 http://[device-IP-address]:8080」と入力することによって、[Windows デバイス ポータル](https://docs.microsoft.com/en-us/windows/iot-core/manage-your-device/deviceportal)を開く必要があります。
+それが完了したら、任意のブラウザーに「 http://[device-IP-address]:8080」と入力することによって、[Windows デバイス ポータル](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal)を開く必要があります。
 
 そこから、下に示す操作を実行します。
 1. 左側の [アプリ] ノードを展開します。

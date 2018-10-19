@@ -1,24 +1,25 @@
 ---
-title: Computer Vision API JavaScript チュートリアル | Microsoft Docs
-description: Microsoft Cognitive Services で Computer Vision API を使用する基本的な Javascript アプリについて確認します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
+title: 'チュートリアル: Computer Vision API JavaScript'
+titlesuffix: Azure Cognitive Services
+description: Microsoft Cognitive Services の Computer Vision API を使用する基本的な JavaScript アプリを探索します。 OCR を実行し、サムネイルを作成して、イメージ内の視覚的な特徴を操作します。
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: kefre
-ms.openlocfilehash: 89bdc0524e07c1cb6a1473e0a52791fe20271e06
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6dc6eec729fc1be3f0a859834597bf2d5785d9bc
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373445"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984926"
 ---
-# <a name="computer-vision-api-javascript-tutorial"></a>Computer Vision API JavaScript チュートリアル
+# <a name="tutorial-computer-vision-api-javascript"></a>チュートリアル: Computer Vision API JavaScript
 
-このチュートリアルでは、Microsoft Cognitive Services の Computer Vision REST API の機能について説明します。
+このチュートリアルでは、Azure Cognitive Services の Computer Vision REST API の機能について説明します。
 
 Computer Vision REST API を使用して、光学文字認識 (OCR) を実行し、スマート トリミングされたサムネイルを作成するほか、イメージ内の視覚的な特徴 (顔など) を検出、カテゴライズ、タグ付け、および記述する、JavaScript アプリケーションについて確認します。 この例では、分析および処理用にイメージ の URL を送信できます。 このオープン ソースの例を、JavaScript で Computer Vision REST API を使用する独自のアプリをビルドする、テンプレートとして使用できます。
 
@@ -32,7 +33,7 @@ JavaScript フォーム アプリケーションは既に記述されていま�
 
 ### <a name="subscribe-to-computer-vision-api-and-get-a-subscription-key"></a>Computer Vision API にサブスクライブしてサブスクリプション キーを取得する 
 
-例を作成する前に、Microsoft Cognitive Services の一部である Computer Vision API にサブスクライブする必要があります。 サブスクリプションとキー管理について詳しくは、[サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページをご覧ください。 このチュートリアルでは、主キーと 2 次キーの両方を使用できます。 
+例を作成する前に、Azure Cognitive Services の一部である Computer Vision API をサブスクライブする必要があります。 サブスクリプションとキーの管理の詳細については、[サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページを参照してください。 このチュートリアルでは、主キーと 2 次キーの両方を使用できます。 
 
 ## <a name="download-the-tutorial-project"></a>チュートリアル プロジェクトをダウンロードする
 

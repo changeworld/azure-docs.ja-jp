@@ -3,7 +3,7 @@ title: Azure Stack の管理の基本 | Microsoft Docs
 description: Azure Stack を管理するために知っておく必要があることについて説明します。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
-ms.author: mabrigg
-ms.openlocfilehash: ead76fd2f03a5d445f9fdbb6c10edb852fd046cf
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.date: 10/15/2018
+ms.author: jeffgilb
+ms.openlocfilehash: 37b8eff2d4ed89c90f1fa6f128673ed5bacaaa90
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585766"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339952"
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack の管理の基本
 Azure Stack の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイドでは、Azure Stack オペレーターとしての役割の概要と、ユーザーがすばやく生産的になれるようにユーザーに伝える必要があることを説明します。
@@ -144,6 +144,6 @@ Development Kit については、[Microsoft フォーラム](https://social.msd
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Stack でのリージョンの管理](azure-stack-region-management.md)
+[Azure Stack でのリージョンの管理](azure-stack-region-management.md)
 
 

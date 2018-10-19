@@ -1,24 +1,25 @@
 ---
-title: サブスクリプション キーを取得する - Custom Speech Service
-titlesuffix: Azure Cognitive Services
-description: Custom Speech Service の呼び出しのためにサブスクリプション キーを取得する方法を説明します。
+title: Azure 上の Custom Speech Service のサブスクリプション キーを取得する | Microsoft Docs
+description: Cognitive Services の Custom Speech Service の呼び出しのためにサブスクリプション キーを取得する方法を説明します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: e4694928baf98bdb0d6aacead8dffec6bb73d6f7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 84ef657af2cc3dc4a7168a815b5e51d6f4f33fd7
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224774"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338371"
 ---
 # <a name="obtain-subscription-keys"></a>サブスクリプション キーを取得する
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 Azure Custom Speech Service を開始するには、最初にユーザー アカウントを Azure サブスクリプションにリンクする必要があります。 無料レベルと有料レベルのサブスクリプションがあります。 レベルについて詳しくは、[価格に関するページ](https://www.microsoft.com/cognitive-services/en-us/pricing)をご覧ください。
 
 ## <a name="get-a-subscription-key"></a>サブスクリプション キーを取得する

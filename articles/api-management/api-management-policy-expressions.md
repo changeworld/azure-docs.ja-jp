@@ -170,7 +170,7 @@ ms.locfileid: "34597520"
   
 |コンテキスト変数|使用可能なメソッド、プロパティ、パラメーターの値|  
 |----------------------|-------------------------------------------------------|  
-|context|Api: IApi<br /><br /> デプロイ<br /><br /> Elapsed: TimeSpan - Timestamp の値と現在時刻の間の時間間隔<br /><br /> LastError<br /><br /> 操作<br /><br /> 製品<br /><br /> 要求<br /><br /> RequestId: Guid - 一意の要求識別子<br /><br /> Response<br /><br /> サブスクリプション<br /><br /> Timestamp: DateTime - 要求を受信した時点<br /><br /> Tracing: bool - トレースがオンかオフかを示します <br /><br /> User<br /><br /> Variables: IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|  
+|context|Api: IApi<br /><br /> Deployment<br /><br /> Elapsed: TimeSpan - Timestamp の値と現在時刻の間の時間間隔<br /><br /> LastError<br /><br /> Operation<br /><br /> Product<br /><br /> Request<br /><br /> RequestId: Guid - 一意の要求識別子<br /><br /> Response<br /><br /> Subscription<br /><br /> Timestamp: DateTime - 要求を受信した時点<br /><br /> Tracing: bool - トレースがオンかオフかを示します <br /><br /> User<br /><br /> Variables: IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|  
 |context.Api|Id: 文字列<br /><br /> IsCurrentRevision: ブール値<br /><br />  Name: 文字列<br /><br /> Path: 文字列<br /><br /> Revision: 文字列<br /><br /> ServiceUrl: IUrl<br /><br /> Version: 文字列 |  
 |context.Deployment|Region: 文字列<br /><br /> ServiceName: 文字列<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|  
 |context.LastError|Source: 文字列<br /><br /> Reason: 文字列<br /><br /> Message: 文字列<br /><br /> Scope: 文字列<br /><br /> Section: 文字列<br /><br /> Path: 文字列<br /><br /> PolicyId: 文字列<br /><br /> context.LastError の詳細については、[エラー処理](api-management-error-handling-policies.md)に関する記事を参照してください。|  

@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 05/29/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 082275e2acd81e34c057f863651528eb46e8501e
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: ba93aab14c8eaccf9e3ed9ae9db0d169f41dddea
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114975"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024047"
 ---
 # <a name="configure-your-app-service-environment-with-forced-tunneling"></a>強制トンネリングを使用した App Service Environment の構成
 
@@ -105,7 +105,7 @@ ASE から外に出て行く送信トラフィックを、Azure Storage に向�
 
 3. ご利用の App Service Environment からインターネットに向かうすべての送信トラフィックに使用されるアドレスを取得します。 トラフィックをオンプレミスでルーティングする場合、それらのアドレスはご利用の NAT またはゲートウェイの IP となります。 NVA を経由するよう App Service Environment の送信トラフィックをルーティングする場合は、その NVA のパブリック IP がエグレス アドレスになります。
 
-4. _(既存の App Service Environment でエグレス アドレスを設定する場合)_ resource.azure.com にアクセスして Subscription/<subscription id>/resourceGroups/<ase resource group>/providers/Microsoft.Web/hostingEnvironments/<ase name> に移動します。 すると、ご利用の App Service Environment を表す JSON を確認できます。 一番上に**読み取り/書き込み**の表示があることを確認してください。 **[編集]** を選択します。 一番下までスクロールします。 **userWhitelistedIpRanges** の値を **null** から次のような値に変更します。 エグレス アドレス範囲として設定するアドレスを使用してください。 
+4. "_(既存の App Service 環境でエグレス アドレスを設定する場合)_" resources.azure.com に移動し、Subscription/\<subscription id>/resourceGroups/\<ase resource group>/providers/Microsoft.Web/hostingEnvironments/\<ase name> に移動します。 すると、ご利用の App Service Environment を表す JSON を確認できます。 一番上に**読み取り/書き込み**の表示があることを確認してください。 **[編集]** を選択します。 一番下までスクロールします。 **userWhitelistedIpRanges** の値を **null** から次のような値に変更します。 エグレス アドレス範囲として設定するアドレスを使用してください。 
 
         "userWhitelistedIpRanges": ["11.22.33.44/32", "55.66.77.0/24"] 
 

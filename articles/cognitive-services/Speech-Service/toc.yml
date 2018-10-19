@@ -192,15 +192,15 @@ items:
     href: troubleshooting.md
   - name: サポート
     href: support.md
-  - name: 価格
+  - name: 料金と制限
     href: https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: プライバシーと Cookie
     href: https://privacy.microsoft.com/privacystatement
-ms.openlocfilehash: a9379eb84ba103f90136965c0077c5e1b32fbe4e
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 8ed6eb35bf8b3fcd8c6c2b30be2bb8281176b8b2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48829515"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407998"

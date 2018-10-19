@@ -1,25 +1,19 @@
 ---
 title: Microsoft Azure Data Box Gateway のシステム要件| Microsoft Docs
 description: Azure Data Box Gateway のソフトウェア要件とネットワーキング要件について説明します
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: 915190f6f2773d22d14c75be1140f96b7dd40559
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f70cd5de29cc3050142dfff905acae2008dab115
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991574"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379124"
 ---
 # <a name="azure-data-box-gateway-system-requirements-preview"></a>Azure Data Box Gateway のシステム要件 (プレビュー)
 
@@ -118,7 +112,7 @@ SMB、クラウド、または管理トラフィックを許可するために�
 
 |     URL パターン                                                                                                                                                                                                                                                                                                                                                                                                                                       |     コンポーネント/機能                                                                             |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
-|    https://*.databoxedge.azure.com/*<br>https://*.accesscontrol.windows.net/*<br>https://*.servicebus.windows.net/*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                        |    Azure Data Box Gateway サービス<br>Access Control Service<br>Azure Service Bus<br>認証サービス    |
+|    https://*.databoxedge.azure.com/*<br>https://*.servicebus.windows.net/*<br>https://login.windows.net                                                                                                                                                                                                                                                                                                        |    Azure Data Box Gateway サービス<br>Azure Service Bus<br>認証サービス    |
 |    http://*.backup.windowsazure.com                                                                                                                                                                                                                                                                                                                                                                                                                   |    デバイスのアクティブ化                                                                                    |
 |    http://crl.microsoft.com/pki/*   http://www.microsoft.com/pki/*                                                                                                                                                                                                                                                                                                                                                                                    |    証明書の失効                                                                               |
 |    https://*.core.windows.net/*   https://*.data.microsoft.com   http://*.msftncsi.com                                                                                                                                                                                                                                                                                                                                                                |    Azure ストレージ アカウントと監視                                                                |
@@ -134,7 +128,7 @@ SMB、クラウド、または管理トラフィックを許可するために�
 
 次の要件は、Data Box Gateway デバイスで使用できるインターネットの最小帯域幅に適用されます。
 
-- Data Box Gateway で専用の 20 Mbps インターネット帯域幅 (またはそれ以上) が常に利用できること。 この帯域幅はその他のアプリケーションと共有できません。 
+- Data Box Gateway で 20 Mbps 以上の専用インターネット帯域幅が常に利用できること。 この帯域幅はその他のアプリケーションと共有できません。 
 - 帯域幅調整を使用した場合、Data Box Gateway で専用の 32 Mbps インターネット帯域幅 (またはそれ以上) が利用できること。
 
 ## <a name="next-step"></a>次のステップ

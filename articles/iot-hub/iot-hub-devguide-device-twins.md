@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: 9997bf49ee986d6ceaa566e14edea0b9469fa14e
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 558bf0eb6ab4abb4ad16910ebe36fdb7c1e19374
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452379"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310931"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 
@@ -333,9 +333,9 @@ IoT Hub は、各 JSON オブジェクトが最後に更新されたときのタ
 
 この情報は、オブジェクトのキーによって削除される更新を保持するために、JSON の構造のリーフだけでなくすべてのレベルで保持されます。
 
-## <a name="optimistic-concurrency"></a>オプティミスティック同時実行制御
+## <a name="optimistic-concurrency"></a>オプティミスティック コンカレンシー
 
-タグ、必要なプロパティ、報告されたプロパティはすべて、オプティミスティック同時実行制御をサポートします。
+タグ、必要なプロパティ、報告されたプロパティはすべて、オプティミスティック コンカレンシーをサポートします。
 タグは、[RFC7232](https://tools.ietf.org/html/rfc7232) に従って ETag を持ちます。これは、タグの JSON 表現を表します。 ETag を使用すると、条件付き更新操作をソリューション バックエンドから実行し、一貫性を保持できます。
 
 デバイス ツインの必要なプロパティと報告されるプロパティには ETag はありませんが、`$version` の値によって確実に増分されます。 ETag と同様、更新側がバージョンを使用することで更新プログラムの一貫性を確保することができます。 たとえば、報告されたプロパティ用のデバイス アプリ、または目的のプロパティのソリューション バックエンドです。

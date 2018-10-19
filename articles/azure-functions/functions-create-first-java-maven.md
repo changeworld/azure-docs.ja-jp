@@ -12,18 +12,18 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 16d6dd6a589256ad98a37465e64e847778d0cc7e
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 7483ac4521b0b997111dcc5705ba8c28a8443299
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092595"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116404"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Java と Maven を使用して初めての関数を作成する (プレビュー)
 
 [!INCLUDE [functions-java-preview-note](../../includes/functions-java-preview-note.md)]
 
-このクイックスタートでは、Maven で[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)関数プロジェクトを作成し、ローカルでテストして、Azure Functions にデプロイする手順について説明します。 完了すると、HTTP によってトリガーされる関数アプリが Azure で実行されるようになります。
+このクイックスタートでは、Maven で[サーバーレス](https://azure.microsoft.com/solutions/serverless/)関数プロジェクトを作成し、ローカルでテストして、Azure Functions にデプロイする手順について説明します。 完了すると、HTTP によってトリガーされる関数アプリが Azure で実行されるようになります。
 
 ![コマンド ラインから cURL で Hello World 関数にアクセスする](media/functions-create-java-maven/hello-azure.png)
 

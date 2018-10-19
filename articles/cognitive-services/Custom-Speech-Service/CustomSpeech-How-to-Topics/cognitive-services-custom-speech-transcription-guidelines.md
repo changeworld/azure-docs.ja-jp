@@ -1,24 +1,25 @@
 ---
-title: 文字起こしのガイドライン - Custom Speech Service
-titlesuffix: Azure Cognitive Services
-description: Custom Speech Service 向けにデータを準備する方法について説明します。
+title: Azure 上の Custom Speech Service における文字起こしのガイドライン | Microsoft Docs
+description: Cognitive Services の Custom Speech Service 向けにデータを準備する方法について説明します。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: conceptual
+ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: a5daca2dbb3fc792850264bca7d8b0c59e7c8faa
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 6c64b89c2eb933e9bcc24bdc3097e7a0b2aab368
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220620"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342468"
 ---
 # <a name="transcription-guidelines"></a>トランスクリプションのガイドライン
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
+
 音響モデルと言語モデルのカスタマイズでテキスト データを最適に使用できるようにするために、次に示す文字起こしのガイドラインに従う必要があります。 これらのガイドラインは言語に固有です。
 
 ## <a name="text-normalization"></a>テキスト正規化

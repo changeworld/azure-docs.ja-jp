@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 40c7b2865795f8c6a5cfbabe4d59aea1715d4a57
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 889f3928ee72c035035abb635eb71ec0b06a3b45
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42143776"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730162"
 ---
-# <a name="create-an-eevent-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでイベント ルールを作成して通知を設定する
+# <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Azure IoT Central アプリケーションでイベント ルールを作成して通知を設定する
+
+*この記事は、オペレーター、ビルダー、および管理者に適用されます。*
 
 Azure IoT Central を使用して、接続されたデバイスをリモートで監視できます。 Azure IoT Central のルールを使用すると、ほぼリアルタイムでデバイスを監視し、電子メールの送信または Microsoft Flow のトリガーなどのアクションを自動的に呼び出すことができます。 数回のクリックで、デバイスのデータを監視する条件を定義したり、対応するアクションを構成したりできます。 この記事では、デバイスから送信されたイベントを監視するルールを作成する方法について説明します。
 
@@ -37,10 +39,10 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
     ![ルールがまだありません](media\howto-create-event-rules\Rules_Landing_Page.png)
 
 
-1. **[ルール]** タブで、**[+ 新しいルール]** をクリックして、作成できるルールの種類を確認します。
+1. **[ルール]** タブで、**[テンプレートの編集]**、**[+ 新しいルール]** の順にクリックして、作成できるルールの種類を確認します。
 
 
-1. **[イベント]** タイルをクリックしてルールを作成します。
+1. **[イベント]** タイルをクリックして、イベント監視ルールを作成します。
 
     ![ルールの種類](media\howto-create-event-rules\Rule_Types.png)
 
@@ -92,6 +94,8 @@ Azure IoT Central を使用して、接続されたデバイスをリモート�
    ![アクションを構成する](media\howto-create-event-rules\Configure_Action.png)
 
 1. ルールを保存するには、**[保存]** を選択します。 ルールは数分以内に有効になり、アプリケーションに送信されるイベントの監視が開始されます。 ルールで指定した条件に一致すると、構成した電子メールのアクションがトリガーされます。
+
+1. **[完了]** を選択して、**[テンプレートの編集]** モードを終了します。
 
 Microsoft Flow や Webhook などの他のアクションをルールに追加することができます。 ルールごとに最大 5 つのアクションを追加できます。
 

@@ -3,18 +3,18 @@ title: 高速ネットワークと Azure 仮想マシンのディザスター �
 description: Azure 仮想マシンのディザスター リカバリーを行う Azure Site Recovery で高速ネットワークを有効にする方法を説明します
 services: site-recovery
 documentationcenter: ''
-author: mayanknayar
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 08/24/2018
-ms.author: manayar
-ms.openlocfilehash: af29333956fb962ed31133260ecbc9607de38fd3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.topic: conceptual
+ms.date: 10/16/2018
+ms.author: mayg
+ms.openlocfilehash: bb4a3f433f213984c4c351439760ddd3327cda73
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052065"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353138"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>高速ネットワークと Azure 仮想マシンのディザスター リカバリー
 
@@ -81,7 +81,7 @@ Azure 仮想マシンに対して[レプリケーションを有効にする](az
 2. **[ネットワーク インターフェイス]** セクションでネットワーク インターフェイスの名前をクリックします。
 3. **[ターゲット]** 列の [高速ネットワーク] のドロップダウンから **[有効]** を選択します。
 
-![高速ネットワークの有効化](./media/azure-vm-disaster-recovery-with-accelerated-networking/network-interface-accelerated-networking-enabled.png)
+![Accelerated Networking の有効化](./media/azure-vm-disaster-recovery-with-accelerated-networking/network-interface-accelerated-networking-enabled.png)
 
 Site Recovery によって高速ネットワークが自動的に有効になっていない既存のレプリケートされた仮想マシンでも、上記のプロセスを実行する必要があります。
 

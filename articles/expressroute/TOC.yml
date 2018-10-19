@@ -72,10 +72,14 @@ items:
       href: expressroute-howto-linkvnet-arm.md
     - name: Azure CLI
       href: howto-linkvnet-cli.md
+  - name: 回線を介したトラフィックの暗号化
+    items:
+    - name: Microsoft ピアリング経由のサイト間 VPN を構成する
+      href: site-to-site-vpn-over-microsoft-peering.md
+    - name: Windows ホスト用の IPsec トランスポート モードを構成する
+      href: expressroute-howto-ipsec-transport-private-windows.md
   - name: ExpressRoute Global Reach を構成する
     href: expressroute-howto-set-global-reach.md
-  - name: Microsoft ピアリング経由のサイト間 VPN を構成する
-    href: site-to-site-vpn-over-microsoft-peering.md
   - name: ExpressRoute の仮想ネットワーク ゲートウェイを構成する
     items:
     - name: Azure ポータル
@@ -203,9 +207,9 @@ items:
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit/
     - name: 回線のパブリック ピアリングの設定
       href: https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit/
-ms.openlocfilehash: 84fa1877630d43b2bf82a17dd4f3960c67ce3208
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 685e8b963edd0905adc47fba746646a4396ec702
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069133"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386271"

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: a2601f55bbc7e99321689afdafcab3135b94bd5b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7121c83aea75f3b23820a7b0504fa704ec9f3016
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702546"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984307"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>チュートリアル: Azure IoT Central アプリケーションで新しいデバイスの種類を定義する
 
@@ -29,7 +29,7 @@ ms.locfileid: "43702546"
 * ファームウェア バージョンやシリアル番号などのプロパティがあります。
 * 目標温度やファン速度などの設定があります。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * 新しいデバイス テンプレートの作成
@@ -132,13 +132,13 @@ ms.locfileid: "43702546"
 
     **Temperature** テレメトリを設定するには、次の表の情報を使用します。
 
-    | Setting              | 値         |
+    | 設定              | 値         |
     | -------------------- | -----------   |
-    | 表示名         | 気温   |
-    | フィールド名           | 温度   |
-    | Units                | F             |
-    | Min                  | 60            |
-    | max                  | 110           |
+    | 表示名         | Temperature   |
+    | フィールド名           | temperature   |
+    | 単位                | F             |
+    | 最小                  | 60            |
+    | 最大                  | 110           |
     | 小数点以下の桁数       | 0             |
 
     テレメトリの表示色を選択することもできます。 テレメトリの定義を保存するために、**[保存]** を選択します。
@@ -171,11 +171,11 @@ ms.locfileid: "43702546"
 
     **Fan Motor Error** イベントを構成するには、次の表の情報を使用します。
 
-    | Setting              | 値             |
+    | 設定              | 値             |
     | -------------------- | -----------       |
     | 表示名         | Fan Motor Error   |
     | フィールド名           | fanmotorerr       |
-    | severity             | Error             |
+    | 重大度             | Error             |
 
     イベントの定義を保存するために、**[保存]** を選択します。
 
@@ -209,14 +209,14 @@ ms.locfileid: "43702546"
 
     **Fan Mode** イベントを構成するには、次の表の情報を使用します。
 
-    | Setting              | 値             |
+    | 設定              | 値             |
     | -------------------- | -----------       |
     | 表示名         | Fan Mode          |
     | フィールド名           | fanmode           |
     | 値                | 1                 |
-    | 表示ラベル        | 運転中         |
+    | 表示ラベル        | Operating         |
     | 値                | 0                 |
-    | 表示ラベル        | 停止済み           |
+    | 表示ラベル        | Stopped           |
 
     状態測定の定義を保存するために、**[保存]** を選択します。
 
@@ -294,8 +294,8 @@ ms.locfileid: "43702546"
     | -------------------- | -------------------- |
     | 表示名         | Location             |
     | フィールド名           | location             |
-    | 初期値        | ワシントン州シアトル          |
-    | 説明          | デバイスの場所      |
+    | 初期値        | Seattle, WA          |
+    | 説明          | Device location      |
 
     他のフィールドは既定値のままにします。
 
@@ -367,9 +367,9 @@ _コマンド_を使用して、デバイス上で直接コマンドを実行す
 
 3. 次の表の情報を使用して、**[折れ線グラフ]** コンポーネントを構成します。
 
-    | Setting      | 値       |
+    | 設定      | 値       |
     | ------------ | ----------- |
-    | タイトル        | 気温 |
+    | タイトル        | Temperature |
     | 時間の範囲   | 過去 30 分 |
     | 測定 | Temperature (**[Temperature]** の横の **[表示]** を選択します) |
 
@@ -379,7 +379,7 @@ _コマンド_を使用して、デバイス上で直接コマンドを実行す
 
 4. 次の表の情報を使用して、**[Event Chart]\(イベント グラフ\)** コンポーネントを構成します。
 
-    | Setting      | 値       |
+    | 設定      | 値       |
     | ------------ | ----------- |
     | タイトル        | events |
     | 時間の範囲   | 過去 30 分 |
@@ -391,7 +391,7 @@ _コマンド_を使用して、デバイス上で直接コマンドを実行す
 
 5. 次の表の情報を使用して、**[State Chart]\(状態グラフ\)** コンポーネントを構成します。
 
-    | Setting      | 値       |
+    | 設定      | 値       |
     | ------------ | ----------- |
     | タイトル        | Fan Mode |
     | 時間の範囲   | 過去 30 分 |
@@ -407,7 +407,7 @@ _コマンド_を使用して、デバイス上で直接コマンドを実行す
 
 7. 次の表の情報を使用して、**[Settings and Properties]\(設定とプロパティ\)** コンポーネントを設定します。
 
-    | Setting                 | 値         |
+    | 設定                 | 値         |
     | ----------------------- | ------------- |
     | タイトル                   | Set target temperature |
     | [Settings and Properties]\(設定とプロパティ\) | Set Temperature |
@@ -422,12 +422,12 @@ _コマンド_を使用して、デバイス上で直接コマンドを実行す
 
 9. 次の表の情報を使用して、**[Settings and Properties]\(設定とプロパティ\)** コンポーネントを設定します。
 
-    | Setting                 | 値         |
+    | 設定                 | 値         |
     | ----------------------- | ------------- |
     | タイトル                   | Serial number |
     | [Settings and Properties]\(設定とプロパティ\) | Serial Number |
 
-    ![シリアル番号プロパティの設定](./media/tutorial-define-device-type/propertysettings1.png)
+    ![シリアル番号プロパティの設定](./media/tutorial-define-device-type/propertysettings3.png)
 
     次に、**[保存]** を選択します。
 
@@ -437,12 +437,12 @@ _コマンド_を使用して、デバイス上で直接コマンドを実行す
 
 11. 次の表の情報を使用して、**[Settings and Properties]\(設定とプロパティ\)** コンポーネントを設定します。
 
-    | Setting                 | 値            |
+    | 設定                 | 値            |
     | ----------------------- | ---------------- |
     | タイトル                   | Firmware version |
     | [Settings and Properties]\(設定とプロパティ\) | Firmware Version |
 
-    ![シリアル番号プロパティの設定](./media/tutorial-define-device-type/propertysettings2.png)
+    ![シリアル番号プロパティの設定](./media/tutorial-define-device-type/propertysettings3.png)
 
     次に、**[保存]** を選択します。
 
