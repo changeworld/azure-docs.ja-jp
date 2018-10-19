@@ -1,22 +1,24 @@
 ---
-title: Knowledge Exploration Service API のセマンティック解釈 | Microsoft Docs
-description: Cognitive Services の Knowledge Exploration Service (KES) API でセマンティック解釈を使用する方法について説明します。
+title: セマンティック解釈 - Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: Knowledge Exploration Service (KES) API でセマンティック解釈を使用する方法について説明します。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 022188464eb7269b69f96a058b444167b587387c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5fcc7b760b5445e57b41787d8818ef11ed926e6c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373309"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129354"
 ---
 # <a name="semantic-interpretation"></a>セマンティック解釈
+
 セマンティック解釈は、文法を介して、意味の出力を解釈された各パスに関連付けます。  具体的には、このサービスは、解釈によって走査された `tag` 要素内のステートメントのシーケンスを評価して最終出力を計算します。  
 
 ステートメントは、リテラルの割り当てや、別の変数への変数になる場合があります。  また、0 または複数のパラメーターが指定された関数の出力が変数に割り当てられる場合もあります。  各関数パラメーターは、リテラルまたは変数を使用して指定できます。  関数が出力を返さない場合、割り当ては省略されます。
@@ -41,21 +43,24 @@ ms.locfileid: "35373309"
 |Guid|グローバル一意識別子|"602DD052-CC47-4B23-A16A-26B52D30C05B"|
 |クエリ|インデックス内のデータ オブジェクトのサブセットを指定するクエリ式|All()<br/>And(*q1*, *q2*)|
 
-<a name="semantic-functions"></a>
 ## <a name="semantic-functions"></a>セマンティック関数
+
 組み込みの一連のセマンティック関数があります。  高度なクエリを構築し、状況に応じて文法解釈を制御できます。
 
 ### <a name="and-function"></a>And 関数
+
 `query = And(query1, query2);`
 
 2 つの入力クエリの共通集合から構成されるクエリを返します。
 
 ### <a name="or-function"></a>Or 関数
+
 `query = Or(query1, query2);`
 
 2 つの入力クエリの和集合から構成されるクエリを返します。
 
 ### <a name="all-function"></a>All 関数
+
 `query = All();`
 
 すべてのデータ オブジェクトを含むクエリを返します。
@@ -71,6 +76,7 @@ ms.locfileid: "35373309"
 ```
 
 ### <a name="none-function"></a>None 関数
+
 `query = None();`
 
 データ オブジェクトを含まないクエリを返します。
@@ -86,6 +92,7 @@ ms.locfileid: "35373309"
 ```
 
 ### <a name="query-function"></a>Query 関数
+
 ```
 query = Query(attrName, value)
 query = Query(attrName, value, op)
@@ -104,8 +111,8 @@ written in the 90s
 </tag>
 ```
 
-<a name="composite-function"/>
 ### <a name="composite-function"></a>Composite 関数
+
 `query = Composite(innerQuery);`
 
 共通複合属性 *attr* のサブ属性に対する一致で構成される *innerQuery* をカプセル化するクエリを返します。  カプセル化では、一致するデータ オブジェクトの複合属性 *attr* に、*innerQuery* を個別に満たす値が少なくとも 1 つ存在する必要があります。  複合属性のサブ属性に対するクエリは、他のクエリと組み合わせる前に Composite() 関数を使用してカプセル化する必要があります。
@@ -123,6 +130,7 @@ And(Composite(Query("academic#Author.Name", "harry shum"),
 ```
 
 ### <a name="getvariable-function"></a>GetVariable 関数
+
 `value = GetVariable(name, scope);`
 
 指定された *scope* で定義された変数 *name* の値を返します。  *name* は、英字で始まり、英字 (A から Z)、数字 (0 から 9)、およびアンダースコア (_) のみで構成される識別子です。  *スコープ* は "request" または "system" に設定できます。  異なるスコープで定義された変数は、セマンティック関数の出力を介して定義されたものを含め、相互に区別されることに注意してください。
@@ -137,6 +145,7 @@ And(Composite(Query("academic#Author.Name", "harry shum"),
 |IsBeyondEndOfQuery|ブール値|現在の解釈に、入力クエリ テキスト以外の提案された入力候補がある場合は true|
 
 ### <a name="setvariable-function"></a>SetVariable 関数
+
 `SetVariable(name, value, scope);`
 
 指定された *scope* で変数 *name* に *value* を割り当てます。  *name* は、英字で始まり、英字 (A から Z)、数字 (0 から 9)、およびアンダースコア (_) のみで構成される識別子です。  現在、*scope* の唯一の有効な値は "request" です。  設定可能なシステム変数はありません。
@@ -144,11 +153,13 @@ And(Composite(Query("academic#Author.Name", "harry shum"),
 要求の scope 変数は、現在の解釈要求内のすべての解釈全体で共有されます。  文法に関する解釈の検索を制御するために使用できます。
 
 ### <a name="assertequals-function"></a>AssertEquals 関数
+
 `AssertEquals(value1, value2);`
 
 *value1* と *value2* が等しい場合、関数は成功します。副作用はありません。  それ以外の場合、関数は失敗し、解釈を拒否します。
 
 ### <a name="assertnotequals-function"></a>AssertNotEquals 関数
+
 `AssertNotEquals(value1, value2);`
 
 *value1* と *value2* が等しくない場合、関数は成功します。副作用はありません。  それ以外の場合、関数は失敗し、解釈を拒否します。

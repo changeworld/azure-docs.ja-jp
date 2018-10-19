@@ -1,6 +1,6 @@
 ---
-title: Azure Stack ユーザーの PowerShell 環境の構成 | Microsoft Docs
-description: Azure Stack ユーザーの PowerShell 環境の構成
+title: ユーザーとして PowerShell を使用して Azure Stack に接続する | Microsoft Docs
+description: ユーザーの Azure Stack インスタンスに接続する手順。
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2018
+ms.date: 09/07/2018
 ms.author: sethm
 ms.reviewer: Balsu.G
-ms.openlocfilehash: d8b245666989552208f8cbcf0dddfdfc310f65e0
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: acdad9788737f4f552cedc1b5f42e03e2288dba8
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41946595"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159081"
 ---
-# <a name="configure-the-azure-stack-users-powershell-environment"></a>Azure Stack ユーザーの PowerShell 環境の構成
+# <a name="connect-to-azure-stack-with-powershell-as-a-user"></a>ユーザーとして PowerShell を使用して Azure Stack に接続する
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 

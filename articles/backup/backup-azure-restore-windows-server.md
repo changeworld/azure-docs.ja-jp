@@ -6,14 +6,14 @@ author: saurabhsensharma
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/6/2018
+ms.date: 9/7/2018
 ms.author: saurse
-ms.openlocfilehash: ddde297de49edb5f6543d03dfdb972771533301b
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 20d2f289f4d40d773fde9f6b770dc49b87c34804
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39576187"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297249"
 ---
 # <a name="restore-files-to-a-windows-server-or-windows-client-machine-using-resource-manager-deployment-model"></a>Resource Manager デプロイ モデルを使用した Windows Server または Windows Client コンピューターへのファイルの復元
 
@@ -54,6 +54,9 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
 > [!IMPORTANT]
 > *個々のファイルおよびフォルダー*を復元するオプションを使用するには、.NET Framework 4.5.2 以上が必要です。 *[個々のファイルおよびフォルダー]* オプションが表示されない場合は、.NET Framework をバージョン 4.5.2 以上にアップグレードし、もう一度やり直してください。
 
+> [!TIP]
+> *[個別のファイルとフォルダー]* オプションを使用すると、復旧ポイントのデータにすばやくアクセスできます。 合計サイズが 80 GB 以下の個別ファイルの復旧に適しており、リカバリー中に最大 6 MBps の転送/コピー速度を提供します。 *[ボリューム]* オプションは、特定のボリューム内のすべてのバックアップ データを復旧します。 このオプションはより高速な転送速度 (最大 60 MBps) を提供し、大規模なデータやボリューム全体の復旧に理想的です。
+
 5. **[ボリュームと日付の選択]** ウィンドウで、復元するファイルやフォルダーが格納されているボリュームを選択します。
 
     カレンダーで回復ポイントを選択します。 任意の時点の回復ポイントから復元できます。 **太字**になっている日付では、少なくとも 1 つの回復ポイントを利用できます。 選択した日付で複数の回復ポイントを利用できる場合は、**[時間]** ドロップダウン メニューから、特定の回復ポイントを選択します。
@@ -72,6 +75,7 @@ Azure Portal の Recovery Services コンテナーでインスタント リス�
 8. Windows エクスプローラーで、復元するファイルやフォルダーをコピーして、サーバーまたはコンピューターの任意のローカルの場所に貼り付けます。 回復ボリュームから直接ファイルを開くかストリーミングして、回復しようとしているバージョンが正しいことを確認することもできます。
 
     ![マウントされたボリュームからファイルとフォルダーをコピーしてローカルの保存先に貼り付ける](./media/backup-azure-restore-windows-server/samemachine_copy_instantrestore.png)
+
 
 9. ファイルやフォルダーの復元が完了したら、**[ファイルの参照と回復]** ウィンドウで、**[マウント解除]** をクリックします。 ボリュームのマウントを解除するかどうかを確認するメッセージが表示されたら **[はい]** をクリックします。
 

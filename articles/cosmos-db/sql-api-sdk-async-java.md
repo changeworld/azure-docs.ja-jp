@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 08/16/2018
+ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 9852edfca26e78ad1b373418970dfe9c7ab477d8
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: e90c5640e571aaf28e184e9439f6228e3a5bbc6b
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142656"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023564"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB Async Java SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -52,6 +52,13 @@ SQL API Async Java SDK は、[Netty ライブラリ](http://netty.io/)をサポ�
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
+* プロキシのサポートを追加しました。
+* リソース トークンの承認のサポートを追加しました。
+* 大規模なパーティション キーの処理でバグを修正しました ([github #63](https://github.com/Azure/azure-cosmosdb-java/issues/63))。
+* ドキュメントを改善しました。
+* SDK はより詳細なモジュールを再構築しました。
 
 ### <a name="a-name201201"></a><a name="2.0.1"/>2.0.1
 * 英語以外のロケールのバグを修正しました ([github #51](https://github.com/Azure/azure-cosmosdb-java/issues/51))。
@@ -103,6 +110,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.1.0](#2.1.0) |2018 年 9 月 5 日|--- |
 | [2.0.1](#2.0.1) |2018 年 8 月 16 日|--- |
 | [2.0.0](#2.0.0) |2018 年 6 月 20 日|--- |
 | [1.0.2](#1.0.2) |2018 年 5 月 18 日|--- |

@@ -5,22 +5,22 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: raynew
-ms.openlocfilehash: 93f62bac3e2207caa265b3fca6634656d64b1491
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 4036ab6e62f4738f4b2906eb7571dc5d0e972988
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918239"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391149"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック
 
-このチュートリアルでは、物理サーバーを Azure にフェールオーバーする方法について説明します。 フェールオーバーした後、オンプレミス サイトが使用可能になったときにオンプレミス サイトにサーバーをフェールバックします。 
+このチュートリアルでは、物理サーバーを Azure にフェールオーバーする方法について説明します。 フェールオーバーした後、オンプレミス サイトが使用可能になったときにオンプレミス サイトにサーバーをフェールバックします。
 
 ## <a name="preparing-for-failover-and-failback"></a>フェールオーバーとフェールバックを準備する
 
-Site Recovery を使用して Azure にレプリケートされた物理サーバーは、VMware VM としてしかフェールバックできません。 フェールバックするには VMware インフラストラクチャが必要です。 
+Site Recovery を使用して Azure にレプリケートされた物理サーバーは、VMware VM としてしかフェールバックできません。 フェールバックするには VMware インフラストラクチャが必要です。
 
 フェールオーバーとフェールバックには 4 つの段階があります。
 
@@ -36,7 +36,7 @@ Site Recovery を使用して Azure にレプリケートされた物理サー�
 1. **[保護されたアイテム]** で、**[レプリケートされたアイテム]** をクリックし、マシンを選びます。
 
 2. **[レプリケートされたアイテム]** ウィンドウには、マシンの情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
-3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、および[管理ディスクの設定](#managed-disk-considerations)を変更できます。
+3. **[コンピューティングとネットワーク]** で、Azure 名、リソース グループ、ターゲット サイズ、[可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)、および[マネージド ディスクの設定](#managed-disk-considerations)を変更できます。
 4. ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示および変更できます。
 5. **[ディスク]** で、マシンのオペレーティング システム ディスクとデータ ディスクに関する情報を確認できます。
 
@@ -44,7 +44,7 @@ Site Recovery を使用して Azure にレプリケートされた物理サー�
 
 1. **[設定]** > **[レプリケートされたアイテム]** で、[マシン] > **[フェールオーバー]** をクリックします。
 2. **[フェールオーバー]** で、フェールオーバーする **[復旧ポイント]** を選択します。 次のいずれかのオプションを使うことができます。
-   - **[最新]** (既定値): 最初に、Site Recovery に送信されるすべてのデータを処理します。 フェールオーバー後に作成された Azure VM は、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータを保持しているため、RPO (目標復旧時点) を最も低くすることができます。
+   - **[最新]**: 最初に、Site Recovery に送信されるすべてのデータを処理します。 フェールオーバー後に作成された Azure VM は、フェールオーバーがトリガーされた時点で Site Recovery にレプリケートされたすべてのデータを保持しているため、RPO (目標復旧時点) を最も低くすることができます。
    - **[最後に処理があった時点]**: Site Recovery によって処理された最新の復旧ポイントに マシンをフェールオーバーします。 このオプションを使用すると、未処理のデータの処理に時間がかからないため、RTO (目標復旧時間) を低くできます。
    - **[最新のアプリ整合性]**: Site Recovery によって処理されたアプリ整合性の最新の復旧ポイントにマシンをフェールオーバーします。
    - **カスタム**: 復旧ポイントを指定します。
@@ -55,7 +55,13 @@ Site Recovery を使用して Azure にレプリケートされた物理サー�
 
 > [!WARNING]
 > 進行中のフェールオーバーを取り消さないでください。 フェールオーバーが開始する前にマシンのレプリケーションが停止します。 フェールオーバーを取り消すと、フェールオーバーは停止しますが、マシンが再びレプリケートしなくなります。
-> 物理サーバーの場合、追加のフェールオーバー処理が完了するまでに 8 分から 10 分程度かかります。 
+> 物理サーバーの場合、追加のフェールオーバー処理が完了するまでに 8 分から 10 分程度かかります。
+
+## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする
+
+フェールオーバー後に RDP/SSH を使用して Azure VM に接続する場合は、[こちら](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)の表に示されている要件に従います。
+
+フェールオーバー後の接続の問題をトラブルシューティングするには、[こちら](site-recovery-failover-to-azure-troubleshoot.md)に記載されている手順に従ってください。
 
 ## <a name="create-a-process-server-in-azure"></a>Azure にプロセス サーバーを作成する
 
@@ -120,4 +126,3 @@ Site Recovery を使用して Azure にレプリケートされた物理サー�
 2. レプリケートされたデータを Azure に送信するために使用するプロセス サーバーを選択し、**[OK]** をクリックします。
 
 再保護が完了すると、VM が Azure にレプリケートされるので、必要に応じてフェールオーバーを実行できます。
-

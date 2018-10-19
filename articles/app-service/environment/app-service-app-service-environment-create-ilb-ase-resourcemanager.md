@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
-ms.openlocfilehash: ea9407208f1bf555cf1a6d166825896dec89ec29
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20531cb301cad23fbadb617bdf33e710a4481be4
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22986837"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050036"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して ILB ASE を作成する方法
 
@@ -34,7 +34,7 @@ ILB ASE の自動作成は、次に示す 3 つの手順で実行されます。
 
 1. まず、パブリック VIP の代わりに内部ロード バランサーのアドレスを使用し、仮想ネットワーク内にベース ASE が作成されます。  この手順には、ルート ドメイン名を ILB ASE に割り当てる操作も含まれます。
 2. ILB ASE の作成が完了すると、SSL 証明書がアップロードされます。  
-3. アップロードされた SSL 証明書は、"既定の" SSL 証明書として ILB ASE に明示的に割り当てられます。  この SSL 証明書は、ASE に割り当てられた共通ルート ドメインを使用してアプリがアドレス指定された場合 (https://someapp.mycustomrootcomain.com など) に、ILB ASE 上のアプリへの SSL トラフィックに使用されます。
+3. アップロードされた SSL 証明書は、"既定の" SSL 証明書として ILB ASE に明示的に割り当てられます。  この SSL 証明書は、ASE に割り当てられた共通ルート ドメインを使用してアプリがアドレス指定された場合 (https://someapp.mycustomrootcomain.com) など) に、ILB ASE 上のアプリへの SSL トラフィックに使用されます。
 
 ## <a name="creating-the-base-ilb-ase"></a>ベース ILB ASE の作成
 Azure Resource Manager テンプレートの例と、それに関連するパラメーター ファイルは、[こちら][quickstartilbasecreate]から GitHub で入手できます。
@@ -60,7 +60,7 @@ ILB ASE を作成したら、SSL 証明書を、アプリへの SSL 接続を確
 有効な SSL 証明書を取得するには、内部 CA を利用する、外部の発行元から証明書を購入する、自己署名証明書を使用するなどの方法があります。  どのようなソースから SSL 証明書を取得した場合でも、以下の証明書属性を適切に構成する必要があります。
 
 * *Subject*: この属性は、**.your-root-domain-here.com* に設定する必要があります。
-* *Subject Alternative Name*: この属性には、**.your-root-domain-here.com* と **.scm.your-root-domain-here.com* の両方が含まれている必要があります。2 つ目のエントリが必要な理由は、各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続が、 *your-app-name.scm.your-root-domain-here.com*形式のアドレスを使用して確立されるためです。
+* *Subject Alternative Name*: この属性には、**.your-root-domain-here.com* と **.scm.your-root-domain-here.com* の両方が含まれている必要があります。  2 つ目のエントリが必要な理由は、各アプリに関連付けられた SCM/Kudu サイトへの SSL 接続が、 *your-app-name.scm.your-root-domain-here.com*形式のアドレスを使用して確立されるためです。
 
 有効な SSL 証明書を取得した後は、さらに 2 つの準備手順を実行する必要があります。  SSL 証明書は、.pfx ファイルに変換して保存する必要があります。  .pfx ファイルには、中間証明書とルート証明書をすべて含める必要があり、さらにパスワードで保護する必要もあるという点に注意してください。
 
@@ -127,7 +127,7 @@ SSL 証明書が正常に生成され、base64 でエンコードされた文字
 
 Azure Resource Manager テンプレートを送信した後、変更が適用されるまでには、ASE フロントエンドあたり約 40 分かかります。  たとえば、2 つのフロントエンドを使用する既定サイズの ASE では、テンプレートが完了するまで約 1 時間 20 分かかります。  テンプレートの実行中に、ASE をスケーリングすることはできません。  
 
-テンプレートが完了すると、ILB ASE 上のアプリに HTTPS 経由でアクセスできるようになり、接続は既定の SSL 証明書を使用して保護されます。  既定の SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。  たとえば、*https://mycustomapp.internal-contoso.com* と指定された場合は、**.internal-contoso.com* の既定の SSL 証明書が使用されます。
+テンプレートが完了すると、ILB ASE 上のアプリに HTTPS 経由でアクセスできるようになり、接続は既定の SSL 証明書を使用して保護されます。  既定の SSL 証明書は、ILB ASE 上のアプリが、アプリケーション名と既定のホスト名の組み合わせを使用してアドレス指定された場合に使用されます。  たとえば、*https://mycustomapp.internal-contoso.com* の場合、**.internal-contoso.com* の既定の SSL 証明書が使用されます。
 
 ただし、パブリック マルチテナント サービスで実行されているアプリと同様に、開発者が個々のアプリに対してカスタム ホスト名を設定し、各アプリに固有の SNI SSL 証明書バインドを構成することもできます。  
 

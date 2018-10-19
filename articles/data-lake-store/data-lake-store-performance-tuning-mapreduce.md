@@ -1,6 +1,6 @@
 ---
-title: Azure Data Lake Store の MapReduce パフォーマンス チューニング ガイドライン | Microsoft Docs
-description: Azure Data Lake Store の MapReduce パフォーマンス チューニング ガイドライン
+title: Azure Data Lake Storage Gen1 の MapReduce パフォーマンス チューニング ガイドライン | Microsoft Docs
+description: Azure Data Lake Storage Gen1 の MapReduce パフォーマンス チューニング ガイドライン
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: f5586e7706d4dad7e3c943b2a661fa296b4d30bf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b661499786057a3083f79684dfd12c85266b7b5c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198635"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128793"
 ---
-# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-store"></a>HDInsight の MapReduce と Azure Data Lake Store のパフォーマンス チューニング ガイダンス
+# <a name="performance-tuning-guidance-for-mapreduce-on-hdinsight-and-azure-data-lake-storage-gen1"></a>HDInsight の MapReduce と Azure Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス
 
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
-* Data Lake Store アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Store を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
+* **Azure Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
+* Data Lake Storage Gen1 アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Storage Gen1 を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
 * **HDInsight での MapReduce の使用**。  詳細については、「[HDInsight での MapReduce と Hadoop の使用](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-mapreduce)」を参照してください。
-* **ADLS のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、「[Data Lake Store のパフォーマンス チューニング ガイドライン](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)」を参照してください。
+* **Data Lake Storage Gen1 のパフォーマンス チューニング ガイドライン**。  一般的なパフォーマンスの概念については、[Data Lake Storage Gen1 のパフォーマンス チューニング ガイダンス](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)を参照してください。
 
 ## <a name="parameters"></a>parameters
 
-MapReduce ジョブの実行時に、ADLS のパフォーマンスを向上させるために構成できる最も重要なパラメーターは次の通りです。
+MapReduce ジョブの実行時に、Data Lake Storage Gen1 のパフォーマンスを向上させるために構成できる最も重要なパラメーターは次のとおりです。
 
 * **Mapreduce.map.memory.mb** – 各 Mapper に割り当てるメモリの量
 * **Mapreduce.job.maps** – ジョブごとの Map タスクの数
@@ -83,9 +83,9 @@ CPU スケジューリングと CPU の分離は既定ではオフになって�
 
 ## <a name="limitations"></a>制限事項
 
-**ADLS の調整**
+**Data Lake Storage Gen1 の調整**
 
-マルチテナント サービスとして、ADLS ではアカウント レベルの帯域幅制限が設定されています。  帯域幅制限に達すると、タスク エラーが発生します。 エラーを特定するには、タスク ログの調整エラーを監視します。  ジョブにより広い帯域幅が必要な場合は、お問い合わせください。   
+マルチテナント サービスとして、Data Lake Storage Gen1 ではアカウント レベルの帯域幅制限が設定されています。  帯域幅制限に達すると、タスク エラーが発生します。 エラーを特定するには、タスク ログの調整エラーを監視します。  ジョブにより広い帯域幅が必要な場合は、お問い合わせください。   
 
 調整されているかどうかを確認するには、クライアント側でデバッグ ログを有効にする必要があります。 その方法は次のとおりです。
 
@@ -97,7 +97,7 @@ CPU スケジューリングと CPU の分離は既定ではオフになって�
 
 ## <a name="examples-to-run"></a>実行例
 
-Azure Data Lake Store で MapReduce を実行する方法を示すために、次の設定のクラスターで実行されたサンプル コードをいくつかご紹介します。
+Data Lake Storage Gen1 で MapReduce を実行する方法を示すために、次の設定のクラスターで実行されたサンプル コードをいくつかご紹介します。
 
 * 16 ノード (D14 v2)
 * HDI 3.6 を実行する Hadoop クラスター

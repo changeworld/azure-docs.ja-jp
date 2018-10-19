@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 4531fa4c8bbb7bb9c1daeaaac6f9e7078dae250a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6477879953dc2bb2c7503eb0b2d4b5effa7b6a11
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372920"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024657"
 ---
 # <a name="manage-credentials"></a>資格情報を管理する
 
@@ -31,17 +31,22 @@ Azure portal ダッシュボードで、Content Moderator アカウントを選�
 
 ![Azure portal での Content Moderator キー](images/credentials-azure-portal-keys.PNG)
 
-### <a name="how-to-use-your-azure-account-with-the-review-tool"></a>レビュー ツールで Azure アカウントを使用する方法
+### <a name="use-the-azure-account-with-the-review-tool-and-review-api"></a>レビュー ツールおよびレビュー API で Azure アカウントを使用する
 レビュー API で Azure キーを使用するには、次のスクリーンショットの **[プロパティ]** 画面に表示されているリソース ID をコピーし、次の **[リソース ID]** セクションに表示されているようにレビュー ツールの資格情報画面で **[Whitelisted Resource Id(s)]\(ホワイト リソース ID\)** フィールドにそれを入力します。 
 
-Content Moderator 内で使用可能なワークフローに Azure キーを使用するには、次の **[ワークフロー]** セクションに示されているように、**[ワークフロー設定]** セクションの **[Ocp-Apim-Subscription-Key]** フィールドにそれを入力します。
-
 > [!NOTE]
+> Content Moderator サブスクリプションのリージョンは、チームを認識し、チームのデータにアクセスするために、レビュー チームのリージョンと一致する必要があります。 たとえば、このページのイメージで、**West US** リージョン **(4)** には、Content Moderator Azure サブスクリプションとレビュー チームが含まれています。
+>
 > レビュー ツール内の 2 つの場所を Azure サブスクリプションのキーとリソース ID に置き換えた後、[資格情報] 画面に表示されている**試用版 Ocp-Apim-Subscription-Key** は使用されなくなりますが、いつでも使用できます。
 > 試用版のキーでは、1 要求/秒 (RPS) で 1 か月あたり最大 5,000 トランザクションに制限されます。
 
 ![Azure portal での Content Moderator リソース ID](images/credentials-azure-portal-resourceid.PNG)
 
+### <a name="use-the-azure-account-with-the-workflows-in-the-review-tool"></a>レビュー ツールでワークフローを使った Azure アカウントを使用します
+
+Content Moderator 内で使用可能なワークフローに Azure キーを使用するには、次の **[ワークフロー]** セクションに示されているように、**[ワークフロー設定]** セクションの **[Ocp-Apim-Subscription-Key]** フィールドにそれを入力します。 **+** を押してリソース ID を保存します。
+
+![レビュー ツールでの Content Moderator ワークフロー資格情報](images/credentials-workflow.PNG)
 
 ## <a name="the-review-tool"></a>レビュー ツール
 
@@ -51,7 +56,6 @@ Content Moderator 内で使用可能なワークフローに Azure キーを使�
 
 次のセクションでは、前の画像をさらに詳しく調べます。
 
-
 ### <a name="api"></a>API
 
 最初の部分には、レビュー チームの作成の一環として生成された**レビュー API エンドポイント**、**チーム ID**、および **Ocp-Apim-Subscription-Key (Content Moderator の試用キー)** が一覧表示されます。 これらは、レビュー API を含むすべての Content Moderator API の呼び出しに使用します。
@@ -60,25 +64,13 @@ Content Moderator 内で使用可能なワークフローに Azure キーを使�
 
 ![レビュー ツールでの Content Moderator キー](images/credentials-trialkey.PNG)
 
-
 ### <a name="resource-id"></a>Resource ID
 
-2 番目の部分は、リソース ID がない空の状態で開始します。 **レビュー API で Azure サブスクリプション キーを使用するには、前に示したリソース ID 画面に移動し、表示されるフィールドにそれをコピーします**。 **+** を押してリソース ID を保存します。
-
-> [!NOTE]
-> Content Moderator サブスクリプションのリージョンは、チームを認識し、チームのデータにアクセスするために、レビュー チームのリージョンと一致する必要があります。 たとえば、このページのイメージで、**West US** リージョン **(4)** には、Content Moderator Azure サブスクリプションとレビュー チームが含まれています。
-
-![レビュー ツールでの Content Moderator リソース ID](images/credentials-resourceids.PNG)
-
+「[レビュー ツールと API で Azure アカウントを使用する](credentials.md#how-to-use-your-azure-account-with-the-review-tool)」セクションでこのセクションを取り上げました。 このフィールドは、前のセクションで説明したように、このフィールドに Azure リソース ID を追加する場合を除き、通常は空白です。
 
 ### <a name="workflows"></a>Workflows
 
-3 番目の部分は、ワークフローを実行するために使用される情報を示します。 既定では、自動生成された試用キーの表示から開始します。 
-
-**Azure サブスクリプションを取得するときに、それを Azure キーで更新**します。 他の 2 つのフィールドでは、それぞれ画面の文字と画像の評価の操作で用語と画像の一覧を使用できます。
-
-![レビュー ツールでの Content Moderator ワークフロー資格情報](images/credentials-workflow.PNG)
-
+前のセクションの[ Azure のキーを使用して、ワークフローを実行する](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool)でこの一連のフィールドを取り上げました。 既定では、ワークフローを実行するために、レビュー ツールが自動生成された試用版キーを使用し、それがまず始めに表示されます。 他の 2 つのフィールドでは、それぞれ画面の文字と画像の評価の操作で用語と画像の一覧を使用できます。
 
 ## <a name="next-steps"></a>次の手順
 

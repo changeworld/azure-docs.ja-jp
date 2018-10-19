@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights での開発、テスト、およびリリースのテレメトリの分離| Microsoft Docs"
-description: "開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。"
+title: Azure Application Insights での開発、テスト、およびリリースのテレメトリの分離| Microsoft Docs
+description: 開発、テスト、および運用スタンプのテレメトリを異なるリソースに送信します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 578e30f0-31ed-4f39-baa8-01b4c2f310c9
@@ -10,14 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8d95958bce0597bfb16ef1c6b99b72ce9134e66f
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 88626c3a4bfd4a1ff3a2e9cbc8c3f2b1c5553295
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303627"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>開発、テスト、および運用のテレメトリの分離
 
@@ -153,10 +154,10 @@ iKey は、アプリの Web ページや、 [クイック スタート ブレー
 ただし、Visual Studio での開発者向けのビルドではなく、Microsoft Build Engine でのみビルド バージョン番号が生成されることに注意してください。
 
 ### <a name="release-annotations"></a>リリース注釈
-Visual Studio Team Services を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](app-insights-annotations.md)できます。 このマーカーは、次の図のように表示されます。
+Azure DevOps を使用する場合は、新しいバージョンをリリースするたびに、グラフに[注釈マーカーを追加](app-insights-annotations.md)できます。 このマーカーは、次の図のように表示されます。
 
 ![グラフのリリース注釈の例のスクリーンショット](./media/app-insights-asp-net/release-annotation.png)
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [複数のロール用の共有リソース](app-insights-monitor-multi-role-apps.md)
 * [A |B のバリアントを区別するためのテレメトリ初期化子を作成する](app-insights-api-filtering-sampling.md#add-properties)

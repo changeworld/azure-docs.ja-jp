@@ -1,26 +1,25 @@
 ---
-title: Azure AD テナント ディレクトリの使い方の概要 | Microsoft Docs
-description: Azure AD テナントの概要のほか、Azure Active Directory で Azure を管理する方法を説明します。
+title: Azure Active Directory テナントの管理 | Microsoft Docs
+description: Azure AD テナントの概要のほか、Azure Active Directory を使用して Azure を管理する方法を説明します。
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.service: active-directory
-ms.workload: identity
 ms.component: fundamentals
-ms.topic: overview
-ms.date: 08/23/2017
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro;oldportal
-ms.openlocfilehash: b18ff1f59a46e98544159b488294e2d3f7bd9cd7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+custom: it-pro
+ms.openlocfilehash: eb9cf7c21613ab91cc0b8e41a4454835d18f2c34
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767538"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297930"
 ---
-# <a name="manage-your-azure-ad-directory"></a>Azure AD ディレクトリの管理
+# <a name="manage-your-azure-active-directory-tenant"></a>Azure Active Directory テナントの管理
 
 ## <a name="what-is-an-azure-ad-tenant"></a>Azure AD テナントとは
 Azure Active Directory (Azure AD) におけるテナントとは、Azure や Office 365 などの Microsoft クラウド サービスに組織がサインアップしたときに、その組織専用に与えられる Azure AD ディレクトリのインスタンスです。 各 Azure AD ディレクトリは、他の Azure AD ディレクトリと区別され分離されています。 会社のオフィス ビルが組織に固有のセキュリティで保護された資産であるのと同様に、Azure AD ディレクトリも特定の組織だけが使用するセキュリティで保護された資産として設計されています。 Azure AD アーキテクチャは、顧客のデータや ID 情報が混合しないよう分離します。そのため、Azure AD ディレクトリのユーザーや管理者が、故意であれ過失であれ別のディレクトリのデータにアクセスすることはできません。
@@ -43,7 +42,7 @@ Microsoft サービスに 2 回目以降サインアップするときは、最�
 
 たとえば、Microsoft Intune サブスクリプションにサインアップした後、オンプレミスの Active Directory と Azure AD のディレクトリとを同期させた場合、Office 365 など別の Microsoft サービスにサインアップして、Microsoft Intune で活用しているディレクトリ統合と同じ利便性を簡単に実現することができます。
 
-オンプレミス ディレクトリと Azure AD の統合の詳細については、[Azure AD Connect を使ったディレクトリ統合](../connect/active-directory-aadconnect.md)に関するページを参照してください。
+オンプレミス ディレクトリと Azure AD の統合の詳細については、[Azure AD Connect を使ったディレクトリ統合](../hybrid/whatis-hybrid-identity.md)に関するページを参照してください。
 
 ### <a name="associate-an-existing-azure-ad-directory-with-a-new-azure-subscription"></a>既存の Azure AD ディレクトリを新しい Azure サブスクリプションに関連付ける
 新しい Azure サブスクリプションは、既存の Office 365 または Microsoft Intune サブスクリプションへのサインインを認証する同じディレクトリに関連付けることができます。 このシナリオの詳細については、「[Azure サブスクリプションの所有権を別のアカウントに譲渡する](../../billing/billing-subscription-transfer.md)」を参照してください。

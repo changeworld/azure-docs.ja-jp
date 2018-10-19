@@ -2,24 +2,20 @@
 title: Azure Functions の外部ファイル バインディング (試験段階)
 description: Azure Functions の外部ファイル バインディングを使用する
 services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: alkarche
-ms.openlocfilehash: 4e9c2c336df465d7488de84bd2a02cc5d9e42f30
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: be2d34202b88d0d424eb23c4e078c2fdc45c6ab6
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
-ms.locfileid: "27607923"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093772"
 ---
 # <a name="azure-functions-external-file-bindings-experimental"></a>Azure Functions の外部ファイル バインディング (試験段階)
 この記事では、Azure Functions でさまざまな SaaS プロバイダー (Dropbox、Google ドライブなど) のファイルを操作する方法について説明します。 Azure Functions は、外部ファイルのトリガー、入力、および出力のバインディングをサポートしています。 これらのバインディングでは、SaaS プロバイダーへの API 接続を作成するか、または Function App のリソース グループにある既存の API 接続を使用します。
@@ -119,7 +115,7 @@ module.exports = function(context) {
 
 次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | [説明]|
+|function.json のプロパティ | 説明|
 |---------|---------|----------------------|
 |**type** | `apiHubFileTrigger` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -315,7 +311,7 @@ module.exports = function(context) {
 
 次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | [説明]|
+|function.json のプロパティ | 説明|
 |---------|---------|----------------------|
 |**type** | `apiHubFile` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -353,7 +349,7 @@ Azure 外部ファイル出力バインディングにより、関数で外部�
 
 次の表は、*function.json* ファイルで設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | [説明]|
+|function.json のプロパティ | 説明|
 |---------|---------|----------------------|
 |**type** | `apiHubFile` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | `out` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |

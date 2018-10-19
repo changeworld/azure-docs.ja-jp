@@ -6,14 +6,14 @@ keywords: Ansible, Azure, DevOps, 概要, クラウド プロビジョニング,
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
-ms.date: 01/19/2018
+ms.date: 09/02/2018
 ms.topic: article
-ms.openlocfilehash: e710770131c844598762feebe09ba50dc120de0c
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 977fef390c0efecd47ec5e19b1a82c05e2ecfd0f
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106902"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44160747"
 ---
 # <a name="ansible-with-azure"></a>Ansible と Azure
 
@@ -44,6 +44,10 @@ Ansible では、[動的インベントリ](http://docs.ansible.com/ansible/intr
 
 ## <a name="additional-azure-marketplace-options"></a>その他の Azure Marketplace オプション
 Red Hat の [Ansible Tower](https://azuremarketplace.microsoft.com/marketplace/apps/redhat.ansible-tower) Azure Marketplace イメージは、組織が物理、仮想、およびクラウド インフラストラクチャにわたって IT 自動化をスケーリングし、複雑なデプロイを管理するのに役立ちます。 Ansible Tower は、今日の企業に必要な可視性、制御、セキュリティ、および効率性をさらに高める機能を備えています。 Ansible Tower では、Azure および SSH キーなどの資格情報を暗号化することにより、資格情報が漏えいするリスクを伴わずに、経験の少ない従業員に業務を委任できます。
+
+## <a name="ansible-module-and-version-matrix-for-azure"></a>Azure の Ansible モジュールとバージョンのマトリックス
+Ansible には多数のモジュールが付属しています。これらのモジュールは、リモート ホストで直接実行することも、プレイブックを介して実行することもできます。
+[Ansible モジュールおよびバージョン マトリックス](./ansible-matrix.md)では、仮想マシン、ネットワーク、コンテナー サービスなどの Azure クラウド リソースをプロビジョニングできる Azure 用 Ansible モジュールの一覧を示します。 
 
 ## <a name="next-steps"></a>次の手順
 - [Ansible の構成](/azure/virtual-machines/linux/ansible-install-configure?toc=%2Fen-us%2Fazure%2Fansible%2Ftoc.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)

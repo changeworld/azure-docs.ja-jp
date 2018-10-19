@@ -10,8 +10,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
     - [Azure Automation](#azure-automation) は、Azure とオンプレミス インフラストラクチャでアクションを実行できます。
 
 - アプリケーションのデプロイと配信を自動化する
-    - たとえば、[Visual Studio Team Services](#visual-studio-team-services) や [Jenkins](#jenkins) があります。
-
+    - サンプルには、[Azure DevOps Services](#visual-studio-team-services) や [Jenkins](#jenkins) が含まれます。
 
 ## <a name="ansible"></a>Ansible
 [Ansible](https://www.ansible.com/) は、構成の管理、VM の作成、またはアプリケーションのデプロイ用の自動化エンジンです。 Ansible では、ターゲット マシンを認証および管理するために、通常は SSH キーによる、エージェントレス モデルを使用します。 構成タスクはプレイブックで定義し、特定のタスクを実行するために利用できるさまざまな Ansible モジュールが用意されています。 詳細については、「[How Ansible works (Ansible のしくみ)](https://www.ansible.com/how-ansible-works)」を参照してください。
@@ -24,8 +23,7 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
 
 
 ## <a name="chef"></a>Chef
-
-  [Chef](https://www.chef.io/) は、インフラストラクチャを構成、デプロイ、管理する方法を定義するのに役立つ自動化プラットフォームです。 追加コンポーネントには、インフラストラクチャではなくアプリケーションのライフサイクル自動化のための Chef Habitat のほか、セキュリティとポリシー要件へのコンプライアンスの自動化に役立つ Chef InSpec があります。 Chef Client はターゲット マシンにインストールし、1 つ以上の中央 Chef Server で構成を保存および管理します。 詳細は、「[An Overview of Chef (シェフの概要)](https://docs.chef.io/chef_overview.html)」を参照してください。
+[Chef](https://www.chef.io/) は、インフラストラクチャを構成、デプロイ、管理する方法を定義するのに役立つ自動化プラットフォームです。 追加コンポーネントには、インフラストラクチャではなくアプリケーションのライフサイクル自動化のための Chef Habitat のほか、セキュリティとポリシー要件へのコンプライアンスの自動化に役立つ Chef InSpec があります。 Chef Client はターゲット マシンにインストールし、1 つ以上の中央 Chef Server で構成を保存および管理します。 詳細は、「[An Overview of Chef (シェフの概要)](https://docs.chef.io/chef_overview.html)」を参照してください。
 
 以下の項目について説明します。
 
@@ -115,12 +113,12 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 - [Azure Automation DSC を使用する](../articles/automation/automation-dsc-getting-started.md)。
 
 
-## <a name="visual-studio-team-services"></a>Visual Studio Team Services
-[Team Services](https://www.visualstudio.com/team-services/) は、コードの共有と追跡、自動ビルドの使用、完全な継続的インテグレーションと開発 (CI/CD) パイプラインの作成に役立つ一連のツールです。 Team Services は、Visual Studio や他のエディターと統合して、簡単に使用できるようにします。 Team Services では、Azure VM を作成して構成した後、VM にコードをデプロイすることもできます。
+## <a name="azure-devops-services"></a>Azure DevOps Services
+[Azure DevOps Services](https://www.visualstudio.com/team-services/) は、コードの共有と追跡、自動ビルドの使用、完全な継続的インテグレーションと開発 (CI/CD) パイプラインの作成に役立つ一連のツールです。 Azure DevOps Services は、Visual Studio や他のエディターと統合して、簡単に使用できるようにします。 Azure DevOps Services では、Azure VM を作成して構成した後、VM にコードをデプロイすることもできます。
 
 以下の項目について説明します。
 
-- [Team Services を使用して継続的インテグレーション パイプラインを作成する](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md)。
+- [Azure DevOps Services を使用して継続的インテグレーション パイプラインを作成する](../articles/virtual-machines/windows/tutorial-vsts-iis-cicd.md)。
 
 
 ## <a name="jenkins"></a>Jenkins

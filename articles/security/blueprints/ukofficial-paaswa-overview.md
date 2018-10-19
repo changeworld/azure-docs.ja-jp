@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: f465a6e6cb0642f64670a8d2727c939f91bad134
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 6fe85d7ac527179ab39e89739f5744f3aa1ef8e2
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617251"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297557"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント: UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
 
@@ -27,7 +27,7 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 このブループリントは、英国国立サイバー セキュリティ センター (NCSC) によってレビューされ、NCSC 14 クラウド セキュリティ原則に適合しています。
 
-このアーキテクチャは、Azure [PaaS (サービスとしてのプラットフォーム)](https://azure.microsoft.com/overview/what-is-paas/) コンポーネントを使用しています。これによって、ソフトウェア ライセンスの購入、基礎となるアプリケーション インフラストラクチャの管理、ミドルウェアまたは開発ツールの管理、およびその他のリソースの費用と複雑さを回避することができます。 お客様は、自社で開発したアプリケーションとサービスを管理し、ビジネス価値の実現に集中できます。一方、Microsoft Azure が仮想マシン、ストレージ、ネットワークなどの Azure リソースを管理するため、インフラストラクチャ管理の[責任分担](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility)は Azure プラットフォームの方が重くなります。 [Azure App Services](https://azure.microsoft.com/services/app-service/) で自動スケールと高可用性が実現されるほか、Windows と Linux がサポートされています。さらに、既定のサービスとして GitHub、Visual Studio Team Services、または任意の Git リポジトリからの自動デプロイが可能になります。 App Services を使用すると、インフラストラクチャ管理のオーバーヘッドがないので、開発者はビジネス価値の実現に集中できます。 画期的な Java、PHP、Node.js、Python、HTML、または C# Web アプリケーションを構築することも、既存のクラウドまたはオンプレミス Web アプリケーションを Azure App Services に移行することもできます (ただし、パフォーマンスを確認するための徹底的なデュー デリジェンスとテストは必要です)。
+このアーキテクチャは、Azure [PaaS (サービスとしてのプラットフォーム)](https://azure.microsoft.com/overview/what-is-paas/) コンポーネントを使用しています。これによって、ソフトウェア ライセンスの購入、基礎となるアプリケーション インフラストラクチャの管理、ミドルウェアまたは開発ツールの管理、およびその他のリソースの費用と複雑さを回避することができます。 お客様は、自社で開発したアプリケーションとサービスを管理し、ビジネス価値の実現に集中できます。一方、Microsoft Azure が仮想マシン、ストレージ、ネットワークなどの Azure リソースを管理するため、インフラストラクチャ管理の[責任分担](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility)は Azure プラットフォームの方が重くなります。 [Azure App Services](https://azure.microsoft.com/services/app-service/) では、自動スケール、高可用性が実現されるほか、Windows と Linux がサポートされています。さらに、既定のサービスとして GitHub、Azure DevOps、または任意の Git リポジトリからの自動デプロイが可能になります。 App Services を使用すると、インフラストラクチャ管理のオーバーヘッドがないので、開発者はビジネス価値の実現に集中できます。 画期的な Java、PHP、Node.js、Python、HTML、または C# Web アプリケーションを構築することも、既存のクラウドまたはオンプレミス Web アプリケーションを Azure App Services に移行することもできます (ただし、パフォーマンスを確認するための徹底的なデュー デリジェンスとテストは必要です)。
 
 このブループリントは、公的機関およびバック オフィスのユーザー向けに、セキュリティで保護された基盤である[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/)の Web ベース インターフェイスを提供することに焦点を当てています。 このブループリントの設計シナリオでは、パブリック ユーザーが機密データを安全に提出、表示、管理できる、また、バック オフィスや政府機関のオペレーターがパブリック ユーザーが提出した機密データを安全に処理できる、Azure ホステッド Web ベース サービスの使用を考慮しています。 このシナリオには、次のようなユース ケースがあります。
 
@@ -103,7 +103,7 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 
 #### <a name="azure-app-service"></a>Azure App Service
 
-Azure Web Apps は、Java、PHP、Node.js Python、HTML、および C# で開発された Web アプリケーション向けにフル マネージド Web ホスティング環境を用意しています。インフラストラクチャを管理する必要はありません。 Azure Web Apps では、自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、[Visual Studio Team Services](https://azure.microsoft.com/services/visual-studio-team-services/) または任意の Git ベースのリポジトリから自動デプロイを利用できます。
+Azure Web Apps は、Java、PHP、Node.js Python、HTML、および C# で開発された Web アプリケーション向けにフル マネージド Web ホスティング環境を用意しています。インフラストラクチャを管理する必要はありません。 自動スケールと高可用性が実現されるほか、Windows と Linux の両方がサポートされています。さらに、[Azure DevOps](https://azure.microsoft.com/services/visual-studio-team-services/)または任意の Git ベースのリポジトリからの自動デプロイが可能になります。
 
 App Service は [ISO、SOC、および PCI](https://www.microsoft.com/TrustCenter/) に準拠しています。また、ユーザー認証には、[Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) またはソーシャル ログイン ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication)、[Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication)、[Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication)、および [Microsoft 認証](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication)) を使用できます。
 

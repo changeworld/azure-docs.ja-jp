@@ -1,26 +1,27 @@
 ---
-title: Microsoft Translator Text API V3.0 リファレンス | Microsoft Docs
-description: V3.0 Microsoft Translator Text API のリファレンス ドキュメント。
+title: Translator Text API V3.0 リファレンス
+titlesuffix: Azure Cognitive Services
+description: Translator Text API V3.0 のリファレンス ドキュメント。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: cfaa9584e833b137b417d9074fbfcf606eb21388
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9282d8af30cbfb3346394bcd71510faf8d8c8a21
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374496"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129388"
 ---
-#<a name="translator-text-api-v30"></a>Translator Text API v3.0
+# <a name="translator-text-api-v30"></a>Translator Text API v3.0
 
 ## <a name="whats-new"></a>新機能
 
-Microsoft Translator Text API のバージョン 3 では、最新の JSON ベースの Web API が提供されます。 既存の機能をより少ない操作に統合することによって、使いやすさとパフォーマンスが向上しています。また、新機能が用意されています。
+Translator Text API のバージョン 3 には、最新の JSON ベースの Web API が用意されています。 既存の機能をより少ない操作に統合することによって、使いやすさとパフォーマンスが向上しています。また、新機能が用意されています。
 
  * ある言語のテキストを、ある書記体系から別の書記体系に変換する音訳。
  * 1 つの要求での複数言語への翻訳。
@@ -37,7 +38,7 @@ Text API v3.0 は、次のクラウドで利用できます。
 | Azure       | グローバル | api.cognitive.microsofttranslator.com           |
 
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
 Microsoft Cognitive Services 内の Translator Text API にサブスクライブし、ユーザーの (Azure Portal で使用できる) サブスクリプション キーを使用します。 
 

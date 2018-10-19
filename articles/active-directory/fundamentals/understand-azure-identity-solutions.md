@@ -1,27 +1,25 @@
 ---
-title: Azure ID について | Microsoft Docs
-description: 組織に最適な ID ガバナンスの決定を行えるように、Microsoft Azure ID ソリューションに関する基本的な用語、概念、および推奨事項について説明します。
-keywords: ''
+title: Microsoft Azure ID とは | Microsoft Docs
+description: 組織に最適な ID ガバナンスの決定を行えるように、Microsoft Azure ID ソリューションに関する用語、概念、および推奨事項について説明します。
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.reviewer: jsnow
-ms.author: lizross
-ms.date: 7/17/2017
-ms.topic: overview
-ms.prod: ''
-ms.service: azure-directory
+ms.service: active-directory
 ms.component: fundamentals
-ms.technology: ''
-ms.assetid: ''
-ms.custom: it-pro
-ms.openlocfilehash: ec84cdb4e226eea4d16d28d63acd7be59241b973
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 7/17/2017
+ms.author: lizross
+ms.reviewer: jsnow
+custom: it-pro
+ms.openlocfilehash: e22f5ced30e30d6f53a1d29c8be2f318161d4fc0
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346918"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294851"
 ---
-# <a name="understand-azure-identity-solutions"></a>Azure ID ソリューションについて
+# <a name="what-is-microsoft-azure-identity"></a>Microsoft Azure ID とは
 Microsoft Azure Active Directory (Azure AD) は、ディレクトリ サービス、ID ガバナンス、アプリケーション アクセス管理を提供する、ID およびアクセス管理クラウド ソリューションです。 Azure AD により、[Azure AD アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)にある事前に統合された数千個の商用アプリやカスタム アプリへの[シングル サインオン (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) を簡単に実現できます。 Office 365、Salesforce.com、Box、ServiceNow、Workday など、これらのアプリの多くは既に使用されていると考えられます。
 
 Azure サブスクリプションを作成すると、1 つの Azure AD ディレクトリがそのサブスクリプションに自動的に関連付けられます。 その後、Azure AD が、Azure の ID サービスとして、クラウドベースのリソースのすべての ID 管理機能とアクセス制御機能を提供します。 次の図に示すように、これらのリソースには、個々のテナント (組織) のユーザー、アプリ、グループを含めることができます。
@@ -108,7 +106,7 @@ Microsoft Azure には、ユーザーの ID を管理するための方法がい
 ## <a name="where-can-i-learn-more"></a>詳細情報を得るには?
 Azure AD について理解を深めていただけるよう、豊富なオンライン リソースをご用意しています。 理解を深めるのに適した優れた記事を以下にリストしましたので、ご活用ください。
 
-* [Azure AD Connect によるディレクトリのハイブリッド管理を有効にする](../connect/active-directory-aadconnect.md)
+* [Azure AD Connect によるディレクトリのハイブリッド管理を有効にする](../hybrid/whatis-hybrid-identity.md)
 * [多要素認証とは](../authentication/multi-factor-authentication.md)
 * [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](../manage-apps/user-provisioning.md)
 * [任意の場所からのパスワードの管理](../user-help/active-directory-passwords-update-your-own-password.md)

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 9db0fa29f6af0053d45f9f0238b52ac34fdb464a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f1bbbecf1f40b110614b3da9874d5d2c560f9e58
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223263"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44024637"
 ---
 # <a name="group-policy-and-mdm-settings"></a>グループ ポリシーと MDM の設定
 ここで取り上げるグループ ポリシーとモバイル デバイス管理 (MDM) の設定は、会社所有のデバイスに使用を限定してください。これらのポリシーはユーザーのデバイス全体に適用されます。 MDM ポリシーを適用して設定の同期を無効にすると、ユーザー所有のパーソナル デバイスの使用に悪影響が生じます。 加えて、そのデバイスに存在する他のユーザー アカウントにもポリシーの影響が波及します。
@@ -30,7 +30,7 @@ ms.locfileid: "39223263"
 利用可能なポリシー設定を以下の表で説明します。
 
 ## <a name="mdm-settings"></a>MDM の設定
-MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適用されます。  Windows 10 Mobile のサポートは、ユーザーの OneDrive アカウントによる Microsoft アカウント ベースのローミングに対してのみ存在します。  Azure AD ベースの同期用にサポートされているデバイスの詳細については、「デバイスとエンドポイント」 のセクションをご覧ください。
+MDM のポリシー設定は、Windows 10 と Windows 10 Mobile の両方に適用されます。  Windows 10 Mobile のサポートは、ユーザーの OneDrive アカウントによる Microsoft アカウント ベースのローミングに対してのみ存在します。  Azure AD ベースの同期用にサポートされているデバイスの詳細については、「[デバイスとエンドポイント](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)」を参照してください。
 
 | Name | 説明 |
 | --- | --- |

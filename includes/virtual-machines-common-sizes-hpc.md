@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: ac8686d0ea5704492bfc2e08972a2f70c9b34c43
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 16e2a9cfbd9f08428fddade290117b27bc3401f7
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37906821"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44369365"
 ---
-Azure H シリーズの仮想マシンは、分子モデリングや流体力学などのハイエンド コンピューティングのニーズを目的とした、最新のハイ パフォーマンス コンピューティング VM です。 これらの 8 および 16 vCPU の VM は、DDR4 メモリに対応する Intel Haswell E5-2667 V3 プロセッサ テクノロジと SSD ベースの一時ストレージをベースに構築されます。 
+Azure H シリーズの仮想マシンは、バッチ処理、分析、分子モデリング、流体力学などのワークロードを処理することを目的とした、最新のハイ パフォーマンス コンピューティング VM です。 これらの 8 および 16 vCPU の VM は、DDR4 メモリに対応する Intel Haswell E5-2667 V3 プロセッサ テクノロジと SSD ベースの一時ストレージをベースに構築されます。 
 
 H シリーズのラインナップは強力な CPU パワーに加えて、FDR InfiniBand を使用した低待機時間 RDMA ネットワークのためのさまざまなオプションと、複数のメモリ構成を備えており、メモリ集中型のコンピューティング要件にも対応しています。
 

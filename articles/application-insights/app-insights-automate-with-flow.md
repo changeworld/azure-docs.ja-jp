@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: 28228755f76f38ef2ed5e50c776a99427118e090
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 449a6274b67f3eb72ea6d8bd19f555fc59158d7e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424553"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299102"
 ---
 # <a name="automate-azure-application-insights-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow 対応のコネクタを使って Azure Application Insights のプロセスを自動化する
 
@@ -25,7 +25,7 @@ ms.locfileid: "39424553"
 
 この統合によって、一行のコードも記述せずに、膨大な数のプロセスを自動化できるようになりました。 Application Insights のアクションを使ってフローを作成すると、このフローが Application Insights Analytics クエリを自動的に実行します。 
 
-また、その他のアクションを追加することもできます。 Microsoft Flow によって、多数のアクションが利用可能になります。 たとえば、Microsoft Flow を使って、自動的に電子メール通知を送信したり、Visual Studio Team Services のバグを作成したりできます。 また、Microsoft Flow に対応したコネクタで使用できる多数の[テンプレート](https://ms.flow.microsoft.com/en-us/connectors/shared_applicationinsights/?slug=azure-application-insights)の 1 つを使うこともできます。 これらのテンプレートによって、フローを作成するプロセスを高速化できます。 
+また、その他のアクションを追加することもできます。 Microsoft Flow によって、多数のアクションが利用可能になります。 たとえば、Microsoft Flow を使って、自動的に電子メール通知を送信したり、Azure DevOps のバグを作成したりできます。 また、Microsoft Flow に対応したコネクタで使用できる多数の[テンプレート](https://ms.flow.microsoft.com/en-us/connectors/shared_applicationinsights/?slug=azure-application-insights)の 1 つを使うこともできます。 これらのテンプレートによって、フローを作成するプロセスを高速化できます。 
 
 <!--The Application Insights connector also works with [Azure Power Apps](https://powerapps.microsoft.com/en-us/) and [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/?v=17.23h). --> 
 

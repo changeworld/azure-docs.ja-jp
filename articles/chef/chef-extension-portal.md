@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 52f34361d7c1f3dff47f2571a714b8be7764cc6f
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: e121cd038b8becee1e9c4c12659dbbee0696a9f1
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34259600"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44378654"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Azure portal から Chef クライアントをインストールする
 Azure portal から Linux または Windows の仮想マシンを作成または変更するときに、Chef 拡張機能を仮想マシンに追加できます。 この記事では、新しい Linux 仮想マシンを使用してそのプロセスを説明します。
@@ -52,7 +52,7 @@ Azure portal から Linux または Windows の仮想マシンを作成または
 1. **[基本]** タブで次の値を指定し、**[OK]** を選択します。
 
     - **名前**: 新しい仮想マシンの名前を入力します。
-    - **VM ディスクの種類**: **[SSD]** または **[HDD]** の記憶域ディスクの種類を選択します。 Azure での仮想マシン ディスクの種類に関する詳細については、「[VM 向けの高パフォーマンスの Premium Storage と管理ディスク](/azure/virtual-machines/windows/premium-storage)」の記事を参照してください。
+    - **VM ディスクの種類**: **[SSD]** または **[HDD]** の記憶域ディスクの種類を選択します。 Azure での仮想マシン ディスクの種類に関する詳細については、「[VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク](/azure/virtual-machines/windows/premium-storage)」の記事を参照してください。
     - **ユーザー名**: 仮想マシンの管理者権限が付与されているユーザー名を入力します。
     - **認証の種類**: **[パスワード]** を選択します。 **[SSH 公開キー]** を選択して、SSH 公開キー値を指定することもできます。 このデモでは (およびスクリーン ショットでは)、**[パスワード]** が選択されています。
     - **[パスワード]** と **[パスワードの確認入力]**: ユーザーのパスワードを入力します。
@@ -81,17 +81,17 @@ Azure portal から Linux または Windows の仮想マシンを作成または
 
 1. **[拡張機能のインストール]** タブで次の値を指定し、**[OK]** を選択します。
 
-    - **Chef サーバーの URL**: 組織名を含む Chef サーバーの URL を入力します。 このデモでは、*https://api.chef.io/organization/hessco* を使用しました。
+    - **Chef サーバーの URL**: たとえば*https://api.chef.io/organization/hessco*のように、組織名を含む Chef サーバーの URL を入力します。
     - **Chef ノード名**: Chef ノード名を入力します。 任意の値が可能です。
-    - **実行の一覧**: コンピューターに追加する Chef の実行の一覧を入力します。 これは空白でもかまいません。
-    - **Validation Client Name (検証クライアント名)**: Chef の検証クライアント名を入力します。 このデモでは、*tarcher-validator* を使用しました。
+    - **実行の一覧**: コンピューターに追加する Chef の実行の一覧を入力します。 ここは空白のままにします。
+    - **Validation Client Name (検証クライアント名)**: Chef の検証クライアント名を入力します。 たとえば、 *tarcher-validator* など。
     - **検証キー**: コンピューターをブートストラップするときに使用する検証キーが含まれているファイルを選択します。 
-    - **Client Configuration File (クライアント構成ファイル)**: chef クライアントの構成ファイルを選択します。 これは空白でもかまいません。
-    - **Chef Client version (Chef クライアントのバージョン)**: インストールする chef クライアントのバージョンを入力します。 値が空白の場合、最新バージョンがインストールされます。 これは空白でもかまいません。
-    - **SSL Verification Mode (SSL 確認モード)**: **[なし]** または **[ピア]** のいずれかを選択します。 このデモでは、*[なし]* を選択しました。
-    - **Chef Environment (Chef 環境)**: このノードが属する必要がある Chef 環境を入力します。 これは空白でもかまいません。
-    - **Encrypted Databag Secret (Encrypted Databag のシークレット)**: このコンピューターがアクセスする必要がある Encrypted Databag のシークレットが含まれているファイルを選択します。 これは空白でもかまいません。
-    - **Chef Server SSL Certificate (Chef サーバー SSL 証明書)**: お使いの Chef サーバーに割り当てられている SSL 証明書を選択します。 これは空白でもかまいません。
+    - **Client Configuration File (クライアント構成ファイル)**: chef クライアントの構成ファイルを選択します。 ここは空白のままにします。
+    - **Chef Client version (Chef クライアントのバージョン)**: インストールする chef クライアントのバージョンを入力します。 ここは空白のままにします。 値が空白の場合、最新バージョンがインストールされます。 
+    - **SSL Verification Mode (SSL 確認モード)**: **[なし]** または **[ピア]** のいずれかを選択します。 デモ用に *None* を選択しました。
+    - **Chef Environment (Chef 環境)**: このノードが属する必要がある Chef 環境を入力します。 ここは空白のままにします。
+    - **Encrypted Databag Secret (Encrypted Databag のシークレット)**: このコンピューターがアクセスする必要がある Encrypted Databag のシークレットが含まれているファイルを選択します。 ここは空白のままにします。
+    - **Chef Server SSL Certificate (Chef サーバー SSL 証明書)**: お使いの Chef サーバーに割り当てられている SSL 証明書を選択します。 ここは空白のままにします。
 
     ![Linux 仮想マシンに Chef サーバーをインストールする](./media/chef-extension-portal/install-extension.png)
 
@@ -106,4 +106,4 @@ Chef 拡張機能を使用した仮想マシンの作成とデプロイのプロ
 ![Linux 仮想マシンに Chef サーバーをインストールする](./media/chef-extension-portal/resource-created.png)
 
 ## <a name="next-steps"></a>次の手順
-* [Chef で Azure 仮想マシンの展開を自動化する](/azure/virtual-machines/windows/chef-automation)
+* [Chef を使用して Windows 仮想マシンを Azure 上に作成する](/azure/virtual-machines/windows/chef-automation)

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 09/07/2018
 ms.author: mabrigg
-ms.openlocfilehash: da8261d27ae7fad3c5ff30e4e1cce3f1bca2b70a
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 8e4c86a3c9ff40f23a2a758b450d685b81dabc1a
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035335"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44091902"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Azure Stack で更新を適用する
 
@@ -42,7 +42,7 @@ Azure Stack 用の Microsoft または OEM 更新プログラム パッケージ
 > [!IMPORTANT]
 > メンテナンス操作についてユーザーに通知することと、通常のメンテナンス期間はできるだけ勤務時間外にスケジュールすることを強くお勧めします。 メンテナンス操作は、ユーザーのワークロードとポータル操作の両方に影響を及ぼす可能性があります。
 
-1. 管理ポータルで、**[その他のサービス]** を選択します。 次に、**[データ + ストレージ]** カテゴリで、**[ストレージ アカウント]** を選択します  (または、フィルター ボックスで「**ストレージ アカウント**」の入力を開始して選択します)。
+1. 管理者ポータルで、**[すべてのサービス]** を選択します。 次に、**[DATA + STORAGE]\(データ + ストレージ\)** カテゴリで、**[ストレージ アカウント]** を選択します  (または、フィルター ボックスで「**ストレージ アカウント**」の入力を開始して選択します)。
 
     ![ポータルでストレージ アカウントを探す場所を示している画面](media/azure-stack-apply-updates/ApplyUpdates1.png)
 
@@ -65,7 +65,7 @@ Azure Stack 用の Microsoft または OEM 更新プログラム パッケージ
 6. **[BLOB のアップロード]** で、フォルダー アイコンをクリックし、更新プログラム パッケージの .exe ファイルを参照し、ファイル エクスプローラー ウィンドウで **[開く]** をクリックします。
   
 7. **[BLOB のアップロード]** で、**[アップロード]** をクリックします。 
- 
+  
     ![各パッケージ ファイルをアップロードする場所を示している画面](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
 8. *PackageName*.bin ファイルと Metadata.xml ファイルに対して、手順 6 と 7 を繰り返します。 Supplemental Notice.txt ファイルが含まれている場合、そのファイルはインポートしないでください。
@@ -74,6 +74,8 @@ Azure Stack 用の Microsoft または OEM 更新プログラム パッケージ
 11. 更新プログラムをインストールするには、**[準備完了]** とマークされているパッケージを選択し、パッケージを右クリックして **[今すぐ更新]** を選択するか、上部にある **[今すぐ更新]** アクションをクリックします。
 12. 更新プログラム パッケージのインストールをクリックしたら、**[Update run details]\(更新実行の詳細\)** 領域でその状態を確認できます。 ここから **[Download full logs]\(満杯になったログのダウンロード\)** をクリックして、ログ ファイルをダウンロードすることもできます。
 13. 更新プログラムが完了すると、更新された Azure Stack のバージョンが [更新] タイルに表示されます。
+
+更新プログラムが Azure Stack にインストールされた後、手動でストレージ アカウントから更新プログラムを削除することができます。 Azure Stack は古い更新プログラム パッケージを定期的にチェックし、ストレージから削除します。 Azure Stack で古いパッケージが削除されるまでに 2 週間ほどかかる場合があります。
 
 ## <a name="next-steps"></a>次の手順
 

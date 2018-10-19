@@ -2,19 +2,19 @@
 title: Azure Database for PostgreSQL でのバックアップと復元
 description: Azure Database for PostgreSQL サーバーの自動バックアップと復元について説明します。
 services: postgresql
-author: kamathsun
-ms.author: sukamat
+author: rachel-msft
+ms.author: raagyema
 manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 0f7ec38d2c271ebaa15e681a71eb32be7151921f
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 707803e1f69a3146772e71ff711a48b510d8c9fc
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29693050"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127569"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でのバックアップと復元
 
@@ -53,7 +53,7 @@ Azure Database for PostgreSQL で復元を実行すると、元のサーバー�
 復旧の推定所要時間は、データベースのサイズ、トランザクション ログのサイズ、ネットワーク帯域幅、同じリージョン内で同時に復旧するデータベースの合計数など、複数の要因によって異なります。 通常は 12 時間もかかりません。
 
 > [!IMPORTANT]
-> サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。 削除されたサーバーを復元することはできません。
+> 削除したサーバーは、復元**できません**。 サーバーを削除すると、そのサーバーに属するデータベースもすべて削除され、復元できなくなります。
 
 ### <a name="point-in-time-restore"></a>ポイントインタイム リストア
 
@@ -66,6 +66,8 @@ Azure Database for PostgreSQL で復元を実行すると、元のサーバー�
 ### <a name="geo-restore"></a>geo リストア
 
 geo 冗長バックアップ用にサーバーを構成した場合は、サービスを使用できる別の Azure リージョンにサーバーを復元できます。 geo リストアは、サーバーがホストされているリージョンでのインシデントが原因でサーバーが利用できない場合の既定の復旧オプションです。 リージョン内の大規模なインシデントにより、データベース アプリケーションが使用できなくなった場合、geo 冗長バックアップから他の任意のリージョン内のサーバーに、サーバーを復元できます。 バックアップが取得される時刻と、別のリージョンにそのバックアップがレプリケートされる時刻には時間差があります。 この時間差は最大 1 時間なので、障害が発生した場合、最大 1 時間分のデータが損失する可能性があります。
+
+geo リストア中に変更できるサーバー構成は、コンピューティング世代、仮想コア、バックアップの保有期間、バックアップ冗長オプションなどです。 価格レベル (Basic、汎用、またはメモリ最適化) とストレージのサイズはいずれも変更できません。
 
 ### <a name="perform-post-restore-tasks"></a>復元後のタスクの実行
 

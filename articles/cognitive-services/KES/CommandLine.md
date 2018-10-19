@@ -1,23 +1,26 @@
 ---
-title: Knowledge Exploration Service のコマンド ライン インターフェイス | Microsoft Docs
-description: KES のコマンド ライン インターフェイスを使用して、構造化データからインデックス ファイルと文法ファイルをビルドし、Microsoft Cognitive Services に Web サービスとして展開します。
+title: コマンドライン インターフェイス - Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: コマンドライン インターフェイスを使用して、構造化データからインデックス ファイルと文法ファイルをビルドし、Web サービスとしてデプロイします。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: 71a6f5ac93e5605182a55de1bae9a99c5c3eddf4
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 7ec2282317019275b15a8e506753408c75a68561
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136357"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127155"
 ---
 # <a name="command-line-interface"></a>コマンド ライン インターフェイス
-KES コマンド ライン インターフェイスには、構造化データからインデックス ファイルと文法ファイルをビルドし、Web サービスとして展開する機能があります。  一般的な構文は `kes.exe <command> <required_args> [<optional_args>]` です。  コマンドの一覧を表示するには引数なしで `kes.exe` を実行します。指定したコマンドに使用できる引数の一覧を表示するには、`kes.exe <command>` を実行します。  使用できるコマンドの一覧を次に示します。
+
+Knowledge Exploration Service (KES) コマンド ライン インターフェイスには、構造化データからインデックス ファイルと文法ファイルをビルドし、Web サービスとしてデプロイする機能があります。  一般的な構文は `kes.exe <command> <required_args> [<optional_args>]` です。  コマンドの一覧を表示するには引数なしで `kes.exe` を実行します。指定したコマンドに使用できる引数の一覧を表示するには、`kes.exe <command>` を実行します。  使用できるコマンドの一覧を次に示します。
+
 * build_index
 * build_grammar
 * host_service
@@ -79,7 +82,7 @@ KES コマンド ライン インターフェイスには、構造化データ�
 | `<indexFile>`   | 入力バイナリ インデックスのパス           |
 | `--port <port>` | ローカル ポート番号。  既定: 8000 |
 
-これらのファイルは、ローカル ファイルのパスまたは AzureBLOB への URL パスによって指定できます。  Web サービスは、http://localhost:&lt;port&gt;/ でホストされます。  サポートされている操作の一覧については、「[Web API](WebAPI.md)」を参照してください。
+これらのファイルは、ローカル ファイルのパスまたは AzureBLOB への URL パスによって指定できます。  Web サービスは、 http://localhost:&lt;port&gt;/ でホストされます。  サポートされている操作の一覧については、「[Web API](WebAPI.md)」を参照してください。
 
 Azure 環境以外の場合、ローカルでホストされるサービスは、最大 1 MB のサイズのインデックス ファイル、毎秒 10 要求、合計 1,000 回の呼び出しに制限されます。  これらの制限をなくすには、Azure VM 内で **host_service** を実行するか、**deploy_service** を使用して Azure クラウド サービスにデプロイします。
 

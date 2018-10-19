@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: 54c99cc9dde6a9706c75401dd75b98f8f5de7cec
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: ab8750e5824cf9f7635d11a6b2be332b2f9a761c
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068072"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302590"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure の Web Apps のデプロイに関するよくあるご質問
 
@@ -62,7 +62,7 @@ App Service アプリのファイル構造については、[Azure でのファ�
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>App Service の Web アプリの継続的デプロイを設定するにはどうすればよいですか。
 
-継続的デプロイは、Visual Studio Team Services、OneDrive、GitHub、Bitbucket、Dropbox、およびその他の Git リポジトリなど、複数のリソースから設定できます。 これらのオプションは、ポータルで確認できます。 [App Service への継続的デプロイ](app-service-continuous-deployment.md)に関するチュートリアルで継続的デプロイの設定方法を説明しているので、お役立てください。
+継続的デプロイは、Azure DevOps、OneDrive、GitHub、Bitbucket、Dropbox、およびその他の Git リポジトリなど、複数のリソースから設定できます。 これらのオプションは、ポータルで確認できます。 [App Service への継続的デプロイ](app-service-continuous-deployment.md)に関するチュートリアルで継続的デプロイの設定方法を説明しているので、お役立てください。
 
 ## <a name="how-do-i-troubleshoot-issues-with-continuous-deployment-from-github-and-bitbucket"></a>GitHub や Bitbucket からの継続的デプロイに関する問題をトラブルシューティングするにはどうすればよいですか。
 
@@ -85,9 +85,9 @@ Azure クイック スタートは、お好きなデプロイ スタックと方
 
 アプリのデプロイによって再起動が発生する状況については、「[Deployment vs. runtime issues (デプロイとランタイムの問題)](https://github.com/projectkudu/kudu/wiki/Deployment-vs-runtime-issues#deployments-and-web-app-restarts")」をご覧ください。 記事で説明しているとおり、App Service は wwwroot フォルダーにファイルをデプロイします。 アプリを直接再起動することはありません。
 
-## <a name="how-do-i-integrate-visual-studio-team-services-code-with-app-service"></a>Visual Studio Team Services のコードを App Service に統合するにはどうすればよいですか。
+## <a name="how-do-i-integrate-azure-devops-code-with-app-service"></a>Azure DevOps のコードを App Service に統合するにはどうすればよいですか。
 
-Visual Studio Team Services で継続的デプロイを使用するには、2 つの方法があります。
+Azure DevOps で継続的デプロイを使用するには、2 つの方法があります。
 
 *   Git プロジェクトを使用する。 そのリポジトリのデプロイ オプションを使用して、App Service 経由で接続します。
 *   Team Foundation バージョン管理 (TFVC) プロジェクトを使用する。 App Service のビルド エージェントを使用してデプロイします。
@@ -95,7 +95,7 @@ Visual Studio Team Services で継続的デプロイを使用するには、2 �
 どちらの方法でも、コードの継続的デプロイは既存の開発者ワークフローとチェックイン プロシージャに依存します。 詳細と例については、次の記事をご覧ください。 
 
 *   [アプリの継続的デプロイを Azure Web サイトに実装する](https://www.visualstudio.com/docs/release/examples/azure/azure-web-apps-from-build-and-release-hubs)
-*   [Web アプリにデプロイするために Visual Studio Team Services アカウントを設定する](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)
+*   [Set up an Azure DevOps organization so it can deploy to a web app](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)\(Web アプリにデプロイできるよう Azure DevOps 組織をセットアップする\)
 
 ## <a name="how-do-i-use-ftp-or-ftps-to-deploy-my-app-to-app-service"></a>FTP または FTPS を使用してアプリを App Service にデプロイするにはどうすればよいですか。
 

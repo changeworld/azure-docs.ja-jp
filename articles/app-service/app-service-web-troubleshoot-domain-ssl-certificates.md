@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2018
 ms.author: genli
-ms.openlocfilehash: 59a9011edef49494288716ab16f30e28e440293b
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 5dd87c75638c3d084226becaace5c9454660c907
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195184"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303678"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-web-apps"></a>Azure Web アプリでのドメインと SSL 証明書に関する問題のトラブルシューティング
 
@@ -145,7 +145,7 @@ DNS 伝達が実行されるのを数分待ってから、**[最新の情報に�
 3.  ドメインをホストしている Web サーバーのルートに、このファイルをアップロードします。
 4.  **[最新の情報に更新]** を選択して証明書の状態を確認します。 確認が完了するまで数分かかる場合があります。
 
-たとえば、1234abcd というドメイン確認トークンを使用して azure.com の標準証明書を購入しようとしている場合、http://azure.com/1234abcd.html に対して Web 要求を行うと、1234abcd が返されます。 
+たとえば、1234abcd というドメイン確認トークンを使用して azure.com の標準証明書を購入しようとしている場合、 http://azure.com/1234abcd.html に対して Web 要求を行うと、1234abcd が返されます。 
 
 > [!IMPORTANT]
 > 証明書の注文では、ドメイン確認操作を完了するまでの日数は 15 日のみです。 15 日を過ぎると証明機関は証明書を拒否し、その証明書の課金は行われません。 この状況では、この証明書を削除し、もう一度やり直します。
@@ -167,7 +167,7 @@ Azure Portal 内の Web Apps または App Service ドメインからドメイ�
 
 - サブスクリプションの所有者でないため、ドメインを購入する権限がありません。
 
-    **解決策**: アカウントに[所有者ロールを追加](../billing/billing-add-change-azure-subscription-administrator.md)します。 または、サブスクリプションの管理者に連絡し、ドメインを購入する権限を取得します。
+    **解決策**: アカウントに[所有者ロールを割当て](../role-based-access-control/role-assignments-portal.md)ます。 または、サブスクリプションの管理者に連絡し、ドメインを購入する権限を取得します。
 - サブスクリプションで、ドメイン購入の上限に達しました。 現在の上限は 20 です。
 
     **解決策**: 上限の増加を依頼するには、[Azure サポート](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)へお問い合わせください。

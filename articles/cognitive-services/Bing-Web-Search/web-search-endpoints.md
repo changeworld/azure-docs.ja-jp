@@ -1,20 +1,21 @@
 ---
-title: Web Search エンドポイント | Microsoft Docs
+title: Web Search エンドポイント
+titleSuffix: Azure Cognitive Services
 description: Web Search API エンドポイントの概要。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: v-gedod
-ms.openlocfilehash: 72fbe1a0eb4379ad032e649f7299e37a0214adfb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3058ca6cf0eb99486dd4c269d43b274fb367f7a9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372944"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125461"
 ---
 # <a name="web-search-endpoint"></a>Web Search エンドポイント
 **Web Search API** は、Web ページ、ニュース、画像、動画、[エンティティ](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)を返します。 エンティティには、人物、場所、またはトピックに関する概要情報が含まれます。

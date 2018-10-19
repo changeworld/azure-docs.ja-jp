@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: maheshu
-ms.openlocfilehash: 02b722feece5458a31e89e4041d51104b94e52c6
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 8747e597883d96756e676061bde04b920b13cadd
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505867"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023207"
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: よく寄せられる質問 (FAQ)
 このページでは、Azure Active Directory Domain Services に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -96,6 +96,9 @@ Azure AD Domain Services のマネージド ドメインの既定のパスワー
 
 ### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインを一時停止することはできますか。 
 いいえ。 Azure AD Domain Services のマネージド ドメインを有効にすると、マネージド ドメインを無効化/削除するまで、選択した仮想ネットワーク内でサービスを使用できます。 サービスを一時停止する方法はありません。 課金は、マネージド ドメインを削除するまで、1 時間ごとに続行されます。
+
+### <a name="can-i-failover-azure-ad-domain-services-to-another-region-for-a-dr-event"></a>DR イベント時に Azure AD Domain Services を別のリージョンにフェールオーバーできますか。
+いいえ。  Azure AD Domain Services では現在、Geo 冗長デプロイ モデルを提供していません。 Azure リージョン内の 1 つの仮想ネットワークに限定されています。 複数の Azure リージョンを利用する場合、Azure IaaS VM 上で Active Directory ドメイン コントローラーを実行する必要があります。  アーキテクチャのガイダンスは[こちら](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-extend-domain)を参照してください。
 
 ### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Enterprise Mobility Suite (EMS) の一部として Azure AD Domain Services を取得できますか。 Azure AD Domain Services を使用するのに Azure AD Premium が必要ですか。
 いいえ。 Azure AD Domain Services は従量課金制の Azure サービスであり、EMS には含まれていません。 Azure AD Domain Services は、Azure AD のすべてのエディション (Free、Basic、および Premium) で使用できます 。 使用状況に応じて、時間単位で課金されます。

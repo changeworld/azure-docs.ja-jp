@@ -1,40 +1,26 @@
 ---
-title: 'Azure 証明書認証用の P2S VPN クライアント構成ファイルを作成およびインストールする: PowerShell: Azure | Microsoft Docs'
-description: P2S 証明書認証のために、Windows、Linux (strongSwan)、および Mac OS X VPN クライアント構成ファイルを作成してインストールします。
+title: 'Azure 証明書認証用の P2S VPN クライアント構成ファイルを作成およびインストールする: Azure | Microsoft Docs'
+description: P2S 証明書認証のために、Windows、Linux、Linux (strongSwan)、および Mac OS X VPN クライアント構成ファイルを作成してインストールします。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/07/2018
+ms.date: 09/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: 2ae16d76dce01488403e9f13684e719f92eb80c5
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: cdb1fa7dd9bada5615a0dcd706184a5213ff917b
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35235833"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299255"
 ---
-# <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-point-to-site-configurations"></a>ネイティブ Azure 証明書認証のポイント対サイト構成のための VPN クライアント構成ファイルを作成およびインストールする
+# <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
-VPN クライアント構成ファイルは、ZIP ファイルに含まれています。 構成ファイルでは、Windows、Mac IKEv2 VPN、Linux のネイティブ クライアントが、ネイティブ Azure 証明書認証を使用するポイント対サイト接続を介して VNet に接続するために必要な設定を提供します。
+VPN クライアント構成ファイルは、ZIP ファイルに含まれています。 構成ファイルでは、Windows、Mac IKEv2 VPN、Linux のネイティブ クライアントが、ネイティブ Azure 証明書認証を使用するポイント対サイト接続を介して VNet に接続するために必要な設定を提供します。 ポイント対サイト接続について詳しくは、「[ポイント対サイト VPN について](point-to-site-about.md)」を参照してください。
 
 >[!IMPORTANT]
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
 >
-
-### <a name="workflow"></a>P2S ワークフロー
-
-  1. P2S 接続用に Azure VPN ゲートウェイを設定する。
-  2. ルート証明書とクライアント証明書を生成する。 ルート証明書の公開キーを Azure にアップロードし、クライアント証明書をクライアント デバイスにインストールします。 証明書は、接続するユーザーの認証に使用されます。
-  3. 選択した認証オプションの VPN クライアント構成を取得し、それを使用して Windows および Mac デバイスで VPN クライアントを設定する。 これにより、ポイント対サイト接続経由で Azure VNet に接続できます。
 
 >[!NOTE]
 >クライアント構成ファイルは、VNet の VPN 構成に固有です。 VPN プロトコルの種類や認証の種類など、VPN クライアント構成ファイルの生成後にポイント対サイト VPN 構成に対する変更があった場合は、ユーザー デバイス用に新しい VPN クライアント構成ファイルを生成してください。
@@ -68,7 +54,7 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
   ```
 2. ブラウザーに URL をコピーして、zip ファイルをダウンロードし、ファイルを解凍してフォルダーを表示します。
 
-## <a name="installwin"></a>インストール - Windows
+## <a name="installwin"></a>Windows
 
 バージョンがクライアントのアーキテクチャと一致する限り、各 Windows クライアント コンピューターで同じ VPN クライアント構成パッケージを使用できます。 サポートされているクライアント オペレーティング システムの一覧については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#P2S)」のポイント対サイトに関するセクションを参照してください。
 
@@ -84,9 +70,9 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 3. クライアント コンピューターで **[ネットワークの設定]** に移動し、**[VPN]** をクリックします。 VPN 接続により、その接続先の仮想ネットワークの名前が表示されます。 
 4. 接続を試行する前に、クライアント コンピューターにクライアント証明書をインストール済みであることを確認します。 ネイティブ Azure 証明書の認証タイプを使用する場合、認証にはクライアント証明書が必要です。 証明書の生成の詳細については、「[証明書の生成](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)」をご覧ください。 クライアント証明書のインストール方法については、[クライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)に関するページをご覧ください。
 
-## <a name="installmac"></a>インストール - Mac (OS X)
+## <a name="installmac"></a>Mac (OS X)
 
-Azure では、ネイティブの Azure 証明書の認証用の mobileconfig ファイルは提供されません。 Azure に接続するすべての Mac で、ネイティブの IKEv2 VPN クライアントを手動で構成する必要があります。 **Generic** フォルダーには、構成に必要な情報がすべて揃っています。 ダウンロードに、Generic フォルダーが表示されない場合は、IKEv2 がトンネルの種類として選択されていない可能性があります。 IKEv2 を選択したら、もう一度 zip ファイルを生成して、Generic フォルダーを取得します。 Generic フォルダーには、次のファイルが含まれています。
+ Azure に接続するすべての Mac で、ネイティブの IKEv2 VPN クライアントを手動で構成する必要があります。 Azure では、ネイティブの Azure 証明書の認証用の mobileconfig ファイルは提供されません。 **Generic** には、構成に必要な情報がすべて揃っています。 ダウンロードに、Generic フォルダーが表示されない場合は、IKEv2 がトンネルの種類として選択されていない可能性があります。 IKEv2 を選択したら、もう一度 zip ファイルを生成して、Generic フォルダーを取得します。<br>Generic フォルダーには、次のファイルが含まれています。
 
 * **VpnSettings.xml**。サーバー アドレスやトンネルの種類など、重要な設定が含まれています。 
 * **VpnServerRoot.cer**。P2S 接続の設定中に Azure VPN ゲートウェイを検証するために必要なルート証明書が含まれています。
@@ -100,6 +86,7 @@ Azure では、ネイティブの Azure 証明書の認証用の mobileconfig �
   
     >[!NOTE]
     >証明書をダブルクリックしても、**[追加]** ダイアログが表示されない場合がありますが、証明書は正しいストアにインストールされています。 証明書のカテゴリの下にあるログイン キーチェーンで証明書を確認できます。
+    >
   
 2. P2S 設定を構成したときに、Azure にアップロードしたルート証明書によって発行されたクライアント証明書が、インストール済みであることを確認します。 これは、前の手順でインストールした VPNServerRoot とは異なります。 クライアント証明書は認証に使用され、必須です。 証明書の生成の詳細については、「[証明書の生成](vpn-gateway-howto-point-to-site-resource-manager-portal.md#generatecert)」をご覧ください。 クライアント証明書のインストール方法については、[クライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)に関するページをご覧ください。
 3. **[ネットワーク]** ダイアログを開き、**[ネットワーク環境設定]** で **[+]** をクリックして、Azure VNet への P2S 接続用に新しい VPN クライアント接続プロファイルを作成します。
@@ -118,13 +105,13 @@ Azure では、ネイティブの Azure 証明書の認証用の mobileconfig �
   ![証明書](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **[Choose An Identity]\(ID の選択\)** では、選択できる証明書の一覧が表示されます。 適切な証明書を選択し、**[続ける]** をクリックします。
 
-  ![ID](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+  ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. **[ローカル ID]** フィールドに、(手順 6 の) 証明書の名前を指定します。 この例では、"ikev2Client.com" です。 次に、**[適用]** ボタンをクリックして変更を保存します。
 
   ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 9. **[ネットワーク]** ダイアログで、**[適用]** をクリックしてすべての変更を保存します。 次に、**[接続]** をクリックして、Azure VNet への P2S 接続を開始します。
 
-## <a name="installlinux"></a>インストール - Linux (strongSwan)
+## <a name="linuxgui"></a>Linux (strongSwan GUI)
 
 ### <a name="extract-the-key-and-certificate"></a>キーと証明書を抽出する
 
@@ -144,9 +131,9 @@ strongSwan の場合、キーと証明書をクライアント証明書 (.pfx �
   C:\ OpenSLL-Win64\bin> openssl pkcs12 -in clientcert.pfx -nokeys -out publiccert.pem -nodes
   ```
 
-### <a name="install"></a>Install
+### <a name="install"></a>インストールと構成
 
-次の手順は、Ubuntu 17.0.4 上で strongSwan 5.5.1 を使用して作成されました。 Ubuntu 16.0.10 は、strongSwan GUI をサポートしていません。 Ubuntu 16.0.10 を使う場合は、コマンド ラインを使う必要があります。 Linux および strongSwan のバージョンによっては、次に示す例が実際に表示される画面と一致しない可能性があります。
+次の手順は、Ubuntu 17.0.4 上で strongSwan 5.5.1 を使用して作成されました。 Ubuntu 16.0.10 は、strongSwan GUI をサポートしていません。 Ubuntu 16.0.10 を使う場合は、[コマンド ライン](#linuxinstallcli)を使う必要があります。 Linux および strongSwan のバージョンによっては、次に示す例が実際に表示される画面と一致しない可能性があります。
 
 1. **[端末]** を起動し、例のコマンドを実行して **strongSwan** とその Network Manager をインストールします。 *libcharon-extra-plugins* に関連するエラーが表示される場合は、"strongswan-plugin-eap-mschapv2" に置き換えます。
 
@@ -171,8 +158,56 @@ strongSwan の場合、キーと証明書をクライアント証明書 (.pfx �
   ![内部 IP アドレスを要求する](./media/point-to-site-vpn-client-configuration-azure-cert/inneripreq.png)
 8. **[Network Manager]** アイコン (上矢印/下矢印) をクリックして、**[VPN 接続]** にポインターを合わせます。 作成した VPN 接続が表示されます。 クリックして接続を開始します。
 
+## <a name="linuxinstallcli"></a>Linux (strongSwan CLI)
+
+### <a name="install-strongswan"></a>strongSwan のインストール
+
+次の CLI コマンドを使用するか、[GUI](#install) の strongSwan の手順を使用して、strongSwan をインストールします。
+
+1. `apt-get install strongswan-ikev2 strongswan-plugin-eap-tls`
+2. `apt-get install libstrongswan-standard-plugins`
+
+### <a name="install-and-configure"></a>インストールと構成
+
+1. Azure portal から VPNClient パッケージをダウンロードします。
+2. ファイルを抽出します。
+3. VpnServerRoot.cer を **Generic** フォルダーから /etc/ipsec.d/cacerts にコピーするか移動します。
+4. cp client.p12 を **Generic** フォルダーから /etc/ipsec.d/private/ にコピーするか移動します。
+5. VpnSettings.xml ファイルを開き、<VpnServer> の値をコピーします。 次の手順でこの値を使用します。
+6. 以下のサンプルの値を調整し、/etc/ipsec.conf 構成にこのサンプルを追加します。
+  
+  ```
+  conn azure
+  keyexchange=ikev2
+  type=tunnel
+  leftfirewall=yes
+  left=%any
+  leftauth=eap-tls
+  leftid=%client # use the DNS alternative name prefixed with the %
+  right= Enter the VPN Server value here# Azure VPN gateway address
+  rightid=%Enter the VPN Server value here# Azure VPN gateway address, prefixed with %
+  rightsubnet=0.0.0.0/0
+  leftsourceip=%config
+  auto=add
+  ```
+6. 次のコードを */etc/ipsec.secrets* に追加します。
+
+  ```
+  : P12 client.p12 'password' # key filename inside /etc/ipsec.d/private directory
+  ```
+
+7. 次のコマンドを実行します。
+
+  ```
+  # ipsec restart
+  # ipsec up azure
+  ```
+
 ## <a name="next-steps"></a>次の手順
 
 [P2S 構成を完了する](vpn-gateway-howto-point-to-site-rm-ps.md)ための記事に戻ります。
 
-P2S のトラブルシューティングについては、「[Azure ポイント対サイト接続の問題のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)」および「[Mac OS X VPN クライアントからのポイント対サイト VPN 接続のトラブルシューティング](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)」をご覧ください。
+P2S 接続のトラブルシューティングを行うには、次の記事を参照してください。
+
+  * [Azure ポイント対サイト接続のトラブルシューティング](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+  * [Mac OS X VPN クライアントからの VPN 接続のトラブルシューティング](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)

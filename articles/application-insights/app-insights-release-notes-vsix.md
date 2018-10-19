@@ -10,15 +10,16 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/20/2017
-ms.author: mbullwin; aruna
-ms.openlocfilehash: 53a4d7fe1d92826b92866e170fd731edbd5ba1bf
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: aruna
+ms.author: mbullwin
+ms.openlocfilehash: 016d13a08ea3fe591529ad6dd29b25534d9c603d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33869548"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303746"
 ---
 # <a name="release-notes-for-developer-analytics-tools"></a>Developer Analytics Tools のリリース ノート
 
@@ -193,7 +194,7 @@ Windows フォーム プロジェクト ノードのコンテキスト メニュ
 
 このウィザードに、アプリのバージョンを指定するための新しいフィールドが追加されていることに注目してください。 ユニバーサル Windows アプリの場合、この情報はマニフェストから取得されます。 あいにく Windows フォーム アプリに関しては、これと同等の機能がありません。 手動で指定する必要があります。
 
-その他のフローはユニバーサル Windows アプリと同様です。ビルドを選択し、リリース オプションを選択して、リリース ノートを追加し、アップロードして、HockeyApp ポータルで管理します。
+その他のフローはユニバーサル Windows アプリと同様です。Azure Pipelines オプションを選択し、リリース ノートを追加し、アップロードして、HockeyApp ポータルで管理します。
 
 このように操作は簡単です。 ぜひ試してご意見をお聞かせください。
 

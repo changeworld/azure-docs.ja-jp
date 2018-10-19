@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: e431d89e5d74f5712f6f109075201c95dc233bd3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f21098381d75a4843e9300beaae687adc6ec107d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838553"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303763"
 ---
 # <a name="individual-contributor-tasks"></a>個々の共同作成者のタスク
 
@@ -34,14 +34,14 @@ ms.locfileid: "34838553"
 
 TDSP でデータ サイエンス プロジェクトを実行する手順については、「[Execution of Data Science Projects](project-execution.md)」(データ サイエンス プロジェクトの実行) を参照してください。 
 
->[AZURE.NOTE] ここでは、Visual Studio Team Services (VSTS) を使用して TDSP チーム環境を設定するために必要な手順の概要を説明します。 VSTS を使用してこれらのタスクを達成する方法を示しているのは、Microsoft がこの方法で TDSP を実装しているためです。 グループで別のコード ホスティング プラットフォームを使用している場合も、一般にチーム リーダーが実行する必要があるタスクは変わりません。 ただし、これらのタスクを実行する方法が異なります。
+>[AZURE.NOTE] 以下の方法で Azure DevOps を使用して TDSP チーム環境を設定するために必要な手順の概要について説明します。 Azure DevOps でこれらのタスクを達成する方法を指定するのは、それが Microsoft で TDSP を実装する方法であるためです。 グループで別のコード ホスティング プラットフォームを使用している場合も、一般にチーム リーダーが実行する必要があるタスクは変わりません。 ただし、これらのタスクを実行する方法が異なります。
 
 
 ## <a name="repositories-and-directories"></a>リポジトリとディレクトリ
 
 このチュートリアルでは、リポジトリとディレクトリの省略名を使用します。 これらの名前により、リポジトリとディレクトリ間での操作がわかりやすくなります。 以降のセクションでは次の表記を使用します (**R** は Git リポジトリを表し、**D** は DSVM 上のローカル ディレクトリを表します)。
 
-- **R2**: グループ マネージャーが VSTS グループ サーバーで設定した Git の GroupUtilities リポジトリ。
+- **R2**: グループ マネージャーが Azure DevOps グループ サーバーで設定した Git の GroupUtilities リポジトリ。
 - **R4**: チーム リーダーが設定した Git の TeamUtilities リポジトリ。
 - **R5**: プロジェクト リーダーが設定した Git の Project リポジトリ。
 - **D2**: R2 から複製されたローカル ディレクトリ。
@@ -61,7 +61,7 @@ TDSP でデータ サイエンス プロジェクトを実行する手順につ�
 
 - マシンに Git をインストールする必要があります。 データ サイエンス仮想マシン (DSVM) を使用している場合は、Git がプレインストールされているので、インストールは不要です。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。  
 - **Windows DSVM** を使用している場合は、マシンに [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) がインストールされている必要があります。 README.md ファイルで、下へスクロールして「**Download and Install**」(ダウンロードとインストール) セクションを表示し、「*latest installer*」(最新のインストーラー) をクリックします。 これにより、最新のインストーラーのページに移動します。 このページから .exe インストーラーをダウンロードして実行します。 
-- **Linux DSVM** を使用している場合は、DSVM で SSH 公開キーを作成し、グループの VSTS サーバーに追加します。 SSH の詳細については、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
+- **Linux DSVM** を使用している場合は、DSVM で SSH 公開キーを作成し、それをグループの Azure DevOps Services に追加します。 SSH の詳細については、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
 - DSVM にマウントする必要がある何らかの Azure ファイル ストレージをチーム リーダーやプロジェクト リーダーが作成した場合は、そこから Azure ファイル ストレージ情報を取得する必要があります。 
 
 ## <a name="step-1-3-clone-group-team-and-project-repositories-to-local-machine"></a>手順 1 ～ 3: グループ、チーム、およびプロジェクトのリポジトリをローカル コンピューターに複製する

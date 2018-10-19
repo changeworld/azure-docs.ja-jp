@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5c2cd38001a9645011bbab84cff3b9366aa64b1d
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 3bd77891cc7508eeb1fee2152d37478c654a7e37
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34206142"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44294705"
 ---
 # <a name="service-fabric-patterns-and-scenarios"></a>Service Fabric のパターンとシナリオ
 Azure Service Fabric を使用して大規模なマイクロサービスを構築することを検討している場合は、このサービスとしてのプラットフォーム (PaaS) を設計および構築した専門家から学んでください。 適切なアーキテクチャから始め、アプリケーションのリソースを最適化する方法を確認します。 「[Service Fabric Patterns and Practices (Service Fabric のパターンと実践)](https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=mudwqISGD_6005167344)」コースでは、Service Fabric のシナリオとアプリケーション領域について、実際のお客様からよく寄せられる質問に答えます。
@@ -62,7 +62,7 @@ Azure IoT パイプライン、マルチテナント、大規模な IoT など�
 </a></td><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=kfqFWMSGD_6205167344">IoT</a></td></tr>
 </table>
 
-## <a name="gaming"></a>ゲーム
+## <a name="gaming"></a>Gaming
 ターンベースのゲーム、対話型ゲーム、既存のゲーム エンジンのホストについて説明します。
 
 <table><tr><th>ビデオ</th><th>PowerPoint デッキ</th></tr>
@@ -72,7 +72,7 @@ Azure IoT パイプライン、マルチテナント、大規模な IoT など�
 </table>
 
 ## <a name="continuous-delivery"></a>継続的デリバリー
-Visual Studio Team Services による継続的インテグレーション/継続的デリバリー、ワークフローの構築/パッケージ化/公開、マルチ環境のセットアップ、サービス パッケージ/共有などの概念について説明します。
+Azure Pipelines による継続的インテグレーション/継続的デリバリー、ワークフローの構築/パッケージ化/公開、マルチ環境のセットアップ、サービス パッケージ/共有などの概念について説明します。
 
 <table><tr><th>ビデオ</th><th>PowerPoint デッキ</th></tr>
 <tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/service-fabric-patterns-and-practices-16925?l=78h5ofSGD_305167344">

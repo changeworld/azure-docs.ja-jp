@@ -5,23 +5,23 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 09/01/2018
+ms.date: 09/06/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b601a3d23b23faa16925881a54e2ceba85c800f8
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 8e77a33667bd6794f667348958e0edb9c6a8fb0d
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669067"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094979"
 ---
 # <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Azure Multi-Factor Authentication プロバイダーをいつ使用するか
 
 Azure Active Directory を持つグローバル管理者と Office 365 ユーザーは、既定で 2 段階認証を使用できます。 ただし、[高度な機能](howto-mfa-mfasettings.md)が必要な場合は、通常版の Multi-Factor Authentication (MFA) をご購入ください。
 
-Azure Multi-Factor Authentication プロバイダーは、Azure Multi-Factor Authentication が提供する機能を、**ライセンスを持っていない**ユーザーが利用できるようにするために使用されます。 
+Azure Multi-Factor Authentication プロバイダーは、Azure Multi-Factor Authentication が提供する機能を、**ライセンスを持っていない**ユーザーが利用できるようにするために使用されます。
 
 社内の全ユーザーを対象としたライセンスを所有している場合、Azure Multi-Factor Auth プロバイダーは必要ありません。 Azure Multi-Factor Authentication プロバイダーの作成が必要になるのは、ライセンスが割り当てられていないユーザーに追加で 2 段階認証を適用しなければならないケースのみです。
 
@@ -36,41 +36,16 @@ SDK をダウンロードするには、Azure MFA、AAD Premium、またはそ�
 
 ## <a name="what-is-an-mfa-provider"></a>MFA プロバイダーとは
 
-Azure Multi-factor Authentication のライセンスを持っていない場合は、ユーザーに 2 段階認証を要求する認証プロバイダーを作成できます。
-
 2 種類の認証プロバイダーがあり、違いは Azure サブスクリプションの課金方法です。 認証ごとのオプションは、1 か月間にテナントに対して実行された認証の数を計算します。 このオプションは、ときどき認証を行うユーザーが多数いる場合に最適です。 ユーザーごとのオプションは、1 か月間に 2 段階認証を実行するテナント内の個人の数を計算します。 このオプションは、ライセンスを持つユーザーはいますが、ライセンス制限を超えてより多くのユーザーに MFA を拡張する必要がある場合に最適です。
-
-## <a name="create-an-mfa-provider"></a>MFA プロバイダーの作成
-
-Azure Portal で Azure Multi-Factor Authentication プロバイダーを作成するには、次の手順に従います。
-
-1. [Azure Portal](https://portal.azure.com) にグローバル管理者としてサインインします。
-2. **[Azure Active Directory]** > **[MFA Server]** > **[プロバイダー]** を選択します。
-
-   ![プロバイダー][Providers]
-
-3. **[追加]** を選択します。
-4. 次の各フィールドの内容を入力し、**[追加]** を選択します。
-   - **名前** - プロバイダーの名前。
-   - **使用モデル** – 次の 2 つのオプションのいずれかを選ぶことができます。
-      * 認証ごと – 認証ごとに課金される購入モデル。 通常、コンシューマー向けのアプリケーションで Azure Multi-factor Authentication を使用するシナリオで使用されます。
-      * 有効ユーザーごと – 有効ユーザーごとに課金される購入モデル。 通常、Office 365 などのアプリケーションにアクセスに従業員向けに使用されます。 Azure MFA のライセンスを既に許諾されているユーザーがいる場合には、このオプションを選択します。
-   - **サブスクリプション** - プロバイダーを使用した 2 段階認証アクティビティの課金対象となる Azure サブスクリプション。
-   - **ディレクトリ** - プロバイダーに関連付けられている Azure Active Directory テナント。
-      * プロバイダーの作成に、Azure AD ディレクトリは必要ありません。 Azure Multi-Factor Authentication Server をダウンロードするだけであれば、空欄にしておいてください。
-      * 高度な機能を利用するためには、Azure AD ディレクトリにプロバイダーを関連付ける必要があります。
-      * 1 つの Azure AD ディレクトリに関連付けることができるプロバイダーは 1 つだけです。
 
 ## <a name="manage-your-mfa-provider"></a>MFA プロバイダーの管理
 
-MFA プロバイダーの作成後に使用モデル (有効化されたユーザーごと、または認証ごと) を変更することはできません。 ただし、MFA プロバイダーを削除すれば、別の使用モデルで新しい MFA プロバイダーを作成できます。
+MFA プロバイダーの作成後に使用モデル (有効化されたユーザーごと、または認証ごと) を変更することはできません。
 
-現在の Multi-Factor Auth プロバイダーが Azure AD ディレクトリ (Azure AD テナントとも呼ばれます) に関連付けられている場合は、その MFA プロバイダーを安全に削除し、同じ Azure AD テナントにリンクされた新しい MFA プロバイダーを作成することができます。 また、MFA が有効化されているすべてのユーザーに対応できる、十分な数のライセンスを購入している場合は、MFA プロバイダーをすべて削除することもできます。
+MFA が有効化されているすべてのユーザーに対応できる、十分な数のライセンスを購入している場合は、MFA プロバイダーをすべて削除することもできます。
 
-MFA プロバイダーが Azure AD テナントにリンクされていない場合、または新しい MFA プロバイダーを別の Azure AD テナントにリンクする場合、ユーザー設定と構成オプションは転送されません。 また、既存の Azure MFA サーバーは、新しい MFA プロバイダーによって生成されるアクティブ化資格情報を使用して再アクティブ化する必要があります。 MFA Server を新しい MFA プロバイダーにリンクするために再アクティブ化しても、電話呼び出しやテキスト メッセージによる認証には影響ありませんが、モバイル アプリ通知は、各ユーザーがモバイル アプリを再アクティブ化するまで機能しなくなります。
+MFA プロバイダーが Azure AD テナントにリンクされていない場合、または新しい MFA プロバイダーを別の Azure AD テナントにリンクする場合、ユーザー設定と構成オプションは転送されません。 また、既存の Azure MFA サーバーは、MFA プロバイダーによって生成されるアクティブ化資格情報を使用して再アクティブ化する必要があります。 MFA Server を MFA プロバイダーにリンクするために再アクティブ化しても、電話呼び出しやテキスト メッセージによる認証には影響ありませんが、モバイル アプリ通知は、各ユーザーがモバイル アプリを再アクティブ化するまで機能しなくなります。
 
 ## <a name="next-steps"></a>次の手順
 
 [Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)
-
-[Providers]: ./media/concept-mfa-authprovider/add-providers.png "MFA プロバイダーの追加"

@@ -3,26 +3,28 @@ title: Azure Security Center でのセキュリティ ポリシーの設定 | Mi
 description: この記事は、Azure Security Center でのセキュリティ ポリシーを構成する場合に役立ちます。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/05/2018
-ms.author: terrylan
-ms.openlocfilehash: f12cede430a94da937a874ade2e50e4ed9860da9
-ms.sourcegitcommit: 4f9fa86166b50e86cf089f31d85e16155b60559f
+ms.date: 09/3/2018
+ms.author: rkarlin
+ms.openlocfilehash: c68b55beba445b7f5d30efe7155a47e7f6f76690
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34756993"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161290"
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Azure Security Center でのセキュリティ ポリシーの設定
 この記事は、Security Center でのセキュリティ ポリシーを構成する場合に役立ちます。
+
+PowerShell を使用してポリシーを設定する方法については、「[クイック スタート: Azure RM PowerShell モジュールを使用してポリシーの割り当てを作成し、準拠していないリソースを特定する](../azure-policy/assign-policy-definition-ps.md)」を参照してください。
 
 ## <a name="how-security-policies-work"></a>セキュリティ ポリシーのしくみ
 Security Center では、Azure サブスクリプションごとに自動で既定のセキュリティ ポリシーが作成されます。 Security Center でポリシーを編集したり、ポリシーのコンプライアンスを監視したりすることができます。
@@ -37,13 +39,12 @@ Security Center では、各 Azure サブスクリプションの既定のセキ
 
 1. Azure ポータルにサインインします。
 
-2. **Security Center** ダッシュボードの **[全般]** で、**[セキュリティ ポリシー]** を選択します。
+2. **Security Center** ダッシュボードの **[ポリシーとコンプライアンス]** で、**[セキュリティ ポリシー]** を選択します。
 
 3. セキュリティ ポリシーを有効にするサブスクリプションを選択します。
 
-4. **[ポリシー コンポーネント]** セクションで、**[セキュリティ ポリシー]** を選択します。  
-    これが、Security Center によって割り当てられる既定のポリシーとなります。 利用可能なセキュリティ推奨事項について、そのオンとオフを切り替えることができます。
-
+4. サブスクリプションに対して有効にするポリシーをオンにします。 選択した各ポリシーに基づく推奨事項が表示されます。 
+  ![ポリシー一覧](./media/security-center-policies/policies.png)
 5. 編集が終了したら、**[保存]** を選択します。
 
 ## <a name="available-security-policy-definitions"></a>利用可能なセキュリティ ポリシーの定義

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 30ca8fe89105584b1062c5a068e107bdfde154fc
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: be8adf9779c2d168c0ac7a0ed7dbc3e85935df68
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579522"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44293730"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>プライベート Docker コンテナー レジストリによる認証
 
@@ -48,7 +48,7 @@ az acr login --name <acrName>
 
   * "*閲覧者*": レジストリからオーケストレーション システム (Kubernetes、DC/OS、Docker Swarm など) へのコンテナーのデプロイ。 また、コンテナー レジストリから、[AKS](../aks/index.yml)、[App Service](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](/azure/service-fabric/) などの関連する Azure サービスにプルすることもできます。
 
-  * "*共同作成者*": コンテナー イメージを作成してレジストリにプッシュする、継続的インテグレーションおよびデプロイ ソリューション (Visual Studio Team Services (VSTS) や Jenkins など)。
+  * "*共同作成者*": コンテナー イメージを作成してレジストリにプッシュする、継続的インテグレーションおよびデプロイ ソリューション (Azure DevOps や Jenkins など)。
 
 > [!TIP]
 > [az ad sp reset-credentials](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-reset-credentials) コマンドを実行することで、サービス プリンシパルのパスワードを再生成できます。

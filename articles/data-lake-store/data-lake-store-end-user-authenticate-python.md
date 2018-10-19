@@ -1,6 +1,6 @@
 ---
-title: 'エンドユーザー認証: Azure Active Directory を使用した Python と Data Lake Store | Microsoft Docs'
-description: Python と Azure Active Directory を使用した Data Lake Store でエンドユーザー認証を行う方法について説明します
+title: 'エンドユーザー認証: Azure Active Directory を使用した Python と Azure Data Lake Storage Gen1 | Microsoft Docs'
+description: Python と Azure Active Directory を使用した Azure Data Lake Storage Gen1 によるエンドユーザー認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 60cdcc2c12272b48d61de0afcdd3c361f1795f37
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1ba7dbd9436a15989564a806a7c8f586c01e5243
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624116"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128071"
 ---
-# <a name="end-user-authentication-with-data-lake-store-using-python"></a>Data Lake Store での Python を使用したエンドユーザー認証
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Azure Data Lake Storage Gen1 による Python を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
 > * [Java の使用](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [.NET SDK の使用](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,12 +27,12 @@ ms.locfileid: "34624116"
 > 
 > 
 
-この記事では、Python SDK を使用して、Azure Data Lake Store に対するエンドユーザー認証を行う方法について説明します。 エンドユーザー認証は、2 つのカテゴリに分割できます。
+この記事では、Python SDK を使用して、Azure Data Lake Storage Gen1 に対するエンドユーザー認証を行う方法について説明します。 エンドユーザー認証は、2 つのカテゴリに分割できます。
 
 * 多要素認証なしのエンドユーザー認証
 * 多要素認証によるエンドユーザー認証
 
-この記事では、両方のオプションについて説明します。 Python を使用した Data Lake Store に対するサービス間認証については、「[Service-to-service authentication with Data Lake Store using Python (Data Lake Store での Python を使用したサービス間認証)](data-lake-store-service-to-service-authenticate-python.md)」を参照してください。
+この記事では、両方のオプションについて説明します。 Python を使用した Data Lake Storage Gen1 によるサービス間認証については、「[Service-to-service authentication with Data Lake Storage Gen1 using Python (Python を使用した Data Lake Storage Gen1 によるサービス間認証)](data-lake-store-service-to-service-authenticate-python.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -40,15 +40,15 @@ ms.locfileid: "34624116"
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* **Azure Active Directory "ネイティブ" アプリケーションを作成します**。 [Azure Active Directory を使用した Data Lake Store に対するエンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)のステップを完了している必要があります。
+* **Azure Active Directory "ネイティブ" アプリケーションを作成します**。 「[End-user authentication with Data Lake Storage Gen1 using Azure Active Directory (Azure Active Directory を使用した Data Lake Storage Gen1 でのエンドユーザー認証)](data-lake-store-end-user-authenticate-using-active-directory.md)」のステップを完了している必要があります。
 
 ## <a name="install-the-modules"></a>モジュールをインストールする
 
-Python を使用して Data Lake Store を操作するには、3 つのモジュールをインストールする必要があります。
+Python を使用して Data Lake Storage Gen1 を操作するには、3 つのモジュールをインストールする必要があります。
 
 * `azure-mgmt-resource` モジュール。これには、Active Directory 用の Azure モジュールなどが含まれています。
-* `azure-mgmt-datalake-store` モジュール。これには、Azure Data Lake Store アカウント管理操作が含まれています。 このモジュールの詳細については、[Azure Data Lake Store 管理モジュール リファレンス](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)を参照してください。
-* `azure-datalake-store` モジュール。これには、Azure Data Lake Store ファイルシステム操作が含まれています。 このモジュールの詳細については、[Azure Data Lake Store ファイルシステム モジュール リファレンス](http://azure-datalake-store.readthedocs.io/en/latest/)を参照してください。
+* `azure-mgmt-datalake-store` モジュール。これには、Azure Data Lake Storage Gen1 アカウント管理操作が含まれています。 このモジュールについて詳しくは、[Azure Data Lake Storage Gen1 管理モジュール リファレンス](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python)をご覧ください。
+* `azure-datalake-store` モジュール。これには、Azure Data Lake Storage Gen1 ファイルシステム操作が含まれています。 このモジュールについて詳しくは、[azure-datalake-store ファイルシステム モジュール リファレンス](http://azure-datalake-store.readthedocs.io/en/latest/)をご覧ください。
 
 モジュールをインストールするには、次のコマンドを使用します。
 
@@ -68,11 +68,11 @@ pip install azure-datalake-store
     ## Use this for Azure AD authentication
     from msrestazure.azure_active_directory import AADTokenCredentials
 
-    ## Required for Azure Data Lake Store account management
+    ## Required for Azure Data Lake Storage Gen1 account management
     from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
     from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
-    ## Required for Azure Data Lake Store filesystem management
+    ## Required for Azure Data Lake Storage Gen1 filesystem management
     from azure.datalake.store import core, lib, multithread
 
     # Common Azure imports
@@ -90,7 +90,7 @@ pip install azure-datalake-store
 
 ### <a name="for-account-management"></a>アカウント管理を行う場合
 
-Data Lake Store アカウントに対するアカウント管理操作のために Azure AD で認証する場合、次のスニペットを使用します。 次のスニペットは、多要素認証を使用してアプリケーションを認証するために使用できます。 既存の Azure AD **ネイティブ** アプリケーションに対して以下の値を指定します。
+Data Lake Storage Gen1 アカウントに対するアカウント管理操作のために Azure AD で認証する場合、次のスニペットを使用します。 次のスニペットは、多要素認証を使用してアプリケーションを認証するために使用できます。 既存の Azure AD **ネイティブ** アプリケーションに対して以下の値を指定します。
 
     authority_host_url = "https://login.microsoftonline.com"
     tenant = "FILL-IN-HERE"
@@ -107,7 +107,7 @@ Data Lake Store アカウントに対するアカウント管理操作のため�
 
 ### <a name="for-filesystem-operations"></a>ファイルシステム操作を行う場合
 
-Data Lake Store アカウントに対するファイルシステム操作のために Azure AD で認証する場合、これを使用します。 次のスニペットは、多要素認証を使用してアプリケーションを認証するために使用できます。 既存の Azure AD **ネイティブ** アプリケーションに対して以下の値を指定します。
+Data Lake Storage Gen1 アカウントに対するファイルシステム操作のために Azure AD で認証する場合、これを使用します。 次のスニペットは、多要素認証を使用してアプリケーションを認証するために使用できます。 既存の Azure AD **ネイティブ** アプリケーションに対して以下の値を指定します。
 
     adlCreds = lib.auth(tenant_id='FILL-IN-HERE', resource = 'https://datalake.azure.net/')
 
@@ -116,8 +116,8 @@ Data Lake Store アカウントに対するファイルシステム操作のた�
 これは非推奨です。 詳細については、[Python SDK を使用した Azure 認証](https://docs.microsoft.com/python/azure/python-sdk-azure-authenticate?view=azure-python#mgmt-auth-token)に関するページを参照してください。
    
 ## <a name="next-steps"></a>次の手順
-この記事では、エンドユーザー認証を使って、Python を使用して Azure Data Lake Store で認証する方法を説明しました。 これで、Python を使用して Azure Data Lake Store を使用する方法について説明した次の記事に進めるようになりました。
+この記事では、Azure Data Lake Storage Gen1 に対し、Python からエンドユーザー認証を使って認証を行う方法について説明しました。 これで、Python を使用して Azure Data Lake Storage Gen1 を使用する方法について説明した次の記事に進めるようになりました。
 
-* [Python を使用した Data Lake Store に対するアカウント管理操作](data-lake-store-get-started-python.md)
-* [Python を使用した Data Lake Store に対するデータ操作](data-lake-store-data-operations-python.md)
+* [Python を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-python.md)
+* [Python を使用した Data Lake Storage Gen1 に対するデータ操作](data-lake-store-data-operations-python.md)
 

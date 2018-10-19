@@ -1,6 +1,6 @@
 ---
 title: Azure DevTest Labs 内のラボへの Git レポジトリの追加 | Microsoft Docs
-description: Azure DevTest Labs でカスタム アーティファクト ソースの GitHub または Visual Studio Team Services Git リポジトリを追加する方法について説明します。
+description: Azure DevTest Labs でカスタム アーティファクト ソースの GitHub または Azure DevOps Services Git リポジトリを追加する方法について説明します。
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: spelluru
@@ -14,30 +14,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 80724a7d8d2b5cec19bdbce27cdafd4a9c09eb47
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e6c6f36d877f220bcc8d83b75750f54f85dcc198
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452500"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44299884"
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>カスタム アーティファクトと Resource Manager テンプレートを格納するための Git リポジトリの追加
 
-ラボで VM の[カスタム アーティファクトを作成](devtest-lab-artifact-author.md)したり、[Azure Resource Manager テンプレートを使用して、カスタム テスト環境を作成](devtest-lab-create-environment-from-arm.md)したりできます。 チームが作成したアーティファクトや Resource Manager テンプレートを格納するプライベート Git リポジトリを追加する必要があります。 リポジトリは、[GitHub](https://github.com) または [Visual Studio Team Services ](https://visualstudio.com) 上でホストできます。
+ラボで VM の[カスタム アーティファクトを作成](devtest-lab-artifact-author.md)したり、[Azure Resource Manager テンプレートを使用して、カスタム テスト環境を作成](devtest-lab-create-environment-from-arm.md)したりできます。 チームが作成したアーティファクトや Resource Manager テンプレートを格納するプライベート Git リポジトリを追加する必要があります。 リポジトリは、[GitHub](https://github.com) または [Azure DevOps Services ](https://visualstudio.com) 上でホストできます。
 
 Microsoft では、そのままデプロイすることも、ラボ用にカスタマイズすることもできる、[アーティファクトの GitHub リポジトリ](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts)を提供しています。 アーティファクトをカスタマイズまたは作成した場合、そのアーティファクトをパブリック リポジトリに格納することはできません。 カスタム アーティファクトや作成したアーティファクトを格納する独自のプライベート リポジトリを作成する必要があります。 
 
 VM を作成したときに、Resource Manager テンプレートを保存し、必要に応じてカスタマイズできます。このテンプレートを後で使用して、他の VM を作成できます。 カスタム Resource Manager テンプレートを格納する独自のプライベート リポジトリを作成する必要があります。  
 
 * GitHub リポジトリを作成する方法については、「 [GitHub Bootcamp (GitHub ブートキャンプ)](https://help.github.com/categories/bootcamp/)」を参照してください。
-* Git リポジトリを含む Team Services プロジェクトを作成する方法については、[Visual Studio Team Services への接続](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)に関する記事をご覧ください。
+* Git リポジトリを含む Azure DevOps Services プロジェクトを作成する方法については、[Azure DevOps Services への接続](https://www.visualstudio.com/get-started/setup/connect-to-visual-studio-online)に関する記事をご覧ください。
 
 次の図は、アーティファクトを含むリポジトリの GitHub での表示例を示しています。  
 
 ![GitHub アーティファクト リポジトリのサンプル](./media/devtest-lab-add-repo/devtestlab-github-artifact-repo-home.png)
 
 ## <a name="get-the-repository-information-and-credentials"></a>リポジトリ情報および資格情報を取得する
-ラボにリポジトリを追加するには、まず、リポジトリから主要な情報を取得します。 以下のセクションでは、GitHub または Visual Studio Team Services 上でホストされているリポジトリについて必要な情報を取得する方法について説明します。
+ラボにリポジトリを追加するには、まず、リポジトリから主要な情報を取得します。 以下のセクションでは、GitHub または Azure DevOps Services 上でホストされているリポジトリについて必要な情報を取得する方法について説明します。
 
 ### <a name="get-the-github-repository-clone-url-and-personal-access-token"></a>GitHub リポジトリのクローン URL と個人用アクセス トークンの取得
 
@@ -52,9 +52,9 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 9. GitHub を閉じます。   
 10. [ラボのレポジトリへの接続](#connect-your-lab-to-the-repository)のセクションに進みます。
 
-### <a name="get-the-visual-studio-team-services-repository-clone-url-and-personal-access-token"></a>Visual Studio Team Services リポジトリのクローン URL と個人用アクセス トークンの取得
+### <a name="get-the-azure-repos-clone-url-and-personal-access-token"></a>Azure Repos のクローン URL と個人用アクセス トークンの取得
 
-1. チーム コレクションのホーム ページ (たとえば、https://contoso-web-team.visualstudio.com)) に移動し、プロジェクトを選択します。
+1. チーム コレクションのホーム ページ (たとえば、 https://contoso-web-team.visualstudio.com)) に移動し、プロジェクトを選択します。
 2. プロジェクトのホーム ページで、 **[コード]** を選択します。
 3. クローン URL を表示するには、プロジェクト **[Code (コード)]** ページで、**[Clone (クローン)]** を選択します。
 4. URL を保存します。 後でこの URL を使用します。
@@ -79,9 +79,9 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
     ![リポジトリの追加ボタン](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. 2 番目の **[レポジトリ]** ページで、以下の情報を指定します。
   1. **名前**。 リポジトリの名前を入力します。
-  2. **[Git クローン URL]**:  GitHub または Visual Studio Team Services から先ほどコピーした Git HTTPS クローン URL を入力します。
+  2. **[Git クローン URL]**:  GitHub または Azure DevOps Services から先ほどコピーした Git HTTPS クローン URL を入力します。
   3. **[ブランチ]**:  定義を取得するには、ブランチを入力します。
-  4. **[個人用アクセス トークン]**:  GitHub または Visual Studio Team Services から先ほど取得した個人用アクセス トークンを入力します。
+  4. **[個人用アクセス トークン]**:  GitHub または Azure DevOps Services から先ほど取得した個人用アクセス トークンを入力します。
   5. **[フォルダー パス]**:  アーティファクトまたは Resource Manager テンプレートの定義を含む、複製 URL を基準としたフォルダー パスを少なくとも 1 つ入力します。 サブディレクトリを指定するときは、フォルダー パスにスラッシュを含めてください。
 
      ![[リポジトリ] 領域](./media/devtest-lab-add-repo/devtestlab-repo-blade.png)

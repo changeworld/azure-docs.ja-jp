@@ -22,6 +22,12 @@ Azure の仮想ディスクを暗号化するための料金はかかりませ�
 
 VM に接続するときは、公開キー暗号化を使用して、より安全な方法で VM にサインインできるようにする必要があります。 このプロセスでは、ユーザー名とパスワードを使用する代わりに、SSH (Secure Shell) コマンドを使用して公開キーと秘密キーを交換して、自分を認証します。 パスワードは、ブルートフォース攻撃に対して脆弱です。これは、特に Web サーバーなどのインターネットに接続された仮想マシンに当てはまります。 Secure Shell (SSH) キー ペアを使用すると、認証に SSH キーを使う [Linux VM](../articles/virtual-machines/linux/mac-create-ssh-keys.md) を作成でき、ログインするためのパスワードが不要になります。 [Windows VM](../articles/virtual-machines/linux/ssh-from-windows.md) から SSH キーを使って Linux VM に接続することもできます。
 
+## <a name="managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID
+
+クラウド アプリケーションの構築時における一般的な課題は、クラウド サービスへの認証用のコードで資格情報をどのように管理するかです。 資格情報を安全に保つことは重要な課題です。 資格情報は開発者のワークステーションに表示されないこと、またソース管理にチェックインされないことが理想です。 資格情報やシークレットなど、各種キーを安全に保管する手段としては Azure Key Vault がありますが、それらを取得するためには、コードから Key Vault に対して認証を行わなければなりません。 
+
+この問題を解決するのが、Azure Active Directory (Azure AD) の Azure リソースのマネージド ID 機能です。 Azure AD で自動的に管理される ID を Azure サービスに提供する機能となります。 この ID を使用すれば、コードに資格情報を追加しなくても、Azure AD の認証をサポートするさまざまなサービス (Key Vault を含む) に対して認証を行うことができます。  VM 上で実行されているコードは、VM 内からのみアクセス可能な次の 2 つのエンドポイントにトークンを要求できます。 このサービスの詳細については、[Azure リソースのマネージド ID](../articles/active-directory/managed-identities-azure-resources/overview.md) の概要ページを確認してください。   
+
 ## <a name="policies"></a>ポリシー
 
 社内の [Windows VM](../articles/virtual-machines/windows/policy.md) と [Linux VM](../articles/virtual-machines/linux/policy.md) には、[Azure ポリシー](../articles/azure-policy/azure-policy-introduction.md)を使って必要な動作を定義することができます。 ポリシーを使用すると、さまざまな習慣や規則を企業全体に適用できます。 望ましい行動を強制することによって、組織の成功に貢献しつつ、リスクを軽減することができます。

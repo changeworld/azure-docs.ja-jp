@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: chackdan
-ms.openlocfilehash: dc70a20667db7e59f0fe77ec4d84831cfb7e75a5
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d1d17ff331d3e770b77ce729904e57cf88ebc16c
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617220"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44348570"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 容量計画は、運用環境へのデプロイにおいて重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。
@@ -51,7 +51,7 @@ ms.locfileid: "42617220"
 
 Service Fabric クラスターは、複数のノード タイプで構成できます。 その場合は、クラスターは 1 つのプライマリ ノード タイプと 1 つ以上の非プライマリ ノード タイプで構成されます。
 
-単一ノード タイプの場合、単純に仮想マシン スケール セットあたり 100 ノードを超えることはできません。 場合によっては、目標のスケールを達成するために仮想マシン スケール セットを追加する必要があります。また、自動スケーリングで仮想マシン スケール セットを自動的に追加することはできません。 稼働中のクラスターに仮想マシン スケール セットを追加することは困難な作業です。一般的に、ユーザーは作成時に適切なノード タイプをプロビジョニングして新しいクラスターをプロビジョニングする結果になります。 
+1 つのノード タイプで、SF アプリケーション用の仮想マシン スケール セットあたり 100 ノードを超えて信頼性高くスケールすることはできません。信頼性高く 100 ノード超えを実現するには別の仮想マシン スケール セットを追加する必要があります。
 
 ### <a name="primary-node-type"></a>プライマリ ノード タイプ
 

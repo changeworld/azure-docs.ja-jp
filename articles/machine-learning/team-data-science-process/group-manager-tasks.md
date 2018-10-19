@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: a6cf6627d18917a2102dc0537cd44dc7701b063f
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a89c0f916f67de1bae81a5e1b3dcfc2cae41d248
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837244"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304188"
 ---
 # <a name="group-manager-tasks"></a>グループ マネージャーのタスク
 
@@ -30,13 +30,13 @@ ms.locfileid: "34837244"
 ![0](./media/group-manager-tasks/tdsp-group-manager.png)
 
 
->[AZURE.NOTE] ここでは、VSTS を使用して TDSP グループ環境を設定するために必要な手順の概要を説明します。 VSTS を使用してこれらのタスクを達成する方法を示しているのは、Microsoft がこの方法で TDSP を実装しているためです。 グループで別のコード ホスティング プラットフォームを使用している場合も、一般にグループ マネージャーが実行する必要があるタスクは変わりません。 ただし、これらのタスクを実行する方法が異なります。
+>[AZURE.NOTE] 以下の方法で Azure DevOps Services を使用して TDSP グループ環境を設定するために必要な手順の概要について説明します。 Azure DevOps Services でこれらのタスクを達成する方法を指定するのは、それが Microsoft で TDSP を実装する方法であるためです。 グループで別のコード ホスティング プラットフォームを使用している場合も、一般にグループ マネージャーが実行する必要があるタスクは変わりません。 ただし、これらのタスクを実行する方法が異なります。
 
-1. グループの **Visual Studio Team Services (VSTS) サーバー**を設定します。
-2. Visual Studio Team Services サーバーで、**グループ チーム プロジェクト**を作成します (VSTS ユーザー用)。
+1. グループの **Azure DevOps Services** を設定します。
+2. Azure DevOps Services 上の (Azure DevOps Services ユーザーのための) **グループ プロジェクト**を作成します。
 3. **GroupProjectTemplate** リポジトリを作成します。
 4. **GroupUtilities** リポジトリを作成します。
-5. VSTS サーバーの **GroupProjectTemplate** および **GroupUtilities** リポジトリに、TDSP リポジトリの内容をシードします。
+5. Azure DevOps Services の **GroupProjectTemplate** および **GroupUtilities** リポジトリを TDSP リポジトリの内容でシード処理します。
 6. チーム メンバーの GroupProjectTemplate および GroupUtilities リポジトリへのアクセスに対する**セキュリティ制御**を設定します。
 
 この後、上記の各手順について説明します。 その前に、省略名と、リポジトリを操作するための前提条件を説明します。
@@ -47,8 +47,8 @@ ms.locfileid: "34837244"
 
 - **G1**: Microsoft の TDSP チームが開発および管理する、プロジェクト テンプレートのリポジトリ。
 - **G2**: Microsoft の TDSP チームが開発および管理する、ユーティリティ リポジトリ。
-- **R1**: グループ マネージャーが VSTS グループ サーバーで設定する、Git の GroupProjectTemplate リポジトリ。
-- **R2**: グループ マネージャーが VSTS グループ サーバーで設定する、Git の GroupUtilities リポジトリ。
+- **R1**: Azure DevOps グループ サーバーで設定する Git 上の GroupProjectTemplate リポジトリ。
+- **R2**: Azure DevOps グループ サーバーで設定する Git 上の GroupUtilities リポジトリ。
 - **LG1** と **LG2**: G1 と G2 をそれぞれ複製する、マシン上のローカル ディレクトリ。
 - **LR1** と **LR2**: R1 と R2 をそれぞれ複製する、マシン上のローカル ディレクトリ。
 
@@ -56,19 +56,19 @@ ms.locfileid: "34837244"
  
 - マシンに Git をインストールする必要があります。 データ サイエンス仮想マシン (DSVM) を使用している場合は、Git がプレインストールされているので、インストールは不要です。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。  
 - **Windows DSVM** を使用している場合は、マシンに [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) がインストールされている必要があります。 README.md ファイルで、下へスクロールして "**Download and Install**" セクションを表示し、"*latest installer*" をクリックします。 この手順により、最新のインストーラーのページに移動します。 このページから .exe インストーラーをダウンロードして実行します。 
-- **Linux DSVM** を使用している場合は、DSVM で SSH 公開キーを作成し、グループの VSTS サーバーに追加します。 SSH の詳細については、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
+- **Linux DSVM** を使用している場合は、DSVM で SSH 公開キーを作成し、それをグループの Azure DevOps Services に追加します。 SSH の詳細については、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
 
 
-## <a name="1-create-account-on-vsts-server"></a>1.VSTS サーバーでアカウントを作成する
+## <a name="1-create-account-on-azure-devops-services"></a>1.Azure DevOps Services 上のアカウントを作成する
 
-VSTS サーバーでホストされるリポジトリは次のとおりです。
+Azure DevOps Services は、次のリポジトリをホストします。
 
 - **グループ共通リポジトリ**: 複数のデータ サイエンス プロジェクトに取り組むグループ内の、複数のチームに適用できる汎用リポジトリ。 たとえば、*GroupProjectTemplate* リポジトリや *GroupUtilities* リポジトリなどです。
 - **チーム リポジトリ**: グループ内の特定のチーム向けリポジトリ。 これらはチームのニーズに固有のリポジトリであり、該当チームの実行する複数のプロジェクトには適用できますが、データ サイエンス グループ内の複数のチームで使用できるほどの汎用性はありません。 
 - **プロジェクト リポジトリ**: 特定のプロジェクトで使用できるリポジトリ。 このようなリポジトリは、チームが実行する複数のプロジェクトや、データ サイエンス グループ内の複数のチームで使用できるほどの汎用性はない場合があります。
 
 
-### <a name="setting-up-the-vsts-server-sign-into-your-microsoft-account"></a>VSTS サーバーの Microsoft アカウントへのサインインを設定する
+### <a name="setting-up-the-azure-devops-services-sign-into-your-microsoft-account"></a>Microsoft アカウントへの Azure DevOps Services のサインインの設定
     
 [Visual Studio Online](https://www.visualstudio.com/) にアクセスし、右上隅の **[サインイン]** をクリックして、ご利用の Microsoft アカウントにサインインします。 
     
@@ -86,7 +86,7 @@ Microsoft アカウントがない場合は、**[Sign up now]\(今すぐサイ�
         
 ![3](./media/group-manager-tasks/create-account-1.PNG)
         
-次の値を使用して、**[新しいアカウントの作成]** ウィザードに、作成する VSTS サーバーの情報を入力します。 
+**[Create your account] (アカウントの作成)** ウィザードで、作成する Azure DevOps Services に関する情報として次の値を入力します。 
 
 - **サーバー URL**: *mysamplegroup* を、独自の*サーバー名*に置き換えます。 サーバーの URL は、*https://\<servername\>.visualstudio.com* になります。 
 - **コードの管理に次を使用:** **_[Git]_** を選択します。
@@ -103,17 +103,17 @@ Microsoft アカウントがない場合は、**[Sign up now]\(今すぐサイ�
 
 **[続行]** をクリックします。 
 
-## <a name="2-groupcommon-team-project"></a>2.GroupCommon チーム プロジェクト
+## <a name="2-groupcommon-project"></a>2.GroupCommon プロジェクト
 
-VSTS サーバーが作成されると、**GroupCommon** ページ (*https://\<servername\>.visualstudio.com/GroupCommon*) が開きます。
+Azure DevOps Services が作成されると、**GroupCommon** ページ (*https://\<servername\>.visualstudio.com/GroupCommon*) が開きます。
                             
 ![6](./media/group-manager-tasks/server-created-2.PNG)
 
 ## <a name="3-create-the-grouputilities-r2-repository"></a>手順 3.GroupUtilities (R2) リポジトリを作成する
 
-VSTS サーバーで **GroupUtilities** (R2) リポジトリを作成するには、次の手順を実行します。
+Azure DevOps Services の下に **GroupUtilities** (R2) リポジトリを作成するには:
 
-- チーム プロジェクトの **[バージョン コントロール]** タブで **[新しいリポジトリ]** をクリックし、**[新しいリポジトリの作成]** ウィザードを開きます。 
+- **[新しいリポジトリの作成]** ウィザードを開くには、プロジェクトの **[バージョン管理]** タブで **[新しいリポジトリ]** をクリックします。 
 
 ![7](./media/group-manager-tasks/create-grouputilities-repo-1.png) 
 
@@ -128,10 +128,10 @@ VSTS サーバーで **GroupUtilities** (R2) リポジトリを作成するに�
 
 ## <a name="4-create-the-groupprojecttemplate-r1-repository"></a>4.GroupProjectTemplate (R1) リポジトリを作成する
 
-VSTS グループ サーバーのリポジトリの設定は、次の 2 つのタスクで構成されています。
+Azure DevOps グループ サーバーのリポジトリの設定は、次の 2 つのタスクで構成されています。
 
 - 既定の **GroupCommon** リポジトリの名前を ***GroupProjectTemplate*** に変更します。
-- **GroupUtilities** リポジトリを、VSTS サーバー上のチーム プロジェクト **GroupCommon** に作成します。 
+- Azure DevOps Services 上の **GroupCommon** プロジェクトの下に **GroupUtilities** リポジトリを作成します。 
 
 1 つ目のタスクに関しては、名前付け規則、リポジトリおよびディレクトリについて、このセクションで説明されています。 2 つ目のタスクの説明は、手順 4 の後のセクションに記載されています。
 
@@ -139,12 +139,12 @@ VSTS グループ サーバーのリポジトリの設定は、次の 2 つの�
 
 次の手順を実行して、既定の **GroupCommon** リポジトリの名前を *GroupProjectTemplate* (このチュートリアルでは **R1** と呼ばれます) に変更します。
     
-- **GroupCommon** チーム プロジェクト ページの **[コードで共同作業]** をクリックすると、 チーム プロジェクト **GroupCommon** の、既定の Git リポジトリ ページに移動します。 現時点では、この Git リポジトリは空です。 
+- **[GroupCommon]** プロジェクト ページで **[コードで共同作業]** をクリックします。 これにより、**GroupCommon** プロジェクトの既定の Git リポジトリ ページが表示されます。 現時点では、この Git リポジトリは空です。 
 
 ![10](./media/group-manager-tasks/rename-groupcommon-repo-3.png)
         
 - **GroupCommon** のGit リポジトリ ページで、左上隅の **[GroupCommon]** (次の図では赤い囲み罫線で強調されている) をクリックして、**[リポジトリの管理]** (次の図では緑色の囲み罫線で強調されている) を選択します。 この手順により、**コントロール パネル**が開きます。 
-- チーム プロジェクトの **[バージョン コントロール]** タブを選択します。 
+- プロジェクトの **[バージョン管理]** タブを選択します。 
 
 ![11](./media/group-manager-tasks/rename-groupcommon-repo-4.png)
 
@@ -158,7 +158,7 @@ VSTS グループ サーバーのリポジトリの設定は、次の 2 つの�
 
 
 
-## <a name="5-seed-the-r1--r2-repositories-on-the-vsts-server"></a>5.R1 および R2 リポジトリを VSTS サーバーでシード処理する
+## <a name="5-seed-the-r1--r2-repositories-on-the-azure-devops-services"></a>5.Azure DevOps Services 上の R1 および R2 リポジトリをシード処理する
 
 この手順では、上記セクションで設定した *GroupProjectTemplate* (R1) リポジトリと *GroupUtilities* (R2) リポジトリをシード処理します。 これらのリポジトリは、Microsoft が Team Data Science Process 用に管理する、***ProjectTemplate*** (**G1**) および ***Utilities*** (**G2**) リポジトリを使用してシード処理されます。 このシード処理が完了すると、
 
@@ -198,7 +198,7 @@ VSTS グループ サーバーのリポジトリの設定は、次の 2 つの�
 
 この手順では、GroupProjectTemplate リポジトリ (R1) と GroupUtilities リポジトリ (R2) を、DSVM 上の **GitRepos\GroupCommon** のローカル ディレクトリ (それぞれ LR1 と LR2 と呼ばれます) に複製します。
 
-- R1 リポジトリと R2 リポジトリの URL を取得するには、VSTS の **GroupCommon** ホーム ページに移動します。 通常、URL は、*https://\<お使いの VSTS サーバー名\>.visualstudio.com/GroupCommon* です。 
+- R1 および R2 リポジトリの URL を取得するには、Azure DevOps Services 上の **GroupCommon** ホーム ページに移動します。 ここには通常、*https://\<Azure DevOps Services 名\>.visualstudio.com/GroupCommon* という URL が含まれています。 
 - **[コード]** をクリックします。 
 - **GroupProjectTemplate** リポジトリと **GroupUtilities** リポジトリを選択します。 **[クローン URL]** の要素から各 URL (Windows の場合は HTTPS、Linux の場合は SSH) をコピーして保存し、次のスクリプトで使用します。  
 
@@ -283,7 +283,7 @@ GitRepos\GroupCommon\GroupProjectTemplate ディレクトリから次のコマ�
 
 ![22](./media/group-manager-tasks/push-to-group-server-2.PNG)
 
-グループの VSTS サーバーで、GroupProjectTemplate リポジトリ内に、ファイルが直ちに同期されていることを確認できます。
+グループの Azure DevOps Services の GroupProjectTemplate リポジトリではファイルが即座に同期されることを確認できます。
 
 ![23](./media/group-manager-tasks/push-to-group-server-showed-up-2.PNG)
 
@@ -308,7 +308,7 @@ GitRepos\GroupCommon\GroupProjectTemplate ディレクトリから次のコマ�
 
 ## <a name="6-add-group-members-to-the-group-server"></a>6.グループ メンバーをグループ サーバーに追加する
 
-グループの VSTS サーバーのホーム ページで、右上隅のユーザー名の横にある**歯車アイコン**をクリックし、**[セキュリティ]** タブを選択します。ここでは、メンバーをグループに追加してさまざまなアクセス許可を適用できます。
+グループの Azure DevOps Services のホームページから、右上隅のユーザー名の横にある**歯車アイコン**をクリックし、**[セキュリティ]** タブを選択します。ここでは、メンバーをグループに追加してさまざまなアクセス許可を適用できます。
 
 ![24](./media/group-manager-tasks/add_member_to_group.PNG) 
 

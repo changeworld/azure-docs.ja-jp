@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: laviswa
-ms.openlocfilehash: a3a1f376c36004851d6e64f2fa037bebfc24665b
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 766a2a9a2b71d9cd013f26b843d413d7603ab1fd
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287760"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051359"
 ---
 # <a name="query-azure-cosmos-db-data-with-sql-queries"></a>SQL クエリを使用して Azure Cosmos DB のデータのクエリを行う
 

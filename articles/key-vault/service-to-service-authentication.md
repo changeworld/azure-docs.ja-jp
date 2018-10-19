@@ -6,18 +6,18 @@ author: bryanla
 manager: mbaldwin
 services: key-vault
 ms.author: bryanla
-ms.date: 11/15/2017
-ms.topic: article
+ms.date: 09/05/2018
+ms.topic: conceptual
 ms.prod: ''
 ms.service: key-vault
 ms.technology: ''
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: b158414e7a2954981534fe6fb26c987eb2f4ce67
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: d9fc845316d6e785d8215ac738b893ebc080d911
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42145187"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300972"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>.NET を使用した Azure Key Vault に対するサービス間認証
 
@@ -29,12 +29,12 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 `Microsoft.Azure.Services.AppAuthentication` ライブラリによって認証が自動的に管理される結果、資格情報ではなくソリューションに重点を置くことができます。
 
-`Microsoft.Azure.Services.AppAuthentication` ライブラリでは、Microsoft Visual Studio、Azure CLI、Azure AD の統合認証を使用したローカル開発がサポートされます。 Azure App Services または Azure 仮想マシン (VM) にデプロイされると、このライブラリは自動的に[管理対象サービス ID](/azure/active-directory/msi-overview) (MSI) を使用します。 コードまたは構成を変更する必要はありません。 MSI を利用できない場合や、ローカル開発中に開発者のセキュリティ コンテキストを特定できない場合、このライブラリは、Azure AD の[クライアントの資格情報](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)を直接使用することもサポートします。
+`Microsoft.Azure.Services.AppAuthentication` ライブラリでは、Microsoft Visual Studio、Azure CLI、Azure AD の統合認証を使用したローカル開発がサポートされます。 Azure App Services または Azure 仮想マシン (VM) にデプロイされると、このライブラリは自動的に[Azure サービスの管理 ID](/azure/active-directory/msi-overview) を使用します。 コードまたは構成を変更する必要はありません。 管理 ID を利用できない場合や、ローカル開発中に開発者のセキュリティ コンテキストを特定できない場合、このライブラリは、Azure AD の[クライアントの資格情報](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal)を直接使用することもサポートします。
 
 <a name="asal"></a>
 ## <a name="using-the-library"></a>ライブラリの使用
 
-.NET アプリケーションの場合、管理対象サービス ID (MSI) を利用する最も簡単な方法は、`Microsoft.Azure.Services.AppAuthentication` パッケージを経由する方法です。 次のようにして使い始めることができます。
+.NET アプリケーションの場合、管理 ID を利用する最も簡単な方法は、`Microsoft.Azure.Services.AppAuthentication` パッケージを経由する方法です。 次のようにして使い始めることができます。
 
 1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) NuGet パッケージに対する参照をアプリケーションに追加します。
 
@@ -58,7 +58,7 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 `AzureServiceTokenProvider` クラスは、トークンをメモリ内にキャッシュし、有効期限の直前に Azure AD から取得します。 このため、`GetAccessTokenAsync` メソッドを呼び出す前に有効期限を確認する必要がなくなります。 トークンが必要になった時点で、いつでもメソッドを呼び出すことができます。 
 
-`GetAccessTokenAsync` メソッドには、リソース識別子が必要です。 詳細については、「[Azure サービスは管理対象サービス ID をサポートしますか](https://docs.microsoft.com/azure/active-directory/msi-overview#which-azure-services-support-managed-service-identity)」を参照してください。
+`GetAccessTokenAsync` メソッドには、リソース識別子が必要です。 詳細については、「[ Azure サービスはAzure リソースの管理 ID をサポートしますか](https://docs.microsoft.com/azure/active-directory/msi-overview#which-azure-services-support-managed-service-identity)」を参照してください。
 
 
 <a name="samples"></a>
@@ -66,12 +66,11 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 次のサンプルは、`Microsoft.Azure.Services.AppAuthentication` ライブラリの動作について示しています。
 
-1. 
-  [実行時に管理対象サービス ID (MSI) を使用して Azure Key Vault からシークレットを取得する](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)。
+1. [実行時に管理 ID を使用して Azure Key Vault からシークレットを取得する](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet)
 
-2. [MSI を使用して Azure VM から Azure Resource Manager テンプレートをプログラムでデプロイする](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet)。
+2. [管理 ID を使用して Azure VM から Azure Resource Manager テンプレートをプログラムでデプロイする](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet)。
 
-3. [.NET Core サンプルと MSI を使用して、Azure Linux VM から Azure サービスを呼び出す](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/)。
+3. [.NET Core サンプルと管理 ID を使用して、Azure Linux VM から Azure サービスを呼び出す](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/)。
 
 
 <a name="local"></a>
@@ -87,7 +86,7 @@ Azure Key Vault の認証を受けるには、Azure Active Directory (AD) の資
 
 ### <a name="authenticating-to-azure-services"></a>Azure サービスに対する認証
 
-ローカル コンピューターは、管理対象サービス ID (MSI) をサポートしていません。  その結果、`Microsoft.Azure.Services.AppAuthentication` ライブラリは、ローカル開発環境で実行するために開発者の資格情報を使用します。 ソリューションを Azure にデプロイすると、このライブラリは、MSI を使用して OAuth 2.0 クライアント資格情報の付与フローに切り替えます。  このため、同じコードをローカルでも、リモートでも、心配せずにテストできます。
+ローカルコンピューターは Azure リソースの管理 ID をサポートしません。  その結果、`Microsoft.Azure.Services.AppAuthentication` ライブラリは、ローカル開発環境で実行するために開発者の資格情報を使用します。 ソリューションを Azure にデプロイすると、このライブラリは、管理 ID を使用して OAuth 2.0 クライアント資格情報の付与フローに切り替えます。  このため、同じコードをローカルでも、リモートでも、心配せずにテストできます。
 
 ローカル開発では、`AzureServiceTokenProvider` は、**Visual Studio**、**Azure コマンド ライン インターフェイス** (CLI)、**Azure AD 統合認証**を使用してトークンをフェッチします。 このライブラリは、各オプションを順番に試行し、最初に成功したオプションを使用します。 どのオプションも機能しない場合、詳しい情報と共に `AzureServiceTokenProviderException` 例外がスローされます。
 
@@ -161,12 +160,12 @@ Azure AD の認証を使用するには、次の点を確認します。
 
 Azure にサインインした後、`AzureServiceTokenProvider` はサービス プリンシパルを使用してローカル開発用のトークンを取得します。
 
-これは、ローカル開発に対してのみ適用されます。 ソリューションを Azure にデプロイすると、ライブラリは MSI 認証に切り替わります。
+これは、ローカル開発に対してのみ適用されます。 ソリューションを Azure にデプロイすると、ライブラリは管理 ID 認証に切り替わります。
 
 <a name="msi"></a>
-## <a name="running-the-application-using-a-managed-service-identity"></a>管理対象サービス ID を使用してアプリケーションを実行する 
+## <a name="running-the-application-using-managed-identity"></a>管理 ID を使用してアプリケーションを実行する 
 
-Azure App Service 上または MSI が有効な Azure VM 上でコードを実行すると、ライブラリは自動的に管理対象サービス ID を使用します。 コードに変更を加える必要はありません。 
+Azure App Service 上または管理 ID が有効な Azure VM 上でコードを実行すると、ライブラリは自動的に管理 ID を使用します。 コードに変更を加える必要はありません。 
 
 
 <a name="sp"></a>
@@ -178,7 +177,7 @@ Azure App Service 上または MSI が有効な Azure VM 上でコードを実�
  
 2. コードはローカル開発環境で実行されるが、開発者自身はカスタム サービスに対して認証を行っているため、自分の開発者 ID は使用できない。 
  
-3. コードが、Azure Batch など、管理対象サービス ID をまだサポートしていない Azure コンピューティング リソース上で実行されている。
+3. コードが、Azure Batch など、Azure リソースの管理 ID をまだサポートしていない Azure コンピューティング リソース上で実行されている。
 
 Azure AD にサインインするために証明書を使用するには、次のようにします。
 
@@ -229,16 +228,15 @@ Azure AD の共有シークレット資格情報を使用してサインイン�
 | `RunAs=Developer; DeveloperTool=AzureCli` | ローカル開発 | AzureServiceTokenProvider は AzureCli を使用してトークンを取得します。 |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | ローカル開発 | AzureServiceTokenProvider は Visual Studio を使用してトークンを取得します。 |
 | `RunAs=CurrentUser;` | ローカル開発 | AzureServiceTokenProvider は Azure AD 統合認証を使用してトークンを取得します。 |
-| `RunAs=App;` | 管理対象のサービス ID | AzureServiceTokenProvider は管理対象サービス ID を使用してトークンを取得します。 |
+| `RunAs=App;` | Azure リソースの管理 ID | AzureServiceTokenProvider は管理 ID を使用してトークンを取得します。 |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint`<br>`   ={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`  | サービス プリンシパル | `AzureServiceTokenProvider` は証明書を使用して Azure AD からトークンを取得します。 |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};`<br>`   CertificateSubjectName={Subject};CertificateStoreLocation=`<br>`   {LocalMachine or CurrentUser}` | サービス プリンシパル | `AzureServiceTokenProvider` は証明書を使用して Azure AD からトークンを取得します|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | サービス プリンシパル |`AzureServiceTokenProvider` はシークレットを使用して Azure AD からトークンを取得します。 |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- 
-  [管理対象サービス ID](/azure/app-service/app-service-managed-service-identity) について詳細を参照する。
+- 詳細については、「[Azure リソースの管理 ID について](/azure/app-service/app-service-managed-service-identity)」を参照してください。
 
 - [アプリの認証と承認](/azure/app-service/app-service-authentication-overview)を行う他のさまざまな方法について参照する。
 

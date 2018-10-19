@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4ae5adaf37f49e9909fa80fd31f088ed6ee1b081
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 91b5c2c23445e5cd3445d1d5b640cb3ecb8e5e7a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39450442"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44301193"
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps を使って Application Insights のプロセスを自動化する
 
@@ -25,7 +25,7 @@ ms.locfileid: "39450442"
 
 この統合によって、一行のコードも記述せずに、膨大な数のプロセスを自動化できます。 Application Insights コネクタを使ってロジック アプリを作成し、どの Application Insights プロセスでも迅速に自動化できます。 
 
-また、その他のアクションを追加することもできます。 Azure App Service の Logic Apps 機能により、多数のアクションが利用可能になります。 たとえば、ロジック アプリを使用して、自動的に電子メール通知を送信したり、Visual Studio Team Services のバグを作成したりできます。 また、多数の[テンプレート](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates)の 1 つを使って、ロジック アプリの作成プロセスをスピードアップすることもできます。 
+また、その他のアクションを追加することもできます。 Azure App Service の Logic Apps 機能により、多数のアクションが利用可能になります。 たとえば、ロジック アプリを使用して、自動的に電子メール通知を送信したり、Azure DevOps のバグを作成したりできます。 また、多数の[テンプレート](https://docs.microsoft.com/azure/logic-apps/logic-apps-use-logic-app-templates)の 1 つを使って、ロジック アプリの作成プロセスをスピードアップすることもできます。 
 
 ## <a name="create-a-logic-app-for-application-insights"></a>Application Insights のロジック アプリの作成
 

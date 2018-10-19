@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2018
+ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: 6c196d16258e4bf000f998899086c7a6d0197fba
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8c3d632063c8ed9347aa870d0971cc09dc1a658e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038516"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129541"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -72,7 +72,7 @@ Traffic Manager では、バニティ DNS 名をマッピングするために D
 Traffic Manager におけるネイキッド ドメインの完全サポートは、開発待ちの機能として登録されています。 この機能を要求するためにサポートを登録するには、[コミュニティ フィードバック サイトの投票](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly)で、ぜひ支持を表明してください。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Traffic Manager では、DNS クエリを処理するときにクライアントのサブネット アドレスは考慮されますか。 
-はい。Traffic Manager は、地理的なルーティング方法とパフォーマンスによるルーティング方法で検索を実行するときに、受信する DNS クエリの送信元 IP アドレス (通常は DNS リゾルバーの IP アドレス) のほか、エンド ユーザーの代わりに要求を行うリゾルバーによるクエリにクライアントのサブネット アドレスが含まれる場合は、そのアドレスも考慮します。  
+はい。Traffic Manager は、受信する DNS クエリの送信元 IP アドレス (通常は DNS リゾルバーの IP アドレス) を考慮するだけでなく、地理的なルーティング方法、パフォーマンスによるルーティング方法、およびサブネット ルーティング方法で検索を実行するときに、エンド ユーザーの代わりに要求を行うリゾルバーによるクエリにクライアントのサブネット アドレスが含まれる場合は、そのアドレスも考慮します。  
 具体的には、クライアントのサブネット アドレスをサポートするリゾルバーからそのアドレスを伝えることができる [Extension Mechanism for DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) を提供する [RFC 7871 – Client Subnet in DNS Queries](https://tools.ietf.org/html/rfc7871) です。
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>DNS TTL とは何ですか。DNS TTL はユーザーにどのような影響を及ぼしますか。
@@ -133,6 +133,39 @@ Traffic Manager は、クエリの送信元 IP (ほとんどの場合、ユー�
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>このルーティング タイプをサポートする API バージョンに制限はありますか。
 
 はい。地理的ルーティング タイプのサポートは、API バージョン 2017-03-01 以降に限られます。 それより前の API バージョンを使用して、地理的ルーティング タイプのプロファイルを作成したり、エンドポイントに地理的リージョンを割り当てたりすることはできません。 以前の API バージョンを使用して Azure サブスクリプションからプロファイルを取得した場合、地理的ルーティング タイプのプロファイルは返されません。 また、以前の API バージョンを使用した場合、返されたプロファイルに地理的リージョンが割り当てられたエンドポイントが含まれていても、地理的リージョンの割り当ては表示されません。
+
+## <a name="traffic-manager-subnet-traffic-routing-method"></a>Traffic Manager のサブネット トラフィック ルーティング方法
+
+### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>サブネット ルーティングが役立つユース ケースを教えてください。
+サブネット ルーティングを使用すると、DNS 要求 IP アドレスの送信元 IP によって識別される特定のユーザーのセットに対して提供するエクスペリエンスを区別することができます。 たとえば、ユーザーが企業の本社から Web サイトに接続している場合に別のコンテンツを表示することができます。 また、特定の ISP のパフォーマンスが IPv6 の使用時に平均を下回る場合は、その ISP のユーザーによるアクセスを、IPv4 接続だけがサポートされているエンドポイントだけに制限することもできます。
+サブネット ルーティング方法を使用すべき理由はもう 1 つありますが、それは、入れ子になったプロファイル セット内の他のプロファイルと関連したものです。 たとえば、ユーザーのジオフェンスのために地理的なルーティング方法を使用する一方で、特定の ISP には別のルーティング方法を使用する場合は、プロファイルでサブネット ルーティング方法を親プロファイルにし、その ISP には特定の子プロファイルが使用されるようにオーバーライドします。そうすることで、その ISP 以外では、標準の地理的プロファイルが使用されます。
+
+### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Traffic Manager はどのような方法でエンド ユーザーの IP アドレスを把握するのですか。
+エンド ユーザーのデバイスでは、通常、DNS 参照が DNS リゾルバーによって代行されます。 このようなリゾルバーの発信 IP が、Traffic Manager によって送信元 IP と見なされます。 また、サブネット ルーティング方法でも、要求と共に渡された EDNS0 Extended Client Subnet (ECS) 情報があるかどうかが検索されます。 ECS 情報が存在する場合は、それがルーティングの決定に使用されるアドレスになります。 ECS 情報がない場合は、クエリの送信元 IP がルーティングの目的で使用されます。
+
+### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>サブネット ルーティングを使用する場合に IP アドレスを指定するにはどうすればよいですか。
+エンドポイントに関連付ける IP アドレスは、2 とおりの方法で指定できます。 1 つ目は、範囲を指定するために、開始アドレスと終了アドレスを示す Quad Dot の 10 進数オクテット表記を使用する方法です (例: 1.2.3.4-5.6.7.8 または 3.4.5.6-3.4.5.6)。 2 つ目は、範囲を指定するために CIDR 表記を使用する方法です (例: 1.2.3.0/24)。 複数の範囲を指定することができ、範囲のセットの中で両方の種類の表記を使用することができます。 いくつかの制限が適用されます。
+-   各 IP が 1 つのエンドポイントだけにマップされる必要があるため、アドレス範囲を重複させることはできません
+-   開始アドレスを終了アドレスより後にすることはできません
+-   CIDR 表記の場合、"/" の前の IP アドレスは、その範囲の開始アドレスである必要があります (たとえば、1.2.3.0/24 は有効ですが、1.2.3.4.4/24 は有効ではありません)
+
+### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>サブネット ルーティングを使用する場合にフォールバック エンドポイントを指定するにはどうすればよいですか。
+サブネット ルーティングのプロファイルで、サブネットがマップされていないエンドポイントがある場合、他のエンドポイントと一致しないすべての要求は、このエンドポイントに送られます。 プロファイルにそのようなフォールバック エンドポイントを指定することを強くお勧めします。要求が到着し、どのエンドポイントにもマップされない場合、またはエンドポイントにマップされてもそのエンドポイントに異常がある場合、Traffic Manager からは NXDOMAIN 応答が返されるためです。
+
+### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>サブネット ルーティングの種類のプロファイルでエンドポイントが無効になっている場合はどうなりますか。
+サブネット ルーティングを使用するプロファイルで、そのエンドポイントが無効になっている場合、Traffic Manager はそのエンドポイントとそれのサブネット マッピングが存在しないかのように動作します。 IP アドレス マッピングと一致するクエリが受信され、エンドポイントが無効になっている場合、Traffic Manager はフォールバック エンドポイント (マッピングを持たないエンドポイント) を返します。そのようなエンドポイントがない場合は、NXDOMAIN 応答を返します
+
+## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Traffic Manager の複数値トラフィック ルーティング方法
+
+### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>複数値ルーティングが役立つユース ケースを教えてください。
+複数値ルーティングでは、単一のクエリ応答で複数の正常なエンドポイントが返されます。 この主な利点は、エンドポイントに異常がある場合、クライアントには別の DNS 呼び出し (アップストリーム キャッシュから同じ値が返される可能性があります) を行わずに再試行できるオプションがほかにあることです。 この方法は、ダウンタイムを最小限に抑える必要がある、可用性が重要なアプリケーションに適しています。
+複数値ルーティング方法のもう 1 つの用途は、エンドポイントが IPv4 アドレスと IPv6 アドレスの両方の "デュアル ホーム" になっていて、呼び出し元がエンドポイントへの接続を開始するときにどちらのオプションも選択できるようにする場合です。
+
+### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>複数値ルーティングを使用する場合、何個のエンドポイントが返されますか。
+返されるエンドポイントの最大数を指定することができ、複数値方式でクエリを受信したときに、その数より多い正常なエンドポイントが返されることはありません。 この構成に設定できる最大値は 10 です。
+
+### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>複数値ルーティングを使用する場合、同じエンドポイントのセットが取得されますか。
+各クエリで同じエンドポイントのセットが返されるとは限りません。 これは、一部のエンドポイントが正常でなくなる場合もあるという事実にも影響を受けます。その場合、異常のあるエンドポイントは応答に含まれません
 
 ## <a name="real-user-measurements"></a>Real User Measurements
 
@@ -257,7 +290,7 @@ Azure Web Apps では、複数のサブスクリプションからのエンド�
 
 現在、Traffic Manager では、IPv6 アドレスに対応するネーム サーバーを提供していません。 ただし、Traffic Manager は、IPv6 エンドポイントに接続する IPv6 クライアントでも使用できます。 クライアントが Traffic Manager に対して DNS 要求を直接行うことはなく、 代わりに、再帰的な DNS サービスを使用します。 IPv6 専用のクライアントは、IPv6 経由で再帰的な DNS サービスに要求を送信します。 その後、再帰サービスは、IPv4 を使用して Traffic Manager ネーム サーバーに接続します。
 
-Traffic Manager はエンドポイントの DNS 名を返します。 IPv6 エンドポイントをサポートするには、エンドポイント DNS 名が IPv6 アドレスを指す DNS AAAA レコードが必要です。 Traffic Manager の正常性チェックは、IPv4 アドレスのみをサポートしています。 サービスは、同じ DNS 名で IPv4 エンドポイントを公開する必要があります。
+Traffic Manager からの応答には、エンドポイントの DNS 名または IP アドレスが含まれます。 IPv6 エンドポイントをサポートする場合、2 つのオプションがあります。 関連付けられている AAAA レコードが含まれる DNA 名としてエンドポイントを追加すると、そのエンドポイントは、Traffic Manager によって正常性がチェックされ、クエリ応答内の CNAME レコード タイプとして返されます。 そのエンドポイントを、IPv6 アドレスを使用して直接追加することもできます。その場合、Traffic Manager によって、AAAA タイプのレコードがクエリ応答で返されます。 
 
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>同じリージョン内の複数の Web アプリで Traffic Manager を使用できますか。
 
@@ -300,6 +333,46 @@ Traffic Manager は、次のように証明書の検証を提供できません�
 * SNI サーバー側証明書はサポートされていません。
 * クライアント証明書はサポートされていません。
 
+### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>エンドポイントを追加する際には、IP アドレスと DNS 名のどちらを使用しますか。
+Traffic Manager では、追加するエンドポイントの参照方法として、DNS 名、IPv4 アドレス、IPv6 アドレスという 3 つの方法がサポートされています。 エンドポイントが IPv4 アドレスまたは IPv6 アドレスとして追加された場合、クエリ応答のレコード タイプはそれぞれ A と AAAA になります。 エンドポイントが DNS 名として追加された場合、クエリ応答のレコード タイプは CNAME になります。 IPv4 アドレスまたは IPv6 アドレスとして追加できるエンドポイントは、種類が "外部" のエンドポイントだけであることに注意してください。
+この 3 種類のエンドポイント アドレス指定方法では、すべてのルーティング方法と監視設定がサポートされています。
+
+### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>エンドポイントを追加するときに、どの種類の IP アドレスを使用できますか。
+Traffic Manager では、エンドポイントの指定に IPv4 アドレスまたは IPv6 アドレスを使用することができます。 以下に挙げるような、いくつかの制限があります。
+- 予約済みのプライベート IP アドレス空間に対応するアドレスは使用できません。 これらのアドレスには、RFC 1918、RFC 6890、RFC 5737、RFC 3068、RFC 2544、および RFC 5771 で示されているアドレスが含まれます
+- アドレスにポート番号を含めることはできません (使用するポートは、プロファイルの構成設定で指定することができます) 
+- 同じプロファイル内の 2 つのエンドポイントに同じターゲット IP アドレスを指定することはできません
+
+### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>1 つのプロファイル内で異なる種類のエンドポイント アドレス指定方法を使用することはできますか。
+いいえ。Traffic Manager では、プロファイル内でエンドポイント アドレス指定方法を混在させることはできません。例外は複数値ルーティング タイプのプロファイルであり、その場合は IPv4 アドレス指定方法と IPv6 アドレス指定方法を混在させることができます
+
+### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>受信クエリのレコード タイプが、エンドポイントのアドレス指定方法に関連付けられているレコード タイプと異なる場合はどうなりますか。
+Traffic Manager は、プロファイルに対するクエリを受信すると、まず、指定されたルーティング方法およびエンドポイントの正常性状態に基づいて返される必要があるエンドポイントを特定します。 次に、受信クエリで要求されたレコード タイプと、エンドポイントに関連付けられているレコード タイプを調べたうえで、以下の表に基づいて応答を返します。
+
+複数値以外のルーティング方法のプロファイルの場合:
+|受信クエリ要求|    エンドポイントの種類|  提供される応答|
+|--|--|--|
+|ANY |  A/AAAA/CNAME |  ターゲット エンドポイント| 
+|A |    A/CNAME | ターゲット エンドポイント|
+|A |    AAAA |  NODATA |
+|AAAA | AAAA/CNAME |  ターゲット エンドポイント|
+|AAAA | A | NODATA |
+|CNAME |    CNAME | ターゲット エンドポイント|
+|CNAME  |A/AAAA | NODATA |
+|
+ルーティング方法が複数値に設定されているプロファイルの場合:
+
+|受信クエリ要求|    エンドポイントの種類 | 提供される応答|
+|--|--|--|
+|ANY |  A と AAAA の混在 | ターゲット エンドポイント|
+|A |    A と AAAA の混在 | タイプ A のターゲット エンドポイントのみ|
+|AAAA   |A と AAAA の混在|     タイプ AAAA のターゲット エンドポイントのみ|
+|CNAME |    A と AAAA の混在 | NODATA |
+
+### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>入れ子になったプロファイル内で、IPv4/IPv6 アドレスでエンドポイントが指定されているプロファイルを使用することはできますか。
+はい。ただし、種類が複数値のプロファイルは、入れ子になったプロファイル セット内の親プロファイルにすることはできないという例外があります。
+
+
 ### <a name="i-stopped-an-azure-cloud-service--web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Azure クラウド サービス/Web アプリケーションのエンドポイントを Traffic Manager プロファイルで停止した後で再起動しましたが、トラフィック イベントを受信しなくなりました。 どうしたらいいですか。
 
 Azure クラウド サービス/Web アプリケーションのエンドポイントが停止されると、Traffic Manager は正常性のチェックを停止します。エンドポイントの再起動を検出しないと正常性チェックは再開されません。 この遅延を防ぐには、エンドポイントを再起動した後で、Traffic Manager プロファイルでエンドポイントを無効にしてから再び有効にします。   
@@ -326,9 +399,13 @@ Traffic Manager には、Traffic Manager プロファイルのフェールオー
 
 Traffic Manager の監視設定は、プロファイル レベルで行われます。 1 つのエンドポイントにのみ別の監視設定を使用する必要がある場合、これを実現するには、監視設定が親プロファイルと異なる[入れ子になったプロファイル](traffic-manager-nested-profiles.md)としてそのエンドポイントを使用します。
 
-### <a name="what-host-header-do-endpoint-health-checks-use"></a>エンドポイントの正常性チェックには、どのようなホストヘッダーが使用されますか。
+### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>エンドポイントに対する Traffic Manager の正常性チェックに HTTP ヘッダーを割り当てるにはどうすればよいですか。
+Traffic Manager では、エンドポイントに対して開始される HTTP(S) 正常性チェックにカスタム ヘッダーを指定することができます。 カスタム ヘッダーを指定する場合は、プロファイル レベルで指定する (すべてのエンドポイントに適用する) か、エンドポイント レベルで指定することができます。 ヘッダーが両方のレベルで定義されている場合は、エンドポイント レベルで指定されている方が、プロファイル レベルで指定されている方をオーバーライドします。
+この一般的なユース ケースの 1 つは、マルチテナント環境でホストされているエンドポイントに Traffic Manager の要求が正しくルーティングされるように、ホスト ヘッダーを指定することです。 もう 1 つのユース ケースは、エンドポイントの HTTP (S) 要求ログからの Traffic Manager の要求を識別することです
 
-トラフィック マネージャーは、HTTP および HTTPS の正常性チェックにホスト ヘッダーを使用します。 Traffic Manager で使用されるホスト ヘッダーは、プロファイルで構成されているエンドポイントのターゲットの名前です。 ホスト ヘッダーで使用される値を、ターゲットプロパティとは別に指定することはできません。
+## <a name="what-host-header-do-endpoint-health-checks-use"></a>エンドポイントの正常性チェックには、どのようなホストヘッダーが使用されますか。
+カスタム ホスト ヘッダー設定が指定されていない場合、Traffic Manager によって使用されるホスト ヘッダーは、プロファイルで構成されているエンドポイント ターゲットの DNS 名です (それが利用可能な場合)。 
+
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>正常性チェックはどの IP アドレスから発信されますか。
 

@@ -1,34 +1,34 @@
 ---
-title: Azure Service Fabric マイクロサービス (プレビュー) をコンテナー化する方法
-description: Azure Service Fabric は、Service Fabric マイクロサービスをコンテナー化する新機能を追加しました。 現在、この機能はプレビュー段階にあります。
+title: Windows で Azure Service Fabric サービスをコンテナー化する
+description: Windows で Service Fabric Reliable Services と Reliable Actors サービスをコンテナー化する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: anmolah
 manager: anmolah
-editor: anmolah
+editor: roroutra
 ms.assetid: 0b41efb3-4063-4600-89f5-b077ea81fa3a
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/04/2017
+ms.date: 5/23/2018
 ms.author: anmola
-ms.openlocfilehash: 3741e74e70769d186da2757b43ca60bbb1e78a1f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: d3ed1ff46bf4c82a172954828ec74bae80241288
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212655"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44056943"
 ---
-# <a name="how-to-containerize-your-service-fabric-reliable-services-and-reliable-actors-preview"></a>Service Fabric Reliable Services と Reliable Actors (プレビュー) をコンテナー化する方法
+# <a name="containerize-your-service-fabric-reliable-services-and-reliable-actors-on-windows"></a>Windows で Service Fabric Reliable Services と Reliable Actors をコンテナー化する
 
 Service Fabric は、Service Fabric マイクロサービス (Reliable Services と Reliable Actor ベースのサービス) のコンテナー化をサポートしています。 詳細については、「[Service Fabric とコンテナー](service-fabric-containers-overview.md)」を参照してください。
 
-この機能はプレビュー段階です。この記事では、コンテナー内で実行されているサービスを取得するさまざまな手順について説明します。  
+このドキュメントは、Windows コンテナー内でサービスを実行させるためのガイダンスとなっています。
 
 > [!NOTE]
-> この機能はプレビュー段階であり、実稼働環境ではサポートされません。 現在、この機能は Windows でのみ機能します。 コンテナーを実行するには、Windows Server 2016 with Containers でクラスターを実行する必要があります。
+> 現在、この機能は Windows でのみ機能します。 コンテナーを実行するには、Windows Server 2016 with Containers でクラスターを実行する必要があります。
 
 ## <a name="steps-to-containerize-your-service-fabric-application"></a>Service Fabric アプリケーションをコンテナー化する手順
 
@@ -58,13 +58,22 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
 4. プロジェクトをビルドして[パッケージ](service-fabric-package-apps.md#Package-App)を作成します。 ビルドしてパッケージを作成するには、ソリューション エクスプローラーでアプリケーション プロジェクトを右クリックして **[パッケージ]** コマンドを選択します。
 
 5. コンテナー化する必要があるコード パッケージごとに、PowerShell スクリプト [CreateDockerPackage.ps1](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/scripts/CodePackageToDockerPackage/CreateDockerPackage.ps1) を実行します。 使用方法は次のとおりです。
-  ```powershell
-    $codePackagePath = 'Path to the code package to containerize.'
-    $dockerPackageOutputDirectoryPath = 'Output path for the generated docker folder.'
-    $applicationExeName = 'Name of the ode package executable.'
-    CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -ApplicationExeName $applicationExeName
- ```
-  次のスクリプトでは、$dockerPackageOutputDirectoryPath に Docker アーティファクトを含むフォルダーを作成します。 生成された Docker ファイルを変更して、必要に応じて任意のポートを開いたり、セットアップ スクリプトを実行したりします。
+
+    完全版の .NET
+      ```powershell
+        $codePackagePath = 'Path to the code package to containerize.'
+        $dockerPackageOutputDirectoryPath = 'Output path for the generated docker folder.'
+        $applicationExeName = 'Name of the Code package executable.'
+        CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -ApplicationExeName $applicationExeName
+      ```
+    .NET Core
+      ```powershell
+        $codePackagePath = 'Path to the code package to containerize.'
+        $dockerPackageOutputDirectoryPath = 'Output path for the generated docker folder.'
+        $dotnetCoreDllName = 'Name of the Code package dotnet Core Dll.'
+        CreateDockerPackage.ps1 -CodePackageDirectoryPath $codePackagePath -DockerPackageOutputDirectoryPath $dockerPackageOutputDirectoryPath -DotnetCoreDllName $dotnetCoreDllName
+      ```
+      次のスクリプトでは、$dockerPackageOutputDirectoryPath に Docker アーティファクトを含むフォルダーを作成します。 生成された Dockerfile を任意のポートに公開 (`expose`) するよう修正し、 ニーズに基づいて設定スクリプトなどを実行します。
 
 6. 次に、Docker コンテナー パッケージを[ビルド](service-fabric-get-started-containers.md#Build-Containers)してリポジトリに[プッシュ](service-fabric-get-started-containers.md#Push-Containers)します。
 
@@ -79,7 +88,7 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
       <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName>
     </ContainerHost>
   </EntryPoint>
-  <!-- Pass environment variables to your container: -->    
+  <!-- Pass environment variables to your container: -->
 </CodePackage>
   ```
 
@@ -94,7 +103,24 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
 </Policies>
  ```
 
-9. このアプリケーションをテストするには、バージョン 5.7 以降を実行しているクラスターにデプロイする必要があります。 また、このプレビュー機能を有効にするようにクラスター設定を編集および更新する必要があります。 この[記事](service-fabric-cluster-fabric-settings.md)の手順に従って、次のように設定を追加します。
+9. コンテナーの分離モードを構成するには、「[分離モードの構成]( https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started-containers#configure-isolation-mode)」を参照してください。 Windows では、コンテナーの 2 つの分離モード (プロセスおよび Hyper-V) がサポートされます。 以下のスニペットは、アプリケーション マニフェスト ファイルで分離モードがどのように指定されるかを示しています。
+
+ ```xml
+<Policies>
+  <ContainerHostPolicies CodePackageRef="Code" Isolation="process">
+  ...
+  </ContainerHostPolicies>
+</Policies>
+ ```
+  ```xml
+<Policies>
+  <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
+  ...
+  </ContainerHostPolicies>
+</Policies>
+ ```
+
+10. このアプリケーションをテストするには、バージョン 5.7 以降を実行しているクラスターにデプロイする必要があります。 ラインタイム バージョンが 6.1 以前の場合は、このプレビュー機能を有効にするようにクラスター設定を編集および更新する必要があります。 この[記事](service-fabric-cluster-fabric-settings.md)の手順に従って、次のように設定を追加します。
 ```
       {
         "name": "Hosting",
@@ -106,7 +132,8 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
         ]
       }
 ```
-10. 次に、編集したアプリケーション パッケージをこのクラスターに[デプロイ](service-fabric-deploy-remove-applications.md)します。
+
+11. 次に、編集したアプリケーション パッケージをこのクラスターに[デプロイ](service-fabric-deploy-remove-applications.md)します。
 
 以上の手順で、クラスターを実行しているコンテナー化された Service Fabric アプリケーションが作成されます。
 

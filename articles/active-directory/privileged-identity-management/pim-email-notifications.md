@@ -11,28 +11,38 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: pim
-ms.date: 07/24/2018
+ms.date: 09/07/2018
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: 1a1635e0ba16bdc0fa6dc90aa0e1a417f43e04ac
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: de1d29d3ab1b370257c3a2d6b6ff9f677197fc2a
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190178"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303066"
 ---
 # <a name="email-notifications-in-pim"></a>PIM での電子メール通知
 
-Azure AD Privileged Identity Management (PIM) で重要なイベントが発生すると、関連する管理者またはユーザーに電子メール通知が送信されます。 たとえば、PIM は、次のイベントに対して電子メールを送信します。
+Azure AD Privileged Identity Management (PIM) で重要な発生すると、電子メール通知が送信されます。 たとえば、PIM は、次のイベントに対して電子メールを送信します。
 
 - 特権ロールのアクティブ化が承認待ちのとき
-- 特権ロールのアクティブ化要求が承認されたとき
+- 特権ロールのアクティブ化要求が完了したとき
 - 特権ロールがアクティブ化されたとき
 - 特権ロールが割り当てられたとき
 - Azure AD PIM が有効になったとき
 
-2018 年 7 月より、PIM を通じて送信される電子メール通知の送信者のメール アドレスが新しくなり、ビジュアル デザインも新しくなります。 この更新は、Azure AD 用の PIM と Azure リソース用の PIM の両方に影響します。 以前に電子メール通知がトリガーされていたすべてのイベントは、引き続き電子メールが送信されます。 一部のメールでは内容が更新されて、提供する情報が増える予定です。
+次の管理者に電子メール通知が送信されます:
+
+- 特権ロール管理者
+- セキュリティ管理者
+
+電子メール通知は、次のイベントの特権ロールを持つエンドユーザーにも送信されます:
+
+- 特権ロールのアクティブ化要求が完了したとき
+- 特権ロールが割り当てられたとき
+
+2018 年 7 月末より、PIM を通じて送信される電子メール通知の送信者のメール アドレスが新しくなり、ビジュアル デザインも新しくなります。 この更新は、Azure AD 用の PIM と Azure リソース用の PIM の両方に影響します。 以前に電子メール通知がトリガーされていたすべてのイベントは、引き続き電子メールが送信されます。 一部のメールでは内容が更新されて、提供する情報が増える予定です。
 
 ## <a name="sender-email-address"></a>送信者のメール アドレス
 

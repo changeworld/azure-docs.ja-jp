@@ -1,34 +1,35 @@
 ---
-title: Microsoft Translator Text API による不適切な表現のフィルター処理 | Microsoft Docs
-description: Microsoft Translator Text API で不適切な表現のフィルター処理を使用します。
+title: 不適切な表現のフィルター - Translator Text API
+titlesuffix: Azure Cognitive Services
+description: Translator Text API で不適切な表現のフィルターを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: a7172e1e8aa336c011fb06e93fc5c4b54d26a3cd
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 87814571e6f1c20b219020651eb798fa49a28deb
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374349"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127935"
 ---
-# <a name="how-to-add-profanity-filtering-with-the-microsoft-translator-text-api"></a>Microsoft Translator Text API による不適切な表現のフィルター処理を追加する方法
+# <a name="add-profanity-filtering-with-the-translator-text-api"></a>Translator Text API で不適切な表現のフィルターを追加する
 
 通常、Translator サービスでは、ソースに存在する不適切な表現は翻訳でも保たれます。 不適切な表現の程度と、単語を不適切にしているコンテキストは、文化により異なります。 その結果、対象言語における不適切な表現の程度は、増幅されたり低減されることがあります。
 
-翻訳で不適切な表現が表示されるのを防ぐには (ソース テキスト内での不適切な表現の有無に関係なく)、Translate() メソッドで不適切な表現のフィルター処理オプションを使用できます。 このオプションを使用すれば、不適切な表現を削除したり適切なタグでマークされていることを確認するか、アクションを行わないかを選択できます。
+翻訳で不適切な表現が表示されるのを防ぐには (ソース テキストに不適切な表現が存在する場合でも)、Translate() メソッドで不適切な表現のフィルター処理オプションを使用します。 このオプションを使用すると、不適切な表現が削除されているか、適切なタグでマークされているかどうかを確認する、あるいはアクションを起こさないかを選択できます。
 
-Translate() メソッドは "options" パラメーターを取り、ここには "ProfanityAction" の新しい要素が含まれます。 ProfanityAction の値は、"NoAction"、"Marked"、および "Deleted" です。
+Translate() メソッドは "options" パラメーターを取り、ここには "ProfanityAction" の新しい要素が含まれます。 ProfanityAction に指定できる値は、"NoAction"、"Marked"、および "Deleted" です。
 
 ## <a name="accepted-values-of-profanityaction-and-examples"></a>ProfanityAction に指定できる値と例
 |ProfanityAction 値 | アクションを表示します。 | 例: ソース - 日本語 | 例: ターゲット - 英語|
 | :---|:---|:---|:---|
 | NoAction | [既定]。 オプションを設定しない場合と同じです。 不適切な表現はソースからターゲットに渡されます。 | 彼は変態です。 | He is a jerk. |
-| Marked | 不適切な表現は XML タグ \<profanity> … \</profanity> で囲まれます。 | 彼は変態です。 | He is a \<profanity>jerk\</profanity>. |
+| Marked | 不適切な表現は XML タグ \<profanity> … \</profanity> で囲まれています。 | 彼は変態です。 | He is a \<profanity>jerk\</profanity>. |
 | Deleted | 不適切な単語は、置換されずに出力から削除されます。 | 彼は。 | He is a. |
 
 ## <a name="next-steps"></a>次の手順

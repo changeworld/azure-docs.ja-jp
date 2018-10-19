@@ -3,19 +3,21 @@ title: Azure IoT Central でルールに対する Webhook を作成する | Micr
 description: Azure IoT Central でルールが作動したときに他のアプリケーションに自動的に通知する Webhook を作成します。
 author: viv-liu
 ms.author: viviali
-ms.date: 07/17/2018
+ms.date: 09/17/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1e21076cafe21e6c0efcdf5a8146278eabd9ebc4
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 896d4e9c775fa0b0c8eb062d11d141901daa7242
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39227834"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295986"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Azure IoT Central でルールに対する Webhook アクションを作成する
+
+*このトピックはビルダーおよび管理者向けです。*
 
 Webhook を使用すると、IoT Central アプリを他のアプリケーションやサービスに接続して、リモート監視や通知を行うことができます。 IoT Central アプリ内でルールがトリガーされるたびに、Webhook は、接続されている他のアプリケーションやサービスに対して自動的に通知を行います。 ルールがトリガーされるたびに、IoT Central アプリから他のアプリケーションの HTTP エンドポイントに POST 要求が送信されます。 ペイロードには、デバイスの詳細とルールのトリガーの詳細が含まれます。 
 
@@ -25,11 +27,11 @@ Webhook を使用すると、IoT Central アプリを他のアプリケーショ
 1. [RequestBin](http://requestbin.net/) を開きます。 
 1. 新しい RequestBin を作成し、**Bin URL** をコピーします。 
 1. [テレメトリ ルール](howto-create-telemetry-rules.md)または[イベント ルール](howto-create-event-rules.md)を作成します。 ルールを保存し、新しいアクションを追加します。
-![Webhook の作成画面](media/howto-create-webhooks/webhookcreate.png)
+![Webhook の作成画面](media/howto-create-webhooks/webhookcreate.PNG)
 1. Webhook アクションを選択し、表示名を指定して、Bin URL をコールバック URL として貼り付けます。 
 1. ルールを保存します。
 
-ルールが作動すると、新しい要求が RequestBin に表示されます。
+ルールがトリガーされると、新しい要求が RequestBin に表示されます。
 
 ## <a name="payload"></a>ペイロード
 ルールがトリガーされると、測定値、デバイス、ルール、アプリケーションの詳細に関する JSON ペイロードを含んだ HTTP POST 要求がコールバック URL に対して行われます。 テレメトリ ルールの場合、このペイロードは次のような内容になります。
@@ -42,6 +44,7 @@ Webhook を使用すると、IoT Central アプリを他のアプリケーショ
         "id":"ID",
         "name":  "Refrigerator1",
         "simulated" : true,
+        "deviceId": "deviceID",
         "deviceTemplate":{
             "id": "ID",
             "version":"1.0.0"

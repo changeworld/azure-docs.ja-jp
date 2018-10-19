@@ -1,34 +1,34 @@
 ---
-title: Microsoft Translator Text API V2.0 リファレンス | Microsoft Docs
-titleSuffix: Cognitive Services
-description: V2.0 Microsoft Translator Text API のリファレンス ドキュメント。
+title: Translator Text API V2.0
+titleSuffix: Azure Cognitive Services
+description: V2.0 Translator Text API のリファレンス ドキュメント。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: e32e28608d2fecf27b61acff74af7eb6849f0ba1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 57058e9a86a338738315a08f218978e20fae95e2
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377760"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127858"
 ---
 # <a name="translator-text-api-v20"></a>Translator Text API v2.0
 
 > [!IMPORTANT]
 > Translator Text API のこのバージョンは非推奨になっています。 Translator Text API v3 のドキュメントは、[こちら](v3-0-reference.md)をご覧ください。
 
-Microsoft Translator V2 Text API は、アプリケーション、Web サイト、ツール、またはその他のソリューションにシームレスに統合して、多言語ユーザー エクスペリエンスを提供することができます。 業界標準を活用することで、任意のハードウェア プラットフォーム上で使用でき、また任意のオペレーティング システムを使用して、言語翻訳や、テキストの言語の検出やテキスト読み上げなど、その他の言語に関連する操作を実行できます。 Microsoft Translator API の詳細については、ここをクリックしてください。
+Translator Text API V2 は、アプリケーション、Web サイト、ツール、またはその他のソリューションにシームレスに統合して、多言語ユーザー エクスペリエンスを提供することができます。 業界標準を活用することで、任意のハードウェア プラットフォーム上で使用でき、また任意のオペレーティング システムを使用して、言語翻訳や、テキストの言語の検出やテキスト読み上げなど、その他の言語に関連する操作を実行できます。 Microsoft Translator API の詳細については、ここをクリックしてください。
 
 ## <a name="getting-started"></a>使用の開始
-Microsoft Translator Text API にアクセスするには、[Microsoft Azure にサインアップ](../translator-text-how-to-signup.md)する必要があります。
+Translator Text API にアクセスするには、[Microsoft Azure にサインアップ](../translator-text-how-to-signup.md)する必要があります。
 
-## <a name="authorization"></a>承認
-Microsoft Translator Text API への呼び出しでは、いずれも認証にサブスクリプション キーが必要です。 API では、2 つの認証モードがサポートされています。
+## <a name="authorization"></a>Authorization
+Translator Text API への呼び出しでは、いずれも認証にサブスクリプション キーが必要です。 API では、2 つの認証モードがサポートされています。
 
 * アクセス トークンを使用します。 **ステップ** 9 で参照されているサブスクリプション キーを使用して、承認サービスに POST 要求を行うことで、アクセス トークンを生成します。 詳細については、トークン サービスに関するドキュメントを参照してください。 Authorization ヘッダーまたは access_token クエリ パラメーターを使用して、アクセス トークンを Translator サービスに渡します。 アクセス トークンは 10 分間有効です。 10 分ごとに新しいアクセス トークンを取得し、このような 10 分以内で繰り返す要求に対して同じアクセス トークンを使い続けます。
 
@@ -70,7 +70,7 @@ HTML (`contentType=text/html`) などのタグを持つコンテンツを翻訳�
 
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 
-文字列
+string
 
 応答コンテンツ タイプ: application/xml 
 
@@ -78,13 +78,13 @@ HTML (`contentType=text/html`) などのタグを持つコンテンツを翻訳�
 
 |パラメーター|値|説明    |パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|appid  |(空)    |必須。 Authorization ヘッダーまたは Ocp-Apim-Subscription-Key ヘッダーを使用する場合は、appid フィールドを空白のままにするか、"Bearer" + " " + "access_token" を含む文字列を含めます。|クエリ|文字列|
-|テキスト|(空)   |必須。 翻訳するテキストを表す文字列。 テキストのサイズは、10,000 文字を超えてはいけません。|クエリ|文字列|
-|from|(空)   |省略可能。 翻訳テキストの言語コードを表す文字列。 たとえば、en は英語を表します。|クエリ|文字列|
-|to|(空) |必須。 テキストの翻訳先の言語コードを表す文字列。|クエリ|文字列|
-|contentType|(空)    |省略可能。 翻訳されるテキストの形式。 サポートされている形式は、text/plain (既定値) および text/html です。 HTML の場合は、適切な形式の完全な要素である必要があります。|クエリ|文字列|
-|カテゴリ|(空)   |省略可能。 翻訳のカテゴリ (ドメイン) を含む文字列。 既定値は "general" です。|クエリ|文字列|
-|承認|(空)  |appid フィールドまたは Ocp-Apim-Subscription-Key ヘッダーが指定されていない場合は必須。 認証トークン: "Bearer" + " " + "access_token"。|ヘッダー|文字列|
+|appid  |(空)    |必須。 Authorization ヘッダーまたは Ocp-Apim-Subscription-Key ヘッダーを使用する場合は、appid フィールドを空白のままにするか、"Bearer" + " " + "access_token" を含む文字列を含めます。|query|string|
+|text|(空)   |必須。 翻訳するテキストを表す文字列。 テキストのサイズは、10,000 文字を超えてはいけません。|query|文字列|
+|from|(空)   |省略可能。 翻訳テキストの言語コードを表す文字列。 たとえば、en は英語を表します。|query|文字列|
+|to|(空) |必須。 テキストの翻訳先の言語コードを表す文字列。|query|string|
+|contentType|(空)    |省略可能。 翻訳されるテキストの形式。 サポートされている形式は、text/plain (既定値) および text/html です。 HTML の場合は、適切な形式の完全な要素である必要があります。|query|string|
+|category|(空)   |省略可能。 翻訳のカテゴリ (ドメイン) を含む文字列。 既定値は "general" です。|query|文字列|
+|Authorization|(空)  |appid フィールドまたは Ocp-Apim-Subscription-Key ヘッダーが指定されていない場合は必須。 認証トークン: "Bearer" + " " + "access_token"。|ヘッダー|文字列|
 |Ocp-Apim-Subscription-Key|(空)  |appid フィールドまたは Authorization ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
 
 
@@ -175,7 +175,7 @@ TranslateArray メソッドは、`Content-Type` に `application/xml` または 
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 成功した応答には、`TranslateArrayResponse` の配列が上で説明した形式で含まれています。
 
-文字列
+string
 
 応答コンテンツ タイプ: application/xml
 
@@ -183,7 +183,7 @@ TranslateArray メソッドは、`Content-Type` に `application/xml` または 
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|承認|(空) |appid フィールドまたは Ocp-Apim-Subscription-Key ヘッダーが指定されていない場合は必須。 認証トークン: "Bearer" + " " + "access_token"。|ヘッダー|文字列|
+|Authorization|(空) |appid フィールドまたは Ocp-Apim-Subscription-Key ヘッダーが指定されていない場合は必須。 認証トークン: "Bearer" + " " + "access_token"。|ヘッダー|文字列|
 |Ocp-Apim-Subscription-Key|(空)|appid フィールドまたは Authorization ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
 
 ### <a name="response-messages"></a>応答メッセージ
@@ -216,7 +216,7 @@ TranslateArray メソッドは、`Content-Type` に `application/xml` または 
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 Translator サービスでサポートされ、要求された言語にローカライズされる言語名を含む文字列配列。
 
-文字列
+string
 
 応答コンテンツ タイプ: application/xml
  
@@ -224,9 +224,9 @@ Translator サービスでサポートされ、要求された言語にローカ
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|クエリ|文字列|
-|ロケール|(空) |必須。 言語に関連付けられている ISO 639 の小文字 2 文字のカルチャ コードと、言語名をローカライズする ISO 3166 の大文字 2 文字のサブカルチャ コードまたは ISO 639 自体の小文字のカルチャ コードの組み合わせを表す文字列。|クエリ|文字列|
-|承認|(空)  |appid フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
+|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
+|locale|(空) |必須。 言語に関連付けられている ISO 639 の小文字 2 文字のカルチャ コードと、言語名をローカライズする ISO 3166 の大文字 2 文字のサブカルチャ コードまたは ISO 639 自体の小文字のカルチャ コードの組み合わせを表す文字列。|query|文字列|
+|Authorization|(空)  |appid フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
 |Ocp-Apim-Subscription-Key|(空)  |appid フィールドまたは `Authorization` ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
 
 ### <a name="response-messages"></a>応答メッセージ
@@ -250,7 +250,7 @@ Translator サービスでサポートされ、要求された言語にローカ
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 Translator サービスによってサポートされている言語コードを含む文字列配列。
 
-文字列
+string
 
 応答コンテンツ タイプ: application/xml
  
@@ -258,8 +258,8 @@ Translator サービスによってサポートされている言語コードを
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|クエリ|文字列|
-|承認|(空)  |`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
+|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|文字列|
+|Authorization|(空)  |`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
 |Ocp-Apim-Subscription-Key|(空)|`appid` フィールドまたは `Authorization` ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
 
 ### <a name="response-messages"></a>応答メッセージ
@@ -283,7 +283,7 @@ Translator サービスによってサポートされている言語コードを
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 Translator サービスによって音声合成がサポートされている言語コードを含む文字列配列。
 
-文字列
+string
 
 応答コンテンツ タイプ: application/xml
 
@@ -291,8 +291,8 @@ Translator サービスによって音声合成がサポートされている言
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|クエリ|文字列|
-|承認|(空)|`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
+|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|文字列|
+|Authorization|(空)|`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
 |Ocp-Apim-Subscription-Key|(空)|`appid` フィールドまたは `Authorization` ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
  
 ### <a name="response-messages"></a>応答メッセージ
@@ -323,12 +323,12 @@ binary
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|クエリ|文字列|
-|テキスト|(空)   |必須。 wave ストリームの読み上げに指定されている言語の文または文章を含む文字列。 読み上げるテキストのサイズは、2,000 文字以内にする必要があります。|クエリ|文字列|
-|言語|(空)   |必須。 テキストを読み上げるサポートされる言語コードを表す文字列。 コードは、`GetLanguagesForSpeak` メソッドから返されるコードの一覧に存在している必要があります。|クエリ|文字列|
-|format|(空)|省略可能。 content-type ID を指定する文字列。 現在、`audio/wav` と `audio/mp3` が使用できます。 既定値は `audio/wav` です。|クエリ|文字列|
-|options|(空)    |<ul><li>省略可能。 次の合成音声のプロパティを指定する文字列。<li>`MaxQuality` と `MinSize` は、音声信号の品質を指定するために使用できます。 `MaxQuality` を使用すると、最高品質と音声を取得することができ、`MinSize` を使用すると、最小サイズの音声を取得することができます。 既定値は `MinSize` です。</li><li>`female` と `male` は、音声の性別を指定できます。 既定値は `female` です。 垂直バー ` を使用|` to include multiple options. For example  `MaxQuality|Male`。</li></li></ul> |クエリ|文字列|
-|承認|(空)|`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
+|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
+|text|(空)   |必須。 wave ストリームの読み上げに指定されている言語の文または文章を含む文字列。 読み上げるテキストのサイズは、2,000 文字以内にする必要があります。|query|string|
+|language|(空)   |必須。 テキストを読み上げるサポートされる言語コードを表す文字列。 コードは、`GetLanguagesForSpeak` メソッドから返されるコードの一覧に存在している必要があります。|query|文字列|
+|format|(空)|省略可能。 content-type ID を指定する文字列。 現在、`audio/wav` と `audio/mp3` が使用できます。 既定値は `audio/wav` です。|query|string|
+|options|(空)    |<ul><li>省略可能。 次の合成音声のプロパティを指定する文字列。<li>`MaxQuality` と `MinSize` は、音声信号の品質を指定するために使用できます。 `MaxQuality` を使用すると、最高品質と音声を取得することができ、`MinSize` を使用すると、最小サイズの音声を取得することができます。 既定値は `MinSize` です。</li><li>`female` と `male` は、音声の性別を指定できます。 既定値は `female` です。 垂直バー ` を使用|` to include multiple options. For example  `MaxQuality|Male`。</li></li></ul> |query|文字列|
+|Authorization|(空)|`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
 |Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドまたは `Authorization` ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
 
 ### <a name="response-messages"></a>応答メッセージ
@@ -347,11 +347,11 @@ binary
 
 要求 URI は `https://api.microsofttranslator.com/V2/Http.svc/Detect` です。
 
-**戻り値:** 指定したテキストの 2 文字の言語コードを含む文字列。 が必要です。
+**戻り値:** 指定したテキストの 2 文字の言語コードを含む文字列。 .
 
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 
-文字列
+string
 
 応答コンテンツ タイプ: application/xml
 
@@ -359,9 +359,9 @@ binary
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|appid|(空)  |必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|クエリ|文字列|
-|テキスト|(空)|必須。 言語が識別されるいくつかのテキストを含む文字列。 テキストのサイズは、10,000 文字を超えてはいけません。|クエリ| 文字列|
-|承認|(空)|`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
+|appid|(空)  |必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
+|text|(空)|必須。 言語が識別されるいくつかのテキストを含む文字列。 テキストのサイズは、10,000 文字を超えてはいけません。|query| 文字列|
+|Authorization|(空)|`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
 |Ocp-Apim-Subscription-Key  |(空)    |`appid` フィールドまたは `Authorization` ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
 
 ### <a name="response-messages"></a>応答メッセージ
@@ -406,7 +406,7 @@ binary
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 DetectArray が成功しました。 入力配列の各行の 2 文字の言語コードを含む文字列配列を返します。
 
-文字列
+string
 
 応答コンテンツ タイプ: application/xml
  
@@ -414,8 +414,8 @@ DetectArray が成功しました。 入力配列の各行の 2 文字の言語�
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|クエリ|文字列|
-|承認|(空)|`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
+|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|文字列|
+|Authorization|(空)|`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
 |Ocp-Apim-Subscription-Key|(空)|`appid` フィールドまたは Authorization ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
 
 ### <a name="response-messages"></a>応答メッセージ
@@ -440,7 +440,7 @@ DetectArray が成功しました。 入力配列の各行の 2 文字の言語�
 
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 
-文字列
+string
 
 応答コンテンツ タイプ: application/xml
  
@@ -448,17 +448,17 @@ DetectArray が成功しました。 入力配列の各行の 2 文字の言語�
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型   |
 |:--|:--|:--|:--|:--|
-|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|クエリ|文字列|
-|originalText|(空)|必須。 翻訳元のテキストを含む文字列。 文字列の最大長は 1,000 文字です。|クエリ|文字列|
-|translatedText|(空) |必須。 ターゲット言語で翻訳されたテキストを含む文字列。 文字列の最大長は 2,000 文字です。|クエリ|文字列|
-|from|(空)   |必須。 翻訳テキストの言語コードを表す文字列。 en = 英語、de = ドイツ語など。|クエリ|文字列|
-|to|(空)|必須。 テキストの翻訳先の言語コードを表す文字列。|クエリ|文字列|
-|評価|(空) |省略可能。 この文字列の品質評価を表す整数。 値の範囲は -10 から 10 です。 既定値は 1 です。|クエリ|integer|
-|contentType|(空)    |省略可能。 翻訳されるテキストの形式。 サポートされている形式は、"text/plain" と "text/html" です。 HTML の場合は、適切な形式の完全な要素である必要があります。   |クエリ|文字列|
-|カテゴリ|(空)|省略可能。 翻訳のカテゴリ (ドメイン) を含む文字列。 既定値は "general" です。|クエリ|文字列|
-|user|(空)|必須。 送信者を追跡するのに使用される文字列。|クエリ|文字列|
-|uri|(空)|省略可能。 この翻訳のコンテンツの場所を含む文字列。|クエリ|文字列|
-|承認|(空)|appid フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。    |ヘッダー|文字列|
+|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
+|originalText|(空)|必須。 翻訳元のテキストを含む文字列。 文字列の最大長は 1,000 文字です。|query|string|
+|translatedText|(空) |必須。 ターゲット言語で翻訳されたテキストを含む文字列。 文字列の最大長は 2,000 文字です。|query|文字列|
+|from|(空)   |必須。 翻訳テキストの言語コードを表す文字列。 en = 英語、de = ドイツ語など。|query|文字列|
+|to|(空)|必須。 テキストの翻訳先の言語コードを表す文字列。|query|string|
+|評価|(空) |省略可能。 この文字列の品質評価を表す整数。 値の範囲は -10 から 10 です。 既定値は 1 です。|query|integer|
+|contentType|(空)    |省略可能。 翻訳されるテキストの形式。 サポートされている形式は、"text/plain" と "text/html" です。 HTML の場合は、適切な形式の完全な要素である必要があります。   |query|string|
+|category|(空)|省略可能。 翻訳のカテゴリ (ドメイン) を含む文字列。 既定値は "general" です。|query|string|
+|user|(空)|必須。 送信者を追跡するのに使用される文字列。|query|string|
+|uri|(空)|省略可能。 この翻訳のコンテンツの場所を含む文字列。|query|文字列|
+|Authorization|(空)|appid フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。    |ヘッダー|文字列|
 |Ocp-Apim-Subscription-Key|(空)|`appid` フィールドまたは `Authorization` ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
 
 ### <a name="response-messages"></a>応答メッセージ
@@ -517,7 +517,7 @@ AddtranslationsRequest 要素内の要素は次のとおりです。
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 AddTranslationArray メソッドが正常に完了しました。 2018 年 2 月 1 日以降は、文の送信は受け付けられません。 サービスでエラー コード 410 が返されます。
 
-文字列
+string
 
 応答コンテンツ タイプ: application/xml
  
@@ -525,7 +525,7 @@ AddTranslationArray メソッドが正常に完了しました。 2018 年 2 月
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|承認|(空)|appid フィールドまたは Ocp-Apim-Subscription-Key ヘッダーが指定されていない場合は必須。 認証トークン: "Bearer" + " " + "access_token"。|ヘッダー|文字列|
+|Authorization|(空)|appid フィールドまたは Ocp-Apim-Subscription-Key ヘッダーが指定されていない場合は必須。 認証トークン: "Bearer" + " " + "access_token"。|ヘッダー|文字列|
 |Ocp-Apim-Subscription-Key|(空)|appid フィールドまたは Authorization ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
 
 ### <a name="response-messages"></a>応答メッセージ
@@ -558,10 +558,10 @@ integer
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|appid|(空)  |必須。 Authorization ヘッダーまたは Ocp-Apim-Subscription-Key ヘッダーを使用する場合は、appid フィールドを空白のままにするか、"Bearer" + " " + "access_token" を含む文字列を含めます。|クエリ| 文字列|
-|テキスト|(空)   |必須。 複数の文に分割するテキストを表す文字列。 テキストのサイズは、10,000 文字を超えてはいけません。|クエリ|文字列|
-|言語   |(空)    |必須。 入力テキストの言語コードを表す文字列。|クエリ|文字列|
-|承認|(空)|appid フィールドまたは Ocp-Apim-Subscription-Key ヘッダーが指定されていない場合は必須。 認証トークン: "Bearer" + " " + "access_token"。    |ヘッダー|文字列|
+|appid|(空)  |必須。 Authorization ヘッダーまたは Ocp-Apim-Subscription-Key ヘッダーを使用する場合は、appid フィールドを空白のままにするか、"Bearer" + " " + "access_token" を含む文字列を含めます。|query| string|
+|text|(空)   |必須。 複数の文に分割するテキストを表す文字列。 テキストのサイズは、10,000 文字を超えてはいけません。|query|string|
+|language   |(空)    |必須。 入力テキストの言語コードを表す文字列。|query|文字列|
+|Authorization|(空)|appid フィールドまたは Ocp-Apim-Subscription-Key ヘッダーが指定されていない場合は必須。 認証トークン: "Bearer" + " " + "access_token"。    |ヘッダー|文字列|
 |Ocp-Apim-Subscription-Key|(空)|appid フィールドまたは Authorization ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
 
 ### <a name="response-messages"></a>応答メッセージ
@@ -644,7 +644,7 @@ MatchedOriginalText: この結果の一致した元のテキストです。 一�
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 上で説明した形式の `GetTranslationsResponse` オブジェクト。
 
-文字列
+string
 
 応答コンテンツ タイプ: application/xml
  
@@ -652,12 +652,12 @@ MatchedOriginalText: この結果の一致した元のテキストです。 一�
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|クエリ|文字列|
-|テキスト|(空)|必須。 翻訳するテキストを表す文字列。 テキストのサイズは、10,000 文字を超えてはいけません。|クエリ|文字列|
-|from|(空)|必須。 翻訳テキストの言語コードを表す文字列。|クエリ|文字列|
-|to |(空)    |必須。 テキストの翻訳先の言語コードを表す文字列。|クエリ|文字列|
-|maxTranslations|(空)|必須。 返す翻訳結果の最大数を表す整数。|クエリ|integer|
-|承認| (空)|`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|文字列| ヘッダー|
+|appid|(空)|必須。 `Authorization` または `Ocp-Apim-Subscription-Key` ヘッダーを使用している場合は、appid フィールドは空のままにするか、`"Bearer" + " " + "access_token"` を含む文字列を含めます。|query|string|
+|text|(空)|必須。 翻訳するテキストを表す文字列。 テキストのサイズは、10,000 文字を超えてはいけません。|query|文字列|
+|from|(空)|必須。 翻訳テキストの言語コードを表す文字列。|query|文字列|
+|to |(空)    |必須。 テキストの翻訳先の言語コードを表す文字列。|query|string|
+|maxTranslations|(空)|必須。 返す翻訳結果の最大数を表す整数。|query|integer|
+|Authorization| (空)|`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|string| ヘッダー|
 |Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドまたは `Authorization` ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
 
 ### <a name="response-messages"></a>応答メッセージ
@@ -764,7 +764,7 @@ MatchedOriginalText: この結果の一致した元のテキストです。 一�
 
 ### <a name="response-class-status-200"></a>応答クラス (ステータス 200)
 
-文字列
+string
 
 応答コンテンツ タイプ: application/xml
  
@@ -772,7 +772,7 @@ MatchedOriginalText: この結果の一致した元のテキストです。 一�
 
 |パラメーター|値|説明|パラメーターのタイプ|データ型|
 |:--|:--|:--|:--|:--|
-|承認  |(空)    |`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
+|Authorization  |(空)    |`appid` フィールドまたは `Ocp-Apim-Subscription-Key` ヘッダーが指定されていない場合は必須。 認証トークン: `"Bearer" + " " + "access_token"`。|ヘッダー|文字列|
 |Ocp-Apim-Subscription-Key|(空)  |`appid` フィールドまたは `Authorization` ヘッダーが指定されていない場合は必須。|ヘッダー|文字列|
 
 ### <a name="response-messages"></a>応答メッセージ

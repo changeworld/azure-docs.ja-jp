@@ -2,24 +2,20 @@
 title: Azure Functions ランタイムのインストール | Microsoft Docs
 description: Azure Functions ランタイム プレビュー 2 をインストールする方法
 services: functions
-documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: ''
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: f8ce27bf28f73818932f2ac9056d4fdd573679e8
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 1ad1d2c74be97afcb62f3f8e8161111f4938f645
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
-ms.locfileid: "26290659"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44093670"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>Azure Functions ランタイム プレビュー 2 をインストールする
 
@@ -106,7 +102,7 @@ Azure Functions ランタイムのインストールを完了するには、構�
 
 Azure Functions ランタイム プレビューで最初の関数を作成するには
 
-1. **Azure Functions ランタイム ポータル**を https://<machinename>.<domain> として参照します。 たとえば https://mycomputer.mydomain.com などです
+1. **Azure Functions ランタイム ポータル**を https://<machinename>.<domain> として参照します。 例 https://mycomputer.mydomain.com
 1. **ログイン** を要求されます。ドメインにデプロイした場合はドメイン アカウントのユーザー名とパスワードを使用し、それ以外の場合はローカル アカウントのユーザー名とパスワードを使用してポータルにログインします。
 
 ![Azure Functions ランタイム プレビュー ポータルのログイン][14]

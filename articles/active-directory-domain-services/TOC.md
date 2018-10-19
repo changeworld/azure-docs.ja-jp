@@ -34,6 +34,7 @@
 ## マネージド ドメインを管理する
 ### [マネージド ドメインを管理する](active-directory-ds-admin-guide-administer-domain.md)
 ### [マネージド ドメインで DNS を管理する](active-directory-ds-admin-guide-administer-dns.md)
+### [メール通知の更新](active-directory-ds-notifications.md)
 ### マネージド ドメインのセキュリティで保護された LDAP を構成する
 #### [タスク 1: セキュリティで保護された LDAP 用の証明書を取得する](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [タスク 2: セキュリティで保護された LDAP 証明書をエクスポートする](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)

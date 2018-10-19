@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: abb1c7a3f597804a84f06462b1e50bb5a63fb9b3
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 78bbdb244d9bd52a06623f7a6fa3bca123ef3828
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837363"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44300071"
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 
@@ -28,13 +28,13 @@ ms.locfileid: "34837363"
 
 ## 1.<a name='Linkaworkitemwithagitbranch-1'></a>作業項目を Git ブランチにリンクする 
 
-VSTS は、作業項目 (ストーリーやタスク) を Git ブランチに接続する便利な手段を提供します。 これにより、関連付けられているコードにストーリーやタスクを直接リンクすることができます。 
+Azure DevOps Services は、作業項目 (ストーリーやタスク) を Git ブランチに接続する便利な手段を提供します。 これにより、関連付けられているコードにストーリーやタスクを直接リンクすることができます。 
 
 作業項目を新しいブランチに接続するには、作業項目をダブルクリックし、ポップアップ ウィンドウで、**[+ リンクを追加]** の下の **[新しいブランチを作成]** をクリックします。  
 
 ![1](./media/collaborative-coding-with-git/1-sprint-board-view.png)
 
-ブランチ名、ベース Git リポジトリ、ブランチなど、この新しいブランチの情報を指定します。 選択された Git リポジトリは、作業項目が属する同じチーム プロジェクトの下のリポジトリにある必要があります。 ベース ブランチには、master ブランチまたはその他の既存のブランチを指定できます。
+ブランチ名、ベース Git リポジトリ、ブランチなど、この新しいブランチの情報を指定します。 選択された Git リポジトリは、作業項目が属する同じプロジェクトの下のリポジトリにある必要があります。 ベース ブランチには、master ブランチまたはその他の既存のブランチを指定できます。
 
 ![2](./media/collaborative-coding-with-git/2-create-a-branch.png)
 
@@ -70,11 +70,11 @@ Git Bash コマンドで新しいブランチを作成することもできま�
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## 手順 3.<a name='CreateapullrequestonVSTS-3'></a>VSTS でプル要求を作成する 
+## 手順 3.<a name='CreateapullrequestonVSTS-3'></a>Azure DevOps Services でのプル要求を作成します 
 
-いくつかのコミットとプッシュの後、現在のブランチをそのベース ブランチにマージする準備ができたら、VSTS サーバーに**プル要求**を送信できます。 
+いくつかのコミットとプッシュの後、現在のブランチをそのベース ブランチにマージする準備ができたら、Azure DevOps Services サーバーに**プル要求**を送信できます。 
 
-チーム プロジェクトのメイン ページに移動し、**[CODE]\(コード\)** をクリックします。 マージするブランチと、ブランチのマージ先の Git リポジトリ名を選択します。 次に、**[プル要求]** をクリックし、**[新しいプル要求]** をクリックして、ブランチでの作業がベース ブランチにマージされる前にプル要求レビューを作成します。
+プロジェクトのメイン ページに移動し、**[CODE]\(コード\)** をクリックします。 マージするブランチと、ブランチのマージ先の Git リポジトリ名を選択します。 次に、**[プル要求]** をクリックし、**[新しいプル要求]** をクリックして、ブランチでの作業がベース ブランチにマージされる前にプル要求レビューを作成します。
 
 ![6](./media/collaborative-coding-with-git/6-spring-create-pull-request.png)
 

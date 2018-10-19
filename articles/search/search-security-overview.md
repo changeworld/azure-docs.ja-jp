@@ -6,14 +6,14 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 09/06/2018
 ms.author: heidist
-ms.openlocfilehash: 888f7c3ced0ef48cff222bffdbf0f278fa5f42b3
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: 4b1307aa00fae26d7425c9a95ed673b11ba2e9b4
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36285731"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44092633"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Azure Search のセキュリティとデータ プライバシー
 
@@ -23,9 +23,7 @@ Azure Search のセキュリティ アーキテクチャには、物理的なセ
 
 ## <a name="standards-compliance-iso-27001-soc-2-hipaa"></a>標準へのコンプライアンス: ISO 27001、SOC 2、HIPAA
 
-標準へのコンプライアンスの一部には、一般公開されている機能の SOC 2 Type 2 と HIPAA が含まれています。 プレビュー機能は一般公開の一部として認定されます。特定の標準の要件があるソリューションには使用しないでください。 コンプライアンスの認定については、「[Overview of Microsoft Azure compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」(Microsoft Azure コンプライアンスの概要) と[セキュリティ センター](https://www.microsoft.com/en-us/trustcenter)を参照してください。 
-
-次の標準の認定は、[2018 年 6 月に発表されました](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/)。
+Azure Search は次の標準について認定され、[2018 年 6 月に発表されました](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/)。
 
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
 + [SOC 2 Type 2 へのコンプライアンス](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) 完全なレポートについては、[Azure - Azure Government SOC 2 タイプ II レポート](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports)を参照してください。 
@@ -35,13 +33,15 @@ Azure Search のセキュリティ アーキテクチャには、物理的なセ
 + [PCI DSS レベル 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
 + [オーストラリアの IRAP Unclassified DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
+標準へのコンプライアンスは、一般的に使用可能な機能に適用されます。 プレビュー機能は一般公開へ切り替える際に認定されます。厳格な標準の要件があるソリューションには使用しないでください。 コンプライアンスの認定については、「[Overview of Microsoft Azure compliance](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)」(Microsoft Azure コンプライアンスの概要) と[セキュリティ センター](https://www.microsoft.com/en-us/trustcenter)を参照してください。 
+
 ## <a name="encrypted-transmission-and-storage"></a>伝送とストレージの暗号化
 
 暗号化は、接続から、伝送、Azure Search に格納されているインデックス付きデータまで、インデックス作成のパイプライン全体に拡張されています。
 
 | セキュリティ レイヤー | 説明 |
 |----------------|-------------|
-| 転送中の暗号化 | Azure Search は HTTPS ポート 443 をリッスンします。 プラットフォーム全体で、Azure サービスへの接続が暗号化されます。 |
+| 転送中の暗号化 <br>(HTTPS/SSL/TLS) | Azure Search は HTTPS ポート 443 をリッスンします。 プラットフォーム全体で、Azure サービスへの接続が暗号化されます。 <br/><br/>クライアントからサービスへの Azure Search のすべての通信は、SSL/TLS 1.2 に対応しています。  サービスへの SSL 接続には TLSv1.2 を必ず使用してください。|
 | 保存時の暗号化 | 暗号化はインデックス作成処理に完全に含まれ、完了までの時間やインデックス サイズにはほぼ影響しません。 完全に暗号化されていないインデックス (2018 年 1 月より前に作成されたインデックス) の増分更新を含め、すべてのインデックス作成で自動的に行われます。<br><br>内部的には、暗号化は [Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) に基づいており、[256 ビットの AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使用しています。|
 
 暗号化は Azure Search の内部で行われ、Microsoft が内部的に管理する証明書と暗号化キーが使用され、汎用的に適用されます。 暗号化のオン/オフの切り替え、独自のキーの管理または代替、ポータル内またはプログラムによる暗号化設定の表示を行うことはできません。 
@@ -103,7 +103,7 @@ Azure Search での要求の構成について詳しくは、「[Azure Search Se
 
 次の表では、Azure Search で許可される操作のほか、特定の操作へのアクセスを有効にするキーについてまとめています。
 
-| 操作 | アクセス許可 |
+| Operation | アクセス許可 |
 |-----------|-------------------------|
 | サービスの作成 | Azure サブスクリプション所有者|
 | サービスのスケーリング | 管理者キー、リソースに対する RBAC 所有者または RBAC 共同作成者  |

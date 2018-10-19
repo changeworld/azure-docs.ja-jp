@@ -1,23 +1,24 @@
 ---
-title: Azure 上の Bing Web Search API についてよく寄せられる質問 (FAQ) | Microsoft Docs
-description: Azure 上の Microsoft Cognitive Services Bing Web Search API についてよく寄せられる質問に対する回答を確認します。
+title: よく寄せられる質問 (FAQ) - Bing Web Search API
+titleSuffix: Azure Cognitive Services
+description: Bing Web Search API についてよく寄せられる質問とその回答が掲載されています。
 services: cognitive-services
 author: v-jerkin
-manager: jhubbard
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 321f571c48f2231d1ced43848cdefd17adaa1a08
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b0b8fd3eb80d7418546788565402042de20ab3e7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373125"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129320"
 ---
-# <a name="frequently-asked-questions-faq-about-bing-web-search-api-cognitive-services"></a>Bing Web Search API (Cognitive Services) についてよく寄せられる質問 (FAQ)
- 
+# <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ)
+
  Azure 上の Microsoft Cognitive Services の Bing Web Search API に関連する概念、コード、シナリオについてよく寄せられる質問に対する回答を示します。
 
 ## <a name="response-headers-in-javascript"></a>JavaScript 内の応答ヘッダー
@@ -48,19 +49,19 @@ CORS プロキシをインストールして[チュートリアル アプリ](tu
 
     cors-proxy-server
 
-チュートリアル アプリを使用しているときはコマンド ウィンドウを開いたままにしておきます。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、要求ごとに同じであることを確認できます。
+チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、要求ごとに同じであることを確認できます。
 
 ## <a name="response-headers-in-production"></a>実稼働環境での応答ヘッダー
 
-前の回答で説明されている CORS プロキシ アプローチは、開発、テスト、学習に適しています。 
+前の回答で説明されている CORS プロキシ アプローチは、開発、テスト、学習に適しています。
 
-一方、実稼働環境では、Bing Web Search API を使用する Web ページと同じドメイン上のサーバー側スクリプトをホストする必要があります。 このスクリプトは、実際には Web ページの JavaScript からの要求時に API 呼び出しを実行し、ヘッダーを含むすべての結果をクライアントに戻します。 2 つのリソース (ページとスクリプト) が配信元を共有するので、CORS は関与せず、特殊なヘッダーが Web ページ上の JavaScript からアクセスできます。 
+一方、実稼働環境では、Bing Web Search API を使用する Web ページと同じドメイン上のサーバー側スクリプトをホストする必要があります。 このスクリプトは、実際には Web ページの JavaScript からの要求時に API 呼び出しを実行し、ヘッダーを含むすべての結果をクライアントに戻します。 2 つのリソース (ページとスクリプト) が配信元を共有するので、CORS は関与せず、特殊なヘッダーが Web ページ上の JavaScript からアクセスできます。
 
 API キーはサーバー側スクリプトでのみ必要なので、このアプローチでは API キーもパブリックへの露出から保護されます。 スクリプトでは、別の方法を使用して、要求が承認されているかどうかを確認できます。
 
 ## <a name="next-steps"></a>次の手順
 
-不足している機能について質問がある場合は、 [UserVoice Web サイト](https://cognitive.uservoice.com/forums/555907-bing-search)でご要望またはご投票ください。
+不足している機能について質問がある場合は、 [ユーザーの声 Web サイト](https://cognitive.uservoice.com/forums/555907-bing-search)で、要求またはそれに対する投票をご検討ください。
 
 ## <a name="see-also"></a>関連項目
 

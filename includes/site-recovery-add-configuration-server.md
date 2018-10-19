@@ -1,3 +1,21 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: site-recovery
+author: rayne-wiselman
+manager: carmonm
+ms.service: site-recovery
+ms.topic: include
+ms.date: 09/06/2018
+ms.author: raynew
+ms.custom: include file
+ms.openlocfilehash: 2ca4916d48da6fe8a2c061056a1ea0fed9a78bb6
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44058266"
+---
 1. 統合セットアップ インストール ファイルを実行します。
 2. **[開始する前に]** で **[Install the configuration server and process server]\(構成サーバーとプロセス サーバーをインストールする\)** を選択します。
 
@@ -21,10 +39,7 @@
 7. **[MySQL Configuration (MySQL の構成)]** で、インストールする MySQL サーバー インスタンスにログオンするための資格情報を作成します。
 
     ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz6.png)
-8. **[環境の詳細]** で、VMware VM をレプリケートするかどうかを選択します。 レプリケートする場合、PowerCLI 6.0 がインストールされているかどうかが確認されます。
-
-    ![MySQL](./media/site-recovery-add-configuration-server/combined-wiz7.png)
-
+8. Azure Stack VM または物理サーバーをレプリケートする場合は、**[環境の詳細]** で [いいえ] を選択します。 
 9. **[インストール場所]** で、バイナリをインストールしキャッシュを格納する場所を選択します。 選択するドライブには使用可能なディスク領域が 5 GB 以上必要ですが、600 GB 以上の空き領域があるキャッシュ ドライブを使用することをお勧めします。
 
     ![インストール場所](./media/site-recovery-add-configuration-server/combined-wiz8.png)

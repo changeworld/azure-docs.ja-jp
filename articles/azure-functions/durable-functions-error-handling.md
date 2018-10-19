@@ -3,23 +3,19 @@ title: Durable Functions のエラー処理 - Azure
 description: Azure Functions の Durable Functions 拡張機能で発生したエラーを処理する方法について説明します。
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 04/30/2018
+ms.topic: conceptual
+ms.date: 09/05/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 944fab5ccc55bc9a697e870208338bd0e697672d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6bf9eb2cd2ebdf5f6d53e00923146bab49a142bf
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763307"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44377907"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions のエラー処理 (Azure Functions)
 
@@ -96,7 +92,7 @@ public static async Task Run(DurableOrchestrationContext context)
 * **バックオフ係数**: バックオフの増加率を決定するために使用される係数。 既定値は 1 です。
 * **最大再試行間隔**: 次の再試行を実行する前に待機する最大時間。
 * **再試行タイムアウト**: 再試行を実行するために費やす最大時間。 既定の動作は、無限の再試行です。
-* **カスタム**: 関数呼び出しを再試行するかどうかを決定するユーザー定義のコールバックを指定できます。
+* **ハンドル**: 関数呼び出しを再試行するかどうかを決定するユーザー定義のコールバックを指定できます。
 
 ## <a name="function-timeouts"></a>関数のタイムアウト
 

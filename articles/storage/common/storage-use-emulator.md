@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: af2a3da788fd26387ccdcc36422ffa5b11893212
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 529612aeecfcea1d775c2f4359c5135ca3c6885e
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888085"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052545"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 
@@ -68,7 +68,7 @@ Azure ストレージ エミュレーターを起動するには、次の手順�
 
   次のコマンドを使うこともできます。このコマンドを指定すると、エミュレーターは既定の SQL Server インスタンスを使用します。
 
-  `AzureStorageEmulator.exe init /server .\\`
+  `AzureStorageEmulator.exe init /server .`
 
   または、データベースを既定の LocalDB インスタンスに再初期化する次のコマンドを使うこともできます。
 
@@ -93,10 +93,10 @@ Xamarin ライブラリなど、一部の Azure ストレージ クライアン�
 また、Azure PowerShell を使用して SAS トークンを生成することもできます。 次の例では、BLOB コンテナーに対するフル アクセス許可を持つ SAS トークンが生成されます。
 
 1. まだインストールしていない場合は、Azure PowerShell をインストールします (最新バージョンの Azure PowerShell コマンドレットを使用することをお勧めします)。 インストールの手順については、「[Install and configure Azure PowerShell (Azure PowerShell のインストールと構成)](/powershell/azure/install-azurerm-ps)」を参照してください。
-2. Azure PowerShell を開き、次のコマンドを実行します。`ACCOUNT_NAME` と`ACCOUNT_KEY==` は使用する資格情報で置き換え、`CONTAINER_NAME` は任意の名前で置き換えます。
+2. Azure PowerShell を開き、`CONTAINER_NAME` を任意の名前で置き換えて、次のコマンドを実行します。
 
 ```powershell
-$context = New-AzureStorageContext -StorageAccountName "ACCOUNT_NAME" -StorageAccountKey "ACCOUNT_KEY=="
+$context = New-AzureStorageContext -Local
 
 New-AzureStorageContainer CONTAINER_NAME -Permission Off -Context $context
 
@@ -108,7 +108,7 @@ New-AzureStorageContainerSASToken -Name CONTAINER_NAME -Permission rwdl -ExpiryT
 新しいコンテナーの共有アクセス署名 URI は、次のようになります。
 
 ```
-https://storageaccount.blob.core.windows.net/sascontainer?sv=2012-02-12&se=2015-07-08T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
+http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08T00%3A12%3A08Z&sr=c&sp=wl&sig=t%2BbzU9%2B7ry4okULN9S0wst%2F8MCUhTjrHyV9rDNLSe8g%3Dsss
 ```
 
 この例で作成した共有アクセス署名は、1 日間有効です。 この署名は、コンテナー内の BLOB へのフル アクセス (読み取り、書き込み、削除、一覧表示) を許可します。

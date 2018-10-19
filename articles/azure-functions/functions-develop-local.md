@@ -5,20 +5,17 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: multiple
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/04/2018
 ms.author: glenga
-ms.openlocfilehash: fdc66da6ed7645d72ad43c885cc1491f56f5442b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 0f1d4fdbb9e5d2b05b8ec43c1393951a4c6a87b8
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699680"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094764"
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
@@ -31,7 +28,7 @@ Azure Functions の開発やテストは、[Azure Portal] で行うことがで�
 |環境                              |Languages         |説明|
 |-----------------------------------------|------------|---|
 | [コマンド プロンプトまたはターミナル](functions-run-local.md) | [C# (クラス ライブラリ)](functions-dotnet-class-library.md)、[C# スクリプト (.csx)](functions-reference-csharp.md)、[JavaScript](functions-reference-node.md) | [Azure Functions Core Tools] は、関数を作成するためのコア ランタイムとテンプレートを提供しており、これにより、ローカル開発が可能です。 バージョン 2.x では、Linux、MacOS、および Windows 上での開発がサポートされています。 すべての環境は、ローカル Functions ランタイムとして、Core Tools を利用します。 |
-|[Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started)| [C# スクリプト (.csx)](functions-reference-csharp.md)、[JavaScript](functions-reference-node.md) | [VS Code 用の Azure Functions 拡張](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)は、VS Code に対して Functions サポートを追加します。 Core Tools が必要です。 Core Tools のバージョン 2.x を使用した場合は、Linux、MacOS、および Windows 上での開発がサポートされます。 詳細については、「[Deploy to Azure using Azure Functions](https://code.visualstudio.com/tutorials/functions-extension/getting-started)」(Azure Functions を使用した Azure へのデプロイ) を参照してください。  |
+|[Visual Studio Code](functions-create-first-function-vs-code.md)| [C# (クラス ライブラリ)](functions-dotnet-class-library.md)、[C# スクリプト (.csx)](functions-reference-csharp.md)、[JavaScript](functions-reference-node.md) | [VS Code 用の Azure Functions 拡張](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)は、VS Code に対して Functions サポートを追加します。 Core Tools が必要です。 Core Tools のバージョン 2.x を使用した場合は、Linux、MacOS、および Windows 上での開発がサポートされます。 詳細については、「[Create your first function using Visual Studio Code](functions-create-first-function-vs-code.md)」 (Visual Studio Code を使用して最初の関数を作成する) を参照してください。 |
 | [Visual Studio 2017](functions-develop-vs.md) | [C# (クラス ライブラリ)](functions-dotnet-class-library.md) | Azure Functions ツールは、[Visual Studio 2017 バージョン 15.5](https://www.visualstudio.com/vs/) 以降の **Azure 開発**ワークロードに含まれています。 クラス ライブラリの関数をコンパイルして .dll を Azure に発行できます。 ローカル テスト用の Core Tools が含まれています。 詳細については、「[Develop Azure Functions using Visual Studio](functions-develop-vs.md)」(Visual Studio を使用して Azure Functions を開発する) を参照してください。 |
 | [Maven](functions-create-first-java-maven.md) (各種) | [Java](functions-reference-java.md) | Core Tools と統合して、Java 関数を開発できます。 バージョン 2.x では、Linux、MacOS、および Windows 上での開発がサポートされています。 詳細については、「[Create your first function with Java and Maven](functions-create-first-java-maven.md)」(Java および Maven を使用して、最初の関数を作成する) を参照してください。 [Eclipse](functions-create-maven-eclipse.md) や [IntelliJ IDEA](functions-create-maven-intellij.md) を使った開発もサポートされます。 |
 

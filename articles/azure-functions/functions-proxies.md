@@ -2,24 +2,20 @@
 title: Azure Functions でのプロキシの操作 | Microsoft Docs
 description: Azure Functions プロキシ の使用方法の概要
 services: functions
-documentationcenter: ''
 author: alexkarcher-msft
-manager: cfowler
-editor: ''
+manager: jeconnoc
 ms.assetid: ''
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 0e7fe474c3b247baa6550770c661af62e83b3737
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 2aa8036149f4056f2d197f0712b86104f5cf2215
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/20/2018
-ms.locfileid: "29933777"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44095047"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -51,13 +47,13 @@ ms.locfileid: "29933777"
 
 既定では、バックエンドへの要求は、元の要求のコピーとして初期化されます。 バックエンドの URL を設定することに加え、HTTP メソッドやヘッダー、クエリ文字列のパラメーターに変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]を参照することが可能です。
 
-バックエンドへの要求は、ポータルでプロキシの詳細ページの "*要求の上書き*" セクションを展開して変更することができます。 
+バックエンドへの要求は、ポータルでプロキシの詳細ページの "*要求のオーバーライド*" セクションを展開して変更することができます。 
 
 ### <a name="modify-response"></a>応答を変更する
 
 既定では、クライアントへの応答は、バックエンドからの応答のコピーとして初期化されます。 応答の状態コード、理由の文字列、ヘッダー、本文には、変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]、[バックエンドからの応答のパラメーター]を参照することが可能です。
 
-バックエンドへの要求は、ポータルでプロキシの詳細ページの "*応答の上書き*" セクションを展開して変更することができます。 
+バックエンドへの要求は、ポータルでプロキシの詳細ページの "*応答のオーバーライド*" セクションを展開して変更することができます。 
 
 ## <a name="using-variables"></a>変数を使用する
 

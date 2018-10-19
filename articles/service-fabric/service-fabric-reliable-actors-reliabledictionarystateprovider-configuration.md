@@ -1,5 +1,5 @@
 ---
-title: Azure マイクロサービスで ReliableDictionaryActorStateProvider の設定を変更する | Microsoft Docs
+title: Azure Service Fabric アクターで ReliableDictionaryActorStateProvider の設定を変更する | Microsoft Docs
 description: Azure Service Fabric の ReliableDictionaryActorStateProvider という型のステートフル アクターの構成について説明します。
 services: Service-Fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 1c7e31f9da2b2f9fe7a3a7c64cd6927224cb9fa1
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 13cf9c148e36201bd8ee81d4072d8b8cd8660bd1
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017897"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053150"
 ---
 # <a name="configuring-reliable-actors--reliabledictionaryactorstateprovider"></a>Reliable Actors の構成 -- ReliableDictionaryActorStateProvider
 ReliableDictionaryActorStateProvider の既定の構成を変更するには、対象のアクターの Config フォルダーの下にある Visual Studio パッケージ ルートに生成された settings.xml ファイルを変更します。
@@ -70,7 +70,7 @@ SharedLogSizeInMB では、すべてのノードで既定の共有ログに前�
 既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効になりません。
 
 > [!IMPORTANT]
-> Linux ノードでは、証明書は PEM 形式でなければなりません。 Linux での証明書の場所と構成の詳細については、[Linux 上での証明書の構成](./service-fabric-configure-certificates-linux.md)に関する記事を参照してください。 
+> Linux ノードでは、証明書は PEM 形式でなければなりません。 Linux での証明書の場所と構成について詳しくは、[Linux 上での証明書の構成](./service-fabric-configure-certificates-linux.md)に関する記事をご覧ください。 
 > 
 
 ### <a name="section-name"></a>セクション名
@@ -93,7 +93,7 @@ SharedLogSizeInMB では、すべてのノードで既定の共有ログに前�
 | MaxSecondaryReplicationQueueSize |操作数 |16384 |セカンダリ キューの操作の最大数です。 操作は、永続性によってその状態の高可用性が実現されてから解放されます。 この値は 64 より大きく、2 のべき乗である必要があります。 |
 | CheckpointThresholdInMB |MB |200 |その後で状態がチェックポイントされるログ ファイル領域の量。 |
 | MaxRecordSizeInKB |KB |1024 |レプリケーターがログに書き込むことができるレコードの最大サイズです。 この値は 4 の倍数で 16 より大きい必要があります。 |
-| OptimizeLogForLowerDiskUsage |ブール |true |true の場合、NTFS スパース ファイルを使用してレプリカの専用ログ ファイルが作成されるように、ログが構成されます。 これにより、ファイルで使用される実際のディスク領域が削減されます。 false の場合、最適な書き込みパフォーマンスを提供する固定の割り当てがファイルに作成されます。 |
+| OptimizeLogForLowerDiskUsage |Boolean |true |true の場合、NTFS スパース ファイルを使用してレプリカの専用ログ ファイルが作成されるように、ログが構成されます。 これにより、ファイルで使用される実際のディスク領域が削減されます。 false の場合、最適な書き込みパフォーマンスを提供する固定の割り当てがファイルに作成されます。 |
 | SharedLogId |GUID |"" |このレプリカで使用される共有ログ ファイルの識別に使用する一意の guid を指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogId を指定した場合は、SharedLogPath も指定する必要があります。 |
 | SharedLogPath |完全修飾パス名 |"" |このレプリカの共有ログ ファイルが作成される完全修飾パスを指定します。 通常、サービスではこの設定を使用しないはずですが、 SharedLogPath を指定した場合は、SharedLogId も指定する必要があります。 |
 

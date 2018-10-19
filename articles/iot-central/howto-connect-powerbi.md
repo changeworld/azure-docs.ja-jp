@@ -7,14 +7,16 @@ author: viv-liu
 ms.author: viviali
 ms.date: 07/16/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5cb55e73b379b909811bde728d2ab39e29635bf5
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 6f8bed8aba43d77cdfad49f4fe62a4c7aa2c5ce3
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190701"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368071"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>Azure IoT Central データを Power BI ダッシュボードに視覚化する
+
+*このトピックは管理者向けです。*
 
 ![Power BI ソリューション テンプレートのパイプライン](media/howto-connect-powerbi/iot-continuous-data-export.png)
 
@@ -25,14 +27,14 @@ Azure IoT Central Analytics Power BI ソリューション テンプレートを
 - デバイスの測定値の過去の傾向を観察する
 - 多数の重要なイベントを送信している、問題のあるデバイスを識別する
 
-このソリューション テンプレートは、[データの連続エクスポート](howto-export-data.md)から Azure Blob Storage アカウントにデータを取り込むパイプラインを設定します。 このデータは、Azure Functions と Azure Data Factory を経由して Azure SQL Database に流れ、PBIX ファイルとしてダウンロード可能な Power BI レポートとして視覚化して分析されるデータの処理と変換が行われます。 これらのリソースは、すべてが Azure サブスクリプションで作成されるため、各コンポーネントをニーズに合わせてカスタマイズできます。 このソリューション テンプレートは完全なオープン ソースであるため、アーキテクチャの詳細とソリューションの拡張方法を [Github リポジトリ](https://aka.ms/iotcentralgithubpowerbisolutiontemplate)で確認できます。
+このソリューション テンプレートは、[データの連続エクスポート](howto-export-data.md)から Azure Blob Storage アカウントにデータを取り込むパイプラインを設定します。 このデータが Azure Functions、Azure Data Factory、Azure SQL Database を通って、データの処理と変換が行われます。 その出力は、PBIX ファイルとしてダウンロード可能な Power BI レポートとして視覚化し、分析することができます。 これらのリソースは、すべてが Azure サブスクリプションで作成されるため、各コンポーネントをニーズに合わせてカスタマイズできます。 このソリューション テンプレートは完全なオープン ソースであるため、アーキテクチャの詳細とソリューションの拡張方法を [GitHub リポジトリ](https://aka.ms/iotcentralgithubpowerbisolutiontemplate)で確認できます。
 
-**[Microsoft AppSource から Azure IoT Central Analytics ソリューション テンプレートを取得します。](https://aka.ms/iotcentralpowerbisolutiontemplate)**
+## <a name="get-the-azure-iot-central-analytics-solution-templatehttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>Microsoft AppSource から [Azure IoT Central Analytics ソリューション テンプレート](https://aka.ms/iotcentralpowerbisolutiontemplate)を取得します。
 
 ## <a name="prerequisites"></a>前提条件
 このテンプレートを設定するには、以下が必要です。
 - Azure サブスクリプションへのアクセス。
-- [データの連続エクスポート](howto-export-data.md) を使用して IoT Central アプリからエクスポートされるデータ。 Power BI ダッシュボードを最大限に活用するには、測定値、デバイス、およびデバイス テンプレート ストリームを有効にすることをお勧めします。
+- [データの連続エクスポート](howto-export-data.md)を使用して IoT Central アプリからエクスポートされるデータ。 Power BI ダッシュボードを最大限に活用するには、測定値、デバイス、およびデバイス テンプレート ストリームを有効にすることをお勧めします。
 - Power BI Desktop (最新バージョン)
 - Power BI Pro (ダッシュボードを他のユーザーと共有する場合)
 
@@ -52,7 +54,7 @@ Azure IoT Central Analytics Power BI ソリューション テンプレートを
 
 AppSource で、[Azure IoT Central Analytics ソリューション テンプレート](https://aka.ms/iotcentralpowerbisolutiontemplate)を取得します。
 
-[Github リポジトリ](https://aka.ms/iotcentralgithubpowerbisolutiontemplate) で、アーキテクチャとソリューションの拡張法を確認します。
+[GitHub リポジトリ](https://aka.ms/iotcentralgithubpowerbisolutiontemplate)で、アーキテクチャとソリューションの拡張法を確認します。
 
 ## <a name="next-steps"></a>次の手順
 

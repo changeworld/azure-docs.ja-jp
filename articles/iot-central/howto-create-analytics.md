@@ -1,21 +1,25 @@
 ---
-title: Azure IoT Central アプリケーションのカスタム分析を作成する | Microsoft Docs
-description: オペレーターとして、Azure IoT Central アプリケーションのカスタム分析を作成する方法。
+title: Azure IoT Central アプリケーションでデバイス データを分析する | Microsoft Docs
+description: Azure IoT Central アプリケーションでデバイス データを分析します。
 author: lmasieri
 ms.author: lmasieri
-ms.date: 08/26/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0a78c534605b6eab08d5b12674689f0459e80b26
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: bf86e769aff4a9b03d5df1b1aef702814c605fa4
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247098"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368088"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>分析を使用してデバイス データを分析する方法
+
+
+*この記事は、オペレーター、ビルダー、および管理者に適用されます。*
+
 
 Microsoft Azure IoT Central には、大量のデバイス データを理解するための豊富な分析機能が用意されています。 最初に、左側のナビゲーション メニューで **[分析]** を選択します。 
 

@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: a9a6e513d95df5dafba82556f74ec209529ff58d
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e77389411e52853efb52252a17c8612f0480fa61
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294913"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298644"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Application Insights を使用した Web アプリおよびサービスの詳細な診断
 ## <a name="why-do-i-need-application-insights"></a>Application Insights が必要な理由
@@ -152,7 +152,7 @@ Log4N、NLog、System.Diagnostics.Trace などのトレース ログ記録フレ
 デバッグ中は、開発用コンピューターにテレメトリを保存し、ポータルに送信することなく Visual Studio でそれを表示するオプションが用意されています。 このローカル オプションにより、デバッグと運用環境のテレメトリの混合を回避できます。
 
 ### <a name="build-annotations"></a>注釈の作成
-Visual Studio Team Services を使用してアプリのビルドとデプロイを行う場合、デプロイの注釈がポータルのグラフに表示されます。 お使いの最新のリリースがメトリックに影響を与える場合、これは明白になります。
+Azure DevOps を使用してアプリのビルドとデプロイを行う場合、デプロイの注釈がポータルのグラフに表示されます。 お使いの最新のリリースがメトリックに影響を与える場合、これは明白になります。
 
 ![注釈の作成](./media/app-insights-devops/070.png)
 

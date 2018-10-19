@@ -1,24 +1,25 @@
 ---
-title: Microsoft Translator Text API Languages メソッド | Microsoft Docs
-description: Microsoft Translator Text API Languages メソッドを使用します。
+title: Translator Text API の Languages メソッド
+titlesuffix: Azure Cognitive Services
+description: Translator Text API の Languages メソッドを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 93c06218a560faf439f05903438d021b372ce257
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 51f15bd9c75f24be0d477d10de55c93a51cfbf3f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376437"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129643"
 ---
-# <a name="text-api-30-languages"></a>Text API 3.0: Languages
+# <a name="translator-text-api-30-languages"></a>Translator Text API 3.0: Languages
 
-Text API の他の操作で現在サポートされている言語のセットを取得します。 
+Translator Text API の他の操作で現在サポートされている一連の言語を取得します。 
 
 ## <a name="request-url"></a>要求 URL
 
@@ -29,7 +30,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 ## <a name="request-parameters"></a>要求パラメーター
 
-クエリ文字列で渡される要求パラメーターを次に示します。
+クエリ文字列に渡される要求パラメーターを次に示します。
 
 <table width="100%">
   <th width="20%">Query parameter (クエリ パラメーター)</th>
@@ -266,11 +267,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
   </tr>
   <tr>
     <td>500</td>
-    <td>予期しないエラーが発生しました。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、および要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
+    <td>予期しないエラーが発生しました。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>サーバーが一時的に使用できません。 要求をやり直してください。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、および要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
+    <td>サーバーが一時的に使用できません。 要求をやり直してください。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
   </tr>
 </table> 
 

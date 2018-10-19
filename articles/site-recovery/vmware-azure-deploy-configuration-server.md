@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: bd456e0f881f606f36f2b4d80e704ce138f7db0f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 4222214705c42fe09d90d77faa7be63cc2a13206
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666434"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44025278"
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
@@ -42,7 +42,7 @@ Azure Site Recovery アーキテクチャの一部としての構成サーバー
 | 12 vCPU (2 ソケット * 6 コア \@ 2.5 GHz) |18 GB |600 GB |500 GB ～ 1 TB |100 ～ 150 台のマシンをレプリケートします。 |
 | 16 vCPU (2 ソケット * 8 コア \@ 2.5 GHz) |32 GB |1 TB (テラバイト) |1 TB ～ 2 TB |150 ～ 200 台のマシンをレプリケートします。 |
 
-複数の VMware VM をレプリケートする場合は、[容量計画に関する考慮事項](https://docs.microsoft.com/azure/site-recovery/site-recovery-plan-capacity-vmware)を参照してください。 VMware のレプリケーションの場合は [Deployment Planner ツール](site-recovery-deployment-planner.md)を実行します。
+複数の VMware VM をレプリケートする場合は、[容量計画に関する考慮事項](site-recovery-plan-capacity-vmware.md)を参照してください。 VMware のレプリケーションの場合は [Deployment Planner ツール](site-recovery-deployment-planner.md)を実行します。
 
 ## <a name="download-the-template"></a>テンプレートをダウンロードする
 
@@ -121,7 +121,7 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 
 1. 構成サーバーがインストールされている VM をさまざまな目的で使用することはできますか?
 
-    **いいえ**。VM は構成サーバー専用にすることをお勧めします。 ディザスター リカバリーを効率的に管理するため、必ず、[前のセクション](vmware-azure-deploy-configuration-server.md#Prerequisites)に記述されているすべての仕様に従ってください。
+    **いいえ**。VM は構成サーバー専用にすることをお勧めします。 ディザスター リカバリーを効率的に管理するため、必ず、[前提条件](#prerequisites)に記述されているすべての仕様に従ってください。
 2. 構成サーバーに既に登録されているコンテナーを、新しく作成されたコンテナーに切り替えることはできますか? 
 
     **いいえ**。コンテナーは、構成サーバーに登録した後に変更することはできません。
@@ -130,10 +130,10 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
     **はい**。物理マシンと仮想マシンをレプリケートするために同じ構成サーバーを使用することができます。 ただし、物理マシンをフェールバックできるのは、VMware VM にのみです。
 4. 構成サーバーの目的は何ですか? また、どこで使用されるのですか?
 
-    構成サーバーとその機能の詳細については、Azure Site Recovery アーキテクチャに関する[こちら](vmware-azure-architecture.md)のページを参照してください。
+    構成サーバーとその機能の詳細については、[Azure レプリケーション アーキテクチャに対する VMware ](vmware-azure-architecture.md)を参照してください。
 5. 構成サーバーの最新バージョンはどこで入手できますか? 
 
-    [ポータルを使用して](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)、構成サーバーをアップグレードする手順に関する記事を参照してください。 [Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードすることもできます。
+    ポータルを使用して構成サーバーをアップグレードする手順については、[構成サーバーのアップグレード](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)を参照してください。 [Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードすることもできます。
 6. 構成サーバーのパスフレーズはどこでダウンロードできますか?
 
     パスフレーズをダウンロードする場合は、[こちらの記事](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)を参照してください。
@@ -143,7 +143,7 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 
 ## <a name="upgrade-the-configuration-server"></a>構成サーバーをアップグレードする
 
-構成サーバーを最新バージョンにアップグレードするには、[こちら](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)にある手順を参照してください。
+構成サーバーを最新バージョンにアップグレードするには、こちらの[手順](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)に従ってください。
 
 ## <a name="manage-the-configuration-server"></a>構成サーバーの管理
 

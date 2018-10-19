@@ -1,25 +1,28 @@
 ---
-title: Knowledge Exploration Service API の Interpret メソッド | Microsoft Docs
-description: Cognitive Services の Knowledge Exploration Service (KES) API で Interpret メソッドを使用する方法について説明します。
+title: Interpret メソッド - Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: Knowledge Exploration Service (KES) API で Interpret メソッドを使用する方法について説明します。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: ef68d98dacf393abf8d030b9312217ea380947d2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 45badbdbe1a7e1f2028a00d54458db35a4f7d440
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373181"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128009"
 ---
 # <a name="interpret-method"></a>interpret メソッド
+
 *interpret* メソッドは、自然言語のクエリ文字列を受け取り、文法とインデックス データに基づいたユーザーの意図の解釈を、書式を設定して返します。  対話形式の検索エクスペリエンスを提供するために、*complete* パラメーターを 1 に設定してオートコンプリートの候補を有効にしたユーザーが文字を入力するたびに、このメソッドを呼び出すことができます。
 
-## <a name="request"></a>要求
+## <a name="request"></a>Request
+
 `http://<host>/interpret?query=<query>[&<options>]`
 
 Name|値| 説明
@@ -33,6 +36,7 @@ timeout  | 数値 (既定値 =1000) | タイムアウト (ミリ秒)。 タイ�
 *count* パラメーターと *offset* パラメーターを使用すると、複数の要求によって大量の結果を増分的に取得できます。
 
 ## <a name="response-json"></a>応答 (JSON)
+
 JSONPath     | 説明
 ---------|---------
 $.query |要求の *query* パラメーター。
@@ -47,6 +51,7 @@ $.interpretations[\*].rules[\*].output.value|セマンティック出力の値�
 $.aborted | 要求がタイムアウトした場合は True です。
 
 ### <a name="parse-xml"></a>解析 XML
+
 解析 XML は、文法のルールとインデックスの属性に対してどのように一致するかに関する情報の注釈を (完成した) クエリに付けます。  学術的刊行物ドメインの例を次に示します。
 
 ```xml
@@ -65,6 +70,7 @@ $.aborted | 要求がタイムアウトした場合は True です。
 `<attr>` 要素は、`name` 属性で指定されたインデックス属性に一致するクエリ内の範囲を区切ります。  一致に入力クエリのシノニムを含む場合、`canonical` 属性には、インデックスからのシノニムと一致する正規値が含まれます。
 
 ## <a name="example"></a>例
+
 学術的刊行物の例では、次の要求は、プレフィックス クエリ "papers by jaime" に対してオートコンプリートの候補を最大 2 つ返します。
 
 `http://<host>/interpret?query=papers by jaime&complete=1&count=2`

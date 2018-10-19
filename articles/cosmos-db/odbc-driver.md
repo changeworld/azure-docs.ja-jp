@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 131ba3dfb8bd8ad8be893e26fcc22c5a0e65f145
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 010556dae1649754df5199fb81c10efcf4c5a226
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431642"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050002"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
 
@@ -173,7 +173,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 データのビューを作成するには、**[スキーマ エディター]** ウィンドウの **[ビューの定義]** 列で、サンプリングするコレクションの行の **[追加]** をクリックします。 次に **[ビューの定義]** ウィンドウで、次の操作をします。
 1. **[新規]** をクリックしてビューの名前 (例：EmployeesfromSeattleView) を入力し、**[OK]** をクリックします。
-1. **[ビューの編集]** ウィンドウで、Azure Cosmos DB クエリを入力します。 これは、たとえば `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = “Seattle”` のような Azure Cosmos DB SQL クエリである必要があります。次に **[OK]** をクリックします。
+1. **[ビューの編集]** ウィンドウで、Azure Cosmos DB クエリを入力します。 これは、たとえば `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Gender, c.Manager FROM c WHERE c.City = "Seattle"` のような Azure Cosmos DB SQL クエリである必要があります。次に **[OK]** をクリックします。
 
 ビューは好きな数だけ作成できます。 ビューの定義が完了したら、データをサンプリングできます。 
 

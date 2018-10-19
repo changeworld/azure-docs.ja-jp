@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: jdial
-ms.openlocfilehash: f4175875b68c52e68588b8d0debd003ab73427ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15f6bd0d7da63924e52db8ec7e2cbb0ee7483f82
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23036717"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391540"
 ---
 # <a name="introduction-to-network-security-group-view-in-azure-network-watcher"></a>Azure Network Watcher のネットワーク セキュリティ グループ ビューの概要
 
-ネットワーク セキュリティ グループは、サブネット レベルまたは NIC レベルで関連付けられています。 サブネット レベルに関連付けた場合、サブネット内のすべての VM インスタンスに適用されます。 ネットワーク セキュリティ グループ ビューは、仮想マシン用に NIC レベルまたはサブネット レベルで関連付けられた、すべての構成済み NSG と規則を返して、構成に対する洞察を提供します。 さらに、有効なセキュリティ規則を VM の各 NIC に返します。 ネットワーク セキュリティ グループ ビューを使用することで、開いているポートなどのネットワークの脆弱性について VM を評価できます。 また、[構成されたセキュリティ規則と有効なセキュリティ規則とを比較](network-watcher-nsg-auditing-powershell.md)することで、ネットワーク セキュリティ グループが想定どおりに機能しているかどうかを確認できます。
+ネットワーク セキュリティ グループは、サブネット レベルまたは NIC レベルで関連付けられています。 サブネット レベルに関連付けた場合、サブネット内のすべての VM インスタンスに適用されます。 ネットワーク セキュリティ グループ ビューは、仮想マシン用に NIC レベルまたはサブネット レベルで関連付けられた、すべての構成済み NSG と規則を返して、構成に対する洞察を提供します。 さらに、有効なセキュリティ規則を VM の各 NIC に返します。 ネットワーク セキュリティ グループ ビューを使用することで、開いているポートなどのネットワークの脆弱性について VM を評価できます。 また、ネットワーク セキュリティ グループが、[構成されたセキュリティ規則と承認されたセキュリティ規則の比較](network-watcher-nsg-auditing-powershell.md)に基づいて期待どおりに機能しているかどうかを検証することもできます。
 
 さらに用途を広げて、セキュリティのコンプライアンスと監査に活用することもできます。 組織のセキュリティ ガバナンスのモデルとして、セキュリティ規則の規範的なセットを定義できます。 定期的なコンプライアンス監査は、規範的な規則とネットワーク内の各 VM の有効な規則とを比較することによって、プログラムによる方法で実装できます。
 
@@ -35,7 +35,7 @@ ms.locfileid: "23036717"
 
 ![ドリルダウン][2]
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 
 ネットワーク セキュリティ グループを監査する方法については、[PowerShell を使用したネットワーク セキュリティ グループの監査の設定](network-watcher-nsg-auditing-powershell.md)に関する記事をご覧ください。
 

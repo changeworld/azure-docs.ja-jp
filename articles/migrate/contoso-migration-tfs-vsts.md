@@ -1,42 +1,40 @@
 ---
-title: Azure の Visual Studio Team Services (VSTS) に Team Foundation Server の展開をリファクターする | Microsoft Docs
-description: Contoso がオンプレミスの TFS の展開を Azure の Visual Studio Team Services (VSTS) に移行することでリファクターする方法について説明します。
+title: Azure の Azure DevOps Services に Team Foundation Server の展開をリファクターする | Microsoft Docs
+description: Contoso がオンプレミスの TFS の展開を Azure の Azure DevOps Services に移行することでリファクターする方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: raynew
-ms.openlocfilehash: 6b2067556cb42a1d40b3a8ba2bc681fbd602ab8d
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: a304cb08ec001587af5e6ea740853bd8435824e7
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842637"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297929"
 ---
-# <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-visual-studio-team-services-vsts"></a>Contoso の移行: Azure の Visual Studio Team Services (VSTS) に Team Foundation Server の展開をリファクターする
+# <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-azure-devops-services"></a>Contoso の移行: Azure の Azure DevOps Services に Team Foundation Server の展開をリファクターする
 
-この記事では、Contoso がオンプレミスの Team Foundation Server (TFS) の展開を Azure の Visual Studio Team Services (VSTS) にリファクターする方法について説明します。 Contoso の開発チームは、過去 5 年間、チームのコラボレーションとソース管理に TFS を使用してきました。 現在は、チームは開発やテストの作業とソース管理に対応するクラウドベースのソリューションに移行したいと考えています。 VSTS は、チームが DevOps モデルに移動し、新しいクラウド ネイティブ アプリを開発する役割を果たします。
+この記事では、Contoso がオンプレミスの Team Foundation Server (TFS) の展開を Azure の Azure DevOps Services にリファクターする方法について説明します。 Contoso の開発チームは、過去 5 年間、チームのコラボレーションとソース管理に TFS を使用してきました。 現在は、開発やテストの作業とソース管理に対応するクラウドベースのソリューションに移行したいと考えています。 Azure DevOps モデルに移行し、新しいクラウドネイティブ アプリを開発する際に、Azure DevOps Services が役立ちます。
 
 このドキュメントは、架空の会社 Contoso がオンプレミス リソースを Microsoft Azure クラウドに移行する方法を説明するシリーズ記事の 1 つです。 このシリーズには、背景情報とシナリオが含まれており、移行インフラストラクチャのセットアップ方法や、さまざまな種類の移行を実施する方法を具体的に説明しています。 シナリオは複雑になってきています。 今後、徐々に記事を追加する予定です。
 
-
 **記事** | **詳細** | **状態**
 --- | --- | ---
-[記事 1: 概要](contoso-migration-overview.md) | 記事シリーズ、Contoso の移行戦略およびシリーズで使用されているサンプル アプリの概要です。 | 使用可能
-[記事 2: Azure インフラストラクチャのデプロイ](contoso-migration-infrastructure.md) | Contoso がオンプレミス インフラストラクチャと Azure インフラストラクチャを移行に向けて準備します。 このシリーズの移行に関するすべての記事で同じインフラストラクチャを使用します。 | 使用可能
-[記事 3: Azure への移行の対象となるオンプレミスのリソースの評価](contoso-migration-assessment.md)  | Contoso が、VMware で実行されているオンプレミスの SmartHotel360 アプリを評価します。 Contoso では、アプリの VM は Azure Migrate サービスを使用して評価し、アプリの SQL Server データベースは Data Migration Assistant を使用して評価します。 | 使用可能
-[記事 4: Azure VM および SQL Database Managed Instance でのアプリのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が、オンプレミスの SmartHotel360 アプリの Azure へのリフトアンドシフト移行を実行します。 Contoso は、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用してアプリのフロントエンド VM を移行します。 アプリ データベースの Azure SQL Database Managed Instance への移行には、[Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) を使用します。 | 使用可能   
-[記事 5: Azure VM でのアプリのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して SmartHotel360 アプリの VM を Azure VM に移行します。 | 使用可能
-[記事 6: Azure VM および SQL Server 可用性グループへのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel360 アプリを移行します。 Contoso は、Site Recovery を使用してアプリの VM を移行します。 Contoso は、Database Migration Service を使用して、AlwaysOn 可用性グループで保護されている SQL Server クラスターにアプリのデータベースを移行します。 | 使用可能
-[記事 7: Linux アプリの Azure VM への再ホスト](contoso-migration-rehost-linux-vm.md) | Contoso が Azure Site Recovery を使用して Azure VM への Linux osTicket アプリのリフトアンドシフト移行を行います | 使用可能
-[記事 8: Azure VM および Azure MySQL Server での Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Azure Site Recovery を使用して Linux osTicket アプリを Azure VM に移行する方法、および MySQL Workbench を使用してアプリのデータベースを Azure MySQL Server インスタンスに移行します。 | 使用可能
-[記事 9: Azure Web Apps および Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。 | 使用可能
-[記事 10: Azure Web Apps と Azure MySQL での Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Azure Traffic Manager を使用し、その Linux osTicket アプリを、複数の Azure リージョンの Azure Web アプリに移行します。この Azure Web アプリは、継続的デリバリーを目的として GitHub と統合されます。 Contoso は、アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | 使用可能 
-記事 11: VSTS での TFS のリファクタリング | Contoso がオンプレミスの Team Foundation Server の展開を Azure の Visual Studio Team Services に移行します。 | この記事
-[記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel360 アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 | 使用可能
-[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel360 アプリをリビルドします。 | 使用可能
-
+[記事 1: 概要](contoso-migration-overview.md) | Contoso の移行戦略、記事シリーズ、および使用するサンプル アプリの概要を示します。 | 使用可能
+[記事 2: Azure インフラストラクチャのデプロイ](contoso-migration-infrastructure.md) | Contoso が移行に備えて、オンプレミスと Azure のインフラストラクチャをどのように準備するかを説明します。 Contoso のすべての移行シナリオで、同じインフラストラクチャが使用されます。 | 使用可能
+[記事 3: オンプレミス リソースの評価](contoso-migration-assessment.md)  | Contoso が、VMware 上で実行されるオンプレミスの 2 階層アプリ、SmartHotel の評価をどのように実行するかを示します。 アプリの VM については [Azure Migrate](migrate-overview.md) サービスで、アプリの SQL Server データベースについては [Azure Database Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017) で評価を行います。 | 使用可能
+[記事 4: Azure VM および SQL Managed Instance へのリホスト](contoso-migration-rehost-vm-sql-managed-instance.md) | Contoso が SmartHotel アプリを Azure に移行する方法を説明します。 SQL Managed Instance に移行するために、アプリの Web VM は [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) を使用して移行し、アプリのデータベースは [Azure Database Migration](https://docs.microsoft.com/azure/dms/dms-overview) サービスを使用して移行します。 | 使用可能
+[記事 5: Azure VM へのリホスト](contoso-migration-rehost-vm.md) | Contoso が Site Recovery サービスを使用して、どのように SmartHotel アプリを Azure IaaS VM を移行するかを示します。
+[記事 6: Azure VM および SQL Server 可用性グループへのリホスト](contoso-migration-rehost-vm-sql-ag.md) | Contoso が SmartHotel アプリを移行する方法を示します。 Contoso は、Site Recovery を使用してアプリの VM を移行し、Database Migration サービスを使用してアプリのデータベースを SQL Server 可用性グループに移行します。 | 使用可能
+[記事 7: Linux アプリの Azure VM へのリホスト](contoso-migration-rehost-linux-vm.md) | Contoso が、Azure Site Recovery を使用して、どのように osTicket Linux アプリを Azure IaaS VM 移行するかを示します。
+[記事 8: Linux アプリの Azure VM および Azure MySQL Server へのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso がどのように osTicket Linux アプリを移行するかを具体的に説明します。 VM の移行には Site Recovery を使用し、Azure MySQL Server インスタンスへの移行には MySQL Workbench を使用します。 | 使用可能
+[記事 9: Azure Web App と Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel アプリを Azure コンテナー ベースの Web アプリに移行して、アプリ データベースを Azure SQL Server に移行する方法を示します。 | 使用可能
+[記事 10: Azure App Service と Azure MySQL Server への Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が osTicket Linux アプリを PHP 7.0 Docker コンテナーを使用する Azure App Service に移行する方法を示します。 デプロイするためのコード ベースが GitHub に移行されます。 アプリのデータベースが Azure MySQL に移行されます。 | 使用可能
+記事 11: Azure DevOps Services での TFS 展開のリファクター | TFS の開発用アプリを Azure の Azure DevOps Services に移行します | この記事の内容は次のとおりです。
+[記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行して再構築する方法を示します。 Contoso は、アプリの Web 階層を Windows コンテナーとして再構築し、Azure SQL Database にアプリ データベースを再構築します。 | 使用可能
+[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (App Services、Azure Kubernetes、Azure Functions、Cognitive Services、Cosmos DB など) を使用して SmartHotel アプリをリビルドする方法を示します。 | 使用可能
 
 
 ## <a name="business-drivers"></a>ビジネス ドライバー
@@ -49,25 +47,25 @@ IT リーダーシップ チームは、ビジネス パートナーと密接に
 
 ## <a name="migration-goals"></a>移行の目標
 
-Contoso クラウド チームは、VSTS への移行の目標を設定しました。
+Contoso クラウド チームは、Azure DevOps Services への移行の目標を設定しました。
 
 - チームにはデータをクラウドに移行するツールが必要です。 手作業がほとんど不要になるようにする必要があります。
 - 昨年の作業項目データと履歴を移行する必要があります。
 - 新しいユーザー名とパスワードは設定したくありません。 現在のシステムの割り当てはすべて維持する必要があります。
 - ソース管理については、Team Foundation バージョン管理 (TFVC) から Git に移行したいと考えています。
-- Git への切り替えは、ソース コードの最新バージョンのみをインポートする "tip migration" (チップ移行) になります。 この移行は、コードベースの転換時にすべての作業が中止されるダウンタイム中に行われます。 チームは、移行後に最新のマスター ブランチ履歴しか利用できなくなることを理解しています。
-- チームはこの変更を心配し、完全に移行する前にテストしたいと考えています。 VSTS への移行後も TFS へのアクセスを維持したいと考えています。
-- Contoso は、複数のコレクションがあるので、プロセスをより理解できるように、プロジェクトがごく少数のコレクションから始めたいと考えています。
-- TFS コレクションが VSTS アカウントと 1 対 1 の関係であることは理解しているので、複数の URL を持つことになります。 ただし、これはコード ベースとプロジェクトの分離の現在のモデルと一致します。
+- Git への切り替えは、ソース コードの最新バージョンのみをインポートする "tip migration" (チップ移行) になります。 この移行は、コードベースの転換時にすべての作業が中止されるダウンタイム中に行われます。 Contoso は、移行後に最新のマスター ブランチ履歴しか利用できなくなることを理解しています。
+- Contoso はこの変更を心配し、完全に移行する前にテストしたいと考えています。 Azure DevOps Services への移行後も TFS へのアクセスを維持したいと考えています。
+- 複数のコレクションがあるので、プロセスをより理解できるように、プロジェクトがごく少数のコレクションから始めたいと考えています。
+- TFS コレクションが Azure DevOps Services 組織と 1 対 1 の関係であることは理解しているので、複数の URL を持つことになります。 ただし、これはコード ベースとプロジェクトの分離の現在のモデルと一致します。
 
 
 ## <a name="proposed-architecture"></a>提案されたアーキテクチャ
 
 - Contoso は、TFS プロジェクトをクラウドに移行し、プロジェクトやソース管理をオンプレミスでホストしなくなります。
-- TFS は VSTS に移行されます。
-- 現在、Contoso には **ContosoDev** という名前の TFS コレクションが 1 つあります。これは **contosodevmigration.visualstudio.com** という VSTS アカウントに移行されます。
-- 昨年のプロジェクト、作業項目、バグ、およびイテレーションは VSTS に移行されます。
-- Contoso は Azure Active Directory を利用します。Contoso は、移行計画開始時の [Azure インフラストラクチャ](contoso-migration-infrastructure.md)展開の間に、Azure Active Directory を設定しました。 
+- TFS は、Azure DevOps Services に移行されます。
+- 現在、Contoso には **ContosoDev** という名前の TFS コレクションが 1 つあります。これは **contosodevmigration.visualstudio.com** という Azure DevOps Services 組織に移行されます。
+- 昨年のプロジェクト、作業項目、バグ、およびイテレーションは Azure DevOps Services に移行されます。
+- Contoso は Azure Active Directory を利用します。これは、移行計画の開始時に [Azure インフラストラクチャを展開](contoso-migration-infrastructure.md)したときに設定したものです。 
 
 
 ![シナリオのアーキテクチャ](./media/contoso-migration-tfs-vsts/architecture.png) 
@@ -141,7 +139,7 @@ Contoso の管理者は、TFS サーバーを TFS 2018 Update 2 にアップグ�
      ![TFS](./media/contoso-migration-tfs-vsts/upgrade5.png) 
 
 > [!NOTE]
-> 一部の TFS アップグレードでは、アップグレードの完了後に機能の構成ウィザードを実行する必要があります。 [詳細情報](https://docs.microsoft.com/vsts/work/customize/configure-features-after-upgrade?utm_source=ms&utm_medium=guide&utm_campaign=vstsdataimportguide&view=vsts)。
+> 一部の TFS アップグレードでは、アップグレードの完了後に機能の構成ウィザードを実行する必要があります。 [詳細情報](https://docs.microsoft.com/azure/devops/reference/configure-features-after-upgrade?utm_source=ms&utm_medium=guide&utm_campaign=vstsdataimportguide&view=vsts)。
 
 **さらにサポートが必要な場合**
 
@@ -155,7 +153,7 @@ Contoso の管理者は、移行前に ContosoDev コレクション データ�
 
     ![TFS](./media/contoso-migration-tfs-vsts/collection1.png)
 
-2. チーム プロジェクト コレクションの URL を指定して、検証を実行するツールを実行します。
+2. プロジェクト コレクションの URL を指定して、検証を実行するツールを実行します。
 
         **TfsMigrator validate /collection:http://contosotfs:8080/tfs/ContosoDev**
 
@@ -217,33 +215,33 @@ Contoso の管理者は、移行前に ContosoDev コレクション データ�
 
     ![準備](./media/contoso-migration-tfs-vsts/prep4.png)
 
-5. import.json ファイルにはインポート設定が指定されています。 このファイルには、目的のアカウント名やストレージ アカウント情報などの情報が含まれています。 ほとんどのフィールドは自動的に設定されます。 一部のフィールドにはユーザー入力が必要です。 管理者はファイルを開き、作成する VSTS アカウント名 **contosodevmigration** を追加します。 この名前の場合、VSTS の URL は **contosodevmigration.visualstudio.com** になります。
+5. import.json ファイルにはインポート設定が指定されています。 このファイルには、目的の組織名やストレージ アカウント情報などの情報が含まれています。 ほとんどのフィールドは自動的に設定されます。 一部のフィールドにはユーザー入力が必要です。 Contoso はファイルを開き、作成する Azure DevOps Services 組織名 **contosodevmigration** を追加します。 この名前の場合、Azure DevOps Services の URL は **contosodevmigration.visualstudio.com** になります。
 
     ![準備](./media/contoso-migration-tfs-vsts/prep5.png)
 
     > [!NOTE]
-    > アカウントは移行前に作成する必要があります。移行後に変更することもできます。
+    > 組織は移行前に作成する必要があります。移行後に変更することもできます。
 
-6. インポート中に VSTS に取り込まれるアカウントを示す ID ログ マップ ファイルを確認します。 
+6. インポート中に Azure DevOps Services に取り込まれるアカウントを示す ID ログ マップ ファイルを確認します。 
 
-    - アクティブな ID とは、インポート後に VSTS 内のユーザーになる ID のことです。
-    - VSTS で、これらの ID にライセンスが付与され、移行後にアカウントのユーザーとして表示されます。
+    - アクティブな ID とは、インポート後に Azure DevOps Services 内のユーザーになる ID のことです。
+    - Azure DevOps Services で、これらの ID にライセンスが付与され、移行後に組織のユーザーとして表示されます。
     - これらの ID は、ファイルの **Expected Import Status** 列で **Active** とマークされています。
 
     ![準備](./media/contoso-migration-tfs-vsts/prep6.png)
 
 
 
-## <a name="step-5-migrate-to-vsts"></a>手順 5: VSTS に移行する
+## <a name="step-5-migrate-to-azure-devops-services"></a>手順 5: Azure DevOps Services への移行
 
 準備が完了したので、Contoso の管理者は移行に集中できるようになりました。 移行を実行すると、バージョン管理には TFVC ではなく Git が使用されるようになります。
 
 移行に備えてコレクションをオフラインにするために、管理者はまず開発チームとダウンタイムのスケジュールを立てます。 移行プロセスの手順は次のとおりです。
 
 1. **コレクションをデタッチする**: コレクションの ID データは、コレクションがアタッチされ、オンラインのときは TFS サーバー構成データベース内にあります。 コレクションが TFS サーバーからデタッチされると、その ID データのコピーが作成され、転送のためにコレクションと共にパッケージ化されます。 インポートの ID 部分を実行するには、このデータが必要です。 インポート中に発生した変更をインポートする方法がないので、インポートが完了するまでコレクションをデタッチしたままにすることをお勧めします。
-2. **バックアップを生成する**: 移行プロセスの次の手順は、VSTS にインポートできるバックアップを生成することです。 データ層アプリケーション コンポーネント パッケージ (DACPAC) は、データベースの変更を単一のファイルにパッケージ化し、SQL の他のインスタンスに展開することができる SQL Server の機能です。 また、VSTS に直接復元することもできるので、コレクション データをクラウドに取り込むためのパッケージ化方法として使用されます。 Contoso は SqlPackage.exe ツールを使用して DACPAC を生成します。 このツールは、SQL Server Data Tools に含まれています。
+2. **バックアップを生成する**: 移行プロセスの次の手順は、Azure DevOps Services にインポートできるバックアップを生成することです。 データ層アプリケーション コンポーネント パッケージ (DACPAC) は、データベースの変更を単一のファイルにパッケージ化し、SQL の他のインスタンスに展開することができる SQL Server の機能です。 また、Azure DevOps Services に直接復元することもできるので、コレクション データをクラウドに取り込むためのパッケージ化方法として使用されます。 Contoso は SqlPackage.exe ツールを使用して DACPAC を生成します。 このツールは、SQL Server Data Tools に含まれています。
 3. **ストレージにアップロードする**: DACPAC が作成されたら、Azure Storage にアップロードします。 アップロードが完了したら、Shared Access Signature (SAS) を取得し、TFS Migration Tool からストレージにアクセスできるようにします。
-4. **インポート ファイルに入力する**: 管理者は、DACPAC 設定など、インポート ファイルに足りないフィールドに入力します。 完全な移行の前に、まず **DryRun** インポートを実行して、すべてが正しく動作していることを確認するように指定します。
+4. **インポート ファイルに入力する**: Contoso は、DACPAC 設定など、インポート ファイルに足りないフィールドに入力します。 完全な移行の前に、まず **DryRun** インポートを実行して、すべてが正しく動作していることを確認するように指定します。
 5. **ドライ ランを実行する**: ドライ ランのインポートで、コレクションの移行をテストできます。 ドライ ランの保存期間は限られており、運用環境の移行が実行される前に削除されます。 設定した期間が経過すると、自動的に削除されます。 ドライ ランが削除される時期についての注意は、インポートが完了した後に送信される成功メールに記載されています。 時期を書き留め、それに応じて計画を立てます。
 6. **運用環境の移行を完了する**: ドライ ランの移行が完了したら、Contoso の管理者は import.json を更新し、インポートを再実行して、最終的な移行を実行します。
 
@@ -284,7 +282,7 @@ Contoso の管理者は、移行前に ContosoDev コレクション データ�
 
 ### <a name="generate-a-dacpac"></a>DACPAC を生成する
 
-Contoso の管理者は VSTS へのインポートのためにバックアップ (DACPAC) を作成します。
+Contoso は Azure DevOps Services へのインポートのためにバックアップ (DACPAC) を作成します。
 
 - DACPAC の作成には SQL Server Data Tools の SqlPackage.exe が使用されます。 SQL Server Data Tools と共に、120、130、140 などの名前のフォルダー以下に複数バージョンの SqlPackage.exe がインストールされます。 適切なバージョンを使用して DACPAC を準備することが重要です。
 - TFS 2018 のインポートでは、140 以降のフォルダーの SqlPackage.exe を使用する必要があります。  CONTOSOTFS の場合、このファイルは **C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Extensions\Microsoft\SQLDB\DAC\140** フォルダーにあります。
@@ -314,7 +312,7 @@ DACPAC が作成されたら、Contoso は Azure Storage にアップロード�
 
     ![アップロード](./media/contoso-migration-tfs-vsts/backup5.png)
 
-4. サブスクリプションに接続し、移行のために作成したストレージ アカウントを探します (**contosodevmigration**)。 新しい BLOB コンテナー **vstsmigration** を作成します。
+4. サブスクリプションに接続し、移行のために作成したストレージ アカウントを探します (**contosodevmigration**)。 新しい BLOB コンテナー **azuredevopsmigration** を作成します。
 
     ![アップロード](./media/contoso-migration-tfs-vsts/backup6.png)
 
@@ -393,11 +391,11 @@ Contoso の管理者はドライ ラン移行を開始し、すべてが想定�
 
      ![ドライ ラン](./media/contoso-migration-tfs-vsts/test7.png)
 
-12. 移行が完了したら、Contoso の開発リーダーは VSTS にサインインし、ドライ ランが正常に動作していることを確認します。 認証が完了したら、アカウントを確認するために VSTS にいくつかの詳細情報が必要です。
+12. 移行が完了したら、Contoso の開発リーダーは Azure DevOps Services にサインインし、ドライ ランが正常に動作していることを確認します。 認証後、Azure DevOps Services は、組織を確認するいくつかの詳細情報が必要です。
 
     ![ドライ ラン](./media/contoso-migration-tfs-vsts/test8.png)
 
-13. 開発リーダーは、VSTS でプロジェクトが VSTS に移行されたことを確認できます。 15 日後にアカウントが削除されるという通知が表示されます。
+13. Azure DevOps Services で、開発リーダーはプロジェクトが Azure DevOps Services に移行されたことを確認できます。 15 日後に組織が削除されるという通知が表示されます。
 
     ![ドライ ラン](./media/contoso-migration-tfs-vsts/test9.png)
 
@@ -414,7 +412,7 @@ Contoso の管理者はドライ ラン移行を開始し、すべてが想定�
 
 ドライ ランが完了したら、Contoso の管理者は運用環境の移行に進みます。 ドライ ランを削除し、インポート設定を更新し、インポートをもう一度実行します。
 
-1. VSTS ポータルでドライ ラン アカウントを削除します。
+1. Azure DevOps Services ポータルのドライ ランの組織を削除します。
 2. **ImportType** を **ProductionRun** に設定するように import.json ファイルを更新します。
 
     ![Production](./media/contoso-migration-tfs-vsts/full1.png)
@@ -436,7 +434,7 @@ Contoso の管理者はドライ ラン移行を開始し、すべてが想定�
 
     ![Production](./media/contoso-migration-tfs-vsts/full5.png)
 
-8. 移行が完了したら、Contoso の開発リーダーは VSTS にログインし、移行が正常に動作していることを確認します。 ログインすると、プロジェクトが移行されたことを確認できます。
+8. 移行が完了したら、Contoso の開発リーダーは Azure DevOps Services にログインし、移行が正常に動作していることを確認します。 ログインすると、プロジェクトが移行されたことを確認できます。
 
     ![Production](./media/contoso-migration-tfs-vsts/full6.png)
 
@@ -455,9 +453,9 @@ Contoso の管理者はドライ ラン移行を開始し、すべてが想定�
 
 ### <a name="move-source-control-from-tfvc-to-git"></a>ソース管理を TFVC から Git に移行する
 
-Contoso は、移行が完了したら、ソース コード管理については TFVC から Git に移行したいと考えています。 Contoso の管理者は、同じアカウントで、VSTS アカウントの現在ソース コードを、Git リポジトリとしてインポートする必要があります。
+Contoso は、移行が完了したら、ソース コード管理については TFVC から Git に移行したいと考えています。 同一組織での Git リポジトリとして Azure DevOps Services 組織における現在のソース コードをインポートする必要があります。
 
-1. VSTS ポータルで、TFVC リポジトリ (**$/PolicyConnect**) のいずれかを開いて確認します。
+1. Azure DevOps Services ポータルで、TFVC リポジトリ (**$/PolicyConnect**) のいずれかを開いて確認します。
 
     ![Git](./media/contoso-migration-tfs-vsts/git1.png)
 
@@ -480,7 +478,7 @@ Contoso は、移行が完了したら、ソース コード管理について�
 
     ![Git](./media/contoso-migration-tfs-vsts/git5.png)
 
-6. ソースを確認した後、開発リーダーたちは VSTS への移行が完了したことに同意します。 VSTS は、移行に関わるチーム内のすべての開発のソースになりました。
+6. ソースを確認した後、開発リーダーたちは Azure DevOps Services への移行が完了したことに同意します。 Azure DevOps Services は、移行に関わるチーム内のすべての開発のソースになりました。
 
     ![Git](./media/contoso-migration-tfs-vsts/git6.png)
 
@@ -488,18 +486,18 @@ Contoso は、移行が完了したら、ソース コード管理について�
 
 **さらにサポートが必要な場合**
 
-TFVC からのインポートの詳細については、[こちら](https://docs.microsoft.com/vsts/git/import-from-tfvc?view=vsts)を参照してください。
+TFVC からのインポートの詳細については、[こちら](https://docs.microsoft.com/azure/devops/repos/git/import-from-TFVC?view=vsts)を参照してください。
 
 ##  <a name="clean-up-after-migration"></a>移行後にクリーンアップする
 
 移行が完了したら、Contoso は次の操作を行う必要があります。
 
-- 追加のインポート アクティビティについては、[インポート後](https://docs.microsoft.com/vsts/articles/migration-post-import?view=vsts)に関する記事を参照してください。
+- 追加のインポート アクティビティについては、[インポート後](https://docs.microsoft.com/azure/devops/articles/migration-post-import?view=vsts)に関する記事を参照してください。
 - TFVC リポジトリを削除するか、読み取り専用モードに設定します。 コード ベースは使用しないでください。ただし、履歴のために参照することはできます。
 
 ## <a name="next-steps"></a>次の手順
 
-Contoso は関連するチーム メンバーに VSTS と Git のトレーニングを用意する必要があります。
+Contoso は関連するチーム メンバーに Azure DevOps Services と Git のトレーニングを用意する必要があります。
 
 
 

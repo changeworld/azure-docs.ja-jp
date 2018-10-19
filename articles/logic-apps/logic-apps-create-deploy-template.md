@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 85928ec6-d7cb-488e-926e-2e5db89508ee
 ms.date: 10/18/2016
-ms.openlocfilehash: 68e655490470db6aade53c6f3523d0c9d87c3fbd
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 393543bbb1891e14ed67487aff26a7bda1eebcd5
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123467"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304239"
 ---
 # <a name="create-azure-resource-manager-templates-for-deploying-logic-apps"></a>ロジック アプリをデプロイするための Azure Resource Manager テンプレートの作成
 
@@ -173,7 +173,7 @@ parameters は次のように使用します。
 
 ## <a name="deploy-a-logic-app-template"></a>ロジック アプリ テンプレートをデプロイする
 
-PowerShell、REST API、[Visual Studio Team Services Release Management](#team-services)、Azure Portal を介したテンプレート デプロイなど、さまざまなツールを使用して、テンプレートをデプロイできます。
+PowerShell、REST API、[Azure DevOps Release Management](#team-services)、Azure portal を介したテンプレート デプロイなど、さまざまなツールを使用して、テンプレートをデプロイできます。
 パラメーターの値を保存するため、[パラメーター ファイル](../azure-resource-manager/resource-group-template-deploy.md#parameter-files)の作成も推奨されます。
 詳しくは、「[Azure Resource Manager テンプレートと PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)」または「[Azure Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-portal.md)」をご覧ください。
 
@@ -185,13 +185,13 @@ OAuth 接続を承認するには、Logic Apps デザイナーでロジック �
 例として、 [LogicAppConnectionAuth](https://github.com/logicappsio/LogicAppConnectionAuth) プロジェクトの GitHub のスクリプトがあります。
 
 <a name="team-services"></a>
-## <a name="visual-studio-team-services-release-management"></a>Visual Studio Team Services Release Management
+## <a name="azure-devops-release-management"></a>Azure DevOps Release Management
 
-環境をデプロイし、管理する一般的なシナリオは、Visual Studio Team Services の Release Management のようなツールをロジック アプリ デプロイ テンプレートと共に使用することです。 Visual Studio Team Services に含まれる [Deploy Azure Resource Group (Azure リソース グループのデプロイ)](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) タスクは、あらゆるビルドまたはリリース パイプラインに追加できます。 認証には[サービス プリンシパル](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)をデプロイする必要があります。その後、リリース定義を生成できます。
+環境をデプロイし、管理する一般的なシナリオは、Azure DevOps の Release Management のようなツールを ロジック アプリ デプロイ テンプレートと共に使用することです。 Azure DevOps に含まれる [Deploy Azure Resource Group (Azure リソース グループのデプロイ)](https://github.com/Microsoft/vsts-tasks/tree/master/Tasks/DeployAzureResourceGroup) タスクは、あらゆるビルドまたはリリース パイプラインに追加できます。 認証には[サービス プリンシパル](https://blogs.msdn.microsoft.com/visualstudioalm/2015/10/04/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)をデプロイする必要があります。その後、リリース パイプラインを生成できます。
 
-1. Release Management で、**[空]** を選択して空の定義を作成します。
+1. Release Management で、**[空]** を選択して空のパイプラインを作成します。
 
-    ![空の定義の作成][1]
+    ![空のパイプラインを作成する][1]
 
 2. 必要なリソースをすべて選択します。これには、多くの場合、手動またはビルド プロセスで生成したロジック アプリ テンプレートが含まれます。
 3. **Azure Resource Group Deployment (Azure リソース グループ デプロイ)** タスクを追加します。

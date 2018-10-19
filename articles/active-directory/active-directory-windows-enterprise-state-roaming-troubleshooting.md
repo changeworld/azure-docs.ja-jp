@@ -18,12 +18,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: a80bec460fffcc7c7170204d541d578428980394
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: c7a2428e4e5e3b5af0e9e01514ba433707e6a3c8
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223951"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44022800"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング
 
@@ -71,7 +71,7 @@ Enterprise State Roaming では、デバイスを Azure AD に登録する必要
 **潜在的な問題**: **WamDefaultSet** と **AzureAdJoined** の両方のフィールド値が "NO" になっており、デバイスはドメインに参加して Azure AD に登録されていますが、同期しません。このような場合は、デバイスにポリシーが適用されるまで待機する必要があるか、Azure AD に接続するときにデバイスの認証に失敗したと考えられます。 ポリシーが適用されるまでには数時間かかる場合があります。 その他のトラブルシューティング手順としては、サインアウトしてからサインインし直してもう一度自動登録をしてみるか、タスク スケジューラでタスクを起動することなどが挙げられます。 場合によっては、管理者特権で開いたコマンド プロンプト画面で "*dsregcmd.exe /leave*" を実行して再起動し、登録し直すことが問題の解決に役立つことがあります。
 
 
-**潜在的な問題**: **AzureAdSettingsUrl** のフィールドが空で、デバイスが同期しません。最後にデバイスにログインしたのが、Azure Active Directory ポータルで Enterprise State Roaming が有効になる前だった可能性があります。 デバイスを再起動してログインします。 必要に応じて、ポータルで IT 管理者を無効にし、[設定とエンタープライズ アプリ データの同期が許可されるユーザー] を有効にし直します。 その後、デバイスを再起動してログインします。 問題が解決されない場合、デバイスの証明書が不適切であれば、**AzureAdSettingsUrl** が空になることがあります。 この場合、管理者特権で開いたコマンド プロンプト画面で "*dsregcmd.exe /leave*" を実行して再起動し、登録し直すと問題の解決に役立つことがあります。
+**潜在的な問題**: **SettingsUrl** のフィールドが空で、デバイスが同期しません。最後にデバイスにログインしたのが、Azure Active Directory ポータルで Enterprise State Roaming が有効になる前だった可能性があります。 デバイスを再起動してログインします。 必要に応じて、ポータルで IT 管理者を無効にし、[設定とエンタープライズ アプリ データの同期が許可されるユーザー] を有効にし直します。 その後、デバイスを再起動してログインします。 問題が解決されない場合、デバイスの証明書が不適切であれば、**SettingsUrl** が空になることがあります。 この場合、管理者特権で開いたコマンド プロンプト画面で "*dsregcmd.exe /leave*" を実行して再起動し、登録し直すと問題の解決に役立つことがあります。
 
 ## <a name="enterprise-state-roaming-and-multi-factor-authentication"></a>Enterprise State Roaming と Multi-Factor Authentication 
 Azure Multi-Factor Authentication が構成されている場合、特定の条件下で Enterprise State Roaming がデータの同期に失敗する可能性があります。 このような場合の詳細については、サポート ドキュメント [KB3193683](https://support.microsoft.com/kb/3193683) を参照してください。 
@@ -81,7 +81,7 @@ Azure Multi-Factor Authentication が構成されている場合、特定の条�
 **潜在的な問題**: 管理者が Active Directory Federation Services Multi-Factor Authentication 条件付きアクセス ポリシーを構成し、デバイスのアクセス トークンの有効期限が切れている場合は、同期が失敗することがあります。 一度サインアウトしてから Microsoft Passport for Work の PIN を使用してサインインし直すか、または他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行ってください。
 
 ### <a name="event-viewer"></a>イベント ビューアー
-高度なトラブルシューティング方法として、イベント ビューアーを使って特定のエラーの検出ができるものがあります。 これらについては、下の表に記載します。 [イベント ビューアー] > [アプリケーションとサービス ログ] >**[Microsoft]** > **[Windows]** > **[SettingSync]** でイベントを表示します。同期の ID 関連の問題については、**[Microsoft]** > **[Windows]** > **[AAD]** に移動します。
+高度なトラブルシューティング方法として、イベント ビューアーを使って特定のエラーの検出ができるものがあります。 これらについては、下の表に記載します。 [イベント ビューアー] > [アプリケーションとサービス ログ] >**[Microsoft]** > **[Windows]** > **[SettingSync-Azure]** でイベントを表示します。同期の ID 関連の問題については、**[Microsoft]** > **[Windows]** > **[AAD]** に移動します。
 
 
 ## <a name="known-issues"></a>既知の問題
@@ -174,14 +174,6 @@ AAD/操作ログのイベント ビューアーに、イベント 1104 ととも
 
 **推奨される操作**  
 [KB3196528](https://support.microsoft.com/kb/3196528) に示された手順を実行します。  
-
-
-
-## <a name="next-steps"></a>次の手順
-
-- [フィードバック フォーラム](https://social.technet.microsoft.com/Forums/windows/en-US/f51c856c-db92-4cf7-a497-720da21d7d31/enterprise-state-roaming)では、Enterprise State Roaming の改善方法について、フィードバックの提供や提案を行うことができます。
-
-- 詳細については、「[Enterprise State Roaming の概要](active-directory-windows-enterprise-state-roaming-overview.md)」を参照してください。 
 
 ## <a name="related-topics"></a>関連トピック
 * [Enterprise State Roaming の概要](active-directory-windows-enterprise-state-roaming-overview.md)

@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: sngun
-ms.openlocfilehash: 020f9c8753b2b91b3336b304a1c92590f62be003
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2cae74224a9d59939175ac7e43d4d6b183ca3933
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42145833"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44050746"
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>TTL (Time to Live) を使って Azure Cosmos DB コレクションのデータの有効期限が自動的に切れるようにする
 アプリケーションで膨大なデータを生成し、格納することができます。 このデータの一部 (コンピューターによって生成されるイベント データ、ログ、およびユーザー セッション情報など) は、一定期間でのみ有効です。 アプリケーションで必要以上のデータがある場合は、そのデータを消去し、アプリケーションでのストレージの必要性を減らすのが安全です。
@@ -55,8 +55,8 @@ TTL 機能は、コレクション レベルとドキュメント レベルの 2
 2. TTL 値を設定するコレクションに移動し、**[スケールと設定]** ウィンドウを開きます。 Time to Live は、既定では、**[オフ]** が設定されていることがわかります。 **[オン (既定値なし)]** または **[オン]** に変更できます。
 
    **オフ** - ドキュメントは自動的に削除されません。  
-   **オン (既定値なし)** - このオプションは、TTL 値を [-1] (無限) に設定します。これは、既定では、ドキュメントの有効期限がないことを意味します。  
-   **オン** - ドキュメントは、最後に変更されてから [n] 秒後に有効期限が切れます。  
+   **オン (既定値なし)** - このオプションは、TTL 値を "-1" (無限) に設定します。これは、既定では、ドキュメントの有効期限がないことを意味します。  
+   **オン** - ドキュメントは、最後に変更されてから "n" 秒後に有効期限が切れます。  
 
    ![Time to Live の設定](./media/time-to-live/set-ttl-in-portal.png)
 

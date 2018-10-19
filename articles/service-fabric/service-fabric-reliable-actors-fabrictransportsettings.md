@@ -1,5 +1,5 @@
 ---
-title: Azure マイクロサービスで FabricTransport の設定を変更する | Microsoft Docs
+title: Azure Service Fabric アクターで FabricTransport の設定を変更する | Microsoft Docs
 description: Azure Service Fabric アクターの通信の設定を構成する方法について説明します。
 services: Service-Fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: f196859500d5de883a4de3f21b803c8f83e2f0b2
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: aa4339fa1fe4b21369004e748492ee71cbe6d616
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37021414"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44052141"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Reliable Actors の FabricTransport 設定を構成する
 

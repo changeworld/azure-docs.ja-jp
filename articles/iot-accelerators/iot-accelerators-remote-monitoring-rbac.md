@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 956cb80ddbf96f23585dd52f3dc1013c7a665113
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: a56cb92dc8870bf3fff6de0b1d5d907a0898c216
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886312"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364297"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータでロール ベースのアクセス制御を構成する
 
@@ -134,11 +134,11 @@ ms.locfileid: "42886312"
 
 ### <a name="define-a-policy-for-the-new-role"></a>新しいロール用のポリシーを定義する
 
-Azure Portal でロールをアプリに追加した後、デバイスを管理するために必要なアクセス許可をロールに割り当てるポリシーを [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/pcs-auth/Services/data/policies/roles.json) 内に定義する必要があります。
+Azure Portal でロールをアプリに追加した後、デバイスを管理するために必要なアクセス許可をロールに割り当てるポリシーを [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) 内に定義する必要があります。
 
-1. [認証および承認マイクロサービス](https://github.com/Azure/pcs-auth-dotnet) リポジトリを GitHub からローカル コンピューターに複製します。
+1. GitHub からローカル コンピューターに[リモート監視マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet) リポジトリを複製します。
 
-1. 次のスニペットに示すように、**Services/data/policies/roles.json** ファイルを編集して **ManageDevices** ロール用のポリシーを追加します。 **ID** と**ロール**の値は、前のセクションのアプリ マニフェスト内のロール定義と一致する必要があります。 許可されるアクションの一覧を使用して、**ManageDevices** ロールを割り当てられたユーザーに、ソリューションに接続されるデバイスの作成、更新、および削除を許可できます。
+1. 次のスニペットに示すように、**auth/Services/data/policies/roles.json** ファイルを編集して **ManageDevices** ロール用のポリシーを追加します。 **ID** と**ロール**の値は、前のセクションのアプリ マニフェスト内のロール定義と一致する必要があります。 許可されるアクションの一覧を使用して、**ManageDevices** ロールを割り当てられたユーザーに、ソリューションに接続されるデバイスの作成、更新、および削除を許可できます。
 
     ```json
     {
@@ -184,7 +184,7 @@ Azure Portal でロールをアプリに追加した後、デバイスを管理�
 
 ### <a name="how-the-web-ui-enforces-permissions"></a>Web UI によるアクセス許可の適用方法
 
-Web UI は、[認証および承認マイクロサービス](https://github.com/Azure/pcs-auth-dotnet)を使用して、ユーザーが実行できるアクションと UI に表示されるコントロールを決定します。 たとえば、ソリューションの名前が **contoso-rm4** の場合、Web UI は、次の要求を送信することで、現在のユーザーに許可されているアクションの一覧を取得します。
+Web UI は、[認証および承認マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth)を使用して、ユーザーが実行できるアクションと UI に表示されるコントロールを決定します。 たとえば、ソリューションの名前が **contoso-rm4** の場合、Web UI は、次の要求を送信することで、現在のユーザーに許可されているアクションの一覧を取得します。
 
 ```http
 http://contoso-rm4.azurewebsites.net/v1/users/current
@@ -226,7 +226,7 @@ Authorization: Bearer <JWT Token from ADAL>
 
 マイクロサービスは、承認されていない API 要求を防止するために、アクセス許可もチェックします。 マイクロサービスは、API 要求を受信したときに、JWT トークンのデコードと検証を行って、ユーザーのロールに関連付けられているユーザー ID とアクセス許可を取得します。
 
-[IoTHub Manager マイクロサービス](https://github.com/Azure/iothub-manager-dotnet)内の [DevicesController.cs](https://github.com/Azure/iothub-manager-dotnet/blob/master/WebService/v1/Controllers/DevicesController.cs) ファイルから抜粋した次のスニペットは、アクセス許可の適用方法を示しています。
+[IoTHub Manager マイクロサービス](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager)内の [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) ファイルから抜粋した次のスニペットは、アクセス許可の適用方法を示しています。
 
 ```csharp
 [HttpDelete("{id}")]
@@ -240,6 +240,8 @@ public async Task DeleteAsync(string id)
 ## <a name="next-steps"></a>次の手順
 
 この記事では、リモート監視ソリューション アクセラレータで役割に基づくアクセス コントロールがどのように実装されるかを説明しました。
+
+リモート監視ソリューション アクセラレータで Time Series Insights エクスプローラーへのアクセスを管理する方法については、[Time Series Insights エクスプローラーに対するアクセスの制御を構成する方法](iot-accelerators-remote-monitoring-rbac-tsi.md)に関するページを参照してください。
 
 リモート監視ソリューション アクセラレータの概念に関する詳細については、[リモート監視のアーキテクチャ](iot-accelerators-remote-monitoring-sample-walkthrough.md)に関するページをご覧ください
 

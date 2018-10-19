@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric マイクロサービスで状態を管理する | Microsoft Docs
-description: Service Fabric でサービスの状態を定義し管理する方法
+title: Azure Service Fabric サービスで状態を管理する | Microsoft Docs
+description: Service Fabric サービスでサービスの状態を定義して管理する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: eaa38e864da2525b640fa101ecc807f89de8eeaf
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 48345be959bb9bebf7c30fa71de91b7881863d66
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39072199"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44054959"
 ---
 # <a name="service-state"></a>サービスの状態
 **サービスの状態**とは、サービスが機能するために必要な、メモリ内またはディスク上のデータのことです。 これには、たとえば、サービスが機能するために読み取りや書き込みをする、データ構造およびメンバー変数が含まれます。 サービスの設計方法によっては、ディスクに保存されているファイルやその他のリソースが含まれる場合もあります。 たとえば、データとトランザクション ログを格納するためにデータベースで使用するファイルが含まれます。

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 42910675bcf512a3d6c76369adc9f41215420a78
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 18aa5ab16a1690fdcead46ebc15d72837f62612d
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972293"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302471"
 ---
 # <a name="cloud-foundry-on-azure"></a>Azure での Cloud Foundry
 
@@ -54,16 +54,15 @@ Pivotal Cloud Foundry には、OSS 配布と同じコア プラットフォー�
 
 ## <a name="azure-service-broker"></a>Azure Service Broker
 
-Cloud Foundry では、ステートレスなアプリケーション プロセスとステートフルなバックアップ サービスを明確に分離する、["twelve-factor app"](https://12factor.net/) (アプリ開発に必要な 12 要素) の方法論を推奨しています。 
-  [Service Broker](https://docs.cloudfoundry.org/services/api.html) は、バックアップ サービスをアプリケーションにをプロビジョニングしてバインドするための一貫した方法を提供します。 [Azure Service Broker](https://github.com/Azure/meta-azure-service-broker) は、Azure Storage や Azure SQL などの主要な Azure サービスの一部を、このチャネルを通じて提供します。
+Cloud Foundry では、ステートレスなアプリケーション プロセスとステートフルなバックアップ サービスを明確に分離する、["twelve-factor app"](https://12factor.net/) (アプリ開発に必要な 12 要素) の方法論を推奨しています。 [Service Broker](https://docs.cloudfoundry.org/services/api.html) は、バックアップ サービスをアプリケーションにをプロビジョニングしてバインドするための一貫した方法を提供します。 [Azure Service Broker](https://github.com/Azure/meta-azure-service-broker) は、Azure Storage や Azure SQL などの主要な Azure サービスの一部を、このチャネルを通じて提供します。
 
 Pivotal Cloud Foundry を使用している場合、Service Broker は Pivotal Network から[タイルとしても使用可能](https://docs.pivotal.io/azure-sb/installing.html)です。
 
 ## <a name="related-resources"></a>関連リソース
 
-### <a name="visual-studio-team-services-plugin"></a>Visual Studio Team Services プラグイン
+### <a name="azure-devops-services-plugin"></a>Azure DevOps Services プラグイン
 
-Cloud Foundry は、継続的インテグレーション (CI) や継続的デリバリー (CD) の使用を含めたアジャイル ソフトウェア開発に適しています。 Visual Studio Team Services (VSTS) を使用してプロジェクトを管理しており、Cloud Foundry をターゲットとする CI/CD パイプラインを設定する場合は、[VSTS Cloud Foundry のビルド拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension)を使用できます。 このプラグインを利用すると、環境が Azure かどうかにかかわらず、簡単に Cloud Foundry へのデプロイを構成して自動化することができます。
+Cloud Foundry は、継続的インテグレーション (CI) や継続的デリバリー (CD) の使用を含めたアジャイル ソフトウェア開発に適しています。 Azure DevOps Services を使用してプロジェクトを管理しており、Cloud Foundry をターゲットとする CI/CD パイプラインを設定する場合は、[Azure DevOps Services の Cloud Foundry ビルド拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vsts.cloud-foundry-build-extension)を使用できます。 このプラグインを利用すると、環境が Azure かどうかにかかわらず、簡単に Cloud Foundry へのデプロイを構成して自動化することができます。
 
 ## <a name="next-steps"></a>次の手順
 

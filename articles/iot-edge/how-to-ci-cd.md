@@ -8,20 +8,20 @@ ms.date: 06/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 62d8d770f6b4c3a62a2395eb8c1505dbc3835c28
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 5099ca70503ba2ed4ae8f4969a9199816c4986fb
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37047457"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302573"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Azure IoT Edge に対する継続的インテグレーションと継続的配置
 
-この記事では、Visual Studio Team Services (VSTS) と Microsoft Team Foundation Server (TFS) の継続的インテグレーションと継続的配置の機能を使用して、アプリケーションを迅速かつ効率的に Azure IoT Edge にビルド、テスト、および配置する方法について説明します。 
+この記事では、Azure DevOps Services と Microsoft Team Foundation Server (TFS) の継続的インテグレーションと継続的配置の機能を使用して、アプリケーションを迅速かつ効率的に Azure IoT Edge にビルド、テスト、および配置する方法について説明します。 
 
 この記事では、次のことについて説明します。
 * 単体テストを含む IoT Edge ソリューションのサンプルを作成してチェックインします。
-* お使いの VSTS 用の Azure IoT Edge 拡張機能をインストールします。
+* お使いの Azure DevOps 用の Azure IoT Edge 拡張機能をインストールします。
 * 継続的インテグレーション (CI) を構成して、ソリューションをビルドし、単体テストを実行します。
 * 継続的配置 (CD) を構成して、ソリューションを配置し、応答を表示します。
 
@@ -277,31 +277,31 @@ ms.locfileid: "37047457"
 
     ![単体テスト](./media/how-to-ci-cd/unit-test.png)
 
-7. これらのプロジェクトを保存し、VSTS または TFS リポジトリにチェックインします。
+7. これらのプロジェクトを保存し、Azure DevOps または TFS リポジトリにチェックインします。
     
 
 > [!NOTE]
-> VSTS コード リポジトリの使用の詳細については、「[Share your code with Visual Studio and VSTS Git (コードと Visual Studio および VSTS Git を共有する)](https://docs.microsoft.com/vsts/git/share-your-code-in-git-vs?view=vsts)」を参照してください。
+> Azure Repos の使用に関する詳細については、「[Share your code with Visual Studio and Azure Repos (自分のコードを Visual Studio と Azure Repos に共有する)](https://docs.microsoft.com/azure/devops/repos/git/share-your-code-in-git-vs?view=vsts)」を参照してください。
 
 
 ## <a name="configure-continuous-integration"></a>継続的インテグレーションを構成する
-このセクションでは、IoT Edge ソリューションのサンプルへの変更をチェックインするときに自動的に実行するように構成されたビルド定義を作成します。それによって、そのサンプルに含まれている単体テストは自動的に実行されます。
+このセクションでは、IoT Edge ソリューションのサンプルへの変更をチェックインするときに自動的に実行するように構成されたビルド パイプラインを作成します。それによって、そのサンプルに含まれている単体テストは自動的に実行されます。
 
-1. ご自身の VSTS アカウント (**https://**_your-account_**.visualstudio.com**) にサインインして、サンプル アプリにチェックインしたプロジェクトを開きます。
+1. ご自身の Azure DevOps 組織 (**https://**_your-account_**.visualstudio.com**) にサインインして、サンプル アプリにチェックインしたプロジェクトを開きます。
 
     ![チェックイン コード](./media/how-to-ci-cd/init-project.png)
 
-1. VSTS Marketplace 上の [Azure IoT Edge For VSTS](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) にアクセスします。 **[無料で入手]** をクリックして、ウィザードに従ってこの拡張機能をご自身の VSTS アカウントにインストールするか、TFS にダウンロードします。
+1. Azure DevOps Marketplace で [Azure DevOps 用 Azure IoT Edge](https://marketplace.visualstudio.com/items?itemName=vsc-iot.iot-edge-build-deploy) を参照してください。 **[無料で入手]** をクリックして、ウィザードに従ってこの拡張機能をご自身の Azure DevOps 組織にインストールするか、TFS にダウンロードします。
 
     ![拡張機能のインストール](./media/how-to-ci-cd/install-extension.png)
 
-1. VSTS で、**[ビルドとリリース]** ハブを開き、**[ビルド]** タブで、**[+ 新しい定義]** を選択します。 または、すでにビルド定義がある場合は、**[+ 新規]** ボタンを選択します。 
+1. Azure DevOps で、**[ビルド &amp;とリリース]** ハブを開き、**[ビルド]** タブで、**[+ 新しいパイプライン]** を選択します。 または、すでにビルド パイプラインがある場合は、**[+ 新規]** ボタンを選択します。 
 
     ![新しいビルド](./media/how-to-ci-cd/add-new-build.png)
 
-1. メッセージが表示されたら、**[VSTS Git]** ソース タイプを選択し、コードが配置されているプロジェクト、リポジトリ、ブランチを選択します。 **[続行]** を選択します。
+1. メッセージが表示されたら、**[Azure DevOps Git]** ソース タイプを選択し、コードが配置されているプロジェクト、リポジトリ、ブランチを選択します。 **[続行]** を選択します。
 
-    ![VSTS git の選択](./media/how-to-ci-cd/select-vsts-git.png)
+    ![Azure DevOps git の選択](./media/how-to-ci-cd/select-vsts-git.png)
 
 1. **[テンプレートの選択]** ウィンドウで、**[start with an Empty process]\(空のプロセスを開始する\)** を選択します。
 
@@ -343,9 +343,9 @@ ms.locfileid: "37047457"
 
     ![トリガー](./media/how-to-ci-cd/configure-trigger.png)
 
-1. 新しいビルド定義を保存し、新しいビルドをキューに登録します。 **[保存してキューに登録]** ボタンをクリックします。
+1. 新しいビルド パイプラインを保存し、新しいビルドをキューに登録します。 **[保存してキューに登録]** ボタンをクリックします。
 
-1. 表示されるメッセージ バーで、ビルドへのリンクを選択します。 または、ビルド定義に移動し、キューに登録した最新のビルド ジョブを表示します。
+1. 表示されるメッセージ バーで、ビルドへのリンクを選択します。 または、ビルド パイプラインに移動し、キューに登録した最新のビルド ジョブを表示します。
 
     ![構築](./media/how-to-ci-cd/build-def.png)
 

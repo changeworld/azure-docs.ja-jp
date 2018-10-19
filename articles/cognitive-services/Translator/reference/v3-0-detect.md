@@ -1,22 +1,23 @@
 ---
-title: Microsoft Translator Text API Detect メソッド | Microsoft Docs
-description: Microsoft Translator Text API Detect メソッドを使用します。
+title: Translator Text API の Detect メソッド
+titlesuffix: Azure Cognitive Services
+description: Translator Text API の Detect メソッドを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 7e81e91230e1ada4423d77d22134b1b64df65d9d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6698960cca39fb49fe8ba6e79b957be469ea7c50
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377525"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126124"
 ---
-# <a name="text-api-30-detect"></a>テキスト API 3.0: Detect
+# <a name="translator-text-api-30-detect"></a>Translator Text API 3.0: Detect
 
 テキストの一部の言語を識別します。
 
@@ -37,7 +38,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   <th>説明</th>
   <tr>
     <td>api-version</td>
-    <td>*必須のパラメーター*。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
+    <td>"*必須のパラメーター*"。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
   </tr>
 </table> 
 
@@ -47,20 +48,20 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   <th width="20%">headers</th>
   <th>説明</th>
   <tr>
-    <td>_One authorization_<br/>_header_</td>
-    <td>*必須の要求ヘッダー*。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページを参照してください。</td>
+    <td>_1 つの承認_<br/>_ヘッダー_></td>
+    <td>"*必須の要求ヘッダー*" です。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページをご覧ください。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*必須の要求ヘッダー*。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
+    <td>"*必須の要求ヘッダー*" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*必須の要求ヘッダー*。<br/>要求本文の長さです。</td>
+    <td>"*必須の要求ヘッダー*" です。<br/>要求本文の長さです。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*省略可能*。<br/>要求を一意に識別する、クライアントで生成された GUID。 `ClientTraceId` という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合は、このヘッダーを省略できることに注目してください。</td>
+    <td>*省略可能*。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。</td>
   </tr>
 </table> 
 
@@ -86,7 +87,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
   * `language`: 検出された言語のコード。
 
-  * `score`: 結果内の信頼度を示す浮動小数点値。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
+  * `score`: 結果内の信頼度を示す浮動小数点値です。 スコアは 0 から 1 の範囲であり、低いスコアは低い信頼度を示します。
 
   * `isTranslationSupported`: 検出された言語がテキスト翻訳でサポートされている言語の 1 つである場合に true になるブール値。
 
@@ -128,13 +129,13 @@ JSON 応答の例を次に示します。
   <th>説明</th>
   <tr>
     <td>X-RequestId</td>
-    <td>要求を識別するサービスによって生成される値。 トラブルシューティングの目的で使用されます。</td>
+    <td>要求を識別するためにサービスによって生成される値。 トラブルシューティングの目的で使用されます。</td>
   </tr>
 </table> 
 
 ## <a name="response-status-codes"></a>応答状態コード
 
-要求から返される可能性のある HTTP 状態コードを次に示します。 
+要求によって返される可能性のある HTTP 状態コードを次に示します。 
 
 <table width="100%">
   <th width="20%">状態コード</th>

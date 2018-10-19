@@ -1,6 +1,6 @@
 ---
-title: Azure テンプレートを使用して Azure HDInsight と Data Lake Store を作成する | Microsoft Docs
-description: Azure Resource Manager テンプレートを使って Azure Data Lake Store で HDInsight クラスターを作成し使用する
+title: Azure テンプレートを使用して Azure Data Lake Storage Gen1 を使用する HDInsight を作成する | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用して、Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成および使用します
 services: data-lake-store,hdinsight
 documentationcenter: ''
 author: nitinme
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 7f49b643550b1888e1b0a4a6a57bbe4d428c65ac
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 65b02ddc8fbd27d5081400032222a904b27e1a25
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625782"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126141"
 ---
-# <a name="create-an-hdinsight-cluster-with-data-lake-store-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Data Lake Store で HDInsight クラスターを作成する
+# <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して Azure Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する
 > [!div class="op_single_selector"]
 > * [ポータルの使用](data-lake-store-hdinsight-hadoop-use-portal.md)
 > * [PowerShell の使用 (既定のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
@@ -28,19 +28,19 @@ ms.locfileid: "34625782"
 >
 >
 
-Azure PowerShell を使用して、Azure Data Lake Store を**追加のストレージとして**使用する HDInsight クラスターを構成する方法について説明します。
+Azure PowerShell を使用して、Azure Data Lake Storage Gen1 を**追加のストレージとして**使用する HDInsight クラスターを構成する方法について説明します。
 
-サポートされている種類のクラスターでは、Data Lake Store を既定のストレージまたは追加のストレージ アカウントとして使用します。 Data Lake Store を追加のストレージとして使用した場合、クラスターの既定のストレージ アカウントは Azure Storage BLOB (WASB) のままであり、クラスター関連のファイル (ログなど) はその既定のストレージに書き込まれますが、一方で処理対象のデータは Data Lake Store アカウントに格納することができます。 Data Lake Store を追加のストレージ アカウントとして使用しても、クラスターからストレージに対する読み取り/書き込みのパフォーマンスや機能は何も変化しません。
+サポートされている種類のクラスターでは、Data Lake Storage Gen1 を既定のストレージまたは追加のストレージ アカウントとして使用できます。 Data Lake Storage Gen1 を追加のストレージとして使用した場合、クラスターの既定のストレージ アカウントは Azure Storage Blob (WASB) のままであり、クラスター関連のファイル (ログなど) は引き続きその既定のストレージに書き込まれますが、一方で処理対象のデータは Data Lake Storage Gen1 アカウントに格納することができます。 Data Lake Storage Gen1 を追加のストレージ アカウントとして使用しても、クラスターからストレージに対する読み取り/書き込みのパフォーマンスや機能は何も変化しません。
 
-## <a name="using-data-lake-store-for-hdinsight-cluster-storage"></a>HDInsight クラスター ストレージで Data Lake Store を使用する
+## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>HDInsight クラスター記憶域で Data Lake Storage Gen1 を使用する
 
-HDInsight で Data Lake Store を使用するための重要な考慮事項を次に示します。
+HDInsight で Data Lake Storage Gen1 を使用するための重要な考慮事項を次に示します。
 
-* Data Lake Store にアクセスできる HDInsight クラスターを既定のストレージとして作成するオプションは、HDInsight バージョン 3.5 と 3.6 で使うことができます。
+* 既定のストレージとしての Data Lake Storage Gen1 にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight バージョン 3.5 および 3.6 で使用できます。
 
-* Data Lake Store にアクセスできる HDInsight クラスターを追加のストレージとして作成するオプションは、HDInsight バージョン 3.2、3.4、3.5、3.6 で使うことができます。
+* 追加のストレージとしての Data Lake Storage Gen1 にアクセスできる HDInsight クラスターを作成するオプションは、HDInsight バージョン 3.2、3.4、3.5、および 3.6 で使用できます。
 
-この記事では、追加のストレージとして Data Lake Store を使用して Hadoop クラスターをプロビジョニングします。 既定のストレージとして Data Lake Store を使用する Hadoop クラスターの作成方法については、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。
+この記事では、追加のストレージとして Data Lake Storage Gen1 を使用して Hadoop クラスターをプロビジョニングします。 既定のストレージとして Data Lake Storage Gen1 を使用する Hadoop クラスターの作成方法については、[Azure portal を使用して Data Lake Storage Gen1 を使用する HDInsight クラスターを作成する方法](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
@@ -49,10 +49,10 @@ HDInsight で Data Lake Store を使用するための重要な考慮事項を�
 * **Azure PowerShell 1.0 以上**。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
 * **Azure Active Directory Service のプリンシパル**。 このチュートリアルの手順では、Azure AD でサービス プリンシパルを作成する方法を説明します。 ただし、サービス プリンシパルを作成するには、Azure AD 管理者である必要があります。 Azure AD 管理者である場合は、この前提条件をスキップしてチュートリアルを進めることができます。
 
-    **Azure AD 管理者でない場合**は、サービス プリンシパルの作成に必要な手順を実行することはできません。 その場合は、Data Lake Store で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 また、「[Create a service principal with certificate](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)」 (証明書でサービス プリンシパルを作成する) で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
+    **Azure AD 管理者でない場合**は、サービス プリンシパルの作成に必要な手順を実行することはできません。 その場合は、Data Lake Storage Gen1 で HDInsight クラスターを作成する前に、まず Azure AD 管理者がサービス プリンシパルを作成する必要があります。 また、「[Create a service principal with certificate](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)」 (証明書でサービス プリンシパルを作成する) で説明しているように、サービス プリンシパルは証明書を使って作成する必要があります。
 
-## <a name="create-an-hdinsight-cluster-with-azure-data-lake-store"></a>Azure Data Lake Store で HDInsight クラスターを作成する
-Resource Manager テンプレートおよびテンプレート使用の前提条件は、GitHub の[新しい Data Lake Store での HDInsight Linux クラスターのデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage)に関するページにあります。 このリンクで示されている手順に従って、HDInsight クラスターを Azure Data Lake Store で追加ストレージとして作成します。
+## <a name="create-an-hdinsight-cluster-with-data-lake-storage-gen1"></a>Data Lake Storage Gen1 を使用する HDInsight クラスターの作成
+Resource Manager テンプレートおよびテンプレート使用の前提条件は、GitHub の[新しい Data Lake Storage Gen1 での HDInsight Linux クラスターのデプロイ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-hdinsight-datalake-store-azure-storage)に関するページにあります。 このリンクで示されている手順に従って、Data Lake Storage Gen1 を追加ストレージとして使用する HDInsight クラスターを作成します。
 
 上記リンクの手順には、PowerShell が必要です。 手順を進める前に、Azure アカウントにログインしていることを確認してください。 デスクトップで Azure PowerShell ウィンドウを新しく開き、次のスニペットを入力します。 ログインを求められたら、必ず、サブスクリプションの管理者または所有者としてログインしてください。
 
@@ -67,17 +67,17 @@ Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <subscription ID>
 ```
 
-## <a name="upload-sample-data-to-the-azure-data-lake-store"></a>サンプル データを Azure Data Lake Store にアップロードする
-Resource Manager テンプレートでは、新しい Data Lake Store アカウントが作成され、HDInsight クラスターに関連付けられます。 この時点で、いくつかのサンプル データを Azure Data Lake Store にアップロードする必要があります。 このデータは、チュートリアルの後半で Data Lake Store 内のデータにアクセスする HDInsight クラスターからジョブを実行するために必要です。 データをアップロードする方法の詳細については、[Data Lake Store へのファイルのアップロード](data-lake-store-get-started-portal.md#uploaddata)に関するセクションを参照してください。 アップロードするいくつかのサンプル データを探している場合は、 **Azure Data Lake Git リポジトリ** から [Ambulance Data](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData)フォルダーを取得できます。
+## <a name="upload-sample-data-to-data-lake-storage-gen1"></a>Data Lake Storage Gen1 へのサンプル データのアップロード
+Resource Manager テンプレートでは、新しい Data Lake Storage Gen1 アカウントが作成され、HDInsight クラスターに関連付けられます。 この時点で、いくつかのサンプル データを Data Lake Storage Gen1 にアップロードする必要があります。 このデータは、チュートリアルの後半で Data Lake Storage Gen1 アカウント内のデータにアクセスするジョブを HDInsight クラスターから実行するために必要です。 データをアップロードする方法の詳細については、[Data Lake Storage Gen1 アカウントへのファイルのアップロード](data-lake-store-get-started-portal.md#uploaddata)に関するセクションを参照してください。 アップロードするいくつかのサンプル データを探している場合は、 **Azure Data Lake Git リポジトリ** から [Ambulance Data](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData)フォルダーを取得できます。
 
 ## <a name="set-relevant-acls-on-the-sample-data"></a>サンプル データに関連 ACL を設定する
-アップロードしたサンプル データに HDInsight クラスターからアクセスできるようにするには、HDInsight クラスターと Data Lake Store との間に ID を確立するのに使用した Azure AD アプリケーションに、アクセスしようとしているファイルやフォルダーへのアクセスを持たせる必要があります。 このためには、次の手順を実行します。
+アップロードしたサンプル データに HDInsight クラスターからアクセスできるようにするには、HDInsight クラスターと Data Lake Storage Gen1 との間に ID を確立するのに使用した Azure AD アプリケーションに、アクセスしようとしているファイルやフォルダーへのアクセスを持たせる必要があります。 このためには、次の手順を実行します。
 
-1. HDInsight クラスターと Data Lake Store に関連付けられている Azure AD アプリケーションの名前を確認します。 名前を確認する方法の 1 つは、Resource Manager テンプレートを使って作成した HDInsight クラスター ブレードを開き、**[クラスター AAD ID]** タブをクリックし、**[Service Principal Display Name]** (サービス プリンシパル表示名) の値を探すことです。
-2. 次に、HDInsight クラスターからアクセスするファイルまたはフォルダーにおいて、この Azure AD アプリケーションにアクセス権を付与します。 Data Lake Store のファイルやフォルダーに正しい ACL を設定する方法については、[Data Lake Store に格納されているデータのセキュリティ保護](data-lake-store-secure-data.md#filepermissions)に関するページを参照してください。
+1. HDInsight クラスターと Data Lake Storage Gen1 アカウントに関連付けられている Azure AD アプリケーションの名前を確認します。 名前を確認する方法の 1 つは、Resource Manager テンプレートを使って作成した HDInsight クラスター ブレードを開き、**[クラスター AAD ID]** タブをクリックし、**[Service Principal Display Name]** (サービス プリンシパル表示名) の値を探すことです。
+2. 次に、HDInsight クラスターからアクセスするファイルまたはフォルダーにおいて、この Azure AD アプリケーションにアクセス権を付与します。 Data Lake Storage Gen1 のファイルやフォルダーに正しい ACL を設定する方法については、[Data Lake Storage Gen1 に格納されているデータのセキュリティ保護](data-lake-store-secure-data.md#filepermissions)に関するページを参照してください。
 
-## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-store"></a>Data Lake Store を使用する HDInsight クラスターでテスト ジョブを実行する
-HDInsight クラスターを構成した後は、クラスターでテスト ジョブを実行し、HDInsight クラスターが Data Lake Store にアクセス可能であるかどうかをテストできます。 これを行うには、前に Data Lake Store にアップロードしたサンプル データを使用してテーブルを作成するサンプル Hive ジョブを実行します。
+## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Data Lake Storage Gen1 を使用する HDInsight クラスターでテスト ジョブを実行する
+HDInsight クラスターを構成した後は、クラスターでテスト ジョブを実行し、HDInsight クラスターが Data Lake Storage Gen1 にアクセス可能であるかどうかをテストできます。 これを行うには、前に Data Lake Storage Gen1 アカウントにアップロードしたサンプル データを使用してテーブルを作成するサンプル Hive ジョブを実行します。
 
 このセクションでは、HDInsight Linux クラスターに SSH でアクセスし、サンプルの Hive クエリを実行します。 Windows クライアントを使用している場合は、[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
 
@@ -88,11 +88,11 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
    ```
    hive
    ```
-2. CLI を使用して次のステートメントを入力し、サンプル データを使用して Data Lake Store 内に **vehicles** という名前の新しいテーブルを作成します。
+2. CLI を使用して次のステートメントを入力し、サンプル データを使用して Data Lake Storage Gen1 内に **vehicles** という名前の新しいテーブルを作成します。
 
    ```
    DROP TABLE vehicles;
-   CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://<mydatalakestore>.azuredatalakestore.net:443/';
+   CREATE EXTERNAL TABLE vehicles (str string) LOCATION 'adl://<mydatalakestoragegen1>.azuredatalakestore.net:443/';
    SELECT * FROM vehicles LIMIT 10;
    ```
 
@@ -112,30 +112,30 @@ PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop �
    ```
 
 
-## <a name="access-data-lake-store-using-hdfs-commands"></a>HDFS コマンドを使用して Data Lake Store にアクセスする
-Data Lake Store を使用するように HDInsight クラスターを構成したら、HDFS シェル コマンドを使用してストアにアクセスできます。
+## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>HDFS コマンドを使用して Data Lake Storage Gen1 にアクセスする
+Data Lake Storage Gen1 を使用するように HDInsight クラスターを構成したら、HDFS シェル コマンドを使用してストアにアクセスできます。
 
 このセクションでは、HDInsight Linux クラスターに SSH でアクセスし、HDFS コマンドを実行します。 Windows クライアントを使用している場合は、[http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) からダウンロードできる **PuTTY** を使用することをお勧めします。
 
 PuTTY の使用については、「 [HDInsight の Linux ベースの Hadoop で Windows から SSH を使用する ](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)」をご覧ください。
 
-接続されたら、次の HDFS ファイル システム コマンドを使用して、Data Lake Store 内のファイルを一覧表示します。
+接続されたら、次の HDFS ファイルシステム コマンドを使用して、Data Lake Storage Gen1 アカウント内のファイルを一覧表示します。
 
 ```
-hdfs dfs -ls adl://<Data Lake Store account name>.azuredatalakestore.net:443/
+hdfs dfs -ls adl://<Data Lake Storage Gen1 account name>.azuredatalakestore.net:443/
 ```
 
-これにより、以前に Data Lake Store にアップロードしたファイルが一覧表示されます。
+これにより、以前に Data Lake Storage Gen1 にアップロードしたファイルが一覧表示されます。
 
 ```
 15/09/17 21:41:15 INFO web.CaboWebHdfsFileSystem: Replacing original urlConnectionFactory with org.apache.hadoop.hdfs.web.URLConnectionFactory@21a728d6
 Found 1 items
--rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestore.azuredatalakestore.net:443/mynewfolder
+-rwxrwxrwx   0 NotSupportYet NotSupportYet     671388 2015-09-16 22:16 adl://mydatalakestoragegen1.azuredatalakestore.net:443/mynewfolder
 ```
 
-`hdfs dfs -put` コマンドを使用して Data Lake Store にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
+`hdfs dfs -put` コマンドを使用して Data Lake Storage Gen1 にいくつかのファイルをアップロードし、`hdfs dfs -ls` を使用してファイルが正常にアップロードされたかどうかを確認することもできます。
 
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Storage BLOB から Data Lake Store へのデータのコピー](data-lake-store-copy-data-wasb-distcp.md)
-* [Azure HDInsight クラスターで Data Lake Store を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Azure Storage Blob から Data Lake Storage Gen1 へのデータのコピー](data-lake-store-copy-data-wasb-distcp.md)
+* [Azure HDInsight クラスターで Data Lake Storage Gen1 を使用する](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)

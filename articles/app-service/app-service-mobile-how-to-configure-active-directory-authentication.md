@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: 2530cb55cb054c02df5d55ccb86e959a061e2499
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 0c2ae7e4cf0b19ab9e1c276504892a2a8aaa8dfc
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32155298"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297385"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-login"></a>Azure Active Directory ログインを使用するよう App Service アプリを構成する
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -51,7 +51,7 @@ ms.locfileid: "32155298"
 7. **[応答 URL]** をクリックして、**[応答 URL]** を編集し、手順 1. のアプリケーション URL を貼り付け、プロトコルを http:// ではなく **https://** に変更して、URL の最後に */.auth/login/aad/callback* を追加します (例: `https://contoso.azurewebsites.net/.auth/login/aad/callback`)。 **[Save]** をクリックします。   
 8.  この時点で、アプリの**アプリケーション ID** をコピーします。 これは後で使うために保存しておきます。 App Service アプリの構成に必要になります。
 9. **[登録済みのアプリ]** ページを閉じます。 **[アプリの登録]** ページで、上部にある **[エンドポイント]** ボタンをクリックし、**[フェデレーション メタデータ ドキュメント]** の URL をコピーします。 
-10. 新しいブラウザー ウィンドウを開き、URL を貼り付けて移動し、XML ページを参照します。 ドキュメントの先頭の **EntityDescriptor** 要素内に、テナント固有の GUID ("テナント ID") が後に続く `https://sts.windows.net/` の形式の **entityID** 属性があります。 この値をコピーします。これは**発行者の URL** として機能します。 後で、これを使用するようにアプリケーションを構成します。
+10. 新しいブラウザー ウィンドウを開き、URL を貼り付けて移動し、XML ページを参照します。 ドキュメントの先頭は **EntityDescriptor** 要素です。 **entityID** 属性を見つけ、その値をコピーします。 これは**発行者の URL** として機能します。 後で、これを使用するようにアプリケーションを構成します。
 
 ### <a name="secrets"> </a>Azure Active Directory の情報を App Service アプリに追加する
 1. [Azure Portal] に戻って、App Service アプリに移動します。 **[認証/承認]** をクリックします。 [認証/承認] 機能が有効になっていない場合は、スイッチを **[オン]** に切り替えます。 **[Azure Active Directory]** をクリックし、[認証プロバイダー] でアプリを構成します。 (省略可能) App Service は既定では認証を行いますが、サイトのコンテンツと API へのアクセス承認については制限を設けていません。 アプリケーション コードでユーザーを承認する必要があります。 **[要求が認証されない場合に実行するアクション]** を、**[Azure Active Directory でのログイン]** に設定します。 このオプションでは、要求はすべて認証される必要があり、認証されていないすべての要求は、認証のために Azure Active Directory にリダイレクトされます。

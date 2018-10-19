@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: d4eb8f3e805d96a276851052b74cac90465d1185
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4c1696fc373975eb9857c40366829fbe6a535911
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42140551"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391880"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
@@ -79,7 +79,10 @@ ms.locfileid: "42140551"
 
     ![アクセス許可のチェック ボックス](./media/api-management-howto-aad/api-management-with-aad005.png)
 
+1. **[アクセス許可を付与する]** を選択してアプリケーションのアクセス許可に同意します。
+
     アプリケーションのアクセス許可と委任されたアクセス許可の詳細については、[Graph API へのアクセス][Accessing the Graph API]に関するページを参照してください。
+    
 1. 左側のウィンドウで、**[アプリケーション ID]** の値をコピーします。
 
     ![[アプリケーション ID] の値](./media/api-management-howto-aad/application-id.png)
@@ -98,6 +101,7 @@ ms.locfileid: "42140551"
     > このキーを書き留めておきます。 Azure AD の構成ウィンドウを閉じた後はキーを再表示できません。
     > 
     > 
+
 1. API Management アプリケーションに戻ります。 
 
     **[ID プロバイダーの追加]** ウィンドウで、**[クライアント シークレット]** ボックスにキーを貼り付けます。
@@ -106,6 +110,7 @@ ms.locfileid: "42140551"
     > キーの有効期限が切れる前に、**クライアント シークレット** キーを更新するようにしてください。 
     >  
     >
+
 1. **[ID プロバイダーの追加]** ウィンドウには、**[許可されているテナント]** テキスト ボックスもあります。 ここには、API Management サービス インスタンスの API へのアクセスを許可する Azure AD インスタンスのドメインを指定します。 複数のドメインを指定する場合は、改行文字、スペース、またはコンマで区切ります。
 
     **[許可されているテナント]** セクションには、複数のドメインを指定できます。 アプリケーションが登録されている元のドメインとは別のドメインからユーザーがサインインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。 アクセス許可を付与するために、全体管理者は次の操作を行う必要があります。

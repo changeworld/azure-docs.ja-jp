@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: ponatara
-ms.openlocfilehash: 3ef52030f694b0f9ccf2bd10545918a4fae9f2ee
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: c9a2f258ca952ca36000e1ca0630fbde31ba7ba0
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918307"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391319"
 ---
 # <a name="failover-in-site-recovery"></a>Site Recovery でのフェールオーバー
 この記事では、Site Recovery によって保護された仮想マシンと物理サーバーをフェールオーバーする方法について説明します。
@@ -31,14 +31,14 @@ ms.locfileid: "37918307"
 
 
 ## <a name="run-a-failover"></a>フェールオーバーの実行
-この手順では、[復旧計画](site-recovery-create-recovery-plans.md)のフェールオーバーを実行する方法について説明します。 別の方法として 1 台の仮想マシン (または物理サーバー) を対象に、**[レプリケートされたアイテム]** ページからフェールオーバーを実行することもできます。
+この手順では、[復旧計画](site-recovery-create-recovery-plans.md)のフェールオーバーを実行する方法について説明します。 別の方法として 1 台の仮想マシン (または物理サーバー) を対象に、**[レプリケートされたアイテム]** ページからフェールオーバーを実行することもできます ([こちら](vmware-azure-tutorial-failover-failback.md#run-a-failover-to-azure)を参照してください)。
 
 
 ![フェールオーバー](./media/site-recovery-failover/Failover.png)
 
 1. **[復旧計画]**  >  *recoveryplan_name* を選択します。 **[フェールオーバー]** をクリックします。
 2. フェールオーバーで復旧するポイント (**[復旧ポイント]**) を **[フェールオーバー]** 画面で選択します。 次のいずれかのオプションを使うことができます。
-    1.  **最新**(既定値): このオプションでは、Site Recovery サービスに送信されたすべてのデータを処理することからジョブを開始します。 データを処理すると、仮想マシンごとに復旧ポイントが作成されます。 この復旧ポイントは、フェールオーバー中に、仮想マシンによって使用されます。 このオプションは、フェールオーバー後に作成された仮想マシンが、フェールオーバーがトリガーされた時点で Site Recovery サービスにレプリケートされたすべてのデータを含むようになるので、最も低い RPO (目標復旧時点) を提供します。
+    1.  **最新**: このオプションでは、Site Recovery サービスに送信されたすべてのデータを処理することからジョブを開始します。 データを処理すると、仮想マシンごとに復旧ポイントが作成されます。 この復旧ポイントは、フェールオーバー中に、仮想マシンによって使用されます。 このオプションは、フェールオーバー後に作成された仮想マシンが、フェールオーバーがトリガーされた時点で Site Recovery サービスにレプリケートされたすべてのデータを含むようになるので、最も低い RPO (目標復旧時点) を提供します。
     1.  **Latest processed (最新の処理済み)**: このオプションは、復旧計画のすべての仮想マシンを、Site Recovery サービスによって既に処理された最新の復旧ポイントにフェールオーバーします。 仮想マシンのテスト フェールオーバーを行っているときは、最新の処理済み復旧ポイントのタイムスタンプも表示されます。 復旧計画のフェールオーバーを行っている場合は、個別の仮想マシンに移動し、**[最新の復旧ポイント]** タイルを見てこの情報を取得できます。 未処理データの処理に時間は費やされないので、このオプションは低 RTO (目標復旧時間) のフェールオーバー オプションを提供します。
     1.  **Latest app-consistent (最新のアプリ整合性)**: このオプションは、復旧計画のすべての仮想マシンを、Site Recovery サービスによって既に処理された最新のアプリケーション整合性復旧ポイントにフェールオーバーします。 仮想マシンのテスト フェールオーバーを行っているときは、最新のアプリ整合性復旧ポイントのタイムスタンプも表示されます。 復旧計画のフェールオーバーを行っている場合は、個別の仮想マシンに移動し、**[最新の復旧ポイント]** タイルを見てこの情報を取得できます。
     1.  **Latest multi-VM processed (最新のマルチ VM 処理済み)**: このオプションは、マルチ VM 整合性がオンになっている 1 つ以上の仮想マシンを含む復旧計画でのみ使用できます。 レプリケーション グループに含まれる仮想マシンは、最新の共通マルチ VM 整合性復旧ポイントにフェールオーバーされます。 その他の仮想マシンは、最新の処理済み復旧ポイントにフェールオーバーされます。  
@@ -104,18 +104,19 @@ Site Recovery を使用して保護されている仮想マシン/物理サー�
 
 その他すべてのケースでは、この中間ステップは不要であり、フェールオーバーに要する時間は短くなります。
 
-
-
-
-
 ## <a name="using-scripts-in-failover"></a>フェールオーバーでのスクリプト使用
 フェールオーバーの実行中に特定の操作を自動化したい場合があります。 そのような場合は、[復旧計画](site-recovery-create-recovery-plans.md)の中でスクリプトまたは [Azure Automation Runbook](site-recovery-runbook-automation.md) を使用してください。
 
 ## <a name="post-failover-considerations"></a>フェールオーバー後の考慮事項
 フェールオーバー後には、次の推奨事項を考慮することができます。
 ### <a name="retaining-drive-letter-after-failover"></a>フェールオーバー後のドライブ文字の維持
-フェールオーバー後に仮想マシンのドライブ文字を維持するには、仮想マシンの **SAN ポリシー**を **OnlineAll** に設定します。 詳細については、[こちら](https://support.microsoft.com/en-us/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure)を参照してください。
+フェールオーバー後に仮想マシンのドライブ文字を維持するには、仮想マシンの **SAN ポリシー**を **OnlineAll** に設定します。 詳細については、[こちら](https://support.microsoft.com/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure)を参照してください。
 
+## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする
+
+フェールオーバー後に RDP/SSH を使用して Azure VM に接続する場合は、[こちら](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)の表にまとめられている要件に従います。
+
+フェールオーバー後の接続の問題をトラブルシューティングするには、[ここ](site-recovery-failover-to-azure-troubleshoot.md)で説明されている手順に従ってください。
 
 
 ## <a name="next-steps"></a>次の手順

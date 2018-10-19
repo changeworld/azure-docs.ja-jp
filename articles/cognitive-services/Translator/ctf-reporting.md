@@ -1,20 +1,21 @@
 ---
-title: Microsoft Translator コラボレーション翻訳フレームワーク (CTF) レポート
+title: コラボレーション翻訳フレームワーク (CTF) レポート - Translator Text
+titlesuffix: Azure Cognitive Services
 description: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: cefc630a82a56703ba4942bcad18f6e0a38b1ee5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9b3ac6e6d10fb0e70549cadfd7bf65220deb8f33
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374368"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126923"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
 
@@ -82,7 +83,7 @@ UserTranslationCount[]GetUserTranslationCounts(
 | minRating| **省略可能**: 翻訳されたテキストの最低限の品質評価を表す整数値。 有効な値は -10 から 10 です。 既定値は 1 です。|
 | maxRating| **省略可能**: 翻訳されたテキストの最高の品質評価を表す整数値。 有効な値は -10 から 10 です。 既定値は 1 です。|
 | user | **省略可能**: 送信の発信元に基づいた結果のフィルタリングに使用する文字列。 |
-| カテゴリ| **省略可能**: 翻訳のカテゴリまたは領域を含む文字列。 このパラメーターは、既定のオプション general のみをサポートしています。|
+| category| **省略可能**: 翻訳のカテゴリまたは領域を含む文字列。 このパラメーターは、既定のオプション general のみをサポートしています。|
 | minDateUtc| **省略可能**: 翻訳の取得の開始日の日付。 日付は UTC 形式でなければなりません。 |
 | maxDateUtc| **省略可能**: 翻訳の取得の終了日の日付。 日付は UTC 形式でなければなりません。 |
 | skip| **省略可能**: ページでスキップする結果の数。 たとえば、結果の最初の 20 行をスキップして、21 行目の結果レコードから表示する場合、このパラメーターに 20 を指定します。 パラメーターの既定値は 0 です。|
@@ -106,7 +107,7 @@ UserTranslationCount[]GetUserTranslationCounts(
 
 **Exceptions**
 
-| 例外 | メッセージ | 条件 |
+| 例外 | Message | 条件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | パラメーター '**maxDateUtc**' は、'**minDateUtc**' 以上にする必要があります。| パラメーター **maxDateUtc** の値は、パラメーター **minDateUtc** の値より小さいです。|
 | TranslateApiException | IP がクォータを超えています。| <ul><li>1 分あたりの要求の数の上限に達しました。</li><li>要求のサイズは 10000 文字に制限されたままです。</li><li>時間単位および日単位のクォータは、Microsoft Translator API が許容する文字数を制限します。</li></ul>|
@@ -116,7 +117,7 @@ UserTranslationCount[]GetUserTranslationCounts(
 > クォータは、サービスのすべてのユーザー間での公平性を確保するように調整されます。
 
 **GitHib のコード例の表示**
-* [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
+* [C# を選択した場合](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-php.md)
 
 ## <a name="getusertranslations-method"></a>GetUserTranslations メソッド
@@ -153,7 +154,7 @@ UserTranslation[] GetUserTranslations (
 | minRating| **省略可能**: 翻訳されたテキストの最低限の品質評価を表す整数値。 有効な値は -10 から 10 です。 既定値は 1 です。|
 | maxRating| **省略可能**: 翻訳されたテキストの最高の品質評価を表す整数値。 有効な値は -10 から 10 です。 既定値は 1 です。|
 | user| **省略可能。送信の発信元に基づいた結果のフィルタリングに使用する文字列。|
-| カテゴリ| **省略可能**: 翻訳のカテゴリまたは領域を含む文字列。 このパラメーターは、既定のオプション general のみをサポートしています。| 
+| category| **省略可能**: 翻訳のカテゴリまたは領域を含む文字列。 このパラメーターは、既定のオプション general のみをサポートしています。| 
 | minDateUtc| **省略可能**: 翻訳の取得の開始日の日付。 日付は UTC 形式でなければなりません。| 
 | maxDateUtc| **省略可能**: 翻訳の取得の終了日の日付。 日付は UTC 形式でなければなりません。|
 | skip| **省略可能**: ページでスキップする結果の数。 たとえば、結果の最初の 20 行をスキップして、21 行目の結果レコードから表示する場合、このパラメーターに 20 を指定します。 パラメーターの既定値は 0 です。|
@@ -179,7 +180,7 @@ UserTranslation[] GetUserTranslations (
 
 **Exceptions**
 
-| 例外 | メッセージ | 条件 |
+| 例外 | Message | 条件 |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | パラメーター '**maxDateUtc**' は、'**minDateUtc**' 以上にする必要があります。| パラメーター **maxDateUtc** の値は、パラメーター **minDateUtc** の値より小さいです。|
 | TranslateApiException | IP がクォータを超えています。| <ul><li>1 分あたりの要求の数の上限に達しました。</li><li>要求のサイズは 10000 文字に制限されたままです。</li><li>時間単位および日単位のクォータは、Microsoft Translator API が許容する文字数を制限します。</li></ul>|
@@ -189,7 +190,7 @@ UserTranslation[] GetUserTranslations (
 > クォータは、サービスのすべてのユーザー間での公平性を確保するように調整されます。
 
 **GitHib のコード例の表示**
-* [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
+* [C# を選択した場合](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)
 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
-ms.openlocfilehash: f461a9a7cc900ce5f8fdba7b255417b1790d3f4d
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: ae8739a65efbe7662a8f72e961d772fecaf4b527
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42141992"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303697"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
 
@@ -101,10 +101,10 @@ git push azure master
 
 アプリに移動して、コンテンツがデプロイされていることを確認します。
 
-## <a name="deploy-from-local-git-with-vsts-builds"></a>VSTS ビルドを使用してローカル Git からデプロイする
+## <a name="deploy-from-local-git-with-azure-devops-services-builds"></a>Azure DevOps Services ビルドを使用してローカル Git からデプロイする
 
 > [!NOTE]
-> App Service で必要なビルドを作成して VSTS アカウントで定義をリリースするには、Azure アカウントが Azure サブスクリプションの**所有者**ロールを持っている必要があります。
+> App Service で必要な Azure Pipelines を Azure DevOps Services 組織に作成するには、Azure アカウントが Azure サブスクリプションの**所有者**ロールを持っている必要があります。
 >
 
 Kudu ビルド サーバーを使用したアプリへの ローカルGit のデプロイを有効にするには、[Azure Portal](https://portal.azure.com) でアプリに移動します。
@@ -113,14 +113,14 @@ Kudu ビルド サーバーを使用したアプリへの ローカルGit のデ
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-**[VSTS で継続的デリバリー]** > **[続行]** をクリックします。
+**[Azure DevOps Services Continuous Delivery]\(Azure DevOps Services 継続的デリバリー\)** > **[継続]** をクリックします。
 
 ![](media/app-service-deploy-local-git/vsts-build-server.png)
 
-**[構成]** ページで、新しい VSTS アカウントを構成するか、既存のアカウントを指定します。 完了したら、**[続行]** をクリックします。
+**[構成]** ページで、新しい Azure DevOps Services 組織を構成するか、既存の組織を指定します。 完了したら、**[続行]** をクリックします。
 
 > [!NOTE]
-> 表示されない既存の VSTS アカウントを使用する場合は、[VSTS アカウントを Azure サブスクリプションにリンク](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)する必要があります。
+> 一覧にない既存の Azure DevOps Services 組織を使用する場合、[Azure DevOps Services 組織を Azure サブスクリプションにリンク](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App)する必要があります。
 
 **[テスト]** ページで、ロード テストを有効にするかどうかを選択し、**[続行]** をクリックします。
 
@@ -128,7 +128,7 @@ App Service プランの[価格レベル](https://azure.microsoft.com/pricing/de
 
 **[概要]** ページで、選択内容を確認し、**[完了]** をクリックします。
 
-VSTS アカウントの準備ができるまでに数分かかります。 準備ができたら、デプロイ センターで Git リポジトリの URL をコピーします。
+Azure DevOps Services 組織の準備が完了するまで数分かかります。 準備ができたら、デプロイ センターで Git リポジトリの URL をコピーします。
 
 ![](media/app-service-deploy-local-git/vsts-repo-ready.png)
 
@@ -138,7 +138,7 @@ VSTS アカウントの準備ができるまでに数分かかります。 準�
 git remote add vsts <url>
 ```
 
-アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 Git Credential Manager のプロンプトが表示されたら、visualstudio.com ユーザーでサインインします。 追加の認証方法については、[VSTS 認証の概要](/vsts/git/auth-overview?view=vsts)に関する記事を参照してください。
+アプリをデプロイするために、次のコマンドで Azure リモートにプッシュします。 Git Credential Manager のプロンプトが表示されたら、visualstudio.com ユーザーでサインインします。 追加の認証方法については、[Azure DevOps Services 認証の概要](/vsts/git/auth-overview?view=vsts)に関する記事を参照してください。
 
 ```bash
 git push vsts master

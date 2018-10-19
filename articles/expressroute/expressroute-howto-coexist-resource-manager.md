@@ -1,28 +1,21 @@
 ---
-title: '共存する ExpressRoute とサイト間 VPN の接続の構成: Resource Manager: Azure | Microsoft Docs'
-description: 接続この記事では、リソース マネージャーのデプロイ モデルにおいて、共存できる ExpressRoute 接続とサイト間 VPN 接続を構成する手順について説明します。
-documentationcenter: na
+title: '共存する ExpressRoute とサイト間 VPN の接続の構成: PowerShell: Azure | Microsoft Docs'
+description: この記事では、Resource Manager モデルにおいて、共存できる ExpressRoute 接続とサイト間 VPN 接続を PowerShell を使用して構成する手順について説明します
 services: expressroute
 author: charwen
 manager: rossort
-editor: ''
-tags: azure-resource-manager
-ms.assetid: c7717b14-3da3-4a6d-b78e-a5020766bc2c
 ms.service: expressroute
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/17/2018
-ms.author: charwen,cherylmc,rambala
-ms.openlocfilehash: 0e69a85f320a0a8d77bd07fc0dedb77eb99efb36
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.topic: conceptual
+ms.date: 09/07/2018
+ms.author: charwen
+ms.openlocfilehash: c267e5002fbd603e4bb749550c19e8d022ce4d54
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41918675"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44162344"
 ---
-# <a name="configure-expressroute-and-site-to-site-coexisting-connections"></a>ExpressRoute 接続とサイト間接続の共存の構成
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>PowerShell を使用して ExpressRoute およびサイト間の共存接続を構成する
 > [!div class="op_single_selector"]
 > * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - クラシック](expressroute-howto-coexist-classic.md)
@@ -34,7 +27,7 @@ ms.locfileid: "41918675"
 * ExpressRoute のセキュリティで保護されたフェールオーバー パスとしてサイト間 VPN を構成することができます。 
 * また、サイト間 VPN を使用して、ExpressRoute 経由で接続されていないサイトに接続することもできます。 
 
-この記事では、両方のシナリオを構成する手順について説明します。 この記事は、Resource Manager デプロイ モデルに適用されます。また、ここでは PowerShell が使用されます。 
+この記事では、両方のシナリオを構成する手順について説明します。 この記事は、Resource Manager デプロイ モデルに適用されます。また、ここでは PowerShell が使用されます。 ドキュメントはまだ利用できませんが、Azure portal を使用してこれらのシナリオを構成することもできます。
 
 >[!NOTE]
 >ExpressRoute 回線上でサイト間 VPN を作成する場合は、[こちらの記事](site-to-site-vpn-over-microsoft-peering.md)をご覧ください。

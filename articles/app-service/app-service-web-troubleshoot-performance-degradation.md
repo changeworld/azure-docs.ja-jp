@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 0f053c0293488f19adcd058f1ba8304d8d238738
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 3ec67488b238118067e771baf3dd5124308a84cf
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128308"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44296195"
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Azure App Service での Web アプリのパフォーマンス低下に関する問題のトラブルシューティング
 この記事は、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
@@ -88,7 +88,7 @@ Web アプリを **Standard** 価格レベルで実行している場合、Web A
 
 App Service Web アプリにはそれぞれ拡張可能な管理エンドポイントが用意されており、サイト拡張機能としてデプロイされている強力なツール一式を使用することができます。 次のような拡張機能があります。 
 
-- [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx) のようなソース コード エディター。 
+- [Azure DevOps](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx) などのソース コード エディター。 
 - Web アプリに接続されている MySQL データベースのような、接続されたリソース用の管理ツール。
 
 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) というパフォーマンス監視を目的としたサイト拡張機能も使用できます。 Application Insights を使用するには、SDK でコードをリビルドします。 追加データへのアクセスを提供する拡張機能をインストールすることもできます。 SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。 詳細については、「[Web アプリケーションのパフォーマンスを監視する](../application-insights/app-insights-web-monitor-performance.md)」を参照してください。
@@ -158,7 +158,7 @@ Kudu には次のような機能があります。
 
 Kudu にはもう 1 つ便利な機能があり、アプリケーションからファーストチャンス例外がスローされた場合に、Kudu と SysInternals ツール Procdump を使用してメモリ ダンプを作成することができます。 このメモリ ダンプはプロセスのスナップショットです。Web アプリに関して、通常より複雑な問題をトラブルシューティングできる場合も少なくありません。
 
-Kudu で利用できる機能の詳細については、 [知っておくべき Azure Websites Team Services ツール](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)に関するページを参照してください。
+Kudu で利用できる機能の詳細については、[知っておくべき Azure DevOps ツール](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/)に関するページを参照してください。
 
 <a name="mitigate" />
 

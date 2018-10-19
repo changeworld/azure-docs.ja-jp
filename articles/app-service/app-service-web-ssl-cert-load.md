@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: cephalin
-ms.openlocfilehash: 6800bf766deb2044d400f92dbe370fa15bdd5f00
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 87c9cd5955dda1a379733e5ad48d58f8361f0e6b
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
-ms.locfileid: "26047603"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44051478"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>Azure App Service のアプリケーション コードに SSL 証明書を使用する
 
@@ -51,7 +51,7 @@ App Service にアップロードまたはインポートされた証明書を�
 
 左側のナビゲーションで **[アプリケーション設定]** をクリックします。
 
-`WEBSITE_LOAD_CERTIFICATES` という名前を付けてアプリケーション設定を追加し、その値に証明書のサムプリントを設定します。 複数の証明書にアクセスできるようにするには、サムプリントの値をコンマで区切ります。 すべての証明書にアクセスできるようにするには、値を `*` に設定します。 
+`WEBSITE_LOAD_CERTIFICATES` という名前を付けてアプリケーション設定を追加し、その値に証明書のサムプリントを設定します。 複数の証明書にアクセスできるようにするには、サムプリントの値をコンマで区切ります。 すべての証明書にアクセスできるようにするには、値を `*` に設定します。 これにより、証明書を`CurrentUser\My`ストア内に配置していることにご留意ください。
 
 ![アプリケーション設定の構成](./media/app-service-web-ssl-cert-load/configure-app-setting.png)
 

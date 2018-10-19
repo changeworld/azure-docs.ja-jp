@@ -34,16 +34,43 @@
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
 # [クラウド パートナー ポータル](./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
-## 仮想マシン
-### [デベロッパー センター アカウントの登録](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
-### [仮想マシンのプランの作成](./cloud-partner-portal-orig/cloud-partner-portal-publish-virtual-machine.md)
-### [プライベート SKU](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
-### [SEO ガイダンス](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
-### [プランの公開](./cloud-partner-portal-orig/cloud-partner-portal-make-offer-live-on-Azure-Marketplace.md)
-### [既存のプランの更新](./cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer.md)
-### [プランの削除](./cloud-partner-portal-orig/cloud-partner-portal-delete-an-offer.md)
-### [プランの移行](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
-### [プランの発行の自動化](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
+
+<!-- remove comment markers after toc gets published with iot edge section  -->
+<!-- 
+## [Virtual machine offer](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
+### [Prerequisites](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
+### [Create VM offer](./cloud-partner-portal/virtual-machine/cpp-create-offer.md)
+#### [Offer Settings tab](./cloud-partner-portal/virtual-machine/cpp-offer-settings-tab.md)
+#### [SKUs tab](./cloud-partner-portal/virtual-machine/cpp-skus-tab.md)
+#### [Test Drive tab](./cloud-partner-portal/virtual-machine/cpp-test-drive-tab.md)
+#### [Marketplace tab](./cloud-partner-portal/virtual-machine/cpp-marketplace-tab.md)
+#### [Support tab](./cloud-partner-portal/virtual-machine/cpp-support-tab.md)
+### [Create VM technical assets](./cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md)
+#### [Create VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)
+#### [Common VHD creation issues](./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
+#### [Connect to VM](./cloud-partner-portal/virtual-machine/cpp-connect-vm.md)
+#### [Configure VM](./cloud-partner-portal/virtual-machine/cpp-configure-vm.md)
+#### [Deploy VM from VHDs](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md)
+##### [VHD Deployment Template (JSON)](./cpp-deploy-json-template.md)
+#### [Certify VM image](./cloud-partner-portal/virtual-machine/cpp-certify-vm.md)
+#### [Get SAS URI](./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)
+#### [Common SAS URL issues](./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md)
+### [Publish VM offer](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)
+### [Update existing offer](./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md) -->
+
+<!-- Following legacy VM section was replaced.  -->
+<!-- 
+## Virtual machines
+### [Dev center account registration](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
+### [Author virtual machine offer](./cloud-partner-portal-orig/cloud-partner-portal-publish-virtual-machine.md)
+### [Private SKUs](./cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus.md)
+### [SEO guidance](./cloud-partner-portal-orig/cloud-partner-portal-seo-guidance.md)
+### [Make offer live](./cloud-partner-portal-orig/cloud-partner-portal-make-offer-live-on-Azure-Marketplace.md)
+### [Update existing offer](./cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer.md)
+### [Delete offer](./cloud-partner-portal-orig/cloud-partner-portal-delete-an-offer.md)
+### [Migrate offers](./cloud-partner-portal-orig/cloud-partner-portal-how-to-migrate-to-the-new-cloud-partner-portal.md)
+### [Automate offer publishing](./cloud-partner-portal-orig/cloud-partner-portal-automate-offer-publishing.md)
+-->
 
 ## Azure アプリケーション
 ### [デベロッパー センター アカウントの登録](./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md)
@@ -63,10 +90,24 @@
 
 ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md)
 
-## IoT Edge のモジュール
-### [IoT Edge モジュール プランの作成](./cloud-partner-portal-orig/cloud-partner-portal-create-iot-edge-module-offer.md)
-### [IoT Edge モジュールの認定](./cloud-partner-portal-orig/cloud-partner-portal-iot-edge-module-certification-process.md)
-### [IoT Edge モジュールの FAQ](./cloud-partner-portal-orig/cloud-partner-portal-iot-edge-module-faq.md)
+## [IoT Edge モジュール プラン](./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md)
+### [前提条件](./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md)
+### [IoT Edge モジュール プランの作成](./cloud-partner-portal/iot-edge-module/cpp-create-offer.md)
+#### [[プランの設定] タブ](./cloud-partner-portal/iot-edge-module/cpp-offer-settings-tab.md)
+#### [[SKU] タブ](./cloud-partner-portal/iot-edge-module/cpp-skus-tab.md)
+#### [[Marketplace] タブ](./cloud-partner-portal/iot-edge-module/cpp-marketplace-tab.md)
+#### [[サポート] タブ](./cloud-partner-portal/iot-edge-module/cpp-support-tab.md)
+### [IoT Edge モジュールの技術アセットの作成](./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md)
+### [IoT Edge モジュール プランの公開](./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md)
+### [既存のプランの更新](./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md)
+
+<!-- Following legacy IoT section was replaced.  -->
+<!-- 
+## IoT Edge modules
+### [Create an IoT Edge module offer](./cloud-partner-portal-orig/cloud-partner-portal-create-iot-edge-module-offer.md)
+### [IoT Edge module certification](./cloud-partner-portal-orig/cloud-partner-portal-iot-edge-module-certification-process.md)
+### [IoT Edge module FAQ](./cloud-partner-portal-orig/cloud-partner-portal-iot-edge-module-faq.md)
+-->
 
 ## リードの管理
 ### [潜在顧客の構成](./cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads.md)

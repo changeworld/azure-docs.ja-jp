@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 58c5826240b7c49ba29c0d8e86a2896e3ce2f7f7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6a618efc6860371883bff7ebb953880293ad3120
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838400"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44303883"
 ---
 # <a name="project-lead-tasks"></a>プロジェクト リーダーのタスク
 
@@ -31,7 +31,7 @@ ms.locfileid: "34838400"
 
 現在、このトピックでは、プロジェクト リーダーの、このワークフローのタスク 1、2、6 について説明します。
 
->[AZURE.NOTE] ここでは、Visual Studio Team Services (VSTS) を使用してプロジェクトの TDSP チーム環境を設定するために必要な手順の概要を説明します。 VSTS を使用してこれらのタスクを達成する方法を示しているのは、Microsoft がこの方法で TDSP を実装しているためです。 グループで別のコード ホスティング プラットフォームを使用している場合も、一般にチーム リーダーが実行する必要があるタスクは変わりません。 ただし、これらのタスクを実行する方法が異なります。
+>[AZURE.NOTE] 以下の方法で Azure DevOps を使用してプロジェクトの TDSP チーム環境を設定するために必要な手順の概要について説明します。 Azure DevOps でこれらのタスクを達成する方法を指定するのは、それが Microsoft で TDSP を実装する方法であるためです。 グループで別のコード ホスティング プラットフォームを使用している場合も、一般にチーム リーダーが実行する必要があるタスクは変わりません。 ただし、これらのタスクを実行する方法が異なります。
 
 
 ## <a name="repositories-and-directories"></a>リポジトリとディレクトリ
@@ -50,27 +50,27 @@ ms.locfileid: "34838400"
 
 まとめると、チーム リーダーのタスクを開始する前に、次の要件を満たす必要があります。 
 
-- グループ マネージャーによって、**グループの VSTS サーバー** (または他のコード ホスティング プラットフォームのグループ アカウント) が設定されている。
+- **グループの Azure DevOps Services** (または、その他の一部のコード ホスティング プラットフォームではグループ アカウント) がグループ マネージャーによって設定されている。
 - 使用する予定のコード ホスティング プラットフォームで、チーム リーダーによって、グループ アカウントに **TeamProjectTemplate リポジトリ** (R3) が設定されている。
 - グループ アカウントにチームのリポジトリを作成することが、チーム リーダーによって**承認**されている。
 - マシンに Git をインストールする必要があります。 データ サイエンス仮想マシン (DSVM) を使用している場合は、Git がプレインストールされているので、インストールは不要です。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。  
 - **Windows DSVM** を使用している場合は、マシンに [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) がインストールされている必要があります。 README.md ファイルで、下へスクロールして「**Download and Install**」(ダウンロードとインストール) セクションを表示し、「*latest installer*」(最新のインストーラー) をクリックします。 これにより、最新のインストーラーのページに移動します。 このページから .exe インストーラーをダウンロードして実行します。 
-- **Linux DSVM** を使用している場合は、DSVM で SSH 公開キーを作成し、グループの VSTS サーバーに追加します。 SSH の詳細については、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
+- **Linux DSVM** を使用している場合は、DSVM で SSH 公開キーを作成し、それをグループの Azure DevOps Services に追加します。 SSH の詳細については、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
 
 
 ## <a name="1-create-a-project-repository-r5"></a>1.プロジェクト リポジトリ (R5) を作成します。
 
-- *https://\<VSTS サーバー名\>. visualstudio.com* にあるグループ VSTS サーバーにログインします。 
-- **[最近使ったプロジェクトとチーム]** にある、**[参照]** をクリックします。 ポップアップ表示されるウィンドウに、VSTS サーバー上のすべてのチーム プロジェクトが一覧表示されます。 
+- グループの Azure DevOps Services (*https://\<Azure DevOps Services 名\>.visualstudio.com*) にログインします。 
+- **[最近使ったプロジェクトとチーム]** にある、**[参照]** をクリックします。 ポップアップ表示されるウィンドウに、Azure DevOps Services 上のすべてのプロジェクトが一覧表示されます。 
 
     ![2](./media/project-lead-tasks/project-leads-2-create-project-repo.png)
 
-- プロジェクト リポジトリを作成するチーム プロジェクト名をクリックします。 この例では、**[MyTeam]** をクリックします。 
-- **[移動]** をクリックすると、チーム プロジェクト **MyTeam** のホーム ページに移動します。
+- プロジェクト リポジトリを作成するプロジェクト名をクリックします。 この例では、**[MyTeam]** をクリックします。 
+- 次に、**[移動]** をクリックして **MyTeam** プロジェクトのホーム ページに移動します。
 
     ![3](./media/project-lead-tasks/project-leads-3-create-project-repo-2.png)
 
-- **[コードで共同作業]** をクリックすると、チーム プロジェクトの Git のホーム ページに転送されます。  
+- **[コードで共同作業]** をクリックして、プロジェクトの Git ホーム ページに移動します。  
 
     ![4](./media/project-lead-tasks/project-leads-4-create-project-repo-3.png)
 
@@ -87,33 +87,33 @@ ms.locfileid: "34838400"
 
 ## <a name="2-seed-the-dsproject1-project-repository"></a>2.DSProject1 プロジェクト リポジトリをシードします。
 
-ここで、タスクは、チーム プロジェクト テンプレート リポジトリ (R3) から **DSProject1** プロジェクト リポジトリ (R5) をシード処理することです。 このシード処理の手順では、ローカル DSVM 上のディレクトリ D3 および D5 を中間ステージング サイトとして使用します。 要約すると、シード処理のパスは R3 -> D3 -> D5 -> R5 です。
+ここでのタスクは、プロジェクト テンプレート リポジトリ (R3) から **DSProject1** プロジェクト リポジトリ (R5) をシード処理することです。 このシード処理の手順では、ローカル DSVM 上のディレクトリ D3 および D5 を中間ステージング サイトとして使用します。 要約すると、シード処理のパスは R3 -> D3 -> D5 -> R5 です。
 
 プロジェクトの特定のニーズに合わせて **DSProject1** リポジトリをカスタマイズする必要がある場合は、以下の手順の最後から 2 番目の手順でカスタマイズします。 **DSProject1** プロジェクトのリポジトリのコンテンツをシードに使用する手順の概要を、ここに示します。 各手順は、シード処理の手順のサブセクションに対応しています。
 
-- ローカル ディレクトリに、チームのプロジェクト テンプレート リポジトリを複製します: チーム R3 を ローカル D3 に複製。
+- プロジェクト テンプレート リポジトリをローカル ディレクトリに複製します: チーム R3 がローカル D3 に複製されます。
 - ローカル ディレクトリ に、DSProject1 リポジトリを複製します: チーム R5 を ローカル D5 に複製。
-- 複製されたチーム プロジェクト テンプレートのコンテンツを DSProject1 リポジトリのローカル複製にコピーします: D3 コンテンツを D5 にコピー。
+- 複製されたプロジェクト テンプレートの内容を DSProject1 リポジトリのローカル複製にコピーします: D3 の内容が D5 にコピーされます。
 - (省略可能) ローカル D5 のカスタマイズ
 - ローカル DSProject1 のコンテンツをチーム リポジトリにプッシュします: D5 のコンテンツをチーム R5 に追加します。
 
 
-### <a name="clone-your-team-project-template-repository-r3-to-a-directory-d3-on-your-local-machine"></a>チーム プロジェクト テンプレート リポジトリ (R3) を、ローカル コンピューター上のディレクトリ (D3) に複製します。
+### <a name="clone-your-project-template-repository-r3-to-a-directory-d3-on-your-local-machine"></a>プロジェクト テンプレート リポジトリ (R3) をローカル コンピューター上のディレクトリ (D3) に複製します。
 
 ローカル コンピューターにディレクトリを作成します。
 
 - Windows の場合、*C:\GitRepos\MyTeamCommon* です 
 - Linux の場合、*$home/GitRepos/MyTeamCommon* です
 
-そのディレクトリを変更します。 次に、次のコマンドを実行して、チーム プロジェクト テンプレート リポジトリをローカル コンピューターに複製します。 
+そのディレクトリを変更します。 次に、次のコマンドを実行して、プロジェクト テンプレート リポジトリをローカル コンピューターに複製します。 
 
 **Windows**
             
     git clone <the HTTPS URL of the TeamProjectTemplate repository>
     
-VSTS をコード ホスト プラットフォームとして使用している場合、*チーム プロジェクトのテンプレート リポジトリの HTTPS URL* は、通常、次のようになります。
+コード ホスティング プラットフォームとして Azure DevOps を使用している場合は通常、*プロジェクト テンプレート リポジトリの HTTPS URL* は次のとおりです。
 
- ***https://\<VSTS サーバー名\>.visualstudio.com/\<、チーム プロジェクト名\>/_git/\<、チーム プロジェクトのテンプレートのリポジトリ名\>***。 
+ ***https://\<Azure DevOps Services 名\>.visualstudio.com/\<プロジェクト名\>/_git/\<プロジェクト テンプレート リポジトリ名\>***。 
 
 この例では、
 
@@ -127,9 +127,9 @@ VSTS をコード ホスト プラットフォームとして使用している�
         
 ![8](./media/project-lead-tasks/project-leads-8-clone-team-project-template-linux.png)
 
-VSTS をコード ホスト プラットフォームとして使用している場合は、*チーム プロジェクトのテンプレート リポジトリの SSH URL* は、通常、以下のようになります。
+コード ホスティング プラットフォームとして Azure DevOps を使用している場合は通常、*プロジェクト テンプレート リポジトリの SSH URL* は次のとおりです。
 
-***ssh://\<VSTS サーバー名\>@\<VSTS サーバー名\>.visualstudio.com:22/\<、チーム プロジェクト名 >/_git/\<チーム プロジェクトのテンプレート リポジトリ名前\>です。*** 
+***ssh://\<Azure DevOps Services 名\>@\<Azure DevOps Services 名\>.visualstudio.com:22/\<プロジェクト名>/_git/\<プロジェクト テンプレート リポジトリ名\>。*** 
 
 この例では、
 
@@ -145,7 +145,7 @@ VSTS をコード ホスト プラットフォームとして使用している�
 
 ![9](./media/project-lead-tasks/project-leads-9-clone-project-repository.png)
 
-VSTS を コード ホスト プラットフォームとして使用する場合は、_プロジェクト リポジトリの HTTPS URL_ は、通常、***https://\<VSTS サーバー名\>.visualstudio.com/\<チームプロジェクト名>/_git/<プロジェクト リポジトリ名\>*** です。 この例では、***https://mysamplegroup.visualstudio.com/MyTeam/_git/DSProject1*** です。
+コード ホスティング プラットフォームとして Azure DevOps を使用している場合は通常、_プロジェクト リポジトリの HTTPS URL_ は ***https://\<Azure DevOps Services 名\>.visualstudio.com/\<プロジェクト名>/_git/<プロジェクト リポジトリ名\>*** です。 この例では、***https://mysamplegroup.visualstudio.com/MyTeam/_git/DSProject1*** です。
 
 **Linux**
 
@@ -153,7 +153,7 @@ VSTS を コード ホスト プラットフォームとして使用する場合
 
 ![10](./media/project-lead-tasks/project-leads-10-clone-project-repository-linux.png)
 
-VSTS を コード ホスト プラットフォームとして使用する場合は、_プロジェクト リポジトリの SSH URL_ は、通常、_ssh://<VSTS サーバー名\>@<VSTS サーバー名\>.visualstudio.com:22/<Your Team Project Name>/\_git/<プロジェクト リポジトリ名\>です。 この例では、***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1*** です。
+コード ホスティング プラットフォームとして Azure DevOps を使用している場合は通常、_プロジェクト リポジトリの SSH URL_ は _ssh://<Azure DevOps Services 名\>@<Azure DevOps Services 名\>.visualstudio.com:22/<Your Project Name>/\_git/<プロジェクト リポジトリ名\> です。 この例では、***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1*** です。
 
 ### <a name="copy-contents-of-d3-to-d5"></a>D5 に D3 のコンテンツをコピーします。 
 
@@ -184,11 +184,11 @@ VSTS を コード ホスト プラットフォームとして使用する場合
 
 ### <a name="customize-d5-if-you-need-to-optional"></a>必要がある場合は、D5 をカスタマイズします (省略可能)。
 
-プロジェクトで、チーム プロジェクト テンプレートから取得された以外の、特定のディレクトリまたはドキュメントが必要な場合 (前の手順で、D5 ディレクトリにコピーされたもの) は、ここで D5 のコンテンツをカスタマイズできます。 
+プロジェクトに、プロジェクト テンプレートから取得した (前の手順で D5 ディレクトリにコピーされた) もの以外の特定のディレクトリまたはドキュメントが必要な場合は、ここで D5 の内容をカスタマイズできます。 
 
-### <a name="add-contents-of-dsproject1-in-d5-to-r5-on-your-group-vsts-server"></a>グループ VSTS サーバー上の R5 に D5 のDSProject1 のコンテンツを追加します。
+### <a name="add-contents-of-dsproject1-in-d5-to-r5-on-your-group-azure-devops-services"></a>D5 内の DSProject1 の内容をグループの Azure DevOps Services 上の R5 に追加する
 
-次に、**_DSProject1_** のコンテンツを、グループの VSTS サーバーにあるチーム プロジェクトの _R5_ リポジトリにプッシュする必要があります。 
+ここで、**_DSProject1_** の内容をグループの Azure DevOps Services 上のプロジェクト内の _R5_ リポジトリにプッシュする必要があります。 
 
 
 - ディレクトリを **D5** に変更します。 

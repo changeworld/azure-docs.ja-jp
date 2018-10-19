@@ -10,18 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 61187a26190e8d449a572e00d5abe8338d9060c2
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 4a0b3272bc0e4711c555bec17411960aad5a3f16
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029640"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391202"
 ---
 # <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 と互換性のあるオープン ソースのビッグ データ アプリケーション
 
 [!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
 
-この記事では、Azure Data Lake Store で機能するオープン ソースのビッグ データ アプリケーションを示します。 次の表に示すアプリケーションでは、表示されているディストリビューションで利用できるバージョンのみがサポートされます。 これらのアプリケーションの HDInsight で利用できるバージョンについては、「 [HDInsight コンポーネントのバージョン](../hdinsight/hdinsight-component-versioning.md)」を参照してください。
+この記事では、Azure Data Lake Storage Gen1 で機能するオープン ソースのビッグ データ アプリケーションを示します。 次の表に示すアプリケーションでは、表示されているディストリビューションで利用できるバージョンのみがサポートされます。 これらのアプリケーションの HDInsight で利用できるバージョンについては、「 [HDInsight コンポーネントのバージョン](../hdinsight/hdinsight-component-versioning.md)」を参照してください。
 
 | オープン ソース ソフトウェア | ディストリビューション |
 | --- | --- |

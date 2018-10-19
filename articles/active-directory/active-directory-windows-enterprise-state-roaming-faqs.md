@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: e6cb83eb6aaaea38686c63d0f3f70738efa4bcff
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 39d3913013d9528405191c5f052a943f1869048a
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630758"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44026858"
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定とデータのローミングに関する FAQ
 この記事では、IT 管理者が設定やアプリ データの同期に関して抱く可能性のあるいくつかの疑問に答えます。
@@ -35,12 +35,12 @@ ms.locfileid: "39630758"
 * *パスワード*: インターネット パスワード、Wi-Fi プロファイルなどが含まれています。
 * *言語設定*: キーボード レイアウト、システム言語、日付と時刻などの設定が含まれています。
 * *簡単操作機能*: ハイ コントラスト テーマ、ナレーター、拡大鏡などがあります。
-* *その他の Windows の設定*: コマンド プロンプトの設定、アプリケーション一覧などがあります。
+* *その他の Windows 設定*: マウス設定など。
 
 **アプリケーション データ**: ユニバーサル Windows アプリは、設定データを Roaming フォルダーに書き込むことができます。このフォルダーに書き込まれたデータはすべて自動的に同期されます。 この機能を利用するようにアプリを設計するかどうかは、アプリ開発者ごとの判断となります。 ローミングを使用するようにユニバーサル Windows アプリを開発する方法の詳細については、[アプリ データ ストレージ API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) と[アプリ データのローミングに関する Windows 8 アプリ開発者ブログ](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)を参照してください。
 
 ## <a name="what-account-is-used-for-settings-sync"></a>設定の同期に使用されるアカウントは
-Windows 8 と Windows 8.1 では常に、コンシューマーの Microsoft アカウントが設定の同期に使用されていました。 企業ユーザーは、その Active Directory ドメイン アカウントに Microsoft アカウントを接続することによって設定の同期を利用することができました。Windows 10 では、この Microsoft アカウントの接続機能が、プライマリ/セカンダリ アカウント フレームワークによって置き換えられています。
+Windows 8.1 では常に、コンシューマーの Microsoft アカウントが設定の同期に使用されていました。 企業ユーザーは、その Active Directory ドメイン アカウントに Microsoft アカウントを接続することによって設定の同期を利用することができました。Windows 10 では、この Microsoft アカウントの接続機能が、プライマリ/セカンダリ アカウント フレームワークによって置き換えられています。
 
 プライマリ アカウントは、Windows へのサインインに使用するアカウントとして定義されています。 Microsoft アカウントや Azure Active Directory (Azure AD) アカウント、オンプレミスの Active Directory アカウント、ローカル アカウントが該当します。 Windows 10 のユーザーは、プライマリ アカウントに加え、1 つまたは複数のセカンダリ クラウド アカウントを各自のデバイスに追加することができます。 一般に、セカンダリ アカウントとは、Microsoft アカウントや Azure AD アカウントのほか、Gmail や Facebook といったアカウントのことを指します。 セカンダリ アカウントで、シングル サインオンや Windows ストアなど追加のサービスにアクセスすることはできますが、設定の同期機能にアクセスすることはできません。
 
@@ -59,7 +59,7 @@ Windows 10 における設定の同期機能に使用できるのは、デバイ
 >
 
 ## <a name="how-do-i-upgrade-from-microsoft-account-settings-sync-in-windows-8-to-azure-ad-settings-sync-in-windows-10"></a>Windows 8 における Microsoft アカウントでの設定の同期を Windows 10 における Azure AD での設定の同期にアップグレードするとどうなりますか
-Active Directory に接続されている Microsoft アカウントで Active Directory ドメインに参加している Windows 8 または Windows 8.1 のユーザーが設定を同期する際には、その Microsoft アカウントが使用されます。 Windows 10 へのアップグレード後も、ドメインに参加しているユーザーで Active Directory ドメインと Azure AD が接続されていない場合は、引き続き Microsoft アカウントでユーザー設定を同期します。
+Active Directory に接続されている Microsoft アカウントで Active Directory ドメインに参加している Windows 8.1 のユーザーが設定を同期する際には、その Microsoft アカウントが使用されます。 Windows 10 へのアップグレード後も、ドメインに参加しているユーザーで Active Directory ドメインと Azure AD が接続されていない場合は、引き続き Microsoft アカウントでユーザー設定を同期します。
 
 一方、オンプレミスの Active Directory ドメインが Azure AD と接続されている場合、お使いのデバイスは、接続されている Azure AD アカウントを使用して設定を同期します。 Azure AD 管理者によって Enterprise State Roaming が有効にされていない場合、接続されている Azure AD アカウントは設定の同期を中止します。 Windows 10 ユーザーで Azure AD の ID でサインインしている場合、管理者が Azure AD を介した設定の同期を有効にするとすぐに Windows の設定の同期が開始されます。
 
@@ -94,7 +94,7 @@ November 2015 以降のリリースの Windows 10 では、Enterprise State Roam
 将来的にはマイクロソフトが、さらに深いレベルで UE-V を Windows に統合し、Azure AD クラウドを使って設定をローミングできるように UE-V を拡張する方法を模索する可能性はあります。
 
 ## <a name="can-i-store-synced-settings-and-data-on-premises"></a>同期された設定とデータをオンプレミスに保存することはできますか
-Enterprise State Roaming は同期されたすべてのデータを Azure クラウドに格納します。 オンプレミスのローミング ソリューションとしては UE-V をご利用ください。
+Enterprise State Roaming は同期されたすべてのデータを Microsoft クラウドに格納します。 オンプレミスのローミング ソリューションとしては UE-V をご利用ください。
 
 ## <a name="who-owns-the-data-thats-being-roamed"></a>ローミングされるデータはだれが所有するのですか
 Enterprise State Roaming でローミングされたデータは各企業の所有となります。 データは Azure データセンターに保存されます。 すべてのユーザー データが、Azure Information Protection の Azure Rights Management サービスを使用して、転送中とクラウド内の保存時のどちらの状態でも暗号化されます。 これが Microsoft アカウント ベースの設定の同期機能から改良された点であり、Microsoft アカウント ベースでは特定の機密データ (ユーザーの資格情報など) だけが、デバイスから送信される前に暗号化されていました。

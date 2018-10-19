@@ -1,23 +1,23 @@
 ---
-title: Microsoft Translator Text API 翻訳メソッド | Microsoft Docs
-titleSuffix: Cognitive Services
-description: Microsoft Translator Text API 翻訳メソッドを使用します。
+title: Translator Text API の Translate メソッド
+titleSuffix: Azure Cognitive Services
+description: Translator Text API の Translate メソッドを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: d8d5e1e2fac747fa733f1d92c08008b7eac2a1bc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1841730a39d29c5fe1f3451b7614818e924b339f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35378391"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128759"
 ---
-# <a name="text-api-30-translate"></a>テキスト API 3.0: 翻訳
+# <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
 テキストを翻訳します。
 
@@ -38,15 +38,15 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th>説明</th>
   <tr>
     <td>api-version</td>
-    <td>*必須のパラメーター*。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
+    <td>"*必須のパラメーター*"。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
   </tr>
   <tr>
     <td>from</td>
-    <td>*省略可能なパラメーター*。<br/>入力テキストの言語を指定します。 `translation` スコープを使用して[サポートされている言語](.\v3-0-languages.md)を検索することにより、翻訳することができるソース言語を確認します。 `from` パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。</td>
+    <td>"*省略可能なパラメーター*"。<br/>入力テキストの言語を指定します。 `translation` スコープを使用して[サポートされている言語](.\v3-0-languages.md)を検索することにより、翻訳することができるソース言語を確認します。 `from` パラメーターが指定されていない場合は、自動言語検出が適用されてソース言語が特定されます。</td>
   </tr>
   <tr>
     <td>to</td>
-    <td>*必須のパラメーター*。<br/>出力テキストの言語を指定します。 ターゲット言語は、`translation` スコープに含まれている[サポートされている言語](.\v3-0-languages.md)のいずれかとする必要があります。 たとえば、ドイツ語に翻訳するには `to=de` を使用します。<br/>クエリ文字列内でパラメーターを繰り返すことにより、同時に複数の言語に翻訳することができます。 たとえば、ドイツ語とイタリア語に翻訳するには、`to=de&to=it` を使用します。</td>
+    <td>"*必須のパラメーター*"。<br/>出力テキストの言語を指定します。 ターゲット言語は、`translation` スコープに含まれている[サポートされている言語](.\v3-0-languages.md)のいずれかとする必要があります。 たとえば、ドイツ語に翻訳するには `to=de` を使用します。<br/>クエリ文字列内でパラメーターを繰り返すことにより、同時に複数の言語に翻訳することができます。 たとえば、ドイツ語とイタリア語に翻訳するには、`to=de&to=it` を使用します。</td>
   </tr>
   <tr>
     <td>textType</td>
@@ -92,16 +92,16 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   <th width="20%">headers</th>
   <th>説明</th>
   <tr>
-    <td>_One authorization_<br/>_header_</td>
-    <td>*必須の要求ヘッダー*。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページを参照してください。</td>
+    <td>_1 つの承認_<br/>_ヘッダー_></td>
+    <td>"*必須の要求ヘッダー*" です。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページをご覧ください。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*必須の要求ヘッダー*。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
+    <td>"*必須の要求ヘッダー*" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*必須の要求ヘッダー*。<br/>要求本文の長さです。</td>
+    <td>"*必須の要求ヘッダー*" です。<br/>要求本文の長さです。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
@@ -166,7 +166,7 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
 
 ## <a name="response-status-codes"></a>応答状態コード
 
-要求から返される可能性のある HTTP 状態コードを次に示します。 
+要求によって返される可能性のある HTTP 状態コードを次に示します。 
 
 <table width="100%">
   <th width="20%">状態コード</th>
@@ -193,11 +193,11 @@ JSON 応答の例については、「[例](#examples)」セクションを参�
   </tr>
   <tr>
     <td>500</td>
-    <td>予期しないエラーが発生しました。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、および要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
+    <td>予期しないエラーが発生しました。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>サーバーが一時的に使用できません。 要求をやり直してください。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、および要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
+    <td>サーバーが一時的に使用できません。 要求をやり直してください。 エラーが解決しない場合は、エラー発生の日時、応答ヘッダー `X-RequestId` からの要求識別子、要求ヘッダー `X-ClientTraceId` からのクライアント識別子を添えてその旨をご報告ください。</td>
   </tr>
 </table> 
 

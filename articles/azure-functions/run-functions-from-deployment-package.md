@@ -5,27 +5,24 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
-tags: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.workload: na
-ms.date: 08/22/2018
+ms.date: 09/10/2018
 ms.author: glenga
-ms.openlocfilehash: 2b9cc3618bf21eac268e3c25f08b80124d52e6af
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: a0e643397372e5b132119a7c23f251ecec876916
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669293"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44346579"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Azure Functions をパッケージ ファイルから実行する
 
 > [!NOTE]
-> この記事で説明されている機能は現在プレビュー段階です。Linux 上の Functions ではご利用いただけません。
+> この記事で説明されている機能はLinux 上の Functions ではご利用いただけません。
 
-Azure では、関数アプリのデプロイ パッケージ ファイルから、関数を直接実行できます。 他のオプションは、関数アプリの `d:\home\site\wwwroot` ディレクトリに関数プロジェクト ファイルを配置することです。
+Azure では、関数アプリのデプロイ パッケージ ファイルから、関数を直接実行できます。 他のオプションは、関数アプリの `d:\home\site\wwwroot` ディレクトリ内のファイルをデプロイすることです。
 
 この記事では、パッケージから関数を実行するメリットについて説明します。 関数アプリでこの機能を有効にする方法も示します。
 
@@ -37,13 +34,13 @@ Azure では、関数アプリのデプロイ パッケージ ファイルから
 + 運用環境のアプリにデプロイできます (再起動が必要です)。
 + アプリで実行されるファイルを確定できます。
 + [Azure Resource Manager デプロイ](functions-infrastructure-as-code.md)のパフォーマンスが向上します。
-+ JavaScript 関数のコールド スタート時間が短縮される可能性があります。
++ 特に大規模な npm パッケージのツリーの JavaScript 関数の場合、コールド スタート時間を減らすことができます。
 
 詳細については、こちらの[お知らせ](https://github.com/Azure/app-service-announcements/issues/84)をご覧ください。
 
 ## <a name="enabling-functions-to-run-from-a-package"></a>パッケージから関数を実行できるようにする
 
-関数アプリをパッケージから実行できるようにするには、`WEBSITE_RUN_FROM_ZIP` 設定を関数アプリの設定に追加するだけです。 `WEBSITE_RUN_FROM_ZIP` 設定には次のいずれかの値を指定できます。
+関数アプリをパッケージから実行できるようにするには、`WEBSITE_RUN_FROM_PACKAGE` 設定を関数アプリの設定に追加するだけです。 `WEBSITE_RUN_FROM_PACKAGE` 設定には次のいずれかの値を指定できます。
 
 | 値  | 説明  |
 |---------|---------|
@@ -59,9 +56,9 @@ Azure Blob torage でホストされている .zip ファイルから実行す�
 
 ## <a name="integration-with-zip-deployment"></a>zip デプロイとの統合
 
-[Zip デプロイ][Zip deployment for Azure Functions]は、関数アプリ プロジェクトを `wwwroot` ディレクトリに配置することを可能にする Azure App Service の機能です。 プロジェクトは、.zip デプロイ ファイルとしてパッケージ化されます。 同じ API を使用して、パッケージを `d:\home\data\SitePackages` フォルダーに配置できます。 `WEBSITE_RUN_FROM_ZIP` アプリ設定が値 `1` の場合、zip デプロイ API は、ファイルを `d:\home\site\wwwroot` 抽出する代わりに、パッケージを `d:\home\data\SitePackages` フォルダーにコピーします。 それは、`packagename.txt` ファイルも作成します。 再起動後に関数アプリがパッケージから実行され、`wwwroot` が読み取り専用になります。 zip デプロイの詳細については、[Azure Functions の zip デプロイ](deployment-zip-push.md)に関する記事を参照してください。
+[Zip デプロイ][Zip deployment for Azure Functions]は、関数アプリ プロジェクトを `wwwroot` ディレクトリに配置することを可能にする Azure App Service の機能です。 プロジェクトは、.zip デプロイ ファイルとしてパッケージ化されます。 同じ API を使用して、パッケージを `d:\home\data\SitePackages` フォルダーに配置できます。 `WEBSITE_RUN_FROM_PACKAGE` アプリ設定が値 `1` の場合、zip デプロイ API は、ファイルを `d:\home\site\wwwroot` 抽出する代わりに、パッケージを `d:\home\data\SitePackages` フォルダーにコピーします。 それは、`packagename.txt` ファイルも作成します。 再起動後に関数アプリがパッケージから実行され、`wwwroot` が読み取り専用になります。 zip デプロイの詳細については、[Azure Functions の zip デプロイ](deployment-zip-push.md)に関する記事を参照してください。
 
-## <a name="adding-the-websiterunfromzip-setting"></a>WEBSITE_RUN_FROM_ZIP 設定の追加
+## <a name="adding-the-websiterunfrompackage-setting"></a>WEBSITE_RUN_FROM_PACKAGE 設定の追加
 
 [!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 

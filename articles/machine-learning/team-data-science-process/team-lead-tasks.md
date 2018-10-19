@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: deguhath
-ms.openlocfilehash: 9d2043808cbd61d5e2a69cbe0f2a5a611e3afa31
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 86ab49cb0acd9ffee47fb1f8f531c3a0cd6e6730
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "34839760"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44297963"
 ---
 # <a name="team-lead-tasks"></a>チーム リーダーのタスク
 
@@ -29,11 +29,11 @@ ms.locfileid: "34839760"
 
 ![1](./media/team-lead-tasks/team-leads-1-creating-teams.png)
 
->[AZURE.NOTE] コード ホスティング プラットフォームとして Visual Studio Team Services (VSTS) を使用しており、自分のチーム用に別個のチーム プロジェクトが必要な場合は、図のブロック 1 と 2 のタスクが必要になります。 これらのタスクが完了したら、チームのすべてのリポジトリをこのチーム プロジェクトに作成できます。 
+>[AZURE.NOTE] コード ホスティング プラットフォームとして Azure DevOps を使用しており、独自のチーム用に個別の Azure DevOps プロジェクトが必要な場合は、図のブロック 1 および 2 内のタスクが必要になります。 これらのタスクが完了したら、このプロジェクトの下にチームのすべてのリポジトリを作成できます。 
 
 次のセクションで示すいくつかの前提条件となるタスクをグループ マネージャーが完了した後に、このチュートリアルでチーム リーダーが実行する 5 つの主要なタスク (一部のタスクは省略可能) があります。 これらのタスクは、このトピックの番号付きの主要セクションに対応しています。
 
-1. グループの VSTS サーバーに**チーム プロジェクト**を作成し、そのプロジェクトに 次の 2 つのチーム リポジトリを作成します。
+1. グループの Azure DevOps Services に**プロジェクト**を、またそのプロジェクト内に 2 つのチーム リポジトリを作成します。
     - **ProjectTemplate リポジトリ** 
     - **TeamUtilities リポジトリ**
 2. グループ マネージャーが設定した **GroupProjectTemplate** リポジトリから **ProjectTemplate** チーム リポジトリをシード処理します。 
@@ -43,76 +43,76 @@ ms.locfileid: "34839760"
 4. (省略可能) Azure File Storage をチーム リーダーの**データ サイエンス仮想マシン** (DSVM) にマウントし、データ資産を追加します。
 5. チーム メンバーを追加し、アクセス許可を構成して、**セキュリティ制御**を設定します。
 
->[AZURE.NOTE] ここでは、VSTS を使用して TDSP チーム環境を設定するために必要な手順の概要を説明します。 VSTS を使用してこれらのタスクを遂行する方法を示しているのは、Microsoft がこの方法で TDSP を実装しているためです。 グループで別のコード ホスティング プラットフォームを使用している場合も、一般にチーム リーダーが実行する必要があるタスクは変わりません。 ただし、これらのタスクを実行する方法が異なります。
+>[AZURE.NOTE] 以下の方法で Azure DevOps を使用して TDSP チーム環境を設定するために必要な手順の概要について説明します。 Azure DevOps でこれらのタスクを達成する方法を指定するのは、それが Microsoft で TDSP を実装する方法であるためです。 グループで別のコード ホスティング プラットフォームを使用している場合も、一般にチーム リーダーが実行する必要があるタスクは変わりません。 ただし、これらのタスクを実行する方法が異なります。
 
 ## <a name="repositories-and-directories"></a>リポジトリとディレクトリ
 
 このトピックでは、リポジトリとディレクトリの省略名を使用します。 これらの名前により、リポジトリとディレクトリ間での操作がわかりやすくなります。 以降のセクションでは次の表記を使用します (**R** は Git リポジトリを表し、**D** は DSVM 上のローカル ディレクトリを表します)。
 
-- **R1**: グループ マネージャーが VSTS グループ サーバーで設定する Git の **GroupProjectTemplate** リポジトリ。
+- **R1**: グループ マネージャーが Azure DevOps グループ サーバーで設定する Git 上の **GroupProjectTemplate** リポジトリ。
 - **R3**: チーム リーダーが設定する Git の **ProjectTemplate** チーム リポジトリ。
 - **R4**: チーム リーダーが設定する Git の **TeamUtilities** リポジトリ。
 - **D1**: R1 から複製され、D3 にコピーされるローカル ディレクトリ。
 - **D3**: R3 から複製され、カスタマイズされた後 R3 にコピーされて戻されるローカル ディレクトリ。
 - **D4**: R4 から複製され、カスタマイズされた後 R4 にコピーされて戻されるローカル ディレクトリ。
 
-このチュートリアルでリポジトリとディレクトリに指定された名前は、チーム リーダーが、大規模なデータ サイエンス グループ内で自分のチーム用に別のチーム プロジェクトを確立することを目指しているという想定の下に提供されています。 ただし、チーム リーダーには他の選択肢もあります。
+このチュートリアルでリポジトリやディレクトリに指定されている名前は、より大きなデータ サイエンス グループ内の独自のチーム用に個別のプロジェクトを確立することが目的であるという前提の下に提供されています。 ただし、チーム リーダーには他の選択肢もあります。
 
-- グループ全体で 1 つのチーム プロジェクトを作成できます。 この場合、すべてのデータ サイエンス チームのすべてのプロジェクトが、この 1 つのチーム プロジェクトの下で作成されます。 これを実現するために、指示に従って 1 つのチーム プロジェクトを作成する Git 管理者を指名できます。 このシナリオは次のようなグループで有効です。
+- グループ全体を選択して 1 つのプロジェクトを作成できます。 その場合は、すべてのデータ サイエンス チームのすべてのプロジェクトがこの 1 つのプロジェクトの下になります。 これを実現するには、この手順に従って 1 つのプロジェクトを作成する Git 管理者を指定できます。 このシナリオは次のようなグループで有効です。
     -  複数のデータ サイエンス チームが存在しない小規模なデータ サイエンス グループ 
     -  複数のデータ サイエンス チームが存在し、グループ レベルのスプリントの計画などのアクティビティでチーム間のコラボレーションを最適化することを求めている大規模なデータ サイエンス グループ 
-- チームは、グループ全体の 1 つのチーム プロジェクトの下で、チーム固有のプロジェクト テンプレートやチーム固有のユーティリティを持つことができます。 この場合、チーム リーダーは、同じチーム プロジェクトにチーム プロジェクト テンプレート リポジトリやチーム ユーティリティ リポジトリを作成する必要があります。 これらのリポジトリには、*<チーム名\>ProjectTemplate* および *<チーム名\>Utilities* という名前を付けます (例: *TeamJohnProjectTemplate**TeamJohnUtilities*)。 
+- 各チームは、グループ全体の 1 つのプロジェクトの下にチーム固有のプロジェクト テンプレートまたはチーム固有のユーティリティを持つことを選択できます。 この場合は、同じプロジェクトの下に、チーム リーダーがプロジェクト テンプレート リポジトリまたはチーム ユーティリティ リポジトリ、あるいはその両方を作成する必要があります。 これらのリポジトリには、*<チーム名\>ProjectTemplate* および *<チーム名\>Utilities* という名前を付けます (例: *TeamJohnProjectTemplate**TeamJohnUtilities*)。 
 
-いずれの場合も、チームリーダーはプロジェクトおよびユーティリティ リポジトリを設定し、複製するときに、導入するテンプレート リポジトリとユーティリティ リポジトリをチーム メンバーに知らせる必要があります。 プロジェクト リーダーは、個別のチーム プロジェクトと 1 つのチーム プロジェクトのどちらであるかを問わず、[データ サイエンス チームのプロジェクト リーダーのタスク](project-lead-tasks.md)に関する記事に記載された手順に従って、プロジェクト リポジトリを作成する必要があります。 
+いずれの場合も、チームリーダーはプロジェクトおよびユーティリティ リポジトリを設定し、複製するときに、導入するテンプレート リポジトリとユーティリティ リポジトリをチーム メンバーに知らせる必要があります。 プロジェクト リーダーは、個別のプロジェクトまたは 1 つのプロジェクトのどちらであるかにかかわらず、「[データ サイエンス チームのプロジェクト リーダーのタスク](project-lead-tasks.md)」に従ってプロジェクト リポジトリを作成する必要があります。 
 
 
 ## <a name="0-prerequisites"></a>0.前提条件
 
 前提条件を満たすには、[データ サイエンス チームのグループ マネージャーのタスク](group-manager-tasks.md)に関する記事で説明する、グループ マネージャーに割り当てられたタスクを完了します。 まとめると、チーム リーダーのタスクを開始する前に、次の要件を満たす必要があります。 
 
-- グループ マネージャーによって、**グループの VSTS サーバー** (または他のコード ホスティング プラットフォームのグループ アカウント) が設定されている。
+- **グループの Azure DevOps Services** (または、その他の一部のコード ホスティング プラットフォームではグループ アカウント) がグループ マネージャーによって設定されている。
 - 使用する予定のコード ホスティング プラットフォームで、グループ マネージャーによって、グループ アカウントに **GroupProjectTemplate リポジトリ** (R1) が設定されている。
 - チーム リーダーが、チームのリポジトリを作成するためのグループ アカウントで**承認**されている。
 - マシンに Git をインストールする必要があります。 データ サイエンス仮想マシン (DSVM) を使用している場合は、Git がプレインストールされているので、インストールは不要です。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。  
 - **Windows DSVM** を使用している場合は、マシンに [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) がインストールされている必要があります。 README.md ファイルで、下へスクロールして「**Download and Install**」(ダウンロードとインストール) セクションを表示し、「*latest installer*」(最新のインストーラー) をクリックします。 これにより、最新のインストーラーのページに移動します。 このページから .exe インストーラーをダウンロードして実行します。 
-- **Linux DSVM** を使用している場合は、DSVM で SSH 公開キーを作成し、グループの VSTS サーバーに追加します。 SSH の詳細については、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
+- **Linux DSVM** を使用している場合は、DSVM で SSH 公開キーを作成し、それをグループの Azure DevOps Services に追加します。 SSH の詳細については、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
     
-## <a name="1-create-a-team-project-and-repositories"></a>1.チーム プロジェクトとリポジトリの作成
+## <a name="1-create-a-project-and-repositories"></a>1.プロジェクトとリポジトリを作成する
 
-バージョン管理とコラボレーションのためのコード ホスティング プラットフォームとして VSTS を使用している場合は、この手順を実行します。 このセクションでは、グループの VSTS サーバーに次の 3 つのアーティファクトを作成します。
+バージョン管理とコラボレーションのためのコード ホスティング プラットフォームとして Azure DevOps を使用している場合は、この手順を完了します。 このセクションでは、グループの Azure DevOps Services 内に次の 3 つのアーティファクトを作成します。
 
-- VSTS の **MyTeam** プロジェクト
+- Azure DevOps 内の **MyTeam** プロジェクト
 - Git の **MyProjectTemplate** リポジトリ (**R3**)
 - Git の **MyTeamUtilities** リポジトリ (**R4**)
 
 ### <a name="create-the-myteam-project"></a>MyTeam プロジェクトを作成する
 
-- グループの VSTS サーバーのホーム ページ (`https://<VSTS Server Name\>.visualstudio.com`) に移動します。 
-- チーム プロジェクトを作成するには、**[新規]** をクリックします。 
+- グループの Azure DevOps Services ホームページ (URL `https://<Azure DevOps Services Name\>.visualstudio.com`) に移動します。 
+- **[新規作成]** をクリックしてプロジェクトを作成します。 
 
     ![2](./media/team-lead-tasks/team-leads-2-create-new-team.png)
 
-- [チーム プロジェクトの作成] ウィンドウが表示され、プロジェクト名 (この例では **MyTeam**) の入力を求められます。 **[プロセス テンプレート]** で **[アジャイル]** を選択し、**[バージョン管理]** で **[Git]** を選択します。 
+- [プロジェクトの作成] ウィンドウで、プロジェクト名 (この例では **MyTeam**) を入力するよう求められます。 **[プロセス テンプレート]** で **[アジャイル]** を選択し、**[バージョン管理]** で **[Git]** を選択します。 
 
     ![3](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
 
-- **[プロジェクトの作成]** をクリックします。 1 分足らずで **MyTeam** チーム プロジェクトが作成されます。 
+- **[プロジェクトの作成]** をクリックします。 **MyTeam** プロジェクトが 1 分未満で作成されます。 
 
-- **MyTeam** チーム プロジェクトが作成されたら、**[プロジェクトに移動]** をクリックして、チーム プロジェクトのホーム ページに移動します。 
+- **MyTeam** プロジェクトが作成されたら、**[プロジェクトに移動]** ボタンをクリックして、プロジェクトのホーム ページに移動します。 
 
     ![4](./media/team-lead-tasks/team-leads-4-create-new-team-3.png)
 
-- **[おめでとうございます!]** ポップアップ ウィンドウが表示された場合は、 **[コードの追加]** (赤色の枠内のボタン) をクリックします。 それ以外の場合は、**[コード]** (黄色の枠内) をクリックします。 チーム プロジェクトの Git リポジトリ ページが表示されます。 
+- **[おめでとうございます!]** ポップアップ ウィンドウが表示された場合は、 **[コードの追加]** (赤色の枠内のボタン) をクリックします。 それ以外の場合は、**[コード]** (黄色の枠内) をクリックします。 これにより、プロジェクトの Git リポジトリ ページが表示されます。 
 
     ![5](./media/team-lead-tasks/team-leads-5-team-project-home.png)
 
 ### <a name="create-the-myprojecttemplate-repository-r3-on-git"></a>Git の MyProjectTemplate リポジトリ (R3) を作成する
 
-- チーム プロジェクトの Git リポジトリ ページで、リポジトリ名 **[MyTeam]** の横の下向き矢印をクリックし、**[リポジトリの管理...]** を選択します。
+- プロジェクトの Git リポジトリ ページで、リポジトリ名 **[MyTeam]** の横にある下向き矢印をクリックし、**[リポジトリの管理...]** を選択します。
 
     ![6](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
 
-- チーム プロジェクトのコントロール パネルの **[バージョン管理]** タブで、**[MyTeam]** をクリックし、**[リポジトリの名前変更...]** を選択します。 
+- プロジェクトのコントロール パネルの **[バージョン管理]** タブで、**[MyTeam]** をクリックし、**[リポジトリの名前変更...]** を選択します。 
 
     ![7](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
 
@@ -122,7 +122,7 @@ ms.locfileid: "34839760"
 
 ### <a name="create-the-myteamutilities-repository-r4-on-git"></a>Git の MyTeamUtilities リポジトリ (R4) を作成する
 
-- チーム プロジェクトに新しいリポジトリ *<チーム名\>Utilities* を作成するには、チーム プロジェクトのコントロール パネルの **[バージョン管理]** タブで **[新しいリポジトリ...]** をクリックします。  
+- プロジェクトの下に新しいリポジトリ *<チーム名\>Utilities* を作成するには、プロジェクトのコントロール パネルの **[バージョン管理]** タブで **[新しいリポジトリ...]** をクリックします。  
 
     ![9](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
 
@@ -130,7 +130,7 @@ ms.locfileid: "34839760"
 
     ![10](./media/team-lead-tasks/team-leads-10-create-team-utilities-2.png)
 
-- **MyTeam** チーム プロジェクトに 2 つの新しい Git リポジトリが作成されていることを確認します。 次の点に注意してください。 
+- **MyTeam** プロジェクトの下に作成された次の 2 つの新しい Git リポジトリが表示されていることを確認します。 次の点に注意してください。 
 
 - **MyTeamProjectTemplate** (R3) 
 - **MyTeamUtilities** (R4)
@@ -138,7 +138,7 @@ ms.locfileid: "34839760"
     ![11](./media/team-lead-tasks/team-leads-11-two-repo-in-team.png)
 
 
-## <a name="2-seed-your-team-projecttemplate-and-teamutilities-repositories"></a>2.チーム の ProjectTemplate リポジトリと TeamUtilities リポジトリのシード処理
+## <a name="2-seed-your-projecttemplate-and-teamutilities-repositories"></a>2.ProjectTemplate および TeamUtilities リポジトリをシード処理する
 
 このシード処理の手順では、ローカル DSVM 上のディレクトリを中間ステージング サイトとして使用します。 チームの特定のニーズに合わせて **ProjectTemplate** リポジトリと **TeamUtilities** リポジトリをカスタマイズする必要がある場合は、以下の手順の最後から 2 番目の手順でカスタマイズします。 データ サイエンス チームの **MyTeamProjectTemplate** リポジトリと **MyTeamUtilities** リポジトリの内容をシード処理する手順の概要を次に示します。 個々の手順は、シード処理の手順のサブセクションに対応しています。
 
@@ -151,7 +151,7 @@ ms.locfileid: "34839760"
 
 ### <a name="initialize-the-team-repositories"></a>チーム リポジトリを初期化する
 
-この手順では、グループ プロジェクト テンプレート リポジトリからチーム プロジェクト テンプレート リポジトリを初期化します。
+この手順では、グループ プロジェクト テンプレート リポジトリからプロジェクト テンプレート リポジトリを初期化します。
 
 - **GroupProjectTemplate** (**R1**) リポジトリから **MyTeamProjectTemplate** (**R3**) リポジトリ
 
@@ -168,45 +168,45 @@ ms.locfileid: "34839760"
 
 **Windows**
 
-    git clone https://<Your VSTS Server name>.visualstudio.com/GroupCommon/_git/GroupProjectTemplate
+    git clone https://<Your Azure DevOps Services name>.visualstudio.com/GroupCommon/_git/GroupProjectTemplate
     
 
 ![12](./media/team-lead-tasks/team-leads-12-create-two-group-repos.png)
 
 **Linux**
     
-    git clone ssh://<Your VSTS Server name>@<Your VSTS Server name>.visualstudio.com:22/GroupCommon/_git/GroupProjectTemplate
+    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/GroupCommon/_git/GroupProjectTemplate
     
     
 ![13](./media/team-lead-tasks/team-leads-13-clone_two_group_repos_linux.png)
 
-これらのコマンドにより、グループの VSTS サーバー上の **GroupProjectTemplate** (R1) リポジトリが、ローカル コンピューター上の **GitRepos\GroupCommon** のローカル ディレクトリに複製されます。 複製後、**GitRepos\GroupCommon** ディレクトリに **GroupProjectTemplate** (D1) ディレクトリが作成されます。 ここでは、グループ マネージャーが **GroupCommon** チーム プロジェクトを作成済みであり、このチーム プロジェクトに **GroupProjectTemplate** リポジトリが存在すると想定しています。 
+これらのコマンドは、グループの Azure DevOps Services 上の **GroupProjectTemplate** (R1) リポジトリを、ローカル コンピューター上の **GitRepos\GroupCommon** 内のローカル ディレクトリに複製します。 複製後、**GitRepos\GroupCommon** ディレクトリに **GroupProjectTemplate** (D1) ディレクトリが作成されます。 ここでは、グループ マネージャーが **GroupCommon** プロジェクトを作成したこと、および **GroupProjectTemplate** リポジトリがこのプロジェクトの下にあることを前提にしています。 
 
 
 ### <a name="clone-your-team-repositories-into-local-directories"></a>チーム リポジトリをローカル ディレクトリに複製する
 
-これらのコマンドにより、グループの VSTS サーバー上の **MyTeam** チーム プロジェクトの **MyTeamProjectTemplate** (R3) リポジトリと **MyTeamUtilities** (R4) リポジトリが、ローカル コンピューター上の **GitRepos\MyTeam** の **MyTeamProjectTemplate** (D3) ディレクトリと **MyTeamUtilities** (D4) ディレクトリに複製されます。 
+これらのコマンドは、グループの Azure DevOps Services 上の **MyTeam** プロジェクトの下にある **MyTeamProjectTemplate** (R3) および **MyTeamUtilities** (R4) リポジトリを、ローカル コンピューター上の **GitRepos\MyTeam** 内の **MyTeamProjectTemplate** (D3) および **MyTeamUtilities** (D4) ディレクトリに複製します。 
 
 - **GitRepos\MyTeam** ディレクトリに変更します。
 - ローカル コンピューターのオペレーティング システムで、必要に応じて次のコマンドを実行します。 
 
 **Windows**
 
-    git clone https://<Your VSTS Server name>.visualstudio.com/<Your Team Name>/_git/MyTeamProjectTemplate
-    git clone https://<Your VSTS Server name>.visualstudio.com/<Your Team Name>/_git/MyTeamUtilities
+    git clone https://<Your Azure DevOps Services name>.visualstudio.com/<Your Team Name>/_git/MyTeamProjectTemplate
+    git clone https://<Your Azure DevOps Services name>.visualstudio.com/<Your Team Name>/_git/MyTeamUtilities
 
 ![14](./media/team-lead-tasks/team-leads-14-clone_two_empty_team_repos.png)
         
 **Linux**
     
-    git clone ssh://<Your VSTS Server name>@<Your VSTS Server name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamProjectTemplate
-    git clone ssh://<Your VSTS Server name>@<Your VSTS Server name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamUtilities
+    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamProjectTemplate
+    git clone ssh://<Your Azure DevOps Services name>@<Your Azure DevOps Services name>.visualstudio.com:22/<Your Team Name>/_git/MyTeamUtilities
     
 ![15](./media/team-lead-tasks/team-leads-15-clone_two_empty_team_repos_linux.png)
 
-複製後、**GitRepos\MyTeam** ディレクトリに **MyTeamProjectTemplate** (D3) と **MyTeamUtilities** (D4) の 2 つのディレクトリが作成されます。 ここでは、チームのプロジェクト テンプレート リポジトリとユーティリティ リポジトリに、それぞれ **MyTeamProjectTemplate**、**MyTeamUtilities** という名前を付けていると想定しています。 
+複製後、**GitRepos\MyTeam** ディレクトリに **MyTeamProjectTemplate** (D3) と **MyTeamUtilities** (D4) の 2 つのディレクトリが作成されます。 ここでは、プロジェクト テンプレートとユーティリティ リポジトリに **MyTeamProjectTemplate** と **MyTeamUtilities** という名前が付けられたことを前提にしてきました。 
 
-### <a name="copy-the-group-project-template-content-to-the-local-team-project-template-directory"></a>グループ プロジェクト テンプレートの内容をローカルのチーム プロジェクト テンプレート ディレクトリにコピーする
+### <a name="copy-the-group-project-template-content-to-the-local-project-template-directory"></a>グループ プロジェクト テンプレートの内容をローカルのプロジェクト テンプレート ディレクトリにコピーする
 
 ローカルの **GroupProjectTemplate** (D1) フォルダーの内容をローカルの **MyTeamProjectTemplate** (D3) にコピーするには、次のシェル スクリプトのいずれかを実行します。 
 
@@ -228,7 +228,7 @@ ms.locfileid: "34839760"
 これらのスクリプトでは、.git ディレクトリの内容は除外されます。 コピー元ディレクトリ D1 とコピー先ディレクトリ D3 の**完全なパス**を入力するよう求められます。
         
 
-### <a name="customize-your-team-project-template-or-team-utilities-optional"></a>チーム プロジェクト テンプレートまたはチーム ユーティリティをカスタマイズする (省略可能)
+### <a name="customize-your-project-template-or-team-utilities-optional"></a>プロジェクト テンプレートまたはチーム ユーティリティをカスタマイズする (省略可能)
 
 セットアップ プロセスのこの段階で、必要に応じて、**MyTeamProjectTemplate** (D3) と **MyTeamUtilities** (D4) をカスタマイズします。 
 
@@ -248,7 +248,7 @@ ms.locfileid: "34839760"
     
 ![18](./media/team-lead-tasks/team-leads-18-push-to-group-server-2.png)
 
-このスクリプトを実行すると、グループの VSTS サーバーの MyTeamProjectTemplate リポジトリ内のファイルがほぼ瞬時に同期されます。
+このスクリプトが実行されると、グループの Azure DevOps Services の MyTeamProjectTemplate リポジトリ内のファイルがほぼ即座に同期されます。
 
 ![19](./media/team-lead-tasks/team-leads-19-push-to-group-server-showed-up.png)
 
@@ -299,7 +299,7 @@ PowerShell コマンド ラインから次のスクリプトを実行します�
 
 このストレージの作成後にストレージのマウントと共有を容易にするために、Azure File Storage の情報をテキスト ファイルに保存し、ファイルの場所へのパスを書き留めておきます。 具体的には、次のセクションで Azure File Storage を Azure 仮想マシンにマウントするときに、このファイルが必要になります。 
 
-このテキスト ファイルを ProjectTemplate チーム リポジトリにチェックインすることをお勧めします。 **Docs\DataDictionaries** ディレクトリに配置することが推奨されます。 これにより、チームのすべてのプロジェクトからこのデータ資産にアクセスできます。 
+このテキスト ファイルを ProjectTemplate リポジトリにチェックインすることをお勧めします。 **Docs\DataDictionaries** ディレクトリに配置することが推奨されます。 これにより、チームのすべてのプロジェクトからこのデータ資産にアクセスできます。 
 
 ![26](./media/team-lead-tasks/team-leads-26-file-create-s5.png)
 
@@ -329,7 +329,7 @@ Linux シェルから次のスクリプトを実行します。
 
 このストレージの作成後にストレージへのアクセスを容易にするために、Azure File Storage の情報をテキスト ファイルに保存し、ファイルの場所へのパスを書き留めておきます。 具体的には、次のセクションで Azure File Storage を Azure 仮想マシンにマウントするときに、このファイルが必要になります。
 
-このテキスト ファイルを ProjectTemplate チーム リポジトリにチェックインすることをお勧めします。 **Docs\DataDictionaries** ディレクトリに配置することが推奨されます。 これにより、チームのすべてのプロジェクトからこのデータ資産にアクセスできます。 
+このテキスト ファイルを ProjectTemplate リポジトリにチェックインすることをお勧めします。 **Docs\DataDictionaries** ディレクトリに配置することが推奨されます。 これにより、チームのすべてのプロジェクトからこのデータ資産にアクセスできます。 
 
 ![31](./media/team-lead-tasks/team-leads-31-file-create-linux-s5.png)
 
@@ -406,7 +406,7 @@ Azure File Storage の情報ファイルがあるかどうかをたずねられ�
 
 ## <a name="5-set-up-security-control-policy"></a>5.セキュリティ制御ポリシーの設定 
 
-グループの VSTS サーバーのホーム ページで、右上隅のユーザー名の横にある**歯車アイコン**をクリックし、**[セキュリティ]** タブを選択します。ここでは、メンバーをチームに追加してさまざまなアクセス許可を適用できます。
+グループの Azure DevOps Services のホームページから、右上隅のユーザー名の横にある**歯車アイコン**をクリックし、**[セキュリティ]** タブを選択します。ここでは、メンバーをチームに追加してさまざまなアクセス許可を適用できます。
 
 ![44](./media/team-lead-tasks/team-leads-44-add-team-members.png)
 

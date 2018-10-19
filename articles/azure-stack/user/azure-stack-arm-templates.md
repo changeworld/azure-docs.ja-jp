@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/07/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: 456f27b97ee644aef34f9bb9e2c0525bd61c1c84
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: a50f91d5cbbc0eac7080437c96144014dad651ee
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41946536"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44161767"
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Azure Stack で Azure リソース マネージャー テンプレートを使用する
 
@@ -34,7 +34,7 @@ Azure Resource Manager テンプレートを使用して、お使いのアプリ
 
 ## <a name="deploy-sharepoint-server-non-high-availability-deployment"></a>SharePoint サーバーのデプロイ (非高可用性デプロイ)
 
-PowerShell DSC 拡張機能を使用して、以下のリソースを含む SharePoint Server 2013 ファームを作成します。
+PowerShell DSC 拡張機能を使用して、以下のリソースを含む [SharePoint Server 2013 ファームを作成](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sharepoint-2013-non-ha)します。
 
 * 仮想ネットワーク
 * 3 つのストレージ アカウント
@@ -45,7 +45,7 @@ PowerShell DSC 拡張機能を使用して、以下のリソースを含む Shar
 
 ## <a name="deploy-ad-non-high-availability-deployment"></a>AD のデプロイ (非高可用性デプロイ)
 
-PowerShell DSC 拡張機能を使用して、以下のリソースを含む AD ドメイン コントローラーを作成します。
+PowerShell DSC 拡張機能を使用して、以下のリソースを含む [AD ドメイン コントローラーを作成](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/ad-non-ha)します。
 
 * 仮想ネットワーク
 * 1 つのストレージ アカウント
@@ -54,7 +54,7 @@ PowerShell DSC 拡張機能を使用して、以下のリソースを含む AD �
 
 ## <a name="deploy-adsql-non-high-availability-deployment"></a>AD/SQL のデプロイ (非高可用性デプロイ)
 
-PowerShell DSC 拡張機能を使用して、以下のリソースを含む SQL Server 2014 スタンドアロン サーバーを作成します。
+PowerShell DSC 拡張機能を使用して、以下のリソースを含む [SQL Server 2014 スタンドアロン サーバーを作成](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/sql-2014-non-ha)します。
 
 * 仮想ネットワーク
 * 2 つのストレージ アカウント
@@ -68,15 +68,15 @@ PowerShell DSC 拡張機能を使用して、既存のバーチャル マシン�
 
 ## <a name="create-a-virtual-machine-from-a-user-image"></a>ユーザー イメージからの仮想マシンの作成
 
-カスタム ユーザー イメージから仮想マシンを作成します。 このテンプレートは、仮想ネットワーク (DNS 付き)、パブリック IP アドレス、およびネットワーク インターフェイスもデプロイします。
+[カスタム ユーザー イメージから仮想マシンを作成](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-vm-from-user-image)します。 このテンプレートは、仮想ネットワーク (DNS 付き)、パブリック IP アドレス、およびネットワーク インターフェイスもデプロイします。
 
 ## <a name="basic-virtual-machine"></a>基本的な仮想マシン
 
-仮想ネットワーク (DNS 付き)、パブリック IP アドレス、およびネットワーク インターフェイスを含む Windows VMをデプロイします。
+仮想ネットワーク (DNS 付き)、パブリック IP アドレス、およびネットワーク インターフェイスを含む [Windows VMをデプロイ](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/AzureStackTechnicalPreview1/101-simple-windows-vm)します。
 
 ## <a name="cancel-a-running-template-deployment"></a>実行中のテンプレートのデプロイのキャンセル
 
-実行中のテンプレートのデプロイをキャンセルするには、`Stop-AzureRmResourceGroupDeployment` PowerShell コマンドレットを使用します。
+実行中のテンプレートのデプロイをキャンセルするには、[Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell コマンドレットを使用します。
 
 ## <a name="next-steps"></a>次の手順
 

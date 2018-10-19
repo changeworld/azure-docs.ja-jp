@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: deguhath
-ms.openlocfilehash: e50390a1b6385cabfd0e6b30340634860a062d8d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 32390b05d2ec258a68ed4f53135399675105a7e9
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34838944"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44302087"
 ---
 # <a name="track-progress-of-data-science-projects"></a>データ サイエンス プロジェクトの進行状況の追跡
 
-データ サイエンス グループ マネージャー、チーム リーダー、プロジェクト リーダーは、チーム プロジェクトの進行状況、プロジェクトに対して実行した作業とその実行者、To-do リストに残っている項目を追跡する必要があります。 
+データ サイエンス グループ マネージャー、チーム リーダー、プロジェクト リーダーは、プロジェクトの進行状況、プロジェクトに対して実行した作業とその実行者、To-do リストに残っている項目を追跡する必要があります。 
 
-## <a name="vsts-dashboards"></a>VSTS ダッシュボード
-Visual Studio Team Services (VSTS) を使用している場合、指定されたアジャイル プロジェクトに関連付けられているアクティビティと作業項目を追跡するためにダッシュボードを構築できます。 
+## <a name="azure-devops-dashboards"></a>Azure DevOps ダッシュ ボード
+Azure DevOps を使用している場合は、アクティビティおよび指定されたアジャイル プロジェクトに関連付けられている作業項目を追跡するためにダッシュ ボードを構築することができます。 
 
-Visual Studio Team Services でダッシュ ボードとウィジェットを作成およびカスタマイズする方法の詳細については、次の一連の手順を参照してください。
+Azure DevOps でダッシュ ボードとウィジェットを作成およびカスタマイズする方法の詳細については、次の一連の手順を参照してください。
 
-- [ダッシュボードを追加および管理する](https://docs.microsoft.com/vsts/report/dashboards/dashboards)
-- [ダッシュ ボードにウィジェットを追加する](https://docs.microsoft.com/vsts/report/dashboards/add-widget-to-dashboard)
+- [ダッシュボードを追加および管理する](https://docs.microsoft.com/azure/devops/report/dashboards/dashboards)
+- [ダッシュ ボードにウィジェットを追加する](https://docs.microsoft.com/azure/devops/report/dashboards/add-widget-to-dashboard)
 
 ## <a name="example-dashboard"></a>サンプルのダッシュ ボード
 
@@ -49,7 +49,7 @@ Visual Studio Team Services でダッシュ ボードとウィジェットを作
 
 ![dashboard](./media/track-progress/dashboard.png)
 
-これらのグラフの作成方法については、[ダッシュ ボード](https://docs.microsoft.com/vsts/report/dashboards/)のクイックスタートおよびチュートリアルを参照してください。
+これらのグラフの作成方法については、[ダッシュ ボード](https://docs.microsoft.com/azure/devops/report/dashboards/)のクイックスタートおよびチュートリアルを参照してください。
  
 ## <a name="next-steps"></a>次の手順
 

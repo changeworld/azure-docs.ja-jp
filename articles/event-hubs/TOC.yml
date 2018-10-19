@@ -14,7 +14,7 @@ items:
   - name: イベント ハブの作成
     items:
     - name: Azure ポータル
-      href: event-hubs-quickstart-portal.md
+      href: event-hubs-create.md
     - name: Azure CLI
       href: event-hubs-quickstart-cli.md
     - name: Azure PowerShell
@@ -65,11 +65,11 @@ items:
     maintainContext: true
   - name: Apache Kafka 用 Event Hubs
     items:
-    - name: Apache Kafka MirrorMaker と Event Hubs
+    - name: Apache Kafka 対応イベント ハブで Kafka ブローカーをミラーリングする
       href: event-hubs-kafka-mirror-maker-tutorial.md
-    - name: Apache Flink と Event Hubs
+    - name: Apache Kafka 対応イベント ハブに Apache Flink を接続する
       href: event-hubs-kafka-flink-tutorial.md
-    - name: Akka Streams と Event Hubs
+    - name: Apache Kafka 対応イベント ハブに Akka Streams を接続する
       href: event-hubs-kafka-akka-streams-tutorial.md
 - name: サンプル
   href: event-hubs-samples.md
@@ -100,45 +100,36 @@ items:
     maintainContext: true
 - name: ハウツー ガイド
   items:
-  - name: イベント ハブの作成
-    href: event-hubs-create.md
-  - name: IP 接続フィルターの使用
-    href: event-hubs-ip-filtering.md
-  - name: 仮想ネットワーク サービス エンドポイントの使用
-    href: event-hubs-service-endpoints.md
-  - name: スループット単位の自動スケール
-    href: event-hubs-auto-inflate.md
+  - name: Resource Manager テンプレートを使用したイベント ハブの作成
+    href: event-hubs-resource-manager-namespace-event-hub.md
   - name: Apache Kafka 用 Event Hubs
     items:
     - name: Apache Kafka 対応イベント ハブの作成
       href: event-hubs-create-kafka-enabled.md
     - name: Stream Analytics を使用して Event Hubs イベントの Apache Kafka を処理する
       href: event-hubs-kafka-stream-analytics.md
-  - name: 利用可能な API
-    href: event-hubs-api-overview.md
-    items:
-    - name: .NET Standard
-      href: event-hubs-dotnet-standard-api-overview.md
-    - name: .NET Framework
-      href: event-hubs-dotnet-framework-api-overview.md
   - name: イベントのキャプチャ
     items:
     - name: Azure portal を使用した Event Hubs Capture の有効化
       href: event-hubs-capture-enable-through-portal.md
     - name: Resource Manager テンプレートを使用した Event Hubs Capture の有効化
       href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
+    - name: Python を使用して Event Hubs データをキャプチャする
+      href: event-hubs-capture-python.md
   - name: '[管理]'
     items:
     - name: Azure 監視による Event Hubs の監視
       href: event-hubs-metrics-azure-monitor.md
     - name: Event Hubs 管理ライブラリ
       href: event-hubs-management-libraries.md
-    - name: Python を使用して Event Hubs データをキャプチャする
-      href: event-hubs-capture-python.md
-    - name: Event Hubs を使用して Azure 診断データをストリーミングする
-      href: event-hubs-streaming-azure-diags-data.md
-    - name: Resource Manager テンプレートを使用してイベント ハブを作成およびデプロイする
-      href: event-hubs-resource-manager-namespace-event-hub.md
+  - name: IP フィルターの使用
+    href: event-hubs-ip-filtering.md
+  - name: 仮想ネットワーク サービス エンドポイントの使用
+    href: event-hubs-service-endpoints.md
+  - name: スループット単位の自動スケール
+    href: event-hubs-auto-inflate.md
+  - name: Event Hubs を使用して Azure 診断データをストリーミングする
+    href: event-hubs-streaming-azure-diags-data.md
 - name: リファレンス
   items:
   - name: Java
@@ -173,8 +164,6 @@ items:
     href: event-hubs-faq.md
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/?category=iot
-  - name: ラーニング パス
-    href: https://azure.microsoft.com/documentation/learning-paths/event-hubs/
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/event-hubs/
   - name: 料金計算ツール
@@ -185,9 +174,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 87a0088b54385a0a1af225db6f285dbf892253e7
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 6771409eb0a6fe11ff6a30cb829d3b166d93d8e2
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362791"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426685"

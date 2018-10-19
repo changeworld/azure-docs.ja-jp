@@ -1,22 +1,24 @@
 ---
-title: Knowledge Exploration Service API の構造化クエリ式 | Microsoft Docs
-description: Cognitive Services の Knowledge Exploration Service (KES) API で構造化クエリ式を使用する方法について説明します。
+title: 構造化クエリ式 - Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: Knowledge Exploration Service (KES) API で構造化クエリ式を使用する方法について説明します。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 070ee311a1153bc9fb59870dce68f385a43b15f1
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: bdde2dfc9ab8e8ffdf7123c916538a8c98ecfce9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373176"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129169"
 ---
 # <a name="structured-query-expression"></a>構造化クエリ式
+
 構造化クエリ式で、データ インデックスに対して評価する一連の演算を指定します。  この式は、属性クエリ式と上位レベルの関数で構成されます。  [*evaluate*](evaluateMethod.md) を評価するメソッドを使用して、式と一致するオブジェクトを計算します。  以下は、2013 年以降に Jaime Teevan が著した出版物を返す学術出版ドメインの例です。
 
 `And(Composite(Author.Name=='jaime teevan'),Y>=2013)`
@@ -24,9 +26,10 @@ ms.locfileid: "35373176"
 構造化クエリ式は、[*interpret*](interpretMethod.md) 要求から取得できます。各解釈のセマンティック出力は、入力の自然言語クエリに一致するインデックス オブジェクトを返す構造化クエリ式です。  または、このセクションで説明する構文を使用して手動で作成することもできます。
 
 ## <a name="attribute-query-expression"></a>属性クエリ式
+
 属性クエリ式は、特定の属性との照合に基づいてオブジェクトのセットを識別します。  [スキーマ](SchemaFormat.md)で指定された属性の種類およびインデックス付けされた操作に応じて、異なる照合操作がサポートされます。
 
-| type | 操作 | 例 |
+| type | Operation | 例 |
 |------|-------------|------------|
 | String | equals | Title='latent semantic analysis'  (正規 + シノニム) |
 | String | equals | Author.Name=='susan t dumais'  (正規のみ)|
@@ -45,9 +48,11 @@ ms.locfileid: "35373176"
 
 
 ## <a name="functions"></a>Functions
+
 基本的な属性クエリから、より洗練されたクエリ式を構築することができる組み込み関数が用意されています。
 
 ### <a name="and-function"></a>And 関数
+
 `And(expr1, expr2)`
 
 2 つの入力クエリ式の共通部分を返します。
@@ -57,6 +62,7 @@ ms.locfileid: "35373176"
 `And(Year=2000, Keyword=='information retrieval')`
 
 ### <a name="or-function"></a>Or 関数
+
 `Or(expr1, expr2)`
 
 2 つの入力クエリ式の和集合を返します。
@@ -66,6 +72,7 @@ ms.locfileid: "35373176"
 `And(Year=2000, Or(Keyword='information retrieval', Keyword='user modeling'))`
 
 ### <a name="composite-function"></a>Composite 関数
+
 `Composite(expr)`
 
 共通複合属性のサブ属性に対するクエリで構成される内部式をカプセル化する式を返します。  カプセル化では、一致するデータ オブジェクトの複合属性に、内側の式を個別に満たす値が少なくとも 1 つ存在する必要があります。  複合属性のサブ属性のクエリ式は、他のクエリ式と組み合わせる前に Composite() 関数を使用してカプセル化する必要があります。

@@ -10,18 +10,18 @@ ms.component: manage
 ms.date: 07/27/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 35ae3d1a8a6de2d348f90e2f55b732421b879917
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 57bce631a570f549d46a9b0beefcb5adce4decfc
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307639"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44380116"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>SQL Data Warehouse のレコメンデーション
 
 この記事では、Azure Advisor を通じて SQL Data Warehouse によって提供されるレコメンデーションについて説明します。  
 
-SQL Data Warehouse は、お使いのデータ ウェアハウスのパフォーマンスが終始最適化されるように、レコメンデーションを提供します。 データ ウェアハウスのレコメンデーションは [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) と緊密に連携し、[Azure portal](https://aka.ms/Azureadvisor) 内でベスト プラクティスを直接提供します。 SQL Data Warehouse はお使いのデータ ウェアハウスの現在の状態を分析し、利用統計情報を収集して、アクティブなワークロードに対するレコメンデーションを毎日提供します。 以下にサポートされるデータ ウェアハウスのレコメンデーションのシナリオの概要と、推奨されるアクションを適用する方法を示します。
+SQL Data Warehouse は、お使いのデータ ウェアハウスのパフォーマンスが終始最適化されるように、レコメンデーションを提供します。 データ ウェアハウスのレコメンデーションは [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations) と強固に統合され、[Azure portal](https://aka.ms/Azureadvisor) 内でベスト プラクティスを直接提供します。 SQL Data Warehouse はお使いのデータ ウェアハウスの現在の状態を分析し、利用統計情報を収集して、アクティブなワークロードに対するレコメンデーションを毎日提供します。 以下にサポートされるデータ ウェアハウスのレコメンデーションのシナリオの概要と、推奨されるアクションを適用する方法を示します。
 
 SQL Data Warehouse Advisor についてフィードバックがある、または問題が発生した場合は、[sqldwadvisor@service.microsoft.com](mailto:sqldwadvisor@service.microsoft.com) にお問い合わせください。   
 
@@ -37,6 +37,6 @@ SQL Data Warehouse Advisor についてフィードバックがある、また�
 
 最適でない統計情報は、SQL Data Warehouse のクエリ オプティマイザーが最適でないクエリ計画を作成する原因となるため、クエリ パフォーマンスに深刻な影響を及ぼす可能性があります。 次のドキュメントでは、統計情報の作成や更新に関するベスト プラクティスについて説明します。
 
-- [テーブル統計情報の作成と更新](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistic)
+- [テーブル統計情報の作成と更新](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-statistics)
 
-これら 2 つのレコメンデーションについて、アドバイザーは継続的に次の [T-SQL スクリプト](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)を実行し、スキューの影響を受けるテーブルと統計情報のレコメンデーションを特定します。
+これらのレコメンデーションによって影響を受けるテーブルの一覧を表示するには、次の[T-SQL スクリプト](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables)を実行します。 Advisor は、同じ T-SQL スクリプトを継続的に実行してこれらのレコメンデーションを生成します。

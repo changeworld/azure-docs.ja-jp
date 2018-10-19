@@ -3,7 +3,7 @@ title: Azure Stack でのサービスの提供 | Microsoft Docs
 description: クラウド オペレーターの場合は、ユーザーにサービスを提供できます。
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: jeffgilb
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,23 +12,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
-ms.author: brenduns
+ms.date: 09/17/2018
+ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 042e65cfe350cb61124ed8920ae3616502e6553d
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: e4e1701a145a36fce93db3812b67c307b342da5c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35248845"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127484"
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>Azure Stack でのサービスの提供の概要
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-[Microsoft Azure Stack](azure-stack-poc.md) は、データセンターからのサービスの提供を可能にするハイブリッド クラウド プラットフォームです。 サービス プロバイダーの場合は、テナントにサービスを提供できます。 企業や政府機関では、従業員にオンプレミスのサービスを提供できます。 提供できるサービスとして次のようなものが挙げられます。
+[Microsoft Azure Stack](azure-stack-poc.md) は、データセンターからのサービスの提供を可能にするハイブリッド クラウド プラットフォームです。 サービス プロバイダーの場合は、テナントにサービスを提供できます。 企業や政府機関では、従業員にオンプレミスのサービスを提供できます。 
 
-- App Services、API Apps、API 関数、SQL、MySQL などの、サービスとしてのプラットフォーム (PaaS) サービス。
+[サービスとしてのインフラストラクチャ](https://azure.microsoft.com/overview/what-is-iaas/) (IaaS) サービスを提供し、ユーザーが、Azure Stack ユーザー ポータルからプロビジョニングおよび管理されるオンデマンドのコンピューティング インフラストラクチャを構築できるようにすることができます。
+
+また、マイクロソフトおよびその他サード パーティ プロバイダーの Azure Stack 用の[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) サービスをデプロイすることもできます。 提供できるサービスとして次のようなものが挙げられます。
+
+- [App Service リソース プロバイダーを Azure Stack に追加する](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-overview)
+
+- [SQL Server リソース プロバイダーを Azure Stack に追加する](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
+
+- [MySQL サーバー リソース プロバイダーを Azure Stack に追加する](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)
+
 
 サービスを組み合わせて、さまざまなユーザー向けに複雑なソリューションを統合して作成することもできます。
 

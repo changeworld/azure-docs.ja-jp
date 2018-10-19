@@ -15,19 +15,21 @@ ms.workload: identity
 ms.date: 07/16/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: a7060f9204690e5e7b84693042cecb164c36b45b
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: d52ec316f9f5540d4d0d0fe0bc4e4bf778e1daf7
+ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366339"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44345445"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Azure Active Directory とアプリケーションの統合のファースト ステップ ガイド
-## <a name="overview"></a>概要
-このトピックは、アプリケーションを Azure Active Directory (AD) と統合するためのロードマップを示すことを目的としています。 以下の各セクションには、詳細なトピックの要点が記載されており、このファースト ステップ ガイドのどの部分が自分に必要かを特定できるようになっています。  リンク先のページで各トピックの詳細を参照できます。
 
-## <a name="before-you-begin-take-inventory"></a>開始する前にインベントリを取得する
-アプリケーションと Azure AD の統合に急いで着手する前に、現在地と目的地を知ることが重要です。  次の質問は、Azure AD のアプリケーション統合プロジェクトについて考える際に役立つように設計されています。
+このトピックでは、アプリケーションを Azure Active Directory (AD) と統合するためのプロセスを要約しています。 以下の各セクションには、詳細なトピックの要点が記載されており、このファースト ステップ ガイドのどの部分が自分に必要かを特定できるようになっています。
+
+詳細な展開計画をダウンロードするには、[次のステップ](#next-steps)を参照してください。
+
+## <a name="take-inventory"></a>インベントリの取り込み
+アプリケーションと Azure AD を統合する前に、現在地と目的地を知ることが重要です。  次の質問は、Azure AD のアプリケーション統合プロジェクトについて考える際に役立つように設計されています。
 
 ### <a name="application-inventory"></a>アプリケーション インベントリ
 * すべてのアプリケーションがどこに存在するか。 どのユーザーがそのアプリケーションを所有しているか。
@@ -57,12 +59,16 @@ ms.locfileid: "39366339"
 
 一部の質問にはあらかじめ回答できないこともありますが、それでもかまいません。  このガイドにより、そのような質問の一部に回答し、一部に情報に基づいて判断できるようになります。
 
-## <a name="prerequisites"></a>前提条件
-* Azure サブスクリプションと Azure Active Directory のディレクトリ。  Azure サブスクリプションをまだ取得していない場合は、30 日間の無料試用版を試すことができます。 [実際に使ってみてください。](https://azure.microsoft.com/trial/get-started-active-directory/)
+### <a name="find-unsanctioned-cloud-applications-with-cloud-discovery"></a>承認されていないクラウド アプリケーションを Cloud Discovery で検出する
 
-## <a name="application-integration-with-azure-ad"></a>Azure AD とのアプリケーションの統合
-### <a name="finding-unsanctioned-cloud-applications-with-cloud-discovery"></a>承認されていないクラウド アプリケーションを Cloud Discovery で検出する
 前に説明したように、これまで組織で管理されていなかったアプリケーションが存在する可能性があります。  インベントリのプロセスの一環で、承認されていないクラウド アプリケーションを検索することができます。 「[Cloud Discovery の設定](/cloud-app-security/set-up-cloud-discovery)」を参照してください。
+
+## <a name="integrating-applications-with-azure-ad"></a>Azure AD とアプリケーションの統合
+次の記事では、アプリケーションを Azure AD と統合するさまざまな方法について説明し、ガイダンスをいくつか示します。
+
+* [使用する Active Directory の決定](../fundamentals/active-directory-administer.md)
+* [Azure アプリケーション ギャラリーのアプリケーションの使用](what-is-single-sign-on.md)
+* [SaaS アプリケーションのチュートリアルの一覧の統合](../active-directory-saas-tutorial-list.md)
 
 ### <a name="authentication-types"></a>認証の種類
 各アプリケーションにさまざまな認証の要件が存在する可能性があります。 Azure AD では、証明書の署名に、パスワードによるシングル サインオンだけでなく、SAML 2.0、WS-Federation、OpenID Connect プロトコルを使用するアプリケーションを使用することができます。 Azure AD で使用するアプリケーション認証の種類の詳細については、「[Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](manage-certificates-for-federated-single-sign-on.md)」と[パスワード ベースのシングル サインオン](what-is-single-sign-on.md)に関するページを参照してください。
@@ -70,27 +76,26 @@ ms.locfileid: "39366339"
 ### <a name="enabling-sso-with-azure-ad-app-proxy"></a>Azure AD アプリケーション プロキシを使用した SSO の有効化
 Microsoft Azure AD アプリケーション プロキシを使用すると、プライベート ネットワーク内に置かれたアプリケーションへの、任意の場所および任意のデバイスからのアクセスを安全に許可することができます。 アプリケーション プロキシ コネクタは、環境内にインストールすると、Azure AD で簡単に構成することができます。
 
-### <a name="integrating-applications-with-azure-ad"></a>Azure AD とアプリケーションの統合
-次の記事では、アプリケーションを Azure AD と統合するさまざまな方法について説明し、ガイダンスをいくつか示します。
+### <a name="integrating-custom-applications"></a>カスタム アプリケーションの統合
+新しいアプリケーションの作成中に、開発者が Azure AD の機能を活用できるようにサポートする必要がある場合は、 [開発者ガイド](../active-directory-applications-guiding-developers-for-lob-applications.md)を参照してください。
 
-* [使用する Active Directory の決定](../fundamentals/active-directory-administer.md)
-* [Azure アプリケーション ギャラリーのアプリケーションの使用](what-is-single-sign-on.md)
-* [SaaS アプリケーションのチュートリアルの一覧の統合](../saas-apps/tutorial-list.md)
+カスタム アプリケーションを Azure アプリケーション ギャラリーに追加する場合は、 [Azure AD のセルフ サービス SAML 構成を使用した "ユーザー独自のアプリケーションの持ち込み"](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)に関するページを参照してください。
 
 ## <a name="managing-access-to-applications"></a>アプリケーションへのアクセスの管理
 次の記事では、Azure AD コネクタと Azure AD を使用して Azure AD と統合した後でアプリケーションへのアクセスを管理する方法について説明します。
 
 * [Azure AD を使用したアプリへのアクセスの管理](what-is-access-management.md)
-* [Azure AD コネクタを使用した自動化](../active-directory-saas-app-provisioning.md)
+* [Azure AD コネクタを使用した自動化](user-provisioning.md)
 * [アプリケーションへのユーザーの割り当て](../active-directory-applications-guiding-developers-assigning-users.md)
 * [アプリケーションへのグループの割り当て](../active-directory-applications-guiding-developers-assigning-groups.md)
 * [アカウントの共有](../active-directory-sharing-accounts.md)
 
-## <a name="integrating-custom-applications"></a>カスタム アプリケーションの統合
-新しいアプリケーションの作成中に、開発者が Azure AD の機能を活用できるようにサポートする必要がある場合は、 [開発者ガイド](../active-directory-applications-guiding-developers-for-lob-applications.md)を参照してください。
+## <a name="next-steps"></a>次の手順
+詳細については、[GitHub](https://aka.ms/deploymentplans) から Azure Active Directory のデプロイ計画をダウンロードできます。 ギャラリーのアプリケーションでは、シングル サインオン、条件付きアクセス、およびユーザー プロビジョニングのデプロイ計画を [Azure portal](https://portal.azure.com) からダウンロードすることができます。 
 
-カスタム アプリケーションを Azure アプリケーション ギャラリーに追加する場合は、 [Azure AD のセルフ サービス SAML 構成を使用した "ユーザー独自のアプリケーションの持ち込み"](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)に関するページを参照してください。
+デプロイ計画を Azure portal からダウンロードするには。
 
-## <a name="see-also"></a>関連項目
-* [Azure Active Directory のアプリケーション構成の管理に関する記事の索引](../active-directory-apps-index.md)
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. **エンタープライズ アプリケーション** | **を選択し、** | **デプロイ計画**アプリケーションを使用します。
 
+[デプロイ計画の調査](https://aka.ms/DeploymentPlanFeedback)を実施し、デプロイ計画に関するフィードバックを提供してください。

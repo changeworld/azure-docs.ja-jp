@@ -1,22 +1,23 @@
 ---
-title: Microsoft Translator Text API 辞書検索メソッド | Microsoft Docs
-description: Microsoft Translator Text API 翻訳メソッドを使用します。
+title: Translator Text API の Dictionary Lookup メソッド
+titlesuffix: Azure Cognitive Services
+description: Translator Text API の Dictionary Lookup メソッドを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5a186f60dc099b095c00056d965aa92618c2c708
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 41b610f3504a8eb6619613e3ad0aa7c1c4cf9f66
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868087"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127844"
 ---
-# <a name="text-api-30-dictionary-lookup"></a>Text API 3.0: 辞書検索
+# <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3.0: Dictionary Lookup
 
 単語や少数の慣用句に対し代替の翻訳を提供します。 各翻訳には品詞と、逆翻訳のリストが含まれます。 逆翻訳により、ユーザーはコンテキスト内の翻訳を理解することができます。 [辞書の例](.\v3-0-dictionary-examples.md)操作では、さらにドリル ダウンすることで、各翻訳ペアの使用例を参照することができます。
 
@@ -37,15 +38,15 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
   <th>説明</th>
   <tr>
     <td>api-version</td>
-    <td>*必須のパラメーター*。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
+    <td>"*必須のパラメーター*"。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
   </tr>
   <tr>
     <td>from</td>
-    <td>*必須のパラメーター*。<br/>入力テキストの言語を指定します。 ソース言語は、`dictionary` スコープに含まれている[サポートされている言語](.\v3-0-languages.md)のいずれかとする必要があります。</td>
+    <td>"*必須のパラメーター*"。<br/>入力テキストの言語を指定します。 ソース言語は、`dictionary` スコープに含まれている[サポートされている言語](.\v3-0-languages.md)のいずれかとする必要があります。</td>
   </tr>
   <tr>
     <td>to</td>
-    <td>*必須のパラメーター*。<br/>出力テキストの言語を指定します。 ターゲット言語は、`dictionary` スコープに含まれている[サポートされている言語](.\v3-0-languages.md)のいずれかとする必要があります。</td>
+    <td>"*必須のパラメーター*"。<br/>出力テキストの言語を指定します。 ターゲット言語は、`dictionary` スコープに含まれている[サポートされている言語](.\v3-0-languages.md)のいずれかとする必要があります。</td>
   </tr>
 </table>
 
@@ -55,16 +56,16 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
   <th width="20%">headers</th>
   <th>説明</th>
   <tr>
-    <td>_One authorization_<br/>_header_</td>
-    <td>*必須の要求ヘッダー*。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページを参照してください。</td>
+    <td>_1 つの承認_<br/>_ヘッダー_></td>
+    <td>"*必須の要求ヘッダー*" です。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページをご覧ください。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*必須の要求ヘッダー*。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
+    <td>"*必須の要求ヘッダー*" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*必須の要求ヘッダー*。<br/>要求本文の長さです。</td>
+    <td>"*必須の要求ヘッダー*" です。<br/>要求本文の長さです。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>

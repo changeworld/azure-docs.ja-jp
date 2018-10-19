@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: fd93f1ad83f6627f27534eca17f91c9fe9b2cc9f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: d9df71f6fa2f64544cbefc7d9aca8c153c86ac98
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667859"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094257"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Azure 仮想マシンの使用量について
-Azure の使用量のデータを分析すると、消費額に関して説得力のある裏付けを得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure Compute の消費額について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](/billing/billing-understand-your-bill.md)に関するページをご覧ください。
+Azure の使用量のデータを分析すると、消費額に関して説得力のある裏付けを得ることができ、より効果的なコスト管理や組織全体への割り当てを実現できます。 このドキュメントでは、Azure Compute の消費額について詳しく見ていきます。 一般的な Azure 使用量の詳細については、[請求書の見方](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)に関するページをご覧ください。
 
 ## <a name="download-your-usage-details"></a>使用量の詳細のダウンロード
 最初に、[使用量の詳細をダウンロード](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)します。 次の表は、Azure Resource Manager を使用してデプロイされた Virtual Machines の使用量の定義とサンプル値を示しています。 このドキュメントには、クラシック モデルを使用してデプロイされた VM に関する詳細情報は含まれません。
@@ -143,5 +143,6 @@ Microsoft.ClassicCompute は、Azure Service Manager を使ってデプロイし
 Premium Storage 対応の VM の料金は、Premium Storage 非対応の VM と同じです。 異なるのはストレージ コストのみです。 詳細については、[ストレージの価格ページ](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
-使用量の詳細については、「[Understand your bill for Microsoft Azure (Microsoft Azure の課金について)](/billing/billing-understand-your-bill.md)」を参照してください。
+使用量の詳細については、「[Understand your bill for Microsoft Azure (Microsoft Azure の課金について)](https://docs.microsoft.com/azure/billing/billing-understand-your-bill
+)」を参照してください。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.component: common
-ms.openlocfilehash: e560eb9e0bbce09c541bfc66ea760ea3e636f841
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 0807bc5df9d4ee8782ae017dbb7ed63c38a13443
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528716"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304681"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -73,7 +73,7 @@ Azure のストレージ アプリケーションにおけるエンド ツー �
   * [付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ]
   * [付録 3: Microsoft Message Analyzer を使用したネットワーク トラフィックのキャプチャ]
   * [付録 4: Excel を使用したメトリックおよびログ データの表示]
-  * [付録 5: Application Insights for Visual Studio Team Services を使用した監視]
+  * [付録 5: Application Insights for Azure DevOps を使用した監視]
 
 ## <a name="introduction"></a>はじめに
 このガイドでは、Azure Storage Analytics、Azure ストレージ クライアント ライブラリのクライアント側ログ、他のサード パーティのツールなどの機能を使用して、Azure Storage 関連の問題を識別、診断、およびトラブルシューティングする方法を説明します。
@@ -125,7 +125,7 @@ Azure Portal では、ストレージ アカウントの可用性、要求の総
 [Azure Portal](https://portal.azure.com) には、さまざまな Azure サービスに影響を与えるアクシデントについての通知も表示されます。
 注: この情報は、以前は [Azure サービス ダッシュボード](http://status.azure.com)に履歴データと共に提供されていました。
 
-[Azure Portal](https://portal.azure.com) によって Azure データセンター内部から正常性情報が収集 (内部からの監視) されますが、Azure でホストする Web アプリケーションに定期的に複数の場所からアクセスする疑似トランザクションを生成して外部から監視する方法を採ることを検討しても良いでしょう。 このような方法の例としては、 [Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring)、Application Insights for Visual Studio Team Services が提供しているサービスがあります。 Application Insights for Visual Studio Team Services の詳細については、付録「[付録 5: Application Insights for Visual Studio Team Services を使用した監視](#appendix-5)」を参照してください。
+[Azure Portal](https://portal.azure.com) によって Azure データセンター内部から正常性情報が収集 (内部からの監視) されますが、Azure でホストする Web アプリケーションに定期的に複数の場所からアクセスする疑似トランザクションを生成して外部から監視する方法を採ることを検討しても良いでしょう。 このような方法の例としては、[Dynatrace](http://www.dynatrace.com/en/synthetic-monitoring) や Application Insights for Azure DevOps が提供しているサービスがあります。 Application Insights for Azure DevOps の詳細については、付録「[付録 5: Application Insights for Azure DevOps を使用した監視](#appendix-5)」を参照してください。
 
 ### <a name="monitoring-capacity"></a>容量監視
 ストレージ メトリックは、一般に保管データの大部分を BLOB が占めるため、BLOB サービスの容量メトリックのみを保管します (現時点では、ストレージ メトリックを使用してテーブルおよびキューの容量を監視することはできません)。 このデータは、Blob service の監視を有効にした場合に **$MetricsCapacityBlob** テーブルに格納されます。 ストレージ メトリックはこのデータを 1 日に 1 回記録します。**RowKey** の値を使用すれば、行に含まれているエンティティがユーザー データに関するものか (値 **data**)、それとも分析データに関するものか (値 **analytics**) 調べることができます。 格納された各エンティティには、ストレージの使用量 (**Capacity**: バイト単位)、現在のコンテナー数 (**ContainerCount**)、およびストレージ アカウントで使用されている BLOB の数 (**ObjectCount**) に関する情報が入っています。 **$MetricsCapacityBlob** テーブルに格納される容量メトリックの詳細については、「[Storage Analytics Metrics のテーブルのスキーマ](http://msdn.microsoft.com/library/azure/hh343264.aspx)」をご覧ください。
@@ -799,8 +799,8 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 
 **[テキスト ファイル ウィザード]** の手順 1 で、**[セミコロン]** のみを区切り文字として選択し、**[文字列の引用符]** として二重引用符を選択します。 **[完了]** をクリックし、ワークブックでデータを配置する場所を選択します。
 
-### <a name="appendix-5"></a>付録 5: Application Insights for Visual Studio Team Services を使用した監視
-パフォーマンスおよび可用性の監視の一環として、Visual Studio Team Services の Application Insights 機能を使用することもできます。 このツールは、以下を実行できます。
+### <a name="appendix-5"></a>付録 5: Application Insights for Azure DevOps を使用した監視
+パフォーマンスと可用性の監視の一部として、Azure DevOps 用の Application Insights 機能を使用することもできます。 このツールは、以下を実行できます。
 
 * Web サービスが使用可能および応答可能であることを確認できます。 アプリケーションが Web サイトであるか、Web サービスを使用するデバイス アプリである場合、世界中の複数の場所から数分ごとに URL をテストし、問題がある場合には通知することができます。
 * Web サービスのパフォーマンス上の問題または例外をすばやく診断できます。 CPU やその他のリソースが限界まで使用されていることを検出したり、例外からスタック トレースを取得したり、ログ トレース全体を簡単に検索したりできます。 アプリのパフォーマンスの低下が許容できる限界を超えている場合には、Microsoft から電子メールを送信できます。 .NET と Java の両方の Web サービスを監視できます。
@@ -865,7 +865,7 @@ BLOB ストレージからダウンロードしたストレージ ログ デー�
 [付録 2: Wireshark を使用したネットワーク トラフィックのキャプチャ]: #appendix-2
 [付録 3: Microsoft Message Analyzer を使用したネットワーク トラフィックのキャプチャ]: #appendix-3
 [付録 4: Excel を使用したメトリックおよびログ データの表示]: #appendix-4
-[付録 5: Application Insights for Visual Studio Team Services を使用した監視]: #appendix-5
+[付録 5: Application Insights for Azure DevOps を使用した監視]: #appendix-5
 
 <!--Image references-->
 [1]: ./media/storage-monitoring-diagnosing-troubleshooting/overview.png

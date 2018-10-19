@@ -1,6 +1,6 @@
 ---
-title: Distcp を使用して Data Lake Store と WASB の間でデータをコピーする | Microsoft Docs
-description: Distcp ツールを使用して Azure Storage BLOB と Data Lake Store の間でデータをコピーする
+title: Distcp を使用して Azure Data Lake Storage Gen1 と WASB の間でデータをコピーする | Microsoft Docs
+description: Distcp ツールを使用して Azure Storage BLOB と Azure Data Lake Storage Gen1 の間でデータをコピーする
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,34 +12,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: d6f4d1f7b974a3cd44e7cb9ffc2c63548f0bc321
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 9740de34fe7cf7d06af1803cc6d77d7e89bbb73f
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624395"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391523"
 ---
-# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-store"></a>Distcp を使用して Azure Storage BLOB と Data Lake Store の間でデータをコピーする
+# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Distcp を使用して Azure Storage BLOB と Azure Data Lake Storage Gen1 の間でデータをコピーする
 > [!div class="op_single_selector"]
 > * [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
 > * [AdlCopy を使用](data-lake-store-copy-data-azure-storage-blob.md)
 >
 >
 
-Data Lake Store にアクセスできる HDInsight クラスターがある場合、Distcp などの Hadoop エコシステム ツールを使用し、HDInsight クラスター記憶域 (WASB) と Data Lake Store アカウントの**間**でデータをコピーできます。 この記事では、Distcp ツールの使用方法について説明します。
+Azure Data Lake Storage Gen1 にアクセスできる HDInsight クラスターがある場合、Distcp などの Hadoop エコシステム ツールを使用し、HDInsight クラスター記憶域 (WASB) と Data Lake Storage Gen1 アカウント**との間**でデータをコピーできます。 この記事では、Distcp ツールの使用方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
-* Data Lake Store アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Store を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
+* **Azure Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
+* Data Lake Storage Gen1 アカウントにアクセスできる **Azure HDInsight クラスター**。 [Data Lake Storage Gen1 を使用する HDInsight クラスターの作成](data-lake-store-hdinsight-hadoop-use-portal.md)に関するページを参照してください。 クラスターのリモート デスクトップが有効になっていることを確認します。
 
 ## <a name="do-you-learn-fast-with-videos"></a>ビデオで速習する
-[こちらのビデオ](https://mix.office.com/watch/1liuojvdx6sie) をご覧ください。
+DistCp を使用して Azure Storage Blob と Data Lake Storage Gen1 の間でデータをコピーする方法については、[こちらのビデオ](https://mix.office.com/watch/1liuojvdx6sie)をご覧ください。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>HDInsight Linux クラスターから Distcp を使用する
 
-HDInsight クラスターには Distcp ユーティリティが付属しています。これを使用してさまざまなソースから HDInsight クラスターにデータをコピーできます。 追加の記憶域として Data Lake Store を使用する HDInsight クラスターを構成している場合、Distcp ユーティリティをすぐに使用し、Data Lake Store アカウント間でもデータをコピーできます。 このセクションでは、Distcp ユーティリティを使用する方法について説明します。
+HDInsight クラスターには Distcp ユーティリティが付属しています。これを使用してさまざまなソースから HDInsight クラスターにデータをコピーできます。 追加の記憶域として Data Lake Storage Gen1 を使用する HDInsight クラスターを構成している場合、Distcp ユーティリティをすぐに使用し、Data Lake Storage Gen1 アカウント間でもデータをコピーできます。 このセクションでは、Distcp ユーティリティを使用する方法について説明します。
 
 1. デスクトップから、SSH を使用してクラスターに接続します。 「 [Linux ベースの HDInsight クラスターへの接続](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。 SSH プロンプトからコマンドを実行します。
 
@@ -49,31 +49,31 @@ HDInsight クラスターには Distcp ユーティリティが付属してい�
 
     出力には、ストレージ BLOB の内容の一覧が表示されます。
 
-3. 同様に、クラスターから Data Lake Store アカウントにアクセスできるかどうかを確認します。 次のコマンドを実行します。
+3. 同様に、クラスターから Data Lake Storage Gen1 アカウントにアクセスできるかどうかを確認します。 次のコマンドを実行します。
 
-        hdfs dfs -ls adl://<data_lake_store_account>.azuredatalakestore.net:443/
+        hdfs dfs -ls adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/
 
-    出力には、Data Lake Store アカウントのファイル/フォルダーの一覧が表示されます。
+    出力には、Data Lake Storage Gen1 アカウントのファイル/フォルダーの一覧が表示されます。
 
-4. Distcp を使用し、WASB から Data Lake Store アカウントにデータをコピーします。
+4. Distcp を使用し、WASB から Data Lake Storage Gen1 アカウントにデータをコピーします。
 
-        hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg adl://<data_lake_store_account>.azuredatalakestore.net:443/myfolder
+        hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/myfolder
 
-    このコマンドを実行すると、WASB の **/example/data/gutenberg/** フォルダーの内容が Data Lake Store アカウントの **/myfolder** にコピーされます。
+    このコマンドを実行すると、WASB の **/example/data/gutenberg/** フォルダーの内容が Data Lake Storage Gen1 アカウントの **/myfolder** にコピーされます。
 
-5. 同様に、Distcp を使用し、Data Lake Store アカウントと WASB の間でデータをコピーします。
+5. 同様に、Distcp を使用し、Data Lake Storage Gen1 アカウントと WASB の間でデータをコピーします。
 
-        hadoop distcp adl://<data_lake_store_account>.azuredatalakestore.net:443/myfolder wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg
+        hadoop distcp adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/myfolder wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg
 
-    このコマンドを実行すると、Data Lake Store アカウントの **/myfolder** の内容が WASB の **/example/data/gutenberg/** フォルダーにコピーされます。
+    このコマンドを実行すると、Data Lake Storage Gen1 アカウントの **/myfolder** の内容が WASB の **/example/data/gutenberg/** フォルダーにコピーされます。
 
 ## <a name="performance-considerations-while-using-distcp"></a>DistCp を使用するときのパフォーマンスに関する考慮事項
 
-DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake Store に対して最適化するうえで最も重要なのが、同時コピーの最大数を設定するパラメーターです。 同時コピー数を制御するには、コマンド ラインでマッパー ("m") パラメーターの数を設定します。 このパラメーターで、データをコピーするときに使用されるマッパーの最大数を指定します。 既定値は 20 です。
+DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake Storage Gen1 に対して最適化するうえで最も重要なのが、同時コピーの最大数を設定するパラメーターです。 同時コピー数を制御するには、コマンド ラインでマッパー ("m") パラメーターの数を設定します。 このパラメーターで、データをコピーするときに使用されるマッパーの最大数を指定します。 既定値は 20 です。
 
 **例**
 
-    hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg adl://<data_lake_store_account>.azuredatalakestore.net:443/myfolder -m 100
+    hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg adl://<data_lake_storage_gen1_account>.azuredatalakestore.net:443/myfolder -m 100
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>使用するマッパーの数を特定するにはどうすればよいですか。
 
@@ -114,7 +114,7 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 * Azure Blob Storage アカウントからコピーする場合、コピー ジョブは、Blob Storage 側で調整されることがあります。 これにより、コピー ジョブのパフォーマンスが低下します。 Azure Blob Storage の制限の詳細については、[Azure サブスクリプションとサービスの制限事項](../azure-subscription-service-limits.md)に関するページをご覧ください。
 
 ## <a name="see-also"></a>関連項目
-* [Azure Storage BLOB から Data Lake Store へのデータのコピー](data-lake-store-copy-data-azure-storage-blob.md)
-* [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
-* [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure Storage Blob から Data Lake Storage Gen1 へのデータのコピー](data-lake-store-copy-data-azure-storage-blob.md)
+* [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
+* [Data Lake Storage Gen1 で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Data Lake Storage Gen1 で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)

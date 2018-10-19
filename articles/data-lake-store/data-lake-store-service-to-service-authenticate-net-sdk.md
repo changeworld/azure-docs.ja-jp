@@ -1,6 +1,6 @@
 ---
-title: 'サービス間認証: .NET SDK から Azure Active Directory を使用して Data Lake Store に対する認証を行う | Microsoft Docs'
-description: .NET SDK から Azure Active Directory を使用して Data Lake Store に対するサービス間認証を行う方法について説明します
+title: 'サービス間認証: .NET SDK から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対する認証を行う | Microsoft Docs'
+description: .NET SDK から Azure Active Directory を使用して Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 388b84024a031a181625404ec1429087982dffbe
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bd03c0801fed0da6d9a87466bc33819f6afa4578
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625493"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296925"
 ---
-# <a name="service-to-service-authentication-with-data-lake-store-using-net-sdk"></a>Data Lake Store に対する .NET SDK を使用したサービス間認証
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Azure Data Lake Storage Gen1 に対する .NET SDK を使用したサービス間認証
 > [!div class="op_single_selector"]
 > * [Java の使用](data-lake-store-service-to-service-authenticate-java.md)
 > * [.NET SDK の使用](data-lake-store-service-to-service-authenticate-net-sdk.md)
@@ -27,7 +27,7 @@ ms.locfileid: "34625493"
 > 
 >  
 
-この記事では、.NET SDK を使用して、Azure Data Lake Store に対するサービス間認証を行う方法について説明します。 .NET SDK を使用した Data Lake Store に対するエンド ユーザー認証については、「[End-user authentication with Data Lake Store using .NET SDK (.NET SDK を使用した Data Lake Store に対するエンドユーザー認証)](data-lake-store-end-user-authenticate-net-sdk.md)」を参照してください。
+この記事では、.NET SDK を使用して、Azure Data Lake Storage Gen1 に対するサービス間認証を行う方法について説明します。 .NET SDK を使用した Data Lake Storage Gen1 に対するエンド ユーザー認証については、[Data Lake Storage Gen1 による .NET SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-net-sdk.md)に関するページを参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -35,7 +35,7 @@ ms.locfileid: "34625493"
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 
-* **Azure Active Directory "Web" アプリケーションを作成します**。 [Data Lake Store に対する Azure Active Directory を使用したサービス間認証](data-lake-store-service-to-service-authenticate-using-active-directory.md)の手順を完了している必要があります。
+* **Azure Active Directory "Web" アプリケーションを作成します**。 [Data Lake Storage Gen1 に対する Azure Active Directory を使用したサービス間認証](data-lake-store-service-to-service-authenticate-using-active-directory.md)の手順を完了している必要があります。
 
 ## <a name="create-a-net-application"></a>.NET アプリケーションの作成
 1. Visual Studio を開き、コンソール アプリケーションを作成します。
@@ -44,7 +44,7 @@ ms.locfileid: "34625493"
 
    | プロパティ | 値 |
    | --- | --- |
-   | カテゴリ |テンプレート/Visual C#/Windows |
+   | Category |テンプレート/Visual C#/Windows |
    | テンプレート |コンソール アプリケーション |
    | Name |CreateADLApplication |
 4. **[OK]** をクリックしてプロジェクトを作成します。
@@ -78,7 +78,7 @@ ms.locfileid: "34625493"
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 ## <a name="service-to-service-authentication-with-client-secret"></a>クライアント シークレットによるサービス間認証
-このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD の Web アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。  このスニペットを使用すると、Data Lake Store に対し、Azure AD Web アプリケーションのクライアント シークレット/キーを使用して、**非対話形式**でアプリケーションを認証することができます。 
+このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD の Web アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。  このスニペットを使用すると、Data Lake Storage Gen1 に対し、Azure AD Web アプリケーションのクライアント シークレット/キーを使用して、**非対話形式**でアプリケーションを認証することができます。 
 
     private static void Main(string[] args)
     {    
@@ -97,7 +97,7 @@ ms.locfileid: "34625493"
 
 ## <a name="service-to-service-authentication-with-certificate"></a>証明書によるサービス間認証
 
-このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD の Web アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Store に対し、Azure AD Web アプリケーションの証明書を使用して、**非対話形式**でアプリケーションを認証することができます。 Azure AD アプリケーションを作成する方法の手順については、[証明書を使用したサービス プリンシパルの作成](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate)に関するページを参照してください。
+このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD の Web アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Storage Gen1 に対し、Azure AD Web アプリケーションの証明書を使用して、**非対話形式**でアプリケーションを認証することができます。 Azure AD アプリケーションを作成する方法の手順については、[証明書を使用したサービス プリンシパルの作成](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate)に関するページを参照してください。
 
     
     private static void Main(string[] args)
@@ -116,9 +116,9 @@ ms.locfileid: "34625493"
 上記のスニペットでは、ヘルパー関数 `GetCreds_SPI_Cert` を使用しています。 このヘルパー関数のコードは[こちらの Github で](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert)入手できます。
 
 ## <a name="next-steps"></a>次の手順
-この記事では、Azure Data Lake Store に対し、.NET SDK からサービス間認証を使って認証を行う方法について説明しました。 これで、.NET SDK を使用して Azure Data Lake Store を使用する方法について説明した次の記事に進めるようになりました。
+この記事では、.NET SDK からサービス間認証を使って Data Lake Storage Gen1 に対して認証を行う方法について説明しました。 これで、.NET SDK を使用して Data Lake Storage Gen1 を操作する方法について説明した次の記事に進めるようになりました。
 
-* [.NET SDK を使用した Data Lake Store に対するアカウント管理操作](data-lake-store-get-started-net-sdk.md)
-* [.NET SDK を使用した Data Lake Store に対するデータ操作](data-lake-store-data-operations-net-sdk.md)
+* [.NET SDK を使用した Data Lake Storage Gen1 に対するアカウント管理操作](data-lake-store-get-started-net-sdk.md)
+* [.NET SDK を使用した Data Lake Storage Gen1 に対するデータ操作](data-lake-store-data-operations-net-sdk.md)
 
 

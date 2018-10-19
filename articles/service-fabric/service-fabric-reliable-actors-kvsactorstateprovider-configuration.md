@@ -1,5 +1,5 @@
 ---
-title: Azure マイクロサービスで KVSActorStateProvider の設定を変更する | Microsoft Docs
+title: Azure Service Fabric アクターで KVSActorStateProvider の設定を変更する | Microsoft Docs
 description: KVSActorStateProvider 型の Azure Service Fabric ステートフル アクターの構成について説明します。
 services: Service-Fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: c01bcfecea8d79784b764e715f077c76e7d4be45
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
+ms.openlocfilehash: 81c09d61a5213319fa01ef5cc7070ffe385bbab1
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37017649"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44049512"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Reliable Actors の構成 - KVSActorStateProvider
 KVSActorStateProvider の既定の構成を変更するには、指定されたアクターの Config フォルダーの下にある Microsoft Visual Studio パッケージ ルートで生成された settings.xml ファイルを変更します。
@@ -36,7 +36,7 @@ Azure Service Fabric ランタイムは settings.xml ファイルで定義済み
 既定では、セキュリティ構成セクションが空の場合、レプリケーション セキュリティは有効になりません。
 
 > [!IMPORTANT]
-> Linux ノードでは、証明書は PEM 形式でなければなりません。 Linux での証明書の場所と構成の詳細については、[Linux 上での証明書の構成](./service-fabric-configure-certificates-linux.md)に関する記事を参照してください。 
+> Linux ノードでは、証明書は PEM 形式でなければなりません。 Linux での証明書の場所と構成について詳しくは、[Linux 上での証明書の構成](./service-fabric-configure-certificates-linux.md)に関する記事をご覧ください。 
 > 
 
 ### <a name="section-name"></a>セクション名

@@ -1,22 +1,23 @@
 ---
-title: Microsoft Translator Text API の BreakSentence メソッド | Microsoft Docs
-description: Microsoft Translator Text API の BreakSentence メソッドを使用します。
+title: Translator Text API の BreakSentence メソッド
+titlesuffix: Azure Cognitive Services
+description: Translator Text API の BreakSentence メソッドを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 8ce6644d21b397ea0e7f2e71e3c3a5a96638eec5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1202d49688bfd6aee50d1fa21c10423c071c6d92
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377536"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124985"
 ---
-# <a name="text-api-30-breaksentence"></a>Text API 3.0: BreakSentence
+# <a name="translator-text-api-30-breaksentence"></a>Translator Text API 3.0: BreakSentence
 
 文章内で文の境界の位置を識別します。
 
@@ -40,11 +41,11 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
     <td>"*必須のクエリ パラメーター*" です。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
   </tr>
   <tr>
-    <td>言語</td>
+    <td>language</td>
     <td>"*省略可能なクエリ パラメーター*" です。<br/>入力テキストの言語を示す言語タグ。 コードを指定しないと、言語の自動検出が適用されます。</td>
   </tr>
   <tr>
-    <td>script (スクリプト)</td>
+    <td>script</td>
     <td>"*省略可能なクエリ パラメーター*" です。<br/>入力テキストで使われているスクリプトを示すスクリプト タグ。 スクリプトを指定しないと、言語の既定のスクリプトと見なされます。</td>
   </tr>
 </table> 

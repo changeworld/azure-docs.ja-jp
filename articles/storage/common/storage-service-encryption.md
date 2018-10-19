@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: 5b676bbc764cb5689a6c80e81f597776fe80413e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c6001b0c95186dff53f33c73833b4cea30688db2
+ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520726"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44094894"
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption for Data at Rest
-Azure Storage Service Encryption for Data at Rest を使用すると、データを保護し、組織のセキュリティとコンプライアンスの要件を満たすことができます。 この機能を使用すると、Azure Storage プラットフォームではデータが Azure Managed Disks、Azure Blob Storage、Azure Files、または Azure Queue Storage に保存される前に自動的に暗号化され、データが取得される前に暗号化が解除されます。 Storage Service Encryption での暗号化、保存時の暗号化、キー管理の処理は、ユーザーにとって透過的に行われます。 Azure Storage プラットフォームに書き込まれるすべてのデータは、現在利用できるブロック暗号化の中でも最強レベルの 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)によって暗号化されます。
+Azure Storage Service Encryption for Data at Rest を使用すると、データを保護し、組織のセキュリティとコンプライアンスの要件を満たすことができます。 この機能を使用すると、Azure Storage プラットフォームではデータが Azure Managed Disks、Azure Blob、Queue、Table Storage、または Azure Files に保存される前に自動的に暗号化され、データが取得される前に暗号化が解除されます。 Storage Service Encryption での暗号化、保存時の暗号化、キー管理の処理は、ユーザーにとって透過的に行われます。 Azure Storage プラットフォームに書き込まれるすべてのデータは、現在利用できるブロック暗号化の中でも最強レベルの 256 ビット [AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)によって暗号化されます。
 
 Storage Service Encryption は新しいストレージ アカウントと既存のストレージ アカウントすべてに対して有効化され、無効にすることはできません。 データは既定で保護されるので、Storage Service Encryption を活用するために、コードまたはアプリケーションを変更する必要はありません。
 

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: markvi
-ms.openlocfilehash: 9a06ff345d1bf91efd1abff9960a1a6f9a681dce
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 40e67dfd4ffa427ac47198e88994762a4a45cc94
+ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223669"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "44023353"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 ローミング設定リファレンス
 以下に示したのは、Windows 10 でローミングまたはバックアップされる全設定の一覧です。 
@@ -44,10 +44,11 @@ Windows 10 デバイス上の設定に対する同期操作は、エンド ユ�
 
 * テーマ: デスクトップの背景、ユーザー タイル、タスク バーの位置など 
 * Internet Explorer の設定: 閲覧の履歴、入力された URL、お気に入りなど 
-* パスワード: [Windows 資格情報保管ボックス](https://technet.microsoft.com/library/jj554668.aspx)(Wi-Fi プロファイルを含む) 
+* パスワード: Windows 資格情報マネージャー (Wi-Fi プロファイルを含む) 
 * 言語設定: スペル チェック辞書、システムの言語設定 
 * コンピューターの簡単操作: ナレーター、スクリーン キーボード、拡大鏡 
 * その他の Windows 設定: 「Windows 設定の詳細」を参照
+* Edge ブラウザーの設定: Microsoft Edge のお気に入り、リーディング リスト、その他の設定
 
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-syncyoursettings.png)
 
@@ -73,7 +74,7 @@ Windows 10 バージョン 1803 またはそれ以降では、Internet Explorer 
 | **アプリ データ**: 個々のアプリでデータを同期可能 |同期バックアップ |同期バックアップ |内部 |
 | **アプリの一覧**: インストールされているアプリの一覧 |○ |backup |その他 |
 | **Bluetooth**: Bluetooth のすべての設定 |○ |○ | |
-| **コマンド プロンプト**: コマンド プロンプトの "既定" 設定 |sync |○ | |
+| **コマンド プロンプト**: コマンド プロンプトの "既定" 設定 |sync |○ |内部 |
 | **資格情報**: 資格情報保管ボックス |sync |sync |password |
 | **日付、時刻、地域**: 時刻の自動同期 (インターネット時刻同期) |sync |sync |language |
 | **日付、時刻、地域**: 24 時間形式 |sync |○ |language |

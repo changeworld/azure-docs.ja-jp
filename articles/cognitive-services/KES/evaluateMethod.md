@@ -1,37 +1,40 @@
 ---
-title: Knowledge Exploration Service API の Evaluate メソッド | Microsoft Docs
-description: Cognitive Services の Knowledge Exploration Service (KES) API で Evaluate メソッドを使用する方法について説明します。
+title: Evaluate メソッド - Knowledge Exploration Service API
+titlesuffix: Azure Cognitive Services
+description: Knowledge Exploration Service (KES) API で Evaluate メソッドを使用する方法について説明します。
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: fc3d73b326b565cfe40d1b82cc419357b28a801a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 45b25ec5cfc6e198b9b125675f4942463cef247a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35373112"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128266"
 ---
 # <a name="evaluate-method"></a>evaluate メソッド
+
 *evaluate* メソッドは、構造化されたクエリ式の出力をインデックス データに基づいて評価して返します。
 
 通常、式は interpret メソッドへの応答から取得されます。  しかし、クエリ式を自分で作成することもできます ([構造化クエリ式](Expressions.md)に関するページをご覧ください)。  
 
-## <a name="request"></a>要求 
+## <a name="request"></a>Request 
+
 `http://<host>/evaluate?expr=<expr>&attributes=<attrs>[&<options>]`   
 
 Name|値|説明
 ----|----|----
 expr       | テキスト文字列 | インデックス エンティティのサブセットを選択する構造化クエリ式。
 attributes | テキスト文字列 | 応答に含める属性のコンマ区切りリスト。
-count      | 数 (既定値 =10) | 返される結果の最大数。
-offset     | 数 (既定値 =0) | 返す最初の結果のインデックス。
+count      | 数値 (既定値 =10) | 返される結果の最大数。
+offset     | 数値 (既定値 =0) | 返す最初の結果のインデックス。
 orderby |   テキスト文字列 | 結果のソートに使用される属性の名前。"*attrname*[:(asc&#124;desc)]" のように、必要に応じて、後に並べ替え順序を指定します (既定値 =asc)。  指定しない場合、結果は自然対数確率の降順で返されます。
-timeout  | 数 (既定値 =1000) | タイムアウト (ミリ秒)。 タイムアウトが経過する前に計算された結果だけが返されます。
+timeout  | 数値 (既定値 =1000) | タイムアウト (ミリ秒)。 タイムアウトが経過する前に計算された結果だけが返されます。
 
 *count* パラメーターと *offset* パラメーターを使用すると、複数の要求によって大量の結果を増分的に取得できます。
   

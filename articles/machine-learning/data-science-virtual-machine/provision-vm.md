@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: gokuma
-ms.openlocfilehash: 8131122f78f743d04e332bfc8dfeba87a8c34236
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 37a30055e567b27f4e215dac162642d4447a8e49
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782656"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44298207"
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows データ サイエンス仮想マシンのプロビジョニング
 Microsoft Data Science Virtual Machine (DSVM) は、Microsoft Azure 仮想マシン (VM) イメージです。 あらかじめインストールされており、Data Analytics と機械学習用に使用されているいくつかのツールで構成されています。 次のトピックが含まれています。
@@ -40,7 +40,7 @@ Microsoft Data Science Virtual Machine (DSVM) は、Microsoft Azure 仮想マシ
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/)。 Java のビジュアル データ マイニングと機械学習ソフトウェア。
   * [Apache Drill](https://drill.apache.org/)。 Apache Hadoop、NoSQL、およびクラウド ストレージ向けのスキーマフリーの SQL クエリ エンジン。  ODBC と JDBC のインターフェイスをサポートし、Power BI、Microsoft Excel、Tableau などの標準の BI ツールから NoSQL やファイルに対してクエリを実行できます。
 * Azure Machine Learning などの Azure サービスで使用する R と Python のライブラリ。
-* GitHub、Visual Studio Team Services を含むソース コード リポジトリを操作する Git Bash を含む Git。 Git では、いくつかの一般的な Linux コマンド ライン ユーティリティが提供されており、Git Bash とコマンド プロンプトの両方でアクセスできます。 awk、sed、perl、grep、find、wget、curl などです。
+* GitHub、Azure DevOps を含むソース コード リポジトリを操作する Git Bash を含む Git。 Git では、いくつかの一般的な Linux コマンド ライン ユーティリティが提供されており、Git Bash とコマンド プロンプトの両方でアクセスできます。 awk、sed、perl、grep、find、wget、curl などです。
 
 データ サイエンスでは、次の一連のタスクを反復処理します。
 

@@ -1,30 +1,45 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: iot-hub
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 09/07/2018
+ms.author: dobett
+ms.custom: include file
+ms.openlocfilehash: e80033d696de1b83da43fc27e5be9eca3b3f8757
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44168963"
+---
 ## <a name="create-a-device-identity"></a>デバイス ID の作成
 
-このセクションでは、[iothub-explorer][iot-hub-explorer] という Node.js ツールを使用して、このチュートリアル用のデバイス ID を作成します。 デバイス ID には大文字と小文字の区別があります。
+このセクションでは、Azure CLI を使用して、このチュートリアル用のデバイス ID を作成します。 Azure CLI は、[Azure Cloud Shell](https://docs.microsoft.com/zure/cloud-shell/overview) にプレインストールされています。また、[ローカルにインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)することもできます。 デバイス ID には大文字と小文字の区別があります。
 
-1. コマンドライン環境で次のコマンドを実行します。
+1. Azure CLI を使用して IoT 拡張機能をインストールするには、コマンド ライン環境で、次のコマンドを実行します。
 
-    `npm install -g iothub-explorer@latest`
+    ```cmd/sh
+    az extension add --name azure-cli-iot-ext
+    ```
 
-1. その後、次のコマンドを実行してハブにサインインします。 このとき、`{iot hub connection string}` を前にコピーしておいた IoT Hub の接続文字列と置き換えてください。
+1. CAzure CLI をローカルで実行している場合、次のコマンドを使用して Azure アカウントにサインインします (Cloud Shell を使用している場合、自動でサインインされるため、このコマンドを実行する必要はありません)。
 
-    `iothub-explorer login "{iot hub connection string}"`
+    ```cmd/sh
+    az login
+    ```
 
-1. 最後に、次のコマンドを実行して、`myDeviceId` という新しいデバイス ID を作成します。
+1. 最後に、次のコマンドを実行して、`myDeviceId` という新しいデバイス ID を作成し、デバイス接続文字列を取得します。
 
-    `iothub-explorer create myDeviceId --connection-string`
+    ```cmd/sh
+    az iot hub device-identity create --device-id myDeviceId --hub-name {Your IoT Hub name}
+    az iot hub device-identity show-connection-string --device-id myDeviceId --hub-name {Your IoT Hub name} -o table
+    ```
 
    [!INCLUDE [iot-hub-pii-note-naming-device](iot-hub-pii-note-naming-device.md)]
 
 結果として得られたデバイスの接続文字列をメモしておきます。 このデバイス接続文字列は、デバイス アプリからデバイスとして IoT Hub に接続する際に使用します。
 
-![][img-identity]
-
-デバイス ID をプログラムで作成する方法については、[IoT Hub の概要][lnk-getstarted]に関するページを参照してください。
-
 <!-- images and links -->
-[img-identity]: media/iot-hub-get-started-create-device-identity/devidentity.png
-
-[iot-hub-explorer]: https://github.com/Azure/iothub-explorer/blob/master/readme.md
-
-[lnk-getstarted]: ../articles/iot-hub/quickstart-send-telemetry-dotnet.md

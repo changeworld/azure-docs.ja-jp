@@ -1,23 +1,24 @@
 ---
-title: Azure 上の Bing Image Search API についてよく寄せられる質問 (FAQ) | Microsoft Docs
-description: Azure 上の Microsoft Cognitive Services Bing Image Search API についてよく寄せられる質問に対する回答を確認します。
+title: よく寄せられる質問 (FAQ) - Bing Image Search API
+titleSuffix: Azure Cognitive Services
+description: Bing Image Search API に関連する概念、コード、シナリオについてよく寄せられる質問の回答を見つけることができます。
 services: cognitive-services
 author: v-jerkin
-manager: jhubbard
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 15d3def94312fbde0bf3443cba54edfacafa7ab3
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ea170f4751952288c7894cab9c5acda2bf443043
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372736"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295502"
 ---
-# <a name="frequently-asked-questions-faq-about-bing-image-search-api-cognitive-services"></a>Bing Image Search API (Cognitive Services) についてよく寄せられる質問 (FAQ)
- 
+# <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Bing Image Search API についてよく寄せられる質問 (FAQ)
+
 Azure 上の Microsoft Cognitive Services の Bing Image Search API に関連する概念、コード、シナリオについてよく寄せられる質問に対する回答を示します。
 
 ## <a name="response-headers-in-javascript"></a>JavaScript 内の応答ヘッダー
@@ -36,7 +37,7 @@ Azure 上の Microsoft Cognitive Services の Bing Image Search API に関連す
 
 ヘッダーにアクセスするために、CORS プロキシを介して Bing Image Search API 要求を行うことができます。 このようなプロキシからの応答には、応答ヘッダーをホワイトリストに登録し、JavaScript で使用可能にする `Access-Control-Expose-Headers` ヘッダーがあります。
 
-CORS プロキシをインストールして[チュートリアル アプリ](tutorial-bing-image-search-single-page-app.md)が省略可能なクライアント ヘッダーにアクセスできるようにするのは簡単です。 まず、Node.js をまだインストールしていない場合は、[これをインストール](https://nodejs.org/en/download/)します。 その後、コマンド プロンプトで次のコマンドを入力します。
+CORS プロキシをインストールして[チュートリアル アプリ](tutorial-bing-image-search-single-page-app.md)がオプションのクライアント ヘッダーにアクセスできるようにするのは簡単です。 まず、[Node.js をインストールします](https://nodejs.org/en/download/) (まだインストールしていない場合)。 その後、コマンド プロンプトで次のコマンドを入力します。
 
     npm install -g cors-proxy-server
 
@@ -48,13 +49,13 @@ CORS プロキシをインストールして[チュートリアル アプリ](tu
 
     cors-proxy-server
 
-チュートリアル アプリを使用しているときはコマンド ウィンドウを開いたままにしておきます。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、要求ごとに同じであることを確認できます。
+チュートリアル アプリを使用している間はコマンド ウィンドウを開いたままにしておいてください。ウィンドウを閉じるとプロキシが停止します。 検索結果の下の展開可能な HTTP ヘッダー セクションに、`X-MSEdge-ClientID` ヘッダー (など) が表示され、要求ごとに同じであることを確認できます。
 
 ## <a name="response-headers-in-production"></a>実稼働環境での応答ヘッダー
 
-前の回答で説明されている CORS プロキシ アプローチは、開発、テスト、学習に適しています。 
+前の回答で説明されている CORS プロキシ アプローチは、開発、テスト、学習に適しています。
 
-一方、実稼働環境では、Bing Web Search API を使用する Web ページと同じドメイン上のサーバー側スクリプトをホストする必要があります。 このスクリプトは、実際には Web ページの JavaScript からの要求時に API 呼び出しを実行し、ヘッダーを含むすべての結果をクライアントに戻します。 2 つのリソース (ページとスクリプト) が配信元を共有するので、CORS は関与せず、特殊なヘッダーが Web ページ上の JavaScript からアクセスできます。 
+一方、実稼働環境では、Bing Web Search API を使用する Web ページと同じドメイン上のサーバー側スクリプトをホストする必要があります。 このスクリプトは、実際には Web ページの JavaScript からの要求時に API 呼び出しを実行し、ヘッダーを含むすべての結果をクライアントに戻します。 2 つのリソース (ページとスクリプト) が配信元を共有するので、CORS は関与せず、特殊なヘッダーが Web ページ上の JavaScript からアクセスできます。
 
 API キーはサーバー側スクリプトでのみ必要なので、このアプローチでは API キーもパブリックへの露出から保護されます。 スクリプトでは、別の方法 (HTTP 参照元など) を使用して、要求が承認されているかどうかを確認できます。
 

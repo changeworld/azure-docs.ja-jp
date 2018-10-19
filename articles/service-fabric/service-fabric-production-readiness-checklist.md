@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: subramar
-ms.openlocfilehash: 5092bf377f6ab213a2db52e01fb7b89ff0c218ce
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 6ebe83794f23ed3cf637f668d2810b9ba7521084
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39127489"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44295872"
 ---
 # <a name="production-readiness-checklist"></a>運用環境の準備状況チェックリスト
 
@@ -45,7 +45,7 @@ ms.locfileid: "39127489"
 15. サービスの目標復旧時点 (RPO) を確立し、[ディザスター リカバリー プロセス](service-fabric-disaster-recovery.md)を設定してそれをテストします。
 16. クラスターの手動またはプログラムを使用した[スケーリング](service-fabric-cluster-scaling.md)を計画します。
 17. クラスター ノードへの[修正プログラムの適用](service-fabric-patch-orchestration-application.md)を計画します。 
-18. 最新の変更が継続的にテストされるように、CI/CD パイプラインを確立します。 たとえば、[VSTS](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) や [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) を使用します。
+18. 最新の変更が継続的にテストされるように、CI/CD パイプラインを確立します。 たとえば、[Azure DevOps](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) または [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md) を使用して
 19. [Fault Analysis Service](service-fabric-testability-overview.md) と制御された[混乱](service-fabric-controlled-chaos.md)の誘発を使用して、負荷の下で開発クラスターとステージング クラスターをテストします。 
 20. アプリケーションの[スケーリング](service-fabric-concepts-scalability.md)を計画します。 
 

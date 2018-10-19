@@ -1,6 +1,6 @@
 ---
-title: オフライン メソッドを使用して大量のデータを Data Lake Store へアップロードする | Microsoft Docs
-description: AdlCopy ツールを使用して Azure Storage BLOB のデータを Data Lake Store にコピーします
+title: オフライン メソッドを使用して大量のデータを Azure Data Lake Storage Gen1 へアップロードする | Microsoft Docs
+description: AdlCopy ツールを使用して Azure Storage BLOB から Azure Data Lake Storage Gen1 にデータをコピーする
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 2b3ae9e4ecb8b8db4eee109f0867c7884bea37c2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 6430bf524ac81af242bf7afb4c2c8196309806ab
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625680"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391680"
 ---
-# <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Azure Import/Export サービスを使用した Data Lake Store へのデータのオフライン コピー
-この記事では、[Azure Import/Export サービス](../storage/common/storage-import-export-service.md)などのオフライン コピー メソッドを使用して、大きなデータセット (200 GB 超) を Azure Data Lake Store にコピーする方法について説明します。 具体的には、この記事の例では、ディスク上で 339,420,860,416 バイト、つまり約 319 GB のファイルを使用します。 このファイルに 319GB.tsv と名前を付けます。
+# <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>Azure Import/Export サービスを使用した Azure Data Lake Storage Gen1 へのデータのオフライン コピー
+この記事では、[Azure Import/Export サービス](../storage/common/storage-import-export-service.md)などのオフライン コピー メソッドを使用して、大きなデータセット (200 GB 超) を Azure Data Lake Storage Gen1 にコピーする方法について説明します。 具体的には、この記事の例では、ディスク上で 339,420,860,416 バイト、つまり約 319 GB のファイルを使用します。 このファイルに 319GB.tsv と名前を付けます。
 
 Azure Import/Export サービスを使用すると、ハード ディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage により安全に転送できます。
 
@@ -29,7 +29,7 @@ Azure Import/Export サービスを使用すると、ハード ディスク ド�
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure ストレージ アカウント**。
-* **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
+* **Azure Data Lake Storage Gen1 アカウント**。 これを作成する手順については、[Azure Data Lake Storage Gen1 の使用開始](data-lake-store-get-started-portal.md)に関するページを参照してください。
 
 ## <a name="preparing-the-data"></a>データを準備する
 
@@ -66,10 +66,10 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
 ## <a name="physically-ship-the-disks"></a>ディスクを物理的に出荷する
 これで、Azure データセンターにディスクを物理的に発送できるようになりました。 データセンターでは、インポート ジョブ作成時に指定した Azure Storage BLOB にデータがコピーされます。 さらに、ジョブ作成時に、後から追跡情報を提供することを選択した場合、インポート ジョブに戻って追跡番号を更新することができます。
 
-## <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-store"></a>Azure Storage BLOB から Azure Data Lake Store へのデータのコピー
-インポート ジョブの状態が完了になった後、指定した Azure Storage BLOB でデータが使用できるかどうかを確認できます。 その後、さまざまな方法で、そのデータを BLOB から Azure Data Lake Store へ移動することができます。 データのアップロードについて利用可能なすべてのオプションについては、「[Data Lake Store へのデータの取り込み](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-store)」を参照してください。
+## <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Azure Storage BLOB から Azure Data Lake Storage Gen1 にデータをコピーする
+インポート ジョブの状態が完了になった後、指定した Azure Storage BLOB でデータが使用できるかどうかを確認できます。 その後、さまざまな方法で、そのデータを BLOB から Azure Data Lake Storage Gen1 へ移動することができます。 データのアップロードについて利用可能なすべてのオプションについては、[Data Lake Storage Gen1 へのデータの取り込み](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-storage-gen1)に関するページを参照してください。
 
-このセクションでは、データをコピーするための Azure Data Factory パイプラインの作成に使用できる JSON 定義を示します。 JSON 定義は、[Azure Portal](../data-factory/v1/data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](../data-factory/v1/data-factory-copy-activity-tutorial-using-powershell.md) で使用できます。
+このセクションでは、データをコピーするための Azure Data Factory パイプラインの作成に使用できる JSON 定義を示します。 JSON 定義は、[Azure portal](../data-factory/tutorial-copy-data-portal.md) または [Visual Studio](../data-factory/tutorial-copy-data-dot-net.md) で使用できます。
 
 ### <a name="source-linked-service-azure-storage-blob"></a>ソース リンク サービス (Azure Storage BLOB)
 ````
@@ -85,16 +85,16 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
 }
 ````
 
-### <a name="target-linked-service-azure-data-lake-store"></a>ターゲット リンク サービス (Azure Data Lake Store)
+### <a name="target-linked-service-azure-data-lake-storage-gen1"></a>ターゲット リンク サービス (Azure Data Lake Storage Gen1)
 ````
 {
-    "name": "AzureDataLakeStoreLinkedService",
+    "name": "AzureDataLakeStorageGen1LinkedService",
     "properties": {
         "type": "AzureDataLakeStore",
         "description": "",
         "typeProperties": {
-            "authorization": "<Click 'Authorize' to allow this data factory and the activities it runs to access this Data Lake Store with your access rights>",
-            "dataLakeStoreUri": "https://<adls_account_name>.azuredatalakestore.net/webhdfs/v1",
+            "authorization": "<Click 'Authorize' to allow this data factory and the activities it runs to access this Data Lake Storage Gen1 account with your access rights>",
+            "dataLakeStoreUri": "https://<adlsg1_account_name>.azuredatalakestore.net/webhdfs/v1",
             "sessionId": "<OAuth session id from the OAuth authorization session. Each session id is unique and may only be used once>"
         }
     }
@@ -127,7 +127,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
 "properties": {
   "published": false,
   "type": "AzureDataLakeStore",
-  "linkedServiceName": "AzureDataLakeStoreLinkedService",
+  "linkedServiceName": "AzureDataLakeStorageGen1LinkedService",
   "typeProperties": {
     "folderPath": "/importeddatafeb8job/"
     },
@@ -187,12 +187,12 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
     }
 }
 ````
-詳細については、[Azure Data Factory を使用した Azure Storage BLOB から Azure Data Lake Store へのデータの移動](../data-factory/connector-azure-data-lake-store.md)に関するページを参照してください。
+詳細については、[Azure Data Factory を使用した Azure Storage BLOB から Azure Data Lake Storage Gen1 へのデータの移動](../data-factory/connector-azure-data-lake-store.md)に関するページを参照してください。
 
-## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>Azure Data Lake Store 内でデータ ファイルを再構築する
-初めに、319 GB のファイルを用意して、Azure Import/Export サービスを使用して転送できるように小さなサイズのファイルに分割しました。 データが Azure Data Lake Store 内に置かれたので、ファイルを元のサイズに再構築することができます。 これは、次の Azure PowerShell コマンドレットを使用して実行します。
+## <a name="reconstruct-the-data-files-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 内でデータ ファイルを再構築する
+初めに、319 GB のファイルを用意して、Azure Import/Export サービスを使用して転送できるように小さなサイズのファイルに分割しました。 データが Azure Data Lake Storage Gen1 内に置かれたので、ファイルを元のサイズに再構築することができます。 これは、次の Azure PowerShell コマンドレットを使用して実行します。
 
-````
+```
 # Login to our account
 Connect-AzureRmAccount
 
@@ -204,10 +204,10 @@ Set-AzureRmContext -SubscriptionId
 Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
 # Join  the files
-Join-AzureRmDataLakeStoreItem -AccountName "<adls_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
+Join-AzureRmDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importeddatafeb8job/319GB.tsv-part-aa","/importeddatafeb8job/319GB.tsv-part-ab", "/importeddatafeb8job/319GB.tsv-part-ac", "/importeddatafeb8job/319GB.tsv-part-ad" -Destination "/importeddatafeb8job/MergedFile.csv"
 ````
 
 ## <a name="next-steps"></a>次の手順
-* [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
-* [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Data Lake Storage Gen1 でのデータのセキュリティ保護](data-lake-store-secure-data.md)
+* [Data Lake Storage Gen1 で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Data Lake Storage Gen1 で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)

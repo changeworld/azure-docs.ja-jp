@@ -13,12 +13,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: 561de3ac9073fe5cfdfadf2dc61d3f7807bf9e46
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: d5fd6041f21700ffddd3b2c4755b7ce01691681e
+ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143802"
+ms.lasthandoff: 09/10/2018
+ms.locfileid: "44304100"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する
 
@@ -42,7 +42,7 @@ Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を
 
 4. **Microsoft Azure Virtual Machines** アイコンを選択し、**[発行]** を選択します。
 
-   ![発行 ページ - Microsoft Azure Virtual Machine Services アイコン]
+   ![[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]
 
 5. (仮想マシンに接続されている Azure サブスクリプション) の適切なアカウントを選択します。  
    - Visual Studio にサインインしている場合は、アカウントの一覧に、認証されたすべてのアカウントが表示されます。  
@@ -114,13 +114,13 @@ Web アプリケーションに更新内容を発行するには、[発行] ペ�
 
 ### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Azure VM への自動展開の CI/CD を設定する
 
-Visual Studio Team Service に継続的デリバリーのパイプラインを設定するには、「[Windows 仮想マシンへのデプロイ](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups)」を参照してください。
+Azure Pipelines に継続的デリバリーのパイプラインを設定するには、「[Windows 仮想マシンへのデプロイ](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups)」を参照してください。
 
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png
 [VM Overview - DNS Configured]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSConfigured.png
 [発行 ページ - 右矢印]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
-[発行 ページ - Microsoft Azure Virtual Machine Services アイコン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
+[[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
 [Azure アカウント セレクター]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
 [Azure VM セレクター]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
 [WebDeploy ログイン]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png

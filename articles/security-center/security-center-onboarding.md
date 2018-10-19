@@ -3,23 +3,23 @@ title: セキュリティ強化のための Azure Security Center Standard へ�
 description: " セキュリティを強化するために、Azure Security Center Standard にオンボードする方法について説明します。 "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/10/2018
-ms.author: terrylan
-ms.openlocfilehash: a68c0ecc15f81efe6045f4c298b48f9809916297
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.date: 09/02/2018
+ms.author: rkarlin
+ms.openlocfilehash: 50055befaa0a5f0bb03bda18e01edfb751e49369
+ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38479463"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44379997"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>セキュリティ強化のための Azure Security Center Standard へのオンボード
 ハイブリッド クラウドのワークロードで強化されたセキュリティ管理と脅威保護を利用するには、Security Center Standard にアップグレードします。  Standard は 60 日間無料で試用できます。 詳細については、「[Security Center の価格](https://azure.microsoft.com/pricing/details/security-center/)」をご覧ください。
@@ -40,59 +40,40 @@ Azure サブスクリプション全体を Standard レベルにアップグレ�
 >
 >
 
-## <a name="upgrade-an-azure-subscription"></a>Azure サブスクリプションのアップグレード
-すべてのサブスクリプションを Standard にアップグレードするには、次の手順に従います。
-1. Security Center のメイン メニューで、**[高度なセキュリティへのオンボード]** を選択します。
-2. **[高度なセキュリティへのオンボード]** に、オンボードの対象となるサブスクリプションが一覧表示されます。 **[Standard プランを適用]** をクリックすると、表示されているすべてのサブスクリプションをアップグレードできます。
+## <a name="upgrade-an-azure-subscription-or-workspace"></a>Azure サブスクリプションまたはワークスペースをアップグレードする
+サブスクリプションまたはワークスペースを Standard にアップグレードするには:
+1. Security Center メイン メニューの **[使用の開始]** を選択します。
+  ![使用の開始](./media/security-center-onboarding/get-started.png)
+2. Security Center の **[アップグレード]** に、オンボードの対象となるサブスクリプションとワークスペースが一覧表示されます。 
+   - 展開可能な **[Apply your trial] (試用版を適用)** をクリックすると、すべてのサブスクリプションとワークスペースの一覧を各試用版の資格の状態と共に表示できます。
+   -    試用版の対象にならないサブスクリプションとワークスペースをアップグレードできます。
+   -    対象となるワークスペースとサブスクリプションを選択すると、ご自身の試用版を開始できます。
+3.  **[無料体験する]** をクリックして、選択したサブスクリプションでご自身の試用版を開始します。
+  ![サブスクリプションを選択する](./media/security-center-onboarding/select-subscription.png)
 
-  ![すべてのサブスクリプションのアップグレード][1]
-
-個々のサブスクリプションをアップグレードする場合: **[Standard レベルを適用]** を選択することで、**[オンボード]** からサブスクリプションをアップグレードできます。 サブスクリプションのリソース グループを Standard にアップグレードするには、サブスクリプションを選択します。
-1. サブスクリプションを選択します。  **[セキュリティ ポリシー]** に、そのサブスクリプションに含まれるリソース グループの情報が表示されます。
-2. サブスクリプションまたはリソース グループを選択します。
-
-  ![すべてのサブスクリプションのアップグレード][2]
-
-3. **[Standard]** を選択して、Free から Standard にアップグレードします。
-4. **[保存]** を選択します。
-
-> [!NOTE]
-> サブスクリプションを Standard にアップグレードすると、[自動プロビジョニング](security-center-enable-data-collection.md)が有効になります (これまで無効になっていた場合)。 監視エージェントの自動プロビジョニングを使用することをお勧めします。
->
->
-
-## <a name="upgrade-a-workspace"></a>ワークスペースのアップグレード
-ワークスペースに Standard を適用すると、ワークスペースに報告するすべてのリソースに適用されます。
-
-1. **[オンボード]** ブレードに戻ります。
-2. ワークスペースを選択します。
-
-  ![ワークスペースのアップグレード][8]
-
-3. **[Standard]** を選択してアップグレードします。  
-4. **[保存]** を選択します。
 
    > [!NOTE]
-   > ワークスペースに Free も Standard も適用されていない場合があります。 Free を選択した場合、Security Center の Free レベルの機能が Azure VM にのみ適用されます。 Free レベルの機能は、Azure 以外のコンピューターには適用されません。 Standard を選択した場合、ワークスペースに報告するすべての Azure VM と Azure 以外のコンピューターに Standard レベルの機能が適用されます。 Azure リソースと Azure 以外のリソースに高度なセキュリティを提供するために、Standard を適用することをお勧めします。
+   > Security Center の Free レベルの機能は Azure VM にのみ適用されます。 Free レベルの機能は、Azure 以外のコンピューターには適用されません。 Standard を選択した場合、ワークスペースに報告するすべての Azure VM と Azure 以外のコンピューターに Standard レベルの機能が適用されます。 Azure リソースと Azure 以外のリソースに高度なセキュリティを提供するために、Standard を適用することをお勧めします。
    >
    >
 
 ## <a name="onboard-non-azure-computers"></a>Azure 以外のコンピューターのオンボード
-Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、これらのリソースをオンボードしておく必要があります。 Azure 以外のコンピューターは、**[オンボード]** ブレードまたは **[コンピューティング]** ブレードから追加できます。 ここでは両方の方法を紹介します。
+Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、これらのリソースをオンボードしておく必要があります。 Azure 以外のコンピューターは、**[使用の開始]** ブレードまたは **[コンピューティング]** ブレードから追加できます。 ここでは両方の方法を紹介します。
 
-### <a name="add-new-non-azure-computers-from-onboarding"></a>[オンボード] から新しい Azure 以外のコンピューターを追加する
+### <a name="add-new-non-azure-computers-from-getting-started"></a>**[使用の開始]** から新しい Azure 以外のコンピューターを追加する
 
-1. **[オンボード]** に戻ります。   
-2. **[Do you want to add new non-Azure computers]\(新しい Azure 以外のコンピューターを追加しますか\)** を選択します。
+1. **[使用の開始]** に戻ります。   
+2. **[Get started] (使用の開始)** タブを選択します。
 
-  ![Azure 以外のコンピューターの追加][3]
+  ![Azure 以外](./media/security-center-onboarding/non-azure.png)
+
+3. **[Azure 以外のコンピューターの新規追加]** で **[構成]** をクリックします。 Log Analytics ワークスペースの一覧が表示されます。 該当する場合、一覧には、自動プロビジョニングが有効になっているときに Security Center によって作成された既定のワークスペースが含まれます。 このワークスペースまたは使用する別のワークスペースを選択します。
+
+  ![Azure 以外のコンピューターの追加][7]
 
 既存のワークスペースがある場合は、**[Add new Non-Azure computers]\(新しい Azure 以外のコンピューターの追加\)** に一覧表示されます。 コンピューターを既存のワークスペースに追加することも、新しいワークスペースを作成することもできます。 新しいワークスペースを作成するには、**[add a new workspace]\(新しいワークスペースを追加\)** リンクをクリックします。
 
-ここでは、次の両方の方法を紹介します。
-
-- 新しいワークスペースを作成してコンピューターを追加する
-- 既存のワークスペースを選択してコンピューターを追加する
+### <a name="add-new-non-azure-computers-from-compute"></a>**[コンピューティング]** から新しい Azure 以外のコンピューターを追加する
 
 **新しいワークスペースを作成してコンピューターを追加する**
 
@@ -122,7 +103,7 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
 
    ![コンピューターの追加][7]
 
- **[ダイレクト エージェント]** ブレードに、Windows または Linux エージェントをダウンロードするためのリンクと、エージェントの構成時に使用するワークスペース ID のキーが表示されます。   
+ **[直接エージェント]** ブレードには、Windows または Linux エージェントをダウンロードするためのリンクや、エージェントの構成で使用するワークスペース ID とキーが表示されます。   
 
 ## <a name="next-steps"></a>次の手順
 この記事では、Security Center の高度なセキュリティのメリットを得るために、Azure リソースと Azure 以外のリソースをオンボードする方法について説明しました。  オンボードされたリソースを活用するには、以下を参照してください。
@@ -134,9 +115,9 @@ Security Center では、Azure 以外のコンピューターのセキュリテ�
 <!--Image references-->
 [1]: ./media/security-center-onboarding/onboard.png
 [2]: ./media/security-center-onboarding/onboard-subscription.png
-[3]: ./media/security-center-onboarding/add-non-azure-resource.png
+[3]: ./media/security-center-onboarding/get-started.png
 [4]: ./media/security-center-onboarding/create-workspace.png
 [5]: ./media/security-center-onboarding/overview.png
 [6]: ./media/security-center-onboarding/compute-blade.png
-[7]: ./media/security-center-onboarding/add-non-azure-computer.png
+[7]: ./media/security-center-onboarding/add-computer.png
 [8]: ./media/security-center-onboarding/onboard-workspace.png
