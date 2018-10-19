@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
-ms.openlocfilehash: d608378f9b3ff3179f9e37ef13f88c65a645d018
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: ce3e8f31c7fee6afdeabf931485a49934e98f81b
+ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112988"
+ms.lasthandoff: 09/11/2018
+ms.locfileid: "44391353"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Azure DNS と Traffic Manager を使用したディザスター リカバリー
 
@@ -144,7 +144,7 @@ contoso123 という名前で新しい Azure Traffic Manager プロファイル�
 
 ### <a name="step-2-create-endpoints-within-the-traffic-manager-profile"></a>手順 2: Traffic Manager プロファイル内のエンドポイントの作成
 
-この手順では、実稼働サイトとディザスター リカバリー サイトを指すエンドポイントを作成します。 ここでは、**[Type](タイプ)** を外部エンドポイントとして選択しますが、リソースが Azure でホストされている場合は、**[Azure エンドポイント]** も選択できます。 **[Azure エンドポイント]** を選択した場合、Azure によって割り当てられた **[App Service]** または **[パブリック IP]** のいずれかである **[ターゲット リソース]** を選択します。 これはリージョン 1 のプライマリ サービスであるため、優先順位は **1** に設定されます。
+この手順では、実稼働サイトとディザスター リカバリー サイトを指すエンドポイントを作成します。 ここでは、**[Type]\(タイプ)** を外部エンドポイントとして選択しますが、リソースが Azure でホストされている場合は、**[Azure エンドポイント]** も選択できます。 **[Azure エンドポイント]** を選択した場合、Azure によって割り当てられた **[App Service]** または **[パブリック IP]** のいずれかである **[ターゲット リソース]** を選択します。 これはリージョン 1 のプライマリ サービスであるため、優先順位は **1** に設定されます。
 同様に、Traffic Manager 内でディザスター リカバリーエンド ポイントを作成します。
 
 ![ディザスター リカバリー エンドポイントの作成](./media/disaster-recovery-dns-traffic-manager/create-disaster-recovery-endpoint.png)

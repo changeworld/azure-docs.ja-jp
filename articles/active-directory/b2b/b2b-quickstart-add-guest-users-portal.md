@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: Azure portal でゲスト ユーザーを追加する'
+title: 'クイック スタート: Azure Portal でゲスト ユーザーを追加する'
 description: このクイックスタートでは、Azure AD 管理者が Azure Portal で B2B ゲスト ユーザーを追加する方法と B2B 招待ワークフローについて説明します。
 services: active-directory
 ms.service: active-directory
