@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 6993895b6f2b836308b8ed7c375212c3fae12768
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c21b4b8996d7dae62c2aa1937c2876a66f6f82bd
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305921"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320562"
 ---
-#<a name="azure-ad-connect-device-options"></a>Azure AD Connect: デバイス オプション
+# <a name="azure-ad-connect-device-options"></a>Azure AD Connect: デバイス オプション
 
 このドキュメントでは、Azure AD Connect で使用できるさまざまなデバイス オプションについて説明します。 Azure AD Connect を使うと、次の 2 つの操作を構成できます。 
 * **Hybrid Azure AD の参加**: 環境にオンプレミスの AD フットプリントがあるときに、Azure AD のメリットを活用したい場合は、Hybrid Azure AD 参加済みデバイスを実装できます。 これらのデバイスは、オンプレミスの Active Directory と Azure Active Directory の両方に参加します。

@@ -10,12 +10,12 @@ ms.component: monitor and tune
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 1cf2fcb2ce99d4c6c670e5afdb1c4208158ea4de
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 1d366850bc886dc48afc59ffaf0958b39314ebb1
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44096059"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49385534"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Gen2 キャッシュを監視する方法
 Gen2 ストレージ アーキテクチャでは、Gen2 データ ウェアハウス用に設計された NVMe ベースの SSD に搭載されているキャッシュ内で、最も頻繁に照会される列ストア セグメントを自動的に階層化します。 キャッシュに常駐しているセグメントをクエリが取得すると、より優れたパフォーマンスが実現します。 この記事では、ワークロードが Gen2 キャッシュを最適に活用しているかどうかを判断することで、パフォーマンスが遅いクエリを監視し、トラブルシューティングする方法について説明します。  
@@ -43,7 +43,7 @@ Gen2 キャッシュをトラブルシューティングするための主要な
 
 **シナリオ 2:** 現在稼働中のデータ セットはキャッシュに収まりきらないため、物理的な読み取りのためにキャッシュ ヒット率が低くなります。 パフォーマンス レベルの拡張を検討し、ワークロードを再実行してキャッシュを設定してください。
 
-**シナリオ 3:** キャッシュとは無関係な原因により、クエリが遅く実行されている可能性があります。 クエリを遅くしている可能性があるその他の領域を[トラブルシューティング](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)してください。 また、[インスタンスを縮小し](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)、キャッシュ サイズを削減してコストを節約することも検討してください。 
+**シナリオ 3:** キャッシュとは無関係な原因により、クエリが遅く実行されている可能性があります。 クエリを遅くしている可能性があるその他の領域を[トラブルシューティング](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)してください。 また、[インスタンスを縮小し](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-manage-monitor)、キャッシュ サイズを削減してコストを節約することも検討してください。 
 
 **シナリオ 4:** クエリが遅かったのは、コールド キャッシュが存在していたことが原因だった可能性があります。 現在稼働中のデータ セットがキャッシュされるように、クエリを再実行することを検討してください。 
 
