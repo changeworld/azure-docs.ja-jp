@@ -111,7 +111,7 @@ var uri = appendRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 
 これらの 2 つのクラスは、ほとんどの場合、コントラクトに互換性があります。つまり、`ws.Server` クラスを使用している既存のアプリケーションを、リレー バージョンを使用するように簡単に変更できます。 主な相違点は、コンストラクターと使用可能なオプションにあります。
 
-#### <a name="constructor"></a>Constructorー  
+#### <a name="constructor"></a>Constructor  
 
 ```JavaScript 
 var ws = require('hyco-ws');

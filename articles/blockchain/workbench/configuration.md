@@ -61,7 +61,7 @@ ms.locfileid: "48242108"
 | Initiators | [ApplicationRoles](#application-roles) のコレクション。 ワークフローでコントラクトを作成する権限を持つユーザーに割り当てられるロール。 | はい |
 | StartState | ワークフローの初期状態の名前。 | はい |
 | Properties | [識別子](#identifiers)のコレクション。 ユーザー エクスペリエンス ツールでオフチェーンの読み取りまたは視覚化を実行できるデータを表します。 | はい |
-| Constructorー | ワークフローのインスタンスを作成するための入力パラメーターを定義します。 | はい |
+| Constructor | ワークフローのインスタンスを作成するための入力パラメーターを定義します。 | はい |
 | Functions | ワークフローで実行できる[関数](#functions)のコレクション。 | はい |
 | States | ワークフローの[状態](#states)のコレクション。 | はい |
 
@@ -143,7 +143,7 @@ function AssetTransfer(string description, uint256 price, PropertyTypeEnum prope
 
 ```
 
-## <a name="constructor"></a>Constructorー
+## <a name="constructor"></a>Constructor
 
 ワークフローのインスタンスの入力パラメーターを定義します。
 
