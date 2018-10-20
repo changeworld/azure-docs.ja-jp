@@ -159,6 +159,8 @@ items:
       href: connector-azure-search.md
     - name: Azure SQL Database
       href: connector-azure-sql-database.md
+    - name: Azure SQL Database Managed Instance
+      href: connector-azure-sql-database-managed-insance.md
     - name: Azure SQL Data Warehouse
       href: connector-azure-sql-data-warehouse.md
     - name: Azure Table Storage
@@ -465,9 +467,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: c450dae15fc5a03854d0c9c78af0d29306fc3c01
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ec46869172e1a41fca7f452e5809d7b98f56d1ea
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363930"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457274"

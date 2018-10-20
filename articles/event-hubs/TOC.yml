@@ -19,6 +19,8 @@ items:
       href: event-hubs-quickstart-cli.md
     - name: Azure PowerShell
       href: event-hubs-quickstart-powershell.md
+    - name: Azure Resource Manager テンプレート
+      href: event-hubs-resource-manager-namespace-event-hub.md
   - name: イベント ハブにイベントを送信する
     items:
     - name: .NET Standard
@@ -100,8 +102,6 @@ items:
     maintainContext: true
 - name: ハウツー ガイド
   items:
-  - name: Resource Manager テンプレートを使用したイベント ハブの作成
-    href: event-hubs-resource-manager-namespace-event-hub.md
   - name: Apache Kafka 用 Event Hubs
     items:
     - name: Apache Kafka 対応イベント ハブの作成
@@ -174,9 +174,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-eventhub
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: 6771409eb0a6fe11ff6a30cb829d3b166d93d8e2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: a72f5b19d899160fdc9569cbd2b77eb50a30e8f7
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426685"
+ms.locfileid: "49456357"
