@@ -714,7 +714,7 @@ items:
     href: /java/api/overview/azure/servicefabric
   - name: .NET
     href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
-  - name: REST ()
+  - name: REST
     href: /rest/api/servicefabric
   - name: Service Fabric イベント
     href: service-fabric-diagnostics-event-generation-operational.md
