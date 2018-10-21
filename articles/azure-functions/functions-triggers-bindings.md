@@ -226,10 +226,10 @@ C# と C# スクリプトでは、`out` パラメーターや[コレクター �
 
 言語固有の戻り値の使用例を次に示します。
 
-* [C# を選択した場合](#c-example)
+* [C#](#c-example)
 * [C# スクリプト (.csx)](#c-script-example)
 * [F#](#f-example)
-* [JavaScript を選択した場合](#javascript-example)
+* [JavaScript](#javascript-example)
 
 ### <a name="c-example"></a>C# の例
 

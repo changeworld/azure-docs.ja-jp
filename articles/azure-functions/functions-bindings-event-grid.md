@@ -46,9 +46,9 @@ Event Grid トリガーは、[Microsoft.Azure.WebJobs.Extensions.EventGrid](http
 
 Event Grid トリガーの言語固有の例をご覧ください。
 
-* [C# を選択した場合](#c-example)
+* [C#](#c-example)
 * [C# スクリプト (.csx)](#c-script-example)
-* [JavaScript を選択した場合](#javascript-example)
+* [JavaScript](#javascript-example)
 * [Java](#trigger---java-example)
 
 HTTP トリガーの例については、後の「[HTTP トリガーを使用する方法](#use-an-http-trigger-as-an-event-grid-trigger)」をご覧ください。

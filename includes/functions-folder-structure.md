@@ -39,7 +39,7 @@ Functions ランタイムのバージョン 2.x では、関数アプリ内の�
 * [C# スクリプト (.csx)](../articles/azure-functions/functions-reference-csharp.md#folder-structure)
 * [F# スクリプト](../articles/azure-functions/functions-reference-fsharp.md#folder-structure)
 * [Java](../articles/azure-functions/functions-reference-java.md#folder-structure)
-* [JavaScript を選択した場合](../articles/azure-functions/functions-reference-node.md#folder-structure)
+* [JavaScript](../articles/azure-functions/functions-reference-node.md#folder-structure)
 
 
 
