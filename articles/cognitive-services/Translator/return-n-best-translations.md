@@ -29,7 +29,7 @@ Microsoft Translator API の GetTranslations() メソッドと GetTranslationsAr
 
 **構文**
 
-| C#の場合 |
+| C# |
 |:---|
 | GetTranslationsResponse Microsoft.Translator.GetTranslations(appId, text, from, to, maxTranslations, options); |
 
