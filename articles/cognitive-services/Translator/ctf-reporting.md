@@ -117,7 +117,7 @@ UserTranslationCount[]GetUserTranslationCounts(
 > クォータは、サービスのすべてのユーザー間での公平性を確保するように調整されます。
 
 **GitHib のコード例の表示**
-* [C# を選択した場合](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
+* [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-php.md)
 
 ## <a name="getusertranslations-method"></a>GetUserTranslations メソッド
@@ -190,7 +190,7 @@ UserTranslation[] GetUserTranslations (
 > クォータは、サービスのすべてのユーザー間での公平性を確保するように調整されます。
 
 **GitHib のコード例の表示**
-* [C# を選択した場合](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
+* [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)
 
 

@@ -77,9 +77,9 @@ Event Grid 以外の BLOB を処理するための別の方法として、Queue 
 
 言語固有の例をご覧ください。
 
-* [C# を選択した場合](#trigger---c-example)
+* [C#](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
-* [JavaScript を選択した場合](#trigger---javascript-example)
+* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
@@ -424,9 +424,9 @@ Blob Storage 入力バインディングを使用して BLOB を読み取りま�
 
 言語固有の例をご覧ください。
 
-* [C# を選択した場合](#input---c-example)
+* [C#](#input---c-example)
 * [C# スクリプト (.csx)](#input---c-script-example)
-* [JavaScript を選択した場合](#input---javascript-example)
+* [JavaScript](#input---javascript-example)
 * [Java](#input---java-example)
 
 ### <a name="input---c-example"></a>入力 - C# の例
@@ -638,9 +638,9 @@ Blob Storage 出力バインディングを使用して BLOB を書き込みま�
 
 言語固有の例をご覧ください。
 
-* [C# を選択した場合](#output---c-example)
+* [C#](#output---c-example)
 * [C# スクリプト (.csx)](#output---c-script-example)
-* [JavaScript を選択した場合](#output---javascript-example)
+* [JavaScript](#output---javascript-example)
 * [Java](#output---java-example)
 
 ### <a name="output---c-example"></a>出力 - C# の例

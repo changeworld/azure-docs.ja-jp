@@ -418,7 +418,7 @@ Ruby     | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 Go  | https://github.com/Microsoft/azureimds/blob/master/imdssample.go            
 Python   | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.py
 C++      | https://github.com/Microsoft/azureimds/blob/master/IMDSSample-windows.cpp
-C#の場合       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
+C#       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.cs
 JavaScript | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.js
 PowerShell | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.ps1
 Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh

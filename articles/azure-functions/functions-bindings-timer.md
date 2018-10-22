@@ -42,10 +42,10 @@ ms.locfileid: "44715603"
 
 言語固有の例をご覧ください。
 
-* [C# を選択した場合](#trigger---c-example)
+* [C#](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript を選択した場合](#trigger---javascript-example)
+* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
 
 ### <a name="c-example"></a>C# の例
