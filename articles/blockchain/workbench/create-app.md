@@ -306,7 +306,7 @@ contract HelloBlockchain is WorkbenchBase('HelloBlockchain', 'HelloBlockchain') 
     string public ResponseMessage;
 ```
 
-### <a name="constructor"></a>Constructorー
+### <a name="constructor"></a>Constructor
 
 コンストラクターでは、ワークフローの新しいスマート コントラクト インスタンスの入力パラメーターを定義します。 コンストラクターは、コントラクトと同じ名前の関数として宣言します。 コンストラクターの必要なパラメーターは、構成ファイルでコンストラクター パラメーターとして定義します。 パラメーターの数、順序、型は両方のファイルで一致する必要があります。
 
