@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d7f1c1d523bc9c9d717accf7667c8bd7402bbc72
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ecfb8cff995d471a480226bc44164107b50eda84
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388376"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458022"
 documentType: LandingData
 title: Traffic Manager
 metadata:
@@ -19,7 +19,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 04/26/2018
+  ms.date: 10/15/2018
   ms.author: kumud
 abstract:
   description: Azure Traffic Manager の使い方を紹介します。 クイック スタート、チュートリアル、サンプルなどを使用し、受信トラフィックを管理してアプリケーションに最適なパフォーマンスを実現する方法と、Azure または外部のサービス エンドポイントにトラフィックを分散させる方法を紹介します。
@@ -43,10 +43,11 @@ sections:
     style: unordered
     items:
     - html: <a href="/azure/traffic-manager/traffic-manager-configure-geographic-routing-method">エンドポイントの地理的な場所に基づいてトラフィックをルーティングする</a>
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-performance-routing-method">トラフィックをルーティングして待ち時間を削減する</a>
+    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-improve-website-response">トラフィックをルーティングして待ち時間を削減する</a>
     - html: <a href="/azure/traffic-manager/traffic-manager-configure-weighted-routing-method">一定のエンドポイントにトラフィックを分散させる</a>
     - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">優先エンドポイントにトラフィックをルーティングする</a>
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">ユーザーのサブネットに基づくトラフィックのルーティング</a>
+    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing">エンドポイントに重み付けしてトラフィックを制御する</a>
+    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-subnet-routing">ユーザーのサブネットに基づくトラフィックのルーティング</a>
 - title: 無料の Pluralsight ビデオ トレーニング
   items:
   - type: list

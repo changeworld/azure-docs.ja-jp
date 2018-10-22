@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 09/20/2018
 ms.author: mtillman
-ms.openlocfilehash: 3be7c42b52f6af36451a79ea8592e983cc98f42b
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 864240e45a616aa8c2e7f2d6b65f5c7550f0e50e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354361"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466411"
 ---
 <div id="main" class="v2">
     <div class="container">

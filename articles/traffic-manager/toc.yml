@@ -19,6 +19,8 @@ items:
     href: traffic-manager-configure-weighted-routing-method.md
   - name: 優先エンドポイントにトラフィックをルーティングする
     href: traffic-manager-configure-priority-routing-method.md
+  - name: エンドポイントに重み付けしてトラフィックを制御する
+    href: tutorial-traffic-manager-weighted-endpoint-routing.md
   - name: ユーザーのサブネットに基づいてトラフィックをルーティングする
     href: tutorial-traffic-manager-subnet-routing.md
 - name: サンプル
@@ -130,9 +132,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla/traffic-manager/
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=traffic-manager
-ms.openlocfilehash: e83620f2a1d72483979b545c2805927916d7f788
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3ae9f33143ec29b028a7d4fffc5f97477baa3a4a
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954366"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457220"

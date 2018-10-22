@@ -1,23 +1,23 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 77707525533079630807f472e2106dc3fbadbc75
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: dd8976bc9c78045830ab499f48775bcb051f6c71
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386486"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49455744"
 documentType: LandingData
 title: Azure HDInsight のドキュメント
 metadata:
   title: Azure HDInsight のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  description: HDInsight での Hadoop の概要。 ドキュメントでは、Hadoop、Spark、Kafka、HBase などを使用して、ビッグ データを処理し、分析情報を得る方法について説明します。
+  description: HDInsight 上の Apache Hadoop について説明します。 ドキュメントでは、Apache Hadoop、Apache Spark、Apache Kafka、Apache HBase などを使用してビッグ データを処理および分析し、分析情報を得る方法について説明します。
   services: hdinsight
-  author: jasonwhowell
-  ms.author: jasonh
+  author: hrasheed-msft
+  ms.author: hrasheed
   ms.service: hdinsight
   ms.topic: landing-page
-  ms.date: 05/07/2018
+  ms.date: 10/18/2018
 abstract:
-  description: Azure HDInsight を使用してストリーミング データや履歴データを分析する方法について説明します。 チュートリアルとその他のドキュメントで、Hadoop、Spark、Hive、LLAP、Kafka、Storm、Microsoft Machine Learning Server といった最も人気のあるオープンソース フレームワークを使用して、クラスターの作成、ビッグ データの処理と分析、ソリューションの開発を行う方法を紹介します。<p>Azure HDInsight は、フル マネージドの、全範囲に対応した、オープンソースのエンタープライズ向け分析サービスです。 HDInsight は、大量のデータを簡単かつ迅速に高いコスト効率で処理できるようにするクラウド サービスです。 また、抽出/変換/読み込み (ETL)、データ ウェアハウス、機械学習、IoT など、幅広いシナリオに対応しています。</p>
+  description: Azure HDInsight を使用してストリーミング データや履歴データを分析する方法について説明します。 チュートリアルとその他のドキュメントでは、Apache Hadoop、Apache Spark、Apache Hive、Apache LLAP、Apache Kafka、Apache Storm、Microsoft Machine Learning Server といった最も人気のあるオープンソース フレームワークを使用して、クラスターの作成、ビッグ データの処理と分析、ソリューションの開発を行う方法を紹介します。<p>Azure HDInsight は、フル マネージドの、全範囲に対応した、オープンソースのエンタープライズ向け分析サービスです。 HDInsight は、大量のデータを簡単かつ迅速に高いコスト効率で処理できるようにするクラウド サービスです。 また、抽出/変換/読み込み (ETL)、データ ウェアハウス、機械学習、IoT など、幅広いシナリオに対応しています。</p>
   aside:
     image:
       alt: 
@@ -37,19 +37,19 @@ sections:
     items:
     - image:
         src: media/index/hadoop_r.svg
-      text: Hadoop
+      text: Apache Hadoop
       href: /azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal
     - image:
         src: media/index/spark_r.svg
-      text: Spark
+      text: Apache Spark
       href: /azure/hdinsight/spark/apache-spark-jupyter-spark-sql-use-portal
     - image:
         src: media/index/kafka_r.svg
-      text: Kafka
+      text: Apache Kafka
       href: /azure/hdinsight/kafka/apache-kafka-get-started
     - image:
         src: media/index/hbase_r.svg
-      text: hbase
+      text: Apache HBase
       href: /azure/hdinsight/hbase/apache-hbase-tutorial-get-started-linux
     - image:
         src: media/index/hive_r.svg
@@ -57,7 +57,7 @@ sections:
       href: /azure/hdinsight/interactive-query/apache-interactive-query-get-started
     - image:
         src: media/index/storm_r.svg
-      text: Storm
+      text: Apache Storm
       href: /azure/hdinsight/storm/apache-storm-tutorial-get-started-linux
     - image:
         src: media/index/ml-server_r.svg
