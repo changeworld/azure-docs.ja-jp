@@ -35,7 +35,7 @@ C# アプリケーションから Custom Vision Service を使用する方法に
 
 ## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
 
-このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある__歯車アイコン__を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
 
 ![キー UI の画像](./media/csharp-tutorial/training-prediction-keys.png)
 
@@ -135,13 +135,13 @@ Visual Studio で、SDK プロジェクトの `Samples/CustomVision.Sample/` デ
 
 1. 次の変更を行い、アプリケーションにトレーニング キーと予測キーを追加します。
 
-    * 次の行に__トレーニング キー__を追加します。
+    * 次の行に __トレーニング キー__ を追加します。
 
         ```csharp
         string trainingKey = "<your key here>";
         ```
 
-    * 次の行に__予測キー__を追加します。
+    * 次の行に __予測キー__ を追加します。
 
         ```csharp
         string predictionKey = "<your key here>";
