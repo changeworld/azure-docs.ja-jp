@@ -38,7 +38,7 @@ Azure Maps API ([Search Inside Geometry](https://docs.microsoft.com/rest/api/map
 
 `Circle` ジオメトリは [GeoJSON 仕様][1] ではサポートされていません。円を表すには、`GeoJSON Feature` オブジェクトが使用されます。
 
-`GeoJSON Feature` オブジェクトを使用して表現される `Circle` ジオメトリは、以下を含む__必要があります__。
+`GeoJSON Feature` オブジェクトを使用して表現される `Circle` ジオメトリは、以下を含む __必要があります__ 。
 
 1. Center
    >円の中心は `GeoJSON Point` 型を使用して表します。
