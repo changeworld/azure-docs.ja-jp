@@ -40,7 +40,7 @@ ms.locfileid: "27909698"
 * Redis セットを使用し、タグ付けを実装する
 * Redis クラスターの操作
 
-詳細については、github の「[StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)」文書を参照してください。他の用途シナリオについては、「[StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/StackExchange.Redis.Tests)」ユニット テストを参照してください。
+詳細については、GitHub の「[StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)」文書を参照してください。他の用途シナリオについては、「[StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/StackExchange.Redis.Tests)」ユニット テストを参照してください。
 
 「[Python で Azure Redis Cache を使用する方法](cache-python-get-started.md)」では、Python と [redis-py](https://github.com/andymccurdy/redis-py) クライアントを使用して Azure Redis Cache を使用する方法を説明しています。
 
