@@ -253,7 +253,7 @@ Java と JDK をインストールするときに、次のような環境変数�
    scp target/wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
    ```
 
-    Replace __USERNAME__ with your SSH user name for the cluster. Replace __CLUSTERNAME__ with the HDInsight cluster name.
+__USERNAME__ を SSH ユーザー名に置き換えます。 __CLUSTERNAME__ を HDInsight クラスター名に置き換えます。
 
 このコマンドにより、ファイルがローカル システムからヘッド ノードにコピーされます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
