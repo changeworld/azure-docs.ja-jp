@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 10/09/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 82d99f575837b47a29bd6d8330ee58f442b6110a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 62eb28c6cdb2dd6c1ddff1487826c01ef3bf6e3e
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409356"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091591"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Kubernetes を Azure Stack にデプロイする
 
@@ -39,6 +39,8 @@ Kubernetes は、次の目的で使用できます。
 - 数秒でデプロイできる極めてスケーラブルかつアップグレード可能なアプリケーションを開発する。 
 - アプリケーションの設計を簡素化し、異なる Helm アプリケーションによって信頼性を向上させる。 [Helm](https://github.com/kubernetes/helm) は、Kubernetes アプリケーションのライフサイクルをインストールおよび管理するのに役立つオープン ソースのパッケージ化ツールです。
 - スケーリングとアップグレードの機能を利用して、アプリケーションの正常性を簡単に監視および診断する。
+
+クラスターをサポートするノードに必要なコンピューティングの使用量にのみ課金されます。 詳細については、「[Azure Stack での使用量と請求](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件 
 
@@ -165,6 +167,9 @@ Kubernetes は、次の目的で使用できます。
 2. 設定を確認します。
 
 3. **[OK]** を選択してクラスターをデプロイします。
+
+> [!TIP]  
+>  デプロイに関して質問がある場合は、質問を投稿するか、[Azure Stack フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)で他の人が既に回答を受け取っていないか確認できます。 
 
 ## <a name="connect-to-your-cluster"></a>クラスターへの接続
 

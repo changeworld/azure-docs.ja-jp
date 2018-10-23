@@ -323,8 +323,10 @@ items:
         href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
   - name: SQL 機能の比較
     href: sql-database-features.md
-  - name: パフォーマンスと監視
+  - name: 監視とパフォーマンスのチューニング
     items:
+    - name: 監視とチューニングの概要
+      href: sql-database-monitor-tune-overview.md
     - name: インテリジェント パフォーマンス
       items:
       - name: クエリ実行
@@ -335,8 +337,6 @@ items:
           href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
       - name: 監視とチューニング
         items:
-        - name: 監視とチューニングの概要
-          href: sql-database-monitor-tune-overview.md
         - name: データベース アドバイザーのパフォーマンスに関する推奨事項
           href: sql-database-advisor.md
         - name: チューニング操作と推奨事項
@@ -351,11 +351,11 @@ items:
           href: sql-database-metrics-diag-logging.md
         - name: 診断ログの使用
           href: sql-database-intelligent-insights-use-diagnostics-log.md
+        - name: '[Query Performance Insight]'
+          href: sql-database-query-performance.md
         - name: パフォーマンスのトラブルシューティング
           href: sql-database-intelligent-insights-troubleshoot-performance.md
-      - name: '[Query Performance Insight]'
-        href: sql-database-query-performance.md
-      - name: パフォーマンスの自動チューニング
+      - name: 自動チューニング
         items:
         - name: 自動チューニングの概要
           href: sql-database-automatic-tuning.md
@@ -634,9 +634,9 @@ items:
     href: /azure/architecture/
   - name: 顧客事例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 38a8ec13b8a5e50d60ed46d1bd4d71af933d61f0
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 416f74c395f331de6af749f3de1d3a3e966b8b35
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470373"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650062"
