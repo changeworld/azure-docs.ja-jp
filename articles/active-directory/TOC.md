@@ -244,7 +244,6 @@
 
 #### 条件付きアクセス
 ##### [顧客がデバイス登録の前提条件を満たしていない](active-directory-conditional-access.md)
-##### [条件付きアクセス ポリシーが正しく設定されていないことが原因でテナントがブロックされる](active-directory-conditional-access-device-remediation.md)
 ##### [企業ネットワークのルールを無効にする方法とタイミング](https://aka.ms/calocation)
 ##### [Azure AD でユーザーが登録できるデバイス数を増やす方法](active-directory-azureadjoin-setup.md)
 ##### [Exchange Online の条件付きアクセスの設定方法](https://aka.ms/csforexchange)
