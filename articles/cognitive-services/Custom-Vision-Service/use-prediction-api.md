@@ -26,9 +26,9 @@ ms.locfileid: "46363651"
 
 ## <a name="get-the-url-and-prediction-key"></a>URL と予測キーを取得する
 
-[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__ \(パフォーマンス) タブを選択します。__予測キー__を含む Prediction API の使用に関する情報を表示するには、__[Prediction URL]\(Prediction の URL\)__ を選択します。 Azure リソースに関連付けられているプロジェクトの場合、__予測キー__は、関連付けられている Azure リソースの [Azure portal](https://portal.azure.com) ページの __[キー]__ で確認することもできます。 アプリケーションで使用するため、次の情報をコピーします。
+[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__ \(パフォーマンス) タブを選択します。 __予測キー__ を含む Prediction API の使用に関する情報を表示するには、__[Prediction URL]\(Prediction の URL\)__ を選択します。 Azure リソースに関連付けられているプロジェクトの場合、__予測キー__ は、関連付けられている Azure リソースの [Azure portal](https://portal.azure.com) ページの __[キー]__ で確認することもできます。 アプリケーションで使用するため、次の情報をコピーします。
 
-* __[URL]__: __イメージファイル__を使用するため。
+* __[URL]__: __イメージファイル__ を使用するため。
 * __[Prediction-key]__(予測キー) の値。
 
 > [!TIP]
@@ -46,7 +46,7 @@ ms.locfileid: "46363651"
     > 次の情報を変更します。
     >
     > * __namespace__ はプロジェクトの名前に設定します。
-    > * 前に受け取った__予測キー__の値を、`client.DefaultRequestHeaders.Add("Prediction-Key",` で始まる行の中に設定します。
+    > * 前に受け取った __予測キー__ の値を、`client.DefaultRequestHeaders.Add("Prediction-Key",` で始まる行の中に設定します。
     > * 前に受け取った __URL__ の値を、`string url =` で始まる行の中に設定します。
 
     ```csharp

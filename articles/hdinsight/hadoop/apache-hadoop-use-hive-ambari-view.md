@@ -41,7 +41,7 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
 
     認証情報の入力を求められたら、クラスターの作成時に使用したクラスター ログイン (既定値は `admin`) アカウント名とパスワードを入力します。
 
-3. ビューの一覧で、__Hive ビュー__を選択します。
+3. ビューの一覧で、__Hive ビュー__ を選択します。
 
     ![Hive ビューを選択する](./media/apache-hadoop-use-hive-ambari-view/select-hive-view.png)
 

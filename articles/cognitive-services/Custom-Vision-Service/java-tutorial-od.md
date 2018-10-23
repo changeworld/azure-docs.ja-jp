@@ -36,7 +36,7 @@ Maven Central Repository から Custom Vision SDK をインストールできま
 
 ## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
 
-このサンプルで使用されるキーを取得するには、[Custom Vision サイト](https://customvision.ai)にアクセスし、右上にある__歯車アイコン__を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+このサンプルで使用されるキーを取得するには、[Custom Vision サイト](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
 
 ![キー UI の画像](./media/python-tutorial/training-prediction-keys.png)
 
@@ -46,7 +46,7 @@ Maven Central Repository から Custom Vision SDK をインストールできま
 
 好みの Java IDE を使用して、`Vision/CustomVision` プロジェクトを開きます。 
 
-このアプリケーションは、先ほど取得したトレーニング キーを使用して、__Sample Java OD Project__ という名前の新しいプロジェクトを作成します。 次に、画像をアップロードして物体検出器のトレーニングおよびテストを行います。 物体検出器は、__フォーク__または__ハサミ__を含むリージョンを特定します。
+このアプリケーションは、先ほど取得したトレーニング キーを使用して、__Sample Java OD Project__ という名前の新しいプロジェクトを作成します。 次に、画像をアップロードして物体検出器のトレーニングおよびテストを行います。 物体検出器は、__フォーク__ または __ハサミ__ を含むリージョンを特定します。
 
 この例の主な機能は、以下のコード スニペットに実装されています。
 
