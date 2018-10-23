@@ -26,7 +26,7 @@ items:
     href: automation-tutorial-installed-software.md
   - name: VM に対する変更のトラブルシューティング
     href: automation-tutorial-troubleshoot-changes.md
-- name: 方法
+- name: ハウツー ガイド
   items:
   - name: オンボード
     items:
@@ -192,18 +192,20 @@ items:
     items:
     - name: Orchestrator から移行する
       href: automation-orchestrator-migration.md
-  - name: トラブルシューティング
-    items:
-    - name: オンボード
-      href: troubleshoot/onboarding.md
-    - name: Runbooks
-      href: troubleshoot/runbooks.md
-    - name: Desired State Configuration (DSC)
-      href: troubleshoot/desired-state-configuration.md
-    - name: Hybrid Runbook Worker
-      href: troubleshoot/hybrid-runbook-worker.md
-    - name: 更新管理
-      href: troubleshoot/update-management.md
+- name: トラブルシューティング
+  items:
+  - name: オンボード
+    href: troubleshoot/onboarding.md
+  - name: Runbooks
+    href: troubleshoot/runbooks.md
+  - name: 状態の構成 (DSC)
+    href: troubleshoot/desired-state-configuration.md
+  - name: Hybrid Runbook Worker
+    href: troubleshoot/hybrid-runbook-worker.md
+  - name: 更新管理
+    href: troubleshoot/update-management.md
+  - name: エージェントの更新に関する問題のトラブルシューティング
+    href: troubleshoot/update-agent-issues.md
 - name: リファレンス
   items:
   - name: Azure PowerShell
@@ -236,9 +238,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: 102f70d3c0ea4c87b47e2a0967da967b7eef73f6
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 37f9efb0c82a9ccefab1b492d45b9060a1a9312e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040314"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645424"

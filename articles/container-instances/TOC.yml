@@ -68,6 +68,8 @@ items:
       href: container-instances-restart-policy.md
     - name: ACI 上の Jenkins ビルド エージェント
       href: container-instances-jenkins.md
+    - name: マネージド ID の使用 (プレビュー)
+      href: container-instances-managed-identity.md
   - name: データ ボリュームの構成
     items:
     - name: Azure Files
@@ -118,9 +120,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-container-instances
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=container-instances&sort=newest
-ms.openlocfilehash: 928f6abcfd8059581c668ed8a8584e85e0ba58da
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3512afb8c716e16b55a5115a91e4f7011ad865bb
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036424"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650198"

@@ -35,28 +35,26 @@
 
 # [クラウド パートナー ポータル](./cloud-partner-portal-orig/cloud-partner-portal-getting-started-with-the-cloud-partner-portal.md) 
 
-<!-- remove comment markers after toc gets published with iot edge section  -->
-<!-- 
-## [Virtual machine offer](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
-### [Prerequisites](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
-### [Create VM offer](./cloud-partner-portal/virtual-machine/cpp-create-offer.md)
-#### [Offer Settings tab](./cloud-partner-portal/virtual-machine/cpp-offer-settings-tab.md)
-#### [SKUs tab](./cloud-partner-portal/virtual-machine/cpp-skus-tab.md)
-#### [Test Drive tab](./cloud-partner-portal/virtual-machine/cpp-test-drive-tab.md)
-#### [Marketplace tab](./cloud-partner-portal/virtual-machine/cpp-marketplace-tab.md)
-#### [Support tab](./cloud-partner-portal/virtual-machine/cpp-support-tab.md)
-### [Create VM technical assets](./cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md)
-#### [Create VHD](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)
-#### [Common VHD creation issues](./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
-#### [Connect to VM](./cloud-partner-portal/virtual-machine/cpp-connect-vm.md)
-#### [Configure VM](./cloud-partner-portal/virtual-machine/cpp-configure-vm.md)
-#### [Deploy VM from VHDs](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md)
-##### [VHD Deployment Template (JSON)](./cpp-deploy-json-template.md)
-#### [Certify VM image](./cloud-partner-portal/virtual-machine/cpp-certify-vm.md)
-#### [Get SAS URI](./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)
-#### [Common SAS URL issues](./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md)
-### [Publish VM offer](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)
-### [Update existing offer](./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md) -->
+## [仮想マシンのオファー](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
+### [前提条件](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)
+### [VM のオファーを作成する](./cloud-partner-portal/virtual-machine/cpp-create-offer.md)
+#### [[プランの設定] タブ](./cloud-partner-portal/virtual-machine/cpp-offer-settings-tab.md)
+#### [[SKU] タブ](./cloud-partner-portal/virtual-machine/cpp-skus-tab.md)
+#### [[体験版] タブ](./cloud-partner-portal/virtual-machine/cpp-test-drive-tab.md)
+#### [[Marketplace] タブ](./cloud-partner-portal/virtual-machine/cpp-marketplace-tab.md)
+#### [[サポート] タブ](./cloud-partner-portal/virtual-machine/cpp-support-tab.md)
+### [VM の技術資産を作成する](./cloud-partner-portal/virtual-machine/cpp-create-technical-assets.md)
+#### [VHD の作成](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md)
+#### [VHD の作成に関する一般的な問題](./cloud-partner-portal/virtual-machine/cpp-common-vhd-creation-issues.md)
+#### [VM への接続](./cloud-partner-portal/virtual-machine/cpp-connect-vm.md)
+#### [VM の構成](./cloud-partner-portal/virtual-machine/cpp-configure-vm.md)
+#### [VHD から VM をデプロイする](./cloud-partner-portal/virtual-machine/cpp-deploy-vm-vhd.md)
+##### [VHD デプロイ テンプレート (JSON)](./cloud-partner-portal/virtual-machine/cpp-deploy-json-template.md)
+#### [VM イメージの認定](./cloud-partner-portal/virtual-machine/cpp-certify-vm.md)
+#### [SAS URI の取得](./cloud-partner-portal/virtual-machine/cpp-get-sas-uri.md)
+#### [SAS URL に関する一般的な問題](./cloud-partner-portal/virtual-machine/cpp-common-sas-url-issues.md)
+### [VM プランの公開](./cloud-partner-portal/virtual-machine/cpp-publish-offer.md)
+### [既存のプランの更新](./cloud-partner-portal/virtual-machine/cpp-update-existing-offer.md)
 
 <!-- Following legacy VM section was replaced.  -->
 <!-- 

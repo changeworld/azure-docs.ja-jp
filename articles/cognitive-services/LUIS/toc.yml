@@ -104,6 +104,8 @@ items:
       href: luis-concept-utterance.md
     - name: ロール
       href: luis-concept-roles.md
+    - name: 事前構築済みのモデル
+      href: luis-concept-prebuilt-model.md
   - name: アプリのパフォーマンス向上
     items:
     - name: 予測スコア
@@ -152,6 +154,14 @@ items:
       href: luis-how-to-add-example-utterances.md
     - name: 複数エンティティの追加
       href: luis-how-to-add-entities.md
+    - name: 事前構築済みのモデルの使用
+      items:
+      - name: ドメインの使用
+        href: luis-prebuilt-domains.md
+      - name: 意図の使用
+        href: luis-prebuilt-intent.md
+      - name: エンティティの使用
+        href: luis-prebuilt-entities.md
     - name: REST API を使用
       items:
       - name: Node.js を使ってプログラムによりアプリをビルドする
@@ -196,12 +206,6 @@ items:
       href: luis-how-to-batch-test.md
   - name: '[発行]'
     href: luis-how-to-publish-app.md
-  - name: 事前構築済みのモデルの使用
-    items:
-    - name: エンティティの使用
-      href: luis-prebuilt-entities.md
-    - name: ドメインの使用
-      href: luis-how-to-use-prebuilt-domains.md
   - name: アプリの管理
     items:
     - name: ダッシュボードの利用
@@ -364,9 +368,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: fda370f0abc292c1bcd0549e8761e342f3c6b815
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: f946ab4262d078b8f645800cee9a8e98ee0e104c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458209"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647053"
