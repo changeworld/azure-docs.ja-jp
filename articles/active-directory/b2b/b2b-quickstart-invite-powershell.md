@@ -57,7 +57,7 @@ Get-Module -ListAvailable AzureAD*
 
 ### <a name="get-a-test-email-account"></a>テスト用の電子メール アカウントを取得する
 
-招待メールの送信先となるテスト用の電子メール アカウントが必要です。 このアカウントは、組織外にある必要があります。 gmail.com や outlook.com のアドレスなどのソーシャル アカウントを含む任意の種類のアカウントを使用できます。
+招待メールの送信先となるテスト用の電子メール アカウントが必要です。このアカウントは、組織外にある必要があります。gmail.com や outlook.com のアドレスなどのソーシャル アカウントを含む任意の種類のアカウントを使用できます。
 
 ## <a name="sign-in-to-your-tenant"></a>テナントにサインインする
 
@@ -77,7 +77,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
    ```
-2. このコマンドは、指定した電子メール アドレスに招待メールを送信します。 出力をチェックします。出力は次のようになります。
+2. このコマンドは、指定した電子メール アドレスに招待メールを送信します。出力をチェックします。出力は次のようになります。
 
    ![保留中のユーザーの同意を示す PowerShell の出力](media/quickstart-invite-powershell/powershell-azureadmsinvitation-result.png)
 
