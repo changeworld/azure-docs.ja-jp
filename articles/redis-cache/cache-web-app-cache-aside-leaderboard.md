@@ -24,7 +24,7 @@ ms.locfileid: "32195806"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>チュートリアル: ASP.NET でキャッシュ アサイド スコアボードを作成する
 
-このチュートリアルでは、[Azure Redis Cache 用の ASP.NET のクイックスタート](cache-web-app-howto.md)に関する記事で作成した *ContosoTeamStats* ASP.NET Web アプリを更新して、Azure Redis Cache で[キャッシュ アサイド パターン](https://docs.microsoft.com/azure/architecture/patterns/cache-aside)を使用するスコアボードが含まれるようにします。 サンプル アプリケーションでは、チームの一連の統計情報をデータベースから取得して表示し、Azure Redis Cache を使用して、キャッシュに対するデータの保存と取得のパフォーマンスを向上させるさまざまな方法を示します。 チュートリアルの最後には、実際にデータベースの読み取りと書き込みを行う Web アプリが完成します。Web アプリは、Azure Redis Cache を使って最適化され、Azure でホストされます。
+このチュートリアルでは、[Azure Redis Cache 用の ASP.NET のクイックスタート](cache-web-app-howto.md)で作成した *ContosoTeamStats* ASP.NET Web アプリを更新して、Azure Redis Cache で[キャッシュ アサイド パターン](https://docs.microsoft.com/azure/architecture/patterns/cache-aside)を使用するスコアボードが含まれるようにします。 サンプル アプリケーションでは、チームの一連の統計情報をデータベースから取得して表示し、Azure Redis Cache を使用して、キャッシュに対するデータの保存と取得のパフォーマンスを向上させるさまざまな方法を示します。 チュートリアルの最後には、実際にデータベースの読み取りと書き込みを行う Web アプリが完成します。Web アプリは、Azure Redis Cache を使って最適化され、Azure でホストされます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -40,7 +40,7 @@ ms.locfileid: "32195806"
 
 このチュートリアルを完了するには、次の前提条件を満たしている必要があります。
 
-* このチュートリアルは、[Azure Redis Cache 用の ASP.NET のクイックスタート](cache-web-app-howto.md)に関する記事の続きです。 クイックスタートを完了していない場合は、先に完了してください。
+* このチュートリアルは、[Azure Redis Cache 用の ASP.NET のクイックスタート](cache-web-app-howto.md)の続きです。 クイックスタートを完了していない場合は、先に完了してください。
 * 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
     * ASP.NET および Web の開発
     * Azure 開発
@@ -52,7 +52,7 @@ ms.locfileid: "32195806"
 
 ### <a name="add-the-entity-framework-to-the-project"></a>Entity Framework をプロジェクトに追加する
 
-1. Visual Studio で、[Azure Redis Cache 用の ASP.NET のクイックスタート](cache-web-app-howto.md)に関する記事で作成した *ContosoTeamStats* ソリューションを開きます。
+1. Visual Studio で、[Azure Redis Cache 用の ASP.NET のクイックスタート](cache-web-app-howto.md)で作成した *ContosoTeamStats* ソリューションを開きます。
 2. **[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。
 3. **[パッケージ マネージャー コンソール]** ウィンドウで次のコマンドを実行して、EntityFramework をインストールします。
 
@@ -150,7 +150,7 @@ ms.locfileid: "32195806"
     }
     ```
 
-1. **ソリューション エクスプローラー**で、**web.config** をダブルクリックして開きます。
+1. **ソリューション エクスプローラー**で、**Web.config** をダブルクリックして開きます。
 
     ![web.config](./media/cache-web-app-cache-aside-leaderboard/cache-web-config.png)
 
