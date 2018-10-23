@@ -100,7 +100,7 @@ HDInsight 上に新しい Storm クラスターを数分で作成できます。
 
     * [HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (C#)](apache-storm-develop-csharp-event-hub-topology.md)
 
-* __SQL Database____Cosmos DB__、__Event Hubs__、__HBase__: Data Lake Tools for Visual Studio にテンプレート例が含まれています。 詳細については、[HDInsight の Storm 向けの C# トポロジの開発](apache-storm-develop-csharp-visual-studio-topology.md)に関する記事を参照してください。
+* __SQL Database__、__Cosmos DB__、__Event Hubs__、__HBase__: Data Lake Tools for Visual Studio にテンプレート例が含まれています。 詳細については、[HDInsight の Storm 向けの C# トポロジの開発](apache-storm-develop-csharp-visual-studio-topology.md)に関する記事を参照してください。
 
 ## <a name="support"></a>サポート
 
