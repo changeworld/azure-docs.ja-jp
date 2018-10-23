@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2018
 ms.author: bahariri
-ms.openlocfilehash: 2fbca7179d8bc64a92f79f6eaced8d4f1666c530
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4b78cef29c64c5c4c522ad5c751c10bbf6a7057c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069218"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363420"
 ---
 # <a name="stream-into-event-hubs-for-the-apache-kafka"></a>Apache Kafka 用 Event Hubs へのストリーム配信
 このクイック スタートでは、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Kafka 対応 Event Hubs にストリーム配信する方法を示します。 プロデューサーとコンシューマーを使用して、アプリケーションの構成変更だけで Kafka 対応 Event Hubs と通信する方法を説明します。 Azure Event Hubs では、[Apache Kafka バージョン 1.0](https://kafka.apache.org/10/documentation.html) がサポートされています。
 
 > [!NOTE]
-> このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs) で入手できます。
+> このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -63,9 +63,9 @@ ms.locfileid: "49069218"
 
 ## <a name="send-and-receive-messages-with-kafka-in-event-hubs"></a>Event Hubs で Kafka を使用してメッセージを送受信する
 
-1. [Azure Event Hubs リポジトリ](https://github.com/Azure/azure-event-hubs)を複製します。
+1. [Kafka 用 Azure Event Hubs リポジトリ](https://github.com/Azure/azure-event-hubs-for-kafka)を複製します。
 
-2. `azure-event-hubs/samples/kafka/quickstart/producer` に移動します。
+2. `azure-event-hubs-for-kafka/quickstart/java/producer` に移動します。
 
 3. `src/main/resources/producer.config` で次のようにプロデューサーの構成の詳細を更新します。
 
@@ -83,7 +83,7 @@ ms.locfileid: "49069218"
     mvn exec:java -Dexec.mainClass="TestProducer"                                    
     ```
     
-5. `azure-event-hubs/samples/kafka/quickstart/consumer` に移動します。
+5. `azure-event-hubs-for-kafka/quickstart/java/consumer` に移動します。
 
 6. `src/main/resources/consumer.config` で次のようにコンシューマーの構成の詳細を更新します。
    
@@ -106,5 +106,8 @@ Event Hubs Kafka クラスターにイベントがある場合は、コンシュ
 ## <a name="next-steps"></a>次の手順
 この記事では、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Kafka 対応 Event Hubs にストリーム配信する方法を紹介しました。 さらに学習するには、次のチュートリアルに進んでください。
 
-> [!div class="nextstepaction"]
-> [Event Hubs での Kafka MirrorMaker の使用](event-hubs-kafka-mirror-maker-tutorial.md)
+* [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)
+* [Kafka 用 Event Hubs について確認する](event-hubs-for-kafka-ecosystem-overview.md)
+* [GitHub で Kafka 用 Event Hubs の他のサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka)
+* [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) を使用して[オンプレミスの Kafka からクラウドの Kafka 対応 Event Hubs にイベントをストリーム配信する。](event-hubs-kafka-mirror-maker-tutorial.md)
+* [Apache Flink](event-hubs-kafka-flink-tutorial.md) または [Akka Streams](event-hubs-kafka-akka-streams-tutorial.md) を使用して Kafka 対応 Event Hubs にストリーム配信する方法について確認する

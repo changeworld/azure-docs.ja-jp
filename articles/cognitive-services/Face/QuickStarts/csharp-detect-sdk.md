@@ -3,25 +3,23 @@ title: 'クイック スタート: 画像の中にある顔を検出する - SDK
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Cognitive Services の Face Windows C# クライアント ライブラリを使って画像から顔を検出します。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: face-api
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: a9a7efd89f8e7462812064615d07acf12acbc3a3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.author: pafarley
+ms.openlocfilehash: b5fd10aaab28303079d3eef9c4c5c25207bb672e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364115"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344984"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-c35---face"></a>クイック スタート: C&#35; を使って画像の中にある顔を検出する - Face
 
 このクイック スタートでは、Face Windows クライアント ライブラリを使って画像から人の顔を検出します。
-
-このサンプルのソース コードは、[GitHub](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,6 +28,9 @@ ms.locfileid: "46364115"
 * [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview) クライアント ライブラリの NuGet パッケージ。 パッケージをダウンロードする必要はありません。 インストールの手順は、以降で説明しています。
 
 ## <a name="detectwithurlasync-method"></a>DetectWithUrlAsync メソッド
+
+> [!TIP]
+> 最新のコードを Visual Studio ソリューションとして [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/Face) から取得してください。
 
 `DetectWithUrlAsync` メソッドと `DetectWithStreamAsync` メソッドは、それぞれリモート画像とローカル画像の [Face - Detect API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) をラップします。 これらのメソッドを使用して、画像の中にある顔を検出し、次のような顔の属性を返すことができます。
 

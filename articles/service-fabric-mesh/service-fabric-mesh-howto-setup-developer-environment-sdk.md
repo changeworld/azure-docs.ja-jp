@@ -9,12 +9,12 @@ ms.date: 08/08/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
 manager: jeconnoc
-ms.openlocfilehash: e95c0ad90503410601cc0764fdc559579a1dd13d
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 094cab324c7a7c66f5fcb57d488661109fcdabea
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41919925"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362672"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>Service Fabric Mesh アプリをビルドするための Windows 開発環境の設定
 
@@ -69,7 +69,7 @@ Install-WindowsFeature Containers
 Service Fabric Mesh ランタイム、SDK、ツールを次の順序でインストールします。
 
 1. Web Platform Installer を使用して [Service Fabric mesh SDK][download-sdkmesh] をインストールします。 Microsoft Azure Service Fabric の SDK とランタイムもインストールされます。
-2. Visual Studio Marketplace から [Visual Studio Service Fabric Tools (プレビュー) の拡張機能][download-tools] をインストールします。
+2. Visual Studio Marketplace から [Visual Studio Service Fabric Mesh Tools (プレビュー) の拡張機能][download-tools] をインストールします。
 
 ## <a name="build-a-cluster"></a>クラスターの構築
 

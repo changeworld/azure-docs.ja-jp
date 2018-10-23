@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/22/2017
 ms.author: rafats
-ms.openlocfilehash: 76545c9953cff944c515e887a6a4214b9c76c501
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: fdeb58d72e15f563fd70ae94804de0773dd603c7
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038529"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387351"
 ---
 # <a name="introduction-to-azure-cosmos-db-sql-api"></a>Azure Cosmos DB の概要: SQL API
 
@@ -67,14 +67,10 @@ Azure Cosmos DB が公開するリソースには、HTTP/HTTPS 要求機能を�
 
 | [ダウンロード] | ドキュメント |
 | --- | --- |
-| [.NET SDK](http://go.microsoft.com/fwlink/?LinkID=402989) |[.NET ライブラリ](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) |
-| [Node.js SDK](http://go.microsoft.com/fwlink/?LinkID=402990) |[Node.js ライブラリ](https://github.com/Azure/azure-cosmosdb-node) |
-| [Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) |[Java ライブラリ](/java/api/com.microsoft.azure.documentdb) |
-| [JavaScript SDK](https://github.com/Azure/azure-cosmos-js) |[JavaScript ライブラリ](https://github.com/Azure/azure-cosmos-js) |
-| 該当なし |[サーバー側の JavaScript SDK](https://github.com/Azure/azure-cosmosdb-js-server) |
-| [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python ライブラリ](https://github.com/Azure/azure-cosmos-python) |
-| 該当なし | [MongoDB 用 API](mongodb-introduction.md)
-
+| [.NET SDK](http://go.microsoft.com/fwlink/?LinkID=402989) |[.NET リファレンス ドキュメント](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) |
+| [Java SDK](http://go.microsoft.com/fwlink/?LinkID=402380) |[Java リファレンス ドキュメント](/java/api/com.microsoft.azure.documentdb) |
+| [JavaScript SDK](https://www.npmjs.com/package/@azure/cosmos) |[JavaScript リファレンス ドキュメント](https://docs.microsoft.com/javascript/api/@azure/cosmos/?view=azure-node-latest) |
+| [Python SDK](https://pypi.python.org/pypi/pydocumentdb) |[Python リファレンス ドキュメント](https://github.com/Azure/azure-cosmos-python) |
 
 [Azure Cosmos DB Emulator](local-emulator.md) を使用すると、SQL API を使ったローカルでのアプリケーションの開発とテストが、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 エミュレーターでのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos DB アカウントの使用に切り替えることができます。
 

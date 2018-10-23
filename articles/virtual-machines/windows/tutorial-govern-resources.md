@@ -11,15 +11,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: a785a18ac4aec3006397b6d681c476f8acf982a7
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 6377a54cc862bb5f62726c3ce91a41cc6eb0763d
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205675"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311390"
 ---
 # <a name="tutorial-learn-about-windows-virtual-machine-governance-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した Windows 仮想マシンの管理方法の説明
 
@@ -55,24 +55,19 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 * [Network Contributor](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Storage Account Contributor](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーのための [Azure Active Directory グループを作成する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事を簡略化するために、メンバーを含まない Azure Active Directory グループを作成します。 その場合でも、このグループをスコープのロールに割り当てることができます。 
+多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーを Azure Active Directory グループにまとめて使用する方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事では、仮想マシンを管理するための既存のグループを使用するか、またはポータルを使用して [Azure Active Directory グループを作成](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)します。
 
-次の例では、名前が *VMDemoContributors* でメール ニックネームが *vmDemoGroup* の Azure Active Directory グループを作成します。 メール ニックネームは、グループのエイリアスとして機能します。
-
-```azurepowershell-interactive
-$adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
-  -MailNickName vmDemoGroup `
-  -MailEnabled $false `
-  -SecurityEnabled $true
-```
-
-コマンド プロンプトに戻ってからグループが Azure Active Directory 全体に伝達されるまで、しばらくかかります。 20 ～ 30 秒待った後、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) コマンドを使って、リソース グループの仮想マシン共同作成者ロールに、新しい Azure Active Directory グループを割り当てます。  伝達される前に次のコマンドを実行した場合、"**プリンシパル <guid> がディレクトリにありません**" というエラーが発生します。 そのときは、コマンドをもう一度実行してみます。
+新しいグループを作成するか、または既存のロールを見つけた後、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) コマンドを使って、リソース グループの仮想マシン共同作成者ロールに、Azure Active Directory グループを割り当てます。  
 
 ```azurepowershell-interactive
-New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
+$adgroup = Get-AzureRmADGroup -DisplayName <your-group-name>
+
+New-AzureRmRoleAssignment -ObjectId $adgroup.id `
   -ResourceGroupName myResourceGroup `
   -RoleDefinitionName "Virtual Machine Contributor"
 ```
+
+"**プリンシパル <guid> がディレクトリ**  にありません" というエラーが発生した場合、まだ新しいグループが Azure Active Directory 全体に伝達されていません。 そのときは、コマンドをもう一度実行してみます。
 
 通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを*ネットワークの共同作業者*と*ストレージ アカウントの共同作業者*に対して繰り返します。 この記事では、これらの手順を省略できます。
 
@@ -168,7 +163,7 @@ New-AzureRmResourceLock -LockLevel CanNotDelete `
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-ロックのために削除操作を実行できないことを示すエラーが表示されます。 リソース グループは、ロックを明確に削除した場合にのみ削除できます。 その手順は、「[リソースのクリーンアップ](#clean-up-resources)」に示されています。
+ロックのために削除操作を完了できないことを示すエラーが表示されます。 リソース グループは、ロックを明確に削除した場合にのみ削除できます。 その手順は、「[リソースのクリーンアップ](#clean-up-resources)」に示されています。
 
 ## <a name="tag-resources"></a>リソースへのタグ付け
 

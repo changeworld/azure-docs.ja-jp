@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: d1776fc2347eb1a1f03a834b6a5f847ef5c551e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 521b6423550bf3e2d0bc90212b7e3fe0cbeddfc4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948885"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167072"
 ---
 # <a name="tutorial-configure-an-azure-web-application-to-read-a-secret-from-key-vault"></a>チュートリアル: キー コンテナーからシークレットを読み取るように Azure Web アプリケーションを構成する
 
@@ -126,10 +126,11 @@ Web アプリケーションでインストールしておく必要のある NuG
 1. ソリューション エクスプローラーで、Web サイト名を右クリックします。
 2. **[ソリューションの NuGet パッケージの管理...]** を選択します。
 3. 検索ボックスの横にある  **[プレリリースを含める]** のチェック ボックスをオンにします。
-4. 以下に示す 2 つの NuGet パッケージを検索して、ソリューションへの追加を許可します。
+4. 以下に示す 3 つの NuGet パッケージを検索して、ソリューションへの追加を許可します。
 
     * [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) - サービスから Azure サービスへの認証シナリオでのアクセス トークンのフェッチを容易にします。 
     * [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) - Key Vault と対話するためのメソッドが含まれています。
+    * [Microsoft.Extensions.Configuration.AzureKeyVault](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.AzureKeyVault/) - Azure Key Vault の `IConfiguration` 拡張機能が含まれています。
 
 5. ソリューション エクスプローラーを使用して `Program.cs` を開き、Program.cs ファイルの内容を次のコードに置き換えます。 ```<YourKeyVaultName>``` には、お使いのキー コンテナーの名前を指定してください。
 
@@ -218,7 +219,7 @@ Web アプリケーションでインストールしておく必要のある NuG
 >[!IMPORTANT]
 > ブラウザー ウィンドウが開き、502.5 のプロセス エラー メッセージが表示されます。 これは予期されることです。 キー コンテナーからシークレットを読み取るために、アプリケーション ID の権限を付与する必要があります。
 
-## <a name="enable-a-managed-identity-for-the-web-app"></a>Web アプリの マネージド ID を有効にする
+## <a name="enable-a-managed-identity-for-the-web-app"></a>Web アプリのマネージド ID を有効にする
 
 Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 [Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
 

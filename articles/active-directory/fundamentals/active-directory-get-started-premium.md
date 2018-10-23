@@ -12,12 +12,12 @@ ms.date: 09/07/2017
 ms.author: lizross
 ms.reviewer: piotrci
 ms.custom: it-pro
-ms.openlocfilehash: bce7a060908e8043390fdce729161cad48a644be
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a0a992e62e7b1e375ff2591aa82bdc7733e9d26f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731072"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394699"
 ---
 # <a name="how-to-sign-up-for-azure-active-directory-premium"></a>方法: Azure Active Directory Premium へのサインアップ
 Azure Active Directory (Azure AD) Premium を購入して、お使いの Azure サブスクリプションと関連付けることができます。 新しい Azure サブスクリプションを作成する必要がある場合は、ライセンス プランと Azure AD サービス アクセスをアクティブにする必要もあります。
@@ -27,11 +27,11 @@ Azure Active Directory (Azure AD) Premium を購入して、お使いの Azure �
 
 Active Directory Premium 1 または Premium 2 にサインアップする前に、まず、使用する既存のサブスクリプションまたはプランを決定する必要があります。
 
-    - 既存の Azure または Office 365 サブスクリプションを利用する
+- 既存の Azure または Office 365 サブスクリプションを利用する
 
-    - Enterprise Mobility + Security ライセンス プランを利用する
+- Enterprise Mobility + Security ライセンス プランを利用する
 
-    - マイクロソフト ボリューム ライセンス プランを利用する
+- マイクロソフト ボリューム ライセンス プランを利用する
 
 以前に購入してアクティブ化した Azure AD ライセンスで、Azure サブスクリプションを使ってサインアップし、同じディレクトリのライセンスを自動的にアクティブ化します。 このように動作しない場合、引き続きお使いのライセンス プランと Azure AD アクセスをアクティブ化する必要があります。 ライセンス プランのアクティブ化の詳細については、「[新しいライセンス プランをアクティブ化する](#activate-your-new-license-plan)」を参照してください。 Azure AD アクセスのアクティブ化の詳細については、「[Azure AD アクセスをアクティブ化する](#activate-your-azure-ad-access)」を参照してください。 
 
@@ -43,20 +43,20 @@ Enterprise Mobility + Security は Azure AD Premium、Azure Information Protecti
 
 EMS の詳細については、[Enterprise Mobility + Security の Web サイト](https://www.microsoft.com/cloud-platform/enterprise-mobility-security)をご覧ください。
 
-    - 無料の [Enterprise Mobility + Security E5 試用版サブスクリプション](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)で EMS を試用する
+- 無料の [Enterprise Mobility + Security E5 試用版サブスクリプション](https://signup.microsoft.com/Signup?OfferId=87dd2714-d452-48a0-a809-d2f58c4f68b7&ali=1)で EMS を試用する
 
-    - [Enterprise Mobility + Security E5 ライセンス](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)を購入する
+- [Enterprise Mobility + Security E5 ライセンス](https://signup.microsoft.com/Signup?OfferId=e6de2192-536a-4dc3-afdc-9e2602b6c790&ali=1)を購入する
 
-    - [Enterprise Mobility + Security E3 ライセンス](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)を購入する
+- [Enterprise Mobility + Security E3 ライセンス](https://signup.microsoft.com/Signup?OfferId=4BBA281F-95E8-4136-8B0F-037D6062F54C&ali=1)を購入する
 
 ## <a name="sign-up-using-your-microsoft-volume-licensing-plan"></a>マイクロソフト ボリューム ライセンス プランを使用してサインアップする
 マイクロソフト ボリューム ライセンス プランを利用して、取得したいライセンス数に基づいて、次の 2 つのプログラムのどちらかを使って Azure AD Premium にサインアップできます。
 
-    - **ライセンス数が 250 以上の場合。** [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
+- **ライセンス数が 250 以上の場合。** [Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx)
 
-    - **ライセンス数が 5～ 250 の場合。** [オープン** ボリューム ライセンス](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
+- **ライセンス数が 5～ 250 の場合。** [オープン ボリューム ライセンス](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx)
 
-    ボリューム ライセンス購入オプションの詳細については、「[How to purchase through Volume Licensing](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx)」(ボリューム ライセンスでの購入方法) を参照してください。
+ボリューム ライセンス購入オプションの詳細については、「[How to purchase through Volume Licensing](https://www.microsoft.com/en-us/licensing/how-to-buy/how-to-buy.aspx)」(ボリューム ライセンスでの購入方法) を参照してください。
 
 ## <a name="activate-your-new-license-plan"></a>新しいライセンス プランをアクティブ化する
 新しい Azure AD ライセンス プランを使用してサインアップした場合は、購入後に送信された確認メールを使用して、所属する組織に対してそのプランをアクティブ化する必要があります。

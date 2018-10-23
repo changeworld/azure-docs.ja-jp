@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 967e978518debb5aef071807b1482d6f225c062f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 82e051895bd5ba8542fa32aa147b050a25c43c84
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367714"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318400"
 ---
 # <a name="quickstart-get-supported-languages-with-c35"></a>クイック スタート: サポートされている言語を C&#35; で取得する
 
 このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Translator Text API を使った例を紹介しています。
-
-サンプルのソース コードは、[Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,6 +28,9 @@ ms.locfileid: "46367714"
 Translator Text API を使用するには、サブスクリプション キーも必要となります。「[Translator Text API にサインアップする方法](translator-text-how-to-signup.md)」を参照してください。
 
 ## <a name="languages-request"></a>言語要求
+
+> [!TIP]
+> [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) から最新のコードを入手します。
 
 次のコードは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を、[Languages](./reference/v3-0-languages.md) メソッドを使って取得する例を示しています。
 

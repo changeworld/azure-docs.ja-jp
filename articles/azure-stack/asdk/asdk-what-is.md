@@ -13,15 +13,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 06/07/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 951cd1adc09373b9af560097b088fd740ceb51a8
-ms.sourcegitcommit: 3c3488fb16a3c3287c3e1cd11435174711e92126
+ms.openlocfilehash: fa20f746e55f784e02244355c96ac273b9906acc
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34850629"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339544"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>Azure Stack Development Kit とは
 [Microsoft Azure Stack 統合システム](.\.\azure-stack-poc.md)には 4 ノードから 12 ノードまでのサイズがあり、ハードウェア パートナーと Microsoft によって共同でサポートされます。 Azure Stack 統合システムの使用により、運用ワークロード向けの新しいシナリオが可能になります。 統合システム インフラストラクチャの管理およびサービスの提供を行う Azure Stack オペレーターは、[オペレーター ドキュメント](https://docs.microsoft.com/azure/azure-stack)を参照してください。
@@ -80,4 +80,4 @@ Azure Stack には、引き続き Azure サービスのサポートが追加さ�
 
 
 ## <a name="next-steps"></a>次の手順
-Azure Stack の評価を開始するには、開発キットのホスト サーバー コンピューターを準備し、次に [ASDK をインストール](asdk-install.md)する必要があります。 その後、管理者ポータルとユーザー ポータルにサインインし、Azure Stack の使用を開始することができます。
+Azure Stack の評価を開始するには、最初に[最新の ASDK](asdk-download.md) をダウンロードし、ASDK ホスト コンピューターを準備する必要があります。 開発キット ホストを準備したら、ASDK をインストールし、管理者ポータルとユーザー ポータルにサインインして、Azure Stack の使用を開始することができます。

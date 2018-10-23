@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 2f020bdf79811c959e07d753231fc133fe597861
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c7396d7322958442fab51417eb350f26f7ada78e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855182"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352662"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-federated-domains"></a>チュートリアル: フェデレーション ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -124,7 +124,7 @@ Azure AD Connect を使用してハイブリッド Azure AD 参加を構成す�
 
     a. フォレストを選択します。
 
-    b. 認証サービスを選択します。 組織で Windows 10 クライアントのみを使用している場合を除き、AD FS サーバーを選択する必要があります。
+    b. 認証サービスを選択します。 組織が Windows 10 クライアントのみを使用していて、ユーザーがコンピューター/デバイスの同期を構成済みか組織で SeamlessSSO が使用されている場合を除き、AD FS を選択する必要があります。
 
     c. **[追加]** をクリックして、エンタープライズ管理者の資格情報を入力します。
 
@@ -194,7 +194,7 @@ Azure テナントのデバイス登録状態を確認するには、**[Azure Ac
 
 - Windows クライアントの ID と一致する**デバイス ID** を持つオブジェクトが存在する必要があります。
 - **DeviceTrustType** の値は **[ドメイン参加済み]** でなければなりません。 これは、Azure AD ポータルの [デバイス] ページの **[ハイブリッド Azure AD 参加済み]** 状態に相当します。
-- 条件付きアクセスで使用されるデバイスの **[有効]** の値は **[True]** でなければなりません。 
+- 条件付きアクセスで使用されるデバイスの **Enabled** の値は **True**、**DeviceTrustLevel**の値は **Managed** でなければなりません。 
 
 
 **サービスの詳細を確認するには:**

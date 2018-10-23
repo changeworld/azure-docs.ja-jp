@@ -13,37 +13,47 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/14/2018
+ms.date: 10/12/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fcc9f338ad69322091199ce9d5d2d1d6f9f2165e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 78b20b977685989c10ba61a48afee7808c46f227
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227284"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320630"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-the-azure-portal"></a>クイック スタート: Azure portal で Linux 仮想マシンを作成する
 
-Azure 仮想マシン (VM) は、Azure portal で作成できます。 この方法では、ブラウザー ベースのユーザー インターフェイスを使用して、VM とその関連リソースを作成できます。 このクイック スタートでは、Azure portal を使用して、Ubuntu を実行する Linux 仮想マシン (VM) を Azure にデプロイする方法を示します。 次に、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
+Azure 仮想マシン (VM) は、Azure portal で作成できます。 Azure portal では、ブラウザー ベースのユーザー インターフェイスを使用して、VM とその関連リソースを作成できます。 このクイック スタートでは、Azure portal を使用して、Ubuntu 16.04 LTS を実行する Linux 仮想マシン (VM) をデプロイする方法を示します。 また、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="create-ssh-key-pair"></a>SSH キー ペアの作成
 
-このクイック スタートを完了するには、SSH キー ペアが必要です。 既存の SSH キー ペアがある場合は、この手順はスキップしてかまいません。
+このクイック スタートを完了するには、SSH キー ペアが必要です。 既存の SSH キーの組がある場合は、この手順をスキップできます。
 
-SSH キー ペアを作成して Linux VM にログインするには、Bash シェルから次のコマンドを実行し、画面の指示に従います。 たとえば、[Azure Cloud Shell](../../cloud-shell/overview.md) または [Linux 用 Windows サブシステム](/windows/wsl/install-win10)を使用できます。 コマンド出力に公開キー ファイルの名前が表示されます。 公開キー ファイル (`cat ~/.ssh/id_rsa.pub`) の内容をクリップボードにコピーします。
+Bash シェルを開き、[ssh-keygen](https://www.ssh.com/ssh/keygen/) を使用して SSH キー ペアを作成します。 Bash シェルがローカル コンピューターにない場合は、[Azure Cloud Shell](https://shell.azure.com/bash) を使用してください。  
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
 
+上のコマンドは、公開キーと秘密キーを既定の名前 (`id_rsa`) で `~/.ssh directory` に生成します。 このコマンドからは、公開キーの完全パスが返されます。 `cat` に公開キーのパスを指定すれば、その内容が表示されます。
+
+```bash 
+cat ~/.ssh/id_rsa.pub
+```
+
+このコマンドの出力結果を保存します。 VM にログインするための管理者アカウントを構成する際に必要となります。
+
 PuTTy の使用を含む SSH キー ペアの作成方法の詳細については、[Windows で SSH キーを使用する方法](ssh-from-windows.md)に関するページを参照してください。
 
-## <a name="log-in-to-azure"></a>Azure にログインする
+Cloud Shell を使用して SSH キーの組を作成した場合、[Cloud Shell により自動的にマウントされる](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage) Azure ファイル共有にキー ペアが格納されます。 キーを取得するまでは、このファイル共有またはストレージ アカウントを削除しないでください。削除すると、VM にアクセスできなくなります。 
 
-Azure Portal (http://portal.azure.com) にログインします
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
+
+[Azure Portal](https://portal.azure.com) にサインインします。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
@@ -69,6 +79,10 @@ Azure Portal (http://portal.azure.com) にログインします
 
 1. 残りの既定値はそのままにして、ページの一番下にある **[Review + create] (確認および作成)** ボタンを選択します。
 
+1. **[仮想マシンの作成]** ページで、これから作成しようとしている VM の詳細を確認できます。 準備ができたら **[作成]** を選択します。
+
+VM がデプロイされるまでに数分かかります。 デプロイが完了したら、次のセクションに移動してください。
+
     
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
 
@@ -78,32 +92,29 @@ VM との SSH 接続を作成します。
 
     ![ポータル 9](./media/quick-create-portal/portal-quick-start-9.png)
 
-2. **[Connect to virtual machine]\(仮想マシンへの接続\)** ページで、ポート 22 を介して DNS 名で接続する既定のオプションをそのまま使用します。 **[VM ローカル アカウントを使用してログインする]** に、接続コマンドが表示されます。 ボタンをクリックしてこのコマンドをコピーします。 SSH 接続コマンドの例を次に示します。
+2. **[Connect to virtual machine]\(仮想マシンへの接続\)** ページで、ポート 22 を介して IP アドレスで接続する既定のオプションをそのまま使用します。 **[VM ローカル アカウントを使用してログインする]** に、接続コマンドが表示されます。 ボタンをクリックしてこのコマンドをコピーします。 SSH 接続コマンドの例を次に示します。
 
     ```bash
-    ssh azureuser@myvm-123abc.eastus.cloudapp.azure.com
+    ssh azureuser@10.111.12.123
     ```
 
-3. Azure Cloud Shell や Bash on Ubuntu on Windows などのシェルに SSH 接続コマンドを貼り付けて、接続を作成します。 
+3. SSH キーの組を作成したときと同じ Bash シェル ([Azure Cloud Shell](https://shell.azure.com/bash) またはローカルの Bash シェルなど) を使用して、SSH 接続コマンドをシェルに貼り付け、SSH セッションを作成します。 
 
 ## <a name="install-web-server"></a>Web サーバーのインストール
 
-VM の動作を確認するために、NGINX Web サーバーをインストールします。 パッケージ ソースを更新して最新の NGINX パッケージをインストールするには、SSH セッションから次のコマンドを実行します。
+VM の動作を確認するために、NGINX Web サーバーをインストールします。 SSH セッションからパッケージ ソースを更新し、最新の NGINX パッケージをインストールします。
 
 ```bash
-# update packages
 sudo apt-get -y update
-
-# install NGINX
 sudo apt-get -y install nginx
 ```
 
-完了したら SSH セッションを `exit` し、Azure portal の VM のプロパティに戻ります。
+完了したら、`exit` と入力して SSH セッションを終了します。
 
 
 ## <a name="view-the-web-server-in-action"></a>動作中の Web サーバーを表示する
 
-NGINX がインストールされ、VM に対しポート 80 が開かれると、Web サーバーにインターネットからアクセスできるようになります。 Web ブラウザーを開いて、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、VM の概要ページ、または受信ポート規則を追加する *[ネットワーキング]* ページの上部に表示されます。
+任意の Web ブラウザーを使用して、NGINX の既定のウェルカム ページを表示します。 Web アドレスとして、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、VM の概要ページで確認できるほか、先ほど使用した SSH 接続文字列にも含まれています。
 
 ![NGINX の既定のサイト](./media/quick-create-cli/nginx.png)
 

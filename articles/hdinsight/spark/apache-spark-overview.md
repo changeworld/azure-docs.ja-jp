@@ -9,16 +9,16 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 05/07/2018
 ms.author: jasonh
-ms.openlocfilehash: 9e4cb497a2dc81b9503b03fd2db27ff2538d424a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7bc7c95c0d15e0c33f7f9a705fb47d27f9daacec
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43039684"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378717"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Apache Spark とは - Azure HDInsight
 
-*Apache Spark* ビッグ データ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする並列処理フレームワーク。 Azure HDInsight の Apache Spark は、クラウドでの Apache Hadoop の Microsoft の実装です。 HDInsight により、Azure での Spark クラスターの作成と構成が簡単になります。 HDInsight の Spark クラスターは、Azure Storage および Azure Data Lake Store と互換性があります。 そのため、HDInsight Spark クラスターを使用して、Azure に格納されているデータを処理できます。 コンポーネントとバージョン情報については、[Azure HDInsight での Hadoop のコンポーネントとバージョン](../hdinsight-component-versioning.md)に関するページを参照してください。
+*Apache Spark* ビッグ データ分析アプリケーションのパフォーマンスを向上させるメモリ内処理をサポートする並列処理フレームワーク。 Azure HDInsight の Apache Spark は、クラウドでの Apache Spark の Microsoft の実装です。 HDInsight により、Azure での Spark クラスターの作成と構成が簡単になります。 HDInsight の Spark クラスターは、Azure Storage および Azure Data Lake Store と互換性があります。 そのため、HDInsight Spark クラスターを使用して、Azure に格納されているデータを処理できます。 コンポーネントとバージョン情報については、[Azure HDInsight での Hadoop のコンポーネントとバージョン](../hdinsight-component-versioning.md)に関するページを参照してください。
 
 ![Spark: 一元化されたフレームワーク](./media/apache-spark-overview/hdinsight-spark-overview.png)
 
@@ -31,7 +31,7 @@ Spark には、クラスターの計算処理をインメモリで行うため�
 
 Azure HDInsight の Spark クラスターでは、フル マネージドの Spark サービスを利用できます。 以下の一覧は、HDInsight で Spark クラスターを作成する利点をまとめたものです。
 
-| Feature | 説明 |
+| 機能 | 説明 |
 | --- | --- |
 | 簡単な作成 |Azure Portal、Azure PowerShell、または HDInsight .NET SDK を使用すると、HDInsight に新しい Spark クラスターを数分で作成できます。 「 [HDInsight での Spark クラスターの概要](apache-spark-jupyter-spark-sql.md) |
 | 使いやすさ |HDInsight の Spark クラスターには、Jupyter Notebook と Zeppelin Notebook が含まれています。 対話型のデータ処理と視覚化にこれらの Notebook を使用できます。|

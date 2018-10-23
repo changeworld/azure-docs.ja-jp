@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 10/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a23e9dc8fad52bac85de834c53d2c710423211c7
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: d09fcde90cf182bc8197c579718ecef7c5ce1eed
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269243"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394529"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -29,7 +29,7 @@ Azure Analysis Services は、完全に管理されたサービスとしての�
 
 Azure Portal から数分で[サーバーを作成する](analysis-services-create-server.md)ことができます。 また、Azure Resource Manager [テンプレート](../azure-resource-manager/resource-manager-create-first-template.md)と PowerShell を使用して、宣言型のテンプレートを使用するサーバーを作成できます。 1 つのテンプレートを使用して、他の Azure コンポーネント (ストレージ アカウントや Azure Functions など) と共にサーバー リソースをデプロイできます。 
 
-**ビデオ:** [デプロイの自動化](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)で、Azure Automation を使用してサーバーを迅速に作成する方法を確認してださい。
+**ビデオ:** 「[Automating deployment (デプロイの自動化)](https://channel9.msdn.com/series/Azure-Analysis-Services/AzureAnalysisServicesAutomation)」で、Azure Automation を使用してサーバーを迅速に作成する方法を確認してください。
 
 Azure Analysis Services とさまざまな Azure サービスを統合することにより、高度な分析ソリューションを構築できます。 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) との統合によって、重要なデータのセキュリティをロールベースのアクセスによって確保することができます。 [Azure Data Factory](../data-factory/introduction.md) パイプラインには、モデルにデータを読み込むアクティビティを含めることによって統合します。 [Azure Automation](../automation/automation-intro.md) や [Azure Functions](../azure-functions/functions-overview.md) を使用すると、カスタム コードによるモデルの軽量オーケストレーションを行うことができます。 
 

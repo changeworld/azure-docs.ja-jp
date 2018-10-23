@@ -9,28 +9,16 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: af06766d89804b2f3d0aaf061494fb836f6ec262
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 0199efbc1456206c67efb846b4381cae333e3749
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465607"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309044"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central アプリケーションの作成
 
-"_ビルダー_" は、Azure IoT Central の UI を使用して、Microsoft Azure IoT Central アプリケーションを定義します。 このクイックスタートでは、次の方法について説明します。
-
-- サンプル "_デバイス テンプレート_" およびシミュレートされた "_デバイス_" を含んだ Azure IoT Central アプリケーションを作成します。
-- アプリケーションの **Refrigerated Vending Machine** デバイス テンプレートの機能を表示します。
-- シミュレートされた **Refrigerator** デバイスからのテレメトリと分析を表示します。
-
-このクイック スタートでは、デバイス テンプレートに含まれているシミュレートされた **Refrigerator** デバイスを表示します。 このシミュレートされたデバイスの機能を次に示します。
-
-* 温度や気圧などのテレメトリをアプリケーションに送信します。
-* デバイス プロパティの値 (振動警告など) をアプリケーションにレポートします。
-* アプリケーションから設定できるデバイス設定 (ファン速度など) を備えています。
-
-Azure IoT Central アプリケーションでは、デバイス テンプレートからシミュレートされたデバイスを作成すると、実デバイスを接続する前に、シミュレートされたデバイスでアプリケーションをテストすることができます。
+"_ビルダー_" は、Azure IoT Central の UI を使用して、Microsoft Azure IoT Central アプリケーションを定義します。 このクイック スタートでは、サンプル "_デバイス テンプレート_" およびシミュレートされた "_デバイス_" を含んだ Azure IoT Central アプリケーションを作成する方法について説明します。
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
 

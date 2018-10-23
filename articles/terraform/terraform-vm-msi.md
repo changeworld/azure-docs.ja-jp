@@ -1,6 +1,6 @@
 ---
-title: Azure Marketplace イメージを使用して管理対象サービス ID を使用する Terraform Linux 仮想マシンを作成する
-description: Azure にリソースを簡単にデプロイするために、Marketplace イメージを使用して、管理対象サービス ID とリモート状態管理を使用する Terraform Linux 仮想マシンを作成します。
+title: Azure Marketplace イメージを使用してマネージド ID を使用する Terraform Linux 仮想マシンを作成する
+description: Azure にリソースを簡単にデプロイするために、Marketplace イメージを使用して、マネージド ID とリモート状態管理を使用する Terraform Linux 仮想マシンを作成します。
 services: terraform
 ms.service: terraform
 keywords: terraform, devops, MSI, 仮想マシン, リモート状態, azure
@@ -9,16 +9,16 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 0136966576e3fbb22855d74cc1866e48b4ac24c9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 1ec6228993c516ce2974c64bfa5b6dcdf63e7f91
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669389"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343828"
 ---
-# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-service-identity"></a>Azure Marketplace イメージを使用して管理対象サービス ID を使用する Terraform Linux 仮想マシンを作成する
+# <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Azure Marketplace イメージを使用して Azure リソースのマネージド ID を使用する Terraform Linux 仮想マシンを作成する
 
-この記事では、[Terraform Marketplace イメージ](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview)を使用して、[Terraform](https://www.terraform.io/intro/index.html) の最新バージョンがインストールされ、[管理対象サービス ID (MSI)](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) を使用して構成された Ubuntu Linux VM (16.04 LTS) を作成する方法について説明します。 このイメージでは、Terraform を使用した[リモート状態](https://www.terraform.io/docs/state/remote.html)管理を可能にするリモート バックエンドも構成します。 
+この記事では、[Terraform Marketplace イメージ](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.terraform?tab=Overview)を使用して、[Terraform](https://www.terraform.io/intro/index.html) の最新バージョンがインストールされ、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview) を使用して構成された Ubuntu Linux VM (16.04 LTS) を作成する方法について説明します。 このイメージでは、Terraform を使用した[リモート状態](https://www.terraform.io/docs/state/remote.html)管理を可能にするリモート バックエンドも構成します。 
 
 Terraform Marketplace イメージを使用すると、Azure で Terraform を簡単に使い始めることができます。Terraform を手動でインストールして構成する必要はありません。 
 
@@ -79,13 +79,13 @@ Terraform VM イメージでは、次の手順が実行されます。
 
 VM を作成したら、SSH を使用してサインインできます。 テキスト シェル インターフェイスで、手順 3. の [基本] セクションで作成したアカウントの資格情報を使用します。 Windows では、[Putty](http://www.putty.org/) などの SSH クライアント ツールをダウンロードできます。
 
-SSH を使用して仮想マシンに接続したら、仮想マシンの管理対象サービス ID に、サブスクリプション全体に対する共同作成者のアクセス許可を付与する必要があります。 
+SSH を使用して仮想マシンに接続したら、仮想マシン上の Azure リソースのマネージド ID に、サブスクリプション全体に対する共同作成者のアクセス許可を付与する必要があります。 
 
 共同作成者のアクセス許可により、VM の MSI は、Terraform を使用して VM リソース グループの外部にリソースを作成できます。 このアクションは、スクリプトを 1 回実行することで簡単に実現できます。 次のコマンドを使用します。
 
 `. ~/tfEnv.sh`
 
-上記のスクリプトでは、Azure での認証に [AZ CLI v 2.0 の対話型ログイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) メカニズムを使用し、仮想マシンの管理対象サービス ID に、サブスクリプション全体に対する共同作成者のアクセス許可を割り当てます。 
+上記のスクリプトでは、Azure での認証に [AZ CLI v 2.0 の対話型ログイン](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest#interactive-log-in) メカニズムを使用し、仮想マシンのマネージド ID に、サブスクリプション全体に対する共同作成者のアクセス許可を割り当てます。 
 
  VM は、Terraform のリモート状態バックエンドを備えています。 Terraform デプロイメントでこれを有効にするには、remoteState.tf ファイルを tfTemplate ディレクトリから Terraform スクリプトのルートにコピーします。  
 

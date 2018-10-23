@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/07/2018
+ms.date: 10/12/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 70ed5d45701133434c708ad80aaafc58645297e8
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: ee336fb5a60998aaac1518a85b8b92f63d9d4b64
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077121"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318131"
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>プラン、オファー、クォータ、サブスクリプションの概要
 
@@ -50,9 +50,9 @@ ms.locfileid: "49077121"
 
 ### <a name="quotas"></a>Quotas (クォータ)
 
-プラン内の各サービスに事前にプロビジョニングされたクォータを使用または新しいクォータを作成して、クラウドの容量の管理に役立てることができます。 クォータは、ユーザー サブスクリプションでプロビジョニングまたは使用できるリソースの上限を定義します。 たとえば、1 つのクォータでユーザー 1 人に最大 5 つの仮想マシン (VM) の作成を許可できます。 RAM や CPU コアなど、仮想マシンに追加のクォータを設定します。
+プラン内の各サービスに事前にプロビジョニングされた "*クォータ*" を使用または新しいクォータを作成して、クラウドの容量の管理に役立てることができます。 クォータは、ユーザー サブスクリプションでプロビジョニングまたは使用できるリソースの上限を定義します。 たとえば、1 つのクォータでユーザー 1 人に最大 5 つの仮想マシン (VM) の作成を許可できます。
 
-クォータはリージョンごとに構成できます。 たとえば、リージョン A のコンピューティング サービスを提供するプランには、4 GB の RAM、8 個の CPU コアの 2 台の VM のクォータを設定できます。
+クォータはリージョンごとに構成できます。 たとえば、リージョン A のコンピューティング サービスを提供するプランには、2 台の VM のクォータを設定できます。
 
 >[!NOTE]
 >Azure Stack Development Kit では、(*ローカル*という名前の) 1 つのリージョンだけが使用できます。
@@ -85,4 +85,4 @@ ms.locfileid: "49077121"
 
 ## <a name="next-steps"></a>次の手順
 
-[プランの作成](azure-stack-create-plan.md)
+プランとオファーの詳細については、[プランの作成](azure-stack-create-plan.md)に関するページを参照してください。

@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: spelluru
-ms.openlocfilehash: 08295ceeb2ebe94a96eaade0a6443f0f59212d60
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 870cfcf8712cc5bee2674b82d5292e4241433386
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394031"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342209"
 ---
 # <a name="what-is-azure-service-bus"></a>Azure Service Bus とは
 
@@ -95,9 +95,9 @@ Service Bus は、受信者に配信できないメッセージ、または処�
 
 クライアントが送信操作の結果について何か疑問を持つようなエラーが発生した場合、[重複メッセージの検出](duplicate-detection.md)機能は、送信側が同じメッセージを再送信することを可能にすることで、このような状況を解決し、重複メッセージはキューまたはトピックで削除されます。
 
-### <a name="sas-rbac-and-msi"></a>SAS、RBAC、MSI
+### <a name="sas-rbac-and-managed-identities-for-azure-resources"></a>SAS、RBAC、および Azure リソースのマネージド ID
 
-Service Bus は、[Shared Access Signatures](service-bus-sas.md) (SAS)、[ロールベースのアクセス制御](service-bus-role-based-access-control.md) (RBAC)、[マネージド サービス ID](service-bus-managed-service-identity.md) (MSI) などのセキュリティ プロトコルをサポートしています。
+Service Bus は、[Shared Access Signatures](service-bus-sas.md) (SAS)、[ロールベースのアクセス制御](service-bus-role-based-access-control.md) (RBAC)、および [Azure リソースのマネージド ID](service-bus-managed-service-identity.md) などのセキュリティ プロトコルをサポートしています。
 
 ### <a name="geo-disaster-recovery"></a>geo ディザスター リカバリー
 

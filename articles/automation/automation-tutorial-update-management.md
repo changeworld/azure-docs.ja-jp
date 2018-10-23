@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/18/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 4d504e0488d35c5c606468faa35bece1318503b4
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: bc1b52b97897cb1c635fb16e6ef9692de1ca8a44
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498523"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167258"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Azure Automation を使用して Windows 更新プログラムを管理する
 
@@ -116,7 +116,8 @@ UpdateRunProgress
 
 #### <a name="runbook-alert"></a>Runbook のアラート
 
-失敗したデプロイについて、マスター Runbook のエラーをアラート通知する必要があります。Azure Portal で、**[監視]** に移動して **[アラートの作成]** を選択します。
+失敗したデプロイについて、マスター Runbook のエラーをアラート通知する必要があります。
+Azure portal 上で **[監視]** に移動し、**[アラートの作成]** を選択します。
 
 **[1. アラートの条件を定義します]** で、**[ターゲットの選択]** をクリックします。 **[リソースの種類でフィルター]** で **[Automation アカウント]** を選びます。 お使いの Automation アカウントを選択して、**[完了]** を選択します。
 
@@ -222,7 +223,7 @@ VM の新しい更新プログラムの展開をスケジュールするには�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Update Management のために VM をオンボードする

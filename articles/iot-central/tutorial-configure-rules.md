@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: fb13bcee411b4fa27bf3ce5cd62fa3a483ea23e6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 20dcad571a32638488ce111b5af55623f2305c57
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731894"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310438"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>チュートリアル: Azure IoT Central でデバイスのルールとアクションを構成する
 
@@ -54,12 +54,12 @@ ms.locfileid: "45731894"
 
 5. ルールを定義するには、次の表の情報を使用します。
 
-    | 設定                                      | 値                             |
+    | Setting                                      | 値                             |
     | -------------------------------------------- | ------------------------------    |
-    | 名前                                         | 空調機の温度アラート |
+    | Name                                         | 空調機の温度アラート |
     | [Enable rule for all devices of this template]\(このテンプレートのすべてのデバイスに対してルールを有効にする\) | On                                |
     | [Enable rule on this device]\(このデバイス上でルールを有効にする\)                   | On                                |
-    | 条件                                    | 温度が 90 度を超えている    |
+    | 条件                                    | Temperature is greater than 90    |
     | 集計                                  | なし                              |
 
     ![温度ルールの条件](media/tutorial-configure-rules/buildertemperaturerule1.png)
@@ -74,7 +74,7 @@ ms.locfileid: "45731894"
 
 2. アクションを定義するには、次の表の情報を使用します。
 
-    | 設定   | 値                          |
+    | Setting   | 値                          |
     | --------- | ------------------------------ |
     | ターゲット        | メール アドレス             |
     | メモ     | 空調機の温度がしきい値を超えました。 |
@@ -97,9 +97,12 @@ ms.locfileid: "45731894"
 
 ![メール アクション](media/tutorial-configure-rules/email.png)
 
+> [!NOTE]
+> テストの完了後は、ルールを無効にして、受信トレイに届くアラートを停止してください。 
+
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 <!-- Repeat task list from intro -->
 > [!div class="nextstepaction"]

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: de856aed32b596209f7af2861b76ed6648d0caca
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 2d22e995f489a6379a2f134b461b8bb17160919e
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067824"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113837"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module-preview"></a>チュートリアル: Azure Stream Analytics を IoT Edge モジュールとして展開する (プレビュー)
 
@@ -50,7 +50,7 @@ Azure IoT Edge デバイス:
 
 クラウド リソース:
 
-* Azure の Free レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
+* Azure の Free レベルまたは Standard レベルの [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)。 
 
 
 ## <a name="create-an-azure-stream-analytics-job"></a>Azure Stream Analytics ジョブの作成

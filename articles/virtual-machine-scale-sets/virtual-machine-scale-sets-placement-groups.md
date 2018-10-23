@@ -3,7 +3,7 @@ title: 大規模な Azure 仮想マシン スケール セットの使用 | Micr
 description: 大規模な Azure 仮想マシン スケール セットを使用するために知っておくべきこと
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: rajsqr
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/9/2017
-ms.author: negat
-ms.openlocfilehash: 17c8fdd0bc85b9d1a4e1b50cf422b28f32862a7e
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.author: rajraj
+ms.openlocfilehash: f45b78f1c30119f5e892287719c9c2edfae57ce6
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941130"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364216"
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>大規模な仮想マシン スケール セットの使用
 現在、最大 1,000 個の VM を容量とした Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)を作成できるようになりました。 このドキュメントの "_大規模な仮想マシン スケール セット_" は、100 個を超える VM にスケーリングできるスケール セットとして定義されています。 この機能はスケール セット プロパティで設定されています (_singlePlacementGroup=False_)。 
@@ -35,18 +35,18 @@ ms.locfileid: "33941130"
 ## <a name="checklist-for-using-large-scale-sets"></a>大規模なスケール セットを使用するためのチェックリスト
 アプリケーションで大規模なスケール セットを効率的に使用できるかどうかを判断するには、次の要件を検討してください。
 
+- 多数の VM をデプロイする予定の場合は、コンピューティング vCPU のクォータ制限の引き上げが必要になることがあります。 
 - 大規模なスケール セットには、Azure Managed Disks が必要です。 Managed Disks を使用して作成されていないスケール セットには、複数のストレージ アカウントが必要です (VM 20 個につき 1 つ)。 大規模なスケール セットは、ストレージの管理オーバーヘッドを軽減し、サブスクリプションのストレージ アカウントの上限に達するリスクを回避するために、Managed Disks のみで動作するように設計されています。 Managed Disks を使用しない場合、スケール セットは 100 個の VM に制限されます。
 - Azure Marketplace イメージから作成されたスケール セットは、最大 1,000 個の VM にスケールアップできます。
-- カスタム イメージ (自身で作成してアップロードした VM イメージ) から作成されたスケール セットは、現在、最大 300 個の VM にスケールアップできます。
+- カスタム イメージ (自身で作成してアップロードした VM イメージ) から作成されたスケール セットは、現在、最大 600 個の VM にスケールアップできます。
 - 複数の配置グループで構成されたスケール セットでのレイヤー 4 の負荷分散には、[Azure Load Balancer Standard SKU](../load-balancer/load-balancer-standard-overview.md) が必要です。 Load Balancer Standard SKU には、複数のスケール セットの間で負荷分散を行えるなど、他にもメリットがあります。 また Standard SKU では、スケール セットにネットワーク セキュリティ グループが関連付けられていることも必要です。そうでない場合、NAT プールは正常に機能しません。 Azure Load Balancer Basic SKU を使用する必要がある場合は、スケール セットが 1 つの配置グループを使用するよう構成されていることを確認してください。これは既定の設定です。
 - Azure Application Gateway によるレイヤー 7 の負荷分散は、すべてのスケール セットでサポートされています。
 - 1 つのスケール セットは 1 つのサブネットで定義されます。サブネットには、必要なすべての VM にとって十分な規模のアドレス空間があることを確認してください。 既定では、スケール セットはオーバープロビジョニングされ (デプロイ時またはスケールアウト時に追加の VM が作成されますが、これについては課金されません)、デプロイの信頼性とパフォーマンスが向上します。 スケールする予定の VM の数よりもアドレス空間が 20% 大きくなることを考慮に入れておいてください。
-- 多数の VM をデプロイする予定の場合は、コンピューティング vCPU のクォータ制限の引き上げが必要になることがあります。
 - 配置グループ内で一貫性があるのは、障害ドメインとアップグレード ドメインのみです。 VM が個別の物理ハードウェアで均等に分散されているため、このアーキテクチャでは、スケール セットの全体的な可用性が変更されることはありません。ただし、これは、2 つの VM が異なるハードウェア上にあることを保証する必要がある場合、これらの VM が同じ配置グループ内の別々の障害ドメインに配置されるようにすることを意味します。 障害ドメインと配置グループ ID は、スケール セット VM の "_インスタンス ビュー_" に表示されます。 スケール セット VM のインスタンス ビューは、[Azure リソース エクスプローラー](https://resources.azure.com/)で表示できます。
 
 
 ## <a name="creating-a-large-scale-set"></a>大規模なスケール セットを作成する
-Azure Portal でスケール セットを作成するときに、複数の配置グループへのスケールを許可することができます。これには、_[基本]_ ブレードの _[Limit to a single placement group (1 つの配置グループに制限する)]_ オプションを _[False]_ に設定します。 このオプションが _[False]_ に設定されていると、"_インスタンス数_" の値を最大 1,000 に指定することができます。
+Azure portal でスケール セットを作成する場合は、最大で 1,000 の "*インスタンス数*" の値を指定します。 インスタンスが 100 を超える場合は、*[インスタンス数が 100 を超えるスケールを有効にする]* が *[はい]* に設定されます。その場合、複数の配置グループへのスケーリングが許可されます。 
 
 ![](./media/virtual-machine-scale-sets-placement-groups/portal-large-scale.png)
 
@@ -56,7 +56,7 @@ Azure Portal でスケール セットを作成するときに、複数の配置
 az group create -l southcentralus -n biginfra
 az vmss create -g biginfra -n bigvmss --image ubuntults --instance-count 1000
 ```
-_vmss create_ コマンドでは、構成値を指定しない場合に既定で特定の構成値が使用されます。 上書きできる使用可能なオプションを表示するには、次のように入力します。
+_vmss create_ コマンドでは、構成値を指定しない場合に既定で特定の構成値が使用されます。 オーバーライドできる使用可能なオプションを表示するには、次のように入力します。
 ```bash
 az vmss create --help
 ```

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: c195f2ee24b61a57c098d5214a37f65e80845074
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 28ff8dbf073596e5f9565c56ae903af6af68f3e2
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410206"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353718"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>チュートリアル: Azure および Azure Stack を使用してエッジ機械学習ソリューションを作成する
 
@@ -210,7 +210,7 @@ Azure Portal で Ubuntu データ サイエンス仮想マシン (DSVM) を作�
 
     d.  **[Diagnostics Storage Account] (診断ストレージ アカウント)** として、以前に作成されたストレージ アカウントを選択します。
 
-    e.  注: Azure サブスクリプションに対して AAD が有効で、構成されている場合は、マネージド サービス ID も有効にすることができます。
+    e.  注: Azure サブスクリプションに対して AAD が有効で、構成されている場合は、Azure リソースのマネージド ID も有効にすることができます。
 
 2.  **[OK]** を選択します。
 

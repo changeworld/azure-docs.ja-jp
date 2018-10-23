@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 10/04/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ae0d37dd8df9b076e72959e9036ba35d322e4e63
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5d18a1f86e1d870db64199c575450dd475590b55
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803717"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394473"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>チュートリアル: Resource Manager テンプレートで Azure Deployment Manager を使用する (パブリック プレビュー)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>チュートリアル: Resource Manager テンプレートで Azure Deployment Manager を使用する (プライベート プレビュー)
 
 [Azure Deployment Manager](./deployment-manager-overview.md) を使用して、アプリケーションを複数の地域に配備する方法を学習します。 Deployment Manager を使用するには、次の 2 つのテンプレートを作成する必要があります。
 
@@ -48,7 +48,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この記事を完了するには、以下が必要です。
 
 * [Azure Resource Manager テンプレート](./resource-group-overview.md)を開発した経験がある。
-* Azure Deployment Manager はパブリック プレビュー段階です。 Azure Deployment Manager を使用してサインアップするには、[サインアップ シート](https://aka.ms/admsignup)に記入してください。 
+* Azure Deployment Manager はプライベート プレビュー段階です。 Azure Deployment Manager を使用してサインアップするには、[サインアップ シート](https://aka.ms/admsignup)に記入してください。 
 * Azure PowerShell。 詳細については、[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/get-started-azureps)に関するページを参照してください。
 * Deployment Manager コマンドレット。 これらのプレリリース版のコマンドレットをインストールするには、最新バージョンの PowerShellGet が必要です。 最新バージョンを入手するには、「[PowerShellGet のインストール](/powershell/gallery/installing-psget)」を参照してください。 PowerShellGet をインストールし終えたら、PowerShell ウィンドウを閉じます。 新しい PowerShell ウィンドウを開き、次のコマンドを使用します。
 

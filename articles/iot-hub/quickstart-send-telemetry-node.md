@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/19/2018
 ms.author: dobett
-ms.openlocfilehash: 8a5a6ff2eab8a9ef5fb631ef81818a30db00078b
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 4ce693aa30159234ab0dbde29d5aa15e6da058fe
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48784951"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361832"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-nodejs"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (Node.js) でハブから利用統計情報を読み取る
 
@@ -55,12 +55,12 @@ https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip か�
 
    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
+   **MyNodeDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyNodeDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
+
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyNodeDevice
     ```
-
-    デバイスに別の名前を選択した場合は、サンプル アプリケーションを実行する前に、その中でのバイス名を更新してください。
 
 1. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
@@ -69,7 +69,7 @@ https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip か�
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyNodeDevice --output table
     ```
-    
+ 
     次のようなデバイス接続文字列をメモしておきます。
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`

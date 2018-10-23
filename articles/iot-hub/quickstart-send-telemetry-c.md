@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/27/2018
 ms.author: wesmc
-ms.openlocfilehash: 77b76ac5b30c4f5f647c532dbc5db68b396b3d20
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 3fa4c536313375ed88f6f0223218a663d4be3eb3
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45636143"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364777"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (C) でハブから利用統計情報を読み取る
 
@@ -53,7 +53,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 ただし、このクイック スタートでは、クローンに使用される開発環境を準備して、GitHub から [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) をビルドします。 GitHub 上の SDK には、このクイック スタートで使用されるサンプル コードが含まれます。 
 
 
-1. [CMake ビルド システム](https://cmake.org/download/)のバージョン 3.11.4 をダウンロードします。 ダウンロードしたバイナリを、対応する暗号化ハッシュ値を使用して検証します。 次の例では、Windows PowerShell を使用して、x64 MSI 配布のバージョン 3.11.4 の暗号化ハッシュを検証しています。
+1. [CMake ビルド システム](https://cmake.org/download/) バージョン 3.11.4 をダウンロードします。 ダウンロードしたバイナリを、対応する暗号化ハッシュ値を使用して検証します。 次の例では、Windows PowerShell を使用して、x64 MSI 配布のバージョン 3.11.4 の暗号化ハッシュを検証しています。
 
     ```PowerShell
     PS C:\Downloads> $hash = get-filehash .\cmake-3.11.4-win64-x64.msi
@@ -118,25 +118,32 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)と共に Azure CLI を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 `{YourIoTHubName}` は、IoT ハブ用に選んだ名前に置き換えます。
+1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+
+   **MyCDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyCDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyCDevice
+    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyCDevice
     ```
 
-    デバイスに別の名前を選択した場合は、サンプル アプリケーションを実行する前に、その中でのバイス名を更新してください。
+2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
-2. 次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyCDevice --output table
+    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyCDevice --output table
     ```
 
-    `Hostname=...=` のようなデバイス接続文字列をメモしておきます。 この値は、このクイック スタートの後の方で使います。
+    次のようなデバイス接続文字列をメモしておきます。
 
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+
+    この値は、このクイック スタートの後の方で使います。
 
 ## <a name="send-simulated-telemetry"></a>シミュレートされた利用統計情報の送信
 
@@ -156,19 +163,19 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
     ```
     `connectionString` 定数の値を、前にメモしたデバイス接続文字列に置き換えます。 その後、**iothub_convenience_sample.c** への変更を保存します。
 
-3. ターミナル ウィンドウで、Azure IoT C SDK で作成した CMake ディレクトリの *iothub_convenience_sample* プロジェクト ディレクトリに移動します。
+3. ローカル ターミナル ウィンドウで、Azure IoT C SDK で作成した CMake ディレクトリの *iothub_convenience_sample* プロジェクト ディレクトリに移動します。
 
     ```
     cd /azure-iot-sdk-c/cmake/iothub_client/samples/iothub_convenience_sample
     ```
 
-4. 次のコマンドラインを使用して CMake を実行し、更新した `connectionString` 値を使ってサンプルをビルドします。
+4. ローカル ターミナル ウィンドウで CMake を実行して、更新した `connectionString` 値を使用してサンプルをビルドします。
 
     ```cmd/sh
     cmake --build . --target iothub_convenience_sample --config Debug
     ```
 
-5. コマンド プロンプトで次のコマンドを実行して、シミュレートされたデバイス アプリケーションを実行します。
+5. ローカル ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションを実行します。
 
     ```cmd/sh
     Debug\iothub_convenience_sample.exe
@@ -181,12 +188,14 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 ## <a name="read-the-telemetry-from-your-hub"></a>ハブから利用統計情報を読み取る
 
 
-このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)と共に Azure CLI を使用して、シミュレートされたデバイスから送信されるデバイス メッセージを監視します。
+このセクションでは、[IoT 拡張機能](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest)と共に Azure Cloud Shell を使用して、シミュレートされたデバイスから送信されるデバイス メッセージを監視します。
 
-1. Azure CLI を使用して、次のコマンドを実行して接続し、お使いの IoT ハブからのメッセージを読み取ります。
+1. Azure Cloud Shell を使用して、次のコマンドを実行して接続し、お使いの IoT ハブからのメッセージを読み取ります。
+
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub monitor-events --hub-name {YourIoTHubName} --output table
+    az iot hub monitor-events --hub-name YourIoTHubName --output table
     ```
 
     ![Azure CLI を使用してデバイス メッセージを読み取る](media/quickstart-send-telemetry-c/read-device-to-cloud-messages-app.png)
@@ -199,7 +208,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、IoT ハブをセットアップし、デバイスを登録し、C アプリケーションを使ってハブにシミュレートされた利用統計情報を送信し、Azure CLI を使用してハブから利用統計情報を読み取りました。
+このクイック スタートでは、IoT ハブをセットアップして、デバイスを登録し、C アプリケーションを使ってハブにシミュレートされた利用統計情報を送信し、Azure Cloud Shell を使用してハブから利用統計情報を読み取りました。
 
 Azure IoT Hub C SDK による開発の詳細については、引き続き次の攻略ガイドを参照してください。
 

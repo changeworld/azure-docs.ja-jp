@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d99b76faf618439e51735d5f1096fd4f1cfd2364
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9b8293196114f55f633e67cf19cd0c9e60f6398e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038291"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309462"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>チュートリアル: Azure IoT Central オペレーターのビューをカスタマイズする
 
@@ -56,7 +56,7 @@ ms.locfileid: "47038291"
 
     ![デバイス テンプレートのダッシュボードのページ](media/tutorial-customize-operator/dashboard.png)
 
-4. ダッシュボードに KPI タイルを追加するには、**[KPI]** を選択します。
+4. ダッシュボードに主要業績評価指標 (KPI) タイルを追加するには、**[KPI]** を選択します。
 
     ![KPI を追加する](media/tutorial-customize-operator/addkpi.png)
 
@@ -81,7 +81,7 @@ ms.locfileid: "47038291"
 
 ## <a name="configure-your-settings-layout"></a>設定のレイアウトを構成する
 
-作成者は、オペレーター用のデバイス設定ビューを構成することもできます。 オペレーターは、デバイス設定ページを使用してデバイスを構成します。 たとえば、オペレーターは冷却装置の目標温度を設定するために設定ページを使用します。
+作成者は、オペレーター用のデバイス設定ビューを構成することもできます。 オペレーターは、デバイス設定ページを使用してデバイスを構成します。 たとえば、オペレーターはコネクテッド空調機の目標温度を設定するために設定ページを使用します。
 
 1. コネクテッド空調機の設定のレイアウトを編集するには、**[設定]** を選択し、**[テンプレートの編集]** を選択します。
 
@@ -117,7 +117,7 @@ ms.locfileid: "47038291"
 
 **[テンプレートの編集]** モードでは、オペレーター用のダッシュボード ページ、設定ページ、プロパティ ページをカスタマイズできます。 **[テンプレートの編集]** モードではない場合、オペレーターとしてアプリケーションを表示できます。
 
-1. オペレーターとしてコネクテッド空調デバイスを表示するには、テンプレートの編集を停止するために、**[完了]** をクリックする必要があります。 これで、デバイスのオペレーター表示に戻ります。
+1. オペレーターとしてコネクテッド空調デバイスを表示するには、**[完了]** をクリックしてテンプレートの編集を停止し、デバイスのオペレーターのビューに戻ります。
 
 2. このデバイスの場所を更新するには、[Location]\(場所\) タイルの値を編集して、**[保存]** を選択します。
 

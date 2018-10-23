@@ -11,15 +11,15 @@ ms.workload: infrastructure
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/20/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 2d19488d9b4d6ae6c71610788345b45c38e51cfa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 715a8e5bab9e5d16b8c0e54298101df856d51a9a
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968817"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309861"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-governance-with-azure-cli"></a>チュートリアル: Azure CLI を使用した Azure 仮想マシンの管理方法の説明
 
@@ -27,7 +27,7 @@ ms.locfileid: "46968817"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
+Azure CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.30 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。
 
 ## <a name="understand-scope"></a>スコープを理解する
 
@@ -55,19 +55,17 @@ az group create --name myResourceGroup --location "East US"
 * [Network Contributor](../../role-based-access-control/built-in-roles.md#network-contributor)
 * [Storage Account Contributor](../../role-based-access-control/built-in-roles.md#storage-account-contributor)
 
-多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーのための [Azure Active Directory グループを作成する](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事を簡略化するために、メンバーを含まない Azure Active Directory グループを作成します。 その場合でも、このグループをスコープのロールに割り当てることができます。 
+多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーを Azure Active Directory グループにまとめて使用する方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事では、仮想マシンを管理するための既存のグループを使用するか、またはポータルを使用して [Azure Active Directory グループを作成](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)します。
 
-次の例では、名前が *VMDemoContributors* でメール ニックネームが *vmDemoGroup* の Azure Active Directory グループを作成します。 メール ニックネームは、グループのエイリアスとして機能します。
-
-```azurecli-interactive
-adgroupId=$(az ad group create --display-name VMDemoContributors --mail-nickname vmDemoGroup --query objectId --output tsv)
-```
-
-コマンド プロンプトに戻ってからグループが Azure Active Directory 全体に伝達されるまで、しばらくかかります。 20 ～ 30 秒待った後、[az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) コマンドを使って、リソース グループの仮想マシン共同作成者ロールに、新しい Azure Active Directory グループを割り当てます。  伝達される前に次のコマンドを実行した場合、"**プリンシパル <guid> がディレクトリにありません**" というエラーが発生します。 そのときは、コマンドをもう一度実行してみます。
+新しいグループを作成するか、または既存のロールを見つけた後、[az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) コマンドを使って、リソース グループの仮想マシン共同作成者ロールに、新しい Azure Active Directory グループを割り当てます。
 
 ```azurecli-interactive
+adgroupId=$(az ad group show --group <your-group-name> --query objectId --output tsv)
+
 az role assignment create --assignee-object-id $adgroupId --role "Virtual Machine Contributor" --resource-group myResourceGroup
 ```
+
+"**プリンシパル <guid> がディレクトリ**  にありません" というエラーが発生した場合、まだ新しいグループが Azure Active Directory 全体に伝達されていません。 そのときは、コマンドをもう一度実行してみます。
 
 通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを*ネットワークの共同作業者*と*ストレージ アカウントの共同作業者*に対して繰り返します。 この記事では、これらの手順を省略できます。
 
@@ -171,7 +169,7 @@ az lock create --name LockNSG \
 az group delete --name myResourceGroup
 ```
 
-ロックのために削除操作を実行できないことを示すエラーが表示されます。 リソース グループは、ロックを明確に削除した場合にのみ削除できます。 その手順は、「[リソースのクリーンアップ](#clean-up-resources)」に示されています。
+ロックのために削除操作を完了できないことを示すエラーが表示されます。 リソース グループは、ロックを明確に削除した場合にのみ削除できます。 その手順は、「[リソースのクリーンアップ](#clean-up-resources)」に示されています。
 
 ## <a name="tag-resources"></a>リソースへのタグ付け
 

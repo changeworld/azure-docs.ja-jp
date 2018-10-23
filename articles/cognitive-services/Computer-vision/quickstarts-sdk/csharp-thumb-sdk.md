@@ -3,25 +3,23 @@ title: 'クイック スタート: サムネイルの生成 - SDK、C# - Compute
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision Windows C# クライアント ライブラリを使って、画像からサムネイルを生成します。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/14/2018
-ms.author: nolachar
-ms.openlocfilehash: 8fdbcf5bfe4d4fe60a2858b34b38c01d66e75d99
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.author: pafarley
+ms.openlocfilehash: 758021a9428672789923d1774f51fd319fe9885f
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054814"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343114"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-sdk-and-c"></a>クイック スタート: Computer Vision SDK と C# によるサムネイルの生成
 
 このクイック スタートでは、Computer Vision Windows クライアント ライブラリを使って、画像からサムネイルを生成します。
-
-サンプルのソース コードは、[Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,6 +28,9 @@ ms.locfileid: "47054814"
 * [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) クライアント ライブラリの NuGet パッケージ。 パッケージをダウンロードする必要はありません。 インストールの手順は、以降で説明しています。
 
 ## <a name="generatethumbnailasync-method"></a>GenerateThumbnailAsync メソッド
+
+> [!TIP]
+> 最新のコードを Visual Studio ソリューションとして [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) から取得してください。
 
 `GenerateThumbnailAsync` メソッドと `GenerateThumbnailInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[サムネイル取得 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) をラップします。  これらのメソッドを使用して画像のサムネイルを生成します。 その際に指定する高さと幅は、入力画像の縦横比と異なっていてもかまいません。 Computer Vision は、スマート トリミングを使ってインテリジェントに関心領域を識別し、その領域に基づいてトリミングの座標を生成します。
 

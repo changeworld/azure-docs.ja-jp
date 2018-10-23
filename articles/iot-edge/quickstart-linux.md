@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: af291782585cf0211cf8beac54adc36fd9fe0d34
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 9683a33efba427e83b2ff27ec57d2d437c61d5ce
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42024063"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166278"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-x64-device"></a>クイック スタート: 初めての IoT Edge モジュールを Linux x64 デバイスに展開する
 
@@ -68,7 +68,7 @@ IoT Edge デバイス:
 
 ![IoT Hub を作成する][3]
 
-このクイック スタートでは Free レベルの IoT Hub を使用できます。 IoT Hub を以前に使用したことがあり、無料のハブを作成済みである場合は、その IoT ハブを使用できます。 各サブスクリプションで使用できる無料 IoT ハブは 1 つのみです。 
+このクイック スタートでは無料レベルの IoT Hub を使用できます。 IoT Hub を以前に使用したことがあり、無料のハブを作成済みである場合は、その IoT ハブを使用できます。 各サブスクリプションで使用できる無料 IoT ハブは 1 つのみです。 
 
 次のコードにより、無料の **F1** ハブがリソース グループ **IoTEdgeResources** に作成されます。 *{hub_name}* は、IoT ハブの一意の名前に置き換えてください。
 
@@ -117,7 +117,7 @@ IoT Edge デバイスとして使用するために用意した Linux マシン�
 
 IoT Edge ランタイムの実行に必要なパッケージは、ソフトウェア リポジトリで管理されます。 このリポジトリにアクセスできるようにご自身の IoT Edge デバイスを構成します。 
 
-このセクションの手順は、**Ubuntu 16.04** が実行されているデバイスを対象としています。 その他のバージョンの Linux でソフトウェア リポジトリにアクセスするには、「[Install the Azure IoT Edge runtime on Linux (x64) (Linux (x64) で Azure IoT Edge ランタイムをインストールする)](how-to-install-iot-edge-linux.md)」または「[Install Azure IoT Edge runtime on Linux (ARM32v7/armhf) (Linux (ARM32v7/armhf) で Azure IoT Edge ランタイムをインストールする)](how-to-install-iot-edge-linux-arm.md)」を参照してください。
+このセクションの手順は、**Ubuntu 16.04** が実行されている x64 デバイスを対象としています。 その他のバージョンの Linux またはデバイス アーキテクチャでソフトウェア リポジトリにアクセスするには、「[Linux に Azure IoT Edge ランタイムをインストールする (x64)](how-to-install-iot-edge-linux.md)」または「[Linux に Azure IoT Edge ランタイムをインストールする (ARM32v7/armhf)](how-to-install-iot-edge-linux-arm.md)」を参照してください。
 
 1. IoT Edge デバイスとして使用しているマシンで、リポジトリの構成をインストールします。
 

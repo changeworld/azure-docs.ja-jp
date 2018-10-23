@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 08/01/2018
 ms.author: shvija
-ms.openlocfilehash: 8437b1c10facc28c5fd71b70dd7acf01b7d39e8e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 336756e72c6c07f52101ddd0cd99a6ef9744d3c3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42023890"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351763"
 ---
 # <a name="what-is-azure-event-hubs"></a>Azure Event Hubs とは
 
@@ -70,7 +70,7 @@ Event Hubs はメッセージ ストリーム処理機能を備えています�
 - **パーティション**: 各コンシューマーは、メッセージ ストリームの特定のサブセット (パーティション) のみを読み取ります。
 - **コンシューマー グループ**: イベント ハブ全体のビュー (状態、位置、またはオフセット)。 コンシューマー グループを使用することにより、複数のコンシューマー アプリケーションは、イベント ストリームの個別のビューをそれぞれ保有し、独自のペースで独自のオフセットによってストリームを別々に読み取ることができます。
 - **スループット単位**: Event Hubs のスループット容量を制御する、購入前の容量の単位。
-- **イベント レシーバー**: イベント ハブからイベント データを読み取るエンティティ。 Event Hubs のすべてのコンシューマーは AMQP 1.0 セッションを介して接続します。イベントは使用可能になると、このセッションを使用して配信されます。
+- **イベント レシーバー**: イベント ハブからイベント データを読み取るエンティティ。 Event Hubs のすべてのコンシューマーは AMQP 1.0 セッションを介して接続します。イベントは使用可能になると、このセッションを使用して配信されます。 すべての Kafka コンシューマーは、Kafka プロトコル 1.0 以降を通じて接続します。
 
 次の図は、Event Hubs ストリーム処理のアーキテクチャを示しています。
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/01/2018
+ms.date: 10/16/2018
 ms.author: pareshmu
-ms.openlocfilehash: 22288165876972888428450f16aa2460a211c9a6
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0a4ef0a627544de91b5f6d33d3e62eedf2cb7895
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042923"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378892"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -96,12 +96,12 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **euNetworks** |サポートされています |サポートされています |アムステルダム、ダブリン、ロンドン |
 | **GÉANT** |サポートされています |サポートされています |アムステルダム |
 | **[Global Cloud Xchange (GCX)] (http://globalcloudxchange.com/cloud-platform/cloud-x-fusion/cloud-x-fusion-for-azure/)** | サポートされています| サポートされています | チェンナイ、ムンバイ |
-| **[InterCloud](https://www.intercloud.com/)** |サポートされています |サポートされています |アムステルダム、ロンドン、パリ、シンガポール、ワシントン DC |
+| **[InterCloud](https://www.intercloud.com/)** |サポートされています |サポートされています |アムステルダム、ロンドン、パリ、シリコン バレー、シンガポール、ワシントン DC |
 | **Internet2** |サポートされています |サポートされています |ワシントン DC |
 | **[Internet Initiative Japan Inc. - IIJ](http://www.iij.ad.jp/en/news/pressrelease/2015/1216-2.html)** |サポートされています |サポートされています |大阪、東京 |
 | **[Internet Solutions - Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |サポートされています |サポートされています |ケープタウン、ヨハネスブルグ、ロンドン |
 | **[Interxion](http://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |サポートされています |サポートされています |アムステルダム、アムステルダム 2、ダブリン、マルセイユ、ロンドン、パリ |
-| **[IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)**|サポートされています |サポートされています | シリコン バレー、トロント |
+| **[IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)**|サポートされています |サポートされています | アムステルダム、シリコン バレー、トロント |
 | **Jisc** |サポートされています |サポートされています |ロンドン |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |サポートされています |サポートされています |ソウル |
 | **[KPN](http://www.kpn.com/cloudconnect)** | サポートされています | サポートされています | アムステルダム | 
@@ -119,7 +119,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Optus](https://www.optus.com.au/enterprise/networking/network-connectivity/express-link)** |サポートされています |サポートされています |メルボルン+、シドニー |
 | **[Orange](http://www.orange-business.com/en/products/business-vpn-galerie)** |サポートされています |サポートされています |アムステルダム、香港特別行政区、ロンドン、パリ、シリコン バレー、シンガポール、シドニー、ワシントン DC |
 | **[PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)** |サポートされています |サポートされています |シカゴ、シリコン バレー、ワシントン DC |
-| **PCCW Global Limited** |サポートされています |サポートされています |シカゴ、香港特別行政区、ロンドン |
+| **[PCCW Global Limited](https://consoleconnect.com/clouds/#azureRegions)** |サポートされています |サポートされています |シカゴ、香港特別行政区、ロンドン |
 | **[Sejong Telecom](https://www.sejongtelecom.net/en/pages/service/cloud_ms)** |サポートされています |サポートされています |ソウル |
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |サポートされています |サポートされています |チェンナイ、ムンバイ |
 | **[SingTel](http://info.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |サポートされています |サポートされています |シンガポール、シンガポール 2 |
@@ -138,6 +138,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[UOLDIVEO](http://www.uoldiveo.com.br/solucoes/cloud.html#rmcl)** |サポートされています |サポートされています |サンパウロ |
 | **[Verizon](http://www.verizonenterprise.com/products/networking/secure-cloud-interconnect/)** |サポートされています |サポートの有無 |アムステルダム、シカゴ、ダラス、香港、ロンドン、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
 | **[Vodafone](http://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |サポートされています |サポートされていません |ロンドン |
+| **Vodafone Idea** | サポートされています | サポートされています | ムンバイ |
 | **[Zayo](http://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ロンドン、ロサンゼルス、モントリオール、ニューヨーク、シリコン バレー、トロント、ワシントン DC |
 
  **+** は近日対応予定を表します
@@ -183,8 +184,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
   * [IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [NextDC](http://www.nextdc.com/)
-  * [PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/)
-  * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)
+  * [PacketFabric](https://www.packetfabric.com/packetcor/microsoft-azure/) 
 * その接続プロバイダーに、選択したピアリングの場所までネットワークを拡張してもらいます。
   * 単一障害点がないように、接続プロバイダーが可用性の高い方法で接続を拡張していることを確認します。
 * Microsoft に接続するために、接続プロバイダーとしてその Exchange で ExpressRoute 回線を要求します。
@@ -247,6 +247,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **プロバイダー** | **Exchange** |
 | --- | --- |
 | **[Cyrus One](https://cyrusone.com/enterprise-data-center-services/connectivity-and-interconnection/cloud-connectivity-reaching-amazon-microsoft-google-and-more/microsoft-azure-expressroute/?doing_wp_cron=1498512235.6733090877532958984375)** | Megaport |
+| **[Cyxtera](https://www.cyxtera.com/data-center-services/interconnection)** | Megaport |
 | **[Digital Realty](https://www.digitalrealty.com/services/interconnection/service-exchange/)** | Megaport |
 | **[EdgeConnex](http://www.edgeconnex.com/services/edge-data-centers-proximity-matters/)** | Megaport |
 | **[RagingWire Data Centers](http://www.ragingwire.com/wholesale/wholesale-data-centers-worldwide-nexcenters)** | IX Reach |
@@ -292,8 +293,8 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Perficient](http://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | 北米 |
 | **[Presidio](http://info.presidio.com/microsoft-azure-expressroute)** | 北米 |
 | **[sol-tec](https://www.sol-tec.com/services)** | ヨーロッパ |
+| **[Venha Pra Nuvem](http://venhapranuvem.com.br/infraestrutura/oferta-especial-digital-edge-expressroute/)** | 南アメリカ |
 | **[Vigilant.IT](https://vigilant.it/expressroute)** | オーストラリア |
-
 
 ## <a name="next-steps"></a>次の手順
 * ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

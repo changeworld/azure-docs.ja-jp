@@ -2,18 +2,18 @@
 title: 'チュートリアル: Power BI で Azure データ エクスプローラーからデータを視覚化する'
 description: このチュートリアルでは、Power BI で Azure データ エクスプローラーに接続して、データを視覚化する方法について説明します。
 services: data-explorer
-author: mgblythe
-ms.author: mblythe
+author: orspod
+ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: 938d8d6e291ca432ef3f642a0aaec74d5dcf5bf5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fc2d96c4dc8184ba26001fd77732ce7c45253d5a
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977147"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393714"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>チュートリアル: Power BI で Azure データ エクスプローラーからデータを視覚化する
 
@@ -108,7 +108,7 @@ Azure データ エクスプローラーに接続したので、Power Query エ�
 
     ![列をフィルター処理する](media/visualize-power-bi/filter-column.png)
 
-1. **BeginLat** 列の矢印を選択して、**null** のチェック ボックスをオフにし、**[OK]** を選択します。
+1. **[StormSummary]** 列見出しを右クリックし、**[削除]** を選択します。
 
     ![列を削除する](media/visualize-power-bi/remove-column.png)
 

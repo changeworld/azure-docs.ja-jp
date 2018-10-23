@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/20/2018
 ms.author: kgremban
-ms.openlocfilehash: aecb9a1819060e0da6338e8e16bf681fad42dd22
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 96989f8c53508dd1520a38c0df408057ad673d53
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161919"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365375"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-ios"></a>クイック スタート: デバイスから IoT ハブへの利用統計情報の送信 (iOS)
 
@@ -40,24 +40,30 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure CLI を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 `{YourIoTHubName}` を IoT ハブの名前に置き換えます。
+1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+
+   **myiOSdevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、myiOSdevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
    ```azurecli-interactive
    az extension add --name azure-cli-iot-ext
-   az iot hub device-identity create --hub-name {YourIoTHubName} --device-id myiOSdevice
+   az iot hub device-identity create --hub-name YourIoTHubName --device-id myiOSdevice
    ```
-
-    デバイスに別の名前を選択した場合は、サンプル アプリケーションを実行する前に、その中でのバイス名を更新してください。
 
 1. 次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
    ```azurecli-interactive
-   az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id myiOSdevice --output table
+   az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id myiOSdevice --output table
    ```
 
-   `Hostname=...=` のようなデバイス接続文字列をメモしておきます。 この値は、この記事の後の方で使用します。
+   次のようなデバイス接続文字列をメモしておきます。
+
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+
+    この値は、このクイック スタートの後の方で使います。
 
 ## <a name="send-simulated-telemetry"></a>シミュレートされた利用統計情報の送信
 
@@ -67,7 +73,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 CocoaPods は、サードパーティ製のライブラリを使用する iOS プロジェクトの依存関係を管理します。
 
-ターミナル ウィンドウで、前提条件としてダウンロードした Azure-IoT-Samples-iOS フォルダーに移動します。 その後、サンプル プロジェクトに移動します。
+ローカル ターミナル ウィンドウで、前提条件としてダウンロードした Azure-IoT-Samples-iOS フォルダーに移動します。 その後、サンプル プロジェクトに移動します。
 
 ```sh
 cd quickstart/sample-device
@@ -107,15 +113,15 @@ pod install
 
 XCode エミュレーターで実行したサンプル アプリは、デバイスから送信されたメッセージに関するデータを表示します。 データの受信時に IoT ハブを経由するデータを表示することもできます。 IoT Hub CLI 拡張機能は、IoT ハブ上のサービス側 **Events** エンドポイントに接続できます。 この拡張機能は、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージ受信して処理します。
 
-次の Azure CLI コマンドを実行します。`{YourIoTHubName}` は IoT ハブの名前に置き換えます。
+Azure Cloud Shell で、以下のコマンドを実行します。`YourIoTHubName` は実際の IoT ハブの名前に置き換えます。
 
 ```azurecli-interactive
-az iot hub monitor-events --device-id myiOSdevice --hub-name {YourIoTHubName}
+az iot hub monitor-events --device-id myiOSdevice --hub-name YourIoTHubName
 ```
 
 次のスクリーンショットは、シミュレートされたデバイスからハブに送信された利用統計情報を拡張機能が受信したときの出力を示しています。
 
-次のスクリーンショットは、ターミナル ウィンドウに表示される利用統計情報の種類を示しています。
+次のスクリーンショットは、ローカル ターミナル ウィンドウに表示される利用統計情報の種類を示しています。
 
 ![利用統計情報データを表示する](media/quickstart-send-telemetry-ios/view-telemetry.png)
 

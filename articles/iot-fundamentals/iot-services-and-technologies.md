@@ -7,18 +7,20 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: 6a44c36b5dd87c28db3de34a6858e29fb5730117
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 6834ad6c6915ceb3306284ea738d76027e2c9479
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067336"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365358"
 ---
 # <a name="azure-iot-technologies-and-solutions-paas-and-saas"></a>Azure IoT テクノロジとソリューション: PaaS と SaaS
 
 Microsoft には、デジタル変換の特典へのアクセスを有効にして、すべての顧客のニーズをサポートするポートフォリオが構築されています。 Azure IoT 製品群は、使用可能な PaaS/SaaS テクノロジとソリューションの概要です。 これには、独自のソリューションをビルドするために使用できる 2 つのパスが表示されます:
 
-- サービスとしてプラットフォーム (PaaS): [Azure IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/) を使用してアプリケーションを構築します。これは、カスタム IoT ソリューションの開発を加速するため使用できる、エンタープライズ グレードの構成済みソリューションのコレクションです。
+- サービスとしてのプラットフォーム (PaaS): 次のいずれかのサービスを使用するアプリケーションをビルドします。
+    - [Azure IoT ソリューション アクセラレータ](https://www.azureiotsolutions.com/)。これらは、カスタム IoT ソリューションの開発を高速化するための、エンタープライズ レベルのあらかじめ構成されたソリューションのコレクションです。 
+    - [Azure Digital Twins](https://azure.microsoft.com/services/digital-twins/) サービス。このサービスを使用すると、物理環境をモデル化し、空間インテリジェンス グラフとドメイン固有のオブジェクト モデルを使用して、コンテキスト認識の IoT ソリューションを作成することができます。
 
 - サービスとしてのソフトウェア(SaaS): 高速で、開始[Azure IoT Central](https://azure.microsoft.com/services/iot-central/)、新しい SaaS ソリューションは、IoT ソリューションの複雑さにさらされることがなく IoT アプリケーションを開発します。 組織にIoT ソリューションをビルドするリソースが不足している場合、Azure IoT Central は、コード不要で数分以内にデバイス モデル、ダッシュ ボード、およびルールを作成できるIoT ソリューションです。
 
@@ -95,7 +97,10 @@ IoT ソリューションを計画するうえで、Azure IoT 製品の選択は
 [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) は、何百万もの IoT デバイスとソリューション バックエンド間で、セキュリティで保護された信頼性のある双方向通信を実現する、フル マネージドのサービスです。 Azure IoT Hub Device Provisioning Service は、適切な IoT ハブへのゼロタッチでジャストインタイムなプロビジョニングを可能にする、IoT Hub のヘルパー サービスです。人間の介入を必要とせず、安全かつスケーラブルな方法で何百万というデバイスをプロビジョニングできます。
 
 ### <a name="edge"></a>Edge
-[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) は、モノのインターネット (IoT) サービスです。 このサービスは、クラウド内ではなく、デバイスで (つまり "エッジで") データを分析したいお客様を対象としています "エッジで。" エッジをワークロードの部品を移動することによって、待機時間の削減が発生してオフライン シナリオのオプションができます。
+[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) は、IoT サービスです。 このサービスは、クラウド内ではなく、デバイスで (つまり "エッジで") データを分析したいお客様を対象としています "エッジで。" エッジをワークロードの部品を移動することによって、待機時間の削減が発生してオフライン シナリオのオプションができます。
+
+### <a name="spatial-intelligence"></a>空間インテリジェンス
+[Azure Digital Twins](https://azure.microsoft.com/services/digital-twins/) は、物理環境のモデルを作成できるようにする IoT サービスです。 人、空間、およびデバイス間の関係をモデル化する空間インテリジェンス グラフを提供します。 デジタル世界と物理世界をまたいでデータを関連付けることで、コンテキスト認識ソリューションを作成することができます。  
 
 ### <a name="data-and-analytics"></a>データと分析
 Azure データと お使いのIoT ソリューションの分析 PaaS サービスを活用すれば、クラウドインテリジェンスの始めから、Azure Machine Learning でエッジ、Azure Data Lake でコスト効果のある強力なIoT デバイスデータ、[Azure Time Series Insights](https://azure.microsoft.com/services/time-series-insights/)でIoT デバイスから大量のデータを視覚することまでできます。

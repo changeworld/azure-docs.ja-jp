@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/20/2018
 ms.author: dobett
-ms.openlocfilehash: 34f933474337d3cddce752b79dc0d3fdb4c39c0c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: ba99aff51cf4d73b728161802f81156058b9ea69
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213719"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364089"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-c"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (C#) でハブから利用統計情報を読み取る
 
@@ -49,33 +49,43 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure CLI を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 `{YourIoTHubName}` は、IoT ハブ用に選んだ名前に置き換えます。
+1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+
+   **MyDotnetDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyDotnetDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyDotnetDevice
+    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDotnetDevice
     ```
 
-    デバイスに別の名前を選択した場合は、サンプル アプリケーションを実行する前に、その中でのバイス名を更新してください。
+2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
-2. 次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyDotnetDevice --output table
+    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyDotnetDevice --output table
     ```
 
-    `Hostname=...=` のようなデバイス接続文字列をメモしておきます。 この値は、このクイック スタートの後の方で使います。
+    次のようなデバイス接続文字列をメモしておきます。
+
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+
+    この値は、このクイック スタートの後の方で使います。
 
 3. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブからの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、および "_iothubowner 主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
 
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+
     ```azurecli-interactive
-    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
+    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name YourIoTHubName
 
-    az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
+    az iot hub show --query properties.eventHubEndpoints.events.path --name YourIoTHubName
 
-    az iot hub policy show --name iothubowner --query primaryKey --hub-name {your IoT Hub name}
+    az iot hub policy show --name iothubowner --query primaryKey --hub-name YourIoTHubName
     ```
 
     クイック スタートの後の方で使うので、これら 3 つの値をメモしておきます。
@@ -84,19 +94,19 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
 シミュレートされたデバイス アプリケーションは、IoT ハブ上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度の利用統計情報を送信します。
 
-1. ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
+1. ローカル ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
 
 2. 適当なテキスト エディターで **SimulatedDevice.cs** ファイルを開きます。
 
     `s_connectionString` 変数の値を、前にメモしたデバイス接続文字列に置き換えます。 その後、変更を **SimulatedDevice.cs** ファイルに保存します。
 
-3. ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションに必要なパッケージをインストールします。
+3. ローカル ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションに必要なパッケージをインストールします。
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. ターミナル ウィンドウで次のコマンドを実行し、シミュレートされたデバイス アプリケーションをビルドして実行します。
+4. ローカル ターミナル ウィンドウで次のコマンドを実行し、シミュレートされたデバイス アプリケーションをビルドして実行します。
 
     ```cmd/sh
     dotnet run
@@ -110,7 +120,7 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
 
 バックエンド アプリケーションは、IoT ハブ上のサービス側 **Events** エンドポイントに接続します。 このアプリケーションは、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージ受信して処理します。
 
-1. 別のターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\read-d2c-messages** フォルダーに移動します。
+1. 別のローカル ターミナル ウィンドウで、サンプルの C# プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\read-d2c-messages** フォルダーに移動します。
 
 2. 適当なテキスト エディターで **ReadDeviceToCloudMessages.cs** ファイルを開きます。 次の変数を更新し、ご自身の変更をファイルに保存します。
 
@@ -120,13 +130,13 @@ https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip か
     | `s_eventHubsCompatiblePath`     | 変数の値を、前にメモした Event Hubs 互換パスに置き換えます。 |
     | `s_iotHubSasKey`                | 変数の値を、前にメモした iothubowner 主キーに置き換えます。 |
 
-3. ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションに必要なライブラリをインストールします。
+3. ローカル ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションに必要なライブラリをインストールします。
 
     ```cmd/sh
     dotnet restore
     ```
 
-4. ターミナル ウィンドウで次のコマンドを実行し、バックエンド アプリケーションをビルドして実行します。
+4. ローカル ターミナル ウィンドウで次のコマンドを実行し、バックエンド アプリケーションをビルドして実行します。
 
     ```cmd/sh
     dotnet run

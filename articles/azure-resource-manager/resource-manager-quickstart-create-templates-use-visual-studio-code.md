@@ -10,19 +10,19 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/07/2018
+ms.date: 10/17/2018
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: a2b4c4824960c21011876a7c0adf029fc56d93d2
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 69a24dba752e4aa374e03e57ce197ae882647373
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419119"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378690"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>クイック スタート: Visual Studio Code を使って Azure Resource Manager テンプレートを作成する
 
-Visual Studio Code と Azure Resource Manager ツール拡張機能を使用して Azure Resource Manager テンプレートを作成する方法について説明します。 Visual Studio Code では、拡張機能を使わずに Resource Manager テンプレートを作成することもできますが、拡張機能を利用すれば、オートコンプリート機能によってテンプレートの開発を省力化することができます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
+Visual Studio Code と Azure Resource Manager ツール拡張機能を使用して Azure Resource Manager テンプレートを作成および編集する方法について説明します。 Visual Studio Code では、拡張機能を使わずに Resource Manager テンプレートを作成することもできますが、拡張機能を利用すれば、オートコンプリート機能によってテンプレートの開発を省力化することができます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -55,9 +55,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="edit-the-template"></a>テンプレートの編集
 
-Visual Studio Code を使用してテンプレートを編集する方法を確認するために、outputs セクションに要素をもう 1 つ追加します。
+Visual Studio Code を使用してテンプレートを編集する方法を確認するために、`outputs` セクションに要素をもう 1 つ追加します。
 
-1. Visual Studio Code で、エクスポートしたテンプレートに出力をもう 1 つ追加します。
+1. Visual Studio Code から、**kind** の値を確認します。 値が **Storage** の場合は、その値を **StorageV2** に更新します。
+
+    ```json
+    "kind": "StorageV2",
+    ```
+2. エクスポートしたテンプレートに出力をもう 1 つ追加します。
 
     ```json
     "storageUri": {
@@ -85,25 +90,17 @@ Visual Studio Code を使用してテンプレートを編集する方法を確�
 
     ![Resource Manager テンプレートにおける Visual Studio Code の IntelliSense](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/resource-manager-templates-visual-studio-code-intellisense.png)
 
-2. **[ファイル]**>**[保存]** を選択して、ファイルを保存します。
+3. **[ファイル]**>**[保存]** を選択して、ファイルを保存します。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-テンプレートをデプロイする方法は多数あります。  このチュートリアルでは、Azure Portal から Azure Cloud Shell を使用します。 Cloud Shell では、Azure CLI と Azure PowerShell の両方がサポートされます。 
+テンプレートをデプロイする方法は多数あります。  このクイック スタートでは、Azure Cloud Shell を使用します。 Cloud Shell では、Azure CLI と Azure PowerShell の両方がサポートされます。 
 
-1. [Azure ポータル](https://portal.azure.com)
-2. 次の図のように、右上隅の **[Cloud Shell]** を選択します。
-
-    ![Azure portal の Cloud Shell](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell.png)
-
-    ウィンドウの下部に Cloud Shell が開きます。
-
-3. Cloud Shell の左上隅に、**PowerShell** または **Bash** のいずれかが表示されます。 CLI を使用するには、Bash セッションを開く必要があります。 PowerShell を実行するには、PowerShell セッションを開く必要があります。 下矢印を選択して、Bash と PowerShell を切り替えます。 次の図は、PowerShell から Bash への切り替えを示しています。
+1. [Azure Cloud Shell](https://shell.azure.com) にサインインします。
 
     ![Azure portal の Cloud Shell の CLI](./media/resource-manager-quickstart-create-templates-use-visual-studio-code/azure-portal-cloud-shell-choose-cli.png)
-
-    切り替えた場合は、シェルを再起動する必要があります。
-4. **[ファイルのアップロード/ダウンロード]** を選択し、**[アップロード]** を選択します。
+2. Cloud Shell の左上隅に、**PowerShell** または **Bash** のいずれかが表示されます。 CLI を使用するには、Bash セッションを開く必要があります。 PowerShell を実行するには、PowerShell セッションを開く必要があります。 下矢印を選択して、Bash と PowerShell を切り替えます。 先のスクリーンショットをご覧ください。 切り替えた場合は、シェルを再起動する必要があります。
+3. **[ファイルのアップロード/ダウンロード]** を選択し、**[アップロード]** を選択します。
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
 
@@ -116,7 +113,7 @@ Visual Studio Code を使用してテンプレートを編集する方法を確�
     ---
 
     シェルからデプロイする前に、テンプレート ファイルをアップロードする必要があります。
-5. クイック スタートで前に保存したファイルを選択します。 既定の名前は **azuredeploy.json** です。
+5. 前のセクションで保存したファイルを選択します。 既定の名前は **azuredeploy.json** です。
 6. Cloud Shell から **Is** コマンドを実行し、ファイルが適切にアップロードされていることを確認します。 **cat** コマンドを使用して、テンプレートの内容を確認することもできます。 次の図は、Bash からのコマンドの実行を示しています。  PowerShell セッションでも同じコマンドを使用します。
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
@@ -132,20 +129,30 @@ Visual Studio Code を使用してテンプレートを編集する方法を確�
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
     ```cli
-    az group create --name <ResourceGroupName> --location <AzureLocation>
-
-    az group deployment create --name <DeploymentName> --resource-group <ResourceGroupName> --template-file <TemplateFileName>
+    echo "Enter the Resource Group name:" &&
+    read resourceGroupName &&
+    echo "Enter the name for this deployment:" &&
+    read deploymentName &&
+    echo "Enter the location (i.e. centralus):" &&
+    read location &&
+    az group create --name $resourceGroupName --location $location &&
+    az group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file "azuredeploy.json"
     ```
    
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     
     ```powershell
-    New-AzureRmResourceGroup -Name <ResourceGroupName> -Location <AzureLocation>
-
-    New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroupName> -TemplateFile <TemplateFileName>
+    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
+    $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+    
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $resourceGroupName -TemplateFile "azuredeploy.json"
     ```
     
     ---
+
+    **azuredeploy.json** 以外の名前でファイルを保存する場合は、テンプレートのファイル名を更新します。
 
     次のスクリーンショットは、サンプルのデプロイを示しています。
 
@@ -159,26 +166,25 @@ Visual Studio Code を使用してテンプレートを編集する方法を確�
     
     ---
 
-    スクリーンショットでは、次の値が使用されています。
-
-    - **&lt;ResourceGroupName>**: myresourcegroup0709。 パラメーターが 2 つ表示されます。  同じ値を使用してください。
-    - **&lt;AzureLocation>**: eastus2
-    - **&lt;DeployName>**: mydeployment0709
-    - **&lt;TemplateFile>**: azuredeploy.json
-
-    スクリーンショットの出力では、ストレージ アカウント名は *3tqebj3slyfyestandardsa* です。 
+    outputs セクションにあるストレージ アカウント名とストレージ URL は、スクリーンショット上で強調表示されています。 ストレージ アカウント名は、次の手順で必要です。
 
 7. 次の CLI または PowerShell コマンドを実行して、新しく作成されたストレージ アカウントの一覧を表示します。
 
     # <a name="clitabcli"></a>[CLI](#tab/CLI)
     ```cli
-    az storage account show --resource-group <ResourceGroupName> --name <StorageAccountName>
+    echo "Enter the Resource Group name:" &&
+    read resourceGroupName &&
+    echo "Enter the Storage Account name:" &&
+    read storageAccountName &&
+    az storage account show --resource-group $resourceGroupName --name $storageAccountName
     ```
    
     # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     
     ```powershell
-    Get-AzureRmStorageAccount -ResourceGroupName <ResourceGroupName> -Name <StorageAccountName>
+    $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+    $storageAccountName = Read-Host -Prompt "Enter the Storage Account name"
+    Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
     ```
     
     ---

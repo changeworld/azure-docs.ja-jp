@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: 587459be69fe250b3e73fb9eb9d5cd08cf2e7a42
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e1954ae9fcbb010c66e8a812e3e34477ac2bfc29
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953686"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395226"
 ---
 # <a name="tutorial-forecast-future-spending"></a>チュートリアル: 将来の支出の予測
 
@@ -59,7 +59,7 @@ Cloudyn には、時系列の使用量に基づいて支出の予測を支援す
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * 将来の支出の予測

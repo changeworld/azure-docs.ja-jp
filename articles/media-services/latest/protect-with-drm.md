@@ -4,21 +4,21 @@ description: Microsoft PlayReady、Google Widevine、または Apple FairPlay �
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/15/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: 8bfe2fb7274fb8c6dcf977e8bd72af525d8ce8a5
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2a8a00ab034016e7121e4601b3ff5a16d8c721ac
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528172"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395081"
 ---
 # <a name="use-drm-dynamic-encryption-and-license-delivery-service"></a>DRM 動的暗号化とライセンス配信サービスの使用
 
@@ -90,7 +90,7 @@ Azure Media Services を使用すると、MPEG-DASH、Smooth Streaming、およ�
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/EncryptWithDRM/Program.cs#CreateMediaServicesClient)]
 
-## <a name="create-an-output-asset"></a>出力資産を作成する  
+## <a name="create-an-output-asset"></a>出力アセットを作成する  
 
 出力[アセット](https://docs.microsoft.com/rest/api/media/assets)には、対象のエンコード ジョブの結果が格納されます。  
 
@@ -147,7 +147,7 @@ Azure Media Services を使用すると、MPEG-DASH、Smooth Streaming、およ�
 
 **StreamingLocator** を作成するプロセスは発行と呼ばれます。 既定では、**StreamingLocator** は API 呼び出しを行うとすぐに有効になり、省略可能な開始時刻と終了時刻を構成しない限り、削除されるまで存続します。 
 
-[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 このチュートリアルでは、定義済みのストリーミング ポリシーの 1 つを使用しています。これは、ストリーミングのためにコンテンツを発行する方法を Azure Media Services に指示します。 この例では、SecureStreaming ポリシーに StreamingLocator.StreamingPolicyName を設定します。 このポリシーは、2 つのコンテンツ キー (エンベロープおよび CENC) を生成してロケーターに設定する必要があることを示しています。 このため、エンベロープ、PlayReady および Widevine の暗号化が適用されます (キーは構成済みの DRM ライセンスに基づいて再生クライアントに配信されます)。 また、CBCS (FairPlay) でもストリームを暗号化する場合は、PredefinedStreamingPolicy.SecureStreamingWithFairPlay を使用します。 
+[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成するときは、使用する **StreamingPolicyName** を指定する必要があります。 このチュートリアルでは、定義済みのストリーミング ポリシーの 1 つを使用しています。このポリシーは、ストリーミングのためにコンテンツを発行する方法を Azure Media Services に指示します。 この例では、"Predefined_MultiDrmCencStreaming" ポリシーに StreamingLocator.StreamingPolicyName を設定します。 このポリシーは、2 つのコンテンツ キー (エンベロープおよび CENC) を生成してロケーターに設定する必要があることを示しています。 このため、エンベロープ、PlayReady および Widevine の暗号化が適用されます (キーは構成済みの DRM ライセンスに基づいて再生クライアントに配信されます)。 また、CBCS (FairPlay) でもストリームを暗号化する場合は、"Predefined_MultiDrmStreaming" を使用します。 
 
 > [!IMPORTANT]
 > カスタム [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies) を使うときは、Media Service アカウントに対してこのようなポリシーの限られたセットを設計し、同じ暗号化オプションとプロトコルが必要なときは常に、お使いの StreamingLocator に対してそのセットを再利用する必要があります。 Media Service アカウントには、StreamingPolicy エントリの数に対するクォータがあります。 StreamingLocator ごとに新しい StreamingPolicy を作成しないでください。

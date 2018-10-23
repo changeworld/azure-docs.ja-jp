@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ce1586e472e1d1ea5ddd9ca5a426b1bea2b5b931
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 5533dacc4a782cbdb6026c4a4d5c5bed9e39147a
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42023828"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320154"
 ---
 # <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Azure Portal で IoT Hub Device Provisioning Service を設定する
 
@@ -40,12 +40,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     * **[サブスクリプション]**: この Device Provisioning サービス インスタンスを作成するために使用するサブスクリプションを選択します。
     * **[リソース グループ]:** このフィールドでは、新しいリソース グループを作成することも、新しいインスタンスを含める既存のリソース グループを選択することもできます。 先ほど作成した IoT ハブが含まれている同じリソース グループを選択します (たとえば、**TestResources**)。 関連するすべてのリソースを 1 つのグループ内に配置することで、それらを一緒に管理できます。 たとえば、リソース グループを削除すると、そのグループに含まれているすべてのリソースが削除されます。 詳細については、[リソース グループを使用した Azure リソースの管理](../azure-resource-manager/resource-group-portal.md)に関するページを参照してください。
     * **[場所]**: 使用しているデバイスに最も近い場所を選択します。
-    * **[ダッシュボードにピン留めする]:** インスタンスをダッシュボードにピン留めして探しやすくするには、このオプションを選択します。
 
     ![ポータル ブレードで Device Provisioning サービス インスタンに関する基本的な情報を入力](./media/quick-setup-auto-provision/create-iot-dps-portal.png)  
 
-4. サービスが正常にデプロイされると、対応する概要ブレードが自動的に表示されます。
+4. 通知ボタンをクリックしてリソース インスタンスの作成を監視します。 サービスが正常にデプロイされたら、**[ダッシュボードにピン留めする]**、**[リソースに移動]** の順にクリックします。
 
+    ![デプロイの監視通知](./media/quick-setup-auto-provision/pin-to-dashboard.png)
 
 ## <a name="link-the-iot-hub-and-your-device-provisioning-service"></a>IoT ハブと Device Provisioning サービスとをリンクさせる
 

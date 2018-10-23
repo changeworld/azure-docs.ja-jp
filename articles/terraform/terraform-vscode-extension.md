@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: ad042525ead23959be57a5dd2d5735bcedfedb1b
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: be0140606302335884d62ba60c875a049949b495
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668327"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353052"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>Azure Terraform Visual Studio Code 拡張機能のインストールと使用
 
@@ -103,7 +103,9 @@ Azure Terraform 拡張機能が、インストール済み拡張機能の一覧�
 
 1. Visual Studio Code で、メニュー バーから **[ファイル] > [新しいファイル]** を選択します。
 
-1. [azurerm_resource_group](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html#) に移動し、**使用例**コード ブロックのコードをコピーします。
+1. ブラウザーで [Terraform azurerm_resource_group ページ](https://www.terraform.io/docs/providers/azurerm/r/resource_group.html#)に移動し、**使用例**コード ブロックのコードをコピーします。
+
+    ![使用例](media/terraform-vscode-extension/tf-azurerm-resource-group-example-usage.png)
 
 1. コピーしたコードを、Visual Studio Code で作成した新しいファイルに貼り付けます。
 
@@ -194,7 +196,7 @@ Terraform *plan* の結果に満足したら、*apply* コマンドを実行で�
 
     ![terraform apply](media/terraform-vscode-extension/tf-terraform-apply.png)
 
-1. 「`yes`」を入力します。
+1. 「 `yes` 」を入力します。
 
     ![Terraform apply、yes](media/terraform-vscode-extension/tf-terraform-apply-yes.png)
 

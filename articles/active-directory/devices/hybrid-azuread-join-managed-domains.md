@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: b3a3baaf22fa9c382bb45a5b2a2065ef7678faf5
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: c3c0d9bb6da00272cc7da0ad9f4fae978552c39b
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855956"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352612"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>チュートリアル: マネージド ドメイン用のハイブリッド Azure Active Directory 参加の構成
 
@@ -172,7 +172,7 @@ Azure テナントのデバイス登録状態を確認するには、**[Azure Ac
 
 - Windows クライアントの ID と一致する**デバイス ID** を持つオブジェクトが存在する必要があります。
 - **DeviceTrustType** の値は **[ドメイン参加済み]** でなければなりません。 これは、Azure AD ポータルの [デバイス] ページの **[ハイブリッド Azure AD 参加済み]** 状態に相当します。
-- 条件付きアクセスで使用されるデバイスの **[有効]** の値は **[True]** でなければなりません。 
+- 条件付きアクセスで使用されるデバイスの **Enabled** の値は **True**、**DeviceTrustLevel**の値は **Managed** でなければなりません。 
 
 
 **サービスの詳細を確認するには:**

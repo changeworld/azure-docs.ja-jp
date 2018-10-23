@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: mvc
-ms.openlocfilehash: bc59d8671d904cf5096d616213cc4674ef5743b8
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 3fc9677d72dacd06bde2fcfa4812cf4613efef01
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30832100"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394286"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する
 ## <a name="overview"></a>概要
@@ -66,7 +66,7 @@ Barracuda WAF は、管理ポータルによる構成で TCP ポート 8000 を�
 
 ![管理エンドポイントを追加する][AddManagementEndpoint]
 
-ブラウザーを使用して、クラウド サービスの管理エンドポイントを参照します。 クラウド サービスの名前が test.cloudapp.net の場合、http://test.cloudapp.net:8000 を参照して、そのエンドポイントにアクセスします。 次の図のようなログイン ページが表示されます。WAF VM の設定フェーズで指定した資格情報を使用してログインできます。
+ブラウザーを使用して、クラウド サービスの管理エンドポイントを参照します。 クラウド サービスの名前が test.cloudapp.net の場合、 http://test.cloudapp.net:8000 を参照して、そのエンドポイントにアクセスします。 次の図のようなログイン ページが表示されます。WAF VM の設定フェーズで指定した資格情報を使用してログインできます。
 
 ![管理ログイン ページ][ManagementLoginPage]
 

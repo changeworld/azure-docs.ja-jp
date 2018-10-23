@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: overview
 ms.date: 09/29/2017
 ms.author: v-brapel
-ms.openlocfilehash: 2483bf36bb18af21bc454e08f3321b33094c43c8
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: f2946918f0c1a7a516788989042825e8f49d7b0b
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814306"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318726"
 ---
 # <a name="what-is-bing-custom-search"></a>Bing Custom Search とは
 
@@ -29,7 +29,7 @@ Web のカスタム ビューを作成するには、Bing Custom Search [ポー�
 
 次の画像は、カスタム検索が簡単に統合できることを示しています。
 
-![画像 alt](./media/bcs-overview.png "Bing Custom Search の動作方法")
+![画像 alt](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/cognitive-services/Bing-Custom-Search/media/BCS-Overview.png "Bing Custom Search の動作方法")
 
 ## <a name="adding-custom-search-box-suggestions"></a>カスタム検索ボックスの候補の追加
 

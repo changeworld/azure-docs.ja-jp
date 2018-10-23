@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 09/18/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: bf0b38c8c2d465abe9f2e129110df41c349c3d07
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4d6839fea3ce0eb74cdf87396716cdc69c0cd1a0
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055375"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165983"
 ---
 # <a name="tutorial-scale-an-application-running-in-service-fabric-mesh"></a>チュートリアル: Service Fabric Mesh で実行されているアプリケーションをスケーリングする
 
-このチュートリアルは、シリーズの第 2 部です。 [前に Service Fabric Mesh にデプロイ](service-fabric-mesh-tutorial-template-deploy-app.md)されていたアプリケーションのサービス インスタンスの数を手動でスケーリングする方法について説明します。  完了すると、が与えられます。
+このチュートリアルは、シリーズの第 2 部です。 [前に Service Fabric Mesh にデプロイ](service-fabric-mesh-tutorial-template-deploy-app.md)されていたアプリケーションのサービス インスタンスの数を手動でスケーリングする方法について説明します。 最終的には、フロントエンド サービスで 3 つのインスタンスが、またデータ サービスで 2 つのインスタンスが実行されている状態になります。
 
 シリーズの第 2 部で学習する内容は次のとおりです。
 
@@ -34,9 +34,9 @@ ms.locfileid: "47055375"
 
 このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
-> * [テンプレートを使用して Azure Service Fabric Mesh にアプリケーションを配置する](service-fabric-mesh-tutorial-template-deploy-app.md)
+> * [テンプレートを使用して Azure Service Fabric Mesh にアプリケーションをデプロイする](service-fabric-mesh-tutorial-template-deploy-app.md)
 > * Service Fabric Mesh で実行しているアプリケーションをスケーリングする
-> * [ローカルで実行している Service Fabric Mesh アプリケーションをアップグレードする](service-fabric-mesh-tutorial-template-upgrade-app.md)
+> * [Service Fabric Mesh で実行されているアプリケーションをアップグレードする](service-fabric-mesh-tutorial-template-upgrade-app.md)
 > * [アプリケーションの削除](service-fabric-mesh-tutorial-template-remove-app.md)
 
 [!INCLUDE [preview note](./includes/include-preview-note.md)]
@@ -67,9 +67,9 @@ az mesh service show --resource-group myResourceGroup --name ToDoService --app-n
 
 アプリケーション リソースのデプロイ テンプレートでは、各サービスに *replicaCount* プロパティが与えられます。このプロパティを利用し、そのサービスをデプロイする回数を設定できます。 1 つのアプリケーションは、まとめてデプロイされ、管理される複数サービスで構成できます。各サービスに一意の *replicaCount* 番号が与えられます。 サービス レプリカの数をスケーリングするために、スケーリングするサービスごとにデプロイ テンプレートまたはパラメーター ファイルの *replicaCount* 値を変更できます。  次に、アプリケーションをアップグレードします。
 
-### <a name="modify-the-deployment-template-parameters"></a>デプロイ テンプレート パラメーターを修正する
+### <a name="modify-the-deployment-template-parameters"></a>デプロイ テンプレートのパラメーターを変更する
 
-アプリケーションのデプロイ後に変更が予想される値がテンプレートにあるとき、あるいはデプロイごとにオプションを変えるとき (他のデプロイにこのテンプレートを再利用する場合)、ベスト プラクティスは値をパラメーター化することです。
+アプリケーションのデプロイ後に変更が予想される値がテンプレートにある場合、またはデプロイごとにオプションを変更する場合 (他のデプロイにこのテンプレートを再利用する場合)、ベスト プラクティスは値をパラメーター化することです。
 
 以前は、アプリケーションは [mesh_rp.windows.json デプロイ テンプレート](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) ファイルと [mesh_rp.windows.parameter.json パラメーター](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) ファイルを利用してデプロイされました。
 
@@ -172,4 +172,4 @@ az mesh service show --resource-group myResourceGroup --name ToDoService --app-n
 
 次のチュートリアルに進みます。
 > [!div class="nextstepaction"]
-> [ローカルで実行している Service Fabric Mesh アプリケーションをアップグレードする](service-fabric-mesh-tutorial-template-upgrade-app.md)
+> [Service Fabric Mesh で実行されているアプリケーションをアップグレードする](service-fabric-mesh-tutorial-template-upgrade-app.md)

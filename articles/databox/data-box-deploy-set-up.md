@@ -2,24 +2,18 @@
 title: Azure Data Box の設定 | Microsoft Docs
 description: ケーブルを配線して Azure Data Box を接続する方法を学習する
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 10/03/2018
+ms.date: 10/17/2018
 ms.author: alkohli
-ms.openlocfilehash: f9671e3acdb71affe2187258582254561785780e
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: c3766713c87dd721f7e4c9a90624192cdb402be9
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785638"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393832"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>チュートリアル: ケーブルを配線して Azure Data Box に接続する
 
@@ -91,6 +85,8 @@ ms.locfileid: "48785638"
     - DHCP が有効ではない場合、必要であれば **[ネットワーク インターフェイスの設定]** に移動し静的な IP を割り当てます。
 
     ![デバイス ダッシュボード](media/data-box-deploy-set-up/data-box-dashboard-1.png)
+
+データ ネットワーク インターフェイスが構成されると、DATA 1 から DATA 3 までのインターフェイスのいずれかの IP アドレスを使用して、ローカルの Web UI (`https://<IP address of a data network interface>`) にアクセスすることもできます。 
 
 デバイスの設定が完了したら、デバイス共有に接続し、コンピューターからデバイスにデータをコピーすることができます。 
 

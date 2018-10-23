@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 09/06/2018
 ms.author: scottwhi
-ms.openlocfilehash: 5abf1027059bed9c685e0eb44f17ab41dfabf655
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 6dc10bc2dedfe99573b5ad646461e66827c6df9e
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816771"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320171"
 ---
 # <a name="quickstart-using-the-bing-custom-search-sdk-with-c"></a>クイック スタート: C# による Bing Custom Search SDK の使用
 
@@ -42,6 +42,9 @@ NuGet Custom Search パッケージをインストールすると、次のアセ
 
 
 ## <a name="run-the-code"></a>コードの実行
+
+> [!TIP]
+> 最新のコードを Visual Studio ソリューションとして [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch) から取得してください。
 
 この例を実行するには、次の手順に従います。
 

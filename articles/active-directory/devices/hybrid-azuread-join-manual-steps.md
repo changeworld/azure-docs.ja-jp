@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 4155ea7c24746f9d3381f2d1e4a1e08a7a56206a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4e3b7aff97cbcebe34e6af4755900e8888c5e57d
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049939"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352802"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>チュートリアル: ハイブリッド Azure Active Directory 参加済みデバイスを手動で構成する 
 
@@ -92,6 +92,8 @@ Azure AD にコンピューターを登録するため、組織ネットワー�
 組織がオンプレミス AI に (フェデレーションではない) 管理セットアップを使用しており、Azure AD とのフェデレーションに ADFS を使用しない場合、Windows 10 のハイブリッド Azure AD 参加は、AD のコンピューター オブジェクトを利用して Azure AD と同期します。 Azure AD Connect 同期構成の同期に対して、ハイブリッド Azure AD に参加する必要があるコンピューター オブジェクトが含まれる組織単位 (OU) が有効になっていることを確認します。
 
 バージョン 1703 以前の Windows 10 デバイスに関して、送信プロキシ経由でインターネットにアクセスする必要がある組織の場合は、Windows 10 コンピューターを Azure AD に登録できるように、Web プロキシ自動発見 (WPAD) を実装する必要があります。 
+
+Windows 10 1803 以降では、フェデレーション ドメイン内のデバイスが AD FS を使用して試みた Hybrid Azure AD Join が失敗しても、コンピューター/デバイス オブジェクトを Azure AD と同期するように Azure AD Connect が構成されていれば、そのデバイスは、同期されたコンピューター/デバイスを使用して Hybrid Azure AD Join を完了しようと試みます。
 
 ## <a name="configuration-steps"></a>構成の手順
 

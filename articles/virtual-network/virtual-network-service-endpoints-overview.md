@@ -3,7 +3,7 @@ title: Azure 仮想ネットワーク サービス エンドポイント | Micro
 description: サービス エンドポイントを使って仮想ネットワークから Azure リソースへの直接アクセスを有効にする方法を説明します。
 services: virtual-network
 documentationcenter: na
-author: anithaa
+author: sumeetmittal
 manager: narayan
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2018
-ms.author: anithaa
+ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 3bae20a7d6eea298dd09d24c0c5b53365784b3d0
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 77fad7b0035a9ba21d71e6c493a4f1a5bd9a2111
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239185"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395209"
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイント
 
@@ -42,6 +42,7 @@ ms.locfileid: "48239185"
 - **[Azure SQL Data Warehouse](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: プレビューで利用可能 (全 Azure パブリック クラウド リージョン)。
 - **[Azure Service Bus](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: プレビューで利用可能。
 - **[Azure Event Hubs](../event-hubs/event-hubs-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: プレビューで利用可能。
+- **[Azure Data Lake Store Gen 1](../data-lake-store/data-lake-store-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**: プレビューで利用可能。
 
 最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 
@@ -65,6 +66,10 @@ ms.locfileid: "48239185"
 
 - 仮想ネットワーク サービス エンドポイントは、ご利用の仮想ネットワークの ID を Azure サービスに提供します。 ご利用の仮想ネットワークでサービス エンドポイントが有効になったら、Azure サービス リソースに仮想ネットワーク ルールを追加することで、このリソースへのアクセスを仮想ネットワークに限定することができます。
 - 現在、仮想ネットワークからの Azure サービス トラフィックは、パブリック IP アドレスを発信元 IP アドレスとして使用します。 サービス エンドポイントを使用すると、サービス トラフィックは、仮想ネットワークから Azure サービスにアクセスするときに、仮想ネットワークのプライベート アドレスを発信元 IP アドレスとして使用するよう切り替えます。 この切り替えにより、IP ファイアウォールで使用される予約済みのパブリック IP アドレスを使用することなく、サービスにアクセスすることができます。
+
+>[!NOTE]
+> サービス エンドポイントを使用すると、サービス トラフィックのサブネット内にある仮想マシンの発信元 IP アドレスは、パブリック IPv4 アドレスの使用からプライベート IPv4 アドレスの使用に切り替わります。 この切り換えにより、Azure のパブリック IP アドレスを使用している既存の Azure サービスのファイアウォール規則が動作を停止します。 サービス エンドポイントを設定する前に、Azure サービスのファイアウォール規則でこの切り替えが考慮されていることを確認してください。 サービス エンドポイントの構成中にこのサブネットからのサービス トラフィックが一時的に中断される場合もあります。 
+ 
 - __オンプレミスから Azure サービスへのアクセスの保護__:
 
   既定では、仮想ネットワークからのアクセスに限定された Azure サービス リソースは、オンプレミスのネットワークからはアクセスできません。 オンプレミスからのトラフィックを許可する場合は、オンプレミスまたは ExpressRoute からのパブリック IP アドレス (通常は NAT) を許可する必要もあります。 これらの IP アドレスは、Azure サービス リソースの IP ファイアウォール構成を通じて追加できます。
@@ -87,6 +92,7 @@ ms.locfileid: "48239185"
 
   IP アドレスの切り替えが影響するのは、ご利用の仮想ネットワークからのサービス トラフィックのみです。 ご利用の仮想マシンに割り当てられたパブリック IPv4 アドレスとの間でやりとりされる他のトラフィックへの影響はありません。 Azure サービスについては、Azure のパブリック IP アドレスを使用する既存のファイアウォール ルールがある場合、これらのルールは仮想ネットワークのプライベート アドレスへの切り替え時に停止します。
 - サービス エンドポイントを使用しても、Azure サービスの DNS エントリは変わらず、引き続き Azure サービスに割り当てられているパブリック IP アドレスに解決されます。
+
 - ネットワーク セキュリティ グループ (NSG) でのサービス エンドポイントの使用:
   - 既定では、NSG は送信インターネット トラフィックを許可するので、VNet から Azure サービスへのトラフィックも許可します。 これは、サービス エンドポイントを使用しても変わりません。 
   - すべての送信インターネット トラフィックを拒否して特定の Azure サービスへのトラフィックだけを許可する場合は、NSG の[サービス タグ](security-overview.md#service-tags)を使います。 NSG のルールで、サポートされている Azure サービスを接続先として指定することができ、各タグの基になる IP アドレスのメンテナンスは Azure によって提供されます。 詳細については、[NSG の Azure サービス タグ](security-overview.md#service-tags)に関するページをご覧ください。 

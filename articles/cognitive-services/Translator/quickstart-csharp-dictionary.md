@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 328f5996a9b830ea6c2ff4b4a535d5311f39e08e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 35903b0da707e5167781c3a7595c3be938a4fc07
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365258"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321349"
 ---
 # <a name="quickstart-find-alternate-translations-and-usage-with-c35"></a>クイック スタート: C&#35; を使って翻訳の代替候補と用法を探す
 
 このクイック スタートでは、Translator Text API を使って、特定の用語の翻訳について考えられる代替候補の情報とそれらの代替候補の用例を探します。
-
-このサンプルのソース コードは、[GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,6 +28,9 @@ ms.locfileid: "46365258"
 Translator Text API を使用するには、サブスクリプション キーも必要となります。「[Translator Text API にサインアップする方法](translator-text-how-to-signup.md)」を参照してください。
 
 ## <a name="dictionary-lookup-request"></a>辞書検索要求
+
+> [!TIP]
+> [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) から最新のコードを入手します。
 
 以下のコードは、[Dictionary Lookup](./reference/v3-0-dictionary-lookup.md) メソッドを使って、単語の翻訳の代替候補を取得します。
 

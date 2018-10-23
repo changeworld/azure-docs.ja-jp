@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: c4ecb7c43a9a26385d5e6cef023c7219fb1120d3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a70bb09edb5ccaf4e216785933af80e2fcb2153a
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38606165"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363608"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した仮想マシン スケール セットのカスタム イメージの作成および使用
 スケール セットを作成するときは、VM インスタンスのデプロイ時に使用するイメージを指定します。 VM インスタンスをデプロイした後のタスクの数を減らすには、カスタム VM イメージを使用できます。 このカスタム VM イメージには、すべての必要なアプリケーション インストールまたは構成が含まれます。 スケール セットで作成されたすべての VM インスタンスは、カスタム VM イメージを使用し、アプリケーション トラフィックを処理できる状態になります。 このチュートリアルで学習する内容は次のとおりです。
@@ -42,7 +42,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 ## <a name="create-and-configure-a-source-vm"></a>ソース VM の作成と構成
 
 >[!NOTE]
-> このチュートリアルでは、汎用化された VM イメージを作成および使用する手順について説明します。 特殊化された VM イメージからスケール セットを作成することはできません。
+> このチュートリアルでは、汎用化された VM イメージを作成および使用する手順について説明します。 特殊な VHD からスケール セットを作成することはサポートされていません。
 
 最初に [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用してリソース グループを作成し、次に [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。 この VM は、カスタム VM イメージのソースとして使用されます。 次の例では、*myResourceGroup* という名前のリソース グループに *myCustomVM* という名前の VM を作成します。 メッセージが表示されたら、VM のログオン資格情報として使用するユーザー名とパスワードを入力します。
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/07/2018
 ms.author: dobett
-ms.openlocfilehash: 2d851bc8d5af7f824512cc9f14e6b1120026dd07
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 35b9f07b0aa8ee50b4f0f6500f86ea7c6eed4823
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785157"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362043"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-python"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (Python) でハブから利用統計情報を読み取る
 
@@ -53,42 +53,50 @@ https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip か
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure CLI を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 `{YourIoTHubName}` は、IoT ハブ用に選んだ名前に置き換えます。
+1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+
+    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+
+    **MyPythonDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyPythonDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyPythonDevice
+    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyPythonDevice
     ```
 
-    デバイスに別の名前を選択した場合は、サンプル アプリケーションを実行する前に、その中のデバイス名を更新してください。
+1. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
 
-1. 次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
+    **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyPythonDevice --output table
+    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table
     ```
 
-    `Hostname=...=` のようなデバイス接続文字列をメモしておきます。 この値は、このクイック スタートの後の方で使います。
+    次のようなデバイス接続文字列をメモしておきます。
+
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+
+    この値は、このクイック スタートの後の方で使います。
 
 ## <a name="send-simulated-telemetry"></a>シミュレートされた利用統計情報の送信
 
 シミュレートされたデバイス アプリケーションは、IoT ハブ上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度の利用統計情報を送信します。
 
-1. ターミナル ウィンドウで、サンプルの Python プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
+1. ローカル ターミナル ウィンドウで、サンプルの Python プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
 
 1. 適当なテキスト エディターで **SimulatedDevice.py** ファイルを開きます。
 
     `CONNECTION_STRING` 変数の値を、前にメモしたデバイス接続文字列に置き換えます。 その後、変更を **SimulatedDevice.py** ファイルに保存します。
 
-1. ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションに必要なライブラリをインストールします。
+1. ローカル ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションに必要なライブラリをインストールします。
 
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
 
-1. ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションを実行します。
+1. ローカル ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションを実行します。
 
     ```cmd/sh
     python SimulatedDevice.py
@@ -102,10 +110,10 @@ https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip か
 
 IoT Hub CLI 拡張機能は、IoT ハブ上のサービス側 **Events** エンドポイントに接続できます。 この拡張機能は、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージ受信して処理します。
 
-次の Azure CLI コマンドを実行します。`{YourIoTHubName}` は IoT ハブの名前に置き換えます。
+Azure Cloud Shell で、以下のコマンドを実行します。`YourIoTHubName` は実際の IoT ハブの名前に置き換えます。
 
 ```azurecli-interactive
-az iot hub monitor-events --device-id MyPythonDevice --hub-name {YourIoTHubName}
+az iot hub monitor-events --device-id MyPythonDevice --hub-name YourIoTHubName
 ```
 
 次のスクリーンショットは、シミュレートされたデバイスからハブに送信された利用統計情報を拡張機能が受信したときの出力を示しています。

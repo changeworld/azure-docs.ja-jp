@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 03acd63ff00f0a3017297d1998289c8e68f0f290
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 5abb2447fa90ea5900afb86746cc17eff62c2d2e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41917631"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166286"
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>.NET Standard で EventProcessorHost を使用したメッセージ受信を開始する
 
@@ -43,13 +43,18 @@ ms.locfileid: "41917631"
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成  
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。  
-2. ポータルの左側のナビゲーション ウィンドウで **[リソースの作成]** をクリックし、**[ストレージ]**、**[ストレージ アカウント]** の順にクリックします。  
-3. ストレージ アカウント ウィンドウのフィールドを入力して、**[作成]** をクリックします。
+2. ポータルの左側のナビゲーション ウィンドウで、**[リソースの作成]** を選択し、カテゴリから **[ストレージ]** を選択して、**[ストレージ アカウント - Blob、File、Table、Queue]** を選択します。  
+3. **[ストレージ アカウントの作成]** ウィンドウの各フィールドに情報を入力し、**[確認および作成]** を選択します。 
 
     ![[ストレージ アカウントの作成]][1]
 
-4. **[デプロイメントが成功しました]** メッセージが表示されたら、新しいストレージ アカウント名をクリックし、 **[要点]** ウィンドウで **[BLOB]** をクリックします。 **[Blob service]** ダイアログ ボックスが開いたら、上部にある **[+ コンテナー]** をクリックします。 コンテナーの名前を指定して、**[Blob service]** を閉じます。  
-5. 左側のウィンドウで **[アクセス キー]** をクリックし、ストレージ コンテナーとストレージ アカウントの名前、および **[key1]** の値をコピーします。 これらの値をメモ帳などに一時的に保存します。  
+4. **[確認および作成]** ページで各フィールドの値を確認したら、**[作成]** を選択します。 
+5. **[デプロイメントが成功しました]** メッセージが表示されたら、新しいストレージ アカウント名を選択し、 
+6. **[要点]** ウィンドウで **[BLOB]** を選択します。 
+7. 上部にある **[+ コンテナー]** を選択します。 コンテナーに名前を付けます。  
+8. 左側のウィンドウで **[アクセス キー]** を選択し、ストレージ コンテナーとストレージ アカウントの名前、および **[key1]** の値をコピーします。 
+
+    これらの値をメモ帳などに一時的に保存します。
 
 ## <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 

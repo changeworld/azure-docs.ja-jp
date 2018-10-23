@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET
 ms.workload: tbd
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 93c1198ecfba6db809228ed6dcd99c705f53926c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 40d5a02f83188330facc82701abdfb950585781c
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972761"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310393"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>クイック スタート: コンソール アプリからのリアルタイム メッセージのブロードキャスト
 
@@ -120,5 +120,51 @@ broadcast
 
 別のクライアント名を持つ複数のクライアントを開始できます。
 
+## <a name="usage"> </a> サード パーティ サービスとの統合
+Azure SignalR サービスを使用すると、サードパーティのサービスをシステムに統合することができます。
+### <a name="usage"> </a> 技術仕様の定義
+以下の表は、現段階でサポートされている全バージョンの REST API を示したものです。 特定のバージョンごとの定義ファイルも記載しています。
+Version | API 状態 | Door | 固有
+--- | --- | --- | ---
+`1.0-preview` | 使用可能 | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
+`1.0` | 使用可能 | 標準 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
+以下に示したのは、特定のバージョンごとに利用可能な API の一覧です。
+API | `1.0-preview` | `1.0`
+--- | --- | ---
+[全員にブロードキャストする] (# broadcast) | : heavy_check_mark: | : Heavy_check_mark:
+[グループにブロードキャストする] (# broadcast-group) | : heavy_check_mark: | : Heavy_check_mark:
+一部のグループにブロードキャストする | : heavy_check_mark: (非推奨) | `N / A`
+[特定のユーザーに送信する] (# send-user) | : heavy_check_mark: | : Heavy_check_mark:
+一部のユーザーに送信する | : heavy_check_mark: (非推奨) | `N / A`
+[ユーザーをグループに追加] (# add-user-to-group) | `N / A` | : Heavy_check_mark:
+[ユーザーをグループから削除する] (# remove-user-from-group) | `N / A` | : Heavy_check_mark:
+<a name="broadcast"> </a>
+### <a name="broadcast-to-everyone"></a>全員にブロードキャストする
+Version | API HTTP メソッド | 要求 URL | 要求本文
+--- | --- | --- | ---
+`1.0-preview` | `POST` | `https: // <instance-name> .service.signalr.net: 5002 / api / v1-preview / hub / <hub-name>` | `{" target ":" <method-name> "," arguments ": [...]}`
+`1.0` | `POST` | `https: // <instance-name> .service.signalr.net / api / v1 / hubs / <hub-name>` | 同上
+<a name="broadcast-group"> </a>
+### <a name="broadcast-to-a-group"></a>グループにブロードキャストする
+Version | API HTTP メソッド | 要求 URL | 要求本文
+--- | --- | --- | ---
+`1.0-preview` | `POST` | `https: // <instance-name> .service.signalr.net: 5002 / api / v1-preview / hub / <hub-name> / group / <group-name>` | `{" target ":" <method-name> "," arguments ": [...]}`
+`1.0` | `POST` | `https: // <instance-name> .service.signalr.net / api / v1 / hubs / <hub-name> / groups / <group-name>` | 同上
+<a name="send-user"> </a>
+### <a name="sending-to-specific-users"></a>特定のユーザーに送信する
+Version | API HTTP メソッド | 要求 URL | 要求本文
+--- | --- | --- | ---
+`1.0-preview` | `POST` | `https: // <instance-name> .service.signalr.net: 5002 / api / v1-preview / hub / <hub-name> / user / <user-id>` | `{" target ":" <method-name> "," arguments ": [...]}`
+`1.0` | `POST` | `https: // <instance-name> .service.signalr.net / api / v1 / hubs / <hub-name> / users / <user-id>` | 同上
+<a name="add-user-to-group"> </a>
+### <a name="adding-a-user-to-a-group"></a>ユーザーをグループに追加する
+Version | API HTTP メソッド | 要求 URL
+--- | --- | ---
+`1.0` | `PUT` | `Https: // <instance-name> .service.signalr.net / api / v1 / hubs / <hub-name> / groups / <group-name> / users / <userid>`
+<a name="remove-user-from-group"> </a>
+### <a name="removing-a-user-from-a-group"></a>ユーザーをグループから削除する
+Version | API HTTP メソッド | 要求 URL
+--- | --- | ---
+`1.0` | `DELETE` | `Https: // <instance-name> .service.signalr.net / api / v1 / hubs / <hub-name> / groups / <group-name> / users / <userid>`
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]

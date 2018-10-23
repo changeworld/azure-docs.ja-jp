@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 10/08/2018
 ms.author: spelluru
-ms.openlocfilehash: 46a9045cdf422ed4f14e5588b3342e8bfde2e4c8
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3cc87c0acbed317cccaccec687f27c23a1d32cf0
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888117"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319338"
 ---
 # <a name="what-is-azure-relay"></a>Azure Relay とは
 Azure Relay サービスでは、企業ネットワーク内で実行されているサービスをパブリック クラウドに安全に公開することができます。 ファイアウォール接続を開いたり、企業ネットワーク インフラストラクチャ内に及ぶような変更を加えたりすることなく、それが可能です。 
@@ -81,10 +81,9 @@ WCF Relay は、完全な .NET Framework (NETFX) と共に、WCF で動作しま
 4. 要求を受信するゲートウェイは、ゲートウェイ ストアでリレーを検索します。 
 5. ゲートウェイは、ゲートウェイ ストアで挙げられた正しいゲートウェイに、接続要求を転送します。 
 6. ゲートウェイはリッスンしているクライアントに要求を送信し、そのクライアントが、送信側クライアントに最も近いゲートウェイ ノードへの一時的なチャネルを作成します。 
-7. ここで、リッスンしているクライアントが一時的なチャネルを作成し、送信側クライアントに最も近いゲートウェイに応答メッセージを送信します。
-8. ゲートウェイは、送信元クライアントに応答メッセージを転送します。 
-
-リレー接続が確立されると、クライアントはランデブーに使用されるゲートウェイ ノードを経由してメッセージを交換できます。
+7. リッスンしているクライアントは、送信側クライアントに最も近いゲートウェイに対して一時的なチャネルを作成します。 ゲートウェイを介したクライアント間の接続が確立されたら、クライアントどうしがメッセージを交換できます。 
+8. ゲートウェイは、リッスンしているクライアントからのすべてのメッセージを送信側クライアントに転送します。 
+9. ゲートウェイは、送信側クライアントからのすべてのメッセージをリッスンしているクライアントに転送します。  
 
 ## <a name="next-steps"></a>次の手順
 * [.NET Websocket の概要](relay-hybrid-connections-dotnet-get-started.md)

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 06/12/2018
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 6e3571fb54f12ef3bb5519f572b8af5bf9247e7d
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 107852bd2c4ec0b932008b498dde4ea77f8071a3
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37032920"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116338"
 ---
 # <a name="what-is-azure-iot-edge"></a>Azure IoT Edge とは
 
@@ -55,7 +55,7 @@ Azure IoT Edge ランタイムは、カスタム ロジックやクラウド ロ
 * IoT Edge デバイス上のモジュール間の通信を円滑化する。
 * IoT Edge デバイスとクラウドとの間の通信を円滑化する。
 
-![IoT Edge ランタイムは、IoT Hub に対して洞察とレポートを送信します。][1]
+![IoT Edge ランタイムは、IoT Hub に対して洞察とレポートを送信します。](./media/about-iot-edge/runtime.png)
 
 Azure IoT Edge デバイスをどのように使用するかはすべて開発者次第です。 そのランタイムは多くの場合、他のさまざまなオンプレミス デバイスからのデータを集約して処理するゲートウェイに対して AI をデプロイする目的で使用されますが、それは選択肢の 1 つにすぎません。 ゲートウェイに接続されているリーフ デバイスまたは直接クラウドに接続されているリーフ デバイスが Azure IoT Edge デバイスとなる場合もあります。
 
@@ -71,15 +71,10 @@ Azure IoT Edge は、Azure IoT ソリューション アクセラレータ と�
 * まとまったデバイスに対してワークロードを送信する。
 * 現場のデバイスで実行されるワークロードを監視する。
 
-![デバイスのテレメトリ、洞察、アクションは、クラウドとの間で調整されます。][2]
+![デバイスのテレメトリ、洞察、アクションは、クラウドとの間で調整されます。](./media/about-iot-edge/cloud-interface.png)
 
 ## <a name="next-steps"></a>次の手順
 
-ここで説明した概念を、[シミュレートされたデバイスに対して IoT Edge をデプロイする方法][lnk-quickstart]に関するページで試してみましょう。
+ここで説明した概念を、[シミュレートされたデバイスに対して IoT Edge をデプロイする方法](quickstart.md)に関するページで試してみましょう。
 
-<!-- Images -->
-[1]: ./media/about-iot-edge/runtime.png
-[2]: ./media/about-iot-edge/cloud-interface.png
-
-<!-- Links -->
-[lnk-quickstart]: quickstart.md
+ 

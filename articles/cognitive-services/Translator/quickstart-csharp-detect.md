@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: b10072e01391da3845567c16fa7cc312ed23ceb2
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: b9a5dbdc1e7950400597c76359b8eee4268af6d0
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368054"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320375"
 ---
 # <a name="quickstart-identify-language-from-text-with-c35"></a>クイック スタート: C&#35; を使ってテキストの言語を認識する
 
 このクイック スタートでは、Translator Text API を使ってソース テキストの言語を認識します。
-
-サンプルのソース コードは、[Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,6 +28,9 @@ ms.locfileid: "46368054"
 Translator Text API を使用するには、サブスクリプション キーも必要となります。「[Translator Text API にサインアップする方法](translator-text-how-to-signup.md)」を参照してください。
 
 ## <a name="detect-request"></a>検出要求
+
+> [!TIP]
+> [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) から最新のコードを入手します。
 
 以下のコードは、[Detect](./reference/v3-0-detect.md) メソッドを使ってソース テキストの言語を認識します。
 

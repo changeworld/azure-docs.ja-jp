@@ -10,18 +10,16 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 53ac3f4aa85e889c86d09927ece7df012427e4a9
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 7fa8c5dc76e59ec236d6b9662bd2ba41db0add0f
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367595"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320409"
 ---
 # <a name="quickstart-transliterate-text-with-c35"></a>クイック スタート: C&#35; を使ったテキストの表記変換
 
 このクイック スタートでは、Translator Text API を使って、1 つの言語の中でテキストの表記を変換します。
-
-サンプルのソース コードは、[Github](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,6 +28,9 @@ ms.locfileid: "46367595"
 Translator Text API を使用するには、サブスクリプション キーも必要となります。「[Translator Text API にサインアップする方法](translator-text-how-to-signup.md)」を参照してください。
 
 ## <a name="transliterate-request"></a>表記変換要求
+
+> [!TIP]
+> [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-C-Sharp) から最新のコードを入手します。
 
 以下のコードは、[Transliterate](./reference/v3-0-transliterate.md) メソッドを使って、1 つの言語の中でテキストの表記を変換します。
 

@@ -10,18 +10,16 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: erhopf
-ms.openlocfilehash: cebeab562a54ec68b69eb6422685cc4b596ac223
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 04a70c2afbd499d3965e23487cd49540b38e08af
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127886"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318658"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>クイック スタート: C# 用の Bing Web Search SDK を使用する
 
 Bing Web Search SDK を使用すると、C# アプリケーションに Bing Web Search を簡単に統合することができます。 このクイック スタートでは、クライアントをインスタンス化し、要求を送信して、応答を出力する方法を学習します。
-
-今すぐコードを確認したい場合は、 GitHub で、[C# 用の Bing Web Search SDK のサンプル](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)を入手できます。
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
@@ -36,6 +34,9 @@ Bing Web Search SDK を使用すると、C# アプリケーションに Bing Web
 * [.Net Core SDK](https://www.microsoft.com/net/download)
 
 ## <a name="create-a-project-and-install-dependencies"></a>プロジェクトの作成と依存関係のインストール
+
+> [!TIP]
+> 最新のコードを Visual Studio ソリューションとして [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) から取得してください。
 
 最初の手順で、新しいコンソール プロジェクトを作成します。 コンソール プロジェクトの設定で支援が必要な場合は、「[Hello World -- 最初のプログラム (C# プログラミング ガイド)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program)」を参照してください。 アプリケーションで Bing Web Search SDK を使用するには、NuGet パッケージ マネージャーを使用して `Microsoft.Azure.CognitiveServices.Search.WebSearch` をインストールする必要があります。
 

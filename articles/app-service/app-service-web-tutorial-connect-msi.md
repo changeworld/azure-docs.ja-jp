@@ -11,19 +11,23 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/17/2018
+ms.date: 10/24/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 3125db03dc13f70524fd094736f50b563ef712a4
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 6a3bb5511828d9f8ea7168ffa4748b141484299f
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379929"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376432"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>チュートリアル: マネージド ID を使用した App Service からの Azure SQL Database 接続のセキュリティ保護
 
 [App Service](app-service-web-overview.md) では、Azure の高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 さらに、[Azure SQL Database](/azure/sql-database/) やその他の Azure サービスへのアクセスをセキュリティ保護するためのターンキー ソリューションである[マネージド ID](app-service-managed-service-identity.md) もアプリ向けに提供しています。 App Service のマネージド ID を使用すると、接続文字列内の認証情報などのシークレットをアプリから排除することで、アプリのセキュリティを強化できます。 このチュートリアルでは、「[チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する](app-service-web-tutorial-dotnet-sqldatabase.md)」で構築したサンプル ASP.NET Web アプリにマネージド ID を追加します。 作業が完了すると、サンプル アプリは、ユーザー名とパスワードを必要とせずに SQL Database に安全に接続するようになります。
+
+> [!NOTE]
+> このシナリオは、現在、.NET Framework 4.6 以降でサポートされています。[.NET Core 2.1](https://www.microsoft.com/net/learn/get-started/windows) ではサポートされていません。 [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) はこのシナリオをサポートしていますが、まだ App Service の既定のイメージには含まれていません。 
+>
 
 学習内容は次のとおりです。
 
@@ -95,6 +99,7 @@ Visual Studio の **DotNetAppSqlDb** プロジェクトで _packages.config_ を
 
 ```xml
 <package id="Microsoft.Azure.Services.AppAuthentication" version="1.1.0-preview" targetFramework="net461" />
+<package id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="3.14.2" targetFramework="net461" />
 ```
 
 _Models\MyDatabaseContext.cs_ を開き、ファイルの先頭に次の `using` ステートメントを追加します。
@@ -122,7 +127,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 このコンストラクターは、App Service からの Azure SQL Database のアクセス トークンを使用するためのカスタム SqlConnection オブジェクトを構成します。 このアクセス トークンにより、App Service アプリは、マネージド ID を使用して Azure SQL Database で認証されます。 詳細については、「[Azure リソースのトークンの取得](app-service-managed-service-identity.md#obtaining-tokens-for-azure-resources)」を参照してください。 `if` ステートメントにより、続いて LocalDB を使用してアプリをローカルでテストできます。
 
 > [!NOTE]
-> `SqlConnection.AccessToken` は、現在、.NET Framework 4.6 以降でのみサポートされています。[.NET Core](https://www.microsoft.com/net/learn/get-started/windows) ではサポートされていません。
+> `SqlConnection.AccessToken` は、現在、.NET Framework 4.6 以降と [.NET Core 2.2](https://www.microsoft.com/net/download/dotnet-core/2.2) だけでサポートされており、[.NET Core 2.1](https://www.microsoft.com/net/learn/get-started/windows) ではサポートされていません。
 >
 
 この新しいコンストラクターを使用するには、`Controllers\TodosController.cs` を開き、`private MyDatabaseContext db = new MyDatabaseContext();` 行を見つけます。 既存のコードでは、既定の `MyDatabaseContext` コントローラーを使用して、標準接続文字列を使用してデータベースを作成します。この接続文字列には、[変更](#modify-connection-string)前はユーザー名とパスワードがクリア テキストで含まれていました。
@@ -130,7 +135,7 @@ public MyDatabaseContext(SqlConnection conn) : base(conn, true)
 この行全体を次のコードに置き換えます。
 
 ```csharp
-private MyDatabaseContext db = new MyDatabaseContext(new SqlConnection());
+private MyDatabaseContext db = new MyDatabaseContext(new System.Data.SqlClient.SqlConnection());
 ```
 
 ### <a name="publish-your-changes"></a>変更を発行する
@@ -172,32 +177,23 @@ az ad group member list -g $groupid
 
 ### <a name="grant-permissions-to-azure-active-directory-group"></a>Azure Active Directory グループにアクセス許可を付与する
 
-Cloud Shell 内で、SQLCMD コマンドを使用して SQL Database にサインインします。 _\<servername>_ を SQL Database サーバー名に置き換え、_\<AADusername>_ と _\<AADpassword>_ を Azure AD ユーザーの資格情報に置き換えます。
-
-```azurecli-interactive
-sqlcmd -S <server_name>.database.windows.net -U <AADuser_name> -P "<AADpassword>" -G -l 30
-```
-
-SQL プロンプトで、次のコマンドを実行します。このコマンドを実行すると、前に作成した Azure Active Directory グループがユーザーとして追加されます。
-
-```sql
-CREATE USER [myAzureSQLDBAccessGroup] FROM EXTERNAL PROVIDER;
-GO
-```
-
-「`EXIT`」と入力して Cloud Shell プロンプトに戻ります。 次に、SQLCMD をもう一度度実行します。ただし、今回は _\<dbname>_ にデータベース名を指定します。
+Cloud Shell 内で、SQLCMD コマンドを使用して SQL Database にサインインします。 _\<server\_name>_ を実際の SQL Database サーバー名に置き換え、_\<db\_name>_ をアプリが使用するデータベースの名前に置き換え、_\<AADuser\_name>_ と _\<AADpassword>_ を Azure AD ユーザーの資格情報に置き換えます。
 
 ```azurecli-interactive
 sqlcmd -S <server_name>.database.windows.net -d <db_name> -U <AADuser_name> -P "<AADpassword>" -G -l 30
 ```
 
-対象のデータベースの SQL プロンプトで、次のコマンドを実行して、Azure Active Directory グループに読み取りおよび書き込みアクセス許可を付与します。
+対象のデータベースの SQL プロンプトで次のコマンドを実行して、前に作成した Azure Active Directory グループを追加し、アプリに必要なアクセス許可を付与します。 たとえば、次のように入力します。 
 
 ```sql
+CREATE USER [myAzureSQLDBAccessGroup] FROM EXTERNAL PROVIDER;
 ALTER ROLE db_datareader ADD MEMBER [myAzureSQLDBAccessGroup];
 ALTER ROLE db_datawriter ADD MEMBER [myAzureSQLDBAccessGroup];
+ALTER ROLE db_ddladmin ADD MEMBER [myAzureSQLDBAccessGroup];
 GO
 ```
+
+「`EXIT`」と入力して Cloud Shell プロンプトに戻ります。 
 
 ## <a name="next-steps"></a>次の手順
 

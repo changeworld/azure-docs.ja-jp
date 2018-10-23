@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 903c5ce4b914575dbd0a807efeec30c8b32fa9dc
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: a4840fee22086bf6716f5f83ba86c4ac464377f9
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216129"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364406"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-java"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (Java) でハブから利用統計情報を読み取る
 
@@ -57,33 +57,41 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
 ## <a name="register-a-device"></a>デバイスの登録
 
-デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure CLI を使用して、シミュレートされたデバイスを登録します。
+デバイスを IoT ハブに接続するには、あらかじめ IoT ハブに登録しておく必要があります。 このクイック スタートでは、Azure Cloud Shell を使用して、シミュレートされたデバイスを登録します。
 
-1. IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 `{YourIoTHubName}` は、IoT ハブ用に選んだ名前に置き換えます。
+1. Azure Cloud Shell で次のコマンドを実行して IoT Hub CLI 拡張機能を追加し、デバイス ID を作成します。 
+
+   **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+
+   **MyJavaDevice**: これは、登録済みデバイスに付けられた名前です。 示されているように、MyJavaDevice を使用します。 デバイスに別の名前を選択した場合は、この記事全体でその名前を使用する必要があります。また、サンプル アプリケーションを実行する前に、アプリケーション内のデバイス名を更新してください。
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
-    az iot hub device-identity create --hub-name {YourIoTHubName} --device-id MyJavaDevice
+    az iot hub device-identity create --hub-name YourIoTHubName --device-id MyJavaDevice
     ```
 
-    デバイスに別の名前を選択した場合は、サンプル アプリケーションを実行する前に、その中でのバイス名を更新してください。
-
-2. 次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。
+2. Azure Cloud Shell で次のコマンドを実行して、登録したデバイスの "_デバイス接続文字列_" を取得します。**YourIoTHubName**: 以下のこのプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
 
     ```azurecli-interactive
-    az iot hub device-identity show-connection-string --hub-name {YourIoTHubName} --device-id MyJavaDevice --output table
+    az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyJavaDevice --output table
     ```
 
-    `Hostname=...=` のようなデバイス接続文字列をメモしておきます。 この値は、このクイック スタートの後の方で使います。
+    次のようなデバイス接続文字列をメモしておきます。
+
+   `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyNodeDevice;SharedAccessKey={YourSharedAccessKey}`
+
+    この値は、このクイック スタートの後の方で使います。
 
 3. また、バックエンド アプリケーションが IoT ハブに接続してメッセージを取得できるようにするには、IoT ハブからの "_Event Hubs 互換エンドポイント_"、"_Event Hubs 互換パス_"、および "_iothubowner 主キー_" も必要です。 次のコマンドは、お使いの IoT ハブに対するこれらの値を取得します。
 
+     **YourIoTHubName**: このプレースホルダーは、実際の IoT ハブに対して選んだ名前に置き換えてください。
+
     ```azurecli-interactive
-    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name {YourIoTHubName}
+    az iot hub show --query properties.eventHubEndpoints.events.endpoint --name YourIoTHubName
 
-    az iot hub show --query properties.eventHubEndpoints.events.path --name {YourIoTHubName}
+    az iot hub show --query properties.eventHubEndpoints.events.path --name YourIoTHubName
 
-    az iot hub policy show --name iothubowner --query primaryKey --hub-name {your IoT Hub name}
+    az iot hub policy show --name iothubowner --query primaryKey --hub-name YourIoTHubName
     ```
 
     クイック スタートの後の方で使うので、これら 3 つの値をメモしておきます。
@@ -92,19 +100,19 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
 シミュレートされたデバイス アプリケーションは、IoT ハブ上のデバイスに固有のエンドポイントに接続し、シミュレートされた温度と湿度の利用統計情報を送信します。
 
-1. ターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
+1. ローカル ターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\simulated-device** フォルダーに移動します。
 
 2. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/SimulatedDevice.java** ファイルを開きます。
 
     `connString` 変数の値を、前にメモしたデバイス接続文字列に置き換えます。 その後、変更を **SimulatedDevice.java** ファイルに保存します。
 
-3. ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションをビルドします。
+3. ローカル ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、シミュレートされたデバイス アプリケーションをビルドします。
 
     ```cmd/sh
     mvn clean package
     ```
 
-4. ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションを実行します。
+4. ローカル ターミナル ウィンドウで次のコマンドを実行して、シミュレートされたデバイス アプリケーションを実行します。
 
     ```cmd/sh
     java -jar target/simulated-device-1.0.0-with-deps.jar
@@ -118,7 +126,7 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
 
 バックエンド アプリケーションは、IoT ハブ上のサービス側 **Events** エンドポイントに接続します。 このアプリケーションは、シミュレートされたデバイスから送信されたデバイスとクラウドの間のメッセージを受信します。 通常、IoT Hub のバックエンド アプリケーションはクラウド内で実行され、デバイスとクラウドの間のメッセージ受信して処理します。
 
-1. 別のターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\read-d2c-messages** フォルダーに移動します。
+1. 別のローカル ターミナル ウィンドウで、サンプルの Java プロジェクトのルート フォルダーに移動します。 **iot-hub\Quickstarts\read-d2c-messages** フォルダーに移動します。
 
 2. 適当なテキスト エディターで **src/main/java/com/microsoft/docs/iothub/samples/ReadDeviceToCloudMessages.java** ファイルを開きます。 次の変数を更新し、ご自身の変更をファイルに保存します。
 
@@ -129,13 +137,13 @@ https://github.com/Azure-Samples/azure-iot-samples-java/archive/master.zip か�
     | `iotHubSasKey`                | 変数の値を、前にメモした iothubowner 主キーに置き換えます。 |
 
 
-3. ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、バックエンド アプリケーションをビルドします。
+3. ローカル ターミナル ウィンドウで次のコマンドを実行して、必要なライブラリをインストールし、バックエンド アプリケーションをビルドします。
 
     ```cmd/sh
     mvn clean package
     ```
 
-4. ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションを実行します。
+4. ローカル ターミナル ウィンドウで次のコマンドを実行して、バックエンド アプリケーションを実行します。
 
     ```cmd/sh
     java -jar target/read-d2c-messages-1.0.0-with-deps.jar

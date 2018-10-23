@@ -3,25 +3,23 @@ title: 'クイック スタート: テキストの抽出 - SDK、C# - Computer V
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Computer Vision Windows C# クライアント ライブラリを使って、画像からテキストを抽出します。
 services: cognitive-services
-author: noellelacharite
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.author: nolachar
-ms.openlocfilehash: 86808756721b2dc983df6eaf8a9e643a12d73969
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: pafarley
+ms.openlocfilehash: d819aee7c42759e2427e27e0f640d79536069ccb
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409018"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343607"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-sdk-and-c"></a>クイック スタート: Computer Vision SDK と C# によるテキストの抽出
 
 このクイック スタートでは、Computer Vision Windows クライアント ライブラリを使って、画像から手書きテキストまたは印刷されたテキストを抽出します。
-
-サンプルのソース コードは、[Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -30,6 +28,9 @@ ms.locfileid: "47409018"
 * [Microsoft.Azure.CognitiveServices.Vision.ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision) クライアント ライブラリの NuGet パッケージ。 パッケージをダウンロードする必要はありません。 インストールの手順は、以降で説明しています。
 
 ## <a name="recognizetextasync-method"></a>RecognizeTextAsync メソッド
+
+> [!TIP]
+> 最新のコードを Visual Studio ソリューションとして [Github](https://github.com/Azure-Samples/cognitive-services-vision-csharp-sdk-quickstarts/tree/master/ComputerVision) から取得してください。
 
 `RecognizeTextAsync` メソッドと `RecognizeTextInStreamAsync` メソッドは、それぞれリモート画像とローカル画像の[テキスト認識 API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) をラップします。 `GetTextOperationResultAsync` メソッドは、[テキスト認識操作の結果を取得する API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) をラップします。  これらのメソッドを使って画像内のテキストを検出し、認識した文字をマシンに抽出して、使用可能な文字ストリームにします。
 

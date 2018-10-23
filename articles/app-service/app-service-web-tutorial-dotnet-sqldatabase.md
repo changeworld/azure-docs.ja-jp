@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: cephalin
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: b438ac221483fec7ea90847ec27a105a3f21ab78
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 783bf93c8507e76717a4293b2b29a9c11e9a1eed
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42117365"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353818"
 ---
 # <a name="tutorial-build-an-aspnet-app-in-azure-with-sql-database"></a>チュートリアル: SQL Database を使用して Azure に ASP.NET アプリを作成する
 
@@ -28,7 +28,7 @@ ms.locfileid: "42117365"
 
 ![Azure Web アプリで発行された ASP.NET アプリケーション](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure で SQL データベースを作成する
@@ -410,7 +410,7 @@ Web アプリのページが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Azure で SQL データベースを作成する
@@ -423,4 +423,4 @@ Web アプリのページが表示されます。
 次のチュートリアルに進んで、接続 Azure SQL Database のセキュリティを簡単に改善する方法を学んでください。
 
 > [!div class="nextstepaction"]
-> [マネージド サービス ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)
+> [Azure リソースのマネージド ID を使用して SQL データベースに安全にアクセスする](app-service-web-tutorial-connect-msi.md)
