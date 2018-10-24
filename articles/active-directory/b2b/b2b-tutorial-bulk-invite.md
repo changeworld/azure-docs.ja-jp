@@ -18,7 +18,7 @@ ms.locfileid: "45987074"
 ---
 # <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users"></a>チュートリアル: Azure AD B2B コラボレーション ユーザーを一括で招待する
 
-Azure Active Directory (Azure AD) B2B コラボレーションを使用して外部パートナーと協力する場合は、複数のゲスト ユーザーを組織に同時に招待できます。このチュートリアルでは、PowerShell を使用して、外部ユーザーに招待メールを一括送信する方法について説明します。 具体的には、以下を実行します。
+Azure Active Directory (Azure AD) B2B コラボレーションを使用して外部パートナーと協力する場合は、複数のゲスト ユーザーを組織に同時に招待できます。 このチュートリアルでは、PowerShell を使用して、外部ユーザーに招待メールを一括送信する方法について説明します。 具体的には、以下を実行します。
 
 > [!div class="checklist"]
 > * ユーザー情報を含むコンマ区切り値 (.csv) ファイルを準備する
@@ -62,7 +62,7 @@ Get-Module -ListAvailable AzureAD*
 
 ### <a name="get-test-email-accounts"></a>テスト用の電子メール アカウントを取得する
 
-招待メールの送信先となる、複数のテスト用の電子メール アカウントが必要です。このアカウントは、組織外にある必要があります。gmail.com や outlook.com のアドレスなどのソーシャル アカウントを含む任意の種類のアカウントを使用できます。
+招待メールの送信先となる、複数のテスト用の電子メール アカウントが必要です。 このアカウントは、組織外にある必要があります。 gmail.com や outlook.com のアドレスなどのソーシャル アカウントを含む任意の種類のアカウントを使用できます。
 
 ## <a name="prepare-the-csv-file"></a>CSV ファイルを準備する
 
@@ -90,7 +90,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 ## <a name="send-bulk-invitations"></a>招待メールを一括送信する
 
-招待メールを送信するには、次の PowerShell スクリプトを実行します (**c:\bulkinvite\invitations.csv** は CSV ファイルのパスです)。 
+招待状を送信するには、次の PowerShell スクリプトを実行します (**c:\bulkinvite\invitations.csv** は CSV ファイルのパスです)。 
 
 ```powershell
 $invitations = import-csv c:\bulkinvite\invitations.csv
@@ -108,7 +108,7 @@ foreach ($email in $invitations)
       -SendInvitationMessage $true
    }
 ```
-このスクリプトは、invitations.csv ファイル内の電子メール アドレスに招待メールを送信します。次の例のようなユーザーごとの出力が表示されます。
+このスクリプトは、invitations.csv ファイル内の電子メール アドレスに招待メールを送信します。 次の例のようなユーザーごとの出力が表示されます。
 
 ![保留中のユーザーの同意を示す PowerShell の出力](media/tutorial-bulk-invite/B2BBulkImport.png)
 
@@ -118,7 +118,7 @@ foreach ($email in $invitations)
 ```powershell
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
-招待したユーザーが表示されていることを確認します。*emailaddress*#EXT#@*domain* 形式のユーザー プリンシパル名 (UPN) になっています。たとえば、*lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com* では、contoso.onmicrosoft.com が招待メールを送信した組織になります。
+招待したユーザーが表示されていることを確認します。*emailaddress*#EXT#@*domain* 形式のユーザー プリンシパル名 (UPN) になっています。 たとえば、*lstokes_fabrikam.com#EXT#@contoso.onmicrosoft.com* では、contoso.onmicrosoft.com が招待メールを送信した組織になります。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -131,7 +131,7 @@ foreach ($email in $invitations)
 
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、組織の外部のゲスト ユーザーに招待メールを一括送信しました。次に、招待の受諾プロセスを理解します。
+このチュートリアルでは、組織の外部のゲスト ユーザーに招待メールを一括送信しました。 次に、招待の受諾プロセスを理解します。
 
 > [!div class="nextstepaction"]
 > [Azure AD B2B コラボレーションの招待の受諾プロセスを確認する](redemption-experience.md)

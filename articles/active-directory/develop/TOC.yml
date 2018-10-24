@@ -6,7 +6,7 @@ items:
 - name: v1.0
   items:
   - name: 概要
-    href: azure-ad-developers-guide.md
+    href: v1-overview.md
   - name: クイック スタート
     items:
     - name: 開発環境の設定
@@ -161,6 +161,12 @@ items:
       items:
       - name: シングルテナント アプリをマルチテナント アプリに変換する
         href: howto-convert-app-to-be-multi-tenant.md
+      - name: サービス プリンシパルの作成
+        items:
+        - name: Azure PowerShell の使用
+          href: howto-authenticate-service-principal-powershell.md
+        - name: Azure Portal の使用
+          href: howto-create-service-principal-portal.md
       - name: ご利用のアプリを特定のユーザー セットに制限する
         href: howto-restrict-your-app-to-a-set-of-users.md
       - name: ご利用のアプリケーションにアプリ ロールを追加する
@@ -342,12 +348,16 @@ items:
         href: active-directory-optional-claims.md
       - name: トークンの有効期間の構成 (プレビュー)
         href: active-directory-configurable-token-lifetimes.md
-      - name: Azure AD での認証と、OAuth 2.0 を使用した JWT トークンの取得
-        href: active-directory-protocols-oauth-get-jwt-token.md
     - name: アプリケーションの構成
       items:
       - name: シングルテナント アプリをマルチテナント アプリに変換する
         href: howto-convert-app-to-be-multi-tenant.md
+      - name: サービス プリンシパルの作成
+        items:
+        - name: Azure PowerShell の使用
+          href: howto-authenticate-service-principal-powershell.md
+        - name: Azure Portal の使用
+          href: howto-create-service-principal-portal.md
       - name: ご利用のアプリを特定のユーザー セットに制限する
         href: howto-restrict-your-app-to-a-set-of-users.md
       - name: ご利用のアプリケーションにアプリ ロールを追加する
@@ -398,9 +408,9 @@ items:
     href: developer-support-help-options.md
   - name: Azure リソースのマネージド ID
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 76a1124c196cf693f15e02513ca186567e3ef088
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 01775498610b76b9110f26e3f45e41d0baadd486
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466105"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957418"

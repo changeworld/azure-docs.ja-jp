@@ -7,103 +7,101 @@ items:
     href: translator-info-overview.md
 - name: クイック スタート
   items:
-  - name: C#
+  - name: テキストを翻訳する
     items:
-    - name: テキストを翻訳する
+    - name: C# (REST)
       href: quickstart-csharp-translate.md
-    - name: テキストのスクリプトを変換する
-      href: quickstart-csharp-transliterate.md
-    - name: テキストから言語を特定する
-      href: quickstart-csharp-detect.md
-    - name: 別の翻訳を取得する
-      href: quickstart-csharp-dictionary.md
-    - name: サポートされている言語を取得する
-      href: quickstart-csharp-languages.md
-    - name: テキスト内の文の長さを取得する
-      href: quickstart-csharp-sentences.md
-  - name: Go
-    items:
-    - name: テキストを翻訳する
+    - name: Go (REST)
       href: quickstart-go-translate.md
-    - name: テキストのスクリプトを変換する
-      href: quickstart-go-transliterate.md
-    - name: テキストから言語を特定する
-      href: quickstart-go-detect.md
-    - name: 別の翻訳を取得する
-      href: quickstart-go-dictionary.md
-    - name: サポートされている言語を取得する
-      href: quickstart-go-languages.md
-    - name: テキスト内の文の長さを取得する
-      href: quickstart-go-sentences.md
-  - name: Java
-    items:
-    - name: テキストを翻訳する
+    - name: Java (REST)
       href: quickstart-java-translate.md
-    - name: テキストのスクリプトを変換する
-      href: quickstart-java-transliterate.md
-    - name: テキストから言語を特定する
-      href: quickstart-java-detect.md
-    - name: 別の翻訳を取得する
-      href: quickstart-java-dictionary.md
-    - name: サポートされている言語を取得する
-      href: quickstart-java-languages.md
-    - name: テキスト内の文の長さを取得する
-      href: quickstart-java-sentences.md
-  - name: Node.js
-    items:
-    - name: テキストを翻訳する
+    - name: Node.js (REST)
       href: quickstart-nodejs-translate.md
-    - name: テキストのスクリプトを変換する
-      href: quickstart-nodejs-transliterate.md
-    - name: テキストから言語を特定する
-      href: quickstart-nodejs-detect.md
-    - name: 別の翻訳を取得する
-      href: quickstart-nodejs-dictionary.md
-    - name: サポートされている言語を取得する
-      href: quickstart-nodejs-languages.md
-    - name: テキスト内の文の長さを取得する
-      href: quickstart-nodejs-sentences.md
-  - name: PHP
-    items:
-    - name: テキストを翻訳する
+    - name: PHP (REST)
       href: quickstart-php-translate.md
-    - name: テキストのスクリプトを変換する
-      href: quickstart-php-transliterate.md
-    - name: テキストから言語を特定する
-      href: quickstart-php-detect.md
-    - name: 別の翻訳を取得する
-      href: quickstart-php-dictionary.md
-    - name: サポートされている言語を取得する
-      href: quickstart-php-languages.md
-    - name: テキスト内の文の長さを取得する
-      href: quickstart-php-sentences.md
-  - name: Python
-    items:
-    - name: テキストを翻訳する
+    - name: Python (REST)
       href: quickstart-python-translate.md
-    - name: テキストのスクリプトを変換する
-      href: quickstart-python-transliterate.md
-    - name: テキストから言語を特定する
-      href: quickstart-python-detect.md
-    - name: 別の翻訳を取得する
-      href: quickstart-python-dictionary.md
-    - name: サポートされている言語を取得する
-      href: quickstart-python-languages.md
-    - name: テキスト内の文の長さを取得する
-      href: quickstart-python-sentences.md
-  - name: Ruby
-    items:
-    - name: テキストを翻訳する
+    - name: Ruby (REST)
       href: quickstart-ruby-translate.md
-    - name: テキストのスクリプトを変換する
+  - name: テキストを表記変換する
+    items:
+    - name: C# (REST)
+      href: quickstart-csharp-transliterate.md
+    - name: Go (REST)
+      href: quickstart-go-transliterate.md
+    - name: Java (REST)
+      href: quickstart-java-transliterate.md
+    - name: Node.js (REST)
+      href: quickstart-nodejs-transliterate.md
+    - name: PHP (REST)
+      href: quickstart-php-transliterate.md
+    - name: Python (REST)
+      href: quickstart-python-transliterate.md
+    - name: Ruby (REST)
       href: quickstart-ruby-transliterate.md
-    - name: テキストから言語を特定する
+  - name: 言語を特定する
+    items:
+    - name: C# (REST)
+      href: quickstart-csharp-detect.md
+    - name: Go (REST)
+      href: quickstart-go-detect.md
+    - name: Java (REST)
+      href: quickstart-java-detect.md
+    - name: Node.js (REST)
+      href: quickstart-nodejs-detect.md
+    - name: PHP (REST)
+      href: quickstart-php-detect.md
+    - name: Python (REST)
+      href: quickstart-python-detect.md
+    - name: Ruby (REST)
       href: quickstart-ruby-detect.md
-    - name: 別の翻訳を取得する
+  - name: 別の翻訳を取得する
+    items:
+    - name: C# (REST)
+      href: quickstart-csharp-dictionary.md
+    - name: Go (REST)
+      href: quickstart-go-dictionary.md
+    - name: Java (REST)
+      href: quickstart-java-dictionary.md
+    - name: Node.js (REST)
+      href: quickstart-nodejs-dictionary.md
+    - name: PHP (REST)
+      href: quickstart-php-dictionary.md
+    - name: Python (REST)
+      href: quickstart-python-dictionary.md
+    - name: Ruby (REST)
       href: quickstart-ruby-dictionary.md
-    - name: サポートされている言語を取得する
+  - name: サポートされている言語を取得する
+    items:
+    - name: C# (REST)
+      href: quickstart-csharp-languages.md
+    - name: Go (REST)
+      href: quickstart-go-languages.md
+    - name: Java (REST)
+      href: quickstart-java-languages.md
+    - name: Node.js (REST)
+      href: quickstart-nodejs-languages.md
+    - name: PHP (REST)
+      href: quickstart-php-languages.md
+    - name: Python (REST)
+      href: quickstart-python-languages.md
+    - name: Ruby (REST)
       href: quickstart-ruby-languages.md
-    - name: テキスト内の文の長さを取得する
+  - name: 文の長さを決定する
+    items:
+    - name: C# (REST)
+      href: quickstart-csharp-sentences.md
+    - name: Go (REST)
+      href: quickstart-go-sentences.md
+    - name: Java (REST)
+      href: quickstart-java-sentences.md
+    - name: Node.js (REST)
+      href: quickstart-nodejs-sentences.md
+    - name: PHP (REST)
+      href: quickstart-php-sentences.md
+    - name: Python (REST)
+      href: quickstart-python-sentences.md
+    - name: Ruby (REST)
       href: quickstart-ruby-sentences.md
   expanded: true
 - name: チュートリアル
@@ -174,9 +172,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/microsoft-translator
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/558796-translator
-ms.openlocfilehash: cd559b41832e83b4251531bc6af6a7fe4f7d80ea
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: acc5019177bf75a0bb34eb739cc8e2400552832e
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406485"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945265"

@@ -9,12 +9,12 @@
 ## [開発環境のセットアップ](media-services-set-up-computer.md)
 ### [.NET](media-services-dotnet-how-to-use.md)
 ### [REST](media-services-rest-how-to-use.md)  
-## [AAD 認証を使用して API にアクセスする](media-services-use-aad-auth-to-access-ams-api.md)
-### [ポータルを使用して AAD 認証を管理する](media-services-portal-get-started-with-aad.md)
+## [Azure AD 認証を使用して API にアクセスする](media-services-use-aad-auth-to-access-ams-api.md)
+### [ポータルを使用して Azure AD 認証を管理する](media-services-portal-get-started-with-aad.md)
 ### [.NET で API にアクセスする](media-services-dotnet-get-started-with-aad.md)
 ### [REST で API にアクセスする](media-services-rest-connect-with-aad.md)
-### [Azure CLI を使用して AAD アプリを作成および構成する](media-services-cli-create-and-configure-aad-app.md)
-### [Azure PowerShell を使用して AAD アプリを作成および構成する](media-services-powershell-create-and-configure-aad-app.md)
+### [Azure CLI を使用して Azure AD アプリを作成および構成する](media-services-cli-create-and-configure-aad-app.md)
+### [Azure PowerShell を使用して Azure AD アプリを作成および構成する](media-services-powershell-create-and-configure-aad-app.md)
 
 ## ビデオ オン デマンドの配信
 ### [Azure Portal](media-services-portal-vod-get-started.md)

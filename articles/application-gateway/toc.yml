@@ -38,7 +38,7 @@ items:
     href: cli-samples.md
 - name: 概念
   items:
-  - name: SSL 終了
+  - name: エンド ツー エンド SSL
     href: ssl-overview.md
   - name: SSL ポリシーの概要
     href: application-gateway-ssl-policy-overview.md
@@ -74,11 +74,11 @@ items:
       href: application-gateway-ilb-arm.md
   - name: SSL 終了を構成する
     items:
-    - name: Azure portal を使用した SSL 終了
+    - name: SSL 終了 - ポータル
       href: create-ssl-portal.md
-    - name: Azure PowerShell を使用した SSL 終了
+    - name: SSL 終了 - PowerShell
       href: tutorial-ssl-powershell.md
-    - name: Azure PowerShell を使用したエンドツーエンドの SSL 終了
+    - name: エンド ツー エンド SSL - PowerShell
       href: application-gateway-end-to-end-ssl-powershell.md
     - name: 証明書の更新
       href: renew-certificates.md
@@ -182,9 +182,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-application-gateway
   - name: FAQ
     href: application-gateway-faq.md
-ms.openlocfilehash: 17ac6d23e6f8703d4cbb9d33e66b594d7d058d28
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 7105df03e8dbef1f225c26c4b52243100118782f
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069236"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944257"

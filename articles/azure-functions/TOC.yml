@@ -1,4 +1,4 @@
-﻿items:
+items:
 - name: Functions のドキュメント
   href: index.yml
 - name: 概要
@@ -27,7 +27,7 @@
       href: functions-create-cosmos-db-triggered-function.md
     - name: BLOB ストレージ
       href: functions-create-storage-blob-triggered-function.md
-    - name: Queue ストレージ
+    - name: ストレージ
       href: functions-create-storage-queue-triggered-function.md
     - name: Timer
       href: functions-create-scheduled-function.md
@@ -35,7 +35,7 @@
     items:
     - name: Azure Cosmos DB
       href: functions-integrate-store-unstructured-data-cosmosdb.md
-    - name: ストレージ
+    - name: Storage
       href: functions-integrate-storage-queue-output-binding.md
   expanded: true
 - name: チュートリアル
@@ -244,7 +244,7 @@
       href: functions-bindings-mobile-apps.md
     - name: Notification Hubs
       href: functions-bindings-notification-hubs.md
-    - name: Queue ストレージ
+    - name: ストレージ
       href: functions-bindings-storage-queue.md
     - name: SendGrid
       href: functions-bindings-sendgrid.md

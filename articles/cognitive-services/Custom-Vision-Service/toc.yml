@@ -22,7 +22,7 @@ items:
       href: custom-vision-onnx-windows-ml.md
     - name: Python での TensorFlow モデルの実行
       href: export-model-python.md
-    - name: REST API を使用したモデルのトレーニング
+    - name: REST API を使用したモデルの構築
       href: rest-api-tutorial.md
   - name: アプリの構築
     items:
@@ -76,9 +76,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/global-infrastructure/services/
-ms.openlocfilehash: bce387c10ee4b70cd08a4795d449b08aa1495fce
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d7d919cd69e73ba2e4c4149bf38cceaae63ebcba
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426310"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955115"

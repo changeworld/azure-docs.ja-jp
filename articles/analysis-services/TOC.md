@@ -38,8 +38,8 @@
 ### [サーバーの管理](analysis-services-manage.md)
 ### [サーバー メトリックの監視](analysis-services-monitor.md)
 ### [診断ログのセットアップ](analysis-services-logging.md)
-### [サービス プリンシパルを作成する - Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
-### [サービス プリンシパルを作成する - PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [サービス プリンシパルを作成する - Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)
+### [サービス プリンシパルを作成する - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 ### [サーバー管理者ロールにサービス プリンシパルを追加する](analysis-services-addservprinc-admins.md)
 
 ## モデル

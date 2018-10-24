@@ -26,6 +26,10 @@ items:
   - name: Resource Graph を使用してご利用の Azure リソースを探索する
     href: ./concepts/explore-resources.md
   expanded: true
+- name: リファレンス
+  items:
+  - name: REST API
+    href: /rest/api/azureresourcegraph/resources/resources
 - name: リソース
   items:
   - name: Azure のロードマップ
@@ -34,9 +38,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: 66dd76e5a1a3c891ba497401980e3415ad3a5b1c
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3aa7384bfe8dda15167ab679f689e691e64278c9
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053692"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49943708"

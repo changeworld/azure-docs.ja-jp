@@ -16,12 +16,6 @@ items:
       href: text-moderation-quickstart-dotnet.md
     - name: ビデオ コンテンツの確認
       href: video-moderation-api.md
-- name: サンプル
-  items:
-  - name: .NET SDK のサンプル
-    href: samples-dotnet.md
-  - name: C# での REST API のサンプル
-    href: samples-rest.md
 - name: 概念
   items:
   - name: 画像のモデレート
@@ -36,48 +30,48 @@ items:
     href: workflow-api.md
 - name: ハウツー ガイド
   items:
-  - name: Content Moderator を試す
+  - name: モデレート サービスの使用
     items:
     - name: モデレート API
       items:
-      - name: イメージ - API コンソール
-        href: try-image-api.md
-      - name: イメージをカスタム リストと照合する
-        href: image-lists-quickstart-dotnet.md
-      - name: カスタム イメージ - API コンソール
-        href: try-image-list-api.md
-      - name: テキスト - API コンソール
-        href: try-text-api.md
-      - name: テキストをカスタム用語と照合する
-        href: term-lists-quickstart-dotnet.md
-      - name: カスタム用語 - API コンソール
-        href: try-terms-list-api.md
+      - name: .NET SDK の使用
+        items:
+        - name: イメージをカスタム リストと照合する
+          href: image-lists-quickstart-dotnet.md
+        - name: テキストをカスタム用語と照合する
+          href: term-lists-quickstart-dotnet.md
+      - name: REST API の使用
+        items:
+        - name: イメージ - API コンソール
+          href: try-image-api.md
+        - name: カスタム イメージ - API コンソール
+          href: try-image-list-api.md
+        - name: テキスト - API コンソール
+          href: try-text-api.md
+        - name: カスタム用語 - API コンソール
+          href: try-terms-list-api.md
+  - name: レビュー ツールの使用
+    items:
     - name: API の確認
       items:
-      - name: ジョブ - API コンソール
-        href: try-review-api-job.md
-      - name: ジョブ - .NET
-        href: moderation-jobs-quickstart-dotnet.md
-      - name: レビュー - API コンソール
-        href: try-review-api-review.md
-      - name: レビュー - .NET
-        href: moderation-reviews-quickstart-dotnet.md
-      - name: ビデオのレビュー - .NET
-        href: video-reviews-quickstart-dotnet.md
-      - name: ビデオのトランスクリプトのレビュー - .NET
-        href: video-transcript-reviews-quickstart-dotnet.md
-      - name: ワークフロー - API コンソール
-        href: try-review-api-workflow.md
-  - name: 最初の Content Moderator アプリ
-    items:
-    - name: Facebook のコンテンツ モデレーション
-      href: facebook-post-moderation.md
-    - name: E コマースの画像のモデレート
-      href: ecommerce-retail-catalog-moderation.md
-    - name: ビデオとトランスクリプトのモデレート
-      href: video-transcript-moderation-review-tutorial-dotnet.md
-  - name: レビュー ツール
-    items:
+      - name: .NET SDK の使用
+        items:
+        - name: ジョブ - .NET
+          href: moderation-jobs-quickstart-dotnet.md
+        - name: レビュー - .NET
+          href: moderation-reviews-quickstart-dotnet.md
+        - name: ビデオのレビュー - .NET
+          href: video-reviews-quickstart-dotnet.md
+        - name: ビデオのトランスクリプトのレビュー - .NET
+          href: video-transcript-reviews-quickstart-dotnet.md
+      - name: REST API の使用
+        items:
+        - name: ジョブ - API コンソール
+          href: try-review-api-job.md
+        - name: レビュー - API コンソール
+          href: try-review-api-review.md
+        - name: ワークフロー - API コンソール
+          href: try-review-api-workflow.md
     - name: 人間の関与について
       href: Review-Tool-User-Guide/human-in-the-loop.md
     - name: 設定の使用
@@ -98,6 +92,20 @@ items:
       href: Review-Tool-User-Guide/Workflows.md
     - name: ダッシュボードの表示
       href: Review-Tool-User-Guide/View-Dashboard.md
+  - name: 最初の Content Moderator アプリ
+    items:
+    - name: Facebook のコンテンツ モデレーション
+      href: facebook-post-moderation.md
+    - name: E コマースの画像のモデレート
+      href: ecommerce-retail-catalog-moderation.md
+    - name: ビデオとトランスクリプトのモデレート
+      href: video-transcript-moderation-review-tutorial-dotnet.md
+- name: サンプル
+  items:
+  - name: .NET SDK のサンプル
+    href: samples-dotnet.md
+  - name: C# での REST API のサンプル
+    href: samples-rest.md
 - name: リファレンス
   items:
   - name: Content Moderator API
@@ -134,9 +142,9 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=ai-machine-learning
   - name: オンデマンド ウェビナー
     href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
-ms.openlocfilehash: a6e9e2908a6365c1749e8a5d061779ebc37764e0
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: d162bcaefdde1aceb171d2ad83b5386e54cea890
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49428965"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944160"

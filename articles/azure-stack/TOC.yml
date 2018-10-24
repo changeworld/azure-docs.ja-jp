@@ -76,6 +76,10 @@ items:
         href: azure-stack-integrate-identity.md
       - name: Azure ID の検証
         href: azure-stack-validate-identity.md
+      - name: ADFS 統合の検証
+        href: azure-stack-validate-adfs.md
+      - name: Graph 統合の検証
+        href: azure-stack-validate-graph.md
     - name: Azure Stack のデプロイの PKI 要件
       href: azure-stack-pki-certs.md
       items:
@@ -384,9 +388,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 6fc6652110dbc8b459e7961632b3b6e654773a5c
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 07db25425bf9ef753c1561803dd1cdf838ef3457
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362502"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944960"

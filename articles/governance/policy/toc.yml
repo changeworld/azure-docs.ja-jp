@@ -192,7 +192,11 @@ items:
   - name: Azure CLI
     href: /cli/azure/policy
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.resources/#policies
+    items:
+    - name: ポリシー
+      href: /powershell/module/azurerm.resources/#policies
+    - name: ゲスト構成 (プレビュー)
+      href: https://www.powershellgallery.com/packages/AzureRM.GuestConfiguration
   - name: REST API
     items:
     - name: events
@@ -205,6 +209,8 @@ items:
       href: /rest/api/resources/policydefinitions
     - name: イニシアティブの定義
       href: /rest/api/resources/policysetdefinitions
+    - name: ゲスト構成 (プレビュー)
+      href: /rest/api/guestconfiguration/
 - name: リソース
   items:
   - name: GitHub - Azure Policy サンプル
@@ -219,9 +225,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: b4d5a8249eaa49629f75649513932203fda7d4d5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a71c43e53e9e4ab85c6b550d6e446814be0e16ba
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161660"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944279"
