@@ -90,7 +90,7 @@ Connect-AzureAD -TenantDomain "<Tenant_Domain_Name>"
 
 ## <a name="send-bulk-invitations"></a>招待メールを一括送信する
 
-招待状を送信するには、次の PowerShell スクリプトを実行します (**c:\bulkinvite\invitations.csv** は CSV ファイルのパスです)。 
+招待メールを送信するには、次の PowerShell スクリプトを実行します (**c:\bulkinvite\invitations.csv** は CSV ファイルのパスです)。 
 
 ```powershell
 $invitations = import-csv c:\bulkinvite\invitations.csv

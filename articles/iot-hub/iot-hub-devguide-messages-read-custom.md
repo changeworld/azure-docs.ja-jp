@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: af0b819c6c60835089c174a1f9f7c3a6215e362c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bbd5058be502839f83db484136d1c97bac4a3d79
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956963"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585953"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>device-to-cloud メッセージにメッセージ ルートとカスタム エンドポイントを使用する
 
@@ -32,37 +32,30 @@ IoT Hub の[メッセージ ルーティング](iot-hub-devguide-routing-query-s
 
 ## <a name="endpoints-and-routing"></a>エンドポイントとルーティング
 
-IoT hub は、既定の[組み込みのエンドポイント][lnk-built-in]を持ちます。 サブスクリプション内の他のサービスをハブにリンクして、メッセージをルーティングするカスタム エンドポイントを作成できます。 IoT Hub は現在、カスタム エンドポイントとして、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。
+IoT ハブは、既定の[組み込みのエンドポイント](iot-hub-devguide-messages-read-builtin.md)を持ちます。 サブスクリプション内の他のサービスをハブにリンクして、メッセージをルーティングするカスタム エンドポイントを作成できます。 IoT Hub は現在、カスタム エンドポイントとして、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。
 
 ルーティングとカスタム エンドポイントを使用すると、メッセージは、クエリに一致しない場合、組み込みのエンドポイントにのみ配信されます。 メッセージを組み込みのエンドポイントとカスタム エンドポイントに配信するには、**イベント** エンドポイントにメッセージを送信するルートを追加します。
 
 > [!NOTE]
-> IoT Hub は、Azure Storage コンテナーに BLOB としてデータを書き込む処理のみをサポートしています。
+> * IoT Hub は、Azure Storage コンテナーに BLOB としてデータを書き込む処理のみをサポートしています。
+> * **セッション**または**重複データ検出**が有効になっている Service Bus のキューおよびトピックは、カスタム エンドポイントとしてはサポートされていません。
 
-> [!WARNING]
-> **セッション**または**重複データ検出**が有効になっている Service Bus のキューおよびトピックは、カスタム エンドポイントとしてはサポートされていません。
-
-IoT Hub でのカスタム エンドポイントの作成の詳細については、[IoT Hub エンドポイント][lnk-devguide-endpoints]に関するページを参照してください。
+IoT Hub でのカスタム エンドポイントの作成の詳細については、[IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)に関するページを参照してください。
 
 カスタム エンドポイントからの読み取りの詳細については、以下をご覧ください。
 
-* [Azure Storage コンテナー][lnk-getstarted-storage]から読み取ります。
-* [Event Hubs][lnk-getstarted-eh] から読み取ります。
-* [Service Bus キュー][lnk-getstarted-queue]から読み取ります。
-* [Service Bus トピック][lnk-getstarted-topic]から読み取ります。
+* [Azure Storage コンテナー](../storage/blobs/storage-blobs-introduction.md)からの読み取り。
 
-### <a name="next-steps"></a>次の手順
+* [Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md) からの読み取り。
 
-* IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント][lnk-devguide-endpoints]に関するページをご覧ください。
+* [Service Bus キュー](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)からの読み取り。
+
+* [Service Bus トピック](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md)からの読み取り。
+
+## <a name="next-steps"></a>次の手順
+
+* IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)に関するページをご覧ください。
+
 * ルーティング クエリの定義に使用するクエリ言語について詳しくは、[メッセージ ルーティング クエリの構文](iot-hub-devguide-routing-query-syntax.md)に関するページをご覧ください。
-* [ルートを使用した IoT Hub の device-to-cloud メッセージの処理][lnk-d2c-tutorial]に関するチュートリアルでは、ルーティング クエリおよびカスタム エンドポイントを使用する方法が説明されています。
 
-[lnk-built-in]: iot-hub-devguide-messages-read-builtin.md
-[lnk-device-to-cloud]: iot-hub-devguide-messages-d2c.md
-[lnk-devguide-query-language]: iot-hub-devguide-query-language.md
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-d2c-tutorial]: tutorial-routing.md
-[lnk-getstarted-eh]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[lnk-getstarted-queue]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
-[lnk-getstarted-topic]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
-[lnk-getstarted-storage]: ../storage/blobs/storage-blobs-introduction.md
+* [ルートを使用した IoT Hub の device-to-cloud メッセージの処理](tutorial-routing.md)に関するチュートリアルでは、ルーティング クエリおよびカスタム エンドポイントを使用する方法が説明されています。

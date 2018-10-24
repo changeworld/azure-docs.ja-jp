@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: glenga
-ms.openlocfilehash: 0fcda59add346d60f37273625fbbcf41faab0e15
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 0ed488cd717bc1548b26dcf8ff5f200a62710132
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091205"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584890"
 ---
 # <a name="ip-addresses-in-azure-functions"></a>Azure Functions の IP アドレス
 
@@ -58,21 +58,31 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 
 ## <a name="data-center-outbound-ip-addresses"></a>データ センターの送信 IP アドレス
 
-関数アプリが使用する送信 IP アドレスをホワイトリストに登録する必要がある場合、別の選択肢として、関数アプリのデータ センター (Azure リージョン) をホワイトリストに登録するという方法があります。 [Azure データ センターの IP アドレスが記述された XML ファイルをダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=41653)してください。 次に、関数アプリを実行するリージョンに適用される XML 要素を検索します。
+関数アプリが使用する送信 IP アドレスをホワイトリストに登録する必要がある場合、別の選択肢として、関数アプリのデータ センター (Azure リージョン) をホワイトリストに登録するという方法があります。 [すべての Azure データ センターの IP アドレスが記述された JSON ファイルをダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=56519)してください。 次に、関数アプリを実行するリージョンに適用される JSON 要素を検索します。
 
-たとえば、西ヨーロッパの XML 要素は、次のようになっています。
+たとえば、西ヨーロッパの JSON 要素は、次のようになっています。
 
 ```
-  <Region Name="europewest">
-    <IpRange Subnet="13.69.0.0/17" />
-    <IpRange Subnet="13.73.128.0/18" />
-    <!-- Some IP addresses not shown here -->
-    <IpRange Subnet="213.199.180.192/27" />
-    <IpRange Subnet="213.199.183.0/24" />
-  </Region>
+{
+  "name": "AzureCloud.westeurope",
+  "id": "AzureCloud.westeurope",
+  "properties": {
+    "changeNumber": 9,
+    "region": "westeurope",
+    "platform": "Azure",
+    "systemService": "",
+    "addressPrefixes": [
+      "13.69.0.0/17",
+      "13.73.128.0/18",
+      ... Some IP addresses not shown here
+     "213.199.180.192/27",
+     "213.199.183.0/24"
+    ]
+  }
+}
 ```
 
- このファイルがいつ更新されるかや IP アドレスがいつ変更されるかの詳細については、[[ダウンロード センター] ページ](https://www.microsoft.com/en-us/download/details.aspx?id=41653)の **[詳細]** セクションを展開してください。
+ このファイルがいつ更新されるかや IP アドレスがいつ変更されるかの詳細については、[[ダウンロード センター] ページ](https://www.microsoft.com/en-us/download/details.aspx?id=56519)の **[詳細]** セクションを展開してください。
 
 ## <a name="inbound-ip-address-changes"></a>着信 IP アドレスの変更
 

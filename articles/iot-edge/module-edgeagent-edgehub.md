@@ -8,12 +8,12 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5e358992661f7bcf06121a07c1bafca0850316b2
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 259d61125828ee487b74daa525f3635cfa592ce7
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423139"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017706"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Edge エージェントと Edge ハブのモジュール ツインのプロパティ
 
@@ -27,9 +27,9 @@ Edge エージェントのモジュール ツインは `$edgeAgent` と呼ばれ
 
 | プロパティ | 説明 | 必須 |
 | -------- | ----------- | -------- |
-| schemaVersion | "1.0" である必要がある | はい |
-| runtime.type | "docker" である必要がある | はい |
-| runtime.settings.minDockerVersion | このデプロイ マニフェストに必要な最小の Docker バージョンに設定される | はい |
+| schemaVersion | "1.0" である必要がある | [はい] |
+| runtime.type | "docker" である必要がある | [はい] |
+| runtime.settings.minDockerVersion | このデプロイ マニフェストに必要な最小の Docker バージョンに設定される | [はい] |
 | runtime.settings.loggingOptions | Edge エージェント コンテナーのログ オプションを含む文字列化された JSON。 [Docker のログ オプション][lnk-docker-logging-options] | いいえ  |
 | runtime.settings.registryCredentials<br>.{registryId}.username | コンテナー レジストリのユーザー名です。 Azure Container Registry では、ユーザー名は通常、レジストリ名です。<br><br> 公開されていないモジュール イメージでは、レジストリの資格情報が必要です。 | いいえ  |
 | runtime.settings.registryCredentials<br>.{registryId}.password | コンテナー レジストリのパスワード。 | いいえ  |
@@ -46,6 +46,7 @@ Edge エージェントのモジュール ツインは `$edgeAgent` と呼ばれ
 | systemModules.edgeHub.configuration.id | このモジュールをデプロイしたデプロイの ID。 | このプロパティは、このマニフェストがデプロイを使用して適用されるときに IoT Hub によって設定されます。 デプロイ マニフェストの一部ではありません。 |
 | modules.{moduleId}.version | このモジュールのバージョンを表すユーザー定義の文字列。 | [はい] |
 | modules.{moduleId}.type | "docker" である必要がある | [はい] |
+| modules.{moduleId}.status | {"running" \| "stopped"} | [はい] |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | [はい] |
 | modules.{moduleId}.settings.image | モジュール イメージへの URI。 | [はい] |
 | modules.{moduleId}.settings.createOptions | モジュール コンテナーの作成のためのオプションを含む文字列化された JSON。 [Docker の作成オプション][lnk-docker-create-options] | いいえ  |

@@ -3,23 +3,19 @@ title: Durable Functions 拡張機能とサンプルをインストールする 
 description: Azure Functions、ポータル開発、または Visual Studio 開発用に Durable Functions 拡張機能をインストールする方法を説明します。
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 03/19/2018
+ms.topic: conceptual
+ms.date: 08/31/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 12b5c013a0704eb2d3f7df58011571b902955c75
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 2eb838bcb9d3f64d0bbf4657c516adb50d103223
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42144067"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585307"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Durable Functions 拡張機能とサンプルをインストールする (Azure Functions)
 
@@ -35,12 +31,12 @@ Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機
 
 ### <a name="prerequisites"></a>前提条件
 
-* [Visual Studio の最新バージョン](https://www.visualstudio.com/downloads/)のインストール (バージョン 15.3 以降)。 **[Azure の開発]** ワークロードをセットアップ オプションに含めます。
+* [Visual Studio の最新バージョン](https://www.visualstudio.com/downloads/)のインストール (バージョン 15.6 以降)。 **[Azure の開発]** ワークロードをセットアップ オプションに含めます。
 
 ### <a name="start-with-sample-functions"></a>サンプル関数から始める 
 
 1. [Visual Studio 用のサンプル アプリの .zip ファイル](https://azure.github.io/azure-functions-durable-extension/files/VSDFSampleApp.zip)をダウンロードします。 NuGet 参照はサンプル プロジェクトに既に含まれているため、追加する必要はありません。
-2. [Azure Storage Emulator](https://docs.microsoft.com/azure/storage/storage-use-emulator) バージョン 5.2 以降をインストールして実行します。 または、*local.appsettings.json* ファイルを実際の Azure Storage の接続文字列で更新できます。
+2. [Azure Storage Emulator](https://docs.microsoft.com/azure/storage/storage-use-emulator) バージョン 5.6 以降をインストールして実行します。 または、*local.settings.json* ファイルを実際の Azure Storage の接続文字列で更新できます。
 3. Visual Studio 2017 でプロジェクトを開きます。 
 4. このサンプルの実行方法については、[関数チェーン - Hello シーケンス サンプル](durable-functions-sequence.md)に記載されている手順から始めてください。 サンプルは、ローカルで実行することも Azure に発行することもできます。
 
@@ -49,7 +45,7 @@ Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機
 サンプルから始めるのと同じ手順に従いますが、*.zip* ファイルをダウンロードする代わりに次の手順に従います。
 
 1. Function App プロジェクトを作成します。
-2. *[NuGet パッケージの管理]* を使用して NuGet パッケージ参照 Microsoft.Azure.WebJobs.Extensions.DurableTask v1.5.0 を検索し、プロジェクトに追加します。
+2. *[NuGet パッケージの管理]* を使用して NuGet パッケージ参照 Microsoft.Azure.WebJobs.Extensions.DurableTask v1.6.0 を検索し、プロジェクトに追加します
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -67,7 +63,7 @@ Visual Studio Code では、すべての主要なプラットフォーム (Windo
     >[!IMPORTANT]
     >JavaScript の Durable Functions には、Azure Functions Core Tools のバージョン 2.x が必要です。
 
-*  Windows マシンの場合、[Azure Storage Emulator](https://docs.microsoft.com/azure/storage/storage-use-emulator) バージョン 5.2 以降をインストールして実行します。 または、*local.appsettings.json* ファイルを実際の Azure Storage の接続で更新できます。 
+*  Windows マシンの場合、[Azure Storage Emulator](https://docs.microsoft.com/azure/storage/storage-use-emulator) バージョン 5.6 以降をインストールして実行します。 または、*local.settings.json* ファイルを実際の Azure Storage の接続で更新できます。 
 
 
 ### <a name="start-with-sample-functions"></a>サンプル関数から始める
@@ -79,14 +75,14 @@ Visual Studio Code では、すべての主要なプラットフォーム (Windo
 3. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、Azure Functions Durable Extension をインストールします。
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.0
     ```
 4. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、Azure Functions Twilio Extension をインストールします。
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta5
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta8
     ```
-5. Azure Storage Emulator を実行するか、*local.appsettings.json* ファイルを実際の Azure Storage の接続文字列で更新します。
+5. Azure Storage Emulator を実行するか、*local.settings.json* ファイルを実際の Azure Storage の接続文字列で更新します。
 6. Visual Studio Code でプロジェクトを開きます。 
 7. このサンプルの実行方法については、[関数チェーン - Hello シーケンス サンプル](durable-functions-sequence.md)に記載されている手順から始めてください。 サンプルは、ローカルで実行することも Azure に発行することもできます。
 8. コマンド プロンプト/ターミナルで次のコマンドを実行して、プロジェクトを開始します:
@@ -98,50 +94,52 @@ Visual Studio Code では、すべての主要なプラットフォーム (Windo
 
 1. [Durable Functions リポジトリ](https://github.com/Azure/azure-functions-durable-extension.git)を複製します。
 2. マシン上の [JavaScript サンプル フォルダー](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript)に移動します。 
-3. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、Azure Functions Durable Extension をインストールします。
+3. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、Azure Functions Durable Extension をインストールします
 
-    ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
     ```
+    func extensions install
+    ```
+    > [!NOTE] 
+    > このためには、[.NET Core SDK](https://www.microsoft.com/net/download) をマシンにインストールする必要があります。
 4. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、npm パッケージを復元します。
     
-    ```bash
+    ```
     npm install
     ``` 
-5. Azure Storage の実際の接続文字列で *local.appsettings.json* ファイルを更新します。
-6. Visual Studio Code でプロジェクトを開きます。 
+5. *local.settings.json* ファイルを、`AzureWebJobsStorage` の Azure ストレージ アカウントの接続文字列で更新します。  このストレージ アカウントは、Durable Function の状態に使用されます。
+6. Visual Studio Code などのエディターでプロジェクトを開きます。 
 7. このサンプルの実行方法については、[関数チェーン - Hello シーケンス サンプル](durable-functions-sequence.md)に記載されている手順から始めてください。 サンプルは、ローカルで実行することも Azure に発行することもできます。
 8. コマンド プロンプト/ターミナルで次のコマンドを実行して、プロジェクトを開始します:
-    ```bash
-    func host start
+    ```
+    func start
     ```
 
 ### <a name="start-with-an-empty-project"></a>空のプロジェクトから始める
  
 1. コマンド プロンプト/ターミナルで、関数アプリをホストするフォルダーに移動します。
-2. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、Azure Functions Durable Extension をインストールします。
-
-    ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.5.0
-    ```
 3. 次のコマンドを実行して Function App プロジェクトを作成します。
 
-    ```bash
+    ```
     func init
     ``` 
-4. Azure Storage Emulator を実行するか、*local.appsettings.json* ファイルを実際の Azure Storage の接続文字列で更新します。
+4. Azure Storage Emulator (Windows のみ) を実行するか、*local.settings.json* ファイルを `AzureWebJobsStorage` の実際の Azure Storage 接続文字列で更新します。
 5. 次に、次のコマンドを実行して新しい関数を作成し、ウィザードの手順に従います。
 
-    ```bash
+    ```
     func new
     ```
     >[!IMPORTANT]
     > 現時点で Durable Function テンプレートは使用できませんが、サポートされるオプションのいずれかで開始して、コードを変更できます。 参照用に、[オーケストレーション クライアント](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/HttpStart)、[オーケストレーション トリガー](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/E1_HelloSequence)、[アクティビティ トリガー](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/csx/E1_HelloSequence)のサンプルを使用してください。
+2. コマンド プロンプト/ターミナル ウィンドウを使用して、次のコマンドを Function App ディレクトリで実行して、Azure Functions Durable Extension をインストールします。
+
+    ```
+    func extensions install
+    ```
 
 6. Visual Studio Code でプロジェクト フォルダーを開き、テンプレート コードを修正して続行します。 
 7. コマンド プロンプト/ターミナルで次のコマンドを実行して、プロジェクトを開始します:
-    ```bash
-    func host start
+    ```
+    func start
     ```
 
 ## <a name="azure-portal"></a>Azure ポータル

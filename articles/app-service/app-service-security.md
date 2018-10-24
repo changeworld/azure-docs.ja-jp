@@ -1,7 +1,7 @@
 ---
 title: Azure App Service と Azure Functions のセキュリティ | Microsoft Docs
 description: App Service でアプリをセキュリティで保護する方法と、アプリを脅威からさらに保護する方法について説明します。
-keywords: azure アプリ service, web アプリ, モバイル アプリ, api アプリ, function アプリ, セキュリティ, セキュア, セキュリティで保護, コンプライアンス, 準拠, 証明書, https, ftps, tls, 信頼, 暗号化, 暗号化済み, ip の制限, 認証, 承認, msi, マネージド サービス ID, シークレット, 秘密, パッチ処理, パッチ, バージョン, 分離, ネットワークの分離, ddos, mitm
+keywords: azure app service, web アプリ, モバイル アプリ, api アプリ, 関数アプリ, セキュリティ, セキュア, セキュリティ保護, コンプライアンス, 準拠, 証明書, https, ftps, tls, 信頼, 暗号化, 暗号化する, 暗号化済み, ip の制限, 認証, 認可, authn, autho, msi, マネージド サービス ID, マネージド ID, シークレット, 秘密, パッチ処理, パッチ, バージョン, 分離, ネットワークの分離, ddos, mitm
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2018
 ms.author: cephalin
-ms.openlocfilehash: 40fdd22bdbb3fc0676688430069d58c0422a7ca2
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 3bacc2bf253a6b8c3b869b7a6d4952d982de3ee6
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382118"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857501"
 ---
 # <a name="security-in-azure-app-service-and-azure-functions"></a>Azure App Service と Azure Functions のセキュリティ
 
@@ -69,7 +69,7 @@ App Service の認証および承認は、Azure Active Directory、Microsoft ア
 
 バックエンド サービスに対して認証する場合、App Service には必要に応じて 2 つの異なるメカニズムが用意されています。
 
-- **サービス ID** - アプリ自体の ID を使用してリモート リソースにサインインします。 App Service を使用すると、[マネージド サービス ID](app-service-managed-service-identity.md) を簡単に作成できます。この ID は、[Azure SQL Database](/azure/sql-database/)、[Azure Key Vault](/azure/key-vault/) などの他のサービスで認証するために使用できます。 この方法のエンドツーエンドのチュートリアルについては、「[マネージド サービス ID を使用した App Service からの Secure Azure SQL Database 接続のセキュリティ保護](app-service-web-tutorial-connect-msi.md)」を参照してください。
+- **サービス ID** - アプリ自体の ID を使用してリモート リソースにサインインします。 App Service を使用すると、[マネージド ID](app-service-managed-service-identity.md) を簡単に作成できます。この ID は、[Azure SQL Database](/azure/sql-database/)、[Azure Key Vault](/azure/key-vault/) などの他のサービスで認証するために使用できます。 この方法のエンドツーエンドのチュートリアルについては、「[マネージド ID を使用した App Service からの Secure Azure SQL Database 接続のセキュリティ保護](app-service-web-tutorial-connect-msi.md)」を参照してください。
 - **代理 (OBO)** - ユーザーの代理でリモート リソースへの委任されたアクセスを行います。 Azure Active Directory を認証プロバイダーとして使用すると、App Service アプリは、App Service で [Azure Active Directory Graph API](../active-directory/develop/active-directory-graph-api.md) やリモート API アプリなどのリモート サービスに対して代理サインインを実行できます。 この方法のエンドツーエンドのチュートリアルについては、「[Linux 用 Azure App Service でユーザーをエンドツーエンドで認証および承認する](app-service-web-tutorial-auth-aad.md)」を参照してください。
 
 ## <a name="connectivity-to-remote-resources"></a>リモート リソースへの接続性
@@ -106,13 +106,13 @@ App Service の認証および承認は、Azure Active Directory、Microsoft ア
 
 データベースの資格情報、API トークン、秘密キーなどのアプリケーション シークレット情報をコードや構成ファイルに保存しないでください。 一般に受け入れられているのは、選択した言語の標準パターンを使用して[環境変数](https://wikipedia.org/wiki/Environment_variable)としてアクセスする方法です。 App Service では、[アプリ設定](web-sites-configure.md#app-settings) (と .NET アプリケーションの場合は特別に[接続文字列](web-sites-configure.md#connection-strings)) を使用して環境変数を定義します。 アプリ設定と接続文字列は、Azure で暗号化されて保存され、アプリの起動時にアプリのプロセス メモリに挿入される前に暗号化が解除されます。 暗号化キーは定期的に回転されます。
 
-また、高度なシークレット管理のために、App Service アプリを [Azure Key Vault](/azure/key-vault/) と統合することもできます。 [マネージド サービス ID を使用して Key Vault にアクセスする](../key-vault/tutorial-web-application-keyvault.md)ことで、App Service アプリは必要なシークレットに安全にアクセスできます。
+また、高度なシークレット管理のために、App Service アプリを [Azure Key Vault](/azure/key-vault/) と統合することもできます。 [マネージド ID を使用してキー コンテナーにアクセスする](../key-vault/tutorial-web-application-keyvault.md)ことで、App Service アプリは必要なシークレットに安全にアクセスできます。
 
 ## <a name="network-isolation"></a>ネットワークの分離
 
 **Isolated** 価格レベルを除くすべての価格レベルでは、App Service の共有ネットワーク インフラストラクチャ上でアプリが実行されます。 たとえば、パブリック IP アドレスとフロントエンド ロード バランサーは他のテナントと共有されます。 **Isolated** 価格レベルでは、専用の [App Service 環境](environment/intro.md)内でアプリを実行することで完全なネットワークの分離を実現しています。 App Service 環境は、[Azure Virtual Network](/azure/virtual-network/) の独自のインスタンスで実行されます。 以下を実行できます。 
 
-- [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)を使用してネットワーク アクセスを制限する。 
+- [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-dmz-nsg.md)を使用してネットワーク アクセスを制限する。 
 - 専用のフロント エンドを使用し、専用のパブリック エンドポイントを介してアプリを提供する。
 - 内部ロードバランサー (ILB) を使用して内部アプリケーションを提供する。これによって、Azure Virtual Network 内からのアクセスのみが許可されます。 ILB にはプライベート サブネットの IP アドレスがあり、アプリはインターネットから完全に分離されます。
 - [Web アプリケーション ファイアウォール (WAF) の背後で ILB を使用する](environment/integrate-with-application-gateway.md)。 WAF は、DDoS 保護、URI フィルター処理、SQL のインジェクション防止など、一般公開されているアプリケーションにエンタープライズレベルの保護を提供します。

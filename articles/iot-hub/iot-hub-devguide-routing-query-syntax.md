@@ -8,16 +8,16 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 8e9321e72727c1a3149ff2e78b8cb1248734cb88
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3967a1e2317bac76785d534ba04a93de552c1a40
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978507"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018538"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT Hub メッセージ ルーティングのクエリ構文
 
-メッセージ ルーティングを使用すると、ユーザーは種類の異なるデータ (デバイス テレメトリ メッセージ、デバイス ライフサイクル イベント、デバイス ツイン変更イベント) を、さまざまなエンドポイントにルーティングできます。 さらにルーティング前には、お客様にとって重要なデータを受け取れるよう、上記のデータに高度なクエリを適用することもできます。 この記事では、IoT Hub メッセージ ルーティングのクエリ言語について説明するほか、一般的なクエリ パターンをいくつか紹介します。 
+メッセージ ルーティングを使用すると、ユーザーは種類の異なるデータ (デバイス テレメトリ メッセージ、デバイス ライフサイクル イベント、デバイス ツイン変更イベント) を、さまざまなエンドポイントにルーティングできます。 さらにルーティング前には、お客様にとって重要なデータを受け取れるよう、上記のデータに高度なクエリを適用することもできます。 この記事では、IoT Hub メッセージ ルーティングのクエリ言語について説明するほか、一般的なクエリ パターンをいくつか紹介します。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "46978507"
 
 ## <a name="message-routing-query-based-on-message-properties"></a>メッセージ プロパティに基づいたメッセージ ルーティング クエリ 
 
-IoT ハブでは、プロトコル間の相互運用性を確保するために、すべての device-to-cloud メッセージング用に[共通の形式](../iot-hub/iot-hub-devguide-messages-construct.md)が定義されています。 IoT Hub メッセージでは、次の JSON 表現のメッセージが想定されます。 すべてのユーザーのシステム プロパティが追加され、メッセージのコンテンツが特定されます。 ユーザーは、アプリケーション プロパティをメッセージに選択的に追加できます。 IoT Hub の device-to-cloud メッセージでは大文字と小文字が区別されないため、一意のプロパティ名を使用することをお勧めします。 たとえば、名前が同じプロパティが複数ある場合は、いずれか 1 つのプロパティだけが IoT Hub によって送信されることになります。  
+IoT ハブでは、プロトコル間の相互運用性を確保するために、すべての device-to-cloud メッセージング用に[共通の形式](iot-hub-devguide-messages-construct.md)が定義されています。 IoT Hub メッセージでは、次の JSON 表現のメッセージが想定されます。 すべてのユーザーのシステム プロパティが追加され、メッセージのコンテンツが特定されます。 ユーザーは、アプリケーション プロパティをメッセージに選択的に追加できます。 IoT Hub の device-to-cloud メッセージでは大文字と小文字が区別されないため、一意のプロパティ名を使用することをお勧めします。 たとえば、名前が同じプロパティが複数ある場合は、いずれか 1 つのプロパティだけが IoT Hub によって送信されることになります。  
 
 ```json
 { 
@@ -46,6 +46,7 @@ IoT ハブでは、プロトコル間の相互運用性を確保するために�
   } 
 } 
 ```
+
 ### <a name="system-properties"></a>システム プロパティ
 
 システム プロパティは、メッセージのコンテンツとソースを特定するのに役立ちます。 
@@ -55,7 +56,7 @@ IoT ハブでは、プロトコル間の相互運用性を確保するために�
 | contentType | string | ユーザーはメッセージのコンテンツの種類を指定します。 メッセージ本文に基づいてクエリを実行するには、この値を application/json に設定する必要があります。 |
 | contentEncoding | string | ユーザーはメッセージのエンコードの種類を指定します。 contentType が application/json に設定されている場合に使用できる値は、UTF-8、UTF-16、UTF-32 です。 |
 | connectionDeviceId | string | この値は IoT Hub によって設定されます。この値によって、メッセージのソースが特定されます。 これは、デバイス テレメトリ メッセージ、デバイス ツイン変更通知、またはデバイス ライフサイクル イベントの場合があります。 これに対してクエリを実行することはできません。 |
-| iothub-enqueuedtime | string | この値は IoT Hub によって設定されます。この値によって、メッセージがエンキューされた実際の時刻が UTC で表されます。 クエリを実行するには、`'enqueuedTime'` を使用します。 |
+| iothub-enqueuedtime | string | この値は IoT Hub によって設定されます。この値によって、メッセージがエンキューされた実際の時刻が UTC で表されます。 クエリを実行するには、`enqueuedTime` を使用します。 |
 
 [IoT Hub のメッセージ](iot-hub-devguide-messages-construct.md)に関するページで説明されているように、メッセージには他にもシステム プロパティがあります。 **contentType**、**contentEncoding**、**enqueuedTime** に加えて、**connectionDeviceId** と **connectionModuleId** に対してもクエリを実行できます。
 
@@ -65,7 +66,7 @@ IoT ハブでは、プロトコル間の相互運用性を確保するために�
 
 ### <a name="query-expressions"></a>クエリ式
 
-メッセージ システム プロパティに基づくクエリには、前に `'$'` 記号を付ける必要があります。 アプリケーション プロパティに基づくクエリは、それらの名前を使用してアクセスされるので、前に `'$'` 記号を付ける必要がありません。 アプリケーション プロパティ名の先頭に `'$'` がある場合は、IoT Hub によってそのアプリケーション プロパティ名がシステム プロパティ内で検索されますが、見つからないため、アプリケーション プロパティ内が検索されることになります。 例:  
+メッセージ システム プロパティに基づくクエリには、前に `$` 記号を付ける必要があります。 アプリケーション プロパティに基づくクエリは、それらの名前を使用してアクセスされるので、前に `$` 記号を付ける必要がありません。 アプリケーション プロパティ名の先頭に `$` がある場合は、IoT Hub によってそのアプリケーション プロパティ名がシステム プロパティ内で検索されますが、見つからないため、アプリケーション プロパティ内が検索されることになります。 例:  
 
 システム プロパティ contentEncoding に基づいてクエリを実行するには 
 
@@ -74,17 +75,18 @@ $contentEncoding = 'UTF-8'
 ```
 
 アプリケーション プロパティ processingPath に基づいてクエリを実行するには
+
 ```sql
 processingPath = 'hot'
 ```
 
-これらのクエリを結合するために、ブール式と関数を使用することができます。 
+これらのクエリを結合するには、ブール式と関数を使用することができます。
+
 ```sql
 $contentEncoding = 'UTF-8' AND processingPath = 'hot'
 ```
 
-サポートされている演算子と関数の完全な一覧については、[式と条件](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-query-language#expressions-and-conditions
-)に関するページを参照してください。
+サポートされている演算子と関数の完全な一覧については、[式と条件](iot-hub-devguide-query-language.md#expressions-and-conditions)に関するページを参照してください。
 
 ## <a name="message-routing-query-based-on-message-body"></a>メッセージ本文に基づいたメッセージ ルーティング クエリ 
 
@@ -146,19 +148,22 @@ deviceClient.sendEvent(message, (err, res) => {
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
 ```
+
 ```sql
 $body.Weather.Temperature = 50 AND $body.Weather.IsEnabled 
 ```
+
 ```sql
 length($body.Weather.Location.State) = 2 
 ```
+
 ```sql
 $body.Weather.Temperature = 50 AND processingPath = 'hot'
 ```
 
 ## <a name="message-routing-query-based-on-device-twin"></a>デバイス ツインに基づいたメッセージ ルーティング クエリ 
 
-メッセージ ルーティングでは、JSON オブジェクトである[デバイス ツイン](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)のタグとプロパティに基づいてクエリを実行できます。 モジュール ツインに基づいたクエリ実行はサポートされていないことに注意してください。 デバイス ツインのタグとプロパティのサンプルを以下に示します。
+メッセージ ルーティングでは、JSON オブジェクトである[デバイス ツイン](iot-hub-devguide-device-twins.md)のタグとプロパティに基づいてクエリを実行できます。 モジュール ツインに基づいたクエリ実行はサポートされていないことに注意してください。 デバイス ツインのタグとプロパティのサンプルを以下に示します。
 
 ```JSON
 {
@@ -191,14 +196,16 @@ $body.Weather.Temperature = 50 AND processingPath = 'hot'
 
 ### <a name="query-expressions"></a>クエリ式
 
-メッセージ本文に基づくクエリには、前に `$twin` を付ける必要があります。 さらにクエリ式では、ツインのタグまたはプロパティの参照を、本文の参照、メッセージ システム プロパティの参照、およびメッセージ アプリケーション プロパティの参照と組み合わせることもできます。 クエリでは大文字と小文字が区別されないため、タグとプロパティには一意の名前を使用することをお勧めします。 また、`twin`、`$twin`、`body`、または `$body` をプロパティ名として使用することも避けてください。 たとえば、以下はすべて有効なクエリ式です。 
+メッセージ本文に基づくクエリには、前に `$twin` を付ける必要があります。 さらにクエリ式では、ツインのタグまたはプロパティの参照を、本文の参照、メッセージ システム プロパティの参照、メッセージ アプリケーション プロパティの参照と組み合わせることもできます。 クエリでは大文字と小文字が区別されないため、タグとプロパティには一意の名前を使用することをお勧めします。 また、`twin`、`$twin`、`body`、`$body` をプロパティ名として使用することも避けてください。 たとえば、以下はすべて有効なクエリ式です。 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
 ```
+
 ```sql
 $body.Weather.Temperature = 50 AND $twin.properties.desired.telemetryConfig.sendFrequency = '5m'
 ```
+
 ```sql
 $twin.tags.deploymentLocation.floor = 1 
 ```
