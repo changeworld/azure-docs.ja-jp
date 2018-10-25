@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 09/24/2018
-ms.openlocfilehash: b450d2ca2af0c0f7598d74e2f07c0acc81b811f3
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 45aa954d2f85267b2c7c9aa2a7ba04e436765433
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116455"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023929"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>パイプラインと Azure Machine Learning
 
@@ -63,7 +63,7 @@ ML パイプラインを作成するには Python を使用します。 Azure Ma
 
 パイプラインはテンプレートとして保存することができ、REST エンドポイントにデプロイできるので、バッチ スコアリング ジョブや再トレーニング ジョブをスケジュールできます。
 
-独自のパイプラインを構築する方法については、[パイプラインに関する Python SDK リファレンス ドキュメント](http://aka.ms/aml-sdk)と次のセクションの Notebook を参照してください。
+独自のパイプラインを構築する方法については、[パイプラインに関する Python SDK リファレンス ドキュメント](https://docs.microsoft.com/python/api/azureml-pipeline-core/?view=azure-ml-py)と次のセクションの Notebook を参照してください。
 
 ## <a name="example-notebooks"></a>サンプルの Notebook
  

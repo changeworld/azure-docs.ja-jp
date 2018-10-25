@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: dobett
-ms.openlocfilehash: 1eeb0afdd5ffcbe00357914d6a98c8d0b3d452ec
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: d58c86c17cdab360f37a09b28bdf705cb781a620
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017961"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023829"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Azure IoT Hub SDK の概要と使用方法
 
@@ -44,7 +44,7 @@ Microsoft Azure IoT デバイス SDK には、Azure IoT Hub サービスに接�
 
 * [apt-get、MBED、Arduino IDE、または Nuget](https://github.com/Azure/azure-iot-sdk-c/blob/master/readme.md) からインストールする
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-c)
-* [API リファレンス](https://azure.github.io/azure-iot-sdk-c/index.html)
+* [API リファレンス](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 * [モジュール リファレンス](https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_module_client.h)
 
 Java 用 Azure IoT Hub デバイス SDK: 
@@ -65,13 +65,13 @@ Python 用 Azure IoT Hub デバイス SDK:
 
 * [pip](https://pypi.python.org/pypi/azure-iothub-device-client/) からインストールする
 * [ソース コード](https://github.com/Azure/azure-iot-sdk-python)
-* API のリファレンス: [C API リファレンス](https://azure.github.io/azure-iot-sdk-c/index.html)に関するページを参照してください。
+* API のリファレンス: [C API リファレンス](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)に関するページを参照してください。
 
 iOS 用 Azure IoT Hub デバイス SDK: 
 
 * [CocoaPod](https://cocoapods.org/pods/AzureIoTHubClient) からインストールする
 * [サンプル](https://github.com/Azure-Samples/azure-iot-samples-ios)
-* API のリファレンス: [C API リファレンス](https://azure.github.io/azure-iot-sdk-c/index.html)に関するページを参照してください。
+* API のリファレンス: [C API リファレンス](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)に関するページを参照してください。
 
 > [!NOTE]
 > 言語およびプラットフォームに固有のパッケージ マネージャーを使用して、バイナリと依存関係を開発用コンピューターにインストールする方法については、GitHub リポジトリの readme ファイルを参照してください。

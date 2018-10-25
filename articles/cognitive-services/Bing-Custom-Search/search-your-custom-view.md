@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
-ms.author: v-brapel
-ms.openlocfilehash: 235062c1b3e54843b5e64f4ef16091ae5d630894
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: maheshb
+ms.openlocfilehash: 15c5b3c58c4f3617111707ed82d031b67b6ad4c1
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48814357"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465137"
 ---
 # <a name="call-your-custom-search"></a>カスタム検索の呼び出し
 

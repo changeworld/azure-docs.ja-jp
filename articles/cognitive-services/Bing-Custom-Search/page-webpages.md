@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
-ms.author: v-brapel
-ms.openlocfilehash: f7d0a2f9c5a0e272d9f46ab76360ea7bf91449cc
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.author: maheshb
+ms.openlocfilehash: b4e022d6237712d8281c6f4f9332a68821dfd5b1
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815960"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470083"
 ---
 # <a name="paging-webpages"></a>Web ページのページング 
 

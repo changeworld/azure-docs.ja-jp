@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2018
+ms.date: 10/18/2018
 ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: d7e379033cc64b9715ccc7e8c9cbe5fe75e0e5b1
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 378617e331a5539fca3d993410325ef187816137
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869076"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430308"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit のリリース ノート  
 この記事では、Azure Stack Development Kit の機能強化、修正、既知の問題に関する情報を提供します。 実行しているバージョンが不明な場合は、[ポータルを使用して確認](.\.\azure-stack-updates.md#determine-the-current-version)できます。
@@ -107,7 +107,7 @@ ms.locfileid: "48869076"
       1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
       2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
    2. マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、次の手順に従ってください。
-      1. [1808 Azure Stack 修正プログラム](https://support.microsoft.com/help/4465859)を適用します。
+      1. [1808 Azure Stack 修正プログラム](https://support.microsoft.com/help/4468920)を適用します。
       2. [この記事](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
 
 <!-- 2869209 – IS, ASDK --> 
@@ -275,7 +275,7 @@ ms.locfileid: "48869076"
 - 管理ポータルまたはユーザー ポータルでストレージ アカウントに *[タグ]* を選択すると、情報が正しく表示されるようになりました。
 
 <!-- TBD - IS ASDK --> 
-- このバージョンの Azure Stack では、OEM 拡張機能パッケージからドライバーの更新プログラムが適用ができないという問題が修正されています。
+- このバージョンの Azure Stack では、OEM 拡張機能パッケージからドライバーの更新プログラムを適用できないという問題が修正されています。
 
 <!-- 2055809- IS ASDK --> 
 - VM の作成が失敗したときに、コンピューティング ブレードから VM を削除できないという問題が修正されました。  

@@ -1554,8 +1554,7 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
 
 ### <a name="the-phonefactor-web-portal-has-been-retired"></a>PhoneFactor Web ポータルは廃止されました
 
-
-  **タイプ:** 非推奨  
+**タイプ:** 非推奨  
 **サービス カテゴリ:** Azure AD  
 **製品の機能:** ディレクトリ
  
