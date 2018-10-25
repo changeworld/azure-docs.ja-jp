@@ -22,9 +22,9 @@ QnA Maker における制限の包括的な一覧です。
 
 ## <a name="knowledge-bases"></a>ナレッジ ベース
 
-* [Azure Search 層の制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)に基づくナレッジ ベースの最大数
+* [Azure Search レベルの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)に基づくナレッジ ベースの最大数
 
-|**Azure Search 層** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |許可される発行済みナレッジ ベースの最大数 (最大インデックス数 - 1 (テスト用に予約済み))|2|14|49|199|199|2999|
 
@@ -33,9 +33,9 @@ QnA Maker における制限の包括的な一覧です。
 * よくあるご質問の HTML ページから QnA を抽出するためにクロールできるディープリンクの最大数: 20
 
 ## <a name="metadata-limits"></a>メタデータの制限
-* [Azure Search 層の制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)に基づくナレッジ ベースごとのメタデータ フィールドの最大数
+* [Azure Search レベルの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)に基づくナレッジ ベースごとのメタデータ フィールドの最大数
 
-|**Azure Search 層** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |QnA Maker サービスごとの最大のメタデータ フィールド数 (すべてのナレッジ ベースにわたって)|1,000|100*|1,000|1,000|1,000|1,000|
 
@@ -49,7 +49,7 @@ QnA Maker における制限の包括的な一覧です。
 * ファイル名の長さ: 200
 * サポートされるファイル形式: ".tsv"、".pdf"、".txt"、".docx"、".xlsx"
 * 代替の質問の最大数: 100
-* 質問と回答のペアの最大数: 選択した [Azure Search 層](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)によって異なります。 
+* 質問と回答のペアの最大数: 選択した [Azure Search レベル](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits)によって異なります。 
 
 ## <a name="create-knowledge-base-call-limits"></a>ナレッジ ベースの作成の呼び出しの制限
 これらは、ナレッジ ベース作成操作 (つまり、*[KB を作成する]* のクリック、または CreateKnowledgeBase API の呼び出し) ごとの制限を表します。
