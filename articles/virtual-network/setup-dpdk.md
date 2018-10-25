@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: 205a1e399eadd268ffaa390a7ebb4397fda9feff
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 34647c218bd5fd2eec775599a4d2f10373dbd2fd
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444655"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268278"
 ---
-# <a name="setup-dpdk-in-a-linux-virtual-machine"></a>Linux 仮想マシンでの DPDK の設定
+# <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>Linux 仮想マシンでの DPDK の設定
 
-Azure の Data Plane Development Kit (DPDK) では、仮想マシンのカーネル ネットワーク スタックをバイパスするパフォーマンス集中型アプリケーションに対して、より高速のユーザー空間パケット処理フレームワークを提供します。
+Azure の Data Plane Development Kit (DPDK) では、パフォーマンス集中型アプリケーションに対して、より高速のユーザー空間パケット処理フレームワークを提供します。 このフレームワークは、仮想マシンのカーネル ネットワーク スタックをバイパスします。
 
-カーネル ネットワーク スタックを使用する一般的なパケット処理は、割り込み駆動型です。 ネットワーク インターフェイスが着信したパケットを受信するたびに、カーネル空間からユーザー空間へのパケットとコンテキスト切り替えを処理するカーネル割り込みが発生します。 DPDK では、コンテキスト切り替えと割り込み駆動型の手法を利用せずに、高速パケット処理にポーリング モードを使用したユーザー空間の実装を採用しています。
+カーネル ネットワーク スタックを使用する一般的なパケット処理では、このプロセスは割り込み駆動型です。 ネットワーク インターフェイスが着信したパケットを受信すると、カーネル空間からユーザー空間へのパケットとコンテキスト切り替えを処理するカーネル割り込みが発生します。 DPDK では、コンテキスト切り替えと割り込み駆動型の手法を利用せずに、高速パケット処理にポーリング モードを使用するユーザー空間の実装を採用しています。
 
-DPDK は、ハードウェア、論理コア、メモリ管理、およびネットワーク インターフェイス カードのポーリング モード ドライバーなど、下位レベルのリソースへのアクセスを提供しているユーザー空間ライブラリのセットから構成されています。
+DPDK は、下位レベルのリソースへのアクセスを提供しているユーザー空間ライブラリのセットで構成されています。 これらのリソースには、ハードウェア、論理コア、メモリ管理、およびネットワーク インターフェイス カードのポーリング モードのドライバーを含めることができます。
 
-DPDK は、複数のオペレーティング システムの配布をサポートしている Azure 仮想マシンで実行できます。 DPDK は、仮想ルーター、ファイアウォール、VPN、ロード バランサー、進化したパケット コア、およびサービス拒否型 (DDoS) アプリケーションなどのネットワーク仮想アプライアンス (NVA) の形式で、ネットワーク関数の仮想化の実装を推進するにあたって、重要なパフォーマンス上の差別化を実現します。
+DPDK は、複数のオペレーティング システムの配布をサポートしている Azure 仮想マシンで実行できます。 DPDK は、ネットワーク関数の仮想化の実装を推進するにあたって、重要なパフォーマンスの差別化を実現します。 これらの実装は、仮想ルーター、ファイアウォール、VPN、ロード バランサー、進化したパケット コア、およびサービス拒否 (DDoS) アプリケーションなどのネットワーク仮想アプライアンス (NVA) の形式を取ることができます。
 
 ## <a name="benefit"></a>長所
 
-**より高速のパケット毎秒 (PPS)**: カーネルをバイパスしてユーザー空間でパケットを制御すると、コンテキスト切り替えが無くなることでサイクル数が減少し、Azure Linux 仮想マシンで毎秒処理されるパケットのレートが向上します。
+**より高速のパケット毎秒 (PPS)**: カーネルをバイパスしてユーザー空間でパケットを制御すると、コンテキスト切り替えが無くなることでサイクル数が減少します。 また、Azure Linux 仮想マシンで毎秒処理されるパケットのレートも向上します。
 
 
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
@@ -50,7 +50,7 @@ Azure ギャラリーの次のディストリビューションがサポート�
 
 **カスタムのカーネル サポート**
 
-一覧に示されていない Linux カーネルのバージョンについては、[Azure で調整された Linux カーネルを作成するためのパッチ](https://github.com/microsoft/azure-linux-kernel)に関するページを参照してください。また、詳細情報については、[azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com) へお問い合わせください。 
+一覧に示されていない Linux カーネルのバージョンについては、[Azure で調整された Linux カーネルを作成するためのパッチ](https://github.com/microsoft/azure-linux-kernel)に関するページを参照してください。 また、詳細情報については、[azuredpdk@microsoft.com](mailto:azuredpdk@microsoft.com) にお問い合わせください。 
 
 ## <a name="region-support"></a>リージョンのサポート
 
@@ -105,15 +105,15 @@ zypper \
   --gpg-auto-import-keys install kernel-default-devel gcc make libnuma-devel numactl librdmacm1 rdma-core-devel
 ```
 
-## <a name="setup-virtual-machine-environment-once"></a>仮想マシン環境のセットアップ (1 回のみ)
+## <a name="set-up-the-virtual-machine-environment-once"></a>仮想マシン環境のセットアップ (1 回のみ)
 
 1. [最新 DPDK をダウンロードします](https://core.dpdk.org/download)。 Azure にはバージョン 18.02 以降が必要です。
-2. 最初に、`make config T=x86_64-native-linuxapp-gcc` を使って既定の構成を構築します。
+2. `make config T=x86_64-native-linuxapp-gcc` を使って既定の構成を構築します。
 3. `sed -ri 's,(MLX._PMD=)n,\1y,' build/.config` を使って、生成された構成で Mellanox PMD を有効にします。
 4. `make` を使ってコンパイルします。
 5. `make install DESTDIR=<output folder>` を使ってインストールします。
 
-# <a name="configure-runtime-environment"></a>ランタイム環境を構成する
+## <a name="configure-the-runtime-environment"></a>ランタイム環境を構成する
 
 再起動後に 1 回、次のコマンドを実行します。
 
@@ -131,24 +131,26 @@ zypper \
    *  `grep Huge /proc/meminfo` を使って、hugepage が予約されていることを確認します。
 
      > [!NOTE]
-     > DPDK の[手順](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)に従って、hugepage がブートで予約されるように、grub ファイルを変更する方法があります。 ページの下部に手順があります。 Azure Linux 仮想マシンで実行している場合は、複数のリブートに及ぶ hugepage を予約するために、代わりに /etc/config/grub.d 下のファイルを変更してください。
+     > DPDK の[手順](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment)に従って、hugepage がブートで予約されるように、grub ファイルを変更する方法があります。 ページの下部に手順があります。 Azure Linux 仮想マシンで実行している場合は、複数のリブートに及ぶ hugepage を予約するために、代わりに **/etc/config/grub.d** 下のファイルを変更してください。
 
-2. MAC および IP アドレス: `ifconfig –a` を使用して、ネットワーク インターフェイスの MAC および IP アドレスを表示します。 *VF* ネットワーク インターフェイスおよび *NETVSC* ネットワーク インターフェイスは、同一の MAC アドレスを保持しますが、*NETVSC* ネットワーク インターフェイスだけが IP アドレスを保持します。 VF インターフェイスは、NETVSC インターフェイスのスレーブ インターフェイスとして実行されています。
+2. MAC および IP アドレス: `ifconfig –a` を使用して、ネットワーク インターフェイスの MAC および IP アドレスを表示します。 *VF* ネットワーク インターフェイスおよび *NETVSC* ネットワーク インターフェイスは、同一の MAC アドレスを保持しますが、*NETVSC* ネットワーク インターフェイスだけが IP アドレスを保持します。 VF インターフェイスは、NETVSC インターフェイスの下位インターフェイスとして実行されています。
 
 3. PCI アドレス
 
    * `ethtool -i <vf interface name>` を使って *VF* で使用される PCI アドレスを調べます。
-   * *eth0* で高度なネットワークを有効化した場合、testpmd が誤って *eth0* の VF pci デバイスを引き継ぐことはありません。 DPDK アプリケーションが誤って管理ネットワーク インターフェイスを引き継ぎ、SSH 接続が失われた場合、シリアル コンソールを使用して DPDK アプリケーションを強制終了するか、仮想マシンを停止または開始します。
+   * *eth0* で高度なネットワークを有効化した場合、testpmd が誤って *eth0* の VF pci デバイスを引き継ぐことはありません。 DPDK アプリケーションが誤って管理ネットワーク インターフェイスを引き継ぎ、SSH 接続が失われた場合、シリアル コンソールを使用して DPDK アプリケーションを停止します。 また、シリアル コンソールを使用して仮想マシンを停止または起動することもできます。
 
 4. `modprobe -a ib_uverbs` を使って、各リブートで *ibuverbs* を読み込みます。 SLES 15 の場合のみ、`modprobe -a mlx4_ib` を使って *mlx4_ib* も読み込みます。
 
 ## <a name="failsafe-pmd"></a>フェールセーフの PMD
 
-DPDK アプリケーションは、Azure で公開されたフェールセーフの PMD 経由で実行される必要があります。 VF PMD 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする**すべての**パケットが受信されることはありません。 フェールセーフの PMD 経由での実行は、該当のアプリケーションを宛先とするすべてのパケットが、そのアプリケーションで受信されることを保証すると共に、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションが DPDK モードで引き続き実行されることを保証します。 フェール セーフの PMD の詳細については、「[Fail-safe poll mode driver library](http://doc.dpdk.org/guides/nics/fail_safe.html)」(フェールセーフでのポーリング モードのドライバー ライブラリ) を参照してください。
+DPDK アプリケーションは、Azure で公開されたフェールセーフの PMD 経由で実行される必要があります。 VF PMD 経由でアプリケーションが直接実行される場合、一部のパケットは統合インターフェイス経由で表示されるので、VM を宛先とする**すべての**パケットが受信されることはありません。 
+
+DPDK アプリケーションをフェールセーフの PMD 経由で実行すると、該当のアプリケーションを宛先とするすべてのパケットが、そのアプリケーションで受信されることが保証されます。 また、ホストがサービス提供されている場合に VF が取り消されたとしても、アプリケーションは確実に、引き続き DPDK モードで実行されます。 フェールセーフの PMD の詳細については、[フェールセーフでのポーリング モードのドライバー ライブラリ](http://doc.dpdk.org/guides/nics/fail_safe.html)を参照してください。
 
 ## <a name="run-testpmd"></a>testpmd を実行する
 
-ルート モードで実行するために、*testpmd* コマンドの前に `sudo` を使用します。
+testpmd をルート モードで実行するには、*testpmd* コマンドの前に `sudo` を使用します。
 
 ### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>基本: サニティ チェック、フェールセーフ アダプターの初期化
 
@@ -171,12 +173,12 @@ DPDK アプリケーションは、Azure で公開されたフェールセーフ
    -- -i
    ```
 
-   複数の NIC で実行している場合、`--vdev` 引数は `net_vdev_netvsc<id>,iface=<vf’s pairing eth>` のパターンに準拠します。
+   testpmd を複数の NIC で実行している場合、`--vdev` 引数は `net_vdev_netvsc<id>,iface=<vf’s pairing eth>` のパターンに準拠します。
 
-3.  起動されると、`show port info all` を実行してポート情報をチェックします。 net_failsafe になっている (*net_mlx4* ではない) 1 つまたは 2 つの DPDK ポートを確認する必要があります。
+3.  起動されたら、`show port info all` を実行してポート情報をチェックします。 net_failsafe になっている (*net_mlx4* ではない) 1 つまたは 2 つの DPDK ポートを確認する必要があります。
 4.  `start <port> /stop <port>` を使用してトラフィックを開始します。
 
-上記のコマンドでは、対話モードで *testpmd* を開始しています。いくつかの testpmd コマンドを試すために、このモードが推奨されています。
+上記のコマンドでは、対話モードで *testpmd* を開始しています。testpmd コマンドを試すためには、このモードが推奨されています。
 
 ### <a name="basic-single-sendersingle-receiver"></a>基本: 単一の送信者/単一の受信者
 
@@ -188,7 +190,7 @@ DPDK アプリケーションは、Azure で公開されたフェールセーフ
    testpmd \
      -l <core-list> \
      -n <num of mem channels> \
-     -w <pci address of the device intended to use> \
+     -w <pci address of the device you plan to use> \
      --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
      -- --port-topology=chained \
      --nb-cores <number of cores to use for test pmd> \
@@ -203,7 +205,7 @@ DPDK アプリケーションは、Azure で公開されたフェールセーフ
    testpmd \
      -l <core-list> \
      -n <num of mem channels> \
-     -w <pci address of the device intended to use> \
+     -w <pci address of the device you plan to use> \
      --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
      -- --port-topology=chained \
      --nb-cores <number of cores to use for test pmd> \
@@ -223,7 +225,7 @@ DPDK アプリケーションは、Azure で公開されたフェールセーフ
    testpmd \
      -l <core-list> \
      -n <num of mem channels> \
-     -w <pci address of the device intended to use> \
+     -w <pci address of the device you plan to use> \
      --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
      -- --port-topology=chained \
      --nb-cores <number of cores to use for test pmd> \

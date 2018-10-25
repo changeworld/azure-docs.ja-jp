@@ -11,16 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 5af6779bfb6075aa3606cc32939ae715241afe8d
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: 93408b266a239e897b49ab2482818a5221742685
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166318"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870404"
 ---
-# <a name="multi-shard-querying"></a>マルチシャード クエリ実行
+# <a name="multi-shard-querying-using-elastic-database-tools"></a>Elastic Database ツールを使用したマルチシャード クエリ
+
 ## <a name="overview"></a>概要
+
 [Elastic Database ツール](sql-database-elastic-scale-introduction.md)を利用すれば、シャード化されたデータベース ソリューションを作成できます。 **マルチシャード クエリ実行**は、複数のシャードにまたがるクエリの実行が必要となるデータ収集/レポート作成などのタスクに使用されます  (すべての操作を単一のシャード上で実行する[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)と比べてください)。 
 
 1. **TryGetRangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetrangeshardmap)、[.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetrangeshardmap.aspx))、**TryGetListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.trygetlistshardmap)、[.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.trygetlistshardmap.aspx))、または **GetShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.getshardmap)、[.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.getshardmap.aspx)) メソッドを使用して、**RangeShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._range_shard_map)、[.NET](https://msdn.microsoft.com/library/azure/dn807318.aspx)) または **ListShardMap** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.map._list_shard_map)、[.NET](https://msdn.microsoft.com/library/azure/dn807370.aspx)) を取得します。 「**[ShardMapManager の作成](sql-database-elastic-scale-shard-map-management.md#constructing-a-shardmapmanager)**」と「**[RangeShardMap または ListShardMap の取得](sql-database-elastic-scale-shard-map-management.md#get-a-rangeshardmap-or-listshardmap)**」をご覧ください。
@@ -31,6 +33,7 @@ ms.locfileid: "47166318"
 6. **MultiShardResultSet または MultiShardDataReader** ([Java](/java/api/com.microsoft.azure.elasticdb.query.multishard._multi_shard_result_set)、[.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.query.multisharddatareader.aspx)) クラスを使用して結果を表示します。 
 
 ## <a name="example"></a>例
+
 次のコードは、 **myShardMap** という名前の *ShardMap*を使用してマルチシャード クエリを実行する方法を示しています。 
 
 ```csharp
@@ -63,8 +66,7 @@ using (MultiShardConnection conn = new MultiShardConnection(myShardMap.GetShards
 現在のマルチシャード クエリ実行には、クエリの対象となるシャードとシャードレットの検証が欠けているという制限があります。 データ依存ルーティングでは特定のシャードがシャード マップの一部であることが照会時に確認されますが、マルチシャード クエリ実行ではこのようなチェックは実行されません。 そのため、シャード マップから削除されたデータベースに対してマルチシャード クエリが実行される可能性があります。
 
 ## <a name="multi-shard-queries-and-split-merge-operations"></a>マルチシャード クエリと分割/マージ操作
+
 マルチシャード クエリでは、照会されたデータベース上のシャードレットが進行中の分割/マージ操作に参加しているかどうかは確認されません。 (「[Elastic Database 分割/マージ ツールを使用したスケーリング](sql-database-elastic-scale-overview-split-and-merge.md)」をご覧ください)。そのため、同じマルチシャード クエリ内で複数のデータベースに対して同じシャードレットの行が表示される不整合が発生する可能性があります。 これらの制限を考慮したうえで、マルチシャード クエリを実行するときは、進行中の分割/マージ操作とシャード マップへの変更をドレインすることを検討してください。
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
-
-

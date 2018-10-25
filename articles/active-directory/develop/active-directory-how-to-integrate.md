@@ -17,12 +17,12 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.reviewer: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: cde2706db255746293ddc29c6d5bdd31d970e535
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: fcc0badc17675c1c8923c744afd3fa46e98fef32
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901551"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954707"
 ---
 # <a name="integrating-with-azure-active-directory"></a>Azure Active Directory との統合
 
@@ -82,7 +82,7 @@ Azure AD との統合には、追加コードを記述する必要がないと�
 **Azure AD は、世界各地のデータセンターにデプロイされ、常に管理および監視されています。**  Azure AD は Microsoft Azure および Office 365 用の ID 管理システムであり、世界各地にある 28 のデータセンターにデプロイされています。 ディレクトリ データは、3 つ以上のデータセンターにレプリケートされることが保証されます。 グローバルなロード バランサーが、ユーザーが自分のデータを含む最も近い Azure AD のコピーにアクセスすることを保証し、問題が検出された場合は自動的に他のデータセンターに要求を再ルーティングします。
 
 ## <a name="next-steps"></a>次の手順
-[コード作成の開始](azure-ad-developers-guide.md#get-started)
+[コード作成の開始](v1-overview.md#get-started)
 
 [Azure AD を使用したユーザーのサインイン](authentication-scenarios.md)
 

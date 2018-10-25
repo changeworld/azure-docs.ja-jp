@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 68438a317b33bb7e3e784936cdfd1282ba823ad8
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 380bf5cb89a165534d0084758d532613eeff480a
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34600240"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320494"
 ---
 # <a name="azure-maps-supported-languages"></a>Azure Maps でサポートされている言語
 Azure Maps は、サービス全体にわたってさまざまな言語にローカライズされています。  次の表は、各サービスでサポートされている言語コードを示しています。  
@@ -54,6 +54,8 @@ Azure Maps は、サービス全体にわたってさまざまな言語にロー
 | lt-LT      | リトアニア語             |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | ms-MY      | マレー語 (ラテン)          |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | nb-NO      | ノルウェー語 (ブークモール)       |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
+| NGT        | Neutral Ground Truth - 地域の書記体系 (利用可能な場合) でのすべてのリージョンに対する公用語 |   ✓     |        |         |                   |      ✓          |         |
+| NGT-Latn   | Neutral Ground Truth - ラテンの異名。 可能な場合はラテン文字が使用されます |   ✓     |        |         |                   |        ✓         |          |
 | pl-PL      | ポーランド語                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | pt-BR      | ポルトガル語 (ブラジル)    |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
 | pt-PT      | ポルトガル語 (ポルトガル)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |

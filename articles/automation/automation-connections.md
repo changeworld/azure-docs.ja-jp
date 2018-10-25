@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4ead83dc449f2b32461b0585f276c9f3bfd3f847
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: d9dbf816d4fd0d9f6044ebeea9a23a60adcc5bc8
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919104"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044605"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation での接続資産
 
@@ -45,7 +45,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 |[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|使用する接続を取得します。 接続のプロパティのハッシュ テーブルを返します。|
 
 >[!NOTE] 
->**Get-AutomationConnection** の –Name パラメーターには変数を使用しないでください。変数を使用すると、設計時に Runbook または DSC と接続資産間の依存関係の検出が複雑になる可能性があります。
+>**Get-AutomationConnection** の –Name パラメーターに変数を使用すると、設計時に Runbook または DSC 構成と接続資産の間の依存関係を検出することが複雑になる場合があるため、この使用は避けるようにしてください。
 
  
 ## <a name="python2-functions"></a>Python2 関数 

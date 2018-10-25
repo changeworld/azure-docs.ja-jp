@@ -15,12 +15,12 @@ ms.date: 09/27/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 6fe9a106975a03fabc9d674ede694e683dc3cd94
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 88667749d9cdf5239be33f3aca52d1a614556a41
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410274"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816612"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 [ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
@@ -786,14 +786,14 @@ ms.locfileid: "47410274"
 > | **説明** | データ ファクトリを管理できます。ただし、それらへのアクセスは含まれません。 |
 > | **Id** | 673868aa-7521-48a0-acc6-0f60742d39f5 |
 > | **アクション** |  |
-> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り。 |
 > | Microsoft.DataFactory/dataFactories/* | Data Factory と Data Factory に含まれる子リソースを作成および管理します。 |
 > | Microsoft.DataFactory/factories/* | Data Factory と Data Factory に含まれる子リソースを作成および管理します。 |
-> | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
+> | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理。 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理。 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの取得または一覧表示。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理。 |
 
 ## <a name="data-lake-analytics-developer"></a>Data Lake Analytics Developer
 > [!div class="mx-tableFixed"]

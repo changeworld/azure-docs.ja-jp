@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 71269b4888d1b5c9724248ac91f0818d7f8f5bf5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: c89fa6614afec6b67f4d6445db49efa1e2248cfb
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162357"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430053"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 
@@ -108,8 +108,6 @@ S3 データベースが、ピーク時には 100 DTU を使用し、平均で�
 * プール内のすべてのデータベースに使用される記憶域の最大バイト数。
 
 各リソース モデルで使用可能なサービス レベルについては、「[DTU-based purchasing model](sql-database-service-tiers-dtu.md)」(DTU ベースの購入レベル) または「[vCore-based purchasing model (preview)](sql-database-service-tiers-vcore.md)」(vCore ベースの購入モデル) をご覧ください。
-
-SQL Database は、既存の SQL Database サーバー内にあるデータベースのリソース使用量の履歴を自動的に評価し、Azure ポータルでのプールの適切な構成を推奨します。 構成を推奨するだけでなく、サーバー上にあるデータベースのカスタム グループの eDTU 使用量の見積もりが、組み込み済みの機能によって実施されます。 対話形式でのプールへのデータベースの追加やデータベースの削除を行い、変更をコミットする前にリソース使用状況分析やサイズ設定のアドバイスを入手できるため、"what-if" 分析が可能です。 その方法については、 [エラスティック プールの監視、管理、およびサイズ設定に関する記事](#monitor-an-elastic-pool-and-its-databases)を参照してください。
 
 ツールを使用できない場合、プールのコスト効果が Single Database よりも高いかどうかを確認するには、次の手順が役立ちます。
 

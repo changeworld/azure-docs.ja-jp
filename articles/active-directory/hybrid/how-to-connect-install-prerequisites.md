@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 09/28/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: addb99478025757257bce465a02287ebedd40bb1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: f0791173450d5db3b33762ec9d5ed5c1adf96788
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310211"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321633"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -29,11 +29,11 @@ ms.locfileid: "46310211"
 Azure AD Connect をインストールする前に、いくつか必要な項目があります。
 
 ### <a name="azure-ad"></a>Azure AD
-* Azure サブスクリプションまたは [Azure 試用版](https://azure.microsoft.com/pricing/free-trial/)サブスクリプション。 このサブスクリプションは、Azure Portal へのアクセスにのみ必要です。Azure AD Connect の使用には不要です。 PowerShell または Office 365 を使用している場合は、Azure サブスクリプションがなくても Azure AD Connect を使用できます。 Office 365 ライセンスを持っている場合は、Office 365 ポータルも使用できます。 有料の Office 365 ライセンスを使用して、Office 365 ポータルから Azure Portal にアクセスすることもできます。
-  * [Azure Portal](https://portal.azure.com) を使用することもできます。 このポータルでは、Azure AD ライセンスは必要ありません。
+* Azure AD テナント。 [Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)に 1 つ付属します。 次のポータルのいずれかを使用して、Azure AD Connect を管理できます。
+  * [Azure ポータル](https://portal.azure.com)。
+  * [Office ポータル](https://portal.office.com)。  
 * [ドメインを追加して検証](../active-directory-domains-add-azure-portal.md) します。 たとえば、ユーザー向けに contoso.com を使用する予定の場合は、そのドメインが検証されていることと、使用しているドメインが既定のドメインである contoso.onmicrosoft.com だけではないことを確認します。
 * Azure AD テナントでは、既定では 50,000 個のオブジェクトを使用できます。 ドメインを検証すると、制限が 300,000 個のオブジェクトに増加します。 Azure AD でさらに多くのオブジェクトが必要な場合は、制限を緩和するサポート ケースを開く必要があります。 500,000 個を超えるオブジェクトが必要な場合は、Office 365、Azure AD Basic、Azure AD Premium、Enterprise Mobility and Security などのライセンスが必要です。
-* ADSyncPrep は、Azure AD Connect 向けに Active Directory 環境を準備するために使用される関数を提供する PowerShell スクリプト モジュールです。  ADSyncPrep には、[Azure AD の Microsoft Online v1.1 PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)が必要です。  バージョン 2 は機能しません。 このモジュールは、`Install-Module` コマンドレットを使用してインストールできます。  詳細については、記載されているリンクを参照してください。
 
 ### <a name="prepare-your-on-premises-data"></a>オンプレミスのデータの準備
 * Azure AD および Office 365 に同期する前に、[IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) を使用して、ディレクトリ内の重複部分や書式の問題などのエラーを特定してください。
@@ -47,7 +47,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 * [Active Directory のごみ箱を有効にする](how-to-connect-sync-recycle-bin.md)ことをお勧めします。
 
 ### <a name="azure-ad-connect-server"></a>Azure AD Connect サーバー
-* Small Business Server または Windows Server Essentials には、Azure AD Connect をインストールできません。 サーバーは Windows Server Standard 以上を使用する必要があります。
+* Small Business Server または 2019 より前の Windows Server Essentials には、Azure AD Connect をインストールできません (Windows Server Essentials 2019 はサポートされます)。 サーバーは Windows Server Standard 以上を使用する必要があります。
 * Azure AD Connect サーバーには、完全な GUI がインストールされている必要があります。 サーバー コアにインストールすることは**できません**。
 * Azure AD Connect は、Windows Server 2008 以降にインストールする必要があります。 このサーバーをドメイン コントローラーにすることができます。Express 設定を使用する場合はメンバー サーバーにすることもできます。 カスタム設定を使用する場合、サーバーはスタンドアロンにすることもでき、ドメインに参加する必要はありません。
 * Azure AD Connect を Windows Server 2008 または Windows Server 2008 R2 にインストールする場合は、Windows Update から最新の修正プログラムが適用されていることを確認してください。 修正プログラムが適用されていないサーバーでインストールを開始することはできません。
@@ -69,8 +69,8 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 
 ### <a name="accounts"></a>アカウント
 * 統合する Azure AD テナントの Azure AD 全体管理者アカウント。 このアカウントには**学校または組織のアカウント**を使用する必要があり、**Microsoft アカウント**を使用することはできません。
-* 簡単設定を使用するか、DirSync からアップグレードする場合は、ローカルの Active Directory のエンタープライズ管理者アカウント。
-* カスタム設定のインストール パスを使用する場合は、[Active Directory 内のアカウント](reference-connect-accounts-permissions.md)。
+* 簡単設定を使用するか、DirSync からアップグレードする場合は、オンプレミスの Active Directory のエンタープライズ管理者アカウント。
+* オンプレミスの Active Directory に対してカスタム設定のインストール パスまたは Enterprise Administrator アカウントを使用する場合は、[Active Directory でのアカウント](reference-connect-accounts-permissions.md)。
 
 ### <a name="connectivity"></a>接続
 * Azure AD Connect サーバーには、イントラネット用とインターネット用の両方の DNS 解決が必要です。 DNS サーバーは、オンプレミス Active Directory と Azure AD エンドポイントの両方の名前を解決できる必要があります。
@@ -184,7 +184,6 @@ Azure AD Connect を使用して Active Directory フェデレーション サ�
 Azure AD Connect によって Azure AD Connect のインストール先にインストールされるコンポーネントの一覧を次に示します。 この一覧は、基本的な高速インストール用です。 [同期サービスのインストール] ページで異なる SQL Server を使用することを選択した場合、SQL Express LocalDB はローカルにインストールされません。
 
 * Azure AD Connect Health
-* IT プロフェッショナル用 Microsoft Online Services サインイン アシスタント (インストール済みではあるものの、依存されてはいない)
 * Microsoft SQL Server 2012 のコマンド ライン ユーティリティ
 * Microsoft SQL Server 2012 Express LocalDB
 * Microsoft SQL Server 2012 Native Client

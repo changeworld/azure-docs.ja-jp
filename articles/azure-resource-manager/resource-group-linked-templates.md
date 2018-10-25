@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/10/2018
+ms.date: 10/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8cac3c8d3a1877ad7c93efc0954c2f07ecaa0a29
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: ea926a64e3df853d6845266ff20255b76d9ff387
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42142159"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386724"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Azure リソース デプロイ時のリンクされたテンプレートおよび入れ子になったテンプレートの使用
 
@@ -28,6 +28,8 @@ ms.locfileid: "42142159"
 中小規模のソリューションの場合、テンプレートを 1 つにするとわかりやすく、保守も簡単になります。 すべてのリソースと値を 1 つのファイルで参照できます。 高度なシナリオの場合、リンクされたテンプレートを使用することで、対象となるコンポーネントにソリューションを分割し、テンプレートを再利用できます。
 
 リンクされたテンプレートを使用する場合は、配置時にパラメーター値を受け取るメインのテンプレートを作成します。 メインのテンプレートには、すべてのリンクされたテンプレートが含まれていて、必要に応じて、これらのテンプレートに値を渡します。
+
+チュートリアルについては、「[チュートリアル: リンクされた Azure Resource Manager テンプレートの作成](./resource-manager-tutorial-create-linked-templates.md)」を参照してください。
 
 ## <a name="link-or-nest-a-template"></a>テンプレートをリンクするか入れ子にする
 
@@ -101,7 +103,7 @@ ms.locfileid: "42142159"
      "name": "linkedTemplate",
      "type": "Microsoft.Resources/deployments",
      "properties": {
-       "mode": "incremental",
+       "mode": "Incremental",
        "templateLink": {
           "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
           "contentVersion":"1.0.0.0"
@@ -119,7 +121,9 @@ ms.locfileid: "42142159"
 
 ### <a name="external-template-and-inline-parameters"></a>外部テンプレートとインライン パラメーター
 
-または、パラメーターをインラインで指定できます。 メイン テンプレートから、リンクされたテンプレートに値を渡すには、**パラメーター**を使用します。
+または、パラメーターをインラインで指定できます。 インライン パラメーターとパラメーター ファイルへのリンクの両方を使用することはできません。 `parametersLink` と `parameters` の両方が指定された場合、デプロイは失敗します。
+
+メイン テンプレートから、リンクされたテンプレートに値を渡すには、**パラメーター**を使用します。
 
 ```json
 "resources": [
@@ -128,7 +132,7 @@ ms.locfileid: "42142159"
      "name": "linkedTemplate",
      "type": "Microsoft.Resources/deployments",
      "properties": {
-       "mode": "incremental",
+       "mode": "Incremental",
        "templateLink": {
           "uri":"https://mystorageaccount.blob.core.windows.net/AzureTemplates/newStorageAccount.json",
           "contentVersion":"1.0.0.0"
@@ -199,7 +203,7 @@ ms.locfileid: "42142159"
             "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
             "properties": {
-                "mode": "incremental",
+                "mode": "Incremental",
                 "templateLink": {
                     "uri": "[uri(deployment().properties.templateLink.uri, 'helloworld.json')]",
                     "contentVersion": "1.0.0.0"
@@ -397,7 +401,7 @@ Resource Manager では、各テンプレートはデプロイ履歴内で個別
 
 展開後、次の PowerShell スクリプトを使用して、出力値を取得できます。
 
-```powershell
+```azurepowershell-interactive
 $loopCount = 3
 for ($i = 0; $i -lt $loopCount; $i++)
 {
@@ -407,9 +411,11 @@ for ($i = 0; $i -lt $loopCount; $i++)
 }
 ```
 
-または、次の Azure CLI スクリプトを使用します。
+Bash シェルの Azure CLI スクリプトでは次のようになります。
 
-```azurecli
+```azurecli-interactive
+#!/bin/bash
+
 for i in 0 1 2;
 do
     name="linkedTemplate$i";
@@ -440,7 +446,7 @@ done
       "name": "linkedTemplate",
       "type": "Microsoft.Resources/deployments",
       "properties": {
-        "mode": "incremental",
+        "mode": "Incremental",
         "templateLink": {
           "uri": "[concat(uri(deployment().properties.templateLink.uri, 'helloworld.json'), parameters('containerSasToken'))]",
           "contentVersion": "1.0.0.0"
@@ -455,16 +461,18 @@ done
 
 PowerShell では、コンテナーのトークンを取得し、次のコマンドを使ってテンプレートを展開します。 **containerSasToken** パラメーターはテンプレートで定義されていることに注意してください。 **New-AzureRmResourceGroupDeployment** コマンド内のパラメーターではありません。
 
-```powershell
+```azurepowershell-interactive
 Set-AzureRmCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
 $token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
 $url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
 New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 
-Azure CLI では、コンテナーのトークンを取得し、次のコードを使用してテンプレートをデプロイします。
+Bash シェルの Azure CLI では、コンテナーのトークンを取得し、次のコードを使用してテンプレートをデプロイします。
 
-```azurecli
+```azurecli-interactive
+#!/bin/bash
+
 expiretime=$(date -u -d '30 minutes' +%Y-%m-%dT%H:%MZ)
 connection=$(az storage account show-connection-string \
     --resource-group ManageGroup \
@@ -489,7 +497,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 次の例は、リンク済みテンプレートの一般的な使い方を示します。
 
-|Main template  |リンク済みテンプレート |説明  |
+|メイン テンプレート  |リンク済みテンプレート |説明  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | リンク済みテンプレートから文字列を返します。 |
 |[パブリック IP アドレスを使用する Azure Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[リンク済みテンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |リンク済みテンプレートからパブリック IP アドレスを返し、ロード バランサーでその値を設定します。 |
@@ -497,6 +505,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 ## <a name="next-steps"></a>次の手順
 
+* チュートリアルの実行については、「[チュートリアル: リンクされた Azure Resource Manager テンプレートの作成](./resource-manager-tutorial-create-linked-templates.md)」を参照してください。
 * リソースのデプロイの順序の定義については、「[Azure Resource Manager テンプレートでの依存関係の定義](resource-group-define-dependencies.md)」を参照してください。
 * リソースを 1 つ定義し、そのリソースの複数のインスタンスを作成する方法については、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * ストレージ アカウントにテンプレートを設定し SAS トークンを生成する手順については、「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](resource-group-template-deploy.md)」または「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](resource-group-template-deploy-cli.md)」を参照してください。

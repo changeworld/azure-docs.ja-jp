@@ -1,26 +1,22 @@
 ---
 title: IoT セキュリティのベスト プラクティス
 description: IoT インフラストラクチャをセキュリティで保護するためのセキュリティのベスト プラクティス
-author: dominicbetts
-manager: timlt
+author: robinsh
 ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: conceptual
-ms.date: 06/14/2018
-ms.author: dobett
-ms.openlocfilehash: dd34cbb2cf79bb5a490e7cf19319a3fce7e8178f
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.date: 10/09/2018
+ms.author: robinsh
+ms.openlocfilehash: 2cddb68aa83d131b11932e53f6f2c08600088010
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038597"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49066974"
 ---
 [!INCLUDE [iot-security-best-practices](../../includes/iot-security-best-practices.md)]
 
 ## <a name="see-also"></a>関連項目
-IoT ソリューション アクセラレータで作成されたソリューションのセキュリティ保護について詳しくは、「[IoT デプロイのセキュリティ保護][lnk-security-deployment]」をご覧ください。
+IoT ソリューション アクセラレータで作成されたソリューションのセキュリティ保護について詳しくは、「[IoT デプロイのセキュリティ保護](iot-security-deployment.md)」をご覧ください。
 
-IoT Hub 開発者ガイドの [IoT Hub へのアクセス制御][lnk-devguide-security]に関するページで IoT Hub のセキュリティについて学習します。
-
-[lnk-security-deployment]: iot-security-deployment.md
-[lnk-devguide-security]: /azure/iot-hub/iot-hub-devguide-security
+IoT Hub 開発者ガイドの [IoT Hub へのアクセス制御](../iot-hub/iot-hub-devguide-security.md)に関するページで IoT Hub のセキュリティについて学習します。

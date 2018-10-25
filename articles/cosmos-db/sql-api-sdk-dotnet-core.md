@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/22/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7000fc13a792f4f6def592e78dc759c8cf165881
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 8243d1e297fa778d4fa27f8365d9bb0a935d21e5
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451920"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387999"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB .NET Core SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "47451920"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST ()](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -52,6 +52,14 @@ ms.locfileid: "47451920"
 ## <a name="release-notes"></a>リリース ノート
 
 Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .NET SDK](sql-api-sdk-dotnet.md) と同等の機能が備わっています。
+
+### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
+
+* System.Net.Security を 4.3.2 に更新しました。
+
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
+
+* 診断トレーシング機能を強化しました。
 
 ### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
 
@@ -202,8 +210,10 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
 
-| Version | リリース日 | 提供終了日 |
+| バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |
+| [2.1.2](#2.1.2) |2018 年 10 月 4 日 |--- |
 | [2.1.1](#2.1.1) |2018 年 9 月 27 日 |--- |
 | [2.1.0](#2.1.0) |2018 年 9 月 21 日 |--- |
 | [2.0.0](#2.0.0) |2018 年 9 月 7 日 |--- |

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 83db2bcfe21edc9f8f2649ef8c2b3a23e412e39d
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 6432c6b2c1c224f44b962df63e1502729f69e57f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353987"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470661"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Azure SQL Database 論理サーバーとその管理
 
@@ -170,22 +170,22 @@ Azure SQL のサーバー、データベース、ファイアウォールを作�
 
 | コマンド | 説明 |
 | --- | --- |
-|[サーバー - 作成または更新](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate/rest/api)|新しいサーバーを作成または更新します。|
-|[サーバー - 削除](https://docs.microsoft.com/rest/api/sql/servers/servers_delete)|SQL サーバーを削除します。|
-|[サーバー - 取得](https://docs.microsoft.com/rest/api/sql/servers/servers_get)|サーバーを取得します。|
-|[サーバー - 一覧取得](https://docs.microsoft.com/rest/api/sql/servers/servers_list)|サーバーの一覧を返します。|
-|[サーバー - リソース グループで一覧取得](https://docs.microsoft.com/rest/api/sql/servers/servers_listbyresourcegroup)|リソース グループ内のサーバーの一覧を取得します。|
-|[サーバー - 更新](https://docs.microsoft.com/rest/api/sql/servers/servers_update)|既存のサーバーを更新します。|
-|[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
-|[データベース - 削除](https://docs.microsoft.com/rest/api/sql/databases/databases_delete)|データベースを削除します。|
-|[データベース - 取得](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|データベースを取得します。|
-|[データベース - エラスティック プールごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
-|[データベース - サーバーごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|サーバー内のデータベースの一覧を返します。|
-|[データベース - 更新](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|既存のデータベースを更新します。|
-|[ファイアウォール規則 - 作成または更新](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate)|ファイアウォール規則を作成または更新します。|
-|[ファイアウォール規則 - 削除](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete)|ファイアウォール規則を作成します。|
-|[ファイアウォール規則 - 取得](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get)|ファイアウォール規則を取得します。|
-|[ファイアウォール規則 - サーバーで一覧取得](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver)|ファイアウォール規則の一覧を返します。|
+|[サーバー - 作成または更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|新しいサーバーを作成または更新します。|
+|[サーバー - 削除](https://docs.microsoft.com/rest/api/sql/servers/delete)|SQL サーバーを削除します。|
+|[サーバー - 取得](https://docs.microsoft.com/rest/api/sql/servers/get)|サーバーを取得します。|
+|[サーバー - 一覧取得](https://docs.microsoft.com/rest/api/sql/servers/list)|サーバーの一覧を返します。|
+|[サーバー - リソース グループで一覧取得](https://docs.microsoft.com/rest/api/sql/servers/listbyresourcegroup)|リソース グループ内のサーバーの一覧を取得します。|
+|[サーバー - 更新](https://docs.microsoft.com/rest/api/sql/servers/update)|既存のサーバーを更新します。|
+|[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
+|[データベース - 削除](https://docs.microsoft.com/rest/api/sql/databases/delete)|データベースを削除します。|
+|[データベース - 取得](https://docs.microsoft.com/rest/api/sql/databases/get)|データベースを取得します。|
+|[データベース - エラスティック プールごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
+|[データベース - サーバーごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
+|[データベース - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|既存のデータベースを更新します。|
+|[ファイアウォール規則 - 作成または更新](https://docs.microsoft.com/rest/api/sql/firewallrules/createorupdate)|ファイアウォール規則を作成または更新します。|
+|[ファイアウォール規則 - 削除](https://docs.microsoft.com/rest/api/sql/firewallrules/delete)|ファイアウォール規則を作成します。|
+|[ファイアウォール規則 - 取得](https://docs.microsoft.com/rest/api/sql/firewallrules/get)|ファイアウォール規則を取得します。|
+|[ファイアウォール規則 - サーバーで一覧取得](https://docs.microsoft.com/rest/api/sql/firewallrules/listbyserver)|ファイアウォール規則の一覧を返します。|
 
 ## <a name="next-steps"></a>次の手順
 

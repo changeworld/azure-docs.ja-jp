@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 10/10/2018
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: a9a4b7728eff3057b9677d12df51cc8c477744ca
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cc206e1134fe6df0280512e89447336a32a2d810
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953941"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068368"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 以下のシナリオでは、Azure-SSIS 統合ランタイム (IR) を Azure 仮想ネットワークに参加させます。 
@@ -57,6 +57,8 @@ Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加さ
 ## <a name="requirements-for-virtual-network-configuration"></a>仮想ネットワーク構成の要件
 -   `Microsoft.Batch` が、Azure-SSIS IR をホストする仮想ネットワーク サブネットのサブスクリプションの登録済みプロバイダーであることを確認します。 Classic 仮想ネットワーク (従来の仮想ネットワーク) を使用している場合、その仮想ネットワークの Classic Virtual Machine Contributor (従来の仮想マシン共同作成者) ロールにも `MicrosoftAzureBatch` を参加させます。 
 
+-   必要なアクセス許可を持っていることを確認します。 「[必要なアクセス許可](#perms)」を参照してください。
+
 -   Azure-SSIS IR をホストするための適切なサブネットを選択します。 「[サブネットを選択する](#subnet)」をご覧ください。 
 
 -   仮想ネットワークで独自のドメイン ネーム サービス (DNS) サーバーを使用している場合は、「[ドメイン ネーム サービス サーバー](#dns_server)」をご覧ください。 
@@ -66,6 +68,18 @@ Managed Instance と同じ仮想ネットワークに Azure-SSIS IR を参加さ
 -   Azure Express Route を使用している場合、またはユーザー定義ルートを構成する場合は、「[Azure ExpressRoute またはユーザー定義ルートを使用する](#route)」をご覧ください。 
 
 -   仮想ネットワークのリソース グループが、特定の Azure ネットワーク リソースを作成および削除できることを確認します。 「[リソース グループの要件](#resource-group)」をご覧ください。 
+
+### <a name="perms"></a> 必要なアクセス許可
+
+Azure-SSIS 統合ランタイムを作成するユーザーは、次のアクセス許可を持っている必要があります。
+
+- SSIS IR を現在のバージョンの Azure 仮想ネットワークに参加させている場合は、次の 2 つのオプションがあります。
+
+  - *ネットワーク共同作成者*の組み込みロールを使用します。 ただし、このロールには、はるかに大きなスコープを持つ *Microsoft.Network/\** アクセス許可が必要です。
+
+  - *Microsoft.Network/virtualNetworks/\*/join/action* アクセス許可を含むカスタム ロールを作成します。 
+
+- SSIS IR をクラシック Azure 仮想ネットワークに参加させている場合は、*従来の仮想マシン共同作成者*の組み込みロールを使用することをお勧めします。 そうしない場合は、仮想ネットワークに参加するためのアクセス許可を含むカスタム ロールを定義する必要があります。
 
 ### <a name="subnet"></a> サブネットを選択する
 -   仮想ネットワーク ゲートウェイ専用であるため、Azure SSIS Integration Runtime をデプロイするために GatewaySubnet を選択しないでください。 

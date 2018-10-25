@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 248f2575e284ae456578b071013e1a5501329116
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 06da33b91ef9846204b33ba2cb3dea40c75d425d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843101"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988277"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Microsoft Authentication Library (MSAL) を使用して Microsoft Graph API のトークンを取得する
 
@@ -29,17 +29,17 @@ ms.locfileid: "48843101"
 import UIKit
 import MSAL
 
-/// 😃 A View Controller that will respond to the events of the Storyboard.
+// A View Controller that will respond to the events of the Storyboard.
 class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate {
-    
-    // Update the below to your client ID you received in the portal. The below is for running the demo only
+
+    // Replace Your_Application_Id_Here with the client ID you received in the portal. The below is for running the demo only.
     let kClientID = "Your_Application_Id_Here"
-    
+
     // These settings you don't need to edit unless you wish to attempt deeper scenarios with the app.
     let kGraphURI = "https://graph.microsoft.com/v1.0/me/"
     let kScopes: [String] = ["https://graph.microsoft.com/user.read"]
     let kAuthority = "https://login.microsoftonline.com/common"
-    
+
     var accessToken = String()
     var applicationContext : MSALPublicClientApplication?
 
@@ -87,7 +87,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
         super.viewWillAppear(animated)
         signoutButton.isEnabled = !self.accessToken.isEmpty
     }
-    
+
     /**
      This button will invoke the authorization flow.
     */
@@ -204,17 +204,20 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 <!--start-collapse-->
 ### <a name="more-information"></a>詳細情報
+
 #### <a name="getting-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
+
 `acquireToken` メソッドを呼び出すと、ユーザーにサインインを促すブラウザー ウィンドウが表示されます。 アプリケーションは通常、ユーザーが保護されたリソースに初めてアクセスするとき、または自動でのトークンの取得に失敗したとき (ユーザーのパスワードが期限切れになっている場合など) に、対話形式でユーザーにサインインを求めます。
 
 #### <a name="getting-a-user-token-silently"></a>ユーザー トークンを自動で取得する
+
 `acquireTokenSilent` メソッドは、ユーザーの操作なしでトークンの取得や更新を処理します。 最初に `acquireToken` が実行されたあと、その後の呼び出しでは、保護されたリソースにアクセスするトークンを取得するために `acquireTokenSilent` メソッドが通常使用されます。トークンの要求や更新のための呼び出しは自動で行われるためです。
 
 ユーザーがサインアウトした場合や、別のデバイスでパスワードを変更した場合などには、`acquireTokenSilent` は最終的に失敗します。 ユーザーの操作によって解決できる問題が MSAL によって検出された場合、MSAL は `MSALErrorCode.interactionRequired` 例外を発行します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
 
-1.  すぐに `acquireToken` を呼び出し、ユーザーにサインインを促します。 オンライン アプリケーション (ユーザーが使用できるオフライン コンテンツが含まれていないアプリケーション) の場合は、通常、この方法で処理します。 このガイド付きのセットアップによって生成されるサンプル アプリケーションは、このパターンを使用します。アプリケーションの初回実行時に、実際の動作を確認できます。 アプリケーションはユーザーによって使用されたことがないため、`applicationContext.allAccounts().first` には null 値が含まれ、` MSALErrorCode.interactionRequired ` 例外がスローされます。 サンプルのコードでは、`acquireToken` を呼び出してユーザーのサインインを促すことにより、この例外を処理します。
+1. すぐに `acquireToken` を呼び出し、ユーザーにサインインを促します。 オンライン アプリケーション (ユーザーが使用できるオフライン コンテンツが含まれていないアプリケーション) の場合は、通常、この方法で処理します。 このガイド付きのセットアップによって生成されるサンプル アプリケーションは、このパターンを使用します。アプリケーションの初回実行時に、実際の動作を確認できます。 アプリケーションはユーザーによって使用されたことがないため、`applicationContext.allAccounts().first` には null 値が含まれ、` MSALErrorCode.interactionRequired ` 例外がスローされます。 サンプルのコードでは、`acquireToken` を呼び出してユーザーのサインインを促すことにより、この例外を処理します。
 
-2.  ユーザーに対してアプリケーションで視覚的に対話形式でのサインインを求めることで、ユーザーが適切なタイミングでサインインできるようにし、アプリケーションがあとで `acquireTokenSilent` を再試行できるようにする。 アプリケーションにユーザーが使用できるオフライン コンテンツが含まれている場合など、アプリケーションの他の機能を中断せずに使用できる場合は、通常、この方法で処理します。 この方法では、ユーザーは保護されたリソースにサインインしたり、古い情報を更新したりするタイミングを決めることができます。また、アプリケーションで、ネットワークが一時的に使用できなくなってから回復した場合に `acquireTokenSilent` を再試行できます。
+2. ユーザーに対してアプリケーションで視覚的に対話形式でのサインインを求めることで、ユーザーが適切なタイミングでサインインできるようにし、アプリケーションがあとで `acquireTokenSilent` を再試行できるようにする。 アプリケーションにユーザーが使用できるオフライン コンテンツが含まれている場合など、アプリケーションの他の機能を中断せずに使用できる場合は、通常、この方法で処理します。 この方法では、ユーザーは保護されたリソースにサインインしたり、古い情報を更新したりするタイミングを決めることができます。また、アプリケーションで、ネットワークが一時的に使用できなくなってから回復した場合に `acquireTokenSilent` を再試行できます。
 
 <!--end-collapse-->
 
@@ -287,6 +290,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 }
 ```
+
 <!--start-collapse-->
 ### <a name="more-info-on-sign-out"></a>サインアウトの詳細
 
@@ -299,11 +303,12 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 ユーザーが認証されると、ブラウザーはユーザーをアプリケーションにリダイレクトします。 このコールバックを登録するには、次の手順に従います。
 
-1.  `AppDelegate.swift` を開いて、MSAL をインポートします。
+1. `AppDelegate.swift` を開いて、MSAL をインポートします。
 
 ```swift
 import MSAL
 ```
+
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>

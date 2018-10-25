@@ -3,18 +3,17 @@ title: Azure Container Instances とコンテナーのオーケストレーシ�
 description: Azure Container Instances とコンテナー オーケストレーターがどのように対話するかを理解します。
 services: container-instances
 author: seanmck
-manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 10/05/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: e1455cba004facfa03dca21544eec754f5dc60be
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: c17bdb5a81640a7162ae735a4633a31cdfffbb1d
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32165563"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803513"
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances とコンテナー オーケストレーター
 
@@ -55,16 +54,13 @@ Azure Container Instances 専用の環境は、すばやく起動し、秒単位
 
 クラスター内の仮想マシンの数をスケールアウトしてから、これらのマシンに追加のコンテナーをデプロイするのではなく、オーケストレーターは、単に Azure Container Instances で追加のコンテナーのスケジュールを設定し、必要なくなったらそれらのコンテナーを削除できます。
 
-## <a name="sample-implementation-azure-container-instances-connector-for-kubernetes"></a>サンプル実装: Kubernetes 用の Azure Container Instances コネクタ
+## <a name="sample-implementation-virtual-kubelet-for-kubernetes"></a>サンプル実装: Kubernetes 用の Virtual Kubelet
 
-コンテナー オーケストレーション プラットフォームを Azure Container Instances に統合する方法を示すために、[Kubernetes 用サンプル コネクタ][aci-connector-k8s]の構築を開始しました。
+[Virtual Kubelet][aci-connector-k8s] プロジェクトは、コンテナー オーケストレーション プラットフォームが Azure Container Instances とどのように統合できるかを示します。
 
-Kubernetes 用コネクタは、無制限の容量を持つノードとして登録し、Azure Container Instances のコンテナー グループとして[ポッド][pod-doc]の作成をディスパッチすることで、[kubelet][kubelet-doc] に似せています。
+Virtual Kubelet は、無制限の容量を持つノードとして登録し、[ポッド][pod-doc]の作成を Azure Container Instances のコンテナー グループとしてディスパッチすることによって Kubernetes の [kubelet][kubelet-doc] を模倣します。
 
 同様にプラットフォーム プリミティブと統合された他のオーケストレーターのコネクタを構築することにより、オーケストレーター API の威力と、Azure Container Instances でコンテナーを管理する場合の速度とシンプルさを結合できます。
-
-> [!WARNING]
-> Kubernetes ACI コネクタは "*試験段階*" です。運用環境では使用しないでください。
 
 ## <a name="next-steps"></a>次の手順
 

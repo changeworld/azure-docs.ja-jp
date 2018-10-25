@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 169ebe45287721305800e511174784417569d7b4
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: deadbc8186d80b050fdb40879ecf29fd229c8709
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352712"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465451"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>読み取り専用レプリカを使用して読み取り専用クエリ ワークロードを負荷分散する (プレビュー)
 
@@ -31,7 +31,7 @@ Premium 階層 ([DTU ベースの購入モデル](sql-database-service-tiers-dtu
 
 これらのレプリカは、通常のデータベース接続で使用される読み取り/書き込みレプリカと同じコンピューティング サイズでプロビジョニングされます。 **読み取りスケールアウト**機能では、読み取り/書き込みレプリカを共有する代わりに、読み取り専用レプリカのいずれか 1 つの処理能力を使用して SQL Database の読み取り専用ワークロードを負荷分散できます。 これにより、読み取り専用のワークロードは、メインの読み取り/書き込みワークロードから分離され、パフォーマンスに影響を及ぼすことはありません。 この機能は、分析などの論理的に分離された読み取り専用ワークロードを含むアプリケーションを対象としています。そのため、余分なコストをかけることなく、この追加の処理能力を使用してパフォーマンス上の利点を得ることが可能です。
 
-特定のデータベースで読み取りスケールアウト機能を使用するには、データベースを作成するときに明示的に有効にするか、PowerShell を使用して [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) または [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) コマンドレットを呼び出すか、Azure Resource Manager REST API から[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)メソッドを使用して構成を変更し、後から明示的に有効にする必要があります。
+特定のデータベースで読み取りスケールアウト機能を使用するには、データベースを作成するときに明示的に有効にするか、PowerShell を使用して [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) または [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) コマンドレットを呼び出すか、Azure Resource Manager REST API から[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)メソッドを使用して構成を変更し、後から明示的に有効にする必要があります。
 
 データベースの読み取りスケールアウトが有効になると、そのデータベースに接続するアプリケーションが、アプリケーションの接続文字列で構成されている `ApplicationIntent` プロパティに応じて、データベースの読み取り/書き込みレプリカまたは読み取り専用レプリカにリダイレクトされます。 `ApplicationIntent` プロパティの詳細については、「[アプリケーションの目的を指定する](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent)」を参照してください。
 
@@ -118,7 +118,7 @@ Body:
 }
 ```
 
-詳細については、「[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)」を参照してください。
+詳細については、「[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)」を参照してください。
 
 ## <a name="using-read-scale-out-with-geo-replicated-databases"></a>geo レプリケートされたデータベースで読み取りスケールアウトを使用する
 
@@ -130,4 +130,4 @@ Body:
 ## <a name="next-steps"></a>次の手順
 
 - PowerShell を使用した読み取りスケールアウトの設定の詳細については、「[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)」コマンドレットまたは「[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)」コマンドレットを参照してください。
-- REST API を使用した読み取りスケールアウトの設定の詳細については、「[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)」を参照してください。
+- REST API を使用した読み取りスケールアウトの設定の詳細については、「[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)」を参照してください。

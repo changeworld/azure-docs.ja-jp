@@ -2,18 +2,17 @@
 title: Azure Container Instances に gitRepo ボリュームをマウントする
 description: gitRepo ボリュームをマウントし、Git リポジトリの複製をコンテナー インスタンスに作成する方法について説明します。
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 06/15/2018
-ms.author: marsma
-ms.openlocfilehash: 34036c5ec9ccd8c502104ce862e4749c59be62b9
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: danlep
+ms.openlocfilehash: af1fbe66c805517c07975b2e4cf6e13e87ec661c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105231"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388274"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Azure Container Instances に gitRepo ボリュームをマウントする
 
@@ -30,7 +29,7 @@ ms.locfileid: "43105231"
 
 | プロパティ | 必須 | 説明 |
 | -------- | -------- | ----------- |
-| `repository` | [はい] | 完全 URL。複製を作成する Git リポジトリの `http://` または `https://` も含まれます。|
+| `repository` | はい | 完全 URL。複製を作成する Git リポジトリの `http://` または `https://` も含まれます。|
 | `directory` | いいえ  | リポジトリの複製を作成するディレクトリ。 パスには "`..`" を含めることができません。  "`.`" を指定すると、リポジトリの複製がボリュームのディレクトリに作成されます。 指定しない場合、ボリューム ディレクトリ内の指定の下位ディレクトリに Git リポジトリの複製が作成されます。 |
 | `revision` | いいえ  | 複製を作成するリビジョンのコミット ハッシュ。 指定しない場合、`HEAD` リビジョンが複製されます。 |
 
@@ -90,17 +89,17 @@ Azure Resource Manager テンプレートによるコンテナー インスタ�
 --gitrepo-url https://gituser:abcdef1234fdsa4321abcdef@github.com/GitUser/some-private-repository
 ```
 
-VSTS Git リポジトリの場合、有効な PAT と組み合わせて任意のユーザー名を指定します (次の例のように "vstsuser" を使用できます)。
+Azure Repos Git リポジトリの場合、有効な PAT と組み合わせて任意のユーザー名を指定します (次の例のように "azurereposuser" を使用できます)。
 
 ```azurecli
---gitrepo-url https://vstsuser:abcdef1234fdsa4321abcdef@vstsaccountname.visualstudio.com/_git/some-private-repository
+--gitrepo-url https://azurereposuser:abcdef1234fdsa4321abcdef@dev.azure.com/your-org/_git/some-private-repository
 ```
 
-GitHub と VSTS の個人用アクセス トークンの詳細については、以下を参照してください。
+GitHub と Azure Repos の個人用アクセス トークンの詳細については、以下を参照してください。
 
 GitHub: [コマンド ラインに使用する個人用アクセス トークンを作成する][pat-github]
 
-VSTS: [アクセスの認証に使用する個人用アクセス トークンを作成する][pat-vsts]
+Azure Repos: [アクセスの認証に使用する個人用アクセス トークンを作成する][pat-repos]
 
 ## <a name="next-steps"></a>次の手順
 
@@ -113,7 +112,7 @@ Azure Container Instances にその他の種類のボリュームをマウント
 <!-- LINKS - External -->
 [aci-helloworld]: https://github.com/Azure-Samples/aci-helloworld
 [pat-github]: https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/
-[pat-vsts]: https://docs.microsoft.com/vsts/organizations/accounts/use-personal-access-tokens-to-authenticate
+[pat-repos]: https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate
 
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

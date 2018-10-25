@@ -3,7 +3,7 @@ title: Azure CLI のサンプル スクリプト - IIS のインストール | M
 description: Azure CLI のサンプル スクリプト - IIS のインストール
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: ''
@@ -14,13 +14,13 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-Windows
 ms.workload: infrastructure
 ms.date: 02/28/2017
-ms.author: cynthn
-ms.openlocfilehash: b6685aebc23cd50729fd39304b6330ff947a5ba8
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.author: zarhoads
+ms.openlocfilehash: 1789df21c1146c367f1534f7a28eb38f65e05a23
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932825"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468349"
 ---
 # <a name="quick-create-a-virtual-machine-with-the-azure-cli"></a>Azure CLI を使用した仮想マシンの簡易作成
 

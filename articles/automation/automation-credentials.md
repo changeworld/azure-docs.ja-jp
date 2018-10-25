@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fa2bc2dd59a5c62becc7f5cd4c4c9633dac1a29
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: e5414a7607c036f1d60f58e1eb047da1e54f4db9
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42146000"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585342"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation での資格情報資産
 
@@ -77,6 +77,9 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 2. **[資格情報]** 部分をクリックして、**[資格情報]** ブレードを開きます。
 3. ブレード上部の **[資格情報の追加]** をクリックします。
 4. フォームに入力し、 **[作成]** をクリックして新しい資格情報を保存します。
+
+> [!NOTE]
+> 多要素認証を使用するユーザー アカウントは、Azure Automation での使用がサポートされていません。
 
 ### <a name="to-create-a-new-credential-asset-with-windows-powershell"></a>Windows PowerShell で新しい資格情報資産を作成するには
 

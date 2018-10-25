@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 03/20/2018
-ms.openlocfilehash: d32fb6e1a85865d89a2f8ee1483eb8fd599b4bb6
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 4e14cde99aaf74b5058e4f9d55c386151036594e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408914"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987802"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>クイック スタート: Azure Portal での Azure Database for PostgreSQL サーバーの作成
 
@@ -124,7 +124,7 @@ Azure Database for PostgreSQL サーバーに接続するために使用でき�
 
     psql パラメーター |値|説明
     ---|---|---
-    --host | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
+    --host | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
     --port | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
     --username | サーバー管理者ログイン名 |前の手順で Azure Database for PostgreSQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username@servername* です。
     --dbname | *postgres* | 初回接続時にシステムによって生成される既定のデータベース名。 後で独自のデータベースを作成します。
@@ -172,7 +172,7 @@ Cloud Shell で psql を介して Azure Database for PostgreSQL サーバーに�
 
 ## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>pgAdmin を使用して PostgreSQL サーバーに接続する
 
-pgAdmin は PostgreSQL で使用されるオープンソース ツールです。 [pgAdmin の Web サイト](http://www.pgadmin.org/)からインストールできます。 使用する pgAdmin のバージョンは、このクイック スタートで使用されているものと異なる可能性があります。 追加のガイダンスが必要な場合は、pgAdmin のドキュメントをご覧ください。
+pgAdmin は PostgreSQL で使用されるオープンソース ツールです。 [pgAdmin の Web サイト](https://www.pgadmin.org/)からインストールできます。 使用する pgAdmin のバージョンは、このクイック スタートで使用されているものと異なる可能性があります。 追加のガイダンスが必要な場合は、pgAdmin のドキュメントをご覧ください。
 
 1. クライアント コンピューターで pgAdmin アプリケーションを開きます。
 
@@ -188,7 +188,7 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
 
     pgAdmin パラメーター |値|説明
     ---|---|---
-    ホスト名/アドレス | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
+    ホスト名/アドレス | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。 例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
     ポート | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
     メンテナンス データベース | *postgres* | システムによって生成される既定のデータベース名。
     ユーザー名 | サーバー管理者ログイン名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username@servername* です。

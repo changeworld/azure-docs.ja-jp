@@ -9,16 +9,18 @@ ms.reviewer: sgilley
 author: hning86
 ms.author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: cc348ca50b942b6b8b1474ed4dac4067d107a4af
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: e4624b115143f9f2e6dd77aa8ee79597c86ba31c
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378001"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456203"
 ---
 # <a name="quickstart-use-python-to-get-started-with-azure-machine-learning"></a>クイック スタート: Python を使用して Azure Machine Learning の利用を開始する
 
 このクイック スタートでは、Azure Machine Learning SDK for Python を使用して Machine Learning サービスの[ワークスペース](concept-azure-machine-learning-architecture.md)を作成して使用します。 このワークスペースが、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
 
 このチュートリアルでは、Python SDK をインストールし、以下の操作を行います。
 
@@ -41,7 +43,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="install-the-sdk"></a>SDK のインストール
 
-2018 年 9 月 27 日より後に作成されたデータ サイエンス仮想マシンを使用する場合は、このセクションをスキップします。** これらのデータ サイエンス仮想マシンには、Python SDK がプレインストールされています。
+*2018 年 9 月 27 日より後に作成されたデータ サイエンス仮想マシンを使用する場合は、このセクションをスキップします。* これらのデータ サイエンス仮想マシンには、Python SDK がプレインストールされています。
 
 SDK をインストールする前に、分離された Python 環境を作成することをお勧めします。 このクイック スタートでは [Miniconda](https://conda.io/docs/user-guide/install/index.html) を使用していますが、フル インストールした [Anaconda](https://www.anaconda.com/) や [Python virtualenv](https://virtualenv.pypa.io/en/stable/) を使用することもできます。
 

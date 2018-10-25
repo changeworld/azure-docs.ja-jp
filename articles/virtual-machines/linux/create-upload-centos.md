@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: d7c35b79dcdf75dbb3f891dc4c66cbf893b61c03
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 5328ee7e3e3035ebce1ff9fccbfc6e9ccfd86ee8
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33777690"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888398"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Azure 用の CentOS ベースの仮想マシンの準備
 * [Azure 用の CentOS 6.x 仮想マシンの準備](#centos-6x)
@@ -33,7 +33,7 @@ ms.locfileid: "33777690"
 
 **CentOS のインストールに関する注記**
 
-* Azure で Linux を準備する際のその他のヒントについては、「 [Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes) 」も参照してください。
+* Azure で Linux を準備する際のその他のヒントについては、「 [Linux のインストールに関する一般的な注記](create-upload-generic.md#general-linux-installation-notes) 」も参照してください。
 * VHDX 形式は Azure ではサポートされていません。サポートされるのは **固定 VHD** のみです。  Hyper-V マネージャーまたは convert-vhd コマンドレットを使用して、ディスクを VHD 形式に変換できます。 VirtualBox を使用する場合は、ディスクの作成時に、既定で動的に割り当てられるサイズではなく、**固定サイズ**を選択することを意味します。
 * Linux システムをインストールする場合は、LVM (通常、多くのインストールで既定) ではなく標準パーティションを使用することを*お勧めします*。 これにより、特に OS ディスクをトラブルシューティングのために別の同じ VM に接続する必要がある場合に、LVM 名と複製された VM の競合が回避されます。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
 * UDF ファイル システムをマウントするためのカーネル サポートが必要です。 Azure での最初の起動時に、ゲストに接続されている UDF でフォーマットされたメディアを介して、プロビジョニング構成が Linux VM に渡されます。 Azure Linux エージェントは、その構成を読み取り、VM をプロビジョニングする UDF ファイル システムをマウントできる必要があります。
@@ -298,7 +298,7 @@ Azure 用の CentOS 7 仮想マシンを準備する手順は、CentOS 6 の場�
    
         # sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
-10. **VMWare、VirtualBox、または KVM** からイメージをビルドする場合: Hyper-V ドライバーが initramfs に含まれていることを確認します。
+10. **VMware、VirtualBox、または KVM** からイメージをビルドする場合: Hyper-V ドライバーが initramfs に含まれていることを確認します。
    
    `/etc/dracut.conf`を編集して、コンテンツを追加します。
    

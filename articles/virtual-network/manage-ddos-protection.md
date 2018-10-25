@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: 59cfcc72abee100b95cf17033083827fbb30f9f5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 66b2930e06cef1a31602df3d358c78f42c8cd2cf
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986695"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406366"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure Portal を使用した Azure DDoS Protection Standard の管理
 
@@ -158,7 +158,7 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 
     - **[Archive to a storage account]\(ストレージ アカウントへのアーカイブ\)**: データは Azure Storage アカウントに書き込まれます。 このオプションについて詳しくは、[診断ログのアーカイブ](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
     - **[Stream to an event hub]\(イベント ハブへのストリーミング\)**: ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへの診断ログのストリーミング](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
-    - **[Log Analytics への送信]**: ログを Azure OMS Log Analytics サービスに書き込みます。 このオプションについて詳しくは、[Log Analytics で使用するログの収集](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+    - **[Log Analytics への送信]**: ログを Azure Log Analytics サービスに書き込みます。 このオプションについて詳しくは、[Log Analytics で使用するログの収集](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
 
 増分レポートと攻撃の軽減策後のレポートには、両方とも次のフィールドが含まれます。
 - 攻撃ベクトル
@@ -180,8 +180,8 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 
     - **[Archive to a storage account]\(ストレージ アカウントへのアーカイブ\)**: データは Azure Storage アカウントに書き込まれます。 このオプションについて詳しくは、[診断ログのアーカイブ](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
     - **[Stream to an event hub]\(イベント ハブへのストリーミング\)**: ログの受信者が Azure Event Hub を使用してログを取得できるようにします。 イベント ハブにより、Splunk やその他の SIEM システムとの統合が可能になります。 このオプションについて詳しくは、[イベント ハブへの診断ログのストリーミング](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
-    - **[Log Analytics への送信]**: ログを Azure OMS Log Analytics サービスに書き込みます。 このオプションについて詳しくは、[Log Analytics で使用するログの収集](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
-7. Azure analytics ダッシュボードでフロー ログ データを表示するには、 https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip からサンプル ダッシュボードをインポートします。
+    - **[Log Analytics への送信]**: ログを Azure Log Analytics サービスに書き込みます。 このオプションについて詳しくは、[Log Analytics で使用するログの収集](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+1. Azure analytics ダッシュボードでフロー ログ データを表示するには、 https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip からサンプル ダッシュボードをインポートします。
 
 フロー ログには次のフィールドがあります。 
 - 発信元 IP
@@ -206,7 +206,7 @@ Azure DDoS Protection Standard では、DDoS 攻撃の分析情報により、�
 
 DDoS 保護プランに関する作業を行うには、使用するアカウントが[ネットワークの共同作業者](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)ロール、または次の表の適切なアクションが割り当てられた[カスタム](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ロールに、割り当てられている必要があります。
 
-| アクションを表示します。                                            | Name                                     |
+| Action                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft.Network/ddosProtectionPlans/read        | DDoS 保護プランを読み取る              |
 | Microsoft.Network/ddosProtectionPlans/write       | DDoS 保護プランを作成または更新する  |

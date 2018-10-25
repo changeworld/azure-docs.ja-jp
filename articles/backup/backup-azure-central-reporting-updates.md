@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: adigan;
-ms.openlocfilehash: 07774234849d96b9a44678b68ca7b13b6b4830f9
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 73a5e8126ebe6223d790a5b58db7bd5d04b5350f
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39267180"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267312"
 ---
-# <a name="updating-azure-backup-central-reporting-content-pack"></a>Azure Backup Central Reporting コンテンツ パックの更新 
+# <a name="update-the-azure-backup-central-reporting-content-pack"></a>Azure Backup Central Reporting コンテンツ パックの更新 
 
-[Azure Backup コンテンツ パック](https://docs.microsoft.com/azure/backup/backup-azure-configure-reports#view-reports-in-power-bi)を使用すると、バックアップに関するレポートを一元的に表示できます。 コンテンツ パックは定期的に更新され、機能が追加されたり、バグが修正されたりします。 この記事では、コンテンツ パックを更新する手順、更新を遅延させる手順、および時間の経過と共に行われる更新について説明します。
+[Azure Backup コンテンツ パック](https://docs.microsoft.com/azure/backup/backup-azure-configure-reports#view-reports-in-power-bi)を使用すると、一元的なバックアップに関するレポートを表示できます。 コンテンツ パックは定期的に更新され、機能が追加されたり、バグが修正されたりします。 この記事では、コンテンツ パックを更新する方法を説明します。 また、更新を延期し、時間の経過と共に行われる更新を表示する方法も示します。
 
-## <a name="how-to-get-updates-to-the-content-pack"></a>コンテンツ パックの更新を取得する方法
+## <a name="get-updates-to-the-content-pack"></a>コンテンツ パックの更新を取得する
 
-### <a name="to-get-the-updated-content-pack"></a>更新されたコンテンツ パックを取得するには
-コンテンツ パックを変更していない場合、コンテンツ パックのコピーは自動的に更新されます。 コンテンツ パックを変更した場合は、Power BI とメールで通知を受け取ります。 ご自身の利便性に応じて、更新されたコンテンツ パックの取得を選択できます。 
+### <a name="get-the-updated-content-pack"></a>更新されたコンテンツ パックを取得する
+コンテンツ パックのコピーに変更を加えていない場合は、自動的に更新されます。 コンテンツ パックが変更されると、Power BI とメール通知で通知が届きます。 ご自身の都合の良いときに、更新されたコンテンツ パックの取得を選択できます。 
 
-### <a name="to-delay-the-update"></a>更新を遅延するには
-ベスト プラクティスは、コンテンツ パックを[カスタム ワークスペース](https://youtu.be/26zyOtyHPJM?t=1m57s)にインポートすることです。 レポートを編集できるようになっています。
-上記のとおり、コンテンツ パックが変更された場合、Power BI に通知が表示されます。 コンテンツ パックの取得を後で行うことができます。 
+### <a name="postpone-the-update"></a>更新を延期する
+ベスト プラクティスは、コンテンツ パックを[カスタム ワークスペース](https://youtu.be/26zyOtyHPJM?t=1m57s)にインポートすることです。 これでレポートを編集することができます。
+前述のとおり、コンテンツ パックが変更されると、Power BI に通知が表示されます。 コンテンツ パックの取得を後で行うことができます。 
 
 ## <a name="coming-soon"></a>近日対応予定
    
-Azure Backup コンテンツ パックは、MAB および Azure VM Backup の現在のサポートに加えて、さらに多くのワークスペース (IaaS VM バックアップの SQL、SC DPM) をサポートするように更新されています。 つまり、近いうちに、すべてのバックアップ データを一元的に表示および分析できるようになります。 組織のニーズに合うように、[レポートもカスタマイズできます](https://youtu.be/26zyOtyHPJM)。
+Azure Backup コンテンツ パックは、より多くのワークロードをサポートするために更新されます。 ワークロードには、IaaS VM バックアップおよび System Center Data Protection Manager の Azure SQL Database が含まれます。 このサポートにより、Azure のバックアップと Azure VM のバックアップの現在のサポートが追加されます。 このサポートは、すべてのバックアップ データを一か所で表示および分析できることを意味します。 組織のニーズに合うように、[レポートもカスタマイズできます](https://youtu.be/26zyOtyHPJM)。
 
-ワークロード全体でレポートをさらに意味のあるものにするため、Azure Backup コンテンツ パックで事前構成されたレポートのセットが変更されています。 今後提供される予定のレポートのセットを以下に示します。
+Azure Backup コンテンツ パックに付属している事前構成済みのレポートが変更されます。 この変更により、ワークロード全体でレポートがより有意義なものになります。 今後提供される予定のレポートのセットを以下に示します。
 
 ### <a name="summary"></a>まとめ
    
@@ -56,8 +56,8 @@ Azure Backup コンテンツ パックは、MAB および Azure VM Backup の現
 
 ![Storage](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Storage.png)
 
-### <a name="backup-items"></a>バックアップ項目
-![BackupItems](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
+### <a name="backup-items"></a>[バックアップ項目]
+![[バックアップ項目]](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
 
 ### <a name="alerts"></a>アラート
 
@@ -68,7 +68,7 @@ Azure Backup コンテンツ パックは、MAB および Azure VM Backup の現
 ![[ジョブ]](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Jobs.png)
     
 
-## <a name="next-steps"></a>次のステップ:
+## <a name="next-steps"></a>次の手順
 
 * [組織全体でのレポートの共有](https://youtu.be/26zyOtyHPJM)
 * [Azure Backup FAQ](backup-azure-backup-faq.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: makohli
-ms.openlocfilehash: 7bd0737e7fb26af95eed63696d1ac07c88a9dec4
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 2216b915c47ea05d3303ca02e51e976490ea36c6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42140506"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068357"
 ---
 # <a name="advisor-high-availability-recommendations"></a>Advisor の高可用性に関する推奨事項
 
@@ -67,6 +67,10 @@ Azure サービスの問題による影響を受けたときに通知する Azur
 
 Traffic Manager プロファイルが地理的なルーティング用に構成されている場合は、定義済みのリージョンに基づいてトラフィックがエンドポイントにルーティングされます。 リージョンで障害が発生した場合、定義済みのフェールオーバーはありません。 エンドポイントで [リージョンのグループ化] を [すべて (世界)] に構成すると、トラフィックのドロップが回避され、サービスの可用性が向上します。 Advisor は地理的なルーティング用に構成されていて、エンドポイントで [リージョンのグループ化] が [すべて (世界)] に構成されていない Traffic Manager プロファイルを識別し、その構成を変更することを推奨します。
 
+## <a name="use-soft-delete-on-your-azure-storage-account-to-save-and-recover-data-in-the-event-of-accidental-overwrite-or-deletion"></a>Azure ストレージ アカウントでデータの論理的な削除を使用し、誤って上書きまたは削除した場合にデータを保存して復旧する
+
+ストレージ アカウントで[論理的な削除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)を有効にすると、削除された BLOB は完全には削除されずに、論理的に削除された状態に切り替わります。 データを上書きした場合、上書きされたデータの状態を保存するために、論理的に削除されたスナップショットが生成されます。 これにより、不注意で削除や上書きを行った場合に、回復できるようになります。 Advisor によって、論理的な削除が有効になっていない Azure ストレージ アカウントが特定され、有効にするように提案が行われます。
+
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>Advisor の高可用性に関する推奨事項にアクセスする方法
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
@@ -78,7 +82,7 @@ Traffic Manager プロファイルが地理的なルーティング用に構成�
 Advisor の推奨事項について詳しくは、以下を参照してください。
 * [Azure Advisor の概要](advisor-overview.md)
 * [Advisor の使用を開始する](advisor-get-started.md)
-* [Advisor のコストに関する推奨事項](advisor-performance-recommendations.md)
+* [Advisor のコストに関する推奨事項](advisor-cost-recommendations.md)
 * [Advisor のパフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 * [Advisor のセキュリティに関する推奨事項](advisor-security-recommendations.md)
 

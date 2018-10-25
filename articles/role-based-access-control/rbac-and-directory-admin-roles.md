@@ -15,12 +15,12 @@ ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 401c9a3df4cb132769e05cb0487a763f4080dd23
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5e32968ae83ef826fbc8e81f1b04eca687642343
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304079"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637670"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール
 
@@ -61,6 +61,7 @@ Azure アカウントは、請求関係を表します。 Azure アカウント�
 Azure サブスクリプションは、Azure リソースへのアクセスを整理するために役立ちます。 さらに、リソースの使用状況の報告、課金、および支払い方法の制御にも役立ちます。 サブスクリプションごとに異なる課金および支払いを設定することができるため、オフィス別、部門別、プロジェクト別などで、異なるサブスクリプションや異なるプランを利用することができます。 すべてのサービスがサブスクリプションに所属し、プログラムによる操作ではサブスクリプション ID が必要になることがあります。
 
 アカウントとサブスクリプションは、[Azure アカウント センター](https://account.azure.com/Subscriptions)で管理されます。
+
 ## <a name="azure-rbac-roles"></a>Azure RBAC ロール
 
 Azure RBAC は、コンピューティングやストレージなどの Azure リソースに対するきめ細かなアクセス管理を提供する、[Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 上に構築された承認システムです。 Azure RBAC には、70 を超える組み込みロールが含まれています。 4 つの基本的な RBAC ロールがあります。 最初の 3 つは、すべてのリソースの種類に適用されます。

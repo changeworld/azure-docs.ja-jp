@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 8a2e06d2e6cf3e470d4e0909e5559ac0411292fd
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: bc16b71ad20e2cf2bc61a046336fe6a3618bc403
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307115"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269566"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語の関数リファレンス
 
@@ -82,7 +82,7 @@ ms.locfileid: "43307115"
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | 部分文字列の開始位置を返します。 | 
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | 部分文字列の最後の出現箇所の開始位置を返します。 | 
 | [replace](../logic-apps/workflow-definition-language-functions-reference.md#replace) | 部分文字列を指定した文字列で置換し、更新された文字列を返します。 | 
-| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | 文字列のすべての文字を含み、特定の区切り記号で各文字が区切られた配列を返します。 | 
+| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | 元の文字列で指定された区切り文字に基づいたより大きい文字列から、コンマで区切られた部分文字列を含む配列を返します。 | 
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | 文字列が特定の部分文字列で始まっているかどうかを調べます。 | 
 | [substring](../logic-apps/workflow-definition-language-functions-reference.md#substring) | 文字列から、指定された位置から始まる文字を返します。 | 
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | 小文字の形式で文字列を返します。 | 
@@ -493,7 +493,7 @@ addDays('<timestamp>', <days>, '<format>'?)
 | --------- | -------- | ---- | ----------- | 
 | <*timestamp*> | [はい] | String | タイムスタンプを含む文字列。 | 
 | <*days*> | [はい] | 整数 | 追加する正または負の日数 | 
-| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddT:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
+| <*format*> | いいえ  | String | [単一の書式指定子](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)または[カスタム書式パターン](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 timestamp の既定の形式は ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (yyyy-MM-ddTHH:mm:ss:fffffffK) です。これは、[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) に準拠し、タイム ゾーン情報を保持します。 |
 ||||| 
 
 | 戻り値 | type | 説明 | 
@@ -3016,32 +3016,32 @@ skip([0, 1, 2, 3], 1)
 
 ### <a name="split"></a>split
 
-文字列のすべての文字を含み、各文字が "*区切り記号*" で区切られた配列を返します。
+元の文字列で指定された区切り文字に基づいて、コンマで区切られた部分文字列を含む配列を返します。 
 
 ```
-split('<text>', '<separator>')
+split('<text>', '<delimiter>')
 ```
 
 | パラメーター | 必須 | type | 説明 | 
 | --------- | -------- | ---- | ----------- | 
-| <*text*> | [はい] | String | 分割する文字を含む文字列 |  
-| <*separator*> | [はい] | String | 結果の配列の各文字の間に挿入される区切り記号 | 
+| <*text*> | [はい] | String | 元の文字列で指定された区切り記号に基づいて部分文字列に分割する文字列 |  
+| <*delimiter*> | [はい] | String | 区切り記号として使用する、元の文字列内の文字 | 
 ||||| 
 
 | 戻り値 | type | 説明 | 
 | ------------ | ---- | ----------- | 
-| [<*char1*><*separator*><*char2*><*separator*>...] | Array | 指定した文字列内のすべての項目から作成された結果の配列 |
+| [<*substring1*>,<*substring2*>,...] | Array | コンマで区切られた、元の文字列からの部分文字列を含む配列 |
 |||| 
 
 *例* 
 
-この例は、指定した文字列の各文字を区切り記号であるコンマで区切った配列を作成します。
+この例では、区切り記号として指定した文字に基づいて指定された文字列からの部分文字列を含む配列を作成します。 
 
 ```
-split('abc', ',')
+split('a_b_c', '_')
 ```
 
-返される結果: `[a, b, c]`
+返される配列の結果: `["a","b","c"]`
 
 <a name="startOfDay"></a>
 

@@ -3,18 +3,18 @@ title: カスタム音声を作成するための音声サンプルを録音す�
 titleSuffix: Microsoft Cognitive Services
 description: しっかりした台本を準備し、優秀なボイス タレントを採用し、プロフェッショナルなやり方で録音することによって、プロダクション品質のカスタム音声を作成します。
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
-ms.author: v-jerkin
-ms.openlocfilehash: b1bab65b68c5f37165fbc8414ac4300c924e53b9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.author: erhopf
+ms.openlocfilehash: 0051cc480a26ffc3668f922d1af9fc9cd7af1f49
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165178"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167173"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>カスタム音声を作成するための音声サンプルを録音する
 
@@ -38,7 +38,7 @@ Role|目的
 ディレクター            |台本を準備し、ボイス タレントの演技を指導します。
 エディター              |オーディオ ファイルをファイナライズし、Custom Voice ポータルにアップロードするための準備をします。
 
-1 人が複数の役割を兼ねる場合があります。 このガイドでは、読者が主にディレクターのロールを務め、ボイス タレントと録音エンジニアの両方を雇うと想定しています。 録音を自分自身で行う場合は、この記事に、録音エンジニアのロールに関する情報がいくらか含まれています。 エディーターのロールはセッション後まで必要とされないので、録音エンジニアはディレクターが実行できます。
+1 人が複数の役割を兼ねる場合があります。 このガイドでは、読者が主にディレクターのロールを務め、ボイス タレントと録音エンジニアの両方を雇うと想定しています。 録音を自分自身で行う場合は、この記事に、録音エンジニアのロールに関する情報がいくらか含まれています。 エディターのロールはセッション後まで必要とされないので、ディレクターまたは録音エンジニアが実行できます。
 
 ## <a name="choose-your-voice-talent"></a>ボイス タレントを選択する
 

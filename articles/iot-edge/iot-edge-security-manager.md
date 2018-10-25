@@ -2,19 +2,19 @@
 title: Azure IoT Edge セキュリティ マネージャー | Microsoft Docs
 description: IoT Edge デバイスのセキュリティ方針とセキュリティ サービスの整合性を管理します。
 services: iot-edge
-keywords: セキュリティ, 要素, エンクレーブ, IoT Edge
+keywords: セキュリティ, セキュリティで保護された要素, エンクレーブ, TEE, IoT Edge
 author: eustacea
 manager: timlt
 ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4594685291396b8b80e62abe57be109f0abbd81d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: f0e548cdd1c59dc894899ddbac127dd76db7db26
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126345"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321185"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge セキュリティ マネージャー
 
@@ -113,7 +113,7 @@ HSM PAL は、すべての信頼のルート ハードウェアを抽象化し�
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>信頼のセキュア シリコン ルート ハードウェア
 
-セキュア シリコンは、IoT Edge デバイス ハードウェア内に信頼を固定するために必要です。  セキュア シリコンは、トラステッド プラットフォーム モジュール (TPM)、埋め込みセキュア エレメント (eSM)、ARM Trustzone、Intel SGX、カスタム セキュア シリコン テクノロジなど、さまざまな形式で提供されます。  IoT デバイスの物理的なアクセシビリティに関連する脅威のため、デバイスでは信頼のセキュア シリコン ルートを使うことを強くお勧めします。
+セキュア シリコンは、IoT Edge デバイス ハードウェア内に信頼を固定するために必要です。  セキュア シリコンは、トラステッド プラットフォーム モジュール (TPM)、埋め込みセキュア エレメント (eSE)、ARM TrustZone、Intel SGX、カスタム セキュア シリコン テクノロジなど、さまざまな形式で提供されます。  IoT デバイスの物理的なアクセシビリティに関連する脅威のため、デバイスでは信頼のセキュア シリコン ルートを使うことを強くお勧めします。
 
 ## <a name="iot-edge-security-manager-integration-and-maintenance"></a>IoT Edge セキュリティ マネージャーの統合とメンテナンス
 

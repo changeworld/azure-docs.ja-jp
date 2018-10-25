@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.component: bing-custom-search
 ms.topic: quickstart
 ms.date: 05/07/2018
-ms.author: v-brapel
-ms.openlocfilehash: 1c3b1031c2d08b1f346216b54d351c99f01db933
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.author: maheshb
+ms.openlocfilehash: c0e315f9b96133d68bf1f9c02da1436b877baf40
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167309"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468417"
 ---
 # <a name="quickstart-call-bing-custom-search-endpoint-c"></a>クイック スタート: Bing Custom Search エンドポイントを呼び出す (C#)
 

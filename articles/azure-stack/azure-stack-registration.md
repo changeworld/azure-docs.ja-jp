@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 10/09/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 09f5dbdb173e1613ed942391da7baaeb045654e4
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: c9106557c7c113281b04d37f1bc3d8b29e2087cc
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452532"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310455"
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 
@@ -45,7 +45,7 @@ Azure Stack の Azure への登録により、Azure からマーケットプレ�
 
 Azure を使用して Azure Stack を登録する前に、以下のものが必要です。
 
-- Azure サブスクリプションのサブスクリプション ID。 登録には、EA、CSP、CSP 共有サービス サブスクリプションだけがサポートされています。 CSP では、[CSP を使用するか CSPSS サブスクリプションを使用するか](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-cspss-subscription)を決める必要があります。<br><br>ID を取得するには、Azure にサインインして、**[すべてのサービス]** をクリックします。 次に、**[一般]** カテゴリの下で **[サブスクリプション]** を選び、使用するサブスクリプションをクリックすると、**[要点]** の下にサブスクリプション ID が表示されます。
+- Azure サブスクリプションのサブスクリプション ID。 登録には、EA、CSP、CSP 共有サービス サブスクリプションだけがサポートされています。 CSP では、[CSP サブスクリプションまたは APSS サブスクリプションのどちらを使用するか](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)を決める必要があります。<br><br>ID を取得するには、Azure にサインインして、**[すべてのサービス]** をクリックします。 次に、**[一般]** カテゴリの下で **[サブスクリプション]** を選び、使用するサブスクリプションをクリックすると、**[要点]** の下にサブスクリプション ID が表示されます。
 
   > [!Note]  
   > ドイツのクラウド サブスクリプションは現在サポートされていません。
@@ -99,7 +99,7 @@ Azure Stack のデプロイは、"*接続*" デプロイまたは "*切断*" デ
 Azure Stack を Azure に登録するときに、一意の登録名を指定する必要があります。 Azure の登録に Azure Stack サブスクリプションを関連付ける簡単な方法は、Azure Stack の**クラウド ID** を使用することです。 
 
 > [!NOTE]
-> 容量ベースの課金モデルを使用している Azure Stack 登録では、年単位のサブスクリプションの期限が切れた後の再登録で一意の名前を変更する必要があります。
+> 容量ベースの課金モデルを使用している Azure Stack 登録では、[期限切れの登録を削除](azure-stack-registration.md#change-the-subscription-you-use)して Azure に再登録するのでない限り、年単位のサブスクリプションの期限が切れた後の再登録で一意の名前を変更する必要があります。
 
 Azure Stack デプロイのクラウド ID を調べるには、特権エンドポイントにアクセスできるコンピューターで管理者として PowerShell を開き、次のコマンドを実行して、**CloudID** の値を書き留めます。 
 
@@ -210,11 +210,11 @@ Run: get-azurestackstampinformation
       -PrivilegedEndpointCredential $CloudAdminCred `
       -PrivilegedEndpoint <PrivilegedEndPoint computer name> `
       -AgreementNumber <EA agreement number> `
-      -BillingModel Capacity
+      -BillingModel Capacity `
       -RegistrationName $RegistrationName
   ```
    > [!Note]  
-   > **Set-AzsRegistration** コマンドレットの UsageReportingEnabled パラメーターを使用して、使用状況レポートを無効にすることができます。 このパラメーターを false に設定します。 例: `UsageReportingEnabled
+   > **Set-AzsRegistration** コマンドレットの UsageReportingEnabled パラメーターを false に設定することで、使用状況レポートを無効にすることができます。 
    
   Set-AzsRegistration コマンドレットの詳細については、「[登録に関するリファレンス](#registration-reference)」を参照してください。
 
@@ -318,12 +318,12 @@ Azure (WordPress など) から利用可能な項目のリストが表示され�
 
 #### <a name="change-the-subscription-you-use"></a>使用するサブスクリプションを変更する
 
-使用するサブスクリプションを変更する場合は、まず **Remove-AzsRegistration** コマンドレットを実行してから、正しい Azure PowerShell コンテキストにログインしていることを確認し、最後に変更されたパラメーターを指定して **Set-AzsRegistration** を実行する必要があります。
+使用するサブスクリプションを変更する場合は、まず **Remove-AzsRegistration** コマンドレットを実行してから、正しい Azure PowerShell コンテキストにログインしていることを確認し、最後に \<課金モデル\> を含む変更されたパラメーターを指定して **Set-AzsRegistration** を実行する必要があります。
 
   ```PowerShell  
   Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   Set-AzureRmContext -SubscriptionId $NewSubscriptionId
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
   ```
 
 #### <a name="change-the-billing-model-or-how-to-offer-features"></a>課金モデルまたは機能の提供方法を変更する
@@ -331,7 +331,7 @@ Azure (WordPress など) から利用可能な項目のリストが表示され�
 インストールの課金モデルまたは機能の提供方法を変更する場合は、登録機能を呼び出して新しい値を設定できます。 最初に現在の登録を削除する必要はありません。
 
   ```PowerShell  
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
   ```
 
 ### <a name="renew-or-change-registration-in-disconnected-environments"></a>切断された環境で登録を更新または変更する

@@ -11,34 +11,38 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: dfff51d7541ffdc2d279b238a6d993d5e29515f0
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 89466d8774698028c8574e90f5a58e1678c9b938
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160709"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343556"
 ---
-# <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL Database への移行時に Transact-SQL の相違点を解決する   
+# <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL Database への移行時に Transact-SQL の相違点を解決する
+
 SQL Server から Azure SQL サーバーに[データベースを移行](sql-database-cloud-migrate.md)する場合、SQL Server を移行する前にデータベースの再構築が必要だと気づくことがあります。 この記事では、再構築を実行し、再構築が必要な根本的な原因を理解するうえで役立つガイダンスを提供します。 非互換性を検出するには、[データ移行アシスタント (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) を使用します。
 
 ## <a name="overview"></a>概要
+
 アプリケーションが使用する Transact-SQL 機能の大半は、Microsoft SQL Server と Azure SQL Database の両方で完全にサポートされます。 たとえば、データ型、演算子、文字列、算術演算子、論理、およびカーソル機能などのコア SQL コンポーネントは、SQL Server および SQL Database で同様に動作します。 ただし、DDL (データ定義言語) と DML (データ操作言語) 要素における T-SQL のいくつかの相違点により、T-SQL ステートメントとクエリは部分的にしかサポートされません (これについてはこの記事で後ほど説明します)。
 
-また、Azure SQL Database はマスター データベースとオペレーティング システムへの依存から機能を分離するように設計されているため、まったくサポートされていない機能と構文がいくつかあります。 そのため、サーバー レベルの大半のアクティビティは SQL Database には不適切です。 T-SQL ステートメントとオプションは、サーバー レベルのオプション、オペレーティング システムのコンポーネントを構成した場合、またはファイル システムの構成を指定した場合は使用できません。 このような機能が必要な場合は、SQL Database や別の Azure 機能またはサービスから代わりの適切な機能を使用できることがあります。 
+また、Azure SQL Database はマスター データベースとオペレーティング システムへの依存から機能を分離するように設計されているため、まったくサポートされていない機能と構文がいくつかあります。 そのため、サーバー レベルの大半のアクティビティは SQL Database には不適切です。 T-SQL ステートメントとオプションは、サーバー レベルのオプション、オペレーティング システムのコンポーネントを構成した場合、またはファイル システムの構成を指定した場合は使用できません。 このような機能が必要な場合は、SQL Database や別の Azure 機能またはサービスから代わりの適切な機能を使用できることがあります。
 
-たとえば、Azure には高可用性が組み込まれているため、AlwaysOn の構成は必要ありません (ただし障害発生時には速やかな復旧のためにアクティブ geo レプリケーションを構成することがあります)。 そのため、可用性グループに関連する T-SQL ステートメントは SQL Database でサポートされず、AlwaysOn に関連する動的管理ビューもサポートされていません。
+たとえば、高可用性は、[Always On 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server)に似たテクノロジを使用して、Azure SQL Database に組み込まれています。 可用性グループに関連する T-SQL ステートメントは SQL Database でサポートされず、AlwaysOn 可用性グループに関連する動的管理ビューもサポートされていません。
 
 SQL Database でサポートされる機能とサポートされない機能の一覧については、[Azure SQL Database の機能の比較](sql-database-features.md)に関する記事を参照してください。 このページの一覧は、その記事のガイドラインと機能を補足するもので、Transact-SQL ステートメントに重点を置いています。
 
 ## <a name="transact-sql-syntax-statements-with-partial-differences"></a>部分的に異なる Transact-SQL 構文のステートメント
-コア DDL (データ定義言語) ステートメントは使用できますが、一部の DDL ステートメントにはディスクの配置に関連した拡張機能やサポートされていない機能があります。 
+
+コア DDL (データ定義言語) ステートメントは使用できますが、一部の DDL ステートメントにはディスクの配置に関連した拡張機能やサポートされていない機能があります。
 
 - CREATE ステートメントと ALTER DATABASE ステートメントには 30 以上のオプションがあります。 ステートメントには SQL Server にのみ適用されるファイルの配置、FILESTREAM、および Service Broker のオプションが含まれます。 移行前にデータベースを作成する場合は、これは問題になりませんが、データベースを作成する T-SQL コードを移行する場合は、[CREATE DATABASE (Azure SQL Database)](https://msdn.microsoft.com/library/dn268335.aspx) を [CREATE DATABASE (SQL Server Transact-SQL)](https://msdn.microsoft.com/library/ms176061.aspx) の SQL Server 構文と比較して、使用するすべてのオプションがサポートされているかを確認します。 また Azure SQL Database 用の CREATE DATABASE には、SQL Database にのみ適用されるサービス目標と柔軟なスケールのオプションがあります。
 - FILESTREAM はサポートされていないため、CREATE ステートメントと ALTER TABLE ステートメントには、SQL Database では使用できない FileTable のオプションがあります。
 - CREATE ステートメントと ALTER LOGIN ステートメントはサポートされますが、SQL Database ではすべてのオプションは提供されません。 データベースの移植性を高めるために、SQL Database は可能な限りログインの代わりに包含データベース ユーザーを使用することを推奨しています。 詳細については、「[ALTER LOGIN](https://msdn.microsoft.com/library/ms189828.aspx)」と「[データベース アクセスの制御と許可](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins)」を参照してください。
 
-## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Azure SQL Database でサポートされない Transact-SQL 構文   
+## <a name="transact-sql-syntax-not-supported-in-azure-sql-database"></a>Azure SQL Database でサポートされない Transact-SQL 構文
+
 [Azure SQL Database の機能の比較](sql-database-features.md)に関する記事に記載されている、サポートされていない機能に関連する Transact-SQL ステートメントの他に、次のステートメントとステートメントのグループはサポートされていません。 そのため、移行するデータベースが次の機能のいずれかを使用している場合は、T-SQL を再構築してこれらの T-SQL の機能とステートメントを取り除きます。
 
 - システム オブジェクトの照合順序
@@ -74,9 +78,11 @@ SQL Database でサポートされる機能とサポートされない機能の�
 - `USE` ステートメント: データベース コンテキストを別のデータベースに変更するには、新しいデータベースへの接続を新たに確立する必要があります。
 
 ## <a name="full-transact-sql-reference"></a>完全 Transact-SQL リファレンス
-Transact-SQL の文法、使用方法、例の詳細については、SQL Server オンライン ブックの「 [Transact-SQL Reference (Database Engine)](https://msdn.microsoft.com/library/bb510741.aspx) 」を参照してください。 
+
+Transact-SQL の文法、使用方法、例の詳細については、SQL Server オンライン ブックの「 [Transact-SQL Reference (Database Engine)](https://msdn.microsoft.com/library/bb510741.aspx) 」を参照してください。
 
 ### <a name="about-the-applies-to-tags"></a>「適用先」タグについて
+
 Transact-SQL リファレンスには、SQL Server 2008 以降のバージョンに関連する記事が含まれています。 記事タイトルの下に、4 つの SQL Server プラットフォームと適用性を示すアイコン バーがあります。 たとえば、可用性グループは SQL Server 2012 で導入されました。 [CREATE AVAILABILITY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) の記事では、そのステートメントが **SQL Server (2012 以降)** に適用されることが示されています。 ステートメントは、SQL Server 2008、SQL Server 2008 R2、Azure SQL Database、Azure SQL Data Warehouse、または並列データ ウェアハウスには適用されません。
 
 場合によっては、記事にある一般的な項目を製品で使用できますが、製品間で若干の違いがあることがあります。 相違点は、必要に応じて記事の中で示されます。 場合によっては、記事にある一般的な項目を製品で使用できますが、製品間で若干の違いがあることがあります。 相違点は、必要に応じて記事の中で示されます。 たとえば CREATE TRIGGER の記事は、SQL Database で使用できます。 ただし、サーバー レベルのトリガーの **ALL SERVER** オプションでは、サーバー レベルのトリガーは SQL Database では使用できないと指示されます。 代わりにデータベース レベルのトリガーを使用します。
@@ -84,4 +90,3 @@ Transact-SQL リファレンスには、SQL Server 2008 以降のバージョン
 ## <a name="next-steps"></a>次の手順
 
 SQL Database でサポートされる機能とサポートされない機能の一覧については、[Azure SQL Database の機能の比較](sql-database-features.md)に関する記事を参照してください。 このページの一覧は、その記事のガイドラインと機能を補足するもので、Transact-SQL ステートメントに重点を置いています。
-

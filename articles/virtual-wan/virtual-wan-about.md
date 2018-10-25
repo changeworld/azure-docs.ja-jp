@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/25/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 54d177d7542d7501a91a955be20af776b16657a2
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: fedb41f6538e0c65114c4a28c8aa43ffc7ef6d7f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182367"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957602"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Azure Virtual WAN とは
 
@@ -35,7 +35,7 @@ Virtual WAN を使用してサイト間接続を作成するには、[Virtual WA
 
 Virtual WAN パートナーと連携する場合のプロセスは、次のとおりです。
 
-1. ブランチ デバイス (VPN/SDWAN) コントローラーが、[Azure サービス プリンシパル](../azure-resource-manager/resource-group-create-service-principal-portal.md)を使用してサイト中心の情報を Azure にエクスポートするために認証を受けます。
+1. ブランチ デバイス (VPN/SDWAN) コントローラーが、[Azure サービス プリンシパル](../active-directory/develop/howto-create-service-principal-portal.md)を使用してサイト中心の情報を Azure にエクスポートするために認証を受けます。
 2. ブランチ デバイス (VPN/SDWAN) コントローラーが、Azure 接続構成を取得し、ローカル デバイスを更新します。 これにより、オンプレミス VPN デバイスの構成のダウンロード、編集、および更新が自動化されます。
 3. デバイスに適切な Azure 構成が設定されると、Azure WAN に対してサイト間接続 (2 つのアクティブなトンネル) が確立されます。 Azure では、IKEv1 と IKEv2 の両方がサポートされています。 BGP はオプションです。
 

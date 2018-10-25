@@ -1,26 +1,18 @@
 ---
-title: Azure DNS での DNS レコード セットとレコードの管理 | Microsoft Docs
+title: Azure DNS で DNS レコード セットとレコードを管理する
 description: Azure DNS には、ドメインをホストしている場合に、DNS レコード セットとレコードを管理する機能が用意されています。
 services: dns
-documentationcenter: na
 author: vhorne
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: 18ed44a1-7bfe-454f-964e-922ad978264a
 ms.service: dns
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/16/2016
+ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: e24aa8d0fb72147b0ac30e7c495b598d6e9ea96f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 891adfacde6e46b1d8fe8e2f6b5fb39c90ce27a0
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451394"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853710"
 ---
 # <a name="manage-dns-records-and-record-sets-by-using-the-azure-portal"></a>Azure ポータルを使用した DNS レコードとレコード セットの管理
 
@@ -120,3 +112,4 @@ Azure ポータルを使用して、レコード セットからレコードを�
 * Azure DNS の詳細については、「 [Azure DNS の概要](dns-overview.md)」を参照してください。
 * DNS 作成の自動化については、「 [.NET SDK を使用した DNS ゾーンとレコード セットの作成](dns-sdk.md)」を参照してください。
 * 逆引き DNS レコードについて詳しくは、「[逆引き DNS と Azure でのサポートの概要](dns-reverse-dns-overview.md)」をご覧ください。
+* Azure DNS エイリアス レコードの詳細については、「[Azure DNS エイリアス レコードの概要](dns-alias.md)」を参照してください。

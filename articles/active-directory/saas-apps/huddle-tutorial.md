@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/30/2017
+ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: d67dbcef1b287ed9552d96338a2591b5f8319532
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 050a5a210ab10a557b149513a0416b188f4618ba
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434783"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885905"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>チュートリアル: Azure Active Directory と Huddle の統合
 
@@ -53,52 +53,43 @@ Huddle と Azure AD の統合を構成するには、次のものが必要です
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Huddle の追加
-1. Azure AD シングル サインオンの構成とテスト
+2. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-huddle-from-the-gallery"></a>ギャラリーからの Huddle の追加
+
 Azure AD への Huddle の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Huddle を追加する必要があります。
 
 **ギャラリーから Huddle を追加するには、次の手順に従います。**
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
     ![Active Directory][1]
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
     ![[アプリケーション]][2]
-    
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
     ![[アプリケーション]][3]
 
-1. 検索ボックスに「**Huddle**」と入力します。
-
-    ![Azure AD のテスト ユーザーの作成](./media/huddle-tutorial/tutorial_huddle_search.png)
-
-1. 結果ウィンドウで **[Huddle]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Huddle**」と入力します。 結果ウィンドウで **[Huddle]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
     ![Azure AD のテスト ユーザーの作成](./media/huddle-tutorial/tutorial_huddle_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Huddle で Azure AD のシングル サインオンを構成し、テストします。
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する Huddle ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Huddle の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-Huddle で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
-
 Huddle で Azure AD のシングル サインオンを構成してテストするには、次の一連の作業を完了させる必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-
-1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-
-1. **[Huddle テスト ユーザーの作成](#creating-a-huddle-test-user)** - Huddle で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-
-1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-
-1. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Huddle テスト ユーザーの作成](#creating-a-huddle-test-user)** - Huddle で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -110,73 +101,95 @@ Huddle で Azure AD のシングル サインオンを構成してテストす�
 
     ![Configure single sign-on][4]
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_samlbase.png)
+2. 画面上部の **[シングル サインオン モードの変更]** をクリックして、**[SAML]** モードを選択します。
 
-1. **[Huddle Domain and URLs]\(Huddle のドメインと URL\)** セクションで、次の手順を実行します。
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_general_300.png)
 
-    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_url.png)
+3. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードの **[選択]** をクリックして、シングル サインオンを有効にします。
 
-    **[サインオン URL]** ボックスに、`http://<company name>.huddle.com` のパターンを使用して URL を入力します。
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_general_301.png)
 
-    > [!NOTE] 
-    > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Huddle クライアント サポート チーム](https://huddle.zendesk.com)に問い合わせてください。 
+4. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** アイコンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-1. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_general_302.png)
 
-    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_certificate.png) 
+5. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-1. **[保存]** ボタンをクリックします。
+    > [!NOTE]
+    > 下で入力するドメインから Huddle インスタンスが自動的に検出されます。
 
-    ![Configure single sign-on](./media/huddle-tutorial/tutorial_general_400.png)
+    ![[Huddle のドメインと URL] のシングル サインオン情報](./media/huddle-tutorial/tutorial_huddle_url.png)
 
-1. **[Huddle Configuration]\(Huddle 構成\)** セクションで、**[Configure Huddle]\(Huddle を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**SAML エンティティ ID と SAML Single シングル サインオン サービス URL** をコピーします。 
+    a. **[識別子]** ボックスに次の URL を入力します。
 
-    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_configure.png) 
-    
-1. Huddle 側にシングル サインオンを構成するには、ダウンロードされた**証明書**、**SAML シングル サインオン サービス URL**、および **SAML エンティティ ID** を [Huddle Client サポート チーム](https://huddle.zendesk.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。  
-   
+    | | |
+    |--|--|
+    | `https://login.huddle.net`|
+    | `https://login.huddle.com`|
+    | |
+
+    b. **[応答 URL]** ボックスに、URL を入力します。
+
+    | | |
+    |--|--|
+    | `https://login.huddle.net/saml/browser-sso`|
+    | `https://login.huddle.com/saml/browser-sso`|
+    | `https://login.huddle.com/saml/idp-initiated-sso`|
+    | |
+
+    c. アプリケーションを **SP** 開始モードで構成する場合は、**[追加の URL を設定します]** をクリックして次の手順を実行します。
+
+    ![[Huddle のドメインと URL] のシングル サインオン情報](./media/huddle-tutorial/tutorial_huddle_url1.png)
+
+    **[サインオン URL]** ボックスに、次のパターンを使用していずれかの URL を入力します。
+
+    | | |
+    |--|--|
+    | `https://<customsubdomain>.huddle.com`|
+    | `https://us.huddle.com`|
+    | |
+
+    > [!NOTE]
+    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Huddle クライアント サポート チーム](https://huddle.zendesk.com)に問い合わせてください。
+
+6. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[ダウンロード]** をクリックして要件のとおりに適切な証明書をダウンロードして、コンピューターに保存します。
+
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_certificate.png)
+
+7. **[Set up Huddle]\(Huddle の設定\)** セクションで、要件どおりの適切な URL をコピーします。
+
+    ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_configure.png)
+
+8. **Huddle** 側でシングル サインオンを構成するには、ダウンロードした証明書と、Azure portal の **[Set up** **Huddle]\(Huddle の設定\)** セクションからコピーした URL を、[Huddle クライアント サポート チーム](https://huddle.zendesk.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+
     >[!NOTE]
-    > Huddle サポート チームがシングル サインオンを有効にする必要があります。 構成が完了すると、通知が届きます。 
-    > 
+    > Huddle サポート チームがシングル サインオンを有効にする必要があります。 構成が完了すると、通知が届きます。
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
-   
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![Azure AD ユーザーの作成][100]
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
     ![Azure AD のテスト ユーザーの作成](./media/huddle-tutorial/create_aaduser_01.png) 
 
-1. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
-    
-    ![Azure AD のテスト ユーザーの作成](./media/huddle-tutorial/create_aaduser_02.png) 
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-1. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/huddle-tutorial/create_aaduser_03.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/huddle-tutorial/create_aaduser_02.png)
 
-1. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/huddle-tutorial/create_aaduser_04.png) 
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
+    d. **作成**を選択します。
 
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
-
-    d. **Create** をクリックしてください。
- 
 ### <a name="creating-a-huddle-test-user"></a>Huddle テスト ユーザーの作成
 
 Azure AD ユーザーが Huddle にログインできるようにするには、そのユーザーを Huddle にプロビジョニングする必要があります。 Huddle の場合、プロビジョニングは手動で行います。
@@ -184,59 +197,53 @@ Azure AD ユーザーが Huddle にログインできるようにするには、
 **ユーザー プロビジョニングを構成するには、次の手順に従います。**
 
 1. **Huddle** 企業サイトに管理者としてログインします。
-1. **[ワークスペース]** をクリックします。
-1. **[ユーザー] \>[ユーザーの招待]** の順にクリックします。
-   
-   ![ユーザー](./media/huddle-tutorial/IC787838.png "People")
 
-1. **[新しい招待の作成]** セクションで、次の手順を実行します。
-   
-   ![New Invitation](./media/huddle-tutorial/IC787839.png "New Invitation")
-   
-   a. **[ユーザーを招待して参加させるチームの選択]** の一覧で **[チーム]** を選択します。
+2. **[ワークスペース]** をクリックします。
 
-   b. **[Enter email address for people you'd like to invite]\(招待したい人の電子メール アドレスの入力\)** ボックスに、プロビジョニングを行う有効な Azure AD アカウントの**電子メール アドレス**を入力します。
+3. **[ユーザー] \>[ユーザーの招待]** の順にクリックします。
 
-   c. **[招待]** をクリックします。   
-   
+    ![ユーザー](./media/huddle-tutorial/IC787838.png "People")
+
+4. **[新しい招待の作成]** セクションで、次の手順を実行します。
+  
+    ![New Invitation](./media/huddle-tutorial/IC787839.png "New Invitation")
+  
+    a. **[ユーザーを招待して参加させるチームの選択]** の一覧で **[チーム]** を選択します。
+
+    b. **[Enter email address for people you'd like to invite]\(招待したい人の電子メール アドレスの入力\)** ボックスに、プロビジョニングを行う有効な Azure AD アカウントの**電子メール アドレス**を入力します。
+
+    c. **[招待]** をクリックします。
+
     >[!NOTE]
-    > アカウントがアクティブになる前に、Azure AD アカウント所有者に、アカウント確認用のリンクを含む電子メールが送信されます。 
-    > 
+    > アカウントがアクティブになる前に、Azure AD アカウント所有者に、アカウント確認用のリンクを含む電子メールが送信されます。
 
 >[!NOTE]
->Huddle から提供されている他の Huddle ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。 
-> 
+>Huddle から提供されている他の Huddle ユーザー アカウント作成ツールまたは API を使用して、Azure AD ユーザー アカウントをプロビジョニングできます。
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Huddle へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザーの割り当て][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
-**Huddle に Britta Simon を割り当てるには、次の手順に従います。**
+    ![ユーザーの割り当て][201]
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201] 
-
-1. アプリケーションの一覧で **[Huddle]\(Huddle\)** を選択します。
+2. アプリケーションの一覧で **[Huddle]\(Huddle\)** を選択します。
 
     ![Configure single sign-on](./media/huddle-tutorial/tutorial_huddle_app.png) 
 
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
-    ![ユーザーの割り当て][202] 
+    ![ユーザーの割り当て][202]
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![ユーザーの割り当て][203]
 
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
 
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-    
 ### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。

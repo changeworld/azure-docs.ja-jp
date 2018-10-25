@@ -3,33 +3,26 @@ title: Azure Event Grid サブスクリプションの配信不能と再試行�
 description: Event Grid のイベント配信オプションをカスタマイズする方法について説明します。 配信不能メッセージの送信先を設定し、配信の再試行時間を指定します。
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 10/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5a37fadc179157ba590b31a79fcd98f223cb1869
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: fcf3ecaff6e8ba1421496a96d01428946cf8ab8e
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501951"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49077784"
 ---
 # <a name="dead-letter-and-retry-policies"></a>配信不能と再試行に関する方針
 
-イベント サブスクリプションの作成時には、イベント配信の設定をカスタマイズできます。 Event Grid がメッセージ配信を試行する期間を設定できます。 エンドポイントに配信できないイベントの格納に使用するストレージ アカウントを設定できます。
+イベント サブスクリプションの作成時には、イベント配信の設定をカスタマイズできます。 この記事では、配信不能の場所の設定方法と、再試行の設定のカスタマイズ方法を示します。 これらの機能については、「[Event Grid によるメッセージの配信と再試行](delivery-and-retry.md)」をご覧ください。
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="set-dead-letter-location"></a>配信不能の場所の設定
 
-Event Grid がイベントを配信できない場合は、配信不能イベントをストレージ アカウントに送信できます。 このプロセスは配信不能処理と呼ばれます。 既定では、Event Grid は配信不能処理を有効にしません。 この処理を有効にするには、イベント サブスクリプションの作成時に、配信不能イベントを保持するようにストレージ アカウントを指定する必要があります。 このストレージ アカウントからイベントをプルして配信を解決します。
-
-Event Grid では、すべての再試行を行った場合、または配信が成功しないことを示すエラー メッセージを受信した場合に、配信不能の場所にイベントを送信します。 たとえば、Event Grid では、イベントの配信時に不適切な形式であることを示すエラーを受信すると、そのイベントを配信不能の場所に送信します。 イベントの配信を最後に試してから配信不能メッセージがその宛先に届くまで、5 分間の遅延があります。 この遅延の目的は、BLOB ストレージの操作数を減らすことにあります。 配信不能メッセージの送信先が 4 時間利用できない場合、イベントは破棄されます。
-
-配信不能の場所を設定するには、コンテナーを含むストレージ アカウントが必要です。 イベント サブスクリプションの作成時に、このコンテナーのエンドポイントを指定します。 エンドポイントの形式は次のとおりです。`/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
-
-次のスクリプトは、既存のストレージ アカウントのリソース ID を取得し、そのストレージ アカウント内のコンテナーを配信不能のエンドポイントとして使用するイベント サブスクリプションを作成します。
+配信不能の場所を設定するには、エンドポイントに配信できなかったイベントを保持するためストレージ アカウントが必要です。 次のスクリプトは、既存のストレージ アカウントのリソース ID を取得し、そのストレージ アカウント内のコンテナーを配信不能のエンドポイントとして使用するイベント サブスクリプションを作成します。
 
 ```azurecli-interactive
 # if you have not already installed the extension, do it now.
@@ -49,15 +42,13 @@ az eventgrid event-subscription create \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
 ```
 
-Event Grid を使用して配信不能イベントに応答するには、配信不能 Blob ストレージ用の[イベント サブスクリプションを作成](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)します。 配信不能 Blob ストレージが配信不能イベントを受信するたびに、Event Grid はハンドラーに通知します。 ハンドラーは、配信不能イベントを調整するためのアクションで応答します。 
-
 配信不能処理を無効にするには、コマンドを再実行してイベント サブスクリプションを作成しますが、`deadletter-endpoint` の値は指定しないでください。 イベント サブスクリプションを削除する必要はありません。
 
 ## <a name="set-retry-policy"></a>再試行ポリシーの設定
 
 Event Grid サブスクリプションの作成時には、Event Grid がイベント配信を試行する期間の値を設定できます。 既定では、Event Grid は 24 時間 (1440 分) で最大 30 回イベント配信を試行します。 Event Grid サブスクリプションには、これらの値のいずれかを設定できます。 イベントの有効期限の値は 1 から 1440 までの整数にする必要があります。 最大配信試行数の値は 1 から 30 までの整数にする必要があります。
 
-[再試行の間隔](delivery-and-retry.md#retry-intervals-and-duration)を構成することはできません。
+[再試行のスケジュール](delivery-and-retry.md#retry-schedule-and-duration)を構成することはできません。
 
 イベントの Time to Live を 1440 分以外の値に設定するには、次のコマンドを使用します。
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: jingwang
-ms.openlocfilehash: a160c47e12db3c4ef9cefc5cd70293468ddf8234
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 953585ffcc5a40d9ae48055f68a1c1fa84db25cc
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011360"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249334"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-preview-with-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 から Gen2 (プレビュー) にデータをコピーする
 
@@ -51,7 +51,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
     * **バージョン**: **[V2]** を選択します。
     * **場所**: データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 
 
-3. **[作成]** を選択します。
+3. **作成**を選択します。
 4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。 
    
    ![データ ファクトリのホーム ページ](./media/load-azure-data-lake-storage-gen2-from-gen1/data-factory-home-page.png)
@@ -80,7 +80,7 @@ Azure Data Factory では、スケール アウトしたマネージド デー�
    3. **[次へ]** を選択します。
    
    > [!IMPORTANT]
-   > このチュートリアルでは、"_マネージド サービス ID_" を使用して、Data Lake Storage Gen1 を認証します。 [次の手順](connector-azure-data-lake-store.md#using-managed-service-identity-authentication)に従って、MSI に Azure Data Lake Storage Gen1 のアクセス許可を適切に付与します。
+   > このチュートリアルでは、Azuure リソースのマネージド ID を使用して、Data Lake Storage Gen1 を認証します。 [次の手順](connector-azure-data-lake-store.md#managed-identity)に従って、MSI に Azure Data Lake Storage Gen1 のアクセス許可を適切に付与します。
    
    ![Azure Data Lake Storage Gen1 アカウントを指定する](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen1-account.png)
    

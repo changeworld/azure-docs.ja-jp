@@ -9,12 +9,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: b3e1fd5331b97fc2120819b17f7fbba57dadf7b1
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 054cd54827dc11e57f249a270542ff81ff670912
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345052"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649994"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Azure Machine Learning で実験とトレーニング メトリックを追跡する
 
@@ -25,7 +25,7 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
 
 ## <a name="list-of-training-metrics"></a>トレーニング メトリックの一覧 
 
-実験のトレーニング中に、次のメトリックを実行に追加できます。 実行で追跡できる内容の詳細な一覧については、[SDK リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/azure-ml-sdk-overview?view=azure-ml-py)をご覧ください。
+実験のトレーニング中に、次のメトリックを実行に追加できます。 実行で追跡できる内容の詳細な一覧については、[SDK リファレンス ドキュメント](https://aka.ms/aml-sdk)をご覧ください。
 
 |type| Python 関数 | 例 | メモ|
 |----|:----|:----|:----|
@@ -235,6 +235,7 @@ Azure Machine Learning service では、実験を追跡し、メトリックを�
 
 ```run.get_metrics()``` を使用して、トレーニング済みモデルのメトリックを表示できます。 上の例でログに記録されたすべてのメトリックを取得して、最適なモデルを決定できます。
 
+<a name='view-the-experiment-in-the-web-portal'/>
 ## <a name="view-the-experiment-in-the-azure-portal"></a>Azure portal で実験を表示する
 
 実験の実行が完了したら、記録された実験の実行レコードを参照できます。 次の 2 つの方法で行います。

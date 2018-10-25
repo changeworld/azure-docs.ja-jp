@@ -10,24 +10,25 @@ author: cforbe
 manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 388957fc5dac5cdab5bee34a4431eaa524e76a48
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 06e7d227511a9b651a905df3172f59a191acce01
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999904"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945673"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Azure Machine Learning データ準備 SDK を使ってデータを変換する
 
 [Azure Machine Learning データ準備 SDK](https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py) は､データを整理するためのさまざまな変換メソッドを提供します。 これらのメソッドを利用して､列の追加や不要な行または列の除去、欠損値対処を簡単に行うことができます｡
 
 現在は次のタスク用のメソッドがあります。
-- [式による列の追加](#add-column-using-expression)
+- [式による列の追加](#column)
 - [欠損値の補完](#impute-missing-values)
 - [例による列の派生](#derive-column-by-example)
 - [Filtering](#filtering)
 - [カスタム Python 変換](#custom-python-transforms)
 
+<a name=column>
 ## <a name="add-column-using-an-expression"></a>式による列の追加
 
 Azure Machine Learning データ準備 SDK には `substring`式があり､これらの式を使用して、既存の列から値を算出して､その値を新しい列に挿入することができます。 この例では､データを読み込み､その入力データに列を加えます｡

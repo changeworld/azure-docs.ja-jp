@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 08/11/2018
 ms.author: mbullwin
-ms.openlocfilehash: 221d0d8a78a46cad9f1994e9313b21e2867d9563
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 4407322dd415a7c8b2ef8b7ff470a247b8d68f69
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141373"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319457"
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Application Insights での価格とデータ ボリュームの管理
 
@@ -159,6 +159,10 @@ Azure Resource 管理を使用して、価格プランを設定するスクリ�
 ## <a name="limits-summary"></a>制限の概要
 
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
+
+## <a name="disable-daily-cap-e-mails"></a>日次上限メールを無効にする
+
+日次ボリューム上限メールを無効にするには、Application Insights リソースの **[構成]** セクションで、**[使用量と推定コスト]** ウィンドウから **[日次上限]** を選択します。 上限に達したとき、および調整可能な警告レベルに達したときに、メールを送信する設定があります。 すべての日次上限ボリューム関連メールを無効にする場合は、両方のボックスをオフにします。
 
 ## <a name="next-steps"></a>次の手順
 

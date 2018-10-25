@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 9d980c800f930c00b2b0140314f78ff3f043aa58
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: d50131a9c9e7572f7696a936cbfec3a8568eda2e
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604218"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343655"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack ファイアウォールの統合
 Azure Stack は、ファイアウォール デバイスを使って保護することをお勧めします。 ファイアウォールは、分散型サービス拒否 (DDOS) 攻撃や侵入検出、コンテンツ検査などに効果がありますが、BLOB、テーブル、キューなどの Azure Storage サービスのスループットのボトルネックにもなります。

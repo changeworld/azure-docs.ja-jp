@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 3d7cf50bd2c845764aa2c3ac3b3db6891ff5c8d8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 21c9441e2b3d3ad54d491834e6de097a8880b5b7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993852"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311118"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Log Analytics でのパフォーマンスの監視
 
@@ -66,7 +66,7 @@ Log Analytics Agent をクラスターに追加する最も良い方法は、Azu
 
 ## <a name="add-the-agent-via-the-resource-manager-template"></a>Resource Manager テンプレートを使用してエージェントを追加する
 
-Azure Log Analytics ワークスペースをデプロイし、ご利用の各ノードにエージェントを追加する Resource Manager テンプレートのサンプルは、[Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) 用と [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) 用が用意されています。
+Azure Log Analytics ワークスペースをデプロイし、ご利用の各ノードにエージェントを追加する Resource Manager テンプレートのサンプルは、[Windows](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-OMS-UnSecure) 用と [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) 用が用意されています。
 
 このテンプレートをダウンロードして、ニーズに最適なクラスターをデプロイするように変更することができます。
 
@@ -86,7 +86,7 @@ Log Analytics エージェントを追加したら、Log Analytics ポータル�
 
 6. [詳細設定] ブレードを閉じます。
 
-7. [全般] という見出しの下の **[概要]** をクリックします。
+7. [全般] という見出しの下の **[ワークスペースの概要]** をクリックします。
 
 8. 有効なソリューションごとのグラフ形式のタイルが表示されます (Service Fabric のタイルも含まれています)。 **[Service Fabric]** グラフをクリックして、Service Fabric Analytics ソリューションを継続します。
 

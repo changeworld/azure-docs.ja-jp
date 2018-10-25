@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 36269392db785e7d2d203f032a84cccc8a6c62e0
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 32b60a53581a0f372a7d994cfa260ebd7bcb27b2
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352970"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467043"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database のデータの検出と分類
 
@@ -140,10 +140,10 @@ T-SQL を使って、列の分類を追加/削除し、データベース全体�
 
 REST API を使用して、分類をプログラムで管理することもできます。 公開された REST API は、次の操作をサポートします。
 
-- [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_createorupdate): 指定された列の機密ラベルを作成または更新します
-- [削除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_delete): 指定された列の機密ラベルを削除します
-- [取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_get): 指定された列の機密ラベルを取得します
-- [データベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/sensitivitylabels_listbydatabase): 指定したデータベースの機密ラベルを取得します
+- [作成または更新](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): 指定された列の機密ラベルを作成または更新します
+- [削除](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete): 指定された列の機密ラベルを削除します
+- [取得](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): 指定された列の機密ラベルを取得します
+- [データベース別に一覧表示](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listbydatabase): 指定したデータベースの機密ラベルを取得します
 
 ## <a id="subheading-5"></a>次のステップ
 

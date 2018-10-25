@@ -9,15 +9,13 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 98e168ccb600bd1371da7f125531f3b4421b3d80
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 46be1c670002b584bac1d1a2d3e5e02e845027c7
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47018628"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49312615"
 ---
 1. [![Azure Notebooks](https://notebooks.azure.com/launch.png)](https://aka.ms/aml-clone-azure-notebooks)
-[サンプル ノートブックを Azure Notebooks にインポートします](https://aka.ms/aml-clone-azure-notebooks)。
-1.  [Azure Machine Learning サービスの開発環境を構成する方法](https://aka.ms/aml-how-to-configure-environment)に関する記事の手順に従ってワークスペースとその構成ファイル (**config.json**) を作成します。
-2. ツール バーの [`+New`] を選択し、ノートブックと同じフォルダーに **config.json** ファイルを追加します。
-3. ノートブックを開きます。
+[サンプル ノートブックを Azure Notebooks にインポートします](https://aka.ms/aml-clone-azure-notebooks)。 (組織によっては、サインインするには[管理者の同意](https://notebooks.azure.com/help/signing-up/work-or-school-account/admin-consent)が必要な場合があります。)
+1. ノートブックの詳しい実行手順については、インポートされたライブラリの README をご覧ください。

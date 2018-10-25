@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: e92c099d9e0dfacff71c13382059acb06037bb1e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2291136cf50439b7845c3a344be3218277257b34
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999870"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269481"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure 仮想ネットワークについてよく寄せられる質問 (FAQ)
 
@@ -230,7 +230,7 @@ VNet ピアリング (仮想ネットワーク ピアリング) を使用して�
 はい。 グローバル VNet ピアリングを使用すると、別のリージョンの VNet にピアリングできます。 グローバル VNet ピアリングは、Azure のすべてのパブリック リージョンで使用できます。 Azure のパブリック リージョンからナショナル クラウドにグローバルにピアリングすることはできません。 現在、グローバル ピアリングはナショナル クラウドでは使用できません。
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>仮想ネットワークが別の Azure Active Directory テナント内のサブスクリプションに属する場合、VNet ピアリングを有効にできますか。
-現在、サブスクリプションが別の Azure Active Directory テナントに属する場合、(ローカルまたはグローバルのどちらでも) VNet ピアリング を確立することはできません。
+はい。 サブスクリプションが別の Azure Active Directory テナントに属する場合、(ローカルまたはグローバルのどちらでも) VNet ピアリング を確立できます。 これは、PowerShell または CLI を使用して行うことができます。 portal はまだサポートされていません。
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>VNet ピアリング接続が*開始済み*の状態にあります。接続できないのはなぜですか。
 ピアリング接続が開始済みの状態にある場合、これは、リンクを 1 つだけ作成していることを意味します。 正常な接続を確立するには、双方向のリンクを作成する必要があります。 VNet A から VNet B にピアリングするには、VNetA から VNetB、および VNetB から VNetAへのリンクを作成する必要があります。 両方のリンクを作成すると、状態が*接続済み*に変更されます。

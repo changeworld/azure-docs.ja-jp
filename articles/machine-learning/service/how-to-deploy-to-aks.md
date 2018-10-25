@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: f74521f77420fcfc60e99dd3d70574d5e94cf084
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3ab32388e0a35f4abf3866aa0a84ee0628b0570c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967746"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318199"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Azure Machine Learning サービスから Azure Kubernetes Service にモデルをデプロイする方法
 
@@ -27,7 +27,7 @@ AKS にデプロイすることで、ご利用の Web サービスに関する�
 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
 
-- Azure Machine Learning ワークスペース、スクリプトを保存するローカル ディレクトリ、Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関するドキュメントを参照してください。
+- Azure Machine Learning service ワークスペース、スクリプトを保存するローカル ディレクトリ、Azure Machine Learning SDK for Python のインストール。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関するドキュメントを参照してください。
 
 - トレーニングされた機械学習モデル。 ない場合は、[イメージ分類モデルのトレーニング](tutorial-train-models-with-aml.md)に関するチュートリアルを参照してください。
 
@@ -124,7 +124,7 @@ print(aks_target.provisioning_errors)
 Azure サブスクリプションに既存の AKS クラスターがある場合は、それを使用してイメージをデプロイできます。 次のコード スニペットでは、クラスターをワークスペースに接続する方法を示します。 
 
 > [!IMPORTANT]
-> サポートされるのは、AKS バージョン 1.8.7 のみです。
+> サポートされるのは、AKS バージョン 1.11.2 のみです。
 
 ```python
 # Get the resource id from https://porta..azure.com -> Find your resource group -> click on the Kubernetes service -> Properties
@@ -137,7 +137,7 @@ cluster_name='my-existing-aks'
 aks_target = AksCompute.attach(workspace=ws, name=cluster_name, resource_id=resource_id)
 
 # Wait for the operation to complete
-aks_target.wait_for_provisioning(True)
+aks_target.wait_for_completion(True)
 ```
 
 ## <a name="deploy-your-web-service"></a>Web サービスをデプロイする

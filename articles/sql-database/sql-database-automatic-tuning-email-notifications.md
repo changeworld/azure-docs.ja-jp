@@ -12,18 +12,18 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: 1177703dc67e81e537d7682dcf9bbeb475748315
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: eaeb0d7f77b6d8ab6a3e12febba33c995a10ec3f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353936"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466553"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自動チューニングの電子メール通知
 
 SQL Database のチューニング推奨情報は、Azure SQL Database の[自動チューニング機能](sql-database-automatic-tuning.md)によって生成されます。 このソリューションは、SQL Database のワークロードを継続的に監視して分析し、個別のデータベースそれぞれについて、インデックスの作成や削除、クエリ実行プランの最適化に関するカスタマイズされたチューニング推奨情報を提供します。
 
-SQL Database 自動チューニングの推奨情報は、[REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/databaserecommendedactions_listbydatabaseadvisor) 呼び出しで取得するか、[T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) や [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) のコマンドを使用して、[Azure Portal](sql-database-advisor-portal.md) で確認できます。 この記事は、PowerShell スクリプトを使用して自動チューニングに関する推奨情報を取得する方法に基づいています。
+SQL Database 自動チューニングの推奨情報は、[REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) 呼び出しで取得するか、[T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) や [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) のコマンドを使用して、[Azure Portal](sql-database-advisor-portal.md) で確認できます。 この記事は、PowerShell スクリプトを使用して自動チューニングに関する推奨情報を取得する方法に基づいています。
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>自動チューニング推奨情報の電子メール通知を自動化する
 

@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 05/07/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7de7c87e5cf1747f4899f33d9e6b9cbf0bb430e1
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1e6ad35702b15090202278cfdead62b245040302
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42140572"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309622"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory レポート API の概要
 
@@ -33,6 +33,7 @@ Azure AD レポート API を使うと、一連の REST ベースの API を使�
 
 問題が発生した場合は、「[Azure Active Directory のサポートを受ける方法](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)」をご覧ください。
 
+この記事は、Azure AD Graph API に適用されます。  Microsoft Graph API に関する同様の情報については、「[directoryAudit resource type](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/directoryaudit)」(directoryAudit リソースの種類) をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 

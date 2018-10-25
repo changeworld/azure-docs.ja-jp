@@ -12,25 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/01/2016
+ms.date: 10/12/2018
 ms.author: ambapat
-ms.openlocfilehash: 421ceca1453b9e3b97c5ede520ec92372baf2020
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4ad6a18f9937fcc7d24bebc3ac197e23990ff59e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299663"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309248"
 ---
-# <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する
+# <a name="grant-several-applications-access-to-a-key-vault"></a>複数のアプリケーションにキー コンテナーへのアクセスを許可する
 
-## <a name="q-i-have-several-applications-that-need-to-access-a-key-vault-how-can-i-give-these-applications-up-to-1024-access-to-key-vault"></a>Q: キー コンテナーにアクセスする必要があるいくつかのアプリケーションがあります。これらのアプリケーション (最大 1024) が Key Vault でアクセスできるようにするにはどうすればよいでしょうか。
+アクセス制御ポリシーを使用して、複数のアプリケーションにキー コンテナーへのアクセスを許可できます。 アクセス制御ポリシーは、最大 1024 個のアプリケーションをサポートでき、次のように構成します。
 
-Key Vault のアクセス制御ポリシーは、最大 1024 個のエントリをサポートします。 ただし、Azure Active Directory セキュリティ グループを作成することができます。 関連するすべてのサービス プリンシパルをこのセキュリティ グループに追加し、そのセキュリティ グループに Key Vault へのアクセスを許可してください。
+1. Azure Active Directory セキュリティ グループを作成します。 
+2. アプリケーションに関連付けられているすべてのサービス プリンシパルをセキュリティ グループに追加します。
+3. キー コンテナーへのアクセスをセキュリティ グループに許可します。
 
 前提条件は次のとおりです。
 * [Azure Active Directory V2 PowerShell モジュールのインストール](https://www.powershellgallery.com/packages/AzureAD)。
 * [Azure PowerShell のインストール](/powershell/azure/overview)。
-* 次のコマンドを実行するには、Azure Active Directory テナント内でグループを作成または編集するためのアクセス許可が必要です。 アクセス許可を持っていない場合は、Azure Active Directory 管理者に連絡する必要があります。
+* 次のコマンドを実行するには、Azure Active Directory テナント内でグループを作成または編集するためのアクセス許可が必要です。 アクセス許可を持っていない場合は、Azure Active Directory 管理者に連絡する必要があります。 Key Vault のアクセス ポリシーのアクセス許可について詳しくは、[Azure Key Vault のキー、シークレット、証明書](about-keys-secrets-and-certificates.md)に関するページをご覧ください。
 
 PowerShell で次のコマンドを実行します。
 
@@ -48,7 +50,11 @@ Add-AzureADGroupMember –ObjectId $aadGroup.ObjectId -RefObjectId $spn.ObjectId
 # You can add several members to this group, in this fashion. 
  
 # Set the Key Vault ACLs 
-Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId -PermissionsToKeys all –PermissionsToSecrets all –PermissionsToCertificates all 
+Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId `
+-PermissionsToKeys decrypt,encrypt,unwrapKey,wrapKey,verify,sign,get,list,update,create,import,delete,backup,restore,recover,purge `
+–PermissionsToSecrets get,list,set,delete,backup,restore,recover,purge `
+–PermissionsToCertificates get,list,delete,create,import,update,managecontacts,getissuers,listissuers,setissuers,deleteissuers,manageissuers,recover,purge,backup,restore `
+-PermissionsToStorage get,list,delete,set,update,regeneratekey,getsas,listsas,deletesas,setsas,recover,backup,restore,purge 
  
 # Of course you can adjust the permissions as required 
 ```

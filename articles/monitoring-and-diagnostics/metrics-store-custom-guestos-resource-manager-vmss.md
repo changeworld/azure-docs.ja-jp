@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: b9808233e08e545c31e171afe104173dccc6abed
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 7b600bd699ce7f9e4a6c7cba1a41b6bdece16bf0
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434927"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343727"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Windows 仮想マシン スケール セットについて Resource Manager テンプレートを使用してゲスト OS メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -81,7 +81,7 @@ resources セクションで仮想マシン スケール セットの定義を�
 仮想マシン スケール セット リソースで、**virtualMachineProfile** セクションを見つけます。 拡張機能を管理するための **extensionsProfile** と呼ばれる新しいプロファイルを追加します。  
 
 
-**extensionProfile** で、**VMSS-WAD-extension セクション**によって示されているように、新しい拡張機能をテンプレートに追加します。  このセクションは、出力されたメトリックが Azure Monitor で確実に受け入れられるようにするマネージド サービス ID (MSI) 拡張機能です。 **name** フィールドには任意の名前を含めることができます。 
+**extensionProfile** で、**VMSS-WAD-extension セクション**によって示されているように、新しい拡張機能をテンプレートに追加します。  このセクションは、出力されたメトリックが Azure Monitor で確実に受け入れられるようにする、Azure リソース拡張機能用のマネージド ID です。 **name** フィールドには任意の名前を含めることができます。 
 
 MSI 拡張機能の次のコードはまた、診断拡張機能および構成を拡張機能リソースとして仮想マシン スケール セット リソースに追加します。 必要に応じて、パフォーマンス カウンターを自由に追加/削除できます。 
 
@@ -89,7 +89,7 @@ MSI 拡張機能の次のコードはまた、診断拡張機能および構成�
           "extensionProfile": { 
             "extensions": [ 
             // BEGINNING of added code  
-            // Managed service identity   
+            // Managed identites for Azure resources   
                 { 
                  "name": "VMSS-WAD-extension", 
                  "properties": { 

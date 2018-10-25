@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 08/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 063f8bc050064d191dd502b74156be85df4f0031
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: a7eb335a2e4764287ab9e0b67dc75c2443ba2856
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182214"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49322007"
 ---
 # <a name="using-akka-streams-with-event-hubs-for-apache-kafka"></a>Kafka エコシステム用の Event Hubs での Apache Kafka の使用
 このチュートリアルでは、プロトコル クライアントを変更したり、独自のクラスターを実行したりせずに、Akka Streams を Kafka 対応 Event Hubs に接続する方法を示します。 Kafka 用 Azure Event Hubs では、[Apache Kafka バージョン 1.0](https://kafka.apache.org/10/documentation.html) がサポートされています。
@@ -29,6 +29,9 @@ ms.locfileid: "47182214"
 > * サンプル プロジェクトを複製する
 > * Akka Streams プロデューサーを実行する 
 > * Akka Streams コンシューマーを実行する
+
+> [!NOTE]
+> このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) で入手できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -50,11 +53,11 @@ Event Hubs サービスとの間で送受信を行うには、Event Hubs 名前�
 
 ## <a name="clone-the-example-project"></a>サンプル プロジェクトを複製する
 
-Kafka が有効なイベント ハブの接続文字列を入手したので、Azure Event Hubs リポジトリを複製し、`akka` サブフォルダーに移動します。
+Kafka が有効なイベント ハブの接続文字列を入手したので、Kafka 用 Azure Event Hubs リポジトリを複製し、`akka` サブフォルダーに移動します。
 
 ```shell
-git clone https://github.com/Azure/azure-event-hubs.git
-cd azure-event-hubs/samples/kafka/akka
+git clone https://github.com/Azure/azure-event-hubs-for-kafka.git
+cd azure-event-hubs-for-kafka/tutorials/akka/java
 ```
 
 ## <a name="run-akka-streams-producer"></a>Akka Streams プロデューサーを実行する
@@ -149,5 +152,6 @@ Event Hubs と Kafka 用 Event Hubs の詳細については、次のトピッ�
 
 * [Event Hubs について確認する](event-hubs-what-is-event-hubs.md)
 * [Kafka 用 Event Hubs について確認する](event-hubs-for-kafka-ecosystem-overview.md)
+* [GitHub で Kafka 用 Event Hubs の他のサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka)
 * [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) を使用して[オンプレミスの Kafka からクラウドの Kafka 対応 Event Hubs にイベントをストリーム配信する。](event-hubs-kafka-mirror-maker-tutorial.md)
 * [ネイティブの Kafka アプリケーション](event-hubs-quickstart-kafka-enabled-event-hubs.md)または [Apache Flink](event-hubs-kafka-flink-tutorial.md) を使用して Kafka 対応 Event Hubs にストリーム配信する方法について確認する

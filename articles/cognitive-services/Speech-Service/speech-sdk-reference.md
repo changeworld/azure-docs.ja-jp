@@ -1,20 +1,21 @@
 ---
 title: Speech SDK API リファレンス
+titleSuffix: Azure Cognitive Services
 description: Speech SDK のリファレンス。
 services: cognitive-services
-titleSuffix: Azure Cognitive Services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 88f0fa66ba48f21e77a6c0319129708cabbc9535
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: fb80a3462caa59af423ef4f2f80e43f5d75e89e2
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362638"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470899"
 ---
 # <a name="speech-sdk-api-reference"></a>Speech SDK API リファレンス
 

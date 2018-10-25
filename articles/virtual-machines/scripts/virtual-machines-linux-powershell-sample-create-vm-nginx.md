@@ -3,7 +3,7 @@ title: Azure PowerShell のサンプル スクリプト - NGINX | Microsoft Docs
 description: Azure PowerShell のサンプル スクリプト - NGINX
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-service-management
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2017
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: ae3e9a8a32a47aa9d7cb68616a7d3c850bda48fe
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: ba64d5d72bd03e0f4556dfc79ed95a96d22d6ce6
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247116"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467210"
 ---
 # <a name="create-an-nginx-vm-with-powershell"></a>PowerShell で NGINX VM を作成する
 

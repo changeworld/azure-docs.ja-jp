@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
-ms.openlocfilehash: 40ed6105dca5ea14c64fb2b103c5623cd56333af
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0cd1d717189439d504232be1bc07885b12fa01bd
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393368"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649705"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -80,7 +80,7 @@ Event Grid 以外の BLOB を処理するための別の方法として、Queue 
 * [C#](#trigger---c-example)
 * [C# スクリプト (.csx)](#trigger---c-script-example)
 * [JavaScript](#trigger---javascript-example)
-* [Java](#trigger---javascript-example)
+* [Java](#trigger---java-example)
 
 ### <a name="trigger---c-example"></a>トリガー - C# の例
 
@@ -203,18 +203,17 @@ module.exports = function(context) {
 Java コードを次に示します。
 
 ```java
- @FunctionName("blobprocessor")
- public void run(
-    @BlobTrigger(name = "file",
-                  dataType = "binary",
-                  path = "myblob/filepath",
-                  connection = "myconnvarname") byte[] content,
-    @BindingName("name") String filename,
-     final ExecutionContext context
- ) {
-     context.getLogger().info("Name: " + name + " Size: " + content.length + " bytes");
- }
-
+@FunctionName("blobprocessor")
+public void run(
+  @BlobTrigger(name = "file",
+               dataType = "binary",
+               path = "myblob/{name}",
+               connection = "MyStorageAccountAppSetting") byte[] content,
+  @BindingName("name") String filename,
+  final ExecutionContext context
+) {
+  context.getLogger().info("Name: " + filename + " Size: " + content.length + " bytes");
+}
 ```
 
 
@@ -306,7 +305,7 @@ C# と C# スクリプトでは、トリガーする BLOB に次のパラメー�
 
 Storage SDK タイプの 1 つにバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
-`string`、`Byte[]`、または POCO へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で後述する「[同時実行とメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
+`string`、`Byte[]`、または POCO へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で後述する「[コンカレンシーとメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
 
 JavaScript では、`context.bindings.<name from function.json>` を使用して入力 BLOB データにアクセスします。
 
@@ -404,11 +403,11 @@ BLOB を強制的に再処理する場合は、*azure-webjobs-hosts* コンテ�
 * BlobName
 * ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
 
-## <a name="trigger---concurrency-and-memory-usage"></a>トリガー - 同時実行とメモリ使用量
+## <a name="trigger---concurrency-and-memory-usage"></a>トリガー - コンカレンシーとメモリ使用量
 
-BLOB トリガーはキューを内部的に使用するため、関数の同時呼び出しの最大数が [host.json のキュー構成設定](functions-host-json.md#queues)によって制御されます。 既定の設定では、同時呼び出しの数は 24 までに制限されています。 この制限は、BLOB トリガーを使用する各関数に個別に適用されます。
+BLOB トリガーはキューを内部的に使用するため、関数の同時呼び出しの最大数が [host.json のキュー構成設定](functions-host-json.md#queues)によって制御されます。 既定の設定では、コンカレンシーの数は 24 までに制限されています。 この制限は、BLOB トリガーを使用する各関数に個別に適用されます。
 
-[従量課金プラン](functions-scale.md#how-the-consumption-plan-works)では、1 つの仮想マシン (VM) の関数アプリのメモリが 1.5 GB に制限されています。 メモリは、同時実行される各関数インスタンスと、Functions ランタイム自体によって使用されます。 BLOB によってトリガーされる関数が BLOB 全体をメモリに読み込む場合、その関数が BLOB 用にのみ使用するメモリの最大量は 24 * 最大 BLOB サイズです。 たとえば、BLOB によってトリガーされる 3 つの関数を含む関数アプリの場合、既定の設定では、VM あたりの最大同時実行数 3*24 = 72 関数呼び出しとなります。
+[従量課金プラン](functions-scale.md#how-the-consumption-plan-works)では、1 つの仮想マシン (VM) の関数アプリのメモリが 1.5 GB に制限されています。 メモリは、同時実行される各関数インスタンスと、Functions ランタイム自体によって使用されます。 BLOB によってトリガーされる関数が BLOB 全体をメモリに読み込む場合、その関数が BLOB 用にのみ使用するメモリの最大量は 24 * 最大 BLOB サイズです。 たとえば、BLOB によってトリガーされる 3 つの関数を含む関数アプリの場合、既定の設定では、VM あたりの最大コンカレンシー数 3*24 = 72 関数呼び出しとなります。
 
 JavaScript 関数は BLOB 全体をメモリに読み込みますが、C# 関数は `string`、`Byte[]`、または POCO にバインドした場合に BLOB 全体をメモリに読み込みます。
 
@@ -561,7 +560,7 @@ public void blobSize(@QueueTrigger(name = "filename",  queueName = "myqueue-item
 
 ## <a name="input---attributes"></a>入力 - 属性
 
-[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs)を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs)を使用します。
 
 次の例で示すように、属性のコンストラクターは、BLOB へのパスと、読み取りまたは書き込みを示す `FileAccess` パラメーターを受け取ります。
 
@@ -626,7 +625,7 @@ C# とC# スクリプトでは、BLOB 入力バインドに次のパラメータ
 
 Storage SDK タイプの 1 つにバインドしようとしてエラー メッセージが表示された場合は、[適切な Storage SDK バージョン](#azure-storage-sdk-version-in-functions-1x)への参照があることをご確認ください。
 
-`string` または `Byte[]` へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で前述した「[同時実行とメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
+`string` または `Byte[]` へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で前述した「[コンカレンシーとメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
 
 JavaScript では、`context.bindings.<name from function.json>` を使用して BLOB データにアクセスします。
 
@@ -794,7 +793,7 @@ public String blobCopy(
 
 ## <a name="output---attributes"></a>出力 - 属性
 
-[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs)を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Blobs/BlobAttribute.cs)を使用します。
 
 次の例で示すように、属性のコンストラクターは、BLOB へのパスと、読み取りまたは書き込みを示す `FileAccess` パラメーターを受け取ります。
 
@@ -863,7 +862,7 @@ Storage SDK タイプの 1 つにバインドしようとしてエラー メッ�
 
 非同期関数では、`out` パラメーターの代わりに戻り値または `IAsyncCollector` を使用します。
 
-`string` または `Byte[]` へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で前述した「[同時実行とメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
+`string` または `Byte[]` へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で前述した「[コンカレンシーとメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
 
 
 JavaScript では、`context.bindings.<name from function.json>` を使用して BLOB データにアクセスします。

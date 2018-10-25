@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: e0d430ced1dbddbfca79806591c83c33e732eefd
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 43202e88482933aed7952f6cc97dcaf1e0dcb5e7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37901716"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986034"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用 | リアルタイムの不正行為の検出
 
@@ -39,7 +39,7 @@ ms.locfileid: "37901716"
 始める前に、以下のものを用意してください。
 
 * Azure アカウント。
-* 呼び出しイベント ジェネレーター アプリ [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) (Microsoft ダウンロード センターからダウンロード可能)。 コンピューター上のフォルダーにこのパッケージを解凍します。 ソース コードを確認し、デバッガーでアプリを実行したい場合は、[GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) からアプリのソース コードを入手できます。 
+* 呼び出しイベント ジェネレーター アプリ [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) (Microsoft ダウンロード センターからダウンロード可能)。 コンピューター上のフォルダーにこのパッケージを解凍します。 ソース コードを確認し、デバッガーでアプリを実行したい場合は、[GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) からアプリのソース コードを入手できます。 
 
     >[!NOTE]
     >ダウンロードされた zip ファイルが Windows によってブロックされる可能性があります。 ファイルを解凍できない場合は、ファイルを右クリックし、**[プロパティ]** を選びます。 "このファイルは他のコンピューターから取得したものです。このコンピューターを保護するため、このファイルへのアクセスはブロックされる可能性があります" というメッセージが表示されたら、**[ブロック解除]** オプションをオンにして、**[適用]** をクリックします。

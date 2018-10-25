@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/27/2018
+ms.date: 10/11/2018
 ms.author: Kumud
-ms.openlocfilehash: 43945dc8810151eb701aa9e1aa1be47d4fbb0491
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 6c730455e2d8b590a4e4b9ca0392985918678bf4
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125646"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167700"
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Standard Load Balancer のメトリックと正常性の診断
 
 Azure Standard Load Balancer は、リソースに次の診断機能を提供しています。
-* **多次元メトリック**: パブリックと内部両方のロード バランサー構成用に新しい多次元診断機能が用意されています。 ロード バランサー リソースの監視、管理、トラブルシューティングを行うことができます。
+* **多次元メトリック**: パブリックと内部両方のロード バランサー構成用に、[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) によって新しい多次元診断機能が提供されています。 ロード バランサー リソースの監視、管理、トラブルシューティングを行うことができます。
 
 * **リソース正常性**: Azure Portal の [ロード バランサー] ページおよび ([Monitor]\(監視\) の) [リソース正常性] ページに、Standard Load Balancer のパブリック ロード バランサー構成の [リソース正常性] セクションが表示されます。
 
@@ -219,6 +219,7 @@ Standard Load Balancer リソースの正常性状態は、**[Monitor]\(監視\)
 
 - [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する。
 - [ロード バランサーの送信接続](https://aka.ms/lboutbound)の詳細を確認します。
-- [Azure Monitor メトリック REST API](https://docs.microsoft.com/rest/api/monitor/metrics/) について確認する。
+- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) について学習する。
+- [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) および [REST API を使用してメトリックを取得する方法](https://docs.microsoft.com/rest/api/monitor/metrics/metrics_list)を学習する。
 
 

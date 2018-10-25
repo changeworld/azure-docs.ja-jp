@@ -5,21 +5,18 @@ services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-editor: ''
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
-ms.service: functions
-ms.workload: na
-ms.tgt_pltfrm: multiple
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.date: 08/14/2018
+ms.topic: conceptual
+ms.date: 09/24/2018
 ms.author: glenga
-ms.openlocfilehash: cb336d6742aab10e1fd8305fd52f1376bb4f2598
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 1827e54f5e1e68ec324b4f521de843be48935391
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42144664"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079414"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Azure Functions Core Tools の操作
 
@@ -29,13 +26,13 @@ Azure Functions Core Tools を使用すると、ローカル コンピュータ�
 
 ## <a name="core-tools-versions"></a>Core Tools のバージョン
 
-Azure Functions Core Tools には、2 つのバージョンがあります。 使用するバージョンは、ローカル開発環境、選択した言語、および必要なサポートのレベルによって異なります。
+Azure Functions Core Tools には、2 つのバージョンがあります。 使用するバージョンは、ローカル開発環境、[選択した言語](supported-languages.md)、および必要なサポートのレベルによって異なります。
 
-+ [バージョン 1.x](#v1): ランタイムのバージョン 1.x をサポートします。これは、一般公開 (GA) 段階です。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://docs.npmjs.com/getting-started/what-is-npm)からインストールされます。 このバージョンでは、正式にサポートされていない試験段階の言語で関数を作成できます。 詳細については、「[Azure Functions でサポートされている言語](supported-languages.md)」を参照してください
++ [バージョン 1.x](#v1): ランタイムのバージョン 1.x をサポートします。 ツールのこのバージョンは Windows コンピューター上でのみサポートされ、[npm パッケージ](https://docs.npmjs.com/getting-started/what-is-npm)からインストールされます。 このバージョンでは、正式にサポートされていない試験段階の言語で関数を作成できます。 詳細については、「[Azure Functions でサポートされている言語](supported-languages.md)」を参照してください
 
-+ [バージョン 2.x](#v2): [ランタイムのバージョン 2.x](functions-versions.md) をサポートします。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux) に対応しています。 インストールには、プラットフォーム固有のパッケージ マネージャーまたは npm を使用します。 2.x ランタイムと同様に、Core Tools のこのバージョンは現在プレビュー段階です。 
++ [バージョン 2.x](#v2): [ランタイムのバージョン 2.x](functions-versions.md) をサポートします。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux) に対応しています。 インストールには、プラットフォーム固有のパッケージ マネージャーまたは npm を使用します。
 
-特に記載がない限り、この記事の例ではバージョン 2.x を対象にしています。 破壊的変更やお知らせを含むバージョン 2.x についての重要な更新プログラムを受け取るには、[Azure App Service のお知らせ](https://github.com/Azure/app-service-announcements/issues)のリポジトリをご覧ください。
+特に記載がない限り、この記事の例ではバージョン 2.x を対象にしています。
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
 
@@ -43,18 +40,15 @@ Azure Functions Core Tools には、2 つのバージョンがあります。 �
 
 ### <a name="v1"></a>バージョン 1.x
 
-元のバージョンのツールは、Functions 1.x ランタイムを使用します。 このバージョンは .NET Framework (4.7.1) を使用し、Windows コンピューターでのみサポートされます。 バージョン 1.x のツールをインストールする前に、npm を含む [NodeJS をインストール](https://docs.npmjs.com/getting-started/installing-node)する必要があります。
+元のバージョンのツールは、Functions 1.x ランタイムを使用します。 このバージョンは .NET Framework (4.7) を使用し、Windows コンピューターでのみサポートされます。 バージョン 1.x のツールをインストールする前に、npm を含む [NodeJS をインストール](https://docs.npmjs.com/getting-started/installing-node)する必要があります。
 
 次のコマンドを使用して、バージョン 1.x ツールをインストールします。
 
 ```bash
-npm install -g azure-functions-core-tools
+npm install -g azure-functions-core-tools@v1
 ```
 
 ### <a name="v2"></a>バージョン 2.x
-
->[!NOTE]
-> Azure Functions ランタイム 2.0 はプレビュー段階であり、現在のところ、Azure Functions のすべての機能はサポートされていません。 詳細については、[Azure Functions のバージョン](functions-versions.md)に関するページを参照してください。 
 
 バージョン 2.x のツールは、.NET Core 上に構築されている Azure Functions ランタイム 2.x を使用します。 このバージョンは、[Windows](#windows-npm)、[macOS](#brew)、および [Linux](#linux)など、.NET Core 2.x が対応しているすべてのプラットフォームでサポートされます。
 
@@ -69,7 +63,7 @@ npm install -g azure-functions-core-tools
 3. 次のコマンドを使って、Core Tools のパッケージをインストールします。
 
     ```bash
-    npm install -g azure-functions-core-tools@core
+    npm install -g azure-functions-core-tools
     ```
 
 #### <a name="brew"></a>Homebrew による MacOS
@@ -107,8 +101,9 @@ npm install -g azure-functions-core-tools
     sudo apt-get update
     ```
 
-    | Linux ディストリビューション | バージョン |
+    | Linux ディストリビューション | Version |
     | --------------- | ----------- |
+    | Ubuntu 18.04    | `bionic`    |
     | Ubuntu 17.10    | `artful`    |
     | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux Mint 18    | `xenial`  |
@@ -118,6 +113,16 @@ npm install -g azure-functions-core-tools
     ```bash
     sudo apt-get install azure-functions-core-tools
     ```
+
+### <a name="v1"></a>バージョン 1.x
+
+元のバージョンのツールは、Functions 1.x ランタイムを使用します。 このバージョンは .NET Framework (4.7.1) を使用し、Windows コンピューターでのみサポートされます。 バージョン 1.x のツールをインストールする前に、npm を含む [NodeJS をインストール](https://docs.npmjs.com/getting-started/installing-node)する必要があります。
+
+次のコマンドを使用して、バージョン 1.x ツールをインストールします。
+
+```bash
+npm install -g azure-functions-core-tools@v1
+```
 
 ## <a name="create-a-local-functions-project"></a>ローカル関数プロジェクトを作成する
 
@@ -151,10 +156,19 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
-ローカル Git リポジトリを使用せずにプロジェクトを作成する場合は、`--no-source-control [-n]` オプションを使用します。
+`func init` では、次のオプションがサポートされています。特に注意書きがない限り、バージョン 2.x だけが対象です。
+
+| オプション     | 説明                            |
+| ------------ | -------------------------------------- |
+| **`--csx`** | C# スクリプト (.csx) プロジェクトを初期化します。 後続のコマンドで、`--csx` を指定する必要があります。 |
+| **`--docker`** | 選択した `--worker-runtime` に基づく基本イメージを使用して、コンテナーの Dockerfile を作成します。 カスタム Linux コンテナーに発行する場合は、このオプションを使用します。 |
+| **`--force`** | プロジェクトに既存のファイルがある場合でも、プロジェクトを初期化します。 この設定は、同じ名前の既存のファイルを上書きします。 プロジェクト フォルダー内の他のファイルには影響ありません。 |
+| **`--no-source-control -n`** | バージョン 1.x での Git リポジトリの既定の作成を禁止します。 バージョン 2.x では、Git リポジトリは既定では作成されません。 |
+| **`--source-control`** | Git リポジトリを作成するかどうかを制御します。 既定では、リポジトリは作成されません。 `true` を指定すると、リポジトリが作成されます。 |
+| **`--worker-runtime`** | プロジェクトの言語ランタイムを設定します。 サポートされる値は、`dotnet`、`node` (JavaScript)、`java` です。 設定しないと、初期化中にランタイムの選択を求められます。 |
 
 > [!IMPORTANT]
-> 既定では、Core Tools のバージョン 2.x では、.NET ランタイムの関数アプリ プロジェクトは [C# クラス プロジェクト](functions-dotnet-class-library.md) (.csproj) として作成されます。 Visual Studio 2017 または Visual Studio Code で使用できるこれらの C# プロジェクトは、テスト中および Azure への発行時にコンパイルされます。 バージョン 1.x およびポータルで作成される同じ C# スクリプト (.csx) ファイルを代わりに作成および使用したい場合は、関数を作成して展開するときに、`--csx` パラメーターを指定する必要があります。
+> 既定では、Core Tools のバージョン 2.x では、.NET ランタイムの関数アプリ プロジェクトは [C# クラス プロジェクト](functions-dotnet-class-library.md) (.csproj) として作成されます。 Visual Studio または Visual Studio Code で使用できるこれらの C# プロジェクトは、テスト中および Azure への発行時にコンパイルされます。 バージョン 1.x およびポータルで作成される同じ C# スクリプト (.csx) ファイルを代わりに作成および使用したい場合は、関数を作成して展開するときに、`--csx` パラメーターを指定する必要があります。
 
 ## <a name="register-extensions"></a>拡張機能を登録する
 
@@ -166,12 +180,13 @@ Azure Functions ランタイムのバージョン 2.x では、関数アプリ�
 
 ## <a name="local-settings-file"></a>ローカル設定ファイル
 
-local.settings.json ファイルには、アプリの設定、接続文字列、および Azure Functions Core Tools の設定が格納されます。 その構造を次に示します。
+local.settings.json ファイルには、アプリの設定、接続文字列、および Azure Functions Core Tools の設定が格納されます。 local.settings.json ファイル内の設定は、ローカルで実行されている Functions ツールでのみ使用されます。 既定では、プロジェクトが Azure に発行されても、これらの設定は自動的に移行されません。 [発行する際](#publish)に `--publish-local-settings` スイッチを使用して、これらの設定が Azure 内の関数アプリに追加されていることを確認してください。 **ConnectionStrings** 内の値は発行されないことに注意してください。 ファイルの構造は次のとおりです。
 
 ```json
 {
   "IsEncrypted": false,
   "Values": {
+    "FUNCTIONS\_WORKER\_RUNTIME": "<language worker>",
     "AzureWebJobsStorage": "<connection-string>",
     "AzureWebJobsDashboard": "<connection-string>",
     "MyBindingConnection": "<binding-connection-string>"
@@ -186,7 +201,7 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 }
 ```
 
-| 設定      | 説明                            |
+| Setting      | 説明                            |
 | ------------ | -------------------------------------- |
 | **IsEncrypted** | **true** に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は **false** です。 |
 | **値** | ローカルで実行するときに使用されるアプリケーション設定と接続文字列のコレクションです。 これらの値は、**AzureWebJobsStorage** や **AzureWebJobsDashboard** など、Azure 内の関数アプリのアプリ設定に対応します。 多くのトリガーおよびバインドには、[BLOB Storage トリガー](functions-bindings-storage-blob.md#trigger---configuration)の **Connection** など、接続文字列アプリ設定を参照するプロパティがあります。 このようなプロパティでは、**Values** 配列にアプリケーション設定を定義する必要があります。 <br/>**AzureWebJobsStorage** は、HTTP 以外のトリガーに必要なアプリ設定です。 [Azure ストレージ エミュレーター](../storage/common/storage-use-emulator.md)がローカルにインストールされている場合は、**AzureWebJobsStorage** を `UseDevelopmentStorage=true` に設定できます。Core Tools はエミュレーターを使用します。 これは開発中には便利ですが、展開する前に実際のストレージに接続してテストする必要があります。 |
@@ -199,21 +214,19 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
 
 + [C# プリコンパイル済み](functions-dotnet-class-library.md#environment-variables)
 + [C# スクリプト (.csx)](functions-reference-csharp.md#environment-variables)
-+ [F#](functions-reference-fsharp.md#environment-variables)
++ [F# スクリプト (.fsx)](functions-reference-fsharp.md#environment-variables)
 + [Java](functions-reference-java.md#environment-variables) 
 + [JavaScript](functions-reference-node.md#environment-variables)
 
-local.settings.json ファイル内の設定は、ローカルで実行されている Functions ツールでのみ使用されます。 既定では、プロジェクトが Azure に発行されても、これらの設定は自動的に移行されません。 [発行する際](#publish)に `--publish-local-settings` スイッチを使用して、これらの設定が Azure 内の関数アプリに追加されていることを確認してください。 **ConnectionStrings** 内の値は発行されません。
-
 有効なストレージ接続文字列が **AzureWebJobsStorage** に設定されておらず、エミュレーターが使用されていない場合は、次のエラー メッセージが表示されます。  
 
->local.settings.json に AzureWebJobsStorage の値がありません。 これは HTTP 以外のすべてのトリガーに必要です。 "func azure functionapp fetch-app-settings <functionAppName>" を実行するか、local.settings.json で接続文字列を指定することができます。
+> local.settings.json に AzureWebJobsStorage の値がありません。 これは HTTP 以外のすべてのトリガーに必要です。 "func azure functionapp fetch-app-settings <functionAppName>" を実行するか、local.settings.json で接続文字列を指定することができます。
 
 ### <a name="get-your-storage-connection-strings"></a>ストレージ接続文字列の取得
 
 開発のためにストレージ エミュレーターを使用している場合であっても、実際のストレージに接続してテストすることができます。 [ストレージ アカウントを作成済み](../storage/common/storage-create-storage-account.md)である場合は、次の方法のいずれかで、有効なストレージ接続文字列を取得できます。
 
-+ [Azure Portal]から設定。 ストレージ アカウントに移動し、**設定**の**アクセス キー**を選択してから、いずれかの**接続文字列**の値をコピーします。
++ [Azure ポータル]から設定。 ストレージ アカウントに移動し、**設定**の**アクセス キー**を選択してから、いずれかの**接続文字列**の値をコピーします。
 
   ![Azure Portal から接続文字列をコピーする](./media/functions-run-local/copy-storage-connection-portal.png)
 
@@ -233,7 +246,7 @@ local.settings.json ファイル内の設定は、ローカルで実行されて
     ```bash
     func azure storage fetch-connection-string <StorageAccountName>
     ```
-    
+
     Azure にまだサインインしていない場合は、サインインするように求められます。
 
 ## <a name="create-func"></a>関数を作成する
@@ -274,10 +287,10 @@ Writing C:\myfunctions\myMyFunctionProj\MyQueueTrigger\function.json
 
 | 引数     | 説明                            |
 | ------------------------------------------ | -------------------------------------- |
-| **`--language -l`**| テンプレート プログラミング言語。C#、F#、JavaScript など。 このオプションは、バージョン 1.x で必須です。 バージョン 2.x では、このオプションを使用したり、プロジェクトの既定の言語を選択したりしないでください。 |
-| **`--template -t`** | サポートされている各言語で使用可能なテンプレートの完全な一覧を表示するには、`func templates list` コマンドを使います。   |
-| **`--name -n`** | 関数名。 |
 | **`--csx`** | (バージョン 2.x) バージョン 1.x およびポータルで使用されるものと同じ C# スクリプト (.csx) テンプレートを生成します。 |
+| **`--language -l`**| テンプレート プログラミング言語。C#、F#、JavaScript など。 このオプションは、バージョン 1.x で必須です。 バージョン 2.x では、このオプションを使用しないか、または worker ランタイムと一致する言語を選択してください。 |
+| **`--name -n`** | 関数名。 |
+| **`--template -t`** | サポートされている各言語で使用可能なテンプレートの完全な一覧を表示するには、`func templates list` コマンドを使います。   |
 
 たとえば、JavaScript HTTP トリガーを 1 つのコマンドで作成するには、次を実行します。
 
@@ -298,28 +311,31 @@ Functions プロジェクトを実行するには、Functions ホストを実行
 ```bash
 func host start
 ```
+
 `host` コマンドは、バージョン 1.x でのみ必要です。
 
 `func host start` では、次のオプションがサポートされています。
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
-| **`--cors`** | CORS オリジンのコンマ区切りのリスト (スペースなし)。 |
-| **`--debug <type>`** | [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) または [Visual Studio 2017](functions-dotnet-class-library.md) から **func.exe** プロセスにアタッチできるように、デバッグ ポートを開いた状態でホストを起動します。 *\<type\>* オプションは `VSCode` と `VS` です。  |
-| **`--port -p`** | ローカル ポート。このポートでリッスンします。 既定値: 7071。 |
-| **`--timeout -t`** | Functions ホスト開始のタイムアウト (秒単位)。 既定値: 20 秒。|
-| **`--useHttps`** | `http://localhost:{port}` ではなく `https://localhost:{port}` にバインドします。 既定では、このオプションにより、信頼された証明書がコンピューターに作成されます。|
 | **`--build`** | 実行前に現在のプロジェクトをビルドします。 バージョン 2.x と C# プロジェクトのみ。 |
-| **`--cert`** | 秘密キーが含まれる .pfx ファイルへのパス。 `--useHttps` でのみ使用されます。 Version 2.x のみ。 | 
-| **`--password`** | .pfx ファイルのパスワードまたはパスワードが格納されているファイルのいずれか。 `--cert` でのみ使用されます。 Version 2.x のみ。 |
+| **`--cert`** | 秘密キーが含まれる .pfx ファイルへのパス。 `--useHttps` でのみ使用されます。 Version 2.x のみ。 |
+| **`--cors`** | CORS オリジンのコンマ区切りのリスト (スペースなし)。 |
+| **`--debug`** | [Visual Studio Code](https://code.visualstudio.com/tutorials/functions-extension/getting-started) または [Visual Studio 2017](functions-dotnet-class-library.md) から **func.exe** プロセスにアタッチできるように、デバッグ ポートを開いた状態でホストを起動します。 有効な値は `VSCode` と `VS` です。  |
 | **`--language-worker`** | 言語ワーカーを構成するための引数。 Version 2.x のみ。 |
 | **`--nodeDebugPort -n`** | 使用するノード デバッガーのポート。 既定値: launch.json または 5858 の値。 バージョン 1.x のみ。 |
+| **`--password`** | .pfx ファイルのパスワードまたはパスワードが格納されているファイルのいずれか。 `--cert` でのみ使用されます。 Version 2.x のみ。 |
+| **`--port -p`** | ローカル ポート。このポートでリッスンします。 既定値: 7071。 |
+| **`--pause-on-error`** | プロセスを終了する前に、追加入力を一時停止します。 統合開発環境 (IDE) から Core Tools を起動した場合にのみ使用されます。|
+| **`--script-root --prefix`** | 実行または展開される関数アプリのルートへのパスを指定するために使用されます。 これは、サブフォルダーにプロジェクト ファイルを生成するコンパイル済みプロジェクトに使用されます。 たとえば、C# クラス ライブラリ プロジェクトをビルドすると、host.json、local.settings.json、および function.json ファイルが、`MyProject/bin/Debug/netstandard2.0` のようなパスの "*ルート*" サブフォルダーに生成されます。 この場合は、プレフィックスを `--script-root MyProject/bin/Debug/netstandard2.0` と設定します。 これは、Azure で実行する場合の関数アプリのルートです。 |
+| **`--timeout -t`** | Functions ホスト開始のタイムアウト (秒単位)。 既定値: 20 秒。|
+| **`--useHttps`** | `http://localhost:{port}` ではなく `https://localhost:{port}` にバインドします。 既定では、このオプションにより、信頼された証明書がコンピューターに作成されます。|
 
 C# クラス ライブラリ プロジェクト (.csproj) の場合は、ライブラリの .dll を生成するための `--build` オプションを含める必要があります。
 
 Functions ホストの起動時、HTTP によってトリガーされる関数の URL が出力されます。
 
-```bash
+```output
 Found the following functions:
 Host.Functions.MyHttpTrigger
 
@@ -349,6 +365,7 @@ Functions ホストがリッスンしているのと同じサーバー名とポ�
 ```bash
 curl --get http://localhost:7071/api/MyHttpTrigger?name=Azure%20Rocks
 ```
+
 次の例は、要求本文で _name_ を渡す POST 要求から呼び出される同じ関数です。
 
 ```bash
@@ -408,32 +425,66 @@ func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 
 ## <a name="publish"></a>Azure に発行する
 
+Core Tools でサポートされている 2 種類のデプロイは、関数アプリへの関数プロジェクト ファイルの直接的なデプロイと、カスタム Linux コンテナーのデプロイ (バージョン 2.x でのみサポート) です。 既に [Azure サブスクリプションで関数アプリを作成してある](functions-cli-samples.md#create)必要があります。
+
+バージョン 2.x では、発行する前に、プロジェクトで[拡張機能を登録しておく](#register-extensions)必要があります。 コンパイルを必要とするプロジェクトは、バイナリをデプロイできるように、ビルドする必要があります。
+
+### <a name="project-file-deployment"></a>プロジェクト ファイルのデプロイ  
+
+最も一般的なデプロイ方法は、Core Tools を使用して関数アプリ プロジェクトをパッケージ化し、関数アプリにパッケージをデプロイする方法です。 必要に応じて、[展開パッケージから直接関数を実行する](run-functions-from-deployment-package.md)ことができます。
+
 Azure で Functions プロジェクトを関数アプリに発行するには、`publish` コマンドを使用します。
 
 ```bash
 func azure functionapp publish <FunctionAppName>
 ```
 
-以下のオプションを使用できます。
+このコマンドは、Azure で既存の関数アプリに公開されるコマンドです。 `<FunctionAppName>` がサブスクリプションに存在しない場合は、エラーが発生します。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。
+
+`publish` コマンドは、Functions プロジェクト ディレクトリのコンテンツをアップロードします。 ローカルでファイルを削除する場合、`publish` コマンドではファイルは Azure から削除されません。 Azure 内のファイルは、[Azure ポータル] の [Kudu ツール](functions-how-to-use-azure-function-app-settings.md#kudu) を使用することで削除できます。  
+
+>[!IMPORTANT]  
+> Azure portal で関数アプリを作成すると、既定でバージョン 2.x の Function ランタイムが使用されます。 関数アプリにバージョン 1.x のランタイムを使用させるには、[バージョン 1.x での実行](functions-versions.md#creating-1x-apps)に関するページの説明に従ってください。  
+> 既存の関数がある関数アプリのランタイム バージョンを変更することはできません。
+
+次の発行オプションを使用できます。このオプションは、1.x と 2.x 両方のバージョンに適用されます。
 
 | オプション     | 説明                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  local.settings.json の設定を Azure に発行し、設定が既に存在する場合は上書きを促します。 ストレージ エミュレーターを使用している場合は、アプリ設定を[実際のストレージ接続](#get-your-storage-connection-strings)に変更します。 |
-| **`--overwrite-settings -y`** | `-i` で使用する必要があります。 値が異なる場合は、Azure の AppSettings をローカル値で上書きします。 既定値は prompt です。|
+| **`--overwrite-settings -y`** | `--publish-local-settings -i` を使用するときに、アプリの設定を上書きするプロンプトを抑制します。|
 
-このコマンドは、Azure で既存の関数アプリに公開されるコマンドです。 `<FunctionAppName>` がサブスクリプションに存在しない場合は、エラーが発生します。 Azure CLI を使用してコマンド プロンプトまたはターミナル ウィンドウから関数アプリを作成する方法については、「[サーバーレス実行用の Function App を作成する](./scripts/functions-cli-create-serverless.md)」を参照してください。
+次の発行オプションは、バージョン 2.x でのみサポートされています。
 
-`publish` コマンドは、Functions プロジェクト ディレクトリのコンテンツをアップロードします。 ローカルでファイルを削除する場合、`publish` コマンドではファイルは Azure から削除されません。 Azure 内のファイルは、[Azure Portal] の [Kudu ツール](functions-how-to-use-azure-function-app-settings.md#kudu) を使用することで削除できます。  
+| オプション     | 説明                            |
+| ------------ | -------------------------------------- |
+| **`--publish-settings-only -o`** |  設定のみを発行し、コンテンツをスキップします。 既定値は prompt です。 |
+|**`--list-ignored-files`** | 発行時に無視されるファイルの一覧を表示します。これは、.funcignore ファイルに基づきます。 |
+| **`--list-included-files`** | 発行されるファイルの一覧を表示します。これは、.funcignore ファイルに基づきます。 |
+| **`--zip`** | Run-From-Zip パッケージで発行します。 アプリで AzureWebJobsStorage の設定が定義されている必要があります。 |
+| **`--force`** | 特定のシナリオで発行前の検証を無視します。 |
+| **`--csx`** | C# スクリプト (.csx) プロジェクトを発行します。 |
+| **`--no-build`** | dotnet 関数のビルドをスキップします。 |
+| **`--dotnet-cli-params`** | コンパイル済み C# (.csproj) 関数を発行するとき、Core Tools は "dotnet build --output bin/publish" を呼び出します。 これに渡されるすべてのパラメーターは、コマンド ラインに追加されます。 |
 
->[!IMPORTANT]  
-> Azure で関数アプリを作成すると、既定でバージョン 1.x の Function ランタイムが使用されます。 関数アプリでバージョン 2.x のランタイムを使用するには、アプリケーション設定 `FUNCTIONS_EXTENSION_VERSION=beta` を追加します。  
-次の Azure CLI コードを使用して、この設定を関数アプリに追加します。
+### <a name="custom-container-deployment"></a>カスタム コンテナーのデプロイ
 
-```azurecli-interactive
-az functionapp config appsettings set --name <function_app> \
---resource-group myResourceGroup \
---settings FUNCTIONS_EXTENSION_VERSION=beta   
+Functions では、カスタム Linux コンテナーに関数プロジェクトをデプロイできます。 詳しくは、「[カスタム イメージを使用して Linux で関数を作成する](functions-create-function-linux-custom-image.md)」をご覧ください。 バージョン 2.x の Core Tools では、カスタム コンテナーのデプロイがサポートされています。 カスタム コンテナーには、Dockerfile が必要です。 `func init` で --dockerfile オプションを使用します。
+
+```bash
+func deploy
 ```
+
+次のカスタム コンテナー デプロイ オプションを使用できます。 
+
+| オプション     | 説明                            |
+| ------------ | -------------------------------------- |
+| **`--registry`** | 現在のユーザーがサインインしている Docker レジストリの名前。 |
+| **`--platform`** | 関数アプリのホスティング プラットフォーム。 有効なオプションは `kubernetes` です。 |
+| **`--name`** | 関数アプリの名前。 |
+| **`--max`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最大数を設定します。 |
+| **`--min`**  | 必要に応じて、デプロイする関数アプリ インスタンスの最小数を設定します。 |
+| **`--config`** | オプションのデプロイ構成ファイルを設定します。 |
 
 ## <a name="next-steps"></a>次の手順
 
@@ -443,5 +494,5 @@ Azure Functions Core Tools は[オープン ソースであり、GitHub でホ�
 <!-- LINKS -->
 
 [Azure Functions Core Tools]: https://www.npmjs.com/package/azure-functions-core-tools
-[Azure Portal]: https://portal.azure.com 
+[Azure ポータル]: https://portal.azure.com 
 [Node.js]: https://docs.npmjs.com/getting-started/installing-node#osx-or-windows

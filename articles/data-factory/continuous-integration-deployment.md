@@ -1,6 +1,6 @@
 ---
-title: Azure Data Factory における継続的インテグレーションと配置 | Microsoft Docs
-description: 継続的インテグレーションと配置を使用して Data Factory パイプラインをある環境 (開発、テスト、実稼働) から別の環境に移動する方法について説明します。
+title: Azure Data Factory における継続的インテグレーションとデリバリー | Microsoft Docs
+description: 継続的インテグレーションとデリバリーを使用して Data Factory パイプラインをある環境 (開発、テスト、運用) から別の環境に移動する方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -10,20 +10,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/16/2018
+ms.date: 10/09/2018
 ms.author: douglasl
-ms.openlocfilehash: 8bbc64a34b5ae95e044b95f921770adc9045574c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 89ea3d576f20f6e62730b40e0e4f4f8d5f798142
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146519"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386988"
 ---
-# <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと配置
+# <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Azure Data Factory における継続的インテグレーションと継続的デリバリー (CI/CD)
 
-継続的インテグレーションは、コードベースに対して行われた変更を、できるだけ早く自動的にテストするプラクティスです。 継続的配置は、継続的インテグレーションの間に発生したテストに続けて、変更をステージングまたは実稼働システムにプッシュします。
+継続的インテグレーションは、コードベースに対して行われた変更を、できるだけ早く自動的にテストするプラクティスです。 継続的デリバリーは、継続的インテグレーションの間に発生したテストに続けて、変更をステージングまたは実稼働システムにプッシュします。
 
-Azure Data Factory では、継続的インテグレーションと配置とは、Data Factory パイプラインをある環境 (開発、テスト、実稼働) から別の環境に移動することを意味します。 継続的インテグレーションと配置を行うために、Data Factory UI 統合と Azure Resource Manager テンプレートを使用できます。 **ARM テンプレート** オプションを選択すると、Data Factory UI によって Resource Manager テンプレートを生成できます。 **[ARM テンプレートのエクスポート]** を選択すると、ポータルで、データ ファクトリ用の Resource Manager テンプレートと、すべての接続文字列とその他のパラメーターを含む構成ファイルが生成されます。 次に、環境 (開発、テスト、実稼働) ごとに 1 つの構成ファイルを作成する必要があります。 すべての環境で使用されるメインの Resource Manager テンプレート ファイルは変更しません。
+Azure Data Factory では、継続的インテグレーションと継続的デリバリーとは、Data Factory パイプラインをある環境 (開発、テスト、実稼働) から別の環境に移動することを意味します。 継続的インテグレーションと継続的デリバリーを行うために、Data Factory UI 統合と Azure Resource Manager テンプレートを使用できます。 **ARM テンプレート** オプションを選択すると、Data Factory UI によって Resource Manager テンプレートを生成できます。 **[ARM テンプレートのエクスポート]** を選択すると、ポータルで、データ ファクトリ用の Resource Manager テンプレートと、すべての接続文字列とその他のパラメーターを含む構成ファイルが生成されます。 次に、環境 (開発、テスト、実稼働) ごとに 1 つの構成ファイルを作成する必要があります。 すべての環境で使用されるメインの Resource Manager テンプレート ファイルは変更しません。
 
 この機能の概要とデモンストレーションについては、以下の 9 分間の動画を視聴してください。
 
@@ -53,9 +53,9 @@ Azure Data Factory では、継続的インテグレーションと配置とは�
 ![コード ビューを開いて接続文字列を確認する](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>継続的インテグレーションのライフサイクル
-Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続的インテグレーションと配置のライフサイクル全体を次に示します。
+Data Factory UI で Azure Repos Git 統合を有効にした後で使用できる継続的インテグレーションと継続的デリバリーのライフサイクル全体を次に示します。
 
-1.  すべての開発者がパイプラインやデータセットなどの Data Factory リソースを作成できる開発データ ファクトリを VSTS で設定します。
+1.  すべての開発者がパイプラインやデータセットなどの Data Factory リソースを作成できる開発データ ファクトリを Azure Repos で設定します。
 
 1.  開発者は、パイプラインなどのリソースを変更できます。 開発者は、変更を行った後、**[デバッグ]** を選択して、最新の変更を行ったパイプラインがどのように実行されるかを確認できます。
 
@@ -67,25 +67,25 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
 1.  エクスポートされた Resource Manager テンプレートは、異なるパラメーター ファイルを使用してテスト ファクトリと実稼働ファクトリにデプロイできます。
 
-## <a name="automate-continuous-integration-with-vsts-releases"></a>VSTS リリースを使用して継続的インテグレーションを自動化する
+## <a name="automate-continuous-integration-with-azure-pipelines-releases"></a>Azure Pipelines リリースを使用して継続的インテグレーションを自動化する
 
-データ ファクトリの複数の環境へのデプロイを自動化できるように VSTS リリースを設定する手順を次に示します。
+データ ファクトリの複数の環境へのデプロイを自動化できるように Azure Pipelines リリースを設定する手順を次に示します。
 
-![VSTS を使用した継続的インテグレーションの図](media/continuous-integration-deployment/continuous-integration-image12.png)
+![Azure Pipelines を使用した継続的インテグレーションの図](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>必要条件
 
--   [*Azure Resource Manager サービス エンドポイント*](https://docs.microsoft.com/vsts/build-release/concepts/library/service-endpoints#sep-azure-rm)を使用して Team Foundation Server または VSTS にリンクされた Azure サブスクリプション。
+-   [*Azure Resource Manager サービス エンドポイント*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm)を使用して Team Foundation Server または Azure Repos にリンクされた Azure サブスクリプション。
 
--   VSTS Git が構成されている Data Factory。
+-   Azure Repos Git 統合が構成されたデータ ファクトリ。
 
 -   シークレットを格納する [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)。
 
-### <a name="set-up-a-vsts-release"></a>VSTS リリースを設定する
+### <a name="set-up-an-azure-pipelines-release"></a>Azure Pipelines リリースをセットアップする
 
-1.  Data Factory で構成したのと同じプロジェクトの VSTS ページに移動します。
+1.  Data Factory で構成したのと同じプロジェクトの Azure Repos ページに移動します。
 
-1.  上部メニュー **[ビルドとリリース]** &gt; **[リリース]** &gt; **[リリース定義の作成]** をクリックします。
+1.  上部メニューの **[Azure Pipelines]** &gt; **[リリース]** &gt; **[リリース定義の作成]** をクリックします。
 
     ![](media/continuous-integration-deployment/continuous-integration-image6.png)
 
@@ -113,15 +113,20 @@ Data Factory UI で VSTS Git 統合を有効にした後で使用できる継続
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
 
-1.  リリース定義を保存します。
+    g. **[増分]** デプロイ モードを選択します。
 
-1.  このリリース定義から新しいリリースを作成します。
+    > [!WARNING]
+    > **[完全]** デプロイ モードを選択すると、Resource Manager テンプレートに定義されていないターゲット リソース グループ内のすべてのリソースを含む既存のリソースが削除される可能性があります。
+
+1.  リリース パイプラインを保存します。
+
+1.  このリリース パイプラインから新しいリリースを作成します。
 
     ![](media/continuous-integration-deployment/continuous-integration-image10.png)
 
 ### <a name="optional---get-the-secrets-from-azure-key-vault"></a>省略可能 - Azure Key Vault からシークレットを取得する
 
-Azure Resource Manager テンプレートに渡すシークレットがある場合は、VSTS リリースで Azure Key Vault を使うことをお勧めします。
+Azure Resource Manager テンプレートに渡すシークレットがある場合は、Azure Pipelines リリースで Azure Key Vault を使うことをお勧めします。
 
 シークレットを処理する方法は 2 つあります。
 
@@ -148,7 +153,7 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
     -   パラメーター ファイルも発行ブランチ内に存在する必要があります。
 
-1.  前のセクションで説明されている Azure Resource Manager デプロイ タスクの前に、[Azure Key Vault タスク](https://docs.microsoft.com/vsts/build-release/tasks/deploy/azure-key-vault)を追加します。
+1.  前のセクションで説明されている Azure Resource Manager デプロイ タスクの前に、[Azure Key Vault タスク](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-key-vault)を追加します。
 
     -   **[タスク]** タブを選択し、新しいタスクを作成した後、**Azure Key Vault** を探して追加します。
 
@@ -156,13 +161,13 @@ Azure Resource Manager テンプレートに渡すシークレットがある場
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-vsts-agent"></a>VSTS エージェントへのアクセス許可を与える
-Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗する可能性があります。 リリースのログをダウンロードし、VSTS エージェントへのアクセス許可を与えるコマンドがある `.ps1` ファイルを探します。 コマンドは直接実行するか、ファイルからプリンシパル ID をコピーし、Azure Portal でアクセス ポリシーを手動で追加できます  (必要な最低限のアクセス許可は、*Get*と*List* です)。
+### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Azure Pipelines エージェントにアクセス許可を与える
+Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗する可能性があります。 リリースのログをダウンロードし、Azure Pipelines エージェントへのアクセス許可を与えるコマンドがある `.ps1` ファイルを探します。 コマンドは直接実行するか、ファイルからプリンシパル ID をコピーし、Azure Portal でアクセス ポリシーを手動で追加できます  (必要な最低限のアクセス許可は、*Get*と*List* です)。
 
 ### <a name="update-active-triggers"></a>アクティブなトリガーを更新する
 アクティブなトリガーを更新しようとした場合、デプロイは失敗します。 アクティブなトリガーを更新するには、手動でそれらを停止し、デプロイ後に起動する必要があります。 次の例に示すように、この目的のための Azure Powershell タスクを追加できます。
 
-1.  VSTS リリースの [タスク] タブで、**[Azure Powershell]** を探します。
+1.  リリースの [タスク] タブで、**[Azure Powershell]** を探します。
 
 1.  接続の種類として **[Azure Resource Manager]** を選択し、サブスクリプションを選択します。
 
@@ -178,9 +183,12 @@ Azure Key Vault タスクは、初回はアクセス拒否エラーで失敗す�
 
 同様の手順と同様のコード (`Start-AzureRmDataFactoryV2Trigger` 関数) を使用して、デプロイ後にトリガーを再起動できます。
 
+> [!IMPORTANT]
+> 継続的インテグレーションと継続的デプロイ シナリオでは、Integration Runtime の種類は異なる環境間で同じである必要があります。 たとえば、開発環境に "*セルフホステッド*" Integration Runtime (IR) がある場合、テストや運用などの他の環境環境でも、IR の種類は "*セルフホステッド*" である必要があります。 同様に、複数のステージ間で統合ランタイムを共有している場合は、開発、テスト、運用のすべての環境で、IR を "*リンクされたセルフホステッド*" として構成する必要があります。
+
 ## <a name="sample-deployment-template"></a>デプロイ テンプレートの例
 
-VSTS にインポートできるサンプル デプロイ テンプレートを次に示します。
+Azure Pipelines にインポートできるサンプル デプロイ テンプレートを次に示します。
 
 ```json
 {
@@ -720,7 +728,7 @@ VSTS にインポートできるサンプル デプロイ テンプレートを�
 
 ## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>トリガーの停止と再起動およびクリーンアップを行うサンプル スクリプト
 
-デプロイ前にトリガーを停止し、デプロイ後に再起動するサンプル スクリプトを次に示します。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。
+デプロイ前にトリガーを停止し、デプロイ後に再起動するサンプル スクリプトを次に示します。 このスクリプトには、削除済みのリソースを完全に削除するコードも含まれています。 最新バージョンの Azure PowerShell をインストールするには、「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.9.0)」を参照してください。
 
 ```powershell
 param
@@ -799,9 +807,9 @@ else {
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Resource Manager テンプレートでカスタム パラメーターを使用する
 
-Resource Manager テンプレートにカスタム パラメーターを定義できます。 必要なのは、リポジトリのルート フォルダーに `arm-template-parameters-definition.json` という名前のファイルを配置するだけです  (ファイル名は、ここに示されている名前と正確に一致する必要があります)。Data Factory は、コラボレーション ブランチからだけでなく、現在作業中のどのブランチからもファイルの読み取りを試みます。 ファイルが見つからない場合は、Data Factory は既定の定義を使用します。
+Resource Manager テンプレートにカスタム パラメーターを定義できます。 必要なのは、リポジトリのルート フォルダーに `arm-template-parameters-definition.json` という名前のファイルを配置するだけです  (ファイル名は、ここに示されている名前と正確に一致する必要があります)。Data Factory は、コラボレーション ブランチからだけでなく、現在作業中のどのブランチからもファイルの読み取りを試みます。 ファイルが見つからない場合、Data Factory では既定のパラメーターと値が使用されます。
 
-次の例で、サンプルのパラメーター ファイルを示します。 このサンプルを参照として使用して、独自のカスタム パラメーター ファイルを作成します。 指定したファイルが適切な JSON 形式ではない場合、Data Factory によりブラウザーのコンソールにエラー メッセージが出力され、Data Factory の UI に表示されている既定の定義に戻されます。
+次の例で、サンプルのパラメーター ファイルを示します。 このサンプルを参照として使用して、独自のカスタム パラメーター ファイルを作成します。 指定したファイルが適切な JSON 形式ではない場合、Data Factory によりブラウザーのコンソールにエラー メッセージが出力され、Data Factory の UI に表示されている既定のパラメーターと値に戻されます。
 
 ```json
 {

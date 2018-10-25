@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 3f49065d4f66f55ed728626764d9cac2aa5c3c69
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 14515aefe9635160cf99a630b0742d23352532cf
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038396"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985966"
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Azure Database for MySQL の接続ライブラリ
 この記事では、クライアント プログラムが Azure Database for MySQL に接続するときに使用できる各ライブラリまたはドライバーを示します。
@@ -24,7 +24,7 @@ MySQL では、業界標準の ODBC および JDBC と互換性のあるアプ�
 
 | **言語** | **プラットフォーム** | **追加リソース** | **ダウンロード** |
 | :----------- | :------------| :-----------------------| :------------|
-| PHP | Windows、Linux | [PHP 用 MySQL ネイティブ ドライバー - mysqlnd](https://dev.mysql.com/downloads/connector/php-mysqlnd/) | [ダウンロード](http://php.net/downloads.php) |
+| PHP | Windows、Linux | [PHP 用 MySQL ネイティブ ドライバー - mysqlnd](https://dev.mysql.com/downloads/connector/php-mysqlnd/) | [ダウンロード](https://secure.php.net/downloads.php) |
 | ODBC | Windows、Linux、Mac OS X、Unix プラットフォーム | [MySQL コネクタ/ODBC 開発者ガイド](https://dev.mysql.com/doc/connector-odbc/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/odbc/) |
 | ADO.NET | Windows | [MySQL Connector/Net 開発者ガイド](https://dev.mysql.com/doc/connector-net/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/net/) |
 | JDBC | プラットフォームに依存しない | [MySQL Connector/J 5.1 開発者ガイド](https://dev.mysql.com/doc/connector-j/5.1/en/) | [ダウンロード](https://dev.mysql.com/downloads/connector/j/) |

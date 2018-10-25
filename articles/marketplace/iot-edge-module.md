@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: qianw211
-ms.openlocfilehash: ecc892a38d5e86a089085cd67a78ce7d00c86fd8
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 46740e925a5d4e94c314105aba4920caf01532e7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181118"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985610"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge のモジュール
 
@@ -84,7 +84,7 @@ Azure Marketplace で認定および発行されるためには、IoT Edge モ�
 
 [クラウド発行ポータル](https://cloudpartner.azure.com/)にサインインするときに、次の記事を参照してください:
 
-- [IoT Edge モジュール プランの作成](https://cloudpartner.azure.com/#documentation/create-iot-edge-module-offer) – クラウド発行ポータルで新しい IoT Edge モジュールを発行するための手順を説明します。
+- [IoT Edge モジュール プランの作成](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-offer) – クラウド発行ポータルで新しい IoT Edge モジュールを発行するための手順を説明します。
 - [IoT Edge モジュールの認定プロセス](https://cloudpartner.azure.com/#documentation/iot-edge-module-certification-process) – 手順の概要と、IoT Edge モジュールを認定するための要件を説明します。
 - [IoT Edge モジュール (よくあるご質問)](https://cloudpartner.azure.com/#documentation/iot-edge-module-faq) – IoT Edge モジュールに関連するよくあるご質問の一覧です。
 

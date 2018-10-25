@@ -1,26 +1,26 @@
 ---
-title: LUIS によって返される予測スコアについて
+title: 予測スコア - 意図、エンティティ - LUIS
 titleSuffix: Azure Cognitive Services
-description: LUIS における予測スコアの意味する内容を学習します。
+description: 予測スコアは、予測結果についての LUIS の信頼度を示します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/15/2018
 ms.author: diberry
-ms.openlocfilehash: dc19151e82f44159533050e60ba2f1c6d65466fe
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 56bec5ef4730e47b5c79263af5d1942df5a73f04
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032239"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341346"
 ---
 # <a name="prediction-score"></a>予測スコア
 予測スコアは、予測結果についての LUIS の信頼度を示します。 
 
-予測スコアは通常、0 と 1 の間です。 十分に信頼できる LUIS スコアの例は 0.99 です。 信頼度の低いのスコアの例は 0.01 です。 
+予測スコアは、0 と 1 の間です。 十分に信頼できる LUIS スコアの例は 0.99 です。 信頼度の低いのスコアの例は 0.01 です。 
 
 |スコアの値|信頼度|
 |--|--|

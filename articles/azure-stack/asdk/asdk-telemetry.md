@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e50cb33acc95567a24afb19f88f88a3f586e0124
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0e8138f66c9284531b9610c9bc2996974e2075ad
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224757"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49339511"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack のテレメトリ
 
@@ -143,4 +143,4 @@ if($psSession)
 ```
 
 ## <a name="next-steps"></a>次の手順
-[マーケットプレース項目の追加](asdk-marketplace-item.md)
+[ASDK を起動および停止する](asdk-start-stop.md)

@@ -11,33 +11,37 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 10/15/2018
 ms.author: mabrigg
 ms.reviewer: alfredo
-ms.openlocfilehash: 9396d49f455f8f4af1abf7f0020e95e8fd0a14cc
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 67e1e22bc5569e7d6e20332ee86ffe4c7dd6a354
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729588"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49343845"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Azure Stack でテナントの登録を管理する
 
 *適用対象: Azure Stack 統合システム*
 
-この記事では、テナント登録の管理に使用できる操作と、テナントの使用状況を追跡する方法について説明します。 テナントのマッピングを追加、一覧表示、または削除する方法についての詳細を確認することができます。 PowerShell または Billing API エンドポイントを使用すると、使用の追跡を管理できます。
+この記事では、登録操作について詳しく説明します。 これらの操作を使用して次のことができます。
+- テナントの登録を管理する
+- テナントの使用状況の追跡を管理する
+
+テナントのマッピングを追加、一覧表示、または削除する方法についての詳細を確認することができます。 PowerShell または Billing API エンドポイントを使用すると、使用の追跡を管理できます。 テナントのマッピングを追加、一覧表示、または削除する方法についての詳細を確認することができます。 PowerShell または Billing API エンドポイントを使用すると、使用の追跡を管理できます。
 
 ## <a name="add-tenant-to-registration"></a>テナントを登録に追加する
 
-この操作は、自分の登録に新しいテナントを追加して、Azure Active Directory (Azure AD) テナントに接続された Azure サブスクリプションで使用状況がレポートされるようにする場合に使用します。
+新しいテナントを登録に追加するときは、この操作を使用します。 テナントの使用状況は、Azure Active Directory (Azure AD) テナントに接続されている Azure サブスクリプションで報告されます。
 
-テナントに関連付けられているサブスクリプションを変更する場合にこの操作を使用し、PUT/New-AzureRMResource をもう一度呼び出すこともできます。 以前のマッピングは上書きされます。
+テナントに関連付けられているサブスクリプションを変更する場合にもこの操作を使用します。 PUT/New-AzureRMResource を呼び出して、以前のマッピングを上書きします。
 
-テナントには 1 つの Azure サブスクリプションのみを関連付けできます。 既存のテナントに第 2 のサブスクリプションを追加しようとすると、最初のサブスクリプションは上書きされます。 
+テナントと関連付けることができる Azure サブスクリプションは 1 つだけです。 既存のテナントに第 2 のサブスクリプションを追加しようとすると、最初のサブスクリプションは上書きされます。
 
 ### <a name="use-api-profiles"></a>API プロファイルの使用
 
-この記事で取り上げるコマンドレットは、PowerShell を実行する際に API プロファイルを指定する必要があります。 API プロファイルは、一連の Azure リソース プロバイダーとその API バージョンを表します。 世界各国の Azure と Azure Stack を扱うときなど、複数の Azure クラウドを対話操作する際は、プロファイルを指定することにより適切なバージョンの API を使うことができます。 プロファイルは、その公開日に対応する名前で指定します。 この記事では、**2017-09-03** プロファイルを使用する必要があります。
+登録コマンドレットでは、PowerShell を実行するときに API プロファイルを指定する必要があります。 API プロファイルは、一連の Azure リソース プロバイダーとその API バージョンを表します。 これにより、複数の Azure クラウドを対話操作するときに、適切なバージョンの API を使用できます。 たとえば、グローバルな Azure と Azure Stack を使用するときは複数のクラウドを扱います。 プロファイルでは、そのリリース日に対応する名前を指定します。 **2017-09-03** プロファイルを使用する必要があります。
 
 Azure Stack と API プロファイルの詳細については、「[Azure Stack での API バージョンのプロファイルの管理](user/azure-stack-version-profiles.md)」を参照してください。 API プロファイルと PowerShell を使用するために必要な手順については、「[Azure Stack での PowerShell による API バージョンのプロファイルの使用](user/azure-stack-version-profiles-powershell.md)」を参照してください。
 
@@ -46,7 +50,7 @@ Azure Stack と API プロファイルの詳細については、「[Azure Stack
 | パラメーター                  | 説明 |
 |---                         | --- |
 | registrationSubscriptionID | 初期登録に使用された Azure サブスクリプション。 |
-| customerSubscriptionID     | 登録される顧客の Azure サブスクリプション (Azure Stack ではない)。 クラウド サービス プロバイダー (CSP) プランで作成されている必要があります。 実際には、パートナー センターを介することを意味します。 顧客が 1 つ以上のテナントを持っている場合は、Azure Stack へのログインに使用されるテナントでこのサブスクリプションを作成する必要があります。 |
+| customerSubscriptionID     | 登録される顧客の Azure サブスクリプション (Azure Stack ではない)。 パートナー センターを使用してクラウド サービス プロバイダー (CSP) オファーで作成されている必要があります。 顧客が複数のテナントを持っている場合は、Azure Stack にログインするためのテナント用のサブスクリプションを作成します。 |
 | resourceGroup              | 登録が格納されている Azure 内のリソース グループ。 |
 | registrationName           | Azure Stack の登録名。 Azure にオブジェクトとして格納されています。 通常、名前は azurestack-CloudID の形式で、CloudID は Azure Stack デプロイのクラウド ID です。 |
 

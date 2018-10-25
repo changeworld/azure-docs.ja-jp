@@ -5,23 +5,23 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/1/2018
+ms.date: 10/4/2018
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: fd3ff0087ee51c392d9cebb32c8bcc969f9a4601
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: caaee4cb155fc05b78bc47f1e53c79ecb0597183
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242108"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341941"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 構成リファレンス
 
  Azure Blockchain Workbench アプリケーションは、構成メタデータとスマート コントラクト コードで定義されたマルチパーティ ワークフローです。 構成メタデータでは、ブロックチェーン アプリケーションの大まかなワークフローと対話モデルを定義します。 スマート コントラクトを使用して、ブロックチェーン アプリケーションのビジネス ロジックを定義します。 Workbench は、構成とスマート コントラクト コードを使用して、ブロックチェーン アプリケーションのユーザー エクスペリエンスを生成します。
 
-構成のメタデータには、各ブロックチェーン アプリケーションの次の情報が指定されます。 
+構成のメタデータには、各ブロックチェーン アプリケーションの次の情報が指定されます。
 
 * ブロックチェーン アプリケーションの名前と説明
 * ブロックチェーン アプリケーション内で操作または参加できるユーザーに固有のロール
@@ -73,17 +73,44 @@ ms.locfileid: "48242108"
 
 | type | Description |
 |-------|-------------|
-| address  | *contracts*、*users* などのブロックチェーン アドレスの種類 |
-| bool     | ブール データ型 |
-| contract | 型のコントラクトのアドレス |
-| enum     | 名前が付いた各種の値を列挙したものです。 列挙型を使用するときは、一連の EnumValues も指定する必要があります。 それぞれの値は 255 文字に制限されています。 有効な値として使用できる文字は、アルファベットの大文字と小文字 (A-Z、a-z) および数字 (0-9) です。 |
-| int      | 整数データ型 |
-| money    | 通貨データ型 |
-| state    | ワークフローの状態 |
-| string   | 文字列データ型 |
-| user     | 型ユーザーのアドレス |
-| time     | 時間データ型 |
+| address  | *contracts*、*users* などのブロックチェーン アドレスの種類。 |
+| array    | integer、bool、money、または time 型の単一レベル配列。 配列は、静的でも動的でもかまいません。 配列内の要素のデータ型を指定するには、**ElementType** を使用します。 [構成例](#example-configuration-of-type-array)をご覧ください。 |
+| bool     | ブール データ型。 |
+| contract | 型のコントラクトのアドレス。 |
+| enum     | 名前が付いた各種の値を列挙したものです。 列挙型を使用するときは、一連の EnumValues も指定する必要があります。 それぞれの値は 255 文字に制限されています。 有効な値として使用できる文字は、アルファベットの大文字と小文字 (A-Z、a-z) および数字 (0-9) です。 [Solidity での構成と使用の例](#example-configuration-of-type-enum)をご覧ください。 |
+| int      | 整数データ型。 |
+| money    | 通貨データ型。 |
+| state    | ワークフローの状態。 |
+| string  | 文字列データ型。 最大 4,000 文字。 [構成例](#example-configuration-of-type-string)をご覧ください。 |
+| user     | 型ユーザーのアドレス。 |
+| time     | 時間データ型。 |
 |`[ Application Role Name ]`| アプリケーション ロールに指定する任意の名前。 ユーザーをそのロールの種類に制限します。 |
+
+### <a name="example-configuration-of-type-array"></a>配列型の構成例
+
+```json
+{
+  "Name": "Quotes",
+  "Description": "Market quotes",
+  "DisplayName": "Quotes",
+  "Type": {
+    "Name": "array",
+    "ElementType": {
+        "Name": "int"
+    }
+  }
+}
+```
+
+#### <a name="using-a-property-of-type-array"></a>配列型のプロパティの使用
+
+構成で配列型としてプロパティを定義する場合は、Solidity で配列型のパブリック プロパティを返すための明示的な get 関数を含める必要があります。 例: 
+
+```
+function GetQuotes() public constant returns (int[]) {
+     return Quotes;
+}
+```
 
 ### <a name="example-configuration-of-type-string"></a>文字列型の構成例
 

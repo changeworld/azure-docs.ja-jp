@@ -9,16 +9,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: b7908f9f9aef51857f0ffb07102e1df245b7a259
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: c183bbe2c20bdc1772160cbbd8260dece0b6eb54
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064460"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309503"
 ---
-# <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Azure Functions を使用したサーバーレス データベース コンピューティング
+# <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
 
-サーバーレス コンピューティングとは、繰り返し可能でステートレスな個々のロジックに集中できる機能です。 個々のロジックにインフラストラクチャの管理は必要ありません。秒単位またはミリ秒単位の実行時間のみリソースを使用します。 サーバーレス コンピューティングのムーブメントの中心には、関数があります。関数は、Azure エコシステムの[Azure Functions](https://azure.microsoft.com/services/functions) で使用できます。
+サーバーレス コンピューティングとは、繰り返し可能でステートレスな個々のロジックに集中できる機能です。 個々のロジックにインフラストラクチャの管理は必要ありません。秒単位またはミリ秒単位の実行時間のみリソースを使用します。 サーバーレス コンピューティングのムーブメントの中心には、関数があります。関数は、Azure エコシステムの[Azure Functions](https://azure.microsoft.com/services/functions) で使用できます。 Azure での他のサーバーレス実行環境については、「[Azure でのサーバーレス](https://azure.microsoft.com/solutions/serverless/)」ページをご覧ください。 
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) と Azure Functions 間のネイティブ統合を使用すると、Azure Cosmos DB アカウントからデータベースのトリガー、入力バインディング、出力バインディングを直接作成できます。 Azure Functions と Azure Cosmos DB を使用すると、グローバル ユーザー ベース向けの、リッチ データに低待機時間でアクセスできる、イベント ドリブンのサーバーレス アプリケーションを作成およびデプロイすることができます。
 

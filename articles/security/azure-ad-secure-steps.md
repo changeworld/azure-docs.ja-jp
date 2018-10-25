@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 2a6c94d902c639a2529e501347876d63a3f56d7e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 94d96cab28f738984b3d05d5eee0754e8c5e75b6
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505611"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341581"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>ID インフラストラクチャをセキュリティ保護する 5 つのステップ
 
@@ -32,7 +32,7 @@ ms.locfileid: "39505611"
 * セルフヘルプによる、より予測可能で完全なエンドユーザー セキュリティを有効にする。
 
 > [!NOTE]
-> このドキュメントの推奨事項の多くは、Azure Active Directory を ID プロバイダーとして使用するよう構成されたアプリケーションにのみ適用されます。 シングル サインオンを使用するようアプリを構成すると、資格情報ポリシーや脅威の検出、監査、ログの記録などの機能がこれらのアプリケーションに追加されるというベネフィットがあります。 [Azure Active Directory を通じたシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso)は、これらのすべての推奨事項の基礎となります。
+> このドキュメントの推奨事項の多くは、Azure Active Directory を ID プロバイダーとして使用するよう構成されたアプリケーションにのみ適用されます。 シングル サインオンを使用するようアプリを構成すると、資格情報ポリシーや脅威の検出、監査、ログの記録などの機能がこれらのアプリケーションに追加されるという様々な利点があります。 [Azure Active Directory を通じたシングル サインオン](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso)は、これらのすべての推奨事項の基礎となります。
 
 ## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>開始する前に: MFA で特権アカウントを保護する
 
@@ -44,7 +44,7 @@ ms.locfileid: "39505611"
 
 ## <a name="step-1---strengthen-your-credentials"></a>ステップ 1. - 資格情報を強化する 
 
-ほとんどのエンタープライズのセキュリティ侵害では、パスワード スプレーや侵害リプレイ、フィッシングなど、いくつかある手法のいずれかによるアカウント侵害が原因です。 次の動画で、これらの攻撃についてご確認ください。
+ほとんどのエンタープライズのセキュリティ侵害では、パスワード スプレーや侵害リプレイ、フィッシングなど、いくつかある手法のいずれかによるアカウント侵害が原因です。 次の動画で、これらの攻撃についてご確認ください (1 時間 15 分)。
 > [!VIDEO https://channel9.msdn.com/events/Ignite/Microsoft-Ignite-Orlando-2017/BRK3016/player]
 
 ID システム内のユーザーが脆弱なパスワードを使用しており、多要素認証による強化が行われていない場合、問題はいつセキュリティ侵害されるかではなく、"どのくらいの頻度でセキュリティ侵害されるか" になります。
@@ -59,19 +59,19 @@ ID システム内のユーザーが脆弱なパスワードを使用してお�
 
 Microsoft は、[NIST ガイダンス](https://pages.nist.gov/800-63-3/sp800-63b.html)に従って、次の 3 つを実施することをお勧めします。
 
-1. パスワードが 8 文字以上であることを要求する。 ユーザーが予測可能なパスワードを選んだり、パスワードをファイルに保存したり、書き留めたりする原因となるため、必ずしも長ければ長いほど良いというわけではありません。
+1. パスワードに 8 文字以上を必要とする。 ユーザーが予測可能なパスワードを選んだり、パスワードをファイルに保存したり、書き留めたりする原因となるため、必ずしも長ければ長いほど良いというわけではありません。
 2. 有効期限のルールを無効にする。このルールは、簡単に推測されるパスワード (**Summer2018!** など) をユーザーが使用する原因になります。
 3. 文字構成の要件を無効にして、よく攻撃されるパスワードをユーザーが選択するのを防ぐ。これは、文字構成の要件が、パスワードで予測可能な文字置換をユーザーが選択する原因となるためです。
 
-Azure AD で直接 ID を作成した場合、[PowerShell を使用してユーザーのパスワードの有効期限が切れるのを防ぐ](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)ことができます。 オンプレミスの AD と Azure AD Connect を使用して ID を Azure AD と同期している場合 (つまり、ハイブリッド デプロイの場合)、組織は[ドメイン グループ ポリシー設定](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10))または [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) を使用して、オンプレミスの[インテリジェントなパスワード ポリシー](https://aka.ms/passwordguidance)を実装する必要があります。
+Azure AD で直接 ID を作成した場合、[PowerShell を使用してユーザーのパスワードの期限切れを防ぐ](https://docs.microsoft.com/azure/active-directory/authentication/concept-sspr-policy)ことができます。 オンプレミスの AD と Azure AD Connect を使用して ID を Azure AD と同期している場合 (つまり、ハイブリッド デプロイの場合)、組織は[ドメイン グループ ポリシー設定](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/hh994572(v%3dws.10))または [Windows PowerShell](https://docs.microsoft.com/powershell/module/addsadministration/set-addefaultdomainpasswordpolicy) を使用して、オンプレミスの[インテリジェントなパスワード ポリシー](https://aka.ms/passwordguidance)を実装する必要があります。
 
-Azure Active Directory の[パスワードの動的禁止](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)機能では、簡単に推測できるパスワードをユーザーが設定するの防ぐために、現在の攻撃者の行動が利用されます。 この機能は常に有効であり、ハイブリッド デプロイの組織は、[パスワード ライトバック](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-writeback)を有効にすることで、この機能を利用できます。または、[Azure AD パスワード保護を Windows Server Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) に展開できます。 Azure AD パスワード保護を使用すると、ユーザーは、構成できる一般的なパスワードとカスタム パスワードに含まれている、ありふれたパスワードを選択できなくなります。
+Azure Active Directory の[パスワードの動的禁止](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords)機能では、簡単に推測できるパスワードをユーザーが設定するの防ぐために、現在の攻撃者の行動が利用されます。 この機能は常に有効であり、ハイブリッドな デプロイを使っている組織は、[パスワード ライトバック](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-writeback)を有効にすることで、この機能を利用できます。または、[Azure AD パスワード保護を Windows Server Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad-on-premises) に展開できます。 Azure AD パスワード保護を使用すると、ユーザーは、構成できる一般的なパスワードとカスタム パスワードに含まれている、ありふれたパスワードを選択できなくなります。
 
 ### <a name="protect-against-leaked-credentials-and-add-resilience-against-outages"></a>資格情報の漏洩から保護し、障害に対する回復力を高める
 
 組織がハイブリッド ID ソリューションを使用する場合、次の 2 つの理由から、パスワード ハッシュ同期を有効にする必要があります。
 
-* Azure AD 管理の[資格情報が漏洩したユーザー](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events) レポートでは、"闇サイト" で公開されているユーザー名とパスワードのペアについて、警告を受け取れます。 驚くほど大量のパスワードが、後にセキュリティ侵害されるサードパーティ サイトでのパスワードの再利用、フィッシング、マルウェアによって漏洩しています。 Microsoft は、これらの漏洩した資格情報の多くを発見し、それらがお客様の組織の資格情報に一致する場合に、このレポートでお客様に報告します。しかしそのためには、[パスワード ハッシュ同期を有効にしておく](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)必要があります。
+* Azure AD 管理の[資格情報が漏洩したユーザー](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events) レポートでは、"闇サイト" で公開されているユーザー名とパスワードのペアについて、警告を受け取れます。 驚くほど大量のパスワードが、後にセキュリティ侵害されるサードパーティ サイトでのパスワードの再利用、フィッシング、マルウェアによって漏洩しています。 Microsoft は、これらの漏洩した資格情報の多くを発見し、それらがお客様の組織の資格情報に一致する場合に、このレポートでお客様に報告します。しかしそのためには、[パスワード ハッシュの同期を有効にしておく](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)必要があります。
 * (たとえばランサムウェア攻撃で) オンプレミスの障害が発生した場合、[パスワード ハッシュ同期を使用してクラウド認証](https://docs.microsoft.com/azure/security/azure-ad-choose-authn)に切り替えることができます。 このバックアップ認証方法では、Azure Active Directory による認証が構成されたアプリ (Office 365 など) へのアクセスを継続できます。
 
 [パスワード ハッシュ同期](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization)のしくみについて、詳しくご確認ください。

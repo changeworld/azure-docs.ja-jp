@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0784dffc48aeddc854aa540cba24f1834cd41827
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 566d5b047078b6e65b0c320027cc8c63c81a282b
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952836"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986598"
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Azure Portal でのサーバー ログの構成とアクセス
 
@@ -26,7 +26,7 @@ Azure portal から [Azure Database for MariaDB のサーバー ログ](concepts
 ## <a name="configure-logging"></a>ログの構成
 低速クエリ ログへのアクセスを構成します。 
 
-1. [Azure Portal](http://portal.azure.com/) にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
 2. Azure Database for MariaDB サーバーを選択します。
 

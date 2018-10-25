@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: fcb4500a1e4503d90b00528544ae98fa93e16191
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 62cc4634a0f76b0562d5b3c1355a7442fc5cf989
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379220"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985235"
 ---
 # <a name="assets"></a>アセット
 
@@ -116,8 +116,7 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-REST の例については、「[Assets - List](https://docs.microsoft.com/rest/api/media/assets/assets_list)」(アセット - リスト) を参照してください。
-
+REST の例については、「[Assets - List](https://docs.microsoft.com/rest/api/media/assets/list)」(アセット - リスト) を参照してください。
 
 ## <a name="storage-side-encryption"></a>ストレージ側の暗号化
 

@@ -3,7 +3,7 @@ title: Azure PowerShell を使用した仮想マシン スケール セットの
 description: 仮想マシン スケール セットを管理するための一般的な Azure PowerShell コマンドレット (インスタンスを起動および停止したり、スケール セットの容量を変更したりする方法など)。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
-ms.author: cynthn
-ms.openlocfilehash: a300e2f2febab8436f8d52b71955b3614bd10605
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: zarhoads
+ms.openlocfilehash: 0aec3b2d70336e273772f8487b586d2ff23b0604
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38707444"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466310"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell を使用して仮想マシン スケール セットを管理する
 仮想マシン スケール セットのライフサイクルを通して、1 つ以上の管理タスクを実行することが必要になる場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 この記事では、これらのタスクを実行するために使用できる一般的な Azure PowerShell コマンドレットのいくつかについて詳細に説明します。

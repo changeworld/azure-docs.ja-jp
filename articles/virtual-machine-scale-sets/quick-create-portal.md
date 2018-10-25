@@ -4,7 +4,7 @@ description: Azure Portal で仮想マシン スケール セットをすばや�
 keywords: 仮想マシン スケール セット
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -16,13 +16,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 03/27/18
-ms.author: cynthn
-ms.openlocfilehash: fb3a3e1cec0d6ec15495e677e7bead1c02445803
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.author: zarhoads
+ms.openlocfilehash: 723f1d36f22e11aff3af195e4c8adf7a3f8722ab
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38680960"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49464798"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>クイック スタート: Azure Portal で仮想マシン スケール セットを作成する
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケールする規則を定義したりすることができます。 その後、Azure ロード バランサーがトラフィックをスケール セット内の VM インスタンスに分散します。 このクイック スタートでは、Azure Portal で仮想マシン スケール セットを作成します。

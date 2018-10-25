@@ -9,12 +9,12 @@ ms.component: language-understanding
 ms.topic: overview
 ms.date: 10/06/2018
 ms.author: diberry
-ms.openlocfilehash: 0520c00ab20ca7210b3bb13567f9998e7231be43
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 28580a29c2ffaadfa3b3ea26cb28f103d883d576
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867674"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637274"
 ---
 # <a name="what-is-language-understanding-luis"></a>Language Understanding (LUIS) とは
 
@@ -33,7 +33,7 @@ LUIS アプリの発行後、クライアント アプリケーションは、LU
 
 ![チャット ボットと連携し、Natural Language Understanding (NLP) でユーザー テキストを予測する LUIS の概念図](./media/luis-overview/luis-overview-process-2.png "チャット ボットと連携し、Natural Language Understanding (NLP) でユーザー テキストを予測する LUIS の概念図")
 
-|手順|アクションを表示します。|
+|手順|Action|
 |:--|:--|
 |1|クライアント アプリケーションがユーザーの "_発話_" (自分の言葉で表現されたテキスト) を送信します。ここでは、"I want to call my HR rep." を LUIS エンドポイントに HTTP 要求として送信します。|
 |2|LUIS は、自然言語テキストに対して学習済みのモデルを適用し、ユーザー入力についてのインテリジェントな解釈を提供します。 LUIS は、"HRContact" を最上位の意図とする JSON 形式の応答を返します。 エンドポイントからの JSON 形式の応答には、少なくとも、クエリの発話と上位スコアの意図が含まれます。 Contact Type エンティティなどのデータを抽出することもできます。|
@@ -192,16 +192,7 @@ LUIS で使用されるその他の Cognitive Services:
 * [Speech サービス](../Speech-Service/overview.md)は、話し言葉による要求をテキストに変換します。 
 * [Conversation Learner](https://docs.microsoft.com/azure/cognitive-services/labs/conversation-learner/overview): LUIS を使ったボットの会話を短時間で構築できます。
 * [Project Personality Chat](https://docs.microsoft.com/azure/cognitive-services/project-personality-chat/overview): ボットの短い会話を扱います。
-<!--
-## Other ways of implementing LUIS
 
-A client application for LUIS is:
-* [Windows Mixed Reality](https://docs.microsoft.com/windows/mixed-reality/) - learn more with this [Mixed reality course](https://docs.microsoft.com/windows/mixed-reality/mr-azure-303) with LUIS. 
-
-
-Labs: 
-
--->
 ## <a name="next-steps"></a>次の手順
 
 [構築済み](luis-get-started-create-app.md)または[カスタム ](luis-quickstart-intents-only.md) ドメインを使用して、新しい LUIS アプリを作成します。 公開 IoT アプリの[予測エンドポイントに対してクエリを実行](luis-get-started-cs-get-intent.md)します。

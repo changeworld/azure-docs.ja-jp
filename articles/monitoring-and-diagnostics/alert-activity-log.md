@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 526c50fa4d261a30738c3f24d537fe5e0d765f6d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a95cdbb48371cf960211f55bf077cea9db783db5
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951306"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248331"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -25,7 +25,7 @@ ms.locfileid: "46951306"
 > [!IMPORTANT]
 > サービス正常性通知に対するアラートは、アクティビティ ログ アラート作成用のインターフェイスでは作成できません。 サービス正常性通知の作成および使用について詳しくは、[サービス正常性通知のアクティビティ ログ アラートの受け取り](monitoring-activity-log-alerts-on-service-notifications.md)に関する記事をご覧ください。
 
-## <a name="manage-alert-rules-for-activity-log-using-azure-portal"></a>Azure portal を使用したアクティビティ ログのアラート ルールの管理
+## <a name="azure-portal"></a>Azure ポータル
 
 > [!NOTE]
 
@@ -36,7 +36,7 @@ ms.locfileid: "46951306"
 - アラートの構成 JSON に "anyOf" 条件または入れ子になった条件がない (基本的に許可されている allOf は 1 つだけで、それ以上 allOf/anyOf は含まれません)。
 - カテゴリが "管理" のとき。 アラートでは、上記の条件の少なくとも 1 つを指定する必要があります。 アクティビティ ログ内にイベントが作成されるたびにアクティブ化するアラートを作成することはできません。
 
-### <a name="create-an-alert-rule-for-an-activity-log-using-azure-portal"></a>Azure portal を使用してアクティビティ ログのアラート ルールを作成する
+### <a name="create-with-azure-portal"></a>Azure Portal での作成
 
 次の手順に従います。
 
@@ -102,7 +102,7 @@ ms.locfileid: "46951306"
  ![ アクティビティ ログからのアラートの追加](./media/monitoring-activity-log-alerts-new-experience/add-activity-log.png)
     
 
-### <a name="view-and-manage-activity-log-alert-rules-in-azure-portal"></a>Azure portal でのアクティビティ ログ アラート ルールの表示と管理
+### <a name="view-and-manage-in-azure-portal"></a>Azure portal での表示と管理
 
 1. Azure Portal で、**[モニター]** > **[アラート]** の順にクリックし、ウィンドウの左上にある **[ルールの管理]** をクリックします。
 
@@ -127,7 +127,7 @@ ms.locfileid: "46951306"
 4.  ルールは、無効化、有効化、または削除することができます。 手順 2 で説明したようにルールを選択した後、ウィンドウの上部にある適切なオプションを選択します。
 
 
-## <a name="manage-alert-rules-for-activity-log-using-azure-resource-template"></a>Azure リソース テンプレートを使用したアクティビティ ログのアラート ルールの管理
+## <a name="azure-resource-template"></a>Azure リソース テンプレート
 Resource Manager テンプレートを使用してアクティビティ ログ アラートを作成するには、`microsoft.insights/activityLogAlerts` 型のリソースを作成します。 次に、関連するすべてのプロパティを入力します。 アクティビティ ログ アラートを作成するテンプレートを以下に示します。
 
 ```json
@@ -200,21 +200,23 @@ Resource Manager テンプレートを使用してアクティビティ ログ �
 > [!NOTE]
 > 新しいアクティビティ ログ アラート ルールがアクティブになるまで最大 5 分かかる場合があります。
 
-## <a name="manage-alert-rules-for-activity-log-using-powershell-cli-or-api"></a>PowerShell、CLI または API を使用したアクティビティ ログのアラート ルールの管理
+## <a name="rest-api"></a>REST API 
 [Azure Monitor - Activity Log Alerts API](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) は REST API であり、Azure Resource Manager REST API との完全な互換性があります。 そのためこれは、Resource Manager コマンドレットだけでなく Azure CLI を使用して、Powershell を介して使用できます。
 
+## <a name="powershell"></a>PowerShell
 [リソース テンプレートのセクション](#manage-alert-rules-for-activity-log-using-azure-resource-template)で前に示したサンプル リソース テンプレート (sampleActivityLogAlert.json) に対する Azure Resource Manager PowerShell コマンドレットの使い方を以下に示します。
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
 ここで、sampleActivityLogAlert.parameters.json には、アラート ルールの作成時に必要とされたパラメーターに指定された値が含まれます。
 
+## <a name="cli"></a>CLI
 [リソース テンプレートのセクション](#manage-alert-rules-for-activity-log-using-azure-resource-template)で前に示したサンプル リソース テンプレート (sampleActivityLogAlert.json) に対する Azure CLI での Azure Resource Manager コマンドの使い方を以下に示します。
 
 ```azurecli
 az group deployment create --resource-group myRG --template-file sampleActivityLogAlert.json --parameters @sampleActivityLogAlert.parameters.json
 ```
-ここで、sampleActivityLogAlert.parameters.json には、アラート ルールの作成時に必要とされたパラメーターに指定された値が含まれます。
+*sampleActivityLogAlert.parameters.json* ファイルには、アラート ルールの作成時に必要であったパラメーターに指定された値が含まれています。
 
 
 ## <a name="next-steps"></a>次の手順

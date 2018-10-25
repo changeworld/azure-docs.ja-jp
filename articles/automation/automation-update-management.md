@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/29/2018
+ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 62a7bb9bf63e8ebf97f9aeb5b08bf08ef06da43b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 67a987d9b491ba6813e900c293529ed677c45757
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782792"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167683"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -37,24 +37,28 @@ Update Management で管理されるコンピューターでは、評価と更�
 
 Update Management を使用して、同じテナント内の複数のサブスクリプションにマシンをネイティブにオンボードできます。 異なるテナント内のマシンを管理するには、それらを [Azure 以外のマシン](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine)としてオンボードする必要があります。
 
-コンピューターが更新プログラムのコンプライアンスを確認するためにスキャンを実行した後、エージェントによって情報が Azure Log Analytics に一括転送されます。 Windows コンピューターでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。
+CVE がリリースされた後、Linux マシンの評価用に修正プログラムが表示されるまで 2 ～ 3 時間かかります。  Windows マシンの場合、リリースされてから評価用に修正プログラムが表示されるまで 12 ～ 15 時間かかります。
+
+コンピューターが更新プログラムのコンプライアンスを確認するためにスキャンを完了した後、エージェントによって情報が Azure Log Analytics に一括転送されます。 Windows コンピューターでは、コンプライアンス スキャンは既定で 12 時間ごとに実行されます。
 
 このスキャン スケジュールに加えて、MMA の再起動後 15 分以内、更新プログラムのインストール前、および更新プログラムのインストール後に、更新プログラムのコンプライアンスを確認するためのスキャンが開始されます。
 
 Linux コンピューターでは、コンプライアンス スキャンは既定では 3 時間ごとに実行されます。 MMA エージェントを再起動した場合は、コンプライアンス スキャンは 15 分以内に開始されます。
 
-このソリューションは、同期先として構成されたソースに基づいて、コンピューターがどの程度最新の状態であるかをレポートします。 Windows コンピューターが WSUS にレポートするよう構成されている場合、WSUS が Microsoft Update と最後に同期したタイミングによっては、その結果が Microsoft Updates の示す内容と一致しない場合があります。 これは、パブリック リポジトリではなくローカル リポジトリにレポートするよう構成されている Linux コンピューターも同様です。
+このソリューションは、同期先として構成されたソースに基づいて、コンピューターがどの程度最新の状態であるかをレポートします。 Windows コンピューターが WSUS にレポートするよう構成されている場合、WSUS が Microsoft Update と最後に同期したタイミングによっては、その結果が Microsoft Updates の示す内容と一致しない場合があります。 この動作は、パブリック リポジトリではなくローカル リポジトリにレポートするよう構成されている Linux コンピューターも同様です。
 
 > [!NOTE]
 > サービスに正しく報告するためには、Update Management で、特定の URL とポートを有効にする必要があります。 これらの要件の詳細については、[Hybrid Worker のためのネットワーク計画](automation-hybrid-runbook-worker.md#network-planning)に関する記事を参照してください。
 
 更新が必要なコンピューターへのソフトウェア更新プログラムのデプロイとインストールに、スケジュールされたデプロイを使用できます。 Windows コンピューターの場合、"*オプション*" に分類されている更新プログラムはデプロイの範囲に含まれません。 デプロイの範囲には、必須の更新プログラムのみが含まれています。 
 
-スケジュールされたデプロイでは、適用可能な更新プログラムを受け取る対象コンピューターを定義する際に、コンピューターを明示的に指定するか、特定のコンピューター セットのログ検索に基づいて[コンピューター グループ](../log-analytics/log-analytics-computer-groups.md)を選択します。 また、スケジュールを指定する際は、更新プログラムのインストールを許可する期間を承認し、指定します。
+スケジュールされたデプロイでは、適用可能な更新プログラムを受け取る対象コンピューターを定義する際に、コンピューターを明示的に指定するか、特定のコンピューター セットのログ検索に基づいて[コンピューター グループ](../log-analytics/log-analytics-computer-groups.md)を選択します。 また、スケジュールを指定するときは、更新プログラムのインストールを許可する期間を承認し、設定します。
 
-更新プログラムは、Azure Automation の Runbook によってインストールされます。 これらの Runbook は表示できません。また、これらは構成不要です。 更新プログラムのデプロイを作成すると、対象に含めたコンピューターに対して、指定した時間にマスター更新 Runbook を開始するスケジュールが作成されます。 このマスター Runbook は、必須の更新プログラムのインストールを実行する子 Runbook を各エージェントで開始します。
+更新プログラムは、Azure Automation の Runbook によってインストールされます。 これらの Runbook は表示できません。また、これらは構成不要です。 更新プログラムのデプロイを作成すると、対象に含めたコンピューターに対して、指定した時間にマスター更新 Runbook を開始するスケジュールが作成されます。 このマスター Runbook は、必須の更新プログラムをインストールする子 Runbook を各エージェントで開始します。
 
 更新プログラムのデプロイで指定した日時に、対象のコンピューターでデプロイが並列で実行されます。 まず、スキャンが実行され、その更新プログラムが依然として必須であることが確認されてからインストールされます。 WSUS クライアント コンピューターの場合、更新プログラムが WSUS で承認されていないと更新プログラムのデプロイは失敗します。
+
+1 つのマシンを複数の Log Analytics ワークスペースで Update Management 用に登録すること (マルチホーム) は、サポートされていません。
 
 ## <a name="clients"></a>クライアント
 
@@ -66,7 +70,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします。         |
 |Windows Server 2008 R2 SP1 以降     |.NET Framework 4.5 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です。 ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします   ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
-|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための 'yum' が必須です。         |
+|CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための "yum" が必須です。         |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |Ubuntu 14.04 LTS および 16.04 LTS (x86/x64)      |Linux エージェントは、更新リポジトリへのアクセスが必要です。         |
@@ -88,9 +92,9 @@ Windows エージェントは、WSUS サーバーと通信するように構成�
 
 #### <a name="linux"></a>Linux
 
-Linux コンピューターには、更新リポジトリへのアクセスが必要です。 プライベートまたはパブリックの更新リポジトリが使用できます。 Update Management と対話するには、TLS 1.1 または TLS 1.2 が必要です。 このソリューションでは、Operations Management Suite (OMS) エージェント for Linux が複数の Log Analytics ワークスペースにレポートする構成はサポートされていません。
+Linux コンピューターには、更新リポジトリへのアクセスが必要です。 プライベートまたはパブリックの更新リポジトリが使用できます。 Update Management と対話するには、TLS 1.1 または TLS 1.2 が必要です。 このソリューションでは、Linux 用 Log Analytics エージェントが複数の Azure Log Analytics ワークスペースにレポートする構成はサポートされていません。
 
-OMS エージェント for Linux をインストールして最新バージョンをダウンロードする方法の詳細については、[Operations Management Suite エージェント for Linux](https://github.com/microsoft/oms-agent-for-linux) に関するページを参照してください。 Windows 用 OMS エージェントをインストールする方法の詳細については、[Windows 用 Operations Management Suite エージェント](../log-analytics/log-analytics-windows-agent.md)に関するページを参照してください。
+Linux 用 Log Analytics エージェントをインストールして最新バージョンをダウンロードする方法について詳しくは、「[Operations Management Suite Agent for Linux](https://github.com/microsoft/oms-agent-for-linux)」(Operations Management Suite エージェント for Linux) をご覧ください。 Windows 用 Log Analytics エージェントをインストールする方法について詳しくは、[Windows 用 Operations Management Suite エージェント](../log-analytics/log-analytics-windows-agent.md)に関するページをご覧ください。
 
 ## <a name="permissions"></a>アクセス許可
 
@@ -147,7 +151,7 @@ Windows コンピューターでは、次の情報を調べて、Log Analytics �
 エージェントが Log Analytics と通信できず、ファイアウォールまたはプロキシ サーバーを介してインターネットと通信するよう構成されている場合は、ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認します。 ファイアウォールまたはプロキシ サーバーが正しく構成されていることを確認する方法については、[Windows エージェントのネットワーク構成](../log-analytics/log-analytics-agent-windows.md)または [Linux エージェントのネットワーク構成](../log-analytics/log-analytics-agent-linux.md)に関する記事を参照してください。
 
 > [!NOTE]
-> Linux システムがプロキシまたは OMS ゲートウェイと通信するよう構成されており、このソリューションの配布準備を行っている場合は、次のコマンドを実行し、ファイルに対する読み取り権限を omiuser グループに付与するよう、*proxy.conf* のアクセス許可を更新してください。
+> Linux システムがプロキシまたは Log Analytics ゲートウェイと通信するよう構成されており、このソリューションの配布準備を行っている場合は、次のコマンドを実行し、ファイルに対する読み取り権限を omiuser グループに付与するよう、*proxy.conf* のアクセス許可を更新します。
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`
@@ -190,7 +194,7 @@ Automation アカウントで **[Update Management]** をクリックすると�
 
 ご利用のワークスペースにある Linux コンピューターと Windows コンピューターのすべてで更新プログラムが評価されたら、"*更新プログラムのデプロイ*" を作成して、必要な更新プログラムをインストールできます。 更新プログラムのデプロイとは、1 台以上のコンピューターに対して、必要な更新プログラムをスケジュールに従ってインストールすることです。 デプロイの範囲に含めるコンピューターまたはコンピューター グループと、デプロイの日時を指定します。 コンピューター グループの詳細については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください。
 
- 更新プログラムのデプロイにコンピューター グループを含めると、スケジュールの作成時にグループ メンバーシップが 1 回だけ評価されます。 その後で加えられたグループへの変更は反映されません。 この問題を回避するには、スケジュールされた更新プログラムのデプロイを削除して、もう一度作成します。
+ 更新プログラムのデプロイにコンピューター グループを含めると、スケジュールの作成時にグループ メンバーシップが 1 回だけ評価されます。 その後で加えられたグループへの変更は反映されません。 このような[動的グループ](#using-dynamic-groups)の使用を回避するため、これらのグループはデプロイ時に解決され、クエリによって定義されます。
 
 > [!NOTE]
 > Azure Marketplace からデプロイされた Windows 仮想マシンは、既定で Windows Update Service から自動更新を受信するように設定されています。 このソリューションまたは Windows 仮想マシンをワークスペースに追加しても、この動作は変わりません。 このソリューションで更新プログラムを能動的に管理しない場合は、既定の動作 (更新プログラムが自動的に適用される) が適用されます。
@@ -198,6 +202,23 @@ Automation アカウントで **[Update Management]** をクリックすると�
 Ubuntu でメンテナンス期間外に更新プログラムが適用されないようにするには、無人アップグレード パッケージを再構成して自動更新を無効にします。 パッケージの構成方法については、[Ubuntu サーバー ガイドの自動更新に関するトピック](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)をご覧ください。
 
 Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した仮想マシンは、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) にアクセスするよう登録されています。 その他の Linux ディストリビューションは、サポートされている方法に従って、ディストリビューション オンライン ファイル リポジトリから更新する必要があります。
+
+新しい更新プログラムのデプロイを作成するには、**[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ウィンドウが開きます。 次の表で説明されているプロパティの値を入力し、**[作成]** をクリックします。
+
+| プロパティ | [説明] |
+| --- | --- |
+| Name |更新プログラムの展開を識別する一意の名前。 |
+|オペレーティング システム| Linux または Windows|
+| 更新するグループ (プレビュー)|サブスクリプション、リソース グループ、場所、およびタグの組み合わせに基づいてクエリを定義し、デプロイに含める Azure VM の動的グループを構築します。 詳しくは、[動的グループ](automation-update-management.md#using-dynamic-groups)に関するページをご覧ください。|
+| 更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください |
+|更新プログラムの分類|必要な更新プログラムの分類すべてを選択します|
+|更新プログラムの包含/除外|**[包含/除外]** ページが開きます。 含めるまたは除外する更新プログラムは別のタブに表示されます。 包含を処理する方法について詳しくは、[包含の動作](automation-update-management.md#inclusion-behavior)に関するページをご覧ください。 |
+|スケジュール設定|開始する時刻を選択し、繰り返しの設定として、[1 回] または [定期的] のいずれかを選択します|
+| 事前スクリプトと事後スクリプト|デプロイの前後に実行するスクリプトを選択します|
+| メンテナンス期間 |更新プログラムに対して設定された分数です。 30 分未満の値を指定することはできません。また、6 時間を超えることはできません |
+| 再起動制御| 再起動の処理方法を決定します。 使用できるオプションは次のとおりです。</br>必要に応じて再起動 (既定値)</br>常に再起動</br>再起動しない</br>Only reboot - will not install updates (再起動のみ - 更新プログラムをインストールしない)|
+
+更新プログラムのデプロイはプログラムで作成することもできます。 REST API を使用して更新プログラムのデプロイを作成する方法については、「[Software Update Configurations - Create](/rest/api/automation/softwareupdateconfigurations/create)」(ソフトウェア更新プログラムの構成 - 作成) をご覧ください。 週単位の更新プログラムのデプロイを作成するために使用できるサンプル Runbook もあります。 この Runbook について詳しくは、「[Create a weekly update deployment for one or more VMs in a resource group](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)」(リソース グループ内の VM に対して週単位の更新プログラムのデプロイを作成する) をご覧ください。
 
 ## <a name="view-missing-updates"></a>不足している更新プログラムを表示する
 
@@ -209,20 +230,7 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 ![更新プログラムのデプロイ結果の概要](./media/automation-update-management/update-deployment-run.png)
 
-## <a name="create-or-edit-an-update-deployment"></a>更新プログラムを作成または編集します。
-
-新しい更新プログラムのデプロイを作成するには、**[更新プログラムの展開のスケジュール]** を選択します。 **[新しい更新プログラムの展開]** ウィンドウが開きます。 次の表で説明されているプロパティの値を入力し、**[作成]** をクリックします。
-
-| プロパティ | [説明] |
-| --- | --- |
-| Name |更新プログラムの展開を識別する一意の名前。 |
-|オペレーティング システム| Linux または Windows|
-| 更新するマシン |保存した検索条件、インポートしたグループを選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します。 **[マシン]** を選択すると、マシンの準備状況が **[エージェントの更新の準備]** 列に示されます。</br> Log Analytics でコンピューター グループを作成するさまざまな方法については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください |
-|更新プログラムの分類|必要な更新プログラムの分類すべてを選択します|
-|除外する更新プログラム|除外する更新プログラムを入力します。 Windows の場合は、KB を "KB" プレフィックスを付けないで入力します。 Linux の場合は、パッケージ名を入力するか、ワイルドカードを使用します。  |
-|スケジュール設定|開始する時刻を選択し、繰り返しの設定として、[1 回] または [定期的] のいずれかを選択します|
-| メンテナンス期間 |更新プログラムに対して設定された分数です。 30 分未満の値を指定することはできません。また、6 時間を超えることはできません |
-| 再起動制御| 再起動の処理方法を決定します。 使用できるオプションは次のとおりです。</br>必要に応じて再起動 (既定値)</br>常に再起動</br>再起動しない</br>Only reboot - will not install updates (再起動のみ - 更新プログラムをインストールしない)|
+REST API から更新プログラムのデプロイを表示する方法については、「[Software Update Configuration Runs](/rest/api/automation/softwareupdateconfigurationruns)」(ソフトウェア更新プログラムの構成の実行) をご覧ください。
 
 ## <a name="update-classifications"></a>更新プログラムの分類
 
@@ -265,6 +273,7 @@ Update Management には次のアドレスが明示的に必要です。 この�
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
 |*.blob.core.windows.net|*.blob.core.usgovcloudapi.net|
+|*.azure-automation.net|*.azure-automation.us|
 
 Hybrid Runbook Worker で必要なポートの詳細については、[ハイブリッド worker ロールのポート](automation-hybrid-runbook-worker.md#hybrid-worker-role)に関するページをご覧ください。
 
@@ -484,11 +493,32 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
+## <a name="using-dynamic-groups"></a>動的グループの使用 (プレビュー)
+
+Update Management では、Azure VM の動的グループを更新プログラムのデプロイの対象にする機能が提供されています。 これらのグループはクエリによって定義され、更新プログラムのデプロイが開始するときに、そのグループのメンバーが評価されます。 クエリを定義するときに、次の項目をまとめて使用して動的グループを設定できます。
+
+* サブスクリプション
+* リソース グループ
+* 場所
+* タグ
+
+![グループを選択する](./media/automation-update-management/select-groups.png)
+
+動的グループの結果をプレビューするには、**[プレビュー]** ボタンをクリックします。 このプレビューでは、その時点でのグループのメンバーシップが表示されます。この例では、タグ **Role** が **BackendServer** に等しいマシンを検索しています。 このタグを持つマシンがさらに追加された場合、そのグループに対する将来のデプロイに追加されます。
+
+![グループをプレビューする](./media/automation-update-management/preview-groups.png)
+
 ## <a name="integrate-with-system-center-configuration-manager"></a>System Center Configuration Manager との統合
 
 PC、サーバー、モバイル デバイスを管理するために System Center Configuration Manager に投資してきたお客様は、Configuration Manager の強みと成熟度を活用してソフトウェア更新プログラムを管理できます。 Configuration Manager は、そのソフトウェア更新プログラムの管理 (SUM) サイクルの一部です。
 
 管理ソリューションを System Center Configuration Manager と統合する方法については、「[System Center Configuration Manager と Update Management の統合](oms-solution-updatemgmt-sccmintegration.md)」を参照してください。
+
+## <a name="inclusion-behavior"></a>包含の動作
+
+更新プログラムの包含では、適用する特定の更新プログラムを指定できます。 包含されている修正プログラムまたはパッケージがインストールされます。 修正プログラムまたはパッケージが包含されていて、分類も選択されていると、包含されるアイテムと分類に一致するアイテムの両方がインストールされます。
+
+包含より除外の方が優先されることを知っておく必要があります。 たとえば、除外ルール `*` を定義した場合、修正プログラムまたはパッケージはすべて除外されるためインストールされません。 Linux マシンでは、包含されているパッケージに除外された依存パッケージがある場合、パッケージはインストールされません。
 
 ## <a name="patch-linux-machines"></a>Linux マシンのパッチ
 
@@ -527,3 +557,5 @@ Update Management のトラブルシューティング方法については、[U
 
 * [Log Analytics](../log-analytics/log-analytics-log-searches.md) でログ検索を使用して、詳細な更新プログラム データを確認します。
 * 緊急更新プログラムがコンピューターにインストールされていないと検出された場合、またはコンピューターで自動更新が無効になっている場合、[アラートを作成](../log-analytics/log-analytics-alerts.md)します。
+
+* REST API を使用して Update Management を操作する方法については、「[Software Update Configurations](/rest/api/automation/softwareupdateconfigurations)」(ソフトウェア更新プログラムの構成) をご覧ください。

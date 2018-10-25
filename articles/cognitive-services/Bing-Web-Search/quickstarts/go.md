@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 8/16/2018
 ms.author: erhopf
 ms.reviewer: nhoyadx@gmail.com, v-gedod, erhopf
-ms.openlocfilehash: 729338799fd8b0d143de7ee0a643bd71684b2789
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 7ce3dd565709567bf75dbbb4ec8f206bba96c195
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385925"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408679"
 ---
 # <a name="quickstart-use-go-to-call-the-bing-web-search-api"></a>クイック スタート: Go を使用して Bing Web Search API を呼び出す  
 
@@ -318,7 +318,7 @@ Microsoft Cognitive Toolkit || https://www.microsoft.com/en-us/cognitive-toolkit
 Microsoft Customers || https://customers.microsoft.com/en-us/search?sq=%22Microsoft%20Cognitive%20Services%22&ff=&p=0&so=story_publish_date%20desc
 Microsoft Enterprise Services - Microsoft Enterprise || https://enterprise.microsoft.com/en-us/services/
 Microsoft Cognitive Services || https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236
-Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/en-us/magazine/mt742868.aspx  
+Cognitive Services - msdn.microsoft.com || https://msdn.microsoft.com/magazine/mt742868.aspx  
 ```
 
 ## <a name="next-steps"></a>次の手順

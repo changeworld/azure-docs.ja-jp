@@ -17,12 +17,12 @@ ms.date: 06/06/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: da13b7b7b9bd39692db422a315383e0f12aae453
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8ff46246d46a6028bc83b8fdf9c984e87f5578a5
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344878"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320307"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0 と OAuth 2.0 の On-Behalf-Of フロー
 OAuth 2.0 の On-Behalf-Of フローは、アプリケーションがサービス/Web API を呼び出し、それがさらに別のサービス/Web API を呼び出す必要のあるユースケースを提供します。 その考え方は、委任されたユーザー ID とアクセス許可を要求チェーン経由で伝達するというものです。 中間層サービスがダウンストリーム サービスに認証済み要求を発行するには、そのサービスは Azure Active Directory (Azure AD) からのアクセス トークンをユーザーに代わってセキュリティ保護する必要があります。
@@ -33,7 +33,7 @@ OAuth 2.0 の On-Behalf-Of フローは、アプリケーションがサービ�
 
 
 > [!IMPORTANT]
-> [暗黙的な付与](v2-oauth2-implicit-grant-flow.md)を On-Behalf-Of フローで使用することはできません。SPA はその (暗黙的フロー) アクセス トークンを中間層の機密クライアントに渡して、OBO フローを実行する必要があります。 On-Behalf-Of 呼び出しを実行できるクライアントの詳細については、[制限事項](#client-limitations)に関する記述を参照してください。  
+> 2018 年 5 月の時点で、`id_token` を On-Behalf-Of フローで使用することはできません。SPA は**アクセス** トークンを中間層の機密クライアントに渡して、OBO フローを実行する必要があります。 On-Behalf-Of 呼び出しを実行できるクライアントの詳細については、[制限事項](#client-limitations)に関する記述を参照してください。
 
 ## <a name="protocol-diagram"></a>プロトコルのダイアグラム
 [OAuth 2.0 認証コード付与フロー](v2-oauth2-auth-code-flow.md)を使用するアプリケーションで、ユーザーが認証されているとします。 この時点で、そのアプリケーションには、中間層 Web API (API A) にアクセスするためのユーザーの要求と同意を含む *API A の*アクセス トークン (トークン A) があります。 ここで、API A はダウンストリーム Web API (API B) に認証済み要求を発行する必要があります。

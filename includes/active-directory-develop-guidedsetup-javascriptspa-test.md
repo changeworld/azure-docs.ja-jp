@@ -14,17 +14,19 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 3cbcae9c02abaf11ded31304f97abdd74f905c6e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 0c4908315bd7c0e4d83c7aba735cc4d102216a28
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48842967"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988435"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
 ### <a name="test-with-node"></a>ノードでのテスト
+
 Visual Studio を使用していない場合は、お使いの Web サーバーが開始されていることを確認します。
+
 1. **index.html** ファイルの場所に基づく TCP ポートをリッスンするように、サーバーを構成します。 ノードの場合、アプリケーション フォルダーからコマンド ライン プロンプトで次のコマンドを実行することで、Web サーバーを起動してポートをリッスンします。
 
     ```bash
@@ -36,15 +38,14 @@ Visual Studio を使用していない場合は、お使いの Web サーバー�
 <p/><!-- -->
 
 ### <a name="test-with-visual-studio"></a>Visual Studio でのテスト
-Visual Studio を使用している場合は、プロジェクト ソリューションを選択したことを確認し、**F5** キーを押してプロジェクトを実行します。 ブラウザーで http://<span></span>localhost:{ポート} の場所を開くと、**[サインイン]** ボタンが表示されます。
 
+Visual Studio を使用している場合は、プロジェクト ソリューションを選択したことを確認し、**F5** キーを押してプロジェクトを実行します。 ブラウザーで http://<span></span>localhost:{ポート} の場所を開くと、**[サインイン]** ボタンが表示されます。
 
 ## <a name="test-your-application"></a>アプリケーションのテスト
 
 ブラウザーに index.html ファイルが読み込まれたら、**[サインイン]** をクリックします。 Microsoft Azure Active Directory (Azure AD) v2.0 エンドポイントを使用してサインインするように求められます。
 
 ![JavaScript SPA アカウントにサインインする](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspascreenshot1.png)
-
 
 ### <a name="provide-consent-for-application-access"></a>アプリケーションによるアクセスに同意する
 
@@ -53,6 +54,7 @@ Visual Studio を使用している場合は、プロジェクト ソリュー�
 ![アプリケーションによるアクセスに同意する](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptspaconsent.png)
 
 ### <a name="view-application-results"></a>アプリケーションの結果を表示する
+
 サインイン後は、ページに Microsoft Graph API の応答が表示され、そこに、返されたユーザー プロファイル情報が表示されるはずです。
 
 ![Microsoft Graph API 呼び出しから期待される結果](media/active-directory-develop-guidedsetup-javascriptspa-test/javascriptsparesults.png)

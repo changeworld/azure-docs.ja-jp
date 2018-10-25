@@ -10,15 +10,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 1e919ddb063bcd96b0c6766a28762d1b474cb8a1
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 7fa9272a8609d933a3f12abb0f33e78c4bdc1b12
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42022426"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984810"
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL: PHP を使用した接続とデータの照会
-このクイックスタートでは、[PHP](http://php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、PHP を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
+このクイックスタートでは、[PHP](https://secure.php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、PHP を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
@@ -29,16 +29,16 @@ ms.locfileid: "42022426"
 独自のサーバーに PHP をインストールするか、PHP が含まれた Azure [Web アプリ](../app-service/app-service-web-overview.md)を作成します。
 
 ### <a name="macos"></a>MacOS
-- [PHP 7.1.4 バージョン](http://php.net/downloads.php)をダウンロードします。
-- PHP をインストールし、さらなる構成については [PHP マニュアル](http://php.net/manual/install.macosx.php)を参照します。
+- [PHP 7.1.4 バージョン](https://secure.php.net/downloads.php)をダウンロードします。
+- PHP をインストールし、さらなる構成については [PHP マニュアル](https://secure.php.net/manual/install.macosx.php)を参照します。
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- [PHP 7.1.4 非スレッドセーフ バージョン (x64)](http://php.net/downloads.php) をダウンロードします。
-- PHP をインストールし、さらなる構成については [PHP マニュアル](http://php.net/manual/install.unix.php)を参照します。
+- [PHP 7.1.4 非スレッドセーフ バージョン (x64)](https://secure.php.net/downloads.php) をダウンロードします。
+- PHP をインストールし、さらなる構成については [PHP マニュアル](https://secure.php.net/manual/install.unix.php)を参照します。
 
 ### <a name="windows"></a>Windows
-- [PHP 7.1.4 非スレッドセーフ バージョン (x64)](http://windows.php.net/download#php-7.1) をダウンロードします。
-- PHP をインストールし、さらなる構成については [PHP マニュアル](http://php.net/manual/install.windows.php)を参照します。
+- [PHP 7.1.4 非スレッドセーフ バージョン (x64)](https://windows.php.net/download#php-7.1) をダウンロードします。
+- PHP をインストールし、さらなる構成については [PHP マニュアル](https://secure.php.net/manual/install.windows.php)を参照します。
 
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for MySQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
@@ -52,7 +52,7 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 ## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
 接続し、**CREATE TABLE** SQL ステートメントを使用してテーブルを作成するには、次のコードを使用します。 
 
-このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_init](http://php.net/manual/mysqli.init.php) メソッドと [mysqli_real_connect](http://php.net/manual/mysqli.real-connect.php) メソッドを呼び出して MySQL に接続します。 次に、[mysqli_query](http://php.net/manual/mysqli.query.php) メソッドを呼び出してクエリを実行します。 その後、[mysqli_close](http://php.net/manual/mysqli.close.php) メソッドを呼び出して接続を閉じます。
+このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_init](https://secure.php.net/manual/mysqli.init.php) メソッドと [mysqli_real_connect](https://secure.php.net/manual/mysqli.real-connect.php) メソッドを呼び出して MySQL に接続します。 次に、[mysqli_query](https://secure.php.net/manual/mysqli.query.php) メソッドを呼び出してクエリを実行します。 その後、[mysqli_close](https://secure.php.net/manual/mysqli.close.php) メソッドを呼び出して接続を閉じます。
 
 host、username、password、db_name の各パラメーターは実際の値に置き換えてください。 
 
@@ -91,7 +91,7 @@ mysqli_close($conn);
 ## <a name="insert-data"></a>データを挿入する
 接続し、**INSERT** SQL ステートメントを使用してデータを挿入するには、次のコードを使用します。
 
-このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_prepare](http://php.net/manual/mysqli.prepare.php) メソッドを使用して、準備済みの INSERT ステートメントを作成した後、[mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php) メソッドを使用して、挿入される列の値ごとにパラメーターをバインドします。 このコードでは、[mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) メソッドでステートメントを実行してから、[mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php) メソッドでステートメントを閉じます。
+このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) メソッドを使用して、準備済みの INSERT ステートメントを作成した後、[mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) メソッドを使用して、挿入される列の値ごとにパラメーターをバインドします。 このコードでは、[mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) メソッドでステートメントを実行してから、[mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) メソッドでステートメントを閉じます。
 
 host、username、password、db_name の各パラメーターは実際の値に置き換えてください。 
 
@@ -126,7 +126,7 @@ mysqli_close($conn);
 ```
 
 ## <a name="read-data"></a>データの読み取り
-接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。  このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_query](http://php.net/manual/mysqli.query.php) メソッドを使用して SQL クエリを実行し、[mysqli_fetch_assoc](http://php.net/manual/mysqli-result.fetch-assoc.php) メソッドを使用して結果の行をフェッチします。
+接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。  このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_query](https://secure.php.net/manual/mysqli.query.php) メソッドを使用して SQL クエリを実行し、[mysqli_fetch_assoc](https://secure.php.net/manual/mysqli-result.fetch-assoc.php) メソッドを使用して結果の行をフェッチします。
 
 host、username、password、db_name の各パラメーターは実際の値に置き換えてください。 
 
@@ -159,7 +159,7 @@ mysqli_close($conn);
 ## <a name="update-data"></a>データの更新
 接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
 
-このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_prepare](http://php.net/manual/mysqli.prepare.php) メソッドを使用して、準備済みの UPDATE ステートメントを作成し、[mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php) メソッドを使用して、更新される列の値ごとにパラメーターをバインドします。 このコードでは、[mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) メソッドでステートメントを実行してから、[mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php) メソッドでステートメントを閉じます。
+このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) メソッドを使用して、準備済みの UPDATE ステートメントを作成し、[mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) メソッドを使用して、更新される列の値ごとにパラメーターをバインドします。 このコードでは、[mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) メソッドでステートメントを実行してから、[mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) メソッドでステートメントを閉じます。
 
 host、username、password、db_name の各パラメーターは実際の値に置き換えてください。 
 
@@ -197,7 +197,7 @@ mysqli_close($conn);
 ## <a name="delete-data"></a>データの削除
 接続し、**DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
-このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_prepare](http://php.net/manual/mysqli.prepare.php) メソッドを使用して、準備済みの DELETE ステートメントを作成し、[mysqli_stmt_bind_param](http://php.net/manual/mysqli-stmt.bind-param.php) メソッドを使用して、ステートメント内の WHERE 句のパラメーターをバインドします。 このコードでは、[mysqli_stmt_execute](http://php.net/manual/mysqli-stmt.execute.php) メソッドでステートメントを実行してから、[mysqli_stmt_close](http://php.net/manual/mysqli-stmt.close.php) メソッドでステートメントを閉じます。
+このコードでは、PHP に含まれている **MySQL Improved 拡張機能** (mysqli) クラスを使用します。 このコードでは、[mysqli_prepare](https://secure.php.net/manual/mysqli.prepare.php) メソッドを使用して、準備済みの DELETE ステートメントを作成し、[mysqli_stmt_bind_param](https://secure.php.net/manual/mysqli-stmt.bind-param.php) メソッドを使用して、ステートメント内の WHERE 句のパラメーターをバインドします。 このコードでは、[mysqli_stmt_execute](https://secure.php.net/manual/mysqli-stmt.execute.php) メソッドでステートメントを実行してから、[mysqli_stmt_close](https://secure.php.net/manual/mysqli-stmt.close.php) メソッドでステートメントを閉じます。
 
 host、username、password、db_name の各パラメーターは実際の値に置き換えてください。 
 

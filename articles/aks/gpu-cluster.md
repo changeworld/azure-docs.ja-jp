@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 7fb60f3c440b4804ad8c5e6c013ecfa454358833
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 231d7b875a7163aaa532be4a6477ca4e2eb67286
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716119"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043619"
 ---
 # <a name="using-gpus-on-aks"></a>AKS での GPU の使用
 
@@ -63,7 +63,7 @@ aks-nodepool1-22139053-1   Ready     agent     10h       v1.9.6
 aks-nodepool1-22139053-2   Ready     agent     10h       v1.9.6
 ```
 
-ノードの 1 つを記述して、GPU がスケジュール可能であることを確認します。 これは `Capacity` セクションの下にあります。 たとえば、「`alpha.kubernetes.io/nvidia-gpu:  1`」のように入力します。
+ノードの 1 つを記述して、GPU がスケジュール可能であることを確認します。 これは `Capacity` セクションの下にあります。 たとえば、「 `nvidia.com/gpu:  1` 」のように入力します。 GPU が表示されない場合は、以下の「**トラブルシューティング**」のセクションを参照してください。
 
 ```
 $ kubectl describe node aks-nodepool1-22139053-0
@@ -96,12 +96,12 @@ Addresses:
   InternalIP:  10.240.0.4
   Hostname:    aks-nodepool1-22139053-0
 Capacity:
- alpha.kubernetes.io/nvidia-gpu:  1
+ nvidia.com/gpu:                  1
  cpu:                             6
  memory:                          57691688Ki
  pods:                            110
 Allocatable:
- alpha.kubernetes.io/nvidia-gpu:  1
+ nvidia.com/gpu:                  1
  cpu:                             6
  memory:                          57589288Ki
  pods:                            110
@@ -135,7 +135,7 @@ Events:         <none>
 
 GPU が実際に機能していることを立証するには、適切なリソース要求を指定して GPU 対応ワークロードをスケジュールします。 この例では、[MNIST データセット](http://yann.lecun.com/exdb/mnist/)に対して [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) ジョブを実行します。
 
-次のジョブ マニフェストには `alpha.kubernetes.io/nvidia-gpu: 1` のリソース制限が含まれています。 適切な CUDA ライブラリとデバッグ ツールは、`/usr/local/nvidia` にあるノードで使用可能になります。これらは、下に示すような適切なボリューム仕様を使用してポッドにマウントする必要があります。
+次のジョブ マニフェストには `nvidia.com/gpu: 1` のリソース制限が含まれています。 
 
 マニフェストをコピーし、**samples-tf-mnist-demo.yaml** として保存します。
 ```
@@ -158,15 +158,8 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            alpha.kubernetes.io/nvidia-gpu: 1
-        volumeMounts:
-        - name: nvidia
-          mountPath: /usr/local/nvidia
+           nvidia.com/gpu: 1
       restartPolicy: OnFailure
-      volumes:
-        - name: nvidia
-          hostPath:
-            path: /usr/local/nvidia
 ```
 
 [kubectl apply][kubectl-apply] コマンドを使ってジョブを実行します。 このコマンドは、マニフェスト ファイルを解析し、定義されている Kubernetes オブジェクトを作成します。

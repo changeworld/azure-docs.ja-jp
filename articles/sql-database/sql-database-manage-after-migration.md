@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 6dd4aacddfbce3e06c1ea9a356a559cc8cd8049c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: fd32a00fe83e731321cb5e365f64d0f6acf8732d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166488"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870980"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database でのデータベースの管理
 
@@ -89,7 +89,7 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 ### <a name="how-do-i-limit-or-control-connectivity-access-to-my-database"></a>データベースへの接続アクセスを制限または制御するにはどうすればよいですか?
 複数の方法から適切なものを選んで、アプリケーションの最適な接続編成を実現できます。 
 - ファイアウォール ルール
-- VNET サービス エンドポイント
+- VNet サービス エンドポイント
 - 予約済み IP
 
 #### <a name="firewall"></a>ファイアウォール
@@ -98,11 +98,11 @@ SQL Database では [2 種類の認証方法](sql-database-control-access.md#aut
 サーバー レベルまたはデータベース レベルで、ファイアウォール ルールを作成できます。 サーバー レベルのファイアウォール ルールは、ポータルまたは SSMS で作成できます。 サーバー レベルとデータベース レベルでファイアウォール ルールを設定する方法について詳しくは、[SQL Database でのファイアウォール ルールの作成](sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal)に関するページをご覧ください。
 
 #### <a name="service-endpoints"></a>サービス エンドポイント
-既定では、SQL Database は、"Azure サービスがサーバーにアクセスできる" ように構成されます。これは、Azure 内の任意の仮想マシンがデータベースへの接続を試行できることを意味します。 これらの試みも認証を受ける必要があります。 ただし、Azure IP がデータベースにアクセスできるようにしたくない場合は、"サーバーへの Azure サービスのアクセスの許可" を無効にできます。 さらに、[VNET サービス エンドポイント](sql-database-vnet-service-endpoint-rule-overview.md)を構成できます。
+既定では、SQL Database は、"Azure サービスがサーバーにアクセスできる" ように構成されます。これは、Azure 内の任意の仮想マシンがデータベースへの接続を試行できることを意味します。 これらの試みも認証を受ける必要があります。 ただし、Azure IP がデータベースにアクセスできるようにしたくない場合は、"サーバーへの Azure サービスのアクセスの許可" を無効にできます。 さらに、[VNet サービス エンドポイント](sql-database-vnet-service-endpoint-rule-overview.md)を構成できます。
 
 サービス エンドポイント (SE) を使うと、Azure 内の自分のプライベート仮想ネットワークのみに、重要な Azure リソースを公開できます。 これにより、基本的に、リソースへのパブリック アクセスが除去されます。 仮想ネットワークと Azure の間のトラフィックは、Azure のバックボーン ネットワーク上に留まります。 SE を使わない場合は、強制トンネリング パケット ルーティングを使います。 仮想ネットワークはインターネット トラフィックを強制的に組織に送り、Azure サービス トラフィックは同じルートを経由します。 サービス エンドポイントを使うと、パケットは仮想ネットワークから Azure バックボーン ネットワーク上のサービスに直接流れるので、これを最適化できます。
 
-![VNET サービス エンドポイント](./media/sql-database-manage-after-migration/vnet-service-endpoints.png) 
+![VNet サービス エンドポイント](./media/sql-database-manage-after-migration/vnet-service-endpoints.png) 
 
 #### <a name="reserved-ips"></a>予約済み IP
 他の選択肢としては、VM に[予約済み IP](../virtual-network/virtual-networks-reserved-public-ip.md) をプロビジョニングし、サーバーのファイアウォール設定でこれらの VM IP アドレスをホワイトリストに登録します。 予約済み IP アドレスを割り当てると、IP アドレスを変更した場合にファイアウォールの規則を更新する手間が省けます。
@@ -227,9 +227,9 @@ SQL Database には、Basic、Standard、Premium というさまざまなサー�
 
 |**サービス レベル**|**一般的なユース ケース シナリオ**|
 |---|---|
-|**Basic**|同時実行、スケール、パフォーマンスに関する要件が高くない、ユーザーとデータベースの数が少ないアプリケーション。 |
-|**Standard**|同時実行、スケール、パフォーマンスの要件が高く、IO の要求が低から中程度であるアプリケーション。 |
-|**Premium**|同時実行ユーザー数が多く、CPU/メモリの要件が高く、IO 要求が高いアプリケーション。 同時実行性が高く、スループットが高く、待機時間の影響を受けやすいアプリは、Premium レベルを利用できます。 |
+|**Basic**|コンカレンシー、スケール、パフォーマンスに関する要件が高くない、ユーザーとデータベースの数が少ないアプリケーション。 |
+|**Standard**|コンカレンシー、スケール、パフォーマンスの要件が高く、IO の要求が低から中程度であるアプリケーション。 |
+|**Premium**|同時実行ユーザー数が多く、CPU/メモリの要件が高く、IO 要求が高いアプリケーション。 コンカレンシーが高く、スループットが高く、待機時間の影響を受けやすいアプリは、Premium レベルを利用できます。 |
 |||
 
 コンピューティング サイズが適切であることを確認するには、「SQL Database のパフォーマンスとリソース使用率を監視するにはどうすればよいですか?」で説明したいずれかの方法で、クエリとデータベース リソース使用量を監視できます。 クエリ/データベースによるCPU/メモリ使用量が一貫して高い場合は、上位のコンピューティング サイズへのスケールアップを検討します。 同様に、ピーク時間帯でもリソースがあまり使われていない場合は、現在のコンピューティング サイズからのスケールダウンを検討します。 

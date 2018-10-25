@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 59856418adde1ea29a0513a1ca7c0c60531768d8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3e4b4e904fd4615458e8d873baa1bf30588fe81d
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036543"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249436"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法: Azure Access Control Service からの移行
 
@@ -117,6 +117,9 @@ Access Control コンポーネントの廃止スケジュールを次に示し�
 - **2018 年 4 月 2日**: Azure クラシック ポータルは完全に廃止され、Access Control の名前空間管理はどの URL でも使用できなくなります。 これ以降、Access Control 名前空間を有効または無効にしたり、削除したり、列挙することはできなくなります。 ただし、Access Control 管理ポータルはその機能を完全に維持され、`https://\<namespace\>.accesscontrol.windows.net` に配置されます。 その他の Access Control コンポーネントもすべて、引き続き正常に動作します。
 - **2018 年 11 月 7 日**: すべての Access Control コンポーネントが完全にシャット ダウンされます。 これには、Access Control 管理ポータル、管理サービス、STS、およびトークン変換ルール エンジンが含まれます。 これ以降、(\<名前空間\>.accesscontrol.windows.net にある) Access Control へ送信されるすべての要求は失敗するようになります。 この時点までに、すべての既存アプリケーションとサービスを他のテクノロジへと移行しておく必要があります。
 
+> [!NOTE]
+> ポリシーは、一定期間トークンを要求していない名前空間を無効にします。 2018 年初頭現在、この期間は 14 日間の非アクティブですが、今後数週間以内に 7 日間の非アクティブに短縮されます。 現在無効になっている Access Control 名前空間がある場合、[ACS PowerShell をダウンロードしてインストールし](#download-and-install-acs-powershell)、名前空間を再度有効にすることができます。
+
 ## <a name="migration-strategies"></a>移行方法
 
 次のセクションでは、Access Control から他の Microsoft テクノロジに移行する際の推奨事項の概要を示します。
@@ -146,7 +149,7 @@ Access Control によって発行されたトークンを受け入れる各 Micr
 
 SharePoint 2013、2016、SharePoint Online のユーザーは、クラウド、オンプレミス、およびハイブリッドのシナリオでの認証のために長い間 ACS を使ってきました。 SharePoint の一部の機能とユース ケースは ACS 提供終了の影響を受けますが、それ以外には影響ありません。 次の表は、ACS を利用する最も一般的な SharePoint 機能の一部に対する移行のガイダンスをまとめたものです。
 
-| Feature | ガイダンス |
+| 機能 | ガイダンス |
 | ------- | -------- |
 | Azure AD からのユーザーの認証 | これまで、Azure AD は SharePoint での認証に必要な SAML 1.1 トークンをサポートしておらず、SharePoint を Azure AD トークン形式と互換性があるようにする手段として ACS が使われていました。 現在は、[Azure AD アプリ ギャラリーの SharePoint オンプレミス アプリを使って SharePoint を Azure AD に直接接続する](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)ことができます。 |
 | [オンプレミスの SharePoint でのアプリ認証とサーバー間認証](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | ACS の提供終了の影響を受けません。変更は必要ありません。 | 
@@ -347,6 +350,10 @@ OAuth クライアント資格情報の付与の Azure AD 実装を使用して�
 | ![ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) では、ACS によく似た 2 つのソリューションが提供されます。 PingOne は、ACS と同じ機能を多数サポートしているクラウド ID サービスで、PingFederate は、より高度な柔軟性を提供する、類似のオンプレミス ID 製品です。 これらの製品の使用の詳細については、[ACS の提供終了に関する Ping のガイダンス](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html)を参照してください。 |
 
 Microsoft では、Access Control を使用するすべてのお客様に、アプリやサービスの最適な移行経路を提供し、Access Control の移行に伴う作業を最小限に抑えていただく目的で、Ping Identity および Auth0 と連携しています。
+
+#### <a name="passthrough-authentication"></a>パススルー認証
+
+任意のトークン変換によるパススルー認証の場合、ACS に相当する Microsoft のテクノロジはありません。 お客様がそれを必要としている場合は、Auth0 が最も近い類似のソリューションを提供しています。
 
 ## <a name="questions-concerns-and-feedback"></a>質問、懸念事項、フィードバック
 

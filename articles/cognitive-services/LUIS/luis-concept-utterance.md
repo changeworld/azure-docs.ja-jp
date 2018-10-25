@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 39c99cc35f4c2549efc9c20af0680b77483325c5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2b21102a5416c1fd7e2abb35be677c48ffc63263
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038937"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638077"
 ---
 # <a name="utterances-in-luis"></a>LUIS での発話
 

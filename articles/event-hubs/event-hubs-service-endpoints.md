@@ -10,16 +10,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: b8c3270149c254898ad3180b92a4ff398f3efb6c
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: ff0ebbb140627caaaa71c5d09d0a4078eca86055
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745911"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888120"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Azure Event Hubs で仮想ネットワーク サービス エンドポイントを使用する
 
 Event Hubs と[仮想ネットワーク (VNet) サービス エンドポイント][vnet-sep]の統合により、メッセージング機能へのアクセスを、仮想ネットワークにバインドされている仮想マシンなどのワークロードから保護し、ネットワーク トラフィック パスを両端で保護できます。 
+
+> [!IMPORTANT]
+> 仮想ネットワークは、**Standard** レベルと **Dedicated** レベルの Event Hubs でサポートされます。 Basic レベルではサポートされません。 
 
 少なくとも 1 つの仮想ネットワーク サブネット サービス エンドポイントにバインドするように構成した後、それぞれの Event Hubs 名前空間は、承認された仮想ネットワークを除くどこからのトラフィックも受け入れなくなります。 仮想ネットワークの観点からは、サービス エンドポイントに Event Hubs 名前空間をバインドすると、仮想ネットワーク サブネットからメッセージング サービスへの分離されたネットワーク トンネルが構成されます。
 

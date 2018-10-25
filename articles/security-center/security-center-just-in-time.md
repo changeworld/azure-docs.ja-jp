@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 10/10/2018
 ms.author: rkarlin
-ms.openlocfilehash: cb13da7ad9387b7170882752b1620c2756bc3675
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 98533e3c1454867ff09c53902f0f575d198452a3
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124152"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320341"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>ジャスト イン タイムを使用して仮想マシンへのアクセスを管理する
 
@@ -111,6 +111,33 @@ Security Center でジャスト イン タイムの有効化が推奨される�
 > [!NOTE]
 >VM に対して JIT VM アクセスが有効になっている場合、Azure Security Center では、関連付けられているネットワーク セキュリティ グループ内の選択されたポートについて、すべての受信トラフィックを拒否というルールが作成されます。 このルールはネットワーク セキュリティ グループの最優先事項となります。あるいは、そこに既にある既存のルールより優先度が低くなります。 これは、ルールが安全であるかどうかを判断する、Azure Security Center によって行われる分析に依存します。
 >
+
+
+## <a name="set-just-in-time-within-a-vm"></a>VM 内で Just-In-Time を設定する
+
+VM への Just-In-Time アクセスのロールアウトを容易にするには、VM 内からの直接的な Just-In-Time アクセスのみを許可するように VM を設定できます。
+
+1. Azure portal で、**[仮想マシン]** を選択します。
+2. Just-In-Time アクセスに制限する仮想マシンをクリックします。
+3. メニューで **[構成]** をクリックします。
+4. **[Just-In-Time アクセス]** で **[Just-In-Time ポリシーを有効にする]** をクリックします。 
+
+これにより、以下の設定を使用する VM の Just-In-Time アクセスが有効になります。
+
+- Windows サーバー:
+    - RDP ポート 3389
+    - 3 時間のアクセス
+    - 許可されるソース IP アドレスは [要求ごと] に設定されます
+- Linux サーバー:
+    - SSH ポート 22
+    - 3 時間のアクセス
+    - 許可されるソース IP アドレスは [要求ごと] に設定されます
+     
+VM で Just-In-Time が既に有効になっている場合、VM の構成ページに移動すると、Just-In-Time が有効になっていることが示され、リンクを使用して Azure Security Center でポリシーを開き、設定を確認および変更できます。
+
+![VM での JIT の構成](./media/security-center-just-in-time/jit-vm-config.png)
+
+
 ## <a name="requesting-access-to-a-vm"></a>VM へのアクセス権の要求
 
 VM へのアクセス権を要求するには、以下の手順に従います。

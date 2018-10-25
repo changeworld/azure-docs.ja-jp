@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 02/06/2017
 ms.author: anroth
 ROBOTS: NOINDEX
-ms.openlocfilehash: 2687145a89c11efb4a3bcb1494a39806e9aae551
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 6c96ab18161230ffabd0703bdb6d0230bdc8d3ba
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48238609"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026264"
 ---
 # <a name="example-call-emotion-api-for-video"></a>サンプル: ビデオ用に Emotion API を呼び出す
 
@@ -46,7 +46,7 @@ ocp-apim-subscription-key: <Your subscription key>
 ```
 var emotionServiceClient = new emotionServiceClient("Your subscription key");
 ```
-サブスクリプション キーを取得するには、サブスクリプションについてのページ を参照してください (https://azure.microsoft.com/try/cognitive-services/)。
+サブスクリプション キーを取得するには、[サブスクリプション](https://azure.microsoft.com/try/cognitive-services/)に関するページを参照してください。
 
 ### <a name="Step2">手順 2: サービスにビデオをアップロードして状態を確認する</a>
 Emotion API for Video のいずれかの呼び出しを実行する場合の最も基本的な方法は、ビデオを直接アップロードすることです。 これを行うには、コンテンツの種類を application/octet-stream と指定し、同時にデータの読み取りはビデオ ファイルからだと指定して、"POST" 要求を送信します。 ビデオの最大サイズは 100 MB です。

@@ -1,6 +1,6 @@
 ---
-title: Azure Machine Learning でモデルを管理してデプロイする
-description: Azure Machine Learning を使用して、モデルをデプロイ、管理、および監視して、継続的に向上させる方法を説明します。 トレーニングしたモデルを、ローカル コンピューターまたは他のソースから Azure Machine Learning を使用してデプロイできます。
+title: Azure Machine Learning service でモデルを管理してデプロイする
+description: Azure Machine Learning service を使用して、モデルをデプロイ、管理、および監視して、継続的に向上させる方法を説明します。 トレーニングしたモデルを、ローカル コンピューターまたは他のソースから Azure Machine Learning service を使用してデプロイできます。
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,21 +9,21 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: d3e0b63d42ad8c6d4765f5120c26c5dfdf5ad6fb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b09ef259d73744612c41adc4fc40ea0235da9bcb
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166539"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885069"
 ---
-# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning"></a>Azure Machine Learning でモデルを管理、デプロイ、および監視する
+# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Azure Machine Learning service でモデルを管理、デプロイ、および監視する
 
-この記事では、Azure Machine Learning を使用して、お使いのモデルをデプロイ、管理、および監視して、継続的に向上させる方法を説明します。 トレーニングしたモデルを、ローカル コンピューターまたは他のソースから Azure Machine Learning を使用してデプロイできます。 
+この記事では、Azure Machine Learning service を使用して、お使いのモデルをデプロイ、管理、および監視して、継続的に向上させる方法を説明します。 トレーニングしたモデルを、ローカル コンピューターまたは他のソースから Azure Machine Learning を使用してデプロイできます。 
 
 次の図は、完全なデプロイ ワークフローを示しています。[ ![Azure Machine Learning のデプロイ ワークフロー](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 デプロイ ワークフローには次の手順が含まれます。
-1. **モデルを登録する**。お使いの Azure Machine Learning ワークスペースでホストされているレジストリに登録します
+1. **モデルを登録する**。お使いの Azure Machine Learning service ワークスペースでホストされているレジストリに登録します
 1. **イメージを登録する**。このイメージにより、ポータブル コンテナー内で、モデルと、スコアリング スクリプトおよび依存関係がペアリングされます 
 1. **デプロイする**。イメージを Web サービスとしてクラウドまたはエッジ デバイスにデプロイします
 1. **データを監視して収集する**
@@ -35,8 +35,8 @@ ms.locfileid: "47166539"
 
 ## <a name="step-1-register-model"></a>手順 1: モデルを登録する
 
-モデル レジストリにより、お使いの Azure Machine Learning ワークスペースのすべてのモデルが追跡されます。
-モデルの識別には、名前とバージョンが使用されます。 モデルを登録するたびに、既存のモデルと同じ名前で登録され、レジストリによってバージョンがインクリメントされます。 モデルの検索時に使用できる追加のメタデータ タグを、登録中に指定することもできます。
+モデル レジストリにより、Azure Machine Learning service ワークスペース内のすべてのモデルが追跡されます。
+モデルは、名前とバージョンによって識別されます。 モデルを登録するたびに、既存のモデルと同じ名前で登録され、レジストリによってバージョンがインクリメントされます。 モデルの検索時に使用できる追加のメタデータ タグを、登録中に指定することもできます。
 
 イメージによって使用されているモデルを削除することはできません。
 
@@ -71,7 +71,7 @@ Web サービスのデプロイも検索可能です。 たとえば、特定の
 * Azure FPGA マシン
 * Azure IoT Edge デバイス
 
-ご自身のサービスがデプロイされると、推論要求が自動的に負荷分散され、クラスターは、オンデマンドでスパイクに対応できるようにスケーリングされます。 お使いのワークスペースに関連付けられている Azure Application Insights サービスに、[ご自身のサービスに関するテレメトリ](https://docs.microsoft.com/python/api/azureml-telemetry/azureml.telemetry?view=azure-ml-py)をキャプチャできます。
+ご自身のサービスがデプロイされると、推論要求が自動的に負荷分散され、クラスターは、オンデマンドでスパイクに対応できるようにスケーリングされます。 お使いのワークスペースに関連付けられている Azure Application Insights サービスに、[お使いのサービスに関するテレメトリをキャプチャできます](how-to-enable-app-insights.md)。
 
 ## <a name="step-4-monitor-models-and-collect-data"></a>手順 4: モデルを監視して、データを収集する
 

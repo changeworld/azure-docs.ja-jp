@@ -13,22 +13,25 @@ ms.service: azure
 ms.technology: ''
 ms.assetid: ''
 ms.custom: it-pro
-ms.openlocfilehash: 905cedd6ee781ca163731a6f71b083acfc11b5eb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 15a28cd5937be103aac888a5fc5485e39854a1b4
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36332373"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319950"
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft ハイブリッド ID ソリューション
+
 [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ハイブリッド ID ソリューションを使用すると、オンプレミスのディレクトリ オブジェクトと Azure AD を同期したまま、オンプレミスでユーザーを管理できます。 オンプレミスの Windows Server Active Directory と Azure AD との同期を計画する際に最初に行う決断は、同期済み ID を使用するかフェデレーション済み ID を使用するかです。 同期済み ID (およびオプションでパスワード ハッシュ) を使用すると、ユーザーは、オンプレミスとクラウドベースの両方の組織リソースへのアクセスに同じパスワードを使用できます。 シングル サインオン (SSO) やオンプレミスの MFA などのより高度なシナリオ要件では、Active Directory フェデレーション サービス (AD FS) をフェデレーション済み ID にデプロイする必要があります。 
 
 ハイブリッド ID の構成にはいくつかのオプションがあります。 この記事では、デプロイメントの容易さ、特定の ID、アクセス管理のニーズに基づいて、最適なものを選択するための情報を組織に提供します。 組織のニーズに最も合う ID モデルを検討するとき、時間、既存のインフラストラクチャ、複雑さ、コストも考慮する必要があります。 これらの要因は組織ごとに異なり、時間の経過とともに変化する場合があります。 ただし、要件が変化する場合、異なる ID モデルに柔軟に切り替えることもできます。
 
 > [!TIP]
 > これらのソリューションは、すべて [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) によって配信されます。
+>
 
 ## <a name="synchronized-identity"></a>同期済み ID 
+
 同期済み ID は、オンプレミスのディレクトリ オブジェクト (ユーザーおよびグループ) と Azure AD を同期する最も簡単な方法です。 
 
 ![同期済みハイブリッド ID](./media/choose-hybrid-identity-solution/synchronized-identity.png)
@@ -39,8 +42,10 @@ ms.locfileid: "36332373"
 
 > [!TIP]
 > ユーザーのパスワードは、実際のユーザーのパスワードを表すハッシュ値の形式でオンプレミスの Windows Server Active Directory に格納されます。 ハッシュ値は、一方向の数学関数 (ハッシュ アルゴリズム) の結果として求められます。 一方向の関数の結果をパスワードのプレーンテキスト バージョンに戻す方法はありません。 パスワードのハッシュを使用してオンプレミスのネットワークにサインインすることはできません。 パスワードの同期を選択すると、Azure AD Connect は、オンプレミスの Active Directory からパスワード ハッシュを抽出し、パスワード ハッシュに追加のセキュリティ処理を適用してから Azure AD に同期します。 パスワードの同期とパスワードの書き戻しを組み合わせて使用すると、Azure AD でセルフ サービス パスワードのリセットを有効にすることもできます。 また、企業ネットワークに接続されたドメイン参加済みコンピューターのユーザーはシングル サインオン (SSO) を有効化できます。 シングル サインオンにおいて、有効になっているユーザーはユーザー名のみを入力して、クラウド リソースに安全にアクセスできます。 
+>
 
 ## <a name="pass-through-authentication"></a>パススルー認証
+
 [Azure AD のパススルー認証](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-pass-through-authentication)は、オンプレミスの Active Directory を使用して、Azure AD ベースのサービスの単純なパスワード検証ソリューションを提供します。 組織のセキュリティとコンプライアンスのポリシーが、ハッシュされたフォームであっても、ユーザーのパスワードの送信を許可しておらず、ドメインに参加したデバイスのデスクトップの SSO をサポートする必要があるだけの場合、パススルー認証を使用して評価することをお勧めします。 パススルー認証では、DMZ でのデプロイは必要ありません。よって、AD FS と比較するとデプロイ インフラストラクチャが単純です。 この認証方法により、ユーザーが Azure AD を使用してサインインするとき、ユーザーのパスワードがオンプレミスの Active Directory に対して直接検証されます。
 
 ![パススルー認証](./media/choose-hybrid-identity-solution/pass-through-authentication.png)
@@ -53,6 +58,7 @@ ms.locfileid: "36332373"
 - ユーザーの検証が行われるフォレスト内のドメインに参加済みであること
 
 ## <a name="federated-identity-ad-fs"></a>フェデレーション ID (AD FS)
+
 Office 365 やその他のクラウド サービスにユーザーがアクセスする方法をさらに制御するために、[Active Directory フェデレーション サービス (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server) を使用して、シングル サイン オン (SSO) でディレクトリの同期をセットアップできます。 AD FS でユーザーのサインインのフェデレーション処理を行うと、ユーザーの資格情報を検証するオンプレミスのサーバーに認証が委任されます。 このモデルでは、オンプレミスの Active Directory の資格情報が Azure AD に渡されることはありません。
 
 ![フェデレーション ID](./media/choose-hybrid-identity-solution/federated-identity.png)
@@ -61,9 +67,10 @@ Office 365 やその他のクラウド サービスにユーザーがアクセ�
 
 > [!TIP]
 > Active Directory フェデレーション サービス (AD FS) でフェデレーションを使用する場合、AD FS インフラストラクチャで障害が発生した際のバックアップとして、オプションでパスワード同期を設定することもできます。
-
+>
 
 ## <a name="common-scenarios-and-recommendations"></a>一般的なシナリオと推奨事項
+
 以降では、ハイブリッド ID とアクセス管理に関する一般的なシナリオをいくつか取り上げると共に、それぞれのシナリオで最適と思われるハイブリッド ID オプションを紹介します。
 
 |必要事項|PWS と SSO<sup>1</sup>| PTA と SSO<sup>2</sup> | AD FS<sup>3</sup>|
@@ -77,19 +84,17 @@ Office 365 やその他のクラウド サービスにユーザーがアクセ�
 |ユーザー<sup>4</sup>のスマートカード認証をサポート| | |![推奨](./media/choose-hybrid-identity-solution/ic195031.png)|
 |Office ポータル および Windows 10 デスクトップにパスワードの有効期限通知を表示| | |![推奨](./media/choose-hybrid-identity-solution/ic195031.png)|
 
-> <sup>1</sup> シングル サインオンによるパスワード同期。 
-
+> <sup>1</sup> シングル サインオンによるパスワード同期。
+>
 > <sup>2</sup> パススルー認証およびシングル サインオン。 
-
+>
 > <sup>3</sup> AD FS を使用したフェデレーション シングル サインオン。
-
+>
 > <sup>4</sup> AD FS は、エンタープライズ PKI と統合すると、証明書を使用したサインインが可能になります。 これらの証明書は、MDM や GPO などの信頼できるプロビジョニング チャネル、スマートカードの証明書 (PIV/CAC カードなど) または Hello for Business (証明書信頼) を経由してデプロイされるソフト証明書を使用できます。 スマートカード認証のサポートの詳細については、[このブログ](https://blogs.msdn.microsoft.com/samueld/2016/07/19/adfs-certauth-aad-o365/)を参照してください。
-
+>
 
 ## <a name="next-steps"></a>次の手順
-[Azure の概念実証環境で詳しく学ぶ](https://aka.ms/aad-poc)
 
+[Azure 概念実証環境についての詳細](https://aka.ms/aad-poc)
 [Azure AD Connect のインストール](http://go.microsoft.com/fwlink/?LinkId=615771)
-
 [ハイブリッド ID 同期の監視](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health)
-

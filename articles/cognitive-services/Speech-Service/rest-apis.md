@@ -2,26 +2,26 @@
 title: 音声サービスの REST API
 description: 音声サービスの REST API のリファレンス。
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
-ms.technology: speech
+ms.component: speech
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 6758cd658daf75beeea93bf9c719508cd271c8be
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: erhopf
+ms.openlocfilehash: f8b27277cbf3ea6d53a8f02e550beae67fc50741
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032429"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167632"
 ---
 # <a name="speech-service-rest-apis"></a>音声サービスの REST API
 
-音声統合サービス Azure Cognitive Services の REST API は、[Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/Speech) によって提供される API と類似しています。 エンドポイントは Bing 音声サービスで使用されるものと異なります。 リージョンのエンドポイントが利用可能で、使用しているエンドポイントに対応したサブスクリプション キーを使用する必要があります。
+Azure Cognitive Services 音声サービスの REST API は、[Bing Speech API](https://docs.microsoft.com/azure/cognitive-services/Speech) によって提供される API と類似しています。 エンドポイントは Bing 音声サービスで使用されるものと異なります。 リージョンのエンドポイントが利用可能で、使用しているエンドポイントに対応したサブスクリプション キーを使用する必要があります。
 
 ## <a name="speech-to-text"></a>音声テキスト変換
 
-Speech to Text REST API のエンドポイントを次の表に示します。 ご利用のサブスクリプション リージョンと一致するものを使用してください。
+Speech to Text REST API のエンドポイントを次の表に示します。 ご利用のサブスクリプション リージョンと一致するものを使用してください。 
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
@@ -30,13 +30,14 @@ Speech to Text REST API のエンドポイントを次の表に示します。 �
 
 この API は短い発話のみをサポートします。 要求には最大で 10 秒の音声が含まれ、全体を通して最大で 14 秒に達することがあります。 REST API は最終的な結果のみを返し、部分的または中間の結果は返しません。 音声サービスには、より長いオーディオを文字起こしできる[バッチ文字起こし](batch-transcription.md) API もあります。
 
+
 ### <a name="query-parameters"></a>クエリ パラメーター
 
 次のパラメーターは、R​​EST 要求のクエリ文字列に含めることができます。
 
 |パラメーター名|必須/省略可能|意味|
 |-|-|-|
-|`language`|必須|認識される言語の識別子。 [サポートされている言語](supported-languages.md#speech-to-text)を参照してください。|
+|`language`|必須|認識される言語の識別子。 [サポートされている言語](language-support.md#speech-to-text)を参照してください。|
 |`format`|省略可能<br>既定値: `simple`|結果の形式、`simple` または `detailed`。 単純な結果には `RecognitionStatus`、`DisplayText`、`Offset`、および期間が含まれます。 詳細な結果には、信頼度の値と 4 つの異なる表現を持った複数の候補が含まれます。|
 |`profanity`|省略可能<br>既定値: `masked`|認識結果内の不適切な表現をどう扱うか。 `masked` (不適切な表現をアスタリスクに置き換える)、`removed` (すべての不適切な表現を除去する)、または `raw` (不適切な表現を含める) を指定できます。
 
@@ -55,13 +56,19 @@ Speech to Text REST API のエンドポイントを次の表に示します。 �
 
 ### <a name="audio-format"></a>音声の形式
 
-オーディオは HTTP `PUT` 要求の本文で送信されます。 16 KHz の PCM シングル チャンネル (モノラル) の 16 ビット WAV 形式である必要があります。
+オーディオは HTTP `PUT` 要求の本文で送信されます。 次の形式/エンコードの、16 KHz PCM シングル チャンネル (モノラル) の 16 ビット WAV 形式である必要があります。
+
+* PCM コーデックの WAV 形式
+* OPUS コーデックの Ogg 形式
+
+>[!NOTE]
+>上の形式は、Speech Service の REST API と WebSocket を介してサポートされます。 現在、[Speech SDK](/index.yml) では PCM コーデックの WAV 形式のみがサポートされています。 
 
 ### <a name="chunked-transfer"></a>チャンク転送
 
 チャンク転送 (`Transfer-Encoding: chunked`) を使用すると、オーディオ ファイルの送信中に音声サービスがオーディオ ファイルの処理を開始できるようになるため、認識待ち時間の短縮に役立ちます。 REST API は部分的または中間的な結果を提供しません。 このオプションは、単に応答性を向上させるためのものです。
 
-次のコードは、オーディオをチャンクで送信する方法を示しています。 `request` は、適切な REST エンドポイントに接続された HTTPWebRequest オブジェクトです。 `audioFile` はディスク上のオーディオ ファイルのパスです。
+次のコードは、オーディオをチャンクで送信する方法を示しています。 最初のチャンクだけに、オーディオ ファイルのヘッダーが含まれている必要があります。 `request` は、適切な REST エンドポイントに接続された HTTPWebRequest オブジェクトです。 `audioFile` はディスク上のオーディオ ファイルのパスです。
 
 ```csharp
 using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
@@ -195,9 +202,6 @@ HTTP コード|意味|考えられる理由
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
-> [!NOTE]
-> カスタム音声フォントを作成した場合は、関連付けられたカスタム エンドポイントを代わりに使用します。
-
 音声サービスは、Bing Speech でサポートされている 1​6 KHz 出力に加えて、24 KHz オーディオ出力をサポートします。 `X-Microsoft-OutputFormat` HTTP ヘッダーで使用するために 4 つの 24 KHz 出力形式が利用可能であり、内訳は 2 つの 24 KHz 音声、`Jessa24kRUS`、`Guy24kRUS` です。
 
 ロケール | Language   | 性別 | サービス名のマッピング
@@ -205,7 +209,7 @@ HTTP コード|意味|考えられる理由
 en-US  | 英語 (米国) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)" 
 en-US  | 英語 (米国) | 男性   | "Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)"
 
-利用可能なすべての音声の一覧については、[サポートされている言語](supported-languages.md#text-to-speech)を参照してください。
+利用可能なすべての音声の一覧については、[サポートされている言語](language-support.md#text-to-speech)を参照してください。
 
 ### <a name="request-headers"></a>要求ヘッダー
 
@@ -265,7 +269,8 @@ HTTP コード|意味|考えられる理由
 400 |正しくない要求 |必須パラメーターが指定されていない、空、または null です。 または、必須またはオプションのパラメーターに渡された値が無効です。 よくある問題はヘッダーが長すぎることです。
 401|権限がありません |要求が承認されていません。 サブスクリプション キーまたはトークンが有効であり、正しいリージョンにあることを確認してください。
 413|要求のエンティティが大きすぎます|SSML 入力が 1024 文字を超えています
-|502|無効なゲートウェイ    | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。
+429|要求が多すぎます|使用中のサブスクリプションで許可されている要求のクォータまたは速度を超えています。
+502|無効なゲートウェイ | ネットワークまたはサーバー側の問題です。 無効なヘッダーを示す場合もあります。
 
 HTTP ステータスが `200 OK` の場合、応答の本文には要求された形式のオーディオ ファイルが含まれています。 このファイルは、転送後すぐに再生することも、後で再生または別の用途に使用するためにバッファーまたはファイルに保存することもできます。
 

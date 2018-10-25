@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: f8fe86712b59a896d1f431ef677f592ced382db8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e20ae31ae64483d4d11b793f1c8656107413c05d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306061"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406196"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>ID 同期と重複属性の回復性
 重複属性の回復性は、Microsoft のいずれかの同期ツールを実行しているときに **UserPrincipalName** や **ProxyAddress** の競合によって引き起こされる不整合を避けるために Azure Active Directory に備えられている機能です。
@@ -122,7 +122,7 @@ Office 365 管理センターでは、ディレクトリ同期エラーを表示
 
 ![アクティブ ユーザー](./media/how-to-connect-syncservice-duplicate-attribute-resiliency/1234.png "アクティブ ユーザー")
 
-Office 365 管理センターでディレクトリ同期エラーを表示する方法については、「 [Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)」を参照してください。
+Office 365 管理センターでディレクトリ同期エラーを表示する方法については、「 [Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)」を参照してください。
 
 ### <a name="identity-synchronization-error-report"></a>ID 同期のエラー レポート
 重複属性の競合があるオブジェクトがこの新しい動作で処理されると、テナントの技術的通知の連絡先に送信される標準の ID 同期のエラー レポート メールに、通知が含められます。 ただし、この動作には重要な変更があります。 以前は、重複属性の競合に関する情報が、競合が解決されるまで、後続のすべてのエラー レポートに含められました。 この新しい動作では、特定の競合のエラー通知は、競合する属性が検疫されたときに 1 回だけ表示されます。
@@ -173,5 +173,5 @@ ProxyAddress の競合に関する電子メール通知の例を、次に示し�
 ## <a name="see-also"></a>関連項目
 * [Azure AD Connect Sync](how-to-connect-sync-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](whatis-hybrid-identity.md)
-* [Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/en-us/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
+* [Office 365 でディレクトリ同期エラーを確認する](https://support.office.com/article/Identify-directory-synchronization-errors-in-Office-365-b4fc07a5-97ea-4ca6-9692-108acab74067)
 

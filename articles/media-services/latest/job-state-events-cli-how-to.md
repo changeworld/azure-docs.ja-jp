@@ -1,6 +1,6 @@
 ---
-title: Azure Media Services イベントをカスタム Web エンドポイントにルーティングする | Microsoft Docs
-description: Media Services のジョブ状態変更イベントをサブスクライブするには、Azure Event Grid を使用します。
+title: CLI を使用した Event Grid による Azure Media Services イベントの監視 | Microsoft Docs
+description: この記事では、Azure Media Services イベントを監視するために Event Grid をサブスクライブする方法を説明します。
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,22 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: e7268a066acf41c454de0c66aa21603199d85a60
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8145b4eb3c39511eb9cd0ed052c36b8338191d4f
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034843"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389498"
 ---
-# <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>CLI を使用して Azure Media Services のイベントをカスタム Web エンドポイントにルーティングする
+# <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-cli"></a>Azure CLI を使用した Event Grid による Media Services イベントの作成と監視
 
-Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure CLI を使用して Azure Media Services のジョブ状態変更イベントをサブスクライブし、イベントをトリガーして結果を表示します。 
-
-通常、webhook や Azure 関数など、イベントに応答するエンドポイントが、イベントの送信先になります。 このチュートリアルでは、webhook の作成と設定方法を示します。
-
-この記事の手順の最後に、イベント データがエンドポイントに送信済みであることを確認できます。
+Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure CLI を使用して、Azure Media Services アカウントのイベントをサブスクライブします。 次に、イベントをトリガーして結果を表示します。 通常は、イベント データを処理し、アクションを実行するエンドポイントにイベントを送信します。 この記事では、メッセージを収集して表示する Web アプリにイベントを送信します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,147 +31,88 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) をインストールします。 この記事では、Azure CLI バージョン 2.0.46 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 [Azure Cloud Shell](https://shell.azure.com/bash) を使用することもできます。
 
-## <a name="enable-event-grid-resource-provider"></a>Event Grid リソース プロバイダーを有効にする
+## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 
-最初に行う必要があるのは、サブスクリプションで Event Grid リソース プロバイダーが有効になっていることの確認です。 
+Media Services アカウントのイベントをサブスクライブする前に、イベント メッセージのエンドポイントを作成しましょう。 通常、エンドポイントは、イベント データに基づくアクションを実行します。 この記事では、イベント メッセージを表示する[構築済みの Web アプリ](https://github.com/Azure-Samples/azure-event-grid-viewer)をデプロしします。 デプロイされたソリューションには、App Service プラン、App Service Web アプリ、および GitHub からのソース コードが含まれています。
 
-**Azure** Portal で、次の操作を行います。
+1. **[Deploy to Azure]\(Azure にデプロイ\)** を選択して、ソリューションをサブスクリプションにデプロイします。 Azure portal で、パラメーターの値を指定します。
 
-1. [サブスクリプション] に移動します。
-2. サブスクリプションを選択します。
-3. [設定] で、[リソース プロバイダー] を選択します。
-4. "EventGrid" を検索します。
-5. Event Grid が登録されていることを確認します。 登録されていなければ、**[登録]** ボタンをクリックします。  
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
 
-## <a name="create-a-generic-azure-function-webhook"></a>汎用の Azure Function webhook を作成する 
+1. デプロイが完了するまでに数分かかる場合があります。 デプロイが成功した後で、Web アプリを表示して、実行されていることを確認します。 Web ブラウザーで `https://<your-site-name>.azurewebsites.net` にアクセスします
 
-### <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
+"Azure Event Grid ビューアー" サイトに切り替えると、まだイベントがないことがわかります。
+   
+[!INCLUDE [event-grid-register-provider-portal.md](../../../includes/event-grid-register-provider-portal.md)]
 
-Event Grid のアーティクルをサブスクライブする前に、メッセージを収集して表示できるようにするエンドポイントを作成します。
+## <a name="log-in-to-azure"></a>Azure にログインする
 
-[汎用 webhook](https://docs.microsoft.com/azure/azure-functions/functions-create-generic-webhook-triggered-function)に関する記事で説明されているように、汎用 webhook によってトリガーされる関数を作成します。 このチュートリアルでは、**C#** コードが使用されます。
+[Azure portal](http://portal.azure.com) にログインし、以降の手順で示すように CLI コマンドを実行するために **CloudShell** を起動します。
 
-Webhook が作成されたら、**Azure** Portal ウィンドウの上部にある "*[関数の URL の取得]*" をクリックすることで、URL をコピーします。 URL の最後の部分 (*&clientID=default*) は不要です。
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
-![webhook を作成する](./media/job-state-events-cli-how-to/generic_webhook_files.png)
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール](/cli/azure/install-azure-cli)に関するページを参照してください。 
 
-### <a name="validate-the-webhook"></a>webhook を検証する
+## <a name="set-the-azure-subscription"></a>Azure サブスクリプションを設定する
 
-Event Grid に独自の webhook エンドポイントを登録すると、エンドポイントの所有権を証明するための単純な検証コードを含む POST 要求が送信されます。 アプリからは検証コードをエコーで応答する必要があります。 Event Grid は、検証に合格していない webhook エンドポイントにイベントを配信しません。 詳細については、「[Event Grid security and authentication](https://docs.microsoft.com/azure/event-grid/security-authentication)」(Event Grid のセキュリティと認証) を参照してください。 このセクションでは、検証に合格するために定義する必要がある 2 つの部分を定義します。
+次のコマンドで、Media Services アカウントで使用する Azure サブスクリプション ID を指定します。 [[サブスクリプション]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) に移動することで、アクセス権があるサブスクリプションの一覧を表示できます。
 
-#### <a name="update-the-source-code"></a>ソース コードを更新する
-
-webhook を作成すると、**run.csx** ファイルがブラウザーに表示されます。 既定のコードを以下のコードに置き換えます。 
-
-```csharp
-#r "Newtonsoft.Json"
-
-using System;
-using System.Net;
-using Newtonsoft.Json;
-
-public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
-{
-    log.Info($"Webhook was triggered!");
-
-    string jsonContent = await req.Content.ReadAsStringAsync();
-    string eventGridValidation = 
-        req.Headers.FirstOrDefault( x => x.Key == "Aeg-Event-Type" ).Value?.FirstOrDefault();
-
-    dynamic eventData = JsonConvert.DeserializeObject(jsonContent);
-
-    log.Info($"event: {eventData}");
-
-    if (eventGridValidation != String.Empty)
-    {
-        if (eventData[0].data.validationCode !=String.Empty && eventData[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent")
-        {
-            return req.CreateResponse(HttpStatusCode.OK, new 
-            {
-                validationResponse = eventData[0].data.validationCode
-            });
-        }
-    }
-    
-    log.Info(jsonContent);
-
-    return req.CreateResponse(HttpStatusCode.OK);
-}
+```azurecli-interactive
+az account set --subscription mySubscriptionId
 ```
+ 
+[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
 
-#### <a name="update-test-request-body"></a>テストの要求本文を更新する
+## <a name="subscribe-to-media-services-events"></a>Media Services イベントのサブスクライブ
 
-**Azure** Portal ウィンドウの右側に、2 つのタブ (**[ファイルの表示]** と **[テスト]**) が表示されます。 **[テスト]** タブを選びます。**[要求本文]** に、次の json を貼り付けます。 そのまま貼り付けることができます。値を変更する必要はありません。
+どのイベントを追跡するかを Event Grid に通知するアーティクルをサブスクライブします。次の例では、作成した Media Services アカウントをサブスクライブし、イベント通知のエンドポイントとして作成した Web サイトの URL を渡します。 
 
-```json
-[{
-  "id": "2d1781af-3a4c-4d7c-bd0c-e34b19da4e66",
-  "topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "subject": "",
-  "data": {
-    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
-  },
-  "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
-  "eventTime": "2017-08-06T22:09:30.740323Z"
-}
-]
-```
+`<event_subscription_name>` をイベント サブスクリプションの一意の名前に置き換えます。 `<resource_group_name>`と`<ams_account_name>`、Media Services アカウントを作成するときに使用した値を使用します。 `<endpoint_URL>` に対して、Web アプリの URL を入力し、ホーム ページの URL に `api/updates` を追加します。 サブスクライブ時にエンドポイントを指定することによって、そのエンドポイントに対するイベントのルーティングが Event Grid によって行われます。 
 
-ウィンドウの上部にある **[保存] と [実行]** をクリックします。
+1. リソース ID を取得する
 
-![要求本文](./media/job-state-events-cli-how-to/generic_webhook_test.png)
+    ```azurecli-interactive
+    amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
+    ```
 
-## <a name="register-for-the-event-grid-subscription"></a>Event Grid サブスクリプションを登録する 
+    例: 
 
-どのイベントを追跡するかを Event Grid に通知するアーティクルをサブスクライブします。次の例では、作成した Media Services アカウントをサブスクライブし、イベント通知のエンドポイントとして作成した Azure Function webhook の URL を渡します。 
+    ```
+    amsResourceId=$(az ams account show --name amsaccount --resource-group amsResourceGroup --query id --output tsv)
+    ```
 
-`<event_subscription_name>` をイベント サブスクリプションの一意の名前に置き換えます。 `<resource_group_name>`と`<ams_account_name>`、Media Services アカウントを作成するときに使用した値を使用します。 `<endpoint_URL>` には、エンドポイント URL を貼り付けます。 URL から "*&clientID=default*" を削除します。 サブスクライブ時にエンドポイントを指定することによって、そのエンドポイントに対するイベントのルーティングが Event Grid によって行われます。 
+2. イベントをサブスクライブする
 
-```cli
-amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
+    ```azurecli-interactive
+    az eventgrid event-subscription create \
+    --resource-id $amsResourceId \
+    --name <event_subscription_name> \
+    --endpoint <endpoint_URL>
+    ```
 
-az eventgrid event-subscription create \
-  --resource-id $amsResourceId \
-  --name <event_subscription_name> \
-  --endpoint <endpoint_URL>
-```
+    例: 
 
-Media Services アカウントのリソース ID 値は、次のようになります。
+    ```
+    az eventgrid event-subscription create --resource-id $amsResourceId --name amsTestEventSubscription --endpoint https://amstesteventgrid.azurewebsites.net/api/updates/
+    ```    
 
-```
-/subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amstestaccount
-```
+    > [!TIP]
+    > 検証ハンドシェイク警告が表示されることがあります。 数分待つと、ハンドシェイクが検証されます。
 
-## <a name="test-the-events"></a>イベントをテストする
+では、イベントをトリガーして、Event Grid がメッセージをエンドポイントに配信するようすを見てみましょう。
 
-エンコード ジョブを作成します。 たとえば、クイックスタート: [ビデオ ファイルのストリーミング](stream-files-dotnet-quickstart.md)の説明に従います。
+## <a name="send-an-event-to-your-endpoint"></a>エンドポイントへのイベントの送信
 
-以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 先ほど作成した webhook を参照します。 **[監視]** と **[更新]** をクリックします。 ジョブの状態変更イベントが表示されます。"Queued"、"Scheduled"、"Processing"、"Finished"、"Error"、"Canceled"、"Canceling"。  詳細については、「[Media Services イベントのスキーマ](media-services-event-schemas.md)」を参照してください。
+エンコード ジョブを実行して、Media Services アカウントのイベントをトリガーできます。 [このクイック スタート](stream-files-dotnet-quickstart.md)に従って、ファイルをエンコードし、イベントの送信を開始できます。 
 
-次の例は、JobStateChange イベントのスキーマを示しています。
+Web アプリをもう一度表示し、その Web アプリにサブスクリプションの検証イベントが送信されたことに注目します。 Event Grid は検証イベントを送信するので、エンドポイントはイベント データを受信することを確認できます。 エンドポイントは、`validationResponse` から `validationCode` を設定する必要があります。 詳細については、「[Event Grid security and authentication](../../event-grid/security-authentication.md)」(Event Grid のセキュリティと認証) を参照してください。 Web アプリ コードを表示して、サブスクリプションがどのように検証されるかを確認できます。
 
-```json
-[{
-  "topic": "/subscriptions/<subscription id>/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amsaccount",
-  "subject": "transforms/VideoAnalyzerTransform/jobs/<job id>",
-  "eventType": "Microsoft.Media.JobStateChange",
-  "eventTime": "2018-04-20T21:17:26.2534881",
-  "id": "<id>",
-  "data": {
-    "previousState": "Scheduled",
-    "state": "Processing"
-  },
-  "dataVersion": "1.0",
-  "metadataVersion": "1"
-}]
-```
+> [!TIP]
+> 目のアイコンを選択してイベント データを展開します。 すべてのイベントを表示したい場合は、ページを最新の情報に更新しないでください。
 
-![イベントのテスト](./media/job-state-events-cli-how-to/test_events.png)
+![サブスクリプション イベントの表示](./media/monitor-events-portal/view-subscription-event.png)
 
 ## <a name="next-steps"></a>次の手順
 
-[イベントへの応答](reacting-to-media-services-events.md)
+[アップロード、エンコード、およびストリーミング](stream-files-tutorial-with-api.md)
 
-## <a name="see-also"></a>関連項目
-
-[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ams?view=azure-cli-latest)

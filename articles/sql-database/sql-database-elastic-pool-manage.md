@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 6c43e5bf311d94ff2e5b5c31217c5071ea26746c
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/19/2018
+ms.openlocfilehash: 0c939956a8f3336b5071748a8c2bdf8840b749ad
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351864"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466071"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Azure SQL Database でのエラスティック プールの作成と管理
 
@@ -106,11 +106,11 @@ SQL Database エラスティック プールとプールされたデータベー
 |[エラスティック プール - 更新](https://docs.microsoft.com/rest/api/sql/elasticpools/elasticpools_listbyserver)|既存のエラスティック プールを更新します。|
 |[エラスティック プールのアクティビティ](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|エラスティック プールのアクティビティを返します。|
 |[エラスティック プール データベースのアクティビティ](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|エラスティック プール内のデータベースのアクティビティを返します。|
-|[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
-|[データベース - 取得](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|データベースを取得します。|
-|[データベース - エラスティック プールごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
-|[データベース - サーバーごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|サーバー内のデータベースの一覧を返します。|
-|[データベース - 更新](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|既存のデータベースを更新します。|
+|[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
+|[データベース - 取得](https://docs.microsoft.com/rest/api/sql/databases/get)|データベースを取得します。|
+|[データベース - エラスティック プールごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
+|[データベース - サーバーごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
+|[データベース - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|既存のデータベースを更新します。|
 
 ## <a name="next-steps"></a>次の手順
 

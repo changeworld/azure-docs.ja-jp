@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 1955fc033e0351be9da89bbee11dc41d6281a63a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: c29131720de8d6016d134fe7c0118fc3db9e22be
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433992"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985643"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>通話データを分析して結果を Power BI ダッシュボードで視覚化する Stream Analytics ジョブの作成
  
@@ -37,7 +37,7 @@ ms.locfileid: "47433992"
 
 * Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/)を作成してください。  
 * [Azure Portal](https://portal.azure.com/) にログインします。  
-* Microsoft ダウンロード センターから通話イベント ジェネレーター アプリ [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) をダウンロードします。または、[GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) からソース コードを入手することもできます。  
+* Microsoft ダウンロード センターから通話イベント ジェネレーター アプリ [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) をダウンロードします。または、[GitHub](https://aka.ms/azure-stream-analytics-telcogenerator) からソース コードを入手することもできます。  
 
 ## <a name="create-an-azure-event-hub"></a>Azure Event Hub を作成します 
 
@@ -89,7 +89,7 @@ Stream Analytics でデータ ストリームにおける不正な呼び出し�
 
 TelcoGenerator アプリを起動する前に、以前に作成した Azure Event Hubs にデータを送信するよう構成する必要があります。
 
-1. [TelcoGenerator.zip](http://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) ファイルの内容を抽出します。  
+1. [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) ファイルの内容を抽出します。  
 2. 任意のテキスト エディターで `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` ファイルを開きます (複数の .config ファイルがあるので、正しいファイルを開くように注意してください)。  
 
 3. 構成ファイル内の <appSettings> 要素を次の詳細で更新します。
@@ -260,7 +260,7 @@ TelcoGenerator アプリを起動する前に、以前に作成した Azure Even
 
 ## <a name="embedding-your-powerbi-dashboard-in-a-web-application"></a>Web アプリケーションに PowerBI ダッシュボードを埋め込む
 
-チュートリアルのこの部分では、PowerBI チームが作成したサンプルの [ASP.NET](http://asp.net/) Web アプリケーションを使用して、ダッシュボードを埋め込みます。 ダッシュボードの埋め込みの詳細については、記事「[Power BI で埋め込み](https://docs.microsoft.com/power-bi/developer/embedding)」を参照してください。
+チュートリアルのこの部分では、PowerBI チームが作成したサンプルの [ASP.NET](https://asp.net/) Web アプリケーションを使用して、ダッシュボードを埋め込みます。 ダッシュボードの埋め込みの詳細については、記事「[Power BI で埋め込み](https://docs.microsoft.com/power-bi/developer/embedding)」を参照してください。
 
 このチュートリアルでは、ユーザーが所有するデータ アプリケーション用の手順に従います。 アプリケーションを設定するには、[PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) GitHub リポジトリに移動し、**User Owns Data** セクションの指示に従います (**integrate-dashboard-web-app** サブセクションのリダイレクト URL およびホーム ページ URL を使用します)。 ダッシュボードの例を使用しているため、[GitHub リポジトリ](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app)にある integrate-dashboard-web-app サンプル コードを使用します。
 ブラウザーでアプリケーションが実行されるようになったら、次の手順に従って、先ほど作成したダッシュボードを Web ページに埋め込みます。

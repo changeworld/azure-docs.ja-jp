@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 95c27bcc99f08cb1e4998e43a6a2abd508bee0ac
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 25d13ba53eb5a8b411a557b5eaf05d278faa3733
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228170"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869314"
 ---
 # <a name="replication-with-sql-database-managed-instance"></a>SQL Database Managed Instance を使用したレプリケーション
 
@@ -76,21 +76,22 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
 
 ## <a name="configure-publishing-and-distribution-example"></a>パブリッシングとディストリビューションの構成例
 
-1. ポータルで [Azure SQL Database Managed Instance を作成](http://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-create-tutorial-portal)します。
+1. ポータルで [Azure SQL Database Managed Instance を作成](sql-database-managed-instance-create-tutorial-portal.md)します。
+2. 作業ディレクトリの [Azure ストレージ アカウントを作成](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)します。
 
-1. 作業ディレクトリの [Azure ストレージ アカウントを作成](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account)します。 ストレージ キーを必ずコピーしてください。 [ストレージ アクセス キーの表示とコピー](http://docs.microsoft.com/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)に関する記事をご覧ください。
-
-1. パブリッシャーのデータベースを作成します。
+   ストレージ キーを必ずコピーしてください。 [ストレージ アクセス キーの表示とコピー](../storage/common/storage-account-manage.md#access-keys
+)に関する記事をご覧ください。
+3. パブリッシャーのデータベースを作成します。
 
    下記のサンプル スクリプトでは、`<Publishing_DB>` をこのデータベースの名前に置き換えます。
 
-1. ディストリビューターの SQL 認証を使用するデータベース ユーザーを作成します。 「[データベース ユーザーの作成](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users)」をご覧ください。 セキュリティで保護されたパスワードを使用します。
+4. ディストリビューターの SQL 認証を使用するデータベース ユーザーを作成します。 「[データベース ユーザーの作成](http://docs.microsoft.com/azure/sql-database/sql-database-security-tutorial#creating-database-users)」をご覧ください。 セキュリティで保護されたパスワードを使用します。
 
    下記のサンプル スクリプトでは、`<SQL_USER>` と `<PASSWORD>` にこの SQL Server アカウントのデータベース ユーザーとパスワードを使用します。
 
-1. [SQL Database Managed Instance に接続](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms)します。
+5. [SQL Database Managed Instance に接続](http://docs.microsoft.com/azure/sql-database/sql-database-connect-query-ssms)します。
 
-1. 次のクエリを実行して、ディストリビューターとディストリビューション データベースを追加します。
+6. 次のクエリを実行して、ディストリビューターとディストリビューション データベースを追加します。
 
    ```sql
    USE [master]
@@ -99,7 +100,7 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
    EXEC sp_adddistributiondb @database = N'distribution';
    ```
 
-1. 指定したディストリビューション データベースを使用するようにパブリッシャーを構成するには、次のクエリを更新して実行します。
+7. 指定したディストリビューション データベースを使用するようにパブリッシャーを構成するには、次のクエリを更新して実行します。
 
    `<SQL_USER>` と `<PASSWORD>` を、SQL Server アカウントとパスワードに置き換えます。
 
@@ -107,7 +108,7 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
 
    `<STORAGE_CONNECTION_STRING>` を、Microsoft Azure ストレージ アカウントの **[アクセス キー]** タブの接続文字列に置き換えます。
 
-   次のクエリを更新したら、クエリを実行します。 
+   次のクエリを更新したら、クエリを実行します。
 
    ```sql
    USE [master]
@@ -121,7 +122,7 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
    GO
    ```
 
-1. レプリケーションのパブリッシャーを構成します。 
+8. レプリケーションのパブリッシャーを構成します。
 
     次のクエリで、`<Publishing_DB>` をパブリッシャー データベースの名前に置き換えます。
 
@@ -155,15 +156,13 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
                 @job_password = N'<PASSWORD>'
    ```
 
-1. アーティクル、サブスクリプション、プッシュ サブスクリプション エージェントを追加します。 
+9. アーティクル、サブスクリプション、プッシュ サブスクリプション エージェントを追加します。
 
    これらのオブジェクトを追加するには、次のスクリプトを更新します。
 
-   `<Object_Name>` をパブリケーション オブジェクトの名前に置き換えます。
-
-   `<Object_Schema>` をソース スキーマの名前に置き換えます。 
-
-   山かっこ (`<>`) 内のその他のパラメーターは、前のスクリプトの値と一致するように置き換えます。 
+   - `<Object_Name>` をパブリケーション オブジェクトの名前に置き換えます。
+   - `<Object_Schema>` をソース スキーマの名前に置き換えます。
+   - 山かっこ (`<>`) 内のその他のパラメーターは、前のスクリプトの値と一致するように置き換えます。
 
    ```sql
    EXEC sp_addarticle @publication = N'<Publication_Name>',
@@ -183,7 +182,7 @@ Azure SQL Database 上のパブリッシャーとディストリビューター�
                 @subscriber_security_mode = 0,
                 @subscriber_login = N'<SQL_USER>',
                 @subscriber_password = N'<PASSWORD>',
-                @job_login = N'<SQL_USER>', 
+                @job_login = N'<SQL_USER>',
                 @job_password = N'<PASSWORD>'
    GO
    ```

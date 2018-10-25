@@ -11,21 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 05/08/2018
-ms.openlocfilehash: a9a3d696f1c503969b89795f8c6d86a77bd353e8
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: 499689e4d36f368746e5e0ea9e6bc3f3bf0ec0d9
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160726"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868234"
 ---
-# <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Azure Recovery Services コンテナーを使用して Azure SQL Database から長期的なバックアップ保有期間を構成して復元する
+# <a name="configure-long-term-backup-retention-using-azure-recovery-services-vault"></a>Azure Recovery Services コンテナーを使用して長期的なバックアップ保有期間を構成する
 
 Azure SQL データベースのバックアップを保存し、Azure Portal または PowerShell を使用してコンテナー内のバックアップからデータベースを復元するように Azure Recovery Services コンテナーを構成できます。
 
 > [!NOTE]
-> 2016 年 10 月の長期的なバックアップ保有期間のプレビューの初期リリースの一環として、バックアップは Azure Services Recovery Service コンテナーに保存されていました。 この更新プログラムではこの依存関係は削除されていますが、下位互換性のために元の API は 2018 年 5 月 31 日までサポートされます。 Azure Services Recovery コンテナーのバックアップと操作する必要がある場合は、[Azure Services Recovery Service コンテナーを使用した長期的なバックアップ保有期間](sql-database-long-term-backup-retention-configure-vault.md)に関するページを参照してください。 
-
+> 2016 年 10 月の長期的なバックアップ保有期間のプレビューの初期リリースの一環として、バックアップは Azure Services Recovery Service コンテナーに保存されていました。 この更新プログラムではこの依存関係は削除されていますが、下位互換性のために元の API は 2018 年 5 月 31 日までサポートされます。 Azure Services Recovery コンテナーのバックアップと操作する必要がある場合は、[Azure Services Recovery Service コンテナーを使用した長期的なバックアップ保有期間](sql-database-long-term-backup-retention-configure-vault.md)に関するページを参照してください。
 
 ## <a name="azure-portal"></a>Azure ポータル
 
@@ -33,7 +32,7 @@ Azure SQL データベースのバックアップを保存し、Azure Portal ま
 
 ### <a name="configure-the-vault-register-the-server-and-select-databases"></a>コンテナーを構成する、サーバーを登録する、データベースを選択する
 
-ご利用のサービス レベルの保有期間より長い間、[自動バックアップを保持するよう Azure Recovery Services コンテナーを構成](sql-database-long-term-retention.md)します。 
+ご利用のサービス レベルの保有期間より長い間、[自動バックアップを保持するよう Azure Recovery Services コンテナーを構成](sql-database-long-term-retention.md)します。
 
 1. 指定のサーバーの **[SQL Server]** ページを開きます。
 
@@ -62,7 +61,7 @@ Azure SQL データベースのバックアップを保存し、Azure Portal ま
 7. **[Recovery Services コンテナー]** ページの **[追加]** をクリックします。
 
    ![コンテナーの追加リンク](./media/sql-database-get-started-backup-recovery/add-new-vault-link.png)
-   
+
 8. **[Recovery Services コンテナー]** ページで、新しい Recovery Services コンテナーに有効な名前を指定します。
 
    ![新しいコンテナーの名前](./media/sql-database-get-started-backup-recovery/new-vault-name.png)
@@ -73,7 +72,6 @@ Azure SQL データベースのバックアップを保存し、Azure Portal ま
 
    > [!IMPORTANT]
    > コンテナーは、Azure SQL 論理サーバーと同じリージョンに配置する必要があります。また、論理サーバーと同じリソース グループを使用する必要があります。
-   >
 
 10. 新しいコンテナーが作成されたら、必要な手順を実行して **[Recovery Services コンテナー]** ページに戻ります。
 
@@ -84,9 +82,9 @@ Azure SQL データベースのバックアップを保存し、Azure Portal ま
 12. **[構成]** ページで、新しい保持ポリシーに有効な名前を指定し、必要に応じて既定の保持ポリシーを変更して、**[OK]** をクリックします。
 
    ![保持ポリシーの定義](./media/sql-database-get-started-backup-recovery/define-retention-policy.png)
-   
-   >[!NOTE]
-   >保持ポリシーの名前には、一部の文字 (スペースなど) を使用できません。
+
+   > [!NOTE]
+   > 保持ポリシーの名前には、一部の文字 (スペースなど) を使用できません。
 
 13. 指定のデータベースの **[長期的なバックアップ保有期間]** ページで、**[保存]** をクリックし、**[OK]** をクリックして、選択したすべてのデータベースに長期的なバックアップ保持ポリシーを適用します。
 
@@ -98,11 +96,10 @@ Azure SQL データベースのバックアップを保存し、Azure Portal ま
 
 > [!IMPORTANT]
 > 構成が完了すると、その後 7 日以内に、コンテナーにバックアップが表示されます。 バックアップがコンテナーに表示されるまで、このチュートリアルを先に進めないでください。
->
 
 ### <a name="view-backups-in-long-term-retention-using-azure-portal"></a>Azure Portal で長期的な保有期間内のバックアップを確認する
 
-[長期的なバックアップ保有期間](sql-database-long-term-retention.md)内のデータベース バックアップに関する情報を確認します。 
+[長期的なバックアップ保有期間](sql-database-long-term-retention.md)内のデータベース バックアップに関する情報を確認します。
 
 1. Azure Portal で、指定のデータベース バックアップの Azure Recovery Services コンテナーを開き (**[すべてのリソース]** に移動し、サブスクリプションのリソースの一覧から選びます)、コンテナー内のデータベース バックアップで使用されているストレージの容量を確認します。
 
@@ -167,7 +164,7 @@ Azure SQL データベースのバックアップを保存し、Azure Portal ま
 $serverLocation = (Get-AzureRmSqlServer -ServerName $serverName -ResourceGroupName $resourceGroupName).Location
 $recoveryServiceVaultName = "{new-vault-name}"
 
-$vault = New-AzureRmRecoveryServicesVault -Name $recoveryServiceVaultName -ResourceGroupName $ResourceGroupName -Location $serverLocation 
+$vault = New-AzureRmRecoveryServicesVault -Name $recoveryServiceVaultName -ResourceGroupName $ResourceGroupName -Location $serverLocation
 Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedundant -Vault $vault
 ```
 
@@ -176,18 +173,17 @@ Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedu
 [Set-AzureRmSqlServerBackupLongTermRetentionVault](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) コマンドレットを使用して、以前に作成された Recovery Services コンテナーを特定の Azure SQL サーバーに関連付けます。
 
 ```PowerShell
-# Set your server to use the vault to for long-term backup retention 
+# Set your server to use the vault to for long-term backup retention
 
 Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGroupName -ServerName $serverName -ResourceId $vault.Id
 ```
 
 ### <a name="create-a-retention-policy"></a>保持ポリシーを作成する
 
-保持ポリシーで、データベースのバックアップの保存期間を設定できます。 [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject) コマンドレットを使用して、新しいポリシーを作成するためのテンプレートとして使用する既定の保持ポリシーを取得します。 このテンプレートでは、保有期間は 2 年間に設定されています。 次に、[New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) を実行して最終的にポリシーを作成します。 
+保持ポリシーで、データベースのバックアップの保存期間を設定できます。 [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject) コマンドレットを使用して、新しいポリシーを作成するためのテンプレートとして使用する既定の保持ポリシーを取得します。 このテンプレートでは、保有期間は 2 年間に設定されています。 次に、[New-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) を実行して最終的にポリシーを作成します。
 
 > [!NOTE]
-> 一部のコマンドレットは実行する前にコンテナーのコンテキストを設定する必要があるため ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext))、このコマンドレットは関連するいくつかのスニペットに見られます。 ポリシーはコンテナーに含まれるため、コンテキストを設定します。 コンテナーごとに複数の保持ポリシーを作成した後に、目的のポリシーを特定のデータベースに適用することができます。 
-
+> 一部のコマンドレットは実行する前にコンテナーのコンテキストを設定する必要があるため ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext))、このコマンドレットは関連するいくつかのスニペットに見られます。 ポリシーはコンテナーに含まれるため、コンテキストを設定します。 コンテナーごとに複数の保持ポリシーを作成した後に、目的のポリシーを特定のデータベースに適用することができます。
 
 ```PowerShell
 # Retrieve the default retention policy for the AzureSQLDatabase workload type
@@ -218,7 +214,7 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resource
 
 ### <a name="view-backup-info-and-backups-in-long-term-retention"></a>バックアップ情報と、長期的な保有期間内のバックアップを確認する
 
-[長期的なバックアップ保有期間](sql-database-long-term-retention.md)内のデータベース バックアップに関する情報を確認します。 
+[長期的なバックアップ保有期間](sql-database-long-term-retention.md)内のデータベース バックアップに関する情報を確認します。
 
 次のコマンドレットを使用してバックアップに関する情報を確認します。
 
@@ -264,18 +260,17 @@ $restoredDb = Restore-AzureRmSqlDatabase -FromLongTermRetentionBackup -ResourceI
 $restoredDb
 ```
 
-
 > [!NOTE]
 > ここから、SQL Server Management Studio を使用して、復元されたデータベースに接続し、必要なタスクを実行できます。たとえば、復元されたデータベースからデータを少し抽出して既存のデータベースにコピーしたり、既存のデータベースを削除し、復元されたデータベースの名前を既存のデータベース名に変更したりできます。 [ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)をご覧ください。
 
 ## <a name="how-to-cleanup-backups-in-recovery-services-vault"></a>Recovery Services コンテナー内のバックアップをクリーンアップする方法
 
-2018 年 7 月 1 日付けで LTR V1 API は非推奨となり、Recovery Service コンテナー内のすべての既存のバックアップは、SQL Database によって管理される LTR ストレージ コンテナーに移行されました。 元のバックアップに対して課金されないようにするために、バックアップは移行後にコンテナーから削除されています。 ただし、コンテナーがロックされていた場合、バックアップはコンテナー内に保存されたままになります。 不必要な課金を避けるには、次のスクリプトを使用して Recovery Service コンテナーから古いバックアップを手動で削除できます。 
+2018 年 7 月 1 日付けで LTR V1 API は非推奨となり、Recovery Service コンテナー内のすべての既存のバックアップは、SQL Database によって管理される LTR ストレージ コンテナーに移行されました。 元のバックアップに対して課金されないようにするために、バックアップは移行後にコンテナーから削除されています。 ただし、コンテナーがロックされていた場合、バックアップはコンテナー内に保存されたままになります。 不必要な課金を避けるには、次のスクリプトを使用して Recovery Service コンテナーから古いバックアップを手動で削除できます。
 
 ```PowerShell
 <#
 .EXAMPLE
-    .\Drop-LtrV1Backup.ps1 -SubscriptionId “{vault_sub_id}” -ResourceGroup “{vault_resource_group}” -VaultName “{vault_name}” 
+    .\Drop-LtrV1Backup.ps1 -SubscriptionId “{vault_sub_id}” -ResourceGroup “{vault_resource_group}” -VaultName “{vault_name}”
 #>
 [CmdletBinding()]
 Param (
@@ -302,14 +297,14 @@ $containers = Get-AzureRmRecoveryServicesBackupContainer -ContainerType AzureSQL
 
 ForEach ($container in $containers)
 {
-   $canDeleteContainer = $true  
+   $canDeleteContainer = $true
    $ItemCount = 0
    Write-Host "Working on container" $container.Name
    $items = Get-AzureRmRecoveryServicesBackupItem -container $container -WorkloadType AzureSQLDatabase
    ForEach ($item in $items)
    {
-          write-host "Deleting item" $item.name
-          Disable-AzureRmRecoveryServicesBackupProtection -RemoveRecoveryPoints -item $item -Force
+    write-host "Deleting item" $item.name
+    Disable-AzureRmRecoveryServicesBackupProtection -RemoveRecoveryPoints -item $item -Force
    }
 
    Write-Host "Deleting container" $container.Name

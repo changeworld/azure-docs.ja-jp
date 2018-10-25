@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 10/13/2017
 ms.author: devinb
-ms.openlocfilehash: 90dd5df4a607568e2f3a60791da2948af7ce4e50
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: cd88dec2ad79ad9f4b4c004866060be86b777cd9
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
-ms.locfileid: "24002932"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311186"
 ---
 # <a name="troubleshoot-visual-studio-2017-development-with-docker"></a>Docker での Visual Studio 2017 のデプロイのトラブルシューティング
 
@@ -33,9 +33,13 @@ Visual Studio Tools for Docker を使用する際に、アプリケーション�
 1. **[Shared Drives]\(共有ドライブ\)** を選択し、システム ドライブと共に、プロジェクトが存在するドライブを共有します。
 
 > [!NOTE]
-> ファイルが共有されているように見える場合は、ダイアログ下部の [資格情報のリセット] リンクをクリックしてボリューム共有を再度有効にすることが必要な場合があります。
+> ファイルが共有されているように見える場合は、ダイアログ下部の [資格情報のリセット] リンクをクリックしてボリューム共有を再度有効にすることが必要な場合があります。 資格情報をリセットした後で続行するには、Visual Studio の再起動が必要な場合があります。
 
 ![共有ドライブ](./media/vs-azure-tools-docker-troubleshooting-docker-errors/shareddrives.png)
+
+## <a name="mounts-denied"></a>マウントが拒否される
+
+MacOS 用の Docker を使用している場合、フォルダー /usr/local/share/dotnet/sdk/NuGetFallbackFolder を参照するとエラーが発生する可能性があります。 Docker で [File Sharing]\(ファイル共有\) タブにフォルダーを追加します。
 
 ## <a name="unable-to-start-debugging"></a>デバッグを開始できない
 

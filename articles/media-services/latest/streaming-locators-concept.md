@@ -1,0 +1,110 @@
+---
+title: Azure Media Services のストリーミング ロケーター | Microsoft Docs
+description: この記事では、ストリーミング ロケーターとは何か、および Azure Media Services でそれらを使用する方法について説明します。
+services: media-services
+documentationcenter: ''
+author: Juliako
+manager: femila
+editor: ''
+ms.service: media-services
+ms.workload: ''
+ms.topic: article
+ms.date: 10/16/2018
+ms.author: juliako
+ms.openlocfilehash: 1757ca84e7390f1ecd2d6d1e90a085372d3e4c57
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49380924"
+---
+# <a name="streaming-locators"></a>ストリーミング ロケーター
+
+エンコードされたビデオまたはオーディオ ファイルを再生するために使用できる URL をクライアントに提供するには、[StreamingLocator](https://docs.microsoft.com/rest/api/media/streaminglocators) を作成し、ストリーミング URL を作成する必要があります。 詳しくは、[ファイルのストリーム処理](stream-files-dotnet-quickstart.md)に関するページをご覧ください。
+
+## <a name="streaminglocator-definition"></a>StreamingLocator の定義
+
+次の表は、StreamingLocator のプロパティとそれらの定義を示しています。
+
+|名前|型|説明|
+|---|---|---|
+|id |string|リソースの完全修飾リソース ID。|
+|name   |string|リソースの名前。|
+|properties.alternativeMediaId  |string|このストリーミング ロケーターの別のメディア ID。|
+|properties.assetName   |string|アセット名。|
+|properties.contentKeys |StreamingLocatorContentKey[]|このストリーミング ロケーターで使用される ContentKey。|
+|properties.created |string|ストリーミング ロケーターの作成時刻。|
+|properties.defaultContentKeyPolicyName |string|このストリーミング ロケーターで使用される既定の ContentKeyPolicy の名前。|
+|properties.endTime |string|ストリーミング ロケーターの終了時刻。|
+|properties.startTime   |string|ストリーミング ロケーターの開始時刻。|
+|properties.streamingLocatorId  |string|ストリーミング ロケーターの StreamingLocatorId。|
+|properties.streamingPolicyName |string|このストリーミング ロケーターで使用されるストリーミング ポリシーの名前。 作成したストリーミング ポリシーの名前を指定するか、定義済みのストリーミング ポリシーのいずれかを指定します。 利用できる定義済みのストリーミング ポリシーは次のとおりです。'Predefined_DownloadOnly'、'Predefined_ClearStreamingOnly'、'Predefined_DownloadAndClearStreaming'、'Predefined_ClearKey'、'Predefined_MultiDrmCencStreaming' および 'Predefined_MultiDrmStreaming'|
+|type   |string|リソースの種類。|
+
+完全な定義については、「[Streaming Locators](https://docs.microsoft.com/rest/api/media/streaminglocators)」(ストリーミング ロケーター) を参照してください。
+
+## <a name="filtering-ordering-paging"></a>フィルター処理、順序付け、ページング
+
+Media Services は、ストリーミング ロケーター用の次の OData クエリ オプションをサポートします。 
+
+* $filter 
+* $orderby 
+* $top 
+* $skiptoken 
+
+演算子の説明:
+
+* Eq = 次の値と等しい
+* Ne = 次の値と等しくない
+* Ge = 次の値以上
+* Le = 次の値以下
+* Gt = より大きい
+* Lt = より小さい
+
+### <a name="filteringordering"></a>フィルター処理/順序付け
+
+次の表は、これらのオプションを StreamingLocator プロパティに適用できる方法を示しています。 
+
+|名前|フィルター|順序|
+|---|---|---|
+|id |||
+|name|eq、ne、ge、le、gt、lt|昇順および降順|
+|properties.alternativeMediaId  |||
+|properties.assetName   |||
+|properties.contentKeys |||
+|properties.created |eq、ne、ge、le、gt、lt|昇順および降順|
+|properties.defaultContentKeyPolicyName |||
+|properties.endTime |eq、ne、ge、le、gt、lt|昇順および降順|
+|properties.startTime   |||
+|properties.streamingLocatorId  |||
+|properties.streamingPolicyName |||
+|type   |||
+
+### <a name="pagination"></a>改ページ位置の自動修正
+
+改ページ位置の自動修正は、4 つの有効な各並べ替え順序でサポートされています。 現時点では、ページ サイズは 10 です。
+
+> [!TIP]
+> 常に次のリンクを使用してコレクションを列挙する必要があります。特定のページ サイズに依存しないでください。
+
+クエリ応答に多数の項目が含まれている場合、サービスは "\@odata.nextLink" プロパティを返して結果の次のページを取得します。 この方法を利用して、結果セット全体のページングを実行できます。 ページ サイズを構成することはできません。 
+
+コレクションのページング中に StreamingLocator が作成または削除された場合、その変更は返される結果に反映されます (変更がまだダウンロードされていないコレクション部分にある場合)。 
+
+次の C# の例は、アカウント内のすべての StreamingLocator を列挙する方法を示しています。
+
+```csharp
+var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
+
+var currentPage = firstPage;
+while (currentPage.NextPageLink != null)
+{
+    currentPage = await MediaServicesArmClient.StreamingLocators.ListNextAsync(currentPage.NextPageLink);
+}
+```
+
+REST の例については、[ストリーミング ロケーターの一覧](https://docs.microsoft.com/rest/api/media/streaminglocators/streaminglocators_list)に関する記事を参照してください
+
+## <a name="next-steps"></a>次の手順
+
+[ファイルのストリーミング](stream-files-dotnet-quickstart.md)

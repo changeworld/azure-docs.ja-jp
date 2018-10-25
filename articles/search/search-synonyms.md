@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 manager: jlembicz
 ms.author: nateko
-ms.openlocfilehash: 579d92f41e41cdb38d4a1eb0bb6e56ce4d4b2a45
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9f887b065cf4fcc295873ee969030c67d17d9e2f
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093216"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318471"
 ---
 # <a name="synonyms-in-azure-search"></a>Azure Search のシノニム
 
@@ -148,6 +148,8 @@ Washington, Wash., WA => WA
 シノニム機能は、検索クエリに適用され、フィルターやファセットには適用されません。 同様に、検索候補は元の用語にのみ基づき、シノニムの一致は応答に示されません。
 
 シノニムの拡張は、ワイルドカード検索語句には適用されません。プレフィックス、あいまい検索、および正規表現語句は拡張されません。
+
+シノニムの拡張とワイルドカード検索、正規表現検索、またはあいまい検索を 1 つのクエリで適用する必要がある場合は、OR 構文を使用してクエリを組み合わせることができます。 たとえば、クエリ構文が単純になるようにシノニムとワイルドカードを組み合わせる場合は、用語は `<query> | <query>*` のようになります。
 
 ## <a name="tips-for-building-a-synonym-map"></a>シノニム マップの構築のヒント
 

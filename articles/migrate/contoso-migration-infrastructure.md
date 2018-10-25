@@ -3,16 +3,17 @@ title: Contoso - 移行インフラストラクチャを設定する | Microsoft
 description: Contoso が Azure への移行用に Azure インフラストラクチャを設定する方法について説明します。
 services: azure-migrate
 author: rayne-wiselman
+manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 5407fd108315ed68b50d6ace1a317b4f007c56e7
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 2210aaa5d4d0ba9d730e5aee97972565ea0c1090
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783391"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092978"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - 移行インフラストラクチャを展開する
 
@@ -36,9 +37,10 @@ ms.locfileid: "43783391"
 [記事 8: Azure VM および Azure Database for MySQL での Linux アプリのリホスト](contoso-migration-rehost-linux-vm-mysql.md) | Contoso が Site Recovery を使用して Linux osTicket アプリを Azure VM に移行します。 アプリ データベースを Azure Database for MySQL に移行するために MySQL Workbench を使用します。 | 使用可能
 [記事 9: Azure Web App と Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel360 アプリを Azure Web アプリに移行します。また、Database Migration Assistant を使用して、アプリ データベースを Azure SQL Server インスタンスに移行します。 | 使用可能    
 [記事 10: Azure Web アプリと Azure Database for MySQL での Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が Linux osTicket アプリを複数サイト上の Azure Web アプリに移行します。 Web アプリは継続的デリバリー用に GitHub と統合されます。 アプリ データベースを Azure Database for MySQL インスタンスに移行します。 | 使用可能
-[記事 11: Visual Studio Team Services での Team Foundation Server のリファクター](contoso-migration-tfs-vsts.md) | Contoso がオンプレミスの Team Foundation Server の展開を Azure の Visual Studio Team Services に移行します。 | 使用可能
-[記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel360 アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してアプリ データベースを再構築します。 | 使用可能 
-[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel360 アプリをリビルドします。 | 使用可能  
+[記事 11: Azure DevOps サービスでの Team Foundation Server をリファクタリングします。](contoso-migration-tfs-vsts.md) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。 | 使用可能
+[記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してアプリ データベースを再構築します。 | 使用可能    
+[記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel アプリをリビルドします。 | 使用可能
+[記事 14: Azure への移行のスケーリング](contoso-migration-scale.md) | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 | 使用可能 
 
 この記事では、Contoso はすべての移行シナリオを完了するために必要な、すべてのインフラストラクチャ要素を設定します。 
 
@@ -138,7 +140,7 @@ ID およびアクセス管理 (IAM) によってユーザーが Azure リソー
 - これを行うために、Azure ベースの Active Directory を作成します。
 - Contoso は Office 365 を利用していないので、新しい Azure AD をプロビジョニングする必要があります。
 - Office 365 では、ユーザー管理用に Azure AD が使われています。 仮に Contoso が Office 365 を利用していた場合は、Azure AD テナントを既に保有し、それをプライマリ AD として使っています。
-- Office 365 の Azure AD に関して[詳しくはこちらをご覧ください](https://support.office.com/article/understanding-office-365-identity-and-azure-active-directory-06a189e7-5ec6-4af2-94bf-a22ea225a7a9)。また、既存の Azure AD に[サブスクリプションを追加する方法](https://docs.microsoft.com/azure/active-directory/active-directory-how-subscriptions-associated-directory)を学習してください。
+- Office 365 の Azure AD に関して[詳しくはこちらをご覧ください](https://support.office.com/article/understanding-office-365-identity-and-azure-active-directory-06a189e7-5ec6-4af2-94bf-a22ea225a7a9)。また、既存の Azure AD テナントに[サブスクリプションを追加する方法](https://docs.microsoft.com/azure/active-directory/active-directory-how-subscriptions-associated-directory)を学習してください。
 
 ### <a name="create-an-azure-ad"></a>Azure AD を作成する
 
@@ -154,16 +156,16 @@ Contoso は、Azure サブスクリプションに含まれる Azure AD Free エ
 
 ### <a name="add-the-domain-name"></a>ドメイン名を追加する
 
-標準のドメイン名を使用するには、Contoso の管理者がカスタム名として Azure AD に追加する必要があります。 この方法を使うと、管理者は使い慣れたユーザー名を割り当てることができます。 たとえば、ユーザーはメール アドレス billg@contoso.com でログインでき、billg@contosomigration.microsoft.com を使う必要はありません。 
+標準のドメイン名を使用するには、Contoso の管理者がカスタム ドメイン名として Azure AD に追加する必要があります。 この方法を使うと、管理者は使い慣れたユーザー名を割り当てることができます。 たとえば、ユーザーはメール アドレス billg@contoso.com でログインでき、billg@contosomigration.microsoft.com を使う必要はありません。 
 
-カスタム名を設定するには、ディレクトリにカスタム名を追加し、DNS エントリを追加してから、Azure AD で名前を確認します。
+カスタム ドメイン名を設定するには、ディレクトリにカスタム ドメイン名を追加し、DNS エントリを追加してから、Azure AD で名前を確認します。
 
 1. **[カスタム ドメイン名]** > **[カスタム ドメインの追加]** で、ドメインを追加します。
 2. Azure で DNS エントリを使うには、ドメイン レジストラーに DNS エントリを登録する必要があります。 
 
     - **[カスタム ドメイン名]** の一覧で、名前の DNS 情報を記録します。 MX エントリを使用しています。
     - これを行うには、ネーム サーバーにアクセスする必要があります。 Contoso.com ドメインにログインし、記録した詳細情報を使って、Azure AD によって提供された DNS エントリの新しい MX レコードを作成します。  
-1. DNS レコードが反映された後、ドメインの詳細名で、**[確認]** をクリックしてカスタム名を確認します。
+1. DNS レコードが反映された後、ドメインの詳細名で、**[検証]** をクリックしてカスタム ドメイン名を確認します。
 
      ![Azure AD DNS](./media/contoso-migration-infrastructure/azure-ad-dns.png) 
 
@@ -176,7 +178,7 @@ Azure AD が稼働状態になったので、Contoso の管理者は Azure AD �
 Azure リソース グループは Azure リソースをひとまとめにしたものです。 リソース グループ ID を使うことで、Azure はグループ内のリソースに対して操作を実行できます。
 
 - 1 つの Azure サブスクリプションで複数のリソース グループを使用できますが、特定のリソース グループは 1 つのサブスクリプション内にのみ存在できます。
-- さらに、1 つのリソース グループが複数のリソースを含むことができますが、1 つのリソースは単一のグループにのみ属すことができます。
+- さらに、1 つのリソース グループが複数のリソースを含むことができますが、1 つのリソースは単一のリソースグループにのみ属すことができます。
 
 Contoso の管理者は、次の表に示すように Azure リソース グループを設定します。
 
@@ -224,7 +226,7 @@ Contoso は、オンプレミスとクラウドのリソースへのアクセス
 
     ![AD Connect をダウンロードする](./media/contoso-migration-infrastructure/download-ad-connect.png) 
 
-2. **AzureADConnect.msi** のインストール開始し、**[簡単設定を使う]** を使います。 これは最も一般的なインストールで、認証用にパスワード ハッシュ同期を使う単一フォレスト トポロジで使用できます。
+2. **[簡単設定を使う]** で **AzureADConnect.msi** のインストール開始します。 これは最も一般的なインストールで、認証用にパスワード ハッシュ同期を使う単一フォレスト トポロジで使用できます。
 
     ![AD 接続ウィザード](./media/contoso-migration-infrastructure/ad-connect-wiz1.png) 
 
@@ -255,7 +257,7 @@ Azure の[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft
 Contoso の管理者は、オンプレミスから同期した AD グループにロールを割り当てます。
 
 1. **ControlCobRG** リソース グループで、**[アクセス制御 (IAM)]** > **[追加]** をクリックします。
-2. **[アクセス許可の追加]** > **[ロール]** で **[共同作成者]** を選択し、リストから **ContosoCobRG** AD グループを選択します。 グループが **[選択したメンバー]** の一覧に表示されます。 
+2. **[権限ロールの追加]** > **ロール** で、 **[共同作成者]** を選択し、リストから **ContosoCobRG** AD グループを選択します。 グループが **[選択したメンバー]** の一覧に表示されます。 
 3. 他のリソース グループ (**ContosoAzureAdmins** を除く) に対して同じアクセス許可でこれを繰り返し、リソース グループと一致する AD アカウントに共同作成者アクセス許可を追加します。
 4. **ContosoAzureAdmins** AD グループには、**所有者** ロールを割り当てます。
 
@@ -274,7 +276,7 @@ Azure リソースはリージョン内に展開されます。
 - [Azure リージョン](https://azure.microsoft.com/global-infrastructure/regions/)について参照し、[リージョンが組み合わされる方法](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)を理解してください。
 
 
-Contoso はプライマリ リージョンとして米国東部 2 (バージニア州) を選択し、セカンダリ リージョンとして米国中部を使うことにしました。 これには、いくつかの理由があります。
+Contoso はプライマリ リージョンとして米国東部 2 (バージニア州) を選択し、セカンダリ リージョンとして米国中部 (アイオワ州) を使うことにしました。 これには、いくつかの理由があります。
 
 - Contoso のデータセンターはニューヨークにあり、Contoso では最も近いデータセンターに対する待機時間を考慮しました。
 - 米国東部 2 リージョンには、Contoso が使う必要のあるすべてのサービスと製品を備えています。 すべての Azure リージョンで同じ製品とサービスを利用できるわけではありません。 「[リージョン別の Azure 製品](https://azure.microsoft.com/global-infrastructure/services/)」をご覧ください。
@@ -300,9 +302,9 @@ Contoso は、アプリにスケーラビリティ、高可用性、および回
 
 リージョンの設計が決まれば、Contoso は次にネットワーク戦略を検討できます。 オンプレミスのデータセンターと Azure が相互に接続して通信する方法、および Azure のネットワーク インフラストラクチャを設計する方法を検討する必要があります。 特に、Contoso では次のことが必要です。
 
-**ハイブリッド ネットワークの接続を計画する**: オンプレミスと Azure の間でネットワークを接続する方法を明らかにします。
-**Azure のネットワーク インフラストラクチャを設計する**: リージョンにネットワークを展開する方法を決定します。 また、同じリージョン内および異なるリージョン間でのネットワークの通信方法も決定します。
-**Azure ネットワークを設計して設定する**: Azure ネットワークとサブネットを設定し、それらに置くものを決定します。
+- **ハイブリッド ネットワークの接続を計画する**: オンプレミスと Azure の間でネットワークを接続する方法を明らかにします。
+- **Azure のネットワーク インフラストラクチャを設計する**: リージョンにネットワークを展開する方法を決定します。 また、同じリージョン内および異なるリージョン間でのネットワークの通信方法も決定します。
+- **Azure ネットワークを設計して設定する**: Azure ネットワークとサブネットを設定し、それらに置くものを決定します。
 
 ### <a name="plan-hybrid-network-connectivity"></a>ハイブリッド ネットワーク接続を計画する
 
@@ -378,7 +380,7 @@ Contoso は、選択したハブ アンド スポーク モデルの内部にお
 - Contoso データセンターから:
     - VPN サイト間接続 (または ExpressRoute) 経由の受信トラフィックは、Azure VPN ゲートウェイのパブリック IP アドレスにヒットします。
     - トラフィックは、ファイアウォール経由でルーティングされ、ファイアウォール規則に従います。
-    - ルールを適用すると、トラフィックは信頼されている内部ゾーン サブネット上の内部ロード バランサー (Standard SKU) に転送されます。
+    - ファイアウォール ルールを適用すると、トラフィックは信頼されている内部ゾーン サブネット上の内部ロード バランサー (標準SKU) に転送されます。
     - 信頼されているサブネットからオンプレミスのデータセンターへの VPN 経由の送信トラフィックは、ファイアウォールを通してルーティングされ、VPN サイト間接続を経由する前に規則を適用されます。
 
 
@@ -535,7 +537,7 @@ VNET-PROD-EUS2 ネットワーク内のドメイン コントローラーでは�
 
     ![ピアリング](./media/contoso-migration-infrastructure/peering2.png)
 
-3. オンプレミスでは、ローカル トラフィックを VNet への VPN トンネルにルーティングする静的ルートを設定します。 Contoso から Azure への VPN トンネルを提供するゲートウェイで構成を行います。 このために Windows ルーティングとリモート アクセスを使用します。
+3. オンプレミスでは、ローカル トラフィックを VNet への VPN トンネルにルーティングする静的ルートを設定します。 Contoso から Azure への VPN トンネルを提供するゲートウェイで構成を行います。 このために RRAS を使用します。
 
     ![ピアリング](./media/contoso-migration-infrastructure/peering3.png)
 
@@ -642,11 +644,11 @@ Contoso は ID とアクセスの制御を構成しているので、ガバナ�
 
 ### <a name="set-up-policies"></a>ポリシーを設定する
 
-Azure Policy サービスは、リソースを評価して、適用されているポリシー定義に準拠していないリソースをスキャンします。 たとえば、特定の種類の VM だけを許可するポリシーや、特定のタグを持つことをリソースに要求するポリシーが、設定されていることがあります。 
+Azure Policy サービスは、リソースを評価して、適用されているポリシー定義に準拠していないリソースをスキャンします。 たとえば、特定の種類の VM だけを許可するポリシーや、リソースが特定のタグを持つポリシーが設定されていることがあります。 
 
 Azure のポリシーではポリシーの定義が指定されており、ポリシー割り当てではポリシーの適用範囲が指定されています。 範囲は、管理グループからリソース グループまでです。 ポリシーの作成と管理の[詳細をご覧ください](https://docs.microsoft.com/azure/azure-policy/create-manage-policy)。
 
-Contoso は 2 つのポリシーで開始します。
+Contoso は、いくつかのポリシーを開始する予定です。
 
 - リソースを EUS2 リージョンと CUS リージョンにのみ展開できるようにするポリシーを作成します。
 - 承認された SKU だけに VM SKU を制限します。 目的は、高価な VM SKU が使われないようにすることです。
@@ -701,7 +703,7 @@ Contoso は、次のようにロックを実装しようとしています。
 
 リソースと所有者に関する情報を提供するだけでなく、タグを使うと、リソースを集計してグループ化し、そのデータをチャージバックのために使うことができます。
 
-Contoso は、ビジネスにとって有意義な方法で Azure の資産を視覚化する必要があります。 たとえばロールや部門などです。 タグを共有するために、リソースが同じリソース グループ内に格納されている必要はないことに注意してください。 これを行うため、Contoso は誰もが同じタグを使用できるように、簡単なタグ分類を作成します。
+Contoso は、ビジネスにとって有意義な方法で Azure の資産を視覚化する必要があります。 たとえばロール別や部門別です。 タグを共有するために、リソースが同じリソース グループ内に格納されている必要はないことに注意してください。 Contoso は誰もが同じタグを使用できるように、簡単なタグ分類を作成します。
 
 **タグ名** | **値**
 --- | ---
@@ -724,7 +726,7 @@ ENV | 指定できる値は DEV、STG、PROD です。 開発、ステージン�
 
 セキュリティはクラウドにおいて非常に重要であり、Azure ではさまざまなセキュリティ関連のツールと機能が提供されています。 これらは、セキュリティで保護された Azure プラットフォーム上にセキュリティで保護されたソリューションを作成するのに役立ちます。 Azure のセキュリティについて詳しくは、「[信頼されるクラウドとしての自信](https://azure.microsoft.com/overview/trusted-cloud/)」をご覧ください。
 
-Contoso はいくつかの主要な側面を考慮する必要があります
+Contoso はいくつかの主要な側面を考慮する必要があります。
 
 - **Azure Security Center**: ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を実現します。 Security Center を使用して、ワークロード全体へのセキュリティ ポリシーの適用、脅威にさらされる状態の軽減、攻撃の検出とその対応を行うことができます。  [詳細情報](https://docs.microsoft.com/azure/security-center/security-center-intro)。
 - **ネットワーク セキュリティ グループ (NSG)**: NSG は、一連のセキュリティ規則が含まれているフィルター (ファイアウォール) です。規則が適用されると、Azure VNet に接続されたリソースへのネットワーク トラフィックが許可または拒否されます。 [詳細情報](https://docs.microsoft.com/azure/virtual-network/security-overview)。
@@ -761,11 +763,12 @@ Contoso は、継続的なセキュリティ評価を利用して、マシン、
 - ネットワーク セキュリティ グループには、ソースまたはターゲット IP アドレス、ポート、およびプロトコルを基に、受信/送信ネットワーク トラフィックを許可または拒否するセキュリティ規則の一覧が含まれています。
 - サブネットに規則を適用すると、サブネット内のすべてのリソースにセキュリティ規則が適用されます。 これには、ネットワーク インターフェイスに加えて、サブネットに展開されている Azure サービスのインスタンスが含まれます。
 - アプリケーション セキュリティ グループ (ASG) を使用すると、ネットワーク セキュリティをアプリの構造の自然な拡張として構成でき、VM をグループ化して、それらのグループに基づくネットワーク セキュリティ ポリシーを定義できます。
-    - アプリ セキュリティ グループを使うと、明示的な IP アドレスを手動でメンテナンスせずに、大きなセキュリティ ポリシーを再利用することができます。 プラットフォームが明示的な IP アドレスと複数の規則セットの複雑さを処理するので、ユーザーはビジネス ロジックに専念することができます。
-    - セキュリティ規則のソースおよびターゲットとして、アプリケーション セキュリティ グループを指定できます。 セキュリティ ポリシーを定義した後は、VM を作成し、VM NIC をグループに割り当てることができます。 
+    - アプリ セキュリティ グループを使うと、明示的な IP アドレスを手動でメンテナンスせずに、スケールでセキュリティ ポリシーを再利用することができます。 プラットフォームが明示的な IP アドレスと複数の規則セットの複雑さを処理するので、ユーザーはビジネス ロジックに専念することができます。
+    - Contoso はセキュリティ規則のソースおよびターゲットとして、アプリケーション セキュリティ グループを指定できます。 セキュリティ ポリシーを定義した後は、Contoso はVM を作成し、VM NIC をグループに割り当てることができます。 
 
 
-Contoso は、NSG と ASG の両方を実装します。 Contoso は NSG の管理について気に掛けています。 また NSG の使用超過や運用スタッフの作業の複雑化についても心配しています。
+Contoso は、NSG と ASG の両方を実装します。 Contoso は NSG の管理について気にかけています。 また NSG の使用超過や運用スタッフの作業の複雑化についても心配しています。 Contoso が行うことは次のとおりです。
+
 - すべてのサブネットを出入りするすべてのトラフィックは (南北)、ハブ ネットワークの GatewaySubnets を除き、NSG ルールの対象となります。
 - すべてのファイアウォールまたはドメイン コントローラーは、サブネットの NSG と NIC の NSG の両方によって保護されます。
 - すべての運用アプリケーションには、ASG を適用します。

@@ -3,17 +3,17 @@ title: Azure Maps でサポートされているマップ スタイル | Microso
 description: Azure Maps でサポートされているマップ スタイル
 author: walsehgal
 ms.author: v-musehg
-ms.date: 08/28/2018
+ms.date: 10/02/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 8f0910e9040c962bae30a33b91a93e71e692dfdb
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c8edaba8de597e3e76e760e1f5109006338a663c
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713444"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238822"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Azure Maps でサポートされているマップ スタイル
 Azure Maps では、4 種類の組み込みマップ スタイルがサポートされています。 そのスタイルと説明を以下に示します。
@@ -37,7 +37,7 @@ Azure Maps では、4 種類の組み込みマップ スタイルがサポート
 * [衛星タイル](https://docs.microsoft.com/rest/api/maps/render/getmapimagerytilepreview)
 * JS マップ コントロール
 
-## <a name="satelliteroadlabels"></a>Satellite_Road_Labels
+## <a name="satelliteroadlabels"></a>satellite_road_labels
 このマップ スタイルは、衛星画像と航空映像の上に道路とラベルが重ねて表示されたハイブリッドです。
 
 ![satellite_road_labels](./media/supported-map-styles/satellite_road_labels.png)
@@ -45,7 +45,7 @@ Azure Maps では、4 種類の組み込みマップ スタイルがサポート
 **該当する API:**
 * JS マップ コントロール
 
-## <a name="grayscaledark"></a>Grayscale_Dark
+## <a name="grayscaledark"></a>grayscale_dark
 **グレースケール ダーク**は、道路マップ スタイルの濃いバージョンです。
 
 ![gray_scale](./media/supported-map-styles/grayscale_dark.png)

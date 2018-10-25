@@ -16,12 +16,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: bd9d3a677d9fea54331200258d4b9b8e07a54312
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e896392404c23e88d697d45146f802576d6045d3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956899"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870827"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する
 
@@ -274,7 +274,7 @@ RFC 6750 仕様では、応答で WWW-Authenticate ヘッダーとベアラー �
 
 ## <a name="refreshing-the-access-tokens"></a>アクセス トークンの更新
 
-アクセス トークンは有効期間が短く、期限が切れた後もリソースにアクセスし続けるためにはトークンを更新する必要があります。 `access_token` を更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。このとき、`code` の代わりに `refresh_token` を指定します。
+アクセス トークンは有効期間が短く、期限が切れた後もリソースにアクセスし続けるためにはトークンを更新する必要があります。 `access_token` を更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。このとき、`code` の代わりに `refresh_token` を指定します。  更新トークンは、クライアントが既にアクセスを同意されているすべてのリソースについて有効です。そのため、`resource=https://graph.microsoft.com` に対する要求で発行された更新トークンを使用して、`resource=https://contoso.com/api` に対する新しいアクセス トークンを要求できます。 
 
 更新トークンには、指定された有効期間はありません。 通常、更新トークンの有効期間は比較的長いです。 ただし、場合によっては、更新トークンの有効期限が切れる、失効する、または目的の操作のための十分な特権がないことがあります。 クライアント アプリケーションは、トークン発行エンドポイントから返されるエラーを予期して正しく処理する必要があります。
 

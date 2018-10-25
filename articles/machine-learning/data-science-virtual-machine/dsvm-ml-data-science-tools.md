@@ -15,93 +15,93 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 9a9dc868c4f22f95ca5027e3c95513d176c69eac
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 9308c51c0ff5fc7278eab632f9d23f23cf016a2a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392402"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901670"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>機械学習ツールとデータ サイエンス ツール
-データ サイエンス仮想マシン (DSVM) には、Python、R、Julia などの一般的な言語で使用可能な、機械学習用のツールおよびライブラリの豊富なセットがあります。 
+Azure データ サイエンス仮想マシンには、Python、R、Julia などの一般的な言語で使用できる、機械学習 (ML) のための豊富な一連のツールおよびライブラリがあります。 
 
-ここでは、DSVM の機械学習ツールおよびライブラリの一部を示します。 
+データ サイエンス仮想マシン上の ML ツールおよびライブラリのいくつかを次に示します。 
 
-## <a name="azure-machine-learning-servicehttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>[Azure Machine Learning サービス](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) SDK
+## <a name="azure-machine-learninghttpsdocsmicrosoftcomazuremachine-learningserviceoverview-what-is-azure-ml-sdk"></a>[Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/service/overview-what-is-azure-ml) SDK
 |    |           |
 | ------------- | ------------- |
-| 紹介   |   Azure Machine Learning サービスは、機械学習モデルの開発とデプロイに使用できるクラウド サービスです。  Python SDK を使用して、お使いのモデルを構築、トレーニング、スケーリング、および管理しながら、そのモデルを追跡できます。 モデルはコンテナーとしてデプロイし、クラウド、オンプレミス、または IoT Edge で実行します。   |
-| サポートされている DSVM エディション     | Windows (Conda 環境: AzureML)、Linux (Conda 環境: py36)    |
-| 一般的な用途      | 一般的な ML プラットフォーム      |
-| DSVM での構成/インストール方法      |  GPU サポートと共にインストールされます   |
-| 使用/実行方法      | Python SDK、および Azure コマンド ライン ツール (AZ CLI) として使用。 Windows エディションでは Conda 環境 `AzureML`、Linux エディションでは `py36` に対してアクティブにします。      |
-| サンプルへのリンク      | サンプル Jupyter ノートブックが notebooks の下にある `AzureML` ディレクトリに含まれています  |
-| DSVM 上の関連ツール      | Visual Studio Code、Jupyter   |
+| 紹介   |   Azure Machine Learning は、ML モデルを開発およびデプロイするために使用できるクラウド サービスです。 Python SDK を使用して、モデルの構築、トレーニング、スケール調整、および管理を行うときにそれらのモデルを追跡できます。 モデルをコンテナーとしてデプロイし、それをクラウド、オンプレミス、または Azure IoT Edge で実行します。   |
+| サポートされているエディション     | Windows (conda 環境: AzureML)、Linux (conda 環境: py36)    |
+| 標準的な使用      | 一般的な ML プラットフォーム      |
+| 構成またはインストール方法      |  GPU サポートと共にインストールされます   |
+| 使用または実行方法      | Python SDK および Azure CLI として。 Windows エディションでは conda 環境 `AzureML` に、*または* Linux エディションでは `py36` にアクティブ化します。      |
+| サンプルへのリンク      | サンプルの Jupyter ノートブックは、`AzureML` ディレクトリの notebooks の下に含まれています。  |
+| 関連するツール      | Visual Studio Code、Jupyter   |
 
 ## <a name="xgboost"></a>XGBoost 
 |    |           |
 | ------------- | ------------- |
-| 紹介   |    Python、R、Java、Scala、C++、その他言語用の、高速で、可搬性があり、分散型の勾配ブースティング (GBDT、GBRT、または GBM) ライブラリ。 1 台のコンピューター、Hadoop、Spark で動作します    |
-| サポートされている DSVM エディション     | Windows、Linux     |
-| 一般的な用途      | 一般的な ML ライブラリ      |
-| DSVM での構成/インストール方法      |  GPU サポートと共にインストールされます   |
-| 使用/実行方法      | Python ライブラリ (2.7 および 3.5)、R パッケージ、パスの通ったコマンド ライン ツール (Windows は `C:\dsvm\tools\xgboost\bin\xgboost.exe`、Linux は `/dsvm/tools/xgboost/xgboost`)    |
-| サンプルへのリンク      | サンプルは VM 上に含まれています (Linux は `/dsvm/tools/xgboost/demo`、Windows は `C:\dsvm\tools\xgboost\demo`)   |
-| DSVM 上の関連ツール      | LightGBM、MXNet   |
+| 紹介   |    XGBoost は、Python、R、Java、Scala、C++ などのための、高速で、移植可能な、分散型の勾配ブースティング (GBDT、GBRT、または GBM) ライブラリです。 これは 1 台のコンピューター、Hadoop、および Spark 上で実行されます。    |
+| サポートされているエディション     | Windows、Linux     |
+| 標準的な使用      | 一般的な ML ライブラリ      |
+| 構成またはインストール方法      |  GPU サポートと共にインストールされます   |
+| 使用または実行方法      | Python ライブラリ (2.7 および 3.5)、R パッケージ、パスの通ったコマンド ライン ツール (Windows では `C:\dsvm\tools\xgboost\bin\xgboost.exe`、Linux では `/dsvm/tools/xgboost/xgboost`) として    |
+| サンプルへのリンク      | サンプルは、VM 上の Linux では `/dsvm/tools/xgboost/demo`、Windows では `C:\dsvm\tools\xgboost\demo` に含まれています。   |
+| 関連するツール      | LightGBM、MXNet   |
 
 
 
 ## <a name="vowpal-wabbit"></a>Vowpal Wabbit
 |    |           |
 | ------------- | ------------- |
-| 紹介   |   Vowpal Wabbit ("VW" とも呼ばれます) は、オープン ソースの高速 out-of-core 学習システム ライブラリです    |
-| サポートされている DSVM エディション     | Windows、Linux     |
-| 一般的な用途      | 一般的な ML ライブラリ      |
-| DSVM での構成/インストール方法      |  Windows - msi installer、Linux - apt-get |
-| 使用/実行方法      | パスの通ったコマンド ライン ツール (Windows は `C:\Program Files\VowpalWabbit\vw.exe`、Linux は `/usr/bin/vw`)    |
+| 紹介   |   Vowpal Wabbit ("VW" とも呼ばれます) は、オープンソースの、高速な、out-of-core 方式の学習システム ライブラリです。    |
+| サポートされているエディション     | Windows、Linux     |
+| 標準的な使用      | 一般的な ML ライブラリ      |
+| 構成またはインストール方法      |  Windows--msi インストーラー、Linux--apt-get |
+| 使用または実行方法      | パスの通ったコマンド ライン ツール (Windows では `C:\Program Files\VowpalWabbit\vw.exe`、Linux では `/usr/bin/vw`) として    |
 | サンプルへのリンク      | [VowPal Wabbit サンプル](https://github.com/JohnLangford/vowpal_wabbit/wiki/Examples) |
-| DSVM 上の関連ツール      |LightGBM、MXNet、XGBoost   |
+| 関連するツール      |LightGBM、MXNet、XGBoost   |
 
 
 ## <a name="weka"></a>Weka
 |    |           |
 | ------------- | ------------- |
-| 紹介   |  Weka は、データ マイニング タスクのための機械学習アルゴリズムのコレクションです。 アルゴリズムはデータセットに直接適用するか、または独自の Java コードから呼び出すことができます。 Weka には、データの前処理、分類、回帰、クラスタリング、アソシエーション ルール、および視覚化のためのツールが含まれています。 |
-| サポートされている DSVM エディション     | Windows、Linux     |
-| 一般的な用途      | 一般的な ML ツール     |
-| 使用/実行方法      | Windows では、[スタート] メニューから Weka を探します。 Linux では、X2Go でログインした後、[Applications] \(アプリケーション) -> [Development] \(開発) -> [Weka] にアクセスします。 |
+| 紹介   |  Weka は、データ マイニング タスクのための ML アルゴリズムのコレクションです。 これらのアルゴリズムは、データ セットに直接適用するか、または独自の Java コードから呼び出すことができます。 Weka には、データの前処理、分類、回帰、クラスタリング、アソシエーション ルール、および視覚化のためのツールが含まれています。 |
+| サポートされているエディション     | Windows、Linux     |
+| 標準的な使用      | 一般的な ML ツール     |
+| 使用または実行方法      | Windows では、[スタート] メニューで Weka を探します。 Linux では、X2Go でサインインし、**[アプリケーション]** > **[開発]** > **[Weka]** に移動します。 |
 | サンプルへのリンク      | [Weka サンプル](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
-| DSVM 上の関連ツール      |LightGBM、Rattle、XGBooost   |
+| 関連するツール      |LightGBM、Rattle、XGBoost   |
 
 ## <a name="rattle"></a>Rattle
 |    |           |
 | ------------- | ------------- |
-| 紹介   |   R を使用したデータ マイニングのためのグラフィカル ユーザー インターフェイス   |
-| サポートされている DSVM エディション     | Windows、Linux     |
-| 一般的な用途      | R 用の一般的な UI データ マイニング ツール    |
-| 使用/実行方法      | UI ツール。 Windows では、コマンド プロンプトを起動して R を実行した後、R 内で `rattle()` を実行します。 Linux では、X2Go を使用して接続し、ターミナルを起動して R を実行した後、R 内で `rattle()` を実行します。 |
+| 紹介   |   Rattle は、R を使用したデータ マイニングのためのグラフィカル ユーザー インターフェイスです。   |
+| サポートされているエディション     | Windows、Linux     |
+| 標準的な使用      | R 用の一般的な UI データ マイニング ツール    |
+| 使用または実行方法      | UI ツール。 Windows では、コマンド プロンプトを起動し、R を実行してから、R 内で `rattle()` を実行します。 Linux では、X2Go で接続し、ターミナルを起動し、R を実行してから、R 内で `rattle()` を実行します。 |
 | サンプルへのリンク      | [Rattle](https://togaware.com/onepager/) |
-| DSVM 上の関連ツール      |LightGBM、Weka、XGBoost   |
+| 関連するツール      |LightGBM、Weka、XGBoost   |
 
 ## <a name="lightgbm"></a>LightGBM
 |    |           |
 | ------------- | ------------- |
-| 紹介   | デシジョン ツリー アルゴリズムに基づいた、高速、分散型、高パフォーマンスの勾配ブースティング (GBDT、GBRT、GBM、または MART) フレームワークであり、順位付け、分類、その他多くの機械学習タスクに使用されます。    |
-| サポートされている DSVM バージョン      | Windows、Linux    |
-| 一般的な用途      | 汎用の勾配ブースティング フレームワーク      |
-| DSVM での構成/インストール方法      | Windows では、LightGBM は Python パッケージとしてインストールされます。 Linux では、コマンド ラインの実行可能ファイルは `/opt/LightGBM/lightgbm` にあり、R パッケージがインストールされ、Python パッケージがインストールされます。     |
+| 紹介   | LightGBM は、ディシジョン ツリー アルゴリズムに基づく、高速な、分散型、高パフォーマンスの勾配ブースティング (GBDT、GBRT、GBM、または MART) フレームワークです。 これは、ランク付け、分類、およびその他の多くの ML タスクに使用されます。    |
+| サポートされているバージョン      | Windows、Linux    |
+| 標準的な使用      | 汎用の勾配ブースティング フレームワーク      |
+| 構成またはインストール方法      | Windows では、LightGBM は Python パッケージとしてインストールされます。 Linux では、コマンド ラインの実行可能ファイルは `/opt/LightGBM/lightgbm` にあり、R パッケージがインストールされ、Python パッケージがインストールされます。     |
 | サンプルへのリンク      | [LightGBM Guide (LightGBM ガイド)](https://github.com/Microsoft/LightGBM/tree/master/examples/python-guide)   |
-| DSVM 上の関連ツール      | MXNet、XgBoost  |
+| 関連するツール      | MXNet、XgBoost  |
 
 ## <a name="h2o"></a>H2O
 |    |           |
 | ------------- | ------------- |
-| 紹介   | インメモリ、分散型、高速、かつスケーラブルな機械学習をサポートするオープン ソースの AI プラットフォーム  |
-| サポートされている DSVM バージョン      | Linux   |
-| 一般的な用途      | 汎用の分散型スケーラブル ML   |
-| DSVM での構成/インストール方法      | H2O は `/dsvm/tools/h2o` にインストールされます。      |
-| 使用/実行方法      | X2Go を使用して VM に接続します。 新しいターミナルを起動し、`java -jar /dsvm/tools/h2o/current/h2o.jar` を実行します。 次に、Web ブラウザーを起動して `http://localhost:54321` に接続します。      |
-| サンプルへのリンク      | Jupyter の VM で、サンプルは `h2o` ディレクトリにあります。      |
-| DSVM 上の関連ツール      | Apache Spark、MXNet、XGBoost、Sparkling Water、Deep Water    |
+| 紹介   | H2O は、インメモリ、分散型、高速で、かつスケーラブルな ML をサポートするオープンソースの AI プラットフォームです。  |
+| サポートされているバージョン      | Linux   |
+| 標準的な使用      | 汎用で、分散型のスケーラブル ML   |
+| 構成またはインストール方法      | H2O は `/dsvm/tools/h2o` にインストールされます。      |
+| 使用または実行方法      | X2Go を使用して VM に接続します。 新しいターミナルを起動し、`java -jar /dsvm/tools/h2o/current/h2o.jar` を実行します。 次に、Web ブラウザーを起動して `http://localhost:54321` に接続します。      |
+| サンプルへのリンク      | サンプルは、VM 上の Jupyter の `h2o` ディレクトリの下にあります。      |
+| 関連するツール      | Apache Spark、MXNet、XGBoost、Sparkling Water、Deep Water    |
 
-DSVM にインストールされる Anaconda Python ディストリビューションの一部として付属する人気の `scikit-learn` パッケージなど、その他多数の ML ライブラリが DSVM には存在します。 必ず、それぞれのパッケージ マネージャーを実行して、Python、R、および Julia で利用可能なパッケージの一覧を確認してください。 
+データ サイエンス仮想マシン上には、データ サイエンス仮想マシンにインストールされる Anaconda Python ディストリビューションの一部として付属する一般的な `scikit-learn` パッケージなど、その他の ML ライブラリがいくつか存在します。 Python、R、および Julia で使用可能なパッケージの一覧を確認するには、それぞれのパッケージ マネージャーを実行します。

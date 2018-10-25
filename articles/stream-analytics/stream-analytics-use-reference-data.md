@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 2a6172a4e163d937f5a0a2140831b730bca23c3f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fd912885335b41e3d7ca8ee717b6bb1b9c88e729
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696525"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984147"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Stream Analytics での参照に参照データを使用する
 参照データ (別名、ルックアップテーブル) は、静的または本来はあまり変更されない有限のデータ セットであり、参照の実行やデータ ストリームとの相互の関連付けに使用されます。 Azure Stream Analytics は、参照データをメモリに読み込んで、待機時間の短いストリーム処理を実現します。 Azure Stream Analytics のジョブで参照データを使用するには、一般的にクエリで[参照データの結合](https://msdn.microsoft.com/library/azure/dn949258.aspx)を使用します。 Stream Analytics は、参照データのストレージ レイヤーとして Azure Blob Storage を使用し、Azure Data Factory を使用して参照データを Azure Blob Storage に変換、コピー、またはその両方を実行して、[任意の数のクラウドベースとオンプレミスのデータ ストア](../data-factory/copy-activity-overview.md)から、参照データとして使用することができます。 参照データは、BLOB (入力構成に定義された) のシーケンスとしてモデル化され、BLOB の名前内で指定された日付/時刻の昇順で並べられます。 シーケンス内の最後の BLOB で指定された日付/時刻より**新しい**日付/時刻を使用してシーケンスの末尾に追加することがサポートされている**だけ**です。
@@ -85,5 +85,5 @@ Azure Stream Analytics は、更新された参照データ BLOB を、1 分間�
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.get.started]: stream-analytics-get-started.md
-[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301

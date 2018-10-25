@@ -128,17 +128,6 @@ items:
       href: programmatically-create-subscription.md
     - name: EA サブスクリプションを作成するためのアクセスを許可する
       href: grant-access-to-create-subscription.md
-  - name: アクセスを制御する
-    items:
-    - name: サービス プリンシパルの作成
-      items:
-      - name: Azure PowerShell
-        href: resource-group-authenticate-service-principal.md
-      - name: Azure CLI
-        href: /cli/azure/create-an-azure-service-principal-azure-cli
-        maintainContext: true
-      - name: Azure ポータル
-        href: resource-group-create-service-principal-portal.md
     - name: サブスクリプションにアクセスするための認証 API
       href: resource-manager-api-authentication.md
     - name: リソースのロック
@@ -232,9 +221,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 3e7fc5f0e26bcfd0c52b874196eff1ac332b62bc
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6691b5f90a2f9e9bb78312e26c2b7cbd85cf27d7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403358"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025601"

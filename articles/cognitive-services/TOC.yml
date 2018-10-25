@@ -30,8 +30,6 @@ items:
   items:
   - name: Azure のロードマップ
     href: https://azure.microsoft.com/roadmap/?category=cognitive-services
-  - name: 言語とリージョンのサポート
-    href: language-support.md
   - name: 価格
     href: https://azure.microsoft.com/pricing/details/cognitive-services/
   - name: 料金計算ツール
@@ -44,9 +42,9 @@ items:
     href: http://go.microsoft.com/fwlink/?LinkId=698895
   - name: ナレッジ ベース
     href: https://cognitive.uservoice.com/knowledgebase
-ms.openlocfilehash: 8311019b6c4d985f40437788118eea293c78718d
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: bdd186113f43547a7ee28c0afe393e6df64b8b31
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431982"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49983503"

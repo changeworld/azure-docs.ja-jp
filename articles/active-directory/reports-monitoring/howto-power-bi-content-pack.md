@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 12/06/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 752e71f3c6b22a6d9f1e2392b58c01deef9de89c
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: c0326a6b611d5f3d5633db2d2b64b8cdc15e10a7
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782166"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816686"
 ---
 # <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Azure Active Directory Power BI コンテンツ パックの使用方法
 
@@ -28,50 +28,15 @@ ms.locfileid: "43782166"
 |現在、Azure AD Power BI コンテンツ パックでは Azure AD Graph API を使用して Azure AD テナントからデータを取得します。 そのため、コンテンツ パック内のデータと[レポート用の Microsoft Graph API](concept-reporting-api.md) を使用して取得したデータに差異が発生する可能性があります。 |
 |  |
 
-自分が管理しているユーザーが Azure Active Directory の機能をどのように採り入れ、使用しているかを把握することは、IT 管理者にとってきわめて重要です。そうすることで自社の IT インフラストラクチャと通信を計画し、使用率を高め、AAD の機能を最大限に活かすことができます。 Azure Active Directory Power BI コンテンツ パックを使用すると、データを深く掘り下げて分析できます。利用頻度の高い各種の機能に関して、そのデータをどのように利用すれば Azure Active Directory で起こっていることについての洞察を深めることができるかが見えてきます。  Azure Active Directory の API が Power BI に統合されているため、既製のコンテンツ パックをすぐにダウンロードして、Power BI が備えている多彩な視覚化機能を使い、Azure Active Directory 内のあらゆるアクティビティについての洞察を得ることができます。 そうして得た情報は、独自のダッシュボードを作成することで、社内のだれとでも簡単に共有することができます。 
+IT 管理者は、自分が管理しているユーザーが Azure Active Directory の機能をどのように採り入れ、使用しているかを把握する必要があります。 そうすることで自社の IT インフラストラクチャと通信を計画し、使用率を高め、Azure AD の機能を最大限に活かすことができます。 Azure Active Directory 用 Power BI コンテンツ パックを使用すると、データをより詳細に分析して、ディレクトリで起きていることについての詳しい分析情報を得ることができます。 Azure Active Directory の API が Power BI に統合されているため、既製のコンテンツ パックをすぐにダウンロードして、Power BI が備えている多彩な視覚化機能を使い、Azure Active Directory 内のあらゆるアクティビティについての洞察を得ることができます。 そうして得た情報は、独自のダッシュボードを作成することで、社内のだれとでも簡単に共有することができます。 
 
-このトピックでは、ご利用の環境にコンテンツ パックをインストールして使用する具体的な手順を紹介します。
+## <a name="prerequisites"></a>前提条件
 
-## <a name="installation"></a>インストール  
+コンテンツ パックを使用するには、Azure AD Premium (P1/P2) ライセンスが必要です。 
 
-**Power BI コンテンツ パックをインストールするには**
+## <a name="install-the-content-pack"></a>コンテンツ パックをインストールする
 
-1. ご利用の Power BI アカウント (O365 と同じアカウントまたは Azure AD アカウント) で [Power BI](https://app.powerbi.com/groups/me/getdata/services) にログインします。
-
-2. 左側のナビゲーション ウィンドウの一番下にある **[データを取得]** を選択します。
-
-    ![Azure Active Directory Power BI コンテンツ パック](./media/howto-power-bi-content-pack/01.png)
- 
-3. **[サービス]** ボックスの **[取得]** をクリックします。
-   
-    ![Azure Active Directory Power BI コンテンツ パック](./media/howto-power-bi-content-pack/02.png)
-
-4.  **Azure Active Directory** を検索します。
-
-    ![Azure Active Directory Power BI コンテンツ パック](./media/howto-power-bi-content-pack/03.png)
- 
-5.  確認を求められたら、Azure AD のテナント ID を入力し、**[次へ]** をクリックします。
-
-    > [!TIP] 
-    > Office 365 / Azure AD テナントのテナント ID を取得するには、Azure AD ポータルにサインインして目的のディレクトリまで移動し、[**[プロパティ]** ページ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)から **[ディレクトリ ID]** をコピーするのが簡単です。
-
-    ![Azure Active Directory Power BI コンテンツ パック](./media/howto-power-bi-content-pack/04.png) 
-
-6.  **[サインイン]** をクリックします。 
- 
-    ![Azure Active Directory Power BI コンテンツ パック](./media/howto-power-bi-content-pack/05.png) 
-
-
-
-7.  ユーザー名とパスワードを入力し、**[サインイン]** をクリックします。
- 
-    ![Azure Active Directory Power BI コンテンツ パック](./media/howto-power-bi-content-pack/06.png) 
-
-8.  同意を求めるアプリのダイアログで **[Accept]\(同意する\)** をクリックします。
- 
-9.  Azure Active Directory アクティビティ ログのダッシュボードが作成されたら、それをクリックします。
- 
-    ![Azure Active Directory Power BI コンテンツ パック](./media/howto-power-bi-content-pack/08.png) 
+Azure AD Power BI コンテンツ パックをインストールするには、[クイック スタート](quickstart-install-power-bi-content-pack.md)を調べてください。
 
 ## <a name="what-can-i-do-with-this-content-pack"></a>このコンテンツ パックでできること
 
@@ -155,4 +120,6 @@ Power BI レポートの日次更新をスケジュールするには、**[デ�
 
 ## <a name="next-steps"></a>次の手順
 
-レポートの概要については、「[Azure Active Directory レポート](overview-reports.md)」を参照してください。
+* [Power BI コンテンツ パックをインストールする](quickstart-install-power-bi-content-pack.md)。
+* [コンテンツ パックのエラーをトラブルシューティングする](troubleshoot-content-pack.md)。
+* [Azure AD レポートとは](overview-reports.md)。

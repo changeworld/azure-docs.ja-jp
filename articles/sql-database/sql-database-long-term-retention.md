@@ -12,16 +12,20 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: b2d4166c25014416efbb7392acda3f3f028b4fa9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 6110773ecaba0ad333e4cfc9f9cc6014bd29a7a6
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162048"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249521"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間 Azure SQL Database のバックアップを格納する
 
 多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database の[自動バックアップ](sql-database-automated-backups.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期リテンション期間 (LTR) 機能を使用すると、最大で 10 年間、指定した SQL データベースの完全バックアップを [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) Blob Storage に格納できます。 その後、任意のバックアップを新しいデータベースとして復元できます。
+
+> [!NOTE]
+> LTR は、Azure SQL Database 論理サーバーでホストされているデータベースで有効にすることができます。 これは、Managed Instance でまだ利用できません。
+> 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL Database の長期リテンション期間のしくみ
 

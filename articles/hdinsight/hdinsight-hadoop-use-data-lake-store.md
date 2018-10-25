@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/23/2018
-ms.openlocfilehash: e1c76f65df13811a3dc3028e627b7c19c1437fb5
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: d205a46c672523e029816b573742d991de79b2ae
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585545"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956733"
 ---
 # <a name="use-data-lake-store-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Data Lake Store を使用する
 
@@ -93,7 +93,7 @@ Data Lake Store アカウントを追加ストレージとして使い、複数�
 
 ## <a name="configure-data-lake-store-access"></a>Data Lake Store へのアクセスを構成する
 
-HDInsight クラスターから Data Lake Store へのアクセスを構成するには、Azure Active Directory (Azure AD) のサービス プリンシパルが必要です。 サービス プリンシパルを作成できるのは、Azure AD 管理者だけです。 サービス プリンシパルは証明書で作成する必要があります。 詳しくは、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」および「[自己署名証明書を使用したサービス プリンシパルの作成](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate)」をご覧ください。
+HDInsight クラスターから Data Lake Store へのアクセスを構成するには、Azure Active Directory (Azure AD) のサービス プリンシパルが必要です。 サービス プリンシパルを作成できるのは、Azure AD 管理者だけです。 サービス プリンシパルは証明書で作成する必要があります。 詳しくは、「[クイック スタート: HDInsight のクラスターを設定する](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)」および「[自己署名証明書を使用したサービス プリンシパルの作成](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)」をご覧ください。
 
 > [!NOTE]
 > Azure Data Lake Store を HDInsight クラスターの追加ストレージとして使用する場合は、この記事で説明されているように、クラスターを作成するときにそうすることを強くお勧めします。 Azure Data Lake Store を既存の HDInsight クラスターに追加のストレージとして追加することは、サポートされていないシナリオです。

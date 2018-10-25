@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: f9dbd663ce3b15e6a825f0ef73f3dd5d1f5df76b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: efe04b19188d7324c3f86565610040b8eaa97c43
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697545"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855393"
 ---
 # <a name="message-deferral"></a>メッセージ遅延
 
@@ -26,7 +26,7 @@ ms.locfileid: "43697545"
 
 遅延は、ワークフロー処理のシナリオを対象に作成された機能です。 ワークフロー フレームワークでは、一定の操作を特定の順序で処理することが必要な場合があります。また、他のメッセージで通知された、優先度の高い所定の作業が完了するまで、受信したいくつかのメッセージの処理を延期することが必要な場合があります。
 
-これに関する簡単でわかりやすい例としては、一致する注文書が店舗からフルフィルメント システムに入力される前に、外部の支払いプロバイダーからの支払い通知がシステムに表示される注文処理シーケンスが挙げられます。 このケースでは、関連する注文が届くまで、支払い通知の処理がフルフィルメント システムによって遅延される場合があります。 異なる送信元からのメッセージによってワークフローが進行する集合シナリオでは、リアルタイムの実行順序は正しいのに、結果を反映するメッセージが到着する順序は正しくない場合があります。
+簡単でわかりやすい例としては、一致する注文書が店舗からフルフィルメント システムに入力される前に、外部の支払いプロバイダーからの支払い通知がシステムに表示される注文処理シーケンスが挙げられます。 このケースでは、関連する注文が届くまで、支払い通知の処理がフルフィルメント システムによって遅延される場合があります。 異なる送信元からのメッセージによってワークフローが進行する集合シナリオでは、リアルタイムの実行順序は正しいのに、結果を反映するメッセージが到着する順序は正しくない場合があります。
 
 つまり遅延は、処理の延期が必要なメッセージをメッセージ ストアに確実に保持しながら、到着した順序から処理できる順序に並べ直すのに役立ちます。
 
@@ -38,7 +38,7 @@ API は、.NET Framework クライアントの [BrokeredMessage.Defer](/dotnet/a
 
 遅延メッセージを取得するには、所有者がそれを遅延させる際に [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) を記憶しておく必要があります。 遅延メッセージのシーケンス番号がわかっている受信者は、後ほど `Receive(sequenceNumber)` で明示的にメッセージを受信できます。
 
-メッセージを処理する特定のリソースが一時的に使用できないためにそのメッセージを処理できないものの、メッセージの処理をすぐに中断できない場合があります。このような場合、数分間そのメッセージを確保する方法は、数分以内に投稿される[スケジュール済みメッセージ](message-sequencing.md)の **SequenceNumber** を記憶しておき、スケジュールされたメッセージが到着したときに遅延メッセージを取得し直すことです。 メッセージ ハンドラーですべての操作についてデータベースが使用されており、そのデータベースが一時的に使用できない場合は、遅延を使用しないように注意してください。その代わり、データベースが再び使用できるようになるまで、メッセージの受信を完全に中断してください。
+メッセージを処理する特定のリソースが一時的に使用できないためにそのメッセージを処理できないものの、メッセージの処理をすぐに中断できない場合があります。このような場合、数分間そのメッセージを確保する方法は、数分以内に投稿される[スケジュール済みメッセージ](message-sequencing.md)の **SequenceNumber** を記憶しておき、スケジュールされたメッセージが到着したときに遅延メッセージを取得し直すことです。 メッセージ ハンドラーですべての操作についてデータベースが使用されており、そのデータベースが一時的に使用できない場合は、遅延を使用しないようにしてください。その代わり、データベースが再び使用できるようになるまで、メッセージの受信を完全に中断してください。
 
 メッセージの遅延は、メッセージの有効期限に影響しません。つまり、遅延メッセージの有効期限は最初にスケジュールされた時間のままであり、構成されている場合は配達不能キューに移動されます。
 
@@ -46,7 +46,6 @@ API は、.NET Framework クライアントの [BrokeredMessage.Defer](/dotnet/a
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)

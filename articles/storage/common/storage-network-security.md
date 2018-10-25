@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: ff382becb71f187ac38b0ef5d31c1b29c43f3fe7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bcb772185f0a16183b8a6c9674419781ef41be3e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972557"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068538"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 Azure Storage は多層型セキュリティ モデルを提供しているため、許可されたネットワークの特定のセットに対するストレージ アカウントをセキュリティで保護することができます。  ネットワーク ルールが構成されている場合、ストレージ アカウントにアクセスできるのは、許可されているネットワークからのアプリケーションのみです。  許可されているネットワークからの呼び出し時に、アプリケーションはストレージ アカウントにアクセスするための適切な承認 (有効なアクセス キーまたは SAS トークン) を要求します。
 
 > [!IMPORTANT]
-> ストレージ アカウントのファイアウォール ルールをオンにすると、他の Azure サービスを含む、データの受信要求へのアクセスがブロックされます。  これにはポータルの使用やログの書き込みなども含まれます。参加サービスに対しては、以下の「[例外](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)」セクションに従って、機能を再度有効にできます。  ポータルにアクセスするには、設定済みの信頼できる境界 (IP または VNet) 内のコンピューターからアクセスする必要があります。
+> ストレージ アカウントのファイアウォール ルールをオンにすると、他の Azure サービスを含む、データの受信要求へのアクセスがブロックされます。  これにはポータルの使用やログの書き込みなども含まれます。サービス インスタンスのサブネットを許可することで、VNet 内から操作する Azure サービスにアクセス権を付与できます。  VNet 内から動作しない Azure サービスは、ファイアウォールによってブロックされます。  下記の「[例外](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)」メカニズムによって、有効にするシナリオの数を制限できます。  ポータルにアクセスするには、設定済みの信頼できる境界 (IP または VNet) 内のコンピューターからアクセスする必要があります。
 >
 
 ## <a name="scenarios"></a>シナリオ

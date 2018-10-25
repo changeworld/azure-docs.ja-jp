@@ -12,23 +12,23 @@ ms.author: genemi
 ms.reviewer: carlrab
 manager: craigg-msft
 ms.date: 06/07/2018
-ms.openlocfilehash: 65a9bde6fa086dc56809df9619ceee1c5b417e31
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 504fae03e06632f5960bfe0761cc0167b9e1d3fb
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063303"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465219"
 ---
 # <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>C&#x23; と ADO.NET で Azure SQL データベースを設計し、接続する
 
-Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサービスとしてのデータベース (DBaaS) です。 このチュートリアルでは、Azure Portal、ADO.NET、および Visual Studio を使用して以下の手順を実行する方法を説明します。 
+Azure SQL Database は、Microsoft Cloud (Azure) のリレーショナルなサービスとしてのデータベース (DBaaS) です。 このチュートリアルでは、Azure Portal、ADO.NET、および Visual Studio を使用して以下の手順を実行する方法を説明します。
 
 > [!div class="checklist"]
 > * Azure Portal でデータベースを作成する
 > * Azure Portal でサーバーレベルのファイアウォール規則を設定する
 > * ADO.NET と Visual Studio を使用してデータベースに接続する
 > * ADO.NET を使用してテーブルを作成する
-> * ADO.NET を使用してデータを挿入、更新、削除する 
+> * ADO.NET を使用してデータを挿入、更新、削除する
 > * ADO.NET を使用してデータのクエリを実行する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
@@ -43,13 +43,11 @@ And it starts with a ## H2.
 
 [!INCLUDE [sql-database-tutorial-portal-create-firewall-connection-1](../../includes/sql-database-tutorial-portal-create-firewall-connection-1.md)]
 
-
 <!-- The following included .md, sql-database-csharp-adonet-create-query-2.md, is long.
 And it starts with a ## H2.
 -->
 
 [!INCLUDE [sql-database-csharp-adonet-create-query-2](../../includes/sql-database-csharp-adonet-create-query-2.md)]
-
 
 ## <a name="next-steps"></a>次の手順
 
@@ -66,4 +64,3 @@ And it starts with a ## H2.
 
 > [!div class="nextstepaction"]
 > [SQL Server データベースを Azure SQL Database に移行する](sql-database-migrate-your-sql-server-database.md)
-

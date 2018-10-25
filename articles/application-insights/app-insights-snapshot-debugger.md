@@ -10,21 +10,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/08/2018
+ms.date: 10/10/2018
 ms.reviewer: pharring
 ms.author: mbullwin
-ms.openlocfilehash: d4c27c8297fb5a2ad13a245279a206d00fc4f8b1
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 6dd39fddd99f5f8ea9329f21c271ed4c1063362d
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144127"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49078972"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
 
 例外が発生したとき、実行中の Web アプリケーションからデバッグ スナップショットを自動的に収集できます。 スナップショットには、例外がスローされたときのソース コードと変数の状態が表示されます。 [Azure Application Insights](app-insights-overview.md) のスナップショット デバッガー (プレビュー) により、Web アプリの例外テレメトリが監視されます。 運用環境の問題の診断に必要な情報を入手できるように、スローされる上位の例外に関するスナップショットが収集されます。 [スナップショット コレクター NuGet パッケージ](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector)をアプリケーションに含め、必要に応じて、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) にコレクション パラメーターを構成します。スナップショットが、Application Insights ポータルの[例外](app-insights-asp-net-exceptions.md)に表示されます。
 
 ポータルで [Debug Snapshots (デバッグ スナップショット)] を表示して、コール スタックを表示し、各呼び出しスタック フレームで変数を確認できます。 ソース コードによるデバッグ エクスペリエンスをさらに向上させるには、Visual Studio 2017 Enterprise でスナップショットを開きます。このためには、[Visual Studio 向けのスナップショット デバッガー拡張機能をダウンロード](https://aka.ms/snapshotdebugger)します。 Visual Studio では、例外を待たずに[スナップポイントを設定し、対話形式でスナップショットを取得](https://aka.ms/snappoint)できます。
+
+デバッグ スナップショットは 7 日間格納されます。 この保持ポリシーは、アプリケーションごとに設定されます。 この値を増やす必要がある場合は、Azure portal でサポート ケースを開くことによって増加を要求できます。
 
 スナップショット コレクションは次のアプリケーションで使用できます。
 * .NET Framework 4.5 以降を実行している .NET Framework アプリケーションと ASP.NET アプリケーション。
@@ -191,9 +193,12 @@ ms.locfileid: "43144127"
 
 ## <a name="grant-permissions"></a>アクセス許可を付与する
 
-Azure サブスクリプションの所有者は、スナップショットを検査できます。 他のユーザーは、所有者から権限を付与してもらう必要があります。
+スナップショットへのアクセスは、ロールベースのアクセス制御 (RBAC) によって保護されます。 スナップショットを検査するユーザーは、最初にサブスクリプション所有者によって必要なロールに追加される必要があります。
 
-権限を付与するには、スナップショットを検査する予定のユーザーに `Application Insights Snapshot Debugger` のロールを割り当てます。 このロールは、Application Insights のターゲット リソース、リソース グループ、またはサブスクリプションに関するサブスクリプション所有者が、個々のユーザーまたはグループに割り当てることができます。
+> [!NOTE]
+> 所有者と共同作成者には、このロールは自動的に割り当てられません。 所有者や共同作成者がスナップショットを見る場合は、自分自身をロールに追加する必要があります。
+
+サブスクリプション所有者は、スナップショットを検査する予定のユーザーに `Application Insights Snapshot Debugger` のロールを割り当てる必要があります。 このロールは、Application Insights のターゲット リソース、リソース グループ、またはサブスクリプションに関するサブスクリプション所有者が、個々のユーザーまたはグループに割り当てることができます。
 
 1. Azure Portal で Application Insights のリソースを参照します。
 1. **[アクセス制御 (IAM)]** をクリックします。

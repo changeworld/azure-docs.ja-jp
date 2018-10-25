@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d39cfddc42ea0e03f6b0f6c8d1c0160839742518
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 98edf224ebbd15f6acafdfeb28769eecb4edff40
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393912"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638121"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -131,7 +131,7 @@ Azure portal の **[サインイン]** ページの **[トラブルシューテ�
 **サービス カテゴリ:** 条件付きアクセス  
 **製品の機能:** ID のセキュリティと保護
 
-以下のアプリが、[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference.md#approved-client-app-requirement)の一覧に示されます。
+以下のアプリが、[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference#approved-client-app-requirement)の一覧に示されます。
 
 - Microsoft To-Do
 

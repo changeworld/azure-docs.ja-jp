@@ -3,19 +3,19 @@ title: Translator Text API とは
 titlesuffix: Azure Cognitive Services
 description: Translator Text API をアプリケーション、Web サイト、ツール、またはその他のソリューションに統合して、多言語ユーザー エクスペリエンスを提供できます。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: overview
 ms.date: 05/10/2018
-ms.author: nolachar
-ms.openlocfilehash: c0004960b7a234d374ec0ae1bdc2f6576b197705
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.author: erhopf
+ms.openlocfilehash: 6c89ff41531b130843eb288b98ffe7def1d8915e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385027"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645049"
 ---
 # <a name="what-is-translator-text-api"></a>Translator Text API とは
 
@@ -35,7 +35,7 @@ Microsoft Translator サービスの詳細については、[こちら](https://
 
 コア Microsoft Translator サービスの拡張機能である Custom Translator は、Translator Text API と組み合わせて使用することで、ニューラル翻訳システムをカスタマイズし、特定の用語やスタイルの翻訳を改善することができます。
 
-Custom Translator を使用すると、独自のビジネスや業界で使用される用語を処理するニューラル翻訳システムを構築できます。 カスタマイズされた翻訳システムは、通常の Microsoft Translator Text API でカテゴリ パラメーターを使用して、複数の種類のデバイス全体で既存のアプリケーション、ワークフロー、および Web サイトに簡単に統合できます。 
+Custom Translator を使用すると、独自のビジネスや業界で使用される用語を処理するニューラル翻訳システムを構築できます。 カスタマイズされた翻訳システムは、通常の Microsoft Translator Text API でカテゴリ パラメーターを使用して、複数の種類のデバイス全体で既存のアプリケーション、ワークフロー、および Web サイトに簡単に統合できます。
 
 [言語カスタマイズ](customization.md)の詳細
 
@@ -45,7 +45,7 @@ Custom Translator を使用すると、独自のビジネスや業界で使用�
 
 NMT では、生の翻訳品質のスコアリングの観点からだけでなく、音声がより流ちょうで人間らしいため、SMT より優れた翻訳が提供されます。 こうした流ちょうさが得られるのは、NMT では 1 つの文章のコンテキスト全体を使用して言葉を変換することが主な理由です。 SMT で考慮されるのは、各単語の前後にある数語の直接的コンテキストのみです。
 
-NMT モデルは、API のコアにあって、エンドユーザーからは見えません。 顕著な違いは翻訳品質の向上のみです。特に中国語、日本語、アラビア語などの言語で向上しています。 
+NMT モデルは、API のコアにあって、エンドユーザーからは見えません。 顕著な違いは翻訳品質の向上のみです。特に中国語、日本語、アラビア語などの言語で向上しています。
 
 NMT の動作方法の詳細については、[こちら](https://www.microsoft.com/en-us/translator/mt.aspx#nnt)を参照してください
 

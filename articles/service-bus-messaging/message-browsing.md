@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: bafc08eae4a32f803f485097401a586a662f64e9
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7ce2e870be0178420d80682bd18adbef814c162f
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700409"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857467"
 ---
 # <a name="message-browsing"></a>メッセージの読み取り
 
-Service Bus クライアントは、メッセージを読み取る ("ピーク") ことにより、通常は診断とデバッグの目的で、キューまたはサブスクリプションにあるすべてのメッセージを列挙できます。
+Service Bus クライアントは、メッセージを読み取るか、ピークすることにより、通常は診断とデバッグの目的で、キューまたはサブスクリプションにあるすべてのメッセージを列挙できます。
 
 ピーク操作では、`Receive()` または `OnMessage()` ループで即時に取得できるメッセージだけでなく、キューまたはサブスクリプション メッセージ ログにあるすべてのメッセージが返されます。 各メッセージの `State` プロパティによって、メッセージがアクティブか (受信可能)、[遅延](message-deferral.md)、または[スケジュール済み](message-sequencing.md)かが分かります。
 
@@ -30,7 +30,7 @@ Service Bus クライアントは、メッセージを読み取る ("ピーク")
 
 このことに留意することは、特に、キューから遅延メッセージを回復しようとする場合に重要になります。 [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) インスタントが渡したメッセージは、ピークによって返された場合でも、他の方法では通常の取得ができなくなります。 ピークはログの現在の状態を反映する診断ツールであるため、これらのメッセージの返しは意図的に実行されます。
 
-ピークでは、ロックされていて、現在他の受信者が処理しているが、まだ完了していないメッセージも返されます。 ただし、ピークは接続していない状態のスナップショットを返すため、メッセージのロック状態はピーク メッセージでは観察できません。アプリケーションがそれを読み取ろうとすると、[LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.lockeduntilutc#Microsoft_Azure_ServiceBus_Core_MessageReceiver_LockedUntilUtc) と [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) プロパティで [InvalidOperationException](/dotnet/api/system.invalidoperationexception) 例外になります。
+ピークでは、ロックされていて、現在他の受信者が処理しているが、まだ完了していないメッセージも返されます。 ただし、ピークは接続していない状態のスナップショットを返すため、メッセージのロック状態はピーク メッセージでは観察できません。アプリケーションがそれを読み取ろうとすると、[LockedUntilUtc](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.lockeduntilutc) と [LockToken](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.locktoken#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_LockToken) プロパティで [InvalidOperationException](/dotnet/api/system.invalidoperationexception) 例外になります。
 
 ## <a name="peek-apis"></a>Peek API
 
@@ -46,7 +46,6 @@ Service Bus クライアントは、メッセージを読み取る ("ピーク")
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)

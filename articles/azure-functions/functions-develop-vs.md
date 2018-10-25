@@ -1,5 +1,5 @@
 ---
-title: Visual Studio を使用した Azure Functions の開発 | Microsoft Docs
+title: Visual Studio を使用する Azure Functions の開発 | Microsoft Docs
 description: Azure Functions Tools for Visual Studio 2017 を使用して、Azure Functions を開発およびテストする方法を説明します。
 services: functions
 documentationcenter: .net
@@ -8,16 +8,16 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 39745991f7ab3b181f892bbaa59283d92737ecf3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 3ba8919a499da0db8e2deb626d8cf4d5067c1c25
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093875"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069179"
 ---
-# <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用した Azure Functions の開発
+# <a name="develop-azure-functions-using-visual-studio"></a>Visual Studio を使用する Azure Functions の開発  
 
 Azure Functions Tools for Visual Studio 2017 は Visual Studio の拡張機能です。C# 関数の開発、テスト、および Azure へのデプロイを可能にします。 Azure Functions を初めて使用する場合は、詳細について、「[Azure Functions の概要](functions-overview.md)」を参照してください。
 
@@ -27,9 +27,9 @@ Azure Functions Tools には、次のような利点があります。
 * Azure に直接 Azure Functions プロジェクトを発行できます。 
 * WebJobs 属性を使用して、定義をバインドするために個別に function.json を維持するのではなく、C# コードで直接関数バインディングを宣言できます。
 * コンパイル済み C# 関数を開発およびデプロイできます。 コンパイル済み関数では、C# スクリプト ベースの関数より優れたコールド スタート パフォーマンスが得られます。 
-* Visual Studio における開発のすべての利点を得ながら、C# で関数をコーディングできます。 
+* Visual Studio 開発のすべての利点を得ながら、C# で関数をコーディングできます。 
 
-この記事では、Azure Functions Tools for Visual Studio 2017 を使用して、C# で関数を開発する方法を示します。 .NET アセンブリとして Azure にプロジェクトを発行する方法についても説明します。
+この時事では、Azure Functions Tools for Visual Studio 2017 を使用して、C# で関数を開発する方法を示します。 .NET アセンブリとして Azure にプロジェクトを発行する方法についても説明します。
 
 > [!IMPORTANT]
 > 同じ関数アプリにローカル開発とポータル開発を混在させないでください。 ローカル プロジェクトから関数アプリに発行すると、ポータルで開発した関数がデプロイ プロセスによって上書きされます。
@@ -46,9 +46,9 @@ Visual Studio が最新であり、Azure Functions ツールの[最新バージ�
 
 関数を作成してデプロイするには、以下も必要になります。
 
-* 有効な Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を利用できます。
+* 有効な Azure サブスクリプション Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を利用できます。
 
-* Azure Storage のアカウント。 ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。
+* Azure Storage のアカウント ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../storage/common/storage-quickstart-create-account.md)」を参照してください。
 
 ### <a name="check-your-tools-version"></a>ツールのバージョンを確認する
 
@@ -96,7 +96,7 @@ Functions ランタイムでは内部的に Azure Storage アカウントを使�
 
 3. 前の手順を繰り返し、関数に必要なその他のすべての接続について、**Values** 配列に一意のキーを追加します。
 
-## <a name="create-a-function"></a>関数を作成する
+## <a name="add-a-function-to-your-project"></a>プロジェクトに関数を追加する
 
 コンパイル済みの関数では、関数で使用されるバインディングはコードで属性を適用することで定義されます。 Azure Functions Tools を使用して提供されているテンプレートから関数を作成する場合は、これらの属性が適用されます。 
 
@@ -171,7 +171,9 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 プロジェクトを実行して、デプロイ済みの関数をテストする場合と同じように、コードをテストできます。 詳細については、「[Azure Functions のコードをテストするための戦略](functions-test-a-function.md)」を参照してください。 デバッグ モードで実行している場合は、予期したとおりに Visual Studio でブレークポイントがヒットします。 
 
-キューによってトリガーされる関数のテスト方法の例については、[キューによってトリガーされる関数のクイックスタート チュートリアル](functions-create-storage-queue-triggered-function.md#test-the-function)を参照してください。  
+<!---
+For an example of how to test a queue triggered function, see the [queue triggered function quickstart tutorial](functions-create-storage-queue-triggered-function.md#test-the-function).  
+-->
 
 Azure Functions Core Tools の使用の詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。
 
@@ -196,6 +198,20 @@ Azure の関数アプリに必要な設定をアップロードする最も簡�
 * [Azure Portal の使用](functions-how-to-use-azure-function-app-settings.md#settings)。
 * [Azure Functions Core ツールでの `--publish-local-settings` 発行オプションの使用](functions-run-local.md#publish)。
 * [Azure CLI の使用](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)。 
+
+## <a name="monitoring-functions"></a>関数の監視
+
+Azure で関数の実行を監視するための推奨される方法は、Azure Application Insights との統合です。 Azure Portal で関数アプリを作成する場合、この統合は、既定で自動的に行われます。 ただし、Visual Studio の発行中に関数アプリを作成する場合は、Azure で関数アプリの統合は実行されません。 代わりに、組み込みログが取得されますが、これは推奨されません。
+
+Azure で関数アプリ用に Application Insights を有効にするには:
+
+1. [Azure Portal](https://portal.azure.com) で Application Insights インスタンスを作成し、そのインストルメンテーション キーをコピーします。 その方法については、「[App Insights リソースを手動で接続する](functions-monitoring.md#manually-connect-an-app-insights-resource)」を参照してください。  
+
+1. [関数アプリの設定](#function-app-settings)に関するページの説明に従って、Azure の関数アプリの設定に `APPINSIGHTS_INSTRUMENTATIONKEY` という名前のアプリ設定を追加します。 このアプリ設定には、前の手順で作成したインストルメンテーション キーが含まれています。
+
+1. Azure の関数アプリから `AzureWebJobsDashboard` のアプリ設定を削除します。これにより、組み込みログが無効になります。  
+
+詳細については、「[Azure Functions を監視する](functions-monitoring.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

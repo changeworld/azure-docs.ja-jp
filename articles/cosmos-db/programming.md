@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: andrl
-ms.openlocfilehash: 8377b13014e2f97518bbc779ee809aaa10d6eb45
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 8452f84c1358c410cd0431416a5b65a88a8b903e
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287446"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817108"
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB のサーバー側プログラミング: ストアド プロシージャ、データベース トリガー、UDF
 
@@ -31,7 +31,7 @@ Azure Cosmos DB の統合された JavaScript 言語によるトランザクシ�
 * ストアド プロシージャ、トリガー、および UDF を作成して実行するために使用できる Cosmos DB SDK はどれか。
 
 ## <a name="introduction-to-stored-procedure-and-udf-programming"></a>ストアド プロシージャと UDF プログラミングの概要
-この " *今日の T-SQL としての JavaScript (JavaScript as a modern day T-SQL)* " という手法により、アプリケーション開発者は、型システムのミスマッチとオブジェクト/リレーショナル マッピング テクノロジの複雑さから解放されます。 この手法には、リッチなアプリケーションを作成する際に有用な本質的な長所もあります。  
+この *"今日の T-SQL としての JavaScript (JavaScript as modern day T-SQL)"* という手法により、アプリケーション開発者は、型システムのミスマッチとオブジェクト/リレーショナル マッピング テクノロジの複雑さから解放されます。 この手法には、リッチなアプリケーションを作成する際に有用な本質的な長所もあります。  
 
 * **手続き型のロジック** : JavaScript は、高水準プログラミング言語として、ビジネス ロジックを表現するためのよく知られた優れたインターフェイスを提供します。 データにより近い複雑な一連の操作を実行できます。
 * **アトミックなトランザクション**: Cosmos DB では、単一のストアド プロシージャまたはトリガー内で実行されるデータベース操作がアトミックであることが保証されます。 このアトミック機能により、アプリケーションは、関連する操作を 1 つのバッチに結合できます。その結果は、すべてが成功するか、またはすべてが成功しないかのどちらかになります。 
@@ -39,7 +39,7 @@ Azure Cosmos DB の統合された JavaScript 言語によるトランザクシ�
   
   * バッチ処理 - 開発者は、挿入などの操作をグループ化してそれらを一括送信できます。 ネットワーク トラフィックの待機時間コストと、別個のトランザクションの作成に伴う格納オーバーヘッドが大幅に削減されます。 
   * プリコンパイル - Cosmos DB では、ストアド プロシージャ、トリガー、およびユーザー定義関数 (UDF) をプリコンパイルして、JavaScript の呼び出しごとのコンパイル コストを回避しています。 手続き型のロジックのバイト コードのビルドに伴うオーバーヘッドは、最小値に平均化されます。
-  * シーケンス処理 - 多くの操作では、1 つまたは複数のセカンダリ格納操作の実行を潜在的に伴う副作用 ("トリガー") が必要です。 アトミック性は別として、この操作では、サーバーに移行されたときにより高いパフォーマンスが実現されます。 
+  * シーケンス処理 – 多くの操作には、1 つまたは多数のセカンダリ格納操作の実行を潜在的に含む副作用 ("トリガー") が必要です。 アトミック性は別として、この操作では、サーバーに移行されたときにより高いパフォーマンスが実現されます。 
 * **カブセル化**: ストアド プロシージャを使用して、ビジネス ロジックを 1 か所にグループ化できます。これには 2 つ利点があります。
   * 生データの上に抽象化レイヤーが追加されるため、データ アーキテクトは、データとは独立してアプリケーションを進化させることができます。 この抽象化レイヤーは、データがスキーマを持たない場合に有益です。たとえば、アプリケーションがデータを直接処理する必要があり、アプリケーションに不確実な想定を組み込むことが必要になるような場合です。  
   * この抽象化により、企業は、スクリプトからのアクセスを合理化してデータのセキュリティを保つことができます。  
@@ -50,7 +50,7 @@ Azure Cosmos DB の統合された JavaScript 言語によるトランザクシ�
 
 ## <a name="stored-procedures"></a>ストアド プロシージャ
 ### <a name="example-write-a-stored-procedure"></a>例: ストアド プロシージャを記述する
-最初に紹介するのは、"Hello World" 応答を返す単純なストアド プロシージャです。
+"Hello World" 応答を返す単純なストアド プロシージャから始めましょう。
 
 ```javascript
 var helloWorldStoredProc = {
@@ -92,7 +92,7 @@ client.executeStoredProcedureAsync('dbs/testdb/colls/testColl/sprocs/helloWorld'
     });
 ```
 
-コンテキスト オブジェクトは、要求オブジェクトと応答オブジェクトへのアクセスに加えて、Cosmos DB ストレージに対して実行できるすべての操作へのアクセスを提供します。 ここでは、応答オブジェクトを使用して、クライアントに送り返される応答の本文を設定します。 詳細については、[Azure Cosmos DB JavaScript サーバー SDK のドキュメント](https://azure.github.io/azure-cosmosdb-js-server/)を参照してください。  
+コンテキスト オブジェクトは、要求オブジェクトと応答オブジェクトへのアクセスに加えて、Cosmos DB ストレージに対して実行できるすべての操作へのアクセスを提供します。 ここでは、応答オブジェクトを使用して、クライアントに送り返される応答の本文を設定します。 詳細については、[Azure Cosmos DB JavaScript サーバー側の API リファレンス](https://azure.github.io/azure-cosmosdb-js-server/)を参照してください。  
 
 この例をさらに拡張して、データベースに関連するいくつかの機能をこのストアド プロシージャに追加していきます。 ストアド プロシージャを使用すると、コレクション内のドキュメントと添付ファイルの作成、更新、読み取り、照会、および削除を行うことができます。    
 
@@ -243,9 +243,9 @@ client.createStoredProcedureAsync(collection._self, exchangeItemsSproc)
 ストアド プロシージャが登録されているコレクションが単一パーティション コレクションである場合、トランザクションのスコープはそのコレクション内のすべてのドキュメントになります。 コレクションがパーティション分割されている場合、ストアド プロシージャは同一のパーティション キーをトランザクション スコープとして実行されます。 このとき、各ストアド プロシージャの実行には、トランザクションを実行するスコープに対応したパーティション キー値を含める必要があります。 詳細については、[Azure Cosmos DB でのパーティション分割](partition-data.md)に関するページを参照してください。
 
 ### <a name="commit-and-rollback"></a>コミットとロールバック
-トランザクションは、Cosmos DB の JavaScript プログラミング モデルに深くネイティブに統合されています。 JavaScript 関数内では、1 つのトランザクションの下ですべての操作が自動的にラップされます。 例外が発生することなく JavaScript が完了すると、データベースに対する操作がコミットされます。 Cosmos DB では、実質的に、リレーショナル データベースの BEGIN TRANSACTION ステートメントと COMMIT TRANSACTION ステートメントは暗黙的です。  
+トランザクションは、Cosmos DB の JavaScript プログラミング モデルに深くネイティブに統合されています。 JavaScript 関数内では、1 つのトランザクションの下ですべての操作が自動的にラップされます。 例外が発生することなく JavaScript が完了すると、データベースに対する操作がコミットされます。 事実上、Cosmos DB では、リレーショナル データベース内の "BEGIN TRANSACTION" および "COMMIT TRANSACTION" ステートメントは暗黙的です。  
 
-スクリプトから反映された例外がある場合、Cosmos DB の JavaScript ランタイムにより、トランザクション全体がロール バックされます。 前の例に示されているように、Cosmos DB で例外をスローすることは、ROLLBACK TRANSACTION と事実上同じです。
+スクリプトから反映された例外がある場合、Cosmos DB の JavaScript ランタイムにより、トランザクション全体がロール バックされます。 前の例に示されているように、Cosmos DB では、例外のスローは実質的に "ROLLBACK TRANSACTION" と同等です。
 
 ### <a name="data-consistency"></a>データの一貫性
 ストアド プロシージャとトリガーは、常に Azure Cosmos DB コンテナーのプライマリ レプリカ上で実行されます。 これにより、ストアド プロシージャ内からの読み取りで強固な一貫性が保証されます。 ユーザー定義関数を使用したクエリはプライマリ レプリカまたは任意のセカンダリ レプリカ上で実行できますが、ここでは適切なレプリカを選択することで、要求された一貫性レベルが満たされるようにしています。
@@ -503,7 +503,7 @@ client.createUserDefinedFunctionAsync('dbs/testdb/colls/testColl', taxUdf)
 ```
 
 ## <a name="javascript-language-integrated-query-api"></a>JavaScript 統合言語クエリ API
-Azure Cosmos DB の SQL 文法でクエリを発行するほか、サーバー側の SDK では、SQL の知識がなくても、流れるような JavaScript インターフェイスで最適化されたクエリを実行できます。 JavaScript クエリ API では、述語関数を連鎖可能な関数の呼び出しに渡すことでクエリをプログラミングできます。構文は ECMAScript5 のアレイ ビルトインや Lodash のような人気の JavaScript ライブラリでおなじみのものです。 クエリは JavaScript ランタイムで解析され、Azure Cosmos DB のインデックスで効率的に実行されます。
+Azure Cosmos DB の SQL 文法を使用してクエリを発行することに加えて、[サーバー側の SDK](https://azure.github.io/azure-cosmosdb-js-server/) では、SQL の知識がまったくなくても fluent JavaScript インターフェイスを使用して最適化されたクエリを実行できます。 JavaScript クエリ API では、述語関数を連鎖可能な関数の呼び出しに渡すことでクエリをプログラミングできます。構文は ECMAScript5 のアレイ ビルトインや Lodash のような人気の JavaScript ライブラリでおなじみのものです。 クエリは JavaScript ランタイムで解析され、Azure Cosmos DB のインデックスで効率的に実行されます。
 
 > [!NOTE]
 > `__` (二重下線) は `getContext().getCollection()` のエイリアスです。
@@ -831,9 +831,8 @@ foreach (Book book in client.CreateDocumentQuery(UriFactory.CreateDocumentCollec
 
 次のようなリファレンスとリソースでも、Azure Cosmos DB のサーバー側プログラミングについて詳しく学ぶことができます。
 
-* [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
+* [Azure Cosmos DB JavaScript サーバー側の API リファレンス](https://azure.github.io/azure-cosmosdb-js-server/)
 * [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
-* [JSON](http://www.json.org/) 
 * [JavaScript ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
 * [セキュリティで保護されたポータブル型データベースの機能拡張](http://dl.acm.org/citation.cfm?id=276339) 
 * [サービス指向データベース アーキテクチャ](http://dl.acm.org/citation.cfm?id=1066267&coll=Portal&dl=GUIDE) 

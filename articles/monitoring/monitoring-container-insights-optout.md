@@ -12,26 +12,43 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/13/2018
+ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 2b989fbebe237e4e3746ef2f237193587173dfe4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7cd2aecf21a86bb58452e48fcdf1d79f1d3a2104
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963408"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321225"
 ---
-# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-azure-monitor-for-containers"></a>コンテナー用の Azure Monitor で Azure Kubernetes Service (AKS) の監視を停止する方法
+# <a name="how-to-stop-monitoring-your-azure-kubernetes-service-aks-with-azure-monitor-for-containers"></a>コンテナー用の Azure Monitor で Azure Kubernetes Service (AKS) の監視を停止する方法
 
-AKS クラスターの監視を有効にした後、監視が必要なくなった場合は、提供されている Azure Resource Manager テンプレートと PowerShell コマンドレット **New-AzureRmResourceGroupDeployment** または Azure CLI を使用して*オプト アウト* できます。 1 つの JSON テンプレートでは、*オプト アウト*する構成が指定されます。もう 1 つのテンプレートには、AKS クラスター リソース ID およびリソース グループ (クラスターがデプロイされる) を指定するために構成するパラメーター値が含まれています。 
+AKS クラスターの監視を有効にした後、それ以上監視する必要がないと判断した場合は、"*オプトアウト*" できます。この記事では、Azure CLI を使用して、または提供されている Azure Resource Manager テンプレートで、これを行う方法を示します。  
+
+
+## <a name="azure-cli"></a>Azure CLI
+コンテナーに対して Azure Monitor を無効にするには、[az aks disable-addons](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-disable-addons) コマンドを使用します。 このコマンドでは、クラスター ノードからエージェントが削除されます。ソリューションや、既に収集されて Log Analytics リソースに格納されているデータは削除されません。  
+
+```azurecli
+az aks disable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG
+```
+
+クラスターの監視を再度有効にする方法については、「[Azure CLI を使用して監視を有効にする](monitoring-container-insights-onboard.md#enable-monitoring-using-azure-cli)」をご覧ください。
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
+リソース グループ内のソリューション リソースの一貫した反復的な削除をサポートするため、2 つの Azure Resource Manager テンプレートが提供されています。 1 つは "*オプトアウト*" する構成を指定する JSON テンプレートであり、もう 1 つにはクラスターが展開されている AKS クラスター リソース ID とリソース グループを指定するために構成するパラメーター値が含まれます。 
 
 テンプレートを使用するリソースのデプロイの概念について馴染みがない場合は、以下を参照してください。
 * [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
 * [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-cli.md)
 
+>[!NOTE]
+>テンプレートはクラスターと同じリソース グループ内に展開する必要があります。
+>
+
 Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
 
-## <a name="create-template"></a>テンプレートの作成
+### <a name="create-template"></a>テンプレートの作成
 
 1. 以下の JSON 構文をコピーして、ファイルに貼り付けます。
 
@@ -101,7 +118,7 @@ Azure CLI を使用する場合は、まず、ローカルに CLI をインス�
 5. このファイルを **OptOutParam.json** という名前でローカル フォルダーに保存します。
 6. これでこのテンプレートをデプロイする準備が整いました。 
 
-## <a name="remove-the-solution-using-azure-cli"></a>Azure CLI を使用してソリューションを削除する
+### <a name="remove-the-solution-using-azure-cli"></a>Azure CLI を使用してソリューションを削除する
 Linux 上で Azure CLI を使用して次のコマンドを実行してソリューションを削除し、AKS クラスターの構成をクリーンアップします。
 
 ```azurecli
@@ -116,7 +133,7 @@ az group deployment create --resource-group <ResourceGroupName> --template-file 
 ProvisioningState       : Succeeded
 ```
 
-## <a name="remove-the-solution-using-powershell"></a>PowerShell を使用してソリューションを削除する
+### <a name="remove-the-solution-using-powershell"></a>PowerShell を使用してソリューションを削除する
 
 テンプレートが保存されているフォルダーで次の PowerShell コマンドを実行してソリューションを削除し、AKS クラスターから構成をクリーンアップします。    
 

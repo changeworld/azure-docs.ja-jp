@@ -1,78 +1,70 @@
 ---
-title: Azure Portal で Cognitive Services APIs アカウントを作成する | Microsoft Docs
-description: Azure Portal で Microsoft Cognitive Services APIs アカウントを作成する方法。
+title: Azure Portal で Cognitive Services API アカウントを作成する
+titlesuffix: Azure Cognitive Services
+description: Azure Portal で Microsoft Cognitive Services API アカウントを作成する方法。
 services: cognitive-services
-documentationcenter: ''
 author: garyericson
 manager: cgronlun
-editor: ''
-ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: cognitive-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: garye
-ms.reviewer: gibattag
-ms.openlocfilehash: ed5f19b23375ecb83e19274c7405e9a1208a7985
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 37f53303a3b0c224c1286fb488a796fd5cdee0e5
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036155"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386418"
 ---
-# <a name="create-a-cognitive-services-apis-account-in-the-azure-portal"></a>Azure Portal で Cognitive Services APIs アカウントを作成する
+# <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>クイック スタート: Azure portal で Cognitive Services アカウントを作成する
 
-Microsoft Cognitive Service API を使用するには、まず、Azure Portal でアカウントを作成する必要があります。
+このクイック スタートを使用して、Azure Cognitive Services の使用を開始します。 これらのサービスは Azure [リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)によって表され、利用できる多数の Cognitive Services API の中の 1 つまたは複数の API に接続できます。
 
-1. [Azure ポータル](http://portal.azure.com)にサインインします。
+## <a name="prerequisites"></a>前提条件
 
-2. **[+ リソースの作成]** をクリックします。
+* 有効な Azure サブスクリプション。 無料で[アカウントを作成](https://azure.microsoft.com/free/)できます。
 
-3. Azure Marketplace で、**[AI + Cognitive Services]** を選択し、使用可能な API の一覧を探します。 Cognitive Services APIs の完全な一覧を表示するには、**[すべて表示]** をクリックします。 選択する API をクリックして、先に進みます。
+## <a name="create-and-subscribe-to-an-azure-cognitive-services-resource"></a>Azure Cognitive Services リソースを作成してサブスクライブする
 
-    ![Cognitive Services APIs の選択](media/cognitive-services-apis-create-account/select-cognitive-services-apis.png)
+1. [Azure portal](http://portal.azure.com) にサインインし、**[+リソースの作成]** をクリックします。
+    
+    ![Cognitive Services API の選択](media/cognitive-services-apis-create-account/azurePortalScreen.png)
 
-4. **[作成]** ページで、次の情報を指定します。
+2. [Azure Marketplace] で **[AI + 機械学習]** を選択します。 関心があるサービスが見つからない場合は、**[すべて]** をクリックして、Cognitive Services API のカタログ全体を表示します。
 
-   - **アカウント名:** アカウントの名前。 わかりやすい名前を使用することをお勧します (*AFaceAPIAccount* など)。
+    ![Cognitive Services API の選択](media/cognitive-services-apis-create-account/azureMarketplace.png)
 
-   - **サブスクリプション:** 使用可能な Azure サブスクリプションの中から、少なくとも共同作業者アクセス許可を持っているサブスクリプションを選択します。
+3. **[作成]** ページで、次の情報を指定します。
 
-   - **API の種類:** 使用する Cognitive Services API を選択します。 使用できるさまざまな Cognitive Services APIs の詳細については、[Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) サイトを参照してください。
+    |    |    |
+    |--|--|
+    | **名前** | Cognitive Sservices リソースのわかりやすい名前。 わかりやすい名前を使用することをお勧します (*MyNameFaceAPIAccount* など)。 |
+    | **サブスクリプション** | 使用できる Azure サブスクリプションのいずれかを選択します。 |
+    | **場所** | Cognitive Services インスタンスの場所。 別の場所を選択すると待機時間が生じる可能性がありますが、リソースのランタイムの可用性には影響しません。 |
+    | **価格レベル** | Cognitive Services アカウントのコストは、選択しているオプションと使用量によって異なります。 詳細については、「[API の価格の詳細](https://azure.microsoft.com/pricing/details/cognitive-services/)」をご覧ください。
+    | **リソース グループ** | Cognitive Services リソースを含む [Azure リソース グループ](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group)。 新しいグループを作成することも、既存のグループに追加することもできます。 |
 
-   - **価格レベル:** Cognitive Services アカウントのコストは、実際の使用量と選択しているオプションによって異なります。 各 API の価格の詳細については、[価格ページ](https://azure.microsoft.com/pricing/details/cognitive-services/)を参照してください。
+    ![リソース作成画面](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-   - **リソース グループ :** リソース グループとは、同じライフサイクル、アクセス許可、ポリシーを共有するリソースの集まりです。 リソース グループの詳細については、「[ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)」を参照してください。
+## <a name="access-your-resource"></a>リソースにアクセスする 
 
-   - **リソース グループの場所:** これは、選択されている API がグローバルである (特定の場所にバインドされていない) 場合にのみ必要です。 API がグローバルであり、特定の場所にバインドされていない場合は、Cognitive Services API アカウントに関連付けられたメタデータが配置されるリソース グループの場所を指定する必要があります。 この場所は、アカウントの実行時の可用性には影響しません。 リソース グループの詳細については、「[ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)」を参照してください。
+> [!NOTE]
+> サブスクリプションの所有者は、リソース グループとサブスクリプション用の Cognitive Services アカウントの作成を無効にすることができます。これを行うには、[Azure ポリシー](https://docs.microsoft.com/azure/governance/policy/overview#policy-definition)を適用し、[許可されていないリソースの種類] ポリシー定義を割り当て、ターゲットのリソースの種類として **Microsoft.CognitiveServices/accounts** を指定します。
 
-   - **オンライン サービスの使用条件の明確な承認:** アカウントを作成するには、サブスクリプションの所有者または共同作成者 ([Azure のロールベースのアクセス制御によって定義されます](https://docs.microsoft.com/azure/role-based-access-control/overview)) が、[オンラインサービスの利用条件](https://www.microsoft.com/en-us/Licensing/product-licensing/products.aspx)の Cognitive Services に適用される条件を明確に承認する必要があります。 
+リソースを作成した後、Azure ダッシュ ボードにピン留めした場合は、そこからアクセスできます。 それ以外の場合は、**[リソース グループ]** 内で検索できます。
 
-     サブスクリプションの所有者は、特定のリソース グループまたはサブスクリプション用の Cognitive Services アカウントの作成を、[Azure ポリシー](../azure-policy/azure-policy-introduction.md)を通して無効にすることができます。これを行うには、[Azure Portal を使用したリソース ポリシーの割り当てと管理](../azure-policy/assign-policy-definition.md)に関する記事に従って、[許可されていないリソースの種類] ポリシー定義を割り当て、**Microsoft.CognitiveServices/accounts** をターゲットのリソース タイプとして指定します。
+Cognitive Services リソースの中で、**[概要]** セクションのエンドポイント URL とキーを使用して、アプリケーションでの API の呼び出しを開始できます。
 
-     アカウントの作成が無効になっている場合は、アカウントの作成時に次のエラーが表示されます。
+![リソース画面](media/cognitive-services-apis-create-account/resourceScreen.png)
 
-     ![アカウント作成エラー](media/cognitive-services-apis-create-account/error-message.png)
+## <a name="next-steps"></a>次の手順
 
-5. Azure Portal ダッシュボードにアカウントをピン留めするには、**[ダッシュボードにピン留めする]** をクリックします。
+> [!div class="nextstepaction"]
+> [Computer Vision API の C# のチュートリアル](https://docs.microsoft.com/azure/cognitive-services/computer-vision/tutorials/csharptutorial)
 
-6. **[作成]** をクリックしてアカウントを作成します。
+## <a name="see-also"></a>関連項目
 
-Cognitive Services アカウントが正常にデプロイされたら、ダッシュボードのタイルをクリックしてアカウント情報を表示します。
-
-**[概要]** セクションの **[エンドポイント URL]** と **[キー]** セクションのキーを使用して、アプリケーションでの API の呼び出しを開始できます。
-
-![アカウント情報の表示](media/cognitive-services-apis-create-account/display-account.png)
-
-![アカウント キーの表示](media/cognitive-services-apis-create-account/account-keys.png)
-
-### <a name="next-steps"></a>次の手順
-
-使用できるすべての Microsoft Cognitive Services の詳細については、「[Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)」を参照してください。
-
-サンプルの Cognitive Services APIs を使用するためのクイック スタート ガイドについては、以下を参照してください。
-
- - [Computer Vision C# クイック スタート](computer-vision/quickstarts/csharp.md)
- - [Text Analytics と Python](text-analytics/quickstarts/python.md)
- - [Face API と JavaScript](face/quickstarts/javascript.md)
+* [クイック スタート: 画像から手書きのテキストを抽出する](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)
+* [チュートリアル: 画像の中にある顔を検出してフレームに収めるアプリを作成する](https://docs.microsoft.com/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial)
+* [カスタム検索 Web ページを作成する](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page)
+* [Bot Framework を使用して Language Understanding (LUIS) とボットを統合する ](https://docs.microsoft.com/azure/cognitive-services/luis/luis-nodejs-tutorial-build-bot-framework-sample)

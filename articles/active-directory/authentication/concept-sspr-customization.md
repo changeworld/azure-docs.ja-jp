@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 69f6ed7814feacbd5adf60325aae123d388ffb61
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: f523e2e2d55a34825bbb76a5a879c7c046b6b554
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222790"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318964"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットのための Azure AD 機能のカスタマイズ
 
@@ -55,7 +55,9 @@ Active Directory Federation Services (AD FS) 管理者は、[サインイン ペ
 
 AD FS サインイン ページにリンクを追加するには、AD FS サーバーで次のコマンドを使用します。 ユーザーは、このページを使用して、SSPR ワークフローを入力できます。
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>" ```
+``` powershell
+Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>"
+```
 
 ## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>サインイン ページとアクセス パネルの外観のカスタマイズ
 
@@ -65,8 +67,8 @@ AD FS サインイン ページにリンクを追加するには、AD FS サー�
 
 * ユーザーが自分のユーザー名を入力した後
 * ユーザーがカスタマイズされた URL にアクセスした場合:
-    * パスワード リセット ページに *whr* パラメーターを渡した場合 (例:"https://login.microsoftonline.com/?whr=contoso.com")
-    * パスワード リセット ページに *username* パラメーターを渡した場合 (例:"https://login.microsoftonline.com/?username=admin@contoso.com")
+    * パスワード リセット ページに `whr` パラメーターを渡した場合 (例: "https://login.microsoftonline.com/?whr=contoso.com")
+    * パスワード リセット ページに `username` パラメーターを渡した場合 (例: "https://login.microsoftonline.com/?username=admin@contoso.com")
 
 会社のブランドを構成する方法の詳細については、[Azure AD のサインイン ページへの会社のブランドの追加](../fundamentals/customize-branding.md)に関する記事を参照してください。
 
@@ -83,7 +85,7 @@ AD FS サインイン ページにリンクを追加するには、AD FS サー�
 * [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
 * [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)

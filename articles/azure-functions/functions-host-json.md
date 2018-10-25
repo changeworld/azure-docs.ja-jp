@@ -8,24 +8,98 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 11bf136897b5d5b8140fc7ff1bb259c657a71921
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 704a41ec840e2a252a1bbb5c20688f722bd0cdfd
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092192"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887038"
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Azure Functions の host.json のリファレンス
 
 *host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、使用できる設定の一覧を紹介します。 JSON スキーマは、 http://json.schemastore.org/host にあります。
 
-[アプリ設定](functions-app-settings.md)と [local.settings.json](functions-run-local.md#local-settings-file) ファイルには、他のグローバル構成オプションがあります。
+> [!NOTE]
+> Azure Functions ランタイムのバージョン v1 と v2 の間では、*host.json* に大きな違いがあります。 v2 ランタイムを対象とする関数アプリでは、`"version": "2.0"` が必要です。
+
+関数アプリの他の構成オプションは、[アプリの設定](functions-app-settings.md)で管理されます。
+
+host.json の一部の設定は、[local.settings.json](functions-run-local.md#local-settings-file) ファイルでローカルに実行するときにのみ使用されます。
 
 ## <a name="sample-hostjson-file"></a>サンプル host.json ファイル
 
 次のサンプル *host.json* ファイルには、すべての使用できるオプションが指定されています。
+
+### <a name="version-2x"></a>バージョン 2.x
+
+```json
+{
+    "version": "2.0",
+    "aggregator": {
+        "batchSize": 1000,
+        "flushTimeout": "00:00:30"
+    },
+    "extensions": {
+        "eventHubs": {
+          "maxBatchSize": 64,
+          "prefetchCount": 256,
+          "batchCheckpointFrequency": 1
+        },
+        "http": {
+            "routePrefix": "api",
+            "maxConcurrentRequests": 100,
+            "maxOutstandingRequests": 30
+        },
+        "queues": {
+            "visibilityTimeout": "00:00:10",
+            "maxDequeueCount": 3
+        },
+        "sendGrid": {
+            "from": "Azure Functions <samples@functions.com>"
+        },
+        "serviceBus": {
+          "maxConcurrentCalls": 16,
+          "prefetchCount": 100,
+          "autoRenewTimeout": "00:05:00"
+        }
+    },
+    "functions": [ "QueueProcessor", "GitHubWebHook" ],
+    "functionTimeout": "00:05:00",
+    "healthMonitor": {
+        "enabled": true,
+        "healthCheckInterval": "00:00:10",
+        "healthCheckWindow": "00:02:00",
+        "healthCheckThreshold": 6,
+        "counterThreshold": 0.80
+    },
+    "id": "9f4ea53c5136457d883d685e57164f08",
+    "logging": {
+        "fileLoggingMode": "debugOnly",
+        "logLevel": {
+          "Function.MyFunction": "Information",
+          "default": "None"
+        },
+        "applicationInsights": {
+            "sampling": {
+              "isEnabled": true,
+              "maxTelemetryItemsPerSecond" : 5
+            }
+        }
+    },
+    "singleton": {
+      "lockPeriod": "00:00:15",
+      "listenerLockPeriod": "00:01:00",
+      "listenerLockRecoveryPollingInterval": "00:01:00",
+      "lockAcquisitionTimeout": "00:01:00",
+      "lockAcquisitionPollingInterval": "00:00:03"
+    },
+    "watchDirectories": [ "Shared", "Test" ]
+}
+```
+
+### <a name="version-1x"></a>バージョン 1.x
 
 ```json
 {
@@ -121,7 +195,7 @@ ms.locfileid: "44092192"
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-[Application Insights のサンプリング機能](functions-monitoring.md#configure-sampling)を制御します。
+[Application Insights のサンプリング機能](functions-monitoring.md#configure-sampling)を制御します。 バージョン 2.x では、この設定は [logging](#log) の子です。
 
 ```json
 {
@@ -187,13 +261,19 @@ ms.locfileid: "44092192"
 
 ## <a name="eventhub"></a>eventHub
 
-[Event Hub トリガーとバインディング](functions-bindings-event-hubs.md)の構成設定。
+[Event Hub トリガーとバインディング](functions-bindings-event-hubs.md)の構成設定。 バージョン 2.x では、これは [extensions](#extensions) の子です。
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
+## <a name="extensions"></a>拡張機能
+
+*Version 2.x のみ。*
+
+バインド固有の設定 ([http](#http) や [eventHub](#eventhub) など) をすべて含むオブジェクトを返すプロパティ。
+
 ## <a name="functions"></a>functions
 
-ジョブのホストが実行される関数の一覧。 空の配列は、すべての関数を実行することを示します。 [ローカルで実行する](functions-run-local.md)場合にのみ使用します。 関数アプリでは、*function.json* の `disabled` プロパティを使用します。*host.json* のこのプロパティは使用しません。
+ジョブのホストが実行される関数の一覧。 空の配列は、すべての関数を実行することを示します。 [ローカルで実行する](functions-run-local.md)場合にのみ使用します。 Azure の関数アプリでは、この設定を使用する代わりに、「[Azure Functions で関数を無効にする方法](disable-function.md)」の手順に従って、特定の関数を無効にする必要があります。
 
 ```json
 {
@@ -203,7 +283,7 @@ ms.locfileid: "44092192"
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-すべての関数のタイムアウト期間を示します。 従量課金プランの有効な範囲は 1 秒から 10 分であり、既定値は 5 分です。 App Service プランに制限はありません。既定値は null です (タイムアウトなしを示します)。
+すべての関数のタイムアウト期間を示します。 サーバーレス従量課金プランの有効な範囲は 1 秒から 10 分であり、既定値は 5 分です。 App Service プランでは、全体的な制限はなく、既定値はランタイムのバージョンによって異なります。 バージョン 2.x では、App Service プランの既定値は 30 分です。 バージョンでは 1.x では *null* であり、タイムアウトしないことを示します。
 
 ```json
 {
@@ -229,7 +309,7 @@ ms.locfileid: "44092192"
 
 |プロパティ  |既定値 | 説明 |
 |---------|---------|---------| 
-|enabled|true|機能が有効になっているかどうか。 | 
+|enabled|true|機能が有効かどうかを指定します。 | 
 |healthCheckInterval|10 秒|定期的なバック グラウンドでの正常性チェックの間隔。 | 
 |healthCheckWindow|2 分|`healthCheckThreshold` 設定と組み合わせて使用するスライド時間枠。| 
 |healthCheckThreshold|6|正常性チェックの最大失敗回数。この回数を超えると、ホスト リサイクルが開始されます。| 
@@ -237,16 +317,17 @@ ms.locfileid: "44092192"
 
 ## <a name="http"></a>http
 
-[http トリガーとバインディング](functions-bindings-http-webhook.md)の構成設定。
+[http トリガーとバインディング](functions-bindings-http-webhook.md)の構成設定。 バージョン 2.x では、これは [extensions](#extensions) の子です。
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
 ## <a name="id"></a>id
 
-ジョブ ホストの一意の ID。 ダッシュを削除した小文字の GUID を指定できます。 ローカルで実行しているときに必要です。 Azure Functions で実行する場合、`id` を省略すると、ID は自動的に生成されます。
+*バージョン 1.x のみ。*
+
+ジョブ ホストの一意の ID。 ダッシュを削除した小文字の GUID を指定できます。 ローカルで実行しているときに必要です。 Azure で実行するときは、ID 値を設定しないことをお勧めします。 `id` を省略すると、ID は Azure で自動的に生成されます。 バージョン 2.x ランタイムを使用している場合は、カスタム関数アプリ ID を設定できません。
 
 ストレージ アカウントを複数の関数アプリで共有している場合は、各関数アプリの `id` がそれぞれ異なることを確認してください。 `id` プロパティは省略することができます。あるいは、各関数アプリの `id` を手動でそれぞれ異なる値に設定することもできます。 1 つの関数アプリが複数のインスタンスにスケール アウトする場合、タイマー インスタンスが 1 しか存在しないようにするために、タイマー トリガーではストレージ ロックが使用されます。 2 つの関数アプリが同じ `id` を共有していて、それぞれタイマー トリガーを使用している場合は、1 つのタイマーのみが実行されます。
-
 
 ```json
 {
@@ -255,6 +336,8 @@ ms.locfileid: "44092192"
 ```
 
 ## <a name="logger"></a>logger
+
+*バージョン 1.x のみ。バージョン 2.x の場合は [logging](#logging) を使用します。*
 
 [ILogger object](functions-monitoring.md#write-logs-in-c-functions) から出力されたログまたは [context.log](functions-monitoring.md#write-logs-in-javascript-functions) ログのフィルターを制御します。
 
@@ -279,15 +362,40 @@ ms.locfileid: "44092192"
 |defaultLevel|情報|`categoryLevels` 配列に指定されていないカテゴリの場合、このレベル以上のログを Application Insights に送信します。| 
 |categoryLevels|該当なし|各カテゴリの Application Insights に送信される最小ログ レベルを指定するカテゴリの配列。 ここで指定されるカテゴリは、同じ値で始まるすべてのカテゴリを制御し、長い値の方が優先されます。 前述のサンプル *host.json* ファイルでは、`Information` レベルの "Host.Aggregator" で始まるすべてのカテゴリ。 `Error` レベルのログである、"Host.Executor" など "Host" で始まるその他すべてのカテゴリ。| 
 
+## <a name="logging"></a>logging
+
+*バージョン 2.x のみ。バージョン 1.x の場合は [logger](#logger) を使用します。*
+
+Application Insights など、関数アプリのログの動作を制御します。
+
+```json
+"logging": {
+    "fileLoggingMode": "debugOnly",
+    "logLevel": {
+      "Function.MyFunction": "Information",
+      "default": "None"
+    },
+    "applicationInsights": {
+        ...
+    }
+}
+```
+
+|プロパティ  |既定値 | 説明 |
+|---------|---------|---------|
+|fileLoggingMode|情報|このレベル以上のログを Application Insights に送信します。 |
+|logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 これにより、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
+|applicationInsights|該当なし| [applicationInsights](#applicationinsights) の設定。 |
+
 ## <a name="queues"></a>queues
 
-[Storage キュー トリガーとバインディング](functions-bindings-storage-queue.md)の構成設定。
+[Storage キュー トリガーとバインディング](functions-bindings-storage-queue.md)の構成設定。 バージョン 2.x では、これは [extensions](#extensions) の子です。
 
 [!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
 
 ## <a name="servicebus"></a>serviceBus
 
-[Service Bus トリガーとバインディング](functions-bindings-service-bus.md)の構成設定。
+[Service Bus トリガーとバインディング](functions-bindings-service-bus.md)の構成設定。 バージョン 2.x では、これは [extensions](#extensions) の子です。
 
 [!INCLUDE [functions-host-json-service-bus](../../includes/functions-host-json-service-bus.md)]
 
@@ -317,7 +425,9 @@ ms.locfileid: "44092192"
 
 ## <a name="tracing"></a>tracing
 
-`TraceWriter` オブジェクトを使用して作成するログの構成設定。 [C# のログの記録](functions-reference-csharp.md#logging)と [Node.js のログの記録](functions-reference-node.md#writing-trace-output-to-the-console)に関するページを参照してください。 
+*バージョン 1.x*
+
+`TraceWriter` オブジェクトを使用して作成するログの構成設定。 [C# のログの記録](functions-reference-csharp.md#logging)と [Node.js のログの記録](functions-reference-node.md#writing-trace-output-to-the-console)に関するページを参照してください。 バージョン 2.x では、すべてのログ動作は [logging](#logging) によって制御されます。
 
 ```json
 {
@@ -332,6 +442,12 @@ ms.locfileid: "44092192"
 |---------|---------|---------| 
 |consoleLevel|info|コンソール ログのトレース レベル。 オプションは、`off`、`error`、`warning`、`info`、および `verbose` です。|
 |fileLoggingMode|debugOnly|ファイルのログ記録のトレース レベル。 オプションは、`never`、`always`、`debugOnly` です。| 
+
+## <a name="version"></a>version
+
+*バージョン 2.x*
+
+v2 ランタイムを対象とする関数アプリでは、バージョン文字列 `"version": "2.0"` が必要です。
 
 ## <a name="watchdirectories"></a>watchDirectories
 

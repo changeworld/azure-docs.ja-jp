@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: d94aaa93596a18cf92b745267a6be9966454e36f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1b9f1f1ff5e0a2a178b5a0b2a09f5513bf508b3f
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971551"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079176"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 プロトコル: OAuth 2.0 承認コード フロー
 
@@ -178,8 +178,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | expires_in    | アクセス トークンの有効期間 (秒)。                                                                                                                                                                                                                                                                                                                                                                                                       |
 | scope         | access_token が有効である範囲。                                                                                                                                                                                                                                                                                                                                                                                                         |
 | refresh_token | OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得します。 Refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。 アクセス トークンの更新の詳細については、[後述のセクション](#refresh-the-access-token)を参照してください。 <br> **注:** `offline_access` スコープが要求された場合のみ提供されます。                                               |
-| id_token      | 無署名の JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
+| id_token      | JSON Web トークン (JWT)。 アプリは、このトークンのセグメントをデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。 id_token の詳細については、[`id_token reference`](id-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
+
 #### <a name="error-response"></a>エラー応答
+
 エラー応答は次のようになります。
 
 ```json
@@ -234,7 +236,9 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 
 ## <a name="refresh-the-access-token"></a>アクセス トークンを更新する
 
-アクセス トークンは有効期間が短く、期限が切れた後もリソースにアクセスし続けるためにはトークンを更新する必要があります。 アクセス トークンを更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。このとき、`code` の代わりに `refresh_token` を指定します。
+アクセス トークンは有効期間が短く、期限が切れた後もリソースにアクセスし続けるためにはトークンを更新する必要があります。 アクセス トークンを更新するには、もう一度 `POST` 要求を `/token` エンドポイントに送信します。このとき、`code` の代わりに `refresh_token` を指定します。  更新トークンは、クライアントが既に同意を受け取っているすべてのアクセス許可に対して有効です。そのため、`scope=mail.read` に対する要求で発行された更新トークンを使用して、`scope=api://contoso.com/api/UseResource` に対する新しいアクセス トークンを要求できます。  
+
+更新トークンには、指定された有効期間はありません。 通常、更新トークンの有効期間は比較的長いです。 ただし、場合によっては、更新トークンの有効期限が切れる、失効する、または目的の操作のための十分な特権がないことがあります。 クライアント アプリケーションは、[トークン発行エンドポイントから返されるエラー](#error-codes-for-token-endpoint-errors)を予期して正しく処理する必要があります。 
 
 ```
 // Line breaks for legibility only

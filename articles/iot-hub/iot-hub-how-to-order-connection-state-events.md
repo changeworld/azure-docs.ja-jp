@@ -2,22 +2,17 @@
 title: Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける | Microsoft Docs
 description: この記事では、Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントの順序付けと記録を行って、最新の接続状態を管理する方法について説明します
 services: iot-hub
-documentationcenter: ''
-author: ash2017
-manager: briz
-editor: ''
 ms.service: iot-hub
+author: ash2017
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: dd3c750e93646624e46c46afd871ef75af905bf0
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 02fc47200157b813da4d0031effa39633719855d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43145578"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340207"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Azure IoT Hub から Azure Cosmos DB を使用してデバイス接続イベントを順序付ける
 
@@ -28,8 +23,11 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 ## <a name="prerequisites"></a>前提条件
 
 * アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、[無料アカウントを作成する](http://azure.microsoft.com/pricing/free-trial/)ことができます。
+
 * アクティブな Azure Cosmos DB SQL API アカウント。 まだ作成していない場合は、「[データベース アカウントの作成](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#create-a-database-account)」の手順を参照してください。
+
 * データベース内のコレクション。 「[コレクションの追加](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet#add-a-collection)」の手順を参照してください。
+
 * Azure の IoT Hub。 まだ作成していない場合は、「[IoT Hub の概要](../iot-hub/iot-hub-csharp-csharp-getstarted.md)」のチュートリアルをご覧ください。 
 
 ## <a name="create-a-stored-procedure"></a>ストアド プロシージャを作成する
@@ -144,7 +142,8 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
    ![ロジック アプリを作成する](./media/iot-hub-how-to-order-connection-state-events/select-logic-app.png)
 
 2. ロジック アプリにサブスクリプション内で一意の名前を指定し、IoT Hub と同じサブスクリプション、リソース グループ、場所を選びます。 
-3. 準備ができたら、**[ダッシュボードにピン留めする]**、**[作成]** の順に選択します。
+
+3. **[ダッシュボードにピン留めする]**、**[作成]** の順に選択します。
 
    これで、ロジック アプリの Azure リソースが作成されました。 Azure によってロジック アプリがデプロイされたら、すばやく開始できるように Logic Apps デザイナーによって一般的なパターンのテンプレートが表示されます。
 
@@ -158,13 +157,14 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 トリガーは、ロジック アプリを開始する特定のイベントです。 このチュートリアルでは、ワークフローを開始するトリガーは、HTTP 経由での要求の受信です。  
 
 1. コネクタとトリガーの検索バーに、「**HTTP**」と入力します。
+
 2. トリガーとして **[要求 - HTTP 要求の受信時]** を選びます。 
 
    ![HTTP 要求トリガーを選ぶ](./media/iot-hub-how-to-order-connection-state-events/http-request-trigger.png)
 
 3. **[サンプルのペイロードを使用してスキーマを生成する]** を選びます。 
 
-   ![HTTP 要求トリガーを選ぶ](./media/iot-hub-how-to-order-connection-state-events/sample-payload.png)
+   ![サンプルのペイロードを使用してスキーマを生成する](./media/iot-hub-how-to-order-connection-state-events/sample-payload.png)
 
 4. 次のサンプル JSON コードをテキスト ボックスに貼り付けて、**[完了]** を選びます。
 
@@ -194,11 +194,12 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 
 ### <a name="create-a-condition"></a>条件を作成する
 
-条件は、ロジック アプリのワークフロー内で特定の条件を満たした後に特定のアクションを実行するのに役立ちます。 条件が満たされると、目的の動作を定義することができます。 このチュートリアルでは、eventType がデバイス接続とデバイス切断のどちらであるかを調べる条件を設定します。 アクションでは、データベース内のストアド プロシージャを実行します。 
+ロジック アプリのワークフロー内では、条件は特定の条件を満たした後に特定のアクションを実行するのに役立ちます。 条件が満たされると、目的の動作を定義することができます。 このチュートリアルでは、eventType がデバイス接続とデバイス切断のどちらであるかを調べる条件を設定します。 アクションでは、データベース内のストアド プロシージャを実行します。 
 
 1. **[新しいステップ]**、**[ビルトイン]**、**[条件]** を選択します。 
 
 2. デバイス接続イベントとデバイス切断イベントに対してのみ実行されるようにするために、次のように条件を入力します。
+
   * 次の値を選択します: **eventType**
   * [次の値に等しい] を **[次の文字で終了する]** に変更します
   * 次の値を選択します: **nected**
@@ -224,6 +225,7 @@ Azure Event Grid を使用すると、イベント ベースのアプリケー�
 Logic Apps デザイナーを終了する前に、ロジック アプリがトリガーをリッスンする URL をコピーします。 この URL を使って、Event Grid を構成します。 
 
 1. **[HTTP 要求の受信時]** トリガー構成ボックスをクリックして展開します。 
+
 2. **[HTTP POST の URL]** の横にあるコピー ボタンを選んで値をコピーします。 
 
    ![HTTP POST の URL をコピーする](./media/iot-hub-how-to-order-connection-state-events/copy-url.png)
@@ -235,6 +237,7 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 このセクションでは、発生したらイベントを発行するように IoT Hub を構成します。 
 
 1. Azure Portal で、お使いの IoT ハブに移動します。 
+
 2. **イベント**を選択します。
 
    ![Event Grid の詳細を表示する](./media/iot-hub-how-to-order-connection-state-events/event-grid.png)
@@ -244,26 +247,34 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
    ![新しいイベント サブスクリプションを作成する](./media/iot-hub-how-to-order-connection-state-events/event-subscription.png)
 
 4. 次の値でイベント サブスクリプションを作成します。 
+
    * **[イベントの種類]**: [すべてのイベントの種類を購読します] をオフにして、メニューから **[Device Connected]\(デバイスの接続\)** と **[Device Disconnected]\(デバイスの切断\)** を選択します。
+
    * **[エンドポイントの詳細]**: [エンドポイントのタイプ] として **[web hook]** を選択し、[エンドポイントの選択] をクリックして、ロジック アプリからコピーした URL を貼り付けて選択を確認します。
 
-   ![エンドポイントの URL を選択する](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
+       ![エンドポイントの URL を選択する](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
 
-   * **[イベント サブスクリプションの詳細]**: わかりやすい名前を指定し、**[イベント グリッド スキーマ]** を選択します。終了すると、フォームは次の例のようになります。 
+   * **[イベント サブスクリプションの詳細]**: わかりやすい名前を指定し、**[イベント グリッド スキーマ]** を選択します。
+   フォームは次の例のようになります。 
 
-   ![サンプルのイベント サブスクリプション フォーム](./media/iot-hub-how-to-order-connection-state-events/subscription-form.png)
+       ![サンプルのイベント サブスクリプション フォーム](./media/iot-hub-how-to-order-connection-state-events/subscription-form.png)
 
 5. **[作成]** を選び、イベント サブスクリプションを保存します。
 
 ## <a name="observe-events"></a>イベントを確認する
+
 イベント サブスクリプションを設定した後は、デバイスを接続してテストします。
 
 ### <a name="register-a-device-in-iot-hub"></a>IoT Hub にデバイスを登録する
 
 1. IoT Hub から、**[IoT Devices]\(IoT デバイス\)** を選びます。 
+
 2. **[追加]** を選択します。
+
 3. **[デバイス ID]** に「`Demo-Device-1`」と入力します。
+
 4. **[保存]** を選択します。 
+
 5. 異なるデバイス ID を使用して複数のデバイスを追加できます。
 
    ![操作の結果](./media/iot-hub-how-to-order-connection-state-events/AddIoTDevice.png)
@@ -278,7 +289,8 @@ Logic Apps デザイナーを終了する前に、ロジック アプリがト�
 
 [Raspberry Pi シミュレーターの起動](https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted)
 
-### <a name="run-a-sample-applciation-on-the-raspberry-pi-web-simulator"></a>Raspberry Pi Web シミュレーターでサンプル アプリケーションを実行する
+### <a name="run-a-sample-application-on-the-raspberry-pi-web-simulator"></a>Raspberry Pi Web シミュレーターでサンプル アプリケーションを実行する
+
 この操作を実行すると、デバイス接続イベントがトリガーされます。
 
 1. コーディング領域で、行 15 のプレースホルダーを Azure IoT Hub デバイスの接続文字列に置き換えます。
@@ -297,13 +309,13 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ### <a name="observe-events-in-cosmos-db"></a>Cosmos DB でイベントを確認する
 
-実行されたストアド プロシージャの結果は、Cosmos DB ドキュメント内で確認できます。 例を次に示します。 各行にデバイスごとの最新のデバイス接続状態が含まれていることに注意してください
+実行されたストアド プロシージャの結果は、Cosmos DB ドキュメント内で確認できます。 外観は次のようになります。 各行にデバイスごとの最新のデバイス接続状態が含まれます。
 
    ![操作の結果](./media/iot-hub-how-to-order-connection-state-events/cosmosDB-outcome.png)
 
 ## <a name="use-the-azure-cli"></a>Azure CLI の使用
 
-Azure Portal を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](https://docs.microsoft.com/cli/azure/iot/device)に関する Azure CLI のページを参照してください。
+[Azure portal](http://portal.azure.com) を使う代わりに、Azure CLI を使って IoT Hub の手順を行うことができます。 詳細については、[イベント サブスクリプションの作成](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription)と[IoT デバイスの作成](https://docs.microsoft.com/cli/azure/iot/device)に関する Azure CLI のページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -312,17 +324,21 @@ Azure Portal を使う代わりに、Azure CLI を使って IoT Hub の手順を
 アプリ ロジックでの作業を失いたくない場合は、削除ではなく無効にします。 
 
 1. ロジック アプリに移動します。
+
 2. **[概要]** ブレードで、**[削除]** または **[無効]** を選びます。 
 
 各サブスクリプションで使うことができる無料 IoT Hub は 1 つです。 このチュートリアル用に無料のハブを作成した場合は、課金されないように削除する必要はありません。
 
 1. IoT Hub に移動します。 
+
 2. **[概要]** ブレードで **[削除]** を選びます。 
 
 IoT Hub を残しておく場合でも、作成したイベント サブスクリプションを削除できます。 
 
 1. IoT Hub で **[イベント グリッド]** を選びます。
+
 2. 削除するイベント サブスクリプションを選びます。 
+
 3. **[削除]** を選択します。 
 
 Azure Cosmos DB アカウントを Azure portal から削除するには、アカウント名を右クリックし、**[アカウントの削除]** をクリックします。 [Azure Cosmos DB アカウントを削除](https://docs.microsoft.com/azure/cosmos-db/manage-account#delete)するための詳細な手順を参照してください。
@@ -330,7 +346,9 @@ Azure Cosmos DB アカウントを Azure portal から削除するには、ア�
 ## <a name="next-steps"></a>次の手順
 
 * [Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする](../iot-hub/iot-hub-event-grid.md)方法を確認します
+
 * [IoT Hub イベントのチュートリアルを試します](../event-grid/publish-iot-hub-events-to-logic-apps.md)
+
 * [Event Grid](../event-grid/overview.md) で他にできることについて確認します
 
 

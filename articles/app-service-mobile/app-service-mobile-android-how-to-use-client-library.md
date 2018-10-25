@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: 1ab7aa9ecdd51809f6e1d82958f21b78b16e7e63
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: a39ae42ba2344cb39318809e2f120e01a75344d7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859559"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025788"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Azure Mobile Apps SDK for Android の使用方法
 
@@ -768,7 +768,7 @@ public void showAllUntyped(View view) {
 Azure Mobile Apps クライアント SDK はオフライン同期も実装します。このためには、SQLite データベースを使用して、サーバー データのコピーをローカルに格納します。  オフライン テーブルで実行される操作では、モバイル接続は不要です。  オフライン同期は回復力とパフォーマンスに優れる一方で、競合の解決にはより複雑なロジックを必要とします。  Azure Mobile Apps クライアント SDK は、次の機能を実装します。
 
 * 増分同期: 更新されたレコードや新しいレコードのみがダウンロードされるため、帯域幅とメモリ消費量を節約できます。
-* オプティミスティック同時実行制御: 操作は成功することが前提とされます。  競合の解決は、更新がサーバーで実行されるまで延期されます。
+* オプティミスティック コンカレンシー: 操作は成功することが前提とされます。  競合の解決は、更新がサーバーで実行されるまで延期されます。
 * 競合の解決: SDK が、サーバーで競合の変更が行われたことを検出して、ユーザーに通知するフックを提供します。
 * 論理削除: 削除されたレコードは削除済みとマークされ、他のデバイスはオフラインキャッシュを更新することができます。
 
@@ -1220,7 +1220,7 @@ private class ProgressFilter implements ServiceFilter {
             public void onSuccess(ServiceFilterResponse response) {
                 runOnUiThread(new Runnable() {
                     @Override
-                    pubic void run() {
+                    public void run() {
                         if (mProgressBar != null)
                             mProgressBar.setVisibility(ProgressBar.GONE);
                     }

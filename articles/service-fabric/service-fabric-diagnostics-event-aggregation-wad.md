@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 38a026e8995bb7384c866dcd2f12588ca816009f
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a870c99718ecafe8af33e13be9aa46631888c8cb
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205775"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389685"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Azure Storage にイベントを集計するため、Log Analytics ポータル�
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>Azure Resource Manager を使用して診断拡張機能をデプロイする
 
 ### <a name="create-a-cluster-with-the-diagnostics-extension"></a>診断拡張機能付きのクラスターを作成する
-Resource Manager を使用してクラスターを作成するには、クラスターを作成する前に、診断構成 JSON を完全なクラスターの Resource Manager テンプレートに追加する必要があります。 ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。 このサンプルは、Azure サンプル ギャラリーの「 [Five-node cluster with Diagnostics Resource Manager template sample](https://azure.microsoft.com/en-in/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)」で参照できます。
+Resource Manager を使用してクラスターを作成するには、クラスターを作成する前に、診断構成 JSON を完全なクラスターの Resource Manager テンプレートに追加する必要があります。 ここでは、リソース マネージャー テンプレート サンプルの一部として、診断構成を追加した five-VM クラスター リソース マネージャー テンプレートのサンプルを用意しました。 このサンプルは、Azure サンプル ギャラリーの「 [Five-node cluster with Diagnostics Resource Manager template sample](https://azure.microsoft.com/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)」で参照できます。
 
 Resource Manager テンプレートの診断設定を確認するには、azuredeploy.json ファイルを開き、**IaaSDiagnostics** を検索します。 このテンプレートを使用してクラスターを作成するには、前のリンクにある **[Azure にデプロイ]** ボタンをクリックしてください。
 
@@ -223,7 +223,7 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
 >このチャネルには大量のイベントが含まれているため、この詳細チャネルからのイベント収集を有効にすると、大量のトレースが短時間で生成され、ストレージ容量を消費する可能性があります。 これを有効にするのは、どうしても必要な場合だけにしてください。
 
 
-包括的なログ記録のための推奨構成である**基本的なデータおよびメッセージング チャネル**を有効にするために、使用しているテンプレートの `WadCfg` の `EtwManifestProviderConfiguration` は次のようになります。
+最小限のノイズで包括的なログを記録するための推奨構成である**基本的な稼働チャネル**を有効にするには、テンプレートの `WadCfg` の `EtwManifestProviderConfiguration` は次のようになります。
 
 ```json
   "WadCfg": {
@@ -251,7 +251,7 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
               {
                 "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
                 "scheduledTransferLogLevelFilter": "Information",
-                "scheduledTransferKeywordFilter": "4611686018427387928",
+                "scheduledTransferKeywordFilter": "4611686018427387904",
                 "scheduledTransferPeriod": "PT5M",
                 "DefaultEvents": {
                   "eventDestination": "ServiceFabricSystemEventTable"

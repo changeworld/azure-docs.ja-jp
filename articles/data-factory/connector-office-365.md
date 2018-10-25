@@ -11,24 +11,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 10/22/2018
 ms.author: jingwang
-ms.openlocfilehash: c9252380581e77049e9464316ca77cc135f784b6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 82fb2241b5988bae9587807c03e7bec50e7c1677
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377602"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955382"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Office 365 から Azure にデータをコピーする (プレビュー) 
 
 Azure Data Factory では、Office 365 テナント内にある高機能な組織データを Azure へとスケーラブルに取り込み、分析アプリケーションを構築して、それらの貴重なデータ資産に基づくインサイトを抽出することができます。 Privileged Access Management との統合により、Office 365 内の貴重な選別済みデータをセキュリティで保護することができます。  Microsoft Graph データ接続について詳しくは、[こちらのリンク](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki)をご覧ください。
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Office 365 からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
-
-Data Factory の Office 365 データへの接続については、次の 9 分間の入門向けビデオでデモをご覧ください。
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-cloud-scale-analytics-of-Office-365-data-with-Azure-Data-Factory/player]
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -45,10 +41,10 @@ Data Factory の Office 365 データへの接続については、次の 9 分�
 Office 365 から Azure にデータをコピーするには、前提条件として次の手順を完了する必要があります。
 
 - Office 365 テナントの管理者は、[こちら](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding)の説明に従って、オンボーディング アクションを完了する必要があります。
-- Azure Active Directory で Azure AD Web アプリケーションを作成し、構成します。  手順については、[Microsoft Azure での Ruby アプリケーションの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)に関するページを参照してください。
+- Azure Active Directory で Azure AD Web アプリケーションを作成し、構成します。  手順については、[Microsoft Azure での Ruby アプリケーションの作成](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)に関するページを参照してください。
 - 次の値を記録しておきます。Office 365 用のリンク済みサービスを定義するときに使います。
-    - テナント ID。  手順については、「[テナント ID を取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)」をご覧ください。
-    - アプリケーション ID とアプリケーション キー。  手順については、「[アプリケーション ID と認証キーを取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」をご覧ください。
+    - テナント ID。  手順については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」をご覧ください。
+    - アプリケーション ID とアプリケーション キー。  手順については、「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)」をご覧ください。
 - Azure AD Web アプリケーションの所有者としてデータ アクセス要求を行うユーザーの ID を追加します (Azure AD Web アプリケーションから、[設定] > [所有者] > [所有者の追加])。
 
 ## <a name="approving-new-data-access-requests"></a>新しいデータ アクセス要求の承認

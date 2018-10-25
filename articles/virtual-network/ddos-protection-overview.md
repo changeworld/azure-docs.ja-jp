@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/29/2018
+ms.date: 10/13/2018
 ms.author: jdial
-ms.openlocfilehash: f25da8c1eedc31209a67ae05aef9dded45b706e0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ae1a77921cdb3eba003ff6dc8b4885866f2fbe5e
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962404"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310360"
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要
 
@@ -29,7 +29,7 @@ ms.locfileid: "46962404"
 Azure DDoS Protection をアプリケーション設計のベスト プラクティスと組み合わせることにより、DDoS 攻撃に対する防御が提供されます。 Azure DDoS Protection では、次のサービス レベルが提供されます。
 
 - **Basic**: Azure プラットフォームの一部として、自動的に有効になります。 常時接続のトラフィック監視および一般的なネットワーク レベル攻撃のリアルタイムの軽減策によって、Microsoft のオンライン サービスによって使用されるのと同じ防御が提供されます。 Azure のグローバル ネットワークのスケール全体を使用すると、各地域にまたがる攻撃トラフィックを分散および軽減できます。 IPv4 と IPv6 の Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)に対して保護が提供されます。
-- **Standard**: Basic サービス レベルに加えて、特に Azure Virtual Network リソースに対してチューニングされた追加の軽減機能を提供します。 DDoS Protection Standard を有効にすることは簡単であり、アプリケーションの変更は必要ありません。 保護ポリシーは、専用のトラフィック監視および機械学習アルゴリズムによってチューニングされます。 ポリシーは、Azure Load Balancer、Azure Application Gateway、Azure Service Fabric のインスタンスなど、仮想ネットワーク内に展開されたリソースに関連付けられたパブリック IP アドレスに適用されます。 攻撃中および履歴の表示のために、Azure Monitor ビューからリアルタイムのテレメトリを使用できます。 診断設定を使用して、多くの機能を持つ攻撃軽減分析を利用できます。 アプリケーション レイヤー保護は、[Azure Application Gateway Web アプリケーション ファイアウォール](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を通して、または Azure Marketplace からサードパーティ製のファイアウォールをインストールすることで、追加できます。 IPv4 の Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)に対して保護が提供されます。
+- **Standard**: Basic サービス レベルに加えて、特に Azure Virtual Network リソースに対してチューニングされた追加の軽減機能を提供します。 DDoS Protection Standard を有効にすることは簡単であり、アプリケーションの変更は必要ありません。 保護ポリシーは、専用のトラフィック監視および機械学習アルゴリズムによってチューニングされます。 ポリシーは、Azure Load Balancer、Azure Application Gateway、Azure Service Fabric のインスタンスなど、仮想ネットワーク内に展開されたリソースに関連付けられたパブリック IP アドレスに適用されますが、この保護は App Service 環境には適用されません。 攻撃中および履歴の表示のために、Azure Monitor ビューからリアルタイムのテレメトリを使用できます。 診断設定を使用して、多くの機能を持つ攻撃軽減分析を利用できます。 アプリケーション レイヤー保護は、[Azure Application Gateway Web アプリケーション ファイアウォール](../application-gateway//application-gateway-web-application-firewall-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を通して、または Azure Marketplace からサードパーティ製のファイアウォールをインストールすることで、追加できます。 IPv4 の Azure [パブリック IP アドレス](virtual-network-public-ip-address.md)に対して保護が提供されます。
 
 ![Azure DDoS Protection の Basic と標準](./media/ddos-protection-overview/ddoscomparison.png)
 

@@ -6,14 +6,14 @@ author: adigan
 manager: Nkolli1
 ms.service: backup
 ms.topic: conceptual
-ms.date: 09/29/2016
+ms.date: 10/18/2018
 ms.author: adigan
-ms.openlocfilehash: 7331b1c99425500b58d186cedab1e83dd20e3684
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b3b4d42d9a48d02639019f815cbf4fca15060771
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389821"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946047"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint ファームの Azure へのバックアップ
 System Center Data Protection Manager (DPM) を使用して SharePoint ファームを Microsoft Azure にバックアップする方法は、他のデータ ソースのバックアップとよく似ています。 Azure Backup ではバックアップのスケジュールを柔軟に設定して日、週、月、年の単位でバックアップ ポイントを作成でき、さまざまなバックアップ ポイントに対応する保有ポリシー オプションがあります。 DPM では、目標復旧時間 (RTO) 短縮のためにはローカル ディスク コピーを保存でき、コスト効率に優れた長期リテンション期間のためには Azure にコピーできます。
@@ -29,7 +29,7 @@ DPM 用 Azure Backup は、次のシナリオをサポートします。
 SharePoint ファームを Azure にバックアップする前に、確認する必要がある点がいくつかあります。
 
 ### <a name="prerequisites"></a>前提条件
-続行する前に、 [Microsoft Azure Backup を使用してワークロードを保護するための前提条件](backup-azure-dpm-introduction.md#prerequisites) がすべて満たされていることを確認します。 前提条件を満たすための作業として、バックアップ コンテナーの作成、コンテナー資格情報のダウンロード、Azure Backup エージェントのインストール、コンテナーへの DPM/Azure Backup Server の登録などのがあります。
+続行する前に、 [Microsoft Azure Backup を使用してワークロードを保護するための前提条件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) がすべて満たされていることを確認します。 前提条件を満たすための作業として、バックアップ コンテナーの作成、コンテナー資格情報のダウンロード、Azure Backup エージェントのインストール、コンテナーへの DPM/Azure Backup Server の登録などのがあります。
 
 ### <a name="dpm-agent"></a>DPM エージェント
 DPM エージェントを、SharePoint を実行するサーバー、SQL Server を実行するサーバー、および SharePoint ファームを構成するその他のすべてのサーバーにインストールする必要があります。 保護エージェントのセットアップ方法の詳細については、「[保護エージェントの設定](https://technet.microsoft.com/library/hh758034\(v=sc.12\).aspx)」をご覧ください。  唯一の例外は、1 台の Web フロント エンド (WFE) サーバーにだけエージェントをインストールすることです。 保護のエントリ ポイントとして使用するためにエージェントをインストールする必要がある WFE サーバーは 1 台だけです。

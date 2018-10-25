@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/08/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: ac2cf4d688b1bdc54ed2d7341f0e195d3b2fe42d
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 91a4a9ae1d3d84f1396adad07d1cda73ee3747c9
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35236471"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49312568"
 ---
 ## <a name="what-happens-to-my-app-during-deployment"></a>使用しているアプリはデプロイ中にどうなりますか?
 
@@ -21,4 +21,4 @@ ms.locfileid: "35236471"
 
 - デプロイ中に、アプリを停止するか、またはアプリのオフライン モードを有効にします。 詳細については、「[Dealing with locked files during deployment](https://github.com/projectkudu/kudu/wiki/Dealing-with-locked-files-during-deployment)」 (デプロイ中にロックされているファイルに対処する) を参照してください。
 - [自動スワップ](../articles/app-service/web-sites-staged-publishing.md#configure-auto-swap)を有効にした状態で[ステージング スロット](../articles/app-service/web-sites-staged-publishing.md)にデプロイします。 
-- [Run-from-Zip](https://github.com/Azure/app-service-announcements/issues/84) を代わりに使用します。
+- 代わりに [Run From Package](https://github.com/Azure/app-service-announcements/issues/84) を使用してください。

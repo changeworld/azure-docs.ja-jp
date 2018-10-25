@@ -7,15 +7,15 @@ author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 1aad540086764b1e2315d3b3e195c55ba5931e07
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6db7fd2474688608eb029fce1529ba1d3f00c5d3
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036058"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637172"
 ---
 # <a name="data-alterations"></a>データの変更
 LUIS では、予測前または予測中に発話を操作する方法が用意されています。 これらには、スペルの修正や、事前構築済み datetimeV2 でのタイム ゾーンの問題の修正が含まれます。 
