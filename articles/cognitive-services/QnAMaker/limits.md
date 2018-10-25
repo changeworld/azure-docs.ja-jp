@@ -24,7 +24,7 @@ QnA Maker における制限の包括的な一覧です。
 
 * [Azure Search レベルの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)に基づくナレッジ ベースの最大数
 
-|**Azure Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure Search 層** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |許可される発行済みナレッジ ベースの最大数 (最大インデックス数 - 1 (テスト用に予約済み))|2|14|49|199|199|2999|
 
@@ -35,7 +35,7 @@ QnA Maker における制限の包括的な一覧です。
 ## <a name="metadata-limits"></a>メタデータの制限
 * [Azure Search レベルの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)に基づくナレッジ ベースごとのメタデータ フィールドの最大数
 
-|**Azure Search レベル** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
+|**Azure Search 層** | **Free** | **Basic** |**S1** | **S2**| **S3** |**S3 HD**|
 |---|---|---|---|---|---|----|
 |QnA Maker サービスごとの最大のメタデータ フィールド数 (すべてのナレッジ ベースにわたって)|1,000|100*|1,000|1,000|1,000|1,000|
 

@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: a304cb08ec001587af5e6ea740853bd8435824e7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 79c95a53ace4fd5ab638587d1b74980812fbc273
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297929"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116965"
 ---
 # <a name="contoso-migration--refactor-a-team-foundation-server-deployment-to-azure-devops-services"></a>Contoso の移行: Azure の Azure DevOps Services に Team Foundation Server の展開をリファクターする
 
@@ -33,8 +33,9 @@ ms.locfileid: "44297929"
 [記事 9: Azure Web App と Azure SQL Database でのアプリのリファクター](contoso-migration-refactor-web-app-sql.md) | Contoso が SmartHotel アプリを Azure コンテナー ベースの Web アプリに移行して、アプリ データベースを Azure SQL Server に移行する方法を示します。 | 使用可能
 [記事 10: Azure App Service と Azure MySQL Server への Linux アプリのリファクター](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso が osTicket Linux アプリを PHP 7.0 Docker コンテナーを使用する Azure App Service に移行する方法を示します。 デプロイするためのコード ベースが GitHub に移行されます。 アプリのデータベースが Azure MySQL に移行されます。 | 使用可能
 記事 11: Azure DevOps Services での TFS 展開のリファクター | TFS の開発用アプリを Azure の Azure DevOps Services に移行します | この記事の内容は次のとおりです。
-[記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行して再構築する方法を示します。 Contoso は、アプリの Web 階層を Windows コンテナーとして再構築し、Azure SQL Database にアプリ データベースを再構築します。 | 使用可能
+[記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行して再構築する方法を示します。 アプリの Web 層を Windows コンテナーとして再構築し、Azure SQL データベースでアプリ データベースを再構築します。 | 使用可能
 [記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (App Services、Azure Kubernetes、Azure Functions、Cognitive Services、Cosmos DB など) を使用して SmartHotel アプリをリビルドする方法を示します。 | 使用可能
+[記事 14: Azure への移行のスケーリング](contoso-migration-scale.md) | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 | 使用可能
 
 
 ## <a name="business-drivers"></a>ビジネス ドライバー
@@ -294,15 +295,15 @@ Contoso の管理者は次のように DACPAC を生成します。
 
     **SqlPackage.exe /sourceconnectionstring:"Data Source=SQLSERVERNAME\INSTANCENAME;Initial Catalog=Tfs_ContosoDev;Integrated Security=True" /targetFile:C:\TFSMigrator\Tfs_ContosoDev.dacpac /action:extract /p:ExtractAllTableData=true /p:IgnoreUserLoginMappings=true /p:IgnorePermissions=true /p:Storage=Memory** 
 
-    ![Backup](./media/contoso-migration-tfs-vsts/backup1.png)
+    ![バックアップ](./media/contoso-migration-tfs-vsts/backup1.png)
 
 2. コマンドの実行後、次のメッセージが表示されます。
 
-    ![Backup](./media/contoso-migration-tfs-vsts/backup2.png)
+    ![バックアップ](./media/contoso-migration-tfs-vsts/backup2.png)
 
 3. DACPAC ファイルのプロパティを確認します。
 
-    ![Backup](./media/contoso-migration-tfs-vsts/backup3.png)
+    ![バックアップ](./media/contoso-migration-tfs-vsts/backup3.png)
 
 ### <a name="update-the-file-to-storage"></a>ストレージに対してファイルを更新する
 

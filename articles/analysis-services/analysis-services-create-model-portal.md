@@ -5,21 +5,23 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dcfcfb24d2b47a8272c576856fc3accc547f354a
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 837601a55bbe97e904f3dece9f4c87563d6dd4e9
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142420"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092679"
 ---
 # <a name="create-a-model-in-azure-portal"></a>Azure ポータルでモデルを作成する
 
 Azure ポータルの Azure Analysis Services Web デザイナー (プレビュー) 機能は、表形式モデルの作成と編集、およびブラウザーでのモデル データのクエリを迅速かつ簡単に実行する方法を提供します。 
 
-この Web デザイナーは、**プレビュー**段階であることに留意してください。 機能が制限されます。 高度なモデルの開発とテストを実行する場合は、Visual Studio (SSDT) と SQL Server Management Studio (SSMS) を使用することが最善の方法です。
+> [!IMPORTANT]
+> このフィーチャーは非推奨です。 今後の更新プログラムで削除されるか、大幅に変更される可能性があります。 今後の更新プログラムとの互換性を維持するために、新規および既存のプロジェクトでこの機能の使用を中止することをお勧めします。 高度なモデルの開発とテストを実行する場合は、Visual Studio (SSDT) と SQL Server Management Studio (SSMS) を使用することが最善の方法です。
+
 
 ## <a name="before-you-begin"></a>開始する前に
 

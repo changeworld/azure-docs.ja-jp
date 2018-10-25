@@ -11,21 +11,23 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 06/13/2018
-ms.openlocfilehash: a39e65d5a3aff6158c189f392e2db8bd8273ad1b
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/05/2018
+ms.openlocfilehash: 49da7704c3b1c3c119528201f34f1352b0afbba4
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063781"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362128"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Azure SQL Database と SQL Data Warehouse へのアクセスの制御
+
 Azure の [SQL Database](sql-database-technical-overview.md) と [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) では、セキュリティを提供するために、IP アドレスで接続を制限するファイアウォール規則、ユーザーに ID の指定を要求する認証メカニズム、ユーザーを特定の操作とデータに限定する承認メカニズムによってアクセスを制御します。 
 
 > [!IMPORTANT]
 > SQL Database のセキュリティ機能の概要については、[SQL のセキュリティの概要](sql-database-security-overview.md)に関するページを参照してください。 チュートリアルについては、「[Azure SQL データベースのセキュリティ保護](sql-database-security-tutorial.md)」を参照してください。 SQL Data Warehouse のセキュリティ機能の概要については、[SQL Data Warehouse のセキュリティの概要](../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)に関するページを参照してください。
 
 ## <a name="firewall-and-firewall-rules"></a>ファイアウォールとファイアウォール規則
+
 Microsoft Azure SQL Database は、Azure およびその他のインターネット ベースのアプリケーション用のリレーショナル データベース サービスを提供します。 データを保護するため、ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。 詳細については、「[Azure SQL Database ファイアウォール規則の概要](sql-database-firewall-configure.md)」を参照してください。
 
 Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用できます。 コンピューターから SQL Database にアクセスするには、クライアント コンピューターのファイアウォールで、TCP ポート 1433 での TCP 通信の発信を許可する必要があります。 他のアプリケーションで必要ない場合は、TCP ポート 1433 での着信接続をブロックします。 
@@ -36,8 +38,12 @@ Azure SQL Database サービスは TCP ポート 1433 経由でのみ利用で�
 
 SQL Database は、2 種類の認証をサポートしています。
 
-* **SQL 認証**。ユーザー名とパスワードを使用します。 データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。 これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを認証できます。 
-* **Azure Active Directory 認証**。Azure Active Directory で管理されている ID を使用します。管理および統合されたドメインの場合にサポートされます。 [可能であれば](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)、Active Directory 認証 (統合セキュリティ) を使用します。 Azure Active Directory 認証を使用する場合は、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。 この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。 Azure AD 管理者を作成して Azure Active Directory 認証を有効にする方法のチュートリアルについては、「 [Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md) 」を参照してください。
+- **SQL 認証**:
+
+  この認証方法では、ユーザー名とパスワードを使用します。 データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。 これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを認証できます。 
+- **Azure Active Directory 認証**:
+
+  この認証方法では、Azure Active Directory で管理されている ID を使用し、管理、統合されたドメインをサポートしています。 [可能であれば](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)、Active Directory 認証 (統合セキュリティ) を使用します。 Azure Active Directory 認証を使用する場合は、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。 この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。 Azure AD 管理者を作成して Azure Active Directory 認証を有効にする方法のチュートリアルについては、「 [Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md) 」を参照してください。
 
 データベース エンジンは、30 分以上アイドル状態が続くと接続を閉じます。 接続する前に、もう一度ログインする必要があります。 SQL Database への継続したアクティブな接続では、少なくとも 10 時間ごとに再認証が必要になります (データベース エンジンによって実行されます)。 データベース エンジンは最初に送信されたパスワードを使用して再認証を試みるため、ユーザー入力は必要ありません。 パフォーマンス上の理由により、パスワードが SQL Database でリセットされると、接続プールが原因で接続がリセットされた場合でも、接続は再認証されません。 これは、オンプレミスの SQL Server とは異なる動作です。 接続が最初に承認されて以来パスワードが変更されている場合は、その接続を終了し、新しいパスワードを使用して新しい接続を作成する必要があります。 `KILL DATABASE CONNECTION` アクセス許可を持つユーザーは、[KILL](https://docs.microsoft.com/sql/t-sql/language-elements/kill-transact-sql) コマンドを使用して SQL Database への接続を明示的に終了できます。
 
@@ -51,11 +57,12 @@ SQL Database は、2 種類の認証をサポートしています。
 
 通常、`master` データベースへのアクセスが必要なのは管理者のみです。 各ユーザー データベースに定期的にアクセスするには、各データベースで作成された包含データベース ユーザー (管理者以外) を使用する必要があります。 包含データベース ユーザーを使用する場合は、`master` データベースにログインを作成する必要はありません。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)」を参照してください。
 
-アクセス許可を制限したり昇格させたりするために使用できる次の機能について理解を深める必要があります。   
-* [権限借用](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server)と[モジュール署名](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)を使用すると、安全にアクセス許可を一時的に昇格できます。
-* [Row-Level Security](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) を使用すると、ユーザーがアクセスできる行を制限できます。
-* [データのマスキング](sql-database-dynamic-data-masking-get-started.md) を使用すると、機密データの公開を制限できます。
-* [ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) を使用すると、データベースで実行できるアクションを制限できます。
+アクセス許可を制限したり昇格させたりするために使用できる次の機能について理解を深める必要があります。
+
+- [権限借用](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/customizing-permissions-with-impersonation-in-sql-server)と[モジュール署名](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/signing-stored-procedures-in-sql-server)を使用すると、安全にアクセス許可を一時的に昇格できます。
+- [Row-Level Security](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) を使用すると、ユーザーがアクセスできる行を制限できます。
+- [データのマスキング](sql-database-dynamic-data-masking-get-started.md) を使用すると、機密データの公開を制限できます。
+- [ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) を使用すると、データベースで実行できるアクションを制限できます。
 
 ## <a name="next-steps"></a>次の手順
 

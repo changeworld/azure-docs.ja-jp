@@ -5,24 +5,24 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: reference
-ms.date: 08/17/2018
+ms.date: 10/12/2018
 ms.author: tomfitz
-ms.openlocfilehash: 22629ba553cc58435f99ed0fed97be252b24b409
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: ffc9eba251cbf4d9e2542791d90943ecdd1a972a
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42140564"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49310574"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure Event Grid のリソース グループ用のイベント スキーマ
 
 この記事では、リソース グループ イベントのプロパティとスキーマについて説明します。 イベント スキーマの概要については、「[Azure Event Grid イベント スキーマ](event-schema.md)」を参照してください。
 
-Azure サブスクリプションとリソース グループは、同じ種類のイベントを出力します。 イベントの種類は、リソースの変更に関連しています。 主な違いは、リソース グループはリソース グループ内のリソースのイベントを出力し、Azure サブスクリプションはサブスクリプションのリソースのイベントを出力することです。
+Azure サブスクリプションとリソース グループは、同じ種類のイベントを出力します。 イベントの種類は、リソースの変更またはアクションに関連しています。 主な違いは、リソース グループはリソース グループ内のリソースのイベントを出力し、Azure サブスクリプションはサブスクリプションのリソースのイベントを出力することです。
 
-リソース イベントは、`management.azure.com` に送信される PUT、PATCH、および DELETE 操作に対して作成されます。 POST 操作と GET 操作は、イベントを作成しません。 データ プレーンに送信される操作 (`myaccount.blob.core.windows.net` など) は、イベントを作成しません。
+リソース イベントは、`management.azure.com` に送信される PUT、PATCH、POST、DELETE 操作に対して作成されます。 GET 操作ではイベントは作成されません。 データ プレーンに送信される操作 (`myaccount.blob.core.windows.net` など) は、イベントを作成しません。 アクション イベントでは、リソースのキーの一覧表示のような、操作に対するイベント データが提供されます。
 
-リソース グループのイベントをサブスクライブすると、エンドポイントは、そのリソース グループのすべてのイベントを受信します。 イベントには、表示するイベント (仮想マシンの更新など) を含めることができますが、重要とは思えないイベント (デプロイ履歴への新しいエントリの書き込みなど) を含めることもできます。 エンドポイントですべてのイベントを受信し、対象となるイベントを処理するコードを記述することも、イベント サブスクリプションを作成するときにフィルターを設定することもできます。
+リソース グループのイベントをサブスクライブすると、エンドポイントは、そのリソース グループのすべてのイベントを受信します。 イベントには、表示するイベント (仮想マシンの更新など) を含めることができますが、重要とは思えないイベント (デプロイ履歴への新しいエントリの書き込みなど) を含めることもできます。 自分のエンドポイントですべてのイベントを受信でき、処理したいイベントを処理するコードを記述できます。 または、イベント サブスクリプションを作成するときにフィルターを設定できます。
 
 プログラムでイベントを処理するには、`operationName` 値を調べることでイベントを並べ替えることができます。 たとえば、イベント エンドポイントで、`Microsoft.Compute/virtualMachines/write` または `Microsoft.Storage/storageAccounts/write` と等しい操作のイベントのみを処理できます。
 
@@ -36,12 +36,15 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 
 | イベントの種類 | 説明 |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceWriteSuccess | リソースの作成または更新操作が成功したときに発生します。 |
-| Microsoft.Resources.ResourceWriteFailure | リソースの作成または更新操作が失敗したときに発生します。 |
-| Microsoft.Resources.ResourceWriteCancel | リソースの作成または更新操作が取り消されたときに発生します。 |
-| Microsoft.Resources.ResourceDeleteSuccess | リソースの削除操作が成功したときに発生します。 |
-| Microsoft.Resources.ResourceDeleteFailure | リソースの削除操作が失敗したときに発生します。 |
-| Microsoft.Resources.ResourceDeleteCancel | リソースの削除操作が取り消されたときに発生します。 このイベントは、テンプレートのデプロイが取り消された場合に発生します。 |
+| Microsoft.Resources.ResourceActionCancel | リソースに対するアクションが取り消されたときに発生します。 |
+| Microsoft.Resources.ResourceActionFailure | リソースに対するアクションが失敗したときに発生します。 |
+| Microsoft.Resources.ResourceActionSuccess | リソースに対するアクションが成功したときに発生します。 |
+| Microsoft.Resources.ResourceDeleteCancel | 削除操作が取り消されたときに発生します。 このイベントは、テンプレートのデプロイが取り消された場合に発生します。 |
+| Microsoft.Resources.ResourceDeleteFailure | 削除操作が失敗したときに発生します。 |
+| Microsoft.Resources.ResourceDeleteSuccess | 削除操作が成功したときに発生します。 |
+| Microsoft.Resources.ResourceWriteCancel | 作成または更新操作が取り消されたときに発生します。 |
+| Microsoft.Resources.ResourceWriteFailure | 作成または更新操作が失敗したときに発生します。 |
+| Microsoft.Resources.ResourceWriteSuccess | 作成または更新操作が成功したときに発生します。 |
 
 ## <a name="example-event"></a>イベントの例
 
@@ -171,20 +174,76 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 }]
 ```
 
+次の例は、**ResourceActionSuccess** イベント用のスキーマを示しています。 **ResourceActionFailure** イベントと **ResourceActionCancel** イベントでも、`eventType` の値を変更して、同じスキーマが使用されます。
+
+```json
+[{   
+  "subject": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+  "eventType": "Microsoft.Resources.ResourceActionSuccess",
+  "eventTime": "2018-10-08T22:46:22.6022559Z",
+  "id": "{ID}",
+  "data": {
+    "authorization": {
+      "scope": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+      "action": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+      "evidence": {
+        "role": "Contributor",
+        "roleAssignmentScope": "/subscriptions/{subscription-id}",
+        "roleAssignmentId": "{ID}",
+        "roleDefinitionId": "{ID}",
+        "principalId": "{ID}",
+        "principalType": "ServicePrincipal"
+      }     
+    },
+    "claims": {
+      "aud": "{audience-claim}",
+      "iss": "{issuer-claim}",
+      "iat": "{issued-at-claim}",
+      "nbf": "{not-before-claim}",
+      "exp": "{expiration-claim}",
+      "aio": "{token}",
+      "appid": "{ID}",
+      "appidacr": "2",
+      "http://schemas.microsoft.com/identity/claims/identityprovider": "{URL}",
+      "http://schemas.microsoft.com/identity/claims/objectidentifier": "{ID}",
+      "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "{ID}",       "http://schemas.microsoft.com/identity/claims/tenantid": "{ID}",
+      "uti": "{ID}",
+      "ver": "1.0"
+    },
+    "correlationId": "{ID}",
+    "httpRequest": {
+      "clientRequestId": "{ID}",
+      "clientIpAddress": "{IP-address}",
+      "method": "POST",
+      "url": "https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey/listKeys?api-version=2017-04-01"
+    },
+    "resourceProvider": "Microsoft.EventHub",
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{namespace}/AuthorizationRules/RootManageSharedAccessKey",
+    "operationName": "Microsoft.EventHub/namespaces/AuthorizationRules/listKeys/action",
+    "status": "Succeeded",
+    "subscriptionId": "{subscription-id}",
+    "tenantId": "{tenant-id}"
+  },
+  "dataVersion": "2",
+  "metadataVersion": "1",
+  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}" 
+}]
+```
+
 ## <a name="event-properties"></a>イベントのプロパティ
 
 イベントのトップレベルのデータを次に示します。
 
 | プロパティ | type | 説明 |
 | -------- | ---- | ----------- |
-| topic | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
-| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
-| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | 文字列 | イベントの一意識別子。 |
+| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | string | 発行元が定義したイベントの対象のパス。 |
+| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | string | イベントの一意識別子。 |
 | data | オブジェクト | リソース グループ イベントのデータ。 |
-| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
-| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
+| dataVersion | string | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | string | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
@@ -192,14 +251,14 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 | -------- | ---- | ----------- |
 | authorization | オブジェクト | 操作の要求された承認。 |
 | claims | オブジェクト | 要求のプロパティ。 詳細については、[JWT 認証](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)に関する記事を参照してください。 |
-| correlationId | 文字列 | トラブルシューティング用の操作 ID。 |
+| correlationId | string | トラブルシューティング用の操作 ID。 |
 | httpRequest | オブジェクト | 操作の詳細。 このオブジェクトは、既存のリソースを更新する場合、またはリソースを削除する場合にのみ含まれます。 |
-| resourceProvider | 文字列 | 操作を実行しているリソース プロバイダー。 |
-| resourceUri | 文字列 | 操作内のリソースの URI。 |
-| operationName | 文字列 | 実行された操作。 |
-| status | 文字列 | 操作の状態。 |
-| subscriptionId | 文字列 | リソースのサブスクリプション ID。 |
-| tenantId | 文字列 | リソースのテナント ID。 |
+| resourceProvider | string | 操作に対するリソース プロバイダー。 |
+| resourceUri | string | 操作内のリソースの URI。 |
+| operationName | string | 実行された操作。 |
+| status | string | 操作の状態。 |
+| subscriptionId | string | リソースのサブスクリプション ID。 |
+| tenantId | string | リソースのテナント ID。 |
 
 ## <a name="next-steps"></a>次の手順
 
