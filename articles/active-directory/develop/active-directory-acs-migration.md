@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 3e4b4e904fd4615458e8d873baa1bf30588fe81d
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 4fd7617bf45608cdae15919a40920ea0d214acb8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249436"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407473"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>方法: Azure Access Control Service からの移行
 
@@ -225,7 +225,7 @@ WS-Federation または WIF を使用して Azure AD と統合する場合は、
 
 もう 1 つのアプローチは、[こちらのコード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapp-wsfederation)に従う方法です。この方法では、WS-Federation の設定方法の手順が若干異なります。 このコード サンプルでは、WIF を使用せず、代わりに ASP.NET 4.5 OWIN ミドルウェアを使用します。 ただし、アプリ登録の手順は、WIF を使用するアプリに対しても有効であり、Azure AD Premium ライセンスは必要ありません。 
 
-このアプローチを選ぶ場合は、[Azure AD での署名キー ロールオーバー](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)について理解する必要があります。 このアプローチでは、Azure AD のグローバル署名キーを使用してトークンを発行します。 既定では、WIF は署名キーを自動的に更新しません。 Azure AD がそのグローバル署名キーを回転する場合、変更を確定するために WIF 実装を準備する必要があります。 詳細については、「[Important information about signing key rollover in Azure AD](https://msdn.microsoft.com/en-us/library/azure/dn641920.aspx)」 (Azure AD の署名キーのロールオーバーに関する重要な情報) を参照してください。
+このアプローチを選ぶ場合は、[Azure AD での署名キー ロールオーバー](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)について理解する必要があります。 このアプローチでは、Azure AD のグローバル署名キーを使用してトークンを発行します。 既定では、WIF は署名キーを自動的に更新しません。 Azure AD がそのグローバル署名キーを回転する場合、変更を確定するために WIF 実装を準備する必要があります。 詳細については、「[Important information about signing key rollover in Azure AD](https://msdn.microsoft.com/library/azure/dn641920.aspx)」 (Azure AD の署名キーのロールオーバーに関する重要な情報) を参照してください。
 
 OpenID Connect または OAuth プロトコル経由で Azure AD と統合できる場合は、その方法で統合することをお勧めします。 Azure AD を Web アプリケーションに統合する方法については、[Azure AD 開発者ガイド](https://aka.ms/aaddev)にさまざまなドキュメントとガイダンスが記載されています。
 

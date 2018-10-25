@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 308a447ff99cd11ad6a28df0bdb515764b0f546b
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 282620342d2348868ceab5257de7415a9cb2147c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063457"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388361"
 ---
 # <a name="azure-monitor-for-vms-frequently-asked-questions"></a>VM 用 Azure Monitor についてよく寄せられる質問
 この Microsoft FAQ では、Microsoft Azure の VM 用 Azure Monitor についてよく寄せられる質問を紹介します。 このソリューションについてほかに質問がある場合は、[ディスカッション フォーラム](https://feedback.azure.com/forums/34192--general-feedback)にアクセスして質問を投稿してください。 よく寄せられる質問については、すばやく簡単に見つけることができるように、この記事に追加していきます。
@@ -76,7 +76,7 @@ VM 用 Azure Monitor のマップ機能は Service Map に基づいています�
 これはいくつかの理由で発生する可能性があります。  表示するデータ収集にギャップがある場合、点線が表示されます。  有効になっているパフォーマンス カウンターのデータ サンプリング頻度を変更したときに (既定の設定では、60 秒ごとにデータが収集されます)、グラフの時間範囲を狭め、サンプリング頻度がグラフで使用されるバケット サイズよりも少ない場合 (たとえば、サンプリング頻度が 10分 ごとで、グラフの各バケットが 5 分の場合)、グラフに点線が表示されます。  この場合、表示する時間範囲を広げると、グラフの線が点線ではなく実線で表示されます。
 
 ## <a name="are-groups-supported-with-azure-monitor-for-vms"></a>VM 用 Azure Monitor でグループはサポートされていますか?
-パフォーマンス機能では、特定のワークスペース内の強調表示されたリソースに基づくグループと、特定の Azure 仮想マシン スケール セットおよびクラウド サービスに基づくグループがサポートされています。
+はい、Dependency エージェントをインストールすると、VM から情報が収集され、サブスクリプション、リソース グループ、仮想マシン スケール セット、およびクラウド サービスに基づいてグループが表示されます。  Service Map を使用し、マシン グループを作成している場合も、これらが表示されます。  表示中のワークスペースでコンピューター グループを作成している場合は、それらもグループ フィルターに表示されます。 
 
 ## <a name="how-do-i-see-the-details-for-what-is-driving-the-95th-percentile-line-in-the-aggregate-performance-charts"></a>集計パフォーマンス グラフで 95 百分位線を引き上げているものについて詳細を確認するにはどうすればよいですか?
 既定では、選択されたメトリックで 95 パーセンタイルの最大値を持つ VM を示すためにリストが並べ替えられます。ただし、5 パーセンタイルの最小値を持つマシンが表示される、使用可能なメモリのグラフを除きます。  グラフをクリックすると、適切なメトリックが選択された **[Top N List]\(上位 N のリスト\)** ビューが開きます。

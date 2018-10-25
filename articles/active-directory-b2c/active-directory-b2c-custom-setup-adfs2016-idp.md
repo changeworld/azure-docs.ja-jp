@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e8737e379dc69385b2bd5ac2b2af89bf8d38b63a
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 6f7fced5163476dc1de866474484f98d546d1901
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886876"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945724"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して SAML ID プロバイダーとして ADFS を追加する
 
@@ -34,7 +34,7 @@ Azure AD B2C テナントに ADFS 証明書を格納する必要があります�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure Portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
 4. [概要] ページで、**[Identity Experience Framework - プレビュー]** を選択します。
 5. **[ポリシー キー]** を選択し、**[追加]** を選択します。
 6. **オプション**については、`Upload`を選択します。
@@ -62,7 +62,6 @@ ADFS アカウントをクレーム プロバイダーとして定義するに�
           <Description>Login with your ADFS account</Description>
           <Protocol Name="SAML2"/>
           <Metadata>
-            <Item Key="RequestsSigned">false</Item>
             <Item Key="WantsEncryptedAssertions">false</Item>
             <Item Key="PartnerEntity">https://your-ADFS-domain/federationmetadata/2007-06/federationmetadata.xml</Item>
           </Metadata>
@@ -128,7 +127,7 @@ ADFS アカウントをクレーム プロバイダーとして定義するに�
 ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションは、Azure AD B2C がトークンを受信するために ADFS アカウントと通信することです。
 
 1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
-2. 次の **ClaimsExchange** 要素を追加します。**Id** には、**TargetClaimsExchangeId** に使用したのと同じ値を使用するようにしてください。
+2. 次の **ClaimsExchange** 要素を追加します。**TargetClaimsExchangeId** に使用した **Id** と同じ値を必ずご使用ください。
 
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
@@ -136,7 +135,7 @@ ADFS アカウントをクレーム プロバイダーとして定義するに�
     
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `Contoso-SAML2` 」のように入力します。
 
-3. *TrustFrameworkExtensions.xml* ファイルを保存し、検証のために再度アップロードします。
+3. *TrustFrameworkExtensions.xml* ファイルを保存し、検証のためにもう一度アップロードします。
 
 
 ## <a name="configure-an-adfs-relying-party-trust"></a>ADFS 証明書利用者信頼を構成する
@@ -172,24 +171,24 @@ https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idpt
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C アプリケーションを作成する
 
-Azure AD B2C との通信は、テナントで作成したアプリケーション経由で行われます。 このセクションでは、テスト アプリケーションをまだ作成していない場合、それを作成するために実行できる省略可能な手順を示します。
+Azure AD B2C との通信は、テナントで作成したアプリケーション経由で行われます。 このセクションでは、テスト アプリケーションをまだ作成していない場合にそれを作成するための省略可能な手順を紹介します。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
-3. Azure Portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
-4. **[アプリケーション]**、**[追加]** の順に選択します。
-5. アプリケーションの名前 (*testapp1* など) を入力します。
-6. **[Web アプリ / Web API]** で `Yes` を選択し、**[応答 URL]** に「`https://jwt.ms`」と入力します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+4. **[アプリケーション]** を選択し、**[追加]** を選択します。
+5. アプリケーションの名前を入力します (*testapp1* など)。
+6. **[Web アプリ / Web API]** には `Yes` を選択し、**[応答 URL]** に `https://jwt.ms` を入力します。
 7. **Create** をクリックしてください。
 
-### <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新およびテストする
+### <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新し、テストする
 
 作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
 
-1. 作業ディレクトリ内に *SignUpOrSignIn.xml* のコピーを作成し、その名前を変更します。 たとえば、その名前を *SignUpSignInADFS.xml* に変更します。
-2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値に更新します。 たとえば、「 `SignUpSignInADFS` 」のように入力します。
+1. 作業ディレクトリに *SignUpOrSignIn.xml* のコピーを作成し、名前を変更します。 たとえば、その名前を *SignUpSignInADFS.xml* に変更します。
+2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値で更新します。 たとえば、「 `SignUpSignInADFS` 」のように入力します。
 3. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、「`http://contoso.com/B2C_1A_signup_signin_adfs">」とします。
 4. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignInADFS) に一致するように更新します。
 5. 変更を保存し、ファイルをアップロードしてから、一覧内の新しいポリシーを選択します。
-6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてそれをテストします。
+6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてテストします。
 
