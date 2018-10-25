@@ -1,16 +1,16 @@
 items:
-- name: Service Fabric mesh のドキュメント
+- name: Service Fabric Mesh のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Service Fabric mesh について
+  - name: Service Fabric Mesh について
     href: service-fabric-mesh-overview.md
   expanded: true
 - name: クイック スタート
   items:
   - name: Hello World をデプロイする
     href: service-fabric-mesh-quickstart-deploy-container.md
-  - name: Web アプリを作成して Azure Service Fabric mesh にデプロイする
+  - name: Web アプリを作成して Azure Service Fabric Mesh にデプロイする
     href: service-fabric-mesh-quickstart-dotnet-core.md
 - name: チュートリアル
   items:
@@ -50,7 +50,7 @@ items:
   items:
   - name: 開発環境を設定する
     href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
-  - name: Service Fabric mesh CLI の設定
+  - name: Service Fabric Mesh CLI の設定
     href: service-fabric-mesh-howto-setup-cli.md
   - name: Azure Files ボリュームによる状態の保存
     href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
