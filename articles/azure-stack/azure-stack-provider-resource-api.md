@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2018
+ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.openlocfilehash: aedaa729ec51d7b60b2c242239935f7b3e41794f
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: c6f17fd4cc225b7d4ce60d38bf2abcabf12a40c5
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918189"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945588"
 ---
 # <a name="provider-resource-usage-api"></a>プロバイダー リソース使用量 API
 *プロバイダー*という用語は、サービス管理者と委任されたすべてのプロバイダーに適用されます。 Azure Stack オペレーターおよび委任されたプロバイダーは、プロバイダー使用量 API を使用して、直接のテナントの使用状況を表示できます。 たとえば、図に示したように、P0 はプロバイダー API を呼び出して、P1 と P2 の直接の使用状況に関する情報を取得でき、P1 は P3 と P4 の使用状況情報を呼び出すことができます。
@@ -27,7 +27,7 @@ ms.locfileid: "42918189"
 ![プロバイダー階層の概念モデル](media/azure-stack-provider-resource-api/image1.png)
 
 ## <a name="api-call-reference"></a>API 呼び出しリファレンス
-### <a name="request"></a>要求
+### <a name="request"></a>Request
 要求は、要求されたサブスクリプションと要求された期間の使用の詳細を取得します。 要求の本文はありません。
 
 この使用状況 API はプロバイダー API であるため、呼び出し元に、プロバイダーのサブスクリプションの所有者、共同作成者、またはリーダーの役割が割り当てられている必要があります。
@@ -48,7 +48,7 @@ ms.locfileid: "42918189"
 | *api-version* |この要求を行うために使用するプロトコルのバージョン。 この値は *2015-06-01-preview* に設定されます。 |
 | *continuationToken* |使用状況 API プロバイダーへの最後の呼び出しから取得されたトークン。 このトークンは、応答が 1,000 行より大きい場合に必要であり、進行状況のブックマークとして機能します。 トークンが存在しない場合、渡された単位に基づいて、日または時間の開始点から、データが取得されます。 |
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 GET /subscriptions/sub1/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&subscriberId=sub1.1&api-version=1.0
 
 ```json

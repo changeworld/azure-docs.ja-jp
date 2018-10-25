@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: quickstart
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 92209d82a6db18b7f1e1a5adbb52c1899bf4593f
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: b5aa300d51deef408b8dd2b410db319449360329
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37950701"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428829"
 ---
 # <a name="quickstart-create-a-server---portal"></a>クイック スタート: サーバーを作成する - ポータル
 

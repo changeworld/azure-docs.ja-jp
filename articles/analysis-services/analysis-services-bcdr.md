@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 42e270f26a4576014d3a08a0ab3c59808c65fc56
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 657800c6f96560c68e690ccbd1dfb166c5034812
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37445468"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430138"
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services の高可用性
 この記事では、Azure Analysis Services サーバーの高可用性の確保について説明します。 

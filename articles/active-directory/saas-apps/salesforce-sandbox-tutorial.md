@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 10/10/2018
 ms.author: jeedes
-ms.openlocfilehash: 6feafba41cf65a752dd5bf0819b0b93bacff0aff
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 48dcb4a3b1e06ab62905092055ba1b48bd0dddb7
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42144260"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>チュートリアル: Azure Active Directory と Salesforce Sandbox の統合
 
@@ -107,30 +107,38 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. 画面上部の **[シングル サインオン モードの変更]** をクリックして、**[SAML]** モードを選択します。
 
-    ![[シングル サインオン] ダイアログ ボックス](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_samlbase.png)
+      ![シングル サインオン構成のリンク](./media/salesforce-sandbox-tutorial/tutorial_general_300.png)
 
-3. **[Salesforce Sandbox のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+3. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードの **[選択]** をクリックして、シングル サインオンを有効にします。
 
-   ![Salesforce Sandbox Domain のドメインと URL のシングル サインオン情報](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_url1.png)
+    ![シングル サインオン構成のリンク](./media/salesforce-sandbox-tutorial/tutorial_general_301.png)
 
-   **[応答 URL]** テキスト ボックスに、組織固有の **[応答 URL]** を入力します。
+4. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+   
+    ![シングル サインオン構成のリンク](./media/salesforce-sandbox-tutorial/tutorial_general_302.png)
 
-   > [!NOTE]
-   > [応答 URL] の値を実際の応答 URL に置き換えます。実際の値については後で説明します。
+5. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-4. **[SAML 署名証明書]** セクションで、**[証明書 (未加工)]** をクリックし、コンピューターに証明書ファイルを保存します。
+    a. **[メタデータ ファイルをアップロードします]** をクリックします。
+
+    ![メタデータ ファイルをアップロードする](./media/salesforce-sandbox-tutorial/upload_metadata.png)
+
+    b. **フォルダー ロゴ**をクリックしてメタデータ ファイルを選択し、**[アップロード]** をクリックします。
+
+    ![メタデータ ファイルを選択する](./media/salesforce-sandbox-tutorial/browse_upload_metadata.png)
+
+    > [!NOTE]
+    > このチュートリアルの後述するように、Salesforce Sandbox 管理ポータルからサービス プロバイダーのメタデータ ファイルを取得します。
+
+    c. メタデータ ファイルが正常にアップロードされると、**[応答 URL]** の値が **[応答 URL]** ボックスに自動的に入力されます。
+
+    ![Salesforce Sandbox Domain のドメインと URL のシングル サインオン情報](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_url1.png)
+
+6. **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータの XML** をダウンロードしてから、コンピューターに XML ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_certificate.png)
-
-5. **[保存]** ボタンをクリックします。
-
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/salesforce-sandbox-tutorial/tutorial_general_400.png)
-
-6. **[Salesforce Sandbox 構成]** セクションで、**[Salesforce Sandbox を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
-
-    ![Configure single sign-on](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_configure.png)
 
 7. ブラウザーで新しいタブを開き、Salesforce Sandbox の管理者アカウントにログインします。
 
@@ -150,41 +158,21 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-12. SAML のシングル サインオン設定を構成するには、 **[新規]** をクリックします。
+12. SAML のシングル サインオン設定を構成するには、**[New from Metadata File]\(メタデータ ファイルから新規\)** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
-13. **[シングル サインオンの設定]** セクションで、次の手順に従います。
+13. **[ファイルの選択]** をクリックして、Azure portal からダウンロードしたメタデータ XML ファイルをアップロードし、**[作成]** をクリックします。
 
-    ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-saml-config1.png)
+    ![Configure single sign-on](./media/salesforce-sandbox-tutorial/xmlchoose.png)
 
-    a. **[SAML Enabled]\(SAML の有効化\)** チェックボックスをオンにします。
+14. **[SAML シングル サインオンの設定]** ページでは、フィールドは自動的に入力されます。[保存] をクリックします。
 
-    b. **[Issuer]\(発行者\)** フィールドに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    ![Configure single sign-on](./media/salesforce-sandbox-tutorial/salesforcexml.png)
 
-    c. **ID プロバイダー証明書**をアップロードするには、**[参照]** をクリックし、Azure portal からダウンロードした証明書ファイルを参照して、選択します。
-
-    d. **[ID プロバイダーのログイン URL]** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
-
-    e. **SAML ID タイプ**として、次のオプションのいずれかを選択します。
-
-      * SAML アサーション内でユーザーの Salesforce ユーザー名が渡される場合は、**[Assertion contains the User's Salesforce username]\(アサーションにユーザーの Salesforce ユーザー名が含まれています\)** を選択します
-
-      * SAML アサーション内でユーザー オブジェクトのフェデレーション ID が渡される場合は、**[Assertion contains the Federation ID from the User object]\(アサーションにユーザー オブジェクトのフェデレーション ID が含まれています\)** を選択します
-  
-    f. **[SAML Identity Location]\(SAML ID の場所\)** として **[Identity is an Attribute element]\(ID は属性要素です\)** を選択します。
-
-    g. SFDC は SAML ログアウトをサポートしていません。  回避策として、**[Custom Logout URL]\(カスタム ログアウト URL\)** テキスト ボックスに `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0` を貼り付けます。
-
-    h. **[Save]** をクリックします。
-
-14. **[Single Sign-On Settings]\(シングル サインオンの設定\)** ページで、**[Download Metadata]\(メタデータのダウンロード\)** ボタンをクリックします。
+15. **[シングル サインオンの設定]** ページで **[メタデータのダウンロード]** ボタンをクリックし、サービス プロバイダーのメタデータ ファイルをダウンロードします。 前述の必要な URL を構成するために、Azure portal の **[基本的な SAML 構成]** セクションでこのファイルを使用します。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/configure4.png)
-
-15. 別のブラウザー ウィンドウでダウンロードしたメタデータを開き、**[場所]** の値をコピーし、Azure portal の **[Salesforce Sandbox のドメインと URL]** セクションの **[応答 URL]** テキストボックスに貼り付けます。  
-
-    ![Configure single sign-on](./media/salesforce-sandbox-tutorial/configure5.png)
 
 16. **SP** 開始モードでアプリケーションを構成する場合、その前提条件を以下に示します。
 
@@ -192,7 +180,7 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     b. Salesforce Sandbox でドメインを構成して有効にする必要があります。手順については、このチュートリアルで後述します。
 
-    c. Azure portal の **[Salesforce Sandbox のドメインと URL]** セクションで、**[詳細な URL 設定の表示]** をオンにして次の手順を実行します。
+    c. Azure portal の **[基本的な SAML 構成]** セクションで **[追加の URL を設定します]** をクリックして、次の手順を実行します。
   
     ![Salesforce Sandbox Domain のドメインと URL のシングル サインオン情報](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_url.png)
 
@@ -201,71 +189,41 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
     > [!NOTE]
     > この値は、ドメインを有効にした後で Salesforce Sandbox ポータルからコピーする必要があります。
 
-17. **[SAML 署名証明書]** セクションで、**[証明書 (未加工)]** をクリックし、コンピューターに証明書ファイルを保存します。
+17. **[SAML 署名証明書]** セクションで **[フェデレーション メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_certificate.png)
 
-18. **[保存]** ボタンをクリックします。
+18. ブラウザーで新しいタブを開き、Salesforce Sandbox の管理者アカウントにログインします。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/salesforce-sandbox-tutorial/tutorial_general_400.png)
-
-19. **[Salesforce Sandbox 構成]** セクションで、**[Salesforce Sandbox を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
-
-    ![Configure single sign-on](./media/salesforce-sandbox-tutorial/tutorial_salesforcesandbox_configure.png)
-
-20. ブラウザーで新しいタブを開き、Salesforce Sandbox の管理者アカウントにログインします。
-
-21. ページの右上隅の**設定アイコン**の下の **[Setup]\(セットアップ\)** をクリックします。
+19. ページの右上隅の**設定アイコン**の下の **[Setup]\(セットアップ\)** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/configure1.png)
 
-22. 左側のナビゲーション ウィンドウの **[設定]** まで下にスクロールし、**[ID]** をクリックして、関連セクションを展開します。 次に、**[シングル サインオンの設定]** をクリックします。
+20. 左側のナビゲーション ウィンドウの **[設定]** まで下にスクロールし、**[ID]** をクリックして、関連セクションを展開します。 次に、**[シングル サインオンの設定]** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-admin-sso.png)
 
-23. **[シングル サインオンの設定]** ページで、**[編集]** ボタンをクリックします。
+21. **[シングル サインオンの設定]** ページで、**[編集]** ボタンをクリックします。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/configure3.png)
 
-24. **[SAML 有効]** を選択し、**[保存]** をクリックします。
+22. **[SAML 有効]** を選択し、**[保存]** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-enable-saml.png)
 
-25. SAML のシングル サインオン設定を構成するには、 **[新規]** をクリックします。
+23. SAML のシングル サインオン設定を構成するには、**[New from Metadata File]\(メタデータ ファイルから新規\)** をクリックします。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-admin-sso-new.png)
 
-26. 2 つ目のインスタンスを追加する場合は、前述のようにドメインを有効にする必要があります (SP 開始の場合)。 [SAML シングル サインオンの設定] セクションで、次の手順に従います。
+24. **[ファイルの選択]** をクリックし、メタデータ XML ファイルをアップロードして **[作成]** をクリックします。
+
+    ![Configure single sign-on](./media/salesforce-sandbox-tutorial/xmlchoose.png)
+
+25. **[SAML Single Sign-On Settings]\(SAML のシングル サインオン設定\)** ページのフィールドには自動的に値が入力されています。**[名前]** ボックスに構成の名前 (例: *SPSSOWAAD_Test*) を入力し、[保存] をクリックします。
 
     ![Configure single sign-on](./media/salesforce-sandbox-tutorial/sf-saml-config.png)
 
-    a. **[名前]** テキストボックスに、構成の名前を入力します (例: *SPSSOWAAD_Test*)。
-
-    b. **[Issuer]\(発行者\)** フィールドに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
-
-    c. **[Entity ID]\(エンティティ ID\)** テキストボックスの最初のインスタンスには `https://test.salesforce.com` 値を使用します。アプリケーションの 2 つ目のインスタンスからは、テナント固有の識別子値を使用できます。
-
-    d. **ID プロバイダー証明書**をアップロードするには、**[Choose File]\(ファイルの選択\)** をクリックし、Azure Portal からダウンロードした証明書ファイルを参照して、選択します。
-
-    e. **SAML ID タイプ**として、次のオプションのいずれかを選択します。
-
-      * SAML アサーション内でユーザーの Salesforce ユーザー名が渡される場合は、**[Assertion contains the User's Salesforce username]\(アサーションにユーザーの Salesforce ユーザー名が含まれています\)** を選択します
-
-      * SAML アサーション内でユーザー オブジェクトのフェデレーション ID が渡される場合は、**[Assertion contains the Federation ID from the User object]\(アサーションにユーザー オブジェクトのフェデレーション ID が含まれています\)** を選択します
-
-      * SAML アサーション内でユーザー オブジェクトのユーザー ID が渡される場合は、**[Assertion contains the Use ID from the User object]\(アサーションにユーザー オブジェクトのユーザー ID が含まれています\)** を選択します
-
-    f. **[SAML Identity Location (SAML ID の場所)]** で、**[Identity is in the NameIdentifier element of the Subject statement (ID は Subject ステートメントの NameIdentifier 要素にあります)]** を選択します。
-
-    g. **[サービス プロバイダーが開始した要求のバインド]** で **[HTTP POST]** を選択します。
-
-    h. **[ID プロバイダーのログイン URL]** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
-
-    i. SFDC は SAML ログアウトをサポートしていません。  回避策として、**[Custom Logout URL]\(カスタム ログアウト URL\)** テキストボックスに `https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0` を貼り付けます。
-
-    j. **[Save]** をクリックします。
-
-27. Salesforce Sandbox でドメインを有効にするには、次の手順を実行します。
+26. Salesforce Sandbox でドメインを有効にするには、次の手順を実行します。
 
     > [!NOTE]
     > ドメインを有効にする前に、Salesforce Sandbox 上に同じドメインを作成する必要があります。 詳細については、「[ドメイン名の定義](https://help.salesforce.com/HTViewHelpDoc?id=domain_name_define.htm&language=en_US)」をご覧ください。 ドメインを作成したら、ドメインが正しく構成されていることを確認してください。
@@ -286,33 +244,26 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![Azure AD ユーザーの作成][100]
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/salesforce-sandbox-tutorial/create_aaduser_01.png)
+    ![Azure AD のテスト ユーザーの作成](./media/salesforce-sandbox-tutorial/create_aaduser_01.png) 
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/salesforce-sandbox-tutorial/create_aaduser_02.png)
+    ![Azure AD のテスト ユーザーの作成](./media/salesforce-sandbox-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/salesforce-sandbox-tutorial/create_aaduser_03.png)
+    c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/salesforce-sandbox-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
+    d. **作成**を選択します。
 
 ### <a name="create-a-salesforce-sandbox-test-user"></a>Salesforce Sandbox のテスト ユーザーの作成
 
@@ -338,7 +289,7 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーの追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
@@ -360,7 +311,6 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 * [[ユーザー プロビジョニングの構成]](salesforce-sandbox-provisioning-tutorial.md)
-
 
 <!--Image references-->
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: b841a1104a0cc1e74d9ab1f16ef39d3892ba7d55
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 69127702a7d8e7027e78a8e04a4e8e1bc3e36b65
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996691"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956342"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>サブスクリプションにアクセスするための Resource Manager 認証 API の使用
 ## <a name="introduction"></a>はじめに
@@ -94,7 +94,7 @@ az ad app create --display-name {app name} --homepage https://{your domain}/{app
 ### <a name="optional-configuration---certificate-credential"></a>オプションの構成 - 証明書資格情報
 Azure AD では、アプリケーションの証明書資格情報もサポートしています。自己署名証明書を作成し、秘密キーを保持して、Azure AD アプリケーションの登録に公開キーを追加します。 認証では、アプリケーションが秘密キーを使用して署名された小さなペイロードを Azure AD に送信すると、Azure AD は登録済みの公開キーを使用して署名を検証します。
 
-証明書を使用した AD アプリケーションの作成方法については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)」または「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md)」をご覧ください。
+証明書を使用した AD アプリケーションの作成方法については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)」または「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md)」をご覧ください。
 
 ## <a name="get-tenant-id-from-subscription-id"></a>サブスクリプション ID を使用してテナント ID を取得する
 Resource Manager の呼び出しに使用できるトークンを要求するには、Azure サブスクリプションをホストする Azure AD テナントのテナント ID をアプリケーションが認識している必要があります。 ほとんどの場合、ユーザーは各自のサブスクリプション ID を知っていますが、Azure Active Directory のテナント ID は知らない可能性があります。 ユーザーのテナント ID を取得するには、ユーザーにサブスクリプション ID を要求します。 サブスクリプションに関する要求を送信するときに、そのサブスクリプション ID を指定します。
@@ -106,7 +106,7 @@ Resource Manager の呼び出しに使用できるトークンを要求するに
 ## <a name="get-user--app-access-token"></a>ユーザー + アプリケーション アクセス トークンを取得する
 アプリケーションは、ユーザーの資格情報を認証し、認証コードを返すために、OAuth 2.0 承認要求と共にユーザーを Azure AD にリダイレクトします。 アプリケーションは、認証コードを使用して Resource Manager のアクセス トークンを取得します。 [ConnectSubscription](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/Controllers/HomeController.cs#L42) メソッドが承認要求を作成します。
 
-この記事では、ユーザーを認証するための REST API 要求を示します。 ヘルパー ライブラリを使用して、コードで認証を実行することもできます。 これらのライブラリの詳細については、「[Azure Active Directory 認証ライブラリ](../active-directory/active-directory-authentication-libraries.md)」をご覧ください。 アプリケーションでの ID 管理の統合に関するガイダンスについては、「[Azure Active Directory 開発者ガイド](../active-directory/develop/azure-ad-developers-guide.md)」をご覧ください。
+この記事では、ユーザーを認証するための REST API 要求を示します。 ヘルパー ライブラリを使用して、コードで認証を実行することもできます。 これらのライブラリの詳細については、「[Azure Active Directory 認証ライブラリ](../active-directory/active-directory-authentication-libraries.md)」をご覧ください。 アプリケーションでの ID 管理の統合に関するガイダンスについては、「[Azure Active Directory 開発者ガイド](../active-directory/develop/v1-overview.md)」をご覧ください。
 
 ### <a name="auth-request-oauth-20"></a>承認要求 (OAuth 2.0)
 Azure AD 承認エンドポイントに Open ID Connect/OAuth 2.0 承認要求を発行します。

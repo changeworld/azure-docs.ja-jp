@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: saudas
-ms.openlocfilehash: 6b55825107ae8872b146b3ad4fde0ef4b917b71d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d8da717b83b43395309c695a4f9edaeda8144a8b
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046829"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379197"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でサポートされている Kubernetes のバージョン
 
@@ -32,6 +32,29 @@ AKS では、Kubernetes の 4 つのマイナー バージョンがサポート�
 新しいマイナー バージョンが導入されると、サポートされている最も古いマイナー バージョンと修正プログラムのリリースは、提供終了となります。 新しいマイナー バージョンのリリースおよび次期バージョンの提供終了の 15 日前に、Azure の更新プログラム チャネルを通じて告知が行われます。 上記の例では*1.11.x* がリリースされた場合に廃止されるバージョンは、*1.7.g* + *1.7.h* となります。
 
 ポータルまたは Azure CLI を使用して AKS クラスターをデプロイする場合、クラスターは常に n-1 マイナー バージョンおよび最新修正プログラムに設定されます。 たとえば、AKS が *1.11.x*、*1.10.a* + *1.10.b*、*1.9.c* + *1.9 d*、*1.8.e* + *1.8f* をサポートする場合、新しいクラスターの既定のバージョンは *1.10.b* となります。
+
+## <a name="list-currently-supported-versions"></a>現在サポートされているバージョンの一覧表示
+
+ご使用のサブスクリプションとリージョンで現在使用可能なバージョンを確認するには、[az aks get-versions][az-aks-get-versions] コマンドを使用します。 次の例では、*EastUS* リージョンで使用可能な Kubernetes のバージョンが一覧表示されます。
+
+```azurecli-interactive
+az aks get-versions --location eastus --output table
+```
+
+出力は次の例のようになります。この例では、Kubernetes バージョン *1.11.3* が使用可能な最新バージョンです。
+
+```
+KubernetesVersion    Upgrades
+-------------------  ----------------------
+1.11.3               None available
+1.11.2               1.11.3
+1.10.8               1.11.2, 1.11.3
+1.10.7               1.10.8, 1.11.2, 1.11.3
+1.9.10               1.10.7, 1.10.8
+1.9.9                1.9.10, 1.10.7, 1.10.8
+1.8.15               1.9.9, 1.9.10
+1.8.14               1.8.15, 1.9.9, 1.9.10
+```
 
 ## <a name="faq"></a>FAQ
 
@@ -65,3 +88,4 @@ AKS でサポートされていないのマイナー バージョンについて
 
 <!-- LINKS - Internal -->
 [aks-upgrade]: upgrade-cluster.md
+[az-aks-get-versions]: /cli/azure/aks#az-aks-get-versions

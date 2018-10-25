@@ -1,35 +1,35 @@
 ---
 title: Speech Devices SDK を取得する
 description: Speech Devices SDK にアクセスする方法を説明します。
-titleSuffix: Microsoft Cognitive Services
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
-ms.technology: speech
+ms.component: speech
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-jerkin
-ms.openlocfilehash: f70b41cd7e3a7a6eddf32ae6ad024fa9ac040f29
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.author: erhopf
+ms.openlocfilehash: 1d64e9b88f689f680ffe1e12a2ec87bf1536fa8b
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281784"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166119"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Cognitive Services Speech Devices SDK を取得する
 
-## <a name="requesting-access"></a>アクセス権の要求
-
 Speech Devices SDK は制限付きのプレビュー段階にあるため、プログラムに登録する必要があります。 現在、Microsoft では、この製品にアクセスする候補として、大規模の企業を優先しています。
 
-Speech Devices SDK にアクセスするには、次の手順に従います。
+## <a name="request-access"></a>アクセスの要求
+
+Speech Devices SDK にアクセスするには:
 
 1. Microsoft Speech Devices SDKの[サインアップ フォーム](https://aka.ms/sdsdk-signup)に移動します。
 1. [使用許諾契約書](speech-devices-sdk-license.md)を読みます。
-1. この使用許諾契約の条項に同意する場合は、"同意する" を選択します。
+1. この使用許諾契約の条項に同意する場合は、**[同意する]** を選択します。
 1. フォームの質問に回答します。
 1. フォームを送信します。 
-1. メール アドレスを Azure Active Directory にまだ登録していない場合は、承認されると、以下のような招待メールを受信します。 メール アドレスを Azure Active Directory に既に登録している場合は、承認されると、Microsoft の音声チームからメール メッセージが送信され、先に進んで [Speech Devices SDK をダウンロード](#download-the-speech-devices-sdk)できます。
+1. メール アドレスが Azure Active Directory (Azure AD) に登録されていない場合は、アクセスが承認されたときに、次の例のような招待メールが届きます。 メール アドレスが既に Azure AD に登録されている場合は、アクセスが承認されたときに Microsoft Speech Team からメール メッセージが届き、先に進んで [Speech Devices SDK をダウンロード](#download-the-speech-devices-sdk)できます。
 
 ## <a name="approval-e-mail"></a>承認のメール
 
@@ -41,43 +41,46 @@ Subject: You're invited to the Microsoft organization
 ![メール メッセージ](media/speech-devices-sdk/get-sdk-1.png)
 
 ## <a name="accept-access"></a>アクセスを受け入れる
-次の手順を実行して、登録時に指定したメール アドレスで Azure Active Directory に参加します。 このプロセスによって、Speech Devices SDK の[ダウンロード サイト](https://shares.datatransfer.microsoft.com/)へのアクセスが許可されます。
 
-1. 受信した電子メール メッセージにある **[Get Started]\(作業の開始\)** をクリックします。 お客様の組織で既に Office 365 を使用している場合は、ログインするように求められ、手順 8. に進むことができます。
+登録時に指定したメール アドレスを使用して、以下の手順で Azure AD に参加します。 このプロセスによって、Speech Devices SDK の[ダウンロード サイト](https://shares.datatransfer.microsoft.com/)へのアクセスが許可されます。
 
-2. 起動されたブラウザー ウィンドウで **[次へ]** をクリックします。
+1. 受信した電子メール メッセージに記載されている **[開始]** をクリックします。 お客様の組織で既に Office 365 を使用している場合は、サインインするように求められ、手順 8. に進むことができます。
+
+2. 表示されるブラウザー ウィンドウで **[次へ]** を選択します。
 
     ![認証ウィンドウ](media/speech-devices-sdk/get-sdk-2.png)
 
-3. Microsoft アカウントをまだお持ちでない場合は、作成します。 上記の手順 6. で招待メールを受信したのと同じメール アドレスを入力します。
+3. Microsoft アカウントをまだお持ちでない場合は、作成します。 招待メールの送信先と同じメール アドレスを入力します。
 
-    ![Microsoft アカウントを作成する](media/speech-devices-sdk/get-sdk-3.png)
+    ![Microsoft アカウントの作成](media/speech-devices-sdk/get-sdk-3.png)
 
-4. **[次へ]** をクリックしてパスワードを作成します。
+4. **[次へ]** を選択してパスワードを作成します。
 
-5. メールを確認するように求められたら、メールの受信トレイに戻り、自分宛てに送信された確認コードを取得します。
+5. メールの確認を求められたら、受け取った招待メールから確認コードを取得します。
  
-7. ダイアログで、メール メッセージのセキュリティ コードを貼り付けるか、入力します。 この例では "8406" です。 その後、 **[次へ]** をクリックします。
+7. ダイアログ ボックスで、メール メッセージのセキュリティ コードを貼り付けるか、入力します。 この例のセキュリティ コードは **8406** です。 **[次へ]** を選択します。
 
     ![メールを確認する](media/speech-devices-sdk/get-sdk-6.png)
  
-8. ブラウザー ウィンドウにアクセス パネル アプリケーションが表示される場合、(手順 6. の) メール アドレスが Azure Active Directory の一部であることを確認したことになります。 これで、Speech Devices SDK ダウンロード サイトにアクセスできるようになりました。
+8. ブラウザーにアクセス パネル アプリケーションが表示される場合、メール アドレスが Azure AD に登録されていることを確認したことになります。 これで、Speech Devices SDK ダウンロード サイトにアクセスできるようになりました。
 
 ## <a name="download-the-speech-devices-sdk"></a>Speech Devices SDK をダウンロードする
 
-[Speech Devices SDK ダウンロード サイト](https://shares.datatransfer.microsoft.com/)に移動して、先ほど作成した Microsoft アカウントでログインします。 次の手順に従って、Speech Devices SDK、関連するサンプル コード、および参考資料をダウンロードできます。
+[Speech Devices SDK ダウンロード サイト](https://shares.datatransfer.microsoft.com/)に移動します。 先ほど作成した Microsoft アカウントを使用してサインインします。 
 
 ![SDK ダウンロード サイト](media/speech-devices-sdk/get-sdk-7.png)
 
-1. ブラウザーから Aspera Connect ツールをダウンロードしてインストール操作を求められたら、従います。
+Speech Devices SDK、関連するサンプル コード、参考資料をダウンロードするには:
+
+1. ブラウザーのメッセージに従って Aspera Connect ツールをダウンロードしてインストールします。
 
     ![Aspera Connect をダウンロードする](media/speech-devices-sdk/get-sdk-8.png)
  
-1. **[はい]** をクリックして Aspera Connect に切り替えます。
+1. **[はい]** を選択してアプリを Aspera Connect に切り替えます。
 
     ![Aspera Connect に切り替える](media/speech-devices-sdk/get-sdk-9.png)
  
-1. **[許可]** をクリックして、Aspera Connect を使用してファイルをダウンロードすることを確認します。
+1. **[許可]** を選択して、Aspera Connect を使用してファイルをダウンロードすることを確認します。
 
     ![Aspera Connect を使用してダウンロードする](media/speech-devices-sdk/get-sdk-10.png)
  
@@ -85,7 +88,7 @@ Subject: You're invited to the Microsoft organization
 
     ![Aspera Connect の転送ウィンドウ](media/speech-devices-sdk/get-sdk-11.png)
  
-既定では、ファイルは **Downloads** フォルダーにダウンロードされます。 このサイトからすぐにログアウトできます。 
+既定では、ファイルは **Downloads** フォルダーにダウンロードされます。 このサイトからすぐにサインアウトできます。 
 
 ## <a name="next-steps"></a>次の手順
 

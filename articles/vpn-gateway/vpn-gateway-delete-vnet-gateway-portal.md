@@ -1,26 +1,18 @@
 ---
 title: '仮想ネットワーク ゲートウェイの削除: Azure Portal: Resource Manager | Microsoft ドキュメント'
-description: Resource Manager デプロイメント モデルで、Azure Portal を使用して仮想ネットワーク ゲートウェイを削除します。
+description: Resource Manager デプロイ モデルで、Azure Portal を使用して仮想ネットワーク ゲートウェイを削除します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: ''
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/20/2017
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: b014d43ab25124d3e08e19ca190b320fc8456593
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 78af43510e5fc2bed38e109a546944d4a649241c
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27593458"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984113"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>ポータルを使用して仮想ネットワーク ゲートウェイを削除する
 
@@ -29,14 +21,14 @@ ms.locfileid: "27593458"
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
-この記事では、Resource Manager デプロイメント モデルを使用してデプロイされた Azure VPN ゲートウェイを削除する手順について説明します。 VPN ゲートウェイ構成の仮想ネットワーク ゲートウェイを削除する際に利用できる方法はいくつかあります。
+この記事では、Resource Manager デプロイ モデルを使用してデプロイされた Azure VPN ゲートウェイを削除する手順について説明します。 VPN ゲートウェイ構成の仮想ネットワーク ゲートウェイを削除する際に利用できる方法はいくつかあります。
 
 - テスト環境の場合のように、すべてを削除してやり直す場合は、リソース グループを削除することができます。 リソース グループを削除すると、グループ内のすべてのリソースが削除されます。 この方法は、リソース グループ内のどのリソースも保持する必要がない場合にのみお勧めします。 この方法を使用して一部のリソースだけを選択して削除することはできません。
 
 - リソース グループ内の一部のリソースを保持する必要がある場合は、仮想ネットワーク ゲートウェイの削除が少し複雑になります。 仮想ネットワーク ゲートウェイを削除する前に、まず、そのゲートウェイに依存しているリソースをすべて削除する必要があります。 従う手順は、作成した接続の種類と、各接続に依存するリソースによって異なります。
 
 > [!IMPORTANT]
-> 以下の手順では、Resource Manager デプロイメント モデルを使用してデプロイされた Azure VPN ゲートウェイを削除する方法について説明します。 クラシック デプロイメント モデルを使用してデプロイされた VPN ゲートウェイを削除するには、[こちら](vpn-gateway-delete-vnet-gateway-classic-powershell.md)の手順に従って Azure PowerShell を使用してください。
+> 以下の手順では、Resource Manager デプロイ モデルを使用してデプロイされた Azure VPN ゲートウェイを削除する方法について説明します。 クラシック デプロイ モデルを使用してデプロイされた VPN ゲートウェイを削除するには、[こちら](vpn-gateway-delete-vnet-gateway-classic-powershell.md)の手順に従って Azure PowerShell を使用してください。
 
 
 ## <a name="delete-a-vpn-gateway"></a>VPN ゲートウェイの削除

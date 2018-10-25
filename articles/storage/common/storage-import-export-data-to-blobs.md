@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 10/15/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 39287e4d90e4f6f42dd1f79d5457853e253bd736
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 3a647d9f821007dc0f2b48864b937aee84924d8f
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737058"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353173"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Azure Import/Export サービスを使用して Azure Blob Storage にデータをインポートする
 
@@ -96,7 +96,7 @@ Azure Blob Storage にデータを転送するインポート ジョブを作成
 
     - **[Azure へインポート]** を選択します。
     - インポート ジョブのわかりやすい名前を入力します。 この名前は、ジョブの進行状況の追跡に使用します。
-        - この名前には、小文字のアルファベット、数字、ハイフン、アンダースコアのみを使用できます。
+        - 名前には小文字、数字、ハイフンのみを含めることができます。
         - 名前はアルファベットから始める必要があります。スペースを含めることはできません。
     - サブスクリプションを選択します。
     - リソース グループを入力または選択します。  

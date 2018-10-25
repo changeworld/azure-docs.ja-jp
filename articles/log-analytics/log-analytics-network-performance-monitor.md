@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: e12c513f8812381897804412616be1ef7c743a3d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 634958265193a1dedb7c860c34f712160e4120d2
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044095"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353293"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -257,7 +257,7 @@ Network Performance Monitor では、送信元と宛先のエンドポイント�
 
 Network Performance Monitor は、[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts) のアラート機能を使用します。
 
-これは、すべてのアラートは[アクション グループ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview)を使用して管理されることを意味します。  
+これは、すべての通知が[アクション グループ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview)を使用して管理されることを意味します。  
 
 OMS を介してアラートを作成する NPM ユーザーの場合: 
 1. Azure Portal にリダイレクトするリンクが表示されます。 それをクリックしてポータルにアクセスします。
@@ -271,7 +271,11 @@ Azure Portal を介してアラートを作成する NPM ユーザーの場合:
 3. アクション グループを使用する場合は、以前に作成したアクション グループを選択する必要があります。 アクション グループを作成する方法については、[ここ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal)を参照してください。 
 4. アラートが正常に作成されると、[アラートの管理] リンクを使用してアラートを管理できます。 
 
-##<a name="pricing"></a>価格
+アラートを作成するたびに NPM によって Azure Monitor 上でクエリ ベースのログ アラート ルールが作成されます。 このクエリは、既定では 5 分ごとにトリガーされます。 Azure Monitor では、最初に作成された 250 件のログ アラート ルールには課金されず、250 件のログ アラート ルール制限を超えるアラート ルールは [Azure Monitor の価格ページのアラートの価格](https://azure.microsoft.com/en-us/pricing/details/monitor/)に従って課金されます。
+通知は、[Azure Monitor の価格ページの通知の価格](https://azure.microsoft.com/en-us/pricing/details/monitor/)に従って個別に課金されます。
+
+
+## <a name="pricing"></a>価格
 
 価格についての情報は、[オンライン](log-analytics-network-performance-monitor-pricing-faq.md)で入手できます。
 

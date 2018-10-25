@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d7b183a5b87d5777609deac02e4424d9451e9643
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: e3b9de282b95b27a04ac6d182b1045e18e65c5f6
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452498"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025907"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Windows 用の仮想マシン拡張機能とその機能
 
@@ -57,7 +57,8 @@ Azure VM エージェントは、Azure VM と Azure ファブリック コント
 
 #### <a name="supported-oses"></a>サポート対象の OS
 
-Windows ゲスト エージェントは複数の OS で実行されますが、拡張機能フレームワークでは拡張を行う OS に対して制限があります。 詳細については、[こちらの記事] (https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems) をご覧ください。
+Windows ゲスト エージェントは複数の OS で実行されますが、拡張機能フレームワークでは拡張を行う OS に対して制限があります。 詳細については、 [こちらの記事](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+)を参照してください。
 
 一部の拡張機能は、すべての OS ではサポートされず、"*エラー コード 51、'OS がサポートされていません'*" が出力される場合があります。 サポートの可否については、個々の拡張機能のドキュメントを確認してください。
 

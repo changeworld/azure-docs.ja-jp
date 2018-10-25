@@ -13,29 +13,29 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 10/04/2018
 ms.author: ramankum
-ms.openlocfilehash: 6cfbc458a4bd751b8b871501d19db641e3980767
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 958f661585b38b156cf523fe00986e7594474917
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719326"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093818"
 ---
-# <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Azure マネージド ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する
+# <a name="update-the-storage-type-of-a-managed-disk"></a>マネージド ディスクのストレージの種類を更新する
 
-マネージド ディスクには、[Premium SSD](../windows/premium-storage.md)、Standard SSD (プレビュー)、[Standard HDD](../windows/standard-storage.md) という 3 種類のストレージ オプションがあります。 パフォーマンス上のニーズに基づいて、これらのオプションを最小限のダウンタイムで簡単に切り替えることができます。 これはアンマネージド ディスクではサポートされていません。 ディスクの種類を簡単に切り替えるために、簡単に[マネージド ディスクに変換](convert-unmanaged-to-managed-disks.md)できます。
+Azure Managed Disks には、[Premium SSD](../windows/premium-storage.md)、[Standard SSD](../windows/disks-standard-ssd.md)、[Standard HDD](../windows/standard-storage.md) という 3 種類のストレージ オプションがあります。 パフォーマンスのニーズに応じて、ダウンタイムを最小限に抑えてストレージの種類間でマネージド ディスクを切り替えることができます。 アンマネージド ディスクでは、ストレージの種類の切り替えはサポートされていません。ただし、[アンマネージド ディスクをマネージド ディスクに簡単に変換する](convert-unmanaged-to-managed-disks.md)ことができます。
 
-この記事では、マネージド ディスクを Azure PowerShell を使用して Standard から Premium に (または Premium から Standard に) 変換する方法を示します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.8.1)に関するページを参照してください。
+この記事では、マネージド ディスクを Azure PowerShell を使用して Standard から Premium に (または Premium から Standard に) 変換する方法を示します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストールと構成](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-6.8.1)に関するページを参照してください。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="prerequisites"></a>前提条件
 
-* 変換作業は VM の再起動を伴うので、既に設定されているメンテナンス期間中に ディスク ストレージの移行をスケジュールしてください。 
-* 管理されていないディスクを使用している場合は、まず[マネージド ディスクに変換](convert-unmanaged-to-managed-disks.md)してから、この記事を参照してストレージ オプションを切り替えてください。 
-* この記事では、Azure PowerShell モジュール バージョン 6.0.0 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 `Connect-AzureRmAccount` を実行して、Azure との接続を作成する必要もあります。
+* 変換作業には仮想マシン (VM) の再起動が必要なので、既に設定されているメンテナンス期間中にディスク ストレージの移行をスケジュールするようにします。 
+* アンマネージド ディスクを使用している場合は、まず[マネージド ディスクに変換して](convert-unmanaged-to-managed-disks.md)、ストレージの種類間で切り替えることができます。 
+* この記事の例では、バージョン 6.0.0 以降の Azure PowerShell が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 Azure との接続を作成するには、[Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) を実行します。
 
 
-## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium-and-vice-versa"></a>VM のすべてのマネージド ディスクを Standard から Premium に (または Premium から Standard に) 変換する
+## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>VM のすべてのマネージド ディスクを Standard から Premium に変換する
 
 次の例は、VM のすべてのディスクを Standard ストレージから Premium ストレージに切り替える方法を示しています。 Premium マネージド ディスクを使用するには、Premium Storage に対応している [VM のサイズ](sizes.md)を使用している必要があります。 この例は、Premium ストレージに対応するサイズへの切り替えも行います。
 
@@ -79,9 +79,10 @@ foreach ($disk in $vmDisks)
 
 Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ```
-## <a name="convert-a-managed-disk-from-standard-to-premium-and-vice-versa"></a>マネージド ディスクを Standard から Premium に (または Premium から Standard に) 変換する
 
-開発/テスト ワークロードでは、コストを削減するために Standard ディスクと Premium ディスクを混在させたい場合があります。 これは、優れたパフォーマンスを必要とするディスクのみを Premium ストレージにアップグレードすることで実現できます。 次の例は、VM の 1 つのディスクを Standard から Premium に (または Premium から Standard に) 切り替える方法を示しています。 Premium マネージド ディスクを使用するには、Premium Storage に対応している [VM のサイズ](sizes.md)を使用している必要があります。 この例は、Premium ストレージに対応するサイズへの切り替えも行います。
+## <a name="convert-a-managed-disk-from-standard-to-premium"></a>マネージド ディスクを Standard から Premium に変換する
+
+開発/テスト ワークロードでは、コストを削減するために Standard ディスクと Premium ディスクを混在させたい場合があります。 そのためには、パフォーマンスの向上が必要なディスクのみを Premium ストレージにアップグレードします。 次の例は、VM の 1 つのディスクを Standard から Premium に (または Premium から Standard に) 切り替える方法を示しています。 Premium マネージド ディスクを使用するには、Premium Storage に対応している [VM のサイズ](sizes.md)を使用している必要があります。 この例では、Premium ストレージに対応するサイズに切り替える方法も示しています。
 
 ```azurepowershell-interactive
 
@@ -116,7 +117,7 @@ Update-AzureRmDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
 Start-AzureRmVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ```
 
-## <a name="convert-a-managed-disk-from-standard-hdd-to-standard-ssd-and-vice-versa"></a>マネージド ディスクを Standard HDD から standard SSD に (または standard SSD から Standard HDD に) 変換する
+## <a name="convert-a-managed-disk-from-standard-hdd-to-standard-ssd"></a>マネージド ディスクを Standard HDD から Standard SSD に変換する
 
 次の例は、VM の 1 つのディスクを Standard HDD から Standard SSD に (または Standard SSD から Standard HDD に) 切り替える方法を示しています。
 

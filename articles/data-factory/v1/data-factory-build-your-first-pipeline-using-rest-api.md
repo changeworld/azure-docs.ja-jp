@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 91a85505eda34e11f0db9c5f3c46e33aad992ffe
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: caea4296bc0573141865aca27b04f9d9ee049e94
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736701"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955588"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ ms.locfileid: "45736701"
 ## <a name="prerequisites"></a>前提条件
 * 「 [チュートリアルの概要](data-factory-build-your-first-pipeline.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
 * コンピューターに [Curl](https://curl.haxx.se/dlwiz/) をインストールします。 データ ファクトリを作成するには、CURL ツールと REST コマンドを使用します。
-* [この記事](../../azure-resource-manager/resource-group-create-service-principal-portal.md) の手順に従って、次の操作を行います。
+* [この記事](../../active-directory/develop/howto-create-service-principal-portal.md) の手順に従って、次の操作を行います。
   1. Azure Active Directory に、 **ADFGetStartedApp** という名前の Web アプリケーションを作成します。
   2. **クライアント ID** と**秘密キー**を取得します。
   3. **テナント ID**を取得します。

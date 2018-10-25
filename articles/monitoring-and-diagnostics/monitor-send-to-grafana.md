@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: de2c57949cb2087e41b79a225963225d340f12af
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: b4fbd1248f91e0766cca66d1c51033a8b338c324
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263084"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957379"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Azure Monitor データ ソース プラグイン](https://grafana.com/plugins/grafana-azure-monitor-datasource)を使用して [Grafana](https://grafana.com/) から Azure サービスおよびアプリケーションを監視することもできるようになりました。 このプラグインは、Application Insights SDK によって収集されたアプリケーション パフォーマンス データや、Azure Monitor によって提供されるインフラストラクチャ データを収集します。 その後、このデータを Grafana ダッシュボードで表示できます。
@@ -62,7 +62,7 @@ Azure Marketplace から Grafana サーバーを設定し、Azure Monitor およ
 
 Grafana は Azure Active Directory サービス プリンシパルを使用して Azure Monitor API に接続し、メトリック データを収集します。 Azure リソースへのアクセスを管理するには、サービス プリンシパルを作成する必要があります。
 
-1. サービス プリンシパルを作成するには、[この手順](../azure-resource-manager/resource-group-create-service-principal-portal.md)を参照してください。 テナント ID、クライアント ID、およびクライアント シークレットをコピーおよび保存します。
+1. サービス プリンシパルを作成するには、[この手順](../active-directory/develop/howto-create-service-principal-portal.md)を参照してください。 テナント ID、クライアント ID、およびクライアント シークレットをコピーおよび保存します。
 
 2. Azure Active Directory アプリケーションにリーダー ロールを割り当てるには、「[アプリケーションをロールに割り当てる](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role)」を参照してください。     
 

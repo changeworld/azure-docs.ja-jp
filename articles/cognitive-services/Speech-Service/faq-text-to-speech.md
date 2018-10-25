@@ -1,20 +1,21 @@
 ---
 title: Azure のテキスト読み上げについてよく寄せられる質問
-description: テキスト読み上げサービスについてよく寄せられる質問 (FAQ) とその回答を紹介します。
 titleSuffix: Azure Cognitive Services
+description: テキスト読み上げサービスについてよく寄せられる質問 (FAQ) とその回答を紹介します。
 services: cognitive-services
 author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 2068bcb796b660847d0ea9b1126e64a9003ca871
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f8d80ab189d8ed1f4b153e81963ef31cc5f685b8
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576852"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470049"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>テキスト読み上げについてよく寄せられる質問
 

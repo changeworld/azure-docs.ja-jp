@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: c01da1b667f5a57e9597b77e21dcd9cc95340cb1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 21c2c9ab0300ed5eac9ceebbd88627ea091b3389
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43088228"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954472"
 ---
 # <a name="transform-data-in-the-cloud-by-using-spark-activity-in-azure-data-factory"></a>Azure Data Factory で Spark アクティビティを使用してクラウドのデータを変換する
 このチュートリアルでは、Azure PowerShell を使用して Data Factory パイプラインを作成します。このパイプラインで、Spark アクティビティとオンデマンドの HDInsight のリンクされたサービスを使用してデータを変換します。 このチュートリアルでは、以下の手順を実行します。
@@ -135,7 +135,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 - **hostSubscriptionId**。 &lt;subscriptionID&gt; は、実際の Azure サブスクリプションの ID に置き換えてください。 オンデマンドの HDInsight クラスターは、このサブスクリプション内に作成されます。 
 - **tenant**。 &lt;tenantID&gt; は、実際の Azure テナントの ID に置き換えてください。 
-- **servicePrincipalId**、**servicePrincipalKey**。 &lt;servicePrincipalID&gt; と &lt;servicePrincipalKey&gt; は、Azure Active Directory の実際のサービス プリンシパルの ID とキーに置き換えてください。 このサービス プリンシパルは、サブスクリプションまたはクラスターが作成されるリソース グループの共同作成者ロールのメンバーである必要があります。 詳細については、[Azure Active Directory のアプリケーションとサービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。 
+- **servicePrincipalId**、**servicePrincipalKey**。 &lt;servicePrincipalID&gt; と &lt;servicePrincipalKey&gt; は、Azure Active Directory の実際のサービス プリンシパルの ID とキーに置き換えてください。 このサービス プリンシパルは、サブスクリプションまたはクラスターが作成されるリソース グループの共同作成者ロールのメンバーである必要があります。 詳細については、[Azure Active Directory のアプリケーションとサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。 
 - **clusterResourceGroup**。 &lt;resourceGroupOfHDICluster&gt; は、HDInsight クラスターの作成先であるリソース グループの名前に置き換えてください。 
 
 > [!NOTE]

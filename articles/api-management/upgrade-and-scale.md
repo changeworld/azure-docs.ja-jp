@@ -11,16 +11,16 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 3f92eac79e9524aa6ded9f898d582ce46c99bf97
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 2aef9b6f32d562776be3e3da25b017d5ff88c4c4
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363294"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024332"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Azure API Management インスタンスのアップグレードとスケーリングを行う  
 
-Azure API Management (APIM) インスタンスは、ユニットを追加するか削除することでスケーリングできます。 **ユニット**は専用の Azure リソースで構成され、1 か月あたりの API 呼び出しの数として表される特定の耐荷容量があります。 この数値は呼び出しの制限を表しているのではなく、大まかな容量計画を行うための最大スループット値です。 実際のスループットと待ち時間は、同時接続の数とレート、構成されたポリシーの種類と数、要求のサイズと応答のサイズ、バックエンドの待ち時間などの多くの要因によって、大幅に異なります。
+Azure API Management (APIM) インスタンスは、ユニットを追加するか削除することでスケーリングできます。 **ユニット**は専用の Azure リソースで構成され、1 か月あたりの API 呼び出しの数として表される特定の耐荷容量があります。 この数値は呼び出しの制限を表しているのではなく、大まかな容量計画を行うための最大スループット値です。 実際のスループットと待ち時間は、コンカレント接続の数とレート、構成されたポリシーの種類と数、要求のサイズと応答のサイズ、バックエンドの待ち時間などの多くの要因によって、大幅に異なります。
 
 各ユニットの容量と価格は、ユニットが存在する**レベル**によって決まります。 4 つのレベル (**Developer**、**Basic**、**Standard**、**Premium**) から選択できます。 レベル内でサービスの容量を増やす必要がある場合は、ユニットを追加する必要があります。 現在選択されている APIM インスタンスのレベルではそれ以上ユニットを追加できない場合は、上位のレベルにアップグレードする必要があります。
 
@@ -39,7 +39,7 @@ Azure API Management (APIM) インスタンスは、ユニットを追加する�
 
 + APIM インスタンスを持っている。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
 
-+ [Azure API Management インスタンスの容量] (api-management-capacity.md) の概念を理解している。
++ [Azure API Management インスタンスの容量](api-management-capacity.md)の概念を理解している。
 
 ## <a name="upgrade-and-scale"></a>アップグレードとスケーリング  
 

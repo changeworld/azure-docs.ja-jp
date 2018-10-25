@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: b329fb1416d28b0732e7b9ea4612f5bac8580b3a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 62f71f29f813cd30c7d8e3c7f37f41677cf07364
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132767"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956376"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Azure Logic Apps からのカスタム API の呼び出しのセキュリティ保護
 
@@ -104,7 +104,7 @@ API の呼び出しをセキュリティで保護するために、Azure Portal 
 
 4. **テナント ID** (Azure AD テナントの GUID)、**アプリケーション ID**、使用したパスワードを必ずコピーします。
 
-詳細については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../azure-resource-manager/resource-group-authenticate-service-principal.md)」を参照してください。
+詳細については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)」を参照してください。
 
 #### <a name="part-2-create-an-azure-ad-application-identity-for-your-web-app-or-api-app"></a>パート 2: Web アプリまたは API アプリの Azure AD アプリケーション ID を作成する
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell
-ms.openlocfilehash: 99d34d59bb9d55ff074d454fe4544917c4e91110
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: a80895db8a89b8d9392d0ed067b95daa23474d8b
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205989"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113871"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>既存の実行可能ファイルのパッケージ化と Service Fabric へのデプロイ
 [ゲスト実行可能](service-fabric-guest-executables-introduction.md)ファイルを既存の実行可能ファイルとしてパッケージ化する際、Visual Studio プロジェクト テンプレートを使用するか、[アプリケーション パッケージを手動で作成する](#manually)かを選択できます。 Visual Studio を使用する場合、アプリケーション パッケージの構造とマニフェスト ファイルは新しいプロジェクト テンプレートによって作成されます。
@@ -168,7 +168,9 @@ SetupEntryPoint は 1 つしかないため、アプリケーションのセッ�
 </EntryPoint>
 ```
 
-サービス マニフェスト ファイルの `EntryPoint` 要素では、サービスの起動方法を指定します。 `ExeHost` 要素は、サービスの起動に使用する実行可能ファイル (および引数) を指定します。
+サービス マニフェスト ファイルの `EntryPoint` 要素では、サービスの起動方法を指定します。
+
+`ExeHost` 要素は、サービスの起動に使用する実行可能ファイル (および引数) を指定します。 必要に応じて、`IsExternalExecutable="true"` 属性を `ExeHost` に追加して、プログラムがコード パッケージに含まれない外部の実行可能ファイルであることを示すことができます。 たとえば、「 `<ExeHost IsExternalExecutable="true">` 」のように入力します。
 
 * `Program` には、サービスを開始する必要がある実行可能ファイルの名前を指定します。
 * `Arguments` には、実行可能ファイルに渡す引数を指定します。 引数を含むパラメーターの一覧を指定することもできます。
@@ -249,7 +251,7 @@ WorkingFolder は、アプリケーション スクリプトと初期化スク�
 
 ログ ファイルは、サービスの作業ディレクトリのいずれかに保存されます。 ファイルの場所を特定するには、Service Fabric Explorer を使用して、サービスが実行されているノードと使用されている作業ディレクトリを確認します。 この方法については、この記事の後半で説明します。
 
-## <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>Deployment
 最後のステップは、[アプリケーションのデプロイ](service-fabric-deploy-remove-applications.md)です。 次の PowerShell スクリプトは、ローカル デプロイ用クラスターにアプリケーションをデプロイし、新しい Service Fabric サービスを開始する方法を示しています。
 
 ```PowerShell

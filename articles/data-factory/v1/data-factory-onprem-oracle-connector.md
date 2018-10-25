@@ -1,6 +1,6 @@
 ---
 title: Data Factory を使用して Oracle との間でデータをコピーする | Microsoft Docs
-description: Azure Data Factory を使用してオンプレミスの Oracle データベースとの間でデータをコピーする方法を説明します。
+description: Azure Data Factory を使用してオンプレミスの Oracle データベースとの間でデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -14,98 +14,104 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 10535e75a32a9f95e759340cf14d693f43639473
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 848616bb69aa0eae384b9c4e7ea1c2ac3da3c04e
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856843"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167122"
 ---
-# <a name="copy-data-to-or-from-on-premises-oracle-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
+# <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの Oracle との間でデータをコピーする
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](data-factory-onprem-oracle-connector.md)
 > * [バージョン 2 (最新バージョン)](../connector-oracle.md)
 
 > [!NOTE]
-> この記事は、Data Factory のバージョン 1 に適用されます。 現在のバージョンの Data Factory サービスを使用している場合は、[V2 の Oracle コネクタ](../connector-oracle.md)に関するページを参照してください。
+> この記事は、Azure Data Factory のバージョン 1 に適用されます。 現在のバージョンの Azure Data Factory サービスを使用している場合は、[V2 の Oracle コネクタ](../connector-oracle.md)に関するページを参照してください。
 
 
-この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの Oracle データベースとの間でデータを移動させる方法について説明します。 この記事は、コピー アクティビティによるデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
+この記事では、Azure Data Factory のコピー アクティビティを使って、オンプレミスの Oracle データベースとの間でデータを移動させる方法について説明します。 この記事は、コピー アクティビティを使用したデータ移動の一般的な概要について説明している、[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事に基づいています。
 
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
-**Oracle データベースから**以下のデータ ストアにデータをコピーできます。
+
+*Oracle データベースから*以下のデータ ストアにデータをコピーできます。
 
 [!INCLUDE [data-factory-supported-sink](../../../includes/data-factory-supported-sinks.md)]
 
-以下のデータ ストアから **Oracle データベースに**データをコピーできます。
+以下のデータ ストアから *Oracle データベースに*データをコピーできます。
 
 [!INCLUDE [data-factory-supported-sources](../../../includes/data-factory-supported-sources.md)]
 
 ## <a name="prerequisites"></a>前提条件
-Data Factory は、Data Management Gateway を使用したオンプレミスの Oracle ソースへの接続をサポートします。 [Data Management Gateway](data-factory-data-management-gateway.md) の詳細については、「Data Management Gateway」をご覧ください。また、データを移動するデータ パイプラインにゲートウェイをセットアップするための詳しい手順については、[オンプレミスからクラウドへのデータの移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事をご覧ください。
 
-Oracle が Azure IaaS VM でホストされている場合でも、ゲートウェイは必須です。 ゲートウェイはデータ ストアと同じ IaaS VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
+Data Factory は、Data Management Gateway を使用したオンプレミスの Oracle ソースへの接続をサポートします。 Data Management Gateway の詳細については、[Data Management Gateway](data-factory-data-management-gateway.md)に関するページを参照してください。 データを移行するデータ パイプラインにゲートウェイを設定する手順については、[オンプレミスからクラウドへのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関するページを参照してください。
+
+Azure サービスとしてのインフラストラクチャ (IaaS) VM で Oracle がホストされている場合でも、ゲートウェイは必須です。 ゲートウェイはデータ ストアと同じ IaaS VM にインストールできるほか、ゲートウェイがデータベースに接続できれば別の VM にインストールしてもかまいません。
 
 > [!NOTE]
-> 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
+> 接続とゲートウェイに関連する問題のトラブルシューティングのヒントについては、[ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues)に関するページを参照してください。
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
+
 この Oracle コネクタでは、2 つのバージョンのドライバーがサポートされます。
 
-- **Microsoft driver for Oracle (推奨)**: Data Management Gateway バージョン 2.7 以降では、Microsoft driver for Oracle がゲートウェイと共に自動的にインストールされるため、Oracle への接続を確立するためにドライバーを追加処理する必要がなく、コピーのパフォーマンス向上も実感できます。 サポートされている Oracle データベースのバージョンは、以下のとおりです。
+- **Oracle 用 Microsoft ドライバー (推奨)**: Data Management Gateway バージョン 2.7 以降、ゲートウェイと共に Oracle 用 Microsoft ドライバーが自動的にインストールされます。 Oracle との接続を確立するためにドライバーをインストールまたは更新する必要はありません。 また、このドライバーを使用すると、コピーのパフォーマンスも改善されます。 サポートされている Oracle データベースのバージョンは、以下のとおりです。
     - Oracle 12c R1 (12.1)
     - Oracle 11g R1、R2 (11.1、11.2)
     - Oracle 10g R1、R2 (10.1、10.2)
     - Oracle 9i R1、R2 (9.0.1、9.2)
     - Oracle 8i R3 (8.1.7)
 
-> [!NOTE]
-> Oracle プロキシ サーバーはサポートされていません。
+    > [!NOTE]
+    > Oracle プロキシ サーバーはサポートされていません。
 
-> [!IMPORTANT]
-> 現在 Microsoft Driver for Oracle でサポートされているのは、Oracle からのデータ コピーだけです。Oracle への書き込みはサポートされていません。 また、Data Managemetn Gateway の [診断] タブのテスト接続機能では、このドライバーはサポートされていません。 代わりに、コピー ウィザードを使用して接続を確認できます。
->
+    > [!IMPORTANT]
+    > 現在、Oracle 用 Microsoft ドライバーは、Oracle からのデータのコピーのみをサポートしています。 このドライバーは Oracle への書き込みをサポートしていません。 Data Managemetn Gateway の **[診断]** タブのテスト接続機能では、このドライバーはサポートされていません。 代わりに、コピー ウィザードを使用して接続を確認できます。
+    >
 
-- **Oracle Data Provider for .NET**: Oracle Data Provider を使用して、Oracle との間でデータをコピーすることもできます。 このコンポーネントは、 [Oracle Data Access Components for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/)に含まれます。 ゲートウェイがインストールされているコンピューターに、適切なバージョン (32/64 ビット) をインストールしてください。 [Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降にアクセスできます。
+- **Oracle Data Provider for .NET**: Oracle Data Provider を使用して、Oracle との間でデータをコピーすることができます。 このコンポーネントは、 [Oracle Data Access Components for Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/)に含まれます。 ゲートウェイがインストールされているマシンに、関連するバージョン (32 ビットまたは 64 ビット) をインストールしてください。 [Oracle Data Provider .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) は Oracle Database 10g リリース 2 以降のバージョンにアクセスできます。
 
-    "XCopy インストール" を選択した場合は、readme.htm の手順に従います。 UI を備えたインストーラー (XCopy 以外のインストーラー) を選択することをお勧めします。
+    **[XCopy Installation]\(XCopy のインストール\)** を選択した場合は、readme.htm ファイルに記載されている手順を実行します。 (XCopy のインストーラーではなく) UI があるインストーラーを選択することをお勧めします。
 
-    プロバイダーのインストール後、サービス アプレット (または Data Management Gateway 構成マネージャー) を使用して、コンピューターで Data Management Gateway ホスト サービスを**再開**します。  
+    プロバイダーのインストール後、サービス アプレットまたは Data Management Gateway 構成マネージャーを使用して、コンピューターで Data Management Gateway ホスト サービスを再開します。  
 
-コピー ウィザードを使用してコピー パイプラインを作成する場合は、ドライバーのタイプも自動的に決定されます。 ゲートウェイのバージョンが 2.7 以前か、シンクとして Oracle を選択した場合を除き、既定では、Microsoft ドライバーが使用されます。
+コピー ウィザードを使用してコピー パイプラインを作成する場合は、ドライバーのタイプも自動的に決定されます。 ゲートウェイのバージョンが 2.7 より前か、シンクとして Oracle を選択していない限り、既定で Microsoft ドライバーが使用されます。
 
-## <a name="getting-started"></a>使用の開始
-さまざまなツール/API を使用して、オンプレミスの Oracle データベースとの間でデータを移動するコピー アクティビティを含むパイプラインを作成できます。
+## <a name="get-started"></a>作業開始
 
-パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。
+コピー アクティビティがあるパイプラインを作成できます。 パイプラインは、異なるツールまたは API を使用して、オンプレミスの Oracle データベースとの間でデータを移動します。
 
-次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。
+パイプラインを作成する最も簡単な方法は、コピー ウィザードを使用することです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、[コピー ウィザードを使用してパイプラインを作成する方法のチュートリアル](data-factory-copy-data-wizard-tutorial.md)を参照してください。
+
+**Azure portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API** などのいずれかのツールを使用してパイプラインを作成することもできます。 コピー アクティビティを使用するパイプラインを作成する詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **Data Factory**を作成します。 データ ファクトリには、1 つまたは複数のパイプラインを設定できます。 
-2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Oralce データベースから Azure Blob Storage にデータをコピーする場合、リンクされたサービスを 2 つ作成して、Oralce データベースと Azure ストレージ アカウントをデータ ファクトリにリンクします。 Oralce に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」セクションをご覧ください。
-3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 最後の手順で説明されている例では、データセットを作成して入力データを含む Oralce データベース内のテーブルを指定します。 また、もう 1 つのデータセットを作成して、BLOB コンテナーと Oralce データベースからコピーされたデータを保持するフォルダーを指定します。 Oralce に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」セクションをご覧ください。
-4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティを含む**パイプライン**を作成します。 前に説明した例では、コピー アクティビティのソースとして OracleSource を、シンクとして BlobSink を使います。 同様に、Azure Blob Storage から Oracle Database にコピーする場合は、BlobSource と OracleSink をコピー アクティビティで使います。 Oracle データベースに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」セクションをご覧ください。 ソースまたはシンクとしてデータ ストアを使う方法について詳しくは、前のセクションのデータ ストアのリンクをクリックしてください。 
+2. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。 たとえば、Oralce データベースから Azure BLOB ストレージにデータをコピーする場合、リンクされたサービスを 2 つ作成して、Oralce データベースと Azure ストレージ アカウントをデータ ファクトリにリンクします。 Oralce に固有のリンクされたサービスのプロパティについては、「[リンクされたサービスのプロパティ](#linked-service-properties)」を参照してください。
+3. コピー操作用の入力データと出力データを表す**データセット**を作成します。 前述の手順の例では、データセットを作成して入力データを含む Oralce データベース内のテーブルを指定します。 もう 1 つのデータセットを作成して、BLOB コンテナーと Oralce データベースからコピーされたデータを保持するフォルダーを指定します。 Oralce に固有のデータセットのプロパティについては、「[データセットのプロパティ](#dataset-properties)」を参照してください。
+4. 入力としてのデータセットと出力としてのデータセットを受け取るコピー アクティビティがある**パイプライン**を作成します。 前述の例では、コピー アクティビティのソースとして **OracleSource** を、シンクとして **BlobSink** を使用します。 同様に、Azure BLOB ストレージから Oracle データベースにコピーする場合は、**BlobSource** と **OracleSink** をコピー アクティビティで使います。 Oracle データベースに固有のコピー アクティビティのプロパティについては、「[コピー アクティビティのプロパティ](#copy-activity-properties)」を参照してください。 データ ストアをソースまたはシンクとして使用する方法の詳細については、前のセクションに記載されているデータ ストアのリンクを選択してください。 
 
-ウィザードを使用すると、Data Factory エンティティ (リンクされたサービス、データセット、パイプライン) に関する JSON の定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの Oracle データベースとの間でデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、この記事の [JSON の使用例](#json-examples-for-copying-data-to-and-from-oracle-database)のセクションをご覧ください。
+ウィザードを使用すると、リンクされたサービス、データ セット、パイプラインでなどの Data Factory エンティティの JSON 定義が自動的に作成されます。 (.NET API を除く) ツールまたは API を使う場合は、JSON 形式でこれらの Data Factory エンティティを定義します。  オンプレミスの Oracle データベースとの間でデータをコピーするために使用する Data Factory エンティティに関する JSON 定義のサンプルについては、[JSON の例](#json-examples-for-copying-data-to-and-from-oracle-database)を参照してください。
 
 次のセクションでは、Data Factory エンティティの定義に使用される JSON プロパティについて詳しく説明します。
 
 ## <a name="linked-service-properties"></a>リンクされたサービスのプロパティ
-次の表は、Oracle のリンクされたサービスに固有の JSON 要素の説明をまとめたものです。
+
+次の表は、Oracle のリンクされたサービスに固有の JSON 要素について説明しています。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| type |type プロパティを **OnPremisesOracle** |[はい] |
-| driverType | Oracle Database との間でデータをコピーするときに使用するドライバーを指定します。 使用できる値は **Microsoft** または **ODP** (既定値) です。 ドライバーの詳細については、「[サポートされているバージョンとインストール](#supported-versions-and-installation)」を参照してください。 | いいえ  |
-| connectionString | connectionString プロパティの Oracle Database インスタンスに接続するために必要な情報を指定します。 | [はい] |
+| type |**type** プロパティを **OnPremisesOracle** に設定する必要があります。 |[はい] |
+| driverType | Oracle データベースとの間でデータをコピーするときに使用するドライバーを指定します。 使用できる値は **Microsoft** と **ODP** (既定値) です。 ドライバーの詳細については、「[サポートされているバージョンとインストール](#supported-versions-and-installation)」を参照してください。 | いいえ  |
+| connectionString | **connectionString** プロパティの Oracle データベース インスタンスに接続するために必要な情報を指定します。 | [はい] |
 | gatewayName | オンプレミスの Oracle サーバーへの接続に使用されるゲートウェイの名前です |[はい] |
 
-**例: Microsoft ドライバーの使用**
+**例: Microsoft ドライバーを使用する**
 
->[!TIP]
->"ORA 01025: UPI パラメータの値が有効範囲外です" というエラーが発生し、Oracle がバージョン 8i である場合、`WireProtocolMode=1` を接続文字列に追加してもう一度やり直してください。
+> [!TIP]
+> "ORA-01025: UPI parameter out of range" (ORA 01025: UPI パラメーターの値が有効範囲外です) というエラーが発生し、Oracle がバージョン 8i である場合、`WireProtocolMode=1` を接続文字列に追加してもう一度やり直してください。
 
 ```json
 {
@@ -114,16 +120,16 @@ Oracle が Azure IaaS VM でホストされている場合でも、ゲートウ�
         "type": "OnPremisesOracle",
         "typeProperties": {
             "driverType": "Microsoft",
-            "connectionString":"Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;",
+            "connectionString":"Host=<host>;Port=<port>;Sid=<service ID>;User Id=<user name>;Password=<password>;",
             "gatewayName": "<gateway name>"
         }
     }
 }
 ```
 
-**例: ODP ドライバーの使用**
+**例: ODP ドライバーを使用する**
 
-使用できる形式については、[こちらのサイト](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/)を参照してください。
+使用できる形式の詳細については、[.NET ODP 用の Oracle データ プロバイダー](https://www.connectionstrings.com/oracle-data-provider-for-net-odp-net/)に関するページを参照してください。
 
 ```json
 {
@@ -131,8 +137,8 @@ Oracle が Azure IaaS VM でホストされている場合でも、ゲートウ�
     "properties": {
         "type": "OnPremisesOracle",
         "typeProperties": {
-            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<hostname>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<SID>)));
-User Id=<username>;Password=<password>;",
+            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<host name>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<service ID>)));
+User Id=<user name>;Password=<password>;",
             "gatewayName": "<gateway name>"
         }
     }
@@ -140,55 +146,64 @@ User Id=<username>;Password=<password>;",
 ```
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
-データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションはすべてのデータセット型 (Oracle、Azure BLOB、Azure テーブルなど) で同じです。
 
-typeProperties セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 OracleTable 型のデータセットの typeProperties セクションには次のプロパティがあります。
+データセットの定義に使用できるセクションとプロパティの完全な一覧については、[データセットの作成](data-factory-create-datasets.md)をご覧ください。 
+
+構造、可用性、ポリシーなどのデータセット JSON ファイルのセクションは、どのデータセットの種類 (Oracle、Azure BLOB ストレージ、Azure Table ストレージなど) でも同様です。
+
+**typeProperties** セクションはデータセット型ごとに異なり、データ ストアのデータの場所などに関する情報を提供します。 **OracleTable** 型のデータセットの **typeProperties** セクションには次のプロパティがあります。
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| tableName |リンクされたサービスが参照する Oracle データベース インスタンスのテーブルの名前です。 |いいえ (**OracleSource** の **oracleReaderQuery** が指定されている場合) |
+| tableName |リンクされたサービスが参照する Oracle データベースのテーブルの名前です。 |いいえ (**OracleSource** の **oracleReaderQuery** が指定されている場合) |
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、「[パイプラインの作成](data-factory-create-pipelines.md)」という記事を参照してください。 名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
+
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 
+
+名前、説明、入力テーブル、出力テーブル、ポリシーなどのプロパティは、あらゆる種類のアクティビティで使用できます。
 
 > [!NOTE]
 > コピー アクティビティは入力を 1 つだけ受け取り、出力を 1 つだけ生成します。
 
-一方、アクティビティの typeProperties セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティの場合、ソースとシンクの種類によって異なります。
+アクティビティの **typeProperties** セクションで使用できるプロパティは、各アクティビティの種類によって異なります。 コピー アクティビティのプロパティは、ソースとシンクの種類によって変わります。
 
 ### <a name="oraclesource"></a>oracleReaderQuery
-コピー アクティビティで、source の種類が **OracleSource** である場合は、**typeProperties** セクションで次のプロパティを使用できます。
+
+コピー アクティビティで、ソースの種類が **OracleSource** の場合は、**typeProperties** セクションで次のプロパティを使用できます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: Select * from MyTable <br/><br/>指定されていない場合に実行される SQL ステートメント: select * from MyTable |いいえ (**データセット**の **tableName** が指定されている場合) |
+| oracleReaderQuery |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 たとえば、"select \* from **MyTable**"。 <br/><br/>指定されていない場合、SQL ステートメント "select \* from **MyTable**" が実行されます |いいえ <br />(**データセット**の **tableName** が指定されている場合) |
 
 ### <a name="oraclesink"></a>パイプライン
+
 **OracleSink** では次のプロパティがサポートされます。
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |timespan<br/><br/> 例: "00:30:00" (30 分)。 |いいえ  |
-| writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 100) |
-| sqlWriterCleanupScript |特定のスライスのデータを消去するコピー アクティビティのクエリを指定します。 |クエリ ステートメント。 |いいえ  |
-| sliceIdentifierColumnName |自動生成スライス ID を入力するためのコピー アクティビティの列名を指定します。再実行時、特定のスライスのデータを消去するときに使用されます。 |バイナリ (32) のデータ型の列の列名。 |いいえ  |
+| writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。 |**timespan**<br/><br/> 例: 00:30:00 (30 分) |いいえ  |
+| writeBatchSize |バッファー サイズが **writeBatchSize** の値に達したら、SQL テーブルにデータを挿入します。 |整数 (行数) |いいえ (既定値: 100) |
+| sqlWriterCleanupScript |特定のスライスのデータを消去するようにコピー アクティビティのクエリを指定します。 |クエリ ステートメント。 |いいえ  |
+| sliceIdentifierColumnName |コピー アクティビティの列名を指定して、自動生成されたスライス識別子を入力します。  **sliceIdentifierColumnName** の値は、再実行時に特定のスライスのデータを消去するために使用されます。 |データ型が **binary(32)** の列の列名。 |いいえ  |
 
-## <a name="json-examples-for-copying-data-to-and-from-oracle-database"></a>Oracle データベースとの間でのデータのコピーに関する JSON の例
-次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 これらの例は、Oracle データベースと Azure BLOB ストレージの間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、 [こちら](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に記載されているシンクのいずれかにデータをコピーすることができます。   
+## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>Oracle データベースとの間でのデータのコピーに関する JSON の例
 
-## <a name="example-copy-data-from-oracle-to-azure-blob"></a>例: Oracle から Azure BLOB にデータをコピーする
+以下の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できる、サンプルの JSON 定義です。 これらの例は、Oracle データベースと Azure BLOB ストレージの間でデータをコピーする方法を示しています。 ただし、Azure Data Factory のコピー アクティビティを使用して、「[サポートされるデータ ストアと形式](data-factory-data-movement-activities.md#supported-data-stores-and-formats)」で説明されているシンクのいずれかにデータをコピーすることができます。   
+
+**例: Oracle から Azure BLOB ストレージにデータをコピーする**
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
-1. [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
-3. [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-5. source として [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) を、sink として [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
+* [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)型のリンクされたサービス。
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
+* [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+* source として [OracleSource](data-factory-onprem-oracle-connector.md#copy-activity-properties) を、sink として [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) を使用するコピー アクティビティがある[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルはオンプレミスの Oracle データベース内のテーブルから BLOB に 1 時間ごとにデータをコピーします。 サンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションのドキュメントを参照してください。
+このサンプルはオンプレミスの Oracle データベース内のテーブルから BLOB に 1 時間ごとにデータをコピーします。 サンプルで使用されているさまざまなプロパティの詳細については、サンプルの後のセクションを参照してください。
 
-**Oracle のリンクされたサービス:**
+**Oracle のリンクされたサービス**
 
 ```json
 {
@@ -197,14 +212,14 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
         "type": "OnPremisesOracle",
         "typeProperties": {
             "driverType": "Microsoft",
-            "connectionString":"Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;",
+            "connectionString":"Host=<host>;Port=<port>;Sid=<service ID>;User Id=<username>;Password=<password>;",
             "gatewayName": "<gateway name>"
         }
     }
 }
 ```
 
-**Azure BLOB ストレージのリンクされたサービス:**
+**Azure BLOB ストレージのリンクされたサービス**
 
 ```json
 {
@@ -212,17 +227,17 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<Account key>"
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>"
         }
     }
 }
 ```
 
-**Oracle の入力データセット:**
+**Oracle の入力データセット**
 
-このサンプルでは、Oracle で「MyTable」という名前のテーブルを作成し、時系列データ用に「timestampcolumn」という名前の列が含まれているものと想定しています。
+このサンプルは、**MyTable** という名前のテーブルが Oracle に作成されていることを前提としています。 これには、時系列データ用の **timestampcolumn** という列が含まれています。
 
-”external” を ”true” に設定すると、データセットが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
+**external** を **true** に設定すると、データセットが Data Factory の外部にあり、データセットが Data Factory のアクティビティによって生成されていないことが Data Factory サービスに通知されます。
 
 ```json
 {
@@ -251,9 +266,9 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 }
 ```
 
-**Azure BLOB の出力データセット:**
+**Azure BLOB の出力データセット**
 
-データは新しい BLOB に 1 時間おきに書き込まれます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
+データは新しい BLOB に 1 時間おきに書き込まれます (**頻度**: **時間**、**間隔**: **1**)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日、時刻の部分を使用します。
 
 ```json
 {
@@ -311,9 +326,9 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 }
 ```
 
-**コピー アクティビティのあるパイプライン:**
+**コピー アクティビティのあるパイプライン**
 
-パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** の型が **OracleSource** に設定され、**sink** の型が **BlobSink** に設定されています。  **oracleReaderQuery** プロパティに指定されている SQL クエリは過去のデータを選択してコピーします。
+パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** の型が **OracleSource** に設定され、**sink** の型が **BlobSink** に設定されています。  **oracleReaderQuery** プロパティを使用して指定されている SQL クエリでは、過去のデータが選択され、コピーされます。
 
 ```json
 {  
@@ -321,7 +336,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
     "properties":{  
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-01T19:00:00",
-        "description":"pipeline for copy activity",
+        "description":"pipeline for a copy activity",
         "activities":[  
             {
                 "name": "OracletoBlob",
@@ -362,27 +377,29 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 }
 ```
 
-## <a name="example-copy-data-from-azure-blob-to-oracle"></a>例: Azure BLOB から Oracle にデータをコピーする
-このサンプルは、Azure Blob Storage からオンプレミスの Oracle データベースにデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、**こちら**に記載されているいずれかのソースからデータを[直接](data-factory-data-movement-activities.md#supported-data-stores-and-formats)コピーできます。  
+**例: Azure BLOB ストレージから Oracle にデータをコピーする**
+
+このサンプルは、Azure BLOB ストレージ アカウントからオンプレミスの Oracle データベースにデータをコピーする方法を示します。 ただし、Azure Data Factory のコピー アクティビティを使用して、「[Supported data stores and formats](data-factory-data-movement-activities.md#supported-data-stores-and-formats)」(サポートされているデータ ストアと形式) に記載されているいずれかのソースからデータを*直接*コピーできます。  
 
 このサンプルでは、次の Data Factory のエンティティがあります。
 
-1. [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)型のリンクされたサービス。
-2. [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
-3. [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
-4. [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
-5. source として [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) を、sink として [OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) を使用するコピー アクティビティを含む[パイプライン](data-factory-create-pipelines.md)。
+* [OnPremisesOracle](data-factory-onprem-oracle-connector.md#linked-service-properties)型のリンクされたサービス。
+* [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)型のリンクされたサービス。
+* [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties) 型の入力[データセット](data-factory-create-datasets.md)。
+* [OracleTable](data-factory-onprem-oracle-connector.md#dataset-properties) 型の出力[データセット](data-factory-create-datasets.md)。
+* source として [BlobSource](data-factory-azure-blob-connector.md#copy-activity-properties) を、sink として [OracleSink](data-factory-onprem-oracle-connector.md#copy-activity-properties) を使用するコピー アクティビティがある[パイプライン](data-factory-create-pipelines.md)。
 
-このサンプルはオンプレミスの Oracle データベース内のテーブルに BLOB から 1 時間ごとにデータをコピーします。 サンプルで使用されるさまざまなプロパティの詳細については、サンプルに続くセクションのドキュメントを参照してください。
+このサンプルはオンプレミスの Oracle データベース内のテーブルに BLOB から 1 時間ごとにデータをコピーします。 サンプルで使用されているさまざまなプロパティの詳細については、サンプルの後のセクションを参照してください。
 
-**Oracle のリンクされたサービス:**
+**Oracle のリンクされたサービス**
+
 ```json
 {
     "name": "OnPremisesOracleLinkedService",
     "properties": {
         "type": "OnPremisesOracle",
         "typeProperties": {
-            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<hostname>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<SID>)));
+            "connectionString": "Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=<host name>)(PORT=<port number>))(CONNECT_DATA=(SERVICE_NAME=<service ID>)));
             User Id=<username>;Password=<password>;",
             "gatewayName": "<gateway name>"
         }
@@ -390,14 +407,15 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 }
 ```
 
-**Azure BLOB ストレージのリンクされたサービス:**
+**Azure BLOB ストレージのリンクされたサービス**
+
 ```json
 {
     "name": "StorageLinkedService",
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
-            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<Account key>"
+            "connectionString": "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>"
         }
     }
 }
@@ -405,7 +423,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 **Azure BLOB の入力データセット**
 
-データは新しい BLOB から 1 時間おきに取得されます (頻度: 時間、間隔: 1)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは開始時間の年、月、日の部分を利用し、ファイル名は開始時間の時刻部分を使用します。 "external": "true" 設定は Data Factory サービスにこのテーブルが Data Factory の外部にあり、Data Factory のアクティビティでは生成されないことを通知します。
+データは新しい BLOB から 1 時間おきに取得されます (**頻度**: **時間**、**間隔**: **1**)。 BLOB のフォルダー パスとファイル名は、処理中のスライスの開始時間に基づき、動的に評価されます。 フォルダー パスは、開始時刻の年、月、日の部分を使います。 ファイル名は、開始時刻の時の部分を使います。 **external**: **true** の設定により、このテーブルが Data Factory の外部にあり、Data Factory のアクティビティによって生成されたものではないことが Data Factory サービスに通知されます。
 
 ```json
 {
@@ -463,9 +481,9 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 }
 ```
 
-**Oracle 出力データセット:**
+**Oracle 出力データセット**
 
-このサンプルは、「MyTable」という名前のテーブルが Oracle に作成されていることを前提としています。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Oracle にテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
+このサンプルは、**MyTable** という名前のテーブルが Oracle に作成されていることを前提としています。 BLOB CSV ファイルに含めることが予想される列の数と同じ列数で Oracle にテーブルを作成します。 新しい行は 1 時間ごとにテーブルに追加されます。
 
 ```json
 {
@@ -484,7 +502,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 }
 ```
 
-**コピー アクティビティのあるパイプライン:**
+**コピー アクティビティのあるパイプライン**
 
 パイプラインには、入力データセットと出力データセットを使用するように構成され、1 時間おきに実行するようにスケジュールされているコピー アクティビティが含まれています。 パイプライン JSON 定義で、**source** の型が **BlobSource** に設定され、**sink** の型が **OracleSink** に設定されています。  
 
@@ -494,7 +512,7 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
     "properties":{  
         "start":"2014-06-01T18:00:00",
         "end":"2014-06-05T19:00:00",
-        "description":"pipeline with copy activity",
+        "description":"pipeline with a copy activity",
         "activities":[  
             {
                 "name": "AzureBlobtoOracle",
@@ -536,51 +554,53 @@ typeProperties セクションはデータセット型ごとに異なり、デ�
 
 
 ## <a name="troubleshooting-tips"></a>トラブルシューティングのヒント
+
 ### <a name="problem-1-net-framework-data-provider"></a>問題 1: .NET Framework データ プロバイダー
 
-次のような**エラー メッセージ**が表示されます。
+**エラー メッセージ**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed”.  
+    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed.  
 
 **考えられる原因**
 
-1. Oracle 用の .NET Framework Data Provider がインストールされていません。
-2. Oracle 用の .NET Framework Data Provider が .NET Framework 2.0 にインストールされ、.NET Framework 4.0 フォルダーで検出されません。
+* Oracle 用の .NET Framework Data Provider がインストールされていません。
+* Oracle 用の .NET Framework Data Provider が .NET Framework 2.0 にインストールされ、.NET Framework 4.0 フォルダーで検出されません。
 
-**解決/回避策**
+**解決策**
 
-1. Oracle 用の .NET Provider をインストールしていない場合は [インストール](http://www.oracle.com/technetwork/topics/dotnet/downloads/) した後、シナリオをやり直します。
-2. プロバイダーをインストールしてもエラー メッセージが表示される場合は、次の手順を実行します。
-   1. 次のフォルダーから .NET 2.0 のコンピューター構成を開きます。<system disk>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config
-   2. **Oracle Data Provider for .NET** を検索すると、次のサンプルに示すように、**system.data** -> **DbProviderFactories** の下に 1 つのエントリが見つかります: "<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />」というハウツー ガイドを参照してください。
-3. このエントリを、v4.0 フォルダーの machine.config ファイル (<system disk>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config) にコピーし、バージョンを 4.xxx.x.x に変更します。
-4. `gacutil /i [provider path]` を実行して、"<ODP.NET インストール パス>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll" をグローバル アセンブリ キャッシュ (GAC) にインストールします。## トラブルシューティングのヒント
+* Oracle 用の .NET Provider をインストールしていない場合は [インストール](http://www.oracle.com/technetwork/topics/dotnet/downloads/) した後、シナリオをやり直します。
+* プロバイダーのインストール後もこのエラー メッセージが表示される場合は、次の手順を実行します。
+   1. フォルダー <システム ディスク\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config から .NET 2.0 のマシン構成ファイルを開きます。
+   2. **Oracle Data Provider for .NET** を検索します。 **system.data** > **DbProviderFactories** 以下に次のサンプルのようなエントリが見つかります。`<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+* v4.0 フォルダー <システム ディスク\>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config 内の machine.config ファイルに、このエントリをコピーします。次に、バージョンを 4.xxx.x.x に変更します。
+* **gacutil /i [プロバイダーのパス]** を実行して、グローバル アセンブリ キャッシュ (GAC) に <ODP.NET がインストールされているパス\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll をインストールします。
 
-### <a name="problem-2-datetime-formatting"></a>問題 2: datetime 書式設定
+### <a name="problem-2-datetime-formatting"></a>問題 2: 日付/時刻の書式設定
 
-次のような**エラー メッセージ**が表示されます。
+**エラー メッセージ**
 
     Message=Operation failed in Oracle Database with the following error: 'ORA-01861: literal does not match format string'.,Source=,''Type=Oracle.DataAccess.Client.OracleException,Message=ORA-01861: literal does not match format string,Source=Oracle Data Provider for .NET,'.
 
-**解決/回避策**
+**解決策**
 
-場合によっては、次の例で示すように、Oracle データベースで日付がどのように構成されているかに基づいて、コピー アクティビティのクエリ文字列を調整する必要があります (to_date 関数を使用)。
+Oracle データベースでの日付の構成方法に基づいて、コピー アクティビティ内のクエリ文字列を調整する必要があります。 次に例を示します (**to_date** 関数を使用します)。
 
     "oracleReaderQuery": "$$Text.Format('select * from MyTable where timestampcolumn >= to_date(\\'{0:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\')  AND timestampcolumn < to_date(\\'{1:MM-dd-yyyy HH:mm}\\',\\'MM/DD/YYYY HH24:MI\\') ', WindowStart, WindowEnd)"
 
 
 ## <a name="type-mapping-for-oracle"></a>Oracle の型マッピング
-[データ移動アクティビティ](data-factory-data-movement-activities.md) に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチで型を source から sink に自動的に変換します。
 
-1. ネイティブの source 型から .NET 型に変換する
-2. .NET 型からネイティブの sink 型に変換する
+[データ移動アクティビティ](data-factory-data-movement-activities.md)に関する記事のとおり、コピー アクティビティは次の 2 段階のアプローチを使用して source から sink に自動的に変換します。
 
-Oracle からデータを移動すると、Oracle データ型から .NET 型へのマッピング (およびその逆) に、次のマッピングが使用されます。
+1. ネイティブの source 型から .NET 型に変換する。
+2. .NET 型からネイティブの sink 型に変換する。
+
+Oracle からデータを移行すると、Oracle データ型から .NET 型へのマッピング (およびその逆) に、次のマッピングが使用されます。
 
 | Oracle データ型 | .NET Framework データ型 |
 | --- | --- |
 | BFILE |Byte[] |
-| BLOB |Byte[]<br/>(Microsoft ドライバーを使用する場合は、Oracle 10g 以上でのみサポート) |
+| BLOB |Byte[]<br/>(Microsoft ドライバーを使用する場合は、Oracle 10g 以降のバージョンでのみサポートされています) |
 | CHAR |String |
 | CLOB |String |
 | DATE |Datetime |
@@ -607,10 +627,13 @@ Oracle からデータを移動すると、Oracle データ型から .NET 型へ
 > Microsoft ドライバーを使用する場合、データ型 **INTERVAL YEAR TO MONTH** および **INTERVAL DAY TO SECOND** はサポートされません。
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
-ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
+
+ソース データセット列のシンク データセット列へのマッピング方法の詳細については、[Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページを参照してください。
 
 ## <a name="repeatable-read-from-relational-sources"></a>リレーショナル ソースからの反復可能読み取り
-リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
+
+リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 手動または再試行ポリシーのいずれかでスライスが再実行された際は、何度スライスが実行されても同じデータが読み込まれることを確認する必要があります。 詳細については、「[リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)」を参照してください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
-Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
+
+Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因については、[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)を参照してください。 また、最適化のさまざまな方法についても説明されています。

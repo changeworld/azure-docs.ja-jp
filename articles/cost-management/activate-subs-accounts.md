@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 304a52f5571790ea49587a5aeda433f003f0e0bd
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: a53ff5fdb256a46f42e7461bb46b6847d17ed230
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423070"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958749"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Cloudyn で Azure サブスクリプションとアカウントをアクティブ化する
 
@@ -64,7 +64,7 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
     2. Azure Portal で、**[Azure Active Directory]** を選びます。
     3. テナント ID を取得するには、Azure AD テナントの **[プロパティ]** を選択します。
     4. [ディレクトリ ID] の GUID をコピーします。 この値がテナント ID です。
-    詳しくは、「[テナント ID を取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)」をご覧ください。
+    詳しくは、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」をご覧ください。
 3. 必要に応じて、レート ID を選びます。 レート ID がわからない場合は、次の手順を使って調べます。
     1. Azure Portal の右上にあるユーザー情報をクリックし、**[明細の表示]** をクリックします。
     2. **[請求先アカウント]** で **[サブスクリプション]** をクリックします。

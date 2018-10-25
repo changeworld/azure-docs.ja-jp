@@ -169,7 +169,7 @@ items:
   - name: MSDN フォーラム
     href: https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDatabaseforPostgreSQL
   - name: スタック オーバーフロー
-    href: http://stackoverflow.com/questions/tagged/azure-database-postgresql
+    href: https://stackoverflow.com/questions/tagged/azure-database-postgresql
   - name: ビデオ
     items:
     - name: 製品のビデオ
@@ -198,9 +198,9 @@ items:
     href: partners-migration-postgresql.md
   - name: データベース移行ガイド
     href: https://datamigration.microsoft.com/
-ms.openlocfilehash: c45d682ac91ede2fbbd98c75e5ce8b233c67c861
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: cd05ba229be03190dfd43a17fe24f750bdaf57d9
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116931"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986491"

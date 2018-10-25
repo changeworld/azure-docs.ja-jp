@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/20/2018
-ms.openlocfilehash: effaa9b0b3fec36974a2bc850eeb1f36181ca0c7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 83db2bcfe21edc9f8f2649ef8c2b3a23e412e39d
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166437"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353987"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Azure SQL Database 論理サーバーとその管理
 
@@ -27,7 +27,7 @@ ms.locfileid: "47166437"
 
 論理サーバーとは、オンプレミスでなじみのある SQL Server インスタンスとは別の論理コンストラクトです。 具体的には、SQL Database サービスは論理サーバーに関連したデータベースの場所について保証しません。また、インスタンス レベルのアクセスまたは機能を公開しません。 対照的に、Azure SQL Database マネージド インスタンスにおけるサーバーとは、オンプレミス環境で一般的な SQL Server インスタンスに類似しています。
 
-論理サーバーを作成するとき、サーバーのログイン アカウント/パスワードを指定します。このアカウントには、そのサーバー上のマスター データベースとそのサーバーで作成されるすべてのデータベースに対する管理特権が与えられます。 この初回アカウントは SQL ログイン アカウントです。 Azure SQL Database は認証のために SQL 認証と Azure Active Directory 認証をサポートしています。 ログインと認証の詳細については、「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」をご覧ください。 Windows 認証はサポートされません。 
+論理サーバーを作成するとき、サーバーのログイン アカウント/パスワードを指定します。このアカウントには、そのサーバー上のマスター データベースとそのサーバーで作成されるすべてのデータベースに対する管理特権が与えられます。 この初回アカウントは SQL ログイン アカウントです。 Azure SQL Database は認証のために SQL 認証と Azure Active Directory 認証をサポートしています。 ログインと認証の詳細については、「[Azure SQL Database におけるデータベースとログインの管理](sql-database-manage-logins.md)」をご覧ください。 Windows 認証はサポートされません。
 
 Azure SQL Database 論理サーバーは、
 
@@ -38,19 +38,19 @@ Azure SQL Database 論理サーバーは、
 - [Azure ロール ベースのアクセス制御 (RBAC)](/azure/role-based-access-control/overview) に参加する - サーバー内のデータベース、エラスティック プール、データ ウェアハウスはサーバーからアクセス権を継承します
 - Azure のリソース管理目的での、データベース、エラスティック プール、データ ウェアハウスの上位要素です (データベースとプールの URL スキーマを参照してください)
 - 領域内にリソースを併置します
-- データベース アクセスの接続エンドポイント (<serverName>.database.windows.net) を提供します
-- マスター データベースに接続することで、含まれているリソースに関するメタデータへの DMV 経由のアクセスを提供します 
-- データベースに適用される管理ポリシーの範囲 (ログイン、ファイアウォール、監査、脅威の検出など) を提供します 
+- データベース アクセスの接続エンドポイント (`<serverName>`.database.windows.net) を提供します
+- マスター データベースに接続することで、含まれているリソースに関するメタデータへの DMV 経由のアクセスを提供します
+- データベースに適用される管理ポリシーの範囲 (ログイン、ファイアウォール、監査、脅威の検出など) を提供します
 - 親サブスクリプション内のクォータによって制限されます (既定でサブスクリプションあたり 6 サーバー - [サブスクリプションの制限についてはここを参照してください](../azure-subscription-service-limits.md))
 - 含まれるリソースのデータベースのクォータと DTU または仮想コア クォータの範囲 (45,000 DTU など) を提供します
-- 含まれるリソースで有効な機能のバージョン管理の範囲です 
+- 含まれるリソースで有効な機能のバージョン管理の範囲です
 - サーバー レベルのプリンシパルのログインによってサーバー上のすべてのデータベースを管理できます
 - サーバー上の 1 つまたは複数のデータベースへのアクセスが付与された、オンプレミスの SQL Server のインスタンスでのログインと同様のログインを含めることができます。また、限定された管理者権限を付与できます。 詳細については、[ログイン](sql-database-manage-logins.md)に関する記事を参照してください。
 - 論理サーバーで作成されたすべてのユーザー データベースの既定の照合順序は `SQL_LATIN1_GENERAL_CP1_CI_AS` で、ここで `LATIN1_GENERAL` は英語 (米国) で、`CP1` はコード ページ 1252、`CI` は大文字小文字を区別しない、`AS` はアクセントを区別する、です。
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Azure Portal を利用して Azure SQL Server、データベース、ファイアウォールを管理する
 
-サーバー自体を作成する前に、あるいは作成するときに Azure SQL データベースのリソース グループを作成できます。 新しい SQL サーバーのフォームは新しい SQL サーバーか新しいデータベースを作成するときに表示されます。 
+サーバー自体を作成する前に、あるいは作成するときに Azure SQL データベースのリソース グループを作成できます。 新しい SQL サーバーのフォームは新しい SQL サーバーか新しいデータベースを作成するときに表示されます。
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>空の SQL サーバー (論理サーバー) を作成する
 
@@ -58,7 +58,7 @@ Azure SQL Database 論理サーバーは、
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>空またはサンプルの SQL データベースを作成する
 
-[Azure ポータル](https://portal.azure.com)を利用して Azure SQL データベースを作成するには、空の SQL データベース フォームに移動し、要求された情報を指定します。 データベース自体を作成する前に、あるいは作成するときに Azure SQL データベースのリソース グループや論理サーバーを作成できます。 Adventure Works LT に基づいて空のデータベースやサンプル データベースを作成できます。 
+[Azure ポータル](https://portal.azure.com)を利用して Azure SQL データベースを作成するには、空の SQL データベース フォームに移動し、要求された情報を指定します。 データベース自体を作成する前に、あるいは作成するときに Azure SQL データベースのリソース グループや論理サーバーを作成できます。 Adventure Works LT に基づいて空のデータベースやサンプル データベースを作成できます。
 
   ![データベースの作成 -1](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -69,19 +69,16 @@ Azure SQL Database マネージド インスタンスを作成する方法につ
 
 ### <a name="manage-an-existing-sql-server"></a>既存の SQL Server を管理する
 
-既存のサーバーを管理するには、さまざまな方法を利用してサーバーに移動します。たとえば、特定の SQL データベース ページ、**SQL サーバー** ページ、**すべてのリソース** ページから移動します。 
+既存のサーバーを管理するには、さまざまな方法を利用してサーバーに移動します。たとえば、特定の SQL データベース ページ、**SQL サーバー** ページ、**すべてのリソース** ページから移動します。
 
-既存のデータベースを管理するには、**SQL データベース** ページに移動し、管理するデータベースをクリックします。 次のスクリーンショットでは、データベースの**概要**ページからデータベースにサーバーレベルのファイアウォールを設定する方法を確認できます。 
+既存のデータベースを管理するには、**SQL データベース** ページに移動し、管理するデータベースをクリックします。 次のスクリーンショットでは、データベースの**概要**ページからデータベースにサーバーレベルのファイアウォールを設定する方法を確認できます。
 
-   ![サーバーのファイアウォール規則](./media/sql-database-get-started-portal/server-firewall-rule.png) 
+   ![サーバーのファイアウォール規則](./media/sql-database-get-started-portal/server-firewall-rule.png)
 
 > [!IMPORTANT]
 > データベースのパフォーマンス プロパティを構成するには、[DTU ベースの購入モデル](sql-database-service-tiers-dtu.md)および[仮想コアベースの購入モデル](sql-database-service-tiers-vcore.md)に関するページを参照してください。
->
-
 > [!TIP]
 > Azure ポータル クイックスタートについては、「[Azure ポータルで Azure SQL データベースを作成する](sql-database-get-started-portal.md)」を参照してください。
->
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>PowerShell を利用して Azure SQL Server、データベース、ファイアウォールを管理する
 
@@ -164,7 +161,6 @@ Transact-SQL を利用して Azure SQL のサーバー、データベース、�
 |[sys.database_firewall_rules (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-firewall-rules-azure-sql-database)|Microsoft Azure SQL Database に関連付けられているデータベースレベルのファイアウォール設定に関する情報を返します。 |
 |[sp_delete_database_firewall_rule (Azure SQL Database)](/sql/relational-databases/system-stored-procedures/sp-delete-database-firewall-rule-azure-sql-database)|Azure SQL Database または SQL Data Warehouse からデータベースレベルのファイアウォール設定を削除します。 |
 
-
 > [!TIP]
 > Microsoft Windows で SQL Server Management Studio を使用する方法に関するクイックスタートについては、「[Azure SQL Database: SQL Server Management Studio を使って接続とデータの照会を行う](sql-database-connect-query-ssms.md)」を参照してください。 macOS、Linux、Windows で Visual Studio Code を使用する方法に関するクイックスタートについては、「[Azure SQL Database: Visual Studio Code を使って接続とデータの照会を行う](sql-database-connect-query-vscode.md)」を参照してください。
 
@@ -174,21 +170,22 @@ Azure SQL のサーバー、データベース、ファイアウォールを作�
 
 | コマンド | 説明 |
 | --- | --- |
-|[サーバー - 作成または更新](/rest/api/sql/servers/createorupdate)|新しいサーバーを作成または更新します。|
-|[サーバー - 削除](/rest/api/sql/servers/delete)|SQL サーバーを削除します。|
-|[サーバー - 取得](/rest/api/sql/servers/get)|サーバーを取得します。|
-|[サーバー - 一覧取得](/rest/api/sql/servers/list)|サーバーの一覧を返します。|
-|[サーバー - リソース グループで一覧取得](/rest/api/sql/servers/listbyresourcegroup)|リソース グループ内のサーバーの一覧を取得します。|
-|[サーバー - 更新](/rest/api/sql/servers/update)|既存のサーバーを更新します。|
-|[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
-|[データベース - 取得](/rest/api/sql/databases/get)|データベースを取得します。|
-|[データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
-|[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
-|[データベース - 更新](/rest/api/sql/databases/update)|既存のデータベースを更新します。|
-|[ファイアウォール規則 - 作成または更新](/rest/api/sql/firewallrules/createorupdate)|ファイアウォール規則を作成または更新します。|
-|[ファイアウォール規則 - 削除](/rest/api/sql/firewallrules/delete)|ファイアウォール規則を作成します。|
-|[ファイアウォール規則 - 取得](/rest/api/sql/firewallrules/get)|ファイアウォール規則を取得します。|
-|[ファイアウォール規則 - サーバーで一覧取得](/rest/api/sql/firewallrules/listbyserver)|ファイアウォール規則の一覧を返します。|
+|[サーバー - 作成または更新](https://docs.microsoft.com/rest/api/sql/servers/servers_createorupdate/rest/api)|新しいサーバーを作成または更新します。|
+|[サーバー - 削除](https://docs.microsoft.com/rest/api/sql/servers/servers_delete)|SQL サーバーを削除します。|
+|[サーバー - 取得](https://docs.microsoft.com/rest/api/sql/servers/servers_get)|サーバーを取得します。|
+|[サーバー - 一覧取得](https://docs.microsoft.com/rest/api/sql/servers/servers_list)|サーバーの一覧を返します。|
+|[サーバー - リソース グループで一覧取得](https://docs.microsoft.com/rest/api/sql/servers/servers_listbyresourcegroup)|リソース グループ内のサーバーの一覧を取得します。|
+|[サーバー - 更新](https://docs.microsoft.com/rest/api/sql/servers/servers_update)|既存のサーバーを更新します。|
+|[データベース - 作成または更新](https://docs.microsoft.com/rest/api/sql/databases/databases_createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
+|[データベース - 削除](https://docs.microsoft.com/rest/api/sql/databases/databases_delete)|データベースを削除します。|
+|[データベース - 取得](https://docs.microsoft.com/rest/api/sql/databases/databases_get)|データベースを取得します。|
+|[データベース - エラスティック プールごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
+|[データベース - サーバーごとの一覧取得](https://docs.microsoft.com/rest/api/sql/databases/databases_listbyserver)|サーバー内のデータベースの一覧を返します。|
+|[データベース - 更新](https://docs.microsoft.com/rest/api/sql/databases/databases_update)|既存のデータベースを更新します。|
+|[ファイアウォール規則 - 作成または更新](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_createorupdate)|ファイアウォール規則を作成または更新します。|
+|[ファイアウォール規則 - 削除](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_delete)|ファイアウォール規則を作成します。|
+|[ファイアウォール規則 - 取得](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_get)|ファイアウォール規則を取得します。|
+|[ファイアウォール規則 - サーバーで一覧取得](https://docs.microsoft.com/rest/api/sql/firewallrules/firewallrules_listbyserver)|ファイアウォール規則の一覧を返します。|
 
 ## <a name="next-steps"></a>次の手順
 

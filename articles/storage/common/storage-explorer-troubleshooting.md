@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.component: common
-ms.openlocfilehash: eb72d92496addacd82e4d30df625b4f9c0c823e5
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: ffb355b4471bd8455f67e657d9557c3f372c3f4e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521032"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470322"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
@@ -74,7 +74,7 @@ macOS のキーチェーンが、Storage Explorer の認証ライブラリの問
 7. サインインを試します。
 
 ### <a name="general-sign-in-troubleshooting-steps"></a>サインインの一般的なトラブルシューティングの手順
-* macOS 上で、[Waiting for authentication...]\(認証の完了を待機しています\) ダイアログが表示されたままサインイン ウィンドウが表示されない場合は、[こちらの手順](#Mac-Keychain-Errors)を試してください。
+* macOS 上で、[Waiting for authentication...]\(認証の完了を待機しています\) ダイアログが表示されたままサインイン ウィンドウが表示されない場合は、[こちらの手順](#mac-keychain-errors)を試してください。
 * Storage Explorer を再起動する
 * 認証ウィンドウが空白の場合は、認証ダイアログ ボックスを閉じる前に少なくとも 1 分待機します。
 * プロキシと証明書が、使用中のマシンと Storage Explorer の両方の設定用に正しく構成されていることを確認します。

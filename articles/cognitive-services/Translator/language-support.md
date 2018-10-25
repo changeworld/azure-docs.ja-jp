@@ -10,16 +10,16 @@ ms.component: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: 775e098eb2a067e3e0446bccc223c1c54e082347
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 222e37e38772b82e9d9849e3a955b865d43d3c63
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435378"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957396"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Translator Text API の言語と地域のサポート
 
-Translator Text API では、テキスト対テキストの翻訳について、以下の言語をサポートしています。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator Text API の V3 を使用して既定で提供されます。 V2 では "generalnn" カテゴリを使用することでニューラル機械翻訳が使用可能です。
+Translator Text API では、テキスト対テキストの翻訳について、以下の言語をサポートしています。 Neural Machine Translation (NMT) は、AI を使用する高品質機械翻訳の新しい標準で、ニューラル システムが使用できる場合に Translator Text API の V3 を使用して既定で提供されます。 "generalnn" カテゴリを使用する V2 のニューラル機械翻訳が使用可能です。
 
 [機械翻訳の詳細](https://www.microsoft.com/translator/mt.aspx)
 
@@ -64,7 +64,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | リトアニア語      | ニューラル |`lt`          |
 | マダガスカル語      | 統計 |`mg`          |
 | マレー語      | 統計 |`ms`          |
-| マルタ語      | 統計 |`mt`          |
+| マルタ人      | 統計 |`mt`          |
 | ノルウェー語        |  ニューラル |`nb`          |
 | ペルシャ語      | 統計 |`fa`          |
 | ポーランド語        |  ニューラル |`pl`          |
@@ -108,7 +108,7 @@ Translator Text API では、テキスト対テキストの翻訳について、
 | ヒンディー語 | hi | デーヴァナーガリー | <--> | ラテン語 |
 | 日本語 | ja | 日本語 | <--> | ラテン語 |
 | カンナダ語 | kn | カンナダ語 | --> | ラテン語 |
-| マレーシア語 | ml | マラヤーラム語 | --> | ラテン語 |
+| マラヤーラム語 | ml | マラヤーラム語 | --> | ラテン語 |
 | マラーティー語 | mr | デーヴァナーガリー | --> | ラテン語 |
 | オリヤー語 | or | オリヤー語 | <--> | ラテン語 |
 | パンジャーブ語 | pa | グルムキー文字 | <--> | ラテン語  |

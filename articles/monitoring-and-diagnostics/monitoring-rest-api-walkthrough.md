@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.component: ''
-ms.openlocfilehash: 9524d471388e69166191b6197fb295532b068092
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 59e7ac5e2da733724c047f6842561ce87fb495bb
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390556"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955306"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 監視 REST API のチュートリアル
 この記事では、コードが [Microsoft Azure Monitor REST API リファレンス](https://msdn.microsoft.com/library/azure/dn931943.aspx)を使用できるように、認証を実行する方法について説明します。         
@@ -25,7 +25,7 @@ Monitor API では、さまざまなメトリック データ ポイントを処
 ## <a name="authenticating-azure-monitor-requests"></a>Azure Monitor 要求の認証
 まず、要求を認証します。
 
-Azure Monitor API に対して実行されるすべてのタスクが、Azure Resource Manager 認証モデルを使用します。 したがって、すべての要求を Azure Active Directory (Azure AD) で認証する必要があります。 クライアント アプリケーションを認証する 1 つの方法が、Azure AD サービス プリンシパルを作成し、認証 (JWT) トークンを取得することです。 次のサンプル スクリプトは、PowerShell を使用して、Azure AD サービス プリンシパルを作成しています。 さらに詳細なチュートリアルについては、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)」のドキュメントを参照してください。 [Azure ポータルを使用してサービス プリンシパルを作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)することもできます。
+Azure Monitor API に対して実行されるすべてのタスクが、Azure Resource Manager 認証モデルを使用します。 したがって、すべての要求を Azure Active Directory (Azure AD) で認証する必要があります。 クライアント アプリケーションを認証する 1 つの方法が、Azure AD サービス プリンシパルを作成し、認証 (JWT) トークンを取得することです。 次のサンプル スクリプトは、PowerShell を使用して、Azure AD サービス プリンシパルを作成しています。 さらに詳細なチュートリアルについては、「 [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](https://docs.microsoft.com/powershell/azure/create-azure-service-principal-azureps)」のドキュメントを参照してください。 [Azure ポータルを使用してサービス プリンシパルを作成](../active-directory/develop/howto-create-service-principal-portal.md)することもできます。
 
 ```PowerShell
 $subscriptionId = "{azure-subscription-id}"

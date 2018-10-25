@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2018
+ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 156b84e4941363716721b5cee6c19333ffe7594c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 1b2b06c02dc54c4369dd8490b714d1444d4b3b01
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079448"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986187"
 ---
 # <a name="azure-stack-validation-report"></a>Azure Stack 検証レポート
 Azure Stack 適合性チェッカー ツールでは、Azure Stack 環境のデプロイとサービスをサポートする検証が実行されます。 このツールでは、結果が .json レポート ファイルに書き込まれます。 レポートには、Azure Stack デプロイの前提条件の状態に関する詳細データと概要データが表示されます。 また、既存のAzure Stack デプロイのシークレット ローテーションについての情報も表示されます。  
@@ -40,19 +40,81 @@ Azure Stack 適合性チェッカー ツールでは、Azure Stack 環境のデ�
 PowerShell でレポートを表示するには、レポートへのパスを **-ReportPath** の値として指定します。 このコマンドにより、レポートのコンテンツが表示されます。また、結果がまだ出力されていない検証が特定されます。
 
 たとえば、次のように実行すると、レポートが配置されている場所で使用できる PowerShell プロンプトからレポートを表示するには、次を実行します。 
-   > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json` 
+   > `Read-AzsReadinessReport -ReportPath .\AzsReadinessReport.json` 
 
-出力結果は、以下のイメージのようになります。
+出力結果は、以下のようになります。
 
-![view-report](./media/azure-stack-validation-report/view-report.png)
+````PowerShell
+Reading All Validation(s) from Report C:\Contoso-AzsReadinessCheckerReport.json
+
+############### Certificate Validation Summary ###############
+
+Certificate Validation results not available.
+
+############### Registration Validation Summary ###############
+
+Azure Registration Validation results not available.
+
+############### Azure Identity Results ###############
+
+Test                          : ServiceAdministrator
+Result                        : OK
+AAD Service Admin             : admin@contoso.onmicrosoft.com
+Azure Environment             : AzureCloud
+Azure Active Directory Tenant : contoso.onmicrosoft.com
+Error Details                 : 
+
+############### Azure Identity Validation Summary ###############
+
+    Azure Identity Validation found no errors or warnings.
+
+############### Azure Stack Graph Validation Summary ###############
+
+Azure Stack Graph Validation results not available.
+
+############### Azure Stack ADFS Validation Summary ###############
+
+Azure Stack ADFS Validation results not available.
+
+############### AzsReadiness Job Summary ###############
+
+Index             : 0
+Operations        : 
+StartTime         : 2018/10/22 14:24:16
+EndTime           : 2018/10/22 14:24:19
+Duration          : 3
+PSBoundParameters : 
+````
 
 ## <a name="view-the-report-summary"></a>レポートの概要を表示する
 レポートの概要を表示するには、**-Summary** スイッチを、PowerShell コマンド ラインの末尾に追加します。 例:  
- > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json -summary`  
+ > `Read-AzsReadinessReport -ReportPath .\Contoso-AzsReadinessReport.json -summary`  
 
-概要には、結果がない検証が表示されます。この概要には、完了した結果が成功したか失敗したかが示されます。 出力結果は、以下のイメージのようになります。
+概要には、結果がない検証が表示されます。この概要には、完了した結果が成功したか失敗したかが示されます。 出力結果は、以下のようになります。
 
-![report-summary](./media/azure-stack-validation-report/report-summary.png)
+````PowerShell
+Reading All Validation(s) from Report C:\Contoso-AzsReadinessCheckerReport.json
+
+############### Certificate Validation Summary ###############
+
+    Certificate Validation found no errors or warnings.
+    
+############### Registration Validation Summary ###############
+
+    Registration Validation found no errors or warnings.
+
+############### Azure Identity Validation Summary ###############
+
+    Azure Identity Validation found no errors or warnings.
+
+############### Azure Stack Graph Validation Summary ###############
+
+Azure Stack Graph Validation results not available.
+
+############### Azure Stack ADFS Validation Summary ###############
+
+Azure Stack ADFS Validation results not available.
+````
 
 
 ## <a name="view-a-filtered-report"></a>フィルター処理されたレポートを表示する
@@ -60,12 +122,13 @@ PowerShell でレポートを表示するには、レポートへのパスを **
 - 証明書
 - AzureRegistration
 - AzureIdentity
+- Graph
+- ADFS
 - [ジョブ]   
 - All  
 
 たとえば、証明書のレポート概要のみを表示するには、次の PowerShell コマンド ラインを使用します。 
- > `Start-AzsReadinessChecker -ReportPath .\AzsReadinessReport.json -ReportSections Certificate – Summary`
+ > `Read-AzsReadinessReport -ReportPath .\Contoso-AzsReadinessReport.json -ReportSections Certificate – Summary`
 
 
 ## <a name="see-also"></a>関連項目
-[Start-AzsReadinessChecker コマンドレット リファレンス](azure-stack-azsreadiness-cmdlet.md)

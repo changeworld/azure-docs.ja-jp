@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 54804867cfaf38965b3dbf5ceb51e08a731d4dd8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 73ff58148ac68b7aeb782b77385f9f971e02edb5
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966547"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457393"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>マルチテナント用にプロビジョニングする方法 
 
@@ -39,7 +39,7 @@ ms.locfileid: "46966547"
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Azure portal で IoT Hub Device Provisioning Service を設定する](./quick-setup-auto-provision.md)」クイック スタートが完了していること。
+* [Azure portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するクイック スタートが完了していること。
 
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
@@ -50,7 +50,7 @@ ms.locfileid: "46966547"
 このセクションでは、Azure Cloud Shell を使用して、**米国西部**と**米国東部**の 2 つのリージョンにテナント用の IoT ハブを作成します。
 
 
-1. Azure Cloud Shell で [az group create](/cli/azure/group#az-group-create) コマンドを使用して、リソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+1. Azure Cloud Shell を使用して、[az group create](/cli/azure/group#az-group-create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
     次の例では、*contoso-us-resource-group* という名前のリソース グループを *eastus* リージョンに作成します。 この記事で作成するすべてのリソースについて、このグループを使用することをお勧めします。 そうすれば、終わった後のクリーンアップが簡単になります。
 
@@ -220,7 +220,7 @@ ms.locfileid: "46966547"
 1. 両方の VM で、次のコマンドを実行して、開発クライアント プラットフォームに固有の SDK のバージョンをビルドします。 
 
     ```bash
-    cmake -Duse_prov_client:BOOL=ON ..
+    cmake -Dhsm_type_symm_key:BOOL=ON ..
     ```
 
     ビルドが成功すると、最後のいくつかの出力行は次のようになります。
@@ -245,7 +245,7 @@ ms.locfileid: "46966547"
     ```    
 
 
-## <a name="derive-unique-device-keys"></a>デバイスの一意キーを派生させる
+## <a name="derive-unique-device-keys"></a>一意のデバイス キーを派生させる
 
 グループ登録で対称キーの構成証明を使用する場合、登録グループのキーを直接は使用しません。 代わりに、[Group Enrollments with symmetric keys](concepts-symmetric-key-attestation.md#group-enrollments) (対称キーでのグループ登録) に関するページで説明されているように、デバイスごとに一意の派生キーを作成します。
 
@@ -392,7 +392,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-この記事で作成したリソースを引き続き使用する場合は、そのままにしてかまいません。 これ以上リソースを使用しない場合は、不要な課金を避けるため、次の手順に従ってこの記事で作成したすべてのリソースを削除してください。
+この記事で作成したリソースを引き続き使用する場合は、そのままにしてかまいません。 これ以上リソースを使用しない場合は、不要な課金を避けるために、次の手順に従って、この記事で作成したすべてのリソースを削除してください。
 
 以下の手順では、この記事の説明に従って **contoso-us-resource-group** という名前の同じリソース グループにすべてのリソースが作成されていることを前提にしています。
 
@@ -400,7 +400,7 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 > リソース グループを削除すると、元に戻すことができません。 リソース グループとそこに含まれるすべてのリソースは完全に削除されます。 間違ったリソース グループやリソースをうっかり削除しないようにしてください。 IoT ハブを、保持したいリソースが含まれている既存のリソース グループ内に作成した場合は、リソース グループを削除するのではなく、IoT Hub リソースだけを削除してください。
 >
 
-名前でリソース グループを削除するには:
+名前でリソース グループを削除するには
 
 1. [Azure ポータル](https://portal.azure.com) にサインインし、 **[リソース グループ]** をクリックします。
 
@@ -412,8 +412,8 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 ## <a name="next-steps"></a>次の手順
 
-- 再プロビジョニングについて詳しくは、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
-- プロビジョニング解除について詳しくは、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」をご覧ください 
+- 再プロビジョニングの詳細については、「[IoT Hub Device reprovisoning concepts](concepts-device-reprovision.md)」(IoT Hub デバイスの再プロビジョニングの概念) をご覧ください 
+- プロビジョニング解除の詳細については、「[自動プロビジョニングされた以前のデバイスのプロビジョニングを解除する方法](how-to-unprovision-devices.md)」を参照してください 
 
 
 

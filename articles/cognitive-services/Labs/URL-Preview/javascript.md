@@ -6,16 +6,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-url-preview
+ms.component: url-preview
 ms.topic: quickstart
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: b10e33a0947057c35bb6227cc43f92c4f0a56ceb
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: f36609448819ed197cb92c0bc4d9cc0237fe6df8
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869467"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466938"
 ---
 # <a name="quickstart-url-preview-in-javascript"></a>クイック スタート: JavaScript による URL Preview 
 

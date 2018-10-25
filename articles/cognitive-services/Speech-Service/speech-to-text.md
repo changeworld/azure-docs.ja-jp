@@ -3,18 +3,18 @@ title: Speech to Text について
 description: Speech to Text API の機能の概要。
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
-ms.author: v-jerkin
-ms.openlocfilehash: 7cb0257a7302221f80bb90c0a6c3446cde07290a
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.author: erhopf
+ms.openlocfilehash: 5a19366f6aeec2422ec8671ba3c32f642b5e01ac
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434128"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49361438"
 ---
 # <a name="about-the-speech-to-text-api"></a>Speech to Text API について
 
@@ -26,7 +26,7 @@ ms.locfileid: "47434128"
 
 - リアルタイムの継続的な認識。 **Speech to Text** により、ユーザーはリアルタイムでオーディオをテキストに書き起こすことができます。 また、これまでに認識されている単語の中間結果の受信もサポートされています。 サービスは音声の末尾を自動的に認識します。 ユーザーはまた、大文字/小文字の設定と句読点、不適切な表現のマスキング、逆テキスト正規化など、追加の書式設定オプションを選択することもできます。
 
-- 対話、会話、およびディクテーションのシナリオでの**Speech to Text** 結果の最適化。 認識された結果は、語彙形式と表示形式の両方で返されます (語彙の結果については、例または API の DetailedSpeechRecognitionResult を参照)。
+- 結果は語彙形式と表示形式の両方で返されます (語彙の結果については、例または API の DetailedSpeechRecognitionResult を参照)。
 
 - 多くの音声言語および方言のサポート。 各認識モードでサポートされている言語の完全な一覧については、[サポートされている言語](language-support.md#speech-to-text)に関するページを参照してください。
 
@@ -34,9 +34,11 @@ ms.locfileid: "47434128"
 
 - 自然言語の理解。 [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS) との統合を通して、音声から意図とエンティティを派生させることができます。 ユーザーはアプリのボキャブラリについて知る必要はありませんが、必要なものを独自の言葉で記述することができます。
 
+- 音声構成オブジェクト (SpeechConfig.OutputFormat プロパティ) で詳細な出力を指定した場合は、サービスから信頼度スコアが返されます。 その場合は、結果に対して Best() メソッドを使用するか、サービスによって返された JSON から直接スコアを取得することができます (たとえば、result.Properties.GetProperty(PropertyId.SpeechServiceResponse_JsonResult))。
+
 ## <a name="api-capabilities"></a>API の機能
 
-**Speech to Text** API の機能の多く、とりわけカスタマイズ関係は、REST を介して使用することができます。 次の表に API にアクセスする各メソッドの機能をまとめます。 機能の完全な一覧と API の詳細については、[Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/) を参照してください
+**Speech to Text** API の機能の一部、とりわけカスタマイズ関係は、REST を介して使用することができます。 次の表に API にアクセスする各メソッドの機能をまとめます。 機能の完全な一覧と API の詳細については、[Swagger のリファレンス](https://westus.cris.ai/swagger/ui/index)をご覧ください。
 
 | ユース ケース | REST () | SDK |
 |-----|-----|-----|----|

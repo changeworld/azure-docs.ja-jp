@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: b1485ff933df7991e1c112981ae10d93bf5613da
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 1d94ac5f799fc4bad13ab6a5e97a225a7499380d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061543"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405975"
 ---
 # <a name="azure-network-security"></a>Azure のネットワーク セキュリティ
 
@@ -459,8 +459,6 @@ Traffic Manager の 2 つのメリットを次に示します。
 Azure ネットワークの検証は、Azure ネットワークが構成されているとおりに動作することを確認するために、ネットワークの監視に使用可能なサービスや機能を使用して実行されます。 Azure Network Watcher を使用すると、多数のロギ記録機能や診断機能にアクセスし、ネットワークのパフォーマンスや正常性を把握するのに役立ちます。 これらの機能は、ポータル、PowerShell、CLI、Rest API および SDK を使用してアクセスできます。
 
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
-
--   [Azure Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
 
 -   [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 

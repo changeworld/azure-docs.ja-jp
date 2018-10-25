@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ae1fdb6239b7d04dc366d023a26d1307cbae68f3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2ec5d469ba0708288881be3d905b492aa8aa4da6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123727"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956616"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Active Directory を使用した Azure Data Lake Storage Gen1 に対するサービス間認証
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 
 ## <a name="step-1-create-an-active-directory-web-application"></a>手順 1: Active Directory Web アプリケーションを作成する
 
-Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサービス間認証を行う Azure AD Web アプリケーションを作成および構成する方法について説明します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。
+Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサービス間認証を行う Azure AD Web アプリケーションを作成および構成する方法について説明します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。
 
 前出のリンクの指示に従うときは、次のスクリーンショットに示すように、アプリケーションの種類として **[Web アプリ/API]** を必ず選択してください。
 
@@ -48,9 +48,9 @@ Azure Active Directory を使用して Azure Data Lake Storage Gen1 でのサー
 ## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>手順 2: アプリケーション ID、認証キー、テナント ID を取得する
 プログラムによってログインするときは、アプリケーションの ID が必要です。 アプリケーションがその独自の資格情報で動作する場合は、さらに認証キーが必要となります。
 
-* アプリケーションのアプリケーション ID と認証キー (クライアント シークレットとも呼ばれる) を取得する方法については、「[アプリケーション ID と認証キーを取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)」を参照してください。
+* アプリケーションのアプリケーション ID と認証キー (クライアント シークレットとも呼ばれる) を取得する方法については、「[アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)」を参照してください。
 
-* テナント ID を取得する方法については、「[テナント ID を取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)」を参照してください。
+* テナント ID を取得する方法については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」を参照してください。
 
 ## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>手順 3: Azure AD アプリケーションを Azure Data Lake Storage Gen1 アカウントのファイルまたはフォルダーに割り当てる
 

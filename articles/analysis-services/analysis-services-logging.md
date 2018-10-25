@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d19e45710aca3e1e18be6c4529da6474a97bc59f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a8d6080b573cbad1004166f28a3e6596560241be
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37449337"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426517"
 ---
 # <a name="setup-diagnostic-logging"></a>診断ログのセットアップ
 
@@ -26,7 +26,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 
 **[エンジン]**、**[サービス]**、および **[メトリック]** のカテゴリを選択できます。
 
-### <a name="engine"></a>エンジン
+### <a name="engine"></a>Engine
 
 **[エンジン]** を選択すると、すべての [xEvents](https://docs.microsoft.com/sql/analysis-services/instances/monitor-analysis-services-with-sql-server-extended-events) がログに記録されます。 個々のイベントを選択することはできません。 
 
@@ -42,7 +42,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 |クエリ     |   Query End      |
 |コマンド     |  Command Begin       |
 |コマンド     |  Command End       |
-|エラーと警告     |   エラー      |
+|エラーと警告     |   Error      |
 |発見     |   Discover End      |
 |通知     |    通知     |
 |Session     |  Session Initialize       |
@@ -53,7 +53,7 @@ Analysis Services ソリューションの重要な部分は、サーバーの�
 |クエリの処理     |   Direct Query Begin      |
 |クエリの処理     |  Direct Query End       |
 
-### <a name="service"></a>サービス
+### <a name="service"></a>Service
 
 |操作の名前  |発生するタイミング  |
 |---------|---------|

@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 10/19/2018
 ms.author: raynew
-ms.openlocfilehash: 4036ab6e62f4738f4b2906eb7571dc5d0e972988
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 1a818d37efd370ce0b3e27bff73a153544763ebb
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391149"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456628"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック
 
@@ -61,7 +61,7 @@ Site Recovery を使用して Azure にレプリケートされた物理サー�
 
 フェールオーバー後に RDP/SSH を使用して Azure VM に接続する場合は、[こちら](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)の表に示されている要件に従います。
 
-フェールオーバー後の接続の問題をトラブルシューティングするには、[こちら](site-recovery-failover-to-azure-troubleshoot.md)に記載されている手順に従ってください。
+フェールオーバー後の接続の問題をトラブルシューティングするには、[ここ](site-recovery-failover-to-azure-troubleshoot.md)で説明されている手順に従ってください。
 
 ## <a name="create-a-process-server-in-azure"></a>Azure にプロセス サーバーを作成する
 

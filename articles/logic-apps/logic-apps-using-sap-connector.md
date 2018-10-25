@@ -10,18 +10,18 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 09/14/2018
 tags: connectors
-ms.openlocfilehash: 13268ec865ec72fce23df550619b199389096360
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: dd86fd1aa8b1dab9f329f12924ff37db1256d1eb
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056508"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377905"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Azure Logic Apps から SAP システムに接続する
 
 この記事では、SAP ERP Central Component (ECC) コネクタを使用し、Logic Apps 内からオンプレミス SAP リソースにアクセスする方法を紹介します。 SAP ECC コネクタでは、Intermediate Document (IDoc)、Business Application Programming Interface (BAPI)、Remote Function Call (RFC) を介し、SAP Netweaver ベースのシステムとの間でメッセージやデータが統合されます。
 
-SAP ECC コネクタでは <a href="https://help.sap.com/saphelp_nwpi71/helpdata/en/e9/23c80d66d08c4c8c044a3ea11ca90f/frameset.htm">SAP .Net Connector (NCo) ライブラリ</a>が使用され、次のような動作が行われます。
+SAP ECC コネクタでは <a href="https://support.sap.com/en/product/connectors/msnet.html">SAP .Net Connector (NCo) ライブラリ</a>が使用され、次のような動作が行われます。
 
 - **SAP に送信する**: SAP システムに tRFC で IDoc を送信したり、BAPI 関数を呼び出したりします。
 - **SAP から受信する**: SAP システムから tRFC で IDoc や BAPI 関数呼び出しを受信します。
@@ -44,7 +44,7 @@ SAP コネクタは、[オンプレミスのデータ ゲートウェイ](https:
 
 * オンプレミスの任意のコンピューターに最新の[オンプレミス データ ゲートウェイ](https://www.microsoft.com/download/details.aspx?id=53127)をダウンロードしてインストールします。 事前に Azure portal でゲートウェイをセットアップしておいてください。 ゲートウェイを使用することで、オンプレミスのデータやリソースに安全にアクセスすることができます。 詳細については、「[Azure Logic Apps 向けのオンプレミス データ ゲートウェイをインストールする](../logic-apps/logic-apps-gateway-install.md)」を参照してください。
 
-* オンプレミス データ ゲートウェイと同じコンピューターに最新の SAP クライアント ライブラリをダウンロードしてインストールします。現時点では、<a href="https://softwaredownloads.sap.com/file/0020000000086282018" target="_blank">SAP Connector (NCo) 3.0.20.0 for Microsoft .NET Framework 4.0 and Windows 64bit (x64)</a> が最新となります。 このバージョン以降をインストールしてください。これには次の理由があります。
+* オンプレミス データ ゲートウェイと同じコンピューターに最新の SAP クライアント ライブラリをダウンロードしてインストールします。現時点では、<a href="https://softwaredownloads.sap.com/file/0020000001865512018" target="_blank">SAP Connector (NCo) 3.0.21.0 for Microsoft .NET Framework 4.0 and Windows 64bit (x64)</a> が最新となります。 このバージョン以降をインストールしてください。これには次の理由があります。
 
   * 以前のバージョンの SAP NCo は、複数の IDoc メッセージが同時に送信されるとデッドロック状態に陥ることがあります。 
   この状態になると、以後、SAP ターゲットに送信されたすべてのメッセージがブロックされ、メッセージがタイムアウトになります。

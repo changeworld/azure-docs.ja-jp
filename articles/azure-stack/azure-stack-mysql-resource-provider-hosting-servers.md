@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: b11ce8bbbf4b270f7a3b9689f95b0cbfca3b14c9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 833d8e7960bfb7ee3c135df57e6d4dfec97af037
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408880"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364667"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>MySQL リソース プロバイダー用のホスティング サーバーの追加
 
@@ -75,6 +75,24 @@ MySQL リソース プロバイダーが SQL インスタンスに接続でき�
 ## <a name="increase-backend-database-capacity"></a>バックエンド データベース容量を増やす
 
 バックエンド データベース容量を増加するには、Azure Stack ポータルで追加で MySQL サーバーをデプロイします。 これらのサーバーを新規または既存の SKU に追加します。 サーバーを既存の SKU に追加する場合は、サーバーの特性が SKU 内の他のサーバーと同じであることを確認してください。
+
+## <a name="sku-notes"></a>SKU に関する注意
+使用する SKU 名は、SKU 内のサーバーの機能 (容量やパフォーマンス) を示すものにしてください。 この名前は、該当する SKU にユーザーがデータベースをデプロイするときの助けになります。 たとえば、SKU 名を使用して、サービス内容を次の特性によって区別することもできます。
+  
+* 大容量
+* 高パフォーマンス
+* 高可用性
+
+ベスト プラクティスとして、SKU 内のすべてのホスティング サーバーに同じリソースとパフォーマンス特性を持たせてください。
+
+SKU は、特定のユーザーやグループに割り当てることはできません。
+
+SKU はポータルに表示されるまで最大 1 時間かかることがあります。 SKU の作成が完了するまで、ユーザーはデータベースを作成できません。
+
+SKU を編集するには、**[すべてのサービス]** > **[MySQL アダプター]** > **[SKU]** に移動します。 変更する SKU を選択し、必要な変更を加えた後、**[保存]** をクリックして変更を保存します。 不要になった SKU を削除するには、**[すべてのサービス]** > **[MySQL アダプター]** > **[SKU]** に移動します。 SKU 名を右クリックし、**[削除]** を選択して削除します。
+
+> [!TIP]
+> 同じ場所で、MySQL リソース プロバイダーのクォータを編集したり、削除したりすることもできます。
 
 ## <a name="make-mysql-database-servers-available-to-your-users"></a>ユーザーが MySQL データベース サーバーを使用できるようにする
 

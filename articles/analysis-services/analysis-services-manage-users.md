@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a629c598c94e44713f8990871c46272dc48b1359
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6280544a42d0d5012b01446ec8c3bc386ef861dd
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296279"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428421"
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 Azure Analysis Services では、ID 管理とユーザー認証に Azure Active Directory (Azure AD) を使用します。 Azure Analysis Services サーバーを作成、管理、またはこのサーバーに接続するユーザーには、同じサブスクリプション内の [Azure AD テナント](../active-directory/fundamentals/active-directory-administer.md)に有効なユーザー ID が必要です。
@@ -27,7 +27,7 @@ Azure Analysis Services では、[Azure AD B2B コラボレーション](../acti
 
 3 つのクライアント ライブラリはすべて、Azure AD の対話型フローと非対話型認証方法の両方をサポートします。 2 つの非対話型方法である Active Directory パスワード認証方法と Active Directory 統合認証方法は、AMOMD と MSOLAP を利用しているアプリケーションで使用できます。 これら 2 つの方式では、ポップアップ ダイアログ ボックスは表示されません。
 
-Excel や Power BI Desktop などのクライアント アプリケーションと、SSMS や SSDT などのツールは、最新リリースに更新されたときにライブラリの最新バージョンをインストールします。 Power BI Desktop、SSMS、SSDT は毎月更新されます。 Excel は [Office 365 と共に更新](https://support.office.com/en-us/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)されます。 Office 365 の更新は頻度が低く、組織によっては遅延チャネルを使用して、更新が最大 3 か月間遅延されるようにしています。
+Excel や Power BI Desktop などのクライアント アプリケーションと、SSMS や SSDT などのツールは、最新リリースに更新されたときにライブラリの最新バージョンをインストールします。 Power BI Desktop、SSMS、SSDT は毎月更新されます。 Excel は [Office 365 と共に更新](https://support.office.com/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)されます。 Office 365 の更新は頻度が低く、組織によっては遅延チャネルを使用して、更新が最大 3 か月間遅延されるようにしています。
 
 使用するクライアント アプリケーションまたはツールに応じて、認証の種類とサインインの方法が異なる場合があります。 各アプリケーションは、Azure Analysis Services のようなクラウド サービスに接続するためのさまざまな機能をサポートしている場合があります。
 

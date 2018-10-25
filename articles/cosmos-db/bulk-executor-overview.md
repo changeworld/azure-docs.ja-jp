@@ -1,21 +1,20 @@
 ---
-title: Azure Cosmos DB Bulk Executor ライブラリの概要 | Microsoft Docs
-description: Azure Cosmos DB Bulk Executor ライブラリおよびそれを使用する利点やアーキテクチャについて説明します。
-keywords: Java Bulk Executor
+title: Bulk Executor ライブラリを使った Azure Cosmos DB での一括インポートとデータ更新 | Microsoft Docs
+description: Bulk Executor ライブラリによって提供される一括インポート API と一括更新 API を通じて、Azure Cosmos DB で一括操作を実行します。
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 7c490aa958cf9e78c260dd0fbcf7952b55d8d88c
-ms.sourcegitcommit: d7725f1f20c534c102021aa4feaea7fc0d257609
+ms.openlocfilehash: a760de998c78ce2afdd24a15d9dd6e5d0cf44dc1
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37096178"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363546"
 ---
 # <a name="azure-cosmos-db-bulk-executor-library-overview"></a>Azure Cosmos DB Bulk Executor ライブラリの概要
  
@@ -24,10 +23,10 @@ Azure Cosmos DB は高速で柔軟なグローバル分散データベース サ
 * 読み取りと書き込みの大きなスループット (1 秒あたり数百万回の操作)。  
 * 予測可能なミリ秒単位の待機時間での、大量のトランザクション データと運用データの格納 (数百テラバイトまたはそれ以上)。  
 
-Bulk Executor ライブラリは、この大量のスループットとストレージを活用するのに役立ちます。Bulk Executor ライブラリを使うと、一括インポートと一括更新の API により、Azure Cosmos DB で一括操作を実行できます。 以下のセクションでは Bulk Executor ライブラリの機能についてさらに説明します。 
+Bulk Executor ライブラリは、このような大きなスループットとストレージを利用するのに役立ちます。 Bulk Executor ライブラリを使うと、一括インポート API と一括更新 API を通じて、Azure Cosmos DB で一括操作を実行できます。 以下のセクションでは Bulk Executor ライブラリの機能についてさらに説明します。 
 
 > [!NOTE] 
-> 現時点では、Bulk Executor ライブラリはインポート操作と更新操作をサポートし、Azure Cosmos DB SQL API アカウントによってのみサポートされます。 ライブラリの更新については、[.NET](sql-api-sdk-bulk-executor-dot-net.md) および [Java](sql-api-sdk-bulk-executor-java.md) のリリース ノートをご覧ください。
+> 現時点では、Bulk Executor ライブラリはインポート操作と更新操作をサポートし、Azure Cosmos DB SQL API アカウントと Gremlin API アカウントによってのみサポートされます。
  
 ## <a name="key-features-of-the-bulk-executor-library"></a>Bulk Executor ライブラリの主な機能  
  
@@ -35,7 +34,7 @@ Bulk Executor ライブラリは、この大量のスループットとストレ
 
 * ライブラリ内で効率的に処理することにより、要求レートの制限、要求タイムアウト、およびその他の一時的な例外を処理するアプリケーション ロジックを記述する単調なタスクを抽象化します。  
 
-* 一括操作を実行するアプリケーションをスケールアウトするシンプルなメカニズムを提供します。Azure VM で実行する 1 つの Bulk Executor インスタンスは 500 K RU/秒以上を消費でき、個々のクライアント VM にインスタンスを追加することでより高いスループットを実現できます。  
+* 一括操作を実行するアプリケーションをスケールアウトするシンプルなメカニズムを提供します。Azure VM で実行する 1 つの Bulk Executor インスタンスは 500K RU/秒以上を消費でき、個々のクライアント VM にインスタンスを追加することでより高いスループットを実現できます。  
  
 * スケールアウト アーキテクチャを使用することで、1 時間以内に 1 テラバイトを超えるデータを一括インポートできます。  
 

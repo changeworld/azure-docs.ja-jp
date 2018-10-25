@@ -9,15 +9,15 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 5fd0cb92bd35b1f238e4080d2c9e8caf781b8131
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 2151733a5d91fb17c69fa1f4f6aac64a70928824
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493870"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364304"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Azure Backup サービスについての質問
-この記事では、Azure Backup のコンポーネントについてよくある質問の回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 Azure Backup について質問するには、**[コメント]** (右側) をクリックします。 コメントは、この記事の下部に表示されます。 コメントするには、Livefyre アカウントが必要です。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
+この記事では、Azure Backup のコンポーネントについてよくある質問の回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 Azure Backup について質問するには、**[コメント]** (右側) をクリックします。 コメントは、この記事の下部に表示されます。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
 
 この記事の各セクションの内容をひととおり確認するには、右側の「**この記事の内容**」にあるリンクをご利用ください。
 
@@ -31,7 +31,7 @@ ms.locfileid: "39493870"
 コンテナーあたり最大 1000 の Azure 仮想マシンを登録できます。 MAB エージェントを使用している場合は、コンテナーあたり、最大 50 の MAB エージェントを登録できます。 1 つのコンテナーには、50 の MAB サーバー/DPM サーバーを登録できます。
 
 ### <a name="can-i-use-a-rest-api-to-query-the-size-of-protected-items-in-a-vault-br"></a>REST API を使用して、コンテナー内の保護されている項目のサイズを照会できますか。 <br/>
-はい。[使用法 - コンテナー別一覧](https://t.co/2lgIrIaF0J)の記事に、Recovery Services コンテナーから取得できる情報が示されています。
+はい。[使用法 - コンテナー別一覧](https://docs.microsoft.com/rest/api/recoveryservices/usages/usages_listbyvaults)の記事に、Recovery Services コンテナーから取得できる情報が示されています。
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>組織で所有しているコンテナーが 1 つの場合、データを復元する際に特定のサーバーのデータを別のサーバーから分離するには、どうすればよいですか。<br/>
 同じコンテナーに登録されたサーバーはどれもが、 *同じパスフレーズを使用する*他のサーバーによってバックアップされたデータを復元できます。 サーバーのバックアップ データを組織内の他のサーバーから分離する必要がある場合は、これらのサーバーごとに指定したパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで 2 番目、ストレージ サーバーで 3 番目の暗号化パスフレーズを使用することができます。
@@ -42,8 +42,11 @@ ms.locfileid: "39493870"
 ### <a name="can-i-migrate-backup-data-to-another-vault-br"></a>バックアップ データを別のコンテナーに移行できますか? <br/>
 いいえ。 コンテナーに保存されているバックアップ データを別のコンテナーに移行することはできません。
 
+### <a name="can-i-change-from-grs-to-lrs-after-a-backup-br"></a>バックアップ後に GRS から LRS へ変更することはできますか? <br/>
+いいえ。 Recovery Services コンテナーでは、バックアップが保存される前にしか、ストレージ オプションを変更できません。
+
 ### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-still-supported-br"></a>Recovery Services コンテナーは Resource Manager に基づいています。 Backup コンテナーは引き続きサポートされますか。 <br/>
-Backup コンテナーは Recovery Services コンテナーに変換されています。 ご自身で Backup コンテナーを Recovery Services コンテナーに変換していない場合は、自動的に Backup コンテナーが Recovery Services コンテナーに変換されます。 
+Backup コンテナーは Recovery Services コンテナーに変換されています。 ご自身で Backup コンテナーを Recovery Services コンテナーに変換していない場合は、自動的に Backup コンテナーが Recovery Services コンテナーに変換されます。
 
 ### <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>Backup コンテナーを Recovery Services コンテナーに移行することはできますか。 <br/>
 すべての Backup コンテナーは Recovery Services コンテナーに変換されています。 ご自身で Backup コンテナーを Recovery Services コンテナーに変換していない場合は、自動的に Backup コンテナーが Recovery Services コンテナーに変換されます。
@@ -57,7 +60,6 @@ Backup コンテナーは Recovery Services コンテナーに変換されてい
 ## <a name="back-up-vmware-servers"></a>VMware サーバーのバックアップ
 
 ### <a name="can-i-back-up-vmware-vcenter-servers-to-azure"></a>VMware vCenter サーバーを Azure にバックアップできますか。
-
 はい。 Azure Backup Server を使用して、Azure に VMware vCenter および ESXi をバックアップすることができます。 サポートされている VMware バージョンについては、「[Azure Backup Server の保護マトリックス](backup-mabs-protection-matrix.md)」を参照してください。 詳細な手順については、「[Azure Backup Server を使用した VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)」を参照してください。
 
 ### <a name="do-i-need-a-separate-license-to-recover-a-full-on-premises-vmwarehyper-v-cluster-from-dpm-or-azure-backup-serverbr"></a>DPM または Azure Backup Server から完全なオンプレミスの VMware/Hyper-V クラスターを復旧するには、個別のライセンスが必要ですか。<br/>
@@ -71,17 +73,14 @@ VMware/Hyper-V を保護するために個別のライセンスは必要あり�
 いいえ。 DPM または MABS サーバーは 1 つのコンテナーにしか登録できません。
 
 ### <a name="which-version-of-system-center-data-protection-manager-is-supported"></a>System Center Data Protection Manager は、どのバージョンがサポートされていますか。
-
-[最新版](http://aka.ms/azurebackup_agent)の Azure Backup エージェントを System Center Data Protection Manager (DPM) の最新の更新プログラムのロールアップ (UR) にインストールすることをお勧めします。 
+[最新版](http://aka.ms/azurebackup_agent)の Azure Backup エージェントを System Center Data Protection Manager (DPM) の最新の更新プログラムのロールアップ (UR) にインストールすることをお勧めします。
 - System Center DPM 2012 R2 の場合は、[更新プログラム ロールアップ 14](https://support.microsoft.com/help/4043315/update-rollup-14-for-system-center-2012-r2-data-protection-manager) が最新の更新プログラムです。
 - System Center DPM 2016 の場合は、[更新プログラム ロールアップ 2](https://support.microsoft.com/en-us/help/3209593) が最新の更新プログラムです。
 
 ### <a name="i-have-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-protect-on-premises-applicationvm-workloads-to-azure"></a>ファイルとフォルダーを保護するために Azure Backup エージェントをインストールしました。 Azure に転送するオンプレミスのアプリケーション/VM ワークロードを保護するために、System Center DPM をインストールすることはできますか。
-
 はい。 ただし、System Center Data Protection Manager (DPM) と共に Azure Backup を使用するには、まず DPM をインストールしてから Azure Backup エージェントをインストールします。 この順序で Azure Backup のコンポーネントをインストールすることで、Azure Backup エージェントが DPM と連携します。 DPM をインストールする前に Azure Backup エージェントをインストールする方法は推奨されておらず、サポートもされていません。
 
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>DPM を使用して Azure Stack でアプリをバックアップすることはできますか。
-
 いいえ。 Azure Backup を使用して Azure Stack を保護することはできますが、Azure Backup では現在、DPM を使用する Azure Stack でのアプリのバックアップはサポートされていません。
 
 ## <a name="how-azure-backup-works"></a>Azure Backup の動作
@@ -112,7 +111,7 @@ Azure Backup では、ファイルとフォルダーのほか、Azure Backup Ser
 | Windows Server 2016 |64 ビット |Standard、Datacenter、Essentials |
 | Windows Server 2012 R2 と最新 SP |64 ビット |Standard、Datacenter、Foundation |
 | Windows Server 2012 と最新 SP |64 ビット |Datacenter、Foundation、Standard |
-| Windows Storage Server 2016 と最新 SP |64 ビット |Standard、Workgroup | 
+| Windows Storage Server 2016 と最新 SP |64 ビット |Standard、Workgroup |
 | Windows Storage Server 2012 R2 と最新 SP |64 ビット |Standard、Workgroup |
 | Windows Storage Server 2012 と最新 SP |64 ビット |Standard、Workgroup |
 | Windows Server 2012 R2 と最新 SP |64 ビット |Essential |
@@ -145,7 +144,7 @@ Azure Backup には、データ ソースの最大サイズが適用されます
 | Microsoft Exchange |バックアップ対象の Exchange サーバー内のすべての Exchange データベースの合計 |
 | BMR/システム状態 |バックアップ対象のコンピューターの BMR またはシステム状態の個々のコピー |
 
-Azure IaaS 仮想マシンのバックアップあたり、VM では最大 16 個のデータ ディスクを使用でき、各データ ディスクの最大容量は 4095 GB です。
+Azure IaaS 仮想マシンのバックアップあたり、VM では最大 32 個のデータ ディスクを使用でき、各データ ディスクの最大容量は 4095 GB です。
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-held-in-a-recovery-services-vault"></a>Recovery Services コンテナーに保持できるデータ量に制限はありますか。
 Recovery Services コンテナーにバックアップできるデータ量に制限はありません。
@@ -189,7 +188,7 @@ Azure Backup からの回復の数に制限はありません。
 はい。 Azure に送信されるデータは、暗号化された状態で保存されます。 マイクロソフトは、どの時点でもバックアップ データの暗号化を解除しません。 Azure VM をバックアップする場合、Azure Backup では仮想マシンの暗号化が使用されます。 たとえば、Azure Disk Encryption や他の暗号化テクノロジを使用して VM が暗号化されている場合、Azure Backup はその暗号化を使用してデータをセキュリティ保護します。
 
 ### <a name="what-is-the-minimum-length-of-encryption-key-used-to-encrypt-backup-data-br"></a>バックアップ データの暗号化に使用される暗号化キーの最小の長さはどれくらいですか。 <br/>
-Azure Backup エージェントを使用する場合、暗号化キーは 16 文字以上である必要があります。 Azure VM に関しては、Azure Key Vault で使用されるキーの長さに制限はありません。 
+Azure Backup エージェントを使用する場合、暗号化キーは 16 文字以上である必要があります。 Azure VM に関しては、Azure Key Vault で使用されるキーの長さに制限はありません。
 
 ### <a name="what-happens-if-i-misplace-the-encryption-key-can-i-recover-the-data-or-can-microsoft-recover-the-data-br"></a>暗号化キーを紛失した場合はどうなりますか? 自分でデータを回復できますか。または Microsoft でデータを回復してもらうことはできますか。 <br/>
 バックアップ データの暗号化に使用されるキーは、お客様のオンプレミスにのみ存在します。 マイクロソフトは Azure にコピーを保持していませんし、キーにもアクセスできません。 お客様がキーを紛失した場合、マイクロソフトはバックアップ データを回復できません。

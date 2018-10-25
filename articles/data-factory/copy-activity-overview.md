@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 10/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 8e34b0823b7f10455ac0b66fb0614d3946f2382e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: df1fbcb09310985b7ca9d9fd2e7a987fc6e2b2dc
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38542705"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457087"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -178,9 +178,9 @@ Azure Data Factory の [Author & Monitor]\(作成者と監視\) という UI ま
 | rowsSkipped | スキップされた互換性のない行の数。 この機能は、"enableSkipIncompatibleRow" を true に設定することによって有効にできます。 | Int64 値 (単位なし) |
 | throughput | データが転送された速度 | 浮動小数点数 **(KB/秒)** |
 | copyDuration | コピーの持続期間 | Int32 値 (秒数) |
-| sqlDwPolyBase | SQL Data Warehouse にデータをコピーするときに PolyBase が使用される場合。 | ブール |
-| redshiftUnload | Redshift からデータをコピーするときに UNLOAD が使用される場合。 | ブール |
-| hdfsDistcp | HDFS からデータをコピーするときに DistCp が使用される場合。 | ブール |
+| sqlDwPolyBase | SQL Data Warehouse にデータをコピーするときに PolyBase が使用される場合。 | Boolean |
+| redshiftUnload | Redshift からデータをコピーするときに UNLOAD が使用される場合。 | Boolean |
+| hdfsDistcp | HDFS からデータをコピーするときに DistCp が使用される場合。 | Boolean |
 | effectiveIntegrationRuntime | アクティビティの実行を機能強化するために、どの統合ランタイムが使用されるかを `<IR name> (<region if it's Azure IR>)` の形式で示します。 | Text (文字列) |
 | usedDataIntegrationUnits | コピーの間に有効なデータ統合単位。 | Int32 値 |
 | usedParallelCopies | コピー中の効率的な parallelCopies。 | Int32 値|

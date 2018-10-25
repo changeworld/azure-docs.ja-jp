@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 03d692ddfd6f41fd559e9b921f0214a9cd2ada22
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7d706cf71761496fd740c729224ee4331eeb2911
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225227"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091625"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>IoT Edge にモデルをデプロイするための準備
 
@@ -35,18 +35,15 @@ Azure IoT Edge デバイスとは、Azure IoT Edge ランタイムを実行し�
 
 * Azure サブスクリプション内の [Azure IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)。 
 
-* トレーニング済みのモデル。 モデルをトレーニングする方法の例は、「[Azure Machine Learning で画像分類モデルをトレーニングする方法](tutorial-train-models-with-aml.md)」のドキュメントを参照してください。
+* トレーニング済みのモデル。 モデルをトレーニングする方法の例は、「[Azure Machine Learning で画像分類モデルをトレーニングする方法](tutorial-train-models-with-aml.md)」のドキュメントを参照してください。 あらかじめトレーニングされたモデルは、[Azure IoT Edge 用 AI ツールキットの GitHub リポジトリ](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial)で入手できます。
 
 ## <a name="prepare-the-iot-device"></a>IoT デバイスの準備
 
 デバイスを登録し、IoT ランタイムをインストールする方法については、「[クイック スタート: 初めての IoT Edge モジュールを Linux x64 デバイスに展開する](../../iot-edge/quickstart-linux.md)」というドキュメントの手順に従います。
 
-## <a name="register-the-model"></a>モデルの登録
+## <a name="register-the-model"></a>モデルを登録する
 
-Azure IoT Edge モジュールはコンテナー イメージに基づいています。 IoT Edge デバイスにモデルをデプロイするには、次の手順に従って Azure Machine Learning ワークスペースにモデルを登録し、Docker イメージを作成します。 
-
-> [!IMPORTANT]
-> 以前に Azure Machine Learning を使用してモデルをトレーニングしたことがある場合は、モデルがワークスペースに既に登録されていることがあります。その場合は、手順 3 に進んでください。
+Azure IoT Edge モジュールはコンテナー イメージに基づいています。 IoT Edge デバイスにモデルをデプロイするには、次の手順に従って Azure Machine Learning サービス ワークスペースにモデルを登録し、Docker イメージを作成します。 
 
 1. ワークスペースを初期化し、config.json ファイルを読み込みます。
 
@@ -58,6 +55,9 @@ Azure IoT Edge モジュールはコンテナー イメージに基づいてい�
     ```    
 
 1. モデルをワークスペースに登録します。 既定のテキストを、実際のモデルのパス、名前、タグ、説明に置き換えます。
+
+    > [!IMPORTANT]
+    > 以前に Azure Machine Learning を使用してモデルをトレーニングしたことがある場合は、モデルがワークスペースに既に登録されていることがあります。 その場合は、この手順をスキップしてください。 このワークスペースに登録されているモデルの一覧を表示するには、`Model.list(ws)` を使用します。
 
     ```python
     from azureml.core.model import Model
@@ -122,7 +122,7 @@ Azure IoT では、Azure Machine Learning サービスが Docker イメージを
 
 1. [Azure Portal](https://portal.azure.com/signin/index) にサインインします。
 
-1. Azure Machine Learning ワークスペースに移動し、__[概要]__ を選択します。 コンテナー レジストリの設定に移動するには、__[レジストリ]__ リンクを選択します。
+1. Azure Machine Learning サービス ワークスペースに移動し、__[概要]__ を選択します。 コンテナー レジストリの設定に移動するには、__[レジストリ]__ リンクを選択します。
 
     ![コンテナー レジストリ エントリの画像](./media/how-to-deploy-to-iot/findregisteredcontainer.png)
 

@@ -6,26 +6,28 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/05/2018
 ms.author: dobett
-ms.openlocfilehash: 11cec9621ad72cfeaee45e4cd466430e64b9b836
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: b7ef5d2853cdf4a7b09aa52c510c268cb42a245f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42141347"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395158"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
 ## <a name="quotas-and-throttling"></a>クォータと調整
+
 各 Azure サブスクリプションに最大 50 個の IoT Hub と最大 1 個の Free ハブを割り当てることができます。
 
-各 IoT Hub は、特定のレベルのユニット数でプロビジョニングされます。 レベルとユニット数により、送信できるメッセージの1 日あたりの最大クォータが決定されます。 1 日あたりのクォータを計算するために使用されるメッセージ サイズは、Free レベルのハブでは 0.5 KB、他のすべてのレベルでは 4 KB です。 詳細については、「[Azure IoT Hub の価格][lnk-pricing]」を参照してください。
+各 IoT Hub は、特定のレベルのユニット数でプロビジョニングされます。 レベルとユニット数により、送信できるメッセージの1 日あたりの最大クォータが決定されます。 1 日あたりのクォータを計算するために使用されるメッセージ サイズは、無料レベルのハブでは 0.5 KB、他のすべてのレベルでは 4 KB です。 詳細については、「[Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub/)」を参照してください。
 
 また、レベルでは、IoT Hub がすべての操作に適用するスロットル制限も決まります。
 
 ## <a name="operation-throttles"></a>操作のスロットル
-操作のスロットルは、ごく限られた範囲に適用される、不正使用を回避するためのレート制限です。 IoT Hub は、可能な限りエラーを返さないようにしようとしますが、長時間にわたりスロットル違反が続く場合は、例外が返され始めます。
+
+操作のスロットルは、ごく限られた範囲に適用される、不正使用を回避するためのレート制限です。 IoT Hub は、可能な限りエラーを返すことを避けようとしますが、長時間にわたりスロットル違反が続く場合は、`429 ThrottlingException` を返し始めます。
 
 任意の時点で、IoT Hub にプロビジョニングされたユニットを増やすことで、クォータやスロットルの制限値を増やすことができます。
 
@@ -42,21 +44,21 @@ ms.locfileid: "42141347"
 | ダイレクト メソッド<sup>1</sup> | 160 KB/秒/ユニット<sup>2</sup> | 480 KB/秒/ユニット<sup>2</sup> | 24 MB/秒/ユニット<sup>2</sup> | 
 | ツイン (デバイスとモジュール) の読み取り<sup>1</sup> | 10/秒 | 10/秒または 1/秒/ユニット以上 | 50/秒/ユニット |
 | ツインの更新 (デバイスとモジュール)<sup>1</sup> | 10/秒 | 10/秒または 1/秒/ユニット以上 | 50/秒/ユニット |
-| ジョブの操作<sup>1</sup> <br/> (作成、更新、一覧表示、削除) | 1.67/sec/unit (100/分/単位) | 1.67/sec/unit (100/分/単位) | 83.33/sec/unit (5000/分/単位) |
+| ジョブの操作<sup>1、3</sup>  <br/> (作成、更新、一覧表示、削除) | 1.67/sec/unit (100/分/単位) | 1.67/sec/unit (100/分/単位) | 83.33/sec/unit (5000/分/単位) |
 | ジョブ デバイス操作<sup>1</sup> <br/> (ツインの更新、ダイレクト メソッドの呼び出し) | 10/秒 | 10/秒または 1/秒/ユニット以上 | 50/秒/ユニット |
 | 構成と Edge の展開<sup>1</sup> <br/> (作成、更新、一覧表示、削除) | 0.33/秒/単位 (20/分/単位) | 0.33/秒/単位 (20/分/単位) | 0.33/秒/単位 (20/分/単位) |
 
 
-<sup>1</sup> この機能は、IoT Hub の Basic レベルでは使用できません。 詳しくは、[適切な IoT Hub の選び方](iot-hub-scaling.md)に関するページをご覧ください。 <br/><sup>2</sup> 調整メーター サイズは 8 KB です。
+<sup>1</sup> この機能は、IoT Hub の Basic レベルでは使用できません。 詳しくは、[適切な IoT Hub の選び方](iot-hub-scaling.md)に関するページをご覧ください。 <br/><sup>2</sup> 調整メーター サイズは 8 KB です。 <br/><sup>3</sup> アクティブ デバイスのインポート/エクスポート ジョブは、一度に 1 つしか保持できません。
 
-"*デバイスの接続*" スロットルは、IoT Hub を使用して新しいデバイス接続を確立できる速度を制御します。 "*デバイスの接続*" スロットルでは、同時に接続されるデバイスの最大数は制御されません。 スロットルは、IoT Hub にプロビジョニングされたユニット数に依存します。
+"*デバイスの接続*" スロットルは、IoT Hub を使用して新しいデバイス接続を確立できる速度を制御します。 "*デバイスの接続*" スロットルでは、同時に接続されるデバイスの最大数は制御されません。 "*デバイスの接続*" レートのスロットルは、IoT Hub にプロビジョニングされたユニット数に依存します。
 
 たとえば、1 つの S1 ユニットを購入した場合、1 秒あたり 100 接続のスロットルを利用できます。 したがって、100,000 個のデバイスに接続するには、少なくとも 1,000 秒 (約 16 分) かかります。 ただし、ID レジストリに登録されたデバイスの数だけ、同時に接続されたデバイスを持つことができます。
 
-IoT Hub スロットルの動作の詳細については、ブログ投稿「[IoT Hub throttling and you (IoT Hub スロットルの操作)][lnk-throttle-blog]」を参照してください。
+IoT Hub スロットルの動作の詳細については、ブログ投稿「[IoT Hub throttling and you (IoT Hub スロットルの操作)](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)」を参照してください。
 
 > [!IMPORTANT]
-> ID レジストリの操作は、デバイスの管理とプロビジョニングのシナリオにおける実行時の使用を目的としています。 多数のデバイス ID の読み取りまたは更新は、[ジョブのインポートとエクスポート][lnk-importexport]によってサポートされています。
+> ID レジストリの操作は、デバイスの管理とプロビジョニングのシナリオにおける実行時の使用を目的としています。 多数のデバイス ID の読み取りまたは更新は、[ジョブのインポートとエクスポート](iot-hub-devguide-identity-registry.md#import-and-export-device-identities)によってサポートされています。
 > 
 > 
 
@@ -73,9 +75,9 @@ IoT Hub により、その他の運用上の制限が適用されます。
 | デバイスからクラウドへのメッセージ | 最大メッセージ サイズは 256 KB |
 | cloud-to-device のメッセージング<sup>1</sup> | 最大メッセージ サイズは 64 KB。 配信の保留中のメッセージの最大数は 50。 |
 | ダイレクト メソッド<sup>1</sup> | ダイレクト メソッドの最大ペイロード サイズは 128 KB。 |
-| 構成 | ハブあたり 20 構成。 |
-| Edge の展開 | ハブあたり 20 展開。 展開あたり 20 モジュール。 |
-| ツイン | ツイン セクション (タグ、必要なプロパティ、報告されたプロパティ) あたりの最大サイズは 8 KB です |
+| 自動デバイス構成<sup>1</sup> | 有料の SKU ハブあたり 100 構成。 無料の SKU ハブあたり 20 構成。 |
+| 自動の Edge デプロイ<sup>1</sup> | 展開あたり 20 モジュール。 有料の SKU ハブあたり 100 デプロイ。 無料の SKU ハブあたり 20 デプロイ。 |
+| ツイン<sup>1</sup> | ツイン セクション (タグ、必要なプロパティ、報告されたプロパティ) あたりの最大サイズは 8 KB です |
 
 <sup>1</sup> この機能は、IoT Hub の Basic レベルでは使用できません。 詳しくは、[適切な IoT Hub の選び方](iot-hub-scaling.md)に関するページをご覧ください。
 
@@ -90,19 +92,11 @@ IoT Hub は、すべての操作の待機時間を短くするように努めて
 * デバイスまたはデバイスに最も近いゲートウェイで Azure IoT Edge を使用して待機時間に依存する操作を実行することを検討する。
 
 複数の IoT Hub ユニットは、前に述べたように調整に影響を与えますが、待機時間に関する追加のメリットや保証が提供されることはありません。
+
 操作の待機時間が予想外に増加した場合は、[Microsoft サポート](https://azure.microsoft.com/support/options/)にお問い合わせください。
 
 ## <a name="next-steps"></a>次の手順
+
 この IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。
 
-* [IoT Hub エンドポイント][lnk-devguide-endpoints]
-* [デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語][lnk-devguide-query]
-* [IoT Hub の MQTT サポート][lnk-devguide-mqtt]
-
-[lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[lnk-throttle-blog]: https://azure.microsoft.com/blog/iot-hub-throttling-and-you/
-[lnk-importexport]: iot-hub-devguide-identity-registry.md#import-and-export-device-identities
-
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-devguide-query]: iot-hub-devguide-query-language.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
+* [IoT Hub エンドポイント](iot-hub-devguide-endpoints.md)

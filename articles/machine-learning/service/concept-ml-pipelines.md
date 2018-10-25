@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 09/24/2018
-ms.openlocfilehash: e1181d07ed51b1edf5da68d759d871703bd1540f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b450d2ca2af0c0f7598d74e2f07c0acc81b811f3
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162782"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116455"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>パイプラインと Azure Machine Learning
 
@@ -67,8 +67,8 @@ ML パイプラインを作成するには Python を使用します。 Azure Ma
 
 ## <a name="example-notebooks"></a>サンプルの Notebook
  
-Notebook `pipeline/pipeline-batch-scoring.ipynb` では、Azure Machine Learning を使用したパイプラインを示しています。
+ノートブック [pipeline/pipeline-batch-scoring.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/pipeline/pipeline-batch-scoring.ipynb) は、Azure Machine Learning を使用したパイプラインを示しています。
  
-これらの notebook を入手してください｡
+このノートブックの入手:
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

@@ -5,16 +5,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
+ms.component: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: f5f055be584aa9c6afb66ff651fd3c01851afd76
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: cb149d7a0a1eef2c096a3562f5d0256deca19527
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48246397"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458073"
 ---
 # <a name="use-the-anomaly-finder-api-with-php"></a>Anomaly Finder API と PHP の使用
 

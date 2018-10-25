@@ -9,16 +9,16 @@ ms.service: event-hubs
 ms.topic: article
 ms.date: 08/16/2018
 ms.author: bahariri
-ms.openlocfilehash: 16c101068be48ba1435ef230b29c679fcef17d08
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: b1a046fdb62926d32c05bab5a1616b250911865b
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42146622"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352575"
 ---
 # <a name="azure-event-hubs-for-apache-kafka-preview"></a>Apache Kafka 用の Azure Event Hubs (プレビュー)
 
-Event Hubs は、独自の Kafka クラスターを実行する代わりに、既存の Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 Event Hubs は、[Apache Kafka 1.0](https://kafka.apache.org/10/documentation.html) 以降のクライアント バージョンをサポートしており、MirrorMaker を含む既存の Kafka アプリケーションに対応します。 
+Event Hubs は、独自の Kafka クラスターを実行する代わりに、既存の Kafka ベースのアプリケーションが使用できる Kafka エンドポイントを提供します。 Event Hubs は、[Apache Kafka 1.0 以降](https://kafka.apache.org/documentation/)をサポートしており、MirrorMaker を含む既存の Kafka アプリケーションに対応します。 
 
 ## <a name="what-does-event-hubs-for-kafka-provide"></a>Kafka 用 Event Hubs で提供されるもの
 
@@ -70,6 +70,7 @@ Kafka 用 Event Hubs の統合のパブリック プレビューでは、以下�
 
 * [Kafka 対応 Event Hubs の作成方法](event-hubs-create-kafka-enabled.md)
 * [Kafka アプリケーションから Event Hubs へのストリーム](event-hubs-quickstart-kafka-enabled-event-hubs.md)
+* [GitHub 上で他のサンプルを調べる](https://github.com/Azure/azure-event-hubs-for-kafka)
 * [Event Hubs のチュートリアル](event-hubs-dotnet-standard-getstarted-send.md)を開始する
 * [Event Hubs の FAQ](event-hubs-faq.md)
 

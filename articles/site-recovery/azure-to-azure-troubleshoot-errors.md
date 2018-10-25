@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: sujayt
-ms.openlocfilehash: 86d6c77dab817cf755c34bdd699ee1158e852f37
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 040ace1eab4062c011ed82a59e7f5bfb789c256b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42145170"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945741"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 間の VM レプリケーションに関する問題のトラブルシューティング
 
@@ -158,8 +158,8 @@ Site Recovery レプリケーションを動作させるには、VM から特定
 
 - **解決策**
    - ファイアウォール プロキシを使用して VM で送信ネットワーク接続を制御している場合は、前提条件となる URL またはデータセンターの IP 範囲がホワイトリストに登録されていることを確認します。 詳細については、[ファイアウォール プロキシのガイダンス](https://aka.ms/a2a-firewall-proxy-guidance)を参照してください。
-   - NSG ルールを使用して VM で送信ネットワーク接続を制御している場合は、前提条件となるデータセンターの IP 範囲がホワイトリストに登録されていることを確認します。 詳細については、[ネットワーク セキュリティ グループのガイダンス](https://aka.ms/a2a-nsg-guidance)を参照してください。
-   - [必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または [必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)をホワイトリストに登録するには、[ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)の次の手順に従ってください。
+   - NSG ルールを使用して VM で送信ネットワーク接続を制御している場合は、前提条件となるデータセンターの IP 範囲がホワイトリストに登録されていることを確認します。 詳細については、[ネットワーク セキュリティ グループのガイダンス](azure-to-azure-about-networking.md)を参照してください。
+   - [必要な URL](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) または [必要な IP 範囲](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)をホワイトリストに登録するには、[ネットワーク ガイダンスのドキュメント](azure-to-azure-about-networking.md)の次の手順に従ってください。
 
 ### <a name="issue-2-site-recovery-configuration-failed-151072"></a>問題 2: Site Recovery の構成に失敗しました (151072)
 - **考えられる原因** </br>

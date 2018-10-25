@@ -3,7 +3,7 @@ title: Python を使用して Azure で Windows VM を作成および管理す�
 description: Python を使って Azure で Windows VM を作成および管理する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
-ms.author: cynthn
-ms.openlocfilehash: dbe8f1603433f381c3c28cb47d2dbda543b462e0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: zarhoads
+ms.openlocfilehash: b15b3b07768d531b748944529cc7e8e6df6d9808
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31528343"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958875"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Python を使用して Azure で Windows VM を作成および管理する
 
@@ -53,7 +53,7 @@ ms.locfileid: "31528343"
 
 ## <a name="create-credentials"></a>資格情報を作成する
 
-この手順を始める前に、[Active Directory サービス プリンシパル](../../azure-resource-manager/resource-group-create-service-principal-portal.md)があることを確認します。 また、後の手順で必要になるので、アプリケーション ID、認証キー、テナント ID を控えておく必要があります。
+この手順を始める前に、[Active Directory サービス プリンシパル](../../active-directory/develop/howto-create-service-principal-portal.md)があることを確認します。 また、後の手順で必要になるので、アプリケーション ID、認証キー、テナント ID を控えておく必要があります。
 
 1. 作成した *myPythonProject.py* ファイルを開き、アプリケーションが実行できるようにする次のコードを追加します。
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: c136772e27dab014c22234f1ef1d2baddd2ffe58
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1bdf1e1f5e58ecb0939d5876e0cef349e32de517
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978082"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344752"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor のカスタム メトリック
 
@@ -31,7 +31,7 @@ Azure Monitor にカスタム メトリックを送信するときは、報告�
 
 ### <a name="authentication"></a>Authentication
 Azure Monitor にカスタム メトリックを送信するために、メトリックを送信するエンティティは、有効な Azure Active Directory トークンを要求の "Bearer" ヘッダーに持っている必要があります。 有効なベアラー トークンを取得するいくつかの方法がサポートされています。
-1. [MSI (マネージド サービス ID)](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) - (VM などの) Azure リソース自体に ID を付与します。 MSI は、特定の操作を実行するためのアクセス許可をリソースに付与するように設計されており、たとえば、リソース自体についてのメトリックをリソースが出力することを許可します。 別のリソースに対する "Monitoring Metrics Publisher" のアクセス許可をリソース (またはその MSI) に付与すれば、MSI は他のリソースについてのメトリックも出力できるようになります。
+1. [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) - (VM などの) Azure リソース自体に ID を付与します。 MSI は、特定の操作を実行するためのアクセス許可をリソースに付与するように設計されており、たとえば、リソース自体についてのメトリックをリソースが出力することを許可します。 別のリソースに対する "Monitoring Metrics Publisher" のアクセス許可をリソース (またはその MSI) に付与すれば、MSI は他のリソースについてのメトリックも出力できるようになります。
 2. [AAD サービス プリンシパル](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals) - このシナリオでは、Azure リソースについてのメトリックを出力するためのアクセス許可を AAD アプリケーション (サービス) に割り当てることができます。
 要求を認証するために、Azure Monitor は AAD 公開キーを使用して Application トークンを検証します。 既存の "Monitoring Metrics Publisher" ロールは既に、Azure portal で利用できるこのアクセス許可を持っています。 サービス プリンシパルには、どのようなリソースについてのカスタム メトリックをそれが出力するのかに応じて、必要なスコープ (サブスクリプション、リソース グループ、または特定のリソース) で "Monitoring Metrics Publisher" ロールを付与することができます。
 

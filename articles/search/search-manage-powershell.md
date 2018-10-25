@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/15/2016
 ms.author: heidist
-ms.openlocfilehash: 1d0024af3bbf9edfe8c43032878a8b61e35cea9c
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: bae9e2dcb4320c1da4f1d8e3c6ad50ce90195544
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39000992"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958569"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>PowerShell を使用して Azure Search サービスを管理する
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.locfileid: "39000992"
 
 Microsoft Azure のログイン ダイアログで、Azure アカウントの電子メール アドレスとパスワードを指定します。
 
-または、 [サービス プリンシパルを使用して非対話的にログイン](../azure-resource-manager/resource-group-authenticate-service-principal.md)できます。
+または、 [サービス プリンシパルを使用して非対話的にログイン](../active-directory/develop/howto-authenticate-service-principal-powershell.md)できます。
 
 Azure サブスクリプションが複数ある場合は、使用する Azure サブスクリプションを設定する必要があります。 現在のサブスクリプションを一覧表示するには、次のコマンドを実行します。
 

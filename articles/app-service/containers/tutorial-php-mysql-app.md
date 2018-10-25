@@ -2,7 +2,6 @@
 title: Azure App Service on Linux で PHP と MySQL Web アプリを構築する | Microsoft Docs
 description: Azure で動作し、MySQL データベースに接続する PHP アプリの入手方法を説明します。
 services: app-service\web
-documentationcenter: ''
 author: cephalin
 manager: erikre
 ms.service: app-service-web
@@ -12,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 5b02f8f71299f2ff4f88cf63481d761afc2c5f49
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 9dbdcc9eb09ff137b32225e83e42ec5baca39396
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41917742"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024547"
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で PHP と MySQL Web アプリを構築する
 
@@ -29,7 +28,7 @@ ms.locfileid: "41917742"
 
 ![Azure App Service で実行される PHP アプリ](./media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure で MySQL データベースを作成する
@@ -589,7 +588,7 @@ Web アプリの [概要] ページを確認します。 ここでは、停止�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Azure で MySQL データベースを作成する

@@ -9,12 +9,12 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 28aa2904f63a9802305d24fec1650f84e38601ab
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: c6700dc4bc0cc458e34e129b2468daad88ecc8be
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39258435"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393459"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Azure Portal を使用した大規模な IoT Edge モジュールの展開と監視
 
@@ -39,11 +39,11 @@ Azure IoT Edge を使用することにより、分析をエッジに移動し�
 }
 ```
 
-デバイス ツインとタグの詳細については、「[IoT Hub のデバイス ツインの理解と使用][lnk-device-twin]」を参照してください。
+デバイス ツインとタグの詳細については、「[IoT Hub のデバイス ツインの理解と使用](../iot-hub/iot-hub-devguide-device-twins.md)」を参照してください。
 
 ## <a name="create-a-deployment"></a>デプロイの作成
 
-1. [Azure Portal][lnk-portal] で IoT Hub に移動します。 
+1. [Azure portal](https://portal.azure.com) で IoT Hub に移動します。 
 1. **[IoT Edge]** を選択します。
 1. **[Add IoT Edge Deployment]\(IoT Edge の展開の追加\)** を選びます。
 
@@ -77,7 +77,7 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
 1. **[IoT Edge モジュール]** を選択します。
 1. モジュールに **[名前]** を付けます。
 1. **[イメージの URI]** フィールドに、モジュールのコンテナー イメージを入力します。 
-1. コンテナーに渡す **[Container Create Options]\(コンテナー作成オプション\)** を指定します。 詳細については、[Docker の作成][lnk-docker-create]に関するページを参照してください。
+1. コンテナーに渡す **[Container Create Options]\(コンテナー作成オプション\)** を指定します。 詳細については、[Docker の作成](https://docs.docker.com/engine/reference/commandline/create/)に関するページを参照してください。
 1. ドロップダウン メニューを使用して、**[再起動ポリシー]** を選択します。 次のオプションから選択します。 
    * **[Always]\(常時\)** - 何らかの理由でシャット ダウンした場合に必ずモジュールを再起動します。
    * **[Never]\(再起動しない\)** - 何らかの理由でシャット ダウンした場合でも、モジュールは再起動されません。
@@ -117,11 +117,11 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
 
 デプロイの詳細を確認し、それを実行するデバイスを監視するには、次の手順を実行します。
 
-1. [Azure Portal][lnk-portal] にサインインし、IoT ハブに移動します。 
+1. [Azure Portal](https://portal.azure.com) にサインインし、IoT Hub に移動します。 
 1. **[IoT Edge]** を選択します。
 1. **[IoT Edge deployments]\(IoT Edge デプロイ\)** を選択します。 
 
-   ![IoT Edge デプロイの表示][1]
+   ![IoT Edge デプロイの表示](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. デプロイの一覧を確認します。 デプロイごとに、次の詳細を表示できます。
    * **[ID]** - デプロイの名前。
@@ -144,11 +144,11 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
 
 デプロイを変更するには、次の手順を実行します。 
 
-1. [Azure Portal][lnk-portal] にサインインし、IoT ハブに移動します。 
+1. [Azure Portal](https://portal.azure.com) にサインインし、IoT Hub に移動します。 
 1. **[IoT Edge]** を選択します。
 1. **[IoT Edge deployments]\(IoT Edge デプロイ\)** を選択します。 
 
-   ![IoT Edge デプロイの表示][1]
+   ![IoT Edge デプロイの表示](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. 変更するデプロイを選択します。 
 1. 次のフィールドに変更を加えます。 
@@ -156,17 +156,17 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
    * ラベル 
    * 優先順位 
 1. **[保存]** を選択します。
-1. [デプロイの監視][anchor-monitor]に記載された手順に従って、変更が適用されることを確認します。 
+1. 「[デプロイの監視](#monitor-a-deployment)」に記載された手順に従って、変更が適用されることを確認します。 
 
 ## <a name="delete-a-deployment"></a>デプロイの削除
 
 デプロイを削除すると、デバイスには、次に高い優先順位のデプロイが適用されます。 デバイスが他のいずれのデプロイの対象条件も満たさない場合、デプロイが削除されても、モジュールは削除されません。 
 
-1. [Azure Portal][lnk-portal] にサインインし、IoT ハブに移動します。 
+1. [Azure Portal](https://portal.azure.com) にサインインし、IoT Hub に移動します。 
 1. **[IoT Edge]** を選択します。
 1. **[IoT Edge deployments]\(IoT Edge デプロイ\)** を選択します。 
 
-   ![IoT Edge デプロイの表示][1]
+   ![IoT Edge デプロイの表示](./media/how-to-deploy-monitor/iot-edge-deployments.png)
 
 1. チェックボックスを使用して、削除するデプロイを選択します。 
 1. **[削除]** を選択します。
@@ -174,16 +174,4 @@ Azure Stream Analytics からモジュールを追加するには、次の手順
 
 ## <a name="next-steps"></a>次の手順
 
-詳細については [Edge デバイスへのモジュールの展開][lnk-deployments]を参照してください。
-
-<!-- Images -->
-[1]: ./media/how-to-deploy-monitor/iot-edge-deployments.png
-
-<!-- Links -->
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-portal]: https://portal.azure.com
-[lnk-docker-create]: https://docs.docker.com/engine/reference/commandline/create/
-[lnk-deployments]: module-deployment-monitoring.md
-
-<!-- Anchor links -->
-[anchor-monitor]: #monitor-a-deployment
+詳細については、[Edge デバイスへのモジュールの展開](module-deployment-monitoring.md)を参照してください。

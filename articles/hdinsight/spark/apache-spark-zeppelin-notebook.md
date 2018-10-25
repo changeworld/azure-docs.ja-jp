@@ -9,20 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 9b076709ee24c61b2699672d28bd61204c88a744
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8e32939f3e253bfdd6f8d989f616f30e1b9f27eb
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048043"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364865"
 ---
 # <a name="use-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight の Apache Spark クラスターで Zeppelin Notebook を使用する
 
 HDInsight の Spark クラスターには、Spark ジョブの実行に使用できる Zeppelin Notebook が含まれています。 この記事では、HDInsight クラスターで Zeppelin Notebook を使用する方法について説明します。
-
-> [!NOTE]
-> Zeppelin Notebook は、HDInsight 3.5 上の Spark 1.6.3 と、HDInsight 3.6 上の Spark 2.1.0 に対してのみ使用できます。
->
 
 **前提条件:**
 
@@ -50,7 +46,7 @@ HDInsight の Spark クラスターには、Spark ジョブの実行に使用で
    
     新しい Notebook に既定で作成される空の段落に、次のスニペットを貼り付けます。
    
-        %livy.spark
+        %livy2.spark
         //The above magic instructs Zeppelin to use the Livy Scala interpreter
    
         // Create an RDD using the default Spark context, sc
@@ -77,6 +73,11 @@ HDInsight の Spark クラスターには、Spark ジョブの実行に使用で
     ![生データから一時テーブルを作成する](./media/apache-spark-zeppelin-notebook/hdinsight-zeppelin-load-data.png "生データから一時テーブルを作成する")
    
     各段落にタイトルを指定することもできます。 右上隅の **[設定]** アイコンをクリックし、**[タイトルの表示]** をクリックします。
+
+> [!NOTE]
+> %spark2 インタープリターは、いずれの HDInsight バージョンの Zeppelin Notebook でもサポートされていません。また、%sh インタープリターは HDInsight 4.0 以降ではサポートされなくなります。
+>
+
 1. **hvac** テーブルに対して Spark SQL ステートメントを実行できます。 次のクエリを新しい段落に貼り付けます。 このクエリは、ビル ID と、特定の日の各ビルの目標温度と実温度の差を取得します。 **Shift + Enter**キーを押します。
    
         %sql

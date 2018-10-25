@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 07830b36-2fe3-4809-a846-129cf67b6a9e
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 938b3776f320b7556394fff9aa070eee0c44ee88
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6a5d01ed1b3d60ce138fe5c4c5a60812961d9dfd
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047088"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953731"
 ---
 # <a name="manage-azure-data-lake-analytics-using-a-java-app"></a>Java アプリケーション を使用して Azure Data Lake Analytics を管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "43047088"
 ## <a name="prerequisites"></a>前提条件
 * **Java Development Kit (JDK) 8** (Java バージョン 1.8 を使用)。
 * **IntelliJ** または別の適切な Java 開発環境。 このドキュメントの説明では IntelliJ を使います。
-* Azure Active Directory (AAD) アプリケーションを作成し、**そのクライアント ID**、**テナント ID**、および**キー**を取得します。 AAD アプリケーションと、クライアント ID の取得方法の詳細については、 [ポータルを使用した Active Directory のアプリケーションとサービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。 アプリケーションを作成しキーを生成したら、応答 URI とキーをポータルから使うことができます。
+* Azure Active Directory (AAD) アプリケーションを作成し、**そのクライアント ID**、**テナント ID**、および**キー**を取得します。 AAD アプリケーションと、クライアント ID の取得方法の詳細については、 [ポータルを使用した Active Directory のアプリケーションとサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。 アプリケーションを作成しキーを生成したら、応答 URI とキーをポータルから使うことができます。
 
 ## <a name="authenticating-using-azure-active-directory"></a>Azure Active Directory を使用した認証
 

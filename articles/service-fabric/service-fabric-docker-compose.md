@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 43845a55589be9550e64b4a491b7d3675fb22e8c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ff846717287fb2b125b549f6ca0de6c7908d4c35
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641783"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344815"
 ---
 # <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric での Docker Compose のデプロイメントのサポート (プレビュー)
 
@@ -122,6 +122,15 @@ sfctl compose upgrade-status --deployment-name TestContainerApp
 * ボリューム & デプロイ > ボリューム
 
 [Service Fabric のリソース ガバナンス](service-fabric-resource-governance.md)の説明に従って、リソースの制限を適用するようにクラスターをセットアップします。 他のすべての Docker Compose ディレクティブは、このプレビューではサポートされていません。
+
+### <a name="ports-section"></a>ポート セクション
+
+Service Fabric サービス リスナーによって使用されるポート セクションでは、http または https プロトコルを指定します。 これにより、エンドポイント プロトコルがネーム サービスによって正常に公開され、リバース プロキシが要求の転送を許可されるようになります。
+* セキュリティで保護されていない Service Fabric Compose サービスをルーティングするには、**/http** を指定します。 例 - **"80:80/http"**。
+* セキュリティで保護された Service Fabric Compose サービスをルーティングするには、**/https** を指定します。 例 - **"443:443/https"**。
+
+> [!NOTE]
+> /http および /https ポート セクションの構文は、適切な Service Fabric リスナーの URL を登録する Service Fabric に固有です。  Docker Compose ファイルの構文がプログラムによって検証される場合、検証エラーが発生する可能性があります。
 
 ## <a name="servicednsname-computation"></a>ServiceDnsName 計算
 

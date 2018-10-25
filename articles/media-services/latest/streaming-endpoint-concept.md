@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 5ba80df26731f9687ec4518d7f12f3c2e3cb0665
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 224f60d5b06f87e7b619e6c56b161ec700c657b9
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49379180"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986612"
 ---
 # <a name="streaming-endpoints"></a>ストリーミング エンドポイント
 

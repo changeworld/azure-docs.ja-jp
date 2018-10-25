@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
 ms.author: szark
-ms.openlocfilehash: c2233ab32314655c510c8c884641293ae3325ef5
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: 80a165c4533f555dce2d86f044f3caa328761123
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809762"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645749"
 ---
 # <a name="linux-on-distributions-endorsed-by-azure"></a>Azure で動作保証済みの Linux ディストリビューション
 パートナーが Azure Marketplace で Linux イメージを提供しています。 Microsoft はさまざまな Linux コミュニティと連携し、動作保証済みディストリビューション リストを拡充しています。 それまでの間、Marketplace からご利用いただけないディストリビューションについては、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](https://docs.microsoft.com/azure/virtual-machines/linux/create-upload-generic)」のガイドラインに従って、独自の Linux をいつでも使用できます。
@@ -33,14 +33,14 @@ Hyper-V および Azure 用の Linux Integration Services (LIS) ドライバー�
 Azure Linux エージェントは、Azure Marketplace のイメージにあらかじめインストールされており、通常はディストリビューションのパッケージのリポジトリで入手できます。 ソース コードは [GitHub](https://github.com/azure/walinuxagent)にあります。
 
   
-| ディストリビューション | バージョン | ドライバー | エージェント |
+| ディストリビューション | Version | ドライバー | エージェント |
 | --- | --- | --- | --- |
 | CentOS |CentOS 6.3+、7.0+ |CentOS 6.3: [LIS のダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=55106)<p>CentOS 6.4 以上、カーネル内 |パッケージ: [リポジトリ](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/)内の "WALinuxAgent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/) |494.4.0+ |カーネル内 |ソース コード: [GitHub](https://github.com/coreos/coreos-overlay/tree/master/app-emulation/wa-linux-agent) |
 | Debian |Debian 7.9+、8.2+ |カーネル内 |パッケージ: リポジトリ内の "waagent"  <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Oracle Linux |6.4+、7.0+ |カーネル内 |パッケージ: リポジトリ内の "WALinuxAgent"  <br/>ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | Red Hat Enterprise Linux |RHEL 6.7+、7.1+ |カーネル内 |パッケージ: リポジトリ内の "WALinuxAgent"  <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
-| SUSE Linux Enterprise |SLES/SLES for SAP<br>11 SP4<br>12 SP1+|カーネル内 |パッケージ:<p> [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の 11 の場合<br>"python-azure-agent" の下の "パブリック クラウド" モジュールに含まれる 12 の場合<br/>ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
+| SUSE Linux Enterprise |SLES/SLES for SAP<br>11 SP4<br>12 SP1+<br>15|カーネル内 |パッケージ:<p> [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の 11 の場合<br>"python-azure-agent" の下の "パブリック クラウド" モジュールに含まれる 12 の場合<br/>ソース コード: [GitHub](http://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | openSUSE |openSUSE Leap 42.2 + |カーネル内 |パッケージ: [Cloud:Tools](https://build.opensuse.org/project/show/Cloud:Tools) リポジトリ内の "python-azure-agent" <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | Ubuntu |Ubuntu 12.04+ **<sup>1</sup>** |カーネル内 |パッケージ: リポジトリ内の "WALinuxAgent"  <br/>ソース コード: [GitHub](https://github.com/Azure/WALinuxAgent) |
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: ccompy
-ms.openlocfilehash: bcd5cb15c003ea146263a6e71a280f7da42ba830
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 5f2dd31488ae61bec061a81986a208bd328bf39b
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167733"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49093622"
 ---
-# <a name="app-service-environment-certificates-overview"></a>App Service Environment 証明書の概要 
+# <a name="locking-down-an-app-service-environment"></a>App Service 環境をロックする
 
 App Service Environment (ASE) が適切に動作するには、アクセスする必要がある外部の依存関係が複数あります。 ASE は、お客様の Azure Virtual Network (VNet) 内にあります。 お客様は、ASE の依存トラフィックを許可する必要があります。これは、自社の VNet からのすべての送信をロックしたいお客様にとって問題です。
 

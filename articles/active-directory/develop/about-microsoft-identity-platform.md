@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 5e18a27579c577f914709e25cab1549387a965f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b96ee362f6169d386a58ee48878e40a42fc9ede
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966403"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987598"
 ---
 # <a name="about-microsoft-identity-platform"></a>Microsoft ID プラットフォームについて
 
@@ -37,7 +37,7 @@ Microsoft ID プラットフォームは、Azure Active Directory (Azure AD) の
 
 次の図は、アプリ登録エクスペリエンス、SDK、エンドポイント、サポートされている ID など、高レベルでの Microsoft ID エクスペリエンスを示しています。
 
-![現在の Microsoft ID プラットフォーム](./media/about-microsoft-identity-platform/microsoft-identity-platform-today.png)
+![現在の Microsoft ID プラットフォーム](./media/about-microsoft-identity-platform/microsoft-identity-platform-preview.png)
 
 Microsoft ID プラットフォームには、2 つのエンドポイント (v1.0 および v2.0) と、これらのエンドポイントを処理する 2 組のクライアント ライブラリがあります。 新しいアプリケーションを開発する際は、これらのエンドポイントと認証ライブラリの利点と現在の状態を考慮してください。 また、以下の点についても考慮してください。
 
@@ -61,5 +61,5 @@ Microsoft ID プラットフォームには、2 つのエンドポイント (v1.
 
 v1.0 および v2.0 に関する詳細。
 
-* [v1.0 について](azure-ad-developers-guide.md)
-* [v2.0 について](azure-ad-developers-guide.md)
+* [v1.0 について](v1-overview.md)
+* [v2.0 について](v2-overview.md)

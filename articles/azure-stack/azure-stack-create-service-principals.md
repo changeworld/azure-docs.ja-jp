@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2018
 ms.author: sethm
-ms.openlocfilehash: 65fa9593b35af45ee9b8568bac5e4886909314e1
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 96137b95f46f24bca6a4ee6a39d93a490a03c431
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092545"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958450"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Azure Stack へのアクセスをアプリケーションに提供する
 
@@ -40,7 +40,7 @@ Azure Stack のデプロイ方法に応じて、サービス プリンシパル�
 
 ## <a name="create-service-principal-for-azure-ad"></a>Azure AD のサービス プリンシパルを作成する
 
-Azure AD を ID ストアとして使用して Azure Stack をデプロイした場合は、Azure での手順と同様の方法でサービス プリンシパルを作成できます。 このセクションでは、それらの手順をポータルで行う方法について説明します。 始める前に、[Azure AD で必要なアクセス許可](../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions)があることを確認してください。
+Azure AD を ID ストアとして使用して Azure Stack をデプロイした場合は、Azure での手順と同様の方法でサービス プリンシパルを作成できます。 このセクションでは、それらの手順をポータルで行う方法について説明します。 始める前に、[Azure AD で必要なアクセス許可](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)があることを確認してください。
 
 ### <a name="create-service-principal"></a>サービス プリンシパルの作成
 このセクションでは、アプリケーションが表示される Azure AD にアプリケーション (サービス プリンシパル) を作成します。

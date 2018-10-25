@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: bd03c0801fed0da6d9a87466bc33819f6afa4578
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 61d9606ff14a48e6c224108596f0f01daa4813e1
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296925"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954292"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Azure Data Lake Storage Gen1 に対する .NET SDK を使用したサービス間認証
 > [!div class="op_single_selector"]
@@ -97,7 +97,7 @@ ms.locfileid: "46296925"
 
 ## <a name="service-to-service-authentication-with-certificate"></a>証明書によるサービス間認証
 
-このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD の Web アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Storage Gen1 に対し、Azure AD Web アプリケーションの証明書を使用して、**非対話形式**でアプリケーションを認証することができます。 Azure AD アプリケーションを作成する方法の手順については、[証明書を使用したサービス プリンシパルの作成](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate)に関するページを参照してください。
+このスニペットを .NET クライアント アプリケーションに追加します。 プレースホルダーの値を、Azure AD の Web アプリケーション (前提条件として一覧表示) から取得した値で置き換えます。 このスニペットを使用すると、Data Lake Storage Gen1 に対し、Azure AD Web アプリケーションの証明書を使用して、**非対話形式**でアプリケーションを認証することができます。 Azure AD アプリケーションを作成する方法の手順については、[証明書を使用したサービス プリンシパルの作成](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate)に関するページを参照してください。
 
     
     private static void Main(string[] args)

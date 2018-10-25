@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 2f0638b2449bfd582cb68e26d2043b7bc85342b6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6f7b812f32eda0c671b1ad1101b13a1290df0482
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125954"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954784"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Azure Data Lake Storage Gen1 による Azure Active Directory を使用したエンドユーザー認証
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
   
     ![AAD ドメインの取得](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
-* Azure テナント ID。 テナント ID を取得する方法については、「[テナント ID を取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)」を参照してください。
+* Azure テナント ID。 テナント ID を取得する方法については、「[テナント ID を取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)」を参照してください。
 
 ## <a name="end-user-authentication"></a>エンドユーザー認証
 この認証メカニズムは、エンド ユーザーに Azure AD 経由でアプリケーションにログインしてもらう場合に推奨する方法です。 アプリケーションは、ログインしたエンド ユーザーと同じアクセス レベルで Azure リソースにアクセスできます。 エンド ユーザーは、アプリケーションのアクセスを維持するために、資格情報を定期的に入力する必要があります。
@@ -74,7 +74,7 @@ Azure Data Lake Storage Gen1 では、認証するために Azure Active Directo
 
 ## <a name="step-1-create-an-active-directory-native-application"></a>手順 1: Active Directory ネイティブ アプリケーションを作成する
 
-Azure Active Directory を使用して Data Lake Storage Gen1 によるエンドユーザー間認証を行う Azure AD ネイティブ アプリケーションを作成および構成します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページを参照してください。
+Azure Active Directory を使用して Data Lake Storage Gen1 によるエンドユーザー間認証を行う Azure AD ネイティブ アプリケーションを作成および構成します。 手順については、[Microsoft Azure での Ruby アプリケーションの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページを参照してください。
 
 リンクの指示に従うときは、次のスクリーンショットに示すように、アプリケーションの種類として **[ネイティブ]** を必ず選択してください。
 
@@ -82,7 +82,7 @@ Azure Active Directory を使用して Data Lake Storage Gen1 によるエンド
 
 ## <a name="step-2-get-application-id-and-redirect-uri"></a>手順 2: アプリケーション ID とリダイレクト URI を取得する
 
-アプリケーション ID の取得については、[アプリケーション ID の取得](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)に関するページをご覧ください。
+アプリケーション ID の取得については、[アプリケーション ID の取得](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)に関するページをご覧ください。
 
 リダイレクト URI を取得するには、次の手順を実行します。
 

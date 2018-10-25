@@ -9,18 +9,18 @@ ms.date: 07/25/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c94a58a19558350c3c20377ce750f6758f688c0d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a3d073e9fd7c535ea84d6e4dbbf8003a6c55725b
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998510"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394614"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Azure CLI を使用した大規模な IoT Edge モジュールの展開と監視
 
 [!INCLUDE [iot-edge-how-to-deploy-monitor-selector](../../includes/iot-edge-how-to-deploy-monitor-selector.md)]
 
-Azure IoT Edge を使用することにより、分析をエッジに移動しクラウド インターフェイスを提供して、各 IoT Edge デバイスに物理的にアクセスしなくても、管理および監視することができます。 デバイスをリモート管理できる機能は、モノのインターネット ソリューションの規模と複雑性が増加している今、重要性が高まっています。 Azure IoT Edge は、追加するデバイスの数に関係なく、ビジネス目標を支援できるよう設計されています。
+Azure IoT Edge を使用することにより、IoT Edge デバイスをリモートで管理および監視できるように、分析をエッジに移動してクラウド インターフェイスを提供します。 デバイスをリモート管理できる機能は、モノのインターネット ソリューションの規模と複雑性が増加している今、重要性が高まっています。 Azure IoT Edge は、追加するデバイスの数に関係なく、ビジネス目標を支援できるよう設計されています。
 
 デバイスを個別に管理し、それらにモジュールを一括展開できます。 ただし、大規模な環境でのデバイスに変更を加える場合は、IoT Hub での自動デバイス管理の一環である、**IoT Edge の自動展開**を作成することができます。 デプロイは、一度に複数のモジュールを複数のデバイスに展開し、モジュールの状態と正常性を追跡し、必要に応じて変更できる動的プロセスです。 
 
@@ -128,7 +128,7 @@ Azure CLI を使用してモジュールをデプロイするには、配置マ�
 }
 ```
 
-デバイス ツインとタグの詳細については、「[IoT Hub のデバイス ツインの理解と使用][lnk-device-twin]」を参照してください。
+デバイス ツインとタグの詳細については、「[IoT Hub のデバイス ツインの理解と使用](../iot-hub/iot-hub-devguide-device-twins.md)」を参照してください。
 
 ## <a name="create-a-deployment"></a>デプロイの作成
 
@@ -209,16 +209,4 @@ az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub na
 
 ## <a name="next-steps"></a>次の手順
 
-詳細については [Edge デバイスへのモジュールの展開][lnk-deployments]を参照してください。
-
-<!-- Images -->
-[1]: ./media/how-to-deploy-monitor/iot-edge-deployments.png
-
-<!-- Links -->
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-portal]: https://portal.azure.com
-[lnk-docker-create]: https://docs.docker.com/engine/reference/commandline/create/
-[lnk-deployments]: module-deployment-monitoring.md
-
-<!-- Anchor links -->
-[anchor-monitor]: #monitor-a-deployment
+詳細については、[Edge デバイスへのモジュールの展開](module-deployment-monitoring.md)を参照してください。

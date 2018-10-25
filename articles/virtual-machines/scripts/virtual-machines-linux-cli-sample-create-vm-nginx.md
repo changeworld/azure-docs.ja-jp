@@ -3,7 +3,7 @@ title: Azure CLI のサンプル スクリプト - NGINX がインストール�
 description: Azure CLI のサンプル スクリプト - NGINX がインストールされた Linux VM の作成
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/27/2017
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: 642dd46ee44fd1c69f2c66549dbb5806bb4ee5d7
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 50a6bc40dbc79242e7c64bbc2082baeac224ba2e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37927572"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467924"
 ---
 # <a name="create-a-vm-with-nginx"></a>NGINX がインストールされた VM の作成
 

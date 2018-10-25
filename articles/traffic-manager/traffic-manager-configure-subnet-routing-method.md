@@ -4,7 +4,6 @@ description: この記事では、特定のサブネットからのトラフィ�
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jpconnock
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: 6e5e6008741306d322ebd07bcbf144133ca4e632
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 624bbb9fa8841b0c43800f318e83c54d6d408a09
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46131002"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987442"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Traffic Manager を使用してユーザーのサブネットに基づいて特定のエンドポイントにトラフィックを転送する
 
@@ -87,7 +86,7 @@ Azure Portal ( https://portal.azure.com ) にサインインします。
 このセクションでは、2 台の VM (*myIISVMEastUS*  & *myIISVMWEurope*) に IIS サーバーをインストールした後、既定の Web サイト ページを更新します。 カスタマイズする Web サイト ページには、Web ブラウザーからその Web サイトにアクセスするときに接続する VM の名前が表示されます。
 
 1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で *myResourceGroupTM1* リソース グループにある *myIISVMEastUS* をクリックします。
-2. **[概要]** ページで **[接続]****[仮想マシンへの接続]** の順にクリックし、**[RDP ファイルのダウンロード]** を選択します。 
+2. **[概要]** ページで **[接続]** **[仮想マシンへの接続]** の順にクリックし、**[RDP ファイルのダウンロード]** を選択します。 
 3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。 
 4. **[OK]** を選択します。
 5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。
@@ -222,7 +221,7 @@ Traffic Manager は、サービス エンドポイントの DNS 名に基づい�
 このセクションでは、Traffic Manager が動作していることを確認します。 
 
 1. 左側のメニューで **[すべてのリソース]** を選択し、リソースの一覧で *[myResourceGroupTM1]* リソース グループにある *[myVMEastUS]* をクリックします。
-2. **[概要]** ページで **[接続]****[仮想マシンへの接続]** の順にクリックし、**[RDP ファイルのダウンロード]** を選択します。 
+2. **[概要]** ページで **[接続]** **[仮想マシンへの接続]** の順にクリックし、**[RDP ファイルのダウンロード]** を選択します。 
 3. ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。 
 4. **[OK]** を選択します。
 5. サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。 

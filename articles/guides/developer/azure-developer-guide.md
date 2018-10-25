@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: d298cfe22328db68cfbb6b4c7fc82b2de0c186b1
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 4c56a1164a589af5d325d1378f331a7d0ee138b7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423597"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956444"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -162,7 +162,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
     >**使用する場合**: SSO エクスペリエンスを提供する場合、Graph ベースのデータを使用する場合、またはドメインベースのユーザーを認証する場合。
 
-    >**作業開始**: 詳細については、「[開発者のための Azure Active Directory](../../active-directory/develop/azure-ad-developers-guide.md)」を参照してください。
+    >**作業開始**: 詳細については、「[開発者のための Azure Active Directory](../../active-directory/develop/v1-overview.md)」を参照してください。
 
 -   **App Service 認証**: App Service を選択してアプリをホストする場合、Azure AD の組み込みの認証サポートと共に、ソーシャル ID プロバイダー (Facebook、Google、Microsoft、Twitter など) も利用できます。
 
@@ -234,7 +234,7 @@ Azure は、Azure Portal UI をサポートする REST API のセットに基づ
 REST API だけでなく、多くの Azure サービスでは、次の開発プラットフォーム用 SDK を含め、プラットフォーム固有の Azure SDK を使用して、アプリケーションのリソースをプログラムで管理できます。
 
 -   [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
--   [Node.js](https://docs.microsoft.com/javascript/azure)
+-   [Node.JS](https://docs.microsoft.com/javascript/azure)
 -   [Java](https://docs.microsoft.com/java/azure)
 -   [PHP](https://github.com/Azure/azure-sdk-for-php/blob/master/README.md)
 -   [Python](https://docs.microsoft.com/python/azure)
@@ -289,7 +289,7 @@ Azure リソースへのアクセス権を許可する場合、そのタスク�
 
 -   **サービス プリンシパル オブジェクト**: ユーザー プリンシパルとグループへのアクセス権を付与するだけでなく、サービス プリンシパルに同じアクセス権を付与することができます。
 
-    > **使用する場合**: Azure リソースの管理やアプリケーションのアクセス権付与をプログラムで行う場合。 詳細については、「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../../resource-group-create-service-principal-portal.md)」を参照してください。
+    > **使用する場合**: Azure リソースの管理やアプリケーションのアクセス権付与をプログラムで行う場合。 詳細については、「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../../active-directory/develop/howto-create-service-principal-portal.md)」を参照してください。
 
 #### <a name="tags"></a>タグ
 

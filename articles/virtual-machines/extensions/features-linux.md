@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 255fe84f0d155902b2a3ac477a1e677efef42bb4
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 720b8584c201826e55099ad31667478b6aa57b27
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386659"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024520"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
@@ -54,7 +54,8 @@ Azure VM エージェントは、Azure VM と Azure ファブリック コント
 
 #### <a name="supported-oses"></a>サポート対象の OS
 
-Linux エージェントは複数の OS で実行されますが、拡張機能フレームワークでは拡張を行う OS に対して制限があります。 詳細については、[こちらの記事] (https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems) をご覧ください。
+Linux エージェントは複数の OS で実行されますが、拡張機能フレームワークでは拡張を行う OS に対して制限があります。 詳細については、 [こちらの記事](https://support.microsoft.com/en-us/help/4078134/azure-extension-supported-operating-systems
+)を参照してください。
 
 一部の拡張機能は、すべての OS ではサポートされず、"*エラー コード 51、'OS がサポートされていません'*" が出力される場合があります。 サポートの可否については、個々の拡張機能のドキュメントを確認してください。
 

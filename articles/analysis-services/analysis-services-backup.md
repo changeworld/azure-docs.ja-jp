@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: a6e1b7c5661f919af34cb10807e83bfcb7f5e137
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 6e382e57473cd1461b97e742546a3b621f2fd4c8
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446760"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426704"
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 
@@ -51,7 +51,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
     ![バックアップ設定の保存](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>バックアップ
 
 ### <a name="to-backup-by-using-ssms"></a>SSMS を使用してバックアップするには
 
@@ -75,7 +75,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 ### <a name="powershell"></a>PowerShell
 [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) コマンドレットを使用します。
 
-## <a name="restore"></a>Restore
+## <a name="restore"></a>復元
 復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)か、[AzCopy](../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用してください。 
 
 

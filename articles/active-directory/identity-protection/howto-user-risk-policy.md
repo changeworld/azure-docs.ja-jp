@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: a54403b7794d26d87c810f5cd20050db35c078f1
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3ba8c93d158a6ff80c3db788924503e9d4e87242
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054338"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378121"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>方法: ユーザー リスク ポリシーを構成する
 
@@ -41,7 +41,7 @@ Azure AD は、ユーザーの各サインインを分析します。 この分�
 ユーザー リスク ポリシーは、特定のユーザー リスク レベルに対して構成できる自動対応です。 ユーザー リスク ポリシーでは、リソースへのアクセスをブロックするか、またはユーザー アカウントをクリーンな状態に戻すにはパスワード変更を要求するようにできます。
 
 
-## <a name="how-do-i-access-the-sign-in-risk-policy"></a>サインイン リスク ポリシーにアクセスする方法
+## <a name="how-do-i-access-the-user-risk-policy"></a>ユーザー リスク ポリシーにどのようにアクセスするか
    
 サインイン リスク ポリシーは、[[Azure AD Identity Protection]](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy) ページの **[構成]** セクションにあります。
    

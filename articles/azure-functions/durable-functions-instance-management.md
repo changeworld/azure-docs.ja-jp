@@ -3,23 +3,19 @@ title: Durable Functions でのインスタンスの管理 - Azure
 description: Azure Functions の Durable Functions 拡張機能でインスタンスを管理する方法を説明します。
 services: functions
 author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 03/19/2018
+ms.topic: conceptual
+ms.date: 08/31/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 5cb3ccbc949f8250101fab6cb7899b859149fdfd
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: c9b3cd112cef7a34e0d475cdeb85b9e07d77f584
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341094"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352595"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Durable Functions でのインスタンスの管理 (Azure Functions)
 
@@ -64,6 +60,19 @@ module.exports = function (context, input) {
 
     context.done(null);
 };
+```
+上記のコードでは、function.json ファイル内で、名前が "starter" で種類が "orchestrationClient" の出力バインドを定義したと仮定しています。 バインドが定義されていない場合、永続関数のインスタンスは作成されません。
+
+永続関数を呼び出すには、次に説明するように、オーケストレーション クライアントに対するバインドを持つように function.json を変更する必要があります
+
+```js
+{
+    "bindings": [{
+        "name":"starter",
+        "type":"orchestrationClient",
+        "direction":"out"
+    }]
+}
 ```
 
 > [!NOTE]
@@ -119,6 +128,32 @@ public static async Task Run(
     };
 }
 ```
+## <a name="querying-instances-with-filters"></a>フィルターを使用したインスタンスのクエリ
+
+`GetStatusAsync` メソッドを使用して、定義済みのフィルター セットに一致するオーケストレーション インスタンスの一覧を取得することもできます。 使用可能なフィルター オプションには、オーケストレーションの作成時刻と、オーケストレーションのランタイム状態が含まれます。
+
+```csharp
+[FunctionName("QueryStatus")]
+public static async Task Run(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
+    [OrchestrationClient] DurableOrchestrationClient client,
+    TraceWriter log)
+{
+    IEnumerable<OrchestrationRuntimeStatus> runtimeStatus = new List<OrchestrationRuntimeStatus> {
+        OrchestrationRuntimeStatus.Completed,
+        OrchestrationRuntimeStatus.Running
+    };
+    IList<DurableOrchestrationStatus> instances = await starter.GetStatusAsync(
+        new DateTime(2018, 3, 10, 10, 1, 0),
+        new DateTime(2018, 3, 10, 10, 23, 59),
+        runtimeStatus
+    ); // You can pass CancellationToken as a parameter.
+    foreach (var instance in instances)
+    {
+        log.Info(JsonConvert.SerializeObject(instance));
+    };
+}
+```
 
 ## <a name="terminating-instances"></a>インスタンスの終了
 
@@ -149,8 +184,6 @@ public static Task Run(
 * **EventData**: インスタンスに送信する JSON でシリアル化できるペイロード。
 
 ```csharp
-#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
-
 [FunctionName("RaiseEvent")]
 public static Task Run(
     [OrchestrationClient] DurableOrchestrationClient client,
@@ -211,7 +244,8 @@ public static Task Run(
             "id": "d3b72dddefce4e758d92f4d411567177",
             "sendEventPostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/raiseEvent/{eventName}?taskHub={taskHub}&connection={connection}&code={systemKey}",
             "statusQueryGetUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}",
-            "terminatePostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
+            "terminatePostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "rewindPostUri": "https://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/rewind?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
         }
     ```
 
@@ -232,12 +266,12 @@ public static Task Run(
 * **StatusQueryGetUri**: オーケストレーション インスタンスの状態の URL。
 * **SendEventPostUri**: オーケストレーション インスタンスの "イベント発生" URL。
 * **TerminatePostUri**: オーケストレーション インスタンスの "終了" URL。
+* **RewindPostUri**: オーケストレーション インスタンスの "巻き戻し" URL。
 
 アクティビティ関数は、[HttpManagementPayload](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.Extensions.DurableTask.HttpManagementPayload.html#Microsoft_Azure_WebJobs_Extensions_DurableTask_HttpManagementPayload_) のインスタンスを外部システムに送信して、イベントを監視したり、オーケストレーションに対するイベントを発生させたりすることができます。
 
 ```csharp
-#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
-
+[FunctionName("SendInstanceInfo")]
 public static void SendInstanceInfo(
     [ActivityTrigger] DurableActivityContext ctx,
     [OrchestrationClient] DurableOrchestrationClient client,
@@ -250,6 +284,29 @@ public static void SendInstanceInfo(
 
     // send the payload to Cosmos DB
     document = new { Payload = payload, id = ctx.InstanceId };
+}
+```
+
+## <a name="rewinding-instances-preview"></a>インスタンスの巻き戻し (プレビュー)
+
+[RewindAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RewindAsync_System_String_System_String_) API を使用して、失敗したオーケストレーション インスタンスを以前の正常な状態に "*巻き戻す*" ことができます。 これは、オーケストレーションを "*実行中*" 状態に戻し、オーケストレーション エラーの原因となったアクティビティやサブオーケストレーションの実行失敗を再実行することで機能します。
+
+> [!NOTE]
+> この API は、適切なエラー処理や再試行ポリシーの代わりとなるものではありません。 予期しない理由でオーケストレーション インスタンスが失敗する場合にのみ使用するものです。 エラー処理と再試行ポリシーについて詳しくは、[エラー処理](durable-functions-error-handling.md)に関するトピックをご覧ください。
+
+"*巻き戻し*" のユース ケースの一例として、一連の[人による承認](durable-functions-overview.md#pattern-5-human-interaction)があります。 承認が必要であることをユーザーに通知し、リアルタイムの応答を待機する一連のアクティビティ関数があるとします。 すべての承認アクティビティが応答を受信するかタイムアウトになった後、アプリケーションの構成ミス (無効なデータベース接続文字列など) により別のアクティビティが失敗します。 結果として、ワークフローの深い部分でオーケストレーションが失敗します。 `RewindAsync` API を使用すると、アプリケーション管理者は、構成エラーを修正し、失敗したオーケストレーションを問題が発生する直前の状態に "*巻き戻し*" ます。 人間の対話手順はいずれも再承認が不要で、オーケストレーションは正常に完了できるようになります。
+
+> [!NOTE]
+> "*巻き戻し*" 機能では、永続タイマーを使用したオーケストレーション インスタンスの巻き戻しはサポートされません。
+
+```csharp
+[FunctionName("RewindInstance")]
+public static Task Run(
+    [OrchestrationClient] DurableOrchestrationClient client,
+    [ManualTrigger] string instanceId)
+{
+    string reason = "Orchestrator failed and needs to be revived.";
+    return client.RewindAsync(instanceId, reason);
 }
 ```
 

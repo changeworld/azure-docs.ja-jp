@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3eb9f765b5ffe1118b3b25aff8ecdde327021a54
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 7a5c0866bc08c5a73888d9baca41980106a62ae2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37046481"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954941"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 
@@ -90,7 +90,7 @@ Web サービスが、Azure Resource Manager エンドポイントを公開す�
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
 ```
 
-[Azure Machine Learning Web サービスのポータル](https://services.azureml.net/)で Web サービスにクエリを実行するときに、URL 内のプレースホルダーの値を取得できます。 新しい種類の更新リソース エンドポイントには、AAD (Azure Active Directory) トークンが必要です。 AzureML のリンクされたサービスで **servicePrincipalId** と **servicePrincipalKey** を指定してください。 [サービス プリンシパルを作成し、Azure リソースを管理するためのアクセス許可を割り当てる方法](../../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページをご覧ください。 AzureML のリンクされたサービス定義のサンプルを次に示します。 
+[Azure Machine Learning Web サービスのポータル](https://services.azureml.net/)で Web サービスにクエリを実行するときに、URL 内のプレースホルダーの値を取得できます。 新しい種類の更新リソース エンドポイントには、AAD (Azure Active Directory) トークンが必要です。 AzureML のリンクされたサービスで **servicePrincipalId** と **servicePrincipalKey** を指定してください。 [サービス プリンシパルを作成し、Azure リソースを管理するためのアクセス許可を割り当てる方法](../../active-directory/develop/howto-create-service-principal-portal.md)に関するページをご覧ください。 AzureML のリンクされたサービス定義のサンプルを次に示します。 
 
 ```json
 {

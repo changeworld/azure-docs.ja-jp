@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: c01440437eae3cb076627ab9f2221e33b833f472
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d36697e6b5765ecf35ed9b3add45cff6c33823a5
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977238"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958222"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-using-a-rest-api"></a>REST API を使用して Azure リソースのカスタム メトリックを Azure Monitor メトリック ストアに送信する
 
@@ -25,7 +25,7 @@ ms.locfileid: "46977238"
 
 ## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>メトリックを出力するためのサービス プリンシパルを作成および承認する 
 
-[サービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページの手順を使用して、お使いの Azure Active Directory テナントでサービス プリンシパルを作成します。 
+[サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページの手順を使用して、お使いの Azure Active Directory テナントでサービス プリンシパルを作成します。 
 
 このプロセスを進める際には、次の点に注意してください。 
 

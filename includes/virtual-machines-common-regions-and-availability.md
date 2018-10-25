@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: virtual-machines
-author: iainfoulds
+author: zr-msft
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/27/2018
-ms.author: iainfou
+ms.author: zarhoads
 ms.custom: include file
-ms.openlocfilehash: 7ab67e878e7cf08fe983ab172731209328b1a474
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 231dcee1a9b330b2f8721283c39c71002a75fcac
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47454436"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49476355"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Azure の仮想マシンのリージョンと可用性について
 Azure は、世界中の複数のデータセンターで動作しています。 これらのデータセンターは、地理的なリージョンにグループ化されていて、アプリケーションの作成場所を選択するときの柔軟性を与えています。 Azure で仮想マシン (VM) がどこで、どのように運用されているかを理解するのは重要なことです。また、パフォーマンス、可用性、冗長性を最大化するためのオプションとしてどのようなものがあるかを知っておくことにも、大きな意義があります。 この記事では、可用性と冗長性に関する Azure の各種機能の概要を紹介します。
@@ -72,8 +72,8 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 
 | レプリケーションの方法 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| 複数施設にわたってのデータのレプリケート |いいえ  |可能  |はい |はい |
-| 1 次拠点と 2 次拠点からデータの読み取りが可能 |いいえ  |いいえ  |いいえ  |はい |
+| 複数施設にわたってのデータのレプリケート |いいえ  |可能  |はい |[はい] |
+| 1 次拠点と 2 次拠点からデータの読み取りが可能 |いいえ  |いいえ  |いいえ  |[はい] |
 | 個別のノードで保持されるデータ コピーの数 |3 |3 |6 |6 |
 
 詳細については、 [Azure ストレージのレプリケーション オプションのページ](../articles/storage/common/storage-redundancy.md)を参照してください。 マネージド ディスクの詳細については、「[Azure Managed Disks の概要](../articles/virtual-machines/windows/managed-disks-overview.md)」をご覧ください。

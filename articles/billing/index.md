@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/24/2018
 ms.author: cwatson
-ms.openlocfilehash: e06ee851209d48185b3b20cd6f1169af81b58013
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1e44f79fea337a79f3c30f60db7eb9a55182db6c
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034826"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986578"
 ---
 # <a name="azure-billing-and-cost-management-documentation"></a>Azure の課金とコスト管理に関するドキュメント
 
@@ -171,7 +171,6 @@ Azure の課金の確認、使用量とコストの監視、アカウントと�
                 <div class="card">
                     <div class="cardText">
                         <h3>エンタープライズ サブスクリプション: EA ポータルへのアクセスが必要</h3>
-                        <style>.p-test:after { font-family: docons; content: "\E9D0";}</style>
                         <p>
                         <a class="p-test" href="https://ea.azure.com/helpdocs/createADepartment" data-linktype="external">部署の管理<span class="docon docon-navigate-external"></span></a>
                         <br>

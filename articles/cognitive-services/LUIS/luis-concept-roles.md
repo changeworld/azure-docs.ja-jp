@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 033e5e5e054b0a29961ad60e72b1466b51d1df0c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5fda0ac590e5faeaa8b6ec44a7d649d2c0122eeb
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035200"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352987"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>パターンのエンティティ ロールはコンテキスト サブタイプです
 ロールは、[パターン](luis-concept-patterns.md)でのみ使用されるエンティティの名前付きコンテキスト サブタイプです。
@@ -28,6 +28,8 @@ ms.locfileid: "47035200"
 |--|--|--|
 |Location|origin|飛行機が離陸する場所|
 |Location|destination|飛行機が着陸する場所|
+|事前構築済みの datetimeV2|to|終了日|
+|事前構築済みの datetimeV2|from|開始日|
 
 ## <a name="how-are-roles-used-in-patterns"></a>パターンでのロールの使用方法
 パターンのテンプレートの発話では、ロールが発話内で使用されます。 
@@ -47,6 +49,14 @@ ms.locfileid: "47035200"
 |--|--|
 |階層エンティティ|意図|
 |roles|パターン|
+
+## <a name="roles-with-prebuilt-entities"></a>ロールと事前構築済みエンティティ
+
+ロールを事前構築済みエンティティと共に使用して、発話内の事前構築済みエンティティのさまざまなインスタンスに意味を与えます。 
+
+### <a name="roles-with-datetimev2"></a>ロールと datetimeV2
+
+事前構築済みエンティティ datetimeV2 は、発話内のさまざまな日付と時刻の解釈に能力を発揮します。 事前構築済みエンティティの既定の解釈とは異なる日付と日付範囲を指定できます。 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 3a141bcde75872f2384aedf982ffef5cba9666a3
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d3f2efc0ae3dcf9bdcae3f82258b28b761944487
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843190"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988534"
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -32,12 +32,15 @@ Visual Studio でお使いのアプリケーションをテストするには、
 ![Microsoft アカウントへのサインイン](media/active-directory-develop-guidedsetup-aspnetwebapp-test/aspnetbrowsersignin2.png)
 
 #### <a name="view-application-results"></a>アプリケーションの結果を表示する
+
 サインインした後、ユーザーは Web サイトのホーム ページにリダイレクトされます。 ホーム ページは、Microsoft アプリケーション登録ポータルのアプリケーション登録情報で指定した HTTPS の URL です。 ホーム ページには、ようこそメッセージ *"Hello \<ユーザー>"*、サインアウトのためのリンク、およびユーザーの要求を表示するリンクが含まれます。 ユーザーの要求へのリンクは、先ほど作成した *Claims* コントローラーを参照します。
 
 ### <a name="browse-to-see-the-users-claims"></a>ユーザーの要求を参照して表示する
+
 ユーザーの要求を表示するには、リンクを選択して、承認されたユーザーのみが使用できるコントローラー ビューを参照します。
 
 #### <a name="view-the-claims-results"></a>要求の結果を表示する
+
 コントローラー ビューを参照した後は、ユーザーの基本プロパティを示す次の表を確認する必要があります。
 
 |プロパティ |値 |[説明] |
@@ -49,13 +52,15 @@ Visual Studio でお使いのアプリケーションをテストするには、
 
 さらに、認証要求内にあるすべての要求を示した表を確認する必要があります。 詳細については、[Azure AD ID トークンにある要求の一覧](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims)をご覧ください。
 
-
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Authorize 属性を持つメソッドへのアクセスをテストする (省略可能)
+
 `Authorize` 属性で保護されているコント ローラーに対する匿名ユーザーとしてのアクセスをテストするには、次の手順に従います。
+
 1. ユーザーのサインアウトのリンクを選択し、サインアウトのプロセスを完了します。
 2. お使いのブラウザーで「 http://<span></span>localhost:{ポート}/claims」を入力し、`Authorize` 属性で保護されているコントローラーにアクセスします。
 
 #### <a name="expected-results-after-access-to-a-protected-controller"></a>保護されているコントローラーへアクセスした後に期待される結果
+
 保護されているコントローラー ビューを使用するために、認証を求めるメッセージが表示されます。
 
 ## <a name="advanced-options"></a>[詳細オプション]
@@ -70,6 +75,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 <!--end-collapse-->
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>アプリケーションにサインインできるユーザーを制限する
+
 このガイドに従ってアプリケーションを構築すると、既定では、個人アカウント (outlook.com、live.com などを含む) だけでなく、Azure Active Directory と統合されたすべての会社や組織の職場/学校アカウントのサインインを受け入れることになります。 これは、SaaS アプリケーションに推奨されるオプションです。
 
 アプリケーションへのユーザーのサインイン アクセスを制限するために、複数のオプションを使用できます。
@@ -88,6 +94,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 2. `ValidIssuers` パラメーターの値を、許可される組織の一覧に設定します。
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>オプション 3: カスタム メソッドを使用して発行者を検証する
+
 **IssuerValidator** パラメーターを使用して、カスタム メソッドを実装して発行者を検証できます。 このパラメーターの使用方法の詳細については、MSDN の [TokenValidationParameters クラス](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx)に関するページをご覧ください。
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

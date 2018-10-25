@@ -2,18 +2,17 @@
 title: Azure Container Instances を Jenkins ビルド エージェントとして使用する
 description: Azure Container Instances を Jenkins ビルド エージェントとして使用する方法を説明します。
 services: container-instances
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
-ms.author: marsma
-ms.openlocfilehash: 6419753a48e1356b2d94592fca72cee1f848dcdb
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.author: danlep
+ms.openlocfilehash: 41c9302d280d6027e12f2516bca26a98d224f301
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390655"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354191"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Azure Container Instances を Jenkins ビルド エージェントとして使用する
 
@@ -23,8 +22,7 @@ Azure Container Instances について詳しくは、[Azure Container Instances]
 
 ## <a name="deploy-a-jenkins-server"></a>Jenkins サーバーを展開する
 
-1. Azure Portal で **[リソースの作成]** を選択し、**Jenkins** を検索します。 
-  **Microsoft** が発行している Jenkins を選択し、**[作成]** を選択します。
+1. Azure Portal で **[リソースの作成]** を選択し、**Jenkins** を検索します。 **Microsoft** が発行している Jenkins を選択し、**[作成]** を選択します。
 
 2. **[基本]** フォームに次の情報を入力した後、**[OK]** を選びます。
 
@@ -49,7 +47,7 @@ Azure Container Instances について詳しくは、[Azure Container Instances]
 
    ![Jenkins ポータル展開の追加設定](./media/container-instances-jenkins/jenkins-portal-02.png)
 
-4. サービス プリンシパル統合では、**[Auto(MSI)]\(自動 (MSI)\)** を選んで、[Azure マネージド サービス ID][managed-service-identity] が Jenkins インスタンスの認証 ID を自動的に作成するようにします。 独自のサービス プリンシパル資格情報を提供するには **[手動]** を選びます。
+4. サービス プリンシパル統合では、**[Auto(MSI)]\(自動 (MSI)\)** を選んで、[Azure リソースのマネージド ID][managed-identities-azure-resources] が Jenkins インスタンスの認証 ID を自動的に作成するようにします。 独自のサービス プリンシパル資格情報を提供するには **[手動]** を選びます。
 
 5. クラウド エージェントは、Jenkins ビルド ジョブのクラウドベース プラットフォームを構成します。 この記事では、**[ACI]** を選びます。 ACI クラウド エージェントでは、各 Jenkins ビルド ジョブはコンテナー インスタンス内で実行されます。
 

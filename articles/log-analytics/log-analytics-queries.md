@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d7c006ca0be5e8db4b7ab02974ff029d3fe738e3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 0340a4d527023c050e2c776d31c02b59161a1316
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042344"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429477"
 ---
 # <a name="analyze-log-analytics-data-in-azure-monitor"></a>Azure Monitor で Log Analytics データを分析する
 
@@ -57,34 +57,42 @@ Log Analytics には、[広範なクエリ言語](query-language/get-started-que
 
 たとえば、過去 1 日で、エラー イベントが多い上位 10 台のコンピューターを確認する必要があるとします。
 
-    Event
-    | where (EventLevelName == "Error")
-    | where (TimeGenerated > ago(1days))
-    | summarize ErrorCount = count() by Computer
-    | top 10 by ErrorCount desc
+```Kusto
+Event
+| where (EventLevelName == "Error")
+| where (TimeGenerated > ago(1days))
+| summarize ErrorCount = count() by Computer
+| top 10 by ErrorCount desc
+```
 
 また、過去 1 日に、ハートビートがなかったコンピューターを確認したい場合もあります。
 
-    Heartbeat
-    | where TimeGenerated > ago(7d)
-    | summarize max(TimeGenerated) by Computer
-    | where max_TimeGenerated < ago(1d)  
+```Kusto
+Heartbeat
+| where TimeGenerated > ago(7d)
+| summarize max(TimeGenerated) by Computer
+| where max_TimeGenerated < ago(1d)  
+```
 
 先週の各コンピューターにおけるプロセッサ使用率を表す折れ線グラフはどうでしょうか。
 
-    Perf
-    | where ObjectName == "Processor" and CounterName == "% Processor Time"
-    | where TimeGenerated  between (startofweek(ago(7d)) .. endofweek(ago(7d)) )
-    | summarize avg(CounterValue) by Computer, bin(TimeGenerated, 5min)
-    | render timechart    
+```Kusto
+Perf
+| where ObjectName == "Processor" and CounterName == "% Processor Time"
+| where TimeGenerated  between (startofweek(ago(7d)) .. endofweek(ago(7d)) )
+| summarize avg(CounterValue) by Computer, bin(TimeGenerated, 5min)
+| render timechart    
+```
 
 この簡単な例からわかるように、操作しているデータの種類に関係なく、クエリの構造は似ています。  これは個別のステップに分割できます。このステップで 1 つのコマンドの結果として生成されるデータが、パイプラインを介して次のコマンドに送信されます。
 
 サブスクリプション内の Log Analytics ワークスペース全体でデータをクエリすることもできます。
 
-    union Update, workspace("contoso-workspace").Update
-    | where TimeGenerated >= ago(1h)
-    | summarize dcount(Computer) by Classification 
+```Kusto
+union Update, workspace("contoso-workspace").Update
+| where TimeGenerated >= ago(1h)
+| summarize dcount(Computer) by Classification 
+```
 
 ## <a name="how-log-analytics-data-is-organized"></a>Log Analytics データの編成方法
 クエリを作成する場合は、最初に、どのテーブルに目的のデータが含まれるかを確認します。 種類が異なるデータは、各 [Log Analytics ワークスペース](log-analytics-quick-create-workspace.md)内で専用のテーブルにそれぞれ分けられます。  各種データ ソースのドキュメントには、作成されたデータ型の名前と、各プロパティの説明が含まれています。  多くの場合、クエリに必要なデータは 1 つのテーブルだけに含まれますが、クエリの中には、さまざまなオプションを使用して、複数のテーブルのデータを含めるものもあります。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: f4729ce996ca918f43df1777a1962d4cd225a38e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cc182c46486d81196056953d20de74bbedc1e152
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47061065"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49345868"
 ---
 ## <a name="extended-iot-scenarios"></a>IoT の拡張シナリオ
 
@@ -21,27 +21,15 @@ ms.locfileid: "47061065"
 
 | シナリオ                                                   | Azure サービスまたは Azure ツール              |
 |----------------------------------------------------------- |------------------------------------|
-| [IoT Hub メッセージの管理][Mg_IoT_Toolkit]                  | VS Code Azure IoT Toolkit 拡張機能|
-| [IoT デバイスの管理][Mg_IoT_Dv]                        | Azure CLI と IoT 拡張機能    |
-| [IoT デバイスの管理][Mg_IoT_Dv_Toolkit]                | VS Code Azure IoT Toolkit 拡張機能|
-| [Azure Storage への IoT Hub メッセージの保存][Sv_IoT_Msg_Stor]  | Azure テーブル ストレージ                |
-| [センサー データの視覚化][Vis_Data_PBI]                      | Microsoft Power BI                 |
-| [センサー データの視覚化][Vis_Data_Web]                      | Azure Web Apps                      |
-| [センサー データによる気象予測][Weather_Forecast]      | Azure Machine Learning             |
-| [異常自動検出および対応][Anomaly_Detect] | Azure Logic Apps                   |
+| [IoT Hub メッセージの管理](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)                  | VS Code Azure IoT Toolkit 拡張機能|
+| [IoT デバイスの管理](../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md)                        | Azure CLI と IoT 拡張機能    |
+| [IoT デバイスの管理](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | VS Code Azure IoT Toolkit 拡張機能|
+| [Azure Storage への IoT Hub メッセージの保存](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure テーブル ストレージ                |
+| [センサー データの視覚化](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
+| [センサー データの視覚化](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure Web Apps                      |
+| [センサー データによる気象予測](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)      | Azure Machine Learning             |
+| [異常自動検出および対応](../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md) | Azure Logic Apps                   |
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルを完了したあとは、「[開発者ガイド][lnk-dev-guide]」で IoT Hub の機能の詳細を確認できます。 その他のチュートリアルは、[使用方法] [lnk-how-to]についてのセクションにあります。
-
-
-[Mg_IoT_Toolkit]: ../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md
-[Mg_IoT_Dv]: ../articles/iot-hub/iot-hub-device-management-iot-extension-azure-cli-2-0.md
-[Mg_IoT_Dv_Toolkit]: ../articles/iot-hub/iot-hub-device-management-iot-toolkit.md
-[Sv_IoT_Msg_Stor]: ../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md
-[Vis_Data_Web]: ../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md
-[Vis_Data_PBI]: ../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md
-[Weather_Forecast]: ../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md
-[Anomaly_Detect]: ../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md
-[lnk-dev-guide]: ../articles/iot-hub/iot-hub-devguide.md
-[lnk-how-to]: ../articles/iot-hub/iot-hub-how-to.md
+これらのチュートリアルを完了した後は、「[開発者ガイド](../articles/iot-hub/iot-hub-devguide.md)」で IoT Hub の機能の詳細を確認できます。 

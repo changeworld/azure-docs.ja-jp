@@ -3,17 +3,17 @@ title: Azure Maps のマップ コントロールを使用する方法 | Microso
 description: Azure Maps のマップ コントロール クライアント側 JavaScript ライブラリを使用する方法について説明します。
 author: dsk-2015
 ms.author: dkshir
-ms.date: 09/05/2018
+ms.date: 10/08/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 45890b4bd474c010b2b086be0405b79d340aeebd
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 850f9b28c112c11fd98a8abc81a1811cd26d81cc
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603161"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166032"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Azure Maps のマップ コントロールを使用する
 
@@ -32,7 +32,7 @@ ms.locfileid: "45603161"
     <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=1"></script>
     ```
 
-3. ブラウザーに新しいマップをレンダリングするには、**#map** 参照を `<style>` 要素に追加します。
+3. ブラウザーで新しいマップをレンダリングするには、**#map** 参照を `<style>` 要素に追加します。
 
     ```html
     <style>
@@ -43,14 +43,14 @@ ms.locfileid: "45603161"
     </style>
     ```
 
-4. マップ コントロールを初期化するには、html 本文に新しいセクションを定義し、スクリプトを作成します。 スクリプトには固有の Azure Maps アカウント キーを使用します。 アカウントを作成するか、キーを確認する必要がある場合は、「[Azure Maps のアカウントとキーを管理する方法](how-to-manage-account-keys.md)」を参照してください。
+4. マップ コントロールを初期化するには、html 本文に新しいセクションを定義し、スクリプトを作成します。 スクリプトには固有の Azure Maps アカウント キーを使用します。 アカウントを作成するか、キーを確認する必要がある場合は、「[Azure Maps のアカウントとキーを管理する方法](how-to-manage-account-keys.md)」を参照してください。 **setLanguage** メソッドには、マップ ラベルとコントロールに使用される言語を指定します。 サポートされている言語の詳細については、[サポートされている言語](https://docs.microsoft.com/azure/azure-maps/supported-languages)に関するページを参照してください。
 
     ```html
     <div id="map">
         <script>
-            var MapsAccountKey = "<_your account key_>";
+            atlas.setSubscriptionKey("<_your account key_>");
+            atlas.setLanguage("en");
             var map = new atlas.Map("map", {
-                "subscription-key": MapsAccountKey,
                 center: [-122.33263,47.59093],
                 zoom: 12
             });

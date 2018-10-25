@@ -2,25 +2,18 @@
 title: Azure Data Box の制限 | Microsoft Docs
 description: Microsoft Azure Data Box のコンポーネントと接続に関するシステム制限および推奨サイズについて説明します。
 services: databox
-documentationcenter: NA
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: databox
-ms.devlang: NA
+ms.subservice: pod
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 09/05/2018
+ms.date: 10/10/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: fe42380288c0f139a2bae80a12f0ebc428a4c286
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: de47cae219aa457343df292bb91b6af06c4b1186
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993084"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091931"
 ---
 # <a name="azure-data-box-limits"></a>Azure Data Box の制限
 
@@ -35,7 +28,7 @@ Microsoft Azure Data Box をデプロイおよび運用する際には、以下�
 
 ## <a name="data-box-limits"></a>Data Box の制限
 
-- Data Box は、最大で 500 万件のファイルを格納できます。
+- xv@ Data Box は、最大で 5 億個のファイルを格納できます。
 
 ## <a name="azure-storage-limits"></a>Azure Storage の制限
 

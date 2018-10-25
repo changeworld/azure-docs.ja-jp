@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.devlang: C++
 ms.topic: quickstart
 ms.date: 04/12/2018
-ms.openlocfilehash: 0c017907378376c01e4a4a98190f73a9452b9a3d
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 6d9deba8c7e6317ab349f86d5a1730f05288ea35
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264954"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987666"
 ---
 # <a name="azure-database-for-mysql-use-connectorc-to-connect-and-query-data"></a>Azure Database for MySQL: Connector/C++ を使用した接続とデータの照会
 このクイックスタートでは、C++ アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、C++ を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
@@ -30,7 +30,7 @@ ms.locfileid: "35264954"
 - [.NET Framework](https://www.microsoft.com/net/download) のインストール
 - [Visual Studio](https://www.visualstudio.com/downloads/)
 - [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) のインストール 
-- [Boost](http://www.boost.org/) のインストール
+- [Boost](https://www.boost.org/) のインストール
 
 ## <a name="install-visual-studio-and-net"></a>Visual Studio と .NET のインストール
 このセクションの手順では、.NET を使用した開発に慣れていることを前提としています。

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: e1884048d0f02de1b3a354bc4dac2b3e98dcccc9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 29b045266836ace35aab12c51746b7e339cbb88f
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412859"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354344"
 ---
 # <a name="virtual-machine-serial-console"></a>仮想マシンのシリアル コンソール
 
@@ -28,8 +28,8 @@ Azure の仮想マシンのシリアル コンソールでは、Windows 仮想�
 
 Linux VM のシリアル コンソールのドキュメントを参照するには、[ここをクリック](serial-console-linux.md)してください。
 
-> [!Note] 
-> 仮想マシンのシリアル コンソールは、グローバル Azure リージョンで一般公開されています。 現時点では、シリアル コンソールは Azure Government と Azure China Cloud で利用できません。
+> [!NOTE] 
+> 仮想マシンのシリアル コンソールは、グローバル Azure リージョンで一般公開されています。 現時点では、シリアル コンソールは Azure Government と Azure China Cloud 上で利用できません。
 
  
 
@@ -83,9 +83,12 @@ Windows ブート ローダーのプロンプトを有効にしてシリアル �
 1. リモート デスクトップを介して Windows 仮想マシンに接続します。
 2. 管理コマンド プロンプトで次のコマンドを実行します。 
 * `bcdedit /set {bootmgr} displaybootmenu yes`
-* `bcdedit /set {bootmgr} timeout 5`
+* `bcdedit /set {bootmgr} timeout 10`
 * `bcdedit /set {bootmgr} bootems yes`
 3. システムを再起動して、ブート メニューを有効にします。
+
+> [!NOTE] 
+> ブート マネージャー メニューの表示に対して設定するタイムアウトは、今後の OS ブート時間に影響します。 ブート マネージャーがシリアル コンソール経由で表示されるように 10 秒のタイムアウトを追加することを許容できる人もいれば、タイムアウトをもっと短く、または長くしたい人もいます。 タイムアウト値はお好みの値に設定してください。
 
 ## <a name="use-serial-console-for-nmi-calls-in-windows-vms"></a>Windows VM での NMI 呼び出しにシリアル コンソールを使用する
 マスク不可能割り込み (NMI) は、仮想マシン上のソフトウェアで無視されない信号を作成するために設計されています。 従来より、NMI は、特定の応答時間を要したシステム上でのハードウェアの問題を監視するために使用されてきました。  今日、プログラマーおよびシステム管理者は、NMI をハングされたシステムのデバッグやトラブルシューティングのためのメカニズムとして、頻繁に使用しています。
@@ -99,7 +102,7 @@ NMI を受信したときにクラッシュ ダンプを作成するように Wi
 ## <a name="disable-serial-console"></a>シリアル コンソールを無効にする
 既定では、すべてのサブスクリプションは、すべての VM に対してシリアル コンソールのアクセスが有効になっています。 VM レベルまたはサブスクリプション レベルのいずれかで、シリアル コンソールを無効にすることができます。
 
-> [!Note]       
+> [!NOTE]       
 > あるサブスクリプションに対してシリアル コンソールを有効または無効にするには、そのサブスクリプションの書き込み権限が必要です。 これには管理者ロールと所有者ロールが含まれますが、それらに限定されません。 カスタム ロールにも、書き込み権限が与えられることがあります。
 
 ### <a name="subscription-level-disable"></a>サブスクリプション レベルの無効化
@@ -193,7 +196,7 @@ Microsoft は、シリアル コンソールには問題がいくつかあるこ
 
 問題                             |   対応策 
 :---------------------------------|:--------------------------------------------|
-接続バナーの後に Enter キーを押しても、ログイン プロンプトが表示されない | [Enter キーを押しても何も実行されない](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)問題に関するページを参照してください。 この問題は、Windows がシリアル ポートに正常に接続できない原因となるカスタム VM、堅牢化されたアプライアンス、または GRUB 構成を実行している場合に発生する可能性があります。
+接続バナーの後に Enter キーを押しても、ログイン プロンプトが表示されない | [Enter キーを押しても何も実行されない](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md)問題に関するページを参照してください。 この問題は、Windows がシリアル ポートに正常に接続できない原因となるカスタム VM、堅牢化されたアプライアンス、またはブート構成を実行している場合に発生する可能性があります。 これは Windows 10 クライアント VM を実行している場合にも発生します。Windows Server VM のみが EMS を有効にするように構成されているからです。
 カーネル デバッグを有効にすると、SAC プロンプトで入力できない | VM に RDP で接続して、管理者特権でのコマンド プロンプトから `bcdedit /debug {current} off` を実行します。 RDP で接続できない場合は、代わりに OS ディスクを別の Azure VM に接続して、データ ディスクとしてアタッチされている間に `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off` を使用して変更し、ディスクを戻すこともできます。
 元のコンテンツに反復する文字が含まれる場合、SAC の PowerShell に貼り付けると 3 文字目が生成される | 回避策は、現在のセッションから PSReadLine モジュールをアンロードすることです。 `Remove-Module PSReadLine` を実行し、現在のセッションから PSReadLine モジュールをアンロードします。この操作では、モジュールが削除されたり、アンインストールされたりすることはありません。
 一部のキーボード入力で、不適切な SAC 出力が生成される (例: `[A`、`[3~`) | [VT100](https://aka.ms/vtsequences) エスケープ シーケンスは SAC プロンプトでサポートされていません。
@@ -219,9 +222,9 @@ A. VM のシリアル コンソールにアクセスするには、VM に対し�
 
 **Q.シリアル コンソールに何も表示されません。どうすれば良いでしょうか。**
 
-A. シリアル コンソールのアクセスに関して、おそらく、イメージが間違って構成されています。 イメージを構成してシリアル コンソールを有効にする方法については、[カスタム イメージまたは古いイメージでのシリアル コンソールの有効化](#Enable-Serial-Console-in-custom-or-older-images)に関するページを参照してください。
+A. シリアル コンソールのアクセスに関して、おそらく、イメージが間違って構成されています。 イメージを構成してシリアル コンソールを有効にする方法については、[カスタム イメージまたは古いイメージでのシリアル コンソールの有効化](#enable-serial-console-in-custom-or-older-images)に関するページを参照してください。
 
-**Q.シリアル コンソールは仮想マシン スケール セットに利用できますか。**
+**Q.シリアル コンソールは Virtual Machine Scale Sets に利用できますか。**
 
 A. 現時点では、仮想マシン スケール セット インスタンスのシリアル コンソールにはアクセスできません。
 

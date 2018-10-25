@@ -2,18 +2,18 @@
 title: System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
 description: System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする方法について説明する
 services: backup
-author: MaanasSaran
+author: adigan
 manager: NKolli1
 ms.service: backup
-ms.topic: troubleshooting
-ms.date: 09/08/2017
+ms.topic: conceptual
+ms.date: 10/19/2018
 ms.author: adigan
-ms.openlocfilehash: 4edec499d12261add398e5a9297f039ecfb252e9
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 8fbe3e716971f4d82e6d24fb866334ffd626bf32
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34605102"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945979"
 ---
 # <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
 この記事では、Microsoft Exchange Server を Azure Backup にバックアップするために System Center 2012 R2 Data Protection Manager (DPM) サーバーを構成する方法を説明します。  
@@ -27,7 +27,7 @@ Azure Backup に DPM サーバーを正常に登録するには、System Center 
 >
 
 ## <a name="prerequisites"></a>前提条件
-先に進む前に、Microsoft Azure Backup を使用してワークロードを保護する上で必要なすべての [前提条件](backup-azure-dpm-introduction.md#prerequisites) が満たされていることを確認します。 該当する前提条件を以下に示します。
+先に進む前に、Microsoft Azure Backup を使用してワークロードを保護する上で必要なすべての [前提条件](backup-azure-dpm-introduction.md#prerequisites-and-limitations) が満たされていることを確認します。 該当する前提条件を以下に示します。
 
 * Azure サイトに対するバックアップ コンテナーが作成済みである。
 * エージェントとコンテナーの資格情報が DPM サーバーにダウンロード済みである。

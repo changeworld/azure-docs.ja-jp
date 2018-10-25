@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 08/26/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: f0bcb2e7f99689d31be610f1523d2c57e332deb7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f3fa6c75fdaf30d13231bc3072bd671614c9a668
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049823"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650696"
 ---
 1. **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[発行]** を選択します。
 
 2. **[Azure 関数アプリ]** を選択し、**[新規作成]** を選択して、**[発行]** を選択します。
 
-    ![発行先の選択](./media/functions-vstools-publish/functions-vstools-create-new-function-app.png)
+    ![発行先の選択](./media/functions-vstools-publish/functions-visual-studio-publish-profile.png)
 
     **[Run from Zip]\(Zip から実行する\)** を有効にすると、Azure の関数アプリはデプロイ パッケージから直接実行されます。 詳細については、「[Run your Azure Functions from a package file](../articles/azure-functions/run-functions-from-deployment-package.md)」(パッケージ ファイルから Azure Functions を実行する) を参照してください。
 
@@ -27,7 +27,7 @@ ms.locfileid: "43049823"
 
 4. **[App Service の作成]** ダイアログで、画像の下の表に指定されているように**ホスティング**設定を使用してください。
 
-    ![[App Service の作成] ダイアログ](./media/functions-vstools-publish/functions-vstools-publish.png)
+    ![[App Service の作成] ダイアログ](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
     | Setting      | 推奨値  | 説明                                |
     | ------------ |  ------- | -------------------------------------------------- |
@@ -41,4 +41,4 @@ ms.locfileid: "43049823"
 
 6. デプロイが完了したら、**[サイトの URL]** の値を書き留めておきます。これが Azure における関数アプリのアドレスになります。
 
-    ![発行成功のメッセージ](./media/functions-vstools-publish/functions-vstools-publish-profile.png)
+    ![発行成功のメッセージ](./media/functions-vstools-publish/functions-visual-studio-publish-complete.png)

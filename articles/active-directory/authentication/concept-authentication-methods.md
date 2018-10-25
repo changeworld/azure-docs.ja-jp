@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 7776ca63dd5c02e470ead35e3dad73c051731fd1
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 67f99e68bc4091d076e27aee06c2851bc77e6fc7
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143000"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378926"
 ---
 # <a name="what-are-authentication-methods"></a>認証方法とは
 
@@ -31,6 +31,7 @@ Microsoft では、認証方法を利用できない場合に備えて、ユー�
 | セキュリティの質問 | SSPR のみ |
 | 電子メール アドレス | SSPR のみ |
 | Microsoft Authenticator アプリ | MFA、および SSPR のパブリック プレビュー |
+| OATH ハードウェア トークン | MFA および SSPR のパブリック プレビュー |
 | sms | MFA と SSPR |
 | 音声通話 | MFA と SSPR |
 | アプリ パスワード | MFA のみ(特定の場合) |
@@ -39,7 +40,7 @@ Microsoft では、認証方法を利用できない場合に備えて、ユー�
 
 |     |
 | --- |
-| Azure AD のセルフ サービスによるパスワードのリセットの方法であるモバイル アプリ通知およびモバイル アプリ コードは、Azure Active Directory のパブリック プレビューの機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
+| MFA と SSPR 用の OATH ハードウェア トークンと、Azure AD のセルフ サービスによるパスワードのリセットの方法であるモバイル アプリ通知またはモバイル アプリ コードは、Azure Active Directory のパブリック プレビューの機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
 |     |
 
 ## <a name="password"></a>パスワード
@@ -146,6 +147,30 @@ Microsoft Authenticator アプリまたは他のサードパーティ アプリ�
 > [!WARNING]
 > セルフサービスによるパスワードのリセットの場合、リセットに必要な方法が 1 つのみのときは、**最高レベルのセキュリティを確保するため**、ユーザーが使用できるオプションは確認コードのみです。
 >
+
+## <a name="oath-hardware-tokens-public-preview"></a>OATH ハードウェア トークン (パブリック プレビュー)
+
+OATH は、1 回限りのパスワード (OTP) のコードの生成方法を指定するオープン標準です。 Azure AD では、30 秒または 60 秒の OATH-TOTP SHA-1 トークンの使用がサポートされます。 顧客は、選択したベンダーからこれらのトークンを調達できます。 秘密鍵は 128 文字に制限されていることに注意してください。すべてのトークンと互換性があるとは限りません。
+
+![Azure portal の [MFA Server OATH tokens]\(MFA サーバー - OATH トークン\) ブレードでの OATH トークンのアップロード](media/concept-authentication-methods/oath-tokens-azure-ad.png)
+
+OATH ハードウェア トークンはパブリック プレビュー段階でサポートされています。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。
+
+いったんトークンを取得したら、次に示す例のように、UPN、シリアル番号、秘密鍵、間隔、製造元、モデルを含む、コンマ区切り値 (CSV) ファイル形式でアップロードする必要があります。
+
+```
+upn,serial number,secret key,timeinterval,manufacturer,model
+Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKey
+```
+
+> [!NOTE]
+> CSV ファイルには上記のようにヘッダー行を含めてください。
+
+CSV ファイルとして適切な形式が整ったら、管理者は Azure portal にサインインして、**[Azure Active Directory]**、**[MFA Server]\(FMA サーバー\)**、**[OATH トークン]** の順にナビゲートして、作成した CSV ファイルをアップロードできます。
+
+CSV ファイルのサイズによって異なりますが、この処理には数分間かかることがあります。 **[最新の情報に更新]** ボタンをクリックして、現在の状態を取得します。 ファイルにエラーがある場合、修正するために、エラーが含まれる CSV ファイルをダウンロードできます。
+
+すべてのエラーが修正されたら、管理者は各キーをアクティブにすることができます。アクティブにするトークンの **[アクティブ化]** をクリックし、トークンに表示されている OTP を入力します。
 
 ## <a name="mobile-phone"></a>携帯電話
 

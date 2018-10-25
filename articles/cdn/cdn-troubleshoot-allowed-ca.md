@@ -12,15 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e9d9f5b053537b3d6881763bcb39d7894ba78869
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 79b8cfa061bafb43cbcf2ec8a43638fd14c2fcd0
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969508"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954039"
 ---
 # <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Azure CDN でカスタム HTTPS を有効にするために許可された認証機関
 
@@ -70,27 +70,6 @@ ms.locfileid: "46969508"
 - GlobalSign Root CA
 - Go Daddy Root Certificate Authority - G2
 - Go Daddy Secure Certificate Authority - G2
-- Microsoft Authenticode(tm) Root Authority
-- Microsoft Exchange Services CA 2015
-- Microsoft Internal Corporate Root
-- Microsoft IT ITO SSL CA 1
-- Microsoft IT SSL SHA1
-- Microsoft IT SSL SHA2
-- Microsoft IT TLS CA 1
-- Microsoft IT TLS CA 2
-- Microsoft IT TLS CA 4
-- Microsoft IT TLS CA 5
-- Microsoft Root Authority
-- Microsoft Root Certificate Authority
-- Microsoft Root Certificate Authority 2010
-- Microsoft Root Certificate Authority 2011
-- Microsoft Secure Server CA 2011
-- Microsoft Services Partner Root
-- Microsoft Time Stamping Service Root
-- Microsoft Windows Hardware Compatibility
-- MSIT CA Z2
-- MSIT Enterprise CA 1
-- MSIT Enterprise CA 3
 - RapidSSL RSA CA 2018
 - Root Agency
 - Symantec Class 3 EV SSL CA - G3
@@ -102,12 +81,11 @@ ms.locfileid: "46969508"
 - Thawte RSA CA 2018
 - Thawte Timestamping CA
 - TrustAsia TLS RSA CA
-- UTN-USERFirst-Object
 - VeriSign Class 3 Extended Validation SSL CA
 - VeriSign Class 3 Extended Validation SSL SGC CA
 - VeriSign Class 3 Public Primary Certification Authority - G5
 - VeriSign International Server CA - Class 3
 - VeriSign Time Stamping Service Root
 - VeriSign Universal Root Certification Authority
-- WMSvc-SHA2-DALEDGE1008
+
 

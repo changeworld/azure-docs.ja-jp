@@ -5,15 +5,15 @@ author: msvijayn
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 2e2db54f4c356a754144e17b11cf25fdf3f12d9f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bcede1f985937058196b75a93f539cb34da73992
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994005"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365064"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 この記事では、ログ アラートの詳細について説明します。ログ アラートは、[Azure アラート](monitoring-overview-unified-alerts.md)でサポートされるアラートの一種です。これを使用すると、Azure の分析プラットフォームをアラート発信の基盤として使用できます。
@@ -110,7 +110,7 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>ログ アラートの価格と課金
-ログ アラートに適用される価格については、「[Azure Monitor の価格](https://azure.microsoft.com/en-us/pricing/details/monitor/)」ページを参照してください。 Azure 請求書には、ログ アラートが型 `microsoft.insights/scheduledqueryrules` として表示され、さらに次が表示されます。
+ログ アラートに適用される価格については、「[Azure Monitor の価格](https://azure.microsoft.com/pricing/details/monitor/)」ページを参照してください。 Azure 請求書には、ログ アラートが型 `microsoft.insights/scheduledqueryrules` として表示され、さらに次が表示されます。
 - Application Insights のログ アラートが正しいアラート名でリソース グループとアラート プロパティと共に表示されます
 - Log Analytics のログ アラートがアラート名 (`<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` として) でリソース グループとアラート プロパティと共に表示されます
 

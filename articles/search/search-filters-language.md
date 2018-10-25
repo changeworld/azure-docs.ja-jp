@@ -6,14 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.workload: search
+ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
-ms.openlocfilehash: 6d7fa7ab6db1fe9f8e2d1530c2917f4716a38079
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 2bacffe64fed3e2ee0cc2eb983776b4ab7086e51
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790629"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466587"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>Azure Search の言語によるフィルター処理方法 
 

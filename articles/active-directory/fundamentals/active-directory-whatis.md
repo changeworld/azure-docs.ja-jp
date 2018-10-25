@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 09/13/2018
 ms.custom: it-pro
-ms.openlocfilehash: 08d32a99e2f1a77bcc7a5900b47e6771c33ec356
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 406baeac60c7c0cdf5f74876e5fc29ea23d3d6f6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393323"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957549"
 ---
 # <a name="what-is-azure-active-directory"></a>Azure Active Directory とは
 Azure Active Directory (Azure AD) は、マイクロソフトが提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID の管理サービスです。 Azure AD は、コア ディレクトリ サービス、アプリケーション アクセス管理、および ID 保護を 1 つのソリューションに統合し、開発者が一元的なポリシーとルールに基づいてアプリにアクセス制御を追加することができる標準ベースのプラットフォームを用意しています。
@@ -74,7 +74,7 @@ Azure AD の実装を強化するために、Azure Active Directory Basic、Prem
 30 日間の無料試用版にサインアップし、最初のクラウド ソリューションをデプロイし、[Azure Active Directory Premium の試用版](https://azure.microsoft.com/trial/get-started-active-directory/)に関するページを参照してください。
 
 ## <a name="as-a-developer-how-do-i-get-started"></a>開発者の開始方法
-30 日間の無料試用版にサインアップし、アプリと Azure AD を統合し、[Azure Active Directory Premium の試用版](https://azure.microsoft.com/trial/get-started-active-directory/)に関するページを参照してください。 詳細については、Azure Active Directory の[開発者ガイド](../develop/azure-ad-developers-guide.md)のページも参照してください。
+30 日間の無料試用版にサインアップし、アプリと Azure AD を統合し、[Azure Active Directory Premium の試用版](https://azure.microsoft.com/trial/get-started-active-directory/)に関するページを参照してください。 詳細については、Azure Active Directory の[開発者ガイド](../develop/v1-overview.md)のページも参照してください。
 
 ## <a name="next-steps"></a>次の手順
 - [Azure の ID およびアクセス管理の基礎](identity-fundamentals.md)。

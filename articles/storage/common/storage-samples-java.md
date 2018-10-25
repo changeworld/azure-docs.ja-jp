@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/12/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: bdc25a7aeff88d058eaf3fddf6cec023edff3b9e
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 83080d1e73ddb06de9b454f106517ef230c4b25a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530318"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984266"
 ---
 # <a name="azure-storage-samples-using-java"></a>Java を使用した Azure Storage サンプル
 
@@ -161,31 +161,31 @@ ms.locfileid: "39530318"
 <tr> 
 <td rowspan="7"><b>テーブル</b></td>
 <td>テーブルの作成</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Java での Azure Table service の概要</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Java での Azure Table service の概要</a></td> 
 </tr> 
 <tr> 
 <td>エンティティ/テーブルの削除</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Java での Azure Table service の概要</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Java での Azure Table service の概要</a></td> 
 </tr> 
 <tr> 
 <td>エンティティの挿入/マージ/置換</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Storage の Java クライアント ライブラリのサンプル</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Java での Azure Table service の概要</a></td> 
 </tr> 
 <tr> 
 <td>エンティティのクエリ</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Java での Azure Table service の概要</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Java での Azure Table service の概要</a></td> 
 </tr> 
 <tr> 
 <td>テーブルの照会</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableBasics.java">Java での Azure Table service の概要</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Java での Azure Table service の概要</a></td> 
 </tr> 
 <tr> 
 <td>テーブルの ACL/プロパティ</td> 
-<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/TableAdvanced.java">Java での Azure Table service の概要</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableAdvanced.java">Java での Azure Table service の概要</a></td> 
 </tr> 
 <tr> 
 <td>エンティティの更新</td> 
-<td><a href="https://github.com/Azure/azure-storage-java/blob/master/microsoft-azure-storage-samples/src/com/microsoft/azure/storage/table/gettingtstarted/TableBasics.java">Storage の Java クライアント ライブラリのサンプル</a></td> 
+<td><a href="https://github.com/Azure-Samples/storage-table-java-getting-started/blob/master/src/main/java/com/microsoft/azure/cosmosdb/tablesample/TableBasics.java">Java での Azure Table service の概要</a></td> 
 </tr> 
 </tbody> 
 </table>

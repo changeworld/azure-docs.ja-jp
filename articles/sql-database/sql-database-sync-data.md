@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 08/09/2018
-ms.openlocfilehash: ae7ac2726ccb97264b387eb9ae5476ae1946a783
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: dfa5929daffb27617d3d1047f044a5af037e42ff
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161983"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362239"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
 
@@ -127,6 +127,8 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 -   Azure Active Directory 認証はサポートされていません。
 
+-   名前が同じでスキーマが異なるテーブル (たとえば、dbo.customers や sales.customers など) はサポートされていません。
+
 #### <a name="unsupported-data-types"></a>サポートされていないデータ型
 
 -   FileStream
@@ -150,7 +152,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | **数量**                                                      | **制限**              | **対処法**              |
 |-----------------------------------------------------------------|------------------------|-----------------------------|
 | データベースが属することができる同期グループの最大数。       | 5                      |                             |
-| 1 つの同期グループ内のエンドポイントの最大数              | 30                     | 複数の同期グループを作成する |
+| 1 つの同期グループ内のエンドポイントの最大数              | 30                     |                             |
 | 1 つの同期グループ内のオンプレミス エンドポイントの最大数。 | 5                      | 複数の同期グループを作成する |
 | データベース、テーブル、スキーマ、および列名の文字数                       | 名前 1 件あたり 50 文字 |                             |
 | 同期グループ内のテーブル数                                          | 500                    | 複数の同期グループを作成する |
@@ -158,6 +160,8 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | テーブルでのデータ行のサイズ                                        | 24 Mb                  |                             |
 | 最小同期間隔                                           | 5 分              |                             |
 |||
+> [!NOTE]
+> 同期グループが 1 つだけの場合は、 1 つの同期グループで最大 30 個のエンドポイントを持つことができます。 同期グループが 2 つ以上ある場合は、すべての同期グループでのエンドポイントの合計数が最大 30 個に制限されます。 データベースが複数の同期グループに属している場合、それは 1 つではなく、複数のエンドポイントとしてカウントされます。
 
 ## <a name="faq-about-sql-data-sync"></a>SQL データ同期に関する FAQ
 

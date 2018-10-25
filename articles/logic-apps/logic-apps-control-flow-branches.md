@@ -3,19 +3,18 @@ title: 並列分岐を作成または結合する - Azure Logic Apps | Microsoft
 description: Azure Logic Apps のワークフローに対して並列分岐を作成または結合する方法です
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 2a8dcd82b67ee64e5687d8687415056b0aab39aa
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.topic: article
+ms.date: 10/10/2018
+ms.openlocfilehash: 41823d697139e039703cd47e0bfe3380fd2d20d6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298857"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116088"
 ---
 # <a name="create-or-join-parallel-branches-for-workflow-actions-in-azure-logic-apps"></a>Azure Logic Apps のワークフロー アクションに対して並列分岐を作成または結合する
 
@@ -32,33 +31,44 @@ ms.locfileid: "35298857"
 
 <a name="parallel-branches"></a>
 
-## <a name="add-a-parallel-branch"></a>並列分岐を追加する
+## <a name="add-parallel-branch"></a>並列分岐を追加する
 
 独立したステップを同時に実行するには、既存のステップの次に並列分岐を追加できます。 
 
 ![並列でステップを実行する](media/logic-apps-control-flow-branches/parallel.png)
 
-ロジック アプリはすべての分岐が終了するまで待機してから、ワークフローを続行します。
-並列分岐が実行するのは、`runAfter` プロパティの値が、完了した親ステップの状態と一致する場合のみです。 たとえば、`branchAction1` と `branchAction2` の両方は、`parentAction` が `Succeded` 状態で完了した場合のみ実行するように設定されています。
+ロジック アプリはすべての分岐が終了するまで待機してから、ワークフローを続行します。 並列分岐が実行するのは、`runAfter` プロパティの値が、完了した親ステップの状態と一致する場合のみです。 たとえば、`branchAction1` と `branchAction2` の両方は、`parentAction` が `Succeded` 状態で完了した場合のみ実行するように設定されています。
 
 > [!NOTE]
 > 開始する前に、並列分岐を追加できるステップがロジック アプリに存在していることが必要です。
 
 1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> のロジック アプリ デザイナーでロジック アプリを開きます。
 
-2. 並列分岐を追加するステップの上にマウスを置きます。
-
-3. **プラス**記号 (**+**) を選択し、**[並列分岐の追加]** を選択し、追加する項目を選択します。
+1. 並列分岐を追加するステップにポインターを移動します。 表示される**プラス**記号 (**+**) を選択し、**[並列分岐の追加]** を選択します。 
 
    ![並列分岐を追加する](media/logic-apps-control-flow-branches/add-parallel-branch.png)
 
-   選択した項目が並列分岐に表示されます。
+1. 検索ボックスで目的のアクションを探して選択します。
 
-4. 各並列分岐に必要なステップを追加します。 並列分岐に順次アクションを追加するには、順次アクションを追加するアクションの下にマウスを移動します。 **プラス** (**+**) 記号と、追加するステップを選択します。
+   ![目的のアクションを探して選択する](media/logic-apps-control-flow-branches/find-select-parallel-action.png)
 
-   ![並列分岐に順次ステップを追加する](media/logic-apps-control-flow-branches/add-sequential-action-parallel-branch.png)
+   これで、次の例のように、選択したアクションが並列分岐に表示されます。
 
-5. 分岐を 1 つに戻すには、[並列分岐を結合](#join-branches)します。 
+   ![目的のアクションを探して選択する](media/logic-apps-control-flow-branches/added-parallel-branch.png)
+
+1. 各並列分岐に必要なステップを追加します。 分岐に別のアクションを追加するには、順次アクションを追加するアクションの下にポインターを移動します。 表示される**プラス**(**+**) 記号を選択し、**[アクションの追加]** を選択します。
+
+   ![並列分岐に順次アクションを追加する](media/logic-apps-control-flow-branches/add-sequential-action.png)
+
+1. 検索ボックスで目的のアクションを探して選択します。
+
+   ![順次アクションを探して選択する](media/logic-apps-control-flow-branches/find-select-sequential-action.png)
+
+   これで、次の例のように、選択したアクションが現在の分岐に表示されます。
+
+   ![順次アクションを探して選択する](media/logic-apps-control-flow-branches/added-sequential-action.png)
+
+分岐を 1 つに戻すには、[並列分岐を結合](#join-branches)します。 
 
 <a name="parallel-json"></a>
 
@@ -69,17 +79,17 @@ ms.locfileid: "35298857"
 ``` json
 {
   "triggers": {
-    "myTrigger": { }
+    "myTrigger": {}
   },
   "actions": {
     "parentAction": {
       "type": "<action-type>",
-      "inputs": { },
+      "inputs": {},
       "runAfter": {}
     },
     "branchAction1": {
       "type": "<action-type>",
-      "inputs": { },
+      "inputs": {},
       "runAfter": {
         "parentAction": [
           "Succeeded"
@@ -88,7 +98,7 @@ ms.locfileid: "35298857"
     },
     "branchAction2": {
       "type": "<action-type>",
-      "inputs": { },
+      "inputs": {},
       "runAfter": {
         "parentAction": [
           "Succeeded"
@@ -110,11 +120,17 @@ ms.locfileid: "35298857"
 
 1. [Azure ポータル](https://portal.azure.com)のロジック アプリ デザイナーでロジック アプリを選択して開きます。 
 
-2. 結合する並列分岐の下に、実行するステップを追加します。
+1. 結合する並列分岐で **[新しいステップ]** を選択します。 
 
-   ![並列分岐を結合するステップを追加する](media/logic-apps-control-flow-branches/join-steps.png)
+   ![結合するステップを追加する](media/logic-apps-control-flow-branches/add-join-step.png)
+
+1. 検索ボックスで、分岐に結合するステップとして必要なアクションを探して選択します。
+
+   ![並列分岐に結合するアクションを探して選択する](media/logic-apps-control-flow-branches/join-steps.png)
 
    これで並列分岐は結合されました。
+
+   ![結合された分岐](media/logic-apps-control-flow-branches/joined-branches.png)
 
 <a name="join-json"></a>
 

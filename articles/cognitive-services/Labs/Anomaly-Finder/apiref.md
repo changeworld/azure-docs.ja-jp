@@ -4,16 +4,16 @@ description: Microsoft Cognitive Services のための Anomaly Finder API リフ
 services: cognitive-services
 author: tonyxing
 ms.service: cognitive-services
-ms.technology: anomaly-detection
+ms.component: anomaly-detection
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: tonyxing
-ms.openlocfilehash: 8302d7be3bbe3e90b80d60eefd44eea5dcf96043
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 82f698c9b3ff462d20f3f164446ca5ed6f73c03f
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48246957"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456713"
 ---
 # <a name="anomaly-finder-api-reference"></a>Anomaly Finder API リファレンス
 

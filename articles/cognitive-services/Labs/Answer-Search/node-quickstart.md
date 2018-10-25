@@ -5,16 +5,16 @@ services: cognitive-services
 author: mikedodaro
 manager: cgronlun
 ms.service: cognitive-services
-ms.component: project-answer-search
+ms.component: answer-search
 ms.topic: quickstart
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: 99dba482c9dec4448110301201c7c9e79a7a6380
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 1afd029803fc7d2709a9a9abe840db6d7f52498d
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48867427"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465748"
 ---
 # <a name="quickstart-project-answer-search-with-node"></a>クイック スタート: Node での Project Answer Search
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/19/18
 ms.author: sakthivetrivel
 ms.custom: mvc
-ms.openlocfilehash: 3bac6534f43d62e6eb9381b8513025ba9117ed04
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: e16c82f7c49bf90fc074732d0a989b9de94a52c5
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857008"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49375853"
 ---
 # <a name="cluster-autoscaler-on-azure-kubernetes-service-aks---preview"></a>Azure Kubernetes Service のクラスター オートスケーラー (AKS) - プレビュー
 
@@ -26,11 +26,22 @@ Azure Kubernetes Service (AKS) には、マネージド Kubernetes クラスタ�
 > Azure Kubernetes Service (AKS) のクラスター オートスケーラーの統合は、現在は**プレビュー段階**です。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
 >
 
-## <a name="prerequisites"></a>前提条件
+## <a name="prerequisites-and-considerations"></a>前提条件と考慮事項
 
 このドキュメントでは、RBAC が有効な AKS クラスターがあることを前提としています。 AKS クラスターが必要な場合は、[Azure Kubernetes Service (AKS) のクイック スタート][aks-quick-start]に関するページを参照してください。
 
  クラスター オートスケーラーを使用するには、クラスターが Kubernetes v1.10.X 以降であり、RBAC が有効になっている必要があります。 クラスターをアップグレードするには、[AKS クラスターのアップグレード][aks-upgrade]に関する記事を参照してください。
+
+ポッドのリソース要求を定義してください。 クラスター オートスケーラーは、ポッドがどのようなリソース要求をしているのかをチェックします。ポッドの水平オートスケーラーのように、実際に使用されているリソースをチェックするのではありません。 デプロイ定義の `spec: containers` セクション内には、CPU とメモリの要件を定義します。 次のスニペット サンプルでは、ノード上で 0.5 vCPU と 64 Mb のメモリを要求しています。
+
+  ```yaml
+  resources:
+    requests:
+      cpu: 500m
+      memory: 64Mb
+  ```
+
+クラスター オートスケーラーを使用する場合は、ノードの数を手動でスケーリングしないでください。 クラスター オートスケーラーでは、必要なコンピューティング リソースの量を正しく判断できない場合があり、手動で定義したノード数と競合する可能性があります。
 
 ## <a name="gather-information"></a>情報を収集する
 
@@ -127,7 +138,7 @@ metadata:
   name: cluster-autoscaler
   namespace: kube-system
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: cluster-autoscaler
@@ -168,7 +179,7 @@ rules:
   verbs: ["get", "list", "watch"]
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: cluster-autoscaler
@@ -186,7 +197,7 @@ rules:
   verbs: ["delete","get","update"]
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: cluster-autoscaler
@@ -203,7 +214,7 @@ subjects:
     namespace: kube-system
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: cluster-autoscaler
@@ -221,7 +232,7 @@ subjects:
     namespace: kube-system
 
 ---
-apiVersion: extensions/v1beta1
+apiVersion: extensions/v1
 kind: Deployment
 metadata:
   labels:

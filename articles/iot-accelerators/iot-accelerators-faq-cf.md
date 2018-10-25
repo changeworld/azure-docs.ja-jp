@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 737a76ba313dddaa58c302f1df501f16a5c4e9e8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e9e88fc9aa3aad902c140ac176e31571b9e55ee3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966559"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353743"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>接続済みファクトリ ソリューション アクセラレータに関してよく寄せられる質問
 
@@ -140,33 +140,21 @@ IoT Hub に送信されるデータが表示されない場合は、シミュレ
 
 ### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>接続済みファクトリ ソリューションでインタラクティブ マップを有効にするにはどうすればいいですか
 
-接続済みファクトリ ソリューションでインタラクティブ マップを有効にするには、事前に Bing Maps API for Enterprise プランを取得する必要があります。
+接続済みファクトリ ソリューション内でインタラクティブ マップを有効にするには、Azure Maps アカウントが必要です。
 
-[www.azureiotsolutions.com](http://www.azureiotsolutions.com) から展開すると、展開プロセスはサブスクリプションに有効な Bing Maps API for Enterprise プランがあることを検証し、接続済みファクトリにインタラクティブ マップを自動的に展開します。 このようにならない場合でも、次のようにして展開でインタラクティブ マップを有効にすることができます。
+[www.azureiotsolutions.com](http://www.azureiotsolutions.com) からデプロイするときに、デプロイ プロセスによって、ソリューション アクセラレータ サービスを含むリソース グループに Azure Maps アカウントが追加されます。
 
-接続済みファクトリの GitHub リポジトリの `build.ps1` スクリプトを使ってデプロイを行い、Bing Maps API for Enterprise プランがある場合は、ビルド ウィンドウの環境変数 `$env:MapApiQueryKey` をプランのクエリ キーに設定します。 このようにすると、インタラクティブ マップが自動的に有効になります。
+接続済みファクトリの GitHub リポジトリにある `build.ps1` スクリプトを使ってデプロイする場合は、ビルド ウィンドウの環境変数 `$env:MapApiQueryKey` を [Azure Maps アカウントのキー](../azure-maps/how-to-manage-account-keys.md)に設定します。 このようにすると、インタラクティブ マップが自動的に有効になります。
 
-Bing Maps API for Enterprise プランがない場合は、[www.azureiotsolutions.com](http://www.azureiotsolutions.com) から、または `build.ps1` スクリプトを使って、接続済みファクトリ ソリューションを展開します。 その後、「[Bing Maps API for Enterprise アカウントを作成するにはどうすればいいですか](#how-do-i-create-a-bing-maps-api-for-enterprise-account)」で説明したように、Bing Maps API for Enterprise プランをサブスクリプションに追加します。 「[Bing Maps API for Enterprise の QueryKey を取得するにはどうすればいいですか](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey)」の説明に従ってこのアカウントのクエリ キーを検索し、このキーを保存します。 Azure Portal に移動し、接続済みファクトリの展開の App Service リソースにアクセスします。 **[アプリケーション設定]** に移動し、**[アプリの設定]** セクションを探します。 **[MapApiQueryKey]** に取得したクエリ キーを設定します。 設定を保存した後、**[概要]** に移動して、App Service を再起動します。
+デプロイ後に、ソリューション アクセラレータに Azure Maps アカウント キーを追加することもできます。 Azure Portal に移動し、接続済みファクトリの展開の App Service リソースにアクセスします。 **[アプリケーション設定]** に移動し、**[アプリケーション設定]** セクションを探します。 **MapApiQueryKey** を [Azure Maps アカウントのキー](../azure-maps/how-to-manage-account-keys.md)に設定します。 設定を保存した後、**[概要]** に移動して、App Service を再起動します。
 
-### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Bing Maps API for Enterprise アカウントを作成するにはどうすればいいですか
+### <a name="how-do-i-create-a-azure-maps-account"></a>Azure Maps アカウントを作成するにはどうすればいいですか
 
-*Internal Website Transactions Level 1 の Bing Maps API for Enterprise* プランを無料で取得できます。 ただし、Azure サブスクリプションにこのプランを追加できるのは、最大 2 つです。 Bing Maps API for Enterprise アカウントをお持ちでない場合は、Azure Portal で **[+ リソースの作成]** をクリックすると、リソースが 1 つ作成されます。 その後で、「**Bing Maps API for Enterprise**」を検索して、画面の指示に従ってアカウントを作成してください。
+「[Azure Maps のアカウントとキーを管理する方法](../azure-maps/how-to-manage-account-keys.md)」をご覧ください。
 
-![Bing キー](./media/iot-accelerators-faq-cf/bing.png)
+### <a name="how-to-obtain-your-azure-maps-account-key"></a>Azure Maps アカウント キーを取得するにはどうすればいいですか
 
-### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>Bing Maps API for Enterprise の QueryKey を取得するにはどうすればいいですか
-
-Bing Maps API for Enterprise プランを作成したら、Azure Portal 上で接続済みファクトリ ソリューションのリソース グループに Bing Maps for Enterprise リソースを追加します。
-
-1. Azure Portal で、Bing Maps API for Enterprise プランが含まれるリソース グループに移動します。
-
-1. **[すべての設定]**、**[キーの管理]** の順にクリックします。
-
-1. **MasterKey** と **QueryKey** という 2 つのキーが表示されます。 **QueryKey** の値をコピーします。
-
-1. `build.ps1` スクリプトで取得されたキーを保持するために、PowerShell 環境の環境変数 `$env:MapApiQueryKey` をプランの **QueryKey** に設定します。 この build スクリプトによって、App Service の設定に値が自動的に追加されます。
-
-1. `build.ps1` スクリプトを使用して、ローカル デプロイまたはクラウド デプロイを実行します。
+「[Azure Maps のアカウントとキーを管理する方法](../azure-maps/how-to-manage-account-keys.md)」をご覧ください。
 
 ### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>ローカルでのデバッグ中にインタラクティブ マップを有効にするにはどうすればいいですか
 

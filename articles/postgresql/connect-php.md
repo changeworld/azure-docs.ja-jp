@@ -11,15 +11,15 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: dfdfb9b7d275843312dcf955f79b978d411c197e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8f45191d7844700906aac0a206aaaf8dc8cf6202
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29689575"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985559"
 ---
 # <a name="azure-database-for-postgresql-use-php-to-connect-and-query-data"></a>Azure Database for PostgreSQL: PHP を使用した接続とデータの照会
-このクイックスタートでは、[PHP](http://php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、PHP を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
+このクイックスタートでは、[PHP](https://secure.php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、PHP を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
@@ -30,20 +30,20 @@ ms.locfileid: "29689575"
 独自のサーバーに PHP をインストールするか、PHP が含まれた Azure [Web アプリ](../app-service/app-service-web-overview.md)を作成します。
 
 ### <a name="windows"></a>Windows
-- [PHP 7.1.4 非スレッド セーフ バージョン (x64)](http://windows.php.net/download#php-7.1) をダウンロードします。
-- PHP をインストールし、さらなる構成については [PHP マニュアル](http://php.net/manual/install.windows.php)を参照します。
+- [PHP 7.1.4 非スレッド セーフ バージョン (x64)](https://windows.php.net/download#php-7.1) をダウンロードします。
+- PHP をインストールし、さらなる構成については [PHP マニュアル](https://secure.php.net/manual/install.windows.php)を参照します。
 - このコードでは、PHP のインストールに含まれている **pgsql** クラス (ext/php_pgsql.dll) を使用します。 
 - php.ini 構成ファイル (通常は `C:\Program Files\PHP\v7.1\php.ini` にあります) を編集して、**pgsql** 拡張機能を有効にします。 この構成ファイルには、`extension=php_pgsql.so` というテキスト行を含める必要があります。 このテキストが表示されていない場合は、追加してファイルを保存します。 このテキストが含まれていても、先頭にセミコロンが付いてコメント化されている場合は、セミコロンを削除してコメント解除します。
 
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
-- [PHP 7.1.4 非スレッド セーフ バージョン (x64)](http://php.net/downloads.php) をダウンロードします。 
-- PHP をインストールし、さらなる構成については [PHP マニュアル](http://php.net/manual/install.unix.php)を参照します。
+- [PHP 7.1.4 非スレッド セーフ バージョン (x64)](https://secure.php.net/downloads.php) をダウンロードします。 
+- PHP をインストールし、さらなる構成については [PHP マニュアル](https://secure.php.net/manual/install.unix.php)を参照します。
 - このコードでは、**pgsql** クラス (php_pgsql.so) を使用します。 `sudo apt-get install php-pgsql` を実行してインストールします。
 - `/etc/php/7.0/mods-available/pgsql.ini` 構成ファイルを編集して、**pgsql** 拡張機能を有効にします。 この構成ファイルには、`extension=php_pgsql.so` というテキスト行を含める必要があります。 このテキストが表示されていない場合は、追加してファイルを保存します。 このテキストが含まれていても、先頭にセミコロンが付いてコメント化されている場合は、セミコロンを削除してコメント解除します。
 
 ### <a name="macos"></a>MacOS
-- [PHP 7.1.4 バージョン](http://php.net/downloads.php)をダウンロードします。
-- PHP をインストールし、さらなる構成については [PHP マニュアル](http://php.net/manual/install.macosx.php)を参照します。
+- [PHP 7.1.4 バージョン](https://secure.php.net/downloads.php)をダウンロードします。
+- PHP をインストールし、さらなる構成については [PHP マニュアル](https://secure.php.net/manual/install.macosx.php)を参照します。
 
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for PostgreSQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
@@ -57,7 +57,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 ## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
 接続し、**CREATE TABLE** SQL ステートメントでテーブルを作成してから、**INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
 
-このコードでは、[pg_connect()](http://php.net/manual/en/function.pg-connect.php) メソッドを呼び出して、Azure Database for PostgreSQL に接続します。 次に、[pg_query()](http://php.net/manual/en/function.pg-query.php) メソッドを数回呼び出して複数のコマンドを実行し、毎回エラーが発生した場合は [pg_last_error()](http://php.net/manual/en/function.pg-last-error.php) を呼び出して詳細をチェックします。 その後、[pg_close()](http://php.net/manual/en/function.pg-close.php) メソッドを呼び出して接続を閉じます。
+このコードでは、[pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) メソッドを呼び出して、Azure Database for PostgreSQL に接続します。 次に、[pg_query()](https://secure.php.net/manual/en/function.pg-query.php) メソッドを数回呼び出して複数のコマンドを実行し、毎回エラーが発生した場合は [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) を呼び出して詳細をチェックします。 その後、[pg_close()](https://secure.php.net/manual/en/function.pg-close.php) メソッドを呼び出して接続を閉じます。
 
 `$host`、`$database`、`$user`、`$password` の各パラメーターは、実際の値に置き換えてください。 
 
@@ -115,7 +115,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 ## <a name="read-data"></a>データの読み取り
 接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
- このコードでは、[pg_connect()](http://php.net/manual/en/function.pg-connect.php) メソッドを呼び出して、Azure Database for PostgreSQL に接続します。 次に、[pg_query()](http://php.net/manual/en/function.pg-query.php) メソッドを呼び出して SELECT コマンドを実行し (結果は結果セットに保持されます)、エラーが発生した場合は [pg_last_error()](http://php.net/manual/en/function.pg-last-error.php) を呼び出して詳細をチェックします。  結果セットを読み取るために、ループで [pg_fetch_row()](http://php.net/manual/en/function.pg-fetch-row.php) メソッドが呼び出されます。このメソッドは行ごとに 1 回呼び出され、行データは配列 `$row` に取得されます。このとき、列あたり 1 つのデータ値が各配列位置に格納されます。  結果セットを開放するために、[pg_free_result()](http://php.net/manual/en/function.pg-free-result.php) メソッドが呼び出されます。 その後、[pg_close()](http://php.net/manual/en/function.pg-close.php) メソッドを呼び出して接続を閉じます。
+ このコードでは、[pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) メソッドを呼び出して、Azure Database for PostgreSQL に接続します。 次に、[pg_query()](https://secure.php.net/manual/en/function.pg-query.php) メソッドを呼び出して SELECT コマンドを実行し (結果は結果セットに保持されます)、エラーが発生した場合は [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) を呼び出して詳細をチェックします。  結果セットを読み取るために、ループで [pg_fetch_row()](https://secure.php.net/manual/en/function.pg-fetch-row.php) メソッドが呼び出されます。このメソッドは行ごとに 1 回呼び出され、行データは配列 `$row` に取得されます。このとき、列あたり 1 つのデータ値が各配列位置に格納されます。  結果セットを開放するために、[pg_free_result()](https://secure.php.net/manual/en/function.pg-free-result.php) メソッドが呼び出されます。 その後、[pg_close()](https://secure.php.net/manual/en/function.pg-close.php) メソッドを呼び出して接続を閉じます。
 
 `$host`、`$database`、`$user`、`$password` の各パラメーターは、実際の値に置き換えてください。 
 
@@ -153,7 +153,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 ## <a name="update-data"></a>データの更新
 接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
 
-このコードでは、[pg_connect()](http://php.net/manual/en/function.pg-connect.php) メソッドを呼び出して、Azure Database for PostgreSQL に接続します。 次に、[pg_query()](http://php.net/manual/en/function.pg-query.php) メソッドを呼び出してコマンドを実行し、エラーが発生した場合は [pg_last_error()](http://php.net/manual/en/function.pg-last-error.php) を呼び出して詳細をチェックします。 その後、[pg_close()](http://php.net/manual/en/function.pg-close.php) メソッドを呼び出して接続を閉じます。
+このコードでは、[pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) メソッドを呼び出して、Azure Database for PostgreSQL に接続します。 次に、[pg_query()](https://secure.php.net/manual/en/function.pg-query.php) メソッドを呼び出してコマンドを実行し、エラーが発生した場合は [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) を呼び出して詳細をチェックします。 その後、[pg_close()](https://secure.php.net/manual/en/function.pg-close.php) メソッドを呼び出して接続を閉じます。
 
 `$host`、`$database`、`$user`、`$password` の各パラメーターは、実際の値に置き換えてください。 
 
@@ -188,7 +188,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 ## <a name="delete-data"></a>データの削除
 接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
 
- このコードでは、[pg_connect()](http://php.net/manual/en/function.pg-connect.php) メソッドを呼び出して、Azure Database for PostgreSQL に接続します。 次に、[pg_query()](http://php.net/manual/en/function.pg-query.php) メソッドを呼び出してコマンドを実行し、エラーが発生した場合は [pg_last_error()](http://php.net/manual/en/function.pg-last-error.php) を呼び出して詳細をチェックします。 その後、[pg_close()](http://php.net/manual/en/function.pg-close.php) メソッドを呼び出して接続を閉じます。
+ このコードでは、[pg_connect()](https://secure.php.net/manual/en/function.pg-connect.php) メソッドを呼び出して、Azure Database for PostgreSQL に接続します。 次に、[pg_query()](https://secure.php.net/manual/en/function.pg-query.php) メソッドを呼び出してコマンドを実行し、エラーが発生した場合は [pg_last_error()](https://secure.php.net/manual/en/function.pg-last-error.php) を呼び出して詳細をチェックします。 その後、[pg_close()](https://secure.php.net/manual/en/function.pg-close.php) メソッドを呼び出して接続を閉じます。
 
 `$host`、`$database`、`$user`、`$password` の各パラメーターは、実際の値に置き換えてください。 
 

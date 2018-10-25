@@ -3,7 +3,7 @@ title: Java を使用した Azure 仮想マシンの作成および管理 | Micr
 description: Java と Azure Resource Manager を使用して、仮想マシンとそれをサポートするすべてのリソースをデプロイします。
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
-ms.author: cynthn
-ms.openlocfilehash: e4c77514bb38b6c3c5766bdb4af22e5271c9bffa
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: zarhoads
+ms.openlocfilehash: 00c242ae75e8a581e2b403bac8e75f6b0bb421ad
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31525232"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955515"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Java を使用して Azure で Windows VM を作成および管理する
 
@@ -117,7 +117,7 @@ ms.locfileid: "31525232"
 
 ## <a name="create-credentials"></a>資格情報を作成する
 
-この手順を開始する前に、[Active Directory サービス プリンシパル](../../azure-resource-manager/resource-group-create-service-principal-portal.md)にアクセスできることを確認します。 また、後の手順で必要になるので、アプリケーション ID、認証キー、テナント ID を控えておく必要があります。
+この手順を開始する前に、[Active Directory サービス プリンシパル](../../active-directory/develop/howto-create-service-principal-portal.md)にアクセスできることを確認します。 また、後の手順で必要になるので、アプリケーション ID、認証キー、テナント ID を控えておく必要があります。
 
 ### <a name="create-the-authorization-file"></a>承認ファイルを作成する
 

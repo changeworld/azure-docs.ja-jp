@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: d3bcfb3369510bdbcf325eab41fb7eacf3e2a228
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
+ms.openlocfilehash: eef5d9b6878b46d402a91f3adbfd965c47493c25
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34166320"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986483"
 ---
 # <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Go 言語を使用した接続とデータの照会
 このクイックスタートでは、[Go](https://golang.org/) 言語 (golang) で記述されたコードを使用して、Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Go を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
@@ -98,9 +98,9 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 ## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
 接続し、**CREATE TABLE** SQL ステートメントでテーブルを作成してから、**INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
 
-このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、PostgreSQL サーバーと通信するためのドライバーである [pq パッケージ](http://godoc.org/github.com/lib/pq)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
+このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、PostgreSQL サーバーと通信するためのドライバーである [pq パッケージ](https://godoc.org/github.com/lib/pq)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
 
-このコードでは、[sql.Open()](http://godoc.org/github.com/lib/pq#Open) メソッドを呼び出して Azure Database for PostgreSQL データベースに接続し、[db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) メソッドを使用してその接続を確認します。 [データベース ハンドル](https://golang.org/pkg/database/sql/#DB)が全体を通して使用され、データベース サーバーの接続プールが保持されます。 このコードでは、複数の SQL コマンドを実行するために [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) メソッドを数回呼び出しています。 毎回、エラーが発生したかどうかがカスタム checkError() メソッドによってチェックされ、エラーが発生した場合は panic によってプログラムが終了します。
+このコードでは、[sql.Open()](https://godoc.org/github.com/lib/pq#Open) メソッドを呼び出して Azure Database for PostgreSQL データベースに接続し、[db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) メソッドを使用してその接続を確認します。 [データベース ハンドル](https://golang.org/pkg/database/sql/#DB)が全体を通して使用され、データベース サーバーの接続プールが保持されます。 このコードでは、複数の SQL コマンドを実行するために [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) メソッドを数回呼び出しています。 毎回、エラーが発生したかどうかがカスタム checkError() メソッドによってチェックされ、エラーが発生した場合は panic によってプログラムが終了します。
 
 `HOST`、`DATABASE`、`USER`、`PASSWORD` の各パラメーターは、実際の値に置き換えてください。 
 
@@ -164,9 +164,9 @@ func main() {
 ## <a name="read-data"></a>データの読み取り
 接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
-このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、PostgreSQL サーバーと通信するためのドライバーである [pq パッケージ](http://godoc.org/github.com/lib/pq)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
+このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、PostgreSQL サーバーと通信するためのドライバーである [pq パッケージ](https://godoc.org/github.com/lib/pq)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
 
-このコードでは、[sql.Open()](http://godoc.org/github.com/lib/pq#Open) メソッドを呼び出して Azure Database for PostgreSQL データベースに接続し、[db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) メソッドを使用してその接続を確認します。 [データベース ハンドル](https://golang.org/pkg/database/sql/#DB)が全体を通して使用され、データベース サーバーの接続プールが保持されます。 SELECT クエリは [db.Query()](https://golang.org/pkg/database/sql/#DB.Query) メソッドの呼び出しによって実行され、結果の行は [rows](https://golang.org/pkg/database/sql/#Rows) 型の変数に保持されます。 このコードでは、[rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) メソッドを使用して、現在の行にある列データの値を読み取り、すべての行の読み取りが済むまで、[rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next) 反復子を使用して行に対してループ処理します。 各行の列の値がコンソールに表示されます。毎回、エラーが発生したかどうかがカスタム checkError() メソッドを使用してチェックされ、エラーが発生した場合は panic によってプログラムが終了します。
+このコードでは、[sql.Open()](https://godoc.org/github.com/lib/pq#Open) メソッドを呼び出して Azure Database for PostgreSQL データベースに接続し、[db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) メソッドを使用してその接続を確認します。 [データベース ハンドル](https://golang.org/pkg/database/sql/#DB)が全体を通して使用され、データベース サーバーの接続プールが保持されます。 SELECT クエリは [db.Query()](https://golang.org/pkg/database/sql/#DB.Query) メソッドの呼び出しによって実行され、結果の行は [rows](https://golang.org/pkg/database/sql/#Rows) 型の変数に保持されます。 このコードでは、[rows.Scan()](https://golang.org/pkg/database/sql/#Rows.Scan) メソッドを使用して、現在の行にある列データの値を読み取り、すべての行の読み取りが済むまで、[rows.Next()](https://golang.org/pkg/database/sql/#Rows.Next) 反復子を使用して行に対してループ処理します。 各行の列の値がコンソールに表示されます。毎回、エラーが発生したかどうかがカスタム checkError() メソッドを使用してチェックされ、エラーが発生した場合は panic によってプログラムが終了します。
 
 `HOST`、`DATABASE`、`USER`、`PASSWORD` の各パラメーターは、実際の値に置き換えてください。 
 
@@ -232,9 +232,9 @@ func main() {
 ## <a name="update-data"></a>データの更新
 接続し、**UPDATE** SQL ステートメントを使用してデータを更新するには、次のコードを使用します。
 
-このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、Postgres サーバーと通信するためのドライバーである [pq パッケージ](http://godoc.org/github.com/lib/pq)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
+このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、Postgres サーバーと通信するためのドライバーである [pq パッケージ](https://godoc.org/github.com/lib/pq)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
 
-このコードでは、[sql.Open()](http://godoc.org/github.com/lib/pq#Open) メソッドを呼び出して Azure Database for PostgreSQL データベースに接続し、[db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) メソッドを使用してその接続を確認します。 [データベース ハンドル](https://golang.org/pkg/database/sql/#DB)が全体を通して使用され、データベース サーバーの接続プールが保持されます。 このコードでは、テーブルを更新する SQL ステートメントを実行するために [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) メソッドを呼び出しています。 エラーが発生したかどうかがカスタム checkError() メソッドを使用してチェックされ、エラーが発生した場合は panic によってプログラムが終了します。
+このコードでは、[sql.Open()](https://godoc.org/github.com/lib/pq#Open) メソッドを呼び出して Azure Database for PostgreSQL データベースに接続し、[db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) メソッドを使用してその接続を確認します。 [データベース ハンドル](https://golang.org/pkg/database/sql/#DB)が全体を通して使用され、データベース サーバーの接続プールが保持されます。 このコードでは、テーブルを更新する SQL ステートメントを実行するために [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) メソッドを呼び出しています。 エラーが発生したかどうかがカスタム checkError() メソッドを使用してチェックされ、エラーが発生した場合は panic によってプログラムが終了します。
 
 `HOST`、`DATABASE`、`USER`、`PASSWORD` の各パラメーターは、実際の値に置き換えてください。 
 ```go
@@ -285,9 +285,9 @@ func main() {
 ## <a name="delete-data"></a>データの削除
 接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
 
-このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、Postgres サーバーと通信するためのドライバーである [pq パッケージ](http://godoc.org/github.com/lib/pq)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
+このコードでは、3 つのパッケージをインポートします。[sql パッケージ](https://golang.org/pkg/database/sql/)、Postgres サーバーと通信するためのドライバーである [pq パッケージ](https://godoc.org/github.com/lib/pq)、コマンド ラインで入力と出力を表示するための [fmt パッケージ](https://golang.org/pkg/fmt/)です。
 
-このコードでは、[sql.Open()](http://godoc.org/github.com/lib/pq#Open) メソッドを呼び出して Azure Database for PostgreSQL データベースに接続し、[db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) メソッドを使用してその接続を確認します。 [データベース ハンドル](https://golang.org/pkg/database/sql/#DB)が全体を通して使用され、データベース サーバーの接続プールが保持されます。 このコードでは、テーブルから行を削除する SQL ステートメントを実行するために [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) メソッドを呼び出しています。 エラーが発生したかどうかがカスタム checkError() メソッドを使用してチェックされ、エラーが発生した場合は panic によってプログラムが終了します。
+このコードでは、[sql.Open()](https://godoc.org/github.com/lib/pq#Open) メソッドを呼び出して Azure Database for PostgreSQL データベースに接続し、[db.Ping()](https://golang.org/pkg/database/sql/#DB.Ping) メソッドを使用してその接続を確認します。 [データベース ハンドル](https://golang.org/pkg/database/sql/#DB)が全体を通して使用され、データベース サーバーの接続プールが保持されます。 このコードでは、テーブルから行を削除する SQL ステートメントを実行するために [Exec()](https://golang.org/pkg/database/sql/#DB.Exec) メソッドを呼び出しています。 エラーが発生したかどうかがカスタム checkError() メソッドを使用してチェックされ、エラーが発生した場合は panic によってプログラムが終了します。
 
 `HOST`、`DATABASE`、`USER`、`PASSWORD` の各パラメーターは、実際の値に置き換えてください。 
 ```go

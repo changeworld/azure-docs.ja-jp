@@ -17,12 +17,12 @@ ms.date: 08/21/2018
 ms.author: celested
 ms.reviewer: andret
 ms.custom: aaddev
-ms.openlocfilehash: a2876ccdfe073a3c642304a1381faf77ae4a7d90
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: 603da0add9efba4e68088bf0eb6ab919ec9988e2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42142575"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955493"
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する方法
 
@@ -32,7 +32,7 @@ AppSource でスタンドアロン SaaS アプリケーションを一覧表示�
 
 ## <a name="guides-and-code-samples"></a>ガイドとコード サンプル
 
-OpenID Connect を使用してアプリケーションを Azure AD と統合する方法について学習するには、[Azure Active Directory 開発者ガイド](azure-ad-developers-guide.md#get-started "の開発者用 Azure AD で作業開始")に関するページにある説明とコード サンプルに従ってください。
+OpenID Connect を使用してアプリケーションを Azure AD と統合する方法について学習するには、[Azure Active Directory 開発者ガイド](v1-overview.md#get-started "の開発者用 Azure AD で作業開始")に関するページにある説明とコード サンプルに従ってください。
 
 ## <a name="multi-tenant-applications"></a>マルチテナント アプリケーション
 
@@ -127,9 +127,9 @@ Microsoft のコンテンツ改善のため、次のコメント セクション
 <!--Reference style links -->
 [AAD-Auth-Scenarios]:authentication-scenarios.md
 [AAD-Auth-Scenarios-Browser-To-WebApp]:authentication-scenarios.md#web-browser-to-web-application
-[AAD-Dev-Guide]: azure-ad-developers-guide.md
+[AAD-Dev-Guide]: v1-overview.md
 [AAD-Howto-Multitenant-Overview]: howto-convert-app-to-be-multi-tenant.md
-[AAD-QuickStart-Web-Apps]: azure-ad-developers-guide.md#get-started
+[AAD-QuickStart-Web-Apps]: v1-overview.md#get-started
 
 
 <!--Image references-->

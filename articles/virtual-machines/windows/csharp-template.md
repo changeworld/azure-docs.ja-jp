@@ -3,7 +3,7 @@ title: C# と Resource Manager テンプレートを使用した VM のデプロ
 description: C# および Resource Manager テンプレートを使用して Azure VM をデプロイする方法について説明します。
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
-ms.author: cynthn
-ms.openlocfilehash: e57505b4bd89a79af076dc4cf132c844ae0abd1d
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.author: zarhoads
+ms.openlocfilehash: f3d83fa8ba5a78c7aacc7014e9ec50fb447bb1c6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31527826"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953690"
 ---
 # <a name="deploy-an-azure-virtual-machine-using-c-and-a-resource-manager-template"></a>C# と Resource Manager テンプレートを使用した Azure の仮想マシンのデプロイ
 この記事では、C# を使用して Azure Resource Manager テンプレートをデプロイする方法を示します。 作成したテンプレートは、単一のサブネットを持つ新しい仮想ネットワークに、Windows Server を実行する単一の仮想マシンをデプロイします。
@@ -185,7 +185,7 @@ NuGet パッケージを使用すると、手順を完了するために必要�
 
 ### <a name="create-the-authorization-file"></a>承認ファイルを作成する
 
-テンプレートをデプロイする前に、[Active Directory サービス プリンシパル](../../resource-group-authenticate-service-principal.md)にアクセスできることを確認します。 このサービス プリンシパルから、Azure Resource Manager への要求を認証するためのトークンを取得します。 また、承認ファイルに必要なアプリケーション ID、認証キー、テナント ID を控えておく必要があります。
+テンプレートをデプロイする前に、[Active Directory サービス プリンシパル](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)にアクセスできることを確認します。 このサービス プリンシパルから、Azure Resource Manager への要求を認証するためのトークンを取得します。 また、承認ファイルに必要なアプリケーション ID、認証キー、テナント ID を控えておく必要があります。
 
 1. ソリューション エクスプローラーで、*[myDotnetProject]* > **[追加]** > **[新しい項目]** を右クリックしてから、*[Visual C# アイテム]* で **[テキスト ファイル]** を選択します。 ファイルに *azureauth.properties* と名前を付けて、**[追加]** をクリックします。
 2. 次の承認プロパティを追加します。

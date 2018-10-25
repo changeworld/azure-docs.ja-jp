@@ -3,7 +3,7 @@ title: Azure CLI のサンプル | Microsoft Docs
 description: Azure CLI のサンプル
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: cynthn
+author: zr-msft
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2018
-ms.author: cynthn
+ms.author: zarhoads
 ms.custom: mvc
-ms.openlocfilehash: d563afc6545cd84654ef1bfa0fac3931e2b80152
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 58e387ce6827fa7ef182d247a2740b94d9b988f1
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970364"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471273"
 ---
 # <a name="azure-cli-samples-for-virtual-machine-scale-sets"></a>仮想マシン スケール セットの Azure CLI サンプル
 

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9fdf332727c4d66af2d5394fb26e84f6ea9d963f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f5bd679c11139b7ac439247df81a7adb0b02b0fe
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440767"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426333"
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>補足のレッスン - 不規則階層
 
@@ -42,7 +42,7 @@ ms.locfileid: "37440767"
 
 4.  次の[リレーションシップ](../tutorials/aas-lesson-4-create-relationships.md)を作成します。
 
-    | テーブル 1           | 列       | フィルターの方向   | テーブル 2     | 列      | アクティブ |
+    | 表 1           | 列       | フィルターの方向   | テーブル 2     | 列      | アクティブ |
     |-------------------|--------------|--------------------|-------------|-------------|--------|
     | FactResellerSales | OrderDateKey | 既定値            | DimDate     | 日付        | [はい]    |
     | FactResellerSales | DueDate      | 既定値            | DimDate     | 日付        | いいえ      |

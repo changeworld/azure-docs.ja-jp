@@ -10,16 +10,15 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c39b78995aaa7e6754b180142c03cf3aa25199a5
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 302cf047ee1ffea685a939bddee84551de7042ec
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574275"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166765"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>ユーザーに 2 段階認証を要求する方法
-
-2 段階認証を要求する 2 つの方法のいずれかを実行します。 1 つ目は、個々のユーザーに Azure Multi-Factor Authentication (MFA) を有効にする方法です。 ユーザーを個別に有効にした場合は、サインインするたびに 2 段階認証が実行されます (信頼済み IP アドレスからサインインするときや、_記憶されたデバイス_の機能が有効なときなど、一部例外があります)。 2 つ目は、特定の条件下で 2 段階認証を要求する条件付きアクセス ポリシーを設定する方法です。
+2 段階認証を要求するには、2 つの方法のいずれかを使用できます。いずれの方法も、全体管理者アカウントを使用する必要があります。 1 つ目は、個々のユーザーに Azure Multi-Factor Authentication (MFA) を有効にする方法です。 ユーザーを個別に有効にした場合は、サインインするたびに 2 段階認証が実行されます (信頼済み IP アドレスからサインインするときや、_記憶されたデバイス_の機能が有効なときなど、一部例外があります)。 2 つ目は、特定の条件下で 2 段階認証を要求する条件付きアクセス ポリシーを設定する方法です。
 
 > [!TIP]
 > 2 段階認証を要求するには、これらの方法のうちの 1 つを選択してください。両方は選択できません。 ユーザーを Azure Multi-Factor Authentication に対して有効にすると、すべての条件付きアクセス ポリシーがオーバーライドされます。
@@ -36,7 +35,7 @@ Azure AD Identity Protection で有効にする - この方法では、Azure AD 
 > ライセンスと価格の詳細については、[Azure AD](https://azure.microsoft.com/pricing/details/active-directory/
 ) と [Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/) の価格に関するページを参照してください。
 
-## <a name="enable-azure-mfa-by-changing-user-status"></a>ユーザーの状態を変更することで Azure MFA を有効する
+## <a name="enable-azure-mfa-by-changing-user-state"></a>ユーザーの状態を変更することで Azure MFA を有効する
 
 Azure Multi-factor Authentication のユーザー アカウントには、次の 3 つの異なる状態があります。
 
@@ -87,8 +86,17 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
 
 ユーザーを直接 "*適用*" の状態に移さないでください。 "適用" 状態に移行しても、ユーザーが MFA の登録を終えておらず、[アプリのパスワード](howto-mfa-mfasettings.md#app-passwords)を取得していないため、ブラウザーベースでないアプリが動作を停止します。
 
+以下を使用して、まず Module をインストールします。
+
+       Install-Module MSOnline
+       
+> [!TIP]
+> 必ず **Connect-MsolService** を使用して接続してください
+
+
 一括でユーザーを有効にする必要がある場合は、PowerShell の使用をお勧めします。 ユーザーの一覧をループ処理して各ユーザーを有効にする PowerShell スクリプトを作成します。
 
+        Import-Module MSOnline
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
         $st.RelyingParty = "*"
         $st.State = “Enabled”
@@ -106,8 +114,18 @@ Azure Multi-factor Authentication のユーザー アカウントには、次の
         $sta = @($st)
         Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
     }
+    
+無効にした MFA に対して、次のスクリプトを使用しました。
+
+    Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
+    
+また、次のように短縮することもできます。
+
+    Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
 
 ## <a name="next-steps"></a>次の手順
+
+MFA を実行する際にユーザーにプロンプトが表示される場合と表示されない場合については、 [Azure Multi-Factor Authentication のレポートに関するドキュメントの Azure AD サインイン レポート](howto-mfa-reporting.md#azure-ad-sign-ins-report)のセクションを参照してください。
 
 信頼できる IP、カスタム音声メッセージ、不正アクセスのアラートに関する追加の設定を構成する方法については、「[Azure Multi-Factor Authentication の設定を構成する](howto-mfa-mfasettings.md)」を参照してください。
 

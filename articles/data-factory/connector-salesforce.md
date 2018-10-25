@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 56f1721240d4b685133149d50dd7c2a0e6b7e974
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4da56b275c2b224d56b8296dd480e638a27a03a1
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158843"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379096"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Azure Data Factory を使用して Salesforce をコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,6 +35,8 @@ Salesforce から、サポートされている任意のシンク データ ス�
 
 - Salesforce Developer、Professional、Enterprise、または Unlimited エディション。
 - Salesforce 運用環境、サンドボックス、およびカスタム ドメインをコピー先またはコピー元とするデータのコピー。
+
+Salesforce コネクタは、データのコピー元として [v39](https://developer.salesforce.com/docs/atlas.en-us.206.0.api_rest.meta/api_rest/resources_list.htm)、データのコピー先として [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) を使用して、Salesforce REST API 上に構築されています。
 
 ## <a name="prerequisites"></a>前提条件
 

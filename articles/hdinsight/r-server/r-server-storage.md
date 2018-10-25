@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 5bd5919efa84f2dd22929075b806747b413ac346
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4c3b36891030ae97f382d5e1d0623fa7c698dbf6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051795"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395090"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure HDInsight の ML Services 向けの Azure Storage ソリューション
 
@@ -159,7 +159,7 @@ Data Lake Store へのアクセスを付与したら、Azure セカンダリ ス
 
 ## <a name="use-azure-file-storage-with-ml-services-on-hdinsight"></a>HDInsight で ML Services を使って Azure File Storage を使用する
 
-[Azure Files](https://azure.microsoft.com/services/storage/files/) という、エッジ ノード用として利便性の高いデータ ストレージを選択することもできます。 Azure Files を使用すると、Azure Storage ファイル共有を Linux ファイル システムにマウントできます。 このストレージは特に、HDFS ではなくエッジ ノード上でネイティブ ファイル システムを使用する方がよい場合に、後で必要となる可能性があるデータ ファイル、R スクリプト、結果オブジェクトを格納するのに便利です。 
+[Azure Files](https://azure.microsoft.com/services/storage/files/) という、エッジ ノード上で使用できる便利なデータ ストレージを選択することも可能です。 Azure Files を使用すると、Azure Storage ファイル共有を Linux ファイル システムにマウントできます。 このストレージは特に、HDFS ではなくエッジ ノード上でネイティブ ファイル システムを使用する方がよい場合に、後で必要となる可能性があるデータ ファイル、R スクリプト、結果オブジェクトを格納するのに便利です。 
 
 Azure Files の大きな利点は、サポートされている OS (Windows や Linux など) を使用している任意のシステムで、ファイル共有をマウントして使用できることです。 たとえば、チーム内のメンバーが所有する他の HDInsight クラスターや、Azure VM、オンプレミスのシステムでも使用できます。 詳細については、次を参照してください。
 

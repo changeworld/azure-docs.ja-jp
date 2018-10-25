@@ -15,12 +15,12 @@ ms.date: 09/12/2018
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: e67428116c66c05d83efbb217d7ec81f75124051
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 06df705aabce06c37f04de3fb5046d822f9f981e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45540846"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404955"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 
@@ -120,7 +120,7 @@ ms.locfileid: "45540846"
 FQDN による接続を許可することはできず、代わりに IP 範囲を指定する必要がある場合は、これらのオプションを使用します。
 
 * すべてのアクセス先に対するコネクタの送信アクセスを許可する。
-* [Azure データセンターの全 IP アドレス範囲](https://www.microsoft.com/en-gb/download/details.aspx?id=41653)に対するコネクタの送信アクセスを許可する。 Azure データセンターの IP 範囲の一覧を使用するうえでの課題は、この一覧が毎週更新されることにあります。 アクセス規則が適宜更新されるようにプロセスを整備する必要があります。 IP アドレスのサブセットのみを使用すると、構成が分断される可能性があります。
+* [Azure データセンターの全 IP アドレス範囲](https://www.microsoft.com//download/details.aspx?id=41653)に対するコネクタの送信アクセスを許可する。 Azure データセンターの IP 範囲の一覧を使用するうえでの課題は、この一覧が毎週更新されることにあります。 アクセス規則が適宜更新されるようにプロセスを整備する必要があります。 IP アドレスのサブセットのみを使用すると、構成が分断される可能性があります。
 
 #### <a name="proxy-authentication"></a>プロキシの認証
 

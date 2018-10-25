@@ -9,12 +9,12 @@ ms.devlang: NA
 ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: luisca
-ms.openlocfilehash: b428e6e7738c8a9052c3fcfe2ad5284bfd5293d6
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: d78959ba415c837e931edcc0278de84daa879bc1
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307995"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393952"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>例: Text Translate API を使用してカスタム スキルを作成する
 
@@ -37,6 +37,8 @@ ms.locfileid: "39307995"
 1. Visual Studio で、[ファイル] メニューから **[新規]** > **[プロジェクト]** の順に選択します。
 
 1. [新しいプロジェクト] ダイアログで、**[インストール済み]** を選択し、**[Visual C#]** > **[クラウド]** の順に展開して **[Azure Functions]** を選択します。プロジェクトの名前を入力して、**[OK]** を選択します。 関数アプリ名は、C# 名前空間として有効である必要があります。そのため、アンダースコア、ハイフン、その他の英数字以外の文字は使用しないでください。
+
+1. **[Azure Functions v2 (.Net Core)]** を選択します。 バージョン 1 でも同様の手順を実行できますが、以下に記述したコードは、v2 テンプレートに基づいています。
 
 1. 種類として **[HTTP Trigger]\(HTTP トリガー\)** を選択します。
 
@@ -212,7 +214,7 @@ POST https://localhost:7071/api/Translate
    ]
 }
 ```
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 次の例のような応答が表示されます。
 
 ```json
@@ -243,14 +245,6 @@ POST https://localhost:7071/api/Translate
 1. デプロイが完了したら、サイトの URL を書き留めておきます。 これが Azure における関数アプリのアドレスになります。 
 
 1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、発行した Translate 関数を探します。 **[管理]** セクションに [ホスト キー] が表示されます。 "*既定*" のホスト キーの **[コピー]** アイコンを選択します。  
-
-## <a name="update-ssl-settings"></a>SSL 設定を更新する
-
-2018 年 6 月 30 日より後で作成されたすべての Azure Functions では、TLS 1.0 は無効になっています。これは、現在、カスタム スキルに対応できません。
-
-1. [Azure portal](https://portal.azure.com) でリソース グループに移動し、発行した Translate 関数を探します。 **[プラットフォーム機能]** セクションの下に、SSL が表示されます。
-
-1. SSL を選択した後、**[TLS の最小バージョン]** を 1.0 に変更する必要があります。 TLS 1.2 関数は、まだカスタム スキルとしてサポートされていません。
 
 ## <a name="test-the-function-in-azure"></a>Azure で関数をテストする
 

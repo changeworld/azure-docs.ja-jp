@@ -5,16 +5,16 @@ services: cognitive-services
 author: chliang
 manager: bix
 ms.service: cognitive-services
-ms.technology: anomaly-detection
+ms.component: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: kefre
-ms.openlocfilehash: 84997b5d50f879fd4be286a3ca362e70f90c9202
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: ef876e19353e8765b679a9aae6282ce3ade600c2
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249187"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456543"
 ---
 # <a name="use-the-anomaly-finder-api-with-java"></a>Anomaly Finder API と Java の使用
 

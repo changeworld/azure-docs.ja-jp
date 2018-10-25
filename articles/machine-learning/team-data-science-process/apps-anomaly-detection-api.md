@@ -4,7 +4,7 @@ description: 異常検出 API は、Microsoft Azure Machine Learning を使用�
 services: machine-learning
 documentationcenter: ''
 author: alokkirpal
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 52fafe1f-e93d-47df-a8ac-9a9a53b60824
 ms.service: machine-learning
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok
-ms.openlocfilehash: 9f1f3c2c808558124548008927219191469a412b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 0b99aeb2ffdb78e472cdc0e11d0efaf91feb3e4a
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836468"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394495"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 ## <a name="overview"></a>概要

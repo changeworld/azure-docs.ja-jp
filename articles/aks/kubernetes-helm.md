@@ -3,18 +3,16 @@ title: Helm を使用して Azure の Kubernetes にコンテナーをデプロ�
 description: Helm パッケージ化ツールを使用して、Azure Kubernetes Service (AKS) クラスターにコンテナーをデプロイする
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/13/2018
+ms.date: 10/01/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: dd2deba25615373765dd3492d03c1ba547c8ba8c
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 2c74e3ffaa5ced0925b5ad0edfc357afb375803e
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055136"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363965"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール
 
@@ -26,32 +24,11 @@ ms.locfileid: "39055136"
 
 このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの `kubectl` 接続が確立されていることを想定しています。 これらの項目が必要な場合は、[AKS のクイック スタート][aks-quickstart]を参照してください。
 
-## <a name="install-helm-cli"></a>Helm CLI のインストール
-
-Helm CLI は、開発システムで実行されるクライアントで、Helm を使用してアプリケーションを起動、停止、管理することができます。
-
-Azure Cloud Shell を使用している場合、Helm CLI は既にインストールされています。 Helm CLI を Mac にインストールするには、`brew` を使用します。 その他のインストール オプションについては、「[Installing Helm (Helm のインストール)][helm-install-options]」をご覧ください。
-
-```console
-brew install kubernetes-helm
-```
-
-出力:
-
-```
-==> Downloading https://homebrew.bintray.com/bottles/kubernetes-helm-2.9.1.high_sierra.bottle.tar.gz
-######################################################################## 100.0%
-==> Pouring kubernetes-helm-2.9.1.high_sierra.bottle.tar.gz
-==> Caveats
-Bash completion has been installed to:
-  /usr/local/etc/bash_completion.d
-==> Summary
-🍺  /usr/local/Cellar/kubernetes-helm/2.9.1: 50 files, 66.2MB
-```
+また、Helm CLI をインストールする必要があります。Helm CLI は、開発システムで実行されるクライアントで、Helm を使用してアプリケーションを起動、停止、管理することができます。 Azure Cloud Shell を使用している場合、Helm CLI は既にインストールされています。 お使いのローカル プラットフォームでのインストール手順については、「[Installing Helm (Helm のインストール)][helm-install]」をご覧ください。
 
 ## <a name="create-a-service-account"></a>サービス アカウントの作成
 
-RBAC が有効になったクラスターに Helm をデプロイする前に、Tiller サービスのサービス アカウントとロール バインディングが必要になります。 RBAC 対応のクラスターの Helm / Tiller に関する詳細については、「[Tiller, Namespaces, and RBAC][tiller-rbac]」(Tiller、名前空間、および RBAC) を参照してください。 ご利用のクラスターが RBAC に対応していない場合は、この手順をスキップしてください。
+RBAC が有効になった AKS クラスターに Helm をデプロイする前に、Tiller サービスのサービス アカウントとロール バインディングが必要になります。 RBAC 対応のクラスターの Helm / Tiller に関する詳細については、「[Tiller, Namespaces, and RBAC][tiller-rbac]」(Tiller、名前空間、および RBAC) を参照してください。 ご利用の AKS クラスターが RBAC に対応していない場合は、この手順をスキップしてください。
 
 `helm-rbac.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。
 
@@ -62,7 +39,7 @@ metadata:
   name: tiller
   namespace: kube-system
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: tiller
@@ -76,10 +53,10 @@ subjects:
     namespace: kube-system
 ```
 
-`kubectl create` コマンドを使って、サービス アカウントとロール バインディングを作成します。
+`kubectl apply` コマンドを使って、サービス アカウントとロール バインディングを作成します。
 
 ```console
-kubectl create -f helm-rbac.yaml
+kubectl apply -f helm-rbac.yaml
 ```
 
 ## <a name="secure-tiller-and-helm"></a>Tiller と Helm をセキュリティで保護する
@@ -96,7 +73,7 @@ RBAC 対応の Kubernetes クラスターを使用している場合、Tiller �
 helm init --service-account tiller
 ```
 
-Helm と Tiller 間に TLS または SSL を構成した場合、次の例に示されているように、`--tiller-tls-` パラメーターと独自の証明書の名前を指定します。
+Helm と Tiller 間に TLS または SSL を構成した場合、次の例に示されているように、`--tiller-tls-*` パラメーターと独自の証明書の名前を指定します。
 
 ```console
 helm init \
@@ -227,6 +204,16 @@ $ helm list
 
 NAME             REVISION    UPDATED                     STATUS      CHART              NAMESPACE
 wishful-mastiff  1           Thu Jul 12 15:53:56 2018    DEPLOYED    wordpress-2.1.3  default
+```
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+Helm グラフをデプロイすると、多数の Kubernetes リソースが作成されます。 これらのリソースには、ポッド、デプロイ、およびサービスが含まれます。 これらのリソースをクリーンアップするには、`helm delete` コマンドを使用し、上記の `helm list` コマンドで確認したリリース名を指定します。 次の例では、*wishful mastiff* という名前のリリースを削除しています。
+
+```console
+$ helm delete wishful-mastiff
+
+release "wishful-mastiff" deleted
 ```
 
 ## <a name="next-steps"></a>次の手順

@@ -8,26 +8,26 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: ''
-ms.openlocfilehash: cb803450f7765ae62292ff3afb7f32209b437f78
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 235eda231dfb0f936bf55c7c8d93a8f709fdf9bc
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978929"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954854"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Windows 仮想マシン (クラシック) についてゲスト OS メトリックを Azure Monitor データ ストアに送信する
 
 Azure Monitor [Windows Azure 診断拡張機能](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (WAD) を使用すると、仮想マシン、クラウド サービス、または Service Fabric クラスターの一部として、ゲスト オペレーティング システム (ゲスト OS) からメトリックとログを収集できます。 拡張機能により、以前のリンク先の記事に記載されている多くの場所にテレメトリを送信することができます。
 
-この記事では、Windows 仮想マシン (クラシック) 用のゲスト OS のパフォーマンス メトリックを Azure Monitor メトリック ストアに送信するプロセスについて説明します。 WAD バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。 この場所にこれらを格納することで、プラットフォーム メトリックに対して使用できるのと同じアクションにアクセスできます。  アクションには、ほぼリアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなどの機能が含まれています。  これまで WAD 拡張機能は Azure Storage に書き込まれましたが、Azure Monitor のデータ ストアには書き込まれませんでした。 
+この記事では、Windows 仮想マシン (クラシック) 用のゲスト OS のパフォーマンス メトリックを Azure Monitor メトリック ストアに送信するプロセスについて説明します。 WAD バージョン 1.11 以降、標準プラットフォーム メトリックが既に収集されている Azure Monitor メトリック ストアに、メトリックを直接書き込むことができます。 この場所にこれらを格納することで、プラットフォーム メトリックに対して使用できるのと同じアクションにアクセスできます。  アクションには、ほぼリアルタイムのアラート、グラフ作成、ルーティング、REST API からのアクセスなどの機能があります。  これまで WAD 拡張機能は Azure Storage に書き込まれましたが、Azure Monitor のデータ ストアには書き込まれませんでした。 
 
 この記事で説明するプロセスは、Windows オペレーティング システムが実行されているクラシック仮想マシンでのみ機能します。
 
 ## <a name="pre-requisites"></a>前提条件
 
-- Azure サブスクリプションの[サービス管理者または共同管理者](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md)である必要があります 
+- Azure サブスクリプションで、[サービス管理者または共同管理者](https://docs.microsoft.com/azure/billing/billing-add-change-azure-subscription-administrator.md)である必要があります 
 
-- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) に登録する必要があります 
+- サブスクリプションを [Microsoft.Insights](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) で登録する必要があります 
 
 - [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) がインストールされている必要があります。[Azure CloudShell](https://docs.microsoft.com/azure/cloud-shell/overview.md) を使用することもできます 
 
@@ -41,7 +41,7 @@ Azure Monitor [Windows Azure 診断拡張機能](https://docs.microsoft.com/azur
 
 ## <a name="create-a-service-principal"></a>サービス プリンシパルを作成する
 
-[サービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページの手順を使用して、お使いの Azure Active Directory テナントでサービス プリンシパルを作成します。 このプロセスでは、以下の点に注意してください。 
+[サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関するページの手順を使用して、お使いの Azure Active Directory テナントでサービス プリンシパルを作成します。 このプロセスでは、以下の点に注意してください。 
 - このアプリに対して新しいクライアント シークレットを作成する  
 - 後の手順で使用するキーとクライアント ID を保存する。
 

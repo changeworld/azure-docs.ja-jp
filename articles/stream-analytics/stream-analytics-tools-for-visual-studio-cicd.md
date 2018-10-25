@@ -8,13 +8,13 @@ manager: kfile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 9/27/2017
-ms.openlocfilehash: e4e831c602255df66f4c86ffa17336f51d2b52f7
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.date: 09/27/2017
+ms.openlocfilehash: 567e2f850e2c51a6103dc24b91d139042d58acb3
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30906275"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986834"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Stream Analytics ツールで継続的に統合および開発する
 この記事では、Visual Studio の Azure Stream Analytics ツールを使って継続的インテグレーションおよびデプロイ プロセスを設定する方法を説明します。

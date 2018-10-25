@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: 8206c076f9e89753adb16854a7d981c0f80c4a3a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 769ad6dcb02efb7b2a602f387b6d223456cab45b
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640338"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49395260"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>インデクサーを使用した Cosmos DB と Azure Search の接続
 
@@ -97,7 +97,8 @@ Azure Cosmos DB のインデクサーをセットアップするには、イン�
 * **type**: は `documentdb` である必要があります。
 * **credentials**:
   
-  * **connectionString**: 必須。 次の形式で接続情報をご自身の Azure Cosmos DB データベースに指定します: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`。MongoDB コレクションについては、次のように **ApiKind=MongoDb** を接続文字列に追加します: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb` 
+  * **connectionString**: 必須。 次の形式で接続情報をご自身の Azure Cosmos DB データベースに指定します: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`。MongoDB コレクションについては、次のように **ApiKind=MongoDb** を接続文字列に追加します: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`
+  エンドポイント URL では、ポート番号の使用を避けてください。 ポート番号を含めると、Azure Search では、Azure Cosmos DB データベースのインデックスを作成できなくなります。
 * **container**:
   
   * **name**: 必須。 インデックスを作成するデータベース コレクションの ID を指定します。

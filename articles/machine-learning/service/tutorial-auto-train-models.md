@@ -9,12 +9,12 @@ author: nacharya1
 ms.author: nilesha
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: df1c19c0e16b9862b09dcc652ef2831e0c5bf3a5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 29d673f48671ec917e45b7ff76feeebf0b868c4b
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802357"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426891"
 ---
 # <a name="tutorial-train-a-classification-model-with-automated-machine-learning-in-azure-machine-learning-service"></a>チュートリアル: Azure Machine Learning サービスにおいて、自動機械学習で分類モデルをトレーニングする
 
@@ -52,7 +52,7 @@ Python Notebook では、開発作業のすべての設定を行うことがで�
 * ワークスペースを構成して、ローカル コンピューターとリモート リソースの間で通信できるようにする
 * トレーニング スクリプトを格納するディレクトリを作成する
 
-### <a name="import-packages"></a>パッケージのインポート
+### <a name="import-packages"></a>パッケージをインポートする
 このチュートリアルで必要な Python パッケージをインポートします。
 
 
@@ -543,5 +543,5 @@ plt.show()
 > * トレーニング結果を確認する
 > * 最高のモデルを登録する
 
-[自動トレーニング用の設定を構成する方法]()または[リモートのリソースで自動トレーニングを使用する方法](how-to-auto-train-remote.md)に関する記事を参照してください。  
+[自動トレーニング用の設定を構成する方法](how-to-configure-auto-train.md)または[リモートのリソースで自動トレーニングを使用する方法](how-to-auto-train-remote.md)に関する記事を参照してください。  
 

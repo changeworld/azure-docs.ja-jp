@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: b492635da55ae08f92b18dcf9c030cb23d4fa48c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 422aa116b2d93dc2fffe16e6b0f1f36433d143df
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665068"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958960"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 このチュートリアルでは、いくつかの制御フロー機能を紹介する Data Factory パイプラインを作成します。 このパイプラインでは、Azure Blob Storage 内のコンテナーから同じストレージ アカウント内の別のコンテナーへの単純なコピーを行います。 コピー アクティビティが成功した場合は、成功したコピー操作の詳細 (書き込まれたデータの量など) を成功電子メールで送信します。 コピー アクティビティが失敗した場合は、コピー失敗の詳細 (エラー メッセージなど) を失敗電子メールで送信します。 チュートリアル全体を通じて、パラメーターを渡す方法が示されます。
@@ -47,7 +47,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 * **Azure SQL データベース**。 データベースを**シンク** データ ストアとして使用します。 Azure SQL Database がない場合は、[Azure SQL データベースの作成](../sql-database/sql-database-get-started-portal.md)に関する記事に書かれている手順を参照して作成してください。
 * **Visual Studio** 2013、2015、または 2017。 この記事のチュートリアルでは、Visual Studio 2017 を使用します。
 * **[Azure .NET SDK](http://azure.microsoft.com/downloads/) をダウンロードしてインストールします**。
-* [これらの手順](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)に従って、**Azure Active Directory にアプリケーションを作成します**。 **アプリケーション ID**、**認証キー**、および**テナント ID** の値をメモしておいてください。後の手順で使用します。 同じ記事の手順に従って、アプリケーションを "**共同作成者**" ロールに割り当てます。
+* [これらの手順](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)に従って、**Azure Active Directory にアプリケーションを作成します**。 **アプリケーション ID**、**認証キー**、および**テナント ID** の値をメモしておいてください。後の手順で使用します。 同じ記事の手順に従って、アプリケーションを "**共同作成者**" ロールに割り当てます。
 
 ### <a name="create-blob-table"></a>BLOB テーブルを作成する
 

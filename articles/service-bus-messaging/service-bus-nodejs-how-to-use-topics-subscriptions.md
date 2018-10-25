@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 10/16/2018
 ms.author: spelluru
-ms.openlocfilehash: f13e46b310f4f9048b38ab50ce0241d1b2b3161b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 00ae254a9e9d40ec88802f2f46666aff72cb242a
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395697"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377652"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Node.js で Service Bus のトピックとサブスクリプションを使用する方法
 
@@ -38,7 +38,7 @@ ms.locfileid: "47395697"
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
-空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ]」、「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用)、または「WebMatrix を使用した Web サイト」をご覧ください。
+空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、「[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]」、「[Node.js クラウド サービス][Node.js Cloud Service]」 (Windows PowerShell の使用)、または「WebMatrix を使用した Web サイト」をご覧ください。
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Service Bus を使用するようにアプリケーションを構成する
 Service Bus を使用するには、Node.js Azure パッケージをダウンロードします。 このパッケージには、Service Bus REST サービスと通信するためのライブラリのセットが含まれています。
@@ -73,7 +73,7 @@ var azure = require('azure');
 ### <a name="set-up-a-service-bus-connection"></a>Service Bus 接続の設定
 Azure モジュールは、前の手順の「資格情報の取得」から取得した接続文字列の `AZURE_SERVICEBUS_CONNECTION_STRING` 環境変数を読み取ります。 この環境変数が設定されていない場合は、`createServiceBusService` を呼び出すときにアカウント情報を指定する必要があります。
 
-Azure Cloud Service の環境変数を設定する例については、[Storage を使用する Node.js Cloud Service][Node.js Cloud Service with Storage] に関する記事をご覧ください。
+Azure Cloud Service の環境変数を設定する例については、「[環境変数の設定](../container-instances/container-instances-environment-variables.md#azure-cli-example)」をご覧ください。
 
 
 
@@ -242,7 +242,7 @@ var rule={
 Service Bus トピックに送信されたメッセージは **BrokeredMessage** オブジェクトです。
 **BrokeredMessage** オブジェクトには、(`Label` や `TimeToLive` などの) 標準的なプロパティ、アプリケーションに特有のカスタム プロパティの保持に使用するディクショナリ、および文字列データの本体が備わっています。 アプリケーションでは、文字列値を `sendTopicMessage` に渡すことによってメッセージの本文を設定できます。必須の標準プロパティは既定値に設定されます。
 
-次の例では、`MyTopic` トピックに 5 件のテスト メッセージを送信する方法を示しています。 各メッセージの `messagenumber` プロパティの値がループの反復回数に応じて変化します (これによってメッセージを受信するサブスクリプションが決定されます)。
+次の例では、`MyTopic` トピックに 5 件のテスト メッセージを送信する方法を示しています。 各メッセージの `messagenumber` プロパティの値がループの反復回数に応じて変化します (このプロパティによってメッセージを受信するサブスクリプションが決定されます)。
 
 ```javascript
 var message = {
@@ -268,7 +268,7 @@ Service Bus トピックでサポートされているメッセージの最大�
 ## <a name="receive-messages-from-a-subscription"></a>サブスクリプションからメッセージを受信する
 サブスクリプションからメッセージを受信するには、**ServiceBusService** オブジェクトの `receiveSubscriptionMessage` メソッドを使用します。 既定では、読み取られたメッセージはサブスクリプションから削除されます。 ただし、省略可能な `isPeekLock` パラメーターを **true** に設定すると、メッセージを読み取って (ピークして) ロックすることで、サブスクリプションにメッセージを残すことができます。
 
-受信操作の中で行われるメッセージの読み取りと削除の既定の動作は、最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 この動作を理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークしているため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされます。
+受信操作の過程で行われるメッセージの読み取りと削除の既定動作は、最もシンプルなモデルであり、障害発生時にアプリケーション側でメッセージを処理しないことを許容できるシナリオに最適です。 この動作を理解するために、コンシューマーが受信要求を発行した後で、メッセージを処理する前にクラッシュしたというシナリオを考えてみましょう。 Service Bus はメッセージを読み取り済みとしてマークしているため、アプリケーションが再起動してメッセージの読み取りを再開すると、クラッシュ前に読み取られていたメッセージは見落とされます。
 
 `isPeekLock` パラメーターが **true** に設定されている場合、受信処理が 2 段階の動作になり、メッセージの紛失が許容できないアプリケーションに対応することができます。 Service Bus は要求を受け取ると、次に読み取るメッセージを検索して、他のコンシューマーが受信できないようロックしてから、アプリケーションにメッセージを返します。
 アプリケーションによってメッセージが処理された後 (または後で処理するために確実に保存され後)、**deleteMessage** メソッドが呼び出され、受信処理の第 2 段階が完了し、その後、削除するメッセージがパラメーターとして渡されます。 **deleteMessage** メソッドによって、メッセージが読み取り済みとしてマークされ、サブスクリプションから削除されます。
@@ -338,6 +338,6 @@ serviceBusService.deleteSubscription('MyTopic', 'HighMessages', function (error)
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.servicebus.messaging.sqlfilter
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
-[Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ]: ../app-service/app-service-web-get-started-nodejs.md
+[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ]: ../app-service/app-service-web-get-started-nodejs.md
 [Node.js Cloud Service with Storage]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 

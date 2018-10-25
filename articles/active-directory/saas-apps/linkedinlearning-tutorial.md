@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 02e7d9d26b389e82365f3447cceb5566244236f1
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 618437d0007668800e0a14e8233db1676be2a364
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440910"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49379265"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-linkedin-learning"></a>チュートリアル: Azure Active Directory と LinkedIn Learning の統合
 
@@ -84,7 +84,7 @@ Azure AD への LinkedIn Learning の統合を構成するには、ギャラリ�
 
 LinkedIn Learning で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[LinkedIn Learning のテスト ユーザーの作成](#creating-a-linkedin-learning-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -110,7 +110,7 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成してテ
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_01.png)
 
-1. **[OR Click Here to load and copy individual fields from the form (または、ここをクリックしてフォームから個々のフィールドを読み込み、コピーする)]** をクリックし、**[Entity Id (エンティティ ID)]** と **[Assertion Consumer Access (ACS) Url (Assertion Consumer Access (ACS) URL)]** をコピーします。
+1. **[OR Click Here to load and copy individual fields from the form]\(または、ここをクリックしてフォームから個々のフィールドを読み込み、コピーする\)** をクリックし、**[エンティティ ID]** と **[Assertion Consumer Service (ACS) Url]\(Assertion Consumer Service (ACS) URL\)** をコピーします。
 
     ![Configure single sign-on](./media/linkedinlearning-tutorial/tutorial_linkedin_admin_03.png)
 
@@ -120,9 +120,9 @@ LinkedIn Learning で Azure AD のシングル サインオンを構成してテ
 
     a. **[識別子]** テキストボックスに、LinkedIn ポータルからコピーした**エンティティ ID** を入力します 
 
-    b. **[応答 URL]** テキストボックスに、LinkedIn ポータルからコピーした **Assertion Consumer Access (ACS) URL** を入力します
+    b. **[応答 URL]** テキストボックスに、LinkedIn ポータルからコピーした **Assertion Consumer Service (ACS) URL** を入力します
 
-1. SSO を **SP 開始**で構成する場合は、構成セクションの [詳細な URL 設定の表示] オプションをクリックし、次のパターンでサインオン URL を構成します。
+1. SSO を **SP 開始**で構成する場合は、サインオン URL を構成する構成セクションの [詳細な URL 設定の表示] オプションをクリックします。  ログイン URL を作成するには、**Assertion Consumer Service (ACS) URL** をコピーして、/saml/ を /login/ で置き換えます。   これが終了すると、サインオン URL は次のパターンになります。
 
     `https://www.linkedin.com/checkpoint/enterprise/login/<AccountId>?application=learning&applicationInstanceId=<InstanceId>`
 

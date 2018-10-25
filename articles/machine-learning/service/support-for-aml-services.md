@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: j-martens
 ms.author: jmartens
 ms.date: 09/24/2018
-ms.openlocfilehash: 0c626bd193d883f292bf8d20913ff21d86d0d761
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: a857b813cee86079b96cd2bca297c1cf098819f5
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268481"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49113905"
 ---
 # <a name="get-support-and-training-for-azure-machine-learning-service"></a>Azure Machine Learning サービスのサポートおよびトレーニングの取得
 
@@ -26,6 +26,8 @@ ms.locfileid: "48268481"
 + [チュートリアルと使い方の記事](../service/index.yml)
 + [アーキテクチャの概要](../service/concept-azure-machine-learning-architecture.md)
 + [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=machine-learning)
+
+## <a name="submit-doc-feedback"></a>ドキュメントのフィードバックを送信する 
 
 記事の末尾にあるフィードバック リンクを使用して、追加の学習教材を要求する**リクエストを送信**できます。
 

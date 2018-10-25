@@ -1,21 +1,21 @@
 ---
 title: Speech SDK for Java を使用して音声から意図を認識する
-titleSuffix: Microsoft Cognitive Services
-description: >
-  Speech SDK for Java を使用してファイルまたはマイクの音声から意図を認識するさまざまな方法を学習します。
+titleSuffix: Azure Cognitive Services
+description: Speech SDK for Java を使用してファイルまたはマイクの音声から意図を認識するさまざまな方法を学習します。
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: cc83c05f4e4183fd7c945cec831d905781b92e6f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: cb7e7095278eed51c7616dc1c19dcf5c9d84b856
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991829"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469896"
 ---
 # <a name="recognize-intents-from-speech-by-using-the-speech-sdk-for-java"></a>Speech SDK for Java を使用して音声から意図を認識する
 

@@ -3,24 +3,17 @@ title: 'Azure VPN ゲートウェイ: Resource Manager と CLI で BGP を構成
 description: この記事では、Azure Resource Manager と CLI を使用して Azure VPN ゲートウェイで BGP を構成する方法を説明します。
 services: vpn-gateway
 documentationcenter: na
-author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
+author: yushwang
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/25/2017
-ms.author: cherylmc
-ms.openlocfilehash: 657cad69fff66aaaeba9819569442981d229f644
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/25/2018
+ms.author: yushwang
+ms.openlocfilehash: f0367a360de97d3935c7fa8de9f3dafa6555811e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971129"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471358"
 ---
 # <a name="how-to-configure-bgp-on-an-azure-vpn-gateway-by-using-cli"></a>CLI を使用して Azure VPN ゲートウェイで BGP を構成する方法
 
@@ -55,7 +48,7 @@ BGP の利点の詳しい説明と、BGP を使用する場合の技術面の要
 
 ### <a name="before-you-begin"></a>開始する前に
 
-最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、[Azure CLI のインストール](/cli/azure/install-azure-cli)と [Azure CLI の概要](/cli/azure/get-started-with-azure-cli)に関するページを参照してください。
+最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Azure CLI のインストール](/cli/azure/install-azure-cli)」および「[Azure CLI を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
 
 ### <a name="step-1-create-and-configure-testvnet1"></a>手順 1: TestVNet1 を作成し、構成する
 

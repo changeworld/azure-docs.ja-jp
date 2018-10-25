@@ -14,12 +14,12 @@ ms.date: 09/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 293d8376d83d729588aab0aeaa1040d9b3e5e0b5
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 755b94b71fdaefb261741f4d4e756b90d8148280
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182282"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116897"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -37,11 +37,15 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[アプリケーション管理者](#application-administrator)**: このロールのユーザーは、エンタープライズ アプリケーション、アプリケーション登録、アプリケーション プロキシの設定の全側面を作成して管理できます。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意する権限を付与します。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
 
+  <b>重要:</b>: このロールは、アプリケーションの資格情報を管理する権限を付与します。 このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID に Azure Active Directory へのアクセス権 (ユーザーやその他のオブジェクトの作成や更新など) が付与されている場合、このロールが割り当てられたユーザーは、アプリケーションを偽装している間にこのようなアクションを実行することができます。 アプリケーションの ID を偽装するこの機能は、ユーザーが Azure AD のロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 ユーザーにアプリケーション管理者ロールを割り当てると、そのユーザーがアプリケーションの ID を偽装できるようになることを理解することが重要です。
+
 * **[アプリケーション開発者](#application-developer)**: このロールのユーザーは、[ユーザーはアプリケーションを登録できる] 設定が [いいえ] に設定されている場合に、アプリケーション登録を作成できます。 さらにこのロールでは、[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます] 設定が [いいえ] に設定されている場合に、メンバーが自分のために同意できます。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されます。
 
 * **[課金管理者](#billing-administrator)**: 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
 
 * **[クラウド アプリケーション管理者](#cloud-application-administrator)**: このロールのユーザーは、(アプリケーション プロキシを管理する権限を除き) アプリケーション管理者ロールと同じアクセス許可を持ちます。 このロールは、エンタープライズ アプリケーションとアプリケーション登録の全側面を作成して管理する権限を付与します。 さらに、このロールは、委任されたアクセス許可とアプリケーション アクセス許可 (Microsoft Graph と Azure AD Graph を除く) に同意する権限を付与します。 このロールのメンバーは、新しいアプリケーション登録またはエンタープライズ アプリケーションを作成する際に、所有者として追加されません。
+
+  <b>重要:</b>: このロールは、アプリケーションの資格情報を管理する権限を付与します。 このロールが割り当てられたユーザーは、アプリケーションに資格情報を追加し、その資格情報を使用してアプリケーションの ID を偽装することができます。 アプリケーションの ID に Azure Active Directory へのアクセス権 (ユーザーやその他のオブジェクトの作成や更新など) が付与されている場合、このロールが割り当てられたユーザーは、アプリケーションを偽装している間にこのようなアクションを実行することができます。 アプリケーションの ID を偽装するこの機能は、ユーザーが Azure AD のロール割り当てを使用して実行できることを越えた特権の昇格になる可能性があります。 ユーザーにクラウド アプリケーション管理者ロールを割り当てると、そのユーザーがアプリケーションの ID を偽装できるようになることを理解することが重要です。
 
 * **[クラウド デバイス管理者](#cloud-device-administrator)**: このロールのユーザーは、Azure AD でデバイスを有効化、無効化、および削除することができ、Azure portal で Windows 10 の BitLocker キーを読み取る (ある場合) ことができます。 このロールでは、デバイス上の他のプロパティを管理するアクセス許可の付与は行いません。
 
@@ -59,7 +63,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[ディレクトリ ライター](#directory-writers)**: これは、[同意フレームワーク](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)をサポートしていないアプリケーションに割り当てられる従来のロールです。 このロールをユーザーに割り当てることはできません。
 
-* **[Dynamics 365 サービス管理者/CRM サービス管理者](#dynamics-365-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Dynamics 365 Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[Use the service admin role to manage your tenant (サービス管理者ロールを使用したテナントの管理)](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)」を参照してください。
+* **[Dynamics 365 サービス管理者/CRM サービス管理者](#dynamics-365-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Dynamics 365 Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[service admin ロールを使用してテナントを管理する](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)」を参照してください。
 
 * **[Exchange サービス管理者](#exchange-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
@@ -84,18 +88,24 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[パートナー レベル 2 のサポート](#partner-tier2-support)**: 使用しないでください。 このロールは非推奨となっており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
 
-* **[パスワード管理者/ヘルプデスク管理者](#helpdesk-administrator)**: このロールが割り当てられたユーザーは、パスワードの変更、更新トークンの無効化、サービス要求の管理、サービス正常性の監視を行うことができます。 ヘルプデスク管理者は、ユーザーと他のヘルプデスク管理者のために、パスワードの変更と更新トークンの無効化だけを行えます。 更新トークンを無効にすると、ユーザーは再度サインインすることを強制されます。
-
+* **[パスワード管理者/ヘルプデスク管理者](#helpdesk-administrator)**: このロールが割り当てられたユーザーは、パスワードの変更、更新トークンの無効化、サービス要求の管理、サービス正常性の監視を行うことができます。 更新トークンを無効にすると、ユーザーは再度サインインすることを強制されます。 ヘルプデスク管理者は、管理者ではない他のユーザーまたは次のロールのメンバーについてのみ、パスワードをリセットし、更新トークンを無効にすることができます。
+  * ディレクトリ リーダー
+  * ゲスト招待元
+  * ヘルプデスク管理者
+  * メッセージ センター閲覧者
+  * レポート閲覧者
+  
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "ヘルプデスク管理者" として識別されます。 [Azure Portal](https://portal.azure.com/) では、"パスワード管理者" になります。
-  >
   >
   
 * **[Power BI サービス管理者](#power-bi-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Power BI 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[Power BI 管理者の役割について](https://docs.microsoft.com/power-bi/service-admin-role)」を参照してください。
 
 * **[特権ロール管理者](#privileged-role-administrator)**: このロールが割り当てられたユーザーは、Azure Active Directory と Azure AD Privileged Identity Management 内でロールの割り当てを管理できます。 また、このロールは Privileged Identity Management の全側面を管理できます。
 
-* **[レポート閲覧者](#reports-reader)**: このロールが割り当てられたユーザーは、Office 365 管理センターで使用状況のレポート データとレポート ダッシュボードを表示できます。また、Power BI で導入コンテキスト パックを表示できます。 さらに、Azure AD のサインオン レポートとアクティビティ、および Microsoft Graph レポート API から返されるデータにもアクセスできます。 レポート閲覧者ロールが割り当てられたユーザーは、関連する使用状況と導入メトリックにのみアクセスできます。 製品固有の管理センター (Exchange など) の設定を構成したり、アクセスしたりする管理者アクセス許可はありません。 
+  <b>重要:</b>: このロールは、全体管理者ロールを含むすべての Azure AD ロールのメンバーシップを管理する権限を付与します。 このロールには、Azure AD でユーザーの作成や更新などの特権付きの機能が含まれていません。 ただし、このロールが割り当てられたユーザーは、追加のロールを割り当てることで、自分または他のユーザーの追加の特権を付与できます。
+
+* **[レポート閲覧者](#reports-reader)**: このロールが割り当てられたユーザーは、Office 365 管理センターで使用状況のレポート データとレポート ダッシュボードを表示できます。また、Power BI で導入コンテキスト パックを表示できます。 さらに、Azure AD のサインイン レポートとアクティビティ、および Microsoft Graph レポート API から返されるデータにもアクセスできます。 レポート閲覧者ロールが割り当てられたユーザーは、関連する使用状況と導入メトリックにのみアクセスできます。 製品固有の管理センター (Exchange など) の設定を構成したり、アクセスしたりする管理者アクセス許可はありません。 
 
 * **[セキュリティ管理者](#security-administrator)**: このロールが割り当てられたユーザーは、セキュリティ閲覧者ロールのすべての読み取り専用アクセス許可を持ち、セキュリティ関連サービス (Azure Active Directory Identity Protection、Azure Information Protection、Office 365 セキュリティ/コンプライアンス センター) の構成を管理することもできます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
   
@@ -117,7 +127,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[SharePoint サービス管理者](#sharepoint-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
-* **[Skype for Business/Lync サービス管理者](#skype-for-business-administrator)**: このロールが割り当てられたユーザーは、Microsoft Skype for Business 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、Azure Active Directory で Skype 固有のユーザー属性を管理します。 さらに、このロールはサポート チケットを管理し、サービス正常性を監視して、Teams と Skype for Business の管理センターにアクセスすることができます。 アカウントには、Teams のライセンスが付与されている必要もあります。そうでないと、Teams の PowerShell コマンドレットを実行できません。 詳細については、[Skype for Business の管理者ロール](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)に関するページを参照してください。Teams のライセンス情報については、[Skype for Business と Microsoft Teams アドオンのライセンス](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)に関するページを参照してください
+* **[Skype for Business/Lync サービス管理者](#lync-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Skype for Business 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、Azure Active Directory で Skype 固有のユーザー属性を管理します。 さらに、このロールはサポート チケットを管理し、サービス正常性を監視して、Teams と Skype for Business の管理センターにアクセスすることができます。 アカウントには、Teams のライセンスが付与されている必要もあります。そうでないと、Teams の PowerShell コマンドレットを実行できません。 詳細については、[Skype for Business の管理者ロール](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)に関するページを参照してください。Teams のライセンス情報については、[Skype for Business と Microsoft Teams アドオンのライセンス](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)に関するページを参照してください
 
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "Lync サービス管理者" として識別されます。 [Azure Portal](https://portal.azure.com/) では、"Skype for Business サービス管理者" になります。
@@ -132,49 +142,17 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[Teams サービス管理者](#teams-service-administrator)**: このロールのユーザーは、Microsoft Teams および Skype for Business の管理センターと、対応する PowerShell モジュールを使用して、Microsoft Teams のワークロードの全側面を管理できます。 これにはその他の領域の、テレフォニー、メッセージング、会議、およびチーム自体に関連するすべての管理ツールが含まれます。 このロールでは、Office 365 グループを管理する機能の付与も行います。
 
-* **[ユーザー アカウント管理者](#user-account-administrator)**: このロールが割り当てられたユーザーは、ユーザーとグループを作成し、その全側面を管理できます。 さらに、このロールはサポート チケットを管理し、サービス正常性を監視できます。 ただし、いくつかの制限が適用されます。 たとえば、このロールはグローバル管理者を削除できません。 ユーザー アカウント管理者は、ユーザー、ヘルプデスク管理者、およびその他のユーザー アカウント管理者についてのみ、パスワードの変更と更新トークンの無効化を行えます。 更新トークンを無効にすると、ユーザーは再度サインインすることを強制されます。
+* **[ユーザー アカウント管理者](#user-account-administrator)**: このロールが割り当てられたユーザーは、ユーザーを作成し、いくつか制限はありますがユーザーのすべての側面を管理できます (後述)。 また、このロールのユーザーは、グループを作成し、すべてのグループを管理することができます。 このロールでは、ユーザー ビューを作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。
 
-| できること | できないこと |
-| --- | --- |
-| <p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>ユーザー、ヘルプデスク管理者、およびその他のユーザー アカウント管理者についてのみ、パスワードを変更できます</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理 (制限付き)。 グローバル管理者を削除することも、他の管理者を作成することもできません。</p> |<p>Office 製品の課金および購入操作の実行</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>Multi-Factor Authentication の有効化または無効化</p><p>監査ログの表示</p> |
+  | | |
+  | --- | --- |
+  |一般的なアクセス許可|<p>ユーザーとグループを作成する</p><p>ユーザー ビューの作成と管理</p><p>Office サポート チケットの管理|
+  |<p>すべての管理者を含むすべてのユーザーに対して</p>|<p>ライセンスを管理する</p><p>ユーザー プリンシパル名を除くすべてのユーザーのプロパティを管理する</p>
+  |管理者以外のユーザー、または次の制限付き管理者ロールのいずれかに対してのみ:<ul><li>ディレクトリ リーダー<li>ゲスト招待元<li>ヘルプデスク管理者<li>メッセージ センター閲覧者<li>レポート閲覧者<li>ユーザー アカウント管理者|<p>削除と復元</p><p>無効化と有効化</p><p>更新トークンを無効にする</p><p>ユーザー プリンシパル名を含むすべてのユーザーのプロパティを管理する</p><p>[パスワードのリセット]</p><p>(FIDO) デバイス キーを更新する</p>
 
 以降の表は、各ロールに割り当てられている Azure Active Directory の具体的なアクセス許可の説明です。 一部のロールは、Azure Active Directory 以外の Microsoft サービスにおけるその他のアクセス許可を持っている場合があります。
 
-## <a name="adhoc-license-administrator"></a>アドホック ライセンス管理者
-アプリ登録とエンタープライズ アプリのすべての側面を作成して管理できます。
-
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.aad.directory/domains/default/read | Azure Active Directory での domains の基本プロパティの読み取り。 |
-| microsoft.aad.directory/groups/appRoleAssignments/read | Azure Active Directory での groups.appRoleAssignments プロパティの読み取り。 |
-| microsoft.aad.directory/groups/default/read | Azure Active Directory での groups の基本プロパティの読み取り。 |
-| microsoft.aad.directory/groups/memberOf/read | Azure Active Directory での groups.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/groups/members/read | Azure Active Directory での groups.members プロパティの読み取り。 |
-| microsoft.aad.directory/groups/owners/read | Azure Active Directory での groups.owners プロパティの読み取り。 |
-| microsoft.aad.directory/groups/settings/read | Azure Active Directory での groups.settings プロパティの読み取り。 |
-| microsoft.aad.directory/oAuth2PermissionGrants/default/read | Azure Active Directory での oAuth2PermissionGrants の基本プロパティの読み取り。 |
-| microsoft.aad.directory/oAuth2PermissionGrants/update | Azure Active Directory での oAuth2PermissionGrants の更新。 |
-| microsoft.aad.directory/organization/default/read | Azure Active Directory での organization の基本プロパティの読み取り。 |
-| microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/read | Azure Active Directory での organization.trustedCAsForPasswordlessAuth プロパティの読み取り。 |
-| microsoft.aad.directory/users/assignLicense | Azure Active Directory でのユーザーのライセンスの管理。 |
-| microsoft.aad.directory/users/appRoleAssignments/read | Azure Active Directory での users.appRoleAssignments プロパティの読み取り。 |
-| microsoft.aad.directory/users/default/read | Azure Active Directory での users の基本プロパティの読み取り。 |
-| microsoft.aad.directory/users/directReports/read | Azure Active Directory での users.directReports プロパティの読み取り。 |
-| microsoft.aad.directory/users/invitedBy/read | Azure Active Directory での users.invitedBy プロパティの読み取り。 |
-| microsoft.aad.directory/users/invitedUsers/read | Azure Active Directory での users.invitedUsers プロパティの読み取り。 |
-| microsoft.aad.directory/users/manager/read | Azure Active Directory での users.manager プロパティの読み取り。 |
-| microsoft.aad.directory/users/memberOf/read | Azure Active Directory での users.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Azure Active Directory での users.oAuth2PermissionGrants プロパティの読み取り。 |
-| microsoft.aad.directory/users/ownedDevices/read | Azure Active Directory での users.ownedDevices プロパティの読み取り。 |
-| microsoft.aad.directory/users/ownedObjects/read | Azure Active Directory での users.ownedObjects プロパティの読み取り。 |
-| microsoft.aad.directory/users/registeredDevices/read | Azure Active Directory での users.registeredDevices プロパティの読み取り。 |
-
-## <a name="application-administrator"></a>アプリケーション管理者
+### <a name="application-administrator"></a>アプリケーション管理者
 アプリ登録とエンタープライズ アプリのすべての側面を作成して管理できます。
 
   > [!NOTE]
@@ -186,7 +164,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | --- | --- |
 | microsoft.aad.directory/applications/audience/update | Azure Active Directory での applications.audience property プロパティの更新。 |
 | microsoft.aad.directory/applications/authentication/update | Azure Active Directory での applications.authentication プロパティの更新。 |
-| microsoft.aad.directory/applications/default/update | Azure Active Directory での applications の基本プロパティの更新。 |
+| microsoft.aad.directory/applications/basic/update | Azure Active Directory での applications の基本プロパティの更新。 |
 | microsoft.aad.directory/applications/create | Azure Active Directory での applications の作成。 |
 | microsoft.aad.directory/applications/credentials/update | Azure Active Directory での applications.credentials プロパティの更新。 |
 | microsoft.aad.directory/applications/delete | Azure Active Directory での applications の削除。 |
@@ -197,14 +175,14 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.aad.directory/appRoleAssignments/read | Azure Active Directory での appRoleAssignments の読み取り。 |
 | microsoft.aad.directory/appRoleAssignments/update | Azure Active Directory での appRoleAssignments の更新。 |
 | microsoft.aad.directory/appRoleAssignments/delete | Azure Active Directory での appRoleAssignments の削除。 |
-| microsoft.aad.directory/policies/applicationConfiguration/default/read | Azure Active Directory での policies.applicationConfiguration プロパティの読み取り。 |
-| microsoft.aad.directory/policies/applicationConfiguration/default/update | Azure Active Directory での policies.applicationConfiguration プロパティの更新。 |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/read | Azure Active Directory での policies.applicationConfiguration プロパティの読み取り。 |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/update | Azure Active Directory での policies.applicationConfiguration プロパティの更新。 |
 | microsoft.aad.directory/policies/applicationConfiguration/create | Azure Active Directory での policies の作成。 |
 | microsoft.aad.directory/policies/applicationConfiguration/delete | Azure Active Directory での policies の削除。 |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/read | Azure Active Directory での policies.applicationConfiguration プロパティの読み取り。 |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/update | Azure Active Directory での policies.applicationConfiguration プロパティの更新。 |
 | microsoft.aad.directory/policies/applicationConfiguration/policyAppliedTo/read | Azure Active Directory での policies.applicationConfiguration プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/default/update | Azure Active Directory での servicePrincipals の基本プロパティの更新。 |
+| microsoft.aad.directory/servicePrincipals/basic/update | Azure Active Directory での servicePrincipals の基本プロパティの更新。 |
 | microsoft.aad.directory/servicePrincipals/create | Azure Active Directory での servicePrincipals の作成。 |
 | microsoft.aad.directory/servicePrincipals/delete | Azure Active Directory での servicePrincipals の削除。 |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの更新。 |
@@ -218,7 +196,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="application-developer"></a>アプリケーション開発者
+### <a name="application-developer"></a>アプリケーション開発者
 [ユーザーはアプリケーションを登録できる] の設定とは無関係にアプリケーション登録を作成できます。
 
   > [!NOTE]
@@ -233,7 +211,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.aad.directory/oAuth2PermissionGrants/createAsOwner | Azure Active Directory での oAuth2PermissionGrants の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
 | microsoft.aad.directory/servicePrincipals/createAsOwner | Azure Active Directory での servicePrincipals の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
 
-## <a name="billing-administrator"></a>課金管理者
+### <a name="billing-administrator"></a>課金管理者
 支払情報の更新など、よく利用する課金関連タスクを実行できます。
 
   > [!NOTE]
@@ -248,7 +226,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 | **アクション** | **説明** |
 | --- | --- |
-| microsoft.aad.directory/organization/default/update | Azure Active Directory での organization の基本プロパティの更新。 |
+| microsoft.aad.directory/organization/basic/update | Azure Active Directory での organization の基本プロパティの更新。 |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/update | Azure Active Directory での organization.trustedCAsForPasswordlessAuth プロパティの更新。 |
 | microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
@@ -257,7 +235,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="cloud-application-administrator"></a>クラウド アプリケーション管理者
+### <a name="cloud-application-administrator"></a>クラウド アプリケーション管理者
 アプリ登録とエンタープライズ アプリのすべての側面 (アプリ プロキシを除く) を作成して管理できます。
 
   > [!NOTE]
@@ -269,7 +247,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | --- | --- |
 | microsoft.aad.directory/applications/audience/update | Azure Active Directory での applications.audience property プロパティの更新。 |
 | microsoft.aad.directory/applications/authentication/update | Azure Active Directory での applications.authentication プロパティの更新。 |
-| microsoft.aad.directory/applications/default/update | Azure Active Directory での applications の基本プロパティの更新。 |
+| microsoft.aad.directory/applications/basic/update | Azure Active Directory での applications の基本プロパティの更新。 |
 | microsoft.aad.directory/applications/create | Azure Active Directory での applications の作成。 |
 | microsoft.aad.directory/applications/credentials/update | Azure Active Directory での applications.credentials プロパティの更新。 |
 | microsoft.aad.directory/applications/delete | Azure Active Directory での applications の削除。 |
@@ -280,15 +258,15 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.aad.directory/appRoleAssignments/update | Azure Active Directory での appRoleAssignments の更新。 |
 | microsoft.aad.directory/appRoleAssignments/delete | Azure Active Directory での appRoleAssignments の削除。 |
 | microsoft.aad.directory/policies/applicationConfiguration/create | Azure Active Directory での policies の作成。 |
-| microsoft.aad.directory/policies/applicationConfiguration/default/read | Azure Active Directory での policies.applicationConfiguration プロパティの読み取り。 |
-| microsoft.aad.directory/policies/applicationConfiguration/default/update | Azure Active Directory での policies.applicationConfiguration プロパティの更新。 |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/read | Azure Active Directory での policies.applicationConfiguration プロパティの読み取り。 |
+| microsoft.aad.directory/policies/applicationConfiguration/basic/update | Azure Active Directory での policies.applicationConfiguration プロパティの更新。 |
 | microsoft.aad.directory/policies/applicationConfiguration/delete | Azure Active Directory での policies の削除。 |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/read | Azure Active Directory での policies.applicationConfiguration プロパティの読み取り。 |
 | microsoft.aad.directory/policies/applicationConfiguration/owners/update | Azure Active Directory での policies.applicationConfiguration プロパティの更新。 |
 | microsoft.aad.directory/policies/applicationConfiguration/policyAppliedTo/read | Azure Active Directory での policies.applicationConfiguration プロパティの読み取り。 |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの更新。 |
 | microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Azure Active Directory での servicePrincipals.appRoleAssignments プロパティの更新。 |
-| microsoft.aad.directory/servicePrincipals/default/update | Azure Active Directory での servicePrincipals の基本プロパティの更新。 |
+| microsoft.aad.directory/servicePrincipals/basic/update | Azure Active Directory での servicePrincipals の基本プロパティの更新。 |
 | microsoft.aad.directory/servicePrincipals/create | Azure Active Directory での servicePrincipals の作成。 |
 | microsoft.aad.directory/servicePrincipals/delete | Azure Active Directory での servicePrincipals の削除。 |
 | microsoft.aad.directory/servicePrincipals/owners/update | Azure Active Directory での servicePrincipals.owners プロパティの更新。 |
@@ -300,7 +278,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="cloud-device-administrator"></a>クラウド デバイス管理者
+### <a name="cloud-device-administrator"></a>クラウド デバイス管理者
 Azure AD でデバイスを管理するためのフル アクセス。
 
   > [!NOTE]
@@ -317,7 +295,7 @@ Azure AD でデバイスを管理するためのフル アクセス。
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 
-## <a name="company-administrator"></a>会社の管理者
+### <a name="company-administrator"></a>会社の管理者
 Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft サービスを管理できます。
 
   > [!NOTE]
@@ -379,7 +357,7 @@ Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 | microsoft.powerApps.dynamics365/allEntities/allTasks | Dynamics 365 の全側面の管理。 |
 
-## <a name="compliance-administrator"></a>コンプライアンス管理者
+### <a name="compliance-administrator"></a>コンプライアンス管理者
 Azure AD および Office 365 のコンプライアンスの構成とレポートを読み取り、管理できます。
 
   > [!NOTE]
@@ -404,7 +382,7 @@ Azure AD および Office 365 のコンプライアンスの構成とレポー�
 | microsoft.office365.skypeForBusiness/allEntities/allTasks | Skype for Business Online の全側面の管理。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="conditional-access-administrator"></a>条件付きアクセス管理者
+### <a name="conditional-access-administrator"></a>条件付きアクセス管理者
 条件付きアクセスの機能を管理できます。
 
   > [!NOTE]
@@ -414,189 +392,16 @@ Azure AD および Office 365 のコンプライアンスの構成とレポー�
 
 | **アクション** | **説明** |
 | --- | --- |
-| microsoft.aad.directory/policies/conditionalAccess/default/read | Azure Active Directory での policies.conditionalAccess プロパティの読み取り。 |
-| microsoft.aad.directory/policies/conditionalAccess/default/update | Azure Active Directory での policies.conditionalAccess プロパティの更新。 |
+| microsoft.aad.directory/policies/conditionalAccess/basic/read | Azure Active Directory での policies.conditionalAccess プロパティの読み取り。 |
+| microsoft.aad.directory/policies/conditionalAccess/basic/update | Azure Active Directory での policies.conditionalAccess プロパティの更新。 |
 | microsoft.aad.directory/policies/conditionalAccess/create | Azure Active Directory での policies の作成。 |
 | microsoft.aad.directory/policies/conditionalAccess/delete | Azure Active Directory での policies の削除。 |
 | microsoft.aad.directory/policies/conditionalAccess/owners/read | Azure Active Directory での policies.conditionalAccess プロパティの読み取り。 |
 | microsoft.aad.directory/policies/conditionalAccess/owners/update | Azure Active Directory での policies.conditionalAccess プロパティの更新。 |
 | microsoft.aad.directory/policies/conditionalAccess/policiesAppliedTo/read | Azure Active Directory での policies.conditionalAccess プロパティの読み取り。 |
 
-## <a name="customer-lockbox-access-approver"></a>カスタマー ロックボックスのアクセス承認者
-Microsoft サポートがお客様の組織データにアクセスする要求を承認することができます。
-
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
-| microsoft.office365.lockbox/allEntities/allTasks | Office 365 カスタマ― ロックボックスの全側面の管理 |
-
-## <a name="device-administrators"></a>デバイス管理者
-このロールのメンバーは、Azure AD 参加済みデバイスのローカル管理者グループに追加されます。
-
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.aad.directory/groupSettings/default/read | Azure Active Directory での groupSettings の基本プロパティの読み取り。 |
-| microsoft.aad.directory/groupSettingTemplates/default/read | Azure Active Directory での groupSettingTemplates の基本プロパティの読み取り。 |
-
-## <a name="device-managers"></a>デバイス マネージャー
-Microsoft サポートがお客様の組織データにアクセスする要求を承認することができます。
-
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.aad.directory/devices/default/read | Azure Active Directory での devices の基本プロパティの読み取り。 |
-| microsoft.aad.directory/devices/default/update | Azure Active Directory での devices の基本プロパティの更新。 |
-| microsoft.aad.directory/devices/memberOf/read | Azure Active Directory での devices.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/devices/registeredOwners/read | Azure Active Directory での devices.registeredOwners プロパティの読み取り。 |
-| microsoft.aad.directory/devices/registeredOwners/update | Azure Active Directory での devices.registeredOwners プロパティの更新。 |
-| microsoft.aad.directory/devices/registeredUsers/read | Azure Active Directory での devices.registeredUsers プロパティの読み取り。 |
-| microsoft.aad.directory/devices/registeredUsers/update | Azure Active Directory での devices.registeredUsers プロパティの更新。 |
-
-## <a name="directory-readers"></a>ディレクトリ リーダー
-基本的なディレクトリ情報を読み取ることができます  (アプリケーションへのアクセス権を付与するため)。
-
-  > [!NOTE]
-  > このロールは、ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.aad.directory/administrativeUnits/default/read | Azure Active Directory での administrativeUnits の基本プロパティの読み取り。 |
-| microsoft.aad.directory/administrativeUnits/members/read | Azure Active Directory での administrativeUnits.members プロパティの読み取り。 |
-Azure Active Directory。 |
-| microsoft.aad.directory/applications/default/read | Azure Active Directory での applications の基本プロパティの読み取り。 |
-| microsoft.aad.directory/applications/owners/read | Azure Active Directory での applications.owners プロパティの読み取り。 |
-| microsoft.aad.directory/contacts/default/read | Azure Active Directory での contacts の基本プロパティの読み取り。 |
-| microsoft.aad.directory/contacts/memberOf/read | Azure Active Directory での contacts.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/contracts/default/read | Azure Active Directory での contracts の基本プロパティの読み取り。 |
-| microsoft.aad.directory/devices/default/read | Azure Active Directory での devices の基本プロパティの読み取り。 |
-| microsoft.aad.directory/devices/memberOf/read | Azure Active Directory での devices.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/devices/registeredOwners/read | Azure Active Directory での devices.registeredOwners プロパティの読み取り。 |
-| microsoft.aad.directory/devices/registeredUsers/read | Azure Active Directory での devices.registeredUsers プロパティの読み取り。 |
-| microsoft.aad.directory/directoryRoles/default/read | Azure Active Directory での directoryRoles の基本プロパティの読み取り。 |
-| microsoft.aad.directory/directoryRoles/eligibleMembers/read | Azure Active Directory での directoryRoles.eligibleMembers プロパティの読み取り。 |
-| microsoft.aad.directory/directoryRoles/members/read | Azure Active Directory での directoryRoles.members プロパティの読み取り。 |
-| microsoft.aad.directory/domains/default/read | Azure Active Directory での domains の基本プロパティの読み取り。 |
-| microsoft.aad.directory/groups/appRoleAssignments/read | Azure Active Directory での groups.appRoleAssignments プロパティの読み取り。 |
-| microsoft.aad.directory/groups/default/read | Azure Active Directory での groups の基本プロパティの読み取り。 |
-| microsoft.aad.directory/groups/memberOf/read | Azure Active Directory での groups.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/groups/members/read | Azure Active Directory での groups.members プロパティの読み取り。 |
-| microsoft.aad.directory/groups/owners/read | Azure Active Directory での groups.owners プロパティの読み取り。 |
-| microsoft.aad.directory/groups/settings/read | Azure Active Directory での groups.settings プロパティの読み取り。 |
-| microsoft.aad.directory/groupSettings/default/read | Azure Active Directory での groupSettings の基本プロパティの読み取り。 |
-| microsoft.aad.directory/groupSettingTemplates/default/read | Azure Active Directory での groupSettingTemplates の基本プロパティの読み取り。 |
-| microsoft.aad.directory/oAuth2PermissionGrants/default/read | Azure Active Directory での oAuth2PermissionGrants の基本プロパティの読み取り。 |
-| microsoft.aad.directory/organization/default/read | Azure Active Directory での organization の基本プロパティの読み取り。 |
-| microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/read | Azure Active Directory での organization.trustedCAsForPasswordlessAuth プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/read | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | Azure Active Directory での servicePrincipals.appRoleAssignments プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/default/read | Azure Active Directory での servicePrincipals の基本プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/memberOf/read | Azure Active Directory での servicePrincipals.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | Azure Active Directory での servicePrincipals.oAuth2PermissionGrants プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/ownedObjects/read | Azure Active Directory での servicePrincipals.ownedObjects プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/owners/read | Azure Active Directory での servicePrincipals.owners プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/policies/read | Azure Active Directory での servicePrincipals.policies プロパティの読み取り。 |
-| microsoft.aad.directory/subscribedSkus/default/read | Azure Active Directory での subscribedSkus の基本プロパティの読み取り。 |
-| microsoft.aad.directory/users/appRoleAssignments/read | Azure Active Directory での users.appRoleAssignments プロパティの読み取り。 |
-| microsoft.aad.directory/users/default/read | Azure Active Directory での users の基本プロパティの読み取り。 |
-| microsoft.aad.directory/users/directReports/read | Azure Active Directory での users.directReports プロパティの読み取り。 |
-| microsoft.aad.directory/users/invitedBy/read | Azure Active Directory での users.invitedBy プロパティの読み取り。 |
-| microsoft.aad.directory/users/invitedUsers/read | Azure Active Directory での users.invitedUsers プロパティの読み取り。 |
-| microsoft.aad.directory/users/manager/read | Azure Active Directory での users.manager プロパティの読み取り。 |
-| microsoft.aad.directory/users/memberOf/read | Azure Active Directory での users.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Azure Active Directory での users.oAuth2PermissionGrants プロパティの読み取り。 |
-| microsoft.aad.directory/users/ownedDevices/read | Azure Active Directory での users.ownedDevices プロパティの読み取り。 |
-| microsoft.aad.directory/users/ownedObjects/read | Azure Active Directory での users.ownedObjects プロパティの読み取り。 |
-| microsoft.aad.directory/users/registeredDevices/read | Azure Active Directory での users.registeredDevices プロパティの読み取り。 |
-
-## <a name="directory-synchronization-accounts"></a>ディレクトリ同期アカウント
-Azure AD Connect サービスでのみ使用されます。
-
-  > [!NOTE]
-  > このロールは、ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.aad.directory/organization/dirSync/update | Azure Active Directory での organization.dirSync プロパティの更新。 |
-| microsoft.aad.directory/policies/create | Azure Active Directory での policies の作成。 |
-| microsoft.aad.directory/policies/delete | Azure Active Directory での policies の削除。 |
-| microsoft.aad.directory/policies/default/read | Azure Active Directory での policies の基本プロパティの読み取り。 |
-| microsoft.aad.directory/policies/default/update | Azure Active Directory での policies の基本プロパティの更新。 |
-| microsoft.aad.directory/policies/owners/read | Azure Active Directory での policies.owners プロパティの読み取り。 |
-| microsoft.aad.directory/policies/owners/update | Azure Active Directory での policies.owners プロパティの更新。 |
-| microsoft.aad.directory/policies/policiesAppliedTo/read | Azure Active Directory での policies.policiesAppliedTo プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/read | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの更新。 |
-| microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | Azure Active Directory での servicePrincipals.appRoleAssignments プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Azure Active Directory での servicePrincipals.appRoleAssignments プロパティの更新。 |
-| microsoft.aad.directory/servicePrincipals/default/read | Azure Active Directory での servicePrincipals の基本プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/default/update | Azure Active Directory での servicePrincipals の基本プロパティの更新。 |
-| microsoft.aad.directory/servicePrincipals/create | Azure Active Directory での servicePrincipals の作成。 |
-| microsoft.aad.directory/servicePrincipals/memberOf/read | Azure Active Directory での servicePrincipals.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | Azure Active Directory での servicePrincipals.oAuth2PermissionGrants プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/owners/read | Azure Active Directory での servicePrincipals.owners プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/owners/update | Azure Active Directory での servicePrincipals.owners プロパティの更新。 |
-| microsoft.aad.directory/servicePrincipals/ownedObjects/read | Azure Active Directory での servicePrincipals.ownedObjects プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/policies/read | Azure Active Directory での servicePrincipals.policies プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/policies/update | Azure Active Directory での servicePrincipals.policies プロパティの更新。 |
-| microsoft.aad.directorySync/allEntities/allTasks | Azure AD Connect でのすべてのアクションの実行。 |
-
-## <a name="directory-writers"></a>ディレクトリ ライター
-基本的なディレクトリ情報の読み取りと書き込みを実行できます  (アプリケーションへのアクセス権を付与するため)。
-
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.aad.directory/groups/create | Azure Active Directory での groups の作成。 |
-| microsoft.aad.directory/groups/createAsOwner | Azure Active Directory での groups の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
-| microsoft.aad.directory/groups/appRoleAssignments/update | Azure Active Directory での groups.appRoleAssignments プロパティの更新。 |
-| microsoft.aad.directory/groups/default/update | Azure Active Directory での groups の基本プロパティの更新。 |
-| microsoft.aad.directory/groups/members/update | Azure Active Directory での groups.members プロパティの更新。 |
-| microsoft.aad.directory/groups/owners/update | Azure Active Directory での groups.owners プロパティの更新。 |
-| microsoft.aad.directory/groups/settings/update | Azure Active Directory での groups.settings プロパティの更新。 |
-| microsoft.aad.directory/groupSettings/default/update | Azure Active Directory での groupSettings の基本プロパティの更新。 |
-| microsoft.aad.directory/groupSettings/create | Azure Active Directory での groupSettings の作成。 |
-| microsoft.aad.directory/groupSettings/delete | Azure Active Directory での groupSettings の削除。 |
-| microsoft.aad.directory/users/appRoleAssignments/update | Azure Active Directory での users.appRoleAssignments プロパティの更新。 |
-| microsoft.aad.directory/users/assignLicense | Azure Active Directory でのユーザーのライセンスの管理。 |
-| microsoft.aad.directory/users/default/update | Azure Active Directory での users の基本プロパティの更新。 |
-| microsoft.aad.directory/users/invalidateAllRefreshTokens | Azure Active Directory 内のすべてのユーザー更新トークンの無効化。 |
-| microsoft.aad.directory/users/manager/update | Azure Active Directory での users.manager プロパティの更新。 |
-| microsoft.aad.directory/users/userPrincipalName/update | Azure Active Directory での users.userPrincipalName プロパティの更新。 |
-
-## <a name="dynamics-365-administrator"></a>Dynamics 365 管理者
-Dynamics 365 製品のすべての側面を管理できます。 以前の CRM サービス管理者です。
+### <a name="crm-service-administrator"></a>CRM サービス管理者
+Dynamics 365 製品のすべての側面を管理できます。
 
   > [!NOTE]
   > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
@@ -617,7 +422,163 @@ Dynamics 365 製品のすべての側面を管理できます。 以前の CRM �
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="exchange-service-administrator"></a>Exchange サービス管理者
+### <a name="customer-lockbox-access-approver"></a>カスタマー ロックボックスのアクセス承認者
+Microsoft サポートがお客様の組織データにアクセスする要求を承認することができます。
+
+  > [!NOTE]
+  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
+  >
+  >
+
+  > [!NOTE]
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
+| microsoft.office365.lockbox/allEntities/allTasks | Office 365 カスタマ― ロックボックスの全側面の管理 |
+
+### <a name="device-administrators"></a>デバイス管理者
+このロールのメンバーは、Azure AD 参加済みデバイスのローカル管理者グループに追加されます。
+
+  > [!NOTE]
+  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.aad.directory/groupSettings/basic/read | Azure Active Directory での groupSettings の基本プロパティの読み取り。 |
+| microsoft.aad.directory/groupSettingTemplates/basic/read | Azure Active Directory での groupSettingTemplates の基本プロパティの読み取り。 |
+
+### <a name="directory-readers"></a>ディレクトリ リーダー
+基本的なディレクトリ情報を読み取ることができます  ユーザーではなく、アプリケーションへのアクセスを許可する場合。
+
+  > [!NOTE]
+  > このロールは、ロールから追加のアクセス許可を継承します。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.aad.directory/administrativeUnits/basic/read | Azure Active Directory での administrativeUnits の基本プロパティの読み取り。 |
+| microsoft.aad.directory/administrativeUnits/members/read | Azure Active Directory での administrativeUnits.members プロパティの読み取り。 |
+| microsoft.aad.directory/applications/audience/read | Azure Active Directory での applications.audience property プロパティの読み取り。 |
+| microsoft.aad.directory/applications/authentication/read | Azure Active Directory での applications.authentication プロパティの読み取り。 |
+| microsoft.aad.directory/applications/basic/read | Azure Active Directory での applications の基本プロパティの読み取り。 |
+| microsoft.aad.directory/applications/credentials/read | Azure Active Directory での applications.authentication プロパティの更新。 |
+| microsoft.aad.directory/applications/owners/read | Azure Active Directory での applications.owners プロパティの読み取り。 |
+| microsoft.aad.directory/applications/permissions/read | Azure Active Directory での applications.permissions プロパティの読み取り。 |
+| microsoft.aad.directory/applications/policies/read | Azure Active Directory での applications.policies プロパティの読み取り。 |
+| microsoft.aad.directory/contacts/basic/read | Azure Active Directory での contacts の基本プロパティの読み取り。 |
+| microsoft.aad.directory/contacts/memberOf/read | Azure Active Directory での contacts.memberOf プロパティの読み取り。 |
+| microsoft.aad.directory/contracts/basic/read | Azure Active Directory での contracts の基本プロパティの読み取り。 |
+| microsoft.aad.directory/devices/basic/read | Azure Active Directory での devices の基本プロパティの読み取り。 |
+| microsoft.aad.directory/devices/memberOf/read | Azure Active Directory での devices.memberOf プロパティの読み取り。 |
+| microsoft.aad.directory/devices/registeredOwners/read | Azure Active Directory での devices.registeredOwners プロパティの読み取り。 |
+| microsoft.aad.directory/devices/registeredUsers/read | Azure Active Directory での devices.registeredUsers プロパティの読み取り。 |
+| microsoft.aad.directory/directoryRoles/basic/read | Azure Active Directory での directoryRoles の基本プロパティの読み取り。 |
+| microsoft.aad.directory/directoryRoles/eligibleMembers/read | Azure Active Directory での directoryRoles.eligibleMembers プロパティの読み取り。 |
+| microsoft.aad.directory/directoryRoles/members/read | Azure Active Directory での directoryRoles.members プロパティの読み取り。 |
+| microsoft.aad.directory/domains/basic/read | Azure Active Directory での domains の基本プロパティの読み取り。 |
+| microsoft.aad.directory/groups/appRoleAssignments/read | Azure Active Directory での groups.appRoleAssignments プロパティの読み取り。 |
+| microsoft.aad.directory/groups/basic/read | Azure Active Directory での groups の基本プロパティの読み取り。 |
+| microsoft.aad.directory/groups/memberOf/read | Azure Active Directory での groups.memberOf プロパティの読み取り。 |
+| microsoft.aad.directory/groups/members/read | Azure Active Directory での groups.members プロパティの読み取り。 |
+| microsoft.aad.directory/groups/owners/read | Azure Active Directory での groups.owners プロパティの読み取り。 |
+| microsoft.aad.directory/groups/settings/read | Azure Active Directory での groups.settings プロパティの読み取り。 |
+| microsoft.aad.directory/groupSettings/basic/read | Azure Active Directory での groupSettings の基本プロパティの読み取り。 |
+| microsoft.aad.directory/groupSettingTemplates/basic/read | Azure Active Directory での groupSettingTemplates の基本プロパティの読み取り。 |
+| microsoft.aad.directory/oAuth2PermissionGrants/basic/read | Azure Active Directory での oAuth2PermissionGrants の基本プロパティの読み取り。 |
+| microsoft.aad.directory/organization/basic/read | Azure Active Directory での organization の基本プロパティの読み取り。 |
+| microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/read | Azure Active Directory での organization.trustedCAsForPasswordlessAuth プロパティの読み取り。 |
+| microsoft.aad.directory/roleAssignments/basic/read | Azure Active Directory での roleAssignments の基本プロパティの読み取り。 |
+| microsoft.aad.directory/roleDefinitions/basic/read | Azure Active Directory での roleDefinitions の基本プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/read | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | Azure Active Directory での servicePrincipals.appRoleAssignments プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/basic/read | Azure Active Directory での servicePrincipals の基本プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/memberOf/read | Azure Active Directory での servicePrincipals.memberOf プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/basic/read | Azure Active Directory での servicePrincipals.oAuth2PermissionGrants プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/ownedObjects/read | Azure Active Directory での servicePrincipals.ownedObjects プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/owners/read | Azure Active Directory での servicePrincipals.owners プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/policies/read | Azure Active Directory での servicePrincipals.policies プロパティの読み取り。 |
+| microsoft.aad.directory/subscribedSkus/basic/read | Azure Active Directory での subscribedSkus の基本プロパティの読み取り。 |
+| microsoft.aad.directory/users/appRoleAssignments/read | Azure Active Directory での users.appRoleAssignments プロパティの読み取り。 |
+| microsoft.aad.directory/users/basic/read | Azure Active Directory での users の基本プロパティの読み取り。 |
+| microsoft.aad.directory/users/directReports/read | Azure Active Directory での users.directReports プロパティの読み取り。 |
+| microsoft.aad.directory/users/invitedBy/read | Azure Active Directory での users.invitedBy プロパティの読み取り。 |
+| microsoft.aad.directory/users/invitedUsers/read | Azure Active Directory での users.invitedUsers プロパティの読み取り。 |
+| microsoft.aad.directory/users/manager/read | Azure Active Directory での users.manager プロパティの読み取り。 |
+| microsoft.aad.directory/users/memberOf/read | Azure Active Directory での users.memberOf プロパティの読み取り。 |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Azure Active Directory での users.oAuth2PermissionGrants プロパティの読み取り。 |
+| microsoft.aad.directory/users/ownedDevices/read | Azure Active Directory での users.ownedDevices プロパティの読み取り。 |
+| microsoft.aad.directory/users/ownedObjects/read | Azure Active Directory での users.ownedObjects プロパティの読み取り。 |
+| microsoft.aad.directory/users/registeredDevices/read | Azure Active Directory での users.registeredDevices プロパティの読み取り。 |
+
+### <a name="directory-synchronization-accounts"></a>ディレクトリ同期アカウント
+Azure AD Connect サービスでのみ使用されます。
+
+  > [!NOTE]
+  > このロールは、ロールから追加のアクセス許可を継承します。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.aad.directory/organization/dirSync/update | Azure Active Directory での organization.dirSync プロパティの更新。 |
+| microsoft.aad.directory/policies/create | Azure Active Directory での policies の作成。 |
+| microsoft.aad.directory/policies/delete | Azure Active Directory での policies の削除。 |
+| microsoft.aad.directory/policies/basic/read | Azure Active Directory での policies の基本プロパティの読み取り。 |
+| microsoft.aad.directory/policies/basic/update | Azure Active Directory での policies の基本プロパティの更新。 |
+| microsoft.aad.directory/policies/owners/read | Azure Active Directory での policies.owners プロパティの読み取り。 |
+| microsoft.aad.directory/policies/owners/update | Azure Active Directory での policies.owners プロパティの更新。 |
+| microsoft.aad.directory/policies/policiesAppliedTo/read | Azure Active Directory での policies.policiesAppliedTo プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/read | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの更新。 |
+| microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | Azure Active Directory での servicePrincipals.appRoleAssignments プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Azure Active Directory での servicePrincipals.appRoleAssignments プロパティの更新。 |
+| microsoft.aad.directory/servicePrincipals/basic/read | Azure Active Directory での servicePrincipals の基本プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/basic/update | Azure Active Directory での servicePrincipals の基本プロパティの更新。 |
+| microsoft.aad.directory/servicePrincipals/create | Azure Active Directory での servicePrincipals の作成。 |
+| microsoft.aad.directory/servicePrincipals/memberOf/read | Azure Active Directory での servicePrincipals.memberOf プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/basic/read | Azure Active Directory での servicePrincipals.oAuth2PermissionGrants プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/owners/read | Azure Active Directory での servicePrincipals.owners プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/owners/update | Azure Active Directory での servicePrincipals.owners プロパティの更新。 |
+| microsoft.aad.directory/servicePrincipals/ownedObjects/read | Azure Active Directory での servicePrincipals.ownedObjects プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/policies/read | Azure Active Directory での servicePrincipals.policies プロパティの読み取り。 |
+| microsoft.aad.directory/servicePrincipals/policies/update | Azure Active Directory での servicePrincipals.policies プロパティの更新。 |
+| microsoft.aad.directorySync/allEntities/allTasks | Azure AD Connect でのすべてのアクションの実行。 |
+
+### <a name="directory-writers"></a>ディレクトリ ライター
+基本的なディレクトリ情報の読み取りと書き込みを実行できます  ユーザーではなく、アプリケーションへのアクセスを許可する場合。
+
+  > [!NOTE]
+  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.aad.directory/groups/create | Azure Active Directory での groups の作成。 |
+| microsoft.aad.directory/groups/createAsOwner | Azure Active Directory での groups の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
+| microsoft.aad.directory/groups/appRoleAssignments/update | Azure Active Directory での groups.appRoleAssignments プロパティの更新。 |
+| microsoft.aad.directory/groups/basic/update | Azure Active Directory での groups の基本プロパティの更新。 |
+| microsoft.aad.directory/groups/members/update | Azure Active Directory での groups.members プロパティの更新。 |
+| microsoft.aad.directory/groups/owners/update | Azure Active Directory での groups.owners プロパティの更新。 |
+| microsoft.aad.directory/groups/settings/update | Azure Active Directory での groups.settings プロパティの更新。 |
+| microsoft.aad.directory/groupSettings/basic/update | Azure Active Directory での groupSettings の基本プロパティの更新。 |
+| microsoft.aad.directory/groupSettings/create | Azure Active Directory での groupSettings の作成。 |
+| microsoft.aad.directory/groupSettings/delete | Azure Active Directory での groupSettings の削除。 |
+| microsoft.aad.directory/users/appRoleAssignments/update | Azure Active Directory での users.appRoleAssignments プロパティの更新。 |
+| microsoft.aad.directory/users/assignLicense | Azure Active Directory でのユーザーのライセンスの管理。 |
+| microsoft.aad.directory/users/basic/update | Azure Active Directory での users の基本プロパティの更新。 |
+| microsoft.aad.directory/users/invalidateAllRefreshTokens | Azure Active Directory 内のすべてのユーザー更新トークンの無効化。 |
+| microsoft.aad.directory/users/manager/update | Azure Active Directory での users.manager プロパティの更新。 |
+| microsoft.aad.directory/users/userPrincipalName/update | Azure Active Directory での users.userPrincipalName プロパティの更新。 |
+
+### <a name="exchange-service-administrator"></a>Exchange サービス管理者
 Exchange 製品のすべての側面を管理できます。
 
   > [!NOTE]
@@ -639,76 +600,30 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="guest"></a>ゲスト
-ゲスト ユーザーの既定のロール。 制限された一部のディレクトリ情報を読み取ることができます。
-
-  > [!NOTE]
-  > このロールは、ユーザー ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.aad.directory/applications/default/read | Azure Active Directory での applications の基本プロパティの読み取り。 |
-| microsoft.aad.directory/applications/owners/read | Azure Active Directory での applications.owners プロパティの読み取り。 |
-| microsoft.aad.directory/domains/default/read | Azure Active Directory での domains の基本プロパティの読み取り。 |
-| microsoft.aad.directory/groups/appRoleAssignments/read | Azure Active Directory での groups.appRoleAssignments プロパティの読み取り。 |
-| microsoft.aad.directory/groups/default/read | Azure Active Directory での groups の基本プロパティの読み取り。 |
-| microsoft.aad.directory/groups/memberOf/read | Azure Active Directory での groups.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/groups/members/read | Azure Active Directory での groups.members プロパティの読み取り。 |
-| microsoft.aad.directory/groups/owners/read | Azure Active Directory での groups.owners プロパティの読み取り。 |
-| microsoft.aad.directory/groups/settings/read | Azure Active Directory での groups.settings プロパティの読み取り。 |
-| microsoft.aad.directory/organization/basicProfile/read | Azure Active Directory での基本的な組織プロファイル情報の読み取り。 |
-| microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/read | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/appRoleAssignments/read | Azure Active Directory での servicePrincipals.appRoleAssignments プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/default/read | Azure Active Directory での servicePrincipals の基本プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/memberOf/read | Azure Active Directory での servicePrincipals.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/members/read | Azure Active Directory での servicePrincipals.members プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/oAuth2PermissionGrants/default/read | Azure Active Directory での servicePrincipals.oAuth2PermissionGrants プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/owners/read | Azure Active Directory での servicePrincipals.owners プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/ownedObjects/read | Azure Active Directory での servicePrincipals.ownedObjects プロパティの読み取り。 |
-| microsoft.aad.directory/servicePrincipals/policies/read | Azure Active Directory での servicePrincipals.policies プロパティの読み取り。 |
-| microsoft.aad.directory/users/basicProfile/read | Azure Active Directory での users.basicProfile プロパティの読み取り。 |
-| microsoft.aad.directory/users/appRoleAssignments/read | Azure Active Directory での users.appRoleAssignments プロパティの読み取り。 |
-| microsoft.aad.directory/users/default/read | Azure Active Directory での users の基本プロパティの読み取り。 |
-| microsoft.aad.directory/users/directReports/read | Azure Active Directory での users.directReports プロパティの読み取り。 |
-| microsoft.aad.directory/users/eligibleMemberOf/read | Azure Active Directory での users.eligibleMemberOf プロパティの読み取り。 |
-| microsoft.aad.directory/users/invitedBy/read | Azure Active Directory での users.invitedBy プロパティの読み取り。 |
-| microsoft.aad.directory/users/invitedUsers/read | Azure Active Directory での users.invitedUsers プロパティの読み取り。 |
-| microsoft.aad.directory/users/manager/read | Azure Active Directory での users.manager プロパティの読み取り。 |
-| microsoft.aad.directory/users/memberOf/read | Azure Active Directory での users.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Azure Active Directory での users.oAuth2PermissionGrants プロパティの読み取り。 |
-| microsoft.aad.directory/users/ownedDevices/read | Azure Active Directory での users.ownedDevices プロパティの読み取り。 |
-| microsoft.aad.directory/users/ownedObjects/read | Azure Active Directory での users.ownedObjects プロパティの読み取り。 |
-| microsoft.aad.directory/users/password/update | Azure Active Directory でのすべてのユーザーのパスワードの更新。 詳細については、オンライン ドキュメントを参照してください。 |
-| microsoft.aad.directory/users/pendingMemberOf/read | Azure Active Directory での users.pendingMemberOf プロパティの読み取り。 |
-| microsoft.aad.directory/users/registeredDevices/read | Azure Active Directory での users.registeredDevices プロパティの読み取り。 |
-| microsoft.aad.directory/users/scopedAdministratorOf/read | Azure Active Directory での users.scopedAdministratorOf プロパティの読み取り。 |
-
-## <a name="guest-inviter"></a>ゲスト招待元
+### <a name="guest-inviter"></a>ゲスト招待元
 [メンバーがゲストを招待できる] の設定とは無関係にゲスト ユーザーを招待できます。
 
   > [!NOTE]
-  > このロールは、ユーザー ロールから追加のアクセス許可を継承します。
+  > このロールは、ロールから追加のアクセス許可を継承します。
   >
   >
 
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/users/appRoleAssignments/read | Azure Active Directory での users.appRoleAssignments プロパティの読み取り。 |
-| microsoft.aad.directory/users/default/read | Azure Active Directory での users の基本プロパティの読み取り。 |
+| microsoft.aad.directory/users/basic/read | Azure Active Directory での users の基本プロパティの読み取り。 |
 | microsoft.aad.directory/users/directReports/read | Azure Active Directory での users.directReports プロパティの読み取り。 |
 | microsoft.aad.directory/users/invitedBy/read | Azure Active Directory での users.invitedBy プロパティの読み取り。 |
 | microsoft.aad.directory/users/inviteGuest | Azure Active Directory でのゲスト ユーザーの招待。 |
 | microsoft.aad.directory/users/invitedUsers/read | Azure Active Directory での users.invitedUsers プロパティの読み取り。 |
 | microsoft.aad.directory/users/manager/read | Azure Active Directory での users.manager プロパティの読み取り。 |
 | microsoft.aad.directory/users/memberOf/read | Azure Active Directory での users.memberOf プロパティの読み取り。 |
-| microsoft.aad.directory/users/oAuth2PermissionGrants/default/read | Azure Active Directory での users.oAuth2PermissionGrants プロパティの読み取り。 |
+| microsoft.aad.directory/users/oAuth2PermissionGrants/basic/read | Azure Active Directory での users.oAuth2PermissionGrants プロパティの読み取り。 |
 | microsoft.aad.directory/users/ownedDevices/read | Azure Active Directory での users.ownedDevices プロパティの読み取り。 |
 | microsoft.aad.directory/users/ownedObjects/read | Azure Active Directory での users.ownedObjects プロパティの読み取り。 |
 | microsoft.aad.directory/users/registeredDevices/read | Azure Active Directory での users.registeredDevices プロパティの読み取り。 |
 
-## <a name="helpdesk-administrator"></a>ヘルプデスク管理者
+### <a name="helpdesk-administrator"></a>ヘルプデスク管理者
 管理者以外のユーザーとヘルプデスク管理者のパスワードをリセットできます。
 
   > [!NOTE]
@@ -726,7 +641,7 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="information-protection-administrator"></a>Information Protection 管理者
+### <a name="information-protection-administrator"></a>Information Protection 管理者
 Azure Information Protection 製品のすべての側面を管理できます。
 
   > [!NOTE]
@@ -747,7 +662,7 @@ Azure Information Protection 製品のすべての側面を管理できます。
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="intune-service-administrator"></a>Intune サービス管理者
+### <a name="intune-service-administrator"></a>Intune サービス管理者
 Intune 製品のすべての側面を管理できます。
 
   > [!NOTE]
@@ -762,16 +677,16 @@ Intune 製品のすべての側面を管理できます。
 
 | **アクション** | **説明** |
 | --- | --- |
-| microsoft.aad.directory/contacts/default/update | Azure Active Directory での contacts の基本プロパティの更新。 |
+| microsoft.aad.directory/contacts/basic/update | Azure Active Directory での contacts の基本プロパティの更新。 |
 | microsoft.aad.directory/contacts/create | Azure Active Directory での contacts の作成。 |
 | microsoft.aad.directory/contacts/delete | Azure Active Directory での contacts の削除。 |
-| microsoft.aad.directory/devices/default/update | Azure Active Directory での devices の基本プロパティの更新。 |
+| microsoft.aad.directory/devices/basic/update | Azure Active Directory での devices の基本プロパティの更新。 |
 | microsoft.aad.directory/devices/create | Azure Active Directory での devices の作成。 |
 | microsoft.aad.directory/devices/delete | Azure Active Directory での devices の削除。 |
 | microsoft.aad.directory/devices/registeredOwners/update | Azure Active Directory での devices.registeredOwners プロパティの更新。 |
 | microsoft.aad.directory/devices/registeredUsers/update | Azure Active Directory での devices.registeredUsers プロパティの更新。 |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Azure Active Directory での groups.appRoleAssignments プロパティの更新。 |
-| microsoft.aad.directory/groups/default/update | Azure Active Directory での groups の基本プロパティの更新。 |
+| microsoft.aad.directory/groups/basic/update | Azure Active Directory での groups の基本プロパティの更新。 |
 | microsoft.aad.directory/groups/create | Azure Active Directory での groups の作成。 |
 | microsoft.aad.directory/groups/createAsOwner | Azure Active Directory での groups の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
 | microsoft.aad.directory/groups/delete | Azure Active Directory での groups の削除。 |
@@ -781,13 +696,13 @@ Intune 製品のすべての側面を管理できます。
 | microsoft.aad.directory/groups/restore | Azure Active Directory での groups の復元。 |
 | microsoft.aad.directory/groups/settings/update | Azure Active Directory での groups.settings プロパティの更新。 |
 | microsoft.aad.directory/users/appRoleAssignments/update | Azure Active Directory での users.appRoleAssignments プロパティの更新。 |
-| microsoft.aad.directory/users/default/update | Azure Active Directory での users の基本プロパティの更新。 |
+| microsoft.aad.directory/users/basic/update | Azure Active Directory での users の基本プロパティの更新。 |
 | microsoft.aad.directory/users/manager/update | Azure Active Directory での users.manager プロパティの更新。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.intune/allEntities/allTasks | Intune の全側面の管理。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="license-administrator"></a>ライセンス管理者
+### <a name="license-administrator"></a>ライセンス管理者
 ユーザーおよびグループの製品ライセンスを管理できます。
 
   > [!NOTE]
@@ -803,7 +718,29 @@ Intune 製品のすべての側面を管理できます。
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 
-## <a name="message-center-reader"></a>メッセージ センター閲覧者
+### <a name="lync-service-administrator"></a>Lync サービス管理者
+Skype for Business 製品のすべての側面を管理できます。
+
+  > [!NOTE]
+  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
+  >
+  >
+
+  > [!NOTE]
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.skypeForBusiness/allEntities/allTasks | Skype for Business Online の全側面の管理。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+
+### <a name="message-center-reader"></a>メッセージ センター閲覧者
 Office 365 メッセージ センター内でのみ自分の組織のメッセージと更新情報を閲覧することができます。 
 
   > [!NOTE]
@@ -821,7 +758,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | microsoft.aad.accessmessagecenter/allEntities/allTasks | メッセージ センターでのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
 
-## <a name="partner-tier1-support"></a>パートナー レベル 1 のサポート
+### <a name="partner-tier1-support"></a>パートナー レベル 1 のサポート
 使用しないでください。一般的な使用は想定されていません。
 
   > [!NOTE]
@@ -836,7 +773,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 
 | **アクション** | **説明** |
 | --- | --- |
-| microsoft.aad.directory/contacts/default/update | Azure Active Directory での contacts の基本プロパティの更新。 |
+| microsoft.aad.directory/contacts/basic/update | Azure Active Directory での contacts の基本プロパティの更新。 |
 | microsoft.aad.directory/contacts/create | Azure Active Directory での contacts の作成。 |
 | microsoft.aad.directory/contacts/delete | Azure Active Directory での contacts の削除。 |
 | microsoft.aad.directory/groups/create | Azure Active Directory での groups の作成。 |
@@ -845,7 +782,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | microsoft.aad.directory/groups/owners/update | Azure Active Directory での groups.owners プロパティの更新。 |
 | microsoft.aad.directory/users/appRoleAssignments/update | Azure Active Directory での users.appRoleAssignments プロパティの更新。 |
 | microsoft.aad.directory/users/assignLicense | Azure Active Directory でのユーザーのライセンスの管理。 |
-| microsoft.aad.directory/users/default/update | Azure Active Directory での users の基本プロパティの更新。 |
+| microsoft.aad.directory/users/basic/update | Azure Active Directory での users の基本プロパティの更新。 |
 | microsoft.aad.directory/users/delete | Azure Active Directory での users の削除。 |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Azure Active Directory 内のすべてのユーザー更新トークンの無効化。 |
 | microsoft.aad.directory/users/manager/update | Azure Active Directory での users.manager プロパティの更新。 |
@@ -858,7 +795,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="partner-tier2-support"></a>パートナー レベル 2 のサポート
+### <a name="partner-tier2-support"></a>パートナー レベル 2 のサポート
 使用しないでください。一般的な使用は想定されていません。
 
   > [!NOTE]
@@ -873,7 +810,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 
 | **アクション** | **説明** |
 | --- | --- |
-| microsoft.aad.directory/contacts/default/update | Azure Active Directory での contacts の基本プロパティの更新。 |
+| microsoft.aad.directory/contacts/basic/update | Azure Active Directory での contacts の基本プロパティの更新。 |
 | microsoft.aad.directory/contacts/create | Azure Active Directory での contacts の作成。 |
 | microsoft.aad.directory/contacts/delete | Azure Active Directory での contacts の削除。 |
 | microsoft.aad.directory/domains/allTasks | Azure Active Directory での domains の作成と削除、および標準プロパティの読み取りと更新。 |
@@ -881,11 +818,11 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | microsoft.aad.directory/groups/delete | Azure Active Directory での groups の削除。 |
 | microsoft.aad.directory/groups/members/update | Azure Active Directory での groups.members プロパティの更新。 |
 | microsoft.aad.directory/groups/restore | Azure Active Directory での groups の復元。 |
-| microsoft.aad.directory/organization/default/update | Azure Active Directory での organization の基本プロパティの更新。 |
+| microsoft.aad.directory/organization/basic/update | Azure Active Directory での organization の基本プロパティの更新。 |
 | microsoft.aad.directory/organization/trustedCAsForPasswordlessAuth/update | Azure Active Directory での organization.trustedCAsForPasswordlessAuth プロパティの更新。 |
 | microsoft.aad.directory/users/appRoleAssignments/update | Azure Active Directory での users.appRoleAssignments プロパティの更新。 |
 | microsoft.aad.directory/users/assignLicense | Azure Active Directory でのユーザーのライセンスの管理。 |
-| microsoft.aad.directory/users/default/update | Azure Active Directory での users の基本プロパティの更新。 |
+| microsoft.aad.directory/users/basic/update | Azure Active Directory での users の基本プロパティの更新。 |
 | microsoft.aad.directory/users/delete | Azure Active Directory での users の削除。 |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Azure Active Directory 内のすべてのユーザー更新トークンの無効化。 |
 | microsoft.aad.directory/users/manager/update | Azure Active Directory での users.manager プロパティの更新。 |
@@ -898,7 +835,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="power-bi-service-administrator"></a>Power BI サービス管理者
+### <a name="power-bi-service-administrator"></a>Power BI サービス管理者
 Power BI 製品のすべての側面を管理できます。
 
   > [!NOTE]
@@ -920,8 +857,8 @@ Power BI 製品のすべての側面を管理できます。
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="privileged-role-administrator"></a>特権ロール管理者
-Azure AD でロールの割り当てを管理できます。
+### <a name="privileged-role-administrator"></a>特権ロール管理者
+Azure AD でのロールの割り当てと、Privileged Identity Management のすべての側面を管理できます。
 
   > [!NOTE]
   > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
@@ -938,7 +875,7 @@ Azure AD でロールの割り当てを管理できます。
 | microsoft.aad.directory/directoryRoles/update | Azure Active Directory での directoryRoles の更新。 |
 | microsoft.aad.privilegedIdentityManagement/allEntities/allTasks | microsoft.aad.privilegedIdentityManagement でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 
-## <a name="reports-reader"></a>レポート閲覧者
+### <a name="reports-reader"></a>レポート閲覧者
 サインインと監査のレポートを読み取ることができます。
 
   > [!NOTE]
@@ -958,8 +895,8 @@ Azure AD でロールの割り当てを管理できます。
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
 
-## <a name="security-administrator"></a>セキュリティ管理者
-セキュリティ情報とレポートを読み取ることができます。
+### <a name="security-administrator"></a>セキュリティ管理者
+セキュリティ情報とレポートを読み取り、Azure AD と Office 365 で構成を管理することができます。
 
   > [!NOTE]
   > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
@@ -974,7 +911,7 @@ Azure AD でロールの割り当てを管理できます。
 | **アクション** | **説明** |
 | --- | --- |
 | microsoft.aad.directory/applications/policies/update | Azure Active Directory での applications.policies プロパティの更新。 |
-| microsoft.aad.directory/policies/default/update | Azure Active Directory での policies の基本プロパティの更新。 |
+| microsoft.aad.directory/policies/basic/update | Azure Active Directory での policies の基本プロパティの更新。 |
 | microsoft.aad.directory/policies/create | Azure Active Directory での policies の作成。 |
 | microsoft.aad.directory/policies/delete | Azure Active Directory での policies の削除。 |
 | microsoft.aad.directory/policies/owners/update | Azure Active Directory での policies.owners プロパティの更新。 |
@@ -988,7 +925,7 @@ Azure AD でロールの割り当てを管理できます。
 | microsoft.office365.protectionCenter/allEntities/update | microsoft.office365.protectionCenter でのすべてのリソースの更新。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 
-## <a name="security-reader"></a>セキュリティ閲覧者
+### <a name="security-reader"></a>セキュリティ閲覧者
 Azure AD と Office 365 のセキュリティ情報とレポートを読み取ることができます。
 
   > [!NOTE]
@@ -1010,7 +947,7 @@ Azure AD と Office 365 のセキュリティ情報とレポートを読み取�
 | microsoft.office365.protectionCenter/allEntities/read | Office 365 プロテクション センターの全側面の読み取り。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 
-## <a name="service-support-administrator"></a>サービス サポート管理者
+### <a name="service-support-administrator"></a>サービス サポート管理者
 サービス正常性に関する情報を読み取り、サポート チケットを管理することができます。
 
   > [!NOTE]
@@ -1031,7 +968,7 @@ Azure AD と Office 365 のセキュリティ情報とレポートを読み取�
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="sharepoint-service-administrator"></a>SharePoint サービス管理者
+### <a name="sharepoint-service-administrator"></a>SharePoint サービス管理者
 SharePoint サービスのすべての側面を管理できます。
 
   > [!NOTE]
@@ -1053,29 +990,7 @@ SharePoint サービスのすべての側面を管理できます。
 | microsoft.office365.sharepoint/allEntities/allTasks | microsoft.office365.sharepoint でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="skype-for-business-administrator"></a>Skype for Business 管理者
-Skype for Business 製品のすべての側面を管理できます。 以前の Lync サービス管理者です。
-
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-  > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
-| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
-| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
-| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
-| microsoft.office365.skypeForBusiness/allEntities/allTasks | Skype for Business Online の全側面の管理。 |
-| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
-
-## <a name="teams-communications-administrator"></a>Teams 通信管理者
+### <a name="teams-communications-administrator"></a>Teams 通信管理者
 Microsoft Teams サービス内での通話と会議の機能を管理できます。
 
   > [!NOTE]
@@ -1098,7 +1013,7 @@ Microsoft Teams サービス内での通話と会議の機能を管理できま�
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 | microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
 
-## <a name="teams-communications-support-engineer"></a>Teams 通信サポート エンジニア
+### <a name="teams-communications-support-engineer"></a>Teams 通信サポート エンジニア
 高度なツールを使用して、Teams 内の通信の問題のトラブルシューティングを行えます。
 
   > [!NOTE]
@@ -1118,7 +1033,7 @@ Microsoft Teams サービス内での通話と会議の機能を管理できま�
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 
-## <a name="teams-communications-support-specialist"></a>Teams 通信サポート スペシャリスト
+### <a name="teams-communications-support-specialist"></a>Teams 通信サポート スペシャリスト
 基本的なツールを使用して、Teams 内の通信の問題のトラブルシューティングを行えます。
 
   > [!NOTE]
@@ -1138,7 +1053,7 @@ Microsoft Teams サービス内での通話と会議の機能を管理できま�
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 
-## <a name="teams-service-administrator"></a>Teams サービス管理者
+### <a name="teams-service-administrator"></a>Teams サービス管理者
 Microsoft Teams サービスを管理できます。
 
   > [!NOTE]
@@ -1162,8 +1077,8 @@ Microsoft Teams サービスを管理できます。
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 | microsoft.office365.usageReports/allEntities/read | Office 365 の使用状況レポートの読み取り。 |
 
-## <a name="user-account-administrator"></a>ユーザー アカウント管理者
-ユーザーとグループのすべての側面を管理できます。
+### <a name="user-account-administrator"></a>ユーザー アカウント管理者
+ユーザーとグループのすべての側面を、制限付きの管理者のパスワードをリセットすることも含めて、管理できます。
 
   > [!NOTE]
   > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
@@ -1175,11 +1090,11 @@ Microsoft Teams サービスを管理できます。
 | microsoft.aad.directory/appRoleAssignments/create | Azure Active Directory での appRoleAssignments の作成。 |
 | microsoft.aad.directory/appRoleAssignments/delete | Azure Active Directory での appRoleAssignments の削除。 |
 | microsoft.aad.directory/appRoleAssignments/update | Azure Active Directory での appRoleAssignments の更新。 |
-| microsoft.aad.directory/contacts/default/update | Azure Active Directory での contacts の基本プロパティの更新。 |
+| microsoft.aad.directory/contacts/basic/update | Azure Active Directory での contacts の基本プロパティの更新。 |
 | microsoft.aad.directory/contacts/create | Azure Active Directory での contacts の作成。 |
 | microsoft.aad.directory/contacts/delete | Azure Active Directory での contacts の削除。 |
 | microsoft.aad.directory/groups/appRoleAssignments/update | Azure Active Directory での groups.appRoleAssignments プロパティの更新。 |
-| microsoft.aad.directory/groups/default/update | Azure Active Directory での groups の基本プロパティの更新。 |
+| microsoft.aad.directory/groups/basic/update | Azure Active Directory での groups の基本プロパティの更新。 |
 | microsoft.aad.directory/groups/create | Azure Active Directory での groups の作成。 |
 | microsoft.aad.directory/groups/createAsOwner | Azure Active Directory での groups の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
 | microsoft.aad.directory/groups/delete | Azure Active Directory での groups の削除。 |
@@ -1190,7 +1105,7 @@ Microsoft Teams サービスを管理できます。
 | microsoft.aad.directory/groups/settings/update | Azure Active Directory での groups.settings プロパティの更新。 |
 | microsoft.aad.directory/users/appRoleAssignments/update | Azure Active Directory での users.appRoleAssignments プロパティの更新。 |
 | microsoft.aad.directory/users/assignLicense | Azure Active Directory でのユーザーのライセンスの管理。 |
-| microsoft.aad.directory/users/default/update | Azure Active Directory での users の基本プロパティの更新。 |
+| microsoft.aad.directory/users/basic/update | Azure Active Directory での users の基本プロパティの更新。 |
 | microsoft.aad.directory/users/create | Azure Active Directory での users の作成。 |
 | microsoft.aad.directory/users/delete | Azure Active Directory での users の削除。 |
 | microsoft.aad.directory/users/invalidateAllRefreshTokens | Azure Active Directory 内のすべてのユーザー更新トークンの無効化。 |
@@ -1204,54 +1119,6 @@ Microsoft Teams サービスを管理できます。
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
-## <a name="user"></a>User
-メンバー ユーザーの既定のロール。 すべてのディレクトリ情報の読み取りと、制限された一部のディレクトリ情報の書き込みが行えます。
-
-  > [!NOTE]
-  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
-  >
-  >
-
-| **アクション** | **説明** |
-| --- | --- |
-| microsoft.aad.directory/applications/createAsOwner | Azure Active Directory での applications の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
-| microsoft.aad.directory/groups/default/read | Azure Active Directory での groups の基本プロパティの読み取り。 |
-| microsoft.aad.directory/groups/createAsOwner | Azure Active Directory での groups の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
-| microsoft.aad.directory/oAuth2PermissionGrants/create | Azure Active Directory での oAuth2PermissionGrants の作成。 |
-| microsoft.aad.directory/oAuth2PermissionGrants/delete | Azure Active Directory での oAuth2PermissionGrants の削除。 |
-| microsoft.aad.directory/oAuth2PermissionGrants/update | Azure Active Directory での oAuth2PermissionGrants の更新。 |
-| microsoft.aad.directory/servicePrincipals/createAsOwner | Azure Active Directory での servicePrincipals の作成。 作成者が最初の所有者として追加され、作成されたオブジェクトは作成者の 250 の作成オブジェクト クォータにカウントされます。 |
-| microsoft.aad.directory/users/activateServicePlan | Azure Active Directory の Activateserviceplan ユーザー。 |
-| microsoft.aad.directory/users/inviteGuest | Azure Active Directory でのゲスト ユーザーの招待。 |
-| microsoft.aad.directory/applications/default/update | Azure Active Directory での applications の基本プロパティの更新。 |
-| microsoft.aad.directory/applications/delete | Azure Active Directory での applications の削除。 |
-| microsoft.aad.directory/applications/owners/update | Azure Active Directory での applications.owners プロパティの更新。 |
-| microsoft.aad.directory/applications/permissions/update | Azure Active Directory での applications.permissions プロパティの更新。 |
-| microsoft.aad.directory/applications/policies/update | Azure Active Directory での applications.policies プロパティの更新。 |
-| microsoft.aad.directory/applications/restore | Azure Active Directory での applications の復元。 |
-| microsoft.aad.directory/devices/disable | Azure Active Directory での devices の無効化。 |
-| microsoft.aad.directory/groups/appRoleAssignments/update | Azure Active Directory での groups.appRoleAssignments プロパティの更新。 |
-| microsoft.aad.directory/groups/default/update | Azure Active Directory での groups の基本プロパティの更新。 |
-| microsoft.aad.directory/groups/delete | Azure Active Directory での groups の削除。 |
-| microsoft.aad.directory/groups/dynamicMembershipRule/update | Azure Active Directory での groups.dynamicMembershipRule プロパティの更新。 |
-| microsoft.aad.directory/groups/members/update | Azure Active Directory での groups.members プロパティの更新。 |
-| microsoft.aad.directory/groups/owners/update | Azure Active Directory での groups.owners プロパティの更新。 |
-| microsoft.aad.directory/groups/restore | Azure Active Directory での groups の復元。 |
-| microsoft.aad.directory/groups/settings/update | Azure Active Directory での groups.settings プロパティの更新。 |
-| microsoft.aad.directory/policies/default/update | Azure Active Directory での policies の基本プロパティの更新。 |
-| microsoft.aad.directory/policies/delete | Azure Active Directory での policies の削除。 |
-| microsoft.aad.directory/policies/owners/update | Azure Active Directory での policies.owners プロパティの更新。 |
-| microsoft.aad.directory/servicePrincipals/appRoleAssignedTo/update | Azure Active Directory での servicePrincipals.appRoleAssignedTo プロパティの更新。 |
-| microsoft.aad.directory/servicePrincipals/appRoleAssignments/update | Azure Active Directory での servicePrincipals.appRoleAssignments プロパティの更新。 |
-| microsoft.aad.directory/servicePrincipals/default/update | Azure Active Directory での servicePrincipals の基本プロパティの更新。 |
-| microsoft.aad.directory/servicePrincipals/delete | Azure Active Directory での servicePrincipals の削除。 |
-| microsoft.aad.directory/servicePrincipals/owners/update | Azure Active Directory での servicePrincipals.owners プロパティの更新。 |
-| microsoft.aad.directory/servicePrincipals/policies/update | Azure Active Directory での servicePrincipals.policies プロパティの更新。 |
-| microsoft.aad.directory/users/changePassword | Azure Active Directory でのすべてのユーザーのパスワードの変更。 詳細については、オンライン ドキュメントを参照してください。 |
-| microsoft.aad.directory/users/invalidateAllRefreshTokens | Azure Active Directory 内のすべてのユーザー更新トークンの無効化。 |
-| microsoft.aad.directory/users/basicProfile/update | Azure Active Directory での users.basicProfile プロパティの更新。 |
-| microsoft.aad.directory/users/mobile/update | Azure Active Directory での users.mobile プロパティの更新。 |
-| microsoft.aad.directory/users/searchableDeviceKey/update | Azure Active Directory での users.searchableDeviceKey プロパティの更新。 |
 
 ## <a name="deprecated-roles"></a>非推奨のロール
 

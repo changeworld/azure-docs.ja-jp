@@ -6,19 +6,19 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/08/2018
+ms.date: 10/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b577f697f4467656166b83ea78efdfe6d742941f
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2b1a6e2921fdaf9ede1184cfc02c3f61f63c60ac
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032531"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393765"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Azure Automation での Runbook の実行
 
-Azure Automation で runbook を開始するときに、ジョブが作成されます。 ジョブは、Runbook の単一の実行インスタンスです。 各ジョブを実行する Azure Automation ワーカーが割り当てられます。 ワーカーは複数の Azure アカウントで共有されるが、さまざまな Automation アカウントからのジョブは互いに分離されます。 ジョブに対する要求をどのワーカーで処理するかを制御することはできません。 1 つの Runbook で、複数のジョブを同時に実行することができます。 同じ Automation アカウントからのジョブの実行環境を再利用できます。 Azure Portal で Runbook の一覧を表示すると、各 Runbook に対して起動されたすべてのジョブの状態が一覧表示されます。 それぞれの状態を追跡するために、Runbook ごとにジョブの一覧を表示できます。 ジョブのさまざまな状態の説明については、「[ジョブの状態](#job-statuses)」をご覧ください。
+Azure Automation で runbook を開始するときに、ジョブが作成されます。 ジョブは、Runbook の単一の実行インスタンスです。 各ジョブを実行する Azure Automation ワーカーが割り当てられます。 ワーカーは多数の Azure アカウントで共有されますが、異なる Automation アカウントからのジョブは互いに分離されます。 ジョブに対する要求をどのワーカーで処理するかを、制御することはできません。 1 つの Runbook で、多数のジョブを同時に実行することができます。 同じ Automation アカウントからのジョブの実行環境を再利用できます。 Azure Portal で Runbook の一覧を表示すると、各 Runbook に対して起動されたすべてのジョブの状態が一覧表示されます。 Runbook ごとにジョブの一覧を表示して、それぞれの状態を追跡できます。 ジョブのさまざまな状態の説明については、「[ジョブの状態](#job-statuses)」をご覧ください。
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -34,46 +34,46 @@ Azure Automation で runbook を開始するときに、ジョブが作成され
 
 ## <a name="job-statuses"></a>ジョブの状態
 
-次の表には、ジョブが取り得るさまざまな状態を説明します。
+次の表には、ジョブが取り得るさまざまな状態を説明します。 PowerShell には、終了するエラーと終了しないエラーという、2 種類のエラーがあります。 終了するエラーは、発生した場合に Runbook の状態を **[失敗]** に設定します。 終了しないエラーの場合、エラー発生後もスクリプトを継続できます。 終了しないエラーの例では、実在しないパスで `Get-ChildItem` コマンドレットを使用しています。 PowerShell では、パスが存在しないことを確認して、エラーをスローし、次のフォルダーへと処理を継続します。 このエラーでは、Runbook の状態を **[失敗]** に設定せず、**[完了]** とマークすることが可能です。 終了しないエラー時に Runbook を強制的に停止するには、コマンドレットで `-ErrorAction Stop` を使用できます。
 
 | Status | 説明 |
 |:--- |:--- |
 | 完了 |ジョブは正常に完了しました。 |
-| 失敗 |[グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md)では、Runbook のコンパイルが失敗しました。 [PowerShell スクリプト Runbook](automation-runbook-types.md)では、Runbook の開始に失敗したか、ジョブで例外が発生しました。 |
+| 失敗 |[グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md)では、Runbook のコンパイルが失敗しました。 [PowerShell スクリプト Runbook](automation-runbook-types.md) では、Runbook の開始に失敗したか、ジョブで例外が発生しました。 |
 | 失敗、リソースを待機中 |ジョブは [fair share](#fair-share) の限界に 3 回到達し、毎回、同じチェックポイントから、または Runbook の先頭から起動したために、失敗しました。 |
 | キューに登録済み |ジョブは Automation ワーカー上のリソースが使用できるようになるのを待機しています。そうなれば、ジョブを起動できます。 |
-| 開始中 |ジョブがワーカーに割り当てられており、システムがジョブを起動しているところです。 |
-| 再開中 |システムは、ジョブが停止された後、そのジョブを再開しているところです。 |
+| 開始中 |ジョブがワーカーに割り当てられており、システムがジョブを起動しています。 |
+| 再開中 |システムは、ジョブが停止された後、そのジョブを再開しています。 |
 | 実行中 |ジョブは実行中です。 |
 | 実行中、リソースを待機中 |ジョブは [fair share](#fair-share) 制限に達したためにアンロードされました。 ジョブは最後のチェックポイントからすぐに再開します。 |
 | 停止済み |ジョブは完了した後、ユーザーによって停止されました。 |
-| 停止中 |システムがジョブを停止させているところです。 |
-| Suspended |ユーザーか、システムか、または Runbook 内のコマンドによってジョブは中断されました。 中断されているジョブは、再度起動することができ、最後のチェックポイントから、チェックポイントがない場合は Runbook の先頭から再開します。 Runbook は、例外が発生した場合にシステムによってのみ中断されます。 既定では、ErrorActionPreference は、エラーでもジョブの実行を継続することを意味する **Continue** に設定されています。 このユーザー設定変数を **Stop** に設定すると、エラー発生時にジョブは中断します。 [グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md) のみに適用されます。 |
+| 停止中 |システムは、ジョブを停止しています。 |
+| Suspended |ユーザーか、システムか、または Runbook 内のコマンドによってジョブは中断されました。 Runbook にチェックポイントがない場合は、Runbook の先頭から開始されます。 チェックポイントがある場合は、最後のチェックポイントからもう一度再開できます。 Runbook は、例外が発生した場合にシステムによってのみ中断されます。 既定では、ErrorActionPreference は、エラーでもジョブの実行を継続することを意味する **Continue** に設定されています。 このユーザー設定変数を **Stop** に設定すると、エラー発生時にジョブは中断します。 [グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md) のみに適用されます。 |
 | 中断中 |ユーザーの要求を受けてシステムはジョブを中断しようとしています。 Runbook は、次のチェックポイントに到達してからでないと、中断できません。 Runbook は、次のチェックポイントに到達してからでないと、中断できません。 [グラフィカル Runbook と PowerShell Workflow Runbook](automation-runbook-types.md) のみに適用されます。 |
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Azure Portal を使用したジョブの状態の表示
 
-Azure Portal では、すべての Runbook ジョブの状態の概要や、特定の Runbook ジョブの詳細を表示できます。また、Log Analytics ワークスペースとの統合を構成して、Runbook ジョブの状態やジョブ ストリームを転送することもできます。 Log Analytics との統合の詳細については、「[Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
+すべての Runbook ジョブの状態の概要を表示したり、Azure portal での特定の Runbook ジョブの詳細にドリルダウンしたりできます。 また、Log Analytics ワークスペースとの統合を構成して、Runbook ジョブの状態およびジョブ ストリームを転送することも可能です。 Log Analytics との統合の詳細については、「[Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
 
 ### <a name="automation-runbook-jobs-summary"></a>Automation Runbook ジョブの概要
 
-選択した [Automation アカウント] の右にある **[ジョブの統計情報]** タイルで、選択した Automation アカウントの Runbook ジョブすべての概要を確認できます。
+選択した [Automation アカウント] の右にある **[ジョブの統計情報]** タイルで、すべての Runbook ジョブの概要を確認できます。
 
 ![[ジョブの統計情報] タイル](./media/automation-runbook-execution/automation-account-job-status-summary.png)
 
 このタイルでは、実行されたすべてのジョブの数を確認できるほか、その状態がグラフィカルに表示されます。
 
-タイルをクリックすると、**[ジョブ]** ブレードが表示されます。このブレードでは、実行されたジョブの一覧と、そのジョブの状態、およびジョブの開始時刻と完了時刻を確認できます。
+タイルをクリックすると、実行されているすべてのジョブを総括する一覧を示した **[ジョブ]** ページが表示されます。 このページには、状態、開始時刻、および完了時刻が表示されます。
 
-![Automation アカウントの [ジョブ] ブレード](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
+![Automation アカウントの [ジョブ] ページ](./media/automation-runbook-execution/automation-account-jobs-status-blade.png)
 
-ジョブのリストをフィルター処理するには、**[ジョブのフィルター]** を選択します。特定の Runbook、ジョブの状態でフィルターしたり、検索対象の日付/時刻の範囲をドロップダウン リストから選択したりできます。
+ジョブのリストをフィルター処理するには、**[ジョブのフィルター]** を選択します。特定の Runbook、ジョブの状態でフィルターしたり、検索対象の時刻の範囲をドロップダウン リストから選択したりできます。
 
 ![[フィルター] の [ジョブの状態]](./media/automation-runbook-execution/automation-account-jobs-filter.png)
 
-また、特定の Runbook について、ジョブ概要の詳細情報を表示することもできます。それには、Automation アカウントで **[Runbook]** ブレードからその Runbook を選択し、**[ジョブ]** タイルを選択します。 これにより、**[ジョブ]** ブレードが表示され、そのブレードでジョブ レコードをクリックすると、そのジョブの詳細と出力が表示されます。
+また、特定の Runbook について、ジョブ概要の詳細情報を表示することもできます。それには、Automation アカウントで **[Runbook]** ページからその Runbook を選択し、**[ジョブ]** タイルを選択します。 このアクションにより、**[ジョブ]** ページが表示され、そのページでジョブ レコードをクリックすると、そのジョブの詳細と出力が表示されます。
 
-![Automation アカウントの [ジョブ] ブレード](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
+![Automation アカウントの [ジョブ] ページ](./media/automation-runbook-execution/automation-runbook-job-summary-blade.png)
 
 ### <a name="job-summary"></a>ジョブの概要
 
@@ -82,9 +82,9 @@ Azure Portal では、すべての Runbook ジョブの状態の概要や、特�
 次の手順を使用して Runbook のジョブを表示します。
 
 1. Azure Portal で、**[Automation]** を選択し、次に Automation アカウントの名前を選択します。
-2. ハブから **[Runbook]** を選択し、**[Runbook]** ブレードで、一覧から 1 つの Runbook を選択します。
-3. 選択した Runbook のブレードで、**[ジョブ]** タイルをクリックします。
-4. 一覧にあるいずれかのジョブをクリックすると、Runbook の [ジョブの詳細] ブレードで詳細と出力を確認できます。
+2. ハブから **[Runbook]** を選択し、**[Runbook]** ページで、一覧から 1 つの Runbook を選択します。
+3. 選択した Runbook のページで、**[ジョブ]** タイルをクリックします。
+4. 一覧にあるいずれかのジョブをクリックすると、Runbook の [ジョブの詳細] ページで詳細と出力を確認できます。
 
 ## <a name="retrieving-job-status-using-windows-powershell"></a>Windows PowerShell を使用したジョブの状態の取得
 
@@ -101,7 +101,7 @@ Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAcct" -Id $job.JobId –Stream Output
 ```
 
-次の例では、特定のジョブの出力を取得し、各レコードを返します。 いずれかのレコードで例外が発生した場合、値ではなく、その例外が書き出されます。 例外は、出力中に正常にログに記録されない可能性がある追加情報を提供できるため有用です。
+次の例では、特定のジョブの出力を取得し、各レコードを返します。 いずれかのレコードで例外が発生した場合、値ではなく、その例外が書き出されます。 出力中に正常にログに記録されない可能性がある追加情報を例外で提供できるため、この動作は有用です。
 
 ```azurepowershell-interactive
 $output = Get-AzureRmAutomationJobOutput -AutomationAccountName <AutomationAccountName> -Id <jobID> -ResourceGroupName <ResourceGroupName> -Stream "Any"
@@ -135,20 +135,11 @@ Get-AzureRmLog -ResourceId $JobResourceID -MaxRecord 1 | Select Caller
 
 ## <a name="fair-share"></a>fair share
 
-クラウド内のすべての Runbook 間でリソースを共有するために、Azure Automation は任意のジョブが 3 時間実行された後で一時的にそのジョブをアンロードします。 この期間中、[PowerShell ベースの Runbook](automation-runbook-types.md#powershell-runbooks) のジョブは停止され、再開されません。 ジョブの状態には、「**停止**」と表示されます。 この種類の Runbook はチェックポイントをサポートしていないため、常に最初から再開されます。
+クラウド内のすべての Runbook 間でリソースを共有するために、Azure Automation は 3 時間以上実行されている任意のジョブを一時的にアンロードまたは停止します。 [PowerShell ベースの Runbook](automation-runbook-types.md#powershell-runbooks) および [Python の Runbook](automation-runbook-types.md#python-runbooks) に対するジョブは、停止されて再起動されずに、ジョブの状態には [停止済み] と表示されます。
 
-[PowerShell ワークフローベースの Runbook](automation-runbook-types.md#powershell-workflow-runbooks) は、最後の[チェックポイント](https://docs.microsoft.com/system-center/sma/overview-powershell-workflows#bk_Checkpoints)から再開されます。 3 時間の実行後、Runbook ジョブはサービスによって中断され、サービスの状態には「**実行中、リソース待ち**」と表示されます。 サンドボックスが利用可能になると、Automation サービスによって Runbook が自動的に再起動され、最後のチェックポイントから再開されます。 これは、中断/再起動のための通常の PowerShell ワークフローの動作です。 Runbook が再度 3 時間のランタイムを超過した場合、プロセスは最大で 3 回まで繰り返されます。 3 度目の再起動の後、Runbook がまだ 3 時間で完了しない場合は、Runbook ジョブは失敗し、ジョブの状態には「**失敗、リソース待ち**」と表示されます。 この場合は、エラー発生時に次の例外を受信します。
+実行時間が長いタスクの場合は、[Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) を使うことをお勧めします。 Hybrid Runbook Worker はフェア シェアによって制限されず、Runbook が実行できる時間に制限はありません。 その他のジョブの[制限](../azure-subscription-service-limits.md#automation-limits)は、Azure サンドボックスと Hybrid Runbook Worker の両方に適用されます。 Hybrid Runbook Worker は 3 時間の fair share 制限では制限されていないものの、このワーカー上で実行される Runbook は、予期しないローカル インフラストラクチャの問題からの再起動の動作をサポートするように、今後も開発していく必要があります。
 
-"*ジョブは同じチェックポイントから繰り返し削除されたため、実行を継続できません。時間のかかる操作を実行する場合は、Runbook でその状態が維持されることを確認してください。*"
-
-これは、Runbook が次のチェックポイントに進むことができず再度アンロードされない場合に、Runbook が完了せずに無期限に実行されないようにサービスを保護するためのものです。
-
-Runbook がチェックポイントを持っていないか、またはアンロードされる前にジョブがまだ最初のチェックポイントに達していない場合、ジョブは最初から再開されます。
-
-実行時間が長いタスクの場合は、[Hybrid Runbook Worker](automation-hrw-run-runbooks.md#job-behavior) を使うことをお勧めします。 Hybrid Runbook Worker はフェア シェアによって制限されず、Runbook が実行できる時間に制限はありません。 その他のジョブの[制限](../azure-subscription-service-limits.md#automation-limits)は、Azure サンドボックスと Hybrid Runbook Worker の両方に適用されます。
-
-
-PowerShell Workflow Runbook を Azure で使っている場合は、Runbook を作成するときに、2 つのチェックポイント間で任意のアクティビティを実行するのにかかる時間が 3 時間を超えないことを確認してください。 この 3 時間の制限に達したり、実行に時間のかかる操作を分割したりしないように、Runbook にチェックポイントを追加することが必要な場合があります。 たとえば、Runbook が大規模な SQL データベースで再インデックス化を実行する可能性があります。 この単一処理がフェア シェア制限内で完了しない場合、ジョブはアンロードされ、先頭から再開されます。 この場合は再インデックス化処理を複数のステップに分割します。たとえば、一度に 1 つのテーブルを再インデックス化し、各処理の後にチェックポイントを挿入します。こうすれば、最後の処理が完了した後、ジョブは再開することが可能です。
+もう 1 つのオプションは、子 Runbook を使用して Runbook を最適化することです。 Runbook によって多数のリソース上で同じ関数をループ処理する場合 (複数のデータベースでデータベース操作を行うなど)、その関数を[子 Runbook](automation-child-runbooks.md) に移動して、[Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) コマンドレットで呼び出すことができます。 これらの各子 Runbook は、別々のプロセスで並列に実行されるため、親 Runbook が完了するまでの合計時間が減ります。 お使いの Runbook で [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) コマンドレットを使用すると、子 Runbook の完了後に実行が必要な操作がある場合、各子のジョブの状態を確認できます。
 
 ## <a name="next-steps"></a>次の手順
 

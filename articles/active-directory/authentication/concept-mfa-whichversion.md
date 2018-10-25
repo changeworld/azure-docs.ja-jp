@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 0d68c88bdad63bb022babcc4a6ee4ee7c59ce58a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 696c331111fef9d6fc238b733e15230ab3ee1e56
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158456"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378018"
 ---
 # <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>所属する組織に適しているのはどちらのバージョンの Azure MFA であるかを確認しましょう。
 
@@ -55,13 +55,13 @@ Multi-Factor Authentication (MFA) をデプロイする場所と方法を決定�
 
 次の表は、クラウドの Multi-Factor Authentication の機能と、Multi-Factor Authentication Server の機能を比較したものです。
 
-| Feature | クラウドでの MFA | MFA サーバー |
+| 機能 | クラウドでの MFA | MFA サーバー |
 | --- |:---:|:---:|
 | 2 番目の要素としてのモバイル アプリ通知 | ● | ● |
 | 2 番目の要素としてのモバイル アプリ確認コード | ● | ● |
 | 第 2 要素としての音声通話 | ● | ● |
 | 第 2 要素としての単方向 SMS | ● | ● |
-| 第 2 要素としてのハードウェア トークン | | ● |
+| 第 2 要素としてのハードウェア トークン | ● (パブリック プレビュー) | ● |
 | MFA をサポートしていない Office 365 クライアントのアプリ パスワード | ● | |
 | 認証方法の管理制御 | ● | ● |
 | PIN モード | | ● |

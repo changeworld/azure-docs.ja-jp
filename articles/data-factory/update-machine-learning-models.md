@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: 4eed11b312bce27dc0cd98daa3e2599a28fcabbd
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: aed816dadcced36946d6e173ca259a6c0f373727
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524432"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957465"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 この記事では、Azure Data Factory と Azure Machine Learning の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](transform-data-using-machine-learning.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。 
@@ -98,7 +98,7 @@ https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{reso
 
 [Azure Machine Learning Web サービスのポータル](https://services.azureml.net/)で Web サービスにクエリを実行するときに、URL 内のプレースホルダーの値を取得できます。 
 
-新しい種類の更新リソース エンドポイントでは、サービス プリンシパルの認証が必要です。 サービス プリンシパルの認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、Web サービスが属するサブスクリプションまたはリソース グループの**共同作成者**または**所有者**のロールを付与します。 [サービス プリンシパルを作成し、Azure リソースを管理するためのアクセス許可を割り当てる方法](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページをご覧ください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+新しい種類の更新リソース エンドポイントでは、サービス プリンシパルの認証が必要です。 サービス プリンシパルの認証を使用するには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、Web サービスが属するサブスクリプションまたはリソース グループの**共同作成者**または**所有者**のロールを付与します。 [サービス プリンシパルを作成し、Azure リソースを管理するためのアクセス許可を割り当てる方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページをご覧ください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
 
 - アプリケーション ID
 - アプリケーション キー 

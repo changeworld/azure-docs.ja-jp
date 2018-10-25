@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/01/2018
-ms.openlocfilehash: 5250b10c2d9645e25c5b6f6f0f34daa50608e51b
-ms.sourcegitcommit: c722760331294bc8532f8ddc01ed5aa8b9778dec
+ms.openlocfilehash: 5f6a83e33ea443839059b267dfb8043ae48af039
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34736646"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987071"
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>エクスポートとインポートを使用した PostgreSQL データベースの移行
 [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) を使用することで、PostgreSQL データベースをスクリプト ファイルに抽出できます。また、[psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) を使用することで、そのファイルから対象のデータベースにデータをインポートできます。
@@ -49,4 +49,4 @@ psql --file=testdb.sql --host=mydemoserver.database.windows.net --port=5432 --us
 
 ## <a name="next-steps"></a>次の手順
 - ダンプと復元を使用して PostgreSQL データベースを移行するには、「[ダンプと復元を使用した PostgreSQL データベースの移行](howto-migrate-using-dump-and-restore.md)」をご覧ください。
-- Azure Database for PostgreSQL へのデータベースの移行については、「[Database Migration Guide](http://aka.ms/datamigration)」 (データベースの移行ガイド) を参照してください。 
+- Azure Database for PostgreSQL へのデータベースの移行については、「[Database Migration Guide](https://aka.ms/datamigration)」 (データベースの移行ガイド) を参照してください。 

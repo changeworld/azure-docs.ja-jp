@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2018
+ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 96d8977a63d26576d4d783dd0661409fdcee90f8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 03f096bf160c44f7a35f54a73cff6ea701b87d22
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46308861"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352921"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
 
@@ -113,13 +113,19 @@ DirSync からアップグレードする場合は、AD DS エンタープライ
 | AD FS サービス アカウントのページ、[ドメイン ユーザー アカウントの使用オプション] |AD ユーザー アカウントの資格情報 |ドメイン ユーザー |資格情報を指定した AD ユーザー アカウントは、AD FS サービスのログオン アカウントとして使用します。 |
 
 ### <a name="create-the-ad-ds-connector-account"></a>AD DS コネクタ アカウントの作成
+
+>[!IMPORTANT]
+>ADSyncConfig.psm1 という名前の新しい PowerShell モジュールがビルド **1.1.880.0** (2018 年 8 月にリリース) に導入されました。これには、Azure AD DS コネクタ アカウント用の適切な Active Directory アクセス許可を構成するのに役立つコマンドレットのコレクションが含まれています。
+>
+>詳しくは、「[Azure AD Connect: Configure AD DS Connector Account Permission](how-to-connect-configure-ad-ds-connector-account.md)」(Azure AD Connect: AD DS コネクタ アカウントのアクセス許可を構成する) をご覧ください
+
 **[ディレクトリの接続]** ページで指定するアカウントは、インストールの前に Active Directory に存在している必要があります。  Azure AD Connect バージョン 1.1.524.0 以降には、Azure AD Connect ウィザードが Active Directory への接続に使う **AD DS コネクタ アカウント**を作成できるオプションがあります。  
 
 また、必要なアクセス許可を付与されている必要があります。 インストール ウィザードではアクセス許可は検証されません。問題があれば、同期中に検出されます。
 
 必要なアクセス許可は、有効にしたオプションの機能によって異なります。 複数のドメインがある場合は、フォレスト内のすべてのドメインにアクセス許可を付与する必要があります。 これらのいずれの機能も有効にしなかった場合、既定の **ドメイン ユーザー** アクセス許可で十分対応できます。
 
-| Feature | アクセス許可 |
+| 機能 | アクセス許可 |
 | --- | --- |
 | ms-DS-ConsistencyGuid 機能 |「[設計概念 - sourceAnchor としての ms-DS-ConsistencyGuid の使用](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor)」に記載された msDS-ConsistencyGuid 属性への書き込みアクセス許可。 | 
 | パスワード ハッシュの同期 |<li>ディレクトリの変更のレプリケート</li>  <li>ディレクトリの変更をすべてにレプリケート |

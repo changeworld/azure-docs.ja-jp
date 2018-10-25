@@ -4,28 +4,28 @@ description: このトピックでは、Azure Media Services v3 を使用した�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 10/16/2018
 ms.author: juliako
-ms.openlocfilehash: e9ecf1ba3022ca057fa09bad2413aa19d902ae23
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 533aa505c38d3cbfb46d70acecd43cc66614b13d
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972181"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378138"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Azure Media Services v3 を使用したライブ ストリーミング
 
 Azure Media Services を使用してライブ ストリーミング イベントを配信する場合、通常、次のコンポーネントが必要になります。
 
 * イベントのブロードキャストに使用されるカメラ。
-* カメラ (またはノート PC などのデバイス) からの信号を Media Services ライブ ストリーミング サービスに送信されるストリームに変換するライブ ビデオ エンコーダー。 信号には、広告挿入用の SCTE-35 と広告キューを含めることもできます。 
+* カメラ (またはノート PC などのデバイス) からの信号をライブ ストリーミング サービスに送信されるストリームに変換するライブ ビデオ エンコーダー。 信号には、広告挿入用の SCTE-35 と広告キューを含めることもできます。 
 * Media Services ライブ ストリーミングは、コンテンツの取り込み、プレビュー、パッケージ、録画、暗号化、配信に対応するサービスです。コンテンツは顧客に配信できるほか、CDN に配信して広域配信することもできます。
 
 この記事では、Media Services でのライブ ストリーミングの概要を細部にわたって取り上げると共に、関連する主要コンポーネントの図を紹介しています。
@@ -40,6 +40,17 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 
 必要であれば、**動的フィルター**を適用することもできます。動的フィルターを使用することで、プレーヤーに送信されるトラック数、形式、ビットレートを制御することができます。 Media Services は広告の挿入にも対応しています。
 
+### <a name="new-live-encoding-improvements"></a>新しいライブ エンコードの機能強化
+
+最新のリリースでは、次の新しい機能強化が行われています。
+
+- ライブの新しい低待機時間モード (エンド ツー エンドで 10 秒)。
+- RTMP サポートの強化 (安定性の向上およびソース エンコーダー サポートの強化)。
+- RTMPS のセキュアな取り込み。
+
+    LiveEvent を作成すると、4 つの取り込み URL を取得します。 4 つの取り込み URL はほとんど同じで。ストリーミング トークン (AppId) は同じですが、ポート番号の部分のみが異なります。 URL のうち 2 つは RTMPS のプライマリとバックアップです。   
+- 24 時間のコード変換サポート。 
+- SCTE35 経由の RTMP での広告シグナル サポートの強化。
 
 ## <a name="liveevent-types"></a>LiveEvent の種類
 
@@ -71,7 +82,7 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 
 次の表は、2 種類の LiveEvent の機能を比較したものです。
 
-| Feature | パススルー LiveEvent | Basic LiveEvent |
+| 機能 | パススルー LiveEvent | Basic LiveEvent |
 | --- | --- | --- |
 | シングル ビットレートの入力がクラウド内でマルチビットレートにエンコードされる |いいえ  |[はい] |
 | 最大解像度、層の数 |4Kp30  |720p、6 層、30 fps |
@@ -91,7 +102,7 @@ Media Services では、Advanced Encryption Standard (AES-128) または主要�
 
 現在の LiveEvent の状態。 指定できる値は、次のとおりです。
 
-|State|説明|
+|状態|説明|
 |---|---|
 |**Stopped**| これは、LiveEvent 作成後の初期状態です (自動開始が選択された場合を除く)。この状態では、課金は行われません。 この状態で、LiveEvent のプロパティを更新できますが、ストリーミングは許可されていません。|
 |**開始中**| LiveEvent を開始しています。 この状態では、課金は行われません。 この状態の場合、更新やストリーミングはできません。 エラーが発生した場合は、LiveEvent は Stopped 状態に戻ります。|

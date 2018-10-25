@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: f8dae6de835173181430a98c19c7dd1fb3ebaa9f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 53e737f35904a90bb56ec15c8a8282f8775e3c3a
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158905"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393493"
 ---
 # <a name="what-is-the-azure-machine-learning-cli"></a>Azure Machine Learning CLI とは
 
@@ -34,7 +34,7 @@ Azure Machine Learning コマンド ライン インターフェイス (CLI) の
 
 プレビュー PyPi インデックスから次のコマンドを使用して CLI をインストールできます。
 ```AzureCLI
-az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.50-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
+az extension add -s https://azuremlsdktestpypi.blob.core.windows.net/wheels/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1/azure_cli_ml-0.1.68-py2.py3-none-any.whl --pip-extra-index-urls  https://azuremlsdktestpypi.azureedge.net/sdk-release/Preview/E7501C02541B433786111FE8E140CAA1
 ```
 
 次のコマンドを使用して、CLI を削除できます。
@@ -65,7 +65,7 @@ Azure portal クラウド シェルなどの任意のコマンド ライン環�
 
 ### <a name="workspace-creation--compute-setup"></a>ワークスペースの作成とコンピューティングのセットアップ
 
-+ 機械学習の最上位レベルのリソースである Azure Machine Learning ワークスペースを作成します。
++ 機械学習の最上位レベルのリソースである Azure Machine Learning サービス ワークスペースを作成します。
    ```AzureCLI
    az ml workspace create -n myworkspace -g myresourcegroup
    ```

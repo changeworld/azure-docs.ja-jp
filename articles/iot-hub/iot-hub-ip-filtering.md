@@ -7,23 +7,24 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
-ms.openlocfilehash: 864af9cae35912d95f2c0bf0b574a5ca2404a608
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 903f8284327d3d5b9ef386305a436ce44a8a11b2
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190643"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378104"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 
-セキュリティは、Azure IoT Hub をベースとするすべての IoT ソリューションの重要な側面です。 場合によっては、セキュリティ構成の一部として、デバイスが接続できる IP アドレスを明示的に指定する必要があります。 _IP フィルター_機能を使用すると、特定の IPv4 アドレスからのトラフィックを拒否または許可するための規則を構成できます。
+セキュリティは、Azure IoT Hub をベースとするすべての IoT ソリューションの重要な側面です。 場合によっては、セキュリティ構成の一部として、デバイスが接続できる IP アドレスを明示的に指定する必要があります。 *IP フィルター*機能を使用すると、特定の IPv4 アドレスからのトラフィックを拒否または許可するための規則を構成できます。
 
 ## <a name="when-to-use"></a>いつ使用するか
 
 特定の IP アドレスの IoT Hub エンドポイントをブロックすると有用な特定のユース ケースには、次の 2 つがあります。
 
-- IoT Hub が指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外のトラフィックをすべて拒否する必要がある場合。 たとえば、IoT Hub を [Azure ExpressRoute] と共に使用して、IoT Hub とオンプレミス インフラストラクチャとの間にプライベート接続を作成する場合が該当します。
-- IoT Hub の管理者によって疑わしいと識別された IP アドレスからのトラフィックを拒否する必要がある場合。
+* IoT Hub が指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外のトラフィックをすべて拒否する必要がある場合。 たとえば、IoT Hub を [Azure Express Route](https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services) と共に使用して、IoT Hub とオンプレミス インフラストラクチャとの間にプライベート接続を作成する場合が該当します。
+
+* IoT Hub の管理者によって疑わしいと識別された IP アドレスからのトラフィックを拒否する必要がある場合。
 
 ## <a name="how-filter-rules-are-applied"></a>フィルター規則の適用方法
 
@@ -35,21 +36,23 @@ IoT ハブの拒否 IP 規則に一致する IP アドレスからの接続試�
 
 既定では、ポータルの IoT ハブの **[IP フィルター]** は空白になっています。 この既定の設定は、ハブが任意の IP アドレスからの接続を受け入れることを意味します。 この既定の設定は、IP アドレス範囲 0.0.0.0/0 を受け入れる規則と同じです。
 
-![IoT Hub の既定の IP フィルター設定][img-ip-filter-default]
+![IoT Hub の既定の IP フィルター設定](./media/iot-hub-ip-filtering/ip-filter-default.png)
 
 ## <a name="add-or-edit-an-ip-filter-rule"></a>IP フィルター規則の追加または編集
 
 IP フィルター規則を追加する場合は、次の値を求められます。
 
-- **IP フィルター規則名**。最大 128 文字までの一意な英数字文字列である必要があります (大文字と小文字は区別されません)。 ASCII 7 ビット英数字と `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` のみを使用できます。
-- IP フィルター規則の **[アクション]** として、**[reject (拒否)]** または **[accept (許可)]** を選択します。
-- 1 つの IPv4 アドレスか、または CIDR 表記法で記述した IP アドレス ブロックを指定します。 たとえば、CIDR 表記 192.168.100.0/22 は、192.168.100.0 ～ 192.168.103.255 までの 1,024 個の IPv4 アドレスを表します。
+* **IP フィルター規則名**。最大 128 文字までの一意な英数字文字列である必要があります (大文字と小文字は区別されません)。 ASCII 7 ビット英数字と `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` のみを使用できます。
 
-![IoT Hub への IP フィルター規則の追加][img-ip-filter-add-rule]
+* IP フィルター規則の **[アクション]** として、**[reject (拒否)]** または **[accept (許可)]** を選択します。
+
+* 1 つの IPv4 アドレスか、または CIDR 表記法で記述した IP アドレス ブロックを指定します。 たとえば、CIDR 表記 192.168.100.0/22 は、192.168.100.0 ～ 192.168.103.255 までの 1,024 個の IPv4 アドレスを表します。
+
+![IoT Hub への IP フィルター規則の追加](./media/iot-hub-ip-filtering/ip-filter-add-rule.png)
 
 規則を保存すると、更新が進行中であることを通知するアラートが表示されます。
 
-![IP フィルター規則の保存に関する通知][img-ip-filter-save-new-rule]
+![IP フィルター規則の保存に関する通知](./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png)
 
 IP フィルター規則が最大値の 10 個に達すると、**[追加]** オプションは無効になります。
 
@@ -65,7 +68,7 @@ IP フィルター規則が最大値の 10 個に達すると、**[追加]** オ
 
 IP フィルター規則を削除するには、グリッド内で 1 つまたは複数の規則を選択し、**[削除]** をクリックします。
 
-![IoT Hub の IP フィルター規則の削除][img-ip-filter-delete-rule]
+![IoT Hub の IP フィルター規則の削除](./media/iot-hub-ip-filtering/ip-filter-delete-rule.png)
 
 ## <a name="ip-filter-rule-evaluation"></a>IP フィルター規則の評価
 
@@ -77,27 +80,11 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 
 新しい IP フィルター規則の順序を保存するには、**[保存]** をクリックします。
 
-![IoT Hub の IP フィルター規則の順序の変更][img-ip-filter-rule-order]
+![IoT Hub の IP フィルター規則の順序の変更](./media/iot-hub-ip-filtering/ip-filter-rule-order.png)
 
 ## <a name="next-steps"></a>次の手順
 
 IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
 
-- [操作の監視][lnk-monitor]
-- [IoT Hub メトリック][lnk-metrics]
-
-<!-- Images -->
-[img-ip-filter-default]: ./media/iot-hub-ip-filtering/ip-filter-default.png
-[img-ip-filter-add-rule]: ./media/iot-hub-ip-filtering/ip-filter-add-rule.png
-[img-ip-filter-save-new-rule]: ./media/iot-hub-ip-filtering/ip-filter-save-new-rule.png
-[img-ip-filter-delete-rule]: ./media/iot-hub-ip-filtering/ip-filter-delete-rule.png
-[img-ip-filter-rule-order]: ./media/iot-hub-ip-filtering/ip-filter-rule-order.png
-
-
-<!-- Links -->
-
-[IoT Hub developer guide]: iot-hub-devguide.md
-[Azure ExpressRoute]:  https://azure.microsoft.com/documentation/articles/expressroute-faqs/#supported-services
-
-[lnk-monitor]: iot-hub-operations-monitoring.md
-[lnk-metrics]: iot-hub-metrics.md
+* [操作の監視](iot-hub-operations-monitoring.md)
+* [IoT Hub メトリック](iot-hub-metrics.md)

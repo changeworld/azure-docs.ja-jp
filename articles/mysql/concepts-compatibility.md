@@ -9,12 +9,12 @@ manager: kfile
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: a133ccdd0b40f9a878ba627e6c093787316aea35
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9e56c2bd65f8a9a517a7cdebe02a1d051c689df6
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264122"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985892"
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 この記事では、Azure Database for MySQL との、ドライバーと管理ツールの互換性について説明します。
@@ -24,7 +24,7 @@ Azure Database for MySQL では、MySQL データベースの世界で最も人�
 
 | **ドライバー** | **リンク** | **互換性のあるバージョン** | **互換性のないバージョン** | **メモ** |
 | :-------- | :------------------------ | :----------- | :---------------------- | :--------------------------------------- |
-| PHP | http://php.net/downloads.php | 5.5 5.6 7.x | 5.3 | SSL MySQLi との PHP 7.0 接続では、接続文字列に MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT を追加します。 <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO の設定: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` オプションを false に設定します。|
+| PHP | https://secure.php.net/downloads.php | 5.5 5.6 7.x | 5.3 | SSL MySQLi との PHP 7.0 接続では、接続文字列に MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT を追加します。 <br> ```mysqli_real_connect($conn, $host, $username, $password, $db_name, 3306, NULL, MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT);```<br> PDO の設定: ```PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT``` オプションを false に設定します。|
 | .NET | [GitHub 上の MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [Nuget のインストール パッケージ](https://www.nuget.org/packages/MySqlConnector/) | 0.27 以降 | 0.26.5 以前 | |
 | Nodejs |  [GitHub 上の MySQLjs](https://github.com/mysqljs/mysql/releases) <br> NPM のインストール パッケージ:<br> NPM から `npm install mysql` を実行 | 2.15 | 2.14.1 以前 | |
 | GO | https://github.com/go-sql-driver/mysql/releases | 1.3 | 1.2 以前 | 接続文字列で allowNativePasswords=true を使用 |

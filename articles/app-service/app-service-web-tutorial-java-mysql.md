@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: 0baab86c0cb76bfeecb30cdb62c968a476e402b9
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: db1005bbce25b0fa3fec76e6f9428a4cdd6fa4aa
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296773"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024377"
 ---
 # <a name="tutorial-build-a-java-and-mysql-web-app-in-azure"></a>チュートリアル: Azure で Java と MySQL Web アプリを構築する
 
@@ -28,11 +28,11 @@ ms.locfileid: "44296773"
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、[コンテナー化された Spring Boot アプリを Azure にデプロイする方法](/java/azure/spring-framework/deploy-containerized-spring-boot-java-app-with-maven-plugin)に関するページを参照してください。
 >
 
-このチュートリアルでは、Azure で Java Web アプリを作成し、MySQL データベースに接続する方法について説明します。 完了すると、[Azure App Service Web Apps](app-service-web-overview.md) で実行中の [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/overview) にデータを格納する [Spring Boot](https://projects.spring.io/spring-boot/) アプリケーションが完成します。
+このチュートリアルでは、Azure で Java Web アプリを作成し、MySQL データベースに接続する方法について説明します。 完了すると、[Azure App Service Web Apps](app-service-web-overview.md) で実行中の [Azure Database for MySQL](../mysql/overview.md) にデータを格納する [Spring Boot](https://projects.spring.io/spring-boot/) アプリケーションが完成します。
 
 ![Azure App Service で実行される Java アプリ](./media/app-service-web-tutorial-java-mysql/appservice-web-app.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Azure で MySQL データベースを作成する
@@ -122,7 +122,7 @@ select * from todo_item;
 
 ## <a name="create-an-azure-mysql-database"></a>Azure MySQL データベースを作成する
 
-この手順では、[Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) を使用して [Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md) インスタンスを作成します。 後のチュートリアルでこのデータベースを使用できるように、サンプル アプリケーションを構成します。
+この手順では、[Azure CLI](/cli/azure/install-azure-cli) を使用して [Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-cli.md) インスタンスを作成します。 後のチュートリアルでこのデータベースを使用できるように、サンプル アプリケーションを構成します。
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -282,7 +282,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 サンプル アプリを実行する前に、Azure で作成した Azure MySQL データベースを使用するように Web アプリのアプリケーション設定を行います。 これらのプロパティは環境変数として Web アプリケーションに公開され、パッケージ化された Web アプリ内の application.properties で設定されている値をオーバーライドします。 
 
-Cloud Shell で、CLI で [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/webapp/config/appsettings) を使用してアプリケーションの設定を行います。
+Cloud Shell で、CLI で [`az webapp config appsettings`](/cli/azure/webapp/config/appsettings) を使用してアプリケーションの設定を行います。
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -299,7 +299,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>FTP デプロイ資格情報を取得する 
 アプリケーションを Azure App Service にデプロイするには、FTP、ローカル Git、GitHub、Azure DevOps、BitBucket など、さまざまな方法があります。 この例では、事前にご利用のローカル コンピューターでビルドした .WAR ファイルを Azure App Service にデプロイするために FTP を使用します。
 
-ftp コマンドで Web アプリに渡す資格情報を確認するには、Cloud Shell で [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/webapp/deployment#az-appservice-web-deployment-list-publishing-profiles) コマンドを次のように使用します。 
+ftp コマンドで Web アプリに渡す資格情報を確認するには、Cloud Shell で [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment#az-webapp-deployment-list-publishing-profiles) コマンドを次のように使用します。 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json
@@ -440,25 +440,25 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-これらのリソースが別のチュートリアルで不要である場合 (「[次のステップ](#next)」を参照)、Cloud Shell で次のコマンドを実行して削除することができます。 
-  
+これらのリソースが別のチュートリアルで不要である場合 (「[次のステップ](#next)」を参照)、Cloud Shell で次のコマンドを実行して削除することができます。 
+  
 ```azurecli-interactive
-az group delete --name myResourceGroup 
-``` 
+az group delete --name myResourceGroup 
+``` 
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>次の手順
+## Next steps
 
 > [!div class="checklist"]
-> * Azure で MySQL データベースを作成する
-> * サンプル Java アプリを MySQL に接続する
-> * Azure にアプリケーションをデプロイする
-> * アプリを更新して再デプロイする
-> * Azure から診断ログをストリーミングする
-> * Azure Portal でアプリを管理する
+> * Create a MySQL database in Azure
+> * Connect a sample Java app to the MySQL
+> * Deploy the app to Azure
+> * Update and redeploy the app
+> * Stream diagnostic logs from Azure
+> * Manage the app in the Azure portal
 
-次のチュートリアルに進み、カスタム DNS 名をアプリにマップする方法を学習してください。
+Advance to the next tutorial to learn how to map a custom DNS name to the app.
 
 > [!div class="nextstepaction"] 
-> [既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)
+> [Map an existing custom DNS name to Azure Web Apps](app-service-web-tutorial-custom-domain.md)

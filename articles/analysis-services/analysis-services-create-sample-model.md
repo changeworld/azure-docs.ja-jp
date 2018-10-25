@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: c63995a461cee6bc39603a43604b8080942bd88b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: def7ee54390a716027fcacb433b99826d3650f6f
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442809"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428694"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>チュートリアル - ポータルからサンプル モデルを追加する
 

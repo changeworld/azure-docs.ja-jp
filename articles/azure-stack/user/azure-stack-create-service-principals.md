@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 08/22/2018
 ms.author: sethm
 ms.reviewer: thoroet
-ms.openlocfilehash: 891032e9f0a40b2a9df19ed25ffc19dd81507cab
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: a32327109bc71a41f871682936c5f27ed490975c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45628955"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958316"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>サービス プリンシパルを作成してアプリケーションに Azure Stack リソースへのアクセスを付与する
 
@@ -57,7 +57,7 @@ Azure Stack に Active Directory を構成した方法によって、サービ�
 Azure Stack で Azure AD を ID ストアとして使用する場合、Azure Portal を使って、Azure と同じ手順を利用してサービス プリンシパルを作成できます。
 
 >[!NOTE]
-サービス プリンシパルの作成を開始する前に、[必要な Azure AD のアクセス許可](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions)があることを確認してください。
+サービス プリンシパルの作成を開始する前に、[必要な Azure AD のアクセス許可](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)があることを確認してください。
 
 ### <a name="create-service-principal"></a>サービス プリンシパルの作成
 

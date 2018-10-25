@@ -7,14 +7,15 @@ author: craigshoemaker
 ms.custom: mvc
 ms.service: storage
 ms.author: cshoe
-ms.date: 04/06/2018
+ms.date: 10/18/2018
 ms.topic: quickstart
-ms.openlocfilehash: b7230b5fdc519809463e3ee176aa14fa1553a48d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: blobs
+ms.openlocfilehash: 27a01cae8bd099355034df40289837e6025c2550
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960313"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429294"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -135,7 +136,7 @@ npm start
         
         <button id="delete-button">Delete</button>
     </body>
-    <script src="scripts/azure-storage.blob.min.js"></script>
+    <script src="scripts/azure-storage.blob.min.js" charset="utf-8"></script>
     <script>
         // Blob-related code goes here
     </script>

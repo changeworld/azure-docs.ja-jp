@@ -1,20 +1,21 @@
 ---
 title: カスタム ウェイク ワードを作成する
-description: Speech Devices SDK 用のカスタム ウェイク ワードを作成する方法について説明します。
 titleSuffix: Azure Cognitive Services
+description: Speech Devices SDK 用のカスタム ウェイク ワードを作成する方法について説明します。
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: erhopf
-ms.openlocfilehash: ab2bc9a83feadd9ece8876559e730e7bc955908a
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 5f138aee9dfa91e285591e5d50c14465ad32b77d
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165472"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469080"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Speech サービスを使用してカスタム ウェイク ワードを作成する
 
@@ -52,10 +53,6 @@ ms.locfileid: "49165472"
 1. Azure Active Directory の招待を受信したメール アドレスを使用して新しいアカウントを作成します。 
 
     ![新しいアカウントを作成する](media/speech-devices-sdk/wake-word-1.png)
- 
-1.  サインインしたら、フォームに記入し、**[Start my journey]\(開始する)** を選択します。
-
-    ![正常にサインイン](media/speech-devices-sdk/wake-word-3.png)
  
 1. **[Custom Wake Word]\(カスタム ウェイク ワード)** ページは公開されていないので、このページに直接移動するリンクはありません。 Custom Speech 機能を利用するには Azure のサブスクリプションが必要ですが、カスタム ウェイク ワード機能では不要です。 "**サブスクリプションが見つかりません。**" というエラー メッセージが表示される場合は、 URL 内の **"Subscriptions?errorMessage=No%20Subscriptions%20found"** を "**customkws**" にただ置き換えて、Enter キーを押します。 URL は、ご利用のリージョンに応じて、 https://westus.cris.ai/customkws、 https://eastasia.cris.ai/customkws、または https://northeurope.cris.ai/customkws のいずれかである必要があります。
 

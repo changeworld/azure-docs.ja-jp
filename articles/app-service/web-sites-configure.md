@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 84bd2019e9586fa008560dba07119323ecb7f02e
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: cf3a6fe24082a10db6a5b1267b70435d9e36b720
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293718"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115524"
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Azure App Service での Web アプリの構成
 
@@ -55,7 +55,7 @@ ms.locfileid: "36293718"
 <a name="alwayson"></a>
 **常時接続**。 既定では、アイドル状態がしばらく続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 基本モードと標準モードでは、**[常時接続]** を有効にすると、アプリが常に読み込まれた状態になります。 アプリで継続的な Web ジョブを実行する場合や CRON 式を使ってトリガーされた Web ジョブを実行する場合、**[常時接続]** を有効にする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。
 
-**マネージ パイプライン バージョン**。 IIS [パイプライン モード]を設定します。 この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合] \(既定) のままにしておきます。
+**マネージド パイプライン バージョン**。 IIS [パイプライン モード]を設定します。 この設定は、以前のバージョンの IIS を必要とするレガシ アプリを使用する場合を除いて、[統合] \(既定) のままにしておきます。
 
 **HTTP バージョン**。 [HTTPS/2](https://wikipedia.org/wiki/HTTP/2) プロトコルのサポートを有効にするには、**[2.0]** に設定します。 
 
@@ -73,6 +73,7 @@ ms.locfileid: "36293718"
 このセクションには、起動時に Web アプリがロードする名前/値ペアが含まれます。 
 
 * .NET アプリの場合、実行時にこれらの設定が .NET 構成の `AppSettings` に挿入され、既存の設定がオーバーライドされます。 
+* Linux 上の App Service や Web App for Containers で、`ApplicationInsights:InstrumentationKey` のように名前に json キー構造を入れ子にした場合、`ApplicationInsights__InstrumentationKey` をキー名にする必要があります。 そのため、すべての `:` は `__` (つまり二重のアンダースコア) に置き換える必要がある点に注意してください。
 * PHP、Python、Java および Node アプリケーションでは、実行時に環境変数としてこれらの設定にアクセスできます。 各アプリ設定で、2 つの環境変数が作成されます。1 つは、アプリ設定エントリで指定された名前になり、もう 1 つはプレフィックスとして APPSETTING_ が付加されます。 両方に同じ値が格納されます。
 
 アプリの設定は、格納されるときに常に暗号化されます (保存時の暗号化)。

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c6d7268a8501c602354d21edc5a0feaae9b1a0b2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4c5f99ed9d20076e3e25ebca261253e576572786
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575476"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354259"
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) での HTTP API
 
@@ -92,6 +92,9 @@ Location: https://{host}/runtime/webhooks/durabletask/instances/34ce9a28a6834d84
 | systemKey  | クエリ文字列    | API の呼び出しに必要な承認キー。 |
 | showHistory| クエリ文字列    | 省略可能なパラメーター。 `true` に設定した場合、オーケストレーションの実行履歴が応答ペイロードに含まれます。| 
 | showHistoryOutput| クエリ文字列    | 省略可能なパラメーター。 `true` に設定した場合、アクティビティの出力がオーケストレーションの実行履歴に含まれます。| 
+| createdTimeFrom  | クエリ文字列    | 省略可能なパラメーター。 指定した場合、特定の ISO8601 タイムスタンプの時刻またはそれより後に作成された、返されるインスタンスの一覧がフィルター処理されます。|
+| createdTimeTo    | クエリ文字列    | 省略可能なパラメーター。 指定した場合、特定の ISO8601 タイムスタンプの時刻またはそれより前に作成された、返されるインスタンスの一覧がフィルター処理されます。|
+| runtimeStatus    | クエリ文字列    | 省略可能なパラメーター。 指定した場合、返されるインスタンスの一覧がランタイム状態に基づいてフィルター処理されます。 考えられるランタイム状態の値の一覧を参照するには、[インスタンスのクエリの実行](durable-functions-instance-management.md)に関するトピックをご覧ください。 |
 
 `systemKey` は、Azure Functions ホストによって自動生成される承認キーです。 このキーにより、Durable Task 拡張機能 API へのアクセスが特別に許可されます。また、このキーは[他の承認キー](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)と同じ方法で管理できます。 前述の `CreateCheckStatusResponse` API を使用すると、`systemKey` 値を最も簡単に検出できます。
 
@@ -194,9 +197,13 @@ GET /runtime/webhooks/durabletask/instances/{instanceId}?taskHub={taskHub}&conne
 
 **HTTP 202** の応答には、前述の `statusQueryGetUri` フィールドと同じ URL を参照する **Location** 応答ヘッダーも含まれています。
 
+
 ### <a name="get-all-instances-status"></a>すべてのインスタンス ステータスを取得する
 
 すべてのインスタンス ステータスを照会することも可能です。 'Get instance status' 要求から `instanceId` を削除します。 パラメーターは、'Get instance status' と同じです。 
+
+覚えておくべきことの 1 つは、`connection` と `code` が省略可能であることです。 関数に対する匿名認証がある場合、コードは必要ありません。
+AzureWebJobsStorage アプリ設定で定義されているのとは異なる BLOB ストレージの接続文字列を使用しない場合は、接続クエリ文字列パラメーターを無視してかまいません。
 
 #### <a name="request"></a>Request
 
@@ -210,6 +217,22 @@ Functions 2.0 形式では、パラメーターはすべて同じですが、URL
 
 ```http
 GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}
+```
+
+#### <a name="request-with-filters"></a>フィルター付きの要求
+
+要求をフィルター処理することができます。
+
+Functions 1.0 の場合、要求形式は次のようになります。
+
+```http
+GET /admin/extensions/DurableTaskExtension/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}
+```
+
+Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。 
+
+```http
+GET /runtime/webhooks/durableTask/instances/?taskHub={taskHub}&connection={connection}&code={systemKey}&createdTimeFrom={createdTimeFrom}&createdTimeTo={createdTimeTo}&runtimeStatus={runtimeStatus,runtimeStatus,...}
 ```
 
 #### <a name="response"></a>Response
@@ -268,6 +291,7 @@ GET /runtime/webhooks/durabletask/instances/?taskHub={taskHub}&connection={conne
 > [!NOTE]
 > この操作は、インスタンスのテーブルに多数の行がある場合、Azure Storage の I/O の観点から非常にコスト効率が悪くなることがあります。 インスタンス テーブルの詳細については、「[Durable Functions のパフォーマンスとスケーリング (Azure Functions)](https://docs.microsoft.com/azure/azure-functions/durable-functions-perf-and-scale#instances-table)」のドキュメントを参照してください。
 > 
+
 
 ### <a name="raise-event"></a>イベントを発生させる
 

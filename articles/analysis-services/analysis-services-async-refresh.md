@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 883d03b9ffebf85815da7ae62546f75b3d72442f
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: e797f1faf249a1ad1eebbd46984829de5f087936
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441456"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958671"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
 REST 呼び出しをサポートしているプログラミング言語を使用すれば、Azure Analysis Services 表形式モデルでの非同期データ更新操作を実行できます。 これには、クエリのスケールアウトのための読み取り専用レプリカの同期が含まれます。 
@@ -56,7 +56,7 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>認証
+## <a name="authentication"></a>Authentication
 
 すべての呼び出しは、Authorization ヘッダー内の有効な Azure Active Directory (OAuth 2) トークンで認証する必要があり、次の要件を満たす必要があります。
 
@@ -236,7 +236,7 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 
 #### <a name="service-principal"></a>サービス プリンシパル
 
-Azure AS でサービス プリンシパルを設定し、必要なアクセス許可を割り当てる方法については、[Azure Portal でサービス プリンシパルを作成する方法](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページと「[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)」を参照してください。 これらの手順を完了したら、追加で次の手順を実行します。
+Azure AS でサービス プリンシパルを設定し、必要なアクセス許可を割り当てる方法については、[Azure Portal でサービス プリンシパルを作成する方法](../active-directory/develop/howto-create-service-principal-portal.md)に関するページと「[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)」を参照してください。 これらの手順を完了したら、追加で次の手順を実行します。
 
 1.  コード サンプル内で「**string authority = …**」を見つけたら、「**common**」をご所属の組織のテナント ID に置き換えます。
 2.  コメント化およびコメントの解除を行って、ClientCredential クラスで cred オブジェクトをインスタンス化します。 \<App ID> と \<App Key> の値が安全な方法でアクセスされていることを確認します。または、サービス プリンシパルの証明書ベース認証を使用します。

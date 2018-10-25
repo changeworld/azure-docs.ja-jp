@@ -10,12 +10,12 @@ ms.date: 08/31/2018
 ms.service: key-vault
 ms.workload: identity
 ms.topic: conceptual
-ms.openlocfilehash: c2696d5eb22443b565c48ef4f96d6e4a25827606
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9b0600a7afb07600116440461037c7abcb9236de
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295006"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404326"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Azure Key Vault の仮想ネットワーク サービス エンドポイント
 
@@ -62,7 +62,7 @@ Key Vault の仮想ネットワーク サービス エンドポイントを使�
 |Azure Resource Manager テンプレート展開サービス|[デプロイ時にセキュリティで保護された値を渡す](../azure-resource-manager/resource-manager-keyvault-parameter.md)|
 |Azure Disk Encryption ボリューム暗号化サービス|[Azure Disk Encryption](../security/azure-security-disk-encryption.md) を有効にするために、VM のデプロイ中に BitLocker キー (Windows VM) または DM パスフレーズ (Linux VM) とキー暗号化キーへのアクセスを許可する|
 |Azure Backup|[Azure Backup](../backup/backup-introduction-to-azure-backup.md) を使用して、Azure VM のバックアップ中に関連するキーとシークレットのバックアップと復元を許可する|
-|Exchange Online と SharePoint Online|[カスタマー キー](https://support.office.com/en-us/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697)を使用するサービス暗号化のためにカスタマー キーへのアクセスを許可する。|
+|Exchange Online と SharePoint Online|[カスタマー キー](https://support.office.com/article/Controlling-your-data-in-Office-365-using-Customer-Key-f2cd475a-e592-46cf-80a3-1bfb0fa17697)を使用するサービス暗号化のためにカスタマー キーへのアクセスを許可する。|
 |Azure Information Protection|[Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) のテナント キーへのアクセスを許可する。|
 |アプリケーション サービス|[Key Vault を介して Azure Web アプリ証明書をデプロイする](https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/)|
 |Azure SQL|[Azure SQL Database と Data Warehouse の Transparent Data Encryption での Bring Your Own Key のサポート](../sql-database/transparent-data-encryption-byok-azure-sql.md?view=sql-server-2017&viewFallbackFrom=azuresqldb-current)|

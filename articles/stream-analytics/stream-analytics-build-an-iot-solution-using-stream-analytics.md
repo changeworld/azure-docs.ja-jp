@@ -9,12 +9,12 @@ ms.reviewer: jasonh, sngun
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/21/2018
-ms.openlocfilehash: 1610e8173d90be3c0b50f05e64d0e84e1c21ad0e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 88c58175f4886d4796ed4e32b41d030c9ee441fc
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698045"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986890"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 
@@ -44,7 +44,7 @@ ms.locfileid: "43698045"
 ### <a name="entry-data-stream"></a>入口データ ストリーム
 入口データ ストリームは、料金所に入る車両の情報を含んでいます。 出口データ イベントは、サンプル アプリに含まれる Web アプリから Event Hub キューにライブでストリーミングされます。
 
-| TollID | EntryTime | LicensePlate | State | Make | モデル | VehicleType | VehicleWeight | Toll | タグ |
+| TollID | EntryTime | LicensePlate | 州 | Make | モデル | VehicleType | VehicleWeight | Toll | タグ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -60,7 +60,7 @@ ms.locfileid: "43698045"
 | TollID |料金所を一意に識別する料金所 ID |
 | EntryTime |車両が料金所ブースに入った日時 (UTC) |
 | LicensePlate |車両のナンバー プレートの番号 |
-| State |米国の州 |
+| 州 |米国の州 |
 | Make |自動車の製造元 |
 | モデル |自動車の型式 |
 | VehicleType |1 (乗用車) または 2 (商用車) |
@@ -109,7 +109,7 @@ ms.locfileid: "43698045"
 | 有効期限切れ |車両登録のステータス: 車両登録が有効期間内である場合は 0、期限切れである場合は 1 |
 
 ## <a name="set-up-the-environment-for-azure-stream-analytics"></a>Azure Stream Analytics の環境の設定
-このソリューションを完了するには、Microsoft Azure サブスクリプションが必要です。 Azure アカウントをお持ちでない場合は、 [無料試用版にサインアップ](http://azure.microsoft.com/pricing/free-trial/)してください。
+このソリューションを完了するには、Microsoft Azure サブスクリプションが必要です。 Azure アカウントをお持ちでない場合は、 [無料試用版にサインアップ](https://azure.microsoft.com/pricing/free-trial/)してください。
 
 Azure クレジットを最適に利用できるよう、この記事の最後にある Azure アカウントのクリーンアップに関するセクションの手順を忘れずに実行してください。
 

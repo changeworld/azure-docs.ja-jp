@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 3c85398f140ccd61202c066f4394fa54358e0a1e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 6673fa9d377400d7e80fc95dc7d0ce12f4b2e60e
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161575"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49354174"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Azure SQL Database のエラスティック プールに対する仮想コアベースの購入モデルの制限
 
@@ -28,16 +28,15 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 
-## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>エラスティック プール: ストレージ サイズとコンピューティング サイズ
-
-次の表では、SQL Database エラスティック プールについて、各サービス レベルとコンピューティング サイズで使用可能なリソースを示します。 [Azure Portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases)、[Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases)、または [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) を使って、サービス レベル、コンピューティング サイズ、ストレージ量を設定できます。
+[Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases)、[Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases)、または [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) を使って、サービス レベル、コンピューティング サイズ、ストレージ量を設定できます。
 
 > [!NOTE]
 > エラスティック プール内の個々のデータベースのリソース制限は、一般的に同じコンピューティング サイズのプール外の単一のデータベースのリソース制限と同じです。 たとえば、GP_Gen4_1 データベースの最大同時実行ワーカー数は 200 ワーカーです。 そのため、GP_Gen4_1 プール内のデータベースの最大の同時実行ワーカー数も 200 ワーカーです。 GP_Gen4_1 プールの同時実行ワーカーの総数は 210 です。
 
-### <a name="general-purpose-service-tier"></a>汎用のサービス階層
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>汎用サービス レベル: ストレージ サイズとコンピューティング サイズ
 
-#### <a name="generation-4-compute-platform"></a>第 4 世代コンピューティング プラットフォーム
+### <a name="generation-4-compute-platform"></a>第 4 世代コンピューティング プラットフォーム
+
 |コンピューティング サイズ|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |H/W の世代|4|4|4|4|4|4|
@@ -61,7 +60,8 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 |||
 
-#### <a name="generation-5-compute-platform"></a>第 5 世代コンピューティング プラットフォーム
+### <a name="generation-5-compute-platform"></a>第 5 世代コンピューティング プラットフォーム
+
 |コンピューティング サイズ|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |H/W の世代|5|5|5|5|5|5|5|5|
@@ -85,9 +85,10 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |含まれるバックアップ ストレージ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|1X DB サイズ|
 |||
 
-### <a name="business-critical-service-tier"></a>Business Critical サービス レベル
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Business Critical サービス レベル: ストレージ サイズとコンピューティング サイズ
 
-#### <a name="generation-4-compute-platform"></a>第 4 世代コンピューティング プラットフォーム
+### <a name="generation-4-compute-platform"></a>第 4 世代コンピューティング プラットフォーム
+
 |コンピューティング サイズ|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |H/W の世代|4|4|4|4|4|4|
@@ -112,6 +113,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 |||
 
 #### <a name="generation-5-compute-platform"></a>第 5 世代コンピューティング プラットフォーム
+
 |コンピューティング サイズ|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |H/W の世代|5|5|5|5|5|5|5|5|
@@ -137,7 +139,7 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 
 エラスティック プールのすべての仮想コアがビジーの場合は、プール内の各データベースが、同量のコンピューティング リソースを受け取ってクエリを処理します。 SQL Database サービスは、コンピューティング時間を均等にすることで、データベース間におけるリソース共有の公平性を実現します。 それ以外の場合、エラスティック プールのリソース共有の公平性は、データベースあたりの仮想コア分が 0 以外の値に設定されているときに、リソース量に加えて各データベースに適用されることが保証されます。
 
-### <a name="database-properties-for-pooled-databases"></a>プールされたデータベースのデータベース プロパティ
+## <a name="database-properties-for-pooled-databases"></a>プールされたデータベースのデータベース プロパティ
 
 次の表では、プールされたデータベースのプロパティについて説明します。
 
@@ -147,9 +149,9 @@ DTU ベースの購入モデルの制限については、[SQL Database の DTU 
 | データベースごとの最小の仮想コア数 |プール内の任意のデータベースで保証される仮想コアの最小数。 これは、プール内のすべてのデータベースに適用されるグローバル設定です。 データベースあたりの最小仮想コア数は 0 に設定でき、これが既定値です。 このプロパティは、0 とデータベースあたりの平均仮想コア使用率の間に設定されます。 プール内のデータベースの数とデータベースごとの最小仮想コア数の積がプールごとの仮想コア数の値を超えることはできません。|
 | データベースあたりの最大ストレージ容量 |プール内のデータベースに対してユーザーによって設定される最大データベース サイズ。 プールされたデータベースは割り当てられたプール ストレージを共有するので、データベースが到達できるサイズは、残りのプール ストレージとデータベース サイズのうち、どちらか小さい方に制限されます。 最大データベース サイズとはデータ ファイルの最大サイズのことであり、ログ ファイルによって使用される領域は含まれません。 |
 |||
- 
+
 ## <a name="next-steps"></a>次の手順
 
 - よく寄せられる質問の回答については、「[SQL Database に関する FAQ](sql-database-faq.md)」を参照してください。
-- サーバーおよびサブスクリプション レベルの制限については詳しくは、「[Azure SQL Database のリソース制限の概要](sql-database-resource-limits.md)」をご覧ください。
+- サーバーおよびサブスクリプション レベルの制限については、[論理サーバー上のリソース制限の概要](sql-database-resource-limits-logical-server.md)に関するページをご覧ください。
 - Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。

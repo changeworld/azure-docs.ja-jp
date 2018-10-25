@@ -6,17 +6,17 @@ ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 author: ghogen
 ms.author: ghogen
-ms.date: 05/11/2018
+ms.date: 09/11/2018
 ms.topic: article
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
 manager: douge
-ms.openlocfilehash: b66e43c0f40f184bfb2c62327f5742346ff8b187
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 3f30a62a2f351aecabc37206607c3e28ec5e3ab5
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841611"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49353360"
 ---
 # <a name="troubleshooting-guide"></a>トラブルシューティング ガイド
 
@@ -26,9 +26,13 @@ ms.locfileid: "43841611"
 
 問題のトラブルシューティングをより効果的に行ううえで、レビュー用のより詳細なログを作成することが役に立つ場合があります。
 
-Visual Studio 拡張機能では、`MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` 環境変数を 1 に設定することで、これを実行できます。 環境変数を有効にするために Visual Studio を再起動してください。 有効になったら、詳細なログが `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` ディレクトリに書き込まれます。
+Visual Studio 拡張機能の場合、`MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED`環境変数を 1 に設定します。 環境変数を有効にするために Visual Studio を再起動してください。 有効になったら、詳細なログが `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` ディレクトリに書き込まれます。
 
-CLI では、`--verbose` スイッチを使用してコマンド実行中に詳細な情報を出力できます。
+CLI では、`--verbose` スイッチを使用してコマンド実行中に詳細な情報を出力できます。 `%TEMP%\Azure Dev Spaces`でより詳しいログを参照することもできます。 Mac では、ターミナルウィンドウから`echo $TMPDIR`を実行すると、TEMP ディレクトリが見つかります。 Linux コンピューターでは、TEMP ディレクトリは通常`/tmp`です。
+
+## <a name="debugging-services-with-multiple-instances"></a>複数のインスタンスでサービスのデバッグ
+
+この時点で、Azure Dev Spaces は単一のインスタンス (ポッド) をデバッグするときに最も効果的です。 azds.yaml ファイルには、サービス用に実行されるポッドの数を示す設定、replicaCount が含まれています。 特定のサービスに対して複数のポッドを実行するようにアプリケーションを設定するために replicaCount を変更すると、デバッガは (アルファベット順にリストされている場合) 最初のポッドに接続します。 何らかの理由でそのポッドがリサイクルされると、デバッガは別のポッドに接続し、予期しない動作を引き起こす可能性があります。
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>エラー "Azure Dev Spaces コントローラーを作成できませんでした"
 
@@ -67,14 +71,31 @@ _azds.exe_ を使用した場合、--verbose コマンド ライン オプショ
 
 Visual Studio で次の操作を行います。
 
-1. **[ツール] > [オプション]** を開き、**[Projects and Solutions]\(プロジェクトとソリューション\)** で、**[Build and Run]\(ビルドおよび実行\)** を選択します。
+1. **[ツール] > [オプション]** を開き、**[プロジェクトとソリューション]** で、**[ビルドおよび実行]** を選択します。
 2. **[MSBuild プロジェクト ビルドの出力の詳細]** の設定を **[詳細]** または **[診断]** に変更します。
 
     ![ツール オプション ダイアログのスクリーンショット](media/common/VerbositySetting.PNG)
     
+このエラーは、マルチステージの Dockerfile を使おうとしたときに表示されることがあります。 詳細出力は次のようになります。
+
+```cmd
+$ azds up
+Using dev space 'default' with target 'AksClusterName'
+Synchronizing files...6s
+Installing Helm chart...2s
+Waiting for container image build...10s
+Building container image...
+Step 1/12 : FROM [imagename:tag] AS base
+Error parsing reference: "[imagename:tag] AS base" is not a valid repository/tag: invalid reference format
+Failed to build container image.
+Service cannot be started.
+```
+
+これは、AKS ノードが、マルチステージ ビルドをサポートしていない旧バージョンの Docker を実行するからです。 Dockerfile を書き直してマルチステージ ビルドを回避する必要があります。
+
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Dev Spaces サービスに関連付けられたパブリック URL で DNS の名前解決が失敗します。
 
-これが発生するときは、Dev Spaces サービスに関連付けられたパブリック URL に接続を試行するときに、Web ブラウザーに「ページを表示できない」または「このサイトにリーチできない」のエラーが表示される場合があります。
+DNS 名前解決が失敗すると、Dev Spaces サービスに関連付けられたパブリック URL に接続しようとすると、Web ブラウザーで「ページを表示できません」または「このサイトにアクセスできません」というエラーが表示されることがあります。
 
 ### <a name="try"></a>次の操作を試してください。
 
@@ -84,7 +105,7 @@ Visual Studio で次の操作を行います。
 azds list-uris
 ```
 
-URL が*保留中*の状態にある場合、これはまだ Dev Spaces が DNS の登録が完了するのを待っている状態にあることを示します。 これが発生するには数分かかる場合があります。 また、Dev Spaces は各サービスの localhost トンネルを開き、これを DNS の登録を待っている間に使用できます。
+URL が*保留中*の状態にある場合、これはまだ Dev Spaces が DNS の登録が完了するのを待っている状態にあることを示します。 登録が完了するまでに数分かかることがあります。 また、Dev Spaces は各サービスの localhost トンネルを開き、これを DNS の登録を待っている間に使用できます。
 
 URL が*保留中*状態の期間が 5 分を超える場合、公開エンドポイントを作成する外部 DNS ポッドや、公開エンドポイントを取得する nginx 入力コントローラー ポッドに問題がある可能性があります。 次のコマンドを使用して、これらのポッドを削除できます。 これは自動的に再作成されます。
 
@@ -121,7 +142,7 @@ Azure Dev Spaces では、C# と Node.js がネイティブでサポートされ
 その他の言語で記述されたコードを使って Azure Dev Spaces を使用することもできますが、初めて *azds up* を実行する前に、Dockerfile を自分で作成しておく必要があります。
 
 ### <a name="try"></a>次の操作を試してください。
-Azure Dev Spaces でネイティブにサポートされる言語でアプリケーションが記述されていない場合、コードが実行されるコンテナー イメージをビルドするために適切な Dockerfile を設定する必要があります。 これを実行する際には、Docker によって用意された、[Dockerfile の記述に関するベスト プラクティスの一覧](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)と [Dockerfile リファレンス](https://docs.docker.com/engine/reference/builder/)が役に立ちます。
+Azure Dev Spaces でネイティブにサポートされる言語でアプリケーションが記述されていない場合、コードが実行されるコンテナー イメージをビルドするために適切な Dockerfile を設定する必要があります。 [Docker は、Dockerfile ](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)と[ Dockerfile リファレンス](https://docs.docker.com/engine/reference/builder/)を書くためのベスト プラクティスのリストを提供しています。これはユーザーのニーズに合った Dockerfile を書くのに役立ちます。
 
 適切な Dockerfile を用意できたら、*azds up* の実行に進んで、Azure Dev Spaces でアプリケーションを実行できます。
 
@@ -152,7 +173,7 @@ Azure Dev Spaces でネイティブにサポートされる言語でアプリケ
 1. _azds.yaml_ ファイルがコード フォルダーにない場合、`azds prep` を実行して Docker、Kubernetes、および Azure Dev Spaces アセットを生成します。
 
 ## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>エラー: 'The pipe program 'azds' exited unexpectedly with code 126.'
-VS Code デバッガーを起動すると、このエラーが発生する場合があります。 これは既知の問題です。
+VS Code デバッガーを起動すると、このエラーが発生する場合があります。
 
 ### <a name="try"></a>次の操作を試してください。
 1. VS Code を閉じて、もう一度開きます。
@@ -162,7 +183,7 @@ VS Code デバッガーを起動すると、このエラーが発生する場合
 VS Code デバッガーを実行すると次のエラーが報告されます: `Failed to find debugger extension for type:coreclr.`
 
 ### <a name="reason"></a>理由
-.NET Core (CoreCLR) のデバッグ サポートを含む C# 用 VS Code 拡張機能がお使いの開発マシンにインストールされていません。
+開発マシンに C＃ 用の VS コード拡張機能がインストールされていません。 C# 拡張機能には、.Net Core (CoreCLR) 用のデバッグサポートが含まれています。
 
 ### <a name="try"></a>次の操作を試してください。
 [C# 用 VS Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)をインストールします。
@@ -202,6 +223,14 @@ Azure サブスクリプションの所有者または共同作成者のアク�
 ```cmd
 az provider register --namespace Microsoft.DevSpaces
 ```
+
+## <a name="error-could-not-find-a-ready-tiller-pod-when-launching-dev-spaces"></a>Dev Spaces 起動時の "Error: could not find a ready tiller pod" (エラー: 準備のできた Tiller ポッドが見つかりませんでした)
+
+### <a name="reason"></a>理由
+このエラーは、クラスターで実行されている Tiller ポッドに Helm クライアントが通信できなくなった場合に発生します。
+
+### <a name="try"></a>次の操作を試してください。
+通常は、クラスター内のエージェント ノードを再起動すると、この問題が解決します。
 
 ## <a name="azure-dev-spaces-doesnt-seem-to-use-my-existing-dockerfile-to-build-a-container"></a>Azure Dev Spaces が既存の Dockerfile を使用してコンテナーをビルドしていないと思われる 
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3bff6f00c67a2fa523113171855dce4e7b807f0b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4ce344292577dd286abcd7fbf9e067800da0e0b3
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734456"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958994"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>チュートリアル: REST API を使用して、データをコピーする Azure Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ ms.locfileid: "45734456"
 ## <a name="prerequisites"></a>前提条件
 * 「 [チュートリアルの概要](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) 」に目を通し、 **前提条件** の手順を完了する必要があります。
 * コンピューターに [Curl](https://curl.haxx.se/dlwiz/) をインストールします。 データ ファクトリを作成するには、Curl ツールと REST コマンドを使用します。 
-* [この記事](../../azure-resource-manager/resource-group-create-service-principal-portal.md) の手順に従って、次の操作を行います。 
+* [この記事](../../active-directory/develop/howto-create-service-principal-portal.md) の手順に従って、次の操作を行います。 
   1. Azure Active Directory に、 **ADFCopyTutorialApp** という名前の Web アプリケーションを作成します。
   2. **クライアント ID** と**秘密キー**を取得します。 
   3. **テナント ID**を取得します。 

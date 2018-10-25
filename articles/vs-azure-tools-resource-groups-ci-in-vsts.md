@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: f44bb7bd95ef405c65bb259a6d104475c2e283bd
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a3dfca48b52af39e7a536b3012a3f4cdac4e9a94
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297844"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955169"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Azure リソース グループのデプロイ プロジェクトを使用した Azure DevOps Services での継続的インテグレーション
 Azure テンプレートをデプロイするには、さまざまな段階 (ビルド、テスト、Azure へのコピー ("ステージング" とも呼ばれる)、テンプレートのデプロイ) でタスクを実行します。 テンプレートを Azure DevOps Services にデプロイする方法は 2 つあります。 どちらの方法でも同じ結果になるため、ワークフローに最適な方法を選択します。
@@ -92,7 +92,7 @@ Azure Pipelines で PowerShell スクリプトを呼び出すには、ビルド 
       Azure CLI では、次を使用します。
       
       `azure account show`
-   8. サービス プリンシパル ID、サービス プリンシパル キー、およびテナント ID を取得するには、[Active Directory のアプリケーションとサービス プリンシパルをポータルで作成する方法](resource-group-create-service-principal-portal.md)に関するページか、[サービス プリンシパルを Azure Resource Manager で認証する方法](resource-group-authenticate-service-principal.md)に関するページの手順を行います。
+   8. サービス プリンシパル ID、サービス プリンシパル キー、およびテナント ID を取得するには、[Active Directory のアプリケーションとサービス プリンシパルをポータルで作成する方法](active-directory/develop/howto-create-service-principal-portal.md)に関するページか、[サービス プリンシパルを Azure Resource Manager で認証する方法](active-directory/develop/howto-authenticate-service-principal-powershell.md)に関するページの手順を行います。
    9. **[Azure サブスクリプションの追加]** ダイアログ ボックスにサービス プリンシパル ID、サービス プリンシパル キー、およびテナント ID 値を追加し、**[OK]** ボタンをクリックします。
       
       これで、Azure PowerShell スクリプトを実行するために使用する有効なサービス プリンシパルがあります。
@@ -181,7 +181,7 @@ Azure Pipelines で PowerShell スクリプトを呼び出すには、ビルド 
 7. 必要な項目をすべて追加したら、ビルド パイプラインを保存して、上部の **[新しいビルドをキューに配置]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
-Azure Resource Manager と Azure リソース グループの詳細については、「[Azure リソース マネージャーの概要](azure-resource-manager/resource-group-overview.md)」を参照してください。
+Azure リソース マネージャーと Azure リソース グループの詳細については、「 [Azure リソース マネージャーの概要](azure-resource-manager/resource-group-overview.md) 」を参照してください。
 
 [0]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough1.png
 [1]: ./media/vs-azure-tools-resource-groups-ci-in-vsts/walkthrough2.png

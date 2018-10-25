@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: 5ef44ccf87bc5e40b57dc7fc997c9a827c93484b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: b55c5bc6096186e338d6960190169d5f4acc777d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831459"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955135"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Azure Backup でのオフライン バックアップのワークフロー
 Azure Backup はさまざまな面で効率性に優れ、Azure への初回完全バックアップ時にネットワークとストレージのコストを抑えます。 初回完全バックアップでは通常、大量のデータが転送されます。その後の差分/増分のみを転送するバックアップと比べると、多くのネットワーク帯域幅が必要です。 オフライン シード処理プロセスにより、Azure Backup はディスクを使ってオフライン バックアップ データを Azure にアップロードすることができます。
@@ -54,7 +54,7 @@ Azure Backup の次の機能またはワークロードは、オフライン バ
 * Azure Backup エージェントを実行しているコンピューターには Azure PowerShell 3.7.0 が必要です。 [バージョン 3.7.0 の Azure PowerShell](https://github.com/Azure/azure-powershell/releases/tag/v3.7.0-March2017) をダウンロードしてインストールすることをお勧めします。
 * Azure Backup エージェントを実行しているコンピューターで、Microsoft Edge または Internet Explorer 11 がインストールされ、JavaScript が有効になっていることを確認します。 
 * Recovery Services コンテナーと同じサブスクリプションを使って、Azure ストレージ アカウントを作成します。 
-* Azure Active Directory アプリケーションを作成するのに[必要なアクセス許可](../azure-resource-manager/resource-group-create-service-principal-portal.md)があることを確認します。 オフライン バックアップ ワークフローは、Azure ストレージ アカウントに関連付けられているサブスクリプションに Azure Active Directory アプリケーションを作成します。 アプリケーションの目的は、オフライン バックアップ ワークフローに必要な、Azure インポート サービスに対するセキュリティで保護されて範囲を制限されたアクセスを、Azure Backup に提供することです。 
+* Azure Active Directory アプリケーションを作成するのに[必要なアクセス許可](../active-directory/develop/howto-create-service-principal-portal.md)があることを確認します。 オフライン バックアップ ワークフローは、Azure ストレージ アカウントに関連付けられているサブスクリプションに Azure Active Directory アプリケーションを作成します。 アプリケーションの目的は、オフライン バックアップ ワークフローに必要な、Azure インポート サービスに対するセキュリティで保護されて範囲を制限されたアクセスを、Azure Backup に提供することです。 
 * Azure ストレージ アカウントを含むサブスクリプションに Microsoft.ImportExport リソース プロバイダーを登録します。 リソース プロバイダーを登録するには:
     1. メイン メニューで **[サブスクリプション]** をクリックします。
     2. 複数のサブスクリプションをサブスクライブしている場合は、オフライン バックアップに使っているサブスクリプションを選びます。 使っているサブスクリプションが 1 つだけの場合は、そのサブスクリプションが表示されます。

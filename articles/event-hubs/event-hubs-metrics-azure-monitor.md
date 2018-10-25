@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: a2b6fbae4a7b49c5596d5f2a6f9305181a0717d3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 02336d9f4d041d4c8d5ba973cf8802692ddad914
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46979966"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946013"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor-preview"></a>Azure Monitor での Azure Event Hubs メトリック (プレビュー)
 
@@ -66,7 +66,6 @@ Azure Monitor でのメトリックの使用は現在、プレビュー段階に
 | 成功した要求 (プレビュー)   | 指定された期間にわたって Azure Event Hubs サービスに対して実行された成功した要求の数。 <br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName |
 | サーバー エラー (プレビュー) | 指定された期間にわたって Azure Event Hubs サービスでエラーのために処理されなかった要求の数。 <br/><br/>単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName |
 |ユーザー エラー (プレビュー)|指定された期間にわたってユーザー エラーのために処理されなかった要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
-|調整された要求 (プレビュー)|スループット ユニットの使用量を超えたため調整された要求の数。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 |クォータを超過したエラー (プレビュー)|使用可能なクォータを超えた要求の数。 Event Hubs クォータの詳細については、[この記事](event-hubs-quotas.md)を参照してください。<br/><br/> 単位: カウント <br/> 集計の種類: 合計 <br/> ディメンション: EntityName|
 
 ## <a name="throughput-metrics"></a>スループットのメトリック

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d3fb6557571042be7db1380010738bacd72e50f5
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: cc7bcefe43eed524f50fcad09d7fb31a80d22b83
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869502"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025805"
 ---
 # <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Log Analytics でクロス リソースのログ検索を実行する  
 
@@ -29,7 +29,7 @@ ms.locfileid: "48869502"
 現在は、複数の Log Analytics ワークスペース間だけでなく、同じリソース グループ、別のリソース グループ、または別のサブスクリプション内の特定の Application Insights アプリからのデータのクエリを実行できるようになりました。 これにより、システム全体のデータを確認できます。  これらの種類のクエリは、[Log Analytics](log-analytics-log-search-portals.md#log-analytics-page) でのみ行うことができます。 1 回のクエリに含めることができるリソース (Log Analytics ワークスペースおよび Application Insights アプリ) の数は 100 個に制限されています。 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Log Analytics ワークスペース間と Application Insights からのクエリ
-クエリ内の別のワークスペースを参照するには、[*ワークスペース*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/workspace())識別子を使用します。Application Insights のアプリの場合は、[*アプリ*](https://docs.loganalytics.io/docs/Language-Reference/Scope-functions/app())識別子を使用します。  
+クエリ内の別のワークスペースを参照するには、[*ワークスペース*](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression)識別子を使用します。Application Insights のアプリの場合は、[*アプリ*](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)識別子を使用します。  
 
 ### <a name="identifying-workspace-resources"></a>ワークスペースのリソースの識別
 次の例は、Log Analytics ワークスペース間でのクエリを実行し、*contosoretail-it* という名前のワークスペースの Update テーブルから、ログの集計されたカウントを返します。 
@@ -104,4 +104,4 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 
 ## <a name="next-steps"></a>次の手順
 
-Log Analytics で使用できるすべてのクエリ構文オプションは、[Log Analytics のログ検索のリファレンス](https://docs.loganalytics.io/docs/Language-Reference)でご覧いただけます。    
+Log Analytics で使用できるすべてのクエリ構文オプションは、[Log Analytics のログ検索のリファレンス](https://docs.microsoft.com/azure/log-analytics/query-language/kusto)でご覧いただけます。    

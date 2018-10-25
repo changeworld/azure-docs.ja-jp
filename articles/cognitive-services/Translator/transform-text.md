@@ -10,19 +10,19 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: e5061e322b4f0edb416f321cefef73776b9165ff
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: ccef55d56286cde47d23dbf2703c15fcf375e266
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123948"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646951"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>TransformText メソッドの使用方法
 
 > [!NOTE]
 > このメソッドは非推奨です。 これは Translator Text API の V3.0 では使用できません。
 
-TransformText メソッドは、ソーシャル メディア用のテキスト正規化関数で、入力を正規化した形式で返します。 このメソッドは、ソーシャル メディアやユーザーが生成したコンテンツでは通常あまり見られないクリーンな入力テキストを必要とする、機械翻訳やその他のアプリケーションの前処理ステップとして使用できます。 この機能は現在、英語入力でのみ動作します。 
+TransformText メソッドは、ソーシャル メディア用のテキスト正規化関数で、入力を正規化した形式で返します。 このメソッドは、ソーシャル メディアやユーザーが生成したコンテンツでは通常あまり見られないクリーンな入力テキストを必要とする、機械翻訳やその他のアプリケーションの前処理ステップとして使用できます。 この機能は現在、英語入力でのみ動作します。
 
 このメソッドは、HTTP 上で GET を使用する RESTful サービスです。 単純な XML と JSON のシリアル化をサポートしています。
 
@@ -44,12 +44,12 @@ TransformText メソッドは、ソーシャル メディア用のテキスト�
 GetTranslationsResponse Microsoft.Translator.GetTranslations(appId, text, from, to, maxTranslations, options); TransformTextResponse
 {
 int ec;            // A positive number representing an error condition
-string em;         // A descriptive error message 
+string em;         // A descriptive error message
 string sentence;   // transformed text
 }
 ```
 
-## <a name="example"></a>例 
+## <a name="example"></a>例
 
 ```csharp
 using System;
@@ -72,9 +72,9 @@ namespace MicrosoftTranslatorSdk.HttpSamples
             AdmAccessToken admToken;
             string headerValue;
             //Get Client Id and Client Secret from https://datamarket.azure.com/developer/applications/
-            //Refer obtaining AccessToken (http://msdn.microsoft.com/library/hh454950.aspx) 
+            //Refer obtaining AccessToken (http://msdn.microsoft.com/library/hh454950.aspx)
             AdmAuthentication admAuth = new AdmAuthentication("clientID", "client secret");
-            
+
             try
             {
                 admToken = admAuth.GetAccessToken();
@@ -216,7 +216,7 @@ namespace MicrosoftTranslatorSdk.HttpSamples
         }
         private AdmAccessToken HttpPost(string DatamarketAccessUri, string requestDetails)
         {
-            //Prepare OAuth request 
+            //Prepare OAuth request
             WebRequest webRequest = WebRequest.Create(DatamarketAccessUri);
             webRequest.ContentType = "application/x-www-form-urlencoded";
             webRequest.Method = "POST";
@@ -235,6 +235,6 @@ namespace MicrosoftTranslatorSdk.HttpSamples
             }
         }
     }
-} 
+}
 
 ```

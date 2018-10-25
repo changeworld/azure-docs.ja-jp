@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: prasantp
 author: prasanthpul
 ms.date: 09/24/2018
-ms.openlocfilehash: d4ce2dc67b0d9229ac2605ab317594ea345c19b2
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 190b7fff24c9d6b3dee86471b56ad68c962e51ce
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434077"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116880"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX と Azure Machine Learning: 相互運用可能な AI モデルを作成してデプロイする
 
@@ -28,7 +28,7 @@ Microsoft では、これらの目標を達成するために、Azure と Window
 ## <a name="why-choose-onnx"></a>ONNX を選択する理由
 ONNX で獲得される相互運用性によって、優れたアイデアを短時間で製品化できます。 ONNX では、データ サイエンティストは、ジョブに対して好みのフレームワークを選択できます。 同様に、開発者は、製品化するためにモデルを準備し、クラウドとエッジにデプロイする時間を短縮できます。  
 
-ONNX モデルは、PyTorch、Chainer、Microsoft Cognitive Toolkit (CNTK)、MXNet、ML.Net などを含む多数のフレームワークからエクスポートできます。 TensorFlow、Keras、Scikit-learn など、他のフレームワーク用のコンバーターが存在します。
+ONNX モデルは、PyTorch、Chainer、Microsoft Cognitive Toolkit (CNTK)、MXNet、ML.Net、TensorFlow、Keras、SciKit-Learn などの多数のフレームワークからエクスポートできます。
 
 ONNX モデルの視覚化と加速化を行うためのツールのエコシステムもあります。 一般的なシナリオでは、多数の事前トレーニング済みの ONNX モデルも利用できます。
 
@@ -36,18 +36,17 @@ ONNX モデルの視覚化と加速化を行うためのツールのエコシス
 
 [ ![トレーニング、コンバーター、およびデプロイを示すONNX フロー図](media/concept-onnx/onnx.png) ] (./media/concept-onnx/onnx.png#lightbox)
 
-## <a name="create-onnx-models-in-azure"></a>Azure で ONNX モデルを作成する
+## <a name="get-onnx-models"></a>ONNX モデルを取得する
 
-ONNX モデルは、さまざまな方法で作成できます。
+ONNX モデルは、さまざまな方法で取得できます。
++ [ONNX Model Zoo](https://github.com/onnx/models) からトレーニング済みの ONNX モデルを入手する (この記事の末尾にある例を参照してください)
++ カスタマイズされた ONNX モデルを [Azure Custom Vision サービス](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/)から生成する 
++ 別の形式の既存モデルを ONNX に変換する (この記事の末尾にある例を参照してください) 
 + Azure Machine Learning サービスでモデルをトレーニングし、ONNX に変換するかエクスポートする (この記事の最後にある例を参照してください)
 
-+ 事前トレーニング済みの ONNX モデルを [ONNX モデル ズー](https://github.com/onnx/models)から取得する
+## <a name="saveconvert-your-models-to-onnx"></a>モデルを ONNX に保存/変換する
 
-+ カスタマイズされた ONNX モデルを [Azure Custom Vision サービス](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/)から生成する
-
-## <a name="exportconvert-your-models-to-onnx"></a>モデルを ONNX にエクスポート/変換する
-
-既存のモデルを ONNX に変換することもできます。
+既存のモデルを ONNX に変換するか、トレーニングの最後に ONNX として保存することができます。
 
 |モデルのフレームワーク|変換の例またはツール|
 |-----|-------|
@@ -101,7 +100,7 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
 ここでは、ONNX モデルのデプロイの一例を示します。
 
-1. Azure Machine Learning ワークスペースを初期化します。 ワークスペースがまだない場合は、[こちらのクイック スタート](quickstart-get-started.md)でワークスペースの作成方法を確認してください。
+1. Azure Machine Learning サービスを初期化します。 ワークスペースがまだない場合は、[こちらのクイック スタート](quickstart-get-started.md)でワークスペースの作成方法を確認してください。
 
    ```python
    from azureml.core import Workspace
@@ -172,10 +171,11 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
    `myenv.yml` ファイルは、イメージで必要な依存関係を記述します。 このサンプル ファイルのような環境ファイルの作成手順については、[こちらのチュートリアル](tutorial-deploy-models-with-aml.md#create-environment-file)を参照してください。
 
-   ```
+   ```python
    from azureml.core.conda_dependencies import CondaDependencies 
 
    myenv = CondaDependencies()
+   myenv.add_pip_package("numpy")
    myenv.add_pip_package("azureml-core")
    myenv.add_pip_package("onnxruntime")
 
@@ -191,12 +191,16 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 
 ## <a name="examples"></a>例
  
-次の Notebook は、Azure Machine Learning で ONNX モデルをデプロイする方法を示しています。 
-+ `/onnx/onnx-inference-mnist.ipynb`
+次のノートブックは、Azure Machine Learning で ONNX モデルを作成し、デプロイする方法を示しています。 
++ `/onnx/onnx-modelzoo-aml-deploy-resnet50.ipynb` 
++ `/onnx/onnx-convert-aml-deploy-tinyyolo.ipynb`
++ `/onnx/onnx-train-pytorch-aml-deploy-mnist.ipynb`
+
+次のノートブックは、Azure Machine Learning で既存の ONNX モデルをデプロイする方法を示しています。 
++ [onnx/onnx-inference-mnist.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-mnist.ipynb) 
++ [onnx/onnx-inference-emotion-recognition.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/onnx/onnx-inference-emotion-recognition.ipynb)
  
-+ `/onnx/onnx-inference-emotion-recognition.ipynb`
- 
-このノートブックの入手:
+これらの notebook を入手してください。
  
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

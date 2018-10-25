@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2f6ca80985d73c0bfe0fd248b697b57ebb5796a2
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: ec18a5834ce88d5872ae9044d7896012523e2288
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237961"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024054"
 documentType: LandingData
 title: IoT Hub のドキュメント
 metadata:
@@ -70,6 +70,6 @@ sections:
     - title: コマンド ライン
       html: <p><a href="/cli/azure/iot">Azure CLI</a></p>
     - title: Languages
-      html: <p><a href="/dotnet/api/microsoft.azure.devices">.NET (サービス)</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (デバイス)</a></p><p><a href="https://azure.github.io/azure-iot-sdk-c/index.html">C (デバイス SDK)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java (サービス)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (デバイス)</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js (サービス)</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js (デバイス)</a></p>
+      html: <p><a href="/dotnet/api/microsoft.azure.devices">.NET (サービス)</a></p><p><a href="/dotnet/api/microsoft.azure.devices.client">.NET (デバイス)</a></p><p><a href="https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/">C (デバイス SDK)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.service">Java (サービス)</a></p><p><a href="/java/api/com.microsoft.azure.sdk.iot.device">Java (デバイス)</a></p><p><a href="/javascript/api/azure-iothub/?view=azure-iot-typescript-latest">Node.js (サービス)</a></p><p><a href="/javascript/api/azure-iot-device/?view=azure-iot-typescript-latest">Node.js (デバイス)</a></p>
     - title: REST ()
       html: <p><a href="/rest/api/iothub/device">REST (デバイス)</a></p><p><a href="/rest/api/iothub/service">REST (サービス)</a></p><p><a href="/rest/api/iothub/iothubresource">REST (IoT Hub リソース)</a></p><p><a href="/rest/api/iothub/certificates">REST (証明書)</a></p>

@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: e3e3a981daf1273b8b2387cb1c665317f860b1d2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c370d25ed5d70887c8beecae8fea3528a259a0ea
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974869"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954574"
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Container Service の Kubernetes クラスター用の Azure AD サービス プリンシパルをセットアップする
 
@@ -37,14 +37,14 @@ Azure Container Service で Kubernetes クラスターを使用するには、Az
 * **クライアント シークレット**: パスワードである必要があります。 現時点では、証明書の認証用に設定されたサービス プリンシパルを使用することはできません。
 
 > [!IMPORTANT]
-> サービス プリンシパルを作成するには、アプリケーションを Azure AD テナントに登録し、サブスクリプション内のロールにアプリケーションを割り当てるためのアクセス許可が必要です。 必要なアクセス許可があるかどうかは、[ポータルで確認](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions)します。
+> サービス プリンシパルを作成するには、アプリケーションを Azure AD テナントに登録し、サブスクリプション内のロールにアプリケーションを割り当てるためのアクセス許可が必要です。 必要なアクセス許可があるかどうかは、[ポータルで確認](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)します。
 >
 
 ## <a name="option-1-create-a-service-principal-in-azure-ad"></a>オプション 1: Azure AD にサービス プリンシパルを作成する
 
 Kubernetes クラスターをデプロイする前に Azure AD サービス プリンシパルを作成する場合、Azure にはいくつかの方法が用意されています。
 
-以下のコマンド例では、[Azure CLI](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) でこの操作を行う方法を示しています。 代わりに、[Azure PowerShell](../../azure-resource-manager/resource-group-authenticate-service-principal.md)、[ポータル](../../azure-resource-manager/resource-group-create-service-principal-portal.md)、またはその他の方法を使用して、サービス プリンシパルを作成することもできます。
+以下のコマンド例では、[Azure CLI](../../azure-resource-manager/resource-group-authenticate-service-principal-cli.md) でこの操作を行う方法を示しています。 代わりに、[Azure PowerShell](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)、[ポータル](../../active-directory/develop/howto-create-service-principal-portal.md)、またはその他の方法を使用して、サービス プリンシパルを作成することもできます。
 
 ```azurecli
 az login

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8c777d5376614f7afe59342dc5a9fbfa37ca4556
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 863e465d888774730b9d9269024665a097a1207b
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441058"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429302"
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 

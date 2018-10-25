@@ -3,18 +3,18 @@ title: Enterprise セキュリティ パッケージを使用した Azure HDInsi
 description: Enterprise セキュリティ パッケージを使用して HDInsight のセキュリティを計画する方法について説明します。
 services: hdinsight
 ms.service: hdinsight
-author: omidm1
-ms.author: omidm
-ms.reviewer: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
+ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 975a4f7b15d1e1c13767cd7026e961e9d4227603
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8d344adc367eb9b93e52d9423a2ab4dda657b298
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998929"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49115541"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>HDInsight で Enterprise セキュリティ パッケージを使用する
 
@@ -26,26 +26,20 @@ HDInsight は、管理されている方法で、一般的な ID プロバイダ
 
 HDInsight での仮想マシン (VM) は、指定されたドメインに参加しているドメインです。 そのため、HDInsight で実行されているすべてのサービス (Ambari、Hive サーバー、Ranger、Spark Thrift サーバーなど) は、認証済みユーザーに対してシームレスに動作します。 さらに、管理者は、Apache Ranger を使用して強力な承認ポリシーを作成し、クラスター内のリソースに対するロールベースのアクセス制御を行うことができます。
 
-
 ## <a name="integrate-hdinsight-with-active-directory"></a>HDInsight を Active Directory と統合する
 
 オープンソースの Hadoop は、認証とセキュリティのために Kerberos に依存しています。 したがって、Enterprise セキュリティ パッケージ (ESP) を使用する HDInsight クラスター ノードは、Azure AD DS によって管理されるドメインに参加済みです。 クラスター上の Hadoop コンポーネントには Kerberos セキュリティが構成されます。 
 
-Hadoop コンポーネントごとに、サービス プリンシパルが自動的に作成されます。 また、ドメインに参加する各マシンには、対応するマシン プリンシパルも作成されます。 これらのサービスやマシン プリンシパルを格納するには、これらのプリンシパルが配置されているドメイン コントローラー (Azure AD DS) 内の組織単位 (OU) を用意する必要があります。 
+自動的に以下のものが作成されます。
+- 各 Hadoop コンポーネントのサービス プリンシパル 
+- ドメインに参加している各マシンのマシン プリンシパル
+- このようなサービスおよびマシンのプリンシパルを格納する各クラスターの組織単位 (OU) 
 
 これらの点を総合すると、次の要素から成る環境をセットアップする必要があります。
 
 - Active Directory ドメイン (Azure AD DS で管理)。
 - Azure AD DS で有効になっている Secure LDAP (LDAPS)。
 - 個別の仮想ネットワークを選ぶ場合の HDInsight 仮想ネットワークから Azure AD DS 仮想ネットワークへの適切なネットワーク接続。 HDInsight 仮想ネットワーク内の VM は、仮想ネットワーク ピアリングを使用して Azure AD DS への通信経路を持つ必要があります。 HDInsight と Azure AD DS が同じ仮想ネットワーク内にデプロイされている場合、接続は自動的に提供されるので、これ以上アクションは必要ありません。
-- [Azure AD DS で作成された](../../active-directory-domain-services/active-directory-ds-admin-guide-create-ou.md) OU。
-- 次の操作に必要なアクセス許可を持つサービス アカウント:
-    - OU にサービス プリンシパルを作成する。
-    - ドメインにマシンを参加させて OU にマシン プリンシパルを作成する。
-
-次のスクリーンショットは、contoso.com に作成された OU を示したものです。 これは、サービス プリンシパルとマシン プリンシパルの一部も表示します。
-
-![ESP を使用する HDInsight クラスターの組織単位](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png).
 
 ## <a name="set-up-different-domain-controllers"></a>異なるドメイン コントローラーの設定
 現在、HDInsight では、クラスターの Kerberos 認証に使用するメイン ドメイン コントローラーとして、Azure AD DS だけがサポートされています。 ただし、設定によって HDInsight アクセスに対する Azure AD DS が有効にされることになる場合に限り、その他の複雑な Active Directory 設定が可能です。

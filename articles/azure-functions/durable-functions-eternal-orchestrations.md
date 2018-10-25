@@ -2,20 +2,20 @@
 title: Durable Functions での永続的オーケストレーション - Azure
 description: Azure Functions の Durable Functions 拡張機能を使用して永続的オーケストレーションを実装する方法について説明します。
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 98504534332b6faa7a7019aea9ab7b534d4c3faa
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 0e3a3476c3fca6329634c87f933f895ec582f364
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094452"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987528"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions での永続的オーケストレーション (Azure Functions)
 
@@ -34,12 +34,11 @@ ms.locfileid: "44094452"
 > [!NOTE]
 > Durable Task Framework では同じインスタンス ID が維持されますが、内部的には、`ContinueAsNew` によってリセットされるオーケストレーター関数に対して、新しい "*実行 ID*" が作成されます。 一般的に、この実行 ID は外部に公開されませんが、オーケストレーション実行のデバッグのタイミングを確認するときに役に立つ場合があります。
 
-> [!NOTE]
-> `ContinueAsNew` メソッドは、JavaScript ではまだ使用できません。
-
 ## <a name="periodic-work-example"></a>定期的な作業の例
 
 永続的オーケストレーションのユース ケースの 1 つが、定期的な作業を無期限に実行する必要があるコードです。
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("Periodic_Cleanup_Loop")]
@@ -54,6 +53,23 @@ public static async Task Run(
 
     context.ContinueAsNew(null);
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+```javascript
+const df = require("durable-functions");
+const moment = require("moment");
+
+module.exports = df.orchestrator(function*(context) {
+    yield context.df.callActivity("DoCleanup");
+
+    // sleep for one hour between cleanups
+    const nextCleanup = moment.utc(context.df.currentUtcDateTime).add(1, "h");
+    yield context.df.createTimer(nextCleanup);
+
+    context.df.continueAsNew(undefined);
+});
 ```
 
 この例と、タイマーによってトリガーされる関数の違いは、クリーンアップ トリガーのタイミングです。この例のタイミングはスケジュールに基づいていません。 たとえば、1 時間ごとに関数を実行する CRON スケジュールでは、1:00、2:00、3:00 といったタイミングで関数が実行され、重複の問題が発生する可能性があります。 この例では、クリーンアップ所要時間が 30 分の場合は、1:00、2:30、4:00 にスケジュールされるため、重複することはありません。

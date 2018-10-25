@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: e5b44ed2435986ffd500cade1f7c8ff8047d353d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 30a1f2be1917ba6ea404a2862daaf5f51f35ac3f
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452307"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394886"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>コンピューティング ターゲットを選択して使用し、モデルをトレーニングする
 
@@ -25,9 +25,12 @@ Azure Machine Learning サービスでは、いくつかの異なる環境でモ
 
 マシン上でのローカル実行から始め、GPU や Azure Batch AI を備えたリモート データ サイエンス仮想マシンなどの別の環境にスケールアップおよびスケールアウトできます。 
 
+>[!NOTE]
+> この記事のコードは、Azure Machine Learning SDK バージョン 0.168 でテストされました。 
+
 ## <a name="supported-compute-targets"></a>サポートされているコンピューティング ターゲット
 
-Azure Machine Learning は、次のコンピューティング ターゲットをサポートしています。
+Azure Machine Learning サービスは、次のコンピューティング ターゲットをサポートしています。
 
 |コンピューティング ターゲット| GPU アクセラレーション | 自動化されたハイパーパラメーターのチューニング | 自動化されたモデル選択 | パイプラインで使用できます|
 |----|:----:|:----:|:----:|:----:|
@@ -41,8 +44,8 @@ __[Azure Container Instances (ACI)](#aci)__ はモデルのトレーニングに
 コンピューティング ターゲット間の主な違いは次のとおりです。
 * __GPU アクセラレーション__: Data Science Virtual Machine と Azure Batch AI で GPU を利用できます。 インストールされているハードウェア、ドライバー、およびフレームワークに応じてローカル コンピューターの GPU にアクセスできます。
 * __自動化されたハイパーパラメーターのチューニング__: Azure Machine Learning の自動化されたハイパーパラメーターの最適化を使用すると、お使いのモデルに最適なハイパーパラメーターを検出できます。
-* __自動化されたモデル選択__: Azure Machine Learning は、モデルを構築する際にアルゴリズムとハイパーパラメーターの選択をインテリジェントに推奨できます。 自動化されたモデル選択を使用すると、高品質なモデルに到達する際、手動でさまざまな組み合わせを試みるよりも速く到達できます。 詳細については、「[チュートリアル: Azure Automated Machine Learning によるの分類モデルの自動トレーニング](tutorial-auto-train-models.md)」のドキュメントを参照してください。
-* __パイプライン__: Azure Machine Learning では、トレーニングやパイプラインへのデプロイなどのさまざまなタスクを組み合わせることができます。 パイプラインは並列または連続で実行できます。また、信頼できる自動化メカニズムを提供します。 詳細については、「[Azure Machine Learning サービスによる機械学習パイプラインの構築](concept-ml-pipelines.md)」のドキュメントを参照してください。
+* __自動化されたモデル選択__: Azure Machine Learning サービスは、モデルを構築する際にアルゴリズムとハイパーパラメーターの選択をインテリジェントに推奨できます。 自動化されたモデル選択を使用すると、高品質なモデルに到達する際、手動でさまざまな組み合わせを試みるよりも速く到達できます。 詳細については、「[チュートリアル: Azure Automated Machine Learning によるの分類モデルの自動トレーニング](tutorial-auto-train-models.md)」のドキュメントを参照してください。
+* __パイプライン__: Azure Machine Learning サービスでは、トレーニングやパイプラインへのデプロイなどのさまざまなタスクを組み合わせることができます。 パイプラインは並列または連続で実行できます。また、信頼できる自動化メカニズムを提供します。 詳細については、「[Azure Machine Learning サービスによる機械学習パイプラインの構築](concept-ml-pipelines.md)」のドキュメントを参照してください。
 
 Azure Machine Learning SDK、Azure CLI、または Azure Portal を使用してコンピューティング ターゲットを作成できます。 既存のコンピューティング ターゲットをワークスペースに追加 (接続) することによって既存のコンピューティング ターゲットを使用することもできます。
 
@@ -106,7 +109,7 @@ from azureml.core.conda_dependencies import CondaDependencies
 run_config_system_managed = RunConfiguration()
 
 run_config_system_managed.environment.python.user_managed_dependencies = False
-run_config_system_managed.prepare_environment = True
+run_config_system_managed.auto_prepare_environment = True
 
 # Specify conda dependencies with scikit-learn
 
@@ -174,7 +177,7 @@ run_config_system_managed.environment.python.conda_dependencies = CondaDependenc
     # Use Docker in the remote VM
     run_config.environment.docker.enabled = True
 
-    # Use CPU base image from DockerHub
+    # Use CPU base image
     run_config.environment.docker.base_image = azureml.core.runconfig.DEFAULT_CPU_IMAGE
     print('Base Docker image is:', run_config.environment.docker.base_image)
 
@@ -206,30 +209,30 @@ Data Science Virtual Machine でのトレーニングを示す Jupyter Notebook 
 ```python
 from azureml.core.compute import BatchAiCompute
 from azureml.core.compute import ComputeTarget
+import os
 
 # choose a name for your cluster
-batchai_cluster_name = ws.name + "cpu"
+batchai_cluster_name = os.environ.get("BATCHAI_CLUSTER_NAME", ws.name + "gpu")
+cluster_min_nodes = os.environ.get("BATCHAI_CLUSTER_MIN_NODES", 1)
+cluster_max_nodes = os.environ.get("BATCHAI_CLUSTER_MAX_NODES", 3)
+vm_size = os.environ.get("BATCHAI_CLUSTER_SKU", "STANDARD_NC6")
+autoscale_enabled = os.environ.get("BATCHAI_CLUSTER_AUTOSCALE_ENABLED", True)
 
-found = False
-# see if this compute target already exists in the workspace
-for ct in ws.compute_targets():
-    print(ct.name, ct.type)
-    if (ct.name == batchai_cluster_name and ct.type == 'BatchAI'):
-        found = True
-        print('found compute target. just use it.')
-        compute_target = ct
-        break
-        
-if not found:
+
+if batchai_cluster_name in ws.compute_targets():
+    compute_target = ws.compute_targets()[batchai_cluster_name]
+    if compute_target and type(compute_target) is BatchAiCompute:
+        print('found compute target. just use it. ' + batchai_cluster_name)
+else:
     print('creating a new compute target...')
-    provisioning_config = BatchAiCompute.provisioning_configuration(vm_size = "STANDARD_D2_V2", # for GPU, use "STANDARD_NC6"
-                                                                #vm_priority = 'lowpriority', # optional
-                                                                autoscale_enabled = True,
-                                                                cluster_min_nodes = 1, 
-                                                                cluster_max_nodes = 4)
+    provisioning_config = BatchAiCompute.provisioning_configuration(vm_size = vm_size, # NC6 is GPU-enabled
+                                                                vm_priority = 'lowpriority', # optional
+                                                                autoscale_enabled = autoscale_enabled,
+                                                                cluster_min_nodes = cluster_min_nodes, 
+                                                                cluster_max_nodes = cluster_max_nodes)
 
     # create the cluster
-    compute_target = ComputeTarget.create(ws,batchai_cluster_name, provisioning_config)
+    compute_target = ComputeTarget.create(ws, batchai_cluster_name, provisioning_config)
     
     # can poll for a minimum number of nodes and for a specific timeout. 
     # if no min node count is provided it will use the scale settings for the cluster
@@ -372,7 +375,7 @@ Azure Portal からワークスペースに関連付けられたコンピュー�
 1. [Azure Portal](https://portal.azure.com) にアクセスし、ワークスペースに移動します。
 2. __[アプリケーション]__ セクションの __[計算]__ リンクをクリックします。
 
-    ![[計算] タブを表示する](./media/how-to-set-up-training-targets/compute_tab.png)
+    ![[計算] タブを表示する](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
 
 ### <a name="create-a-compute-target"></a>コンピューティング ターゲットを作成する
 
@@ -380,7 +383,7 @@ Azure Portal からワークスペースに関連付けられたコンピュー�
 
 1. __+__ 記号をクリックし、コンピューティング ターゲットを追加します。
 
-    ![計算の追加 ](./media/how-to-set-up-training-targets/add_compute.png)
+    ![計算の追加 ](./media/how-to-set-up-training-targets/add-compute-target.png)
 
 1. コンピューティング ターゲットの名前を入力します。
 1. __トレーニング__に接続する計算の種類を選択します。 
@@ -413,14 +416,14 @@ Azure Portal からワークスペースに関連付けられたコンピュー�
 6. これらのターゲットに対して実行を送信できるようになりました。
 
 ## <a name="examples"></a>例
-次のノートブックは、この記事の概念を示しています。
-* `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
-* `01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb`
-* `01.getting-started/03.train-on-aci/03.train-on-aci.ipynb`
-* `01.getting-started/05.train-in-spark/05.train-in-spark.ipynb`
-* `01.getting-started/07.hyperdrive-with-sklearn/07.hyperdrive-with-sklearn.ipynb`
+次の Notebook は、この記事の概念を示しています。
+* [01.getting-started/02.train-on-local/02.train-on-local.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local)
+* [01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm)
+* [01.getting-started/03.train-on-aci/03.train-on-aci.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci)
+* [01.getting-started/05.train-in-spark/05.train-in-spark.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark)
+* [tutorials/01.train-models.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/01.train-models.ipynb)
 
-これらの notebook を取得する: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
+これらの Notebook を取得するには: [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>次の手順
 

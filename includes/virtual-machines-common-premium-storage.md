@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: ea312002a9a1a39505cd4748864ca9dfc1da43dd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a05d0c623c1abdb5713c1d49b0b577298c1d6c7d
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060403"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49347024"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク
 
@@ -51,7 +51,7 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
 
 * **Premium Storage ディスク**
 
-    Premium Storage では、特定のサイズ シリーズの VM に接続できる VM ディスクがサポートされています。 Premium Storage では、さまざまな Azure VM をサポートします。 P4 (32 GiB)、P6 (64 GiB)、P10 (128 GiB)、P15 (256 GiB)、P20 (512 GiB)、P30 (1,024 GiB)、P40 (2,048 GiB)、P50 (4,095 GiB) という 8 種類の GA ディスク サイズから選択できます。 また、P60 8,192 GiB (8 TiB)、P70 16,348 (16 TiB)、P80 32,767 GiB (32 TiB) の 3 つのプレビュー ディスク サイズもあります。 P4、P6、P60、P70、P80 サイズは、現在、Managed Disks のみでサポートされています。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。 仕様の詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#scalability-and-performance-targets)に関するセクションで説明します。
+    Premium Storage では、特定のサイズ シリーズの VM に接続できる VM ディスクがサポートされています。 Premium Storage では、さまざまな Azure VM をサポートします。 P4 (32 GiB)、P6 (64 GiB)、P10 (128 GiB)、P15 (256 GiB)、P20 (512 GiB)、P30 (1,024 GiB)、P40 (2,048 GiB)、P50 (4,095 GiB) という 8 種類の GA ディスク サイズから選択できます。 また、P60 8,192 GiB (8 TiB)、P70 16,348 (16 TiB)、P80 32,767 GiB (32 TiB) の 3 つのプレビュー ディスク サイズもあります。 P4、P6、P15、P60、P70、P80 ディスク サイズは、現在、Managed Disks のみでサポートされています。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。 仕様の詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#scalability-and-performance-targets)に関するセクションで説明します。
 
 * **Premium ページ BLOB**
 
@@ -149,13 +149,9 @@ Premium Storage アカウントのスケーラビリティ ターゲットは、
 非管理対象ディスクに Premium Storage アカウントを使用しており、アプリケーションが 1 つのストレージ アカウントのスケーラビリティ ターゲットを超えた場合、管理ディスクへの移行が必要になることがあります。 管理ディスクに移行しない場合は、複数のストレージ アカウントを使用するようにアプリケーションを作成します。 その後、それらのストレージ アカウント間でデータをパーティション分割します。 たとえば、複数の VM で合計 51 TB のディスクを接続する場合、ディスクを 2 つのストレージ アカウントに分散します。 Premium Storage アカウント 1 つあたりの上限は 35 TB です。 1 つの Premium Storage アカウントでプロビジョニングするディスクの容量が 35 TB を超えることがないようにしてください。
 
 ### <a name="premium-storage-disk-limits"></a>Premium Storage ディスクの制限
-Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Azure では、Premium Storage ディスクとして P4 (Managed Disks のみ)、P6 (Managed Disks のみ)、P10、P15、P20、P30、P40、および P50 の 8 種類を提供しています。 Premium Storage ディスクの種類それぞれには、IOPS とスループットに関する固有の制限があります。 ディスクの種類の制限については、次の表で説明します。
+Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Azure では、Premium Storage ディスクとして P4 (Managed Disks のみ)、P6 (Managed Disks のみ)、P10、P15 (Managed Disks のみ)、P20、P30、P40、P50 の 8 種類の GA を提供しています。 プレビュー段階の 3 つのディスク サイズ (P60、P70、P80) もあります。 Premium Storage ディスクの種類それぞれには、IOPS とスループットに関する固有の制限があります。 ディスクの種類の制限については、次の表で説明します。
 
-| Premium ディスクの種類  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
-|-----------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| ディスク サイズ           | 32 GiB | 64 GiB | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32,767 GiB (32 TiB) |
-| ディスクあたりの IOPS      | 120   | 240    | 500   | 1100   | 2300 | 5000 | 7500 | 7500 | 12,500 | 15,000 | 20,000 |
-| ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 125 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 480 MB/秒 | 750 MB/秒 | 750 MB/秒 |
+| Premium ディスクの種類  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | P60   | P70   | P80   | |---------------------|-------|-------|-------|-------|-------|-------|-------|-------||-------||-------||-------| | ディスク サイズ           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32,767 GiB (32 TiB)    | | ディスクあたりの IOPS       | 120   | 240   | 500   | 1100   | 2300              | 5000              | 7500              | 7500              | 12,500              | 15,000              | 20,000              | | ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 125 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 480 MB/秒 | 750 MB/秒 | 750 MB/秒 |
 
 > [!NOTE]
 > [Premium Storage でサポートされる VM](#premium-storage-supported-vms) に関するセクションの説明に従って、ディスク トラフィックを促進するために、VM で十分な帯域幅を使用できることを確認してください。 確認できない場合、ディスクのスループットと IOPS の値は低くなります。 スループットと IOPS の最大値は、上記の表で説明したディスクの制限ではなく、VM の制限に基づきます。  
@@ -284,7 +280,7 @@ sudo rpm -e hypervkvpd  ## (Might return an error if not installed. That's OK.)
 sudo yum install microsoft-hyper-v
 ```
 
-新しいドライバーをアクティブにするには、コンピューターを再起動してください。
+新しいドライバーをアクティブにするには、VM を再起動してください。
 
 ## <a name="pricing-and-billing"></a>価格と課金
 

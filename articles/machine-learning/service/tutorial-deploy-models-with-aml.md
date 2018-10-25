@@ -9,12 +9,12 @@ author: hning86
 ms.author: haining
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: b1ae3fb5de3e28f44ef39731f49a33e2086255a1
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: ad6b296543cffedb215c87b1fc893a22b29a3052
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785343"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427350"
 ---
 # <a name="tutorial-2--deploy-an-image-classification-model-in-azure-container-instance-aci"></a>チュートリアル 2: Azure Container Instances (ACI) に画像分類モデルをデプロイする
 
@@ -49,7 +49,7 @@ ACI は運用環境のデプロイに最適ではありませんが、ワーク�
 
 まずテスト環境を設定します。
 
-### <a name="import-packages"></a>パッケージのインポート
+### <a name="import-packages"></a>パッケージをインポートする
 
 このチュートリアルに必要な Python パッケージをインポートします。
 
@@ -383,4 +383,4 @@ service.delete()
 > * モデルを ACI にデプロイする
 > * デプロイしたモデルをテストする
  
-また、[自動アルゴリズムの選択]()に関するチュートリアルを試して、Azure Machine Learning サービスでモデルに最適なアルゴリズムを自動的に選択して調整し、そのモデルを自動的に構築する方法を確認することもできます。
+また、[自動アルゴリズムの選択](tutorial-auto-train-models.md)に関するチュートリアルを試して、Azure Machine Learning サービスでモデルに最適なアルゴリズムを自動的に選択して調整し、そのモデルを自動的に構築する方法を確認することもできます。

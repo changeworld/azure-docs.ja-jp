@@ -5,14 +5,14 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 10/11/2018
 ms.author: seguler
-ms.openlocfilehash: 9964aa4d263e0b75eb59b4e1434a9b3f0aac6ea1
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 4f29933fbd4b9ea5c9868e307a6affa7e2273e3d
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400185"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165183"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>blobfuse を使用して Blob Storage をファイル システムとしてマウントする方法
 
@@ -27,7 +27,7 @@ ms.locfileid: "39400185"
 > 
 
 ## <a name="install-blobfuse-on-linux"></a>Linux に blobfuse をインストールする
-blobfuse バイナリは、[Linux 用の Microsoft ソフトウェア リポジトリ](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)で入手できます。 blobfuse をインストールするには、次のリポジトリのいずれかを構成します。
+blobfuse バイナリは、Linux の Ubuntu および RHEL ディストリビューション用の [Microsoft ソフトウェア リポジトリ](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)で入手できます。 このようなディストリビューションに blobfuse をインストールするには、一覧からいずれかのリポジトリを構成します。 使用しているディストリビューション用のバイナリがない場合は、[こちら](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)のインストール手順に従ってソース コードからバイナリをビルドすることもできます。
 
 ### <a name="configure-the-microsoft-package-repository"></a>Microsoft パッケージ リポジトリを構成する
 [Microsoft 製品用の Linux パッケージ リポジトリ](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)を構成します。
@@ -89,7 +89,7 @@ blobfuse では、資格情報が次の形式でテキスト ファイルに格�
 
 ```
 accountName myaccount
-accountKey myaccesskey==
+accountKey 9fD-/KjshdfLDERmcIjabcdefhAUSIHD/asdhfoiasiaAISOIabcdef/askdfewiAASJDNFL+askdlfj==
 containerName mycontainer
 ```
 
@@ -97,6 +97,10 @@ containerName mycontainer
 ```bash
 chmod 700 fuse_connection.cfg
 ```
+
+> [!NOTE]
+> Windows で構成ファイルを作成した場合は、`dos2unix` を実行してサニタイズし、Unix 形式に変換します。 
+>
 
 ### <a name="create-an-empty-directory-for-mounting"></a>マウント用の空のディレクトリを作成する
 ```bash

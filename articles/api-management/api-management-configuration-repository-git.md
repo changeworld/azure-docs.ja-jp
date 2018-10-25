@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: ce4ff33a8af9cf864ad4902599a0ab18b2b27182
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d359ad0e619e4d7784d763e70599ce784aa852cd
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387227"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945815"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
 
@@ -84,7 +84,7 @@ REST API を使用してこの操作を実行する方法については、「 [
 Git ツールを目的のフォルダーで開き、次のコマンドを実行して、Git リポジトリをローカル マシンに複製します (コマンドは Azure Portal で提供されます)。
 
 ```
-git clone https://bugbashdev4.scm.azure-api.net/
+git clone https://{name}.scm.azure-api.net/
 ```
 
 入力を求められたら、ユーザー名とパスワードを入力します。
@@ -92,7 +92,7 @@ git clone https://bugbashdev4.scm.azure-api.net/
 エラーが発生する場合は、次の例のように、 `git clone` コマンドを変更してユーザー名とパスワードを含めてみてください。
 
 ```
-git clone https://username:password@bugbashdev4.scm.azure-api.net/
+git clone https://username:password@{name}.scm.azure-api.net/
 ```
 
 それでもエラーが発生する場合は、コマンドのパスワード部分をエンコードする URL を試してください。 これを簡単に行う 1 つの方法では、Visual Studio を開き、 **[イミディエイト ウィンドウ]** で次のコマンドを発行します。 **[イミディエイト ウィンドウ]** を開くには、Visual Studio で任意のソリューションまたはプロジェクトを開き (または新しく空のコンソール アプリケーションを作成し)、**[デバッグ]** メニューから **[ウィンドウ]**、**[イミディエイト]** の順に選択します。
@@ -104,7 +104,7 @@ git clone https://username:password@bugbashdev4.scm.azure-api.net/
 エンコードされたパスワードをユーザー名とリポジトリの場所と共に使用して Git コマンドを作成します。
 
 ```
-git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
+git clone https://username:url encoded password@{name}.scm.azure-api.net/
 ```
 
 リポジトリの複製が完了したら、ローカル ファイル システムのリポジトリを表示して操作できます。 詳細については、「 [ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス](#file-and-folder-structure-reference-of-local-git-repository)」を参照してください。
@@ -120,7 +120,7 @@ git pull
 `git pull` を実行する前に、ローカル リポジトリのフォルダーに移動してください。 `git clone` コマンドを完了した直後に、次のようなコマンドを使用して、ディレクトリをリポジトリに変更する必要があります。
 
 ```
-cd bugbashdev4.scm.azure-api.net/
+cd {name}.scm.azure-api.net/
 ```
 
 ## <a name="to-push-changes-from-your-local-repo-to-the-server-repo"></a>ローカル リポジトリからサーバー リポジトリに変更をプッシュするには
