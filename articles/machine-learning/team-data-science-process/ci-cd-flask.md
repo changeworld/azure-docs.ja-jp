@@ -38,7 +38,7 @@ ms.locfileid: "44304290"
 * [Azure DevOps 組織](https://docs.microsoft.com/azure/devops/organizations/accounts/create-organization-msa-or-work-student)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 * [Kubernetes を実行する Azure Container Service (AKS)](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster)
-* [Azure Container Registy (ACR) アカウント](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
+* [Azure Container Registry (ACR) アカウント](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)
 * [Kubernetes クラスターに対してコマンドを実行するための Kubectl のインストール](https://kubernetes.io/docs/tasks/tools/install-kubectl/)。 これは、ACS クラスターから構成をフェッチするために必要になります。 
 * GitHub アカウントへのリポジトリのフォーク
 
