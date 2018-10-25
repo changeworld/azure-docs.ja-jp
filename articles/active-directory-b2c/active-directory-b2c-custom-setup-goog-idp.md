@@ -1,259 +1,181 @@
 ---
-title: Azure Active Directory B2C のカスタム ポリシーを使って Google+ を OAuth2 ID プロバイダーとして追加する | Microsoft Docs
-description: OAuth2 プロトコルを使って Google+ を ID プロバイダーとして使用する例。
+title: カスタム ポリシーを使用して Azure Active Directory B2C で Google アカウントでのサインインを設定する | Microsoft Docs
+description: カスタム ポリシーを使用して Azure Active Directory B2C で Google アカウントでのサインインを設定します。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 08/04/2017
+ms.date: 09/20/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: f076a906ba38e6c8e8c9530baba1607553b41ea6
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5f4aaef65620a2c6f268f123544c7ecf71dccb82
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338330"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887276"
 ---
-# <a name="azure-active-directory-b2c-add-google-as-an-oauth2-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使って Google+ を OAuth2 ID プロバイダーとして追加する
+# <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Google アカウントでのサインインを設定する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-このガイドでは、[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使って Google+ アカウントからのユーザーのサインインを有効にする方法を示します。
+この記事では、Azure Active Directory (Azure AD) B2C で[カスタム ポリシー](active-directory-b2c-overview-custom.md)を使用して Google アカウントからのユーザーのサインインを有効にする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)に関する記事の手順を完了します。
+- [Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)に関するページにある手順を完了する。
+- Google アカウントがまだない場合は、「[Google アカウントの作成](https://accounts.google.com/SignUp)」で Google アカウントを作成する。
 
-その手順は次のとおりです。
+## <a name="register-the-application"></a>アプリケーションを登録する
 
-1.  Google+ アカウント アプリケーションを作成する。
-2.  Azure AD B2C に Google+ アカウント アプリケーション キーを追加する
-3.  ポリシーにクレーム プロバイダーを追加する
-4.  ユーザー体験に Google+ アカウント クレーム プロバイダーを登録する
-5.  Azure AD B2C テナントにポリシーをアップロードし、テストする
+Google アカウントのユーザーがサインインできるようにするには、Google アプリケーション プロジェクトを作成する必要があります。 
 
-## <a name="create-a-google-account-application"></a>Google+ アカウント アプリケーションを作成する
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Google+ を使用するには、Google+ アプリケーションを作成し、適切なパラメーターを提供する必要があります。 Google + アプリケーションは、[https://accounts.google.com/SignUp](https://accounts.google.com/SignUp) で登録することができます。
+1. お使いのアカウントの資格情報を使用して [Google Developers Console](https://console.developers.google.com/) にサインインします。
+2. **プロジェクト名**を入力し、**[作成]** をクリックして、新しいプロジェクトを使用していることを確認します。
+3. 左側のメニューで **[認証情報]** を選択して、**[認証情報を作成]、[Oauth クライアント ID]** の順に選択します。
+4. **[Configure consent screen (同意画面の構成)]** を選択します。
+5. 有効な**メール アドレス**を選択または指定し、ユーザーに表示する**製品名**を入力します。**[認証済みドメイン]** に「`b2clogin.com`」と入力し、**[保存]** をクリックします。
+6. **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。
+7. アプリケーションの **[名前]** を入力します。
+8. **[承認済みの JavaScript 生成元]** に「`https://your-tenant-name.b2clogin.com`」と入力し、**[承認済みのリダイレクト URI]** に「`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`」と入力します。 your-tenant-name をテナントの名前に置き換えます。 テナントが Azure AD B2C に大文字で定義されている場合でも、テナント名を入力するときに、すべての小文字を使用する必要があります。
+8. **Create** をクリックしてください。
+9. **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。 テナントで ID プロバイダーとして Google を構成するには、両方の値が必要です。 クライアント シークレットは、重要なセキュリティ資格情報です。
 
-1.  [Google Developers Console](https://console.developers.google.com/) に移動し、Google+ アカウントの資格情報でサインインします。
-2.  **[プロジェクトの作成]** をクリックし、**[プロジェクト名]** を入力して、**[作成]** をクリックします。
+## <a name="create-a-policy-key"></a>ポリシー キーを作成する
 
-3.  **[プロジェクトを選択] メニュー**をクリックします。
+Azure AD B2C テナントで前に記録したクライアント シークレットを格納する必要があります。
 
-    ![Google+ アカウント - プロジェクトを選択](media/active-directory-b2c-custom-setup-goog-idp/goog-add-new-app1.png)
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+4. [概要] ページで、**[Identity Experience Framework - プレビュー]** を選択します。
+5. **[ポリシー キー]** を選択し、**[追加]** を選択します。
+6. **オプション**については、`Manual`を選択します。
+7. ポリシー キーの**名前**を入力します。 たとえば、「 `GoogleSecret` 」のように入力します。 プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
+8. **[シークレット]** に、前に記録したクライアント シークレットを入力します。
+9. **[キー使用法]** として [`Signature`] を選択します。
+10. **Create** をクリックしてください。
 
-4.  **[+]** ボタンをクリックします。
+## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
 
-    ![Google+ アカウント - 新しいプロジェクトの作成](media/active-directory-b2c-custom-setup-goog-idp//goog-add-new-app2.png)
+ユーザーが Google アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。 
 
-5.  **[プロジェクト名]** に入力し、**[作成]** をクリックします。
+Google アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
-    ![Google+ アカウント - 新しいプロジェクト](media/active-directory-b2c-custom-setup-goog-idp//goog-app-name.png)
+1. *TrustFrameworkExtensions.xml* を開きます。
+2. **ClaimsProviders** 要素を見つけます。 存在しない場合は、それをルート要素の下に追加します。
+3. 新しい **ClaimsProvider** を次のように追加します。
 
-6.  プロジェクトの準備が完了するまで待ち、**[プロジェクトを選択] メニュー**をクリックします。
+    ```xml
+    <ClaimsProvider>
+      <Domain>google.com</Domain>
+      <DisplayName>Google</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="Google-OAUTH">
+          <DisplayName>Google</DisplayName>
+          <Protocol Name="OAuth2" />
+          <Metadata>
+            <Item Key="ProviderName">google</Item>
+            <Item Key="authorization_endpoint">https://accounts.google.com/o/oauth2/auth</Item>
+            <Item Key="AccessTokenEndpoint">https://accounts.google.com/o/oauth2/token</Item>
+            <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
+            <Item Key="scope">email</Item>
+            <Item Key="HttpBinding">POST</Item>
+            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="client_id">Your Google application ID</Item>
+          </Metadata>
+          <CryptographicKeys>
+            <Key Id="client_secret" StorageReferenceId="B2C_1A_GoogleSecret" />
+          </CryptographicKeys>
+          <OutputClaims>
+            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="id" />
+            <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
+            <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
+            <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name" />
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
+            <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="google.com" />
+            <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
+          </OutputClaims>
+          <OutputClaimsTransformations>
+            <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
+            <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
+            <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
+            <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId" />
+          </OutputClaimsTransformations>
+          <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+    ```
 
-    ![Google+ アカウント - 新しいプロジェクトを使えるようになるまで待つ](media/active-directory-b2c-custom-setup-goog-idp//goog-select-app1.png)
+4. **client_id** を、アプリケーションの登録で取得したアプリケーション ID に設定します。
+5. ファイルを保存します。
 
-7.  プロジェクト名をクリックします。
+### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
 
-    ![Google+ アカウント - 新しいプロジェクトを選択](media/active-directory-b2c-custom-setup-goog-idp//goog-select-app2.png)
+ここまでで、Azure AD B2C が Azure AD ディレクトリと通信する方法を認識するようにポリシーを設定しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。
 
-8.  左側のナビゲーションで、**[API マネージャー]** をクリックし、**[認証情報]** をクリックします。
-9.  上部の **[OAuth 同意画面]** タブをクリックします。
+1. Azure AD B2C テナントの **[カスタム ポリシー]** ページで、**[ポリシーのアップロード]** を選択します。
+2. **[ポリシーが存在する場合は上書きする]** を有効にし、*TrustFrameworkExtensions.xml* ファイルを参照して選択します。
+3. **[アップロード]** をクリックします。
 
-    ![Google+ アカウント - [OAuth 同意画面] の設定](media/active-directory-b2c-custom-setup-goog-idp/goog-add-cred.png)
+## <a name="register-the-claims-provider"></a>クレーム プロバイダーを登録する
 
-10.  有効な **[メール アドレス]** を選択または指定し、**サービス名**を入力して、**[保存]** をクリックします。
+この時点では、ID プロバイダーはセットアップされていますが、サインアップ/サインイン画面で使用することはできません。 これを使用できるようにするには、既存のテンプレート ユーザー体験の複製を作成してから、Azure AD の ID プロバイダーも含まれるように変更します。
 
-    ![Google+ - アプリケーション認証情報](media/active-directory-b2c-custom-setup-goog-idp/goog-consent-screen.png)
-
-11.  **[新しい資格情報]** をクリックし、**[OAuth クライアント ID]** を選択します。
-
-    ![Google+ - 新しいアプリケーション認証情報の作成](media/active-directory-b2c-custom-setup-goog-idp/goog-add-oauth2-client-id.png)
-
-12.  **[アプリケーションの種類]** で **[Web アプリケーション]** を選択します。
-
-    ![Google+ - アプリケーションの種類の選択](media/active-directory-b2c-custom-setup-goog-idp/goog-web-app.png)
-
-13.  アプリケーションの**名前**を指定します。**[承認済みの JavaScript 生成元]** フィールドに「`https://{tenant}.b2clogin.com`」と入力し、**[承認済みのリダイレクト URI]** フィールドに「`https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp`」と入力します。 **{tenant}** を実際のテナントの名前 (例: contosob2c) に置き換えます。 **{tenant}** の値は大文字小文字が区別されます。 **Create** をクリックしてください。
-
-    ![Google+ - 承認された JavaScript 生成元とリダイレクト URI の指定](media/active-directory-b2c-custom-setup-goog-idp/goog-create-client-id.png)
-
-14.  **[クライアント ID]** と **[クライアント シークレット]** の値をコピーします。 テナントで ID プロバイダーとして Google+ を構成するには、両方の値が必要です。 **[クライアント シークレット]** は、重要なセキュリティ資格情報です。
-
-    ![Google+ - [クライアント ID] と [クライアント シークレット] の値のコピー](media/active-directory-b2c-custom-setup-goog-idp/goog-client-secret.png)
-
-## <a name="add-the-google-account-application-key-to-azure-ad-b2c"></a>Azure AD B2C に Google+ アカウント アプリケーション キーを追加する
-Google+ アカウントとのフェデレーションには、Google+ アカウントのクライアント シークレットがアプリケーションに代わって Azure AD B2C を信頼する必要があります。 Azure AD B2C テナントに Google+ アプリケーション シークレットを格納する必要があります。  
-
-1.  Azure AD B2C テナントに移動し、**[B2C Settings]\(B2C 設定\)**  >  **[Identity Experience Framework]** の順に選択します。
-2.  **[ポリシー キー]** を選択して、テナント内で利用できるキーを表示します。
-3.  **[+ 追加]** をクリックします。
-4.  **[オプション]** には **[Manual] \(手動)** を使用します。
-5.  **[名前]** には `GoogleSecret` を使用します。  
-    プレフィックス `B2C_1A_` が自動的に追加される場合があります。
-6.  **[シークレット]** ボックスに、上記でコピーした [Google Developers Console](https://console.developers.google.com/) からの Google アプリケーション シークレットを入力します。
-7.  **[キー使用法]** には **[署名]** を使用します。
-8.  **[作成]**
-9.  キー `B2C_1A_GoogleSecret` を作成したことを確認します。
-
-## <a name="add-a-claims-provider-in-your-extension-policy"></a>拡張ポリシーにクレーム プロバイダーを追加する
-
-ユーザーが Google+ アカウントを使ってサインインできるようにするには、Google+ アカウントをクレーム プロバイダーとして定義する必要があります。 つまり、Azure AD B2C が通信するエンドポイントを指定する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。
-
-拡張ポリシー ファイルに `<ClaimsProvider>` ノードを追加することで、Google+ アカウントをクレーム プロバイダーとして定義します。
-
-1.  作業ディレクトリから拡張ポリシー ファイル (TrustFrameworkExtensions.xml) を開きます。 XML エディターが必要な場合は、軽量のクロスプラットフォーム エディターである [Visual Studio Code](https://code.visualstudio.com/download) をお試しください。
-2.  `<ClaimsProviders>` セクションを探します。
-3.  ファイルを保存する前に、`ClaimsProviders` 要素の下に次の XML スニペットを追加し、`client_id` 値を Google+ アカウント アプリケーション クライアント ID で置換します。  
-
-```xml
-<ClaimsProvider>
-    <Domain>google.com</Domain>
-    <DisplayName>Google</DisplayName>
-    <TechnicalProfiles>
-    <TechnicalProfile Id="Google-OAUTH">
-        <DisplayName>Google</DisplayName>
-        <Protocol Name="OAuth2" />
-        <Metadata>
-        <Item Key="ProviderName">google</Item>
-        <Item Key="authorization_endpoint">https://accounts.google.com/o/oauth2/auth</Item>
-        <Item Key="AccessTokenEndpoint">https://accounts.google.com/o/oauth2/token</Item>
-        <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
-        <Item Key="scope">email</Item>
-        <Item Key="HttpBinding">POST</Item>
-        <Item Key="UsePolicyInRedirectUri">0</Item>
-        <Item Key="client_id">Your Google+ application ID</Item>
-        </Metadata>
-        <CryptographicKeys>
-        <Key Id="client_secret" StorageReferenceId="B2C_1A_GoogleSecret" />
-        </CryptographicKeys>
-        <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="id" />
-        <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
-        <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
-        <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name" />
-        <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name" />
-        <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="google.com" />
-        <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="socialIdpAuthentication" />
-        </OutputClaims>
-        <OutputClaimsTransformations>
-        <OutputClaimsTransformation ReferenceId="CreateRandomUPNUserName" />
-        <OutputClaimsTransformation ReferenceId="CreateUserPrincipalName" />
-        <OutputClaimsTransformation ReferenceId="CreateAlternativeSecurityId" />
-        <OutputClaimsTransformation ReferenceId="CreateSubjectClaimFromAlternativeSecurityId" />
-        </OutputClaimsTransformations>
-        <UseTechnicalProfileForSessionManagement ReferenceId="SM-SocialLogin" />
-        <ErrorHandlers>
-        <ErrorHandler>
-            <ErrorResponseFormat>json</ErrorResponseFormat>
-            <ResponseMatch>$[?(@@.error == 'invalid_grant')]</ResponseMatch>
-            <Action>Reauthenticate</Action>
-            <!--In case of authorization code used error, we don't want the user to select his account again.-->
-            <!--AdditionalRequestParameters Key="prompt">select_account</AdditionalRequestParameters-->
-        </ErrorHandler>
-        </ErrorHandlers>
-    </TechnicalProfile>
-    </TechnicalProfiles>
-</ClaimsProvider>
-```
-
-## <a name="register-the-google-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>サインアップまたはサインイン ユーザー体験に Google+ アカウント クレーム プロバイダーを登録する
-
-ID プロバイダーが設定されました。  ただし、サインアップ/サインイン画面のいずれでも使用可能ではありません。 Google+ アカウント ID プロバイダーをユーザーの `SignUpOrSignIn` ユーザー体験に追加します。 使用可能にするには、既存のテンプレート ユーザー体験の複製を作成します。  次に、Google+ アカウント ID プロバイダーを追加します。
-
->[!NOTE]
->
->`<UserJourneys>` 要素をポリシーの基本ファイルから拡張ファイル (TrustFrameworkExtensions.xml) にコピーした場合は、このセクションをスキップすることができます。
-
-1.  ポリシーの基本ファイルを開きます (例: TrustFrameworkBase.xml)。
-2.  `<UserJourneys>` 要素を見つけて、`<UserJourneys>` ノードのコンテンツ全体をコピーします。
-3.  拡張ファイル (例: TrustFrameworkExtensions.xml) を開き、`<UserJourneys>` 要素を見つけます。 要素が存在しない場合は追加します。
-4.  コピーした `<UserJourney>` ノードのコンテンツ全体を `<UserJourneys>` 要素の子として貼り付けます。
+1. スターター パックの *TrustFrameworkBase.xml* ファイルを開きます。
+2. `Id="SignUpOrSignIn"` を含む **UserJourney** 要素を見つけ、その内容全体をコピーします。
+3. *TrustFrameworkExtensions.xml* を開き、**UserJourneys** 要素を見つけます。 要素が存在しない場合は追加します。
+4. コピーした **UserJourney** 要素の内容全体を **UserJourneys** 要素の子として貼り付けます。
+5. ユーザー体験の ID の名前を変更します。 たとえば、「 `SignUpSignInGoogle` 」のように入力します。
 
 ### <a name="display-the-button"></a>ボタンを表示する
-`<ClaimsProviderSelections>` 要素は、クレーム プロバイダーの選択オプションとその順序の一覧を定義します。  `<ClaimsProviderSelection>` 要素は、サインアップ/サインイン ページの ID プロバイダーのボタンに類似しています。 Google+ アカウントのために `<ClaimsProviderSelection>` 要素を追加すると、ユーザーがページにアクセスしたときに新しいボタンが表示されます。 この要素を追加するには、次の手順を実行します。
 
-1.  コピーしたばかりのユーザー体験内で、`Id="SignUpOrSignIn"` を含む `<UserJourney>` ノードを見つけます。
-2.  `Order="1"` を含む `<OrchestrationStep>` ノードを見つける
-3.  `<ClaimsProviderSelections>` ノード下に次の XML スニペットを追加します。
+**ClaimsProviderSelection** 要素は、サインアップ/サインイン画面の ID プロバイダー ボタンに類似しています。 Google アカウントのために **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
 
-```xml
-<ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
-```
+1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
+2. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`GoogleExchange` など) に設定します。
 
-### <a name="link-the-button-to-an-action"></a>ボタンのアクションへのリンク
-ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションでは、Azure AD B2C が Google+ アカウントと通信してトークンを受信します。
-
-1.  `<UserJourney>` ノード内で、`Order="2"` が含まれている `<OrchestrationStep>` を見つけます。
-2.  `<ClaimsExchanges>` ノード下に次の XML スニペットを追加します。
-
-```xml
-<ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
-```
-
->[!NOTE]
->
-> * `Id` が前のセクションの `TargetClaimsExchangeId` と同じ値であることを確認します
-> * `TechnicalProfileReferenceId` ID が前に作成した技術プロファイル (Google-OAUTH) に設定されていることを確認します。
-
-## <a name="upload-the-policy-to-your-tenant"></a>ポリシーをテナントにアップロードする
-1.  [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキストに切り替え](active-directory-b2c-navigate-to-b2c-context.md)、**[Azure AD B2C]** ブレードを開きます。
-2.  **[Identity Experience Framework]** を選択します。
-3.  **[すべてのポリシー]** ブレードを開きます。
-4.  **[ポリシーのアップロード]** を選択します。
-5.  **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
-6.  TrustFrameworkExtensions.xml を**アップロード**し、検証に失敗しないことを確認します。
-
-## <a name="test-the-custom-policy-by-using-run-now"></a>[今すぐ実行] を使用してカスタム ポリシーをテストする
-1.  **[Azure AD B2C の設定]** を開き、**[Identity Experience Framework]** に移動します。
-
-    >[!NOTE]
-    >
-    >    **[今すぐ実行]** を使用するには、テナントに少なくとも 1 つのアプリケーションが事前登録されている必要があります。 
-    >    アプリケーションを登録する方法については、 Azure AD B2C の[概要](active-directory-b2c-get-started.md)に関する記事または[アプリケーションの登録](active-directory-b2c-app-registration.md)に関する記事を参照してください。
-
-
-2.  アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_signup_signin** を開きます。 **[今すぐ実行]** を選択します。
-3.  Google+ アカウントを使ってサインインすることができます。
-
-## <a name="optional-register-the-google-account-claims-provider-to-profile-edit-user-journey"></a>[省略可能] プロファイル編集ユーザー体験に Google+ アカウント クレーム プロバイダーを登録する
-Google+ アカウント ID プロバイダーをユーザーの `ProfileEdit` ユーザー体験に追加することもできます。 利用できるようには、最後の 2 つの手順を繰り返します。
-
-### <a name="display-the-button"></a>ボタンを表示する
-1.  ポリシーの拡張ファイル (例: TrustFrameworkExtensions.xml) を開きます。
-2.  コピーしたばかりのユーザー体験内で、`Id="ProfileEdit"` を含む `<UserJourney>` ノードを見つけます。
-3.  `Order="1"` を含む `<OrchestrationStep>` ノードを見つける
-4.  `<ClaimsProviderSelections>` ノード下に次の XML スニペットを追加します。
-
-```xml
-<ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
-```
+    ```XML
+    <ClaimsProviderSelection TargetClaimsExchangeId="GoogleExchange" />
+    ```
 
 ### <a name="link-the-button-to-an-action"></a>ボタンのアクションへのリンク
-1.  `<UserJourney>` ノード内で、`Order="2"` が含まれている `<OrchestrationStep>` を見つけます。
-2.  `<ClaimsExchanges>` ノード下に次の XML スニペットを追加します。
 
-```xml
-<ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAUTH" />
-```
+ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションでは、Azure AD B2C が Google アカウントと通信してトークンを受信します。
 
-### <a name="upload-the-policy-to-your-tenant"></a>ポリシーをテナントにアップロードする
-1.  [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキストに切り替え](active-directory-b2c-navigate-to-b2c-context.md)、**[Azure AD B2C]** ブレードを開きます。
-2.  **[Identity Experience Framework]** を選択します。
-3.  **[すべてのポリシー]** ブレードを開きます。
-4.  **[ポリシーのアップロード]** を選択します。
-5.  **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
-6.  TrustFrameworkExtensions.xml を**アップロード**し、検証に失敗しないことを確認します。
+1. ユーザー体験内で、`Order="2"` を含む **OrchestrationStep** を見つけます。
+2. 次の **ClaimsExchange** 要素を追加します。**Id** には、**TargetClaimsExchangeId** に使用したのと同じ値を使用するようにしてください。
 
-### <a name="test-the-custom-profile-edit-policy-by-using-run-now"></a>[今すぐ実行] を使ってカスタム プロファイル編集ポリシーをテストする
+    ```XML
+    <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
+    ```
+    
+    **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `Google-OAuth` 」のように入力します。
 
-1.  **[Azure AD B2C の設定]** を開き、**[Identity Experience Framework]** に移動します。
-2.  アップロードした証明書利用者 (RP) カスタム ポリシーである **B2C_1A_ProfileEdit** を開きます。 **[今すぐ実行]** を選択します。
-3.  Google+ アカウントを使ってサインインすることができます。
+3. *TrustFrameworkExtensions.xml* ファイルを保存し、検証のために再度アップロードします。
 
-## <a name="download-the-complete-policy-files"></a>完全なポリシー ファイルをダウンロードする
-省略可能: これらのサンプル ファイルを使う代わりに、カスタム ポリシーの概要チュートリアルの完了後に独自のカスタム ポリシーを使ってシナリオを構築することをお勧めします。  [参照用のサンプル ポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-goog-app)
+## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C アプリケーションを作成する
+
+Azure AD B2C との通信は、テナント内に作成したアプリケーション経由で行われます。 このセクションでは、テスト アプリケーションをまだ作成していない場合、それを作成するために実行できる省略可能な手順を示します。
+
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+4. **[アプリケーション]**、**[追加]** の順に選択します。
+5. アプリケーションの名前 (*testapp1* など) を入力します。
+6. **[Web アプリ/Web API]** で [`Yes`] を選択し、**[応答 URL]** に「`https://jwt.ms`」と入力します。
+7. **Create** をクリックしてください。
+
+## <a name="update-and-test-the-relying-party-file"></a>証明書利用者ファイルを更新してテストする
+
+作成したユーザー体験を開始する証明書利用者 (RP) ファイルを更新します。
+
+1. 作業ディレクトリ内に *SignUpOrSignIn.xml* のコピーを作成し、その名前を変更します。 たとえば、その名前を *SignUpSignInGoogle.xml* に変更します。
+2. 新しいファイルを開き、**TrustFrameworkPolicy** の **PolicyId** 属性の値を一意の値に更新します。 たとえば、「 `SignUpSignInGoogle` 」のように入力します。
+3. **PublicPolicyUri** の値をポリシーの URI に更新します。 たとえば、`http://contoso.com/B2C_1A_signup_signin_google` とします。
+4. **DefaultUserJourney** 内の **ReferenceId** 属性の値を、作成した新しいユーザー体験の ID (SignUpSignGoogle) に一致するように更新します。
+5. 変更を保存し、ファイルをアップロードしてから、一覧内の新しいポリシーを選択します。
+6. 作成した Azure AD B2C アプリケーションが **[アプリケーションの選択]** フィールドで選択されていることを確認し、**[今すぐ実行]** をクリックしてそれをテストします。

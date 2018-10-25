@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1fb19c7b74d059d83cc5a51a158dcc6ba9bede23
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 3cb44779f376dca1844f42f346ed0fa3bfaa93cf
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306271"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269447"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect に関する FAQ
 
@@ -47,7 +47,7 @@ ms.locfileid: "46306271"
 **Q: Azure AD Connect データベースをローカル データベースからリモート SQL Server インスタンスに移行できますか。**   
 はい、次の手順では、この移行方法に関する一般的なガイダンスを提供しています。 現在、より詳細なドキュメントの作成に取り組んでいます。
 1. LocalDB ADSync データベースをバックアップします。
-この最も簡単な方法は、Azure AD Connect と同じコンピューターにインストールされている SQL Server Management Studio を使用することです。 *(localdb)\.\ADSync* に接続し、ADSync データベースをバックアップします
+この最も簡単な方法は、Azure AD Connect と同じコンピューターにインストールされている SQL Server Management Studio を使用することです。 *(LocalDb).\ADSync* に接続し、ADSync データベースをバックアップします。
 
 2. リモート SQL Server インスタンスに ADSync データベースを復元します
 

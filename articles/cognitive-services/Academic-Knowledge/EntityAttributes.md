@@ -1,20 +1,21 @@
 ---
-title: Academic Knowledge API の Academic Graph エンティティの属性 | Microsoft Docs
+title: Academic Graph エンティティの属性 - Academic Knowledge API
+titlesuffix: Azure Cognitive Services
 description: Academic Knowledge API で Academic Graph と共に使用できるエンティティ属性について説明します。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: f771969c3c6f05e5d2c99b1fbf593ae039ccb12c
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: a203fdf6562dabb1b9d6e8ab5bb8f46ff6d5dc27
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372693"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902792"
 ---
 # <a name="entity-attributes"></a>エンティティの属性
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: e36b8a680f0dc5bf6b438ab00620d4f2a5b9770c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c5d4299d2d391a25bfab579f5f78da3718afc24c
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980595"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043008"
 ---
 # <a name="use-the-iot-extension-for-azure-cli-for-azure-iot-hub-device-management"></a>Azure CLI 向けの IoT 拡張機能を使用した Azure IoT Hub デバイス管理
 
@@ -27,8 +27,8 @@ ms.locfileid: "46980595"
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| 管理オプション          | タスク                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+| 管理オプション          | タスク  |
+|----------------------------|-----------|
 | ダイレクト メソッド             | メッセージの送信開始や停止、デバイスの再起動などの機能をデバイスに実行させます。                                        |
 | デバイス ツインの必要なプロパティ    | デバイスを特定の状態にします (LED を緑に設定したり、テレメトリの送信間隔を 30 分に設定したりします)。         |
 | デバイス ツインの報告されるプロパティ   | デバイスの報告される状態を取得します。 たとえば、デバイスは、現在 LED が点滅していることを報告します。                                    |
@@ -49,17 +49,19 @@ Azure CLI と Azure CLI 向けの IoT 拡張機能をさまざまな管理オプ
 
 ## <a name="what-you-need"></a>必要なもの
 
-- 次の要件に対応するために、[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するチュートリアルを完了しておきます。
+* 次の要件に対応するために、[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するチュートリアルを完了しておきます。
+
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
 
-- このチュートリアルの実行時にクライアント アプリケーションでデバイスが実行されていることを確認します。
+* このチュートリアルの実行時にクライアント アプリケーションでデバイスが実行されていることを確認します。
 
-- [Python 2.7x または Python 3.x](https://www.python.org/downloads/)
-- Azure CLI インストールが必要な場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –version` を使用します。 
-- IoT 拡張機能をインストールします。 最も簡単な方法は、`az extension add --name azure-cli-iot-ext` を実行することです。 [IoT 拡張機能の readme](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) に、拡張機能をインストールするためのいくつかの方法が説明されています。
+* [Python 2.7x または Python 3.x](https://www.python.org/downloads/)
 
+* Azure CLI インストールが必要な場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)に関するページを参照してください。 Azure CLI のバージョンは、少なくとも 2.0.24 以降である必要があります。 検証するには、`az –version` を使用します。 
+
+* IoT 拡張機能をインストールします。 最も簡単な方法は、`az extension add --name azure-cli-iot-ext` を実行することです。 [IoT 拡張機能の readme](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) に、拡張機能をインストールするためのいくつかの方法が説明されています。
 
 ## <a name="log-in-to-your-azure-account"></a>Azure アカウントへのログイン
 
@@ -72,7 +74,10 @@ az login
 ## <a name="direct-methods"></a>ダイレクト メソッド
 
 ```bash
-az iot hub invoke-device-method --device-id <your device id> --hub-name <your hub name> --method-name <the method name> --method-payload <the method payload>
+az iot hub invoke-device-method --device-id <your device id> \
+  --hub-name <your hub name> \
+  --method-name <the method name> \
+  --method-payload <the method payload>
 ```
 
 ## <a name="device-twin-desired-properties"></a>デバイス ツインの目的のプロパティ
@@ -80,7 +85,8 @@ az iot hub invoke-device-method --device-id <your device id> --hub-name <your hu
 次のコマンドを実行して、目的のプロパティ interval = 3000 を設定します。
 
 ```bash
-az iot hub device-twin update -n <your hub name> -d <your device id> --set properties.desired.interval = 3000
+az iot hub device-twin update -n <your hub name> \
+  -d <your device id> --set properties.desired.interval = 3000
 ```
 
 このプロパティをデバイスから読み取ることができます。
@@ -106,7 +112,10 @@ az iot hub device-twin show --hub-name <your hub name> --device-id <your device 
 次のコマンドを実行して、フィールド role = temperature&humidity をデバイスに追加します。
 
 ```bash
-az iot hub device-twin update --hub-name <your hub name> --device-id <your device id> --set tags = '{"role":"temperature&humidity"}}'
+az iot hub device-twin update \
+  --hub-name <your hub name> \
+  --device-id <your device id> \
+  --set tags = '{"role":"temperature&humidity"}}'
 ```
 
 ## <a name="device-twin-queries"></a>デバイス ツイン クエリ
@@ -114,13 +123,15 @@ az iot hub device-twin update --hub-name <your hub name> --device-id <your devic
 次のコマンドを実行して、タグ role = 'temperature&humidity' のクエリを実行します。
 
 ```bash
-az iot hub query --hub-name <your hub name> --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
+az iot hub query --hub-name <your hub name> \
+  --query-command "SELECT * FROM devices WHERE tags.role = 'temperature&humidity'"
 ```
 
 次のコマンドを実行して、タグ role = 'temperature&humidity' 以外のすべてのデバイスのクエリを実行します。
 
 ```bash
-az iot hub query --hub-name <your hub name> --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
+az iot hub query --hub-name <your hub name> \
+  --query-command "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
 ```
 
 ## <a name="next-steps"></a>次の手順

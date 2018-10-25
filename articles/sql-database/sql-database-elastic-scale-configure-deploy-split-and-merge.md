@@ -11,15 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e277e2fa5ca7062cde1c0061e585dfb092337d4a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/05/2018
+ms.openlocfilehash: 6fb001f3df78e5f85d8f89e3a45df59c0aec98a1
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159348"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869213"
 ---
-# <a name="deploy-a-split-merge-service"></a>split-merge サービスのデプロイ
+# <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>split-merge サービスをデプロイして、シャード化されたデータベース間でデータを移動する
+
 split-merge ツールを使用すると、シャード化されたデータベース間でデータを移動できます。 「 [スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)
 
 ## <a name="download-the-split-merge-packages"></a>分割-結合パッケージのダウンロード

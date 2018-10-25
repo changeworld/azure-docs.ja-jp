@@ -11,12 +11,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 3f98b4e34c4c76efc33395530ef016b26e1ad523
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f6a574f169310f2779fb20353fda748e6893a4bd
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163041"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48016742"
 ---
 # <a name="set-up-security-info-to-use-email-preview"></a>メールを使用するようにセキュリティ情報を設定する (プレビュー)
 
@@ -46,7 +46,7 @@ ms.locfileid: "44163041"
 
 3. **[アカウントのセキュリティ保護]** ページで、**[完了]** を選択します。
 
-    2 段階認証を使用するときにメール アドレスで本人確認をするようにセキュリティ情報が更新されます。
+    パスワードのリセットを使用するときにご自分のメール アドレスを使って本人確認をするようにご利用のセキュリティ情報が更新されます。
 
 ## <a name="additional-security-info-options"></a>追加のセキュリティ情報オプション
 

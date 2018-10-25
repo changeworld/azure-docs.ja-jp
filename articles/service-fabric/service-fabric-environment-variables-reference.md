@@ -12,18 +12,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: f7c36fec7ff58c225e41899e8264ca1dde95ce7c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 1c8400898dba59f312ba9d994ee711a5e241973a
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213250"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268006"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric の環境変数
 
 Service Fabric には、サービス インスタンスごとに設定される組み込み環境変数があります。 以下ではすべての環境変数を示します。
 
-| 環境変数                         | [説明]                                                            | 例                                                              |
+| 環境変数                         | 説明                                                            | 例                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | アプリケーションのファブリック URI 名です                                 | fabric:/MyApplication                                                |
 | Fabric_CodePackageName                       | プロセスが属しているコード パッケージの名前です              | コード                                                                 |
@@ -37,7 +37,7 @@ Service Fabric には、サービス インスタンスごとに設定される�
 | Fabric_NodeId                                | プロセスを実行しているノードのノード ID です                            | bf865279ba277deb864a976fbf4c200e                                     |
 | Fabric_NodeIPOrFQDN                          | クラスターのマニフェスト ファイルで指定されている、ノードの IP アドレスまたは FQDN です | localhost または 10.0.0.1                                                |
 | Fabric_NodeName                              | プロセスを実行しているノードのノード名です                          | _Node_0                                                              |
-| Fabric_ServiceName                           | サービスが ExclusiveProcess モードでホストされている場合の、サービスの名前です。 この変数の値は、ServicePackageActivationMode ExclusiveProcess を使用してサービスを作成する場合にのみ使用できます。  | MyService                                               |
+| Fabric_ServiceName                           | サービスが ExclusiveProcess モードでホストされている場合の、サービスのファブリック URI 名です。 この変数の値は、ServicePackageActivationMode ExclusiveProcess を使用してサービスを作成する場合にのみ使用できます。  | fabric:/MyApplication/MyService                                               |
 | Fabric_ServicePackageActivationId            | ServicePackageActivationId です                                         | GUID                                                               |
 | Fabric_ServicePackageName                    | プロセスがその一部であるサービス パッケージの名前です                     | Web1Pkg                                                              |
 

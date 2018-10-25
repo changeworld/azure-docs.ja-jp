@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 0b731e94675992e59f79b61a2f3a15fa20bdf8a7
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 70372f30ffaea1fafda3f76d4754489ae89a0a7c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143345"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390178"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
@@ -96,6 +96,9 @@ Microsoft はエクスペリエンスの改善に取り組んでいますが、�
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>クラスター ノード タイプ (仮想マシン スケール セット) で接続されたデータ ディスクを暗号化することはできますか?
 はい。  詳細については、「[接続されたデータ ディスクを備えたクラスターの作成](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)」、[ディスクの暗号化 (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) に関するセクション、および[ディスクの暗号化 (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md) に関するセクションを参照してください。
 
+### <a name="can-i-use-low-priority-vms-in-a-cluster-node-type-virtual-machine-scale-set"></a>クラスター ノード タイプ (仮想マシン スケール セット) で、優先度の低い VM を使用することはできますか?
+いいえ。 優先度の低い VM はサポートされていません。 
+
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>クラスターでウイルス対策プログラムを実行するときに除外する必要があるディレクトリとプロセス
 
 | **ウイルス対策の対象外ディレクトリ** |
@@ -123,7 +126,7 @@ Microsoft はエクスペリエンスの改善に取り組んでいますが、�
 アプリケーションを KeyVault に対して認証するための資格情報を取得する方法を次に示します。
 
 A. アプリケーションのビルド/パッキング ジョブ中に、SF アプリのデータ パッケージに証明書をプルし、これを使用して KeyVault に対して認証することができます。
-B. 仮想マシン スケール セットの MSI 対応ホストの場合は、SF アプリ用の単純な PowerShell SetupEntryPoint を開発して、[MSI エンドポイントからアクセス トークン](https://docs.microsoft.com/en-us/azure/active-directory/managed-service-identity/how-to-use-vm-token)を取得し、[key Vault からシークレットを取得](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret?view=azurermps-6.5.0)することができます
+B. 仮想マシン スケール セットの MSI 対応ホストの場合は、SF アプリ用の単純な PowerShell SetupEntryPoint を開発して、[MSI エンドポイントからアクセス トークン](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)を取得し、[key Vault からシークレットを取得](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret?view=azurermps-6.5.0)することができます
 
 ## <a name="application-design"></a>アプリケーションの設計
 

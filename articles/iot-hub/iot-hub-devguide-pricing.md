@@ -8,22 +8,22 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 672adba0b4b17a25c0c0a1da3596808f767e3fbd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ac25fa1bcca9a49054f37d8799511fbc7d95645b
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632841"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584100"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Azure IoT Hub の価格情報
 
-[Azure IoT Hub の価格][lnk-pricing] IoT Hub に関するさまざまな SKU と料金の一般的な情報を提供します。 この記事では、さまざまな IoT Hub 機能が IoT Hub によるメッセージとして課金される方法の詳細について説明します。
+[Azure IoT Hub の価格](https://azure.microsoft.com/pricing/details/iot-hub) IoT Hub に関するさまざまな SKU と料金の一般的な情報を提供します。 この記事では、さまざまな IoT Hub 機能が IoT Hub によるメッセージとして課金される方法の詳細について説明します。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="charges-per-operation"></a>操作ごとの料金
 
-| 操作 | 課金情報 | 
+| Operation | 課金情報 | 
 | --------- | ------------------- |
 | ID レジストリの操作 <br/> (作成、取得、一覧表示、更新、削除) | 課金されません。 |
 | デバイスからクラウドへのメッセージ | 正常に送信されたメッセージは、IoT Hub に入った時点で 4 KB のチャンク単位で課金されます  (たとえば、6 KB のメッセージは 2 メッセージとして課金されます)。 |
@@ -37,7 +37,7 @@ ms.locfileid: "34632841"
 | デバイスごとのジョブの操作 | ジョブの操作 (ツインの更新やメソッドなど) は通常どおり課金されます。 たとえば、ジョブが 1 KB の要求と本文が空白の応答による 1,000 回のメソッドの呼び出しとなる場合は、1,000 メッセージとして課金されます。 |
 
 > [!NOTE]
-> すべてのサイズはバイト単位でのペイロードのサイズを考慮して計算されます (プロトコルのフレームは無視されます)。 プロパティと本文が含まれるメッセージの場合、サイズはプロトコルに依存しない方法で計算されます。 詳細については、[IoT Hub メッセージング開発者ガイド][lnk-message-size]をご覧ください。
+> すべてのサイズはバイト単位でのペイロードのサイズを考慮して計算されます (プロトコルのフレームは無視されます)。 プロパティと本文が含まれるメッセージの場合、サイズはプロトコルに依存しない方法で計算されます。 詳細は、[IoT Hub メッセージの形式](iot-hub-devguide-messages-construct.md)を参照してください。
 
 ## <a name="example-1"></a>例 1
 
@@ -64,7 +64,3 @@ ms.locfileid: "34632841"
 ソリューション バックエンドはデバイス ツインを読み取るために 28 メッセージ (14 KB/0.5 KB) を使用し、さらにこれを更新するために 1 メッセージを使用するため、合計で 29 メッセージとなります。
 
 合計で、デバイスとソリューション バックエンドは 1 日あたり 641 メッセージを使用します。
-
-
-[lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub
-[lnk-message-size]: iot-hub-devguide-messages-construct.md

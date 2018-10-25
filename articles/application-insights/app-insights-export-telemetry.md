@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: a960ace141d5d71559c39c627f96746a25bf5207
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 31d7f0fd70edf7bbf05a3a180baa6cc078e02ba1
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42143142"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585477"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  
@@ -37,11 +37,9 @@ ms.locfileid: "42143142"
 ## <a name="setup"></a>連続エクスポートを作成する
 1. アプリの Application Insights リソースで、[連続エクスポート] を開き、**[追加]** を選択します。
 
-    ![下へスクロールし、[連続エクスポート] をクリックします](./media/app-insights-export-telemetry/01-export.png)
-
 2. テレメトリをエクスポートするデータ型を選択します。
 
-3. データの保存先となる [Azure ストレージ アカウント](../storage/common/storage-introduction.md)を作成または選択します。
+3. データの保存先とする [Azure ストレージ アカウント] (../storage/common/storage-introduction.md) を作成または選択します。 ストレージの価格オプションの詳細については、[価格に関する公式のページ](https://azure.microsoft.com/pricing/details/storage/)を参照してください。
 
     > [!Warning]
     > 既定では、ストレージの場所は、Application Insights のリソースと同じ地理的リージョンに設定されます。 別のリージョンに保存する場合は、転送の料金が発生する可能性があります。

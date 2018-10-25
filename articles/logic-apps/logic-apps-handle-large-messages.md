@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps で大きいサイズのメッセージを処理する | Microsoft Docs
-description: ロジック アプリでチャンクを使用して大きいサイズのメッセージを処理する方法について説明します
+title: 大きいサイズのメッセージを処理する - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps でチャンクを使用して大きいサイズのメッセージを処理する方法について説明します
 services: logic-apps
 documentationcenter: ''
 author: shae-hurst
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: ''
 ms.topic: article
 ms.date: 4/27/2018
 ms.author: shhurst
-ms.openlocfilehash: 6064db5455d92d15dca0e2a4a78285f0aeade904
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: e6ac6a4aa46feb768df437ff9d5969b2b41092c3
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299047"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041647"
 ---
-# <a name="handle-large-messages-with-chunking-in-logic-apps"></a>Logic Apps でチャンクを使用して大きいサイズのメッセージを処理する
+# <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Azure Logic Apps でチャンクを使用して大きいサイズのメッセージを処理する
 
 メッセージを処理する場合、Logic Apps では、メッセージのコンテンツの最大サイズを制限しています。 この制限によって、大きいサイズのメッセージの格納と処理によって発生するオーバーヘッドを削減できます。 この制限を超えるメッセージを処理するため、Logic Apps では、大きいサイズのメッセージを小さいサイズのメッセージに*チャンク*できます。 これにより、特定の条件下で Logic Apps を使用して大きいサイズのファイルを転送できます。 コネクタまたは HTTP 経由で他のサービスと通信する場合、Logic Apps は、サイズの大きいメッセージを使用できますが、チャンク単位で*のみ*使用できます。 この条件は、コネクタもチャンクをサポートしている必要があること、または Logic Apps とこれらのサービス間の HTTP メッセージ交換でチャンクを使用する必要があることを意味します。
 

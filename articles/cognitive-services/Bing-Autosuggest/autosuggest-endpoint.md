@@ -1,24 +1,25 @@
 ---
-title: Autosuggest エンドポイント | Microsoft Docs
-description: Autosuggest API エンドポイントの概要。
+title: Bing Autosuggest エンドポイント
+titlesuffix: Azure Cognitive Services
+description: Bing Autosuggest API エンドポイントの概要。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: v-gedod
-ms.openlocfilehash: 5aaddd09006cb6f1812bb6ae213a2f5e6720fb1b
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c2d1c97ad2af266558f9b664162526d5006d2092
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376885"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830446"
 ---
-# <a name="autosuggest-endpoint"></a>Autosuggest エンドポイント
+# <a name="bing-autosuggest-endpoint"></a>Bing Autosuggest エンドポイント
 
-**Autosuggest API** には、検索用語の一部から取得されたクエリ候補の一覧を返す 1 つのエンドポイントが含まれています。
+**Bing Autosuggest API** には、検索用語の一部から取得されたクエリ候補の一覧を返す 1 つのエンドポイントが含まれています。
 
 ## <a name="endpoint"></a>エンドポイント
 

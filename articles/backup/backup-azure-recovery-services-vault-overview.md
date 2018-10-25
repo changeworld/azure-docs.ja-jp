@@ -8,22 +8,22 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/10/2018
 ms.author: markgal
-ms.openlocfilehash: 04b755d7ca1ec72b075ecaa4b32a35f5009a938b
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 697245a6465fc15c943acefa4b820982fbaecb55
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42140313"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887600"
 ---
 # <a name="recovery-services-vaults-overview"></a>Recovery Services コンテナーの概要
 
-この記事では、Recovery Services コンテナーの機能について説明します。 Recovery Services コンテナーは、データを格納する Azure のストレージ エンティティです。 データは通常、データのコピーであるか、仮想マシン (VM)、ワークロード、サーバー、ワークステーションのいずれかの構成情報です。 Recovery Services コンテナーを使用すると、IaaS VM (Linux または Windows) や Azure SQL Database などのさまざまな Azure サービスのバックアップ データを保持できます。 Recovery Services コンテナーは、System Center DPM、Windows Server、Azure Backup Server などをサポートします。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 
+この記事では、Recovery Services コンテナーの機能について説明します。 Recovery Services コンテナーは、データを格納する Azure のストレージ エンティティです。 データは通常、データのコピーであるか、仮想マシン (VM)、ワークロード、サーバー、ワークステーションのいずれかの構成情報です。 Recovery Services コンテナーを使用すると、IaaS VM (Linux または Windows) や Azure SQL Database などのさまざまな Azure サービスのバックアップ データを保持できます。 Recovery Services コンテナーは、System Center DPM、Windows Server、Azure Backup Server などをサポートします。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。
 
 1 つの Azure サブスクリプション内に、リージョンあたり最大 500 個の Recovery Services コンテナーを作成できます。
 
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Recovery Services コンテナーと Backup コンテナーの比較
 
-Backup コンテナーをまだ使用している場合、Recovery Services コンテナーに自動アップグレードされます。 2017 年 11 月までに、すべての Backup コンテナーは Recovery Services コンテナーにアップグレードされます。 
+Backup コンテナーをまだ使用している場合、Recovery Services コンテナーに自動アップグレードされます。 2017 年 11 月までに、すべての Backup コンテナーは Recovery Services コンテナーにアップグレードされます。
 
 Recovery Services コンテナーが Azure の Azure Resource Manager モデルに基づいているのに対し、バックアップ コンテナーは Azure Service Manager モデルに基づいています。 Backup コンテナーを Recovery Services コンテナーにアップグレードする場合、バックアップ データはアップグレード プロセスの実行中でも実行後でもそのまま残ります。 Recovery Services コンテナーには、Backup コンテナーにはない次のような機能があります。
 
@@ -33,13 +33,12 @@ Recovery Services コンテナーが Azure の Azure Resource Manager モデル�
 
 - **ロールベースのアクセス制御 (RBAC)**: RBAC を使用して、Azure のアクセス権を詳細に管理できます。 [Azure にはさまざまな組み込みのロールがあります](../role-based-access-control/built-in-roles.md)。また、Azure Backup には、[復旧ポイントを管理するための 3 つの組み込みのロールがあります](backup-rbac-rs-vault.md)。 Recovery Services コンテナーは、定義されたユーザー ロールのセットに対するバックアップと復元アクセスを制限する RBAC と互換性があります。 [詳細情報](backup-rbac-rs-vault.md)
 
-- 
-  **Azure Virtual Machines のあらゆる構成の保護**: Recovery Services コンテナーは、Resource Manager ベースの VM (Premium ディスク、Managed Disks、暗号化された VM など) を保護します。 Backup コンテナーを Recovery Services コンテナーにアップグレードすると、Service Manager ベースの VM を Resource Manager ベースの VM にアップグレードできます。 コンテナーをアップグレードするときに、Service Manager ベースの VM の復旧ポイントを維持し、アップグレードされた (Resource Manager が有効な) VM の保護を構成できます。 [詳細情報](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
+- **Azure Virtual Machines のあらゆる構成の保護**: Recovery Services コンテナーは、Resource Manager ベースの VM (Premium ディスク、Managed Disks、暗号化された VM など) を保護します。 Backup コンテナーを Recovery Services コンテナーにアップグレードすると、Service Manager ベースの VM を Resource Manager ベースの VM にアップグレードできます。 コンテナーをアップグレードするときに、Service Manager ベースの VM の復旧ポイントを維持し、アップグレードされた (Resource Manager が有効な) VM の保護を構成できます。 [詳細情報](http://azure.microsoft.com/blog/azure-backup-recovery-services-vault-ga)
 
 - **IaaS VM のインスタント リストア**: Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。 IaaS VM のインスタント リストアは、Windows VM と Linux VM の両方で利用できます。 [詳細情報](http://azure.microsoft.com/blog/instant-file-recovery-from-azure-linux-vm-backup-using-azure-backup-preview)
 
 ## <a name="managing-your-recovery-services-vaults-in-the-portal"></a>ポータルでの Recovery Services コンテナーの管理
-Backup サービスは他の Azure に統合されるため、Recovery Services コンテナーは Azure portal で簡単に作成および管理できます。 この統合は、"*ターゲット サービスのコンテキストで*" Recovery Services コンテナーを作成または管理できることを意味します。 たとえば、VM の復旧ポイントを表示するには、VM を選択し、[操作] メニューで **[バックアップ]** をクリックします。 
+Backup サービスは他の Azure に統合されるため、Recovery Services コンテナーは Azure portal で簡単に作成および管理できます。 この統合は、"*ターゲット サービスのコンテキストで*" Recovery Services コンテナーを作成または管理できることを意味します。 たとえば、VM の復旧ポイントを表示するには、VM を選択し、[操作] メニューで **[バックアップ]** をクリックします。
 
 ![Recovery Services コンテナーの VM の詳細](./media/backup-azure-recovery-services-vault-overview/rs-vault-in-context-vm.png)
 
@@ -52,6 +51,9 @@ VM にバックアップが構成されていない場合、バックアップ�
 1 つの Recovery Services コンテナーが複数のサーバーを保護する場合、Recovery Services コンテナーを確認するのがより合理的です。 サブスクリプション内のすべての Recovery Services コンテナーを検索し、一覧から選択できます。
 
 次のセクションに、アクティビティの種類ごとに Recovery Services コンテナーを使用する方法が説明された記事へのリンクを示します。
+
+> [!NOTE]
+> Recovery Services コンテナーを削除した場合、24 時間以内に同じ名前の Recovery Services コンテナーを作成することはできません。 別のリソース名を使用するか、別のリソース グループを選択するか、24 時間後にもう一度再試行してください。
 
 ### <a name="back-up-data"></a>データのバックアップ
 - [Azure VM のバックアップ](backup-azure-vms-first-look-arm.md)

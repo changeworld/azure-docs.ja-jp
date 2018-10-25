@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2018
+ms.date: 09/05/2018
 ms.author: anwestg
-ms.openlocfilehash: 53766099f283f802482fe8e84144502d386b1d69
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: d361b4165c1fbbf79321e3f6d2ade711f9173c56
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39440153"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267217"
 ---
 # <a name="how-to-redistribute-azure-app-service-on-azure-stack-across-fault-domains"></a>障害ドメインに分散して Azure App Service on Azure Stack を再配布する方法
 
@@ -48,8 +48,8 @@ App Service リソース プロバイダー向けにデプロイされたスケ�
 スケール セットをスケールアウトするには、次の手順を実行します。
 
 1. Azure Stack 管理者ポータルにサインインします。
-1. **[そのほかのサービス]** を選択します。
-1. [Compute] で、**[Virtual Machine Scale Sets]** を選択します。 App Service 展開の一部として展開されている既存のスケール セットは、インスタンス数情報と共に表示されます。 次の画面キャプチャは、スケール セットの例を示しています。
+1. **[すべてのサービス]** を選択します。
+2. **コンピューター** カテゴリで、**[仮想マシン スケール セット]** を選択します。 App Service 展開の一部として展開されている既存のスケール セットは、インスタンス数情報と共に表示されます。 次の画面キャプチャは、スケール セットの例を示しています。
 
       ![Azure App Service スケール セットは、仮想マシン スケール セット UX に表示されます][1]
 

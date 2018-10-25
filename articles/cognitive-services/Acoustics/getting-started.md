@@ -1,20 +1,21 @@
 ---
-title: Project Acoustics スタート ガイド - Cognitive Services
+title: Project Acoustics スタート ガイド
+titlesuffix: Azure Cognitive Services
 description: このクイックスタート ガイドでは、Unity プロジェクトにプラグインを統合し、シーンをベイクし、音響を音源に適用する方法について説明します。
 services: cognitive-services
 author: kegodin
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b80543b199d4b766c1a8800d2dff4cf5ed81f8cc
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 62b6b40e6289ccca92c0a92d8bb7d0489dd44246
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181396"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902945"
 ---
 # <a name="getting-started-with-project-acoustics"></a>Project Acoustics スタート ガイド
 このクイックスタート ガイドでは、Unity プロジェクトにプラグインを統合し、シーンをベイクし、音響を音源に適用する方法について説明します。 このクイックスタート用に、まず [Azure Batch アカウント](create-azure-account.md)を作成する必要があります。 このガイドでは、Unity に関して一定の知識があることを前提にしています。
@@ -93,9 +94,9 @@ Unity の spatializer (立体化) フレームワークで音響用のオブジ�
 ![オーディオ ソース](media/AudioSource.png)
 
 ## <a name="apply-post-bake-design"></a>ベイク後デザインの適用
-スクリプト **AcousticsSourceCustomization** をシーン内の音源にアタッチして、追加のソース デザイン パラメーターを有効化できます。それには、**[Add Component]** をクリックし、**[Scripts] > [Acoustics Source Customization]** を選択します。
+スクリプト **AcousticsAdjust** をシーン内の音源にアタッチして、追加のソース デザイン パラメーターを有効化できます。それには、**[Add Component]** をクリックし、**[Scripts] > [Acoustics Adjust]** を選択します。
 
-![ソースのカスタマイズ](media/SourceCustomization.png)
+![AcousticsAdjust](media/AcousticsAdjust.png)
 
 **Microsoft Acoustics Mixer** にもパラメーターがあります。 ベイク後デザインの詳細については、[デザイン パラメーター](design-process.md)を参照してください。
 

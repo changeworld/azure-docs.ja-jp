@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/05/2018
+ms.date: 09/12/2018
 ms.author: jingwang
-ms.openlocfilehash: afb4cbafeb29800b1f5b1c837da301e2944d678b
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: a4de054926339985b77f110bd00f77c5c8f7d705
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842534"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957991"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -33,7 +33,7 @@ Azure SQL Database のデータを、サポートされているシンク デー
 
 具体的には、この Azure SQL Database コネクタは以下の機能をサポートします。
 
-- SQL 認証を使って、およびサービス プリンシパルまたはマネージド サービス ID (MSI) で Azure Active Directory (Azure AD) アプリケーション トークン認証を使って、データをコピーする。
+- SQL 認証を使って、およびサービス プリンシパルまたは Azure リソースのマネージド ID で Azure Active Directory (Azure AD) アプリケーション トークン認証を使って、データをコピーする。
 - ソースとして、SQL クエリまたはストアド プロシージャを使用してデータを取得する。
 - シンクとして、宛先テーブルにデータを追記する、またはコピー中にカスタム ロジックを使用してストアド プロシージャを起動する。
 
@@ -64,7 +64,7 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 
 - [SQL 認証](#sql-authentication)
 - [Azure AD アプリケーション トークン認証: サービス プリンシパル](#service-principal-authentication)
-- [Azure AD アプリケーション トークン認証: マネージド サービス ID](#managed-service-identity-authentication)
+- [Azure AD アプリケーション トークン認証: Azure リソースのマネージド ID](#managed-identity)
 
 >[!TIP]
 >エラー コード "UserErrorFailedToConnectToSqlServer" および "The session limit for the database is XXX and has been reached." (データベースのセッション制限 XXX に達しました) のようなメッセージのエラーが発生する場合は、`Pooling=false` を接続文字列に追加して、もう一度試してください。
@@ -96,7 +96,7 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 
 サービス プリンシパル ベースの Azure AD アプリケーション トークン認証を使うには、以下の手順のようにします。
 
-1. Azure portal から **[Azure Active Directory アプリケーションを作成します](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)**。 アプリケーション名と、リンクされたサービスを定義する次の値を記録しておきます。
+1. Azure portal から **[Azure Active Directory アプリケーションを作成します](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)**。 アプリケーション名と、リンクされたサービスを定義する次の値を記録しておきます。
 
     - アプリケーション ID
     - アプリケーション キー
@@ -146,9 +146,9 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>マネージド サービス ID 認証
+### <a name="managed-identity"> Azure リソースのマネージド ID 認証</a>
 
-データ ファクトリは、特定のデータ ファクトリを表す[マネージド サービス ID](data-factory-service-identity.md) に関連付けることができます。 このサービス ID を Azure SQL Database の認証に使用できます。 指定されたファクトリは、この ID を使用してデータベースにアクセスし、データを双方向にコピーできます。
+データ ファクトリは、特定のデータ ファクトリを表す [Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 このサービス ID を Azure SQL Database の認証に使用できます。 指定されたファクトリは、この ID を使用してデータベースにアクセスし、データを双方向にコピーできます。
 
 MSI ベースの Azure AD アプリケーション トークン認証を使うには、以下の手順のようにします。
 
@@ -201,7 +201,7 @@ MSI ベースの Azure AD アプリケーション トークン認証を使う�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](https://docs.microsoft.com/en-us/azure/data-factory/concepts-datasets-linked-services)に関する記事をご覧ください。 このセクションでは、Azure SQL Database データセットでサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](https://docs.microsoft.com/azure/data-factory/concepts-datasets-linked-services)に関する記事をご覧ください。 このセクションでは、Azure SQL Database データセットでサポートされるプロパティの一覧を示します。
 
 Azure SQL Database をコピー元またはコピー先としてデータをコピーするには、データセットの **type** プロパティを **AzureSqlTable** に設定します。 次のプロパティがサポートされています。
 
@@ -568,6 +568,9 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 ```
 
 ストアド プロシージャ機能は [テーブル値パラメーター](https://msdn.microsoft.com/library/bb675163.aspx)を利用しています。
+
+>[!NOTE]
+>ストアド プロシージャを呼び出すことで Money または Smallmoney のデータ型に書き込む場合、値が四捨五入される可能性があります。 緩和するには、Money または Smallmoney の代わりに Decimal として、TVP の対応するデータ型を指定します。 
 
 ## <a name="data-type-mapping-for-azure-sql-database"></a>Azure SQL Database のデータ型のマッピング
 

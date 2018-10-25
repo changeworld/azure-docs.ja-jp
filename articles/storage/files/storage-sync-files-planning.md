@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: d5b01566f672309837f738e185820a0f13eda1c1
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: e4e793ac5735f7f3b07d285dea027a8f603b7964
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382256"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237899"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Azure File Sync のデプロイの計画
 Azure File Sync を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま Azure Files で組織のファイル共有を一元化できます。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -62,10 +62,7 @@ Azure File Sync エージェントは、Windows Server を Azure ファイル共
 > Azure File Sync は、Azure ファイル共有に対する直接的な変更をサポートします。 ただし、Azure ファイル共有に対して行われた変更は、まず Azure File Sync の変更検出ジョブによって認識される必要があります。 クラウド エンドポイントに対する変更検出ジョブは、24 時間に 1 回のみ起動されます。 さらに、REST プロトコルで Azure ファイル共有に対して行われた変更は、SMB の最終更新時刻を更新するものではなく、同期による変更とは見なされません。詳細については、「[Azure Files についてよく寄せられる質問 (FAQ)](storage-files-faq.md#afs-change-detection)」を参照してください。
 
 ### <a name="cloud-tiering"></a>クラウドの階層化 
-クラウドの階層化は、サイズが 64 KiB より大きく、使用頻度やアクセス頻度が低いファイルを Azure Files に階層化できる、Azure File Sync のオプション機能です。 ファイルを階層化すると、Azure File Sync ファイル システム フィルター (StorageSync.sys) がローカルでファイルをポインターと置き換えるか、ポイントを再解析します。 再解析ポイントは Azure Files 内のファイルの URL を表します。 階層化されたファイルは NTFS 内に "オフライン" 属性が設定されるため、サード パーティ アプリケーションは階層化されたファイルを特定できます。 ユーザーが階層化されたファイルを開くと、Azure File Sync がファイル データを Azure Files からシームレスに再呼び出しします。ユーザーは、ファイルがシステムにローカルに保存されていないことを知る必要はありません。 この機能は、階層型ストレージ管理 (HSM) とも呼ばれます。
-
-> [!Important]  
-> クラウドの階層化は、Windows システム ボリューム上のサーバー エンドポイントではサポートされません。
+クラウドの階層化は Azure File Sync のオプション機能です。この機能では、頻繁にアクセスされるファイルがサーバー上にローカルにキャッシュされ、その他のファイルはポリシー設定に基づいて Azure Files に階層化されます。 詳細については、[クラウドの階層化](storage-sync-cloud-tiering.md)に関するページを参照してください。
 
 ## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Azure File Sync システムの要件と相互運用性 
 このセクションでは、Windows Server の機能とロール、およびサード パーティ ソリューションとの Azure File Sync エージェント システムの要件と相互運用性について説明します。
@@ -132,7 +129,7 @@ CSV で結果を表示するには:
 - NTFS ファイル システムでフォーマットされたローカルに接続されたボリューム。
 
 ### <a name="file-system-features"></a>ファイル システムの機能
-| Feature | サポートの状態 | メモ |
+| 機能 | サポートの状態 | メモ |
 |---------|----------------|-------|
 | アクセス制御リスト (ACL) | 完全にサポートされます | Windows ACL は、Azure File Sync に保持され、サーバー エンドポイント上の Windows Server によって適用されます。 クラウドでファイルに直接アクセスする場合、Azure Files は Windows ACL を (まだ) サポートしていません。 |
 | ハード リンク | Skipped | |

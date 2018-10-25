@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 2b2256ef5802160dbaa66e2a098a798fcdc653d2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e11b115d7a6421c34e7f1371ad8931b6affa0436
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064504"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815173"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>App Service on Linux の Java 開発者ガイド
 
@@ -216,20 +216,24 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
 4. JDBC ドライバー ファイルが Tomcat クラスローダーで確実に使用できるように、これらのファイルを `/home/tomcat/lib` ディレクトリに配置します。 これらのファイルを App Service インスタンスにアップロードするには、次の手順を行います。  
     1. Azure App Service webpp 拡張機能をインストールします。
+
       ```azurecli-interactive
       az extension add –name webapp
       ```
+
     2. 次の CLI コマンドを実行して、ローカル システムから App Service への SSH トンネルを作成します。
+
       ```azurecli-interactive
       az webapp remote-connection create –g [resource group] -n [app name] -p [local port to open]
       ```
-    3. SFTP クライアントを使用してローカルのトンネル ポートに接続し、ファイルを `/home/tomcat/lib` にアップロードします。
+
+    3. SFTP クライアントを使用してローカルのトンネル ポートに接続し、ファイルを `/home/tomcat/lib` フォルダーにアップロードします。
 
 5. App Service Linux アプリケーションを再起動します。 Tomcat によって `CATALINA_HOME` が `/home/tomcat` にリセットされ、更新された構成およびクラスが使用されます。
 
 ## <a name="docker-containers"></a>Docker コンテナー
 
-コンテナー内の App Service で実行されている Azure 対応 Zulu JDK を使用するには、アプリケーションの `Dockerfile` で [Java App Service Docker イメージ リポジトリ](https://github.com/Azure-App-Service/java)のイメージが確実に使用されるようにします。
+Azure がサポートしている Zulu JDK をコンテナーで使用するには、[Azul のダウンロード ページ](https://www.azul.com/downloads/azure-only/zulu/#docker)に記載されている事前構築済みのイメージをプルして使用するか、[Microsoft Java GitHub リポジトリ](https://github.com/Microsoft/java/tree/master/docker)にある `Dockerfile` の例を使用するようにします。
 
 ## <a name="runtime-availability-and-statement-of-support"></a>ランタイムの可用性とサポート ステートメント
 
@@ -242,7 +246,7 @@ App Service for Linux では、Java Web アプリケーションのマネージ�
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK のバージョンとメンテナンス
 
-Azure でサポートされている Java Development Kit (JDK) は、[Azul Systems](https://www.azul.com/) で提供されている [Zulu](https://www.azul.com/products/zulu-and-zulu-enterprise/) です。
+Azure でサポートされている Java Development Kit (JDK) は、[Azul Systems](https://www.azul.com/) で提供されている [Zulu](https://www.azul.com/downloads/azure-only/zulu/) です。
 
 メジャー バージョンの更新プログラムは、Azure App Service for Linux の新しいランタイム オプションによって提供されます。 お客様は、App Service デプロイを構成することで Java のこれらの新しいバージョンに更新します。また、主要な更新プログラムをテストし、ニーズを満たしていることを確認する必要があります。
 
@@ -258,15 +262,15 @@ Azure でサポートされている Java Development Kit (JDK) は、[Azul Syst
 
 ### <a name="local-development"></a>ローカル開発
 
-開発者は、[Azul のダウンロード サイト](https://www.azul.com/downloads/zulu/)から運用エディションの Azul Zulu Enterprise JDK をローカルでのデプロイ用にダウンロードできます。
+開発者は、[Azul のダウンロード サイト](https://www.azul.com/downloads/azure-only/zulu/)から運用エディションの Azul Zulu Enterprise JDK をローカルでのデプロイ用にダウンロードできます。
 
 ### <a name="development-support"></a>開発サポート
 
-[正規の Azure サポート プラン](https://azure.microsoft.com/support/plans/)を利用して Azure または [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) 用の開発を行う際には、Azul Zulu Enterprise JDK の製品サポートを利用できます。
+[正規の Azure サポート プラン](https://azure.microsoft.com/support/plans/)を利用して Azure または [Azure Stack](https://azure.microsoft.com/overview/azure-stack/) 用の開発を行う際には、[Azure がサポートする Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) の製品サポートを利用できます。
 
 ### <a name="runtime-support"></a>ランタイム サポート
 
-[正規のサポート プラン](https://azure.microsoft.com/support/plans/)の対象である開発者は、Azure サポートを利用して App Service Linux の Java ランタイムに関する[問題を投稿](/azure/azure-supportability/how-to-create-azure-support-request)できます。
+[正規のサポート プラン](https://azure.microsoft.com/support/plans/)の対象である開発者は、Azure サポートを利用して Azul Zulu JDK に関する[問題を投稿](/azure/azure-supportability/how-to-create-azure-support-request)できます。
 
 ## <a name="next-steps"></a>次の手順
 

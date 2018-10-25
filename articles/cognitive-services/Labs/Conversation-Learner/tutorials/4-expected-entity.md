@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: fb9193066c9501341efb779b9f9e2ccace02cccf
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: d0ad7093249bea761e0a36c6fffab8cdd151a662
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888206"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268023"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>アクションの "予期されるエンティティ" プロパティを使用する方法
 
@@ -63,9 +63,10 @@ ms.locfileid: "42888206"
 2. [応答] に、「What's your name?」と入力します。
 3. [予期されるエンティティ] に、「$name」と入力します。 [保存] をクリックします。
     - この値は、この質問がされ、ユーザーの応答に何もエンティティが検出されない場合、ボットはユーザーの応答全体がこのエンティティであると見なすべきであることを示します。
+    - このエンティティは、自動的に不適格エンティティとして追加されます。 
 2. [アクション] をクリックし、[新しいアクション] をクリックして 2 つ目のアクションを作成します。
 3. [応答] に、「Hello $name」と入力します。
-    - このエンティティは、必須のエンティティとして自動的に追加されます。 
+    - このエンティティは、必須のエンティティとして自動的に追加されます。
 4. [保存] をクリックします。
 
 これでアクションが 2 つできました。
@@ -111,7 +112,7 @@ ms.locfileid: "42888206"
 2. 「hello」と入力します。
 3. [what's your name] の応答として、「I am called frank」と入力します。
     - フレーズ全体が強調表示されます。 これは、統計モデルで name が見つからなかったため、ヒューリスティックがトリガーされ、回答全体が name エンティティとして選択されたためです。
-2. これを修正するには、強調表示されているフレーズをクリックし、赤い [x] をクリックします。 
+2. これを修正するには、強調表示されているフレーズをクリックし、赤いごみ箱アイコンをクリックします。 
 3. [frank] を選択し、[name] をクリックします。
 2. [Score Actions]\(アクションのスコア付け\) をクリックします。
 3. [Hello $name] を選択します。

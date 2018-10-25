@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 43fd52dd04e679b9756c07e8c6e260323469026a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c1ef71ea2ec551335c3681760c181624334c3229
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126204"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043203"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps のスキーマの更新 - 2016 年 6 月 1 日
 
@@ -33,23 +33,23 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 このスキーマにはスコープが含まれており、アクションをまとめてグループ化したり、入れ子にできます。 たとえば、1 つの条件に別の条件を含めることができます。 [スコープの構文](../logic-apps/logic-apps-loops-and-scopes.md)の詳細を確認するか、以下のコードで基本的なスコープの例を確認してください。
 
-```
+```json
 {
-    "actions": {
-        "My_Scope": {
-            "type": "scope",
-            "actions": {                
-                "Http": {
-                    "inputs": {
-                        "method": "GET",
-                        "uri": "http://www.bing.com"
-                    },
-                    "runAfter": {},
-                    "type": "Http"
-                }
+   "actions": {
+      "Scope": {
+         "type": "Scope",
+         "actions": {                
+            "Http": {
+               "inputs": {
+                   "method": "GET",
+                   "uri": "http://www.bing.com"
+               },
+               "runAfter": {},
+               "type": "Http"
             }
-        }
-    }
+         }
+      }
+   }
 }
 ```
 
@@ -57,29 +57,29 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 ## <a name="conditions-and-loops-changes"></a>条件とループに関する変更
 
-以前のバージョンのスキーマでは、条件とループはパラメーターとして単一のアクションに関連付けられていました。 このスキーマではその制限が廃止され、条件とループはアクションのタイプとして記述されます。 [ループとスコープ](../logic-apps/logic-apps-loops-and-scopes.md)の詳細を確認するか、以下のコードで基本的な条件アクションの例を確認してください。
+以前のバージョンのスキーマでは、条件とループはパラメーターとして単一のアクションに関連付けられていました。 このスキーマではその制限が廃止され、条件とループはアクションのタイプとして利用できるようになりました。 [ループおよびスコープ](../logic-apps/logic-apps-loops-and-scopes.md)と、[条件](../logic-apps/logic-apps-control-flow-conditional-statement.md)の詳細を確認するか、条件アクションを示すこの基本的な例を確認してください。
 
-```
+```json
 {
-    "If_trigger_is_some-trigger": {
-        "type": "If",
-        "expression": "@equals(triggerBody(), 'some-trigger')",
-        "runAfter": { },
-        "actions": {
-            "Http_2": {
-                "inputs": {
-                    "method": "GET",
-                    "uri": "http://www.bing.com"
-                },
-                "runAfter": {},
-                "type": "Http"
-            }
-        },
-        "else": 
-        {
-            "if_trigger_is_another-trigger": "..."
-        }      
-    }
+   "Condition - If trigger is some trigger": {
+      "type": "If",
+      "expression": "@equals(triggerBody(), '<trigger-name>')",
+      "runAfter": {},
+      "actions": {
+         "Http_2": {
+            "inputs": {
+                "method": "GET",
+                "uri": "http://www.bing.com"
+            },
+            "runAfter": {},
+            "type": "Http"
+         }
+      },
+      "else": 
+      {
+         "Condition - If trigger is another trigger": {}
+      }  
+   }
 }
 ```
 
@@ -87,16 +87,14 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 ## <a name="runafter-property"></a>runAfter プロパティ
 
-`dependsOn` プロパティが `runAfter` プロパティに置き換えられ、前のアクションの状態に基づいてアクションの実行順序をより正確に指定できるようになりました。
+`dependsOn` プロパティが `runAfter` プロパティに置き換えられ、前のアクションの状態に基づいてアクションの実行順序をより正確に指定できるようになりました。 `dependsOn` プロパティでは、アクションを実行したかった回数ではなく、前のアクションが成功したか、失敗したか、スキップされたかに応じて "アクションが実行され成功した" かどうかが示されていました。 `runAfter` プロパティを使えば、オブジェクトの実行後のアクションをすべて名前で指定できるため、オブジェクトとしての柔軟性が大きくなります。 このプロパティでは、トリガーとして許容される状態の配列も定義します。 たとえば、アクション A が成功し、かつ、アクション B が成功または失敗した後でアクションが実行されるようにする場合には、次のような `runAfter` プロパティを設定します。
 
-`dependsOn` プロパティは、"アクションの実行に成功した場合" という意味です。このため、直前のアクションの結果 (成功、失敗、スキップ) に基づいてアクションを実行する回数を変えたい場合には対応できません。 `runAfter` プロパティを使えば、オブジェクトの実行後のアクションをすべて名前で指定できるため、オブジェクトとしての柔軟性が大きくなります。 このプロパティでは、トリガーとして許容される状態の配列も定義します。 たとえば、ステップ A が成功し、かつ、ステップ B が成功または失敗した後でアクションを実行したい場合には、次のような `runAfter` プロパティを構成します。
-
-```
+```json
 {
-    "...",
-    "runAfter": {
-        "A": ["Succeeded"],
-        "B": ["Succeeded", "Failed"]
+   // Other parts in action definition
+   "runAfter": {
+      "A": ["Succeeded"],
+      "B": ["Succeeded", "Failed"]
     }
 }
 ```
@@ -109,10 +107,12 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 2. **[概要]** に移動します。 ロジック アプリのツール バーで、**[スキーマの更新]** を選択します。
    
-    ![[スキーマの更新] を選択][1]
+   ![[スキーマの更新] を選択][1]
    
-    アップグレード後の定義が返されます。これは、必要に応じてコピーしてリソース定義に貼り付けることができます。 
-    ただし、アップグレード後のロジック アプリで使われている接続の参照がすべて有効であることを確認するために、**[名前を付けて保存]** を選択することを**強くお勧め**します。
+   アップグレード後の定義が返されます。これは、必要に応じてコピーしてリソース定義に貼り付けることができます。 
+
+   > [!IMPORTANT]
+   > アップグレードされたロジック アプリ内でもすべての接続参照が有効のままとなるように、*必ず* **[名前を付けて保存]** を選択します。
 
 3. アップグレードのブレードのツール バーで **[名前を付けて保存]** を選択します。
 
@@ -125,17 +125,17 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 6. *(省略可能)* 以前のロジック アプリを新しいスキーマ バージョンで上書きするには、ツール バーの **[Clone (複製)]** (**[スキーマの更新]** の横) を使用します。 このステップは、ロジック アプリのリソース ID または要求トリガー URL をそのまま維持したい場合に必要となります。
 
-### <a name="upgrade-tool-notes"></a>アップグレード ツールの注意事項
+## <a name="upgrade-tool-notes"></a>アップグレード ツールの注意事項
 
-#### <a name="mapping-conditions"></a>条件のマッピング
+### <a name="mapping-conditions"></a>条件のマッピング
 
 アップグレード ツールでは、アップグレード後の定義で条件分岐アクションを可能な限り 1 つのスコープとしてグループ化しようとします。 具体的には、`@equals(actions('a').status, 'Skipped')` というデザイナー パターンが、`else` アクションとして表示されます。 ただし、認識できないパターンが検出された場合は、true の分岐と false の分岐について別個の条件が作成される可能性があります。 アップグレード後、必要に応じてアクションのマッピングを変更してください。
 
 #### <a name="foreach-loop-with-condition"></a>条件判定を伴う foreach ループ
 
-新しいスキーマでは、フィルター アクションを使用して、アイテム単位の条件判定を伴う `foreach` ループのパターンを再現できます。この変更は通常、アップグレード時に自動的に行われます。 このような条件は、foreach ループに先行するフィルター アクションに置き換えられます。つまり、このフィルター アクションによって条件に一致したアイテムのみの配列が取得され、foreach アクションに渡されます。 例については、[ループとスコープ](../logic-apps/logic-apps-loops-and-scopes.md)に関する記事を参照してください。
+新しいスキーマでは、フィルター アクションを使用することで、項目ごとに 1 つの条件が設定された **For each** ループを使用するパターンをレプリケートすることができます。 ただし、変更はアップグレード時に自動的に行われます。 このような条件は、**For each** ループに先行して表示されるフィルター アクションに置き換えられます。つまり、このフィルター アクションによって、条件に一致したアイテムの配列のみが取得され、その配列が **For each** アクションに渡されます。 例については、[ループとスコープ](../logic-apps/logic-apps-loops-and-scopes.md)に関する記事を参照してください。
 
-#### <a name="resource-tags"></a>リソース タグ
+### <a name="resource-tags"></a>リソース タグ
 
 リソース タグはアップグレード後に削除されるので、アップグレード後のワークフローで設定し直す必要があります。
 
@@ -157,20 +157,20 @@ Azure Logic Apps の[更新されたバージョンのスキーマ](https://sche
 
 アクションに `trackedProperties` というプロパティを (`runAfter` や `type` の兄弟として) 追加できるようになりました。 ワークフローの一環として出力される Azure 診断のテレメトリに含める特定のアクションの入力または出力を、このオブジェクトで指定します。 例: 
 
-```
-{                
-    "Http": {
-        "inputs": {
-            "method": "GET",
-            "uri": "http://www.bing.com"
-        },
-        "runAfter": {},
-        "type": "Http",
-        "trackedProperties": {
-            "responseCode": "@action().outputs.statusCode",
-            "uri": "@action().inputs.uri"
-        }
-    }
+``` json
+{
+   "Http": {
+      "inputs": {
+         "method": "GET",
+         "uri": "http://www.bing.com"
+      },
+      "runAfter": {},
+      "type": "Http",
+      "trackedProperties": {
+         "responseCode": "@action().outputs.statusCode",
+         "uri": "@action().inputs.uri"
+      }
+   }
 }
 ```
 

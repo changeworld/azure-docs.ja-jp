@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 672e31109b71a8a4238a05851a58a7c83e275b19
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 63cc8a698c9e383c4b5908286d28b51d89842bdc
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576316"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585698"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Azure Event Hubs イベント プロセッサ ホストの概要
 
@@ -45,7 +45,7 @@ Event Hubs をスケーリングするための鍵となるのは、パーティ
 
 ## <a name="ieventprocessor-interface"></a>IEventProcessor インターフェイス
 
-最初に、使用側アプリケーションで [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) インターフェイスを実装します。このインターフェイスには、[OpenAsync、CloseAsync、ProcessErrorAsync、および ProcessEventsAsnyc](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods) の 4 つのメソッドがあります。 このインターフェイスには、Event Hubs が送信するイベントを使用する実際のコードが含まれています。 簡単な実装を次のコードに示します。
+最初に、使用側アプリケーションで [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) インターフェイスを実装します。このインターフェイスには、[OpenAsync、CloseAsync、ProcessErrorAsync、および ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods) の 4 つのメソッドがあります。 このインターフェイスには、Event Hubs が送信するイベントを使用する実際のコードが含まれています。 簡単な実装を次のコードに示します。
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor
@@ -88,7 +88,8 @@ public class SimpleEventProcessor : IEventProcessor
 - **eventHubConnectionString:** イベント ハブへの接続文字列。この値は、Azure portal から取得できます。 この接続文字列には、イベント ハブに対する**リッスン** アクセス許可が付与されている必要があります。
 - **storageConnectionString:** 内部リソースの管理に使用されるストレージ アカウント。
 
-最後に、コンシューマーは [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) インスタンスを Event Hubs サービスに登録します。 この登録によって、Event Hubs サービスは、コンシューマー アプリがいくつかのパーティションからイベントを使用することを期待し、使用するイベントをプッシュするたびに [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 実装コードを呼び出すようになります。
+最後に、コンシューマーは [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) インスタンスを Event Hubs サービスに登録します。 EventProcessorHost のインスタンスでイベント プロセッサ クラスを登録すると、イベント処理が開始されます。 この登録によって、Event Hubs サービスは、コンシューマー アプリがいくつかのパーティションからイベントを使用することを期待し、使用するイベントをプッシュするたびに [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 実装コードを呼び出すようになります。 
+
 
 ### <a name="example"></a>例
 
@@ -123,7 +124,7 @@ EPH インスタンス (またはコンシューマー) のパーティション
 
 [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) の呼び出しごとに、イベントのコレクションが配信されます。 これらのイベントを処理するのは開発者の責任です。 物事は迅速に済ませることをお勧めします。つまり、できる限り最小限の処理に留めます。 代わりに、コンシューマー グループを使用します。 ストレージへの書き込みとルーティングを行う必要がある場合、一般的には、2 つのコンシューマー グループを使用し、2 つの [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) 実装を別個に実行する方が良いやり方です。
 
-処理中のある時点で、読み取ったものと完了したものを追跡することをお勧めします。 読み取りを再開する必要がある場合は、ストリームの先頭に戻らずに済むように追跡することが重要です。 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) は、"*チェックポイント*" を使用してこの追跡を簡素化します。 チェックポイントは、問題なくメッセージが処理されている、特定のコンシューマー グループ内の特定のパーティションの場所またはオフセットです。 **EventProcessorHost** でチェックポイントをマークするには、[PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) オブジェクトの [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) メソッドを呼び出します。 通常、この操作は [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) メソッド内で実行しますが、[CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) 内でも実行できます。
+処理中のある時点で、読み取ったものと完了したものを追跡することをお勧めします。 読み取りを再開する必要がある場合は、ストリームの先頭に戻らずに済むように追跡することが重要です。 [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) は、"*チェックポイント*" を使用してこの追跡を簡素化します。 チェックポイントは、問題なくメッセージが処理されている、特定のコンシューマー グループ内の特定のパーティションの場所またはオフセットです。 **EventProcessorHost** でチェックポイントをマークするには、[PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) オブジェクトの [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) メソッドを呼び出します。 この操作は [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) メソッド内で実行しますが、[CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) 内でも実行できます。
 
 ## <a name="checkpointing"></a>チェックポイント機能
 
@@ -140,6 +141,7 @@ EPH インスタンス (またはコンシューマー) のパーティション
 最後に、[EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) を使用して、すべてのパーティション リーダーをクリーンにシャットダウンします。これは、[EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) のインスタンスをシャットダウンするときに必ず呼び出す必要があります。 そうしないと、リースの期限切れとエポックの競合が原因で、**EventProcessorHost** の他のインスタンスを開始するときに遅延が発生する可能性があります。 エポック管理については、この[ブログ記事](https://blogs.msdn.microsoft.com/gyan/2014/09/02/event-hubs-receiver-epoch/)に詳しく説明されています
 
 ## <a name="lease-management"></a>リース管理
+EventProcessorHost のインスタンスでイベント プロセッサ クラスを登録すると、イベント処理が開始されます。 ホスト インスタンスは、可能性があるすべてのホスト インスタンス間で均等に分散パーティションに集約する方法で、他のホスト インスタンスから一部を取得、イベント ハブの一部のパーティションでリースを取得します。 リースされたパーティションごとに、ホスト インスタンスは、指定されたイベント プロセッサ クラスのインスタンスを作成し、そのパーティションからイベントを受信し、イベント プロセッサーのインスタンスに渡します。 多くのインスタンスが追加されより多くのリースが取り込まれると、EventProcessorHost は最終的にすべてのコンシューマー間で負荷を分散します。
 
 前に説明したように、追跡テーブルは、[EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) の自動スケールの本質を大幅に簡素化します。 **EventProcessorHost** のインスタンスは、開始されると、可能な限り多くのリースを取得し、イベントの読み取りを開始します。 リースの期限が近づくと、**EventProcessorHost** は、予約を通じてリースの更新を試みます。 リースが更新可能な場合、プロセッサは読み取りを継続します。そうでない場合、リーダーは閉じられ、[CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) が呼び出されます。 **CloseAsync** は、このようなパーティションの最終的なクリーンアップを実行するのに適しています。
 

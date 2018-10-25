@@ -1,21 +1,21 @@
 ---
-title: Bing Autosuggest API v5 を v7 にアップグレードする | Microsoft Docs
+title: Bing Autosuggest API v5 を v7 にアップグレードする
+titlesuffix: Azure Cognitive Services
 description: バージョン 7 を使用するために更新する必要のあるアプリケーションの部分を識別します。
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 751EDCF0-0C8B-4C23-942C-FA06F5DAD3FD
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: 5663a671711dba4f44c89e8221a729c6670ec8fc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8ada9ab6622ea12e48475230787168d90e95ec0d
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376952"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829870"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Autosuggest API のアップグレード ガイド
 
@@ -33,7 +33,7 @@ ms.locfileid: "35376952"
 
 - `Error` オブジェクトに次のフィールドが追加されました。  
   - `subCode`&mdash;エラー コードを別個のバケットに分割します (可能な場合)
-  - `moreDetails` &mdash; `message` フィールドで説明されているエラーに関する追加情報
+  - `moreDetails`&mdash;`message` フィールドで説明されているエラーに関する追加情報
 
 - v5 エラー コードを次の可能な `code` および `subCode` 値に置き換えました。
 
@@ -71,4 +71,4 @@ Blocked|InvalidRequest.Blocked
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [使用要件と表示要件](./UseAndDisplayRequirements.md)
+> [使用と表示の要件](./UseAndDisplayRequirements.md)

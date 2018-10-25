@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 387668263a6bab6e12a21adf04aebfbbf108a006
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: adb44dcc8c41b1a7846ff346d141dc0c4b028e96
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036492"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888290"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>発話の例を追加し、エンティティ ラベルを付ける
 
@@ -92,12 +92,12 @@ book me 2 adult business tickets to Paris tomorrow on Air France
 
 発話で同義語を選択し (water の場合は `aqua` など)、ドロップダウン リストでリスト エンティティ名を選択し (**Drink** など)、**[Set as synonym]\(シノニムとして設定\)** を選択し、それの同義となるリスト アイテムを選択します (**water** など)。
 
-![意図の詳細ページのスクリーンショット、[Create a new synonym]\(新しいシノニムの作成\) が強調表示されています](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
+![意図の詳細ページのスクリーンショット、[Create a new normalized view] を強調](./media/luis-how-to-add-example-utterances/set-agua-as-synonym.png)
 
 ## <a name="create-new-item-for-list-entity"></a>リスト エンティティのアイテムを新規作成する
-発話の中の単語または語句を選択することで既存のリスト エンティティのアイテムを新規作成します。 リスト "Drink" があるとき、新しいアイテムとして `tea` を追加する場合、次の手順を行います。
+発話の中の単語または語句を選択することで既存のリスト エンティティのアイテムを新規作成します。 Employee リストがあり、新しいアイテムとして `Bob Smith` を追加する場合は、次の手順に従います｡
 
-発話で、新しいリスト アイテムの単語を選択し (`tea` など)、ドロップダウン リストでリスト エンティティ名を選択し (**Drink**)、**[Create a new synonym]\(新しいシノニムの作成\)** を選択します。 
+発話で、新しいリスト アイテムの語句を選択し (`Bob Smith` など)、ドロップダウン リストでリスト エンティティ名を選択しえt (**Employee**)、**[Create a new normalized view]** を選択します。 
 
 ![新しいリスト アイテム追加のスクリーンショット](./media/luis-how-to-add-example-utterances/list-entity-create-new-item.png)
 

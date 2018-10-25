@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: jingwang
-ms.openlocfilehash: d500bc9c910858341d7fdacb4d85bffc8be215e1
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: d8bbc3a5e4ac14ed60fcd6e5f19bdf1df03455a6
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338764"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48817026"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Storage Gen1 との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,7 +32,7 @@ ms.locfileid: "43338764"
 
 具体的には、この Azure Data Lake Store コネクタは、以下をサポートします。
 
-- **サービス プリンシパル**または**管理対象のサービス ID (MSI)** 認証を使用したファイルのコピー。
+- **サービス プリンシパル**または **Azure リソースのマネージド ID** 認証を使用したファイルのコピー。
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析/生成します。
 
 > [!IMPORTANT]
@@ -65,7 +65,7 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 さまざまな認証の種類それぞれのプロパティと JSON の使用例については、以下のセクションを参照してください。
 
 - [サービス プリンシパル認証の使用](#using-service-principal-authentication)
-- [管理対象のサービス ID の認証の使用](#using-managed-service-identity-authentication)
+- [Azure リソースのマネージド ID 認証の使用](#managed-identity)
 
 ### <a name="using-service-principal-authentication"></a>サービス プリンシパル認証の使用
 
@@ -114,11 +114,11 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 }
 ```
 
-### <a name="using-managed-service-identity-authentication"></a>管理対象のサービス ID の認証の使用
+### <a name="managed-identity"> Azure リソースのマネージド ID 認証の使用</a>
 
-データ ファクトリは、この特定のデータ ファクトリを表す[管理対象のサービス ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、Data Lake Store 認証にこのサービス ID を直接使用できます。 これにより、この指定されたファクトリは、Data Lake Store にアクセスしてデータをコピーできます。
+データ ファクトリは、特定のデータ ファクトリを表す、[Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、Data Lake Store 認証にこのサービス ID を直接使用できます。 これにより、この指定されたファクトリは、Data Lake Store にアクセスしてデータをコピーできます。
 
-管理対象のサービス ID (MSI) の認証を使用するには:
+Azure リソースのマネージド ID 認証を使用するには、次のようにします。
 
 1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのサービス ID を取得](data-factory-service-identity.md#retrieve-service-identity)します。
 2. サービス プリンシパルの場合と同じように、以下の注意に従って Data Lake Store へのアクセス権をサービス ID に付与します。

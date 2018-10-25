@@ -5,17 +5,17 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: conceptual
-ms.date: 09/23/2018
+ms.date: 10/04/2018
 ms.author: cherylmc
 Customer intent: As a Virtual WAN software-defined connectivity provider, I want to set up a provisioning environment.
-ms.openlocfilehash: 7f70470880845fd4271ffdbb35af771ec433babc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a4664e628af5824b7b197cbdb5c5af602a3a4476
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961945"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958688"
 ---
-# <a name="virtual-wan-partners-preview"></a>Virtual WAN パートナー (プレビュー)
+# <a name="virtual-wan-partners"></a>Virtual WAN パートナー
 
 この記事では、Azure Virtual WAN のブランチ デバイス (お客様のオンプレミスの VPN デバイスまたは SDWAN CPE) を接続および構成する自動化環境を設定する方法を理解できます。 IPsec/IKEv2 または IPsec/IKEv1 経由で VPN 接続に対応できるブランチ デバイスを提供するプロバイダーの場合は、この記事が適しています。
 
@@ -46,7 +46,7 @@ ms.locfileid: "46961945"
 
 ###  <a name="access"></a>アクセス制御
 
-お客様は、デバイスの UI で仮想 WAN の適切なアクセス制御を設定できる必要があります。 Azure サービス プリンシパルを使用することをお勧めします。 サービス プリンシパルに基づくアクセスは、ブランチ情報をアップロードするために適した認証をデバイス コント ローラーに提供します。 詳しくは、「[サービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)」をご覧ください。 この機能は Azure Virtual WAN のオファリングには含まれませんが、Azure でアクセスを設定するときの一般的な手順を以下に示しておきます。この後、関連する詳細がデバイス管理ダッシュボードに入力されます
+お客様は、デバイスの UI で仮想 WAN の適切なアクセス制御を設定できる必要があります。 Azure サービス プリンシパルを使用することをお勧めします。 サービス プリンシパルに基づくアクセスは、ブランチ情報をアップロードするために適した認証をデバイス コント ローラーに提供します。 詳しくは、「[サービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)」をご覧ください。 この機能は Azure Virtual WAN のオファリングには含まれませんが、Azure でアクセスを設定するときの一般的な手順を以下に示しておきます。この後、関連する詳細がデバイス管理ダッシュボードに入力されます
 
 * オンプレミスのデバイス コントローラー用の Azure Active Directory アプリケーションを作成します。
 * アプリケーション ID と認証キーを取得する

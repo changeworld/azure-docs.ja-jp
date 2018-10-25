@@ -1,20 +1,21 @@
 ---
-title: Academic Knowledge API の JSON 検索の構文 | Microsoft Docs
-description: Microsoft Cognitive Services の Academic Knowledge API で使用できる JSON 検索の構文について説明します。
+title: JSON 検索構文 - Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Academic Knowledge API で利用できる JSON 検索構文について説明します。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: a4b9cf535dae60258d71c43bba6f9eec1444bd41
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5ece028f89ad9e93840211383db97a5d8a80069a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372717"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900412"
 ---
 # <a name="json-search-syntax"></a>JSON 検索の構文
 

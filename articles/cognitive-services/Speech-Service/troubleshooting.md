@@ -1,7 +1,7 @@
 ---
-title: Cognitive Services Speech SDK のトラブルシューティング
-description: Cognitive Services Speech SDK のトラブルシューティング
-titleSuffix: Microsoft Cognitive Services
+title: Cognitive Services Speech SDK をトラブルシューティングする
+description: Cognitive Services Speech SDK をトラブルシューティングします。
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: wolfma61
 ms.service: cognitive-services
@@ -9,31 +9,33 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: wolfma
-ms.openlocfilehash: ff8aba562cfd2d6d54c708ee7fdc4c6ca7185f29
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 02564021257c97f6c865fcbebf30c73babee859a
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284124"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48816216"
 ---
-# <a name="troubleshooting-speech-services-sdk"></a>Speech Services SDK のトラブルシューティング
+# <a name="troubleshoot-the-speech-sdk"></a>Speech SDK のトラブルシューティング
 
 この記事では、Speech SDK を使用しているときに発生する可能性がある問題の解決に役立つ情報を提供します。
 
-## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>エラー `WebSocket Upgrade failed with an authentication error (403).`
+## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>エラー: 認証エラー (403) で WebSocket をアップグレードできませんでした
 
-リージョンまたはサービスのエンドポイントが間違っている可能性があります。 URI をもう一度調べて、それが正しいことを確認してください。 サブスクリプション キーまたは承認トークンに問題がある可能性もあるため、次のセクションも参照してください。
+リージョンまたはサービスのエンドポイントが間違っている可能性があります。 URI を調べて、それが正しいことを確認してください。 
 
-## <a name="error-http-403-forbidden-or-error-http-401-unauthorized"></a>エラー `HTTP 403 Forbidden` またはエラー `HTTP 401 Unauthorized`
+また、サブスクリプション キーまたは承認トークンに問題がある可能性もあります。 詳細については、次のセクションを参照してください。
 
-多くの場合、このエラーは、認証の問題が原因で発生します。 有効な `Ocp-Apim-Subscription-Key` または `Authorization` ヘッダーがない接続要求は、状態 401 または 403 で拒否されます。
+## <a name="error-http-403-forbidden-or-http-401-unauthorized"></a>エラー: HTTP 403 許可されていません、または HTTP 401 (権限がありません)
+
+多くの場合、このエラーは、認証の問題が原因で発生します。 有効な `Ocp-Apim-Subscription-Key` または `Authorization` ヘッダーがない接続要求は、状態 403 または 401 で拒否されます。
 
 * 認証にサブスクリプション キーを使用している場合は、以下が原因である可能性があります。
 
     - サブスクリプション キーが見つからないか無効である
     - サブスクリプションの使用量クォータを超えている
 
-* 認証に承認トークンを使用している場合は、以下が原因である可能性があります。
+* 認証に認証トークンを使用している場合は、以下が原因である可能性があります。
 
     - 承認トークンが無効である
     - 承認トークンの有効期限が切れている
@@ -68,7 +70,7 @@ ms.locfileid: "39284124"
 認証に承認トークンを使用している場合は、次のコマンドのいずれかを実行して、認証トークンがまだ有効であることを確認します。 トークンは 10 分間有効です。
 
 > [!NOTE]
-> `YOUR_AUDIO_FILE` を録音済みのオーディオ ファイルのパスに、`YOUR_ACCESS_TOKEN` を前の手順で返された承認トークンに、`YOUR_REGION` を適切なリージョンに置き換えます。
+> `YOUR_AUDIO_FILE` を、録音済みのオーディオ ファイルへのパスに置き換えます。 `YOUR_ACCESS_TOKEN` を、上記のステップで返された承認トークンに置き換えます。 `YOUR_REGION` を正しい地域と置き換えます。
 
 * PowerShell
 
@@ -83,12 +85,12 @@ ms.locfileid: "39284124"
       'Content-type' = 'audio/wav; codec=audio/pcm; samplerate=16000'
     }
     
-    # Read audio into byte array
+    # Read audio into byte array.
     $audioBytes = [System.IO.File]::ReadAllBytes("YOUR_AUDIO_FILE")
     
     $RecoResponse = Invoke-RestMethod -Method POST -Uri $SpeechServiceURI -Headers $RecoRequestHeader -Body $audioBytes
     
-    # Show the result
+    # Show the result.
     $RecoResponse
     ```
 
@@ -100,22 +102,23 @@ ms.locfileid: "39284124"
 
 ---
 
-## <a name="error-http-400-bad-request"></a>エラー `HTTP 400 Bad Request`
+## <a name="error-http-400-bad-request"></a>エラー: HTTP 400 無効な要求
 
-このエラーは、通常は、要求本文に無効なオーディオ データが含まれているときに発生します。 サポートされているのは `WAV` 形式のみです。 要求のヘッダーもチェックして、適切な `Content-Type` と `Content-Length` が指定されていることを確認します。
+このエラーは、通常は、要求本文に無効なオーディオ データが含まれているときに発生します。 サポートされているのは WAV 形式のみです。 要求のヘッダーもチェックして、`Content-Type` と `Content-Length` に適切な値を指定していることを確認します。
 
-## <a name="error-http-408-request-timeout"></a>エラー `HTTP 408 Request Timeout`
+## <a name="error-http-408-request-timeout"></a>エラー: HTTP 408 要求タイムアウト
 
 このエラーのもっとも可能性が高い原因は、オーディオ データがサービスに送信されていないことです。 このエラーは、ネットワークの問題によっても発生する可能性があります。
 
-## <a name="the-recognitionstatus-in-the-response-is-initialsilencetimeout"></a>要求内の `RecognitionStatus` が `InitialSilenceTimeout` である
+## <a name="recognitionstatus-in-the-response-is-initialsilencetimeout"></a>応答の "RecognitionStatus" が "InitialSilenceTimeout"
 
-この問題の原因は、通常はオーディオ データです。 例: 
+通常この問題はオーディオ データによって発生します。 このエラーは、次の理由で発生する場合があります。
 
-* オーディオの先頭が長時間サイレント状態になっています。 サービスは数秒後に認識を停止し、`InitialSilenceTimeout` を返します。
+* オーディオの先頭が長時間サイレント状態になっています。 その場合、サービスは数秒後に認識を停止し、`InitialSilenceTimeout` を返します。
+
 * オーディオがサポートされていないコーデック形式を使用しており、これによりオーディオ データが無音として扱われています。
 
 ## <a name="next-steps"></a>次の手順
 
-* [リリース ノート](releasenotes.md)
+* [リリース ノートを確認します](releasenotes.md)
 

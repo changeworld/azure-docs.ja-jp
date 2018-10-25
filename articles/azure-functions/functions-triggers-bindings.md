@@ -9,14 +9,14 @@ keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピ�
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 05/24/2018
+ms.date: 09/24/2018
 ms.author: glenga
-ms.openlocfilehash: cc965073863375d76efb969ad66cf5750c9755bb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 694dd98caadb12571c58f9d615cf75325654c772
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969429"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801307"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -168,7 +168,7 @@ function generateRandomId() {
 
 関数を作成するか、またはバインディングを追加する場合に、トリガーまたはバインディングの拡張機能が登録を必要とするときは、プロンプトが表示されます。 **[インストール]** をクリックして拡張機能を登録することで、プロンプトに応答します。 従量課金プランで、インストールには最大 10 分かかる可能性があります。
 
-各拡張機能は、特定の関数アプリごとに 1 回だけインストールする必要があります。 
+各拡張機能は、特定の関数アプリごとに 1 回だけインストールする必要があります。 ポータルで使用できないバインディングをサポートするか、またはインストールされている拡張機能を更新するために、[ポータルから Azure Functions バインディング拡張機能を手動でインストールまたは更新する](install-update-binding-extensions-manual.md)こともできます。  
 
 ### <a name="local-development-azure-functions-core-tools"></a>ローカル開発の Azure Functions Core Tools
 

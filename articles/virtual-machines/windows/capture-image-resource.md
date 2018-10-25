@@ -1,6 +1,6 @@
 ---
 title: Azure で管理対象イメージを作成する | Microsoft Docs
-description: Azure で一般化された VM または VHD の管理対象イメージを作成します。 イメージを使って、管理対象ディスクを使う複数の VM を作成することができます。
+description: Azure で一般化された VM または VHD の管理対象イメージを作成します。 イメージを使って、マネージド ディスクを使う複数の VM を作成することができます。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -13,66 +13,85 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2018
+ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 4445787fd559c6d0a6dfc891910cb9a139a6907e
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: ac5ad9d0067205411c56562264aed81f8a5751bc
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31602571"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267455"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
-ストレージ アカウントに管理対象ディスクまたは非管理対象ディスクとして格納されている一般化された VM から管理対象イメージ リソースを作成できます。 イメージは複数の VM の作成に使用できます。 
+ストレージ アカウントにマネージド ディスクまたは非管理対象ディスクとして格納されている一般化された VM から管理対象イメージ リソースを作成できます。 イメージは複数の VM の作成に使用できます。 
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep を使用して Windows VM を一般化する
 
-特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+Sysprep はすべての個人アカウント情報とセキュリティ情報を削除して、マシンをイメージとして使用できるように準備します。 Sysprep については、[Sysprep の概要](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview)を参照してください。
 
-コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「[Sysprep Support for Server Roles (サーバー ロールの sysprep サポート)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep-support-for-server-roles)」を参照してください。
 
 > [!IMPORTANT]
-> 仮想マシンで sysprep を実行すると*一般化*されたと見なされ、再起動できなくなります。 VM の一般化プロセスは元に戻せません。 元の VM の機能を保持する場合は、[VM のコピー](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)を作成し、コピーを一般化してください。 
+> VM で Sysprep を実行すると、その VM は*一般化されている*と見なされ、再起動できなくなります。 VM の一般化プロセスは元に戻せません。 元の VM の機能を保持する場合は、[VM のコピー](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)を作成し、そのコピーを一般化してください。 
 >
-> 初めて VHD を Azure にアップロードする前に Sysprep を実行する場合、Sysprep の実行前に [VM の準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ができていることを確認してください。  
+> 初めて VHD を Azure に仮想ハード ディスク (VHD) にアップロードする前に Sysprep を実行する予定の場合は、[VM の準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ができていることを確認してください。  
 > 
 > 
 
-1. Windows 仮想マシンへのサインイン
-2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを **%windir%\system32\sysprep** に変更し、`sysprep.exe` を実行します。
-3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。
+Windows VM を一般化するには、次の手順に従います。
+
+1. Windows VM にサインインします。
+   
+2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを `sysprep.exe`%windir%\system32\sysprep に変更し、を実行します。
+   
+3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスを選択します。
+   
 4. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
-5. Click **OK**.
+   
+5. **[OK]** を選択します。
    
     ![Sysprep の開始](./media/upload-generalized-managed/sysprepgeneral.png)
-6. Sysprep は完了時に仮想マシンをシャットダウンします。 VM は再起動しないでください。
+
+6. Sysprep は完了時に VM をシャットダウンします。 VM は再起動しないでください。
 
 
 ## <a name="create-a-managed-image-in-the-portal"></a>ポータルで管理対象イメージを作成する 
 
-1. [ポータル](https://portal.azure.com)を開きます。
-2. 左のメニューで、[仮想マシン] をクリックし、一覧から VM を選択します。
-3. VM 用のページで、上部のメニューの **[キャプチャ]** をクリックします。
-3. **[名前]** に、イメージに使用する名前を入力します。
-4. **[リソース グループ]** で、**[新規作成]** を選択して名前を入力するか、または **[Use existing\(既存の値を使用する\)]** を選択してドロップダウン リストから使うリソース グループを選びます。
-5. イメージが作成された後にソース VM を削除する場合、**[イメージの作成後、この仮想マシンを自動的に削除します]** を選択します。
-6. 完了したら、**[作成]** をクリックします。
-16. 作成したイメージは、リソース グループのリソースの一覧に **[イメージ]** リソースとして表示されます。
+1. [Azure Portal](https://portal.azure.com)を開きます。
+
+2. 左側のメニューで **[仮想マシン]** を選択し､一覧から VM を選択します。
+
+3. VM の **[仮想マシン]** ページの上部のメニューで、**[キャプチャ]** を選択します。
+
+   **[イメージの作成]** ページが表示されます。
+
+4. **[名前]** で、あらかじめ設定されている名前を受け入れるか、イメージに使用する名前を入力します。
+
+5. **[リソース グループ]** で、**[新規作成]** を選択して名前を入力するか、または **[Use existing\(既存の値を使用する\)]** を選択してドロップダウン リストから使うリソース グループを選びます。
+
+6. イメージが作成された後にソース VM を削除する場合、**[イメージの作成後、この仮想マシンを自動的に削除します]** を選択します。
+
+7. いずれかの[可用性ゾーン](../../availability-zones/az-overview.md)でイメージを使用する機能が必要な場合、**[Zone resiliency (ゾーンの回復性)]** に **[オン]** を選択します。
+
+8. **[作成]** を選択してイメージを作成します。
+
+9. 作成したイメージは、リソース グループのリソースの一覧に **[イメージ]** リソースとして表示されます。
 
 
 
 ## <a name="create-an-image-of-a-vm-using-powershell"></a>Powershell を使って VM のイメージを作成する
 
-VM からイメージを直接作成すると、OS ディスクやすべてのデータ ディスクなど、VM に関連付けられているすべてのディスクが、イメージに確実に含まれます。 この例では、管理対象ディスクを使用する VM から管理対象イメージを作成する方法を示します。
+VM からイメージを直接作成すると、OS ディスクやすべてのデータ ディスクなど、VM に関連付けられているすべてのディスクが、イメージに確実に含まれます。 この例では、マネージド ディスクを使用する VM から管理対象イメージを作成する方法を示します。
 
 
-始める前に、AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 この記事では、AzureRM モジュール バージョン 5.7.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+始める前に、AzureRM.Compute PowerShell モジュールの最新バージョン (バージョン 5.7.0 以降) があることを確認してください。 バージョンを確認するには、PowerShell で `Get-Module -ListAvailable AzureRM.Compute` を実行してください。 アップグレードが必要な場合は、「[PowerShellGet を使用した Windows への Azure PowerShell のインストール](/powershell/azure/install-azurerm-ps)」を参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成します。
 
 
 > [!NOTE]
-> イメージをゾーン回復性のあるストレージに格納する場合は、[可用性ゾーン](../../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、イメージの構成に `-ZoneResilient` パラメーターを含める必要があります。
+> イメージをゾーン冗長ストレージに格納する場合は、[可用性ゾーン](../../availability-zones/az-overview.md)をサポートするリージョンにストレージを作成し、イメージの構成に `-ZoneResilient` パラメーターを含める必要があります (`New-AzureRmImageConfig` コマンド)。
 
+VM イメージを作成するには、次の手順を実行します。
 
 1. 変数をいくつか作成します。
 
@@ -103,16 +122,17 @@ VM からイメージを直接作成すると、OS ディスクやすべての�
 5. イメージの構成を作成します。
 
     ```azurepowershell-interactive
-    $image = New-AzureRmImageConfig -Location $location -SourceVirtualMachineId $vm.ID 
+    $image = New-AzureRmImageConfig -Location $location -SourceVirtualMachineId $vm.Id 
     ```
 6. イメージを作成します。
 
     ```azurepowershell-interactive
     New-AzureRmImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
     ``` 
-## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>Powershell を使って管理対象ディスクからイメージを作成する
 
-OS ディスクのイメージを作成したいだけの場合は、管理ディスクの ID を OS ディスクとして指定することで、イメージを作成することもできます。
+## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>Powershell を使ってマネージド ディスクからイメージを作成する
+
+OS ディスクのみのイメージを作成する場合は、OS ディスクとしてマネージド ディスクの ID を指定します。
 
     
 1. 変数をいくつか作成します。 
@@ -131,7 +151,7 @@ OS ディスクのイメージを作成したいだけの場合は、管理デ�
    $vm = Get-AzureRmVm -Name $vmName -ResourceGroupName $rgName
    ```
 
-3. 管理対象ディスクの ID を取得します。
+3. マネージド ディスクの ID を取得します。
 
     ```azurepowershell-interactive
     $diskID = $vm.StorageProfile.OsDisk.ManagedDisk.Id
@@ -153,7 +173,7 @@ OS ディスクのイメージを作成したいだけの場合は、管理デ�
 
 ## <a name="create-an-image-from-a-snapshot-using-powershell"></a>Powershell を使ってスナップショットからイメージを作成する
 
-一般化された VM のスナップショットから管理対象イメージを作成できます。
+次の手順に従って、一般化された VM のスナップショットから管理対象イメージを作成できます。
 
     
 1. 変数をいくつか作成します。 
@@ -184,21 +204,21 @@ OS ディスクのイメージを作成したいだけの場合は、管理デ�
     ``` 
 
 
-## <a name="create-image-from-a-vhd-in-a-storage-account"></a>ストレージ アカウント内の VHD からイメージを作成する
+## <a name="create-an-image-from-a-vhd-in-a-storage-account"></a>ストレージ アカウント内の VHD からイメージを作成します
 
-ストレージ アカウントで、一般化された OS の VHD から管理対象イメージを作成します。 ストレージ アカウントでは、https://*mystorageaccount*.blob.core.windows.net/*container*/*vhd_filename.vhd* という形式の VHD の URI が必要です。 この例では、使用している VHD は *vhdcontainer* という名前のコンテナーの *mystorageaccount* 内にあり、VHD ファイル名は *osdisk.vhd* です。
+ストレージ アカウントで、一般化された OS の VHD から管理対象イメージを作成します。 ストレージ アカウントでは、 https://*mystorageaccount*.blob.core.windows.net/*vhdcontainer*/*vhdfilename.vhd* という形式の VHD の URI が必要です。 この例では、VHD は *vhdcontainer* という名前のコンテナーの *mystorageaccount* 内にあり、VHD ファイル名は *vhdfilename.vhd* です。
 
 
-1.  最初に、共通のパラメーターを設定します。
+1.  変数をいくつか作成します。
 
     ```azurepowershell-interactive
     $vmName = "myVM"
     $rgName = "myResourceGroup"
     $location = "EastUS"
     $imageName = "myImage"
-    $osVhdUri = "https://mystorageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd"
+    $osVhdUri = "https://mystorageaccount.blob.core.windows.net/vhdcontainer/vhdfilename.vhd"
     ```
-2. VM を停止し、割り当てを解除します。
+2. VM を停止するか、VM の割り当てを解除します。
 
     ```azurepowershell-interactive
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
@@ -219,5 +239,5 @@ OS ディスクのイメージを作成したいだけの場合は、管理デ�
 
     
 ## <a name="next-steps"></a>次の手順
-- これで、[一般化された管理対象イメージから VM を作成する](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことができるようになりました。  
+- [管理イメージから VM を作成する](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。    
 

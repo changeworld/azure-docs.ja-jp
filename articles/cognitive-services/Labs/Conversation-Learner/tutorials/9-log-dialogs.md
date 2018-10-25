@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 6ceeb9683a979256a8a52347fc74ab758fd1d348
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4663fc377e795e603bd2484ec4cf98578408501f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171437"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248383"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Conversation Learner モデルで会話を記録する方法
 
@@ -51,7 +51,7 @@ ms.locfileid: "39171437"
 1. [アクション] をクリックし、[新しいアクション] をクリックします。
 2. [応答] に「Which city?」と入力します。
 3. [Disqualifying Entities]\(不適格エンティティ\) に「$city」と入力します。
-3. Click Create
+3. Create をクリックしてください。
 
 次に、アクションをもう 1 つ作成します。
 
@@ -76,7 +76,7 @@ ms.locfileid: "39171437"
 
 別の会話例を追加します。
 
-1. [新しいアクション] をクリックし、[New Train Dialog]\(新しいトレーニング会話\) をクリックします。
+1. [Train Dialogs]\(トレーニング会話\) をクリックし、[New Train Dialog]\(新しいトレーニング会話\) をクリックします。
 2. 「what's the weather in Seattle?」と入力します。 Seattle がエンティティとしてタグ付けされていることに注目してください。
 5. [Score Actions]\(アクションのスコア付け\) をクリックします。 
 6. [The weather in $city is probably sunny] を選択します。
@@ -86,7 +86,7 @@ ms.locfileid: "39171437"
 このボットがユーザーにデプロイ済みであるとしましょう。
 
 1. [Log Dialogs]\(会話記録\) をクリックします。
-2. [New Chat Session]\(新しいチャット セッション\) をクリックします。
+2. 新しいログ ダイアログ ボックスをクリックします。
     - UI の左側にある Web チャット コントロールに、実際のユーザーが体験するようにボットが表示されます。 右側の余白領域は無視してください。
 3. 「hello」と入力します。
 4. ボットの応答: "which city?"
@@ -97,10 +97,10 @@ ms.locfileid: "39171437"
 
 新しいセッションを開始しましょう。
 
-2. [New Chat Session]\(新しいチャット セッション\) をクリックします。
+2. 新しいログ ダイアログ ボックスをクリックします。
 3. 「forecast for Boston」と入力します。
 4. ボットの応答: "which city?"
-2. [Done Teaching]\(学習の完了\) をクリックします。
+2. [Done Testing]\(テストの完了\) をクリックします。
 
 今度は、2 つ目の会話に修正を加えましょう。
 

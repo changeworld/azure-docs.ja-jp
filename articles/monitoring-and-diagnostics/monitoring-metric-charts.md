@@ -8,20 +8,14 @@ ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: 21b0029ff12915c8416ad2366fbf6c45ddfaa288
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f82b4dff20e2b26e62889c41b3ff3c27bc86066a
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978423"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901415"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor メトリックス エクスプローラー
-
-ここでは、現在パブリック プレビュー段階である次世代の Azure Monitor のメトリック グラフ化エクスペリエンスについて説明します。 新しいエクスペリエンスでは、多次元メトリックと次元のない基本的なメトリックの両方に対するグラフのレンダリングをサポートします。 複数の種類のリソース、複数のリソース グループ、およびサブスクリプションのメトリックを重ね合わせたグラフを描画できます。 グループ化とディメンション フィルターを適用することで、多次元メトリックのグラフをカスタマイズできます。 カスタマイズしたグラフを含む任意のグラフをダッシュボードにピン留めできます。
-
-ディメンションのない基本的なメトリックのみをサポートする古いエクスペリエンスの情報については、「[Microsoft Azure のメトリックの概要](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)」の「ポータルを使用してメトリックにアクセスする」セクションを参照してください。
-
-## <a name="what-is-azure-monitor-metrics-explorer"></a>Azure Monitor メトリックス エクスプローラーとは
 
 Azure Monitor メトリックス エクスプローラーは、グラフの描画、傾向の視覚的な相関付け、およびメトリック内の値の急上昇と急降下をしらべることができる Microsoft Azure ポータルのコンポーネントです。 メトリックス エクスプローラーは、Azure でホストされているか Azure Monitor サービスによって監視されているアプリケーションとインフラストラクチャのさまざまなパフォーマンスと可用性の問題を調査するための重要な出発点です。 
 
@@ -29,21 +23,16 @@ Azure Monitor メトリックス エクスプローラーは、グラフの描�
 
 Microsoft Azure におけるメトリックは、時間をかけて収集して保存された一連の測定値とカウントです。 標準 ("プラットフォーム") メトリックとカスタム メトリックがあります。 標準メトリックは、Azure プラットフォーム自体によって提供されます。 標準メトリックは、Azure リソースの状態と使用状況の統計を反映します。 一方、カスタム メトリックは、アプリケーションが[カスタム イベント用の Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) を使用して、Azure に送信します。 カスタム メトリックは、他のアプリケーション固有のメトリックと共に Application Insights リソース内に格納されます。
 
-
-
 ## <a name="how-do-i-create-a-new-chart"></a>新しいグラフの作成方法
 
-   > [!NOTE]
-   > 古いメトリック エクスペリエンスの機能の一部は、新しいメトリックス エクスプローラーではまだ使用できません。 新しいエクスペリエンスのプレビュー中は、Azure Monitor の古い (ディメンションがない) メトリック ビューを引き続き使用できます。 
-
 1. Azure ポータルを開きます
-2. 新しい **[監視]** タブに移動し、その下にある **[メトリック (プレビュー)]** を選択します。
+2. 新しい **[監視]** タブに移動し、その下にある **[メトリック]** を選択します。
 
-   ![メトリック (プレビュー) の画像](./media/monitoring-metric-charts/0001.png)
+   ![メトリックのイメージ](./media/monitoring-metric-charts/0001.png)
 
 3. **メトリック セレクター**が自動的に開きます。 関連付けられているメトリックを表示するには、一覧からリソースを選択します。 一覧には、メトリックがあるリソースのみが表示されます。
 
-   ![メトリック (プレビュー) の画像](./media/monitoring-metric-charts/0002.png)
+   ![メトリックのイメージ](./media/monitoring-metric-charts/0002.png)
 
    > [!NOTE]
    >1 つ以上の Azure サブスクリプションがある場合、メトリックス エクスプローラーには、[ポータルの設定] -> [サブスクリプションでフィルター] の一覧で選択されているすべてのサブスクリプションのリソースが表示されます。 これを変更するには、画面上部にある [ポータルの設定] 歯車アイコンをクリックし、使用するサブスクリプションを選択します。
@@ -52,11 +41,11 @@ Microsoft Azure におけるメトリックは、時間をかけて収集して�
 
    たとえば、Azure Storage には、"BLOB"、"ファイル"、"キュー"、および "テーブル" というサブサービスのメトリックがあり、これらは、すべてがストレージ アカウントの一部です。 ただし、"キュー メッセージの数" メトリックは、もちろん "キュー" サブサービスに適用され、それ以外のストレージ アカウントのサブサービスには適用されません。
 
-   ![メトリック (プレビュー) の画像](./media/monitoring-metric-charts/0003.png)
+   ![メトリックのイメージ](./media/monitoring-metric-charts/0003.png)
 
 5. 一覧からメトリックを選択します。 メトリックの名前の一部がわかっている場合は、入力を開始して、使用可能なメトリックのフィルター処理された一覧を表示できます。
 
-   ![メトリック (プレビュー) の画像](./media/monitoring-metric-charts/0004.png)
+   ![メトリックのイメージ](./media/monitoring-metric-charts/0004.png)
 
 6. メトリックを選択すると、選択したメトリックの既定の集計でグラフが表示されます。 この時点で、**メトリック セレクター**の外側をクリックするだけで、セレクターを閉じることができます。 必要に応じて、グラフを異なる集計に切り替えることもできます。 一部のメトリックでは、集計の切り替えによって、グラフに表示する値を選択できます。 たとえば、平均値、最小値、および最大値の間で切り替えることができます。 
 

@@ -11,28 +11,28 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2018
+ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: 7402fcf01078ea3934d1b6794a9190947fe339c2
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: fb42f9920ce173b25cbc16725cf1f9dfd96fcc9e
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696629"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853455"
 ---
 # <a name="duplicate-detection"></a>重複検出
 
-メッセージの送信直後にアプリケーションで致命的なエラーが発生し、アプリケーション インスタンスが再起動され、メッセージが送信されていなかったと誤認識した場合、メッセージは再送信され、同じメッセージがシステム内で 2 回発生します。
+メッセージの送信直後に致命的なエラーが原因でアプリケーションが終了し、再起動したアプリケーション インスタンスがメッセージが送信されていなかったと誤認識した場合、メッセージが再送信され、同じメッセージがシステム内で 2 回表示されます。
 
 また、送信直前にクライアントまたはネットワーク レベルでエラーが発生し、送信されたメッセージがキューにコミットされて、クライアントに確認が返信されない場合もあります。 このシナリオでは、送信操作の結果についてクライアントは確認が取れないままになります。
 
-重複メッセージの検出機能は、送信側が同じメッセージを再送信することを可能にすることで、このような状況を解決し、重複メッセージはキューまたはトピックで削除されます。
+重複メッセージの検出機能は、送信側が同じメッセージを再送信する一方でキューまたはトピックで重複メッセージを削除できるようにすることで、このような状況から不確実性を排除します。
 
-重複メッセージ検出を有効にすることにより、アプリケーションによって制御され、指定した時間枠内のキューまたはトピックに送信されたすべてのメッセージの *MessageId* を追跡できます。 時間枠内ですでにログに記録されている *MessageId* が付いた新しいメッセージが送信されると、メッセージは受信済み (送信操作成功) として報告され、新しく送信されたメッセージは瞬時に無視され破棄されます。 メッセージの *MessageId* 以外の部分は考慮されません。
+重複メッセージ検出を有効にすることにより、アプリケーションによって制御され、指定した時間枠内のキューまたはトピックに送信されたすべてのメッセージの *MessageId* を追跡できます。 その時間枠内にログに記録された *MessageId* が付いた新しいメッセージが送信されると、メッセージは受信済み (送信操作成功) として報告され、新しく送信されたメッセージは瞬時に無視され破棄されます。 メッセージの *MessageId* 以外の部分は考慮されません。
 
-ID のアプリケーションによる制御は、傷害が発生した場合に、アプリケーションが *MessageId* をビジネス プロセス コンテキストに紐付けて予想可能な方法で再構築することができる唯一の方法であるため、不可欠です。
+ID のアプリケーションによる制御は、アプリケーションが *MessageId* をエラー発生時に予想可能な方法で再構築できるビジネス プロセス コンテキストに紐付けることができる唯一の方法であるため、不可欠です。
 
-アプリケーション コンテキストの処理過程で複数のメッセージが送信されるビジネス プロセスの場合、*MessageId* は、注文書番号などのアプリケーション レベルのコンテキスト識別子と、メッセージの内容を組み合わせたもの、たとえば、**12345.2017/支払**のようになります。
+アプリケーション コンテキストの処理過程で複数のメッセージが送信されるビジネス プロセスの場合、*MessageId* は、注文書番号などのアプリケーション レベルのコンテキスト識別子と、メッセージの内容を組み合わせたもの、たとえば、**12345.2017/支払い**のようになります。
 
 *MessageId* には常になんらかの GUID を使用でき、重複検出機能を効果的に活用するには、ビジネス プロセスと ID を紐付けることで予想可能な再現性を確立する必要があります。
 
@@ -50,7 +50,7 @@ ID のアプリケーションによる制御は、傷害が発生した場合�
 
 プログラム上は、フル .NET Framework API の [QueueDescription.DuplicateDetectionHistoryTimeWindow](/dotnet/api/microsoft.servicebus.messaging.queuedescription.duplicatedetectionhistorytimewindow#Microsoft_ServiceBus_Messaging_QueueDescription_DuplicateDetectionHistoryTimeWindow) プロパティを使用して、メッセージ が保持される重複検出時間枠を設定できます。 Azure Resource Manager API では、値は [queueProperties.duplicateDetectionHistoryTimeWindow](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) プロパティで設定します。
 
-すべての記録されたメッセージ ID を新しく送信されたメッセージ ID と照合する必要があるため、重複の検出機能を有効化し、時間枠を設定すると、キュー (およびトピック) のスループットに直接影響することに注意してください。
+すべての記録されたメッセージ ID を新しく送信されたメッセージ ID と照合する必要があるため、重複の検出機能を有効化し、時間枠を設定すると、キュー (およびトピック) のスループットに直接影響します。
 
 時間枠を小さく設定すると、保持し照合する必要があるメッセージ ID 数が減り、スループットへの影響は小さくなります。 スループットの高いエンティティで重複検出が必要な場合は、時間枠を小さく設定してください。
 
@@ -58,7 +58,6 @@ ID のアプリケーションによる制御は、傷害が発生した場合�
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)

@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e9598cb464360e35a86b6fe35d8c965a5e7fb51d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a2a9845f82f1a81f3e187edbbb2deaa2300b3be
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963034"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585919"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>方法: iOS で ADAL を使用してクロスアプリ SSO を有効にする
 
@@ -250,7 +250,7 @@ defaultKeychainSharingGroup=@"com.myapp.mycache";
 1. アプリケーション コード内の MS SDK の呼び出しで、ブローカー モードを有効にします。
 2. 新しいリダイレクト URI を確立し、アプリとアプリ登録の両方に提供します。
 3. URL スキームを登録します。
-4. iOS9 サポート: info.plist ファイルにアクセス許可を追加します。
+4. ご利用の info.plist ファイルにアクセス許可を追加します。
 
 #### <a name="step-1-enable-broker-mode-in-your-application"></a>手順 1: アプリケーションでブローカー モードを有効にする
 
@@ -307,12 +307,16 @@ ID プラットフォームは、URL を使用してブローカーを起動し�
 
 例: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
-#### <a name="step-4-ios9-add-a-configuration-parameter-to-your-app"></a>手順 4: iOS9: アプリに構成パラメーターを追加する
+#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>手順 4: ご利用のアプリに構成パラメーターを追加する
 
-ADAL は、ブローカーがデバイスにインストールされているかどうかを確認するために、–canOpenURL: を使用します。 iOS 9 では、どのスキーマにアプリケーションがクエリを行うことができるかを、Apple がロックダウンしました。 "msauth" を `info.plist file`の LSApplicationQueriesSchemes セクションに追加する必要があります。
+ADAL は、ブローカーがデバイスにインストールされているかどうかを確認するために、–canOpenURL: を使用します。 iOS 9 では、アプリケーションがクエリを行うことができるスキーマが Apple によってロックダウンされました。 "msauth" を `info.plist file`の LSApplicationQueriesSchemes セクションに追加する必要があります。
 
 ```
-<key>LSApplicationQueriesSchemes</key> <array><string>msauth</string></array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>msauth</string>
+    </array>
+
 ```
 
 ### <a name="youve-configured-sso"></a>SSO の構成の終了

@@ -9,29 +9,29 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 3011fa85dbac2135f4d9113c6b76a8b667ee4013
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 64104fc70c7be1589c9332905f243a2e1e692eee
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952133"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237978"
 ---
 # <a name="architecture-and-concepts-how-does-azure-machine-learning-service-work"></a>アーキテクチャと概念: Azure Machine Learning サービスのしくみ 
 
 このドキュメントでは、Azure Machine Learning サービスのアーキテクチャと概念について説明します。 次の図は、サービスの主要なコンポーネントと、サービスを使用するときの一般的なワークフローを示したものです。 
 
-[![Azure Machine Learning のアーキテクチャとワークフロー](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+[![Azure Machine Learning Services のアーキテクチャとワークフロー](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
 ワークフローの一般的な手順は次のとおりです。
 
 1. __Python__ で機械学習トレーニング スクリプトを開発します。
-1. __コンピューティング ターゲット__ を作成して構成します。
-1. 構成したコンピューティング ターゲットに __スクリプトを送信__ して、その環境で実行します。 トレーニングの間に、コンピューティング ターゲットは実行レコードを __データストア__ に格納します。 レコードは __実験__ に保存されます。
-1. 現在と過去の実行から __実験をクエリ__ してログに記録されたメトリックを取得します。 メトリックが目的の結果を示していない場合は、ステップ 1 に戻ってスクリプトを繰り返します。
-1. 満足できる実行が見つかった場合は、永続化されたモデルを __モデル レジストリ__ に登録します。
+1. __コンピューティング ターゲット__を作成して構成します。
+1. 構成したコンピューティング ターゲットに__スクリプトを送信__して、その環境で実行します。 トレーニングの間に、コンピューティング ターゲットは実行レコードを__データストア__に格納します。 レコードは__実験__に保存されます。
+1. 現在と過去の実行から__実験をクエリ__してログに記録されたメトリックを取得します。 メトリックが目的の結果を示していない場合は、ステップ 1 に戻ってスクリプトを繰り返します。
+1. 満足できる実行が見つかった場合は、永続化されたモデルを__モデル レジストリ__に登録します。
 1. スコアリング スクリプトを開発します。
-1. __イメージを作成__ し、それを __イメージ レジストリ__ に登録します。 
-1. Azure に __Web サービス__ として __イメージをデプロイ__ します。
+1. __イメージを作成__し、それを__イメージ レジストリ__に登録します。 
+1. Azure に __Web サービス__として__イメージをデプロイ__します。
 
 
 [!INCLUDE [aml-preview-note](../../../includes/aml-preview-note.md)]
@@ -41,7 +41,7 @@ ms.locfileid: "46952133"
 
 ## <a name="workspace"></a>ワークスペース
 
-ワークスペースは、Azure Machine Learning サービスの最上位のリソースです。 Azure Machine Learning を使用すると作成されるすべての成果物を操作するための一元的な場所を提供します。
+ワークスペースは、Azure Machine Learning サービスの最上位のリソースです。 Azure Machine Learning Services を使用すると作成されるすべての成果物を操作するための一元的な場所を提供します。
 
 ワークスペースでは、モデルのトレーニングに使用できるコンピューティング ターゲットのリストが保持されています。 また、スクリプトのログ、メトリック、出力、スナップショットなど、トレーニング実行の履歴も保持されています。 この情報は、最適なモデルを生成するトレーニング実行を決定するために使用されます。
 
@@ -71,15 +71,15 @@ ms.locfileid: "46952133"
 
 簡単に言うと、モデルとは入力を受け取って出力を生成するひとまとまりのコードです。 機械学習モデルの作成には、アルゴリズムの選択、アルゴリズムへのデータの提供、およびハイパーパラメーターのチューニングが含まれます。 トレーニングはトレーニング済みモデルを生成する反復的なプロセスであり、トレーニング プロセス中にモデルが学習した内容がカプセル化されています。
 
-モデルは、Azure Machine Learning での実行によって生成されます。 Azure Machine Learning の外部でトレーニングされたモデルを使用することもできます。 Azure Machine Learning ワークスペースにモデルを登録できます。
+モデルは、Azure Machine Learning での実行によって生成されます。 Azure Machine Learning の外部でトレーニングされたモデルを使用することもできます。 Azure Machine Learning Services ワークスペースにモデルを登録できます。
 
-Azure Machine Learning は、フレームワークに依存しません。 モデルを作成するときは、scikit-learn、xgboost、PyTorch、TensorFlow、Chainer、CNTK などの人気のある機械学習フレームワークを使用できます。
+Azure Machine Learning Services は、フレームワークに依存しません。 モデルを作成するときは、scikit-learn、xgboost、PyTorch、TensorFlow、Chainer、CNTK などの人気のある機械学習フレームワークを使用できます。
 
-モデルのトレーニングの例については、「[クイック スタート: 機械学習ワークスペースの作成](quickstart-get-started.md)」をご覧ください。
+モデルのトレーニングの例については、[クイック スタート: Machine Learning Services ワークスペースの作成](quickstart-get-started.md)に関するページをご覧ください。
 
 ### <a name="model-registry"></a>モデル レジストリ
 
-モデル レジストリにより、Azure Machine Learning ワークスペース内のすべてのモデルが追跡されます。 
+モデル レジストリにより、Azure Machine Learning Services ワークスペース内のすべてのモデルが追跡されます。 
 
 モデルは、名前とバージョンによって識別されます。 既存のモデルと同じ名前でモデルを登録するたびに、レジストリはそれを新しいバージョンとみなします。 バージョンがインクリメントされて、新しいモデルがその名前で登録されます。
 

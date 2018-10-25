@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: byvinyal
-ms.openlocfilehash: 97e1efe34417c3bf2f23801b2112b718f55d3416
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: f2cf472ef3c2c9950dd9f9382009e21fbf62771b
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36962408"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856787"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>アプリごとのスケーリングを使って Azure App Service で高密度ホスティングを実現する
 App Service のアプリをスケーリングするときは、そのアプリを実行する [App Service プラン](azure-web-sites-web-hosting-plans-in-depth-overview.md)をスケーリングするのが既定の方法です。 同じ App Service プランでアプリを複数実行している場合には、スケールアウトしたインスタンスのそれぞれがプラン内のアプリをすべて実行することになります。
@@ -32,7 +32,7 @@ App Service プラン レベルでは、"*アプリごとのスケーリング*"
 
 ## <a name="per-app-scaling-using-powershell"></a>PowerShell を使用したアプリごとのスケーリング
 
-プランの作成時にアプリごとのスケーリングを有効にする場合には、```New-AzureRmAppServicePlan``` コマンドレットに ```-perSiteScaling $true``` 属性を渡します。
+プランの作成時にアプリごとのスケーリングを有効にする場合には、```New-AzureRmAppServicePlan``` コマンドレットに ```-PerSiteScaling $true``` パラメーターを渡します。
 
 ```powershell
 New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
@@ -41,23 +41,12 @@ New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePla
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-既存の App Service プランを更新してアプリごとのスケーリングを利用できるようにするには、次のようにします。 
-
-- ターゲット プランを取得します。```Get-AzureRmAppServicePlan```
-- プロパティをローカルに変更します。```$newASP.PerSiteScaling = $true```
-- 変更を Azure に反映させます。```Set-AzureRmAppServicePlan``` 
+```Set-AzureRmAppServicePlan```コマンドレットに `-PerSiteScaling $true` パラメーターを渡すことで、既存の App Service プランによるアプリごとのスケーリングを有効にします。
 
 ```powershell
-# Get the new App Service Plan and modify the "PerSiteScaling" property.
-$newASP = Get-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan
-$newASP
-
-#Modify the local copy to use "PerSiteScaling" property.
-$newASP.PerSiteScaling = $true
-$newASP
-    
-#Post updated app service plan back to azure
-Set-AzureRmAppServicePlan $newASP
+# Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
+Set-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup `
+   -Name $AppServicePlan -PerSiteScaling $true
 ```
 
 アプリ レベルでは、App Service プランでアプリが使用できるインスタンスの数を構成します。

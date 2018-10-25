@@ -1,32 +1,32 @@
 ---
-title: Web UI を使用した Azure Kubernetes クラスターの管理
-description: Azure Kubernetes Service (AKS) で組み込みの Kubernetes Web UI ダッシュボードを使用する方法について説明します
+title: Web ダッシュボードで Azure Kubernetes Service クラスターを管理する
+description: 組み込みの Kubernetes Web UI ダッシュボードを使用して、Azure Kubernetes Service (AKS) クラスターを管理する方法について説明します
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: af48af596e86e0eb09fe45deabe13beedef57cd2
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 9d953cdb82412c07fe0ed4bef75dece4a929cad9
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307927"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067589"
 ---
-# <a name="access-the-kubernetes-dashboard-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Kubernetes ダッシュボードにアクセスする
+# <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で Kubernetes Web ダッシュボードにアクセスする
 
-Kubernetes には、基本的な管理操作に使用できる Web ダッシュボードが含まれています。 この記事では、Azure CLI を使用して Kubernetes ダッシュボードにアクセスする方法と、基本的なダッシュボード操作の手順について説明します。 Kubernetes ダッシュボードの詳細については、[Kubernetes の Web UI ダッシュボード][kubernetes-dashboard]に関するページを参照してください。
+Kubernetes には、基本的な管理操作に使用できる Web ダッシュボードが含まれています。 このダッシュボードでは、アプリケーションの基本的な正常性状態とメトリックの表示、サービスの作成とデプロイ、既存のアプリケーションの編集を行うことができます。 この記事では、Azure CLI を使用して Kubernetes ダッシュボードにアクセスする方法と、基本的なダッシュボード操作の手順について説明します。
+
+Kubernetes ダッシュボードの詳細については、[Kubernetes の Web UI ダッシュボード][kubernetes-dashboard]に関するページを参照してください。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの `kubectl` 接続が確立されていることを想定しています。 AKS クラスターを作成する必要がある場合は、[AKS クイック スタート][aks-quickstart]を参照してください。
 
-また、Azure CLI バージョン 2.0.27 以降がインストールされ、構成されていることも必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
+また、Azure CLI バージョン 2.0.46 以降がインストール、構成されていること必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
-## <a name="start-kubernetes-dashboard"></a>Kubernetes ダッシュボードを起動する
+## <a name="start-the-kubernetes-dashboard"></a>Kubernetes ダッシュボードを起動する
 
 Kubernetes ダッシュボードを起動するには、[az aks browse][az-aks-browse] コマンドを使用します。 次の例では、*myResourceGroup* という名前のリソース グループに *myAKSCluster* という名前のクラスターのダッシュボードを開きます。
 
@@ -34,7 +34,9 @@ Kubernetes ダッシュボードを起動するには、[az aks browse][az-aks-b
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-このコマンドは、開発システムと Kubernetes API の間にプロキシを作成し、Kubernetes ダッシュボードへの Web ブラウザーを開きます。
+このコマンドは、開発システムと Kubernetes API の間にプロキシを作成し、Kubernetes ダッシュボードへの Web ブラウザーを開きます。 Web ブラウザーで Kubernetes ダッシュ ボードを開いていない場合は、Azure CLI に記載されている URL アドレス (一般に  *http://127.0.0.1:8001*) をコピーして貼り付けます。
+
+![Kubernetes Web ダッシュ ボードの概要ページ](./media/kubernetes-dashboard/dashboard-overview.png)
 
 ### <a name="for-rbac-enabled-clusters"></a>RBAC 対応クラスターの場合
 
@@ -53,48 +55,57 @@ kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-adm
 
 これで、RBAC 対応クラスター内の Kubernetes ダッシュボードにアクセスできるようになりました。 Kubernetes ダッシュボードを起動するには、前の手順で説明したように [az aks browse][az-aks-browse] コマンドを使用します。
 
-## <a name="run-an-application"></a>アプリケーションの実行
+## <a name="create-an-application"></a>アプリケーションの作成
 
-Kubernetes ダッシュボードで、右上のウィンドウにある **[作成]** ボタンをクリックします。 デプロイに名前`nginx`をつけて、コンテナーイメージ名に`nginx:latest`を入力します。 **[サービス]** で、**[外部]** を選択し、ポートとターゲット ポートの両方に `80` を入力します。
+Kubernetes ダッシュボードによって管理タスクの複雑さを軽減する方法を確認するために、アプリケーションを作成してみましょう。 Kubernetes ダッシュボードからアプリケーションを作成するには、テキスト入力、YAML ファイル、またはグラフィカル ウィザードを使用します。
 
-準備ができたら、**[デプロイ]** をクリックしてデプロイを作成します。
+アプリケーションを作成するには、次の手順を実行します。
 
-![Kubernetes サービスの [作成] ダイアログ](./media/container-service-kubernetes-ui/create-deployment.png)
+1. 右上のウィンドウの **[作成]** ボタンを選択します。
+1. グラフィカル ウィザードを使用する場合は、**[Create an app]** (アプリの作成) を選択します。
+1. デプロイの名前 (*nginx* など) を指定します
+1. 使用するコンテナー イメージの名前 (*nginx:1.15.5* など) を入力します。
+1. Web トラフィック用にポート 80 を公開するため、Kubernetes サービスを作成します。 **[サービス]** で、**[外部]** を選択し、ポートとターゲット ポートの両方に「**80**」を入力します。
+1. 準備ができたら、**[デプロイ]** を選択して、アプリケーションを作成します。
 
-## <a name="view-the-application"></a>アプリケーションを表示する
+![Kubernetes Web ダッシュボードでアプリケーションをデプロイする](./media/kubernetes-dashboard/create-app.png)
 
-アプリケーションに関する状態は、Kubernetes ダッシュボードで確認できます。 アプリケーションが実行されると、各コンポーネントの横に緑色のチェックボックスが表示されます。
+パブリック外部 IP アドレスが Kubernetes サービスに割り当てられるまで 1、2 秒かかります。 左側の **[Discovery and Load Balancing]** (検出と負荷分散) の下の **[サービス]** を選択します。 次の例に示すように、*[外部エンドポイント]* を含むアプリケーションのサービスが一覧表示されます。
 
-![Kubernetes ポッド](./media/container-service-kubernetes-ui/complete-deployment.png)
+![サービスとエンドポイントの一覧の表示](./media/kubernetes-dashboard/view-services.png)
 
-アプリケーション ポッドに関するより詳細な情報を表示するには、左側のメニューにある **ポッド** をクリックしてから、**NGINX** ポッドを選択します。 ここでは、リソース使用量などのポッド固有の情報を確認できます。
+エンドポイント アドレスを選択すると、Web ブラウザー ウィンドウに既定の NGINX ページが開きます。
 
-![Kubernetes リソース](./media/container-service-kubernetes-ui/running-pods.png)
+![デプロイされたアプリケーションの既定の NGINX ページの表示](./media/kubernetes-dashboard/default-nginx.png)
 
-アプリケーションの IP アドレスを見つけるには、左側のメニューにある **[サービス]** をクリックしてから、**NGINX** サービスを選択します。
+## <a name="view-pod-information"></a>ポッド情報の表示
 
-![nginx ビュー](./media/container-service-kubernetes-ui/nginx-service.png)
+Kubernetes ダッシュボードでは、基本的な監視メトリックおよびログなどのトラブルシューティング情報を表示できます。
+
+アプリケーション ポッドに関する詳細については、左側のメニューで **[ポッド]** を選択します。 使用可能なポッドの一覧が表示されます。 *nginx* ポッドを選択して、リソース使用量などの情報を表示します。
+
+![ポッド情報の表示](./media/kubernetes-dashboard/view-pod-info.png)
 
 ## <a name="edit-the-application"></a>アプリケーションを編集する
 
-アプリケーションの作成および表示に加えて、Kubernetes ダッシュボードはアプリケーションのデプロイの編集や更新にも使用できます。
+アプリケーションの作成および表示に加えて、Kubernetes ダッシュボードはアプリケーションのデプロイの編集や更新にも使用できます。 アプリケーションに追加の冗長性を提供するため、NGINX レプリカの数を増やしてみましょう。
 
-デプロイを編集するには、左側のメニューにある **[デプロイメント]** をクリックしてから、**NGINX** デプロイを選択します。 最後に、右上のナビゲーション バーにある **[編集]** を選択します。
+デプロイを編集するには
 
-![Kubernetes 編集](./media/container-service-kubernetes-ui/view-deployment.png)
+1. 左側のメニューで **[デプロイメント]** を選択し、*nginx* デプロイメントを選択します。
+1. 右上のナビゲーション バーにある **[編集]** を選択します。
+1. 20 行あたりにある `spec.replica` 値を見つけます。 アプリケーションのレプリカの数を増やすには、この値を *1* から *3* に変更します。
+1. 準備ができたら、**[更新]** を選択します。
 
-`spec.replica` 値を見つけ (これは 1 であるはずです)、この値を 3 に変更します。 そうすることにより、NGINX デプロイのレプリカ カウントは 1 から 3 に増加します。
+![デプロイメントを編集してレプリカの数を更新する](./media/kubernetes-dashboard/edit-deployment.png)
 
-準備ができたら、**[更新]** を選択します。
+レプリカ セット内に新しいポッドが作成されるまで数分かかります。 左側のメニューで、**[レプリカ セット]** を選択し、*nginx* レプリカ セットを選択します。 ポッドの一覧には、次の出力例に示すように、更新されたレプリカ数が反映されます。
 
-![Kubernetes 編集](./media/container-service-kubernetes-ui/edit-deployment.png)
+![レプリカ セットに関する情報の表示](./media/kubernetes-dashboard/view-replica-set.png)
 
 ## <a name="next-steps"></a>次の手順
 
-Kubernetes ダッシュボードの詳細については、Kubernetes のドキュメントを参照してください。
-
-> [!div class="nextstepaction"]
-> [Kubernetes Web UI ダッシュボード][kubernetes-dashboard]
+Kubernetes ダッシュボードの詳細については、[Kubernetes Web UI ダッシュボード][kubernetes-dashboard]に関するページを参照してください。
 
 <!-- LINKS - external -->
 [kubernetes-dashboard]: https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/

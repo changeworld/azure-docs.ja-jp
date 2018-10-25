@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 10/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 9b467fa966c2a785677f47faaa4bb8bd3ed238e2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 37d20eabfc8fb883cda346dc8b55a17b8b959218
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39427603"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268176"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>チュートリアル: Azure Active Directory と Zendesk の統合
 
@@ -50,31 +50,34 @@ Zendesk と Azure AD の統合を構成するには、次のものが必要で�
 - Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの Zendesk の追加
-1. Azure AD シングル サインオンの構成とテスト
+2. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-zendesk-from-the-gallery"></a>ギャラリーからの Zendesk の追加
+
 Azure AD への Zendesk の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Zendesk を追加する必要があります。
 
 **ギャラリーから Zendesk を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-    ![Azure Active Directory のボタン][1]
+    ![image](./media/zendesk-tutorial/selectazuread.png)
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
+    ![image](./media/zendesk-tutorial/a_select_app.png)
     
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![image](./media/zendesk-tutorial/a_new_app.png)
 
-1. 検索ボックスに「**Zendesk**」と入力し、結果ウィンドウで **[Zendesk]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**Zendesk**」と入力し、結果ウィンドウで **[Zendesk]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
 
-    ![結果一覧の Zendesk](./media/zendesk-tutorial/tutorial_zendesk_addfromgallery.png)
+     ![image](./media/zendesk-tutorial/a_add_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -87,10 +90,10 @@ Zendesk で、Azure AD の **[ユーザー名]** の値に **[Username]** の値
 Zendesk で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-1. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-1. **[Zendesk テスト ユーザーの作成](#create-a-zendesk-test-user)** - Zendesk で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-1. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-1. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Zendesk テスト ユーザーの作成](#create-a-zendesk-test-user)** - Zendesk で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -98,115 +101,144 @@ Zendesk で Azure AD のシングル サインオンを構成してテストす�
 
 **Zendesk で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure Portal の **Zendesk** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Zendesk** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![image](./media/zendesk-tutorial/b1_b2_select_sso.png)
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/zendesk-tutorial/tutorial_zendesk_samlbase.png)
+2. 画面上部の **[シングル サインオン モードの変更]** をクリックして、**[SAML]** モードを選択します。
 
-1. **[Zendesk のドメインと URL]** セクションで、次の手順を実行します。
+      ![image](./media/zendesk-tutorial/b1_b2_saml_ssso.png)
 
-    ![[Zendesk のドメインと URL] のシングル サインオン情報](./media/zendesk-tutorial/tutorial_zendesk_url.png)
+3. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードの **[選択]** をクリックして、シングル サインオンを有効にします。
 
-    a. **[サインオン URL]** ボックスに、`https://<subdomain>.zendesk.com` のパターンを使用して URL を入力します。
+    ![image](./media/zendesk-tutorial/b1_b2_saml_sso.png)
 
-    b. **[識別子]** ボックスに、`<subdomain>.zendesk.com` の形式で値を入力します。
+4. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+
+    ![image](./media/zendesk-tutorial/b1-domains_and_urlsedit.png)
+
+5. **[基本的な SAML 構成]** セクションで、次の手順のようにします。
+
+    a. **[サインオン URL]** テキスト ボックスに、`https://<subdomain>.zendesk.com` というパターンで URL を入力します。
+
+    b. **[識別子]** ボックスに、`<subdomain>.zendesk.com` というパターンで URL を入力します。
+
+    ![image](./media/zendesk-tutorial/b1-domains_and_urls.png)
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Zendesk クライアント サポート チーム](https://support.zendesk.com/hc/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise)にお問い合わせください。
 
-1. **[SAML 署名証明書]** セクションで、証明書の **[拇印]** の値をコピーします。
+6. Zendesk は、特定の形式で構成された SAML アサーションを受け入れます。 必須の SAML 属性はありませんが、必要に応じて、アプリケーション統合ページの **[ユーザー属性]** セクションから属性を追加できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
-    ![証明書のダウンロードのリンク](./media/zendesk-tutorial/tutorial_zendesk_certificate.png)
+    ![image](./media/zendesk-tutorial/i4-attribute.png)
 
-1. Zendesk は、特定の形式で構成された SAML アサーションを受け入れます。 必須の SAML 属性はありませんが、必要に応じて以下の手順に従って **[ユーザー属性]** セクションから属性を追加できます。 
+7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
 
-     ![Configure single sign-on](./media/zendesk-tutorial/tutorial_zendesk_attributes1.png)
+    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    ![image](./media/zendesk-tutorial/i2-attribute.png)
 
-    ![シングル サインオンの構成の追加](./media/zendesk-tutorial/tutorial_attribute_04.png)
-
-    ![シングル サインオンの構成の属性の追加](./media/zendesk-tutorial/tutorial_attribute_05.png)
-
+    ![image](./media/zendesk-tutorial/i3-attribute.png)
+    
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    c. **[値]** 一覧から、その行に対して表示される値を入力します。
+    c. **[名前空間]** は空白のままにします。
+
+    d. [ソース] として **[属性]** を選択します。
     
-    d. **[OK]** をクリックします。
+    e. **[ソース属性]** の一覧から、当該行に対して示されている属性値を入力します。
+    
+    f. **[OK]** をクリックします。
+
+    g. **[Save]** をクリックします。
 
     > [!NOTE]
     > 既定では、Azure AD に含まれていない属性を追加するには拡張属性を使用します。 「[SAMLに設定できるユーザー属性](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise-)」をクリックすると、**Zendesk** が受け入れる SAML 属性の完全な一覧が表示されます。
 
-1. **[保存]** ボタンをクリックします。
+8. [SAML 署名証明書] セクションの **[SAML 署名証明書]** セクションで、**[拇印]** をコピーしてコンピューターに保存します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/zendesk-tutorial/tutorial_general_400.png)
+    ![image](./media/zendesk-tutorial/C3_certificate.png)
 
-1. **[Zendesk Configuration]\(Zendesk 構成\)** セクションで、**[Zendesk を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+    a. 必要に応じて、**[署名オプション]** で適切なオプションを選択します。
 
-    ![Zendesk の構成](./media/zendesk-tutorial/tutorial_zendesk_configure.png) 
+    b. 必要に応じて、**[署名アルゴリズム]** で適切なオプションを選択します。
 
-1. 別の Web ブラウザー ウィンドウで、Zendesk 企業サイトに管理者としてログインします。
+    c. **[保存]**
 
-1. **[Admin]** をクリックします。
+9. **[Set up Zendesk]\(Zendesk のセットアップ\)** セクションで、**[ステップ バイ ステップの手順を表示]** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **クイック リファレンス セクション**から以下の URL をコピーします。
 
-1. 左側のナビゲーション ウィンドウで、**[設定]**、**[セキュリティ]** の順にクリックします。
+    URL は次のように表示されている場合があることに注意してください。
 
-1. **[Security]\(セキュリティ\)** ページで、次の手順に従います。 
+    a. SAML シングル サインオン サービス URL
 
-     ![Security (セキュリティ)](./media/zendesk-tutorial/ic773089.png "Security")
+    b. エンティティ ID
 
-    ![シングル サインオン](./media/zendesk-tutorial/ic773090.png "シングル サインオン")
+    c. サインアウト URL
 
-     a. **[Admin & Agents]\(管理者とエージェント\)** タブをクリックします。
+    ![image](./media/zendesk-tutorial/d1_saml.png) 
 
-     b. **[シングルサインオン (SSO) と SAML]** を選択し、**[SAML]** を選択します。
+10. Zendesk は自動と手動の 2 つの方法で構成できます。
+  
+11. Zendesk 内での構成を自動化するには、**[拡張機能のインストール]** をクリックして **[My Apps Secure Sign-in browser extension]\(My Apps Secure Sign-in ブラウザー拡張機能\)** をインストールする必要があります。
 
-     c. **[SAML SSO URL]\(SAML SSO URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。 
+    ![image](./media/zendesk-tutorial/install_extension.png)
 
-     d. **[Remote Logout URL]\(リモート ログアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+12. ブラウザーに拡張機能を追加した後、**[Set up Zendesk]\(Zendesk のセットアップ\)** をクリックすると、Zendesk アプリケーションに移動します。 そこから、管理者資格情報を提供して Zendesk にサインインします。 ブラウザー拡張機能によりアプリケーションが自動的に構成され、手順 13 が自動化されます。
 
-     e. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。
+     ![image](./media/zendesk-tutorial/d2_saml.png) 
 
-     f. **[Save]** をクリックします。
+13. Zendesk を手動でセットアップする場合は、新しい Web ブラウザー ウィンドウを開き、管理者として Zendesk 企業サイトにとログインして、次の手順のようにします。
 
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+    * **[Admin]** をクリックします。
+
+    * 左側のナビゲーション ウィンドウで、**[設定]**、**[セキュリティ]** の順にクリックします。
+
+    * **[Security]\(セキュリティ\)** ページで、次の手順に従います。
+
+      ![Security (セキュリティ)](././media/zendesk-tutorial/ic773089.png "Security")
+
+      ![シングル サインオン](././media/zendesk-tutorial/ic773090.png "シングル サインオン")
+
+      a. **[Admin & Agents]\(管理者とエージェント\)** タブをクリックします。
+
+      b. **[シングルサインオン (SSO) と SAML]** を選択し、**[SAML]** を選択します。
+
+      c. **[SAML SSO URL]\(SAML SSO URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+
+      d. **[Remote Logout URL]\(リモート ログアウト URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+
+      e. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。
+
+      f. **[Save]** をクリックします。
+
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![image](./media/zendesk-tutorial/d_users_and_groups.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/zendesk-tutorial/create_aaduser_01.png)
+    ![image](./media/zendesk-tutorial/d_adduser.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順のようにします。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/zendesk-tutorial/create_aaduser_02.png)
+    ![image](./media/zendesk-tutorial/d_userproperties.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに、**brittasimon@yourcompanydomain.extension** と入力します。  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/zendesk-tutorial/create_aaduser_03.png)
+    c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/zendesk-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
+    d. **作成**を選択します。
 
 ### <a name="create-a-zendesk-test-user"></a>Zendesk テスト ユーザーの作成
 
-このセクションの目的は、ZendeskにBritta Simon というユーザーを作成することです。 Zendesk では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](zendesk-provisioning-tutorial.md)をご覧ください。
+このセクションの目的は、ZendeskにBritta Simon というユーザーを作成することです。 Zendesk では、自動ユーザー プロビジョニングがサポートされています。この設定は、既定で有効になっています。 自動ユーザー プロビジョニングの構成方法について詳しくは、[こちら](Zendesk-provisioning-tutorial.md)をご覧ください。
 
 **ユーザーを手動で作成する必要がある場合、次の手順を実行します。**
 
@@ -215,14 +247,14 @@ Zendesk で Azure AD のシングル サインオンを構成してテストす�
 
 1. **Zendesk** テナントにログインします。
 
-1. **[顧客リスト]** タブを選択します。
+2. **[顧客リスト]** タブを選択します。
 
-1. **[ユーザー]** タブを選択し、**[追加]** をクリックします。
+3. **[ユーザー]** タブを選択し、**[追加]** をクリックします。
 
-    ![ユーザーの追加](./media/zendesk-tutorial/ic773632.png "ユーザーの追加")
-1. プロビジョニングする既存の Azure AD アカウントの**名前**と**電子メール アドレス**を入力し、**[Save]\(保存\)** をクリックします。
+    ![ユーザーの追加](././media/zendesk-tutorial/ic773632.png "ユーザーの追加")
+4. プロビジョニングする既存の Azure AD アカウントの**名前**と**電子メール アドレス**を入力し、**[Save]\(保存\)** をクリックします。
 
-    ![New user](./media/zendesk-tutorial/ic773633.png "New user")
+    ![New user](././media/zendesk-tutorial/ic773633.png "New user")
 
 > [!NOTE]
 > Zendesk から提供されている他の Zendesk ユーザー アカウント作成ツールまたは API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
@@ -231,31 +263,25 @@ Zendesk で Azure AD のシングル サインオンを構成してテストす�
 
 このセクションでは、Britta Simon に Zendesk へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200]
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
-**Zendesk に Britta Simon を割り当てるには、次の手順に従います。**
+    ![image](./media/zendesk-tutorial/d_all_applications.png)
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+2. アプリケーションの一覧で **[Zendesk]** を選択します。
 
-    ![ユーザーの割り当て][201]
+    ![image](./media/zendesk-tutorial/d_all_zendeskapplications.png)
 
-1. アプリケーションの一覧で **[Zendesk]** を選択します。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![アプリケーションの一覧の Zendesk のリンク](./media/zendesk-tutorial/tutorial_zendesk_app.png)
+    ![image](./media/zendesk-tutorial/d_leftpaneusers.png)
 
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+4. **[追加]** ボタンを選択し、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![image](./media/zendesk-tutorial/d_assign_user.png)
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![[割り当ての追加] ウィンドウ][203]
-
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
-
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
-
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+5. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
 
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
@@ -269,17 +295,3 @@ Zendesk で Azure AD のシングル サインオンを構成してテストす�
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 * [[ユーザー プロビジョニングの構成]](zendesk-provisioning-tutorial.md)
-
-<!--Image references-->
-
-[1]: ./media/zendesk-tutorial/tutorial_general_01.png
-[2]: ./media/zendesk-tutorial/tutorial_general_02.png
-[3]: ./media/zendesk-tutorial/tutorial_general_03.png
-[4]: ./media/zendesk-tutorial/tutorial_general_04.png
-
-[100]: ./media/zendesk-tutorial/tutorial_general_100.png
-
-[200]: ./media/zendesk-tutorial/tutorial_general_200.png
-[201]: ./media/zendesk-tutorial/tutorial_general_201.png
-[202]: ./media/zendesk-tutorial/tutorial_general_202.png
-[203]: ./media/zendesk-tutorial/tutorial_general_203.png

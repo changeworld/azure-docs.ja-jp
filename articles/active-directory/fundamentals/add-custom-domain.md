@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: dc28263fca5c6854ffad12678b472804f074addd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 30b4a038c2ad9bd86f2ba78d52ed3754acec07f0
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035744"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785259"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>方法: Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する
 新しい Azure AD テナントにはすべて、*domainname*.onmicrosoft.com という初期ドメイン名が付いてきます。 初期ドメイン名を変更または削除することはできませんが、一覧に実際の組織の名前を追加することができます。 カスタム ドメイン名を追加することで、*alain@contoso.com* など、ユーザーになじみのあるユーザー名を作成する助けとなります。
@@ -84,7 +84,7 @@ Azure AD にカスタム ドメイン名を追加したら、ドメイン レジ
 
     ![DNS エントリ情報と [確認] ボタンが表示された [Contoso] ページ](media/add-custom-domain/contoso-blade-with-dns-info-verify.png)
 
-### <a name="common-verification-issues"></a>検証のよくある問題
+## <a name="common-verification-issues"></a>検証のよくある問題
 - Azure AD でカスタム ドメイン名を検証できない場合は、次の推奨事項を試してください。
     - **少なくとも 1 時間待機してから、もう一度試します**。 Azure AD がドメインを検証する前に DNS レコードが伝達されている必要があり、このプロセスは 1 時間以上かかる場合があります。
 
@@ -92,7 +92,9 @@ Azure AD にカスタム ドメイン名を追加したら、ドメイン レジ
 
     レジストラー サイトでレコードを更新できない場合は、適切なアクセス許可を持つ誰かとエントリを共有し、エントリを追加してそれが正確であることを検証する必要があります。
 
-- **そのドメイン名が、別のディレクトリで既に使用中でないことを確認します。** ドメイン名は、1 つのディレクトリでのみ検証できます。これは、ドメイン名が現在別のディレクトリで検証中である場合は、新しいディレクトリでは検証できないことも意味します。 この重複の問題を解決するには、古いディレクトリからそのドメイン名を削除する必要があります。 ドメイン名の削除に関する詳細については、[カスタム ドメイン名の管理](../users-groups-roles/domains-manage.md)に関するページを参照してください。 
+- **そのドメイン名が、別のディレクトリで既に使用中でないことを確認します。** ドメイン名は、1 つのディレクトリでのみ検証できます。これは、ドメイン名が現在別のディレクトリで検証中である場合は、新しいディレクトリでは検証できないことも意味します。 この重複の問題を解決するには、古いディレクトリからそのドメイン名を削除する必要があります。 ドメイン名の削除に関する詳細については、[カスタム ドメイン名の管理](../users-groups-roles/domains-manage.md)に関するページを参照してください。
+
+- **管理されていない Power BI テナントがないことを確認します。** ユーザーがセルフサービス サインアップから Power BI をアクティブ化し、組織に対して管理されていないテナントを作成した場合、PowerShell を使用して、内部管理者または外部管理者として管理を引き継ぐ必要があります。 非管理対象ディレクトリを引き継ぐ方法の詳細については、「[Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ](../users-groups-roles/domains-admin-takeover.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

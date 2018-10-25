@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/21/2018
+ms.date: 10/01/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 6c6143cad04178fcafc825d9dae13c1a0620fb93
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 50bd22559c3695ac4161932652eb191084e2b46e
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033449"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017363"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>チュートリアル: Azure の予算を作成して管理する
 
@@ -57,7 +57,7 @@ Azure portal で **[コストの管理と請求]** &gt; **[サブスクリプシ
 
 ![Cost Management の予算](./media/tutorial-acm-create-budgets/budgets01.png)
 
-**[予算を作成する]** ウィンドウで、予算の名前と金額を入力します。 次に、期間を月、四半期、年から選択します。 次に、終了日を選択します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。
+**[予算を作成する]** ウィンドウで、予算の名前と金額を入力します。 次に、期間を月、四半期、年から選択します。 次に、終了日を選択します。 予算では、少なくとも 1 つのコストしきい値 (予算の %) とそれに対応するメール アドレスが必要です。 必要に応じて、1 つの予算に最大で 5 つのしきい値と 5 つのメール アドレスを含めることができます。 予算のしきい値が満たされたとき、通常、8 時間以内に電子メールの通知が届きます。
 
 この例では、毎月の予算を 4,500 ドルで作成します。 予算の 90% に達すると、メール アラートが生成されます。
 

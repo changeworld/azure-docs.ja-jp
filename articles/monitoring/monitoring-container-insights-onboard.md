@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 10/04/2018
 ms.author: magoedte
-ms.openlocfilehash: df145ebe6276c911ef3064e3f8ff7a23a2faa870
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 9fa0df0bbf363a7c751de460fd98740b4314f996
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423036"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831196"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>コンテナーに Azure Monitor をオンボードする方法
 この記事では、Kubernetes 環境にデプロイされ、[Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/) 上でホストされているワークロードのパフォーマンスを監視するために、コンテナーに対して Azure Monitor を設定する方法について説明します。
@@ -39,8 +39,7 @@ ms.locfileid: "47423036"
 パフォーマンスの監視機能では、クラスター内のすべてのノードからパフォーマンス データおよびイベント データを収集する、Linux 向けのコンテナー化された Log Analytics エージェントを利用します。 コンテナーの監視を有効にすると、エージェントは自動的に展開され、指定した Log Analytics ワークスペースに登録されます。 
 
 >[!NOTE] 
->AKS クラスターが既にデプロイされている場合は、この記事の後半で説明されているように、Azure CLI または提供されている Azure Resource Manager テンプレートを使用して、監視を有効にします。 `kubectl` を使用してアップグレード、エージェントを削除、再展開、または展開することはできません。 
->
+>AKS クラスターが既にデプロイされている場合は、この記事の後半で説明されているように、Azure CLI または提供されている Azure Resource Manager テンプレートを使用して、監視を有効にします。 `kubectl` を使用してアップグレード、エージェントを削除、再展開、または展開することはできません。 テンプレートはクラスターと同じリソース グループ内に展開する必要があります。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 [Azure Portal](https://portal.azure.com) にサインインします。 
@@ -71,6 +70,18 @@ Azure CLI を使用して AKS クラスターの監視を有効にするには�
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
+```
+
+出力は次のようになります。
+
+```azurecli
+provisioningState       : Succeeded
+```
+
+既存のワークスペースと統合する方が望ましい場合は、次のコマンドを使用して、そのワークスペースを指定します。
+
+```azurecli
+az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG --workspace-resource-id <ExistingWorkspaceResourceID> 
 ```
 
 出力は次のようになります。
@@ -124,6 +135,10 @@ Azure Portal で AKS コンテナーの監視を有効にするには、次の�
 * AKS コンテナー リソース ID。 
 * クラスターがデプロイされるリソース グループ。
 * ワークスペースを作成する Log Analytics ワークスペースとリージョン。 
+
+>[!NOTE]
+>テンプレートはクラスターと同じリソース グループ内に展開する必要があります。
+>
 
 Log Analytics ワークスペースは、手動で作成する必要があります。 ワークスペースを作成するには、[Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../log-analytics/log-analytics-quick-create-workspace.md) のいずれかを使用して設定できます。
 

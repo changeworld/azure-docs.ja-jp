@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 8ce550fcd9756286488d17ac5cad258aaf1682ba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bde451a2a01a8baa347f093a1b56525dcead00f3
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946859"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855308"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>仮想ネットワーク ピアリングの作成、変更、削除
 
@@ -143,7 +143,7 @@ Azure へのログインまたは接続に使用するアカウントは、[ネ�
 
 上記のどのロールにもアカウントが割り当てられていない場合、次の表から必要なアクションが割り当てられる[カスタム ロール](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に割り当てる必要があります。
 
-| アクションを表示します。 | Name |
+| Action | Name |
 |---|---|
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | 仮想ネットワーク A から仮想ネットワーク B へのピアリングを作成するために必要です。仮想ネットワーク A は仮想ネットワーク (Resource Manager) である必要があります                            |
 | Microsoft.Network/virtualNetworks/peer/action                   | 仮想ネットワーク B (Resource Manager) から仮想ネットワーク A へのピアリングを作成するために必要です                                                                                |

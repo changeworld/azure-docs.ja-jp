@@ -1,22 +1,27 @@
 ---
-title: Linguistic Analysis API での構成素解析 | Microsoft Docs
+title: 構成素解析 - Linguistic Analysis API
+titlesuffix: Azure Cognitive Services
 description: 構成素解析 ("語句構文解析" とも呼ばれます) で、テキスト内の語句を特定する方法について説明します。
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: lesun
-ms.openlocfilehash: bff5e587621e1278c260d555aec280a0f4c7c8a1
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ROBOTS: NOINDEX
+ms.openlocfilehash: 89832f2d936a08df8b6f9e846c3dd4a5665c06a4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082174"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238626"
 ---
 # <a name="constituency-parsing"></a>構成素解析
+
+> [!IMPORTANT]
+> Linguistic Analysis プレビューは、2018 年 8 月 9 日に使用停止になりました。 テキスト処理と分析には、[Azure Machine Learning テキスト解析モジュール](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)の使用をお勧めします。
 
 構成素解析 ("語句構文解析" とも呼ばれます) の目的は、テキスト内の語句を特定することです。
 これはテキストから情報を抽出するときに便利です。
@@ -60,7 +65,7 @@ ms.locfileid: "37082174"
 
 ## <a name="phrase-types"></a>語句の種類
 
-| ラベル | 説明 | 例 |
+| Label | 説明 | 例 |
 |-------|-------------|---------|
 |ADJP   | 形容詞句 | "so rude" (あまりにも乱暴な) |
 |ADVP   | 副詞句 | "clear through" (明確に) |

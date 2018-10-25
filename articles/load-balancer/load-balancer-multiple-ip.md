@@ -4,7 +4,7 @@ description: プライマリ IP 構成とセカンダリ IP 構成の間の負�
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
+manager: jpconnock
 editor: na
 ms.assetid: 244907cd-b275-4494-aaf7-dcfc4d93edfe
 ms.service: load-balancer
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3b7971fec0aa0c354476073b01699f516f9439cc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 73f19293fc9dd0f68752e7b38a12a826b8f52b0c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637380"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248570"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Azure Portal を使用した複数の IP 構成での負荷分散
 
@@ -181,7 +181,7 @@ ms.locfileid: "34637380"
 
 4. **[ポート]** と **[バックエンド ポート]** については、既定値の **80** のままにします。
 
-5. **[フローティング IP (ダイレクト サーバー リターン)]** で、**[有効]** を選択します。
+5. **[フローティング IP (ダイレクト サーバー リターン)]** で、**[無効]** を選択します。
 
 6. <a name="step6-6"></a>**[OK]** を選択します。
 

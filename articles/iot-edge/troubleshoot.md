@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a6102a6bc28486c24134bbc172b9e8a7e1a61244
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: a63a31c5ceb4298829f85627196fea5d7a38ca4b
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39308039"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068504"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -310,6 +310,32 @@ Windows Registry Editor Version 5.00
 "EventMessageFile"="C:\\ProgramData\\iotedge\\iotedged.exe"
 "TypesSupported"=dword:00000007
 ```
+
+## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IoT Edge モジュールが 404 エラーで edgeHub にメッセージを送信できない
+
+カスタム IoT Edge モジュールは、404 `Module not found` エラーで edgeHub にメッセージを送信できません。 IoT Edge デーモンによって、次のメッセージがログに出力されます。 
+
+```output
+Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
+```
+
+### <a name="root-cause"></a>根本原因
+IoT Edge デーモンでは、セキュリティ上の理由から、edgeHub に接続するすべてのモジュールのプロセス識別が強制されます。 モジュールによって送信されているすべてのメッセージが、モジュールのメインプロセス ID から来たものであることが確認されます。 メッセージがモジュールによって最初の設定とは異なるプロセス ID から送信されている場合は、そのメッセージを 404 エラー メッセージによって拒否します。
+
+### <a name="resolution"></a>解決策
+カスタム IoT Edge モジュールによる edgeHub へのメッセージの送信で、常に同じプロセス ID が使用されていることを確認します。 たとえば、Docker ファイルで、`CMD` コマンドではなく `ENTRYPOINT` コマンドを使用するようにします。これは、`ENTRYPOINT` では単一のプロセス ID が使用されるのに対して、`CMD` ではモジュールに 1 つのプロセス ID が使用され、メイン プログラムを実行している bash コマンドには別のプロセス ID が使用されるためです。
+
+
+## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>IoT Edge デプロイのファイアウォール規則とポート構成規則
+Azure IoT Edge では、サポートされている IoT Hub プロトコルを使用した、オンプレミスの Edge サーバーから Azure クラウドへの通信が許可されています。[通信プロトコルの選択](../iot-hub/iot-hub-devguide-protocols.md)に関するページを参照してください。 セキュリティ強化のため、Azure IoT Edge と Azure IoT Hub 間の通信チャネルは常に Outbound に構成されます。これは、[Services Assisted Communication パターン](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)に基づいています。そうすることで、悪意のある者が探索する攻撃面が最小限に抑えられます。 Inbound 通信は、Azure IoT Hub が Azure IoT Edge サーバーにメッセージをプッシュダウンする必要がある特定のシナリオ (たとえば Cloud To Device メッセージング) でのみ必要です。それらの通信も、安全な TLS チャネルを使用して保護され、さらに X.509 証明書と TPM デバイス モジュールを使用して保護されます。 この通信の確立方法は、Azure IoT Edge セキュリティ マネージャーによって管理されます。[IoT Edge セキュリティ マネージャー](../iot-edge/iot-edge-security-manager.md)に関するページを参照してください。
+
+IoT Edge は、Azure IoT Edge ランタイムとデプロイされたモジュールのセキュリティを保護するための強化された構成を提供しますが、依然として基になるマシンとネットワークの構成に依存しています。 そのため、Edge からクラウドへの安全な通信のための適切なネットワーク規則およびファイアウォール規則がセットアップされていることを確認する必要があります。 Azure IoT Edge ランタイムがホストされている、基になるサーバーのファイアウォール規則を構成するときに、以下の設定をガイドラインとして使用することができます。
+
+|プロトコル|ポート|受信|送信|ガイダンス|
+|--|--|--|--|--|
+|MQTT|8883|ブロック (既定値)|ブロック (既定値)|<ul> <li>通信プロトコルとして MQTT を使用する場合は、送信 (発信) をオープンになるように構成します。<li>MQTT での 1883 は、IoT Edge ではサポートされていません。 <li>受信 (着信) 接続はブロックする必要があります。</ul>|
+|AMQP|5671|ブロック (既定値)|オープン (既定値)|<ul> <li>IoT Edge の既定の通信プロトコル。 <li> Azure IoT Edge が他のサポートされているプロトコル用に構成されていないか、AMQP が望ましい通信プロトコルである場合は、オープンになるように構成する必要があります。<li>AMQP での 5672 は、IoT Edge ではサポートされていません。<li>Azure IoT Edge が、IoT Hub がサポートされている別のプロトコルを使用している場合は、このポートをブロックします。<li>受信 (着信) 接続はブロックする必要があります。</ul></ul>|
+|HTTPS|443|ブロック (既定値)|オープン (既定値)|<ul> <li>443 で IoT Edge プロビジョニング用に送信 (発信) がオープンになるように構成します。手動スクリプトまたは Azure IoT Device Provisioning Service (DPS) を使用する場合は、こうする必要があります。 <li>受信 (着信) 接続が以下の特定のシナリオだけでオープンになるようにする必要があります。 <ul> <li>  メソッド要求を送信することがあるリーフ デバイスを持つ透過的なゲートウェイがある場合。 この場合、ポート 443 は、IoTHub に接続したり Azure IoT Edge を通じて IoTHub サービスを提供したりするために外部ネットワークに対してオープンにする必要はありません。 そのため、受信規則は内部ネットワークからのオープンな受信 (着信) だけに制限することができます。 <li> Client to Device (C2D) シナリオの場合。</ul><li>HTTP での 80 は、IoT Edge ではサポートされていません。<li>企業内で非 HTTP プロトコル (AMQP、MQTT など) を構成できない場合は、メッセージを WebSockets 経由で送信できます。 その場合、ポート 443 は WebSocket 通信のために使用されます。</ul>|
 
 
 ## <a name="next-steps"></a>次の手順
