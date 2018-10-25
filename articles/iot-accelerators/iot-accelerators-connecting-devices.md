@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 09/17/2018
 ms.author: dobett
-ms.openlocfilehash: 139daea3e885636b352d4c9a1ba2651a24195b21
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 55c8ff799ba3ff7fe9691d46dc90a00d5182d390
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38309872"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829412"
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-solution-accelerator-windows"></a>デバイスをリモート監視ソリューション アクセラレータに接続する (Windows)
 
@@ -21,102 +21,41 @@ ms.locfileid: "38309872"
 
 このチュートリアルでは、リモート監視ソリューション アクセラレータに物理デバイスを接続する方法について説明します。
 
-## <a name="create-a-c-client-solution-on-windows"></a>Windows で C のクライアント ソリューションを作成する
+制限のあるデバイス上で実行されるほとんどの組み込みアプリケーションと同様、デバイス アプリケーションのためのクライアント コードは C で記述されています。このチュートリアルでは、Windows を実行しているコンピューターでデバイス クライアント アプリケーションを構築します。
 
-制限付きのデバイス上で実行される多くの組み込みアプリケーションと同様、デバイス アプリケーションのためのクライアント コードは C で書かれています。このチュートリアルでは、Windows を実行しているコンピューターでアプリケーションを構築します。
+## <a name="prerequisites"></a>前提条件
 
-### <a name="create-the-starter-project"></a>スタート プロジェクトを作成する
+このハウツー ガイドの手順を完了するには、[Windows 開発環境の設定](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#set-up-a-windows-development-environment)に関するページに示されている手順に従って、必要な開発ツールとライブラリを Windows コンピューターに追加します。
 
-Visual Studio 2017 でスタート プロジェクトを作成し、IoT Hub デバイス クライアントの NuGet パッケージを追加します。
+## <a name="view-the-code"></a>コードを表示する
 
-1. Visual Studio で、Visual C++ **Windows コンソール アプリケーション** テンプレートを使用して、C コンソール アプリケーションを作成します。 プロジェクトの名前として「 **RMDevice**」と入力します。
+このガイドで使用される[サンプル コード](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client)は、Azure IoT C SDK GitHub リポジトリで入手できます。
 
-    ![Visual C++ Windows コンソール アプリケーションを作成します](./media/iot-accelerators-connecting-devices/visualstudio01.png)
+### <a name="download-the-source-code-and-prepare-the-project"></a>ソース コードをダウンロードしてプロジェクトを準備する
 
-1. **ソリューション エクスプローラー**で、`stdafx.h`、`targetver.h` および `stdafx.cpp` ファイルを削除します。
+プロジェクトを準備するには、GitHub から [Azure IoT C SDK リポジトリ](https://github.com/Azure/azure-iot-sdk-c)を複製またはダウンロードします。
 
-1. **ソリューション エクスプローラー**で、ファイル `RMDevice.cpp` の名前を `RMDevice.c` に変更します。
+サンプルは、**samples/solutions/remote_monitoring_client** フォルダーにあります。
 
-    ![名前が変更された RMDevice.c ファイルが表示されたソリューション エクスプローラー](./media/iot-accelerators-connecting-devices/visualstudio02.png)
+テキスト エディターで、**samples/solutions/remote_monitoring_client** フォルダー内の **remote_monitoring.c** ファイルを開きます。
 
-1. **ソリューション エクスプローラー**で、**RMDevice** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 **[参照]** を選択し、次の NuGet パッケージを検索してインストールします。
-
-    * Microsoft.Azure.IoTHub.Serializer
-    * Microsoft.Azure.IoTHub.IoTHubClient
-    * Microsoft.Azure.IoTHub.MqttTransport
-
-    ![インストールされている Microsoft.Azure.IoTHub パッケージが表示された NuGet パッケージ マネージャー](./media/iot-accelerators-connecting-devices/visualstudio03.png)
-
-1. **ソリューション エクスプローラー**で、**RMDevice** プロジェクトを右クリックして **[プロパティ]** を選択し、プロジェクトの **[プロパティ ページ]** ダイアログ ボックスを開きます。 詳細については、[Visual C++ プロジェクトのプロパティの設定](https://docs.microsoft.com/cpp/ide/working-with-project-properties)に関するページを参照してください。
-
-1. **[C/C++]** フォルダーを選択し、**[プリコンパイル済みヘッダー]** プロパティ ページを選択します。
-
-1. **[プリコンパイル済みヘッダー]** を **[プリコンパイル済みヘッダーを使用しない]** に設定します。 **[適用]** を選択します。
-
-    ![プリコンパイル済みヘッダーを使用していないプロジェクトが表示されたプロジェクト プロパティ](./media/iot-accelerators-connecting-devices/visualstudio04.png)
-
-1. **[リンカー]** フォルダーをクリックして、**[入力]** プロパティ ページを選択します。
-
-1. `crypt32.lib` を、**[追加の依存ファイル]** プロパティに追加します。 **[OK]** を選択し、もう一度 **[OK]** をクリックして、プロジェクトのプロパティ値を保存します。
-
-    ![crypt32.lib を含むリンカーが表示されたプロジェクト プロパティ](./media/iot-accelerators-connecting-devices/visualstudio05.png)
-
-### <a name="add-the-parson-json-library"></a>Parson JSON ライブラリを追加します。
-
-Parson JSON ライブラリを **RMDevice** プロジェクトに追加し、必要な `#include` ステートメントを追加します。
-
-1. 次のコマンドを使用して、コンピューター上の適切なフォルダーに Parson GitHub リポジトリを複製します。
-
-    ```cmd
-    git clone https://github.com/kgabis/parson.git
-    ```
-
-1. Parson リポジトリのローカル コピーから `parson.h` と `parson.c` のファイルを **RMDevice** プロジェクト フォルダーにコピーします。
-
-1. Visual Studio で **RMDevice** プロジェクトを右クリックして **[追加]** をクリックし、**[既存の項目]** をクリックします。
-
-1. **[既存項目の追加]** ダイアログで、**RMDevice** プロジェクト フォルダー内にある `parson.h` と `parson.c` の各ファイルを選択します。 **[追加]** を選択して、この 2 つのファイルをプロジェクトに追加します。
-
-    ![parson.h および parson.c ファイルが表示されたソリューション エクスプローラー](./media/iot-accelerators-connecting-devices/visualstudio06.png)
-
-1. Visual Studio で、`RMDevice.c` ファイルを開きます。 既存の `#include` ステートメントを次のコードで置き換えます。
-
-    ```c
-    #include "iothubtransportmqtt.h"
-    #include "schemalib.h"
-    #include "iothub_client.h"
-    #include "serializer_devicetwin.h"
-    #include "schemaserializer.h"
-    #include "azure_c_shared_utility/threadapi.h"
-    #include "azure_c_shared_utility/platform.h"
-    #include <string.h>
-    ```
-
-    > [!NOTE]
-    > これで、ソリューションをビルドすることによって、プロジェクトに正しい依存関係が設定されたことを確認できます。
-
-[!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
+[!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-sample"></a>サンプルのビルドと実行
 
-**remote\_monitoring\_run** 関数を呼び出すコードを追加し、デバイス アプリケーションをビルドして実行します。
+1. **remote_monitoring.c** ファイルを編集し、`<connectionstring>` を、ソリューション アクセラレータにデバイスを追加したときにこのハウツー ガイドの冒頭でメモしたデバイス接続文字列に置き換えます。
 
-1. **main\_ 関数を、\_remote**monitoring**run** 関数を呼び出す次のコードで置き換えます。
+1. 「[Build the C SDK in Windows](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#build-the-c-sdk-in-windows)」 (Windows で C SDK を構築する) の手順に従って、SDK とリモート監視クライアント アプリケーションを構築します。
 
-    ```c
-    int main()
-    {
-      remote_monitoring_run();
-      return 0;
-    }
+1. ソリューションを構築するために使用したコマンド プロンプトで、次のコマンドを実行します。
+
+    ```cmd
+    samples\solutions\remote_monitoring_client\Release\remote_monitoring_client.exe
     ```
 
-1. **[ビルド]**、**[ソリューションのビルド]** の順に選択して、デバイス アプリケーションをビルドします。
+    コンソールには、次のメッセージが表示されます。
 
-1. **ソリューション エクスプローラー**で、**RMDevice** プロジェクトを右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順に選択して、サンプルを実行します。 コンソールには、次のメッセージが表示されます。
-
-    * アプリケーションは、ソリューション アクセラレータにサンプル テレメトリを送信します。
-    * ソリューションのダッシュ ボードで必要なプロパティ値セットを受信します。
-    * ソリューションのダッシュ ボードから呼び出されたメソッドに応答します。
+    - アプリケーションは、ソリューション アクセラレータにサンプル テレメトリを送信します。
+    - ソリューションのダッシュ ボードから呼び出されたメソッドに応答します。
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

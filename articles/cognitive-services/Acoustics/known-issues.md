@@ -1,20 +1,21 @@
 ---
-title: 音響プラグインの既知の問題 - Cognitive Services
+title: Project Acoustics プラグインに関する既知の問題
+titlesuffix: Azure Cognitive Services
 description: Project Acoustics の Designer Preview の使用時に、以下で説明する既知の問題が発生する場合があります。
 services: cognitive-services
 author: kylestorck
-manager: noelc
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: acoustics
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: c19b19cab33ae868f11ded0b7ce87dac99269596
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 6d3605b579a44dccb259bef281392cbfe2b9f916
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431991"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902154"
 ---
 # <a name="known-issues"></a>既知の問題
 Project Acoustics の Designer Preview の使用時に、以下で説明する既知の問題が発生する場合があります。
@@ -23,17 +24,9 @@ Project Acoustics の Designer Preview の使用時に、以下で説明する�
 
 シーンの名前を変更する場合、そのシーンに属するすべての音響パラメーターが自動的に新しいシーンに移動するわけではありません。 ただし、古いアセット ファイルにはまだ存在します。 シーン ファイルに隣接する **Editor** ディレクトリ内の **SceneName_AcousticParameters.asset** ファイルを探します。 新しいシーン名を反映するようにファイルの名前を変更します。
 
-## <a name="the-default-path-for-the-acousticsdata-folder-in-probes-tab-is-an-absolute-path"></a>[プローブ] タブで AcousticsData フォルダーの既定のパスが絶対パスである
-
-共同作業者間でプロジェクトを共有しやすいよう、本来は相対パスが既定であるべきです。 回避策として、プロジェクト ディレクトリからの相対パスにパスを変更してください。
-
 ## <a name="runtime-voxels-are-a-different-size-than-scene-preview-voxels"></a>実行時ボクセルのサイズがシーン プレビュー ボクセルと異なる
 
 **[プローブ]** タブで **[計算]** を実行してボクセルを表示した後、同じシーンに対して実行時にベイクを実行してボクセルを表示した場合、ボクセルのサイズが異なります。 事前ベイクで表示されるボクセルはシミュレーションで使用されるボクセルです。 実行時に表示されるボクセルは、プローブ ポイント間の補間に使用されます。 このことは、実際には開いていないポータルが実行時に開いているように見える不一致の原因になることがあります。
-
-## <a name="uwp-builds-not-working"></a>UWP ビルドが機能しない
-
-Unity の最新バージョン (2018.2 以降) では、UWP ビルドは成功しません。 ビルドの実行フェーズがストールし、"Unity extensions are not yet initialized"(Unity 拡張機能がまだ初期化されていません) というエラーが表示されます。 この件は [Unity の問題](https://fogbugz.unity3d.com/default.asp?1070491_1rgf14bakv5u779d)として調査中です。
 
 ## <a name="unity-crashes-when-closing-project"></a>プロジェクトを閉じると Unity がクラッシュする
 
@@ -49,6 +42,9 @@ Player の設定で [Scripting Runtime Version] が **[.NET 4.x Equivalent]** �
 ## <a name="im-having-authentication-problems-when-connecting-to-azure"></a>Azure への接続時に認証の問題が発生している
 
 Azure アカウントの正しい資格情報を使用していること、ベイクで要求されるノードの種類をアカウントがサポートしていること、および、システム クロックが正確であることを再確認してください。
+
+## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>ベイクをキャンセルすると、[Bake]\(ベイク\) タブは「削除中」状態のままになります。
+Project Acoustics は正常な完了時またはキャンセル時にすべての Azure リソースをクリーンアップしますが、これには最大で 5 分かかります。
 
 ## <a name="next-steps"></a>次の手順
 * [実際の Unity プロジェクトに音響効果を統合](getting-started.md)してみる

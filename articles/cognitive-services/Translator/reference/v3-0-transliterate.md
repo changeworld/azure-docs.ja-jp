@@ -1,22 +1,23 @@
 ---
-title: Microsoft Translator Text API Transliterate メソッド | Microsoft Docs
-description: Microsoft Translator Text API Transliterate メソッドを使用します。
+title: Translator Text API の Transliterate メソッド
+titlesuffix: Azure Cognitive Services
+description: Translator Text API の Transliterate メソッドを使用します。
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: fdd6fa9236f0c02685198b6de3228c444993dad6
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 613cdd14ad196058458b090024cc6b9a4b8a80b6
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377520"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018623"
 ---
-# <a name="text-api-30-transliterate"></a>Text API 3.0: Transliterate
+# <a name="translator-text-api-30-transliterate"></a>Translator Text API 3.0: Transliterate
 
 ある言語のテキストを、あるスクリプトから別のスクリプトに変換します。
 
@@ -37,7 +38,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   <th>説明</th>
   <tr>
     <td>api-version</td>
-    <td>*必須のパラメーター*。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
+    <td>"*必須のパラメーター*"。<br/>クライアントによって要求される API のバージョン。 値は `3.0` とする必要があります。</td>
   </tr>
   <tr>
     <td>language</td>
@@ -45,7 +46,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*必須のパラメーター*。<br/>入力テキストによって使用されるスクリプトを指定します。 選択した言語で使用可能な入力スクリプトを確認するには、`transliteration` スコープを使用して [サポートされている言語](.\v3-0-languages.md)を検索します。</td>
+    <td>*必須のパラメーター*。<br/>入力テキストによって使用されるスクリプトを指定します。 選択した言語で使用可能な入力スクリプトを確認するには、`transliteration`スコープを使用して[サポートされている言語](.\v3-0-languages.md)を検索します。</td>
   </tr>
   <tr>
     <td>toScript</td>
@@ -59,20 +60,20 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   <th width="20%">headers</th>
   <th>説明</th>
   <tr>
-    <td>_One authorization_<br/>_header_</td>
-    <td>*必須の要求ヘッダー*。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページを参照してください。</td>
+    <td>_1 つの承認_<br/>_ヘッダー_></td>
+    <td>"*必須の要求ヘッダー*" です。<br/>[認証に使用できるオプション](./v3-0-reference.md#authentication)に関するページをご覧ください。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*必須の要求ヘッダー*。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
+    <td>"*必須の要求ヘッダー*" です。<br/>ペイロードのコンテンツ タイプを指定します。 次のいずれかの値になります。`application/json`</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*必須の要求ヘッダー*。<br/>要求本文の長さです。</td>
+    <td>"*必須の要求ヘッダー*" です。<br/>要求本文の長さです。</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*省略可能*。<br/>要求を一意に識別する、クライアントで生成された GUID。 `ClientTraceId` という名前のクエリ パラメーターを使用してクエリ文字列内にトレース ID を含める場合は、このヘッダーを省略できることに注目してください。</td>
+    <td>*省略可能*。<br/>要求を一意に識別する、クライアントで生成された GUID。 クエリ パラメーター `ClientTraceId` を使ってクエリ文字列内にトレース ID を含める場合、このヘッダーを省略できることに注意してください。</td>
   </tr>
 </table> 
 
@@ -117,13 +118,13 @@ JSON 応答の例を次に示します。
   <th>説明</th>
   <tr>
     <td>X-RequestId</td>
-    <td>要求を識別するサービスによって生成される値。 トラブルシューティングの目的で使用されます。</td>
+    <td>要求を識別するためにサービスによって生成される値。 トラブルシューティングの目的で使用されます。</td>
   </tr>
 </table> 
 
 ## <a name="response-status-codes"></a>応答状態コード
 
-要求から返される可能性のある HTTP 状態コードを次に示します。 
+要求によって返される可能性のある HTTP 状態コードを次に示します。 
 
 <table width="100%">
   <th width="20%">状態コード</th>
@@ -170,7 +171,7 @@ JSON 応答の例を次に示します。
 [{"text":"こんにちは","script":"jpan"},{"text":"さようなら","script":"jpan"}]
 ```
 
-Unicode 文字をサポートしていないコマンドライン ウィンドウで cUrl を使用する場合は、次の JSON ペイロードを取得し、それを `request.txt` という名前のファイルに保存します。 必ずファイルは `UTF-8` エンコードで保存してください。
+Unicode 文字をサポートしていないコマンドライン ウィンドウで cURL を使用する場合は、次の JSON ペイロードを取得して、`request.txt` という名前のファイルに保存します。 必ずファイルは `UTF-8` エンコードで保存してください。
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=Jpan&toScript=Latn" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d @request.txt

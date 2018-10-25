@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 13bc82caf5e10f5b35df29d085349ec4c80628a2
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 61c91f7e1f2ba266be6453bb6e6fb25f3834485e
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917454"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585898"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 
@@ -39,8 +39,8 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 - お使いの Azure Stack インフラストラクチャは、証明書において公開されている証明機関の証明書失効リスト (CRL) の場所にネットワーク アクセスできる必要があります。 この CRL は、http エンドポイントである必要があります
 - 証明書を交換する場合、証明書は、デプロイ時に指定された証明書の署名に使用したのと同じ内部の証明機関、または上記の公的パブリック証明機関のいずれかから発行されたものである必要があります。
 - 自己署名証明書は使用できません。
-- デプロイおよびローテーションの場合は、証明書のサブジェクト名フィールドとサブジェクトの別名 (SAN) フィールドのすべての名前空間をカバーする 1 つの証明書を使用するか、または、各名前空間で利用する予定の Azure Stack サービスが必要とする個別の証明書を使用することができます。 注: どちらの方法でも、必要とされるエンドポイントに対してワイルドカードを使用する必要があります (例: **KeyVault** と **KeyVaultInternal**)。 
-- 証明書署名アルゴリズムを SHA1 にすることはできません。より強力にする必要があります。 
+- デプロイおよびローテーションの場合は、証明書のサブジェクト名フィールドとサブジェクトの別名 (SAN) フィールドのすべての名前空間をカバーする 1 つの証明書を使用するか、または、各名前空間で利用する予定の Azure Stack サービスが必要とする個別の証明書を使用することができます。 注: どちらの方法でも、それらが必要とされる場所のエンドポイントに対してワイルドカードを使用する必要があります (例: **KeyVault**､**KeyVaultInternal**)。 
+- 証明書署名アルゴリズムは、3DES である必要があります。 強化する必要があるため､アルゴリズムが SHA1 であってはいけません｡ 
 - Azure Stack のインストールには公開キーと秘密キーの両方が必要なため、証明書の形式は PFX である必要があります。 
 - 証明書 pfx ファイルの "Key Usage" フィールドには、"Digital Signature" と "KeyEncipherment" の値が含まれている必要があります。
 - 証明書の pfx ファイルの "Enhanced Key Usage" フィールドには、"Server Authentication (1.3.6.1.5.5.7.3.1)" と "Client Authentication (1.3.6.1.5.5.7.3.2)" の値が含まれている必要があります。
@@ -76,6 +76,8 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 | ACSQueue | *.queue.&lt;region>.&lt;fqdn><br>(ワイルドカード SSL 証明書) | Queue Storage | queue.&lt;region>.&lt;fqdn> |
 | KeyVault | *.vault.&lt;region>.&lt;fqdn><br>(ワイルドカード SSL 証明書) | Key Vault | vault.&lt;region>.&lt;fqdn> |
 | KeyVaultInternal | *.adminvault.&lt;region>.&lt;fqdn><br>(ワイルドカード SSL 証明書) |  内部 Keyvault |  adminvault.&lt;region>.&lt;fqdn> |
+| 管理者拡張機能ホスト | *.adminhosting.\<リージョン>.\<FQDN> (ワイルドカード SSL 証明書) | 管理者拡張機能ホスト | adminhosting.\<リージョン>.\<FQDN> |
+| パブリック拡張機能ホスト | *.hosting.\<リージョン>.\<FQDN> (ワイルドカード SSL 証明書) | パブリック拡張機能ホスト | hosting.\<リージョン>.\<FQDN> |
 
 Azure AD デプロイ モードを使用して Azure Stack をデプロイする場合は、前の表に一覧表示されている証明書を要求するだけで済みます。 ただし、AD FS デプロイ モードを使用して Azure Stack をデプロイする場合は、次の表で説明されている証明書も要求する必要があります。
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: f5d5b8064821dfb1aa6d4e99d0152e364f9a83fe
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b05e23019e7b0a03965e51052bf334d0cbff041d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700520"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269345"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作
 
@@ -142,6 +142,10 @@ Service Bus エンティティは、次のようにアドレス指定する必�
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
 |`lock-tokens`|UUID の配列|[はい]|更新するメッセージ ロック トークン。|  
+
+> [!NOTE]
+> ロック トークンは、受信メッセージの　`DeliveryTag`　プロパティです。 [.NET SDK](https://github.com/Azure/azure-service-bus-dotnet/blob/6f144e91310dcc7bd37aba4e8aebd535d13fa31a/src/Microsoft.Azure.ServiceBus/Amqp/AmqpMessageConverter.cs#L336) で、それらを取得する次の例を参照してください。 トークンは 'DeliveryAnnotations' に 'x-opt-lock-token' と表示されることもありますが、これは確実ではないため、`DeliveryTag` を使用することをお勧めします。 
+> 
   
 #### <a name="response"></a>Response  
 
@@ -365,7 +369,7 @@ Service Bus エンティティは、次のようにアドレス指定する必�
   
 |キー|値の型|必須|値の内容|  
 |---------|----------------|--------------|--------------------|  
-|operation|string|[はい]|`com.microsoft:peek-message`|  
+|operation|string|[はい]|`com.microsoft:set-session-state`|  
 |`com.microsoft:server-timeout`|uint|いいえ |操作のサーバー タイムアウト (ミリ秒単位)。|  
   
 要求メッセージの本文は、次のエントリが含まれた**マップ**を含む **amqp-value** セクションで構成されている必要があります。  

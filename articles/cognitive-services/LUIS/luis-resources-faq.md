@@ -1,5 +1,5 @@
 ---
-title: よく寄せられる質問 - Language Understanding (LUIS)
+title: FAQ - よく寄せられる質問 - Language Understanding (LUIS)
 titleSuffix: Azure Cognitive Services
 description: この記事では、Language Understanding (LUIS) についてよく寄せられる質問とその回答を紹介します。
 author: diberry
@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 10/10/2018
 ms.author: diberry
-ms.openlocfilehash: 5910417696651cad06d6f21513e81728be4181cd
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: b5433ea0a92635b5bf9c2a4887451f1e64ec62e6
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432464"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067770"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding のよくあるご質問
 
@@ -113,6 +113,10 @@ Azure で[サービス](https://azure.microsoft.com/pricing/details/cognitive-se
 
 [同じアプリのコピー間での予測の相違](luis-concept-prediction-score.md#differences-with-predictions)に関するページをご覧ください。
 
+### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>アプリを変更した後、いくつかの発話は、間違った意図になります。 問題は、ランダムに表示されなくなるようです。 どのように修正すればよいですか 
+
+「[すべてのデータでトレーニングする](luis-how-to-train.md#train-with-all-data)」を参照してください。
+
 ## <a name="app-publishing"></a>アプリの発行
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>[Add a key to your app]\(アプリにキーを追加する\) ウィンドウのテナント ID とは何ですか?
@@ -135,7 +139,7 @@ LUIS の一般公開 (GA) よりも前からアプリが存在していた場合
 LUIS アプリを別の Azure サブスクリプションに譲渡するには、LUIS アプリをエクスポートした後、新しいアカウントを使用してインポートします。 LUIS アプリを呼び出しているクライアント アプリケーションで、LUIS アプリ ID を更新します。 新しいアプリは、元のアプリとは若干異なる LUIS スコアを返す可能性があります。
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>ユーザーの発話のログをダウンロードするにはどうすればよいですか?
-既定では、LUIS アプリはユーザーからの発話をログに記録します。 ユーザーが LUIS アプリに送信した発話のログをダウンロードするには、**[マイ アプリ]** に移動し、アプリの一覧で省略記号 ***[...]*** をクリックします。 その後、**[Export Endpoint Logs]\(エンドポイント ログのエクスポート\)** をクリックします。 ログは、コンマ区切り値 (CSV) ファイルとして書式設定されています。
+既定では、LUIS アプリはユーザーからの発話をログに記録します。 ユーザーが LUIS アプリに送信した発話のログをダウンロードするには、**[マイ アプリ]** に移動し、アプリを選択します。 コンテキストのツールバーで **[Export endpoint logs]\(エンドポイント ログのエクスポート\)** を選択します。 ログは、コンマ区切り値 (CSV) ファイルとして書式設定されています。
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>発話のログ記録を無効にするにはどうすればよいですか?
 クライアント アプリケーションが LUIS のクエリに使用しているエンドポイント URL で `log=false` を設定することにより、ユーザー発話のログ記録をオフにできます。 ただし、ログ記録をオフにすると、[アクティブ ラーニング](luis-concept-review-endpoint-utterances.md#what-is-active-learning)に基づいて発話を提案したりパフォーマンスを向上させたりする LUIS アプリの機能が無効になります。 データのプライバシーを考慮して `log=false` を設定した場合、LUIS からユーザーの発話の記録をダウンロードしたり、発話を使用してアプリの品質を向上させたりすることはできません。

@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 46105ee92a5c98cb8180b2499d0ad295702aac43
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 85fea195b05bea8a1db70f8b5b81cabdfe7c6c72
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953374"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041511"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>Azure HDInsight で Apache Kafka 用に自分のキーを持ち込む (プレビュー)
 
@@ -35,17 +35,37 @@ Azure portal または Azure CLI を使用し、キー コンテナーのキー�
 
    ![Azure portal でユーザー割り当てマネージド ID を作成する](./media/apache-kafka-byok/user-managed-identity-portal.png)
 
-2. Azure Key Vault を作成またはインポートします。
+2. 既存のキー コンテナーにインポートするか、新規に作成します。
 
    HDInsight では、Azure Key Vault にのみ対応しています。 自分のキー コンテナーをお持ちの場合、Azure Key Vault に自分のキーをインポートできます。 キーには [論理的な削除] と [Do Not Purge]\(削除しない\) を有効にする必要があります。 [論理的な削除] 機能と [Do Not Purge]\(削除しない\) 機能は、REST、.NET/C#、PowerShell、Azure CLI の各インターフェイスで利用できます。
 
    新しいキー コンテナーを作成するには、[Azure Key Vault](../../key-vault/key-vault-get-started.md) クイック スタートに従ってください。 既存のキーをインポートする方法については、「[キー、シークレット、証明書について](../../key-vault/about-keys-secrets-and-certificates.md)」をご覧ください。
 
+   新しいキーを作成するには、**[設定]** の下にある **[キー]** メニューから **[生成/インポート]** を選択します。
+
+   ![Azure Key Vault で新しいキーを生成する](./media/apache-kafka-byok/kafka-create-new-key.png)
+
+   **[オプション]** を **[生成]** に設定し、キーの名前を付けます。
+
+   ![Azure Key Vault で新しいキーを生成する](./media/apache-kafka-byok/kafka-create-a-key.png)
+
+   キーの一覧から作成したキーを選択します。
+
+   ![Azure Key Vault キーのリスト](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+
+   Kafka クラスターの暗号化に独自のキーを使用する場合は、キーの URI を指定する必要があります。 **キー識別子**をコピーし、クラスターを作成する準備ができるまでどこかに保存します。
+
+   ![キー識別子をコピーする](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+   
 3. キー コンテナーのアクセス ポリシーにマネージド ID を追加します。
 
    新しい Azure Key Vault アクセス ポリシーを作成します。
 
    ![新しい Azure Key Vault アクセス ポリシーを作成する](./media/apache-kafka-byok/add-key-vault-access-policy.png)
+
+   **[プリンシパルの選択]** の下で、作成したユーザー割り当てマネージド ID を選択します。
+
+   ![Azure Key Vault アクセス ポリシーの [プリンシパルの選択] を設定する](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
 
    **[キーのアクセス許可]** を **[取得]**、**[キーの折り返しを解除]**、**[キーを折り返す]** に設定します。
 
@@ -55,17 +75,13 @@ Azure portal または Azure CLI を使用し、キー コンテナーのキー�
 
    ![Azure Key Vault アクセス ポリシーにキーのアクセス許可を設定する](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png)
 
-   **[プリンシパルの選択]** の下で、作成したユーザー割り当てマネージド ID を選択します。
-
-   ![Azure Key Vault アクセス ポリシーの [プリンシパルの選択] を設定する](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
-
 4. HDInsight クラスターの作成
 
    これで新しい HDInsight クラスターを作成する準備が整いました。 BYOK は、クラスター作成時、新しいクラスターにのみ適用できます。 BYOK クラスターから暗号化を削除することはできません。既存のクラスターに BYOK を追加することはできません。
 
    ![Azure portal の Kafka ディスク暗号化](./media/apache-kafka-byok/apache-kafka-byok-portal.png)
 
-   クラスター作成時、キーのバージョンも含む、完全キー URL を指定します。 たとえば、「 `myakv.azure.com/KEK1/v1` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。
+   クラスター作成時、キーのバージョンも含む、完全キー URL を指定します。 たとえば、「 `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4` 」のように入力します。 また、クラスターにマネージド ID を割り当て、キー URI を指定する必要があります。
 
 ## <a name="faq-for-byok-to-kafka"></a>Kafka の BYOK についてよく寄せられる質問
 

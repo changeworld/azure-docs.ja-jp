@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: bae71c55bdea838d0ef5e0ae3acbac3e98a92fa0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 4b48ffb450459891118d5f526bbc73c4a2577ddd
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055055"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268835"
 ---
 # <a name="how-to-configure-the-sign-in-risk-policy"></a>方法: サインイン リスク ポリシーを構成する
 
@@ -79,7 +79,7 @@ MFA を要求するようにサインイン リスク セキュリティ ポリ�
 
 1. 影響を受けるユーザーの[多要素認証の登録ポリシー](#multi-factor-authentication-registration-policy)を有効にします。
 
-2. 影響を受けるユーザーに対して、リスクのないセッションにログインして MFA の登録を実行するように求めます。
+2. 影響を受けるユーザーに対して、リスクのないセッションにサインインして MFA の登録を実行するように求めます。
 
 上記の手順を完了すると、リスクの高いサインインには多要素認証が必要になります。
 

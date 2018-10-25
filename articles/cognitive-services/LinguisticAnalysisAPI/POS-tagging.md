@@ -1,22 +1,26 @@
 ---
-title: Linguistic Analysis API での品詞のタグ付け | Microsoft Docs
-description: Microsoft Cognitive Services の品詞タグ付け機能でテキストの各単語のカテゴリまたは品詞を識別する方法について説明します。
+title: 品詞のタグ付け - Linguistic Analysis API
+description: Linguistic Analysis API の品詞タグ付け機能でテキストの各単語のカテゴリまたは品詞を識別する方法について説明します。
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
-ms.openlocfilehash: 90fd5b05c2dabdac88c6c8da288ab629177be38d
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ROBOTS: NOINDEX
+ms.openlocfilehash: a01fcea4ae6c8950d578bacefc2f064586d7306b
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082640"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238524"
 ---
 # <a name="part-of-speech-tagging"></a>品詞のタグ付け
+
+> [!IMPORTANT]
+> Linguistic Analysis プレビューは、2018 年 8 月 9 日に使用停止になりました。 テキスト処理と分析には、[Azure Machine Learning テキスト解析モジュール](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)の使用をお勧めします。
 
 ## <a name="background-and-motivation"></a>背景と動機
 
@@ -35,7 +39,7 @@ ms.locfileid: "37082640"
 | ) | 終了のかっこ | ) ] } |
 | , | コンマ | , |
 | -- | ダッシュ | -- |
-| . | 文の終端記号 | . ! ? |
+| 。 | 文の終端記号 | 。 ! ? |
 | : | コロンまたは省略記号 | : ; ... |
 | CC | 接続詞、等位接続詞 | and but or yet|
 | CD | 数値、基数 | nine 20 1980 '96 |
@@ -45,7 +49,7 @@ ms.locfileid: "37082640"
 | IN | 前置詞または後置詞| in inside if upon whether |
 | JJ | 形容詞、数値、序数 | ninth pretty execrable multimodal |
 | JJR | 形容詞、比較級 | better faster cheaper |
-| JJS | 形容詞、最上級 | best fastest cheapest | 
+| JJS | 形容詞、最上級 | best fastest cheapest |
 | LS | リスト アイテム マーカー | (a) (b) 1 2 A B A. B. |
 | MD | 法助動詞 | can may shall will could might should ought |
 | NN | 名詞、一般名詞、単数形、質量名詞 | potato money shoe |

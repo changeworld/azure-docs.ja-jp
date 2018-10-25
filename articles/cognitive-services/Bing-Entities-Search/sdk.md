@@ -1,22 +1,21 @@
 ---
-title: Bing Search SDK | Microsoft Docs
-titleSuffix: Microsoft Cognitive Services
-description: Web を検索するアプリケーション用の Bing Search SDK。
+title: Bing Entity Search SDK
+titleSuffix: Azure Cognitive Services
+description: Web を検索するアプリケーション用の Bing Entity Search SDK。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
-ms.assetid: ''
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/24/2018
 ms.author: v-gedod
-ms.openlocfilehash: 41e4880eec0df16ee012226389d0c054baa7bd4d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8212f4ca5178a5af55a2b91e879f54727711092b
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35377885"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815003"
 ---
 # <a name="bing-search-sdk"></a>Bing Search SDK
 Bing Entity Search API のサンプルには、次のようなシナリオが含まれています。

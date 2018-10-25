@@ -2,10 +2,8 @@
 title: Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 description: Resource Manager テンプレートによる Azure の Desired State Configuration (DSC) 拡張機能の定義について説明します。
 services: virtual-machines-windows
-documentationcenter: ''
-author: DCtheGeek
+author: bobbytreed
 manager: carmonm
-editor: ''
 tags: azure-resource-manager
 keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
@@ -14,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: na
-ms.date: 05/02/2018
-ms.author: dacoulte
-ms.openlocfilehash: 1dcbc8e0221689a6ece7e061d4b1a2632986ae84
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.date: 10/05/2018
+ms.author: robreed
+ms.openlocfilehash: e24353013110bfa95f23b75bbd81fd6d1048b95a
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224376"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830843"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用した Desired State Configuration 拡張機能
 
-この記事では、[Desired State Configuration (DSC) 拡張機能ハンドラー](dsc-overview.md)の Azure Resource Manager テンプレートについて説明します。
+この記事では、[Desired State Configuration (DSC) 拡張機能ハンドラー](dsc-overview.md)の Azure Resource Manager テンプレートについて説明します。 多くの例で、Azure Automation を使用してオンボードするために、**RegistrationURL** (文字列として指定) と **RegistrationKey** ([PSCredential](/dotnet/api/system.management.automation.pscredential) として指定) を使用します。 それらの値の取得の詳細については、「[Azure Automation State Configuration による管理のためのマシンのオンボード - セキュリティで保護された登録](/azure/automation/automation-dsc-onboarding#secure-registration)」を参照してください。
 
 > [!NOTE]
 > スキーマの例に若干の違いがある可能性があります。 スキーマの変更は 2016 年 10 月 のリリースで発生しました。 詳しくは、[以前の形式からの更新](#update-from-a-previous-format)に関する記事をご覧ください。
@@ -34,13 +32,13 @@ ms.locfileid: "39224376"
 
 以下のスニペットは、テンプレートの **Resource** セクションに含まれます。
 DSC 拡張機能は、既定の拡張機能プロパティを継承します。
-詳しくは、「[VirtualMachineExtension class (VirtualMachineExtension クラス)](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet.)」をご覧ください。
+詳しくは、「[VirtualMachineExtension class (VirtualMachineExtension クラス)](/dotnet/api/microsoft.azure.management.compute.models.virtualmachineextension?view=azure-dotnet)」をご覧ください。
 
 ```json
 {
     "type": "Microsoft.Compute/virtualMachines/extensions",
     "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
-    "apiVersion": "2017-12-01",
+    "apiVersion": "2018-04-01",
     "location": "[resourceGroup().location]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
@@ -51,26 +49,17 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
         "typeHandlerVersion": "2.76",
         "autoUpgradeMinorVersion": true,
         "settings": {
-            "protectedSettings": {
-                "Items": {
-                    "registrationKeyPrivate": "registrationKey"
+            "configurationArguments": {
+                "RegistrationUrl" : "registrationUrl",
+                "NodeConfigurationName" : "nodeConfigurationName"
+            }
+        },
+        "protectedSettings": {
+            "configurationArguments": {
+                "RegistrationKey": {
+                    "userName": "NOT_USED",
+                    "Password": "registrationKey"
                 }
-            },
-            "publicSettings": {
-                "configurationArguments": [{
-                        "Name": "RegistrationKey",
-                        "Value": {
-                            "UserName": "PLACEHOLDER_DONOTUSE",
-                            "Password": "PrivateSettingsRef:registrationKeyPrivate"
-                        }
-                    },
-                    {
-                        "RegistrationUrl": "registrationUrl"
-                    },
-                    {
-                        "NodeConfigurationName": "nodeConfigurationName"
-                    }
-                ]
             }
         }
     }
@@ -87,44 +76,37 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 
 ```json
 "extensionProfile": {
-    "extensions": [{
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
-        "apiVersion": "2017-12-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
-        ],
-        "properties": {
-            "publisher": "Microsoft.Powershell",
-            "type": "DSC",
-            "typeHandlerVersion": "2.76",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "protectedSettings": {
-                    "Items": {
-                        "registrationKeyPrivate": "registrationKey"
+    "extensions": [
+        {
+            "type": "Microsoft.Compute/virtualMachines/extensions",
+            "name": "[concat(parameters('VMName'),'/Microsoft.Powershell.DSC')]",
+            "apiVersion": "2018-04-01",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[concat('Microsoft.Compute/virtualMachines/', parameters('VMName'))]"
+            ],
+            "properties": {
+                "publisher": "Microsoft.Powershell",
+                "type": "DSC",
+                "typeHandlerVersion": "2.76",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                    "configurationArguments": {
+                        "RegistrationUrl" : "registrationUrl",
+                        "NodeConfigurationName" : "nodeConfigurationName"
                     }
                 },
-                "publicSettings": {
-                    "configurationArguments": [{
-                            "Name": "RegistrationKey",
-                            "Value": {
-                                "UserName": "PLACEHOLDER_DONOTUSE",
-                                "Password": "PrivateSettingsRef:registrationKeyPrivate"
-                            },
-                        },
-                        {
-                            "RegistrationUrl": "registrationUrl"
-                        },
-                        {
-                            "NodeConfigurationName": "nodeConfigurationName"
+                "protectedSettings": {
+                    "configurationArguments": {
+                        "RegistrationKey": {
+                            "userName": "NOT_USED",
+                            "Password": "registrationKey"
                         }
-                    ]
+                    }
                 }
-            },
+            }
         }
-    }]
+    ]
 }
 ```
 
@@ -176,38 +158,38 @@ DSC 拡張機能は、既定の拡張機能プロパティを継承します。
 
 ## <a name="details"></a>詳細
 
-| プロパティ名 | Type | 説明 |
+| プロパティ名 | type | 説明 |
 | --- | --- | --- |
-| settings.wmfVersion |文字列 |VM にインストールする Windows Management Framework (WMF) のバージョンを指定します。 このプロパティを **latest** に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、 **4.0**、**5.0**、**5.0PP**、**latest** のみです。 これらの設定できる値は更新される可能性があります。 既定値は **latest** です。 |
-| settings.configuration.url |文字列 |DSC 構成 .zip ファイルのダウンロード元の URL の場所を指定します。 指定した URL にアクセスのための SAS トークンが必要な場合は、**protectedSettings.configurationUrlSasToken** プロパティに SAS トークンの値を設定します。 **settings.configuration.script** または **settings.configuration.function** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、Location Configuration Manager (LCM) のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
-| settings.configuration.script |文字列 |DSC 構成の定義を含むスクリプトのファイル名を指定します。 このスクリプトは、**configuration.url** プロパティで指定した URL からダウンロードされた .zip ファイルのルート フォルダーに含まれている必要があります。 **settings.configuration.url** または **settings.configuration.script** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、LCM のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
-| settings.configuration.function |文字列 |DSC 構成の名前を指定します。 名前が指定された構成は、**configuration.script** によって定義されたスクリプト内に含まれている必要があります。 **settings.configuration.url** または **settings.configuration.function** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、LCM のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
+| settings.wmfVersion |string |VM にインストールする Windows Management Framework (WMF) のバージョンを指定します。 このプロパティを **latest** に設定すると、WMF の最新バージョンがインストールされます。 現在、このプロパティに設定できる値は、**4.0**、**5.0**、**5.1**、**latest** のみです。 これらの設定できる値は更新される可能性があります。 既定値は **latest** です。 |
+| settings.configuration.url |string |DSC 構成 .zip ファイルのダウンロード元の URL の場所を指定します。 指定した URL にアクセスのための SAS トークンが必要な場合は、**protectedSettings.configurationUrlSasToken** プロパティに SAS トークンの値を設定します。 **settings.configuration.script** または **settings.configuration.function** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、Location Configuration Manager (LCM) のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
+| settings.configuration.script |string |DSC 構成の定義を含むスクリプトのファイル名を指定します。 このスクリプトは、**settings.configuration.url** プロパティで指定した URL からダウンロードされた .zip ファイルのルート フォルダーに含まれている必要があります。 **settings.configuration.url** または **settings.configuration.script** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、LCM のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
+| settings.configuration.function |string |DSC 構成の名前を指定します。 名前が指定された構成は、**settings.configuration.script** によって定義されたスクリプト内に含まれている必要があります。 **settings.configuration.url** または **settings.configuration.function** を定義する場合、このプロパティは必須です。 これらのプロパティの値を指定しない場合、LCM のメタデータを設定する既定の構成スクリプトが拡張機能から呼び出され、引数が指定されます。 |
 | settings.configurationArguments |コレクション |DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されません。 |
-| settings.configurationData.url |文字列 |DSC 構成の入力として使用する構成データ (.psd1) ファイルのダウンロード元の URL を指定します。 指定した URL にアクセスのための SAS トークンが必要な場合は、**protectedSettings.configurationDataUrlSasToken** プロパティに SAS トークンの値を設定します。 |
-| settings.privacy.dataEnabled |文字列 |テレメトリの収集を有効または無効にします。 このプロパティに指定できる値は、**Enable**、**Disable**、**''**、または **$null** のみです。 このプロパティを空または null にした場合は、テレメトリが有効になります。 既定値は **''** です。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)」をご覧ください。 |
+| settings.configurationData.url |string |DSC 構成の入力として使用する構成データ (.psd1) ファイルのダウンロード元の URL を指定します。 指定した URL にアクセスのための SAS トークンが必要な場合は、**protectedSettings.configurationDataUrlSasToken** プロパティに SAS トークンの値を設定します。 |
+| settings.privacy.dataCollection |string |テレメトリの収集を有効または無効にします。 このプロパティに指定できる値は、**Enable**、**Disable**、**''**、または **$null** のみです。 このプロパティを空または null にした場合は、テレメトリが有効になります。 既定値は **''** です。 詳しくは、「[Azure DSC extension data collection (Azure DSC 拡張機能のデータ収集)](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)」をご覧ください。 |
 | settings.advancedOptions.downloadMappings |コレクション |WMF のダウンロード元になる別の場所を定義します。 詳しくは、「[Azure DSC extension 2.8 and how to map downloads of the extension dependencies to your own location (Azure DSC 拡張機能 2.8 と、拡張機能の依存関係のダウンロードを独自の場所にマップする方法)](http://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx)」をご覧ください。 |
 | protectedSettings.configurationArguments |コレクション |DSC 構成に渡すパラメーターを定義します。 このプロパティは暗号化されます。 |
-| protectedSettings.configurationUrlSasToken |文字列 |**configuration.url** で定義された URL へのアクセスに使用する SAS トークンを指定します。 このプロパティは暗号化されます。 |
-| protectedSettings.configurationDataUrlSasToken |文字列 |**configurationData.url** で定義された URL へのアクセスに使用する SAS トークンを指定します。 このプロパティは暗号化されます。 |
+| protectedSettings.configurationUrlSasToken |string |**settings.configuration.url** で定義された URL へのアクセスに使用する SAS トークンを指定します。 このプロパティは暗号化されます。 |
+| protectedSettings.configurationDataUrlSasToken |string |**settings.configurationData.url** で定義された URL へのアクセスに使用する SAS トークンを指定します。 このプロパティは暗号化されます。 |
 
 ## <a name="default-configuration-script"></a>既定の構成スクリプト
 
 次の値について詳しくは、[ローカル構成マネージャーの基本設定](/powershell/dsc/metaconfig#basic-settings)に関するページをご覧ください。
 DSC 拡張機能の既定の構成スクリプトは、次の表に記載されている LCM プロパティの構成にのみ使用できます。
 
-| プロパティ名 | Type | 説明 |
+| プロパティ名 | type | 説明 |
 | --- | --- | --- |
-| settings.configurationArguments.RegistrationKey |securestring |必須のプロパティです。 Azure Automation サービスに登録するためにノードで使用するキーを、PowerShell 資格情報オブジェクトのパスワードとして指定します。 この値は、Automation アカウントに対して **listkeys** メソッドを使用することで、自動的に検出できます。 値は、保護された設定としてセキュリティ保護する必要があります。 |
-| settings.configurationArguments.RegistrationUrl |文字列 |必須のプロパティです。 ノードが登録を試みる Automation エンドポイントの URL を指定します。 この値は、Automation アカウントに対して **reference** メソッドを使用することで、自動的に検出できます。 |
-| settings.configurationArguments.NodeConfigurationName |文字列 |必須のプロパティです。 ノードに割り当てる Automation アカウントのノード構成を指定します。 |
-| settings.configurationArguments.ConfigurationMode |文字列 |LCM のモードを指定します。 有効なオプションには、**ApplyOnly**、**ApplyandMonitor**、および **ApplyandAutoCorrect** があります。  既定値は **ApplyandMonitor** です。 |
+| protectedSettings.configurationArguments.RegistrationKey |PSCredential |必須のプロパティです。 Azure Automation サービスに登録するためにノードで使用するキーを、PowerShell 資格情報オブジェクトのパスワードとして指定します。 この値は、Automation アカウントに対して **listkeys** メソッドを使用することで、自動的に検出できます。  [例](#example-using-referenced-azure-automation-registration-values)を参照してください。 |
+| settings.configurationArguments.RegistrationUrl |string |必須のプロパティです。 ノードが登録を試みる Automation エンドポイントの URL を指定します。 この値は、Automation アカウントに対して **reference** メソッドを使用することで、自動的に検出できます。 |
+| settings.configurationArguments.NodeConfigurationName |string |必須のプロパティです。 ノードに割り当てる Automation アカウントのノード構成を指定します。 |
+| settings.configurationArguments.ConfigurationMode |string |LCM のモードを指定します。 有効なオプションには、**ApplyOnly**、**ApplyandMonitor**、および **ApplyandAutoCorrect** があります。  既定値は **ApplyandMonitor** です。 |
 | settings.configurationArguments.RefreshFrequencyMins | uint32 | LCM が Automation アカウントを使用して更新プログラムの確認を試みる頻度を指定します。  既定値は **30** です。  最小値は **15** です。 |
 | settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | LCM が現在の構成を検証する頻度を指定します。 既定値は **15** です。 最小値は **15** です。 |
 | settings.configurationArguments.RebootNodeIfNeeded | ブール値 | DSC 操作で要求した場合に、ノードが自動的に再起動されてよいかどうかを指定します。 既定値は **false** です。 |
-| settings.configurationArguments.ActionAfterReboot | 文字列 | 構成を適用したときの再起動後の動作を指定します。 有効なオプションは、**ContinueConfiguration** と **StopConfiguration** です。 既定値は **ContinueConfiguration** です。 |
+| settings.configurationArguments.ActionAfterReboot | string | 構成を適用したときの再起動後の動作を指定します。 有効なオプションは、**ContinueConfiguration** と **StopConfiguration** です。 既定値は **ContinueConfiguration** です。 |
 | settings.configurationArguments.AllowModuleOverwrite | ブール値 | LCM がノード上の既存のモジュールを上書きするかどうかを指定します。 既定値は **false** です。 |
 
-## <a name="settings-vs-protectedsettings"></a>Settings と ProtectedSettings
+## <a name="settings-vs-protectedsettings"></a>settings と protectedSettings
 
 すべての設定は、VM の設定テキスト ファイルに保存されます。
 **settings** の下に記載されているプロパティはパブリック プロパティです。
@@ -220,8 +202,8 @@ DSC 拡張機能の既定の構成スクリプトは、次の表に記載され�
 "protectedSettings": {
     "configurationArguments": {
         "parameterOfTypePSCredential1": {
-            "userName": "UsernameValue1",
-            "password": "PasswordValue1"
+               "userName": "UsernameValue1",
+               "password": "PasswordValue1"
         }
     }
 }
@@ -235,21 +217,15 @@ DSC 拡張機能の既定の構成スクリプトは、次の表に記載され�
 
 ```json
 "settings": {
-    "configurationArguments": {
-        {
-            "Name": "RegistrationKey",
-            "Value": {
-                "UserName": "PLACEHOLDER_DONOTUSE",
-                "Password": "PrivateSettingsRef:registrationKeyPrivate"
-            },
-        },
-        "RegistrationUrl": "[parameters('registrationUrl1')]",
-        "NodeConfigurationName": "nodeConfigurationNameValue1"
-    }
+    "RegistrationUrl" : "[parameters('registrationUrl1')]",
+    "NodeConfigurationName" : "nodeConfigurationNameValue1"
 },
 "protectedSettings": {
-    "Items": {
-        "registrationKeyPrivate": "[parameters('registrationKey1')]"
+    "configurationArguments": {
+        "RegistrationKey": {
+            "userName": "NOT_USED",
+            "Password": "registrationKey"
+        }
     }
 }
 ```
@@ -276,9 +252,28 @@ Resource Manager テンプレートでは、次のコードにより、正しい
 }
 ```
 
+## <a name="example-using-referenced-azure-automation-registration-values"></a>参照されている Azure Automation 登録の値の使用例
+
+次の例では、Azure Automation アカウントのプロパティを参照し、**listkeys** メソッドを使用して主キー (0) を取得することで、**RegistrationUrl** と **RegistrationKey** を取得します。  この例では、パラメーター **automationAccountName** および **NodeConfigName** がテンプレートに指定されています。
+
+```json
+"settings": {
+    "RegistrationUrl" : "[reference(concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))).registrationUrl]",
+    "NodeConfigurationName" : "[parameters('NodeConfigName')]"
+},
+"protectedSettings": {
+    "configurationArguments": {
+        "RegistrationKey": {
+            "userName": "NOT_USED",
+            "Password": "[listKeys(resourceId('Microsoft.Automation/automationAccounts/', parameters('automationAccountName')), '2018-01-15').Keys[0].value]"
+        }
+    }
+}
+```
+
 ## <a name="update-from-a-previous-format"></a>以前の形式からの更新
 
-拡張機能の以前の形式の設定 (**ModulesUrl**、**ConfigurationFunction**、**SasToken**、または **Properties** の各パブリック プロパティを含むもの) は、自動的に拡張機能の現在の形式に対応します。
+拡張機能の以前の形式の設定 (**ModulesUrl**、**ModuleSource**、**ModuleVersion**、**ConfigurationFunction**、**SasToken**、または **Properties** の各パブリック プロパティを含むもの) は、自動的に拡張機能の現在の形式に対応します。
 これらは以前と同じように動作します。
 
 次のスキーマは、以前の設定スキーマの例を示したものです。
@@ -313,24 +308,24 @@ Resource Manager テンプレートでは、次のコードにより、正しい
 
 以前の形式と現在の形式の対応関係を次に示します。
 
-| プロパティ名 | 対応する以前のスキーマ |
+| 現在のプロパティ名 | 対応する以前のスキーマ |
 | --- | --- |
 | settings.wmfVersion |settings.wmfVersion |
 | settings.configuration.url |settings.ModulesUrl |
 | settings.configuration.script |settings.ConfigurationFunction の最初の部分 (\\\\ の前) |
 | settings.configuration.function |settings.ConfigurationFunction の 2 番目の部分 (\\\\ の後) |
+| settings.configuration.module.name | settings.ModuleSource |
+| settings.configuration.module.version | settings.ModuleVersion |
 | settings.configurationArguments |settings.Properties |
 | settings.configurationData.url |protectedSettings.DataBlobUri (SAS トークンを使用しない) |
-| settings.privacy.dataEnabled |settings.privacy.dataEnabled |
+| settings.privacy.dataCollection |settings.Privacy.dataCollection |
 | settings.advancedOptions.downloadMappings |settings.advancedOptions.downloadMappings |
 | protectedSettings.configurationArguments |protectedSettings.Properties |
 | protectedSettings.configurationUrlSasToken |settings.SasToken |
 | protectedSettings.configurationDataUrlSasToken |protectedSettings.DataBlobUri の SAS トークン |
 
-## <a name="troubleshooting---error-code-1100"></a>トラブルシューティング - エラー コード 1100
+## <a name="troubleshooting"></a>トラブルシューティング
 
-エラー コード 1100 は、DSC 拡張機能に対するユーザー入力に問題があることを示します。
-これらのエラーのテキストは状況に応じて異なり、変更される可能性があります。
 直面する可能性のあるいくつかのエラーとそのエラーの修正方法について説明します。
 
 ### <a name="invalid-values"></a>無効な値
@@ -354,13 +349,30 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 **解決策**: 指定した URL すべてを確認してください。
 拡張機能がリモート マシンにアクセスできるように、すべての URL が有効な場所に解決されていることを確認します。
 
+### <a name="invalid-registrationkey-type"></a>無効な RegistrationKey の型
+
+"Invalid type for parameter RegistrationKey of type PSCredential. (型 PSCredential のパラメーター RegistrationKey の無効な型。)"
+
+**問題点**: protectedSettings.configurationArguments の *RegistrationKey* の値は、PSCredential 以外の型としては指定できません。
+
+**解決策**: RegistrationKey の protectedSettings.configurationArguments エントリを、次の形式を使用して PSCredential 型に変更してください。
+
+```json
+"configurationArguments": {
+    "RegistrationKey": {
+        "userName": "NOT_USED",
+        "Password": "RegistrationKey"
+    }
+}
+```
+
 ### <a name="invalid-configurationargument-type"></a>無効な ConfigurationArgument の型
 
 "Invalid configurationArguments type {0} (無効な configurationArguments の型 {0})"
 
-**問題点**: *ConfigurationArguments* プロパティが**ハッシュテーブル** オブジェクトに解決できません。
+**問題点**: *ConfigurationArguments* プロパティが**ハッシュ テーブル** オブジェクトに解決できません。
 
-**解決策**: *ConfigurationArguments* プロパティを**ハッシュテーブル**にしてください。
+**解決策**: *ConfigurationArguments* プロパティを**ハッシュ テーブル**にしてください。
 前の例に示されている形式に従います。 引用符、コンマ、および中かっこに注意します。
 
 ### <a name="duplicate-configurationarguments"></a>ConfigurationArguments の重複
@@ -373,17 +385,17 @@ Only possible values are … and 'latest' (WmfVersion は '{0}' です。指定�
 
 ### <a name="missing-properties"></a>不足しているプロパティ
 
-"Configuration.function requires that configuration.url or configuration.module is specified (Configuration.function には、configuration.url または configuration.module の指定が必要です)"
+"settings.Configuration.function requires that settings.configuration.url or settings.configuration.module is specified (settings.Configuration.function には、settings.configuration.url または settings.configuration.module の指定が必要です)"
 
-"Configuration.url requires that configuration.script is specified (Configuration.url には configuration.script の指定が必要です)"
+"settings.Configuration.url requires that settings.configuration.script is specified (settings.Configuration.url には settings.configuration.script の指定が必要です)"
 
-"Configuration.script requires that configuration.url is specified (Configuration.script には configuration.url の指定が必要です)"
+"settings.Configuration.script requires that settings.configuration.url is specified (settings.Configuration.script には settings.configuration.url の指定が必要です)"
 
-"Configuration.url requires that configuration.function is specified (Configuration.url には configuration.function の指定が必要です)"
+"settings.Configuration.url requires that settings.configuration.function is specified (settings.Configuration.url には settings.configuration.function の指定が必要です)"
 
-"ConfigurationUrlSasToken requires that configuration.url is specified (ConfigurationUrlSasToken には configuration.url の指定が必要です)"
+"protectedSettings.ConfigurationUrlSasToken requires that settings.configuration.url is specified (protectedSettings.ConfigurationUrlSasToken には settings.configuration.url の指定が必要です)"
 
-"ConfigurationDataUrlSasToken requires that configurationData.url is specified (ConfigurationDataUrlSasToken には configurationData.url の指定が必要です)"
+"protectedSettings.ConfigurationDataUrlSasToken requires that settings.configurationData.url is specified (protectedSettings.ConfigurationDataUrlSasToken には settings.configurationData.url の指定が必要です)"
 
 **問題点**: 定義したプロパティには、不足している別のプロパティが必要です。
 

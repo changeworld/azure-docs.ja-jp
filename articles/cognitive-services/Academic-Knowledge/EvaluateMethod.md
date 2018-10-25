@@ -1,20 +1,21 @@
 ---
-title: Academic Knowledge API の Evaluate メソッド | Microsoft Docs
-description: Evaluate メソッドを使用して、Microsoft Cognitive Services のクエリ式に基づいてアカデミック エンティティのセットを返します。
+title: Evaluate メソッド - Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Evaluate メソッドは、クエリ式に基づいてアカデミック エンティティのセットを返すために使用します。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: 3005ae1f6df042a49db086de4982d8206f6938a4
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 262beeefbbafefc95da51e9f4afcbc1bc143f952
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372741"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902333"
 ---
 # <a name="evaluate-method"></a>Evaluate メソッド
 

@@ -8,22 +8,22 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 1915c4bc6cd611479c7575179d8fe64def8895eb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3a7284555fb592956d4e1dc3f56137c88d108e1
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956379"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584395"
 ---
 # <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>IoT Hub で device-to-cloud および cloud-to-device メッセージを送信する
 
-IoT Hub では、デバイスとの間で双方向通信を行うことができます。 デバイスからソリューション バックエンドにメッセージを送信し、IoT ソリューション バックエンドからデバイスにコマンドを送信することによって、デバイスと通信するには、IoT Hub メッセージングを使用します。 詳しくは、「[Azure IoT Hub メッセージの形式について](../iot-hub/iot-hub-devguide-messages-construct.md)」をご覧ください。
+IoT Hub では、デバイスとの間で双方向通信を行うことができます。 デバイスからソリューション バックエンドにメッセージを送信し、IoT ソリューション バックエンドからデバイスにコマンドを送信することによって、デバイスと通信するには、IoT Hub メッセージングを使用します。 詳しくは、「[Azure IoT Hub メッセージの形式について](iot-hub-devguide-messages-construct.md)」をご覧ください。
 
 ## <a name="sending-device-to-cloud-messages-to-iot-hub"></a>IoT Hub への device-to-cloud メッセージの送信
 
-IoT Hub に組み込まれているサービス エンドポイントを使用することで、バックエンド サービスはデバイスからテレメトリ メッセージを読み取ることができます。 このエンドポイントは [Event Hubs](https://docs.microsoft.com/azure/event-hubs/) と互換性があり、標準の IoT Hub SDK を使用して[この組み込みエンドポイントから読み取る]((https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin))ことができます。
+IoT Hub に組み込まれているサービス エンドポイントを使用することで、バックエンド サービスはデバイスからテレメトリ メッセージを読み取ることができます。 このエンドポイントは [Event Hubs](https://docs.microsoft.com/azure/event-hubs/) と互換性があり、標準の IoT Hub SDK を使用して[この組み込みエンドポイントから読み取る](iot-hub-devguide-messages-read-builtin.md)ことができます。
 
-また、IoT Hub では[カスタム エンドポイント](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints#custom-endpoints)もサポートされています。ユーザーはカスタム エンドポイントを定義することで、[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)を使用して、Azure サービスにデバイスのテレメトリ データとイベントを送信することができます。
+また、IoT Hub では[カスタム エンドポイント](iot-hub-devguide-endpoints.md#custom-endpoints)もサポートされています。ユーザーはカスタム エンドポイントを定義することで、[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)を使用して、Azure サービスにデバイスのテレメトリ データとイベントを送信することができます。
 
 ## <a name="sending-cloud-to-device-messages-from-iot-hub"></a>IoT Hub からの cloud-to-device メッセージの送信
 
@@ -38,9 +38,11 @@ IoT Hub のメッセージング機能の中心となる特性は、メッセー
 時系列のテレメトリとデバイス アプリからのアラートを送信するには device-to-cloud メッセージを使用し、デバイス アプリに一方向の通知を送信するには cloud-to-device メッセージを使用します。
 
 * device-to-cloud メッセージ、報告プロパティ、ファイルのアップロードのどれを選択するかについては、「[device-to-cloud 通信に関するガイダンス](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-d2c-guidance)」をご覧ください。
+
 * cloud-to-device メッセージ、必要とされるプロパティ、ダイレクト メソッドのどれを選択するかについては、「[cloud-to-device 通信に関するガイダンス](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-c2d-guidance)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
 * IoT Hub の[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)について学習する。
+
 * IoT Hub の [cloud-to-device メッセージング](iot-hub-devguide-messages-c2d.md)について学習する。

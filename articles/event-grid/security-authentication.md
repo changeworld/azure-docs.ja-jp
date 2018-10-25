@@ -6,22 +6,22 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/13/2018
+ms.date: 10/09/2018
 ms.author: babanisa
-ms.openlocfilehash: 257f7cbd20d21903f4cf7daf68b5f185d0af10bc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2fd8712cbe5d34baed158a56e6f06b6235f5d4b2
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965457"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068197"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
 Azure Event Grid には、3 種類の認証があります。
 
-* イベントのサブスクリプション
-* イベントの発行
 * webhook のイベント配信
+* イベントのサブスクリプション
+* カスタム トピックの発行
 
 ## <a name="webhook-event-delivery"></a>webHook のイベント配信
 
@@ -37,18 +37,18 @@ Webhook をサポートする他の多くのサービスと同様に、EventGrid
 
 1. **ValidationCode ハンドシェイク**: イベント サブスクリプションの作成時に、EventGrid は "サブスクリプション検証イベント" をエンドポイントに POST します。 このイベントのスキーマはその他の EventGridEvent に似ており、このイベントのデータ部分には `validationCode` プロパティが含まれています。 検証の要求が想定されるイベント サブスクリプション用であることをアプリケーションが確認したら、検証コードを EventGrid にエコーで返すことによってアプリケーション コードが応答する必要があります。 このハンドシェイク メカニズムは、すべての EventGrid バージョンでサポートされます。
 
-2. **ValidationURL ハンドシェイク (手動のハンドシェイク)**: 特定のケースでは、ValidationCode ベースのハンドシェイクを実装できるようにするためのエンドポイントのソース コードを制御できない場合があります。 たとえば、サード パーティのサービス ([Zapier](https://zapier.com) や [IFTTT](https://ifttt.com/) など) を使用する場合は、プログラムによって検証コードに応答できない可能性があります。 そのため、2018-05-01-preview バージョン以降では、手動の検証ハンドシェイクが EventGrid によってサポートされるようになりました。 この新しい API バージョン (2018-05-01-preview) を使用する SDK/ツールを使用してイベント サブスクリプションを作成すると、EventGrid はサブスクリプション検証イベントのデータ部分の一部として (`validationCode` プロパティに加えて) `validationUrl` プロパティを送信します。 ハンドシェイクを完了するには、REST クライアントまたは Web ブラウザーを使用して、その URL に対して GET 要求を実行します。 提供された検証 URL は、約 10 分間だけ有効です。 この期間、イベント サブスクリプションのプロビジョニング状態は `AwaitingManualAction` になります。 手動による検証を 10 分以内に完了しなかった場合、プロビジョニング状態には `Failed` が設定されます。 手動による検証をもう一度実行する前に、イベント サブスクリプションの作成を再試行する必要があります。
+2. **ValidationURL ハンドシェイク (手動のハンドシェイク)**: 特定のケースでは、ValidationCode ベースのハンドシェイクを実装できるようにするためのエンドポイントのソース コードを制御できない場合があります。 たとえば、サード パーティのサービス ([Zapier](https://zapier.com) や [IFTTT](https://ifttt.com/) など) を使用する場合は、プログラムによって検証コードに応答できない可能性があります。 2018-05-01-preview バージョン以降では、手動の検証ハンドシェイクが EventGrid によってサポートされるようになりました。 この新しい API バージョン (2018-05-01-preview) を使用する SDK/ツールを使用してイベント サブスクリプションを作成すると、EventGrid によってサブスクリプション検証イベントのデータ部分の一部として `validationUrl` プロパティが送信されます。 ハンドシェイクを完了するには、REST クライアントまたは Web ブラウザーを使用して、その URL に対して GET 要求を実行します。 提供された検証 URL は、約 10 分間だけ有効です。 この期間、イベント サブスクリプションのプロビジョニング状態は `AwaitingManualAction` になります。 手動による検証を 10 分以内に完了しなかった場合、プロビジョニング状態には `Failed` が設定されます。 手動による検証を試行する前に、もう一度イベント サブスクリプションを作成する必要があります。
 
-この手動の検証のメカニズムはプレビュー段階です。 使用するには、[Azure CLI](/cli/azure/install-azure-cli) 向けの [Event Grid 拡張機能](/cli/azure/azure-cli-extensions-list)をインストールする必要があります。 `az extension add --name eventgrid` でインストールできます。 REST API を使用している場合には、`api-version=2018-05-01-preview` を使用してください。
+この手動の検証のメカニズムはプレビュー段階です。 使用するには、[Azure CLI](/cli/azure/install-azure-cli) 向けの [Event Grid 拡張機能](/cli/azure/azure-cli-extensions-list)をインストールする必要があります。 `az extension add --name eventgrid` でインストールできます。 REST API を使用している場合は、`api-version=2018-05-01-preview` を使用していることを確認してください。
 
 ### <a name="validation-details"></a>検証の詳細
 
 * イベント サブスクリプションの作成時または更新時に、Event Grid はサブスクリプション検証イベントをターゲット エンドポイントに投稿します。 
 * このイベントには、ヘッダー値 "aeg-event-type: SubscriptionValidation" が含まれています。
 * イベント本文のスキーマは、他の Event Grid イベントと同じです。
-* イベントの eventType プロパティは "Microsoft.EventGrid.SubscriptionValidationEvent" です。
-* イベントの data プロパティには、ランダムに生成された文字列を持つ "validationCode" プロパティが含まれています。 たとえば、"validationCode: acb13…" のようなプロパティです。
-* API バージョン 2018-05-01-preview を使用する場合、イベント データには、サブスクリプションを手動で検証するための URL と `validationUrl` プロパティも含まれます。
+* イベントの eventType プロパティは、`Microsoft.EventGrid.SubscriptionValidationEvent` です。
+* イベントの data プロパティには、ランダムに生成された文字列を持つ `validationCode` プロパティが含まれています。 たとえば、"validationCode: acb13…" のようなプロパティです。
+* API バージョン 2018-05-01-preview を使用する場合、イベント データには `validationUrl` プロパティと、サブスクリプションを手動で検証するための URL も含まれます。
 * 配列には、検証イベントのみが含まれています。 その他のイベントは、検証コードをエコーで返した後、別の要求で送信されます。
 * EventGrid DataPlane SDK には、サブスクリプション検証イベント データとサブスクリプション検証の応答に対応するクラスがあります。
 
@@ -78,7 +78,7 @@ SubscriptionValidationEvent の例を以下に示します。
 }
 ```
 
-または、検証 URL に GET 要求を送信することでサブスクリプションを手動で検証できます。 イベント サブスクリプションは、検証されるまで保留状態にとどまります。
+または、検証 URL に GET 要求を手動で送信して、サブスクリプションを検証することができます。 イベント サブスクリプションは、検証されるまで保留状態にとどまります。
 
 サブスクリプション検証ハンドシェイクを処理する方法を示す C# のサンプルを https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/blob/master/EventGridConsumer/EventGridConsumer/Function1.cs で確認できます。
 
@@ -87,9 +87,9 @@ SubscriptionValidationEvent の例を以下に示します。
 イベント サブスクリプションの作成時に表示される "指定されたエンドポイント https://your-endpoint-here の検証の試行に失敗しました。 詳細については、 https://aka.ms/esvalidation を参照してください" のようなエラー メッセージは、検証ハンドシェイクでエラーが発生したことを示します。 このエラーを解決するには、次の点を確認します。
 
 * ターゲット エンドポイントでアプリケーション コードを制御しているか。 たとえば、HTTP トリガー ベースの Azure 関数を記述する場合は、その関数を変更するためにアプリケーション コードにアクセスできるかどうか。
-* アプリケーション コードにアクセスできる場合は、上記のサンプルに示すように ValidationCode ベースのハンドシェイクのメカニズムを実装してください。
+* アプリケーション コードにアクセスできる場合は、上記のサンプルに示すように ValidationCode ベースのハンドシェイクのメカニズムを実装します。
 
-* アプリケーション コードにアクセスできない場合 (Webhook をサポートするサード パーティのサービスを使用している場合など) は、手動のハンドシェイクのメカニズムを使用できます。 そのためには、2018-05-01-preview API バージョン (たとえば、前述の EventGrid CLI 拡張機能) を使用して、検証イベントで validationUrl を受け取ってください。 手動の検証ハンドシェイクを完了するには、"validationUrl" プロパティの値を取得し、Web ブラウザーでその URL にアクセスしてください。 検証が成功すると、そのことを示すメッセージが Web ブラウザーに表示され、イベント サブスクリプションの provisioningState が "Succeeded" であることが示されます。 
+* アプリケーション コードにアクセスできない場合 (Webhook をサポートするサードパーティのサービスを使用している場合など) は、手動のハンドシェイクのメカニズムを使用できます。 検証イベントで validationUrl を受け取るために、2018-05-01-preview API バージョン以降を使用していることを確認してください (Event Grid の Azure CLI 拡張機能をインストールします)。 手動の検証ハンドシェイクを完了するには、`validationUrl` プロパティの値を取得し、Web ブラウザーでその URL にアクセスしてください。 検証が成功すると、そのことを示すメッセージが Web ブラウザーに表示されます。 イベント サブスクリプションの provisioningState には、"Succeeded" と表示されます。 
 
 ### <a name="event-delivery-security"></a>イベント配信のセキュリティ
 
@@ -101,7 +101,9 @@ SubscriptionValidationEvent の例を以下に示します。
 
 ## <a name="event-subscription"></a>イベント サブスクリプション
 
-イベントにサブスクライブするには、必要なリソースに **Microsoft.EventGrid/EventSubscriptions/Write** アクセス許可を持っている必要があります。 リソースのスコープで新しいサブスクリプションを作成するため、このアクセス許可が必要です。 必要なリソースは、サブスクライブしているのがシステム トピックかカスタム トピックかによって異なります。 ここでは、この 2 つの種類について説明します。
+イベントにサブスクライブするには、イベント ソースとハンドラーへのアクセスがあることを証明する必要があります。 WebHook を所有していることの証明については、前のセクションで説明しました。 WebHook ではないイベント ハンドラー (イベント ハブ、キュー ストレージなど) を使用している場合は、そのリソースへの書き込みアクセスが必要です。 このアクセス許可のチェックにより、未認証のユーザーはリソースにイベントを送信できなくなります。
+
+イベント ソースであるリソースに対する **Microsoft.EventGrid/EventSubscriptions/Write** アクセス許可を持っている必要があります。 リソースのスコープで新しいサブスクリプションを作成するため、このアクセス許可が必要です。 必要なリソースは、サブスクライブしているのがシステム トピックかカスタム トピックかによって異なります。 ここでは、この 2 つの種類について説明します。
 
 ### <a name="system-topics-azure-service-publishers"></a>システム トピック (Azure サービスの発行元)
 
@@ -115,9 +117,9 @@ SubscriptionValidationEvent の例を以下に示します。
 
 たとえば、**mytopic** というカスタム トピックにサブスクライブするには、Microsoft.EventGrid/EventSubscriptions/Write アクセス許可が必要です。`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
 
-## <a name="topic-publishing"></a>トピックの発行
+## <a name="custom-topic-publishing"></a>カスタム トピックの発行
 
-トピックは、Shared Access Signature (SAS) またはキー認証を使用します。 SAS が推奨されますが、キー認証はプログラミングが簡単で、既存の多くの webhook 発行元と互換性があります。 
+カスタム トピックは、Shared Access Signature (SAS) またはキー認証を使用します。 SAS が推奨されますが、キー認証はプログラミングが簡単で、既存の多くの webhook 発行元と互換性があります。 
 
 認証値は、HTTP ヘッダーに含めます。 SAS の場合は、ヘッダー値に **aeg-sas-token** を使用します。 キー認証の場合は、ヘッダー値に **aeg-sas-key** を使用します。
 
@@ -193,7 +195,7 @@ Azure Event Grid では、次の操作がサポートされています。
 
 #### <a name="create-a-custom-role-definition-file-json"></a>カスタム ロールの定義ファイル (.json) を作成する
 
-さまざまなアクション セットの実行をユーザーに許可する Event Grid ロール定義の例を以下に示します。
+さまざまなアクションの実行をユーザーに許可する Event Grid ロール定義の例を以下に示します。
 
 **EventGridReadOnlyRole.json**: 読み取り専用操作のみを許可します。
 

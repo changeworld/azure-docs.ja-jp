@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: victorh
-ms.openlocfilehash: a9325dff84635955600bc78687ec0156495ae893
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d0a20de8738e8c7b2719a9de85d5fd16aa5778cf
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954383"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829684"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Azure Portal で DNS ゾーンを管理する方法
 
@@ -32,7 +32,7 @@ ms.locfileid: "46954383"
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
 1. Azure ポータルにサインインします。
-2. ハブ メニューの **[リソースの作成]、[ネットワーク]** を順にクリックし、**[DNS ゾーン]** をクリックして [DNS ゾーンの作成] ブレードを開きます。
+2. [ハブ] メニューで、**[リソースの作成] > [ネットワーキング] > [DNS ゾーン]** に移動して **[DNS ゾーンの作成]** ブレードを開きます。
 
     ![[DNS ゾーン]](./media/dns-operations-dnszones-portal/openzone650.png)
 
@@ -51,13 +51,13 @@ ms.locfileid: "46954383"
 
 ## <a name="list-dns-zones"></a>DNS ゾーンの一覧表示
 
-Azure Portal で、**[その他のサービス]** > **[ネットワーク]** > **[DNS ゾーン]** の順に移動します。 各 DNS ゾーンは独自のリソースであり、レコード セットの数などの情報とネーム サーバーをこのビューから表示できます。 **[ネーム サーバー]** 列は既定のビューには含まれず、追加するには、**[列]** をクリックし、**[ネーム サーバー]** を選んで、**[完了]** をクリックします。
+Azure Portal で、**[その他のサービス]** > **[ネットワーク]** > **[DNS ゾーン]** の順に移動します。 各 DNS ゾーンは独自のリソースであり、レコード セットやネーム サーバーの数などの情報をこのビューから表示できます。 **[NAME SERVERS] (ネーム サーバー)** 列は、既定のビューに含まれていません。 それを追加するには、**[列]** をクリックし、**[Name servers] (ネーム サーバー)** を選択して **[完了]** をクリックします。
 
 ![DNS ゾーンの一覧表示](./media/dns-operations-dnszones-portal/listzones.png)
 
 ## <a name="delete-a-dns-zone"></a>DNS ゾーンの削除
 
-Portal で DNS ゾーンに移動します。 **[DNS ゾーン]** ブレードで、**[ゾーンを削除する]** をクリックします。 DNS ゾーンを削除する意思の確認を求められます。 DNS ゾーンを削除すると、そのゾーンに含まれるレコードもすべて削除されます。
+Portal で DNS ゾーンに移動します。 **[DNS ゾーン]** ブレードで、**[ゾーンを削除する]** をクリックします。 その後、DNS ゾーンを削除することを確認するよう求められます。 DNS ゾーンを削除すると、そのゾーンに含まれているレコードもすべて削除されます。
 
 ## <a name="next-steps"></a>次の手順
 

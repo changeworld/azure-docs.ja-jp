@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: 3170ee1b48aa332a8730ba835396761ca5ef44c7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: b6d05c5e9bc59df9df7ef8840b70ab027b6e2f74
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287327"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269498"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Azure Cosmos DB での Change Feed サポートの使用
 
@@ -198,7 +198,7 @@ Azure Cosmos DB 用の [SQL SDK](sql-api-sdk-dotnet.md) は、変更フィード
 
 **プロセッサ ホスト:** 各ホストは、アクティブなリースを保持するホストの他のインスタンスの数に基づいて、処理するパーティションの数を決定します。 
 1.  すべてのホスト間でワークロードのバランスを取るために、ホストは起動時にリースを取得します。 ホストは定期的にリースを更新するので、リースはアクティブな状態に維持されます。 
-2.  ホストは、読み取りを実行するたびにリースに対して前回の継続トークンのチェックポイント処理を実行します。 同時実行の安全性を確保するために、ホストはリースを更新するたびに ETag をチェックします。 他のチェックポイント戦略もサポートされています。  
+2.  ホストは、読み取りを実行するたびにリースに対して前回の継続トークンのチェックポイント処理を実行します。 コンカレンシーの安全性を確保するために、ホストはリースを更新するたびに ETag をチェックします。 他のチェックポイント戦略もサポートされています。  
 3.  シャットダウン時に、ホストはすべてのリースを解放します。ただし、継続情報は保持されるので、後で保存済みのチェックポイントから読み取りを再開できます。 
 
 現時点では、ホストの数がパーティション (リース) の数を超えることはできません。
@@ -351,19 +351,13 @@ Azure Cosmos DB 用の [SQL SDK](sql-api-sdk-dotnet.md) は、変更フィード
                     CollectionName = this.leaseCollectionName
                 };
             DocumentFeedObserverFactory docObserverFactory = new DocumentFeedObserverFactory();
-            ChangeFeedOptions feedOptions = new ChangeFeedOptions();
-
-            /* ie customize StartFromBeginning so change feed reads from beginning
-                can customize MaxItemCount, PartitonKeyRangeId, RequestContinuation, SessionToken and StartFromBeginning
-            */
-
-            feedOptions.StartFromBeginning = true;
-        
+       
             ChangeFeedProcessorOptions feedProcessorOptions = new ChangeFeedProcessorOptions();
 
             // ie. customizing lease renewal interval to 15 seconds
             // can customize LeaseRenewInterval, LeaseAcquireInterval, LeaseExpirationInterval, FeedPollDelay 
             feedProcessorOptions.LeaseRenewInterval = TimeSpan.FromSeconds(15);
+            feedProcessorOptions.StartFromBeginning = true;
 
             this.builder
                 .WithHostName(hostName)
@@ -395,7 +389,7 @@ Azure Cosmos DB 用の [SQL SDK](sql-api-sdk-dotnet.md) は、変更フィード
 
 * **[ Azure Cosmos DB SQL API .NET SDK の使用](#sql-sdk)**
    
-   この方法では、変更フィードのコントロールは低くなります。 チェックポイントの管理、特定のパーティション キーへのアクセスなどを行うことができます。複数の閲覧者がいる場合、[ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) を使用して、読み取りの負荷を異なるスレッドや異なるクライアントに分散させることができます。 .
+   この方法では、変更フィードのコントロールは低くなります。 チェックポイントの管理、特定のパーティション キーへのアクセスなどを行うことができます。複数の閲覧者がいる場合、[ChangeFeedOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) を使用して、読み取りの負荷を異なるスレッドや異なるクライアントに分散させることができます。 。
 
 * **[Azure Cosmos DB 変更フィード プロセッサ ライブラリの使用](#change-feed-processor)**
 
@@ -435,11 +429,11 @@ Azure 関数の呼び出しごとに 100 ドキュメントです。 ただし�
 
 同一リース コレクションの同一コレクションを別の関数が読み取っていないことを確認してください。 個人的に経験したことがあります。欠落しているドキュメントが、同一リースを使用する自分の別の Azure 関数によって処理されていることに後になって気が付きました。
 
-したがって、同一変更フィードを読み取る複数の Azure 関数を作成するときは、それぞれに異なるリース コレクションを使用させるか、"leasePrefix" 構成を使って同一コレクションを共有させる必要があります。 ただし、変更フィード プロセッサ ライブラリを使用する場合は、関数の複数インスタンスを開始すれば、ドキュメントは SDK によって自動的にインスタンス間に分割されます。
+したがって、同一変更フィードを読み取る複数の Azure Functions を作成するときは、それぞれに異なるリース コレクションを使用させるか、"leasePrefix" 構成を使って同一コレクションを共有させる必要があります。 ただし、変更フィード プロセッサ ライブラリを使用する場合は、関数の複数インスタンスを開始すれば、ドキュメントは SDK によって自動的にインスタンス間に分割されます。
 
 ### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>私のドキュメント更新間隔は 1 秒ですが、変更フィードをリッスンしている Azure 関数ですべての変更を取得できていません。
 
-Azure 関数のポーリング間隔は 5 秒であるため、5 秒の間に加えられた変更は失われます。 Azure Cosmos DB は、5 秒おきに 1 バージョンのみを格納するため、取得できるのはドキュメントの 5 番目の変更となります。 ただし、5 秒未満を希望し、変更フィードを 1 秒おきにポーリングするのであれば、ポーリング時間 “feedPollTime” を構成できます。詳しくは、[Azure Cosmos DB バインディング](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)に関する記事を参照してください。 単位はミリ秒で、既定値は 5000 です。 1 秒未満も可能ですが、CPU への負担が大きくなるためお勧めできません。
+Azure 関数のポーリング間隔は 5 秒であるため、5 秒の間に加えられた変更は失われます。 Azure Cosmos DB は、5 秒おきに 1 バージョンのみを格納するため、取得できるのはドキュメントの 5 番目の変更となります。 ただし、5 秒未満を希望し、変更フィードを 1 秒おきにポーリングするのであれば、ポーリング時間 "feedPollTime" を構成できます。詳しくは、[Azure Cosmos DB バインディング](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)に関する記事を参照してください。 単位はミリ秒で、既定値は 5000 です。 1 秒未満も可能ですが、CPU への負担が大きくなるためお勧めできません。
 
 ### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>Mongo API コレクションにドキュメントを挿入しましたが、変更フィードでドキュメントを取得すると、別の ID 値が表示されます。 何がおかしいのでしょうか?
 
@@ -451,7 +445,7 @@ Azure 関数のポーリング間隔は 5 秒であるため、5 秒の間に加
 
 ### <a name="is-there-a-way-to-get-deletes-in-change-feed"></a>変更フィード内の削除を取得する方法はありますか?
 
-現在、変更フィードは削除をログに記録していません。 変更フィードは継続的に改善されており、この機能の開発は予定されています。 現在は、ドキュメントに削除のソフト マーカーを追加できます。 ドキュメントに “deleted” という属性を追加して “true” に設定し、それが自動的に削除されるようにドキュメントの TTL を設定します。
+現在、変更フィードは削除をログに記録していません。 変更フィードは継続的に改善されており、この機能の開発は予定されています。 現在は、ドキュメントに削除のソフト マーカーを追加できます。 ドキュメントに "deleted" という属性を追加して "true" に設定し、それが自動的に削除されるようにドキュメントの TTL を設定します。
 
 ### <a name="can-i-read-change-feed-for-historic-documentsfor-example-documents-that-were-added-5-years-back-"></a>古いドキュメント (たとえば、5 年前に追加されたドキュメント) の変更フィードを読み取ることは可能ですか?
 
@@ -505,7 +499,7 @@ query.executeNext((err, results, headers) =&gt; {
 _etag は内部形式であり、いつ変更されてもおかしくないため、これに依存することはできません (解析しないでください)。
 _ts は変更または作成のタイムスタンプです。 _ts は時系列比較に利用できます。
 _lsn は変更フィードのみに追加されるバッチ ID であり、ストアからのトランザクション ID を表します。 _lsn は多くのドキュメントで同じである可能性があります。
-もう 1 つ注意すべきことは、FeedResponse の ETag がドキュメントの _etag とは異なることです。 _etag は同時実行に使用される内部識別子であり、ドキュメントのバージョンを伝えますが、ETag はフィードのシーケンス処理に使用されます。
+もう 1 つ注意すべきことは、FeedResponse の ETag がドキュメントの _etag とは異なることです。 _etag はコンカレンシーに使用される内部識別子であり、ドキュメントのバージョンを伝えますが、ETag はフィードのシーケンス処理に使用されます。
 
 ### <a name="does-reading-change-feed-add-any-additional-cost-"></a>変更フィードの読み取りには追加コストがかかりますか?
 

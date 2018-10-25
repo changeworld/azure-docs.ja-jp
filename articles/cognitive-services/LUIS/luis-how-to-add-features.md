@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 6831f67a33d114ca5c42ddacf8ef4de704e21711
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 32ef8ba2f6416e1b59fc98595f1b204e94bd2ead
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036958"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830992"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>フレーズ リストを使用して単語リストのシグナルをブーストする
 
@@ -46,7 +46,7 @@ LUIS アプリにフィーチャーを追加して、その精度を向上させ
 <a name="deactivate-phrase-list"></a>
 
 > [!Note]
-> 各フレーズ リストの行の末尾にある省略記号 (***...***) ボタンから表示されるフレーズ リストは、編集、削除、または非アクティブ化することができます。
+> 語句一覧の削除や非アクティブ化は､**Phrase リスト**ページのコンテキスト ツールバーから行うことができます。
 
 ## <a name="pattern-regular-expression-feature"></a>パターン (正規表現) フィーチャー 
 **このフィーチャーは非推奨です**。 新しいパターン フィーチャーを LUIS に追加することはできません。 既存のパターン フィーチャーは 2018 年 5 月までサポートされます。 PR に一致する標準 LUIS 正規表現を [Recognizers-Text Github リポジトリ](https://github.com/Microsoft/Recognizers-Text)にお寄せください。 

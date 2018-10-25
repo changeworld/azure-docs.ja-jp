@@ -1,20 +1,29 @@
 ---
-title: Custom Vision Service リリース ノート
+title: リリース ノート - Custom Vision Service
+titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
+ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: 8423051fa5169eb8acddc7297e36188e297cb9e4
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 8b4ba1601a7c5a9f523f7f8145a032861aac5d8c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288658"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901330"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service リリース ノート
+
+## <a name="october-9-2018"></a>2018 年 10 月 9 日
+- Object Detection は有料のプレビューになります。 Azure のリソースを使用して､Object Detection プロジェクトを作成できるようになりました。
+- Web サイトに｢Move to Azure｣機能を追加｡Limited Trial プロジェクトをアップグレードして､Azure に簡単にリンクできるようになっています｡ リソース リンク先のプロジェクト (F0 または S0)ご利用の製品の [設定] ページにあります｡  
+- ONNX 1.2 へのエクスポートを追加｡Windows ML の Windows 2018 October Update バージョンに対応｡
+バグ修正などの特殊文字を含む ONNX エクスポートします。 
+
 
 ## <a name="august-14-2018"></a>2018 年 8 月 14 日
 - ユーザーにプロジェクトのトレーニングを案内する "作業の開始" ウィジェットが customvision.ai サイトに追加されました。 
@@ -22,12 +31,12 @@ ms.locfileid: "43288658"
 
 ## <a name="june-28-2018"></a>2018 年 6 月 28 日
 - バグ修正とバックエンドの機能強化。
-- 複数のイメージが正確に 1 つのラベルを持っているプロジェクトで、多クラス分類が有効になりました。 多クラス モードの予測では、確率が 1 つに合計されます (すべてのイメージが指定されたタグの間で分類されます)。
+- 複数のイメージに完全に同じ 1 つのラベルがあるプロジェクトに対する多クラス分類のサポート｡ 多クラス モードの予測では、確率が 1 つに合計されます (すべてのイメージが指定されたタグの間で分類されます)。
 
 ## <a name="june-13-2018"></a>2018 年 6 月 13 日
 - 使いやすさとアクセシビリティに重点を置いて、UX が更新されました。 
 - 多数のタグがあるマルチラベル プロジェクト で役立つように機械学習パイプラインが機能強化されました。
-- TensorFlow のエクスポートのバグが修正されました。 エクスポートされたモデルのバージョン管理が有効になったため、イテレーションを複数回エクスポートできるようになりました。 
+- TensorFlow のエクスポートのバグが修正されました。 エクスポートされたモデルのバージョン管理のサポート｡イテレーションを複数回エクスポートできるようになっています｡ 
 
 ## <a name="may-7-2018"></a>2018 年 5 月 7 日
 - 制限付き試用版プロジェクトに関してオブジェクト検出機能 (プレビュー) が導入されました。
@@ -36,7 +45,7 @@ ms.locfileid: "43288658"
 - 画像分類プロジェクトの機械学習パイプラインに対し、重要なバックエンドの改良が行われました。 この更新の効果は、2018 年 4 月 27 日より後にトレーニングされたプロジェクトで得られます。
 - Windows ML で使用できる ONNX へのモデルのエクスポートが追加されました。
 - Dockerfile へのモデルのエクスポートが追加されました。 これにより、成果物 (DockerFile、TensorFlow モデル、サービス コードなど) をダウンロードして独自の Windows コンテナまたは Linux コンテナを構築することができます。 
-- General (Compact) ドメインと Landmark (Compact) ドメインの TensorFlow に、新たにトレーニングされたモデルをエクスポートした場合、全プロジェクト間で一貫性を確保するために、[平均値は (0,0,0)](https://github.com/azure-samples/cognitive-services-android-customvision-sample) になります。 
+- 全プロジェクトの間で整合性を維持するため、新しくトレーイングされて､General (Compact) ドメインと Landmark (Compact) ドメインの TensorFlow にエクスポートされたモデルについては､[平均値を (0,0,0)](https://github.com/azure-samples/cognitive-services-android-customvision-sample) にしました。 
 
 ## <a name="march-1-2018"></a>2018 年 3 月 1 日
 - 有料プレビューとなり、Azure portal への配布準備が行われました。 F0 (Free) レベルまたは S0 (Standard) レベルで Azure リソースにプロジェクトをアタッチできるようになりました。 S0 レベルのプロジェクトを導入しました。最大 100 タグおよび 25,000 画像が利用できます。 

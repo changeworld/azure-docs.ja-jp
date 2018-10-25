@@ -1,20 +1,21 @@
 ---
-title: Project URL Preview のリファレンス - Microsoft Cognitive Services | Microsoft Docs
+title: Project URL Preview リファレンス
+titlesuffix: Azure Cognitive Services
 description: Project URL Preview エンドポイントのリファレンス。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-url-preview
-ms.topic: article
+ms.component: project-url-preview
+ms.topic: reference
 ms.date: 03/29/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 46c011d62b6ae51f5f7d292345e6ece0e27a8541
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.author: rosh
+ms.openlocfilehash: 3416fd9bc63c48e976d0b00f42ec9f8119a40eb8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865877"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870810"
 ---
 # <a name="project-url-preview-v7-reference"></a>Project URL Preview v7 のリファレンス
 
@@ -66,7 +67,7 @@ https://api.labs.cognitive.microsoft.com/urlpreview/v7.0/search?q=queryURL
 |<a name="market" />BingAPIs-Market|応答ヘッダー。<br /><br /> 要求で使用された市場。 形式は \<言語コード\>-\<国番号\> です。 たとえば、en-US などです。|  
 |<a name="traceid" />BingAPIs-TraceId|応答ヘッダー。<br /><br /> 要求の詳細が含まれたログ エントリの ID。 エラーが発生した場合、この ID をキャプチャします。 問題を特定して解決できない場合は、その他の情報と共にこの ID をサポート チームに提供します。|  
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|必須の要求ヘッダー。<br /><br /> [Cognitive Services](https://www.microsoft.com/cognitive-services/) でこのサービスにサインアップしたときに受け取ったサブスクリプション キー。|  
-|<a name="clientid" />X-MSEdge-ClientID|省略可能な要求および応答ヘッダー。<br /><br /> このヘッダーは、Bing API の呼び出し間で一貫性のある動作をユーザーに提供するために Bing によって使用されます。 Bing によって、新しい機能と改善点が頻繁にフライト化されます。そして、トラフィックを異なるフライトに割り当てるためのキーとして、クライアント ID が使用されます。 複数の要求に対してユーザーの同じクライアント ID を使用しないと、ユーザーが複数の競合するフライトに割り当てられる可能性があります。 複数の競合するフライトに割り当てられると、ユーザー エクスペリエンスの一貫性がなくなる場合があります。 たとえば、2 番目の要求に 1 番目とは異なるフライトが割り当てられていると、エクスペリエンスが予期しないものになる可能性があります。 また、クライアント ID は、そのクライアント ID の検索履歴に合わせて Web の結果を調整し、ユーザーにリッチなエクスペリエンスを提供するために Bing によって使用される場合があります。<br /><br /> このヘッダーは、クライアント ID で生成されたアクティビティを分析して結果の順位付けを向上させるために Bing によって使用されることもあります。 関連性の向上は、Bing API によって提供される結果の品質向上に役立ち、API コンシューマーのクリックスルー率の向上を実現します。<br /><br />このヘッダーに適用される基本的な使用規則を次に示します。<br /><ul><li>デバイスでアプリケーションを使用する各ユーザーは、Bing によって生成された一意のクライアント ID を持っている必要があります。<br /><br/>このヘッダーを要求に含めない場合、Bing によって ID が生成され、それが X-MSEdge-ClientID 応答ヘッダーで返されます。 このヘッダーを要求に含めるべきでない唯一の場合は、ユーザーがそのデバイスでアプリを初めて使用するときです。<br /><br/></li><li>そのユーザーのためにアプリによってデバイスで実行される各 Bing API 要求で、クライアント ID を使用します。<br /><br/></li><li>**注意:** このクライアント ID は認証可能なユーザー アカウント情報にリンクできないようにする必要があります。</li><br/><li>クライアント ID を保持します。 ブラウザー アプリで ID を保持するには、永続的な HTTP Cookie を使用して、ID がすべてのセッションで使用されるようにします。 セッション Cookie は使用しないようにしてください。 モバイル アプリなど、他のアプリの場合は、デバイスの永続的ストレージを使用して ID を保持します。<br /><br/>次にそのデバイスでユーザーがアプリを使用するときに、保持したクライアント ID を取得します。</li></ul><br /> **注:** Bing の応答には、このヘッダーが含まれる場合と含まれない場合があります。 このヘッダーが応答に含まれる場合、クライアント ID をキャプチャして、ユーザーのためにそのデバイスで実行される後続のすべての Bing 要求でそれを使用します。<br /><br /> **注:** X-MSEdge-ClientID を含める場合、要求には Cookie を含めないようにしてください。|  
+|<a name="clientid" />X-MSEdge-ClientID|省略可能な要求および応答ヘッダー。<br /><br /> このヘッダーは、Bing API の呼び出し間で一貫性のある動作をユーザーに提供するために Bing によって使用されます。 Bing によって、新しい機能と改善点が頻繁にフライト化されます。そして、トラフィックを異なるフライトに割り当てるためのキーとして、クライアント ID が使用されます。 複数の要求に対してユーザーの同じクライアント ID を使用しないと、ユーザーが複数の競合するフライトに割り当てられる可能性があります。 複数の競合するフライトに割り当てられると、ユーザー エクスペリエンスの一貫性がなくなる場合があります。 たとえば、2 番目の要求に 1 番目とは異なるフライトが割り当てられていると、エクスペリエンスが予期しないものになる可能性があります。 また、クライアント ID は、そのクライアント ID の検索履歴に合わせて Web の結果を調整し、ユーザーにリッチなエクスペリエンスを提供するために Bing によって使用される場合があります。<br /><br /> このヘッダーは、クライアント ID で生成されたアクティビティを分析して結果の順位付けを向上させるために Bing によって使用されることもあります。 関連性の向上は、Bing API によって提供される結果の品質向上に役立ち、API コンシューマーのクリックスルー率の向上を実現します。<br /><br />このヘッダーに適用される基本的な使用規則を次に示します。<br /><ul><li>デバイスでアプリケーションを使用する各ユーザーは、Bing によって生成された一意のクライアント ID を持っている必要があります。<br /><br/>このヘッダーを要求に含めない場合、Bing によって ID が生成され、それが X-MSEdge-ClientID 応答ヘッダーで返されます。 このヘッダーを要求に含めるべきでない唯一の場合は、ユーザーがそのデバイスでアプリを初めて使用するときです。<br /><br/></li><li>そのユーザーのためにアプリによってデバイスで実行される各 Bing API 要求で、クライアント ID を使用します。<br /><br/></li><li>**注意:** このクライアント ID は認証可能なユーザー アカウント情報にリンクできないようにする必要があります。</li><br/><li>クライアント ID を保持します。 ブラウザー アプリで ID を永続化するには、永続的な HTTP Cookie を使用して ID がすべてのセッションで確実に使用されるようにします。 セッション Cookie は使用しないようにしてください。 モバイル アプリなど、他のアプリの場合は、デバイスの永続的ストレージを使用して ID を保持します。<br /><br/>次にそのデバイスでユーザーがアプリを使用するときに、保持したクライアント ID を取得します。</li></ul><br /> **注:** Bing の応答には、このヘッダーが含まれる場合と含まれない場合があります。 このヘッダーが応答に含まれる場合、クライアント ID をキャプチャして、ユーザーのためにそのデバイスで実行される後続のすべての Bing 要求でそれを使用します。<br /><br /> **注:** X-MSEdge-ClientID を含める場合、要求には Cookie を含めないようにしてください。|  
 |<a name="clientip" />X-MSEdge-ClientIP|省略可能な要求ヘッダー。<br /><br /> クライアント デバイスの IPv4 アドレスまたは IPv6 アドレス。 IP アドレスは、ユーザーの位置情報の検出に使用されます。 位置情報は、安全な検索動作を決定するために Bing によって使用されます。<br /><br />  (最後のオクテットを 0 に変更するなど) アドレスを難読化しないようにしてください。 アドレスを難読化すると、デバイスの実際の場所から離れた場所が検出され、Bing から誤った結果が提供される可能性があります。|  
 <br /><br /></li></ul>   
 
@@ -90,7 +91,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 |[WebPage](#webpage)|プレビューの属性が含まれている最上位の JSON オブジェクト。|  
 
   
-### <a name="error"></a>エラー  
+### <a name="error"></a>Error  
 発生したエラーを定義します。  
   
 |要素|説明|type|  
@@ -119,7 +120,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 |----------|-----------|----------|
 |name|ページ タイトル (必ずしも HTML タイトルではありません)|String|
 |url|実際にクロールされた URL (要求はリダイレクトされた可能性があります)|String|  
-|description |ページとコンテンツの簡単な説明|String|  
+|description|ページとコンテンツの簡単な説明|String|  
 |isFamilyFriendly|Web インデックスの項目で最も正確です。この検出は、ページのコンテンツではなく URL のみに基づいて、リアルタイム フェッチによって実行されます|ブール値|
 |primaryImageOfPage/contentUrl|プレビューに含まれる代表的な画像への URL|String| 
 
@@ -180,7 +181,7 @@ Web Search API では、応答スキーマは [WebPage] と ErrorResponse のい
 |コード|サブコード|説明
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>NotImplemented|HTTP 状態コードは 500 です。
-|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>ブロック|要求の一部が有効でない場合に Bing は InvalidRequest を返します。 たとえば、必要なパラメーターが不足している場合や、パラメーター値が無効な場合です。<br/><br/>エラーが ParameterMissing または ParameterInvalidValue の場合、HTTP 状態コードは 400 です。<br/><br/>HTTPS プロトコルではなく HTTP プロトコルを使用すると、Bing は HttpNotAllowed を返し、HTTP 状態コードは 410 になります。
+|InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blocked|要求の一部が有効でない場合に Bing は InvalidRequest を返します。 たとえば、必要なパラメーターが不足している場合や、パラメーター値が無効な場合です。<br/><br/>エラーが ParameterMissing または ParameterInvalidValue の場合、HTTP 状態コードは 400 です。<br/><br/>HTTPS プロトコルではなく HTTP プロトコルを使用すると、Bing は HttpNotAllowed を返し、HTTP 状態コードは 410 になります。
 |RateLimitExceeded|No sub-codes|1 秒あたりのクエリ数 (QPS) または 1 か月あたりのクエリ数 (QPM) のクォータを超えると、Bing は RateLimitExceeded を返します。<br/><br/>QPS を超えた場合、Bing は HTTP 状態コード 429 を返します。また、QPM を超えた場合、Bing は 403 を返します。
 |InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|Bing は、呼び出し元を認証できない場合に InvalidAuthorization を返します。 たとえば、`Ocp-Apim-Subscription-Key` ヘッダーがない場合や、サブスクリプション キーが無効な場合です。<br/><br/>冗長性は、複数の認証方法を指定した場合に発生します。<br/><br/>エラーが InvalidAuthorization の場合、HTTP 状態コードは 401 です。
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|呼び出し元がリソースに対するアクセス許可を備えていない場合、Bing は InsufficientAuthorization を返します。 これは、サブスクリプション キーが無効になっているか、期限が切れている場合に発生することがあります。 <br/><br/>エラーが InsufficientAuthorization の場合、HTTP 状態コードは 403 です。

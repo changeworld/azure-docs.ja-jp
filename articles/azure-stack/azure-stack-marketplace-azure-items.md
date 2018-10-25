@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2018
+ms.date: 10/04/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 8e9d40451cd0d9c3a6505ee24ca02852d9d4c527
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: ef6b068e7a8b97713c54ddeea1817a6c379703c8
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423478"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804601"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 
@@ -239,6 +239,7 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![CloudLink SecureVM](media/azure-stack-marketplace-azure-items/cloudlink.png) | [CloudLink SecureVM](https://azuremarketplace.microsoft.com/marketplace/apps/cloudlink.cloudlink-securevm)  | 簡単かつ確実に VM を制御、監視、および暗号化します。 **すべての CloudLink SecureVM 項目をダウンロードします。** | Dell EMC |
 | ![EventTracker SIEM](media/azure-stack-marketplace-azure-items/eventtracker.png) | [EventTracker SIEM](https://azuremarketplace.microsoft.com/marketplace/apps/eventtracker.eventtracker-siem)  | EventTracker SIEM は、監査可能なコンプライアンス機能を備えた高度なセキュリティ ツールを提供する、包括的なセキュリティ プラットフォームです。 | EventTracker |
 | ![f5](media/azure-stack-marketplace-azure-items/f5.png) | [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best)  | 高度な負荷分散、GSLB、ネットワーク ファイアウォール、DNS、WAF、アプリ アクセスを提供します。 | F5 Networks |
+| ![FortiGate の次世代ファイアウォール](media/azure-stack-marketplace-azure-items/fortinetsquare.png) | [FortiGate の次世代ファイアウォール](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-fortigate-singlevm) | 強力なセキュリティ機能を持つ総合スイートを組み合わせてコンテンツとネットワークの完全な保護を実現するファイアウォール テクノロジです。 アプリケーション制御、ウイルス対策、IPS、Web フィルタリング、VPN に加えて、脆弱性管理などの高度な機能が連携して、セキュリティに関する最新の複雑な脅威を特定し軽減します。 | Fortinet |
 | ![Hortonworks Data Platform (HDP) サンドボックス](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) サンドボックス](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | HDP 2.5 を使用した、100% オープン ソースのプラットフォーム (Hadoop、Spark、Storm、HBase、Kafka、Hive、Ambari に対応)。 | Hortonworks |
 | ![KEMP LoadMaster ロード バランサー ADC コンテンツ スイッチ](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster ロード バランサー ADC コンテンツ スイッチ](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | レイヤー 4 ～ 7 のアプリケーション配信コントローラー (ADC) ロード バランサー、コンテンツ スイッチ、および Traffic Manager。 | KEMP Technologies Inc. |
 | ![NRI mPLAT スイート - マルチクラウド Conductor](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT スイート - マルチクラウド Conductor](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | ワークロードやクラウドの監視、構成、プロビジョニング、自動化、構成のプロビジョニング、自動化、および制御を行うための一枚のガラス。 | NRI |

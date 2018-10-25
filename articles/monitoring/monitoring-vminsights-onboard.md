@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/16/2018
 ms.author: magoedte
-ms.openlocfilehash: 2f0568064eed556429675ffb34c84d588ac670d5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 33d16e211667edc6c082ab8c101e69ee5875efb8
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064358"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390246"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms"></a>Azure Monitor for VMs を配布準備する方法 
 この記事では、お使いの Azure 仮想マシンのオペレーティング システムの正常性を監視し、その仮想マシンでホストされている可能性があるアプリケーションの依存関係を検出してマップするために、Azure Monitor for VMs を設定する方法について説明します。  
@@ -35,7 +35,7 @@ Azure Monitor for VMs を有効にするには、次のいずれかの方法を�
 
 ### <a name="log-analytics"></a>Log Analytics 
 
-以下のリージョンでは、Log Analytics ワークスペースが現在サポートされています。
+Log Analytics ワークスペースが現在サポートされているのは、以下のリージョンです。
 
   - 米国中西部  
   - 米国東部  
@@ -44,11 +44,22 @@ Azure Monitor for VMs を有効にするには、次のいずれかの方法を�
 
 <sup>1</sup> このリージョンでは、Azure Monitor for VMs の正常性の機能はサポートされていません。   
 
-ワークスペースをお持ちでない場合は、[Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)、[PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json)、[Azure portal](../log-analytics/log-analytics-quick-create-workspace.md) のいずれかを使用して作成できます。  
+>[!NOTE]
+>Azure 仮想マシンは、任意のリージョンからオンボードできます。Log Analytics ワークスペースのサポートされるリージョンに制限されることはありません。
+>
+
+ワークスペースをお持ちでない場合は、[Azure CLI](../log-analytics/log-analytics-quick-create-workspace-cli.md)、[PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md)、[Azure portal](../log-analytics/log-analytics-quick-create-workspace.md)、[Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md) のいずれかを使用して作成できます。  Azure portal から単一の Azure VM に対する監視を有効にする場合は、この処理中にワークスペースを作成するオプションを選択できます。  
 
 ソリューションを有効にするには、Log Analytics 共同作成者ロールのメンバーである必要があります。 Log Analytics ワークスペースへのアクセスを制御する方法の詳細については、「[ワークスペースを管理する](../log-analytics/log-analytics-manage-access.md)」を参照してください。
 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+
+大規模シナリオのソリューションを最初に有効にするには、Log Analytics ワークスペースで以下を構成する必要があります。
+
+* **ServiceMap** および **InfrastructureInsights** ソリューションのインストール
+* パフォーマンス カウンターを収集するための Log Analytics ワークスペースの構成
+
+このシナリオ用にワークスペースを構成するには、「[Log Analytics ワークスペースをセットアップする](#setup-log-analytics-workspace)」を参照してください。
 
 ### <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
 
@@ -138,7 +149,7 @@ Azure Monitor for VMs を有効にするには、次のいずれかの方法を�
 |12 SP3 | 4.4.* |
 
 ### <a name="hybrid-environment-connected-sources"></a>ハイブリッド環境に接続されたソース
-Azure Monitor for VMs マップは、Microsoft Dependency Agent からデータを取得します。 Dependency Agent は、Log Analytics への接続に関して Log Analytics エージェントに依存しています。 つまり、システムには Log Analytics エージェントをインストールしておき、Dependency Agent を使用して構成する必要があります。  次の表では、ハイブリッド環境でマップ機能がサポートしている接続先ソースについて説明します。
+Azure Monitor for VMs マップは、Microsoft Dependency Agent からデータを取得します。 Dependency Agent は、Log Analytics に接続する際に Log Analytics エージェントを利用します。したがって、システムに Log Analytics エージェントをインストールして、Dependency Agent とともに構成する必要があります。 次の表では、ハイブリッド環境でマップ機能がサポートしている接続先ソースについて説明します。
 
 | 接続先ソース | サポートされています | 説明 |
 |:--|:--|:--|
@@ -206,6 +217,9 @@ Azure Monitor for VMs では、ソリューションによって使用される�
 |ネットワーク |Total Bytes Transmitted |  
 |プロセッサ |% Processor Time |  
 
+## <a name="sign-in-to-azure-portal"></a>Azure Portal にサインインする
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。 
+
 ## <a name="enable-from-the-azure-portal"></a>Azure portal から有効にする
 Azure portal でお使いの Azure VM の監視を有効にするには、次の操作を行います。
 
@@ -225,78 +239,185 @@ Azure portal でお使いの Azure VM の監視を有効にするには、次の
 
 ![Azure Monitor for VMs の監視デプロイ プロセスを有効にする](./media/monitoring-vminsights-onboard/onboard-vminsights-vm-portal-status.png)
 
-## <a name="enable-using-azure-policy"></a>Azure Policy を使用して有効にする
-複数の Azure VM に対してソリューションを有効にして、一貫性のあるコンプライアンスを保証し、プロビジョニングされた新しい VM に対して自動有効化を確実に実施するには、[Azure Policy](../azure-policy/azure-policy-introduction.md) をお勧めします。  指定されたポリシーを持つ Azure Policy を使用することで、新しい VM に次の利点がもたらされます。
 
-* 定義されたスコープ内で各 VM に対して Azure Monitor for VMs を有効にする
-* Log Analytics エージェントをデプロイする 
-* Dependency Agent をデプロイして、アプリケーションの依存関係を検出し、マップに表示する
-* お使いの Azure VM の OS イメージがポリシー定義の定義済み一覧にある場合に監査する  
-* お使いの Azure VM が指定されたワークスペース以外のワークスペースにログ記録している場合に監査する
-* コンプライアンス結果を報告する 
-* 非準拠の VM の修復をサポートする
+## <a name="on-boarding-at-scale"></a>大規模なオンボーディング
+このセクションでは、Azure Policy または Azure PowerShell のいずれかを使用して Azure Monitor for VM を大規模にデプロイする方法について説明します。  最初の手順として、Log Analytics ワークスペースを構成する必要があります。  
 
-お使いのテナントに対して Azure Policy をアクティブ化するには、このプロセスで次のことを行う必要があります。
+### <a name="setup-log-analytics-workspace"></a>Log Analytics ワークスペースをセットアップする
+Log Analytics ワークスペースがない場合は、[[前提条件]](#log-analytics) セクションで推奨されているメソッドを確認して、ワークスペースを作成します。  
 
-- ここに記載されている手順を使用して、Log Analytics ワークスペースを構成する
-- イニシアティブ定義をご自分のテナントに (管理グループまたはサブスクリプション レベルで) インポートする
-- ポリシーを目的のスコープに割り当てる
-- コンプライアンス結果を確認する
+#### <a name="enable-performance-counters"></a>パフォーマンス カウンターを有効にする
+ソリューションによって参照されている Log Analytics ワークスペースが、ソリューションで必要なパフォーマンス カウンターを収集するようにまだ構成されていない場合は、カウンターを有効にする必要があります。 これは、[ここ](../log-analytics/log-analytics-data-sources-performance-counters.md)で説明されているように手動で実行するか、[Azure Powershell ギャラリー](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)から入手可能な PowerShell スクリプトをダウンロードして実行することで行えます。
+ 
+#### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>ServiceMap および InfrastructureInsights ソリューションをインストールする
+この方法には、Log Analytics ワークスペースに対してソリューション コンポーネントを有効にする構成を指定する JSON テンプレートが含まれています。  
 
-### <a name="add-the-policies-and-initiative-to-your-subscription"></a>イニシアティブとポリシーをサブスクリプションに追加する
-ポリシーを使用するには、提供されている PowerShell スクリプト ([Add-VMInsightsPolicy.ps1](https://www.powershellgallery.com/packages/Add-VMInsightsPolicy/1.2)) を使用することで、このタスクを完了できます。このスクリプトは、Azure PowerShell ギャラリーから入手できます。 このスクリプトにより、ポリシーとイニシアティブがご自分のサブスクリプションに追加されます。  サブスクリプションで Azure Policy を構成するには、次の手順を実行します。 
+テンプレートを使用するリソースのデプロイの概念について馴染みがない場合は、以下を参照してください。
+* [Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
+* [Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-cli.md) 
 
-1. PowerShell スクリプトをローカル ファイル システムにダウンロードします。
+Azure CLI を使用する場合は、まず、ローカルに CLI をインストールして使用する必要があります。 Azure CLI バージョン 2.0.27 以降を実行する必要があります。 ご利用のバージョンを識別するには、`az --version` を実行します。 Azure CLI をインストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)に関するページを参照してください。 
 
-2. フォルダー内で次の PowerShell コマンドを使用して、ポリシーを追加します。 このスクリプトは、次の省略可能なパラメーターをサポートしています。 
+1. 以下の JSON 構文をコピーして、ファイルに貼り付けます。
+
+    ```json
+    {
+
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "WorkspaceName": {
+            "type": "string"
+        },
+        "WorkspaceLocation": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2017-03-15-preview",
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('WorkspaceName')]",
+            "location": "[parameters('WorkspaceLocation')]",
+            "resources": [
+                {
+                    "apiVersion": "2015-11-01-preview",
+                    "location": "[parameters('WorkspaceLocation')]",
+                    "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                    "type": "Microsoft.OperationsManagement/solutions",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
+                    ],
+                    "properties": {
+                        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
+                    },
+
+                    "plan": {
+                        "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                        "publisher": "Microsoft",
+                        "product": "[Concat('OMSGallery/', 'ServiceMap')]",
+                        "promotionCode": ""
+                    }
+                },
+                {
+                    "apiVersion": "2015-11-01-preview",
+                    "location": "[parameters('WorkspaceLocation')]",
+                    "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
+                    "type": "Microsoft.OperationsManagement/solutions",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
+                    ],
+                    "properties": {
+                        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
+                    },
+                    "plan": {
+                        "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
+                        "publisher": "Microsoft",
+                        "product": "[Concat('OMSGallery/', 'InfrastructureInsights')]",
+                        "promotionCode": ""
+                    }
+                }
+            ]
+        }
+    ]
+    ```
+
+2. このファイルを **installsolutionsforvminsights.json** としてローカル フォルダーに保存します。
+3. **WorkspaceName**、**ResourceGroupName**、および **WorkspaceLocation** の値を編集します。  **WorkspaceName** の値は、ワークスペース名を含む Log Analytics ワークスペースの完全なリソース ID で、**WorkspaceLocation** の値は、ワークスペースが定義されているリージョンです。
+4. これで、次の PowerShell コマンドを使用して、このテンプレートをデプロイする準備ができました。
 
     ```powershell
-    -UseLocalPolicies [<SwitchParameter>]
-      <Optional> Load the policies from a local folder instead of https://raw.githubusercontent.com/dougbrad/OnBoardVMInsights/Policy/Policy/
+    New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+    ```
 
-    -SubscriptionId <String>
-      <Optional> SubscriptionId to add the Policies/Initiatives to
-    -ManagementGroupId <String>
-      <Optional> Management Group Id to add the Policies/Initiatives to
+    設定の変更が完了するまで数分かかります。 完了すると、次のような結果を含むメッセージが表示されます。
 
-    -Approve [<SwitchParameter>]
-      <Optional> Gives the approval to add the Policies/Initiatives without any prompt
-    ```  
+    ```powershell
+    provisioningState       : Succeeded
+    ```
+
+### <a name="enable-using-azure-policy"></a>Azure Policy を使用して有効にする
+大規模な Azure Monitor for VMs を有効にして、一貫性のあるコンプライアンスを保証し、プロビジョニングされた新しい VM に対して自動有効化を確実に実施するには、[Azure Policy](../azure-policy/azure-policy-introduction.md) をお勧めします。 該当するポリシーを以下に示します。
+
+* Log Analytics エージェントと Dependency Agent をデプロイする 
+* コンプライアンス結果を報告する 
+* 非準拠の VM を修復する
+
+ポリシーを通じて、Azure Monitor for VMs をテナントに対して有効にするには、以下を行う必要があります。 
+
+- 特定のスコープ (管理グループ、サブスクリプション、またはリソース グループ) にイニシアチブを割り当てる 
+- コンプライアンスの結果をレビューおよび修復する  
+
+[Azure Policy の概要](../governance/policy/overview.md#policy-assignment)に関する記事と[管理グループの概要](../governance/management-groups/index.md)に関する記事で Azure Policy の割り当ての詳細を確認してから、続行してください。  
+
+以下の表は、用意されているポリシー定義を示しています。  
+
+|Name |説明 |type |  
+|-----|------------|-----|  
+|[Preview]: Azure Monitor for VMs の有効化 |指定されたスコープ (管理グループ、サブスクリプション、またはリソース グループ) で、Azure Monitor for VMs を有効にします。 Log Analytics ワークスペースをパラメーターとして取得します。 |イニシアティブ |  
+|[Preview]: Audit Dependency Agent のデプロイ - 一覧にない VM イメージ (OS) |定義された一覧に VM イメージ (OS) がなく、エージェントがインストールされていない場合は、VM を非準拠として報告します。 |ポリシー |  
+|[Preview]: Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS) |定義された一覧に VM イメージ (OS) がなく、エージェントがインストールされていない場合は、VM を非準拠として報告します。 |ポリシー |  
+|[Preview]: Linux VM への Dependency Agent のデプロイ |定義された一覧に VM イメージ (OS) があり、エージェントがインストールされていない場合は、Linux VM に Dependency Agent をデプロイします。 |ポリシー |  
+|[Preview]: Windows VM への Dependency Agent のデプロイ |定義された一覧に VM イメージ (OS) があり、エージェントがインストールされていない場合は、Windows VM に Dependency Agent をデプロイします。 |ポリシー |  
+|[Preview]: Linux VM への Log Analytics エージェントのデプロイ |定義された一覧に VM イメージ (OS) があり、エージェントがインストールされていない場合は、Linux VM に Log Analytics エージェントをデプロイします。 |ポリシー |  
+|[Preview]: Windows VM への Log Analytics エージェントのデプロイ |定義された一覧に VM イメージ (OS) があり、エージェントがインストールされていない場合は、Windows VM に Log Analytics エージェントをデプロイします。 |ポリシー |  
+
+スタンドアロンのポリシー (イニシアチブに含まれません) 
+
+|Name |説明 |type |  
+|-----|------------|-----|  
+|[Preview]: VM 用 Audit Log Analytics ワークスペース - 不一致の報告 |ポリシー/イニシアチブの割り当てに指定された LA ワークスペースにログインしていない場合、VM を非準拠として報告します。 |ポリシー |
+
+#### <a name="assign-azure-monitor-initiative"></a>Azure Monitor イニシアチブを割り当てる
+この初期リリースでは、Azure portal からポリシーの割り当てのみを作成できます。 これらの手順を完了する方法については、 [Azure portal でのポリシー割り当ての作成](../governance/policy/assign-policy-portal.md)に関する記事を参照してください。 
+
+1. Azure portal 上で **[すべてのサービス]** をクリックし、**[ポリシー]** を検索して選択し、Azure Policy サービスを起動します。 
+2. Azure Policy ページの左側にある **[割り当て]** を選択します。 割り当ては、特定のスコープ内で実行するように割り当てられたポリシーです。
+3. **[ポリシー - 割り当て]** ページの上部で **[イニシアチブの割り当て]** を選択します。
+4. **[イニシアチブの割り当て]** ページで、**[スコープ]** を選択します。これを行うには、省略記号をクリックし、管理グループまたはサブスクリプションとリソース グループを選択します (リソース グループの選択は省略可能です)。 スコープにより、ポリシーの割り当てが、仮想マシンのグループに制限されて実施されます。 **[スコープ]** ページの下部にある **[選択]** をクリックして、変更を保存します。
+5. **[除外]** では、1 つ以上のリソースをスコープから省略できます (この操作は省略可能です)。 
+6. **[イニシアチブ定義]** の省略記号を選択して、使用可能な定義の一覧を開きます。次に、**[[Preview] Enable Azure Monitor for VMs]\([プレビュー] Azure Monitor for VMs の有効化\)** を選択して、**[選択]** をクリックします。
+7. **[割り当て名]** には選択したイニシアチブ名が自動的に入力されますが、この名前は変更できます。 必要に応じて、**説明**を追加することもできます。 **[Assigned by]\(割り当て者\)** は、ログインしたユーザーに基づいて自動的に入力されます。このフィールドは省略可能です。
+8. サポートされるリージョンで使用可能な **Log Analytics ワークスペース**をドロップダウン リストから選択します。
 
     >[!NOTE]
-    >注: イニシアティブ/ポリシーを複数のサブスクリプションに割り当てる場合、この定義を、ポリシーを割り当てるサブスクリプションを含む管理グループに格納する必要があります。 そのためには、-ManagementGroupID パラメーターを使用する必要があります。
+    >ワークスペースが割り当てのスコープの外部にある場合は、ポリシー割り当てのプリンシパル ID に **Log Analytics 共同作成者**権限を付与する必要があります。 これを行わないと、以下のようなデプロイ エラーが表示される場合があります。`The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... `アクセス権の付与については、[マネージド ID を手動で構成する方法](../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity)に関する記事を参照してください。
     >
-   
-    パラメーターなしの例: `.\Add-VMInsightsPolicy.ps1`
 
-### <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
-`Add-VMInsightsPolicy.ps1` PowerShell スクリプトを実行すると、次のイニシアティブとポリシーが追加されます。
+9. **[マネージド ID]** オプションがオンになっていることを確認します。 これがオンになるのは、割り当てられるイニシアティブに deployIfNotExists 効果を含むポリシーが含まれているときです。 **[Manage Identity location]\(ID の場所の管理\)** ドロップダウン リストで、該当するリージョンを選択します。  
+10. **[割り当て]** をクリックします。
 
-* **Windows VM への Log Analytics エージェントのデプロイ - プレビュー**
-* **Linux VM への Log Analytics エージェントのデプロイ - プレビュー**
-* **Windows VM への Dependency Agent のデプロイ - プレビュー**
-* **Linux VM への Dependency Agent のデプロイ - プレビュー**
-* **Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS) - プレビュー**
-* **Audit Dependency Agent のデプロイ - 一覧にない VM イメージ (OS) - プレビュー**
+#### <a name="review-and-remediate-the-compliance-results"></a>コンプライアンスの結果をレビューおよび修復する 
 
-次のイニシアティブ パラメーターが追加されます。
+コンプライアンスの結果をレビューする方法については、[非準拠の結果の確認](../governance/policy/assign-policy-portal.md#identify-non-compliant-resources)に関する記事を参照してください。 ページ左側で **[コンプライアンス]** を選択します。次に、作成した割り当てごとに、準拠していない **[[Preview] Enable Azure Monitor for VMs]|\([プレビュー] Azure Monitor for VMs の有効化\)** イニシアチブを探します。
 
-- **Log Analytice ワークスペース** (PowerShell または CLI を使用して割り当てを適用する場合は、ワークスペースの ResourceID を指定する必要があります)
+![Azure VM のポリシーへの準拠](./media/monitoring-vminsights-onboard/policy-view-compliance-01.png)
 
-    監査ポリシー **OS スコープ内にない VM** に準拠していないとして検出された VM の場合、デプロイ ポリシーの条件には、よく知られている Azure VM イメージからデプロイされた VM のみが含まれます。 VM の OS がサポートされているかどうか、ドキュメントで確認します。  サポートされていない場合は、デプロイ ポリシーを複製し、イメージがスコープ内になるようにそれを更新または変更する必要があります。
+以下のシナリオでは、イニシアチブに含まれるポリシーの結果に基づいて、VM が非準拠として報告されます。  
+  
+1. Log Analytics も Dependency Agent もデプロイされていない。  
+   この状況は、既存の VM を含むスコープでよくみられます。 この状況を軽減するには、非準拠ポリシーに基づいて[修復タスクを作成](../governance/policy/how-to/remediate-resources.md)し、必要なエージェントをデプロイします。    
+ 
+    - [Preview]: Deploy Dependency Agent for Linux VMs   
+    - [プレビュー]: Deploy Dependency Agent for Windows VMs  
+    - [プレビュー]: Deploy Log Analytics Agent for Linux VMs  
+    - [プレビュー]: Deploy Log Analytics Agent for Windows VMs  
 
-次の省略可能なスタンドアロン ポリシーが追加されます。
+2. VM イメージ (OS) が、ポリシー定義に示されている一覧に含まれていない。  
+   デプロイ ポリシーの基準には、よく知られている Azure VM イメージからデプロイされた VM のみが含まれます。 VM の OS がサポートされているかどうか、ドキュメントで確認します。 サポートされていない場合は、デプロイ ポリシーを複製し、イメージが準拠するようにそれを更新または変更する必要があります。 
+  
+    - [Preview]: Audit Dependency Agent のデプロイ - 一覧にない VM イメージ (OS)  
+    - [Preview]: Audit Log Analytics エージェントのデプロイ - 一覧にない VM イメージ (OS)
 
-- **一致しない Log Analytics ワークスペースのために構成される VM - プレビュー**
+3. 指定された LA ワークスペースに VM のログが記録されていない。  
+ポリシー割り当てに指定されたものとは異なる LA ワークスペースに、イニシアチブ スコープ内の VM のログが記録される場合があります。 このポリシーは、非準拠のワークスペースに報告を行っている VM を識別するための手段となります。  
+ 
+    - [プレビュー]: Audit Log Analytics Workspace for VM - Report Mismatch  
 
-    これは、[Log Analytics VM 拡張機能](../virtual-machines/extensions/oms-windows.md)を使用して既に構成されているが、意図していた (ポリシーの割り当てによって示されている) ものとは異なるワークスペースを使用して構成されている VM を識別するために使用できます。 これは WorkspaceID のパラメーターを受け取ります。
+### <a name="enable-with-powershell"></a>PowerShell を使用した有効化
+複数の VM または仮想マシン スケール セットに対して Azure Monitor for VMs を有効にするには、Azure PowerShell ギャラリーから入手できる PowerShell スクリプトの [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) を使用して、このタスクを完了します。  このスクリプトでは、サブスクリプション内、または *ResourceGroup* で指定されたスコープ内のリソース グループ内のすべての仮想マシンと仮想マシン スケール セット、または *Name* で指定された単一の VM または仮想マシン スケール セットに対して反復処理が実行されます。  このスクリプトでは、各 VM または仮想マシン スケール セットに対して、VM 拡張機能が既にインストールされているかどうか、それを再インストールしようとしていないかどうかが確認されます。  それ以外の場合は、Log Analytics と Dependency Agent の VM 拡張機能のインストールに進みます。   
 
-この初期リリースでは、Azure portal からポリシーの割り当てのみを作成できます。 これらの手順を完了する方法については、[Azure portal からポリシー割り当ての作成](../azure-policy/assign-policy-definition.md)に関するページを参照してください。
-
-## <a name="enable-with-powershell"></a>PowerShell を使用した有効化
-複数の VM または VM スケール セットに対して Azure Monitor for VMs を有効にするには、指定された PowerShell スクリプト ([Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)) を使用することで、このタスクを完了できます。このスクリプトは、Azure PowerShell ギャラリーから入手できます。  このスクリプトは、サブスクリプション内、または *ResourceGroup* で指定されたスコープ内のリソース グループ内のすべての仮想マシンと VM スケール セット、または *Name* で指定された単一の VM またはスケール セットに対して反復処理を行います。  このスクリプトは、各 VM または VM スケール セットに対して、VM 拡張機能が既にインストールされているかどうか、それを再インストールしようとしていないかどうかを確認します。  それ以外の場合は、Log Analytics と Dependency Agent の VM 拡張機能のインストールに進みます。   
-
-このスクリプトには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページをご覧ください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+このスクリプトには、Azure PowerShell モジュール バージョン 5.7.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 スクリプトに関するヘルプを取得するには、`Get-Help` を実行して、引数の詳細と使用例の一覧を取得します。   
 

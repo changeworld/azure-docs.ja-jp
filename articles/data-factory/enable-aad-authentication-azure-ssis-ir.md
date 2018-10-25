@@ -12,16 +12,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: douglasl
-ms.openlocfilehash: aa06110a6f6fe668388c6aecd98c1ddeeae37edd
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 234fb5af55565602d283539c63076adebad1ed25
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576631"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248977"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムに対して Azure Active Directory 認証を有効にする
 
-この記事では、Azure Data Factory サービス ID で Azure-SSIS IR を作成する方法を示します。 Azure-SSIS 統合ランタイムに対するマネージド サービス ID (MSI) を含む Azure Active Directory (Azure AD) 認証を使用すると、SQL 認証の代わりに Data Factory MSI を使用して Azure-SSIS 統合ランタイムを作成できます。
+この記事では、Azure Data Factory サービス ID で Azure-SSIS IR を作成する方法を示します。 Azure-SSIS 統合ランタイムに対する Azure リソースのマネージド ID を含む Azure Active Directory (Azure AD) 認証を使用すると、SQL 認証の代わりに Data Factory MSI を使用して Azure-SSIS 統合ランタイムを作成できます。
 
 Data Factory MSI について詳しくは、「[Azure Data Factory サービス ID](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)」をご覧ください。
 

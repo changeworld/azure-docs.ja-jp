@@ -1,22 +1,23 @@
 ---
-title: Azure Autosuggest API についてよく寄せられる質問 (FAQ) | Microsoft Docs
-description: Azure での Azure Cognitive Services の Autosuggest API に関する一般的な質問の回答をご覧いただけます。
+title: よく寄せられる質問 (FAQ) - Bing Autosuggest API
+titlesuffix: Azure Cognitive Services
+description: Bing Autosuggest API についてよく寄せられる質問とその回答が掲載されています。
 services: cognitive-services
 author: HeidiSteen
-manager: jhubbard
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-autosuggest
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/26/2017
 ms.author: heidist
-ms.openlocfilehash: 00b91728bcfec52ff30697f080d5c2619bab79a8
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 84f1b0555922119e9de4addc3d51ac233e7bae65
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376861"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831366"
 ---
-# <a name="frequently-asked-questions-faq-about-autosuggest-api-cognitive-services"></a>Autosuggest API (Cognitive Services) についてよく寄せられる質問 (FAQ)
+# <a name="frequently-asked-questions-faq-about-bing-autosuggest-api"></a>Bing Autosuggest API についてよく寄せられる質問 (FAQ)
  
  Azure Cognitive Services の Autosuggest API に関連する概念、コード、およびシナリオについてよく寄せられる質問に対する回答を示します。
 

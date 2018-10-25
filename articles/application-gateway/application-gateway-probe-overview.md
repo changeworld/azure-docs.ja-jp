@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: b34e5317a35d694e8521e73b0846da973661d9df
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f9bd0288d4009af536bdc8f45cbaed4b3f1eee18
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530431"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018712"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway による正常性監視の概要
 
@@ -96,7 +96,7 @@ Application Gateway のすべてのインスタンスは、互いに独立して
 
 アプリケーション ゲートウェイ サブネット上にネットワーク セキュリティ グループ (NSG) がある場合は、アプリケーション ゲートウェイ サブネットで 65503 ～ 65534 のポート範囲をインバウンド トラフィック用に開く必要があります。 これらのポートは、バックエンドの正常性 API が機能するために必要です。
 
-また、送信インターネット接続をブロックすることはできず、AzureLoadBalancer タグからのトラフィックを許可する必要があります。
+さらに、送信インターネット接続はブロックできないため、AzureLoadBalancer タグから送信された受信トラフィックを許可する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 Application Gateway による正常性監視について学習した後は、Azure Portal で[カスタム正常性プローブ](application-gateway-create-probe-portal.md)を構成することも、PowerShell と Azure Resource Manager デプロイ モデルを使用して[カスタム正常性プローブ](application-gateway-create-probe-ps.md)を構成することもできます。

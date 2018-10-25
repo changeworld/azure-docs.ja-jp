@@ -1,24 +1,25 @@
 ---
-title: 'Bing Custom Search: カスタム検索の共有 | Microsoft Docs'
-description: カスタム検索インスタンスを共有する方法について説明します
+title: カスタム検索の共有 - Bing Custom Search
+titlesuffix: Azure Cognitive Services
+description: カスタム検索インスタンスを共有する方法について説明します。
 services: cognitive-services
 author: brapel
-manager: ehansen
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 4a9761ce0671b57d802fe332c92e32d1f410fa6f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b6834681f2b6478943c43e44d694ae278ddd4682
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960959"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815921"
 ---
 # <a name="share-your-custom-search-instance"></a>カスタム検索インスタンスの共有
 
-インスタンスをチームのメンバーと共有することで、コラボレーションの編集とテストを簡単にできます。 電子メール アドレスだけを使用して、任意のユーザーとインスタンスを共有できます。 インスタンスを共有する
+インスタンスをチームのメンバーと共有することで、インスタンスの編集やテストを簡単に共同で行うことができます。 電子メール アドレスだけを使用して、任意のユーザーとインスタンスを共有できます。 インスタンスを共有する
 
 - [カスタム検索](https://customsearch.ai)にサインインします。
 - カスタム検索インスタンスの作成

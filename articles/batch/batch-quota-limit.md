@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 09/10/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3f4907d99b25df31ac7f081282cebe700f55b62
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 25a8150a2fcf7cdd4e3c82478c0b3db3dad870b4
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423744"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887566"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -53,7 +53,9 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 | [アプリケーション](batch-application-packages.md) 数 |20 |
 | アプリケーションあたりのアプリケーション パッケージ数 |40 |
 | タスクの最長有効期間 | 7 日間<sup>1</sup> |
-| ノード間通信に対応するプール内のコンピューティング ノード | 100 |
+| [ノード間通信に対応するプール](batch-mpi.md)内のコンピューティング ノード | 100 |
+| [カスタム VM イメージで作成されたプール](batch-custom-images.md)内の専用コンピューティング ノード | 2500 |
+| [カスタム VM イメージで作成されたプール](batch-custom-images.md)内の低優先度コンピューティング ノード | 1,000 |
 
 <sup>1</sup> タスクの最長有効期間 (ジョブに追加されてから完了するまで) は、7 日間です。 完了したタスクは、無期限に保持されます。最長有効期間内に完了しなかったタスクのデータにはアクセスできません。
 

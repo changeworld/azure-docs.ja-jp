@@ -11,20 +11,22 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/18/2018
-ms.openlocfilehash: 0a91139d92570a2ee2828f9295590d580902c501
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/04/2018
+ms.openlocfilehash: 1775e1810a164bfbdd1cddea9360674592cf446c
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164992"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857535"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Azure SQL Database の長期的なバックアップ保有期間を管理する
 
-[長期的なバックアップ保有期間](sql-database-long-term-retention.md)ポリシー (LTR) を使用して Azure SQL Database を構成し、Azure BLOB ストレージに最大 10 年間自動的にバックアップを保持することができます。 Azure Portal または PowerShell でこのようなバックアップを使用して、データベースを復旧できます。
+Azure SQL Database では、[長期的なバックアップ保有期間](sql-database-long-term-retention.md)ポリシー (LTR) を使用して、単一またはプールされたデータベースを構成して、Azure BLOB ストレージに最大 10 年間自動的にバックアップを保持することができます。 Azure Portal または PowerShell でこのようなバックアップを使用して、データベースを復旧できます。
+
+> [!IMPORTANT]
+> [Azure SQL Database Managed Instance](sql-database-managed-instance.md) は現在長期的なバックアップ保有期間をサポートしていません。
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Azure Portal を使用して長期保存ポリシーを構成し、バックアップを復元する
-
 以下のセクションでは、Azure Portal を使用して長期保存を構成し、長期保存のバックアップを表示し、長期保存からバックアップを復元する方法について説明します。
 
 ### <a name="configure-long-term-retention-policies"></a>長期保存ポリシーを構成する
@@ -78,6 +80,24 @@ LTR ポリシーを使用して保持されている特定のデータベース�
 - [AzureRM.Sql-4.5.0](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0) 以降
 - [AzureRM-6.1.0](https://www.powershellgallery.com/packages/AzureRM/6.1.0) 以降
 > 
+
+### <a name="rbac-roles-to-manage-long-term-retention"></a>長期的な保有期間を管理するための RBAC ロール
+
+LTR バックアップを管理するには、管理者が次である必要があります。 
+- サブスクリプションの所有者または
+- **サブスクリプション** スコープの SQL Server の共同作成者ロール
+- **サブスクリプション** スコープの SQL Database の共同作成者ロール
+
+詳細な制御が必要な場合は、カスタム RBAC ロールを作成し、それらを**サブスクリプション** スコープで割り当てます。 
+
+**Get-AzureRmSqlDatabaseLongTermRetentionBackup** および **Restore-AzureRmSqlDatabase** の場合、ロールには、次のアクセス許可が必要です。
+
+Microsoft.Sql/locations/longTermRetentionBackups/read Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/read
+ 
+**Remove-AzureRmSqlDatabaseLongTermRetentionBackup** の場合、ロールには、次のアクセス許可が必要です。
+
+Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
+
 
 ### <a name="create-an-ltr-policy"></a>LTR ポリシーを作成する
 

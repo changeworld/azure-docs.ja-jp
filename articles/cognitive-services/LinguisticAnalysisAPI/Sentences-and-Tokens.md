@@ -1,22 +1,27 @@
 ---
-title: Linguistic Analysis API の文とトークン | Microsoft Docs
-description: Cognitive Services の Linguistic Analysis API での文の分割とトークン化について説明します。
+title: 文章とトークン - Linguistic Analysis API
+titlesuffix: Azure Cognitive Services
+description: Linguistic Analysis API での文の分割とトークン化について説明します。
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: 78e539f365728ad540308e9cfb07af44bf6d8fe7
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ROBOTS: NOINDEX
+ms.openlocfilehash: 289cab4999276cbfb1fa558f558ebafa8e4e3a30
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084044"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237876"
 ---
 # <a name="sentence-separation-and-tokenization"></a>文の分割とトークン化
+
+> [!IMPORTANT]
+> Linguistic Analysis プレビューは、2018 年 8 月 9 日に使用停止になりました。 テキスト処理と分析には、[Azure Machine Learning テキスト解析モジュール](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics)の使用をお勧めします。
 
 ## <a name="background-and-motivation"></a>背景と動機
 
@@ -38,7 +43,7 @@ ms.locfileid: "37084044"
 - It's important to Mr. and Mrs. Smith.
 
 文末がまったく異なる方法で示されていることに注意してください。
-最初の文の末尾は、疑問符と感嘆符の組み合わせです (感嘆修辞疑問符とも呼ばれます)。
+最初の文の末尾は、疑問符と感嘆符の組み合わせです (感嘆修辞疑問符とも呼ばれる)。
 2 番目の文の末尾はピリオドであり、その後にある引用符は前の文に含まれます。
 3 番目の文では、同じピリオドが、省略を示すためにも使用できることがわかります。
 句読点のみを確認すると有効な候補セットを得ることができますが、文の本当の境界を識別するにはそれ以上の処理が必要です。
@@ -52,7 +57,8 @@ ms.locfileid: "37084044"
 
 困難なケースもいくつかあります。
 まず、多くの場合、句読点を周囲のコンテキストから切り離す必要があります (常にではありません)。
-次に、英語には "didn't" や "it's" のような "*短縮形*" があり、複数の単語が短く省略されています。 トークナイザーの目的は、文字のシーケンスを単語に分割することです。
+次に、英語には "didn't" や "it's" のような "*短縮形*" があり、複数の単語が短く省略されています。
+トークナイザーの目的は、文字のシーケンスを単語に分割することです。
 
 上記の文の例に戻りましょう。
 ここで、個別のトークンの間に "中点" (&middot;) を配置しました。
@@ -61,9 +67,10 @@ ms.locfileid: "37084044"
 - I &middot; did &middot; n't &middot; hear &middot; about &middot; the &middot; director &middot; 's &middot; " &middot; new &middot; proposal &middot; . &middot; "
 - It &middot; 's &middot; important &middot; to &middot; Mr. &middot; and &middot; Mrs.&middot; Smith &middot; .
 
-ほとんどのトークンは辞書で見つけることができる単語です (例: *important*、*director*)。
+たいていのトークンは辞書で見つかる単語です (例: *important*、*director*)。
 それ以外は句読点です。
-さらに、*not*に対応する *n't* や、所有格を表す *'s*など短縮形を表す、一般的ではないトークンがあります。このようなトークン化によって、たとえば単語 *didn't* と句 *did not* を一貫性の高い方法で処理できるようになります。
+さらに、*not*に対する *n't* や、所有格を表す *'s*など短縮形を表す、一般的ではないトークンがあります。
+このようなトークン化によって、たとえば単語 *didn't* と句 *did not* をより整合性のとれた方法で処理できるようになります。
 
 ## <a name="specification"></a>仕様
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 09/28/2018
 ms.author: cwatson
-ms.openlocfilehash: 4b418db3c4d9876a739ce94539a6f48402332a86
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: a33a360d25930f1468f1c9240be2d0f306d682c7
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394898"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585749"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>エンタープライズ加入契約に適用される Azure の予約の使用状況について
 
@@ -51,9 +51,11 @@ ms.locfileid: "47394898"
 3. **Meter Id** は、コストが $0 の予約の測定です。 実行中の VM のコストは、予約 VM インスタンスによって支払われます。
 4. Standard_D1 は、vCPU を 1 個搭載した VM です。この VM は、Azure ハイブリッド特典なしでデプロイされます。 そのため、Windows ソフトウェアに対する追加料金は、この測定で充当されます。 D シリーズの 1 コア VM に対応する測定の確認方法については、「[Azure 予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)」を参照してください。  Azure ハイブリッド特典を利用している場合、この追加料金は適用されません。
 
-## <a name="usage-for-sql-database-reserved-capacity-reservations"></a>SQL Database の予約容量の予約の使用状況
+## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>SQL Database および Cosmos DB の予約容量の予約の使用状況
 
-以降のセクションでは、SQL Database Gen 4 が米国東部リージョンで実行され、予約情報が次の表のようになっていることを想定して説明します。
+以下のセクションでは、Azure SQL Database を例に使用して、使用状況に関するレポートについて説明します。 同じ手順を使用して、Azure Cosmos DB の使用状況を取得することもできます。 
+
+あなたは SQL Database Gen 4 を米国東部リージョンで実行していて、その予約情報が次の表のようになっていると想定します。
 
 | フィールド | 値 |
 |---| --- |
@@ -62,9 +64,9 @@ ms.locfileid: "47394898"
 |Product| SQL Database Gen 4 (2 Core)|
 |リージョン | eastus |
 
-### <a name="usage-in-csv-file-for-sql-database-reserved-capacity"></a>SQL Database の予約容量の CSV ファイルの使用状況
+### <a name="usage-in-csv-file"></a>CSV ファイルでの使用状況 
 
-**Additional Info** にフィルターを適用し、自分の**予約 ID** を入力します。 次のスクリーンショットは、予約に関連したフィールドを示しています。
+**追加情報**にフィルターを適用し、ご自分の**予約 ID** を入力してから、必要な**測定カテゴリ** (Azure SQL Database または Azure Cosmos DB) を選択します。 次のスクリーンショットは、予約に関連したフィールドを示しています。
 
 ![SQL Database 予約容量の Enterprise Agreement (EA) の CSV](./media/billing-understand-reserved-instance-usage-ea/billing-ea-sql-db-reserved-capacity-csv.png)
 
@@ -94,3 +96,4 @@ Azure の予約の詳細については、次の記事を参照してくださ�
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 
 まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+

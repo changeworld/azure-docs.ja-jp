@@ -1,5 +1,5 @@
 ---
-title: ナレッジ ベースの開発ライフサイクル - QnA Maker
+title: ナレッジ ベースのライフサイクル - QnA Maker
 titleSuffix: Azure Cognitive Services
 description: QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 5af829b3355c6d68bace959b66f9511877d08b83
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: ec5e9f92114e9bae1aaa840a1d02f5a42b2fd7bf
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040916"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857173"
 ---
 # <a name="knowledge-base-lifecycle"></a>ナレッジ ベースのライフサイクル
 QnA Maker は、モデル変更、音声例、公開、エンドポイント クエリからのデータ収集の最適な反復サイクルを学習します。 

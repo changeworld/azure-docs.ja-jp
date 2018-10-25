@@ -1,21 +1,21 @@
 ---
-title: ランキングを使用して回答を表示する | Microsoft Docs
+title: ランキングを使用した回答の表示 - Bing Entity Search
+titlesuffix: Azure Cognitive Services
 description: Bing Entity Search API が返す回答を、ランキングを使用して表示する方法を説明します。
 services: cognitive-services
 author: v-jerkin
-manager: ehansen
-ms.assetid: BBF87972-B6C3-4910-BB52-DE90893F6C71
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-entity-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: v-jerkin
-ms.openlocfilehash: 53354c0f78419a37e8896bb4d00e0d7aebf32203
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 4a336ccaea18ab84464f28aef170ccdc423b216d
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37059993"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48814595"
 ---
 # <a name="using-ranking-to-display-results"></a>ランキングを使用して結果を表示する  
 

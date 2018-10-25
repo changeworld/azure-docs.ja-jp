@@ -3,7 +3,7 @@ title: Azure Marketplace および AppSource のサポート | Azure
 description: Azure Marketplace と AppSource のサポート情報とリンク
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
-author: ellacroi
+author: yijenj
 manager: nunoc
 editor: ''
 ms.assetid: ''
@@ -12,27 +12,27 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 07/02/2018
-ms.author: ellacroi
-ms.openlocfilehash: 0007396ad6d5fc16177d76683f959591e9830ac3
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.date: 10/05/2018
+ms.author: yijenj
+ms.openlocfilehash: 884432d5604868ad2307a7d7ababa3e5a004a982
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782078"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48854067"
 ---
 # <a name="support-for-the-marketplace"></a>サポート (Marketplace)  
 Marketplace のサポート オプションです。  
 
 ## <a name="onboarding"></a>オンボード
 
-作業の開始に関するすべての問題を解決するには、Microsoft サポートで "Marketplace Onboarding" の[チケットを開きます](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)。
+オンボードおよび作業の開始に関するすべての問題を解決するには、Microsoft の [Marketplace 発行者のサポート](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820)のチケットを開きます。
 
 ## <a name="cloud-partner-portal"></a>クラウド パートナー ポータル  
 
 | サポート窓口 | 説明 | 可用性 |  
 |:--- |:--- |:--- |  
-| サポート<ul> <li>詳細については、[go.microsoft.com/fwlink/?linkid=844975](https://go.microsoft.com/fwlink/?linkid=844975) にある [インシデントの作成] ページを参照してください。</li> </ul> | クラウド パートナー ポータルのサポート。 | 日中でも夜間でもサポートが常に提供されます。 |  
+| 詳細については、[Marketplace のサポート](https://go.microsoft.com/fwlink/?linkid=844975) にある [インシデントの作成] ページを参照してください</li> </ul> | クラウド パートナー ポータルのサポート。 | サポートは午前 6 時から午後 6 時 (太平洋標準時) の間に提供されます。 |  
 
 ## <a name="technical"></a>技術  
 
@@ -42,6 +42,7 @@ Marketplace のサポート オプションです。
 | MSDN フォーラム: [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) にある Marketplace | Microsoft Developer Network のフォーラム。 |  
 | Stack Overflow: [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) にある Azure | ソリューションを取得し、Azure Marketplace に関連するあらゆることについて質問するための Stack Overflow 環境。<ul> <li>Stack Overflow: [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace) にある Azure Marketplace</li> <li>Stack Overflow: [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager) にある Azure Resource Manager</li> <li>Stack Overflow: [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine) にある Virtual Machines on Azure</li> <li>Stack Overflow: [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container) にある Containers on Azure</li> </ul> |
 | サポート (AppSource): [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Dynamics アプリの発行のサポート |
+
 ## <a name="marketing-resources"></a>マーケティング リソース  
 
 | サポート窓口 | 説明 | 可用性 |  

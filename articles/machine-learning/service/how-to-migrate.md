@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 0c5cfcee65b176147125dd2edbff2497b1eee70b
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 9778d348cf49d4066f034931dc350a1f4a608ad2
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158566"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236586"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>最新バージョンの Azure Machine Learning サービスに移行する 
 
@@ -52,7 +52,7 @@ Azure Machine Learning サービスの最初のプレビューで作成された
 
 実験アカウント、モデル管理アカウント、および Machine Learning コンピューティング環境などのリソースは、最新バージョンの Azure Machine Learning サービスに移行できません。 アセットがどのくらいの期間機能し続けるかについては、[タイムライン](overview-what-happened-to-workbench.md#timeline)を参照してください。
 
-[Azure portal ](quickstart-get-started.md)で Azure Machine Learning ワークスペースを作成することで、最新バージョンを開始します。 ポータルのワークスペース ダッシュボードは、Edge、Chrome、および Firefox ブラウザーでのみでサポートされます。
+[Azure portal ](quickstart-get-started.md)で Azure Machine Learning サービス ワークスペースを作成することで、最新バージョンを開始します。 ポータルのワークスペース ダッシュボードは、Edge、Chrome、および Firefox ブラウザーでのみでサポートされます。
 
 この新しいワークスペースは最上位のサービス リソースであり、Azure Machine Learning サービスのすべての最新機能を使用することができます。 このワークスペースとアーキテクチャの詳細については、[こちら](concept-azure-machine-learning-architecture.md)をご覧ください。
 

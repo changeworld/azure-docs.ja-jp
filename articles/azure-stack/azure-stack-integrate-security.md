@@ -10,12 +10,12 @@ ms.date: 08/14/2018
 ms.author: patricka
 ms.reviewer: fiseraci
 keywords: ''
-ms.openlocfilehash: 8e59f2e7e2fceda7f30e12571cd9e2a552f76231
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: d46fd8f5ea00ee1fc1ee5f7bf09a15dd6af5ba50
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41947961"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785581"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Azure Stack データセンターの統合 - Syslog 転送
 
@@ -23,8 +23,8 @@ ms.locfileid: "41947961"
 
 1805 更新プログラム以降、Azure Stack には統合された Syslog クライアントが装備され、このクライアントを構成すると、共通イベント形式 (CEF) のペイロードによる Syslog メッセージが送信されます。 
 
-> [!IMPORTANT]
-> Syslog 転送はプレビュー段階です。 運用環境では使用しないでください。 
+> [!IMPORTANT] 
+> Syslog 転送はプレビュー段階です。 運用環境では使用しないでください。  
 
 次の図は、Syslog 統合に関与する主要なコンポーネントを示します。
 
@@ -62,14 +62,14 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 
 *Set-SyslogServer* コマンドレットのパラメーター:
 
-| パラメーター | 説明 | type |
-|---------|---------| ---------|
-| *ServerName* | Syslog サーバーの FQDN または IP アドレス | String |
-|*NoEncryption*| クライアントに Syslog メッセージを強制的にクリア テキストで送信させます | フラグ | 
-|*SkipCertificateCheck*| 初期 TLS ハンドシェイク時に Syslog サーバーによって提供された証明書の検証をスキップします | フラグ |
-|*SkipCNCheck*| 初期 TLS ハンドシェイク時に Syslog サーバーによって提供された証明書の共通名値の検証をスキップします | フラグ |
-|*UseUDP*| トランスポート プロトコルとして UDP を使用して、Syslog を使用します |フラグ |
-|*Remove*| クライアントからサーバーの構成を削除し、Syslog 転送を停止します| フラグ |
+| パラメーター | 説明 | データ型 | 必須 |
+|---------|---------|---------|---------|
+|*ServerName* | Syslog サーバーの FQDN または IP アドレス | String | はい|
+|*NoEncryption*| クライアントに Syslog メッセージを強制的にクリア テキストで送信させます | フラグ | ×|
+|*SkipCertificateCheck*| 初期 TLS ハンドシェイク時に Syslog サーバーによって提供された証明書の検証をスキップします | フラグ | ×|
+|*SkipCNCheck*| 初期 TLS ハンドシェイク時に Syslog サーバーによって提供された証明書の共通名値の検証をスキップします | フラグ | ×|
+|*UseUDP*| トランスポート プロトコルとして UDP を使用して、Syslog を使用します |フラグ | ×|
+|*Remove*| クライアントからサーバーの構成を削除し、Syslog 転送を停止します| フラグ | ×|
 
 *Set-SyslogClient* コマンドレットのパラメーター:
 | パラメーター | 説明 | type |
@@ -86,6 +86,7 @@ Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCe
 > Microsoft は、運用環境ではこの構成を使用するよう強くお勧めします。 
 
 TCP、相互認証、TLS 1.2 暗号化を使用した Syslog 転送を構成するには、次の両方のコマンドレットを実行します。
+
 ```powershell
 # Configure the server
 Set-SyslogServer -ServerName <FQDN or ip address of syslog server>
@@ -93,10 +94,11 @@ Set-SyslogServer -ServerName <FQDN or ip address of syslog server>
 # Provide certificate to the client to authenticate against the server
 Set-SyslogClient -pfxBinary <Byte[] of pfx file> -CertPassword <SecureString, password for accessing the pfx file>
 ```
+
 クライアント証明書には、Azure Stack のデプロイ中に提供されたものと同じルートが必要です。 これには秘密キーを含める必要もあります。
 
 ```powershell
-##Example on how to set your syslog client with the ceritificate for mutual authentication. 
+##Example on how to set your syslog client with the certificate for mutual authentication.
 ##Run these cmdlets from your hardware lifecycle host or privileged access workstation.
 
 $ErcsNodeName = "<yourPEP>"
@@ -138,15 +140,15 @@ Set-SyslogServer -ServerName <FQDN or ip address of syslog server>
 Syslog サーバーと Azure Stack クライアントの統合をテストするときに、自己署名証明書や信頼されていない証明書を使用する場合は、次のフラグを使用して、初期ハンドシェイク時にクライアントによって実行されるサーバー検証をスキップできます。
 
 ```powershell
- #Skip validation of the Common Name value in the server certificate. Use this flag if you provide an IP address for your syslog server
- Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -SkipCNCheck
+#Skip validation of the Common Name value in the server certificate. Use this flag if you provide an IP address for your syslog server
+Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -SkipCNCheck 
  
- #Skip entirely the server certificate validation
- Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -SkipCertificateCheck
+#Skip entirely the server certificate validation
+Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -SkipCertificateCheck
 ```
+
 > [!IMPORTANT]
 > Microsoft は、運用環境には -SkipCertificateCheck フラグを使用しないようお勧めします。 
-
 
 ### <a name="configuring-syslog-forwarding-with-tcp-and-no-encryption"></a>TCP を使用した暗号化なしの Syslog 転送の構成
 
@@ -155,6 +157,7 @@ Syslog サーバーと Azure Stack クライアントの統合をテストする
 ```powershell
 Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -NoEncryption
 ```
+
 > [!IMPORTANT]
 > Microsoft は、運用環境ではこの構成を使用しないようお勧めします。 
 
@@ -166,6 +169,7 @@ Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -NoEncryption
 ```powershell
 Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -UseUDP
 ```
+
 暗号化を使用しない UDP は構成が最も簡単ですが、中間者攻撃やメッセージの傍受に対する保護機能はありません。 
 
 > [!IMPORTANT]
@@ -218,13 +222,14 @@ CEF ペイロードは、以下の構造に基づいていますが、各フィ�
 ```CEF
 # Common Event Format schema
 CEF: <Version>|<Device Vendor>|<Device Product>|<Device Version>|<Signature ID>|<Name>|<Severity>|<Extensions>
-* Version: 0.0 
+* Version: 0.0
 * Device Vendor: Microsoft
 * Device Product: Microsoft Azure Stack
 * Device Version: 1.0
 ```
 
 ### <a name="cef-mapping-for-windows-events"></a>Windows イベントの CEF マッピング
+
 ```
 * Signature ID: ProviderName:EventID
 * Name: TaskName
@@ -232,7 +237,7 @@ CEF: <Version>|<Device Vendor>|<Device Product>|<Device Version>|<Signature ID>|
 * Extension: Custom Extension Name (for details, see the Custom Extension table below)
 ```
 
-Windows イベントの重大度の表: 
+Windows イベントの重大度の表:
 | CEF 重大度の値 | Windows イベント レベル | 数値 |
 |--------------------|---------------------| ----------------|
 |0|Undefined|値: 0。 すべてのレベルのログを示します|
@@ -270,12 +275,14 @@ Azure Stack における Windows イベントのカスタム拡張機能の表:
 |MasVersion|0|
 
 ### <a name="cef-mapping-for-alerts-created"></a>作成されたアラートの CEF マッピング
+
 ```
 * Signature ID: Microsoft Azure Stack Alert Creation : FaultTypeId
 * Name: FaultTypeId : AlertId
 * Severity: Alert Severity (for details, see alerts severity table below)
 * Extension: Custom Extension Name (for details, see the Custom Extension table below)
 ```
+
 アラートの重大度の表:
 | severity | Level |
 |----------|-------|
@@ -286,9 +293,10 @@ Azure Stack における Windows イベントのカスタム拡張機能の表:
 Azure Stack における作成されたアラートのカスタム拡張機能の表:
 | カスタム拡張機能名 | 例 | 
 |-----------------------|---------|
-|MasEventDescription|説明: ユーザー アカウント \<TestUser\> が \<TestDomain\> に対して作成されました。 これは潜在的なセキュリティ リスクです。 -- 解決策: サポートにお問い合わせください。 この問題を解決するにはカスタマー サポートが必要です。 サポートを受けずに、この問題を解決しようとしないでください。 サポート要求を開く前に、https://aka.ms/azurestacklogfiles のガイダンスを使用してログ ファイルの収集プロセスを開始してください |
+|MasEventDescription|説明: ユーザー アカウント \<TestUser\> が \<TestDomain\> に対して作成されました。 これは潜在的なセキュリティ リスクです。 -- 解決策: サポートにお問い合わせください。 この問題を解決するにはカスタマー サポートが必要です。 サポートを受けずに、この問題を解決しようとしないでください。 サポート要求を開く前に、 https://aka.ms/azurestacklogfiles のガイダンスを使用してログ ファイルの収集プロセスを開始してください |
 
 ### <a name="cef-mapping-for-alerts-closed"></a>解決されたアラートの CEF マッピング
+
 ```
 * Signature ID: Microsoft Azure Stack Alert Creation : FaultTypeId
 * Name: FaultTypeId : AlertId
@@ -299,6 +307,7 @@ Azure Stack における作成されたアラートのカスタム拡張機能�
 ```
 2018:05:17:-23:59:28 -07:00 TestHost CEF:0.0|Microsoft|Microsoft Azure Stack|1.0|3|TITLE: User Account Created -- DESCRIPTION: A user account \<TestUser\> was created for \<TestDomain\>. It's a potential security risk. -- REMEDIATION: Please contact Support. Customer Assistance is required to resolve this issue. Do not try to resolve this issue without their assistance. Before you open a support request, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles|10
 ```
+
 ## <a name="next-steps"></a>次の手順
 
 [サービス ポリシー](azure-stack-servicing-policy.md)

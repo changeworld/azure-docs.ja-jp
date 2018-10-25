@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/26/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 1df237a65a8b5312b20de19a99399b3a3dd075ff
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 76da33a74ad95d7f074bc4efd3a8d9f97c19d612
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049612"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48830314"
 ---
 # <a name="moving-data-to-and-from-azure-storage"></a>Azure Storage との間でのデータの移動
 オンプレミスのデータを Azure Storage に (またはその逆に) 移動する場合は、さまざまな方法があります。 最適な方法は、シナリオによって異なります。 この記事では、さまざまなシナリオとそれぞれに適した手段の概要を説明します。
@@ -38,7 +38,7 @@ Azure Storage のデータを簡単に表示するだけでなく、データの
 ### <a name="azcopy"></a>AzCopy
 AzCopy は、Azure Storage との間で高パフォーマンスのデータ コピーを行うように設計されたコマンドライン ユーティリティです。 同じストレージ アカウント内または異なるストレージ アカウント間でデータをコピーすることもできます。 AzCopy には [Windows](storage-use-azcopy.md) 版と [Linux](storage-use-azcopy-linux.md) 版があります。
 
-詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」または「[AzCopy on Linux を使用したデータの転送](storage-use-azcopy-linux.md)」を参照してください。
+オンプレミスのデータを Azure Storage に移行する方法については、「[チュートリアル: AzCopy を使用したオンプレミス データのクラウド ストレージへの移行](storage-use-azcopy-migrate-on-premises-data.md)」を参照してください。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Azure PowerShell は、Azure でサービスを管理するためのコマンドレットを提供するモジュールです。 タスク ベースのコマンドライン シェルであり、特にシステム管理用に設計されたスクリプト言語です。

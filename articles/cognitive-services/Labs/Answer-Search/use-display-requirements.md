@@ -1,20 +1,21 @@
 ---
-title: Project Answer Search の使用と表示に関する要件 - Microsoft Cognitive Services | Microsoft Docs
+title: 要件の使用と表示 - Project Answer Search
+titlesuffix: Azure Cognitive Services
 description: Project Answer Search エンドポイントの使用と表示に関する要件。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: project-answer-search
-ms.topic: article
+ms.component: project-answer-search
+ms.topic: conceptual
 ms.date: 04/13/2018
-ms.author: rosh, v-gedod
-ms.openlocfilehash: 6e8eaaaa2c83a1420f2de86b23e15f4f19f7a565
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.author: rosh
+ms.openlocfilehash: 0869833ec83c40f061bebf1aeb1267f44dcbb048
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35376408"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868249"
 ---
 # <a name="project-answer-search-use-and-display-requirements"></a>Project Answer Search の使用と表示に関する要件
 
@@ -35,7 +36,7 @@ ms.locfileid: "35376408"
 - "Search API" とは、Bing Custom Search API、Bing Entity Search API、Bing Image Search API、Bing News Search API、Bing Video Search API、Bing Visual Search API、および Bing Web Search API を総称したものを指します。 
 
 
-## <a name="3-search-apis"></a>3.Search API
+## <a name="3-search-apis"></a>手順 3.Search API
 
 このセクション 3 に示した要件は、Search API に適用されます。
 
@@ -62,7 +63,7 @@ ms.locfileid: "35376408"
 
 - ユーザーが検索クエリを入力できるユーザー エクスペリエンス (UX) の近くの目立つ位置に、Microsoft のプライバシーに関する声明 https://go.microsoft.com/fwlink/?LinkId=521839 をリンク先とする有効なハイパーリンクを配置してください。 そのハイパーリンクのラベルは、"Microsoft のプライバシーに関する声明" とします。
 - ユーザーが検索クエリを入力できるユーザー エクスペリエンス (UX) の近くの目立つ位置に、ガイドライン https://go.microsoft.com/fwlink/?linkid=833278 に従って Bing のブランド表示を配置してください。  配置するブランド表示では、インターネット検索エクスペリエンスに Microsoft の技術を利用していることをユーザーに明確に示す必要があります。
-- Bing Web、Image、News、Video API により表示される応答 (または応答の一部) のそれぞれには、https://go.microsoft.com/fwlink/?linkid=833278 に記載されているとおり、Microsoft の名を示した帰属表示を掲載することができます。ただし、お客様による利用について Microsoft が書面により別段の指定をした場合には、この限りではありません。 
+- Bing Web、Image、News、Video API により表示される応答 (または応答の一部) のそれぞれには、 https://go.microsoft.com/fwlink/?linkid=833278 に記載されているとおり、Microsoft の名を示した帰属表示を掲載することができます。ただし、お客様による利用について Microsoft が書面により別段の指定をした場合には、この限りではありません。 
 - Bing Custom Search API により表示される応答 (または応答の一部) には、Microsoft の名を示した帰属表示を掲載しないでください。ただし、お客様による特定の利用について Microsoft が書面により別段の指定をした場合には、この限りではありません。
 
 

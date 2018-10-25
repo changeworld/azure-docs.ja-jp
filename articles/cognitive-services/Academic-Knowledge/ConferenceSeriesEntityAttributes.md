@@ -1,20 +1,21 @@
 ---
-title: Academic Knowledge API の会議 (シリーズ) エンティティの属性 | Microsoft Docs
-description: Cognitive Services の会議 (シリーズ) エンティティで使用できる属性について説明します。
+title: 会議 (シリーズ) エンティティの属性 - Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: 会議 (シリーズ) エンティティで使用できる属性について説明します。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: 332736c927bdaa00334546f626a6eabb8e11d3b5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f9f28afd7005d7a61aa0d2f4dba69ca598034b52
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372712"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900750"
 ---
 # <a name="conference-series-entity"></a>会議 (シリーズ) エンティティ
 

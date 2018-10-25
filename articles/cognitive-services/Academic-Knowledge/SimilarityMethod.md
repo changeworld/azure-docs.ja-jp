@@ -1,20 +1,21 @@
 ---
-title: Academic Knowledge API の Similarity メソッド | Microsoft Docs
-description: Similarity メソッドを使用すると、Microsoft Cognitive Services の 2 つの文字列の学術的な類似度を計算できます。
+title: Similarity メソッド - Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: Similarity メソッドを使用すると、2 つの文字列の学術的な類似度を計算できます。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 472498d6bfe06ae4477a30f892d44e79c901acf5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 76e86eb78a06d98e3d5c6c54b244add3c0c245d2
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372752"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48900463"
 ---
 # <a name="similarity-method"></a>Similarity メソッド
 
@@ -42,7 +43,7 @@ Name | 説明
 ## <a name="successerror-conditions"></a>成功/エラー条件
 HTTP の状態 | 理由 | Response
 -----------|----------|--------
-**200**         |成功 | 浮動小数点数
+**200**         |Success | 浮動小数点数
 **400**         | 不適切な要求または要求が無効です | エラー メッセージ      
 **500**         |内部サーバー エラー | エラー メッセージ
 **Timed out**     | 要求がタイムアウトしました。  | エラー メッセージ

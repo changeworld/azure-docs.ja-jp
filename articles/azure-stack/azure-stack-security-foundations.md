@@ -1,31 +1,30 @@
 ---
-title: Azure Stack セキュリティ コントロールを理解する | Microsoft Docs
+title: Azure Stack セキュリティ コントロールを理解する
 description: サービス管理者として、Azure Stack に適用されるセキュリティ コントロールについて学びます。
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: PatAltimore
 manager: femila
 editor: ''
-ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
-ms.author: mabrigg
-ms.openlocfilehash: a3bd314a1df3c45c76b2e3a5acb31c1474d0fdf5
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 10/9/2018
+ms.author: patricka
+ms.openlocfilehash: 32c268c1e4a0ff4d17c5b03f0ffd33b0ddf5b927
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39011253"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901483"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack インフラストラクチャのセキュリティ体制
 
 *適用対象: Azure Stack 統合システム*
 
-セキュリティに関する考慮事項と法令遵守規定は、ハイブリッド クラウドを使用する際の中核となる推進力です。 Azure Stack は、これらのシナリオを実現するために設計されており、Azure Stack の導入時には、既に実行されているコントロールを理解することが重要です。
+セキュリティに関する考慮事項と法令遵守規定は、ハイブリッド クラウドを使用する際の中核となる推進力です。 Azure Stack は、これらのシナリオに適しています。 この記事では、Azure Stack 用のセキュリティ コントロールについて説明します。
 
 Azure Stack には、2 つのセキュリティ体制レイヤーが共存しています。 1 つ目のレイヤーは Azure Stack インフラストラクチャであり、Azure Resource Manager へのハードウェア コンポーネントを含みます。 1 つ目のレイヤーには、管理者ポータルおよびテナント ポータルが含まれています。 2 つ目のレイヤーは、テナントによって作成、デプロイ、および管理されるワークロードで構成されています。 2 つ目のレイヤーには、仮想マシンおよび App Services の Web サイトなどの項目が含まれています。
 
@@ -58,7 +57,7 @@ Azure Stack インフラストラクチャは、パスワードなど、さま�
 ## <a name="code-integrity"></a>コードの整合性
 Azure Stack スタックは、最新の Windows Server 2016 セキュリティ機能を使用します。 これらの 1 つに Windows Defender Device Guard があります。この機能は、アプリケーション ホワイトリスト登録を提供し、Azure Stack インフラストラクチャ内では、承認済みのコードだけが実行されることを保証します。 
 
-承認済みのコードは Microsoft または OEM パートナーのいずれかによって署名され、Microsoft が定義したポリシーで指定されている認定ソフトウェアのリストに含まれています。 つまり、Azure Stack インフラストラクチャでの実行が承認されているソフトウェアのみを実行することができます。 未承認のコードを実行しようとしてもブロックされ、監査が生成されます。
+承認済みのコードは Microsoft または OEM パートナーのいずれかによって署名されます。 署名され認証されたコードは、Microsoft が定義したポリシーで指定されている認定ソフトウェアのリストに含まれています。 つまり、Azure Stack インフラストラクチャでの実行が承認されているソフトウェアのみを実行することができます。 未承認のコードを実行しようとしてもブロックされ、監査が生成されます。
 
 Device Guard ポリシーは、Azure Stack インフラストラクチャでサード パーティ製のエージェントまたはソフトウェアを実行することを禁止しています。
 
@@ -68,7 +67,7 @@ Azure Stack の別の Windows Server 2016 セキュリティ機能として Wind
 ## <a name="antimalware"></a>マルウェア対策
 Azure Stack (HYPER-V ホストと Virtual Machines の両方) のすべてのコンポーネントは、Windows Defender Antivirus によって保護されています。
 
-接続されているシナリオでは、ウィルス治作の定義とエンジンの更新プログラムが、1 日に複数回適用されます。 接続されていないシナリオでは、マルウェア対策の更新プログラムが、月次の Azure Stack 更新プログラムの一部として適用されます。 詳細については、「[Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md)」 (Azure Stack 上で Windows Defender ウイルス対策を更新する) を参照してください。
+接続されているシナリオでは、ウィルス治作の定義とエンジンの更新プログラムが、1 日に複数回適用されます。 接続されていないシナリオでは、マルウェア対策の更新プログラムが、月次の Azure Stack 更新プログラムの一部として適用されます。 詳細については、「[Azure Stack 上で Windows Defender ウイルス対策を更新する](azure-stack-security-av.md)」を参照してください。
 
 ## <a name="constrained-administration-model"></a>制約付き管理モデル
 Azure Stack 内の管理は、それぞれが特定の目的をもつ、次の 3 つのエントリ ポイントを使用して制御されます。 
@@ -84,6 +83,20 @@ Azure Stack インフラストラクチャには、ネットワーク アクセ�
 2.  ソフトウェア定義ネットワーク
 3.  ホストおよび VM のオペレーティング システムのファイアウォール
 
+## <a name="regulatory-compliance"></a>規制に対するコンプライアンス
+
+Azure Stack はサード パーティの独立した監査法人による正式な評価を受けています。 その結果、Azure Stack インフラストラクチャが、いくつかの主要なコンプライアンス標準からの、該当するコントロールを満たす方法を示した文書を入手できます。 このドキュメントは、複数の担当者に関連する、およびプロセスに関連するコントロールを含む標準により、Azure Stack の認定資格ではありません。 代わりに、お客様は、このドキュメントを利用して、認定プロセスをすぐに開始できます。
+
+評価は次のような標準が含まれます。
+
+- [PCI DSS](https://www.pcisecuritystandards.org/pci_security/) ペイメント カード業界に対応します。
+- [CSA Cloud Control Matrix](https://cloudsecurityalliance.org/group/cloud-controls-matrix/#_overview) は、FedRAMP Moderate、ISO27001、HIPAA、HITRUST、ITAR、NIST SP800-53 などの複数の標準間での包括的なマッピングです。
+- 政府顧客向け [FedRAMP High](https://www.fedramp.gov/fedramp-releases-high-baseline/)。
+
+このコンプライアンス ドキュメントは [Microsoft Service Trust Portal](https://servicetrust.microsoft.com/ViewPage/Blueprint) で確認できます。 コンプライアンス ガイドは、保護されたリソースであり、Azure クラウド サービスの資格情報でサインインする必要があります。
+
 ## <a name="next-steps"></a>次の手順
 
 - [Azure Stack でシークレットをローテーションする方法を確認する](azure-stack-rotate-secrets.md)
+- [Azure Stack 用の PCI-DSS および CSA-CCM ドキュメント ](https://servicetrust.microsoft.com/ViewPage/TrustDocuments)
+- [Azure Stack 用の DoD および NIST ドキュメント](https://servicetrust.microsoft.com/ViewPage/Blueprint)

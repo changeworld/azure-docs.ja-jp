@@ -1,20 +1,21 @@
 ---
-title: Custom Search エンドポイント | Microsoft Docs
-description: Custom Search API エンドポイントの概要。
+title: Bing Custom Search エンドポイント
+titlesuffix: Azure Cognitive Services
+description: Bing Custom Search API エンドポイントの概要。
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-custom-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: v-gedod
-ms.openlocfilehash: 8d9851f3687a783f52a80a8dffcf2580d4710551
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: da448cdeaf6fcbe10cba8e5e2613214f8e0cee18
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35374728"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815190"
 ---
 # <a name="custom-search"></a>カスタム検索
 Bing Custom Search を使用すると、関心のあるトピックに合わせてカスタマイズした検索エクスペリエンスを作成できます。 ユーザーは、関係のないコンテンツが含まれる検索結果のページを移動し続けるのではなく、関心のあるコンテンツに合わせてカスタマイズされた検索結果を参照できます。
