@@ -1,20 +1,21 @@
 ---
 title: カスタム音声を作成するための音声サンプルを録音する
-titleSuffix: Microsoft Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: しっかりした台本を準備し、優秀なボイス タレントを採用し、プロフェッショナルなやり方で録音することによって、プロダクション品質のカスタム音声を作成します。
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/5/2018
 ms.author: erhopf
-ms.openlocfilehash: 0051cc480a26ffc3668f922d1af9fc9cd7af1f49
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: b1b189db56eb3f70f23940a8612d310d2ba8566f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167173"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471188"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>カスタム音声を作成するための音声サンプルを録音する
 

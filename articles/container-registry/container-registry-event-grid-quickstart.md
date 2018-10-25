@@ -2,18 +2,17 @@
 title: クイック スタート - Event Grid への Azure Container Registry イベントの送信
 description: このクイック スタートでは、ご自身のコンテナー レジストリの Event Grid イベントを有効にして、コンテナー イメージの push イベントおよび delete イベントをサンプル アプリケーションに送信します。
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
-ms.author: marsma
-ms.openlocfilehash: 6ff83885ba80f0399f7b085970b1191e8e4cd999
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.author: danlep
+ms.openlocfilehash: 88265ee6f8a340909880ba70bd9f37a49ef85bf5
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746510"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857365"
 ---
 # <a name="quickstart-send-container-registry-events-to-event-grid"></a>クイック スタート - Event Grid へのコンテナー レジストリ イベントの送信
 
@@ -141,20 +140,20 @@ az eventgrid event-subscription create \
 
 ## <a name="trigger-registry-events"></a>レジストリ イベントのトリガー
 
-サンプル アプリが稼働し、Event Grid でご自身のレジストリをサブスクライブしたら、いつでもイベントを生成できます。 このセクションでは、ACR Build を使用して、コンテナー イメージを作成し、レジストリにプッシュします。 ACR Build は Azure Container Registry の一機能で、これによりクラウドでコンテナー イメージを作成できます。お使いのローカル コンピューターに Docker エンジンをインストールする必要はありません。
+サンプル アプリが稼働し、Event Grid でご自身のレジストリをサブスクライブしたら、いつでもイベントを生成できます。 このセクションでは、ACR タスクを使用して、コンテナー イメージを作成し、レジストリにプッシュします。 ACR タスクは Azure Container Registry の一機能で、これによりクラウドでコンテナー イメージを作成できます。お使いのローカル コンピューターに Docker エンジンをインストールする必要はありません。
 
 ### <a name="build-and-push-image"></a>イメージの作成とプッシュ
 
-次の Azure CLI コマンドを実行して、GitHub リポジトリのコンテンツからコンテナー イメージを作成します。 既定では、正常に作成されたイメージは、ACR Build によりご自身のレジストリに自動的にプッシュされ、これにより `ImagePushed` イベントが生成されます。
+次の Azure CLI コマンドを実行して、GitHub リポジトリのコンテンツからコンテナー イメージを作成します。 既定では、正常に作成されたイメージは、ACR タスクによりご自身のレジストリに自動的にプッシュされ、これにより `ImagePushed` イベントが生成されます。
 
 ```azurecli-interactive
-az acr build --registry $ACR_NAME --image myimage:v1 https://github.com/Azure-Samples/acr-build-helloworld-node.git
+az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 ```
 
-ご自身のイメージが ACR Build によって作成およびプッシュされている間は、次のような出力が表示されます。 簡潔にするため、次のサンプル出力は省略されています。
+ご自身のイメージが ACR タスクによって作成およびプッシュされている間は、次のような出力が表示されます。 簡潔にするため、次のサンプル出力は省略されています。
 
 ```console
-$ az acr build -r $ACR_NAME --image myimage:v1 https://github.com/Azure-Samples/acr-build-helloworld-node.git
+$ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 Sending build context to ACR...
 Queued a build with build ID: aa2
 Waiting for build agent...
@@ -227,10 +226,10 @@ Azure Container Registry イベント メッセージのスキーマ リファ�
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、コンテナー レジストリをデプロイし、ACR Build でイメージを作成した後、それを削除しました。また、サンプル アプリケーションで Event Grid からご自身のレジストリのイベントを使用しました。 次は、ACR Build のチュートリアルを進め、基本イメージの更新での自動作成など、クラウドでのコンテナー イメージ作成の詳細について確認します。
+このクイック スタートでは、コンテナー レジストリをデプロイし、ACR タスクでイメージを作成した後、それを削除しました。また、サンプル アプリケーションで Event Grid からご自身のレジストリのイベントを使用しました。 次は、ACR タスクのチュートリアルを進め、基本イメージの更新での自動作成など、クラウドでのコンテナー イメージ作成の詳細について確認します。
 
 > [!div class="nextstepaction"]
-> [ACR Build を使用したクラウドでのコンテナー イメージの作成](container-registry-tutorial-quick-build.md)
+> [ACR タスクを使用したクラウドでのコンテナー イメージの作成](container-registry-tutorial-quick-task.md)
 
 <!-- IMAGES -->
 [sample-app-01]: ./media/container-registry-event-grid-quickstart/sample-app-01.png

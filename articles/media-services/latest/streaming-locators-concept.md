@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 1757ca84e7390f1ecd2d6d1e90a085372d3e4c57
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 56e9a0b4eec347d2367c38ab00c6c9d9dca60752
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380924"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986898"
 ---
 # <a name="streaming-locators"></a>ストリーミング ロケーター
 
@@ -26,7 +26,7 @@ ms.locfileid: "49380924"
 
 次の表は、StreamingLocator のプロパティとそれらの定義を示しています。
 
-|名前|型|説明|
+|Name|type|説明|
 |---|---|---|
 |id |string|リソースの完全修飾リソース ID。|
 |name   |string|リソースの名前。|
@@ -65,7 +65,7 @@ Media Services は、ストリーミング ロケーター用の次の OData ク
 
 次の表は、これらのオプションを StreamingLocator プロパティに適用できる方法を示しています。 
 
-|名前|フィルター|順序|
+|Name|filter|順序|
 |---|---|---|
 |id |||
 |name|eq、ne、ge、le、gt、lt|昇順および降順|
@@ -103,7 +103,7 @@ while (currentPage.NextPageLink != null)
 }
 ```
 
-REST の例については、[ストリーミング ロケーターの一覧](https://docs.microsoft.com/rest/api/media/streaminglocators/streaminglocators_list)に関する記事を参照してください
+REST の例については、[ストリーミング ロケーターの一覧](https://docs.microsoft.com/rest/api/media/streaminglocators/list)に関する記事を参照してください
 
 ## <a name="next-steps"></a>次の手順
 

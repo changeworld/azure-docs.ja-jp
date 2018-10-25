@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: ecd58779262f6580287e6c72d3aa2aecf237a562
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 35027b4eadba72776fd27826a389763cc0832eee
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983108"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044316"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -84,7 +84,7 @@ ms.locfileid: "45983108"
 * スケールの設定
 * Web ジョブ スケジューラ
 
-アプリ設定や接続文字列をスロット固有として構成する (スワップされないようにする) には、特定のスロットの **[アプリケーション設定]** ブレードにアクセスし、スロット固有にする構成要素の **[スロット設定]** ボックスを選択します。 構成要素をスロット固有としてマークすると、そのアプリに関連付けられたすべてのデプロイ スロットにわたってその要素がスワップできなくなります。
+アプリ設定または接続文字列をスロット固有として (スワップされないように) 構成するには、特定のスロットの **[アプリケーションの設定]** ブレードにアクセスし、スロット固有にする構成要素の **[スロット設定]** ボックスをオンにします。 構成要素をスロット固有としてマークすると、そのアプリに関連付けられたすべてのデプロイ スロットにわたってその要素がスワップできなくなります。
 
 ![スロットの設定][SlotSettings]
 

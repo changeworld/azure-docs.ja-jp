@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: 73bc8b6954470d11d6369bc733bb7c6f794ce892
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d900c9c438ed40841639d556643a231075f4f194
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577134"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249589"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事では、Azure Data Factory に関してよく寄せられる質問に対する回答を示します。  
@@ -83,7 +83,7 @@ SSIS ワークロードを移動する場合は、データ ファクトリを�
 -   Managed Instance (MI)
 -   エラスティック プール
 -   クラシック VNet およびその上位の Azure Resource Manager Virtual Network (VNet) のサポート。クラシック VNet は将来廃止されます。これにより、Azure-SSIS 統合ランタイム (IR) を VNet サービス エンドポイント/MI/オンプレミスのデータ アクセスを使用して Azure SQL DB に構成された VNet に挿入および結合できます。詳しくは、 https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network をご覧ください。 
--   SSISDB に接続するための SQL 認証およびその上位の Azure Active Directory (AAD) のサポート。これにより、ADF マネージド サービス ID (MSI) で AAD 認証を使用できます。
+-   SSISDB に接続するための SQL 認証をベースにした Azure Active Directory (AAD) 認証のサポート。これにより、Azure リソースの ADF マネージド ID で AAD 認証を使用できます。
 -   独自のオンプレミスの SQL Server ライセンスの利用のサポート。Azure ハイブリッド特典 (AHB) オプションから実質的なコスト削減を得られます。
 -   Azure-SSIS IR のエンタープライズ エディションのサポート。これにより、高度な機能やプレミアム機能、追加のコンポーネントや拡張機能をインストールするカスタム セットアップ、およびサード パーティ製のエコシステムを使用できます。詳しくは、 https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ をご覧ください。 
 -   ADF と SSIS のより深い統合。これにより、ADF パイプラインのファースト クラスの SSIS パッケージ実行アクティビティを呼び出し/トリガーし、SSMS でそれらのスケジュールを設定できます。詳しくは、 https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/ をご覧ください。 

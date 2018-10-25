@@ -2,20 +2,20 @@
 title: Durable Functions での外部イベントの処理 - Azure
 description: Azure Functions の Durable Functions 拡張機能で外部イベントを処理する方法について説明します。
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 728ed892b4be4334574a04c9794bf3ea549944d4
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 98380cc5b9daff314283ac4e45e5edf7b5601e1b
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093982"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49983948"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Durable Functions での外部イベントの処理 (Azure Functions)
 
@@ -49,7 +49,7 @@ public static async Task Run(
 ```javascript
 const df = require("durable-functions");
 
-module.exports = df(function*(context) {
+module.exports = df.orchestrator(function*(context) {
     const approved = yield context.df.waitForExternalEvent("Approval");
     if (approved) {
         // approval granted - do the approved action
@@ -95,7 +95,7 @@ public static async Task Run(
 ```javascript
 const df = require("durable-functions");
 
-module.exports = df(function*(context) {
+module.exports = df.orchestrator(function*(context) {
     const event1 = context.df.waitForExternalEvent("Event1");
     const event2 = context.df.waitForExternalEvent("Event2");
     const event3 = context.df.waitForExternalEvent("Event3");
@@ -138,7 +138,7 @@ public static async Task Run(
 ```javascript
 const df = require("durable-functions");
 
-module.exports = df(function*(context) {
+module.exports = df.orchestrator(function*(context) {
     const applicationId = context.df.getInput();
 
     const gate1 = context.df.waitForExternalEvent("CityPlanningApproval");
@@ -148,7 +148,7 @@ module.exports = df(function*(context) {
     // all three departments must grant approval before a permit can be issued
     yield context.df.Task.all([gate1, gate2, gate3]);
 
-    yield context.df.callActivityAsync("IssueBuildingPermit", applicationId);
+    yield context.df.callActivity("IssueBuildingPermit", applicationId);
 });
 ```
 
@@ -174,6 +174,34 @@ public static async Task Run(
     await client.RaiseEventAsync(instanceId, "Approval", true);
 }
 ```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+JavaScript では、Durable Function が待機しているイベントをトリガーするには REST API を呼び出す必要があります。
+次のコードでは、"request" パッケージを使用しています。 下のメソッドを使用すると、任意の Durable Function インスタンスに対して任意のイベントを生成できます。
+
+```js
+function raiseEvent(instanceId, eventName) {
+        var url = `<<BASE_URL>>/runtime/webhooks/durabletask/instances/${instanceId}/raiseEvent/${eventName}?taskHub=DurableFunctionsHub`;
+        var body = <<BODY>>
+            
+        return new Promise((resolve, reject) => {
+            request({
+                url,
+                json: body,
+                method: "POST"
+            }, (e, response) => {
+                if (e) {
+                    return reject(e);
+                }
+
+                resolve();
+            })
+        });
+    }
+```
+
+<<BASE_URL>> は、関数アプリのベース URL になります。 コードをローカルで実行している場合は、 http://localhost:7071 や、Azure では https://<<functionappname>>.azurewebsites.net のようになります。
+
 
 内部的には、`RaiseEventAsync` は、待機オーケストレーター関数によって取得されるメッセージをエンキューします。
 

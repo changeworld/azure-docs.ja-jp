@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: f57d582aacad568811314494c0ed614839ccabba
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0221965c51f2287cb6042c33b9ab3402e104abc3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221742"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870480"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Azure SQL Database Managed Instance にアプリケーションを接続する
 
@@ -93,7 +93,7 @@ Azure App Service をマネージド インスタンスに接続する場合の�
 
    ![イングレス/エグレスの数](./media/sql-database-managed-instance-connect-app/ingress-egress-numbers.png)
 
-- (VPN クライアントを実行している) クライアント コンピューターに、アクセスする必要のあるすべての Vnet のルート エントリがあることを確認します。 ルートは、`%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` に格納されています。
+- (VPN クライアントを実行している) クライアント コンピューターに、アクセスする必要のあるすべての VNet のルート エントリがあることを確認します。 ルートは、`%AppData%\ Roaming\Microsoft\Network\Connections\Cm\<GUID>\routes.txt` に格納されています。
 
 
    ![route.txt](./media/sql-database-managed-instance-connect-app/route-txt.png)

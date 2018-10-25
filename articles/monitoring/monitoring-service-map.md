@@ -12,19 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/22/2018
-ms.author: daseidma;bwren
-ms.openlocfilehash: 812137a8320634364a7d91fd2e61cd3e9d15fc12
-ms.sourcegitcommit: 6eb14a2c7ffb1afa4d502f5162f7283d4aceb9e2
+ms.date: 10/03/2018
+ms.author: magoedte
+ms.openlocfilehash: 49688b958d904450c50944725b18e0d518e27146
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36751430"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269260"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
-サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
+サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、受信接続と送信接続の待機時間、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
 
 この記事では、オンボードと、Service Map の使い方を詳しく説明します。 Service Map の構成とエージェントのオンボードについては、[Azure での Service Map ソリューションの構成]( monitoring-service-map-configure.md)に関するページをご覧ください。
+
+>[!NOTE]
+>Service Map を既にデプロイ済みの場合は、VM 用 Azure Monitor でマップを表示することもできます。これには、VM の正常性とパフォーマンスを監視する追加機能が含まれます。 詳細については、[VM 用 Azure Monitor の概要](monitoring-vminsights-overview.md)に関するページを参照してください。
+
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
@@ -67,6 +71,11 @@ Service Map は、システム更新評価の使用を強化します。他の�
 マシンはマップ上で展開表示することができ、選択した時間の範囲内にアクティブなネットワーク接続で実行しているプロセス グループとプロセスを表示することができます。 Service Map エージェントがインストールされているリモート マシンを展開してプロセスの詳細を表示すると、対象のマシンと通信するプロセスのみが表示されます。 対象のマシンに接続するエージェントなしのフロントエンド マシンの数が、その接続先となるプロセスの左側に示されます。 対象のマシンがエージェントのないバックエンド マシンに接続している場合、そのバックエンド サーバーは、同じポート番号への他の接続と共に、サーバー ポート グループに含められます。
 
 既定では、サービス マップは、直近 30 分間の依存関係情報を表示します。 左上にある時間コントロールを使用すると、過去の時間範囲 (最長 1 時間まで) のマップを照会し、過去における依存関係を表示することができます (例: インシデントの発生中や変更が発生する前)。 サービス マップのデータは、有料のワークスペースで 30 日間、無料のワークスペースでは 7 日間のあいだ保存されます。
+
+
+
+
+
 
 ## <a name="status-badges-and-border-coloring"></a>状態バッジと枠線の色分け
 マップ内の各サーバーの下部には、サーバーの状態情報を示す状態バッジの一覧が表示されます。 このバッジは、ソリューション統合のいずれかに、サーバー関連情報がいくつかあることを示します。 バッジをクリックすると、状態に関する詳細情報が右側のウィンドウに直接表示されます。 現在使用できる状態バッジには、アラート、サービス デスク、変更、セキュリティ、更新があります。
@@ -224,7 +233,7 @@ Service Map と IT Service Management Connector との統合は、両方のソ�
 接続されている ITSM ソリューション内の項目を開くには、**[作業項目の表示]** をクリックします。
 
 ログ検索で項目の詳細を表示するには、**[ログ検索で表示]** をクリックします。
-
+接続メトリックは、Log Analytics 内の 2 つの新しいテーブルに書き込まれます 
 
 ## <a name="change-tracking-integration"></a>Change Tracking との統合
 Service Map と Change Tracking との統合は、両方のソリューションが有効であり、Log Analytics ワークスペースに構成されているときは自動的に行われます。
@@ -236,7 +245,6 @@ Service Map と Change Tracking との統合は、両方のソリューション
 次の図は、**[Show in Log Analytics]\(Log Analytics で表示\)** を選択すると表示される ConfigurationChange イベントの詳細なビューです。
 
 ![ConfigurationChange イベント](media/monitoring-service-map/configuration-change-event-01.png)
-
 
 ## <a name="performance-integration"></a>パフォーマンスの統合
 **[Machine Performance]\(マシンのパフォーマンス\)** ウィンドウには、選択したサーバーの標準的なパフォーマンス メトリックが表示されます。 このメトリックには、CPU 使用率、メモリ使用率、送受信したネットワークのバイト数、ネットワークで送受信されたバイト数による上位プロセスの一覧が含まれます。
@@ -283,10 +291,89 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 個々のプロセスとコンピューターの識別に使用できる、内部生成されたプロパティがあります。
 
-- コンピューター: ResourceId または ResourceName_s を使用して、Log Analytics ワークスペース内のコンピューターを一意に識別します。
-- プロセス: ResourceId を使用して、Log Analytics ワークスペース内のプロセスを一意に識別します。 ResourceName_s は、プロセスが実行されているコンピューターのコンテキスト内で一意です (MachineResourceName_s) 
+- コンピューター: *ResourceId* または *ResourceName_s* を使用して、Log Analytics ワークスペース内のコンピューターを一意に識別します。
+- プロセス: *ResourceId* を使用して、Log Analytics ワークスペース内のプロセスを一意に識別します。 *ResourceName_s* は、プロセスが実行中のマシンのコンテキスト内で一意です (MachineResourceName_s) 
 
 指定の時間範囲にある指定のプロセスとコンピューターについては、複数のレコードが存在できるため、クエリは、同じコンピューターまたはプロセスに対して複数のレコードを返すことがあります。 最新のレコードのみが返されるようにするには、"| dedup ResourceId" をクエリに追加します。
+
+### <a name="connections"></a>Connections
+接続メトリックは、Log Analytics 内の新しいテーブルに書き込まれます (VMConnection)。 このテーブルは、マシンの接続 (受信および送信) に関する情報を提供します。 接続メトリックは、時間枠の間に特定のメトリックを取得する手段を提供する API と共に公開されています。  リスニング ソケットで*受諾*することで得られる TCP 接続は受信ですが、所定の IP とポートに*接続*することで作成される接続は送信です。 接続の方向は Direction プロパティで表され、**受信**または**送信**のいずれかに設定できます。 
+
+これらのテーブル内のレコードは、Dependency エージェントによって報告されるデータから生成されます。 いずれの記録も、1 分の時間間隔での観測を表します。 TimeGenerated プロパティは、時間間隔の開始を示します。 各レコードには、エンティティに関連付けられたメトリックに加えて、接続またはポートなど、それぞれのエンティティを識別する情報が含まれています。 現在のところ、TCP over IPv4 を使用することで発生するネットワーク アクティビティのみが報告されます。
+
+コストと複雑さを管理するため、接続レコードは個々の物理ネットワーク接続を表すものではありません。 複数の物理ネットワーク接続は、論理接続にグループ化され、その後それぞれのテーブルに反映されます。  つまり、*VMConnection* テーブル内のレコードは、論理グルーピングを表しており、観察されている個々の物理接続を表していません。 所定の 1 分間隔で次の属性に同じ値を共有する物理ネットワーク接続は、*VMConnection* 内で 1 つの論理レコードに集約されます。 
+
+| プロパティ | 説明 |
+|:--|:--|
+|方向 |接続の方向であり、値は*受信*または*送信*です |
+|マシン |コンピューターの FQDN |
+|Process |プロセスまたはプロセスのグループの ID、接続の開始/受諾 |
+|SourceIp |送信元の IP アドレス |
+|DestinationIp |送信先の IP アドレス |
+|DestinationPort |送信先のポート番号 |
+|プロトコル |接続に使用されるプロトコル。  値は *tcp* です。 |
+
+グループ化の影響を考慮するため、グループ化された物理接続の数に関する情報は、レコードの次のプロパティに提示されます。
+
+| プロパティ | 説明 |
+|:--|:--|
+|LinksEstablished |報告時間枠の間に確立された物理ネットワーク接続の数 |
+|LinksTerminated |報告時間枠の間に切断された物理ネットワーク接続の数 |
+|LinksFailed |報告時間枠の間に失敗した物理ネットワーク接続の数。 現在のところ、この情報は送信接続に対してのみ使用できます。 |
+|LinksLive |報告時間枠の終了時点で開いていた物理ネットワーク接続の数|
+
+#### <a name="metrics"></a>メトリック
+
+接続数メトリックに加えて、所定の論理接続またはネット ワークポートで送受信されるデータ量に関する情報も、レコードの次のプロパティに加えられています。
+
+| プロパティ | 説明 |
+|:--|:--|
+|BytesSent |報告時間枠の間に送信された合計バイト数 |
+|BytesReceived |報告時間枠の間に受信された合計バイト数 |
+|応答 |報告時間枠の間に観測された応答の数。 
+|ResponseTimeMax |報告時間枠の間に観測された最長応答時間 (ミリ秒)。  値がない場合、プロパティは空欄です。|
+|ResponseTimeMin |報告時間枠の間に観測された最短応答時間 (ミリ秒)。  値がない場合、プロパティは空欄です。|
+|ResponseTimeSum |報告時間枠の間に観測された全応答時間の合計 (ミリ秒)。  値がない場合、プロパティは空欄です|
+
+報告される第 3 のタイプのデータは応答時間です。これは、発信者が接続を介して送信した要求が処理されて、リモート エンドポイントによって応答されるのを待機する時間です。 報告される応答時間は、内在するアプリケーション プロトコルの実際の応答時間の推定値です。 これは、物理ネットワーク接続の送信元と送信先の間のデータ フローの観察に基づき、経験則を使用して計算されます。 これは、概念上、要求の最後のバイトが送信者を離れる時間と、応答の最後のバイトが送信者に返される時間の差です。 これらの 2 つのタイムスタンプは、所定の物理接続で要求イベントと応答イベントを明確化するために使用されます。 これらの差は、1 つの要求の応答時間を表します。 
+
+この機能の最初のリリースでは、当社のアルゴリズムは推定であり、所定のネットワーク接続に使用される実際のアプリケーション プロトコルに応じて、さまざまな成功の度合いで動作する可能性があります。 たとえば、現在のアプローチは、HTTP(S) のような要求応答ベースのプロトコルでは正しく動作しますが、一方向またはメッセージ キュー ベースのプロトコルでは動作しません。
+
+考慮すべき重要な点は次のとおりです。
+
+1. プロセスが同じ IP アドレスでも複数のネットワーク インターフェイスで接続を受け入れる場合、インターフェイスごとに別のレコードが報告されます。 
+2. ワイルドカード IP 付きレコードにはアクティビティはありません。 これらは、マシン上のポートが受信トラフィックにオープンであるという事実を表すために加えられています。
+3. 冗長性とデータ量を減らすために、ワイルドカード IP 付きレコードは、特定の IP アドレスと一致するレコード (同じプロセス、ポート、プロトコル) がある場合は省略されます。 ワイルドカード IP レコードが省略される場合、特定の IP アドレス付き IsWildcardBind レコード プロパティは、ポートが報告マシンのあらゆるインターフェイスで公開されていることを示すために、"True" に設定されます。
+4. 特定のインターフェイスにのみバインドされているポートでは、IsWildcardBind は "False" に設定されます。
+
+#### <a name="naming-and-classification"></a>命名と分類
+便宜上、接続のリモート側の IP アドレスは RemoteIp プロパティに加えられています。 受信接続の場合、RemoteIp は SourceIp と同じですが、送信接続の場合は DestinationIp と同じです。 RemoteDnsCanonicalNames プロパティは、RemoteIp 向けにマシンにより報告される DNS 正規名を表します。 RemoteDnsQuestions プロパティと RemoteClassification プロパティは、将来の使用のために予約されています。 
+
+#### <a name="geolocation"></a>地理的位置情報
+*VMConnection*では、レコードの次のプロパティに、各接続レコードのリモート エンドの地理的位置情報も加えられています。 
+
+| プロパティ | 説明 |
+|:--|:--|
+|RemoteCountry |RemoteIp をホストしている国の名前。  例: *United States* |
+|RemoteLatitude |地理的位置情報の緯度。  例: *47.68* |
+|RemoteLongitude |地理的位置情報の経度。  例: *-122.12* |
+
+#### <a name="malicious-ip"></a>悪意のある IP
+*VMConnection* テーブル内のすべての RemoteIp プロパティは、一連の IP に対して、知られている悪意のあるアクティビティがチェックされます。 RemoteIp が悪意のあると識別される場合、レコードの以下のプロパティに設定されます (IP が悪意のあるとみなされない場合、これらは空です)。
+
+| プロパティ | 説明 |
+|:--|:--|
+|MaliciousIp |RemoteIp アドレス |
+|IndicatorThreadType |検出される脅威のインジケーターは、*ボットネット*、*C2*、*CryptoMining*、*ダークネット*、*DDos*、*MaliciousUrl*、*マルウェア*、*フィッシング*、*プロキシ*、*PUA*、*ウォッチリスト*のいずれかの値です。   |
+|説明 |観察対象の脅威の説明。 |
+|TLPLevel |Traffic Light Protocol (TLP) レベルは、定義済みの値、*白*、*緑*、*アンバー*、*赤*のいずれかです。 |
+|信頼度 |値は *0 ～ 100* です。 |
+|severity |値は *0 ～ 5* です。ここで、*5* は最も重大で、*0* はまったく重大ではありません。 既定値は *3* です。  |
+|FirstReportedDateTime |プロバイダーが初めてインジケーターを報告した時間。 |
+|LastReportedDateTime |Interflow によってインジケーターが最後に表示された時間。 |
+|IsActive |インジケーターが *True* または *False* の値で非アクティブ化されていることを示します。 |
+|ReportReferenceLink |特定の観測可能な脅威に関連するレポートにリンクします。 |
+|AdditionalInformation |該当する場合は、観察対象の脅威についての追加情報を提供します。 |
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL レコード
 *ServiceMapComputer_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーのインベントリ データが含まれます。 これらのレコードは、次の表に示したプロパティを持ちます。
@@ -295,7 +382,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 |:--|:--|
 | type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
-| ResourceId | ワークスペース内のマシンに対する一意識別子 |
+| resourceId | ワークスペース内のマシンに対する一意識別子 |
 | ResourceName_s | ワークスペース内のマシンに対する一意識別子 |
 | ComputerName_s | コンピューターの FQDN |
 | Ipv4Addresses_s | サーバーの IPv4 アドレスの一覧 |
@@ -313,8 +400,6 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 | VirtualMachineName_s | VM の名前 |
 | BootTime_t | ブート時間 |
 
-
-
 ### <a name="servicemapprocesscl-type-records"></a>ServiceMapProcess_CL 型のレコード
 *ServiceMapProcess_CL* 型のレコードには、サービス マップ エージェントがインストールされているサーバーの TCP 接続プロセスのインベントリ データが含まれています。 これらのレコードは、次の表に示したプロパティを持ちます。
 
@@ -322,7 +407,7 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 |:--|:--|
 | type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
-| ResourceId | ワークスペース内のプロセスに対する一意識別子 |
+| resourceId | ワークスペース内のプロセスに対する一意識別子 |
 | ResourceName_s | 実行中のマシン内のプロセスに対する一意識別子|
 | MachineResourceName_s | マシンのリソース名 |
 | ExecutableName_s | プロセスの実行可能ファイルの名前 |
@@ -340,13 +425,12 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 | UserName | プロセスが実行されているアカウント |
 | UserDomain | プロセスが実行されているドメイン |
 
-
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 
 ### <a name="list-all-known-machines"></a>既知のコンピューターを一覧表示
 ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
 
-### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>すべての管理されたコンピューターの物理メモリ容量を一覧表示。
+### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>すべてのマネージド コンピューターの物理メモリ容量を一覧表示。
 ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>コンピューター名、DNS、IP、および OS を一覧表示。
@@ -373,10 +457,50 @@ ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersio
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>CentOS を実行しているすべてのコンピューターのコンピューター グループを作成
 ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
 
+### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>マシンのグループからの送信接続を要約します
+```
+// the machines of interest
+let machines = datatable(m: string) ["m-82412a7a-6a32-45a9-a8d6-538354224a25"];
+// map of ip to monitored machine in the environment
+let ips=materialize(ServiceMapComputer_CL
+| summarize ips=makeset(todynamic(Ipv4Addresses_s)) by MonitoredMachine=ResourceName_s
+| mvexpand ips to typeof(string));
+// all connections to/from the machines of interest
+let out=materialize(VMConnection
+| where Machine in (machines)
+| summarize arg_max(TimeGenerated, *) by ConnectionId);
+// connections to localhost augmented with RemoteMachine
+let local=out
+| where RemoteIp startswith "127."
+| project ConnectionId, Direction, Machine, Process, ProcessName, SourceIp, DestinationIp, DestinationPort, Protocol, RemoteIp, RemoteMachine=Machine;
+// connections not to localhost augmented with RemoteMachine
+let remote=materialize(out
+| where RemoteIp !startswith "127."
+| join kind=leftouter (ips) on $left.RemoteIp == $right.ips
+| summarize by ConnectionId, Direction, Machine, Process, ProcessName, SourceIp, DestinationIp, DestinationPort, Protocol, RemoteIp, RemoteMachine=MonitoredMachine);
+// the remote machines to/from which we have connections
+let remoteMachines = remote | summarize by RemoteMachine;
+// all augmented connections
+(local)
+| union (remote)
+//Take all outbound records but only inbound records that come from either //unmonitored machines or monitored machines not in the set for which we are computing dependencies.
+| where Direction == 'outbound' or (Direction == 'inbound' and RemoteMachine !in (machines))
+| summarize by ConnectionId, Direction, Machine, Process, ProcessName, SourceIp, DestinationIp, DestinationPort, Protocol, RemoteIp, RemoteMachine
+// identify the remote port
+| extend RemotePort=iff(Direction == 'outbound', DestinationPort, 0)
+// construct the join key we'll use to find a matching port
+| extend JoinKey=strcat_delim(':', RemoteMachine, RemoteIp, RemotePort, Protocol)
+// find a matching port
+| join kind=leftouter (VMBoundPort 
+| where Machine in (remoteMachines) 
+| summarize arg_max(TimeGenerated, *) by PortId 
+| extend JoinKey=strcat_delim(':', Machine, Ip, Port, Protocol)) on JoinKey
+// aggregate the remote information
+| summarize Remote=makeset(iff(isempty(RemoteMachine), todynamic('{}'), pack('Machine', RemoteMachine, 'Process', Process1, 'ProcessName', ProcessName1))) by ConnectionId, Direction, Machine, Process, ProcessName, SourceIp, DestinationIp, DestinationPort, Protocol
+```
 
 ## <a name="rest-api"></a>REST API
 サービス マップのすべてのサーバー、プロセス、および依存関係データは、[サービス マップ REST API](https://docs.microsoft.com/rest/api/servicemap/) を使用して取得できます。
-
 
 ## <a name="diagnostic-and-usage-data"></a>診断と使用状況データ
 マイクロソフトは、お客様によるサービス マップ サービスの使用を通して、使用状況とパフォーマンス データを自動的に収集します。 Microsoft はこのデータを使用して、提供する Service Map サービスの品質、セキュリティ、整合性の向上に努めています。 正確で効果的なトラブルシューティングの機能を提供するために、このデータにはソフトウェアの構成に関する情報が含まれています。たとえば、オペレーティング システムとバージョン、IP アドレス、DNS 名、ワークステーション名などです。 名前や住所などの連絡先情報は収集されません。

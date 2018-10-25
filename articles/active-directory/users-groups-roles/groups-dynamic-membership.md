@@ -14,12 +14,12 @@ ms.date: 09/20/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: c3121f8b303d9f82ed949d598a942906d0d24f7e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: e8f0077bf5a1a2911b3aec032fadacf31ad75463
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041025"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855274"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Azure Active Directory の動的グループ メンバーシップ ルール
 
@@ -130,15 +130,29 @@ user.department -eq "Sales"
 | 場所 | -in |
 | 含まれない | -notIn |
 
-### <a name="using-the--in-and--notin-operators"></a>-In および -notIn 演算子の使用
+### <a name="using-the--in-and--notin-operators"></a>-in および -notIn 演算子の使用
 
-ユーザー属性の値を複数の異なる値に対して比較する場合は、-In または -notIn 演算子を使用できます。 値の一覧の始まりと終わりを示す目的で "[" と "]" の角かっこ記号を使用します。
+ユーザー属性の値を複数の異なる値に対して比較する場合は、-in または -notIn 演算子を使用できます。 値の一覧の始まりと終わりを示す目的で "[" と "]" の角かっこ記号を使用します。
 
  次の例の式は、user.department の値が一覧内のいずれかの値に等しい場合に true に評価されます。
 
 ```
-   user.department -In ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
+   user.department -in ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
 ```
+
+
+### <a name="using-the--match-operator"></a>-match 演算子の使用 
+**-match** 演算子は、正規表現の照合に使用されます。 次に例を示します。
+
+```
+user.displayName -match "Da.*"   
+```
+Da、Dav、David は true と評価され、aDa は false と評価されます。
+
+```
+user.displayName -match ".*vid"
+```
+David は true と評価され、Da は false と評価されます。
 
 ## <a name="supported-values"></a>サポートされている値
 

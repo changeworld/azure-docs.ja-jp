@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 10/02/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 60cdcbeba0c4149d8f049bbab553bd658c965338
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 322b21ae2273b949e9a46e0c47a9f9e4d661603e
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128597"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267955"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>実行コマンドを使用して Windows VM で PowerShell スクリプトを実行する
 
@@ -21,7 +21,7 @@ ms.locfileid: "43128597"
 
 ## <a name="benefits"></a>メリット
 
-仮想マシンにアクセスするために使用できるオプションは複数あります。 実行コマンドは、VM エージェントを使用して、リモートから仮想マシン上でスクリプトを実行できます。 実行コマンドは、Azure Portal、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、[Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)、または [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) から使用できます。
+仮想マシンにアクセスするために使用できるオプションは複数あります。 実行コマンドは、VM エージェントを使用して、リモートから仮想マシン上でスクリプトを実行できます。 実行コマンドは、Azure portal、[REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand)、または Windows VM 用の [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) から使用できます。
 
 この機能は、仮想マシン内でスクリプトを実行するすべてのシナリオで有効であり、誤ったネットワークまたは管理ユーザーの構成のために RDP または SSH ポートが開かれていない仮想マシンをトラブルシューティングして修正する最適な方法の 1 つです。
 
@@ -33,6 +33,7 @@ ms.locfileid: "43128597"
 * スクリプトを実行するための最小時間は約 20 秒
 * スクリプトは Windows 上で System として実行される
 * 同時に実行できるスクリプトは 1 つ
+* 情報の入力を求めるスクリプト (対話モード) はサポートされていません。
 * スクリプトの実行を取り消すことはできない
 * スクリプトを実行できる最大時間は 90 分であり、その後タイムアウトになる
 * スクリプトの結果を返すために、VM からの送信接続が必要

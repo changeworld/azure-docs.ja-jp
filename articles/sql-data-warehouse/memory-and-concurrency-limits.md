@@ -1,24 +1,24 @@
 ---
-title: メモリおよび同時実行の制限 - Azure SQL Data Warehouse | Microsoft Docs
-description: Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよび同時実行の制限を表示します。
+title: メモリおよびコンカレンシーの制限 - Azure SQL Data Warehouse | Microsoft Docs
+description: Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/10/2018
+ms.date: 10/04/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e901d147d757a046d50927d6f2651b0a74657b1f
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: ab90b4431a0f8d3a4ee70869e053174f89f23dba
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288191"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785217"
 ---
-# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のメモリおよび同時実行の制限
-Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよび同時実行の制限を表示します。 詳細について確認し、ワークロード管理計画にこれらの機能を適用するには、「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。 
+# <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のメモリおよびコンカレンシーの制限
+Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリソース クラスに割り当てられたメモリおよびコンカレンシーの制限を表示します。 詳細について確認し、ワークロード管理計画にこれらの機能を適用するには、「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。 
 
 現在、SQL Data Warehouse には Gen1 と Gen2 の 2つの世代が存在します。 データ ウェアハウスのワークロードで最高のパフォーマンスを得るには、Gen2 の SQL Data Warehouse をご利用することをお勧めします。 Gen2 には、最も頻繁にアクセスされるデータを CPU に近い場所に維持する、新しい NVMe SSD キャッシュが導入されています。 これは、最も集中的で要求の厳しいワークロードのリモート I/O を削除します。 パフォーマンスに加えて、Gen2 は 30,000 個の Data Warehouse ユニットへのスケールアップが可能で、無制限の単票形式ストレージを提供することにより、最大レベルのスケールをお届けします。 引き続き、前世代 (Gen1) の SQL Data Warehouse はサポートされ、同じ機能が維持されますが、早い時期に [Gen2 へのアップグレード](upgrade-to-latest-generation.md)されることをお勧めします。 
 
@@ -27,10 +27,11 @@ Azure SQL Data Warehouse のさまざまなパフォーマンス レベルとリ
 
 ### <a name="gen2"></a>Gen2
 
-Gen2 は、Gen 1 と比べると 1 つのクエリに対して 2.5 倍のメモリを提供します。 この追加メモリにより、Gen2 で高速なパフォーマンスが実現可能です。  Gen2 のパフォーマンス レベルは、DW1000c から DW30000c の範囲となっています。 
+Gen2 は、Gen 1 と比べると 1 つのクエリに対して 2.5 倍のメモリを提供します。 この追加メモリにより、Gen2 で高速なパフォーマンスが実現可能です。  Gen2 のパフォーマンス レベルは、DW500c から DW30000c の範囲となっています。 
 
 | パフォーマンス レベル | コンピューティング ノード | コンピューティング ノードごとの配布 | データ ウェアハウスあたりのメモリ (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
+| DW500c            | 1             | 60                             |   300                          |
 | DW1000c           | 2             | 30                             |   600                          |
 | DW1500c           | 3             | 20                             |   900                          |
 | DW2000c           | 4             | 15                             |  1200                          |
@@ -64,17 +65,18 @@ Gen1 のサービス レベルは、DW100 から DW6000 の範囲となってい
 | DW3000            | 30            | 2                              | 720                            |
 | DW6000            | 60            | 1                              | 1440                           |
 
-## <a name="concurrency-maximums"></a>同時実行の最大値
-各クエリを効率的に実行するために十分なリソースが提供されるよう、SQL Data Warehouse は各クエリに同時実行スロットを割り当てることで、リソース使用率を追跡します。 システムは、十分な数の[同時実行スロット](resource-classes-for-workload-management.md#concurrency-slots)が利用できるようになるまで、クエリをキューに入れて待機させます。 同時実行スロットによって、CPU の優先順位付けも決定されます。 詳細については、[ワークロードの分析](analyze-your-workload.md)に関するページを参照してください。
+## <a name="concurrency-maximums"></a>コンカレンシーの最大値
+各クエリを効率的に実行するために十分なリソースが提供されるよう、SQL Data Warehouse は各クエリにコンカレンシー スロットを割り当てることで、リソース使用率を追跡します。 システムは、十分な数の[コンカレンシー スロット](resource-classes-for-workload-management.md#concurrency-slots)が利用できるようになるまで、クエリをキューに入れて待機させます。 コンカレンシー スロットによって、CPU の優先順位付けも決定されます。 詳細については、[ワークロードの分析](analyze-your-workload.md)に関するページを参照してください。
 
 ### <a name="gen2"></a>Gen2
  
 **静的リソース クラス**
 
-次の表は、[静的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大の同時実行クエリ数と同時実行スロット数を示しています。  
+次の表は、[静的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大のコンカレント クエリ数とコンカレンシー スロット数を示しています。  
 
-| Service Level | 同時クエリの最大数 | 割り当てられる同時実行スロット数 |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| Service Level | 同時クエリの最大数 | 割り当てられるコンカレンシー スロット数 |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
+| DW500c        | 20                         |   20                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
 | DW1000c       | 32                         |   40                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW2000c       | 48                         |   80                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
@@ -90,14 +92,15 @@ Gen1 のサービス レベルは、DW100 から DW6000 の範囲となってい
 **動的リソース クラス**
 
 > [!NOTE]
-> Gen2 の smallrc リソース クラスは、サービス レベルが増加するとともに、メモリを動的に追加し、最大 32 の同時実行クエリのみをサポートします。  smallrc によって使用される同時実行スロットとメモリが増加するにつれて、サービス レベルが増加します。 
+> Gen2 の smallrc リソース クラスは、サービス レベルが増加するとともに、メモリを動的に追加し、DW1000c と 20 および DW500c で最大 32 の同時実行クエリのみをサポートします。  インスタンスが DW1500c を超えて拡張されると、smallrc によって使用されるコンカレンシー スロットとメモリが増加するにつれて、サービス レベルが増加します。 
 >
 >
 
-次の表は、[動的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大の同時実行クエリ数と同時実行スロット数を示しています。 Gen1 とは異なり、Gen2 の動的なリソース クラスは真に動的です。  Gen2 は、すべてのサービス レベルにおいて small-medium-large-xlarge リソース クラスに対して 3-10-22-70 のメモリ割り当て率を使用します。
+次の表は、[動的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大のコンカレンシー クエリ数とコンカレンシー スロット数を示しています。 Gen1 とは異なり、Gen2 の動的なリソース クラスは真に動的です。  Gen2 は、すべてのサービス レベルにおいて small-medium-large-xlarge リソース クラスに対して 3-10-22-70 のメモリ割り当て率を使用します。
 
-| Service Level | 同時クエリの最大数 | 割り当てられる同時実行スロット数 | smallrc で使用されるスロット数 | mediumrc で使用されるスロット数 | largerc で使用されるスロット数 | xlargerc で使用されるスロット数 |
+| Service Level | 同時クエリの最大数 | 割り当てられるコンカレンシー スロット数 | smallrc で使用されるスロット数 | mediumrc で使用されるスロット数 | largerc で使用されるスロット数 | xlargerc で使用されるスロット数 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
+| DW500c        | 20                         |   20                        | 1                     |  2                     |  4                    |  14                    |
 | DW1000c       | 32                         |   40                        | 1                     |  4                     |  8                    |  28                    |
 | DW1500c       | 32                         |   60                        | 1                     |  6                     |  13                   |  42                    |
 | DW2000c       | 32                         |   80                        | 2                     |  8                     |  17                   |  56                    |
@@ -116,9 +119,9 @@ Gen1 のサービス レベルは、DW100 から DW6000 の範囲となってい
 
 静的リソース クラス
 
-次の表は、**Gen1** の[静的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大の同時実行クエリ数と同時実行スロット数を示しています。
+次の表は、**Gen1** の[静的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大のコンカレンシー クエリ数とコンカレンシー スロット数を示しています。
 
-| サービス レベル | 同時クエリの最大数 | 最大同時実行スロット数 |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| サービス レベル | 同時クエリの最大数 | 最大コンカレンシー スロット数 |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
 | DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
@@ -139,9 +142,9 @@ Gen1 のサービス レベルは、DW100 から DW6000 の範囲となってい
 >
 >
 
-次の表は、**Gen1** の[動的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大の同時実行クエリ数と同時実行スロット数を示しています。
+次の表は、**Gen1** の[動的なリソース クラス](resource-classes-for-workload-management.md)ごとの最大のコンカレンシー クエリ数とコンカレンシー スロット数を示しています。
 
-| サービス レベル | 同時クエリの最大数 | 割り当てられる同時実行スロット数 | smallrc | mediumrc | largerc | xlargerc |
+| サービス レベル | 同時クエリの最大数 | 割り当てられるコンカレンシー スロット数 | smallrc | mediumrc | largerc | xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
 | DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
 | DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |

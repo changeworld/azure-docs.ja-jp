@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 03/14/2018
+ms.date: 09/17/2018
 ms.author: dobett
-ms.openlocfilehash: 23e84a8d577bb1c4950de3acd76b0f8528551ae0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c20b1d5f3a84e950e37a3236272256db620a5985
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38611443"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831102"
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-solution-accelerator-c"></a>Raspberry Pi デバイスをリモート監視ソリューション アクセラレータに接続する (C)
 
@@ -53,137 +53,29 @@ Raspberry Pi でコマンド ラインにリモートでアクセスするため
     sudo apt-get update
     ```
 
-1. Raspberry Pi に、必要な開発ツールとライブラリを追加するには、次のコマンドを使用します。
+1. このハウツー ガイドの手順を完了するには、[Linux 開発環境の設定](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux)に関するページに示されている手順に従って、必要な開発ツールとライブラリを Raspberry Pi に追加します。
 
-    ```sh
-    sudo apt-get install g++ make cmake gcc git libssl1.0-dev build-essential curl libcurl4-openssl-dev uuid-dev
-    ```
+## <a name="view-the-code"></a>コードを表示する
 
-1. Raspberry Pi に IoT Hub クライアント ライブラリをダウンロード、ビルド、インストールするには、次のコマンドを使用します。
+このガイドで使用される[サンプル コード](https://github.com/Azure/azure-iot-sdk-c/tree/master/samples/solutions/remote_monitoring_client)は、Azure IoT C SDK GitHub リポジトリで入手できます。
 
-    ```sh
-    cd ~
-    git clone --recursive https://github.com/azure/azure-iot-sdk-c.git
-    mkdir cmake
-    cd cmake
-    cmake ..
-    make
-    sudo make install
-    ```
+### <a name="download-the-source-code-and-prepare-the-project"></a>ソース コードをダウンロードしてプロジェクトを準備する
 
-## <a name="create-a-project"></a>プロジェクトの作成
+プロジェクトを準備するには、GitHub から [Azure IoT C SDK リポジトリ](https://github.com/Azure/azure-iot-sdk-c)を複製またはダウンロードします。
 
-Raspberry Pi への **ssh** 接続を使用して、次の手順を実行します。
+サンプルは、**samples/solutions/remote_monitoring_client** フォルダーにあります。
 
-1. `remote_monitoring` という名前のフォルダーを Raspberry Pi のホーム フォルダーで作成します。 シェル内でこのフォルダーに移動します。
+テキスト エディターで、**samples/solutions/remote_monitoring_client** フォルダー内の **remote_monitoring.c** ファイルを開きます。
 
-    ```sh
-    cd ~
-    mkdir remote_monitoring
-    cd remote_monitoring
-    ```
-
-1. `remote_monitoring` フォルダーに、**main.c**、**remote_monitoring.c**、**remote_monitoring.h**、**CMakeLists.txt** の 4 ファイルを作成します。
-
-1. テキスト エディターで、**remote_monitoring.c** ファイルを開きます。 Raspberry Pi では、**nano** または **vi** テキスト エディターを使用できます。 次の `#include` ステートメントを追加します。
-
-    ```c
-    #include "iothubtransportmqtt.h"
-    #include "schemalib.h"
-    #include "iothub_client.h"
-    #include "serializer_devicetwin.h"
-    #include "schemaserializer.h"
-    #include "azure_c_shared_utility/threadapi.h"
-    #include "azure_c_shared_utility/platform.h"
-    #include <string.h>
-    ```
-
-[!INCLUDE [iot-suite-connecting-code](../../includes/iot-suite-connecting-code.md)]
-
-**remote_monitoring.c** ファイルを保存し、エディターを終了します。
-
-## <a name="add-code-to-run-the-app"></a>アプリを実行するコードを追加する
-
-テキスト エディターで、**remote_monitoring.h** ファイルを開きます。 次のコードを追加します。
-
-```c
-void remote_monitoring_run(void);
-```
-
-**remote_monitoring.h** ファイルを保存し、エディターを終了します。
-
-テキスト エディターで、 **main.c** ファイルを開きます。 次のコードを追加します。
-
-```c
-#include "remote_monitoring.h"
-
-int main(void)
-{
-  remote_monitoring_run();
-
-  return 0;
-}
-```
-
-**main.c** ファイルを保存し、エディターを終了します。
+[!INCLUDE [iot-accelerators-connecting-code](../../includes/iot-accelerators-connecting-code.md)]
 
 ## <a name="build-and-run-the-application"></a>アプリケーションの構築と実行
 
-次の手順では、 *CMake* を使用してクライアント アプリケーションをビルドする方法について説明します。
+次の手順では、*CMake* を使用してクライアント アプリケーションをビルドする方法について説明します。 リモート監視クライアント アプリケーションは、SDK のビルド プロセスの一環として構築されます。
 
-1. テキスト エディターで、`remote_monitoring` フォルダーの **CMakeLists.txt** ファイルを開きます。
+1. **remote_monitoring.c** ファイルを編集し、`<connectionstring>` を、ソリューション アクセラレータにデバイスを追加したときにこのハウツー ガイドの冒頭でメモしたデバイス接続文字列に置き換えます。
 
-1. 次の手順を追加して、クライアント アプリケーションをビルドする方法を定義します。
-
-    ```cmake
-    macro(compileAsC99)
-      if (CMAKE_VERSION VERSION_LESS "3.1")
-        if (CMAKE_C_COMPILER_ID STREQUAL "GNU")
-          set (CMAKE_C_FLAGS "--std=c99 ${CMAKE_C_FLAGS}")
-          set (CMAKE_CXX_FLAGS "--std=c++11 ${CMAKE_CXX_FLAGS}")
-        endif()
-      else()
-        set (CMAKE_C_STANDARD 99)
-        set (CMAKE_CXX_STANDARD 11)
-      endif()
-    endmacro(compileAsC99)
-
-    cmake_minimum_required(VERSION 2.8.11)
-    compileAsC99()
-
-    set(AZUREIOT_INC_FOLDER "${CMAKE_SOURCE_DIR}" "/usr/local/include/azureiot")
-
-    include_directories(${AZUREIOT_INC_FOLDER})
-
-    set(sample_application_c_files
-        ./remote_monitoring.c
-        ./main.c
-    )
-
-    set(sample_application_h_files
-        ./remote_monitoring.h
-    )
-
-    add_executable(sample_app ${sample_application_c_files} ${sample_application_h_files})
-
-    target_link_libraries(sample_app
-      serializer
-      iothub_client_mqtt_transport
-      umqtt
-      iothub_client
-      aziotsharedutil
-      parson
-      pthread
-      curl
-      ssl
-      crypto
-      m
-    )
-    ```
-
-1. **CMakeLists.txt** ファイルを保存し、エディターを終了します。
-
-1. `remote_monitoring` フォルダーで、CMake が生成する *make* ファイルを格納するフォルダーを作成します。 続いて、**cmake** と **make** コマンドを次のように実行します。
+1. [Azure IoT C SDK リポジトリ](https://github.com/Azure/azure-iot-sdk-c)リポジトリの複製されたコピーのルートに移動し、次のコマンドを実行してクライアント アプリケーションを構築します。
 
     ```sh
     mkdir cmake
@@ -195,7 +87,12 @@ int main(void)
 1. クライアント アプリケーションを実行し、テレメトリを IoT Hub に送信します。
 
     ```sh
-    ./sample_app
+    ./samples/solutions/remote_monitoring_client/remote_monitoring_client
     ```
+
+    コンソールには、次のメッセージが表示されます。
+
+    - アプリケーションは、ソリューション アクセラレータにサンプル テレメトリを送信します。
+    - ソリューションのダッシュ ボードから呼び出されたメソッドに応答します。
 
 [!INCLUDE [iot-suite-visualize-connecting](../../includes/iot-suite-visualize-connecting.md)]

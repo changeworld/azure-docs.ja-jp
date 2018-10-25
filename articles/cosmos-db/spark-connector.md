@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: e7ed0049e64a7740063f2fab7bdfddff38d45ed9
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 26479ade27b18e817d7ad03d70d27b0cef687e8d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287712"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269413"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Apache Spark-Azure Cosmos DB コネクタを使用したビッグ データ分析の高速化
  
@@ -83,7 +83,7 @@ pyDocumentDB SDK を使用して Spark を Azure Cosmos DB に接続するには
 
 6. **[ノートブックの作成]** ダイアログ ボックスで、わかりやすい名前を入力し、言語として **[Python]** を選びます。 ドロップダウン リストから先ほど作成したクラスターを選び、**[作成]** を選択します。  
 
-7. "doctorwho" Azure Cosmos DB アカウントにホストされているフライト サンプル データを使用して、いくつかの Spark クエリを実行します。 (このアカウントはパブリックにアクセスできます。)[azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされます。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Read_Batch_PyDocumentDB.html` に移動します。 自分の Azure Databricks アカウントにノートブックをインポートし、実行できます。 次のセクションでは、コード ブロックの機能を詳しく説明します。
+7. "doctorwho" Azure Cosmos DB アカウントでホストされているフライト サンプル データを使用して、いくつかの Spark クエリを実行します。 (このアカウントはパブリックにアクセスできます。)[azure-cosmosdb-spark](https://github.com/Azure/azure-cosmosdb-spark/tree/master) GitHub リポジトリでは、HTML バージョンのノートブックがホストされます。 リポジトリ ファイルをダウンロードし、`\samples\Documentation_Samples\Read_Batch_PyDocumentDB.html` に移動します。 自分の Azure Databricks アカウントにノートブックをインポートし、実行できます。 次のセクションでは、コード ブロックの機能を詳しく説明します。
 
 次のコード スニペットは、pyDocumentDB SDK をインポートし、Spark コンテキストでクエリを実行する方法を示しています。 コード スニペットに示されているとおり、pyDocumentDB SDK には、Azure Cosmos DB アカウントへの接続に必要な接続パラメーターが含まれています。 必要なライブラリがインポートされ、Azure Cosmos DB クライアント (pydocumentdb.document_client) を作成するようにマスター キーとホストが構成されます。
 
@@ -123,7 +123,7 @@ querystr = "SELECT c.City FROM c WHERE c.State='WA'"
 
 ```
 
-クエリを実行すると、結果は、Python リストに変換される "query_iterable.QueryIterable" になります。 さらに、この一覧は、Spark データ フレームに変換されます。 
+このクエリを実行すると、その結果は、Python リストに変換される "query_iterable.QueryIterable" になります。 さらに、この一覧は、Spark データ フレームに変換されます。 
 
 ```python
 # Query documents
@@ -179,7 +179,7 @@ Java SDK 実装のデータ フローは次のとおりです。
 
 4. Twitter フィード サンプルの内容を抽出し、config.py ファイルを開きます。 masterKey、host、databaseId、collectionId、preferredLocations の各値を更新します。  
 
-5. `http://apps.twitter.com/` に移動し、新しいアプリケーションとして Twitter フィード スクリプトを登録します。 そのアプリに対する名前とアプリケーションを選ぶと、**コンシューマー キー、コンシューマー シークレット、アクセス トークン、アクセス トークン シークレット**が提供されます。 これらの値をコピーし、config.py ファイルで更新してアプリケーションから Twitter にプログラムでアクセスできるようにします。   
+5. `http://apps.twitter.com/` に移動し、Twitter フィード アプリケーションを登録します。 アプリケーションの名前を選択すると、**コンシューマー キー、コンシューマー シークレット、アクセス トークン、およびアクセス トークン シークレット**が表示されます。 これらの値をコピーし、それらを config.py ファイルで更新して、Twitter フィード アプリケーションから Twitter にプログラムでアクセスできるようにします。   
 
 6. config.py ファイルを保存します。 コマンド プロンプトを開き、次のコマンドを使用して、Python アプリケーションを実行します。
 
