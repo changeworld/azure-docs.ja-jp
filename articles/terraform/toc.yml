@@ -3,7 +3,7 @@ items:
   href: index.yml
 - name: 概要
   items:
-  - name: Terraform on Azure について
+  - name: Azure での Terraform について
     href: terraform-overview.md
 - name: クイック スタート
   items:
