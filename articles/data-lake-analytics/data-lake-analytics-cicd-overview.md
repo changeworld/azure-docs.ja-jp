@@ -9,13 +9,13 @@ ms.assetid: 66dd58b1-0b28-46d1-aaae-43ee2739ae0a
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
-ms.date: 07/03/2018
-ms.openlocfilehash: 49ac9f9603a1b8043b19c327d5a66015959b9dd1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/14/2018
+ms.openlocfilehash: 974ef7a51736c2e2b0a0de3c13d23ddc37fa13b7
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045876"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855019"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の CI/CD パイプラインをセットアップする方法  
 
@@ -84,9 +84,9 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 * **DataRoot=<DataRoot path>**。 DataRoot は SyntaxCheck モードの場合にのみ必要です。 SyntaxCheck モードでスクリプトをビルドすると、MSBuild によってスクリプト内のデータベース オブジェクトに対する参照がチェックされます。 ビルド前に、U-SQL データベースから参照されるオブジェクトを含め、一致するローカル環境をビルド コンピューターの DataRoot フォルダー上にセットアップしてください。 [U-SQL データベース プロジェクトを参照する](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)ことによって、これらのデータベース依存関係を管理することもできます。 MSBuild ではデータベース オブジェクト参照のみがチェックされ、ファイルはチェックされません。
 * **EnableDeployment=true** または **false**。 EnableDeployment は、ビルド処理中に参照されている U-SQL データベースをデプロイできるかどうかを示します。 U-SQL データベース プロジェクトを参照し、U-SQL スクリプトでデータベース オブジェクトを使用する場合は、このパラメーターを **true** に設定します。
 
-### <a name="continuous-integration-with-visual-studio-team-services"></a>Visual Studio Team Services を使用した継続的インテグレーション
+### <a name="continuous-integration-through-azure-pipelines"></a>Azure Pipelines を使用した継続的インテグレーション
 
-コマンド ラインに加えて、Visual Studio Build または MSBuild タスクを使用して、Visual Studio Team Service (VSTS) で U-SQL プロジェクトをビルドすることもできます。 ビルド パイプラインを設定するには、ビルド パイプラインに NuGet 復元タスクと MSBuild タスクという 2 つのタスクを追加します。
+コマンド ラインに加えて、Visual Studio Build または MSBuild タスクを使用して、Azure Pipelines で U-SQL プロジェクトをビルドすることもできます。 ビルド パイプラインを設定するには、ビルド パイプラインに NuGet 復元タスクと MSBuild タスクという 2 つのタスクを追加します。
 
 ![U-SQL プロジェクトの MSBuild タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
@@ -94,7 +94,7 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
     ![U-SQL プロジェクトの NuGet 復元タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2.  次の例に示すように、Visual Studio ビルド ツールまたは MSBuild タスクで MSBuild 引数を設定します。 また、VSTS ビルド定義で、これらの引数の変数を定義することもできます。
+2.  次の例に示すように、Visual Studio ビルド ツールまたは MSBuild タスクで MSBuild 引数を設定します。 または、Azure Pipelines ビルド パイプラインで、これらの引数の変数を定義することもできます。
 
     ![U-SQL プロジェクトの CI/CD MSBuild 変数を定義する](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables.png) 
 
@@ -115,15 +115,15 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 Azure Data Lake には、U-SQL スクリプトおよび C# UDO/UDAG/UDF 用のテスト プロジェクトが用意されています。
 * [U-SQL スクリプトおよび拡張 C# コード用のテスト ケースを追加する方法](data-lake-analytics-cicd-test.md#test-u-sql-scripts)に関するページを参照してください。
-* [テスト ケースを Visual Studio Team Services で実行する方法](data-lake-analytics-cicd-test.md#run-test-cases-in-visual-studio-team-service)に関するページを参照してください。
+* [Azure Pipelines でテスト ケースを実行する](data-lake-analytics-cicd-test.md#run-test-cases-in-azure-devops)方法を確認してください。
 
 ## <a name="deploy-a-u-sql-job"></a>U-SQL ジョブをデプロイする
 
-ビルドとテストのプロセスでコードを検証した後、Azure PowerShell タスクで U-SQL ジョブを Visual Studio Team Services から直接送信することができます。 スクリプトを Azure Data Lake Store または Azure Blob Storage にデプロイし、[スケジュールされたジョブを Azure Data Factory を使用して実行する](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)こともできます。
+ビルドとテストのプロセスでコードを検証した後、Azure PowerShell タスクで U-SQL ジョブを Azure Pipelines から直接送信することができます。 スクリプトを Azure Data Lake Store または Azure Blob Storage にデプロイし、[スケジュールされたジョブを Azure Data Factory を使用して実行する](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)こともできます。
 
-### <a name="submit-u-sql-jobs-through-visual-studio-team-services"></a>Visual Studio Team Services から U-SQL ジョブを送信する
+### <a name="submit-u-sql-jobs-through-azure-pipelines"></a>Azure Pipelines を使用して U-SQL ジョブを送信する
 
-U-SQL プロジェクトのビルド出力は **USQLProjectName.usqlpack** という名前の zip ファイルです。 この zip ファイルには、プロジェクト内のすべての U-SQL スクリプトが含まれています。 Visual Studio Team Services 内の [Azure PowserShell タスク](https://docs.microsoft.com/vsts/pipelines/tasks/deploy/azure-powershell?view=vsts)と、次のサンプル PowserShell スクリプトを使用して、Visual Studio Team Services のビルドまたはリリース パイプラインから U-SQL ジョブを直接送信することができます。
+U-SQL プロジェクトのビルド出力は **USQLProjectName.usqlpack** という名前の zip ファイルです。 この zip ファイルには、プロジェクト内のすべての U-SQL スクリプトが含まれています。 Pipelines で [Azure PowerShell タスク](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts)を使用し、次のサンプル PowerShell スクリプトで、Azure Pipelines から直接 U-SQL ジョブを送信できます。
 
 ```powershell
 <#
@@ -230,9 +230,9 @@ Main
 
 ### <a name="deploy-u-sql-jobs-through-azure-data-factory"></a>Azure Data Factory を通じた U-SQL ジョブのデプロイ
 
-Visual Studio Team Services から U-SQL ジョブを直接送信できます。 また、ビルドしたスクリプトを Azure Data Lake Store または Azure Blob Storage にアップロードし、[スケジュールされたジョブを Azure Data Factory を使用して実行する](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)こともできます。
+Azure Pipelines から直接、U-SQL ジョブを送信することができます。 また、ビルドしたスクリプトを Azure Data Lake Store または Azure Blob Storage にアップロードし、[スケジュールされたジョブを Azure Data Factory を使用して実行する](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)こともできます。
 
-U-SQL スクリプトを Azure Data Lake Store アカウントにアップロードするには、Visual Studio Team Services 内の [Azure PowerShell タスク](https://docs.microsoft.com/vsts/pipelines/tasks/deploy/azure-powershell?view=vsts)と、次のサンプル PowerShell スクリプトを使用します。
+U-SQL スクリプトを Azure Data Lake Store アカウントにアップロードするには、Azure Pipelines 内の [Azure PowerShell タスク](https://docs.microsoft.com/azure/devops/pipelines/tasks/deploy/azure-powershell?view=vsts)と、次のサンプル PowerShell スクリプトを使用します。
 
 ```powershell
 <#
@@ -319,9 +319,9 @@ msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataL
 
 引数 `USQLSDKPath=<U-SQL Nuget package>\build\runtime` は、U-SQL 言語サービス用の NuGet パッケージのインストール パスを参照します。
 
-### <a name="continuous-integration-with-visual-studio-team-services"></a>Visual Studio Team Services を使用した継続的インテグレーション
+### <a name="continuous-integration-with-azure-pipelines"></a>Azure Pipelines を使用した継続的インテグレーション
 
-コマンド ラインに加えて、Visual Studio Build または MSBuild タスクを使用して、Visual Studio Team Services で U-SQL データベース プロジェクトをビルドすることもできます。 ビルド タスクを設定するには、ビルド パイプラインに NuGet 復元タスクと MSBuild タスクという 2 つのタスクを追加します。
+コマンド ラインに加えて、Visual Studio Build または MSBuild タスクを使用して、Azure Pipelines で U-SQL データベース プロジェクトをビルドできます。 ビルド タスクを設定するには、ビルド パイプラインに NuGet 復元タスクと MSBuild タスクという 2 つのタスクを追加します。
 
    ![U-SQL プロジェクトの CI/CD MSBuild タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-task.png) 
 
@@ -330,7 +330,7 @@ msbuild DatabaseProject.usqldbproj /p:USQLSDKPath=packages\Microsoft.Azure.DataL
 
     ![U-SQL プロジェクトの CI/CD NuGet タスク](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-nuget-task.png)
 
-2.  次の例に示すように、Visual Studio ビルド ツールまたは MSBuild タスクで MSBuild 引数を設定します。 また、VSTS ビルド定義で、これらの引数の変数を定義することもできます。
+2.  次の例に示すように、Visual Studio ビルド ツールまたは MSBuild タスクで MSBuild 引数を設定します。 または、Azure Pipelines ビルド パイプラインで、これらの引数の変数を定義することもできます。
 
    ![U-SQL データベース プロジェクトの CI/CD MSBuild 変数を定義する](./media/data-lake-analytics-cicd-overview/data-lake-analytics-set-vsts-msbuild-variables-database-project.png) 
 
@@ -350,16 +350,16 @@ U-SQL データベース プロジェクトのビルド出力は、名前に `.u
 2.  この U-SQL プロジェクトにデータベース参照を追加します。 テーブル値関数およびストアド プロシージャの定義を取得するには、DDL ステートメントを含むデータベース プロジェクトを参照する必要があります。 詳細については、[データベースの参照](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)に関するページを参照してください。
 3.  テーブル値関数およびストアド プロシージャを呼び出す U-SQL スクリプト用のテスト ケースを追加します。 詳細については、[U-SQL スクリプト用のテスト ケースを追加する方法](data-lake-analytics-cicd-test.md#test-u-sql-scripts)に関するページを参照してください。
 
-## <a name="deploy-u-sql-database-through-visual-studio-team-service"></a>Visual Studio Team Service から U-SQL データベースをデプロイする
+## <a name="deploy-u-sql-database-through-azure-pipelines"></a>Azure Pipelines を使用して U-SQL データベースをデプロイする
 
 `PackageDeploymentTool.exe` には、U-SQL データベース デプロイ パッケージ **.usqldbpack** のデプロイに役立つプログラミングおよびコマンド ライン インターフェイスが用意されています。 SDK は [U-SQL SDK NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)に含まれており、場所は **build/runtime/PackageDeploymentTool.exe** です。 `PackageDeploymentTool.exe` を使用して、U-SQL データベースを Azure Data Lake Analytics とローカル アカウントの両方にデプロイできます。
 
 > [!NOTE]
 >
-> U-SQL データベース デプロイに対する、PowerShell コマンド ラインのサポートと Visual Studio Team Services リリース タスクのサポートは、現在保留中です。
+> U-SQL データベース デプロイに対する、PowerShell コマンド ラインのサポートと Azure Pipelines リリース タスクのサポートは、現在保留中です。
 >
 
-Visual Studio Team Services でデータベース デプロイ タスクを設定するには、次の手順を実行します。
+Azure Pipelines でデータベース デプロイ タスクを設定するには、次の手順を実行します。
 
 1. ビルドまたはリリース パイプラインで PowerShell Script タスクを追加し、次の PowerShell スクリプトを実行します。 このタスクは、`PackageDeploymentTool.exe` と `PackageDeploymentTool.exe` の Azure SDK 依存関係を取得するのに役立ちます。 **-AzureSDK** および **-DBDeploymentTool** パラメーターを設定すると、依存関係とデプロイ ツールを特定のフォルダーに読み込むことができます。 **-AzureSDK** パスを手順 2 の **-AzureSDKPath** パラメーターとして `PackageDeploymentTool.exe` に渡します。 
 
@@ -388,8 +388,8 @@ Visual Studio Team Services でデータベース デプロイ タスクを設�
     echo "workingfolder=$workingfolder, outputfolder=$outputfolder"
     echo "Downloading required packages..."
 
-    iwr https://www.nuget.org/api/v2/package/Microsoft.Azure.Management.DataLake.Analytics/3.2.3-preview -outf Microsoft.Azure.Management.DataLake.Analytics.3.2.3-preview.zip
-    iwr https://www.nuget.org/api/v2/package/Microsoft.Azure.Management.DataLake.Store/2.3.3-preview -outf Microsoft.Azure.Management.DataLake.Store.2.3.3-preview.zip
+    iwr https://www.nuget.org/api/v2/package/Microsoft.Azure.Management.DataLake.Analytics/3.5.1-preview -outf Microsoft.Azure.Management.DataLake.Analytics.3.5.1-preview.zip
+    iwr https://www.nuget.org/api/v2/package/Microsoft.Azure.Management.DataLake.Store/2.4.1-preview -outf Microsoft.Azure.Management.DataLake.Store.2.4.1-preview.zip
     iwr https://www.nuget.org/api/v2/package/Microsoft.IdentityModel.Clients.ActiveDirectory/2.28.3 -outf Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3.zip
     iwr https://www.nuget.org/api/v2/package/Microsoft.Rest.ClientRuntime/2.3.11 -outf Microsoft.Rest.ClientRuntime.2.3.11.zip
     iwr https://www.nuget.org/api/v2/package/Microsoft.Rest.ClientRuntime.Azure/3.3.7 -outf Microsoft.Rest.ClientRuntime.Azure.3.3.7.zip
@@ -399,8 +399,8 @@ Visual Studio Team Services でデータベース デプロイ タスクを設�
 
     echo "Extracting packages..."
 
-    Expand-Archive Microsoft.Azure.Management.DataLake.Analytics.3.2.3-preview.zip -DestinationPath Microsoft.Azure.Management.DataLake.Analytics.3.2.3-preview -Force
-    Expand-Archive Microsoft.Azure.Management.DataLake.Store.2.3.3-preview.zip -DestinationPath Microsoft.Azure.Management.DataLake.Store.2.3.3-preview -Force
+    Expand-Archive Microsoft.Azure.Management.DataLake.Analytics.3.5.1-preview.zip -DestinationPath Microsoft.Azure.Management.DataLake.Analytics.3.5.1-preview -Force
+    Expand-Archive Microsoft.Azure.Management.DataLake.Store.2.4.1-preview.zip -DestinationPath Microsoft.Azure.Management.DataLake.Store.2.4.1-preview -Force
     Expand-Archive Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3.zip -DestinationPath Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3 -Force
     Expand-Archive Microsoft.Rest.ClientRuntime.2.3.11.zip -DestinationPath Microsoft.Rest.ClientRuntime.2.3.11 -Force
     Expand-Archive Microsoft.Rest.ClientRuntime.Azure.3.3.7.zip -DestinationPath Microsoft.Rest.ClientRuntime.Azure.3.3.7 -Force
@@ -412,8 +412,8 @@ Visual Studio Team Services でデータベース デプロイ タスクを設�
 
     mkdir $AzureSDK -Force
     mkdir $DBDeploymentTool -Force
-    copy Microsoft.Azure.Management.DataLake.Analytics.3.2.3-preview\lib\net452\*.dll $AzureSDK
-    copy Microsoft.Azure.Management.DataLake.Store.2.3.3-preview\lib\net452\*.dll $AzureSDK
+    copy Microsoft.Azure.Management.DataLake.Analytics.3.5.1-preview\lib\net452\*.dll $AzureSDK
+    copy Microsoft.Azure.Management.DataLake.Store.2.4.1-preview\lib\net452\*.dll $AzureSDK
     copy Microsoft.IdentityModel.Clients.ActiveDirectory.2.28.3\lib\net45\*.dll $AzureSDK
     copy Microsoft.Rest.ClientRuntime.2.3.11\lib\net452\*.dll $AzureSDK
     copy Microsoft.Rest.ClientRuntime.Azure.3.3.7\lib\net452\*.dll $AzureSDK

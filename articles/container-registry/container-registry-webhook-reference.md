@@ -2,18 +2,17 @@
 title: Azure Container Registry webhook スキーマ リファレンス
 description: Azure Container Registry の webhook 要求 JSON ペイロードのリファレンスです。
 services: container-registry
-author: mmacy
-manager: jeconnoc
+author: dlepow
 ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
-ms.author: marsma
-ms.openlocfilehash: f62477a4c68abf1617d9689047913fd820ee5461
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.author: danlep
+ms.openlocfilehash: 8bae44215cdc17e9f1617c909ef197f2757fc114
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32166009"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48857756"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Azure Container Registry webhook リファレンス
 
@@ -41,7 +40,7 @@ Azure Container Registry webhook の構成方法については、「[Azure Cont
 
 ### <a name="push-event-payload"></a>push イベントのペイロード
 
-|要素|type|[説明]|
+|要素|type|説明|
 |-------------|----------|-----------|
 |`id`|String|webhook イベントの ID。|
 |`timestamp`|Datetime|webhook イベントがトリガーされた日時。|
@@ -51,7 +50,7 @@ Azure Container Registry webhook の構成方法については、「[Azure Cont
 
 ### <a name="target"></a>target
 
-|要素|type|[説明]|
+|要素|type|説明|
 |------------------|----------|-----------|
 |`mediaType`|String|参照されているオブジェクトの MIME の種類。|
 |`size`|Int32|コンテンツのバイト数。 length フィールドと同じです。|
@@ -62,7 +61,7 @@ Azure Container Registry webhook の構成方法については、「[Azure Cont
 
 ### <a name="request"></a>request
 
-|要素|type|[説明]|
+|要素|type|説明|
 |------------------|----------|-----------|
 |`id`|String|イベントを開始した要求の ID。|
 |`host`|String|レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の HTTP ホスト ヘッダーで指定されています。|
@@ -105,7 +104,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete-event-payload"></a>delete イベントのペイロード
 
-|要素|type|[説明]|
+|要素|type|説明|
 |-------------|----------|-----------|
 |`id`|String|webhook イベントの ID。|
 |`timestamp`|Datetime|webhook イベントがトリガーされた日時。|
@@ -115,7 +114,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete_target"></a> target
 
-|要素|type|[説明]|
+|要素|type|説明|
 |------------------|----------|-----------|
 |`mediaType`|String|参照されているオブジェクトの MIME の種類。|
 |`digest`|String|コンテンツのダイジェスト。Registry V2 HTTP API 仕様で定義されています。|
@@ -123,7 +122,7 @@ docker push myregistry.azurecr.io/hello-world:v1
 
 ### <a name="delete_request"></a> request
 
-|要素|type|[説明]|
+|要素|type|説明|
 |------------------|----------|-----------|
 |`id`|String|イベントを開始した要求の ID。|
 |`host`|String|レジストリ インスタンスの外部からアクセス可能なホスト名。受信した要求の HTTP ホスト ヘッダーで指定されています。|
@@ -151,7 +150,7 @@ docker push myregistry.azurecr.io/hello-world:v1
   }
 ```
 
-**delete** イベント webhook をトリガーする [Azure CLI 2.0](/cli/azure/acr) コマンドの例:
+**delete** イベント webhook をトリガーする [Azure CLI](/cli/azure/acr) コマンドの例:
 
 ```azurecli
 # Delete repository

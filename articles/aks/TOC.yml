@@ -112,6 +112,8 @@ items:
         href: http-application-routing.md
       - name: 内部ネットワークの使用
         href: ingress-internal-ip.md
+      - name: 独自の証明書での TLS の使用
+        href: ingress-own-tls.md
       - name: Let's Encrypt での TLS の使用
         href: ingress-tls.md
         items:
@@ -242,9 +244,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: FAQ
     href: faq.md
-ms.openlocfilehash: e2535df133722082f609b2229820fce673bddecc
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 7fd44b1ee0c07f600fc46e3f8fda1c45261074d1
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457025"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092902"

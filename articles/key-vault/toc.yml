@@ -88,12 +88,15 @@ items:
     href: /python/api/overview/azure/key-vault?view=azure-python
   - name: REST ()
     href: /rest/api/keyvault
+    items:
+    - name: 認証、要求、応答
+      href: authentication-requests-and-responses.md
+    - name: 一般的なパラメーターとヘッダー
+      href: common-parameters-and-headers.md
   - name: 開発
     items:
-    - name: Key Vault 開発者ガイド
+    - name: 開発者ガイド
       href: key-vault-developers-guide.md
-    - name: サービスの制限
-      href: key-vault-service-limits.md
     - name: HSM で保護されたキー
       href: key-vault-hsm-protected-keys.md
     - name: .NET 2.0 への移行
@@ -118,25 +121,31 @@ items:
   items:
   - name: Microsoft Learn でスキルを身に付ける
     href: /learn/browse/?products=azure-key-vault
-  - name: サービスの概要
-    href: https://azure.microsoft.com/services/key-vault/
-  - name: 認証、要求、応答
-    href: authentication-requests-and-responses.md
-  - name: 一般的なパラメーターとヘッダー
-    href: common-parameters-and-headers.md
   - name: 顧客データ
     href: key-vault-customer-data.md
-  - name: ブログ
+  - name: Service
+    items:
+    - name: 価格
+      href: https://azure.microsoft.com/pricing/details/key-vault/
+    - name: 利用可能なリージョン
+      href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
+    - name: リリース ノート
+      href: key-vault-versions.md
+    - name: サービス レベル アグリーメント (SLA)
+      href: https://azure.microsoft.com/support/legal/sla/key-vault/
+    - name: サービスの制限
+      href: key-vault-service-limits.md
+    - name: サービスの状態
+      href: https://azure.microsoft.com/status/
+    - name: サービスの更新情報
+      href: https://azure.microsoft.com/updates/?product=key-vault
+  - name: チーム ブログ
     href: http://blogs.technet.com/b/kv/
-  - name: 価格
-    href: https://azure.microsoft.com/pricing/details/key-vault/
-- name: リリース ノート
-  href: key-vault-versions.md
 - name: 製品フィードバック
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 542c3ce29d4d663e4569829e4f551ab6f751db3b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 727a44d903d481974a95635f092468754085db1b
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953193"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084970"

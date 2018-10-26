@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2018
 ms.author: msangapu
-ms.openlocfilehash: 0f2d4626308eed376b71f1b3df2f9e43f1b2a4f7
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 20ca63b7126a6800538129115ff339308c11d8c5
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130967"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48867027"
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Web App for Containers での継続的デプロイ
 
@@ -42,7 +42,7 @@ az webapp deployment container config --name name --resource-group myResourceGro
 
 Docker Hub の継続的なデプロイを構成するアプリの名前を選択します。
 
-**[Docker コンテナー]** ページで、**[オン]** を選択してから、**[保存]** を選択して継続的なデプロイを有効にします。
+**[コンテナーの設定]** ページで、**[オン]** を選択してから、**[保存]** を選択して継続的なデプロイを有効にします。
 
 ![アプリ設定のスクリーンショット](./media/app-service-webapp-service-linux-ci-cd/step2.png)
 

@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 46e12378812788d147c903046b50a93c13119f2f
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: ee3dafe55799c46231aa3ca7c19684d905a057de
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444590"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48815428"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ Blob Storage には、サポートされているソース データ ストア�
 具体的には、この Blob Storage コネクタは、以下をサポートします。
 
 - 汎用 Azure Storage アカウントとホット/クール Blob Storage との間での BLOB のコピー。 
-- アカウント キー、サービスの Shared Access Signature、サービス プリンシパル、またはマネージド サービス ID のいずれかの認証を使用した BLOB のコピー。
+- アカウント キー、サービスの Shared Access Signature、サービス プリンシパル、または Azure リソースのマネージド ID のいずれかの認証を使用した BLOB のコピー。
 - ブロック BLOB、アペンド BLOB、またはページ BLOB からの BLOB のコピーと、ブロック BLOB だけへのデータのコピー。 Azure Premium Storage はページ BLOB によって提供されるため、シンクとしてはサポートされていません。
 - そのままの BLOB のコピー、または[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用した BLOB の解析/生成。
 
@@ -47,7 +47,7 @@ Azure BLOB コネクタは、次の認証の種類をサポートします。詳
 - [アカウント キー認証](#account-key-authentication)
 - [Shared Access Signature 認証](#shared-access-signature-authentication)
 - [サービス プリンシパルの認証](#service-principal-authentication)
-- [マネージド サービス ID 認証](#managed-service-identity-authentication)
+- [Azure リソースのマネージド ID 認証](#managed-identity)
 
 >[!NOTE]
 >HDInsights、Azure Machine Learning、および Azure SQL Data Warehouse の PolyBase 読み込みは、Azure BLOB ストレージ アカウント キー認証のみをサポートします。
@@ -191,13 +191,13 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>マネージド サービス ID 認証
+### <a name="managed-identity"></a> Azure リソースのマネージド ID 認証
 
-データ ファクトリは、この特定のデータ ファクトリを表す[管理対象のサービス ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、BLOB ストレージ認証にこのサービス ID を直接使用できます。 これにより、この指定されたファクトリは、BLOB ストレージにアクセスしてデータをコピーできます。
+データ ファクトリは、特定のデータ ファクトリを表す、[Azure リソースのマネージド ID](data-factory-service-identity.md) に関連付けることができます。 独自のサービス プリンシパルを使用するのと同様に、BLOB ストレージ認証にこのサービス ID を直接使用できます。 これにより、この指定されたファクトリは、BLOB ストレージにアクセスしてデータをコピーできます。
 
 一般的な Azure Storage MSI 認証については、「[Azure Active Directory を使用して Azure Storage へのアクセスを認証する](../storage/common/storage-auth-aad.md)」をご覧ください。
 
-マネージド サービス ID (MSI) 認証を使用するには、次の手順のようにします。
+Azure リソースのマネージド ID 認証を使用するには、次のようにします。
 
 1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのサービス ID を取得](data-factory-service-identity.md#retrieve-service-identity)します。
 
@@ -214,8 +214,8 @@ Azure BLOB ストレージのリンクされたサービスでは、次のプロ
 | serviceEndpoint | `https://<accountName>.blob.core.windows.net/` のパターンで、Azure BLOB ストレージ サービス エンドポイントを指定します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイムを使用できます (データ ストアがプライベート ネットワークにある場合)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
->[!NOTE]
->マネージド サービス ID 認証は、"AzureBlobStorage" タイプのリンクされたサービスによってのみサポートされており、以前の "AzureStorage" タイプのリンクされたサービスではサポートされていません。 
+> [!NOTE]
+> Azure リソースのマネージド ID 認証は、"AzureBlobStorage" タイプのリンクされたサービスによってのみサポートされており、以前の "AzureStorage" タイプのリンクされたサービスではサポートされていません。 
 
 **例:**
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 4ce65f1b5dd22da031ebf6730b5efad2d04f91a0
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 681cafc60661e16d70deb862da71f6baf80509fd
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365589"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48856532"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>BizTalk Services への BizTalk Server EDI ソリューションの移行
 
@@ -55,7 +55,7 @@ BizTalk Server および BizTalk Services での EDI ソリューション フ�
   
     BizTalk Services では、EDI 受信ブリッジは EDI メッセージを処理した後でメッセージを外部プロセスにルーティングします。 外部プロセスは、Microsoft Azure またはオンプレミスで実行できます。 外部プロセスは、EDI 送信ブリッジにメッセージをルーティングする必要があります。送信ブリッジは、基本的にメッセージをプルしません。 メッセージを処理した後、EDI 送信ブリッジは取引先にメッセージをルーティングします。
 
-BizTalk Services が提供する使いやすい構成環境を使用すると、取引先間の B2B アグリーメントをすばやく作成およびデプロイ、Microsoft Azure Compute インスタンス (Web またはワーカー ロール)、Microsoft Azure SQL Database、Microsoft Azure ストレージ アカウントを構成する必要はありません。 さらに複雑なシナリオでは、取引先アグリーメントの「エッジの周辺」つまり取引先アグリーメント EDI ブリッジ処理の前後で、ワークフローまたは他のサービス処理を結び付ける必要があります。 詳しくは、BizTalk Services でのEDI メッセージ処理の間に以下のイベント シーケンスが発生します。
+BizTalk Services が提供する使いやすい構成環境を使用すると、取引先間の B2B アグリーメントをすばやく作成してデプロイすることができ、Microsoft Azure Compute インスタンス (Web またはワーカー ロール)、Microsoft Azure SQL データベース、Microsoft Azure ストレージ アカウントを構成する必要はありません。 さらに複雑なシナリオでは、取引先アグリーメントの「エッジの周辺」つまり取引先アグリーメント EDI ブリッジ処理の前後で、ワークフローまたは他のサービス処理を結び付ける必要があります。 詳しくは、BizTalk Services でのEDI メッセージ処理の間に以下のイベント シーケンスが発生します。
 
 1. 取引先 Fabrikam から EDI メッセージを受信します。  取引先から EDI メッセージを受信するため、BizTalk Services は FTP、SFTP、AS2、HTTP/S などのトランスポート プロトコルをサポートしています。
 2. 取引先アグリーメントの受信側処理が、EDI メッセージを XML 形式に分解します。  分解された EDI メッセージ (XML 形式) は、Service Bus Relay エンドポイント、Service Bus トピック、Service Bus キュー、BizTalk Services ブリッジなどの Service Bus エンドポイントにルーティングできます。

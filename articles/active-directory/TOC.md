@@ -266,7 +266,6 @@
 
 #### アクセス許可
 ##### [API のアクセス許可の選択](develop/perms-for-given-api.md)
-##### [アプリへのアクセス許可の付与](develop/registration-config-grant-permissions-how-to.md)
 ##### [委任されたアクセス許可とアプリケーションのアクセス許可](develop/delegated-and-app-perms.md)
 ##### [アプリケーションへの同意](develop/consent-framework.md)
 
@@ -313,14 +312,6 @@
 ### カスタム ドメイン名
 #### [クイックスタート](fundamentals/add-custom-domain.md)
 ### [ディレクトリを管理する](fundamentals/active-directory-administer.md)
-### [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
-#### [有効にする](active-directory-windows-enterprise-state-roaming-enable.md)
-#### [グループ ポリシーの設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
-#### [Windows 10 の設定](active-directory-windows-enterprise-state-roaming-windows-settings-reference.md)
-#### [FAQ](active-directory-windows-enterprise-state-roaming-faqs.md)
-#### [トラブルシューティング](active-directory-windows-enterprise-state-roaming-troubleshooting.md)
-
-
 ### [Azure AD Connect を使用してオンプレミスの ID を統合する](hybrid/whatis-hybrid-identity.md)
 
 ### [トークンの有効期間を構成する](develop/active-directory-configurable-token-lifetimes.md)

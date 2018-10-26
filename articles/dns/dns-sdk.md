@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: victorh
-ms.openlocfilehash: 14860ae48e520f86ce9d5bea739605d1a4baf0c7
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 7acc0fa4c3654c96ac0f8f1baed7ea5b7b306376
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173195"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48829771"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>.NET SDK を使用した DNS ゾーンとレコード セットの作成
 
-DNS ゾーン、レコードセット、レコードを作成、削除、更新する操作は、DNS SDK と .NET DNS 管理ライブラリを使用して自動化できます。 Visual Studio プロジェクト全体は、[こちら](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)から入手できます。
+DNS ゾーン、レコード セット、レコードを作成、削除、更新する操作は、DNS SDK と .NET DNS 管理ライブラリを使用して自動化できます。 Visual Studio プロジェクト全体は、[こちら](https://www.microsoft.com/en-us/download/details.aspx?id=47268&WT.mc_id=DX_MVP4025064&e6b34bbe-475b-1abd-2c51-b5034bcdd6d2=True)から入手できます。
 
 ## <a name="create-a-service-principal-account"></a>サービス プリンシパル アカウントの作成
 
@@ -33,7 +33,7 @@ DNS ゾーン、レコードセット、レコードを作成、削除、更新�
 3. Azure RBAC を使用して、サービス プリンシパル アカウント "DNS Zone Contributor" にリソース グループへのアクセス許可を付与します ([手順はこちら](../role-based-access-control/role-assignments-portal.md))。
 4. Azure DNS SDK のサンプル プロジェクトを使用する場合、"program.cs" ファイルを次のように編集します。
 
-   * 手順 1. で使用した tenantId、clientId (アカウント ID とも呼ばれます)、シークレット (サービス プリンシパル アカウントのパスワード)、subscriptionId の適切な値を入力します。
+   * 手順 1. で使用した `tenantId`、`clientId` (アカウント ID とも呼ばれます)、`secret` (サービス プリンシパル アカウントのパスワード)、`subscriptionId` の適切な値を入力します。
    * 手順 2. で選択したリソース グループ名を入力します。
    * 任意の DNS ゾーンの名前を入力します。
 
@@ -59,7 +59,7 @@ using Microsoft.Azure.Management.Dns.Models;
 
 ## <a name="initialize-the-dns-management-client"></a>DNS 管理クライアントの初期化
 
-*DnsManagementClient* には、DNS ゾーンとレコードセットの管理に必要なメソッドとプロパティが含まれます。  次のコードにより、サービス プリンシパル アカウントにログインし、DnsManagementClient オブジェクトを作成します。
+`DnsManagementClient` には、DNS ゾーンとレコードセットの管理に必要なメソッドとプロパティが含まれます。  次のコードにより、サービス プリンシパル アカウントにログインし、`DnsManagementClient` オブジェクトを作成します。
 
 ```cs
 // Build the service credentials and DNS management client
@@ -72,12 +72,12 @@ dnsClient.SubscriptionId = subscriptionId;
 
 DNS ゾーンを作成するには、まず、DNS ゾーン パラメーターを含む "Zone" オブジェクトを作成します。 DNS ゾーンは特定のリージョンにリンクされないため、場所は "global" に設定されます。 この例では、 [Azure Resource Manager の "タグ"](https://azure.microsoft.com/updates/organize-your-azure-resources-with-tags/) も、ゾーンに追加されます。
 
-Azure DNS でゾーンを実際に作成または更新するには、ゾーン パラメーターを含むゾーン オブジェクトを *DnsManagementClient.Zones.CreateOrUpdateAsyc* メソッドに渡します。
+Azure DNS でゾーンを実際に作成または更新するには、ゾーン パラメーターを含むゾーン オブジェクトを `DnsManagementClient.Zones.CreateOrUpdateAsyc` メソッドに渡します。
 
 > [!NOTE]
 > DnsManagementClient は、同期 ("CreateOrUpdate")、非同期 ("CreateOrUpdateAsync")、および HTTP 応答へのアクセスを使用した非同期 ("CreateOrUpdateWithHttpMessagesAsync") の 3 つの操作モードをサポートします。  アプリケーションのニーズに応じていずれかのモードを選択できます。
 
-Azure DNS では、 [Etag](dns-getstarted-create-dnszone.md)と呼ばれるオプティミスティック同時実行制御がサポートされます。 この例では、"If-None-Match" ヘッダーに "*" を指定して、DNS ゾーンが存在しない場合は DNS ゾーンを作成することを Azure DNS に通知します。  指定したリソース グループ内に指定した名前を持つゾーンが既に存在する場合、呼び出しは失敗します。
+Azure DNS では、 [Etag](dns-getstarted-create-dnszone.md)と呼ばれるオプティミスティック コンカレンシーがサポートされます。 この例では、"If-None-Match" ヘッダーに "*" を指定して、DNS ゾーンが存在しない場合は DNS ゾーンを作成することを Azure DNS に通知します。  指定したリソース グループ内に指定した名前を持つゾーンが既に存在する場合、呼び出しは失敗します。
 
 ```cs
 // Create zone parameters
@@ -98,9 +98,9 @@ var dnsZone = await dnsClient.Zones.CreateOrUpdateAsync(resourceGroupName, zoneN
 
 DNS レコードはレコード セットとして管理されます。 レコード セットは、ゾーン内で名前とレコードの種類が同じレコードのセットです。  レコード セットの名前は、完全修飾 DNS 名ではなく、ゾーンの名前に対して相対的です。
 
-レコード セットを作成または更新するには、"RecordSet" パラメーター オブジェクトを作成し、 *DnsManagementClient.RecordSets.CreateOrUpdateAsync*に渡します。 DNS ゾーンと同様に、同期 ("CreateOrUpdate")、非同期 ("CreateOrUpdateAsync")、および HTTP 応答へのアクセスを使用した非同期 ("CreateOrUpdateWithHttpMessagesAsync") の 3 つの操作モードがあります。
+レコード セットを作成または更新するには、"RecordSet" パラメーター オブジェクトを作成し、`DnsManagementClient.RecordSets.CreateOrUpdateAsync` に渡します。 DNS ゾーンと同様に、同期 ("CreateOrUpdate")、非同期 ("CreateOrUpdateAsync")、および HTTP 応答へのアクセスを使用した非同期 ("CreateOrUpdateWithHttpMessagesAsync") の 3 つの操作モードがあります。
 
-DNS ゾーンと同様に、レコード セットでの操作では、オプティミスティック同時実行制御がサポートされます。  この例では、"If-Match" も "If-None-Match" も指定されていないので、レコード セットは常に作成されます。  この呼び出しは、この DNS ゾーン内で同じ名前とレコード タイプを持つ既存のレコード セットを上書きします。
+DNS ゾーンと同様に、レコード セットでの操作では、オプティミスティック コンカレンシーがサポートされます。  この例では、"If-Match" も "If-None-Match" も指定されていないので、レコード セットは常に作成されます。  この呼び出しは、この DNS ゾーン内で同じ名前とレコード タイプを持つ既存のレコード セットを上書きします。
 
 ```cs
 // Create record set parameters
@@ -122,7 +122,7 @@ var recordSet = await dnsClient.RecordSets.CreateOrUpdateAsync(resourceGroupName
 
 ## <a name="get-zones-and-record-sets"></a>ゾーンとレコード セットの取得
 
-*DnsManagementClient.Zones.Get* メソッドと *DnsManagementClient.RecordSets.Get* メソッドは、個別のゾーンとレコード セットをそれぞれ取得します。 RecordSets は、その種類、名前、それが存在するゾーンとリソース グループで識別されます。 ゾーンは、その名前と、それが存在するリソース グループで識別されます。
+`DnsManagementClient.Zones.Get` メソッドと `DnsManagementClient.RecordSets.Get` メソッドは、個別のゾーンとレコード セットをそれぞれ取得します。 RecordSets は、その種類、名前、それが存在するゾーンとリソース グループで識別されます。 ゾーンは、その名前と、それが存在するリソース グループで識別されます。
 
 ```cs
 var recordSet = dnsClient.RecordSets.Get(resourceGroupName, zoneName, recordSetName, RecordType.A);

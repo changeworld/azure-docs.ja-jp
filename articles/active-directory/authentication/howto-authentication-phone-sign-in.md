@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: d348978924b4123944e019ef1a309633ee72b516
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 81c249c8dc8475428f4cb0014e57f09e28a3d9af
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046932"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804329"
 ---
-# <a name="passwordless-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしの電話によるサインイン (パブリック プレビュー)
+# <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Microsoft Authenticator アプリを使用したパスワードなしの電話によるサインイン (パブリック プレビュー)
 
 Microsoft Authenticator アプリを使用すると、パスワードを使用せずに Azure AD アカウントにサインインできます。 [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) のテクノロジと同様、Microsoft Authenticator は、キーベースの認証を使用して、デバイスに関連付けられていて生体認証または PIN を使用するユーザー資格情報を有効にします。
 
@@ -37,7 +37,7 @@ Microsoft Authenticator アプリを使用すると、パスワードを使用�
 
 ### <a name="steps-to-enable"></a>有効にする手順
 
-1. [Azure Active Directory V2 PowerShell モジュールのパブリック プレビュー リリース](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.114)をインストールします。  
+1. [Azure Active Directory V2 PowerShell モジュールのパブリック プレビュー リリース](https://www.powershellgallery.com/packages/AzureADPreview/)をインストールします。  
 2. PowerShell で、2 つのコマンドを実行します。
    1. `Connect-AzureAD`
       1. 認証ダイアログで、テナントのアカウントでサインインします。 このアカウントは、セキュリティ管理者またはグローバル管理者のいずれかでなければなりません。
