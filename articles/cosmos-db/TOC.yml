@@ -73,8 +73,9 @@ items:
   - name: リソース モデル
     href: sql-api-resources.md
   - name: グローバル配信
-    href: distribute-data-globally.md
     items:
+    - name: はじめに
+      href: distribute-data-globally.md
     - name: 主な利点
       href: distribute-data-globally-benefits.md
     - name: グローバル分散の有効化
@@ -86,8 +87,9 @@ items:
     - name: 競合の解決
       href: multi-master-conflict-resolution.md
   - name: Throughput
-    href: request-units.md
     items:
+    - name: はじめに
+      href: request-units.md
     - name: スループットの取得と設定
       href: set-throughput.md
   - name: パーティション分割とデータ分散
@@ -103,8 +105,9 @@ items:
   - name: 一意のキー
     href: unique-keys.md
   - name: セキュリティ
-    href: database-security.md
     items:
+    - name: はじめに
+      href: database-security.md
     - name: データの暗号化
       href: database-encryption-at-rest.md
     - name: データへのアクセスをセキュリティで保護する
@@ -428,6 +431,12 @@ items:
         href: performance-testing.md
     - name: コスト効率の優れた読み取りと書き込み
       href: key-value-store-cost.md
+  - name: Cosmos DB のデータを視覚化する
+    items:
+    - name: Power BI を使用する
+      href: powerbi-visualize.md
+    - name: Qlik Sense を使用する
+      href: visualize-qlik-sense.md
   - name: 他の Azure サービスとの統合
     items:
     - name: 変更フィードの e コマース ソリューション
@@ -458,8 +467,6 @@ items:
       href: spark-connector.md
     - name: Spark と Kafka
       href: https://docs.microsoft.com/azure/hdinsight/apache-kafka-spark-structured-streaming-cosmosdb?toc=/azure/cosmos-db/toc.json
-    - name: Power BI コネクタ
-      href: powerbi-visualize.md
     - name: ODBC ドライバー
       href: odbc-driver.md
   - name: Bulk Executor ライブラリ
@@ -494,9 +501,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: 79c5c4d9d39a3735098b2d81a5d04259e3bc7acb
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: dfa5b34127abf569a359814b6064ec981f57796d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471171"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985830"

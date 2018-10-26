@@ -42,6 +42,8 @@ items:
     href: asdk-start-stop.md
   - name: Azure Stack バックアップを検証する
     href: asdk-validate-backup.md
+  - name: ASDK に接続する
+    href: asdk-connect.md
   - name: トラブルシューティング
     href: asdk-troubleshooting.md
 - name: リファレンス
@@ -70,9 +72,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-stack
   - name: トレーニングと認定
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: b02e610789ca77fa641d43957f4c00ed00b3ebc1
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 81a4f724fd14551fa6527dc0d6fbaaa932e5d525
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309418"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023528"

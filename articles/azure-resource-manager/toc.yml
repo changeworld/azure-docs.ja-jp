@@ -18,7 +18,7 @@ items:
   items:
   - name: テンプレート リファレンスの利用
     href: resource-manager-tutorial-create-encrypted-storage-accounts.md
-  - name: 複数のリソース インスタンスの作成
+  - name: 複数のインスタンスの作成
     href: resource-manager-tutorial-create-multiple-instances.md
   - name: リソースのデプロイ順序の設定
     href: resource-manager-tutorial-create-templates-with-dependent-resources.md
@@ -221,9 +221,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 6691b5f90a2f9e9bb78312e26c2b7cbd85cf27d7
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: eed789adec429e21096d49a1957788f4e1db0290
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025601"
+ms.locfileid: "50094958"

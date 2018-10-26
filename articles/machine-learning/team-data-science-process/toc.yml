@@ -55,12 +55,6 @@ items:
       href: predict-twitter-sentiment.md
     - name: AML テキスト分析パッケージを使用したセンチメント分類
       href: predict-twitter-sentiment-amltextpackage.md
-    - name: 米国の所得の分類
-      href: ../desktop-workbench/scenario-tdsp-classifying-us-incomes.md
-      maintainContext: true
-    - name: 生体エンティティの認識
-      href: ../desktop-workbench/scenario-tdsp-biomedical-recognition.md
-      maintainContext: true
     - name: AML ビジョン パッケージを使用した皮膚がんの画像分類
       href: isic-image-classification.md
       maintainContext: true
@@ -214,13 +208,10 @@ items:
         maintainContext: true
   - name: 運用環境でのモデルのデプロイ
     href: deploy-models-in-production.md
-  - name: Azure ML での TDSP の使用
-    href: ../desktop-workbench/how-to-use-tdsp-in-azure-ml.md
-    maintainContext: true
 - name: 関連項目
   items:
-  - name: Azure Machine Learning - AML
-    href: https://docs.microsoft.com/azure/machine-learning/service/
+  - name: Azure Machine Learning
+    href: ../service/
   - name: Microsoft Cognitive Toolkit - CNTK
     href: https://docs.microsoft.com/cognitive-toolkit/
     maintainContext: true
@@ -278,9 +269,9 @@ items:
       href: http://stackoverflow.com/questions/tagged/azure-machine-learning
     - name: ビデオ
       href: https://azure.microsoft.com/resources/videos/index/?services=machine-learning
-ms.openlocfilehash: 44e7c5626158c0ead56f4e36853fce85813b905c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7a0e7527b62fec7e3c0d65ad59f53709a13039eb
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989704"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092476"

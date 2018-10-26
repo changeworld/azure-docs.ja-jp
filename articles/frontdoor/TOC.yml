@@ -15,36 +15,40 @@ items:
     href: front-door-custom-domain.md
   - name: カスタム ドメインに対する HTTPS の有効化
     href: front-door-custom-domain-https.md
+  - name: フロント ドアに geo フィルタリング ポリシーを設定する
+    href: front-door-tutorial-geo-filtering.md
 - name: サンプル
   items:
   - name: リソース マネージャーのテンプレート
     href: front-door-quickstart-template-samples.md
 - name: 概念
   items:
-  - name: バック エンドとバックエンド プール
-    href: front-door-backend-pool.md
   - name: アプリケーション層のセキュリティ
     href: front-door-application-security.md
-  - name: Azure のアプリケーション配信スイートによる負荷分散
-    href: front-door-lb-with-azure-app-delivery-suite.md
-  - name: ルーティング アーキテクチャ
-    href: front-door-routing-architecture.md
-  - name: トラフィックのルーティング方法
-    href: front-door-routing-methods.md
-  - name: Front Door が要求のルーティングと一致する仕組み
-    href: front-door-route-matching.md
-  - name: 正常性プローブ
-    href: front-door-health-probes.md
-  - name: URL 書き換え
-    href: front-door-url-rewrite.md
+  - name: バック エンドとバックエンド プール
+    href: front-door-backend-pool.md
   - name: Front Door でのキャッシュ
     href: front-door-caching.md
+  - name: geo フィルタリング
+    href: front-door-geo-filtering.md
+  - name: 正常性プローブ
+    href: front-door-health-probes.md
+  - name: Front Door が要求のルーティングと一致する仕組み
+    href: front-door-route-matching.md
   - name: HTTP/2 のサポート
     href: front-door-http2.md
   - name: HTTP ヘッダー プロトコルのサポート
     href: front-door-http-headers-protocol.md
+  - name: Azure のアプリケーション配信スイートでの負荷分散
+    href: front-door-lb-with-azure-app-delivery-suite.md
   - name: 監視
     href: front-door-diagnostics.md
+  - name: ルーティング アーキテクチャ
+    href: front-door-routing-architecture.md
+  - name: トラフィックのルーティング方法
+    href: front-door-routing-methods.md
+  - name: URL 書き換え
+    href: front-door-url-rewrite.md
 - name: ハウツー ガイド
   items:
   - name: トラブルシューティング
@@ -71,9 +75,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=frontdoor
-ms.openlocfilehash: 31944414b1bdcdb98d166463d54e21ecab6924e9
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 504ae8bbd1c28b1deba5b1a9fdd387a46a84859e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419343"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986374"

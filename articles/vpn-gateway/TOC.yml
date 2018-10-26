@@ -35,6 +35,16 @@ items:
     href: vpn-gateway-about-point-to-site-routing.md
   - name: 可用性ゾーンのゾーン冗長ゲートウェイについて
     href: about-zone-redundant-vnet-gateways.md
+  - name: バックエンド接続の相互運用性
+    items:
+    - name: 前書きとテスト セットアップ
+      href: ../networking/connectivty-interoperability-preface.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+    - name: テスト セットアップの構成
+      href: ../networking/connectivty-interoperability-configuration.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+    - name: コントロール プレーンの分析
+      href: ../networking/connectivty-interoperability-control-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+    - name: データ プレーンの分析
+      href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
 - name: ハウツー ガイド
   items:
   - name: サイト対サイト接続の構成
@@ -242,9 +252,9 @@ items:
     href: https://azure.microsoft.com/support/legal/sla
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway
-ms.openlocfilehash: 9d5ece68343d498992a80b46210d03634b63544d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1d1337a6ee927d8fd79112cd408f2d777bc951dc
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971469"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085038"

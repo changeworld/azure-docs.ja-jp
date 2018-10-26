@@ -19,6 +19,16 @@ items:
         href: quickstart-v1-update-azure-ad-app.md
       - name: アプリの削除
         href: quickstart-v1-remove-azure-ad-app.md
+      - name: アプリの登録 (プレビュー)
+        href: quickstart-register-app.md
+      - name: アプリに Web API に対するアクセスを構成する (プレビュー)
+        href: quickstart-configure-app-access-web-apis.md
+      - name: Web API に対してアプリを公開する (プレビュー)
+        href: quickstart-configure-app-expose-web-apis.md
+      - name: アプリでサポートされるアカウントを変更する (プレビュー)
+        href: quickstart-modify-supported-accounts.md
+      - name: アプリの削除 (プレビュー)
+        href: quickstart-remove-app.md
     - name: シングルページ アプリ
       items:
       - name: AngularJS
@@ -233,6 +243,16 @@ items:
         href: quickstart-v1-update-azure-ad-app.md
       - name: アプリの削除
         href: quickstart-v1-remove-azure-ad-app.md
+      - name: アプリの登録 (プレビュー)
+        href: quickstart-register-app.md
+      - name: アプリに Web API に対するアクセスを構成する (プレビュー)
+        href: quickstart-configure-app-access-web-apis.md
+      - name: Web API に対してアプリを公開する (プレビュー)
+        href: quickstart-configure-app-expose-web-apis.md
+      - name: アプリでサポートされるアカウントを変更する (プレビュー)
+        href: quickstart-modify-supported-accounts.md
+      - name: アプリの削除 (プレビュー)
+        href: quickstart-remove-app.md
     - name: シングルページ アプリ
       items:
       - name: JavaScript
@@ -408,9 +428,9 @@ items:
     href: developer-support-help-options.md
   - name: Azure リソースのマネージド ID
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 01775498610b76b9110f26e3f45e41d0baadd486
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 8d37b5b977509b61d31f7ed29571762325188f33
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957418"
+ms.locfileid: "49987823"
