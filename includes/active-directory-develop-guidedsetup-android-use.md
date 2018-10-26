@@ -14,17 +14,17 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 9d512af7fdd68ec3356b427429144ec9195fd95b
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: cf536879393622744da0a6dd5b4e38c8c52de39b
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843192"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988355"
 ---
-## <a name="use-msal-to-get-a-token"></a>MSAL を使用してトークンを取得する 
+## <a name="use-msal-to-get-a-token"></a>MSAL を使用してトークンを取得する
 
-1.  **app** > **java** > **{domain}.{appname}** で、`MainActivity` を開きます。 
-2.  次のインポートを追加します。
+1. **app** > **java** > **{domain}.{appname}** で、`MainActivity` を開きます。 
+2. 次のインポートを追加します。
 
     ```java
     import android.app.Activity;
@@ -241,10 +241,13 @@ ms.locfileid: "48843192"
 
 <!--start-collapse-->
 ### <a name="more-information"></a>詳細情報
+
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
+
 `AcquireTokenAsync` メソッドを呼び出すと、ユーザーにサインインまたはアカウントの選択を求めるウィンドウが表示されます。 アプリケーションは一般的にユーザーに最初の対話を求める必要がありますが、その時点から自動で動作することができます。 
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
+
 `AcquireTokenSilentAsync` メソッドは、ユーザーとの対話なしにトークンを取得します。  `AcquireTokenSilentAsync` はベスト エフォート要求として扱うことができ、ユーザーが再度サインインする必要があるときや多要素認証のような追加の認可を行う必要があるときは `AcquireTokenAsync` にフォールバックします。 
 
 `AcquireTokenSilentAsync` は、失敗すると `MsalUiRequiredException` を生成します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
@@ -254,7 +257,8 @@ ms.locfileid: "48843192"
 * 後で `AcquireTokenSilentAsync` を再試行する。 アプリケーションでオフライン コンテンツを使用できる場合など、ユーザーが中断なしでアプリケーションの他の機能を使用できる場合に、このパターンがよく使用されます。 一時的に使用できなくなっていたネットワークが回復したときに、アプリケーションが `AcquireTokenSilentAsync` の再試行を決定することもできます。 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api"></a>Microsoft Graph API を呼び出す 
+## <a name="call-the-microsoft-graph-api"></a>Microsoft Graph API を呼び出す
+
 次のメソッドを `MainActivity` クラスに追加します。
 
 ```java
@@ -311,6 +315,7 @@ private void updateGraphUI(JSONObject graphResponse) {
     graphText.setText(graphResponse.toString());
 }
 ```
+
 <!--start-collapse-->
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>保護された API に対する REST 呼び出しの実行についての詳細
 
@@ -376,5 +381,6 @@ private void updateSignedOutUI() {
 `onSignOutClicked()` メソッドは、MSAL キャッシュからユーザーを削除します。 サインインしたユーザーの状態を MSAL が保持しなくなり、ユーザーはアプリケーションからログアウトされます。 
 
 ### <a name="more-information-on-multi-account-scenarios"></a>マルチアカウント シナリオの詳細情報
+
 MSAL では、複数のアカウントが同時にサインインした場合のシナリオもサポートしています。 たとえば、多くのメール アプリでは、複数のアカウントが同時にサインインすることができます。 
 <!--end-collapse-->

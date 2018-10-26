@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 063ca2bbb334c120e285d4b3eac8af00fafa7e5a
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 8c7f11d74d0a0b81f9f0c40871b2eaa3eb25f51f
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843107"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988258"
 ---
 # <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>iOS アプリケーションから Microsoft Graph API を呼び出す
 
@@ -28,6 +28,7 @@ ms.locfileid: "48843107"
 このガイドの演習を完了すると、Azure AD を使用する会社や組織の保護された API をアプリケーションで呼び出すことができるようになります。 アプリケーションで outlook.com や live.com などの個人アカウントおよび職場または学校アカウントを使って、保護された API を呼び出すことができます。
 
 ## <a name="prerequisites"></a>前提条件
+
 - このガイドで作成するサンプルには、XCode バージョン 10.x が必要です。 XCode は、[iTunes の Web サイト](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode ダウンロード URL")からダウンロードできます。
 - パッケージの管理には、[Carthage](https://github.com/Carthage/Carthage) 依存関係マネージャーが必要です。
 
@@ -37,7 +38,6 @@ ms.locfileid: "48843107"
 
 このガイドのサンプル アプリケーションを参考にすると、iOS アプリケーションで、Microsoft Graph API または Azure AD v2.0 エンドポイントからトークンを受け取る Web API に対してクエリを実行できるようになります。 このシナリオでは、トークンは **Authorization** ヘッダーを使って HTTP 要求に追加されます。 トークンの取得と更新は、Microsoft Authentication Library (MSAL) で処理されます。
 
-
 ### <a name="handle-token-acquisition-for-access-to-protected-web-apis"></a>保護された Web API にアクセスするためのトークンの取得を処理する
 
 ユーザー認証の後、サンプル アプリケーションはトークンを受け取ります。 トークンは、Microsoft Graph API や、Azure AD v2.0 エンドポイントによって保護された Web API に対して、クエリを実行するために使われます。
@@ -46,7 +46,6 @@ Microsoft Graph などの API では、特定のリソースへのアクセス�
 
 MSAL がアクセス トークンのキャッシュと更新を管理するため、アプリケーションでは何もする必要がありません。
 
-
 ## <a name="libraries"></a>ライブラリ
 
 このガイドでは、次のライブラリを使用します。
@@ -54,4 +53,3 @@ MSAL がアクセス トークンのキャッシュと更新を管理するた�
 |ライブラリ|説明|
 |---|---|
 |[MSAL.framework](https://github.com/AzureAD/microsoft-authentication-library-for-objc)|Microsoft Authentication Library の iOS 用プレビュー|
-
