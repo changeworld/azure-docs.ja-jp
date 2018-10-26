@@ -16,7 +16,7 @@ ms.locfileid: "47394592"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) でのサービス プリンシパル
 
-Azure API で操作するために、AKS クラスターには [Azure Active Directory (AD) サービス プリンシパル][aad-service-principal]が必要です。 サービス プリンシパルは、Azure のロード バランサーやコンテナー レジストリ (ACR) などの Azure リソースを動的に作成し、管理するために必要です。
+Azure API で操作するために、AKS クラスターには [Azure Active Directory (AD) サービス プリンシパル][aad-service-principal]が必要です。 サービス プリンシパルは、Azure のロード バランサーや Azure Container Registry (ACR) などの Azure リソースを動的に作成し、管理するために必要です。
 
 この記事では、AKS クラスター用のサービス プリンシパルを作成して使用する方法を示します。
 
