@@ -2,18 +2,18 @@
 title: インクルード ファイル
 description: インクルード ファイル
 services: storage
-author: rogara
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 26c3e8a096a3ee7bc5146759f8de62e5c1c7fed1
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 796614a9e60ccb7ab155bc986b39c04c781224e8
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47389878"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48874081"
 ---
 ## <a name="about-vhds"></a>VHD について
 
@@ -34,11 +34,11 @@ Azure は VHD フォーマットの固定ディスクをサポートしていま
 
 Azure ディスクは、99.999% の可用性で設計されています。 エンタープライズレベルの持続性を、業界トップレベルの年間故障率 0% で一貫して提供してきました。
 
-ディスクの作成時に選択できるストレージには、Premium SSD ディスク、Standard SSD (プレビュー)、および Standard HDD ストレージという 3 つのパフォーマンス レベルが存在します。 さらに、アンマネージドとマネージドという 2 種類のディスクがあります。
+ディスクの作成時に選択できるストレージには、Premium SSD ディスク、Standard SSD、および Standard HDD ストレージという 3 つのパフォーマンス レベルが存在します。 さらに、アンマネージドとマネージドという 2 種類のディスクがあります。
 
 ### <a name="standard-hdd-disks"></a>Standard HDD ディスク
 
-Standard HDD ディスクは、HDD を使用して、コスト効果の高いストレージを提供します。 Standard HDD ストレージは、1 つのデータセンターでローカルにレプリケートするか、プライマリ データセンターとセカンダリ データセンターで geo 冗長レプリケートできます。 ストレージのレプリケーションの詳細については、「[Azure Storage のレプリケーション](../articles/storage/common/storage-redundancy.md)」を参照してください。 
+Standard HDD ディスクは、HDD を使用して、コスト効果の高いストレージを提供します。 Standard HDD ストレージは、1 つのデータセンターでローカルにレプリケートするか、プライマリ データセンターとセカンダリ データセンターで geo 冗長レプリケートできます。 ストレージのレプリケーションの詳細については、「[Azure Storage のレプリケーション](../articles/storage/common/storage-redundancy.md)」を参照してください。
 
 Standard HDD ディスクの使用の詳細については、[標準ストレージとディスク](../articles/virtual-machines/windows/standard-storage.md)に関する記事を参照してください。
 

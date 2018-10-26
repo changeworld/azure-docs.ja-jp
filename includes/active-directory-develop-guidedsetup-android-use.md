@@ -1,5 +1,27 @@
-
-## <a name="use-msal-to-get-a-token-for-the-microsoft-graph-api"></a>MSAL を使用して Microsoft Graph API のトークンを取得する
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/13/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 9d512af7fdd68ec3356b427429144ec9195fd95b
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843192"
+---
+## <a name="use-msal-to-get-a-token"></a>MSAL を使用してトークンを取得する 
 
 1.  **app** > **java** > **{domain}.{appname}** で、`MainActivity` を開きます。 
 2.  次のインポートを追加します。
@@ -220,21 +242,19 @@
 <!--start-collapse-->
 ### <a name="more-information"></a>詳細情報
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
-`AcquireTokenAsync` メソッドを呼び出すと、ユーザーにサインインを求めるウィンドウが表示されます。 通常、アプリケーションは、ユーザーが保護されたリソースに初めてアクセスするときに、対話形式でユーザーにサインインを求めます。 また、自動でのトークンの取得に失敗した場合 (ユーザーのパスワードが期限切れになっている場合など) にも、ユーザーはサインインする必要があります。
+`AcquireTokenAsync` メソッドを呼び出すと、ユーザーにサインインまたはアカウントの選択を求めるウィンドウが表示されます。 アプリケーションは一般的にユーザーに最初の対話を求める必要がありますが、その時点から自動で動作することができます。 
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
-`AcquireTokenSilentAsync` メソッドは、ユーザーの操作なしでトークンの取得と更新を処理します。 `AcquireTokenAsync` が初めて実行された後、以降の呼び出しでは、保護されたリソースへのアクセスに使用するトークンを取得する際に、通常は `AcquireTokenSilentAsync` メソッドを使用します。トークンを要求または更新する呼び出しが自動で行われるからです。
+`AcquireTokenSilentAsync` メソッドは、ユーザーとの対話なしにトークンを取得します。  `AcquireTokenSilentAsync` はベスト エフォート要求として扱うことができ、ユーザーが再度サインインする必要があるときや多要素認証のような追加の認可を行う必要があるときは `AcquireTokenAsync` にフォールバックします。 
 
-最終的に、`AcquireTokenSilentAsync` メソッドは失敗します。 この失敗は、ユーザーがサインアウトしたか、別のデバイスでパスワードを変更したことが原因と考えられます。 ユーザーの操作によって解決できる問題が MSAL によって検出された場合、MSAL は `MsalUiRequiredException` 例外を発行します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
+`AcquireTokenSilentAsync` は、失敗すると `MsalUiRequiredException` を生成します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
 
-* すぐに `AcquireTokenAsync` を呼び出します。 この呼び出しにより、ユーザーにサインインを求めます。 ユーザーが使用できるオフライン コンテンツがないオンライン アプリケーションでは、通常、このパターンを使用します。 このガイド付きセットアップで生成されるサンプルでは、このパターンを使用します。サンプルの初回実行時に、実際の動作を確認できます。 
-    * アプリケーションはユーザーによって使用されたことがないため、`PublicClientApp.Users.FirstOrDefault()` には null 値が含まれ、`MsalUiRequiredException` 例外がスローされます。 
-    * サンプルのコードでは、`AcquireTokenAsync` を呼び出してユーザーにサインインを求めることにより、この例外を処理します。 
-
-* 対話形式でのサインインが必要であることをユーザーに視覚的に示すことで、ユーザーが適切なタイミングでサインインできるようにします。 または、アプリケーションが後で `AcquireTokenSilentAsync` を再試行します。 アプリケーションでオフライン コンテンツを使用できる場合など、ユーザーが中断なしでアプリケーションの他の機能を使用できる場合に、このパターンがよく使用されます。 この場合、保護されたリソースにアクセスしたり、古くなった情報を更新したりするために、サインインするタイミングをユーザーが決定できます。 また、一時的に使用できなくなっていたネットワークが回復したときに、アプリケーションが `AcquireTokenSilentAsync` の再試行を決定することもできます。 
+* すぐに `AcquireTokenAsync` を呼び出す。 この呼び出しにより、ユーザーにサインインを求めます。 ユーザーに対して使用できるオフライン コンテンツがないオンライン アプリケーションでは、このパターンを使用します。 このチュートリアルで生成されるサンプルでは、このパターンを使用します。サンプルの初回実行時に、実際の動作を確認できます。
+* 対話型サインインが必要であることをユーザーに視覚的に示す。 ユーザーの準備が整ったら `AcquireTokenAsync` を呼び出します。
+* 後で `AcquireTokenSilentAsync` を再試行する。 アプリケーションでオフライン コンテンツを使用できる場合など、ユーザーが中断なしでアプリケーションの他の機能を使用できる場合に、このパターンがよく使用されます。 一時的に使用できなくなっていたネットワークが回復したときに、アプリケーションが `AcquireTokenSilentAsync` の再試行を決定することもできます。 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>取得したトークンを使用して Microsoft Graph API を呼び出す
+## <a name="call-the-microsoft-graph-api"></a>Microsoft Graph API を呼び出す 
 次のメソッドを `MainActivity` クラスに追加します。
 
 ```java
@@ -294,10 +314,10 @@ private void updateGraphUI(JSONObject graphResponse) {
 <!--start-collapse-->
 ### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>保護された API に対する REST 呼び出しの実行についての詳細
 
-このサンプル アプリケーションでは、`callGraphAPI` により `getAccessToken` を呼び出し、トークンを要求してコンテンツを返すリソースに対して HTTP `GET` 要求を実行します。 このメソッドは、取得したトークンを HTTP Authorization ヘッダーに追加します。 このサンプルで使用するリソースは、ユーザーのプロファイル情報を表示する Microsoft Graph API *me* エンドポイントです。
+このサンプル アプリケーションでは、`callGraphAPI()` は `getAccessToken()` を使用して新しいアクセス トークンを取得します。  アプリは、HTTP `GET` 要求内のトークンを Microsoft Graph API に対して使用します。 
 <!--end-collapse-->
 
-## <a name="set-up-sign-out"></a>サインアウトの設定
+## <a name="set-up-sign-out"></a>サインアウトを設定する
 
 次のメソッドを `MainActivity` クラスに追加します。
 
@@ -353,7 +373,8 @@ private void updateSignedOutUI() {
 <!--start-collapse-->
 ### <a name="more-information-about-user-sign-out"></a>ユーザーのサインアウトに関する詳細情報
 
-上記のコードの `onSignOutClicked` メソッドは、MSAL ユーザー キャッシュからユーザーを削除します。これは実質的に MSAL に現在のユーザーを破棄させることになるため、トークンを取得する今後の要求が成功するのは、要求が対話形式で行われた場合に限られます。
+`onSignOutClicked()` メソッドは、MSAL キャッシュからユーザーを削除します。 サインインしたユーザーの状態を MSAL が保持しなくなり、ユーザーはアプリケーションからログアウトされます。 
 
-このサンプルのアプリケーションは単一ユーザーに対応していますが、MSAL は複数のアカウントで同時にサインインするシナリオをサポートしています。 例として、電子メール アプリケーションで 1 人のユーザーが複数のアカウントを持っている場合が挙げられます。
+### <a name="more-information-on-multi-account-scenarios"></a>マルチアカウント シナリオの詳細情報
+MSAL では、複数のアカウントが同時にサインインした場合のシナリオもサポートしています。 たとえば、多くのメール アプリでは、複数のアカウントが同時にサインインすることができます。 
 <!--end-collapse-->

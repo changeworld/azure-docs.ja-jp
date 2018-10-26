@@ -4,14 +4,14 @@ description: Azure Migrate についてよく寄せられる質問に対応し�
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/03/2018
+ms.date: 09/21/2018
 ms.author: snehaa
-ms.openlocfilehash: ce9dc4aab26b99bbb1e9f24f018354b8c91f66f4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 2b704edee55f7d15da1b59d8f8b357b9ba7ca8f3
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699966"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239219"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -48,7 +48,7 @@ Azure Migrate は移行計画ツールで、Azure Site Recovery Deployment Plann
 
 ### <a name="which-azure-regions-are-supported-by-azure-migrate"></a>Azure Migrate でサポートされる Azure リージョンを教えてください。
 
-現在、Azure Migrate では、移行プロジェクトの場所として、米国東部、米国中西部がサポートされています。 米国中西部、米国東部でのみ移行プロジェクトを作成することができたとしても、[複数のターゲットの場所](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)のコンピューターにアクセスできることに注意してください。 プロジェクトの場所は、検出されたデータを格納するためにのみ使用されます。
+現在、Azure Migrate では、移行プロジェクトの場所として、米国東部、米国中西部がサポートされています。 移行プロジェクトの作成先は米国中西部と米国東部に限られていますが、評価するマシンは、[複数のターゲットの場所](https://docs.microsoft.com/azure/migrate/how-to-modify-assessment#edit-assessment-properties)に存在していてもかまいません。 プロジェクトの場所は、検出されたデータを格納するためにのみ使用されます。
 
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>オンプレミス サイトはどのようにして Azure Migrate に接続しますか。
 
@@ -58,7 +58,7 @@ Azure Migrate は移行計画ツールで、Azure Site Recovery Deployment Plann
 
 Azure Migrate アプライアンスの動作に必要な通信およびファイアウォール規則が変わらない限り、(ウイルス対策などの) 追加コンポーネントを .OVA テンプレートに追加することができます。   
 
-## <a name="discovery-and-assessment"></a>検出とアセスメント
+## <a name="discovery"></a>探索
 
 ### <a name="what-data-is-collected-by-azure-migrate"></a>Azure Migrate によって収集されるデータは何ですか。
 
@@ -87,6 +87,12 @@ Azure Migrate は、アプライアンスベースの検出とエージェント
   - ネットワーク送信
 
 エージェントベースの検出は、アプライアンスベースの検出に加えて利用できるオプションで、ユーザーがオンプレミスの VM の[依存関係を視覚化する](how-to-create-group-machine-dependencies.md)のに役立ちます。 依存関係エージェントは FQDN、OS、IP アドレス、MAC アドレス、VM 内で実行されているプロセスや VM の受信/送信 TCP 接続などの詳細を収集します。 エージェントベースの検出は省略可能で、VM の依存関係を視覚化する必要がない場合は、エージェントをインストールしないことを選択できます。
+
+### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>分析対象となる ESXi ホスト環境へのパフォーマンスへの影響はありますか?
+
+[1 回限りの検出によるアプローチ](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods)の場合、パフォーマンス データを収集するためには、vCenter Server の統計情報レベルが 3 に設定されている必要があると考えられます。 このレベルに設定した場合、大量のトラブルシューティング データが収集されますが、それらのデータは vCenter Server データベースに格納されます。 それが引き金となって、vCenter Server にパフォーマンスの問題が生じる可能性はあります。 ESXi ホストへの影響はごくわずかだと思われます。
+
+現在はプレビュー段階ですが、パフォーマンス データの継続的プロファイリングを導入しました。 継続的プロファイリングでは、パフォーマンス ベースの評価を実行するために、vCenter Server の統計情報レベルを変更する必要はありません。 コレクター アプライアンスがオンプレミス マシンをプロファイリングして、仮想マシンのパフォーマンス データを測定することになります。 これにより、ESXi ホストだけでなく、vCenter Server についても、パフォーマンスへの影響がほぼゼロになると考えられます。
 
 ### <a name="where-is-the-collected-data-stored-and-for-how-long"></a>収集されたデータはどこに、どれくらいの期間保存されますか。
 
@@ -124,11 +130,14 @@ Azure Migrate は、アプライアンスベースの検出とエージェント
 
 1 つの移行プロジェクトで 1500 台の仮想マシンを検出できます。 オンプレミス環境に複数のマシンがある場合は、Azure Migrate で大規模な環境を検索する方法の[詳細](how-to-scale-assessment.md)を確認してください。
 
+## <a name="assessment"></a>評価
+
 ### <a name="does-azure-migrate-support-enterprise-agreement-ea-based-cost-estimation"></a>Azure Migrate は Enterprise Agreement (EA) に基づくコスト見積もりをサポートしていますか。
 
 Azure Migrate は現在、[Enterprise Agreement プラン](https://azure.microsoft.com/offers/enterprise-agreement-support/)のコスト見積もりをサポートしていません。 これを回避するには、プランに従量課金制を指定し、評価のプロパティの [割引] フィールドに、(サブスクリプションに適用される) 割引率を手動で指定します。
 
   ![Discount](./media/resources-faq/discount.png)
+  
 
 ## <a name="dependency-visualization"></a>依存関係の視覚化
 
@@ -138,7 +147,34 @@ Azure Migrate は、追加料金なしで利用できます。 Azure Migrate の
 
 ### <a name="can-i-use-an-existing-workspace-for-dependency-visualization"></a>依存関係の視覚化に既存のワークスペースを使用できますか。
 
-Azure Migrate では依存関係の視覚化に既存のワークスペースを使用できません。ただし、Microsoft Monitoring Agent (MMA) はマルチホーミングをサポートしており、複数のワークスペースにデータを送信できます。 このため、既にエージェントがワークスペースにデプロイされて構成されている場合、MMA エージェントのマルチホーミングを活用し、それを (既存のワークスペースに加えて) Azure Migrate のワークスペースに構成して、機能させることができます。 MMA エージェントのマルチホーミングを有効にする方法については、[こちら](https://blogs.technet.microsoft.com/msoms/2016/05/26/oms-log-analytics-agent-multi-homing-support/)のブログで確認してください。
+はい。現在は、Azure Migrate で既存のワークスペースを移行プロジェクトにアタッチして、依存関係の視覚化に活用することができます。 [詳細情報](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization#how-does-it-work)。
+
+### <a name="can-i-export-the-dependency-visualization-report"></a>依存関係の視覚化のレポートはエクスポートできますか。
+
+いいえ。依存関係の視覚化はエクスポートできません。 ただし、Azure Migrate では依存関係の視覚化に Service Map が使用されているため、[Service Map REST API](https://docs.microsoft.com/rest/api/servicemap/machines/listconnections) を使用すると、JSON 形式で依存関係を取得できます。
+
+### <a name="how-can-i-automate-the-installation-of-microsoft-monitoring-agent-mma-and-dependency-agent"></a>Microsoft Monitoring Agent (MMA) と依存関係エージェントのインストールを自動化するには、どうすればよいですか。
+
+依存関係エージェントのインストールには、[こちら](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#installation-script-examples)のスクリプトをご利用ください。 MMA については、TechNet で提供されている[こちら](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab)のスクリプトをご活用ください。
+
+スクリプトに加え、System Center Configuration Manager (SCCM)、[Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) などのデプロイ ツールを利用して、エージェントをデプロイすることもできます。
+
+### <a name="what-are-the-operating-systems-supported-by-mma"></a>MMA でサポートされるオペレーティング システムは何ですか？
+
+MMA でサポートされる Windows オペレーティング システムの一覧は[ここ](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-windows-operating-systems)にあります。
+MMA でサポートされる Linux オペレーティング システムの一覧は[ここ](https://docs.microsoft.com/azure/log-analytics/log-analytics-concept-hybrid#supported-linux-operating-systems)にあります。
+
+### <a name="what-are-the-operating-systems-supported-by-dependency-agent"></a>依存関係エージェントでサポートされるオペレーティング システムは何ですか？
+
+依存関係エージェントでサポートされる Windows オペレーティング システムの一覧は[ここ](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-windows-operating-systems)にあります。
+依存関係エージェントでサポートされる Linux オペレーティング システムの一覧は[ここ](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems)にあります。
+
+### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Azure Migrate で 1 時間を超えて依存関係を視覚化することはできますか。
+いいえ。Azure Migrate で依存関係を視覚化できる期間は、最大 1 時間です。 Azure Migrate を使用すると、過去 1 か月までの特定の日付に戻ることができますが、依存関係を視覚化できる期間は最大 1 時間です。 たとえば、依存関係マップにある期間機能を使用して、昨日の依存関係を表示することが可能ですが、1 時間ウィンドウの表示のみできます。
+
+### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>依存関係の視覚化では、10 を超える VM を含むグループはサポートされていますか。
+最大 10 個 の VM を含むグループについて[依存関係を視覚化](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies)できます。グループに含まれる VM が 10 個 を超える場合は、そのグループを小さなグループに分割して、依存関係を視覚化することをお勧めします。
+
 
 ## <a name="next-steps"></a>次の手順
 

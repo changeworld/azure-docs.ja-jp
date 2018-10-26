@@ -9,14 +9,14 @@ keywords: Azure Functions, 関数, イベント処理, webhook, 動的コンピ�
 ms.service: azure-functions
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 08/10/2018
+ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: f0dc471e8875ad0d738fce10421c3586752148b9
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 9e07cddb9d446ea24143d3a6dec5e310d3ed6f1c
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092311"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802119"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 
@@ -26,7 +26,35 @@ ms.locfileid: "44092311"
 
 開発する Azure 関数は、入力を処理し出力を生成するステートレスなクラス メソッドである必要があります。 インスタンス メソッドを記述できますが、開発する関数は、クラスのインスタンス フィールドに依存することはできません。 すべての関数のメソッドには、`public` アクセス修飾子が必要です。
 
-1 つのプロジェクトに複数の関数を含めることができます。 複数の jar に関数を分けることは避けてください。
+## <a name="folder-structure"></a>フォルダー構造
+
+Java プロジェクトのフォルダー構造は、次のようになります。
+
+```
+FunctionsProject
+ | - src
+ | | - main
+ | | | - java
+ | | | | - FunctionApp
+ | | | | | - MyFirstFunction.java
+ | | | | | - MySecondFunction.java
+ | - target
+ | | - azure-functions
+ | | | - FunctionApp
+ | | | | - FunctionApp.jar
+ | | | | - host.json
+ | | | | - MyFirstFunction
+ | | | | | - function.json
+ | | | | - MySecondFunction
+ | | | | | - function.json
+ | | | | - bin
+ | | | | - lib
+ | - pom.xml
+```
+
+関数アプリの構成に使用できる共有 [host.json]\(functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.java) とバインディング構成ファイル (function.json) があります。
+
+1 つのプロジェクトに複数の関数を含めることができます。 複数の jar に関数を分けることは避けてください。 ターゲット ディレクトリの FunctionApp が、Azure 内の関数アプリにデプロイされます。
 
 ## <a name="triggers-and-annotations"></a>トリガーと注釈
 
@@ -87,9 +115,15 @@ public class MyClass {
 
 ```
 
+## <a name="jdk-runtime-availability-and-support"></a>JDK ランタイムの使用可能性とサポート 
+
+Java 関数アプリをローカルで開発するには、[Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) から [Azul Zulu for Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) JDK をダウンロードして使用します。 JDK は Windows、Linux、macOS に使用でき、[正規のサポート プラン](https://azure.microsoft.com/support/plans/)での開発中に発生した問題に対しては [Azure サポート](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support)を利用できます。
+
 ## <a name="third-party-libraries"></a>サードパーティ製ライブラリ 
 
 Azure Functions はサード パーティ製ライブラリの使用をサポートしています。 既定で、プロジェクトの `pom.xml` ファイルで指定されているすべての依存関係は、`mvn package` 目標の間に自動的にバンドルされます。 `pom.xml` ファイルの依存関係として指定されていないライブラリの場合は、関数のルート ディレクトリ以下の `lib` ディレクトリに配置します。 `lib` ディレクトリに配置された依存関係は、実行時にシステム クラス ローダーに追加されます。
+
+`com.microsoft.azure.functions:azure-functions-java-library` 依存関係はクラスパスにおいて既定で提供されており、`lib` ディレクトリに含める必要はありません。
 
 ## <a name="data-type-support"></a>データ型のサポート
 

@@ -9,21 +9,22 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: b20da0f31f197ed23aa73b185d127a6d5f2dbd8a
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: cbeee643ee4a2705d3f0202a7206e10fbcc5acab
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214943"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831621"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
 ## <a name="overview"></a>概要
 
+**Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI は、業界のコンプライアンス要件を満たしながら、ヘルス データの取り込み、保存、分析、操作、識別、およびソリューションのデプロイを安全に行う方法を示す Azure PaaS および IaaS ソリューションのターンキー デプロイを提供します。このブループリントは、規制されたデータを使用するお客様のために、クラウドの導入と利用の促進を支援します。**
 
-  **Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI は、業界のコンプライアンス要件を満たしながら、ヘルス データの取り込み、保存、分析、操作を安全に行う方法を示す Azure PaaS ソリューションのターンキー デプロイを提供します。このブループリントは、規制されたデータを使用するお客様のために、クラウドの導入と利用の促進を支援します。**
+エンド ツー エンド ソリューションとしてデプロイされる、Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI ブループリントは、セキュリティで保護された多層クラウド環境で、個人および個人以外の医療記録の取り込み、保存、分析、操作を行うための、セキュリティで保護された、HIPAA (医療保険の携行性と責任に関する法律) および HITRUST (Health Information Trust Alliance) 対応 PaaS (サービスとしてのプラットフォーム) 環境の展開に役立つツールとガイダンスを提供します。 
 
-エンド ツー エンド ソリューションとしてデプロイされる、Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI ブループリントは、セキュリティで保護された多層クラウド環境で、個人および個人以外の医療記録の取り込み、保存、分析、操作を行うための、セキュリティで保護された、HIPAA (医療保険の携行性と責任に関する法律) および HITRUST (Health Information Trust Alliance) 対応 PaaS (サービスとしてのプラットフォーム) 環境の展開に役立つツールとガイダンスを提供します。 これは一般的な参照アーキテクチャを紹介し、Microsoft Azure の導入を簡素化するために設計されています。 提供されるアーキテクチャは、デプロイの負担を軽減し、コストを削減するクラウドベースのアプローチを求めている組織のニーズを満たすソリューションを示しています。
+IaaS ソリューションは、オンプレミスの SQL ベースのソリューションを Azure に移行する方法と、クラウドベースのサービスとソリューションを安全に管理するために Privileged Access Workstation (PAW) を実装する方法を示します。 IaaS SQL Server データベースは、SQL IaaS VM にインポートされる潜在的な実験データを追加し、その VM が MSI 認証アクセスを使用して SQL Azure PaaS サービスと対話します。これらはどちらも一般的な参照アーキテクチャを示すもので、Microsoft Azure の導入を簡略化するよう設計されています。 提供されるアーキテクチャは、デプロイの負担を軽減し、コストを削減するクラウドベースのアプローチを求めている組織のニーズを満たすソリューションを示しています。
 
 ![](images/components.png)
 
@@ -39,23 +40,15 @@ ms.locfileid: "39214943"
 
 ## <a name="deploying-the-automation"></a>Automation のデプロイ
 
-- ソリューションをデプロイするには、デプロイ ガイダンスに記載されている手順に従います。 
+- ソリューションをデプロイするには、[デプロイ ガイダンス](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/deployment.md)に記載されている手順に従います。 
 
-[![](./images/deploy.png)](https://aka.ms/healthblueprintdeploy)
-
-このソリューションの機能の概要を簡単に把握するために、ソリューションのデプロイの説明とデモンストレーションを行っている[このビデオ](https://aka.ms/healthblueprintvideo)をご覧ください。
+- このソリューションの機能の概要を簡単に把握するために、ソリューションのデプロイの説明とデモンストレーションを行っている[このビデオ](https://aka.ms/healthblueprintvideo)をご覧ください。
 
 - よくある質問については、[FAQ](https://aka.ms/healthblueprintfaq) ガイダンスをご覧ください。
 
 -   **アーキテクチャ図**:  この図は、ブループリントとユース ケース シナリオの例で使用される参照アーキテクチャを示します。
 
--   **デプロイ テンプレート**:  このデプロイでは、[Azure Resource Manager テンプレート](/azure/azure-resource-manager/resource-group-overview#template-deployment) を使用してアーキテクチャのコンポーネントを Microsoft Azure に自動的にデプロイします (これは、セットアップ時に構成パラメーターを指定することによって行います)。
-
--   **[自動化されたデプロイ スクリプト](https://aka.ms/healthblueprintdeploy)**:  これらのスクリプトを使用して、ソリューションをデプロイします。 次のスクリプトが含まれます。
-
-
--   モジュールのインストールと[グローバル管理者](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)のセットアップ スクリプト。インストールを行い、必要な PowerShell モジュールとグローバル管理者ロールが正しく構成されていることを確認するために使用します。 
--   インストール PowerShell スクリプト。ソリューションをデプロイするために使用します。事前に構築されたデモ機能を含む .zip ファイルで提供されます。
+-   [IaaS 拡張機能](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) - このソリューションは、オンプレミスの SQL ベースのソリューションを Azure に移行する方法と、クラウドベースのサービスとソリューションを安全に管理するために Privileged Access Workstation を実装する方法を示します。 
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 
@@ -71,7 +64,7 @@ ms.locfileid: "39214943"
 # <a name="architectural-diagram"></a>アーキテクチャ図
 
 
-![](images/refarch.png)
+![](images/ra2.png)
 
 ## <a name="roles"></a>ロール
 

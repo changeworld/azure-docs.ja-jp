@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 19adbbfc456303b471251c28cd984d1676786b19
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 0701049eb1aa86398e90484dbf21ef3781270fba
+ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783153"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48831383"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、フル マネージドのファイル共有を提供します。 Azure Files は完全に管理されているため、運用環境へのデプロイは、ファイル サーバーまたは NAS デバイスをデプロイして管理するよりはるかに簡単です。 この記事では、組織内で運用するために Azure ファイル共有をデプロイするときの考慮事項を説明します。
@@ -56,19 +56,36 @@ Azure Files には、データのセキュリティを確保するための複�
 
 * ネットワーク プロトコルでの暗号化のサポート: SMB 3.0 暗号化と HTTPS 経由のファイル REST の両方。 既定での動作は次のとおりです。 
     * SMB 3.0 暗号化をサポートするクライアントは、暗号化されたチャネルでデータを送受信します。
-    * SMB 3.0 をサポートしていないクライアントは、暗号化を行わない SMB 2.1 または SMB 3.0 経由でデータ センター内の通信を行うことができます。 クライアントは暗号化なしで SMB 2.1 または SMB 3.0 を使ってデータ センター間通信をできないことに注意してください。
+    * 暗号化付き SMB 3.0 をサポートしていないクライアントは、暗号化を行わない SMB 2.1 または SMB 3.0 経由でデータセンター内通信を行うことができます。 SMB クライアントは、暗号化を行わない SMB 2.1 または SMB 3.0 経由でデータセンター間通信を行うことはできません。
     * クライアントは、HTTP または HTTPS を使ってファイル REST 経由で通信できます。
 * 保存データの暗号化 ([Azure Storage Service Encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): Storage Service Encryption (SSE) はすべてのストレージ アカウントに対し有効に設定されています。 保存時のデータは完全に管理されたキーで暗号化されます。 保存データの暗号化では、ストレージ コストの増加やパフォーマンスの低下はありません。 
 * オプションの転送中のデータの暗号化要件: 選択すると、Azure Files は暗号化されていないチャネル経由でのデータへのアクセスが拒否されます。 具体的には、暗号化接続を使う HTTPS と SMB 3.0 だけが許可されます。 
 
     > [!Important]  
-    > データのセキュリティで保護された転送を要求すると、暗号化ありで SMB 3.0 と通信する機能のない古い SMB クライアントは失敗します。 詳しくは、[Windows でのマウント](storage-how-to-use-files-windows.md)、[Linux でのマウント](storage-how-to-use-files-linux.md)、[macOS でのマウント](storage-how-to-use-files-mac.md)に関するページをご覧ください。
+    > データのセキュリティで保護された転送を要求すると、暗号化ありで SMB 3.0 と通信する機能のない古い SMB クライアントは失敗します。 詳しくは、[Windows でのマウント](storage-how-to-use-files-windows.md)、[Linux でのマウント](storage-how-to-use-files-linux.md)、および [macOS でのマウント](storage-how-to-use-files-mac.md)に関するページをご覧ください。
 
 最大限のセキュリティのため、保存時の暗号化と、最新のクライアントを使ってデータにアクセスするときの転送中のデータの暗号化を、両方とも常に有効にすることを強くお勧めします。 たとえば、SMB 2.1 のみをサポートする Windows Server 2008 R2 VM に共有をマウントする必要がある場合は、SMB 2.1 は暗号化をサポートしていないため、ストレージ アカウントへの暗号化されていないトラフィックを許可する必要があります。
 
 Azure ファイル同期を使って Azure ファイル共有にアクセスする場合は、保存時のデータの暗号化が要求されているかどうかにかかわらず、Windows Server へのデータの同期には、暗号化ありの HTTPS と SMB 3.0 が常に使われます。
 
-## <a name="data-redundancy"></a>データの冗長性
+## <a name="file-share-performance-tiers"></a>ファイル共有のパフォーマンス レベル
+Azure Files では、Standard と Premium の 2 つのパフォーマンス レベルをサポートしています。
+
+* **Standard ファイル共有**は、回転式ハード ディスク ドライブ (HDD) に基づき、汎用のファイル共有や開発/テスト環境などのパフォーマンスの変動の影響を受けにくい IO ワークロードに対して信頼性の高いパフォーマンスを提供します。 Standard ファイル共有は、従量課金制の課金モデルでのみ利用できます。
+* **Premium ファイル共有 (プレビュー)** は、ソリッド ステート ディスク (SSD) に基づき、ほとんどの IO 集中型ワークロードで一貫した優れたパフォーマンスと待ち時間 (ほとんどの IO 操作で 1 桁のミリ秒以内の低待ち時間) を提供します。 そのため、Premium ファイル共有は、データベース、Web サイトのホスティング、開発環境など、幅広い種類のワークロードに適しています。Premium ファイル共有は、プロビジョニングされる課金モデルでのみ使用できます。
+
+### <a name="provisioned-shares"></a>プロビジョニングされた共有
+Premium ファイル共有は、固定 GiB/IOPS/スループット比に基づいてプロビジョニングされます。 プロビジョニングされた GiB ごとに、共有は、1 IOPS と 0.1 MiB/秒のスループットから、共有ごとの最大限度まで発行されます。 最小許容プロビジョニングは 100 GiB で、最小の IOPS/スループットになります。 共有サイズはいつでも拡大できます。縮小操作は、前回の拡大時から 24 時間ごとに 1 回、いつでも実行できます。
+
+ベスト エフォート方式では、すべての共有は、プロビジョニングされたストレージの GiB ごとに 3 IOPS まで、共有のサイズに応じて 60 分またはそれ以上バーストできます。 新しい共有は、プロビジョニングされた容量に基づく完全なバースト クレジットで開始されます。
+
+| プロビジョニング容量 | 100 GiB | 500 GiB | 1 TiB | 5 TiB | 
+|----------------------|---------|---------|-------|-------|
+| ベースライン IOPS | 100 | 500 | 1,024 | 5,120 | 
+| バースト限度 | 300 | 1,500 | 3,072 | 15,360 | 
+| Throughput | 110 MiB/秒 | 150 MiB/秒 | 202 MiB/秒 | 612 MiB/秒 |
+
+## <a name="file-share-redundancy"></a>ファイル共有の冗長性
 Azure Files は、データ冗長性オプションとして、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、および geo 冗長ストレージ (GRS) の 3 つをサポートします。 次のセクションで、さまざまな冗長性オプションの違いについて説明します。
 
 ### <a name="locally-redundant-storage"></a>ローカル冗長ストレージ
@@ -81,9 +98,9 @@ Azure Files は、データ冗長性オプションとして、ローカル冗�
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="data-growth-pattern"></a>データ増加パターン
-現在、Azure ファイル共有の最大サイズは、5 TiB です。 この現在の制限のため、Azure ファイル共有をでデプロイするときは、予想されるデータの増加を考慮する必要があります。 Azure Storage アカウントは複数の共有を格納でき、すべての共有で合計 500 TiB を保持できることに注意してください。
+現在、Azure ファイル共有の最大サイズは、5 TiB です。 この現在の制限のため、Azure ファイル共有をでデプロイするときは、予想されるデータの増加を考慮する必要があります。 
 
-Azure ファイル同期を使って複数の Azure ファイル共有を 1 つの Windows ファイル サーバーに同期することができます。これにより、オンプレミスにある古くて非常に大きいファイル共有を Azure ファイル同期に取り込むことができます。詳しくは、「[Azure Files のデプロイの計画](storage-files-planning.md)」をご覧ください。
+Azure ファイル同期を使って複数の Azure ファイル共有を 1 つの Windows ファイル サーバーに同期することができます。これにより、オンプレミスにある古くて大きいファイル共有を Azure File Sync に取り込むことができます。詳しくは、[Azure File Sync のデプロイの計画](storage-files-planning.md)に関するページをご覧ください。
 
 ## <a name="data-transfer-method"></a>データ転送方法
 オンプレミスのファイル共有などの既存のファイル共有から Azure Files にデータを一括転送するには、多くの簡単なオプションがあります。 以下は一般的な方法の一部です (すべてではありません)。

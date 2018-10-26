@@ -1,4 +1,26 @@
-
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: ios
+ms.workload: identity
+ms.date: 09/19/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 063ca2bbb334c120e285d4b3eac8af00fafa7e5a
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843107"
+---
 # <a name="call-the-microsoft-graph-api-from-an-ios-application"></a>iOS アプリケーションから Microsoft Graph API を呼び出す
 
 このガイドでは、ネイティブ iOS アプリケーション (Swift) で Microsoft Azure Active Directory (Azure AD) v2.0 エンドポイントからのアクセス トークンを必要とする API を呼び出す方法を説明します。 アクセス トークンを取得し、Microsoft Graph API や他の API の呼び出しでそれを使う方法について説明します。
@@ -6,7 +28,7 @@
 このガイドの演習を完了すると、Azure AD を使用する会社や組織の保護された API をアプリケーションで呼び出すことができるようになります。 アプリケーションで outlook.com や live.com などの個人アカウントおよび職場または学校アカウントを使って、保護された API を呼び出すことができます。
 
 ## <a name="prerequisites"></a>前提条件
-- このガイドで作成するサンプルには、XCode バージョン 8.x が必要です。 XCode は、[iTunes の Web サイト](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode ダウンロード URL")からダウンロードできます。
+- このガイドで作成するサンプルには、XCode バージョン 10.x が必要です。 XCode は、[iTunes の Web サイト](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12 "XCode ダウンロード URL")からダウンロードできます。
 - パッケージの管理には、[Carthage](https://github.com/Carthage/Carthage) 依存関係マネージャーが必要です。
 
 ## <a name="how-this-guide-works"></a>このガイドの利用法

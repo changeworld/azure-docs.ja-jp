@@ -3,7 +3,7 @@ title: Azure Serial Console での SysRq および NMI 呼び出し | Microsoft 
 description: シリアル コンソールを使用して Azure 仮想マシンで SysRq および NMI 呼び出しを行います。
 services: virtual-machines-linux
 documentationcenter: ''
-author: alsin
+author: asinn826
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6f46a1d6964af867b7b0671d020002d1c1de19ae
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9dcec525adf7676b23c6dec14dff07c6d419c085
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412083"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884644"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>SysRq および NMI 呼び出しにシリアル コンソールを使用する
 
@@ -30,11 +30,11 @@ SysRq シーケンスが配信されると、以降は、カーネル構成に�
 
 Azure Serial Console は、以下に示すコマンド バーのキーボード アイコンを使用して、SysRq を Azure 仮想マシンに送信するために使用できます。
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg)
 
 "Send SysRq Command"\(SysRq コマンドを送信する\) を選択するとダイアログが開き、一般的な SysRq オプションを指定したり、ダイアログに入力された SysRq コマンドのシーケンスを許可したりできます。  ｌこれにより、`REISUB` を使用して、一連の SysRq コマンドで安全な再起動などの高度な操作を実行できるようになります。
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-sysreq_UI.png)
 
 SysRq コマンドは、停止している仮想マシン上や、カーネルが応答しない状態  (カーネル パニックなど) になった仮想マシン上では、使用できません。
 
@@ -103,8 +103,9 @@ SysRq に関するディストリビューション固有のドキュメント�
 
 シリアル コンソールは、以下に示すコマンド バーのキーボード アイコンを使用して、NMI を Azure 仮想マシンに送信するために使用できます。 NMI が配信されると、以降は、仮想マシン構成によってシステムの応答方法が制御されます。  Linux オペレーティング システムは、オペレーティング システムが NMI を受信した場合に、クラッシュしてメモリ ダンプを作成するように構成できます。
 
-![](/media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
+![](../media/virtual-machines-serial-console/virtual-machine-serial-console-command-menu.jpg) <br>
 
+### <a name="enable-nmi"></a>NMI を有効にする
 カーネル パラーメーターを構成するための sysctl をサポートしている Linux システムの場合、次の手順を使用して、この NMI の受信時にパニック状態を有効にできます。
 1. 以下の行を */etc/sysctl.conf* に追加します。 <br>
     `kernel.panic_on_unrecovered_nmi=1`

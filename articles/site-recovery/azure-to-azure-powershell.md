@@ -2,23 +2,23 @@
 title: Azure Site Recovery - Azure PowerShell を使用して Azure 仮想マシンのディザスター リカバリーをセットアップしてテストする | Microsoft Docs
 description: Azure PowerShell を使用して、Azure Site Recovery による Azure 仮想マシンのディザスター リカバリーを設定する方法を説明します。
 services: site-recovery
-author: bsiva
-manager: abhemraj
-editor: raynew
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: bsiva
-ms.openlocfilehash: 62dd02d53c14635a386a8c6fa3fbfbd6f91a88f7
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.date: 10/02/2018
+ms.author: sutalasi
+ms.openlocfilehash: 9b7200dab0351b6cd00aef05bf27c5c71a049d76
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921088"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044509"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Azure PowerShell を使用して Azure 仮想マシンのディザスター リカバリーを設定する
 
-この記事では、Azure PowerShell を使用して、Azure 仮想マシンのディザスター リカバリーをセットアップし、テストします。 
+
+この記事では、Azure PowerShell を使用して、Azure 仮想マシンのディザスター リカバリーをセットアップし、テストします。
 
 学習内容は次のとおりです。
 
@@ -34,7 +34,6 @@ ms.locfileid: "37921088"
 
 > [!NOTE]
 > ポータル経由では使用できるシナリオ機能には、Azure PowerShell からは使用できないものがあります。 Azure PowerShell で現在サポートされていないシナリオ機能は次のとおりです。
-> - 管理ディスクを使用する Azure 仮想マシンをレプリケートする機能。
 > - 仮想マシンの各ディスクを明示的に指定することなく、仮想マシン内のすべてのディスクがレプリケートされる必要があることを指定する機能。  
 
 ## <a name="prerequisites"></a>前提条件
@@ -93,13 +92,13 @@ $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
-Recovery Services コンテナーを作成するリソース グループを作成します。 
+Recovery Services コンテナーを作成するリソース グループを作成します。
 
 > [!IMPORTANT]
 > * Recovery Services コンテナーと、保護対象の仮想マシンは、異なる Azure の場所にある必要があります。
 > * Recovery Services コンテナーのリソース グループと、保護対象の仮想マシンは、異なる Azure の場所にある必要があります。
 > * Recovery Services コンテナーと、それが属するリソース グループは、同じ Azure の場所にあってもかまいません。
- 
+
 この記事の例では、保護対象の仮想マシンは米国東部リージョンにあります。 ディザスター リカバリー用に選択された復旧リージョンは、米国西部 2 リージョンです。 Recovery Services コンテナーと、コンテナーのリソース グループは、どちらも復旧リージョン (米国西部 2) 内にあります
 
 ```azurepowershell
@@ -110,10 +109,10 @@ New-AzureRmResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 ResourceGroupName : a2ademorecoveryrg
 Location          : westus2
 ProvisioningState : Succeeded
-Tags              : 
+Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
-   
+
 Recovery Services コンテナーを作成します。 下の例では、a2aDemoRecoveryVault という名前の Recovery Services コンテナーが、米国西部 2 リージョン内に作成されます。
 
 ```azurepowershell
@@ -130,15 +129,15 @@ Location          : westus2
 ResourceGroupName : a2ademorecoveryrg
 SubscriptionId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
-``` 
+```
 ## <a name="set-the-vault-context"></a>コンテナーのコンテキストを設定する
 
 > [!TIP]
 > Azure Site Recovery PowerShell モジュール (AzureRm.RecoveryServices.SiteRecovery モジュール) のほとんどのコマンドレットには、使いやすいエイリアスがあります。 このモジュールのコマンドレットの形式は *\<操作>-**AzureRmRecoveryServicesAsr**\<オブジェクト>* であり、これに対応するエイリアスの形式は *\<操作>-**ASR**\<オブジェクト>* です。 この記事では、読みやすさを考えてコマンドレットのエイリアスを使います。
 
-PowerShell セッションで使用するための、コンテナーのコンテキストを設定します。 これを行うには、コンテナー設定ファイルをダウンロードし、ダウンロードしたファイルを PowerShell セッションでインポートして、コンテナーのコンテキストを設定します。 
+PowerShell セッションで使用するための、コンテナーのコンテキストを設定します。 これを行うには、コンテナー設定ファイルをダウンロードし、ダウンロードしたファイルを PowerShell セッションでインポートして、コンテナーのコンテキストを設定します。
 
-コンテキストを設定した後、PowerShell セッションでのそれ以降の Azure Site Recovery 操作は、選んだコンテナーのコンテキストで実行されます。 
+コンテキストを設定した後、PowerShell セッションでのそれ以降の Azure Site Recovery 操作は、選んだコンテナーのコンテキストで実行されます。
 
  ```azurepowershell
 #Download the vault settings file for the vault.
@@ -160,21 +159,24 @@ Remove-Item -Path $Vaultsettingsfile.FilePath
 ```
 ## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>Azure 仮想マシンのレプリケートを開始するようにコンテナーを準備する
 
-####<a name="1-create-a-site-recovery-fabric-object-to-represent-the-primarysource-region"></a>1.プライマリ (ソース) リージョンを表す Site Recovery ファブリック オブジェクトを作成する
+### <a name="create-a-site-recovery-fabric-object-to-represent-the-primary-source-region"></a>プライマリ (ソース) リージョンを表す Site Recovery ファブリック オブジェクトを作成する
 
-コンテナー内のファブリック オブジェクトは、Azure リージョンを表します。 プライマリ ファブリック オブジェクトは、コンテナーの保護対象となっている仮想マシンが属する Azure リージョンを表すために作成されたファブリック オブジェクトです。 この記事の例では、保護対象の仮想マシンは米国東部リージョンにあります。
+コンテナー内のファブリック オブジェクトは、Azure リージョンを表します。 プライマリ ファブリック オブジェクトは、コンテナーの保護対象となっている仮想マシンが属する Azure リージョンを表すために作成します。 この記事の例では、保護対象の仮想マシンは米国東部リージョンにあります。
 
-> [!NOTE]
-> Azure Site Recovery の操作は非同期に実行されます。 操作を開始すると、Azure Site Recovery ジョブが送信されて、ジョブ追跡オブジェクトが返されます。 このジョブ追跡オブジェクトを使用して、ジョブ (Get-ASRJob) の最新の状態を取得し、操作の状態を監視します。
+- リージョンごとに作成できるファブリック オブジェクトは 1 つだけです。 
+- Azure portal を使って VM の Site Recovery レプリケーションを以前から有効にしている場合は、Site Recovery によってファブリック オブジェクトが自動的に作成されます。 リージョンにファブリック オブジェクトが存在する場合は、新しいファブリック オブジェクトを作成することはできません。
+
+
+開始する前に、Site Recovery の操作が非同期に実行されることに注意してください。 操作を開始すると、Azure Site Recovery ジョブが送信されて、ジョブ追跡オブジェクトが返されます。 このジョブ追跡オブジェクトを使用して、ジョブ (Get-ASRJob) の最新の状態を取得し、操作の状態を監視します。
 
 ```azurepowershell
 #Create Primary ASR fabric
-$TempASRJob = New-ASRFabric -Azure -Location 'East US'  -Name "A2Ademo-EastUS" 
+$TempASRJob = New-ASRFabric -Azure -Location 'East US'  -Name "A2Ademo-EastUS"
 
 # Track Job status to check for completion
-while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){ 
+while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
-        sleep 10; 
+        sleep 10;
         $TempASRJob = Get-ASRJob -Job $TempASRJob
 }
 
@@ -185,17 +187,17 @@ $PrimaryFabric = Get-AsrFabric -Name "A2Ademo-EastUS"
 ```
 同じコンテナーに対して、複数の Azure リージョンの仮想マシンが保護されている場合は、ソースの Azure リージョンごとにファブリック オブジェクトを 1 つ作成します。
 
-####<a name="2-create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>2.復旧リージョンを表す Site Recovery ファブリック オブジェクトを作成する
+### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>復旧リージョンを表す Site Recovery ファブリック オブジェクトを作成する
 
 復旧ファブリック オブジェクトは、復旧用の Azure の場所を表します。 仮想マシンは、復旧ファブリックによって表される復旧リージョンに対してレプリケートと復旧が行われます (フェールオーバーが発生した場合)。 この例で使用される復旧用 Azure リージョンは、米国西部 2 です。
 
 ```azurepowershell
 #Create Recovery ASR fabric
-$TempASRJob = New-ASRFabric -Azure -Location 'West US 2'  -Name "A2Ademo-WestUS" 
+$TempASRJob = New-ASRFabric -Azure -Location 'West US 2'  -Name "A2Ademo-WestUS"
 
 # Track Job status to check for completion
-while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){ 
-        sleep 10; 
+while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
+        sleep 10;
         $TempASRJob = Get-ASRJob -Job $TempASRJob
 }
 
@@ -206,7 +208,7 @@ $RecoveryFabric = Get-AsrFabric -Name "A2Ademo-WestUS"
 
 ```
 
-####<a name="3-create-a-site-recovery-protection-container-in-the-primary-fabric"></a>手順 3.プライマリ ファブリック内に Site Recovery 保護コンテナーを作成する
+### <a name="create-a-site-recovery-protection-container-in-the-primary-fabric"></a>プライマリ ファブリック内に Site Recovery 保護コンテナーを作成する
 
 保護コンテナーは、ファブリック内でレプリケートされる項目をグループ化するのに使用されるコンテナーです。
 
@@ -215,8 +217,8 @@ $RecoveryFabric = Get-AsrFabric -Name "A2Ademo-WestUS"
 $TempASRJob = New-AzureRmRecoveryServicesAsrProtectionContainer -InputObject $PrimaryFabric -Name "A2AEastUSProtectionContainer"
 
 #Track Job status to check for completion
-while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){ 
-        sleep 10; 
+while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
+        sleep 10;
         $TempASRJob = Get-ASRJob -Job $TempASRJob
 }
 
@@ -224,15 +226,15 @@ Write-Output $TempASRJob.State
 
 $PrimaryProtContainer = Get-ASRProtectionContainer -Fabric $PrimaryFabric -Name "A2AEastUSProtectionContainer"
 ```
-####<a name="4-create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>4.復旧ファブリック内に Site Recovery 保護コンテナーを作成する
+### <a name="create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>復旧ファブリック内に Site Recovery 保護コンテナーを作成する
 
 ```azurepowershell
 #Create a Protection container in the recovery Azure region (within the Recovery fabric)
 $TempASRJob = New-AzureRmRecoveryServicesAsrProtectionContainer -InputObject $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 
 #Track Job status to check for completion
-while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){ 
-        sleep 10; 
+while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
+        sleep 10;
         $TempASRJob = Get-ASRJob -Job $TempASRJob
 }
 
@@ -243,15 +245,15 @@ Write-Output $TempASRJob.State
 $RecoveryProtContainer = Get-ASRProtectionContainer -Fabric $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 ```
 
-####<a name="5-create-a-replication-policy"></a>5.レプリケーション ポリシーを作成する
+### <a name="create-a-replication-policy"></a>レプリケーション ポリシーを作成する
 
 ```azurepowershell
 #Create replication policy
 $TempASRJob = New-ASRPolicy -AzureToAzure -Name "A2APolicy" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4
 
 #Track Job status to check for completion
-while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){ 
-        sleep 10; 
+while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
+        sleep 10;
         $TempASRJob = Get-ASRJob -Job $TempASRJob
 }
 
@@ -260,7 +262,7 @@ Write-Output $TempASRJob.State
 
 $ReplicationPolicy = Get-ASRPolicy -Name "A2APolicy"
 ```
-####<a name="6-create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>6.プライマリ コンテナーと復旧保護コンテナー間に保護コンテナー マッピングを作成する
+### <a name="create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>プライマリ コンテナーと復旧保護コンテナー間に保護コンテナー マッピングを作成する
 
 保護コンテナー マッピングでは、プライマリ保護コンテナーを、回復保護コンテナーおよびレプリケーション ポリシーとマップします。 保護コンテナー ペア間で仮想マシンをレプリケートするのに使用するレプリケーション ポリシーごとに、1 つのマッピングを作成します。
 
@@ -269,8 +271,8 @@ $ReplicationPolicy = Get-ASRPolicy -Name "A2APolicy"
 $TempASRJob = New-ASRProtectionContainerMapping -Name "A2APrimaryToRecovery" -Policy $ReplicationPolicy -PrimaryProtectionContainer $PrimaryProtContainer -RecoveryProtectionContainer $RecoveryProtContainer
 
 #Track Job status to check for completion
-while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){ 
-        sleep 10; 
+while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
+        sleep 10;
         $TempASRJob = Get-ASRJob -Job $TempASRJob
 }
 
@@ -280,17 +282,17 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
-####<a name="7-create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>7.フェールバック (フェールオーバー後のレプリケーションの反転) のための保護コンテナー マッピングを作成する
+### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>フェールバック (フェールオーバー後のレプリケーションの反転) のための保護コンテナー マッピングを作成する
 
 フェールオーバー後に、フェールオーバーした仮想マシンを元の Azure リージョンに戻す準備ができたら、フェールバックを行います。 フェールバックするために、フェールオーバーした仮想マシンは、フェールオーバーしたリージョンから元のリージョンへと逆方向にレプリケートされます。 レプリケーションの反転の際には、元のリージョンと復旧リージョンの役割が入れ替わります。 元のリージョンはこれで新しい復旧リージョンになり、元は復旧リージョンであったものは今後プライマリ リージョンになります。 レプリケーションの反転のための保護コンテナー マッピングは、元のリージョンと復旧リージョンで入れ替えた役割を表します。
 
 ```azurepowershell
-#Create Protection container mapping (for failback) between the Recovery and Primary Protection Containers with the Replication policy 
+#Create Protection container mapping (for failback) between the Recovery and Primary Protection Containers with the Replication policy
 $TempASRJob = New-ASRProtectionContainerMapping -Name "A2ARecoveryToPrimary" -Policy $ReplicationPolicy -PrimaryProtectionContainer $RecoveryProtContainer -RecoveryProtectionContainer $PrimaryProtContainer
 
 #Track Job status to check for completion
-while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){ 
-        sleep 10; 
+while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
+        sleep 10;
         $TempASRJob = Get-ASRJob -Job $TempASRJob
 }
 
@@ -307,7 +309,7 @@ Write-Output $TempASRJob.State
 $EastUSCacheStorageAccount = New-AzureRmStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-管理ディスクを使用していない仮想マシンの場合、ターゲット ストレージ アカウントは、仮想マシンのディスクのレプリケート先となる復旧リージョン内のストレージ アカウントです。 ターゲット ストレージ アカウントは、Standard Storage アカウントと Premium Storage アカウントのどちらでもかまいません。 ディスクのデータ変化率 (IO の書き込み率) と、Azure Site Recovery が各ストレージの種類でサポートしているデータ変更頻度の上限に基づいて、必要なストレージ アカウントの種類を選択します。
+**マネージド ディスクを使用していない**仮想マシンの場合、ターゲット ストレージ アカウントは、仮想マシンのディスクのレプリケート先となる復旧リージョン内のストレージ アカウントです。 ターゲット ストレージ アカウントは、Standard Storage アカウントと Premium Storage アカウントのどちらでもかまいません。 ディスクのデータ変化率 (IO の書き込み率) と、Azure Site Recovery が各ストレージの種類でサポートしているデータ変更頻度の上限に基づいて、必要なストレージ アカウントの種類を選択します。
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account
@@ -332,7 +334,7 @@ $WestUSTargetStorageAccount = New-AzureRmStorageAccount -Name "a2atargetstorage"
 - プライマリ仮想ネットワーク (仮想マシンの接続先 vnet) を取得します
    ```azurepowershell
     #Retrieve the virtual network that the virtual machine is connected to
-    
+
     #Get first network interface card(nic) of the virtual machine
     $SplitNicArmId = $VM.NetworkProfile.NetworkInterfaces[0].Id.split("/")
 
@@ -355,35 +357,72 @@ $WestUSTargetStorageAccount = New-AzureRmStorageAccount -Name "a2atargetstorage"
    ```azurepowershell
     #Create an ASR network mapping between the primary Azure virtual network and the recovery Azure virtual network
     $TempASRJob = New-ASRNetworkMapping -AzureToAzure -Name "A2AEusToWusNWMapping" -PrimaryFabric $PrimaryFabric -PrimaryAzureNetworkId $EastUSPrimaryNetwork -RecoveryFabric $RecoveryFabric -RecoveryAzureNetworkId $WestUSRecoveryNetwork
-    
+
     #Track Job status to check for completion
-    while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){ 
-            sleep 10; 
+    while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
+            sleep 10;
             $TempASRJob = Get-ASRJob -Job $TempASRJob
     }
-    
+
     #Check if the Job completed successfully. The updated job state of a successfuly completed job should be "Succeeded"
     Write-Output $TempASRJob.State
-    
+
    ```
 - 逆方向 (フェールバック) のネットワーク マッピングを作成します
     ```azurepowershell
     #Create an ASR network mapping for failback between the recovery Azure virtual network and the primary Azure virtual network
     $TempASRJob = New-ASRNetworkMapping -AzureToAzure -Name "A2AWusToEusNWMapping" -PrimaryFabric $RecoveryFabric -PrimaryAzureNetworkId $WestUSRecoveryNetwork -RecoveryFabric $PrimaryFabric -RecoveryAzureNetworkId $EastUSPrimaryNetwork
-    
+
     #Track Job status to check for completion
-    while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){ 
-            sleep 10; 
+    while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
+            sleep 10;
             $TempASRJob = Get-ASRJob -Job $TempASRJob
     }
-        
+
     #Check if the Job completed successfully. The updated job state of a successfuly completed job should be "Succeeded"
     Write-Output $TempASRJob.State
     ```
 
 ## <a name="replicate-azure-virtual-machine"></a>Azure 仮想マシンをレプリケートする
 
-Azure 仮想マシンをレプリケートします。
+**マネージド ディスク**を使用している Azure 仮想マシンをレプリケートします。
+
+```azurepowershell
+
+#Get the resource group that the virtual machine must be created in when failed over.
+$RecoveryRG = Get-AzureRmResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
+
+#Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
+
+#OsDisk
+$OSdiskId =  $vm.StorageProfile.OsDisk.ManagedDisk.Id
+$RecoveryOSDiskAccountType = $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
+$RecoveryReplicaDiskAccountType =  $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
+
+$OSDiskReplicationConfig = New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $storageAccount.Id `
+         -DiskId $OSdiskId -RecoveryResourceGroupId  $ RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+         -RecoveryOSDiskAccountType $RecoveryOSDiskAccountType
+
+# Data disk
+$datadiskId1  = $vm.StorageProfile.DataDisks[0].ManagedDisk.id
+$RecoveryReplicaDiskAccountType =  $vm.StorageProfile.DataDisks[0]. StorageAccountType
+$RecoveryTargetDiskAccountType = $vm.StorageProfile.DataDisks[0]. StorageAccountType
+
+$DataDisk1ReplicationConfig  = New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $storageAccount.Id `
+         -DiskId $datadiskId1 -RecoveryResourceGroupId  $ RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
+         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+
+#Create a list of disk replication configuration objects for the disks of the virtual machine that are to be replicated.
+$diskconfigs = @()
+$diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
+
+
+#Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
+$TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
+
+```
+
+**アンマネージド ディスク**を使用している Azure 仮想マシンをレプリケートします。
 
 ```azurepowershell
 #Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
@@ -405,8 +444,8 @@ $RecoveryRG = Get-AzureRmResourceGroup -Name "a2ademorecoveryrg" -Location "West
 $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 
 #Track Job status to check for completion
-while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){ 
-        sleep 10; 
+while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
+        sleep 10;
         $TempASRJob = Get-ASRJob -Job $TempASRJob
 }
 
@@ -415,9 +454,9 @@ while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStart
 Write-Output $TempASRJob.State
 ```
 
-レプリケーションの開始操作が成功すると、仮想マシンのデータが復旧リージョンにレプリケートされます。 
+レプリケーションの開始操作が成功すると、仮想マシンのデータが復旧リージョンにレプリケートされます。
 
-レプリケーション プロセスは、最初に、復旧リージョン内で仮想マシンのレプリケートする側のディスクのコピーをシード処理することによって始まります。 このフェーズは、初期レプリケーション フェーズと呼ばれます。 
+レプリケーション プロセスは、最初に、復旧リージョン内で仮想マシンのレプリケートする側のディスクのコピーをシード処理することによって始まります。 このフェーズは、初期レプリケーション フェーズと呼ばれます。
 
 初期レプリケーションが完了すると、レプリケーションは差分同期フェーズに移行します。 この時点では、仮想マシンは保護されていて、それに対してテスト フェールオーバーの操作を実行できます。 初期レプリケーションの完了後、仮想マシンを表すレプリケートされた項目のレプリケーション状態は、"Protected" 状態に移行します。
 
@@ -473,7 +512,7 @@ EndTime          : 4/25/2018 4:33:06 AM
 TargetObjectId   : ce86206c-bd78-53b4-b004-39b722c1ac3a
 TargetObjectType : ProtectionEntity
 TargetObjectName : azuredemovm
-AllowedActions   : 
+AllowedActions   :
 Tasks            : {Prerequisites check for test failover, Create test virtual machine, Preparing the virtual machine, Start the virtual machine}
 Errors           : {}
 ```
@@ -544,7 +583,7 @@ EndTime          : 4/25/2018 4:51:01 AM
 TargetObjectId   : ce86206c-bd78-53b4-b004-39b722c1ac3a
 TargetObjectType : ProtectionEntity
 TargetObjectName : azuredemovm
-AllowedActions   : 
+AllowedActions   :
 Tasks            : {Prerequisite check, Commit}
 Errors           : {}
 ```

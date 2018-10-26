@@ -12,15 +12,15 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 4c9b2099308bc6a239a72fe2ebe559cdfa2fd3a1
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/05/2018
+ms.openlocfilehash: 343782448d4b508e678108ece268f2ce57b6ac1d
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064222"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868141"
 ---
-# <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: データベース暗号化を使用して SQL Database で機密データを保護し、Windows 証明書ストアで暗号化キーを格納する
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: 機密データを保護し、Windows 証明書ストアに暗号化キーを格納する
 
 この記事では、[SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx) の [Always Encrypted ウィザード](https://msdn.microsoft.com/library/mt459280.aspx)を使用して、SQL Database 内の機密データを保護する方法について説明します。 さらに、Windows 証明書ストアにキーを格納する方法も説明します。
 

@@ -3,7 +3,7 @@ title: GRUB とシングル ユーザー モード用の Azure シリアル コ�
 description: Azure 仮想マシンでの GRUB 用シリアル コンソールの使用。
 services: virtual-machines-linux
 documentationcenter: ''
-author: alsin
+author: asinn826
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,19 +14,40 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 47a97d842822ed3d6c8c1583808552c1b2d1d53e
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 411c743421af79ea066df3a5fc07f71b8b6cb993
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412554"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48855869"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>シリアル コンソール を使用して GRUB とシングル ユーザー モードにアクセスする
-シングル ユーザー モードは、最小限の機能を持つ最小限の環境です。 バックグラウンドで実行されるサービスが少なくなるため、起動の問題やネットワークの問題を調査する場合に便利です。また、実行レベルによっては、ファイル システムが自動的にマウントされないこともあります。 これは、破損したファイル システム、壊れた fstab、またはネットワーク接続 (誤った iptables 構成) などの状況を調査する場合に便利です。
+GRUB は、GRand Unified Bootloader の略です。 GRUB からは、特にシングル ユーザー モードで起動するようにブート構成を変更することができます。
 
-VM が起動できない場合、ディストリビューションによっては自動的にシングル ユーザー モードまたは緊急モード切り替わります。 一方、シングル ユーザー モードまたは緊急モードに自動的に切り替わる前に、追加の設定が必要な場合もあります。
+シングル ユーザー モードは、最小限の機能を持つ最小限の環境です。 ブートの問題やファイルシステムの問題、ネットワークの問題を調査するのに役立ちます。 バックグラウンドで実行されるサービスが少なくなり、実行レベルによっては、ファイルシステムが自動的にマウントされないこともあります。
 
-シングル ユーザー モードにアクセスできるようにするには、VM 上で GRUB が有効なことを確認する必要があります。 ディストリビューションによっては、GRUB が有効なことを確認するための設定作業があります。 
+シングル ユーザー モードはまた、ログインのために SSH キーを受け入れるためだけに VM を構成できる状況でも役立ちます。 この場合は、パスワード認証を使用するアカウントを作成するためにシングル ユーザー モードを使用することができます。
+
+シングル ユーザー モードに入るには、VM の起動時に GRUB に入り、GRUB でブート構成を変更する必要があります。 これは VM のシリアル コンソールを使用して行えます。 
+
+## <a name="general-grub-access"></a>GRUB の一般的なアクセス
+GRUB にアクセスするには、シリアル コンソール ブレードを開いた状態で VM を再起動する必要があります。 一部のディストリビューションでは GRUB を表示するのにキーボード入力が必要ですが、それ以外のディストリビューションでは数秒で GRUB が自動的に表示され、タイムアウトをキャンセルするためにユーザーにキーボード入力を許可します。 
+
+シングル ユーザー モードにアクセスできるようにするには、VM 上で GRUB が有効なことを確認する必要があります。 ディストリビューションによっては、GRUB が有効なことを確認するための設定作業があります。 ディストリビューションに固有の情報は、以下で入手できます。
+
+### <a name="reboot-your-vm-to-access-grub-in-serial-console"></a>シリアル コンソールで VM を再起動して GRUB にアクセスする
+シリアル コンソール ブレードを開いたまま VM を再起動するには、SysRq `'b'` コマンドを使用 ([SysRq](./serial-console-nmi-sysrq.md) が有効になっている場合) するか、[概要] ブレードで [再起動] ボタンをクリックします (新しいブラウザー タブで VM を開いてシリアル コンソール ブレードを閉じずに再起動します)。 以下のディストリビューションに固有の手順に従って、再起動したときに GRUB でどのようなことが期待できるかを確認してください。
+
+## <a name="general-single-user-mode-access"></a>シングル ユーザー モードの一般的なアクセス
+パスワード認証を使用するアカウントを構成していない場合は、シングル ユーザー モードに手動でアクセスする必要がある場合があります。 シングル ユーザー モードに手動で入るには、GRUB 構成を変更する必要があります。 これを完了したら、その後の手順について「[シングル ユーザー モードを使用してパスワードをリセットまたは追加する](#-Use-Single-User-Mode-to-reset-or-add-a-password)」を参照してください。
+
+VM を起動できない場合、ディストリビューションは多くの場合、ユーザーを自動的にシングル ユーザー モードまたは緊急モードにします。 ただし、それ以外の場合では、ユーザーを自動的にシングル ユーザー モードまたは緊急モードにする前に、追加の設定が必要です (たとえば、root パスワードの設定)。
+
+### <a name="use-single-user-mode-to-reset-or-add-a-password"></a>シングル ユーザー モードを使用してパスワードをリセットまたは追加する
+シングル ユーザー モードになったら、以下の手順に従って sudo 特権を持つ新しいユーザーを追加します。
+1. `useradd <username>` を実行してユーザーを追加します
+1. `sudo usermod -a -G sudo <username>` を実行して新しいユーザーに root 特権を付与します
+1. `passwd <username>` を使用して新しいユーザーのパスワードを設定します。 これで新しいユーザーとしてログインできるようになります
 
 
 ## <a name="access-for-red-hat-enterprise-linux-rhel"></a>Red Hat Enterprise Linux (RHEL) へのアクセス
@@ -64,7 +85,7 @@ RHEL 7.4 以降または 6.9 以降の場合の代わりの方法として、GRU
 1. Ctrl キーを押しながら X キーを押して終了し、適用された設定で再起動します
 1. シングル ユーザー モードが開始される前に管理者パスワードの入力が求められます (前述の手順で作成したパスワードを入力します)    
 
-    ![](/media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
+    ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-enter-emergency-shell.gif)
 
 ### <a name="enter-single-user-mode-without-root-account-enabled-in-rhel"></a>RHEL で root アカウントを有効にせずにシングル ユーザー モードを開始する
 前述の手順を実行して root ユーザーを有効にしなかった場合でも、root パスワードをリセットできます。 次の手順を実行してください。
@@ -81,7 +102,7 @@ RHEL 7.4 以降または 6.9 以降の場合の代わりの方法として、GRU
 1. シングル ユーザー モードで起動したら、`chroot /sysroot` と入力して `sysroot` jail に切り替えます
 1. これで root になりました。 `passwd` を使用して root パスワードをリセットしてから、前述の手順を使用してシングル ユーザー モードを開始することができます。 完了したら、`reboot -f` と入力して再起動します。
 
-![](/media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
+![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
 > 注: 前述の手順を実行すると、緊急シェルが開始されるので、`fstab` の編集などのタスクも実行できます。 ただし、一般的に受け入れられている提案は、root のパスワードをリセットし、それを使用してシングル ユーザー モードを開始することです。 
 
@@ -100,6 +121,13 @@ Ubuntu イメージの場合、root のパスワードは必要ありません�
 
 ### <a name="grub-access-in-ubuntu"></a>Ubuntu での GRUB アクセス
 GRUB にアクセスするには、VM の起動中に Enter キーを長押しします。
+
+既定では、Ubuntu イメージは GRUB 画面に自動的に表示されません。 これは、以下の手順を使用して変更できます。
+1. お好みのテキスト エディターで `/etc/default/grub.d/50-cloudimg-settings.cfg` を開きます
+1. `GRUB_TIMEOUT` 値を 0 以外の値に変更します
+1. お好みのテキスト エディターで `/etc/default/grub` を開きます
+1. `GRUB_HIDDEN_TIMEOUT=1` の行をコメント アウトします
+1. `sudo update-grub` を実行します。
 
 ### <a name="single-user-mode-in-ubuntu"></a>Ubuntu でのシングル ユーザー モード
 正常に起動できない場合、Ubuntu は自動的にシングル ユーザー モードに切り替わります。 シングル ユーザー モードを手動で開始するには、次の手順を実行します。
@@ -136,7 +164,7 @@ SLES での GRUB アクセスには、YaST を使用してブートローダー�
 1. GRUB を開始するには、VM を再起動し、起動シーケンス中に任意のキーを押します (GRUB が画面に表示されたままになります)
     - GRUB の既定のタイムアウトは 1 秒です。 これを変更するには、`/etc/default/grub` で `GRUB_TIMEOUT` 変数を変更します
 
-![](/media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
+![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-sles-yast-grub-config.gif)
 
 ### <a name="single-user-mode-in-suse-sles"></a>SUSE SLES でのシングル ユーザー モード
 SLES が正常に起動できない場合は、自動的に緊急シェルが開始されます。 緊急シェルを手動で開始するには、次の手順を実行します。

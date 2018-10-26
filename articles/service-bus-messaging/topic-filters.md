@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: a1616150ebf696654bc0ca9a79d39c3877c363d9
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ac30718a92d76dedcb5b0ef3bdd2f282dd117720
+ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699388"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48853523"
 ---
 # <a name="topic-filters-and-actions"></a>トピック フィルターとアクション
 
@@ -30,7 +30,7 @@ Service Bus は、次の 3 つのフィルター条件をサポートします�
 
 -   *ブール値フィルター* - **すべての着信メッセージがサブスクリプションに選択される (**true**) TrueFilter** 、あるいは受信メッセージのいずれもサブスクリプションに選択されない (**false**) **FalseFilter** のいずれか。
 
--   *SQL フィルター* - **SqlFilter** には、受信メッセージのユーザー定義のプロパティとシステム プロパティに対して、ブローカーで評価される、SQL に似た条件式が入っています。 すべてのシステム プロパティの条件式にはプレフィックスとして `sys.` を付ける必要があります。 [フィルター条件の SQL 言語のサブセット](service-bus-messaging-sql-filter.md)は、プロパティの存在 (EXISTS) や null 値 (IS NULL)、論理 NOT、/AND、OR、リレーショナル演算子、単純な数値の算術、および LIKE による単純なテキスト パターン マッチングを実行します。
+-   *SQL フィルター* - **SqlFilter** には、受信メッセージのユーザー定義のプロパティとシステム プロパティに対して、ブローカーで評価される、SQL に似た条件式が入っています。 すべてのシステム プロパティの条件式にはプレフィックスとして `sys.` を付ける必要があります。 [フィルター条件の SQL 言語のサブセット](service-bus-messaging-sql-filter.md)は、プロパティ (`EXISTS`) や null 値 (`IS NULL`) の存在のテスト、論理 NOT/AND/OR、関係演算子、単純な数値を使った算術演算、および `LIKE` による単純なテキスト パターン マッチングを実行します。
 
 -   *相関関係フィルター* - **CorrelationFilter** には、受信メッセージのユーザーおよびシステム プロパティの 1 つ以上と照合される条件セットが入っています。 一般的な使用方法は、**CorrelationId** プロパティの照合ですが、アプリケーションでは **ContentType**、**Label**、**MessageId**、**ReplyTo**、**ReplyToSessionId**、**SessionId**、**To**、および任意のユーザー定義プロパティに対して照合することもできます。 受信メッセージのプロパティ値が相関関係フィルターに指定された値と等しいときに、一致するものが存在すると判断されます。 文字列式の比較では大文字と小文字を区別します。 照合するプロパティを複数指定すると、フィルターでは論理 AND 条件として結合され、フィルターが一致するには、すべての条件が一致する必要があります。
 
@@ -40,7 +40,7 @@ Service Bus は、次の 3 つのフィルター条件をサポートします�
 
 ## <a name="actions"></a>Actions
 
-SQL フィルター条件に対してのみ、追加、削除、またはプロパティとその値を置き換えることによって、メッセージに注釈を付けることができるアクションを定義できます。 アクションでは、SQL UPDATE ステートメントの構文を基にした [SQL に似た式を使用](service-bus-messaging-sql-filter.md)します。 アクションは、メッセージが照合された後、トピックに選択される前にメッセージに実行されます。 メッセージのプロパティへの変更は、サブスクリプションにコピーされたメッセージにのみ有効です。
+SQL フィルター条件を使用すると、プロパティとその値を追加、削除、または置き換えることによってメッセージに注釈を付けることができるアクションを定義できます。 アクションでは、SQL UPDATE ステートメントの構文を基にした [SQL に似た式を使用](service-bus-messaging-sql-filter.md)します。 アクションは、メッセージが照合された後、トピックに選択される前にメッセージに実行されます。 メッセージのプロパティへの変更は、サブスクリプションにコピーされたメッセージにのみ有効です。
 
 ## <a name="usage-patterns"></a>使用パターン
 
@@ -56,7 +56,6 @@ SQL フィルター条件に対してのみ、追加、削除、またはプロ�
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 
-* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
 * [Service Bus のキュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 * [SQLFilter 構文](service-bus-messaging-sql-filter.md)
 * [Service Bus のトピックとサブスクリプションの使用方法](service-bus-dotnet-how-to-use-topics-subscriptions.md)

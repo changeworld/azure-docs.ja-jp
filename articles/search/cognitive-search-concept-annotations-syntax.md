@@ -10,12 +10,12 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 0e074e93ecbe80c3acf3481c0d33917fbe5090c6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1ccc1fb20cb08cfd97d58984676ef4006e693118
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640908"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801949"
 ---
 # <a name="how-to-reference-annotations-in-a-cognitive-search-skillset"></a>コグニティブ検索スキルセットで注釈を参照する方法
 
@@ -89,7 +89,7 @@ Azure Blob ストレージに、名前付きエンティティ認識を使用し
   }
 ```
 
-注釈が文字列の配列またはコレクションである場合、配列全体ではなく特定のメンバーをターゲットにしたい場合もあります。 上の例では、コンテキストによって表されている各ノードの下に、`"last"` という名前の注釈を生成しています。 この一連の注釈を参照する場合は、`"/document/people/*/last"` という構文を使用することができます。 特定の注釈を参照する場合は、明示的なインデックス `"/document/people/1/last`" を使用すると、ドキュメント内で特定された最初の人の姓を参照することができます。 この構文では、配列が "1 でインデックスされた" ことに注意してください。
+注釈が文字列の配列またはコレクションである場合、配列全体ではなく特定のメンバーをターゲットにしたい場合もあります。 上の例では、コンテキストによって表されている各ノードの下に、`"last"` という名前の注釈を生成しています。 この一連の注釈を参照する場合は、`"/document/people/*/last"` という構文を使用することができます。 特定の注釈を参照する場合は、明示的なインデックス `"/document/people/1/last`" を使用すると、ドキュメント内で特定された最初の人の姓を参照することができます。 この構文では、配列が "0 でインデックスされた" ことに注意してください。
 
 <a name="example-3"></a>
 

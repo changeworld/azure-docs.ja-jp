@@ -1,6 +1,6 @@
 ---
-title: カスタム ポリシーを使用して Azure Active Directory B2C で Google アカウントでのサインインを設定する | Microsoft Docs
-description: カスタム ポリシーを使用して Azure Active Directory B2C で Google アカウントでのサインインを設定します。
+title: カスタム ポリシーを使用して Azure Active Directory B2C で Google アカウントによるサインインを設定する | Microsoft Docs
+description: カスタム ポリシーを使用して Azure Active Directory B2C で Google アカウントによるサインインを設定します。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
@@ -17,7 +17,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/09/2018
 ms.locfileid: "48887276"
 ---
-# <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Google アカウントでのサインインを設定する
+# <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用して Google アカウントによるサインインを設定する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "48887276"
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)に関するページにある手順を完了する。
+- 「[Active Directory B2C でのカスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)」にある手順を完了する。
 - Google アカウントがまだない場合は、「[Google アカウントの作成](https://accounts.google.com/SignUp)」で Google アカウントを作成する。
 
 ## <a name="register-the-application"></a>アプリケーションを登録する
@@ -60,7 +60,7 @@ Azure AD B2C テナントで前に記録したクライアント シークレッ
 
 ## <a name="add-a-claims-provider"></a>クレーム プロバイダーを追加する
 
-ユーザーが Google アカウントを使用してサインインするようにするには、そのアカウントを Azure AD B2C がエンドポイント経由で通信できる相手のクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。 
+ユーザーに Google アカウントを使用してサインインさせるには、そのアカウントを、Azure AD B2C がエンドポイント経由で通信できるクレーム プロバイダーとして定義する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使う一連の要求を提供します。 
 
 Google アカウントをクレーム プロバイダーとして定義するには、そのアカウントをポリシーの拡張ファイル内の **ClaimsProviders** 要素に追加します。
 
@@ -133,7 +133,7 @@ Google アカウントをクレーム プロバイダーとして定義するに
 
 ### <a name="display-the-button"></a>ボタンを表示する
 
-**ClaimsProviderSelection** 要素は、サインアップ/サインイン画面の ID プロバイダー ボタンに類似しています。 Google アカウントのために **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
+**ClaimsProviderSelection** 要素は、サインアップおよびサインイン画面の ID プロバイダー ボタンに類似しています。 Google アカウントのために **ClaimsProviderSelection** 要素を追加すると、ユーザーがこのページにアクセスしたときに新しいボタンが表示されます。
 
 1. 作成したユーザー体験内で、`Order="1"` を含む **OrchestrationStep** 要素を見つけます。
 2. **ClaimsProviderSelects** の下に、次の要素を追加します。 **TargetClaimsExchangeId** の値を適切な値 (`GoogleExchange` など) に設定します。
@@ -155,7 +155,7 @@ Google アカウントをクレーム プロバイダーとして定義するに
     
     **TechnicalProfileReferenceId** の値を、前に作成した技術プロファイルの **Id** に更新します。 たとえば、「 `Google-OAuth` 」のように入力します。
 
-3. *TrustFrameworkExtensions.xml* ファイルを保存し、検証のために再度アップロードします。
+3. *TrustFrameworkExtensions.xml* ファイルを保存し、確認のために再度アップロードします。
 
 ## <a name="create-an-azure-ad-b2c-application"></a>Azure AD B2C アプリケーションを作成する
 

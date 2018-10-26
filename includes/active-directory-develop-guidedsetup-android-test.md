@@ -1,31 +1,54 @@
-## <a name="test-your-code"></a>コードのテスト
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/13/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: 991709ee635872e33dc89dcededc7f6ac3b28ea3
+ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48843216"
+---
+## <a name="test-your-app"></a>アプリをテストする
 
-1. コードをデバイスやエミュレーターにデプロイします。
+1. デバイス/エミュレーターに対してコードを実行します。
 
-2. アプリケーションをテストする準備ができたら、Azure Active Directory アカウント (職場または学校アカウント) または Microsoft アカウント (live.com、outlook.com) を使用してサインインします。 
+2. Azure Active Directory アカウント (職場または学校アカウント) または Microsoft アカウント (live.com、outlook.com) を使用してサインインを試みます。 
 
     ![アプリケーションをテストする](media/active-directory-develop-guidedsetup-android-test/mainwindow.png)
     <br/><br/>
     ![ユーザー名とパスワードを入力する](media/active-directory-develop-guidedsetup-android-test/usernameandpassword.png)
 
-### <a name="provide-consent-for-application-access"></a>アプリケーションによるアクセスに同意する
-アプリケーションに初めてサインインするときに、次に示すように、アプリケーションがプロファイルにアクセスし、サインインすることを許可することへの同意を求められます。 
+### <a name="consent-to-your-app"></a>アプリに同意する
+ユーザーが初めてアプリケーションにログインすると、次に示すように、アプリが必要とするアクセス許可に同意するよう求められます。 
 
 ![アプリケーションによるアクセスに同意する](media/active-directory-develop-guidedsetup-android-test/androidconsent.png)
 
 
-### <a name="view-application-results"></a>アプリケーションの結果を表示する
-サインインしたら、Microsoft Graph API の呼び出しによって返された結果が表示されます。 Microsoft Graph API **me** エンドポイントの呼び出しによって、[ユーザー プロファイル](https://graph.microsoft.com/v1.0/me)が返されます。 一般的な Microsoft Graph エンドポイントの一覧については、[Microsoft Graph API 開発者向けドキュメント](https://developer.microsoft.com/graph/docs#common-microsoft-graph-queries)をご覧ください。
+### <a name="success"></a>成功です。
+サインインして同意した後、アプリに Microsoft Graph API からの応答が表示されます。 この特定の呼び出しは、**/me** エンドポイントを対象とし、[ユーザー プロファイル](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_get)を返します。 他の Microsoft Graph エンドポイントの一覧については、[Microsoft Graph API 開発者向けドキュメント](https://developer.microsoft.com/graph/docs#common-microsoft-graph-queries)をご覧ください。
 
 <!--start-collapse-->
-### <a name="more-information-about-scopes-and-delegated-permissions"></a>スコープと委任されたアクセス許可の詳細
+### <a name="scopes-and-delegated-permissions"></a>スコープと委任されたアクセス許可
 
-Microsoft Graph API には、ユーザーのプロファイルを読み取るための *user.read* スコープが必要です。 このスコープは、アプリケーション登録ポータルで登録されたすべてのアプリケーションで、既定で自動的に追加されます。 Microsoft Graph の他の API や、バックエンド サーバーのカスタム API には、追加のスコープが必要な場合があります。 Microsoft Graph API には、ユーザーの予定表を表示するための *Calendars.Read* スコープが必要です。 
+Microsoft Graph API には、ユーザーのプロファイルを読み取るための *User.Read* スコープが必要です。 このスコープは、アプリケーション登録ポータルで登録されたすべてのアプリケーションで自動的に構成されます。 他の API では、追加のスコープが必要になります。 たとえば、Microsoft Graph API には、ユーザーの予定表を表示するための *Calendars.Read* スコープが必要です。 
 
-アプリケーションのコンテキストでユーザーの予定表にアクセスするには、*Calendars.Read* の委任されたアクセス許可をアプリケーション登録情報に追加します。 次に、*Calendars.Read* スコープを `acquireTokenSilent` 呼び出しに追加します。 
+ユーザーの予定表にアクセスするには、*Calendars.Read* の委任されたアクセス許可をアプリケーション登録情報に追加します。 次に、*Calendars.Read* スコープを `acquireTokenSilent` 呼び出しに追加します。 
 
 >[!NOTE]
->スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。
+>アプリの登録を変更すると、ユーザーに追加の同意が求められることがあります。
 
 <!--end-collapse-->
 

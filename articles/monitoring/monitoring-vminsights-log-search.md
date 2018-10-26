@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 446268f28e7c87196023636889f03be2da92ecfd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a5f3178ad4d4152bb29e6c313b3fd332124c154
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967644"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269396"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>VM 用 Azure Monitor からログを照会する方法
 VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、コンピューターとプロセスのインベントリ データ、および正常性状態の情報を収集し、Azure Monitor 内の Log Analytics データ ストアにこれらを転送します。  このデータは、Log Analytics で[検索](../log-analytics/log-analytics-log-searches.md)用に使用できます。 このデータは、移行計画、容量の分析、探索、必要に応じたパフォーマンスのトラブルシューティングといったシナリオに適用できます。
@@ -69,9 +69,9 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 |BytesSent |報告時間枠の間に送信された合計バイト数 |
 |BytesReceived |報告時間枠の間に受信された合計バイト数 |
 |応答 |報告時間枠の間に観測された応答の数。 
-|ResponseTimeMax |報告時間枠の間に観測された最長応答時間 (ミリ秒)。  値がない場合、プロパティは空欄です。|
-|ResponseTimeMin |報告時間枠の間に観測された最短応答時間 (ミリ秒)。  値がない場合、プロパティは空欄です。|
-|ResponseTimeSum |報告時間枠の間に観測された全応答時間の合計 (ミリ秒)。  値がない場合、プロパティは空欄です|
+|ResponseTimeMax |報告時間枠の間に観測された最長応答時間 (ミリ秒)。 値がない場合、プロパティは空欄です。|
+|ResponseTimeMin |報告時間枠の間に観測された最短応答時間 (ミリ秒)。 値がない場合、プロパティは空欄です。|
+|ResponseTimeSum |報告時間枠の間に観測された全応答時間の合計 (ミリ秒)。 値がない場合、プロパティは空欄です。|
 
 報告される第 3 のタイプのデータは応答時間です。これは、発信者が接続を介して送信した要求が処理されて、リモート エンドポイントによって応答されるのを待機する時間です。 報告される応答時間は、内在するアプリケーション プロトコルの実際の応答時間の推定値です。 これは、物理ネットワーク接続の送信元と送信先の間のデータ フローの観察に基づき、経験則を使用して計算されます。 これは、概念上、要求の最後のバイトが送信者を離れる時間と、応答の最後のバイトが送信者に返される時間の差です。 これらの 2 つのタイムスタンプは、所定の物理接続で要求イベントと応答イベントを明確化するために使用されます。 これらの差は、1 つの要求の応答時間を表します。 
 
@@ -93,8 +93,8 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 | プロパティ | 説明 |
 |:--|:--|
 |RemoteCountry |RemoteIp をホストしている国の名前。  例: *United States* |
-|RemoteLatitude |地理的位置情報の緯度。  例: *47.68* |
-|RemoteLongitude |地理的位置情報の経度。  例: *-122.12* |
+|RemoteLatitude |地理的位置情報の緯度。 例: *47.68* |
+|RemoteLongitude |地理的位置情報の経度。 例: *-122.12* |
 
 #### <a name="malicious-ip"></a>悪意のある IP
 *VMConnection* テーブル内のすべての RemoteIp プロパティは、一連の IP に対して、知られている悪意のあるアクティビティがチェックされます。 RemoteIp が悪意のあると識別される場合、レコードの以下のプロパティに設定されます (IP が悪意のあるとみなされない場合、これらは空です)。
@@ -102,16 +102,16 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 | プロパティ | 説明 |
 |:--|:--|
 |MaliciousIp |RemoteIp アドレス |
-|IndicatorThreadType | |
-|説明 | |
-|TLPLevel | |
-|信頼度 | |
-|severity | |
-|FirstReportedDateTime | |
-|LastReportedDateTime | |
-|IsActive | |
-|ReportReferenceLink | |
-|AdditionalInformation | |
+|IndicatorThreadType |検出される脅威のインジケーターは、*Botnet*、*C2*、*CryptoMining*、*Darknet*、*DDos*、*MaliciousUrl*、*Malware*、*Phishing*、*Proxy*、*PUA*、*Watchlist* のいずれかの値です。   |
+|説明 |観察対象の脅威の説明。 |
+|TLPLevel |Traffic Light Protocol (TLP) レベルは、定義済みの値、*White*、*Green*、*Amber*、*Red* のいずれかです。 |
+|信頼度 |値は "*0 から 100*" です。 |
+|severity |値は "*0 から 5*" です。ここで、*5* は最も重大で、*0* はまったく重大ではありません。 既定値は *3* です。  |
+|FirstReportedDateTime |プロバイダーが初めてインジケーターをレポートした時間。 |
+|LastReportedDateTime |Interflow によってインジケーターが最後に表示された時間。 |
+|IsActive |インジケーターが *True* または *False* の値で非アクティブ化されていることを示します。 |
+|ReportReferenceLink |特定の観測可能な脅威に関連するレポートにリンクします。 |
+|AdditionalInformation |該当する場合は、観察対象の脅威についての追加情報を提供します。 |
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL レコード
 *ServiceMapComputer_CL* 型があるレコードには、Dependency エージェントを有するサーバー用のインベントリ データがあります。 これらのレコードは、次の表に示したプロパティを持ちます。
@@ -166,34 +166,34 @@ VM 用 Azure Monitor は、パフォーマンスと接続のメトリック、�
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 
 ### <a name="list-all-known-machines"></a>既知のコンピューターを一覧表示
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>すべてのマネージド コンピューターの物理メモリ容量を一覧表示。
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>コンピューター名、DNS、IP、および OS を一覧表示。
-ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>"sql" でコマンドラインのすべてのプロセスを検索
-ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>リソース名でコンピューター (最新のレコード) を検索
-search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
+`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>IP アドレスでマシン (最新のレコード) を検索
-search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId
+`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>指定のマシンにある既知のプロセスすべてを一覧表示
-ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
+`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-computers-running-sql"></a>SQL を実行しているすべてのコンピューターを一覧表示
-ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
+`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>データセンター内にあるすべての製品バージョンの curl を一覧表示
-ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
+`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>CentOS を実行しているすべてのコンピューターのコンピューター グループを作成
-ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
+`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>マシンのグループからの送信接続を要約します
 ```

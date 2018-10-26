@@ -1,19 +1,19 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: iot-suite
-author: dominicbetts
-ms.service: iot-suite
+services: iot-fundamentals
+author: robinsh
+ms.service: iot-fundamentals
 ms.topic: include
-ms.date: 04/24/2018
-ms.author: dobett
+ms.date: 08/07/2018
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 1137f1dac9570b56dc202194e5f94dfd72c31c9f
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 64c7525be9bd44b0d33fdcd8da717e9fe893e057
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39029972"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49070187"
 ---
 # <a name="internet-of-things-security-architecture"></a>モノのインターネットのセキュリティ アーキテクチャ
 
@@ -29,8 +29,7 @@ ms.locfileid: "39029972"
 
 ### <a name="when-to-threat-model"></a>いつ脅威のモデル化を行うか
 
-
-  [脅威のモデル化](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx)は、設計フェーズに組み込まれたときにその価値が最大となります。 脅威を排除するための変更には、設計段階が最も柔軟に対応できます。 設計によって脅威を排除することが成果として求められます。 その方が軽減策を後から追加してテストし、最新の状態に保つよりもはるかに容易です。そもそも、後から脅威を排除することが必ずしも可能であるとは限りません。 製品の完成度が増してくるにつれて、脅威を排除することは難しくなっていきます。結局は、脅威のモデル化を開発の初期段階で行った場合と比べて必要な作業が増え、より重要な部分でトレードオフに苦渋の決断を迫られることとなります。
+[脅威のモデル化](https://www.microsoft.com/en-us/sdl/adopt/threatmodeling.aspx)は、設計フェーズに組み込まれたときにその価値が最大となります。 脅威を排除するための変更には、設計段階が最も柔軟に対応できます。 設計によって脅威を排除することが成果として求められます。 その方が軽減策を後から追加してテストし、最新の状態に保つよりもはるかに容易です。そもそも、後から脅威を排除することが必ずしも可能であるとは限りません。 製品の完成度が増してくるにつれて、脅威を排除することは難しくなっていきます。結局は、脅威のモデル化を開発の初期段階で行った場合と比べて必要な作業が増え、より重要な部分でトレードオフに苦渋の決断を迫られることとなります。
 
 ### <a name="what-to-threat-model"></a>脅威のモデル化の対象は何か
 
@@ -186,7 +185,7 @@ Azure IoT アーキテクチャに示したカテゴリごとに、この例で�
 
 このカテゴリの脅威の例をいくつか紹介します。
 
-スプーフィング: 攻撃者が、ソフトウェア レベルまたはハードウェア レベルでデバイスから暗号化キー マテリアルを抽出し、その後、その抽出元となったデバイスの ID で、異なる物理デバイスまたは異なる仮想デバイスからシステムにアクセスする可能性があります。
+**スプーフィング**: 攻撃者が、ソフトウェア レベルまたはハードウェア レベルでデバイスから暗号化キー マテリアルを抽出し、その後、その抽出元となったデバイスの ID で、異なる物理デバイスまたは異なる仮想デバイスからシステムにアクセスする可能性があります。
 
 **サービス拒否**: 妨害電波やケーブルの切断によって、デバイスの機能が停止したり、通信できない状態になったりする可能性があります。 たとえば、電源やネットワーク接続が意図的に切断された防犯カメラは、データをまったく報告することができなくなります。
 

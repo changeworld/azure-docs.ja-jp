@@ -1,19 +1,19 @@
 ---
 title: インクルード ファイル
 description: インクルード ファイル
-services: iot-suite
-author: dominicbetts
-ms.service: iot-suite
+services: iot-fundamentals
+author: robinsh
+ms.service: iot-fundamentals
 ms.topic: include
 ms.date: 04/24/2018
-ms.author: dobett
+ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 181432c3050bbc614898b1ddf779bc90239a35be
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 8137a292045377c5dccb69c21a8118d0dc17874e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39189284"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49069950"
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>モノのインターネットの徹底的なセキュリティ
 
@@ -45,8 +45,7 @@ Microsoft のシステムでは、脅威の特定と軽減に役立つ、侵入�
 
 ソリューションアクセラレータは、SDLや OSA プロセスと共に Azure プラットフォームに組み込まれているセキュリティとプライバシーを活用して、すべての Microsoft ソフトウェアを安全に開発し、操作できるようにします。 これらの手順では、ソリューションのセキュリティに重要なインフラストラクチャの保護、ネットワークの保護、および ID と管理機能が提供されます。
 
-
-  [IoT ソリューションアクセラレータ](../articles/iot-fundamentals/iot-introduction.md) 内の [Azure IoT Hub](../articles/iot-hub/about-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) などの間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
+[IoT ソリューションアクセラレータ](../articles/iot-fundamentals/iot-introduction.md) 内の [Azure IoT Hub](../articles/iot-hub/about-iot-hub.md) では完全に管理されたサービスが提供されます。これにより、デバイスごとのセキュリティ資格情報とアクセス制御を使用して、IoT デバイスと Azure サービス [Azure Machine Learning](../articles/machine-learning/studio/what-is-machine-learning.md) や [Azure Stream Analytics](../articles/stream-analytics/stream-analytics-introduction.md) などの間で、信頼性が高くセキュリティで保護された双方向の通信を行うことができます。
 
 Azure IoT ソリューションアクセラレータに組み込まれているセキュリティとプライバシーの機能をわかりやすくするために、この記事では Suite を 3 つの主なセキュリティ領域に分割しています。
 
@@ -63,7 +62,9 @@ Azure IoT ソリューションアクセラレータに組み込まれている�
 その他のデバイスのセキュリティ機能には、以下が含まれます。
 
 * デバイスは、要求されていないネットワーク接続を受け入れません。 デバイスは送信のみの方法で、すべての接続とルートを確立します。 バックエンドからコマンドを受信する場合、デバイスは接続を開始して、処理待ちのコマンドがないか確認する必要があります。 デバイスと IoT Hub 間の接続が安全に確立されると、クラウドとデバイス間でメッセージを透過的に送信することができます。
+
 * デバイスは、Azure IoT Hub など、ピアリングされている既知のサービスへの接続のみ、またはルートの確立のみを行います。
+
 * システム レベルの承認と認証ではデバイスごとの ID を使用して、アクセス資格情報とアクセス許可をほぼ瞬時に取り消すことができます。
 
 ### <a name="secure-connectivity"></a>セキュリティで保護された接続
@@ -77,7 +78,9 @@ Azure IoT ソリューションアクセラレータに組み込まれている�
 その他の接続のセキュリティ機能には、以下が含まれます。
 
 * デバイスと Azure IoT Hub 間、またはゲートウェイと Azure IoT Hub 間の通信パスは、X.509 プロトコルで認証済みの Azure IoT Hub で業界標準のトランスポート層セキュリティ (TLS) を使用してセキュリティ保護されます。
+
 * 要求されていない受信接続からデバイスを保護するために、Azure IoT Hub はデバイスへの接続を開きません。 すべての接続はデバイスが開始します。
+
 * Azure IoT Hub は永続的にデバイスのメッセージを保存し、デバイスが接続されるまで待機します。 これらのコマンドは 2 日間保存されるため、電源や接続の問題によって散発的に接続されるデバイスはこれらのコマンドを受信することができます。 Azure IoT Hub は、各デバイスのデバイスごとのキューを保持します。
 
 ### <a name="secure-processing-and-storage-in-the-cloud"></a>クラウドにおけるセキュリティで保護された処理およびストレージ
@@ -101,8 +104,13 @@ IoT インフラストラクチャで使用されるすべてのキーはクラ�
 各ソリューション アクセラレータでは、Azure のサービスのインスタンスを作成します：
 
 * [**Azure IoT Hub**](https://azure.microsoft.com/services/iot-hub/): クラウドをデバイスに接続するゲートウェイ。 ハブごとに数百万の接続にスケーリングでき、ソリューションのセキュリティ保護に役立つデバイスごとの認証サポートにより膨大な量のデータを処理できます。
+
 * [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/): 属性、構成、セキュリティ プロパティなど、プロビジョニングするデバイスのメタデータを管理する半構造化データ用に完全にインデックス付けされたスケーラブル データベース サービス。 Azure Cosmos DB では、高パフォーマンスで高スループットの処理、スキーマに依存しないデータのインデックス付けと豊富な SQL クエリ インターフェイスが提供されます。
+
 * [**Azure Stream Analytics**](https://azure.microsoft.com/services/stream-analytics/): クラウドにおけるリアルタイム ストリーム処理。これにより、デバイス、センサー、インフラストラクチャ、アプリケーションからのリアルタイムの洞察を得られるようにする低コストの分析ソリューションを迅速に開発してデプロイすることができます。 この完全に管理されたサービスからのデータは、高スループット、低待機時間、および回復性を維持した状態で任意のボリュームにスケーリングできます。
+
 * [**Azure App Services**](https://azure.microsoft.com/services/app-service/): データがクラウドとオンプレミスのどちらにあっても接続できる強力な Web アプリとモバイル アプリをビルドするためのクラウド プラットフォーム。 iOS、Android、Windows 用の魅力的なモバイル アプリをビルドします。 多数のクラウド ベース サービスとエンタープライズ アプリケーションへのすぐに利用可能な接続により、使用しているサービスとしてのソフトウェア (SaaS) およびエンタープライズ アプリケーションと統合します。 お気に入りの言語や IDE (.NET、Node.js、PHP、Python、または Java) でコードを作成し、Web アプリと API をこれまで以上に迅速にビルドできます。
+
 * [**Logic Apps**](https://azure.microsoft.com/services/app-service/logic/): Azure App Service の Logic Apps 機能は、既存の基幹業務システムに IoT ソリューションを統合し、ワークフロー プロセスを自動化するのに役立ちます。 開発者は Logic Apps を使用することで、トリガーで開始され、一連の手順 (つまり、ビジネス プロセスに統合するために強力なコネクタを使用するルールとアクション) を実行するワークフローを設計できます。 Logic Apps では、SaaS、クラウド ベース、およびオンプレミス アプリケーションの広範なエコシステムにすぐに接続できます。
+
 * [**Azure Blob Storage**](https://azure.microsoft.com/services/storage/): デバイスからクラウドに送信されるデータに対応する信頼性と経済性に優れたクラウド ストレージ。

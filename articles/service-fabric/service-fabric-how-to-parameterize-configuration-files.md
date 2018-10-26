@@ -28,7 +28,7 @@ ms.locfileid: "48900515"
 この例では、アプリケーションの展開でパラメーターを使って構成値をオーバーライドします。
 
 1. サービス プロジェクト内の *<MyService>\PackageRoot\Config\Settings.xml* ファイルを開きます。
-1. 次の XML を追加して、構成パラメーターの名前と値 (たとえば、cache size、25) を設定します。
+1. 次の XML を追加して、構成パラメーターの名前と値を設定します (たとえば、キャッシュ サイズ = 25)。
 
   ```xml
     <Section Name="MyConfigSection">

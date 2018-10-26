@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/27/2018
+ms.date: 10/08/2018
 ms.author: aljo
-ms.openlocfilehash: ed904f7d4de9406e60de1652cefeb5bb84e5a1d8
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 7a80693090b92db55ad2feed52fdbb2a455e3c39
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144040"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48884495"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric クラスターの設定をカスタマイズする
 この記事では、Service Fabric クラスターのさまざまなファブリックの設定をカスタマイズする方法について説明します。 Azure でホストされているクラスターの場合、[Azure portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使って設定をカスタマイズできます。 スタンドアロン クラスターでは、ClusterConfig.json ファイルを更新し、クラスターで構成のアップグレードを実行することにより、設定をカスタマイズします。 
@@ -352,6 +352,7 @@ ClusterConfig.json ファイルの設定を変更した後は、「[クラスタ
 |ApplicationUpgradeTimeout| TimeSpan、既定値は Common::TimeSpan::FromSeconds(360)|動的| timespan を秒単位で指定します。 アプリケーション アップグレードのタイムアウト。 タイムアウトが "ActivationTimeout" を下回る場合、デプロイ機能は失敗します。 |
 |ContainerServiceArguments|string、既定値は "-H localhost:2375 -H npipe://"|静的|Service Fabric (SF) が Docker デーモンを管理します (Win10 のような Windows クライアント コンピューターを除く)。 この構成により、ユーザーは Docker デーモンの起動時に渡す必要があるカスタム引数を指定できます。 カスタム引数が指定された場合、Service Fabric は、他の引数を一切 Docker エンジンに渡しませんが、'--pidfile' 引数は例外です。 そのため、ユーザーはカスタム引数の一部として '--pidfile' 引数を指定することはできません。 また、Service Fabric が Docker デーモンと通信できるようにするために、Docker デーモンに既定の名前付きパイプ (Windows の場合) または UNIX ドメイン ソケット (Linux の場合) でリッスンさせるようにカスタム引数で指定する必要があります。|
 |ContainerServiceLogFileMaxSizeInKb|int、既定値は 32768|静的|Docker コンテナーで生成されるログ ファイルの最大ファイル サイズ。  Windows のみ。|
+|ContainerImagesToSkip|string、イメージ名を縦線で区切ります。既定値は ""|静的|削除していはいけない 1 つまたは複数のコンテナー イメージの名前。  PruneContainerImages パラメーターと共に使用します。|
 |ContainerServiceLogFileNamePrefix|string、既定値は "sfcontainerlogs"|静的|Docker コンテナーで生成されるログ ファイルのファイル名プレフィックス。  Windows のみ。|
 |ContainerServiceLogFileRetentionCount|int、既定値は 10|静的|ログ ファイルを上書きする前に Docker コンテナーによって生成されたログ ファイルの数。  Windows のみ。|
 |CreateFabricRuntimeTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(120)|動的| timespan を秒単位で指定します。 同期 FabricCreateRuntime 呼び出しのタイムアウト値 |
@@ -360,6 +361,7 @@ ClusterConfig.json ファイルの設定を変更した後は、「[クラスタ
 |DeploymentMaxFailureCount|int、既定値は 20| 動的|ノードへのアプリケーションのデプロイは、DeploymentMaxFailureCount 回、再試行された後に失敗します。| 
 |DeploymentMaxRetryInterval| TimeSpan、既定値は Common::TimeSpan::FromSeconds(3600)|動的| timespan を秒単位で指定します。 デプロイの最大再試行間隔。 連続して失敗するたびに、再試行間隔が Min(DeploymentMaxRetryInterval; Continuous Failure Count * DeploymentRetryBackoffInterval) として計算されます |
 |DeploymentRetryBackoffInterval| TimeSpan、既定値は Common::TimeSpan::FromSeconds(10)|動的|timespan を秒単位で指定します。 デプロイ エラーのバックオフ間隔。 継続的なデプロイ エラーのたびに、システムによってデプロイが最大 MaxDeploymentFailureCount 回、再試行されます。 再試行間隔は、継続的なデプロイ エラーとデプロイ バックオフ間隔の積です。 |
+|DisableDockerRequestRetry|ブール値、既定値は FALSE |動的| 既定では、SF は、送信される各 http 要求のタイムアウトを "DockerRequestTimeout" として DD (docker デーモン) と通信します。 DD がこの期間内に応答しない場合、SF は、最上位レベルの操作にまだ残り時間があれば要求を再送信します。  hyperv コンテナーと共に使用します。DD がコンテナーを起動または非アクティブ化するのに時間がかかることがあります。 そのような場合、DD 要求が SF パースペクティブからタイムアウトし、SF は操作を再試行します。 これは DD にさらに圧力をかけるように見えることがあります。 この構成により、この再試行が無効になり、DD が応答するまで待機します。 |
 |EnableActivateNoWindow| ブール値、既定値は FALSE|動的| アクティブ化されたプロセスは、コンソールを使用せずに、バックグラウンドで作成されます。 |
 |EnableContainerServiceDebugMode|ブール値、既定値は TRUE|静的|Docker コンテナーのログを有効または無効にします。  Windows のみ。|
 |EnableDockerHealthCheckIntegration|ブール値、既定値は TRUE|静的|Docker HEALTHCHECK イベントと Service Fabric システム正常性レポートの統合を有効にする |
@@ -375,6 +377,7 @@ ClusterConfig.json ファイルの設定を変更した後は、「[クラスタ
 |NTLMAuthenticationPasswordSecret|SecureString、既定値は Common::SecureString("")|静的|NTLM ユーザーのパスワード生成に使用される暗号化されたハッシュです。 NTLMAuthenticationEnabled が true の場合、設定する必要があります。 デプロイ担当者によって検証されます。 |
 |NTLMSecurityUsersByX509CommonNamesRefreshInterval|TimeSpan、既定値は Common::TimeSpan::FromMinutes(3)|動的|timespan を秒単位で指定します。 環境固有の設定。FileStoreService NTLM 構成に使用する新しい証明書が、この間隔でホスティングによって定期的にスキャンされます。 |
 |NTLMSecurityUsersByX509CommonNamesRefreshTimeout|TimeSpan、既定値は Common::TimeSpan::FromMinutes(4)|動的| timespan を秒単位で指定します。 証明書共通名を使用して NTLM ユーザーを構成するためのタイムアウト。 NTLM ユーザーは、FileStoreService 共有に必要です。 |
+|PruneContainerImages|ブール値、既定値は FALSE|動的| 使用されていないアプリケーション コンテナー イメージをノードから削除します。 ApplicationType が Service Fabric クラスターから登録解除されると、このアプリケーションによって使用されていたコンテナー イメージは、Service Fabric によってダウンロードされたノード上で削除されます。 この削除操作は 1 時間ごとに実行されるため、クラスターからイメージを削除するのに最大で 1 時間かかることがあります (さらに、イメージを取り除く時間も必要です)。<br>アプリケーションに関連しないイメージが Service Fabric によってダウンロードまたは削除されることはありません。  手動またはその他の方法でダウンロードされた無関係のイメージは、明示的に削除する必要があります。<br>削除してはいけないイメージは、ContainerImagesToSkip パラメーターで指定できます。| 
 |RegisterCodePackageHostTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(120)|動的| timespan を秒単位で指定します。 FabricRegisterCodePackageHost 同期呼び出しのタイムアウト値。 これは、FWP のようなマルチコード パッケージ アプリケーション ホストにのみ適用されます |
 |RequestTimeout|TimeSpan、既定値は Common::TimeSpan::FromSeconds(30)|動的| timespan を秒単位で指定します。 これは、ファクトリ登録、ランタイム登録など、さまざまなホスティング関連操作について、ユーザーのアプリケーション ホストと Fabric プロセスの間の通信タイムアウトを表します。 |
 |RunAsPolicyEnabled| ブール値、既定値は FALSE|静的| ローカル ユーザーとしてのコード パッケージの実行を有効にします。ただし、ファブリック プロセスが実行されているユーザーを除きます。 このポリシーを有効にするには、Fabric が、システムとして、または SeAssignPrimaryTokenPrivilege を持つユーザーとして実行されている必要があります。 |
@@ -420,13 +423,14 @@ ClusterConfig.json ファイルの設定を変更した後は、「[クラスタ
 |SharedLogId |string、既定値は "" |静的|共有ログ コンテナーの一意の GUID。 ファブリック データ ルート下の既定のパスを使用する場合は、"" を使用します。 |
 |SharedLogPath |string、既定値は "" |静的|共有ログ コンテナーを配置する場所のパスとファイル名。 ファブリック データ ルート下の既定のパスを使用する場合は、"" を使用します。 |
 |SharedLogSizeInMB |int、既定値は 8192 |静的|共有ログ コンテナーに割り当てる MB 数。 |
+|SharedLogThrottleLimitInPercentUsed|int、既定値は 0 | 静的 | 調整が誘発される共有ログの使用率。 値は 0 から 100 の範囲内である必要があります。 値 0 は、既定の割合の値を使用することを意味します。 値 100 は、調整が行われないことを暗示します。 1 から 99 の範囲内の値はログの使用パーセンテージを指定し、この値を超えると調整が発生します。たとえば、10 GB の共有ログに対して値 90 を指定した場合、9 GB が使用されると調整が発生します。 既定値を使用することをお勧めします。|
 |WriteBufferMemoryPoolMaximumInKB | int、既定値は 0 |動的|書き込みバッファー メモリ プールを拡張できる最大 KB 数。 無制限であることを示すには 0 を使用します。 |
 |WriteBufferMemoryPoolMinimumInKB |int、既定値は 8388608 |動的|書き込みバッファー メモリ プールに最初に割り当てる KB 数。 無制限であることを示すには 0 を使用します。既定値は、後述の SharedLogSizeInMB と一致する必要があります。 |
 
 ## <a name="management"></a>管理
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-|AzureStorageMaxConnections | int、既定値は 5000 |動的|Azure Storage への同時接続の最大数。 |
+|AzureStorageMaxConnections | int、既定値は 5000 |動的|Azure Storage へのコンカレント接続の最大数。 |
 |AzureStorageMaxWorkerThreads | int、既定値は 25 |動的|並列 worker スレッドの最大数。 |
 |AzureStorageOperationTimeout | 時間 (秒単位)、既定値は 6000 |動的|timespan を秒単位で指定します。 xstore 操作が完了するまでのタイムアウト。 |
 |CleanupApplicationPackageOnProvisionSuccess|ブール値、既定値は FALSE |動的|この構成は、成功したプロビジョニングでアプリケーション パッケージの自動クリーンアップを有効または無効にします。 |
@@ -624,10 +628,13 @@ ClusterConfig.json ファイルの設定を変更した後は、「[クラスタ
 ## <a name="security"></a>セキュリティ
 | **パラメーター** | **使用できる値** |**アップグレード ポリシー**| **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
+|AADCertEndpointFormat|string、既定値は ""|静的|Azure Government "https://login.microsoftonline.us/{0}/federationmetadata/2007-06/federationmetadata.xml" のような既定以外の環境用に指定される AAD 証明書エンドポイント形式。既定値は Azure Commercial。 |
 |AADClientApplication|string、既定値は ""|静的|Fabric クライアントを表すネイティブ クライアント アプリケーションの名前または ID |
 |AADClusterApplication|string、既定値は ""|静的|クラスターを表す Web API アプリケーションの名前または ID |
+|AADLoginEndpoint|string、既定値は ""|静的|Azure Government "https://login.microsoftonline.us" のような既定以外の環境用に指定される AAD ログイン エンドポイント。既定値は Azure Commercial。 |
 |AADTenantId|string、既定値は ""|静的|テナント ID (GUID) |
 |AdminClientCertThumbprints|string、既定値は ""|動的|管理者ロールでクライアントによって使用される証明書のサムプリント。 コンマ区切りの名前リストです。 |
+|AADTokenEndpointFormat|string、既定値は ""|静的|Azure Government "https://login.microsoftonline.us/{0}" のような既定以外の環境用に指定される AAD トークン エンドポイント。既定値は Azure Commercial。 |
 |AdminClientClaims|string、既定値は ""|動的|管理クライアントから期待される、考えられるすべての要求。ClientClaims と同じ形式です。この一覧は ClientClaims に内部的に追加されるため、同じエントリを ClientClaims に追加する必要はありません。 |
 |AdminClientIdentities|string、既定値は ""|動的|管理者ロールのファブリック クライアントの Windows ID。特権ファブリック操作の承認に使用されます。 これはコンマ区切りリストで、各エントリがドメイン アカウント名またはグループ名です。 便宜上、fabric.exe を実行するアカウントは自動的に管理者ロールを割り当てられます。グループ ServiceFabricAdministrators も同様です。 |
 |CertificateExpirySafetyMargin|TimeSpan、既定値は Common::TimeSpan::FromMinutes(43200)|静的|timespan を秒単位で指定します。 証明書の有効期限の安全マージン。有効期限がこれより近くなると、証明書の正常性レポートの状態が OK から警告に変わります。 既定値は 30 日です。 |
