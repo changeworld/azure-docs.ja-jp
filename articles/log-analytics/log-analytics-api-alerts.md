@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 7f55b762bda5ff0c7bbedf414b18465656496cbb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: ''
+ms.openlocfilehash: b178744911d03547509de58e35be5cd99e046391
+ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984587"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49079057"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API を使用して Log Analytics でアラートのルールを作成および管理する
 Log Analytics のアラート REST API は、Operations Management Suite (OMS) でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
@@ -36,11 +36,11 @@ Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager 
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| Interval |検索を実行する頻度。 分単位で指定します。 |
+| 間隔 |検索を実行する頻度。 分単位で指定します。 |
 | QueryTimeSpan |条件を評価する時間間隔。 [Interval] の値以上にする必要があります。 分単位で指定します。 |
 | Version |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
 
-たとえば、Interval を 15 分、QueryTimeSpan を 30 分に設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、条件が 30 分間にわたって true に評価されるとアラートがトリガーされます。
+たとえば、[Interval] を 15 分、[QueryTimeSpan] を 30 分に設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、条件が 30 分間にわたって true に評価されるとアラートがトリガーされます。
 
 ### <a name="retrieving-schedules"></a>スケジュールの取得
 Get メソッドを使用して、保存した検索条件のすべてのスケジュールを取得します。
@@ -88,14 +88,14 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}?api-version=2015-03-20
 
 
-## <a name="actions"></a>アクション
+## <a name="actions"></a>Actions
 スケジュールでは複数のアクションを使用できます。 アクションでは、メールの送信や Runbook の開始など、実行する 1 つ以上のプロセスを定義するか、または検索結果が条件に一致するためのしきい値を定義できます。  一部のアクションはそれらの両方を定義し、しきい値に達したときにプロセスが実行されます。
 
 すべてのアクションには、次の表に示したプロパティがあります。  後で説明するように、アラートの種類によって異なる追加のプロパティもあります。
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| type |アクションの種類。  現在使用可能な値は、Alert と Webhook です。 |
+| type |アクションの種類。  現在使用可能な値は、[Alert] と [Webhook] です。 |
 | Name |アラートの表示名。 |
 | Version |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
 
@@ -136,8 +136,9 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 
 | セクション | 説明 | 使用法 |
 |:--- |:--- |:--- |
-| Threshold |アクションがいつ実行されるかの条件。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
-| Severity |アラートがトリガーされるときに分類に使用されるラベル。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
+| しきい値 |アクションがいつ実行されるかの条件。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
+| severity |アラートがトリガーされるときに分類に使用されるラベル。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
+| 抑制 |アラートからの通知を停止するオプション。 | Azure に拡張される前と後の両方の、すべてのアラートで省略可能です。 |
 | アクション グループ |Azure ActionGroup の ID。電子メール、SMS、音声通話、Webhook、Automation Runbook、ITSM Connector など、必要なアクションが指定されています。| アラートが Azure に拡張されると必要|
 | アクションのカスタマイズ|ActionGroup の選択したアクションの標準出力を変更します| すべてのアラートで省略可能で、アラートが Azure に拡張された後に使用できます。 |
 | EmailNotification |複数の受信者にメールを送信します。 | アラートが Azure に拡張された後は不要|
@@ -154,8 +155,8 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| Operator |しきい値の比較演算子。 <br> gt = より大きい <br> lt = より小さい |
-| Value |しきい値の値。 |
+| operator |しきい値の比較演算子。 <br> gt = より大きい <br> lt = より小さい |
+| 値 |しきい値の値。 |
 
 たとえば、[Interval] を 15 分、[QueryTimeSpan] を 30 分に設定し、しきい値を 10 より大きく設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、30 分間にわたって作成された 10 個のイベントが返されたときに、アラートがトリガーされます。
 
@@ -182,7 +183,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
-#### <a name="severity"></a>重大度
+#### <a name="severity"></a>severity
 Log Analytics を使用するとアラートをカテゴリに分類し、簡単に管理およびトリアージできます。 定義されているアラートの重大度は、情報、警告、重大です。 これらは次のように Azure Alerts の正規化された重大度スケールにマッピングされています。
 
 |Log Analytics の重大度レベル  |Azure Alerts の重大度レベル  |
@@ -213,6 +214,37 @@ Log Analytics を使用するとアラートをカテゴリに分類し、簡単
 
     $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+
+#### <a name="suppress"></a>抑制
+Log Analytics ベースのクエリ アラートは、しきい値に達するか超過するたびに発生します。 クエリに示されたロジックに基づいて、連続する間隔でアラートが生成され、その結果の通知が常に送信される可能性があります。 このようなシナリオを防ぐため、ユーザーは、指定した時間待機してからアラート ルールの 2 回目の通知が発生するように Log Analytics に指示する [抑制] オプションを設定することができます。 抑制が 30 分に設定したとします。まず最初のアラートが生成され、構成された通知が送信されます。 この場合、アラート ルールの通知が再び使用されるまで、30 分待機されます。 その間、アラート ルールは継続して実行されます。この期間にアラート ルールが何回生成されたかにかかわらず、指定した期間は Log Analytics によって通知のみが抑制されます。
+
+Log Analytics アラート ルールの抑制プロパティは、*[スロットリング]* 値と、*DurationInMinutes* 値を使用した抑制期間を使用して指定されます。
+
+しきい値、重大度、および抑制プロパティのみを含むアクションに対する応答の例を次に示します。
+
+    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+    "properties": {
+        "Type": "Alert",
+        "Name": "My threshold action",
+        "Threshold": {
+            "Operator": "gt",
+            "Value": 10
+        },
+        "Throttling": {
+          "DurationInMinutes": 30
+        },
+        "Severity": "critical",
+        "Version": 1    }
+
+スケジュールの新しいアクションを重大度で作成するには、Put メソッドに一意のアクション ID を渡します。  
+
+    $AlertSuppressJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
+
+スケジュールの重大度アクションを編集するには、既存のアクション ID を Put メソッドに渡します。  要求の本体には、アクションの etag が含まれている必要があります。
+
+    $AlertSuppressJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Throttling': { 'DurationInMinutes': 30 },'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myalert?api-version=2015-03-20 $AlertSuppressJson
 
 #### <a name="action-groups"></a>アクション グループ
 Azure のすべてのアラートは、アクションを管理する既定のメカニズムとして、アクション グループを使用します。 アクション グループを使用すると、一度に複数のアクションを指定し、そのアクション グループを Azure 全体にわたって複数のアラートに関連付けることができます。 繰り返し宣言することなく、同じアクションを繰り返し実行できます。 アクション グループは、電子メール、SMS、音声通話、ITSM Connection、Automation Runbook、Webhook URI など、複数のアクションに対応しています。 

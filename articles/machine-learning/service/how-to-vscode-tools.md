@@ -9,12 +9,12 @@ ms.author: jmartens
 author: j-martens
 ms.reviewer: jmartens
 ms.date: 10/1/2018
-ms.openlocfilehash: f573dba2e7580d58c295d204fc75e2403c0d033c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: a2f37cffb37ce7008c3e372763784240e0d4250b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48241848"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945554"
 ---
 # <a name="vs-code-tools-for-ai-get-started-with-azure-machine-learning-from-visual-studio-code"></a>VS Code Tools for AI: Visual Studio Code から Azure Machine Learning を始める
 
@@ -34,7 +34,7 @@ Visual Studio コードで Tools for AI 拡張機能を使用して、Azure Mach
 
 **Tools for AI** 拡張機能をインストールするとき、他の 2 つの拡張機能も自動的にインストールされます (インターネットに接続している場合)。 [Azure アカウント](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)拡張機能と [Microsoft Python](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 拡張機能です。
 
-Azure Machine Learning を使用するには、VS Code を Python IDE に変換する必要があります。 [Visual Studio Code で Python](https://code.visualstudio.com/docs/languages/python) を使用するためには、Microsoft Python 拡張機能が必要です。これは、Tools for AI と一緒に自動的にインストールされます。 この拡張機能を使用すると VS Code が優れた IDE になります。この機能は、あらゆるオペレーティング システムでさまざまな Python インタープリターと連携します。 これは、VS Code のすべての機能を活用して、オートコンプリートと IntelliSense、lint 処理、デバッグ、単体テストを提供する他に、複数の Python 環境 (仮想環境や conda 環境など) を切り替えることもできます。 Python コードを編集、実行、デバッグする手順については、[Python Hello World のチュートリアル](https://code.visualstudio.com/docs/languages/python/docs/python/python-tutorial)を参照してください
+Azure Machine Learning を使用するには、VS Code を Python IDE に変換する必要があります。 [Visual Studio Code で Python](https://code.visualstudio.com/docs/languages/python) を使用するためには、Microsoft Python 拡張機能が必要です。これは、Tools for AI と一緒に自動的にインストールされます。 この拡張機能を使用すると VS Code が優れた IDE になります。この機能は、あらゆるオペレーティング システムでさまざまな Python インタープリターと連携します。 これは、VS Code のすべての機能を活用して、オートコンプリートと IntelliSense、lint 処理、デバッグ、単体テストを提供する他に、複数の Python 環境 (仮想環境や conda 環境など) を切り替えることもできます。 Python コードを編集、実行、デバッグする手順については、[Python Hello World のチュートリアル](https://code.visualstudio.com/docs/python/python-tutorial)を参照してください
 
 **Tools for AI 拡張機能をインストールするには:**
 
