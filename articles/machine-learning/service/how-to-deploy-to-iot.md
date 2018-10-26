@@ -136,4 +136,4 @@ Azure IoT では、Azure Machine Learning サービスが Docker イメージを
 
 ## <a name="next-steps"></a>次の手順
 
-これでデプロイの準備が完了しました。 次に、「[Azure Portal から Azure IoT Edge モジュールをデプロイする](../../iot-edge/how-to-deploy-modules-portal.md)」というドキュメントの手順に従って Edge デバイスにデプロイします。 デバイスの__レジストリ設定__を構成するときに、前に構成した資格情報を使用します。
+これでデプロイの準備が完了しました。 次に、「[Azure Portal から Azure IoT Edge モジュールをデプロイする](../../iot-edge/how-to-deploy-modules-portal.md)」というドキュメントの手順に従って Edge デバイスにデプロイします。 デバイスの __レジストリ設定__ を構成するときに、前に構成した資格情報を使用します。
