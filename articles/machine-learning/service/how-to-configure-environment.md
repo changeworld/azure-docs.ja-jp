@@ -44,7 +44,7 @@ Azure Machine Learning サービスを操作する開発環境を構成する方
 
 * 次の手順で構成ファイルを自分で作成します。
 
-    1. [Azure Portal](https://portal.azure.com) でワークスペースを開きます。 __ワークスペース名__、__リソース グループ__、および__サブスクリプション ID__ をコピーします。 これらの値は、構成ファイルの作成に使用されます。
+    1. [Azure Portal](https://portal.azure.com) でワークスペースを開きます。 __ワークスペース名__、__リソース グループ__、および __サブスクリプション ID__ をコピーします。 これらの値は、構成ファイルの作成に使用されます。
 
         ![Azure ポータル](./media/how-to-configure-environment/configure.png) 
     
@@ -179,7 +179,7 @@ Azure Notebooks を Azure Machine Learning サービスで使用する例につ�
     conda install <new package>
     ```
 
-6. Visual Studio Code を起動し、__CTRL SHIFT+P__ を使用して__コマンド パレット__を取得します。 *Python: Select Interpreter* を入力し、作成した conda 環境を選択します。
+6. Visual Studio Code を起動し、__CTRL SHIFT+P__ を使用して __コマンド パレット__ を取得します。 *Python: Select Interpreter* を入力し、作成した conda 環境を選択します。
 
     > [!NOTE]
     > Visual Studio Code は、コンピューター上の conda 環境を自動的に認識します。 詳細については、[Visual Studio Code のドキュメント](https://code.visualstudio.com/docs/python/environments#_conda-environments)を参照してください。

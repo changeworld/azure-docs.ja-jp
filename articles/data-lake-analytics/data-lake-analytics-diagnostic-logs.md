@@ -31,7 +31,7 @@ ms.locfileid: "43045483"
 
     ![診断を有効にして、監査ログと要求ログを収集する](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. __[診断設定]__ で、このログ構成の__名前__を入力し、ログ オプションを選択します。
+3. __[診断設定]__ で、このログ構成の __名前__ を入力し、ログ オプションを選択します。
 
     ![診断を有効にして、監査ログと要求ログを収集する](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "診断ログを有効にする")
 

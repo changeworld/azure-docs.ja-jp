@@ -35,7 +35,7 @@ Custom Vision Service からエクスポートされた ONNX モデルを Window
 
 * ビルド 17738 以降用の Windows SDK
 
-* Visual Studio 2017 バージョン 15.7 以降がインストールされ、__ユニバーサル Windows プラットフォーム開発__ワークロードが有効にされている。
+* Visual Studio 2017 バージョン 15.7 以降がインストールされ、 __ユニバーサル Windows プラットフォーム開発__ ワークロードが有効にされている。
 
 * 開発者モードが有効にされている。 詳細については、ドキュメント「[デバイスを開発用に有効にする](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)」を参照してください。
 

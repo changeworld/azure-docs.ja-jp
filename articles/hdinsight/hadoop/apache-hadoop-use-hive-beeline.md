@@ -248,7 +248,7 @@ Beeline をローカルにインストールしている場合に Azure 仮想�
 
 Spark は独自の HiveServer2 実装を提供します。これは Spark Thrift サーバーとも呼ばれます。 このサービスでは、Spark SQL を使用して Hive の代わりにクエリを解決します。クエリによってはパフォーマンスが向上します。
 
-インターネット経由で接続する際に使用される__接続文字列__は、わずかに異なります。 `httpPath=/hive2` の代わりに `httpPath/sparkhive2`が含まれます。 次に示すのは、インターネット経由の接続の例です。
+インターネット経由で接続する際に使用される __接続文字列__ は、わずかに異なります。 `httpPath=/hive2` の代わりに `httpPath/sparkhive2`が含まれます。 次に示すのは、インターネット経由の接続の例です。
 
 ```bash 
 beeline -u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/sparkhive2' -n admin -p password

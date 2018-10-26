@@ -37,7 +37,7 @@ Custom Vision Service を使用するには、最初に分類器を構築する�
 - 省略可能: Microsoft アカウントまたは OrgID に関連付けられた Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成できます。
 
     > [!IMPORTANT]
-    > Azure サブスクリプションがない場合、__期間限定試用版__プロジェクトだけを作成できます。 Azure サブスクリプションがある場合、プロジェクトの作成中に、[Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) で Custom Vision Service トレーニングおよび予測のリソースを作成するように求められます。   
+    > Azure サブスクリプションがない場合、__期間限定試用版__ プロジェクトだけを作成できます。 Azure サブスクリプションがある場合、プロジェクトの作成中に、[Azure portal](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision) で Custom Vision Service トレーニングおよび予測のリソースを作成するように求められます。   
 
 ## <a name="create-a-new-project"></a>新しいプロジェクトを作成する
 
@@ -67,7 +67,7 @@ Custom Vision Service を使用するには、最初に分類器を構築する�
 
     必要に応じて後からドメインを変更できます。
 
-4. リソース グループを選択します。 [リソース グループ] ドロップダウンには、Custom Vision Service リソースを含むすべての Azure リソース グループが表示されます。 __期間限定試用版__を選択することもできます。 期間限定試用版のエントリは、Azure 以外のユーザーが選択できる唯一のリソース グループです。
+4. リソース グループを選択します。 [リソース グループ] ドロップダウンには、Custom Vision Service リソースを含むすべての Azure リソース グループが表示されます。 __期間限定試用版__ を選択することもできます。 期間限定試用版のエントリは、Azure 以外のユーザーが選択できる唯一のリソース グループです。
 
     プロジェクトを作成するには、__[プロジェクトの作成]__ を選択します。
 
@@ -111,7 +111,7 @@ Custom Vision Service を使用するには、最初に分類器を構築する�
 
 ![[トレーニング] ボタンは、ブラウザー ウィンドウの右上付近にあります。](./media/getting-started-build-a-classifier/train02.png)
 
-トレーニング後、__パフォーマンス__が表示されます。 精度と再現率のインジケーターでは、自動テストに基づいて、分類器がどの程度適しているかがわかります。 Custom Vision Service は、トレーニング用に送信した画像を使用して、[K-分割交差検証](https://en.wikipedia.org/wiki/Cross-validation_(statistics))と呼ばれるプロセスを使用することにより、これらの数値を計算します。
+トレーニング後、__パフォーマンス__ が表示されます。 精度と再現率のインジケーターでは、自動テストに基づいて、分類器がどの程度適しているかがわかります。 Custom Vision Service は、トレーニング用に送信した画像を使用して、[K-分割交差検証](https://en.wikipedia.org/wiki/Cross-validation_(statistics))と呼ばれるプロセスを使用することにより、これらの数値を計算します。
 
 ![トレーニング結果には、全体的な精度および再現率と、分類器のタグごとの精度および再現率が表示されます。](./media/getting-started-build-a-classifier/train03.png)
 
