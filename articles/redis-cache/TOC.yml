@@ -69,7 +69,7 @@ items:
       href: cache-aspnet-session-state-provider.md
     - name: 出力キャッシュ プロバイダー
       href: cache-aspnet-output-cache-provider.md
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: Azure Portal での構成
       href: cache-configure.md
@@ -117,7 +117,7 @@ items:
     href: http://redis.io/clients
   - name: Redis コマンド
     href: http://redis.io/commands#
-  - name: REST ()
+  - name: REST
     href: https://docs.microsoft.com/rest/api/redis/
 - name: リソース
   items:
