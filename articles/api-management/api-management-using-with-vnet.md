@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: a74d91ad986b606a36a8040ac849e7fcbec03f16
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: c94d4d4beea22e68a581cd208a25f915e4217614
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093194"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48870878"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページに記載されている情報をご覧ください。
@@ -106,18 +106,21 @@ API Management サービスを Virtual Network にデプロイするときに発
 
 API Management サービス インスタンスが VNET でホストされている場合は、次の表のポートが使用されます。
 
-| ソース / ターゲット ポート | 方向 | トランスポート プロトコル | ソース / ターゲット | 目的 ( * ) | 仮想ネットワークの種類 |
-| --- | --- | --- | --- | --- | --- |
-| * / 80, 443 |受信 |TCP |INTERNET / VIRTUAL_NETWORK|API Management へのクライアント通信|外部 |
-| * / 3443 |受信 |TCP |INTERNET / VIRTUAL_NETWORK|Azure Portal と Powershell 用の管理エンドポイント |外部 / 内部 |
-| * / 80, 443 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|**Azure Storage、Azure Service Bus、Azure Active Directory への依存関係** (該当する場合)。|外部 / 内部 |
-| * / 1433 |送信 |TCP |VIRTUAL_NETWORK / SQL|**Azure SQL エンドポイントへのアクセス** |外部 / 内部 |
-| * / 5672 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|Event Hub へのログ ポリシーおよび監視エージェントの依存関係 |外部 / 内部 |
-| * / 445 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|GIT のための Azure ファイル共有への依存関係 |外部 / 内部 |
-| * / 1886 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|正常性の状態を Resource Health に公開するために必要 |外部 / 内部 |
-| * / 25028 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|電子メールを送信するために SMTP リレーに接続する |外部 / 内部 |
-| * / 6381 - 6383 |受信および送信 |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Role インスタンス間での Redis Cache インスタンスへのアクセス |外部 / 内部 |
-| * / * | 受信 |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure インフラストラクチャの Load Balancer |外部 / 内部 |
+| ソース / ターゲット ポート | 方向          | トランスポート プロトコル | ソース / ターゲット                  | 目的 ( * )                                                 | 仮想ネットワークの種類 |
+|------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
+| * / 80, 443                  | 受信            | TCP                | INTERNET / VIRTUAL_NETWORK            | API Management へのクライアント通信                      | 外部             |
+| * / 3443                     | 受信            | TCP                | APIMANAGEMENT / VIRTUAL_NETWORK       | Azure Portal と Powershell 用の管理エンドポイント         | 外部 / 内部  |
+| * / 80, 443                  | 送信           | TCP                | VIRTUAL_NETWORK / Storage             | **Azure Storage への依存関係**                             | 外部 / 内部  |
+| * / 80, 443                  | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | Azure Active Directory (該当する場合)                   | 外部 / 内部  |
+| * / 1433                     | 送信           | TCP                | VIRTUAL_NETWORK / SQL                 | **Azure SQL エンドポイントへのアクセス**                           | 外部 / 内部  |
+| * / 5672                     | 送信           | TCP                | VIRTUAL_NETWORK / EventHub            | Event Hub へのログ ポリシーおよび監視エージェントの依存関係 | 外部 / 内部  |
+| * / 445                      | 送信           | TCP                | VIRTUAL_NETWORK / Storage             | GIT のための Azure ファイル共有への依存関係                      | 外部 / 内部  |
+| * / 1886                     | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | 正常性の状態を Resource Health に公開するために必要          | 外部 / 内部  |
+| * / 25                       | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | 電子メールを送信するために SMTP リレーに接続する                    | 外部 / 内部  |
+| * / 587                      | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | 電子メールを送信するために SMTP リレーに接続する                    | 外部 / 内部  |
+| * / 25028                    | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | 電子メールを送信するために SMTP リレーに接続する                    | 外部 / 内部  |
+| * / 6381 - 6383              | 受信および送信 | TCP                | VIRTUAL_NETWORK / VIRTUAL_NETWORK     | Role インスタンス間での Redis Cache インスタンスへのアクセス          | 外部 / 内部  |
+| * / *                        | 受信            | TCP                | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK | Azure インフラストラクチャの Load Balancer                          | 外部 / 内部  |
 
 >[!IMPORTANT]
 > "*目的*" が**太字**になっているポートは、API Management サービスの正常なデプロイを必要とします。 ただし、その他のポートをブロックすると、実行中のサービスの使用と監視を行う能力が低下します。
@@ -128,11 +131,15 @@ API Management サービス インスタンスが VNET でホストされてい�
 
 * **メトリックと正常性の監視**: Azure Monitoring エンドポイントへの発信ネットワーク接続、次のドメインで解決されます: 
 
-    | Azure 環境 | エンドポイント |
-    | --- | --- |
-    | Azure Public | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li></ul> |
-    | Azure Government | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul> |
-    | Azure China | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul> |
+    | Azure 環境 | エンドポイント                                                                                                                                                                                                                                                                                                                                                              |
+    |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    | Azure Public      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`East US 2` が eastus2.warm.ingestion.msftcloudes.com である `azure region`.warm.ingestion.msftcloudes.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
+
+* **SMTP リレー**: SMTP リレー用の発信ネットワーク接続。`ies.global.microsoft.com` ホストで解決されます。
+
+* **Azure portal 診断**: 仮想ネットワーク内から API Management 拡張機能を使用しているときに、Azure portal から診断ログのフローを有効にするには、ポート 443 での `dc.services.visualstudio.com` への送信アクセスが必要です。 これは、拡張機能の使用時に発生する可能性がある問題のトラブルシューティングに役立ちます。
 
 * **Express Route セットアップ**: 顧客の一般的な構成として、発信インターネット トラフィックを強制的にオンプレミスにフローさせる独自の既定のルート (0.0.0.0/0) を定義します。 このトラフィック フローでは、Azure API Management を使用した接続は必ず切断されます。これは、発信トラフィックがオンプレミスでブロックされるか、さまざまな Azure エンドポイントで有効ではなくなった、認識できないアドレス セットに NAT 処理されることが原因です。 解決策は、Azure API Management を含むサブネット上で 1 つ (以上) のユーザー定義ルート ([UDR][UDRs]) を定義することです。 UDR は、既定のルートに優先するサブネット固有のルートを定義します。
   可能であれば、次の構成を使用することをお勧めします。
@@ -159,8 +166,6 @@ API Management サービス インスタンスが VNET でホストされてい�
 
 * **リソース ナビゲーション リンク**: Resource Manager スタイルの VNET サブネットにデプロイすると、API Management は、リソース ナビゲーション リンクを作成することでサブネットを予約します。 サブネットに別のプロバイダーのリソースが既に含まれている場合、デプロイは**失敗**します。 同様に、API Management サービスを別のサブネットに 移動するか削除すると、そのリソース ナビゲーション リンクが削除されます。
 
-* **Azure portal からの API のテスト**: Azure portal と API Management インスタンスからの API のテストが内部 VNet と統合されている場合は、VNet に構成されている DNS サーバーが名前解決に使用されます。 Azure portal からテストするときに 404 が表示される場合は、VNet の DNS サーバーが、API Management インスタンスのホスト名を正しく解決できることをご確認ください。 
-
 ## <a name="subnet-size"></a>サブネットのサイズ要件
 Azure は、各サブネット内で一部の IP アドレスを予約し、これらのアドレスを使用することはできません。 サブネットの最初と最後の IP アドレスは、Azure サービスで使用される 3 つ以上のアドレスと共に、プロトコル準拠に予約されます。 詳細については、「 [これらのサブネット内の IP アドレスの使用に関する制限はありますか](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)
 
@@ -186,6 +191,7 @@ Azure VNET インフラストラクチャによって使用される IP アド�
 * [異なるデプロイ モデルの Virtual Network を PowerShell を使用して接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Azure API Management で API Inspector を使用して呼び出しをトレースする方法](api-management-howto-api-inspector.md)
 * [仮想ネットワークに関する FAQ](../virtual-network/virtual-networks-faq.md)
+* [サービス タグ](../virtual-network/security-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-type.png

@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 10/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 32f93f383ec4044afb0696fcef1705c9ed65d673
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f79fa096484edc34294ea0a69584e12788dba647
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38578919"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043399"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Event Grid スキーマへのカスタム フィールドのマップ
 
@@ -43,9 +43,9 @@ ms.locfileid: "38578919"
 
 * `--input-schema` パラメーターでは、スキーマの種類を指定します。 指定可能なオプションは、*cloudeventv01schema*、*customeventschema*、*eventgridschema* です。 既定値は eventgridschema です。 カスタム スキーマと Event Grid スキーマの間のカスタム マッピングを作成する場合は、customeventschema を使用します。 イベントが CloudEvents スキーマの場合は、cloudeventv01schema を使用します。
 
-* `--input-mapping-default-values` パラメーターでは、Event Grid スキーマのフィールドの既定値を指定します。 *subject*、*eventtype*、*dataversion* の既定値を設定できます。 通常、これらの 3 つのフィールドのいずれかに対応するフィールドがカスタム スキーマに含まれていない場合に、このパラメーターを使用します。 たとえば、dataversion が常に **1.0** に設定されるように指定できます。
+* `--input-mapping-default-values` パラメーターでは、Event Grid スキーマのフィールドの既定値を指定します。 `subject`、`eventtype`、および `dataversion` の既定値を指定できます。 通常、これらの 3 つのフィールドのいずれかに対応するフィールドがカスタム スキーマに含まれていない場合に、このパラメーターを使用します。 たとえば、dataversion が常に **1.0** に設定されるように指定できます。
 
-* `--input-mapping-fields` パラメーターでは、カスタム スキーマのフィールドを Event Grid スキーマにマップします。 値はスペースで区切ったキー/値のペアで指定します。 キー名には、Event Grid フィールドの名前を使用します。 値には、カスタム フィールドの名前を使用します。 キー名には、*id*、*topic*、*eventtime*、*subject*、*eventtype*、*dataversion* を使用できます。
+* `--input-mapping-fields` パラメーターでは、カスタム スキーマのフィールドを Event Grid スキーマにマップします。 値はスペースで区切ったキー/値のペアで指定します。 キー名には、Event Grid フィールドの名前を使用します。 値には、カスタム フィールドの名前を使用します。 `id`、`topic`、`eventtime`、`subject`、`eventtype`、および `dataversion` ではキー名を使用できます。
 
 次の例では、マッピングされたフィールドと既定のフィールドが含まれるカスタム トピックを作成します。
 
@@ -58,7 +58,7 @@ az eventgrid topic create \
   -n demotopic \
   -l eastus2 \
   -g myResourceGroup \
-  --input-schema customeventschema
+  --input-schema customeventschema \
   --input-mapping-fields eventType=myEventTypeField \
   --input-mapping-default-values subject=DefaultSubject dataVersion=1.0
 ```
@@ -69,13 +69,14 @@ az eventgrid topic create \
 
 このセクションの例では、イベント ハンドラーに Queue Storage を使用しています。 詳細については、[Azure Queue Storage へのカスタム イベントのルーティング](custom-event-to-queue-storage.md)に関するページを参照してください。
 
-次の例では、Event Grid トピックをサブスクライブし、既定の Event Grid スキーマを使用します。
+次の例では、Event Grid トピックをサブスクライブし、Event Grid スキーマを使用します。
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
   --topic-name demotopic \
   -g myResourceGroup \
   --name eventsub1 \
+  --event-delivery-schema eventgridschema \
   --endpoint-type storagequeue \
   --endpoint <storage-queue-url>
 ```
@@ -100,9 +101,9 @@ az eventgrid event-subscription create \
 endpoint=$(az eventgrid topic show --name demotopic -g myResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name demotopic -g myResourceGroup --query "key1" --output tsv)
 
-body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/mapeventfields.json)'")
+event='[ { "myEventTypeField":"Created", "resource":"Users/example/Messages/1000", "resourceData":{"someDataField1":"SomeDataFieldValue"} } ]'
 
-curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
 それでは、Queue Storage を確認してください。 2 つのサブスクリプションで異なるスキーマを使ってイベントが配信されています。

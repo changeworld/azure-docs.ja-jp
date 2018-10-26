@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: deguhath
-ms.openlocfilehash: 6178c4a55d24bb37aae787129c9a0d390a2e536b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 192af40df3a8bc0545c9c3a86792e7eb8cb31de9
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226228"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586106"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。 構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
@@ -28,7 +28,7 @@ ms.locfileid: "39226228"
 この手順は、 [Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) ワークフローに従っています。 データ サイエンス環境のセットアップ方法、SQL DW にデータを読み込む方法、SQL DW または IPython Notebook を使用してデータを探索し、特徴をエンジニアリングする方法について説明します。 次に、Azure Machine Learning でのモデルのビルドとデプロイ方法について説明します。
 
 ## <a name="dataset"></a>NYC タクシー乗車データセット
-NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) で構成されており、ファイルには 1 億 7300 万以上の個々の乗車と、各乗車に対して支払われた料金が記録されています。 各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、およびメダリオン (タクシーの一意の ID) 番号が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
+NYC タクシー乗車データは、約 20 GB の圧縮された CSV ファイル (非圧縮では最大 48 GB) で構成されており、ファイルには 1 億 7300 万以上の個々の乗車と、各乗車に対して支払われた料金が記録されています。 各乗車レコードには、乗車と降車の場所と時間、匿名化されたタクシー運転手の (運転) 免許番号、メダリオン (タクシーの一意の ID) 番号が含まれています。 データには 2013 年のすべての乗車が含まれ、データは月ごとに次の 2 つのデータセットに用意されています。
 
 1. **trip_data.csv** ファイルには、乗車の詳細 (乗客数、乗車地点、降車地点、乗車時間、乗車距離など) が含まれています。 いくつかのサンプル レコードを次に示します。
    

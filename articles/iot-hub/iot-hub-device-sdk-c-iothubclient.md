@@ -2,22 +2,22 @@
 title: C 用 Azure IoT device SDK – IoTHubClient | Microsoft Docs
 description: C 用 Azure IoT device SDK で IoTHubClient ライブラリを使用し、IoT Hub と通信するデバイス アプリを作成する方法。
 author: yzhong94
-manager: arjmands
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
-ms.openlocfilehash: 4ff4e8b9c6121366bf06eb8613b6d53667eeaca9
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 4c4ff981560fc4025c6bf782df71e648a1356c3f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35756449"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248144"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>C 用 Azure IoT device SDK – IoTHubClient の詳細
-本シリーズの[最初の記事](iot-hub-device-sdk-c-intro.md)で、**C 用 Azure IoT device SDK** を紹介しました。その記事では、SDK に 2 つのアーキテクチャの層が存在することを説明しました。 その基礎となるのが、IoT Hub との通信を直接管理する **IoTHubClient** ライブラリです。 これを土台にしシリアル化サービスを提供する **serializer** ライブラリもあります。 この記事では、 **IoTHubClient** ライブラリについてさらに詳しく説明します。
+
+「[C 用 Azure IoT device SDK](iot-hub-device-sdk-c-intro.md)」は、本シリーズの最初の記事で、**C 用 Azure IoT device SDK** を紹介しました。その記事では、SDK に 2 つのアーキテクチャの層が存在することを説明しました。 その基礎となるのが、IoT Hub との通信を直接管理する **IoTHubClient** ライブラリです。 これを土台にしシリアル化サービスを提供する **serializer** ライブラリもあります。 この記事では、**IoTHubClient** ライブラリについてさらに詳しく説明します。
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -30,54 +30,55 @@ ms.locfileid: "35756449"
 [**C 用 Azure IoT device SDK**](https://github.com/Azure/azure-iot-sdk-c) は GitHub リポジトリから入手でき、API の詳細は [C API リファレンス](https://azure.github.io/azure-iot-sdk-c/index.html)に関するページで確認できます。
 
 ## <a name="the-lower-level-apis"></a>下位レベルの API
+
 前の記事では、**iothub\_client\_sample\_amqp** アプリケーションのコンテキスト内の **IotHubClient** の基本的な操作を説明しました。 たとえば、次のコードを使用してライブラリを初期化する方法について説明しました。
 
-```
+```C
 IOTHUB_CLIENT_HANDLE iotHubClientHandle;
 iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
 ```
 
 次の関数呼び出しを使用してイベントを送信する方法についても説明しました。
 
-```
+```C
 IoTHubClient_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message);
 ```
 
 この記事では、コールバック関数を登録することでメッセージを受信する方法についても説明しました。
 
-```
+```C
 int receiveContext = 0;
 IoTHubClient_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext);
 ```
 
 この記事では、次のようなコードを使用してリソースを解放する方法も示しました。
 
-```
+```C
 IoTHubClient_Destroy(iotHubClientHandle);
 ```
 
-ただし、これらの API にはそれぞれ次のコンパニオン関数があります。
+これらの API にはそれぞれ次のコンパニオン関数があります。
 
 * IoTHubClient\_LL\_CreateFromConnectionString
 * IoTHubClient\_LL\_SendEventAsync
 * IoTHubClient\_LL\_SetMessageCallback
 * IoTHubClient\_LL\_Destroy
 
-これらの関数の API 名にはすべて "LL" が使用されています。 それ以外は、これらの各関数のパラメーターは、LL が付いていないその対応するものと同じです。 ただし、これらの関数の動作は、1 つの重要な点で異なります。
+これらの関数の API 名にはすべて **LL** が使用されています。 名前の **LL**の部分以外は、これらの各関数のパラメーターは、LL が付いていないその対応するものと同じです。 ただし、これらの関数の動作は、1 つの重要な点で異なります。
 
-**IoTHubClient\_CreateFromConnectionString** を呼び出すと、基になるライブラリは、バックグラウンドで実行される新しいスレッドを作成します。 このスレッドは、IoT Hub にイベントを送信し、IoT Hub ハブからメッセージを受信します。 "LL" API を使用するときは、このようなスレッドは作成されません。 バックグラウンド スレッドが作成されるのは、開発者にとって便利です。 IoT Hub とのイベントの送信とメッセージの受信を明示的に実行することについて心配する必要はありません。自動的にバックグラウンドで実行されます。 これに対して、"LL" API では、必要に応じて IoT Hub との通信を明示的に制御することができます。
+**IoTHubClient\_CreateFromConnectionString** を呼び出すと、基になるライブラリは、バックグラウンドで実行される新しいスレッドを作成します。 このスレッドは、IoT Hub にイベントを送信し、IoT Hub ハブからメッセージを受信します。 **LL** API を使用するときは、このようなスレッドは作成されません。 バックグラウンド スレッドが作成されるのは、開発者にとって便利です。 IoT Hub とのイベントの送信とメッセージの受信を明示的に実行することについて心配する必要はありません。自動的にバックグラウンドで実行されます。 これに対して、**LL** API では、必要に応じて IoT Hub との通信を明示的に制御することができます。
 
-理解を深めるために、例を確認してみましょう。
+この概念の理解を深めるために、例を確認してみましょう。
 
 **IoTHubClient\_SendEventAsync** を呼び出したとき、実際に実行されるのは、バッファー内へのイベントの配置です。 **IoTHubClient\_CreateFromConnectionString** を呼び出したときに作成されたバックグラウンド スレッドは、このバッファーを監視し続け、このバッファーに含まれるすべてのデータを IoT Hub に送信します。 これは、メイン スレッドが他の作業を実行しているときに同時にバックグラウンドで実行されます。
 
 **IoTHubClient\_SetMessageCallback** を使用してメッセージのコールバック関数を登録するときと同様に、メッセージを受信したときに、メイン スレッドから独立して、バックグラウンド スレッドからコールバック関数を呼び出すよう SDK に指示することになります。
 
-"LL" API では、バックグラウンド スレッドは作成されません。 代わりに、新しい API を呼び出し、明示的にデータを送信して IoT Hub からデータを受信する必要があります。 これを次の例に示します。
+**LL** API では、バックグラウンド スレッドは作成されません。 代わりに、新しい API を呼び出し、明示的にデータを送信して IoT Hub からデータを受信する必要があります。 これを次の例に示します。
 
 SDK に含まれる **iothub\_client\_sample\_http** アプリケーションは、下位レベルの API の例を示しています。 そのサンプルでは、次のようなコードを使用して、イベントを IoT Hub に送信します。
 
-```
+```C
 EVENT_INSTANCE message;
 sprintf_s(msgText, sizeof(msgText), "Message_%d_From_IoTHubClient_LL_Over_HTTP", i);
 message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)msgText, strlen(msgText));
@@ -85,9 +86,9 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-最初の 3 行でメッセージを作成して、最後の 1 行でイベントを送信します。 ただし、先ほど説明したように、イベントの "送信" は、データが単にバッファーに配置されることを意味します。 **IoTHubClient\_LL\_SendEventAsync** を呼び出しても、ネットワークには何も転送されません。 実際にデータを IoT Hub に入力するには、次の例のように **IoTHubClient\_LL\_DoWork** を呼び出す必要があります。
+最初の 3 行でメッセージを作成して、最後の 1 行でイベントを送信します。 ただし、先ほど説明したように、イベントの送信は、データが単にバッファーに配置されることを意味します。 **IoTHubClient\_LL\_SendEventAsync** を呼び出しても、ネットワークには何も転送されません。 実際にデータを IoT Hub に入力するには、次の例のように **IoTHubClient\_LL\_DoWork** を呼び出す必要があります。
 
-```
+```C
 while (1)
 {
     IoTHubClient_LL_DoWork(iotHubClientHandle);
@@ -97,13 +98,13 @@ while (1)
 
 (**iothub\_client\_sample\_http** アプリケーションの) このコードは、**IoTHubClient\_LL\_DoWork** を繰り返し呼び出します。 **IoTHubClient\_LL\_DoWork** を呼び出すたびに、バッファーから IoT Hub にいくつかのイベントが送信され、キューに登録されているデバイスへの送信対象のメッセージが取得されます。 後者では、メッセージのコールバック関数が登録されている場合、(メッセージがキューに登録されていれば) そのコールバック関数が呼び出されます。 次のようなコードを使用して、そのようなコールバック関数を登録しています。
 
-```
+```C
 IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext)
 ```
 
 **IoTHubClient\_LL\_DoWork** が多くの場合ループ処理で呼び出される理由は、呼び出されるたびに、バッファリングされた*いくつかの*イベントを IoT Hub に送信し、キューに登録された*次の*デバイス用メッセージを取得するためです。 呼び出すたびに、バッファリングされたすべてのイベントが送信され、キューに登録されたすべてのメッセージが取得されるという保証はありません。 バッファー内のすべてのイベントを送信してから他の処理を続けるには、前のループ処理を次のようなコードで置き換えます。
 
-```
+```C
 IOTHUB_CLIENT_STATUS status;
 
 while ((IoTHubClient_LL_GetSendStatus(iotHubClientHandle, &status) == IOTHUB_CLIENT_OK) && (status == IOTHUB_CLIENT_SEND_STATUS_BUSY))
@@ -117,7 +118,7 @@ while ((IoTHubClient_LL_GetSendStatus(iotHubClientHandle, &status) == IOTHUB_CLI
 
 イベントの入力とメッセージの受信が完了したら、該当する関数を必ず呼び出してリソースをクリーンアップしてください。
 
-```
+```C
 IoTHubClient_LL_Destroy(iotHubClientHandle);
 ```
 
@@ -135,9 +136,10 @@ IoTHubClient_LL_Destroy(iotHubClientHandle);
 C 用 Azure IoT device SDK における下位レベルの API の完全な例は **iothub\_client\_sample\_http** アプリケーションで確認してください。 **iothub\_client\_sample\_amqp** アプリケーションでは、LL でない API の完全な例について参照できます。
 
 ## <a name="property-handling"></a>プロパティの処理
+
 これまでデータ送信の説明の際は、メッセージの本文に言及してきました。 たとえば、次のコードを検討してみましょう。
 
-```
+```C
 EVENT_INSTANCE message;
 sprintf_s(msgText, sizeof(msgText), "Hello World");
 message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)msgText, strlen(msgText));
@@ -146,7 +148,7 @@ IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendCo
 
 この例では、テキスト "Hello World" を使用して IoT Hub にメッセージを送信します。 ただし、IoT Hub では、各メッセージにプロパティを添付することもできます。 プロパティは、名前と値のペアのことで、メッセージに添付することができます。 たとえば、前のコードを変更して、メッセージにプロパティを添付することができます。
 
-```
+```C
 MAP_HANDLE propMap = IoTHubMessage_Properties(message.messageHandle);
 sprintf_s(propText, sizeof(propText), "%d", i);
 Map_AddOrUpdate(propMap, "SequenceNumber", propText);
@@ -158,7 +160,7 @@ Map_AddOrUpdate(propMap, "SequenceNumber", propText);
 
 前の例では、IoT Hub に送信するイベントにプロパティを添付しています。 プロパティは IoT Hub から受信するメッセージに添付することもできます。 メッセージからプロパティを取得する必要がある場合は、メッセージのコールバック関数で次のようなコードを使用できます。
 
-```
+```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
 {
     . . .
@@ -193,9 +195,10 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 アプリケーションでプロパティを使用する必要はありません。 ただし、イベントに設定したりメッセージから取得したりする必要がある場合は、 **IoTHubClient** ライブラリを使用すると簡単に実行できます。
 
 ## <a name="message-handling"></a>メッセージの処理
+
 前に説明したように、IoT Hub からメッセージが到着すると、 **IoTHubClient** ライブラリが登録済みのコールバック関数を呼び出すことで応答します。 この関数には追加で説明する必要がある戻り値のパラメーターがあります。 次に、**iothub\_client\_sample\_http** サンプル アプリケーション内のコールバック関数の抜粋を示します。
 
-```
+```C
 static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HANDLE message, void* userContextCallback)
 {
     . . .
@@ -206,7 +209,9 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 戻り値の型が **IOTHUBMESSAGE\_DISPOSITION\_RESULT** であり、この場合は **IOTHUBMESSAGE\_ACCEPTED** を返すことに注目してください。 **IoTHubClient** ライブラリがメッセージのコールバックに対する反応を変える、この関数から返すことができる値が他にもあります。 返される値は次のとおりです。
 
 * **IOTHUBMESSAGE\_ACCEPTED**: メッセージが正常に処理されました。 **IoTHubClient** ライブラリは、同じメッセージでコールバック関数を再度呼び出すことはありません。
+
 * **IOTHUBMESSAGE\_REJECTED**: メッセージは処理されませんでした。今後これが実行される可能性はありません。 **IoTHubClient** ライブラリは、同じメッセージでコールバック関数を再度呼び出すことはありません。
+
 * **IOTHUBMESSAGE\_ABANDONED**: メッセージが正常に処理されませんでしたが、同じメッセージを使用して **IoTHubClient** ライブラリはもう一度コールバック関数を呼び出す必要があります。
 
 最初の 2 つのリターン コードでは、 **IoTHubClient** ライブラリが、メッセージをデバイスのキューから削除して、再度配信されないようにする必要があることを示すメッセージを IoT Hub に送信します。 実質的な効果は同じ (デバイスのキューからメッセージを削除する) ですが、メッセージが受け入れられるか拒否するかも記録されます。  この違いを記録することは、メッセージの送信側がフィードバックに注目し、デバイスが特定のメッセージを受け入れるか拒否するかを調べる際に役立ちます。
@@ -216,16 +221,17 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 いずれの場合も、 **IoTHubClient** ライブラリから目的の動作を導き出せるように、さまざまなリターン コードがあることのみ知っておいてください。
 
 ## <a name="alternate-device-credentials"></a>代替デバイスの資格情報
+
 前に説明したように、**IoTHubClient** ライブラリを使用するときに最初に実行する必要があるのは、次のように、呼び出しで **IOTHUB\_CLIENT\_HANDLE** を取得することです。
 
-```
+```C
 IOTHUB_CLIENT_HANDLE iotHubClientHandle;
 iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, AMQP_Protocol);
 ```
 
 **IoTHubClient\_CreateFromConnectionString** の引数は、デバイスの接続文字列と、IoT Hub との通信に使用するプロトコルを示すパラメーターです。 デバイスの接続文字列の形式は次のとおりです。
 
-```
+```C
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
@@ -233,7 +239,7 @@ HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSK
 
 **IoTHubClient\_CreateFromConnectionString** は、ライブラリを初期化する方法の 1 つです。 必要に応じて、デバイスの接続文字列ではなくこれらの個々のパラメーターを使用して、新しい **IOTHUB\_CLIENT\_HANDLE** を作成できます。 これは次のコードで実現します。
 
-```
+```C
 IOTHUB_CLIENT_CONFIG iotHubClientConfig;
 iotHubClientConfig.iotHubName = "";
 iotHubClientConfig.deviceId = "";
@@ -248,9 +254,10 @@ IOTHUB_CLIENT_HANDLE iotHubClientHandle = IoTHubClient_LL_Create(&iotHubClientCo
 このような冗長な初期化方法ではなく、**IoTHubClient\_CreateFromConnectionString** を使用しようと考えるのは当然のことと言えます。 ただし、IoT Hub にデバイスを登録するときに取得するのは、(接続文字列ではなく) デバイス ID とデバイス キーであることを留意してください。 [前の記事](iot-hub-device-sdk-c-intro.md)で紹介されている*デバイス エクスプローラー* SDK ツールは、**Azure IoT サービス SDK** のライブラリを使用して、デバイス ID、デバイス キー、IoT Hub ホスト名からデバイスの接続文字列を作成します。 そのため、**IoTHubClient\_LL\_Create** の呼び出しは、接続文字列を生成する手順を省略できるという理由で好まれる可能性があります。 いずれかの便利な方法を使用してください。
 
 ## <a name="configuration-options"></a>構成オプション
+
 これまでに説明した **IoTHubClient** ライブラリの動作にはすべて、その既定の動作が反映されています。 このライブラリの動作を変更するために設定できるオプションがいくつかあります。 これは、**IoTHubClient\_LL\_SetOption** API を利用することで実行されます。 次の例を考えてみましょう。
 
-```
+```C
 unsigned int timeout = 30000;
 IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 ```
@@ -258,19 +265,15 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 よく使用されるオプションがいくつかあります。
 
 * **SetBatching** (ブール値): **true** の場合、IoT Hub に送信されるデータはバッチで送信されます。 **false** の場合は、メッセージは個別に送信されます。 既定値は **false** です。 **SetBatching** オプションが適用されるのは HTTPS プロトコルだけであることに注意してください。AMQP プロトコルや MQTT プロトコルには適用されません。
+
 * **Timeout** (符号なし整数): この値はミリ秒単位で表現されます。 HTTPS 要求の送信や応答の受信にこの時間より長くかかる場合は、接続がタイムアウトします。
 
 バッチ処理オプションは重要です。 既定では、このライブラリはイベントを個別に入力します (**IoTHubClient\_LL\_SendEventAsync** に渡したものが 1 つのイベントになります)。 バッチ処理オプションが **true**の場合、ライブラリはバッファーから可能な限りの (IoT Hub が許容する最大メッセージ サイズまでの) イベントを収集します。  イベントのバッチは、(個々のイベントが JSON 配列にまとめられて) 単一の HTTPS 呼び出しで IoT Hub に送信されます。 バッチ処理を有効にすると、通常はネットワーク ラウンドトリップが減少するため、パフォーマンスの大幅な向上につながります。 個別の各イベントの一連のヘッダーではなく、イベント バッチで一連の HTTPS ヘッダーが送信されるため、帯域幅が大幅に削減されます。 それ以外の方法で実行する特別な理由がない限り、一般的にバッチ処理を有効にします。
 
 ## <a name="next-steps"></a>次の手順
-この記事は、**C 用 Azure IoT device SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。 [次の記事](iot-hub-device-sdk-c-serializer.md) では、 **serializer** ライブラリについて同様に詳細を紹介します。
 
-IoT Hub の開発に関する詳細については、「[Azure IoT SDKs (Azure IoT SDK)][lnk-sdks]」を参照してください。
+この記事は、**C 用 Azure IoT device SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。 このシリーズの 2 番目の記事は「[C 用 Azure IoT device SDK - シリアライザー](iot-hub-device-sdk-c-serializer.md)」です。よく似ている**シリアライザー** ライブラリについて詳しく説明します。
 
-IoT Hub の機能を詳しく調べるには、次のリンクを使用してください。
+IoT Hub 用の開発の詳細については、「[Azure IoT SDK](iot-hub-devguide-sdks.md)」を参照してください。
 
-* [Azure IoT Edge でエッジ デバイスに AI をデプロイする][lnk-iotedge]
-
-[lnk-sdks]: iot-hub-devguide-sdks.md
-
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+IoT Hub の機能の詳細については、「[Azure IoT Edge でエッジ デバイスに AI をデプロイする](../iot-edge/tutorial-simulate-device-linux.md)」を参照してください。

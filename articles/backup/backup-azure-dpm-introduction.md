@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/22/2018
 ms.author: adigan
-ms.openlocfilehash: 873e7066bcf51b32c3a7a54e845ffd5a744f407f
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 2da5b04f56a5746fb77de6bc954bb5971eb4664b
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745437"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48885172"
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>DPM を使用して Azure へのワークロードをバックアップするための準備
 > [!div class="op_single_selector"]
@@ -107,7 +107,7 @@ DPM 用の Azure へのバックアップに関する重要な定義を次に示
 
 ポータルは、コンテナーの名前と現在の日付の組み合わせを使用して、コンテナーの資格情報を生成します。 **[保存]** をクリックして、コンテナーの資格情報をローカル アカウントのダウンロード フォルダーにダウンロードするか、[保存] メニューから [名前を付けて保存] を選択して、保存場所を指定します。 ファイルの生成には最大で 1 分かかります。
 
-### <a name="note"></a>Note
+### <a name="note"></a>注
 * 資格情報コンテナーの資格情報ファイルは、使用するコンピューターからアクセスできる場所に保存してください。 ファイル共有 / SMB に格納されている場合は、アクセス許可を確認します。
 * コンテナーの資格情報ファイルは登録ワークフロー中しか使用されません。
 * コンテナーの資格情報ファイルの有効期限は 48 時間であり、ポータルからダウンロードすることができます。
@@ -131,7 +131,7 @@ Azure Backup コンテナーを作成したら、エージェントを各 Window
 
 6. エージェントがインストールされたら、ウィンドウを **閉じます** 。
 
-   ![閉じます](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
+   ![閉じる](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
 
 7. 資格情報コンテナーに **DPM サーバーを登録する**には、**[管理]** タブで **[オンライン]** をクリックします。 次に、**[登録]** を選択します。 これにより、Register Setup (セットアップの登録) ウィザードが開きます。
 
@@ -170,7 +170,7 @@ Azure Backup コンテナーを作成したら、エージェントを各 Window
 14. Data Protection Manager を使用する場合は、**[管理]** タブで **[オンライン]** を選択して **[構成]** オプションをクリックすることによって、登録ワークフロー時に指定した設定を変更できます。
 
 ## <a name="requirements-and-limitations"></a>要件 (および制限)
-* DPM は、物理サーバーとして、または System Center 2012 SP1 か System Center 2012 R2 にインストールされている Hyper-V 仮想マシンとして実行することができます。 さらに、DPM は、System Center 2012 R2 (少なくとも DPM 2012 R2 更新プログラム ロールアップ 3 が適用されているもの) で実行する Azure 仮想マシンとして、または System Center 2012 R2 (少なくとも更新プログラム ロールアップ 5 が適用されているもの) で実行する VMWare の Windows 仮想マシンとして実行することもできます。
+* DPM は、物理サーバーとして、または System Center 2012 SP1 か System Center 2012 R2 にインストールされている Hyper-V 仮想マシンとして実行することができます。 さらに、DPM は、System Center 2012 R2 (少なくとも DPM 2012 R2 更新プログラム ロールアップ 3 が適用されているもの) で実行する Azure 仮想マシンとして、または System Center 2012 R2 (少なくとも更新プログラム ロールアップ 5 が適用されているもの) で実行する VMware の Windows 仮想マシンとして実行することもできます。
 * DPM を System Center 2012 SP1 で実行する場合は、System Center Data Protection Manager SP1 用の更新プログラム ロールアップ 2 をインストールする必要があります。 この手順は、Azure Backup エージェントをインストールする前に実行する必要があります。
 * DPM サーバーには、Windows PowerShell および .Net Framework 4.5 がインストール済みである必要があります。
 * DPM は、ほとんどのワークロードを Azure Backup にバックアップできます。 サポート対象の詳細な一覧については、次に示す Azure Backup サポートの項目を参照してください。

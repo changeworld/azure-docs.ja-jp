@@ -3,18 +3,17 @@ title: Azure Application Gateway に関してよく寄せられる質問
 description: このページでは、Azure Application Gateway に関してよく寄せられる質問の回答を紹介します
 services: application-gateway
 author: vhorne
-manager: jpconnock
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 9/6/2018
+ms.date: 10/6/2018
 ms.author: victorh
-ms.openlocfilehash: 56c66418b9f47e0ae0d345cd6e8a7d3ef2914b82
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b2a550c902e85caf02f05fcbbe5dd7b02acd0cc
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986678"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48868855"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -26,7 +25,7 @@ Azure Application Gateway は、アプリケーション配信コントローラ
 
 **Q.Application Gateway はどのような機能をサポートしますか?**
 
-Application Gateway は、SSL オフロードとエンド ツー エンド SSL、Web アプリケーション ファイアウォール、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、複数サイトのホスティングなどをサポートします。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
+Application Gateway は、自動スケーリング、SSL オフロードとエンド ツー エンド SSL、Web アプリケーション ファイアウォール、Cookie ベースのセッション アフィニティ、URL パス ベースのルーティング、複数サイトのホスティングなどをサポートします。 サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。
 
 **Q.Application Gateway と Azure Load Balancer の違いは何ですか?**
 
@@ -38,7 +37,7 @@ Application Gateway は、HTTP、HTTPS、HTTP/2、WebSocket をサポートし�
 
 **Q.Application Gateway は HTTP/2 をどのようにサポートしますか?**
 
-HTTP/2 プロトコルのサポートを利用できるのは、Application Gateway リスナーに接続しているクライアントだけです。 バックエンド サーバー プールへの通信は、HTTP/1.1 で行われます。 
+HTTP/2 プロトコルのサポートを利用できるのは、アプリケーション ゲートウェイ リスナーに接続しているクライアントだけです。 バックエンド サーバー プールへの通信は、HTTP/1.1 で行われます。 
 
 既定では、HTTP/2 のサポートは無効になっています。 これを有効にする Azure PowerShell コード スニペットの例を次に示します。
 
@@ -62,7 +61,7 @@ Application Gateway は、お客様の仮想ネットワーク専用のデプロ
 
 **Q.HTTP から HTTPS へのリダイレクトはサポートされていますか?**
 
-リダイレクトはサポートされます。 詳しくは、「[Application Gateway redirect overview](application-gateway-redirect-overview.md)」(Application Gateway のリダイレクトの概要) をご覧ください。
+リダイレクトはサポートされます。 詳しくは、「[Application Gateway のリダイレクトの概要](application-gateway-redirect-overview.md)」をご覧ください。
 
 **Q.リスナーはどのような順序で処理されますか?**
 
@@ -70,34 +69,36 @@ Application Gateway は、お客様の仮想ネットワーク専用のデプロ
 
 **Q.Application Gateway の IP と DNS はどこで確認できますか?**
 
-パブリック IP アドレスをエンドポイントとして使用する場合は、パブリック IP アドレス リソースまたはポータルにある Application Gateway の[概要] ページでこの情報を確認できます。 内部 IP アドレスの場合は、[概要] ページで確認できます。
+パブリック IP アドレスをエンドポイントとして使用する場合は、パブリック IP アドレス リソースまたはポータルにあるアプリケーション ゲートウェイの[概要] ページでこの情報を確認できます。 内部 IP アドレスの場合は、[概要] ページで確認できます。
 
-**Q.IP または DNS は Application Gateway の有効期間内に変更されますか?**
+**Q.IP または DNS 名は Application Gateway の有効期間内に変更されますか?**
 
-お客様が Application Gateway を停止/起動すると、VIP が変更される可能性があります。 Application Gateway に関連付けられた DNS は、Application Gateway のライフサイクル全体を通して変更されません。 そのため、CNAME エイリアスを使用して Application Gateway の DNS アドレスを参照することをお勧めします。
+アプリケーション ゲートウェイが停止され起動されると、VIP が変更される可能性があります。 アプリケーション ゲートウェイに関連付けられた DNS は、そのゲートウェイのライフサイクル全体を通して変更されません。 そのため、CNAME エイリアスを使用してアプリケーション ゲートウェイの DNS アドレスを参照することをお勧めします。
 
 **Q.Application Gateway は静的 IP をサポートしますか?**
 
-いいえ。Application Gateway は、静的パブリック IP アドレスをサポートしませんが、静的内部 IP をサポートします。
+はい、Application Gateway V2 SKU では、静的パブリック IP アドレスがサポートされます。 V1 SKU では、静的内部 IP アドレスがサポートされます。
 
 **Q.Application Gateway は複数のパブリック IP をサポートしますか?**
 
-Application Gateway でサポートされるパブリック IP アドレスは 1 つだけです。
+アプリケーション ゲートウェイでサポートされるパブリック IP アドレスは 1 つだけです。
 
 **Q.Application Gateway のサブネットはどのくらい大きくする必要がありますか?**
 
 Application Gateway は、インスタンスごとに 1 つのプライベート IP アドレスを使用します。さらに、プライベート フロントエンド IP 構成を使用している場合は、もう 1 つのプライベート IP アドレスを使用します。 また、Azure は、内部使用のために、各サブネットの最初の 4 個の IP アドレスと最後の IP アドレスを予約しています。
-たとえば、Application Gateway が 3 つのインスタンスに設定され、プライベート フロントエンド IP が設定されていない場合は、/29 サブネット サイズ以上が必要です。 この場合、Application Gateway は 3 つの IP アドレスを使用します。 プライベート フロントエンド IP 構成用に 3 つのインスタンスと 1 つの IP アドレスがある場合は、4 つの IP アドレスが必要なため、/28 サブネット以上のサイズが必要です。
+たとえば、アプリケーション ゲートウェイが 3 つのインスタンスに設定され、プライベート フロントエンド IP が設定されていない場合は、/29 サブネット サイズ以上が必要です。 この場合、アプリケーション ゲートウェイは 3 つの IP アドレスを使用します。 プライベート フロントエンド IP 構成用に 3 つのインスタンスと 1 つの IP アドレスがある場合は、4 つの IP アドレスが必要なため、/28 サブネット以上のサイズが必要です。
 
 **Q.Application Gateway は x-forwarded-for ヘッダーをサポートしますか?**
 
-はい。Application Gateway は、バックエンドに転送される要求に x-forwarded-for、x-forwarded-proto、および x-forwarded-port ヘッダーを挿入します。 x-forwarded-for ヘッダーの形式は、"IP:ポート" のコンマ区切りリストです。 x-forwarded-proto の有効な値は http または https です。 x-forwarded-port は、要求が Application Gateway に到達するポートを指定します。
+はい。Application Gateway は、バックエンドに転送される要求に x-forwarded-for、x-forwarded-proto、および x-forwarded-port ヘッダーを挿入します。 x-forwarded-for ヘッダーの形式は、"IP:ポート" のコンマ区切りリストです。 x-forwarded-proto の有効な値は http または https です。 x-forwarded-port は、要求がアプリケーション ゲートウェイに到達するポートを指定します。
 
 Application Gateway は、要求が到達した元の Host ヘッダーを含む X-Original-Host ヘッダーも挿入します。 このヘッダーは、トラフィックがバックエンドにルーティングされる前に受信ホスト ヘッダーが変更される、Azure Web サイト統合などのシナリオで役立ちます。
 
 **Q.Application Gateway のデプロイにはどのくらい時間がかかりますか?更新中にも Application Gateway は動作しますか?**
 
-新しい Application Gateway のデプロイには、プロビジョニングに最大 20 分かかります。 インスタンス サイズ/数の変更は中断を伴わず、ゲートウェイはこの時間にはアクティブなままです。
+新しい Application Gateway V1 SKU のデプロイでは、プロビジョニングに最大 20 分かかります。 インスタンス サイズ/数の変更は中断を伴わず、ゲートウェイはこの時間にはアクティブなままです。
+
+V2 SKU のデプロイは、プロビジョニングに約 5 分から 6 分かかります。
 
 ## <a name="configuration"></a>構成
 
@@ -109,15 +110,15 @@ Application Gateway は、要求が到達した元の Host ヘッダーを含む
 
 Application Gateway は IP 接続がある限り、仮想ネットワークの外部にあるインスタンスと通信できます。 内部 IP をバックエンド プールのメンバーとして使用する場合は、[VNET ピアリング](../virtual-network/virtual-network-peering-overview.md)または [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) が必要です。
 
-**Q.Application Gateway サブネット内に何か他にデプロイできるものはありますか?**
+**Q.アプリケーション ゲートウェイ サブネット内に何か他にデプロイできるものはありますか?**
 
 いいえ。ただし、サブネット内に他のアプリケーション ゲートウェイをデプロイすることはできます。
 
-**Q.ネットワーク セキュリティ グループは Application Gateway サブネットでサポートされますか?**
+**Q.ネットワーク セキュリティ グループはアプリケーション ゲートウェイ サブネットでサポートされますか?**
 
-ネットワーク セキュリティ グループは Application Gateway サブネットでサポートされますが、次の制約があります。
+ネットワーク セキュリティ グループはアプリケーション ゲートウェイ サブネットでサポートされますが、次の制約があります。
 
-* ポート 65503 から 65534 への着信トラフィックに対して例外を設定する必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 対象のゲートウェイの顧客を含め、適切な証明書を持たない外部エンティティは、これらのエンドポイントに対する変更を開始することはできません。
+* Application Gateway V1 SKU ではポート 65503 から 65534 の、V2 SKU ではポート 65200 から 65535 の受信トラフィックを例外にする必要があります。 このポート範囲は、Azure インフラストラクチャの通信に必要です。 これらのポートは、Azure の証明書によって保護 (ロックダウン) されます。 対象のゲートウェイの顧客を含め、適切な証明書を持たない外部エンティティは、これらのエンドポイントに対する変更を開始することはできません。
 
 * 送信インターネット接続はブロックできません。
 
@@ -135,7 +136,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 **Q.Application Gateway を外部と内部の両方のトラフィックに同時に使用できますか?**
 
-はい。Application Gateway ごとに 1 つの内部 IP と 1 つの外部 IP を指定できます。
+はい。Application Gateway では、アプリケーション ゲートウェイごとに 1 つの内部 IP と 1 つの外部 IP をサポートできます。
 
 **Q.VNET ピアリングはサポートされていますか?**
 
@@ -163,7 +164,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 **Q.Application Gateway アクセスを少数のソース IP に限定できますか?**
 
-このシナリオは、Application Gateway サブネットの NSG を使用して行うことができます。 次の制約を次の優先順位でサブネットに適用する必要があります。
+このシナリオは、アプリケーション ゲートウェイ サブネットの NSG を使用して行うことができます。 次の制約を次の優先順位でサブネットに適用する必要があります。
 
 * ソース IP と IP 範囲からの着信トラフィックを許可します。
 
@@ -183,23 +184,25 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 **Q.Application Gateway は高可用性とスケーラビリティをどのようにサポートしますか?**
 
-2 つ以上のインスタンスをデプロイすると、Application Gateway は高可用性のシナリオをサポートします。 Azure は、これらのインスタンスを更新ドメインと障害ドメインに分散して、すべてのインスタンスで同時に障害が発生しないようにします。 Application Gateway は、同じゲートウェイの複数のインスタンスを追加して負荷を共有することによってスケーラビリティをサポートします。
+2 つ以上のインスタンスをデプロイすると、Application Gateway V1 SKU は高可用性のシナリオをサポートします。 Azure は、これらのインスタンスを更新ドメインと障害ドメインに分散して、すべてのインスタンスで同時に障害が発生しないようにします。 V1 SKU では、同じゲートウェイの複数のインスタンスを追加して負荷を共有することによってスケーラビリティをサポートします。
+
+V2 SKU では、新しいインスタンスが障害ドメインと更新ドメインに自動的に分散されるようにします。 ゾーンの冗長性が選択されている場合は、ゾーン障害回復性を提供するために、最新のインスタンスが可用性ゾーンにも分散されます。
 
 **Q.Application Gateway を使用して複数のデータ センター間で障害復旧のシナリオを実現するにはどうすればよいですか?**
 
 お客様は、Traffic Manager を使用して、異なるデータ センターにある複数の Application Gateway にトラフィックを分散できます。
 
-**Q.Auto Scaling はサポートされていますか?**
+**Q.自動スケールはサポートされていますか?**
 
-いいえ。ただし、Application Gateway には、しきい値に達したときにアラートを生成するために使用できるスループット メトリックが用意されています。 手動でインスタンスを追加したり、サイズを変更したりしても、ゲートウェイは再起動されず、既存のトラフィックには影響しません。
+はい、Application Gateway V2 SKU では、自動スケールをサポートします。 詳細については、「[自動スケールとゾーン冗長 Application Gateway (パブリック プレビュー)](application-gateway-autoscaling-zone-redundant.md)」を参照してください。
 
 **Q.手動でのスケールアップまたはスケールダウンによってダウンタイムが発生しますか?**
 
 ダウンタイムは発生しません。アップグレード ドメインと障害ドメインにインスタンスが分散されます。
 
-**Q.アプリケーション ゲートウェイは接続のドレインに対応していますか?**
+**Q.Application Gateway は接続のドレインに対応していますか?**
 
-はい。 中断することなくバックエンド プール内のメンバーを変更するように接続のドレインを構成できます。 そのため、既存の接続がある場合、その接続が閉じられるか、構成可能なタイムアウトに達するまで、以前の宛先に送信し続けることができます。 接続のドレインは、現在処理中の接続が完了するまで待つだけである点に注意してください。 Application Gateway は、アプリケーションのセッション状態を認識しません。
+はい。 中断することなくバックエンド プール内のメンバーを変更するように接続のドレインを構成できます。 そのため、既存の接続がある場合、その接続が閉じられるか、構成可能なタイムアウトに達するまで、以前の宛先に送信し続けることができます。 接続のドレインは、現在処理中の接続が完了するまで待機するだけです。 Application Gateway は、アプリケーションのセッション状態を認識しません。
 
 **Q.Application Gateway のサイズは何ですか?**
 
@@ -209,7 +212,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 次の表では、SSL オフロードが有効になっているアプリケーション ゲートウェイ インスタンスごとにパフォーマンス スループットの平均値を示します。
 
-| バックエンド ページの平均応答サイズ | Small | Medium | Large |
+| バックエンド ページの平均応答サイズ | 小 | 中 | 大 |
 | --- | --- | --- | --- |
 | 6 KB |7.5 Mbps |13 Mbps |50 Mbps |
 | 100 KB |35 Mbps |100 Mbps |200 Mbps |
@@ -229,7 +232,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 **Q.Application Gateway でサポートされている最新の暗号スイートはどれですか?**
 
-アプリケーション ゲートウェイでサポートされている最新の暗号スイートは次のとおりです。 SSL オプションのカスタマイズ方法については、「[Configure SSL policy versions and cipher suites on Application Gateway (Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する)](application-gateway-configure-ssl-policy-powershell.md)」をご覧ください。
+Application Gateway でサポートされている最新の暗号スイートは次のとおりです。 SSL オプションのカスタマイズ方法については、「[Configure SSL policy versions and cipher suites on Application Gateway](application-gateway-configure-ssl-policy-powershell.md)」(Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する) をご覧ください。
 
 - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
@@ -341,7 +344,7 @@ WAF は診断ログを通じて監視されます。診断ログについて詳�
 
 Application Gateway で使用できるログは 3 つあります。 これらのログとその他の診断機能について詳しくは、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」をご覧ください。
 
-- **ApplicationGatewayAccessLog** - アクセス ログには、Application Gateway フロントエンドに送信された各要求が格納されます。 このデータには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。アクセス ログは 300 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。
+- **ApplicationGatewayAccessLog** - アクセス ログには、アプリケーション ゲートウェイ フロントエンドに送信された各要求が格納されます。 このデータには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。アクセス ログは 300 秒ごとに収集されます。 このログには、アプリケーション ゲートウェイのインスタンスごとに 1 つのレコードが含まれます。
 - **ApplicationGatewayPerformanceLog** - パフォーマンス ログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。
 - **ApplicationGatewayFirewallLog** - ファイアウォール ログには、Web アプリケーション ファイアウォールが構成されたアプリケーション ゲートウェイの、検出モードまたは防止モードでログに記録された要求が含まれます。
 
@@ -351,15 +354,15 @@ PowerShell コマンドレット `Get-AzureRmApplicationGatewayBackendHealth` �
 
 **Q.診断ログにおける保持ポリシーとは何ですか?**
 
-診断ログはお客様のストレージ アカウントに送信され、お客様はログの優先順位に基づいて保持ポリシーを設定できます。 診断ログをイベント ハブまたは Log Analytics に送信することもできます。 詳しくは、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」をご覧ください。
+診断ログはお客様のストレージ アカウントに送信され、お客様はログの優先順位に基づいて保持ポリシーを設定できます。 診断ログをイベント ハブまたは Log Analytics に送信することもできます。 詳しくは、[Application Gateway の診断](application-gateway-diagnostics.md)に関する記事をご覧ください。
 
 **Q.Application Gateway の監査ログを取得するにはどうすればよいですか?**
 
-Application Gateway では監査ログを使用できます。 ポータルで、Application Gateway のメニュー ブレードの **[アクティビティ ログ]** をクリックして監査ログにアクセスします。 
+Application Gateway では監査ログを使用できます。 ポータルで、アプリケーション ゲートウェイのメニュー ブレードの **[アクティビティ ログ]** をクリックして監査ログにアクセスします。 
 
 **Q.Application Gateway でアラートを設定できますか?**
 
-はい。Application Gateway はアラートをサポートしており、メトリックに基づいてアラートが構成されます。 現時点で Application Gateway に用意されているのは "スループット" のメトリックです。アラートを生成するためにこのメトリックを構成できます。 アラートについて詳しくは、「[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」をご覧ください。
+はい、Application Gateway では、アラートをサポートしています。 メトリックに関するアラートが構成されます。 Application Gateway のメトリックの詳細については、[Application Gateway のメトリック](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#metrics)に関する記事を参照してください。 アラートについて詳しくは、「[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」をご覧ください。
 
 **Q.Application Gateway のトラフィック統計情報を分析するにはどうすればよいですか?**
 

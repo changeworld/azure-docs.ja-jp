@@ -7,28 +7,18 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/02/2018
 ms.author: andrl
-ms.openlocfilehash: 2da00f700f5cc234455cc686377e5863f1c35bdd
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 2280a3f6b2a67d392a109a5294e1509bcc804bc3
+ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734473"
+ms.lasthandoff: 10/08/2018
+ms.locfileid: "48869926"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Azure Cosmos DB コンテナーおよびデータベースのスループットを設定および取得する
 
-Azure Portal またはクライアント SDK を使用して、Azure Cosmos DB コンテナーまたは一連のコンテナーのスループットを設定できます。 
-
-**個々のコンテナーのスループットをプロビジョニングする:** 一連のコンテナーのスループットをプロビジョニングすると、これらすべてのコンテナーは、プロビジョニングされたスループットを共有します。 各コンテナーのスループットを個別にプロビジョニングすると、その特定のコンテナーのスループットが確実に予約されます。 コンテナーは、RU/秒を個別のコンテナー レベルで割り当てるときに、"*固定*" または "*無制限*" として作成できます。 固定サイズのコンテナーの上限は、容量が 10 GB で、スループットが毎秒 10,000 RU となります。 無制限のコンテナーを作成する場合は、少なくとも 1,000 RU/秒のスループットと[パーティション キー](partition-data.md)を指定する必要があります。 データが複数のパーティションに分割される場合があるため、高カーディナリティ (100 ～数百万の個別の値) のパーティション キーを選択する必要があります。 多数の異なる値を持つパーティション キーを選択すると、コンテナー/テーブル/グラフおよび要求を、Azure Cosmos DB で確実かつ一様に拡大縮小できるようになります。 
-
-**一連のコンテナーまたはデータベースのスループットをプロビジョニングする:** データベースのスループットをプロビジョニングすると、そのデータベースに属するすべてのコンテナー間でスループットを共有できます。 Azure Cosmos DB データベースでは、スループットを一連のコンテナー間で共有することも、各コンテナーに個別に専用のスループットを設定することもできます。 一連のコンテナーに RU/秒を割り当てるとき、そのセットに属するコンテナーは "*無制限*" コンテナーとして処理され、パーティション キーを指定する必要があります。
-
-プロビジョニング済みのスループットに基づいて、Azure Cosmos DB はお使いのコンテナーをホストする物理パーティションを割り当て、データの増加に応じてパーティション間でデータの分割やバランスの再調整を行います。 コンテナー レベルとデータベース レベルのスループットのプロビジョニングは別個のサービスであり、これらのサービス間で切り替えを行うには移行元から移行先へのデータの移行が必要になります。 つまり、新しいデータベースまたは新しいコレクションを作成した後、[Bulk Executor ライブラリ](bulk-executor-overview.md)または [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) を使用してデータを移行する必要があります。 次の図は、さまざまなレベルでのスループットのプロビジョニングを示しています。
-
-![個別のコンテナーおよび一連のコンテナーに対する要求ユニットのプロビジョニング](./media/request-units/provisioning_set_containers.png)
-
-以降のセクションでは、Azure Cosmos DB アカウントにさまざまなレベルのスループットを構成するために必要な手順について説明します。 
+Azure Portal またはクライアント SDK を使用して、Azure Cosmos DB コンテナーまたは一連のコンテナーのスループットを設定できます。 この記事では、Azure Cosmos DB アカウントに異なる粒度のスループットを構成するために必要な手順について説明します。
 
 ## <a name="provision-throughput-by-using-azure-portal"></a>Azure Portal を使用してスループットをプロビジョニングする
 
@@ -45,7 +35,7 @@ Azure Portal またはクライアント SDK を使用して、Azure Cosmos DB �
    |データベース ID  |  データベースを識別する一意な名前を指定します。 データベースは、1 つまたは複数のコレクションから成る論理的なコンテナーです。 データベース名は 1 文字以上 255 文字以内にする必要があります。/、\\、#、? は使えず、末尾にスペースを入れることもできません。 |
    |コレクション ID  | コレクションを識別する一意な名前を指定します。 コレクション ID には、データベース名と同じ文字要件があります。 |
    |ストレージの容量   | この値は、データベースの記憶域容量です。 各コレクションのスループットをプロビジョニングする場合、容量には、**固定 (10 GB)** または**無制限**を設定できます。 無制限のストレージ容量の場合、データのパーティション キーを設定する必要があります。  |
-   |Throughput   | 各コレクションおよびデータベースには、1 秒あたりの要求単位でスループットを設定できます。  固定のストレージ容量の場合、最小スループットは秒あたり 400 要求単位 (RU/秒)、無制限のストレージの容量の場合、最小スループットは 1000 RU/秒に設定されます。|
+   |スループット   | 各コレクションおよびデータベースには、1 秒あたりの要求単位でスループットを設定できます。  コレクションのストレージ容量を固定するか無制限にすることができます。 |
 
 6. これらのフィールドに値を入力した後、**[OK]** を選択して設定を保存します。  
 
@@ -198,6 +188,21 @@ int newThroughput = 500;
 offer.getContent().put("offerThroughput", newThroughput);
 client.replaceOffer(offer);
 ```
+
+## <a name="get-the-request-charge-using-cassandra-api"></a>Cassandra API を使用して要求の使用量を取得する 
+
+Cassandra API では、特定の操作の要求ユニット使用量に関する詳細情報を提供する方法がサポートされています。 たとえば、次のように、挿入操作の RU/秒の使用量を取得できます。
+
+```csharp
+var insertResult = await tableInsertStatement.ExecuteAsync();
+ foreach (string key in insertResult.Info.IncomingPayload)
+        {
+            byte[] valueInBytes = customPayload[key];
+            string value = Encoding.UTF8.GetString(valueInBytes);
+            Console.WriteLine($“CustomPayload:  {key}: {value}”);
+        }
+```
+
 
 ## <a name="get-throughput-by-using-mongodb-api-portal-metrics"></a>MongoDB API ポータルのメトリックを使用したスループットの取得
 

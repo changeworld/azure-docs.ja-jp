@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 21cf7cf3d12902b02fcbf650a1623e78004d28b4
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 6f09e523b70e541c724ea53d0bd47215ad44d623
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131702"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041988"
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow 対応のコネクタを使用して Log Analytics のプロセスを自動化する
 [Microsoft Flow](https://ms.flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 あるアクションの出力は別のアクションへの入力として使用できます。これにより、さまざまなサービス間の統合を作成できます。  Microsoft Flow 対応の Azure Log Analytics コネクタを使用すると、Log Analytics のログ検索機能によって取得されたデータが含まれるワークフローを構築できます。
 
-たとえば、Microsoft Flow で Office 365 からの電子メール通知の Log Analytics データを使用して、Visual Studio Team Services でバグを作成したり、Slack のメッセージを投稿したりできます。  簡単なスケジュールまたは接続されたサービスのアクション (メールやツイートを受信したときなど) からワークフローをトリガーできます。  
+たとえば、Microsoft Flow で Office 365 からの電子メール通知の Log Analytics データを使用して、Azure DevOps でバグを作成したり、Slack のメッセージを投稿したりできます。  簡単なスケジュールまたは接続されたサービスのアクション (メールやツイートを受信したときなど) からワークフローをトリガーできます。  
 
 この記事のチュートリアルには、Log Analytics のログ検索の結果を自動的に送信するフローを作成する方法について説明します。これは、Microsoft Flow における Log Analytics の使用方法の一例です。 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: ed8c34a7e1e11d431d9a3b416067736da0d1612c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8983e98bdfb99d71559e1d79d5f6e72c8366b954
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046381"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268531"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法
 
@@ -74,7 +74,7 @@ Azure Resource Manager を使用してリソースに実行するすべてのタ
 
 7. 新しく追加されたアプリケーションの横にある **[委任されたアクセス許可]** をクリックし、**[Azure Service 管理へのアクセス (プレビュー)]** のチェック ボックスをオンにします。
 8. **[選択]** を選択します。
-9. **[Grant Permisssions]\(アクセス権の付与\)** をクリックします。
+9. **[アクセス許可の付与]** をクリックします。
 
 ### <a name="configuring-your-app"></a>アプリの構成
 

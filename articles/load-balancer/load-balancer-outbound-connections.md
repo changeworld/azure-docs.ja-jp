@@ -4,7 +4,7 @@ description: この記事では、Azure によって、パブリック インタ
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: jpconnock
 editor: ''
 ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/27/2018
+ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: 24eec3b1f3c85384f80823b82962038c235b6dac
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 58ae89a6b9d7b9e3858358d290e3ecb197e0ac2b
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036992"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249130"
 ---
 # <a name="outbound-connections-in-azure"></a>Azure の送信接続
 
@@ -75,7 +75,7 @@ Load Balancer Basic で送信接続の正常性を監視するために、[Load 
 
 ### <a name="defaultsnat"></a>シナリオ 3: インスタンス レベルのパブリック IP アドレスがないスタンドアロン VM
 
-このシナリオでは、VM はパブリック Load Balancer プールの一部ではなく (また、内部 Standard Load Balancer プールの一部ではなく)、ILPIP アドレスが割り当てられていません。 VM が送信フローを作成すると、Azure が、送信フローのプライベート ソース IP アドレスをパブリック ソース IP アドレスに変換します。 この送信フローで使用されるパブリック IP アドレスは構成不可能であり、サブスクリプションのパブリック IP リソースの制限に対してカウントされません。
+このシナリオでは、VM はパブリック Load Balancer プールの一部ではなく (また、内部 Standard Load Balancer プールの一部ではなく)、ILPIP アドレスが割り当てられていません。 VM が送信フローを作成すると、Azure が、送信フローのプライベート ソース IP アドレスをパブリック ソース IP アドレスに変換します。 この送信フローで使用されるパブリック IP アドレスは構成不可能であり、サブスクリプションのパブリック IP リソースの制限に対してカウントされません。 このパブリック IP アドレスはユーザーのものではなく、予約することはできません。 VM、可用性セット、または VMSS を再デプロイすると、このパブリック IP アドレスは解放されて、新しいパブリック IP アドレスが要求されます。 IP アドレスをホワイトリストに登録する場合は、このシナリオを使用しないでください。 代わりに、送信シナリオと、送信接続で使用されるパブリック IP アドレスを明示的に宣言する他の 2 つのシナリオのいずれかを使用します。
 
 >[!IMPORTANT] 
 >このシナリオは、内部 Basic Load Balancer が接続されている場合に__のみ__適用されます。 内部 Standard Load Balancer が VM に接続されている場合、シナリオ 3 は__利用できません__。  内部 Standard Load Balancer を使用することに加え、[シナリオ 1](#ilpip) または[シナリオ 2](#lb) を明示的に作成する必要があります。

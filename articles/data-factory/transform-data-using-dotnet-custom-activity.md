@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 10/18/2018
 ms.author: douglasl
-ms.openlocfilehash: f4a88c5495fc3297699110d8a12a22ff7d6c2bbb
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 77e5d6c278436a1fc192421c9867106409389a66
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144356"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48888223"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -105,7 +105,7 @@ Azure Batch サービスを初めて利用する場合は、次の記事をご�
 | linkedServiceName     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | [はい]      |
 | コマンド               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | [はい]      |
 | resourceLinkedService | カスタム アプリケーションが格納されているストレージ アカウントへの Azure Storage のリンクされたサービス。 | いいえ        |
-| folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。 | いいえ        |
+| folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。<br/><br/>依存関係ファイルをサブフォルダーに置いている場合 (つまり、*folderPath* の下のフォルダー階層構造内に置いている場合)、現在の動作では、ファイルが Azure Batch にコピーされるときに、フォルダー構造がフラット化されます。 つまり、すべてのファイルは、サブフォルダーを使用せず、1 つのフォルダーにコピーされます。 この問題を回避するには、ファイルを圧縮し、圧縮されたファイルをコピーした後、目的の場所でカスタム コードと共に解凍することを検討してください。 | いいえ        |
 | referenceObjects      | 既存のリンクされたサービスとデータセットの配列。 カスタム コードが Data Factory のリソースを参照できるように、参照されているリンクされたサービスとデータセットが JSON 形式でカスタム アプリケーションに渡されます。 | いいえ        |
 | extendedProperties    | カスタム コードが追加のプロパティを参照できるように、JSON 形式でカスタム アプリケーションに渡すことができるユーザー定義プロパティ。 | いいえ        |
 
@@ -293,6 +293,23 @@ namespace SampleApp
   > [!IMPORTANT]
   > - activity.json、linkedServices.json、datasets.json は、Batch タスクのランタイム フォルダーに格納されます。 この例では、activity.json、linkedServices.json、datasets.json は、"https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" パスに格納されています。 必要に応じて、パスを個別にクリーンアップする必要があります。 
   > - リンクされたサービスでセルフホステッド統合ランタイムを使用している場合、顧客が定義したプライベート ネットワーク環境内に資格情報を保持できるように、セルフホステッド統合ランタイムによってキーやパスワードなどの機密情報が暗号化されます。 この場合、カスタム アプリケーション コードから一部の機密フィールドを参照したときにフィールドが見つからない可能性があります。 必要に応じて、リンクされたサービスの参照を使用するのではなく、extendedProperties で SecureString を使用してください。 
+
+## <a name="retrieve-securestring-outputs"></a>SecureString 出力の取得
+
+*SecureString* 型として指定された機密プロパティ値 (この記事の一部のサンプルに含まれています) は、Data Factory ユーザー インターフェイスの [監視] タブでマスクされます。  ただし、実際のパイプライン実行では、*SecureString* プロパティは `activity.json` ファイル内でプレーン テキストの JSON としてシリアル化されます。 例: 
+
+```json
+"extendedProperties": {
+    "connectionString": {
+        "type": "SecureString",
+        "value": "aSampleSecureString"
+    }
+}
+```
+
+このシリアル化は、真にセキュアなものではなく、セキュリティの確保を意図したものではありません。 [監視] タブで値をマスクすることを、Data Factory に示すことが目的です。
+
+カスタム アクティビティから *SecureString* 型のプロパティにアクセスするには、.EXE と同じフォルダーに配置されている `activity.json` ファイルを読み取り、JSON を逆シリアル化した後、JSON プロパティにアクセスします (extendedProperties => [propertyName] => value)。
 
 ## <a name="compare-v2-v1"></a> v2 カスタム アクティビティとバージョン 1 (カスタム) DotNet アクティビティを比較する
 

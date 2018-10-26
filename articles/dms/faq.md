@@ -2,27 +2,27 @@
 title: Azure Database Migration Service の使用に関する FAQ | Microsoft Docs
 description: Azure Database Migration Service を使用してデータベースを移行する作業に関してよく寄せられる質問に答えます。
 services: database-migration
-author: HJToland3
-ms.author: jtoland
+author: pochiraju
+ms.author: rajpo
 manager: ''
 ms.reviewer: ''
 ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 06/19/2018
-ms.openlocfilehash: 2fd5049b8b65620087e3c1ec42b6a5dcb0e0741a
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.date: 10/09/2018
+ms.openlocfilehash: f1f67921e7eadded4292f244f5754c8f00341a15
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36214105"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48887106"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ
 この記事では、Azure Database Migration Service の使用に関してよく寄せられる質問とその回答をまとめてあります。
 
 ### <a name="q-what-is-azure-database-migration-service"></a>Q. Azure Database Migration Service とは何ですか。
-Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、完全管理型のサービスです。 このサービスは、現在一般公開されていますが、以下に重点を置いた開発が進行中です。
+Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、フル マネージドのサービスです。 このサービスは、現在一般公開されていますが、以下に重点を置いた開発が進行中です。
 - 信頼性とパフォーマンス。
 - ソースとターゲットのペアの反復的追加。
 - スムーズな移行を実現するための継続的な投資。
@@ -93,4 +93,4 @@ Azure VNET のセットアップ手順を説明する複数の Microsoft チュ�
 ユーザーからのご意見をお待ちしています。 Azure Database Migration Service に関するフィードバックやご要望は、[こちら](https://feedback.azure.com/forums/906100-azure-database-migration-service)から送信してください。
 
 ## <a name="next-steps"></a>次の手順
-Azure Database Migration Service の概要と、リージョンごとの利用可能性については、「[Azure Database Migration Service とは](dms-overview.md)」を参照してください。 
+Azure Database Migration Service の概要と、リージョンごとの利用可能性については、「[Azure Database Migration Service とは](dms-overview.md)」という記事をご覧ください。 

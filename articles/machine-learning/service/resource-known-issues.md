@@ -8,18 +8,36 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.component: core
 ms.topic: article
-ms.date: 09/24/2018
-ms.openlocfilehash: d84040dc440c373ae9bae6dbac7a95109a387ba7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/01/2018
+ms.openlocfilehash: 02cee5a3e088c919ec94aee6f46ef6f428b9bb48
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162748"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249419"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure Machine Learning サービスの既知の問題とトラブルシューティング
  
 この記事は、Azure Machine Learning サービスの使用時に発生したエラーや障害を見つけて修正するのに役立ちます。 
 
+## <a name="sdk-installation-issues"></a>SDK のインストールに関する問題
+
+**エラー メッセージ: [Cannot uninstall 'PyYAML']\('PyYAML' をアンインストールできません\)** 
+
+PyYAML は distutils によってインストールされるプロジェクトです。 したがって、部分的なアンインストールが行われた場合、それに属しているファイルを正確に判別できません。 このエラーを無視して SDK のインストールを続行するには、次を使用します。
+```Python 
+pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
+```
+
+## <a name="image-building-failure"></a>イメージ ビルド エラー
+
+Web サービスのデプロイ時のイメージ ビルド エラー。 回避策は、イメージ構成のために pip の依存関係として "pynacl==1.2.1" を Conda ファイルに追加することです。  
+
+## <a name="pipelines"></a>パイプライン
+スクリプトまたはパラメーターを変更せずに PythonScriptStep を連続して呼び出すとエラーが発生します。 回避策としては PipelineData オブジェクトを再構築してください。
+
+## <a name="fpgas"></a>FPGA
+FPGA クォータを要求して承認されるまでは、FPGA にモデルをデプロイできません。 アクセスを要求するには、クォータ要求フォーム https://aka.ms/aml-real-time-ai に入力します。
 
 ## <a name="databricks"></a>Databricks
 
@@ -36,7 +54,7 @@ Databricks と Azure Machine Learning の問題。
    pstuil cryptography==1.5 pyopenssl==16.0.0 ipython=2.2.0
    ```
 
-## <a name="gather-diagnostics-information"></a>診断情報を収集する
+## <a name="diagnostic-logs"></a>診断ログ
 サポートを依頼するときに診断情報を提供できると、役に立つ場合があります。 ここにログ ファイルが保存されます。
 
 ## <a name="resource-quotas"></a>リソース クォータ

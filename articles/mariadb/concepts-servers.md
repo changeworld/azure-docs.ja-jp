@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cf57acdcbcfa792a6c5ab62c6e8ec0589d625df7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4fd2f28f52c45a0ec3128302b02ad5ba498c982b
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994590"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247773"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB のサーバーの概念
 この記事では、Azure Database for MariaDB サーバーを操作するための考慮事項とガイドラインを示します。
@@ -44,12 +44,13 @@ Azure Database for MariaDB サーバー内には 1 つまたは複数のデー�
 | **プロトコル** | サービスは、MySQL で使用されるメッセージ ベースのプロトコルをサポートしています。 |
 | **TCP/IP** | プロトコルは、TCP/IP および UNIX ドメイン ソケット経由でサポートされます。 |
 | **ファイアウォール** | データを保護するため、ファイアウォール規則は、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 「[Azure Database for MariaDB サーバーのファイアウォール規則](./concepts-firewall-rules.md)」をご覧ください。 |
-| **SSL** | アプリケーションとデータベース サーバーの間に SSL 接続を適用できます。  <!--See [Configure SSL connectivity in your application to securely connect to Azure Database for MariaDB](./howto-configure-ssl.md).--> |
+| **SSL** | アプリケーションとデータベース サーバーの間に SSL 接続を適用できます。 「[Azure Database for MariaDB に安全に接続するためにご利用のアプリケーション内で SSL 接続を構成する](./howto-configure-ssl.md)」をご覧ください。 |
 
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
 Azure Database for MariaDB サーバーを管理するには、Azure portal または Azure CLI を使用します。
 
 ## <a name="next-steps"></a>次の手順
 - サービスの概要については、[Azure Database for MariaDB の概要](./overview.md)に関するページをご覧ください。
-- **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-pricing-tiers.md)に関するページをご覧ください。
+- **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-pricing-tiers.md)に関するページをご覧ください
+
 <!-- - For information about connecting to the service, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md). -->

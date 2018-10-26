@@ -2,30 +2,29 @@
 title: Azure IoT Hub と Event Grid | Microsoft Docs
 description: Azure Event Grid を使い、IoT Hub で発生したアクションに基づいてプロセスをトリガーします。
 author: kgremban
-manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 3c12e98137f44ac094adaae282b5d56d30061e60
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 14bdbb5d629cb5a3fccd6f874e30ded0648e0124
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719853"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249470"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする
 
 他のサービスにイベント通知を送信して、ダウンストリームのプロセスをトリガーできるように、Azure IoT Hub は Azure Event Grid と統合します。 信頼性が高く、スケーラブルで、安全な方法により、重大なイベントに対応できるよう、IoT Hub のイベントをリッスンするようにビジネス アプリケーションを構成します。 たとえば、新しい IoT デバイスが IoT Hub に登録されるたびに、データベースの更新、チケットの作成、メール通知の配信などの複数のアクションを実行するよう、アプリケーションを構築します。 
 
-[Azure Event Grid][lnk-eg-overview] は、発行-サブスクライブ モデルを使う、フル マネージドのイベント ルーティング サービスです。 Event Grid は、[Azure Functions](../azure-functions/functions-overview.md) や [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) などの Azure s サービスの組み込みサポートを備えており、webhook を使って Azure 以外のサービスにイベント アラートを配信できます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要][lnk-eg-overview]」をご覧ください。 
+[Azure Event Grid](../event-grid/overview.md) は、発行-サブスクライブ モデルを使う、フル マネージドのイベント ルーティング サービスです。 Event Grid は、[Azure Functions](../azure-functions/functions-overview.md) や [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md) などの Azure s サービスの組み込みサポートを備えており、webhook を使って Azure 以外のサービスにイベント アラートを配信できます。 Event Grid がサポートするイベント ハンドラーの完全な一覧については、「[Azure Event Grid の概要](../event-grid/overview.md)」をご覧ください。 
 
 ![Azure Event Grid のアーキテクチャ](./media/iot-hub-event-grid/event-grid-functional-model.png)
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-Event Grid の統合は、Event Grid イベントグリッドがサポートされている地域にある IoT ハブで利用できます。 最新のリージョン一覧については、「[Azure Event Grid の概要][lnk-eg-overview]」を参照してください。 
+Event Grid の統合は、Event Grid イベントグリッドがサポートされている地域にある IoT ハブで利用できます。 最新のリージョン一覧については、「[Azure Event Grid の概要](../event-grid/overview.md)」を参照してください。 
 
 ## <a name="event-types"></a>イベントの種類
 
@@ -132,23 +131,23 @@ devices/{deviceId}
 ```
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>デバイス接続イベントおよびデバイス切断イベントの制限事項
 
-デバイス接続イベントおよびデバイス切断イベントを受信するには、デバイスの D2C リンクまたは C2D リンクを開く必要があります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP の場合は、[非同期受信 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) を呼び出して C2D リンクを開くことができます。 テレメトリを送信する場合は、D2C リンクが開いています。 デバイスの接続状態が頻繁に変化する場合、つまりデバイスが頻繁に接続されたり切断されたりする場合、すべての単一の接続状態は送信されず、1 分ごとのスナップショットが作成された接続状態が公開されます。 IoT Hub が停止した場合、停止が解消されるとすぐにデバイスの接続状態が公開されます。 その停止中にデバイスが切断された場合は、デバイス切断イベントが 10 分以内に発行されます。
+デバイス接続イベントおよびデバイス切断イベントを受信するには、デバイスの D2C リンクまたは C2D リンクを開く必要があります。 デバイスが MQTT プロトコルを使用している場合、IoT Hub は C2D リンクを開いたままにします。 AMQP の場合は、[非同期受信 API](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet) を呼び出して C2D リンクを開くことができます。 
+
+テレメトリを送信する場合は、D2C リンクが開いています。 デバイスの接続状態が頻繁に変化する場合、つまりデバイスが頻繁に接続されたり切断されたりする場合、すべての単一の接続状態は送信されず、1 分ごとのスナップショットが作成された接続状態が公開されます。 IoT Hub が停止した場合、停止が解消されるとすぐにデバイスの接続状態が公開されます。 その停止中にデバイスが切断された場合は、デバイス切断イベントが 10 分以内に発行されます。
 
 ## <a name="tips-for-consuming-events"></a>イベントの使用に関するヒント
 
 IoT Hub イベントを処理するアプリケーションは、以下の推奨される手法に従う必要があります。
 
 * 同じイベント ハンドラーにイベントをルーティングするように複数のサブスクリプションを構成できるので、イベントが特定のソースからであると想定しないことが重要です。 常にメッセージ トピックをチェックし、予期される IoT Hub からものであることを確認してください。 
+
 * 受信するすべてのイベントが予期する種類であると想定してはいけません。 メッセージを処理する前に、常に eventType をチェックしてください。
+
 * メッセージは、順不同で、または遅延の後に、到着する場合があります。 etag フィールドを使って、オブジェクトに関する情報が最新かどうか確認してください。
 
 ## <a name="next-steps"></a>次の手順
 
 * [IoT Hub イベントのチュートリアルを試します](../event-grid/publish-iot-hub-events-to-logic-apps.md)
-* [デバイス接続イベントおよびデバイス切断イベントの順序を設定する方法を確認します](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
-* [Event Grid の詳細を確認します][lnk-eg-overview]
-* [IoT Hub のイベントとメッセージのルーティングの違いを比較します][lnk-eg-compare]
-
-<!-- Links -->
-[lnk-eg-overview]: ../event-grid/overview.md
-[lnk-eg-compare]: iot-hub-event-grid-routing-comparison.md
+* [デバイス接続イベントおよびデバイス切断イベントの順序を設定する方法を確認します](iot-hub-how-to-order-connection-state-events.md)
+* [Event Grid の詳細を確認します](../event-grid/overview.md)
+* [IoT Hub のイベントとメッセージのルーティングの違いを比較します](iot-hub-event-grid-routing-comparison.md)

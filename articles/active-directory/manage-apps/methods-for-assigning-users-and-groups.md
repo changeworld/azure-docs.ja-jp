@@ -5,25 +5,23 @@ services: active-directory
 documentationcenter: ''
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 10/01/2018
 ms.author: barbkess
-ms.openlocfilehash: d357a9a7f249127289a256685d9555f777742b68
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c4aa311018603b32e854d3d3423d342350e6520d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355498"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044486"
 ---
-# <a name="how-to-assign-users-and-groups-to-an-application"></a>アプリケーションにユーザーとグループを割り当てる方法
-
-特定のアプリケーションに対してユーザーが次の操作を行えるようにするには、まず、**ユーザーをアプリケーションに割り当て**、アクセス権を付与する必要があります。
+# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Azure Active Directory でアプリケーションにユーザーとグループを割り当てる
+この記事では、Azure Active Directory (Azure AD) においてユーザーまたはグループをアプリケーションに割り当てる方法を説明します。 管理者が次の操作を実行するためのアクセス権をユーザーに付与する前に、最初にアプリケーションにユーザーを割り当てる必要があります。
 
 -   **アプリケーションの URL に直接移動**して、アプリケーションにアクセスする (SP によって開始されたサインオンとも呼ばれる)。
 
@@ -33,17 +31,19 @@ ms.locfileid: "44355498"
 
 -   [Office 365 アプリケーション起動プログラム](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a)にアプリケーションが表示されていることを確認する。
 
-## <a name="methods-to-assign-applications-with-azure-active-directory"></a>Azure Active Directory を使用してアプリケーションを割り当てる方法 
+## <a name="prerequisties"></a>前提条件
+ユーザーとグループをアプリケーションに割り当てる前に、ユーザー割り当てを要求する必要があります。 ユーザー割り当てを要求する手順は、次のとおりです。
 
-Azure Active Directory でアプリケーションを割り当てる方法は 3 つあります。
+1. 管理者アカウントを使用して、Azure Portal にログインします。
+2. メイン メニューの **[すべてのサービス]** をクリックします。
+3. アプリケーションに使用するディレクトリを選択します。
+4. **[エンタープライズ アプリケーション]** タブをクリックします。
+5. このディレクトリに関連付けられているアプリケーションの一覧から、アプリケーションを選択します。
+6. **[プロパティ]** タブをクリックします。
+7. **[ユーザーの割り当てが必要ですか?]** を [はい] に変更します。
+8. 画面上部にある **[保存]** ボタンをクリックします。
 
--   [管理者としてアプリケーションにユーザーを直接割り当てる](#assign-a-user-directly-as-an-administrator)
-
--   [管理者としてアプリケーションにグループを直接割り当てる](#assign-a-group-directly-to-an-application-as-an-administrator)
-
--   [セルフ サービス アプリケーションへのアクセスを有効にすることでユーザーによる独自のアプリケーションの検索を許可する](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
-
-## <a name="assign-a-user-directly-as-an-administrator"></a>管理者としてユーザーを直接割り当てる
+## <a name="assign-users"></a>ユーザーの割り当て
 
 1 人以上のユーザーをアプリケーションに直接割り当てるには、次の手順に従います。
 
@@ -79,9 +79,9 @@ Azure Active Directory でアプリケーションを割り当てる方法は 3 
 
 15. **[割り当て]** ボタンをクリックして、選択したユーザーにアプリケーションを割り当てます。
 
-少し待つと、選択したユーザーが、ソリューションの説明セクションで説明されているメソッドを使用してそれらのアプリケーションを起動できるようになります。
+少し待つと、選択したユーザーは、ソリューションの説明セクションで説明されている方法を使用してこれらのアプリケーションを起動できるようになります。
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>管理者としてアプリケーションにグループを直接割り当てる
+## <a name="assign-groups"></a>グループの割り当て
 
 1 つ以上のグループをアプリケーションに直接割り当てるには、次の手順に従います。
 
@@ -119,7 +119,7 @@ Azure Active Directory でアプリケーションを割り当てる方法は 3 
 
 少し待つと、選択したグループ内のユーザーが、ソリューションの説明セクションで説明されているメソッドを使用してそれらのアプリケーションを起動できるようになります。 これらが動的グループである場合、割り当てられているグループ内のユーザーに割り当てが表示されるまでに、さらに処理時間がかかる可能性があります。
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>セルフ サービス アプリケーションへのアクセスを有効にすることでユーザーによる独自のアプリケーションの検索を許可する
+## <a name="enable-self-service-application-access"></a>アプリケーションのセルフ サービス アクセスを有効化
 
 セルフ サービス アプリケーションへのアクセスは、ユーザーにアプリケーションの自己検出を許可したり、必要に応じてビジネス グループによるこれらのアプリケーションへのアクセス承認を許可したりする場合に優れた方法です。 ビジネス グループがアクセス パネルから直接、ユーザーに割り当てられた (パスワード シングル サインオン アプリケーションに関する)資格情報を管理できるようにすることができます。
 

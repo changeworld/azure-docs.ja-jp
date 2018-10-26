@@ -7,17 +7,17 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 9/21/2018
 ms.author: tyfox
-ms.openlocfilehash: bb7cdbc340c6e9763277d5cdacc0cfb510fdc0db
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 8beb75748c2e9fe3f71ad321c4cd523e344fb90c
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047045"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48901908"
 ---
 # <a name="hdinsight-go-management-sdk-preview"></a>HDInsight Go Management SDK プレビュー
 
 ## <a name="overview"></a>概要
-HDInsight Go SDK に用意されているクラスと関数を使用して HDInsight クラスターを管理できます。 これには、スクリプト アクションを作成、削除、更新、一覧表示、スケーリング、実行したり、HDInsight クラスターのプロパティを監視、取得したりする操作が含まれます。
+HDInsight Go SDK に用意されているクラスと関数を使用して HDInsight クラスターを管理できます。 これには、スクリプト アクションを作成、削除、更新、一覧表示、サイズ変更、実行したり、HDInsight クラスターのプロパティを監視、取得したりする操作が含まれます。
 
 > [!NOTE]
 >この SDK の GoDoc 参考資料は[こちらでも入手できます](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/preview/hdinsight/mgmt/2018-06-01-preview/hdinsight)。
@@ -325,9 +325,9 @@ client.Update(context.Background(), "<Resource Group Name>", "<Cluster Name>", h
 client.Update(context.Background(), "SDKTestRG", "SDKTest", hdi.ClusterPatchParameters{map[string]*string{"tag1Name" : to.StringPtr("tag1Value"), "tag2Name" : to.StringPtr("tag2Value")}})
 ```
 
-### <a name="scale-cluster"></a>クラスターのスケーリング
+### <a name="resize-cluster"></a>クラスターのサイズ変更
 
-特定のクラスターの worker ノード数を増減するには、次のように新しいサイズを指定します。
+特定のクラスターの worker ノード数をサイズ変更するには、次のように新しいサイズを指定します。
 
 ```golang
 client.Resize(context.Background(), "<Resource Group Name>", "<Cluster Name>", hdi.ClusterResizeParameters{<Num of Worker Nodes (int)>})

@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ | Microsoft Docs
-description: Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求をカスタマイズする方法について説明します
+title: Azure AD のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ | Microsoft Docs
+description: Azure AD のエンタープライズ アプリケーションの SAML トークンで発行された要求をカスタマイズする方法について説明します。
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -17,20 +17,20 @@ ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 80842f7e99ee0c58f1615892f3c3c4adf03119b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5633dfbf59396e79226b196c2b699981409092ab
+ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956971"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "48902027"
 ---
-# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-ad"></a>方法: Azure AD のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
+# <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
-現在 Azure Active Directory では、Azure AD アプリ ギャラリーの事前統合済みアプリケーション、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでシングル サインオンをサポートしています。 ユーザーが Azure AD によって SAML 2.0 プロトコルを使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、「要求」と呼ばれる、ユーザーに関する情報が含まれています。
+現在 Azure Active Directory (Azure AD) では、Azure AD アプリ ギャラリーの事前統合済みアプリケーション、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでシングル サインオンをサポートしています。 ユーザーが Azure AD によって SAML 2.0 プロトコルを使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、「要求」と呼ばれる、ユーザーに関する情報が含まれています。
 
-ID 用語で「要求」とは、そのユーザーに発行するトークンの中にあるユーザーに関する ID プロバイダーが提示した情報を指します。 [SAML トークン](http://en.wikipedia.org/wiki/SAML_2.0)では、通常、このデータは SAML 属性ステートメントに含まれています。 ユーザーの一意の ID は通常、名前識別子とも呼ばれる SAML サブジェクトで表されます。
+*要求*とは、そのユーザーに発行するトークンの中にあるユーザーに関する ID プロバイダーが提示した情報を指します。 [SAML トークン](http://en.wikipedia.org/wiki/SAML_2.0)では、通常、このデータは SAML 属性ステートメントに含まれています。 ユーザーの一意の ID は通常、名前識別子とも呼ばれる SAML サブジェクトで表されます。
 
-既定では、Azure Active Directory は、アプリケーションに対して、Azure AD でのユーザーのユーザー名 (ユーザー プリンシパル名とも呼ばれます) を値に持つ NameIdentifier 要求を含む SAML トークンを発行します。 この値によって、ユーザーを一意に識別できます。 また、SAML トークンには、ユーザーの電子メール アドレス、姓名を含むその他の要求も含まれています。
+既定では、Azure AD は、アプリケーションに対して、Azure AD でのユーザーのユーザー名 (ユーザー プリンシパル名とも呼ばれます) を値に持つ NameIdentifier 要求を含む SAML トークンを発行します。 この値によって、ユーザーを一意に識別できます。 また、SAML トークンには、ユーザーの電子メール アドレス、姓名を含むその他の要求も含まれています。
 
 アプリケーションに対して SAML トークンで発行された要求を表示または編集するには、Azure Portal でアプリケーションを開きます。 その後、アプリケーションの **[ユーザー属性]** セクションの **[その他のすべてのユーザー属性を表示および編集する]** チェック ボックスをオンにします。
 
@@ -38,7 +38,7 @@ ID 用語で「要求」とは、そのユーザーに発行するトークン�
 
 SAML トークンで発行された要求を編集する必要がある理由は、2 つ考えられます。
 * アプリケーションが、別の要求 URI または要求値のセットを必要とするように記述されている。
-* NameIdentifier 要求が、Azure Active Directory に格納されているユーザー名 (ユーザー プリンシパル名) 以外の何かであることを必要とする方法で、アプリケーションがデプロイされている。
+* NameIdentifier 要求が、Azure AD に格納されているユーザー名 (ユーザー プリンシパル名) 以外の何かであることを必要とする方法で、アプリケーションがデプロイされている。
 
 既定の要求値のすべてを編集できます。 SAML トークン属性のテーブルで要求の行を選びます。 **[属性の編集]** セクションが開き、要求の名前、値、および要求に関連付けられている名前空間を編集できます。
 
@@ -130,8 +130,9 @@ SAML には制限付きの要求がいくつかあります。 これらの要�
     | http://schemas.microsoft.com/identity/claims/scope |
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Active Directory のアプリケーション管理](../manage-apps/what-is-application-management.md)
-* [Azure Active Directory アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+
+* [Azure AD のアプリケーション管理](../manage-apps/what-is-application-management.md)
+* [Azure AD アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->

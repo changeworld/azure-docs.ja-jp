@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 10/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4809a413ce40532cc0367945fd902188f065baaa
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9c40cfd9b15f2ae6398b70effc4f4d38111cfe1e
+ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306031"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48886067"
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure Active Directory (Azure AD) のスキーマを拡張できます。 この機能により、オンプレミスで引き続き管理する属性を使用して LOB アプリを構築できます。 これらの属性は、[Azure AD Graph API ディレクトリ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)または [Microsoft Graph](https://graph.microsoft.io/) を通じて利用できます。 使用可能な属性を表示するには、それぞれ [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) と [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) を使用します。
@@ -28,6 +28,9 @@ ms.locfileid: "46306031"
 現在のところ、これらの属性を使用する Office 365 ワークロードはありません。
 
 インストール ウィザードのカスタム設定パスで、どの追加属性を同期するかを構成します。
+
+>[!NOTE]
+>[使用可能な属性] ボックスでは、大文字と小文字は区別されます。
 
 ![スキーマ拡張機能のウィザード](./media/how-to-connect-sync-feature-directory-extensions/extension2.png)  
 
