@@ -1,5 +1,5 @@
 ---
-title: '例: 予測エンドポイントを使用してプログラムで分類器を指定してテストする - Custom Vision'
+title: '例: 予測エンドポイントを使用してプログラムで分類子を指定してテストする - Custom Vision'
 titlesuffix: Azure Cognitive Services
 description: API を使用して、Custom Vision Service の分類子によるイメージのテストをプログラムから行う方法を説明します。
 services: cognitive-services
