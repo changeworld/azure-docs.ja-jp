@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2018
+ms.date: 10/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 9281c5fe04e3f29d1e3425edb4841dfaca1cd9e2
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 6974350c6abbc6c5f5a8e10b22e91796e2564b08
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294834"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268061"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-g-suite"></a>チュートリアル: Azure Active Directory と G Suite の統合
 
@@ -51,6 +51,7 @@ G Suite と Azure AD の統合を構成するには、次のものが必要で�
 - Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
 1.  **Q: この統合では、Google Cloud Platform と Azure AD の SSO 統合はサポートされていますか。**
     
     A: はい。 Google Cloud Platform と Google Apps は同じ認証プラットフォームを共有します。 そのため、GCP の統合を実行するには、Google Apps で SSO を構成する必要があります。
@@ -79,25 +80,26 @@ G Suite と Azure AD の統合を構成するには、次のものが必要で�
 1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-g-suite-from-the-gallery"></a>ギャラリーからの G Suite の追加
+
 Azure AD への G Suite の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に G Suite を追加する必要があります。
 
 **ギャラリーから G Suite を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-    ![Azure Active Directory のボタン][1]
+    ![image](./media/google-apps-tutorial/selectazuread.png)
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
+    ![image](./media/google-apps-tutorial/a_select_app.png)
     
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![image](./media/google-apps-tutorial/a_new_app.png)
 
-1. 検索ボックスに「**G Suite**」と入力し、結果ウィンドウで **[G Suite]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに「**G Suite**」と入力し、結果ウィンドウで **[G Suite]** を選び、**[追加]** をクリックしてアプリケーションを追加します。
 
-    ![結果一覧の G Suite](./media/google-apps-tutorial/tutorial_googleapps_addfromgallery.png)
+     ![image](./media/google-apps-tutorial/a_add_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -121,17 +123,23 @@ G Suite で Azure AD のシングル サインオンを構成してテストす�
 
 **G Suite で Azure AD のシングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure Portal の **G Suite** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **G Suite** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![image](./media/google-apps-tutorial/b1_b2_select_sso.png)
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. 画面上部の **[シングル サインオン モードの変更]** をクリックして、**[SAML]** モードを選択します。
 
-    ![[シングル サインオン] ダイアログ ボックス](./media/google-apps-tutorial/tutorial_googleapps_samlbase.png)
+      ![image](./media/google-apps-tutorial/b1_b2_saml_ssso.png)
 
-1. **[G Suite のドメインと URL]** セクションで、**Gmail** を構成する場合は次の手順に従います。
+3. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードの **[選択]** をクリックして、シングル サインオンを有効にします。
 
-    ![[G Suite のドメインと URL] のシングル サインオン情報](./media/google-apps-tutorial/tutorial_googleapps_urlgmail.png)
+    ![image](./media/google-apps-tutorial/b1_b2_saml_sso.png)
+
+4. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+
+    ![image](./media/google-apps-tutorial/b1-domains_and_urlsedit.png)
+
+5. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
 
     a. **[サインオン URL]** ボックスに、`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://mail.google.com` のパターンを使用して URL を入力します。
 
@@ -142,50 +150,55 @@ G Suite で Azure AD のシングル サインオンを構成してテストす�
     | `google.com` |
     | `http://google.com` |
     | `http://google.com/a/<yourdomain.com>` |
+
+    ![image](./media/google-apps-tutorial/b1-domains_and_urls.png)
  
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[G Suite クライアント サポート チーム](https://www.google.com/contact/)に連絡してください。
 
-1. **[G Suite のドメインと URL]** セクションで、**Google Cloud Platform** を構成する場合は次の手順に従います。
+6. G Suite アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性]** ダイアログを開きます。
 
-    ![[G Suite のドメインと URL] のシングル サインオン情報](./media/google-apps-tutorial/tutorial_googleapps_url1.png)
+    ![image](./media/google-apps-tutorial/i3-attribute.png)
 
-    a. **[サインオン URL]** ボックスに、`https://www.google.com/a/<yourdomain.com>/ServiceLogin?continue=https://console.cloud.google.com ` のパターンを使用して URL を入力します。
-
-    b. **[識別子]** ボックスに、次の形式で URL を入力します。 
-    | |
-    |--|
-    | `google.com/a/<yourdomain.com>` |
-    | `google.com` |
-    | `http://google.com` |
-    | `http://google.com/a/<yourdomain.com>` |
+7. **[ユーザー属性]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
     
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[G Suite クライアント サポート チーム](https://www.google.com/contact/)に連絡してください。 
+    a. **[編集]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-1. **[SAML 署名証明書]** セクションで、**[証明書]** をクリックし、コンピューターに証明書ファイルを保存します。
+    ![image](./media/google-apps-tutorial/i2-attribute.png)
 
-    ![証明書のダウンロードのリンク](./media/google-apps-tutorial/tutorial_googleapps_certificate.png) 
+    ![image](./media/google-apps-tutorial/i4-attribute.png)
 
-1. **[保存]** ボタンをクリックします。
+    b. **[ソース属性]** の一覧から、属性値を選択します。
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/google-apps-tutorial/tutorial_general_400.png)
+    c. **[Save]** をクリックします。
 
-1. **[G Suite 構成]** セクションで、**[G Suite を構成する]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL、SAML シングル サインオン サービス URL、パスワードの URL の変更**をコピーします。
+8. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定)** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに適切な証明書をダウンロードして、コンピューターに保存します。
 
-    ![G Suite 構成](./media/google-apps-tutorial/tutorial_googleapps_configure.png) 
+    ![image](./media/google-apps-tutorial/certificatebase64.png)
 
-1. ブラウザーで新しいタブを開き、管理者アカウントを使用して、[G Suite 管理コンソール](http://admin.google.com/)にサインインします。
+9. **[Set up G Suite]\(G Suite の設定)** セクションで、要件どおりの適切な URL をコピーします。
 
-1. **[セキュリティ]** をクリックします。 このリンクが表示されていない場合、画面下部の **[その他の設定]** に隠れていることがあります。
+    URL は次のように表示されている場合があることに注意してください。
+
+    a. ログイン URL
+
+    b. Azure AD 識別子
+
+    c. ログアウト URL
+
+    ![image](./media/google-apps-tutorial/d1_saml.png) 
+
+10. ブラウザーで新しいタブを開き、管理者アカウントを使用して、[G Suite 管理コンソール](http://admin.google.com/)にサインインします。
+
+11. **[セキュリティ]** をクリックします。 このリンクが表示されていない場合、画面下部の **[その他の設定]** に隠れていることがあります。
    
     ![Click Security.][10]
 
-1. **[セキュリティ]** ページで、**[シングル サインオン (SSO) の設定]** をクリックします。
+12. **[セキュリティ]** ページで、**[シングル サインオン (SSO) の設定]** をクリックします。
    
     ![Click SSO.][11]
 
-1. 次の構成の変更を実行します。
+13. 次の構成の変更を実行します。
    
     ![Configure SSO][12]
    
@@ -203,78 +216,66 @@ G Suite で Azure AD のシングル サインオンを構成してテストす�
 
     g. **[変更を保存]** をクリックします。
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![image](./media/google-apps-tutorial/d_users_and_groups.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/google-apps-tutorial/create_aaduser_01.png)
+    ![image](./media/google-apps-tutorial/d_adduser.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/google-apps-tutorial/create_aaduser_02.png)
+    ![image](./media/google-apps-tutorial/d_userproperties.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに、**brittasimon@yourcompanydomain.extension** と入力します  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/google-apps-tutorial/create_aaduser_03.png)
+    c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/google-apps-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
+    d. **作成**を選択します。
  
 ### <a name="create-a-g-suite-test-user"></a>G Suite テスト ユーザーの作成
 
 このセクションの目的は、G Suite ソフトウェアで Britta Simon というユーザーを作成することです。 G Suite では、自動プロビジョニングがサポートされており、これは既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 G Suite ソフトウェアにユーザーがまだ存在しない場合は、G Suite ソフトウェアにアクセスしようとしたときに新しいユーザーが作成されます。
 
+>[!NOTE]
+>シングル サインオンをテストする前に Azure AD でのプロビジョニングが有効にされていない場合は、既に G Suite にユーザーが存在していることを確認してください。
+
 >[!NOTE] 
 >ユーザーを手動で作成する必要がある場合は、[Google サポート チーム](https://www.google.com/contact/)にお問い合わせください。
+
+
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に G Suite へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
-**G Suite に Britta Simon を割り当てるには、次の手順に従います。**
+    ![image](./media/google-apps-tutorial/d_all_applications.png)
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+2. アプリケーションの一覧で **[G Suite]** を選択します。
 
-    ![ユーザーの割り当て][201] 
+    ![image](./media/google-apps-tutorial/d_all_proapplications.png)
 
-1. アプリケーションの一覧で **[G Suite]** を選択します。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![アプリケーションの一覧の G Suite のリンク](./media/google-apps-tutorial/tutorial_googleapps_app.png)  
+    ![image](./media/google-apps-tutorial/d_leftpaneusers.png)
 
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+4. **[追加]** ボタンを選択し、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![image](./media/google-apps-tutorial/d_assign_user.png)
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![[割り当ての追加] ウィンドウ][203]
-
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
-
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
-
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+5. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
@@ -290,18 +291,7 @@ G Suite で Azure AD のシングル サインオンを構成してテストす�
 
 <!--Image references-->
 
-[1]: ./media/googleapps-tutorial/tutorial_general_01.png
-[2]: ./media/googleapps-tutorial/tutorial_general_02.png
-[3]: ./media/googleapps-tutorial/tutorial_general_03.png
-[4]: ./media/googleapps-tutorial/tutorial_general_04.png
-
-[100]: ./media/googleapps-tutorial/tutorial_general_100.png
-
-[200]: ./media/googleapps-tutorial/tutorial_general_200.png
-[201]: ./media/googleapps-tutorial/tutorial_general_201.png
-[202]: ./media/googleapps-tutorial/tutorial_general_202.png
-[203]: ./media/googleapps-tutorial/tutorial_general_203.png
-[10]: ./media/googleapps-tutorial/gapps-security.png
-[11]: ./media/googleapps-tutorial/security-gapps.png
-[12]: ./media/googleapps-tutorial/gapps-sso-config.png
+[10]: ./media/google-apps-tutorial/gapps-security.png
+[11]: ./media/google-apps-tutorial/security-gapps.png
+[12]: ./media/google-apps-tutorial/gapps-sso-config.png
 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 09/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e3e3ff05836cb49d46a25ef3fa55d40a0bd134f
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 479fcc0408021ff63dbcabe3734f60a4ad6d542f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184557"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Azure Active Directory と Award Points Top Sub/Top Team の統合
 
@@ -50,7 +50,8 @@ Azure AD と My Award Points Top Sub/Top Team の統合を構成するには、�
 
 ## <a name="scenario-description"></a>シナリオの説明
 
-このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
+このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。
+このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
 1. ギャラリーからの My Award Points Top Sub/Top Team の追加
 2. Azure AD シングル サインオンの構成とテスト
@@ -112,7 +113,7 @@ Award Points Top Sub/Top Team で Azure AD のシングル サインオンを構
     **[サインオン URL]** ボックスに、`https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<SAMLENTITYID>` のパターンを使用して URL を入力します。
 
     > [!NOTE]
-    > サインオン URL は実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 [My Award Points Top Sub/Top Team クライアント サポート チーム](mailto:myawardpoints@biworldwide.com)に連絡して、この値を入手します。
+    > このチュートリアルの後の手順で `<SAMLENTITYID>` 値を取得します。
 
 4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
@@ -122,7 +123,9 @@ Award Points Top Sub/Top Team で Azure AD のシングル サインオンを構
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/myawardpoints-tutorial/tutorial_general_400.png)
 
-6. **My Award Points Top Sub/Top Team** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [My Award Points Top Sub/Top Team サポート チーム](mailto:myawardpoints@biworldwide.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+6. **[My Award Points Top Sub/Top Team Configuration]\(My Award Points Top Sub/Top Team の構成)** セクションで、**[Configure My Award Points Top Sub/Top Team]\(My Award Points Top Sub/Top Team を構成する)** を選択し、[サインオンの構成] ウィンドウを開きます。 **[クイック リファレンス]** セクションから SAML エンティティ ID をコピーし、Azure portal の **[My Award Points Top Sub/Top Team Domain and URLs] (My Award Points Top Sub/Top Team のドメインと URL)** セクションで、`<SAMLENTITYID>` の代わりに、サインオン URL を含む SAML エンティティ ID 値を追加します。
+
+7. **My Award Points Top Sub/Top Team** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [My Award Points Top Sub/Top Team サポート チーム](mailto:myawardpoints@biworldwide.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

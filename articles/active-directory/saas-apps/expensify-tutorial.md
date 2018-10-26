@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/2/2017
+ms.date: 10/02/2018
 ms.author: jeedes
-ms.openlocfilehash: d53877dbcc25edad14714633bfa11a0c3cbbf76e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c9ee0af3cbf2c1aa7b24d2f4cf5fba9d664bc087
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433260"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>チュートリアル: Azure Active Directory と Expensify の統合
 
@@ -56,25 +56,26 @@ Expensify と Azure AD の統合を構成するには、次のものが必要で
 1. Azure AD シングル サインオンの構成とテスト
 
 ## <a name="adding-expensify-from-the-gallery"></a>ギャラリーからの Expensify の追加
+
 Azure AD への Expensify の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Expensify を追加する必要があります。
 
 **ギャラリーから Expensify を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-    ![Azure Active Directory のボタン][1]
+    ![image](./media/expensify-tutorial/selectazuread.png)
 
-1. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
+2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
+    ![image](./media/expensify-tutorial/a_select_app.png)
     
-1. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![image](./media/expensify-tutorial/a_new_app.png)
 
-1. 検索ボックスに「**Expensify**」と入力し、結果ウィンドウで **Expensify** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Expensify**」と入力し、結果ウィンドウで **Expensify** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![結果一覧の Expensify](./media/expensify-tutorial/tutorial_expensify_addfromgallery.png)
+     ![image](./media/expensify-tutorial/a_add_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
@@ -98,84 +99,75 @@ Expensify で Azure AD のシングル サインオンを構成してテスト�
 
 **Expensify で Azure AD シングル サインオンを構成するには、次の手順を実行します。**
 
-1. Azure Portal の **Expensify** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Expensify** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![image](./media/expensify-tutorial/b1_b2_select_sso.png)
 
-1. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/expensify-tutorial/tutorial_expensify_samlbase.png)
+2. 画面上部の **[シングル サインオン モードの変更]** をクリックして、**[SAML]** モードを選択します。
 
-1. **[Expensify のドメインと URL]** セクションで、次の手順に従います。
+      ![image](./media/expensify-tutorial/b1_b2_saml_ssso.png)
 
-    ![[Expensify のドメインと URL] のシングル サインオン情報](./media/expensify-tutorial/tutorial_expensify_url.png)
+3. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードの **[選択]** をクリックして、シングル サインオンを有効にします。
 
-    a. **[サインオン URL]** ボックスに、URL として「`https://www.expensify.com/authentication/saml/login`」と入力します。
+    ![image](./media/expensify-tutorial/b1_b2_saml_sso.png)
+
+4. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
+
+    ![image](./media/expensify-tutorial/b1-domains_and_urlsedit.png)
+
+5. **[基本的な SAML 構成]** セクションで、次の手順を実行します。
+
+    a. **[サインオン URL]** テキスト ボックスに、「`https://www.expensify.com/authentication/saml/login`」と入力します。
 
     b. **[識別子]** ボックスに、`https://www.<companyname>.expensify.com` の形式で URL を入力します。
 
+    ![image](./media/expensify-tutorial/b1-domains_and_urls.png)
+
     > [!NOTE] 
-    > 識別子 URL の `<companyname>` セクションを自社のドメインに置き換えます。 上記の `https://contoso.expensify.com` の例をご覧ください。 この値を取得するには、[Expensify クライアント サポート チーム](mailto:help@expensify.com)に問い合わせてください。
+    > 識別子 URL の <companyname> セクションを自社のドメインに置き換えます。 上記の `https://contoso.expensify.com` の例をご覧ください。 Expensify では、これは、**[設定] > [Domain Control]** の順に選択して表示されるようなドメインの名前です。
 
-1. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+    ![Expensify ドメイン情報](./media/expensify-tutorial/tutorial_expensify_domain.png)
 
-    ![証明書のダウンロードのリンク](./media/expensify-tutorial/tutorial_expensify_certificate.png) 
+6. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定)** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして要件のとおりに適切な証明書をダウンロードして、コンピューターに保存します。
 
-1. **[保存]** ボタンをクリックします。
+    ![image](./media/expensify-tutorial/certificatebase64.png)
 
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/expensify-tutorial/tutorial_general_400.png)
-
-1. Expensify で SSO を有効にするには、まず、アプリケーションで **Domain Control** を有効にする必要があります。 Domain Control は、[こちら](http://help.expensify.com/domain-control)で説明されている手順を使ってアプリケーションで有効にできます。 さらにサポートが必要な場合は、[Expensify クライアント サポート チーム](mailto:help@expensify.com)に問い合わせてください。 Domain Control を有効にしたら、以下の手順に従います。
+7. Expensify で SSO を有効にするには、まず、アプリケーションで **Domain Control** を有効にする必要があります。 Domain Control は、[こちら](http://help.expensify.com/domain-control)で説明されている手順を使ってアプリケーションで有効にできます。 さらにサポートが必要な場合は、[Expensify クライアント サポート チーム](mailto:help@expensify.com)に問い合わせてください。 Domain Control を有効にしたら、以下の手順に従います。
    
     ![Configure single sign-on](./media/expensify-tutorial/tutorial_expensify_51.png)
     
     a. Expensify アプリケーションにサインオンします。
     
-    b. 上部のツールバーの **[Admin]** をクリックします。
+    b. 左側のパネルで **[設定]** をクリックし、**[SAML]** に移動します。
     
-    c. 左側のパネルで **[ドメイン]** をクリックします。
+    c. **[SAML ログイン]** オプションを **[有効]** に切り替えます。
     
-    d. 確認済みドメイン名をクリックします。
-    
-    e. 左側のパネルで **[SAML]** をクリックし、**[Enabled (有効)]** を選択します。
-    
-    f. Azure AD からダウンロードしたフェデレーション メタデータをメモ帳で開き、その内容をコピーして、**[Identity Provider Metadata]\(ID プロバイダー メタデータ\)** ボックスに貼り付けます。
+    d. Azure AD からダウンロードしたフェデレーション メタデータをメモ帳で開き、その内容をコピーして、**[Identity Provider Metadata]\(ID プロバイダー メタデータ\)** ボックスに貼り付けます。
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
-
-### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成 
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-   ![Azure AD のテスト ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![image](./media/expensify-tutorial/d_users_and_groups.png)
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure Active Directory のボタン](./media/expensify-tutorial/create_aaduser_01.png)
+    ![image](./media/expensify-tutorial/d_adduser.png)
 
-1. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/expensify-tutorial/create_aaduser_02.png)
+    ![image](./media/expensify-tutorial/d_userproperties.png)
 
-1. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに、**brittasimon@yourcompanydomain.extension** と入力します  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![[追加] ボタン](./media/expensify-tutorial/create_aaduser_03.png)
+    c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-1. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
-
-    ![[ユーザー] ダイアログ ボックス](./media/expensify-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
-
-    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
-
-    d. **Create** をクリックしてください。
+    d. **作成**を選択します。
  
 ### <a name="create-an-expensify-test-user"></a>Expensify テスト ユーザーの作成
 
@@ -185,31 +177,25 @@ Expensify で Azure AD のシングル サインオンを構成してテスト�
 
 このセクションでは、Britta Simon に Expensify へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザー ロールを割り当てる][200] 
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
-**Britta Simon を Expensify に割り当てるには、次の手順を実行します。**
+    ![image](./media/expensify-tutorial/d_all_applications.png)
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+2. アプリケーションの一覧で **[Expensify]** を選択します。
 
-    ![ユーザーの割り当て][201] 
+    ![image](./media/expensify-tutorial/d_all_proapplications.png)
 
-1. アプリケーションの一覧で **[Expensify]** を選択します。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![アプリケーションの一覧の Expensify のリンク](./media/expensify-tutorial/tutorial_expensify_app.png)  
+    ![image](./media/expensify-tutorial/d_leftpaneusers.png)
 
-1. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+4. **[追加]** ボタンを選択し、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![[ユーザーとグループ] リンク][202]
+    ![image](./media/expensify-tutorial/d_assign_user.png)
 
-1. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **[Britta Simon]** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-    ![[割り当ての追加] ウィンドウ][203]
-
-1. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
-
-1. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
-
-1. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+5. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
@@ -223,17 +209,6 @@ Expensify で Azure AD のシングル サインオンを構成してテスト�
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
 
-<!--Image references-->
 
-[1]: ./media/expensify-tutorial/tutorial_general_01.png
-[2]: ./media/expensify-tutorial/tutorial_general_02.png
-[3]: ./media/expensify-tutorial/tutorial_general_03.png
-[4]: ./media/expensify-tutorial/tutorial_general_04.png
 
-[100]: ./media/expensify-tutorial/tutorial_general_100.png
-
-[200]: ./media/expensify-tutorial/tutorial_general_200.png
-[201]: ./media/expensify-tutorial/tutorial_general_201.png
-[202]: ./media/expensify-tutorial/tutorial_general_202.png
-[203]: ./media/expensify-tutorial/tutorial_general_203.png
 
