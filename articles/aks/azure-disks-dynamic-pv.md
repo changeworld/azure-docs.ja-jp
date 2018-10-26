@@ -1,26 +1,33 @@
 ---
-title: Azure Kubernetes サービスでの永続ボリュームの作成
-description: Azure ディスクを使用して、Azure Kubernetes Service (AKS) のポッド用の永続ボリュームを作成する方法について説明します
+title: Azure Kubernetes Service (AKS) 上で複数のポッドのディスク ボリュームを動的に作成する
+description: Azure Kubernetes Service (AKS) 上で複数の同時実行ポッドで使用するための Azure ディスクを含む永続ボリュームを動的に作成する方法について説明します
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/20/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 7048ab4e08d25fd5181857a4e7592d0bcb7d3b5f
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 4fea0f63f3e28f25392ef909d9735c6129df69e7
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42885596"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49067009"
 ---
-# <a name="create-persistent-volumes-with-azure-disks-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 用の Azure ディスクによる永続ボリュームの作成
+# <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) 上で Azure ディスクを含む永続ボリュームを動的に作成して使用する
 
-永続ボリュームとは、Kubernetes ポッドで使用するためにプロビジョニングされているストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 Kubernetes 永続ボリュームについて詳しくは、[Kubernetes 永続ボリューム][kubernetes-volumes]に関するページをご覧ください。 この記事では、Azure ディスクの永続ボリュームを Azure Kubernetes Service (AKS) クラスターで使用することの詳細を説明します。
+永続ボリュームとは、Kubernetes ポッドで使用するためにプロビジョニングされているストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 この記事では、Azure Kubernetes Service (AKS) クラスター内の単一のポッドによって使用するために Azure ディスクの永続ボリュームを動的に作成する方法を説明します。
 
 > [!NOTE]
-> Azure ディスクは、*アクセス モード*の種類を *ReadWriteOnce* としてのみマウントでき、この場合、ディスクの利用は、単一の AKS ノードに限られます。 複数のノード間で固定ボリュームを共有する必要がある場合は、[Azure Files][azure-files-pvc] の使用を検討してください。
+> Azure ディスクは、"*アクセス モード*" の種類を *ReadWriteOnce* としてのみマウントでき、この場合、ディスクの利用は、AKS 内の単一のポッドに限られます。 複数のポッド間で永続的なボリュームを共有する必要がある場合は、[Azure Files][azure-files-pvc] を使用します。
+
+Kubernetes 永続ボリュームについて詳しくは、[Kubernetes 永続ボリューム][kubernetes-volumes]に関するページをご覧ください。
+
+## <a name="before-you-begin"></a>開始する前に
+
+この記事は、AKS クラスターがすでに存在していることを前提としています。 AKS クラスターが必要な場合は、[Azure CLI を使用して][ aks-quickstart-cli]または[Azure portal を使用して][aks-quickstart-portal] AKS のクイック スタートを参照してください。
+
+また、Azure CLI バージョン 2.0.46 以降がインストール、構成されていること必要もあります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][install-azure-cli]に関するページを参照してください。
 
 ## <a name="built-in-storage-classes"></a>組み込みストレージ クラス
 
@@ -44,7 +51,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 ```
 
 > [!NOTE]
-> 固定ボリュームの要求は GiB 単位で指定されますが、Azure Managed Disks は SKU の特定のサイズによって課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S50 または P50 ディスクの 4 TiB までです。 Premium 管理ディスクのスループットと IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 詳細については、「[Managed Disks の価格 ][managed-disk-pricing-performance]」を参照してください。
+> 固定ボリュームの要求は GiB 単位で指定されますが、Azure Managed Disks は SKU の特定のサイズによって課金されます。 これらの SKU の範囲は、S4 または P4 ディスクの 32 GiB から、S80 または P80 ディスクの 32 TiB までです。 Premium 管理ディスクのスループットと IOPS パフォーマンスは、SKU と AKS クラスターのノードのインスタンスのサイズに依存します。 詳細については、「[Managed Disks の価格 ][managed-disk-pricing-performance]」を参照してください。
 
 ## <a name="create-a-persistent-volume-claim"></a>永続ボリューム要求の作成
 
@@ -69,10 +76,10 @@ spec:
 > [!TIP]
 > Standard ストレージを使用するディスクを作成するには、*managed-premium*ではなく、`storageClassName: default` を使用します。
 
-[kubectl create][kubectl-create] コマンドで、*azure-premium.yaml* ファイルを指定して永続ボリューム要求を作成します。
+[kubectl apply][kubectl-apply] コマンドを使用して、*azure-premium.yaml*ファイルを指定することで、永続ボリューム要求を作成します。
 
 ```
-$ kubectl create -f azure-premium.yaml
+$ kubectl apply -f azure-premium.yaml
 
 persistentvolumeclaim/azure-managed-disk created
 ```
@@ -90,21 +97,28 @@ metadata:
   name: mypod
 spec:
   containers:
-    - name: myfrontend
-      image: nginx
-      volumeMounts:
-      - mountPath: "/mnt/azure"
-        name: volume
+  - name: mypod
+    image: nginx:1.15.5
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+    - mountPath: "/mnt/azure"
+      name: volume
   volumes:
     - name: volume
       persistentVolumeClaim:
         claimName: azure-managed-disk
 ```
 
-次の例に示すように[kubectl create][kubectl-create] コマンドでポッドを作成します。
+次の例に示すように [kubectl apply][kubectl-apply] コマンドを使用してポッドを作成します。
 
 ```
-$ kubectl create -f azure-pvc-disk.yaml
+$ kubectl apply -f azure-pvc-disk.yaml
 
 pod/mypod created
 ```
@@ -124,7 +138,7 @@ Volumes:
     Type:        Secret (a volume populated by a Secret)
     SecretName:  default-token-smm2n
     Optional:    false
-
+[...]
 Events:
   Type    Reason                 Age   From                               Message
   ----    ------                 ----  ----                               -------
@@ -189,11 +203,18 @@ metadata:
   name: mypodrestored
 spec:
   containers:
-    - name: myfrontendrestored
-      image: nginx
-      volumeMounts:
-      - mountPath: "/mnt/azure"
-        name: volume
+  - name: mypodrestored
+    image: nginx:1.15.5
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+    volumeMounts:
+    - mountPath: "/mnt/azure"
+      name: volume
   volumes:
     - name: volume
       azureDisk:
@@ -202,10 +223,10 @@ spec:
         diskURI: /subscriptions/<guid>/resourceGroups/MC_myResourceGroupAKS_myAKSCluster_eastus/providers/Microsoft.Compute/disks/pvcRestored
 ```
 
-次の例に示すように[kubectl create][kubectl-create] コマンドでポッドを作成します。
+次の例に示すように [kubectl apply][kubectl-apply] コマンドを使用してポッドを作成します。
 
 ```
-$ kubectl create -f azure-restored.yaml
+$ kubectl apply -f azure-restored.yaml
 
 pod/mypodrestored created
 ```
@@ -237,7 +258,7 @@ Azure ディスクを使った Kubernetes 永続ボリュームについて、�
 
 <!-- LINKS - external -->
 [access-modes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes
-[kubectl-create]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create
+[kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [kubernetes-storage-classes]: https://kubernetes.io/docs/concepts/storage/storage-classes/
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
@@ -251,3 +272,6 @@ Azure ディスクを使った Kubernetes 永続ボリュームについて、�
 [az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
 [az-disk-create]: /cli/azure/disk#az-disk-create
 [az-disk-show]: /cli/azure/disk#az-disk-show
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

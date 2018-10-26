@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 10/10/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 65f43eb28ef2ef51409469934d59e1add7e83666
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 57c807b7729b58d2537ee09ddd5d05d4f2afb55e
+ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297216"
+ms.lasthandoff: 10/10/2018
+ms.locfileid: "49068845"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Azure AD の B2B ユーザーにオンプレミスのアプリケーションへのアクセスを許可する
 
@@ -65,9 +65,9 @@ Azure Active Directory (Azure AD) B2B コラボレーション機能を使用し
 - アプリケーション プロキシ認証中に多要素認証 (MFA) が使用されるようにゲスト ユーザーの MFA ポリシーを設定することができます。 詳細は、「[B2B コラボレーション ユーザーの条件付きアクセス](conditional-access.md)」をご覧ください。
 - クラウド B2B ユーザーに対して実行されるスポンサー、アクセス レビュー、アカウントの検証などが、オンプレミス ユーザーに適用されます。 たとえば、ライフサイクル管理ポリシーを使用してクラウド ユーザーが削除された場合、MIM 同期または Azure AD Connect 同期によってオンプレミス ユーザーも削除されます。詳細については、「[Azure AD のアクセス レビューによるゲスト アクセスの管理](../governance/manage-guest-access-with-access-reviews.md)」を参照してください。
 
-### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>MIM を介した B2B ゲスト ユーザー オブジェクトの作成 (プレビュー)
+### <a name="create-b2b-guest-user-objects-through-mim"></a>MIM を介した B2B ゲスト ユーザー オブジェクトの作成
 
-MIM 2016 Service Pack 1 および Microsoft Graph の MIM 管理エージェントを使用してオンプレミス ディレクトリにゲスト ユーザー オブジェクトを作成する方法については、「[Azure AD business-to-business (B2B) collaboration with Microsoft Identity Manager(MIM) 2016 SP1 with Azure Application Proxy (Public Preview)](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario)」(Azure アプリケーション プロキシを使用した Azure AD B2B (Business-to-Business) と Microsoft Identity Manager (MIM) 2016 SP1 のコラボレーション (パブリック プレビュー)) を参照してください。
+MIM 2016 Service Pack 1 および Microsoft Graph の MIM 管理エージェントを使用してオンプレミス ディレクトリにゲスト ユーザー オブジェクトを作成する方法については、「[Azure AD business-to-business (B2B) collaboration with Microsoft Identity Manager(MIM) 2016 SP1 with Azure Application Proxy (Public Preview)](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario)」(Azure アプリケーション プロキシを使用した Azure AD B2B (Business-to-Business) と Microsoft Identity Manager (MIM) 2016 SP1 のコラボレーション) をご覧ください。
 
 ### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>スクリプトを介した B2B ゲスト ユーザー オブジェクトの作成 (プレビュー)
 
