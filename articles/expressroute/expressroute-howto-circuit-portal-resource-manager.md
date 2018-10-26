@@ -53,7 +53,7 @@ ms.locfileid: "29389514"
 1. 新しいリソースを作成するオプションを選択して、ExpressRoute 回線を作成できます。 次の図に示すように、**[リソースの作成]**  >  **[ネットワーク]**  >  **[ExpressRoute]** をクリックします。
 
   ![ExpressRoute 回線の作成](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit1.png)
-2. **[ExpressRoute]** をクリックすると、**[ExpressRoute 回線の作成]** ページが表示されます。 このページで値を入力するときは、正しい SKU 層 (Standard または Premium) とデータ計測課金モデル (無制限または従量制) を指定してください。
+2. **[ExpressRoute]** をクリックすると、**[ExpressRoute 回線の作成]** ページが表示されます。 このページで値を入力するときは、正しい SKU レベル (Standard または Premium) とデータ計測課金モデル (無制限または従量制) を指定してください。
 
   ![SKU レベルとデータ計測方法の構成](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
