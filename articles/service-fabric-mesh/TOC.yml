@@ -1,16 +1,16 @@
 items:
-- name: Service Fabric Mesh のドキュメント
+- name: Service Fabric mesh のドキュメント
   href: index.yml
 - name: 概要
   items:
-  - name: Service Fabric Mesh について
+  - name: Service Fabric mesh について
     href: service-fabric-mesh-overview.md
   expanded: true
 - name: クイック スタート
   items:
   - name: Hello World をデプロイする
     href: service-fabric-mesh-quickstart-deploy-container.md
-  - name: Web アプリを作成して Azure Service Fabric Mesh にデプロイする
+  - name: Web アプリを作成して Azure Service Fabric mesh にデプロイする
     href: service-fabric-mesh-quickstart-dotnet-core.md
 - name: チュートリアル
   items:
@@ -50,7 +50,7 @@ items:
   items:
   - name: 開発環境を設定する
     href: service-fabric-mesh-howto-setup-developer-environment-sdk.md
-  - name: Service Fabric Mesh CLI の設定
+  - name: Service Fabric mesh CLI の設定
     href: service-fabric-mesh-howto-setup-cli.md
   - name: Azure Files ボリュームによる状態の保存
     href: service-fabric-mesh-howto-deploy-app-azurefiles-volume.md
@@ -73,14 +73,14 @@ items:
   - name: スタック オーバーフロー
     href: https://stackoverflow.com/search?q=service-fabric-mesh
   - name: ビデオ
-    href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric-mesh
+    href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=service-fabric-mesh
   - name: リージョン別の提供状況
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 0a148c51aa21e197b3bb3222ec2acb8958fac089
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: e29d383397b202578326d1db34265eddf5f7c40a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180447"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155118"

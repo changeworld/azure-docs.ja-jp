@@ -326,12 +326,6 @@
 
 ## [トラブルシューティング](fundamentals/active-directory-troubleshooting-support-howto.md)
 
-## Azure AD の概念実証 (PoC) のデプロイ
-### [PoC プレイブック: はじめに](active-directory-playbook-intro.md)
-### [PoC プレイブック: 主な要素](active-directory-playbook-ingredients.md)
-### [PoC プレイブック: 実装](active-directory-playbook-implementation.md)
-### [PoC プレイブック: 構成要素](active-directory-playbook-building-blocks.md)
-
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Azure PowerShell コマンドレット](/powershell/azure/overview)

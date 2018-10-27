@@ -41,6 +41,10 @@ items:
     href: key-vault-ovw-throttling.md
   - name: 仮想ネットワーク サービス エンドポイント
     href: key-vault-overview-vnet-service-endpoints.md
+  - name: 認証、要求、応答
+    href: authentication-requests-and-responses.md
+  - name: 一般的なパラメーターとヘッダー
+    href: common-parameters-and-headers.md
   - name: キー、シークレット、証明書について
     href: about-keys-secrets-and-certificates.md
     items:
@@ -88,11 +92,6 @@ items:
     href: /python/api/overview/azure/key-vault?view=azure-python
   - name: REST ()
     href: /rest/api/keyvault
-    items:
-    - name: 認証、要求、応答
-      href: authentication-requests-and-responses.md
-    - name: 一般的なパラメーターとヘッダー
-      href: common-parameters-and-headers.md
   - name: 開発
     items:
     - name: 開発者ガイド
@@ -123,14 +122,14 @@ items:
     href: /learn/browse/?products=azure-key-vault
   - name: 顧客データ
     href: key-vault-customer-data.md
+  - name: リリース ノート
+    href: key-vault-versions.md
   - name: Service
     items:
     - name: 価格
       href: https://azure.microsoft.com/pricing/details/key-vault/
     - name: 利用可能なリージョン
       href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
-    - name: リリース ノート
-      href: key-vault-versions.md
     - name: サービス レベル アグリーメント (SLA)
       href: https://azure.microsoft.com/support/legal/sla/key-vault/
     - name: サービスの制限
@@ -143,9 +142,9 @@ items:
     href: http://blogs.technet.com/b/kv/
 - name: 製品フィードバック
   href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 727a44d903d481974a95635f092468754085db1b
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 64b4f6cbb26da244898d46b8fd5250a2eeeef91e
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50084970"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140944"
