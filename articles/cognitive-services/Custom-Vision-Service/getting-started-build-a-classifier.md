@@ -1,4 +1,4 @@
-﻿---
+---
 title: 分類子の構築 - Custom Vision Service
 titlesuffix: Azure Cognitive Services
 description: Custom Vision Service を使用して、写真内のオブジェクトを識別できる分類子を作成する方法について説明します。
@@ -111,7 +111,7 @@ Custom Vision Service を使用するには、最初に分類子を構築する�
 
 ![[トレーニング] ボタンは、ブラウザー ウィンドウの右上付近にあります。](./media/getting-started-build-a-classifier/train02.png)
 
-トレーニング後、__パフォーマンス__ が表示されます。 精度と再現率のインジケーターでは、自動テストに基づいて、分類器がどの程度適しているかがわかります。 Custom Vision Service は、トレーニング用に送信した画像を使用して、[K-分割交差検証](https://en.wikipedia.org/wiki/Cross-validation_(statistics))と呼ばれるプロセスを使用することにより、これらの数値を計算します。
+トレーニング後、__パフォーマンス__ が表示されます。 精度と再現率のインジケーターでは、自動テストに基づいて、分類子がどの程度適しているかがわかります。 Custom Vision Service は、トレーニング用に送信した画像を使用して、[K-分割交差検証](https://en.wikipedia.org/wiki/Cross-validation_(statistics))と呼ばれるプロセスを使用することにより、これらの数値を計算します。
 
 ![トレーニング結果には、全体的な精度および再現率と、分類子のタグごとの精度および再現率が表示されます。](./media/getting-started-build-a-classifier/train03.png)
 

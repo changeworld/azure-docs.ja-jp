@@ -1,5 +1,5 @@
 ---
-title: '例: 予測エンドポイントを使用してプログラムで分類子を指定してテストする - Custom Vision'
+title: '例: 予測エンドポイントを使用してプログラムで分類器を指定してテストする - Custom Vision'
 titlesuffix: Azure Cognitive Services
 description: API を使用して、Custom Vision Service の分類子によるイメージのテストをプログラムから行う方法を説明します。
 services: cognitive-services
@@ -26,7 +26,7 @@ ms.locfileid: "46363651"
 
 ## <a name="get-the-url-and-prediction-key"></a>URL と予測キーを取得する
 
-[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__ \(パフォーマンス) タブを選択します。 __予測キー__ を含む Prediction API の使用に関する情報を表示するには、__[Prediction URL]\(Prediction の URL\)__ を選択します。 Azure リソースに関連付けられているプロジェクトの場合、__予測キー__ は、関連付けられている Azure リソースの [Azure portal](https://portal.azure.com) ページの __[キー]__ で確認することもできます。 アプリケーションで使用するため、次の情報をコピーします。
+[Custom Vision の Web ページ](https://customvision.ai)から自分のプロジェクトを選択し、__[Performance]__ \(パフォーマンス) タブを選択します。__予測キー__を含む Prediction API の使用に関する情報を表示するには、__[Prediction URL]\(Prediction の URL\)__ を選択します。 Azure リソースに関連付けられているプロジェクトの場合、__予測キー__は、関連付けられている Azure リソースの [Azure portal](https://portal.azure.com) ページの __[キー]__ で確認することもできます。 アプリケーションで使用するため、次の情報をコピーします。
 
 * __[URL]__: __イメージファイル__ を使用するため。
 * __[Prediction-key]__(予測キー) の値。

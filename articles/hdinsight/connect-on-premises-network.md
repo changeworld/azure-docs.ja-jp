@@ -274,7 +274,7 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 2. 手順 1 で識別された IP アドレスについて、その IP アドレスからの受信トラフィックを許可します。
 
-   * __NSG__ を使用している場合: IP アドレスについて、__443__ ポートでの __受信__ トラフィックを許可します。
+   * __NSG__ を使用している場合: IP アドレスについて、__443__ ポートでの__受信__トラフィックを許可します。
    * __UDR__ を使用している場合: IP アドレスについて、ルートの __次ホップ__ の種類を __インターネット__ に設定します。
 
 Azure PowerShell または Azure CLI を使用して NSG を作成する例については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg)」を参照してください。
