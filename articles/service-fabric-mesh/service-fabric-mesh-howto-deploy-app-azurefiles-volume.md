@@ -30,7 +30,7 @@ ms.locfileid: "40038356"
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Cloud Shell または Azure CLI のローカル インストールを使用して、このタスクを実行できます。 この記事で Azure CLI を使用するには、`az --version` が少なくとも `azure-cli (2.0.43)` を返すことを確認します。  こちらの[手順](service-fabric-mesh-howto-setup-cli.md)に従って、Azure Service Fabric Mesh CLI 拡張モジュールをインストール (または更新) してください。
+Azure Cloud Shell または Azure CLI のローカル インストールを使用して、このタスクを実行できます。 この記事で Azure CLI を使用するには、`az --version` が少なくとも `azure-cli (2.0.43)` を返すことを確認します。 こちらの[手順](service-fabric-mesh-howto-setup-cli.md)に従って、Azure Service Fabric Mesh CLI 拡張モジュールをインストール (または更新) してください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
