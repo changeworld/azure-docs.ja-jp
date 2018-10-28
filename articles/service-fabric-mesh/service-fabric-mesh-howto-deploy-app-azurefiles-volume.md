@@ -24,7 +24,7 @@ ms.locfileid: "40038356"
 ---
 # <a name="store-state-in-an-azure-service-fabric-mesh-application-by-mounting-an-azure-files-based-volume-inside-the-container"></a>Azure Files ベースのボリュームをコンテナー内にマウントして Azure Service Fabric Mesh アプリケーションに状態を保存する
 
-この記事では、Service Fabric Mesh アプリケーションのコンテナー内にボリュームをマウントして Azure Files に状態を保存する方法について説明します。 この例のカウンター アプリケーションには、ブラウザーの Web ページにカウンター値を表示する ASP.NET Core サービスがあります。 
+この記事では、Service Fabric Mesh アプリケーションのコンテナー内にボリュームをマウントして Azure Files に状態を保存する方法について説明します。 この例のカウンター アプリケーションには、ブラウザーの Web ページにカウンター値を表示する ASP.NET Core サービスがあります。
 
 `counterService` は、ファイルからカウンター値を繰り返し読み取り、増分してファイルに書き戻します。 このファイルは、Azure Files 共有がサポートするボリュームにマウントされたフォルダーに格納されます。
 
@@ -53,7 +53,7 @@ az account set --subscription "<subscriptionID>"
 アプリケーションのデプロイ先となるリソース グループを作成します。 次のコマンドは、米国東部の場所に `myResourceGroup` という名前のリソース グループを作成します。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus 
+az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
@@ -98,4 +98,4 @@ az group delete --resource-group myResourceGroup
 
 - [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/counter) 上の Azure Files ボリューム サンプル アプリケーションを確認します。
 - Service Fabric リソース モデルの詳細については、[Service Fabric メッシュ リソース モデル](service-fabric-mesh-service-fabric-resources.md)に関するページを参照してください。
-- Service Fabric mesh の詳細については、[Service Fabric mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。
+- Service Fabric Mesh の詳細については、[Service Fabric Mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。
