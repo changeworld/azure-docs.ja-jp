@@ -55,7 +55,7 @@ __Linux ベースの HDInsight__ クラスターでは、[Mono (https://mono-pro
 
 ## <a name="create-the-mapper"></a>マッパーの作成
 
-Visual Studio で、__マッパー__と呼ばれる新しい__コンソール アプリケーション__を作成します。 アプリケーションには次のコードを使用します。
+Visual Studio で、 __マッパー__ と呼ばれる新しい __コンソール アプリケーション__ を作成します。 アプリケーションには次のコードを使用します。
 
 ```csharp
 using System;
@@ -92,7 +92,7 @@ namespace mapper
 
 ## <a name="create-the-reducer"></a>レジューサの作成
 
-Visual Studio で、__レジューサ__と呼ばれる新しい__コンソール アプリケーション__を作成します。 アプリケーションには次のコードを使用します。
+Visual Studio で、 __レジューサ__ と呼ばれる新しい __コンソール アプリケーション__ を作成します。 アプリケーションには次のコードを使用します。
 
 ```csharp
 using System;
@@ -161,7 +161,7 @@ namespace reducer
 
 5. .exe file をアップロードするには、次のいずれかの手順に従ってください。
 
-    * __Azure Storage アカウント__を使用している場合は、アップロード アイコンをクリックし、**マッパー** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**mapper.exe** ファイルを選択し、**[OK]** をクリックします。
+    * __Azure Storage アカウント__ を使用している場合は、アップロード アイコンをクリックし、**マッパー** プロジェクトの **bin\debug** フォルダーを参照します。 最後に、**mapper.exe** ファイルを選択し、**[OK]** をクリックします。
 
         ![アップロード アイコン](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
     

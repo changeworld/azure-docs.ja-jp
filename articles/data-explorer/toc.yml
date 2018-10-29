@@ -15,6 +15,8 @@ items:
       href: ingest-data-event-hub.md
     - name: データのバッチ処理 - Python
       href: python-ingest-data.md
+    - name: データのバッチ処理 - Node SDK
+      href: node-ingest-data.md
     expanded: true
   - name: データのクエリを実行する
     items:
@@ -86,9 +88,9 @@ items:
     href: http://aka.ms/adecostestimator
   - name: サービスの更新情報
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: 49d8f70c130cf9b1fe90b82f49c8f728845a335f
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 25e0445d78d643083022e44c2020e459c31c8b7b
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393302"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139756"
