@@ -9,6 +9,8 @@ items:
     href: allocation-failure-classic.md
 - name: RDP
   items:
+  - name: 接続が頻繁に切れる
+    href: troubleshoot-rdp-intermittent-connectivity.md
   - name: RDP のリセット
     href: reset-rdp.md
   - name: RDP のトラブルシューティング
@@ -17,10 +19,8 @@ items:
     href: detailed-troubleshoot-rdp.md
   - name: 特定のエラーのトラブルシューティング
     href: troubleshoot-specific-rdp-errors.md
-  - name: ライセンス サーバーがない問題のトラブルシューティング
-    href: troubleshoot-rdp-no-license-server.md
-  - name: リモート デスクトップ サービスの問題のトラブルシューティング
-    href: troubleshoot-remote-desktop-services-issues.md
+  - name: RDP の接続が頻繁に切れる問題のトラブルシューティング
+    href: troubleshoot-rdp-intermittent-connectivity.md
 - name: SSH
   items:
   - name: SSH のトラブルシューティング
@@ -129,9 +129,9 @@ items:
   href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: システムの再起動を理解する
   href: understand-vm-reboot.md
-ms.openlocfilehash: ed437e8bce61ecb095d61fae8be8538f12a0134d
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 49e216bfd9f1b7ad9c8e9f74ae67d38359f7f474
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087017"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138278"

@@ -9,7 +9,7 @@ documentType: LandingData
 title: Azure 上の Terraform のドキュメント
 metadata:
   title: Azure 上の Terraform のドキュメント - チュートリアル、サンプル、リファレンス、リソース
-  description: Terraform を使用して、Azure 上の仮想マシンやその他のインフラストラクチャを確実にプロビジョニングする方法について説明します。
+  description: Terraform を使用して、Azure 上で仮想マシンやその他のインフラストラクチャを確実にプロビジョニングする方法を学びます。
   services: terraform
   ms.service: terraform
   keywords: Terraform, Azure, DevOps, チュートリアル, サンプル, リファレンス
@@ -19,7 +19,7 @@ metadata:
   ms.topic: landing-page
   ms.date: 08/31/2018
 abstract:
-  description: Terraform を使用すると、Azure 上で確実にインフラストラクチャのバージョン管理と作成を行うことができます。 Microsoft が提供するクイックスタートとチュートリアルを使用して、リソースの作成、Azure Terraform モジュールの使用、インフラストラクチャの管理をコードで行う方法を確認します。
+  description: Terraform を使用して、Azure 上で確実にインフラストラクチャのバージョン管理と作成を行います。 Microsoft が提供するクイックスタートとチュートリアルを使用して、リソースの作成、Azure Terraform モジュールの使用、インフラストラクチャの管理をコードで行う方法を学びます。
 sections:
 - title: クイック スタート
   items:

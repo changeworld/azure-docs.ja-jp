@@ -1,6 +1,6 @@
 ---
-title: Azure Service Fabric mesh アプリケーションのサービスをスケールする | Microsoft Docs
-description: Azure CLI を使用して Service Fabric mesh で実行されているアプリケーション内のサービスを個別にスケールする方法について説明します。
+title: Azure Service Fabric Mesh アプリケーションのサービスをスケールする | Microsoft Docs
+description: Azure CLI を使用して Service Fabric Mesh で実行されているアプリケーション内のサービスを個別にスケールする方法について説明します。
 services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
@@ -22,7 +22,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 08/10/2018
 ms.locfileid: "40038589"
 ---
-# <a name="scale-services-within-an-application-running-on-service-fabric-mesh"></a>Service Fabric mesh 上で実行されているアプリケーション内でのサービスのスケール
+# <a name="scale-services-within-an-application-running-on-service-fabric-mesh"></a>Service Fabric Mesh 上で実行されているアプリケーション内でのサービスのスケール
 
 この記事では、アプリケーション内でマイクロ サービスを個別にスケールする方法を示します。 この例では、Visual Objects アプリケーションは 2 つのマイクロ サービス `web` と `worker` で構成されています。
 
@@ -30,9 +30,9 @@ ms.locfileid: "40038589"
 
 `worker` サービスは、事前定義された間隔で空間内で三角形を移動し、三角形の位置を `web` サービスに送信します。 DNS を使用して `web` サービスのアドレスを解決します。
 
-## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric mesh CLI の設定
+## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定
 
-Azure Cloud Shell または Azure CLI のローカル インストールを使用して、このタスクを実行できます。 こちらの[手順](service-fabric-mesh-howto-setup-cli.md)に従って、Azure Service Fabric mesh CLI 拡張モジュールをインストールしてください。
+Azure Cloud Shell または Azure CLI のローカル インストールを使用して、このタスクを実行できます。 こちらの[手順](service-fabric-mesh-howto-setup-cli.md)に従って、Azure Service Fabric Mesh CLI 拡張モジュールをインストールしてください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -48,7 +48,7 @@ az account set --subscription "<subscriptionID>"
 アプリケーションのデプロイ先となるリソース グループを作成します。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus 
+az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="deploy-the-application-with-one-worker-service"></a>1 つの worker サービスを使ってアプリケーションをデプロイします。
@@ -63,7 +63,7 @@ az mesh deployment create --resource-group myResourceGroup --template-uri https:
 
 数分後に、次のようなコマンドの結果が返されます。
 
-`visualObjectsApp has been deployed successfully on visualObjectsNetwork with public ip address <IP Address>` 
+`visualObjectsApp has been deployed successfully on visualObjectsNetwork with public ip address <IP Address>`
 
 ## <a name="open-the-application"></a>アプリケーションを開く
 
@@ -97,5 +97,5 @@ az group delete --resource-group myResourceGroup
 ## <a name="next-steps"></a>次の手順
 
 - サンプル アプリケーションを [GitHub](https://github.com/Azure-Samples/service-fabric-mesh/tree/master/src/visualobjects) に表示します。
-- Service Fabric リソース モデルの詳細については、[Service Fabric mesh リソース モデル](service-fabric-mesh-service-fabric-resources.md)に関するページを参照してください。
-- Service Fabric mesh の詳細については、[Service Fabric mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。
+- Service Fabric リソース モデルの詳細については、[Service Fabric Mesh リソース モデル](service-fabric-mesh-service-fabric-resources.md)に関するページを参照してください。
+- Service Fabric Mesh の詳細については、[Service Fabric Mesh の概要](service-fabric-mesh-overview.md)に関するページを参照してください。

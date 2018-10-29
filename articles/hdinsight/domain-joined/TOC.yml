@@ -12,9 +12,9 @@ items:
   - name: HDInsight クラスターへの Azure AD ユーザーの同期
     href: ../hdinsight-sync-aad-users-to-cluster.md
     maintainContext: true
-  - name: Hive ポリシーを構成する
+  - name: Apatch Hive ポリシーを構成する
     href: apache-domain-joined-run-hive.md
-  - name: Kafka ポリシーを構成する
+  - name: Apache Kafka RBAC と Apache Ranger の併用
     href: apache-domain-joined-run-kafka.md
     maintainContext: true
   - name: VSCode を使用して ESP クラスターにリンクする
@@ -100,9 +100,9 @@ items:
   - name: HDInsight 用の Windows ツール
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 96a9db307d2493b93db4765a4a49ef4a51548469
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 08e08fba0b9957babd391cada4a665e5d99fdd90
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365511"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155713"

@@ -18,7 +18,7 @@ ms.locfileid: "48239263"
 ---
 # <a name="what-is-happening-to-workbench-in-azure-machine-learning-preview"></a>Azure Machine Learning の Workbench の変更点 (プレビュー)
 
-Workbench アプリケーションとその他のいくつかの初期機能は、2018 年 9 月のリリースでリプレースされ、改善された[アーキテクチャ](concept-azure-machine-learning-architecture.md)に移行されました。 このリリースには、エクスペリエンスの向上のための顧客からのフィールドによって促進された、多くの重要な更新プログラムが含まれています。 実験の実行からモデルのデプロイまでのコア機能は変更されていませんが、機械学習のタスクとパイプラインを実現するために堅牢 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> と [CLI](reference-azure-machine-learning-cli.md) を使用できるようになりました。  
+Workbench アプリケーションとその他のいくつかの初期機能は、2018 年 9 月のリリースでリプレースされ、改善された[アーキテクチャ](concept-azure-machine-learning-architecture.md)に移行されました。 このリリースには、エクスペリエンスの向上のための顧客からのフィールドによって促進された、多くの重要な更新プログラムが含まれています。 実験の実行からモデルのデプロイまでのコア機能は変更されていませんが、機械学習のタスクとパイプラインを実現するために堅牢 <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> と [CLI](reference-azure-machine-learning-cli.md) を使用できるようになりました。
 
 この記事では、Azure Machine Learning サービスの変更点と、既存の作業に与える影響について説明します。
 
@@ -46,7 +46,7 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 
 |段階|以前の機能のサポート詳細|
 |:---:|----------------|
-|1|_Azure Machine Learning 実験アカウントとモデル管理アカウントを Azure portal と CLI で作成する機能。 CLI から ML コンピューティング環境を作成する機能も終了となります。 既存のアカウントをお持ちの場合、CLI とデスクトップ Workbench はこの段階では引き続き機能します。|
+|1|_Azure Machine Learning 実験アカウント_ と _モデル管理アカウント_ を Azure portal と CLI で作成する機能。 CLI から ML コンピューティング環境を作成する機能も終了となります。 既存のアカウントをお持ちの場合、CLI とデスクトップ Workbench はこの段階では引き続き機能します。|
 |2|デスクトップ Workbench と CLI で以前のワークスペースやプロジェクトを作成するための基礎 API は終了します。 この段階では引き続き、既存のプロジェクトを開いたり、それにスクリプトを追加したり、既存のプロジェクトでスクリプトを実行したり、既存の ML コンピューティング環境に Web サービスをデプロイしたりできます。|
 |3|残りの API やデスクトップ Workbench など、その他すべてのサポートはこの段階で終了します。|
 
@@ -65,11 +65,11 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 
 ## <a name="can-i-still-prep-data"></a>データは引き続き準備できますか。
 
-もう Workbench がないため、既存のデータ準備ファイルは最新のリリースに移植されません。 ただし、引き続きモデリング用にデータを準備することができます。  
+もう Workbench がないため、既存のデータ準備ファイルは最新のリリースに移植されません。 ただし、引き続きモデリング用にデータを準備することができます。
 
-小さいデータセットでは、<a href="http://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Data Prep SDK</a> を使用して、モデリングの前にデータをすばやく準備することができます。 
+小さいデータセットでは、<a href="http://aka.ms/aml-sdk" target="_blank">Azure Machine Learning Data Prep SDK</a> を使用して、モデリングの前にデータをすばやく準備することができます。
 
-大きいデータセットでこれと同じ <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> を使用することも、Azure Databricks を使用して大きいデータセットを準備することもできます。 
+大きいデータセットでこれと同じ <a href="http://aka.ms/aml-sdk" target="_blank">SDK</a> を使用することも、Azure Databricks を使用して大きいデータセットを準備することもできます。
 
 ## <a name="will-projects-persist"></a>プロジェクトは保持されますか。
 
@@ -80,16 +80,16 @@ Azure Machine Learning サービスの最終リリースには、次のものが
 開始方法については、[メインの SDK を使用した Python](quickstart-get-started.md) に関するページを参照してください。
 
 ## <a name="what-about-my-registers-models-and-images"></a>登録されているモデルとイメージについて教えてください。
- 
-古いモデル レジストリに登録したモデルは、それらを引き続き使用したい場合は新しいワークスペースに移行する必要があります。 これは、[モデルをダウンロードして新しいワークスペースに再登録する](how-to-migrate.md)ことで実行できます。 
 
-古いイメージ レジストリに作成したイメージは、引き続き使用するには新しいワークスペースに再作成する必要があります。 これは、[Docker イメージの作成](how-to-deploy-to-aci.md#configure-an-image)に関するセクションの説明に従うことで実行できます。 
+古いモデル レジストリに登録したモデルは、それらを引き続き使用したい場合は新しいワークスペースに移行する必要があります。 これは、[モデルをダウンロードして新しいワークスペースに再登録する](how-to-migrate.md)ことで実行できます。
+
+古いイメージ レジストリに作成したイメージは、引き続き使用するには新しいワークスペースに再作成する必要があります。 これは、[Docker イメージの作成](how-to-deploy-to-aci.md#configure-an-image)に関するセクションの説明に従うことで実行できます。
 
 ## <a name="what-about-deployed-web-services"></a>デプロイ済み Web サービスについて教えてください。
 
 モデル管理アカウントを使用して Web サービスとしてデプロイしたモデルは、Azure Container Service (ACS) がサポートされている限り、引き続き機能します。 それらの Web サービスは、モデル管理アカウントのサポートが終了した後でも機能します。 ただし、古い CLI のサポートが終了すると、それに合わせてそれらの Web サービスを管理する機能も終了します。
 
-新しいバージョンでは、モデルは Web サービスとして [Azure Container Instances](how-to-deploy-to-aci.md) (ACI) または [Azure Kubernetes Service](how-to-deploy-to-aks.md) (AKS) クラスターにデプロイされます。 また、[FPGA や IoT エッジへのデプロイ](how-to-deploy-and-where.md)も可能です。 スコア付けファイル、依存関係、およびスキーマを変更しなくても、新しい SDK または CLI を使用してモデルを再デプロイすることができます。 
+新しいバージョンでは、モデルは Web サービスとして [Azure Container Instances](how-to-deploy-to-aci.md) (ACI) または [Azure Kubernetes Service](how-to-deploy-to-aks.md) (AKS) クラスターにデプロイされます。 また、[FPGA や IoT エッジへのデプロイ](how-to-deploy-and-where.md)も可能です。 スコア付けファイル、依存関係、およびスキーマを変更しなくても、新しい SDK または CLI を使用してモデルを再デプロイすることができます。
 
 ## <a name="what-about-the-old-sdk--cli"></a>以前の SDK と CLI について教えてください。
 
