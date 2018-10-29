@@ -28,7 +28,7 @@ Microsoft は、機械学習モデルを構築、デプロイ、および管理�
 | [Azure Databricks](#azure-databricks) | Spark ベースの分析プラットフォーム | モデルとデータ ワークフローを構築およびデプロイする |
 | [Azure Cognitive Services](#azure-cognitive-services) | AI および ML モデルが事前に構築された Azure サービス | インテリジェントな機能をアプリに簡単に追加する |
 | [Azure Data Science Virtual Machine](#azure-data-science-virtual-machine) | データ サイエンス ツールがプレインストールされた仮想マシン | 事前に構成された環境で ML ソリューションを開発する |
-| オンプレミスの | | |
+| オンプレミス | | |
 | [SQL Server Machine Learning サービス](#sql-server-machine-learning-services) | SQL に組み込まれた分析エンジン | SQL Server の内部にモデルを構築およびデプロイする |
 | [Microsoft Machine Learning Server](#microsoft-machine-learning-server) | 予測分析のためのスタンドアロンのエンタープライズ サーバー | R と Python でモデルを構築およびデプロイする |
 | 開発者用ツール | | |
