@@ -1,6 +1,6 @@
 ---
 title: Service Fabric Mesh アプリをビルドするための Windows 開発環境の設定 | Microsoft Docs
-description: Windows 開発環境を設定して、Service Fabric mesh アプリケーションを作成し、Azure Service Fabric mesh にデプロイします。
+description: Windows 開発環境を設定して、Service Fabric Mesh アプリケーションを作成し、Azure Service Fabric Mesh にデプロイします。
 services: service-fabric-mesh
 keywords: ''
 author: tylermsft
@@ -68,14 +68,14 @@ Install-WindowsFeature Containers
 
 Service Fabric Mesh ランタイム、SDK、ツールを次の順序でインストールします。
 
-1. Web Platform Installer を使用して [Service Fabric mesh SDK][download-sdkmesh] をインストールします。 Microsoft Azure Service Fabric の SDK とランタイムもインストールされます。
+1. Web Platform Installer を使用して [Service Fabric Mesh SDK][download-sdkmesh] をインストールします。 Microsoft Azure Service Fabric の SDK とランタイムもインストールされます。
 2. Visual Studio Marketplace から [Visual Studio Service Fabric Mesh Tools (プレビュー) の拡張機能][download-tools] をインストールします。
 
 ## <a name="build-a-cluster"></a>クラスターの構築
 
 ローカル クラスターがない場合、Visual Studio は、ローカル クラスターを自動的に作成します。そのため、Visual Studio を使用している場合は、このセクションをスキップできます。
 
-Service Fabric アプリを作成および実行する際のデバッグのパフォーマンスを最大限に高めるために、単一ノードのローカル開発クラスターの作成をお勧めします。 このクラスターは、Service Fabric mesh プロジェクトをデプロイまたはデバッグする際は常に実行中の状態にしておく必要があります。
+Service Fabric アプリを作成および実行する際のデバッグのパフォーマンスを最大限に高めるために、単一ノードのローカル開発クラスターの作成をお勧めします。 このクラスターは、Service Fabric Mesh プロジェクトをデプロイまたはデバッグする際は常に実行中の状態にしておく必要があります。
 
 Docker は、クラスターを構築する前に実行しておく**必要があります**。 Docker が実行中であるかどうかをテストするには、ターミナル ウィンドウを開いて `docker ps` を実行し、エラーが発生するかどうか確認します。 応答でエラーが表示されない場合は、Docker は実行中になっており、クラスターを構築する準備ができています。
 
@@ -95,7 +95,7 @@ Docker は、クラスターを構築する前に実行しておく**必要が�
     . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
     ```
 
-これで、Service Fabric mesh アプリケーションを作成する準備ができました。
+これで、Service Fabric Mesh アプリケーションを作成する準備ができました。
 
 ## <a name="next-steps"></a>次の手順
 
