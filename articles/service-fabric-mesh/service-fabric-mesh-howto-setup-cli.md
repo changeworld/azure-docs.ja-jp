@@ -17,16 +17,16 @@ ms.lasthandoff: 10/11/2018
 ms.locfileid: "49115626"
 ---
 # <a name="set-up-the-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定
-Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、Service Fabric Mesh でリソースをデプロイして管理するために必要です。
+Service Fabric Mesh コマンド ライン インターフェイス (CLI) は、Service Fabric Mesh でリソースをデプロイして管理するために必要です。 
 
-プレビューでは、Azure Service Fabric Mesh CLI は Azure CLI の拡張機能として記述されています。 これは、Azure Cloud Shell または Azure CLI のローカル インストールでインストールできます。
+プレビューでは、Azure Service Fabric Mesh CLI は Azure CLI の拡張機能として記述されています。 これは、Azure Cloud Shell または Azure CLI のローカル インストールでインストールできます。 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
 ## <a name="install-the-service-fabric-mesh-cli-locally"></a>Service Fabric Mesh CLI をローカルにインストールする
 CLI をローカルにインストールして使用する場合は、Azure CLI バージョン 2.0.43 以降をインストールする必要があります。 バージョンを確認するには、`az --version` を実行します。 最新バージョンの CLI をインストールするか、最新バージョンにアップグレードする場合は、「[Azure CLI のインストール][azure-cli-install]」を参照してください。
 
-次のコマンドを使用して、Azure Service Fabric Mesh CLI 拡張モジュールをインストールします。
+次のコマンドを使用して、Azure Service Fabric Mesh CLI 拡張モジュールをインストールします。 
 
 ```azurecli-interactive
 az extension add --name mesh

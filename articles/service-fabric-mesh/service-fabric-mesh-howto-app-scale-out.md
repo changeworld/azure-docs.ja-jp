@@ -48,7 +48,7 @@ az account set --subscription "<subscriptionID>"
 アプリケーションのデプロイ先となるリソース グループを作成します。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create --name myResourceGroup --location eastus 
 ```
 
 ## <a name="deploy-the-application-with-one-worker-service"></a>1 つの worker サービスを使ってアプリケーションをデプロイします。
@@ -63,7 +63,7 @@ az mesh deployment create --resource-group myResourceGroup --template-uri https:
 
 数分後に、次のようなコマンドの結果が返されます。
 
-`visualObjectsApp has been deployed successfully on visualObjectsNetwork with public ip address <IP Address>`
+`visualObjectsApp has been deployed successfully on visualObjectsNetwork with public ip address <IP Address>` 
 
 ## <a name="open-the-application"></a>アプリケーションを開く
 
