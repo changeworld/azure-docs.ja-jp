@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 10/18/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 3843898ba2d7cdd3697236a9f4cc19070c6f07c3
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 1ca305ab88e30c911bbded1e5ff97162e12f7652
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395175"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429067"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 更新プログラム
 
@@ -158,7 +158,7 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 
 ### <a name="post-update-steps"></a>更新後の手順
 この更新プログラムをインストールした後、適用可能な修正プログラムがあればインストールします。 詳細については、以下のサポート技術情報と[サービス ポリシー](azure-stack-servicing-policy.md)に関するページを参照してください。 
-- [KB 4467062 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1808.4.108](https://support.microsoft.com/help/4467062/)
+- [KB 4468920 – Azure Stack 修正プログラム Azure Stack 修正プログラム 1.1808.5.110](https://support.microsoft.com/help/4468920/)
 
 
 ## <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
@@ -210,13 +210,13 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
 
 <!-- TBD - IS -->
 - Azure Stack システム上で、次のアラートが繰り返し表示されてから消えることがあります。
-   - *Infrastructure role instance unavailable (インフラストラクチャ ロール インスタンスが使用できません)*
-   - *Scale unit node is offline\(スケール ユニット ノードがオフラインです\)*
+   - *Infrastructure role instance unavailable\(インフラストラクチャ ロール インスタンスを利用できません\)*
+   - *Scale unit node is offline\(スケール ユニットがオフラインです\)*
    
-  [Test-AzureStack](azure-stack-diagnostic-test.md) コマンドレットを実行して、インフラストラクチャ ロール インスタンスとスケール ユニット ノードの正常性を確認してください。 [Test-AzureStack](azure-stack-diagnostic-test.md) によって問題が検出されない場合は、これらのアラートを無視することができます。 問題が検出された場合は、管理ポータルまたは PowerShell を使用して、インフラストラクチャ ロール インスタンスまたはノードの開始を試行できます。
+  [Test-AzureStack](azure-stack-diagnostic-test.md) コマンドレットを実行して、インフラストラクチャ ロール インスタンスとスケール ユニット ノードの正常性を確認してください。 [Test-AzureStack](azure-stack-diagnostic-test.md) によって問題が検出されない場合は、これらのアラートを無視することができます。 問題が検出された場合は、管理ポータルまたは PowerShell を使用して、インフラストラクチャ ロール インスタンスまたはノードの開始を試みることができます。
 
 <!-- 1264761 - IS ASDK --> 
-- 以下の詳細情報の**正常性コントローラー** コンポーネントのアラートが表示される場合があります。  
+- 以下の詳細情報の**正常性コントローラー** コンポーネントのアラートが表示されることがあります:  
 
    アラート #1:
    - 名前: インフラストラクチャ ロールの異常
@@ -259,7 +259,7 @@ Azure Stack 1808 更新プログラムのビルド番号は **1.1808.0.97** で�
       1. テナント ポータルで、**[サブスクリプション]** に移動して、サブスクリプションを検索します。 **[リソース プロバイダー]** をクリックし、**[Microsoft.Compute]** をクリックした後、**[再登録]** をクリックします。
       2. 同じサブスクリプションで、**[アクセス制御 (IAM)]** に移動し、**[Azure Stack – マネージド ディスク]** がリストに含まれていることを確認します。
    2. マルチテナント環境を構成した場合、ゲスト ディレクトリに関連付けられているサブスクリプションで VM をデプロイすると、内部エラー メッセージが出て失敗することがあります。 このエラーを解決するには、次の手順に従ってください。
-      1. [1808 Azure Stack 修正プログラム](https://support.microsoft.com/help/4467062/)を適用します。
+      1. [1808 Azure Stack 修正プログラム](https://support.microsoft.com/help/4468920/)を適用します。
       2. [この記事](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory)にある手順に従って、各ゲスト ディレクトリを構成します。
       
 <!-- 3179561 - IS --> 

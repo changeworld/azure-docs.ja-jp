@@ -2,7 +2,7 @@
 title: Azure Stack で検証テストを実行する | Microsoft Docs
 description: Azure Stack の診断のログ ファイルを収集する方法。
 services: azure-stack
-author: mattbriggs
+author: jeffgilb
 manager: femila
 cloud: azure-stack
 ms.service: azure-stack
@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/15/2018
-ms.author: mabrigg
-ms.reviewer: hectorl
-ms.openlocfilehash: 3f4dc6e4136d8d2e3eb1ca5e822306aae2217e3b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.date: 10/24/2018
+ms.author: jeffgilb
+ms.reviewer: adshar
+ms.openlocfilehash: 4f95fb5f2199e8c276b78a83391f3814303a9470
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340853"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024621"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Azure Stack の検証テストを実行する
 
@@ -39,7 +39,7 @@ Azure Stack の状態を検証できます。 問題が発生している場合�
     3. PowerShell を管理者として開きます。
     4. 次のコマンドを実行します: `Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
     5. 次のコマンドを実行します: `Test-AzureStack`
-4. どのテストも失敗を報告する場合は、`Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` を実行します。このコマンドレットは、Test-AzureStack からログを収集します。 診断ログの詳細については、「[Azure Stack diagnostics tools (Azure Stack 診断ツール)](azure-stack-diagnostics.md)」を参照してください。
+4. どのテストも失敗を報告する場合は、`Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` を実行します。このコマンドレットは、Test-AzureStack からログを収集します。 診断ログの詳細については、「[Azure Stack diagnostics tools (Azure Stack 診断ツール)](azure-stack-diagnostics.md)」を参照してください。 テストで警告が報告された場合、ログを収集したり、Microsoft カスタマー サービス サポート (CSS) に連絡したりすることはしないでください。
 5. **SeedRing** ログを Microsoft カスタマー サービス サポートに送信します。 Microsoft カスタマー サービス サポートは、ユーザーと協力して問題を解決します。
 
 ## <a name="reference-for-test-azurestack"></a>Test-AzureStack のリファレンス

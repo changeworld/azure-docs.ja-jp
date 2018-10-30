@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/02/2018
+ms.date: 10/22/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 4ba890f4763fc77981917d9311cf2bf6c97ec80f
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 8a33d4edb4107b936c36a744bb082c02b7830868
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902445"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024445"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack とデータセンターの統合 - ID
 Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 AD FS を使用したデプロイは、切断モードでの Azure Stack のデプロイとも呼ばれます。
@@ -53,7 +53,6 @@ Graph の構成には、既存の Active Directory に対する読み取りア�
 
 要件:
 
-
 |コンポーネント|要件|
 |---------|---------|
 |Graph|Microsoft Active Directory 2012/2012 R2/2016|
@@ -65,11 +64,21 @@ Graph は、単一の Active Directory フォレストとの統合のみをサ�
 
 自動化パラメーターの入力として、次の情報が必要です。
 
-
 |パラメーター|説明|例|
 |---------|---------|---------|
 |CustomADGlobalCatalog|統合する対象の Active Directory<br>フォレストの FQDN|Contoso.com|
 |CustomADAdminCredentials|LDAP の読み取りアクセス許可を持つユーザー|YOURDOMAIN\graphservice|
+
+### <a name="configure-active-directory-sites"></a>Active Directory サイトを構成する
+
+複数のサイトを持つ Active Directory の展開では、Azure Stack のデプロイに最も近い Active Directory サイトを構成します。 この構成により、Azure Stack Graph サービスで、リモート サイトからグローバル カタログ サーバーを使用してクエリが解決されなくなります。
+
+Azure Stack の[パブリック VIP ネットワーク](azure-stack-network.md#public-vip-network) サブネットを Azure Stack に最も近い Azure AD サイトに追加します。 たとえば、Active Directory にシアトル サイトに Azure Stack がデプロイされたシアトルとレドモンドの 2 つのサイトがある場合、Azure Stack のパブリック VIP ネットワーク サブネットをシアトルの Azure AD サイトに追加します。
+
+Active Directory サイトについて詳しくは、「[サイト トポロジの設計](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology)」をご覧ください。
+
+> [!Note]  
+> Active Directory が単一サイトで構成されている場合、この手順はスキップできます。 包括的なサブネットが構成されている場合、Azure Stack のパブリック VIP ネットワーク サブネットがその一部ではないことを確認します。
 
 ### <a name="create-user-account-in-the-existing-active-directory-optional"></a>既存の Active Directory でユーザー アカウントを作成する (省略可能)
 
@@ -85,14 +94,14 @@ Graph は、単一の Active Directory フォレストとの統合のみをサ�
 
 この手順では、データセンター ネットワーク内の、Azure Stack の特権エンドポイントと通信できるコンピューターを使用します。
 
-2. 管理者特権での Windows PowerShell セッション (管理者として実行) を開き、特権エンドポイントの IP アドレスに接続します。 **CloudAdmin** の資格情報を使用して認証します。
+1. 管理者特権での Windows PowerShell セッション (管理者として実行) を開き、特権エンドポイントの IP アドレスに接続します。 **CloudAdmin** の資格情報を使用して認証します。
 
    ```PowerShell  
    $creds = Get-Credential
    Enter-PSSession -ComputerName <IP Address of ERCS> -ConfigurationName PrivilegedEndpoint -Credential $creds
    ```
 
-3. これで特権エンドポイントに接続されました。次のコマンドを実行します。 
+2. これで特権エンドポイントに接続されました。次のコマンドを実行します。 
 
    ```PowerShell  
    Register-DirectoryService -CustomADGlobalCatalog contoso.com
@@ -199,6 +208,9 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
    Set-ServiceAdminOwner -ServiceAdminOwnerUpn "administrator@contoso.com"
    ```
 
+   > [!Note]  
+   > 既存の AD FS (アカウント STS) 上で証明書をローテーションする場合、AD FS 統合を再設定する必要があります メタデータ エンドポイントに到達できるか、メタデータ ファイルを指定することによって構成された場合でも、統合を設定する必要があります。
+
 ## <a name="configure-relying-party-on-existing-ad-fs-deployment-account-sts"></a>既存の AD FS デプロイ (アカウント STS) の証明書利用者を構成する
 
 マイクロソフトは、要求変換ルールなど、証明書利用者信頼を構成するスクリプトを用意しています。 コマンドは手動で実行できるため、スクリプトの使用は任意です。
@@ -263,7 +275,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -TokenLifeTime 1440
    ```
 
-   > [!IMPORTANT]
+   > [!IMPORTANT]  
    > Windows Server 2012 または 2012 R2 AD FS を使用している場合は、AD FS MMC スナップインを使用して発行承認規則を構成する必要があります。
 
 4. Internet Explorer または Edge ブラウザーを使用して Azure Stack にアクセスするには、トークンのバインドを無視する必要があります。 無視しないと、サインインの試行が失敗します。 AD FS インスタンスまたはファーム メンバーで、次のコマンドを実行します。
@@ -283,7 +295,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 - AD FS でデプロイされるときの Azure Stack の System Center 管理パック
 - AD FS でデプロイされるときの Azure Stack のリソース プロバイダー
 - 各種アプリケーション
-- 非対話型ログオンを要求する
+- 非対話型サインインを要求する
 
 > [!Important]  
 > AD FS は、対話型ログオン セッションにのみ対応しています。 自動化シナリオに対話型ではないログオンを必要とする場合、SPN を使用する必要があります。

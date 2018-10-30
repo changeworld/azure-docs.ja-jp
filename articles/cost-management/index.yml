@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cad92cb36f3e5e038186e9b97f30bed9525e2fea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d65a593286ecd1ee394536033e85febb1dbc6f37
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978745"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229266"
 documentType: LandingData
 title: Azure コスト管理のドキュメント
 metadata:
@@ -17,7 +17,7 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/14/2019
+  ms.date: 10/29/2018
   ms.author: banders
 abstract:
   description: Azure Cost Management とは、Azure の支出を監視および管理してリソース使用量を最適化するのに役立つコスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、コストの分析、予算の作成と管理、推奨事項の確認と対処を行う方法について説明します。

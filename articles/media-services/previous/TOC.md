@@ -26,7 +26,7 @@
 ### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 
 # 方法
-## [管理]
+## 管理
 ### エンティティ
 #### [.NET](media-services-dotnet-manage-entities.md)
 #### [REST](media-services-rest-manage-entities.md)
@@ -233,7 +233,7 @@
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [Azure PowerShell (サービス管理)](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
-## [REST](/rest/api/media/mediaservice)
+## [REST](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)
 ## 仕様
 ### [ライブ取り込み - フラグメント化 MP4 ライブ取り込みの仕様](media-services-fmp4-live-ingest-overview.md)
 ### [ライブ取り込み - ライブ ストリーミングでの時限メタデータのシグナル発信](media-services-specifications-live-timed-metadata.md)
