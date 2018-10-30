@@ -20,9 +20,9 @@ ms.locfileid: "43340352"
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: OpenID Connect による Web サインイン
 OpenID Connect は、ユーザーを Web アプリケーションに安全にサインインさせるために使用できる、OAuth 2.0 に基づいて構築された認証プロトコルです。 OpenID Connect の Azure Active Directory B2C (Azure AD B2C) 実装を使用することにより、Web アプリケーションでのサインアップ、サインイン、その他の ID 管理エクスペリエンスを Azure Active Directory (Azure AD) にアウトソーシングできます。 このガイドでは、これを言語に依存しない方法で実行する方法について説明します。 オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
 
-[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 の "*承認*" プロトコルを "*認証*" プロトコルとして使用できるように拡張したものです。 OpenID Connect を使うことで OAuth を使用したシングル サインオンを行うことができます。 ここでは、クライアントがユーザーの ID を検証したり、ユーザーに関する基本的なプロファイル情報を取得したりできるようにするセキュリティ トークンである *ID トークン*の概念が導入されています。
+[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 の "*認可*" プロトコルを "*認証*" プロトコルとして使用できるように拡張したものです。 OpenID Connect を使うことで OAuth を使用したシングル サインオンを行うことができます。 ここでは、クライアントがユーザーの ID を検証したり、ユーザーに関する基本的なプロファイル情報を取得したりできるようにするセキュリティ トークンである *ID トークン*の概念が導入されています。
 
-これは OAuth 2.0 の拡張であるため、アプリが*アクセス トークン*を安全に取得することも可能になります。 access_token を使用すると、[承認サーバー](active-directory-b2c-reference-protocols.md#the-basics)によってセキュリティ保護されたリソースにアクセスできます。 サーバーでホストされ、ブラウザーでアクセスされる Web アプリケーションを構築する場合は、OpenID Connect をお勧めします。 Azure AD B2C を利用し、モバイルまたはデスクトップ アプリケーションに ID 管理を追加する場合は、OpenID Connect ではなく、 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) をご利用ください。
+これは OAuth 2.0 の拡張であるため、アプリが*アクセス トークン*を安全に取得することも可能になります。 access_token を使用すると、[認可サーバー](active-directory-b2c-reference-protocols.md#the-basics)によってセキュリティ保護されたリソースにアクセスできます。 サーバーでホストされ、ブラウザーでアクセスされる Web アプリケーションを構築する場合は、OpenID Connect をお勧めします。 Azure AD B2C を利用し、モバイルまたはデスクトップ アプリケーションに ID 管理を追加する場合は、OpenID Connect ではなく、 [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) をご利用ください。
 
 Azure AD B2C は、単純な認証と権限付与以上のことができるように標準の OpenID Connect プロトコルを拡張したものです。 これにより、OpenID Connect を使用してサインアップ、サインイン、プロファイル管理などのユーザー エクスペリエンスをアプリに追加できるようにする[ポリシー パラメーター](active-directory-b2c-reference-policies.md)が導入されています。 ここでは、OpenID Connect とポリシーを使用してこれらの各エクスペリエンスを Web アプリケーション内に実装する方法について説明します。 また、Web API にアクセスするためのアクセス トークンを取得する方法についても説明します。
 
