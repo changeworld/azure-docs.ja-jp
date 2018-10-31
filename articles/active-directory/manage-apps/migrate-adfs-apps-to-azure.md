@@ -1,6 +1,6 @@
 ---
-title: AD FS オンプレミス アプリを Azure に移行します。 | Microsoft Docs
-description: この記事は、オンプレミス アプリケーションを Azure AD に移行する方法の理解に役立つことを目的としています。特に、フェデレーション SaaS アプリケーションに重点を置いています。
+title: アプリを AD FS から Azure AD に移動する | Microsoft Docs
+description: この記事は、アプリケーションを Azure AD に移動する方法の理解に役立つことを目的としています。特に、フェデレーション SaaS アプリケーションに重点を置いています。
 services: active-directory
 author: barbkess
 manager: mtillman
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: fa19c932a18102107068303e1474abd992df3161
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: b799a3947770b44752b599dbb2c47cbf1cfbcda2
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48903030"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959062"
 ---
-# <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS オンプレミス アプリを Azure に移行する 
+# <a name="move-applications-from-ad-fs-to-azure-ad"></a>アプリケーションを AD FS から Azure AD に移動する 
 
-この記事では、オンプレミス アプリケーションを Azure Active Directory (Azure AD) に移行する方法を理解するのに役立ちます。 フェデレーション SaaS アプリケーションに重点を置いています。 
+この記事では、アプリケーションを AD FS から Azure Active Directory (Azure AD) に移動する方法を理解するのに役立ちます。 フェデレーション SaaS アプリケーションに重点を置いています。 
 
 この記事では、ステップ バイ ステップ ガイダンスは提供していません。 オンプレミスの構成を Azure AD に変換するしくみを理解して移行を成功させるための概念的なガイダンスを提供しています。 また、一般的なシナリオについても説明します。
 
@@ -31,7 +31,7 @@ ms.locfileid: "48903030"
 
 多くの組織は、クラウド アプリケーションと ID を採用する過程のいずれかの段階にあるでしょう。 Office 365 と Azure AD Connect で運用を始めているかもしれません。 すべてではなく一部の主要なワークロード用に、クラウド ベースの SaaS アプリケーションをセットアップした場合もあるでしょう。  
 
-多くの組織では、Office 365 や Azure AD ベースのアプリのほかに、SaaS またはカスタムの基幹業務 (LOB) アプリを、Active Directory フェデレーション サービス (AD FS) などのオンプレミスのサインオン サービスに直接フェデレーションしています。 この移行ガイドでは、オンプレミス アプリケーションを Azure AD に移行する理由とその方法について説明します。
+多くの組織では、Office 365 や Azure AD ベースのアプリのほかに、SaaS またはカスタムの基幹業務 (LOB) アプリを、Active Directory フェデレーション サービス (AD FS) などのオンプレミスのサインオン サービスに直接フェデレーションしています。 このガイドでは、アプリケーションを Azure AD に移動する理由と方法を説明します。
 
 >[!NOTE]
 >SaaS アプリの構成と移行に関する詳細情報と、カスタム LOB アプリの概要情報を提供します。 カスタム LOB アプリの詳細なガイダンスも、今後提供する予定です。
@@ -40,9 +40,9 @@ ms.locfileid: "48903030"
 
 ![Azure AD を通じてフェデレーションされているアプリ](media/migrate-adfs-apps-to-azure/migrate2.png)
 
-## <a name="reasons-for-migrating-apps-to-azure-ad"></a>アプリを Azure AD に移行する理由
+## <a name="reasons-for-moving-apps-to-azure-ad"></a>アプリを Azure AD に移動する理由
 
-既に AD FS、Ping、またはその他のオンプレミス認証プロバイダーを使用している組織にとって、アプリを Azure AD に移行することには、次のような利点があります。
+既に AD FS、Ping、またはその他のオンプレミス認証プロバイダーを使用している組織にとって、アプリを Azure AD に移動することには、次のような利点があります。
 
 **より安全なアクセス**
 - [Azure AD 条件付きアクセス](../active-directory-conditional-access-azure-portal.md)を使用して、Azure Multi-Factor Authentication を含む、アプリケーションごとの詳細なアクセス制御を構成します。 ポリシーは、SaaS とカスタム アプリに、現在の Office 365 と同じように適用できます。
@@ -61,7 +61,7 @@ ms.locfileid: "48903030"
 - Azure AD の利点を利用しながら、認証のためのオンプレミスのソリューションを引き続き使用することができます。 そのため、オンプレミスの Multi-Factor Authentication ソリューション、ログ記録、監査などの利点はそのまま維持されます。 
 
 **オンプレミスの ID プロバイダーの廃止の支援**
-- オンプレミスの認証製品を廃止しようとしている組織では、アプリを Azure AD に移行すると、いくつかの作業で簡単に切り替えを行うことができます。 
+- オンプレミスの認証製品を廃止しようとしている組織では、アプリを Azure AD に移動すると、一部の作業を取り除かれることで簡単に切り替えを行うことができるようになります。 
 
 ## <a name="mapping-types-of-apps-on-premises-to-types-of-apps-in-azure-ad"></a>オンプレミスのアプリの種類と Azure AD のアプリの種類のマッピング
 ほとんどのアプリは、使用しているサインオンの種類に基づいて、いくつかのカテゴリに分類されます。 これらのカテゴリに応じて、Azure AD でのアプリの表現方法が決まります。
@@ -126,8 +126,8 @@ AD FS と Azure AD は動作が似ているため、信頼関係の構成、サ�
 |識別子/</br>"発行者"|アプリの観点からの IdP の識別子 ("発行者 ID" と呼ばれる場合もあります)。</br></br>SAML トークンでは、値は **Issuer** 要素として表示されます。|AD FS の識別子は、通常、[AD FS の管理] の **[サービス]** > **[フェデレーション サービスのプロパティの編集]** の下にあるフェデレーション サービス識別子です。 例: http&#58;//fs.contoso.com/adfs/services/trust|Azure AD での対応する値は、以下のパターンに従います。{tenant-id} は、テナント ID に置き換えます。 これは、Azure Portal の **[Azure Active Directory]** > **[プロパティ]** で **[ディレクトリ ID]** として確認できます (https&#58;//sts.windows.net/{tenant-id}/)。|
 |IdP </br>フェデレーション </br>metadata|IdP の一般公開されているフェデレーション メタデータの場所 (一部のアプリでは、管理者によって個別に構成される URL、識別子、およびトークン署名証明書の代わりに、フェデレーション メタデータを使用します)。|AD FS フェデレーション メタデータ URL は、[AD FS の管理] の **[サービス]** > **[エンドポイント]** > **[メタデータ]** > **[種類: フェデレーション メタデータ]** の下で確認できます。 例: https&#58;//fs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml|Azure AD での対応する値は、次のパターンに従います: https&#58;//login.microsoftonline.com/{TenantDomainName}/FederationMetadata/2007-06/FederationMetadata.xml。 {TenantDomainName} は、"contoso.onmicrosoft.com" という形式のテナントの名前に置き換えます。 </br></br>詳細については、「[フェデレーション メタデータ](../develop/azure-ad-federation-metadata.md)」を参照してください。
 
-## <a name="migrating-saas-apps"></a>SaaS アプリの移行
-AD FS や他の ID プロバイダーから Azure AD への SaaS アプリの移行は、現時点では手作業で行います。 アプリ固有のガイダンスについては、[Marketplace にある SaaS アプリの統合に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)を参照してください。
+## <a name="moving-saas-apps"></a>SaaS アプリの移動
+AD FS や他の ID プロバイダーから Azure AD への SaaS アプリの移動は、現時点では手作業で行います。 アプリ固有のガイダンスについては、[Marketplace にある SaaS アプリの統合に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)を参照してください。
 
 統合のチュートリアルでは、統合を一から行うことを前提としています。 アプリの計画、評価、構成、および切り替えの際に知っておく必要がある、移行に固有の主要な概念がいくつかあります。  
 - 一部のアプリは簡単に移行することができます。 カスタム要求などのより複雑な要件を持つアプリでは、Azure AD や Azure AD Connect での追加の構成が必要になる場合があります。
@@ -135,7 +135,7 @@ AD FS や他の ID プロバイダーから Azure AD への SaaS アプリの移
 - 追加の要求が必要であると判断した場合は、Azure AD でそれが利用可能であることを確認します。 Azure AD Connect の同期構成を調べて、必要な属性 (**samAccountName** など) が Azure AD に同期されていることを確認します。
 - 属性が Azure AD で利用可能であれば、Azure AD に要求発行規則を追加して、発行されるトークンに要求としてそれらの属性を含めることができます。 これらの規則は、Azure AD のアプリの **[シングル サインオン]** プロパティで追加します。
 
-### <a name="assess-what-can-be-migrated"></a>何を移行できるかの評価
+### <a name="assess-what-can-be-moved"></a>何を移動できるかの評価
 SAML 2.0 アプリケーションは、Marketplace の Azure AD アプリケーション ギャラリーを通じて、または非 Marketplace アプリケーションとして、Azure AD と統合することができます。  
 
 Azure AD で構成するには追加の手順が必要な構成もいくつかあります。また、現時点ではサポートされていない構成もあります。 何を移行できるかを判断するには、各アプリの現在の構成を調べます。 特に、次の項目を確認します。
@@ -144,8 +144,8 @@ Azure AD で構成するには追加の手順が必要な構成もいくつか�
 - 発行された SAML トークンのバージョン。
 - 発行承認規則やアクセス制御ポリシーなど、その他の構成と、Multi-Factor Authentication (追加認証) 規則。
 
-#### <a name="what-can-be-migrated-today"></a>現時点で移行できるもの
-現時点で簡単に移行できるのは、構成要素と要求の標準セットを使用する SAML 2.0 アプリなどです。 これらのアプリの構成要素は、次のとおりです。
+#### <a name="what-can-be-moved-today"></a>現時点で移動できるもの
+現時点で簡単に移動できるのは、構成要素と要求の標準セットを使用する SAML 2.0 アプリなどです。 これらのアプリの構成要素は、次のとおりです。
 - ユーザー プリンシパル名。
 - 電子メール アドレス。
 - 名。

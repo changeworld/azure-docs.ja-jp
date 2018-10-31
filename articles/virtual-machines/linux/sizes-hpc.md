@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 748cb4612b2b5aed26ba8197cfad0782f2645e1e
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 70dca655d5300fcd34b4198093e136f6a971963b
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37902131"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344491"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>ハイ パフォーマンス コンピューティング仮想マシンのサイズ
 
@@ -56,9 +56,21 @@ RDMA 接続をサポートする Azure Marketplace で、イメージの 1 つ�
   > CentOS ベースの HPC イメージでは、 **yum** 構成ファイルでのカーネルの更新は無効にされています。 これは、Linux RDMA ドライバーが RPM パッケージとして配布されており、カーネルが更新された場合にドライバーの更新プログラムが機能しない可能性があるためです。
   > 
  
-### <a name="cluster-configuration"></a>クラスター構成 
-    
-クラスター化された VM で MPI ジョブを実行するには、追加のシステム構成が必要です。 たとえば、VM のクラスターでは、コンピューティング ノード間で信頼関係を確立する必要があります。 標準的な設定については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。
+### <a name="cluster-configuration-options"></a>クラスター構成オプション
+
+Azure には、次に示すような、RDMA ネットワークを使用して通信できる Linux HPC VM のクラスターを作成するためのオプションがいくつか用意されています。 
+
+* **仮想マシン** - 同じ可用性セット内に RDMA 対応の HPC VM をデプロイします (Azure Resource Manager デプロイ モデルを使用する場合)。 クラシック デプロイ モデルを使用する場合は、同じクラウド サービス内に VM をデプロイします。 
+
+* **仮想マシン スケール セット** - VM スケール セットでは、デプロイを 1 つの配置グループに制限するようにしてください。 たとえば、Resource Manager テンプレートでは、`singlePlacementGroup` プロパティを `true` に設定します。 
+
+* **Azure CycleCloud** - [Azure CycleCloud](/azure/cyclecloud/) 内に HPC クラスターを作成して、Linux ノード上で MPI ジョブを実行します。
+
+* **Azure Batch** - [Azure Batch](/azure/batch/) プールを作成して、Linux コンピューティング ノード上で MPI ワークロードを実行します。 詳細については、「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](../../batch/batch-pool-compute-intensive-sizes.md)」を参照してください。 また、Batch でのコンテナー ベースのワークロードの実行について [Batch Shipyard](https://github.com/Azure/batch-shipyard) プロジェクトも参照してください。
+
+* **Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) は、Windows Server ヘッド ノードによって管理される、RDMA 対応の Azure VM にデプロイされたコンピューティング ノード上での複数の Linux ディストリビューションの実行をサポートします。 デプロイの例については、[Azure での HPC Pack Linux RDMA クラスターの作成](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam)に関するページを参照してください。
+
+クラスター管理ツールの選択によっては、MPI ジョブを実行するために追加のシステム構成が必要になることがあります。 たとえば、VM のクラスター上では、SSH キーを生成するか、またはパスワードなしの SSH 信頼関係を確立することによって、クラスター ノード間の信頼を確立することが必要になる場合があります。
 
 ### <a name="network-topology-considerations"></a>ネットワーク トポロジに関する考慮事項
 * Azure の RDMA 対応 Linux VM の場合、Eth1 は RDMA のネットワーク トラフィック用に予約されています。 Eth1 設定や、このネットワークを参照する構成ファイル内の情報を変更しないでください。 Eth0 は Azure の通常のネットワーク トラフィック用に予約されています。
@@ -66,8 +78,7 @@ RDMA 接続をサポートする Azure Marketplace で、イメージの 1 つ�
 * Azure の RDMA ネットワークでは、アドレス空間 172.16.0.0/16 は予約済みです。 
 
 
-## <a name="using-hpc-pack"></a>HPC Pack の使用
-[HPC Pack](https://technet.microsoft.com/library/jj899572.aspx) (Microsoft が無償で提供している HPC クラスターとジョブの管理ソリューション) は、Linux でコンピューティング集中型インスタンスを使用するための選択肢の 1 つです。 最新リリースの HPC Pack では、Azure VM にデプロイされ、Windows Server ヘッド ノードで管理されるコンピューティング ノードで、複数の Linux ディストリビューションを実行できるようになりました。 HPC Pack を使用すると、Intel MPI を実行する RDMA 対応 Linux コンピューティング ノードで、RDMA ネットワークにアクセスする MPI アプリケーションのスケジュール設定と実行が可能です。 「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](classic/hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。
+
 
 ## <a name="other-sizes"></a>その他のサイズ
 - [汎用](sizes-general.md)
@@ -78,8 +89,6 @@ RDMA 接続をサポートする Azure Marketplace で、イメージの 1 つ�
 - [旧世代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>次の手順
-
-- Linux 上の RDMA によりコンピューティング集中型サイズのデプロイと使用を開始する方法については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。
 
 - [Azure コンピューティング ユニット (ACU)](acu.md) を確認することで、Azure SKU 全体の処理性能を比較できます。
 

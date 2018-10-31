@@ -11,12 +11,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: sclyon
-ms.openlocfilehash: 90c8d73e32f4c99c6871ce9cdb7839cd1d380b9b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: b0af47f9ed72507fe9bc47023b456fcb157e25de
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42145436"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091682"
 ---
 # <a name="how-to-globally-distribute-reads-using-read-preference-with-the-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB MongoDB API で読み取り設定を使用してグローバルに読み取りを分配する方法 
 
@@ -111,6 +111,28 @@ MongoDB には、クライアントが使用できる以下の読み取り設定
     assert.equal(null, err);
     console.log("readFromSecondaryPreferredfunc query completed!");
   });
+```
+
+この読み取り設定はまた、接続文字列の URI オプションのパラメーターとして `readPreference` を渡すことによっても設定できます。
+
+```javascript
+const MongoClient = require('mongodb').MongoClient;
+const assert = require('assert');
+
+// Connection URL
+const url = 'mongodb://localhost:27017?ssl=true&replicaSet=globaldb&readPreference=nearest';
+
+// Database Name
+const dbName = 'myproject';
+
+// Use connect method to connect to the Server
+MongoClient.connect(url, function(err, client) {
+  console.log("Connected correctly to server");
+
+  const db = client.db(dbName);
+
+  client.close();
+});
 ```
 
 他のプラットフォームについては、[.NET](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-dotnet-geo-readpreference)、[Java](https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-geo-readpreference) など、対応するサンプル アプリケーションのリポジトリを参照してください。

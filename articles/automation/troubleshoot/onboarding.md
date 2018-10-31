@@ -8,12 +8,12 @@ ms.date: 06/19/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 044cb56b8991a1eb2dd6a1d35be621f2ffab3250
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 40a1955e88b23ecfb86412b388413b920dd2eb1a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37064462"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407607"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>ソリューションをオンボードする際のエラーをトラブルシューティングする
 
@@ -59,9 +59,11 @@ Azure Portal の右上にある通知を確認するか、Automation アカウ�
 
 ## <a name="mma-extension-failures"></a>MMA 拡張機能のエラー
 
-ソリューションをデプロイすると、関連するさまざまなリソースがデプロイされます。 Microsoft Monitoring Agent 拡張機能または OMS エージェント for Linux は、そのようなリソースの 1 つです。 これらは、仮想マシンのゲスト エージェント (構成済みの Operations Management Suite (OMS) ワークスペースとの通信を担当する) によってインストールされる仮想マシン拡張機能です。オンボードしているソリューションが実行を開始した後で利用するバイナリや他のファイルのダウンロードを後から調整することが目的です。
-通常は、Notifications Hub に表示される通知によって、MMA または OMS エージェント for Linux のインストール エラーに最初に気付きます。 その通知をクリックすると、特定のエラーの詳しい情報が表示されます。 [リソース グループ] のリソース、さらにリソース内のデプロイ要素にナビゲートすると、発生したデプロイ エラーの詳細が示されます。
-MMA または OMS エージェント for Linux のインストールは、さまざまな理由のせいでエラーが発生する可能性があるため、そうしたエラーに対処する手順は問題によって異なります。 具体的なトラブルシューティング手順はこの後で説明します。
+[!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
+
+ソリューションをデプロイすると、関連するさまざまなリソースがデプロイされます。 Microsoft Monitoring Agent 拡張機能または Log Analytics エージェント for Linux は、そのようなリソースの 1 つです。 これらは、仮想マシンのゲスト エージェント (構成済みの Log Analytics ワークスペースとの通信を担当する) によってインストールされる仮想マシン拡張機能です。オンボードしているソリューションが実行を開始した後で利用するバイナリや他のファイルのダウンロードを後から調整することが目的です。
+通常は、Notifications Hub に表示される通知によって、MMA または Log Analytics エージェント for Linux のインストール エラーに最初に気付きます。 その通知をクリックすると、特定のエラーの詳しい情報が表示されます。 [リソース グループ] のリソース、さらにリソース内のデプロイ要素にナビゲートすると、発生したデプロイ エラーの詳細が示されます。
+MMA または Log Analytics エージェント for Linux のインストールは、さまざまな理由からエラーが発生する可能性があるため、そうしたエラーに対処する手順は問題によって異なります。 具体的なトラブルシューティング手順はこの後で説明します。
 
 次のセクションでは、オンボードの際に発生して MMA 拡張機能のデプロイメントのエラーを引き起こす可能性があるさまざまな問題について説明します。
 

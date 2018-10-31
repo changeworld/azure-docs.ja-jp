@@ -1,25 +1,26 @@
 ---
-title: Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する | Microsoft Docs
-description: Azure Cosmos DB の Bulk Executor Java ライブラリを使用して、ドキュメントを Azure Cosmos DB コンテナーに一括インポートし、一括更新します。
-keywords: Java Bulk Executor
+title: Bulk Executor Java ライブラリを使用して Azure Cosmos DB での一括インポートおよび更新操作を実行する | Microsoft Docs
+description: Bulk Executor Java ライブラリを使用して Azure Cosmos DB ドキュメントを一括インポートおよび更新します。
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: 9285b0ea50b7207aa40cea2dcab50f79863ffda9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a22cd65ef5d4ef22038a8506359d1036e829db4d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050189"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362111"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
 このチュートリアルでは、Azure Cosmos DB の BulkExecutor Java ライブラリを使用して、Azure Cosmos DB ドキュメントをインポートおよび更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムなドキュメントを生成し、Azure Cosmos DB コンテナーに一括インポートする Java アプリケーションを作成します。 インポートした後、ドキュメントの一部のプロパティを一括更新します。 
+
+現在、Bulk Executor ライブラリは、Azure Cosmos DB SQL API および Gremlin API アカウントによってのみサポートされています。 この記事では、SQL API アカウントで Bulk Executor .Net ライブラリを使用する方法について説明します。 Gremlin API での Bulk Executor .NET ライブラリの使用の詳細については、[Azure Cosmos DB Gremlin API での一括操作の実行](bulk-executor-graph-dotnet.md)に関するページを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -108,7 +109,7 @@ ms.locfileid: "44050189"
    |---------|---------|
    |isUpsert    |   ドキュメントのアップサートを有効にするフラグ。 指定された ID のドキュメントが既に存在する場合は、更新されます。  |
    |disableAutomaticIdGeneration     |   ID の自動生成を無効にするフラグ。 既定値は true です。   |
-   |maxConcurrencyPerPartitionRange    |  パーティション キーの範囲ごとの同時実行の最大限度。 既定値は 20 です。  |
+   |maxConcurrencyPerPartitionRange    |  パーティション キーの範囲ごとのコンカレンシーの最大限度。 既定値は 20 です。  |
 
    **一括インポート応答オブジェクトの定義** 一括インポート API 呼び出しの結果には、次の get メソッドが含まれています。
 
@@ -172,7 +173,7 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
 
    |**パラメーター** |**説明** |
    |---------|---------|
-   |maxConcurrencyPerPartitionRange   |  パーティション キーの範囲ごとの同時実行の最大限度。 既定値は 20 です。  |
+   |maxConcurrencyPerPartitionRange   |  パーティション キーの範囲ごとのコンカレンシーの最大限度。 既定値は 20 です。  |
  
    **一括インポート応答オブジェクトの定義** 一括インポート API 呼び出しの結果には、次の get メソッドが含まれています。
 

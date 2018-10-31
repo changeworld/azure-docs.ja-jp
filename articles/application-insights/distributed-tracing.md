@@ -10,12 +10,12 @@ ms.date: 09/17/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 47ea4fadba50fdbbd6d83531bd4eb40fc581d2ad
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9594ccd0449cf68a63c770cfdee03f255aa2beae
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950201"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638377"
 ---
 # <a name="what-is-distributed-tracing"></a>分散トレースとは
 
@@ -40,12 +40,12 @@ Azure Monitor では、[アプリケーション マップ](https://docs.microso
 * [.NET](https://docs.microsoft.com/azure/application-insights/quick-monitor-portal)
 * [.NET Core](https://docs.microsoft.com/azure/application-insights/app-insights-dotnetcore-quick-start)
 * [Java](https://docs.microsoft.com/azure/application-insights/app-insights-java-get-started)
-* [Node.js](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
+* [Node.JS](https://docs.microsoft.com/azure/application-insights/app-insights-nodejs-quick-start)
 * [JavaScript](https://docs.microsoft.com/azure/application-insights/app-insights-javascript)
 
 適切な Application Insights SDK がインストールおよび構成されると、トレース情報は、SDK 依存関係の自動コレクターによって一般的なフレームワーク、ライブラリ、テクノロジが自動収集されます。 サポートされるテクノロジの完全なリストは、「[依存関係の自動収集](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)」で利用できます。
 
- さらに、任意のテクノロジは、[TeleletryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) 上の [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) への呼び出しによって手動で追跡できます。
+ さらに、任意のテクノロジは、[TelemetryClient](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) 上の [TrackDependency](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics) への呼び出しによって手動で追跡できます。
 
 ## <a name="enable-via-opencensus"></a>OpenCensus を使用して有効にする
 
@@ -59,4 +59,4 @@ OpenCensus Web サイトには、[Python](https://opencensus.io/api/python/trace
 
 * [OpenCensus Python の使用ガイド](https://opencensus.io/api/python/trace/usage.html)
 * [アプリケーション マップ](./app-insights-app-map.md)
-* [エンド ツー エンドのパフォーマンスの監視](./app-insights-tutorial-performance.md)
+* [エンドツーエンドのパフォーマンスの監視](./app-insights-tutorial-performance.md)

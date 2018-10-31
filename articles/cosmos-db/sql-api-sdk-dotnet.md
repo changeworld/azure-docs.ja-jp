@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7de476c6b96856e9b783ed8182985846bb39cfa
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 27b7b4efdb14872ee2d841e17d2e253b6c7c30c3
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452396"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49389770"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>SQL API 用の Azure Cosmos DB .NET SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "47452396"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST ()](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -42,7 +42,7 @@ ms.locfileid: "47452396"
 
 <tr><td>**サンプル**</td><td>[.NET コード サンプル](sql-api-dotnet-samples.md)</td></tr>
 
-<tr><td>**はじめに**</td><td>[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)</td></tr>
+<tr><td>**作業開始**</td><td>[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)</td></tr>
 
 <tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)</td></tr>
 
@@ -50,6 +50,14 @@ ms.locfileid: "47452396"
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+### <a name="a-name213213"></a><a name="2.1.3"/>2.1.3
+
+* System.Net.Security を 4.3.2 に更新しました。
+
+### <a name="a-name212212"></a><a name="2.1.2"/>2.1.2
+
+* 診断トレースの機能強化
+
 ### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
 
 * マルチリージョンの要求の一時的な障害に対する回復力を上げました。
@@ -327,6 +335,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.1.3](#2.1.3) |2018 年 10 月 15 日 |--- |
+| [2.1.2](#2.1.2) |2018 年 10 月 4 日 |--- |
 | [2.1.1](#2.1.1) |2018 年 9 月 27 日 |--- |
 | [2.1.0](#2.1.0) |2018 年 9 月 21 日 |--- |
 | [2.0.0](#2.0.0) |2018 年 9 月 7 日 |--- |

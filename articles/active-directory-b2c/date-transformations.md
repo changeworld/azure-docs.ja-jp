@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ff96b9a63e7340788ef2474ce9934145c184e1e1
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: ac7cc404998fed6897de1bed4b6bd31fca43e820
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542771"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405822"
 ---
 # <a name="date-claims-transformations"></a>日付要求変換
 
@@ -25,12 +25,12 @@ ms.locfileid: "45542771"
 
 ## <a name="assertdatetimeisgreaterthan"></a>AssertDateTimeIsGreaterThan 
 
-ある日時要求 (文字列データ型) が 2 つ目の日時要求 (文字列データ型) よりも大きいことを確認し、例外をスローします。
+ある日時要求 (文字列データ型) が 2 番目の日時要求 (文字列データ型) よりも後であることを確認し、例外をスローします。
 
-| 項目 | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| inputClaim | leftOperand | string | 最初の要求の型。2 番目の要求よりも大きい必要があります。 |
-| inputClaim | rightOperand | string | 2 番目の要求の型。最初の要求よりも小さい必要があります。 |
+| inputClaim | leftOperand | string | 最初の要求の型。2 番目の要求よりも後である必要があります。 |
+| inputClaim | rightOperand | string | 2 番目の要求の型。最初の要求よりも前である必要があります。 |
 | InputParameter | AssertIfEqualTo | ブール値 | 左オペランドが右オペランドと等しい場合にこのアサーションを渡すかどうかを指定します。 |
 | InputParameter | AssertIfRightOperandIsNotPresent | ブール値 | 右オペランドがない場合にこのアサーションを渡すかどうかを指定します。 |
 | InputParameter | TreatAsEqualIfWithinMillseconds | int | 2 つの日時の間で時刻が等しいと見なすことができるミリ秒数を指定します (たとえば、時刻の誤差を説明)。 |
@@ -39,7 +39,7 @@ ms.locfileid: "45542771"
 
 ![AssertStringClaimsAreEqual の実行](./media/date-transformations/assert-execution.png)
 
-次の例では、`currentDateTime` 要求を `approvedDateTime` 要求と比較します。 `currentDateTime` が `approvedDateTime` より大きい場合にエラーがスローされます。 変換で、値が 5 分間 (30,000 ミリ秒) の差以内である場合に等価として扱われます。
+次の例では、`currentDateTime` 要求を `approvedDateTime` 要求と比較します。 `currentDateTime` が `approvedDateTime` より後の場合にエラーがスローされます。 変換で、値が 5 分間 (30,000 ミリ秒) の差以内である場合に等価として扱われます。
 
 ```XML
 <ClaimsTransformation Id="AssertApprovedDateTimeLaterThanCurrentDateTime" TransformationMethod="AssertDateTimeIsGreaterThan">
@@ -90,7 +90,7 @@ ms.locfileid: "45542771"
 
 **Date** ClaimType を **DateTime** ClaimType に変換します。 要求変換によって時間形式が変換され、日付に午前 12 時 00 分 00 秒が追加されます。
 
-| 項目 | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | date | 変換される ClaimType。 |
 | OutputClaim | outputClaim | dateTime | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
@@ -119,7 +119,7 @@ ms.locfileid: "45542771"
 
 現在の UTC 日時を取得し、値を ClaimType に追加します。
 
-| 項目 | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
 | OutputClaim | currentDateTime | dateTime | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
 
@@ -138,17 +138,17 @@ ms.locfileid: "45542771"
 
 ## <a name="datetimecomparison"></a>DateTimeComparison
 
-ある dateTime が別の dateTime より後であるか、前であるか、または等しいかを確認します。 結果は、true または false の値を含む新しい ClaimType ブール値です。
+ある dateTime が別の dateTime より後であるか、前であるか、または等しいかを確認します。 結果は、`true` または `false` の値を含む新しい ClaimType ブール値です。
 
-| 項目 | TransformationClaimType | データ型 | メモ |
+| Item | TransformationClaimType | データ型 | メモ |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | firstDateTime | dateTime | 比較する最初の dateTime。 Null 値の場合は例外がスローされます。 |
-| InputClaim | secondDateTime | dateTime | 完了する 2 番目の dateTime。 Null 値の場合は現在の datetTime として扱われます。 |
+| InputClaim | firstDateTime | dateTime | 2 番目の dateTime よりも前か後かを比較する最初の dateTime。 Null 値の場合は例外がスローされます。 |
+| InputClaim | secondDateTime | dateTime | 最初の dateTime よりも前か後かを比較する 2 番目の dateTime。 Null 値は、現在の datetTime として扱われます。 |
 | InputParameter | operator | string | 次のいずれかの値: 同じ、より後、より前。 |
 | InputParameter | timeSpanInSeconds | int | 最初の datetime に timespan を追加します。 |
 | OutputClaim | result | ブール値 | この ClaimsTransformation が呼び出された後に生成される ClaimType。 |
 
-この要求変換を使用すると、2 つの ClaimType が互いにとって等しいか、新しいか、または古いかを判断できます。 たとえば、ユーザーがサービス使用条件 (TOS) に同意した最終時刻を格納できます。 3 か月後に、TOS にもう一度アクセスするようユーザーに要求できます。
+この要求変換を使用すると、2 つの ClaimType がお互いにとって等しいか、後か、前かを判断できます。 たとえば、ユーザーがサービス使用条件 (TOS) に同意した最終時刻を格納できます。 3 か月後に、TOS にもう一度アクセスするようユーザーに要求できます。
 要求変換を実行するには、まず現在の dateTime と、ユーザーが TOS に同意した最終時刻を取得する必要があります。
 
 ```XML
@@ -158,7 +158,7 @@ ms.locfileid: "45542771"
     <InputClaim ClaimTypeReferenceId="extension_LastTOSAccepted" TransformationClaimType="secondDateTime" />
   </InputClaims>
   <InputParameters>
-    <InputParameter Id="operator" DataType="string" Value="greater than" />
+    <InputParameter Id="operator" DataType="string" Value="later than" />
     <InputParameter Id="timeSpanInSeconds" DataType="int" Value="7776000" />
   </InputParameters>
   <OutputClaims>
@@ -173,7 +173,7 @@ ms.locfileid: "45542771"
     - **firstDateTime**: 2018-01-01T00:00:00.100000Z
     - **secondDateTime**: 2018-04-01T00:00:00.100000Z
 - 入力パラメーター:
-    - **operator**: greater than
+    - **演算子**: later than
     - **timeSpanInSeconds**: 7776000 (90 日間)
 - 出力要求: 
     - **result**: true

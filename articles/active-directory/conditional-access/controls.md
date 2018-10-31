@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2018
+ms.date: 10/18/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 050ccff8501a22526e9382a620258b0f846efe5c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 065eee57b78ea10d5e8079de3a938dc00dd60ee2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128723"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406774"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件付きアクセスによるアクセス制御の概要 
 
@@ -105,7 +105,7 @@ ms.locfileid: "43128723"
 テナント内のユーザーが、リソースへのアクセスを許可される前に使用条件に同意することを要求できます。 管理者として、PDF ドキュメントをアップロードすることによって使用条件を構成およびカスタマイズできます。 ユーザーがこのコントロールのスコープに入った場合、アプリケーションへのアクセスは使用条件が同意された場合にのみ許可されます。 
 
 
-### <a name="custom-controls"></a>カスタム コントロール 
+### <a name="custom-controls-preview"></a>カスタム コントロール (プレビュー) 
 
 Azure Active Directory の外部にあるさらなる要件を満たすためにユーザーを互換性のあるサービスにリダイレクトする条件付きアクセスのカスタム コントロールを作成できます。 これにより、特定の外部の多要素認証および検証プロバイダーを使用して、条件付きアクセスの規則を適用したり、独自のカスタム サービスを構築したりできます。 このコントロールを満たすために、ユーザーのブラウザーは外部サービスにリダイレクトされ、すべての必要な認証または検証アクティビティを実行してから、元の Azure Active Directory にリダイレクトされます。 ユーザーが正常に認証または検証された場合、そのユーザーは条件付きアクセス フロー内にとどまります。 
 
@@ -118,13 +118,10 @@ Azure Active Directory の外部にあるさらなる要件を満たすために
 現在、互換性のあるサービスを提供しているプロバイダーには次のものがあります。
 
 - [Duo Security](https://duo.com/docs/azure-ca)
-
 - [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
-
+- [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
-
 - [Trusona](https://www.trusona.com/docs/azure-ad-integration-guide)
-
 
 これらのサービスの詳細については、プロバイダーに直接問い合せてください。
 

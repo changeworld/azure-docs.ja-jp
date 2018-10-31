@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/25/2018
 ms.reviewer: daviste
 ms.author: mbullwin
-ms.openlocfilehash: 9188776fdd213f01523069b08bd898f48bee57a4
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 85547bd8528c4d5d4a627750bb5334f05ed231b1
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091483"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024314"
 ---
 # <a name="impact-analysis-with-application-insights"></a>Application Insights による影響分析
 
@@ -68,7 +68,7 @@ ms.locfileid: "47091483"
 
 ## <a name="how-does-the-impact-tool-calculate-these-conversion-rates"></a>影響ツールによってこれらのコンバージョン率が計算される方法
 
-内部的には、影響ツールは [ピアソン相関関係の係数] に依存しています (https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)。 結果は -1 と 1 の間で計算されます。ここでは、-1 がゼロ相関を表し、1 が正相関を表します。
+内部的には、影響ツールは[ピアソン相関関係の係数](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)に依存しています。 結果は -1 と 1 の間で計算されます。ここでは、-1 がゼロ相関を表し、1 が正相関を表します。
 
 影響分析のしくみを単純に分解すると、次のようになります。
 

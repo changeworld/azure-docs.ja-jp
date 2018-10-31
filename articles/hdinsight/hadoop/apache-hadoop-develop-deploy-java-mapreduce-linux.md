@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: jasonh
-ms.openlocfilehash: 8583d993ecc23ac428047bf886bcb9158e3be978
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6ad61957af65268fa9e3d58a3e0f3a5e9b4d4531
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049436"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957753"
 ---
 # <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight"></a>HDInsight での Hadoop 用 Java MapReduce プログラムの開発
 
@@ -253,7 +253,7 @@ Java と JDK をインストールするときに、次のような環境変数�
    scp target/wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
    ```
 
-__USERNAME__ を SSH ユーザー名に置き換えます。 __CLUSTERNAME__ を HDInsight クラスター名に置き換えます。
+__USERNAME__ は、クラスターの SSH ユーザー名に置き換えます。 __CLUSTERNAME__ を HDInsight クラスター名に置き換えます。
 
 このコマンドにより、ファイルがローカル システムからヘッド ノードにコピーされます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 

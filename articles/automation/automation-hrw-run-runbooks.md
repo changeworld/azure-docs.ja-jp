@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a0b5188605874a04f0341cde1a68487c8a50df84
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 48dcc558d4855874df02ad5c631211f16fd8c29e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431816"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024989"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行
 
@@ -89,7 +89,7 @@ Hybrid Runbook Worker で Azure リソースのマネージド ID を使用す�
 1. Azure VM の作成
 2. [VM で Azure リソースのマネージド ID を構成します](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
 3. [Resource Manager で VM にリソース グループへのアクセスを許可します](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)
-4. [VM のシステム割り当てのマネージド ID を使用してアクセス トークンを取得します] (../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
+4. [VM のシステム割り当てマネージド ID を使用してアクセス トークンを取得します](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
 5. 仮想マシンに [Windows Hybrid Runbook Worker をインストールします](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker)。
 
 前記の手順が完了したら、Azure リソースに対する認証のために Runbook で `Connect-AzureRmAccount -Identity` を使用できます。 これで、実行アカウントを利用して実行アカウントの証明書を管理する必要が減ります。

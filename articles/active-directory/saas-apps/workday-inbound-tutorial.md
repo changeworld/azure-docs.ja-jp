@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 917baa4b0d983df858c64cd0fa5b697b0fbb316c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2ab2ac34132eff65e1d6c77794486bc8d9858b40
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298270"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408182"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる (プレビュー)
 
@@ -74,7 +74,7 @@ Workday の統合を開始する前に、以下の前提条件を確認し、現
 * グローバル管理者アクセス権を持つ有効な Azure AD Premium P1 サブスクリプション
 * テストと統合のために Workday を実装したテナント
 * システム統合ユーザーを作成し、テスト目的でテスト用従業員データを変更する Workday の管理者権限
-* Active Directory へのユーザー プロビジョニングの場合、[オンプレミス同期エージェント](https://go.microsoft.com/fwlink/?linkid=847801)をホストするために、Windows Service 2012 以上を実行するドメインに参加しているサーバーが必要です
+* Active Directory へのユーザー プロビジョニングの場合、[オンプレミス同期エージェント](https://go.microsoft.com/fwlink/?linkid=847801)をホストするために、Windows Server 2012 以上を実行するドメインに参加しているサーバーが必要です
 * Active Directory と Azure AD を同期する [Azure AD Connect](../hybrid/whatis-hybrid-identity.md)
 
 ### <a name="solution-architecture"></a>ソリューションのアーキテクチャ

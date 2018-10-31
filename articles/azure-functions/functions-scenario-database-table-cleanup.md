@@ -11,17 +11,20 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: a257948c97437d6045f705acb02054928d22ff89
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 024958d8a548313b53fc24ade5805de036a89afb
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092871"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351917"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
 このトピックでは、Azure Functions を使用して Azure SQL Database のテーブルの行をクリーンアップするスケジュール済みジョブを作成する方法を示します。 この新しい C# スクリプト関数は、Azure Portal の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 このシナリオではデータベースに対する一括操作を使用しています。 
 
 Mobile Apps のテーブルにおける、作成、読み取り、更新、および削除 (CRUD) のそれぞれの操作を関数で処理する場合は、[Mobile Apps バインド](functions-bindings-mobile-apps.md)を使用する必要があります。
+
+> [!IMPORTANT]
+> このドキュメント内のサンプルは 1.x ランタイムに適用できます。 1.x 関数アプリを作成する方法については、[こちらにあります](./functions-versions.md#creating-1x-apps)。
 
 ## <a name="prerequisites"></a>前提条件
 

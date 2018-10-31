@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 63c193b4757c28f809a33b917058df36467d4db4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0ba7ed902c6ecb7a328aa6db3d3855b88bed2813
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163020"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637564"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer のアウトバウンド規則
 
@@ -180,10 +180,10 @@ disableOutboundSnat パラメーターの既定値は false です。この場�
 
 #### <a name="outbound-nat-for-internal-standard-load-balancer-scenarios"></a>内部 Standard Load Balancer の送信 NAT のシナリオ
 
-内部 Standard Load Balancer を使用する場合、パブリック Standard Load Balancer も構成されるまで送信 NAT は使用できません。 これを変更するには、アウトバウンド規則を使用して、内部 Standard Load Balancer の背後にある VM の送信接続を作成します。
+内部 Standard Load Balancer を使用する場合、送信接続が明示的に宣言されるまで送信 NAT は使用できません。 以下の手順で、アウトバウンド規則を使用して内部 Standard Load Balancer の背後にある VM の送信接続を作成し、送信接続を定義します。
 
 1. パブリック Standard Load Balancer を作成します。
-2. バックエンド プールを作成し、VM をパブリック Load Balancer のバックエンド プールに配置します。
+2. 内部 Load Balancer に加えて、バックエンド プールを作成し、VM をパブリック Load Balancer のバックエンド プールに配置します。
 3. これらの VM の送信 NAT をプログラムするように、パブリック Load Balancer のアウトバウンド規則を構成します。
 
 #### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a>パブリック Standard Load Balancer で送信 NAT の TCP プロトコルと UDP プロトコルの両方を有効にする

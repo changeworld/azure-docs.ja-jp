@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/11/2017
 ms.author: ghogen
-ms.openlocfilehash: 56b01855a5996bb62f721bda2bfc207684227854
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1ec587f4a4519f86efceb7cefa0acb372035a9a9
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42144331"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318216"
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>Visual Studio での複数のサービス構成を使用した Azure プロジェクトの構成
 
@@ -75,8 +75,9 @@ HTTPS エンドポイントを既に追加している場合は、既定で [HTT
 新規または既存の接続文字列については、**[値]** フィールドの右側にある **[...]*** を選択して **[ストレージ接続文字列の作成]** ダイアログを開きます。
 
 1. **[接続方法]** で **[サブスクリプション]** オプションを選択して、サブスクリプションからストレージ アカウントを選択します。 そうすると Visual Studio が、`.publishsettings` ファイルからストレージ アカウントの資格情報を自動的に取得します。
-1. **[手動で入力された資格情報]** を選択すると、Azure Portal の情報を使用してアカウント名とキーを直接指定できます。 アカウント キーをコピーするには、次の手順 a を実行します。 Azure Portal でストレージ アカウントに移動し、**[キーの管理]** を選択します。
-    2. アカウント キーをコピーするには、Azure Portal でストレージ アカウントに移動し、**[設定] > [アクセス キー]** を選択してから、コピー ボタンを使用してプライマリ アクセス キーをクリップボードにコピーします。
+1. **[手動で入力された資格情報]** を選択すると、Azure Portal の情報を使用してアカウント名とキーを直接指定できます。 アカウント キーをコピーするには:
+    1. Azure Portal でストレージ アカウントに移動し、**[キーの管理]** を選択します。
+    1. アカウント キーをコピーするには、Azure Portal でストレージ アカウントに移動し、**[設定] > [アクセス キー]** を選択してから、コピー ボタンを使用してプライマリ アクセス キーをクリップボードにコピーします。
 1. 接続オプションのいずれかを選択します。 **[カスタム エンドポイントの指定]** では、特定の BLOB の URL、テーブル、キューを指定するように求められます。 カスタム エンドポイントを使用すると、[カスタム ドメイン](storage/blobs/storage-custom-domain-name.md)を使用してアクセスをより正確に制御できます。 「[Azure Storage の接続文字列を構成する](./storage/common/storage-configure-connection-string.md)」を参照してください。
 1. **[OK]** を選択してから **[ファイル] > [保存]** を実行して、構成を新しい接続文字列に更新します。
 

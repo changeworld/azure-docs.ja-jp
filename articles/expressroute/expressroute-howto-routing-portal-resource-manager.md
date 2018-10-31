@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/12/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9b96417140bea581aeb106e45c3c93a19858dfe7
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 7acfb71dd3edd798095472b8f863a658dccaa51b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310883"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955187"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute 回線のピアリングの作成と変更を行う
 
@@ -156,6 +156,11 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 ### <a name="deleteprivate"></a>Azure プライベート ピアリングを削除するには
 
 ピアリングの構成を削除するには、次の図ように削除アイコンを選びます。
+
+> [!WARNING]
+> この例を実行する前に、すべての仮想ネットワークと ExpressRoute Global Reach 接続が削除されていることを確認する必要があります。 
+> 
+> 
 
 ![プライベート ピアリングを削除する](./media/expressroute-howto-routing-portal-resource-manager/rprivate4.png)
 

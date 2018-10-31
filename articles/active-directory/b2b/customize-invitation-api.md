@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 20c824da82d6e3e66bfa2d7447c8a9573cbdce69
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 8809a5a8b4f76d6e33bbb934e13931e86f2d681c
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985815"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091774"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B コラボレーションの API とカスタマイズ
 
@@ -79,7 +79,7 @@ API は、以下の承認モードで実行できます。
 
 
 ## <a name="powershell"></a>PowerShell
-PowerShell を使用して、簡単に外部ユーザーを組織に追加および招待できるようになりました。 次のコマンドレットを使用して招待を作成します。
+PowerShell を使用して、簡単に外部ユーザーを組織に追加および招待できます。 次のコマンドレットを使用して招待を作成します。
 
 ```
 New-AzureADMSInvitation
@@ -92,7 +92,25 @@ New-AzureADMSInvitation
 * -SendInvitationMessage
 * -InvitedUserMessageInfo
 
-招待 API のリファレンスは、[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) で確認することもできます
+### <a name="invitation-status"></a>招待の状態
+
+外部ユーザーに招待を送信した後、**Get-AzureADUser** コマンドレットを使用して、招待が受け取られたかどうかを確認できます。 外部ユーザーに招待が送信されると、Get-AzureADUser の次のプロパティが入力されます。
+
+* **UserState** は、招待が **PendingAcceptance** であるか **Accepted** であるかを示します。
+* **UserStateChangedOn** は、**UserState** プロパティに対する最新の変更のタイムスタンプを示します。
+
+**Filter** オプションを使用して、**UserState** で結果をフィルター処理できます。 次の例では、保留中の招待を持っているユーザーのみを表示するように結果をフィルター処理する方法を示しています。 表示するプロパティを指定するための **Format-List** オプションも示しています。 
+ 
+```
+Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Property DisplayName,UserPrincipalName,UserState,UserStateChangedOn
+```
+
+> [!NOTE]
+> AzureAD PowerShell モジュールまたは AzureADPreview PowerShell モジュールが最新バージョンであることを確認してください。 
+
+## <a name="see-also"></a>関連項目
+
+招待 API のリファレンスは、[https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) で確認できます。
 
 ## <a name="next-steps"></a>次の手順
 

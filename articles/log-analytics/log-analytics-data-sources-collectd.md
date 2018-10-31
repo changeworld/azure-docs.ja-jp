@@ -1,5 +1,5 @@
 ---
-title: OMS Log Analytics での CollectD からのデータの収集 | Microsoft Docs
+title: Log Analytics での CollectD からのデータの収集 | Microsoft Docs
 description: CollectD は、アプリケーションおよびシステム レベルの情報から定期的にデータを収集するオープン ソースの Linux デーモンです。  この記事では、Log Analytics での CollectD からのデータの収集に関する情報を提供します。
 services: log-analytics
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: eb053ef8fc66ff9d71a9576b71eb4edfcd688638
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: a1f28103f8faabae166f09185db3f3e1fee7a5ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041292"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404598"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Log Analytics で Linux エージェント上の CollectD からデータを収集する
 [CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Log Analytics での CollectD からのパフォーマンス データの収集に関する情報を提供します。
@@ -29,7 +29,9 @@ ms.locfileid: "48041292"
 
 ![CollectD の概要](media/log-analytics-data-sources-collectd/overview.png)
 
-次の CollectD 構成は、CollectD データを OMS Agent for Linux にルーティングするために OMS Agent for Linux に含まれています。
+次の CollectD 構成は、CollectD データを Linux 用 Log Analytics エージェントにルーティングするために、Linux 用 Log Analytics エージェントに含まれています。
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
     LoadPlugin write_http
 
@@ -52,12 +54,12 @@ ms.locfileid: "48041292"
        </URL>
     </Plugin>
 
-CollectD 構成では、既定の `write_http` プラグインを使用して、パフォーマンス メトリック データをポート 26000 経由で OMS Agent for Linux に送信します。 
+CollectD 構成では、既定の `write_http` プラグインを使用して、パフォーマンス メトリック データをポート 26000 経由で Linux 用 Log Analytics エージェントに送信します。 
 
 > [!NOTE]
 > このポートは、必要に応じてカスタム定義のポートに構成できます。
 
-OMS Agent for Linux はまた、CollectD メトリックのためにポート 26000 をリッスンし、それらを OMS スキーマ メトリックに変換します。 OMS Agent for Linux の構成 `collectd.conf` を次に示します。
+また、Linux 用 Log Analytics エージェントは、CollectD メトリックのためにポート 26000 をリッスンし、それらを Log Analytics スキーマ メトリックに変換します。 Linux 用 Log Analytics エージェントの構成 `collectd.conf` を次に示します。
 
     <source>
       type http
@@ -72,19 +74,19 @@ OMS Agent for Linux はまた、CollectD メトリックのためにポート 26
 
 ## <a name="versions-supported"></a>サポートされているバージョン
 - Log Analytics は現在、CollectD バージョン 4.8 以降をサポートしています。
-- CollectD メトリックの収集には OMS Agent for Linux v1.1.0-217 以降が必要です。
+- CollectD メトリックの収集には Linux 用 Log Analytics エージェント v1.1.0-217 以降が必要です。
 
 
 ## <a name="configuration"></a>構成
 Log Analytics での CollectD データの収集を構成するための基本的な手順を次に示します。
 
-1. write_http プラグインを使用してデータを OMS Agent for Linux に送信するように CollectD を構成します。  
-2. 適切なポート上で CollectD データをリッスンするように OMS Agent for Linux を構成します。
-3. CollectD と OMS Agent for Linux を再起動します。
+1. write_http プラグインを使用してデータを Linux 用 Log Analytics エージェントに送信するように CollectD を構成します。  
+2. 適切なポート上で CollectD データをリッスンするように Linux 用 Log Analytics エージェントを構成します。
+3. CollectD と Linux 用 Log Analytics エージェントを再起動します。
 
 ### <a name="configure-collectd-to-forward-data"></a>データを転送するように CollectD を構成する 
 
-1. CollectD データを OMS Agent for Linux にルーティングするには、CollectD の構成ディレクトリに `oms.conf` を追加する必要があります。 このファイルの移動先は、使用しているマシンの Linux ディストリビューションによって異なります。
+1. CollectD データを Linux 用 Log Analytics エージェントにルーティングするには、CollectD の構成ディレクトリに `oms.conf` を追加する必要があります。 このファイルの移動先は、使用しているマシンの Linux ディストリビューションによって異なります。
 
     CollectD config ディレクトリが /etc/collectd.d/ に配置されている場合:
 
@@ -103,12 +105,12 @@ Log Analytics での CollectD データの収集を構成するための基本�
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
         sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
 
-3. 次のコマンドを使用して、CollectD と OMS Agent for Linux を再起動します。
+3. 次のコマンドを使用して、CollectD と Linux 用 Log Analytics エージェントを再起動します。
 
     sudo service collectd restart  sudo /opt/microsoft/omsagent/bin/service_control restart
 
 ## <a name="collectd-metrics-to-log-analytics-schema-conversion"></a>CollectD メトリックから Log Analytics スキーマへの変換
-既に OMS Agent for Linux によって収集されたインフラストラクチャ メトリックと、CollectD によって収集された新しいメトリックの間で使い慣れたモデルを維持するために、次のスキーマ マッピングが使用されます。
+既に Linux 用 Log Analytics エージェントによって収集されたインフラストラクチャ メトリックと、CollectD によって収集された新しいメトリックの間で使い慣れたモデルを維持するために、次のスキーマ マッピングが使用されます。
 
 | CollectD メトリックのフィールド | Log Analytics のフィールド |
 |:--|:--|

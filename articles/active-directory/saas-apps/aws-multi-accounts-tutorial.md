@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2018
+ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: a7d77df4d6be1572d2076684cfa4702cb32b5ed6
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: a9acb9539497c85f408ce7417fa5983072ea80b9
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391914"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365664"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-multiple-amazon-web-services-aws-accounts"></a>チュートリアル: Azure Active Directory と複数の Amazon Web Services (AWS) アカウントの統合
 
@@ -35,6 +35,19 @@ Amazon Web Services (AWS) と Azure AD の統合には、次の利点があり�
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
 ![結果の一覧の Amazon Web Services (AWS)](./media/aws-multi-accounts-tutorial/amazonwebservice.png)
+
+>[!NOTE]
+>1 つの AWS アプリをすべての AWS アカウントに接続するアプローチはお勧めしないことに注意してください。 代わりに、[この](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial)アプローチを使用して、Azure AD で AWS アプリの複数のインスタンスに AWS アカウントの複数のインスタンスを構成することをお勧めします。
+
+**次の理由からこのアプローチの使用をお勧めしていません。**
+
+* アプリのすべてのロールにパッチを適用するには、Graph エクスプローラー アプローチを使用する必要があります。 マニフェスト ファイル アプローチの使用はお勧めしません。
+
+* 単一の AWS アプリに対し最高 1200 のアプリ ロールを追加した後にアプリ上で操作すると、サイズに関連したエラーがスローされ始めたと報告するお客様をこれまで見てきました。 アプリケーション オブジェクトにはサイズのハード制限があります。
+
+* ロールがいずれかのアカウントに追加されたときにロールを手動で更新する必要がありますが、これは残念ながら置換アプローチであって追加ではありません。 また、アカウントが増加した場合、これはアカウントとロールの n x n の関係になります。
+
+* すべての AWS アカウントは、同じフェデレーション メタデータ XML ファイルを使用しており、証明書のロールオーバー時には、この大量の作業を行って、同時にすべての AWS アカウントで証明書を更新する必要があります
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -64,19 +77,19 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-    ![Azure Active Directory のボタン][1]
+    ![image](./media/aws-multi-accounts-tutorial/selectazuread.png)
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![[エンタープライズ アプリケーション] ブレード][2]
+    ![image](./media/aws-multi-accounts-tutorial/a_select_app.png)
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[新しいアプリケーション] ボタン][3]
+    ![image](./media/aws-multi-accounts-tutorial/a_new_app.png)
 
 4. 検索ボックスに「**Amazon Web Services (AWS)**」と入力して結果パネルから **[Amazon Web Services (AWS)]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
 
-    ![結果の一覧の Amazon Web Services (AWS)](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_addfromgallery.png)
+     ![image](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_addfromgallery.png)
 
 5. アプリケーションが追加されたら、**[プロパティ]** ページに移動して、**オブジェクト ID** をコピーします
 
@@ -101,54 +114,53 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
 **Amazon Web Services (AWS) との Azure AD シングル サインオンを構成するには、次の手順を実行します。**
 
-1. Azure Portal の **Amazon Web Services (AWS)** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Microsoft Azure portal](https://portal.azure.com/) の**アマゾン ウェブ サービス (AWS)** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![シングル サインオン構成のリンク][4]
+    ![image](./media/aws-multi-accounts-tutorial/B1_B2_Select_SSO.png)
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
- 
-    ![[シングル サインオン] ダイアログ ボックス](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_samlbase.png)
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードを選択して、シングル サインオンを有効にします。
 
-3. アプリは Azure と事前に統合済みであるため、**[Amazon Web Services (AWS) のドメインと URL]** セクションで特に手順を実施する必要はありません。
+    ![image](./media/aws-multi-accounts-tutorial/b1_b2_saml_sso.png)
 
-    ![[Amazon Web Services (AWS) のドメインと URL] のシングル サインオン情報](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_url.png)
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-4. Amazon Web Services (AWS) アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
+    ![image](./media/aws-multi-accounts-tutorial/b1-domains_and_urlsedit.png)
 
-    ![シングル サインオン属性の構成](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_attribute.png)    
+4. アプリは Azure と事前に統合済みであるため、**[基本的な SAML 構成]** セクションで実行が必要な手順はありません。
 
-5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
+    ![image](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_url.png)
 
-    | 属性名  | 属性値 | 名前空間 |
+5. アマゾン ウェブ サービス (AWS) アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性と要求]** セクションで管理できます。 **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[ユーザー属性と要求]** ダイアログを開きます。
+
+    ![image](./media/aws-multi-accounts-tutorial/i4-attribute.png)
+
+6. **[ユーザー属性と要求]** ダイアログの **[ユーザーの要求]** セクションで、上の図のように SAML トークン属性を構成し、次の手順を実行します。
+    
+    | Name  | ソース属性  | 名前空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | Role            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
-    | SessionDuration             | "ニーズに応じたセッションの持続時間を指定します" |  https://aws.amazon.com/SAML/Attributes |
+    | SessionDuration             | 「900 秒 (15 分) から43200 秒 (12 時間) の値を指定してください」 |  https://aws.amazon.com/SAML/Attributes |
 
-    >[!TIP]
-    >AWS コンソールからすべてのロールをフェッチするには、Azure AD でユーザー プロビジョニングを構成する必要があります。 次のプロビジョニングの手順をご覧ください。
+    a. **[新しい要求の追加]** をクリックして **[ユーザー要求の管理]** ダイアログを開きます。
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    ![image](./media/aws-multi-accounts-tutorial/i2-attribute.png)
 
-    ![シングル サインオンの構成の追加](./media/aws-multi-accounts-tutorial/tutorial_attribute_04.png)
-
-    ![シングル サインオン属性の構成](./media/aws-multi-accounts-tutorial/tutorial_attribute_05.png)
+    ![image](./media/aws-multi-accounts-tutorial/i3-attribute.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    c. **[値]** 一覧から、その行に対して表示される値を入力します。
+    c. **[名前空間]** 値を入力します。
 
-    d. **[名前空間]** ボックスに、その行に表示される名前空間の値を入力します。
+    d. [ソース] として **[属性]** を選択します。
 
-    d. **[OK]** をクリックします。
+    e. **[ソース属性]** の一覧から、当該行に対して示されている属性値を入力します。
 
-6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+    f. **[Save]** をクリックします。
 
-    ![証明書のダウンロードのリンク](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_certificate.png) 
+7. **[SAML でシングル サインオンをセットアップします]** ページの **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして**フェデレーション メタデータ XML** をダウンロードして、コンピューターに保存します。
 
-7. **[保存]** ボタンをクリックします。
-
-    ![[シングル サインオンの構成] の [保存] ボタン](./media/aws-multi-accounts-tutorial/tutorial_general_400.png)
+    ![image](./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices(aws)_certificate.png) 
 
 8. 別の Web ブラウザーのウィンドウで、管理者として Amazon Web Services (AWS) 企業サイトにサインオンします。
 
@@ -156,7 +168,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![シングル サインオン ホームの構成][11]
 
-10. **[IAM]**(Identity and Access Management) をクリックします。
+10. **[Identity and Access Management]** をクリックします。
 
     ![シングル サインオン ID の構成][12]
 
@@ -196,7 +208,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
   
     d. **[Next: Permissions]** をクリックします。
 
-16. **[Attach Permissions Policies]** ダイアログで **[Next: Review]** をクリックします。  
+16. **[Attach Permissions Policies]\(アクセス許可ポリシーのアタッチ\)** ダイアログ ボックスで、任意のポリシーをアタッチする必要はありません。 **[次へ: レビュー]** をクリックします。  
 
     ![シングル サインオン ポリシーの構成][33]
 
@@ -208,9 +220,9 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     b. **[Role description]** ボックスに説明を入力します
 
-    a. **[Create Role]** をクリックします。
+    c. **[Create Role]** をクリックします。
 
-    b. 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
+    d. 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
 
 18. 現在の AWS アカウントからサインアウトし、Azure AD によるシングル サインオンを構成する他のアカウントでログインします。
 
@@ -349,17 +361,6 @@ SAML 応答を確認し、クレームとして渡されるロールを参照す
 
 <!--Image references-->
 
-[1]: ./media/aws-multi-accounts-tutorial/tutorial_general_01.png
-[2]: ./media/aws-multi-accounts-tutorial/tutorial_general_02.png
-[3]: ./media/aws-multi-accounts-tutorial/tutorial_general_03.png
-[4]: ./media/aws-multi-accounts-tutorial/tutorial_general_04.png
-
-[100]: ./media/aws-multi-accounts-tutorial/tutorial_general_100.png
-
-[200]: ./media/aws-multi-accounts-tutorial/tutorial_general_200.png
-[201]: ./media/aws-multi-accounts-tutorial/tutorial_general_201.png
-[202]: ./media/aws-multi-accounts-tutorial/tutorial_general_202.png
-[203]: ./media/aws-multi-accounts-tutorial/tutorial_general_203.png
 [11]: ./media/aws-multi-accounts-tutorial/ic795031.png
 [12]: ./media/aws-multi-accounts-tutorial/ic795032.png
 [13]: ./media/aws-multi-accounts-tutorial/ic795033.png
@@ -378,5 +379,4 @@ SAML 応答を確認し、クレームとして渡されるロールを参照す
 [38]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_createnewaccesskey.png
 [39]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_provisioning_automatic.png
 [40]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_provisioning_testconnection.png
-[41]: ./media/aws-multi-accounts-tutorial/tutorial_amazonwebservices_provisioning_on.png
-
+[41]: ./media/aws-multi-accounts-tutorial/

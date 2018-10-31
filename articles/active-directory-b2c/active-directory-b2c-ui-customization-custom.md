@@ -1,23 +1,23 @@
 ---
-title: Azure Active Directory B2C のカスタム ポリシーを使用した UI のカスタマイズ | Microsoft Docs
-description: Azure AD B2C でカスタム ポリシーを使用して、ユーザー インターフェイス (UI) をカスタマイズする方法について説明します。
+title: Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする | Microsoft Docs
+description: Azure Active Directory B2C でカスタム ポリシーを使用してユーザー インターフェイスをカスタマイズする方法について説明します。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/04/2017
+ms.date: 10/23/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9908a7cf96c56e414e0a8d7faea0352b60214ea4
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: f36d08a397836f17ec25a61e77cb1db5ce10b9d4
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446165"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945062"
 ---
-# <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: カスタム ポリシーでの UI カスタマイズの構成
+# <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でカスタム ポリシーを使用してアプリケーションのユーザー インターフェイスをカスタマイズする
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -25,7 +25,7 @@ ms.locfileid: "37446165"
 
 ## <a name="prerequisites"></a>前提条件
 
-作業を開始する前に、[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)に関するページを読み終えておく必要があります。 ローカル アカウントでのサインアップとサインインのために作業用カスタム ポリシーを持つ必要があります。
+[カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)に関するページの手順を完了します。 ローカル アカウントでのサインアップとサインインのために作業用カスタム ポリシーを持つ必要があります。
 
 ## <a name="page-ui-customization"></a>ページ UI のカスタマイズ
 
@@ -119,27 +119,44 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 2. **[Send Request]\(要求を送信する\)** をクリックします。  
     エラーが発生した場合、[CORS の設定](#configure-cors)が正しいことを確認します。 場合によっては、ブラウザーのキャッシュをクリアするか、Ctrl + Shift + P キーを押してプライベート ブラウズ セッションを開く必要もあります。
 
-## <a name="modify-your-sign-up-or-sign-in-custom-policy"></a>サインアップまたはサインイン カスタム ポリシーを変更する
+## <a name="modify-the-extensions-file"></a>拡張ファイルを変更する
 
-トップレベルの *\<TrustFrameworkPolicy\>* タグの下に、*\<BuildingBlocks\>* タグがあります。 次のコード例をコピーして、*\<BuildingBlocks\>* タグ内に *\<ContentDefinitions\>* タグを追加します。 *your_storage_account* は、ご利用のストレージ アカウントの名前に置き換えてください。
+UI のカスタマイズを構成するには、**ContentDefinition** とその子要素を基本ファイルから拡張ファイルにコピーします。
 
-  ```xml
-  <BuildingBlocks>
-    <ContentDefinitions>
-      <ContentDefinition Id="api.idpselections">
-        <LoadUri>https://{your_storage_account}.blob.core.windows.net/customize-ui.html</LoadUri>
-        <DataUri>urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0</DataUri>
-      </ContentDefinition>
-    </ContentDefinitions>
-  </BuildingBlocks>
-  ```
+1. ポリシーの基本ファイルを開きます。 たとえば、*TrustFrameworkBase.xml* などです。
+2. **ContentDefinitions** 要素を検索し、その内容全体をコピーします。
+3. 拡張ファイルを開きます。 たとえば、*TrustFrameworkExtensions.xml* です。 **BuildingBlocks** 要素を検索します。 要素が存在しない場合は追加します。
+4. コピーした **ContentDefinitions** 要素の内容全体を **BuildingBlocks** 要素の子として貼り付けます。 
+5. コピーした XML で `Id="api.signuporsignin"` を含む **ContentDefinition** 要素を検索します。
+6. **LoadUri** の値を、ストレージにアップロードした HTML ファイルの URL に変更します。 たとえば、 https://mystore1.azurewebsites.net/b2c/customize-ui.html です。
+    
+    カスタム ポリシーは次のようになります。
+
+    ```xml
+    <BuildingBlocks>
+      <ContentDefinitions>
+        <ContentDefinition Id="api.signuporsignin">
+          <LoadUri>https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html</LoadUri>
+          <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+          <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
+          <Metadata>
+            <Item Key="DisplayName">Signin and Signup</Item>
+          </Metadata>
+        </ContentDefinition>
+      </ContentDefinitions>
+    </BuildingBlocks>
+    ```
+
+7. 拡張ファイルを保存します。
 
 ## <a name="upload-your-updated-custom-policy"></a>更新したカスタム ポリシーをアップロードします。
 
-1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキストに切り替えて](active-directory-b2c-navigate-to-b2c-context.md)、**[Azure AD B2C]** ブレードを開きます。
+1. お使いの Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いのテナントを含むディレクトリを選択します。
+3. Azure Portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+4. **[Identity Experience Framework]** を選択します。
 2. **[All Policies]**(すべてのポリシー) をクリックします。
 3. **[ポリシーのアップロード]** をクリックします。
-4. 先ほど *\<ContentDefinitions\>* タグを追加した `SignUpOrSignin.xml` をアップロードします。
+4. 前に変更した拡張ファイルをアップロードします。
 
 ## <a name="test-the-custom-policy-by-using-run-now"></a>**[今すぐ実行]** を使用したカスタム ポリシーのテスト
 

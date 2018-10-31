@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 30b4a038c2ad9bd86f2ba78d52ed3754acec07f0
-ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
+ms.openlocfilehash: 59743df45cf2c7810404d9e6c636790c2855cf74
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48785259"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023119"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>方法: Azure Active Directory ポータルを使用してカスタム ドメイン名を追加する
 新しい Azure AD テナントにはすべて、*domainname*.onmicrosoft.com という初期ドメイン名が付いてきます。 初期ドメイン名を変更または削除することはできませんが、一覧に実際の組織の名前を追加することができます。 カスタム ドメイン名を追加することで、*alain@contoso.com* など、ユーザーになじみのあるユーザー名を作成する助けとなります。
@@ -28,7 +28,7 @@ ms.locfileid: "48785259"
 ## <a name="create-your-directory-in-azure-ad"></a>Azure AD ディレクトリを作成する
 ドメイン名を取得したら、最初の Azure AD ディレクトリを作成できます。
 
-1. そのディレクトリのサブスクリプション所有者アカウントを使用して [Azure portal](https://portal.azure.com/) にサインインしてから、**[Azure Active Directory]** を選択します。
+1. サブスクリプションの**所有者**ロールを持つアカウントを使用して、お使いのディレクトリの [Azure portal](https://portal.azure.com/) にサインインし、**[Azure Active Directory]** を選択します。 サブスクリプション ロールの詳細については、「[従来のサブスクリプション管理者ロール、Azure RBAC ロール、および Azure AD 管理者ロール](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)」を参照してください。
 
     ![Azure portal 画面](media/active-directory-access-create-new-tenant/azure-ad-portal.png)
 

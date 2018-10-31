@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 7e4889148a752b552f8bd65702ea5dda450ded31
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 81eacf464c90d56c4ebeae1d1cefbd6f2f0fdab8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044299"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408542"
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
 
@@ -62,7 +62,7 @@ Azure Portal でログ検索からコンピューター グループを作成す
 
 
 ### <a name="active-directory"></a>Active Directory
-Active Directory グループのメンバーシップをインポートするように Log Analytics を構成した場合、OMS エージェントがインストールされている、ドメインに参加しているすべてのコンピューターのグループ メンバーシップが分析されます。  Log Analytics には、Active Directory 内のセキュリティ グループごとにコンピューター グループが作成され、それぞれのコンピューターは、属しているセキュリティ グループに対応したコンピューター グループに追加されます。  このメンバーシップは絶えず 4 時間おきに更新されます。  
+Active Directory グループのメンバーシップをインポートするように Log Analytics を構成した場合、Log Analytics エージェントがインストールされている、ドメインに参加しているすべてのコンピューターのグループ メンバーシップが分析されます。  Log Analytics には、Active Directory 内のセキュリティ グループごとにコンピューター グループが作成され、それぞれのコンピューターは、属しているセキュリティ グループに対応したコンピューター グループに追加されます。  このメンバーシップは絶えず 4 時間おきに更新されます。  
 
 Azure Portal の Log Analytics の **[詳細設定]** から Active Directory のセキュリティ グループをインポートするように Log Analytics を構成します。  **[コンピューター グループ]**、**[Active Directory]** の順に選択し、**[コンピューターから Active Directory のグループ メンバーシップをインポートします]** を選択します。  さらに手動で構成する必要はありません。
 
@@ -71,7 +71,7 @@ Azure Portal の Log Analytics の **[詳細設定]** から Active Directory �
 グループがインポートされると、検出されたグループ メンバーシップを持つコンピューターの数とインポートされたグループの数がメニューに表示されます。  そのいずれかのリンクをクリックすると、**ComputerGroup** のレコードがこの情報と共に返されます。
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-WSUS グループのメンバーシップをインポートするように Log Analytics を構成した場合、OMS エージェントがインストールされているすべてのコンピューターについて、WSUS の対象グループのメンバーシップが分析されます。  クライアント側のターゲット指定方式を使用している場合、Log Analytics に接続されていて、かつ WSUS の対象グループに属しているすべてのコンピューターのグループ メンバーシップが Log Analytics にインポートされます。 サーバー側のターゲット指定方式を使用している場合、グループ メンバーシップ情報を Log Analytics にインポートするためには、WSUS サーバーに OMS エージェントがインストールされている必要があります。  このメンバーシップは絶えず 4 時間おきに更新されます。 
+WSUS グループのメンバーシップをインポートするように Log Analytics を構成した場合、Log Analytics エージェントがインストールされているすべてのコンピューターについて、WSUS の対象グループのメンバーシップが分析されます。  クライアント側のターゲット指定方式を使用している場合、Log Analytics に接続されていて、かつ WSUS の対象グループに属しているすべてのコンピューターのグループ メンバーシップが Log Analytics にインポートされます。 サーバー側のターゲット指定方式を使用している場合、グループ メンバーシップ情報を Log Analytics にインポートするためには、WSUS サーバーに Log Analytics エージェントがインストールされている必要があります。  このメンバーシップは絶えず 4 時間おきに更新されます。 
 
 Azure Portal の Log Analytics の **[詳細設定]** から WSUS グループをインポートするように Log Analytics を構成します。  **[コンピューター グループ]**、**[WSUS]** の順に選択し、**[WSUS のグループ メンバーシップをインポートします]** を選択します。  さらに手動で構成する必要はありません。
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bryanla
-ms.openlocfilehash: 1d6f84612dd2bac34c238ad7eaf323dc7fa00ba3
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: d93ad4185be3d4875c5747fd10359baab69af95d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311356"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958654"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>キー、シークレット、証明書について
 
@@ -101,7 +101,7 @@ Key Vault では、RSA キーと楕円曲線キーのみがサポートされま
 -   **RSA**: "ソフト"RSA キー。
 -   **RSA HSM**: "ハード" RSA キー。
 
-Key Vault では、サイズが 2048、3072、4096 の RSA キーがサポートされています。 サポートされている楕円曲線キーの種類は P-256、P-384、P-521、P-256K です。
+Key Vault では、サイズが 2048、3072、4096 の RSA キーがサポートされています。 サポートされている楕円曲線キーの種類は P-256、P-384、P-521、P-256K (SECP256K1) です。
 
 ### <a name="cryptographic-protection"></a>暗号化による保護
 
@@ -110,12 +110,19 @@ Key Vault が使う暗号化モジュールは、HSM でもソフトウェアで
 ###  <a name="ec-algorithms"></a>EC アルゴリズム
  Key Vault の EC および EC-HSM キーでは、次のアルゴリズム識別子がサポートされます。 
 
+#### <a name="curve-types"></a>曲線の種類
+
+-   **P-256** - NIST 曲線 P-256。[DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) で定義されています。
+-   **P-256K** - SEC 曲線 SECP256K1。「[SEC 2: Recommended Elliptic Curve Domain Parameters (SEC 2: 推奨される楕円曲線ドメイン パラメーター) ](http://www.secg.org/sec2-v2.pdf)」で定義されています。
+-   **P-384** - NIST 曲線 P-384。[DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) で定義されています。
+-   **P-521** - NIST 曲線 P-521。[DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf) で定義されています。
+
 #### <a name="signverify"></a>SIGN/VERIFY
 
--   **ES256** - SHA-256 ダイジェストおよび P-256 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518] で説明されます。
+-   **ES256** - SHA-256 ダイジェストおよび P-256 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518](https://tools.ietf.org/html/rfc7518) で説明されます。
 -   **ES256SHA-256** - SHA-256 ダイジェストおよび P-256K 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、標準としての承認待ちです。
--   **ES384** - SHA-384 ダイジェストおよび P-384 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518] で説明されます。
--   **ES512** - SHA-512 ダイジェストおよび P-521 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518] で説明されます。
+-   **ES384** - SHA-384 ダイジェストおよび P-384 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518](https://tools.ietf.org/html/rfc7518) で説明されます。
+-   **ES512** - SHA-512 ダイジェストおよび P-521 曲線を使用して作成されたキーのための ECDSA。 このアルゴリズムは、[RFC7518](https://tools.ietf.org/html/rfc7518) で説明されます。
 
 ###  <a name="rsa-algorithms"></a>RSA アルゴリズム  
  Key Vault の RSA および RSA-HSM キーでは、次のアルゴリズム識別子がサポートされます。  

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/02/2018
+ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: 32f99b43a37277e70d209f1f315dcb398c2b5931
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 19525086b1bd41afcc730fb3860d7a01875e4832
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004794"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987003"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Azure Event Hubs のスループット単位を自動的にスケールアップする
 
@@ -27,6 +27,8 @@ Azure Event Hubs は、拡張性の高いデータ ストリーミング プラ�
 
 * データの受信レートが、設定されたスループット単位を超えている。
 * データの送信要求レートが、設定されたスループット単位を超えている。
+
+負荷が最小しきい値を超えていて、ServerBusy エラーなどで失敗した要求がない場合、Event Hubs サービスでスループットが増えます。
 
 ## <a name="how-auto-inflate-works"></a>自動インフレのしくみ
 
@@ -54,6 +56,10 @@ Event Hubs 名前空間の自動インフレを有効または無効にするに
 自動インフレは、ポータルの設定ウィンドウにある **[スケール]** オプションを使用して有効にすることもできます。
  
 ![](./media/event-hubs-auto-inflate/event-hubs-auto-inflate2.png)
+
+
+> [!NOTE]
+> 自動インフレの構成を適用してスループット ユニットを増やした場合、Event Hubs サービスにより、スループットがいつ何故増加したかに関する情報を提供する診断ログが出力されます。 イベント ハブの診断ログを有効にするには、Azure portal のイベント ハブ ページの左のメニューで **[診断設定]** を選択します。 詳しくは、「[Azure イベント ハブの診断ログを設定する](event-hubs-diagnostic-logs.md)」をご覧ください。 
 
 ### <a name="enable-auto-inflate-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して自動インフレを有効にする
 
@@ -101,6 +107,7 @@ Azure Resource Manager テンプレートのデプロイ時に自動インフレ
 ```
 
 完全なテンプレートについては、GitHub の[イベント ハブ名前空間とインフレの有効化](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate)のテンプレートを参照してください。
+
 
 ## <a name="next-steps"></a>次の手順
 

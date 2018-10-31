@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: b38ce59a80d3fa78449892c8a76ed70b4dc698d3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: f7fe7cee39468558ce503c050d5574e4be15ebf5
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041483"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407167"
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Log Analytics を使用して Surface Hub を監視し、その正常性を追跡する
 
@@ -51,7 +51,7 @@ Intune は、1 つまたは複数のデバイスに適用される Log Analytics
 1. Intune にサインインします。
 2. **[設定]** > **[接続されたソース]** の順に移動します。
 3. Surface Hub テンプレートに基づいてポリシーを作成するか編集します。
-4. ポリシーの OMS (Azure Operational Insights) セクションに移動し、Log Analytics の "*ワークスペース ID*" と "*ワークスペース キー*" をポリシーに追加します。
+4. ポリシーの [Azure Operational Insights] セクションに移動し、Log Analytics の "*ワークスペース ID*" と "*ワークスペース キー*" をポリシーに追加します。
 5. ポリシーを保存します。
 6. ポリシーを適切なデバイス グループに関連付けます。
 
@@ -66,9 +66,9 @@ Surface Hub を管理する Log Analytics ワークスペースのワークス�
 
 1. Surface Hub から **[設定]** を開きます。
 2. 情報を求めるメッセージが表示されたら、デバイス管理者の資格情報を入力します。
-3. **[This device (このデバイス)]** をクリックし、**[監視]** の下の **[OMS 設定の構成]** をクリックします。
+3. **[This device (このデバイス)]** をクリックし、**[監視]** の下の **[Log Analytics 設定の構成]** をクリックします。
 4. **[監視を有効にする]** を選択します。
-5. [OMS の設定] ダイアログで、Log Analytics の **[ワークスペース ID]** と **[ワークスペース キー]** を入力します。  
+5. [Log Analytics の設定] ダイアログで、Log Analytics の **[ワークスペース ID]** と **[ワークスペース キー]** を入力します。  
    ![設定](./media/log-analytics-surface-hubs/settings.png)
 6. **[OK]** をクリックして、構成を完了します。
 

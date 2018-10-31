@@ -1,26 +1,19 @@
 ---
 title: Azure Data Box Gateway の制限 | Microsoft Docs
 description: Microsoft Azure Data Box Gateway のシステム制限と推奨サイズについて説明します。
-services: databox-edge-gateway
-documentationcenter: NA
+services: databox
 author: alkohli
-manager: twooley
-editor: ''
-ms.assetid: ''
-ms.service: databox-edge-gateway
-ms.devlang: NA
+ms.service: databox
+ms.subservice: gateway
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
-ms.custom: ''
-ms.openlocfilehash: edb4995b626055be830a7accb74d99f1db3ef8d0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 60078845c98f2e241b00e184303dce0c860629e9
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962204"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49164435"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Azure Data Box Gateway の制限 (プレビュー)
 
@@ -44,7 +37,7 @@ Microsoft Azure Data Box Gateway ソリューションをデプロイおよび�
 |---|---|
 |いいえ。 デバイスあたりのファイル数 |1 億 <br> 制限は、2 TB のディスク領域ごとに最大 2500 万ファイルであり、上限は 1 億です |
 |いいえ。 デバイスあたりの共有数 |24 |
-|1 つの共有に書き込まれる最大サイズ ファイル|5 TB |
+|1 つの共有に書き込まれる最大サイズ ファイル|2 TB の仮想デバイスの場合、最大ファイル サイズは 500 GB です。 <br> 最大ファイル サイズは、最大 5 TB に達するまで、前の比率でデータ ディスク のサイズと増加します。 |
 
 ## <a name="azure-storage-limits"></a>Azure Storage の制限
 

@@ -14,14 +14,15 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 680cea983fb7435bf4492fc295e29f3a234a4323
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 935fef5ea988908787ae04688985606acec41bfd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356065"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387279"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化
+
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>SaaS アプリへのユーザー プロビジョニングの自動化とは
 Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、ServiceNow などのクラウド ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)) アプリケーションで、ユーザー ID の作成、保守、削除を自動化できます。
 
@@ -42,6 +43,7 @@ Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、Se
 * 監視とトラブルシューティングに役立つレポートとアクティビティ ログ。
 
 ## <a name="why-use-automated-provisioning"></a>自動プロビジョニングを使用する理由
+
 この機能を使用する一般的な動機は、次のとおりです。
 
 * 手動によるプロビジョニング プロセスに関連するコスト、非効率性、および人的エラーを回避する。
@@ -69,7 +71,8 @@ Azure Active Directory (Azure AD) を使用すると、Dropbox、Salesforce、Se
 Azure AD は、一般に普及しているさまざまな SaaS アプリや人事管理システムとの連携にあらかじめ対応しているほか、SCIM 2.0 標準の特定の領域を実装するアプリにも広く対応しています。
 
 ### <a name="pre-integrated-applications"></a>事前統合されたアプリケーション
-Azure AD が事前統合プロビジョニング コネクタをサポートするすべてのアプリケーションの一覧については、[ユーザー プロビジョニングのためのアプリケーション チュートリアルの一覧](../saas-apps/tutorial-list.md)を参照してください。
+
+Azure AD が事前統合プロビジョニング コネクタをサポートするすべてのアプリケーションの一覧については、[ユーザー プロビジョニングのためのアプリケーション チュートリアルの一覧](../saas-apps/tutorial-list.md)に関するページを参照してください。
 
 他のアプリのプロビジョニングのサポートを要求するために Azure AD エンジニア リング チームに問い合わせる場合は、[Azure Active Directory フィードバック フォーラム](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests/filters/new?category_id=172035)からメッセージを送信してください。
 
@@ -77,6 +80,7 @@ Azure AD が事前統合プロビジョニング コネクタをサポートす�
 > アプリで自動ユーザー プロビジョニングをサポートするには、まず、外部プログラム上でのユーザーの作成、保守、削除の自動化の実現に必要なユーザー管理 API を提供する必要があります。 そのため、すべての SaaS アプリがこの機能と互換性があるとは限りません。 ユーザー管理 API をサポートするアプリでは、Azure AD エンジニア リング チームがこれらのアプリケーションにプロビジョニング コネクタを作成できるようになります。この作業の優先順位は現在の顧客と見込み顧客のニーズによって決まります。 
 
 ### <a name="connecting-applications-that-support-scim-20"></a>SCIM 2.0 をサポートするアプリケーションの接続
+
 SCIM 2.0 ベースのユーザー管理 API を実装するアプリケーションを汎用的に接続する方法については、[SCIM を使用した Azure Active Directory からアプリケーションへのユーザーおよびグループの自動プロビジョニング](use-scim-to-provision-users-and-groups.md)に関するページをご覧ください。
 
     
@@ -124,26 +128,28 @@ SCIM 2.0 ベースのユーザー管理 API を実装するアプリケーショ
 Azure AD がソース システムである場合、プロビジョニング サービスは、[Azure AD Graph API の差分クエリ機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-differential-query)を使用してユーザーとグループを監視します。 プロビジョニング サービスは、ソース システムとターゲット システムに対して初期同期を実行した後、増分同期を定期的に行います。 
 
 ### <a name="initial-sync"></a>初期同期
+
 プロビジョニング サービスが開始されたときに行われる最初の同期では、次の処理が実行されます。
 
 1. ソース システムのすべてのユーザーとグループにクエリを実行し、[属性マッピング](customize-application-attributes.md)で定義されているすべての属性を取得します。
 2. 返されたユーザーおよびグループを、構成済み[割り当て](assign-user-or-group-access-portal.md)または[属性ベースのスコープ フィルター](define-conditional-rules-for-provisioning-user-accounts.md)を使用してフィルター処理します。
 3. ユーザーが割り当て済み、またはプロビジョニング対象の場合、サービスはターゲット システムに対してクエリを実行し、指定された[一致属性](customize-application-attributes.md#understanding-attribute-mapping-properties)を使用して、一致するユーザーがいないかどうかを確認します。 たとえば、ソース システムの userPrincipal 名が一致属性であり、ターゲット システムの userName にマップされる場合、プロビジョニング サービスは、ターゲット システムにクエリを実行し、ソース システムの userPrincipal 名の値と一致する userName がないかどうかを確認します。
-4. 一致するユーザーがターゲット システムで見つからない場合、ソース システムから返された属性を使用してユーザーが作成されます。
-5. 一致するユーザーが見つかった場合、そのユーザーは、ソース システムによって提供された属性を使用して更新されます。
+4. 一致するユーザーがターゲット システムで見つからない場合、ソース システムから返された属性を使用してユーザーが作成されます。 ユーザー アカウントが作成された後、プロビジョニング サービスは新しいユーザー用のターゲット システムの ID を検出しキャッシュします。これはそのユーザーの将来の操作すべてを実行するときに使用されます。
+5. 一致するユーザーが見つかった場合、そのユーザーは、ソース システムによって提供された属性を使用して更新されます。 ユーザー アカウントが照合された後、プロビジョニング サービスは新しいユーザー用のターゲット システムの ID を検出しキャッシュします。これはそのユーザーの将来の操作すべてを実行するときに使用されます。
 6. 属性マッピングに "参照" 属性が含まれている場合、サービスは、ターゲット システムで追加の更新を実行して参照先オブジェクトを作成し、リンクします。 たとえば、あるユーザーがターゲット システムで "Manager" 属性を持ち、それがターゲット システムで作成された別のユーザーにリンクされている場合があります。
 7. 初期同期の終了時に基準値を保持します。これは、以降の増分同期の始点になります。
 
 ServiceNow、Google Apps、Box など、アプリケーションの中には、ユーザーのプロビジョニングだけでなく、グループとそのメンバーのプロビジョニングをサポートしているものがあります。 このような場合、グループのプロビジョニングが[マッピング](customize-application-attributes.md)で有効になっていると、プロビジョニング サービスは、ユーザーとグループを同期したうえで、グループ メンバーシップを同期します。 
 
 ### <a name="incremental-syncs"></a>増分同期
+
 初期同期後に行われるすべての同期で、次の処理が実行されます。
 
 1. ソース システムにクエリを実行し、前回の基準値が保存された後に更新されたユーザーおよびグループがないかどうかを確認します。
 2. 返されたユーザーおよびグループを、構成済み[割り当て](assign-user-or-group-access-portal.md)または[属性ベースのスコープ フィルター](define-conditional-rules-for-provisioning-user-accounts.md)を使用してフィルター処理します。
 3. ユーザーが割り当て済み、またはプロビジョニング対象の場合、サービスはターゲット システムに対してクエリを実行し、指定された[一致属性](customize-application-attributes.md#understanding-attribute-mapping-properties)を使用して、一致するユーザーがいないかどうかを確認します。
-4. 一致するユーザーがターゲット システムで見つからない場合、ソース システムから返された属性を使用してユーザーが作成されます。
-5. 一致するユーザーが見つかった場合、そのユーザーは、ソース システムによって提供された属性を使用して更新されます。
+4. 一致するユーザーがターゲット システムで見つからない場合、ソース システムから返された属性を使用してユーザーが作成されます。 ユーザー アカウントが作成された後、プロビジョニング サービスは新しいユーザー用のターゲット システムの ID を検出しキャッシュします。これはそのユーザーの将来の操作すべてを実行するときに使用されます。
+5. 一致するユーザーが見つかった場合、そのユーザーは、ソース システムによって提供された属性を使用して更新されます。 新しく割り当てられたアカウントが照合された場合、プロビジョニング サービスは新しいユーザー用のターゲット システムの ID を検出しキャッシュします。これはそのユーザーの将来の操作すべてを実行するときに使用されます。
 6. 属性マッピングに "参照" 属性が含まれている場合、サービスは、ターゲット システムで追加の更新を実行して参照先オブジェクトを作成し、リンクします。 たとえば、あるユーザーがターゲット システムで "Manager" 属性を持ち、それがターゲット システムで作成された別のユーザーにリンクされている場合があります。
 7. 以前プロビジョニングの対象だったユーザーが対象から外れた場合 (割り当てられていない場合を含む)、サービスは、更新を通じてターゲット システムのユーザーを無効にします。
 8. 以前プロビジョニングの対象だったユーザーが、ソース システムで無効にされた場合、または論理削除された場合、サービスは、更新によってターゲット システムのユーザーを無効にします。
@@ -160,7 +166,8 @@ ServiceNow、Google Apps、Box など、アプリケーションの中には、�
 * 属性マッピングまたはスコープ フィルターの変更によって、新しい初期同期がトリガーされた。 この場合も、保存された基準値がクリアされ、すべてのソース オブジェクトが再評価されます。
 * 高いエラー率によりプロビジョニング プロセスが検疫に移行し (以下を参照)、そのまま 4 週間を超えて検疫にとどまっている。 この場合、サービスは自動的に無効になります。
 
-### <a name="errors-and-retries"></a>エラーと再試行 
+### <a name="errors-and-retries"></a>エラーと再試行
+
 ターゲット システムでのエラーが原因で個々のユーザーの追加、更新、または削除がターゲットシステム上で行えない場合、その操作は次の同期サイクルで再試行されます。 ユーザーの再試行が失敗し続けると、その頻度は減少し始め、1 日 1 回になるように段階的にスケール バックします。 エラーを解決するには、管理者が[監査ログ](check-status-user-account-provisioning.md)で "プロセス エスクロー" イベントがないかどうかを確認し、根本原因を特定して、適切なアクションを実行する必要があります。 たとえば、次のような一般的なエラーがあります。
 
 * ターゲット システムで必要な属性がソース システムのユーザーに設定されていない
@@ -169,6 +176,7 @@ ServiceNow、Google Apps、Box など、アプリケーションの中には、�
 このようなエラーを解決するには、ソース システムで影響を受けるユーザーの属性値を調整するか、競合が発生しないように属性マッピングを調整します。   
 
 ### <a name="quarantine"></a>検疫
+
 ターゲット システムに対する呼び出しのほとんどまたはすべてが、常にエラー (管理者の資格情報が無効である場合など) が原因で失敗する場合、プロビジョニング ジョブは "検疫" 状態になります。 これは[プロビジョニング概要レポート](check-status-user-account-provisioning.md)、または電子メール (電子メール通知が Azure Portal で構成されている場合) で示されます。 
 
 検疫に移行すると、増分同期の頻度は徐々に減少し、最終的には 1 日 1 回になります。 
@@ -219,26 +227,52 @@ ServiceNow、Google Apps、Box など、アプリケーションの中には、�
 * 割り当てられたグループの数とサイズ。 割り当てられたグループの同期はユーザーの同期よりも時間がかかります。 割り当てられたグループの数とサイズの両方がパフォーマンスに影響します。 [グループ オブジェクト同期用に有効にされたマッピング](customize-application-attributes.md#editing-group-attribute-mappings)がアプリにある場合、グループ名やメンバーシップなどのグループ プロパティがユーザーの他に同期されます。 これらの追加の同期はユーザー オブジェクトの同期のみの場合よりも時間がかかります。
 
 
-##<a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>ユーザーが正しくプロビジョニングされているかどうかを確認する方法
+## <a name="how-can-i-tell-if-users-are-being-provisioned-properly"></a>ユーザーが正しくプロビジョニングされているかどうかを確認する方法
 
 ユーザー プロビジョニング サービスによって実行された操作はすべて、Azure AD の監査ログに記録されます。 これには、ソース システムとターゲット システムに対して実行されたすべての読み取りおよび書き込み操作と、各操作の際に読み取られたり書き込まれたりしたユーザー データが含まれます。
 
 Azure Portal で監査ログを確認する方法については、[プロビジョニング レポートに関するガイド](check-status-user-account-provisioning.md)をご覧ください。
 
 
-##<a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>ユーザー プロビジョニングに関する問題のトラブルシューティング方法
+## <a name="how-do-i-troubleshoot-issues-with-user-provisioning"></a>ユーザー プロビジョニングに関する問題のトラブルシューティング方法
 
 自動ユーザー プロビジョニングをトラブルシューティングする方法のシナリオ ベースのガイダンスについては、「[アプリケーションに対するユーザーの構成およびプロビジョニングに関する問題](application-provisioning-config-problem.md)」を参照してください。
 
 
-##<a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>自動ユーザー プロビジョニングを展開するためのベスト プラクティス
+## <a name="what-are-the-best-practices-for-rolling-out-automatic-user-provisioning"></a>自動ユーザー プロビジョニングを展開するためのベスト プラクティス
 
 > [!VIDEO https://www.youtube.com/embed/MAy8s5WSe3A]
 
 アプリケーションに対する出力方向のユーザー プロビジョニングを展開するための段階的なデプロイ計画の例については、[ユーザー プロビジョニングのための ID デプロイ ガイド](https://aka.ms/userprovisioningdeploymentplan)をご覧ください。
 
+## <a name="more-frequently-asked-questions"></a>その他のよく寄せられる質問
+
+### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-b2b-users-in-azure-ad"></a>SaaS アプリへの自動ユーザー プロビジョニングは、Azure AD の B2B ユーザーに対応しますか。
+
+はい、Azure AD ユーザー プロビジョニング サービスを使って、Azure AD の B2B (またはゲスト) ユーザーを SaaS アプリケーションにプロビジョニングすることは可能です。
+
+ただし、B2B ユーザーが、Azure AD を使用して SaaS アプリケーションにサインインできるようになるには、SaaS アプリケーションで、SAML ベースのシングル サインオン機能が特定の方法で構成されている必要があります。 B2B ユーザーからのサインインをサポートするように SaaS アプリケーションを構成する方法の詳細については、「[B2B コラボレーション用の SaaS アプリの構成]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps)」を参照してください。
+
+### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>SaaS アプリへの自動ユーザー プロビジョニングは、Azure AD の動的グループに対応しますか。
+
+はい。 「割り当てられているユーザーおよびグループのみを同期」するように構成されている場合、Azure AD ユーザー プロビジョニング サービスは、SaaS アプリケーションのユーザーを、[動的グループ](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule])のメンバーであるかどうかに基づいて、プロビジョニングまたはプロビジョニング解除できます。 動的グループは、「すべてのユーザーとグループを同期する」オプションにも対処します。
+
+ただし、動的グループの使用は、Azure AD から SaaS アプリケーションへのエンドツーエンドのユーザー プロビジョニングのパフォーマンス全体に影響することがあります。 動的グループを使用している場合は、これらの注意事項と推奨事項に留意してください。
+
+* SaaS アプリケーションで動的グループのユーザーをプロビジョニングまたはプロビジョニング解除する速度は、動的グループがメンバーシップの変更を評価する速さによって決まります。 動的グループの処理状態を確認する方法の詳細については、「[メンバーシップ ルールの処理状態をチェックする](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule)」を参照してください。
+
+* 動的グループを使用しているときに、メンバーシップの喪失はプロビジョニング解除イベントになるので、ユーザープロビジョニングおよびプロビジョニング解除に留意してルールを慎重に考慮する必要があります。
+
+### <a name="does-automatic-user-provisioning-to-saas-apps-work-with-nested-groups-in-azure-ad"></a>SaaS アプリへの自動ユーザー プロビジョニングは、Azure AD の入れ子になった動的グループに対応しますか。
+
+いいえ。 「割り当てられたユーザーとグループのみを同期する」用に構成されている場合、Azure AD ユーザー プロビジョニング サービスは、入れ子になったグループに含まれているユーザーを読み取ったりプロビジョニングしたりすることができません。 明示的に割り当てられたグループの直接のメンバーであるユーザーだけを読み取ってプロビジョニングできます。
+
+これは、「アプリケーションへのグループベースの割り当て」の制限であり、シングル サインオンにも影響し、「[SaaS アプリケーションへのアクセスをグループで管理する](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps )」で説明しています。
+
+対処法として、プロビジョニングする必要のあるユーザーを含んだグループを明示的に割り当てる (またはそれ以外の場合では[スコープ](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)する) 必要があります。
 
 ## <a name="related-articles"></a>関連記事
+
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](../saas-apps/tutorial-list.md)
 * [ユーザーのプロビジョニング用の属性マッピングのカスタマイズ](customize-application-attributes.md)
 * [属性マッピングの式の書き方](functions-for-customizing-application-data.md)

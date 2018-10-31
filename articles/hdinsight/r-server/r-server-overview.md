@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: af143ef1ec79868294af7d7511548dc54f8ceb8d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: af7a0d01fcf9df42da79a6529c8d4b0e31d73aa1
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049272"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985490"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight での ML Services とオープン ソース R の機能の概要
 
@@ -102,7 +102,7 @@ Azure Machine Learning を使ってスコア付けを行うには、[AzureML](ht
 
 ### <a name="score-on-premises"></a>オンプレミスのスコア付け
 
-モデルの作成後にオンプレミスのスコア付けを行うには、R でモデルをシリアル化し、モデルをダウンロードして逆シリアル化してから、新しいデータのスコア付けに使用します。 新しいデータのスコア付けは、「[HDInsight でのスコア付け](#scoring-in-hdinsight)」で前述した方法を使用するか、[Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)を使用して実行できます。
+モデルの作成後にオンプレミスのスコア付けを行うには、R でモデルをシリアル化し、モデルをダウンロードして逆シリアル化してから、新しいデータのスコア付けに使用します。 新しいデータのスコア付けは、「[HDInsight でのスコア付け](#score-in-hdinsight)」で前述した方法を使用するか、[Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)を使用して実行できます。
 
 ## <a name="maintain-the-cluster"></a>クラスターの管理
 
@@ -149,5 +149,5 @@ ML Services HDInsight クラスターに関する価格は、他の HDInsight �
 HDInsight クラスターで ML Services を使用する方法の詳細については、次のトピックを参照してください。
 
 * [HDInsight での ML Services クラスターの使用開始](r-server-get-started.md)
-* [HDInsight 上の ML Services クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
+* [HDInsight 上の ML サービス クラスター向けのコンピューティング コンテキスト オプション](r-server-compute-contexts.md)
 * [HDInsight 上の ML Services クラスター向けのストレージ オプション](r-server-storage.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 5943357bc421bbae0caef7f0acd7aa3364813826
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 771ec7713c989025635e585b7bb511986e71cda9
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597520"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024767"
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
 この記事で説明するポリシー式の構文は C# 7 です。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。  
@@ -52,15 +52,15 @@ ms.locfileid: "34597520"
   
 @(context.Variables.ContainsKey("maxAge") ? int.Parse((string)context.Variables["maxAge"]) : 3600)  
   
-@{   
-  string value;   
-  if (context.Request.Headers.TryGetValue("Authorization", out value))   
-  {   
-    return Encoding.UTF8.GetString(Convert.FromBase64String(value));  
-  }   
-  else   
-  {   
-    return null;  
+@{   
+  string value;   
+  if (context.Request.Headers.TryGetValue("Authorization", out value))   
+  {   
+    return Encoding.UTF8.GetString(Convert.FromBase64String(value));  
+  }   
+  else   
+  {   
+    return null;  
   }  
 }  
 ```  
@@ -74,65 +74,66 @@ ms.locfileid: "34597520"
 ##  ポリシー式で使用できる <a name="CLRTypes"></a>.NET framework の型  
  次の表は、ポリシー式で使用できる .NET Framework の型とメンバーの一覧です。  
   
-|CLR 型|サポートされるメソッド|  
+|CLR 型|サポートされているメンバー|  
 |--------------|-----------------------|  
-|Newtonsoft.Json.Linq.Extensions|すべてのメソッド|  
-|Newtonsoft.Json.Linq.JArray|すべてのメソッド|  
-|Newtonsoft.Json.Linq.JConstructor|すべてのメソッド|  
-|Newtonsoft.Json.Linq.JContainer|すべてのメソッド|  
-|Newtonsoft.Json.Linq.JObject|すべてのメソッド|  
-|Newtonsoft.Json.Linq.JProperty|すべてのメソッド|  
-|Newtonsoft.Json.Linq.JRaw|すべてのメソッド|  
-|Newtonsoft.Json.Linq.JToken|すべてのメソッド|  
-|Newtonsoft.Json.Linq.JTokenType|すべてのメソッド|  
-|Newtonsoft.Json.Linq.JValue|すべてのメソッド|  
-|System.Collections.Generic.IReadOnlyCollection<T\>|すべて|  
-|System.Collections.Generic.IReadOnlyDictionary<TKey,  TValue>|すべて|  
-|System.Collections.Generic.ISet<TKey, TValue>|すべて|  
+|Newtonsoft.Json.Linq.Extensions|All|  
+|Newtonsoft.Json.Linq.JArray|All|  
+|Newtonsoft.Json.Linq.JConstructor|All|  
+|Newtonsoft.Json.Linq.JContainer|All|  
+|Newtonsoft.Json.Linq.JObject|All|  
+|Newtonsoft.Json.Linq.JProperty|All|  
+|Newtonsoft.Json.Linq.JRaw|All|  
+|Newtonsoft.Json.Linq.JToken|All|  
+|Newtonsoft.Json.Linq.JTokenType|All|  
+|Newtonsoft.Json.Linq.JValue|All|  
+|System.Collections.Generic.IReadOnlyCollection<T\>|All|  
+|System.Collections.Generic.IReadOnlyDictionary<TKey,  TValue>|All|  
+|System.Collections.Generic.ISet<TKey, TValue>|All|  
 |System.Collections.Generic.KeyValuePair<TKey,  TValue>|Key、Value|  
-|System.Collections.Generic.List<TKey, TValue>|すべて|  
-|System.Collections.Generic.Queue<TKey, TValue>|すべて|  
-|System.Collections.Generic.Stack<TKey, TValue>|すべて|  
-|System.Convert|すべて|  
-|System.DateTime|すべて|  
+|System.Collections.Generic.List<TKey, TValue>|All|  
+|System.Collections.Generic.Queue<TKey, TValue>|All|  
+|System.Collections.Generic.Stack<TKey, TValue>|All|  
+|System.Convert|All|  
+|System.DateTime|All|  
 |System.DateTimeKind|Utc|  
-|System.DateTimeOffset|すべて|  
-|System.Decimal|すべて|  
-|System.Double|すべて|  
-|System.Guid|すべて|  
-|System.IEnumerable<T\>|すべて|  
-|System.IEnumerator<T\>|すべて|  
-|System.Int16|すべて|  
-|System.Int32|すべて|  
-|System.Int64|すべて|  
-|System.Linq.Enumerable<T\>|すべてのメソッド|  
-|System.Math|すべて|  
-|System.MidpointRounding|すべて|  
-|System.Nullable<T\>|すべて|  
-|System.Random|すべて|  
-|System.SByte|すべて|  
-|System.Security.Cryptography. HMACSHA384|すべて|  
-|System.Security.Cryptography. HMACSHA512|すべて|  
-|System.Security.Cryptography.HashAlgorithm|すべて|  
-|System.Security.Cryptography.HMAC|すべて|  
-|System.Security.Cryptography.HMACMD5|すべて|  
-|System.Security.Cryptography.HMACSHA1|すべて|  
-|System.Security.Cryptography.HMACSHA256|すべて|  
-|System.Security.Cryptography.KeyedHashAlgorithm|すべて|  
-|System.Security.Cryptography.MD5|すべて|  
-|System.Security.Cryptography.RNGCryptoServiceProvider|すべて|  
-|System.Security.Cryptography.SHA1|すべて|  
-|System.Security.Cryptography.SHA1Managed|すべて|  
-|System.Security.Cryptography.SHA256|すべて|  
-|System.Security.Cryptography.SHA256Managed|すべて|  
-|System.Security.Cryptography.SHA384|すべて|  
-|System.Security.Cryptography.SHA384Managed|すべて|  
-|System.Security.Cryptography.SHA512|すべて|  
-|System.Security.Cryptography.SHA512Managed|すべて|  
-|System.Single|すべて|  
-|System.String|すべて|  
-|System.StringSplitOptions|すべて|  
-|System.Text.Encoding|すべて|  
+|System.DateTimeOffset|All|  
+|System.Decimal|All|  
+|System.Double|All|  
+|System.Guid|All|  
+|System.IEnumerable<T\>|All|  
+|System.IEnumerator<T\>|All|  
+|System.Int16|All|  
+|System.Int32|All|  
+|System.Int64|All|  
+|System.Linq.Enumerable<T\>|All|  
+|System.Math|All|  
+|System.MidpointRounding|All|
+|System.Net.WebUtility|All|
+|System.Nullable<T\>|All|  
+|System.Random|All|  
+|System.SByte|All|  
+|System.Security.Cryptography. HMACSHA384|All|  
+|System.Security.Cryptography. HMACSHA512|All|  
+|System.Security.Cryptography.HashAlgorithm|All|  
+|System.Security.Cryptography.HMAC|All|  
+|System.Security.Cryptography.HMACMD5|All|  
+|System.Security.Cryptography.HMACSHA1|All|  
+|System.Security.Cryptography.HMACSHA256|All|  
+|System.Security.Cryptography.KeyedHashAlgorithm|All|  
+|System.Security.Cryptography.MD5|All|  
+|System.Security.Cryptography.RNGCryptoServiceProvider|All|  
+|System.Security.Cryptography.SHA1|All|  
+|System.Security.Cryptography.SHA1Managed|All|  
+|System.Security.Cryptography.SHA256|All|  
+|System.Security.Cryptography.SHA256Managed|All|  
+|System.Security.Cryptography.SHA384|All|  
+|System.Security.Cryptography.SHA384Managed|All|  
+|System.Security.Cryptography.SHA512|All|  
+|System.Security.Cryptography.SHA512Managed|All|  
+|System.Single|All|  
+|System.String|All|  
+|System.StringSplitOptions|All|  
+|System.Text.Encoding|All|  
 |System.Text.RegularExpressions.Capture|Index、Length、Value|  
 |System.Text.RegularExpressions.CaptureCollection|Count、Item|  
 |System.Text.RegularExpressions.Group|Captures、Success|  
@@ -140,37 +141,37 @@ ms.locfileid: "34597520"
 |System.Text.RegularExpressions.Match|Empty、Groups、Result|  
 |System.Text.RegularExpressions.Regex|(Constructor)、IsMatch、Match、Matches、Replace|  
 |System.Text.RegularExpressions.RegexOptions|Compiled、IgnoreCase、IgnorePatternWhitespace、Multiline、None、RightToLeft、Singleline|  
-|System.TimeSpan|すべて|  
-|System.Tuple|すべて|  
-|System.UInt16|すべて|  
-|System.UInt32|すべて|  
-|System.UInt64|すべて|  
-|System.Uri|すべて|  
-|System.Xml.Linq.Extensions|すべてのメソッド|  
-|System.Xml.Linq.XAttribute|すべてのメソッド|  
-|System.Xml.Linq.XCData|すべてのメソッド|  
-|System.Xml.Linq.XComment|すべてのメソッド|  
-|System.Xml.Linq.XContainer|すべてのメソッド|  
-|System.Xml.Linq.XDeclaration|すべてのメソッド|  
-|System.Xml.Linq.XDocument|すべてのメソッド|  
-|System.Xml.Linq.XDocumentType|すべてのメソッド|  
-|System.Xml.Linq.XElement|すべてのメソッド|  
-|System.Xml.Linq.XName|すべてのメソッド|  
-|System.Xml.Linq.XNamespace|すべてのメソッド|  
-|System.Xml.Linq.XNode|すべてのメソッド|  
-|System.Xml.Linq.XNodeDocumentOrderComparer|すべてのメソッド|  
-|System.Xml.Linq.XNodeEqualityComparer|すべてのメソッド|  
-|System.Xml.Linq.XObject|すべてのメソッド|  
-|System.Xml.Linq.XProcessingInstruction|すべてのメソッド|  
-|System.Xml.Linq.XText|すべてのメソッド|  
-|System.Xml.XmlNodeType|すべて|  
+|System.TimeSpan|All|  
+|System.Tuple|All|  
+|System.UInt16|All|  
+|System.UInt32|All|  
+|System.UInt64|All|  
+|System.Uri|All|  
+|System.Xml.Linq.Extensions|All|  
+|System.Xml.Linq.XAttribute|All|  
+|System.Xml.Linq.XCData|All|  
+|System.Xml.Linq.XComment|All|  
+|System.Xml.Linq.XContainer|All|  
+|System.Xml.Linq.XDeclaration|All|  
+|System.Xml.Linq.XDocument|All|  
+|System.Xml.Linq.XDocumentType|All|  
+|System.Xml.Linq.XElement|All|  
+|System.Xml.Linq.XName|All|  
+|System.Xml.Linq.XNamespace|All|  
+|System.Xml.Linq.XNode|All|  
+|System.Xml.Linq.XNodeDocumentOrderComparer|All|  
+|System.Xml.Linq.XNodeEqualityComparer|All|  
+|System.Xml.Linq.XObject|All|  
+|System.Xml.Linq.XProcessingInstruction|All|  
+|System.Xml.Linq.XText|All|  
+|System.Xml.XmlNodeType|All|  
   
 ##  <a name="ContextVariables"></a>コンテキスト変数  
  `context` という名前の変数は、暗黙的にすべてのポリシー[式](api-management-policy-expressions.md#Syntax)で使用できます。 そのメンバーは `\request`に関連する情報を提供します。 すべての `context` メンバーは読み取り専用です。  
   
 |コンテキスト変数|使用可能なメソッド、プロパティ、パラメーターの値|  
 |----------------------|-------------------------------------------------------|  
-|context|Api: IApi<br /><br /> Deployment<br /><br /> Elapsed: TimeSpan - Timestamp の値と現在時刻の間の時間間隔<br /><br /> LastError<br /><br /> Operation<br /><br /> Product<br /><br /> Request<br /><br /> RequestId: Guid - 一意の要求識別子<br /><br /> Response<br /><br /> Subscription<br /><br /> Timestamp: DateTime - 要求を受信した時点<br /><br /> Tracing: bool - トレースがオンかオフかを示します <br /><br /> User<br /><br /> Variables: IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|  
+|context|Api: IApi<br /><br /> Deployment<br /><br /> Elapsed: TimeSpan - Timestamp の値と現在時刻の間の時間間隔<br /><br /> lastError<br /><br /> Operation<br /><br /> Product<br /><br /> Request<br /><br /> RequestId: Guid - 一意の要求識別子<br /><br /> Response<br /><br /> サブスクリプション<br /><br /> Timestamp: DateTime - 要求を受信した時点<br /><br /> Tracing: bool - トレースがオンかオフかを示します <br /><br /> User<br /><br /> Variables: IReadOnlyDictionary<string, object><br /><br /> void Trace(message: 文字列)|  
 |context.Api|Id: 文字列<br /><br /> IsCurrentRevision: ブール値<br /><br />  Name: 文字列<br /><br /> Path: 文字列<br /><br /> Revision: 文字列<br /><br /> ServiceUrl: IUrl<br /><br /> Version: 文字列 |  
 |context.Deployment|Region: 文字列<br /><br /> ServiceName: 文字列<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|  
 |context.LastError|Source: 文字列<br /><br /> Reason: 文字列<br /><br /> Message: 文字列<br /><br /> Scope: 文字列<br /><br /> Section: 文字列<br /><br /> Path: 文字列<br /><br /> PolicyId: 文字列<br /><br /> context.LastError の詳細については、[エラー処理](api-management-error-handling-policies.md)に関する記事を参照してください。|  

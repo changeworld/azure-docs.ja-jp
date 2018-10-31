@@ -14,26 +14,225 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: e3efb19010f36a6ef1fa0a191695a0e2c9f39d19
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 708b80787337d549ebc5e66bca21e734620616ac
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190523"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49388299"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure Storage Explorer のリリース ノート
 
-この記事には、Azure Storage Explorer 1.4.1 リリースのリリース ノート、および以前のバージョンのリリース ノートが含まれています。
+この記事には、Azure Storage Explorer 1.4.3 リリースのリリース ノートだけでなく、以前のバージョンのリリース ノートも含まれています。
 
 [Microsoft Azure Storage Explorer](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
 
+## <a name="version-144"></a>バージョン 1.4.4
+10/15/2018
+
+### <a name="download-azure-storage-explorer-144"></a>Azure Storage Explorer 1.4.4 をダウンロードする
+- [Windows 用 Azure Storage Explorer 1.4.4](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Mac 用 Azure Storage Explorer 1.4.4](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux 用 Azure Storage Explorer 1.4.4](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="hotfixes"></a>修正プログラム
+* Azure Resource Management の API バージョンは、Azure US Government ユーザーのブロックを解除するようにロールバックされました。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* 読み込みスピナーは現在、CSS アニメーションを使用して、Storage Explorer によって使用される GPU の量を削減しています。 [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
+
+### <a name="new"></a>新規
+* SAS 接続やエミュレーターなどの外部リソースのアタッチが大幅に改善されました。 ここでは、次の操作を実行できます。
+   * アタッチしているリソースの表示名をカスタマイズします。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * 異なるポートを使用して複数のローカル エミュレーターにアタッチします。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * クイック アクセスにアタッチされているリソースを追加します。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Storage Explorer は論理的な削除をサポートするようになりました。 次のようにすることができます。
+   * ストレージ アカウントの BLOB コンテナー ノードを右クリックして、論理的な削除のポリシーを構成します。
+   * ナビゲーション バーの横にあるドロップダウン リストで "アクティブな BLOB と削除された BLOB" を選択して、BLOB エディターで論理的に削除された BLOB を表示します。
+   * 論理的に削除された BLOB の削除を取り消します。
+
+### <a name="fixes"></a>修正
+* Premium Storage アカウントでは CORS をサポートしていないため、"CORS 設定の構成" アクションを Premium Storage アカウントで使用できなくなりました。 [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* SAS のアタッチされたサービスに Shared Access Signature プロパティが追加されました。 [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* クイック アクセスにピン留めされた BLOB および GPV2 ストレージ アカウントで、"既定のアクセス層の設定" アクションを使用できるようになりました。 [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* 場合によっては、Storage Explorer は Classic Storage アカウントを表示するのに失敗します。 [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+
+### <a name="known-issues"></a>既知の問題
+* Azure Storage エミュレーターや Azurite などのエミュレーターを使用している場合、エミュレーターに既定のポートでの接続をリッスンさせる必要があります。 そうしないと、Storage Explorer がそれらに接続できません。
+* VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、[この問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)についてコメントをお寄せください。
+* Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
+* まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、[こちら](https://github.com/Azure/azure-storage-node/issues/317)で説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>以前のリリース
+
+* [バージョン 1.4.3](#version-143)
+* [バージョン 1.4.2](#version-142)
+* [バージョン 1.4.1](#version-141)
+* [バージョン 1.3.0](#version-130)
+* [バージョン 1.2.0](#version-120)
+* [バージョン 1.1.0](#version-110)
+* [バージョン 1.0.0](#version-100)
+* [バージョン 0.9.6](#version-096)
+* [バージョン 0.9.5](#version-095)
+* [バージョン 0.9.4 および 0.9.3](#version-094-and-093)
+* [バージョン 0.9.2](#version-092)
+* [バージョン 0.9.1 および 0.9.0](#version-091-and-090)
+* [バージョン 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [バージョン 0.8.13](#version-0813)
+* [バージョン 0.8.12 および 0.8.11 および 0.8.10](#version-0812-and-0811-and-0810)
+* [バージョン 0.8.9 および 0.8.8](#version-089-and-088)
+* [バージョン 0.8.7](#version-087)
+* [バージョン 0.8.6](#version-086)
+* [バージョン 0.8.5](#version-085)
+* [バージョン 0.8.4](#version-084)
+* [バージョン 0.8.3](#version-083)
+* [バージョン 0.8.2](#version-082)
+* [バージョン 0.8.0](#version-080)
+* [バージョン 0.7.20160509.0](#version-07201605090)
+* [バージョン 0.7.20160325.0](#version-07201603250)
+* [バージョン 0.7.20160129.1](#version-07201601291)
+* [バージョン 0.7.20160105.0](#version-07201601050)
+* [バージョン 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-143"></a>バージョン 1.4.3
+10/11/2018
+
+### <a name="hotfixes"></a>修正プログラム
+* Azure Resource Management の API バージョンは、Azure US Government ユーザーのブロックを解除するようにロールバックされました。 [#696](https://github.com/Microsoft/AzureStorageExplorer/issues/696)
+* 読み込みスピナーは現在、CSS アニメーションを使用して、Storage Explorer によって使用される GPU の量を削減しています。 [#653](https://github.com/Microsoft/AzureStorageExplorer/issues/653)
+
+### <a name="new"></a>新規
+* SAS 接続やエミュレーターなどの外部リソースのアタッチが大幅に改善されました。 ここでは、次の操作を実行できます。
+   * アタッチしているリソースの表示名をカスタマイズします。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * 異なるポートを使用して複数のローカル エミュレーターにアタッチします。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * クイック アクセスにアタッチされているリソースを追加します。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Storage Explorer は論理的な削除をサポートするようになりました。 次のようにすることができます。
+   * ストレージ アカウントの BLOB コンテナー ノードを右クリックして、論理的な削除のポリシーを構成します。
+   * ナビゲーション バーの横にあるドロップダウン リストで "アクティブな BLOB と削除された BLOB" を選択して、BLOB エディターで論理的に削除された BLOB を表示します。
+   * 論理的に削除された BLOB の削除を取り消します。
+
+### <a name="fixes"></a>修正
+* Premium Storage アカウントでは CORS をサポートしていないため、"CORS 設定の構成" アクションを Premium Storage アカウントで使用できなくなりました。 [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* SAS のアタッチされたサービスに Shared Access Signature プロパティが追加されました。 [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* クイック アクセスにピン留めされた BLOB および GPV2 ストレージ アカウントで、"既定のアクセス層の設定" アクションを使用できるようになりました。 [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* 場合によっては、Storage Explorer は Classic Storage アカウントを表示するのに失敗します。 [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+
+### <a name="known-issues"></a>既知の問題
+* Azure Storage エミュレーターや Azurite などのエミュレーターを使用している場合、エミュレーターに既定のポートでの接続をリッスンさせる必要があります。 そうしないと、Storage Explorer がそれらに接続できません。
+* VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、[この問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)についてコメントをお寄せください。
+* Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
+* まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、[こちら](https://github.com/Azure/azure-storage-node/issues/317)で説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="version-142"></a>バージョン 1.4.2
+09/24/2018
+
+### <a name="hotfixes"></a>修正プログラム
+* Azure Resource Management の API バージョンを 2018-07-01 に更新して、新しい Azure Storage アカウントの種類に対するサポートを追加します。 [#652](https://github.com/Microsoft/AzureStorageExplorer/issues/652)
+
+### <a name="new"></a>新規
+* SAS 接続やエミュレーターなどの外部リソースのアタッチが大幅に改善されました。 ここでは、次の操作を実行できます。
+   * アタッチしているリソースの表示名をカスタマイズします。 [#31](https://github.com/Microsoft/AzureStorageExplorer/issues/31)
+   * 異なるポートを使用して複数のローカル エミュレーターにアタッチします。 [#193](https://github.com/Microsoft/AzureStorageExplorer/issues/193)
+   * クイック アクセスにアタッチされているリソースを追加します。 [#392](https://github.com/Microsoft/AzureStorageExplorer/issues/392)
+* Storage Explorer は論理的な削除をサポートするようになりました。 次のようにすることができます。
+   * ストレージ アカウントの BLOB コンテナー ノードを右クリックして、論理的な削除のポリシーを構成します。
+   * ナビゲーション バーの横にあるドロップダウン リストで "アクティブな BLOB と削除された BLOB" を選択して、BLOB エディターで論理的に削除された BLOB を表示します。
+   * 論理的に削除された BLOB の削除を取り消します。
+
+### <a name="fixes"></a>修正
+* Premium Storage アカウントでは CORS をサポートしていないため、"CORS 設定の構成" アクションを Premium Storage アカウントで使用できなくなりました。 [#142](https://github.com/Microsoft/AzureStorageExplorer/issues/142)
+* SAS のアタッチされたサービスに Shared Access Signature プロパティが追加されました。 [#184](https://github.com/Microsoft/AzureStorageExplorer/issues/184)
+* クイック アクセスにピン留めされた BLOB および GPV2 ストレージ アカウントで、"既定のアクセス層の設定" アクションを使用できるようになりました。 [#229](https://github.com/Microsoft/AzureStorageExplorer/issues/229)
+* 場合によっては、Storage Explorer は Classic Storage アカウントを表示するのに失敗します。 [#323](https://github.com/Microsoft/AzureStorageExplorer/issues/323)
+
+### <a name="known-issues"></a>既知の問題
+* Azure Storage エミュレーターや Azurite などのエミュレーターを使用している場合、エミュレーターに既定のポートでの接続をリッスンさせる必要があります。 そうしないと、Storage Explorer がそれらに接続できません。
+* VS for Mac を使用しており、カスタム AAD 構成を作成したことがある場合、サインインできないことがあります。 この問題を回避するには、~/.IdentityService/AadConfigurations の内容を削除します。 これを行ってもブロックが解除されない場合は、[この問題](https://github.com/Microsoft/AzureStorageExplorer/issues/97)についてコメントをお寄せください。
+* Azurite は、すべての Storage API を完全に実装しているわけではありません。 そのため、開発ストレージに Azurite を使用すると、予期しないエラーや動作が発生する可能性があります。
+* まれに、ツリーのフォーカスがクイック アクセスから移動しなくなることがあります。 フォーカスを移動できるようにするには、[すべて更新] をクリックします。
+* NodeJS のバグが原因で、OneDrive フォルダーからのアップロードが機能しません。 バグは修正されましたが、Electron にまだ統合されていません。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、[こちら](https://github.com/Azure/azure-storage-node/issues/317)で説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
 ## <a name="version-141"></a>バージョン 1.4.1
 2018/08/28
-
-### <a name="download-azure-storage-explorer-141"></a>Azure Storage Explorer 1.4.1 のダウンロード
-- [Windows 用 Azure Storage Explorer 1.4.1](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac 用 Azure Storage Explorer 1.4.1](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux 用 Azure Storage Explorer 1.4.1](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="hotfixes"></a>修正プログラム
 * 最初の起動時に、Storage Explorer は機密データの暗号化に使用されるキーを生成できませんでした。 これにより、クイック アクセスおよびリソースのアタッチのときに問題が発生しました。 [#535](https://github.com/Microsoft/AzureStorageExplorer/issues/535)
@@ -76,7 +275,7 @@ ms.locfileid: "43190523"
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
     ```
@@ -91,35 +290,6 @@ ms.locfileid: "43190523"
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>以前のリリース
-
-* [バージョン 1.3.0](#version-130)
-* [バージョン 1.2.0](#version-120)
-* [バージョン 1.1.0](#version-110)
-* [バージョン 1.0.0](#version-100)
-* [バージョン 0.9.6](#version-096)
-* [バージョン 0.9.5](#version-095)
-* [バージョン 0.9.4 および 0.9.3](#version-094-and-093)
-* [バージョン 0.9.2](#version-092)
-* [バージョン 0.9.1 および 0.9.0](#version-091-and-090)
-* [バージョン 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [バージョン 0.8.13](#version-0813)
-* [バージョン 0.8.12 および 0.8.11 および 0.8.10](#version-0812-and-0811-and-0810)
-* [バージョン 0.8.9 および 0.8.8](#version-089-and-088)
-* [バージョン 0.8.7](#version-087)
-* [バージョン 0.8.6](#version-086)
-* [バージョン 0.8.5](#version-085)
-* [バージョン 0.8.4](#version-084)
-* [バージョン 0.8.3](#version-083)
-* [バージョン 0.8.2](#version-082)
-* [バージョン 0.8.0](#version-080)
-* [バージョン 0.7.20160509.0](#version-07201605090)
-* [バージョン 0.7.20160325.0](#version-07201603250)
-* [バージョン 0.7.20160129.1](#version-07201601291)
-* [バージョン 0.7.20160105.0](#version-07201601050)
-* [バージョン 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-130"></a>バージョン 1.3.0
 2018/07/09
@@ -162,7 +332,7 @@ ms.locfileid: "43190523"
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
     ```
@@ -219,7 +389,7 @@ ms.locfileid: "43190523"
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
     ```
@@ -240,7 +410,7 @@ ms.locfileid: "43190523"
 
 ### <a name="new"></a>新規
 * Storage Explorer で Azurite を使用できるようになりました。 注: Azurite への接続は、既定の開発エンドポイントにハードコードされています。
-* Storage Explorer で、BLOB 専用のストレージ アカウントと GPV2 ストレージ アカウントのアクセス レベルがサポートされるようになりました。 アクセス レベルの詳細については、[こちら](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-storage-tiers)をご覧ください。
+* Storage Explorer で、BLOB 専用のストレージ アカウントと GPV2 ストレージ アカウントのアクセス レベルがサポートされるようになりました。 アクセス レベルの詳細については、[こちら](https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers)をご覧ください。
 * SAS を生成するときに、開始時刻が不要になりました。
 
 ### <a name="fixes"></a>修正
@@ -273,7 +443,7 @@ ms.locfileid: "43190523"
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
     ```
@@ -300,7 +470,7 @@ ms.locfileid: "43190523"
 * Storage Explorer のフィードバックが GitHub で公開されるようになりました。 左下にあるフィードバック ボタンをクリックするか、[https://github.com/Microsoft/AzureStorageExplorer/issues](https://github.com/Microsoft/AzureStorageExplorer/issues) にアクセスすると、問題に関するページに移動できます。 自由に、提案、問題の報告、質問を行ったり、その他の形式のフィードバックを提供したりしてください。
 * SSL 証明書の問題が発生していて、問題となっている証明書が見つからない場合に、コマンド ラインから `--ignore-certificate-errors` フラグを指定して Storage Explorer を起動できるようになりました。 このフラグを指定して起動すると、Storage Explorer は SSL 証明書のエラーを無視します。
 * BLOB とファイル項目のコンテキスト メニューに「ダウンロード」オプションが追加されました。
-* アクセシビリティとスクリーン リーダーのサポートが強化されました。 ユーザー補助機能を使用する場合、詳細については、[アクセシビリティのドキュメント](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-accessibility)を参照してください。
+* アクセシビリティとスクリーン リーダーのサポートが強化されました。 ユーザー補助機能を使用する場合、詳細については、[アクセシビリティのドキュメント](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-accessibility)を参照してください。
 * Storage Explorer で Electron 1.8.3 を使用するようになりました。
 
 ### <a name="breaking-changes"></a>重大な変更
@@ -339,7 +509,7 @@ ms.locfileid: "43190523"
 ./StorageExplorer.exe --disable-gpu
 ```
 
-* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/en-us/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
+* Linux ユーザーは、[.NET Core 2.0](https://docs.microsoft.com/dotnet/core/linux-prerequisites?tabs=netcore2x) をインストールする必要があります。
 * Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
 
     ```

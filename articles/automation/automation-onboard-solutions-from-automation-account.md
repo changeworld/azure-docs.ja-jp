@@ -5,16 +5,16 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 5b906b4a90dbceb62c6f2381d0ffa8bc1bee7ef1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1ed76b0505747831363ea829f1cb91b3e056282a
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033823"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352448"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management、Change Tracking、および Inventory ソリューションの配布準備
 
@@ -93,11 +93,11 @@ Azure に存在しないマシンは手動で追加する必要があります�
 
 ### <a name="all-available-machines"></a>使用可能なすべてのマシン
 
-使用可能なすべてのマシンに対してソリューションを有効にするには、**[Enable on all available machines]\(使用可能なすべてのマシンで有効にします\)** を選択します。 これにより、マシンを個別に追加するコントロールが無効になります。 このタスクにより、ワークグループへのレポートを行うすべてマシンの名前が、"保存した検索クエリ" コンピューター グループに追加されます。
+使用可能なすべてのマシンに対してソリューションを有効にするには、**[Enable on all available machines]\(使用可能なすべてのマシンで有効にします\)** を選択します。 これにより、マシンを個別に追加するコントロールが無効になります。 このタスクにより、ワークグループへのレポートを行うすべてマシンの名前が、"保存した検索クエリ" コンピューター グループに追加されます。 選択されている場合は、**[マシンの管理]** ボタンが無効になります。
 
 ### <a name="all-available-and-future-machines"></a>使用可能なすべてのマシンと今後のすべてのマシン
 
-使用可能なすべてのマシンと今後のすべてのマシンに対してソリューションを有効にするには、**[Enable on all available and future machines]\(使用可能なマシンと今後のマシンすべてで有効にします\)** を選択します。 このオプションにより、保存した検索条件とスコープ構成がワークスペースから削除されます。 これにより、ワークスペースへのレポートを行うすべての Azure マシンと Azure 以外のマシンに対してソリューションが開かれます。
+使用可能なすべてのマシンと今後のすべてのマシンに対してソリューションを有効にするには、**[Enable on all available and future machines]\(使用可能なマシンと今後のマシンすべてで有効にします\)** を選択します。 このオプションにより、保存した検索条件とスコープ構成がワークスペースから削除されます。 これにより、ワークスペースへのレポートを行うすべての Azure マシンと Azure 以外のマシンに対してソリューションが開かれます。 選択されている場合は、**[マシンの管理]** ボタンが無効になります。
 
 ### <a name="selected-machines"></a>選択したマシン
 
@@ -120,13 +120,13 @@ Automation アカウントを Log Analytics と統合する必要がなくなっ
 
 1. Azure portal から Automation アカウントを開き、[Automation アカウント] ページで、左側にある **[関連リソース]** セクションで **[リンクされたワークスペース]** を選択します。
 
-1. [ワークスペースのリンクを解除] ページ **[ワークスペースのリンクを解除]** をクリックします。
+2. [ワークスペースのリンクを解除] ページ **[ワークスペースのリンクを解除]** をクリックします。
 
-   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
+   ![[ワークスペースのリンクを解除] ページ](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png)。
 
    続行するかどうかを確認するプロンプトが表示されます。
 
-1. Azure Automation によってアカウントと Log Analytics ワークスペースとのリンクが解除されている間、メニューの **[通知]** で進行状況を追跡できます。
+3. Azure Automation によってアカウントと Log Analytics ワークスペースとのリンクが解除されている間、メニューの **[通知]** で進行状況を追跡できます。
 
 更新の管理ソリューションを使用していた場合は、ソリューションの削除後に不要になる以下の項目を削除することもできます。
 

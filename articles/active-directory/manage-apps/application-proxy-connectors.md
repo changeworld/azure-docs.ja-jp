@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 10/17/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 23bf9d5fb26ee3a0f224f7a8acc2b0539a5c1607
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: c9c21b9beb891a685d7e264ec55817c0045455bc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364612"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406279"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -79,7 +79,7 @@ Azure AD では、デプロイしたすべてのコネクタの自動更新を�
 |4|16|320|1150|
 |8|32|270|1190|
 |16|64|245|1200*|
-\* このマシンの接続制限は 800 です。 他のすべてのマシンで、既定の 200 接続制限を使用しました。
+\* このマシンでは、カスタム設定を使用して、既定の接続上限値の一部を .Net の推奨設定よりも上げました。 お使いのテナントでこの上限値を変更する場合は、サポートに連絡する前に、既定の設定でテストを実行することをお勧めします。
  
 >[!NOTE]
 >4、8、および 16 コアのマシンの間で、最大 TPS に大きな違いはありません。 これらのマシンで主に違うのは、予想される待機時間です。  

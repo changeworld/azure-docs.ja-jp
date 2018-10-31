@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: d5f5b66dee88a993347b6c1672fd9526ece09dc4
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 4f00268fcf3797697812f3aa8b221817a2794691
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269517"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49092543"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management のアクセス制限ポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -136,9 +136,6 @@ ms.locfileid: "48269517"
  `rate-limit-by-key` ポリシーは、指定期間あたりの呼び出しレートを指定数に制限することで、キーごとに API 使用量の急増を防ぎます。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、制限に対してカウントする要求を指定することもできます。 このポリシーがトリガーされると、呼び出し元は `429 Too Many Requests` 応答状態コードを受け取ります。  
   
  このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)」を参照してください。  
-  
-> [!IMPORTANT]
->  このポリシーは、ポリシー ドキュメントごとに 1 回のみ使用できます。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  
   
@@ -288,13 +285,10 @@ ms.locfileid: "48269517"
 -   **ポリシー スコープ:** 製品  
   
 ##  <a name="SetUsageQuotaByKey"></a> 使用量のクォータをキー別に設定する  
- `quota-by-key` ポリシーは、更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、クォータに対してカウントする要求を指定することもできます。 このポリシーがトリガーされると、呼び出し元は `403 Forbidden` 応答状態コードを受け取ります。
+ `quota-by-key` ポリシーは、更新可能な呼び出しまたは有効期間中の呼び出しのボリュームと帯域幅クォータの両方またはそのどちらかをキーに基づいて適用します。 キーには任意の文字列値を設定でき、通常はポリシー式を使用して指定します。 必要に応じて増分条件を追加し、クォータに対してカウントする要求を指定することもできます。 複数のポリシーによって同じキー値が増分される場合は、要求ごとに 1 回だけ増分されます。 この呼び出し制限に達すると、呼び出し元は `403 Forbidden` 応答状態コードを受信します。
   
  このポリシーの詳細と例については、「[Azure API Management を使用した高度な要求スロットル](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/)」を参照してください。  
   
-> [!IMPORTANT]
->  このポリシーは、ポリシー ドキュメントごとに 1 回のみ使用できます。  
->   
 >  このポリシー内のポリシー属性では、[ポリシー式](api-management-policy-expressions.md)は使用できません。  
   
 ### <a name="policy-statement"></a>ポリシー ステートメント  

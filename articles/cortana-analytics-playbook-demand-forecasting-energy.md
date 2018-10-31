@@ -1,26 +1,21 @@
 ---
-title: エネルギー需要予測のための Cortana Intelligence Solution Template Playbook | Microsoft Docs
+title: エネルギー需要予測のための Cortana Intelligence Solution Template Playbook
 description: エネルギー公益事業会社の需要予測に役立つ Microsoft Cortana Intelligence Solution Template。
 services: machine-learning
-documentationcenter: ''
 author: ilanr9
 manager: cgronlun
-editor: yijichen
-ms.assetid: 8855dbb9-8543-45b9-b4c6-aa743a04d547
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/24/2016
-ms.author: yijichen
-ms.openlocfilehash: 6a879faa88cc6cdf586f2c12283bcb6f0263bf57
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.author: garye
+ms.openlocfilehash: 43a75c31c0f094bdcb7008a39140226815bda163
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842586"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49390297"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>エネルギー需要予測のための Cortana Intelligence Solution Template Playbook
 ## <a name="executive-summary"></a>概要

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: 590f9e2a9cf531a1124f9cb132791f2956227d9c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a88a0d9105942502b634f3be7c3279167ea590c6
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046581"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393254"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリの概要
 
@@ -25,7 +25,7 @@ Microsoft Authenticator アプリは、職場/学校のアカウント (たと�
 
 2 段階認証用に使用する場合、このアプリは次のいずれかの方法で使用できます。
 
-- **通知**。 アプリからデバイスに通知が送信されます。 ユーザーは通知内容が正しいことを確認し、**[確認]** を選択します。 通知に心当たりがない場合は、**[拒否]** を選択します。
+- **通知**。 アプリからデバイスに通知が送信されます。 ユーザーは通知内容が正しいことを確認し、**[確認]** を選択します。 通知に心当たりがない場合は、**[拒否]** を選択します。 **[拒否]** をクリックした後、要求を不正としてマークすることもできます。
 
 - **確認コード**。 ユーザー名とパスワードを入力した後、ユーザーはアプリを開き、**[アカウント]** 画面に表示された確認コードをサインイン画面にコピーできます。 この検証コードにより、2 段階目の認証が実行されます。
 

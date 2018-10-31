@@ -7,13 +7,13 @@ ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/26/2018
-ms.openlocfilehash: 98c62f54e2413bd67600db182c452d0d5965f239
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/08/2018
+ms.openlocfilehash: 5ee249aee5d95f22f2e1f52d6356f09ea41ccd68
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972183"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945758"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
 
@@ -123,14 +123,14 @@ Azure には、仮想ネットワークにインストールされている Azur
 
 * インターネットで利用可能なリソース。 たとえば、microsoft.com、google.com など。
 
-* 同じ Azure Virtual Network 内にあるリソース (リソースの __内部 DNS 名__ を使用)。 たとえば、既定の名前解決を使用する場合、HDInsight ワーカー ノードに割り当てられている内部 DNS 名の例として次のようなものがあります。
+* 同じ Azure Virtual Network 内にあるリソース (リソースの__内部 DNS 名__を使用)。 たとえば、既定の名前解決を使用する場合、HDInsight ワーカー ノードに割り当てられている内部 DNS 名の例として次のようなものがあります。
 
     * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
     * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     これら両方のノードは、内部 DNS 名を使用して、互いに直接通信でき、また HDInsight 内の他のノードとも直接通信できます。
 
-既定の名前解決では、仮想ネットワークに結合されているネットワーク内のリソースの名前解決を HDInsight が行うことは __できません__。 よくある例として、オンプレミス ネットワークと仮想ネットワークの結合があります。 既定の名前解決のみ使用している場合、 HDInsight は名前で、オンプレミス ネットワーク内のリソースにアクセスすることはできません。 逆の場合も同様で、オンプレミス ネットワーク内のリソースは、仮想ネットワーク内のリソースに名前でアクセスすることはできません。
+既定の名前解決では、仮想ネットワークに結合されているネットワーク内のリソースの名前解決を HDInsight が行うことは__できません__。 よくある例として、オンプレミス ネットワークと仮想ネットワークの結合があります。 既定の名前解決のみ使用している場合、 HDInsight は名前で、オンプレミス ネットワーク内のリソースにアクセスすることはできません。 逆の場合も同様で、オンプレミス ネットワーク内のリソースは、仮想ネットワーク内のリソースに名前でアクセスすることはできません。
 
 > [!WARNING]
 > HDInsight クラスターを作成する前に、カスタムの DNS サーバーを作成し、これを使用するように仮想ネットワークを構成する必要があります。
@@ -173,7 +173,7 @@ Azure には、仮想ネットワークにインストールされている Azur
 
 ## <a name="directly-connect-to-hadoop-services"></a>Hadoop サービスへの直接接続
 
-HDInsight のほとんどのドキュメントでは、インターネット経由でクラスターにアクセスできることが前提となっています。 たとえば、 https://CLUSTERNAME.azurehdinsight.net でクラスターに接続できることが必要です。 このアドレスではパブリック ゲートウェイが使用されていますが、NSG または UDR を使用してインターネットからのアクセスが制限されている場合は、このゲートウェイを使用できません。
+https://CLUSTERNAME.azurehdinsight.net でクラスターに接続できます。 このアドレスはパブリック IP を使用しているため、NSG や UDR を使用してインターネットからの着信トラフィックを制限している場合はアクセスできない可能性があります。 さらに、VNet にクラスターをデプロイするときは、プライベート エンドポイント https://CLUSTERNAME-int.azurehdinsight.net を使用してそれにアクセスできます。 このエンドポイントはクラスターがアクセスできるように VNet 内のプライベート IP に解決されます。
 
 仮想ネットワーク経由で Ambari やその他の Web ページに接続するには、次の手順を使用します。
 
@@ -233,8 +233,8 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 
 3. HDInsight をインストールする予定のサブネットのネットワーク セキュリティ グループまたはユーザー定義のルートを作成または変更します。
 
-    * __ネットワーク セキュリティ グループ__: IP アドレスからの __受信__ トラフィックをポート __443__ で許可します。
-    * __ユーザー定義のルート__: 各 IP アドレスへのルートを作成し、 __次ホップの種類__ を __インターネット__ に設定します。
+    * __ネットワーク セキュリティ グループ__: IP アドレスからの__受信__トラフィックをポート __443__ で許可します。
+    * __ユーザー定義のルート__: 各 IP アドレスへのルートを作成し、__次ホップの種類__を__インターネット__に設定します。
 
 ネットワーク セキュリティ グループまたはユーザー定義のルートの詳細については、次のドキュメントをご覧ください。
 
@@ -244,7 +244,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 
 #### <a name="forced-tunneling"></a>強制トンネリング
 
-強制トンネリングは、サブネットからのすべてのトラフィックを強制的に、特定のネットワークまたは場所に送るユーザー定義のルーティングの構成です。 HDInsight は強制トンネリングをサポート __していません__。
+強制トンネリングは、サブネットからのすべてのトラフィックを強制的に、特定のネットワークまたは場所に送るユーザー定義のルーティングの構成です。 HDInsight は強制トンネリングをサポート__していません__。
 
 ## <a id="hdinsight-ip"></a>必須 IP アドレス
 
@@ -253,7 +253,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 >
 > トラフィックの制御に、ネットワーク セキュリティ グループもユーザー定義のルートも使用しない場合は、このセクションを無視してもかまいません。
 
-ネットワーク セキュリティ グループまたはユーザー定義のルートを使用する場合は、Azure の正常性および管理サービスからのトラフィックが HDInsight に到達できるように許可する必要があります。 次の手順を使用して、許可する必要がある IP アドレスを見つけます。
+ネットワーク セキュリティ グループまたはユーザー定義のルートを使用する場合は、Azure の正常性および管理サービスからのトラフィックが HDInsight に到達できるように許可する必要があります。 また、サブネット内の VM 間のトラフィックも許可する必要があります。 次の手順を使用して、許可する必要がある IP アドレスを見つけます。
 
 1. 常に次の IP アドレスからのトラフィックを許可する必要があります。
 
@@ -280,6 +280,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
     | &nbsp; | カナダ中部 | 52.228.37.66</br>52.228.45.222 | 443 | 受信 |
     | 中国 | 中国 (北部) | 42.159.96.170</br>139.217.2.219 | 443 | 受信 |
     | &nbsp; | 中国 (東部) | 42.159.198.178</br>42.159.234.157 | 443 | 受信 |
+    | &nbsp; | 中国北部 2 | 40.73.37.141</br>40.73.38.172 | 443 | 受信 |
     | ヨーロッパ | 北ヨーロッパ | 52.164.210.96</br>13.74.153.132 | 443 | 受信 |
     | &nbsp; | 西ヨーロッパ| 52.166.243.90</br>52.174.36.244 | 443 | 受信 |
     | ドイツ | ドイツ中部 | 51.4.146.68</br>51.4.146.80 | 443 | 受信 |
@@ -301,7 +302,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 
     Azure Government に使用する IP アドレスについては、「[Azure Government Intelligence + Analytics (Azure Government のインテリジェンスと分析)](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)」をご覧ください。
 
-3. 仮想ネットワークでカスタム DNS サーバーを使用する場合は、__168.63.129.16__ からのアクセスを許可する必要もあります。 これは、Azure の再帰リゾルバーのアドレスです。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
+3. また、__168.63.129.16__ からのアクセスも許可する必要があります。 これは、Azure の再帰リゾルバーのアドレスです。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 
 詳細については、「[ネットワーク トラフィックのコントロール](#networktraffic)」のセクションをご覧ください。
 
@@ -617,7 +618,7 @@ $vnet | Set-AzureRmVirtualNetwork
     };
     ```
 
-    `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` の値を、__別の__ 仮想ネットワークの DNS サフィックスに置き換えます。 このエントリにより、リモート ネットワークの DNS サフィックスへの要求はそのネットワークのカスタム DNS にルーティングされます。
+    `0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net` の値を、__別の__仮想ネットワークの DNS サフィックスに置き換えます。 このエントリにより、リモート ネットワークの DNS サフィックスへの要求はそのネットワークのカスタム DNS にルーティングされます。
 
 3. 両方の仮想ネットワークのカスタム DNS サーバーで、`/etc/bind/named.conf.options` ファイルの内容として次のテキストを使用します。
 

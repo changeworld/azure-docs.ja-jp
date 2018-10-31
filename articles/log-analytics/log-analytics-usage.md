@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 8039a660a0f9fc94471e4b3e28b1b00bfb0d6b9e
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: d3714f7226de2a457f37e6ea4afa2b066ee460d1
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042447"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409137"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
 
@@ -166,7 +166,7 @@ Azure アラートでは、検索クエリを使用する[ログ アラート](.
 | ソリューションを必要としないコンピューターからのソリューション データ | [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。 |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>ノード数が予想を超えているかどうかの確認
-"*ノード単位 (OMS)*" の価格レベルを使用している場合は、使用するノードとソリューションの数に基づいて料金が発生します。 使用されている各プランのノード数は、使用量ダッシュボードの "*オファリング*" セクションで確認できます。<br><br> ![[使用量] ダッシュボード](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
+"*ノード単位 (Log Analytics)*" の価格レベルを使用している場合は、使用するノードとソリューションの数に基づいて料金が発生します。 使用されている各プランのノード数は、使用量ダッシュボードの "*オファリング*" セクションで確認できます。<br><br> ![[使用量] ダッシュボード](./media/log-analytics-usage/log-analytics-usage-offerings.png)<br><br>
 
 **[すべて表示]** をクリックすると、選択したプランでデータを送信しているコンピューターの完全な一覧が表示されます。
 

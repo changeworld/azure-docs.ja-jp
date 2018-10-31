@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/27/2018
+ms.date: 10/23/2018
 ms.author: victorh
-ms.openlocfilehash: 7e259936dce433683dd135171ee1c5626bf23739
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 5ea022d38970122b88ae35c592af3e4a9351190b
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32154196"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945333"
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Application Gateway での PowerShell を使用したエンド ツー エンド SSL の構成
 
@@ -127,20 +127,20 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
 
 アプリケーション ゲートウェイを作成する前に、すべての構成項目を設定します。 次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
 
-   1. アプリケーション ゲートウェイの IP 構成を作成します。 この設定では、アプリケーション ゲートウェイで使用するサブネットを構成します。 アプリケーション ゲートウェイが起動すると、構成されているサブネットから IP アドレスが取得され、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。 各インスタンスが IP アドレスを 1 つ取得することに注意してください。
+1. アプリケーション ゲートウェイの IP 構成を作成します。 この設定では、アプリケーション ゲートウェイで使用するサブネットを構成します。 アプリケーション ゲートウェイが起動すると、構成されているサブネットから IP アドレスが取得され、ネットワーク トラフィックがバックエンド IP プール内の IP アドレスにルーティングされます。 各インスタンスが IP アドレスを 1 つ取得することに注意してください。
 
    ```powershell
    $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name 'gwconfig' -Subnet $gwSubnet
    ```
 
 
-   2. フロント エンドの IP 構成を作成します。 この設定によって、アプリケーション ゲートウェイのフロントエンドにプライベート IP アドレスまたはパブリック IP アドレスがマッピングされます。 次の手順で、フロントエンドの IP 構成と前の手順のパブリック IP アドレスを関連付けます。
+2. フロント エンドの IP 構成を作成します。 この設定によって、アプリケーション ゲートウェイのフロントエンドにプライベート IP アドレスまたはパブリック IP アドレスがマッピングされます。 次の手順で、フロントエンドの IP 構成と前の手順のパブリック IP アドレスを関連付けます。
 
    ```powershell
    $fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name 'fip01' -PublicIPAddress $publicip
    ```
 
-   3. バックエンド Web サーバーの IP アドレスを使用してバックエンド IP アドレス プールを構成します。 これらの IP アドレスは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスです。 サンプルの IP アドレスを独自のアプリケーションの IP アドレス エンドポイントに置き換えます。
+3. バックエンド Web サーバーの IP アドレスを使用してバックエンド IP アドレス プールを構成します。 これらの IP アドレスは、フロントエンド IP エンドポイントから送信されるネットワーク トラフィックを受信する IP アドレスです。 サンプルの IP アドレスを独自のアプリケーションの IP アドレス エンドポイントに置き換えます。
 
    ```powershell
    $pool = New-AzureRmApplicationGatewayBackendAddressPool -Name 'pool01' -BackendIPAddresses 1.1.1.1, 2.2.2.2, 3.3.3.3
@@ -150,13 +150,13 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
    > バックエンド サーバーの IP アドレスの代わりに、完全修飾ドメイン名 (FQDN) の値も使用できます。 有効にするには、**-BackendFqdns** スイッチを使用します。 
 
 
-   4. パブリック IP エンドポイントのフロントエンド IP ポートを構成します。 このポートは、エンドユーザーが接続するポートです。
+4. パブリック IP エンドポイントのフロントエンド IP ポートを構成します。 このポートは、エンドユーザーが接続するポートです。
 
    ```powershell
    $fp = New-AzureRmApplicationGatewayFrontendPort -Name 'port01'  -Port 443
    ```
 
-   5. アプリケーション ゲートウェイの証明書を構成します。 この証明書は、アプリケーション ゲートウェイでのトラフィックの暗号化解除と再暗号化に使用されます。
+5. アプリケーション ゲートウェイの証明書を構成します。 この証明書は、アプリケーション ゲートウェイでのトラフィックの暗号化解除と再暗号化に使用されます。
 
    ```powershell
    $passwd = ConvertTo-SecureString  <certificate file password> -AsPlainText -Force 
@@ -166,13 +166,13 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
    > [!NOTE]
    > このサンプルでは、SSL 接続に使用する証明書を構成します。 証明書は .pfx 形式であり、4 ～ 12 文字のパスワードを使用する必要があります。
 
-   6. アプリケーション ゲートウェイの HTTP リスナーを作成します。 使用するフロントエンド IP 構成、ポート、および SSL 証明書を割り当てます。
+6. アプリケーション ゲートウェイの HTTP リスナーを作成します。 使用するフロントエンド IP 構成、ポート、および SSL 証明書を割り当てます。
 
    ```powershell
    $listener = New-AzureRmApplicationGatewayHttpListener -Name listener01 -Protocol Https -FrontendIPConfiguration $fipconfig -FrontendPort $fp -SSLCertificate $cert
    ```
 
-   7. SSL 対応バックエンド プール リソースで使用する証明書をアップロードします。
+7. SSL 対応バックエンド プール リソースで使用する証明書をアップロードします。
 
    > [!NOTE]
    > 既定のプローブは、バックエンドの IP アドレスでの*既定の* SSL バインドから公開キーを取得し、取得した公開キー値をここで指定した公開キー値と比較します。 
@@ -186,27 +186,40 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-rg -Name 'public
    > [!NOTE]
    > この手順で指定する証明書は、バックエンドに存在する .pfx 証明書の公開キーである必要があります。 バックエンド サーバーにインストールされている (ルート証明書ではない) 証明書を Claim, Evidence, and Reasoning (CER) 形式でエクスポートし、この手順で使用します。 この手順によって、アプリケーション ゲートウェイにバックエンドがホワイトリスト登録されます。
 
-   8. アプリケーション ゲートウェイのバックエンドの HTTP 設定を構成します。 前の手順でアップロードした証明書を HTTP 設定に割り当てます。
+   Application Gateway v2 SKU を使用している場合は、認証証明書ではなく、信頼されたルート証明書を作成します。 詳細については、「[Application Gateway でのエンド ツー エンド SSL の概要](ssl-overview.md#end-to-end-ssl-with-the-v2-sku)」を参照してください。
+
+   ```powershell
+   $trustedRootCert01 = New-AzureRmApplicationGatewayTrustedRootCertificate -Name "test1" -CertificateFile  <path to root cert file>
+   ```
+
+8. アプリケーション ゲートウェイのバックエンドの HTTP 設定を構成します。 前の手順でアップロードした証明書を HTTP 設定に割り当てます。
 
    ```powershell
    $poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name 'setting01' -Port 443 -Protocol Https -CookieBasedAffinity Enabled -AuthenticationCertificates $authcert
    ```
-   9. ロード バランサーの動作を構成するロード バランサーのルーティング規則を作成します。 この例では、ラウンド ロビンの基本的な規則を作成します。
+
+   Application Gateway v2 SKU では、次のコマンドを使用します。
+
+   ```powershell
+   $poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name “setting01” -Port 443 -Protocol Https -CookieBasedAffinity Disabled -TrustedRootCertificate $trustedRootCert01 -HostName "test1"
+   ```
+
+9. ロード バランサーの動作を構成するロード バランサーのルーティング規則を作成します。 この例では、ラウンド ロビンの基本的な規則を作成します。
 
    ```powershell
    $rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-   10. Application Gateway のインスタンスのサイズを構成します。 利用可能なサイズは、**Standard\_Small**、**Standard\_Medium**、および **Standard\_Large** です。  容量に使用可能な値は **1** ～ **10** です。
+10. Application Gateway のインスタンスのサイズを構成します。 利用可能なサイズは、**Standard\_Small**、**Standard\_Medium**、および **Standard\_Large** です。  容量に使用可能な値は **1** ～ **10** です。
 
-   ```powershell
-   $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
-   ```
+    ```powershell
+    $sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
+    ```
 
-   > [!NOTE]
-   > テスト目的では、インスタンス数として 1 を選択できます。 重要なのは、2 より小さいインスタンス数は SLA の対象外のため、推奨されていないことを把握しておくことです。 小規模のゲートウェイは開発テスト用であり、運用目的ではありません。
+    > [!NOTE]
+    > テスト目的では、インスタンス数として 1 を選択できます。 重要なのは、2 より小さいインスタンス数は SLA の対象外のため、推奨されていないことを把握しておくことです。 小規模のゲートウェイは開発テスト用であり、運用目的ではありません。
 
-   11. アプリケーション ゲートウェイで使用する SSL ポリシーを構成します。 Application Gateway では、SSL プロトコルの最小バージョンを設定する機能がサポートされています。
+11. アプリケーション ゲートウェイで使用する SSL ポリシーを構成します。 Application Gateway では、SSL プロトコルの最小バージョンを設定する機能がサポートされています。
 
    次の値が、定義できるプロトコル バージョンの一覧です。
 

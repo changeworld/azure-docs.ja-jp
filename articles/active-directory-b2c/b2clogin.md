@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/04/2018
+ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 8e06cf1a443d4fd158e29ef4b53206a83800dfe9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 36025bf8460d690aab3b3617ad3341dfe7005e9e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48803054"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649277"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Azure Active Directory B2C の b2clogin.com にリダイレクト URL を設定する
 
@@ -26,7 +26,12 @@ b2clogin.com を使用すると、次のような利点が加わります。
 - Cookie は、他の Microsoft サービスと共有されなくなりました。
 - お使いの URL に、Microsoft への参照が含まれなくなりました。 たとえば、「 `https://your-tenant-name.b2clogin.com/tfp/your-tenant-ID/policyname/v2.0/.well-known/openid-configuration` 」のように入力します。
 
-b2clogin.com を使用するには、b2clogin.com を使用する ID プロバイダー アプリケーションにリダイレクト URL を設定します。 また、Azure AD B2C アプリケーションを、ポリシー参照とトークン エンドポイントに b2clogin.com を使用するように設定します。 MSAL を使用している場合は、**ValidateAuthority** プロパティを `false` に設定する必要があります。
+b2clogin.com を使用する際は、変更が必要になる可能性があるこれらの設定に配慮してください。
+
+- ID プロバイダー アプリケーションのリダイレクト URL を、b2clogin.com を使用するように設定します。 
+- Azure AD B2C アプリケーションを、ポリシー参照とトークン エンドポイントに b2clogin.com を使用するように設定します。 
+- MSAL を使用している場合は、**ValidateAuthority** プロパティを `false` に設定する必要があります。
+- [ユーザー インターフェイスのカスタマイズ](active-directory-b2c-ui-customization-custom-dynamic.md)のため、CORS の設定で定義した任意の**許可される元のドメイン**を必ず変更します。  
 
 ## <a name="change-redirect-urls"></a>リダイレクト URL の変更
 

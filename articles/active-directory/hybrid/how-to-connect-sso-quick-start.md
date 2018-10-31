@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: d7906323da8e9ee1571efe908084ae1433884e61
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8cfe8c309c11eb24bc6e7af9fc3ba3eef0422c35
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405990"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638218"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
@@ -57,6 +57,9 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
 ## <a name="step-2-enable-the-feature"></a>手順 2: 機能を有効にする
 
 [Azure AD Connect](whatis-hybrid-identity.md) を使用してシームレス SSO を有効にします。
+
+>[!NOTE]
+> Azure AD Connect が要件を満たしていない場合は、[PowerShell を使用してシームレス SSO を有効にする](tshoot-connect-sso.md#manual-reset-of-the-feature)こともできます。 Active Directory フォレストごとに複数のドメインがある場合に、シームレス SSO を有効にするドメインを絞り込むには、このオプションを使用します。
 
 新しく Azure AD Connect をインストールする場合は、[カスタム インストール パス](how-to-connect-install-custom.md)を選択します。 **[ユーザー サインイン]** ページで、**[シングル サインオンを有効にする]** チェックボックスをオンにします。
 

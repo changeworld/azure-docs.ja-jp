@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 011654dcbad21c3e8cea51d6ab98eeca461e4685
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 7caa98b65b35d1eb1a000f1e9099fbf8eb3f8861
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068827"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406043"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Kubernetes マスター ノード ログの有効化とレビュー
 
@@ -37,9 +37,12 @@ Log Analytics の有効化と管理は、Azure Portal で行います。 AKS ク
 1. 使用可能なログの一覧で、有効にするログを選択します (*kube-apiserver*、*kube-controller-manager*、*kube-scheduler* など)。 Log Analytics が有効になった後、構成画面に戻り、収集されるログを変更することもできます。
 1. 準備ができたら **[保存]** を選択し、選択したログの収集を有効にします。
 
-次に示すポータルのスクリーン ショットは、*[診断設定]* ウィンドウと、OMS ワークスペースを作成するオプションの例です。
+次に示すポータルのスクリーン ショットは、*[診断設定]* ウィンドウと、Log Analytics ワークスペースを作成するオプションの例です。
 
-![AKS クラスターの Log Analytics に使用する OMS ワークスペースを有効にする](media/view-master-logs/enable-oms-log-analytics.png)
+![AKS クラスターの Log Analytics に使用する Log Analytics ワークスペースを有効にする](media/view-master-logs/enable-oms-log-analytics.png)
+
+>[!NOTE]
+>OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。 
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>AKS クラスター上のテスト ポッドのスケジュール設定
 
@@ -75,7 +78,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>収集したデータの表示
 
-診断ログが有効になって OMS ワークスペースに表示されるまでには、数分かかる場合があります。 Azure Portal で、Log Analytics ワークスペースのリソース グループ (*myResourceGroup* など) を選択し、Log Analytics リソース (*myAKSLogs* など) を選択します。
+診断ログが有効になって Log Analytics ワークスペースに表示されるまでには、数分かかる場合があります。 Azure Portal で、Log Analytics ワークスペースのリソース グループ (*myResourceGroup* など) を選択し、Log Analytics リソース (*myAKSLogs* など) を選択します。
 
 ![AKS クラスターの Log Analytics ワークスペースを選択する](media/view-master-logs/select-log-analytics-workspace.png)
 

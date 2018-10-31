@@ -4,15 +4,15 @@ description: Azure Files についてよく寄せられる質問とその回答�
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.date: 09/11/2018
+ms.date: 10/04/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 43acff5c4d37c46245566fb2e1d74d3e14d527bb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 29f09034988acde3643eebe368445caab035fabd
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949844"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49387505"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Azure Files に関してよく寄せられる質問 (FAQ)
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の [Server Message Block (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync で Azure ファイル共有をキャッシュすることによって、高速なアクセスを実現することもできます。
@@ -108,60 +108,23 @@ ms.locfileid: "46949844"
 
 * <a id="sizeondisk-versus-size"></a>
 **ファイルの "*ディスク上のサイズ*" プロパティが、Azure File Sync を使用した後の "*サイズ*" プロパティと一致しないのはどうしてですか。**  
-    Windows のエクスプローラーでは、**[サイズ]** と **[ディスク上のサイズ]** という、ファイルのサイズを表現する 2 つのプロパティを公開しています。 これらのプロパティは、意味が微妙に異なります。 **[サイズ]** は、ファイルそのもののサイズを表します。 **[ディスク上のサイズ]** は、ディスクに格納されているファイル ストリームのサイズを表します。 圧縮、データ重複除去の使用、Azure File Sync の使用によるクラウド階層化など、さまざまな理由から、これらのプロパティの値が異なる場合があります。ファイルが Azure ファイル共有に階層化された場合、ディスク上ではなく Azure ファイル共有にファイル ストリームが格納されるため、ディスク上のサイズはゼロになります。 また、ファイルが部分的に階層化される (または、部分的に再現される) 場合もあります。 部分的に階層化されたファイルでは、ファイルの一部がディスク上に存在します。 これは、マルチメディア プレーヤーや圧縮ユーティリティなどのアプリケーションによってファイルが部分的に読み取られた場合に、発生する可能性があります。 
+ 「[クラウドの階層化について](storage-sync-cloud-tiering.md#sizeondisk-versus-size)」を参照してください。
 
 * <a id="is-my-file-tiered"></a>
 **ファイルが階層化されているかどうかは、どうやって判断できますか。**  
-    ファイルが Azure ファイル共有に階層化されたかどうかを確認するには、いくつかの方法があります。
-    
-   *  **ファイル上でファイル属性を確認します。**
-     これを行うには、ファイルを右クリックして **[詳細]** に移動し、**[属性]** プロパティまで下へスクロールします。 階層化されたファイルには、次のような属性設定があります。     
-        
-        | 属性の文字 | 属性 | 定義 |
-        |:----------------:|-----------|------------|
-        | A | アーカイブ | バックアップ ソフトウェアによって、ファイルがバックアップされる必要があることを示します。 この属性は、ファイルが階層化されているか、ディスク上に完全に格納されているかに関係なく、常に設定されます。 |
-        | P | スパース ファイル | ファイルがスパース ファイルであることを示します。 スパース ファイルとは、ディスク ストリーム上のファイルがほぼ空である場合に、効率的に使用するために NTFS が提供している特別な種類のファイルです。 ファイルは完全に階層化されているか、部分的に再現されているため、Azure File Sync ではスパース ファイルが使用されます。 完全に階層化されたファイルでは、ファイル ストリームがクラウドに格納されます。 部分的に再現されているファイルでは、ファイルの一部が既にディスク上に存在します。 ファイルがディスク上に完全に再現されている場合、Azure File Sync では、ファイルはスパース ファイルから通常のファイルに変換されます。 |
-        | L | 再解析ポイント | ファイルが再解析ポイントを保持していることを示します。 再解析ポイントは、ファイル システム フィルターによって使用される特殊なポインターです。 Azure File Sync では、ファイルが格納されるクラウドの場所を Azure File Sync のファイル システム フィルター (StorageSync.sys) に対して定義するために再解析ポイントを使用します。 これにより、シームレスなアクセスが可能になります。 Azure File Sync が使用されていることや、Azure ファイル共有に格納されているファイルへのアクセス方法をユーザーが知る必要はありません。 ファイルが完全に再現されている場合、Azure File Sync によって、そのファイルから再解析ポイントが削除されます。 |
-        | O | オフライン | ファイルのコンテンツの一部またはすべてがディスク上に保存されていないことを示します。 ファイルが完全に再現されている場合、Azure File Sync によってこの属性は削除されます。 |
-
-        ![[詳細] タブが選択された、ファイルの [プロパティ] ダイアログ ボックス](media/storage-files-faq/azure-file-sync-file-attributes.png)
-        
-        また、**属性**フィールドをエクスプローラーのテーブル表示に追加することで、フォルダー内にあるすべてのファイルの属性を確認できます。 これを行うには、既存の列 (**[サイズ]** など) を右クリックして、**[詳細]** を選択し、ドロップダウン リストから **[属性]** を選択します。
-        
-   * **`fsutil` を使用して、ファイル上の再解析ポイントを確認します。**
-       前記のオプションで説明したように、階層化されたファイルには必ず再解析ポイントが設定されます。 再解析ポインターは、Azure File Sync のファイル システム フィルター (StorageSync.sys) の特別なポインターです。 ファイルに再解析ポイントがあるかどうかを調べるには、管理者特権でのコマンド プロンプトまたは PowerShell ウィンドウで、`fsutil` ユーティリティを実行します。
-    
-        ```PowerShell
-        fsutil reparsepoint query <your-file-name>
-        ```
-
-        ファイルに再解析ポイントがある場合、**Reparse Tag Value : 0x8000001e** と表示されます。 この 16 進値は、Azure File Sync が所有する再解析ポイントの値です。また、出力には、Azure ファイル共有上のファイルへのパスを表す再解析データが含まれます。
-
-        > [!WARNING]  
-        > `fsutil reparsepoint` ユーティリティ コマンドには、再解析ポイントを削除する機能も含まれています。 Azure File Sync のエンジニア チームによって指示されない限り、このコマンドは実行しないでください。 このコマンドを実行すると、データが失われる可能性があります。 
+ 「[クラウドの階層化について](storage-sync-cloud-tiering.md#is-my-file-tiered)」を参照してください。
 
 * <a id="afs-recall-file"></a>**使用したいファイルが階層化されています。ローカルで使用するためにこのファイルをディスクに再現するには、どうすればよいですか。**  
-    ディスクにファイルを再現する最も簡単な方法は、ファイルを開くことです。 Azure File Sync のファイル システム フィルター (StorageSync.sys) は、Azure ファイル共有からファイルをシームレスにダウンロードします。ユーザー側で作業を行う必要はありません。 マルチメディア ファイルや .zip ファイルなど、部分的に読み取りできるファイルの種類の場合、ファイルを開いても、ファイル全体がダウンロードされることはありません。
+ 「[クラウドの階層化について](storage-sync-cloud-tiering.md#afs-recall-file)」を参照してください。
 
-    また、PowerShell を使ってファイルを強制的に再現することも可能です。 複数のファイル (フォルダー内にあるすべてのファイルなど) を一度に再現したい場合に、この方法が役立つことがあります。 Azure File Sync がインストールされているサーバー ノードへの PowerShell セッションを開き、次の PowerShell コマンドを実行します。
-    
-    ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
-    ```
 
 * <a id="afs-force-tiering"></a>
 **ファイルまたはディレクトリを強制的に階層化するには、どうすればよいですか。**  
-    クラウドの階層化機能が有効な場合は、クラウド エンドポイントに指定されたボリューム空き領域の割合を達成するために、最終アクセス時刻と最終変更時刻に基づいてファイルが自動的に階層化されます。 ただし、手動で強制的にファイルを階層化する必要がある場合もあります。 長期間再使用する予定がない大きなファイルを保存して、当面ボリューム上に他のファイルとフォルダーのための領域を空けておきたい場合、手動による階層化が役立つ可能性があります。 次の PowerShell コマンドを使って、強制的に階層化できます。
-
-    ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
-    ```
+ 「[クラウドの階層化について](storage-sync-cloud-tiering.md#afs-force-tiering)」を参照してください。
 
 * <a id="afs-effective-vfs"></a>
 **ボリューム上に複数のサーバー エンドポイントがある場合、*ボリュームの空き領域*はどのように解釈されますか。**  
-    ボリューム上に複数のサーバー エンドポイントがある場合、ボリュームの空き領域の有効なしきい値は、そのボリューム上のサーバー エンドポイントで指定されているボリュームの最大空き領域になります。 ファイルは、どのサーバー エンドポイントに属しているかに関係なく、使用パターンに従って階層化されます。 たとえば、ボリューム上に Endpoint1 と Endpoint2 の 2 つのサーバー エンドポイントがあり、ボリュームの空き領域のしきい値が Endpoint1 では 25%、Endpoint2 では 50% の場合、ボリュームの空き領域のしきい値は、どちらのサーバー エンドポイントでも 50% になります。
+ 「[クラウドの階層化について](storage-sync-cloud-tiering.md#afs-effective-vfs)」を参照してください。
 
 * <a id="afs-files-excluded"></a>
 **Azure File Sync によって自動的に除外されるのは、どのファイルまたはフォルダーですか。**  
@@ -186,7 +149,7 @@ ms.locfileid: "46949844"
 
 * <a id="afs-tiered-files-out-of-endpoint"></a>
 **階層化されたファイルがサーバー エンドポイント名前空間の外部に存在するのはなぜですか。**  
-    Azure File Sync エージェント バージョン 3 より前の Azure File Sync は、サーバー エンドポイントと同じボリューム上であってもサーバー エンドポイントの外部に存在する階層化されたファイルの移動をブロックしました。 他のボリュームに対する、コピー操作、階層化されていないファイルの移動、および階層化されたファイルの移動は、影響を受けませんでした。 このような動作の理由は、エクスプローラーおよび他の Windows API による同じボリューム上での移動操作は、(ほとんど) 瞬時の名前変更操作であるという、暗黙の仮定によるものでした。 これは、Azure File Sync がクラウドからデータを呼び戻している間、エクスプローラーや他の移動方法 (コマンド ラインや PowerShell など) が応答しないように見えることを意味します。 [Azure File Sync エージェント バージョン 3.0.12.0](storage-files-release-notes.md#agent-version-30120) 以降の Azure File Sync では、サーバー エンドポイントの外部にある階層化されたファイルを移動できます。 階層化されたファイルがサーバー エンドポイントの外部で階層化されたファイルとして存在できるようにし、バックグラウンドでファイルを呼び戻すことにより、上で説明したような悪影響を防ぎます。 つまり、同じボリューム上での移動は瞬時であり、移動が完了した後で、ファイルをディスクに呼び戻すためのすべての処理を行います。 
+    Azure File Sync エージェント バージョン 3 より前の Azure File Sync は、サーバー エンドポイントと同じボリューム上であってもサーバー エンドポイントの外部に存在する階層化されたファイルの移動をブロックしました。 他のボリュームに対する、コピー操作、階層化されていないファイルの移動、および階層化されたファイルの移動は、影響を受けませんでした。 このような動作の理由は、エクスプローラーおよび他の Windows API による同じボリューム上での移動操作は、(ほとんど) 瞬時の名前変更操作であるという、暗黙の仮定によるものでした。 これは、Azure File Sync がクラウドからデータを呼び戻している間、エクスプローラーや他の移動方法 (コマンド ラインや PowerShell など) が応答しないように見えることを意味します。 [Azure File Sync エージェント バージョン 3.0.12.0](storage-files-release-notes.md#supported-versions) 以降の Azure File Sync では、サーバー エンドポイントの外部にある階層化されたファイルを移動できます。 階層化されたファイルがサーバー エンドポイントの外部で階層化されたファイルとして存在できるようにし、バックグラウンドでファイルを呼び戻すことにより、上で説明したような悪影響を防ぎます。 つまり、同じボリューム上での移動は瞬時であり、移動が完了した後で、ファイルをディスクに呼び戻すためのすべての処理を行います。 
 
 * <a id="afs-do-not-delete-server-endpoint"></a>
 **サーバーでの Azure File Sync に関して問題があります (同期、クラウド階層化など)。サーバー エンドポイントを削除して再作成する必要がありますか。**  
@@ -194,8 +157,11 @@ ms.locfileid: "46949844"
     
 * <a id="afs-resource-move"></a>
 **ストレージ同期サービスやストレージ アカウントを別のリソース グループまたはサブスクリプションに移動できますか。**  
-   はい、ストレージ同期サービスやストレージ アカウントは、別のリソース グループまたはサブスクリプションに移動できます。 ストレージ アカウントを移動する場合は、そのストレージ アカウントにハイブリッド ファイル同期サービス アクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
+   はい。ストレージ同期サービスやストレージ アカウントは、既存の Azure AD テナント内の別のリソース グループまたはサブスクリプションに移動できます。 ストレージ アカウントを移動する場合は、そのストレージ アカウントにハイブリッド ファイル同期サービス アクセス権を付与する必要があります (「[Azure File Sync がストレージ アカウントへのアクセス権を持っていることを確認します](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)」を参照してください)。
 
+    > [!Note]  
+    > Azure File Sync では、別の Azure AD テナントへのサブスクリプションの移動がサポートされません。
+    
 * <a id="afs-ntfs-acls"></a>
 **Azure File Sync では、Azure Files の格納データと共にディレクトリ レベルまたはファイル レベルの NTFS ACL が保持されますか。**
 
@@ -216,7 +182,7 @@ ms.locfileid: "46949844"
 * <a id="ad-support-regions"></a>
 **Azure Files での SMB 経由の Azure AD のプレビューは、すべての Azure リージョンで利用できますか。**
 
-    プレビューは、米国西部、米国西部 2、米国中南部、米国東部、米国東部 2、米国中部、米国中北部、オーストラリア東部、西ヨーロッパ、北ヨーロッパを除くすべてのパブリック リージョンで利用できます。
+    このプレビューは、北ヨーロッパを除くすべてのパブリック リージョンで使用できます。
 
 * <a id="ad-support-on-premises"></a>
 **Azure Files での SMB 経由の Azure AD 認証 (プレビュー) では、オンプレミス マシンからの Azure AD を使用した認証はサポートされていますか。**
@@ -276,7 +242,7 @@ ms.locfileid: "46949844"
 * <a id="data-compliance-policies"></a>
 **Azure Files ではどのようなデータ コンプライアンス ポリシーがサポートされていますか。**  
 
-   Azure Files は、Azure Storage 内の他のストレージ サービスと同じストレージ アーキテクチャ上で実行されます。 他の Azure Storage サービスで使用されているデータ コンプライアンス ポリシーが Azure Files でも適用されます。 Azure Storage のデータ コンプライアンスの詳細については、「[Azure Storage のコンプライアンス認証](https://docs.microsoft.com/en-us/azure/storage/common/storage-compliance-offerings)」を参照するか、[Microsoft セキュリティ センター](https://microsoft.com/en-us/trustcenter/default.aspx)にアクセスできます。
+   Azure Files は、Azure Storage 内の他のストレージ サービスと同じストレージ アーキテクチャ上で実行されます。 他の Azure Storage サービスで使用されているデータ コンプライアンス ポリシーが Azure Files でも適用されます。 Azure Storage のデータ コンプライアンスの詳細については、「[Azure Storage のコンプライアンス認証](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings)」を参照するか、[Microsoft セキュリティ センター](https://microsoft.com/en-us/trustcenter/default.aspx)にアクセスできます。
 
 ## <a name="on-premises-access"></a>オンプレミスのアクセス
 * <a id="expressroute-not-required"></a>
@@ -292,7 +258,7 @@ ms.locfileid: "46949844"
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Azure ファイル共有をバックアップする方法を教えてください。**  
-    誤って削除した場合のために、定期的に[共有スナップショット](storage-snapshots-files.md)を使用して保護できます。 AzCopy、RoboCopy、またはマウントされているファイル共有をバックアップできるサードパーティ製のバックアップ ツールを使用することもできます。 Azure Backup では、Azure Files をバックアップできます。 詳細については、[Azure Backup で Azure ファイル共有をバックアップする](https://docs.microsoft.com/en-us/azure/backup/backup-azure-files)方法に関するページを参照してください。
+    誤って削除した場合のために、定期的に[共有スナップショット](storage-snapshots-files.md)を使用して保護できます。 AzCopy、RoboCopy、またはマウントされているファイル共有をバックアップできるサードパーティ製のバックアップ ツールを使用することもできます。 Azure Backup では、Azure Files をバックアップできます。 詳細については、[Azure Backup で Azure ファイル共有をバックアップする](https://docs.microsoft.com/azure/backup/backup-azure-files)方法に関するページを参照してください。
 
 ## <a name="share-snapshots"></a>共有スナップショット
 

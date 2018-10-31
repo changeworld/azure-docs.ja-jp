@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: maheshu
-ms.openlocfilehash: 9728d42710ce44226363ea4954d83fcc3efbfb75
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: d3fbefd002f0b2774578d24cf2e3145a21a5e1f3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502954"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456407"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Secure LDAP (LDAPS) を使用して Azure AD Domain Services マネージド ドメインにバインドする
 
@@ -38,8 +38,8 @@ ms.locfileid: "39502954"
 **[表示]** を選択し、メニュー内にある **[ツリー]** を選択します。 [ベース DN] フィールドは空白のままにして、[OK] をクリックします。 検索するコンテナーに移動したら、コンテナーを右クリックし、[検索] を選択します。
 
 > [!TIP]
-> - Azure AD から同期されたユーザーとグループは、**AADDC Users** コンテナーに保存されます。 このコンテナーの検索パスは、```CN=AADDC\ Users,DC=CONTOSO100,DC=COM``` のようになります。
-> - マネージド ドメインに参加するコンピューターのコンピューター アカウントは、**AADDC Computers** コンテナーに保存されます。 このコンテナーの検索パスは、```CN=AADDC\ Computers,DC=CONTOSO100,DC=COM``` のようになります。
+> - Azure AD から同期されたユーザーとグループは、**AADDC Users** 組織単位に保存されます。 この組織単位の検索パスは ```OU=AADDC Users,DC=CONTOSO100,DC=COM``` のようになります。
+> - マネージド ドメインに参加するコンピューターのコンピューター アカウントは、**AADDC Computers** 組織単位に保存されます。 この組織単位の検索パスは ```OU=AADDC Computers,DC=CONTOSO100,DC=COM``` のようになります。
 >
 >
 
@@ -65,11 +65,9 @@ LDAPS がインターネット経由でマネージド ドメインにアクセ�
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
-* 
-  [Azure AD Domain Services のマネージド ドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
+* [Azure AD Domain Services のマネージド ドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
 * [LDAP query basics](https://technet.microsoft.com/library/aa996205.aspx) (LDAP クエリの基本)
-* 
-  [Azure AD Domain Services のマネージド ドメインのグループ ポリシーの管理](active-directory-ds-admin-guide-administer-group-policy.md)
+* [Azure AD Domain Services のマネージド ドメインのグループ ポリシーの管理](active-directory-ds-admin-guide-administer-group-policy.md)
 * [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
 * [ネットワーク セキュリティ グループの作成](../virtual-network/tutorial-filter-network-traffic.md)
 

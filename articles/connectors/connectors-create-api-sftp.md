@@ -10,13 +10,13 @@ ms.reviewer: klam, LADocs
 ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
 tags: connectors
-ms.date: 08/24/2018
-ms.openlocfilehash: 8f430477883543aa8f87eb3fb0fb49ab31e2d723
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 10/11/2018
+ms.openlocfilehash: 77a76aa4fbb051e5999053279798c1b0147ae8e9
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042040"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166782"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SFTP ファイルの監視、作成、および管理を行う
 
@@ -27,8 +27,10 @@ Azure Logic Apps と SFTP コネクターを使用して、[SFTP](https://www.ss
 * ファイルの内容とメタデータを取得します。
 * アーカイブをフォルダーに抽出します。
 
-SFTP サーバーから応答を取得し、その出力を他のアクションが使用できるようにするトリガーを使用できます。 ロジック アプリでアクションを使用して、SFTP サーバー上でファイルのタスクを実行できます。 他のアクションに SFTP アクションからの出力を使用させることもできます。 たとえば、SFTP サーバーからファイルを定期的に取得する場合、Office 365 Outlook コネクタまたは Outlook.com コネクタを使用して、それらのファイルとその内容に関する電子メールを送信できます。
-ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
+SFTP サーバーから応答を取得し、その出力を他のアクションが使用できるようにするトリガーを使用できます。 ロジック アプリでアクションを使用して、SFTP サーバー上でファイルのタスクを実行できます。 他のアクションに SFTP アクションからの出力を使用させることもできます。 たとえば、SFTP サーバーからファイルを定期的に取得する場合、Office 365 Outlook コネクタまたは Outlook.com コネクタを使用して、それらのファイルとその内容に関する電子メールを送信できます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
+
+> [!NOTE]
+> 50 MB より大きく 1 GB 以下のファイルの場合は、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用します。 SFTP コネクタは、[大きなメッセージを処理するためのチャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用しない限り、50 MB 以下のファイルのみをサポートします。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,13 +48,13 @@ SFTP サーバーから応答を取得し、その出力を他のアクション
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
+1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
 1. 空のロジック アプリの場合: 検索ボックスに、フィルターとして「SFTP」と入力します。 トリガーの一覧で、目的のトリガーを選択します。 
 
    または
 
-   既存のロジック アプリの場合: アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
+   既存のロジック アプリの場合、アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
    検索ボックスに、フィルターとして「sftp」と入力します。 
    アクションの一覧で、目的のアクションを選択します。
 
@@ -61,7 +63,7 @@ SFTP サーバーから応答を取得し、その出力を他のアクション
 
 1. 接続で必要な詳細を指定し、**[作成]** を選択します。
 
-1. 選択したトリガーまたはアクションで必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
+1. 選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
 
 ## <a name="examples"></a>例
 

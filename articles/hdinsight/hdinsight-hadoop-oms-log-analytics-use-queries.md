@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jasonh
-ms.openlocfilehash: 9550468e8bc9b93216fd4c1ecf144415badfc7dc
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 18ee51e54c1e44ba3affd6ca49bed5360211fa9c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103659"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408174"
 ---
 # <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics でクエリを実行して HDInsight クラスターを監視する
 
@@ -32,7 +32,7 @@ Azure Log Analytics を使用して Azure HDInsight クラスターを監視す�
 
 HDInsight クラスターの特定のメトリックを検索する方法を説明します。
 
-1. Azure Portal から HDInsight クラスターに関連付けられた OMS ワークスペースを開きます。
+1. Azure Portal から HDInsight クラスターに関連付けられた Log Analytics ワークスペースを開きます。
 2. **[ログ検索]** タイルを選択します。
 3. 検索ボックスに、Azure Log Analytics を使用するように構成したすべての HDInsight クラスターで使用できるすべてのメトリックを検索する次のクエリを入力して、**[実行]** を選択します。
 
@@ -65,7 +65,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 
 特定の時間枠中のエラー メッセージを検索する方法を説明します。 ここで説明する手順は、目的のエラー メッセージを探すためのひとつの方法にすぎません。 使用可能な任意のプロパティを使用して、目的のエラーを探すことができます。
 
-1. Azure Portal から HDInsight クラスターに関連付けられた OMS ワークスペースを開きます。
+1. Azure Portal から HDInsight クラスターに関連付けられた Log Analytics ワークスペースを開きます。
 2. **[ログ検索]** タイルを選択します。
 3. Azure Log Analytics を使用するように構成したすべての HDInsight クラスターのすべてのエラー メッセージを検索する次のクエリを入力して、**[実行]** を選択します。 
 
@@ -117,7 +117,7 @@ HDInsight クラスターの特定のメトリックを検索する方法を説�
 3. 編集または削除するアラートを選択します。
 4. **[保存]**、**[破棄]**、**[無効化]**、および **[削除]** の各オプションがあります。
 
-    ![HDInsight の Log Analytics の OMS アラートの削除/編集](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    ![HDInsight の Log Analytics のアラートの削除/編集](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
 詳細については、「[Log Analytics のアラート ルールの操作](../log-analytics/log-analytics-alerts-creating.md)」を参照してください。
 

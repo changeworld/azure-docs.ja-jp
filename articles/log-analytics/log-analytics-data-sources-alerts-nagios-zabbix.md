@@ -1,6 +1,6 @@
 ---
-title: OMS Log Analytics での Nagios と Zabbix のアラートの収集 | Microsoft Docs
-description: Nagios と Zabbix は、オープン ソースの監視ツールです。 他のソースからのアラートと共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように OMS Agent for Linux を構成する方法について説明します。
+title: Log Analytics での Nagios と Zabbix のアラートの収集 | Microsoft Docs
+description: Nagios と Zabbix は、オープン ソースの監視ツールです。 他のソースからのアラートと共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,18 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e668b2e989571d911c967d08d8012b11adaebd4d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: eb129ebe6d63396934cbcda509d711cc63a5ee1b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041035"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402942"
 ---
-# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>OMS Agent for Linux の Log Analytics で Nagios と Zabbix からのアラートを収集する 
-[Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。 [他のソースからのアラート](log-analytics-alerts.md)と共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように OMS Agent for Linux を構成する方法について説明します。
+# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントの Log Analytics で Nagios と Zabbix からのアラートを収集する 
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+[Nagios](https://www.nagios.org/) と [Zabbix](http://www.zabbix.com/) は、オープン ソースの監視ツールです。 [他のソースからのアラート](log-analytics-alerts.md)と共に分析するために、これらのツールからのアラートを Log Analytics に収集できます。  この記事では、これらのシステムからのアラートを収集するように Linux 用 Log Analytics エージェントを構成する方法について説明します。
  
 ## <a name="prerequisites"></a>前提条件
-OMS エージェント for Linux は、Nagios バージョン 4.2.x までと Zabbix バージョン 2.x までのアラートの収集をサポートします。
+Linux 用 Log Analytics エージェントは、Nagios バージョン 4.2.x までと Zabbix バージョン 2.x までのアラートの収集をサポートします。
 
 ## <a name="configure-alert-collection"></a>アラート収集を構成する
 

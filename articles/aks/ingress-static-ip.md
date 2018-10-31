@@ -7,29 +7,29 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 71a2409f91927b7584aef629109a6da363857f62
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0ffa1541439890a0591b52c1fdbc717c7d5aa5ff
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036645"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362557"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) の静的パブリック IP アドレスを使用してイングレス コントローラーを作成する
 
-イングレス コントローラーは、リバース プロキシ、構成可能なトラフィック ルーティング、および Kubernetes サービスの TLS 終端を提供するソフトウェアです。 個別の Kubernetes サービスのイングレス ルールとルートを構成するには、Kubernetes イングレス リソースが使われます。 イングレス コントローラーとイングレス ルールを使うと、1 つの IP アドレスを使って Kubernetes クラスター内の複数のサービスにトラフィックをルーティングできます。
+イングレス コントローラーは、リバース プロキシ、構成可能なトラフィック ルーティング、および Kubernetes サービスの TLS 終端を提供するソフトウェアです。 個別の Kubernetes サービスのイングレス ルールとルートを構成するには、Kubernetes イングレス リソースが使われます。 イングレス コントローラーとイングレス ルールを使用すれば、1 つの IP アドレスで Kubernetes クラスター内の複数のサービスにトラフィックをルーティングできます。
 
-この記事では、Azure Kubernetes Service (AKS) クラスターに [NGINX イングレス コントローラー][nginx-ingress]を展開する方法について説明します。 イングレス コントローラーは、静的パブリック IP アドレスを使用して構成します。 [Let's Encrypt][lets-encrypt] 証明書を自動的に生成して構成するには、[cert-manager][cert-manager] プロジェクトを使用します。 最後に、単一の IP アドレスで個々にアクセスできる 2 つのアプリケーションを AKS クラスターで実行します。
+この記事では、Azure Kubernetes Service (AKS) クラスターに [NGINX イングレス コントローラー][nginx-ingress]を展開する方法について説明します。 イングレス コントローラーは、静的パブリック IP アドレスを使用して構成します。 [Let's Encrypt][lets-encrypt] 証明書を自動的に生成して構成するには、[cert-manager][cert-manager] プロジェクトを使用します。 最後に、それぞれが 1 つの IP アドレスでアクセスできる、2 つのアプリケーションを AKS クラスターで実行します。
 
 さらに、以下を実行できます。
 
-- [外部のネットワーク接続を使用して基本的なイングレス コントローラーを作成][aks-ingress-basic]
-- [HTTP アプリケーションのルーティング アドオンを有効化][aks-http-app-routing]
-- [内部の、プライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成][aks-ingress-internal]
-- [動的パブリック IP アドレスを使用してイングレス コントローラーを作成し、Let's Encrypt を構成して TLS 証明書を自動的に生成][aks-ingress-tls]
+- [外部のネットワーク接続を使用して基本的なイングレス コントローラーを作成する][aks-ingress-basic]
+- [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
+- [内部のプライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成する][aks-ingress-internal]
+- [動的パブリック IP アドレスを使用してイングレス コントローラーを作成し、Let's Encrypt を構成して TLS 証明書を自動的に生成する][aks-ingress-tls]
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、Helm を使用し、NGINX イングレス コントローラー、cert-manager およびサンプル Web アプリをインストールします。 Helm は、AKS クラスター内で初期化され、Tiller 用のサービス アカウントが使用されている必要があります。 Helm の最新リリースを使用していることを確認します。 Helm の最新リリースを使用していることを確認します。 アップグレード手順については、「[Helm install docs][helm-install] (Helm のインストール ドキュメント) を参照してください。Helm の構成および使用方法の詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][use-helm]」を参照してください。
+この記事では、Helm を使用し、NGINX イングレス コントローラー、cert-manager およびサンプル Web アプリをインストールします。 Helm は、AKS クラスター内で初期化され、Tiller 用のサービス アカウントが使用されている必要があります。 最新リリースの Helm を使用していることを確認します。 Helm の最新リリースを使用していることを確認します。 アップグレード手順については、「[Helm のインストール ドキュメント][helm-install]」を参照してください。Helm の構成および使用方法の詳細については、「[Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール][use-helm]」を参照してください。
 
 この記事では、Azure CLI バージョン 2.0.41 以降も実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
@@ -49,13 +49,16 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeRes
 az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static
 ```
 
-次に、Helm を使用して *nginx-ingress* グラフをデプロイします。 `--set controller.service.loadBalancerIP` パラメーターを追加し、前の手順で作成した独自のパブリック IP アドレスを指定します。
+次に、Helm を使用して *nginx-ingress* グラフをデプロイします。 `--set controller.service.loadBalancerIP` パラメーターを追加し、前の手順で作成した独自のパブリック IP アドレスを指定します。 追加された冗長性については、NGINX イングレス コントローラーの 2 つのレプリカが `--set controller.replicaCount` パラメーターでデプロイされています。 イングレス コントローラーのレプリカの実行から十分にメリットを享受するには、AKS クラスターに複数のノードが存在していることを確認します。
 
 > [!TIP]
 > 次の例では、イングレス コントローラーおよび `kube-system` 名前空間の証明書をインストールします。 ご自身の環境には必要に応じて別の名前空間を指定することができます。 また、ご利用の AKS クラスターが RBAC 対応でない場合は、コマンドに `--set rbac.create=false` を追加します。
 
 ```console
-helm install stable/nginx-ingress --namespace kube-system --set controller.service.loadBalancerIP="40.121.63.72"
+helm install stable/nginx-ingress \
+    --namespace kube-system \
+    --set controller.service.loadBalancerIP="40.121.63.72"  \
+    --set controller.replicaCount=2
 ```
 
 次の出力例に示すように、NGINX イングレス コントローラー用の Kubernetes ロード バランサー サービスが作成されると、静的 IP アドレスが割り当てられます。
@@ -153,7 +156,7 @@ clusterissuer.certmanager.k8s.io/letsencrypt-staging created
 
 次に、証明書リソースを作成する必要があります。 証明書リソースでは、必要な X.509 証明書を定義します。 詳細については、[cert-manager の証明書][cert-manager-certificates]についてのページを参照してください。
 
-次のマニフェスト例を使用して、`certificates.yaml` などのクラスター リソースを作成します。 *dnsNames* と *domains* を前の手順で作成した DNS 名に更新します。 内部専用のイングレス コントローラーを使用する場合は、サービスの内部 DNS 名を指定します。
+次のマニフェスト例を使用して、`certificates.yaml` などのクラスター リソースを作成します。 *dnsNames* と *domains* を前の手順で作成した DNS 名に更新します。 内部専用のイングレス コントローラーを使用する場合は、サービスに内部 DNS 名を指定します。
 
 ```yaml
 apiVersion: certmanager.k8s.io/v1alpha1
@@ -211,7 +214,7 @@ helm install azure-samples/aks-helloworld --set title="AKS Ingress Demo" --set s
 
 次の例では、アドレス `https://demo-aks-ingress.eastus.cloudapp.azure.com/` へのトラフィックが `aks-helloworld` という名前のサービスにルーティングされることに注意してください。 アドレス `https://demo-aks-ingress.eastus.cloudapp.azure.com/hello-world-two` へのトラフィックは、`ingress-demo` サービスにルーティングされます。 *hosts* と *host* を前の手順で作成した DNS 名に更新します。
 
-`hello-world-ingress.yaml` という名前のファイルを作成し、次の例の YAML にコピーします。
+`hello-world-ingress.yaml` という名前のファイルを作成し、次の例の YAML 内にコピーします。
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -269,6 +272,56 @@ Web ブラウザーには、アプリケーションのデモが表示されて�
 
 ![アプリケーションの例 2](media/ingress/app-two.png)
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+この記事では、Helm を使用して、イングレス コンポーネント、証明書、およびサンプル アプリをインストールしました。 Helm グラフをデプロイすると、多数の Kubernetes リソースが作成されます。 これらのリソースには、ポッド、デプロイ、およびサービスが含まれます。 クリーンアップするには、最初に証明書リソースを削除します。
+
+```console
+kubectl delete -f certificates.yaml
+kubectl delete -f cluster-issuer.yaml
+```
+
+次に、`helm list` コマンドで Helm リリースを一覧表示します。 次の出力例に示すように、*nginx-ingress*、*cert-manager*、および *aks-helloworld* という名前のグラフを探します。
+
+```
+$ helm list
+
+NAME                    REVISION    UPDATED                     STATUS      CHART                   APP VERSION NAMESPACE
+waxen-hamster           1           Tue Oct 16 17:44:28 2018    DEPLOYED    nginx-ingress-0.22.1    0.15.0      kube-system
+alliterating-peacock    1           Tue Oct 16 18:03:11 2018    DEPLOYED    cert-manager-v0.3.4     v0.3.2      kube-system
+mollified-armadillo     1           Tue Oct 16 18:04:53 2018    DEPLOYED    aks-helloworld-0.1.0                default
+wondering-clam          1           Tue Oct 16 18:04:56 2018    DEPLOYED    aks-helloworld-0.1.0                default
+```
+
+`helm delete` コマンドでリリースを削除します。 次の例では、NGINX イングレス デプロイ、証明書マネージャー、および 2 つのサンプルの AKS hello world アプリを削除します。
+
+```
+$ helm delete waxen-hamster alliterating-peacock mollified-armadillo wondering-clam
+
+release "billowing-kitten" deleted
+release "loitering-waterbuffalo" deleted
+release "flabby-deer" deleted
+release "linting-echidna" deleted
+```
+
+次に AKS hello world アプリの Helm repo を削除します。
+
+```console
+helm repo remove azure-samples
+```
+
+サンプル アプリにトラフィックを送信していたイングレス ルートを削除します。
+
+```console
+kubectl delete -f hello-world-ingress.yaml
+```
+
+最後に、イングレス コントローラー用に作成した静的パブリック IP アドレスを削除します。 *MC_myResourceGroup_myAKSCluster_eastus* など、この記事の最初の手順で取得した *MC_* クラスター リソース グループ名を指定します。
+
+```azurecli
+az network public-ip delete --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP
+```
+
 ## <a name="next-steps"></a>次の手順
 
 この記事には、AKS への外部コンポーネントが含まれています。 これらのコンポーネントの詳細については、次のプロジェクト ページを参照してください。
@@ -279,9 +332,9 @@ Web ブラウザーには、アプリケーションのデモが表示されて�
 
 さらに、以下を実行できます。
 
-- [外部のネットワーク接続を使用して基本的なイングレス コントローラーを作成][aks-ingress-basic]
-- [HTTP アプリケーションのルーティング アドオンを有効化][aks-http-app-routing]
-- [内部の、プライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成][aks-ingress-internal]
+- [外部のネットワーク接続を使用して基本的なイングレス コントローラーを作成する][aks-ingress-basic]
+- [HTTP アプリケーションのルーティング アドオンを有効にする][aks-http-app-routing]
+- [内部のプライベート ネットワークと IP アドレスを使用するイングレス コントローラーを作成する][aks-ingress-internal]
 - [動的パブリック IP アドレスを使用してイングレス コントローラーを作成し、Let's Encrypt を構成して TLS 証明書を自動的に生成][aks-ingress-tls]
 
 <!-- LINKS - external -->

@@ -8,18 +8,21 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 8934852fe3d95d0a96af0283c30bba4b3bdb411b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c2f68afb685cb04d456e06cadf378bd1c3ebb1fb
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345881"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49384983"
 ---
 # <a name="http-application-routing"></a>HTTP アプリケーション ルーティング
 
-HTTP アプリケーション ルーティング ソリューションを使用すると、Azure Kubernetes Service (AKS) にデプロイされたアプリケーションに簡単にアクセスできます。 ソリューションを有効にすると、AKS クラスター内にイングレス コントローラーが構成されます。 アプリケーションが配置されると、ソリューションによってアプリケーション エンドポイントに公開アクセスできる DNS 名も作成されます。
+HTTP アプリケーション ルーティング ソリューションを使用すると、Azure Kubernetes Service (AKS) にデプロイされたアプリケーションに簡単にアクセスできます。 ソリューションを有効にすると、AKS クラスター内にイングレス コントローラーが構成されます。 アプリケーションがデプロイされると、このソリューションは、アプリケーション エンドポイントのパブリックにアクセス可能な DNS 名も作成します。
 
 アドオンを有効にすると、サブスクリプション内に DNS ゾーンが作成されます。 DNS のコストの詳細については、「[Azure DNS の価格][dns-pricing]」を参照してください。
+
+> [!CAUTION]
+> HTTP アプリケーションのルーティング アドオンは、ユーザーがすばやくイングレス コントローラーを作成し、アプリケーションにアクセスできるように設計されています。 このアドオンを運用環境で使用することはお勧めできません。 複数のレプリカと TLS のサポートを含む運用環境対応のイングレス デプロイについては、[HTTPS イングレス コントローラーの作成](https://docs.microsoft.com/azure/aks/ingress-tls)に関するページを参照してください。
 
 ## <a name="http-routing-solution-overview"></a>HTTP のルーティング ソリューションの概要
 
@@ -88,6 +91,13 @@ spec:
       containers:
       - image: r.j3ss.co/party-clippy
         name: party-clippy
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
         tty: true
         command: ["party-clippy"]
         ports:

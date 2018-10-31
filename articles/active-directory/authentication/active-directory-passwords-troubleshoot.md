@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 057af5e0e5b467ab60e8de7534e9f4428b96c3dc
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 668882b8b39052c3c8e7d7b72c881a64c5c05a10
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298321"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321800"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>セルフサービスのパスワードのリセットのトラブルシューティング
 
@@ -173,16 +173,14 @@ Azure AD Connect バージョン 1.1.443.0 以上の場合は、次の URL へ�
 
 詳細については、「[Azure AD Connect の前提条件](../hybrid/how-to-connect-install-prerequisites.md)」で接続の前提条件をご確認ください。
 
-
-
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Azure AD Connect 同期サービスを再起動する
 
 サービスに関する接続の問題や他の一時的な問題を解決するには、Azure AD Connect 同期サービスを再起動します。
 
    1. 管理者として、Azure AD Connect を実行しているサーバーで **[開始]** を選択します。
-   2. 検索フィールドに「**services.msc**」を入力して、**[入力]** を選択します。
-   3. **[Microsoft Azure AD Sync]** エントリを検索します。
-   4. このサービス エントリを右クリックして **[再起動]** を選択し、処理が完了するまで待機します。
+   1. 検索フィールドに「**services.msc**」を入力して、**[入力]** を選択します。
+   1. **[Microsoft Azure AD Sync]** エントリを検索します。
+   1. このサービス エントリを右クリックして **[再起動]** を選択し、処理が完了するまで待機します。
 
    ![Azure AD Sync サービスを再起動する][Service restart]
 
@@ -193,15 +191,15 @@ Azure AD Connect バージョン 1.1.443.0 以上の場合は、次の URL へ�
 接続の問題を解決するには、パスワード ライトバック機能を無効にしてから再び有効にします。
 
    1. 管理者として Azure AD Connect 構成ウィザードを開きます。
-   2. **[Azure AD に接続]** で、Azure AD のグローバル管理者の資格情報を入力します。
-   3. **[AD DS に接続]** で、AD Domain Services の管理者の資格情報を入力します。
-   4. **[ユーザーを一意に識別]** で、**[次へ]** を選択します。
-   5. **[オプション機能]** で、**[パスワードの書き戻し]** チェック ボックスをオフにします。
-   6. 他のダイアログ ページは何も変更せずに、**[構成の準備完了]** ページが表示されるまで **[次へ]** を選択します。
-   7. **[構成の準備完了]** ページで **[パスワードの書き戻し]** オプションが **[無効]** になっていることを確認したら、緑色の **[構成]** ボタンを選択して変更をコミットします。
-   8. **[完了]** で、**[今すぐ同期]** オプションをオフにし、**[完了]** を選択してウィザードを閉じます。
-   9. Azure AD Connect 構成ウィザードをもう一度開きます。
-   10. 手順 2-8 を繰り返します。ただし、サービスをもう一度有効にするために **[オプション機能]** ページで **[パスワードの書き戻し]** オプションがオンになっていることを確認します。
+   1. **[Azure AD に接続]** で、Azure AD のグローバル管理者の資格情報を入力します。
+   1. **[AD DS に接続]** で、AD Domain Services の管理者の資格情報を入力します。
+   1. **[ユーザーを一意に識別]** で、**[次へ]** を選択します。
+   1. **[オプション機能]** で、**[パスワードの書き戻し]** チェック ボックスをオフにします。
+   1. 他のダイアログ ページは何も変更せずに、**[構成の準備完了]** ページが表示されるまで **[次へ]** を選択します。
+   1. **[構成の準備完了]** ページで **[パスワードの書き戻し]** オプションが **[無効]** になっていることを確認したら、緑色の **[構成]** ボタンを選択して変更をコミットします。
+   1. **[完了]** で、**[今すぐ同期]** オプションをオフにし、**[完了]** を選択してウィザードを閉じます。
+   1. Azure AD Connect 構成ウィザードをもう一度開きます。
+   1. 手順 2-8 を繰り返します。ただし、サービスをもう一度有効にするために **[オプション機能]** ページで **[パスワードの書き戻し]** オプションがオンになっていることを確認します。
 
 これらの手順によって、クラウド サービスとの接続が再確立され、発生する可能性のある中断が解決されます。
 
@@ -215,10 +213,11 @@ Azure AD Connect を再インストールすることで、クラウド サー�
 
 > [!WARNING]
 > 既定の同期ルールをカスタマイズしている場合は、*アップグレードを開始する前にこれらをバックアップし、終了後に手動で再デプロイする*必要があります。
+>
 
-   1. [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=615771)から最新バージョンの Azure AD Connect をダウンロードします。
-   2. Azure AD Connect が既にインストールされているため、インプレース アップグレードを実行して Azure AD Connect を最新バージョンに更新する必要があります。
-   3. ダウンロードしたパッケージを実行し、画面の指示に従って Azure AD Connect コンピューターを更新します。
+1. [Microsoft ダウンロード センター](http://go.microsoft.com/fwlink/?LinkId=615771)から最新バージョンの Azure AD Connect をダウンロードします。
+1. Azure AD Connect が既にインストールされているため、インプレース アップグレードを実行して Azure AD Connect を最新バージョンに更新する必要があります。
+1. ダウンロードしたパッケージを実行し、画面の指示に従って Azure AD Connect コンピューターを更新します。
 
 上記の手順によって、クラウド サービスとの接続が再確立され、発生する可能性のある中断が解決されるはずです。
 
@@ -228,34 +227,33 @@ Azure AD Connect を再インストールすることで、クラウド サー�
 
 Azure AD Connect には、パスワード ライトバックを実行するための Active Directory の **[パスワードのリセット]** アクセス許可が必要です。 特定のオンプレミス Active Directory ユーザー アカウントに必要なアクセス許可が Azure AD Connect にあるかどうかを確認するには、Windows の有効なアクセス許可機能を使用します。
 
-   1. Azure AD Connect サーバーにサインインし、**[開始]** > **[同期サービス]** の順に選択して、**Synchronization Service Manager** を開始します。
-   2. **[コネクタ]** タブで、オンプレミスの **[Active Directory Domain Services]** コネクタを選択してから、**[プロパティ]** を選択します。  
-
+1. Azure AD Connect サーバーにサインインし、**[開始]** > **[同期サービス]** の順に選択して、**Synchronization Service Manager** を開始します。
+1. **[コネクタ]** タブで、オンプレミスの **[Active Directory Domain Services]** コネクタを選択してから、**[プロパティ]** を選択します。  
    ![有効なアクセス許可 - 手順 2](./media/active-directory-passwords-troubleshoot/checkpermission01.png)  
   
-   3. ポップアップ ウィンドウで **[Connect to Active Directory Forest]\(Active Directory フォレストに接続\)** を選択し、**[ユーザー名]** のプロパティをメモします。 このプロパティは、ディレクトリ同期を実行するために、Azure AD Connect によって使用される AD DS アカウントです。 Azure AD Connect でパスワード ライトバックを実行するために、AD DS アカウントにはパスワードのリセットのアクセス許可が必要です。  
+1. ポップアップ ウィンドウで **[Connect to Active Directory Forest]\(Active Directory フォレストに接続\)** を選択し、**[ユーザー名]** のプロパティをメモします。 このプロパティは、ディレクトリ同期を実行するために、Azure AD Connect によって使用される AD DS アカウントです。 Azure AD Connect でパスワード ライトバックを実行するために、AD DS アカウントにはパスワードのリセットのアクセス許可が必要です。  
    
    ![有効なアクセス許可 - 手順 3](./media/active-directory-passwords-troubleshoot/checkpermission02.png) 
   
-   4. オンプレミスのドメイン コントローラーにサインインし、**[Active Directory ユーザーとコンピューター]** アプリケーションを起動します。
-   5. **[表示]** を選択し、**[高度な機能]** オプションが有効であることを確認します。  
+1. オンプレミスのドメイン コントローラーにサインインし、**[Active Directory ユーザーとコンピューター]** アプリケーションを起動します。
+1. **[表示]** を選択し、**[高度な機能]** オプションが有効であることを確認します。  
    
    ![有効なアクセス許可 - 手順 5](./media/active-directory-passwords-troubleshoot/checkpermission03.png) 
   
-   6. 確認する Active Directory ユーザー アカウントを探します。 アカウント名を右クリックし、**[プロパティ]** を選択します。  
+1. 確認する Active Directory ユーザー アカウントを探します。 アカウント名を右クリックし、**[プロパティ]** を選択します。  
    
    ![有効なアクセス許可 - 手順 6](./media/active-directory-passwords-troubleshoot/checkpermission04.png) 
 
-   7. ポップアップ ウィンドウで、**[セキュリティ]** タブに移動し、**[詳細設定]** を選択します。  
+1. ポップアップ ウィンドウで、**[セキュリティ]** タブに移動し、**[詳細設定]** を選択します。  
    
    ![有効なアクセス許可 - 手順 7](./media/active-directory-passwords-troubleshoot/checkpermission05.png) 
    
-   8. **[Advanced Security Settings for Administrator]\(管理者のセキュリティの詳細設定\)** ポップアップ ウィンドウで、**[有効なアクセス]** タブに移動します。
-   9. **[ユーザーの選択]** を選択し、Azure AD Connect (手順 3 参照) が使用する AD DS アカウントを選択してから、**[有効なアクセス許可の表示]** を選択します。  
-   
+1. **[Advanced Security Settings for Administrator]\(管理者のセキュリティの詳細設定\)** ポップアップ ウィンドウで、**[有効なアクセス]** タブに移動します。
+1. **[ユーザーの選択]** を選択し、Azure AD Connect (手順 3 参照) が使用する AD DS アカウントを選択してから、**[有効なアクセス許可の表示]** を選択します。
+
    ![有効なアクセス許可 - 手順 9](./media/active-directory-passwords-troubleshoot/checkpermission06.png) 
   
-   10. 下にスクロールし、**[パスワードのリセット]** を探します。 エントリにチェック マークがついている場合は、選択した Active Directory ユーザー アカウントのパスワードをリセットするアクセス許可が AD DS アカウントにあることを意味します。  
+1. 下にスクロールし、**[パスワードのリセット]** を探します。 エントリにチェック マークがついている場合は、選択した Active Directory ユーザー アカウントのパスワードをリセットするアクセス許可が AD DS アカウントにあることを意味します。  
    
    ![有効なアクセス許可 - 手順 10](./media/active-directory-passwords-troubleshoot/checkpermission07.png)  
 
@@ -286,8 +284,6 @@ Azure AD やセルフサービスのパスワード リセットに関する一�
 * **ライセンス**: ユーザーには Azure AD Premium または Azure AD Basic ライセンスが割り当てられていますか。
 * **アプリケーション イベント ログ**: パスワード ライトバックの使用中に、ご利用のオンプレミスのインフラストラクチャでエラーが発生した場合は、Azure AD Connect サーバーからのアプリケーション イベント ログのコピーを圧縮してお送りください。
 
-
-
 [Service restart]: ./media/active-directory-passwords-troubleshoot/servicerestart.png "Azure AD Sync サービスを再起動する"
 [Support code]: ./media/active-directory-passwords-troubleshoot/supportcode.png "サポート コードはウィンドウの右下にあります"
 
@@ -299,7 +295,7 @@ Azure AD やセルフサービスのパスワード リセットに関する一�
 * [パスワードのリセットまたは変更](../user-help/active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
 * [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)

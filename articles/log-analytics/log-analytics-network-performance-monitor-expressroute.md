@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: f08b9e60a632428a120f9cfa50d29f1454e0b1d5
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 73978609d018eb43ab8031dc6e8261861e1ee3bf
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041168"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402541"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute モニター
 
@@ -36,7 +36,7 @@ ms.locfileid: "48041168"
 Network Performance Monitor の構成を開くには、[Network Performance Monitor ソリューション](log-analytics-network-performance-monitor.md)を開き、**[構成]** を選びます。
 
 ### <a name="configure-network-security-group-rules"></a>ネットワーク セキュリティ グループ規則を構成する 
-Network Performance Monitor による監視に使われる Azure 内のサーバーについては、Network Performance Monitor の代理トランザクションに使われるポートの TCP トラフィックを許可するようにネットワーク セキュリティ グループ (NSG) 規則を構成します。 既定のポートは 8084 です。 この構成により、Azure VM にインストールされている Operations Management Suite エージェントは、オンプレミスの監視エージェントと通信できます。 
+Network Performance Monitor による監視に使われる Azure 内のサーバーについては、Network Performance Monitor の代理トランザクションに使われるポートの TCP トラフィックを許可するようにネットワーク セキュリティ グループ (NSG) 規則を構成します。 既定のポートは 8084 です。 この構成により、Azure VM にインストールされている Log Analytics エージェントは、オンプレミスの監視エージェントと通信できます。 
 
 NSG の詳細については、 [ネットワーク セキュリティ グループ](../virtual-network/manage-network-security-group.md)に関するページを参照してください。 
 

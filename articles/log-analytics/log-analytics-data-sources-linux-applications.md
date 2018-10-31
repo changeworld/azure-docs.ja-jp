@@ -1,6 +1,6 @@
 ---
-title: OMS Log Analytics での Linux アプリケーション パフォーマンスの収集 | Microsoft Docs
-description: この記事では、MySQL および Apache HTTP Server のパフォーマンス カウンターを収集するように OMS Agent for Linux を構成するための詳細について説明します。
+title: Log Analytics での Linux アプリケーション パフォーマンスの収集 | Microsoft Docs
+description: この記事では、MySQL および Apache HTTP Server のパフォーマンス カウンターを収集するように Linux 用 Log Analytics エージェントを構成するための詳細について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,26 +15,27 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 5120fa869d9c3fe28630b189b84b9c3e3f5577e2
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: df5e55c2c03fec13ada258be91f0d98b7ce70d94
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044571"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406162"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Log Analytics で Linux アプリケーションのパフォーマンス カウンターを収集する 
-この記事では、特定のアプリケーションのパフォーマンス カウンターを収集するように [OMS Agent for Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) を構成するための詳細について説明します。  この記事に含まれるアプリケーションは次のとおりです。  
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+この記事では、特定のアプリケーションのパフォーマンス カウンターを収集するように [Linux 用 Log Analytics エージェント](https://github.com/Microsoft/OMS-Agent-for-Linux)を構成するための詳細について説明します。  この記事に含まれるアプリケーションは次のとおりです。  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
 
 ## <a name="mysql"></a>MySQL
-OMS エージェントがインストールされるときにコンピューター上に MySQL Server または MariaDB Server が検出された場合は、MySQL Server 用のパフォーマンス監視プロバイダーが自動的にインストールされます。 このプロバイダーは、パフォーマンスの統計情報を公開するためにローカルの MySQL/MariaDB サーバーに接続します。 プロバイダーが MySQL Server にアクセスできるように、MySQL ユーザーの資格情報が構成されている必要があります。
+Log Analytics エージェントがインストールされるときにコンピューター上に MySQL Server または MariaDB Server が検出された場合は、MySQL Server 用のパフォーマンス監視プロバイダーが自動的にインストールされます。 このプロバイダーは、パフォーマンスの統計情報を公開するためにローカルの MySQL/MariaDB サーバーに接続します。 プロバイダーが MySQL Server にアクセスできるように、MySQL ユーザーの資格情報が構成されている必要があります。
 
 ### <a name="configure-mysql-credentials"></a>MySQL の資格情報を構成する
 MySQL OMI プロバイダーがパフォーマンスや正常性に関する情報を MySQL インスタンスに照会するためには、MySQL ユーザーが事前に構成され、MySQL クライアント ライブラリがインストールされている必要があります。  これらの資格情報は、Linux エージェント上に格納されている認証ファイルに格納されます。  認証ファイルは、MySQL インスタンスがどのようなバインド アドレスとポートをリッスンしているかや、メトリックを収集するためにどのような資格情報を使用するかを指定します。  
 
-OMS Agent for Linux のインストール中に、MySQL OMI プロバイダーは MySQL の my.cnf 構成ファイル (既定の場所) をスキャンしてバインド アドレスとポートを検出し、MySQL OMI 認証ファイルを部分的に設定します。
+Linux 用 Log Analytics エージェントのインストール中に、MySQL OMI プロバイダーは MySQL の my.cnf 構成ファイル (既定の場所) をスキャンしてバインド アドレスとポートを検出し、MySQL OMI 認証ファイルを部分的に設定します。
 
 MySQL 認証ファイルは `/var/opt/microsoft/mysql-cimprov/auth/omsagent/mysql-auth` に格納されています。
 
@@ -115,7 +116,7 @@ MySQL ユーザーにはまた、次の既定のテーブルへの SELECT アク
 
 ### <a name="define-performance-counters"></a>パフォーマンス カウンターを定義する
 
-Log Analytics にデータを送信するように OMS Agent for Linux を構成したら、収集するパフォーマンス カウンターを構成する必要があります。  次の表のカウンターには、「[Log Analytics での Windows および Linux パフォーマンス データ ソース](log-analytics-data-sources-windows-events.md)」の手順を使用します。
+Log Analytics にデータを送信するように Linux 用 Log Analytics エージェントを構成したら、収集するパフォーマンス カウンターを構成する必要があります。  次の表のカウンターには、「[Log Analytics での Windows および Linux パフォーマンス データ ソース](log-analytics-data-sources-windows-events.md)」の手順を使用します。
 
 | オブジェクト名 | カウンター名 |
 |:--|:--|
@@ -151,7 +152,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>パフォーマンス カウンターを定義する
 
-Log Analytics にデータを送信するように OMS Agent for Linux を構成したら、収集するパフォーマンス カウンターを構成する必要があります。  次の表のカウンターには、「[Log Analytics での Windows および Linux パフォーマンス データ ソース](log-analytics-data-sources-windows-events.md)」の手順を使用します。
+Log Analytics にデータを送信するように Linux 用 Log Analytics エージェントを構成したら、収集するパフォーマンス カウンターを構成する必要があります。  次の表のカウンターには、「[Log Analytics での Windows および Linux パフォーマンス データ ソース](log-analytics-data-sources-windows-events.md)」の手順を使用します。
 
 | オブジェクト名 | カウンター名 |
 |:--|:--|

@@ -1,34 +1,35 @@
 ---
-title: Azure Kubernetes Service (AKS) の内部ロード バランサーを作成する
+title: Azure Kubernetes Service (AKS) で内部ロード バランサーを作成する
 description: サービスを Azure Kubernetes Service (AKS) を使用して公開する内部ロード バランサーを作成して使用する方法を示します。
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 10/08/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: 123fc08995416e0ff9c7e12a526deadc34b3a4a2
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 042d2ee0f615ce5216fc11152f0f65518ff9bd5c
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001397"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49376381"
 ---
 # <a name="use-an-internal-load-balancer-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) で内部ロード バランサーを使用する
 
-内部負荷分散により、Kubernetes サービスが Kubernetes クラスターと同じ仮想ネットワークで実行されているアプリケーションにアクセスできるようになります。 この記事では、Azure Kubernetes Service (AKS) を使用して内部ロード バランサーを使用する方法を示します。 Azure Load Balancer は、Basic と Standard の 2 種類の SKU で使用できます。 AKS は、基本的な SKU を使用します。
+Azure Kubernetes Service (AKS) でアプリケーションへのアクセスを制限するために、内部ロード バランサーを作成して使用できます。 内部ロード バランサーは、Kubernetes サービスを Kubernetes クラスターと同じ仮想ネットワークで実行されているアプリケーションからのみアクセス可能にします。 この記事では、Azure Kubernetes Service (AKS) を使用して内部ロード バランサーを使用する方法を示します。
+
+> [!NOTE]
+> Azure Load Balancer は、*Basic* と *Standard* の 2 つの SKU で使用できます。 詳細については、[Azure ロード バランサー SKU の比較][azure-lb-comparison]に関するページを参照してください。 AKS は現在、*Basic* SKU をサポートしています。 *Standard* SKU を使用する場合は、上流の [acs-engine][acs-engine] を使用できます。
 
 ## <a name="create-an-internal-load-balancer"></a>内部ロード バランサーを作成します。
 
-内部ロード バランサーを作成するには、次の例に示すように、サービスの種類 *LoadBalancer* と *azure-load-balancer-internal*注釈を指定したサービス マニフェストを作成します。
+内部ロード バランサーを作成するには、次の例に示すように、サービスの種類 *LoadBalancer* と *azure-load-balancer-internal* の注釈を含む `internal-lb.yaml` という名前のサービス マニフェストを作成します。
 
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-front
+  name: internal-app
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:
@@ -36,31 +37,29 @@ spec:
   ports:
   - port: 80
   selector:
-    app: azure-vote-front
+    app: internal-app
 ```
 
-`kubetctl apply` を使用してデプロイすると、Azure ロード バランサーが作成され、AKS クラスターと同じ仮想ネットワークで使用可能になります。
+`kubectl apply -f internal-lb.yaml` を使用してデプロイすると、Azure ロード バランサーが作成され、AKS クラスターと同じ仮想ネットワークで使用可能になります。
 
-![AKS 内部ロード バランサーの画像](media/internal-lb/internal-lb.png)
-
-サービスの詳細を表示すると、次の例に示すように、*EXTERNAL-IP* 列の IP アドレスが内部ロード バランサーの IP アドレスになります。
+サービスの詳細を表示すると、内部ロード バランサーの IP アドレスが *EXTERNAL-IP* 列に示されます。 次の例に示すように、IP アドレスが *\<[保留中]\>* から実際の内部 IP アドレスに変わるには 1 ～ 2 分かかることがあります。
 
 ```
-$ kubectl get service azure-vote-front
+$ kubectl get service internal-app
 
-NAME               TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-azure-vote-front   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   10s
+NAME           TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+internal-app   LoadBalancer   10.0.248.59   10.240.0.7    80:30555/TCP   2m
 ```
 
 ## <a name="specify-an-ip-address"></a>IP アドレスを指定する
 
-内部ロード バランサーに特定の IP アドレスを使用する場合は、ロード バランサーの仕様に *loadBalancerIP* プロパティを追加します。指定した IP アドレスは AKS クラスターと同じサブネットに存在し、まだリソースに割り当てられていない必要があります。
+内部ロード バランサーに特定の IP アドレスを使用する場合は、ロード バランサーの YAML マニフェストに *loadBalancerIP* プロパティを追加します。 指定した IP アドレスは AKS クラスターと同じサブネットに存在し、まだリソースに割り当てられていない必要があります。
 
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-front
+  name: internal-app
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:
@@ -69,16 +68,16 @@ spec:
   ports:
   - port: 80
   selector:
-    app: azure-vote-front
+    app: internal-app
 ```
 
-サービスの詳細を表示すると、*EXTERNAL-IP* の IP アドレスに指定した IP アドレスが反映されます。
+サービスの詳細を表示すると、*EXTERNAL-IP* 列の IP アドレスに、指定された IP アドレスが反映されます。
 
 ```
-$ kubectl get service azure-vote-front
+$ kubectl get service internal-app
 
-NAME               TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
-azure-vote-front   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
+NAME           TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+internal-app   LoadBalancer   10.0.184.168   10.240.0.25   80:30225/TCP   4m
 ```
 
 ## <a name="use-private-networks"></a>プライベート ネットワークを使用する
@@ -88,10 +87,10 @@ AKS クラスターを作成するときに、高度なネットワーク設定�
 プライベート ネットワークを使用する AKS クラスターに内部ロード バランサーをデプロイする場合、前の手順を変更する必要はありません。 ロード バランサーは、AKS クラスターと同じリソース グループ内に作成されますが、次の例に示すように、プライベート仮想ネットワークとサブネットに接続されます。
 
 ```
-$ kubectl get service azure-vote-front
+$ kubectl get service internal-app
 
-NAME               TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-azure-vote-front   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
+NAME           TYPE           CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
+internal-app   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 ```
 
 > [!NOTE]
@@ -105,7 +104,7 @@ azure-vote-front   LoadBalancer   10.1.15.188   10.0.0.35     80:31669/TCP   1m
 apiVersion: v1
 kind: Service
 metadata:
-  name: azure-vote-front
+  name: internal-app
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
     service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "apps-subnet"
@@ -114,12 +113,14 @@ spec:
   ports:
   - port: 80
   selector:
-    app: azure-vote-front
+    app: internal-app
 ```
 
 ## <a name="delete-the-load-balancer"></a>ロード バランサーを削除する
 
 内部ロード バランサーを使用しているすべてのサービスが削除されると、ロード バランサー自体も削除されます。
+
+また、すべての Kubernetes リソース (`kubectl delete service internal-app` など) と同様に、サービスを直接削除することもできます。それにより、基礎となる Azure ロード バランサーも削除されます。
 
 ## <a name="next-steps"></a>次の手順
 
@@ -127,9 +128,10 @@ spec:
 
 <!-- LINKS - External -->
 [kubernetes-services]: https://kubernetes.io/docs/concepts/services-networking/service/
+[acs-engine]: https://github.com/Azure/acs-engine
 
 <!-- LINKS - Internal -->
-[advanced-networking]: networking-overview.md
-[deploy-advanced-networking]: networking-overview.md#configure-networking---cli
+[advanced-networking]: configure-advanced-networking.md
 [az-aks-show]: /cli/azure/aks#az-aks-show
 [az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
+[azure-lb-comparison]: ../load-balancer/load-balancer-overview.md#skus

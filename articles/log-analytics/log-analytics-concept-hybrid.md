@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 43f077ef07597604eaf42cb4af47cbc2f0e6c524
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 03133c6d6518444f8e6fb15cfa425969dbafdedc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042005"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406876"
 ---
 # <a name="collect-data-in-a-hybrid-environment-with-log-analytics-agent"></a>Log Analytics エージェントを使用してハイブリッド環境でデータを収集する
 
@@ -38,7 +38,7 @@ Azure Log Analytics は、次の場所で実行されている Windows または
 
 収集したデータを分析して操作する前に、Log Analytics サービスにデータを送信するすべてのコンピューターにエージェントをインストールして接続しておく必要があります。 オンプレミス コンピューターへのエージェントのインストールには、Setup、コマンド ライン、Azure Automation の Desired State Configuration (DSC) を使用します。 
 
-Linux と Windows のエージェントは、TCP ポート 443 を介して Log Analytics サービスとアウトバウンド通信を行います。コンピューターがファイアウォールまたはプロキシ サーバーに接続してインターネット経由で通信している場合は、後述する前提条件を確認して、必要なネットワーク構成を把握してください。  組織の IT セキュリティ ポリシーによってネットワーク上のコンピューターにインターネットへの接続が許可されない場合は、[OMS ゲートウェイ](log-analytics-oms-gateway.md)をセットアップし、ゲートウェイ経由で Log Analytics に接続するようエージェントを構成できます。 その後、エージェントは、構成情報を受信したり、有効にしたデータ収集ルールとソリューションに応じて収集されたデータを送信したりできます。 
+Linux と Windows のエージェントは、TCP ポート 443 を介して Log Analytics サービスとアウトバウンド通信を行います。コンピューターがファイアウォールまたはプロキシ サーバーに接続してインターネット経由で通信している場合は、後述する前提条件を確認して、必要なネットワーク構成を把握してください。  組織の IT セキュリティ ポリシーによってネットワーク上のコンピューターにインターネットへの接続が許可されない場合は、[Log Analytics ゲートウェイ](log-analytics-oms-gateway.md)をセットアップし、ゲートウェイ経由で Log Analytics に接続するようエージェントを構成できます。 その後、エージェントは、構成情報を受信したり、有効にしたデータ収集ルールとソリューションに応じて収集されたデータを送信したりできます。 
 
 System Center Operations Manager 2012 R2 以降でコンピューターを監視している場合は、Log Analytics サービスとマルチホームしてデータを収集し、サービスに転送することで、[Operations Manager](log-analytics-om-agents.md) で引き続き監視できます。 Log Analytics に統合された Operations Manager 管理グループで監視されている Linux コンピューターは、データ ソースの構成の受信と、収集されたデータの管理グループを介した転送は行いません。 Windows エージェントは最大 4 つのワークスペースに報告できますが、Linux エージェントは単一のワークスペースへの報告のみをサポートします。  
 
@@ -51,15 +51,30 @@ Windows エージェントでは、次のバージョンの Windows オペレー
 * Windows 7 SP1 以降
 
 ## <a name="supported-linux-operating-systems"></a>サポートされている Linux オペレーティング システム
-次の Linux ディストリビューションは公式にサポートされています。  ただし、Linux エージェントは、ここに記載されていないディストリビューションでも動作する可能性があります。  記載されている各メジャー バージョンのマイナー リリースは、特に記載がない限りすべてサポートされます。  
+このセクションでは、サポートされている Linux ディストリビューションの詳細について説明します。    
 
-* Amazon Linux 2012.09 ～ 2015.09 (x86/x64)
-* CentOS Linux 5、6、および 7 (x86/x64)  
-* Oracle Linux 5、6、および 7 (x86/x64) 
-* Red Hat Enterprise Linux Server 5、6、および 7 (x86/x64)
-* Debian GNU/Linux 6、7、および 8 (x86/x64)
-* Ubuntu 12.04 LTS、14.04 LTS, 16.04 LTS (x86/x64)
-* SUSE Linux Enterprise Server 11 および 12 (x86/x64)
+2018 年 8 月以降にリリースされたバージョンからは、サポート モデルに次の変更を加えています。  
+
+* クライアントではなく、サーバー バージョンのみがサポートされます。  
+* [Azure Linux の動作保証済みディストリビューション](../virtual-machines/linux/endorsed-distros.md)の新しいバージョンは、常にサポートされます。  
+* 記載されている各メジャー バージョンのマイナー リリースは、すべてサポートされます。
+* 製造元のサポート終了日を超過したバージョンは、サポートされません。  
+* AMI の新しいバージョンはサポートされません。  
+* 既定で SSL 1.x を実行するバージョンのみが、サポートされます。
+
+現在サポートされていないディストリビューションまたはバージョンを使用しており、サポート モデルに準拠していない場合、Microsoft サポートは、支援機能にフォークされたエージェント バージョンを提供していることを認識したうえで、このレポジトリをフォークすることをお勧めします。
+
+* Amazon Linux 2017.09 (x64)
+* CentOS Linux 6 (x86/x64) および 7 (x64)  
+* Oracle Linux 6 および 7 (x86/x64) 
+* Red Hat Enterprise Linux Server 6 (x86/x64) および 7 (x64)
+* Debian GNU/Linux 8 および 9 (x86/x64)
+* Ubuntu 14.04 LTS (x86/x64)、16.04 LTS (x86/x64)、および 18.04 LTS (x64)
+* SUSE Linux Enterprise Server 12 (x64)
+
+>[!NOTE]
+>OpenSSL 1.1.0 は x86_x64 プラットフォーム (64-bit) 上のみでサポートされ、1.x より前の OpenSSL は、どのプラットフォーム上でもサポートされません。
+>
 
 ## <a name="tls-12-protocol"></a>TLS 1.2 プロトコル
 Log Analytics へのデータの転送時のセキュリティを保証するため、少なくとも Transport Layer Security (TLS) 1.2 を使用するようにエージェントを構成することを強くお勧めします。 以前のバージョンの TLS/SSL (Secure Sockets Layer) は脆弱であることが確認されています。現在、これらは下位互換性を維持するために使用可能ですが、**推奨されていません**。  詳細については、「[TLS 1.2 を使用して安全にデータを送信する](log-analytics-data-security.md#sending-data-securely-using-tls-12)」を参照してください。 
@@ -77,7 +92,7 @@ Linux および Windows エージェントが Log Analytics と通信するた�
 
 Azure Automation Hybrid Runbook Worker を使用して Automation サービスに接続および登録し、お使いの環境で Runbook を使用することを計画している場合、[Hybrid Runbook Worker 用のネットワークの構成](../automation/automation-hybrid-runbook-worker.md#network-planning)に関する記事に説明されているポート番号と URL にアクセスできる必要があります。 
 
-Windows および Linux エージェントは、HTTPS プロトコルを使用したプロキシ サーバーまたは OMS ゲートウェイ経由の Log Analytics サービスへの通信をサポートします。  匿名認証と基本認証 (ユーザー名/パスワード) の両方がサポートされます。  サービスに直接接続されている Windows エージェントの場合、プロキシの構成は、インストール時や、[デプロイ後](log-analytics-agent-manage.md#update-proxy-settings)にコントロール パネルまたは PowerShell を使って、指定されます。  
+Windows および Linux エージェントは、HTTPS プロトコルを使用したプロキシ サーバーまたは Log Analytics ゲートウェイ経由の Log Analytics サービスへの通信をサポートします。  匿名認証と基本認証 (ユーザー名/パスワード) の両方がサポートされます。  サービスに直接接続されている Windows エージェントの場合、プロキシの構成は、インストール時や、[デプロイ後](log-analytics-agent-manage.md#update-proxy-settings)にコントロール パネルまたは PowerShell を使って、指定されます。  
 
 Linux エージェントの場合、プロキシ サーバーは、インストール時や、[インストール後](log-analytics-agent-manage.md#update-proxy-settings)に proxy.conf 構成ファイルを修正することによって、指定されます。  Linux エージェント プロキシ構成の値には次の構文があります。
 
@@ -91,8 +106,8 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 |プロトコル | https |
 |user | プロキシ認証のオプションのユーザー名 |
 |password | プロキシ認証のオプションのパスワード |
-|proxyhost | プロキシ サーバー/OMS ゲートウェイのアドレスまたは FQDN |
-|port | プロキシ サーバー/OMS ゲートウェイのオプションのポート番号 |
+|proxyhost | プロキシ サーバー/Log Analytics ゲートウェイのアドレスまたは FQDN |
+|port | プロキシ サーバー/Log Analytics ゲートウェイのオプションのポート番号 |
 
 次に例を示します。`https://user01:password@proxy01.contoso.com:30443`
 
@@ -114,4 +129,4 @@ Linux エージェントの場合、プロキシ サーバーは、インスト�
 
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 
-* Log Analytics に機能を追加し、OMS リポジトリにデータを収集する [ソリューション](log-analytics-add-solutions.md) について学習します。
+* Log Analytics に機能を追加し、Log Analytics ワークスペースにデータを収集する[ソリューション](log-analytics-add-solutions.md)について学習します。

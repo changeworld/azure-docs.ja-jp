@@ -8,14 +8,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/21/2018
+ms.date: 10/10/2018
 ms.author: rithorn
-ms.openlocfilehash: c2d4317bcbf70a0cebf6ab1915968eeb9ef8b4c6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6a45ffa13ead40b72fd1a0a3c2696a6e6829a4d5
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992628"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956410"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>リソースの整理と管理のための管理グループを作成する
 
@@ -48,7 +48,7 @@ ms.locfileid: "46992628"
 
 ### <a name="create-in-powershell"></a>PowerShell で作成する
 
-PowerShell で、Add-AzureRmManagementGroups コマンドレットを使用します。
+PowerShell で、New-AzureRmManagementGroup コマンドレットを使用します。
 
 ```azurepowershell-interactive
 New-AzureRmManagementGroup -GroupName 'Contoso'
@@ -69,7 +69,7 @@ New-AzureRmManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -Pa
 Azure CLI で、az account management-group create コマンドを使用します。
 
 ```azurecli-interactive
-az account management-group create --group-name 'Contoso'
+az account management-group create --name 'Contoso'
 ```
 
 ## <a name="next-steps"></a>次の手順

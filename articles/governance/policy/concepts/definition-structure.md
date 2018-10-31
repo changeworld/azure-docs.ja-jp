@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: e3770fe29d6f1073a0ca6507fdf57059cbd3727e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: f5906a93e92691cb6046fb04a9fd83f3484e17b8
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067538"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427401"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -200,7 +200,7 @@ Azure Policy のサンプルはすべて「[Azure Policy のサンプル](../sam
 **like** 条件や **notLike** 条件を使用する場合は、値にワイルドカード (`*`) を指定できます。
 値に複数のワイルドカード (`*`) を含めることはできません。
 
-**match** 条件や **notMatch** 条件を使うときは、任意の数字を表す `#` や任意の文字を表す `?` のほか、具体的な文字を指定することができます。 例については、「[複数の名前パターンを許可する](../samples/allow-multiple-name-patterns.md)」を参照してください。
+**match** 条件や **notMatch** 条件を使うときは、任意の数字を表す `#` や任意の文字を表す `?`、すべての文字に適合する `.` のほか、具体的な文字を指定することができます。 例については、「[複数の名前パターンを許可する](../samples/allow-multiple-name-patterns.md)」を参照してください。
 
 ### <a name="fields"></a>フィールド
 

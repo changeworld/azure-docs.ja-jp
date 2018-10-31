@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 253ec8c0d1d6725e6ae5c47c79882284c633d6e9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4c9f92481af1e69a111869cb6fc1305923bb0484
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984468"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026009"
 ---
 # <a name="load-balancing-with-azures-application-delivery-suite"></a>Azure のアプリケーション配信スイートでの負荷分散
 
@@ -36,7 +36,7 @@ Microsoft Azure では、ネットワーク トラフィックの分散と負荷
 - 待機時間の点で最も近いバックエンドに要求元を送信するパフォーマンスによるルーティング。
 - すべてのトラフィックを 1 つのバックエンドに送信し、その他のバックエンドはバックアップとする優先順位によるルーティング。
 - 各バックエンドに割り当てた重み付けに基づいてトラフィックを分散する、重み付けラウンド ロビンによるルーティング。
-- 特定の地理的リージョンにある要求元がそのリージョンにマップされているバックエンドに確実に送られるようにする (たとえば、スペインからのすべての要求が米国東部の Azure リージョンに送られるようにする) ための地理的なルーティング。
+- 特定の地理的リージョンにある要求元がそのリージョンにマップされているバックエンドに確実に送られるようにする (たとえば、スペインからのすべての要求がフランス中部の Azure リージョンに送られるようにする) ための地理的なルーティング。
 - IP アドレスの範囲をバックエンドにマップし、そこからの要求が特定のバックエンドに送信されるようにする (たとえば、企業の HQ の IP アドレス範囲から接続しているすべてのユーザーが一般ユーザーとは異なる Web コンテンツを取得するようにする) ためのサブネット ルーティング。
 
 クライアントはそのバックエンドに直接接続されます。 Azure Traffic Manager で、バックエンドが正常でないことが検出されると、クライアントが別の正常なインスタンスにリダイレクトされます。 サービスの詳細については、[Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) に関するドキュメントを参照してください。
@@ -83,8 +83,8 @@ Load Balancer は、Azure SDN スタックの重要な構成要素であり、�
 
 ## <a name="next-steps"></a>次の手順
 
-- [Front Door の作成](quickstart-create-front-door.md)方法を確認します。
-- [Front Door の機能](front-door-routing-architecture.md)を確認します。
+- [フロント ドアの作成](quickstart-create-front-door.md)方法について学習します。
+- [Front Door のしくみ](front-door-routing-architecture.md)について学習します。
 
 <!--Image references-->
 [1]: ./media/front-door-lb-with-azure-app-delivery-suite/application-delivery-figure1.png

@@ -1,48 +1,46 @@
 ---
-title: Azure AD v2 UWP の概要 | Microsoft Docs
-description: ユニバーサル Windows プラットフォーム アプリケーション (UWP) で、Azure Active Directory v2 エンドポイントによるアクセス トークンを必要とする API を呼び出す方法
+title: Azure AD v2.0 UWP の概要 | Microsoft Docs
+description: ユニバーサル Windows プラットフォーム アプリケーション (UWP) で、Azure Active Directory v2.0 エンドポイントからのアクセス トークンを必要とする API を呼び出す方法
 services: active-directory
 documentationcenter: dev-center-name
 author: andretms
 manager: mtillman
 editor: ''
-ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/20/2018
+ms.date: 10/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: 4afd4ce5b8a0ab4c076ebc3c587605dfe1204b8a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4ba4e844ed6bb01204b7a0adf5020aec255147dd
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966386"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986544"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>ユニバーサル Windows プラットフォーム アプリケーション (XAML) から Microsoft Graph API を呼び出す
-
 
 > [!div renderon="docs"]
 > [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-このガイドでは、ネイティブのユニバーサル Windows プラットフォーム (UWP) アプリケーションがアクセス トークンを要求し、Microsoft Graph API を呼び出す方法について説明します。 このガイドは、Azure Active Directory v2 エンドポイントのアクセス トークンを必要とする他の API にも適用されます。
+このガイドでは、ネイティブのユニバーサル Windows プラットフォーム (UWP) アプリケーションがアクセス トークンを要求し、Microsoft Graph API を呼び出す方法について説明します。 このガイドは、Azure Active Directory v2.0 エンドポイントのアクセス トークンを必要とする他の API にも適用されます。
 
 このガイドの最後に、アプリケーションは個人のアカウントを使用して、保護されている API を呼び出します。 例としては、outlook.com、live.com などがあります。 アプリケーションは、Azure Active Directory を持つ会社または組織の職場および学校のアカウントも呼び出します。
 
 >[!NOTE]
 > このガイドでは、ユニバーサル Windows プラットフォーム開発がインストールされた Visual Studio 2017 が必要です。 ユニバーサル Windows プラットフォーム アプリを開発するために Visual Studio をダウンロードして構成する手順については、「[準備](https://docs.microsoft.com/windows/uwp/get-started/get-set-up)」を参照してください。
 
-### <a name="how-this-guide-works"></a>このガイドの利用法
+## <a name="how-this-guide-works"></a>このガイドの利用法
 
 ![このガイドのしくみの図](./media/tutorial-v2-windows-uwp/uwp-intro.png)
 
-このガイドでは、Azure Active Directory v2 エンドポイントからトークンを受け取る Microsoft Graph API または Web API に対してクエリを実行するサンプル UWP アプリケーションを作成します。 このシナリオでは、トークンは Authorization ヘッダーを介して HTTP 要求に追加されます。 トークンの取得と更新は、Microsoft Authentication Library (MSAL) で処理されます。
+このガイドでは、Azure Active Directory v2.0 エンドポイントからトークンを受け取る Microsoft Graph API または Web API に対してクエリを実行するサンプル UWP アプリケーションを作成します。 このシナリオでは、トークンは Authorization ヘッダーを介して HTTP 要求に追加されます。 トークンの取得と更新は、Microsoft Authentication Library (MSAL) で処理されます。
 
-### <a name="nuget-packages"></a>NuGet パッケージ
+## <a name="nuget-packages"></a>NuGet パッケージ
 
 このガイドでは、次の NuGet パッケージを使用します。
 
@@ -50,18 +48,18 @@ ms.locfileid: "46966386"
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library|
 
-
 ## <a name="set-up-your-project"></a>プロジェクトの設定
 
 このセクションでは、Windows デスクトップ .NET アプリケーション (XAML) と "*Microsoft でサインイン*" を統合するための詳細な手順を説明します。 その後、トークンを必要とする Web API (Microsoft Graph API など) に対してクエリを実行することができます。
 
 このガイドでは、Graph API に対してクエリを実行するためのボタン、サインアウト ボタン、および呼び出しの結果を表示するテキスト ボックスを表示するアプリケーションを作成します。
 
->[!NOTE]
+> [!NOTE]
 > 代わりにこのサンプルの Visual Studio プロジェクトをダウンロードすることもできます。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/master.zip)し、[アプリケーション登録](#register-your-application "アプリケーション登録の手順")の手順までスキップして、実行前にコード サンプルを構成します。
 
 
 ### <a name="create-your-application"></a>アプリケーションの作成
+
 1. Visual Studio で、**[ファイル]** > **[新規]** > **[プロジェクト]** の順に選択します。
 2. **[テンプレート]** で **[Visual C#]** を選択します。
 3. **[Blank App (Universal Windows)] (空のアプリ (ユニバーサル Windows))** を選択します。
@@ -79,7 +77,7 @@ ms.locfileid: "46966386"
     ```
 
 > [!NOTE]
-> このコマンドを実行すると、[Microsoft Authentication Library](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) がインストールされます。 MSAL は、Azure Active Directory v2 で保護された API にアクセスするユーザー トークンを取得、キャッシュ、および更新します。
+> このコマンドを実行すると、[Microsoft Authentication Library](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) がインストールされます。 MSAL は、Azure Active Directory v2.0 で保護された API にアクセスするユーザー トークンを取得、キャッシュ、および更新します。
 
 > [!NOTE]
 > このチュートリアルでは、MSAL.NET の最新バージョンはまだ使用していませんが、更新に取り組んでいます。
@@ -193,10 +191,13 @@ ms.locfileid: "46966386"
     ```
 
 ### <a name="more-information"></a>詳細情報
+
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
+
 `AcquireTokenAsync` メソッドを呼び出すと、ユーザーにサインインを求めるウィンドウが表示されます。 通常、アプリケーションは、ユーザーが保護されたリソースに初めてアクセスするときに、対話形式でユーザーにサインインを求めます。 また、自動でのトークンの取得に失敗した場合にも、ユーザーはサインインする必要があります。 たとえば、ユーザーのパスワードが期限切れになっている場合などです。
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
+
 `AcquireTokenSilentAsync` メソッドは、ユーザーの操作なしでトークンの取得と更新を処理します。 `AcquireTokenAsync` が初めて実行され、資格情報の入力を求めるメッセージが表示された後、後続の呼び出しでトークンを要求するには、`AcquireTokenSilentAsync` メソッドを使用する必要があります。これはトークンを自動的に取得するためです。 MSAL は、トークンのキャッシュと更新を管理します。
 
 最終的に、`AcquireTokenSilentAsync` メソッドは失敗します。 この失敗は、ユーザーがサインアウトしたか、別のデバイスでパスワードを変更したことが原因と考えられます。 ユーザーの操作によって解決できる問題が MSAL によって検出された場合、MSAL は `MsalUiRequiredException` 例外を発行します。 アプリケーションでは、この例外を 2 つの方法で処理できます。
@@ -333,7 +334,6 @@ Windows 統合認証を、フェデレーション Azure Active Directory ドメ
 > [!IMPORTANT]
 > このサンプルには、既定では Windows 統合認証が構成されていません。 "*エンタープライズ認証*" または "*共有ユーザー証明書*" 機能を要求するアプリケーションでは、Windows ストアによるより高いレベルの検証が必要です。 また、すべての開発者がより高いレベルの検証を望むとは限りません。 この設定は、Windows 統合認証とフェデレーション Azure Active Directory ドメインが必要な場合にのみ有効にしてください。
 
-
 ## <a name="test-your-code"></a>コードのテスト
 
 アプリケーションをテストするには、Visual Studio で F5 キーを押してプロジェクトを実行します。 メイン ウィンドウが表示されます。
@@ -369,7 +369,7 @@ Windows 統合認証を、フェデレーション Azure Active Directory ドメ
 
 Microsoft Graph API には、ユーザーのプロファイルを読み取るための *user.read* スコープが必要です。 このスコープは、アプリケーション登録ポータルで登録されたすべてのアプリケーションで、既定で自動的に追加されます。 Microsoft Graph の他の API や、バックエンド サーバーのカスタム API には、追加のスコープが必要な場合があります。 Microsoft Graph API には、ユーザーの予定表を表示するための *Calendars.Read* スコープが必要です。
 
-アプリケーションのコンテキストでユーザーの予定表にアクセスするには、*Calendars.Read* の委任されたアクセス許可をアプリケーション登録情報に追加します。 次に、*Calendars.Read* スコープを `acquireTokenSilent` 呼び出しに追加します。 
+アプリケーションのコンテキストでユーザーの予定表にアクセスするには、*Calendars.Read* の委任されたアクセス許可をアプリケーション登録情報に追加します。 次に、*Calendars.Read* スコープを `acquireTokenSilent` 呼び出しに追加します。
 
 > [!NOTE]
 > スコープの数を増やすと、ユーザーは追加の同意を求められることがあります。
@@ -392,3 +392,5 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 **原因:** この問題は、Windows 10 デスクトップで実行される UWP アプリケーションの Web 認証ブローカーに関する既知の制限です。 Windows 10 Mobile では正常に動作します。
 
 **回避策:** **[Sign in with other options]\(他のオプションでサインイン\)** を選択します。 次に、**[Sign in with a username and password]\(ユーザー名とパスワードでサインイン\)** を選択します。 **[Provide your password]\(パスワードを指定\)** を選択します。 電話認証プロセスに進みます。
+
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

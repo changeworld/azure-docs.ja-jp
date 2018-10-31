@@ -1,5 +1,5 @@
 ---
-title: Azure Cloud Shell の MSI の使用 | Microsoft Docs
+title: Azure Cloud Shell で Azure リソースのマネージド ID を使用する | Microsoft Docs
 description: Azure Cloud Shell の MSI でコードを認証する
 services: azure
 documentationcenter: ''
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: juluk
-ms.openlocfilehash: 99577faf7328dc773a9da5f7c1227aa63600aa0a
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: fe77deeedc34bf769065e34ac2f81d631b0004d6
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31516286"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352950"
 ---
-# <a name="use-msi-in-azure-cloud-shell"></a>Azure Cloud Shell の MSI の使用
+# <a name="use-managed-identities-for-azure-resources-in-azure-cloud-shell"></a>Azure Cloud Shell で Azure リソースのマネージド ID を使用する
 
-Azure Cloud Shell は、管理対象サービス (MSI) を使用した認証をサポートします。 これを使用して、安全に Azure サービスと通信するためにアクセス トークンを取得します。
+Azure Cloud Shell は、Azure リソースのマネージド ID による承認をサポートします。 これを使用して、安全に Azure サービスと通信するためにアクセス トークンを取得します。
 
-## <a name="about-managed-service-identity-msi"></a>管理対象サービス ID (MSI) について
+## <a name="about-managed-identities-for-azure-resources"></a>Azure リソースのマネージド ID について
 クラウド アプリケーションの構築時における一般的な課題は、クラウド サービスへの認証用のコードに必要な資格情報を安全に管理する方法です。 Cloud Shell では、スクリプトに必要な資格情報の Key Vault からの取得を認証する必要がある場合があります。
 
-管理対象サービス ID (MSI) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
+Azure リソースのマネージド ID は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。
 
 ## <a name="acquire-access-token-in-cloud-shell"></a>Cloud Shell でアクセス トークンを取得する
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 935d4a3ba3fc3199177be5bd4e70f82239c3c971
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 59eb0ddad72f5e54a23a97a260477f84019eb62c
+ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530438"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49386343"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
@@ -32,16 +32,17 @@ ms.locfileid: "39530438"
 
 ### <a name="cause-1-unencrypted-communication-channel"></a>原因 1: 通信チャネルが暗号化されていない
 
-通信チャネルが暗号化されていない場合や、接続の試行が Azure ファイル共有と同じデータセンターから行われていない場合、セキュリティ上の理由により、Azure ファイル共有への接続がブロックされます。 ユーザーのクライアント OS が SMB 暗号化をサポートしている場合に限り、通信チャネルの暗号化を利用できます。
+通信チャネルが暗号化されていない場合や、接続の試行が Azure ファイル共有と同じデータセンターから行われていない場合、セキュリティ上の理由により、Azure ファイル共有への接続がブロックされます。 ストレージ アカウントで [[安全な転送が必須]](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が有効になっている場合は、同じデータセンター内の暗号化されていない接続もブロックされる可能性があります。 ユーザーのクライアント OS が SMB 暗号化をサポートしている場合に限り、通信チャネルの暗号化を利用できます。
 
 Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号化をサポートしている SMB 3.0 を含む要求をネゴシエートできます。
 
 ### <a name="solution-for-cause-1"></a>原因 1 の解決策
 
-以下のいずれかのクライアントから接続します。
+1. ストレージ アカウントで [[安全な転送が必須]](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が無効になっていることを確認します。
+2. 以下のいずれかのクライアントから接続します。
 
-- バージョンの要件 (Windows 8 または Windows Server 2012 以降であること) を満たしている
-- 同じデータセンター内の仮想マシンから、Azure ファイル共有のために使用される Azure ストレージ アカウントとして接続している
+    - バージョンの要件 (Windows 8 または Windows Server 2012 以降であること) を満たしている
+    - 同じデータセンター内の仮想マシンから、Azure ファイル共有のために使用される Azure ストレージ アカウントとして接続している
 
 ### <a name="cause-2-port-445-is-blocked"></a>原因 2: ポート 445 がブロックされている
 

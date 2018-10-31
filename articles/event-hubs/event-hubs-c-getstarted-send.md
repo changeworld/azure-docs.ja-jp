@@ -12,31 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 10/16/2018
 ms.author: shvija
-ms.openlocfilehash: 262f274541f486f5457ef8eae6fd4f60fb34824e
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 32345b0f064aa78dbf1cbb84cb2309138e7bf4f7
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42142419"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49455387"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>C を使用して Azure Event Hubs にイベントを送信する
 
 ## <a name="introduction"></a>はじめに
-Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。 Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して変換と格納を実行できます。
+Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 
-詳細については、「 [Event Hubs の概要](https://docs.microsoft.com/azure/event-hubs/event-hubs-overview)」を参照してください。
+このチュートリアルでは、C のコンソール アプリケーションを使用して、イベント ハブへイベントを送信する方法について説明します。 
 
-このチュートリアルでは、C のコンソール アプリケーションを使用してイベント ハブにイベントを送信する方法について説明します。イベントの受け取りについては、左側の目次で適切な受信言語をクリックします。
-
+## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下が必要です。
 
 * C の開発環境。 このチュートリアルでは、Ubuntu 14.04 での Azure Linux VM 上の GCC スタックを想定しています。
 * [Microsoft Visual Studio](https://www.visualstudio.com/)。
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
 
-## <a name="send-messages-to-event-hubs"></a>Event Hub へのメッセージ送信
+## <a name="write-code-to-send-messages-to-event-hubs"></a>Event Hubs にメッセージを送信するコードの記述
 このセクションでは、イベントをイベント ハブに送信する C アプリの作成方法を示します。 コードでは、[Apache Qpid プロジェクト](http://qpid.apache.org/)の Proton AMQP ライブラリを使用します。 これは、[この例](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504)に示すように、C の AMQP を Service Bus キューとトピックと共に使用するのに似ています。 詳しくは、[Qpid Proton のドキュメント](http://qpid.apache.org/proton/index.html)をご覧ください。
 
 1. [Qpid AMQP Messenger ページ](https://qpid.apache.org/proton/messenger.html)で、環境に応じた Qpid Proton をインストールするための指示に従ってください。
@@ -150,12 +148,13 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
     > [!NOTE]
     > このコードで、1 の送信ウィンドウを使用して、メッセージをできるだけ早く強制的に送信します。 アプリケーションではスループットが向上するようにメッセージをバッチ処理することをお勧めします。 この環境やその他の環境、バインドが提供されているプラットフォーム (現在は、Perl、PHP、Python、Ruby) から Qpid Proton ライブラリを使用する方法の詳細については、「[Qpid AMQP Messenger ページ](https://qpid.apache.org/proton/messenger.html)」を参照してください。
 
+アプリケーションを実行してメッセージを Event Hubs に送信します。 
+
+お疲れさまでした。 メッセージをイベント ハブに送信しました。
 
 ## <a name="next-steps"></a>次の手順
-Event Hubs の詳細については、次のリンク先を参照してください:
+イベント ハブからのイベントの受信について確認するには、目次の **[Receive events from an event hub]\(イベント ハブからのイベントの受信\)** ノードで、適切な受信言語をクリックします。
 
-* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
 
 <!-- Images. -->
 [21]: ./media/event-hubs-c-ephcs-getstarted/run-csharp-ephcs1.png

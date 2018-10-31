@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 10/23/2018
 ms.author: shlo
-ms.openlocfilehash: 8132f89423883422d70981edd3ddaf86147830e2
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 3db32dfe2d7b65535f7d30f76241b33ecca96c15
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394428"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957957"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
 Azure Data Factory ユーザー インターフェイス エクスペリエンス (UX) を使用すると、コードを記述することなくデータ ファクトリ用リソースを視覚的に作成してデプロイできます。 パイプライン キャンバスにアクティビティをドラッグし、テストの実行を行い、反復的にデバッグを行い、パイプラインの実行を展開して監視することができます。 UX を使用してビジュアルの作成機能を実行するには 2 つの方法があります。
@@ -80,6 +80,20 @@ Azure Data Factory UX **作成キャンバス**でデータ ファクトリを�
 ## <a name="use-a-different-azure-active-directory-tenant"></a>別の Azure Active Directory テナントを使用する
 
 別の Azure Active Directory テナントで Azure Repos Git リポジトリを作成できます。 別の Azure AD テナントを指定するには、使用している Azure サブスクリプションの管理者のアクセス許可が必要です。
+
+## <a name="use-your-personal-microsoft-account"></a>個人用の Microsoft アカウントを使用する
+
+Git の統合に個人用の Microsoft アカウントを使用するには、Azure の個人用のリポジトリを組織の Active Directory にリンクできます。
+
+1. 個人用の Microsoft アカウントを組織の Active Directory にゲストとして追加します。 詳しくは、「[Azure portal で Azure Active Directory B2B コラボレーション ユーザーを追加する](../active-directory/b2b/add-users-administrator.md)」をご覧ください。
+
+2. 個人用の Microsoft アカウントを使用して、Azure portal にログインします。 その後組織の Active Directory に切り替えます。
+
+3. Azure DevOps セクションに移動すると、個人用のリポジトリがあることを確認できます。 リポジトリを選択し、Active Directory に接続します。
+
+これらの構成手順を実行すると、Data Factory UI で Git 統合を設定するときに個人用のリポジトリを使用できます。
+
+Azure Repos を組織の Active Directoryに接続する方法について詳しくは、[Azure DevOps の組織を Azure Active Directory に接続する方法](/azure/devops/organizations/accounts/connect-organization-to-azure-ad)に関するページをご覧ください。
 
 ## <a name="switch-to-a-different-git-repo"></a>別の Git リポジトリに切り替える
 

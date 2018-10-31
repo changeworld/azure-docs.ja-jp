@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 4157b812fbb17b524a21814f41e0e4ec43e39e70
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 7c6d91da0634e7f847af01d1c057607ab095cdf6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042089"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408210"
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights Connector 管理ソリューション (プレビュー)
 
@@ -58,8 +58,8 @@ Application Insights Connector ソリューションを使用すると、[Applic
 ## <a name="configuration"></a>構成
 
 1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
-2. OMS ポータルで、**[設定]** &gt; **[データ]** &gt; **[Application Insights]** をクリックします。
-3. **[サブスクリプションの選択]** で、Application Insights リソースを所有するサブスクリプションを選択し、**[アプリケーション名]** で、1 つまたは複数のアプリケーションを選択します。
+2. [Azure ポータル](https://portal.azure.com)にアクセスします。 **[すべてのサービス]** を選択して、Application Insights を開きます。 次に、"Application Insights" を検索します。 
+3. **[サブスクリプション]** で、Application Insights リソースを所有するサブスクリプションを選択し、**[名前]** で、1 つまたは複数のアプリケーションを選択します。
 4. **[Save]** をクリックします。
 
 約 30 分でデータが使用可能となり、次の図のように、[Application Insights] タイルがデータで更新されます。
@@ -133,7 +133,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>Azure ポータルでアプリにピボットする
 
-[Application Insights Connector] ブレードは、"*OMS ポータルを使用しているときに*"、選択した Application Insights アプリにピボットできるように設計されています。 このソリューションを高度な監視プラットフォームとして使用して、アプリのトラブルシューティングを行うことができます。 接続されているアプリケーションのいずれかで潜在的な問題があることを確認したら、Log Analytics 検索で問題をドリルダウンするか、Application Insights アプリに直接ピボットすることができます。
+[Application Insights Connector] ブレードは、"*Azure portal を使用しているときに*"、選択した Application Insights アプリにピボットできるように設計されています。 このソリューションを高度な監視プラットフォームとして使用して、アプリのトラブルシューティングを行うことができます。 接続されているアプリケーションのいずれかで潜在的な問題があることを確認したら、Log Analytics 検索で問題をドリルダウンするか、Application Insights アプリに直接ピボットすることができます。
 
 ピボットするには、各行の最後に表示される省略記号 (**…**) をクリックし、**[Application Insights で開く]** を選択します。
 

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.reviewer: mazhar
 ms.author: mbullwin
-ms.openlocfilehash: c9629611544efe248b1b343ac1ba26740b9ce7e0
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2fa4242de6a953e82e3f81831c491125e9a7c3f3
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091691"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026230"
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>チュートリアル: Application Insights を使用して Microsoft Dynamics CRM Online のテレメトリを有効にする
 この記事では、[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) を使用して [Microsoft Dynamics CRM Online](https://www.dynamics.com/) からテレメトリ データを取得する方法について説明します。 アプリケーションに Application Insights のスクリプトを追加し、データをキャプチャし、データを視覚化するすべてのプロセスを見てみましょう。
@@ -39,11 +39,7 @@ ms.locfileid: "47091691"
     ![[+]、[開発者向けサービス]、[Application Insights] をクリックします。](./media/app-insights-sample-mscrm/01.png)
 
     アプリケーションの種類として ASP.NET を選択します。
-3. [はじめに] ページを開き、[クライアント側アプリケーションの監視と診断] を開きます。
-
-    ![Web ページに挿入するためのコード スニペット](./media/app-insights-sample-mscrm/03.png)
-
-**このコードのページは開いたまま** 、別のブラウザー ウィンドウで次の手順を行います。 このコードはすぐに必要になります。 
+3. 指示に従って[アプリ用の JavaScript SDK スクリプトを取得](app-insights-javascript.md#set-up-application-insights-for-your-web-page)し、JavaScript スニペットをコピーして、インストルメンテーション キーを Application Insights リソースの適切な値で必ず置き換えます。
 
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Microsoft Dynamics CRM で JavaScript の Web リソースを作成する
 1. CRM Online インスタンスを開き、管理者権限でログインします。
@@ -60,7 +56,7 @@ ms.locfileid: "47091691"
     名前を付け、**[スクリプト (JScript)]** を選択してテキスト エディターを開きます。
 
     ![テキスト エディターを開く](./media/app-insights-sample-mscrm/00004.png)
-2. Application Insights からコードをコピーします。 コピーの際はスクリプト タグを無視します。 次のスクリーン ショットを参照してください。
+2. 前にインストルメンテーション キーを構成した Application Insights JavaScript SDK からコードをコピーします。 コピーの際はスクリプト タグを無視します。 次のスクリーンショットを参照してください。
 
     ![インストルメンテーション キーを設定する](./media/app-insights-sample-mscrm/000005.png)
 

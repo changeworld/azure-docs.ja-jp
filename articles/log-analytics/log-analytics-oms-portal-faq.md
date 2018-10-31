@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d1ad629ff5c6909256baa94573d045a8c2c09fb5
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 49aed496d8c125da8c2269186b569693c794d290
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223833"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404564"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問
 当初、Log Analytics では、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。  このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。
@@ -113,7 +113,7 @@ OMS ポータルでは、ソリューション ギャラリーから管理ソリ
 Log Analytics のクエリに基づくアラート ルールは現在、[一元化されたアラート機能](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)で管理するようになっています。 Azure portal でのアラートの構成と使用について詳しくは、[Log Analytics から Azure にアラートを拡張する方法](../monitoring-and-diagnostics/monitoring-alerts-extend-tool.md)に関するページを参照してください。
 
 ## <a name="how-do-i-access-my-dashboards"></a>ダッシュボードへのアクセス方法を教えてください
-Log Analytics の[ダッシュボード](../log-analytics/log-analytics-dashboards.md)は非推奨となりました。  Log Analytics のデータは、[ビュー デザイナー](../log-analytics/log-analytics-view-designer.md)を使用して視覚化できます。ビュー デザイナーは機能が拡充され、クエリやビューを Azure のダッシュボードにピン留めすることができます。
+Log Analytics の [[マイ ダッシュボード]](../log-analytics/log-analytics-dashboards.md) 機能は非推奨になりました。 この機能では、[ビュー デザイナー] 部分の個人のコレクションを利用できました。後継は、組み込みの Azure ダッシュボード機能になります。 共有ビューには [[ビュー デザイナー]](../log-analytics/log-analytics-view-designer.md) を使用して、Log Analytics のデータを引き続き視覚化できます。 これらのビューからの視覚表現や、Azure ダッシュボードへの[個々のクエリ](../log-analytics/log-analytics-tutorial-dashboards.md)に対する視覚表現を固定することも可能です。
 
 ## <a name="how-do-i-check-my-usage"></a>使用量をチェックするにはどうすればよいですか?
 Log Analytics の使用量とコストは、ワークスペースから **[使用量と推定コスト]** を選択して簡単に表示、管理できます。

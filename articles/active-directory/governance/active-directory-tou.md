@@ -12,19 +12,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 09/04/2018
+ms.date: 10/19/2018
 ms.author: rolyon
-ms.openlocfilehash: b6cc81a49875739a61aa397a65eb70c6b4f082ef
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: be00f6fb41572c0a9599f7005f2cdd1d6587f15a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393985"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944145"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
-Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、Azure AD Terms of use の使用を開始する方法について説明します。
+Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、利用規約の使用を開始する方法について説明します。
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+## <a name="overview-videos"></a>概要ビデオ
+
+次のビデオでは、利用規約の概要を簡単に説明します。
+
+>[!VIDEO https://www.youtube.com/embed/tj-LK0abNao]
+
+その他のビデオについては、以下を参照してください。
+- [How to deploy Terms of use in Azure Active Directory (Azure Active Directory で利用規約を展開する方法)](https://www.youtube.com/embed/N4vgqHO2tgY)
+- [How to roll out Terms of use in Azure Active Directory (Azure Active Directory で利用規約をロールアウトする方法)](https://www.youtube.com/embed/t_hA4y9luCY)
 
 ## <a name="what-can-i-do-with-terms-of-use"></a>Terms of use を使用してできること
 Azure AD Terms of use を使用すると、以下のことができます。
@@ -33,8 +43,9 @@ Azure AD Terms of use を使用すると、以下のことができます。
 - ユーザーの属性 (例:  [動的グループ](../users-groups-roles/groups-dynamic-membership.md)を使用して、医師と看護師や、国内従業員と国際従業員など) に基づいて特定の使用条件を提示する。
 - ビジネスへの影響が大きいアプリケーション (Salesforce など) にアクセスする際に特定の使用条件を提示する。
 - 使用条件を異なる言語で提示する。
+- プライバシー規制の順守に役立つ。
 - 使用条件に同意したユーザーと同意していないユーザーを一覧表示する。
-- 使用条件アクティビティの監査ログを表示する。
+- コンプライアンスおよび監査のために利用規約アクティビティのログを表示する。
 
 ## <a name="prerequisites"></a>前提条件
 Azure AD Terms of use を使用および構成するには、以下が必要です。

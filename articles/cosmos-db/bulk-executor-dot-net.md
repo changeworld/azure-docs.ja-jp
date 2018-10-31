@@ -1,25 +1,26 @@
 ---
-title: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する | Microsoft Docs
-description: Azure Cosmos DB の Bulk Executor .NET ライブラリを使用して、ドキュメントを Azure Cosmos DB コンテナーに一括インポートし、一括更新します。
-keywords: .Net Bulk Executor
+title: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB での一括インポートおよび更新操作を実行する | Microsoft Docs
+description: Bulk Executor .NET ライブラリを使用して Azure Cosmos DB ドキュメントを一括インポートおよび更新します。
 services: cosmos-db
 author: tknandu
 manager: kfile
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: cc0faa44501ea130309a02bb48d02f9c5b33febd
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 04894fdd0ffff38ad129097ce839259f2993332c
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053382"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49363400"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>Bulk Executor .NET ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
-このチュートリアルでは、Azure Cosmos DB の Bulk Executor .NET ライブラリを使用して、ドキュメントを Azure Cosmos DB コンテナーにインポートし、更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、サンプル .NET アプリケーションを使って、ランダムに生成されたドキュメントを Azure Cosmos DB コンテナーに一括インポートする手順を説明します。 インポート後、特定のドキュメント フィールドに対して実行する操作としてパッチを指定することによって、インポートされたデータを一括更新する方法について説明します。
+このチュートリアルでは、Azure Cosmos DB の Bulk Executor .NET ライブラリを使用して、ドキュメントを Azure Cosmos DB コンテナーにインポートし、更新する方法について説明します。 Bulk Executor ライブラリについてと、それを大規模なスループットおよびストレージの活用に役立てる方法については、[Bulk Executor ライブラリの概要](bulk-executor-overview.md)に関する記事を参照してください。 このチュートリアルでは、ランダムに生成されたドキュメントを Azure Cosmos DB コンテナーに一括インポートするサンプル .NET アプリケーションを示します。 インポート後、特定のドキュメント フィールドに対して実行する操作としてパッチを指定することによって、インポートされたデータを一括更新する方法について説明します。 
+
+現在、Bulk Executor ライブラリは、Azure Cosmos DB SQL API および Gremlin API アカウントによってのみサポートされています。 この記事では、SQL API アカウントで Bulk Executor .NET ライブラリを使用する方法について説明します。 Gremlin API での Bulk Executor .NET ライブラリの使用の詳細については、[Azure Cosmos DB Gremlin API での一括操作の実行](bulk-executor-graph-dotnet.md)に関するページを参照してください。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -103,7 +104,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    |---------|---------|
    |enableUpsert    |   ドキュメントのアップサートを有効にするフラグ。 指定された ID のドキュメントが既に存在する場合は、更新されます。 既定では false に設定されています。      |
    |disableAutomaticIdGeneration    |    ID の自動生成を無効にするフラグ。 既定値は true です。     |
-   |maxConcurrencyPerPartitionKeyRange    | パーティション キー範囲あたりの同時実行の最大数。null に設定すると、ライブラリは既定値の 20 を使用します。 |
+   |maxConcurrencyPerPartitionKeyRange    | パーティション キー範囲あたりのコンカレンシーの最大数。null に設定すると、ライブラリは既定値の 20 を使用します。 |
    |maxInMemorySortingBatchSize     |  各ステージで API 呼び出しに渡されたドキュメント列挙子から取得するドキュメントの最大数。  null に設定すると、一括インポート前に行われるインメモリ前処理の並べ替えフェーズに対して、ライブラリは既定値の min(documents.count, 1000000) を使用します。       |
    |cancellationToken    |    一括インポートを正常に終了させるためのキャンセル トークン。     |
 
@@ -152,7 +153,7 @@ BulkUpdateAsync API を使用すると、既存のドキュメントを更新で
 
    |**パラメーター**  |**説明** |
    |---------|---------|
-   |maxConcurrencyPerPartitionKeyRange    |   パーティション キー範囲あたりの同時実行の最大数。null に設定すると、ライブラリは既定値の 20 を使用します。   |
+   |maxConcurrencyPerPartitionKeyRange    |   パーティション キー範囲あたりのコンカレンシーの最大数。null に設定すると、ライブラリは既定値の 20 を使用します。   |
    |maxInMemorySortingBatchSize    |    一括更新前に行われるインメモリ前処理の並べ替えフェーズに対して各ステージで API 呼び出しに渡された更新項目列挙子から取得する更新項目の最大数。null に設定すると、ライブラリは既定値の min(updateItems.count, 1000000) を使用します。     |
    | cancellationToken|一括更新を正常に終了させるためのキャンセル トークン。 |
 

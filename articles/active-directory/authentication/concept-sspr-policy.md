@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: a4ea483104a28e436ac35b50b962d3a153483789
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 3e3b608d3928536d654a594c42cbcc955d620d98
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804176"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321735"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Azure Active Directory のパスワード ポリシーと制限
 
@@ -27,7 +27,7 @@ ms.locfileid: "48804176"
 
 2 ゲート ポリシーでは、**管理者にはセキュリティの質問を使用する機能がありません**。
 
- 2 ゲート ポリシーには、 2 つの認証データが必要です。電子メール アドレス*および*電話番号、などです。 2 ゲート ポリシーは次のような状況で適用されます。
+2 ゲート ポリシーには、 2 つの認証データが必要です。電子メール アドレス*および*電話番号、などです。 2 ゲート ポリシーは次のような状況で適用されます。
 
 * 次のすべての Azure 管理者ロールが影響を受けます。
   * ヘルプデスク管理者
@@ -50,29 +50,17 @@ ms.locfileid: "48804176"
   * CRM サービス管理者
   * Power BI サービス管理者
 
-* 評価版サブスクリプションで 30 日間が経過した
-
-  or
-
-* バニティ ドメインが存在する (contoso.com など)
-
-  or
-
+* 試用版サブスクリプションで 30 日が経過している、または
+* バニティ ドメインが存在する (contoso.com など)、または
 * Azure AD Connect がオンプレミスのディレクトリからの ID を同期している
 
 ### <a name="exceptions"></a>例外
 
 1 ゲート ポリシーには、1 つの認証データが必要です。電子メール アドレス*または*電話番号などです。 1 ゲート ポリシーは次のような状況で適用されます。
 
-* 試用版サブスクリプションの最初の 30 日以内である
-
-  or
-
-* バニティ ドメインが存在しない (*.onmicrosoft.com)
-
-  and
-
-  Azure AD Connect が ID と同期していない
+* 試用版サブスクリプションの最初の 30 日以内である、または
+* バニティ ドメインが存在しない (*.onmicrosoft.com)、および
+* Azure AD Connect が ID と同期していない
 
 ## <a name="userprincipalname-policies-that-apply-to-all-user-accounts"></a>すべてのユーザー アカウントに適用される UserPrincipalName ポリシー
 
@@ -80,7 +68,7 @@ Azure AD にサインインする必要があるすべてのユーザー アカ�
 
 | プロパティ | UserPrincipalName の要件 |
 | --- | --- |
-| 使用できる文字 |<ul> <li>A - Z</li> <li>a - z</li><li>0 – 9</li> <li> \. - \_ ! \# ^ \~</li></ul> |
+| 使用できる文字 |<ul> <li>A - Z</li> <li>a - z</li><li>0 – 9</li> <li> ' \. - \_ ! \# ^ \~</li></ul> |
 | 使用できない文字 |<ul> <li>ユーザー名とドメインの間以外にある "\@\" 文字。</li> <li>ピリオド文字 "." を "\@\" 記号の直前に含めることはできません</li></ul> |
 | 長さの制限 |<ul> <li>全体の長さは 113 文字以内にする必要があります</li><li>"\@\" 記号の前に最大 64 文字まで可能</li><li>"\@\" 記号の後に最大 48 文字まで可能</li></ul> |
 
@@ -117,7 +105,7 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 ### <a name="check-the-expiration-policy-for-a-password"></a>パスワードの有効期限ポリシーを確認する
 
 1. 会社の管理者の資格情報を使用して Windows PowerShell に接続します。
-2. 次のいずれかのコマンドを実行します。
+1. 次のいずれかのコマンドを実行します。
 
    * 特定のユーザーについてパスワードの有効期限が切れないかどうか確認するには、確認するユーザーの UPN (例: *aprilr@contoso.onmicrosoft.com*) またはユーザー ID を使用して、次のコマンドレットを実行します。`Get-AzureADUser -ObjectId <user ID> | Select-Object @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
    * すべてのユーザーについて**パスワードを無期限にする**設定を表示するには、次のコマンドレットを実行します。`Get-AzureADUser -All $true | Select-Object UserPrincipalName, @{N="PasswordNeverExpires";E={$_.PasswordPolicies -contains "DisablePasswordExpiration"}}`
@@ -125,7 +113,7 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 ### <a name="set-a-password-to-expire"></a>パスワードを期限付きに設定する
 
 1. 会社の管理者の資格情報を使用して Windows PowerShell に接続します。
-2. 次のいずれかのコマンドを実行します。
+1. 次のいずれかのコマンドを実行します。
 
    * 特定のユーザーのパスワードを期限付きに設定するには、そのユーザーの UPN またはユーザー ID を使用して、次のコマンドレットを実行します。`Set-AzureADUser -ObjectId <user ID> -PasswordPolicies None`
    * 組織内のすべてのユーザーのパスワードを期限付きに設定するには、次のコマンドレットを使用します。 `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies None`
@@ -133,7 +121,7 @@ Microsoft クラウド サービスのグローバル管理者は、Windows Powe
 ### <a name="set-a-password-to-never-expire"></a>パスワードを無期限に設定する
 
 1. 会社の管理者の資格情報を使用して Windows PowerShell に接続します。
-2. 次のいずれかのコマンドを実行します。
+1. 次のいずれかのコマンドを実行します。
 
    * 特定のユーザーのパスワードを無期限に設定するには、そのユーザーの UPN またはユーザー ID を使用して、次のコマンドレットを実行します。`Set-AzureADUser -ObjectId <user ID> -PasswordPolicies DisablePasswordExpiration`
    * 組織内のすべてのユーザーのパスワードを無期限に設定するには、次のコマンドレットを実行します。 `Get-AzureADUser -All $true | Set-AzureADUser -PasswordPolicies DisablePasswordExpiration`

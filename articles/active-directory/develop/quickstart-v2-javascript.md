@@ -15,42 +15,45 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 1b884571707aab71e8a8d124ba68f938e5a63a43
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 69c77896f894201d1419aaef33470a02ac45ff91
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063746"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986290"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>クイック スタート: ユーザーをサインインし、JavaScript アプリケーションからアクセス トークンを取得する
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-このクイック スタートでは、JavaScript シングル ページ アプリケーション (SPA) がどのようにして個人アカウントや職場および学校アカウントにサインインし、Microsoft Graph API や任意の Web API を呼び出すためのアクセス トークンを取得することができるかを示すサンプル コードの使用方法について説明します。
+このクイック スタートでは、JavaScript シングル ページ アプリケーション (SPA) が個人用アカウントや職場および学校アカウントをサインインし、Microsoft Graph API や任意の Web API を呼び出すためのアクセス トークンを取得する方法を示すサンプル コードの使用方法について説明します。
 
 ![このクイック スタートで生成されたサンプル アプリの動作](media/quickstart-v2-javascript/javascriptspa-intro.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-your-application-and-download-your-quickstart-app"></a>アプリケーションの登録とクイック スタート アプリのダウンロード
 >
-> ### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
+> #### <a name="step-1-register-your-application"></a>手順 1: アプリケーションの登録
 >
-> 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します。
-> 1. **[アプリケーション名]** ボックスに、アプリケーションの名前を入力します。
-> 1. **[Guided Setup]\(ガイド付きセットアップ\)** チェック ボックスがオフになっていることを確認し、**[作成]** を選択します。
-> 1. **[プラットフォームの追加]** をクリックし、**[Web]** を選択します。
-> 1. **[暗黙的フローを許可する]** が "*オンになっている*" ことを確認します。
-> 1. **[リダイレクト URL]** で、`http://localhost:30662/` を追加入力します。
-> 1. **[Save]** をクリックします。
+> 1. アプリケーションを登録するために、[Azure portal](https://portal.azure.com/) にサインインします。
+> 1. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントを選択し、ポータルのセッションを目的のテナントに設定します。
+> 1. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスを選択し、**[アプリの登録 (プレビュー)] > [新規登録]** を選択します。
+> 1. **[アプリケーションを登録する]** ページが表示されたら、アプリケーションの名前を入力します。
+> 1. **[サポートされているアカウントの種類]** で、**[Accounts in any organizational directory and personal Microsoft accounts]\(任意の組織のディレクトリ内のアカウントと個人用の Microsoft アカウント\)** を選択します。
+> 1. **[リダイレクト URI]** セクションで **[Web]** プラットフォームを選択し、値を `http://localhost:30662/` に設定します。
+> 1. 終了したら、**[登録]** を選択します。  アプリの **[概要]** ページで、**[Application (client) ID]\(アプリケーション (クライアント) ID\)** の値を書き留めます。
+> 1. このクイック スタートでは、[暗黙的な許可フロー](v2-oauth2-implicit-grant-flow.md)を有効にする必要があります。 登録済みのアプリケーションの左側のナビゲーション ウィンドウで、**[認証]** を選択します。
+> 1. **[詳細設定]** の **[暗黙的な許可]** で、**[ID トークン]** と **[アクセス トークン]** の両方のチェック ボックスをオンにします。 このアプリではユーザーをサインインし、API を呼び出す必要があるため、ID トークンとアクセス トークンが必要になります。
+> 1. **[保存]** を選択します。
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-your-application-in-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
+> #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>手順 1: Azure portal でのアプリケーションの構成
 > このクイック スタートのコード サンプルを動作させるには、リダイレクト URI として `http://localhost:30662/` を追加し、**[暗黙の付与]** を有効にします。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [これらの変更を行います]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
-> > ![構成済み](media/quickstart-v2-javascript/green-check.png) アプリケーションはこれらの属性で構成されています
+> > ![構成済み](media/quickstart-v2-javascript/green-check.png) アプリケーションはこれらの属性で構成されています。
 
 #### <a name="step-2-download-the-project"></a>手順 2: プロジェクトのダウンロード
 
@@ -58,12 +61,12 @@ ms.locfileid: "47063746"
 * [コア プロジェクト ファイルのダウンロード - Node.js などの Web サーバー向け](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip)
 * [Visual Studio プロジェクトのダウンロード](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
 
-ローカル フォルダー (例: **C:\Azure-Samples**) に zip ファイルを解凍します。
+ローカル フォルダー (例: **C:\Azure-Samples**) に ZIP ファイルを解凍します。
 
 #### <a name="step-3-configure-your-javascript-app"></a>手順 3: ご自身の JavaScript アプリの構成
 
 > [!div renderon="docs"]
-> `index.html` を編集し、`applicationConfig` の下の `Enter_the_Application_Id_here` を今登録したアプリのアプリケーション ID に置き換えます。
+> `index.html` を編集し、`applicationConfig` の下の `Enter_the_Application_Id_here` を、先ほど登録したアプリのアプリケーション ID に置き換えます。
 
 > [!div class="sxs-lookup" renderon="portal"]
 > `index.html` を編集し、`applicationConfig` を次に置き換えます。
@@ -76,20 +79,26 @@ var applicationConfig = {
 };
 ```
 > [!NOTE]
->[Node.js](https://nodejs.org/en/download/) を使用する場合、*server.js* ファイルは、サーバーがポート 30662 のリッスンを開始するように構成されます。
-> [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) を使用する場合、サンプル コードの *.csproj* ファイルは、サーバーがポート 30662 のリッスンを開始するように構成されます。
+>[Node.js](https://nodejs.org/en/download/) を使用する場合、*server.js* ファイルは、サーバーがポート 30662 でリッスンを開始するように構成されます。
+> [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) を使用する場合、サンプル コードの *.csproj* ファイルは、サーバーがポート 30662 でリッスンを開始するように構成されます。
 >
 
 #### <a name="step-4-run-the-project"></a>手順 4: プロジェクトの実行
 
-Node.js を使用している場合は、コマンド ラインでプロジェクトのディレクトリから次を実行して、サーバーを起動します。
- ```batch
- npm install
- node server.js
- ```
-Web ブラウザーを開き、`http://localhost:30662/` に移動します。 **[サインイン]** ボタンをクリックしてサインインを開始してから、Microsoft Graph API を呼び出します。
+* Node.js を使用している場合:
 
-Visual Studio を使用している場合は、プロジェクト ソリューションを選択したことを確認し、**F5** キーを押してプロジェクトを実行します。
+    1. プロジェクトのディレクトリから次のコマンドを実行して、サーバーを起動します。
+
+        ```batch
+        npm install
+        node server.js
+        ```
+
+    1. Web ブラウザーを開き、`http://localhost:30662/` に移動します。
+    1. **[サインイン]** ボタンをクリックしてサインインを開始してから、Microsoft Graph API を呼び出します。
+
+
+* Visual Studio を使用している場合は、プロジェクト ソリューションを選択したことを確認し、**F5** キーを押してプロジェクトを実行します。
 
 ## <a name="more-information"></a>詳細情報
 
@@ -134,15 +143,14 @@ myMSALObj.loginPopup(applicationConfig.graphScopes).then(function (idToken) {
 
 > |Where  |  |
 > |---------|---------|
-> | `scopes`   | (省略可能) ログイン時にユーザーの同意が要求されるスコープが含まれています (例: Microsoft Graph の場合は `[ "user.read" ]`、カスタム Web API の場合は `[ "<Application ID URL>/scope" ]` (つまり、`api://<Application ID>/access_as_user`))。 ここで `applicationConfig.graphScopes` が渡されます。 |
+> | `scopes`   | (省略可能) ログイン時にユーザーの同意が要求されるスコープを含めます。 たとえば、Microsoft Graph の場合は `[ "user.read" ]`、カスタム Web API (つまり、`api://<Application ID>/access_as_user`) の場合は `[ "<Application ID URL>/scope" ]` になります。 ここで `applicationConfig.graphScopes` が渡されます。 |
 
 > [!TIP]
 > あるいは、`loginRedirect` メソッドを使用して、ポップアップ ウィンドウの代わりに現在のページをサインイン ページにリダイレクトすることもできます。
 
-
 ### <a name="request-tokens"></a>トークンの要求
 
-MSAL では `acquireTokenRedirect`、`acquireTokenPopup`、および `acquireTokenSilent` の 3 つのメソッドを使用して、トークンを取得します。
+MSAL では、`acquireTokenRedirect`、`acquireTokenPopup`、`acquireTokenSilent` の 3 つのメソッドを使用してトークンを取得します。
 
 #### <a name="get-a-user-token-silently"></a>ユーザー トークンを自動で取得する
 
@@ -156,11 +164,11 @@ myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (acces
 
 > |Where  |  |
 > |---------|---------|
-> | `scopes`   | API へのアクセス トークンで返されるように要求されるスコープが含まれています (例: Microsoft Graph の場合は `[ "user.read" ]`、カスタム Web API の場合は `[ "<Application ID URL>/scope" ]` (つまり、`api://<Application ID>/access_as_user`))。 ここで `applicationConfig.graphScopes` が渡されます。|
+> | `scopes`   | API のアクセス トークンで返されるように要求されているスコープを含めます。 たとえば、Microsoft Graph の場合は `[ "user.read" ]`、カスタム Web API (つまり、`api://<Application ID>/access_as_user`) の場合は `[ "<Application ID URL>/scope" ]` になります。 ここで `applicationConfig.graphScopes` が渡されます。|
 
 #### <a name="get-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
- ユーザーに Azure AD v2.0 エンドポイントとのやり取りを強制しなければならない場合があります。 例: 
+ユーザーに Azure AD v2.0 エンドポイントとのやり取りを強制しなければならない場合があります。 例: 
 * パスワードの有効期限が切れているため、ユーザーは資格情報を再入力する必要がある
 * お使いのアプリケーションが、ユーザーによる同意が必要な追加のリソース スコープへのアクセスを要求している
 * 2 要素認証が必須である
@@ -191,6 +199,3 @@ myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (access
 
 > [!div class="nextstepaction"]
 > [msal.js GitHub のリポジトリ](https://github.com/AzureAD/microsoft-authentication-library-for-js)
-
-
-[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

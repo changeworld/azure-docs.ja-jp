@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: f574203f31a21f945115296693f04cff649614c6
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a71f28413028efe3547df7c464ec852fe2161f63
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165638"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649943"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Ansible モジュールとバージョンのマトリックス
 
@@ -128,7 +128,7 @@ Ansible には多数のモジュールが付属しています。これらのモ
 | azure_rm_autoscale_facts            | -            | -                         | -          | [はい]          | [はい]                                 | 
 
 ## <a name="introduction-to-playbook-role-for-azure"></a>Azure のプレイブック ロールの導入
-[azure_preview_module プレイブック ロール](https://galaxy.ansible.com/Azure/azure_preview_modules/)は、最も包括的なロールであり、最新の Azure モジュールをすべて含んでいます。 更新プログラムとバグ修正は、正式な Ansible リリースよりもタイムリーに行われます。 Azure リソースのプロビジョニングのために Ansible を使用する場合は、azure_preview_module ロールをインストールすることをお勧めします。
+[azure_preview_module プレイブック ロール](https://galaxy.ansible.com/Azure/azure_preview_modules/)は、最も包括的なロールであり、最新の Azure モジュールをすべて含んでいます。 更新プログラムとバグ修正は、正式な Ansible リリースよりもタイムリーに行われます。 Azure リソースのプロビジョニングのために Ansible を使用する場合は、azure_preview_module プレイブック ロールをインストールすることをお勧めします。
 
 azure_preview_module プレイブック ロールは 3 週間ごとにリリースされます。
 

@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 56f233afed8c403d19c9b668e98ecfec45470b64
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ddb0b5b1a0847200caa7d8d04ecdc9dab4c41d14
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721621"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49956699"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>CLI を使用してリモート監視ソリューション アクセラレータをデプロイする
 
@@ -81,14 +81,14 @@ Basic ソリューションを作成すると、有料で次の Azure サービ�
 
 
 ### <a name="standard"></a>標準
-標準デプロイは、開発者がニーズに合わせてカスタマイズし、拡張できる運用対応デプロイです。 信頼性と拡張性のため、アプリケーション マイクロサービスは Docker コンテナーとして構築され、オーケストレーター (既定では [Kubernetes](https://kubernetes.io/)) を使用してデプロイされます。 オーケストレーターは、デプロイ、拡張、およびアプリケーションの管理を担当します。
+標準デプロイは、開発者がニーズに合わせてカスタマイズし、拡張できる運用対応デプロイです。 Standard デプロイ オプションは、スケーリングと拡張性のために構築された運用対応アーキテクチャをカスタマイズする準備ができたときに使用する必要があります。 アプリケーションのマイクロサービスは Docker コンテナーとして構築されており、Azure Kubernetes Service (AKS) を使用してデプロイされています。 オーケストレーターは、デプロイ、拡張、およびアプリケーションの管理を担当します。
+
 
 標準ソリューションを作成すると、有料で次の Azure サービスが Azure サブスクリプションにプロビジョニングされます。
 
 | Count | リソース                                     | SKU/サイズ      | 用途 |
 |-------|----------------------------------------------|-----------------|----------|
-| 4     | [Linux virtual machines](https://azure.microsoft.com/services/virtual-machines/)   | Standard D2 V2  | 冗長性を備えたマイクロサービスをホストするための 1 つのマスターと 3 つのエージェント |
-| 1     | [Azure Container Service](https://azure.microsoft.com/services/container-service/) |                 | [Kubernetes](https://kubernetes.io) オーケストレーター |
+| 1     | [Azure Kubernetes Service](https://azure.microsoft.com/services/kubernetes-service)| フル マネージドの Kubernetes コンテナー オーケストレーション サービスをぜひご利用ください。既定のエージェントは 3 つです。|
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                     | S2 – Standard レベル | デバイス管理、コマンドとコントロール |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 標準        | 構成データ、およびルール、アラーム、メッセージなどのデバイス テレメトリの格納 |
 | 5     | [Azure Storage アカウント](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | 標準        | VM ストレージ用に 4 つ、およびストリーミング チェックポイント用に 1 つ |
@@ -140,7 +140,7 @@ CLI の詳細については、[CLI の使用方法](https://github.com/Azure/pc
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * ソリューション アクセラレータの構成

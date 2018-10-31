@@ -6,29 +6,30 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/17/2018
+ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c2d13a409d095bca64da781e5c5ca58553f9710c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5778c38d5a0c44e42b83fd139078be1f0bb45f7f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046853"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023749"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 
-ソース管理を使用すると、Automation アカウントの Runbook を、GitHub または Azure Dev Ops のソース管理リポジトリ内のスクリプトを使用して最新の状態を維持することができます。 ソース管理により、チームとの共同作業、変更の追跡、Runbook の以前のバージョンへのロールバックを簡単に実行できるようになります。 たとえば、開発、テスト、または運用の Automation アカウントに異なるブランチをソース管理で同期できるようになり、開発環境内でテストされたコードを運用の Automation アカウントに昇格することが容易になります。
+ソース管理では、GitHub または Azure DevOps のソース管理リポジトリ内のスクリプトを使用して、Automation アカウントの Runbook を最新の状態に維持することができます。 ソース管理により、チームとの共同作業、変更の追跡、Runbook の以前のバージョンへのロールバックを簡単に実行できるようになります。 たとえば、ソース管理を使用すると、開発、テスト、運用の Automation アカウントに対して、ソース管理内の異なるブランチを同期できます。 これにより、開発環境でテストされたコードを、運用の Automation アカウントに昇格することが容易になります。
 
 Azure Automation は、次の 3 種類のソース管理をサポートしています。
 
 * GitHub
-* Visual Studio Team Services (Git)
-* Visual Studio Team Services (TFVC)
+* Azure DevOps (Git)
+* Azure DevOps (TFVC)
 
 ## <a name="pre-requisites"></a>前提条件
 
-* ソース管理リポジトリ (GitHub または Visual Studio Team Services)
+* ソース管理リポジトリ (GitHub または Azure DevOps)
+* ソース管理リポジトリに対する適切な[アクセス許可](#personal-access-token-permissions)
 * [実行アカウントと接続](manage-runas-account.md)
 
 > [!NOTE]
@@ -49,8 +50,8 @@ Automation アカウント内で、**[Source Control (preview)] (ソース管理
 |プロパティ  |説明  |
 |---------|---------|
 |ソース管理名     | ソース管理のわかりやすい名前        |
-|ソース管理の種類     | ソース管理のソースの種類。 使用できるオプションは次のとおりです。</br> Github</br>Visual Studio Team Services (Git)</br>Visual Studio Team Services (TFVC)        |
-|リポジトリ     | リポジトリまたはプロジェクトの名前。 これは、ソース管理リポジトリから取得されます。 例: $/ContosoFinanceTFVCExample         |
+|ソース管理の種類     | ソース管理のソースの種類。 使用できるオプションは次のとおりです。</br> Github</br>Azure DevOps (Git)</br> Azure DevOps (TFVC)        |
+|リポジトリ     | リポジトリまたはプロジェクトの名前。 この値は、ソース管理リポジトリから取得されます。 例: $/ContosoFinanceTFVCExample         |
 |[Branch]\(ブランチ\)     | ソース ファイルの抽出元のブランチ。 TFVC ソース管理の種類では、ブランチのターゲット設定は使用できません。          |
 |フォルダー パス     | 同期する Runbook が含まれているフォルダー。例: /Runbooks         |
 |自動同期     | ソース管理リポジトリでコミットが行われたときに、自動同期をオンまたはオフにします         |
@@ -61,13 +62,13 @@ Automation アカウント内で、**[Source Control (preview)] (ソース管理
 
 ## <a name="syncing"></a>同期中
 
-ソース管理の統合の構成時に自動同期を設定した場合は、自動的に初期同期が開始されます。 自動同期が設定されていない場合は、**[Source control (Preview)] (ソース管理 (プレビュー))** ページの表でソースを選択します。 **[Start Sync] (同期の開始)** をクリックして、同期プロセスを開始します。  
+ソース管理の統合の構成時に自動同期を構成すると、初期同期が自動的に開始されます。 自動同期が設定されていない場合は、**[Source control (Preview)] (ソース管理 (プレビュー))** ページの表でソースを選択します。 **[Start Sync] (同期の開始)** をクリックして、同期プロセスを開始します。  
 
 **[Sync jobs] (同期ジョブ)** タブをクリックすると、現在の同期ジョブまたは以前の同期ジョブの状態を表示することができます。**[ソース管理]** ドロップダウン リストで、ソース管理を選択します。
 
 ![同期状態](./media/source-control-integration/sync-status.png)
 
-ジョブをクリックすると、ジョブの出力を表示することができます。 次は、ソース管理の同期ジョブから出力の例です。
+ジョブをクリックすると、ジョブの出力を表示することができます。 次に、ソース管理の同期ジョブからの出力例を示します。
 
 ```output
 ========================================================================================================
@@ -101,6 +102,35 @@ Source Control Sync Summary:
 
 ========================================================================================================
 ```
+
+## <a name="personal-access-token-permissions"></a>個人用アクセス トークンのアクセス許可
+
+ソース管理には、個人用アクセス トークンに対するいくつかの最小限のアクセス許可が必要です。 次の表に、GitHub と Azure DevOps で必要な最小限のアクセス許可を示します。
+
+### <a name="github"></a>GitHub
+
+|Scope (スコープ)  |説明  |
+|---------|---------|
+|**レポジトリ**     |         |
+|repo:status     | コミット状態へのアクセス         |
+|repo_deployment      | デプロイ状態へのアクセス         |
+|public_repo     | パブリック リポジトリへのアクセス         |
+|**admin:repo_hook**     |         |
+|write:repo_hook     | リポジトリ フックの書き込み         |
+|read:repo_hook|リポジトリ フックの読み取り|
+
+### <a name="azure-devops"></a>Azure DevOps
+
+|Scope (スコープ)  |
+|---------|
+|コード (読み取り)     |
+|プロジェクトおよびチーム (読み取り)|
+|ID (読み取り)      |
+|ユーザー プロファイル (読み取り)     |
+|作業項目 (読み取り)    |
+|サービス接続 (読み取り、クエリ、管理)<sup>1</sup>    |
+
+<sup>1</sup>サービス接続のアクセス許可は、自動同期を有効にした場合にのみ必要です。
 
 ## <a name="disconnecting-source-control"></a>ソース管理の切断
 

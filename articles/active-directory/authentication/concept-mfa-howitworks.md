@@ -5,17 +5,17 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/11/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: 46c99011a22f855f6faf53e03169b2d1e4c6ce85
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 4a90dc1d97121426e7b161b1d5c92df78b0925a6
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669009"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114160"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>しくみ: Azure Multi-Factor Authentication
 
@@ -35,21 +35,12 @@ Multi-Factor Authentication は以下のサービスに付属します。
 
 * **Azure Active Directory Premium ライセンス** - Azure Multi-Factor Authentication Service (クラウド) または Azure Multi-Factor Authentication Server (オンプレミス) のすべての機能を使用できます。
    * **Azure MFA Service (クラウド)** - **このオプションは新しいデプロイに推奨されます**。 クラウドの Azure MFA はオンプレミス インフラストラクチャを必要とせず、フェデレーション ユーザーまたはクラウド専用ユーザーと共に利用できます。
-   * **Azure MFA Server** - 関連付けられているインフラストラクチャ要素の管理を組織が望み、オンプレミス環境に AD FS をデプロイしている場合、この方法が選択肢に入ります。
+   * **Azure MFA Server** - 組織が関連付けられているインフラストラクチャ要素の管理を希望し、オンプレミスの環境に AD FS をデプロイしている場合は、この方法がオプションになる可能性があります。
 * **Office 365 の Multi-Factor Authentication** - Azure Multi-Factor Authentication の一部の機能を集めたものであり、サブスクリプションの一環として利用できます。 MFA for Office 365 の詳細については、「[Office 365 展開用の多要素認証の計画](https://support.office.com/article/plan-for-multi-factor-authentication-for-office-365-deployments-043807b2-21db-4d5c-b430-c8a6dee0e6ba)」という記事を参照してください。
 * **Azure Active Directory 全体管理者** - Azure Multi-Factor Authentication の一部の機能を集めたものであり、全体管理者アカウントを保護するための手段として利用されます。
 
 > [!NOTE]
 > 2018 年 9 月 1 日以降、新しいお客様は、スタンドアロン オファーとして Azure Multi-Factor Authentication を購入できなくなります。 多要素認証認証は、今後も Azure AD Premium ライセンスで利用できます。
-
-### <a name="auth-provider-or-mfa-license"></a>認証プロバイダーまたは MFA ライセンス
-
-Azure AD Premium をお持ちか、Azure AD Premium を含む別のライセンス バンドルをお持ちの場合、Azure MFA は既に利用できます。 組織では、すべてのユーザーを 2 段階認証機能の対象にするために特別な操作を行う必要はありません。 ユーザーにライセンスを割り当てるだけで、MFA をオンにすることができます。
-
-Azure MFA を含むライセンスをお持ちでないか、お持ちのライセンスでは全ユーザーを扱えない場合、[MFA 認証プロバイダー](concept-mfa-authprovider.md)を作成し、MFA の全機能を、それを必要とするユーザーまで拡張できます。
-
-> [!IMPORTANT]
-> 一部のユーザーにライセンスがない場合は、組織内の残りのユーザーを対象とするユーザーごとの Muti-Factor Auth Provider を作成できます。 認証ごとの Multi-Factor Auth Provider は作成しないでください。 認証ごとに Multi-Factor Auth Provider を作成すると、既にライセンスを持っているユーザーからの認証要求に対しても支払いすることになる可能性があります。
 
 ## <a name="supportability"></a>サポート
 
@@ -57,8 +48,7 @@ Azure MFA を含むライセンスをお持ちでないか、お持ちのライ�
 
 * 認証方法にアクセスできないか、認証方法が正しく動作せず、ユーザーがサインインできない状況に対応できるよう、サポート スタッフをトレーニングしてください。
    * サポート スタッフは Azure MFA Service の条件付きアクセス ポリシーを利用することで、MFA を要求するポリシーから除外されるグループにユーザーを追加できます。
-   * サポート スタッフは Azure MFA Server ユーザーの一時的なワンタイム バイパスを有効にし、2 段階認証なしの認証をユーザーに許可できます。 このバイパスは一時的なものであり、指定された秒数が経過すると無効になります。
-   * サポート スタッフは Azure MFA Service の条件付きアクセス ポリシーを利用することで、MFA を要求するポリシーから除外されるグループにユーザーを追加できます。
+   * サポート スタッフは Azure MFA Server ユーザーの一時的なワンタイム バイパスを有効にし、2 段階認証なしの認証をユーザーに許可できます。 このバイパスは一時的なものであり、指定された秒数が経過すると無効になります。   
 * 2 段階検証の要求を最小限に抑える方法として、信頼できる IP や名前付きの場所の利用を検討します。 この機能を使用すると、管理者常駐型テナントまたはフェデレーション テナントの管理者は、組織イントラネットなど、信頼されたネットワークの場所からサインインするユーザーの 2 段階認証をバイパスできます。
 * [Azure AD Identity Protection](../active-directory-identityprotection.md) をデプロイし、リスク イベントに基づいて 2 段階検証をトリガーします。
 

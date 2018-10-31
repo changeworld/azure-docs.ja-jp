@@ -1,6 +1,6 @@
 ---
 title: Azure Automation での SCCM コレクションを使用したターゲットの更新 - Update Management
-description: この記事は、このソリューションを使用して System Center Configuration Manager を構成し、SCCM で管理されるコンピューターの更新を管理するのに役立ちます。
+description: この記事は、このソリューションを使用して System Center Configuration Manager を構成し、SCCM マネージド コンピューターの更新を管理するのに役立ちます。
 services: automation
 ms.service: automation
 ms.component: update-management
@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3ea95899d48b68c78af5fdc45167b08b5e0fc1ee
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: b42ce119db2c435f05424cceb5bb90627668bece
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34195347"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407199"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>System Center Configuration Manager と Update Management の統合
 
@@ -40,7 +40,7 @@ Configuration Manager から更新プログラムのデプロイを引き続き�
 1. [ソフトウェア更新プログラムのデプロイのプロセス](/sccm/sum/deploy-use/deploy-software-updates)に関するページで説明されているプロセスを使用して、Configuration Manager 階層の最上位サイトからソフトウェア更新プログラムのデプロイを作成します。 標準のデプロイとは異なる構成が必要な唯一の設定は、デプロイ パッケージのダウンロード動作を制御するための **[ソフトウェアの更新をインストールしない]** オプションです。 この動作は、次の手順でスケジュールされた更新プログラムのデプロイを作成することによって、Update Management ソリューションによって管理されます。
 
 1. Azure Automation で **[Update Management]** を選択します。 「[更新プログラムの展開の作成](automation-tutorial-update-management.md#schedule-an-update-deployment)」で説明されている手順に従って新しいデプロイを作成し、**[種類]** ドロップダウン リストから **[Imported groups]\(インポートされたグループ\)** を選択して適切な Configuration Manager コレクションを選択します。 以下の重要な点に注意してください。a. 選択した Configuration Manager デバイス コレクションにメンテナンス期間が定義されている場合、コレクションのメンバーは、スケジュールされたデプロイで定義されている **[期間]** 設定ではなくこの設定を使用します。
-    b. ターゲット コレクションのメンバーは、(直接、プロキシ サーバー経由、または OMS ゲートウェイ経由で) インターネットに接続できる必要があります。
+    b. ターゲット コレクションのメンバーは、(直接、プロキシ サーバー経由、または Log Analytics ゲートウェイ経由で) インターネットに接続できる必要があります。
 
 Azure Automation を介した更新プログラムのデプロイが完了した後、選択したコンピューター グループのメンバーであるターゲット コンピューターによって、スケジュールされた時刻にローカル クライアント キャッシュから更新プログラムがインストールされます。 [更新プログラムのデプロイ ステータスを表示](automation-tutorial-update-management.md#view-results-of-an-update-deployment)して、デプロイの結果を監視できます。
 

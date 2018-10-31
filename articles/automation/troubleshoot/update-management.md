@@ -4,20 +4,20 @@ description: Update Management の問題をトラブルシューティングす�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/08/2018
+ms.date: 10/17/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 2e47320d5ad88edfa8ea6122f3a0abd104230974
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 41883fd677d276f8f26721fdccc3ded020c3278b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42145602"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405229"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Update Management の問題をトラブルシューティングする
 
-この記事では、Update Management の使用中に発生する可能性がある問題を解決する方法を説明します。
+この記事では、Update Management の使用時に発生する可能性がある問題の解決策について説明します。
 
 ## <a name="general"></a>全般
 
@@ -36,7 +36,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 このエラーは次の理由で発生する可能性があります。
 
 1. Automation アカウントに戻る通信がブロックされています。
-2. オンボードしている VM が、Microsoft Monitoring Agent のインストール付きで sysprep されなかった複製マシンに由来している可能性があります。
+2. オンボードしている VM の複製元が、Microsoft Monitoring Agent がインストールされた状態で sysprep されなかった複製マシンであった可能性があります。
 
 #### <a name="resolution"></a>解決策
 
@@ -110,6 +110,28 @@ Hybrid Runbook Worker が自己署名証明書を生成できませんでした�
 #### <a name="resolution"></a>解決策
 
 フォルダー **C:\ProgramData\Microsoft\Crypto\RSA** への読み取りアクセスがシステム アカウントにあることを確認してから、再試行します。
+
+### <a name="hresult"></a>シナリオ: マシンが未評価として表示され、HResult 例外が表示される
+
+#### <a name="issue"></a>問題
+
+**[コンプライアンス]** に **[評価が行われていません]** と表示されているマシンがあり、その下に例外メッセージが表示されます。
+
+#### <a name="cause"></a>原因
+
+マシンで Windows Update が正しく構成されていません。
+
+#### <a name="resolution"></a>解決策
+
+赤で表示された例外をダブルクリックして、例外メッセージ全体を確認します。 考えられる解決策または取るべき対策については、次の表を参照してください。
+
+|例外  |解決策または対策  |
+|---------|---------|
+|`Exception from HRESULT: 0x……C`     | [Windows Update エラー コード一覧](https://support.microsoft.com/help/938205/windows-update-error-code-list)で該当するエラー コードを検索して、例外の原因の詳細を確認します。        |
+|`0x8024402C` または `0x8024401C`     | これらのエラーはネットワーク接続の問題です。 お使いのマシンが Update Management に適切にネットワーク接続されていることを確認します。 必要なポートとアドレスの一覧については、[ネットワーク計画](../automation-update-management.md#ports)に関するセクションをご覧ください。        |
+|`0x8024402C`     | WSUS サーバーを使用している場合は、レジストリ キー `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` の下の `WUServer` と `WUStatusServer` のレジストリ値に正しい WSUS サーバーが含まれていることを確認します。        |
+|`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Windows Update サービス (wuauserv) が実行されており、無効になっていないことを確認します。        |
+|その他の一般的な例外     | 考えられる解決策をインターネットで検索し、最寄りの IT サポートと連携してください。         |
 
 ## <a name="linux"></a>Linux
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: barbkess
 ms.reviewer: baselden
-ms.openlocfilehash: 750bf1905a3ca352e181dcd5b7fcecdfc8d04f76
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: d2ede423a92fe9e0d45155d9470d63689bc8d281
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465505"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49165543"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>アプリケーションを Azure Active Directory に移行するためのリソース
 
-アプリケーションのアクセスと認証を Azure Active Directory (Azure AD) に移行するために役立つリソース。 
+アプリケーションのアクセスと認証を Azure Active Directory (Azure AD) に移行するために役立つリソース。 この簡単なアンケート (https://aka.ms/AppsMigrationFeedback)) を行って、アプリを Azure AD に移行した体験についてフィードバック (移行の妨げ、ツール/ガイダンスの必要性、オンプレミスの IDP を保持する理由など) を集めます。 
 
 | リソース  | 説明  |
 |:-----------|:-------------|

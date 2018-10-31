@@ -12,14 +12,14 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 04/02/2018
-ms.openlocfilehash: b91960920f0181939e634a221080d493fb8cea63
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: ff09a5f09393ad642ddb2059b58bd69a17591aff
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056660"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49352213"
 ---
-# <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するシャード化されたマルチテナント アプリケーションのデプロイと操作
+# <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>シャード化されたマルチテナント アプリケーションをデプロイおよび操作する
 
 このチュートリアルでは、Wingtip Tickets という名前のサンプル マルチテナント SaaS アプリケーションをデプロイおよび詳細確認します。 Wingtip Tickets アプリの目的は、各種 SaaS シナリオの実装を簡素化する Azure SQL Database の機能を紹介することにあります。
 
@@ -27,7 +27,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 
 このデータベースのパターンを使用すると、1 つ以上のテナントを各シャードまたはデータベースに保存できます。 それぞれのデータベースを複数のテナントでシャード化することによって、最小限のコストに最適化できます。 または、それぞれのデータベースに 1 つのテナントのみを格納させることによって分離性を最適化できます。 最適化の選択は、特定のテナントごとに独立して行うことができます。 テナントを最初に格納するときに選択したり、後で変更したりできます。 どちらの場合でもアプリケーションが正しく動作するように設計されています。
 
-#### <a name="app-deploys-quickly"></a>アプリのすばやいデプロイ
+## <a name="app-deploys-quickly"></a>アプリのすばやいデプロイ
 
 このアプリは Azure クラウドで実行され、Azure SQL Database を使用します。 以下のデプロイ セクションには **[Deploy to Azure]\(Azure にデプロイ\)** という青いボタンがあります。 このボタンを押すと、アプリは 5 分以内に Azure サブスクリプションに完全にデプロイされます。 個々のアプリケーション コンポーネントを操作するフル アクセスがあります。
 
@@ -35,7 +35,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 
 誰でも [GitHub リポジトリ][link-github-wingtip-multitenantdb-55g]から Wingtip Tickets の C# および PowerShell のソース コードをダウンロードできます。
 
-#### <a name="learn-in-this-tutorial"></a>このチュートリアルの詳細
+## <a name="learn-in-this-tutorial"></a>このチュートリアルの詳細
 
 > [!div class="checklist"]
 > - Wingtip Tickets SaaS アプリケーションのデプロイ方法。
@@ -55,7 +55,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 
 ## <a name="deploy-the-wingtip-tickets-app"></a>Wingtip Tickets アプリのデプロイ
 
-#### <a name="plan-the-names"></a>名前を考える
+### <a name="plan-the-names"></a>名前を考える
 
 このセクションの手順では、リソース名がグローバルに一意であることを保証するために使用される "*ユーザー*" 値と、アプリのデプロイによって作成されるすべてのリソースを含む "*リソース グループ*" を指定します。 たとえば、名前が *Ann Finley* である場合、次のような名前にすることをお勧めします。
 - "*ユーザー:*" **af1** "*(イニシャルと一桁の数字。アプリをもう一度デプロイする場合は、別の値を使用します (例: af2)。)*"
@@ -63,7 +63,7 @@ Wingtips Tickets アプリのこの実装では、シャード化されたマル
 
 名前を選択し、書き留めておきます。 
 
-#### <a name="steps"></a>手順
+### <a name="steps"></a>手順
 
 1. **[Deploy to Azure]\(Azure にデプロイ\)** という青いボタンをクリックします。
     - Wingtip Tickets SaaS デプロイ テンプレートが指定された状態で Azure Portal が開きます。
@@ -133,7 +133,7 @@ Wingtip アプリでは、テナントは会場です。 会場は、イベン�
 
    ![イベント](./media/saas-multitenantdb-get-started-deploy/fabrikam.png)
 
-#### <a name="azure-traffic-manager"></a>Azure の Traffic Manager
+### <a name="azure-traffic-manager"></a>Azure の Traffic Manager
 
 Wingtip アプリは、受信要求の配布を制御するために [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用します。 各テナントのイベント ページには、URL にテナント名が含まれています。 各 URL には、固有のユーザー値も含まれています。 各 URL は、以下の手順で、次に示す形式に従います。
 
@@ -144,7 +144,7 @@ Wingtip アプリは、受信要求の配布を制御するために [Azure Traf
 3. アプリはカタログ内のキーを検索し、テナントのデータベースの場所を取得します。
 4. アプリは場所情報を使用して、テナントのすべてのデータを含む 1 つのデータベースを見つけてアクセスします。
 
-#### <a name="events-hub"></a>Events Hub
+### <a name="events-hub"></a>Events Hub
 
 1. **Events Hub** はカタログおよびその会場に登録されているすべてのテナントを一覧表示します。
 2. **Events Hub** は、カタログ内の拡張メタデータを使用して、各マッピングに関連付けられたテナントの名前を取得し、URL を構築します。
@@ -185,6 +185,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>独自のデータベース内の新しいテナントをプロビジョニングする
 
 シャード化されたマルチテナント モデルでは、別のテナントを含むデータベース内の新しいテナントをプロビジョニングするか、または独自のデータベース内のテナントをプロビジョニングするかを選択できます。 独自のデータベースに分離されたテナントには、次の利点があります。
+
 - そのテナントのデータベースのパフォーマンスを、他のテナントのニーズに悪影響を及ぼすことなく管理できます。
 - 影響を受けるテナントがないため、必要に応じて、データベースを過去のある時点の状態に復元できます。
 
@@ -221,7 +222,6 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 
    ![テナント サーバー](./media/saas-multitenantdb-get-started-deploy/tenants-server.png)
 
-
 ## <a name="monitor-the-performance-of-the-database"></a>データベースのパフォーマンスの監視
 
 ロード ジェネレーターを数分間実行したら、十分なテレメトリが生成されています。このテレメトリを使って、Azure Portal に組み込まれているデータベース監視機能を確認してみましょう。
@@ -238,7 +238,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 
 ロード ジェネレーターは、各テナントがどのデータベースにあるかに関係なく、各テナントに同様の負荷をかけます。 **salixsalsa** データベースにはテナントが 1 つしかないため、このデータベースは、複数のテナントを含むデータベースよりもはるかに高い負荷に耐えることができます。 
 
-#### <a name="resource-allocations-vary-by-workload"></a>ワークロードによって異なるリソース割り当て
+### <a name="resource-allocations-vary-by-workload"></a>ワークロードによって異なるリソース割り当て
 
 マルチテナント データベースでは、優れたパフォーマンスのために、シングルテナント データベースより多くのリソースが必要な場合があります (必ずではありません)。 システム内のテナントでは、リソースの最適な割り当ては、特定のワークロード特性によって異なります。
 
@@ -249,8 +249,9 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 - マルチテナント SaaS アプリケーションの詳細については、[マルチテナント SaaS アプリケーションの設計パターン](saas-tenancy-app-design-patterns.md)に関するページをご覧ください。
 
 - エラスティック プールの詳細については、以下をご覧ください。
-    - [エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング](sql-database-elastic-pool.md)
-    - [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
+
+  - [エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング](sql-database-elastic-pool.md)
+  - [Azure SQL Database によるスケールアウト](sql-database-elastic-scale-introduction.md)
 
 ## <a name="next-steps"></a>次の手順
 

@@ -13,18 +13,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: shlo
-ms.openlocfilehash: 59644f3318e2bf9c4f0ea6c3f5699fe1d19f2089
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 24464d110b00508cfb3fde4ab1a050773511e255
+ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053712"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49091051"
 ---
 # <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory"></a>Azure Data Factory に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法
-Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 現在のバージョンの Data Factory では、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 
+
+Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**WindowStart**、および **WindowEnd** システム変数を使用して、パーティション分割されたデータの読み取りまたは書き込みが可能でした。 現在のバージョンの Data Factory では、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻またはスケジュールされた時刻を使用してこの動作を実現できます。 
 
 ## <a name="use-a-pipeline-parameter"></a>パイプライン パラメーターを使用する 
-バージョン 1 では、次の例に示すように、partitionedBy プロパティと SliceStart システム変数を使用できました。 
+
+Data Factory バージョン 1 では、次の例に示すように、**partitionedBy** プロパティと **SliceStart** システム変数を使用できました。 
 
 ```json
 "folderPath": "adfcustomerprofilingsample/logs/marketingcampaigneffectiveness/{Year}/{Month}/{Day}/",
@@ -35,13 +37,13 @@ Azure Data Factory のバージョン 1 では、パーティション分割さ�
 ],
 ```
 
-PartitonedBy プロパティの詳細については、[バージョン 1 での Azure Blob コネクタ](v1/data-factory-azure-blob-connector.md#dataset-properties)に関する記事を参照してください。 
+**partitonedBy** プロパティの詳細については、「[Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー](v1/data-factory-azure-blob-connector.md#dataset-properties)」を参照してください。 
 
-現在のバージョンの Data Factory では、この動作を実現する方法は、次のアクションを行うことです。 
+現在のバージョンの Data Factory でこの動作を実現するには: 
 
-1. 文字列型の**パイプライン パラメーター**を定義します。 次の例では、パイプライン パラメーターの名前は **windowStartTime** です。 
+1. **文字列**型の*パイプライン パラメーター*を定義します。 次の例では、パイプライン パラメーターの名前は **windowStartTime** です。 
 2. パイプライン パラメーターの値を参照するために、データセット定義内に **folderPath** を設定します。 
-3. オンデマンドでパイプラインを呼び出すときに、パラメーターの実際の値を渡すか、実行時にトリガーの開始時刻またはスケジュール時刻を動的に渡します。 
+3. パイプラインをオンデマンドで起動するときに、パラメーターの実際の値を渡します。 また、実行時にトリガーの開始時刻またはスケジュールされた時刻を動的に渡すこともできます。 
 
 ```json
 "folderPath": {
@@ -50,8 +52,9 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
 },
 ```
 
-## <a name="pass-in-value-from-a-trigger"></a>トリガーから値を渡す
-次のタンブリング ウィンドウ トリガー定義では、トリガーの開始時間が **windowStartTime** パイプライン パラメーターの値として渡されます。 
+## <a name="pass-in-a-value-from-a-trigger"></a>トリガーから値を渡す
+
+次のタンブリング ウィンドウ トリガー定義では、トリガーのウィンドウの開始時刻がパイプライン パラメーター **windowStartTime** の値として渡されます。 
 
 ```json
 {
@@ -176,4 +179,6 @@ PartitonedBy プロパティの詳細については、[バージョン 1 での
 ```
 
 ## <a name="next-steps"></a>次の手順
-パイプラインを使用したデータ ファクトリの作成に関する完全なチュートリアルについては、[クイック スタート: データ ファクトリの作成](quickstart-create-data-factory-powershell.md)に関する記事を参照してください。 
+
+パイプラインを含むデータ ファクトリを作成する方法の完全なチュートリアルについては、「[クイック スタート: データ ファクトリを作成する](quickstart-create-data-factory-powershell.md)」を参照してください。 
+

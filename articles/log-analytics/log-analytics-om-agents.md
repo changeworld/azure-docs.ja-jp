@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f02da6f21d0c11724b4192d5af0d5cc75d2c770c
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 0c274b1ed3cbd0e00e96072adb2fca41541af686
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49321565"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402662"
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Operations Manager を Log Analytics に接続する
 Operations Manager とLog Analyticsワークスペースを統合することで、System Center Operations Manager への投資を維持しながら、Log Analytics で拡張機能を利用することができます。 この統合により、Operations Manager を以下の目的に引き続き利用しながら､Log Analytics を活用することができます。
@@ -37,7 +37,7 @@ Operations Manager の管理グループに報告をするエージェントは�
 
 ![oms-operations-manager-integration-diagram](./media/log-analytics-om-agents/oms-operations-manager-connection.png)
 
-IT セキュリティ ポリシーによってネットワーク上のコンピューターがインターネットに接続できない場合は､管理サーバーが OMS ゲートウェイに接続するように設定することで､構成情報を受信したり､収集データを送信したりできます (有効にされているソリューションによる)｡ Operations Manager 管理グループが OMS ゲートウェイ経由で Log Analytics サービスと通信するように設定する方法についての詳細と手順は､[Connect computers to OMS using the OMS Gateway](log-analytics-oms-gateway.md)を参照してください｡  
+IT セキュリティ ポリシーによってネットワーク上のコンピューターがインターネットに接続できない場合は､管理サーバーが Log Analytics ゲートウェイに接続するように設定することで､構成情報を受信したり､収集データを送信したりできます (有効にされているソリューションによる)｡ Operations Manager 管理グループが Log Analytics ゲートウェイ経由で Log Analytics サービスと通信するように設定する方法についての詳細と手順は､[Log Analytics ゲートウェイを使った Log Analytics へのコンピューターの接続](log-analytics-oms-gateway.md)に関するページをご覧ください。  
 
 ## <a name="prerequisites"></a>前提条件 
 始める前に、以下の要件を確認してください。
@@ -69,7 +69,7 @@ IT セキュリティ ポリシーによってネットワーク上のコンピ�
 |\*.blob.core.windows.net| 443| [はい]|  
 |\*.ods.opinsights.azure.com| 443| [はい]|  
 |*.azure-automation.net | 443| [はい]|  
-|**Operations Manager コンソール から OMS**|||  
+|**Log Analytics に対する Operations Manager コンソール**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
 |\*.live.com| 80 および 443||  
@@ -96,12 +96,16 @@ Operations Manager 管理グループが  Log Analytics ワークスペースの
 
     `netsh winhttp set proxy <proxy>:<port>`
 
-以下の手順で Log Analytics と統合すると､ `netsh winhttp reset proxy` を実行することで構成を削除した後､Operations コンソールの **Configure proxy server** オプションを使用して､プロキシまたは OMS ゲートウェイサーバーを指定することができます｡ 
+以下の手順で Log Analytics と統合すると､`netsh winhttp reset proxy` を実行することで構成を削除した後､Operations コンソールの **[プロキシ サーバーの構成]** オプションを使用して､プロキシまたは Log Analytics ゲートウェイサーバーを指定することができます｡ 
 
 1. Operations Manager コンソールで、 **[管理]** ワークスペースを選択します。
 1. [Operations Management Suite] ノードを展開し、 **[接続]** をクリックします。
 1. **[Operations Management Suite への登録]** リンクをクリックします。
 1. **[Operations Management Suite オンボード ウィザード: 認証]** ページで、OMS サブスクリプションに関連付けられている管理者アカウントの電子メール アドレスまたは電話番号とパスワードを入力して、**[サインイン]** をクリックします。
+
+   >[!NOTE]
+   >OMS は、Log Analytics と呼ばれるようになりました。
+   
 1. 正しく認証されると､**Operations Management Suite Onboarding Wizard: Select Workspace** ページが表示され､Azure テナント、サブスクリプション、Log Analytics ワークスペースを選択するよう求められます｡ 複数のワークスペースがある場合は、ドロップダウン リストから Operations Manager 管理グループに登録するワークスペースを選択し、 **[次へ]** をクリックします。
    
    > [!NOTE]
@@ -129,7 +133,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. [OMS の接続] ビューで、 **[プロキシ サーバーの構成]** をクリックします。
 1. **[Operations Management Suite 設定ウィザード: プロキシ サーバー]** ページで **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選択して、ポート番号と URL を入力し (例: http://corpproxy:80 )、**[完了]** をクリックします。
 
-プロキシ サーバーで認証が必要な場合は、次の手順を実行して、管理グループ内の OMS への報告を行うマネージド コンピューターに伝達される必要がある設定と資格情報を構成します。
+プロキシ サーバーで認証が必要な場合は、次の手順を実行して、管理グループ内の Log Analytics への報告を行うマネージド コンピューターに伝達される必要がある設定と資格情報を構成します。
 
 1. Operations Manager コンソールを開き、 **[Administration (管理)]** ワークスペースを選択します。
 1. **[RunAs Configuration (RunAs の構成)]** で **[Profiles (プロファイル)]** を選択します。
@@ -143,7 +147,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 接続が作成されてから､データを収集して Log Analytics にデータを報告するエージェントを設定すると､管理グループで以下の設定が適用されます (ただし､必ずしもこの記載順に設定されるわけではありません)｡
 
 * 実行アカウント **Microsoft.SystemCenter.Advisor.RunAsAccount.Certificate** が作成されます。 これは、実行プロファイル "**Microsoft System Center Advisor Run As Profile Blob**" に関連付けられ、**Collection Server** および **Operations Manager Management Group** という 2 つのクラスをターゲットにします。
-* 2 つのコネクタが作成されます。  最初のコネクタは  **Microsoft.SystemCenter.Advisor.DataConnector** という名前であり､管理グループの全クラスのインスタンスから生成されたすべてのアラートを Log Analytics に転送するサブスクリプションを使って自動的に設定されます｡ 2 番目のコネクタは **Advisor Connector**であり、OMS Web サービスとの通信およびデータの共有を担当します。
+* 2 つのコネクタが作成されます。  最初のコネクタは  **Microsoft.SystemCenter.Advisor.DataConnector** という名前であり､管理グループの全クラスのインスタンスから生成されたすべてのアラートを Log Analytics に転送するサブスクリプションを使って自動的に設定されます｡ 2 番目のコネクタは **Advisor Connector** であり、Log Analytics との通信およびデータの共有を担当します。
 * 管理グループ内でデータを収集するために選択したエージェントとグループは、**Microsoft System Center Advisor Monitoring Server Group** に追加されます。
 
 ## <a name="management-pack-updates"></a>管理パックの更新
@@ -152,7 +156,7 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 * **Microsoft.SystemCenter.Advisor.MPUpdate** - ベース Log Analytics 管理パックを更新します｡ 既定では 12 時間おきに実行されます。
 * **Microsoft.SystemCenter.Advisor.Core.GetIntelligencePacksRule** - ワークスペースで有効にされたソリューション管理パックを更新します。 既定では 5 分おきに実行されます。
 
-この 2 つのルールはオーバーライドすることができます。具体的には、2 つのルールを無効にして自動ダウンロードを防止することも、新しい管理パックの有無とダウンロードの必要性を判断するために行う管理サーバーと OMS の同期の頻度を変更することもできます。 秒単位の値で **Frequency** パラメーターを変更して同期スケジュールに変更を加える場合、または **Enabled** パラメーターを変更してルールを無効にする場合は、「[How to Override a Rule or Monitor (ルールまたはモニターをオーバーライドする方法)](https://technet.microsoft.com/library/hh212869.aspx)」の手順に従ってください。 Operations Manager Management Group クラスのすべてのオブジェクトに対するオーバーライドを対象としています。
+この 2 つのルールはオーバーライドすることができます。具体的には、2 つのルールを無効にして自動ダウンロードを防止することも、新しい管理パックの有無とダウンロードの必要性を判断するために行う管理サーバーと Log Analytics の同期の頻度を変更することもできます。 秒単位の値で **Frequency** パラメーターを変更して同期スケジュールに変更を加える場合、または **Enabled** パラメーターを変更してルールを無効にする場合は、「[How to Override a Rule or Monitor (ルールまたはモニターをオーバーライドする方法)](https://technet.microsoft.com/library/hh212869.aspx)」の手順に従ってください。 Operations Manager Management Group クラスのすべてのオブジェクトに対するオーバーライドを対象としています。
 
 引き続き既存の変更管理プロセスに従って運用管理グループにおける管理パックのリリースを制御する場合は、ルールを無効にし、更新が許可されている特定の期間中にルールを有効にすることができます。 環境内に開発または QA 管理グループがあり､その管理グループがインターネットと接続できる場合は､Log Analytics ワークスペースを使ってその管理グループがそのシナリオをサポートするように設定できます｡ そうすることによって､Log Analytics 管理パックを生産管理グループにリリースする前に､その都度､管理パックをレビューし､評価することができます｡
 
@@ -160,9 +164,9 @@ Log Analytics ワークスペースとの統合が構成された後には､サ
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサインインします。
 1. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **Log Analytics** を選択して､ワークスペースを作成します｡  
 1. Operations Manager 管理者ロールのメンバーであるアカウントを使用して Operations Manager コンソールを開き、 **[管理]** ワークスペースを選択します。
-1. [Operations Management Suite] を展開し、 **[接続]** を選択します。
+1. Log Analytics を展開し、**[接続]** を選択します。
 1. ウィンドウの中央にある **[Operation Management Suite の再構成]** リンクを選択します。
-1. **Operations Management Suite Onboarding Wizard** に従って､新しい Log Analytics ワークスペースに関連付けられている管理者アカウントの電子メール アドレスか電話番号とパスワードを入力します｡
+1. **Log Analytics オンボード ウィザード**に従って､新しい Log Analytics ワークスペースに関連付けられている管理者アカウントの電子メール アドレスか電話番号とパスワードを入力します｡
    
    > [!NOTE]
    > **[Operations Management Suite オンボード ウィザード: ワークスペースの選択]** ページに、使用されている既存のワークスペースが表示されます。
@@ -213,7 +217,7 @@ Operations Manager との統合のために有効にされたソリューショ�
    * Microsoft System Center Advisor
    * Microsoft System Center Advisor Internal
 
-1. OMS ポータルで、**[設定]** タイルをクリックします。
+1. Azure portal で、**[設定]** タイルをクリックします。
 1. **[Connected Sources]**(接続されているソース) を選択します。
 1. [System Center Operations Manager] セクションの下の表に、ワークスペースから削除する管理グループの名前が表示されます。 **[Last Data (最後のデータ)]** 列で、**[削除]** をクリックします。  
    

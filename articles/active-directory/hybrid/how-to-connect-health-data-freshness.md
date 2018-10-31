@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: zhiweiw
-ms.openlocfilehash: 430ea5f0a6f737d7632a4352c24d893368b80558
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e470a44732b881311eacecfdf2bd2211598d880a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310381"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984862"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>アラート "Health サービス データが最新ではありません"
 
@@ -33,6 +33,21 @@ ms.locfileid: "46310381"
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順 
 * [要件セクション](how-to-connect-health-agent-install.md#requirements)を確認して、必ず要件に対応してください。
 * [テスト接続ツール](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)を使用して接続の問題を検出します。
+* HTTP プロキシを使用している場合は、[こちら](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)の構成手順に従ってください。 
+
+### <a name="connect-health-for-adfs"></a>Connect Health for ADFS
+AD FS を検証し、[AD FS ヘルプ](https://adfshelp.microsoft.com/TroubleshootingGuides/Workflow/3ef51c1f-499e-4e07-b3c4-60271640e282)のワークフローに従うための追加の手順です。
+
+### <a name="data-collection-map-required-steps"></a>データ収集マップで必要な手順
+| サービス名 | データ要素 | トラブルシューティングの手順 |
+| --- | --- | --- | 
+| Connect Health for AD FS | PerfCounter、TestResult | - [Azure サービス エンドポイントに対する送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [送信トラフィックの SSL 検査のフィルタリングまたは無効化](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [エージェントを実行するサーバー上のファイアウォール ポート](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [IE のセキュリティ強化が有効な場合の指定 Web サイトの許可](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
+|  | Adfs-UsageMetrics | IP アドレスに基づく送信接続、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページを参照してください。 | 
+| Connect Health for Sync | PerfCounter | - [Azure サービス エンドポイントに対する送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [送信トラフィックの SSL 検査のフィルタリングまたは無効化](https://technet.microsoft.com/library/ee796230.aspx) <br /> - [エージェントを実行するサーバー上のファイアウォール ポート](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [IE のセキュリティ強化が有効な場合の指定 Web サイトの許可](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
+|  | AadSyncService-SynchronizationRules、 <br /> AadSyncService-Connectors、 <br /> AadSyncService-GlobalConfigurations、 <br /> AadSyncService-RunProfileResults、 <br /> AadSyncService-ServiceConfigurations、 <br /> AadSyncService-ServiceStatus | - IP アドレスに基づく送信接続、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページを参照してください。 <br /> - [Azure サービス エンドポイントに対する送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [エージェントを実行するサーバー上のファイアウォール ポート](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) | 
+| Connect Health for ADDS  | PerfCounter、Adds-TopologyInfo-Json、Common-TestData-Json | - [Azure サービス エンドポイントに対する送信接続](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> - [送信トラフィックの SSL 検査のフィルタリングまたは無効化](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [エージェントを実行するサーバー上のファイアウォール ポート](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [IE のセキュリティ強化が有効な場合の指定 Web サイトの許可](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) <br />  - IP アドレスに基づく送信接続、[Azure の IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)に関するページを参照してください。  |
+
+
 
 
 ## <a name="next-steps"></a>次の手順

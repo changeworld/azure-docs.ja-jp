@@ -4,22 +4,22 @@ description: Azure Active Directory と Adaptive Insights の間でシングル 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: 13af9d00-116a-41b8-8ca0-4870b31e224c
 ms.service: active-directory
-ms.component: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2018
+ms.date: 10/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 307c3cf258a74d1ddfb409f0d5b22d9e1fd6bf4b
-ms.sourcegitcommit: 16ddc345abd6e10a7a3714f12780958f60d339b6
+ms.openlocfilehash: 74f38ef3043cfa0e6df40c264b72cc5eae38544e
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36213823"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430291"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adaptive-insights"></a>チュートリアル: Azure Active Directory と Adaptive Insights の統合
 
@@ -27,9 +27,9 @@ ms.locfileid: "36213823"
 
 Adaptive Insights と Azure AD の統合には、次の利点があります。
 
-- Adaptive Insights にアクセスするユーザーを Azure AD で管理できます
-- ユーザーが自分の Azure AD アカウントで Adaptive Insights に自動的にサインオン (シングル サインオン) できるように設定できます
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
+- Adaptive Insights にアクセスするユーザーを Azure AD で管理できます。
+- ユーザーが自分の Azure AD アカウントで Adaptive Insights に自動的にサインオン (シングル サインオン) できるように設定できます。
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)」をご覧ください。
 
@@ -61,50 +61,55 @@ Azure AD への Adaptive Insights の統合を構成するには、ギャラリ�
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-    ![Active Directory][1]
+    ![image](./media/adaptivesuite-tutorial/selectazuread.png)
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![[アプリケーション]][2]
-
+    ![image](./media/adaptivesuite-tutorial/a_select_app.png)
+    
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![[アプリケーション]][3]
+    ![image](./media/adaptivesuite-tutorial/a_new_app.png)
 
 4. 検索ボックスに「**Adaptive Insights**」と入力し、結果パネルで **Adaptive Insights** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_addfromgallery.png)
+     ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
+
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Adaptive Insights で Azure AD のシングル サインオンを構成し、テストします。
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する Adaptive Insights ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Adaptive Insights の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
 Adaptive Insights で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Adaptive Insights テスト ユーザーの作成](#creating-an-adaptive-insights-test-user)** - Adaptive Insights で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Adaptive Insights テスト ユーザーの作成](#create-an-adaptive-insights-test-user)** - Adaptive Insights で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure portal で Azure AD のシングル サインオンを有効にし、Adaptive Insights アプリケーションでシングル サインオンを構成します。
 
 **Adaptive Insights で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure portal の **Adaptive Insights** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. [Azure portal](https://portal.azure.com/) の **Adaptive Insights** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
-    ![[Configure Single Sign-On]][4]
+    ![image](./media/adaptivesuite-tutorial/B1_B2_Select_SSO.png)
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. **[シングル サインオン方式の選択]** ダイアログで、**[SAML]** モードを選択して、シングル サインオンを有効にします。
 
-    ![[Configure Single Sign-On]](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_samlbase.png)
+    ![image](./media/adaptivesuite-tutorial/b1_b2_saml_sso.png)
 
-3. **[Adaptive Insights のドメインと URL]** セクションで、次の手順を実行します。
+3. **[SAML でシングル サインオンをセットアップします]** ページで、**[編集]** ボタンをクリックして **[基本的な SAML 構成]** ダイアログを開きます。
 
-    ![[Configure Single Sign-On]](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
+    ![image](./media/adaptivesuite-tutorial/b1-domains_and_urlsedit.png)
+
+4. **[基本的な SAML 構成]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+
+    ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_url.png)
 
     a. **[識別子 (エンティティ ID)]** ボックスに、次のパターンで URL を入力します。`https://login.adaptiveinsights.com:443/samlsso/<unique-id>`
 
@@ -112,18 +117,22 @@ Adaptive Insights で Azure AD のシングル サインオンを構成してテ
 
     >[!NOTE]
     > [識別子 (エンティティ ID)] と [応答 URL] の値は、Adaptive Insights の **[SAML SSO 設定]** ページから取得できます。
+ 
+5. **[Set up Single Sign-On with SAML]\(SAML でのシングル サインオンの設定\)** ページの **[SAML Signing Certificate]\(SAML 署名証明書\)** セクションで、**[Download]\(ダウンロード\)** をクリックして**証明書(Base64)** をダウンロードして、コンピューターに保存します。
 
-4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+    ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_certficate.png) 
 
-    ![[Configure Single Sign-On]](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_certificate.png)
+6. **[Set up Adaptive Insights]\(Adaptive Insights の設定\)** セクションで、要件どおりの適切な URL をコピーします。
 
-5. **[保存]** ボタンをクリックします。
+    URL は次のように表示されている場合があることに注意してください。
 
-    ![[Configure Single Sign-On]](./media/adaptivesuite-tutorial/tutorial_general_400.png)
+    a. ログイン URL
 
-6. **[Adaptive Insights 構成]** セクションで、**[Adaptive Insights の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
+    b. Azure AD 識別子
 
-    ![[Configure Single Sign-On]](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_configure.png) 
+    c. ログアウト URL
+
+    ![image](./media/adaptivesuite-tutorial/d1_samlsonfigure.png) 
 
 7. 別の Web ブラウザー ウィンドウで、Adaptive Insights 企業サイトに管理者としてログインします。
 
@@ -141,11 +150,11 @@ Adaptive Insights で Azure AD のシングル サインオンを構成してテ
 
     a. **[ID プロバイダー名]** テキスト ボックスに、構成の名前を入力します。
 
-    b. Azure ポータルからコピーした **SAML エンティティ ID** を **[Identity provider entity ID]\(ID プロバイダーのエンティティ ID\)** ボックスに貼り付けます。
+    b. Azure portal からコピーした **Azure AD 識別子**の値を **[Identity provider entity ID]\(ID プロバイダーのエンティティ ID\)** ボックスに貼り付けます。
 
-    c. Azure ポータルからコピーした **SAML シングル サインオン サービス URL** を **[Identity provider SSO URL]\(ID プロバイダーの SSO URL\)** ボックスに貼り付けます。
+    c. Azure portal からコピーした**ログイン URL** の値を **[Identity provider SSO URL]\(ID プロバイダーの SSO URL\)** ボックスに貼り付けます。
 
-    d. Azure ポータルからコピーした **SAML シングル サインオン サービス URL** を **[Custom logout URL]\(カスタム ログアウト URL\)** ボックスに貼り付けます。
+    d. Azure portal からコピーした**ログアウト URL** の値を **[Custom logout URL]\(カスタム ログアウト URL\)** ボックスに貼り付けます。
 
     e. ダウンロードした証明書をアップロードするには、 **[ファイルの選択]** をクリックします。
 
@@ -163,38 +172,32 @@ Adaptive Insights で Azure AD のシングル サインオンを構成してテ
 
     h. **[Save]** をクリックします。
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][100]
+1. Azure portal の左側のウィンドウで、**[Azure Active Directory]**、**[ユーザー]**、**[すべてのユーザー]** の順に選択します。
 
-**Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
+    ![image](./media/adaptivesuite-tutorial/d_users_and_groups.png)
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+2. 画面の上部にある **[新しいユーザー]** を選択します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/adaptivesuite-tutorial/create_aaduser_01.png) 
+    ![image](./media/adaptivesuite-tutorial/d_adduser.png)
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
+3. [ユーザーのプロパティ] で、次の手順を実行します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/adaptivesuite-tutorial/create_aaduser_02.png) 
+    ![image](./media/adaptivesuite-tutorial/d_userproperties.png)
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
+    a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
+  
+    b. **[ユーザー名]** フィールドに **brittasimon@yourcompanydomain.extension** と入力します  
+    たとえば、BrittaSimon@contoso.com のように指定します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/adaptivesuite-tutorial/create_aaduser_03.png) 
+    c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
-
-    ![Azure AD のテスト ユーザーの作成](./media/adaptivesuite-tutorial/create_aaduser_04.png)
-
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
-
-    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
-
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
-
-    d. **Create** をクリックしてください。
-
-### <a name="creating-an-adaptive-insights-test-user"></a>Adaptive Insights テスト ユーザーの作成
+    d. **作成**を選択します。
+ 
+### <a name="create-an-adaptive-insights-test-user"></a>Adaptive Insights テスト ユーザーの作成
 
 Azure AD ユーザーが Adaptive Insights にログインできるようにするには、ユーザーを Adaptive Insights にプロビジョニングする必要があります。 Adaptive Insights の場合、プロビジョニングは手動で行います。
 
@@ -204,9 +207,11 @@ Azure AD ユーザーが Adaptive Insights にログインできるようにす�
 2. **[Admin]** に移動します。
 
    ![管理者](./media/adaptivesuite-tutorial/IC805644.png "Admin")
+
 3. **[ユーザーとロール]** セクションで **[ユーザーの追加]** をクリックします。
 
    ![ユーザーの追加](./media/adaptivesuite-tutorial/IC805648.png "Add User")
+   
 4. **[新しいユーザー]** セクションで、次の手順に従います。
 
    ![送信](./media/adaptivesuite-tutorial/IC805649.png "Submit")
@@ -221,57 +226,38 @@ Azure AD ユーザーが Adaptive Insights にログインできるようにす�
 >他の Adaptive Insights ユーザー アカウント作成ツールまたは Adaptive Insights から提供されている API を使用して、AAD ユーザー アカウントをプロビジョニングできます。
 >
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Adaptive Insights へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザーの割り当て][200]
+1. Azure portal で **[エンタープライズ アプリケーション]** を選択し、**[すべてのアプリケーション]** を選択します。
 
-**Adaptive Insights に Britta Simon を割り当てるには、次の手順に従います。**
-
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
-
-    ![ユーザーの割り当て][201]
+    ![image](./media/adaptivesuite-tutorial/d_all_applications.png)
 
 2. アプリケーションの一覧で **[Adaptive Insights]** を選択します。
 
-    ![[Configure Single Sign-On]](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_app.png)
+    ![image](./media/adaptivesuite-tutorial/tutorial_adaptivesuite_app.png)
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
-    ![ユーザーの割り当て][202]
+    ![image](./media/adaptivesuite-tutorial/d_leftpaneusers.png)
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[追加]** ボタンを選択し、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![ユーザーの割り当て][203]
+    ![image](./media/adaptivesuite-tutorial/d_assign_user.png)
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+4. **[ユーザーとグループ]** ダイアログの [ユーザー] の一覧で **Britta Simon** を選択し、画面の下部にある **[選択]** ボタンをクリックします。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+5. **[割り当ての追加]** ダイアログで、**[割り当て]** ボタンを選択します。
+    
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
-
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
-
-このセクションの目的は、アクセス パネルを使用して Microsoft Azure AD のシングル サインオン構成をテストすることです。
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
 アクセス パネルで [Adaptive Insights] タイルをクリックすると、自動的に Adaptive Insights アプリケーションにサインオンします。
+アクセス パネルの詳細については、[アクセス パネルの概要](../active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](../manage-apps/what-is-single-sign-on.md)
-
-<!--Image references-->
-
-[1]: ./media/adaptivesuite-tutorial/tutorial_general_01.png
-[2]: ./media/adaptivesuite-tutorial/tutorial_general_02.png
-[3]: ./media/adaptivesuite-tutorial/tutorial_general_03.png
-[4]: ./media/adaptivesuite-tutorial/tutorial_general_04.png
-
-[100]: ./media/adaptivesuite-tutorial/tutorial_general_100.png
-
-[200]: ./media/adaptivesuite-tutorial/tutorial_general_200.png
-[201]: ./media/adaptivesuite-tutorial/tutorial_general_201.png
-[202]: ./media/adaptivesuite-tutorial/tutorial_general_202.png
-[203]: ./media/adaptivesuite-tutorial/tutorial_general_203.png

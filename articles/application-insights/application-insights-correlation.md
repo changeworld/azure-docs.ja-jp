@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/09/2018
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 696843363bc6617bb11c01cdccb9dbbb7b719a82
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d9b6f5c08eed5efceafc71feaf654ad8f4fcafa0
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298202"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49341125"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -105,17 +105,19 @@ public void ConfigureServices(IServiceCollection services)
 
 ## <a name="open-tracing-and-application-insights"></a>Open Tracing と Application Insights
 
-[Open Tracing](http://opentracing.io/) データ モデルと Application Insights データ モデルの対比 
+[Open Tracing データ モデルの仕様](http://opentracing.io/)と Application Insights データ モデルは、次のようにマッピングされます。
 
-- `request``pageView` は、`span.kind = server` を使用して **Span** にマップします
-- `dependency`は、`span.kind = client`を使用して **Span** にマップします
-- `request` と `dependency` の `id` は **Span.Id** にマップします
-- `operation_Id` は **TraceId** にマップします
-- `operation_ParentId` は `ChildOf` 型の **Reference** にマップします
+| Application Insights                  | Open Tracing                                      |
+|------------------------------------   |-------------------------------------------------  |
+| `Request`、`PageView`                 | `span.kind = server` を含む `Span`                  |
+| `Dependency`                          | `span.kind = client` を含む `Span`                  |
+| `Request` と `Dependency` の `Id`    | `SpanId`                                          |
+| `Operation_Id`                        | `TraceId`                                         |
+| `Operation_ParentId`                  | タイプ `ChildOf` の `Reference` (親スパン)   |
 
-Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。
+Application Insights データ モデルの詳細については、[データ モデル](application-insights-data-model.md)に関するページを参照してください。 
 
-Open Tracing の概念の定義については、[仕様](https://github.com/opentracing/specification/blob/master/specification.md) と [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) に関するページを参照してください。
+Open Tracing の概念の定義については、Open Tracing の[仕様](https://github.com/opentracing/specification/blob/master/specification.md)と [semantic_conventions](https://github.com/opentracing/specification/blob/master/semantic_conventions.md) に関するページを参照してください。
 
 
 ## <a name="telemetry-correlation-in-net"></a>.NET におけるテレメトリの相関付け

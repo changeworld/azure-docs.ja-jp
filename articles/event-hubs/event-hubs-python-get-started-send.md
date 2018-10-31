@@ -7,34 +7,33 @@ manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 10/16/2018
 ms.author: sethm
-ms.openlocfilehash: 762e21cfc7d16b614eb637c569f8bfc5b6115db1
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: bb77ed69ae8f2229cbd62afa545cac9f048689e8
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703526"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458005"
 ---
 # <a name="send-events-to-event-hubs-using-python"></a>Python を使用して Event Hubs にイベントを送信する
 
-Azure Event Hubs は、拡張性の高いイベント管理システムで、1 秒あたり何百万ものイベントを処理することができます。そのためアプリケーションは、接続されているデバイスや他のシステムによって生成された大量のデータを処理し、分析できます。 イベント ハブに収集されたイベントは、インプロセス ハンドラーを使用するか、他の分析システムに転送して、受信し処理することができます。
+Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 
-Event Hubs の詳細については、[Event Hubs の概要][Event Hubs overview]に関する記事を参照してください。
+このチュートリアルでは、Python で記述されたアプリケーションからイベント ハブにイベントを送信する方法について説明します。 
 
-このチュートリアルでは、Python で記述されたアプリケーションからイベント ハブにイベントを送信する方法について説明します。 イベントの受信については、[対応する受信の記事](event-hubs-python-get-started-receive.md)を参照してください。
-
-このチュートリアルのコードは、[これらの GitHub サンプル](https://github.com/Azure/azure-event-hubs-python/tree/master/examples)から取得されたもので、import ステートメントや変数の宣言など、アプリケーションが完全に機能するかを確認することができます。 その他の例については、同じ GitHub フォルダーから入手できます。
+> [!NOTE]
+> このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
 - Python 3.4 以降。
-- 既存の Azure Event Hubs 名前空間とイベント ハブ。 これらのエンティティは、[こちらの記事](event-hubs-create.md)の手順に従って作成できます。 
 
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
+最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順を実行した後、このチュートリアルに示されている手順に進みます。
 
 ## <a name="install-python-package"></a>Python パッケージのインストール
 
@@ -98,23 +97,18 @@ except KeyboardInterrupt:
     pass
 ```
 
-## <a name="send-events"></a>送信イベント
+## <a name="run-application-to-send-events"></a>アプリケーションを実行してイベントを送信する
 
 スクリプトを実行するには、Python をパス設定した状態でコマンド プロンプトを開き、次のコマンドを実行します。
 
 ```bash
 start python send.py
 ```
+
+お疲れさまでした。 メッセージをイベント ハブに送信しました。
  
 ## <a name="next-steps"></a>次の手順
-
-Python を使ってイベント ハブにイベントを送信したら、今度はイベントを受信してみましょう。[対応する受信の記事](event-hubs-python-get-started-receive.md)を参照してください。
-
-Event Hubs の詳細については、次のページを参照してください。
-
-* [Event Hubs の概要][Event Hubs overview]
-* [イベント ハブの作成](event-hubs-create.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+このクイック スタートでは、Python を使用してメッセージをイベント ハブに送信しました。 Python を使用してイベント ハブからイベントを受信する方法については、[Python を使用してイベント ハブからイベントを受信する方法](event-hubs-python-get-started-receive.md)に関するページをご覧ください。
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md

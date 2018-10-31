@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: e42601646474ba986e75632af41d500e18b64021
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: fb428e63be54688744bcdb022ba276a957f8aee1
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393900"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648772"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Services (AKS) における Kubernetes の中心概念
 
-アプリケーション開発がコンテナーベースの手法に移行してきているので、相互に接続されたリソースを調整して管理するというニーズが重要になっています。 Kubernetes は、フォールト トレラント アプリケーションワークロードの信頼性の高いスケジュール機能を提供する主要プラットフォームです。 Azure Kubernetes Service (AKS) は、コンテナーベースのアプリケーション開発と管理をさらに簡素化するマネージド Kubernetes のオファリングです。
+アプリケーション開発がコンテナーベースの手法に移行してきているため、相互に接続されたリソースを調整して管理するというニーズが重要になっています。 Kubernetes は、フォールト トレラント アプリケーションワークロードの信頼性の高いスケジュール機能を提供する主要プラットフォームです。 Azure Kubernetes Service (AKS) は、コンテナーベースのアプリケーション開発と管理をさらに簡素化するマネージド Kubernetes のオファリングです。
 
 この記事では、*クラスター マスター*、*ノード*、および*ノード プール*など、主要な Kubernetes インフラストラクチャ コンポーネントを紹介します。 また、*プール*、*デプロイ*、および*セット*などのワークロード リソースと、リソースを*名前空間*にグループ化する方法も紹介します。
 

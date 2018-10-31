@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5931958d17ea119e58c066a78a44169be2b9f451
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 7d7de02c96b9a17144b446b9ed86ebcbacd51162
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627527"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025007"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Azure AD のパスワード管理に関するレポート オプション
 
@@ -23,7 +23,7 @@ ms.locfileid: "39627527"
 
 ![レポート][Reporting]
 
-次の質問に対する答えは、[Azure Portal] (https://portal.azure.com/):) に用意されているレポートから得られます。
+次の質問に対する答えは、[Azure portal](https://portal.azure.com/) に用意されているレポートから得られます。
 
 > [!NOTE]
 > ユーザーは[グローバル管理者](../users-groups-roles/directory-assign-admin-roles.md)であること、および組織の代表としてこのデータを収集できるようにオプトインすることが必要です。 オプトインするには、**[レポート]** タブまたは監査ログに少なくとも 1 回アクセスする必要があります。 それまでは、ご自分の組織のデータが収集されることはありません。
@@ -180,7 +180,7 @@ Azure Portal エクスペリエンスでは、パスワード リセットおよ
 * [パスワードのリセットと変更。](../user-help/active-directory-passwords-update-your-own-password.md)
 * [セルフサービスによるパスワード リセットの登録。](../user-help/active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](concept-sspr-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ](howto-sspr-authenticationdata.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](howto-sspr-authenticationdata.md)
 * [ユーザーが使用できる認証方法](concept-sspr-howitworks.md#authentication-methods)
 * [SSPR のポリシー オプション](concept-sspr-policy.md)
 * [パスワード ライトバックの概要とその必要性](howto-sspr-writeback.md)

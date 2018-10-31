@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9fd06a8680a52ac0002f20da88d563ad1cbdb79a
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 845bc46ec56bfd6681c4fb318a57de19f66c0edf
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041341"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403873"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Log Analytics VM 拡張機能のトラブルシューティング
 この記事では、Microsoft Azure で実行されている Windows および Linux 仮想マシンの Log Analytics VM 拡張機能で発生する可能性のあるエラーのトラブルシューティングを支援し、それらの問題について考えられる解決策を提案します。
@@ -61,16 +61,17 @@ ms.locfileid: "48041341"
 詳細については、[Windows 拡張機能のトラブルシューティング](../virtual-machines/windows/extensions-oms.md)に関するページをご覧ください。
 
 ## <a name="troubleshooting-linux-vm-extension"></a>Linux VM 拡張機能のトラブルシューティング
-*OMS エージェント for Linux* VM 拡張機能のインストールまたはレポートが正しく機能しない場合は、以下の手順で問題のトラブルシューティングを行ってください。
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+*Linux 用 Log Analytics エージェント*の VM 拡張機能のインストールまたはレポートが正しく機能しない場合は、以下の手順で問題のトラブルシューティングを行ってください。
 
 1. 拡張機能の状態が "*不明*" になっている場合は、Azure VM エージェントがインストールされて正常に動作しているかどうかを VM エージェントのログ ファイル (`/var/log/waagent.log`) で確認してください。
    * ログが存在しない場合、VM エージェントがインストールされていません。
    * [Linux VM に Azure VM エージェントをインストールします。](log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. それ以外の異常な状態については、OMS Agent for Linux VM 拡張機能のログ ファイル (`/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` および `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`) を確認してください。
-3. 拡張機能が正常な状態であるにもかかわらず、データがアップロードされない場合は、OMS Agent for Linux のログ ファイル (`/var/opt/microsoft/omsagent/log/omsagent.log`) を確認してください。
+2. それ以外の異常な状態については、Linux 用 Log Analytics エージェントの VM 拡張機能のログ ファイル (`/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` および `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`) を確認してください。
+3. 拡張機能が正常な状態であるにもかかわらず、データがアップロードされない場合は、Linux 用 Log Analytics エージェントのログ ファイル (`/var/opt/microsoft/omsagent/log/omsagent.log`) を確認してください。
 
 詳細については、[Linux 拡張機能のトラブルシューティング](../virtual-machines/linux/extensions-oms.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure の外部のコンピューターにホストされている OMS エージェント for Linux に関連する追加のトラブルシューティング ガイダンスについては、[Azure Log Analytics Linux エージェントのトラブルシューティング](log-analytics-agent-linux-support.md)に関する記事をご覧ください。  
+Azure の外部のコンピューターにホストされている Linux 用 Log Analytics エージェントに関連する追加のトラブルシューティング ガイダンスについては、[Azure Log Analytics Linux エージェントのトラブルシューティング](log-analytics-agent-linux-support.md)に関する記事をご覧ください。  

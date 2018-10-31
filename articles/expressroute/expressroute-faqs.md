@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 101dec93713983e5f2082a59103288fcda346740
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 6b4cce641556a290111db530c0089e4da0a351c8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419306"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958430"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -246,7 +246,7 @@ REST API や PowerShell コマンドレットを使用して、ExpressRoute 回�
 ExpressRoute Premium は、次の機能のコレクションです。
 
 * プライベート ピアリング用ルートの上限が 4,000 から 10,000 に増加されたルーティング テーブル。
-* ExpressRoute 回線に接続できる数が増加された VNET (既定は 10)。 詳しくは、「[ExpressRoute の制限](#limits)」の表をご覧ください。
+* ExpressRoute 回路で有効にできる VNet と ExpressRoute Global Reach の接続数の増加 (既定は 10)。 詳しくは、「[ExpressRoute の制限](#limits)」の表をご覧ください。
 * Office 365 や Dynamics 365 への接続。
 * Microsoft のコア ネットワーク経由のグローバル接続。 ある地理的リージョンにある VNET を別のリージョン内の ExpressRoute 回線に接続できるようになりました。<br>
     **例:**
@@ -255,9 +255,9 @@ ExpressRoute Premium は、次の機能のコレクションです。
     *  Microsoft ピアリングで、他の地理的リージョンのプレフィックスがアドバタイズされ、たとえばシリコン バレーの回線から西ヨーロッパの SQL Azure に接続できるようになります。
 
 
-### <a name="limits"></a>ExpressRoute Premium を有効にすると、どれくらいの VNET を ExpressRoute 回線に接続できますか。
+### <a name="limits"></a>ExpressRoute プレミアムを有効にした場合、ExpressRoute 回路で有効にできる VNet と ExpressRoute Global Reach の接続数はいくつですか。
 
-次の表は、ExpressRoute の制限と、ExpressRoute 回線ごとの VNet の数を示しています。
+次の表に、ExpressRoute の上限と、ExpressRoute 回線ごとの VNet と ExpressRoute Global Reach の数を示します。
 
 [!INCLUDE [ExpressRoute limits](../../includes/expressroute-limits.md)]
 

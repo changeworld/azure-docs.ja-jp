@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: ae2fab560ca9579860aeba91f9322c6521a83de1
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 1465ba23f6fed85f0d4164f8e3fdc8c38be43ad3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167765"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427735"
 ---
 # <a name="how-to-enable-password-reset-from-windows-7-8-and-81"></a>方法: Windows 7、8、8.1 からパスワードのリセットを有効にする
 
@@ -76,6 +76,8 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\Credential Provide
 
 * 詳細ログ記録を有効にするには、REG_DWORD: "EnableLogging" を作成して 1 に設定します。
 * 詳細ログ記録を無効にするには、REG_DWORD "EnableLogging" を 0 に変更します。
+
+お使いの Windows 7、8、および 8.1 コンピューターがプロキシ サーバーまたはファイアウォールの内側にある場合は、passwordreset.microsoftonline.com への HTTPS トラフィック (443) を許可する必要があります。
 
 ## <a name="next-steps"></a>次の手順
 

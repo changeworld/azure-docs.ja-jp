@@ -5,20 +5,22 @@ author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: arduppal
-ms.date: 09/20/2018
+ms.date: 10/03/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b9e48eba4b46f024b056fe53b3b3df24feec802e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4b86f73302d9f5d07cd1e6e8c7801de56a988cc7
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995671"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955288"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>IoT Edge 上の Azure Blob Storage を使用してエッジにデータを格納する (プレビュー)
 
-IoT Edge 上の Azure Blog Storage では、エッジでブロック BLOB ストレージのソリューションが提供されます。 ご利用の IoT Edge デバイス上の BLOB ストレージ モジュールは Azure Blob service のように動作しますが、ブロック BLOB はご利用の IoT Edge デバイス上でローカルに格納されます。 同じ Azure Storage SDK メソッドまたは既に慣れているブロック BLOB API 呼び出しを使用して、ご自分の BLOB にアクセスできます。 
+IoT Edge の Azure Blob Storage では、エッジで[ブロック BLOB](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-block-blobs) ストレージのソリューションが提供されます。 ご利用の IoT Edge デバイス上の BLOB ストレージ モジュールは Azure のブロック BLOB サービスのように動作しますが、そのブロック BLOB はご利用の IoT Edge デバイス上でローカルに格納されます。 同じ Azure Storage SDK メソッドまたは既に慣れているブロック BLOB API 呼び出しを使用して、ご自分の BLOB にアクセスできます。 
+
+ビデオ、画像、財務データ、病院データなど、ローカルに格納する必要があるデータで、後でローカルで処理またはクラウドに転送できるシナリオは、このモジュールを使用するよい例です。
 
 この記事では、ご利用の IoT Edge デバイス上で Blob service を実行する IoT Edge コンテナーに Azure Blob Storage をデプロイするための手順を示します。 
 
@@ -48,21 +50,33 @@ Azure IoT Edge デバイス:
 
 ## <a name="deploy-blob-storage-to-your-device"></a>BLOB ストレージをご利用のデバイスにデプロイする
 
-IoT Edge の Azure Blob Storage では、3 つの標準コンテナー イメージが提供されます。Linux コンテナーに 2 つ (AMD64 アーキテクチャと ARM32 アーキテクチャ) と Windows コンテナーに 1 つ (AMD64) です。 これらのモジュール イメージのいずれかを使用して、BLOB ストレージをご利用の IoT Edge デバイスにデプロイする場合、次の 3 つの情報を指定して、ご利用のデバイスにモジュール インスタンスを構成します。
-
-* **アカウント名**と**アカウント キー**。 Azure Storage と一貫性を保持するために、BLOB ストレージ モジュールではアカウント名とアカウント キーを使用してアクセスを管理します。 アカウント名は、小文字と数字の 3 文字から 24 文字の長さにする必要があります。 アカウント キーは、Base64 でエンコードされ、64 バイトの長さにする必要があります。 [GeneratePlus](https://generate.plus/en/base64) などのツールを使ってキーを生成できます。
-* **ローカル ストレージのオプション**。 BLOB ストレージ モジュールでは、IoT Edge デバイスでローカルに BLOB が格納されるため、モジュールが停止または再起動された場合に BLOB は保持されます。 BLOB がご利用のデバイスに格納される、既存の[ボリューム](https://docs.docker.com/storage/volumes
-)またはローカル フォルダーのパスを宣言します。 
-
 IoT Edge デバイスにモジュールをデプロイするにはいくつかの方法があり、これらすべてが IoT Edge モジュールの Azure Blob Storage で機能します。 2 つの最も簡単な方法では、Azure portal または Visual Studio Code テンプレートを使用します。 
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure portal から BLOB ストレージをデプロイするには、「[Azure Portal から Azure IoT Edge モジュールをデプロイする](how-to-deploy-modules-portal.md)」の手順に従います。 モジュールのデプロイに進む前に、イメージの URI をコピーして、ご利用のコンテナー オペレーティング システムに基づいてコンテナーの作成オプションを準備します。 デプロイの記事の「**配置マニフェストを構成する**」セクションでこれらの値を使用します。 
+#### <a name="find-the-module"></a>モジュールを見つける
 
-BLOB ストレージ モジュールにイメージの URI を指定します: **mcr.microsoft.com/azure-blob-storage**。 
-   
-**[コンテナーの作成オプション]** フィールドに次の JSON テンプレートを使用します。 ご自分のストレージ アカウント名、ストレージ アカウント キー、およびストレージ ディレクトリのバインドで JSON を構成します。  
+次の 2 つの方法のいずれかを選択して、BLOB ストレージ モジュールを見つけます。
+
+1. Azure portal で「Azure Blob Storage on IoT Edge」を検索します。 その検索結果の項目を**選択**します。
+2. Azure portal から Marketplace に移動し、[モノのインターネット (IoT)] をクリックします。 [IoT Edge モジュール] セクションで、[Azure Blob Storage on IoT Edge]\(IoT Edge の Azure Blob Storage\) を選択します。 その後 **[作成]** をクリックします。
+
+#### <a name="steps-to-deploy"></a>デプロイ手順
+
+**IoT Edge モジュールの対象デバイス**
+
+1. IoT Hub がデプロイされている [サブスクリプション] を選択します。
+2. 対象の [IoT Hub] を選択します。
+3. このモジュールをデプロイする [IoT Edge Device Name]\(IoT Edge デバイス名\) を指定します。 [Find Device]\(デバイスの検索\) を使用してデバイスの場所を探すこともできます。
+4. **Create** をクリックしてください。
+
+**モジュールの設定**
+
+1. [モジュールの追加] セクションの [デプロイ モジュール] で、そのモジュールが「AzureBlobStorageonIoTEdge」で始まる名前で一覧に既に表示されていることがわかります。 
+2. [デプロイ モジュール] の一覧からその BLOB ストレージ モジュールを**選択**します。 [IoT Edge Custom Modules]\(IoT Edge カスタム モジュール\) サイド パネルが開きます。
+3. **[名前]**: ここでモジュールの名前を変更できます
+4. **[イメージの URI]**: URI を **mcr.microsoft.com/azure-blob-storage:latest** に置き換えます
+5. **[コンテナーの作成オプション]**: 以下の JSON を自分の値で編集し、ポータル ページの JSON と置き換えます。
    
    ```json
    {
@@ -70,26 +84,34 @@ BLOB ストレージ モジュールにイメージの URI を指定します: *
            "LOCAL_STORAGE_ACCOUNT_NAME=<your storage account name>",
            "LOCAL_STORAGE_ACCOUNT_KEY=<your storage account key>"
        ],
-       "HostConfig":[
+       "HostConfig":{
            "Binds":[
                "<storage directory bind>"
            ],
            "PortBindings":{
                "11002/tcp":[{"HostPort":"11002"}]
            }
-       ]
+       }
    }
    ```   
    
-作成オプションの JSON で、`\<your storage account name\>` を任意の名前に更新します。 `\<your storage account key\>` を 64 バイトの Base64 キーに更新します。 バイト長を選択できる [GeneratePlus](https://generate.plus/en/base64) などのツールを使用して、キーを生成できます。 他のモジュールから BLOB ストレージにアクセスするには、これらの資格情報を使用します。
+    * `<your storage account name>` を更新します。 アカウント名は、小文字と数字の 3 文字から 24 文字の長さにする必要があります。
+    * `<your storage account key>` を 64 バイトの Base64 キーに更新します。 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) などのツールを使ってキーを生成できます。 他のモジュールから BLOB ストレージにアクセスするには、これらの資格情報を使用します。
+    * `<storage directory bind>` を更新します。 コンテナーのオペレーティング システムによって異なります。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。  
 
-作成オプションの JSON で、ご利用のコンテナー オペレーティング システムに応じて `<storage directory bind>` を更新します。 そのデータを格納する BLOB モジュールが必要な[ボリューム](https://docs.docker.com/storage/volumes/)の名前またはご利用の IoT Edge デバイス上のディレクトリへの絶対パスを指定します。  
+       * Linux コンテナー: **\<ストレージのパス>:/blobroot**。 たとえば、/srv/containerdata:/blobroot です。 または、my-volume:/blobroot。 
+       * Windows コンテナー: **\<ストレージのパス>:C:/BlobRoot**。 たとえば、C:/ContainerData:C:/BlobRoot です。 または、my-volume:C:/blobroot。
+   
+   > [!CAUTION]
+   > **\<Storage directory bind>** の値 (Linux の場合は "/blobroot"、Windows の場合は "C:/BlobRoot") を変更しないでください。
 
-   * Linux コンテナー: **\<ストレージのパス>:/blobroot**。 たとえば、/srv/containerdata:/blobroot です。 または、my-volume:/blobroot。 
-   * Windows コンテナー: **\<ストレージのパス>:C:/BlobRoot**。 たとえば、C:/ContainerData:C:/BlobRoot です。 または、my-volume:C:/blobroot。 
+    ![モジュール値の更新](./media/how-to-store-data-blob/edit-module.png)
 
-
-IoT Edge の Azure Blob Storage にアクセスするためにレジストリの資格情報を指定する必要はありません。また、ご自分のデプロイに対して任意のルートを宣言する必要もありません。 
+6. [IoT Edge Custom Modules]\(IoT Edge カスタム モジュール\) の値を**保存**します。
+7. [モジュールの設定] セクションで **[次へ]** をクリックします。
+8. [ルートの指定] セクションで **[次へ]** をクリックします。
+9. 確認したら、[デプロイの確認] セクションで **[送信]** をクリックします。
+10. IoT Hub でデバイスが BLOB ストレージ モジュールを実行していることを確認します。 
 
 ### <a name="visual-studio-code-templates"></a>Visual Studio Code のテンプレート
 
@@ -111,7 +133,7 @@ Azure IoT Edge では、エッジ ソリューションの開発に役立つ、V
    
    4. **Provide a module name (モジュール名を指定)** - ご自分のモジュールに対して認識できる名前を入力します (**azureBlobStorage** など)。
    
-   5. **Provide Docker image for the module (モジュールに Docker イメージを指定)** - イメージの URI を指定します: **mcr.microsoft.com/azure-blob-storage**。
+   5. **[Provide Docker image for the module]\(モジュールに Docker イメージを指定してください\)** - イメージの URI を指定します: **mcr.microsoft.com/azure-blob-storage**
 
 VS Code は指定した情報を取り、IoT Edge ソリューションを作成して、それを新しいウィンドウに読み込みます。 
 
@@ -133,6 +155,9 @@ VS Code は指定した情報を取り、IoT Edge ソリューションを作成
 
    * Linux コンテナー: **\<ストレージのパス>:/blobroot**。 たとえば、/srv/containerdata:/blobroot です。 または、my-volume:/blobroot。
    * Windows コンテナー: **\<ストレージのパス>:C:/BlobRoot**。 たとえば、C:/ContainerData:C:/BlobRoot です。 または、my-volume:C:/blobroot。
+   
+   > [!CAUTION]
+   > **\<Storage directory bind>** の値 (Linux の場合は "/blobroot"、Windows の場合は "C:/BlobRoot") を変更しないでください。
 
 5. **deployment.template.json** を保存します。
 
@@ -145,7 +170,7 @@ VS Code は指定した情報を取り、IoT Edge ソリューションを作成
    STORAGE_ACCOUNT_KEY=
    ```
 
-8. ストレージ アカウント名に任意の名前を指定して、ストレージ アカウント キーに 64 バイトの Base64 キーを指定します。 [GeneratePlus](https://generate.plus/en/base64) などのツールを使ってキーを生成できます。 他のモジュールから BLOB ストレージにアクセスするには、これらの資格情報を使用します。 
+8. `STORAGE_ACCOUNT_NAME` の値を指定します。アカウント名は、小文字と数字の 3 文字から 24 文字の長さにする必要があります。 その後、`STORAGE_ACCOUNT_KEY` に 64 バイトの base64 キーを指定します。 [GeneratePlus](https://generate.plus/en/base64?gp_base64_base[length]=64) などのツールを使ってキーを生成できます。 他のモジュールから BLOB ストレージにアクセスするには、これらの資格情報を使用します。 
 
 9. **.env** を保存します。 
 
@@ -159,7 +184,13 @@ Visual Studio Code では、deployment.template.json と .env で指定した情
 
 作成する任意のストレージ要求に対する BLOB エンドポイントとして、ご利用の IoT Edge デバイスを指定します。 構成した IoT Edge デバイス情報とアカウント名を使用して、[明示的なストレージ エンドポイントへの接続文字列を作成](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint)できます。 
 
-IoT Edge 上の Azure Blob Storage 用の BLOB エンドポイントは、`http://<IoT Edge device hostname>:11002/<account name>` です。 
+1. "Azure Blob Storage on IoT Edge" が実行されている同じエッジ デバイスにデプロイされているモジュールの場合、BLOB エンドポイントは `http://<Module Name>:11002/<account name>` になります。 
+2. "Azure Blob Storage on IoT Edge" が実行されているエッジ デバイスとは別のエッジ デバイスにデプロイされているモジュールの場合、設定によって BLOB エンドポイントは `http://<device IP >:11002/<account name>`、`http://<IoT Edge device hostname>:11002/<account name>`、または `http://<FQDN>:11002/<account name>` になります。
+
+## <a name="logs"></a>ログ
+
+ログはコンテナー内の以下の場所に見つかります。 
+* Linux の場合: /blobroot/logs/platformblob.log
 
 ## <a name="deploy-multiple-instances"></a>複数のインスタンスのデプロイ
 
@@ -230,7 +261,7 @@ IoT Edge 上の BLOB ストレージ モジュールでは同じ Azure Storage S
 ### <a name="block-blobs"></a>ブロック blob
 
 サポート対象: 
-* ブロックの配置
+* ブロックの配置:- ブロックのサイズは 4 MB 以下にする必要があります。
 * ブロック一覧の配置と取得
 
 サポート外:

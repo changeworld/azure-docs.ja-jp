@@ -1,21 +1,21 @@
 ---
-title: Azure Event Hubs の IP 接続フィルター | Microsoft Docs
+title: Azure Event Hubs の IP フィルター | Microsoft Docs
 description: IP フィルター処理を使用して特定の IP アドレスから Azure Event Hubs への接続をブロックします。
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2018
-ms.author: shvija
-ms.openlocfilehash: 6d96eac3ecd249de3ba0da82eff95c45e45fa02d
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.date: 10/08/2018
+ms.author: spelluru
+ms.openlocfilehash: d0114821b5239146f64dde0b01652dc320994585
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746197"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408151"
 ---
 # <a name="use-ip-filters"></a>IP フィルターの使用
 
@@ -23,7 +23,7 @@ Azure Event Hubs が特定の既知のサイトからのみアクセスできる
 
 ## <a name="when-to-use"></a>いつ使用するか
 
-特定の IP アドレスの Event Hubs エンドポイントをブロックすると有用な 2 つの重要なユース ケースは次のとおりです。
+特定の IP アドレスの Event Hubs をブロックすると有用な 2 つの重要なユース ケースは次のとおりです。
 
 - イベント ハブが指定された範囲の IP アドレスからのトラフィックのみを受信し、それ以外のトラフィックをすべて拒否する必要がある場合。 たとえば、Event Hubs を [Azure Express Route][express-route] と共に使用して、オンプレミス インフラストラクチャへのプライベート接続を作成する場合が該当します。 
 - Event Hubs の管理者によって疑わしいと識別された IP アドレスからのトラフィックを拒否する必要がある場合。
@@ -47,9 +47,12 @@ IP フィルター規則は順に適用され、IP アドレスと一致する�
 > [!NOTE]
 > IP アドレスを拒否すると、他の Azure サービス (Azure Stream Analytics、Azure Virtual Machines、ポータルの Device Explorer など) が Event Hubs と対話できなくなる可能性があります。
 
-### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して仮想ネットワーク ルールを作成する
+### <a name="creating-an-ip-filter-rule-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して IP フィルター規則を作成する
 
-次の Resource Manager テンプレートでは、既存の Event Hubs 名前空間に仮想ネットワーク ルールを追加できます。
+> [!IMPORTANT]
+> 仮想ネットワークは、**Standard** レベルと **Dedicated** レベルの Event Hubs でサポートされます。 Basic レベルではサポートされません。 
+
+次の Resource Manager テンプレートでは、既存の Event Hubs 名前空間に IP フィルター規則を追加できます。
 
 テンプレート パラメーター:
 

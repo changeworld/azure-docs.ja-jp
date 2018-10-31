@@ -9,14 +9,14 @@ tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 01/26/2018
+ms.date: 10/25/2018
 ms.author: victorh
-ms.openlocfilehash: 7e8f06e2d1b489b79218514d8b115c389f057d56
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 0c59405cc6d46bcaffbab0e2a746467eec26de69
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056133"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024122"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
@@ -32,6 +32,8 @@ ms.locfileid: "39056133"
 > * パス ベースのルーティング規則の作成
 
 ![URL ルーティングの例](./media/create-url-route-portal/scenario.png)
+
+好みに応じて、[Azure CLI](tutorial-url-route-cli.md) または [Azure PowerShell](tutorial-url-route-powershell.md) を使ってこのチュートリアルの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

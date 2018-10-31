@@ -1,92 +1,136 @@
 ---
 title: FTP サーバーへの接続 - Azure Logic Apps | Microsoft Docs
 description: Azure Logic Apps を使用して FTP サーバー上のファイルを作成、監視、管理する
-author: ecfan
-manager: jeconnoc
-ms.author: estfan
-ms.date: 07/22/2016
-ms.topic: article
-ms.service: logic-apps
 services: logic-apps
-ms.reviewer: klam, LADocs
+ms.service: logic-apps
 ms.suite: integration
+author: ecfan
+ms.author: estfan
+ms.reviewer: klam, LADocs
+ms.topic: article
+ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: 4355a767d2ecd500662cdf4522e8a7e12de86b80
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: e72b7e5ac3c66283116925e8e36c1c33e777042c
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37866153"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318915"
 ---
-# <a name="get-started-with-the-ftp-connector"></a>FTP コネクタの使用
-FTP コネクタを使用して、FTP サーバー上のファイルを監視、管理、作成します。 
+# <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して FTP ファイルを作成、監視、および管理する
 
-[任意のコネクタ](apis-list.md)を使用するには、まずロジック アプリを作成する必要があります。 [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)から始めることができます。
+Azure Logic Apps と FTP コネクタを使用すると、FTP サーバー上のアカウント経由でファイルを作成、監視、送信、および受信する自動化されたタスクやワークフローを作成できます。その他、次のようなアクションを実行できます。
 
-## <a name="connect-to-ftp"></a>FTP に接続する
-ロジック アプリから任意のサービスにアクセスできるようにするには、まず、そのサービスへの*接続*を作成する必要があります。 [接続](connectors-overview.md)により、ロジック アプリと別のサービスとの接続が実現します。  
+* ファイルの追加または変更を監視します。
+* ファイルの取得、作成、コピー、更新、一覧、および削除を行います。
+* ファイルの内容とメタデータを取得します。
+* アーカイブをフォルダーに抽出します。
 
-### <a name="create-a-connection-to-ftp"></a>FTP への接続を作成する
-> [!INCLUDE [Steps to create a connection to FTP](../../includes/connectors-create-api-ftp.md)]
-> 
-> 
-
-## <a name="use-a-ftp-trigger"></a>FTP トリガーを使用する
-トリガーとは、ロジック アプリで定義されたワークフローの開始に使用できるイベントです。 トリガーの詳細については[こちら](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。  
-
-> [!IMPORTANT]
-> FTP コネクタを使用するには、インターネットからアクセスできる、パッシブ モードで動作するように構成されている FTP サーバーが必要です。 また、FTP コネクタは、**暗黙的 FTPS (FTP over SSL)** に対応していません。 FTP コネクタは、明示的 FTPS (FTP over SSL) のみをサポートしています。  
-> 
-> 
-
-この例では、FTP サーバー上でファイルが追加または変更されたときに、**[FTP - When a file is added or modified (FTP - ファイルが追加または変更されたとき)]** トリガーによりロジック アプリ ワークフローを開始する方法について説明します。 エンタープライズの例では、このトリガーを使用して、FTP フォルダーに顧客からの注文を表す新しいファイルがあるかどうかを監視できます。  次に、**[Get file content (ファイルの内容を取得する)]** などの FTP コネクタ アクションを使用して注文の内容を取得し、後続の処理や注文データベースへの格納を行うことができます。
-
-1. ロジック アプリ デザイナーの検索ボックスに「*ftp*」と入力し、**[FTP - When a file is added or modified (FTP - ファイルが追加または変更されたとき)]** トリガーを選択します。   
-   ![FTP トリガーの画像 1](./media/connectors-create-api-ftp/ftp-trigger-1.png)  
-   **[When a file is added or modified (ファイルが追加または変更されたとき)]** コントロールを開きます。  
-   ![FTP トリガーの画像 2](./media/connectors-create-api-ftp/ftp-trigger-2.png)  
-2. コントロールの右側にある **[...]** を選択します。 これによりフォルダー ピッカー コントロールが開きます。  
-   ![FTP トリガーの画像 3](./media/connectors-create-api-ftp/ftp-trigger-3.png)  
-3. **[>]** (右矢印) を選択し、新しいファイルや変更されたファイルを監視するフォルダーを参照します。 そのフォルダーを選択します。フォルダーが **[フォルダー]** コントロールに表示されます。  
-   ![FTP トリガーの画像 4](./media/connectors-create-api-ftp/ftp-trigger-4.png)   
-
-これで、特定の FTP フォルダーでファイルが変更または作成されたときにワークフローの他のトリガーおよびアクションの実行を開始するトリガーがロジック アプリに構成されました。 
+FTP サーバーからの応答を取得するトリガーを使用し、その出力を他のアクションから使用可能にすることができます。 ロジック アプリでアクションを使用して、FTP サーバー上のファイルに関するタスクを実行できます。 また、FTP アクションからの出力を他のアクションで使用するようにもできます。 たとえば、FTP サーバーから定期的にファイルを取得する場合は、Office 365 Outlook コネクタまたは Outlook.com コネクタを使用して、これらのファイルとその内容に関する電子メールを送信できます。 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」を参照してください。
 
 > [!NOTE]
-> ロジック アプリを機能させるためには、少なくとも 1 つのトリガーとアクションを含まなければなりません。 アクションを追加するには、次のセクションの手順に従います。  
-> 
-> 
+> FTP コネクタは、[大きなメッセージを処理するためのチャンク](../logic-apps/logic-apps-handle-large-messages.md)を使用しない限り、50 MB 以下のファイルのみをサポートします。 
+>
+> また、FTP コネクタは明示的 FTP over SSL (FTPS) のみをサポートし、暗黙的 FTPS とは互換性がありません。 
 
-## <a name="use-a-ftp-action"></a>FTP アクションを使用する
-アクションとは、ロジック アプリで定義されたワークフローによって実行される操作です。 アクションの詳細については[こちら](../logic-apps/logic-apps-overview.md#logic-app-concepts)を参照してください。  
+## <a name="prerequisites"></a>前提条件
 
-トリガーを追加した後は、次の手順に従って、トリガーによって検出された新しいファイルまたは変更されたファイルの内容を取得するアクションを追加します。    
+* Azure サブスクリプション。 Azure サブスクリプションがない場合は、<a href="https://azure.microsoft.com/free/" target="_blank">無料の Azure アカウントにサインアップ</a>してください。 
 
-1. **[+ 新しいステップ]** を選択して、FTP サーバー上のファイルの内容を取得するアクションを追加します。  
-2. **[アクションの追加]** のリンクを選択します。  
-   ![FTP アクションの画像 1](./media/connectors-create-api-ftp/ftp-action-1.png)  
-3. 「*FTP*」と入力して、FTP に関連するすべてのアクションを検索します。
-4. FTP フォルダーで新しいファイルまたは変更されたファイルが検出されたときに実行するアクションとして **[FTP - Get file content (FTP - ファイルの内容を取得する)]** を選択します。      
-   ![FTP アクションの画像 2](./media/connectors-create-api-ftp/ftp-action-2.png)  
-   **[Get file content (ファイルの内容を取得する)]** コントロールが開きます。 **注**: ロジック アプリによる FTP サーバー アカウントへのアクセスをまだ承認していない場合は、承認を求められます。  
-   ![FTP アクションの画像 3](./media/connectors-create-api-ftp/ftp-action-3.png)   
-5. **[ファイル]** コントロール (**[ファイル]*** の下にある空白) を選択します。 ここでは、FTP サーバーで検出された新しいファイルまたは変更されたファイルの各種プロパティを使用することができます。  
-6. **[File content (ファイルの内容)]** オプションを選択します。  
-   ![FTP アクションの画像 4](./media/connectors-create-api-ftp/ftp-action-4.png)   
-7. コントロールが更新され、FTP サーバー上の新しいファイルまたは変更されたファイルについて、**[FTP - Get file content (FTP - ファイルの内容を取得する)]** アクションによって "*ファイルの内容*" が取得されることが示されます。      
-   ![FTP アクションの画像 5](./media/connectors-create-api-ftp/ftp-action-5.png)     
-8. 作業内容を保存し、ファイルを FTP フォルダーに追加して、ワークフローをテストします。    
+* FTP ホスト サーバー アドレスとアカウントの資格情報
 
-これで、FTP サーバー上のフォルダーを監視し、FTP フォルダーで新しいファイルまたは変更されたファイルを検出したときにワークフローを開始するトリガーがロジック アプリに構成されました。 
+  FTP コネクタでは、FTP サーバーがインターネットからアクセス可能であり、かつ*パッシブ* モードで動作するように設定されている必要があります。 ロジック アプリが接続を作成し、FTP アカウントにアクセスすることが資格情報によって承認されます。
 
-このロジック アプリには、新しいファイルまたは変更されたファイルの内容を取得するアクションも構成されています。
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識
 
-この段階で、別のアクション (たとえば、新しいファイルまたは変更されたファイルの内容を SQL データベース テーブルに挿入する [[SQL Server - insert row (SQL Server - 行を挿入する)]](connectors-create-api-sqlazure.md) アクション) を追加することができます。  
+* FTP アカウントにアクセスするためのロジック アプリ。 FTP トリガーから開始するには、[空のロジック アプリを作成します](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 FTP アクションを使用するには、**[繰り返し]** トリガーなどの別のトリガーでロジック アプリを起動します。
 
-## <a name="connector-specific-details"></a>コネクタ固有の詳細
+## <a name="connect-to-ftp"></a>FTP に接続する
 
-[コネクタの詳細](/connectors/ftpconnector/)に関するページに、Swagger で定義されているトリガーとアクション、さらに制限が記載されています。 
+[!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
+
+1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
+
+1. 空のロジック アプリの場合は、検索ボックスに、フィルターとして「ftp」と入力します。 トリガーの一覧で、目的のトリガーを選択します。 
+
+   または
+
+   既存のロジック アプリの場合は、アクションを追加する最後のステップの下で **[新しいステップ]** を選択してから、**[アクションを追加する]** を選択します。 
+   検索ボックスに、フィルターとして「ftp」と入力します。 
+   アクションの一覧で、目的のアクションを選択します。
+
+   ステップの間にアクションを追加するには、ステップ間の矢印の上にポインターを移動します。 
+   表示されるプラス記号 (**+**) を選択し、**[アクションの追加]**  を選択します。
+
+1. 接続で必要な詳細を指定し、**[作成]** を選択します。
+
+1. 選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
+
+## <a name="examples"></a>例
+
+### <a name="ftp-trigger-when-a-file-is-added-or-modified"></a>FTP トリガー: [When a file is added or modified] (ファイルの追加または変更時)
+
+このトリガーは、FTP サーバー上でファイルがいつ追加または変更されたかを検出すると、ロジック アプリ ワークフローを開始します。 そのため、たとえばファイルの内容をチェックし、内容が特定の条件を満たしているかどうか基づいてその内容を取得するかどうかを決定する条件を追加できます。 最後に、ファイルの内容を取得するアクションを追加し、その内容を SFTP サーバー上のフォルダーに格納できます。 
+
+**企業での使用例**: このトリガーを使用して、FTP フォルダーに顧客の注文を表す新しいファイルがあるかどうかを監視できます。 その後、さらに処理を行うために注文の内容を取得し、その注文を注文データベースに格納できるように、**[ファイルの内容を取得する]** などの FTP アクションを使用できます。
+
+有効でかつ機能するロジック アプリには、1 つのトリガーと少なくとも 1 つのアクションが必要です。 そのため、トリガーを追加したら、必ずアクションを追加するようにしてください。
+
+トリガー **[When a file is added or modified] (ファイルの追加または変更時)** を示す例を次に示します。
+
+1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
+
+1. 空のロジック アプリの場合は、検索ボックスに、フィルターとして「ftp」と入力します。 トリガーの一覧で、トリガー **[When a filed is added or modified - FTP] (ファイルの追加または変更時 - FTP)** を選択します。
+
+   ![FTP トリガーを見つけて選択する](./media/connectors-create-api-ftp/select-ftp-trigger.png)  
+
+1. 接続で必要な詳細を指定し、**[作成]** を選択します。
+
+   ![FTP サーバーの接続を作成する](./media/connectors-create-api-ftp/create-ftp-connection-trigger.png)  
+
+1. **[フォルダー]** ボックスの横にあるフォルダー アイコンを選択すると、一覧が表示されます。 新しいファイルまたは編集されたファイルを監視するフォルダーを見つけるには、右向き矢印 (**>**) を選択し、そのフォルダーを参照して選択します。
+
+   ![監視するフォルダーを見つけて選択する](./media/connectors-create-api-ftp/select-folder.png)  
+
+   選択されたフォルダーが **[フォルダー]** ボックスに表示されます。
+
+   ![選択されたフォルダー](./media/connectors-create-api-ftp/selected-folder.png)  
+
+これで、ロジック アプリにトリガーが設定されたので、ロジック アプリが新しいファイルまたは編集されたファイルを見つけたときに実行するアクションを追加します。 この例の場合は、新しい内容または更新された内容を取得する FTP アクションを追加できます。
+
+### <a name="ftp-action-get-content"></a>FTP アクション: [Get content] (内容を取得する)
+
+このアクションは、ファイルが追加または更新されたときに FTP サーバー上のそのファイルの内容を取得します。 たとえば、前の例のトリガーと、ファイルが追加または編集された後にそのファイルの内容を取得するアクションを追加できます。 
+
+1. トリガーまたはその他の任意のアクションで、**[新しいステップ]** を選択します。 
+
+1. 検索ボックスに、フィルターとして「ftp」と入力します。 アクションの一覧で、アクション **[Get file content - FTP] (ファイルの内容を取得する - FTP)** を選択します。
+
+   ![FTP アクションを選択する](./media/connectors-create-api-ftp/select-ftp-action.png)  
+
+1. 既に FTP サーバーへの接続とアカウントがある場合は、次の手順に進みます。 それ以外の場合は、その接続に必要な詳細を指定し、**[作成]** を選択します。 
+
+   ![FTP サーバーの接続を作成する](./media/connectors-create-api-ftp/create-ftp-connection-action.png)
+
+1. **[ファイルの内容を取得する]** アクションが開いたら、**[ファイル]** ボックスの内部をクリックして動的コンテンツ リストを表示します。 これで、前の手順の出力のプロパティを選択できるようになります。 動的コンテンツ リストから、**[ファイル コンテンツ]** プロパティを選択します。ここには、追加または更新されたファイルの内容が含まれています。  
+
+   ![ファイルを見つけて選択する](./media/connectors-create-api-ftp/ftp-action-get-file-content.png)
+
+   **[ファイル コンテンツ]** プロパティが **[ファイル]** ボックスに表示されるようになります。
+
+   ![選択された [ファイル コンテンツ] プロパティ](./media/connectors-create-api-ftp/ftp-action-selected-file-content-property.png)
+
+1. ロジック アプリを保存し、 ワークフローをテストするには、ロジック アプリが現在監視しているファイルを FTP フォルダーに追加します。
+
+## <a name="connector-reference"></a>コネクタのレファレンス
+
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/ftpconnector/)を参照してください。
+
+## <a name="get-support"></a>サポートを受ける
+
+* 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
-[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
+* 他の[Logic Apps コネクタ](../connectors/apis-list.md)を確認します。

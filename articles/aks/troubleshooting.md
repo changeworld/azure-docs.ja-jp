@@ -7,19 +7,19 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 9f082c5f198ebd7123058bd250d3fef55494d553
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 1fd8f7c8499b7f9223939b8d426f274e79fd190e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43287541"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025347"
 ---
 # <a name="aks-troubleshooting"></a>AKS のトラブルシューティング
 AKS クラスターを作成および管理するとき、場合によっては問題が発生することがあります。 この記事では、お問い合わせの多い問題とトラブルシューティングの手順について詳しく説明します。
 
 ### <a name="in-general-where-do-i-find-information-about-debugging-kubernetes-issues"></a>通常、Kubernetes に関する問題のデバッグ情報はどこにありますか。
 
-Kubernetes クラスターのトラブルシューティングへの公式なリンクは[こちら](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/) です。
+Kubernetes クラスターのトラブルシューティングへの公式のリンクは[こちら](https://kubernetes.io/docs/tasks/debug-application-cluster/troubleshooting/)です。
 Microsoft のエンジニアによって公開された、ポッド、ノード、クラスターのトラブルシューティングに関するトラブルシューティング ガイドは[こちら](https://github.com/feiskyer/kubernetes-handbook/blob/master/en/troubleshooting/index.md)です。
 
 ### <a name="i-am-getting-a-quota-exceeded-error-during-create-or-upgrade-what-should-i-do"></a>作成またはアップグレード中にクォータを超過したというエラーが発生します。 どうすればよいですか。 

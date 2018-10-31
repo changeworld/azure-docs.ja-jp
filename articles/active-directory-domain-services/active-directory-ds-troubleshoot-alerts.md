@@ -12,15 +12,15 @@ ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 02/28/2018
+ms.topic: article
+ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 6be67a92c95ccf1161ffeeb636ee4f998c65fa05
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 0eb028e419f05843da308c824d79a8f4e1883fb2
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503691"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429747"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services - アラートのトラブルシューティング
 この記事では、マネージド ドメインで発生する可能性があるすべてのアラート向けのトラブルシューティング ガイドを提供します。
@@ -39,7 +39,7 @@ ms.locfileid: "39503691"
 | AADDS105 | *アプリケーション ID "d87dcbc6-a371-462e-88e3-28ad15ec4e64" のサービス プリンシパルは削除されましたが、その後再作成されました。The recreation leaves behind inconsistent permissions on Azure AD Domain Services resources needed to service your managed domain. (再作成により、マネージド ドメインのサービスに必要な Azure AD Domain Services リソースに整合性のないアクセス許可が残っています。)Synchronization of passwords on your managed domain could be affected. (マネージド ドメインでのパスワードの同期が影響を受ける可能性があります。)* | [パスワード同期アプリケーションが古い](active-directory-ds-troubleshoot-service-principals.md#alert-aadds105-password-synchronization-application-is-out-of-date) |
 | AADDS500 | "*マネージド ドメインが Azure AD と最後に同期されたのは [date] です。ユーザーがマネージド ドメインでサインインできない、またはグループ メンバーシップが Azure AD と同期されていない可能性があります。*" | [同期がしばらく行われていない](#aadds500-synchronization-has-not-completed-in-a-while) |
 | AADDS501 | "*マネージド ドメインが最後にバックアップされたのは [date] です。*" | [バックアップがしばらく行われていない](#aadds501-a-backup-has-not-been-taken-in-a-while) |
-| AADDS502 | *マネージド ドメインのセキュリティで保護された LDAP 証明は[日付] に有効期限が切れます。* | [セキュリティで保護された LDAP 証明書の期限切れ間近](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
+| AADDS502 | "*マネージド ドメインのセキュリティで保護された LDAP 証明は [日付] に有効期限が切れます。*" | [セキュリティで保護された LDAP 証明書の期限切れ間近](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
 | AADDS503 | "*マネージド ドメインは、ドメインに関連付けられている Azure サブスクリプションがアクティブでないため中断されます。*" | [無効にしたサブスクリプションが原因の中断](#aadds503-suspension-due-to-disabled-subscription) |
 | AADDS504 | "*マネージド ドメインは、無効な構成により中断されます。サービスは、マネージド ドメインのドメイン コントローラーの管理、パッチ適用、または更新を長い間行うことができませんでした。*" | [無効な構成が原因の中断](#aadds504-suspension-due-to-an-invalid-configuration) |
 
@@ -69,8 +69,7 @@ ms.locfileid: "39503691"
 
 1. 既存の Azure AD ディレクトリから[マネージド ドメインを削除](active-directory-ds-disable-aadds.md)します。
 2. Azure AD B2C 以外の新しいディレクトリを作成します。
-3. 
-  [使用の開始](active-directory-ds-getting-started.md)ガイドに従って、マネージド ドメインを再作成します。
+3. [使用の開始](active-directory-ds-getting-started.md)ガイドに従って、マネージド ドメインを再作成します。
 
 ## <a name="aadds103-address-is-in-a-public-ip-range"></a>AADDS103: アドレスがパブリック IP 範囲内である
 
@@ -99,8 +98,7 @@ ms.locfileid: "39503691"
   5. 左側のナビゲーション メニューで、**[サブネット]** をクリックします。
   6. テーブルの編集するサブネットをクリックします。
   7. アドレス範囲を更新し、変更を保存します。
-3. 
-  [Azure AD Domain Services の使用開始に関するガイド](active-directory-ds-getting-started.md)に従って、マネージド ドメインを再作成します。 プライベート IP アドレス範囲にある仮想ネットワークを選択していることを確認します。
+3. [Azure AD Domain Services の使用開始に関するガイド](active-directory-ds-getting-started.md)に従って、マネージド ドメインを再作成します。 プライベート IP アドレス範囲にある仮想ネットワークを選択していることを確認します。
 4. 仮想マシンを新しいドメインに参加させるには、[こちらのガイド](active-directory-ds-admin-guide-join-windows-vm-portal.md)に従います。
 8. アラートが解決されたことを確認するために、ドメインの正常性を 2 時間以内に確認します。
 
@@ -112,8 +110,7 @@ ms.locfileid: "39503691"
 
 **解決策:**
 
-
-  [ご利用のドメインの正常性](active-directory-ds-check-health.md)で、マネージド ドメインの構成の問題を示している可能性があるアラートをすべて確認します。 構成の問題によって、マネージド ドメインの同期を行うための Microsoft の機能がブロックされることがあります。 アラートを解決できる場合は、2 時間待機してから、同期が完了したかどうかを再度確認してください。
+[ご利用のドメインの正常性](active-directory-ds-check-health.md)で、マネージド ドメインの構成の問題を示している可能性があるアラートをすべて確認します。 構成の問題によって、マネージド ドメインの同期を行うための Microsoft の機能がブロックされることがあります。 アラートを解決できる場合は、2 時間待機してから、同期が完了したかどうかを再度確認してください。
 
 管理対象ドメインで同期が停止する一般的な理由を次に示します。
 - 管理対象ドメインでネットワーク接続がブロックされる。 ネットワークに問題がないか確認することの詳細については、[ネットワーク セキュリティ グループをトラブルシューティングする方法](active-directory-ds-troubleshoot-nsg.md)および[Azure AD Domain Services に対するネットワーク要件](active-directory-ds-networking.md)を参照してください。
@@ -127,8 +124,7 @@ ms.locfileid: "39503691"
 
 **解決策:**
 
-
-  [ご利用のドメインの正常性](active-directory-ds-check-health.md)で、マネージド ドメインの構成の問題を示している可能性があるアラートをすべて確認します。 構成の問題によって、マネージド ドメインの同期を行うための Microsoft の機能がブロックされることがあります。 アラートを解決できる場合は、2 時間待機してから、同期が完了したかどうかを再度確認してください。
+[ご利用のドメインの正常性](active-directory-ds-check-health.md)で、マネージド ドメインの構成の問題を示している可能性があるアラートをすべて確認します。 構成の問題によって、マネージド ドメインの同期を行うための Microsoft の機能がブロックされることがあります。 アラートを解決できる場合は、2 時間待機してから、同期が完了したかどうかを再度確認してください。
 
 
 ## <a name="aadds503-suspension-due-to-disabled-subscription"></a>AADDS503: 無効にしたサブスクリプションが原因の中断
@@ -155,8 +151,7 @@ ms.locfileid: "39503691"
 > [!WARNING]
 > 管理対象ドメインが長時間中断する場合、削除される危険性があります。 中断にできるだけ早く対処することをお勧めします。 詳細については、[この記事](active-directory-ds-suspension.md)を参照してください。
 
-
-  [ご利用のドメインの正常性](active-directory-ds-check-health.md)で、マネージド ドメインの構成の問題を示している可能性があるアラートをすべて確認します。 これらのアラートのいずれかを解決できる場合は、それを解決します。 その後、サポートに連絡して、サブスクリプションを再度有効にしてください。
+[ご利用のドメインの正常性](active-directory-ds-check-health.md)で、マネージド ドメインの構成の問題を示している可能性があるアラートをすべて確認します。 これらのアラートのいずれかを解決できる場合は、それを解決します。 その後、サポートに連絡して、サブスクリプションを再度有効にしてください。
 
 
 ## <a name="contact-us"></a>お問い合わせ

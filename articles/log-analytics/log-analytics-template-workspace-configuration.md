@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f1cf38dd5687e14b0183de03b8eda41fe39808e3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: a715c300cc5490eef9dbe7971dabe1733fd47f49
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041376"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402219"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics を管理する
 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
@@ -178,7 +178,7 @@ ms.locfileid: "48041376"
       "minValue": 7,
       "maxValue": 730,
       "metadata": {
-        "description": "Number of days of retention. Free plans can only have 7 days, Standalone and OMS plans include 30 days for free"
+        "description": "Number of days of retention. Free plans can only have 7 days, Standalone and Log Analytics plans include 30 days for free"
       }
     },
     "location": {
@@ -518,7 +518,7 @@ Azure クイックスタート テンプレート ギャラリーに、Log Analy
 * [Linux を実行中の仮想マシンを Log Analytics VM 拡張機能付きでデプロイする](https://azure.microsoft.com/documentation/templates/201-oms-extension-ubuntu-vm/)
 * [Azure Site Recovery を既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/asr-oms-monitoring/)
 * [Azure Web Apps を既存の Log Analytics ワークスペースを使用して監視する](https://azure.microsoft.com/documentation/templates/101-webappazure-oms-monitoring/)
-* [既存のストレージ アカウントを OMS に追加する](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
+* [既存のストレージ アカウントの Log Analytics への追加](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>次の手順
 * [Resource Manager テンプレートを使用して Windows エージェントを Azure VM にデプロイします](../virtual-machines/windows/extensions-oms.md)。

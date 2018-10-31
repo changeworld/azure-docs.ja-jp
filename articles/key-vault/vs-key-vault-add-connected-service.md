@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 04/15/2018
 ms.author: ghogen
-ms.openlocfilehash: 9cf49ae97da3bf67300bdc222c86bb712aeaed37
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: c90ef26c0170db67b1d422701b6969ca3f9c9e38
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465794"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958518"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用して Web アプリケーションに Key Vault を追加する
 
@@ -138,7 +138,29 @@ Key Vault への接続は、**[接続済みサービスの追加]** プロセス
       <h3>@ViewBag.Secret2</h3>
    ```
 
-これで、Web アプリが Key Vault を使用して安全に格納されているシークレットにアクセスできることが確認されました。
+1. アプリをローカルで実行して、Azure portal で入力したシークレット値 (構成ファイルからのダミーの値ではなく) を読み取れることを確認します。
+
+次に、Azure にアプリを発行します。
+
+## <a name="publish-to-azure-app-service"></a>Azure App Service に発行する
+
+1. プロジェクト ノードを右クリックし、**[発行]** を選択します。 **[発行先の選択]** という画面が表示されます。 左側で、**[App Service]**、**[新規作成]** の順に選択します。
+
+   ![App Service に発行する](media/vs-key-vault-add-connected-service/AppServicePublish1.PNG)
+
+1. **[App Service の作成]** 画面で、サブスクリプションとリソース グループがキー コンテナーを作成したものと同じであることを確認し、**[作成]** を選択します。
+
+   ![App Service を作成する](media/vs-key-vault-add-connected-service/AppServicePublish2.PNG)
+
+1. Web アプリケーションが作成されると、**[発行]** 画面が表示されます。 Azure でホストされる、発行された Web アプリケーションの URL を書き留めます。 **[Key Vault]** の横に **[なし]** が表示された場合、どの Key Vault に接続するか App Service に知らせる必要があります。 **[キー コンテナーの追加]** リンクを選択し、作成したキー コンテナーを選択します。
+
+   ![キー コンテナーの追加](media/vs-key-vault-add-connected-service/AppServicePublish3.PNG)
+
+   **[Key Vault の管理]** が表示された場合、これをクリックして Azure Portal で現在の設定の表示、アクセス許可の編集、またはシークレットへの変更の追加を行えます。
+
+1. 次に、サイトの URL リンクを選択して、ブラウザーで Web アプリケーションにアクセスします。 キー コンテナーからの適切な値が表示されていることを確認します。
+
+これで、Web アプリが Azure での実行時に Key Vault を使用して、安全に格納されているシークレットにアクセスできることが確認されました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

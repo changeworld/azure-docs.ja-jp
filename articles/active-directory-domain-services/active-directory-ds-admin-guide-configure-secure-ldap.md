@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: maheshu
-ms.openlocfilehash: 22c97da35416ba1ff593dfa5e41f557ea2ab1cc0
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 42c27df658ae810ac31813ffb94f397a0070933f
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182248"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429135"
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
 この記事では、Azure AD Domain Services のマネージド ドメインに対して、セキュリティで保護されたライトウェイト ディレクトリ アクセス プロトコル (LDAPS) を有効にする方法について説明します。 セキュリティで保護された LDAP は、「Secure Sockets Layer (SSL)/トランスポート層セキュリティ (TLS) 経由のライトウェイト ディレクトリ アクセス プロトコル (LDAP)」としても知られています。
@@ -86,7 +86,7 @@ New-SelfSignedCertificate -Subject contoso100.com `
   -Type SSLServerAuthentication -DnsName *.contoso100.com
 ```
 
-上記のサンプルの '*contoso100.com' は、マネージド ドメインの DNS ドメイン名に置き換えます。たとえば、"contoso100.onmicrosoft.com" というマネージド ドメインを作成した場合は、上記のスクリプトの "*.contoso100.com" を " *.contoso100.onmicrosoft.com" で置き換えます。
+上記のサンプルの "contoso100.com" は、マネージド ドメインの DNS ドメイン名に置き換えます。 たとえば、"contoso100.onmicrosoft.com" というマネージド ドメインを作成した場合は、Subject 属性の "contoso100.com" を "contoso100.onmicrosoft.com" で、DnsName 属性の "*.contoso100.com" を "*.contoso100.onmicrosoft.com" で置き換えます。
 
 ![Azure AD ディレクトリの選択](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 

@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/06/2017
+ms.date: 10/19/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: fcd02e264d5e85b1bef7e75d2a6375d6bf5e18c0
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: ad0ab8790c9d66dbba87d466e9661ef8cf33eef3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363951"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456900"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化
 
@@ -60,8 +60,7 @@ SharePoint サーバーの KCD を設定するには、以下のセクション�
   ![サービス アカウントを構成するための選択肢](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
 
 4. **[このコンポーネントのアカウントの選択]** フィールドが **[ローカル サービス]** または **[ネットワーク サービス]** の場合は、アカウントを作成する必要があります。 アカウントがそのどちらでもない場合は完了しているため、次のセクションに進むことができます。
-5. 
-  **[新しい管理アカウントの登録]** を選択します。 アカウントを作成したら、アカウントを使用する前に **Web アプリケーション プール**を設定する必要があります。
+5. **[新しい管理アカウントの登録]** を選択します。 アカウントを作成したら、アカウントを使用する前に **Web アプリケーション プール**を設定する必要があります。
 
 ### <a name="configure-sharepoint-for-kerberos"></a>Kerberos 用に SharePoint を構成する
 
@@ -195,7 +194,7 @@ Kerberos 用に SharePoint を有効にして KCD を構成したので、Azure 
 
 3. **[代替アクセス マッピング コレクション]** の横にあるドロップダウン リストで、**[Change Alternative Access Mapping Collection (代替アクセス マッピング コレクションの変更)]** を選択します。
 4. サイト (例: **[SharePoint - 80]**) を選択します。
-5. 内部 URL またはパブリック URL のいずれかとして、公開 URL を追加できます。 この例では、パブリック URL をエクストラネットとして使用します。
+5. 内部 URL またはパブリック URL のいずれかとして、公開 URL を追加できます。 この例では、パブリック URL をエクストラネットとして使用します。 カスタム ポートを使用している場合は、この URL に必ずカスタム ポートを含めてください。
 6. **[エクストラネット]** パスで **[パブリック URL の編集]** をクリックし、アプリケーションの発行時に作成した外部 URL を入力します。 たとえば、「**https://sharepoint-iddemo.msappproxy.net**」と入力します。
 
   ![パスの入力](./media/application-proxy-integrate-with-sharepoint-server/alternate-access3.png)

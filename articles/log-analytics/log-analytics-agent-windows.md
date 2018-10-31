@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e4140bfa3053798be56f3af9512c11d3ff0e58c0
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 677cd65b011ed69868564617ff79b7a57947c230
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042157"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404445"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows コンピューターを Azure の Log Analytics サービスに接続する
 
@@ -54,7 +54,7 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 2. **[ようこそ]** ページで **[次へ]** をクリックします。
 3. **[ライセンス条項]** ページの記述内容を確認し、**[同意する]** をクリックします。
 4. **[インストール先フォルダー]** ページで、既定のインストール フォルダーを変更するか、変更せずに **[次へ]** をクリックします。
-5. **[エージェントのセットアップ オプション]** ページで、エージェントを接続する Azure Log Analytics (OMS) をクリックし、**[次へ]** をクリックします。   
+5. **[エージェントのセットアップ オプション]** ページで、エージェントを接続する Azure Log Analytics をクリックし、**[次へ]** をクリックします。   
 6. **[Azure Log Analytics]** ページで、次の手順を実行します。
    1. **[ワークスペース ID]** と **[ワークスペース キー (主キー)]** に、先ほどコピーした値を貼り付けます。  コンピューターが Azure Government クラウド内の Log Analytics ワークスペースに報告する必要がある場合は、**[Azure クラウド]** ドロップダウン リストから **[Azure US Government]** を選択します。  
    2. コンピューターがプロキシ サーバーを介して Log Analytics サービスと通信する必要がある場合は、**[詳細]** をクリックし、プロキシ サーバーの URL とポート番号を指定します。  プロキシ サーバーで認証が必要な場合には、プロキシ サーバーにアクセスするためのユーザー名とパスワードを入力し、**[次へ]** をクリックします。  
@@ -160,7 +160,7 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 
 エージェントのインストールが完了した後、エージェントが正常に接続され、レポートが送信されていることを確認するには、次の 2 つの方法があります。  
 
-**[コントロール パネル]** 内のコンピューターから、**[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、**[Azure Log Analytics (OMS)]** タブに、**Microsoft Monitoring Agent が Microsoft Operations Management Suite サービスに正常に接続している**ことを示すメッセージが表示されます。<br><br> ![Log Analytics への MMA 接続の状態](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+**[コントロール パネル]** 内のコンピューターから、**[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、**[Azure Log Analytics]** タブに、**Microsoft Monitoring Agent が Microsoft Operations Management Suite サービスに正常に接続している**ことを示すメッセージが表示されます。<br><br> ![Log Analytics への MMA 接続の状態](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
 
 また、Azure ポータルで簡単なログ検索を行うこともできます。  
 
