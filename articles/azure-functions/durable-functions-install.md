@@ -2,20 +2,20 @@
 title: Durable Functions 拡張機能とサンプルをインストールする - Azure
 description: Azure Functions、ポータル開発、または Visual Studio 開発用に Durable Functions 拡張機能をインストールする方法を説明します。
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/31/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 2eb838bcb9d3f64d0bbf4657c516adb50d103223
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 6bbf232fc17b9acfd4e8cd84a0cb1346ab8ea9b5
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585307"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986821"
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Durable Functions 拡張機能とサンプルをインストールする (Azure Functions)
 
@@ -45,7 +45,7 @@ Azure Functions の [Durable Functions](durable-functions-overview.md) 拡張機
 サンプルから始めるのと同じ手順に従いますが、*.zip* ファイルをダウンロードする代わりに次の手順に従います。
 
 1. Function App プロジェクトを作成します。
-2. *[NuGet パッケージの管理]* を使用して NuGet パッケージ参照 Microsoft.Azure.WebJobs.Extensions.DurableTask v1.6.0 を検索し、プロジェクトに追加します
+2. *[NuGet パッケージの管理]* を使用して NuGet パッケージ参照 Microsoft.Azure.WebJobs.Extensions.DurableTask v1.6.2 を検索し、プロジェクトに追加します
    
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -75,12 +75,12 @@ Visual Studio Code では、すべての主要なプラットフォーム (Windo
 3. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、Azure Functions Durable Extension をインストールします。
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.0
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.DurableTask -v 1.6.2
     ```
 4. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、Azure Functions Twilio Extension をインストールします。
 
     ```bash
-    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0-beta8
+    func extensions install -p Microsoft.Azure.WebJobs.Extensions.Twilio -v 3.0.0
     ```
 5. Azure Storage Emulator を実行するか、*local.settings.json* ファイルを実際の Azure Storage の接続文字列で更新します。
 6. Visual Studio Code でプロジェクトを開きます。 
@@ -96,14 +96,14 @@ Visual Studio Code では、すべての主要なプラットフォーム (Windo
 2. マシン上の [JavaScript サンプル フォルダー](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/javascript)に移動します。 
 3. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、Azure Functions Durable Extension をインストールします
 
-    ```
+    ```bash
     func extensions install
     ```
     > [!NOTE] 
     > このためには、[.NET Core SDK](https://www.microsoft.com/net/download) をマシンにインストールする必要があります。
 4. コマンド プロンプト/ターミナル ウィンドウで次のコマンドを実行して、npm パッケージを復元します。
     
-    ```
+    ```bash
     npm install
     ``` 
 5. *local.settings.json* ファイルを、`AzureWebJobsStorage` の Azure ストレージ アカウントの接続文字列で更新します。  このストレージ アカウントは、Durable Function の状態に使用されます。
@@ -119,13 +119,13 @@ Visual Studio Code では、すべての主要なプラットフォーム (Windo
 1. コマンド プロンプト/ターミナルで、関数アプリをホストするフォルダーに移動します。
 3. 次のコマンドを実行して Function App プロジェクトを作成します。
 
-    ```
+    ```bash
     func init
     ``` 
 4. Azure Storage Emulator (Windows のみ) を実行するか、*local.settings.json* ファイルを `AzureWebJobsStorage` の実際の Azure Storage 接続文字列で更新します。
 5. 次に、次のコマンドを実行して新しい関数を作成し、ウィザードの手順に従います。
 
-    ```
+    ```bash
     func new
     ```
     >[!IMPORTANT]

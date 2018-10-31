@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/22/2018
 ms.author: pullabhk
-ms.openlocfilehash: 1f3b81c31dc566e5e3011167eee00145f6791cb1
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: d38da87bae07dadb10894593dd41ded22f5f162d
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616911"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638309"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -45,7 +45,7 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
 
 4. **[回復ポイントの選択]** ドロップダウン メニューで、目的のファイルを保持する回復ポイントを選択します。 既定では、最新の回復ポイントが既に選択されています。
 
-5. 回復ポイントからファイルをコピーするために使用するソフトウェアをダウンロードするには、**[実行可能ファイルのダウンロード]** (Windows Azure VM の場合) または **[スクリプトのダウンロード]** (Linux Azure VM の場合) をクリックします。
+5. 回復ポイントからファイルをコピーするために使用するソフトウェアをダウンロードするには、**[実行可能ファイルのダウンロード]** (Windows Azure VM の場合) または **[スクリプトのダウンロード]** (Linux Azure VM の場合。これにより、Python スクリプトが生成されます) をクリックします。
 
     ![生成されたパスワード](./media/backup-azure-restore-files-from-vm/download-executable.png)
 

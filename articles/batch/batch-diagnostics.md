@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 98bd088d4995bd1444b059531dc5b19d0283f551
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c045d82e47d2554c2767e6f52491c780618abc2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965536"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409528"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch の診断の評価と監視用のメトリック、アラート、およびログ
 
@@ -85,7 +85,7 @@ Azure Portal で Batch アカウントのメトリックを表示します。 �
 
 * Batch 診断ログ イベントを [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) にストリーミングします。 Event Hubs は、毎秒数百万のイベントを取り込み、任意のリアルタイム分析プロバイダーを使用して変換および格納できます。 
 
-* 診断ログを [Log Analytics](../log-analytics/log-analytics-overview.md) に送信して、Operations Management Suite (OMS) ポータルで分析したり、Power BI または Excel で分析するためにエクスポートしたりできます。
+* 診断ログを [Azure Log Analytics](../log-analytics/log-analytics-overview.md) に送信して分析したり、Power BI または Excel で分析するためにエクスポートしたりできます。
 
 > [!NOTE]
 > Azure サービスで診断ログ データの格納または処理を行うには、追加料金が発生することがあります。 

@@ -2,20 +2,20 @@
 title: Durable Functions のエラー処理 - Azure
 description: Azure Functions の Durable Functions 拡張機能で発生したエラーを処理する方法について説明します。
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 6bf9eb2cd2ebdf5f6d53e00923146bab49a142bf
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 61496d91c9ec2cd1dcf498df04d2dab6629e009c
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377907"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984130"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Durable Functions のエラー処理 (Azure Functions)
 
@@ -26,6 +26,8 @@ Durable Function のオーケストレーションはコードで実装され、
 アクティビティ関数でスローされた例外はオーケストレーター関数に戻され、`FunctionFailedException` としてスローされます。 ニーズに合ったエラー処理と補正コードをオーケストレーター関数内に記述できます。
 
 たとえば、ある口座の資金を別の口座に送金する次のオーケストレーター関数を検討します。
+
+#### <a name="c"></a>C#
 
 ```csharp
 #r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
@@ -64,11 +66,49 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
+#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const transferDetails = context.df.getInput();
+
+    yield context.df.callActivity("DebitAccount",
+        {
+            account = transferDetails.sourceAccount,
+            amount = transferDetails.amount,
+        }
+    );
+
+    try {
+        yield context.df.callActivity("CreditAccount",
+            {
+                account = transferDetails.destinationAccount,
+                amount = transferDetails.amount,
+            }
+        );
+    }
+    catch (error) {
+        // Refund the source account.
+        // Another try/catch could be used here based on the needs of the application.
+        yield context.df.callActivity("CreditAccount",
+            {
+                account = transferDetails.sourceAccount,
+                amount = transferDetails.amount,
+            }
+        );
+    }
+});
+```
+
 送金先口座に対する **CreditAccount** 関数の呼び出しが失敗した場合、オーケストレーター関数は、資金を送金元口座に戻すことで、これを補正します。
 
 ## <a name="automatic-retry-on-failure"></a>エラー発生時の自動再試行
 
 アクティビティ関数またはサブオーケストレーション関数を呼び出すときに、自動再試行ポリシーを指定できます。 次の例では、関数の呼び出しを最大 3 回試行し、次の再試行まで 5 秒間待機します。
+
+#### <a name="c"></a>C#
 
 ```csharp
 public static async Task Run(DurableOrchestrationContext context)
@@ -83,7 +123,21 @@ public static async Task Run(DurableOrchestrationContext context)
 }
 ```
 
-`CallActivityWithRetryAsync` API は、`RetryOptions` パラメーターを使用します。 `CallSubOrchestratorWithRetryAsync` API を使用するサブオーケストレーション呼び出しは、同じ再試行ポリシーを使用できます。
+#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const retryOptions = new df.RetryOptions(5000, 3);
+    
+    yield context.df.callActivityWithRetry("FlakyFunction", retryOptions);
+
+    // ...
+});
+```
+
+`CallActivityWithRetryAsync` (C#) または `callActivityWithRetry` (JS) API は、`RetryOptions` パラメーターを使用します。 `CallSubOrchestratorWithRetryAsync` (C#) または `callSubOrchestratorWithRetry` (JS) API を使用するサブオーケストレーション呼び出しは、同じ再試行ポリシーを使用できます。
 
 自動再試行ポリシーをカスタマイズするためのいくつかのオプションがあります。 次のオプションが含まれます。
 
@@ -97,6 +151,8 @@ public static async Task Run(DurableOrchestrationContext context)
 ## <a name="function-timeouts"></a>関数のタイムアウト
 
 完了に時間がかかりすぎる場合は、オーケストレーター関数内の関数呼び出しを破棄できます。 現時点でこれを行う適切な方法は、次の例に示すように、`context.CreateTimer` と `Task.WhenAny` を使用して[永続タイマー](durable-functions-timers.md)を作成することです。
+
+#### <a name="c"></a>C#
 
 ```csharp
 public static async Task<bool> Run(DurableOrchestrationContext context)
@@ -123,6 +179,30 @@ public static async Task<bool> Run(DurableOrchestrationContext context)
         }
     }
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+```javascript
+const df = require("durable-functions");
+const moment = require("moment");
+
+module.exports = df.orchestrator(function*(context) {
+    const deadline = moment.utc(context.df.currentUtcDateTime).add(30, "s");
+
+    const activityTask = context.df.callActivity("FlakyFunction");
+    const timeoutTask = context.df.createTimer(deadline.toDate());
+
+    const winner = yield context.df.Task.any([activityTask, timeoutTask]);
+    if (winner === activityTask) {
+        // success case
+        timeoutTask.cancel();
+        return true;
+    } else {
+        // timeout case
+        return false;
+    }
+});
 ```
 
 > [!NOTE]

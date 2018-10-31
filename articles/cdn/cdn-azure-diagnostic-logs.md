@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 6834222ec2befa305b558abf0976a1c9899a7086
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d0b804c48f3de4d4ba29ebe0785f6dd991329a53
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093028"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409256"
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -95,17 +95,23 @@ Log Analytics を使用してログを保存するには、次の手順に従い
 
 2. **構成**を選択して Log Analytics ログ記録を構成します。 
 
-   **OMS ワークスペース** ページが表示されます。
+   **[Log Analytics ワークスペース]** ページが表示されます。
+
+    >[!NOTE] 
+    >OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/06_Choose-workspace.png)
 
 3. **新しいワークスペースの作成**を選択します。
 
-    **OMS ワークスペース**ページが表示されます。
+    **[Log Analytics ワークスペース]** ページが表示されます。
+
+    >[!NOTE] 
+    >OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
 
     ![ポータル - 診断ログ](./media/cdn-diagnostics-log/07_Create-new.png)
 
-4. **OMS ワークスペース**に、OMS ワークスペースの名前を入力します。 OMS ワークスペースには一意の名前を付ける必要があります。名前には、英字、数字、およびハイフンのみを使用できます。スペースとアンダースコアは使用できません。 
+4. **[Log Analytics ワークスペース]** に、Log Analytics ワークスペース名を入力します。 Log Analytics ワークスペースには一意の名前を付ける必要があります。名前には、英字、数字、およびハイフンのみを使用できます。スペースとアンダースコアは使用できません。 
 
 5. **サブスクリプション**には、ドロップダウン リストから既存のサブスクリプション名を選択します。 
 

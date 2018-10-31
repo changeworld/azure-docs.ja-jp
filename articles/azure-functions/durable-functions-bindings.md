@@ -2,24 +2,20 @@
 title: Durable Functions のバインド - Azure
 description: Azure Functions の Durable Functons 拡張機能のトリガーとバインドの使用方法。
 services: functions
-author: cgillum
-manager: cfowler
-editor: ''
-tags: ''
+author: kashimiz
+manager: jeconnoc
 keywords: ''
-ms.service: functions
+ms.service: azure-functions
 ms.devlang: multiple
-ms.topic: article
-ms.tgt_pltfrm: multiple
-ms.workload: na
-ms.date: 09/29/2017
+ms.topic: conceptual
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 370e6e2c569aaf6d9289bddccde2174b4dd2ee97
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f9bf42e5e20a7d9e861d0c3354040e981bf3ef21
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33763358"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987751"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -85,7 +81,7 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 ```javascript
 const df = require("durable-functions");
 
-module.exports = df(function*(context) {
+module.exports = df.orchestrator(function*(context) {
     const name = context.df.getInput();
     return `Hello ${name}!`;
 });
@@ -114,9 +110,9 @@ public static async Task<string> Run(
 ```javascript
 const df = require("durable-functions");
 
-module.exports = df(function*(context) {
+module.exports = df.orchestrator(function*(context) {
     const name = context.df.getInput();
-    const result = yield context.df.callActivityAsync("SayHello", name);
+    const result = yield context.df.callActivity("SayHello", name);
     return result;
 });
 ```
@@ -125,9 +121,9 @@ module.exports = df(function*(context) {
 
 アクティビティ トリガーを使用して、オーケストレーター関数によって呼び出される関数を作成できます。
 
-Visual Studio を使用する場合、アクティビティ トリガーは [ActvityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .NET 属性を使用して構成されます。 
+Visual Studio を使用している場合、アクティビティ トリガーは [ActvityTriggerAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.ActivityTriggerAttribute.html) .NET 属性を使用して構成されます。 
 
-Azure ポータルを使用して開発する場合、アクティビティ トリガーは、*function.json* の `bindings` 配列の次の JSON オブジェクトによって定義されます。
+VS Code または Azure portal を使用して開発する場合、アクティビティ トリガーは *function.json* の `bindings` 配列で次の JSON オブジェクトによって定義されます。
 
 ```json
 {
@@ -147,7 +143,7 @@ Azure ポータルを使用して開発する場合、アクティビティ ト�
 アクティビティ トリガーに関する注意事項を次に示します。
 
 * **スレッド処理** - オーケストレーション トリガーとは異なり、アクティビティ トリガーにはスレッド処理と I/O に関する制限はありません。 それらは、標準的な関数と同様に扱うことができます。
-* **有害メッセージの処理** - アクティビティ トリガーでは、有害メッセージはサポートされません。
+* **有害メッセージの処理** - アクティビティ トリガーには、有害メッセージのサポートはありません。
 * **メッセージの可視性** - アクティビティ トリガー メッセージはキューから削除され、構成可能な期間にわたって非表示を保持します。 これらのメッセージの可視性は、関数アプリが正常に実行されている限り、自動的に更新されます。
 * **戻り値** - 戻り値は JSON にシリアル化され、Azure Table ストレージのオーケストレーション履歴テーブルに保存されます。
 
@@ -253,7 +249,7 @@ public static async Task<dynamic> Mapper([ActivityTrigger] DurableActivityContex
 
 Visual Studio を使用する場合は、[OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) .NET 属性を使用してオーケストレーション クライアントにバインドできます。
 
-スクリプト言語 (*.csx* ファイルなど) を使用して開発する場合、オーケストレーション トリガーは、*function.json* の `bindings` 配列の次の JSON オブジェクトによって定義されます。
+スクリプト言語 (*.csx* ファイル、*.js* ファイルなど) を使用して開発する場合、オーケストレーション トリガーは、*function.json* の `bindings` 配列で次の JSON オブジェクトによって定義されます。
 
 ```json
 {

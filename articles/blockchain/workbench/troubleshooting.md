@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: ba6bfe8240c758806c4ff3e46ab08fdacad83db9
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e205fce8b718e68200face33447e37cd3317298f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48241486"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405486"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Azure Blockchain Workbench のトラブルシューティング
 
@@ -24,7 +24,7 @@ PowerShell スクリプトを利用すると、開発時のデバッグやサポ
 * Ethereum などのブロックチェーン ネットワーク
 * Blockchain Workbench マイクロサービス
 * Application Insights
-* Azure Monitoring (OMS)
+* Azure Monitoring (Log Analytics)
 
 この情報を利用して、次の手順を決定し、問題の根本原因を特定することができます。 
 
@@ -52,9 +52,9 @@ collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>
 | ResourceGroupName | Blockchain Workbench がデプロイされている Azure リソース グループの名前。 | [はい] |
 | OutputDirectory | 出力 .ZIP ファイルを作成するパス。 指定しない場合、既定は現在のディレクトリになります。 | いいえ  |
 | LookbackHours | 利用統計情報を取得する際に使用する時間数。 既定値は 24 時間です。 最大値は 90 時間です | いいえ  |
-| OmsSubscriptionId | OMS が展開されているサブスクリプション ID。 ブロックチェーン ネットワークの OMS が Blockchain Workbench のリソース グループ以外に展開されている場合にのみ、このパラメーターを渡します。| いいえ  |
-| OmsResourceGroup |OMS が展開されているリソース グループ。 ブロックチェーン ネットワークの OMS が Blockchain Workbench のリソース グループ以外に展開されている場合にのみ、このパラメーターを渡します。| いいえ  |
-| OmsWorkspaceName | OMS ワークスペースの名前。 ブロックチェーン ネットワークの OMS が Blockchain Workbench のリソース グループ以外に展開されている場合にのみ、このパラメーターを渡します。 | いいえ  |
+| OmsSubscriptionId | Log Analytics がデプロイされているサブスクリプション ID。 ブロックチェーン ネットワークの Log Analytics が Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ  |
+| OmsResourceGroup |Log Analytics がデプロイされているリソース グループ。 ブロックチェーン ネットワークの Log Analytics が Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します。| いいえ  |
+| OmsWorkspaceName | Log Analytics ワークスペース名。 ブロックチェーン ネットワークの Log Analytics が Blockchain Workbench のリソース グループ以外にデプロイされている場合にのみ、このパラメーターを渡します | いいえ  |
 
 ## <a name="what-is-collected"></a>収集される内容
 

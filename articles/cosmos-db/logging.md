@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: sngun
-ms.openlocfilehash: 68eb567235897641d5d4027160f62c5aa6e7e4f9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 26500f3e557a27046edc5c833b8c8d88ae266e68
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963391"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409001"
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
@@ -356,11 +356,14 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 
 ログ記録を有効にするときに **[Log Analytics への送信]** オプションを選択した場合、コンテナーの診断ログは 2 時間以内に Log Analytics に転送されます。 ログ記録を有効にした直後に Log Analytics を見ても、データは何も表示されません。 2 時間待ってから、もう一度やり直してください。 
 
-ログを確認する前に、Log Analytics ワークスペースが新しい Log Analytics クエリ言語を使用できるようにアップグレードされているかどうかを確認します。 確認するには、[Azure Portal](https://portal.azure.com) で左端の **[Log Analytics]** を選び、次の図のようにワークスペース名を選択します。 **[OMS ワークスペース]** ページが表示されます。
+ログを確認する前に、Log Analytics ワークスペースが新しい Log Analytics クエリ言語を使用できるようにアップグレードされているかどうかを確認します。 確認するには、[Azure Portal](https://portal.azure.com) で左端の **[Log Analytics]** を選び、次の図のようにワークスペース名を選択します。 **[Log Analytics ワークスペース]** ページが表示されます。
 
 ![Azure Portal の Log Analytics](./media/logging/azure-portal.png)
 
-**[OMS ワークスペース]** ページに次のメッセージが表示される場合、ワークスペースは新しい言語を使用できるようにアップグレードされていません。 新しいクエリ言語にアップグレードする方法について詳しくは、「[新しいログ検索への Azure Log Analytics ワークスペースのアップグレード](../log-analytics/log-analytics-log-search-upgrade.md)」をご覧ください。 
+>[!NOTE]
+>OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。  
+
+**[Log Analytics ワークスペース]** ページに次のメッセージが表示される場合、ワークスペースは新しい言語を使用できるようにアップグレードされていません。 新しいクエリ言語にアップグレードする方法について詳しくは、「[新しいログ検索への Azure Log Analytics ワークスペースのアップグレード](../log-analytics/log-analytics-log-search-upgrade.md)」をご覧ください。 
 
 ![Log Analytics のアップグレード メッセージ](./media/logging/upgrade-notification.png)
 

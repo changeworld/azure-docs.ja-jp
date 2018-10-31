@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2018
 ms.author: damaerte
-ms.openlocfilehash: aad474195060c01a3f9d85e6f9037b568b0c16ad
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 4fc4f6523eb19294cabdf6b5b910dd346a877502
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630388"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645043"
 ---
 # <a name="powershell-in-azure-cloud-shell-for-windows-users"></a>Windows ユーザー用 Azure Cloud Shell 内の PowerShell
 
@@ -54,7 +54,7 @@ Windows ファイル システムでは大文字と小文字が区別されま�
 ## <a name="persisting-home"></a>$HOME の永続化
 
 以前のユーザーは、スクリプトやその他のファイルを永続化するには、クラウド ドライブを使用する必要がありました。
-ユーザーの $ HOME ディレクトリもセッション全体で永続化されるようになりました。
+ユーザーの $HOME ディレクトリもセッション全体で永続化されるようになりました。
 
 ## <a name="powershell-profile"></a>PowerShell プロファイル
 

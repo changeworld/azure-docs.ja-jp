@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 3b014ce4c91d1dc9fae744ef4b528c98f9f787b3
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: a353fe3803b2d93c151559076960df06eb260bfe
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164321"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426415"
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-log-analytics"></a>Log Analytics による Azure Container Service クラスターの監視
 
@@ -69,7 +69,7 @@ Log Analytics は、Microsoft のクラウドベースの IT 管理ソリュー�
 
 ### <a name="obtain-your-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
 Log Analytics エージェントがサービスと通信するには、エージェントがワークスペース ID とワークスペース キーで構成されている必要があります。 ワークスペース ID とキーを取得するには、<https://mms.microsoft.com> でアカウントを作成する必要があります。
-手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように、**[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして ID とキーを取得する必要があります。
+手順に従ってアカウントを作成してください。 アカウントの作成が完了した後、**[Log Analytics]** ブレードをクリックすると、ID とキーおよびワークスペースの名前を取得できます。 続いて **[詳細設定]**、**[接続先ソース]**、**[Linux サーバー]** で、次に示す必要な情報を確認します。
 
  ![](media/container-service-monitoring-oms/image5.png)
 

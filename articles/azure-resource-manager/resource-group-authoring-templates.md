@@ -12,19 +12,44 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2018
+ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 129d02bea6fe3668a308da0ab2a46ca8b59928e7
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 28ef94113c76cd70e12a9682e1c523afc3f0a233
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542246"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945877"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの構造と構文の詳細
 この記事では、Azure Resource Manager テンプレートの構造について説明します。 テンプレートの各種セクションとそこで使用できるプロパティを紹介しています。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 テンプレートの作成方法を詳しく解説したチュートリアルについては、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md)」を参照してください。
 
+## <a name="quickstarts-and-tutorials"></a>クイック スタートとチュートリアル
+
+次のクイック スタートとチュートリアルを使用して、Resource Manager テンプレートの開発方法を学ぶことができます。
+
+- クイック スタート
+
+  	|タイトル|説明|
+  	|------|-----|
+  	|[Azure Portal の使用](./resource-manager-quickstart-create-templates-use-the-portal.md)|ポータルを使用してテンプレートを生成します。また、テンプレートを編集してデプロイするプロセスについて説明しています。|
+  	|[Visual Studio Code を使用する](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Visual Studio Code を使用してテンプレートを作成します。また、Azure Cloud Shell を使用してテンプレートをデプロイする方法を説明しています。|
+  	|[Visual Studio を使用する](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|Visual Studio を使用してテンプレートを作成、編集、デプロイします。|
+
+- チュートリアル
+
+  	|タイトル|説明|
+  	|------|-----|
+  	|[テンプレート リファレンスの利用](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|テンプレート リファレンス ドキュメントを利用してテンプレートを開発できます。 このチュートリアルでは、ストレージ アカウントのスキーマを確認し、その情報を使用して暗号化されたストレージ アカウントを作成します。|
+  	|[複数のインスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)|Azure リソースの複数インスタンスを作成します。 このチュートリアルでは、ストレージ アカウントの複数インスタンスを作成します。|
+  	|[リソースのデプロイ順序の設定](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|リソースの依存関係を定義します。 このチュートリアルでは、仮想ネットワーク、仮想マシン、および依存する Azure リソースを作成します。 依存関係を定義する方法を説明しています。|
+  	|[使用条件](./resource-manager-tutorial-use-conditions.md)|いくつかのパラメーター値に基づいてリソースをデプロイします。 このチュートリアルでは、新しいストレージ アカウントを作成するためのテンプレートを定義します。また、パラメーターの値に基づいて既存のストレージ アカウントを使用します。|
+  	|[Key Vault の統合](./resource-manager-tutorial-use-key-vault.md)|Azure Key Vault からシークレット/パスワードを取得します。 このチュートリアルでは、仮想マシンを作成します。  仮想マシン管理者パスワードは Key Vault から取得されます。|
+  	|[リンク済みテンプレートを作成する](./resource-manager-tutorial-create-linked-templates.md)|テンプレートをモジュール化し、テンプレートから他のテンプレートを呼び出します。 このチュートリアルでは、仮想ネットワーク、仮想マシン、および依存するリソースを作成します。  依存するストレージ アカウントは、リンクされたテンプレートで定義されます。 |
+  	|[安全なデプロイ プラクティスの使用](./deployment-manager-tutorial.md)|Azure Deployment Manager を使用します。 |
+
 ## <a name="template-format"></a>テンプレートの形式
+
 最も単純な構造のテンプレートは、次の要素で構成されます。
 
 ```json
@@ -279,7 +304,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 ],
 ```
 
-詳細については、「[Resources section of Azure Resource Manager templates (Azure Resource Manager テンプレートの resources セクション)](resource-manager-templates-resources.md)」をご覧ください。
+デプロイ時に条件付きでリソースを含めたり除外したりするには、[Condition 要素](resource-manager-templates-resources.md#condition)を使用します。 resources セクションの詳細については、「[Resources section of Azure Resource Manager templates (Azure Resource Manager テンプレートの resources セクション)](resource-manager-templates-resources.md)」をご覧ください。
 
 ## <a name="outputs"></a>出力
 [出力] セクションではデプロイから返される値を指定します。 たとえば、デプロイされたリソースにアクセスするための URI を返すことができます。

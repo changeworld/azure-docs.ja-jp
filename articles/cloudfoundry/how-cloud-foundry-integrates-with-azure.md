@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: 689730edcc98a23c82373ae8d36c3b831b33c076
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: a9f5f22cbd6e7cb39e1abb2ef712ffcfc27f55a4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627442"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406145"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>Cloud Foundry と Azure を統合する
 
@@ -70,9 +70,9 @@ Azure のサービス ブローカーは、Azure サービスへのアプリケ�
 
 ## <a name="6-metrics-and-logging"></a>6.メトリックとログ
 Azure Log Analytics Nozzle は Cloud Foundry コンポーネントであり、[Cloud Foundry loggregator firehose](https://docs.cloudfoundry.org/loggregator/architecture.html) から [Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) にメトリックを転送します。 Nozzle を使用すると、複数のデプロイにわたる CF のシステム正常性とパフォーマンスのメトリックを収集、表示、および分析することができます。
-Open Source と Pivotal の両方の Cloud Foundry 環境に Azure Log Analytics Nozzle をデプロイし、Azure Log Analytics OMS コンソールからデータにアクセスする方法を学習するには、[こちら](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle)をクリックしてください。 
+Open Source と Pivotal の両方の Cloud Foundry 環境に Azure Log Analytics Nozzle をデプロイし、Azure Log Analytics コンソールからデータにアクセスする方法を確認するには、[こちら](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle)をクリックしてください。 
 > [!NOTE]
-> PCF 2.0 からは、既定では VM の BOSH 正常性メトリックが Loggregator Firehose に転送され、Azure Log Analytics OMS コンソールに統合されます。
+> PCF 2.0 からは、既定では VM の BOSH 正常性メトリックが Loggregator Firehose に転送され、Azure Log Analytics コンソールに統合されます。
 
 ## <a name="7-cost-saving"></a>7.コストの削減
 ### <a name="cost-saving-for-devtest-environments"></a>開発/テスト環境でのコスト削減

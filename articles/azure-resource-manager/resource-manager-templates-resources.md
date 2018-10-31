@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/11/2018
+ms.date: 10/22/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6723cf8cc18637c157b295361425357e1c47ec2e
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eea12a0a31d11065ebdc2cbef556b84df1ace750
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007163"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945197"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース セクション
 
@@ -83,7 +83,7 @@ resources セクションでは、デプロイまたは更新されるリソー�
 
 | 要素名 | 必須 | 説明 |
 |:--- |:--- |:--- |
-| condition | いいえ  | このデプロイの間にリソースがプロビジョニングされるかどうかを示すブール値。 `true` の場合、デプロイの間にリソースが作成されます。 `false` の場合、このデプロイでは、リソースはスキップされます。 |
+| condition | いいえ  | このデプロイの間にリソースがプロビジョニングされるかどうかを示すブール値。 `true` の場合、デプロイ時にリソースが作成されます。 `false` の場合、このデプロイでは、リソースはスキップされます。 |
 | apiVersion |[はい] |リソースの作成に使用する REST API バージョン。 |
 | type |[はい] |リソースの種類。 この値は、リソース プロバイダーの名前空間と、リソースの種類の組み合わせです (例: **Microsoft.Storage/storageAccounts**)。 |
 | name |[はい] |リソースの名前。 この名前は、RFC3986 で定義されている URI コンポーネントの制限に準拠する必要があります。 また、リソース名を外部に公開する Azure サービスでは、名前が別の ID になりすますことがないように、その名前を検証します。 |
@@ -100,7 +100,9 @@ resources セクションでは、デプロイまたは更新されるリソー�
 
 ## <a name="condition"></a>条件
 
-デプロイ時にリソースを作成するどうかを決定する必要がある場合は、`condition` 要素を使用します。 この要素の値は、true または false に解決されます。 値が true の場合、リソースは作成されます。 値が false の場合、リソースは作成されません。 通常、新しいリソースを作成するか、既存のリソースを使用する場合は、この値を使用します。 たとえば、新しいストレージ アカウントをデプロイするか、既存のストレージ アカウントを使用するかを指定するには、次のようにします。
+デプロイ時にリソースを作成するどうかを決定する必要がある場合は、`condition` 要素を使用します。 この要素の値は、true または false に解決されます。 値が true の場合、リソースが作成されます。 値が false の場合、リソースは作成されません。 この要素の値は、リソース全体にのみ適用できます。
+
+通常、新しいリソースを作成するか、既存のリソースを使用する場合は、この値を使用します。 たとえば、新しいストレージ アカウントをデプロイするか、既存のストレージ アカウントを使用するかを指定するには、次のようにします。
 
 ```json
 {

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 9a75e7ed8ce25384d39afb22ef50b5453ef543ba
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d8f27063b68ed58b9ac34219d806c1cf8165ea8c
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129677"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026026"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# スクリプト (.csx) 開発者向けリファレンス
 
@@ -55,9 +55,9 @@ FunctionsProject
  | - bin
 ```
 
-関数アプリの構成に使用できる共有 [host.json] (functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.csx) とバインディング構成ファイル (function.json) があります。
+関数アプリの構成に使用できる共有 [host.json](functions-host-json.md) ファイルがあります。 各関数には、独自のコード ファイル (.csx) とバインディング構成ファイル (function.json) があります。
 
-Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインディング拡張機能を登録](functions-triggers-bindings.md#local-development-azure-functions-core-tools)する必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
+Functions ランタイムの[バージョン 2.x](functions-versions.md) に必要なバインディング拡張機能は `extensions.csproj` ファイル内に定義されており、実際のライブラリ ファイルは `bin` フォルダーにあります。 ローカルで開発する場合は、[バインド拡張機能を登録する](functions-triggers-bindings.md#local-development-azure-functions-core-tools)必要があります。 Azure portal 上で関数を開発するときに、この登録が実行されます。
 
 ## <a name="binding-to-arguments"></a>引数へのバインド
 

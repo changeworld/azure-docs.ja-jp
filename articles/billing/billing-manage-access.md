@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: cwatson
-ms.openlocfilehash: 623856f05eed44eca3752d56f047f9bb282bdc8e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 38cfd354f11ef3d888ad70e71549868d398495f5
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392087"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429645"
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>ロールに基づくアクセス制御を使用した Azure の課金情報へのアクセスの管理
 
@@ -67,7 +67,7 @@ Azure 課金情報へのアクセス権をチームのメンバーに与える�
     ![Azure Portal で請求閲覧者が見られる情報を表示するスクリーンショット](./media/billing-manage-access/billing-reader-view.png)
 
 > [!NOTE]
-> 請求閲覧者機能はプレビュー段階であり、エンタープライズ (EA) サブスクリプションや非グローバル クラウドはまだサポートされていません。
+> 請求閲覧者機能はプレビュー段階であり、非グローバル クラウドはまだサポートされていません。 Enterprise サブスクリプションでは、エンタープライズ管理者が請求金額の表示を有効にしている場合、コストを表示できます。
 
 ## <a name="adding-users-to-other-roles"></a>ユーザーをその他のロールに追加する
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: b326e5b686e14cefac4e6376bd3f26787ea1d10d
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 4576d9decc6ba1e01ef39abdb8a3ef89461196e8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32164593"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407794"
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>Log Analytics で Azure Container Service DC/OS クラスターを監視する
 
@@ -22,7 +22,7 @@ Log Analytics は、オンプレミスのインフラストラクチャやクラ
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-コンテナー ソリューションの詳細については、[Log Analytics のコンテナー ソリューション](../../log-analytics/log-analytics-containers.md)に関するページを参照してください。
+コンテナー ソリューションの詳細については、「[Log Analytics のコンテナー ソリューション](../../log-analytics/log-analytics-containers.md)」を参照してください。
 
 ## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>DC/OS Universe からの Log Analytics の設定
 
@@ -30,48 +30,39 @@ Log Analytics は、オンプレミスのインフラストラクチャやクラ
 この記事では、DC/OS をセットアップし、クラスターに単純な Web コンテナー アプリケーションをデプロイしていることを前提としています。
 
 ### <a name="pre-requisite"></a>前提条件
-- [Microsoft Azure サブスクリプション](https://azure.microsoft.com/free/) - 無料で取得できます。  
+- [Microsoft Azure サブスクリプション](https://azure.microsoft.com/free/) - 無料でサブスクリプションを取得できます。  
 - Log Analytics ワークスペースのセットアップ - 下の「手順 3.」を参照
 - [DC/OS CLI](https://dcos.io/docs/1.8/usage/cli/install/) がインストールされていること。
 
 1. DC/OS ダッシュボードで、次のように [Universe] をクリックし、"OMS" を検索します。
 
-![](media/container-service-monitoring-oms/image2.png)
+   >[!NOTE]
+   >OMS は、Log Analytics と呼ばれるようになりました。
+
+ ![](media/container-service-monitoring-oms/image2.png)
 
 2. **[インストール]** をクリックします。 バージョン情報と **[パッケージのインストール]** または **[Advanced Installation] (高度なインストール)** ボタンを含むポップアップが表示されます。 **[Advanced Installation (高度なインストール)]** をクリックすると、**[OMS specific configuration properties (OMS に固有の構成のプロパティ)]** ページが表示されます。
 
-![](media/container-service-monitoring-oms/image3.png)
+ ![](media/container-service-monitoring-oms/image3.png)
 
-![](media/container-service-monitoring-oms/image4.png)
+ ![](media/container-service-monitoring-oms/image4.png)
 
 3. ここでは、`wsid` (Log Analytics ワークスペース ID) と `wskey` (ワークスペース ID の主キー) を入力するよう求められます。 `wsid` と `wskey` の両方を取得するには、<https://mms.microsoft.com> でアカウントを作成する必要があります。
 手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして `wsid` と `wskey` を取得する必要があります。
 
  ![](media/container-service-monitoring-oms/image5.png)
 
-4. 必要なインスタンスの数を選択し、[Review and Install] (確認およびインストール) ボタンをクリックします。 通常、インスタンスの数は、エージェント クラスター内の VM の数と同じにします。 OMS Agent for Linux は、監視のための情報やログ情報を収集する各 VM に個別のコンテナーとしてインストールされます。
+4. 必要なインスタンスの数を選択し、[Review and Install] (確認およびインストール) ボタンをクリックします。 通常、インスタンスの数は、エージェント クラスター内の VM の数と同じにします。 Linux 用 Log Analytics エージェントは、監視のための情報やログ情報を収集する各 VM に個別のコンテナーとしてインストールされます。
 
-## <a name="setting-up-a-simple-oms-dashboard"></a>単純な OMS ダッシュボードの設定
+   [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-OMS Agent for Linux を VM にインストールしたら、次に OMS ダッシュボードを設定します。 これを行うには、OMS ポータルを使う方法と Azure Portal を使う方法の 2 つがあります。
+## <a name="setting-up-a-simple-log-analytics-dashboard"></a>シンプルな Log Analytics ダッシュ ボードの設定
 
-### <a name="oms-portal"></a>OMS ポータル 
+Linux 用 Log Analytics エージェントを VM にインストールしたら、次に Log Analytics ダッシュボードを設定します。 Azure portal でダッシュ ボードを設定することができます。
 
-OMS ポータル (<https://mms.microsoft.com>) にログインし、**[ソリューション ギャラリー]** に移動します。
+### <a name="azure-portal"></a>Azure ポータル 
 
-![](media/container-service-monitoring-oms/image6.png)
-
-**[Solution Gallery (ソリューション ギャラリー)]** が表示されたら、**[コンテナー]** を選択します。
-
-![](media/container-service-monitoring-oms/image7.png)
-
-コンテナー ソリューションを選択すると、[OMS Overview (OMS の概要)] ダッシュボード ページにタイルが表示されます。 取り込んだコンテナー データに対してインデックスが作成されると、ソリューション ビューのタイルにその情報が表示されます。
-
-![](media/container-service-monitoring-oms/image8.png)
-
-### <a name="azure-portal"></a>Azure Portal 
-
-Azure Portal (<https://portal.microsoft.com/>) にログインします。 **[Marketplace]** で **[監視 + 管理]** を選択し、**[See All (すべて表示)]** をクリックします。 検索ボックスに「`containers`」と入力します。 検索結果に "コンテナー" が表示されます。 **[コンテナー]** を選択し、**[作成]** をクリックします。
+<https://portal.microsoft.com/> で Azure portal にサインインします。 **[Marketplace]** で **[監視 + 管理]** を選択し、**[See All (すべて表示)]** をクリックします。 検索ボックスに「`containers`」と入力します。 検索結果に "コンテナー" が表示されます。 **[コンテナー]** を選択し、**[作成]** をクリックします。
 
 ![](media/container-service-monitoring-oms/image9.png)
 
@@ -85,15 +76,15 @@ Azure Portal (<https://portal.microsoft.com/>) にログインします。 **[Ma
 
 Log Analytics コンテナー ソリューションの詳細については、[Log Analytics のコンテナー ソリューション](../../log-analytics/log-analytics-containers.md)に関するページを参照してください。
 
-### <a name="how-to-scale-oms-agent-with-acs-dcos"></a>ACS DC/OS を使用して OMS エージェントの規模をスケールする方法 
+### <a name="how-to-scale-log-analytics-agent-with-acs-dcos"></a>ACS DC/OS を使用して Log Analytics エージェントをスケーリングする方法 
 
-実際のノード数に満たない OMS エージェントをインストールする必要がある場合や VM を追加して VMSS を拡大する場合は、`msoms` サービスの規模をスケールすることで目的の操作を実現できます。
+実際のノード数に満たない Log Analytics エージェントをインストールしなければならない場合や VM を追加して仮想マシン スケール セットをスケールアップする場合は、`msoms` サービスをスケーリングすることで対応できます。
 
 Marathon または DC/OS UI サービスのタブに移動し、ノード数をスケールアップできます。
 
 ![](media/container-service-monitoring-oms/image12.PNG)
 
-この操作を実行すると、OMS エージェントがデプロイされていない他のノードにデプロイできます。
+この操作を実行すると、Log Analytics エージェントがまだデプロイされていない他のノードにデプロイできます。
 
 ## <a name="uninstall-ms-oms"></a>MS OMS のアンインストール
 

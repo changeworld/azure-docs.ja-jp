@@ -7,34 +7,33 @@ manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: 40b3aa82c3e9e8ab9a30362c0a41998877655725
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: f5e30a103b09613caee8e9912a89a5bc2d390f65
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005599"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458090"
 ---
 # <a name="send-events-to-event-hubs-using-go"></a>Go を使用して Event Hubs にイベントを送信する
 
-Azure Event Hubs は、拡張性の高いイベント管理システムで、1 秒あたり何百万ものイベントを処理することができます。そのためアプリケーションは、接続されているデバイスや他のシステムによって生成された大量のデータを処理し、分析できます。 イベント ハブに収集されたイベントは、インプロセス ハンドラーを使用するか、他の分析システムに転送して、受信し処理することができます。
+Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 
-Event Hubs の詳細については、[Event Hubs の概要][Event Hubs overview]に関する記事を参照してください。
+このチュートリアルでは、Go で記述されたアプリケーションからイベント ハブにイベントを送信する方法について説明します。 
 
-このチュートリアルでは、Go で記述されたアプリケーションからイベント ハブにイベントを送信する方法について説明します。 イベントを受信するには、[対応する受信の記事](event-hubs-go-get-started-receive-eph.md)で説明されているように、**Go eph** (イベント プロセッサ ホスト) パッケージを使用します。
-
-このチュートリアルのコードは、[これらの GitHub サンプル](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs)から取得されたもので、import ステートメントや変数の宣言など、アプリケーションが完全に機能するかを確認することができます。
-
-その他の例については、[Event Hubs パッケージのリポジトリ](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples)から入手できます。
+> [!NOTE]
+> このクイック スタートをサンプルとして [GitHub](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/eventhubs) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
 * Go がローカルにインストールされていること。 必要に応じて、[こちらの手順](https://golang.org/doc/install)に従います。
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][] を作成してください。
 * 既存の Azure Event Hubs 名前空間とイベント ハブ。 これらのエンティティは、[こちらの記事](event-hubs-create.md)の手順に従って作成できます。
+
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
+最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順を実行した後、このチュートリアルに示されている手順に進みます。
 
 ## <a name="install-go-package"></a>Go パッケージをインストールする
 
@@ -125,15 +124,13 @@ if err != nil {
 log.Printf("got partition IDs: %s\n, info.PartitionIDs)
 ```
 
+アプリケーションを実行してイベントをイベント ハブに送信します。 
+
+お疲れさまでした。 メッセージをイベント ハブに送信しました。
+
 ## <a name="next-steps"></a>次の手順
-
-Event Hubs の詳細については、次のページを参照してください。
-
-* [EventProcessorHost を使用してイベントを受信する](event-hubs-go-get-started-receive-eph.md)
-* [Event Hubs の概要][Event Hubs overview]
-* [イベント ハブの作成](event-hubs-create.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+このクイック スタートでは、Go を使用してメッセージをイベント ハブに送信しました。 Go を使用してイベント ハブからイベントを受信する方法については、[Go を使用してイベント ハブからイベントを受信する方法](event-hubs-go-get-started-receive-eph.md)に関するページをご覧ください。
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md
-[無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[free account]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio

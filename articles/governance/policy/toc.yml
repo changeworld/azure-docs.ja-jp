@@ -4,19 +4,24 @@ items:
 - name: 概要
   items:
   - name: Azure Policy の概要
+    displayName: rbac, assign, initiative, parameters, count
     href: overview.md
 - name: クイック スタート
   items:
   - name: ポリシーの割り当て - ポータル
+    displayName: assign, compliance
     href: assign-policy-portal.md
   - name: ポリシーの割り当て - PowerShell
+    displayName: assign, compliance
     href: assign-policy-powershell.md
   - name: ポリシーの割り当て - Azure CLI
+    displayName: assign, compliance
     href: assign-policy-azurecli.md
   expanded: true
 - name: チュートリアル
   items:
   - name: Azure Policy の作成と管理
+    displayName: assign, definition, compliance, exempt, exclusion
     href: ./tutorials/create-and-manage.md
 - name: サンプル
   href: ./samples/index.md
@@ -26,166 +31,222 @@ items:
     - name: 名前を付ける
       items:
       - name: 複数の名前パターンを許可する
+        displayName: deny, indexed
         href: samples/allow-multiple-name-patterns.md
       - name: 類似パターンを要求する
+        displayName: deny, indexed
         href: samples/enforce-like-pattern.md
       - name: 一致パターンを要求する
+        displayName: deny, indexed
         href: samples/enforce-match-pattern.md
       - name: タグ一致パターンを要求する
+        displayName: deny, all
         href: samples/enforce-tag-match-pattern.md
     - name: タグ
       items:
       - name: タグとその既定値の適用
+        displayName: append, builtin, concat
         href: samples/apply-tag-def-val.md
       - name: 課金タグ ポリシーのイニシアティブ
         href: samples/billing-tags-policy-init.md
       - name: タグとその値を強制
+        displayName: deny, concat, builtin
         href: samples/enforce-tag-val.md
       - name: リソース グループへのタグと値の強制
+        displayName: deny, concat
         href: samples/enforce-tag-rg.md
     - name: 場所
       items:
       - name: 許可される場所
+        displayName: deny, builtin, location
         href: samples/allowed-locs.md
     - name: リソースの種類
       items:
       - name: 許可されるリソースの種類
+        displayName: deny, builtin, resourceTypes
         href: samples/allowed-res-types.md
       - name: 許可されないリソースの種類
+        displayName: deny, builtin, resourceTypes
         href: samples/not-allowed-res-type.md
   - name: コンピューティング
     items:
     - name: 仮想マシン
       items:
       - name: リソース グループのカスタム VM イメージの許可
+        displayName: deny, concat, ExistingResourceGroups
         href: samples/allow-custom-vm-image.md
       - name: ストレージ アカウントおよび仮想マシンに対して許可されている SKU
+        displayName: initiative, vmSKUs, storageSKUs
         href: samples/allowed-skus-storage.md
       - name: 承認された VM イメージ
+        displayName: deny
         href: samples/allowed-custom-images.md
       - name: 拡張機能が存在しない場合の監査
+        displayName: auditIfNotExists
         href: samples/audit-ext-not-exist.md
       - name: 許可されていない VM 拡張機能
+        displayName: deny
         href: samples/not-allowed-vm-ext.md
     - name: 仮想マシン スケール セット
       items:
       - name: VM がマネージド ディスクを使用していない場合の監査
+        displayName: audit
         href: samples/create-vm-managed-disk.md
       - name: マネージド ディスクを使用して VM を作成する
+        displayName: deny
         href: samples/use-managed-disk-vm.md
       - name: Azure Hybrid Use Benefit の拒否
+        displayName: deny
         href: samples/deny-hybrid-use.md
       - name: 特定の VM プラットフォーム イメージのみの許可
+        displayName: deny
         href: samples/allow-certain-vm-image.md
   - name: Data Lake
     items:
     - name: Data Lake Store での暗号化の適用
+      displayName: deny
       href: samples/enforce-datalakestore-encryption.md
   - name: 監視
     items:
     - name: 診断設定の監査
+      displayName: auditIfNotExists, resourceTypes
       href: samples/audit-diag-setting.md
   - name: ネットワーク
     items:
     - name: ネットワーク インターフェイス
       items:
       - name: すべての NIC 上の NSG X
+        displayName: deny
         href: samples/nsg-on-nic.md
       - name: VM ネットワーク インターフェイスでの承認されたサブネットの使用
+        displayName: deny
         href: samples/use-approved-subnet-vm-nics.md
       - name: VM ネットワーク インターフェイスでの承認された vNet の使用
+        displayName: deny, concat
         href: samples/use-approved-vnet-vm-nics.md
     - name: 仮想ネットワーク
       items:
       - name: 許可されているアプリケーション ゲートウェイ SKU
+        displayName: deny
         href: samples/allowed-app-gate-sku.md
       - name: ER ネットワークへのネットワーク ピアリングがない
+        displayName: deny, all, concat, ExistingResourceGroups
         href: samples/no-peering-er-net.md
       - name: ユーザー定義ルート テーブルがない
+        displayName: deny, all
         href: samples/no-user-def-route-table.md
       - name: すべてのサブネット上の NSG X
+        displayName: deny, all
         href: samples/nsg-on-subnet.md
       - name: VM ネットワーク インターフェイスでの承認されたサブネットの使用
+        displayName: deny
         href: samples/use-approved-subnet-vm-nics.md
       - name: VM ネットワーク インターフェイスでの承認された vNet の使用
+        displayName: deny
         href: samples/use-approved-vnet-vm-nics.md
     - name: ネットワーク セキュリティ グループ
       items:
       - name: すべての NIC 上の NSG X
+        displayName: deny
         href: samples/nsg-on-nic.md
       - name: すべてのサブネット上の NSG X
+        displayName: deny, all
         href: samples/nsg-on-subnet.md
     - name: Express Route
       items:
       - name: 許可されている Express Route の帯域幅
+        displayName: deny
         href: samples/allowed-er-band.md
       - name: 許可されている Express Route の SKU
+        displayName: deny
         href: samples/allowed-er-skus.md
       - name: Express Route に対して許可されているピアリングの場所
+        displayName: deny, Location
         href: samples/allowed-peering-er.md
     - name: Network Watcher
       items:
       - name: リージョンで Network Watcher が有効になっていない場合の監査
+        displayName: auditIfNotExists, Location
         href: samples/net-watch-not-enabled.md
     - name: アプリケーション ゲートウェイ
       items:
       - name: 許可されているアプリケーション ゲートウェイ SKU
+        displayName: deny
         href: samples/allowed-app-gate-sku.md
   - name: SQL
     items:
     - name: SQL Server
       items:
       - name: Azure Active Directory 管理者不在時の監査
+        displayName: auditIfNotExists
         href: samples/audit-no-aad-admin.md
       - name: サーバー レベルの脅威検出設定の監査
+        displayName: auditIfNotExists
         href: samples/audit-sql-ser-threat-det-setting.md
       - name: SQL Server の監査設定の監査
+        displayName: auditIfNotExists, builtin
         href: samples/sql-server-audit.md
       - name: SQL Server レベルの監査設定の監査
+        displayName: auditIfNotExists
         href: samples/audit-sql-ser-leve-audit-setting.md
       - name: SQL Server バージョン 12.0 が必要
+        displayName: deny, builtin
         href: samples/req-sql-12.md
     - name: '[SQL データベース]'
       items:
       - name: 許可されている SQL DB の SKU
+        displayName: deny
         href: samples/allowed-sql-db-skus.md
       - name: SQL DB レベルの脅威検出設定の監査
+        displayName: auditIfNotExists
         href: samples/audit-db-threat-det-setting.md
       - name: SQL DB の暗号化の監査
+        displayName: auditIfNotExists, disabled, indexed, builtin
         href: samples/sql-database-encryption-audit.md
       - name: SQL DB レベルの監査設定の監査
+        displayName: auditIfNotExists
         href: samples/audit-sql-db-audit-setting.md
-      - name: Transparent Data Encryption の状態の監査
-        href: samples/audit-trans-data-enc-status.md
   - name: Storage
     items:
     - name: ストレージ アカウントと VM に対して許可された SKU
+      displayName: initiative, vmSKUs, storageSKUs
       href: samples/allowed-skus-storage.md
     - name: 許可されるストレージ アカウントの SKU
+      displayName: deny, builtin, storageSKUs
       href: samples/allowed-stor-acct-skus.md
     - name: ストレージ アカウントのクール アクセス層の拒否
+      displayName: deny, all
       href: samples/deny-cool-access-tiering.md
     - name: ストレージ アカウントのみに対する HTTPS トラフィックの確認
+      displayName: deny, all
       href: samples/ensure-https-stor-acct.md
     - name: ストレージ ファイルの暗号化の確認
+      displayName: deny, all
       href: samples/ensure-store-file-enc.md
     - name: ストレージ アカウントの暗号化が必要
+      displayName: deny, builtin
       href: samples/req-store-acct-enc.md
 - name: 概念
   items:
   - name: Azure Policy の定義の構造
+    displayName: parameters, location, rule, alias, initiatives
     href: ./concepts/definition-structure.md
   - name: Policy の効果について
+    displayName: order, evaluation
     href: ./concepts/effects.md
   - name: ゲスト構成を使用した VM の監査
+    displayName: provider, tools, definition
     href: ./concepts/guest-configuration.md
 - name: ハウツー ガイド
   items:
   - name: プログラムによるポリシーの作成
+    displayName: assign, definition
     href: ./how-to/programmatically-create.md
   - name: コンプライアンス データの取得
+    displayName: evaluation, scan, summarize, query, events, log analytics
     href: ./how-to/getting-compliance-data.md
   - name: 準拠していないリソースを修復する
+    displayName: managed identity, task, definition, roleDefinitionIds
     href: ./how-to/remediate-resources.md
 - name: リファレンス
   items:
@@ -209,6 +270,10 @@ items:
       href: /rest/api/resources/policydefinitions
     - name: イニシアティブの定義
       href: /rest/api/resources/policysetdefinitions
+    - name: ポリシー追跡対象リソース
+      href: /rest/api/policy-insights/policytrackedresources
+    - name: 修復
+      href: /rest/api/policy-insights/remediations
     - name: ゲスト構成 (プレビュー)
       href: /rest/api/guestconfiguration/
 - name: リソース
@@ -225,9 +290,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: UserVoice
     href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: a71c43e53e9e4ab85c6b550d6e446814be0e16ba
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 3fbe1f250dbf07fc27f9fda58f6ea85347066018
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944279"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248372"

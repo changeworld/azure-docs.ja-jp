@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: c58c2b255d269aef7e8b3fea62d003ad0c16ef0a
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 0039536caf917a051f0ddabd6be7cf2b1be90ba2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971250"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404904"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry システム監視向けの Azure Log Analytics Nozzle のデプロイ
 
@@ -56,14 +56,14 @@ UAA コマンドライン クライアントをセットアップする前に、
 
 ### <a name="3-create-a-log-analytics-workspace-in-azure"></a>手順 3.Azure で Log Analytics ワークスペースを作成する
 
-Log Analytics ワークスペースは、手動で、またはテンプレートを使用して作成できます。 このテンプレートでは、OMS コンソールの事前に構成された OMS KPI ビューおよびアラートのセットアップをデプロイします。 
+Log Analytics ワークスペースは、手動で、またはテンプレートを使用して作成できます。 テンプレートにより、Log Analytics コンソール用に事前構成された KPI ビューとアラートのセットアップがデプロイされます。 
 
 #### <a name="to-create-the-workspace-manually"></a>ワークスペースを手動で作成するには:
 
 1. Azure Portal で Azure Marketplace でサービスの一覧を検索し、[Log Analytics] を選択します。
 2. **[作成]** を選択し、次の項目について選択します。
 
-   * **OMS ワークスペース**: ワークスペースの名前を入力します。
+   * **Log Analytics ワークスペース**: ワークスペースの名前を入力します。
    * **サブスクリプション**: 複数のサブスクリプションがある場合、CF デプロイと同じものを選択します。
    * **リソース グループ**: 新しいリソース グループを作成するか、CF デプロイと同じリソース グループを使用します。
    * **場所**: 場所を入力します。
@@ -71,19 +71,19 @@ Log Analytics ワークスペースは、手動で、またはテンプレート
 
 詳細については、「[Log Analytics の起動と開始](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)」を参照してください。
 
-#### <a name="to-create-the-oms-workspace-through-the-oms-monitoring-template-from-azure-market-place"></a>Azure Marketplace の OMS 監視テンプレートを使用して OMS ワークスペースを作成するには:
+#### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>Azure Marketplace の監視テンプレートを使用して Log Analytics ワークスペースを作成するには:
 
 1. Azure portal を開きます。
 2. [+] 記号をクリックするか、左上隅の [リソースの作成] をクリックします。
-3. 検索ウィンドウに「Cloud Foundry」と入力し、[OMS Cloud Foundry Monitoring Solution]\(OMS Cloud Foundry 監視ソリューション\) を選択します。
-4. OMS Cloud Foundry 監視ソリューション テンプレートのフロントページが読み込まれたら、[作成] をクリックしてテンプレート ブレードを起動します。
+3. 検索ウィンドウに「Cloud Foundry」と入力し、[Cloud Foundry 監視ソリューション] を選択します。
+4. Cloud Foundry 監視ソリューション テンプレートのフロントページが読み込まれたら、[作成] をクリックしてテンプレート ブレードを起動します。
 5. 必要なパラメーターを入力します。
-    * **サブスクリプション**: OMS ワークスペースの Azure サブスクリプションを選択します。通常は Cloud Foundry デプロイと同じです。
-    * **リソース グループ**: 既存のリソース グループを選択するか、OMS ワークスペース用の新しいグループを作成します。
+    * **サブスクリプション**: Log Analytics ワークスペースの Azure サブスクリプションを選択します。通常は Cloud Foundry デプロイと同じです。
+    * **リソース グループ**: 既存のリソース グループを選択するか、Log Analytics ワークスペース用の新しいグループを作成します。
     * **リソース グループの場所**: リソース グループの場所を選択します。
     * **OMS_Workspace_Name**: ワークスペース名を入力します。ワークスペースが存在しない場合は、テンプレートによって新しいワークスペースが作成されます。
     * **OMS_Workspace_Region**: ワークスペースの場所を選択します。
-    * **OMS_Workspace_Pricing_Tier**: OMS ワークスペース SKU を選択します。 [料金ガイダンス](https://azure.microsoft.com/pricing/details/log-analytics/)を参考にしてください。
+    * **OMS_Workspace_Pricing_Tier**: Log Analytics ワークスペース SKU を選択します。 [料金ガイダンス](https://azure.microsoft.com/pricing/details/log-analytics/)を参考にしてください。
     * **法律条項**: [法律条項] をクリックし、[作成] をクリックして法律条項に同意します。
 - すべてのパラメーターを指定したら、[作成] をクリックしてテンプレートをデプロイします。 デプロイが完了すると、通知タブに状態が表示されます。
 
@@ -137,8 +137,8 @@ cd oms-log-analytics-firehose-nozzle
 現在のディレクトリにある manifest.yml ファイルに環境変数を設定することができます。 Nozzle のアプリケーション マニフェストの例を次に示します。 値は、実際の Log Analytics ワークスペース情報に置き換えてください。
 
 ```
-OMS_WORKSPACE             : Log Analytics workspace ID: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
-OMS_KEY                   : OMS key: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
+OMS_WORKSPACE             : Log Analytics workspace ID: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
+OMS_KEY                   : OMS key: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
 OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Log Analytics. The default is 10 seconds.
 OMS_BATCH_TIME            : Interval for posting a batch to Log Analytics. The default is 10 seconds.
 OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Log Analytics. The default is 1000.
@@ -177,11 +177,11 @@ cf apps
 ```
 OMS Nozzle アプリケーションが実行中であることを確認します。
 
-## <a name="view-the-data-in-the-oms-portal"></a>OMS ポータルでデータを表示する
+## <a name="view-the-data-in-the-azure-portal"></a>Azure portal でデータを表示する
 
-Marketplace テンプレートを使用して OMS 監視ソリューションをデプロイした場合は、Azure portal に移動して OMS ソリューションを見つけます。 ソリューションは、テンプレートで指定したリソース グループにあります。 ソリューションをクリックし、OMS コンソールを参照すると、事前に構成されたビューが一覧表示され、Cloud Foundry システムの上位 KPI、アプリケーション データ、アラート、VM の正常性メトリックが表示されます。 
+Marketplace テンプレートを使用して監視ソリューションをデプロイした場合は、Azure portal に移動して、そのソリューションを見つけます。 ソリューションは、テンプレートで指定したリソース グループにあります。 ソリューションをクリックし、Log Analytics コンソールを参照すると、事前に構成されたビューが一覧表示され、Cloud Foundry システムの上位 KPI、アプリケーション データ、アラート、VM の正常性メトリックが表示されます。 
 
-OMS ワークスペースを手動で作成した場合は、次の手順に従ってビューとアラートを作成します。
+Log Analytics ワークスペースを手動で作成した場合は、次の手順に従ってビューとアラートを作成します。
 
 ### <a name="1-import-the-oms-view"></a>1.OMS ビューをインポートする
 
@@ -246,6 +246,6 @@ Azure Log Analytics Nozzle はオープン ソース化されています。 質
 
 ## <a name="next-step"></a>次のステップ
 
-PCF 2.0 から、VM のパフォーマンス メトリックは System Metrics Forwarder によって Azure Log Analytics Nozzle に転送され、OMS ワークスペースに統合されます。 VM のパフォーマンス メトリックに OMS エージェントは不要になりました。 ただし、OMS エージェントを引き続き使用して、Syslog 情報を収集できます。 OMS エージェントは、Bosh アドオンとして CF VM にインストールされています。 
+PCF 2.0 から、VM のパフォーマンス メトリックは System Metrics Forwarder によって Azure Log Analytics Nozzle に転送され、Log Analytics ワークスペースに統合されます。 VM のパフォーマンス メトリックに Log Analytics エージェントは不要になりました。 ただし、Log Analytics エージェントを引き続き使用して、Syslog 情報を収集できます。 Log Analytics エージェントは、Bosh アドオンとして CF VM にインストールされています。 
 
-詳細については、[Cloud Foundry デプロイへの OMS エージェントのデプロイ](https://github.com/Azure/oms-agent-for-linux-boshrelease)に関するページを参照してください。
+詳細については、[Cloud Foundry デプロイへの Log Analytics エージェントのデプロイ](https://github.com/Azure/oms-agent-for-linux-boshrelease)に関するページを参照してください。

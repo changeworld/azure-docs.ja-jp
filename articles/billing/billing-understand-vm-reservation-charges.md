@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: 460cd3a5b05680563661e2f6519eaa3506eee03b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e43188459bf495748a054b0f24936c9141bd218c
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392084"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025715"
 ---
 # <a name="understand-how-the-azure-reservation-discount-is-applied-to-virtual-machines"></a>仮想マシンに対する Azure 予約割引の適用方法
 
@@ -51,7 +51,7 @@ Azure の予約の適用状況を把握し、課金の使用状況レポート�
 
 ## <a name="application-of-reservation-discount-to-windows-vms"></a>Windows VM への予約割引の適用
 
-Windows VM インスタンスの実行中は、インフラストラクチャ コストに予約が適用されて充当されます。 VM インフラストラクチャ コストに対する予約の適用は、Windows VM の場合も 非 Windows VM の場合も変わりません。 Windows ソフトウェアには別途、vCPU 単位の料金が発生します。 [予約に伴う Windows ソフトウェアのコスト](https://go.microsoft.com/fwlink/?linkid=862756)に関するページを参照してください。 [Windows Server 向け Azure ハイブリッド特典] (https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) で Windows のライセンス コストを賄うことができます。
+Windows VM インスタンスの実行中は、インフラストラクチャ コストに予約が適用されて充当されます。 VM インフラストラクチャ コストに対する予約の適用は、Windows VM の場合も 非 Windows VM の場合も変わりません。 Windows ソフトウェアには別途、vCPU 単位の料金が発生します。 [予約に伴う Windows ソフトウェアのコスト](https://go.microsoft.com/fwlink/?linkid=862756)に関するページを参照してください。 Windows のライセンス コストは [Windows Server 向け Azure ハイブリッド特典](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)で充当できます。
 
 ## <a name="next-steps"></a>次の手順
 

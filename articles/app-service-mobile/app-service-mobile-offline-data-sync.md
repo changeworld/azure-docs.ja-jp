@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 403b3289a6135a59e888c4a7bf1cd9cbe40c8ac0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ab8fb4a567e4c4a7bf1e884999a4e403a98547a0
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34597979"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471035"
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure モバイル アプリでのオフライン データ同期
 ## <a name="what-is-offline-data-sync"></a>オフライン データ同期について

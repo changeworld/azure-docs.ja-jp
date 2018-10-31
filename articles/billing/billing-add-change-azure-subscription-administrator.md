@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/14/2018
+ms.date: 10/19/2018
 ms.author: cwatson
-ms.openlocfilehash: 821d263856f21897915ba7954487b4d029cc4ed0
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: d6e99c2d57baa5fc62f3894abc9d04635f81f5aa
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395247"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638054"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure サブスクリプション管理者を追加または変更する
 
@@ -41,9 +41,9 @@ Azure サブスクリプションの管理者としてユーザーを追加す�
 
 1. [Azure Portal の**サブスクリプション**](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
 2. アクセス権を付与するサブスクリプションを選択します。
-3. **[追加]** を選択します。
+3. リストから **[アクセス制御 (IAM)]** を選択します。
+4. **[追加]** を選択します。
    ([追加] ボタンがない場合は、アクセス許可を追加する権限がありません。)
-4. リストから **[アクセス制御 (IAM)]** を選択します。
 5. **[ロール]** ボックスで、**[所有者]** を選択します。 
 6. **[アクセスの割り当て先]** ボックスで、**[Azure AD のユーザー、グループ、またはアプリケーション]** を選択します。 
 7. **[選択]** ボックスに、所有者として追加するユーザーのメール アドレスを入力します。 ユーザーを選択し、**[保存]** を選択します。
@@ -67,6 +67,19 @@ Azure サブスクリプションの管理者としてユーザーを追加す�
     共同管理者のアクセス許可を削除するには、共同管理者であるユーザーを**右クリック**し、**[共同管理者を削除する]** を選択します。
 
     ![共同管理者削除のスクリーンショット](./media/billing-add-change-azure-subscription-administrator/remove-coadmin.png)
+
+### <a name="adding-a-guest-user-as-a-co-administrator"></a>ゲスト ユーザーを共同管理者として追加する
+
+共同管理者ロールが割り当てられたゲスト ユーザーは、同じく共同管理者ロールが割り当てられたメンバー ユーザーとは異なる点にいくつか気付くことがあります。 次のシナリオで考えてみましょう。
+
+- Azure AD の職場または学校アカウントを持つユーザー A は、Azure サブスクリプションのサービス管理者です。
+- ユーザー B は Microsoft アカウントを持っています。
+- ユーザー A がユーザー B に共同管理者ロールを割り当てます。
+- ユーザー B はほぼすべての操作を実行できますが、Azure AD にアプリケーションを登録したり、Azure AD ディレクトリでユーザーを検索したりすることはできません。
+
+想定とは異なり、ユーザー B はすべてを管理できるわけではありません。 この違いの理由は、Microsoft アカウントはメンバー ユーザーとしてではなく、ゲスト ユーザーとしてサブスクリプションに追加されるためです。 Azure AD でゲスト ユーザーに割り当てられる既定のアクセス許可は、メンバー ユーザーとは異なります。 たとえば、メンバー ユーザーは Azure AD の他のユーザーを読み取ることができますが、ゲスト ユーザーには他のユーザーの読み取りは許可されていません。 メンバー ユーザーは新しいサービス プリンシパルを Azure AD に登録できますが、ゲスト ユーザーにはサービス プリンシパルの登録は許可されていません。 ゲスト ユーザーがこれらのタスクを実行できるようにする必要がある場合、考えられるソリューションは、ゲスト ユーザーに必要な特定の Azure AD 管理者ロールを割り当てることです。 たとえば前のシナリオで他のユーザーの読み取りを許可するには[ディレクトリ リーダー](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers)のロールを割り当て、サービス プリンシパルを作成できるようにするには[アプリケーション開発者](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer)のロールを割り当てます。 メンバー ユーザーとゲスト ユーザーおよびそれぞれのアクセス許可の詳細については、「[Azure Active Directory の既定のユーザー アクセス許可とは](../active-directory/fundamentals/users-default-permissions.md)」をご覧ください。
+
+[Azure リソースの組み込みロール](../role-based-access-control/built-in-roles.md)は、[Azure AD 管理者ロール](../active-directory/users-groups-roles/directory-assign-admin-roles.md)とは異なることに注意してください。 組み込みロールは Azure AD に対するアクセス許可を一切付与しません。 詳細については、「[各種ロールについて](../role-based-access-control/rbac-and-directory-admin-roles.md)」をご覧ください。
 
 <a name="change-service-administrator-for-a-subscription"></a>
 

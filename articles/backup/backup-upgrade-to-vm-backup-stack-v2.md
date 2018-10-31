@@ -7,14 +7,14 @@ manager: vijayts
 tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/1/2018
+ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 6f19a536861d236a82cc77a17570d8e3004a2ba1
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 9152733e189aec25a5c024de7f9a3582c29218a3
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888273"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406536"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Azure VM バックアップ スタック V2 にアップグレードする
 
@@ -28,8 +28,8 @@ ms.locfileid: "48888273"
 
 * 復元時に非管理対象 VM の元のストレージ アカウントを使用できます。 この機能は、ストレージ アカウント間に分散しているディスクが VM にある場合でも使用できます。 さまざまな VM 構成で復元操作が速くなります。
     > [!NOTE]
-    > この機能は、元の VM のオーバーライドと同じではありません。
-    >
+    > この機能は、VM のディスクを復旧ポイントのデータで置き換えることと同じではありません。 
+    
 
 ## <a name="whats-changing-in-the-new-stack"></a>新しいスタックでの変更点
 現在、バックアップ ジョブは 2 つのフェーズで構成されます。

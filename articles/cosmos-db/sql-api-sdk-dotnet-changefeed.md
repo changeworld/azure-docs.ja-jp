@@ -8,14 +8,14 @@ ms.service: cosmos-db
 ms.component: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 05/21/2018
+ms.date: 10/24/2018
 ms.author: maquaran
-ms.openlocfilehash: 6c4dafa5b15548b3dbc02a9c093232197b3f1400
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: f09430aeb38e6762729167494a23096c7bc5ca85
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716555"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023953"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "44716555"
 > * [Async Java](sql-api-sdk-async-java.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
-> * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
+> * [REST ()](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST リソース プロバイダー](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](https://msdn.microsoft.com/library/azure/dn782250.aspx)
 > * [BulkExecutor - .NET](sql-api-sdk-bulk-executor-dot-net.md)
@@ -36,12 +36,20 @@ ms.locfileid: "44716555"
 |---|---|
 |**SDK のダウンロード**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API ドキュメント**|[Change Feed Processor ライブラリ API リファレンス ドキュメント](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**はじめに**|[DocumentDB Change Feed Processor .NET SDK の概要](change-feed.md)|
+|**作業開始**|[DocumentDB Change Feed Processor .NET SDK の概要](change-feed.md)|
 |**現在サポートされているフレームワーク**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>リリース ノート
 
 ### <a name="v2-builds"></a>v2 のビルド
+
+### <a name="a-name221221"></a><a name="2.2.1"/>2.2.1
+* マルチ マスター アカウントと新しいセッション トークン形式の固定見積もり計算。
+
+### <a name="a-name220220"></a><a name="2.2.0"/>2.2.0
+* パーティション分割されたリース コレクションのサポートが追加されました。 パーティション キーは /id として定義する必要があります。
+* マイナーな破壊的変更: IChangeFeedDocumentClient インターフェイスと ChangeFeedDocumentClient クラスのメソッドが RequestOptions パラメーターと CancellationToken パラメーターを含むように変更されました。 IChangeFeedDocumentClient は、ドキュメント クライアントのカスタム実装を提供して Change Feed Processor で使用できるようにする高度な拡張ポイントです。DocumentClient を修飾し、それに対するすべての呼び出しをインターセプトして、追加のトレースやエラー処理などを行います。この更新プログラムでは、IChangeFeedDocumentClient を実装するコードを変更して、新しいパラメーターを実装に含める必要があります。
+* マイナーな診断機能の向上。
 
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 * 新しい API、Task&lt;IReadOnlyList&lt;RemainingPartitionWork&gt;&gt; IRemainingWorkEstimator.GetEstimatedRemainingWorkPerPartitionAsync() が追加されました。 これを使用して、パーティションごとの見積作業を取得できます。
@@ -134,6 +142,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | Version | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [2.2.1](#2.2.1) |2018 年 10 月 24 日 |--- |
 | [1.3.3](#1.3.3) |2018 年 5 月 8 日 |--- |
 | [1.3.2](#1.3.2) |2018 年 4 月 18 日 |--- |
 | [1.3.1](#1.3.1) |2018 年 3 月 13 日 |--- |

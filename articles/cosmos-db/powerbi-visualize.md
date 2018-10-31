@@ -8,30 +8,23 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 10/03/2018
 ms.author: sngun
-ms.openlocfilehash: b5b3a96991a2150e553af01e3fda73e04116d7fb
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 90f5caa13bf95fb5298a06bda5a03e9bc17bcb1a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452413"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945180"
 ---
-# <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 用の Power BI チュートリアル: Power BI コネクタでデータを視覚化する
-[PowerBI.com](https://powerbi.microsoft.com/) は、ユーザーとその組織の重要なデータを使用してダッシュボードおよびレポートを作成し、共有することができるオンライン サービスです。  Power BI Desktop は、各種データ ソースのデータを取得し、データの結合と変換および強力なレポートと視覚エフェクトの作成を行い、レポートを Power BI に発行することができるレポート作成専用ツールです。  最新バージョンの Power BI Desktop では、Power BI 用 Azure Cosmos DB コネクタ経由で Azure Cosmos DB アカウントに接続できるようになりました。   
+# <a name="visualize-azure-cosmos-db-data-by-using-the-power-bi-connector"></a>Power BI コネクタを使用して Azure Cosmos DB データを視覚化する
 
-この Power BI チュートリアルでは、Power BI Desktop で Azure Cosmos DB アカウントに接続し、ナビゲーターを使用してデータを抽出するコレクションに移動して、Power BI Desktop クエリ エディターで JSON データを表形式に変換し、レポートを作成して PowerBI.com に発行する手順について説明します。
+[Power BI](https://powerbi.microsoft.com/) は、ダッシュボードやレポートを作成して共有できるオンライン サービスです。 Power BI Desktop は、さまざまなデータ ソースからのデータを取得できるレポート作成ツールです。 Azure Cosmos DB は、Power BI Desktop で使用できるデータ ソースの 1 つです。 Power BI 用の Azure Cosmos DB コネクタを使用して、Power BI Desktop を Azure Cosmos DB アカウントに接続できます。  Azure Cosmos DB データを Power BI にインポートした後、それを変換したり、レポートを作成したり、そのレポートを Power BI に発行したりできます。   
 
-この Power BI チュートリアルを完了すると、次の項目について説明できるようになります。  
-
-* Power BI Desktop では、どのようにして Azure Cosmos DB のデータでレポートを作成できますか?
-* Power BI Desktop では、どのようにして Azure Cosmos DB アカウントに接続できますか?
-* Power BI Desktop では、どのようにしてコレクションからデータを取得できますか?
-* Power BI Desktop では、どのようにして入れ子になった JSON データを変換できますか?
-* PowerBI.com では、どのようにしてレポートを発行して共有できますか?
+この記事では、Azure Cosmos DB アカウントを Power BI Desktop に接続するために必要な手順について説明します。 接続した後、コレクションに移動してデータを抽出し、JSON データを表形式に変換して、Power BI にレポートを発行します。
 
 > [!NOTE]
-> Azure Cosmos DB 用の Power BI コネクタは、データの抽出および変換のために Power BI Desktop に接続します。 Power BI Desktop で作成されたレポートは、後で PowerBI.com に発行できます。 PowerBI.com では、Azure Cosmos DB データの直接抽出および変換は実行できません。 
+> Azure Cosmos DB 用の Power BI コネクタは Power BI Desktop に接続します。 Power BI Desktop で作成されたレポートは、PowerBI.com に発行できます。 PowerBI.com から Azure Cosmos DB データの直接抽出を実行することはできません。 
 
 > [!NOTE]
 > Power BI コネクタによる Azure Cosmos DB への接続は、現在は Azure Cosmos DB SQL アカウントと Gremlin API アカウントでのみサポートされています。
@@ -39,17 +32,16 @@ ms.locfileid: "47452413"
 ## <a name="prerequisites"></a>前提条件
 この Power BI チュートリアルの手順に従う前に、次のリソースにアクセスできることを確認してください。
 
-* [最新バージョンの Power BI Desktop](https://powerbi.microsoft.com/desktop)。
-* Azure Cosmos DB アカウント内のデモ アカウントまたはデータへのアクセス。
-  * デモ アカウントには、このチュートリアルで示される火山データが設定されています。 このデモ アカウントは、どの SLA の制約も受けず、目的がデモンストレーションに限定されています。  当社は、事前の通知や理由なく、いつでもこのデモ アカウントに変更を加える権利を留保しています。これには、アカウントの終了、キーの変更、アクセスの制限、データの変更および削除が含まれますが、これに限定されるわけではありません。
-    * URL: `https://analytics.documents.azure.com`
-    * 読み取り専用キー: `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==`
-  * または、独自のアカウントを作成する場合は、[Azure Portal を使用した Azure Cosmos DB データベース アカウントの作成](https://azure.microsoft.com/documentation/articles/create-account/)に関するページをご覧ください。 その後で、このチュートリアルで使用されるデータと同様のサンプル火山データ (ただし、GeoJSON ブロックは含まれていません) を取得するために、[NOAA サイト](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5)にアクセスし、[Azure Cosmos DB データ移行ツール](import-data.md)を使用してデータをインポートしてください。
+* [最新バージョンの Power BI Desktop をダウンロードします](https://powerbi.microsoft.com/desktop)。
 
-PowerBI.com でレポートを共有するには、PowerBI.com のアカウントが必要です。  Power BI (無料) および Power BI Pro について詳しくは、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing) をご覧ください。
+* GitHub から[サンプル火山データ](https://github.com/Azure-Samples/azure-cosmos-db-sample-data/blob/master/SampleData/VolcanoData.json)をダウンロードします。
+
+* [Azure Cosmos DB データベース アカウントを作成し](https://azure.microsoft.com/documentation/articles/create-account/)、[Azure Cosmos DB データ移行ツール](import-data.md)を使用して火山データをインポートします。
+
+PowerBI.com でレポートを共有するには、PowerBI.com のアカウントが必要です。  Power BI と Power BI Pro の詳細については、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing) を参照してください。
 
 ## <a name="lets-get-started"></a>作業を開始する
-このチュートリアルでは、ユーザーが世界中の火山を研究している地質学者であると仮定します。  火山データは Azure Cosmos DB アカウントで格納されており、JSON ドキュメントは次のサンプル ドキュメントのようになっています。
+このチュートリアルでは、ユーザーが世界中の火山を研究している地質学者であると仮定します。 火山データは Azure Cosmos DB アカウント内に格納されており、JSON ドキュメント形式は次のとおりです。
 
     {
         "Volcano Name": "Rainier",
@@ -68,41 +60,33 @@ PowerBI.com でレポートを共有するには、PowerBI.com のアカウン�
           "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
     }
 
-Azure Cosmos DB アカウントから火山データを取得し、次のレポートのような対話型の Power BI レポートでデータを視覚化する必要があります。
+Azure Cosmos DB アカウントから火山データを取得し、対話型の Power BI レポートでデータを視覚化します。
 
-![この Power BI チュートリアルを Power BI コネクタを使用して完了することで、Power BI Desktop 火山レポートでデータを視覚化できます。](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
+1. Power BI Desktop を実行します。
 
-試してみる準備はできましたか。 それでは始めましょう。
-
-1. ワークステーションで Power BI Desktop を実行します。
-2. Power BI Desktop を起動すると、 *ようこそ* 画面が表示されます。
+2. ようこそ画面から直接 **[データの取得]** を実行したり、**[最近のソース]** を参照したり、**[Open Other Reports] (他のレポートを開く)** を実行したりできます。 右上隅にある [X] を選択して画面を閉じます。 Power BI Desktop の **[レポート]** ビューが表示されます。
    
-    ![Power BI Desktop のようこそ画面- Power BI コネクタ](./media/powerbi-visualize/power_bi_connector_welcome.png)
-3. *ようこそ画面*から、直接**データを取得**し、**最近使ったソース**を確認し、**他のレポートを開く**ことができます。  右上隅の [X] をクリックして画面を閉じます。 Power BI Desktop の **[レポート]** ビューが表示されます。
-   
-    ![Power BI Desktop のレポート ビュー- Power BI コネクタ](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
-4. **[ホーム]** リボンをクリックし、**[データの取得]** をクリックします。  **[データの取得]** ウィンドウが表示されます。
-5. **[Azure]** をクリックし、**[Azure Cosmos DB (ベータ版)]** を選択して、**[接続]** をクリックします。 
+   ![Power BI Desktop のレポート ビュー- Power BI コネクタ](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
+
+3. **[ホーム]** リボンをクリックし、**[データの取得]** をクリックします。  **[データの取得]** ウィンドウが表示されます。
+
+4. **[Azure]** をクリックし、**[Azure Cosmos DB (ベータ版)]** を選択して、**[接続]** をクリックします。 
 
     ![Power BI Desktop のデータの取得 - Power BI コネクタ](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
-6. **[Preview Connector] \(プレビュー コネクタ)** ページで、**[続行]** をクリックします。 **[Azure Cosmos DB]** ウィンドウが表示されます。
-7. 次のように、データを取得する Azure Cosmos DB アカウント エンドポイント URL を指定し、**[OK]** をクリックします。 独自のアカウントを使用するには、Azure Portal の **[[キー]](manage-account.md#keys)** ブレードにある [URI] ボックスから URL を取得できます。 デモ アカウントを使用するには、URL として `https://analytics.documents.azure.com` を入力します。 
+
+5. **[Preview Connector] \(プレビュー コネクタ)** ページで、**[続行]** をクリックします。 **[Azure Cosmos DB]** ウィンドウが表示されます。
+
+6. 次のように、データを取得する Azure Cosmos DB アカウント エンドポイント URL を指定し、**[OK]** をクリックします。 独自のアカウントを使用するには、Azure Portal の **[[キー]](manage-account.md#keys)** ブレードにある [URI] ボックスから URL を取得できます。 オプションで、データベース名とコレクション名を指定するか、またはナビゲーターを使用してデータベースとコレクションを選択することによってデータの取得元を識別できます。
    
-    データベース名、コレクション名、および SQL ステートメントは省略可能なフィールドなので、空白のままにします。  代わりに、ナビゲーターを使用して、データを取得するデータベースとコレクションを選択します。
+7. このエンドポイントに初めて接続している場合は、アカウント キーの入力を求められます。 独自のアカウントの場合は、Azure Portal の **[[Read-only Keys] (読み取り専用キー)](manage-account.md#keys)** ブレードにある **[主キー]** ボックスからキーを取得します。 適切なキーを入力し、**[接続]** をクリックします。
    
-    ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - Desktop Connect ウィンドウ](./media/powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
-8. このエンドポイントに初めて接続している場合は、アカウント キーの入力を求められます。 独自のアカウントの場合は、Azure Portal の **[[Read-only Keys] (読み取り専用キー)](manage-account.md#keys)** ブレードにある **[主キー]** ボックスからキーを取得します。 デモ アカウントの場合、キーは `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==` です。 適切なキーを入力し、**[接続]** をクリックします。
-   
-    レポートを作成する際は読み取り専用キーを使用することをお勧めします。  これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。 読み取り専用キーは、Azure ポータルの [[キー]](manage-account.md#keys) ブレードで取得できます。また、上記のデモ アカウント情報を使用することもできます。
-   
-    ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - アカウント キー](./media/powerbi-visualize/power_bi_connector_pbidocumentdbkey.png)
+   レポートを作成する際は読み取り専用キーを使用することをお勧めします。 これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。 読み取り専用キーは、Azure Portal の [[キー]](manage-account.md#keys) ブレードから入手できます。 
     
-    > [!NOTE] 
-    > "The specified database was not found. (指定されたデータベースが見つかりませんでした。)" というエラーが表示された場合は、 この [Power BI の問題](https://community.powerbi.com/t5/Issues/Document-DB-Power-BI/idi-p/208200)にある回避手順を参照してください。
-    
-9. アカウントが正常に接続されると、 **ナビゲーター** ウィンドウが表示されます。  **ナビゲーター** には、アカウントで利用できるデータベースの一覧が表示されます。
-10. レポート用のデータを取得するデータベースをクリックして展開します。デモ アカウントを使用する場合は、**[volcanodb]** を選択します。   
-11. 次に、取得するデータを含むコレクションを選択します。 デモ アカウントを使用する場合は、 **[volcano1]** を選択します。
+8. アカウントが正常に接続されると、 **ナビゲーター** ウィンドウが表示されます。 **ナビゲーター** には、アカウントで利用できるデータベースの一覧が表示されます。
+
+9. レポート用のデータを取得するデータベースをクリックして展開し、**[volcanodb]** を選択します (実際のデータベース名は異なる場合があります)。   
+
+10. 次に、取得するデータを含むコレクションを選択し、**[volcano1]** を選択します (実際のコレクション名は異なる場合があります)。
     
     プレビュー ウィンドウに、 **Record** アイテムの一覧が表示されます。  Power BI では、ドキュメントは **Record** タイプとして表されます。 同様に、ドキュメント内の入れ子になった JSON ブロックも、 **Record**として表されます。
     
@@ -170,7 +154,6 @@ Power BI Desktop レポート ビューは、データを視覚化するため�
 5. ここで、マップ ビジュアルに複数のバブルが表示されます。バブルは個々の火山の場所を示し、バブルのサイズは火山の高度と相関性があります。
 6. これで、基本的なレポートを作成できました。  別の視覚エフェクトを追加することで、レポートをさらにカスタマイズできます。  この例では、レポートを対話的にするために Volcano Type スライサーを追加しました。  
    
-    ![Azure Cosmos DB の Power BI チュートリアルの完了時の最終的な Power BI Desktop レポートのスクリーンショット](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
 7. [ファイル] メニューの **[保存]** をクリックして、ファイルを PowerBITutorial.pbix として保存します。
 
 ## <a name="publish-and-share-your-report"></a>レポートを発行して共有する

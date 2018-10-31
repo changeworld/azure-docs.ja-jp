@@ -2,20 +2,20 @@
 title: Durable Functions のサブオーケストレーション - Azure
 description: Azure Functions の拡張機能である Durable Functions のオーケストレーションからオーケストレーションを呼び出す方法。
 services: functions
-author: cgillum
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/29/2017
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 59e8eb41b7e9fe3d57196f6844d1a768c3ef598b
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 32f8872737fdf6dd766ae8df8ef3ed47692e2c9c
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094441"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49984339"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) でのサブオーケストレーション
 
@@ -31,6 +31,8 @@ ms.locfileid: "44094441"
 ## <a name="example"></a>例
 
 次の例では、プロビジョニングが必要な複数のデバイスがある IoT ("モノのインターネット") シナリオについて説明しています。 それぞれのデバイスに対して必要となる特定のオーケストレーションがあり、それは次のようになる場合があります。
+
+#### <a name="c"></a>C#
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -51,9 +53,32 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-このオーケストレーター関数は、そのまま一回限りのデバイス プロビジョニングに使用するか、または大規模なオーケストレーションに組み込むことができます。 後者の場合、親のオーケストレーター関数は `CallSubOrchestratorAsync` API を使用して `DeviceProvisioningOrchestration` のインスタンスをスケジュールできます。
+#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const deviceId = context.df.getInput();
+
+    // Step 1: Create an installation package in blob storage and return a SAS URL.
+    const sasUrl = yield context.df.callActivity("CreateInstallationPackage", deviceId);
+
+    // Step 2: Notify the device that the installation package is ready.
+    yield context.df.callActivity("SendPackageUrlToDevice", { id: deviceId, url: sasUrl });
+
+    // Step 3: Wait for the device to acknowledge that it has downloaded the new package.
+    yield context.df.waitForExternalEvent("DownloadCompletedAck");
+
+    // Step 4: ...
+});
+```
+
+このオーケストレーター関数は、そのまま一回限りのデバイス プロビジョニングに使用するか、または大規模なオーケストレーションに組み込むことができます。 後者の場合、親のオーケストレーター関数は `CallSubOrchestratorAsync` (C#) または `callSubOrchestrator` (JS) API を使用して `DeviceProvisioningOrchestration` のインスタンスをスケジュールできます。
 
 複数のオーケストレーター関数を並列で実行する方法を次に示します。
+
+#### <a name="c"></a>C#
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -74,6 +99,27 @@ public static async Task ProvisionNewDevices(
 
     // ...
 }
+```
+
+#### <a name="javascript-functions-v2-only"></a>JavaScript (Functions v2 のみ)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const deviceIds = yield context.df.callActivity("GetNewDeviceIds");
+
+    // Run multiple device provisioning flows in parallel
+    const provisioningTasks = [];
+    for (const deviceId of deviceIds) {
+        const provisionTask = context.df.callSubOrchestrator("DeviceProvisioningOrchestration", deviceId);
+        provisioningTasks.push(provisionTask);
+    }
+
+    yield context.df.Task.all(provisioningTasks);
+
+    // ...
+});
 ```
 
 ## <a name="next-steps"></a>次の手順

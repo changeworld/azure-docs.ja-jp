@@ -6,15 +6,15 @@ author: markgalioto
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 9/10/2018
+ms.date: 10/20/2018
 ms.author: markgal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19dd385effbdea0d9cd4209ec79f7582c0943e0c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c29a91a40df34ecd9270d5805209d361cf990754
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720040"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638037"
 ---
 # <a name="use-powershell-to-back-up-and-restore-virtual-machines"></a>PowerShell を使用して仮想マシンをバックアップし、復元する
 
@@ -350,8 +350,24 @@ BackupManagementType        : AzureVM
 $restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG"
 $restorejob
 ```
-出力は次の例のようになります。
+#### <a name="restore-managed-disks"></a>マネージド ディスクの復元
 
+> [!NOTE]
+> バックアップされた VM でマネージド ディスクが使用されている場合、それらをマネージド ディスクとして復元できるよう、Azure Powershell バージョン 6.7.0 以降には新機能が導入されています。
+>
+>
+
+追加のパラメーター **TargetResourceGroupName** で、マネージド ディスクの復元先とする RG を指定できます。
+
+
+```powershell
+$restorejob = Restore-AzureRmRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks"
+```
+
+**VMConfig.JSON** ファイルはストレージ アカウントに復元され、マネージド ディスクは指定したターゲット RG に復元されます。
+
+
+出力は次の例のようになります。
 ```
 WorkloadName     Operation          Status               StartTime                 EndTime            JobID
 ------------     ---------          ------               ---------                 -------          ----------
@@ -457,73 +473,17 @@ $details = Get-AzureRmRecoveryServicesBackupJobDetails -Job $restorejob
       Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $dekUrl -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -VolumeType Data
       ```
 
-   * **管理対象の暗号化された VM** - 管理対象の暗号化されていない VM の場合は、BLOB ストレージからマネージド ディスクを作成し、ディスクをアタッチする必要があります。 詳細については、記事「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照してください。 次のサンプル コードでは、管理対象の暗号化されていない VM のデータ ディスクをアタッチする方法を示します。
+   * **管理対象の暗号化されていない VM** - 管理対象の暗号化されていない VM では、復元されたマネージド ディスクをアタッチします。 詳細については、記事「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照してください。
 
-      ```powershell
-      $storageType = "StandardLRS"
-      $osDiskName = $vm.Name + "_osdisk"
-      $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
-      $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri
-      $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk $diskConfig -ResourceGroupName "test"
-      Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -CreateOption "Attach" -Windows
-      foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-       {
-       $dataDiskName = $vm.Name + $dd.name ;
-       $dataVhdUri = $dd.vhd.uri ;
-       $dataDiskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $dataVhdUri ;
-       $dataDisk2 = New-AzureRmDisk -DiskName $dataDiskName -Disk $dataDiskConfig -ResourceGroupName "test" ;
-       Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
-       }
-      ```
-
-   * **管理対象の暗号化された VM (BEK のみ)** - 管理対象の暗号化された VM (BEK のみを使用して暗号化) では、BLOB ストレージからマネージド ディスクを作成し、ディスクをアタッチする必要があります。 詳細については、記事「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照してください。 次のサンプル コードでは、管理対象の暗号化された VM のデータ ディスクをアタッチする方法を示します。
-
-      ```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      $storageType = "StandardLRS"
-      $osDiskName = $vm.Name + "_osdisk"
-      $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
-      $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri
-      $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk $diskConfig -ResourceGroupName "test"
-      Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
-      foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-       {
-       $dataDiskName = $vm.Name + $dd.name ;
-       $dataVhdUri = $dd.vhd.uri ;
-       $dataDiskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $dataVhdUri ;
-       $dataDisk2 = New-AzureRmDisk -DiskName $dataDiskName -Disk $dataDiskConfig -ResourceGroupName "test" ;
-       Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
-       }
-      ```
-
-       データ ディスクの暗号化を手動で有効にするには、次のコマンドを使用します。
+   * **管理対象の暗号化された VM (BEK のみ)** - 管理対象の暗号化された VM (BEK のみを使用して暗号化) では、復元されたマネージド ディスクをアタッチします。 詳細については、記事「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照してください。
+   
+      データ ディスクの暗号化を手動で有効にするには、次のコマンドを使用します。
 
        ```powershell
        Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $RG -VMName $vm -AadClientID $aadClientID -AadClientSecret $aadClientSecret -DiskEncryptionKeyVaultUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -VolumeType Data
        ```
 
-   * **管理対象の暗号化された VM (BEK と KEK)** - 管理対象の暗号化された VM (BEK と KEK を使用して暗号化) では、BLOB ストレージからマネージド ディスクを作成し、ディスクをアタッチする必要があります。 詳細については、記事「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照してください。 次のサンプル コードでは、管理対象の暗号化された VM のデータ ディスクをアタッチする方法を示します。
-
-      ```powershell
-      $dekUrl = "https://ContosoKeyVault.vault.azure.net:443/secrets/ContosoSecret007/xx000000xx0849999f3xx30000003163"
-      $kekUrl = "https://ContosoKeyVault.vault.azure.net:443/keys/ContosoKey007/x9xxx00000x0000x9b9949999xx0x006"
-      $keyVaultId = "/subscriptions/abcdedf007-4xyz-1a2b-0000-12a2b345675c/resourceGroups/ContosoRG108/providers/Microsoft.KeyVault/vaults/ContosoKeyVault"
-      $storageType = "StandardLRS"
-      $osDiskName = $vm.Name + "_osdisk"
-      $osVhdUri = $obj.'properties.storageProfile'.osDisk.vhd.uri
-      $diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $osVhdUri
-      $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk $diskConfig -ResourceGroupName "test"
-      Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDisk.Id -DiskEncryptionKeyUrl $dekUrl -DiskEncryptionKeyVaultId $keyVaultId -KeyEncryptionKeyUrl $kekUrl -KeyEncryptionKeyVaultId $keyVaultId -CreateOption "Attach" -Windows
-      foreach($dd in $obj.'properties.storageProfile'.dataDisks)
-       {
-       $dataDiskName = $vm.Name + $dd.name ;
-       $dataVhdUri = $dd.vhd.uri ;
-       $dataDiskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location "West US" -CreateOption Import -SourceUri $dataVhdUri ;
-       $dataDisk2 = New-AzureRmDisk -DiskName $dataDiskName -Disk $dataDiskConfig -ResourceGroupName "test" ;
-       Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -ManagedDiskId $dataDisk2.Id -Lun $dd.Lun -CreateOption "Attach"
-       }
-      ```
+   * **管理対象の暗号化された VM (BEK と KEK)** - 管理対象の暗号化された VM (BEK と KEK を使用して暗号化) では、復元されたマネージド ディスクをアタッチします。 詳細については、記事「[PowerShell を使用して Windows VM にデータ ディスクを接続する](../virtual-machines/windows/attach-disk-ps.md)」を参照してください。 
 
       データ ディスクの暗号化を手動で有効にするには、次のコマンドを使用します。
 

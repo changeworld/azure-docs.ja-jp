@@ -4,16 +4,16 @@ description: Azure Automation Runbook のエラーをトラブルシューティ
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 07/13/2018
+ms.date: 10/17/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b02f1b04756f1e3f01426e58c5f8c625cb746f05
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 33c2bd48084c3d0e73fe2f4a1ce922e7a66b944f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163904"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955431"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook のエラーをトラブルシューティングする
 
@@ -32,14 +32,14 @@ Unknown_user_type: Unknown User Type
 
 #### <a name="cause"></a>原因
 
-このエラーは、資格情報アセット名が無効な場合、または Automation 資格情報アセットのセットアップに使用したユーザー名とパスワードが無効な場合に発生します。
+このエラーは、資格情報資産名が無効な場合、または Automation 資格情報資産のセットアップに使用したユーザー名とパスワードが無効な場合に発生します。
 
 #### <a name="resolution"></a>解決策
 
 次の手順で原因を突き止めます。  
 
-1. Azure に接続するために使用する Automation 資格情報資産名で、 **@** 文字などの特殊文字が使用されていないことを確認します。  
-2. ローカル PowerShell ISE エディターで、Azure Automation に保存されているユーザー名とパスワードを使用できることを確認します。 その際、PowerShell ISE で次のコマンドレットを実行します。  
+1. Azure に接続するために使用する Automation 資格情報資産名で、**@** 文字などの特殊文字が使用されていないことを確認します。  
+2. ローカル PowerShell ISE エディターで、Azure Automation に保存されているユーザー名とパスワードを使用できることを確認します。 PowerShell ISE で次のコマンドレットを実行して、ユーザー名とパスワードが正しいことを確認できます。  
 
    ```powershell
    $Cred = Get-Credential  
@@ -122,7 +122,7 @@ Azure アカウントに多要素認証を設定している場合、Azure に�
 
 #### <a name="resolution"></a>解決策
 
-Azure クラシック デプロイ モデルのコマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../../azure-resource-manager/resource-group-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../../azure-resource-manager/resource-group-authenticate-service-principal.md)方法に関する記事を参照してください。
+Azure クラシック デプロイ モデルのコマンドレットで証明書を使用する方法については、[証明書を作成し、追加して Azure サービスを管理する](http://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)方法に関するページを参照してください。 Azure Resource Manager コマンドレットでサービス プリンシパルを使用する方法については、[Azure ポータルでサービス プリンシパルを作成する](../../active-directory/develop/howto-create-service-principal-portal.md)方法に関する記事と [Azure Resource Manager でサービス プリンシパルを認証する](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)方法に関する記事を参照してください。
 
 ## <a name="common-errors-when-working-with-runbooks"></a>Runbook の使用時に発生する一般的なエラー
 
@@ -221,11 +221,11 @@ The job was tried three times but it failed
 
 このエラーは次の理由で発生する可能性があります。
 
-1. メモリの制限。 サンドボックスに割り当てられるメモリの制限については、「[Automation の制限](../../azure-subscription-service-limits.md#automation-limits)」で説明されています。400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。
+1. メモリの制限。 サンドボックスに割り当てられるメモリの制限については、「[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)」で説明されています。400 MB を超えるメモリを使用すると、ジョブが失敗することがあります。
 
 1. ネットワーク ソケット。 「[Automation サービスの制限](../../azure-subscription-service-limits.md#automation-limits)」の説明のように、Azure サンド ボックスの同時ネットワーク ソケット数は 1,000 に制限されています。
 
-1. モジュールに互換性がない。 これは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「Command not found (コマンドが見つかりません)」または「Cannot bind parameter (パラメーターをバインドできません)」というメッセージが Runbook から返されます。
+1. モジュールに互換性がない。 このエラーは、モジュールの依存関係が正しくない場合に発生することがあります。この場合は通常、「Command not found (コマンドが見つかりません)」または「Cannot bind parameter (パラメーターをバインドできません)」というメッセージが Runbook から返されます。
 
 #### <a name="resolution"></a>解決策
 
@@ -296,7 +296,7 @@ Runbook ジョブがエラーで失敗します。
 
 #### <a name="cause"></a>原因
 
-このエラーは、Runbook で使用しているコマンドレットを PowerShell エンジンが見つけられないときに発生します。 この原因としては、コマンドレットが含まれるモジュールがアカウントにない、Runbook 名に名前の競合がある、コマンドレットが別のモジュールにも存在し、Automation が名前を解決できないなどが考えられます。
+このエラーは、Runbook で使用しているコマンドレットを PowerShell エンジンが見つけられないときに発生します。 この原因としては、コマンドレットを含むモジュールがアカウントにない、Runbook 名に名前の競合がある、コマンドレットが別のモジュールにも存在し、Automation が名前を解決できないなどが考えられます。
 
 #### <a name="resolution"></a>解決策
 
@@ -305,35 +305,37 @@ Runbook ジョブがエラーで失敗します。
 * コマンドレット名を正しく入力していることを確認します。  
 * Automation アカウントにコマンドレットが存在し、競合がないことを確認します。 コマンドレットの存在を確認するには、Runbook を編集モードで開き、ライブラリで見つけるコマンドレットを検索し、`Get-Command <CommandName>` を実行します。 コマンドレットがアカウントで利用できることと他のコマンドレットや Runbook と名前が競合しないことを確認したら、それをキャンバスに追加し、Runbook に設定されている有効なパラメーターを使用していることを確認します。  
 * 名前が競合し、コマンドレットが 2 つの異なるモジュールで利用できる場合、コマンドレットの完全修飾名を利用することで解決できます。 たとえば、**ModuleName\CmdletName** を使用できます。  
-* ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュール/コマンドレットがハイブリッド worker をホストしているコンピューターにインストールされていることを確認します。
-
-### <a name="evicted-from-checkpoint"></a>シナリオ: Runbook を長時間実行するといつも次の例外で失敗する: [The job cannot continue running because it was repeatedly evicted from the same checkpoint]\(ジョブは同じチェックポイントから繰り返し削除されたため、実行を継続できません\)
-
-#### <a name="issue"></a>問題
-
-これは Azure Automation 内のプロセスの "フェア シェア" 監視のための設計による動作です。3 時間以上実行している Runbook は自動的に中断されます。 ただし、返されるエラー メッセージでは "次" のオプションは提供されません。
-
-#### <a name="cause"></a>原因
-
-さまざまな理由から Runbook は中断されることがあります。 ほとんどの場合、中断はエラーのために発生します。 たとえば、Runbook のキャッチされない例外、ネットワーク障害、Runbook を実行している Runbook Worker でのクラッシュなどは、すべて Runbook が中断される原因になり、再開時には最後のチェックポイントから開始されます。
-
-#### <a name="resolution"></a>解決策
-
-この問題を回避するための解決策では、ワークフローでのチェックポイントを使用します。 詳細については、「[PowerShell ワークフローについての説明](../automation-powershell-workflow.md#checkpoints)」をご覧ください。 "フェア シェア" およびチェックポイントの詳細については、ブログ記事「[Using Checkpoints in Runbooks](https://azure.microsoft.com/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/)」(Runbook でのチェックポイントの使用) を参照してください。
+* ハイブリッド worker グループでオンプレミスの runbook を実行する場合は、モジュール/コマンドレットがハイブリッド worker をホストしているマシンにインストールされていることを確認します。
 
 ### <a name="long-running-runbook"></a>シナリオ: 実行時間の長い Runbook が完了しない
 
 #### <a name="issue"></a>問題
 
-これは Azure Automation 内のプロセスの "フェア シェア" 監視のための Azure サンドボックスでの設計による動作です。3 時間以上実行している Runbook は自動的に中断されます。
+Runbook は、3 時間実行すると**停止**状態になります。 次のエラーを受け取る可能性もあります。
+
+```
+The job was evicted and subsequently reached a Stopped state. The job cannot continue running
+```
+
+これは Azure Automation 内のプロセスの "fair share" 監視のための Azure サンドボックスでの設計による動作です。3 時間以上実行している Runbook は自動的に中断されます。 fair-share の時間の制限を超える Runbook の状態は、Runbook の種類によって異なります。 PowerShell Runbook と Python Runbook は、**停止**状態に設定されます。 PowerShell Workflow Runbook は、**失敗**に設定されます。
 
 #### <a name="cause"></a>原因
 
-Runbook が、Azure サンドボックスのフェア シェアによって許可されている 3 時間の制限を超えて実行しました
+Runbook が、Azure サンドボックスの fair share によって許可されている 3 時間の制限を超えて実行しました。
 
 #### <a name="resolution"></a>解決策
 
-推奨される解決策は、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。 Hybrid Worker には、Azure サンドボックスのような[フェア シェア](../automation-runbook-execution.md#fair-share)による 3 時間の Runbook 制限はありません。
+推奨される解決策の 1 つは、[Hybrid Runbook Worker](../automation-hrw-run-runbooks.md) で Runbook を実行することです。
+
+Hybrid Worker には、Azure サンドボックスのような [fair share](../automation-runbook-execution.md#fair-share) による 3 時間の Runbook 制限はありません。 Hybrid Runbook Worker は 3 時間の fair share 制限では制限されていないものの、この Hybrid Runbook Worker 上で実行される Runbook は、予期しないローカル インフラストラクチャの問題が発生したときに再起動の動作がサポートされるよう、今後も開発していく必要があります。
+
+もう 1 つのオプションは、[子 Runbook](../automation-child-runbooks.md) を作成して Runbook を最適化することです。 Runbook によって多数のリソース上で同じ関数をループ処理する場合 (複数のデータベースで同じデータベース操作を行うなど)、その関数を子 Runbook に移動することができます。 これらの各子 Runbook は、別々のプロセスで並列に実行されるため、親 Runbook が完了するまでの合計時間が減ります。
+
+子 Runbook のシナリオを実現する PowerShell コマンドレットは次のとおりです。
+
+[Start-AzureRMAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook): このコマンドレットを使用すると、Runbook を起動し、パラメーターを Runbook に渡すことができます
+
+[Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob): このコマンドレットを使用すると、子 Runbook の完了後に実行する必要のある操作がある場合、各子のジョブの状態を確認できます。
 
 ## <a name="common-errors-when-importing-modules"></a>モジュールのインポート時に発生する一般的なエラー
 
@@ -350,7 +352,7 @@ Runbook が、Azure サンドボックスのフェア シェアによって許�
 * 構造が Automation で必要とされる構造と一致しません。
 * Automation アカウントにデプロイされていない別のモジュールにモジュールが依存しています。
 * モジュールのフォルダーにその依存関係がありません。
-* モジュールのアップロードに `New-AzureRmAutomationModule` コマンドレットを使用していますが、完全なストレージ パスを与えていないか、公共でアクセスできる URL でモジュールを読み込んでいません。
+* モジュールのアップロードに `New-AzureRmAutomationModule` コマンドレットを使用していますが、完全なストレージ パスを指定していないか、パブリックにアクセスできる URL でモジュールを読み込んでいません。
 
 #### <a name="resolution"></a>解決策
 

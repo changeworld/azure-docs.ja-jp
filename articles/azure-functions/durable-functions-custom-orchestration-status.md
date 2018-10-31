@@ -2,24 +2,27 @@
 title: Durable Functions でのカスタムオーケストレーションの状態 - Azure
 description: Durable Functions 用のカスタム オーケストレーションの状態を構成し使用する方法を説明します。
 services: functions
-author: kadimitr
+author: kashimiz
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/24/2018
+ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c8eb2be6836e11ddbaed81970024ea7200ea819d
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: b8017288adb75c990113b0f2ff5ba29a1f1e0a18
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093093"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986680"
 ---
 # <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Durable Functions でのカスタムオーケストレーションの状態 (Azure Functions)
 
 カスタムオーケストレーションの状態を使用すると、オーケストレーター関数のカスタム状態値を設定できます。 この状態は、HTTP GetStatus API または `DurableOrchestrationClient.GetStatusAsync` API を通してのみ提供されます。
+
+> [!NOTE]
+> JavaScript 用のカスタム オーケストレーションの状態は、今後のリリースで利用可能になる予定です。
 
 ## <a name="sample-use-cases"></a>サンプル ユース ケース 
 

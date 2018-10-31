@@ -12,16 +12,17 @@ ms.topic: reference
 ms.date: 11/20/2017
 ms.author: sngun
 ms.custom: ''
-ms.openlocfilehash: 2e22bfb30cdf4decdc8a6fba612b75233c9c0971
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: d079b30657d3e8f770ea8ed6a7c419e7619ce99c
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901194"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024139"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK for Python: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
+> * [.NET Standard](table-sdk-dotnet-standard.md)
 > * [Java](table-sdk-java.md)
 > * [Node.js](table-sdk-nodejs.md)
 > * [Python](table-sdk-python.md)
@@ -33,7 +34,7 @@ ms.locfileid: "48901194"
 |**API ドキュメント**|[Python の API リファレンス ドキュメント](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
 |**SDK のインストール手順**|[Python SDK のインストール手順](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**SDK への協力**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**現在サポートされているプラットフォーム**|[Python 2.7](https://www.python.org/downloads/) または [Python 3.3、3.4、3.5、または 3.6] (https://www.python.org/downloads/)|
+|**現在サポートされているプラットフォーム**|[Python 2.7](https://www.python.org/downloads/)、または [Python 3.3、3.4、3.5、3.6](https://www.python.org/downloads/)|
 
 > [!IMPORTANT]
 > プレビュー中にテーブル API アカウントを作成した場合、一般公開されたテーブル API SDK を使うには[新しいテーブル API アカウント](create-table-dotnet.md#create-a-database-account)を作成してください。

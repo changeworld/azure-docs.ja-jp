@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: 66d04ca93a79f4d9cdd9f162c6cd3210ae35f4d2
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: e317a9c3cea800e05fbf3d2df73c124d2e7ffd23
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902707"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457665"
 ---
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
@@ -211,6 +211,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 *Host.json* ファイルでは、関数アプリから Application Insights に送信するログの量を設定します。 カテゴリごとに、送信する最小のログ レベルを指定します。 次に例を示します。
 
+#### <a name="functions-version-1"></a>Functions バージョン 1 
 ```json
 {
   "logger": {
@@ -226,6 +227,22 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 }
 ```
 
+#### <a name="functions-version-2"></a>Functions バージョン 2 
+Functions バージョン 2 で、[.NET Core のログ記録フィルター階層](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)が使用されるようになりました。 
+```json
+{
+  "logging": {
+    "fileLoggingMode": "always",
+    "logLevel": {
+      "default": "Information",
+      "Host.Results": "Error",
+      "Function": "Error",
+      "Host.Aggregator": "Trace"
+    }
+  }
+}
+```
+
 この例では、次のルールを設定します。
 
 1. カテゴリが "Host.Results" または "Function" のログの場合は、`Error` 以上のレベルのみを Application Insights に送信する。 `Warning` 以下のレベルのログは無視する。
@@ -236,6 +253,7 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
 
 *host.json* に先頭の文字列が同一のカテゴリが複数含まれる場合は、同一の部分がより長いものが最初に一致する。 たとえば、"Host.Aggregator" 以外のランタイムからのすべてのログを `Error` レベルで記録し、"Host.Aggregator" のログを `Information` レベルで記録するとします。
 
+#### <a name="functions-version-1"></a>Functions バージョン 1 
 ```json
 {
   "logger": {
@@ -246,6 +264,21 @@ Azure Functions ロガーでは、すべてのログに*ログ レベル*も含�
         "Function": "Error",
         "Host.Aggregator": "Information"
       }
+    }
+  }
+}
+```
+
+#### <a name="functions-version-2"></a>Functions バージョン 2 
+```json
+{
+  "logging": {
+    "fileLoggingMode": "always",
+    "logLevel": {
+      "default": "Information",
+      "Host": "Error",
+      "Function": "Error",
+      "Host.Aggregator": "Information"
     }
   }
 }

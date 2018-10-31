@@ -2,26 +2,25 @@
 title: 'Azure Backup: 仮想マシンをバックアップする準備'
 description: Azure で仮想マシンをバックアップする環境が整っていることを確認します。
 services: backup
-author: markgalioto
+author: rayne-wiselman
 manager: carmonm
 keywords: バックアップ, バックアップする,
 ms.service: backup
 ms.topic: conceptual
-ms.date: 6/21/2018
-ms.author: markgal
-ms.openlocfilehash: 40a83b93443ebe1482f89a114505a1ba27b93bd2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.date: 10/23/2018
+ms.author: raynew
+ms.openlocfilehash: 30b35d38c30d3ee9410a85824c53001ca95cf30b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39445745"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025941"
 ---
-# <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備
+# <a name="prepare-to-back-up-azure-vms"></a>Azure VM をバックアップする準備をする
 
-この記事では、Azure Resource Manager でデプロイされた仮想マシン (VM) をバックアップできるように環境を準備する手順について説明します。 手順の各ステップでは、Azure ポータルを使用します。 仮想マシンをバックアップするときに、バックアップ データまたは回復ポイントは Recovery Services コンテナーに格納されます。 Recovery Services コンテナーには、クラシック仮想マシンおよび Resource Manager でデプロイされた仮想マシンのバックアップ データが格納されます。
+この記事では、Azure Resource Manager でデプロイされた仮想マシン (VM) をバックアップできるように環境を準備する手順について説明します。 手順の各ステップでは、Azure ポータルを使用します。 仮想マシンをバックアップするときに、バックアップ データや回復ポイントは Recovery Services Backup コンテナーに格納されます。 
 
-> [!NOTE]
-> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。
+
 
 Resource Manager でデプロイされた仮想マシンを保護 (またはバックアップ) する前に、次の前提条件を満たしておく必要があります。
 
@@ -37,7 +36,7 @@ Resource Manager でデプロイされた仮想マシンを保護 (またはバ�
 
  * **Linux**: Azure Backup は、[Azure で承認されている一連のディストリビューション](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)をサポートしています (Core OS Linux を除く)。 復元ファイルをサポートする Linux オペレーティング システムの一覧については、[仮想マシンのバックアップからのファイルの復元](backup-azure-restore-files-from-vm.md#for-linux-os)に関する記事を参照してください。
 
-    > [!NOTE] 
+    > [!NOTE]
     > 他の個人所有の Linux ディストリビューションは、仮想マシン上で VM エージェントが動作し、かつ Python がサポートされていれば使用できます。 ただし、それらのディストリビューションはサポートされません。
     >
  * **Windows Server**、**Windows client**: Windows Server 2008 R2 または Windows 7 より前のバージョンはサポートされていません。
@@ -46,10 +45,9 @@ Resource Manager でデプロイされた仮想マシンを保護 (またはバ�
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>VM のバックアップと復元に関する制限
 環境を準備する前に、制限事項を把握してください。
 
-* データ ディスクを 16 個よりも多く搭載した仮想マシンのバックアップはサポートされません。
-* 予約済み IP アドレスはあるがエンドポイントが定義されていない仮想マシンのバックアップはサポートされません。
+* 32 台を超えるデータ ディスクを搭載した仮想マシンのバックアップはサポートされません。
 * Linux Unified Key Setup (LUKS) 暗号化を使用して暗号化された Linux VM のバックアップはサポートされていません。
-* クラスターの共有ボリューム (CSV) またはスケールアウト ファイル サーバー構成を含む VM のバックアップはお勧めしません。 行った場合、CSV ライターの障害が発生します。 スナップショット タスク中は、クラスター構成に含まれるすべての VM が必要になります。 Azure Backup では、マルチ VM 整合性をサポートしていません。 
+* クラスターの共有ボリューム (CSV) またはスケールアウト ファイル サーバー構成を含む VM のバックアップはお勧めしません。 行った場合、CSV ライターの障害が発生します。 スナップショット タスク中は、クラスター構成に含まれるすべての VM が必要になります。 Azure Backup では、マルチ VM 整合性をサポートしていません。
 * バックアップ データには、ネットワーク経由でマウントされて VM に接続されているドライブは含まれません。
 * 復元中に既存の仮想マシンを置き換えることはサポートされません。 VM が存在している場合に VM の復元を試みると、復元操作は失敗します。
 * リージョン間のバックアップと復元はサポートされません。
@@ -62,6 +60,9 @@ Resource Manager でデプロイされた仮想マシンを保護 (またはバ�
   * ロード バランサー構成 (内部および外部の) での仮想マシン
   * 複数の予約済み IP アドレスを持つ仮想マシン
   * 複数のネットワーク アダプターを持つ仮想マシン
+
+  > [!NOTE]
+  > Azure Backup は、Microsoft Azure Virtual Machines 用の新しい種類の永続ストレージである [Standard SSD Managed Disks](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/) をサポートします。 これは、[Azure VM バックアップ スタック V2](backup-upgrade-to-vm-backup-stack-v2.md) 上のマネージド ディスクに対してサポートされます。
 
 ## <a name="create-a-recovery-services-vault-for-a-vm"></a>VM 用の Recovery Services コンテナーを作成する
 Recovery Services コンテナーは、経時的に作成されたバックアップと復旧ポイントを格納するエンティティです。 Recovery Services コンテナーには、保護される仮想マシンに関連付けられたバックアップ ポリシーも含まれます。
@@ -114,7 +115,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
    プライマリ バックアップ ストレージ エンドポイントとして Azure を使用している場合は、引き続き geo 冗長ストレージを使用します。 プライマリ以外のバックアップ ストレージ エンドポイントとして Azure を使用している場合は、ローカル冗長ストレージを選択します。 ストレージ オプションの詳細については、[Azure Storage のレプリケーションの概要](../storage/common/storage-redundancy.md)に関する記事を参照してください。
 
 1. ストレージのレプリケーション タイプを変更するには、**[保存]** を選択します。
-    
+
 コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。 関連付けを開始するには、Azure 仮想マシンを検出して登録する必要があります。
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>バックアップの目標を選択し、ポリシーを設定し、保護する項目の定義する
@@ -171,11 +172,11 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 仮想マシンの登録に問題がある場合は、VM エージェントのインストールやネットワーク接続に関するこの後の情報を参照してください。 Azure によって作成された仮想マシンを保護している場合、次の情報はおそらく必要ないでしょう。 ただし、仮想マシンを Azure に移行した場合は、VM エージェントを正しくインストールしていることと、仮想マシンが仮想ネットワークで通信できることを確認してください。
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>仮想マシンに VM エージェントをインストールする
-バックアップ拡張機能を動作させるには、Azure [VM エージェント](../virtual-machines/extensions/agent-windows.md)を Azure 仮想マシンにインストールする必要があります。 VM を Azure Marketplace から作成した場合、VM エージェントは既に仮想マシンに存在します。 
+バックアップ拡張機能を動作させるには、Azure [VM エージェント](../virtual-machines/extensions/agent-windows.md)を Azure 仮想マシンにインストールする必要があります。 VM を Azure Marketplace から作成した場合、VM エージェントは既に仮想マシンに存在します。
 
 Azure Marketplace から作成した VM を*使用していない*状況のために、以下の情報が提供されています。 **たとえば、オンプレミスのデータセンターから VM を移行したとします。このような場合、仮想マシンを保護するためには VM エージェントをインストールする必要があります。**
 
-**注**: VM エージェントのインストール後、Azure PowerShell を使用して ProvisionGuestAgent プロパティを更新し、VM がインストールされたことが Azure により認識されるようにする必要があります。 
+**注**: VM エージェントのインストール後、Azure PowerShell を使用して ProvisionGuestAgent プロパティを更新し、VM がインストールされたことが Azure により認識されるようにする必要があります。
 
 Azure VM のバックアップで問題が発生する場合は、次の表を参照して Azure VM エージェントが仮想マシンに正しくインストールされていることを確認してください。 次の表に、Windows VM と Linux VM の VM エージェントに関する追加情報をまとめています。
 
@@ -206,16 +207,16 @@ VM エージェントが仮想マシンにインストールされると、Azure
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Azure データ センターの IP の範囲をホワイトリストに登録する
 Azure データ センターの IP 範囲をホワイトリストに登録する場合、IP 範囲の詳細と手順については、[Azure の Web サイト](http://www.microsoft.com/en-us/download/details.aspx?id=41653)を参照してください。
 
-[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して、特定のリージョンのストレージに接続できます。 ストレージ アカウントへのアクセスを許可するルールが、インターネット アクセスをブロックするルールよりも優先度が高いことを確認してください。 
+[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して、特定のリージョンのストレージに接続できます。 ストレージ アカウントへのアクセスを許可するルールが、インターネット アクセスをブロックするルールよりも優先度が高いことを確認してください。
 
 ![リージョンのストレージ タグが与えられた NSG](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
 
-次のビデオでは、サービス タグを構成する手順について説明します。 
+次のビデオでは、サービス タグを構成する手順について説明します。
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
-> [!WARNING]
-> ストレージ サービス タグは特定のリージョンでのみ利用できます。また、これはプレビュー版です。 リージョンの一覧については、「[ストレージのサービス タグ](../virtual-network/security-overview.md#service-tags)」を参照してください。
+> [!NOTE]
+> ストレージ サービス タグとリージョンの一覧については、「[ストレージのサービス タグ](../virtual-network/security-overview.md#service-tags)」を参照してください。
 
 ### <a name="use-an-http-proxy-for-vm-backups"></a>VM のバックアップに HTTP プロキシを使用する
 VM をバックアップする際、バックアップ拡張機能は HTTPS API を使用してスナップショット管理コマンドを Azure Storage に送信します。 パブリック インターネットにアクセスできるように構成されたコンポーネントは HTTP プロキシのみであるため、HTTP プロキシ経由でバックアップ拡張機能のトラフィックをルーティングします。
@@ -291,7 +292,7 @@ HttpProxy.Port=<proxy port>
    * **[ローカル ポート]** では **[特定のポート]** を選択します。 次のボックスで、構成されているプロキシ ポートの番号を指定します。
    * **[リモート ポート]** では、**[すべてのポート]** を選択します。
 
-以降のウィザードでは、既定の設定のまま最後の画面に進みます。 この規則に名前を付けます。 
+以降のウィザードでは、既定の設定のまま最後の画面に進みます。 この規則に名前を付けます。
 
 #### <a name="step-3-add-an-exception-rule-to-the-nsg"></a>手順 3: NSG に例外の規則を追加する
 次のコマンドは、例外を NSG に追加します。 この例外により、10.0.0.5 の任意のポートから、ポート 80 (HTTP) または 443 (HTTPS) 上の任意のインターネット アドレスに TCP トラフィックを送信できます。 パブリック インターネットで特定のポートが必要な場合は、必ずそのポートを ```-DestinationPortRange``` に追加します。
