@@ -3,19 +3,19 @@ title: 印刷されたテキストと手書きのテキストの認識 - Compute
 titleSuffix: Azure Cognitive Services
 description: 画像に含まれる印刷されたテキストと手書きのテキストの Computer Vision API を使用した認識に関する概念。
 services: cognitive-services
-author: deken
+author: PatrickFarley
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: v-deken
-ms.openlocfilehash: 49cba0e9b6958beb07b6f074e6dc748679514525
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.author: pafarley
+ms.openlocfilehash: 6827bf5f983834dc5222a3f3028386f8bbcb253a
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985313"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49338102"
 ---
 # <a name="recognizing-printed-and-handwritten-text"></a>印刷されたテキストと手書きのテキストの認識
 
@@ -29,7 +29,7 @@ Computer Vision では、次の要件を満たす画像内の印刷および手�
 
 - 画像が、JPEG、PNG、または BMP 形式になっている
 - イメージのファイル サイズが 4 メガバイト (MB) 未満である
-- 画像の寸法が 40 x 40 から 3200 x 3200 ピクセルの間である
+- 画像の寸法が 50 x 50 から 4200 x 4200 ピクセルの間である
 
 > [!NOTE]
 > このテクノロジは現在、プレビュー段階であり、英語のテキストでのみ使用できます。

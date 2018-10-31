@@ -3,21 +3,21 @@ title: グループの状態に基づいてアクションを実行するスコ�
 description: Azure Logic Apps のグループ アクションの状態に基づいてワークフロー アクションを実行するスコープを作成する方法です
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
 manager: jeconnoc
-ms.date: 03/05/2018
-ms.topic: article
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 1258175eb3d28d39be8be08498ba8d2e0998aa43
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.date: 10/03/2018
+ms.topic: article
+ms.openlocfilehash: ac184ce790a0700fcacc63f70c2bb321142d7224
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35298816"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320545"
 ---
-# <a name="create-scopes-that-run-workflow-actions-based-on-group-status-in-azure-logic-apps"></a>Azure Logic Apps のグループの状態に基づいてワークフロー アクションを実行するスコープを作成する
+# <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Azure Logic Apps でスコープを利用し、グループの状態に基づいてアクションを実行する
 
 別のアクションのグループが成功または失敗した後にのみアクションを実行するには、そのアクションを "*スコープ*" の中にグループ化します。 この構造は、アクションを論理グループとして整理し、そのグループの状態を評価して、そのスコープの状態に基づいてアクションを実行するときに便利です。 そのスコープ内のすべてのアクションの実行が完了すると、スコープも独自の状態を取得します。 たとえば、[例外とエラー処理](../logic-apps/logic-apps-exception-handling.md#scopes)を実装するときにスコープを使用できます。 
 
@@ -54,14 +54,14 @@ ms.locfileid: "35298816"
 
 1. まだサインインしていない場合は、<a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。 空のロジック アプリを作成します。
 
-2. **[間隔]** を "1" に、**[頻度]** を [分] に設定して、**[スケジュール - 繰り返し]** トリガーを追加します。
+1. **[間隔]** を "1" に、**[頻度]** を [分] に設定して、**[スケジュール - 繰り返し]** トリガーを追加します。
 
    ![[スケジュール - 繰り返し] トリガーを設定する](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
    > [!TIP]
    > ビューを視覚的に簡略化し、デザイナーで各アクションの詳細を非表示にするには、これらのステップを進むにつれ各アクションのシェイプを折りたたみます。
 
-3. **[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\)** アクションを追加します。 
+1. **[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\)** アクションを追加します。 
 
    1. Bing 地図の接続が存在しない場合、接続を作成するように求められます。
 
@@ -71,7 +71,7 @@ ms.locfileid: "35298816"
       | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 | 
       ||||  
 
-   2. この画像の下の表に示すように、**[Get route]\(ルートを取得する\)** アクションを設定します。
+   1. この画像の下の表に示すように、**[Get route]\(ルートを取得する\)** アクションを設定します。
 
       ![[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\) アクションを設定する](./media/logic-apps-control-flow-run-steps-group-scopes/get-route.png) 
 
@@ -89,45 +89,50 @@ ms.locfileid: "35298816"
       | **Transit Date-Type Type (交通機関の日時の種類)** | なし | 乗り換えモードの場合のみ適用されます。 | 
       ||||  
 
-4. 現在の交通量を加味した移動時間が指定の時間を超えるかどうかをチェックする条件を追加します。 この例では、この画像の下の手順に従います。
+1. 現在の交通量を加味した移動時間が指定の時間を超えるかどうかをチェックする[条件を追加](../logic-apps/logic-apps-control-flow-conditional-statement.md)します。 この例に対して、次の手順に従います。
 
-   ![条件をビルドする](./media/logic-apps-control-flow-run-steps-group-scopes/build-condition.png)
+   1. 条件の名前をわかりやすく **If traffic time is more than specified time (移動時間が指定した時間を超える場合)** に変更します。
 
-   1. 条件の名前をわかりやすく「**If traffic time more than specified time (移動時間が指定した時間を超える場合)**」に変更します。
+   1. 左端の列で、**[値の選択]** ボックス内をクリックします。動的コンテンツ リストが表示されます。 その一覧から、**[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します (秒単位)。 
 
-   2. パラメーターの一覧から、**[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します (秒単位)。 
+      ![条件をビルドする](./media/logic-apps-control-flow-run-steps-group-scopes/build-condition.png)
 
-   3. 比較演算子として、**[次の値より大きい]** を選択します。
+   1. 真ん中のボックスで、**[次の値より大きい]** 演算子を選択します。
 
-   4. 比較する値として、「**600**」秒 (10 分) と入力します。
+   1. 右端の列にこの比較値を入力します。これは秒単位であり、10 分は **600** に等しくなります。
 
-5. 条件の **[If true]\(true の場合\)** ブランチに、お使いの電子メール プロバイダーの "電子メールを送信する" アクションを追加します。 この画像の下の表に示すように、このアクションを設定します。
+      完成した条件は次の例のようになります。
+
+      ![完成した条件](./media/logic-apps-control-flow-run-steps-group-scopes/finished-condition.png)
+
+1. **[If true]\(true の場合\)** ブランチに、お使いの電子メール プロバイダーの "電子メールを送信する" アクションを追加します。 この画像にある手順に従い、このアクションを設定します。
 
    ![[If true]\(true の場合\) ブランチに [Send an email]\(電子メールを送信する\) アクションを追加する](./media/logic-apps-control-flow-run-steps-group-scopes/send-email.png)
 
    1. **[宛先]** フィールドに、テスト用に自分の電子メール アドレスを入力します。
 
-   2. **[件名]** フィールドに、次のテキストを入力します。
+   1. **[件名]** フィールドに、次のテキストを入力します。
 
       ```Time to leave: Traffic more than 10 minutes```
 
-   3. **[本文]** フィールドに、次のテキストを入力し、末尾にスペースを追加します。 
+   1. **[本文]** フィールドに、次のテキストを入力し、末尾にスペースを追加します。 
 
       ```Travel time: ```
 
       **[本文]** フィールドにカーソルが表示されている間は、この時点で使用できる任意のパラメーターを選択できるように、動的コンテンツ リストが開いたままになります。
 
-   4. 動的コンテンツ リストの **[式]** を選択します。
+   1. 動的コンテンツ リストの **[式]** を選択します。
 
-   5. **div( )** 関数を探して選択します。
+   1. **div()** 関数を探して選択します。 
+   関数の括弧内にカーソルを置きます。
 
-   6. カーソルが関数の括弧内にある間に、**[動的コンテンツ]** を選択して、次に **[Travel Duration Traffic]\(移動時間の交通量\)** パラメーターを追加します。
-
-   7. 動的パラメーター リストの **[Get route]\(ルートを取得する\)** で、**[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します。
+   1. カーソルが関数の括弧内にある状態で **[動的コンテンツ]** を選択すると、動的コンテンツ リストが表示されます。 
+   
+   1. **[ルートを取得する]** セクションから、**[Travel Duration Traffic]\(移動時間の交通量\)** フィールドを選択します。
 
       ![[Travel Duration Traffic]\(移動時間の交通量\) フィールドを選択する](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-2.png)
 
-   8. フィールドが JSON 形式に解決された後、数字 ```60``` に続けて**カンマ** (```,```) を追加して、**[Travel Duration Traffic]\(移動時間の交通量\)** の値を秒から分に変換します。 
+   1. フィールドが JSON 形式に解決された後、数字 ```60``` に続けて**カンマ** (```,```) を追加して、**[Travel Duration Traffic]\(移動時間の交通量\)** の値を秒から分に変換します。 
    
       ```
       div(body('Get_route')?['travelDurationTraffic'],60)
@@ -137,15 +142,15 @@ ms.locfileid: "35298816"
 
       ![式を仕上げる](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-3.png)  
 
-   9. 完成したら、**[OK]** を選択してください。
+   1. 完了したら、**[OK]** を選びます。
 
-  10. 式が解決された後は、テキスト ``` minutes``` と先頭にスペースを追加します。
+  1. 式が解決された後は、テキスト ``` minutes``` と先頭にスペースを追加します。
   
-      これで **[本文]** フィールドは次の例のようになります。
+     これで **[本文]** フィールドは次の例のようになります。
 
-      ![完成した[本文] フィールド](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+     ![完成した[本文] フィールド](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
 
-6. ロジック アプリを保存し、
+1. ロジック アプリを保存し、
 
 次に、スコープを追加して特定のアクションをグループ化し、それらの状態を評価します。
 
@@ -153,43 +158,71 @@ ms.locfileid: "35298816"
 
 1. まだ開いていない場合は、ロジック アプリ デザイナーでロジック アプリを開きます。 
 
-2. 必要なワークフローの場所にスコープを追加します。 例: 
+1. 必要なワークフローの場所にスコープを追加します。 たとえば、ロジック アプリ ワークフローに既存の手順間のスコープを追加するには、次の手順を行います。 
 
-   * ロジック アプリ ワークフローの既存のステップ間にスコープを追加するには、スコープ追加する矢印にポインターを移動します。 
-   **プラス記号** (**+**) > **[Add a scope]\(スコープを追加する\)** を選択します。
+   1. スコープを追加する場所の矢印の上にポインターを移動します。 
+   **プラス記号** (**+**) を選択し、**[アクションの追加]** を選択します。
 
-     ![スコープを追加する](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
+      ![スコープを追加する](./media/logic-apps-control-flow-run-steps-group-scopes/add-scope.png)
 
-     ワークフローの末尾にスコープを追加するときは、ロジック アプリの一番下で **[+ 新しいステップ]** > **[...More]\(...その他\)** > **[Add a scope]\(スコープを追加する\)** を選択します。
+   1. 検索ボックスに、フィルターとして「scope」と入力します。 
+   **[スコープ]** アクションを選択します。
 
-3. ここで、スコープ内で実行するステップを追加するか、既存のステップをドラッグします。 この例では、次のアクションをスコープにドラッグします。
+## <a name="add-steps-to-scope"></a>スコープに手順を追加する
+
+1. ここで、スコープ内で実行するステップを追加するか、既存のステップをドラッグします。 この例では、次のアクションをスコープにドラッグします。
       
    * **[Get route]\(ルートを取得する\)**
-   * **[If traffic time more than specified time]\(移動時間が指定した時間を超える場合\)**。**[true]** と **[false]** の両方のブランチが含まれます。
+   * **If traffic time is more than specified time (移動時間が指定した時間を超える場合)**。**true** と **false** の両方のブランチが含まれます。
 
    これでロジック アプリは次の例のようになります。
 
    ![スコープが追加された状態](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-4. スコープの下に、スコープの状態をチェックする条件を追加します。 条件の名前をわかりやすく「**If scope failed (スコープが失敗した場合)**」に変更します。
+1. スコープの下に、スコープの状態をチェックする条件を追加します。 条件の名前をわかりやすく「**If scope failed (スコープが失敗した場合)**」に変更します。
 
    ![スコープの状態をチェックする条件を追加する](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   
-5. スコープの状態が `Failed` または `Aborted` のどちらと等しいかどうかをチェックする、この式をビルドします。
+1. 条件で、スコープの状態が "失敗" または "中止" に相当するかどうかを判断する次のような式を追加します。 
 
-   ![スコープの状態をチェックする式を追加する](./media/logic-apps-control-flow-run-steps-group-scopes/build-expression-check-scope-status.png)
+   1. 別の行を追加するには、**[追加]** を選択します。 
 
-   または、この式をテキストとして追加し、**[Edit in advanced mode]\(詳細設定モードで編集する\)** を選択します。
+   1. 各行で左のボックス内をクリックすると、動的コンテンツ リストが表示されます。 
+   動的コンテンツ リストから **[式]** を選択します。 編集ボックスにこの式を入力し、**[OK]** を選択します。 
+   
+      `result('Scope')[0]['status']`
 
-   ```@equals('@result(''Scope'')[0][''status'']', 'Failed, Aborted')```
+      ![スコープの状態をチェックする式を追加する](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status.png)
 
-6. **[If true]\(true の場合\)** ブランチと **[If false]\(false の場合\)** ブランチに、実行するアクション (例: 電子メールまたはメッセージを送信する) を追加します。
+   1. 両方の行で演算子に **[次の値に等しい]** を選択します。 
+   
+   1. 比較値については、最初の行に `Failed` を入力します。 
+   2 番目の行に `Aborted` を入力します。 
 
-   ![スコープの状態をチェックする式を追加する](./media/logic-apps-control-flow-run-steps-group-scopes/handle-true-false-branches.png)
+      完成した条件は次の例のようになります。
 
-7. ロジック アプリを保存し、
+      ![スコープの状態をチェックする式を追加する](./media/logic-apps-control-flow-run-steps-group-scopes/check-scope-status-finished.png)
 
-完成したロジック アプリの、すべてのシェイプが展開された状態では、次の例のようになります。
+      次に、条件によってスコープの状態が確認され、後の手順で定義する照合アクションが実行されるように、条件の `runAfter` プロパティを設定します。
+
+   1. **[If scope failed]** 条件で**省略記号** (...) ボタンを選択し、**[実行条件の構成]** を選択します。
+
+      !["runAfter" プロパティを構成する](./media/logic-apps-control-flow-run-steps-group-scopes/configure-run-after.png)
+
+   1. 状態が **is successful** (成功した)、**has failed** (失敗した)、**is skipped** (スキップされた)、**has timed out** (タイムアウトした) のスコープをすべて選択します。
+
+      ![スコープの状態を選択する](./media/logic-apps-control-flow-run-steps-group-scopes/select-run-after-statuses.png)
+
+   1. 完了したら、**[完了]** を選択します。 
+   条件に "情報" アイコンが表示されます。
+
+1. **[If true]\(true の場合\)** ブランチと **[If false]\(false の場合\)** ブランチに、スコープの状態に基づいて実行するアクション (例: 電子メールまたはメッセージを送信する) を追加します。
+
+   ![スコープの状態に基づいて行うアクションを追加する](./media/logic-apps-control-flow-run-steps-group-scopes/handle-true-false-branches.png)
+
+1. ロジック アプリを保存し、
+
+完成したロジック アプリは次の例のようになります。
 
 ![完成したロジック アプリにスコープが追加された状態](./media/logic-apps-control-flow-run-steps-group-scopes/scopes-overview.png)
 
@@ -210,7 +243,7 @@ ms.locfileid: "35298816"
     "recurrence": {
        "frequency": "Minute",
        "interval": 1
-    },
+    }
   }
 }
 ```
@@ -224,7 +257,7 @@ ms.locfileid: "35298816"
         "type": "ApiConnection",
         "inputs": {
           "body": {
-            "Body": "Scope failed",
+            "Body": "Scope failed. Scope status: @{result('Scope')[0]['status']}",
             "Subject": "Scope failed",
             "To": "<your-email@domain.com>"
           },
@@ -245,7 +278,7 @@ ms.locfileid: "35298816"
           "type": "ApiConnection",
           "inputs": {
             "body": {
-              "Body": "None",
+              "Body": "Scope succeeded. Scope status: @{result('Scope')[0]['status']}",
               "Subject": "Scope succeeded",
               "To": "<your-email@domain.com>"
             },
@@ -261,10 +294,28 @@ ms.locfileid: "35298816"
         }
       }
     },
-    "expression": "@equals('@result(''Scope'')[0][''status'']', 'Failed, Aborted')",
+    "expression": {
+      "or": [ 
+         {
+            "equals": [ 
+              "@result('Scope')[0]['status']", 
+              "Failed"
+            ]
+         },
+         {
+            "equals": [
+               "@result('Scope')[0]['status']", 
+               "Aborted"
+            ]
+         } 
+      ]
+    },
     "runAfter": {
       "Scope": [
-        "Succeeded"
+        "Failed",
+        "Skipped",
+        "Succeeded",
+        "TimedOut"
       ]
     }
   },
@@ -291,14 +342,14 @@ ms.locfileid: "35298816"
         },
         "runAfter": {}
       },
-      "If_traffic_time_more_than_specified_time": {
+      "If_traffic_time_is_more_than_specified_time": {
         "type": "If",
         "actions": {
           "Send_mail_when_traffic_exceeds_10_minutes": {
             "type": "ApiConnection",
             "inputs": {
               "body": {
-                 "Body": "Travel time:@{div(body('Get_route')?['travelDurationTraffic'], 60)} minutes",
+                 "Body": "Travel time:@{div(body('Get_route')?['travelDurationTraffic'],60)} minutes",
                  "Subject": "Time to leave: Traffic more than 10 minutes",
                  "To": "<your-email@domain.com>"
               },
@@ -313,7 +364,16 @@ ms.locfileid: "35298816"
             "runAfter": {}
           }
         },
-        "expression": "@greater(body('Get_route')?['travelDurationTraffic'], 600)",
+        "expression": {
+          "and" : [
+            {
+               "greater": [ 
+                  "@body('Get_route')?['travelDurationTraffic']", 
+                  600
+               ]
+            }
+          ]
+        },
         "runAfter": {
           "Get_route": [
             "Succeeded"
@@ -323,7 +383,7 @@ ms.locfileid: "35298816"
     },
     "runAfter": {}
   }
-}
+},
 ```
 
 ## <a name="get-support"></a>サポートを受ける

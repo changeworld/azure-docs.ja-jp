@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: Video Indexer API を使用する'
+title: Video Indexer API の使用
 titlesuffix: Azure Cognitive Services
 description: この記事では、Video Indexer API 基本的な使用方法について説明します。
 services: cognitive services
@@ -8,16 +8,16 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: video-indexer
 ms.topic: tutorial
-ms.date: 09/09/2018
+ms.date: 10/20/2018
 ms.author: juliako
-ms.openlocfilehash: 7bd7ed1b2d2f437ef57598c42ca12ce8bfb174a1
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 401811ec8803f3ede5a829dc96edc1e7f15e5ee0
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985567"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637750"
 ---
-# <a name="tutorial-use-the-video-indexer-api"></a>チュートリアル: Video Indexer API を使用する
+# <a name="use-the-video-indexer-api"></a>Video Indexer API の使用
 
 > [!Note]
 > Video Indexer V1 API は 2018 年 8 月 1 日に非推奨になりました。 今後は Video Indexer v2 API を使用してください。 <br/>Video Indexer v2 API を使用して開発する場合は、[こちら](https://api-portal.videoindexer.ai/)の手順を参照してください。 
@@ -51,6 +51,9 @@ Video Indexer アカウントを作成する場合、無料試用アカウント
     サブスクライブすると、サブスクリプション、プライマリ キー、セカンダリ キーが表示されます。 キーは保護する必要があります。 キーはサーバー コードでのみ使用してください。 クライアント側 (.js、.html など) では使用できないようにします。
 
     ![サインアップ](./media/video-indexer-use-apis/video-indexer-api03.png)
+
+> [!TIP]
+> Video Indexer ユーザーは、単一のサブスクリプション キーを使用して複数の Video Indexer アカウントに接続することができます。 さらに、それらの Video Indexer アカウントを異なる Media Services アカウントにリンクさせることができます。
 
 ## <a name="obtain-access-token-using-the-authorization-api"></a>Authorization API を使用してアクセス トークンを取得する
 

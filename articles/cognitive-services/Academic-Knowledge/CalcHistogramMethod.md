@@ -1,20 +1,21 @@
 ---
-title: Academic Knowledge API の CalcHistogram メソッド | Microsoft Docs
-description: CalcHistogram メソッドを使用して、Microsoft Cognitive Services 内の論文エンティティのセットについて属性値の分布を計算できます。
+title: CalcHistogram メソッド - Academic Knowledge API
+titlesuffix: Azure Cognitive Services
+description: CalcHistogram メソッドを使用し、論文エンティティのセットの属性値の分布を計算します。
 services: cognitive-services
 author: alch-msft
-manager: kuansanw
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: academic-knowledge
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: e0b773fb9791ee638c8cfdbbc9dca40543e50ec0
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 915e2e5a67d068c418ce50eee9d84dc66e61ee00
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35372797"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321293"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram メソッド
 
@@ -36,8 +37,10 @@ Name  |値 | 必須  |説明
 **attributes** | テキスト文字列 | いいえ <br>既定値: | 応答に含まれている属性値を指定するコンマ区切りリスト。 属性名の大文字と小文字は区別されます。
 **count** |Number | いいえ <br>既定値: 10 |返す結果の数。
 **offset**  |Number | いいえ <br>既定: 0 |返す最初の結果のインデックス。
-<br>
+**timeout**  |Number | いいえ <br>既定: 1000 |タイムアウト (ミリ秒)。 タイムアウトが経過する前に見つかった解釈だけが返されます。
+
 ## <a name="response-json"></a>応答 (JSON)
+
 Name | 説明
 --------|---------
 **expr**  |要求からの expr パラメーター。
@@ -52,7 +55,7 @@ Name | 説明
 **histograms[x].histogram[y].count**  |この属性値を持つ一致エンティティの数。
 **aborted** | 要求がタイムアウトした場合は True です。
 
- <br>
+
 #### <a name="example"></a>例:
 ```
 https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?expr=And(Composite(AA.AuN=='jaime teevan'),Y>2012)&attributes=Y,F.FN&count=4

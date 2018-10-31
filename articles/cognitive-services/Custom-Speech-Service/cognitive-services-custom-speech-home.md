@@ -1,24 +1,24 @@
 ---
-title: Custom Speech Service とは
-titlesuffix: Azure Cognitive Services
+title: Azure 上の Custom Speech Service の概要 | Microsoft Docs
 description: Custom Speech Service は、ユーザーが音声からテキストへの文字起こし用の音声モデルをカスタマイズできる、クラウドベース サービスです。
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: onano
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: overview
+ms.topic: article
 ms.date: 02/07/2017
 ms.author: panosper
-ROBOTS: NOINDEX
-ms.openlocfilehash: f90fc40a42806cfb002da2d9943eaa41736df4d7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 97eee2b6440dbbf740ad5fa856bd518facabbfef
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222745"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49342298"
 ---
 # <a name="what-is-custom-speech-service"></a>Custom Speech Service とは
+
+[!INCLUDE [Deprecation note](../../../includes/cognitive-services-custom-speech-deprecation-note.md)]
 
 Custom Speech Service は、音声からテキストへの文字起こし用の音声モデルをカスタマイズするための機能をユーザーに提供するクラウドベース サービスです。
 Custom Speech Service を使用するには、[Custom Speech Service ポータル](https://cris.ai)を参照します。
@@ -31,7 +31,7 @@ Custom Speech Service を使用すると、アプリケーションやユーザ�
 ## <a name="how-do-speech-recognition-systems-work"></a>音声認識システムのしくみ
 音声認識システムは、連動する複数のコンポーネントから構成されています。 最も重要な 2 つのコンポーネントは、音響モデルと言語モデルです。
 
-音響モデルとは、音声の短い断片を特定の言語のいくつかの音素、つまり音声単位に分類する分類子です。 たとえば、“speech” という単語は “s p iy ch” という 4 つの音素で構成されています。 こうした分類は、1 秒あたり 100 回程度行われます。
+音響モデルとは、音声の短い断片を特定の言語のいくつかの音素、つまり音声単位に分類する分類器です。 たとえば、“speech” という単語は “s p iy ch” という 4 つの音素で構成されています。 こうした分類は、1 秒あたり 100 回程度行われます。
 
 言語モデルは、一連の単語における確率分布を表すものです。 言語モデルにより、一連の単語の中から、単語系列自体の確率に基づいて音が似ている単語を選択できます。 たとえば、“recognize speech” と “wreck a nice beach” の音は似ていますが、前者の仮定の発生確率の方がはるかに大きいため、言語モデルが付けるスコアは大きくなります。
 
@@ -44,7 +44,7 @@ Microsoft 音声テキスト変換エンジンは国際的レベルのもので�
 
 ## <a name="next-steps"></a>次の手順
 
-Custom Speech Service の使用方法について詳しくは、[Custom Speech Service ポータル] (https://cris.ai) を参照してください。
+Custom Speech Service の使用方法について詳しくは、[Custom Speech Service ポータル](https://cris.ai)を参照してください。
 
 * [作業の開始](cognitive-services-custom-speech-get-started.md)
 * [FAQ](cognitive-services-custom-speech-faq.md)

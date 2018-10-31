@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: 9d1414959ef8eae2277e530e6eca57ec06aaec37
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 10/16/2018
+ms.openlocfilehash: 8da966154f1da8cb1be090f70d80e4484e9bce0d
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345509"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49377293"
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure Disk Encryption に関する FAQ
 
@@ -132,6 +132,11 @@ Linux で最適な結果を得るには、次のワークフローが推奨さ�
 Windows の "Bek ボリューム" または Linux の "/mnt/azure_bek_disk" は、暗号化された Azure IaaS VM の暗号化キーを安全に格納するローカルのデータ ボリュームです。
 > [!NOTE]
 > このディスクのコンテンツの削除や編集はしないでください。 IaaS VM 上のすべての暗号化操作に暗号化キーが必要なため、ディスクのマウントを解除しないでください。
+
+
+## <a name="what-encryption-method-does-azure-disk-encryption-use"></a>Azure Disk Encryption はどのような暗号化方法を使用しますか。
+
+Windows では、ADE は Bitlocker AES256 暗号化方法を使用します (Windows Server 2012 より前のバージョンでは AES256WithDiffuser)。 Linux では、ADE は dmcrypt の既定値である 256 ビット ボリューム マスター キーの aes-xts-plain64 を使用します。
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>EncryptFormatAll を使用して、すべてのボリュームの種類を指定した場合、既に暗号化したデータ ドライブ上のデータは消去されますか。
 いいえ、Azure Disk Encryption を使用して既に暗号化されているデータ ドライブのデータは消去されません。 EncryptFormatAll で、OS ドライブが再暗号化されなかったのと同様に、既に暗号化されているデータ ドライブは再暗号化されません。 詳細については、「[EncryptFormatAll 条件](azure-security-disk-encryption-linux.md#bkmk_EFACriteria)」を参照してください。        

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 841f82595257c97c15398347a3e1605219d1a534
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 2c5d0dc322a4a56f0de9bd3c1af7efc158131a89
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394427"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954217"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
 アプリケーションのインフラストラクチャは通常、仮想マシン、ストレージ アカウント、仮想ネットワーク、Web アプリ、データベース、データベース サーバー、サード パーティのサービスなど、複数のコンポーネントで構成されます。 これらのコンポーネントは別々のエンティティではなく、1 つのエンティティの中で互いに関連付けられ相互依存しています。 これらのコンポーネントを、1 つのグループとしてデプロイ、管理、および監視するのが好ましいです。 Azure Resource Manager を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。 
@@ -64,6 +64,30 @@ Azure Resource Manager には、初めて使う方にとって、あまり馴染
 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](/azure/architecture/cloud-adoption-guide/subscription-governance?toc=%2fazure%2fazure-resource-manager%2ftoc.json)」を参照してください。
 
 グローバル Azure、Azure ソブリン クラウド、Azure Stack で使用できる Resource Manager テンプレートの作成に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」をご覧ください。
+
+## <a name="quickstarts-and-tutorials"></a>クイック スタートとチュートリアル
+
+次のクイック スタートとチュートリアルを使用して、Resource Manager テンプレートの開発方法を学ぶことができます。
+
+- クイック スタート
+
+    |タイトル|説明|
+    |------|-----|
+    |[Azure Portal の使用](./resource-manager-quickstart-create-templates-use-the-portal.md)|ポータルを使用してテンプレートを生成します。また、テンプレートを編集してデプロイするプロセスについて説明しています。|
+    |[Visual Studio Code を使用する](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Visual Studio Code を使用してテンプレートを作成および編集します。また、Azure Cloud Shell を使用してテンプレートをデプロイする方法を説明しています。|
+    |[Visual Studio を使用する](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|Visual Studio を使用してテンプレートを作成、編集、デプロイします。|
+
+- チュートリアル
+
+    |タイトル|説明|
+    |------|-----|
+    |[テンプレート リファレンスの利用](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|テンプレートを開発するためにテンプレート リファレンス ドキュメントを利用します。 このチュートリアルでは、ストレージ アカウントのスキーマを確認し、その情報を使用して、暗号化されたストレージ アカウントを作成します。|
+    |[複数のインスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)|Azure リソースの複数のインスタンスを作成します。 このチュートリアルでは、ストレージ アカウントの複数のインスタンスを作成します。|
+    |[リソースのデプロイ順序の設定](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|リソースの依存関係を定義します。 このチュートリアルでは、仮想ネットワーク、仮想マシン、および依存する Azure リソースを作成します。 依存関係を定義する方法を説明しています。|
+    |[使用条件](./resource-manager-tutorial-use-conditions.md)|いくつかのパラメーター値に基づいてリソースをデプロイします。 このチュートリアルでは、新しいストレージ アカウントを作成するか、パラメーターの値に基づいて既存のストレージ アカウントを使用するためのテンプレートを定義します。|
+    |[キー コンテナーの統合](./resource-manager-tutorial-use-key-vault.md)|Azure Key Vault からシークレット/パスワードを取得します。 このチュートリアルでは、仮想マシンを作成します。  仮想マシンの管理者のパスワードは、キー コンテナーから取得されます。|
+    |[リンク済みテンプレートを作成する](./resource-manager-tutorial-create-linked-templates.md)|テンプレートをモジュール化し、テンプレートから他のテンプレートを呼び出します。 このチュートリアルでは、仮想ネットワーク、仮想マシン、および依存するリソースを作成します。  依存するストレージ アカウントは、リンクされたテンプレートで定義されます。 |
+    |[安全なデプロイ プラクティスの使用](./deployment-manager-tutorial.md)|Azure Deployment Manager を使用します。 |
 
 ## <a name="resource-groups"></a>リソース グループ
 リソース グループを定義する際、次のような考慮すべき要素があります。
@@ -214,9 +238,9 @@ Azure には、リソースに固有のロールもいくつかあります。 �
 
 リソースにアクセスするコードまたはスクリプトを実行したいものの、それにユーザーの資格情報は使いたくない場合もあります。 その場合は、アプリケーションのサービス プリンシパルと呼ばれる ID を作成して、そのサービス プリンシパルに適切なロールを割り当てることができます。 Resource Manager を利用すれば、アプリケーションの資格情報を作成し、プログラムでアプリケーションの認証を行うことができます。 サービス プリンシパルの作成の詳細については、次のいずれかのトピックを参照してください。
 
-* [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](resource-group-authenticate-service-principal.md)
+* [リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 * [リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md)
-* [リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](resource-group-create-service-principal-portal.md)
+* [リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../active-directory/develop/howto-create-service-principal-portal.md)
 
 重要なリソースを、ユーザーによって削除または変更されないように、明示的にロックすることもできます。 詳細については、[「Azure Resource Manager によるリソースのロック」](resource-group-lock-resources.md)を参照してください。
 

@@ -1,23 +1,23 @@
 ---
 title: 'クイック スタート: ナレッジ ベースを更新する - REST、C# -  QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、QnA Maker ナレッジ ベース (KB) のサンプルをプログラムから更新する手順を紹介しています。 質問と回答のペアは、KB の更新に使用する JSON 定義によって追加、変更、削除することができます。
+description: この REST ベースのクイック スタートでは、QnA Maker ナレッジ ベース (KB) のサンプルをプログラムから更新する手順を紹介しています。 質問と回答のペアは、KB の更新に使用する JSON 定義によって追加、変更、削除することができます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 9fa57a02f11461a3ea9a08b7b1b101b143924037
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 463fb4bc1cfd6ba7a7fc4df2fcde53bda7767488
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801695"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648234"
 ---
-# <a name="quickstart-update-a-qna-maker-knowledge-base-in-c"></a>クイック スタート: QnA Maker ナレッジ ベースを C# で更新する
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-c"></a>クイック スタート: C# を使用して QnA Maker のナレッジ ベースを更新する
 
 このクイック スタートでは、既存の QnA Maker ナレッジ ベース (KB) をプログラムから更新する手順を紹介しています。  この JSON を使用して新しいデータ ソースを追加したり、データ ソースを変更したり、データ ソースを削除したりすることによって、KB を更新することができます。
 

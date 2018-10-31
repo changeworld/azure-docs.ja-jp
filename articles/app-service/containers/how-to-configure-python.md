@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 10/09/2018
 ms.author: astay;cephalin;kraigb
 ms.custom: mvc
-ms.openlocfilehash: 71cbf0bb31a72e3b257f25c159d9d9eea31dbfbb
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: a29f0f4be6286f8acf367a3ea0b4b0e6b31e7d98
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901620"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406468"
 ---
 # <a name="configure-your-python-app-for-the-azure-app-service-on-linux"></a>Azure App Service on Linux 向けに Python アプリを構成する
 
@@ -74,10 +74,16 @@ gunicorn --bind=0.0.0.0 --timeout 600 application:app
 
 ### <a name="custom-startup-command"></a>カスタム スタートアップ コマンド
 
-カスタム Gunicorn スタートアップ コマンドを指定することで、コンテナーの起動動作を制御できます。 たとえば、メイン モジュールが *hello.py* で、Flask アプリ オブジェクトの名前が `myapp` である Flask アプリがある場合、コマンドは次のようになります。
+カスタム Gunicorn スタートアップ コマンドを指定することで、コンテナーの起動動作を制御できます。 たとえば、メイン モジュールが *hello.py* で、そのファイルにおける Flask アプリ オブジェクトの名前が `myapp` である Flask アプリがある場合、コマンドは次のようになります。
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
+```
+
+メイン モジュールがサブフォルダー (`website` など) に存在する場合、そのフォルダーを `--chdir` 引数で指定します。
+
+```bash
+gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
 また、`--workers=4` のように、Gunicorn の追加の引数をコマンドに指定することもできます。 詳細については、「[Running Gunicorn (Gunicorn の実行)」](http://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org) を参照してください。
@@ -105,9 +111,10 @@ gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
 
 - **自分のアプリ コードをデプロイした後に既定のアプリが表示される。**  既定のアプリは、お客様のアプリ コードが実際には App Service にデプロイされていない場合、またはお客様のアプリ コードが App Service によって検出されず、代わりに既定のアプリが実行された場合に表示されます。
   - App Service を再起動し、15 から 20 秒待って、アプリをもう一度確認します。
-  - SSH または Kudu コンソールを使用して App Service に直接接続し、お客様のファイルが *site/wwwroot* に存在することを確認します。 ファイルが存在しない場合は、デプロイ プロセスを見直してアプリを再デプロイします。
+  - Windows ベースのインスタンスではなく、App Service for Linux が使用されていることを確認してください。 Azure CLI から `az webapp show --resource-group <resource_group_name> --name <app_service_name> --query kind` コマンドを実行します。`<resource_group_name>` と `<app_service_name>` は適宜置き換えてください。 出力として `app,linux` が表示されるはずです。それ以外の場合は、App Service を再作成し、Linux を選択してください。
+    - SSH または Kudu コンソールを使用して App Service に直接接続し、お客様のファイルが *site/wwwroot* に存在することを確認します。 ファイルが存在しない場合は、デプロイ プロセスを見直してアプリを再デプロイします。
   - ファイルが存在する場合は、お客様固有のスタートアップ ファイルを App Service が識別できていません。 [Django](#django-app) または [Flask](#flask-app) に関して App Service で想定されているとおりにお客様のアプリが構造化されていることをチェックします。または、[カスタム スタートアップ コマンド](#custom-startup-command)を使用します。
-
+  
 - **ブラウザーに "サービスは利用できません" というメッセージが表示される。** ブラウザーは App Service からの応答を待ってタイムアウトしました。これは、App Service によって Gunicorn サーバーが起動されたもののアプリ コードを指定する引数が正しくないことを示しています。
   - ブラウザーを最新の情報に更新します (特に、お客様が App Service プランの最も低い価格レベルを使用している場合)。 たとえば、無料のレベルを使用しているときは、アプリの起動にかかる時間が長くなることがあります。その場合、ブラウザーを最新の情報に更新すると、応答が速くなります。
   - [Django](#django-app) または [Flask](#flask-app) に関して App Service で想定されているとおりにお客様のアプリが構造化されていることをチェックします。または、[カスタム スタートアップ コマンド](#custom-startup-command)を使用します。

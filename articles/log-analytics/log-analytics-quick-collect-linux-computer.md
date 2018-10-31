@@ -16,12 +16,12 @@ ms.date: 08/02/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 901765174c2e68a00624c48c7ea85e060265ca5e
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 84bf6bb3ed4d639851b110c6db7b8b5dc8c3f87f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042180"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404255"
 ---
 # <a name="configure-log-analytics-agent-for-linux-computers-in-a-hybrid-environment"></a>ハイブリッド環境の Linux コンピューターを対象とした Log Analytics エージェントの構成
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、データセンターやその他のクラウド環境内の物理的または仮想的な Linux コンピューターから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Linux コンピューターを構成し、データを収集する方法を示します。  Azure Linux VM の場合は、次のトピック「[Collect data about Azure Virtual Machines](log-analytics-quick-collect-azurevm.md)」 (Azure Virtual Machines に関するデータを収集する) を参照してください。  
@@ -37,7 +37,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. **[作成]** をクリックし、次の項目について選択します。
 
-  * 新しい **OMS ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。 
+  * 新しい **Log Analytics ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。 OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。   
   * 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
   * **[リソース グループ]** では、1 つ以上の Azure Virtual Machines を含む既存のリソース グループを選択します。  
   * VM のデプロイ先となる**場所**を選択します。  詳細については、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。  
@@ -45,12 +45,14 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
         ![Create Log Analytics resource blade](./media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
 
-3. **[OMS ワークスペース]** ウィンドウに必要な情報を入力したら、**[OK]** をクリックします。  
+3. **[Log Analytics ワークスペース]** ウィンドウで必要な情報を入力したら、**[OK]** をクリックします。  
 
 情報が検証され、ワークスペースが作成されている間、メニューの **[通知]** でその進行状況を追跡することができます。 
 
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
-OMS エージェント for Linux をインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、エージェント ラッパー スクリプトがエージェントを適切に構成し、そのエージェントを Log Analytics と正常に通信できるようにするために必要です。  
+Linux 用 Log Analytics エージェントをインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、エージェント ラッパー スクリプトがエージェントを適切に構成し、そのエージェントを Log Analytics と正常に通信できるようにするために必要です。
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]  
 
 1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、前の手順で作成した *DefaultLAWorkspace* を選択します。
@@ -62,7 +64,7 @@ OMS エージェント for Linux をインストールする前に、Log Analyti
 次の手順では、Azure および Azure Government クラウドで Log Analytics 用のエージェントのセットアップを構成します。  
 
 >[!NOTE]
->Linux 用 OMS エージェントは、複数の Log Analytics ワークスペースにレポートするように構成することはできません。  
+>Linux 用 Log Analytics エージェントは、複数の Log Analytics ワークスペースにレポートするように構成することはできません。  
 
 Linux コンピューターと Log Analytics との通信をプロキシ サーバーを介して行う必要がある場合、コマンド ラインから「`-p [protocol://][user:password@]proxyhost[:port]`」を入力することでプロキシの構成を指定できます。  *proxyhost* プロパティは、プロキシ サーバーの完全修飾ドメイン名または IP アドレスを受け取ります。 
 

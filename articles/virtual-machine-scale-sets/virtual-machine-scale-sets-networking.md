@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: 43aa74e7250f4825702e249032db1566346ab558
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 6ed3488218a5b813478fa18f7bb05dcfb07a319c
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831213"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955153"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 
@@ -50,10 +50,26 @@ Azure 高速ネットワークでは、仮想マシンでシングルルート I
 ## <a name="create-a-scale-set-that-references-an-existing-azure-load-balancer"></a>既存の Azure ロード バランサーを参照するスケール セットの作成
 Azure Portal を使用してスケール セットを作成した場合、ほとんどの構成オプションで新しいロード バランサーが作成されます。 既存のロード バランサーを参照する必要があるスケール セットを作成する場合は、CLI を使用して作成することができます。 次のサンプル スクリプトは、ロード バランサーを作成してから、それを参照するスケール セットを作成します。
 ```bash
-az network lb create -g lbtest -n mylb --vnet-name myvnet --subnet mysubnet --public-ip-address-allocation Static --backend-pool-name mybackendpool
+az network lb create \
+    -g lbtest \
+    -n mylb \
+    --vnet-name myvnet \
+    --subnet mysubnet \
+    --public-ip-address-allocation Static \
+    --backend-pool-name mybackendpool
 
-az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:latest --admin-username negat --ssh-key-value /home/myuser/.ssh/id_rsa.pub --upgrade-policy-mode Automatic --instance-count 3 --vnet-name myvnet --subnet mysubnet --lb mylb --backend-pool-name mybackendpool
-
+az vmss create \
+    -g lbtest \
+    -n myvmss \
+    --image Canonical:UbuntuServer:16.04-LTS:latest \
+    --admin-username negat \
+    --ssh-key-value /home/myuser/.ssh/id_rsa.pub \
+    --upgrade-policy-mode Automatic \
+    --instance-count 3 \
+    --vnet-name myvnet \
+    --subnet mysubnet \
+    --lb mylb \
+    --backend-pool-name mybackendpool
 ```
 
 ## <a name="create-a-scale-set-that-references-an-application-gateway"></a>Application Gateway を参照するスケール セットを作成する
@@ -91,7 +107,7 @@ Azure テンプレート内でカスタム DNS サーバーを構成するには
 ```
 
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>構成可能な仮想マシン ドメイン名を備えたスケール セットの作成
-CLI を使用して仮想マシンのカスタム DNS 名を備えたスケール セットを作成するには、**--vm-domain-name** 引数とその後に続けたドメイン名を表す文字列を **vmss create** コマンドに追加します。
+CLI を使用して、仮想マシンのカスタム DNS 名が付いたスケール セットを作成するには、**virtual machine scale set create** コマンドに **--vm-domain-name** 引数を追加し、その後にドメイン名を表す文字列を追加します。
 
 Azure テンプレート内でドメイン名を設定するには、スケール セットの **networkInterfaceConfigurations** セクションに **dnsSettings** プロパティを追加します。 例: 
 
@@ -155,23 +171,35 @@ CLI を使用して、スケール セット仮想マシンに割り当てられ
 
 PowerShell を使用して、スケール セットのパブリック IP アドレスを一覧表示するには、_Get-AzureRmPublicIpAddress_ コマンドを使用します。 例: 
 ```PowerShell
-PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
+Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
 また、パブリック IP アドレス構成のリソース ID を直接参照して、パブリック IP アドレスを照会することもできます。 例: 
 ```PowerShell
-PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
+Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
-スケール セット仮想マシンに割り当てられているパブリック IP アドレスを照会するには、[Azure Resource Explorer](https://resources.azure.com) または Azure REST API のバージョン **2017-03-30** 以降を使用します。
+[Azure Resource Explorer](https://resources.azure.com) またはバージョン **2017-03-30** 以上の Azure REST API でクエリを実行して、スケール セット仮想マシンに割り当てられているパブリック IP アドレスを表示することもできます。
 
-Resource Explorer を使用してスケール セットのパブリック IP アドレスを表示するには、スケール セットの **publicipaddresses** セクションを見ます。 例: https://resources.azure.com/subscriptions/_your_sub_id_/resourceGroups/_your_rg_/providers/Microsoft.Compute/virtualMachineScaleSets/_your_vmss_/publicipaddresses
+[Azure Resource Explorer](https://resources.azure.com) でクエリを実行するには:
 
-```
+1. Web ブラウザーで [Azure Resource Explorer](https://resources.azure.com) を開きます。
+1. 左側の *subscriptions* を、その横にある *+* をクリックして展開します。 *subscriptions* に項目が 1 つしかない場合は、既に展開されている可能性があります。
+1. ご自分のサブスクリプションを展開します。
+1. ご自分のリソース グループを展開します。
+1. *providers* を展開します。
+1. *Microsoft.Compute* を展開します。
+1. *virtualMachineScaleSets* を展開します。
+1. ご自分のスケール セットを展開します。
+1. *publicipaddresses* をクリックします。
+
+Azure REST API でクエリを実行するには:
+
+```bash
 GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG name}/providers/Microsoft.Compute/virtualMachineScaleSets/{scale set name}/publicipaddresses?api-version=2017-03-30
 ```
 
-出力例:
+[Azure Resource Explorer](https://resources.azure.com) と Azure REST API からの出力の例:
 ```json
 {
   "value": [
@@ -289,12 +317,14 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
 ```
 
 ## <a name="nsg--asgs-per-scale-set"></a>スケール セットごとの NSG と ASG
+[ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)では、セキュリティ規則を使用して、Azure 仮想ネットワーク内の Azure リソースとの間でやり取りされるトラフィックをフィルター処理できます。 [アプリケーション セキュリティ グループ](../virtual-network/security-overview.md#application-security-groups)を使用すると、Azure リソースのネットワーク セキュリティを処理し、Azure リソースをアプリケーションの構造の拡張機能としてグループ化することができます。
+
 ネットワーク セキュリティ グループは、スケール セットに直接適用できます。そのためには、スケール セット仮想マシン プロパティのネットワーク インターフェイス構成セクションに参照を追加します。
 
 アプリケーション セキュリティ グループもスケール セットに直接指定できます。そのためには、スケール セット仮想マシン プロパティのネットワーク インターフェイス IP 構成セクションに参照を追加します。
 
 例:  
-```
+```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
         {
@@ -334,6 +364,42 @@ GET https://management.azure.com/subscriptions/{your sub ID}/resourceGroups/{RG 
     ]
 }
 ```
+
+ネットワーク セキュリティ グループがスケール セットに関連付けられていることを確認するには、`az vmss show` コマンドを使用します。 次の例では、結果をフィルター処理して出力の関連セクションのみを表示するために、`--query` が使用されています。
+
+```bash
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
+    --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].networkSecurityGroup
+
+[
+  {
+    "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/nsgName",
+    "resourceGroup": "myResourceGroup"
+  }
+]
+```
+
+アプリケーション セキュリティ グループがスケール セットに関連付けられていることを確認するには、`az vmss show` コマンドを使用します。 次の例では、結果をフィルター処理して出力の関連セクションのみを表示するために、`--query` が使用されています。
+
+```bash
+az vmss show \
+    -g myResourceGroup \
+    -n myScaleSet \
+    --query virtualMachineProfile.networkProfile.networkInterfaceConfigurations[].ipConfigurations[].applicationSecurityGroups
+
+[
+  [
+    {
+      "id": "/subscriptions/.../resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationSecurityGroups/asgName",
+      "resourceGroup": "myResourceGroup"
+    }
+  ]
+]
+```
+
+
 
 ## <a name="next-steps"></a>次の手順
 Azure 仮想ネットワークの詳細については、「[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)」を参照してください。

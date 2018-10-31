@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキストの言語を認識する -Translator Text API、C#'
+title: 'クイック スタート: テキストの言語を認識する、C# - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# で Translator Text API を使ってソース テキストの言語を認識します。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: b9a5dbdc1e7950400597c76359b8eee4268af6d0
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: d92b5f7815c7aeb43ef81bb7b06aa1cda64f32dc
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320375"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647104"
 ---
-# <a name="quickstart-identify-language-from-text-with-c35"></a>クイック スタート: C&#35; を使ってテキストの言語を認識する
+# <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-c"></a>クイック スタート: Translator Text REST API を使用してテキストの言語を認識する (C#)
 
 このクイック スタートでは、Translator Text API を使ってソース テキストの言語を認識します。
 

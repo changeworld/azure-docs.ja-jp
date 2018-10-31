@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキスト スクリプトを変換する - Translator Text、Go'
+title: 'クイック スタート: テキスト スクリプトを変換する、Go - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Go で Translator Text API を使って 1 つの言語の中でテキストの表記を変換します。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: c4930e03f5d366eb3f21b44c5be90c20230065c3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: fd41eff65c312c125594bb3251f9c4fe74108eaf
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126753"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648362"
 ---
-# <a name="quickstart-transliterate-text-with-go"></a>クイック スタート: Go を使ったテキストの表記変換
+# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-go"></a>クイック スタート: Translator Text REST API を使用してテキストを表記変換する (Go)
 
 このクイック スタートでは、Translator Text API を使って、1 つの言語の中でテキストの表記を変換します。
 

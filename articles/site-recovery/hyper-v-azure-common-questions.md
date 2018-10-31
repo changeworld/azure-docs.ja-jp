@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 09/12/2018
+ms.date: 10/10/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 16c4ab4601dbe57e014bfcb06ff9b35d02c60cfa
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7c5316aea2bfdb9a96b9aeb2dd5387b2643a92b2
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721910"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319729"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>よくある質問 - Hyper-V から Azure へのレプリケーション
 
@@ -104,7 +104,7 @@ Azure ストレージにデータがレプリケートされます。 フェー�
 
 ### <a name="whats-the-replication-process"></a>レプリケーションはどのようなプロセスで実行されますか?
 
-1. 初期レプリケーションがトリガーされると、Hyper-V VM のスナップショットが作成されます。
+1. 初期レプリケーションがトリガーされると、Hyper-V VM スナップショットが作成されます。
 2. VM の仮想ハード ディスクは、すべてが Azure にコピーされるまで、1 つずつレプリケートされます。 VM サイズとネットワーク帯域幅によっては、しばらく時間がかかる場合があります。 ネットワーク帯域幅を拡張する方法について確認する。
 3. 初期レプリケーションの進行中にディスクの変更が発生した場合、Hyper-V レプリカ レプリケーション トラッカーはそれらの変更を Hyper-V レプリケーション ログ (.hrl) として追跡します。 これらのログ ファイルは、ディスクと同じフォルダーに配置されます。 各ディスクには関連付けられた .hrl ファイルが存在し、これらはセカンダリ ストレージに送信されます。 初期レプリケーションの進行中は、スナップショットおよびログ ファイルによってディスク リソースが消費されます。
 4. 初期レプリケーションが完了すると、VM スナップショットは削除されます。
@@ -135,7 +135,7 @@ Azure にレプリケートする場合、レプリケーション トラフィ�
 
 レプリケーションの場合、Hyper-V VM はサポートされているオペレーティング システムを実行している必要があります。 さらに、VM は Azure VM に対する要件を満たす必要があります。 サポート マトリックスについて詳しくは、[こちら](hyper-v-azure-support-matrix.md#replicated-vms)をご覧ください。
 
-###<a name="how-often-can-i-replicate-to-azure"></a>どのくらいの頻度で Azure にレプリケートできますか?
+### <a name="how-often-can-i-replicate-to-azure"></a>どのくらいの頻度で Azure にレプリケートできますか?
 
 Hyper-V VM は 30 秒 (Premium Storage を除く)、5 分、または 15 分ごとにレプリケートできます。
 
@@ -207,6 +207,3 @@ Azure は復元するように設計されています。 Site Recovery は、Az
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>異なる場所にフェールバックすることはできますか?
 はい、Azure にフェールオーバーした場合、元の場所が利用できないときは、別の場所にフェールバックすることができます。 [詳細情報](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment)。
-
-
-

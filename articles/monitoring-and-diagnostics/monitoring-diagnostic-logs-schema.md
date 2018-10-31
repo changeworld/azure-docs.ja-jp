@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 8/21/2018
+ms.date: 10/11/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 06d9fda01a89340eb019b4900c02e321e0b73cf5
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 3b665ed0539a41ffeca87511154f3607a57cff4a
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818966"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49116195"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -53,13 +53,14 @@ ms.locfileid: "42818966"
 | Application Gateway |[Application Gateway の診断ログ](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Azure Automation のログ分析](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch 診断ログ](../batch/batch-diagnostics.md) |
+| Azure Database for MySQL | [Azure Database for MySQL の診断ログ](../mysql/concepts-server-logs.md#diagnostic-logs) |
+| Azure Database for PostgreSQL | [Azure Database for PostgreSQL の診断ログ](../postgresql/concepts-server-logs.md#diagnostic-logs) |
 | Cognitive Services | スキーマは使用できません。 |
 | Content Delivery Network | [CDN の Azure 診断ログ](../cdn/cdn-azure-diagnostic-logs.md) |
 | Cosmos DB | [Azure Cosmos DB のログ](../cosmos-db/logging.md) |
 | Data Factory | [Azure Monitor を使用して、データ ファクトリを監視する](../data-factory/monitor-using-azure-monitor.md) |
 | Data Lake Analytics |[Azure Data Lake Analytics の診断ログへのアクセス](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Azure Data Lake Store の診断ログへのアクセス](../data-lake-store/data-lake-store-diagnostic-logs.md) |
-| DB for PostgreSQL |  スキーマは使用できません。 |
 | Event Hubs |[Azure Event Hubs の診断ログ](../event-hubs/event-hubs-diagnostic-logs.md) |
 | ExpressRoute | スキーマは使用できません。 |
 | Azure Firewall | スキーマは使用できません。 |
@@ -104,6 +105,7 @@ ms.locfileid: "42818966"
 |Microsoft.DataLakeAnalytics/accounts|要求数|要求ログ|
 |Microsoft.DataLakeStore/accounts|Audit|Audit Logs|
 |Microsoft.DataLakeStore/accounts|Requests|要求ログ|
+|Microsoft.DBforMySQL/servers|MySqlSlowLogs|MySQL 低速クエリ ログ|
 |Microsoft.DBforPostgreSQL/servers|PostgreSQLLogs|PostgreSQL サーバー ログ|
 |Microsoft.Devices/IotHubs|Connections|Connections|
 |Microsoft.Devices/IotHubs|DeviceTelemetry|デバイス テレメトリ|

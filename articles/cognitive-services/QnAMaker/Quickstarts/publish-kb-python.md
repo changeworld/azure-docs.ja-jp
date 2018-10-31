@@ -1,25 +1,28 @@
 ---
-title: 'クイック スタート: Python によるナレッジ ベースの公開 - QnA Maker'
+title: 'クイック スタート: ナレッジ ベースを公開する - REST、Python - QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: QnA Maker に使用するナレッジ ベースを Python で公開する方法。
+description: この REST ベースのクイック スタートでは、ナレッジ ベースを公開する手順を紹介しています。公開時に、テスト済みのナレッジ ベースの最新バージョンが、公開済みのナレッジ ベースを表す専用の Azure Search インデックスにプッシュされます。 また、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 92a0f54c8fca6a53cf869ce21c8007ad2a1eba5b
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e58b344102eb900ffe41bb90e541258eb3b59286
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887719"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646816"
 ---
-# <a name="quickstart-publish-a-knowledge-base-in-python"></a>クイック スタート: Python でナレッジ ベースを公開する
+# <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-python"></a>クイック スタート: Python を使用して QnA Maker でナレッジ ベースを公開する
 
-次のコードでは、[Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) メソッドを利用し、既存のナレッジ ベースが公開されます。
+このクイック スタートでは、ナレッジ ベース (KB) をプログラムから公開する手順を紹介しています。 公開すると、ナレッジ ベースの最新バージョンが、専用の Azure Search インデックスにプッシュされ、アプリケーションやチャット ボットで呼び出すことができるエンドポイントが作成されます。
+
+このクイック スタートで呼び出す QnA Maker API は次のとおりです。
+* [公開](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) - この API は、要求の本文に情報を必要としません。
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 

@@ -1,25 +1,31 @@
 ---
-title: 'クイック スタート: Java によるナレッジ ベースの更新 - QnA Maker'
+title: 'クイック スタート: ナレッジ ベースを更新する - REST (Java) - QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: QnA Maker に使用するナレッジ ベースを Java で更新する方法。
+description: この REST ベースのクイック スタートでは、QnA Maker ナレッジ ベース (KB) のサンプルをプログラムから更新する手順を紹介しています。 質問と回答のペアは、KB の更新に使用する JSON 定義によって追加、変更、削除することができます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: fc2792086d93e584535389c8c0f162fc1e592cbd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: b7aaf57def84feec95cc6a157ac6dd33a17b2fc0
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388247"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645857"
 ---
-# <a name="update-a-knowledge-base-in-java"></a>Java でナレッジ ベースを更新する
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-java"></a>クイック スタート: Java を使用して QnA Maker のナレッジ ベースを更新する
 
-次のコードでは、[Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) メソッドを利用し、既存のナレッジ ベースが更新されます。
+このクイック スタートでは、既存の QnA Maker ナレッジ ベース (KB) をプログラムから更新する手順を紹介しています。  この JSON を使用して新しいデータ ソースを追加したり、データ ソースを変更したり、データ ソースを削除したりすることによって、KB を更新することができます。
+
+この API には、QnA Maker ポータルでの編集後、**[Save and train]\(保存してトレーニング\)** ボタンを使用することと同等の働きがあります。
+
+このクイック スタートで呼び出す QnA Maker API は次のとおりです。
+* [更新](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) - ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。 
+* [取得操作の詳細](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
 [!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 

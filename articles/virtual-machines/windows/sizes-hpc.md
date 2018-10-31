@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 31e81741d2a627888e478b3871bdbab4e6b6d6f5
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: e00a4c5f5ee307a2d574702844e481894d28cb93
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37902641"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340309"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ
 
@@ -50,12 +50,19 @@ ms.locfileid: "37902641"
   
   詳しくは、[仮想マシン拡張機能とその機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。 [クラシック デプロイ モデル](classic/manage-extensions.md)にデプロイされている VM にも拡張機能を使用できます。
 
+### <a name="cluster-configuration-options"></a>クラスター構成オプション
 
-## <a name="using-hpc-pack"></a>HPC Pack の使用
+Azure では、次のような、RDMA ネットワークを使用して通信できる Windows HPC VM のクラスターを作成するためのオプションがいくつか提供されます。 
 
-[Microsoft HPC Pack](https://technet.microsoft.com/library/jj899572.aspx) (Microsoft が無償で提供している HPC クラスターとジョブの管理ソリューション) は、Windows ベースの MPI アプリケーションとその他の HPC ワークロードを実行するコンピューティング クラスターを Azure で作成するための 1 つの選択肢として使用できます。 HPC Pack 2012 R2 以降のバージョンには、RDMA 対応の VM 上にデプロイした場合に Azure RDMA ネットワークを使用する MS-MPI 用のランタイム環境が含まれています。
+* **仮想マシン** - 同じ可用性セット内に RDMA 対応の HPC VM をデプロイします (Azure Resource Manager デプロイ モデルを使用する場合)。 クラシック デプロイ モデルを使用する場合は、同じクラウド サービス内に VM をデプロイします。 
 
+* **Virtual Machine Scale Sets** - VM スケール セットで、単一の配置グループにデプロイを制限するようにします。 たとえば、Resource Manager テンプレートで、`singlePlacementGroup` プロパティを `true` に設定します。 
 
+* **Azure CycleCloud** - [Azure CycleCloud](/azure/cyclecloud/) で HPC クラスターを作成し、Windows ノード上で MPI ジョブを実行します。
+
+* **Azure Batch** - [Azure Batch](/azure/batch/) プールを作成し、Windows Server コンピューティング ノード上で MPI ワークロードを実行します。 詳細については、「[Batch プールでの RDMA 対応または GPU 対応インスタンスの使用](../../batch/batch-pool-compute-intensive-sizes.md)」を参照してください。 Batch でのコンテナー ベースのワークロードの実行について、[Batch Shipyard](https://github.com/Azure/batch-shipyard) プロジェクトも参照してください。
+
+* **Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) には、RDMA 対応の Windows VM 上にデプロイした場合に Azure RDMA ネットワークを使用する MS-MPI 用のランタイム環境が含まれています。 デプロイの例については、「[Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 
 ## <a name="other-sizes"></a>その他のサイズ
 - [汎用](sizes-general.md)

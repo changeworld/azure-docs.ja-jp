@@ -9,20 +9,20 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 7af0d4819d4044f4cccc43cde1cffe7dff7982a7
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 6b7ca276f3273faa485d08633061f882493f72f7
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056439"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647274"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>ポータルで Azure Blueprint を定義して割り当てる
 
-Azure でのブループリントの作成方法と割り当て方法を理解することにより、組織は一貫性の共通パターンを定義し、Resource Manager テンプレート、ポリシー、セキュリティなどに基づいて、再利用可能であり短時間でデプロイできる構成を開発できるようになります。 このチュートリアルでは、組織内のブループリントの作成、発行、および割り当てに関連する一般的ないくつかのタスクを実行するための、Azure Blueprints の使用方法について説明します。
+Azure でのブループリントの作成方法と割り当て方法を理解することにより、組織は一貫性の共通パターンを定義し、Resource Manager テンプレート、ポリシー、セキュリティなどに基づいて、再利用可能であり短時間でデプロイできる構成を開発できるようになります。 このチュートリアルでは、組織内のブループリントの作成、発行、および割り当てに関連する一般的ないくつかのタスクを実行するための、Azure Blueprint の使用方法について説明します。
 
 > [!div class="checklist"]
 > - 新しいブループリントを作成し、サポートされているさまざまな成果物を追加する
-> - まだ**下書き**の既存のブループリントに変更を加える
+> - まだ**下書き**の既存のブループリントを変更する
 > - 割り当ての準備が完了しているブループリントに**発行済み**とマークを付ける
 > - ブループリントを既存のサブスクリプションに割り当てる
 > - 割り当てられたブループリントの状態と進行状況を確認する
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![ブループリントを作成する](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. 'MyBlueprint' などの**ブループリントの名前**をブループリントに指定します (文字と数字で構成し、最大 48 文字で、スペースと特殊文字は使用しない)。**[ブループリントの説明]** はこの時点では空白のままにしておきます。  **[定義場所]** ボックスで、右側にある省略記号をクリックして、ブループリントを保存する[管理グループ](../management-groups/overview.md)を選択し、**[選択]** をクリックします。
+1. 'MyBlueprint' などの**ブループリントの名前**をブループリントに指定します (文字と数字で構成し、最大 48 文字で、スペースと特殊文字は使用しない)。**[ブループリントの説明]** はこの時点では空白のままにしておきます。  **[定義の場所]** ボックスで、右側にある省略記号をクリックして、ブループリントを保存する[管理グループ](../management-groups/overview.md)を選択し、**[選択]** をクリックします。
 
    > [!NOTE]
    > ブループリントの定義は、管理グループにのみ保存できます。 最初の管理グループを作成するには、[次の手順](../management-groups/create.md)に従います。
@@ -111,7 +111,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![成果物 - Resource Manager テンプレート](./media/create-blueprint-portal/add-resource-manager-template.png)
 
-1. 完成したブループリントは次のようになります。 各成果物の _[パラメーター]_ 列に '_x_ / _y_ パラメーターが設定されました' があることを確認します。 **動的パラメーター**はブループリントの各割り当て時に設定され、ロールの割り当ての単一の**静的パラメーター**は既に構成済みです。
+1. 完成したブループリントは次のようになります。 各成果物の _[パラメーター]_ 列に '_x_ / _y_ パラメーターが設定されました' があることを確認します。 **動的パラメーター**は、ブループリントのそれぞれの割り当て時に設定されます。
 
    ![完成したブループリント](./media/create-blueprint-portal/completed-blueprint.png)
 
@@ -229,4 +229,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - [ブループリントの優先順位](./concepts/sequencing-order.md)のカスタマイズを参照する
 - [ブループリントのリソース ロック](./concepts/resource-locking.md)の使用方法を調べる
 - [既存の割り当ての更新](./how-to/update-existing-assignments.md)方法を参照する
-- ブルー プリントの割り当て時の問題を[一般的なトラブルシューティング](./troubleshoot/general.md)で解決する
+- ブループリントの割り当て時の問題を[一般的なトラブルシューティング](./troubleshoot/general.md)で解決する

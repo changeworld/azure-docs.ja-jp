@@ -4,21 +4,21 @@ description: この記事では、Media Services でのコンテンツ保護の�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 2a3e94d37a926bd36b780b45eb3d6cb29fb73597
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f8ef92a335dd6faee076356dbffc873b08afbdc0
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521756"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394277"
 ---
 # <a name="content-protection-overview"></a>コンテンツ保護の概要
 
@@ -149,9 +149,7 @@ Azure Media Services (AMS) v3 を使用してマルチ DRM (PlayReady、Widevine
 
 2. 暗号化された資産をストリーミングするように構成された StreamingLocator を作成します。 
 
-  この例の場合、**StreamingPolicyName** を **PredefinedStreamingPolicy.SecureStreaming** に設定し、エンベロープと cenc の暗号化をサポートし、StreamingLocator に 2 つのコンテンツ キーを設定します。 
-
-  また、FairPlay を使用して暗号化する場合は、**StreamingPolicyName** を **PredefinedStreamingPolicy.SecureStreamingWithFairPlay** に設定します。
+  たとえば、"Predefined_MultiDrmCencStreaming" ポリシーに StreamingLocator.StreamingPolicyName を設定できます。 このポリシーは、2 つのコンテンツ キー (エンベロープおよび CENC) を生成してロケーターに設定する必要があることを示しています。 このため、エンベロープ、PlayReady および Widevine の暗号化が適用されます (キーは構成済みの DRM ライセンスに基づいて再生クライアントに配信されます)。 また、CBCS (FairPlay) でもストリームを暗号化する場合は、"Predefined_MultiDrmStreaming" を使用します。
 
 3. テスト トークンを作成します。
 

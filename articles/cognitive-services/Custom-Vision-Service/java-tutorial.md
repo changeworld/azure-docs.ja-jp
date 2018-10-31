@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: 画像分類プロジェクトを作成する - Custom Vision Service、Java'
+title: 'チュートリアル: Custom Vision SDK for Java を使って画像分類プロジェクトを作成する'
 titlesuffix: Azure Cognitive Services
 description: 既定のエンドポイントを利用し、プロジェクトを作成し、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、予測を行います。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 9a7f50e0eb33016d6a2d8f28be047b327135c51f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: e302fc580d9c83d269f0deedd051a3ea23bd274e
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367357"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957215"
 ---
-# <a name="tutorial-build-an-image-classification-project-with-java"></a>チュートリアル: Java で画像分類プロジェクトを作成する
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>チュートリアル: Custom Vision SDK for Java を使って画像分類プロジェクトを作成する
 
-Custom Vision Service と Java を使って、画像分類プロジェクトを作成する方法について説明します。 作成後、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、このエンドポイントを使用して画像をプログラムでテストできます。 Custom Vision API を利用し、独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
+Custom Vision Service と Java を使って、画像分類プロジェクトを作成する方法について説明します。 作成後、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、このエンドポイントを使用して画像をプログラミングでテストできます。 Custom Vision API を利用し、独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -28,7 +28,7 @@ Custom Vision Service と Java を使って、画像分類プロジェクトを�
 
 ## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
 
-このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある__歯車アイコン__を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
 
 ![キー UI の画像](./media/python-tutorial/training-prediction-keys.png)
 
@@ -44,7 +44,7 @@ Maven Central Repository から Custom Vision SDK をインストールできま
 
 好みの Java IDE を使用して、`Vision/CustomVision` プロジェクトを開きます。 
 
-このアプリケーションは、先ほど取得したトレーニング キーを使用して、__Sample Java Project__ という名前の新しいプロジェクトを作成します。 その後、イメージをアップロードして分類子のトレーニングおよびテストを行います。 分類子は、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを識別します。
+このアプリケーションは、先ほど取得したトレーニング キーを使用して、__Sample Java Project__ という名前の新しいプロジェクトを作成します。 その後、イメージをアップロードして分類器のトレーニングおよびテストを行います。 分類器は、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを識別します。
 
 この例の主な機能は、以下のコード スニペットに実装されています。
 

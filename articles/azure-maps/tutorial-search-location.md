@@ -1,20 +1,20 @@
 ---
 title: Azure Maps での検索 | Microsoft Docs
 description: Azure Maps を使用して近くの目的地を検索する
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 761674c5839f0513532355116db07604f9e9d9dc
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 10fb30b77cc3cd18cbb6b3def9682349474fba71
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816822"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645816"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Azure Maps を使用して近くの目的地を検索する
 
@@ -116,11 +116,10 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
-    var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-    });
+    atlas.setSubscriptionKey("<your account key>");
+    var map = new atlas.Map("map");
     ```
+
     このセグメントは、Azure Maps アカウント キーに対するマップ コントロール API を開始します。 **atlas** は、API および関連するビジュアル コンポーネントを含む名前空間です。 **atlas.Map** は、ビジュアルと対話型 Web マップに対するコントロールを提供します。
 
 4. 変更をファイルに保存し、ブラウザーで HTML ページを開きます。 これは、**atlas.map** を呼び出し、アカウント キーを使用することで作成できる最も基本的なマップです。
@@ -148,14 +147,14 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
     var client = new atlas.service.Client(MapsAccountKey);
     ```
 
-3. マップが読み込まれた後、マップ上のすべての関数を読み込む必要があります。 マップの eventListener ブロック内にすべての map 関数を配置することで確認できます。 次のコードの行を追加して [eventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) をマップに追加し、機能を追加する前にマップが完全に読み込まれるようにします。
+3. マップが読み込まれた後、マップ上のすべての関数を読み込む必要があります。 マップの eventListener ブロック内にすべての map 関数を配置することで確認できます。 次のコードの行を追加して [eventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events) をマップに追加し、機能を追加する前にマップが完全に読み込まれるようにします。
     
     ```JavaScript
-         map.addEventListener("load", function() {
+         map.events.add("load", function() {
          });
     ```
 
-4. 次のスクリプト ブロックを**マップを読み込む eventListener 内に**追加してクエリをビルドします。 Search Service の基本的な検索 API であるファジー検索サービスを使用します。 ファジー検索サービスは、アドレスと目的地 (POI) トークンの任意の組み合わせなど、ほとんどのファジー入力を処理します。 指定された半径内の近くのガソリン スタンドを検索します。 応答は GeoJSON 形式に解析され、ポイント フィーチャに変換され、ピンとしてマップに追加されます。 スクリプトの最後の部分では、Map の [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) プロパティを使用してマップのカメラ境界を追加します。
+4. **マップを読み込むイベント内に**次のスクリプト ブロックを追加してクエリをビルドします。 Search Service の基本的な検索 API であるファジー検索サービスを使用します。 ファジー検索サービスは、アドレスと目的地 (POI) トークンの任意の組み合わせなど、ほとんどのファジー入力を処理します。 指定された半径内の近くのガソリン スタンドを検索します。 応答は GeoJSON 形式に解析され、ポイント フィーチャに変換され、ピンとしてマップに追加されます。 スクリプトの最後の部分では、Map の [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest) プロパティを使用してマップのカメラ境界を追加します。
 
     ```JavaScript
 
@@ -190,8 +189,8 @@ Maps アカウントが正常に作成されたら、Maps API のクエリを実
             map.setCameraBounds({
                bounds: geojsonResponse.getGeoJsonResults().bbox,
                padding: 50
-            );
-        });
+            });
+    });
     ```
 5. **MapSearch.html** ファイルを保存し、ブラウザーを更新します。 領域内のガソリン スタンドの位置が青いピンでマークされたシアトルを中心としたマップが表示されます。
 

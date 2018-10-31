@@ -1,23 +1,23 @@
 ---
 title: 'クイック スタート: ナレッジ ベースを作成する - REST、C# - QnA Maker'
 titlesuffix: Azure Cognitive Services
-description: このクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
+description: この REST ベースのクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 10/01/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: e6b8c769082b688b07bac78bca5e2dca59a2d9c2
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e1456cb0e7b7662cd460e51af3456fc496502798
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389413"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645070"
 ---
-# <a name="quickstart-create-a-qna-maker-knowledge-base-in-c"></a>クイック スタート: QnA Maker ナレッジ ベースを C# で作成する
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-c"></a>クイック スタート: C# を使用して QnA Maker でナレッジ ベースを作成する
 
 このクイック スタートでは、QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。 QnA Maker は、[データ ソース](../Concepts/data-sources-supported.md)の FAQ などの半構造化コンテンツから質問とその回答を自動的に抽出します。 ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。 
 

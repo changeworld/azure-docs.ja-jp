@@ -1,9 +1,9 @@
 ---
-title: Azure Security Center でサポートされているプラットフォーム | Microsoft Docs
-description: このドキュメントでは、Azure Security Center でサポートされている Windows と Linux のオペレーティング システムの一覧を示します。
+title: Azure Security Center でサポートされている機能とプラットフォーム | Microsoft Docs
+description: このドキュメントでは、Azure Security Center でサポートされる機能とプラットフォームの一覧を示します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 70c076ef-3ad4-4000-a0c1-0ac0c9796ff1
@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2018
-ms.author: terrylan
-ms.openlocfilehash: 54d173caa0e3eb4bbd8bda7c924e56d546a99662
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/10/2018
+ms.author: rkarlin
+ms.openlocfilehash: 279818e6b43e53206deb9e33591f75ef381a8962
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297504"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49319984"
 ---
-# <a name="supported-platforms-in-azure-security-center"></a>Azure Security Center でサポートされているプラットフォーム
+# <a name="platforms-and-features-supported-by-azure-security-center"></a>Azure Security Center でサポートされている機能とプラットフォーム
+
 セキュリティ状態の監視と推奨事項は、クラシック デプロイ モデルと Resource Manager デプロイ モデルのどちらかで作成された仮想マシン (VM)、およびコンピューターで利用できます。
 
 > [!NOTE]
@@ -29,7 +30,11 @@ ms.locfileid: "44297504"
 >
 >
 
-## <a name="supported-platforms-for-windows-computers-and-vms"></a>Windows コンピューターおよび VM でサポートされているプラットフォーム
+## <a name="supported-platforms"></a>サポートされるプラットフォーム 
+
+このセクションでは、Azure Security Center エージェントで実行できるプラットフォーム、およびデータを収集する元となるプラットフォームが一覧されます。
+
+### <a name="supported-platforms-for-windows-computers-and-vms"></a>Windows コンピューターおよび VM でサポートされているプラットフォーム
 サポートされている Windows オペレーティング システム:
 
 * Windows Server 2008
@@ -39,7 +44,7 @@ ms.locfileid: "44297504"
 * Windows Server 2016
 
 
-## <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux コンピューターおよび VM でサポートされているプラットフォーム
+### <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux コンピューターおよび VM でサポートされているプラットフォーム
 サポートされている Linux オペレーティング システム:
 
 * Ubuntu バージョン 12.04 LTS、14.04 LTS、16.04 LTS
@@ -58,6 +63,62 @@ ms.locfileid: "44297504"
 
 ## <a name="vms-and-cloud-services"></a>VM とクラウド サービス
 クラウド サービスで実行されている VM もサポートされます。 監視されるのは、運用スロットで実行されているクラウド サービスの Web ロールと worker ロールだけです。 クラウド サービスの詳細については、 [Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)に関するページをご覧ください。
+
+
+## <a name="supported-iaas-features"></a>サポートされている IaaS 機能
+
+> [!div class="mx-tableFixed"]
+> 
+
+|サーバー|Windows||Linux||
+|----|----|----|----|----|
+|環境|Azure|Azure 以外|Azure|Azure 以外|
+|VMBA 脅威検出アラート|✔|✔|✔ (サポートされているバージョン)|✔|
+|ネットワーク経由の脅威検出アラート|✔|○|✔|○|
+|Windows Defender ATP の統合*|✔ (サポートされているバージョン)|✔|○|○|
+|不足しているパッチ|✔|✔|✔|✔|
+|セキュリティ構成|✔|✔|✔|✔|
+|マルウェア対策|✔|✔|○|○|
+|JIT VM アクセス|✔|○|✔|○|
+|アダプティブ アプリケーション制御|✔ (Azure のみ)|○|○|○|
+|FIM|✔|✔|✔|✔|
+|ディスクの暗号化|✔|○|✔|○|
+|サード パーティのデプロイ|✔|○|✔|○|
+|NSG|✔|○|✔|○|
+|Filess V1|✔|✔|○|○|
+|ネットワーク マップ|✔|○|✔|○|
+|アダプティブ ネットワークのセキュリティ強化機能|✔|○|✔|○|
+
+* 現在、これらの機能はパブリック プレビューでサポートされています。
+
+
+## <a name="supported-paas-features"></a>サポートされている PaaS 機能
+
+
+|Service|Recommendations|脅威の検出|
+|----|----|----|
+|SQL|✔| ✔|
+|PostGreSQL*|✔| ✔|
+|MySQL*|✔| ✔|
+|BLOB ストレージ アカウント*|✔| ✔|
+|App Services|✔| ✔|
+|クラウド サービス|✔| ○|
+|Redis Cache|✔| ○|
+|Service Fabric|✔| ○|
+|Azure Automation|✔| ○|
+|Data Lake |✔| ○|
+|Key Vault|✔| ○|
+|Service Bus|✔| ○|
+|Stream Analytics|✔| ○|
+|Batch|✔| ○|
+|ロジック アプリ|✔| ○|
+|VNet|✔| 該当なし|
+|サブネット|✔| 該当なし|
+|NIC|✔| ✔|
+|NSG|✔| 該当なし|
+|サブスクリプション|✔| ✔|
+
+* 現在、これらの機能はパブリック プレビューでサポートされています。
 
 ## <a name="next-steps"></a>次の手順
 

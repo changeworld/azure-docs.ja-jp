@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: 画像分類プロジェクトを作成する - Custom Vision Service、Python'
+title: 'チュートリアル: Custom Vision SDK for Python を使って画像分類プロジェクトを作成する'
 titlesuffix: Azure Cognitive Services
 description: 既定のエンドポイントを利用し、プロジェクトを作成し、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、予測を行います。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 14b805a60637a889698132e169d5a41670a8bce0
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 96125ba1c54f742bb9ddf32a1588173217be0766
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363379"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953114"
 ---
-# <a name="tutorial-create-an-image-classification-project-using-the-custom-vision-service-with-python"></a>チュートリアル: Custom Vision Service と Python を使用して画像分類プロジェクトを作成する
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-python"></a>チュートリアル: Custom Vision SDK for Python を使って画像分類プロジェクトを作成する
 
 Custom Vision Service および基本の Python スクリプトを使って、画像分類プロジェクトを作成する方法について説明します。 作成後、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、このエンドポイントを使用して画像をプログラミングでテストできます。 Custom Vision API を利用し、独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
 
@@ -30,7 +30,7 @@ Custom Vision Service および基本の Python スクリプトを使って、�
 
 ## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
 
-このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある__歯車アイコン__を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
 
 ![キー UI の画像](./media/python-tutorial/training-prediction-keys.png)
 

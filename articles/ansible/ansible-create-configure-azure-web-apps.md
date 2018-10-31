@@ -1,6 +1,6 @@
 ---
 title: Ansible (プレビュー) を使用して Azure Web アプリを作成する
-description: Linux 上の App Service で、Ansible を使用して、Java 8 と Tomcat コンテナー ランタイムで Web アプリを作成する方法について学習します。
+description: Linux 上の App Service で、Ansible を使用して、Java 8 と Tomcat コンテナー ランタイムを使った Web アプリを作成する方法について学習します。
 ms.service: ansible
 keywords: ansible、azure、devops、bash、プレイブック、Azure App Service、Web アプリ、Java
 author: tomarcher
@@ -8,29 +8,29 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/20/2018
-ms.openlocfilehash: 1899b1fc1e0a38d859fb3a7ce2153585579650f3
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 48b4c201b2b96bd4662e8c90be7298a4f418af53
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586717"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426558"
 ---
-# <a name="create-azure-app-service-web-apps-using-ansible-preview"></a>Ansible (プレビュー) を使用して Azure App Service Web アプリ を作成する
-[App Service Web アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (または単に Web アプリ) は、Web アプリケーション、REST API、モバイル バックエンドをホストするためのサービスです。 開発には、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、お気に入りの言語をご利用いただけます。
+# <a name="create-azure-app-service-web-apps-by-using-ansible-preview"></a>Ansible (プレビュー) を使用して Azure App Service Web アプリ を作成する
+[Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-overview) (または単に Web Apps) は、Web アプリケーション、REST API、モバイル バックエンドのホストとなります。 開発には、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、お気に入りの言語をご利用いただけます。
 
-Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 この記事では、Ansible を使用して、Java ランタイムで Web アプリを作成する方法を示します。 
+Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 この記事では、Ansible を使用して、Java ランタイムを使った Web アプリを作成する方法について説明します。 
 
 ## <a name="prerequisites"></a>前提条件
 - **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> このチュートリアルでは、次のサンプルのプレイブックを実行するのに Ansible 2.7 が必要です。 `sudo pip install ansible[azure]==2.7.0rc2` を実行すれば、 Ansible 2.7 RC バージョンをインストールすることができます。 Ansible 2.7 は 2018 年 10 月にリリースされます。 その後、既定のバージョンは 2.7 になるため、ここでバージョンを指定する必要があります。 
+> このチュートリアルでは、次のサンプルのプレイブックを実行するのに Ansible 2.7 が必要です。 `sudo pip install ansible[azure]==2.7.0rc2` を実行すれば、Ansible 2.7 RC バージョンをインストールすることができます。 Ansible 2.7 のリリース後は、既定のバージョンが 2.7 になるため、ここでバージョンを指定する必要はありません。 
 
 ## <a name="create-a-simple-app-service"></a>簡素な App Service の作成
 このセクションでは、次のリソースを定義するサンプルの Ansible プレイブックを示します。
-- App Service プランと Web アプリの配備先となるリソース グループ
-- Linux 上の App Service で、Java 8 と Tomcat コンテナー ランタイムによる Web アプリ
+- App Service プランと Web アプリのデプロイ先となるリソース グループ
+- Linux 上の App Service で Java 8 と Tomcat コンテナー ランタイムを使った Web アプリ
 
 ```
 - hosts: localhost
@@ -62,7 +62,7 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
               java_container: tomcat
               java_container_version: 8.5
 ```
-上記のプレイブックを firstwebapp.yml として保存します。
+前述のプレイブックを **firstwebapp.yml** として保存します。
 
 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
 ```bash
@@ -84,8 +84,8 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=2    changed=2    unreachable=0    failed=0   
 ```
 
-## <a name="create-app-service-with-traffic-manager"></a>Traffic Manager での App Service の作成
-[Azure Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager) を使用すると、Web クライアントからの要求を Azure App Service 内のアプリに振り分ける方法を制御できます。 App Service のエンドポイントが Azure Traffic Manager のプロファイルに追加されると、Azure Traffic Manager は App Service アプリの状態 (実行中、停止、または削除済み) を追跡して、トラフィックを受信する必要のあるエンドポイントを決定できるようになります。
+## <a name="create-an-app-service-by-using-traffic-manager"></a>Traffic Manager を使用した App Service の作成
+[Azure Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager) を使用すると、Web クライアントからの要求を Azure App Service 内のアプリに振り分ける方法を制御できます。 App Service のエンドポイントが Azure Traffic Manager のプロファイルに追加されると、Azure Traffic Manager は App Service アプリの状態を追跡します。 それらの状態としては、実行中、停止、削除済みなどがあります。 これにより、トラフィックを受信すべきエンドポイントを Traffic Manager が判断できるようになります。
 
 App Service では、アプリは "[App Service プラン](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview
 )" で実行されます。 App Service プランでは、Web アプリを実行するための一連のコンピューティング リソースを定義します。 App Service プランと Web アプリを別のグループで管理できます。
@@ -93,8 +93,8 @@ App Service では、アプリは "[App Service プラン](https://docs.microsof
 このセクションでは、次のリソースを定義するサンプルの Ansible プレイブックを示します。
 - App Service プランの配備先となるリソース グループ
 - App Service プラン
-- Web アプリの配備先となる二次的リソース グループ
-- Linux 上の App Service で、Java 8 と Tomcat コンテナー ランタイムによる Web アプリ
+- Web アプリのデプロイ先となる二次的リソース グループ
+- Linux 上の App Service で Java 8 と Tomcat コンテナー ランタイムを使った Web アプリ
 - Traffic Manager プロファイル
 - 作成した Web サイトを使用する Traffic Manager エンドポイント
 
@@ -179,7 +179,7 @@ App Service では、アプリは "[App Service プラン](https://docs.microsof
       target_resource_id: "{{ webapp.webapps[0].id }}"
 
 ```
-上記のプレイブックを webapp.yml として保存するか、[プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/webapp.yml)します。
+前述のプレイブックを **webapp.yml** として保存するか、[プレイブックをダウンロード](https://github.com/Azure-Samples/ansible-playbooks/blob/master/webapp.yml)します。
 
 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
 ```bash

@@ -17,14 +17,14 @@ ms.date: 07/09/2018
 author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 4e0e28ff9ea14e42e1df7ce35bb90e8720a0d0b6
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 02b6823a46c94edb0ba28c7a2a8b9ae0efc44ae8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407299"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406094"
 ---
-# <a name="create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>Azure DevOps プロジェクトを使用して既存のコードの CI/CD パイプラインを作成する
+# <a name="tutorial--create-a-cicd-pipeline-for-your-existing-code-with-the-azure-devops-project"></a>チュートリアル: Azure DevOps プロジェクトを使用して既存のコードの CI/CD パイプラインを作成する
 
 Azure DevOps プロジェクトにより、既存のコードと Git リポジトリが簡単に使用できるようになり、サンプル アプリケーションのいずれかを選択して Azure への継続的インテグレーション (CI) と継続的デリバリー (CD) のパイプラインを作成することができます。
 
@@ -49,7 +49,7 @@ Azure DevOps プロジェクトによって、Azure DevOps Services に CI/CD �
 
 1. [Microsoft Azure portal](https://portal.azure.com) にサインインします。
 
-1. 左側のナビゲーション バーで **[+新規]** アイコンを選択し、**DevOps プロジェクト** を検索します。  **[作成]** を選択します。
+1. 左側のナビゲーション バーで **[+新規]** アイコンを選択し、**DevOps プロジェクト**を検索します。  **[作成]** を選択します。
 
     ![継続的デリバリーの開始](_img/azure-devops-project-github/fullbrowser.png)
 
@@ -99,7 +99,7 @@ Azure DevOps プロジェクトによって、ご自身の Azure DevOps Services
 
 1. ご自身のビルド パイプラインの**名前**をわかりやすい名前に変更します。  **[保存してキューに登録]** を選択し、**[保存]** を選択します。
 
-1. ご自身のビルド パイプラインの名前で、**[履歴]** を選択します。  ビルドの最近の変更の監査証跡が表示されます。  Azure DevOps Services は、ビルド パイプラインに対する変更を追跡し、バージョンを比較できるようにします。
+1. ご自身のビルド パイプラインの名前の下で、**[履歴]** を選択します。  ビルドの最近の変更の監査証跡が表示されます。  Azure DevOps Services は、ビルド パイプラインに対する変更を追跡し、バージョンを比較できるようにします。
 
 1. **[トリガー]** を選択します。  Azure DevOps プロジェクトでは、CI トリガーが自動的に作成され、リポジトリに対してコミットするたびに新しいビルドが開始されます。  必要に応じて、CI プロセスのブランチを含めるか除外するかを選択できます。
 

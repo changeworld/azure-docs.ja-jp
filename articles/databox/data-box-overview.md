@@ -7,14 +7,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 09/24/2018
+ms.date: 10/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 1beecd4c37ef333464e96b93294c25d182ffdf91
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 731730aae59fa654394bf01a139af0088c207774
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49090808"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955339"
 ---
 # <a name="what-is-azure-data-box"></a>Azure Data Box とは
 
@@ -62,7 +62,7 @@ Data Box は、ネットワークにほとんどまたはまったく影響を�
 | ディメンション                                              | デバイス - 幅: 309.0 mm 高さ: 430.4 mm 奥行き: 502.0 mm |            
 | ラック スペース                                              | 寝かせてラックに配置した場合 7 U (ラック マウント不可)|
 | 必要なケーブル                                         | 電源ケーブル x 1 (同梱) <br> RJ45 ケーブル x 2 <br> SFP+ Twinax 銅線ケーブル x 2|
-| ストレージの容量                                        | 100 TB <br> RAID 5 保護後の使用可能容量 80 TB|
+| ストレージの容量                                        | 100 TB のデバイス (RAID 5 保護後の使用可能容量 80 TB)|
 | ネットワーク インターフェイス                                      | 1 GbE インターフェイス x 2 - MGMT、DATA 3 <br> MGMT - 管理用、ユーザー構成不可、初期セットアップに使用 <br> DATA3 - データ用、ユーザー構成可能、既定で動的 <br> MGMT および DATA 3 は 10 GbE としても動作可能 <br> 10 GbE インターフェイス x 2 - DATA 1、DATA 2 <br> 両方ともデータ用、動的 (既定) または静的として構成可能 |
 | データ転送メディア                                     | RJ45、SFP+ 銅線 10 GbE イーサネット  |
 | セキュリティ                                                | 開封防止ネジを搭載した堅牢なデバイス筐体 <br> デバイスの下部に開封明示ステッカー|

@@ -10,12 +10,12 @@ ms.component: bing-visual-search
 ms.topic: quickstart
 ms.date: 06/11/2018
 ms.author: v-gedod
-ms.openlocfilehash: 269eaccbf834646b540123dfeeeec7c569b8ced4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 935241d5574a59edfa256b74db3a0aeab2f7bf91
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222643"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458107"
 ---
 # <a name="quickstart-bing-visual-search-sdk-python"></a>クイック スタート: Bing Visual Search SDK Python
 
@@ -227,14 +227,14 @@ def search_image_binary_with_crop_area(client, sub_key, file_path):
 <a name="knowledge-req"></a>
 ## <a name="knowledgerequest-parameter"></a>KnowledgeRequest パラメーター
 
-次のコードは、`knowledgeRequest` パラメーター内のイメージ URL を、\"site:www.bing.com\" フィルターと共に送信します。 その後、`imageInsightsToken`、タグの数、アクションの数、最初の actionType を出力します。
+次のコードは、`knowledgeRequest` パラメーター内のイメージ URL を、\"site:pinterest.com\" フィルターと共に送信します。 その後、`imageInsightsToken`、タグの数、アクションの数、最初の actionType を出力します。
 ```
 def search_url_with_filters(client_in, sub_key):
 
     client = client_in
 
     image_url = "https://images.unsplash.com/photo-1512546148165-e50d714a565a?w=600&q=80"
-    filters = Filters(site="www.bing.com")
+    filters = Filters(site="pinterest.com")
 
     knowledge_request = VisualSearchRequest(
         image_info=ImageInfo(url=image_url),
@@ -281,7 +281,7 @@ def search_url_with_filters(client_in, sub_key):
 ```
     client = client_in
 
-    image_insights_token = "bcid_113F29C079F18F385732D8046EC80145*ccid_oV/QcH95*mid_687689FAFA449B35BC11A1AE6CEAB6F9A9B53708*thid_R.113F29C079F18F385732D8046EC80145"
+    image_insights_token = "bcid_CA6BDBEA28D57D52E0B9D4B254F1DF0D*ccid_6J+8V1zi*thid_R.CA6BDBEA28D57D52E0B9D4B254F1DF0D"
     crop_area = CropArea(top=0.1,bottom=0.5,left=0.1,right=0.9)
 
     knowledge_request = VisualSearchRequest(

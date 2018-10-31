@@ -1,28 +1,28 @@
 ---
-title: 'チュートリアル: C# を使用して Translator Text 向けの WPF アプリケーションを作成する'
+title: 'チュートリアル: C# を使用して WPF アプリケーションを作成する - Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: このチュートリアルで は、C# を使って WPF アプリケーションをビルドすることで、Translator Text API を使用してテキストの翻訳、サポートされている言語のローカライズされた一覧を取得するなどの方法を説明します。
+description: このチュートリアルでは、C# を使用した WPF アプリケーションのビルドを通じて、Translator Text API を使ったテキストの翻訳、ローカライズされたサポート言語一覧の取得などの方法を説明します。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: tutorial
 ms.date: 07/20/2018
-ms.author: nolachar
-ms.openlocfilehash: 97660985b275bbe4384acb3fc92be8aaa0b57881
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: e302c1aa1cd4021b0d449fd981181b790546c0f8
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123965"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647478"
 ---
-# <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>チュートリアル: C&#35; を使用して Translator Text の WPF アプリケーションを作成する
+# <a name="tutorial-write-a-wpf-application-for-translator-text-using-c35"></a>チュートリアル: C# を使用して Translator Text 向けの WPF アプリケーションを作成する
 
 このチュートリアルでは、Azure の Microsoft Cognitive Services に組み込まれている Translator Text API (V3) を使用して、対話形式のテキスト変換ツールを作成します。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
-> * サービスでサポートされている言語の一覧を取得する
+> * サービスによるサポート対象言語の一覧の取得
 > * ユーザー入力テキストのある言語から別の言語への翻訳を実行する
 
 このアプリケーションは、他の 2 つの Microsoft Cognitive Services との統合も備えています。
@@ -412,7 +412,7 @@ Microsoft Translator サービスには、さまざまな翻訳機能を提供�
 * `TranslateButton` *(ボタン)* -ユーザーは、このボタンをクリックして (または Enter キーを押して)、テキストを翻訳します。
 * `TranslatedTextLabel` *(ラベル)* -ユーザーのテキストの翻訳がここに表示されます。
 
-このフォームの独自バージョンを作成する場合は、弊社のものと "*まったく*" 同じものにする必要はありません。 ただし、言語名が切り取られないように言語のドロップダウンが十分広くなっていることを確認してください。
+このフォームの独自バージョンを作成する場合は、ここで使用するものと "*まったく*" 同じものにする必要はありません。 ただし、言語名が切り取られないように言語のドロップダウンが十分広くなっていることを確認してください。
 
 ## <a name="the-mainwindow-class"></a>MainWindow クラス
 
@@ -476,7 +476,7 @@ public partial class MainWindow : Window
 
 アプリケーションで実行される最初のコードは、`MainWindow` コンストラクターです。 最初に、メソッド `HandleExceptions` をグローバル エラー ハンドラーとして設定します。 このようにして、例外が処理されない場合は、少なくともエラー警告が表示されます。
 
-次に、API サブスクリプション キーがすべてちょうど 32 文字の長さになっていることを確認します。 そうでない場合、その最も可能性の高い理由は "*誰か*" が API キーに貼り付けなかったためです。 この場合、エラー メッセージを表示して、処理を終了します (もちろんこのテストに合格しても、キーが有効であるわけではありません)。
+次に、API サブスクリプション キーがすべてちょうど 32 文字の長さになっていることを確認します。 そうでない場合、その最も可能性の高い理由は "*誰か*" が API キーを空にしたためです。 この場合、エラー メッセージを表示して、救済します (もちろんこのテストに合格しても、キーが有効であるわけではありません)。
 
 少なくとも正しい長さのキーがある場合、`InitializeComponent()` を呼び出すと、メイン アプリケーション ウィンドウで XAML 記述の検索、読み込み、およびインスタンス化を行うことにより、ユーザー インターフェイスがロールします。
 

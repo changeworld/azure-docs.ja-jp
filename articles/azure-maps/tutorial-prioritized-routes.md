@@ -1,20 +1,20 @@
 ---
 title: Azure Maps を使った複数のルート | Microsoft Docs
 description: Azure Maps を使用してさまざまな移動モードのルートを検索します
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 340bf83f07b9e730cc43baccc60a39f5ba1f9942
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 864f662cd6be3c5929166db92f2dad92b9c6586e
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815309"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648209"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Azure Maps を使用してさまざまな移動モードのルートを検索します
 
@@ -74,15 +74,16 @@ ms.locfileid: "48815309"
     </html>
     ```
     HTML ヘッダーでは、CSS のリソースの場所と、Azure Maps ライブラリの JavaScript ファイルが埋め込まれています。 HTML 本体の *script* セグメントには、マップのインライン JavaScript コードが記述されます。
+
 3. 次の JavaScript コードを、HTML ファイルの *script* ブロックに追加します。 **\<your account key\>** の文字列は、Maps アカウントからコピーした主キーに置き換えてください。 マップのフォーカスを指定しなかった場合は、全世界のビューが表示されます。 このコードでは、マップの中心点を設定し、ズーム レベルを宣言して、特定の領域が既定のフォーカスとして設定されるようにしています。
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
+    var mapCenterPosition = [-73.985708, 40.75773];
+    atlas.setSubscriptionKey("<your account key>");
     var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-         center: [-118.2437, 34.0522],
-         zoom: 12
+      center: mapCenterPosition,
+      zoom: 11
     });
     ```
     **atlas.Map** は、ビジュアルと対話型 Web マップのためのコントロールを提供し、Azure マップ コントロール API のコンポーネントです。
@@ -93,10 +94,10 @@ ms.locfileid: "48815309"
 
 ## <a name="visualize-traffic-flow"></a>トラフィック フローを表示する
 
-1. マップにトラフィック フローの表示を追加します。  **map.addEventListener** は、マップが完全に読み込まれた後、マップに追加されたすべてのマップ関数が確実に読み込まれるようにしています。
+1. マップにトラフィック フローの表示を追加します。  **map.events.add** は、マップが完全に読み込まれた後、マップに追加されたすべてのマップ関数が確実に読み込まれるようにしています。
 
     ```JavaScript
-    map.addEventListener("load", function() {
+    map.events.add("load", function() {
         // Add Traffic Flow to the Map
         map.setTraffic({
             flow: "relative"
@@ -146,7 +147,7 @@ ms.locfileid: "48815309"
         padding: 100
     });
     
-    map.addEventListener("load", function() { 
+    map.events.add("load", function() { 
         // Add pins to the map for the start and end point of the route
         map.addPins([startPin, destinationPin], {
             name: "route-pins",
@@ -155,7 +156,7 @@ ms.locfileid: "48815309"
         });
     });
     ```
-    **map.setCameraBounds** の呼び出しでは、起点と終点の座標に従ってマップ ウィンドウを調整しています。 **map.addEventListener** は、マップが完全に読み込まれた後、マップに追加されたすべてのマップ関数が確実に読み込まれるようにしています。 API **map.addPins** は、点をビジュアル コンポーネントとしてマップ コントロールに追加します。
+    **map.setCameraBounds** の呼び出しでは、起点と終点の座標に従ってマップ ウィンドウを調整しています。 **map.events.add** は、マップが完全に読み込まれた後、マップに追加されたすべてのマップ関数が確実に読み込まれるようにしています。 API **map.addPins** は、点をビジュアル コンポーネントとしてマップ コントロールに追加します。
 
 3. ファイルを保存し、ブラウザーを更新してマップ上にピンを表示します。 マップの中心点はロサンゼルスに設定しましたが、**map.setCameraBounds** によって、始点と終点を表示するビューに切り替わりました。
 
@@ -165,7 +166,7 @@ ms.locfileid: "48815309"
 
 ## <a name="render-routes-prioritized-by-mode-of-travel"></a>トラベルのモードの優先順にルートを表示する
 
-このセクションでは、Maps のルート サービス API を使って、指定した起点から目的地までの複数のルートを、移動のモードに基づいて検索する方法について説明します。 ルーティング サービスの API では、現在のトラフィック状況を考慮したうえで、2 つの場所の間の、*最速*、*最短*、*エコ*、または*スリリング*なルートを計画できます。 また、Azure の広範な履歴トラフィック データベースを使い、任意の日時のルート所要時間を予測することによって、将来のルートを計画することもできます。 詳しくは、「[Get route directions (ルートの道順を取得する)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)」をご覧ください。  **マップを読み込む eventListener 内に**以下のコード ブロックをすべて追加し、マップが完全に読み込まれた後に、それらが読み込まれるようにする必要があります。
+このセクションでは、Maps のルート サービス API を使って、指定した起点から目的地までの複数のルートを、移動のモードに基づいて検索する方法について説明します。 ルーティング サービスの API では、現在のトラフィック状況を考慮したうえで、2 つの場所の間の、*最速*、*最短*、*エコ*、または*スリリング*なルートを計画できます。 また、Azure の広範な履歴トラフィック データベースを使い、任意の日時のルート所要時間を予測することによって、将来のルートを計画することもできます。 詳しくは、「[Get route directions (ルートの道順を取得する)](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)」をご覧ください。 **マップを読み込む eventListener 内に**以下のコード ブロックをすべて追加し、マップが完全に読み込まれた後に、それらが読み込まれるようにする必要があります。
 
 1. まずは、マップ上に新しいレイヤーを追加して、ルートのパス (*ラインストリング*) を表示します。 このチュートリアルでは、2 つの異なるルート (**car-route** と **truck-route**) を使って、それぞれに独自のスタイルを設定します。 *script* ブロックに、次の JavaScript コードを追加します。
 
@@ -233,7 +234,7 @@ ms.locfileid: "48815309"
     // Execute the car route query then add the route to the map once a response is received  
     client.route.getRouteDirections(routeQuery).then(response => {
         // Parse the response into GeoJSON
-        var geoJsonResponse = new tlas.service.geojson
+        var geoJsonResponse = new atlas.service.geojson
             .GeoJsonRouteDiraectionsResponse(response);
 
         // Get the first in the array of routes and add it to the map 

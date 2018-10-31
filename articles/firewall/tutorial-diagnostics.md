@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/24/2018
+ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 1940fb210481dc75fe48d110776185e90cb3e42f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 875efddfff9b50ab05665cb8c158467dc46c8d0d
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991047"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987434"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>チュートリアル: Azure Firewall のログとメトリックを監視する
 
@@ -51,11 +51,11 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 5. この例では、Log Analytics にログを保存するため、名前として「**Firewall log analytics**」と入力します。
 6. **[Send to Log Analytics]\(Log Analytics に送信\)** をクリックして、ワークスペースを構成します。 イベント ハブとストレージ アカウントを使用して診断ログを保存することもできます。
 7. **[Log Analytics]** で、**[構成]** をクリックします。
-8. [OMS ワークスペース] ページで、**[新しいワークスペースの作成]** をクリックします。
-9. **[Log Analytics ワークスペース]** ページで、新しい **OMS ワークスペース**の名前として「**firewall-oms**」と入力します。
+8. [Log Analytics ワークスペース] ページで、**[新しいワークスペースの作成]** をクリックします。
+9. **[Log Analytics ワークスペース]** ページで、新しい **Log Analytics ワークスペース**の名前として「**firewall-oms**」と入力します。
 10. サブスクリプションを選択し、既存のファイアウォール リソース グループ (**Test-FW-RG**) を使用します。場所として **[米国東部]** を選択し、**[Free]** 価格レベルを選択します。
 11. Click **OK**.
-   ![構成プロセスの開始][1]
+   ![構成プロセスの開始][1] OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。  
 12. アプリケーション ルールとネットワーク ルールのログを収集するために、**[ログ]** で **[AzureFirewallApplicationRule]** と **[AzureFirewallNetworkRule]** をクリックします。
    ![診断設定を保存する][2]
 13. **[Save]** をクリックします。
@@ -95,6 +95,8 @@ Azure Firewall を監視するには、ファイアウォール ログを使用�
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>ネットワークおよびアプリケーション ルール ログの表示と分析
 
 Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) は、カウンターおよびイベント ログ ファイルを収集します。 このツールには、ログを分析するための視覚化と強力な検索機能が含まれています。
+
+Azure Firewall Log Analytics のサンプル クエリについては、「[Azure Firewall Log Analytics samples (Azure Firewall Log Analytics のサンプル)](log-analytics-samples.md)」を参照してください。
 
 自身のストレージ アカウントに接続して、アクセス ログとパフォーマンス ログの JSON ログ エントリを取得することもできます。 JSON ファイルをダウンロードした後、そのファイルを CSV に変換し、Excel、Power BI などのデータ視覚化ツールで表示できます。
 

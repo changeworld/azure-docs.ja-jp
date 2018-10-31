@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: API Python - ナレッジ ベースの作成 - QnA Maker'
+title: 'クイック スタート: ナレッジ ベースを作成する - REST (Python) - QnA Maker'
 titlesuffix: Azure Cognitive Services
-description: このクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
+description: この REST ベースのクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 2646cc39197145e797f61d0c2d9e6d944ed19351
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d8802f1d5188966d08ac6a5fc74d38a704925faf
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388461"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646332"
 ---
-# <a name="create-a-new-knowledge-base-in-python"></a>新しいナレッジ ベースを Python で作成する
+# <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>クイック スタート: Python を使用して QnA Maker のナレッジ ベースを作成する
 
 このクイック スタートでは、Cognitive Services API アカウントの Azure ダッシュボードに表示される QnA Maker ナレッジ ベースのサンプルをプログラムから作成する手順を紹介しています。
 
@@ -37,7 +37,7 @@ Visual Studio と Python について詳しくは、「[Windows 上の Visual St
 
 ## <a name="create-knowledge-base"></a>ナレッジ ベースを作成する
 
-次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいナレッジ ベースが作成されます。
+次のコードでは、[Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) メソッドを利用し、新しいサポート技術情報が作成されます。
 
 1. 適切な IDE で新しい Python プロジェクトを作成します。
 2. 次に示すコードを追加します。

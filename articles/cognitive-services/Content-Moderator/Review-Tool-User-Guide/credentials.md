@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6477879953dc2bb2c7503eb0b2d4b5effa7b6a11
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 911d62fc2baa50cce6d40f8b5bcc455f308d21d7
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024657"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49309657"
 ---
 # <a name="manage-credentials"></a>資格情報を管理する
 
@@ -66,11 +66,11 @@ Content Moderator 内で使用可能なワークフローに Azure キーを使�
 
 ### <a name="resource-id"></a>Resource ID
 
-「[レビュー ツールと API で Azure アカウントを使用する](credentials.md#how-to-use-your-azure-account-with-the-review-tool)」セクションでこのセクションを取り上げました。 このフィールドは、前のセクションで説明したように、このフィールドに Azure リソース ID を追加する場合を除き、通常は空白です。
+フィールドのこのセットは、前のセクションの「[レビュー ツールおよびレビュー API で Azure アカウントを使用する](credentials.md#use-the-azure-account-with-the-review-tool-and-review-api)」で説明されています。 このフィールドは、前のセクションで説明したように、このフィールドに Azure リソース ID を追加する場合を除き、通常は空白です。
 
 ### <a name="workflows"></a>Workflows
 
-前のセクションの[ Azure のキーを使用して、ワークフローを実行する](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool)でこの一連のフィールドを取り上げました。 既定では、ワークフローを実行するために、レビュー ツールが自動生成された試用版キーを使用し、それがまず始めに表示されます。 他の 2 つのフィールドでは、それぞれ画面の文字と画像の評価の操作で用語と画像の一覧を使用できます。
+フィールドのこのセットは、前のセクションの「[レビュー ツールでワークフローを使った Azure アカウントを使用します](credentials.md#use-the-azure-account-with-the-workflows-in-the-review-tool)」で説明されています。 既定では、ワークフローを実行するために、レビュー ツールが自動生成された試用版キーを使用し、それがまず始めに表示されます。 他の 2 つのフィールドでは、それぞれ画面の文字と画像の評価の操作で用語と画像の一覧を使用できます。
 
 ## <a name="next-steps"></a>次の手順
 

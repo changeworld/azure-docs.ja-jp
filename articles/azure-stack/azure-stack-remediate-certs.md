@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 05/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 5e96c731496d79ca081091e2059a35545f963bd6
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 0ebf69dd3436a6b1010d4184b2063317d14547dd
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078638"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957635"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Azure Stack PKI 証明書に関する一般的な問題を修復する
 この記事の情報は、Azure Stack PKI 証明書の一般的な問題について理解し、解決するうえで役立ちます。 Azure Stack 適合性チェッカー ツールを使用して [Azure Stack PKI 証明書を検証](azure-stack-validate-pki-certs.md)すると、問題を見つけることができます。 このツールは、証明書が Azure Stack デプロイと Azure Stack シークレット ローテーションの PKI 要件を満たしていることを確認し、その結果のログを [report.json ファイル](azure-stack-validation-report.md)に出力します。  
@@ -69,12 +69,13 @@ ms.locfileid: "49078638"
 **解決策** - 「**デプロイ用の Azure Stack PKI 証明書の準備**」の手順を使用して、証明書を再度エクスポートし、[[証明書のパスにある証明書を可能であればすべて含む]](azure-stack-prepare-pki-certs.md) オプションを選択します。 リーフ証明書のみがエクスポート用に選択されていることを確認します。
 
 ## <a name="fix-common-packaging-issues"></a>パッケージに関する一般的な問題の修正
-AzsReadinessChecker は、PFX ファイルをインポートしてから、エクスポートし、次のようなパッケージに関する一般的な問題を修正できます。 
+AzsReadinessChecker には、ヘルパー コマンドレット Repair-AzsPfxCertificate が含まれています。これを使用すると、PFX ファイルをインポートしてからエクスポートし、パッケージに関する次のような一般的な問題を修正できます。 
  - "*PFX 暗号化*" が TripleDES-SHA1 ではない
  - "*秘密キー*" にローカル コンピューター 属性がない。
  - "*証明書チェーン*" が完全ではないか、間違っている  (PFX パッケージに証明書チェーンが含まれない場合、ローカル コンピューターに証明書チェーンを含める必要があります)。 
  - "*他の証明書*"。
-ただし、新しい CSR を生成し、証明書を再発行する必要がある場合、AzsReadinessChecker は役に立ちません。 
+ 
+新しい CSR を生成して証明書を再発行する必要がある場合は、Repair-AzsPfxCertificate は役に立ちません。 
 
 ### <a name="prerequisites"></a>前提条件
 ツールが実行されているコンピューターで、次の前提条件を満たす必要があります。 
@@ -96,9 +97,20 @@ AzsReadinessChecker は、PFX ファイルをインポートしてから、エ�
    - *- PfxPath* については、操作している PFX ファイルへのパスを指定します。  次の例では、パスは *.\certificates\ssl.pfx* です。
    - *- ExportPFXPath* については、エクスポートする PFX ファイルの名前と場所を指定します。  次の例では、パスは *.\certificates\ssl_new.pfx* です
 
-   > `Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx`  
+   > `Repair-AzsPfxCertificate -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx`  
 
-4. ツールが完了したら、成功したか出力を確認します。![結果](./media/azure-stack-remediate-certs/remediate-results.png)
+4. ツールが完了したら、成功したかどうかを出力で確認します。 
+````PowerShell
+Repair-AzsPfxCertificate v1.1809.1005.1 started.
+Starting Azure Stack Certificate Import/Export
+Importing PFX .\certificates\ssl.pfx into Local Machine Store
+Exporting certificate to .\certificates\ssl_new.pfx
+Export complete. Removing certificate from the local machine store.
+Removal complete.
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Repair-AzsPfxCertificate Completed
+````
 
 ## <a name="next-steps"></a>次の手順
 [Azure Stack のセキュリティについて詳しく学習する](azure-stack-rotate-secrets.md)

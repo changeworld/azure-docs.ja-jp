@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 10/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d09fcde90cf182bc8197c579718ecef7c5ce1eed
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 3cdc4a8a670b5af43e72b38d7a3b6d9aafdac348
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394529"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429441"
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 
@@ -81,29 +81,34 @@ Azure Analysis Services は、世界中のリージョンでサポートされ�
 |ブラジル南部     |    B1、B2、S0、S1、S2、S4、D1     |     1    |
 |カナダ中部    |     B1、B2、S0、S1、S2、S4、D1    |     1    |
 |米国東部     |     B1、B2、S0、S1、S2、S4、D1    |    1     |
-|米国東部 2     |     B1、B2、S0、S1、S2、S4、D1  <br>S8、S9   |    7<br>1    |
+|米国東部 2     |     B1、B2、S0、S1、S2、S4、D1   |    7    |
+|米国東部 2     |     S8、S9   |    1    |
 |米国中北部     |     B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中央部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中南部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 |米国中西部   |     B1、B2、S0、S1、S2、S4、D1    |    3     |
-|米国西部     |    B1、B2、S0、S1、S2、S4、D1  <br>S8、S9   |    7<br>2  |
-|米国西部 2    |    B1、B2、S0、S1、S2、S4、D1   <br>S8、S9  |    3<br>1     |
+|米国西部     |    B1、B2、S0、S1、S2、S4、D1    |    7   |
+|米国西部     |    S8、S9   |    2  |
+|米国西部 2    |    B1、B2、S0、S1、S2、S4、D1    |    3   |
+|米国西部 2    |    S8、S9  |    1     |
 
 ### <a name="europe"></a>ヨーロッパ
 
 |リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
 |北ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1      |    7     |
-|英国南部   |    B1、B2、S0、S1、S2、S4、D1      |     1    |
-|西ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1   <br>S8、S9    |    7<br>1     |
+|英国南部     |    B1、B2、S0、S1、S2、S4、D1      |     1    |
+|西ヨーロッパ     |    B1、B2、S0、S1、S2、S4、D1   |    7    |
+|西ヨーロッパ    |   S8、S9  |  1  |
 
 ### <a name="asia-pacific"></a>アジア太平洋 
 
 |リージョン  | サポートされているプラン | クエリ レプリカ (Standard プランのみ) |
 |---------|---------|:---------:|
+|オーストラリア東部     |    B1、B2、S0、S1、S2、S4     |    3     |
+|オーストラリア東部     |    S8、S9    |    1     |
 |オーストラリア南東部     | B1、B2、S0、S1、S2、S4、D1       |    1     |
-|オーストラリア東部     |    B1、B2、S0、S1、S2、S4    <br>S8、S9    |    3<br>1     |
-|東日本  |   B1、B2、S0、S1、S2、S4、D1       |    1     |
+|東日本     |   B1、B2、S0、S1、S2、S4、D1       |    1     |
 |東南アジア     |     B1、B2、S0、S1、S2、S4、S8、S9、D1     |   1      |
 |インド西部     |    B1、B2、S0、S1、S2、S4、D1     |    1     |
 
@@ -184,9 +189,11 @@ Azure のセキュリティについて詳しくは、[Microsoft セキュリテ
 
 ![BI 開発者用ツール](./media/analysis-services-overview/aas-overview-dev-tools.png)
 
-### <a name="sql-server-data-tools-ssdt-for-visual-studio"></a>SQL Server Data Tools (SSDT) for Visual Studio
+### <a name="visual-studio"></a>Visual Studio
 
-無料の [SQL Server Data Tools (SSDT) for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) を使用して、モデルを開発してデプロイします。 SSDT には、スピーディに開発を行うための Analysis Services プロジェクト テンプレートが用意されています。 現在、SSDT には、互換性レベル 1400 の表形式モデルに対応した最新の Get Data のデータ ソース クエリとマッシュアップ機能が含まれています。 Power BI Desktop と Excel 2016 の Get Data に慣れていれば、高度にカスタマイズされたデータ ソース クエリの作成が非常に簡単であることは既にわかっています。 Microsoft Analysis Services プロジェクトは、インストール可能なパッケージ VSIX として Visual Studio でも利用できます。 [Marketplace からダウンロード](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)できます。
+無料の [SQL Server Data Tools (SSDT) for Visual Studio](https://msdn.microsoft.com/library/mt204009.aspx) を使用して、モデルを開発してデプロイします。 SSDT には、スピーディに開発を行うための Analysis Services プロジェクト テンプレートが用意されています。 現在、SSDT には、互換性レベル 1400 の表形式モデルに対応した最新の Get Data のデータ ソース クエリとマッシュアップ機能が含まれています。 Power BI Desktop と Excel 2016 の Get Data に慣れていれば、高度にカスタマイズされたデータ ソース クエリの作成が非常に簡単であることは既にわかっています。 
+
+Visual Studio 2017 を使用している場合、インストール可能な無料の VSIX パッケージとして Microsoft Analysis Services プロジェクトが提供されます。 [Marketplace からダウンロード](https://marketplace.visualstudio.com/items?itemName=ProBITools.MicrosoftAnalysisServicesModelingProjects)できます。
 
 ### <a name="sql-server-management-studio"></a>SQL Server Management Studio
 

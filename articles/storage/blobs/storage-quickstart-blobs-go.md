@@ -6,14 +6,14 @@ author: seguler
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 04/09/2018
+ms.date: 10/23/2018
 ms.author: seguler
-ms.openlocfilehash: 93dc651767fc2be815fb706f71386ce72b382a37
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f0176b526bd2debae911f52d6fd364a87daabc1f
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981723"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986449"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>クイック スタート: Go を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -23,9 +23,9 @@ ms.locfileid: "46981723"
 
 このクイック スタートを完了するには、以下が必要です。 
 * [Go 1.8 以上](https://golang.org/dl/)をインストールする
-* `go get -u github.com/Azure/azure-storage-blob-go/2016-05-31/azblob` を使用して [Go 用の Azure Storage Blob SDK](https://github.com/azure/azure-storage-blob-go/) をダウンロードしてインストールする。 
+* `go get -u github.com/Azure/azure-storage-blob-go/azblob` を使用して [Go 用の Azure Storage Blob SDK](https://github.com/azure/azure-storage-blob-go/) をダウンロードしてインストールする。 
 
-> [!WARNING]
+> [!NOTE]
 > URL では Azure の先頭文字を必ず大文字にしてください。 そうしないと、SDK を使用するときに大文字と小文字の区別に関連するインポートの問題が発生する可能性があります。 インポート ステートメントでも Azure の先頭文字を大文字にする必要があります。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -94,13 +94,13 @@ Press the enter key to delete the sample files, example container, and exit the 
 次に、サンプル コードを実行して、そのしくみを理解できるようにします。
 
 ### <a name="create-containerurl-and-bloburl-objects"></a>ContainerURL オブジェクトと BlobURL オブジェクトを作成する
-最初に、BLOB ストレージにアクセスして管理するために使用される ContainerURL オブジェクトと BlobURL オブジェクトへの参照を作成します。 これらのオブジェクトは、REST API を発行する低レベルの API (Create、PutBlob、GetBlob など) を提供します。
+最初に、BLOB ストレージにアクセスして管理するために使用される ContainerURL オブジェクトと BlobURL オブジェクトへの参照を作成します。 これらのオブジェクトは、REST API を発行する低レベルの API (Create、Upload、Download など) を提供します。
 
-* **SharedKeyCredential** 構造体を使用して資格情報を格納します。 
+* [**SharedKeyCredential**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#SharedKeyCredential) 構造体を使用して資格情報を格納します。 
 
-* 資格情報とオプションを使用して**パイプライン**を作成します。 パイプラインでは、再試行ポリシー、ログの記録、HTTP 応答ペイロードの逆シリアル化などを指定します。  
+* 資格情報とオプションを使用して[**パイプライン**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#NewPipeline)を作成します。 パイプラインでは、再試行ポリシー、ログの記録、HTTP 応答ペイロードの逆シリアル化などを指定します。  
 
-* 新しい ContainerURL オブジェクトと、コンテナーに対する操作 (Create) と BLOB に対する操作 (PutBlob および GetBlob) を実行する新しい BlobURL オブジェクトをインスタンス化します。
+* コンテナーに対する操作 (Create) と BLOB に対する操作 (Upload および Download) を実行するために、新しい [**ContainerURL**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#ContainerURL) オブジェクトと新しい [**BlobURL**](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#BlobURL) オブジェクトをインスタンス化します。
 
 
 ContainerURL を作成したら、BLOB をポイントする **BlobURL** オブジェクトをインスタンス化して、アップロード、ダウンロード、コピーなどの操作を実行できます。
@@ -118,7 +118,10 @@ if len(accountName) == 0 || len(accountKey) == 0 {
 }
 
 // Create a default request pipeline using your storage account name and account key.
-credential := azblob.NewSharedKeyCredential(accountName, accountKey)
+credential, err := azblob.NewSharedKeyCredential(accountName, accountKey)
+if err != nil {
+    log.Fatal("Invalid credentials with error: " + err.Error())
+}
 p := azblob.NewPipeline(credential, azblob.PipelineOptions{})
 
 // Create a random string for the quick start container
@@ -135,33 +138,41 @@ containerURL := azblob.NewContainerURL(*URL, p)
 // Create the container
 fmt.Printf("Creating a container named %s\n", containerName)
 ctx := context.Background() // This example uses a never-expiring context
-_, err := containerURL.Create(ctx, azblob.Metadata{}, azblob.PublicAccessNone)
+_, err = containerURL.Create(ctx, azblob.Metadata{}, azblob.PublicAccessNone)
 handleErrors(err)
 ```
 ### <a name="upload-blobs-to-the-container"></a>BLOB をコンテナーにアップロードする
 
 Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB をサポートします。 最もよく使われるのはブロック BLOB であり、このクイックスタートでもそれを使います。  
 
-ファイルを BLOB にアップロードするには、**os.Open** を使用してファイルを開きます。 PutBlob、PutBlock、PutBlockList のいずれかの REST API を使用して、指定されたパスにファイルをアップロードできます。 
+ファイルを BLOB にアップロードするには、**os.Open** を使用してファイルを開きます。 Upload (PutBlob)、StageBlock/CommitBlockList (PutBlock/PutBlockList) のいずれかの REST API を使用して、指定したパスにファイルをアップロードできます。 
 
-別の方法として、低レベルの REST API の上に構築された[高レベルの API](https://github.com/Azure/azure-storage-blob-go/blob/master/2016-05-31/azblob/highlevel.go) が SDK に用意されています。 たとえば ***UploadFileToBlockBlob*** 関数では、スループットを最適化するために、PutBlock 操作を使用してチャンクにしたファイルを同時にアップロードします。 ファイルが 256 MB 未満の場合、代わりに PutBlob を使用して単一のトランザクションで転送を完了します。
+別の方法として、低レベルの REST API の上に構築された[高レベルの API](https://github.com/Azure/azure-storage-blob-go/blob/master/azblob/highlevel.go) が SDK に用意されています。 たとえば ***UploadFileToBlockBlob*** 関数では、スループットを最適化するために、StageBlock (PutBlock) 操作を使用してチャンクにしたファイルを同時にアップロードします。 ファイルが 256 MB 未満の場合、代わりに Upload (PutBlob) を使用して単一のトランザクションで転送を完了します。
 
 次の例では、ファイルを **quickstartblobs-[randomstring]** という名前のコンテナーにアップロードします。
 
 ```go
+// Create a file to test the upload and download.
+fmt.Printf("Creating a dummy file to test the upload and download\n")
+data := []byte("hello world this is a blob\n")
+fileName := randomString()
+err = ioutil.WriteFile(fileName, data, 0700)
+handleErrors(err)
+
 // Here's how to upload a blob.
 blobURL := containerURL.NewBlockBlobURL(fileName)
 file, err := os.Open(fileName)
 handleErrors(err)
 
-// You can use the low-level PutBlob API to upload files. Low-level APIs are simple wrappers for the Azure Storage REST APIs.
-// Note that PutBlob can upload up to 256MB data in one shot. Details: https://docs.microsoft.com/rest/api/storageservices/put-blob
+// You can use the low-level Upload (PutBlob) API to upload files. Low-level APIs are simple wrappers for the Azure Storage REST APIs.
+// Note that Upload can upload up to 256MB data in one shot. Details: https://docs.microsoft.com/en-us/rest/api/storageservices/put-blob
+// To upload more than 256MB, use StageBlock (PutBlock) and CommitBlockList (PutBlockList) functions. 
 // Following is commented out intentionally because we will instead use UploadFileToBlockBlob API to upload the blob
-// _, err = blobURL.PutBlob(ctx, file, azblob.BlobHTTPHeaders{}, azblob.Metadata{}, azblob.BlobAccessConditions{})
+// _, err = blobURL.Upload(ctx, file, azblob.BlobHTTPHeaders{ContentType: "text/plain"}, azblob.Metadata{}, azblob.BlobAccessConditions{})
 // handleErrors(err)
 
 // The high-level API UploadFileToBlockBlob function uploads blocks in parallel for optimal performance, and can handle large files as well.
-// This function calls PutBlock/PutBlockList for files larger 256 MBs, and calls PutBlob for any file smaller
+// This function calls StageBlock/CommitBlockList for files larger 256 MBs, and calls Upload for any file smaller
 fmt.Printf("Uploading the file with blob name: %s\n", fileName)
 _, err = azblob.UploadFileToBlockBlob(ctx, file, blobURL, azblob.UploadToBlockBlobOptions{
     BlockSize:   4 * 1024 * 1024,
@@ -174,10 +185,11 @@ handleErrors(err)
 **ContainerURL** で **ListBlobs** メソッドを使用して、コンテナー内のファイルの一覧を取得します。 ListBlobs は、指定された**マーカー**から開始して単一セグメントの BLOB (最大 5,000) を返します。 空のマーカーを使用して最初から列挙を開始します。 BLOB 名は辞書式順序で返されます。 セグメントの取得後、それを処理し、前に返されたマーカーを渡す ListBlobs を再度呼び出します。  
 
 ```go
-// List the blobs in the container
+// List the container that we have created above
+fmt.Println("Listing the blobs in the container:")
 for marker := (azblob.Marker{}); marker.NotDone(); {
     // Get a result segment starting with the blob indicated by the current Marker.
-    listBlob, err := containerURL.ListBlobs(ctx, marker, azblob.ListBlobsOptions{})
+    listBlob, err := containerURL.ListBlobsFlatSegment(ctx, marker, azblob.ListBlobsSegmentOptions{})
     handleErrors(err)
 
     // ListBlobs returns the start of the next segment; you MUST use this to get
@@ -185,22 +197,28 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
     marker = listBlob.NextMarker
 
     // Process the blobs returned in this result segment (if the segment is empty, the loop body won't execute)
-    for _, blobInfo := range listBlob.Blobs.Blob {
-        fmt.Print("Blob name: " + blobInfo.Name + "\n")
+    for _, blobInfo := range listBlob.Segment.BlobItems {
+        fmt.Print(" Blob name: " + blobInfo.Name + "\n")
     }
 }
 ```
 
 ### <a name="download-the-blob"></a>BLOB をダウンロードする
 
-BlobURL で **GetBlob** 低レベル メソッドを使用して、BLOB をダウンロードします。 または、[highlevel.go](https://github.com/Azure/azure-storage-blob-go/blob/master/2016-05-31/azblob/highlevel.go) で提供される **NewDownloadStream** 高レベル API を使用して、ストリームを作成してそこから範囲を読み取ることができます。 NewDownloadStream 関数は接続エラーの際に再試行されますが、GetBlob API は、503 (サーバー ビジー) などの HTTP 状態コードの場合にのみ再試行されます。 次のコードでは、**NewDownloadStream** 関数を使用して BLOB をダウンロードします。 BLOB の内容がバッファーに書き込まれ、コンソールに表示されます。
+BlobURL に **Download** 低レベル関数を使用して、BLOB をダウンロードします。 これにより、**DownloadResponse** 構造体が返されます。 構造体に対して関数 **Body** を実行して、データを読み取るための **RetryReader** ストリームを取得します。 読み取り中に接続がエラーになると、接続を再確立して読み取りを続行するために、追加の要求が行われます。 MaxRetryRequests を 0 (既定) に設定して RetryReaderOption を指定すると、元の応答本文が返され、再試行は実行されません。 または、高レベルの API **DownloadBlobToBuffer** または **DownloadBlobToFile** を使用して、コードを簡素化します。
+
+次のコードでは、**Download** 関数を使用して BLOB をダウンロードします。 BLOB の内容がバッファーに書き込まれ、コンソールに表示されます。
 
 ```go
-// Here's how to download the blob. NOTE: This method automatically retries if the connection fails
-// during download (the low-level GetBlob function does NOT retry errors when reading from its stream).
-stream := azblob.NewDownloadStream(ctx, blobURL.GetBlob, azblob.DownloadStreamOptions{})
-downloadedData := &bytes.Buffer{}
-_, err = downloadedData.ReadFrom(stream)
+// Here's how to download the blob
+downloadResponse, err := blobURL.Download(ctx, 0, azblob.CountToEnd, azblob.BlobAccessConditions{}, false)
+
+// NOTE: automatically retries are performed if the connection fails
+bodyStream := downloadResponse.Body(azblob.RetryReaderOptions{MaxRetryRequests: 20})
+
+// read the body into a buffer
+downloadedData := bytes.Buffer{}
+_, err = downloadedData.ReadFrom(bodyStream)
 handleErrors(err)
 ```
 
@@ -209,7 +227,7 @@ handleErrors(err)
 
 ```go
 // Cleaning up the quick start by deleting the container and the file created locally
-fmt.Printf("Press the enter key to delete the sample files, example container, and exit the application.\n")
+fmt.Printf("Press enter key to delete the sample files, example container, and exit the application.\n")
 bufio.NewReader(os.Stdin).ReadBytes('\n')
 fmt.Printf("Cleaning up.\n")
 containerURL.Delete(ctx, azblob.ContainerAccessConditions{})
@@ -222,8 +240,8 @@ os.Remove(fileName)
 Blob Storage を使用する Go 開発については、以下の追加リソースを参照してください。
 
 - GitHub で Azure Storage 用の [Go クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-blob-go)を確認し、インストールします。
-- Go クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://godoc.org/github.com/Azure/azure-storage-blob-go/2016-05-31/azblob#pkg-examples)を確認します。
+- Go クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob#pkg-examples)を確認します。
 
 ## <a name="next-steps"></a>次の手順
  
-このクイックスタートでは、Go を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Azure Storage Blob SDK の詳細については、[ソース コード](https://github.com/Azure/azure-storage-blob-go/)と [API リファレンス](https://godoc.org/github.com/Azure/azure-storage-blob-go/2016-05-31/azblob)をご覧ください。
+このクイックスタートでは、Go を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Azure Storage Blob SDK の詳細については、[ソース コード](https://github.com/Azure/azure-storage-blob-go/)と [API リファレンス](https://godoc.org/github.com/Azure/azure-storage-blob-go/azblob)をご覧ください。

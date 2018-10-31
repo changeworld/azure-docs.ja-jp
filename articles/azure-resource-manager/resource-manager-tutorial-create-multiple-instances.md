@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/10/2018
+ms.date: 10/18/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 63a18a6ae0ee4c6e0a01bd7ac4a26a4fb89746c2
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: 1cfccdf644b1748a96f7638e574c66eace8d113a
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419490"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456662"
 ---
 # <a name="tutorial-create-multiple-resource-instances-using-resource-manager-templates"></a>チュートリアル: Resource Manager テンプレートを使用した複数のリソース インスタンスの作成
 
@@ -35,8 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* [Visual Studio Code](https://code.visualstudio.com/)。
-* Resource Manager ツール拡張機能。 インストールするには、[Resource Manager ツール拡張機能のインストール](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)に関するページをご覧ください。
+* [Visual Studio Code](https://code.visualstudio.com/) と [Resource Manager ツール拡張機能](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
@@ -121,14 +120,17 @@ Visual Studio Code で、次の 4 つの変更を行います。
 3 つのストレージ アカウントをすべて一覧表示するには、--name パラメータを省略します。
 
 # <a name="clitabcli"></a>[CLI](#tab/CLI)
-```cli
-az storage account list --resource-group <ResourceGroupName>
+```azurecli
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az storage account list --resource-group $resourceGroupName
 ```
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
 
-```powershell
-Get-AzureRmStorageAccount -ResourceGroupName <ResourceGroupName>
+```azurepowershell
+$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
+Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName
 ```
 
 ---

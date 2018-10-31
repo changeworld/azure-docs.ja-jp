@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: kefre
-ms.openlocfilehash: 5c0a4e981a290b9a758c8401a75e546c61618b45
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 55b474d0edbb8dc01b9f35d4f8799e53e37862df
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983903"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49166374"
 ---
 # <a name="computer-vision-api-frequently-asked-questions"></a>Computer Vision API についてよく寄せられる質問
 
@@ -44,7 +44,7 @@ ms.locfileid: "45983903"
 | デンマーク語 (da-DK)  | オランダ語 (nl-NL)     | 英語           | フィンランド語 (fi-FI)            |フランス語 (fr-FR)
 | ドイツ語 (de-DE)  | ギリシャ語 (el-GR)     | ハンガリー語 (hu-HU) | イタリア語 (it-IT)            | 日本語 (ja-JP)
 | 韓国語 (ko-KR)  | ノルウェー語 (nb-NO) | ポーランド語 (pl-PL)    | ポルトガル語 (pt-BR) (pt-PT) | ロシア語 (ru-RU)
-| スペイン語 (es-ES)   | スウェーデン語 (sv-SV)     | トルコ語 (tr-TU)   |                            |
+| スペイン語 (es-ES)   | スウェーデン語 (sv-SV)     | トルコ語 (tr-TR)   |                            |
 
 -----
 

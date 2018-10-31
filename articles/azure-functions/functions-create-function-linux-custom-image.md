@@ -5,105 +5,137 @@ services: functions
 keywords: ''
 author: ggailey777
 ms.author: glenga
-ms.date: 11/15/2017
+ms.date: 10/19/2018
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: a77018d5ee1738f24518742c2386e6e261a7c6a8
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: aa3c72c7ff2aa5e25fbff9fc38c33fd2dda34ecd
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901450"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985082"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>カスタム イメージを使用して Linux で関数を作成する (プレビュー)
 
 Azure Functions を使用して、独自のカスタム コンテナー内の Linux 上で関数をホストできます。 [既定の Azure App Service コンテナー上でホストする](functions-create-first-azure-function-azure-cli-linux.md)こともできます。 この機能は現在プレビュー段階であり、[Functions 2.0 ランタイム](functions-versions.md)が必要です。
 
-このチュートリアルでは、カスタム Docker イメージとして Function App をデプロイする方法について説明します。 このパターンは、組み込みの App Service コンテナー イメージをカスタマイズする必要がある場合に便利です。 特定の言語バージョン、特定の依存関係、または組み込みイメージで提供されない構成が関数に必要になるときに、カスタム イメージを使用することがあります。
+このチュートリアルでは、関数をカスタム Docker イメージとして Azure にデプロイする方法について説明します。 このパターンは、組み込みの App Service コンテナー イメージをカスタマイズする必要がある場合に便利です。 特定の言語バージョン、特定の依存関係、または組み込みイメージで提供されない構成が関数に必要になるときに、カスタム イメージを使用することがあります。
 
-このチュートリアルでは、Azure Functions を使用してカスタム イメージを作成し、Docker Hub にプッシュする方法について説明します。 その後、Linux 上で実行される Function App のデプロイ ソースとして、このイメージを使用できます。 Docker を使用してイメージをビルドし、プッシュします。 Azure CLI を使用して Function App を作成し、Docker Hub からイメージをデプロイします。 
+このチュートリアルでは、Azure Functions Core Tools を使用して、カスタム Linux イメージに関数を作成する方法について説明します。 このイメージを、Azure CLI を使用して作成された Azure の関数アプリに発行します。
 
 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
+> * Core Tools を使用して関数アプリと Dockerfile を作成します。
 > * Docker を使用してカスタム イメージをビルドします。
-> * カスタム イメージをコンテナー レジストリに発行します。 
-> * Azure ストレージ アカウントを作成します。 
-> * Linux App Service プランを作成します。 
+> * カスタム イメージをコンテナー レジストリに発行します。
+> * Azure ストレージ アカウントを作成します。
+> * Linux App Service プランを作成します。
 > * Docker Hub から Function App をデプロイします。
-> * Function App にアプリケーション設定を追加します。 
+> * Function App にアプリケーション設定を追加します。
 
 次の手順は、Mac、Windows、または Linux コンピューターでサポートされます。  
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、次のものが必要です。
+このサンプルを実行する前に、以下が必要です。
 
-* [Git](https://git-scm.com/downloads)
-* 有効な [Azure サブスクリプション](https://azure.microsoft.com/pricing/free-trial/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* [Docker](https://docs.docker.com/install/)
-* [Docker Hub アカウント](https://docs.docker.com/docker-id/)
+* [Azure Core Tools バージョン 2.x](functions-run-local.md#v2) をインストールします。
 
-[!INCLUDE [Free trial note](../../includes/quickstarts-free-trial-note.md)]
+* [Azure CLI]( /cli/azure/install-azure-cli) をインストールします。 この記事では、Azure CLI バージョン 2.0.46 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。  
+[Azure Cloud Shell](https://shell.azure.com/bash) を使用することもできます。
 
-## <a name="download-the-sample"></a>サンプルのダウンロード
+* 有効な Azure サブスクリプション
 
-ターミナル ウィンドウで、次のコマンドを実行して、サンプル アプリのリポジトリをローカル コンピューターに複製し、サンプル コードを含むディレクトリに移動します。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+## <a name="create-the-local-function-app-project"></a>ローカルの関数アプリ プロジェクトを作成する
+
+コマンド ラインから次のコマンドを実行し、現在のローカル ディレクトリの `MyFunctionProj` フォルダー内に関数アプリ プロジェクトを作成します。
 
 ```bash
-git clone https://github.com/Azure-Samples/functions-linux-custom-image.git --config core.autocrlf=input
-cd functions-linux-custom-image
+func init MyFunctionProj --docker
 ```
+
+`--docker` オプションを含めると、プロジェクト用に Dockerfile が生成されます。 このファイルは、プロジェクトの実行先となるカスタム コンテナーを作成するために使用されます。 使用される基本イメージは、選択されたワーカー ランタイム言語によって異なります。  
+
+メッセージが表示されたら、次の言語からワーカー ランタイムを選択します。
+
+* `dotnet`: .NET クラス ライブラリ プロジェクト (.csproj) を作成します。
+* `node`: JavaScript プロジェクトを作成します。
+
+コマンドを実行すると、次のような出力が表示されます。
+
+```output
+Writing .gitignore
+Writing host.json
+Writing local.settings.json
+Writing Dockerfile
+```
+
+次のコマンドを使用して、新しい `MyFunctionProj` プロジェクト フォルダーに移動します。
+
+```bash
+cd MyFunctionProj
+```
+
+[!INCLUDE [functions-create-function-core-tools](../../includes/functions-create-function-core-tools.md)]
+
+[!INCLUDE [functions-update-function-code](../../includes/functions-update-function-code.md)]
+
+[!INCLUDE [functions-run-function-test-local](../../includes/functions-run-function-test-local.md)]
 
 ## <a name="build-the-image-from-the-docker-file"></a>Docker ファイルからイメージを作成する
 
-この Git リポジトリで、_Dockerfile_ を確認してください。 このファイルには、Linux 上で Function App を実行するために必要な環境が記述されています。 
+プロジェクトのルート フォルダーで _Dockerfile_ を確認します。 このファイルには、Linux 上で Function App を実行するために必要な環境が記述されています。 次の例は、JavaScript (Node.js) ワーカー ランタイムで関数アプリを実行するコンテナーを作成する Dockerfile です。 
 
 ```docker
-# Base the image on the built-in Azure Functions Linux image.
-FROM microsoft/azure-functions-runtime:2.0.0-jessie
+FROM mcr.microsoft.com/azure-functions/node:2.0
+
 ENV AzureWebJobsScriptRoot=/home/site/wwwroot
-
-# Add files from this repo to the root site folder.
-COPY . /home/site/wwwroot 
+COPY . /home/site/wwwroot
 ```
->[!NOTE]
-> プライベート コンテナー レジストリでイメージをホストする場合は、Dockerfile の **ENV** 変数を使用することで Function App に接続の設定を追加する必要があります。 このチュートリアルではプライベート レジストリが使用されると保証できないため、セキュリティのベスト プラクティスとして、接続の設定は[デプロイの後で Azure CLI を使用して追加されます](#configure-the-function-app)。   
 
-### <a name="run-the-build-command"></a>ビルド コマンドの実行
-Docker イメージを作成するには、`docker build` コマンドを実行し、`mydockerimage` という名前を付け、タグ `v1.0.0` を付けます。 `<docker-id>` を Docker Hub アカウント ID で置換します。
+> [!NOTE]
+> プライベート コンテナー レジストリでイメージをホストする場合は、Dockerfile の **ENV** 変数を使用することで Function App に接続の設定を追加する必要があります。 このチュートリアルではプライベート レジストリが使用されると保証できないため、セキュリティのベスト プラクティスとして、接続の設定は[デプロイの後で Azure CLI を使用して追加されます](#configure-the-function-app)。
+
+### <a name="run-the-build-command"></a>`build` コマンドを実行します
+ルート フォルダーで、[docker build](https://docs.docker.com/engine/reference/commandline/build/) コマンドを実行し、名前に `mydockerimage`、タグに `v1.0.0` を指定します。 `<docker-id>` を Docker Hub アカウント ID で置換します。 このコマンドでは、コンテナーの Docker イメージがビルドされます。
 
 ```bash
 docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 ```
 
-コマンドによって次のような出力が生成されます。
+コマンドを実行すると、次のような出力が表示されます。この場合は、JavaScript ワーカー ランタイムに関する出力です。
 
 ```bash
-Sending build context to Docker daemon  169.5kB
-Step 1/3 : FROM microsoft/azure-functions-runtime:v2.0.0-jessie
-v2.0.0-jessie: Pulling from microsoft/azure-functions-runtime
-b178b12f7913: Pull complete
-2d9ce077a781: Pull complete
-4775d4ba55c8: Pull complete
-Digest: sha256:073f45fc167b3b5c6642ef4b3c99064430d6b17507095...
-Status: Downloaded newer image for microsoft/azure-functions-runtime:v2.0.0-jessie
- ---> 217799efa500
-Step 2/3 : ENV AzureWebJobsScriptRoot /home/site/wwwroot
- ---> Running in 528fa2077d17
- ---> 7cc6323b8ae0
-Removing intermediate container 528fa2077d17
+Sending build context to Docker daemon  17.41kB
+Step 1/3 : FROM mcr.microsoft.com/azure-functions/node:2.0
+2.0: Pulling from azure-functions/node
+802b00ed6f79: Pull complete
+44580ea7a636: Pull complete
+73eebe8d57f9: Pull complete
+3d82a67477c2: Pull complete
+8bd51cd50290: Pull complete
+7bd755353966: Pull complete
+Digest: sha256:480e969821e9befe7c61dda353f63298f2c4b109e13032df5518e92540ea1d08
+Status: Downloaded newer image for mcr.microsoft.com/azure-functions/node:2.0
+ ---> 7c71671b838f
+Step 2/3 : ENV AzureWebJobsScriptRoot=/home/site/wwwroot
+ ---> Running in ed1e5809f0b7
+Removing intermediate container ed1e5809f0b7
+ ---> 39d9c341368a
 Step 3/3 : COPY . /home/site/wwwroot
- ---> 5bdac9878423
-Successfully built 5bdac9878423
-Successfully tagged ggailey777/mydockerimage:v1.0.0
+ ---> 5e196215935a
+Successfully built 5e196215935a
+Successfully tagged <docker-id>/mydockerimage:v1.0.0
 ```
 
 ### <a name="test-the-image-locally"></a>ローカルでのイメージのテスト
-ローカル コンテナーで Docker イメージを実行することで、ビルドされたイメージの動作を確認します。 [docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを発行し、イメージの名前とタグを渡します。 必ず `-p` 引数を使用してポートを指定してください。
+ローカルのコンテナーで Docker イメージを実行して、ビルドしたイメージの動作を確認します。 [docker run](https://docs.docker.com/engine/reference/commandline/run/) コマンドを発行し、イメージの名前とタグを渡します。 必ず `-p` 引数を使用してポートを指定してください。
 
 ```bash
 docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
@@ -113,16 +145,20 @@ docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
 
 ![Function App をローカルでテストします。](./media/functions-create-function-linux-custom-image/run-image-local-success.png)
 
+必要に応じて、もう一度関数をテストできます。今回は、次の URL を使用してローカルのコンテナーでテストします。
+
+`http://localhost:8080/api/myhttptrigger?name=<yourname>`
+
 コンテナー内に Function App を確認した後で、実行を停止します。 これで、カスタム イメージを Docker Hub アカウントにプッシュできます。
 
 ## <a name="push-the-custom-image-to-docker-hub"></a>Docker Hub へのカスタム イメージのプッシュ
 
-レジストリは、イメージをホストし、サービス イメージとコンテナー サービスを提供するアプリケーションです。 イメージを共有するには、レジストリにプッシュする必要があります。 Docker Hub は Docker イメージのレジストリであり、パブリックまたはプライベートの独自のリポジトリをホストすることができます。 
+レジストリは、イメージをホストし、サービス イメージとコンテナー サービスを提供するアプリケーションです。 イメージを共有するには、レジストリにプッシュする必要があります。 Docker Hub は Docker イメージのレジストリであり、パブリックまたはプライベートの独自のリポジトリをホストすることができます。
 
 イメージをプッシュする前に、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドを使用して Docker Hub にサインインする必要があります。 `<docker-id>` をアカウント名に置き換え、プロンプトで、コンソールにパスワードを入力します。 その他の Docker Hub パスワード オプションについては、[docker login コマンドのドキュメント](https://docs.docker.com/engine/reference/commandline/login/)を参照してください。
 
 ```bash
-docker login --username <docker-id> 
+docker login --username <docker-id>
 ```
 
 「ログインに成功しました」のメッセージで、ログインしていることを確認します。 サインインしたら、[docker push](https://docs.docker.com/engine/reference/commandline/push/) コマンドを使用して Docker Hub にイメージをプッシュします。
@@ -136,17 +172,14 @@ docker push <docker-id>/mydockerimage:v1.0.0
 ```bash
 The push refers to a repository [docker.io/<docker-id>/mydockerimage:v1.0.0]
 24d81eb139bf: Pushed
-fd9e998161c9: Mounted from microsoft/azure-functions-runtime
-e7796c35add2: Mounted from microsoft/azure-functions-runtime
-ae9a05b85848: Mounted from microsoft/azure-functions-runtime
-45c86e20670d: Mounted from microsoft/azure-functions-runtime
-v1.0.0: digest: sha256:be080d80770df71234eb893fbe4d... size: 2422
+fd9e998161c9: Mounted from <docker-id>/mydockerimage
+e7796c35add2: Mounted from <docker-id>/mydockerimage
+ae9a05b85848: Mounted from <docker-id>/mydockerimage
+45c86e20670d: Mounted from <docker-id>/mydockerimage
+v1.0.0: digest: sha256:be080d80770df71234eb893fbe4d... size: 1796
 ```
-これで、Azure の新しい Function App のデプロイ ソースとして、このイメージを使用できます。 
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0.21 以降が必要です。 お使いのバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードが必要な場合は、[Azure CLI のインストール]( /cli/azure/install-azure-cli)に関するページを参照してください。 
+これで、Azure の新しい Function App のデプロイ ソースとして、このイメージを使用できます。
 
 [!INCLUDE [functions-create-resource-group](../../includes/functions-create-resource-group.md)]
 
@@ -154,21 +187,21 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="create-a-linux-app-service-plan"></a>Linux App Service プランの作成
 
-現在、従量課金プランでは Linux での Functions のホスティングはサポートされていません。 Linux App Service プランで実行する必要があります。 ホスティングの詳細については、「[Azure Functions のホスティング プランの比較](functions-scale.md)」を参照してください。 
+現在、従量課金プランでは Linux での Functions のホスティングはサポートされていません。 Linux App Service プランで Linux コンテナー アプリをホストする必要があります。 ホスティングについて詳しくは、「[Azure Functions のホスティング プランの比較](functions-scale.md)」をご覧ください。
 
 [!INCLUDE [app-service-plan-no-h](../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
-
 ## <a name="create-and-deploy-the-custom-image"></a>カスタム イメージの作成とデプロイ
 
-Function App は関数の実行をホストします。 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用して Docker Hub イメージから Function App を作成します。 
+Function App は関数の実行をホストします。 [az functionapp create](/cli/azure/functionapp#az-functionapp-create) コマンドを使用して Docker Hub イメージから Function App を作成します。
 
 次のコマンドでは、`<app_name>` プレースホルダーを一意の Function App 名で、`<storage_name>` をストレージ アカウント名で置き換えます。 `<app_name>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 以前と同様に、`<docker-id>` は Docker アカウント名です。
 
 ```azurecli-interactive
 az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
---plan myAppServicePlan --deployment-container-image-name <docker-id>/mydockerimage:v1.0.0 
+--plan myAppServicePlan --deployment-container-image-name <docker-id>/mydockerimage:v1.0.0
 ```
+
 Function App が作成されると、Azure CLI によって次の例のような情報が表示されます。
 
 ```json
@@ -189,12 +222,11 @@ Function App が作成されると、Azure CLI によって次の例のような
 }
 ```
 
-_deployment-container-image-name_ パラメーターは、Function App を作成するために使用する、Docker Hub でホストされているイメージを示します。 
-
+_deployment-container-image-name_ パラメーターは、Function App を作成するために使用する、Docker Hub でホストされているイメージを示します。
 
 ## <a name="configure-the-function-app"></a>Function App を構成する
 
-関数が既定のストレージ アカウントに接続するには接続文字列が必要です。 カスタム イメージをプライベート コンテナー アカウントに発行するときに、代わりにこれらのアプリケーション設定を Dockerfile の環境変数として設定する必要があります。[ENV](https://docs.docker.com/engine/reference/builder/#env) に関するページなどを参照してください。 
+関数が既定のストレージ アカウントに接続するには接続文字列が必要です。 カスタム イメージをプライベート コンテナー アカウントに発行するときは、[ENV 命令](https://docs.docker.com/engine/reference/builder/#env)などを使用して、代わりにこれらのアプリケーション設定を Dockerfile の環境変数として設定する必要があります。
 
 ここでは、`<storage_account>` は作成したストレージ アカウントの名前です。 [az storage account show-connection-string](/cli/azure/storage/account#show-connection-string) コマンドで接続文字列を取得します。 [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) コマンドで、これらのアプリケーション設定を Function App に追加します。
 
@@ -220,10 +252,11 @@ AzureWebJobsStorage=$storageConnectionString
 このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
+> * Core Tools を使用して関数アプリと Dockerfile を作成します。
 > * Docker を使用してカスタム イメージをビルドします。
-> * カスタム イメージをコンテナー レジストリに発行します。 
-> * Azure ストレージ アカウントを作成します。 
-> * Linux App Service プランを作成します。 
+> * カスタム イメージをコンテナー レジストリに発行します。
+> * Azure ストレージ アカウントを作成します。
+> * Linux App Service プランを作成します。
 > * Docker Hub から Function App をデプロイします。
 > * Function App にアプリケーション設定を追加します。
 

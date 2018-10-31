@@ -4,15 +4,15 @@ description: Azure Migrate サービスの概要を示します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 09/25/2018
+ms.date: 10/23/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d2a8885ffb9148d408eff0e8a7d2ef09121e5359
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 30cca10a83be09b8c9736df546958c3a1fe66f37
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162040"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025639"
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -29,16 +29,16 @@ Azure Migrate によって次のことが可能になります。
 
 ## <a name="current-limitations"></a>現時点での制限事項
 
-- 現時点では Azure VM への移行に関して、オンプレミスの VMware 仮想マシン (VM) だけを評価することができます。 VMware VM は、vCenter Server (バージョン 5.5、6.0、または 6.5) で管理する必要があります。
+- Azure VM への移行に関して、オンプレミスの VMware 仮想マシン (VM) だけを評価することができます。 VMware VM は、vCenter Server (バージョン 5.5、6.0、または 6.5) で管理する必要があります。
 - Hyper-V 仮想マシンと物理サーバーを評価する必要がある場合、Hyper-V には [Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) を、物理マシンには Microsoft の [パートナーのツール](https://azure.microsoft.com/migration/partners/)を使用してください。
 - 1 回の検出で最大 1,500 個の VM を検出でき、1 つのプロジェクトで最大 1,500 個の VM を検出できます。 さらに、一度に最大 1,500 個の VM を評価できます。
-- より大規模な環境を検出する場合は、検出を分割して、複数のプロジェクトを作成できます。 [詳細情報](how-to-scale-assessment.md) Azure Migrate では、サブスクリプションあたり最大 20 個のプロジェクトをサポートしています。
+- より大規模な環境を検出する場合は、検出を分割して、複数のプロジェクトを作成できます。 [詳細情報](how-to-scale-assessment.md)。 Azure Migrate では、サブスクリプションあたり最大 20 個のプロジェクトをサポートしています。
 - Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。
-- Azure Migrate プロジェクトを作成できるのは米国の地理的な場所のみです。 このことが、対象となる Azure リージョンへの移行計画の可否に影響することはありません。 移行プロジェクトの地理的な場所は、オンプレミス環境から検出されたメタデータを保存するためにのみ使用されます。 Azure Migrate によって収集されるメタデータの詳細については、[こちら](https://docs.microsoft.com/azure/migrate/resources-faq#discovery-and-assessment)を参照してください。 収集されたメタデータは、選択した [Azure の地理的な場所](https://azure.microsoft.com/global-infrastructure/geographies/)のリージョンのいずれかに格納されます。
+-  Azure Migrate プロジェクトを作成できるのは米国の地理的な場所のみです。 ただし、対象となる任意の Azure の場所について移行を計画することができます。
+    - オンプレミス環境で検出されたメタデータだけが、移行プロジェクト リージョンに保存されます。
+    - メタデータは、米国中西部と米国東部のいずれかの地理的なリージョンに格納されます。
+    - Log Analytics ワークスペースで依存関係の視覚化を使用する場合は、プロジェクトと同じリージョンに作成されます。 
 
-**地理的な場所** | **リージョン**
---- | ---
-米国 | 米国中西部、米国東部
 
 ## <a name="what-do-i-need-to-pay-for"></a>支払い対象について
 

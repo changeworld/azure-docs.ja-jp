@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: overview
 ms.date: 07/17/2018
 ms.author: danlep
-ms.openlocfilehash: 62457fe5b0336cb6ae6ac4fc63f4884ed14cf9d3
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: dc6aab03ec3e0ec47026c7d435ea538612c7bffb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856039"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405601"
 ---
 # <a name="container-instance-logging-with-azure-log-analytics"></a>Azure Log Analytics によるコンテナー インスタンスのログ記録
 
@@ -100,7 +100,7 @@ az container create --resource-group myResourceGroup --name mycontainergroup001 
 
 コンテナー グループを展開した後、最初のログ エントリが Azure portal に表示されるまでに数分 (最大 10 分) かかることがあります。 コンテナー グループのログを表示するには、Log Analytics ワークスペースを開いた後、次のようにします。
 
-1. **[OMS ワークスペース]** の概要で、**[ログ検索]** を選択します
+1. **[OMS ワークスペース]** の概要で、**[ログ検索]** を選択します。 OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。  
 1. **[お試しいただけるクエリがほかにもいくつかあります]** で、**[収集されたすべてのデータ]** リンクを選択します
 
 `search *` クエリによっていくつかの結果が表示されます。 最初に結果が何も表示されない場合は、数分待ってから、**[実行]** ボタンを選択してクエリをもう一度実行します。 既定では、ログ エントリは "一覧" ビューに表示されます。**[テーブル]** を選択すると、より圧縮された形式でログ エントリが表示されます。 その後、行を展開して個々のログ エントリの内容を表示できます。

@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 画像の中にある顔を検出する - Face API、Python'
+title: 'クイック スタート: REST API と Python を使用して画像内の顔を検出する'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Python で Face API を使って画像から顔を検出します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: pafarley
-ms.openlocfilehash: 581c2a7d4508833647d4dbb9861000fddd75cde8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 76a9260d534057e3a03f8c8f1d7420329713ea80
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339583"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957277"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-python"></a>クイック スタート: Python を使って画像の中にある顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-python"></a>クイック スタート: REST API と Python を使用して画像内の顔を検出する
 
 このクイック スタートでは、Face サービスを使ってリモートの画像から人の顔を検出します。 検出された顔は四角形で区切られ、各個人の性別と年齢を使用して重ね合わされます。 ローカルの画像を使用するには、[Computer Vision: Python でローカルの画像を分析する](../../Computer-vision/QuickStarts/python-disk.md)方法の構文を参照してください。
 

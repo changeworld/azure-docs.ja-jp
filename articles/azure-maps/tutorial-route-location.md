@@ -1,20 +1,20 @@
 ---
 title: Azure Maps を使ってルートを検索する | Microsoft Docs
 description: Azure Maps を使って目的地へのルートを検索する
-author: dsk-2015
-ms.author: dkshir
-ms.date: 10/02/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 10/22/2018
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3bf1aa6d1b9bd65c28ef99ddbac71fb75daf99e7
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: fda234b882cbf4a155881895bbf8401fe3ff3aca
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816720"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645085"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Azure Maps を使って目的地へのルートを検索する
 
@@ -80,11 +80,10 @@ ms.locfileid: "48816720"
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var MapsAccountKey = "<your account key>";
-    var map = new atlas.Map("map", {
-        "subscription-key": MapsAccountKey
-    });
+    atlas.setSubscriptionKey("<your account key>");
+    var map = new atlas.Map("map");
     ```
+
     **atlas.Map** は、ビジュアルと対話型 Web マップのためのコントロールを提供し、Azure マップ コントロール API のコンポーネントです。
 
 4. ファイルを保存し、ブラウザーで開きます。 この時点でのマップは基本的なものです。ここからさらに開発を加えることができます。
@@ -126,7 +125,7 @@ ms.locfileid: "48816720"
         padding: 50
     });
 
-    map.addEventListener("load", function () { 
+    map.events.add("load", function () { 
         // Add pins to the map for the start and end point of the route
         map.addPins([startPin, destinationPin], {
             name: "route-pins",
@@ -135,7 +134,7 @@ ms.locfileid: "48816720"
         });
     });
     ```
-    **map.setCameraBounds** では、起点と終点の座標に従ってマップ ウィンドウを調整しています。 **map.addEventListener** は、マップが完全に読み込まれた後、マップに追加されたすべてのマップ関数が確実に読み込まれるようにしています。 イベント リスナー内の API **map.addPins** は、点をビジュアル コンポーネントとしてマップ コントロールに追加します。
+    **map.setCameraBounds** では、起点と終点の座標に従ってマップ ウィンドウを調整しています。 **map.events.add** は、マップが完全に読み込まれた後、マップに追加されたすべてのマップ関数が確実に読み込まれるようにしています。 イベント リスナー内の API **map.addPins** は、点をビジュアル コンポーネントとしてマップ コントロールに追加します。
 
 3. **MapRoute.html** ファイルを保存し、ブラウザーを更新します。 マップの中心がシアトルに設定され、起点を示す丸い青色のピンと、終点を示す青色のピンが表示されます。
 

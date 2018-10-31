@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 10/16/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: ad899739dab1dc51d64368d2136ab87f73f6f3a0
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.reviewer: quying
+ms.openlocfilehash: 360661402289ab9b06eb01be447dc98942c93302
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "36300912"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49364097"
 ---
 # <a name="sql-resource-provider-maintenance-operations"></a>SQL リソース プロバイダーの保守操作
 
@@ -53,9 +53,9 @@ SQL リソース プロバイダーはアドオン コンポーネントであ�
 
 ## <a name="secrets-rotation"></a>シークレットのローテーション
 
-*この記事の説明は、Azure Stack 統合システム バージョン 1804 以降に対してのみ適用されます。Azure Stack の 1804 より前のバージョンに対してシークレットのローテーションを試みないでください。*
+*この説明は、Azure Stack 統合システムに対してのみ適用されます。*
 
-Azure Stack 統合システムと共に SQL および MySQL リソース プロバイダーを使用する場合、次のインフラストラクチャ (デプロイ) のシークレットをローテーションすることができます。
+Azure Stack 統合システムで SQL および MySQL リソース プロバイダーを使用する場合、以下のリソース プロバイダーのインフラストラクチャ シークレットが期限切れにならないようにローテーションする責任は Azure Stack オペレーターにあります。
 
 - [デプロイ時に提供](azure-stack-pki-certs.md)された外部 SSL 証明書。
 - デプロイ時に提供されたリソース プロバイダー VM のローカル管理者アカウントのパスワード。

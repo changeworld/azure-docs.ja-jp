@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: db4f83d0d407ad3d9e895759ea2a687662f5620a
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: fbaf6b92a2605d284a749365d542c223e09f730d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053297"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49362604"
 ---
 # <a name="introduction-to-auto-scaling"></a>自動スケーリングの概要
 自動スケーリングは Service Fabric の追加機能であり、サービスによって報告される負荷またはリソースの使用量に基づいて、サービスを動的にスケーリングする機能です。 自動スケーリングは優れた柔軟性を提供し、必要に応じてサービスのインスタンスまたはパーティションを追加でプロビジョニングできます。 自動スケーリングは、プロセス全体が自動化された透過的なものであり、サービスのポリシーを設定した後は、サービス レベルの手動でのスケーリング操作は必要ありません。 自動スケーリングは、サービスの作成時に有効にできます。または、サービスを更新することでいつでも有効にできます。
@@ -120,7 +120,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 * "_負荷のしきい値の上限_" は、サービスがどの時点で**スケールアウト**されるかを決定します。サービスのすべてのパーティションの平均負荷がこの値よりも大きい場合、サービスはスケールアウトされます。
 * "_スケーリング間隔_" は、トリガーをチェックする頻度を決定します。 トリガーがチェックされ、スケーリングが必要な場合は、メカニズムが適用されます。 スケーリングが必要でない場合は、アクションは行われません。 どちらの場合も、トリガーは、スケール間隔が経過するまで再度チェックされることはありません。
 
-このトリガーは、ステートフル サービスとステートレス サービスの両方で使用できます。 このトリガーで使用できる唯一のメカニズムは、AddRemoveIncrementalNamedParitionScalingMechanism です。 サービスがスケールアウトされるときは新しいパーティションが追加され、サービスがスケールインされるときは既存のパーティションのいずれかが削除されます。 サービスの作成または更新時にチェックされる制限があります。これらの条件が満たされない場合、サービスの作成または更新は失敗します。
+このトリガーは、ステートフル サービスとステートレス サービスの両方で使用できます。 このトリガーで使用できる唯一のメカニズムは、AddRemoveIncrementalNamedPartitionScalingMechanism です。 サービスがスケールアウトされるときは新しいパーティションが追加され、サービスがスケールインされるときは既存のパーティションのいずれかが削除されます。 サービスの作成または更新時にチェックされる制限があります。これらの条件が満たされない場合、サービスの作成または更新は失敗します。
 * サービスでは名前付きパーティション スキームを使用する必要があります。
 * パーティション名は連続した整数にする必要があります。例: "0"、"1"、...
 * 最初のパーティション名は "0" にする必要があります。
@@ -137,7 +137,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 * "_最小インスタンス数_" は、スケーリングの下限を定義します。 サービスのパーティション数がこの制限に達すると、負荷に関係なくサービスはスケールインされなくなります。
 
 > [!WARNING] 
-> AddRemoveIncrementalNamedParitionScalingMechanism がステートフル サービスで使用される場合、Service Fabric は、**通知または警告なしで**パーティションの追加または削除を行います。 スケーリング メカニズムがトリガーされている場合、データの再分割は実行されません。 スケール アップ操作では、新しいパーティションは空になり、スケール ダウン操作では、**パーティションはその中に含まれるすべてのデータと共に削除されます**。
+> AddRemoveIncrementalNamedPartitionScalingMechanism がステートフル サービスで使用される場合、Service Fabric によって、**通知や警告なしで**パーティションの追加または削除が行われます。 スケーリング メカニズムがトリガーされている場合、データの再分割は実行されません。 スケール アップ操作では、新しいパーティションは空になり、スケール ダウン操作では、**パーティションはその中に含まれるすべてのデータと共に削除されます**。
 
 ## <a name="setting-auto-scaling-policy"></a>自動スケーリング ポリシーの設定
 
@@ -146,7 +146,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 <ServiceScalingPolicies>
     <ScalingPolicy>
         <AverageServiceLoadScalingTrigger MetricName="servicefabric:/_MemoryInMB" LowerLoadThreshold="300" UpperLoadThreshold="500" ScaleIntervalInSeconds="600"/>
-        <AddRemoveIncrementalNamedParitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="3" ScaleIncrement="1"/>
+        <AddRemoveIncrementalNamedPartitionScalingMechanism MinPartitionCount="1" MaxPartitionCount="3" ScaleIncrement="1"/>
     </ScalingPolicy>
 </ServiceScalingPolicies>
 ```
@@ -155,7 +155,7 @@ Update-ServiceFabricService -Stateless -ServiceName "fabric:/AppName/ServiceName
 FabricClient fabricClient = new FabricClient();
 StatefulServiceUpdateDescription serviceUpdate = new StatefulServiceUpdateDescription();
 AveragePartitionLoadScalingTrigger trigger = new AverageServiceLoadScalingTrigger();
-PartitionInstanceCountScaleMechanism mechanism = new AddRemoveIncrementalNamedParitionScalingMechanism();
+PartitionInstanceCountScaleMechanism mechanism = new AddRemoveIncrementalNamedPartitionScalingMechanism();
 mechanism.MaxPartitionCount = 4;
 mechanism.MinPartitionCount = 1;
 mechanism.ScaleIncrement = 1;
@@ -171,7 +171,7 @@ await fabricClient.ServiceManager.UpdateServiceAsync(new Uri("fabric:/AppName/Se
 ```
 ### <a name="using-powershell"></a>PowerShell の使用
 ```posh
-$mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedParitionScalingMechanism
+$mechanism = New-Object -TypeName System.Fabric.Description.AddRemoveIncrementalNamedPartitionScalingMechanism
 $mechanism.MinPartitionCount = 1
 $mechanism.MaxPartitionCount = 3
 $mechanism.ScaleIncrement = 2

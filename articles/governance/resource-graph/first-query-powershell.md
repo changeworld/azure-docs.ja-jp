@@ -9,24 +9,24 @@ ms.topic: quickstart
 ms.service: resource-graph
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 1a2bc5626e94f5fcb0ec8c2be8d91c8fc6484e0b
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 001805aaf87ed6c3481a8ad8378cdc22ef74d274
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47224564"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646390"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>Azure PowerShell を使用して最初の Resource Graph クエリを実行します
 
 Azure Resource Graph を使用する最初の手順では、Azure PowerShell のモジュールがインストールされていることを確認します。 このクイック スタートでは、Azure PowerShell のインストールにモジュールを追加するプロセスについて説明します。
 
-このプロセスの最後では、選択した Azure PowerShell のインストールにモジュールを追加して、最初の Resource Graph クエリを実行します。
+このプロセスの最後では、選択した Azure PowerShell のインストールにモジュールを追加して、最初の Resource Graph クエリを実行しています。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="add-the-resource-graph-module"></a>Resource Graph モジュールを追加する
 
-Azure PowerShell を Azure Resource Graph のクエリに対して有効にするには、モジュールを追加する必要があります。 このモジュールは、ローカルにインストールされた Windows PowerShell および PowerShell Core、ならびに [Azure PowerShell Docker の画像](https://hub.docker.com/r/azuresdk/azure-powershell/)により使用することができます。
+Azure PowerShell を Azure Resource Graph のクエリに対して有効にするには、モジュールを追加する必要があります。 このモジュールは、ローカルにインストールされた Windows PowerShell および PowerShell Core、または [Azure PowerShell Docker イメージ](https://hub.docker.com/r/azuresdk/azure-powershell/)で使用できます。
 
 ### <a name="base-requirements"></a>基本要件
 
@@ -41,7 +41,11 @@ Azure Resource Graph モジュールには、次のソフトウェアが必要�
   > [!NOTE]
   > Cloud Shell にモジュールをインストールすることは現在推奨されません。
 
-- PowerShellGet。 インストールされていない、または更新されていない場合は、こちらの[手順](/powershell/gallery/installing-psget)に従ってください。
+- PowerShellGet 2.0.1 以上。 インストールされていない場合、または更新されていない場合は、こちらの[手順](/powershell/gallery/installing-psget)に従ってください。
+
+### <a name="cloud-shell"></a>Cloud Shell
+
+Azure Resource Graph モジュールを Cloud Shell に追加するには、次の PowerShell Core 用の手順に従ってください。
 
 ### <a name="powershell-core"></a>PowerShell Core
 
@@ -49,21 +53,21 @@ PowerShell Core の Resource Graph モジュールは**Az.ResourceGraph**です�
 
 1. **管理** PowerShell Core プロンプトで次のコマンドを実行します。
 
-   ```powershell
+   ```azurepowershell-interactive
    # Install the Resource Graph module from PowerShell Gallery
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. モジュールがインポートされており、適切なバージョン (0.2.0) であることを検証します。
+1. モジュールがインポートされており、適切なバージョン (0.3.0) であることを確認します。
 
-   ```powershell
+   ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
    Get-Command -Module 'Az.ResourceGraph' -CommandType 'Cmdlet'
    ```
 
 1. 次のコマンドを使用し、**Az**の下位のエイリアスを**AzureRm**に対して有効にします。
 
-   ```powershell
+   ```azurepowershell-interactive
    # Enable backwards alias compatibility
    Enable-AzureRmAlias
    ```
@@ -79,7 +83,7 @@ Windows PowerShell の Resource Graph モジュールは**AzureRm.ResourceGraph*
    Install-Module -Name AzureRm.ResourceGraph -AllowPrerelease
    ```
 
-1. モジュールがインポートされており、適切なバージョン (0.1.0-preview) であることを検証します。
+1. モジュールがインポートされており、適切なバージョン (0.1.1-preview) であることを確認します。
 
    ```powershell
    # Get a list of commands for the imported AzureRm.ResourceGraph module
@@ -88,12 +92,12 @@ Windows PowerShell の Resource Graph モジュールは**AzureRm.ResourceGraph*
 
 ## <a name="run-your-first-resource-graph-query"></a>最初の Resource Graph クエリを実行する
 
-Azure PowerShell モジュールは選択した環境に追加されましたので、簡単な Resource Graph クエリを試してみましょう。 クエリは、各リソースの**名前**および**リソースの種類**を使用して、最初の 5 つの Azure リソースを返します。
+Azure PowerShell モジュールが選択した環境に追加されたので、簡単な Resource Graph クエリを試してみましょう。 クエリは、各リソースの**名前**および**リソースの種類**を使用して、最初の 5 つの Azure リソースを返します。
 
 1. `Search-AzureRmGraph` コマンドレットを使用して最初の Resource Graph クエリを実行します。
 
-   ```powershell
-   # Login first with Connect-AzureRmAccount
+   ```azurepowershell-interactive
+   # Login first with Connect-AzureRmAccount if not using Cloud Shell
 
    # Run Azure Resource Graph query
    Search-AzureRmGraph -Query 'project name, type | limit 5'
@@ -104,22 +108,22 @@ Azure PowerShell モジュールは選択した環境に追加されましたの
 
 1. `order by`**名前**プロパティに対するクエリを更新します。
 
-   ```powershell
+   ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
    Search-AzureRmGraph -Query 'project name, type | limit 5 | order by name asc'
    ```
 
   > [!NOTE]
-  > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit`の後に`order by`がきます。 これによりクエリの結果をまず制限し、それからそれらを注文します。
+  > 最初のクエリと同様に、このクエリを複数回実行すると要求あたり異なる一連のリソースを中断する可能性があります。 クエリ コマンドの順序が重要です。 この例では、`limit` の後に `order by` がきます。 これによりクエリの結果をまず制限し、それからそれらを注文します。
 
-1. 最初に`order by`**名前**のプロパティに対しクエリを更新し、それから`limit`上位 5 件の結果に対してクエリを更新します。
+1. 最初に**名前**プロパティで並べ替え (`order by`) を行ってから結果を上位 5 件に制限 (`limit`) するようにクエリを更新します。
 
-   ```powershell
+   ```azurepowershell-interactive
    # Run Azure Resource Graph query with `order by` first, then with `limit`
    Search-AzureRmGraph -Query 'project name, type | order by name asc | limit 5'
    ```
 
-最終的なクエリが複数回実行される場合、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおり--**名前**のプロパティによって順位付けされますが、依然上位 5 件の結果に制限されます。
+最終的なクエリを複数回実行したとき、環境内で何も変更がないと仮定すると、返される結果は一貫性があり、想定どおりになります。つまり、結果は**名前**プロパティで並べ替えられますが、上位 5 件に制限されます。
 
 ## <a name="cleanup"></a>クリーンアップ
 

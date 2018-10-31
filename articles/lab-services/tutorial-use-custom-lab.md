@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 05/17/2018
 ms.author: spelluru
-ms.openlocfilehash: cd623767c9627810afb64ca9185c991c5c9f3858
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ab52206230c4dfe2d92c97f1e291ee00a086c570
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34638026"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470865"
 ---
 # <a name="tutorial-access-a-lab-in-azure-devtest-labs"></a>チュートリアル: Azure DevTest Labs のラボにアクセスする
 このチュートリアルでは、[チュートリアル: Azure DevTest Labs でラボを作成する](tutorial-create-custom-lab.md)の記事で作成したラボを使います。
@@ -57,6 +57,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![仮想マシンへの接続](./media/tutorial-use-custom-lab/connect-button.png)
 2. ダウンロードした **RDP** ファイルをハード ディスクに保存し、それを使って仮想マシンに接続します。 前のセクションで VM を作成するときに設定したユーザー名とパスワードを指定します。 
+
+    > [!NOTE] 
+    > Linux VM に接続するには、その VM に対する SSH アクセスや RDP アクセスが有効になっている必要があります。 Linux VM に RDP で接続する手順については、「[リモート デスクトップをインストールして Azure の Linux VM に接続するように構成する](../virtual-machines/linux/use-remote-desktop.md)」を参照してください。 
+
 
 ## <a name="unclaim-the-vm"></a>VM を解放する
 VM を使い終わったら、次の手順で VM を解放します。 

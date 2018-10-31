@@ -1,20 +1,21 @@
 ---
-title: 'クイック スタート: UWP アプリで Cognitive Services Speech SDK を使用して C# で音声を認識する'
-titleSuffix: Microsoft Cognitive Services
-description: UWP アプリで Cognitive Services Speech SDK を使用して C# で音声を認識する方法について説明します
+title: 'クイック スタート: C# から Speech Service SDK を使用して UWP アプリで音声を認識する'
+titleSuffix: Azure Cognitive Services
+description: Speech Service SDK を使用して UWP アプリで音声を認識する方法について説明します
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: quickstart
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: d9a90869e060d2f8f1a1c522a4528e74841caada
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 1c6e0521f37e85bcb3395de0ad1e9d463125e17f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339616"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469800"
 ---
 # <a name="quickstart-recognize-speech-in-a-uwp-app-by-using-the-speech-sdk"></a>クイック スタート: UWP アプリで Speech SDK を使用して音声を認識する
 

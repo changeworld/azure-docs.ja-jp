@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: サポートされている言語を取得する - Translator Text、Go'
+title: 'クイック スタート: サポートされている言語を取得する、Go - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Go で Translator Text API を使った例を紹介しています。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: 6f8725c834e4417321722f7d49e09765e19a3b6d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 2a93ee7b4d2c8426ad7a7f30a986d07e14192cc4
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127773"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648294"
 ---
-# <a name="quickstart-get-supported-languages-with-go"></a>クイック スタート: サポートされている言語を Go で取得する
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-go"></a>クイック スタート: Translator Text REST API を使用してサポートされている言語を取得する (Go)
 
 このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Translator Text API を使った例を紹介しています。
 

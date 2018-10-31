@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: サポートされている言語を取得する - Translator Text、Ruby'
+title: 'クイック スタート: サポートされている言語を取得する (Ruby) - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Ruby で Translator Text API を使った例を紹介します。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: f000d2c4c1519f26b4d82a36803b86f016716c5e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 02ebeae83464aa9770854fd06468b3731d6b8549
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121840"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645271"
 ---
-# <a name="quickstart-get-supported-languages-with-ruby"></a>クイック スタート: サポートされている言語を Ruby で取得する
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-ruby"></a>クイック スタート: Translator Text REST API を使用してサポートされている言語を取得する (Ruby)
 
 このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Translator Text API を使った例を紹介しています。
 

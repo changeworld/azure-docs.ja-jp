@@ -13,27 +13,43 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/24/2018
+ms.date: 10/17/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 45b1597d3b61a9386fc015b5a7272d948fa5772b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: df6f99bfe9f1ae7b79f0f382fdee4fe4f1578bad
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394784"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407539"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-in-azure-with-powershell"></a>クイック スタート: PowerShell を使用して Azure に Linux 仮想マシンを作成する
 
-Azure PowerShell モジュールは、PowerShell コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure PowerShell モジュールを使って、Ubuntu を実行する Linux 仮想マシン (VM) を Azure に展開する方法を示します。 次に、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
+Azure PowerShell モジュールは、PowerShell コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure PowerShell モジュールを使って、Linux 仮想マシン (VM) を Azure に展開する方法を示します。 このクイック スタートでは、Canonical の Ubuntu 16.04 LTS マーケットプレース イメージを使用します。 また、VM の動作を確認するために、VM に SSH 接続し、NGINX Web サーバーをインストールします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell を起動する
 
-PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+Azure Cloud Shell は無料のインタラクティブ シェルです。この記事の手順は、Azure Cloud Shell を使って実行することができます。 一般的な Azure ツールが事前にインストールされており、アカウントで使用できるように構成されています。 
 
-最後に、*id_rsa.pub* という名前の公開 SSH キーを Windows ユーザー プロファイルの *.ssh* ディレクトリに格納しておく必要があります。 SSH キーを作成および使用する方法の詳細については、[Azure 用の SSH キーの作成](ssh-from-windows.md)に関するページを参照してください。
+Cloud Shell を開くには、コード ブロックの右上隅にある **[使ってみる]** を選択します。 **[コピー]** を選択してコードのブロックをコピーし、Cloud Shell に貼り付けてから、Enter キーを押して実行します。
+
+PowerShell をインストールしてローカルで使用する場合、このクイック スタートでは Azure PowerShell モジュール バージョン 5.7.0 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 PowerShell をローカルで実行している場合、`Connect-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+
+## <a name="create-ssh-key-pair"></a>SSH キー ペアの作成
+
+このクイック スタートを完了するには、SSH キー ペアが必要です。 既存の SSH キーの組がある場合は、この手順をスキップできます。
+
+Bash シェルを開き、[ssh-keygen](https://www.ssh.com/ssh/keygen/) を使用して SSH キー ペアを作成します。 Bash シェルがローカル コンピューターにない場合は、[Azure Cloud Shell](https://shell.azure.com/bash) を使用してください。  
+
+```azurepowershell-interactive
+ssh-keygen -t rsa -b 2048
+```
+
+PuTTy の使用を含む SSH キー ペアの作成方法の詳細については、[Windows で SSH キーを使用する方法](ssh-from-windows.md)に関するページを参照してください。
+
+Cloud Shell を使用して SSH キーの組を作成した場合、[Cloud Shell によって自動的に作成されるストレージ アカウント](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)内のコンテナー イメージにキーの組が格納されます。 キーを取得するまでは、ストレージ アカウント (またはその中のファイル共有) を削除しないでください。削除すると、VM にアクセスできなくなります。 
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -49,46 +65,80 @@ New-AzureRmResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 ```azurepowershell-interactive
 # Create a subnet configuration
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name "mySubnet" -AddressPrefix 192.168.1.0/24
+$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+  -Name "mySubnet" `
+  -AddressPrefix 192.168.1.0/24
 
 # Create a virtual network
-$vnet = New-AzureRmVirtualNetwork -ResourceGroupName "myResourceGroup" -Location "EastUS" `
--Name "myVNET" -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+$vnet = New-AzureRmVirtualNetwork `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -Name "myVNET" `
+  -AddressPrefix 192.168.0.0/16 `
+  -Subnet $subnetConfig
 
 # Create a public IP address and specify a DNS name
-$pip = New-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" -Location "EastUS" `
--AllocationMethod Static -IdleTimeoutInMinutes 4 -Name "mypublicdns$(Get-Random)"
+$pip = New-AzureRmPublicIpAddress `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -AllocationMethod Static `
+  -IdleTimeoutInMinutes 4 `
+  -Name "mypublicdns$(Get-Random)"
 ```
 
 Azure ネットワーク セキュリティ グループとトラフィック規則を作成します。 ネットワーク セキュリティ グループは、受信規則と送信規則を使用して VM をセキュリティで保護します。 次の例では、TCP ポート 22 に対して SSH 接続を許可する受信規則を作成します。 受信 Web トラフィックを許可するため、TCP ポート 80 の受信規則も作成します。
 
 ```azurepowershell-interactive
 # Create an inbound network security group rule for port 22
-$nsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig -Name "myNetworkSecurityGroupRuleSSH"  -Protocol "Tcp" `
--Direction "Inbound" -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
--DestinationPortRange 22 -Access "Allow"
+$nsgRuleSSH = New-AzureRmNetworkSecurityRuleConfig `
+  -Name "myNetworkSecurityGroupRuleSSH"  `
+  -Protocol "Tcp" `
+  -Direction "Inbound" `
+  -Priority 1000 `
+  -SourceAddressPrefix * `
+  -SourcePortRange * `
+  -DestinationAddressPrefix * `
+  -DestinationPortRange 22 `
+  -Access "Allow"
 
 # Create an inbound network security group rule for port 80
-$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig -Name "myNetworkSecurityGroupRuleWWW"  -Protocol "Tcp" `
--Direction "Inbound" -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
--DestinationPortRange 80 -Access "Allow"
+$nsgRuleWeb = New-AzureRmNetworkSecurityRuleConfig `
+  -Name "myNetworkSecurityGroupRuleWWW"  `
+  -Protocol "Tcp" `
+  -Direction "Inbound" `
+  -Priority 1001 `
+  -SourceAddressPrefix * `
+  -SourcePortRange * `
+  -DestinationAddressPrefix * `
+  -DestinationPortRange 80 `
+  -Access "Allow"
 
 # Create a network security group
-$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName "myResourceGroup" -Location "EastUS" `
--Name "myNetworkSecurityGroup" -SecurityRules $nsgRuleSSH,$nsgRuleWeb
+$nsg = New-AzureRmNetworkSecurityGroup `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -Name "myNetworkSecurityGroup" `
+  -SecurityRules $nsgRuleSSH,$nsgRuleWeb
 ```
 
 [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) を使用して、仮想ネットワーク インターフェイス カード (NIC) を作成します。 仮想 NIC は、VM をサブネット、ネットワーク セキュリティ グループ、パブリック IP アドレスに接続します。
 
 ```azurepowershell-interactive
 # Create a virtual network card and associate with public IP address and NSG
-$nic = New-AzureRmNetworkInterface -Name "myNic" -ResourceGroupName "myResourceGroup" -Location "EastUS" `
--SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+$nic = New-AzureRmNetworkInterface `
+  -Name "myNic" `
+  -ResourceGroupName "myResourceGroup" `
+  -Location "EastUS" `
+  -SubnetId $vnet.Subnets[0].Id `
+  -PublicIpAddressId $pip.Id `
+  -NetworkSecurityGroupId $nsg.Id
 ```
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-仮想マシンの構成には、VM のイメージ、サイズ、認証オプションなど、VM の展開時に使われる設定が含まれています。 SSH の資格情報、OS の情報、VM のサイズを次のように定義します。
+PowerShell で VM を作成するには、使用するイメージ、サイズ、認証オプションなど、各種設定を含んだ構成を作成します。 この構成を使用して VM を作成することになります。
+
+SSH の資格情報、OS の情報、VM のサイズを定義します。 この例では、SSH キーを `~/.ssh/id_rsa.pub` に格納しています。 
 
 ```azurepowershell-interactive
 # Define a credential object
@@ -96,57 +146,72 @@ $securePassword = ConvertTo-SecureString ' ' -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("azureuser", $securePassword)
 
 # Create a virtual machine configuration
-$vmConfig = New-AzureRmVMConfig -VMName "myVM" -VMSize "Standard_D1" | `
-Set-AzureRmVMOperatingSystem -Linux -ComputerName "myVM" -Credential $cred -DisablePasswordAuthentication | `
-Set-AzureRmVMSourceImage -PublisherName "Canonical" -Offer "UbuntuServer" -Skus "16.04-LTS" -Version "latest" | `
-Add-AzureRmVMNetworkInterface -Id $nic.Id
+$vmConfig = New-AzureRmVMConfig `
+  -VMName "myVM" `
+  -VMSize "Standard_D1" | `
+Set-AzureRmVMOperatingSystem `
+  -Linux `
+  -ComputerName "myVM" `
+  -Credential $cred `
+  -DisablePasswordAuthentication | `
+Set-AzureRmVMSourceImage `
+  -PublisherName "Canonical" `
+  -Offer "UbuntuServer" `
+  -Skus "16.04-LTS" `
+  -Version "latest" | `
+Add-AzureRmVMNetworkInterface `
+  -Id $nic.Id
 
-# Configure SSH Keys
-$sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
-Add-AzureRmVMSshPublicKey -VM $vmconfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
+# Configure the SSH key
+$sshPublicKey = cat ~/.ssh/id_rsa.pub
+Add-AzureRmVMSshPublicKey `
+  -VM $vmconfig `
+  -KeyData $sshPublicKey `
+  -Path "/home/azureuser/.ssh/authorized_keys"
 ```
 
 これまでに定義した構成を組み合わせて、[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) で仮想マシンを作成します。
 
 ```azurepowershell-interactive
-New-AzureRmVM -ResourceGroupName "myResourceGroup" -Location eastus -VM $vmConfig
+New-AzureRmVM `
+  -ResourceGroupName "myResourceGroup" `
+  -Location eastus -VM $vmConfig
 ```
 
-## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
+VM がデプロイされるまでに数分かかります。 デプロイが完了したら、次のセクションに移動してください。
 
-展開が完了した後、SSH で VM に接続します。 VM の動作を確認するために、NGINX Web サーバーがインストールされます。
+## <a name="connect-to-the-vm"></a>VM に接続します
 
-VM のパブリック IP アドレスを確認するには、[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使います。
+パブリック IP アドレスを使用して VM との SSH 接続を作成します。 VM のパブリック IP アドレスを確認するには、[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使います。
 
 ```azurepowershell-interactive
 Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
 
-VM に接続するには SSH クライアントを使います。 Web ブラウザーから Azure Cloud Shell を使うか、Windows を使っている場合は [Putty](ssh-from-windows.md) または [Windows Subsystem for Linux](/windows/wsl/install-win10) を使うことができます。 実際の VM のパブリック IP アドレスを指定してください。
+SSH キーの組を作成したときと同じ Bash シェル ([Azure Cloud Shell](https://shell.azure.com/bash) またはローカルの Bash シェルなど) を使用して、SSH 接続コマンドをシェルに貼り付け、SSH セッションを作成します。
 
 ```bash
-ssh azureuser@IpAddress
+ssh azureuser@10.111.12.123
 ```
 
 メッセージが表示されたら、ログイン ユーザー名には *azureuser* を指定します。 SSH キーでパスフレーズが使われている場合は、求められたら入力する必要があります。
 
-## <a name="install-web-server"></a>Web サーバーのインストール
 
-VM の動作を確認するために、NGINX Web サーバーをインストールします。 パッケージ ソースを更新して最新の NGINX パッケージをインストールするには、SSH セッションから次のコマンドを実行します。
+## <a name="install-nginx"></a>NGINX のインストール
+
+VM の動作を確認するために、NGINX Web サーバーをインストールします。 SSH セッションからパッケージ ソースを更新し、最新の NGINX パッケージをインストールします。
 
 ```bash
-# update packages
 sudo apt-get -y update
-
-# install NGINX
 sudo apt-get -y install nginx
 ```
 
-完了したら、`exit` を使って SSH セッションを終了します
+完了したら、`exit` と入力して SSH セッションを終了します。
+
 
 ## <a name="view-the-web-server-in-action"></a>動作中の Web サーバーを表示する
 
-NGINX をインストールし、VM のポート 80 をインターネットから開いたら、任意の Web ブラウザーを使用して NGINX の既定のようこそページを表示します。 前の手順で取得した VM のパブリック IP アドレスを使用します。 次の例は、既定の NGINX Web サイトを示しています。
+任意の Web ブラウザーを使用して、NGINX の既定のウェルカム ページを表示します。 Web アドレスとして、VM のパブリック IP アドレスを入力します。 パブリック IP アドレスは、VM の概要ページで確認できるほか、先ほど使用した SSH 接続文字列にも含まれています。
 
 ![NGINX の既定のサイト](./media/quick-create-cli/nginx.png)
 

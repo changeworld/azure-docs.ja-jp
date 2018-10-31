@@ -7,15 +7,15 @@ manager: jpconnock
 ms.service: application-gateway
 ms.topic: tutorial
 ms.workload: infrastructure-services
-ms.date: 7/13/2018
+ms.date: 10/25/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 66f79b68c003aa3605653b0decc091d22fbf3860
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 3889e1fc9bfaa9beccba560d4a984c451fb325da
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39055187"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025244"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-azure-powershell"></a>Azure PowerShell を使用して、URL に基づいて Web トラフィックをルーティングする
 
@@ -23,7 +23,7 @@ Azure PowerShell を使用して、アプリケーションにアクセスする
 
 トラフィックのルーティングを有効にするには、特定のポートでリッスンするリスナーに割り当てられる[ルーティング規則](application-gateway-url-route-overview.md)を作成し、Web トラフィックが、プール内の適切なサーバーに到着するようにします。
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ
@@ -31,6 +31,8 @@ Azure PowerShell を使用して、アプリケーションにアクセスする
 > * スケーラブルなバックエンド プールの作成
 
 ![URL ルーティングの例](./media/tutorial-url-route-powershell/scenario.png)
+
+好みに応じて、[Azure CLI](tutorial-url-route-cli.md) または [Azure portal](create-url-route-portal.md) を使ってこのチュートリアルの手順を実行することもできます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -435,7 +437,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroupAG
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ

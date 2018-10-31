@@ -1,33 +1,34 @@
 ---
 title: 'クイック スタート: Java (Windows または Linux) での音声認識'
-titleSuffix: Microsoft Cognitive Services
+titleSuffix: Azure Cognitive Services
 description: Java (Windows または Linux) での音声認識方法の詳細
 services: cognitive-services
 author: fmegen
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
+ms.component: speech-service
 ms.topic: quickstart
 ms.date: 10/12/2018
 ms.author: fmegen
-ms.openlocfilehash: 1f0c19524ebd59dcf0377cc173cd780d656ba447
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 80ddef79392acb677555ed795bf429f5ec0266a0
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339198"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467261"
 ---
-# <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-sdk"></a>クイック スタート: Windows または Linux で Speech SDK を使用して Java で音声を認識する
+# <a name="quickstart-recognize-speech-in-java-on-windows-or-linux-by-using-the-speech-service-sdk"></a>クイック スタート: Windows または Linux で Java と Speech Service SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-この記事では、[Speech SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成 します。 PC のマイクからリアルタイムで音声をテキストに変換します。 アプリケーションは、Speech SDK Maven パッケージと、64 ビット Windows または Ubuntu Linux 16.04 上の Eclipse Java IDE (v4.8) で構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
+この記事では、[Speech Service SDK](speech-sdk.md) を使用して、Java コンソール アプリケーションを作成します。 PC のマイクからリアルタイムで音声をテキストに変換します。 アプリケーションは、Speech SDK Maven パッケージと、64 ビット Windows または Ubuntu Linux 16.04 上の Eclipse Java IDE (v4.8) で構築されます。 これは、64 ビットの Java 8 のランタイム環境 (JRE) で実行されます。
 
 > [!NOTE]
 > Speech Devices SDK および Roobo デバイスについては、[Speech Devices SDK](speech-devices-sdk.md) を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
-このクイック スタートを完了するには、Speech サービス サブスクリプション キーが必要です。 1 つ無料で取得できます。 詳しくは、[Sppech サービスを無料で試す](get-started.md)ための記事を参照してください。
+このクイック スタートを完了するには、Speech サービス サブスクリプション キーが必要です。 1 つ無料で取得できます。 詳しくは、「[Speech Service を無料で試す](get-started.md)」を参照してください。
 
 
 ## <a name="create-and-configure-project"></a>プロジェクトの作成と構成

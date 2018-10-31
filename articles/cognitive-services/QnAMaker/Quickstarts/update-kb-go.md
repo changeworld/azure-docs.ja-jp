@@ -1,25 +1,31 @@
 ---
-title: 'クイック スタート: Go によるナレッジ ベースの更新 - QnA Maker'
+title: 'クイック スタート: ナレッジ ベースを更新する - REST (Go) - QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: QnA Maker に使用するナレッジ ベースを Go で更新する方法。
+description: この REST ベースのクイック スタートでは、QnA Maker ナレッジ ベース (KB) のサンプルをプログラムから更新する手順を紹介しています。 質問と回答のペアは、KB の更新に使用する JSON 定義によって追加、変更、削除することができます。
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: quickstart
-ms.date: 09/12/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: b447b77eb1fdd9135f7d15a791414d166194b2dd
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 5275184994dce446a7ca572a049f3860c4782139
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389311"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646883"
 ---
-# <a name="update-a-knowledge-base"></a>ナレッジ ベースの更新
+# <a name="quickstart-update-a-knowledge-base-in-qna-maker-using-go"></a>クイック スタート: Go を使用して QnA Maker のナレッジ ベースを更新する
 
-次のコードでは、[Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) メソッドを利用し、既存のナレッジ ベースが更新されます。
+このクイック スタートでは、既存の QnA Maker ナレッジ ベース (KB) をプログラムから更新する手順を紹介しています。  この JSON を使用して新しいデータ ソースを追加したり、データ ソースを変更したり、データ ソースを削除したりすることによって、KB を更新することができます。
+
+この API には、QnA Maker ポータルでの編集後、**[Save and train]\(保存してトレーニング\)** ボタンを使用することと同等の働きがあります。
+
+このクイック スタートで呼び出す QnA Maker API は次のとおりです。
+* [更新](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) - ナレッジ ベースのモデルは、API 要求の本文で送信される JSON で定義されます。 
+* [取得操作の詳細](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails)
 
 1. 適切な IDE で新しい Go プロジェクトを作成します。
 2. 次に示すコードを追加します。
@@ -191,7 +197,7 @@ Press any key to continue.
 
 ## <a name="get-request-status"></a>要求の状態を取得する
 
-[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、ナレッジ ベースの作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](#Create) または [Update](#Update) メソッドのサンプル コードを参照してください。
+[Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) メソッドを呼び出し、ナレッジ ベースの作成または更新要求の状態を確認できます。 このメソッドの使われ方を確認するには、[Create](create-new-kb-go.md) に関するクイック スタートのサンプル コードを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
