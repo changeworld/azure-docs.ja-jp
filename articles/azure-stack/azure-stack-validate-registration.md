@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 06/08/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: d6835f05666d66cc4f6aa937c4b85047ce3c2e93
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 51753a5324bbbcbf4e951628a42dd3bf425354af
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49077071"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957584"
 ---
 # <a name="validate-azure-registration"></a>Azure の登録の検証 
 Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を使用して、対象の Azure サブスクリプションを Azure Stack で使用する準備が整っていることを検証します。 Azure Stack デプロイを開始する前に、登録を検証します。 適合性チェッカーは以下を検証します。
@@ -62,10 +62,17 @@ Azure Stack 登録の詳細については、「[Azure を使用した Azure Sta
    - AzureEnvironment の値を *AzureCloud*、*AzureGermanCloud*、または *AzureChinaCloud* として指定します。  
    - Azure Active Directory 管理者と、お使いの Azure Active Directory テナントの名前を指定します。 
 
-   > `Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID`
+   > `Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID`
 
-5. ツールの実行後、出力を確認します。 ログオンと登録の両方の要件ついて、状態が OK であることを確認します。 次のイメージのように、検証の成功が表示されます。  
-![run-validation](./media/azure-stack-validate-registration/registration-validation.png)
+5. ツールの実行後、出力を確認します。 ログオンと登録の両方の要件ついて、状態が OK であることを確認します。 検証が成功した場合は、次のように表示されます。  
+````PowerShell
+Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+Checking Registration Requirements: OK
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsRegistrationValidation Completed
+````
 
 
 ## <a name="report-and-log-file"></a>レポートとログ ファイル
@@ -83,32 +90,58 @@ Azure Stack 登録の詳細については、「[Azure を使用した Azure Sta
 次の例は、一般的な検証エラーに関するガイダンスです。
 
 ### <a name="user-must-be-an-owner-of-the-subscription"></a>ユーザーがサブスクリプションの所有者でなければならない   
-![subscription-owner](./media/azure-stack-validate-registration/subscription-owner.png)
-**原因** - アカウントは Azure サブスクリプションの管理者ではありません。   
+````PowerShell
+Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+Checking Registration Requirements: Fail 
+Error Details for registration account admin@contoso.onmicrosoft.com:
+The user admin@contoso.onmicrosoft.com is role(s) Reader for subscription 3f961d1c-d1fb-40c3-99ba-44524b56df2d. User must be an owner of the subscription to be used for registration.
+Additional help URL https://aka.ms/AzsRemediateRegistration
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsRegistrationValidation Completed
+````
+**原因** - アカウントが Azure サブスクリプションの管理者ではありません。   
 
 **解決策** - Azure サブスクリプション管理者であるアカウントを使用します。これは、Azure Stack デプロイから使用の請求対象となります。
 
 
 ### <a name="expired-or-temporary-password"></a>期限切れまたは一時パスワード 
-![expired-password](./media/azure-stack-validate-registration/expired-password.png)
-**原因** - パスワードの有効期限が切れているか、一時パスワードであるため、アカウントがログインできません。     
+````PowerShell
+Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+Checking Registration Requirements: Fail 
+Error Details for registration account admin@contoso.onmicrosoft.com:
+Checking Registration failed with: Retrieving TenantId for subscription 3f961d1c-d1fb-40c3-99ba-44524b56df2d using account admin@contoso.onmicrosoft.com failed with AADSTS50055: Force Change P
+assword.
+Trace ID: 48fe06f5-a5b4-4961-ad45-a86964689900
+Correlation ID: 3dd1c9b2-72fb-46a0-819d-058f7562cb1f
+Timestamp: 2018-10-22 11:16:56Z: The remote server returned an error: (401) Unauthorized.
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsRegistrationValidation Completed
+````
+**原因** - パスワードの有効期限が切れているか、一時パスワードであるため、アカウントがログオンできません。     
 
 **解決策** - PowerShell での実行中、プロンプトに従ってパスワードをリセットします。 
   > `Login-AzureRMAccount` 
 
-または、 https://portal.azure.com にアカウントとしてログインします。この場合、ユーザーはパスワードを変更する必要があります。
-
-
-### <a name="microsoft-accounts-are-not-supported-for-registration"></a>Microsoft アカウント登録はサポートされていません  
-![unsupported-account](./media/azure-stack-validate-registration/unsupported-account.png)
-**原因** - Microsoft アカウント (Outlook.com、Hotmail.com など) が指定されました。  これらの Microsoft アカウントはサポートされていません。
-
-**解決策** - アカウントとサブスクリプションを Cloud Service Provider (CSP) または Enterprise Agreement (EA) から使用します。 
+または、 https://portal.azure.com にアカウントとしてログインします。この場合、ユーザーはパスワードの変更を強制されます。
 
 
 ### <a name="unknown-user-type"></a>ユーザーの種類が不明  
-![不明なユーザー](./media/azure-stack-validate-registration/unknown-user.png)
-**原因** -指定した Azure Active Directory 環境にログオンできません。 この例では、*AzureChinaCloud* が *AzureEnvironment* として指定されています。  
+````PowerShell
+Invoke-AzsRegistrationValidation v1.1809.1005.1 started.
+Checking Registration Requirements: Fail 
+Error Details for registration account admin@contoso.onmicrosoft.com:
+Checking Registration failed with: Retrieving TenantId for subscription 3f961d1c-d1fb-40c3-99ba-44524b56df2d using account admin@contoso.onmicrosoft.com failed with unknown_user_type: Unknown Us
+er Type
+
+Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
+Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
+Invoke-AzsRegistrationValidation Completed
+````
+**原因** - 指定した Azure Active Directory 環境にアカウントがログオンできません。 この例では、*AzureChinaCloud* が *AzureEnvironment* として指定されています。  
 
 **解決策** - 指定した Azure 環境に対してアカウントが有効であることを確認します。 PowerShell で次を実行して、特定の環境に対してアカウントが有効であることを確認します。     
   > `Login-AzureRmAccount -EnvironmentName AzureChinaCloud`

@@ -8,211 +8,62 @@ ms.service: key-vault
 author: bryanla
 ms.author: bryanla
 manager: mbaldwin
-ms.date: 08/21/2017
-ms.openlocfilehash: 7545a035541a4e464a6c82acb9fa9de18cf8e86d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/03/2018
+ms.openlocfilehash: adc8b84f0f22e85de88c4bd80c10a2a35d7b490a
+ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304324"
+ms.lasthandoff: 10/11/2018
+ms.locfileid: "49114602"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault ストレージ アカウント キー
 
-Azure Key Vault ストレージ アカウント キーがなかったときは、開発者は自分たちの Azure Storage アカウント (ASA) キーを管理し、手動または外部オートメーションによって回す必要がありました。 現在は、Key Vault ストレージ アカウント キーは [Key Vault シークレット](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets)として実装され、Azure Storage アカウントで認証するようになりました。
-
-Azure Storage アカウント (ASA) の主要機能により、シークレットのローテーションが管理されます。 また、Shared Access Signature (SAS) をメソッドとして提供することにより、ASA キーを直接扱う必要がなくなりました。
-
-Azure Storage アカウントの概要情報については、「[Azure Storage アカウントについて](https://docs.microsoft.com/azure/storage/storage-create-storage-account)」をご覧ください。
-
-## <a name="supporting-interfaces"></a>インターフェイスのサポート
-
-プログラミングとスクリプト インターフェイスの詳細な一覧およびリンクについては、「[Key Vault Developer's Guide](key-vault-developers-guide.md#coding-with-key-vault)」(Key Vault 開発者ガイド) でご確認ください。
-
-
-## <a name="what-key-vault-manages"></a>Key Vault による管理
-
-Key Vault では、管理対象ストレージ アカウント キーを使用するときに、いくつかの内部管理機能を自動的に実行します。
+> [!NOTE]
+> [Azure Storage で AAD 認証がサポートされました](https://docs.microsoft.com/azure/storage/common/storage-auth-aad)。 Storage に対する認証と承認に Azure Active Directory を使用することをお勧めします。そうすれば、ユーザーはストレージ アカウント キーのローテーションについて心配する必要がありません。
 
 - Azure Key Vault は、Azure Storage アカウント (ASA) のキーを管理します。
-    - 内部的には、Azure Key Vault では、Azure Storage アカウントを使用してキーの一覧表示 (同期) ができます。
+    - 内部的には、Azure Key Vault では、Azure Storage アカウントを使用してキーの一覧表示 (同期) ができます。    
     - Azure Key Vault は定期的にキーを再生成 (回転) します。
     - キーの値は、呼び出し元に応答で返されることはありません。
     - Azure Key Vault では、ストレージ アカウントと従来のストレージ アカウントの両方のキーを管理します。
-- Azure Key Vault では、コンテナーやオブジェクトの所有者は SAS (Shared Access Signature) (アカウントまたはサービス SAS) 定義を作成できます。
-    - SAS 値は SAS 定義を使用して作成され、REST URI パスを経由してシークレットとして返されます。 詳細については、[Azure Key Vault REST API リファレンス](/rest/api/keyvault)の SAS 定義操作の説明を参照してください。
 
-## <a name="naming-guidance"></a>名前付けのガイダンス
+<a name="prerequisites"></a>前提条件
+--------------
+1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) Azure CLI をインストールする   
+2. [ストレージ アカウントを作成する](https://azure.microsoft.com/services/storage/)
+    - この[ドキュメント](https://docs.microsoft.com/azure/storage/)に載っている手順に従って、ストレージ アカウントを作成してください。  
+    - **名前付けのガイダンス:** ストレージ アカウント名の長さは 3 文字から 24 文字で、数字と小文字のみを使用できます。        
+      
+<a name="step-by-step-instructions"></a>ステップ バイ ステップの手順
+-------------------------
 
-- ストレージ アカウント名の長さは 3 ～ 24 文字で、数字と小文字のみを使用できます。
-- SAS 定義名は長さが 1 文字から 102 文字までで、0 ～ 9、a ～ z、A ～ Z のみを含む必要があります。
+1. 管理する Azure ストレージ アカウントのリソース ID を取得します。
+    a. ストレージ アカウントの作成後に、次のコマンドを実行して、管理するストレージ アカウントのリソース ID を取得します。
+    ```
+    az storage account show -n storageaccountname (Copy ID out of the result of this command)
+    ```
+2. Azure Key Vault のサービス プリンシパルを表すアプリケーション ID を取得します。 
+    ```
+    az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
+    ```
+3. Azure Key Vault ID に Storage Key Operator ロールを割り当てます。
+    ```
+    az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id hhjkh --scope idofthestorageaccount
+    ```
+4. Key Vault の管理対象ストレージ アカウントを作成します。     <br /><br />
+   以下のコマンドでは、再生成期間を指定して、Key Vault でストレージのアクセス キーを定期的に再生成することを指示します。 次の例では、再生成期間を 90 日に設定しています。 90 日後、Key Vault は "key1" を再生成し、アクティブ キーを "key2" から "key1" に切り替えます。
+   ### <a name="key-regeneration"></a>キーの再生成
+    ```
+    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-generate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
+    ```
+    ユーザーがストレージ アカウントを作成しておらず、ストレージ アカウントへのアクセス許可もない場合に備えて、以下の手順で自分のアカウントのアクセス許可を設定して、Key Vault 内のすべてのストレージ アクセス許可を確実に管理できるようにします。
+    [!NOTE] ユーザーにストレージ アカウントに対するアクセス許可がない場合に備えて、最初にユーザーのオブジェクト ID を取得します。
 
-## <a name="developer-experience"></a>開発者エクスペリエンス
+    ```
+    az ad user show --upn-or-object-id "developer@contoso.com"
 
-### <a name="before-azure-key-vault-storage-keys"></a>Azure Key Vault ストレージ キー以前
-
-開発者は、Azure storage にアクセスにするために、ストレージ アカウント キーで以下のことを行う必要がありました。
-1. Azure AppService アプリケーション設定または別のストレージに接続文字列または SAS トークンを保存します。
-1. アプリケーションの起動時に、接続文字列または SAS トークンを取得します。
-1. ストレージと対話する [CloudStorageAccount](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) を作成します。
-
-```cs
-// The Connection string is being fetched from App Service application settings
-var connectionStringOrSasToken = CloudConfigurationManager.GetSetting("StorageConnectionString");
-var storageAccount = CloudStorageAccount.Parse(connectionStringOrSasToken);
-var blobClient = storageAccount.CreateCloudBlobClient();
- ```
-
-### <a name="after-azure-key-vault-storage-keys"></a>Azure Key Vault ストレージ キー以後
-
-開発者は [KeyVaultClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault.keyvaultclient) を作成し、それを利用してストレージの SAS トークンを取得します。 その後、そのトークンを使用して [CloudStorageAccount](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount) を作成します。
-
-```cs
-// Create KeyVaultClient with vault credentials
-var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(securityToken));
-
-// Get a SAS token for our storage from Key Vault
-var sasToken = await kv.GetSecretAsync("SecretUri");
-
-// Create new storage credentials using the SAS token.
-var accountSasCredential = new StorageCredentials(sasToken.Value);
-
-// Use the storage credentials and the Blob storage endpoint to create a new Blob service client.
-var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("https://myaccount.blob.core.windows.net/"), null, null, null);
-
-var blobClientWithSas = accountWithSas.CreateCloudBlobClient();
-
-// Use the blobClientWithSas
-...
-
-// If your SAS token is about to expire, get the SAS Token again from Key Vault and update it.
-sasToken = await kv.GetSecretAsync("SecretUri");
-accountSasCredential.UpdateSASToken(sasToken);
-```
-
- ### <a name="developer-guidance"></a>開発者ガイダンス
-
-- ASA キーの管理は、Key Vault のみを許可します。 Key Vault のプロセスと干渉するため、自身で管理しないでください。
-- 複数の Key Vault オブジェクトによって ASA キーを管理しないでください。
-- ASA キーを手動で再生成する必要がある場合は、Key Vault を使用して ASA キーを再生成することをお勧めします。
-
-## <a name="getting-started"></a>使用の開始
-
-### <a name="give-key-vault-access-to-your-storage-account"></a>Key Vault にストレージ アカウントへのアクセス権を付与する 
-
-多くのアプリケーションと同様に、OAuth を使用して他のサービスにアクセスするには、Key Vault を Azure AD に登録します。 登録時に、[サービス プリンシパル](/azure/active-directory/develop/app-objects-and-service-principals) オブジェクトが作成されます。このオブジェクトは、実行時にアプリケーションの ID を表すために使用されます。 サービス プリンシパルは、ロールベースのアクセス制御 (RBAC) を介して別のリソースにアクセスするために、アプリケーションの ID を承認するためにも使用されます。
-
-Azure Key Vault アプリケーション ID では、ストレージ アカウントのキーを "*一覧表示*" し "*再生成*" する権限が必要です。 次の手順に従ってこれらのアクセス許可をセットアップします。
-
-```powershell
-# Get the resource ID of the Azure Storage Account you want to manage.
-# Below, we are fetching a storage account using Azure Resource Manager
-$storage = Get-AzureRmStorageAccount -ResourceGroupName "mystorageResourceGroup" -StorageAccountName "mystorage"
-
-# Get Application ID of Azure Key Vault's service principal
-$servicePrincipal = Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093
-
-# Assign Storage Key Operator role to Azure Key Vault Identity
-New-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storage.Id
-```
-
-    >[!NOTE]
-    > For a classic account type, set the role parameter to *"Classic Storage Account Key Operator Service Role."*
-
-## <a name="working-example"></a>実際の例
-
-次の例では、Key Vault が管理する Azure Storage アカウントと、関連した SAS 定義を作成する方法を示します。
-
-### <a name="prerequisite"></a>前提条件
-
-[ロールベースのアクセス制御 (RBAC) のアクセス許可の設定](#setup-for-role-based-access-control-rbac-permissions)が完了していることを確認します。
-
-### <a name="setup"></a>セットアップ
-
-```powershell
-# This is the name of our Key Vault
-$keyVaultName = "mykeyVault"
-
-# Fetching all the storage account object, of the ASA we want to manage with KeyVault
-$storage = Get-AzureRmStorageAccount -ResourceGroupName "mystorageResourceGroup" -StorageAccountName "mystorage"
-
-# Get ObjectId of Azure KeyVault Identity service principal
-$servicePrincipalId = $(Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093).Id
-```
-
-次に、ストレージのすべてのアクセス許可を Key Vault で管理できるように、**アカウント**のアクセス許可を設定します。 次の例では、Azure アカウントは _developer@contoso.com_ です。
-
-```powershell
-# Searching our Azure Active Directory for our account's ObjectId
-$userPrincipalId = $(Get-AzureRmADUser -SearchString "developer@contoso.com").Id
-
-# We use the ObjectId we found to setting permissions on the vault
-Set-AzureRmKeyVaultAccessPolicy -VaultName $keyVaultName -ObjectId $userPrincipalId -PermissionsToStorage all
-```
-
-### <a name="create-a-key-vault-managed-storage-account"></a>Key Vault の管理対象ストレージ アカウントの作成
-
-次に、Azure Key Vault で管理対象ストレージ アカウントを作成し、ストレージ アカウントのアクセス キーを使用して SAS トークンを作成します。
-- `-ActiveKeyName` では、"key2" を使用して SAS トークンを生成します。
-- `-AccountName` は、管理対象ストレージ アカウントの識別に使用されます。 次の例では、簡潔にするためにストレージ アカウント名を使用していますが、任意の名前を使用できます。
-- `-DisableAutoRegenerateKey` は、ストレージ アカウント キーを再生成しないことを指定します。
-
-```powershell
-# Adds your storage account to be managed by Key Vault and will use the access key, key2
-Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $storage.StorageAccountName -AccountResourceId $storage.Id -ActiveKeyName key2 -DisableAutoRegenerateKey
-```
-
-### <a name="key-regeneration"></a>キーの再生成
-
-Key Vault でストレージのアクセス キーを定期的に再生成する場合は、再生成期間を設定できます。 次の例では、再生成期間を 3 日に設定しています。 3 日後、Key Vault は "key1" を再生成し、アクティブ キーを "key2" から "key1" に切り替えます。
-
-```powershell
-$regenPeriod = [System.Timespan]::FromDays(3)
-$accountName = $storage.StorageAccountName
-
-Add-AzureKeyVaultManagedStorageAccount -VaultName $keyVaultName -AccountName $accountName -AccountResourceId $storage.Id -ActiveKeyName key2 -RegenerationPeriod $regenPeriod
-```
-
-### <a name="set-sas-definitions"></a>SAS 定義の設定
-
-アカウント SAS は、さまざまなアクセス許可を持つ BLOB サービスへのアクセスを提供します。
-Key Vault で、管理対象のストレージ アカウント用に SAS 定義を設定します。
-- `-AccountName` は、Key Vault の管理対象ストレージ アカウントの名前です。
-- `-Name` は、ストレージ内の SAS トークンの識別子です。
-- `-ValidityPeriod` では、生成された SAS トークンの有効期限を設定します。
-
-```powershell
-$validityPeriod = [System.Timespan]::FromDays(1)
-$readSasName = "readBlobSas"
-$writeSasName = "writeBlobSas"
-
-Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service -VaultName $keyVaultName -AccountName $accountName -Name $readSasName -Protocol HttpsOnly -ValidityPeriod $validityPeriod -Permission Read,List
-
-Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service,Object -VaultName $keyVaultName -AccountName $accountName -Name $writeSasName -Protocol HttpsOnly -ValidityPeriod $validityPeriod -Permission Read,List,Write
-```
-
-### <a name="get-sas-tokens"></a>SAS トークンの取得
-
-対応する SAS トークンを取得し、ストレージへの呼び出しを行います。 `-SecretName` は、[Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition) を実行したときの `AccountName` パラメーターと `Name` パラメーターの入力を使用して作成されます。
-
-```powershell
-$readSasToken = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -SecretName "$accountName-$readSasName").SecretValueText
-$writeSasToken = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -SecretName "$accountName-$writeSasName").SecretValueText
-```
-
-### <a name="create-storage"></a>ストレージの作成
-
-*$readSasToken* を使用してアクセスしようとすると失敗しますが、*$writeSasToken* を使用するとアクセスできることに注意してください。
-
-```powershell
-$context1 = New-AzureStorageContext -SasToken $readSasToken -StorageAccountName $storage.StorageAccountName
-$context2 = New-AzureStorageContext -SasToken $writeSasToken -StorageAccountName $storage.StorageAccountName
-
-# Ensure the txt file in command exists in local path mentioned
-Set-AzureStorageBlobContent -Container containertest1 -File "./abc.txt" -Context $context1
-Set-AzureStorageBlobContent -Container cont1-file "./file.txt" -Context $context2
-```
-
-書き込みアクセス権を持つ SAS トークンを使用して、ストレージ BLOB コンテンツにアクセスできます。
+    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover purge restore set setsas update
+    ```
 
 ### <a name="relevant-powershell-cmdlets"></a>関連した PowerShell コマンドレット
 
@@ -223,27 +74,6 @@ Set-AzureStorageBlobContent -Container cont1-file "./file.txt" -Context $context
 - [Remove-AzureKeyVaultManagedStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.keyvault/remove-azurekeyvaultmanagedstorageaccount)
 - [Remove-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Remove-AzureKeyVaultManagedStorageSasDefinition)
 - [Set-AzureKeyVaultManagedStorageSasDefinition](https://docs.microsoft.com/powershell/module/AzureRM.KeyVault/Set-AzureKeyVaultManagedStorageSasDefinition)
-
-## <a name="storage-account-onboarding"></a>ストレージ アカウントのオンボード
-
-例: Key Vault オブジェクトの所有者は、ストレージ アカウントをオンボードするために、ストレージ アカウント オブジェクトを Azure Key Vault に追加します。
-
-オンボード時に Key Vault は、オンボードするアカウントの ID にストレージ キーの*一覧表示*と*再生成*の権限があることを確認する必要があります。 これらの権限を確認するために、Key Vault は、認証サービスから OBO (On Behalf Of) トークンを取得し、対象ユーザーを Azure Resource Manager に設定し、Azure Storage サービスの*一覧表示*キーを呼び出します。 *一覧表示*の呼び出しが失敗すると、Key Vault オブジェクトの作成が*禁止*の HTTP 状態コードで失敗します。 この方法で表示されるキーは、キー コンテナー エンティティ ストレージでキャッシュされます。
-
-Key Vault では、ID がキー再生成の所有権を取得する前に、その ID に*再生成*の権限があることを確認する必要があります。 この ID が、OBO トークン経由で、Key Vault ファースト パーティ ID と同様に権限があることを確認するために、以下のことを行います。
-
-- Key Vault は、ストレージ アカウント リソースに対するRBAC 権限を一覧表示します。
-- Key Vault は、アクションとアクション以外の正規表現の照合によって応答を検証します。
-
-その他の補助的な例は、「[Key Vault に管理されているストレージ アカウント キーのサンプル](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)」に関するページをご覧ください。
-
-ID に*再生成*の権限がない場合、あるいは Key Vault のファースト パーティ ID に*一覧表示*または*再生成*の権限がない場合、オンボード要求は失敗し、適切なエラー コードとメッセージを返します。
-
-OBO トークンは、PowerShell または CLI のいずれかのファースト パーティのネイティブ クライアント アプリケーションを使用する場合にのみ機能します。
-
-## <a name="other-applications"></a>他のアプリケーション
-
-- Key Vault ストレージ アカウント キーを使用して構築された SAS トークンは、Azure Storage アカウントへのさらに制御されたアクセスを提供します。 詳細については、「[Shared Access Signatures (SAS) の使用](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
 

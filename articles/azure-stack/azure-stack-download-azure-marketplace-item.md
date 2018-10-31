@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/09/2018
+ms.date: 10/19/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: cf6bc980f6fd821056a987d0c830863bd15ba779
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: b5c2c51429e37eea2473ae5966b1f41295875cb6
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902010"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638173"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
@@ -49,20 +49,20 @@ Azure Stack デプロイは、インターネットに接続し、[Azure に登�
 
     空き領域を確認するには、**[リージョンの管理]** で対象リージョンを選択し、**[リソース プロバイダー]** > **[ストレージ]** の順に移動します。
 
-    ![ストレージ領域を確認する](media/azure-stack-download-azure-marketplace-item/storage.png)  
+    [ ![ストレージ領域を確認する](media/azure-stack-download-azure-marketplace-item/storagesm.png "ストレージ領域を確認する") ](media/azure-stack-download-azure-marketplace-item/storage.png#lightbox)
 
     
 3. Azure Stack Marketplace を開き、Azure に接続します。 そのためには、**[Marketplace management]\(Marketplace 管理\)** を選択し、**[Add from Azure]\(Azure から追加\)** を選択します。
 
-    ![Azure から追加する](media/azure-stack-download-azure-marketplace-item/marketplace.png)
+    [ ![[Add from Azure]\(Azure から追加\)](media/azure-stack-download-azure-marketplace-item/marketplacesm.png "[Add from Azure]\(Azure から追加\)") ](media/azure-stack-download-azure-marketplace-item/marketplace.png#lightbox)
 
     Azure Marketplace からダウンロードできる項目の一覧がポータルに表示されます。 各項目をクリックすると、項目の説明と、ダウンロード サイズなどの追加情報が表示されます。 
 
-    ![Marketplace の一覧](media/azure-stack-download-azure-marketplace-item/image03.png)
+    [ ![Marketplace の一覧](media/azure-stack-download-azure-marketplace-item/image03sm.png "Marketplace の一覧") ](media/azure-stack-download-azure-marketplace-item/image03.png#lightbox)
 
 4. 項目を選択し、**[ダウンロード]** を選択します。 ダウンロードの時間は項目によって異なります。
 
-    ![ダウンロードのメッセージ](media/azure-stack-download-azure-marketplace-item/image04.png)
+    [ ![ダウンロードのメッセージ](media/azure-stack-download-azure-marketplace-item/image04.png "ダウンロードのメッセージ") ](media/azure-stack-download-azure-marketplace-item/image04.png#lightbox)
 
     ダウンロードが完了したら、Azure Stack オペレーターまたはユーザーとして、新しい Marketplace 項目をデプロイできます。
 
@@ -128,24 +128,24 @@ Azure Stack が切断モードでインターネットに接続されていな�
 
    Sync-AzSOfflineMarketplaceItem 
       -Destination "Destination folder path in quotes" `
-      -AzureTenantID $AzureContext.Tenant.TenantId `
+      -AzureTenantID $AzureContext.Tenant.TenantId ` 
       -AzureSubscriptionId $AzureContext.Subscription.Id 
    ```
 
-6. ツールが実行されると、Azure アカウント資格情報の入力を求められます。 Azure Stack の登録に使用した Azure アカウントにサインインします。 ログインが成功すると、次の図のような画面が表示され、使用可能なマーケットプレース項目の一覧が示されます。  
+6. ツールを実行すると、次の図のような画面が表示され、使用可能なマーケットプレース項目の一覧が示されます。
 
-   ![Azure Marketplace アイテムのポップアップ](media/azure-stack-download-azure-marketplace-item/image05.png)
+   [ ![Azure Marketplace 項目のポップアップ](media/azure-stack-download-azure-marketplace-item/image05.png "Azure Marketplace 項目") ](media/azure-stack-download-azure-marketplace-item/image05.png#lightbox)
 
-7. ダウンロードする項目を選択し、"*バージョン*" を書き留めておきます  (*Ctrl* キーを押しながら、複数のイメージを選択することができます)。次の手順で項目をインポートするときに、"*バージョン*" を参照します。 
+7. ダウンロードする項目を選択し、"*バージョン*" を書き留めておきます  (*Ctrl* キーを押しながら、複数のイメージを選択することができます)。 次の手順で項目をインポートするときに、"*バージョン*" を参照します。 
    
    また、**[Add criteria]\(条件の追加\)** オプションを使用して、イメージの一覧をフィルター処理することもできます。
 
 8. **[OK]** を選択し、法律条項を確認して同意します。 
 
-9. ダウンロードにかかる時間は、項目のサイズによって異なります。 ダウンロードが完了したら、その項目をスクリプトで指定したフォルダーで使用できます。 ダウンロードには、VHD ファイル (仮想マシンの場合)、または ZIP ファイル (仮想マシン拡張機能の場合) が含まれています。 また、*.azpkg* 形式のギャラリー パッケージも含まれています  (*.azpkg* パッケージは、*.zip* ファイルです)。
- 
+9. ダウンロードにかかる時間は、項目のサイズによって異なります。 ダウンロードが完了したら、その項目をスクリプトで指定したフォルダーで使用できます。 ダウンロードには、VHD ファイル (仮想マシンの場合)、または .zip ファイル (仮想マシン拡張機能の場合) が含まれています。 また、*.azpkg* 形式 (実体は .zip ファイル) のギャラリー パッケージが含まれていることもあります。
 
 ### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>ダウンロードのインポートと Azure Stack Marketplace への発行
+
 1. [以前にダウンロードした](#use-the-marketplace-syndication-tool-to-download-marketplace-items)仮想マシン イメージまたはソリューション テンプレートのファイルは、Azure Stack 環境でローカルに使用できるようにする必要があります。  
 
 2. 管理ポータルを使用して、マーケットプレース項目パッケージ (.azpkg ファイル) と仮想ハード ディスク イメージ (.vhd ファイル) を Azure Stack BLOB ストレージにアップロードします。 パッケージとディスク ファイルをアップロードすると、Azure Stack で利用できるようになるため、後で Azure Stack Marketplace に項目を発行することができます。
@@ -154,16 +154,15 @@ Azure Stack が切断モードでインターネットに接続されていな�
    1. Azure Stack 管理ポータルで、**[すべてのサービス]** に移動します。次に、**[データ + ストレージ]** カテゴリで **[ストレージ アカウント]** を選択します。  
    
    2. サブスクリプションからストレージ アカウントを選択し、**[BLOB サービス]** で **[コンテナー]** を選択します。  
-      ![Blob service](media/azure-stack-download-azure-marketplace-item/blob-service.png)  
+      [ ![Blob service](media/azure-stack-download-azure-marketplace-item/blob-service.png "Blob service") ](media/azure-stack-download-azure-marketplace-item/blob-service.png#lightbox)  
    
    3. 使用するコンテナーを選択し、**[アップロード]** を選択して **[BLOB のアップロード]** ペインを開きます。  
-      ![コンテナー](media/azure-stack-download-azure-marketplace-item/container.png)  
+      [ ![コンテナー](media/azure-stack-download-azure-marketplace-item/container.png "コンテナー") ](media/azure-stack-download-azure-marketplace-item/container.png#lightbox)  
    
-   4. [BLOB のアップロード] ウィンドウで、ストレージに読み込むパッケージとディスク ファイルを参照し、**[アップロード]** を選択します。  
-      ![upload](media/azure-stack-download-azure-marketplace-item/upload.png)  
+   4. [BLOB のアップロード] ウィンドウで、ストレージに読み込むパッケージとディスク ファイルを参照し、**[アップロード]** を選択します。[ ![アップロード](media/azure-stack-download-azure-marketplace-item/uploadsm.png "アップロード") ](media/azure-stack-download-azure-marketplace-item/upload.png#lightbox)  
 
    5. アップロードしたファイルは、コンテナー ペインに表示されます。 ファイルを選択し、**[BLOB のプロパティ]** ペインで URL をコピーします。 次の手順で Marketplace 項目を Azure Stack にインポートするときに、この URL を使用します。  次の図では、コンテナーは *blob-test-storage* で、ファイルは *Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg* です。  ファイル URL は *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg* です。  
-      ![BLOB のプロパティ](media/azure-stack-download-azure-marketplace-item/blob-storage.png)  
+      [ ![BLOB のプロパティ](media/azure-stack-download-azure-marketplace-item/blob-storagesm.png "BLOB のプロパティ") ](media/azure-stack-download-azure-marketplace-item/blob-storage.png#lightbox)  
 
 3. **Add-AzsPlatformimage** コマンドレットを使用して、Azure Stack に VHD イメージをインポートします。 このコマンドレットを使用する場合は、*publisher*、*offer* などのパラメーター値を、インポートするイメージの値で置き換えてください。 
 
@@ -199,16 +198,14 @@ Azure Stack が切断モードでインターネットに接続されていな�
      –Verbose
     ```
 5. ギャラリー項目は、発行すると、使用できるようになります。 ギャラリー項目が発行されたことを確認するには、**[すべてのサービス]** に移動し、**[全般]** カテゴリで **[Marketplace]** を選択します。  ソリューション テンプレートをダウンロードする場合は、そのソリューション テンプレートのすべての依存 VHD イメージを追加します。  
-  ![マーケットプレースの表示](media/azure-stack-download-azure-marketplace-item/view-marketplace.png)  
+  [ ![マーケットプレースの表示](media/azure-stack-download-azure-marketplace-item/view-marketplacesm.png "マーケットプレースの表示") ](media/azure-stack-download-azure-marketplace-item/view-marketplace.png#lightbox)  
 
-> [!NOTE]
-> Azure Stack PowerShell 1.3.0 のリリースにより、仮想マシン拡張機能を追加できるようになりました。
-
-例: 
+Azure Stack PowerShell 1.3.0 のリリースにより、仮想マシン拡張機能を追加できるようになりました。 例: 
 
 ````PowerShell
 Add-AzsVMExtension -Publisher "Microsoft" -Type "MicroExtension" -Version "0.1.0" -ComputeRole "IaaS" -SourceBlob "https://github.com/Microsoft/PowerShell-DSC-for-Linux/archive/v1.1.1-294.zip" -SupportMultipleExtensions -VmOsType "Linux"
 ````
 
 ## <a name="next-steps"></a>次の手順
+
 [Marketplace アイテムの作成と発行](azure-stack-create-and-publish-marketplace-item.md)

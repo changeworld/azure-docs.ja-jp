@@ -8,12 +8,12 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9c9c04a8310a46605cf5733131db1418b7cb7f7a
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 97a2180aaf236d3541cff30d2151f26ce70b14af
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47218786"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49393476"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Azure IoT Edge ランタイムとそのアーキテクチャの概要
 
@@ -23,13 +23,13 @@ IoT Edge ランタイムは、IoT Edge デバイスで次の機能を実行し�
 
 * デバイスにワークロードをインストールし、更新する。
 * デバイス上の Azure IoT Edge のセキュリティ標準を維持する。
-* [IoT Edge モジュール][lnk モジュール] の実行状態を絶えず確保する。
+* [IoT Edge モジュール](iot-edge-modules.md)の実行状態を絶えず確保する。
 * モジュールの正常性をクラウドに報告してリモート監視を可能にする。
 * ダウンストリームのリーフ デバイスと IoT Edge デバイス間の通信を円滑化する。
 * IoT Edge デバイス上のモジュール間の通信を円滑化する。
 * IoT Edge デバイスとクラウドとの間の通信を円滑化する。
 
-![IoT Edge ランタイムによる洞察とモジュールの正常性の IoT Hub への通信][1]
+![IoT Edge ランタイムによる洞察とモジュールの正常性の IoT Hub への通信](./media/iot-edge-runtime/Pipeline.png)
 
 IoT Edge ランタイムには、通信とモジュール管理の 2 つのカテゴリの役割があります。 これら 2 つの役割は、IoT Edge ランタイムを構成する 2 つのコンポーネントによって実行されます。 IoT Edge ハブは通信を実行し、IoT Edge エージェントは、モジュールの展開と監視を実行します。 
 
@@ -49,7 +49,7 @@ Edge ハブは、ローカルで実行される完全バージョンの IoT Hub 
 
 IoT Edge ソリューションが使用する帯域幅を減らすために、Edge ハブは、クラウドへの実際の接続数を最適化します。 Edge ハブは、モジュールまたはリーフ デバイスなどのクライアントからの論理接続を取得し、クラウドへの 1 つの物理接続に統合します。 ソリューションの他の部分は、このプロセスの詳細を認識する必要がありません。 クライアントは、すべて、共通の接続を使って接続しているにもかかわらず、クラウドにそれぞれ独自に接続していると認識します。 
 
-![Edge ハブは複数の物理デバイスとクラウド間のゲートウェイとして機能します。][2]
+![Edge ハブは複数の物理デバイスとクラウド間のゲートウェイとして機能します。](./media/iot-edge-runtime/Gateway.png)
 
 Edge ハブでは、IoT Hub に接続されているかどうかを判断できます。 接続が切断された場合は、Edge ハブがメッセージを保存するか、ツインがローカルで更新します。 接続が再確立されると、すべてのデータが同期されます。 この一時キャッシュに使用される場所は、Edge ハブのモジュール ツインのプロパティによって規定されます。 キャッシュのサイズには上限がなく、デバイスにストレージ容量がある限り拡張されます。 
 
@@ -57,7 +57,7 @@ Edge ハブでは、IoT Hub に接続されているかどうかを判断でき�
 
 Edge Hub を使用することで、モジュール間の通信が容易になります。 メッセージ ブローカーとして Edge Hub を使用することで、モジュールの相互独立性を維持できます。 モジュールは、メッセージを受信する入力と、メッセージを書き出す出力を指定するだけです。 ソリューション開発者は、そのソリューションに固有の順序でデータを処理できるよう、これらの入力と出力を統合します。 
 
-![Edge Hub を使用することで、モジュール間の通信が容易になります。][3]
+![Edge Hub を使用することで、モジュール間の通信が容易になります。](./media/iot-edge-runtime/ModuleEndpoints.png)
 
 データを Edge ハブに送信するために、モジュールは、SendEventAsync メソッドを呼び出します。 最初の引数は、どの出力にメッセージを送信するかを指定します。 次の疑似コードは、output1 にメッセージを送信します。
 
@@ -77,7 +77,7 @@ Edge Hub を使用することで、モジュール間の通信が容易にな�
 
 <!--- For more info on how to declare routes between modules, see []. --->   
 
-![モジュール間のルート][4]
+![モジュール間のルート](./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png)
 
 ## <a name="iot-edge-agent"></a>IoT Edge エージェント
 
@@ -117,13 +117,4 @@ Azure IoT Edge セキュリティ フレームワークについて詳しくは�
 
 ## <a name="next-steps"></a>次の手順
 
-[Azure IoT Edge の証明書について][lnk-certs]
-
-<!-- Images -->
-[1]: ./media/iot-edge-runtime/Pipeline.png
-[2]: ./media/iot-edge-runtime/Gateway.png
-[3]: ./media/iot-edge-runtime/ModuleEndpoints.png
-[4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
-
-<!-- Links -->
-[lnk-certs]: iot-edge-certs.md
+[Azure IoT Edge の証明書について](iot-edge-certs.md)

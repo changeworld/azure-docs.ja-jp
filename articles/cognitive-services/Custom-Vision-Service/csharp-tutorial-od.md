@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: C# で物体検出プロジェクトを構築する - Custom Vision Service'
+title: 'チュートリアル: Custom Vision SDK for C# を使用して物体検出プロジェクトを作成する - Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: プロジェクトを作成し、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、既定のエンドポイントを利用して予測を行います。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: areddish
-ms.openlocfilehash: d04fb86abbc0f174e895c166d97fc5467831206f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 222a17f1d39bc52d1e5ff34e421d0203d80dd1bd
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366915"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958503"
 ---
-# <a name="tutorial-use-custom-vision-api-to-build-an-object-detection-project-in-c"></a>チュートリアル: Custom Vision API を使用し、C# で物体検出プロジェクトを構築する
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-c"></a>チュートリアル: Custom Vision SDK for C# を使用して物体検出プロジェクトを作成する
 
 Computer Vision API を使用する基本的な Windows アプリケーションを使用し、物体検出プロジェクトを作成する方法について説明します。 作成後、タグ付きのリージョンを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用して画像をプログラミングでテストできます。 Custom Vision API を利用し、Windows 用の独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
 
@@ -33,7 +33,7 @@ Computer Vision API を使用する基本的な Windows アプリケーション
 
 ## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
 
-このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある__歯車アイコン__を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
 
 ![キー UI の画像](./media/csharp-tutorial/training-prediction-keys.png)
 

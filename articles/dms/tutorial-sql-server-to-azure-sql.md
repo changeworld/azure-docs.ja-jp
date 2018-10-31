@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 10/10/2018
-ms.openlocfilehash: 86b1cc50128cd74f4a11ff599c1ca26ce5ae5117
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 6b8b6994b810db939a5e690d16d3c5d2f1a0825f
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067842"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945401"
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>DMS を使用して SQL Server を Azure SQL Database にオフラインで移行する
 Azure Database Migration Service を使用して、オンプレミスの SQL Server インスタンスから [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) にデータベースを移行することができます。 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server 2016 (以降) のオンプレミス インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database に移行します。
@@ -30,6 +30,10 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 > * 移行を実行する。
 > * 移行を監視する。
 > * 移行レポートをダウンロードする。
+
+[!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
+
+この記事では、SQL Server から Azure SQL Database へのオフライン移行について説明します。 オンライン移行については、「[DMS を使用して SQL Server を Azure SQL Database にオンラインで移行する](tutorial-sql-server-azure-sql-online.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下を実行する必要があります。

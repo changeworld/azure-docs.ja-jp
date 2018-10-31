@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: 物体検出プロジェクトを作成する - Custom Vision API、Python'
+title: 'チュートリアル: Custom Vision SDK for Python を使用して物体検出プロジェクトを作成する - Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: 既定のエンドポイントを利用し、プロジェクトを作成し、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、予測を行います。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: areddish
-ms.openlocfilehash: f49f5ab32d834b32de54be2d96c3671ad46f79f3
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 36b283965766130e86e079c807139998cd01c8a6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363702"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958535"
 ---
-# <a name="tutorial-build-an-object-detection-project-with-python"></a>チュートリアル: Python で物体検出プロジェクトを構築する
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-python"></a>チュートリアル: Custom Vision SDK for Python を使用して物体検出プロジェクトを作成する
 
 Computer Vision API を使用する基本的な Python スクリプトを使用し、物体検出プロジェクトを作成する方法について説明します。 作成後、タグ付きのリージョンを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用して画像をプログラミングでテストできます。 Custom Vision API を利用し、独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
 
@@ -43,7 +43,7 @@ pip install azure-cognitiveservices-vision-customvision
 
 ## <a name="step-1-get-the-training-and-prediction-keys"></a>手順 1: トレーニング キーと予測キーを取得する
 
-このサンプルで使用されるキーを取得するには、[Custom Vision サイト](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+このサンプルで使用されるキーを取得するには、[Custom Vision サイト](https://customvision.ai)にアクセスし、右上にある__歯車アイコン__を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
 
 ![キー UI の画像](./media/python-tutorial/training-prediction-keys.png)
 

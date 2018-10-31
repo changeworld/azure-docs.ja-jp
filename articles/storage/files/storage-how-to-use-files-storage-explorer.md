@@ -1,36 +1,29 @@
 ---
-title: Azure Storage Explorer を使用した Azure ファイル共有の管理
-description: Azure Storage Explorer を使用して Azure Files を管理する方法について説明します。
+title: Azure Storage Explorer を使用して Azure ファイル共有を管理するためのクイック スタート
+description: このクイック スタートを使用して、Azure Storage Explorer を使用して Azure Files を管理する方法を学習します。
 services: storage
 author: wmgries
 ms.service: storage
-ms.topic: get-started-article
-ms.date: 02/27/2018
+ms.topic: quickstart
+ms.date: 10/18/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: 949d96bb1b5ffdc948737d4a47ffa14b2e344b5e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f86a86fd9858fcc6f0b78256da1e96effbcbe68c
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574733"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944220"
 ---
-# <a name="manage-azure-file-shares-with-azure-storage-explorer"></a>Azure Storage Explorer を使用した Azure ファイル共有の管理 
-[Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 この記事では、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して Azure ファイル共有を操作する方法の基本について説明します。 Azure Storage Explorer は、Windows、macOS、および Linux で使用できる、広く使用されているクライアント ツールです。 Storage Explorer を使用すると、Azure ファイル共有やその他のストレージ リソースを管理することができます。
+# <a name="quickstart-create-and-manage-azure-file-shares-with-azure-storage-explorer"></a>クイック スタート: Azure Storage Explorer を使用した Azure ファイル共有の作成および管理
+このガイドでは、[Azure Storage Explorer](storage-files-introduction.md) を使用して Azure ファイル共有を操作する方法の基本について説明します。 Azure ファイル共有は他のファイル共有と似ていますが、クラウドに格納され、Azure プラットフォームによって支えられています。 Azure ファイル共有は、業界標準の SMB プロトコルをサポートし、複数のマシン、アプリケーション、およびインスタンス間にわたってファイル共有を可能にします。 
 
+Azure Storage Explorer は、Windows、macOS、および Linux で使用できる、広く使用されているクライアント ツールです。 Storage Explorer を使用すると、Azure ファイル共有やその他のストレージ リソースを管理することができます。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+## <a name="prerequisites"></a>前提条件
 このクイック スタートでは、Storage Explorer がインストールされていることを前提としています。 Azure Storage Explorer をダウンロードしてインストールするには、「[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)」にアクセスしてください。
-
-この記事では、次のことについて説明します:
-
-> [!div class="checklist"]
-> * リソース グループとストレージ アカウントを作成する
-> * Azure ファイル共有を作成する 
-> * ディレクトリを作成する
-> * ファイルをアップロードする
-> * ファイルをダウンロードする
-> * 共有スナップショットを作成して使用する
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成できます。
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 Storage Explorer を使用して新しいリソースを作成することはできません。 このデモでは、[Azure Portal](https://portal.azure.com/) にストレージ アカウントを作成します。 
@@ -49,7 +42,7 @@ Storage Explorer を初めて起動すると、**[Microsoft Azure Storage Explor
 ![[Microsoft Azure Storage Explorer - 接続] ウィンドウのスクリーンショット](./media/storage-how-to-use-files-storage-explorer/connect-to-azure-storage-1.png)
 
 ### <a name="create-a-file-share"></a>ファイル共有を作成する
-最初の Azure ファイル共有を *storageacct<random number>* ストレージ アカウント内に作成するには:
+最初の Azure ファイル共有を `storageacct<random number>` ストレージ アカウント内に作成するには:
 
 1. 作成したストレージ アカウントを展開します。
 2. **[ファイル共有]** を右クリックして、**[ファイル共有の作成]** を選択します。  
@@ -57,13 +50,12 @@ Storage Explorer を初めて起動すると、**[Microsoft Azure Storage Explor
 
 3. ファイル共有名として「*myshare*」と入力して、Enter キーを押します。
 
-> [!IMPORTANT]  
-> 共有名には、小文字の英字、数字、単一ハイフンのみを使用することができます (ただし、名前をハイフンで始めることはできません)。 ファイル共有とファイルの名前付けの詳細については、「[Naming and referencing shares, directories, files, and metadata (共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照)](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)」を参照してください。
+共有名には、小文字の英字、数字、単一ハイフンのみを使用することができます (ただし、名前をハイフンで始めることはできません)。 ファイル共有とファイルの名前付けの詳細については、「[Naming and referencing shares, directories, files, and metadata (共有、ディレクトリ、ファイル、およびメタデータの名前付けおよび参照)](https://docs.microsoft.com/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)」を参照してください。
 
 ファイル共有が作成されると、ファイル共有のタブが右ウィンドウに表示されます。 
 
-## <a name="work-with-the-contents-of-an-azure-file-share"></a>Azure ファイル共有の内容の操作
-Azure ファイル共有を作成したところで、SMB でファイル共有を [Windows](storage-how-to-use-files-windows.md)、[Linux](storage-how-to-use-files-linux.md)、または [macOS](storage-how-to-use-files-mac.md) にマウントできます。 別の方法として、Azure CLI を使用して Azure ファイル共有を操作することもできます。 SMB を使用してファイル共有をマウントする代わりに Azure CLI を使用する利点として、Azure CLI を使用して実行されるすべての要求がファイル REST API を使用して処理されることが挙げられます。 ファイル REST API を使用して、SMB アクセス権がないクライアント上のファイルとディレクトリを作成、変更、および削除することができます。
+## <a name="use-your-azure-file-share"></a>Azure ファイル共有を使用する
+Azure ファイル共有を作成したところで、SMB でファイル共有を [Windows](storage-how-to-use-files-windows.md)、[Linux](storage-how-to-use-files-linux.md)、または [macOS](storage-how-to-use-files-mac.md) にマウントできます。 別の方法として、Azure Storage Explorer を使用して Azure ファイル共有を操作することもできます。 SMB を使用してファイル共有をマウントする代わりに Azure Storage Explorer を使用する利点として、Azure Storage Explorer を使用して実行されるすべての要求がファイル REST API を使用して処理されることが挙げられます。 ファイル REST API を使用して、SMB アクセス権がないクライアント上のファイルとディレクトリを作成、変更、および削除することができます。
 
 ### <a name="create-a-directory"></a>ディレクトリを作成する
 ディレクトリを追加すると、ファイル共有を管理するための階層構造が生じます。 ディレクトリには複数のレベルを作成できます。 ただし、サブディレクトリを作成する前に、親ディレクトリが存在することを確認する必要があります。 たとえば、パス myDirectory/mySubDirectory の場合は、最初に *myDirectory* ディレクトリを作成する必要があります。 その後、*mySubDirectory* を作成できます。 
@@ -89,41 +81,12 @@ Azure ファイル共有を作成したところで、SMB でファイル共有�
 
 ウィンドウの下部にある **[アクティビティ]** ウィンドウに、ダウンロードの進行状況が表示されます。
 
-## <a name="create-and-modify-share-snapshots"></a>共有スナップショットの作成と変更
-スナップショットでは、Azure ファイル共有の特定時点のコピーが保存されます。 ファイル共有スナップショットは、場合によっては既に使い慣れている、次のような他のテクノロジに類似しています。
-- NTFS や ReFS などの Windows ファイル システム用の[ボリューム シャドウ コピー サービス (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal)
-- Linux システム用の[論理ボリューム マネージャー (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) スナップショット
-- macOS 用の [Apple File System (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) スナップショット
-
-共有スナップショットを作成するには:
-
-1. *myshare* ファイル共有のタブを選択します。
-2. 上部のメニューから、**[スナップショットの作成]** を選択します  (Storage Explorer のウィンドウのサイズによっては、このオプションを表示するために最初に **[More]\(詳細\)** を選択する必要があります)。  
-    ![コンテキストの [スナップショットの作成] ボタンのスクリーンショット](media/storage-how-to-use-files-storage-explorer/create-share-snapshot-1.png)
-
-### <a name="list-and-browse-share-snapshots"></a>共有スナップショットの一覧表示と参照
-スナップショットを作成した後、共有のスナップショットを一覧表示するには、**[View Snapshots for File Share]\(ファイル共有のスナップショットを参照する\)** を選択します  (Storage Explorer のウィンドウのサイズによっては、このオプションを表示するために最初に **[More]\(詳細\)** を選択する必要があります)。共有スナップショットを参照するには、目的のスナップショットをダブルクリックします。
-
-![スナップショットの参照ウィンドウのスクリーンショット](media/storage-how-to-use-files-storage-explorer/list-browse-snapshots-1.png)
-
-### <a name="restore-from-a-share-snapshot"></a>共有スナップショットからの復元
-共有スナップショットからファイルを復元する方法を示すために、最初に有効な Azure ファイル共有からファイルを削除します。 *myDirectory* フォルダーに移動します。アップロードしたファイルを右クリックし、**[削除]** を選択します。 このファイルを共有スナップショットから復元するには、次の操作を実行します。
-
-1. **[View Snapshots for File Share]\(ファイル共有のスナップショットを参照する\)** を選択します  (Storage Explorer のウィンドウのサイズによっては、このオプションを表示するために最初に **[More]\(詳細\)** を選択する必要があります)。
-2. 共有スナップショットの一覧で、目的の共有スナップショットをダブルクリックします。
-3. スナップショットを参照して、削除したファイルを見つけます。 ファイル共有を選択し、**[スナップショットの復元]** を選択します  (Storage Explorer のウィンドウのサイズによっては、このオプションを表示するために最初に **[More]\(詳細\)** を選択する必要があります)。ウィンドウが開き、ファイルを復元するとファイル共有の内容が上書きされること、およびこの操作を元に戻すことができないことを示す警告が表示されます。 **[OK]** を選択します。
-4. これで、有効な Azure ファイル共有の元の場所にファイルが戻ります。
-
-### <a name="delete-a-share-snapshot"></a>共有スナップショットの削除
-共有スナップショットを削除するには、[共有スナップショットの一覧](#list-and-browse-share-snapshots)に移動します。 削除する共有スナップショットを右クリックし、**[削除]** を選択します。
-
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 Storage Explorer を使用してリソースを削除することはできません。 このクイック スタートからクリーンアップするには、[Azure Portal](https://portal.azure.com/) を使用します。 
 
 [!INCLUDE [storage-files-clean-up-portal](../../../includes/storage-files-clean-up-portal.md)]
 
 ## <a name="next-steps"></a>次の手順
-- [Azure Portal を使用したファイル共有の管理](storage-how-to-use-files-portal.md)
-- [Azure PowerShell を使用したファイル共有の管理](storage-how-to-use-files-powershell.md)
-- [Azure CLI を使用したファイル共有の管理](storage-how-to-use-files-cli.md)
-- [Azure Files のデプロイの計画](storage-files-planning.md)
+
+> [!div class="nextstepaction"]
+> [Azure Files とは何ですか。](storage-files-introduction.md)

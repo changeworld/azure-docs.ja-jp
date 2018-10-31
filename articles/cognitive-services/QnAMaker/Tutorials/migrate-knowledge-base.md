@@ -10,17 +10,17 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: 0cb8a185407c7b180a170f1f9b9d76aa28a24de5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6eaa4859ea6346390514325980835750d8e4b6d5
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031630"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365562"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>エクスポート/インポートを使用したナレッジ ベースの移行
 2018 月 5 月 7 日、\\\build\ カンファレンスで QnA Maker の一般提供が発表されました。 QnA Maker GA により、新しいアーキテクチャが Azure 上に構築されます。 QnA Maker Free プレビューで作成されたナレッジ ベースは、QnA Maker GA. に移行する必要があります。 QnA Maker プレビューは、2018 年 11 月に非推奨となる予定です。 QnA Maker GA での変更の詳細については、QnA Maker GA のお知らせに関する[ブログ記事](https://aka.ms/qnamakerga-blog)をご覧ください。
 
-QnA Maker には、[価格モデル](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/qna-maker/)が導入されました。
+QnA Maker には、[価格モデル](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/)が導入されました。
 
 前提条件
 > [!div class="checklist"]
@@ -38,9 +38,7 @@ QnA Maker には、[価格モデル](https://azure.microsoft.com/en-us/pricing/d
 
     ![ナレッジ ベースのダウンロード](../media/qnamaker-how-to-migrate-kb/preview-download.png)
 
-4. Azure 資格情報で [QnA Maker ポータル](https://qnamaker.ai)にサインインし、**[新しいサービスの作成]** をクリックします。
-
-    ![KB の作成 ](../media/qnamaker-how-to-create-kb/create-new-service.png)
+4. Azure 資格情報で [QnA Maker ポータル](https://qnamaker.ai)にサインインし、**[Create a knowledge base]\(ナレッジ ベースの作成\)** をクリックします。
     
 5. QnA Maker サービスをまだ作成していない場合、**[Create a QnA service]\(QnA サービスの作成\)** を選択します。 作成している場合、手順 2. のドロップダウンから QnA Maker サービスを選択します。 ナレッジ ベースをホストする QnA Maker サービスを選択します。
 

@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: 文の長さを取得する - Translator Text API、C#'
+title: 'クイック スタート: 文の長さを取得する (C#) - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、C# で Translator Text API を使ってテキストに含まれる文の長さを調べます。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: 699c4b775f2c5745a5b52593d44a0af408c5e73a
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: erhopf
+ms.openlocfilehash: c10a38164c71eaa4239072fe10973932ce8cce3b
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319610"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645044"
 ---
-# <a name="quickstart-get-sentence-lengths-with-c35"></a>クイック スタート: 文の長さを C&#35; で取得する
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-c"></a>クイック スタート: Translator Text REST API を使用して文の長さを取得する (C#)
 
 このクイック スタートでは、Translator Text API を使って、テキストに含まれる文の長さを調べます。
 

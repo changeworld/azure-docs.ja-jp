@@ -1,20 +1,21 @@
 ---
-title: 'クイック スタート: Windows で C++ と Cognitive Services Speech SDK を使用して音声を認識する'
-titleSuffix: Microsoft Cognitive Services
-description: Windows デスクトップで C++ と Cognitive Services Speech SDK を使用して音声を認識する方法について説明します
+title: 'クイック スタート: Windows デスクトップで C++ と Speech Service SDK を使用して音声を認識する'
+titleSuffix: Azure Cognitive Services
+description: Windows デスクトップで C++ と Speech Service SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
+ms.component: speech-service
 ms.topic: quickstart
 ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: 2adad78760c1d12da688106c45e86c91a8b13f91
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ddac12c6414365f8d20c42d324695be9855774dc
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339357"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469869"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-windows-by-using-the-speech-sdk"></a>クイック スタート: Windows デスクトップで C++ と Speech SDK を使用して音声を認識する
 

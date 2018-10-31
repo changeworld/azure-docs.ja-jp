@@ -6,22 +6,25 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 07/06/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: facf8895770f890bfbbef946a32cc681f685e998
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 361a1934a1e0cdcc0647c4c4f62af98f52b8c899
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37915204"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456880"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 
 [Azure Site Recovery](site-recovery-overview.md) は、計画された停止や計画外の停止の際にビジネス アプリを実行し続け、使用できるようにすることで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、フェールバックなど、オンプレミスのマシンと Azure Virtual Machines (VM) のディザスター リカバリーを管理し、調整します。
 
 - これは、オンプレミスの VMware VM のディザスター リカバリーを Azure に設定する方法について説明するシリーズの 2 番目のチュートリアルです。 1 番目のチュートリアルでは、VMware のディザスター リカバリーに必要な [Azure コンポーネントを設定](tutorial-prepare-azure.md)しました。
-- これらのチュートリアルは、シナリオの最も簡単な展開パスを示すことを目的として作られています。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 
+
+
+> [!NOTE]
+> これらのチュートリアルは、シナリオの最も簡単な展開パスを示すことを目的として作られています。 可能であれば既定のオプションを使い、すべての可能な設定とパスを示してはいません。 詳細な手順については、対応するシナリオの**操作方法**に関するセクションを参照してください。
 
 この記事では、Azure Site Recovery を使って VMware VM を Azure にレプリケートしたいときに、オンプレミスの VMware 環境を準備する方法について説明します。 学習内容は次のとおりです。
 
@@ -101,11 +104,13 @@ VMware サーバーと VM が要件に準拠していることを確認します
 - VM の[パブリック IP アドレスを追加](site-recovery-monitoring-and-troubleshooting.md)します。
 - **[ブート診断]** をオンにすると、VM のスクリーンショットを確認できます。
 
+
+## <a name="failback-requirements"></a>フェールバックの要件
+オンプレミスにフェールバックすることを計画している場合は、特定の[前提条件が満たされている](vmware-azure-reprotect.md##before-you-begin)ことを確認する必要もあります。 ただし、VM の**ディザスター リカバリーをあらかじめ有効にしておく必要はありません**。Azure へのフェールオーバー後に有効にすることもできます。
+
 ## <a name="useful-links"></a>便利なリンク
 
 複数の VM をレプリケートする場合は、始める前に、容量と展開を計画する必要があります。 [詳細情報](site-recovery-deployment-planner.md)。
-
-
 
 ## <a name="next-steps"></a>次の手順
 

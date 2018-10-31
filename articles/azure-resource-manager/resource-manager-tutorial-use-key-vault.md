@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 10/10/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 46291fe425e5d0fd1c142960a250c5601bd8ad29
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 3a2edb898c8053627684818d7fe257fe3402df5f
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078004"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645475"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>チュートリアル: Resource Manager テンプレートのデプロイで Azure Key Vault を統合する
 
@@ -137,7 +137,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 テンプレートファイルに変更を加える必要はありません。
 
 1. **azuredeploy.parameters.json**が開いていない場合、Visual Studio Code で開きます。
-2. **adminPassword**パラメーターを次のように更新します:
+2. **adminPassword** パラメーターを次のように更新します。
 
     ```json
     "adminPassword": {
@@ -152,10 +152,10 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     **id** を最後の手順で作成した Key Vault の リソース ID に置き換えます。  
 
     ![Key Vault と Resource Manager テンプレートの仮想マシンのデプロイパラメーターファイルを統合します](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
-3. 値を指定する:
+3. 次のように値を指定します。
 
     * **adminUsername**: 仮想マシンの管理者アカウントに名前を付けます。
-    * **dnsLabelPrefix**: dnsLablePrefix に名前を付けます。
+    * **dnsLabelPrefix**: dnsLabelPrefix に名前を付けます。
 4. 変更を保存します。
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ

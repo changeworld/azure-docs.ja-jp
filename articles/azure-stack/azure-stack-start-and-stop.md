@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: dd1e64d5ad6982c85a8205e3036d30a2ede92f7c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 6da81ab90a87285f9e1874e3f10eff4570124192
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930292"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344015"
 ---
 # <a name="start-and-stop-azure-stack"></a>Azure Stack の開始および停止
 この記事の手順に従い、正しくシャットダウンして Azure Stack サービスを再起動してください。 シャットダウンは、Azure Stack 環境全体の電源を物理的に切ります。 スタートアップは、すべてのインフラストラクチャ ロールの電源を入れ、テナントのリソースをシャットダウン前の電源状態に戻します。
@@ -90,4 +90,4 @@ Azure Stack 環境の電源投入後 2 時間経ってもインフラストラ�
 
 ## <a name="next-steps"></a>次の手順 
 
-Azure Stack 診断ツールと問題のログ記録については、「[Azure Stack の診断ツール](azure-stack-diagnostics.md)」をご覧ください。
+[Azure Stack 診断ツール](azure-stack-diagnostics.md)の詳細を確認する

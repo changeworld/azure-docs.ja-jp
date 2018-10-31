@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: サポートされている言語を取得する - Translator Text、Node.js'
+title: 'クイック スタート: サポートされている言語を取得する、Node.js - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Node.js で Translator Text API を使った例を紹介します。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
-ms.author: nolachar
-ms.openlocfilehash: a3b9dde8983b87a63858b3eb1381f7c74545cb1a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: ff921243df078010bdc825d28b55d07333016774
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122860"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646417"
 ---
-# <a name="quickstart-get-supported-languages-with-nodejs"></a>クイック スタート: サポートされている言語を Node.js で取得する
+# <a name="quickstart-get-supported-languages-with-the-translator-text-rest-api-nodejs"></a>クイック スタート: Translator Text REST API を使用してサポートされている言語を取得する (Node.js)
 
 このクイック スタートでは、翻訳、表記変換、辞書検索がサポートされている言語の一覧を取得する方法について、Translator Text API を使った例を紹介しています。
 

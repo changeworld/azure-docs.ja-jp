@@ -1,6 +1,6 @@
 ---
 title: Azure Virtual Machines に関するデータの収集 |Microsoft Azure
-description: OMS エージェントの VM 拡張機能を有効にし、Log Analytics で Azure VM からデータを収集できるようにする方法について説明します。
+description: Log Analytics エージェントの VM 拡張機能を有効にし、Log Analytics で Azure VM からデータを収集できるようにする方法について説明します。
 services: log-analytics
 documentationcenter: log-analytics
 author: mgoedtel
@@ -16,12 +16,12 @@ ms.date: 06/26/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: c7015eb346136130b9ffd3c23460cb8b9609dc9b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 141df44f62ddb4a62f6f5f6a8b67107aa2c58a29
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041008"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404496"
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Azure Virtual Machines に関するデータの収集
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、Azure Virtual Machines およびその他の環境内のリソースから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Azure Linux または Windows VM を構成し、データを収集する方法を示します。  
@@ -38,7 +38,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 2. **[作成]** をクリックし、次の項目について選択します。
 
-  * 新しい **OMS ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。 
+  * 新しい **Log Analytics ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。 OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。  
   * 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
   * **[リソース グループ]** では、1 つ以上の Azure Virtual Machines を含む既存のリソース グループを選択します。  
   * VM のデプロイ先となる**場所**を選択します。  詳細については、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。
@@ -46,22 +46,25 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
   
         ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png) 
 
-3. **[OMS ワークスペース]** ウィンドウに必要な情報を入力したら、**[OK]** をクリックします。  
+3. **[Log Analytics ワークスペース]** ウィンドウで必要な情報を入力したら、**[OK]** をクリックします。  
 
 情報が検証され、ワークスペースが作成されている間、メニューの **[通知]** でその進行状況を追跡することができます。 
 
 ## <a name="enable-the-log-analytics-vm-extension"></a>Log Analytics VM 拡張機能を有効にする
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
+
 Azure に既にデプロイされている Windows および Linux の仮想マシンでは、Log Analytics VM 拡張機能を使用して Log Analytics エージェントをインストールします。  この拡張機能を使用すると、インストール プロセスが簡略化され、指定した Log Analytics ワークスペースにデータを送信するようにエージェントが自動的に構成されます。 また、エージェントは自動的にアップグレードされるため、最新の機能と修正プログラムを利用できます。
 
 >[!NOTE]
->Linux 用 OMS エージェントは、複数の Log Analytics ワークスペースにレポートするように構成することはできません。 
+>Linux 用 Log Analytics エージェントは、複数の Log Analytics ワークスペースにレポートするように構成することはできません。 
 
 1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、前の手順で作成した *DefaultLAWorkspace* を選択します。
 3. 左側のメニューの [ワークスペースのデータ ソース] で **[仮想マシン]** をクリックします。  
-4. **[仮想マシン]** の一覧で、エージェントをインストールする仮想マシンを選択します。 VM の **OMS 接続の状態**が **[未接続]** になっていることに注意してください。
+4. **[仮想マシン]** の一覧で、エージェントをインストールする仮想マシンを選択します。 VM の **Log Analytics 接続の状態**が **[未接続]** になっていることに注意してください。
 5. 仮想マシンの詳細で **[接続]** を選択します。 エージェントが自動的にインストールされ、Log Analytics のワークスペース用に構成されます。 このプロセスは数分かかります。その間、**[状態]** は **[接続中]** になります。
-6. エージェントをインストールして接続した後、**OMS 接続の状態**は**このワークスペース**で更新されます。
+6. エージェントをインストールして接続した後、**Log Analytics 接続の状態**は**このワークスペース**で更新されます。
 
 ## <a name="collect-event-and-performance-data"></a>イベントとパフォーマンス データを収集する
 Log Analytics は、イベントを Windows イベント ログまたは Linux Syslog から収集でき、長期分析およびレポートのために指定されたパフォーマンス カウンターからも収集できます。また、特定の条件が検出された場合はアクションを実行できます。  まず、以下の手順に従って、Windows システム ログと Linux Syslog、およびいくつかの一般的なパフォーマンス カウンターからのイベント収集を構成します。  

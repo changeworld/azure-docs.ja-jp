@@ -1,5 +1,5 @@
 ---
-title: 'クイック スタート: 画像の中にある顔を検出する - Face API、cURL'
+title: 'クイック スタート: REST API と cURL を使って画像の中にある顔を検出する'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、cURL で Face API を使って画像から顔を検出します。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: face-api
 ms.topic: quickstart
 ms.date: 05/10/2018
 ms.author: pafarley
-ms.openlocfilehash: da18b7b3666863742f987b2ee0da297c0838d266
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: ab403ec6a9db4d1a0dc03074044eeb424e4ba875
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49343063"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953350"
 ---
-# <a name="quickstart-detect-faces-in-an-image-using-curl"></a>クイック スタート: cURL を使って画像の中にある顔を検出する
+# <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-curl"></a>クイック スタート: REST API と cURL を使って画像の中にある顔を検出する
 
 このクイック スタートでは、Face API を使って画像から顔を検出します。
 

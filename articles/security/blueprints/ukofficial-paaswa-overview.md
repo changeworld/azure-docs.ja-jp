@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6fe85d7ac527179ab39e89739f5744f3aa1ef8e2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1c2294004245e0ef64b9b708a5b57ec0d34cc45f
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297557"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321990"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure のセキュリティとコンプライアンスのブループリント: UK OFFICIAL ワークロード向け PaaS Web アプリケーション ホスティング
 
@@ -52,7 +52,6 @@ Azure Blueprint は、認定またはコンプライアンスの要件がある�
 このソリューションでは、次の Azure サービスを使用します。 デプロイ アーキテクチャの詳細については、「[デプロイ アーキテクチャ](#deployment-architecture)」セクションを参照してください。
 
 - Azure Active Directory
-- 管理対象のサービス ID
 - App Service
 - Web アプリ
 - API アプリ
@@ -107,13 +106,13 @@ Azure Web Apps は、Java、PHP、Node.js Python、HTML、および C# で開発
 
 App Service は [ISO、SOC、および PCI](https://www.microsoft.com/TrustCenter/) に準拠しています。また、ユーザー認証には、[Azure Active Directory](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication) またはソーシャル ログイン ([Google](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-google-authentication)、[Facebook](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-facebook-authentication)、[Twitter](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-twitter-authentication)、および [Microsoft 認証](https://docs.microsoft.com/azure/app-service/app-service-mobile-how-to-configure-microsoft-authentication)) を使用できます。
 
-Basic、Standard、および Premium プランは運用ワークロード向けで、専用の仮想マシン インスタンスで稼働します。 各インスタンスでは、複数のアプリケーションとドメインがサポートされます。 App Service は、必要に応じて信頼できる IP アドレスへのトラフィックをセキュリティで保護するために、[IP アドレス制限](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)もサポートしています。また、[Key Vault](https://azure.microsoft.com/services/key-vault/) や [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) などの PaaS サービスに安全に接続するために、[マネージド サービス ID](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) もサポートしています。 さらに高度なセキュリティが必要な場合は Isolated プランをご利用ください。このプランは、プライベートな専用の Azure 環境内のアプリをホストするため、オンプレミスのネットワークとのセキュリティ保護された接続や、追加のパフォーマンスおよびスケールが必要なアプリに最適です。
+Basic、Standard、および Premium プランは運用ワークロード向けで、専用の仮想マシン インスタンスで稼働します。 各インスタンスでは、複数のアプリケーションとドメインがサポートされます。 App Service は、必要に応じて信頼できる IP アドレスへのトラフィックをセキュリティで保護するために、[IP アドレス制限](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)もサポートしています。また、[Key Vault](https://azure.microsoft.com/services/key-vault/) や [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) などの PaaS サービスに安全に接続するために、[Azure リソースのマネージド ID](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) もサポートしています。 さらに高度なセキュリティが必要な場合は Isolated プランをご利用ください。このプランは、プライベートな専用の Azure 環境内のアプリをホストするため、オンプレミスのネットワークとのセキュリティ保護された接続や、追加のパフォーマンスおよびスケールが必要なアプリに最適です。
 
 このテンプレートは、次の App Service 機能をデプロイします。
 
 - [Standard](https://docs.microsoft.com/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview) App Service プラン レベル
 - 複数の Web アプリケーション [デプロイ スロット](https://docs.microsoft.com/azure/app-service/web-sites-staged-publishing): 開発、プレビュー、QA、UAT、そして当然ながら運用 (既定スロット)。
-- [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に接続するための[マネージド サービス ID](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) ([Azure SQL Database](https://azure.microsoft.com/services/sql-database/) へのアクセスを提供する場合にも使用できます) 
+- [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) に接続するための [Azure リソースのマネージド ID](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) ([Azure SQL Database](https://azure.microsoft.com/services/sql-database/) へのアクセスを提供する場合にも使用できます) 
 - パフォーマンスを監視する [Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-azure-web-apps) との統合
 - [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) 
 - メトリック [アラート](https://docs.microsoft.com/azure/application-insights/app-insights-alerts) 
@@ -164,7 +163,7 @@ Azure Storage のセキュリティ保護の詳細については、[セキュ�
 
 #### <a name="azure-key-vault-in-this-blueprint"></a>このブループリントの Azure Key Vault
 
-- ストレージ アクセス キーを保持し、Web アプリを使用するユーザーの[マネージド サービス ID](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) に読み取りアクセス権を付与します。
+- ストレージ アクセス キーを保持し、Web アプリを使用するユーザーの[マネージド ID](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity) に読み取りアクセス権を付与します。
 - SQL Server DBA のパスワードを (別のコンテナー内に) 保持します。
 - 診断ログ
 

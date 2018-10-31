@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: ea3e6c2e616f2618200c1e3904786abd72bbd75d
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 84aaa5534c629554074544b4bb56ae8da8825397
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376807"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986456"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>チュートリアル: 高可用性 MySQL データベースの提供
 
@@ -65,16 +65,15 @@ Azure Stack マーケットプレースに項目を追加する方法につい�
 - パブリック IP アドレス (プライマリ MySQL クラスター VM の場合)
 - MySQL クラスターをホストする 3 つの Linux VM
 
-1. 管理ポータルにサインインします。
-    - 統合システム デプロイの場合、ポータル アドレスはソリューションのリージョンと外部ドメイン名によって変わります。 形式は、 https://adminportal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; です。
-    - Azure Stack Development Kit (ASDK) を使用している場合、ポータル アドレスは [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external) です。
+1. 
+[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. **\+[** **リソースの作成]** > **[計算]** の順に選択し、**[MySQL with Replication]\(レプリケーション付き MySQL\)** を選択します。
 
-   ![カスタム テンプレートのデプロイ](media/azure-stack-tutorial-mysqlrp/createcluster1.png)
+   ![カスタム テンプレートのデプロイ](media/azure-stack-tutorial-mysqlrp/1.png)
 
 3. **[基本]** ページで基本的なデプロイ情報を提供します。 既定値を確認し、必要に応じて変更して **[OK]** をクリックします。<br><br>少なくとも以下を指定します。
-   - デプロイ名 (既定値は mysql)
+   - デプロイ名 (既定値は mymysql)
    - アプリケーションのルート パスワード。 **特殊文字を含めずに** 12 文字の英数字のパスワードを入力してください
    - アプリケーション データベース名 (既定値は bitnami)
    - 作成する MySQL データベースのレプリカ VM の数 (既定値は 2)
@@ -82,22 +81,22 @@ Azure Stack マーケットプレースに項目を追加する方法につい�
    - 使用するリソース グループを選択するか、新しいリソース グループを作成します
    - 場所を選択します (ASDK の場合、既定値は local)
 
-   ![デプロイの基本](media/azure-stack-tutorial-mysqlrp/createcluster2.png)
+   [![](media/azure-stack-tutorial-mysqlrp/2-sm.PNG "デプロイの基本")](media/azure-stack-tutorial-mysqlrp/2-lg.PNG#lightbox)
 
 4. **[Environment Configuration]\(環境の構成\)** ページに次の情報を入力し、**[OK]** をクリックします。 
    - Secure Shell (SSH) 認証に使用するパスワードまたは SSH パブリック キー。 パスワードを使用する場合は、英字、数字を含める必要があります。また、特殊文字を**含めることもできます**。
    - VM サイズ (既定値は Standard D1 v2 VM)
    - データ ディスク サイズ (GB) を入力し、**[OK]** をクリックします。
 
-   ![環境の構成](media/azure-stack-tutorial-mysqlrp/createcluster3.png)
+   [![](media/azure-stack-tutorial-mysqlrp/3-sm.PNG "環境の構成")](media/azure-stack-tutorial-mysqlrp/3-lg.PNG#lightbox)
 
 5. デプロイの **[概要]** を確認します。 必要に応じて、カスタマイズしたテンプレートとパラメーターをダウンロードし、**[OK]** をクリックします。
 
-   ![まとめ](media/azure-stack-tutorial-mysqlrp/createcluster4.png)
+   [![](media/azure-stack-tutorial-mysqlrp/4-sm.PNG "概要")](media/azure-stack-tutorial-mysqlrp/4-lg.PNG#lightbox)
 
 6. **[購入]** ページで **[作成]** をクリックしてデプロイを開始します。
 
-   ![購入](media/azure-stack-tutorial-mysqlrp/createcluster4.png)
+   ![購入](media/azure-stack-tutorial-mysqlrp/5.png)
 
     > [!NOTE]
     > デプロイには約 1 時間かかります。 続行する前に、デプロイが完了し、MySQL クラスターの構成が完了していることを確認してください。 
@@ -110,11 +109,11 @@ Azure Stack マーケットプレースに項目を追加する方法につい�
 
 1. 管理者ポータルで、MySQL クラスターのデプロイ時に作成されたリソース グループに移動し、ネットワーク セキュリティ グループ (**default-subnet-sg**) を選択します。
 
-   ![オープン](media/azure-stack-tutorial-mysqlrp/nsg1.png)
+   ![オープン](media/azure-stack-tutorial-mysqlrp/6.png)
 
 2. **[受信セキュリティ規則]**、**[追加]** の順に選択します。<br><br>**[宛先ポート範囲]** に「**3306**」と入力し、必要に応じて **[名前]** フィールドと **[説明]** フィールドに説明を入力します。 [追加] をクリックして受信セキュリティ規則ダイアログを閉じます。
 
-   ![オープン](media/azure-stack-tutorial-mysqlrp/nsg2.png)
+   ![オープン](media/azure-stack-tutorial-mysqlrp/7.png)
 
 ### <a name="configure-external-access-to-the-mysql-cluster"></a>MySQL クラスターへの外部アクセスを構成する
 MySQL クラスターを Azure Stack MySQL Server ホストとして追加する前に、外部アクセスを有効にする必要があります。
@@ -167,9 +166,8 @@ MySQL クラスターが Azure Stack Operator によって Azure StackSQL ホス
 > [!NOTE]
 > これらの手順は、MySQL Server 機能 (Microsoft.MySQLAdapter サービス) を提供するサブスクリプションを持つテナント ユーザーとして、Azure Stack ユーザー ポータルから実行します。
 
-1. ユーザー ポータルにサインインします。
-    - 統合システム デプロイの場合、ポータル アドレスはソリューションのリージョンと外部ドメイン名によって変わります。 形式は、 https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; です。
-    - Azure Stack Development Kit (ASDK) を使用している場合、ユーザー ポータル アドレスは [https://portal.local.azurestack.external](https://portal.local.azurestack.external) です。
+1. 
+[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. **\+[** **リソースの作成]** > **[データ \+ ストレージ]** の順に選択し、**[MySQL Database]** を選択します。<br><br>名前、照合順序、使用するサブスクリプション、デプロイに使用する場所などの必須のデータベースのプロパティを指定します。 
 

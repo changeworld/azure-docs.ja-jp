@@ -8,16 +8,16 @@ ms.date: 6/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: df1ca1358d1b111d8412d730575eb7bf66c8ebdf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 079a22ebaa7abfec7e8db142bc8f277ff12ab77e
+ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46950014"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49394971"
 ---
 # <a name="create-a-linux-iot-edge-device-that-acts-as-a-transparent-gateway"></a>透過的なゲートウェイとして動作する Linux IoT Edge デバイスを作成する
 
-この記事では、IoT Edge デバイスを透過的なゲートウェイとして使用する場合の詳細な手順について説明します。 以降、この記事に記載される "*IoT Edge ゲートウェイ*" という用語は、透過的なゲートウェイとして使われる IoT Edge デバイスを指します。 概念に関する詳細については、「[IoT Edge デバイスをゲートウェイとして使用する方法][lnk-edge-as-gateway]」をご覧ください。
+この記事では、IoT Edge デバイスを透過的なゲートウェイとして使用する場合の詳細な手順について説明します。 以降、この記事に記載される "*IoT Edge ゲートウェイ*" という用語は、透過的なゲートウェイとして使われる IoT Edge デバイスを指します。 詳細については、概念の概要ついて説明している「[IoT Edge デバイスをゲートウェイとして使用する方法](./iot-edge-as-gateway.md)」をご覧ください。
 
 >[!NOTE]
 >現時点では:
@@ -27,9 +27,9 @@ ms.locfileid: "46950014"
 
 透過的なゲートウェイの作成について困難な作業は、ゲートウェイをダウンストリーム デバイスに安全に接続することです。 Azure IoT Edge では、PKI インフラストラクチャを使用して、これらのデバイス間にセキュリティで保護された TLS 接続を設定することができます。 この場合、透過的なゲートウェイとして機能する IoT Edge デバイスにダウンストリーム デバイスが接続できるようにします。  合理的なセキュリティを維持するには、デバイスを自分のゲートウェイにのみ接続し、悪意のある可能性があるゲートウェイには接続しないようにする必要があるため、ダウンストリーム デバイスは Edge デバイスの ID を確認する必要があります。
 
-デバイス ゲートウェイ トポロジに必要な信頼を有効にする証明書インフラストラクチャを作成できます。 この記事では、[X.509 CA セキュリティ][lnk-iothub-x509]を IoT Hub で有効にするために使用するのと同じ証明書のセットアップが前提となっています。これには、特定の IoT ハブ (IoT ハブ所有者の CA) に関連付けられている X.509 CA 証明書、およびこの CA と Edge デバイスの CA で署名された一連の証明書が含まれます。
+デバイス ゲートウェイ トポロジに必要な信頼を有効にする証明書インフラストラクチャを作成できます。 この記事では、[X.509 CA セキュリティ](../iot-hub/iot-hub-x509ca-overview.md)を IoT Hub で有効にするために使用するのと同じ証明書のセットアップが前提となっています。これには、特定の IoT ハブ (IoT ハブ所有者の CA) に関連付けられている X.509 CA 証明書、およびこの CA と Edge デバイスの CA で署名された一連の証明書が含まれます。
 
-![ゲートウェイの設定][1]
+![ゲートウェイの設定](./media/how-to-create-transparent-gateway/gateway-setup.png)
 
 ゲートウェイは、接続の開始時に、ダウンストリーム デバイスに Edge デバイス CA 証明書を提示します。 ダウンストリーム デバイスは、Edge デバイス CA 証明書が、所有者 CA 証明書によって署名されていることを確認します。 このプロセスにより、ダウンストリーム デバイスは、ゲートウェイが信頼できるソースからのものであることを確認できます。
 
@@ -37,8 +37,8 @@ ms.locfileid: "46950014"
 
 ## <a name="prerequisites"></a>前提条件
 1.  透過的なゲートウェイとして使用する Linux デバイスに Azure IoT Edge ランタイムをインストールします。
-   * [Linux x64][lnk-install-linux-x64]
-   * [Linux ARM32][lnk-install-linux-arm]
+   * [Linux x64](./how-to-install-iot-edge-linux.md)
+   * [Linux ARM32](./how-to-install-iot-edge-linux-arm.md)
 
 2.  次のコマンドで、必要な非運用環境の証明書を生成するスクリプトを取得します。 これらのスクリプトでは、透過的なゲートウェイの設定に必要な証明書を作成できます。 
 
@@ -61,7 +61,7 @@ ms.locfileid: "46950014"
       ```
 
 ## <a name="certificate-creation"></a>証明書の作成
-1.  所有者 CA 証明書と 1 つの中間証明書を作成します。 これらはすべて `$WRKDIR` にあります。
+1.  所有者 CA 証明書と 1 つの中間証明書を作成します。 これらの証明書はすべて、`$WRKDIR` に配置されています。
 
    ```cmd
    ./certGen.sh create_root_and_intermediate
@@ -134,7 +134,7 @@ Azure IoT Edge の主要な機能の 1 つは、クラウドから IoT Edge デ�
 6. [Review template]\(テンプレートのレビュー\) ステップで、**[送信]** を選びます。
 
 ## <a name="installation-on-the-downstream-device"></a>ダウンストリーム デバイスへのインストール
-ダウンストリーム デバイスには、「[.NET を使用してデバイスを IoT Hub にデバイスを接続する][lnk-iothub-getstarted]」で説明されている単純なアプリケーションなど、[Azure IoT device SDK][lnk-devicesdk] を使用する任意のアプリケーションを指定できます。 ダウンストリーム デバイス アプリケーションは、ゲートウェイ デバイスへの TLS 接続を検証するために**所有者 CA** 証明書を信頼する必要があります。 この手順は通常、OS レベル、または (特定の言語の場合) アプリケーション レベルの 2 つの方法で実行できます。
+ダウンストリーム デバイスには、[.NET を使用した IoT Hub へのデバイス接続](../iot-hub/quickstart-send-telemetry-dotnet.md)に関するページで説明されている単純なアプリケーションなど、[Azure IoT device SDK](../iot-hub/iot-hub-devguide-sdks.md) を使用する任意のアプリケーションを指定できます。 ダウンストリーム デバイス アプリケーションは、ゲートウェイ デバイスへの TLS 接続を検証するために**所有者 CA** 証明書を信頼する必要があります。 この手順は通常、OS レベル、または (特定の言語の場合) アプリケーション レベルの 2 つの方法で実行できます。
 
 ### <a name="os-level"></a>OS レベル
 OS 証明書ストアにこの証明書をインストールすると、すべてのアプリケーションが所有者 CA 証明書を信頼された証明書として使用できます。
@@ -149,10 +149,10 @@ OS 証明書ストアにこの証明書をインストールすると、すべ�
     "Updating certificates in /etc/ssl/certs...1 added, 0 removed; done." (/etc/ssl/certs の証明書を更新しています... 1 個追加、0 個削除されました。完了しました) というメッセージが表示されます。
 
 * Windows - Windows ホストに CA 証明書をインストールする方法の例を次に示します。
-  * [スタート] メニューで、[コンピューター証明書の管理] を実行します。 `certlm` という名前のユーティリティが起動します。
-  * [証明書 - ローカル コンピューター] --> [信頼されたルート証明書] --> [証明書] --> 右クリック --> [すべてのタスク] --> [インポート] に移動して、証明書インポート ウィザードを起動します。
-  * 指示に従って次の手順を実行し、証明書ファイル $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem をインポートします。
-  * 完了すると、「正常にインポートされました」メッセージが表示されます。
+  1. [スタート] メニューで、[コンピューター証明書の管理] を実行します。 `certlm` という名前のユーティリティが起動します。
+  2. **[証明書 - ローカル コンピューター]** > **[信頼されたルート証明書]** > **[証明書]** の順に移動し、右クリックして **[すべてのタスク]** > **[インポート]** へ移動し、証明書インポート ウィザードを起動します。
+  3. 指示に従って次の手順を実行し、証明書ファイル $CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem をインポートします。
+  4. 完了すると、「正常にインポートされました」メッセージが表示されます。
 
 ### <a name="application-level"></a>アプリケーション レベル
 .NET アプリケーションの場合、次のスニペットを追加して PEM 形式の証明書を信頼することができます。 変数 `certPath` を `$CERTDIR/certs/azure-iot-test-only.root.ca.cert.pem` で初期化します。
@@ -169,7 +169,7 @@ OS 証明書ストアにこの証明書をインストールすると、すべ�
    ```
 
 ## <a name="connect-the-downstream-device-to-the-gateway"></a>ゲートウェイへのダウンストリーム デバイスの接続
-ゲートウェイ デバイスのホスト名を参照する接続文字列を使用して、IoT Hub デバイス SDK を初期化する必要があります。 これを行うには、`GatewayHostName` プロパティをデバイスの接続文字列を追加します。 デバイスの接続文字列の例を次に示します。これには `GatewayHostName` プロパティが追加されています。
+ゲートウェイ デバイスのホスト名を参照する接続文字列を使用して、IoT Hub device SDK を初期化します。 これを行うには、`GatewayHostName` プロパティをデバイスの接続文字列を追加します。 デバイスの接続文字列の例を次に示します。これには `GatewayHostName` プロパティが追加されています。
 
    ```
    HostName=yourHub.azure-devices.net;DeviceId=yourDevice;SharedAccessKey=XXXYYYZZZ=;GatewayHostName=mygateway.contoso.com
@@ -187,31 +187,9 @@ IoT Edge ランタイムでは、モジュールによって送信されたメ�
    { "routes":{ "sensorToAIInsightsInput1":"FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO BrokeredEndpoint(\"/modules/ai_insights/inputs/input1\")", "AIInsightsToIoTHub":"FROM /messages/modules/ai_insights/outputs/output1 INTO $upstream" } }
    ```
 
-メッセージ ルーティングについて詳しくは、[モジュールの構成に関する記事][lnk-module-composition]をご覧ください。
+メッセージ ルーティングについて詳しくは、[モジュールの構成に関する記事](./module-composition.md)をご覧ください。
 
-[!INCLUDE [](../../includes/iot-edge-extended-offline-preview.md)]
+[!INCLUDE [iot-edge-offline-preview](../../includes/iot-edge-extended-offline-preview.md)]
 
 ## <a name="next-steps"></a>次の手順
-[IoT Edge モジュールを開発するための要件と ツールについて理解します][lnk-module-dev]。
-
-<!-- Images -->
-[1]: ./media/how-to-create-transparent-gateway/gateway-setup.png
-
-<!-- Links -->
-[lnk-install-linux-x64]: ./how-to-install-iot-edge-linux.md
-[lnk-install-linux-arm]: ./how-to-install-iot-edge-linux-arm.md
-[lnk-module-composition]: ./module-composition.md
-[lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md
-[lnk-tutorial1-win]: tutorial-simulate-device-windows.md
-[lnk-tutorial1-lin]: tutorial-simulate-device-linux.md
-[lnk-edge-as-gateway]: ./iot-edge-as-gateway.md
-[lnk-module-dev]: module-development.md
-[lnk-iothub-getstarted]: ../iot-hub/quickstart-send-telemetry-dotnet.md
-[lnk-iothub-x509]: ../iot-hub/iot-hub-x509ca-overview.md
-[lnk-iothub-secure-deployment]: ../iot-hub/iot-hub-security-deployment.md
-[lnk-iothub-tokens]: ../iot-hub/iot-hub-devguide-security.md#security-tokens
-[lnk-iothub-throttles-quotas]: ../iot-hub/iot-hub-devguide-quotas-throttling.md
-[lnk-iothub-devicetwins]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-iothub-c2d]: ../iot-hub/iot-hub-devguide-messages-c2d.md
-[lnk-ca-scripts]: https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md
-[lnk-modbus-module]: https://github.com/Azure/iot-edge-modbus
+「[IoT Edge モジュールを開発するための要件と ツールについて理解する - プレビュー](module-development.md)」をご覧ください。

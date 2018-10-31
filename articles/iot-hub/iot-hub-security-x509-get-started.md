@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: dobett
-ms.openlocfilehash: 19f6f5d360981c743d819da81eb2f68db1853c8b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: f10f1da93df6a313525e102e4906cfe67a5f6ae3
+ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783119"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49351884"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub での X.509 セキュリティの設定
 
@@ -72,9 +72,9 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、[X.509 証明�
 
 ## <a name="create-an-x509-device-for-your-iot-hub"></a>IoT ハブの X.509 デバイスを作成する
 
-1. Azure Portal で、IoT ハブの **Device Explorer** に移動します。
+1. Azure Portal で、IoT ハブの **[エクスプローラー] > [IoT デバイス]** ページに移動します。
 
-2. **[追加]** をクリックして新しいデバイスを追加します。 
+2. **[+ 追加]** をクリックして新しいデバイスを追加します。
 
 3. **[デバイス ID]** にわかりやすい表示名を指定し、**[認証の種類]** として **_[X.509 CA Signed]\(X.509 CA 署名済み\)_** を選択します。 **[Save]** をクリックします。
 

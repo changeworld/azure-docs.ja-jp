@@ -12,34 +12,29 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2018
+ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: 6f95d8dc291911ac7506e33b80c2d71c8f50dfdc
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e826dcdbc6d32e6f0ad6ddf72a95869c96af6d69
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405633"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456526"
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>.NET Standard で Azure Event Hubs へのメッセージ送信を開始する
+Event Hubs は、接続されているデバイスとアプリケーションからの大量のイベント データ (テレメトリ) を処理するサービスです。 Event Hubs にデータを収集した後、ストレージ クラスターを使用してデータを格納したり、リアルタイムの分析プロバイダーを使用して転送できます。 この大規模なイベントの収集と処理の機能は、モノのインターネット (IoT) など最新アプリケーション アーキテクチャの重要なコンポーネントです。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
+
+このチュートリアルでは、.NET Core を使用し、C# で記述されたコンソール アプリケーションを使ってイベント ハブにイベントを送信する方法を示します。 
 
 > [!NOTE]
-> このサンプルは [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) で入手できます。
-
-このチュートリアルでは、イベント ハブに一連のメッセージを送信する .NET Core コンソール アプリケーションの記述方法を示します。 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) ソリューションをそのまま実行するには、`EventHubConnectionString` および `EventHubName` 文字列をイベント ハブの値に置き換えるか、 このチュートリアルの手順に従って独自のものを作成します。
+> このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
 
 ## <a name="prerequisites"></a>前提条件
-
 * [Microsoft Visual Studio 2015 または 2017](http://www.visualstudio.com)。 このチュートリアルの例では Visual Studio 2015 を使用しますが、Visual Studio 2017 もサポートされています。
-* [.NET Core Visual Studio 2015 または 2017 ツール](http://www.microsoft.com/net/core)。
-* Azure サブスクリプション。
-* [イベント ハブの名前空間とイベント ハブ](event-hubs-quickstart-portal.md)。
-
-このチュートリアルでは、イベント ハブにメッセージを送信するために、Visual Studio を使って C# コンソール アプリケーションを記述します。
+* [.NET Core Visual Studio 2015 または 2017 ツール](http://www.microsoft.com/net/core)。 
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
-
-名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-quickstart-portal.md)の手順を済ませた後、このチュートリアルに進みます。
+最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順を実行した後、このチュートリアルに示されている手順に進みます。
 
 ## <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
@@ -54,7 +49,7 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
 2. **[参照]** タブをクリックして、"Microsoft.Azure.EventHubs" を検索し、**Microsoft.Azure.EventHubs** パッケージを選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
 
-## <a name="write-some-code-to-send-messages-to-the-event-hub"></a>イベント ハブにメッセージを送信するコードの記述
+## <a name="write-code-to-send-messages-to-the-event-hub"></a>イベント ハブにメッセージを送信するコードの記述
 
 1. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
 
@@ -199,11 +194,6 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 お疲れさまでした。 メッセージをイベント ハブに送信しました。
 
 ## <a name="next-steps"></a>次の手順
-Event Hubs の詳細については、次のリンク先を参照してください。
-
-* [Event Hubs からイベントを受信する](event-hubs-dotnet-standard-getstarted-receive-eph.md)
-* [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-* [イベント ハブの作成](event-hubs-create.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+このクイック スタートでは、.NET Standard を使用してメッセージをイベント ハブに送信しました。 .NET Standard を使用してイベント ハブからイベントを受信する方法については、[.NET Standard を使用してイベント ハブからイベントを受信する方法](event-hubs-dotnet-standard-getstarted-receive-eph.md)に関するページを参照してください。
 
 [1]: ./media/event-hubs-dotnet-standard-getstarted-send/netcoresnd.png

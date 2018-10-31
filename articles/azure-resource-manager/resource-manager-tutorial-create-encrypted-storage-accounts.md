@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/07/2018
+ms.date: 10/18/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d48374d7919be3d141ea199e8238a220dbfe0332
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: a3fc3e0cc30b379c84ac0ba12f733d2db4e41587
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419527"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945792"
 ---
 # <a name="tutorial-create-an-azure-resource-manager-template-for-deploying-an-encrypted-storage-account"></a>チュートリアル: 暗号化されたストレージ アカウントをデプロイするための Azure Resource Manager テンプレートの作成
 
@@ -40,8 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* [Visual Studio Code](https://code.visualstudio.com/)。
-* Resource Manager ツール拡張機能。 インストールするには、[Resource Manager ツール拡張機能のインストール](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)に関するページをご覧ください。
+* [Visual Studio Code](https://code.visualstudio.com/) と [Resource Manager ツール拡張機能](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
@@ -56,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. **[開く]** を選択して、ファイルを開きます。
 4. **[ファイル]**>**[名前を付けて保存]** を選択し、ファイルを **azuredeploy.json** としてご自身のローカル コンピューターに保存します。
 
-## <a name="understand-the-format"></a>形式の理解
+## <a name="understand-the-schema"></a>スキーマの概要
 
 VS Code から、テンプレートをルート レベルに折りたたみます。 次の要素を含む最も単純な構造があります。
 
@@ -69,7 +68,7 @@ VS Code から、テンプレートをルート レベルに折りたたみま�
 * **resources**: リソース グループ内でデプロイまたは更新されるリソースの種類を指定します。
 * **outputs**: デプロイ後に返される値を指定します。
 
-## <a name="use-parameters-in-template"></a>テンプレートでのパラメーターの使用
+## <a name="use-parameters"></a>パラメーターを使用する
 
 特定の環境に合った値をパラメーターに渡すことで、デプロイをカスタマイズすることができます。 ストレージ アカウントの値を設定するときに、テンプレートで定義されているパラメーターを使用します。
 
@@ -90,7 +89,7 @@ resourceGroup() 関数は、現在のリソース グループを表すオブジ
 "name": "[parameters('storageAccountType')]"
 ```
 
-## <a name="use-variables-in-template"></a>テンプレートでの変数の使用
+## <a name="use-variables"></a>変数を使用する
 
 変数では、テンプレート内で使用できる値を作成できます。 変数は、テンプレートの複雑さを軽減するのに役立ちます。
 
@@ -117,9 +116,7 @@ resourceGroup() 関数は、現在のリソース グループを表すオブジ
 
     ![Resource Manager テンプレート参照ストレージ アカウント](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 
-    resource-manager-template-resources-reference-storage-accounts
-1. 暗号化関連の情報を調べます。  
-1. ストレージ アカウント リソース定義のプロパティ要素の内部に、次の json を追加します。
+4. 暗号化関連の定義情報を見つけます。  
 
     ```json
     "encryption": {
@@ -131,11 +128,9 @@ resourceGroup() 関数は、現在のリソース グループを表すオブジ
         }
     }
     ```
-    この部分により、BLOB ストレージ サービスの暗号化関数が有効になります。
-
-Visual Studio code で、最終的なリソース要素が次のようになるようにテンプレートを変更します。
-
-![Resource Manager テンプレートの暗号化されたストレージ アカウントの resources](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
+5. Visual Studio code で、最終的なリソース要素が次のようになるようにテンプレートを変更します。
+    
+    ![Resource Manager テンプレートの暗号化されたストレージ アカウントの resources](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-encrypted-storage-resources.png)
 
 ## <a name="deploy-the-template"></a>テンプレートのデプロイ
 

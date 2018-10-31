@@ -1,22 +1,23 @@
 ---
-title: 'クイック スタート: Cognitive Services Speech SDK を使用してブラウザーの JavaScript で音声を認識する'
-titleSuffix: Microsoft Cognitive Services
-description: Cognitive Services Speech SDK を使用してブラウザーの JavaScript で音声を認識する方法を学習します
+title: 'クイック スタート: JavaScript から Speech Service SDK を使用してブラウザーで音声を認識する'
+titleSuffix: Azure Cognitive Services
+description: JavaScript から Speech Service SDK を使用してブラウザーで音声を認識する方法について説明します
 services: cognitive-services
 author: fmegen
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: quickstart
 ms.date: 10/12/2018
 ms.author: fmegen
-ms.openlocfilehash: 2667d398141b53c87328eec7b608c4f613c15ea4
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: b01746c20dbef7726f129badac045c1fb440f602
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340275"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467465"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-cognitive-services-speech-sdk"></a>クイック スタート: Cognitive Services Speech SDK を使用してブラウザーの JavaScript で音声を認識する
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>クイック スタート: JavaScript から Speech Service SDK を使用してブラウザーで音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -25,7 +26,7 @@ ms.locfileid: "49340275"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Speech サービスのサブスクリプション キー。 [Speech サービスを無料で試す](get-started.md)ための記事を参照してください。
+* Speech サービスのサブスクリプション キー。 「[Speech サービスを無料で試す](get-started.md)」を参照してください。
 * 機能するマイクを備えた PC または Mac。
 * テキスト エディター。
 * 現在のバージョンの Chrome または Microsoft Edge。

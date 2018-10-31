@@ -1,22 +1,23 @@
 ---
-title: 'クイック スタート: Cognitive Services Speech SDK を使用して iOS 上で Objective-C で音声を認識する'
-titleSuffix: Microsoft Cognitive Services
-description: Cognitive Services Speech SDK を使用して iOS 上で Objective-C で音声を認識する方法について説明します
+title: 'クイック スタート: iOS で Objective-C と Speech Service SDK を使用して音声を認識する'
+titleSuffix: Azure Cognitive Services
+description: iOS で Objective-C と Speech Service SDK を使用して音声を認識する方法について説明します
 services: cognitive-services
 author: chlandsi
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
-ms.date: 09/24/2018
+ms.component: speech-service
+ms.topic: quickstart
+ms.date: 10/12/2018
 ms.author: chlandsi
-ms.openlocfilehash: 3945bf0ae6edc0af0db90efca6811aeb22494592
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 8d6ecf251bb816eb0f41352af7c9d086c4aad751
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883434"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469777"
 ---
-# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-cognitive-services-speech-sdk"></a>クイック スタート: Cognitive Services Speech SDK を使用して iOS 上で Objective-C で音声を認識する
+# <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-service-sdk"></a>クイック スタート: iOS で Objective-C と Speech Service SDK を使用して音声を認識する
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
@@ -24,18 +25,17 @@ ms.locfileid: "48883434"
 
 ## <a name="prerequisites"></a>前提条件
 
-* Speech サービスのサブスクリプション キー。 [Speech サービスを無料で試す](get-started.md)ための記事を参照してください。
+* Speech サービスのサブスクリプション キー。 「[Speech サービスを無料で試す](get-started.md)」を参照してください。
 * iOS 開発環境として Xcode 9.4.1 がインストールされている Mac。 このチュートリアルは iOS バージョン 11.4 を対象としています。 まだ Xcode をお持ちでない場合は、[App Store](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) からインストールできます。
 
 ## <a name="get-the-speech-sdk-for-ios"></a>iOS 用の Speech SDK を取得する
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Cognitive Services Speech SDK の現在のバージョンは `1.0.0` です。
+Cognitive Services Speech SDK の現在のバージョンは `1.0.1` です。
 
 Mac および iOS 用の Cognitive Services Speech SDK は、現在は Cocoa フレームワークとして配布されています。
 これは https://aka.ms/csspeech/iosbinary からダウンロードできます。 ファイルをホーム ディレクトリにダウンロードします。
-
 
 ## <a name="create-an-xcode-project"></a>Xcode プロジェクトの作成 
 
@@ -60,10 +60,9 @@ Xcode を起動し、**[File]** > **[New]** > **[Project]** の順にクリッ�
         1. ディレクトリ `$(SRCROOT)/..` を、**[Search Paths]** 見出しの下にある *[Framework Search Paths]* に追加します。
         ![[Framework Search Paths] の設定](media/sdk/qs-objectivec-framework-search-paths.png)
 
-
 ## <a name="set-up-the-ui"></a>UI の設定
 
-この例のアプリは、非常にシンプルな UI になります。ファイルの処理を開始するボタンと、結果を表示するテキスト ラベルです。
+このサンプル アプリの UI はごく単純なものです。音声認識を開始するためのボタンが 2 つ (ファイルから開始するためのボタンとマイク入力から開始するためのボタン) と、結果を表示するためのテキスト ラベルが 1 つあるだけです。
 UI はプロジェクトの `Main.storyboard` 部分に設定されます。
 プロジェクト ツリーの `Main.storyboard` エントリーを右クリックし、**[Open As...]** > **[Source Code]** の順に選択して、ストーリーボードの XML ビューを開きます。
 自動生成された XML をこれに置き換えます。
@@ -77,23 +76,25 @@ UI はプロジェクトの `Main.storyboard` 部分に設定されます。
 1. 次の操作によって、自動生成された `ViewController.m` ファイルの内容を置き換えます。
 
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
-1. マイクへのアクセスの要求を追加します。 プロジェクト ツリーの info.plist のエントリを右クリックし、**[Open As...]** > **[Source Code]** の順に選択します。 `<dict>` セクションに以下の行を追加してから、ファイルを保存します。
-    ```xml
-    <key>NSMicrophoneUsageDescription</key>
-
-    <string>Need microphone access for speech recognition from microphone.</string>
-    ```
 1. 文字列 `YourSubscriptionKey` をサブスクリプション キーに置き換えます。
 1. 文字列 `YourServiceRegion` を、サブスクリプションに関連付けられた[リージョン](regions.md) (たとえば、無料試用版サブスクリプションでは `westus`) に置き換えます。
-
+1. マイクへのアクセスの要求を追加します。 プロジェクト ツリーの `Info.plist` のエントリを右クリックし、**[Open As...]** > **[Source Code]** の順に選択します。 `<dict>` セクションに以下の行を追加してから、ファイルを保存します。
+    ```xml
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Need microphone access for speech recognition from microphone.</string>
+    ```
 
 ## <a name="building-and-running-the-sample"></a>サンプルのビルドと実行
 
 1. デバッグ出力が表示されるようにします (**[View]** > **[Debug Area]** > **[Activate Console]**)。
-1. コード例をビルドし、メニューから **[Product]** -> **[Run]** の順に選択するか、**[Play]** ボタンをクリックして、iOS シミュレーターで実行します。 iOS デバイスで実行する場合は、デバイスを開発用マシンに接続し、デバイスを実行のターゲットとして選択します。 現在、Speech SDK は、64 ビット iOS プラットフォームのみをサポートしています。
-1. アプリの "Recognize!" ボタンをクリックすると、 画面の下部に音声ファイルの内容である "What's the weather like?" が 表示されます。
+1. **[Product]\(製品\)** -> **[Destination]\(ターゲット\)** メニューの一覧から、お使いの開発マシンに接続された iOS デバイスまたは iOS シミュレーターをアプリのターゲットとして選択します。
+1. コード例をビルドし、メニューから **[Product]** -> **[Run]** の順に選択するか、**[Play]** ボタンをクリックして、iOS シミュレーターで実行します。
+現在、Speech SDK は、64 ビット iOS プラットフォームのみをサポートしています。
+1. アプリの [Recognize (File)]\(認識 (ファイル)\) ボタンをクリックすると、画面の下部にオーディオ ファイルの内容である "What's the weather like?" が表示されます。 表示されます。
 
  ![シミュレートされた iOS アプリ](media/sdk/qs-objectivec-simulated-app.png)
+
+1. アプリの [Recognize (Microphone)]\(認識 (マイク)\) ボタンをクリックして何か話すと、発話した内容のテキストが画面の下部に表示されます。
 
 [!INCLUDE [Download the sample](../../../includes/cognitive-services-speech-service-speech-sdk-sample-download-h2.md)]
 このサンプルは、`quickstart/objectivec-ios` フォルダーで探してください。
@@ -102,3 +103,4 @@ UI はプロジェクトの `Main.storyboard` 部分に設定されます。
 
 > [!div class="nextstepaction"]
 > [サンプルを入手する](speech-sdk.md#get-the-samples)
+

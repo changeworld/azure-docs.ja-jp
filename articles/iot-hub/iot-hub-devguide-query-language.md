@@ -2,22 +2,21 @@
 title: Azure IoT Hub クエリ言語について | Microsoft Docs
 description: 開発者ガイド - デバイス/モジュール ツインとジョブに関する情報を IoT Hub から取得するための、SQL のような IoT Hub クエリ言語の説明。
 author: fsautomata
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 2e4b356fec642e06e3223700967eeacd19f1c49c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f28a41f4a80806df14e314dae05405b7b45449b1
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952479"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49318250"
 ---
-# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティング向けの IoT Hub クエリ言語
+# <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>デバイス ツイン、モジュール ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語
 
-IoT Hub には SQL に似た強力な言語が備わっており、[デバイス ツイン][lnk-twins]や[ジョブ][lnk-jobs]、および[メッセージ ルーティング][lnk-devguide-messaging-routes]に関する情報を取得できます。 この記事で取り扱う内容は次のとおりです。
+IoT Hub には SQL に似た強力な言語が備わっており、[デバイス ツイン](iot-hub-devguide-device-twins.md)や[ジョブ](iot-hub-devguide-jobs.md)、および[メッセージ ルーティング](iot-hub-devguide-messages-d2c.md)に関する情報を取得できます。 この記事で取り扱う内容は次のとおりです。
 
 * IoT Hub のクエリ言語の主な機能の説明
 * 言語の詳しい説明 メッセージ ルーティングにおけるクエリ言語の詳細については、[メッセージ ルーティングでのクエリ](../iot-hub/iot-hub-devguide-routing-query-syntax.md)に関するページを参照してください。
@@ -25,7 +24,9 @@ IoT Hub には SQL に似た強力な言語が備わっており、[デバイス
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="device-and-module-twin-queries"></a>デバイス ツインとモジュール ツインのクエリ
-[デバイス ツイン][lnk-twins]とモジュール ツインには、任意の JSON オブジェクトをタグおよびプロパティとして含めることができます。 IoT Hub では、すべてのツイン情報を含む 1 つの JSON ドキュメントとしてデバイス ツインとモジュール ツインにクエリを実行できます。
+
+[デバイス ツイン](iot-hub-devguide-device-twins.md)とモジュール ツインには、任意の JSON オブジェクトをタグおよびプロパティとして含めることができます。 IoT Hub では、すべてのツイン情報を含む 1 つの JSON ドキュメントとしてデバイス ツインとモジュール ツインにクエリを実行できます。
+
 たとえば、IoT Hub のデバイス ツインに、次の構造があるとします (モジュール ツインも同様で、追加の moduleId があるだけです)。
 
 ```json
@@ -80,15 +81,14 @@ IoT Hub には SQL に似た強力な言語が備わっており、[デバイス
 
 ### <a name="device-twin-queries"></a>デバイス ツイン クエリ
 
-IoT Hub はデバイス ツインを **devices** という名前のドキュメント コレクションとして公開します。
-したがって、次のクエリでは、デバイス ツインのセット全体が取得されます。
+IoT Hub はデバイス ツインを **devices** という名前のドキュメント コレクションとして公開します。 たとえば、次のクエリでは、デバイス ツインのセット全体が取得されます。
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Azure IoT Hub SDK][lnk-hub-sdks] では、大量の結果をページングできます。
+> [Azure IoT SDK](iot-hub-devguide-sdks.md) では、大量の結果をページングできます。
 
 IoT Hub は、任意の条件でフィルター処理してデバイス ツインを取得できます。 たとえば、**location.region** タグが **US** に設定されているデバイス ツインを受け取るには、次のクエリを使います。
 
@@ -101,7 +101,7 @@ WHERE tags.location.region = 'US'
 
 ```sql
 SELECT * FROM devices
-WHERE tags.location.region = 'US'
+  WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
@@ -109,25 +109,25 @@ WHERE tags.location.region = 'US'
 
 ```sql
 SELECT * FROM devices
-WHERE properties.reported.connectivity IN ['wired', 'wifi']
+  WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
 特定のプロパティを含むすべてのデバイス ツインを識別する必要がある場合があります。 IoT Hub では、この目的で関数 `is_defined()` がサポートされています。 たとえば、`connectivity` プロパティが定義されているデバイス ツインを取得するには、次のクエリを使います。
 
 ```SQL
 SELECT * FROM devices
-WHERE is_defined(properties.reported.connectivity)
+  WHERE is_defined(properties.reported.connectivity)
 ```
 
-フィルター処理機能の詳細なリファレンスは、「[WHERE 句][lnk-query-where]」セクションをご覧ください。
+フィルター処理機能の完全なリファレンスは、「[WHERE 句](iot-hub-devguide-query-language.md#where-clause)」セクションをご覧ください。
 
 グループ化と集計もサポートされています。 たとえば、各テレメトリ構成状態のデバイスの数を調べるには、次のクエリを使います。
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
     COUNT() AS numberOfDevices
-FROM devices
-GROUP BY properties.reported.telemetryConfig.status
+  FROM devices
+  GROUP BY properties.reported.telemetryConfig.status
 ```
 
 このグループ化クエリは、次の例のような結果を返します。
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>モジュール ツイン クエリ
 
-モジュール ツインに対するクエリはデバイス ツインに対するクエリと似ていますが、("from devices" の代わりに) 異なるコレクション/名前空間を使用してクエリを実行できます
+モジュール ツインに対するクエリはデバイス ツインに対するクエリと似ていますが、("from devices" の代わりに) 異なるコレクション/名前空間を使用して、device.modules にクエリを実行できます。
 
 ```sql
 SELECT * FROM devices.modules
@@ -171,14 +171,18 @@ SELECT * FROM devices.modules
 Select * from devices.modules where properties.reported.status = 'scanning'
 ```
 
-このクエリでは、指定したデバイスのサブセット上のみでスキャン中状態のすべてのモジュール ツインが返されます。
+このクエリでは、スキャン中状態のすべてのモジュール ツインが返されますが、指定したデバイスのサブセット上のみです。
 
 ```sql
-Select * from devices.modules where properties.reported.status = 'scanning' and deviceId IN ('device1', 'device2')  
+Select * from devices.modules 
+  where properties.reported.status = 'scanning' 
+  and deviceId IN ['device1', 'device2']
 ```
 
 ### <a name="c-example"></a>C# の例
-クエリ機能は **RegistryManager** クラスの [C# service SDK][lnk-hub-sdks] で公開されます。
+
+クエリ機能は **RegistryManager** クラスの [C# サービス SDK](iot-hub-devguide-sdks.md) で公開されます。
+
 簡単なクエリの使用例を次に示します。
 
 ```csharp
@@ -198,7 +202,9 @@ while (query.HasMoreResults)
 query オブジェクトは、クエリに必要な逆シリアル化オプションに応じて、複数の **Next** 値を公開します。 たとえば、デバイス ツインまたはジョブ オブジェクト、プロジェクションを使用する場合のプレーンな JSON などです。
 
 ### <a name="nodejs-example"></a>Node.js の使用例
-クエリ機能は **Registry** オブジェクトの [Azure IoT service SDK for Node.js][lnk-hub-sdks] で公開されます。
+
+クエリ機能は **Registry** オブジェクトの [Azure IoT service SDK for Node.js](iot-hub-devguide-sdks.md) で公開されます。
+
 簡単なクエリの使用例を次に示します。
 
 ```nodejs
@@ -233,8 +239,7 @@ query オブジェクトは、クエリに必要な逆シリアル化オプシ�
 
 ## <a name="get-started-with-jobs-queries"></a>ジョブのクエリの概要
 
-[ジョブ][lnk-jobs]には、一連のデバイスで演算子を実行する機能が備わっています。 各デバイス ツインにはジョブに関する情報が含まれます。これは、**jobs**.という名前のコレクションの一部です。
-論理的には、次のようになります。
+[ジョブ](iot-hub-devguide-jobs.md)では、一連のデバイスで操作を実行する方法が提供されます。 各デバイス ツインにはジョブに関する情報が含まれます。これは、**jobs**.という名前のコレクションの一部です。
 
 ```json
 {
@@ -276,16 +281,18 @@ query オブジェクトは、クエリに必要な逆シリアル化オプシ�
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.deviceId = 'myDeviceId'
+  WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
 このクエリによって、返されたそれぞれのジョブのデバイス固有の状態 (および、ダイレクト メソッドの応答) がどのように適用されるのかをご確認ください。
+
 さらに、**devices.jobs** コレクションのオブジェクトのすべてのプロパティに対して任意のブール条件でフィルター処理をすることもできます。
+
 たとえば、特定のデバイスに対して 2016 年 9 月以降に作成されて完了したデバイス ツイン更新ジョブをすべて取得するには、次のクエリを使います。
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.deviceId = 'myDeviceId'
+  WHERE devices.jobs.deviceId = 'myDeviceId'
     AND devices.jobs.jobType = 'scheduleTwinUpdate'
     AND devices.jobs.status = 'completed'
     AND devices.jobs.createdTimeUtc > '2016-09-01'
@@ -295,10 +302,11 @@ WHERE devices.jobs.deviceId = 'myDeviceId'
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.jobId = 'myJobId'
+  WHERE devices.jobs.jobId = 'myJobId'
 ```
 
 ### <a name="limitations"></a>制限事項
+
 現在のところ、**devices.jobs** に対するクエリはサポートされていません。
 
 * プロジェクション。`SELECT *` のみ実行可能
@@ -306,24 +314,28 @@ WHERE devices.jobs.jobId = 'myJobId'
 * 集計の実行。カウント、平均、グループ化など
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT Hub クエリの基礎
+
 IoT Hub のすべてのクエリは、SELECT 句と FROM 句、およびオプションの WHERE 句と GROUP BY で構成されます。 各クエリは JSON ドキュメントのコレクション (デバイス ツインなど) で実行されます。 FROM 句は (**devices** や **devices.jobs**) で繰り返されるドキュメント コレクションを示します。 次に、WHERE 句でフィルター処理が適用されます。 集計により、この手順の結果は GROUP BY 句の指定に従ってグループ化されます。 グループごとに、SELECT 句で指定された行が生成されます。
 
 ```sql
 SELECT <select_list>
-FROM <from_specification>
-[WHERE <filter_condition>]
-[GROUP BY <group_specification>]
+  FROM <from_specification>
+  [WHERE <filter_condition>]
+  [GROUP BY <group_specification>]
 ```
 
 ## <a name="from-clause"></a>FROM 句
+
 **FROM <from_specification>** 句には、デバイス ツインのクエリを実行するための **FROM devices** とデバイスの詳細ごとにジョブのクエリを実行するための **FROM devices.jobs** の 2 つの値のみを使用できます。
+
 
 ## <a name="where-clause"></a>WHERE 句
 **WHERE <filter_condition>** 句はオプションです。 WHERE 句は、FROM コレクションの JSON ドキュメントを結果に含めるために満たす必要がある条件を指定します。 結果に含めるためには、指定された条件についてすべての JSON ドキュメントが "true" と評価される必要があります。
 
-使用できる条件は、「[式と条件][lnk-query-expressions]」セクションに記載されています。
+使用できる条件は、「[式と条件](iot-hub-devguide-query-language.md#expressions-and-conditions)」セクションに記載されています。
 
 ## <a name="select-clause"></a>SELECT 句
+
 **SELECT <select_list>** は必須であり、クエリで取得する値の種類を指定します。 これは、新しい JSON オブジェクトを生成するために使用する JSON 値を指定します。
 FROM コレクションのフィルター処理されたサブセット (さらにオプションでグループ化されたもの) の各要素に対して、プロジェクション フェーズでは新しい JSON オブジェクトが生成されます。 このオブジェクトは、SELECT 句で指定した値で構築されます。
 
@@ -349,7 +361,7 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**attribute_name** は、FROM コレクションの JSON ドキュメントのプロパティを参照します。 SELECT 句の例は、「[ツインのクエリの概要][lnk-query-getstarted]」セクションに記載されています。
+**attribute_name** は、FROM コレクションの JSON ドキュメントのプロパティを参照します。 SELECT 句の例は、[デバイス ツインのクエリの概要](iot-hub-devguide-query-language.md#get-started-with-device-twin-queries)に関するセクションに記載されています。
 
 現在のところ、**SELECT** * 以外の選択句は、デバイス ツインの集計クエリでのみサポートされています。
 
@@ -483,18 +495,5 @@ GROUP BY <group_by_element>
 | CONTAINS(x,y) | 1 つ目の文字列式に 2 つ目の文字列式が含まれているかどうかを示すブール値を返します。 |
 
 ## <a name="next-steps"></a>次の手順
-[Azure IoT Hub SDK][lnk-hub-sdks] を使用して、アプリでクエリを実行する方法を説明します。
 
-[lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
-[lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions
-[lnk-query-getstarted]: iot-hub-devguide-query-language.md#get-started-with-device-twin-queries
-
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-jobs]: iot-hub-devguide-jobs.md
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-d2c.md
-[lnk-devguide-messaging-format]: iot-hub-devguide-messages-construct.md
-
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
+[Azure IoT SDK](iot-hub-devguide-sdks.md) を使用して、アプリでクエリを実行する方法を説明します。

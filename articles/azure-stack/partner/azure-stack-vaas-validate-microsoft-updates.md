@@ -10,15 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: 6ef8c0486a694ac44c53375b24893812b10343e4
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 7fcc7d5a1d87fe93d32772dbbb84f1d3c91d5631
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158485"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648787"
 ---
 # <a name="validate-software-updates-from-microsoft"></a>Microsoft のソフトウェア更新プログラムの検証
 
@@ -26,38 +26,22 @@ ms.locfileid: "44158485"
 
 Microsoft は、Azure Stack ソフトウェアの更新プログラムを定期的にリリースします。 これらの更新プログラムは、Azure Stack の共同エンジニアリング パートナーが各自のソリューションを前提に検証し、Microsoft にフィードバックを送ることができるよう、公開前にこれらのパートナーに提供されます。
 
-## <a name="test-an-existing-solution"></a>既存のソリューションのテスト
+[!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
 
-1. [検証ポータル](https://azurestackvalidation.com)にサインインします。
+## <a name="apply-monthly-update"></a>毎月の更新プログラムの適用
 
-2. Microsoft の更新プログラムがデプロイされている既存のソリューションを選択し、**[パッケージの検証]** タイルの **[開始]** を選択します。
+[!INCLUDE [azure-stack-vaas-workflow-section_update-azs](includes/azure-stack-vaas-workflow-section_update-azs.md)]
 
-    ![パッケージの検証](media/image3.png)
+## <a name="create-a-workflow"></a>ワークフローを作成する
 
-3. 検証の名前を入力します。
+更新プログラムの検証では、**パッケージの検証**と同じワークフローを使用します。 「[パッケージの検証ワークフローの作成](azure-stack-vaas-validate-oem-package.md#create-a-package-validation-workflow)」の手順に従ってください。
 
-4. デプロイ時にソリューションにインストールされた OEM パッケージの URL を入力します。 Azure Blob service に格納されたパッケージの URL を使用してください。 詳細については、「[Create an Azure storage blob to store logs (ログを格納する Azure Storage Blob の作成)](azure-stack-vaas-set-up-account.md#create-an-azure-storage-blob-to-store-logs)」を参照してください。
+## <a name="run-tests"></a>テストの実行
 
-5. **[アップロード]** を選択して、デプロイ構成ファイルを追加します。 デプロイ構成ファイルのアップロードについては、[新しい Azure Stack ソリューションの検証](azure-stack-vaas-validate-solution-new.md)に関するページを参照してください。
+更新プログラムの検証では、**パッケージの検証**と同じワークフローを使用します。 [パッケージの検証テストの実行](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests)に関する説明の手順に従ってください。
 
-6. その後、適切な環境パラメーター ファイルでデプロイ構成ファイルをカスタマイズする必要があります。詳細については、「[Environment parameters (環境パラメーター)](azure-stack-vaas-parameters.md#environment-parameters)」を参照してください。
-
-    > [!Note]   
-    > デプロイ構成ファイルは、共通テスト パラメーターを追加することで、さらにカスタマイズすることができます。 詳細については、「[Workflow common parameters for Azure Stack validation as a service (Azure Stack のサービスとしての検証に使用されるワークフロー共通パラメーター)](azure-stack-vaas-parameters.md)」を参照してください。
-
-7. テナント ユーザー、サービス管理者、クラウド管理者のユーザー名とパスワードは、手動で入力する必要があります。
-
-8. 診断ログを格納する Azure Storage Blob の URL を指定します。 詳細については、「[Create an Azure storage blob to store logs (ログを格納する Azure Storage Blob の作成)](azure-stack-vaas-set-up-account.md#create-an-azure-storage-blob-to-store-logs)」を参照してください。
-
-    > [!Note]  
-    > ワークフローにラベルを付けるために、わかりやすいタグを入力できます。
-
-10. **[送信]** を選択してワークフローを保存します。
-
-ソリューションのワークフローは約 24 時間実行されます。 テストをスケジュールするためのリンクを追加するか、その手順を追加してください。 ツール内でクリアします。
-
-検証の実行に関する進行状況の監視について詳しくは、「[テストの監視](azure-stack-vaas-monitor-test.md)」をご覧ください。
+更新プログラムの検証のためにパッケージの署名を要求する必要はありません。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Stack のサービスとしての検証](https://docs.microsoft.com/azure/azure-stack/partner)について、さらに詳しい情報をご覧ください。
+- [VaaS ポータルでのテストの監視と管理](azure-stack-vaas-monitor-test.md)

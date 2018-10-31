@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 manager: kfile
-ms.openlocfilehash: 1e466b2945793f866aad4e6f0ace3d7379226830
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 15f465bf2aaf7c8b3a4a49819548c8db0b2ea014
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42023978"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958858"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>クイック スタート: Azure Portal を使用して Stream Analytics ジョブを作成する
 
@@ -179,7 +179,9 @@ Stream Analytics ジョブを定義する前に、ジョブへの入力として
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、単純な Stream Analytics ジョブを展開しました。 その他の入力ソースの構成やリアルタイム検出の実行について学習するには、次の記事に進んでください。
+このクイック スタートでは、Azure portal を使用して、簡単な Stream Analytics ジョブをデプロイしました。 [PowerShell](stream-analytics-quick-create-powershell.md) と [Visual Studio](stream-analytics-quick-create-vs.md) を使用して Stream Analytics ジョブをデプロイすることもできます。
+
+その他の入力ソースの構成やリアルタイム検出の実行について学習するには、次の記事に進んでください。
 
 > [!div class="nextstepaction"]
 > [Azure Stream Analytics を使用したリアルタイムの不正行為の検出](stream-analytics-real-time-fraud-detection.md)

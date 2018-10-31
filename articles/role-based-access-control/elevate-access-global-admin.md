@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/15/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fb0fb4e0f23413cb56b1bb5ec419c44dfc52e7b6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a2f66078a817f5e6ad7296df11634a1a6130a055
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996844"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49321667"
 ---
 # <a name="elevate-access-for-a-global-administrator-in-azure-active-directory"></a>Azure Active Directory の全体管理者のアクセス権を昇格する
 
@@ -31,29 +31,37 @@ Azure Active Directory (Azure AD) の[全体管理者](../active-directory/users
 - 組織内のすべての Azure サブスクリプションを表示する
 - オートメーション アプリ (請求書作成アプリや監査アプリなど) がすべての Azure サブスクリプションにアクセスできるようにする
 
-既定では、Azure AD の管理者ロールと Azure のロールベース アクセス制御 (RBAC) ロールは、Azure AD と Azure にまたがっていません。 ただし、Azure AD の全体管理者であれば、アクセス権を昇格して Azure のサブスクリプションと管理グループを管理することができます。 アクセス権を昇格すると、特定のテナント内のすべてのサブスクリプションに対して[ユーザー アクセス管理者](built-in-roles.md#user-access-administrator)ロール (RBAC ロール) が付与されます。 ユーザー アクセス管理者ロールを使用すると、ルート スコープ (`/`) の Azure リソースに対するアクセス権を他のユーザーに付与できます。
-
-この昇格は一時的なものにして、必要なときにのみ実行するようにしてください。
+この記事では、Azure AD でアクセス権を昇格させるさまざまな方法について説明します。
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
+
+## <a name="overview"></a>概要
+
+Azure AD と Azure リソースは互いに依存することなくセキュリティで保護されます。 つまり、Azure AD のロール割り当てによって Azure リソースにアクセス権が付与されることはなく、Azure のロール割り当てによって Azure AD にアクセス権が付与されることはありません。 ただし、Azure AD の全体管理者であれば、自分のディレクトリにあるすべての Azure サブスクリプションと管理グループに対するアクセス許可を自分に割り当てることができます。 仮想マシンやストレージ アカウントなど、Azure リソースへのアクセス許可が与えられていない場合、この機能を使用します。このようなリソースに対するアクセス権を得るには、全体管理者の特権を使用することをお勧めします。
+
+アクセス権を昇格させると、Azure のルート範囲 (`/`) で[ユーザー アクセスの管理者](built-in-roles.md#user-access-administrator)ロールが割り当てられます。 これにより、すべてのリソースを表示したり、ディレクトリにあるあらゆるサブスクリプションまたは管理グループでアクセス権を割り当てたりできます。 ユーザー アクセス管理者ロールの割り当ては PowerShell を使用して削除できます。
+
+昇格したこのアクセス権は、ルート範囲で必要な変更を行ったら削除してください。
+
+![アクセス権を昇格する](./media/elevate-access-global-admin/elevate-access.png)
 
 ## <a name="azure-portal"></a>Azure ポータル
 
 Azure portal を使用して全体管理者のアクセス権を昇格するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) または [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) または [Azure Active Directory 管理センター](https://aad.portal.azure.com)に全体管理者としてサインインします。
 
 1. ナビゲーション リストで **[Azure Active Directory]**、**[プロパティ]** の順にクリックします。
 
    ![Azure AD のプロパティ - スクリーンショット](./media/elevate-access-global-admin/aad-properties.png)
 
-1. **[全体管理者は、Azure サブスクリプションと管理グループを管理できます]** のスイッチを **[はい]** に設定します。
+1. **Azure リソースのアクセス管理**の下でスイッチを **[はい]** に設定します。
 
-   ![[全体管理者は、Azure サブスクリプションと管理グループを管理できます] - スクリーンショット](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
+   ![Azure リソースのアクセス管理 - スクリーンショット](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   スイッチを **[はい]** に設定すると、全体管理者アカウント (現在ログインしているユーザー) は、ルート スコープ (`/`) にある Azure RBAC のユーザー アクセス管理者ロールに追加されます。これで、Azure AD テナントに関連付けられているすべての Azure サブスクリプションについて表示およびレポートできるアクセス権が付与されます。
+   スイッチを **[はい]** に設定すると、Azure RBAC のルート範囲 (/) でユーザー アクセス管理者ロールが割り当てられます。 この割り当てにより、この Azure AD ディレクトリに関連付けられているすべての Azure サブスクリプションと管理グループでロールを割り当てるアクセス許可が付与されます。 このスイッチは、Azure AD で全体管理者ロールが割り当てられたユーザーのみ利用できます。
 
-   **[いいえ]** にスイッチを設定すると、全体管理者アカウント (現在ログインしているユーザー) は Azure RBAC のユーザー アクセス管理者ロールから削除されます。 Azure AD テナントに関連付けられているすべての Azure サブスクリプションは表示できません。アクセス権が付与されている Azure サブスクリプションのみを表示および管理できます。
+   スイッチを **[いいえ]** に設定すると、Azure RBAC のユーザー アクセス管理者ロールがユーザー アカウントから削除されます。 この Azure AD ディレクトリに関連付けられているすべての Azure サブスクリプションと管理グループでロールを割り当てることができなくなります。 自分にアクセス権が割り当てられている Azure サブスクリプションと管理グループのみを表示し、管理できます。
 
 1. **[保存]** をクリックして設定を保存します。
 
@@ -190,16 +198,16 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
 
     この場合の `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9` では、`name` パラメーターの ID を省略できます。
 
-2. また、テナント スコープでテナント管理者のロール割り当ての一覧を表示する必要もあります。 アクセス権の昇格呼び出しを行ったテナント管理者の `principalId` について、テナント スコープの割り当て一覧を表示します。 これにより、objectid についてテナントの割り当ての一覧が表示されます。
+2. また、ディレクトリ スコープでディレクトリ管理者のロール割り当ての一覧を表示する必要もあります。 アクセス権の昇格呼び出しを行ったディレクトリ管理者の `principalId` について、ディレクトリ スコープの割り当て一覧を表示します。 これにより、objectid についてディレクトリの割り当ての一覧が表示されます。
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
     
     >[!NOTE] 
-    >テナント管理者の割り当ては多くありません。前のクエリが返す割り当ての数が多すぎる場合は、テナント スコープ レベルのみで、すべての割り当てに対してクエリを実行し、結果をフィルターすることもできます。`GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >ディレクトリ管理者の割り当ては多くありません。前のクエリが返す割り当ての数が多すぎる場合は、ディレクトリ スコープ レベルのみで、すべての割り当てに対してクエリを実行し、結果をフィルター処理することもできます。`GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
         
-    2. 前の呼び出しは、ロール割り当ての一覧を返します。 スコープが `"/"` で、`roleDefinitionId` が手順 1 で見つかったロール名 ID で終了し、`principalId` がテナント管理者の objectId と一致する、ロール割り当てを検索します。 
+    2. 前の呼び出しは、ロール割り当ての一覧を返します。 スコープが `"/"` で、`roleDefinitionId` が手順 1 で見つかったロール名 ID で終了し、`principalId` がディレクトリ管理者の objectId と一致する、ロール割り当てを検索します。 
     
     サンプル ロールの割り当て
 
@@ -235,6 +243,5 @@ REST API を使用して全体管理者のアクセス権を昇格するには�
 
 ## <a name="next-steps"></a>次の手順
 
+- [各種ロールについて](rbac-and-directory-admin-roles.md)
 - [REST を使用したロールベースのアクセス制御](role-assignments-rest.md)
-- [Privileged Identity Management で Azure リソースへのアクセスを管理する](pim-azure-resource.md)
-- [条件付きアクセスを使用して Azure 管理へのアクセスを管理する](conditional-access-azure-management.md)

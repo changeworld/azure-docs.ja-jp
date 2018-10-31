@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 77e60fe39f7cbb985ee0e7ed2785805e80c389ae
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 641081e4a01aa5810d569795c10e967e4b46568e
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341142"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023579"
 ---
 # <a name="what-is-translator-speech-api"></a>Translator Speech API とは
 
@@ -34,7 +34,7 @@ Translator Speech サービスでは、無音の検出を利用して発話の�
 Translator Speech API では、WebSocket プロトコルを使用して、クライアントとサーバーの間に全二重通信チャネルを提供します。 
 
 ## <a name="about-microsoft-translator"></a>Microsoft Translator について
-Microsoft Translator は、クラウドベースの機械翻訳サービスです。 このサービスの中核にあるのは、さまざまな Microsoft 製品やサービスを動かしていて、コンテンツを世界中のユーザーに届けられるように、世界中に広がる数千の企業のアプリケーションとワークフローで使用されている [Translator Text API] (https://www.microsoft.com/en-us/translator/translatorapi.aspx) と Translator Speech API です。
+Microsoft Translator は、クラウドベースの機械翻訳サービスです。 このサービスの中核にあるのは、さまざまな Microsoft 製品やサービスの機能を強化し、世界中の数千の企業によってコンテンツを世界中のユーザーに届けるためにアプリケーションとワークフローで使用されている [Translator Text API](https://www.microsoft.com/en-us/translator/translatorapi.aspx) と Translator Speech API です。
 
 Microsoft Translator サービスの詳細については、[こちら](https://www.microsoft.com/en-us/translator/home.aspx)を参照してください
 

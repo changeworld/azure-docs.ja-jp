@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: 翻訳の代替候補を探す - Translator Text、Ruby'
+title: 'クイック スタート: 翻訳の代替候補を探す、Ruby - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Translator Text API と Ruby を使って、文脈中における用語の例と翻訳の代替候補を探します。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/22/2018
-ms.author: nolachar
-ms.openlocfilehash: 7cd34e3482df666de8b974380302ee6b4c592496
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: c9e33fd4be80c8bb95248e8be34f9540d9cd69ea
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46122809"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649620"
 ---
-# <a name="quickstart-find-alternate-translations-and-usage-with-ruby"></a>クイック スタート: Ruby を使って翻訳の代替候補と用法を探す
+# <a name="quickstart-find-alternate-translations-with-the-translator-text-rest-api-ruby"></a>クイック スタート: Translator Text REST API を使用して翻訳の代替候補を探す (Ruby)
 
 このクイック スタートでは、Translator Text API を使って、特定の用語の翻訳について考えられる代替候補の情報とそれらの代替候補の用例を探します。
 

@@ -11,12 +11,12 @@ ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 10/15/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: b9b515a2ccaedc40fc531d6a1cc58cbe98212b4a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c5f7b8b98f97e020b4f6fb4b125d444df87f8d5a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967899"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025754"
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>チュートリアル: コマンド ライン インターフェイスを使用して Iris を分類する
 
@@ -143,13 +143,13 @@ $ az ml project create --name <project name> --workspace <workspace name> --acco
 ```
 
 ### <a name="create-a-new-project-associated-with-a-cloud-git-repository"></a>クラウド Git リポジトリに関連付けられた新しいプロジェクトを作成する
-Azure DevOps Git リポジトリに関連付けられた新しいプロジェクトを作成できます。 実験を送信するたびに、プロジェクト フォルダー全体のスナップショットがリモートの Git リポジトリにコミットされます。 詳しくは、「[Azure Machine Learning Workbench プロジェクトでの Git リポジトリの使用](using-git-ml-project.md)」をご覧ください。
+Azure Repos の Git リポジトリに関連付けられた新しいプロジェクトを作成できます。 実験を送信するたびに、プロジェクト フォルダー全体のスナップショットがリモートの Git リポジトリにコミットされます。 詳しくは、「[Azure Machine Learning Workbench プロジェクトでの Git リポジトリの使用](using-git-ml-project.md)」をご覧ください。
 
 > [!NOTE]
-> Azure Machine Learning は、Azure DevOps で作成された空の Git リポジトリのみをサポートしています。
+> Azure Machine Learning は、Azure Repos で作成された空の Git リポジトリのみをサポートしています。
 
 ```azure-cli
-$ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <VSTS repo URL>
+$ az ml project create --name <project name> --workspace <workspace name> --account <experimentation account name> --resource-group <resource group name> --path <local folder path> --repo <repo URL>
 ```
 > [!TIP]
 > "Repository url might be invalid or user might not have access" (リポジトリの URL が正しくないか、ユーザーにアクセス権がない可能性があります) というエラーが発生する場合は、Azure DevOps でセキュリティ トークンを作成し (_[セキュリティ]_ の _[Add personal access tokens]\(個人用アクセス トークンを追加\)_ メニュー)、プロジェクトを作成するときに `--vststoken` 引数を使うことができます。 

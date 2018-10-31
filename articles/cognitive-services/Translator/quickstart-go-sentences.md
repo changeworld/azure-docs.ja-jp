@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: 文の長さを取得する - Translator Text、Go'
+title: 'クイック スタート: 文の長さを取得する (Go) - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Go で Translator Text API を使ってテキストに含まれる文の長さを調べます。
 services: cognitive-services
 author: noellelacharite
-manager: cgronlun
+manager: erhopf
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: 34b30179d674a42f6c9c2c358c0feb6e083089f6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 92ea2291760edf16863dc58a00bac4389f818e72
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129456"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49644926"
 ---
-# <a name="quickstart-get-sentence-lengths-with-go"></a>クイック スタート: 文の長さを Go で取得する
+# <a name="quickstart-get-sentence-lengths-with-the-translator-text-rest-api-go"></a>クイック スタート: Translator Text REST API を使用して文の長さを取得する (Go)
 
 このクイック スタートでは、Translator Text API を使って、テキストに含まれる文の長さを調べます。
 

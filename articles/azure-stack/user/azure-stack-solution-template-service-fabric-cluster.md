@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: mattbriggs
+ms.date: 10/22/2018
+ms.author: mabrigg
 ms.reviewer: shnatara
-ms.openlocfilehash: d402b2bcd5187cbb6ece78d7e981068c279c1f75
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 0b5f7442604dd31f730b0105d19231407e2b6f1a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804431"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49946115"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Service Fabric クラスターを Azure Stack にデプロイする
 
@@ -48,7 +48,7 @@ Service Fabric クラスターをデプロイするには、次のものが必�
 
 
 ## <a name="add-a-secret-to-key-vault"></a>Key Vault にシークレットを追加する
-Service Fabric クラスターをデプロイするには、Service Fabric クラスターの正しい KeyVault *Secret Identifier* または URL を指定する必要があります。 Azure Resource Manager テンプレートは、Service Fabric クラスターのインストール時に、KeyVault を入力として受け取ってクラスター証明書を取得します。 
+Service Fabric クラスターをデプロイするには、Service Fabric クラスターの正しい KeyVault *Secret Identifier* または URL を指定する必要があります。 Azure Resource Manager テンプレートは、入力として KeyVault を受け取ります。 その後、テンプレートは、Service Fabric クラスターをインストールするときに、クラスター証明書を取得します。
 
 > [!IMPORTANT]  
 > Service Fabric で使用するシークレットは、PowerShell を使用して KeyVault に追加する必要があります。 ポータルは使用しないでください。  

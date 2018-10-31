@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 96ed5c17501aeb195ee584ce6d41a84fc2118bac
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 5bb840be119f5eac380c44e2cf45b3f73a9d981e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376654"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49985711"
 ---
 # <a name="tutorial-analyze-videos-with-azure-media-services"></a>チュートリアル: Azure Media Services を使用してビデオを分析する 
 
@@ -33,9 +33,6 @@ ms.locfileid: "49376654"
 > * アプリの実行
 > * 出力を調べる
 > * リソースのクリーンアップ
-
-> [!Note]
-> Azure portal を使用し、「[メディア処理のスケール設定の概要](../previous/media-services-scale-media-processing-overview.md)」の説明に従って、Media Services アカウントを 10 個の S3 メディア占有ユニットに設定します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -71,6 +68,9 @@ Visual Studio がインストールされていない場合は、[Visual Studio 
 4. ジョブを送信します。
 5. ジョブの状態を確認します。
 6. ジョブの実行から生成されるファイルをダウンロードします。 
+
+> [!NOTE]
+> ビデオ アナライザーまたはオーディオ アナライザーのプリセットを使用する場合は、Azure portal を使用して、10 個の S3 メディア占有ユニットを備えるようアカウントを設定します。 詳細については、[メディア処理のスケーリング](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。
 
 ### <a name="start-using-media-services-apis-with-net-sdk"></a>.NET SDK で Media Services API の使用を開始する
 

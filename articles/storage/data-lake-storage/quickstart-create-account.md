@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 4c3354786d7320caee0dfe2f0eca44909d77f2fe
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 2dae7938c63ee141ea6705ab4c324882f575e298
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386853"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426874"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-preview-storage-account"></a>クイック スタート: Azure Data Lake Storage Gen2 プレビュー ストレージ アカウントを作成する
 
@@ -87,7 +87,7 @@ Azure Portal でリソース グループを作成するには、次の手順に
 Azure Portal で汎用 v2 ストレージ アカウントを作成するには、次の手順に従います。
 
 > [!NOTE]
-> 階層型名前空間は、米国東部、米国東部 2、米国西部、米国西部 2、米国中西部、北ヨーロッパ、西ヨーロッパ、東南アジア、オーストラリア東部でのみ有効です。 ストレージ アカウントを作成するとき、これらの場所のいずれかが指定されていることを確認してください。
+> 階層型名前空間は現在、すべてのパブリック リージョンで利用できますが、プライベート リージョンでは利用できません。 現在ソブリン クラウドでは利用できません。
 
 1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、**[すべてのサービス]** を選択します。 次に、下へスクロールして **[ストレージ]** の **[ストレージ アカウント]** を選択します。 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
 2. ストレージ アカウントの名前を入力します。
@@ -135,7 +135,7 @@ PowerShell を使用して Data Lake Storage Gen2 と対話するには、お使
 PowerShell で新しいリソース グループを作成するには、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドを使用します。 
 
 > [!NOTE]
-> 階層型名前空間は、米国東部、米国東部 2、米国西部、米国西部 2、米国中西部、北ヨーロッパ、西ヨーロッパ、東南アジア、オーストラリア東部でのみ有効です。 ストレージ アカウントを作成するとき、これらの場所のいずれかが指定されていることを確認してください。
+> > 階層型名前空間は現在、すべてのパブリック リージョンで利用できますが、プライベート リージョンでは利用できません。 現在ソブリン クラウドでは利用できません。
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -196,7 +196,7 @@ az group create \
 ```
 
 > [!NOTE]
-> 階層型名前空間は、米国東部、米国東部 2、米国西部、米国西部 2、米国中西部、北ヨーロッパ、西ヨーロッパ、東南アジア、オーストラリア東部でのみ有効です。 ストレージ アカウントを作成するとき、これらの場所のいずれかが指定されていることを確認してください。
+> > 階層型名前空間は現在、すべてのパブリック リージョンで利用できますが、プライベート リージョンでは利用できません。 現在ソブリン クラウドでは利用できません。
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>汎用 v2 ストレージ アカウントを作成する
 

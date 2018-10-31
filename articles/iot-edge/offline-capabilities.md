@@ -8,12 +8,12 @@ ms.date: 09/20/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f4afad753da4a314ade3fb7433c6be3e489e05b0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 30b85f15d8718e21af66634db5a4afd5623a77e6
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033687"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49340173"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について理解する (プレビュー)
 
@@ -126,11 +126,11 @@ Edge ハブ モジュールの環境変数および作成オプションは、Az
     "type": "docker",
     "settings": {
         "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"Binds\":[\"C:\\\\HostStoragePath:C:\\\\ModuleStoragePath\"],\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
+        "createOptions": "{\"HostConfig\":{\"Binds\":[\"<HostStoragePath>:<ModuleStoragePath>\"],\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
     },
     "env": {
         "storageFolder": {
-            "value": "C:\\\\ModuleStoragePath"
+            "value": "<ModuleStoragePath>"
         }
     },
     "status": "running",
@@ -138,6 +138,8 @@ Edge ハブ モジュールの環境変数および作成オプションは、Az
 }
 ```
 
+`<HostStoragePath>` と `<ModuleStoragePath>` は、ご利用のホストとモジュールのストレージ パスに置き換えます。ホストとモジュールの両方のストレージ パスは絶対パスである必要があります。  たとえば、`\"Binds\":[\"/etc/iotedge/storage/:/iotedge/storage/"` は、ホスト パス `/etc/iotedge/storage` がコンテナー パス `/iotedge/storage/` にマップされることを意味します。  createOptions の詳細は、[Docker ドキュメント](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate)でも確認できます。
+
 ## <a name="next-steps"></a>次の手順
 
-[Linux](how-to-create-transparent-gateway-linux.md) デバイスまたは [Windows](how-to-create-transparent-gateway-windows.md) デバイスの透過的なゲートウェイ シナリオで、拡張オフライン操作を有効にします。 
+[Linux](how-to-create-transparent-gateway-linux.md) デバイスまたは [Windows](how-to-create-transparent-gateway-windows.md) デバイスの透過的なゲートウェイ シナリオで、拡張オフライン操作を有効にします。

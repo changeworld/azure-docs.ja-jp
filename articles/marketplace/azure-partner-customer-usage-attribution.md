@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 10/15/2018
 ms.author: yijenj
-ms.openlocfilehash: 99df133b9f626f970189df578c6d107086b9dab9
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: a0b3c220a1cd857bc8bea0eb5ab41625845fcc5d
+ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855002"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49365627"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure パートナーの顧客の使用状況の属性
 
@@ -44,7 +44,7 @@ Microsoft パートナーは、顧客に代わって、プロビジョニング�
 
 グローバル一意識別子 (GUID) を追加するには、メイン テンプレート ファイルを 1 か所変更します。
 
-1. GUID を作成します (例: eb7927c8-dd66-43e1-b0cf-c346a422063)。
+1. [GUID を作成](#create-guids)し (例: eb7927c8-dd66-43e1-b0cf-c346a422063)、[GUID を登録](#register-guids-and-offers)します。
 
 1. Resource Manager テンプレートを開きます。
 
@@ -55,6 +55,8 @@ Microsoft パートナーは、顧客に代わって、プロビジョニング�
 1. テンプレートにエラーがないかチェックします。
 
 1. 適切なリポジトリにテンプレートを再発行します。
+
+1. [テンプレートのデプロイで GUID の成功を確認します](#verify-the-guid-deployment)。
 
 ### <a name="sample-template-code"></a>サンプル テンプレートのコード
 
@@ -99,6 +101,24 @@ Azure CLI を使用して GUID を追加するときは、**AZURE_HTTP_USER_AGEN
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
+
+## <a name="create-guids"></a>GUID の作成
+
+GUID は、32 桁の16 進数から成る一意の参照番号です。 追跡に使用する GUID を作成するには、GUID ジェネレーターの使用をお勧めします。 [Azure Storage の GUID ジェネレーター フォーム](https://aka.ms/StoragePartners)を使用することをお勧めします。 ただし、Azure Storage の GUID ジェネレーターを使用したくない場合は、複数の[オンライン GUID ジェネレーター](https://www.bing.com/search?q=guid%20generator)を使用できます。
+
+> [!Note]
+> [Azure Storage の GUID ジェネレーター フォーム](https://aka.ms/StoragePartners)を使用して GUID を作成することを強くお勧めします。 詳細については、[FAQ](#faq) をご覧ください。
+
+プランと配布チャネルごとに一意の GUID を作成します。 テンプレートを使用してデプロイする 2 つのソリューションを、Azure Marketplace と GitHub で公開する場合、4 つの GUID を作成する必要があります。
+
+*   A を Marketplace に提供 
+*   A を GitHub に提供
+*   B を Marketplace に提供 
+*   B を GitHub に提供
+
+レポートは、パートナー値 (Microsoft パートナー ID) と GUID によって行われます。 
+
+SKU など、さらに細かな粒度で GUID を追跡することもできます。この場合、SKU がプランと同様の位置付けになります。
 
 ## <a name="register-guids-and-offers"></a>GUID とプランの登録
 
@@ -183,21 +203,6 @@ foreach ($deployment in $deployments){
 }
 ```
 
-## <a name="create-guids"></a>GUID の作成
-
-GUID は、32 桁の16 進数から成る一意の参照番号です。 追跡に使用する GUID を作成するには、GUID ジェネレーターの使用をお勧めします。 使用可能な複数の[オンライン GUID ジェネレーター](https://www.bing.com/search?q=guid%20generator&qs=n&form=QBRE&sp=-1&ghc=2&pq=guid%20g&sc=8-6&sk=&cvid=0BAFAFCD70B34E4296BB97FBFA3E1B4E)があります。
-
-プランと配布チャネルごとに一意の GUID を作成します。 テンプレートを使用してデプロイする 2 つのソリューションを、Azure Marketplace と GitHub で公開する場合、4 つの GUID を作成する必要があります。
-
-*   A を Marketplace に提供 
-*   A を GitHub に提供
-*   B を Marketplace に提供 
-*   B を GitHub に提供
-
-レポートは、パートナー値 (Microsoft パートナー ID) と GUID によって行われます。 
-
-SKU など、さらに細かな粒度で GUID を追跡することもできます。この場合、SKU がプランと同様の位置付けになります。
-
 ## <a name="notify-your-customers"></a>顧客に通知する
 
 パートナーはその顧客に対し、リソース マネージャーの GUID 追跡を使ったデプロイについて伝える必要があります。 そうしたデプロイに関連付けられた Azure 使用状況は、Microsoft からパートナーに報告されます。 以降の例では、そうしたデプロイについて顧客に通知する際にご利用いただける内容を取り上げています。 それぞれの例にある \<PARTNER> は貴社の名前に置き換えてください。 パートナーは、通知が自社のデータ プライバシー ポリシーおよびデータ収集ポリシーに矛盾しないことを確認する必要があります。この確認は、顧客を追跡の対象から除外するオプションについても行う必要があります。 
@@ -275,3 +280,7 @@ Microsoft はパートナーに対し、そのテンプレートの顧客デプ�
 **この追跡方法は Digital Partner of Record (DPOR) に似ていますか?**
 
 デプロイと使用状況をパートナーのソリューションに結び付けるこの新しい方法は、パートナーのソリューションを Azure の使用状況にリンクするメカニズムを提供します。 DPOR が目的とするのは、コンサルティング (システム インテグレーター) または管理 (マネージド サービス プロバイダー) パートナーを顧客の Azure サブスクリプションに関連付けることです。   
+
+**Azure Storage の GUID ジェネレーター フォームを使用するメリットは何ですか?**
+
+Azure Storage の GUID ジェネレーター フォームでは、必要な形式の GUID が生成されることが保証されます。 さらに、Azure Storage のデータ プレーン追跡方法のいずれかを使用している場合は、同じ GUID を Marketplace のコントロール プレーンの追跡に利用できます。 これにより、別の GUID を維持することなく、パートナーの属性に単一の統一 GUID を活用できます。

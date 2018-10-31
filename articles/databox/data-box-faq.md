@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 5a95675d5e37adec5fb1f1542daad329484a2a4c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 1d38b563e2a272acdbaa4ea0c2a169a04e798d12
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092612"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649399"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: よく寄せられる質問
 
@@ -217,7 +217,7 @@ A.  Azure へのデータ コピーが完了すると、NIST SP 800-88 リビジ
 ## <a name="audit-report"></a>監査レポート
 
 ### <a name="how-does-azure-data-box-service-help-support-customers-chain-of-custody-procedure"></a>Azure Data Box サービスでは、生産物流管理の手順をどのように支援して顧客をサポートしますか?
-A.  Azure Data Box サービスでは、生産物流管理のドキュメントのために使用できるレポートを以前から提供しています。 Azure では、監査ログとコピー ログがストレージ アカウントで利用できます。注文が完了した後では、Azure portal で注文履歴を注文にダウンロードできます。
+A.  Azure Data Box サービスでは、生産物流管理のドキュメントのために使用できるレポートを以前から提供しています。 Azure では、監査ログとコピー ログがストレージ アカウントで利用できます。注文が完了した後では、Azure portal で[注文履歴をダウンロード](data-box-portal-admin.md#download-order-history)できます。
 
 
 ### <a name="what-type-of-reporting-is-available-to-support-chain-of-custody"></a>生産物流管理をサポートするために、どのようなレポートが利用できますか?
@@ -230,7 +230,7 @@ A.  生産物流管理をサポートするために、次のレポートが利�
 - データが Azure ストレージ アカウントにコピーされた後での、Data Box デバイスのサニタイズ (NIST 800 88R1 規格に準拠)。
 
 ### <a name="are-the-carrier-tracking-logs--from-upsdhl-available"></a>運送業者の追跡ログは (UPS/DHL から) 利用できますか? 
-A.  運送業者の追跡ログは、Data Box の監査ログ レポートに取り込まれます。 このレポートは、デバイスが Azure データセンターに返却され、デバイス ディスク上のデータがクリーン アップされた後に利用できます。 すぐに必要な場合は、注文追跡番号で運送業者の Web サイトに直接アクセスすれば、追跡情報を入手することもできます。
+A.  運送業者の追跡ログは、Data Box の注文履歴に取り込まれます。 このレポートは、デバイスが Azure データセンターに返却され、デバイス ディスク上のデータがクリーン アップされた後に利用できます。 すぐに必要な場合は、注文追跡番号で運送業者の Web サイトに直接アクセスすれば、追跡情報を入手することもできます。
 
 ### <a name="can-i-transport-the-data-box-to-azure-datacenter"></a>Data Box  を Azure データセンターに移送できますか? 
 A.  いいえ。 現在のところ、Azure データセンターでは、顧客または UPS/DHL 以外の運送業者からの Data Box の配送を受け付けていません。

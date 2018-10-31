@@ -8,24 +8,24 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/23/2018
-ms.openlocfilehash: 508274d11a9693d28a9b3a01bd6ebbd7198e8711
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: b549aeaf24bd774245ee1f2ff6924ac1f6dbeee3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586702"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427898"
 ---
-# <a name="create-and-configure-an-azure-database-for-mysql-server-using-ansible-preview"></a>Ansible (プレビュー) を使用した Azure Database for MySQL サーバーの作成と構成
-[Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) は、高可用な MySQL データベースをクラウドで実行し、管理し、スケーリングするために使用されるマネージド サービスです。 このクイック スタートでは、Azure Portal を使用して 5 分で Azure Database for MySQL サーバーを作成する方法を説明します。 
+# <a name="create-and-configure-an-azure-database-for-mysql-server-by-using-ansible-preview"></a>Ansible (プレビュー) を使用した Azure Database for MySQL サーバーの作成と構成
+[Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/) は、高可用な MySQL データベースをクラウドで実行し、管理し、スケーリングするために使用されるマネージド サービスです。 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 
 
-Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 この記事では、Ansible を使用して、Azure Database for MySQL サーバーを作成し、そのファイアウォール規則を 5 分以内に構成する方法を示します。 
+このクイック スタートでは、Ansible を使用して、Azure Database for MySQL サーバーを作成し、そのファイアウォール規則を構成する方法を示します。 これらのタスクは、Azure portal を使用して 5 分程度で完了できます。
 
 ## <a name="prerequisites"></a>前提条件
 - **Azure サブスクリプション** - Azure サブスクリプションをお持ちでない場合は、開始する前に[無料のアカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を作成してください。
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> このチュートリアルでは、次のサンプルのプレイブックを実行するのに Ansible 2.7 が必要です。 `sudo pip install ansible[azure]==2.7.0rc2` を実行すれば、 Ansible 2.7 RC バージョンをインストールすることができます。 Ansible 2.7 は 2018 年 10 月にリリースされます。 その後、既定のバージョンは 2.7 になるため、ここでバージョンを指定する必要があります。
+> このチュートリアルでは、次のサンプルのプレイブックを実行するのに Ansible 2.7 が必要です。 `sudo pip install ansible[azure]==2.7.0rc2` を実行すれば、Ansible 2.7 RC バージョンをインストールすることができます。 Ansible 2.7 のリリース後は、既定のバージョンが 2.7 になるため、ここでバージョンを指定する必要はありません。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。  
@@ -44,15 +44,15 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
         location: "{{ location }}"
 ```
 
-上記のプレイブックを *rg.yml* として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
+前述のプレイブックを **rg.yml** として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
 ```bash
 ansible-playbook rg.yml
 ```
 
-## <a name="create-mysql-server-and-database"></a>MySQL サーバーとデータベースの作成
-次の例では、**mysqlserveransible** という名前の MySQL サーバーと、**mysqldbansible** という名前の Azure Database for MySQL を作成します。 これは、1 つの仮想コアを備えた Gen 5 Basic Purpose サーバーです。 **mysqlserver_name** の値は固有でなければならないことに注意してください。リージョンごとおよびレベルごとに有効な値を理解するには、「[価格レベルのドキュメント](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers)」を参照してください。 
+## <a name="create-a-mysql-server-and-database"></a>MySQL サーバーとデータベースの作成
+次の例では、**mysqlserveransible** という名前の MySQL サーバーと、**mysqldbansible** という名前の Azure Database for MySQL インスタンスを作成します。 これは、1 つの仮想コアを備えた Gen 5 Basic Purpose サーバーです。 
 
-独自の `<server_admin_password>` を入力します。
+**mysqlserver_name** の値は一意であることが必要です。 リージョンごとおよびレベルごとの有効な値については、[価格レベルのドキュメント](https://docs.microsoft.com/azure/mysql/concepts-pricing-tiers)を参照してください。 `<server_admin_password>` はパスワードに置き換えます。
 
 ```yml
 - hosts: localhost
@@ -84,15 +84,16 @@ ansible-playbook rg.yml
         name: "{{ mysqldb_name }}"
 ```
 
-上記のプレイブックを *mysql_create.yml* として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
+前述のプレイブックを **mysql_create.yml** として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
 ```bash
 ansible-playbook mysql_create.yml
 ```
 
-## <a name="configure-firewall-rule"></a>ファイアウォール規則の構成
-サーバーレベルのファイアウォール規則により、**mysql** コマンド ライン ツールや MySQL Workbench などの外部アプリケーションが、Azure MySQL サービスのファイアウォールを経由してサーバーに接続できるようになります。 次の例では、外部の IP アドレスからの接続を許可する、**extenalaccess** と呼ばれるファイアウォール規則を作成しています。 
+## <a name="configure-a-firewall-rule"></a>ファイアウォール規則を構成する
+サーバーレベルのファイアウォール規則により、外部アプリケーションが、Azure MySQL サービスのファイアウォールを経由してサーバーに接続できるようになります。 外部アプリケーションの例としては、**mysql** コマンドライン ツールや MySQL Workbench があります。
+次の例では、外部の IP アドレスからの接続を許可する、**extenalaccess** と呼ばれるファイアウォール規則を作成しています。 
 
-接続元となる場所に対応する IP アドレスの範囲で、独自の **startIpAddress** と **endIpAddress** を入力します。 
+**startIpAddress** と **endIpAddress** には実際の値を入力します。 実際の接続元となる場所に対応する IP アドレスの範囲を使用してください。 
 
 ```yml
 - hosts: localhost
@@ -120,19 +121,19 @@ ansible-playbook mysql_create.yml
 > Azure Database for MySQL との接続では、ポート 3306 が通信に使用されます。 企業ネットワーク内から接続を試みる場合、ポート 3306 での送信トラフィックが許可されていない場合があります。 その場合、会社の IT 部門によってポート 3306 が開放されない限り、サーバーに接続することはできません。
 > 
 
-ここで、**azure_rm_resource** モジュールを使用してこのタスクを実行します。これにより、REST API を直接使用できるようになります。
+ここで、**azure_rm_resource** モジュールを使用してこのタスクを実行します。 これにより、REST API を直接使用できるようになります。
 
-上記のプレイブックを *mysql_firewall.yml* として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
+前述のプレイブックを **mysql_firewall.yml** として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
 ```bash
 ansible-playbook mysql_firewall.yml
 ```
 
-## <a name="connect-to-the-server-using-command-line-tool"></a>コマンドライン ツールを使用してサーバーに接続する
-MySQL を[ここ](https://dev.mysql.com/downloads/)からダウンロードして、コンピューターにインストールすることができます。 または、コード サンプルの **[試してみる]** ボタンをクリックするか、Azure Portal の右上のツールバーにある `>_` ボタンをクリックして、**Azure Cloud Shell** を起動することもできます。
+## <a name="connect-to-the-server-by-using-the-command-line-tool"></a>コマンドライン ツールを使用してサーバーに接続する
+[MySQL をダウンロード](https://dev.mysql.com/downloads/)して、コンピューターにインストールすることができます。 または、コード サンプルの **[試してみる]** ボタンを選択するか、Azure portal の右上のツールバーにある **[>_]** ボタンを選択して、**Azure Cloud Shell** を開くこともできます。
 
 次のコマンドを入力します。 
 
-1. **mysql** コマンドライン ツールを使用してサーバーに接続します。
+1. **mysql** コマンドライン ツールを使用してサーバーに接続する
 ```azurecli-interactive
  mysql -h mysqlserveransible.mysql.database.azure.com -u mysqladmin@mysqlserveransible -p
 ```
@@ -213,7 +214,7 @@ Threads: 5  Questions: 559  Slow queries: 0  Opens: 96  Flush tables: 3  Open ta
         var: mysqldatabasefacts
 ```
 
-上記のプレイブックを *mysql_query.yml* として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
+前述のプレイブックを **mysql_query.yml** として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
 
 ```bash
 ansible-playbook mysql_query.yml
@@ -243,7 +244,7 @@ ansible-playbook mysql_query.yml
 ]
 ```
 
-また、MySQL データベースに関する次の出力も表示されます。
+また、MySQL データベースに関して次の出力も表示されます。
 ```json
 "databases": [
     {
@@ -292,12 +293,12 @@ ansible-playbook mysql_query.yml
         state: absent
 ```
 
-上記のプレイブックを *rg_delete*.yml として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
+前述のプレイブックを **rg_delete.yml** として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
 ```bash
 ansible-playbook rg_delete.yml
 ```
 
-新たに作成された MySQL サーバーを 1 つ削除するだけの場合は、下記の例を実行することで削除できます。
+新しく作成した MySQL サーバーだけを削除する場合は、次の例を実行します。
 
 ```yml
 - hosts: localhost
@@ -312,7 +313,7 @@ ansible-playbook rg_delete.yml
         state: absent
 ```
 
-上記のプレイブックを *mysql_delete.yml* として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
+前述のプレイブックを **mysql_delete.yml** として保存します。 プレイブックを実行するには、次のように **ansible-playbook** コマンドを使用します。
 ```bash
 ansible-playbook mysql_delete.yml
 ```

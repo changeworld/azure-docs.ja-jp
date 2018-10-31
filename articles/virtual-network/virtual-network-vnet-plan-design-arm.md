@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: 1ec60300d179edf69e32dc07653b6c69c7cc8e52
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: cf540caebd5f993cdba0d85f4109a6e78e201658
+ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42144290"
+ms.lasthandoff: 10/17/2018
+ms.locfileid: "49378756"
 ---
 # <a name="plan-virtual-networks"></a>仮想ネットワークを計画する
 
@@ -93,7 +93,7 @@ Azure では、サブネットからの送信トラフィックに対して複�
 
 ### <a name="peering"></a>ピアリング
 
-[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)で接続される仮想ネットワークが存在するサポートされる Azure リージョンは、同じであっても、異なっていてもかまいません。 仮想ネットワークが含まれるサブスクリプションは同じでも異なるっていてもかまいませんが、両方のサブスクリプションが同じ Azure Active Directory テナントに割り当てられている必要があります。 ピアを作成する前に、ピアリングのすべての[要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)をよく理解しておくことをお勧めします。 同じリージョン内でピアリングされる仮想ネットワーク内のリソース間の帯域幅は、リソースが同じ仮想ネットワーク内にある場合と同じです。
+[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)で接続される仮想ネットワークが存在するサポートされる Azure リージョンは、同じであっても、異なっていてもかまいません。 仮想ネットワークが含まれる Azure サブスクリプションは同じでも異なっていてもかまいません (サブスクリプションが異なる Azure Active Directory テナントに属していてもかまいません)。 ピアを作成する前に、ピアリングのすべての[要件と制約](virtual-network-manage-peering.md#requirements-and-constraints)をよく理解しておくことをお勧めします。 同じリージョン内でピアリングされる仮想ネットワーク内のリソース間の帯域幅は、リソースが同じ仮想ネットワーク内にある場合と同じです。
 
 ### <a name="vpn-gateway"></a>VPN Gateway
 

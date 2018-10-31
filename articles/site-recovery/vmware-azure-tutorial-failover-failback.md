@@ -9,16 +9,16 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e9ed0ba8d24f30f67dbb315848dc4c260cae4f50
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7e586e7e3ec8c16dcd215dbc11251d1b9fe928e1
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391370"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457070"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた VMware VM と物理サーバーのフェールオーバーとフェールバック
 
-このチュートリアルでは、VMware VM を Azure にフェールオーバーする方法について説明します。 フェールオーバーした後、オンプレミス サイトが使用可能になったときにオンプレミス サイトにフェールバックします。 このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、VMware VM を Azure にフェールオーバーする方法について説明します。 フェールオーバーした後、オンプレミス サイトが使用可能になったときにオンプレミス サイトにフェールバックします。 このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * VMware VM のプロパティで Azure の要件に準拠していることを確認する
@@ -89,17 +89,16 @@ VM のプロパティで、VM が [Azure の要件](vmware-physical-azure-suppor
 >[!TIP]
 > **[復旧ポイントの変更]** は、フェールオーバー後、フェールオーバーされた仮想マシンに満足していない場合に、異なる復旧ポイントを選択するのに役立ちます。 **コミット**後、このオプションは使用できなくなります。
 
-フェールオーバー後の接続の問題をトラブルシューティングするには、[こちら](site-recovery-failover-to-azure-troubleshoot.md)に記載されている手順に従ってください。
+フェールオーバー後の接続の問題をトラブルシューティングするには、[ここ](site-recovery-failover-to-azure-troubleshoot.md)で説明されている手順に従ってください。
 
 ## <a name="preparing-for-reprotection-of-azure-vm"></a>Azure VM の再保護の準備
 
-### <a name="create-a-process-server-in-azure"></a>Azure にプロセス サーバーを作成する
+- **Azure ExpressRoute 接続がある場合**は、セットアップの過程で構成サーバーに自動的にインストールされたオンプレミス プロセス サーバー (組み込みのプロセス サーバー) を使用できます。
 
-プロセス サーバーは、Azure VM からデータを受け取り、オンプレミス サイトにそのデータを送信します。 プロセス サーバーと保護された VM との間には、待ち時間が短いネットワークが必要です。
+> [!IMPORTANT]
+> オンプレミス環境と Azure との間に VPN 接続がある場合は、再保護とフェールバックに使用するプロセス サーバーとして Azure VM をセットアップする必要があります。 Azure でプロセス サーバーを設定するには、[この記事](vmware-azure-set-up-process-server-azure.md)の手順を実行してください。
 
-- テスト目的の Azure ExpressRoute 接続がある場合は、構成サーバーに自動的にインストールされたオンプレミス プロセス サーバー (組み込みのプロセス サーバー) を使用できます。
-- VPN 接続がある場合、または運用環境でフェールバックを実行している場合、フェールバック用に Azure ベースのプロセス サーバーとして Azure VM を設定する必要があります。
-- Azure でプロセス サーバーを設定するには、[この記事](vmware-azure-set-up-process-server-azure.md)の手順を実行してください。
+再保護とフェールバックの前提条件について詳しくは、こちらの[セクション] ](vmware-azure-reprotect.md##before-you-begin)を参照してください。 
 
 ### <a name="configure-the-master-target-server"></a>マスター ターゲット サーバーを構成する
 

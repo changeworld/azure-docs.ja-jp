@@ -3,7 +3,7 @@ title: Azure API Management での最初の API のインポートと発行 | Mi
 description: API Management で最初の API をインポートおよび発行する方法を説明します。
 services: api-management
 documentationcenter: ''
-author: vladvino
+author: mikebudzynski
 manager: cfowler
 editor: ''
 ms.service: api-management
@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 538977b9057a5699d61d6c2cc44209367e3550e2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: cf913c0aaf7dd9957f21452caf8e43a9e3c8b2db
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093404"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467397"
 ---
 # <a name="import-and-publish-your-first-api"></a>最初の API のインポートと発行 
 
@@ -73,9 +73,11 @@ ms.locfileid: "47093404"
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure Portal での新しい APIM API のテスト
 
+![API のテスト マップ](./media/api-management-get-started/01-import-first-api-01.png)
+
 Azure Portal には、API の操作を表示およびテストするための便利な環境が用意されており、操作を直接呼び出すことができます。  
 1. 前の手順 (**[API]** タブ) で作成した API を選びます。
-2. **[テスト]** タブをクリックします。![API をテストする](./media/api-management-get-started/test-api.png)
+2. **[テスト]** タブをクリックします。
 3. **[GetSpeakers]** をクリックします。
     このページには、クエリ パラメーターのフィールド (この例では何も表示されません) とヘッダーが表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 キーが自動的に入力されます。
 4. **[送信]** をクリックします。
@@ -87,7 +89,8 @@ Azure Portal には、API の操作を表示およびテストするための便
 操作を**開発者ポータル**から呼び出して API をテストすることもできます。
 
 1. **開発者ポータル**に移動します。
-![開発者ポータル](./media/api-management-get-started/developer-portal.png)
+
+ ![[開発者ポータル]](./media/api-management-get-started/developer-portal.png)
 
 2. **[APIS]** を選択し、**[Demo Conference API]\(デモ会議 API\)**、**[GetSpeakers]** の順にクリックします。
     

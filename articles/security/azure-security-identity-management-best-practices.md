@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: f6640e7d179199fbfb5b0c2b0c384729b6f53bcf
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: b1002d046014abd15452489e343ecf7c30b00d73
+ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498251"
+ms.lasthandoff: 10/13/2018
+ms.locfileid: "49311339"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
@@ -113,7 +113,7 @@ SSO を確立するためにユーザーやアプリケーションに共通の 
 
 2 段階認証を有効にするオプションと利点を次に示します。
 
-**オプション 1**: [ユーザーの状態を変更することで Multi-Factor Authentication を有効にします](../active-directory/authentication/howto-mfa-userstates.md#enable-azure-mfa-by-changing-user-status)。   
+**オプション 1**: [ユーザーの状態を変更することで Multi-Factor Authentication を有効にします](../active-directory/authentication/howto-mfa-userstates.md)。   
 **利点**: 2 段階認証を要求するための従来の方法です。 これは、[クラウド内の Azure Multi-Factor Authentication と Azure Multi-Factor Authentication Server](../active-directory/authentication/concept-mfa-whichversion.md) の両方に対応します。 この方法を使用すると、ユーザーはサインインする際に毎回 2 段階認証が求められるようになります。また、この方法は条件付きアクセス ポリシーをオーバーライドします。
 
 **オプション 2**: [条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access)。   
@@ -121,7 +121,7 @@ SSO を確立するためにユーザーやアプリケーションに共通の 
 
 これは、ユーザーの 2 段階認証を有効にするうえで最も柔軟性の高い手段です。 条件付きアクセス ポリシーを有効にする方法は、クラウド内の Azure Multi-Factor Authentication に対してのみ機能します。これは Azure AD の Premium 機能です。 この方法の詳細については、「[クラウドベースの Azure Multi-Factor Authentication をデプロイする](../active-directory/authentication/howto-mfa-getstarted.md)」を参照してください。
 
-**オプション 3**: [Azure AD Identity Protection](../active-directory/active-directory-identityprotection.md) のユーザーおよびサインインのリスクを評価し、条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします。   
+**オプション 3**: [Azure AD Identity Protection](../active-directory/authentication/tutorial-risk-based-sspr-mfa.md) のユーザーおよびサインインのリスクを評価し、条件付きアクセス ポリシーを使用して Multi-Factor Authentication を有効にします。   
 **利点**: このオプションの利点は次のとおりです。
 
 - 組織の ID に影響する潜在的な脆弱性を検出します。
@@ -131,7 +131,7 @@ SSO を確立するためにユーザーやアプリケーションに共通の 
 この方法では、Azure AD Identity Protection のリスク評価を使用して、すべてのクラウド アプリケーションのユーザーおよびサインインのリスクに基づいて 2 段階認証が要求されるかどうかを判断します。 この方法では、Azure Active Directory P2 ライセンスが必要です。 この方法の詳細については、「[Azure Active Directory Identity Protection](../active-directory/identity-protection/overview.md)」を参照してください。
 
 > [!Note]
-> オプション 1 (ユーザーの状態を変更することで Multi-Factor Authentication を有効にする) は条件付きポリシーより優先されます。 オプション 2 および 3 では条件付きアクセス ポリシーを使用するため、オプション 1 をそれらと共に使用することはできません。
+> オプション 1 (ユーザーの状態を変更することで Multi-Factor Authentication を有効にする) は、条件付きアクセス ポリシーをオーバーライドします。 オプション 2 および 3 では条件付きアクセス ポリシーを使用するため、オプション 1 をそれらと共に使用することはできません。
 
 2 段階認証などの新しい ID 保護レイヤーを追加しない組織は、資格情報盗用攻撃を受けやすくなります。 資格情報盗用攻撃はデータの侵害につながる可能性があります。
 

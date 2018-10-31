@@ -1,23 +1,23 @@
 ---
-title: 'クイック スタート: テキストを翻訳する - Translator Text、Go'
+title: 'クイック スタート: テキストを翻訳する、Go - Translator Text API'
 titleSuffix: Azure Cognitive Services
 description: このクイック スタートでは、Go で Translator Text API を使ってテキストを別の言語に翻訳します。
 services: cognitive-services
-author: noellelacharite
+author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/29/2018
-ms.author: nolachar
-ms.openlocfilehash: df8b938c9541a4f57a337065af0ab02fe6815c6d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.author: erhopf
+ms.openlocfilehash: 53ca6c830d4e4fb80a47d498e4b033cee0f6f7a7
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126702"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648311"
 ---
-# <a name="quickstart-translate-text-with-go"></a>クイック スタート: Go を使ったテキストの翻訳
+# <a name="quickstart-translate-text-with-the-translator-text-rest-api-go"></a>クイック スタート: Translator Text REST API を使用してテキストを翻訳する (Go)
 
 このクイック スタートでは、Translator Text API を使って、テキストを別の言語に翻訳します。
 

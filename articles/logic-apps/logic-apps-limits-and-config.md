@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 09/26/2018
-ms.openlocfilehash: c557c3e34fc4588b8bf13d69159a144d059b039e
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.date: 10/11/2018
+ms.openlocfilehash: 52f30adf1ea383b098d3f187a315257f101e8a9b
+ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452456"
+ms.lasthandoff: 10/15/2018
+ms.locfileid: "49320440"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -26,7 +26,7 @@ ms.locfileid: "47452456"
 
 1 つのロジック アプリ定義の制限を次に示します。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | ワークフローごとのアクション数 | 500 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 |
 | アクションで許可される入れ子の深さ | 8 | この制限を拡張するには、入れ子にしたワークフローを必要に応じて追加します。 | 
@@ -48,7 +48,7 @@ ms.locfileid: "47452456"
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 |------|-------|-------| 
 | 実行継続時間 | 90 日間 | この制限を変更するには、「[実行継続時間を変更する](#change-duration)」をご覧ください。 | 
 | ストレージのリテンション期間 | 実行の開始時刻から 90 日間 | この制限を 7 日から 90 日の範囲の値に変更するには、「[実行継続時間とストレージのリテンション期間を変更する](#change-retention)」をご覧ください。 | 
@@ -79,16 +79,16 @@ ms.locfileid: "47452456"
 
 <a name="looping-debatching-limits"></a>
 
-## <a name="concurrency-looping-and-debatching-limits"></a>同時実行、ループ、および分割処理の制限
+## <a name="concurrency-looping-and-debatching-limits"></a>コンカレンシー、ループ、および分割処理の制限
 
 ロジック アプリの 1 回の実行の制限を次に示します。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
-| トリガーの同時実行 | 50 | 既定の制限は 20 です。 この制限は、同時に (並行して) 実行できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、[トリガーの同時実行の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)または[インスタンスの順次トリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)に関する記事をご覧ください。 | 
+| トリガーのコンカレンシー | 50 | 既定の制限は 20 です。 この制限は、同時に (並行して) 実行できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、[トリガーのコンカレンシーの変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)または[インスタンスの順次トリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)に関する記事をご覧ください。 | 
 | 待機中の実行の最大数 | 100 | 既定の制限は 10 です。 この制限は、ロジック アプリが最大数の同時実行インスタンスを既に実行している場合に実行を待機できるロジック アプリ インスタンスの最大数を示します。 <p><p>既定の制限を 0 ～ 100 の値に変更するには、[待機中の実行の制限の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)に関する記事をご覧ください。 | 
 | Foreach 項目数 | 100,000 | この制限は、"for each" ループで処理できる配列項目の最大数を示します。 <p><p>さらに大きな配列にフィルターを適用するには、[クエリ アクション](../connectors/connectors-native-query.md)を使用できます。 | 
-| Foreach イテレーション数 | 50 | 既定の制限は 20 です。 この制限は、同時に (並行して) 実行できる "for each" ループ イテレーションの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、["for each" 同時実行の変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)または ["for each" ループの順次実行](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)に関する記事をご覧ください。 | 
+| Foreach イテレーション数 | 50 | 既定の制限は 20 です。 この制限は、同時に (並行して) 実行できる "for each" ループ イテレーションの最大数を示します。 <p><p>既定の制限を 1 ～ 50 の値に変更するには、["for each" コンカレンシーの変更](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency)または ["for each" ループの順次実行](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each)に関する記事をご覧ください。 | 
 | SplitOn 項目数 | 100,000 | | 
 | Until 反復数 | 5,000 | | 
 |||| 
@@ -111,9 +111,22 @@ ms.locfileid: "47452456"
 
 通常の処理でこれらの制限を超えるか、これらの制限を超える可能性のある負荷テストを実行するには、[Logic Apps チームに問い合わせ](mailto://logicappsemail@microsoft.com)の上、要件についてご相談ください。
 
+<a name="sftp"></a>
+
+## <a name="ftp-sftp-and-sftp-ssh-limits"></a>FTP、SFTP、SFTP-SSH の制限
+
+### <a name="file-size"></a>ファイル サイズ
+
+| Name | 制限 | メモ |
+|------|-------|-------|
+| FTP | 50 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
+| SFTP | 50 MB | この制限を回避するには、[SFTP-SSH コネクタ](../connectors/connectors-sftp-ssh.md)を使用するか、[チャンクを使用した大きいサイズのメッセージの処理](../logic-apps/logic-apps-handle-large-messages.md)に関するページをご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
+| SFTP-SSH | 1 GB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
+|||| 
+
 <a name="request-limits"></a>
 
-## <a name="http-request-limits"></a>HTTP 要求の制限
+## <a name="http-limits"></a>HTTP 制限
 
 1 つの HTTP 要求または同期コネクタ呼び出しの制限を次に示します。
 
@@ -121,7 +134,7 @@ ms.locfileid: "47452456"
 
 コネクタ操作の中には、非同期呼び出しを行うものや webhook 要求をリッスンするものがあるため、これらの操作のタイムアウトはこれらの制限より長くなる場合があります。 詳細については、特定のコネクタの技術詳細をご覧ください。「[Workflow triggers and actions](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)」もご覧ください。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | 送信要求 | 120 秒 | これよりも実行時間が長い要求には、[非同期ポーリング パターン](../logic-apps/logic-apps-create-api-app.md#async-pattern)または [until ループ](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)を使用します。 | 
 | 同期応答 | 120 秒 | 元の要求で応答を受け取るには、別のロジック アプリを入れ子のワークフローとして呼び出す場合を除き、応答のすべての手順が制限内に完了する必要があります。 詳細については、「[ロジック アプリを呼び出し、トリガーし、入れ子にする](../logic-apps/logic-apps-http-endpoint.md)」をご覧ください。 | 
@@ -129,7 +142,7 @@ ms.locfileid: "47452456"
 
 #### <a name="message-size"></a>メッセージ サイズ
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | メッセージ サイズ | 100 MB | この制限を回避するには、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 ただし、一部のコネクタおよび API は、チャンクまたは既定の制限をサポートしない場合があります。 | 
 | チャンクがある場合のメッセージ サイズ | 1 GB | この制限は、チャンクをネイティブでサポートするアクションに適用されます。または、ランタイム構成でのチャンクを有効にできます。 詳細については、「[Handle large messages with chunking](../logic-apps/logic-apps-handle-large-messages.md)」をご覧ください。 | 
@@ -138,7 +151,7 @@ ms.locfileid: "47452456"
 
 #### <a name="retry-policy"></a>再試行ポリシー
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | 再試行 | 90 | 既定値は 4 です。 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 | 
 | 再試行の最大間隔 | 1 日 | 既定値を変更するには、[再試行ポリシー パラメーター](../logic-apps/logic-apps-workflow-actions-triggers.md)を使用します。 | 
@@ -151,11 +164,20 @@ ms.locfileid: "47452456"
 
 次に示すのは、Web API から作成できるカスタム コネクタの制限です。
 
-| 名前 | 制限 | 
+| Name | 制限 | 
 | ---- | ----- | 
 | カスタム コネクタの数 | Azure サブスクリプションあたり 1,000 | 
 | カスタム コネクタによって作成された接続ごとの毎分の要求数 | 接続ごとに 500 の要求 |
 |||| 
+
+<a name="managed-identity"></a>
+
+## <a name="managed-identities"></a>マネージド ID
+
+| Name | 制限 | 
+| ---- | ----- | 
+| マネージド ID が自動割り当てされているロジック アプリの数 (Azure サブスクリプションあたり) | 10 | 
+|||
 
 <a name="integration-account-limits"></a>
 
@@ -212,7 +234,7 @@ Free レベルは、調査シナリオでのみ使用し、運用シナリオで
 
 ### <a name="artifact-capacity-limits"></a>アーティファクト容量制限
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | スキーマ | 8 MB | 2 MB を超えるファイルをアップロードするには、[Blob URI](../logic-apps/logic-apps-enterprise-integration-schemas.md) を使用します。 | 
 | マップ (XSLT ファイル) | 2 MB | | 
@@ -228,7 +250,7 @@ Free レベルは、調査シナリオでのみ使用し、運用シナリオで
 
 B2B プロトコルに適用される制限を次に示します。
 
-| 名前 | 制限 | メモ | 
+| Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | AS2 | 50 MB | デコードおよびエンコードに適用 | 
 | X12 | 50 MB | デコードおよびエンコードに適用 | 
@@ -306,11 +328,11 @@ B2B プロトコルに適用される制限を次に示します。
 > [!IMPORTANT]
 > 既存の構成がある場合は、**2018 年 9 月 1日より前にできるだけ早く**更新を行って、この一覧に示されているロジック アプリが存在するリージョン用の IP アドレスと一致するようにしてください。 
 > 
-> Logic Apps では、ファイアウォール経由の Azure ストレージ アカウントへの直接接続をサポートしていません。 これらのストレージ アカウントにアクセスするには、ここに示されているいずれかのオプションを使用します。 
+> Logic Apps は、ファイアウォール経由の Azure ストレージ アカウントへの直接接続をサポートしていません。 これらのストレージ アカウントにアクセスするには、ここに示されているいずれかのオプションを使用します。 
 >
 > * Azure 仮想ネットワーク内のリソースに接続できる[統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)を作成します。 
 > 
-> * API Management を既に使用している場合は、このシナリオでこのサービスを使用できます。 詳細については、[単純なエンタープライズ統合アーキテクチャ](http://aka.ms/aisarch)に関する記事を参照してください。
+> * API Management を既に使用している場合は、このシナリオでこのサービスを使用できます。 詳細については、[単純なエンタープライズ統合アーキテクチャ](http://aka.ms/aisarch)を参照してください。
 
 | Logic Apps のリージョン | 送信 IP | 
 |-------------------|-------------|  

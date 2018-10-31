@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: 17f06a08388720c4483ef1c187edf20ec8359121
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 50f5662fa574b512ab607e17dbdfcf1861e2f5c6
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386385"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954914"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>チュートリアル: 高可用性 SQL データベースの提供
 
@@ -63,30 +63,28 @@ Azure Stack マーケットプレースに項目を追加する方法につい�
 - クラスターのファイル共有監視として構成された 1 つの VM (Windows Server 2016)
 - SQL およびファイル共有監視 VM を含む 1 つの可用性セット  
 
-1. 管理ポータルにサインインします。
-    - 統合システム デプロイの場合、ポータル アドレスはソリューションのリージョンと外部ドメイン名によって変わります。 形式は、 https://adminportal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; です。
-    - Azure Stack Development Kit (ASDK) を使用している場合、ユーザー ポータル アドレスは [https://adminportal.local.azurestack.external](https://portal.local.azurestack.external) です。
+1. 
+[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. **\+[** **リソースの作成]** > **[カスタム]** の順に選択し、**[テンプレートのデプロイ]** を選択します。
 
-   ![カスタム テンプレートのデプロイ](media/azure-stack-tutorial-sqlrp/custom-deployment.png)
+   ![カスタム テンプレートのデプロイ](media/azure-stack-tutorial-sqlrp/1.png)
 
 
 3. **[カスタム デプロイ]** ブレードで **[テンプレートの編集]** > **[クイック スタート テンプレート]** を選択し、使用できるカスタム テンプレートのドロップダウン リストを使用して **sql-2016-AlwaysOn** テンプレートを選択し、**[OK]**、**[保存]** の順にクリックします。
 
-   ![クイックスタート テンプレートを選択する](./media/azure-stack-tutorial-sqlrp/quickstart-template.png)
-
+   [![](media/azure-stack-tutorial-sqlrp/2-sm.PNG "クイック スタート テンプレートを選択する")](media/azure-stack-tutorial-sqlrp/2-lg.PNG#lightbox)
 
 4. **[カスタム デプロイ]** ブレードで、**[パラメーターの編集]** を選択し、既定値を確認します。 必要に応じて値を変更して、必要なすべてのパラメーター情報を入力し、**[OK]** をクリックします。<br><br> 少なくとも以下を実行します。
 
     - ADMINPASSWORD、SQLSERVERSERVICEACCOUNTPASSWORD、および SQLAUTHPASSWORD パラメーターに複雑なパスワードを指定します。
     - DNSSUFFIX パラメーターの場合、すべての小文字で逆引き参照の DNS サフィックスを入力します (ASDK インストールの場合は、**azurestack.external**)。
     
-    ![カスタム デプロイ パラメーター](./media/azure-stack-tutorial-sqlrp/edit-parameters.png)
+   [![](media/azure-stack-tutorial-sqlrp/3-sm.PNG "カスタム デプロイ パラメーターを編集する")](media/azure-stack-tutorial-sqlrp/3-lg.PNG#lightbox)
 
 5. **[カスタム デプロイ]** ブレードで、使用するサブスクリプションを選択し、カスタム デプロイ用に新しいデプロイ グループを作成するか、既存のリソース グループを選択します。<br><br> 次に、リソース グループの場所 (ASDK のインストールの場合は **local**) を選択し、**[作成]** をクリックします。 カスタムのデプロイ設定が検証され、デプロイが開始されます。
 
-    ![カスタム デプロイ パラメーター](./media/azure-stack-tutorial-sqlrp/create-deployment.png)
+    [![](media/azure-stack-tutorial-sqlrp/4-sm.PNG "カスタム デプロイを作成する")](media/azure-stack-tutorial-sqlrp/4-lg.PNG#lightbox)
 
 
 6. 管理ポータルで、**[リソース グループ]** を選択してから、カスタム デプロイ用に作成したリソース グループの名前を選択します (この例では **resource-group**)。 すべてのデプロイが正常に完了したことを確認するために、デプロイの状態を表示します。<br><br>次に、リソース グループ項目を確認し、**SQLPIPsql\<リソース グループ名\>** パブリック IP アドレス項目を選択します。 ロードバランサー パブリック IP のパブリック IP アドレスと完全な FQDN をメモします。 この SQL AlwaysOn 可用性グループを利用する SQL ホスティング サーバーを作成できるようにするには、この情報を Azure Stack Operator に渡す必要があります。
@@ -94,16 +92,16 @@ Azure Stack マーケットプレースに項目を追加する方法につい�
    > [!NOTE]
    > テンプレートのデプロイには数時間かかる場合があります。
 
-   ![カスタム デプロイ パラメーター](./media/azure-stack-tutorial-sqlrp/deployment-complete.png)
+   ![カスタム デプロイが完了](./media/azure-stack-tutorial-sqlrp/5.png)
 
 ### <a name="enable-automatic-seeding"></a>自動シード処理を有効にする
 テンプレートによる SQL AlwaysOn 可用性グループのデプロイと構成が正常に完了した後に、可用性グループの SQL Server の各インスタンスで[自動シード処理](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group)を有効にする必要があります。 
 
 自動シード処理を使用して可用性グループを作成すると、Always On データベースの高可用性を確保するために必要な他の手動作業なしで、SQL Server によってグループ内のすべてのデータベースのセカンダリ レプリカが自動的に作成されます。
 
-これらの SQL コマンドを使用して、AlwaysOn 可用性グループの自動シード処理を構成します。
+これらの SQL コマンドを使用して、AlwaysOn 可用性グループの自動シード処理を構成します。 必要に応じて、\<InstanceName\> をプライマリ インスタンス SQL Server の名前、<availability_group_name> を AlwaysOn 可用性グループの名前に置き換えます。 
 
-プライマリ SQL インスタンスの場合 (<InstanceName> をプライマリ インスタンスの SQL Server 名に置き換えます):
+プライマリ SQL インスタンスの場合:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>]
@@ -114,7 +112,7 @@ Azure Stack マーケットプレースに項目を追加する方法につい�
 
 >  ![プライマリ SQL インスタンス スクリプト](./media/azure-stack-tutorial-sqlrp/sql1.png)
 
-セカンダリ SQL インスタンスの場合 (<availability_group_name> を AlwaysOn 可用性グループ名に置き換えます):
+セカンダリ SQL インスタンスの場合:
 
   ```sql
   ALTER AVAILABILITY GROUP [<availability_group_name>] GRANT CREATE ANY DATABASE
@@ -156,9 +154,8 @@ SQL AlwaysOn 可用性グループが Azure Stack Operator によって Azure St
 > [!NOTE]
 > これらの手順は、SQL Server 機能 (Microsoft.SQLAdapter サービス) を提供するサブスクリプションを持つテナント ユーザーとして、Azure Stack ユーザー ポータルから実行します。
 
-1. ユーザー ポータルにサインインします。
-    - 統合システム デプロイの場合、ポータル アドレスはソリューションのリージョンと外部ドメイン名によって変わります。 形式は、 https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; です。
-    - Azure Stack Development Kit (ASDK) を使用している場合、ユーザー ポータル アドレスは [https://portal.local.azurestack.external](https://portal.local.azurestack.external) です。
+1. 
+[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. **\+[** **リソースの作成]** > **[データ \+ ストレージ]** の順に選択し、**[SQL Database]** を選択します。<br><br>名前、照合順序、最大サイズ、サブスクリプションなどの必須のデータベースのプロパティと、リソース グループ、およびデプロイに使用する場所を指定します。 
 

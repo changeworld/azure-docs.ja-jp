@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: 物体検出プロジェクトを作成する - Custom Vision API、Java'
+title: 'チュートリアル: Custom Vision SDK for Java を使用して物体検出プロジェクトを作成する - Custom Vision Service'
 titlesuffix: Azure Cognitive Services
 description: 既定のエンドポイントを利用し、プロジェクトを作成し、タグを追加し、画像をアップロードし、プロジェクトをトレーニングし、予測を行います。
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: 661242e4962a8218c48d7ea66d8a6f728b5154c8
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: d4af3315cfca18da594730cc402236684f81bfc8
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46365028"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49957337"
 ---
-# <a name="tutorial-build-an-object-detection-project-with-java"></a>チュートリアル: Java で物体検出プロジェクトを構築する
+# <a name="tutorial-create-an-object-detection-project-with-the-custom-vision-sdk-for-java"></a>チュートリアル: Custom Vision SDK for Java を使用して物体検出プロジェクトを作成する
 
 Computer Vision API を使用する基本的な Java アプリケーションを使用し、物体検出プロジェクトを作成する方法について説明します。 作成後、タグ付きのリージョンを追加し、画像をアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用して画像をプログラミングでテストできます。 Custom Vision API を利用し、独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
 
@@ -36,17 +36,17 @@ Maven Central Repository から Custom Vision SDK をインストールできま
 
 ## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
 
-このサンプルで使用されるキーを取得するには、[Custom Vision サイト](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+このサンプルで使用されるキーを取得するには、[Custom Vision サイト](https://customvision.ai)にアクセスし、右上にある__歯車アイコン__を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
 
 ![キー UI の画像](./media/python-tutorial/training-prediction-keys.png)
 
 ## <a name="understand-the-code"></a>コードの理解
 
-画像を含む完全なプロジェクトは、[Java 用 Custom Vision Azure サンプル リポジトリ](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master)から入手できます。 
+画像を含む完全なプロジェクトは、[Java 用 Custom Vision Azure サンプル リポジトリ](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master)から手に入ります。 
 
 好みの Java IDE を使用して、`Vision/CustomVision` プロジェクトを開きます。 
 
-このアプリケーションは、先ほど取得したトレーニング キーを使用して、__Sample Java OD Project__ という名前の新しいプロジェクトを作成します。 次に、画像をアップロードして物体検出器のトレーニングおよびテストを行います。 物体検出器は、__フォーク__ または __ハサミ__ を含むリージョンを特定します。
+このアプリケーションは、先ほど取得したトレーニング キーを使用して、__Sample Java OD Project__ という名前の新しいプロジェクトを作成します。 次に、画像をアップロードして物体検出器のトレーニングおよびテストを行います。 物体検出器は、__フォーク__または__ハサミ__を含むリージョンを特定します。
 
 この例の主な機能は、以下のコード スニペットに実装されています。
 

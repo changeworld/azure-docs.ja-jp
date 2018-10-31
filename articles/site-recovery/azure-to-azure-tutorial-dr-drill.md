@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 90d82abb6570028308b8d516a868fa981c75eb94
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: b1893d9713f70ee7553392a320fec52fe5c88f3c
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066991"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49458056"
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する
 
@@ -26,12 +26,13 @@ ms.locfileid: "49066991"
 > * 前提条件を確認する
 > * 1 台の VM のテスト フェールオーバーを実行する
 
-
+> [!NOTE]
+> このチュートリアルは、DR ドリルを最小限のステップで実行する手順をユーザーに紹介することが目的です。ネットワークの考慮事項、オートメーション、トラブルシューティングなど、DR ドリルの実行に関する事柄をさまざまな角度から詳しく知りたい場合は、Azure VM の "操作方法" のドキュメントを参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
 - テスト フェールオーバーを実行する前に、すべてが想定どおりであることを確かめるために、VM のプロパティを確認することをお勧めします。  **[レプリケートされたアイテム]** で VM のプロパティにアクセスしてください。 **[要点]** ブレードにマシンの設定と状態に関する情報が表示されます。
-- レプリケーションを有効にしたときに設定された既定のネットワークではなく、テスト フェールオーバー用の別個の Azure VM ネットワークを使用することをお勧めします。
+- レプリケーションを有効にしたときに設定された既定のネットワークではなく、**テスト フェールオーバー用の別個の Azure VM ネットワークを使用することをお勧めします**。
 
 
 ## <a name="run-a-test-failover"></a>テスト フェールオーバーの実行

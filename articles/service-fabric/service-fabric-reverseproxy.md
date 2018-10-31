@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/03/2017
 ms.author: bharatn
-ms.openlocfilehash: 521a7b90b971ff3ba867945a4713b1f6dc8dbebc
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 04f233384ad0d02cb5b7056df1e5fdfc74b9bec8
+ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503521"
+ms.lasthandoff: 10/16/2018
+ms.locfileid: "49344627"
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric のリバース プロキシ
 Azure Service Fabric に組み込まれたリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
@@ -156,9 +156,12 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 ```
 ローカル クラスターでは、`Fabric_NodeIPOrFQDN` は既定で "localhost" に設定されます。 `-UseMachineName` パラメーターを使ってローカル クラスターを開始し、コンテナーがノードで実行されているリバース プロキシにアクセスできることを確認します。 詳しくは、「[コンテナーをデバッグするように開発者環境を構成する](service-fabric-how-to-debug-windows-containers.md#configure-your-developer-environment-to-debug-containers)」をご覧ください。
 
+Docker Compose コンテナー内で実行される Service Fabric サービスには、特別な docker-compose.yml の*ポート セクション* http: または https: 構成が必要です。 詳細については、[Azure Service Fabric での Docker Compose デプロイのサポート](service-fabric-docker-compose.md)に関するページを参照してください。
+
 ## <a name="next-steps"></a>次の手順
 * [クラスターでのリバース プロキシの設定と構成](service-fabric-reverseproxy-setup.md)
 * [リバース プロキシを使用したセキュリティで保護された HTTP サービスへの転送の設定](service-fabric-reverseproxy-configure-secure-communication.md)
+* [リバース プロキシ イベントの診断](service-fabric-reverse-proxy-diagnostics.md)
 * [GitHub のサンプル プロジェクト](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)で、サービス間の HTTP 通信の例を確認します。
 * [Reliable Services のリモート処理によるリモート プロシージャ コール](service-fabric-reliable-services-communication-remoting.md)
 * [Reliable Services の OWIN を使用する Web API](service-fabric-reliable-services-communication-webapi.md)

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 7573746b91f057d83a299d54801785118cc1c878
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 36b9a2e710a2a7f34ee9374e89f3fb19cc591ac3
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380133"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429594"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>チュートリアル: Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
 このチュートリアルでは、既存の ASP.NET アプリケーションをコンテナーに格納して Service Fabric アプリケーションとしてパッケージ化する方法を説明します。  ローカルの Service Fabric 開発クラスターでコンテナーを実行した後、アプリケーションを Azure にデプロイします。  アプリケーションは、[Azure SQL Database](/azure/sql-database/sql-database-technical-overview) にデータを保持します。 
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * Visual Studio を使った既存のアプリケーションのコンテナー格納
@@ -61,7 +61,9 @@ Fabrikam Fiber CallCenter アプリケーションがビルドされ、問題な
 ## <a name="create-an-azure-sql-db"></a>Azure SQL DB を作成する
 運用環境で Fabrikam Fiber CallCenter アプリケーションを実行するときは、データベースにデータを保持する必要があります。 現在コンテナー内のデータの永続化を保証する方法はありません。そのため、コンテナー内に SQL Server の運用データを格納することはできません。
 
-Microsoft では、[Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell) の使用をお勧めしています。 Azure でマネージド SQL Server DB を設定して実行するには、次のスクリプトを実行します。  スクリプトは必要に応じて変更してください。 *clientIP* は、開発用コンピューターの IP アドレスです。  開発用コンピューターが会社のファイアウォールにより保護されている場所に置かれている場合には、そのコンピューターの IP アドレスとインターネットに公開される IP アドレスとが異なることもあります。  このほか、[Azure Portal](https://portal.azure.com) で SQL データベース用のサーバー ファイアウォール規則を設定し、そこに開発用コンピューターの IP アドレスを指定することもできます。
+Microsoft では、[Azure SQL Database](/azure/sql-database/sql-database-get-started-powershell) の使用をお勧めしています。 Azure でマネージド SQL Server DB を設定して実行するには、次のスクリプトを実行します。  スクリプトは必要に応じて変更してください。 *clientIP* は、開発用コンピューターの IP アドレスです。
+
+開発用コンピューターが会社のファイアウォールにより保護されている場所に置かれている場合には、そのコンピューターの IP アドレスとインターネットに公開される IP アドレスとが異なることもあります。 ファイアウォール規則に使用する正しい IP アドレスがデータベースにあることを確認するには、[Azure portal](https://portal.azure.com) にアクセスして、[SQL データベース] セクションで目的のデータベースを探してください。 その名前をクリックし、[概要] セクションの [サーバー ファイアウォールの設定] をクリックします。 "クライアント IP アドレス" は、開発マシンの IP アドレスです。 "AllowClient" ルール内の IP アドレスと一致していることを確認してください。
 
 ```powershell
 $subscriptionID="<subscription ID>"
@@ -246,7 +248,7 @@ Remove-AzureRmResourceGroup -Name $clusterresourcegroupname
 ```
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * Visual Studio を使った既存のアプリケーションのコンテナー格納

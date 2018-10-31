@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
 custom: it-pro
-ms.openlocfilehash: 8ef68c8afcf61a1a11c341a679443071aece9812
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: eacb2e7c52adae9de0b74c3dade59446cc8459ed
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363005"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023552"
 ---
 # <a name="quickstart-access-azure-active-directory-to-create-a-new-tenant"></a>クイック スタート: Azure Active Directory にアクセスして新しいテナントを作成する
 Azure Active Directory (Azure AD) ポータルを使用して、組織の新しいテナントの作成など、すべての管理タスクを実行できます。 
@@ -24,13 +24,6 @@ Azure Active Directory (Azure AD) ポータルを使用して、組織の新し�
 このクイック スタートでは、Azure portal と Azure Active Directory にアクセスする方法と、組織の基本的なテナントを作成する方法について説明します。
 
 Azure サブスクリプションがない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/)を作成してください。
-
-## <a name="prerequisites"></a>前提条件
-開始する前に、次のことを行う必要があります。
-
-- 組織に有効な Azure AD ライセンスがあることを確認します。
-
-- 自分が全体管理者であることを確認します。
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 全体管理者アカウントを使用して、組織の [Azure portal](https://portal.azure.com/) にサインインします。
@@ -76,3 +69,5 @@ Azure portal にサインインすると、組織の新しいテナントを作�
 - グループとメンバーの追加については、[基本的なグループの作成とメンバーの追加](active-directory-groups-create-azure-portal.md)に関するページを参照してください。
 
 - 組織のアプリケーションとリソース アクセスの管理方法については、[Privileged Identity Management を使用したロールベースのアクセス](../../role-based-access-control/pim-azure-resource.md)と[条件付きのアクセス](../../role-based-access-control/conditional-access-azure-management.md)に関するページを参照してください。
+
+- [基本的なライセンスの情報、用語、関連機能](active-directory-whatis.md)など、Azure AD について学習します。

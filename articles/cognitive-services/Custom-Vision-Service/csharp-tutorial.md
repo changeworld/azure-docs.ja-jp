@@ -1,5 +1,5 @@
 ---
-title: 'チュートリアル: C# で Custom Vision Service の Windows アプリを構築する'
+title: 'チュートリアル: Custom Vision SDK for C# を使って画像分類プロジェクトを作成する'
 titlesuffix: Azure Cognitive Services
 description: プロジェクトを作成し、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、既定のエンドポイントを利用して予測を行います。
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 05/03/2018
 ms.author: anroth
-ms.openlocfilehash: 9e5ed71d4620f7ffeac8acb15f90d67964a86870
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: e046fe452a13384ae7929be805c6252d6ad2fbf9
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366643"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49953045"
 ---
-# <a name="tutorial-use-the-custom-vision-service-from-a-c-application"></a>チュートリアル: C# アプリケーションから Custom Vision Service を使用する
+# <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-c"></a>チュートリアル: Custom Vision SDK for C# を使って画像分類プロジェクトを作成する
 
-C# アプリケーションから Custom Vision Service を使用する方法について説明します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 Custom Vision Service API を利用し、Windows 用の独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
+C# アプリケーションで Custom Vision Service SDK を使用する方法について説明します。 作成後、タグを追加し、イメージをアップロードし、プロジェクトをトレーニングし、プロジェクトの既定の予測エンドポイント URL を取得し、エンドポイントを使用してイメージをプログラミングでテストできます。 Custom Vision Service API を利用し、Windows 用の独自のアプリをビルドするためのテンプレートとしてこのオープン ソース サンプルを利用します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +35,7 @@ C# アプリケーションから Custom Vision Service を使用する方法に
 
 ## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
 
-このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある__歯車アイコン__を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
 
 ![キー UI の画像](./media/csharp-tutorial/training-prediction-keys.png)
 
@@ -43,7 +43,7 @@ C# アプリケーションから Custom Vision Service を使用する方法に
 
 Visual Studio で、SDK プロジェクトの `Samples/CustomVision.Sample/` ディレクトリにあるプロジェクトを開きます。
 
-このアプリケーションは、先ほど取得したトレーニング キーを使用して、__My New Project__ という名前の新しいプロジェクトを作成します。 その後、イメージをアップロードして分類子のトレーニングおよびテストを行います。 分類子は、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを識別します。
+このアプリケーションは、先ほど取得したトレーニング キーを使用して、__My New Project__ という名前の新しいプロジェクトを作成します。 その後、イメージをアップロードして分類器のトレーニングおよびテストを行います。 分類器は、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを識別します。
 
 この例の主な機能は、以下のコード スニペットに実装されています。
 
@@ -84,7 +84,7 @@ Visual Studio で、SDK プロジェクトの `Samples/CustomVision.Sample/` デ
     trainingApi.CreateImagesFromFiles(project.Id, new ImageFileCreateBatch(imageFiles, new List<Guid>() { japaneseCherryTag.Id }));
     ```
 
-* __分類子をトレーニングする__
+* __分類器をトレーニングする__
 
     ```csharp
     // Now there are images with tags start training the project
@@ -135,7 +135,7 @@ Visual Studio で、SDK プロジェクトの `Samples/CustomVision.Sample/` デ
 
 1. 次の変更を行い、アプリケーションにトレーニング キーと予測キーを追加します。
 
-    * 次の行に __トレーニング キー__ を追加します。
+    * 次の行に__トレーニング キー__を追加します。
 
         ```csharp
         string trainingKey = "<your key here>";

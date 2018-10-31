@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e10b5271caef5530c94cca73b3e2e1d435080676
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 623c45cbc82139090d893b8501c7d363c4443d67
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49066923"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456185"
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region"></a>Azure VM を別の Azure リージョンにレプリケートする
 
@@ -24,7 +24,8 @@ ms.locfileid: "49066923"
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-
+> [!NOTE]
+> この記事は、既定のオプションと最小限のカスタマイズで Azure Site Recovery のエクスペリエンスを新しいユーザーに紹介することを意図しています。 カスタマイズ可能な各種の設定について、さらに詳しく知りたい場合は、[Azure VM のレプリケーションの有効化に関するチュートリアル](azure-to-azure-tutorial-enable-replication.md)を参照してください。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -33,15 +34,12 @@ Azure Portal (http://portal.azure.com) にログインします。
 ## <a name="enable-replication-for-the-azure-vm"></a>Azure VM のレプリケーションの有効化
 
 1. Azure Portal で **[仮想マシン]** をクリックし、レプリケートする VM を選択します。
-
 2. **[操作]** で、**[ディザスター リカバリー]** をクリックします。
 3. **[Configure disaster recovery]\(ディザスター リカバリーを構成する\)** > **[ターゲット リージョン]** で、レプリケート先のターゲット リージョンを選択します。
 4. このクイック スタートでは、その他は既定の設定をそのまま使用します。
 5. **[レプリケーションを有効にする]** をクリックします。 これにより VM レプリケーションを有効にするジョブが開始されます。
 
     ![レプリケーションの有効化](media/azure-to-azure-quickstart/enable-replication1.png)
-
-
 
 ## <a name="verify-settings"></a>設定の確認
 
@@ -68,7 +66,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、1 つの VM をセカンダリ リージョンにレプリケートしました。
+このクイック スタートでは、1 つの VM をセカンダリ リージョンにレプリケートしました。 さらに他のオプションについても考察し、復旧計画を使用して一連の Azure VM をレプリケートしてみましょう。
 
 > [!div class="nextstepaction"]
 > [Azure VM のディザスター リカバリーを構成する](azure-to-azure-tutorial-enable-replication.md)

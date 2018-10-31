@@ -1,22 +1,23 @@
 ---
-title: 音声サービスとは
-description: Microsoft の Cognitive Services の一部である Speech Service では、これまで別々に提供されていた複数の Azure 音声サービス (Bing Speech (音声認識とテキスト読み上げで構成)、Custom Speech、Speech Translation) が統合されています。
+title: Speech Service とは
 titleSuffix: Azure Cognitive Services
+description: Azure Cognitive Services の一部である Speech Service では、これまで別々に提供されていた複数の音声サービス (Bing Speech (音声認識とテキスト読み上げで構成)、Custom Speech、音声翻訳) が統合されています。
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: overview
 ms.date: 09/24/2018
 ms.author: erhopf
-ms.openlocfilehash: 7a61d85d96b993d49a536c38c2907a3d6ef55e65
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: ba4204c23f3467ff07940fd6a72464e67604dde1
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365460"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470448"
 ---
-# <a name="what-is-the-speech-service"></a>音声サービスとは
+# <a name="what-is-the-speech-service"></a>Speech Service とは
 
 
 他の Azure 音声サービスと同じように、Speech Service は、Cortana や Microsoft Office などの製品で使用されている音声認識テクノロジを利用しています。

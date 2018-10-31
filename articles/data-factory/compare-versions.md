@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: ca00a414402c1cfdef55cfbde9291688f091bf77
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: aecb193d1d9a10dbb5c936401f9900c4b2be071f
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43095921"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638244"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Azure Data Factory と Data Factory バージョン 1 の比較
 この記事では、Data Factory と Azure Data Factory バージョン 1 を比較します。 Data Factory の概要については、[Data Factory の概要](introduction.md)に関するページを参照してください。Data Factory バージョン 1 の概要については、「[Azure Data Factory の概要](v1/data-factory-introduction.md)」を参照してください。 
@@ -25,7 +25,7 @@ ms.locfileid: "43095921"
 ## <a name="feature-comparison"></a>機能の比較
 次の表では、Data Factory の機能と Data Factory バージョン 1 の機能を比較します。 
 
-| Feature | Version 1 | 現在のバージョン | 
+| 機能 | Version 1 | 現在のバージョン | 
 | ------- | --------- | --------- | 
 | データセット | アクティビティで入力および出力として使用するデータを参照するデータの名前付きビューです。 データセットは、テーブル、ファイル、フォルダー、ドキュメントなど、さまざまなデータ ストア内のデータを示します。 たとえば、Azure Blob データセットは、アクティビティによってデータが読み取られる、Azure Blob Storage 内の BLOB コンテナーと BLOB フォルダーを示しています。<br/><br/>**可用性**で、データセットの処理時間枠スライス モデル (時間単位、日単位など) を定義します。 | データセットは、現在のバージョンと同じです。 ただし、データセットの**可用性**スケジュールを定義する必要はありません。 クロック スケジューラ パラダイムからパイプラインをスケジュールできるトリガー リソースを定義できます。 詳細については、「[トリガー](concepts-pipeline-execution-triggers.md#triggers)」と[データセット](concepts-datasets-linked-services.md)に関するページを参照してください。 | 
 | リンクされたサービス | リンクされたサービスは、接続文字列によく似ており、Data Factory が外部リソースに接続するために必要な接続情報を定義します。 | リンクされたサービスは Data Factory V1 と同じですが、現在のバージョン の Data Factory の Integration Runtime コンピューティング環境を利用するための新しい **connectVia** プロパティがあります。 詳細については、[Azure Data Factory の統合ランタイム](concepts-integration-runtime.md)に関するページと、[Azure Blob Storage のリンクされたサービスのプロパティ](connector-azure-blob-storage.md#linked-service-properties)に関するページを参照してください。 |
@@ -62,7 +62,7 @@ V1 では、アクティビティの出力を別のアクティビティの入�
 [Until](control-flow-until-activity.md) アクティビティは、プログラミング言語における do-until ループ構文と同じ働きを持ちます。 Until アクティビティでは、そこに関連付けられている条件が `true` に評価されるまで、一連のアクティビティがループ実行されます。 Data Factory では、until アクティビティのタイムアウト値を指定することができます。  
 
 ### <a name="trigger-based-flows"></a>トリガー ベースのフロー
-パイプラインは、オンデマンドで、または実時間に合わせてトリガーできます。 トリガーの詳細については、[パイプラインとトリガー](concepts-pipeline-execution-triggers.md)に関する記事を参照してください。 
+パイプラインは、オンデマンド (イベント ベースである BLOB ポスト) で、または実時間に合わせてトリガーできます。 トリガーの詳細については、[パイプラインとトリガー](concepts-pipeline-execution-triggers.md)に関する記事を参照してください。 
 
 ### <a name="invoking-a-pipeline-from-another-pipeline"></a>別のパイプラインからのパイプラインの呼び出し
 [パイプラインの実行アクティビティ](control-flow-execute-pipeline-activity.md)を使用すると、Data Factory のパイプラインが別のパイプラインを呼び出すことができます。

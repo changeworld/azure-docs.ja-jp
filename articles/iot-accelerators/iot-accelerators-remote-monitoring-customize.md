@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7971a5aeadd2b2edaa43da8bacae9743937ce30e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 59f2860168782d96bf82d0a27f9bb9eeed0f1020
+ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127348"
+ms.lasthandoff: 10/12/2018
+ms.locfileid: "49167496"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>リモート監視ソリューション アクセラレータをカスタマイズする
 
@@ -460,9 +460,15 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、リモート監視ソリューション アクセラレータの Web UI のカスタマイズに役立つように使用できるリソースについて説明します。
+この記事では、リモート監視ソリューション アクセラレータの Web UI のカスタマイズに役立つように使用できるリソースについて説明します。 UI のカスタマイズに関する詳細については、次の記事を参照してください。
+
+* [リモート監視ソリューション アクセラレータの Web UI にカスタム ページを追加する](iot-accelerators-remote-monitoring-customize-page.md)
+* [リモート監視ソリューション アクセラレータの Web UI にカスタム サービスを追加する](iot-accelerators-remote-monitoring-customize-service.md)
+* [リモート監視ソリューション アクセラレータの Web UI にカスタム グリッドを追加する](iot-accelerators-remote-monitoring-customize-grid.md)
+* [リモート監視ソリューション アクセラレータの Web UI にカスタム ポップアップを追加する](iot-accelerators-remote-monitoring-customize-flyout.md)
+* [リモート監視ソリューション アクセラレータの Web UI のダッシュボードにカスタム パネルを追加する](iot-accelerators-remote-monitoring-customize-panel.md)
 
 リモート監視ソリューション アクセラレータの概念に関する詳細については、[リモート監視のアーキテクチャ](iot-accelerators-remote-monitoring-sample-walkthrough.md)に関するページをご覧ください
 
-リモート監視ソリューションのカスタマイズの詳細については、「[マイクロサービスをカスタマイズして再展開する](iot-accelerators-microservices-example.md)
-<!-- Next tutorials in the sequence -->」をご覧ください。
+リモート監視ソリューション マイクロサービスのカスタマイズの詳細については、「[マイクロサービスをカスタマイズして再展開する](iot-accelerators-microservices-example.md)」をご覧ください。
+<!-- Next tutorials in the sequence -->
