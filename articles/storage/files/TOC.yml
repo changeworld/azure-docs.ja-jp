@@ -160,8 +160,6 @@ items:
     items:
     - name: BLOB、キュー、テーブル、ファイル
       href: https://docs.microsoft.com/java/api/overview/azure/storage/client
-    - name: リソース マネージャー
-      href: https://docs.microsoft.com/java/api/overview/azure/storage/management
   - name: Node.js
     href: https://docs.microsoft.com/javascript/api/overview/azure/storage
   - name: Ruby
@@ -238,9 +236,9 @@ items:
       href: https://github.com/Azure/azure-storage-cpp
     - name: Python
       href: https://github.com/Azure/azure-storage-python
-ms.openlocfilehash: e356d611a54e11d58cd519d4389109adb2e1581c
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: deef0d1d23736f1d781f513f2590c77b7539e922
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221409"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247186"

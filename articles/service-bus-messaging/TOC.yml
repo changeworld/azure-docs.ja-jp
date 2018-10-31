@@ -30,8 +30,6 @@ items:
       href: service-bus-python-how-to-use-queues.md
     - name: メッセージの送受信 - Ruby
       href: service-bus-ruby-how-to-use-queues.md
-    - name: メッセージの送受信 - REST
-      href: /rest/api/servicebus/queues
   - name: Service Bus トピックとサブスクリプション
     items:
     - name: メッセージの発行とサブスクライブ - .NET
@@ -151,7 +149,7 @@ items:
       href: service-bus-end-to-end-tracing.md
     - name: 多層 Service Bus アプリケーションを構築する
       href: service-bus-dotnet-multi-tier-app-using-service-bus-queues.md
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: Azure PowerShell を使用したエンティティのプロビジョニング
       href: service-bus-manage-with-ps.md
@@ -226,9 +224,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azureservicebus
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
-ms.openlocfilehash: 9ab10886a16bdd71a099509d2c77122720f99fe4
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: d3e17d59fae0675d58e094c16b0454e7e0466362
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883858"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239340"
