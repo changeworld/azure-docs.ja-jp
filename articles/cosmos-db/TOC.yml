@@ -74,21 +74,27 @@ items:
     href: sql-api-resources.md
   - name: グローバル配信
     items:
-    - name: はじめに
+    - name: 概要
       href: distribute-data-globally.md
-    - name: 主な利点
-      href: distribute-data-globally-benefits.md
-    - name: グローバル分散の有効化
-      href: distribute-data-globally-turnkey.md
-    - name: マルチマスターの有効化
-      href: enable-multi-master.md
-    - name: OSS NoSQL データベースでのマルチマスター
-      href: multi-master-oss-nosql.md
-    - name: 競合の解決
-      href: multi-master-conflict-resolution.md
+    - name: 整合性レベル
+      href: consistency-levels.md
+    - name: 適切な整合性レベルの選択
+      href: consistency-levels-choosing.md
+    - name: 整合性レベルと Cosmos DB API
+      href: consistency-levels-across-apis.md
+    - name: 整合性、可用性、パフォーマンスのトレードオフ
+      href: consistency-levels-tradeoffs.md
+    - name: 高可用性
+      href: high-availability.md
+    - name: スループットのグローバルなスケーリング
+      href: scaling-throughput.md
+    - name: 競合解決ポリシー
+      href: conflict-resolution-policies.md
+    - name: グローバル配信 - 内部のしくみ
+      href: global-dist-under-the-hood.md
   - name: Throughput
     items:
-    - name: はじめに
+    - name: 概要
       href: request-units.md
     - name: スループットの取得と設定
       href: set-throughput.md
@@ -96,8 +102,6 @@ items:
     href: partition-data.md
   - name: インデックス作成
     href: indexing-policies.md
-  - name: 整合性モデル
-    href: consistency-levels.md
   - name: Change Feed
     href: change-feed.md
   - name: Time to Live
@@ -106,7 +110,7 @@ items:
     href: unique-keys.md
   - name: セキュリティ
     items:
-    - name: はじめに
+    - name: 概要
       href: database-security.md
     - name: データの暗号化
       href: database-encryption-at-rest.md
@@ -122,8 +126,6 @@ items:
     href: cosmos-db-reserved-capacity.md
   - name: バックアップと復元
     href: online-backup-and-restore.md
-  - name: 高可用性
-    href: regional-failover.md
 - name: マルチモデルの API
   items:
   - name: SQL API ドキュメント
@@ -190,6 +192,8 @@ items:
         href: programming.md
       - name: SQL データのパーティション分割
         href: sql-api-partition-data.md
+      - name: Java Async SDK のトラブルシューティング
+        href: troubleshoot-java-async-sdk.md
       - name: データの種類
         items:
         - name: Datetime
@@ -385,7 +389,7 @@ items:
   expanded: true
 - name: ハウツー ガイド
   items:
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: PowerShell を使用して管理する
       href: manage-account-with-powershell.md
@@ -417,6 +421,14 @@ items:
       href: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-cosmosdb
   - name: VSTS CI/CD パイプラインの設定
     href: tutorial-setup-ci-cd.md
+  - name: グローバル配信
+    items:
+    - name: データベース アカウントの管理
+      href: how-to-manage-database-account.md
+    - name: 整合性の管理
+      href: how-to-manage-consistency.md
+    - name: 競合の管理
+      href: how-to-manage-conflicts.md
   - name: ベスト プラクティス
     items:
     - name: パフォーマンスに関するヒント
@@ -501,9 +513,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: dfa5b34127abf569a359814b6064ec981f57796d
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 55a0bb09e56667078d463846d90cd086cb05dd4e
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985830"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240428"

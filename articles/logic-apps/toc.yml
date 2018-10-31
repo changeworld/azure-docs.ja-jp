@@ -273,7 +273,7 @@ items:
       href: logic-apps-enterprise-integration-xml-validation.md
     - name: Yammer
       href: ../connectors/connectors-create-api-yammer.md
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: ロジック アプリを管理する - Visual Studio
       href: manage-logic-apps-with-visual-studio.md
@@ -289,16 +289,16 @@ items:
       href: logic-apps-create-deploy-template.md
   - name: 監視
     items:
-    - name: ロジック アプリの状態を監視する
+    - name: ロジック アプリの監視
       href: logic-apps-monitor-your-logic-apps.md
-    - name: Azure Log Analytics でロジック アプリの状態を監視する
+    - name: Log Analytics を使用したロジック アプリの監視
       href: logic-apps-monitor-your-logic-apps-oms.md
-    - name: B2B メッセージを監視する
+    - name: Log Analytics を使用した B2B メッセージの監視
       href: logic-apps-monitor-b2b-message.md
       items:
-      - name: Azure Log Analytics での B2B メッセージの追跡
+      - name: Log Analytics を使用した B2B メッセージの追跡
         href: logic-apps-track-b2b-messages-omsportal.md
-      - name: Azure Log Analytics に対する B2B メッセージのクエリ実行
+      - name: Log Analytics を使用した B2B メッセージに対するクエリの作成
         href: logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md
   - name: 例、シナリオ、チュートリアル
     href: logic-apps-examples-and-scenarios.md
@@ -371,9 +371,9 @@ items:
     href: https://customers.microsoft.com/en-us/search?sq=%22Azure%20Logic%20Apps%20%22&ff=story_product_categories%26%3EAzure&p=0&so=story_publish_date%20desc
   - name: ビデオ
     href: https://azure.microsoft.com/resources/videos/index/?services=logic-apps&sort=newest
-ms.openlocfilehash: 4e6e8b78500206b8d0d35a7e1adf706d99143624
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: e37217154fdf57b1fa9280cf2d17111bb34f9683
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093370"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50221429"

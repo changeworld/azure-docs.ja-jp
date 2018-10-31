@@ -83,6 +83,8 @@ items:
       href: plan-connect-performance-factors.md
     - name: サインイン方法
       href: plan-connect-user-signin.md
+    - name: Azure AD の UserPrincipalName の設定
+      href: plan-connect-userprincipalname.md
     - name: インスタンスに関する特別な考慮事項
       href: reference-connect-instances.md
     - name: ハイブリッド ID の設計上の考慮事項
@@ -153,6 +155,8 @@ items:
       href: how-to-connect-fed-ssl-update.md
     - name: Azure AD との AD FS の信頼を管理する
       href: how-to-connect-azure-ad-trust.md
+    - name: O365 RP のハッシュ アルゴリズムを変更する
+      href: how-to-connect-fed-sha256-guidance.md
     - name: Azure AD のフェデレーション互換性リスト
       href: how-to-connect-fed-compatibility.md
     - name: SAML 2.0 サーバーを IDP として使用する
@@ -287,9 +291,9 @@ items:
     href: reference-connect-sync-functions-reference.md
   - name: Azure AD のフェデレーション互換性リスト
     href: how-to-connect-fed-compatibility.md
-ms.openlocfilehash: eda2a26a9bd3d5a484865a8458246506f24bb518
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: e5d89e467b9dd6b41e246c889f41ad9abe21182b
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351934"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249673"

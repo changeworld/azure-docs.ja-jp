@@ -40,8 +40,8 @@ items:
       href: /azure/active-directory/fundamentals/add-users-azure-active-directory?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: ユーザー プロファイルの管理
       href: /azure/active-directory/fundamentals/active-directory-users-profile-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: アカウントの共有
-      href: /azure/active-directory/active-directory-sharing-accounts?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: ユーザー アカウントの共有
+      href: users-sharing-accounts.md
     - name: 管理者ロールへのユーザーの割り当て
       href: /azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: 削除済みユーザーの復元
@@ -159,9 +159,9 @@ items:
     href: https://docs.microsoft.com/cli/azure/ad
   - name: Azure AD PowerShell for Graph
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
-ms.openlocfilehash: ade39bbb8e98bb25889e18d54a042401f2f20228
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: a9c4a93bfea82ff205d483dfe9a4ed189400b81f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853676"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241516"

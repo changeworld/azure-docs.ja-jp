@@ -329,32 +329,30 @@ items:
       href: sql-database-monitor-tune-overview.md
     - name: インテリジェント パフォーマンス
       items:
-      - name: クエリ実行
+      - name: チューニング アドバイザー
         items:
-        - name: インテリジェントなクエリの処理
-          href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
-        - name: アダプティブ クエリ処理
-          href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
-      - name: 監視とチューニング
-        items:
-        - name: データベース アドバイザーのパフォーマンスに関する推奨事項
-          href: sql-database-advisor.md
         - name: チューニング操作と推奨事項
           href: sql-database-performance.md
-        - name: パフォーマンスに関する推奨事項の適用
-          href: sql-database-advisor-portal.md
-      - name: Intelligent Insights
-        items:
-        - name: Intelligent Insights の概要
-          href: sql-database-intelligent-insights.md
-        - name: 診断ログの記録
-          href: sql-database-metrics-diag-logging.md
-        - name: 診断ログの使用
-          href: sql-database-intelligent-insights-use-diagnostics-log.md
         - name: '[Query Performance Insight]'
           href: sql-database-query-performance.md
-        - name: パフォーマンスのトラブルシューティング
+        - name: データベース アドバイザーのパフォーマンスに関する推奨事項
+          href: sql-database-advisor.md
+        - name: パフォーマンスに関する推奨事項の適用
+          href: sql-database-advisor-portal.md
+      - name: 高度な監視
+        items:
+        - name: Azure SQL Analytics の監視
+          href: https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql
+        - name: 診断テレメトリのログ記録
+          href: sql-database-metrics-diag-logging.md
+      - name: 自動化されたトラブルシューティング
+        items:
+        - name: Intelligent Insights によるパフォーマンスの分析
+          href: sql-database-intelligent-insights.md
+        - name: Intelligent Insights を使用したパフォーマンスのトラブルシューティング
           href: sql-database-intelligent-insights-troubleshoot-performance.md
+        - name: Intelligent Insights 診断ログの使用
+          href: sql-database-intelligent-insights-use-diagnostics-log.md
       - name: 自動チューニング
         items:
         - name: 自動チューニングの概要
@@ -363,6 +361,12 @@ items:
           href: sql-database-automatic-tuning-enable.md
         - name: 電子メール通知の有効化
           href: sql-database-automatic-tuning-email-notifications.md
+      - name: インテリジェントなクエリの処理
+        items:
+        - name: インテリジェントなクエリの処理
+          href: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=/azure/sql-database/toc.json
+        - name: アダプティブ クエリ処理
+          href: https://docs.microsoft.com/sql/relational-databases/performance/adaptive-query-processing?toc=/azure/sql-database/toc.json
     - name: 手動チューニング
       items:
       - name: 手動チューニング
@@ -634,9 +638,9 @@ items:
     href: /azure/architecture/
   - name: 顧客事例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: 416f74c395f331de6af749f3de1d3a3e966b8b35
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: c5e7a5265a7667acf462085f81c4b53c8d86236b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49650062"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50221480"

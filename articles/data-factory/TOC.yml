@@ -245,7 +245,7 @@ items:
       href: connector-postgresql.md
     - name: Presto
       href: connector-presto.md
-    - name: QuickBooks
+    - name: QuickBooks Online
       href: connector-quickbooks.md
     - name: Salesforce
       href: connector-salesforce.md
@@ -407,6 +407,8 @@ items:
       href: create-self-hosted-integration-runtime.md
     - name: Azure-SSIS 統合ランタイム
       href: create-azure-ssis-integration-runtime.md
+    - name: 共有のセルフホステッド統合ランタイム
+      href: create-shared-self-hosted-integration-runtime-powershell.md
   - name: Azure での SSIS パッケージの実行
     items:
     - name: SSIS パッケージの実行アクティビティを使用した SSIS パッケージの実行
@@ -467,9 +469,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: サポート オプション
     href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: ec46869172e1a41fca7f452e5809d7b98f56d1ea
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 7a85fe07860835054554160b5cac6d8cda50863e
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457274"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248355"

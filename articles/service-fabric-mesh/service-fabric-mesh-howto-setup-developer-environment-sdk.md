@@ -68,7 +68,7 @@ Install-WindowsFeature Containers
 
 Service Fabric Mesh ランタイム、SDK、ツールを次の順序でインストールします。
 
-1. Web Platform Installer を使用して [Service Fabric Mesh SDK][download-sdkmesh] をインストールします。 Microsoft Azure Service Fabric の SDK とランタイムもインストールされます。
+1. Web Platform Installer を使用して [Service Fabric mesh SDK][download-sdkmesh] をインストールします。 Microsoft Azure Service Fabric の SDK とランタイムもインストールされます。
 2. Visual Studio Marketplace から [Visual Studio Service Fabric Mesh Tools (プレビュー) の拡張機能][download-tools] をインストールします。
 
 ## <a name="build-a-cluster"></a>クラスターの構築

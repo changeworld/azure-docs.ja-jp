@@ -655,6 +655,10 @@ items:
       href: ../monitoring-and-diagnostics/monitoring-service-notifications.md?toc=/azure/azure-monitor/toc.json
     - name: ログ データのクエリ
       items:
+      - name: クエリ言語のドキュメント
+        href: ../log-analytics/query-language/query-language.md
+      - name: 言語の相違点
+        href: ../log-analytics/query-language/data-explorer-difference.md?toc=/azure/azure-monitor/toc.json
       - name: 作業開始
         items:
         - name: Analytics ポータルの使用
@@ -691,23 +695,23 @@ items:
           href: ../log-analytics/query-language/splunk-cheatsheet.md?toc=/azure/azure-monitor/toc.json
       - name: クエリ言語
         items:
-        - name: 言語のリファレンス
-          href: ../log-analytics/query-language/kusto.md?toc=/azure/azure-monitor/toc.json
         - name: 例
           href: ../log-analytics/query-language/examples.md?toc=/azure/azure-monitor/toc.json
+        - name: リソース間の検索
+          href: ../log-analytics/log-analytics-cross-workspace-search.md?toc=/azure/azure-monitor/toc.json
         - name: アプリの式
           href: ../log-analytics/query-language/app-expression.md?toc=/azure/azure-monitor/toc.json
         - name: ワークスペースの式
           href: ../log-analytics/query-language/workspace-expression.md?toc=/azure/azure-monitor/toc.json
-      - name: アプリケーション データ
-        href: ../application-insights/app-insights-analytics.md?toc=/azure/azure-monitor/toc.json
-      - name: 標準のプロパティ
-        href: ../log-analytics/log-analytics-standard-properties.md?toc=/azure/azure-monitor/toc.json
-      - name: リソース間の検索
-        href: ../log-analytics/log-analytics-cross-workspace-search.md?toc=/azure/azure-monitor/toc.json
+      - name: ログ データ
+        items:
+        - name: アプリケーション データ
+          href: ../application-insights/app-insights-analytics.md?toc=/azure/azure-monitor/toc.json
+        - name: 標準のプロパティ
+          href: ../log-analytics/log-analytics-standard-properties.md?toc=/azure/azure-monitor/toc.json
       - name: 検索結果からのアクションの実行
         href: ../log-analytics/log-analytics-log-search-takeaction.md?toc=/azure/azure-monitor/toc.json
-      - name: コンピューター グループの使用
+      - name: コンピューター グループ
         href: ../log-analytics/log-analytics-computer-groups.md?toc=/azure/azure-monitor/toc.json
       - name: Flow コネクタ
         href: ../log-analytics/log-analytics-flow-tutorial.md?toc=/azure/azure-monitor/toc.json
@@ -996,9 +1000,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 3d738f4fcca9189a14f9c0e84d0a7f60d5942c1c
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 78173d1513939100d07501aaf72ebf24f5b72884
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140572"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240496"
