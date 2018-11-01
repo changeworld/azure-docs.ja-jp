@@ -3,7 +3,7 @@ title: Secure LDAP (LDAPS) を使用して Azure AD Domain Services マネージ
 description: Secure LDAP (LDAPS) を使用して Azure AD Domain Services マネージド ドメインにバインドする
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 6871374a-0300-4275-9a45-a39a52c65ae4
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: maheshu
-ms.openlocfilehash: d3fbefd002f0b2774578d24cf2e3145a21a5e1f3
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.author: ergreenl
+ms.openlocfilehash: e421d3219f50c0dbb635dfe5b9cb3e9a24d4fa61
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456407"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158536"
 ---
 # <a name="bind-to-an-azure-ad-domain-services-managed-domain-using-secure-ldap-ldaps"></a>Secure LDAP (LDAPS) を使用して Azure AD Domain Services マネージド ドメインにバインドする
 

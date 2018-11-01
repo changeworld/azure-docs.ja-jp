@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 677cd65b011ed69868564617ff79b7a57947c230
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 2b9e7615fc0c2262c33ab5d7be39bdb99bc752bd
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404445"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412960"
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows コンピューターを Azure の Log Analytics サービスに接続する
 
@@ -42,7 +42,7 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 
 1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、エージェントのレポート送信先にするワークスペースを選択します。
-3. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+3. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/log-analytics-agent-windows/log-analytics-advanced-settings-01.png)<br><br>  
 4. **[接続されたソース]**、**[Windows サーバー]** の順に選択します。   
 5. **ワークスペース ID**と**主キー**をコピーして、好みのエディターに貼り付けます。    
    
@@ -58,7 +58,7 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 6. **[Azure Log Analytics]** ページで、次の手順を実行します。
    1. **[ワークスペース ID]** と **[ワークスペース キー (主キー)]** に、先ほどコピーした値を貼り付けます。  コンピューターが Azure Government クラウド内の Log Analytics ワークスペースに報告する必要がある場合は、**[Azure クラウド]** ドロップダウン リストから **[Azure US Government]** を選択します。  
    2. コンピューターがプロキシ サーバーを介して Log Analytics サービスと通信する必要がある場合は、**[詳細]** をクリックし、プロキシ サーバーの URL とポート番号を指定します。  プロキシ サーバーで認証が必要な場合には、プロキシ サーバーにアクセスするためのユーザー名とパスワードを入力し、**[次へ]** をクリックします。  
-7. 必要な構成設定をしたら、**[次へ]** をクリックします。<br><br> ![ワークスペース ID と主キーの貼り付け](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-setup-laworkspace.png)<br><br>
+7. 必要な構成設定をしたら、**[次へ]** をクリックします。<br><br> ![ワークスペース ID と主キーの貼り付け](media/log-analytics-agent-windows/log-analytics-mma-setup-laworkspace.png)<br><br>
 8. **[インストールの準備完了]** ページで、設定内容を確認し、**[インストール]** をクリックします。
 9. **[構成は正常に終了しました]** ページで **[完了]** をクリックします。
 
@@ -160,7 +160,7 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 
 エージェントのインストールが完了した後、エージェントが正常に接続され、レポートが送信されていることを確認するには、次の 2 つの方法があります。  
 
-**[コントロール パネル]** 内のコンピューターから、**[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、**[Azure Log Analytics]** タブに、**Microsoft Monitoring Agent が Microsoft Operations Management Suite サービスに正常に接続している**ことを示すメッセージが表示されます。<br><br> ![Log Analytics への MMA 接続の状態](media/log-analytics-quick-collect-windows-computer/log-analytics-mma-laworkspace-status.png)
+**[コントロール パネル]** 内のコンピューターから、**[Microsoft Monitoring Agent]** という項目を見つけます。  これを選択すると、**[Azure Log Analytics]** タブに、**Microsoft Monitoring Agent が Microsoft Operations Management Suite サービスに正常に接続している**ことを示すメッセージが表示されます。<br><br> ![Log Analytics への MMA 接続の状態](media/log-analytics-agent-windows/log-analytics-mma-laworkspace-status.png)
 
 また、Azure ポータルで簡単なログ検索を行うこともできます。  
 

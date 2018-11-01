@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: iainfou
-ms.openlocfilehash: 2c74e3ffaa5ced0925b5ad0edfc357afb375803e
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: fa0fcde29b94fc4107fc91d798fdba8cc8f9b790
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363965"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231153"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Helm を使用したアプリケーションのインストール
 
@@ -227,7 +227,7 @@ Kubernetes アプリケーションのデプロイの管理について詳しく
 [helm]: https://github.com/kubernetes/helm/
 [helm-documentation]: https://docs.helm.sh/
 [helm-init]: https://docs.helm.sh/helm/#helm-init
-[helm-install]: https://docs.helm.sh/helm/#helm-install
+[helm-install]: https://docs.helm.sh/using_helm/#installing-helm
 [helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
 [helm-list]: https://docs.helm.sh/helm/#helm-list
 [helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control

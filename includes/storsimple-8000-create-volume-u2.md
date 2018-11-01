@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: cce78fb6a5472a625e973bb8ca4afdfd6290a26c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166261"
+---
 <!--author=alkohli last changed: 07/19/2017-->
 
 #### <a name="to-create-a-volume"></a>ボリュームを作成するには
@@ -36,7 +49,7 @@
 
     9. **Create** をクリックしてください。 指定した設定でボリュームが作成されます。
 
-        ![Click Create](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
+        ![Create をクリックしてください。](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 
         > [!NOTE]
         > この時点ではまだボリュームが保護されていないことに注意してください。 スケジュールされたバックアップを作成するには、バックアップ ポリシーを作成してこのボリュームに関連付ける必要があります。 

@@ -1,10 +1,10 @@
 ---
-title: Azure Media Services でエンコードの速度と同時実行性を管理する | Microsoft Docs
-description: この記事では、Azure Media Services でエンコード ジョブやエンコード タスクの速度と同時実行性を管理する方法について簡単に説明します。
+title: Azure Media Services でエンコードの速度とコンカレンシーを管理する | Microsoft Docs
+description: この記事では、Azure Media Services でエンコード ジョブやエンコード タスクの速度とコンカレンシーを管理する方法について簡単に説明します。
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 676313f8-a158-4e3a-a99b-2c29a341ecc9
 ms.service: media-services
@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: d7e3d6d0c176d0a903c3027ab4feddb332557566
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3f358be630d9a50d0f048d66c9f79e168c8adcdf
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782871"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230201"
 ---
-#  <a name="manage-speed-and-concurrency-of-your-encoding"></a>エンコードの速度と同時実行の管理
+#  <a name="manage-speed-and-concurrency-of-your-encoding"></a>エンコードの速度とコンカレンシーの管理
 
-この記事では、エンコード ジョブやエンコード タスクの速度と同時実行性を管理する方法について簡単に説明します。
+この記事では、エンコード ジョブやエンコード タスクの速度とコンカレンシーを管理する方法について簡単に説明します。
 
 ## <a name="overview"></a>概要
 

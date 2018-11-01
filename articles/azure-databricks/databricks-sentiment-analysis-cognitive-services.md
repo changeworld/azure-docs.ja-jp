@@ -3,19 +3,19 @@ title: 'チュートリアル: Azure Databricks を使用したストリーミ�
 description: Event Hubs と Cognitive Services API と共に Azure Databricks を使用して、ストリーミング データに対し、ほぼリアルタイムで感情分析を実行する方法について説明します。
 services: azure-databricks
 author: lenadroid
-manager: cgronlun
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.workload: Active
 ms.date: 10/23/2018
 ms.author: alehall
-ms.openlocfilehash: ddaee7c534ec8ac1bd4ce958a8ed08922cdd17e9
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 6868e481a796980be315c466cd79021255355084
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50026247"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416652"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用したストリーミング データに対する感情分析
 

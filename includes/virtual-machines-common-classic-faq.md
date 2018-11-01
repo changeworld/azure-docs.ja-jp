@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 45a6bd349169265ef411d01a3601a27551847633
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227140"
+---
 この記事では、クラシック デプロイ モデルで作成された Azure Virtual Machines についてユーザーからよく寄せられる質問に回答します。
 
 ## <a name="can-i-migrate-my-vm-created-in-the-classic-deployment-model-to-the-new-resource-manager-model"></a>クラシック デプロイ モデルで作成した VM を新しい Resource Manager モデルに移行できますか。
@@ -50,8 +60,8 @@ Azure では、VHD 形式の仮想ハード ディスク (固定型) のみを�
 ## <a name="how-can-i-access--my-virtual-machine"></a>仮想マシンへのアクセス方法を教えてください。
 Windows VM の場合にはリモート デスクトップ接続、Linux VM の場合には Secure Shell (SSH) をそれぞれ使用してリモート接続を確立し、仮想マシンにサインインする必要があります。 手順については、次の項目を参照してください。
 
-* [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 最大 2 つの同時接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
-* [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 SSH では、既定で最大 10 の同時接続が可能です。 この接続数は構成ファイルを編集することで増やすことができます。
+* [Windows Server が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/windows/classic/connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。 最大 2 つのコンカレント接続がサポートされます (サーバーがリモート デスクトップ サービスのセッション ホストとして構成されている場合を除く)。  
+* [Linux が実行されている仮想マシンにログオンする方法](../articles/virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)。 SSH では、既定で最大 10 のコンカレント接続が可能です。 この接続数は構成ファイルを編集することで増やすことができます。
 
 リモート デスクトップまたは SSH について問題が発生する場合は、 [VMAccess](../articles/virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) 拡張機能をインストールして使用し、問題を修正してください。
 

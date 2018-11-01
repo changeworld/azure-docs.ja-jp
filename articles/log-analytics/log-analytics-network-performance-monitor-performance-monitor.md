@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 1254afc1ad1c513c18d565be8a6543a6ee0ae94b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 17a15ca00d7343064bde84860de91b62ff136cfe
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040593"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414124"
 ---
 # <a name="network-performance-monitor-solution-performance-monitoring"></a>Network Performance Monitor ソリューション: パフォーマンスの監視
 
@@ -33,12 +33,12 @@ ms.locfileid: "48040593"
 - SNMP を必要とせずに、ネットワークの正常性を監視する。
 
 
-![ネットワーク パフォーマンス監視](media/log-analytics-network-performance-monitor/npm-performance-monitor.png)
+![ネットワーク パフォーマンス監視](media/log-analytics-network-performance-monitor-performance-monitor/npm-performance-monitor.png)
 
 ## <a name="configuration"></a>構成
 Network Performance Monitor の構成を開くには、[Network Performance Monitor ソリューション](log-analytics-network-performance-monitor.md)を開き、**[構成]** を選びます。
 
-![Network Performance Monitor の構成](media/log-analytics-network-performance-monitor/npm-configure-button.png)
+![Network Performance Monitor の構成](media/log-analytics-network-performance-monitor-performance-monitor/npm-configure-button.png)
 
 ### <a name="create-new-networks"></a>新しいネットワークの作成
 
@@ -120,21 +120,21 @@ Network Performance Monitor では、代理トランザクションを実行す�
 
 ドリルダウン ページには、**DMZ2-DMZ1** のネットワーク リンクのすべてのサブネットワーク リンクが表示されます。 両方のサブネットワーク リンクの待機時間がしきい値を超えており、そのためにネットワーク リンクの状態が異常になっています。 両方のサブネットワーク リンクについて待機時間の傾向を確認することもできます。 グラフの時間の選択コントロールを使って、必要な時間範囲に絞り込みます。 待機時間がピークに到達した時刻を確認できます。 後でこの期間のログを検索して問題を調査します。 詳しく調査するには、**[ノード リンクの表示]** を選びます。 
  
- ![[サブネットワーク リンク] ページ](media/log-analytics-network-performance-monitor/subnetwork-links.png) 
+ ![[サブネットワーク リンク] ページ](media/log-analytics-network-performance-monitor-performance-monitor/subnetwork-links.png) 
 
 前のページと同様に、特定のサブネットワーク リンクのドリルダウン ページで、それを構成するノード リンクが一覧表示されます。 前の手順で実行したのと同様のアクションをここでも実行できます。 **[トポロジの表示]** を選び、2 つのノードの間にあるトポロジを表示します。 
  
- ![[ノード リンク] ページ](media/log-analytics-network-performance-monitor/node-links.png) 
+ ![[ノード リンク] ページ](media/log-analytics-network-performance-monitor-performance-monitor/node-links.png) 
 
 選択した 2 つのノードの間に存在するパスはすべてトポロジ マップにプロットされます。 2 つのノードの間にあるルートのホップバイホップ トポロジを、トポロジ マップで視覚化できます。 これにより、2 つのノードの間に存在するルートの数とデータ パケットに使われたパスが、わかりやすい図で表示されます。 ネットワーク パフォーマンスのボトルネックは赤で示されます。 問題のあるネットワーク接続またはネットワーク デバイスの場所を特定するには、トポロジ マップで赤い要素を確認します。 
 
- ![トポロジ ダッシュボードのトポロジ マップ](media/log-analytics-network-performance-monitor/topology-dashboard.png) 
+ ![トポロジ ダッシュボードのトポロジ マップ](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard.png) 
 
 **[操作]** ウィンドウでは、各パスの損失、待ち時間、ホップの数を確認できます。 スクロール バーを使ってこれらの異常なパスの詳細を表示します。 フィルターを使用して、ホップに異常のあるパスを選択することで、選択したパスのみのトポロジがプロットされます。 トポロジ マップを拡大したり縮小したりするには、マウス ホイールを使います。 
 
 次の図では、ネットワークの特定のセクションに対する問題領域の根本原因が、赤のパスとホップで示されています。 トポロジ マップのノードを選ぶと、FQDN や IP アドレスなど、ノードのプロパティが表示されます。 また、ホップを選ぶとその IP アドレスが表示されます。 
  
-![ノードのプロパティが選ばれたトポロジ マップ](media/log-analytics-network-performance-monitor/topology-dashboard-root-cause.png) 
+![ノードのプロパティが選ばれたトポロジ マップ](media/log-analytics-network-performance-monitor-performance-monitor/topology-dashboard-root-cause.png) 
 
 ## <a name="next-steps"></a>次の手順
 詳細なネットワーク パフォーマンスのデータ レコードを表示するために、[ログを検索](log-analytics-log-searches.md)します。

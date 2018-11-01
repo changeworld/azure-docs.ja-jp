@@ -4,9 +4,6 @@ description: この記事では、最も短い待機時間でエンドポイン�
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: 014aa646459cd64fca7c697419324caa3edaeeea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c378043a9e10a0aed5344ac3182af6163d217c7b
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110660"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140470"
 ---
 # <a name="configure-the-performance-traffic-routing-method"></a>パフォーマンスによるトラフィック ルーティング方法の構成
 
@@ -30,7 +27,7 @@ ms.locfileid: "23110660"
 1. ブラウザーから [Azure Portal](http://portal.azure.com) にサインインします。 まだアカウントを持っていない場合は、[1 か月間の無料試用版](https://azure.microsoft.com/free/)にサインアップできます。 
 2. ポータルの検索バーで、**Traffic Manager プロファイル**を検索し、ルーティング方法を構成するプロファイル名をクリックします。
 3. **[Traffic Manager プロファイル]** ブレードで、構成に追加するクラウド サービスと Web サイトの両方があることを確認します。
-4. **[設定]** セクションで **[構成]** をクリックし、**[構成]** ブレードで次のように入力します。
+4. **[設定]** セクションで **[構成]** をクリックして、**[構成]** ブレードで次のように実行します。
     1. **[traffic routing method settings (トラフィック ルーティング方法の設定)]** で、**[ルーティング方法]** に **[パフォーマンス]** を選択します。
     2. 次のように **[エンドポイント モニターの設定]** をこのプロファイル内のすべてのエンドポイントに対して同じに設定します。
         1. 適切な**プロトコル**を選択し、**ポート**番号を指定します。 
@@ -44,7 +41,7 @@ ms.locfileid: "23110660"
 
 ![Traffic Manager を使用したパフォーマンスによるトラフィック ルーティング方法の構成][1]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [重み付けによるトラフィック ルーティング方法](traffic-manager-configure-weighted-routing-method.md)について学習します。
 - [優先順位によるルーティング方法](traffic-manager-configure-priority-routing-method.md)について学習します。

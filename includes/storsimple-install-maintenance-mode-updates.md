@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 01612b32e6c1b363df8a5c70405d0c709210328e
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166115"
+---
 <!--author=SharS last changed: 9/17/15-->
 
 #### <a name="to-install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用してメンテナンス モードの更新プログラムをインストールするには
@@ -9,7 +22,7 @@
 4. 更新プログラムが利用可能かどうかと、更新プログラムが中断を伴うものであるかどうかが通知されます。 中断を伴う更新プログラムを適用するには、デバイスをメンテナンス モードにする必要があります。 手順については、「[手順 2: メンテナンス モードを開始する](../articles/storsimple/storsimple-update-device.md#step2)」を参照してください。
 5. デバイスがメンテナンス モードになっている状態で、コマンド プロンプトで「 `Start-HcsUpdate`
 6. 確認を求められます。 更新プログラムを確認すると、現在アクセスしているコントローラーにインストールされます。 更新プログラムがインストールされると、コントローラーが再起動されます。 
-7. 更新プログラムの状態を監視します。 次のコマンドを入力します。
+7. 更新プログラムの状態を監視します。 次のコマンドを入力します: 
    
     `Get-HcsUpdateStatus`
    

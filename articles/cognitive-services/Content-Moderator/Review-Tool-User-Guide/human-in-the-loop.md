@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.component: content-moderator
 ms.topic: article
 ms.author: sajagtap
-ms.openlocfilehash: 1c08b30c0e59aac21d24f75d88530ba51b67d6b4
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2e1a912f2d2aa8a6f9b165524351f2a16232537c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023935"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212201"
 ---
 # <a name="human-in-the-loop"></a>Human-in-the-Loop (人間参加)
 
@@ -31,3 +31,5 @@ ms.locfileid: "44023935"
 5. 単純にコネクタを作成することで、目視レビューを API またはビジネス プロセスに追加します。
 6. 既定のコネクタを使用して、Microsoft PhotoDNA、テキスト分析、および Face API からの結果をレビューします。
 7. コンテンツ モデレーション プロセスの主要なパフォーマンス メトリックを取得します。
+
+![Content Moderator ビデオ レビュー ツール](../images/video-review-default-view.png)

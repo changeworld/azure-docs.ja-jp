@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 58a66cfdfaada34981ef166635b0d04e2e6e8f61
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 57ec7c13cdf5c2e44abf23dc0452e5eab3eb77ff
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976887"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412620"
 ---
 # <a name="smart-groups"></a>スマート グループ
 アラートを処理する際に直面する一般的な課題は、実際の問題を特定するためにノイズを調べることです。スマート グループはそのような問題を解決するためのものです。  
@@ -29,11 +29,11 @@ ms.locfileid: "46976887"
 
 次のスマート グループの状態がサポートされます。
 
-| State | 説明 |
+| 州 | 説明 |
 |:---|:---|
 | 新規 | 問題が検出されたばかりであり、まだレビューされていません。 |
-| 確認済み | 管理者がスマート グループを確認し、それに対する作業を開始しました。 |
-| 解決済み | 問題が解決されました。 スマート グループが解決した後に、再び開いて別の状態に変更することもできます。 |
+| [Acknowledged] (確認済み) | 管理者がスマート グループを確認し、それに対する作業を開始しました。 |
+| クローズ | 問題が解決されました。 スマート グループが解決した後に、再び開いて別の状態に変更することもできます。 |
 
 [スマート グループの状態を変更する方法についてはこちらを参照してください](https://aka.ms/managing-alert-smart-group-states)。
 
@@ -44,7 +44,7 @@ ms.locfileid: "46976887"
 
 スマート グループを選択すると、[スマート グループ 詳細] ページが表示されます。 ここにはスマート グループの詳細 (そのグループを作成するために使用された理由など) が表示され、その状態を変更できます。
  
-![スマート グループ詳細](media/monitoring-overview-unified-alerts/smart-group-detail.png)
+![スマート グループ詳細](media/monitoring-overview-alerts-smartgroups/smart-group-detail.png)
 
 
 [スマート グループ 詳細] ページには、次のセクションが含まれています。

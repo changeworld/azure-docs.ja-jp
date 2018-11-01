@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: 概要 | Microsoft Docs'
 description: Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.author: maheshu
-ms.openlocfilehash: 2290273c1b998a2d75046fcbcf613762ddd588ee
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 0dc4019d2b3f33bfc92d73aeadadc0c64ecaab3b
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503208"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158518"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 
@@ -57,8 +57,7 @@ ms.locfileid: "39503208"
 ## <a name="check-the-deployment-status-of-your-managed-domain"></a>マネージド ドメインのデプロイ ステータスの確認
 マネージド ドメインのプロビジョニングのプロセスは、最大で 1 時間かかることがあります。
 
-1. デプロイが進行中は、**[リソースの検索]** 検索ボックスで "Domain Services" を検索できます。 検索結果から **[Azure AD Domain Services]** を選択します。 
-  **[Azure AD Domain Services]** ブレードには、プロビジョニング中のマネージド ドメインが一覧表示されます。
+1. デプロイが進行中は、**[リソースの検索]** 検索ボックスで "Domain Services" を検索できます。 検索結果から **[Azure AD Domain Services]** を選択します。 **[Azure AD Domain Services]** ブレードには、プロビジョニング中のマネージド ドメインが一覧表示されます。
 
     ![プロビジョニング中のマネージド ドメインを見つける](./media/getting-started/domain-services-provisioning-state-find-resource.png)
 
@@ -66,8 +65,7 @@ ms.locfileid: "39503208"
 
     ![Domain Services - プロビジョニング状態](./media/getting-started/domain-services-provisioning-state.png)
 
-3. 
-  **[概要]** タブは、マネージド ドメインが現在プロビジョニング中であることを示しています。 完全にプロビジョニングされるまで、マネージド ドメインを構成することはできません。 マネージド ドメインが完全にプロビジョニングされるまでに最大で 1 時間かかる場合があります。
+3. **[概要]** タブは、マネージド ドメインが現在プロビジョニング中であることを示しています。 完全にプロビジョニングされるまで、マネージド ドメインを構成することはできません。 マネージド ドメインが完全にプロビジョニングされるまでに最大で 1 時間かかる場合があります。
 
     ![Domain Services - プロビジョニング状態のときの [概要] タブ ](./media/getting-started/domain-services-provisioning-state-details.png)
 

@@ -5,14 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/10/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 3be3631d8d917fe9ff85e8471a35ac2ddece80b7
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.custom: MVC
+ms.openlocfilehash: b0344095cd7c9aedd360d44f2649f27dfd78cd30
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078156"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214411"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 
@@ -76,7 +77,7 @@ ms.locfileid: "49078156"
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする
 
-フェールオーバー後に RDP/SSH を使用して Azure VM に接続する場合は、[こちら](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)の表にまとめられている要件に従います。
+フェールオーバー後に RDP/SSH を使用して Azure VM に接続する場合は、[こちら](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)の表に示されている要件に従います。
 
 フェールオーバー後の接続の問題をトラブルシューティングするには、[ここ](site-recovery-failover-to-azure-troubleshoot.md)で説明されている手順に従ってください。
 

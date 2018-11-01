@@ -2,7 +2,7 @@
 title: Azure Media Services 出力メタデータのスキーマ | Microsoft Docs
 description: このトピックでは、Azure Media Services 出力メタデータのスキーマの概要を説明します。
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 4babceb9454a229903c54aab7083c5e5ed138b8e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e92bcd412071d1a991a0bd3ec7b28df9f509c54c
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783831"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250888"
 ---
 # <a name="output-metadata"></a>出力メタデータ
 ## <a name="overview"></a>概要
@@ -38,7 +38,7 @@ ms.locfileid: "33783831"
 エンコード ジョブの AssetFile エントリのコレクション。  
 
 ### <a name="child-elements"></a>子要素
-| Name | [説明] |
+| Name | 説明 |
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |AssetFiles コレクションの一部である [AssetFile 要素](media-services-output-metadata-schema.md)。 |
 
@@ -46,14 +46,14 @@ ms.locfileid: "33783831"
 XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | [説明] |
+| Name | type | 説明 |
 | --- | --- | --- |
 | **名前**<br/><br/> 必須 |**xs:string** |メディア資産ファイルの名前。 |
 | **サイズ**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:long** |資産ファイルのサイズ (バイト単位)。 |
 | **Duration**<br/><br/> 必須 |**xs:duration** |コンテンツの再生時間。 |
 
 ### <a name="child-elements"></a>子要素
-| Name | [説明] |
+| Name | 説明 |
 | --- | --- |
 | **Sources** |この AssetFile を生成するために処理された入力/ソース メディア ファイルのコレクション。 詳細については、「[Source 要素](media-services-output-metadata-schema.md)」を参照してください。 |
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |各物理 AssetFile には、適切なコンテナー形式にインターリーブされる 0 個以上のビデオ トラックを含めることができます。 詳細については、「[VideoTracks 要素](media-services-output-metadata-schema.md)」を参照してください。 |
@@ -65,7 +65,7 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
-| Name | [説明] |
+| Name | 説明 |
 | --- | --- |
 | **ソース**<br/><br/> minOccurs="1" maxOccurs="unbounded" |この資産を生成するときに使用される入力/ソース ファイル。 詳細については、「[Source 要素](media-services-output-metadata-schema.md)」を参照してください。 |
 
@@ -75,7 +75,7 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | [説明] |
+| Name | type | 説明 |
 | --- | --- | --- |
 | **名前**<br/><br/> 必須 |**xs:string** |入力ソース ファイルの名前。 |
 
@@ -85,7 +85,7 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
-| Name | [説明] |
+| Name | 説明 |
 | --- | --- |
 | **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |親 AssetFile 内の特定のビデオ トラック。 詳細については、「[VideoTrack 要素](media-services-output-metadata-schema.md#VideoTrack)」を参照してください。 |
 
@@ -95,7 +95,7 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | [説明] |
+| Name | type | 説明 |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |このビデオ トラックの 0 から始まるインデックス。**注:** この **Id** は、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
 | **FourCC**<br/><br/> 必須 |**xs:string** |ビデオ コーデックの FourCC コード。 |
@@ -117,7 +117,7 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="child-elements"></a>子要素
-| Name | [説明] |
+| Name | 説明 |
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |親 AssetFile 内の特定のオーディオ トラック。 詳細については、「[AudioTrack 要素](media-services-output-metadata-schema.md)」を参照してください。 |
 
@@ -127,7 +127,7 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | [説明] |
+| Name | type | 説明 |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |このオーディオ トラックの 0 から始まるインデックス。**注:** これは、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
 | **Codec** |**xs:string** |オーディオ トラック コーデック文字列。 |
@@ -138,7 +138,7 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 | **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |wFormatTag 形式タイプのサンプルあたりのビット数。 |
 
 ### <a name="child-elements"></a>子要素
-| Name | [説明] |
+| Name | 説明 |
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |ラウドネス測定結果パラメーター。 詳細については、「[LoudnessMeteringResultParameters 要素](media-services-output-metadata-schema.md)」を参照してください。 |
 
@@ -148,7 +148,7 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 XML の例については、「[XML の例](media-services-output-metadata-schema.md#xml)」を参照してください。  
 
 ### <a name="attributes"></a>属性
-| Name | type | [説明] |
+| Name | type | 説明 |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs:string** |**Dolby** Professional Loudness Metering 開発キット バージョン。 |
 | **DialogNormalization**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> 必須 |**xs:int** |DPLM によって生成された DialogNormalization。LoudnessMetering が設定されているときに必要 |

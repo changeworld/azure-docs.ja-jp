@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: a870c99718ecafe8af33e13be9aa46631888c8cb
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: d670b90404d441876727336fc50a848965082de5
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389685"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232496"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -292,7 +292,7 @@ template.json ファイル内の `EtwEventSourceProviderConfiguration` セクシ
 
 ## <a name="send-logs-to-application-insights"></a>ログを Application Insights に送信する
 
-Application Insights (AI) への監視および診断データの送信は、WAD の構成の一部として実行できます。 イベントの分析と視覚化に AI を使用する場合は、"WadCfg" の一部として [AI シンクの設定方法](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)に関する説明を参照してください。
+Application Insights (AI) への監視および診断データの送信は、WAD の構成の一部として実行できます。 イベントの分析と視覚化に AI を使用する場合は、"WadCfg" の一部として [AI シンクの設定方法](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template)に関する説明を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
