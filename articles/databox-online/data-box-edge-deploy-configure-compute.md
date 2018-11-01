@@ -6,21 +6,21 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: tutorial
-ms.date: 10/08/2018
+ms.date: 10/19/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Data Box Edge so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 4729e08399132243543c6f4e1cadd537d185e9e3
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: ba77fc4596d9bb245b3cea2538804b1816e9ad14
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166255"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466972"
 ---
 # <a name="tutorial-transform-data-with-azure-data-box-edge-preview"></a>チュートリアル: Edge を使用してデータを変換する (プレビュー)
 
 このチュートリアルでは、Edge でコンピューティング ロールを構成する方法を説明します。 コンピューティング ロールが構成されたら、Edge で、Azure への送信前にデータを変換することができます。
 
-この手順の所要時間は約 30 ～ 45 分です。 
+この手順の所要時間は約 30 ～ 45 分です。
 
 このチュートリアルでは、以下の内容を学習します。
 
@@ -31,7 +31,7 @@ ms.locfileid: "49166255"
 > * データ変換を検証して転送する
 
 > [!IMPORTANT]
-> Edge はプレビュー段階です。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。 
+> Edge はプレビュー段階です。 このソリューションを注文して展開する前に、[Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)を確認してください。
  
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,7 +48,8 @@ Edge でコンピューティング ロールを設定する前に、IoT Hub リ
 
 ![IoT Hub リソースを作成する](./media/data-box-edge-deploy-configure-compute/create-iothub-resource-1.png)
 
-Edge コンピューティング ロールが設定されていないときには、以下のことに注意してください 
+Edge コンピューティング ロールが設定されていないときには、以下のことに注意してください。
+
 - IoT Hub リソースに、まったく IoT デバイスや IoT Edge デバイスがありません。
 - Edge ローカル共有を作成することはできません。 共有を追加するときに、Edge コンピューティングのためにローカル共有を作成するオプションが有効になっていません。
 
@@ -79,7 +80,7 @@ Edge デバイスで Edge コンピューティング ロールが設定され�
 
     ![コンピューティング ロールを設定する](./media/data-box-edge-deploy-configure-compute/setup-compute-5.png)
  
-5. Edge コンピューティング ロールを作成するときに使用した IoT Hub に移動します。 **[IoT devices]\(IoT デバイス)** に移動します。 今回は IoT デバイスが有効になっていることを確認できます。 
+5. Edge コンピューティング ロールを作成するときに使用した IoT Hub に移動します。 **[IoT devices](IoT デバイス)** に移動します。 今回は IoT デバイスが有効になっていることを確認できます。 
 
     ![コンピューティング ロールを設定する](./media/data-box-edge-deploy-configure-compute/setup-compute-6.png)
 
@@ -91,12 +92,12 @@ Edge デバイスで Edge コンピューティング ロールが設定され�
 
     ![コンピューティング ロールを設定する](./media/data-box-edge-deploy-configure-compute/setup-compute-8.png) 
 
-ただし、この Edge デバイスにはカスタム モジュールがありません。 ここで、このデバイスにカスタム モジュールを追加できます。
+ただし、この Edge デバイスにはカスタム モジュールがありません。 ここで、このデバイスにカスタム モジュールを追加できます。 カスタム モジュールを作成する方法については、[Data Box Edge 用の C# モジュールを開発する方法](data-box-edge-create-iot-edge-module.md)に関するページを参照してください。
 
 
 ## <a name="add-a-custom-module"></a>カスタム モジュールを追加する
 
-このセクションでは、IoT Edge デバイスにカスタム モジュールを追加します。 
+このセクションでは、[Data Box Edge 用の C# モジュールを開発する方法](data-box-edge-create-iot-edge-module.md)に関するページで作成した IoT Edge デバイスにカスタム モジュールを追加します。 
 
 この手順では、使用されるカスタム モジュールが Edge デバイス上のローカル共有からファイルを受け取り、デバイスのクラウド共有にそれらを移動する例を使用します。 クラウドはファイルを共有した後、クラウド共有に関連付けられている Azure ストレージ アカウントにファイルをプッシュします。 
 
@@ -133,11 +134,26 @@ Edge デバイスで Edge コンピューティング ロールが設定され�
 
         ![カスタム モジュールを追加する](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-6.png) 
  
-    2. IoT Edge カスタム モジュールの設定を指定します。 モジュールの**名前**と**イメージの URI** を指定します。 
+    2. IoT Edge カスタム モジュールの設定を指定します。 モジュールの**名前**および対応するコンテナー イメージの**イメージ URI** を入力します。 
     
         ![カスタム モジュールを追加する](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-7.png) 
 
-    3. **[コンテナーの作成オプション]** で、クラウドとローカル共有のために、以前の手順でコピーした Edge モジュールのローカル マウント ポイントを指定します (新規作成するのではなくこれらのパスを使用することが重要です)。 これらの共有は、対応するコンテナー マウント ポイントにマップされます。 また、もしあれば、ここでモジュールの環境変数も指定します。
+    3. **[コンテナーの作成オプション]** で、クラウドとローカル共有のために、以前の手順でコピーした Edge モジュールのローカル マウント ポイントを指定します (新規作成するのではなくこれらのパスを使用することが重要です)。 [カスタム コードでモジュールを更新](data-box-edge-create-iot-edge-module.md#update-the-module-with-custom-code)するときにモジュールに指定した対応する **InputFolderPath** と **OutputFolderPath** にローカル マウントポイントがマップされます。 
+    
+        以下のサンプルをコピーして、**[コンテナーの作成オプション]** に貼り付けてください。 
+        
+        ```
+        {
+         "HostConfig": {
+          "Binds": [
+           "/home/hcsshares/mysmblocalshare:/home/LocalShare",
+           "/home/hcsshares/mysmbshare1:/home/CloudShare"
+           ]
+         }
+        }
+        ```
+
+        また、もしあれば、ここでモジュールの環境変数も指定します。
 
         ![カスタム モジュールを追加する](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-8.png) 
  
@@ -146,6 +162,8 @@ Edge デバイスで Edge コンピューティング ロールが設定され�
         ![カスタム モジュールを追加する](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-9.png) 
  
 6.  **[Specify routes]\(ルートの指定\)** で、モジュール間のルートを設定します。 この場合、クラウド共有にデータをプッシュするローカル共有の名前を指定します。 **[次へ]** をクリックします。
+
+    ルート ("route") は、"FROM /* WHERE topic = 'mysmblocalshare' INTO BrokeredEndpoint(\"/modules/filemovemodule/inputs/input1\")" というルート文字列で置き換えることができます。
 
     ![カスタム モジュールを追加する](./media/data-box-edge-deploy-configure-compute/add-a-custom-module-10.png) 
  
