@@ -13,14 +13,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/14/2018
+ms.date: 10/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: fbdb52b1b2dee682021fd822d584551f41f723ff
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cec57f2dafaddfa2ebc492f0cb92755b1f65607f
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33778513"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251024"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Azure Notification Hubs のプッシュ通知: よく寄せられる質問
 ## <a name="general"></a>全般
@@ -213,7 +213,7 @@ Microsoft では、プログラムによってテレメトリ データをエク
 [Notification Hubs のセキュリティ モデル]: https://msdn.microsoft.com/library/azure/dn495373.aspx
 [Notification Hubs の安全なプッシュのチュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [Notification Hubs のトラブルシューティング]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
-[Notification Hubs のメトリック]: https://msdn.microsoft.com/library/dn458822.aspx
+[Notification Hubs のメトリック]: ../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Notification Hubs のメトリックのサンプル]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [登録の一括エクスポートと変更]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com

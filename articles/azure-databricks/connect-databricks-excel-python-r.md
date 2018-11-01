@@ -1,24 +1,20 @@
 ---
-title: Excel、Python、R から Azure Databricks に接続する | Microsoft Docs
+title: 'Excel、Python、R から Azure Databricks に接続する '
 description: Simba ドライバーを使用して Excel、Python、R から Azure Databricks に接続する方法を説明します。
 services: azure-databricks
-documentationcenter: ''
-author: nitinme
-manager: cgronlun
-editor: cgronlun
+author: mamccrea
+ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.workload: big-data
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 333ff3ac3de053eae604ffeab600df7d35874f69
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.author: mamccrea
+ms.openlocfilehash: 6c8d0c9f5471395d1552b896b4d411dcad0a280f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37085234"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421137"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Excel、Python、R から Azure Databricks に接続する
 

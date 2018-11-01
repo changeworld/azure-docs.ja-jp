@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: tutorial
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: b09ebbb358b909c98df4eb05154c29b4b3cb7ee9
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 7ba5db8e50e8da5b274f73046d56f7816ca8834d
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888256"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138329"
 ---
 # <a name="tutorial-3-add-common-utterance-formats"></a>チュートリアル 3: 一般的な発話の形式を追加する
 
@@ -50,7 +50,7 @@ ms.locfileid: "48888256"
 
 ## <a name="create-new-intents-and-their-utterances"></a>新しい意図とその発話を作成する
 
-1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
+1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. **[Intents]\(意図\)** ページで、**[Create new intent]\(意図の新規作成\)** を選びます。 
 
@@ -90,7 +90,7 @@ ms.locfileid: "48888256"
 
 ## <a name="caution-about-example-utterance-quantity"></a>発話の例の量に関する注意
 
-[!include[Too few examples](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]
+[!INCLUDE [Too few examples](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]
 
 ## <a name="train"></a>トレーニング
 

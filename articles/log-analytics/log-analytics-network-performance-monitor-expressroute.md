@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: 73978609d018eb43ab8031dc6e8261861e1ee3bf
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: d0368584dfa461427fe1bad4273c993f0ece894a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402541"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413806"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute モニター
 
@@ -30,7 +30,7 @@ ms.locfileid: "49402541"
 - ExpressRoute の帯域幅使用率、回線での損失と待ち時間、ピアリングと Azure Virtual Network のレベルの追跡。
 - ExpressRoute 回線のネットワーク トポロジの検出。
 
-![ExpressRoute モニター](media/log-analytics-network-performance-monitor/expressroute-intro.png)
+![ExpressRoute モニター](media/log-analytics-network-performance-monitor-expressroute/expressroute-intro.png)
 
 ## <a name="configuration"></a>構成 
 Network Performance Monitor の構成を開くには、[Network Performance Monitor ソリューション](log-analytics-network-performance-monitor.md)を開き、**[構成]** を選びます。
@@ -55,7 +55,7 @@ NSG の詳細については、 [ネットワーク セキュリティ グル�
     >[!NOTE]
     > 検出されるのは、この Log Analytics ワークスペースにリンクされているサブスクリプションに関連付けられている仮想ネットワークに接続されているプライベート ピアリングのみです。 ExpressRoute が、このワークスペースにリンクされているサブスクリプションの外部の仮想ネットワークに接続されている場合は、これらのサブスクリプションに Log Analytics ワークスペースを作成します。 その後、Network Performance Monitor を使ってこれらのピアリングを監視します。 
 
-    ![ExpressRoute Monitor の構成](media/log-analytics-network-performance-monitor/expressroute-configure.png)
+    ![ExpressRoute Monitor の構成](media/log-analytics-network-performance-monitor-expressroute/expressroute-configure.png)
  
  検出が完了した後、検出されたプライベート ピアリング接続がテーブルに一覧表示されます。 これらのピアリングの監視は、最初は無効状態になっています。 
 
@@ -68,7 +68,7 @@ NSG の詳細については、 [ネットワーク セキュリティ グル�
 5. **[エージェントの追加]** を選び、このピアリング接続を監視するために使う監視エージェントを選びます。 接続の両端にエージェントを追加したことを確認します。 このピアリングに接続されている仮想ネットワークには少なくとも 1 つのエージェントが必要です。 また、少なくとも 1 つのオンプレミスのエージェントがこのピアリングに接続されている必要もあります。 
 6. **[保存]** を選んで構成を保存します。 
 
-   ![ExpressRoute の監視の構成](media/log-analytics-network-performance-monitor/expressroute-configure-discovery.png)
+   ![ExpressRoute の監視の構成](media/log-analytics-network-performance-monitor-expressroute/expressroute-configure-discovery.png)
 
 
 規則を有効にして値とエージェントを選んだ後、値が反映されて **[ExpressRoute の監視]** タイルが表示されるまで、30 ～ 60 分間待ちます。 監視タイルが表示されると、ExpressRoute 回線と接続リソースは Network Performance Monitor によって監視されています。 
@@ -80,37 +80,37 @@ NSG の詳細については、 [ネットワーク セキュリティ グル�
 
 Network Performance Monitor ダッシュ ボードには、ExpressRoute 回線とピアリング接続の正常性の概要が表示されます。 
 
-![ネットワーク パフォーマンス モニターのダッシュボード](media/log-analytics-network-performance-monitor/npm-dashboard-expressroute.png) 
+![ネットワーク パフォーマンス モニターのダッシュボード](media/log-analytics-network-performance-monitor-expressroute/npm-dashboard-expressroute.png) 
 
 ### <a name="circuits-list"></a>回線の一覧 
 
 監視対象の全 ExpressRoute 回線の一覧を表示するには、[ExpressRoute 回線] タイルを選びます。 いずれかの回線を選択すると、その正常性状態のほか、パケット損失、帯域幅使用率、待ち時間の各トレンド グラフを表示できます。 これらのグラフは対話操作が可能です。 グラフのプロット対象となる時間枠を自分で選んでカスタマイズすることができます。 データ ポイントを拡大し、細かく表示するには、グラフ上の領域でマウスをドラッグします。 
 
-![ExpressRoute 回線の一覧](media/log-analytics-network-performance-monitor/expressroute-circuits.png) 
+![ExpressRoute 回線の一覧](media/log-analytics-network-performance-monitor-expressroute/expressroute-circuits.png) 
 
 ### <a name="trends-of-loss-latency-and-throughput"></a>パケット損失、待ち時間、スループットのトレンド 
 
 帯域幅使用状況、待ち時間、損失の各グラフは対話操作が可能です。 これらのグラフの任意のセクションをマウス操作で拡大することができます。 帯域幅、待機時間、および損失データを他の間隔で表示することもできます。 左上の **[アクション]** ボタンで  **[日付/時刻]** を選びます。 
 
-![ExpressRoute の待機時間](media/log-analytics-network-performance-monitor/expressroute-latency.png) 
+![ExpressRoute の待機時間](media/log-analytics-network-performance-monitor-expressroute/expressroute-latency.png) 
 
 ### <a name="peerings-list"></a>ピアリング一覧 
 
 プライベート ピアリング上の仮想ネットワークに対するすべての接続の一覧を表示するには、ダッシュボードの **[プライベート ピアリング]** タイルを選びます。 ここでいずれかの仮想ネットワークの接続を選択すると、その正常性状態のほか、パケット損失、帯域幅使用率、待ち時間の各トレンド グラフを表示できます。 
 
-![ExpressRoute ピアリング](media/log-analytics-network-performance-monitor/expressroute-peerings.png) 
+![ExpressRoute ピアリング](media/log-analytics-network-performance-monitor-expressroute/expressroute-peerings.png) 
 
 ### <a name="circuit-topology"></a>回線トポロジ 
 
 回線トポロジを表示するには、**[トポロジ]** タイルを選びます。 この操作により、選択した回線またはピアリングのトポロジ ビューが表示されます。 トポロジ ダイアグラムには、ネットワーク上の各セグメントの待ち時間が表示され、各レイヤー 3 ホップがダイアグラムのノードで表現されます。 いずれかのホップを選ぶと、そのホップについてのさらに詳しい情報が表示されます。 視認性を高めて表示範囲をオンプレミスのホップにまで広げるには、**[フィルター]** の下のスライダー バーを動かします。 スライダー バーを左右に動かすと、トポロジ グラフに表示されるホップ数が増減します。 各セグメントの待ち時間が視覚的に確認できるので、ネットワーク上のセグメントの中で、待ち時間の長いセグメントを短時間で切り分けることができます。 
 
-![ExpressRoute のトポロジ](media/log-analytics-network-performance-monitor/expressroute-topology.png)
+![ExpressRoute のトポロジ](media/log-analytics-network-performance-monitor-expressroute/expressroute-topology.png)
 
 ### <a name="detailed-topology-view-of-a-circuit"></a>回線の詳細なトポロジ ビュー 
 
 このビューには、仮想ネットワーク接続が表示されます。 
 
-![ExpressRoute の仮想ネットワーク接続](media/log-analytics-network-performance-monitor/expressroute-vnet.png)
+![ExpressRoute の仮想ネットワーク接続](media/log-analytics-network-performance-monitor-expressroute/expressroute-vnet.png)
  
 
 ### <a name="diagnostics"></a>診断 
@@ -119,7 +119,7 @@ Network Performance Monitor は、いくつかの回線接続の問題を診断�
 
 **回線がダウンしている。** Network Performance Monitor は、オンプレミスのリソースと Azure 仮想ネットワーク間の接続が失われるとすぐに通知します。 この通知により、ユーザーからエスカレーションを受ける前に予防的なアクションを実行し、ダウンタイムを短縮できます。
 
-![ExpressRoute 回線がダウンしている](media/log-analytics-network-performance-monitor/expressroute-circuit-down.png)
+![ExpressRoute 回線がダウンしている](media/log-analytics-network-performance-monitor-expressroute/expressroute-circuit-down.png)
  
 
 **トラフィックが目的の回線経由で流れていない。** Network Performance Monitor は、意図した ExpressRoute 回線をトラフィックが流れないときは常に通知します。 この問題は、回路がダウンし、トラフィックがバックアップ ルート経由で流れている場合に発生することがあります。 ルーティングの問題がある場合にも発生する可能性があります。 この情報は、ルーティング ポリシーの構成の問題を予防的に管理し、最適かつ最も安全なルートが使用されるようにするために役立ちます。 
@@ -129,12 +129,12 @@ Network Performance Monitor は、いくつかの回線接続の問題を診断�
 **トラフィックがプライマリ回線経由で流れていない。** Network Performance Monitor は、トラフィックがセカンダリの ExpressRoute 回線経由で流れている場合に通知します。 この場合は接続性の問題は発生しませんが、プライマリ回線の問題の予防的なトラブルシューティングを行うと、より入念に準備を整えることができます。 
 
  
-![ExpressRoute トラフィック フロー](media/log-analytics-network-performance-monitor/expressroute-traffic-flow.png)
+![ExpressRoute トラフィック フロー](media/log-analytics-network-performance-monitor-expressroute/expressroute-traffic-flow.png)
 
 
 **ピーク時の使用率によるパフォーマンス低下。** 帯域幅使用率の傾向を待ち時間の傾向と関連付けて、Azure ワークロードのパフォーマンス低下が帯域幅使用率のピークによるものかどうかを識別します。 その後、それに応じてアクションを実行することができます。
 
-![ExpressRoute の帯域幅の使用率](media/log-analytics-network-performance-monitor/expressroute-peak-utilization.png)
+![ExpressRoute の帯域幅の使用率](media/log-analytics-network-performance-monitor-expressroute/expressroute-peak-utilization.png)
 
  
 

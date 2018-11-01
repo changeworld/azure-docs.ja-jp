@@ -4,9 +4,6 @@ description: この記事では、Azure ユーザーが高可用性アプリケ�
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: fff25ac3-d13a-4af9-8916-7c72e3d64bc7
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: 64f3595206c580d0d177622d23aa49753100d3c0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 15b609bbf4ab048722f2512371eeffece92b3245
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221096"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138142"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 
@@ -140,7 +137,7 @@ Traffic Manager は、問題のあるエンドポイントを含むすべての�
 * **パフォーマンス**。 エンド ユーザーに最も近いエンドポイントが返されます。 そのエンドポイントが使用できない場合、Traffic Manager は、次の最も近い Azure リージョン内のエンドポイントにトラフィックを移動します。 パフォーマンス トラフィック ルーティング方法では、[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region)を使用してフェールオーバー計画を構成することもできます。
 * **地理的**。 クエリ要求の IP に基づいて地理的な場所を提供するためにマップされたエンドポイントが返されます。 地理的な場所はプロファイル内の 1 つのエンドポイントにしかマップできないため、そのエンドポイントが使用できない場合に、フェールオーバー先として別のエンドポイントは選択されません (詳細については、[FAQ](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method) をご覧ください)。 ベスト プラクティスとして、地理的なルーティングを使用する場合は、プロファイルのエンドポイントとして複数のエンドポイントが含まれた入れ子になった Traffic Manager プロファイルを使用することをお勧めします。
 * **複数値**。IPv4/IPv6 アドレスにマップされている複数のエンドポイントが返されます。 このプロファイルに対するクエリが受信されると、正常なエンドポイントが、指定した**応答内の最大レコード数**の値に基づいて返されます。 応答の既定の数は 2 つのエンドポイントです。
-* **サブネット**。一連の IP アドレス範囲にマップされたエンドポイントが返されます。 その IP アドレスから要求を受信した場合、返されるエンドポイントは、その IP アドレスにマップされているものです。 
+* **サブネット**。一連の IP アドレス範囲にマップされたエンドポイントが返されます。 その IP アドレスから要求を受信した場合、返されるエンドポイントは、その IP アドレスにマップされているものです。 
 
 詳細については、「 [Traffic Manager のトラフィック ルーティング方法](traffic-manager-routing-methods.md)」を参照してください。
 

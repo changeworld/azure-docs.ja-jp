@@ -16,12 +16,12 @@ ms.date: 08/02/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: ''
-ms.openlocfilehash: 756b5e208cd2a3fa70f7ed3cf1c4deaaf72348ed
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 87d1aef0ffbf1a6b371947d804aa48503b507284
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407811"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417057"
 ---
 # <a name="configure-log-analytics-agent-for-windows-computers-in-a-hybrid-environment"></a>ハイブリッド環境の Windows コンピューターを対象とした Log Analytics エージェントの構成
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、データセンターやその他のクラウド環境内の物理的または仮想的な Windows コンピューターから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Windows コンピューターを構成し、データを収集する方法を示します。  Azure Windows VM の場合は、「[Azure Virtual Machines に関するデータの収集](log-analytics-quick-collect-azurevm.md)」を参照してください。  
@@ -34,7 +34,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
-1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](media/log-analytics-quick-collect-windows-computer/azure-portal-01.png)<br><br>  
 2. **[作成]** をクリックし、次の項目について選択します。
 
   * 新しい **Log Analytics ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。 
@@ -43,7 +43,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
   * VM のデプロイ先となる**場所**を選択します。  詳細については、[Log Analytics を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。  
   * 2018 年 4 月 2 日より後に作成された新しいサブスクリプションでワークスペースを作成した場合は、自動的に "*1 GB あたり*" の価格プランが使用され、価格レベルを選択するためのオプションは利用できなくなります。  4 月 2 日より前に作成された既存のサブスクリプションのワークスペースを作成している場合、または既存の EA 登録に関連付けられたサブスクリプションに対してワークスペースを作成している場合は、希望の価格レベルを選択します。  特定のレベルの詳細については、[Log Analytics の価格の詳細](https://azure.microsoft.com/pricing/details/log-analytics/)に関するページを参照してください。
 
-        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-azurevm/create-loganalytics-workspace-02.png)<br>  
+        ![Create Log Analytics resource blade](media/log-analytics-quick-collect-windows-computer/create-loganalytics-workspace-02.png)<br>  
 
 3. **[Log Analytics ワークスペース]** ウィンドウで必要な情報を入力したら、**[OK]** をクリックします。  
 
@@ -54,7 +54,7 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 
 1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、前の手順で作成した *DefaultLAWorkspace* を選択します。
-3. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+3. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/log-analytics-quick-collect-windows-computer/log-analytics-advanced-settings-01.png)<br><br>  
 4. **[接続されたソース]**、**[Windows サーバー]** の順に選択します。   
 5. **[ワークスペース ID]** と **[主キー]** の右側に値が表示されます。 両方をコピーしてお使いのエディターに貼り付けます。   
 
@@ -80,20 +80,20 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 Log Analytics は、イベントを Windows イベント ログから収集でき、長期分析およびレポートのために指定されたパフォーマンス カウンターからも収集できます。また、特定の条件が検出された場合はアクションを実行できます。  以下の手順に従って、Windows イベント ログと、手始めとしていくつかの一般的なパフォーマンス カウンターからのイベントの収集を構成します。  
 
 1. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
-2. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br> 
+2. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/log-analytics-quick-collect-windows-computer/log-analytics-advanced-settings-01.png)<br><br> 
 3. **[データ]** を選択してから、**[Windows イベント ログ]** を選択します。  
 4. イベント ログを追加するには、ログの名前を入力します。  「**System**」と入力し、プラス記号 **+** をクリックします。  
 5. テーブルで、重大度の **[エラー]** と **[警告]** のチェック ボックスをオンにします。   
 6. ページの上部にある **[保存]** をクリックして構成を保存します。
 7. **[Windows パフォーマンス データ]** を選択して、Windows コンピューターでのパフォーマンス カウンターの収集を有効にします。 
-8. 新しい Log Analytics ワークスペースの Windows パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。 それぞれのオプションの横には、チェック ボックスが表示されます。<br> ![既定の Windows パフォーマンス カウンターが選択されています](media/log-analytics-quick-collect-azurevm/windows-perfcounters-default.png)。<br> **[選択したパフォーマンス カウンターを追加する]** をクリックします。  カウンターが追加され、10 秒間の収集サンプル間隔でプリセットされます。  
+8. 新しい Log Analytics ワークスペースの Windows パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。 それぞれのオプションの横には、チェック ボックスが表示されます。<br> ![既定の Windows パフォーマンス カウンターが選択されています](media/log-analytics-quick-collect-windows-computer/windows-perfcounters-default.png)。<br> **[選択したパフォーマンス カウンターを追加する]** をクリックします。  カウンターが追加され、10 秒間の収集サンプル間隔でプリセットされます。  
 9. ページの上部にある **[保存]** をクリックして構成を保存します。
 
 ## <a name="view-data-collected"></a>収集されたデータを表示する
 これでデータ収集は有効になりました。次は、簡単なログ検索の例を実行して、ターゲット コンピューターのデータを表示してみましょう。  
 
 1. Azure ポータルで、選択したワークスペースの **[ログ検索]** タイルをクリックします。  
-2. [ログ検索] ウィンドウのクエリ フィールドに「`Perf`」と入力し、Enter キーを押すか、クエリ フィールドの右側にある検索ボタンをクリックします。<br><br> ![Log Analytics のログ検索クエリの例](media/log-analytics-quick-collect-linux-computer/log-analytics-portal-queryexample.png)<br><br> たとえば、次の画像のクエリでは、735 個のパフォーマンス レコードが返されています。<br><br> ![Log Analytics のログ検索の結果](media/log-analytics-quick-collect-windows-computer/log-analytics-search-perf.png)
+2. [ログ検索] ウィンドウのクエリ フィールドに「`Perf`」と入力し、Enter キーを押すか、クエリ フィールドの右側にある検索ボタンをクリックします。<br><br> ![Log Analytics のログ検索クエリの例](media/log-analytics-quick-collect-windows-computer/log-analytics-portal-queryexample.png)<br><br> たとえば、次の画像のクエリでは、735 個のパフォーマンス レコードが返されています。<br><br> ![Log Analytics のログ検索の結果](media/log-analytics-quick-collect-windows-computer/log-analytics-search-perf.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 エージェントが不要になったら、Windows コンピューターから削除し、Log Analytics ワークスペースを削除できます。  
@@ -104,7 +104,7 @@ Log Analytics は、イベントを Windows イベント ログから収集で�
 2. **[プログラムと機能]** を開きます。
 3. **[プログラムと機能]** で、**[Microsoft Monitoring Agent]** をクリックし、**[アンインストール]** をクリックします。
 
-ワークスペースを削除するには、作成した Log Analytics ワークスペースを選択し、リソース ページで **[削除]** をクリックします。<br><br> ![Log Analytics リソースを削除する](media/log-analytics-quick-collect-azurevm/log-analytics-portal-delete-resource.png)
+ワークスペースを削除するには、作成した Log Analytics ワークスペースを選択し、リソース ページで **[削除]** をクリックします。<br><br> ![Log Analytics リソースを削除する](media/log-analytics-quick-collect-windows-computer/log-analytics-portal-delete-resource.png)
 
 ## <a name="next-steps"></a>次の手順
 これでオンプレミスの Linux コンピューターからオペレーション データとパフォーマンス データが収集されているので、収集したデータの調査と分析、およびデータに対するアクションの実行を*無料*で簡単に開始することができます。  

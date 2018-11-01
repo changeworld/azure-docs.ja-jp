@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
 ms.component: ''
-ms.openlocfilehash: fb84b20630eb63cb53ccb1d13a383ed6287b802b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 76c8421286633dc3c81a073423a7d9f9ca1e1d85
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406621"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420848"
 ---
 # <a name="service-connectivity-monitor"></a>サービス接続モニター
 
@@ -35,13 +35,13 @@ ms.locfileid: "49406621"
 - トポロジ マップ上の各ホップの影響を受けている待機時間を表示することによって、アプリケーション パフォーマンスの低下の原因となっている可能性があるネットワーク上のホット スポットを特定します。
 
 
-![サービス接続モニター](media/log-analytics-network-performance-monitor/service-endpoint-intro.png)
+![サービス接続モニター](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-intro.png)
 
 
 ## <a name="configuration"></a>構成 
 Network Performance Monitor の構成を開くには、[Network Performance Monitor ソリューション](log-analytics-network-performance-monitor.md)を開き、**[構成]** を選びます。
 
-![Network Performance Monitor の構成](media/log-analytics-network-performance-monitor/npm-configure-button.png)
+![Network Performance Monitor の構成](media/log-analytics-network-performance-monitor-service-endpoint/npm-configure-button.png)
 
 
 ### <a name="configure-log-analytics-agents-for-monitoring"></a>監視用の Log Analytics エージェントの構成
@@ -79,7 +79,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 10. 監視条件を選択します。 しきい値を入力して、正常性イベントの生成に関するカスタムしきい値を設定できます。 選択したネットワーク ペア/サブネットワーク ペアに対して選択したしきい値を条件の値が上回ると、正常性イベントが生成されます。 
 11. **[保存]** を選んで構成を保存します。 
 
-    ![サービス接続モニターのテスト構成](media/log-analytics-network-performance-monitor/service-endpoint-configuration.png)
+    ![サービス接続モニターのテスト構成](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-configuration.png)
 
 
 
@@ -87,11 +87,11 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 
 Network Performance Monitor のダッシュボード ビューに移動します。 作成したさまざまなテストの正常性の概要については、**[サービス接続の監視]** ページで確認できます。 
 
-![サービス接続モニター ページ](media/log-analytics-network-performance-monitor/service-endpoint-blade.png)
+![サービス接続モニター ページ](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-blade.png)
 
 タイルを選び、**[テスト]** ページでテストの詳細を確認します。 左側のテーブルでは、すべてのテストについて、特定の時点での正常性と、サービス応答時間、ネットワーク待機時間、およびパケット損失の値を確認できます。 過去の別の時点のスナップショットを表示するには、[ネットワーク状態の記録機能] コントロールを使います。 テーブルで調査するテストを選びます。 右側のウィンドウのグラフでは、損失、待機時間、および応答時間の値に関する過去の傾向を確認できます。 **[テストの詳細]** リンクを選ぶと、各ノードからのパフォーマンスを確認できます。
 
-![サービス接続モニターのテスト](media/log-analytics-network-performance-monitor/service-endpoint-tests.png)
+![サービス接続モニターのテスト](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-tests.png)
 
 **[テスト ノード]** ビューでは、各ノードからのネットワーク接続を確認できます。 パフォーマンスが低下しているノードを選びます。 これは、アプリケーションの実行速度が低下しているノードです。
 
@@ -99,15 +99,15 @@ Network Performance Monitor のダッシュボード ビューに移動します
 
 * **アプリケーションの問題:** 応答時間の急増が見られる一方、ネットワーク待機時間は一貫している場合は、ネットワークは正常に動作しており、問題の原因はアプリケーション側にあると考えられます。 
 
-    ![サービス接続モニターのアプリケーションの問題](media/log-analytics-network-performance-monitor/service-endpoint-application-issue.png)
+    ![サービス接続モニターのアプリケーションの問題](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-application-issue.png)
 
 * **ネットワークの問題:** 応答時間の急増に伴ってネットワーク待機時間も急増している場合、応答時間の増加は、ネットワーク待機時間の増加に起因していると考えられます。 
 
-    ![サービス接続モニターのネットワークの問題](media/log-analytics-network-performance-monitor/service-endpoint-network-issue.png)
+    ![サービス接続モニターのネットワークの問題](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-network-issue.png)
 
 問題の原因がネットワークであると判断した後は、**[トポロジ]** ビュー リンクを選び、トポロジ マップ上で問題のホップを確認します。 次の図に例を示します。 ノードとアプリケーション エンドポイント間の合計待機時間である 105 ミリ秒のうち、96 ミリ秒は赤で囲まれたホップに起因しています。 問題のホップを特定したら、是正措置を実行できます。 
 
-![サービス接続モニターのテスト](media/log-analytics-network-performance-monitor/service-endpoint-topology.png)
+![サービス接続モニターのテスト](media/log-analytics-network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>診断 
 
