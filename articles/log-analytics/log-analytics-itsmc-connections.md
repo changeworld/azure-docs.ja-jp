@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 190e173e035716431c92533e42ded97e147f21a7
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4faea38817a546dbab02064d22a0813362f77b3d
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409205"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416462"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](log-analytics-itsmc-overview.md)に関する記事をご覧ください。
@@ -57,7 +57,7 @@ System Center Service Manager インスタンスを ITSMC に接続するには�
 
 2.  **[ワークスペースのデータ ソース]** で、**[ITSM 接続]** をクリックします。
 
-    ![新しい接続](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![新しい接続](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. 右側のウィンドウの上部にある **[追加]** をクリックします。
 
@@ -78,7 +78,7 @@ System Center Service Manager インスタンスを ITSMC に接続するには�
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、Log Analytics は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。 |
 
-![Service Manager の接続](./media/log-analytics-itsmc/service-manager-connection.png)
+![Service Manager の接続](media/log-analytics-itsmc-connections/service-manager-connection.png)
 
 **正常に接続され、同期された場合**:
 
@@ -128,14 +128,14 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 2. **[設定]** > **[ネットワーク]** の順にクリックします。
 3. **[ハイブリッド接続]** の下にある **[ハイブリッド接続エンドポイントの構成]** をクリックします。
 
-    ![ハイブリッド接続のネットワーク](./media/log-analytics-itsmc/itsmc-hybrid-connection-networking-and-end-points.png)
+    ![ハイブリッド接続のネットワーク](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-networking-and-end-points.png)
 4. **[ハイブリッド接続]** ブレードで、**[ハイブリッド接続の追加]** をクリックします。
 
-    ![ハイブリッド接続の追加](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-add.png)
+    ![ハイブリッド接続の追加](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-add.png)
 
 5. **[ハイブリッド接続の追加]** ブレードで、**[ハイブリッド接続の新規作成]** をクリックします。
 
-    ![新しいハイブリッド接続](./media/log-analytics-itsmc/itsmc-create-new-hybrid-connection.png)
+    ![新しいハイブリッド接続](media/log-analytics-itsmc-connections/itsmc-create-new-hybrid-connection.png)
 
 6. 次の値を入力します。
 
@@ -146,14 +146,14 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
     - **[場所]**: 場所を選択します。
     -  **[名前]**: Service Bus を作成する場合は名前を指定します。
 
-    ![ハイブリッド接続の値](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-values.png)
+    ![ハイブリッド接続の値](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-values.png)
 6. **[OK]** をクリックし、**[ハイブリッド接続の作成]** ブレードを閉じ、ハイブリッド接続の作成を開始します。
 
     ハイブリッド接続が作成されると、ブレードに表示されます。
 
 7. ハイブリッド接続を作成したら、その接続を選択し、**[選択したハイブリッド接続の追加]** をクリックします。
 
-    ![新しいハイブリッド接続](./media/log-analytics-itsmc/itsmc-new-hybrid-connection-added.png)
+    ![新しいハイブリッド接続](media/log-analytics-itsmc-connections/itsmc-new-hybrid-connection-added.png)
 
 #### <a name="configure-the-listener-setup"></a>リスナーのセットアップの構成
 
@@ -171,14 +171,14 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
 
 ハイブリッド接続が正常に接続されています。
 
-![正常なハイブリッド接続](./media/log-analytics-itsmc/itsmc-hybrid-connection-listener-set-up-successful.png)
+![正常なハイブリッド接続](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-listener-set-up-successful.png)
 > [!NOTE]
 
 > ハイブリッド接続を作成したら、デプロイした Service Manager Web アプリにアクセスして接続を確認し、テストします。 Azure の ITSMC に接続しようとする前に、その接続が正常であることを確認してください。
 
 次のサンプル画面は、正常な接続の詳細を示しています。
 
-![ハイブリッド接続のテスト](./media/log-analytics-itsmc/itsmc-hybrid-connection-test.png)
+![ハイブリッド接続のテスト](media/log-analytics-itsmc-connections/itsmc-hybrid-connection-test.png)
 
 ## <a name="connect-servicenow-to-it-service-management-connector-in-azure"></a>ServiceNow を Azure の IT Service Management Connector に接続する
 
@@ -209,7 +209,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
 1. Azure Portal で、**[すべてのリソース]** に移動し、**ServiceDesk(YourWorkspaceName)** を探します
 
 2.  **[ワークスペースのデータ ソース]** で、**[ITSM 接続]** をクリックします。
-    ![新しい接続](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![新しい接続](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. 右側のウィンドウの上部にある **[追加]** をクリックします。
 
@@ -232,7 +232,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、ITSMC は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。 |
 
-![ServiceNow の接続](./media/log-analytics-itsmc/itsm-connection-servicenow-connection-latest.png)
+![ServiceNow の接続](media/log-analytics-itsmc-connections/itsm-connection-servicenow-connection-latest.png)
 
 **正常に接続され、同期された場合**:
 
@@ -304,7 +304,7 @@ Provance 接続を作成するには、次の手順に従います。
 1. Azure Portal で、**[すべてのリソース]** に移動し、**ServiceDesk(YourWorkspaceName)** を探します
 
 2.  **[ワークスペースのデータ ソース]** で、**[ITSM 接続]** をクリックします。
-    ![新しい接続](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![新しい接続](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. 右側のウィンドウの上部にある **[追加]** をクリックします。
 
@@ -326,7 +326,7 @@ Provance 接続を作成するには、次の手順に従います。
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、ITSMC は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。|
 
-![Provance 接続](./media/log-analytics-itsmc/itsm-connections-provance-latest.png)
+![Provance 接続](media/log-analytics-itsmc-connections/itsm-connections-provance-latest.png)
 
 **正常に接続され、同期された場合**:
 
@@ -355,7 +355,7 @@ Provance 接続を作成するには、次の手順に従います。
 1. Azure Portal で、**[すべてのリソース]** に移動し、**ServiceDesk(YourWorkspaceName)** を探します
 
 2.  **[ワークスペースのデータ ソース]** で、**[ITSM 接続]** をクリックします。
-    ![新しい接続](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![新しい接続](media/log-analytics-itsmc-connections/add-new-itsm-connection.png)
 
 3. 右側のウィンドウの上部にある **[追加]** をクリックします。
 
@@ -378,7 +378,7 @@ Provance 接続を作成するには、次の手順に従います。
 | **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、ITSMC は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。 |
 
 
-![Provance 接続](./media/log-analytics-itsmc/itsm-connections-cherwell-latest.png)
+![Provance 接続](media/log-analytics-itsmc-connections/itsm-connections-cherwell-latest.png)
 
 **正常に接続され、同期された場合**:
 
@@ -396,7 +396,7 @@ Cherwell のクライアント ID とキーを生成するには、次の手順�
 2. **[セキュリティ]** > **[Edit REST API client settings] \(REST API クライアント設定の編集)** の順にクリックします。
 3. **[Create new client] \(クライアントの新規作成)** > **[クライアント シークレット]** の順に選択します。
 
-    ![Cherwell ユーザー ID](./media/log-analytics-itsmc/itsmc-cherwell-client-id.png)
+    ![Cherwell ユーザー ID](media/log-analytics-itsmc-connections/itsmc-cherwell-client-id.png)
 
 
 ## <a name="next-steps"></a>次の手順

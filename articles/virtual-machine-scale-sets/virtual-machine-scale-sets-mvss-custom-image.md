@@ -3,7 +3,7 @@ title: Azure スケール セット テンプレートでのカスタム イメ�
 description: カスタム イメージを既存の Azure Virtual Machine Scale Set テンプレートに追加する方法について説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 5/10/2017
-ms.author: negat
-ms.openlocfilehash: 28d2c080048a7f82e83ad9c1794c9757b330a8c7
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.author: manayar
+ms.openlocfilehash: 2e3c8177a32082c251be74e597a18730ae1c9d37
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26780920"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739647"
 ---
 # <a name="add-a-custom-image-to-an-azure-scale-set-template"></a>Azure スケール セット テンプレートにカスタム イメージを追加する
 
@@ -30,9 +30,9 @@ ms.locfileid: "26780920"
 
 実行可能な最小のスケール セット テンプレートは[こちら](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json)で確認できます。また、スケール セットをカスタム イメージからデプロイするためのテンプレートは[こちら](https://raw.githubusercontent.com/gatneil/mvss/custom-image/azuredeploy.json)で確認できます。 このテンプレートを作成する際に使用する diff (`git diff minimum-viable-scale-set custom-image`) を項目ごとに確認しましょう。
 
-### <a name="creating-a-managed-disk-image"></a>管理ディスク イメージを作成する
+### <a name="creating-a-managed-disk-image"></a>マネージド ディスク イメージを作成する
 
-カスタムの管理ディスク イメージ (`Microsoft.Compute/images` 型のリソース) が既にある場合は、このセクションを省略できます。
+カスタムのマネージド ディスク イメージ (`Microsoft.Compute/images` 型のリソース) が既にある場合は、このセクションを省略できます。
 
 最初に、`sourceImageVhdUri` パラメーターを追加します。これは、デプロイ元のカスタム イメージを含む Azure Storage 内の汎用化された blob への URI です。
 
@@ -52,7 +52,7 @@ ms.locfileid: "26780920"
    "variables": {},
 ```
 
-次に、`Microsoft.Compute/images` 型のリソースを追加します。これは、URI `sourceImageVhdUri` にある汎用化された blob に基づく管理ディスク イメージです。 このイメージは、イメージを使用するスケール セットと同じリージョンにある必要があります。 イメージのプロパティで、OS のタイプ、(`sourceImageVhdUri` パラメーターからの) blob の場所、およびストレージ アカウントのタイプを指定します。
+次に、`Microsoft.Compute/images` 型のリソースを追加します。これは、URI `sourceImageVhdUri` にある汎用化された blob に基づくマネージド ディスク イメージです。 このイメージは、イメージを使用するスケール セットと同じリージョンにある必要があります。 イメージのプロパティで、OS のタイプ、(`sourceImageVhdUri` パラメーターからの) blob の場所、およびストレージ アカウントのタイプを指定します。
 
 ```diff
    "resources": [
@@ -94,7 +94,7 @@ ms.locfileid: "26780920"
 
 ```
 
-### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>管理ディスク イメージを使用するようにスケール セット プロパティを変更する
+### <a name="changing-scale-set-properties-to-use-the-managed-disk-image"></a>マネージド ディスク イメージを使用するようにスケール セット プロパティを変更する
 
 スケール セット `storageProfile` の `imageReference` で、発行元、プラン、SKU、およびプラットフォーム イメージのバージョンを指定する代わりに、`Microsoft.Compute/images` リソースの `id` を指定します。
 
@@ -112,7 +112,7 @@ ms.locfileid: "26780920"
            "osProfile": {
 ```
 
-この例では、`resourceId` 関数を使用して、同じテンプレートで作成したイメージのリソース ID を取得します。 管理ディスク イメージを事前に作成している場合は、代わりにそのイメージの ID を指定する必要があります。 この ID は、`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>` の形式で指定する必要があります。
+この例では、`resourceId` 関数を使用して、同じテンプレートで作成したイメージのリソース ID を取得します。 マネージド ディスク イメージを事前に作成している場合は、代わりにそのイメージの ID を指定する必要があります。 この ID は、`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Compute/images/<image-name>` の形式で指定する必要があります。
 
 
 ## <a name="next-steps"></a>次の手順

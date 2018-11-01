@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/22/2018
+ms.date: 10/23/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: dc9e1b3fb59aca8fba0c84fbfa674931c24c12c9
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 1af7a1d595b39878f3ed30591e8ad78e767e8cf7
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945894"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087493"
 ---
 # <a name="virtual-machine-sizes-supported-in-azure-stack"></a>Azure Stack でサポートされている仮想マシンのサイズ
 
@@ -31,6 +31,10 @@ ms.locfileid: "49945894"
 汎用 VM サイズは、CPU とメモリのバランスの取れた比率を提供します。 これらはテストと開発、小～中規模のデータベース、および低～中程度のトラフィックの Web サーバーに使用されます。
 
 ### <a name="basic-a"></a>Basic A
+
+> [!NOTE]
+> *Basic A* の仮想マシン サイズは、ポータルを介して[仮想マシン スケール セット (VMSS) を作成する](../azure-stack-compute-add-scalesets.md)ものとしては廃止されました。 このサイズの VMSS を作成するには、PowerShell またはテンプレートをご使用ください。
+
 |サイズ - サイズ\名前 |vCPU     |メモリ | 一時ディスクの最大サイズ | OS ディスクの最大スループット: (IOPS) | 一時ストレージの最大スループット (IOPS) | データ ディスクの最大スループット (IOPS) | 最大 NIC 数 |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|
 |**A0\Basic_A0**  |1    |768 MB   | 20 GB   |300  | 300  |1 / 1x300  |1   |

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: a4840fee22086bf6716f5f83ba86c4ac464377f9
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 3b2e25df74d0667b52429a7b998157c4d9e3fe56
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364406"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421103"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-the-telemetry-from-the-hub-with-a-back-end-application-java"></a>クイック スタート: デバイスから IoT ハブに利用統計情報を送信し、バックエンド アプリケーション (Java) でハブから利用統計情報を読み取る
 
@@ -33,7 +33,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このクイック スタートで実行する 2 つのサンプル アプリケーションは、Java を使って書かれています。 開発用コンピューター上に Java SE 8 以降が必要です。
 
-複数のプラットフォームに対応する Java を [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html) からダウンロードできます。
+複数のプラットフォームに対応する Java を [Oracle](https://aka.ms/azure-jdks) からダウンロードできます。
 
 開発コンピューターに現在インストールされている Java のバージョンは、次のコマンドを使って確認できます。
 

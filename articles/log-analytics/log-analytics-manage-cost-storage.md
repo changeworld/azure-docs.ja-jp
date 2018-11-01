@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: dfb95a57da62037df8f7fbe7e5d8edd970e264ac
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 2c52baf47e0b1495a5abfa727ab8bc8d997a4283
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044367"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418893"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Log Analytics でデータ ボリュームと保有期間を制御してコストを管理する
 
@@ -55,7 +55,7 @@ Log Analytics は、企業内のソースまたは Azure に展開されたソ�
 Log Analytics では、最近の使用パターンに基づいてコストを簡単に理解できます。  このためには、次の手順を実行します。  
 
 1. [Azure Portal](http://portal.azure.com) にサインインします。 
-2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](media/log-analytics-manage-cost-storage/azure-portal-01.png)<br><br>  
 3. Log Analytics のサブスクリプション ウィンドウで、ワークスペースを選び、左側のウィンドウで **[使用量と推定コスト]** をクリックします。<br><br> ![[使用量と推定コスト] ページ](media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
 
 このページでは、該当の月のデータ ボリュームを確認できます。 これには、受信して Log Analytics ワークスペースに格納されたすべてのデータが含まれます。  ページ上部の **[使用量の詳細]** をクリックすると、使用量ダッシュボードにデータ ボリュームの傾向の情報がソース別、コンピューター別、サービス別に表示されます。 日次上限を表示および設定したり、リテンション期間を変更したりするには、**[データ ボリュームの管理]** をクリックします。

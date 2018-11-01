@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: rogoya
-ms.openlocfilehash: 1ad499e2703ff8376c063d933c0cc1f03765fc23
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 4c5fead0a7f4634a8f5ee005114d24cae9a2590f
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42146215"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739825"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>組織内の不適切なパスワードを排除する
 
@@ -70,4 +70,4 @@ Microsoft は常にサイバー犯罪者の一歩先を行く対策を講じて�
 ## <a name="next-steps"></a>次の手順
 
 * [カスタムの禁止パスワード リストを構成する](howto-password-ban-bad.md)
-* [オンプレミスで Azure AD パスワード保護エージェントを有効にする](howto-password-ban-bad-on-premises.md)
+* [オンプレミスで Azure AD パスワード保護エージェントを有効にする](howto-password-ban-bad-on-premises-deploy.md)

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 24de05a60c3cda47a1968bb1f83f9cb91e4e03de
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: b3b686815b86e28c0473668825b89736b9af5bf1
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091200"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740486"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>チュートリアル: Azure Data Box Disk の開梱、接続、ロック解除
 
