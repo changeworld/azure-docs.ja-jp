@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: d14cfb82ae74f85425dbd3e8a365e8b99969641d
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227465"
+---
 ## <a name="using-vm-extensions"></a>VM 拡張機能の使用
 Azure VM 拡張機能は、Azure VM 上での他のプログラムの動作の支援 (たとえば、 **WebDeployForVSDevTest** 拡張機能により Visual Studio は Azure VM に Web デプロイできるようになります)、または他のいくつかの動作をサポートするための VM の操作機能の提供 (たとえば、Azure CLI という PowerShell の VM アクセス拡張機能と REST クライアントを使用すると、Azure VM のリモート アクセス値をリセットまたは変更できます) を行う、動作や機能を実装します。
 

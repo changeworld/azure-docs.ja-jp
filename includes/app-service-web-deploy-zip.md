@@ -5,19 +5,19 @@ services: app-service
 author: cephalin
 ms.service: app-service
 ms.topic: include
-ms.date: 02/02/2018
+ms.date: 10/30/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: 917f8cc4a22199351614d101f1300b80052ee9a9
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 60d6ff8dea81102cfac0fea76f6fd11ff8465a23
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
-ms.locfileid: "28986081"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254595"
 ---
 ## <a name="deploy-zip-file"></a>ZIP ファイルのデプロイ
 
-ブラウザーで `https://<app_name>.scm.azurewebsites.net/ZipDeploy` にアクセスします。
+ブラウザーで `https://<app_name>.scm.azurewebsites.net/ZipDeployUI` にアクセスします。
 
 「[プロジェクトの ZIP ファイルを作成する](#create-a-project-zip-file)」で作成した ZIP ファイルを、Web ページ上のエクスプローラー領域にドラッグしてアップロードします。
 

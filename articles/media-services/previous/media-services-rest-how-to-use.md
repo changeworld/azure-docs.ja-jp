@@ -4,7 +4,7 @@ description: Media Services REST API の概要
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a5f1c5e7-ec52-4e26-9a44-d9ea699f68d9
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 10/29/2018
 ms.author: juliako;johndeu
-ms.openlocfilehash: af83e876802b176d4e097535d45df91e8a986dfb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 38310ce64335e03c6728092bf1b8ce4752740a83
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785981"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233465"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -57,7 +57,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 
 | ヘッダー | type | 値 |
 | --- | --- | --- |
-| 承認 |ベアラ |ベアラは、唯一許容される承認のメカニズムです。 値には、Azure Active Directory によって提供されるアクセス トークンを含める必要もあります。 |
+| Authorization |ベアラ |ベアラは、唯一許容される承認のメカニズムです。 値には、Azure Active Directory によって提供されるアクセス トークンを含める必要もあります。 |
 | x-ms-version |Decimal |2.17 (または最新バージョン)|
 | DataServiceVersion |Decimal |3.0 |
 | MaxDataServiceVersion |Decimal |3.0 |
@@ -94,7 +94,7 @@ Media Services に対して行うそれぞれの呼び出しについて、要�
 ## <a name="standard-http-verbs-supported-by-media-services"></a>Media Services でサポートされている標準の HTTP 動詞
 HTTP 要求を行うときに使用できる HTTP 動詞の完全な一覧を次に示します。
 
-| 動詞 | [説明] |
+| 動詞 | 説明 |
 | --- | --- |
 | GET |オブジェクトの現在の値を返します。 |
 | POST |提供されるデータに基づくオブジェクトを作成、またはコマンドを送信します。 |

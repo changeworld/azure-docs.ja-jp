@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 78e3bec0d00336ce7cedc1434bf6ad7c65435969
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 995e93290e7c305e217c1f44609d383f69d83a9a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978184"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420559"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM Scale Sets 向けの Resource Manager テンプレートを使用した高度な自動スケール構成
 Virtual Machine Scale Sets では、パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいてスケールインおよびスケールアウトを行うことができます。 また、スケール アクションに対して電子メール通知や webhook 通知を構成することもできます。 このチュートリアルでは、これらすべてのオブジェクトを VM スケール セットで Resource Manager テンプレートを使用して構成する例を示します。
@@ -29,7 +29,7 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
 1. 基本的な自動スケール設定を指定して新しいスケール セットをデプロイします。 この記事では、Azure クイック スタート ギャラリーのスケール セットを使用します。ギャラリーには、基本的な自動スケール テンプレートが付随する Windows スケール セットが用意されています。 Linux スケール セットも同じように動作します。
 2. スケール セットを作成したら、Azure リソース エクスプローラーからスケール セット リソースに移動します。 Microsoft.Insights ノードの下に次の要素が表示されます。
 
-    ![Azure 用エクスプローラー](./media/insights-advanced-autoscale-vmss/azure_explorer_navigate.png)
+    ![Azure 用エクスプローラー](media/insights-advanced-autoscale-virtual-machine-scale-sets/azure_explorer_navigate.png)
 
     テンプレートを実行すると、**autoscalewad** という名前の既定の自動スケール設定が作成されます。 右側に、この自動スケール設定の定義がすべて表示されます。 この例では、既定の自動スケール設定に、CPU 使用率に基づくスケールアウトとスケールインのルールが付属しています。  
 
@@ -58,11 +58,11 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
 
 5. リソース エクスプローラーが**読み取り/書き込み**モードになっていることを確認します。
 
-    ![Autoscalewad, default autoscale setting](./media/insights-advanced-autoscale-vmss/autoscalewad.png)
+    ![Autoscalewad, default autoscale setting](media/insights-advanced-autoscale-virtual-machine-scale-sets/autoscalewad.png)
 
 6. [編集] をクリックします。 自動スケール設定の "profiles" 要素を次の構成に**置き換え**ます。
 
-    ![profiles](./media/insights-advanced-autoscale-vmss/profiles.png)
+    ![profiles](media/insights-advanced-autoscale-virtual-machine-scale-sets/profiles.png)
 
     ```
     {

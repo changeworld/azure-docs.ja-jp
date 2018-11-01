@@ -3,7 +3,7 @@ title: Azure Application Insights のファネル
 description: ファネルを使って、顧客によるアプリケーションの操作状況を把握する方法を説明します。
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,13 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/17/2017
-ms.author: mbullwin
-ms.openlocfilehash: 8478106fd68f6fcc65dff832b5cb27ca8db5f5bd
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.pm_owner: daviste;NumberByColors
+ms.reviewer: mbullwin
+ms.author: daviste
+ms.openlocfilehash: 3d4d6ba7e185b1cc5fdcee1633a11e579d8194e8
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47093723"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413964"
 ---
 # <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Application Insights のファネルを使って、顧客がどのようにアプリケーションを利用しているか把握する
 
@@ -38,7 +40,7 @@ ms.locfileid: "47093723"
 以下のスクリーンショットは、ファネル ツールによって生成されるデータの種類の例を示しています。 Fabrikam の事業主は、過去 90 日間に、ホーム ページを閲覧した顧客の 54.3 パーセントが顧客チケットを作成したことを確認できます。 2,700 人の顧客がホーム ページからインデックスを訪れたことも分かります。 これは更新に関する問題を示唆している可能性があります。
 
 
-![ファネル ツールとデータのスクリーンショット](./media/app-insights-understand-usage-patterns/funnel1.png)
+![ファネル ツールとデータのスクリーンショット](media/usage-funnels/funnel1.png)
 
 ### <a name="funnels-features"></a>ファネルの機能
 前掲のスクリーンショットには、強調表示されている領域が 5 箇所あります。 これらはファネルの機能です。 スクリーンショットの対応する各領域についての詳細は、次のとおりです。

@@ -13,14 +13,14 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d65a33dc13d0b91a9ace04dab0be6c37bcd2188f
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: b34597c604160cc5c0880561a6c3afb70816f9b3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617629"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417329"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ
 
@@ -43,9 +43,9 @@ PHP ログを有効にするには、次の手順を実行します。
 9. **[保存]** を選択します。
 10. **wp-config.php** の横にある鉛筆のアイコンを選択します。
 11. テキストを次のコードに変更します。
-   ```
+   ```php
    //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
-   //Supress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Supress PHP errors to screenini_set('display_errors', 0);
+   //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Supress PHP errors to screenini_set('display_errors', 0);
    ```
 12. Azure ポータルの Web アプリのメニューで、Web アプリを再起動します。
 
@@ -70,7 +70,7 @@ Node.js アプリケーションのバージョンを変更するために、次
 *   Iisnode.yml ファイルを変更します。 iisnode.yml ファイルで Node.js バージョンを変更しても、iisnode が使用するランタイム環境が設定されるだけです。 Kudu cmd などは、Azure ポータルの **[アプリ設定]** で設定されている Node.js バージョンを引き続き使用します。
 
     Iisnode.yml を手動で設定するには、アプリのルート フォルダーに iisnode.yml ファイルを作成します。 ファイルに次の行を含めます。
-   ```
+   ```yml
    nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
    ```
    
@@ -80,7 +80,7 @@ Node.js アプリケーションのバージョンを変更するために、次
     2. Web アプリのルート フォルダーにデプロイ スクリプト (deploy.cmd、デプロイメント ファイル) がない場合、既定のデプロイメント スクリプトを作成します。
     3. package.json ファイルで Node.js バージョンを指定する場合、iisnode.yml ファイルを作成した場所でデプロイメント スクリプトを実行します。> engine `"engines": {"node": "5.9.1","npm": "3.7.3"}`
     4. Iisnode.yml ファイルには、次のコード行があります。
-        ```
+        ```yml
         nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
         ```
 
@@ -146,7 +146,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 2. カスタム Tomcat または Azure Marketplace の Tomcat Web サーバーを使用している場合は、Tomcat lib フォルダーにこの .jar ファイルをコピーします。
 3. Azure ポータルから Java を有効にしている場合 (**[Java 1.8]** > **[Tomcat サーバー]** の順に選択)、アプリに並列のフォルダーに sqljdbc.* jar ファイルをコピーします。 次に、web.config ファイルに次のクラスパスの設定を追加します。
 
-    ```
+    ```xml
     <httpPlatform>
     <environmentVariables>
     <environmentVariablename ="JAVA_OPTS" value=" -Djava.net.preferIPv4Stack=true

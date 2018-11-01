@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 49aed496d8c125da8c2269186b569693c794d290
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: fc9ed37ef24e776336124bf097def2f6a00ee83e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49404564"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419794"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>OMS ポータルから Azure portal への切り替えに関する Log Analytics ユーザーの一般的な質問
 当初、Log Analytics では、その構成を管理したり収集されたデータを分析したりすることを目的とした "OMS ポータル" と呼ばれる独自のポータルが使用されていました。  このポータルの機能はすべて Azure portal に移行され、今後はそちらで開発が継続されることになります。
@@ -32,7 +32,7 @@ ms.locfileid: "49404564"
 ## <a name="where-do-i-find-log-analytics-in-azure"></a>Log Analytics は Azure のどこにあるのですか?
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。  **[すべてのサービス]** をクリックし、リソースの一覧で「**Log Analytics**」と入力します。 **[Log Analytics]** を選択し、ワークスペースを選択します。 ワークスペースのサマリー ページが表示されます。
 
-![Log Analytics ワークスペース](media/log-analytics-new-portal/log-analytics.png)
+![Log Analytics ワークスペース](media/log-analytics-oms-portal-faq/log-analytics.png)
 
 ## <a name="how-do-i-manage-permissions"></a>アクセス許可の管理方法を教えてください
 Azure portal における Log Analytics ワークスペースへのアクセス権がない場合は、[Azure のロールベースのアクセス](../active-directory/role-based-access-control-configure.md)を使用してアクセス許可を構成する必要があります。 ワークスペースのアクセス許可の管理について詳しくは、[ワークスペースの管理](../log-analytics/log-analytics-manage-access.md#manage-accounts-and-users)に関するページを参照してください。 アラートに関するアクセス許可の管理については、「[Azure Monitor での役割、アクセス許可、およびセキュリティの使用](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md)」を参照してください。
@@ -40,12 +40,12 @@ Azure portal における Log Analytics ワークスペースへのアクセス�
 ## <a name="how-do-i-create-a-new-workspace"></a>新しいワークスペースの作成方法を教えてください 
 Azure portal でワークスペースの一覧から、ワークスペースの一覧の **[追加]** をクリックします。  詳細については、「[Azure portal で Log Analytics ワークスペースを作成する](../log-analytics/log-analytics-quick-create-workspace.md)」を参照してください。
 
-![[概要] ページ](media/log-analytics-new-portal/new-workspace.png)
+![[概要] ページ](media/log-analytics-oms-portal-faq/new-workspace.png)
 
 ## <a name="where-is-my-overview-page"></a>概要ページはどこにあるのですか?
 OMS ポータルのメイン画面には、ワークスペースにインストールされているすべての管理ソリューションのタイルのほか、自分で作成したカスタム ビューが表示されます。 Azure Portal でこの同じビューを利用できます。 ワークスペースから、**[Workspace Summary]**(ワークスペースの概要) を選択します。
 
-![[概要] ページ](media/log-analytics-new-portal/overview.png)
+![[概要] ページ](media/log-analytics-oms-portal-faq/overview.png)
 
 ## <a name="how-do-i-open-log-search-and-view-designer"></a>ログ検索とビュー デザイナーの開き方を教えてください
 Azure portal では、**ログ検索**と**ビュー デザイナー**のどちらも、メイン ページからアクセスできるほか、ワークスペースの左側 (**[概要]** のすぐ横) のメニューからアクセスできます。
@@ -53,7 +53,7 @@ Azure portal では、**ログ検索**と**ビュー デザイナー**のどち�
 ## <a name="where-do-i-find-settings"></a>一連の設定はどこにありますか?
 OMS ポータルの **[設定]** セクションにあった設定の多くは、Azure portal ではワークスペースの **[詳細設定]** メニューから利用できます。
 
-![詳細設定](media/log-analytics-new-portal/advanced-settings.png)
+![詳細設定](media/log-analytics-oms-portal-faq/advanced-settings.png)
 
 以前 OMS ポータルの **[設定]** セクションにあった各設定へのアクセス方法については、以降のセクションで詳しく取り上げます。
 
@@ -118,7 +118,7 @@ Log Analytics の [[マイ ダッシュボード]](../log-analytics/log-analytic
 ## <a name="how-do-i-check-my-usage"></a>使用量をチェックするにはどうすればよいですか?
 Log Analytics の使用量とコストは、ワークスペースから **[使用量と推定コスト]** を選択して簡単に表示、管理できます。
 
-![使用量と推定コスト](media/log-analytics-new-portal/usage.png)
+![使用量と推定コスト](media/log-analytics-oms-portal-faq/usage.png)
 
 
 ## <a name="can-i-still-use-the-classic-portal"></a>クラシック ポータルはまだ使用できるのですか?

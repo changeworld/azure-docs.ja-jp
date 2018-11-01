@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: bcede1f985937058196b75a93f539cb34da73992
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 49607809d6bb8697cc6b7a4063a45d893b9e1eac
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49365064"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421086"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Azure Monitor でのログ アラート
 この記事では、ログ アラートの詳細について説明します。ログ アラートは、[Azure アラート](monitoring-overview-unified-alerts.md)でサポートされるアラートの一種です。これを使用すると、Azure の分析プラットフォームをアラート発信の基盤として使用できます。
@@ -93,7 +93,7 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 
 このクエリは、各コンピューターの平均値を 5 分間隔で算出します。  このクエリは過去 30 分間に収集されたデータを対象に、5 分ごとに実行されます。  コンピューターが 3 台の場合、サンプル データは以下のようになります。
 
-![サンプル クエリの結果](./media/monitor-alerts-unified/metrics-measurement-sample-graph.png)
+![サンプル クエリの結果](media/monitor-alerts-unified-log/metrics-measurement-sample-graph.png)
 
 この例では、指定された期間内に srv02 と srv03 の 2 台がしきい値 (90 %) に合計 3 回抵触しています。このため、この 2 台について個別にアラートが生成されます。  **[アラートをトリガーする基準]** を **[Consecutive (連続)]** に変更した場合、3 回連続でしきい値に違反した srv03 についてのみアラートが生成されます。
 

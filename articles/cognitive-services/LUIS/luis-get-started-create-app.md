@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 12a660b49d1a81865c34ceda38f041de9be31eb1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cc4a1a7f99de657a6199985dd0c963eed741ac97
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037475"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210025"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>クイック スタート - 事前構築済みのホーム オートメーション アプリを使用する
 
@@ -23,7 +23,7 @@ ms.locfileid: "47037475"
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事には、LUIS ポータル ([http://www.luis.ai](http://www.luis.ai)) で作成された無料の LUIS アカウントが必要です。 
+この記事には、LUIS ポータル ([https://www.luis.ai](https://www.luis.ai)) で作成された無料の LUIS アカウントが必要です。 
 
 ## <a name="create-a-new-app"></a>新しいアプリの作成
 アプリケーションは、**[マイ アプリ]** で作成および管理できます。 

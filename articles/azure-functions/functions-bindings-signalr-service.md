@@ -3,8 +3,8 @@ title: Azure Functions における SignalR Service のバインド
 description: Azure Functions で SignalR Service のバインドを使用する方法を説明します。
 services: functions
 documentationcenter: na
-author: anthonychu
-manager: cfowler
+author: craigshoemaker
+manager: jeconnoc
 editor: ''
 tags: ''
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
@@ -14,13 +14,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
-ms.author: antchu
-ms.openlocfilehash: 2892481dca9ce62d96e954656341925b4c8110f9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.author: cshoe
+ms.openlocfilehash: 40cad9eec87c07a205a86f1009074cdbeaf58d15
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48802017"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249976"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Azure Functions における SignalR サービスのバインド
 

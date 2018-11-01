@@ -11,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: quickstart
 ms.date: 8/20/2018
 ms.author: aahi
-ms.openlocfilehash: 5e002de273d50de9095c6e58b8e1a9fb9a05ed4f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1a7cc7d58975aa0cd5903581610d642193951ec4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295344"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412468"
 ---
 # <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-java"></a>クイック スタート: Bing Image Search REST API と Java を使用して検索クエリを送信する
 
@@ -28,7 +28,7 @@ ms.locfileid: "46295344"
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java Development Kit(JDK) 7 または 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Java Development Kit(JDK) 7 または 8](https://aka.ms/azure-jdks)
 
 * [Gson ライブラリ](https://github.com/google/gson)
 

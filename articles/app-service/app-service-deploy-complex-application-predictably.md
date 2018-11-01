@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 049f5211e800dace4b8968cd9e3db9ad968f8813
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c4071da60ed1311d8dd75d6a369c48cf711778cb
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050748"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243216"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure でマイクロサービスを予測どおりにデプロイする
 このチュートリアルでは、[Azure App Service](https://azure.microsoft.com/services/app-service/) の[マイクロサービス](https://en.wikipedia.org/wiki/Microservices)で構成されるアプリケーションを、JSON リソース グループ テンプレートと PowerShell スクリプトを使用して、1 つのユニットとして予測どおりにプロビジョニングしてデプロイする方法を示します。 
@@ -100,8 +100,8 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 
 JSON 形式について詳しく説明する予定はありませんが、「 [その他のリソース](#resources) 」セクションには、リソース グループ テンプレートの言語を習得するためのリンクが用意されています。 ここでは、アプリをデプロイするための独自のカスタム テンプレートを作成するのに役立つ、興味深い機能のみについて説明します。
 
-### <a name="parameters"></a>パラメーター
-parameters セクションを見ると、そこにあるパラメーターのほとんどが、 **[Azure にデプロイ]** ボタンによって入力が求められる内容であることがわかります。 **[Azure にデプロイ]** ボタンで表示されるサイトでは、入力用の UI に、azuredeploy.json で定義されたパラメーターを使用して値が設定されます。 これらのパラメーターは、リソース名、プロパティの値など、リソースの定義全体で使用されます。
+### <a name="parameters"></a>parameters
+パラメーター セクションを見ると、そこにあるパラメーターのほとんどが、 **[Azure にデプロイ]** ボタンによって入力が求められる内容であることがわかります。 **[Azure にデプロイ]** ボタンで表示されるサイトでは、入力用の UI に、azuredeploy.json で定義されたパラメーターを使用して値が設定されます。 これらのパラメーターは、リソース名、プロパティの値など、リソースの定義全体で使用されます。
 
 ### <a name="resources"></a>リソース
 リソース ノードを見ると、SQL Server のインスタンス、App Service プラン、2 つの Web Apps の、4 つの最上位レベルのリソースが定義されていることがわかります。 
@@ -148,17 +148,17 @@ Web アプリは、2 つの異なるリソースに依存します。 つまり�
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
-`config/appsettings` の `properties` 要素には、`“<name>” : “<value>”` 形式のアプリ設定が 2 つ含まれています。
+`config/appsettings` の `properties` 要素には、`"<name>" : "<value>"` 形式のアプリ設定が 2 つ含まれています。
 
 * `PROJECT` は、Visual Studio のマルチプロジェクト ソリューションで使用するプロジェクトを Azure のデプロイメントに伝える [KUDU 設定](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) です。 ソース管理の構成方法については後で説明しますが、ToDoApp コードは Visual Studio のマルチ プロジェクト ソリューションに含まれているため、この設定は必要です。
 * `clientUrl` は、単に、アプリケーション コードで使用されるアプリ設定です。
 
-##### <a name="connection-strings"></a>接続文字列
+##### <a name="connection-strings"></a>Connection strings
 接続文字列は、入れ子になったリソースとしても定義されます。
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-`config/connectionstrings` の `properties` 要素では、各接続文字列が `“<name>” : {“value”: “…”, “type”: “…”}` という特定の形式で、名前と値のペアとしても定義されています。 `type` 要素に指定できる値は、`MySql`、`SQLServer`、`SQLAzure`、および `Custom` です。
+`config/connectionstrings` の `properties` 要素では、各接続文字列が `"<name>" : {"value": "…", "type": "…"}` という特定の形式で、名前と値のペアとしても定義されています。 `type` 要素に指定できる値は、`MySql`、`SQLServer`、`SQLAzure`、および `Custom` です。
 
 > [!TIP]
 > 接続文字列の種類の最終的な一覧については、Azure PowerShell で次のコマンドを実行します: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")

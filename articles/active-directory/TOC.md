@@ -302,8 +302,6 @@
 ##### [カスタム開発されたアプリに関する問題](manage-apps/application-sign-in-problem-custom-dev.md)
 ##### [オンプレミス アプリに関する問題 - アプリケーション プロキシの問題](manage-apps/application-sign-in-problem-on-premises-application-proxy.md)
 
-### [アプリの開発](active-directory-applications-guiding-developers-for-lob-applications.md)
-
 
 ## ディレクトリの管理
 ### [Azure AD Connect](hybrid/whatis-hybrid-identity.md)

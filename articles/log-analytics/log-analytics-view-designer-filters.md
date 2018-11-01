@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 3851bfef71aab6553e109bb8108edd7bec182f0e
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 87cfcefd91652194adc0a5ca4580a8d00ba4d234
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041954"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412756"
 ---
 # <a name="filters-in-log-analytics-views"></a>Log Analytics ビューのフィルター
 [Log Analytics ビュー](log-analytics-view-designer.md)の**フィルター**では、ビュー自体を変更せずに、特定のプロパティの値によってビュー内のデータをフィルター処理することができます。  たとえば、ビューのユーザーが、特定のコンピューターまたは複数のコンピューターからのデータだけをフィルター表示したビューを利用できます。  1 つのビューに複数のフィルターを作成して、ユーザーが複数のプロパティでフィルター処理することが可能です。  この記事では、フィルターの使用方法およびカスタム ビューへの追加方法について説明します。
@@ -28,12 +28,12 @@ ms.locfileid: "48041954"
 ## <a name="using-a-filter"></a>フィルターを使用する
 ビューの上部にあるデータ時間範囲をクリックしてドロップダウンを開き、ビューのデータ時間範囲を変更します。
 
-![フィルターの例](media/log-analytics-view-designer/filters-example-time.png)
+![フィルターの例](media/log-analytics-view-designer-filters/filters-example-time.png)
 
 **[+]** をクリックして、ビューに定義されているカスタム フィルターを使用してフィルターを追加します。 ドロップダウンからフィルターの値を選択するか、値を入力します。 **[+]** をクリックしてさらにフィルターを追加します。 
 
 
-![フィルターの例](media/log-analytics-view-designer/filters-example-custom.png)
+![フィルターの例](media/log-analytics-view-designer-filters/filters-example-custom.png)
 
 フィルターのすべての値を削除すると、そのフィルターは適用されなくなります。
 
@@ -42,7 +42,7 @@ ms.locfileid: "48041954"
 
 [ビューの編集](log-analytics-view-designer.md)時に、**[フィルター]** タブからフィルターを作成します。  フィルターはビューに対してグローバルで、ビュー内のすべての部分に適用されます。  
 
-![フィルター設定](media/log-analytics-view-designer/filters-settings.png)
+![フィルター設定](media/log-analytics-view-designer-filters/filters-settings.png)
 
 フィルターの設定を次の表に示します。
 

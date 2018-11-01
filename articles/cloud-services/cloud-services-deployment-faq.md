@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 05217129d4993514acaf8c717847040584984cb3
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: d44cfc0164892c34bcbe16ca07e9ec67190ada24
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068906"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415306"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services のデプロイの問題: よくあるご質問 (FAQ)
 
@@ -64,17 +64,16 @@ ms.locfileid: "34068906"
 
 詳細については、「[クラウド サービスの更新方法](cloud-services-update-azure-service.md)」を参照してください。
 
-## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Service Management API または PowerShell から Azure Resource Manager ストレージ アカウントを使用して Cloud Services をデプロイすることができません。なぜでしょうか。 
+## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Service Management API または PowerShell から Azure Resource Manager ストレージ アカウントを使用して Cloud Services をデプロイすることができません。なぜでしょうか。 
 
-Cloud Services はクラシック リソースです。クラシック リソースは Azure Resource Manager モデルと直接の互換性がないため、Azure Resource Manager のストレージ アカウントに関連付けることができません。 いくつかの選択肢を次に示します。 
- 
+Cloud Services はクラシック リソースです。クラシック リソースは Azure Resource Manager モデルと直接の互換性がないため、Azure Resource Manager のストレージ アカウントに関連付けることができません。 いくつかの選択肢を次に示します。 
+ 
 - REST API を使用してデプロイする。
 
-    Service Management REST API を使用してデプロイすれば、クラシックと Azure Resource Manager の両方のストレージ アカウントに対応した Blob Storage への SAS URL を指定することでこの制限を回避できます。 "PackageUrl" プロパティの詳細については、[こちら](https://msdn.microsoft.com/library/azure/ee460813.aspx)を参照してください。
-  
+    Service Management REST API を使用してデプロイすれば、クラシックと Azure Resource Manager の両方のストレージ アカウントに対応した Blob Storage への SAS URL を指定することでこの制限を回避できます。 "PackageUrl" プロパティの詳細については、[こちら](https://msdn.microsoft.com/library/azure/ee460813.aspx)を参照してください。  
 - [Azure Portal](https://portal.azure.com) を使用してデプロイする。
 
-    [Azure Portal](https://portal.azure.com) からデプロイすれば、Azure Resource Manager リソースとクラシック リソースとの間の通信を可能にするプロキシ/shim を経由して呼び出しが行われるため正常に実行できます。 
+    [Azure Portal](https://portal.azure.com) からデプロイすれば、Azure Resource Manager リソースとクラシック リソースとの間の通信を可能にするプロキシ/shim を経由して呼び出しが行われるため正常に実行できます。 
  
 ## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Azure Portal がデプロイ用のストレージ アカウントの提供を要求するのはなぜですか。 
 

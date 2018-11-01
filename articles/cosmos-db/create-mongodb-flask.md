@@ -9,14 +9,14 @@ ms.component: cosmosdb-mongo
 ms.custom: quick start connect, mvc
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 10/2/2017
+ms.date: 10/02/2017
 ms.author: sclyon
-ms.openlocfilehash: faba9b2999445152f700ddfa1a7e56983cbb03f4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 4416af7c1afede89063c1d4289ad2603f7b2c5d0
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700671"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248525"
 ---
 # <a name="azure-cosmos-db-build-a-flask-app-with-the-mongodb-api"></a>Azure Cosmos DB: MongoDB API による Flask アプリの構築
 

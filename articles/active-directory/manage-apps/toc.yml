@@ -22,6 +22,8 @@ items:
     items:
     - name: アプリを追加する際の作業内容
       href: plan-an-application-integration.md
+    - name: 開発者向けのガイダンス
+      href: developer-guidance-for-integrating-applications.md
   - name: オンプレミス アプリの統合の計画
     items:
     - name: アプリケーション プロキシ
@@ -284,9 +286,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-active-directory
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: dbf6ff0732192b74f98ed9d9a25a2bb61714b01b
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: 7114e27840d9a21701fe30537dbd6d533abaef7e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085004"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413980"

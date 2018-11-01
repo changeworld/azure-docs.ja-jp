@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/07/2018
 ms.author: spelluru
-ms.openlocfilehash: 30ff970a1f6243bbba6aa42046cf6e08c808f4e5
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 0d3cbc83c5d2558d7eba3de897477814df81893c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068862"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242434"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
 
@@ -40,7 +40,7 @@ ms.locfileid: "49068862"
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1.Azure Portal を使用した名前空間の作成
+## <a name="create-a-namespace-using-the-azure-portal"></a>Azure Portal を使用した名前空間の作成
 
 > [!NOTE] 
 > [PowerShell](/powershell/azure/get-started-azureps) を使用して Service Bus 名前空間とメッセージング エンティティを作成することもできます。 詳細については、「[PowerShell モジュールで Service Bus リソースを管理する](service-bus-manage-with-ps.md)」を参照してください。
@@ -49,13 +49,13 @@ Service Bus メッセージング名前空間を既に作成している場合�
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-queue-using-the-azure-portal"></a>2.Azure Portal を使用したキューの作成
+## <a name="create-a-queue-using-the-azure-portal"></a>Azure Portal を使用したキューの作成
 
 Service Bus キューを既に作成している場合は、「[キューへのメッセージの送信](#3-send-messages-to-the-queue)」セクションに進んでください。
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
-## <a name="3-send-messages-to-the-queue"></a>手順 3.キューへのメッセージの送信
+## <a name="send-messages-to-the-queue"></a>キューへのメッセージの送信
 
 キューにメッセージを送信するために、Visual Studio を使用して C# コンソール アプリケーションを作成します。
 
@@ -214,7 +214,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Core)** 
    
       ![メッセージ サイズ][queue-message]
 
-## <a name="4-receive-messages-from-the-queue"></a>4.キューからメッセージを受け取る
+## <a name="receive-messages-from-the-queue"></a>キューからメッセージを受け取る
 
 送信したメッセージを受信するには、前の手順で説明した送信側アプリケーションと同じように、.NET Core コンソール アプリケーションをもう 1 つ作成し、**Microsoft.Azure.ServiceBus** NuGet パッケージをインストールします。
 

@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.openlocfilehash: fc1f952128b4cfbb082f4c539a102f40d3b85e8d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: c984f5a96ef9dcc1e4fb6f5b3f54159c26cafdbc
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040300"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412841"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-spark-in-hdinsight-using-intellij"></a>チュートリアル: IntelliJ を使用した HDInsight での Spark の Scala Maven アプリケーションの作成
 
@@ -30,7 +30,7 @@ ms.locfileid: "43040300"
 > HDInsight には、アプリケーションを作成して Linux の HDInsight Spark クラスターに送信するプロセスを容易にする IntelliJ IDEA プラグイン ツールも用意されています。 詳細については、 [IntelliJ IDEA 用の HDInsight Tools プラグインを使用した Spark Scala アプリケーションの作成と送信](apache-spark-intellij-tool-plugin.md)に関するページをご覧ください。
 > 
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 > [!div class="checklist"]
 > * IntelliJ を使用して Scala Maven アプリケーションを開発する
 
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="prerequisites"></a>前提条件
 
 * HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
-* Oracle Java Development kit。 [ここ](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からインストールできます。
+* Oracle Java Development kit。 [ここ](https://aka.ms/azure-jdks)からインストールできます。
 * Java IDE。 この記事では、IntelliJ IDEA 18.1.1 を使用します。 [ここ](https://www.jetbrains.com/idea/download/)からインストールできます。
 
 ## <a name="use-intellij-to-create-application"></a>IntelliJ を使用してアプリケーションを作成する

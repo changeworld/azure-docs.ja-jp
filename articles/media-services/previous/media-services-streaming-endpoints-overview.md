@@ -5,7 +5,7 @@ services: media-services
 documentationcenter: ''
 author: Juliako
 writer: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 097ab5e5-24e1-4e8e-b112-be74172c2701
 ms.service: media-services
@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 7b4077747d4c9ec581496786063fc8fbe0c6b247
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 06f219b9cf7d17e80699aebc1082b14e2de45c8b
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785951"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240224"
 ---
 # <a name="streaming-endpoints-overview"></a>ストリーミング エンドポイントの概要 
 
@@ -43,7 +43,7 @@ Azure Media Services アカウントを作成すると、既定の標準スト�
 
 2017 年 1 月リリース以降の Media Services には、**Standard** と **Premium** の 2 つのストリーミング タイプがあります。 これらのタイプは、ストリーミング エンドポイントのバージョン「2.0」の一部です。
 
-type|[説明]
+type|説明
 ---|---
 **Standard**|ほとんどのシナリオで使用する既定のオプションです。<br/>このオプションでは、固定/制限付きの SLA を取得でき、開始後の最初の 15 日間ストリーミング エンドポイントは無料です。<br/>複数のストリーミング エンドポイントを作成する場合は、最初の 1 つだけが最初の 15 日間無料で、他は開始するとすぐに課金されます。 <br/>無料評価版は新しく作成したメディア サービス アカウントと既定のストリーミング エンドポイントにのみ適用されることに注意してください。 既存のストリーミング エンドポイントと追加で作成されたストリーミング エンドポイントは、バージョン 2.0 にアップグレードした場合やバージョン 2.0 で作成した場合にも、無料の試用期間に含まれません。
 **Premium**|このオプションは、より高度なスケールやコントロールを必要とするプロフェッショナルなシナリオに適しています。<br/>購入済みの Premium ストリーミング ユニット (SU) の容量をベースとする可変の SLA、専用のストリーミング エンドポイントは分離された環境に存在し、リソースの競合は起こりません。
@@ -75,7 +75,7 @@ type|[説明]
 
 ### <a name="features"></a>機能
 
-Feature|標準|Premium
+機能|標準|Premium
 ---|---|---
 最初の 15 日間無料| [はい] |いいえ 
 Throughput |Azure CDN を使用しない場合は、最大 600 Mbps。 CDN に合わせて拡大縮小。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN に合わせて拡大縮小。
@@ -92,7 +92,7 @@ IP フィルタリング/G20/カスタム ホスト|[はい]|[はい]
 
 ## <a name="migration-between-types"></a>タイプの移行
 
-ソース | ターゲット | アクションを表示します。
+ソース | ターゲット | Action
 ---|---|---
 クラシック|標準|オプトインが必要
 クラシック|Premium| スケール (追加のストリーミング ユニット)

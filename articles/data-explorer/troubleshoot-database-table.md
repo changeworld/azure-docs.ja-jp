@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6ec81d6154f15d1c49428b50f0e65eed8edcedad
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ec66066fe51af97f6355b78dd7af3480a39a5a03
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986517"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215091"
 ---
 # <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>トラブルシューティング: Azure データ エクスプローラーでデータベースまたはテーブルの作成または削除が失敗する
 
@@ -57,7 +57,7 @@ Azure データ エクスプローラーでは、データベースやテーブ�
 
     状態が **[良好]** (緑色のチェック マーク) でない場合は、状態が改善されてからもう一度試します。
 
-1. 問題解決にさらに手助けが必要な場合は、[Azure portal](https://portal.azure.com) でサポート リクエストを作成してください。
+1. 問題解決にさらに手助けが必要な場合は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) でサポート リクエストを作成してください。
 
 ## <a name="next-steps"></a>次の手順
 

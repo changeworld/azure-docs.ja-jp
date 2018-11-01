@@ -3,7 +3,7 @@ title: 仮想マシン スケール セットの自動スケールに関する�
 description: 仮想マシン スケール セットの自動スケールに関するトラブルシューティングを行います。 よくある問題とその解決方法について説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: windows
 ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
-ms.author: negat
-ms.openlocfilehash: ea634ea8bcb4fed1ed63dc8d1e17d215a00758c6
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.author: manayar
+ms.openlocfilehash: e4b1153e46625f88c717fd9b7a5336ffe4ca7f6a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34161024"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739551"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットの自動スケールに関するトラブルシューティング
-**問題** – Azure Resource Manager で仮想マシン スケール セットを使って自動スケール インフラストラクチャを作成しました。このとき、https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。
+**問題** – Azure Resource Manager で仮想マシン スケール セットを使って自動スケール インフラストラクチャを作成しました。このとき、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale のようなテンプレートをデプロイしました。定義したスケール規則は正常に機能しましたが、仮想マシンの負荷をいくら増やしても、自動スケールが実行されません。
 
 ## <a name="troubleshooting-steps"></a>トラブルシューティングの手順
 次のような点を検討します。
@@ -46,13 +46,13 @@ ms.locfileid: "34161024"
     JSON テンプレートは間違いが起きやすいため、最初のうちは上の例のような確実に機能するテンプレートを基にして、少しずつ変更を加えるようにしてください。 
 * 手動でスケールインまたはスケールアウトできますか。
   
-    "capacity" 設定を変えた仮想マシン スケール セット リソースを再デプロイして、VM 数を手動で変更してみてください。 テンプレートの例については、https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing をご覧ください。必要に応じてテンプレートを編集し、スケール セットで使われている仮想マシン サイズと同じにしてください。 VM 数を手動で変更できた場合、問題の原因が自動スケールに限定されます。
+    "capacity" 設定を変えた仮想マシン スケール セット リソースを再デプロイして、VM 数を手動で変更してみてください。 テンプレートの例については、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing をご覧ください。必要に応じてテンプレートを編集し、スケール セットで使われている仮想マシン サイズと同じにしてください。 VM 数を手動で変更できた場合、問題の原因が自動スケールに限定されます。
 * Microsoft.Compute/virtualMachineScaleSet を確認してください。また、[Azure リソース エクスプローラー](https://resources.azure.com/)で Microsoft.Insights リソースを確認してください。
   
     Azure Resource Explorer は Azure Resource Manager リソースの状態を表示できるため、トラブルシューティングには欠かせません。 サブスクリプションをクリックし、トラブルシューティングを行うリソース グループを表示します。 Compute リソース プロバイダーの下で、作成した仮想マシン スケール セットを探し、インスタンス ビューでデプロイの状態を確認します。 また、仮想マシン スケール セット内の VM のインスタンス ビューも確認します。 次に Microsoft.Insights リソース プロバイダーに移動し、自動スケール規則が適切かどうかを確認します。
 * 診断拡張機能が動作し、パフォーマンス データを出力していますか。
   
-    **更新:** Azure 自動スケールはベースのメトリックのパイプラインを使用するように強化されており、診断拡張機能のインストールは必須ではなくなりました。 つまり、新しいパイプラインを使用する自動スケール アプリケーションを作成する場合、この後のいくつかの段落の説明はもう適用されません。 ホスト パイプラインを使用するように変換された Azure テンプレートの例は、https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale にあります。 
+    **更新:** Azure 自動スケールはベースのメトリックのパイプラインを使用するように強化されており、診断拡張機能のインストールは必須ではなくなりました。 つまり、新しいパイプラインを使用する自動スケール アプリケーションを作成する場合、この後のいくつかの段落の説明はもう適用されません。 ホスト パイプラインを使用するように変換された Azure テンプレートの例は、 https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale にあります。 
   
     次の理由により、自動スケールにはホストベースのメトリックを使用することをお勧めします。
   

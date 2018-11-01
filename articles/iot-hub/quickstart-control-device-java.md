@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/22/2018
 ms.author: dobett
-ms.openlocfilehash: 6b7de80d18250550c9bd7e52537a7a950e6ffea7
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 3e936b3e08884c1728809aea9054278ffdb99045
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364769"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416989"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>クイック スタート: IoT ハブに接続されたデバイスを制御する (Java)
 
@@ -36,7 +36,7 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 このクイック スタートで実行する 2 つのサンプル アプリケーションは、Java を使って書かれています。 開発用コンピューター上に Java SE 8 以降が必要です。
 
-複数のプラットフォームに対応する Java を [Oracle](http://www.oracle.com/technetwork/java/javase/downloads/index.html) からダウンロードできます。
+複数のプラットフォームに対応する Java を [Oracle](https://aka.ms/azure-jdks) からダウンロードできます。
 
 開発コンピューターに現在インストールされている Java のバージョンは、次のコマンドを使って確認できます。
 
