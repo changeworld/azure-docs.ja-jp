@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 10bcb3c0c4842202f95cdc1fff30d12b7a8fbbc2
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e6f4e67d09eacadbbf9d74f417357a87ece0a951
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39366025"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238507"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用して、発行されたアプリのカスタム ホーム ページを設定する
 
@@ -62,7 +62,7 @@ ms.locfileid: "39366025"
 
 ### <a name="install-the-azure-ad-powershell-module"></a>Azure AD PowerShell モジュールをインストールする
 
-PowerShell を使用してカスタム ホーム ページの URL を定義する前に、Azure AD PowerShell モジュールをインストールします。 このパッケージは、Graph API エンドポイントを使用する [PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureAD/2.0.0.131)からダウンロードできます。 
+PowerShell を使用してカスタム ホーム ページの URL を定義する前に、Azure AD PowerShell モジュールをインストールします。 このパッケージは、Graph API エンドポイントを使用する [PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureAD/2.0.0.131)からダウンロードできます。 
 
 このパッケージをインストールするには、次の手順を実行します。
 
@@ -72,7 +72,7 @@ PowerShell を使用してカスタム ホーム ページの URL を定義す�
      Install-Module -Name AzureAD
     ```
     コマンドを非管理者として実行している場合は、`-scope currentuser` オプションを使用します。
-2. インストール中に **Y** を選択して、Nuget.org から 2 つのパッケージをインストールします。両方のパッケージが必要です。 
+2. インストール中に **Y** を選択して、Nuget.org から 2 つのパッケージをインストールします。両方のパッケージが必要です。 
 
 ### <a name="find-the-objectid-of-the-app"></a>アプリの ObjectID を検索する
 
@@ -92,14 +92,14 @@ PowerShell を使用してカスタム ホーム ページの URL を定義す�
 3. ホーム ページの URL に基づいてアプリを検索します。 **[Azure Active Directory]** > **[エンタープライズ アプリケーション]** > **[All applications (すべてのアプリケーション)]** に移動して、ポータルの URL を確認できます。 この例では *sharepoint-iddemo* を使用します。
 
     ```
-    Get-AzureADApplication | where { $_.Homepage -like “sharepoint-iddemo” } | fl DisplayName, Homepage, ObjectID
+    Get-AzureADApplication | where { $_.Homepage -like "sharepoint-iddemo" } | fl DisplayName, Homepage, ObjectID
     ```
 4. 次のような結果が表示されます。 次のセクションで使用するために ObjectID GUID をコピーします。
 
     ```
     DisplayName : SharePoint
-    Homepage    : https://sharepoint-iddemo.msappproxy.net/
-    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
+    Homepage    : https://sharepoint-iddemo.msappproxy.net/
+    ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 
 ### <a name="update-the-home-page-url"></a>ホーム ページの URL を更新する
@@ -117,13 +117,13 @@ PowerShell を使用してカスタム ホーム ページの URL を定義す�
 2. 修正する変更箇所を保持しておくために、空のアプリケーション オブジェクトを作成します。 これは、アップデート対象の値を保持するための変数です。 この手順では何も作成されません。
 
     ```
-    $appnew = New-Object “Microsoft.Open.AzureAD.Model.Application”
+    $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
     ```
 
-3. ホーム ページの URL を目的の値に設定します。 この値は、発行済みアプリのサブドメイン パスである必要があります。 たとえば、ホーム ページ URL を *https://sharepoint-iddemo.msappproxy.net/* から *https://sharepoint-iddemo.msappproxy.net/hybrid/* に変更すると、アプリ ユーザーはカスタム ホーム ページに直接移動します。
+3. ホーム ページの URL を目的の値に設定します。 この値は、発行済みアプリのサブドメイン パスである必要があります。 たとえば、ホーム ページ URL を *https://sharepoint-iddemo.msappproxy.net/* から *https://sharepoint-iddemo.msappproxy.net/hybrid/* に変更すると、アプリ ユーザーはカスタム ホーム ページに直接移動します。
 
     ```
-    $homepage = “https://sharepoint-iddemo.msappproxy.net/hybrid/”
+    $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
     ```
 4. 「手順 1: アプリの ObjectID を取得する」でコピーした GUID (ObjectID) を使用して、更新を行います。
 

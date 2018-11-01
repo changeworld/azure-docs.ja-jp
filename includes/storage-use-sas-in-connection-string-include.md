@@ -1,3 +1,16 @@
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: tamram
+ms.openlocfilehash: 2f27c50b1d016265c20102521a137bcbb0646115
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164560"
+---
 ストレージ アカウント内のリソースへのアクセスを許可する Shared Access Signature (SAS) の URL を所有している場合は、その SAS を接続文字列の中で使用できます。 要求を認証するために必要な情報は SAS に保持されているため、リソースにアクセスするために必要な資格情報、サービス エンドポイント、プロトコルが、SAS を含んだ接続文字列によって得られます。
 
 共有アクセス署名を含む接続文字列を作成するには、文字列を次の形式で指定します。

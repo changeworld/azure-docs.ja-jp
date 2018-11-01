@@ -3,7 +3,7 @@ title: エラスティック プールを使用した複数の SQL Database の�
 description: エラスティック プールを使用して、複数 (数百や数千) の SQL データベースを管理およびスケーリングします。 一定の価格で必要な場所にリソースを配布できます。
 services: sql-database
 ms.service: sql-database
-subservice: elastic-pool
+ms.subservice: elastic-pool
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: c89fa6614afec6b67f4d6445db49efa1e2248cfb
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6721b260960cd38b68173a5d973a5716b99a26c0
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49430053"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241210"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 

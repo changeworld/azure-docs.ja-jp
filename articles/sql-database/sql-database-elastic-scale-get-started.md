@@ -2,19 +2,22 @@
 title: Elastic Database ツールの概要 - Azure | Microsoft Docs
 description: 実行が容易なサンプル アプリケーションを含む、Azure SQL Database の Elastic Database ツール機能の基本説明です。
 services: sql-database
-manager: craigg
-author: anumjs
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/27/2018
+author: anumjs
 ms.author: anjangsh
-ms.openlocfilehash: 778d08f6154b999215f27b765560b7394c2cd59b
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.reviewer: ''
+manager: craigg
+ms.date: 08/27/2018
+ms.openlocfilehash: 74bbaeeee390952bf42407a53684bc33a7cfc543
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123385"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242775"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
 このドキュメントでは、サンプル アプリを実行することで、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の開発を体験できます。 サンプル アプリでは単純なシャーディング アプリケーションを作成し、Azure SQL Database の Elastic Database ツールの主な機能について詳しく見て行きます。 また、[シャード マップの管理](sql-database-elastic-scale-shard-map-management.md)、[データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)、[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)のユース ケースに重点を置いています。 このクライアント ライブラリは .NET と Java で使用できます。 

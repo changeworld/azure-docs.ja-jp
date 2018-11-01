@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: 5c916f847bf5098145c3ed14fad87c7669d916c8
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 3c97c89bde40357981d82dce8dd53febff25c8f3
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222694"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239884"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
 大規模に相互接続された社会で生きていると、日々の生活の中で **ソーシャル ネットワーク**に参加することになります。 ソーシャル ネットワークを使用して、友人や同僚、家族と交流し、共通の関心を持つ人々と情熱を分かち合うこともあります。
@@ -233,7 +233,7 @@ Cosmos DB では、指定された**パーティション キー** (ドキュメ
 
 でも、待ってください... やがては、プラットフォームのユーザー エクスペリエンスが最適ではないことに気が付きます。自分のリージョンからかなり離れた場所にユーザーがいる場合、その待ち時間は相当なものになります。でも、そのユーザーにはプラットフォームの使用をやめてほしくありません。 簡単に**グローバル展開**できる手段さえあれば、と思うでしょう... ところが、手段はあるのです。
 
-Cosmos DB を使用すると、数回のクリックで[データをグローバルかつ透過的にレプリケート](../cosmos-db/tutorial-global-distribution-sql-api.md)し、使用可能なリージョンの中で、[クライアント コード](../cosmos-db/tutorial-global-distribution-sql-api.md)からそのリージョンを選択できます。 また、これは[複数のフェールオーバー リージョン](regional-failover.md)を確保できることも意味します。 
+Cosmos DB を使用すると、数回のクリックで[データをグローバルかつ透過的にレプリケート](../cosmos-db/tutorial-global-distribution-sql-api.md)し、使用可能なリージョンの中で、[クライアント コード](../cosmos-db/tutorial-global-distribution-sql-api.md)からそのリージョンを選択できます。 また、これは[複数のフェールオーバー リージョン](high-availability.md)を確保できることも意味します。 
 
 データをグローバルにレプリケートするときは、クライアントがそのデータを利用できるかどうかを確認する必要があります。 Web フロントエンドを使用する場合、またはモバイル クライアントから API にアクセスする場合は、[Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) をデプロイし、必要なリージョンすべてに Azure App Service の複製を作成します。その際に、拡張されたグローバル カバレッジをサポートするためのパフォーマンス構成を使用します。 フロントエンドまたは API にアクセスしたクライアントは、最も近い App Service にルーティングされ、その APP Service はローカルの Cosmos DB レプリカに接続されます。
 

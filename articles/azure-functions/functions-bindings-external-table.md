@@ -2,20 +2,20 @@
 title: Azure Functions の外部テーブル バインディング (試験段階)
 description: Azure Functions での外部テーブル バインディングの使用
 services: functions
-author: alexkarcher-msft
+author: craigshoemaker
 manager: jeconnoc
 ms.assetid: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/12/2017
-ms.author: alkarche
-ms.openlocfilehash: 24728414747d8ad8a8d7ee0d8a21be2177a15ddd
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.author: cshoe
+ms.openlocfilehash: 5566ea8b21682c5023afc4af357e1a80e1d37384
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093814"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248473"
 ---
 # <a name="external-table-binding-for-azure-functions-experimental"></a>Azure Functions の外部テーブル バインディング (試験段階)
 

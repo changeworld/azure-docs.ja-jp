@@ -11,19 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/21/2018
+ms.date: 10/25/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: 24ba595413cde07c420a94de234d7926e0eb0e7f
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.reviewer: quying
+ms.openlocfilehash: 635948c28ffe5d5eaece372976e58d26e17214e3
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36311061"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084232"
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で MySQL データベースを使用する
-
-MySQL リソース プロバイダー API をデプロイして、Azure Stack にデプロイされている MySQL データベースを使うことができます。 リソース プロバイダー API の詳細については、「[Windows Azure Pack MySQL Resource Provider REST API Reference](https://msdn.microsoft.com/library/dn528442.aspx)」(Windows Azure Pack MySQL リソース プロバイダー REST API リファレンス) をご覧ください。
 
 MySQL データベースは、Web サイトで一般的であり、多くの Web サイト プラットフォームをサポートしています。 たとえば、Web Apps プラットフォームをサービス (PaaS) アドオンとして使って、WordPress Web サイトを作成できます。
 

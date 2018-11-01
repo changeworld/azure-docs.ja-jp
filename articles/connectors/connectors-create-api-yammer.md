@@ -11,12 +11,12 @@ ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 41855d6e562ddbb78df5d1d8794127e1064cc2ca
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: ca2d28f3438fd166fa282488206662c95777bf3b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918297"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233329"
 ---
 # <a name="monitor-and-manage-your-yammer-account-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して Yammer アカウントの監視と管理を行う
 
@@ -67,7 +67,7 @@ Yammer アカウントから応答を取得し、その出力を他のアクシ�
 
 1. Yammer へのサインインを求められたら、今すぐサインインして、アクセスを許可するようにします。
 
-1. 選択したトリガーまたはアクションで必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
+1. 選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
@@ -76,7 +76,7 @@ Yammer アカウントから応答を取得し、その出力を他のアクシ�
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

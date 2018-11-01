@@ -3,18 +3,18 @@ title: Azure IoT Central で新しいデバイスの種類を定義する | Micr
 description: このチュートリアルでは、作成者向けに Azure IoT Central アプリケーションで新しいデバイスの種類を定義する方法について説明します。 種類のテレメトリ、状態、プロパティ、設定を定義します。
 author: tbhagwat3
 ms.author: tanmayb
-ms.date: 04/16/2018
+ms.date: 10/12/2018
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 246d7f837fdf72ddb2d24139d2d3d83fcd43b640
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 8c69a863d8719a0e4eba30a6d5a619210e7f95b8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310650"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156036"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>チュートリアル: Azure IoT Central アプリケーションで新しいデバイスの種類を定義する
 

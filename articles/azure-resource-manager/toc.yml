@@ -30,6 +30,8 @@ items:
     href: resource-manager-tutorial-create-linked-templates.md
   - name: VM 拡張機能のデプロイ
     href: resource-manager-tutorial-deploy-vm-extensions.md
+  - name: SQL 拡張機能のデプロイ
+    href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
   - name: 安全なデプロイ プラクティスの使用
     href: deployment-manager-tutorial.md
 - name: 概念
@@ -223,9 +225,9 @@ items:
     href: resource-manager-personal-data.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 56ee3fc1e4488377c342e56dce23f54942da7966
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 0a7b3519c34c0e59dc4dda2e448dc37cbf7228ea
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214565"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242792"

@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 59a6a94e2906413423a4ae03a7c1c115b2ec0cc0
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bd3be916587ab884ea5579234a6189af54b53797
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046740"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209209"
 ---
 # <a name="manage-cluster-scaling-to-accommodate-changing-demand"></a>需要の変化に対応するためのクラスター スケーリングを管理する
 
@@ -63,4 +63,4 @@ ms.locfileid: "47046740"
 
 これで、Azure データ エクスプローラー クラスターのスケールアウト操作が構成されました。 スケールイン操作には別のルールを追加します。 これにより、指定する使用率メトリックに基づいて、クラスターを動的にスケーリングできます。
 
-クラスターのスケーリングに関する問題が発生したときにサポートが必要な場合は、[Azure portal](https://portal.azure.com) でサポート要求を開いてください。
+クラスターのスケーリングに関する問題が発生したときにサポートが必要な場合は、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) でサポート要求を開いてください。

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
-ms.openlocfilehash: fd57e713a24fb83e42d46b4a1978530b706bf583
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: d4fd75030a1d90e1543ba4a1713bb2d84a35c87b
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049898"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248670"
 ---
 # <a name="run-hive-queries-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用して Hive クエリを実行する
 
@@ -123,8 +123,6 @@ HDInsight での Hadoop のその他の使用方法に関する情報
 Visual Studio の HDInsight ツールに関する詳細情報:
 
 * [Visual Studio の HDInsight ツールの概要](apache-hadoop-visual-studio-tools-get-started.md)
-
-[hdinsight-sdk-documentation]: http://msdnstage.redmond.corp.microsoft.com/library/dn479185.aspx
 
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/

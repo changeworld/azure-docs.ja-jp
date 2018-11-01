@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: e78e7b5b4dba0bfea4f3398ca20b381a291fe44f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 410559ab03f0e0be71f2eba27ed71c9f7cf05862
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46307821"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238541"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: LocalDB の 10 GB の制限から回復する方法
 Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 Azure AD Connect と共にインストールされる既定の SQL Server 2012 Express LocalDB を使用するか、所有している完全バージョンの SQL を使用することができます。 SQL Server Express には、10 GB のサイズ制限があります。 LocalDB を使用していて、この上限に達すると、Azure AD Connect Synchronization Service は正常に開始または同期できなくなります。 この記事では、回復の手順を説明します。
@@ -71,7 +71,7 @@ Azure AD Connect 用に作成されるデータベースの名前は、**ADSync*
 
 3. `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn` フォルダーに移動します。
 
-4. sysadmin またはデータベースの DBO の資格情報を使用してコマンド `./SQLCMD.EXE -S “(localdb)\.\ADSync” -U <Username> -P <Password>` を実行することで、**sqlcmd** ユーティリティを起動します。
+4. sysadmin またはデータベースの DBO の資格情報を使用してコマンド `./SQLCMD.EXE -S "(localdb)\.\ADSync" -U <Username> -P <Password>` を実行することで、**sqlcmd** ユーティリティを起動します。
 
 5. データベースを縮小するには、sqlcmd プロンプト (1>) で「`DBCC Shrinkdatabase(ADSync,1);`」と入力し、次の行に「`GO`」と入力します。
 

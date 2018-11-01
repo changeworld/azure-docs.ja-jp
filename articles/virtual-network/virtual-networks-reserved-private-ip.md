@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/18/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 661d2f789ace8da68b6d65609d4584a11967a01f
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: d5d75c25d03c02d6d49fc2fd8aeec995cea52314
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34366615"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414269"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>PowerShell を使用した静的内部プライベート IP アドレスの設定方法 (クラシック)
 ほとんどの場合は、仮想マシンに対して静的内部 IP アドレスを指定する必要はありません。 仮想ネットワーク内の VM は、指定された範囲の内部 IP アドレスを自動的に受け取るからです。 ただし、場合によっては、特定の VM に対して静的 IP アドレスを指定したほうが効果的な場合があります。 たとえば、VM が、DNS を実行したり、ドメイン コントローラーとして機能する場合です。 静的内部 IP アドレスは、VM が停止またはプロビジョニング解除された状態になっても VM で保持されます。 

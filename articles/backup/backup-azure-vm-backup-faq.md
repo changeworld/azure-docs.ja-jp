@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: trinadhk
-ms.openlocfilehash: 910225e74fcd4655a9eff711d3ac1316d948c2b3
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: ba77ec34e7887f676ea3df101e87c1ea80fceec5
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886196"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414796"
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Azure VM バックアップ サービスについての質問
 この記事では、Azure VM バックアップの構成要素が理解しやすいよう、よく寄せられる質問とその回答を記載しています。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -48,7 +48,7 @@ Azure Backup サービスに Key Vault へのアクセス許可を与える必�
 はい。 "スナップショットの作成" フェーズの場合は、バックアップ ジョブを取り消すことができます。 **スナップショットからのデータ転送が進行中である場合は、ジョブを取り消すことができません**。
 
 ### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>バックアップされたマネージド ディスク VM でリソース グループのロックを有効にしました。 既存のバックアップは今後も正常に機能しますか。
-ユーザーがリソース グループをロックすると、バックアップ サービスは古い復元ポイントを削除できません。 バックエンドから最大 18 個の復元ポイントの制限が課されているため、これにより新しいバックアップの開始が失敗します。 RG のロック後に内部エラーでバックアップが失敗した場合は、[手順に従って復元ポイントのコレクションを削除します](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)。
+ユーザーがリソース グループをロックすると、バックアップ サービスは古い復元ポイントを削除できません。 バックエンドから最大 18 個の復元ポイントの制限が課されているため、これにより新しいバックアップの開始が失敗します。 RG のロック後に内部エラーでバックアップが失敗した場合は、[手順に従って復元ポイントのコレクションを削除します](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-portal-created-by-backup-service)。
 
 ### <a name="does-backup-policy-take-daylight-saving-timedst-into-account"></a>バックアップ ポリシーでは夏時間 (DST) が考慮されますか。
 いいえ。 ローカル コンピューターの日時は、現在の夏時間でバイアスされたローカル時刻で表示されていることに注意してください。 そのため、DST により、構成されているスケジュール バックアップの時間が、ローカル タイムと異なる場合があります。

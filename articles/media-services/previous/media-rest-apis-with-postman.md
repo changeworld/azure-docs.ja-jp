@@ -4,21 +4,21 @@ description: Media Services REST API 呼び出し用に Postman を構成する�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 72b110cac8d4945c958d760ff98e2da2f2796b62
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ee7f87a9c358f2b6ee655d13b74297a96b25cfcc
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782851"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233788"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API 呼び出し用の Postman の構成
 

@@ -638,9 +638,9 @@ items:
     href: /azure/architecture/
   - name: 顧客事例
     href: http://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc
-ms.openlocfilehash: c5e7a5265a7667acf462085f81c4b53c8d86236b
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 691918eab050f99353e2a1061b9bfdd17e33ef52
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221480"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240122"

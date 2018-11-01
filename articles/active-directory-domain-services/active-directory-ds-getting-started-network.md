@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: 概要 | Microsoft Docs'
 description: Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.author: maheshu
-ms.openlocfilehash: c167f40e09ac877d00d348285383106fc5ba41bc
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 70dee552ec575f4969593eac4e91fdbb18b426f1
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503912"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156189"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 
@@ -41,8 +41,7 @@ ms.locfileid: "39503912"
 3. Azure AD Domain Services を有効にする仮想ネットワークを選択します。 既存の仮想ネットワークを選択することも、新しい仮想ネットワークを作成することもできます。
 
   > [!TIP]
-  > 
-  **マネージド ドメインは、Azure AD Domain Services を有効にした後、別の仮想ネットワークに移動できません。** マネージド ドメインを有効にするには、適切な仮想ネットワークを選択します。 マネージド ドメインを作成したら、そのマネージド ドメインは、一度削除しないと別の仮想ネットワークには移動できません。 詳細については、「[Azure AD Domain Services のネットワークに関する考慮事項](active-directory-ds-networking.md)」を参照してください。  
+  > **マネージド ドメインは、Azure AD Domain Services を有効にした後、別の仮想ネットワークに移動できません。** マネージド ドメインを有効にするには、適切な仮想ネットワークを選択します。 マネージド ドメインを作成したら、そのマネージド ドメインは、一度削除しないと別の仮想ネットワークには移動できません。 詳細については、「[Azure AD Domain Services のネットワークに関する考慮事項](active-directory-ds-networking.md)」を参照してください。  
   >
 
 4. **仮想ネットワークの作成:** **[新規作成]** をクリックして、新しい仮想ネットワークを作成します。 Azure AD Domain Services の専用サブネットをご使用ください。 たとえば、"DomainServices" という名前のサブネットを作成すると、サブネット内にデプロイされている内容を他の管理者が理解しやすくなります。 完了したら **[OK]** をクリックします。
@@ -52,8 +51,7 @@ ms.locfileid: "39503912"
   > [!WARNING]
   > 必ずプライベート IP アドレス空間の範囲内にあるアドレス空間を選んでください。 ご自身が所有していないパブリック アドレス空間内の IP アドレスを指定すると、Azure AD Domain Services 内でエラーが発生します。
 
-5. **既存の仮想ネットワーク:** 既存の仮想ネットワークを選択することを計画している場合、[仮想ネットワークの拡張機能を使って専用サブネットを作成](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)し、そのサブネットを選択します。 **[仮想ネットワーク]** をクリックして、既存の仮想ネットワークを選択します。 
-  **[サブネット]** をクリックして、新しいマネージド ドメインを有効にする、既存の仮想ネットワーク内の専用サブネットを選択します。 完了したら **[OK]** をクリックします。
+5. **既存の仮想ネットワーク:** 既存の仮想ネットワークを選択することを計画している場合、[仮想ネットワークの拡張機能を使って専用サブネットを作成](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet)し、そのサブネットを選択します。 **[仮想ネットワーク]** をクリックして、既存の仮想ネットワークを選択します。 **[サブネット]** をクリックして、新しいマネージド ドメインを有効にする、既存の仮想ネットワーク内の専用サブネットを選択します。 完了したら **[OK]** をクリックします。
 
     ![仮想ネットワーク内のサブネットを選択する](./media/getting-started/domain-services-blade-network-pick-subnet.png)
 

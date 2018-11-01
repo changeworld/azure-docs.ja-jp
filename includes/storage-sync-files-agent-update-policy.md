@@ -1,3 +1,16 @@
+---
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: tamram
+ms.openlocfilehash: 80bb07d850628f07ebc37a39da1294399804d8f5
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165935"
+---
 Azure File Sync エージェントは、新機能の追加や問題の解決を目的として定期的に更新されます。 Azure File Sync エージェントの更新プログラムを公開されしだい入手できるように Microsoft Update を構成しておくことをお勧めします。
 
 #### <a name="major-vs-minor-agent-versions"></a>エージェントのメジャー バージョンとマイナー バージョン

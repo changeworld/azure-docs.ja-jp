@@ -5,14 +5,14 @@ services: storage
 author: genlin
 ms.service: storage
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 81db3a819c28aab8f4b644a940eeb5e6c5ecf3d6
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: bf1aa75399f28b8dd1732bc9ec09c15e46132939
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307174"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414170"
 ---
 # <a name="troubleshoot-disks-attached-to-azure-vms"></a>Azure VM に接続されたディスクのトラブルシューティング 
 

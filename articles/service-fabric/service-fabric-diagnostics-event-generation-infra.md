@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: 31f23e3f8e792c6b61870c640f99ec3392a940d3
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 96bbb221f5fa133ee88a09d489627e3d2f9b0713
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34211176"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409188"
 ---
 # <a name="monitoring-the-cluster-and-platform"></a>クラスターとプラットフォームの監視
 
@@ -91,7 +91,7 @@ Service Fabric の使用時に収集されるパフォーマンス カウンタ�
 クラスターのパフォーマンス データの収集は、次の 2 とおりの方法で設定できます。
 
 * **エージェントの使用**  
-エージェントは通常、収集可能なパフォーマンス メトリックの一覧を保持しており、ユーザーが収集するメトリックを選択したり、それを変更したりすることは比較的簡単なプロセスであるため、これはマシンからパフォーマンスを収集するための推奨される方法です。 OMS エージェントの詳細については、[Service Fabric の OMS を構成する方法](service-fabric-diagnostics-event-analysis-oms.md)に関する記事および [OMS Windows エージェントの設定](../log-analytics/log-analytics-windows-agent.md)に関する記事をご覧ください。OMS エージェントは、クラスター VM やデプロイ済みのコンテナーのパフォーマンス データを取得できる監視エージェントです。
+エージェントは通常、収集可能なパフォーマンス メトリックの一覧を保持しており、ユーザーが収集または変更するメトリックを選択することは比較的簡単なプロセスであるため、これはマシンからパフォーマンスを収集するための推奨される方法です。 Log Analytics エージェントの詳細については、[Service Fabric の Log Analytics を構成する方法](service-fabric-diagnostics-event-analysis-oms.md)に関する記事および [Log Analytics エージェントの設定](../log-analytics/log-analytics-windows-agent.md)に関する記事をご覧ください。Log Analytics エージェントは、クラスター VM やデプロイ済みのコンテナーのパフォーマンス データを取得できる監視エージェントです。
 
 * **パフォーマンス カウンターをテーブルに書き込むための診断の構成**  
 Azure 上のクラスターの場合、クラスター内の VM から適切なパフォーマンス カウンターを取得するように Azure 診断の構成を変更し、コンテナーをデプロイする場合は Azure 診断が Docker の統計を取得できるようにします。 パフォーマンス カウンターの収集を設定する方法については、Service Fabric での [WAD のパフォーマンス カウンター](service-fabric-diagnostics-event-aggregation-wad.md)の構成に関する記事をご覧ください。

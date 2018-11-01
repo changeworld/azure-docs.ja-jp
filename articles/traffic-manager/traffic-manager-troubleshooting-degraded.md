@@ -4,8 +4,6 @@ description: Traffic Manager プロファイルが機能低下状態と示され
 services: traffic-manager
 documentationcenter: ''
 author: chadmath
-manager: cshepard
-ms.assetid: 8af0433d-e61b-4761-adcc-7bc9b8142fc6
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
-ms.openlocfilehash: e314bac630ce06fbcd62081cc6e9f5e85930d32b
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 7f4e0d2feff59add3cec29846399eec5fc710a74
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141782"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139308"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure Traffic Manager での機能低下状態のトラブルシューティング
 

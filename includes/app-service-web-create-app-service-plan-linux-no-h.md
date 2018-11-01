@@ -1,4 +1,21 @@
-Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) コマンドを使用して、リソース グループに App Service プランを作成します。
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: app-service
+author: cephalin
+ms.service: app-service
+ms.topic: include
+ms.date: 10/24/2018
+ms.author: cephalin
+ms.custom: include file
+ms.openlocfilehash: 1eb35ec5b26c86e227152f14d4d91c0a2f087082
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50035399"
+---
+Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) コマンドを使用して、リソース グループに App Service プランを作成します。
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 

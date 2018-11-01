@@ -4,7 +4,7 @@ description: このチュートリアルでは、Azure Portal で Media Encoder 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 107d9e9a-71e9-43e5-b17c-6e00983aceab
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 10/30/2018
 ms.author: juliako
-ms.openlocfilehash: 470eb8613416f441c1becee628acf3c898591c84
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 958c53108c024cb349922a1bd10b2cdc2dba41a3
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785651"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247284"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Azure Portal での Media Encoder Standard を使用した資産のエンコード
 
@@ -41,14 +41,14 @@ Media Services では、ダイナミック パッケージが使用できます�
 Media Encoder Standard を使用してコンテンツをエンコードするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
-2. **[設定]** > **[資産]** を参照してください。 エンコードする資産を選択します。
+2. **[設定]** > **[アセット]** を参照してください。 エンコードする資産を選択します。
 3. **[エンコード]** を選択します。
 4. **[資産のエンコード]** ウィンドウで、**Media Encoder Standard** プロセッサとプリセットを選択します。 プリセットについては、[ビットレート ラダーの自動生成](media-services-autogen-bitrate-ladder-with-mes.md)に関するページと [Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関するページを参照してください。 入力ビデオに最適なプリセットを選択することが重要です。 たとえば、入力ビデオの解像度が 1920 &#215; 1080 ピクセルであるとわかっている場合は、**H264 Multiple Bitrate 1080p** のプリセットを使用します。 低解像度 (640 &#215; 360) のビデオの場合は、**H264 Multiple Bitrate 1080p** プリセットを使用しないでください。
    
-   リソースを管理しやすくするために、出力資産の名前とジョブの名前を編集することができます。
+   リソースを管理しやすくするために、出力アセットの名前とジョブの名前を編集することができます。
    
    ![Encode assets](./media/media-services-portal-vod-get-started/media-services-encode1.png)
-5. **[作成]** を選択します。
+5. **作成**を選択します。
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

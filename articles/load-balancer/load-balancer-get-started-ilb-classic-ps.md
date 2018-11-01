@@ -4,23 +4,19 @@ description: クラシック デプロイ モデルで PowerShell を使用し�
 services: load-balancer
 documentationcenter: na
 author: genlin
-manager: cshepard
-editor: ''
-tags: azure-service-management
-ms.assetid: 3be93168-3787-45a5-a194-9124fe386493
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
-ms.openlocfilehash: 8b896705d90b51c056172c285a00dabeed54ebf2
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f8a24a12521d678cee0e255677881760828d1e1f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697136"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414711"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-classic-using-powershell"></a>PowerShell を使用した内部ロード バランサー (クラシック) の作成の開始
 

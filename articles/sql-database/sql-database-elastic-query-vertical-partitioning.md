@@ -3,7 +3,7 @@ title: スキーマが異なるクラウド データベース間のクエリ | 
 description: 列方向のパーティションでデータベース間クエリを設定する方法
 services: sql-database
 ms.service: sql-database
-subservice: elastic-scale
+ms.subservice: elastic-scale
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 3d94a52aaafca91d45d7f1a6406d3f998fbffe9f
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 5dbf6fb1b59999481348d3b4ad4775a77295b70d
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161762"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238899"
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>スキーマが異なるクラウド データベース間のクエリ (プレビュー)
 ![異なるデータベースのテーブルにまたがるクエリ][1]

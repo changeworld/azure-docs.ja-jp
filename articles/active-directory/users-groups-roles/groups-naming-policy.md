@@ -14,12 +14,12 @@ ms.date: 05/21/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 111be7d3ee00f2b40ace3bfe4efdacc5029ccf77
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 2857f95eff0b2d039a1a3c7bbe566a8ed3ca4fea
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39239136"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243131"
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Azure Active Directory での Office 365 グループの名前付けポリシーの強制 (プレビュー)
 
@@ -49,7 +49,7 @@ Office 365 グループの名前付けポリシーは、次の 2 通りの方法
 
 #### <a name="user-attributes"></a>ユーザー属性
 
-グループの作成対象となった部門、オフィス、または地理的地域の特定に役立つ属性をご利用いただけます。 たとえば、`PrefixSuffixNamingRequirement = “GRP [GroupName] [Department]”` という名前付けポリシーを定義し、`User’s department = Engineering` の場合、強制されるグループ名は "GRP My Group Engineering" になります。 サポートされている Azure AD 属性は、\[Department\]、\[Company\]、\[Office\]、\[StateOrProvince\]、\[CountryOrRegion\]、\[Title\] です。 サポートされていないユーザー属性は固定文字列として扱われます (例: \[postalCode\])。 拡張属性とカスタム属性はサポートされていません。
+グループの作成対象となった部門、オフィス、または地理的地域の特定に役立つ属性をご利用いただけます。 たとえば、`PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"` という名前付けポリシーを定義し、`User’s department = Engineering` の場合、強制されるグループ名は "GRP My Group Engineering" になります。 サポートされている Azure AD 属性は、\[Department\]、\[Company\]、\[Office\]、\[StateOrProvince\]、\[CountryOrRegion\]、\[Title\] です。 サポートされていないユーザー属性は固定文字列として扱われます (例: \[postalCode\])。 拡張属性とカスタム属性はサポートされていません。
 
 組織のすべてのユーザーに値が入力された属性を使用し、長い値の属性は使用しないことをお勧めします。
 

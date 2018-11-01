@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3972dd7031e25f20a2ef6bfb66b63fe3f3b0290b
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 5d490b195f2e8fd58ca331b3e68ed451d92932f0
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732484"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241839"
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-powershell"></a>チュートリアル: Azure PowerShell を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
