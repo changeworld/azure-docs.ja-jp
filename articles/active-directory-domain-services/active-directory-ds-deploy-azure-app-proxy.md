@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Azure Active Directory アプリ
 description: Azure Active Directory Domain Services マネージド ドメインで Azure AD アプリケーション プロキシを使用します
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: 11967e850e9d626edf757526b8ae7d320bad1a4e
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 96ef005f095e5ab774a88ec766080f647414a7ce
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504347"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155543"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに Azure AD アプリケーション プロキシをデプロイします
 Azure Active Directory (AD) アプリケーション プロキシを使用して、オンプレミス アプリケーションを発行してインターネット経由でアクセスできるようにすることで、リモート ワーカーをサポートできます。 Azure AD Domain Services を使用して、オンプレミスで実行しているレガシ アプリケーションを Azure インフラストラクチャ サービスにリフトアンドシフトできるようになりました。 その後、Azure AD アプリケーション プロキシを使用してこれらのアプリケーションを発行し、組織内のユーザーに安全なリモート アクセスを提供することができます。
@@ -96,8 +96,7 @@ Azure AD Domain Services のマネージド ドメインを有効化済みの同
 ## <a name="next-steps"></a>次の手順
 Azure AD アプリケーション プロキシを設定し、Azure AD Domain Services のマネージド ドメインと統合しました。
 
-* 
-  **アプリケーションを Azure 仮想マシンに移行する:** オンプレミスのサーバーからマネージド ドメインに参加している Azure 仮想マシンにアプリケーションをリフトアンドシフトすることができます。 これは、サーバーをオンプレミスで実行するインフラストラクチャ コストをなくすのに役立ちます。
+* **アプリケーションを Azure 仮想マシンに移行する:** オンプレミスのサーバーからマネージド ドメインに参加している Azure 仮想マシンにアプリケーションをリフトアンドシフトすることができます。 これは、サーバーをオンプレミスで実行するインフラストラクチャ コストをなくすのに役立ちます。
 
 * **Azure AD アプリケーション プロキシを使用してアプリケーションを発行する:** Azure AD アプリケーション プロキシを使用して、Azure 仮想マシンで実行されるアプリケーションを発行します。 詳細については、[Azure AD アプリケーション プロキシを使用したアプリケーションの発行](../active-directory/manage-apps/application-proxy-publish-azure-portal.md)に関するページを参照してください。
 
@@ -131,6 +130,5 @@ Set-ADComputer contoso100-resource.contoso100.com -PrincipalsAllowedToDelegateTo
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
-* 
-  [マネージド ドメインで Kerberos の制約付き委任を構成する](active-directory-ds-enable-kcd.md)
+* [マネージド ドメインで Kerberos の制約付き委任を構成する](active-directory-ds-enable-kcd.md)
 * [Kerberos の制約付き委任の概要](https://technet.microsoft.com/library/jj553400.aspx)

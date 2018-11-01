@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: b26116b974abbfe410b0a6ebc0186d73f4eea1bf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c4c95218ca88ce1fe832fda4fabaf957fdd69dc1
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452585"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140368"
 ---
 # <a name="create-a-redis-cache-using-a-template"></a>テンプレートを使用して Redis Cache を作成する
 このトピックでは、Azure Redis Cache をデプロイする Azure Resource Manager のテンプレートを作成する方法について説明します。 キャッシュを既存のストレージ アカウントで使用することで、診断データを保持することができます。 さらに、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法についても説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
@@ -106,7 +106,7 @@ Azure Redis Cache を作成します。
       },
       "resources": [
         {
-          "apiVersion": "2015-07-01",
+          "apiVersion": "2017-05-01-preview",
           "type": "Microsoft.Cache/redis/providers/diagnosticsettings",
           "name": "[concat(parameters('redisCacheName'), '/Microsoft.Insights/service')]",
           "location": "[parameters('redisCacheLocation')]",

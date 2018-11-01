@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/09/2018
 ms.author: markvi
 ms.reviewer: ravenn
-ms.openlocfilehash: cde364cb5231c1cc0b1947da35994862cf45b571
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 267e398305939048014038b7350b2a10481fdfbd
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042163"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50238728"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>Azure AD 参加済みデバイスのローカル管理者グループの管理方法
 
@@ -92,9 +92,9 @@ Azure AD の参加プロセスを使用するのではなく、通常のユー�
  
 また、コマンド プロンプトを使用してユーザーを追加することもできます。
 
-- テナント ユーザーがオンプレミスの Active Directory から同期された場合は、`net localgroup administrators /add “Contoso\username”` を使用します。
+- テナント ユーザーがオンプレミスの Active Directory から同期された場合は、`net localgroup administrators /add "Contoso\username"` を使用します。
 
-- テナント ユーザーが Azure AD で作成された場合は、`net localgroup administrators /add “AzureAD\UserUpn”` を使用します
+- テナント ユーザーが Azure AD で作成された場合は、`net localgroup administrators /add "AzureAD\UserUpn"` を使用します
 
 
 ## <a name="considerations"></a>考慮事項 

@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: 概要 | Microsoft Docs'
 description: Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: ace1ed4a-bf7f-43c1-a64a-6b51a2202473
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/23/2018
-ms.author: maheshu
-ms.openlocfilehash: b6651c038a2b3abd15b8b0587e6a0e95832401b1
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: a795691959c744f5358966d62449882e514eb8eb
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502313"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155084"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 この記事では、Azure Portal を使用して、Azure Active Directory Domain Services (Azure AD DS) を有効にする方法について説明します。
@@ -65,8 +65,7 @@ ms.locfileid: "39502313"
    * **カスタム ドメイン名:** カスタム ドメイン名を入力することもできます。 この例でのカスタム ドメイン名は、*contoso100.com* です。
    * **ルーティング不可能なドメインのサフィックス:** 一般的には、ルーティング不可能なドメイン名サフィックスは使用しないことをお勧めします。 たとえば、DNS ドメイン名 "contoso.local" のドメインは作成しないようにすることをお勧めします。 ".local" DNS サフィックスはルーティング可能ではないため、DNS 解決で問題が発生することがあります。
    * "*ドメインのプレフィックスの制限:"* 指定するドメイン名のプレフィックス (たとえば、ドメイン名 *contoso100.com* の **contoso100** など) は、15 文字以内に収める必要があります。 プレフィックスが 15 文字より長いと、マネージド ドメインを作成することはできません。
-   * 
-  **ネットワーク名の競合:** マネージド ドメイン用に選択した DNS ドメイン名がまだ仮想ネットワークに存在しないことを確認します。 具体的には、以下のことを確認します。
+   * **ネットワーク名の競合:** マネージド ドメイン用に選択した DNS ドメイン名がまだ仮想ネットワークに存在しないことを確認します。 具体的には、以下のことを確認します。
        * 同じ DNS ドメイン名の Active Directory ドメインが仮想ネットワーク上に既にあるかどうか。
        * マネージド ドメインを有効にする仮想ネットワークに、オンプレミス ネットワークとの VPN 接続があるかどうか。 このシナリオでは、オンプレミス ネットワークに同じ DNS ドメイン名のドメインがないことを確認します。
        * 仮想ネットワーク上に、その名前の付いたクラウド サービスが既にあるかどうか。

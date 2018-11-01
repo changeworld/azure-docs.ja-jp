@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: e6511b9511d2598b58fd3afee34803ceb09ac5ce
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c41873d8f87a9a1203cefa37f99098f23e7aab92
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582854"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239015"
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: .NET での Table API を使用した開発
 
@@ -45,7 +45,7 @@ Azure Cosmos DB では、スキーマレス設計のキー/値ストアを必要
 
 現在 Azure Table Storage を使っている場合、Azure Cosmos DB Table API では次のメリットが得られます。
 
-- マルチホーム機能と[自動または手動のフェールオーバー](regional-failover.md)を備えた、ターンキー [グローバル分散](distribute-data-globally.md)
+- マルチホーム機能と[自動または手動のフェールオーバー](high-availability.md)を備えた、ターンキー [グローバル分散](distribute-data-globally.md)
 - すべてのプロパティ ("セカンダリ インデックス") に対するスキーマ非依存自動インデックス作成と高速クエリのサポート 
 - 任意の数のリージョンにわたる[ストレージとスループットの独立した拡張](partition-data.md)のサポート
 - [テーブルごとの専用スループット](request-units.md)のサポート (1 秒あたりの要求数を数百件から数百万件まで拡張できる)

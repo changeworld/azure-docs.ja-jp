@@ -4,9 +4,6 @@ description: この記事では、Traffic Manager で優先順位によるトラ
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: 6dca6de1-18f7-4962-bd98-6055771fab22
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: kumud
-ms.openlocfilehash: 0db83cde6facc89b8b8aa72e6419129ec868235c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52bfc73ad586bb3852e30a850d4ba50a113183d3
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111140"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140419"
 ---
 # <a name="configure-priority-traffic-routing-method-in-traffic-manager"></a>Traffic Manager での優先順位によるトラフィック ルーティング方法の構成
 
@@ -51,7 +48,7 @@ Azure Websites では、Web サイトのモードにかかわらず、データ�
 
 ![Traffic Manager を使用した優先順位によるトラフィック ルーティング方法の構成][1]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 
 - [重み付けによるトラフィック ルーティング方法](traffic-manager-configure-weighted-routing-method.md)について学習します。

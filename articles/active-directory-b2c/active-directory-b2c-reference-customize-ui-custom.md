@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c6882dd56ee96e1fcab5926b77f11ce928bf950b
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: c363056fc013cc8b8fd67fb9d656d3550d3bf5a2
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37442357"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139511"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
@@ -41,7 +41,7 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 必要に応じて HTML5/CSS ファイルを作成することで、コンテンツ ページを必要な数だけ作成できます。
 
 > [!NOTE]
-> セキュリティ上の理由から、現時点ではカスタマイズのための JavaScript の使用はブロックされています。 JavaScript のブロックを解除するには、Azure AD B2C テナントのカスタム ドメイン名を使用する必要があります。
+> セキュリティ上の理由から、現時点ではカスタマイズのための JavaScript の使用はブロックされています。 
 
 各 HTML5/CSS テンプレートでは、"*アンカー*" 要素を指定します。この要素は、以降で示すとおり、HTML またはコンテンツ ページ内の必須の `<div id=”api”>` 要素と対応します。 Azure AD B2C では、すべてのコンテンツ ページにこの特定の div が存在している必要があります。
 
@@ -66,7 +66,7 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 - コンテンツが HTML5 に準拠しており、アクセス可能であることを確認する。
 - コンテンツ サーバーで CORS が有効になっていることを確認する。
 - HTTPS を使用してコンテンツを配信する。
-- すべてのリンクと CSS コンテンツで、https://yourdomain/content などの絶対 URL を使用する。
+- すべてのリンクと CSS コンテンツで、 https://yourdomain/content などの絶対 URL を使用する。
 
 > [!TIP]
 > コンテンツをホストしているサイトで CORS が有効になっていることを確認し、CORS 要求をテストするには、サイト http://test-cors.org/ を使用します。 このサイトでは、(CORS がサポートされているかどうかをテストするために) CORS 要求をリモート サーバー、または (CORS の特定の機能を使ってみるために) テスト サーバーに送信できます。
@@ -119,7 +119,7 @@ Azure AD B2C でコンテンツの読み込みに使用するエンドポイン�
 
 コンテンツをホストしているストレージで CORS が有効になっていることを確認するために、次の手順に進みます。
 
-1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、「https://contoso369b2c.blob.core.windows.net/b2c/unified.html」のように入力します。
+1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、「 https://contoso369b2c.blob.core.windows.net/b2c/unified.html 」のように入力します。
 2. http://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)

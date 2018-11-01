@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 560c9c177bfa693580979101e5b9343fcff7fe40
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165075"
+---
 ### <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用したメンテナンス モードの更新プログラムのインストール
 
 StorSimple デバイスにメンテナンス モードの更新プログラムを適用すると、すべての I/O 要求が一時停止します。 非揮発性ランダム アクセス メモリ (NVRAM) などのサービスやクラスター化サービスが停止されます。 このモードを開始または終了するときに、両方のコントローラーが再起動します。 このモードを終了すると、すべてのサービスが再開され、正常な状態になります  (これには数分かかることがあります)。

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: a5792998654ed1d334e514591da3bef9805a5e79
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 712c729a214cdab66961fb399c9d797a758fcf7b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163360"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409681"
 ---
 # <a name="monitor-sql-data-sync-with-log-analytics"></a>Log Analytics による SQL データ同期の監視 
 
@@ -97,7 +97,7 @@ Runbook の作成の詳細については、「[初めての PowerShell Runbook]
 
     2.  同期グループの情報。
 
-    3.  OMS の情報。 これらの情報は、[OMS ポータル] | [設定] | [Connected Sources] (接続されたソース) で見つけます。 Log Analytics へのデータ送信の詳細については、「[Send data to Log Analytics with the HTTP Data Collector API (HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (プレビュー))](../log-analytics/log-analytics-data-collector-api.md)」を参照してください。
+    3.  Log Analytics 情報。 これらの情報は、[Azure Portal] | [設定] | [接続されたソース] で見つけます。 Log Analytics へのデータ送信の詳細については、「[HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (プレビュー)](../log-analytics/log-analytics-data-collector-api.md)」を参照してください。
 
 11. [テスト] ペインで Runbook を実行します。 それが成功したことを確認します。
 
@@ -117,7 +117,7 @@ Runbook のスケジュールを設定するには:
 
 4.  **[新しいスケジュールを作成します]** を選択します。
 
-5.  **[繰り返し]** を [繰り返し] に設定し、必要な間隔を設定します。 ここ (このスクリプト) と OMS で同じ間隔を使用します。
+5.  **[繰り返し]** を [繰り返し] に設定し、必要な間隔を設定します。 ここ (このスクリプト) と Log Analytics で同じ間隔を使用します。
 
 6.  **作成**を選択します。
 
@@ -129,7 +129,7 @@ Runbook のスケジュールを設定するには:
 
 Log Analytics を使用するアラートを作成するには、次のことを実行します。 前提条件として、Log Analytics ワークスペースにリンクされた Log Analytics を使用している必要があります。
 
-1.  OMS ポータルで、**[ログ検索]** を選択します。
+1.  Azure portal で **[ログ検索]** を選択します。
 
 2.  選択した間隔に含まれる同期グループごとのエラーおよび警告を選択するためのクエリを作成します。 例: 
 
@@ -147,9 +147,9 @@ Log Analytics を使用するアラートを作成するには、次のことを
 
 6.  **[Save]** をクリックします。 これで、指定された受信者がエラー発生時に電子メール通知を受信するようになりました。
 
-## <a name="create-an-oms-view-for-monitoring"></a>監視のための OMS ビューの作成
+## <a name="create-a-log-analytics-view-for-monitoring"></a>監視のための Log Analytics ビューの作成
 
-この手順では、指定されたすべての同期グループを視覚的に監視するための OMS ビューを作成します。 このビューには、いくつかのコンポーネントが含まれています。
+この手順では、指定されたすべての同期グループを視覚的に監視するための Log Analytics ビューを作成します。 このビューには、いくつかのコンポーネントが含まれています。
 
 -   概要タイル。これには、すべての同期グループのエラー、成功、および警告の数が表示されます。
 
@@ -157,9 +157,9 @@ Log Analytics を使用するアラートを作成するには、次のことを
 
 -   同期グループごとのタイル。これには、エラー、成功、および警告の数と、最新のエラー メッセージが表示されます。
 
-OMS ビューを構成するには、次のことを実行します。
+Log Analytics ビューを構成するには、次のことを実行します。
 
-1.  OMS ホーム ページで、左側にあるプラスを選択して**ビュー デザイナー**を開きます。
+1.  Log Analytics ホーム ページで、左側にあるプラスを選択して**ビュー デザイナー**を開きます。
 
 2.  ビュー デザイナーの上部のバーにある **[インポート]** を選択します。 次に、"DataSyncLogOMSView" サンプル ファイルを選択します。
 

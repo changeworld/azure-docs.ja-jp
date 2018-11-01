@@ -1,6 +1,6 @@
 ---
-title: OMS Log Analytics のアラート REST API の使用
-description: Log Analytics のアラート REST API は、Operations Management Suite (OMS) の一部である Log Analytics でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
+title: Log Analytics のアラート REST API の使用
+description: Log Analytics のアラート REST API は、Log Analytics の一部である Log Analytics でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: b178744911d03547509de58e35be5cd99e046391
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 85cf55b4117208266e247316b1050e3988a2ce23
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079057"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409154"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API を使用して Log Analytics でアラートのルールを作成および管理する
-Log Analytics のアラート REST API は、Operations Management Suite (OMS) でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
+Log Analytics のアラート REST API は、Log Analytics でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
 
-Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager REST API を使用してアクセスできます。 このドキュメントでは、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンドライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を使用して PowerShell コマンド ラインから API にアクセスする例を示します。 Log Analytics 検索 API には、ARMClient や PowerShell を使用する以外にもさまざまな方法でアクセスできます。 これらのツールを使用すると、RESTful な Azure Resource Manager API を使用して OMS のワークスペースにアクセスし、その中で検索コマンドを実行できます。 API の検索結果は JSON 形式で出力されるため、検索結果をプログラムによりさまざまな方法で使用できます。
+Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager REST API を使用してアクセスできます。 このドキュメントでは、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンドライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を使用して PowerShell コマンド ラインから API にアクセスする例を示します。 Log Analytics 検索 API には、ARMClient や PowerShell を使用する以外にもさまざまな方法でアクセスできます。 これらのツールを使用すると、RESTful Azure Resource Manager API を使用して Log Analytics のワークスペースにアクセスし、その中で検索コマンドを実行できます。 API の検索結果は JSON 形式で出力されるため、検索結果をプログラムによりさまざまな方法で使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 現時点では、アラートは Log Analytics の保存した検索条件でのみ作成できます。  詳細については、「 [Log Search REST API (ログ検索 REST API)](log-analytics-log-search-api.md) 」を参照してください。
@@ -67,7 +67,7 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
 ```
 
 ### <a name="creating-a-schedule"></a>スケジュールを作成する
-新しいスケジュールを作成するには、Put メソッドに一意のスケジュール ID を渡します。  2 つのスケジュールが同じ ID を持つことはできないことに注意してください。スケジュールに関連付けられている、保存した検索条件がそれぞれ異なるとしても同様です。  OMS コンソールでスケジュールを作成すると、スケジュール ID に対して GUID が作成されます。
+新しいスケジュールを作成するには、Put メソッドに一意のスケジュール ID を渡します。  2 つのスケジュールが同じ ID を持つことはできないことに注意してください。スケジュールに関連付けられている、保存した検索条件がそれぞれ異なるとしても同様です。  Log Analytics コンソールでスケジュールを作成すると、スケジュール ID に対して GUID が作成されます。
 
 > [!NOTE]
 > Log Analytics API で作成する、すべての保存した検索条件、スケジュール、およびアクションは、小文字にする必要があります。
@@ -102,7 +102,7 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
 ### <a name="retrieving-actions"></a>アクションの取得
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[Log Analytics から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
 Get メソッドを使用して、スケジュールのすべてのアクションを取得します。
 
@@ -113,7 +113,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/actions/{Action ID}?api-version=2015-03-20
 
 ### <a name="creating-or-editing-actions"></a>アクションの作成または編集
-新しいアクションを作成するには、スケジュールに固有のアクション ID を Put メソッドに渡します。  OMS コンソールでアクションを作成するときの GUID は、そのアクション ID を定義するためのものです。
+新しいアクションを作成するには、スケジュールに固有のアクション ID を Put メソッドに渡します。  Log Analytics コンソールでアクションを作成するときの GUID は、そのアクション ID を定義するためのものです。
 
 > [!NOTE]
 > Log Analytics API で作成する、すべての保存した検索条件、スケジュール、およびアクションは、小文字にする必要があります。
@@ -125,7 +125,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 ### <a name="deleting-actions"></a>アクションの削除
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[Log Analytics から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
 アクション ID と共に Delete メソッドを使用すると、アクションを削除できます。
 
@@ -146,7 +146,7 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 | Webhook アクション | アラートから JSON として必要なサービスにデータをプッシュします |アラートが Azure に拡張された後は不要|
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。
+> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[Log Analytics から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。
 
 #### <a name="thresholds"></a>しきい値
 アラート アクションには、しきい値を 1 つだけ指定する必要があります。  保存した検索条件の結果が、その検索に関連付けられているアクションのしきい値に一致すると、そのアクションの他のすべてのプロセスが実行されます。  また、アクションにしきい値だけを含めて、しきい値を含まない他の種類のアクションと共に使用することもできます。
@@ -355,7 +355,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 電子メール通知は、1 人以上の受信者にメールを送信します。  電子メール通知には、次の表に示したプロパティがあります。
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、電子メール通知などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[Log Analytics から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、電子メール通知などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
    
 
 | プロパティ | 説明 |
@@ -396,16 +396,16 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myemailaction?api-version=2015-03-20 $emailJson
 
 #### <a name="remediation-actions"></a>修復アクション
-修復では、アラートで識別された問題を修正するための Runbook が Azure Automation で開始されます。  修復アクションで使用される Runbook の Webhook を作成し、WebhookUri プロパティに URI を指定する必要があります。  OMS コンソールを使用してこのアクションを作成すると、Runbook に対して新しい Webhook が自動的に作成されます。
+修復では、アラートで識別された問題を修正するための Runbook が Azure Automation で開始されます。  修復アクションで使用される Runbook の Webhook を作成し、WebhookUri プロパティに URI を指定する必要があります。  Azure portal を使用してこのアクションを作成すると、Runbook に対して新しい Webhook が自動的に作成されます。
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Runbook を使用した修復などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[Log Analytics から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Runbook を使用した修復などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
 修復には、次の表に示したプロパティがあります。
 
 | プロパティ | 説明 |
 |:--- |:--- |
-| RunbookName |Runbook の名前。 これは、OMS ワークスペースの Automation ソリューションで構成されたオートメーション アカウントの発行済み Runbook と一致する必要があります。 |
+| RunbookName |Runbook の名前。 これは、Log Analytics ワークスペースの Automation ソリューションで構成されたオートメーション アカウントの発行済み Runbook と一致する必要があります。 |
 | WebhookUri |Webhook の URI。 |
 | Expiry |Webhook の有効期限の日付と時刻。  Webhook に有効期限がない場合は、任意の有効な将来の日付を設定できます。 |
 
@@ -458,7 +458,7 @@ Put メソッドを既存のアクション ID とともに使用して、スケ
 Webhook アクションは、URL を呼び出し、送信されるペイロードをオプションで指定することにより、プロセスを開始します。  これは修復アクションに似ていますが、Azure Automation の Runbook 以外のプロセスを呼び出す可能性のある Webhook に対して使用することを意図しています。  また、リモート プロセスに配信されるペイロードを指定する追加のオプションも用意されています。
 
 > [!NOTE]
-> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Webhook などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日より、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[Log Analytics から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Webhook などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
 
 Webhook アクションにはしきい値はありませんが、その代わりに、しきい値のあるアラート アクションを含むスケジュールに追加する必要があります。  

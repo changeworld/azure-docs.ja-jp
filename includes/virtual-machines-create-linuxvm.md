@@ -1,4 +1,16 @@
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: ae29451e3f7ec263f296e69656a5c66045334687
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226973"
+---
 1. [Azure クラシック CLI からの Azureへの接続](/cli/azure/authenticate-azure-cli)に関する記事で示されている手順を使用して、Azure サブスクリプションにサインインします。
 
 2. 以下を使用して、クラシック デプロイ モードであることを確認します。

@@ -1,3 +1,16 @@
+---
+author: dominicbetts
+ms.service: iot-hub
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: dobett
+ms.openlocfilehash: 2eacb55eaf355a4eef17b9e16075d8d12167266d
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165077"
+---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>Azure Resource Manager の要求を認証するための準備
 [Azure Resource Manager][lnk-authenticate-arm] と Azure Active Directory (AD) を使用して、リソース上で実行するすべての操作を認証する必要があります。 これを構成するうえで、PowerShell または Azure CLI を使用するのが最も簡単な方法です。
 

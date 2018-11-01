@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: b9c4c2595bb7d5347397bff95c90fbdc91902bcd
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 12e3cf028b4812abd43dd2b6f23190fa6b75157a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696450"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242292"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB の概要
 
@@ -55,7 +55,7 @@ Azure Cosmos DB は、グローバルに分散された複数モデルのデー�
 * **"常時オン" の可用性の確保**
     * すべての単一リージョン データベース アカウントに対しては 99.99% の可用性 SLA、およびすべてのマルチリージョン データベース アカウントに対しては 99.999% の読み取り可用性を提供します。
     * 可用性とパフォーマンスをさらに高めるために、任意の数の [Azure リージョン](https://azure.microsoft.com/regions)に展開できます。
-    * リージョンに優先順位を動的に設定します。また、データ損失ゼロを保証している 1 つ以上のリージョンで[障害のシミュレーション](regional-failover.md)を行って、(データベースだけでなく) アプリ全体のエンド ツー エンドの可用性をテストします。 
+    * リージョンに優先順位を動的に設定します。また、データ損失ゼロを保証している 1 つ以上のリージョンで[障害のシミュレーション](high-availability.md)を行って、(データベースだけでなく) アプリ全体のエンド ツー エンドの可用性をテストします。 
 
 * **グローバルに分散されたアプリケーションを正しく作成**
     * 明確に定義された実用的でわかりやすい 5 種類の[整合性モデル](consistency-levels.md)により、SQL のような厳密な整合性から、緩やかな NoSQL のような結果整合性 (およびその 2 つの中間) に至るまで、幅広く対応できます。 

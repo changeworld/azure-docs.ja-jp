@@ -30,7 +30,7 @@ Custom Vision Service および基本の Python スクリプトを使って、�
 
 ## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
 
-このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある__歯車アイコン__を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
 
 ![キー UI の画像](./media/python-tutorial/training-prediction-keys.png)
 

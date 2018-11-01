@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: マネージド ドメインで�
 description: Azure Active Directory Domain Services のマネージド ドメインでの同期について
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 57cbf436-fc1d-4bab-b991-7d25b6e987ef
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.author: maheshu
-ms.openlocfilehash: 87ee4f2cbdd09a9284668ea298c0b3c3b1439c15
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: e0fc1b64514adb710ebcbdd417f65e9e3b3b3d66
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503017"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155560"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインでの同期
 次の図は、Azure AD Domain Services のマネージド ドメインにおける同期のしくみを示しています。
@@ -51,15 +51,11 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 次のオブジェクトや属性は、Azure AD テナントまたはマネージド ドメインに同期されません。
 
 * **除外対象の属性:** Azure AD Connect を使用して、オンプレミス ドメインから Azure AD テナントへの同期から、特定の属性を除外することができます。 これらの除外対象の属性は、マネージド ドメインでは使用できません。
-* 
-  **グループ ポリシー:** オンプレミス ドメインで構成されたグループ ポリシーは、マネージド ドメインに同期されません。
+* **グループ ポリシー:** オンプレミス ドメインで構成されたグループ ポリシーは、マネージド ドメインに同期されません。
 * **SYSVOL 共有:** 同様に、オンプレミス ドメインの SYSVOL 共有の内容も、マネージド ドメインに同期されません。
-* 
-  **コンピューター オブジェクト:** オンプレミス ドメインに参加したコンピューターのコンピューター オブジェクトは、マネージド ドメインに同期されません。 これらのコンピューターはマネージド ドメインと信頼関係がなく、オンプレミス ドメインにのみ属します。 マネージド ドメイン内にあるコンピューター オブジェクトは、マネージド ドメインに明示的にドメイン参加させたコンピューターのものだけです。
-* 
-  **ユーザーとグループの SidHistory 属性:** オンプレミス ドメインのプライマリ ユーザーおよびプライマリ グループの SID は、マネージド ドメインに同期されます。 ただし、ユーザーとグループの既存の SidHistory 属性については、オンプレミス ドメインからマネージド ドメインに同期されません。
-* 
-  **組織単位 (OU) の構造:** オンプレミス ドメインで定義された組織単位は、マネージド ドメインに同期されません。 マネージド ドメインには、2 つの組み込み OU があります。 既定では、マネージド ドメインはフラットな OU 構造をしています。 ただし、[マネージド ドメイン内にカスタムの OU を作成](active-directory-ds-admin-guide-create-ou.md)することができます。
+* **コンピューター オブジェクト:** オンプレミス ドメインに参加したコンピューターのコンピューター オブジェクトは、マネージド ドメインに同期されません。 これらのコンピューターはマネージド ドメインと信頼関係がなく、オンプレミス ドメインにのみ属します。 マネージド ドメイン内にあるコンピューター オブジェクトは、マネージド ドメインに明示的にドメイン参加させたコンピューターのものだけです。
+* **ユーザーとグループの SidHistory 属性:** オンプレミス ドメインのプライマリ ユーザーおよびプライマリ グループの SID は、マネージド ドメインに同期されます。 ただし、ユーザーとグループの既存の SidHistory 属性については、オンプレミス ドメインからマネージド ドメインに同期されません。
+* **組織単位 (OU) の構造:** オンプレミス ドメインで定義された組織単位は、マネージド ドメインに同期されません。 マネージド ドメインには、2 つの組み込み OU があります。 既定では、マネージド ドメインはフラットな OU 構造をしています。 ただし、[マネージド ドメイン内にカスタムの OU を作成](active-directory-ds-admin-guide-create-ou.md)することができます。
 
 ## <a name="how-specific-attributes-are-synchronized-to-your-managed-domain"></a>特定の属性がマネージド ドメインに同期される方法
 次の表では、一般的な属性の一部を示し、これらがマネージド ドメインに同期される方法を説明します。
@@ -73,8 +69,7 @@ Azure AD Connect Sync は、ユーザー アカウント、グループ メン�
 | ユーザーとグループの SID 履歴 |オンプレミスのプライマリ ユーザーおよびグループの SID |マネージド ドメインのユーザーおよびグループの SidHistory 属性は、オンプレミス ドメインの対応するプライマリ ユーザーまたはグループの SID と一致するように設定されています。 この機能により、リソースを再度 ACL 処理する必要がなくなるため、オンプレミスのアプリケーションをリフト アンド シフト方式でマネージド ドメインに簡単に移行することができます。 |
 
 > [!NOTE]
-> 
-  **UPN 形式を使用したマネージド ドメインへのサインイン:** マネージド ドメインの一部ユーザー アカウントの SAMAccountName 属性が自動生成される場合があります。 複数のユーザーで mailNickname 属性が同じだったり、ユーザーの UPN プレフィックスが最大文字数を超えている場合は、これらのユーザーのSAMAccountName が自動生成されることがあります。 そのため SAMAccountName 形式 (例: "CONTOSO100\joeuser") は、ドメインにサインインするうえで常に確実な方法というわけではありません。 ユーザーの自動生成された SAMAccountName が、UPN プレフィックスとは異なる場合があります。 マネージド ドメインに確実にサインインするには、UPN 形式 (例: 「joeuser@contoso100.com」) を使用します。
+> **UPN 形式を使用したマネージド ドメインへのサインイン:** マネージド ドメインの一部ユーザー アカウントの SAMAccountName 属性が自動生成される場合があります。 複数のユーザーで mailNickname 属性が同じだったり、ユーザーの UPN プレフィックスが最大文字数を超えている場合は、これらのユーザーのSAMAccountName が自動生成されることがあります。 そのため SAMAccountName 形式 (例: "CONTOSO100\joeuser") は、ドメインにサインインするうえで常に確実な方法というわけではありません。 ユーザーの自動生成された SAMAccountName が、UPN プレフィックスとは異なる場合があります。 マネージド ドメインに確実にサインインするには、UPN 形式 (例: 「joeuser@contoso100.com」) を使用します。
 >
 >
 

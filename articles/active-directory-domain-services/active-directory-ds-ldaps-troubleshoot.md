@@ -3,7 +3,7 @@ title: Azure AD Domain Services での Secure LDAP (LDAPS) のトラブルシュ
 description: Azure AD Domain Services のマネージド ドメインに対する Secure LDAP (LDAPS) のトラブルシューティング
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 445c60da-e115-447b-841d-96739975bdf6
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2018
-ms.author: maheshu
-ms.openlocfilehash: 9713a06bbf6a61b316e061cb851721a3554cd632
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 3925db10a490be3c6d572f6d107e556595be8237
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503674"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155782"
 ---
 # <a name="troubleshoot-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに対する Secure LDAP (LDAPS) のトラブルシューティング
 
@@ -43,10 +43,8 @@ Secure LDAP を使用したマネージド ドメインへの接続の問題が�
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
-* 
-  [Azure AD Domain Services のマネージド ドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
+* [Azure AD Domain Services のマネージド ドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
 * [LDAP query basics](https://technet.microsoft.com/library/aa996205.aspx) (LDAP クエリの基本)
-* 
-  [Azure AD Domain Services のマネージド ドメインのグループ ポリシーの管理](active-directory-ds-admin-guide-administer-group-policy.md)
+* [Azure AD Domain Services のマネージド ドメインのグループ ポリシーの管理](active-directory-ds-admin-guide-administer-group-policy.md)
 * [ネットワーク セキュリティ グループ](../virtual-network/security-overview.md)
 * [ネットワーク セキュリティ グループの作成](../virtual-network/tutorial-filter-network-traffic.md)

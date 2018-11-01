@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 0b2e0ff800ab80a2c638293ce23fc1911390f2dd
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 79a02115a449c710778e4c69f470efc3ebebae53
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221117"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087051"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Azure Logic Apps と統合される関数を作成する
 
@@ -100,6 +100,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
     using System;
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Primitives;
     using Newtonsoft.Json;
     
@@ -128,7 +129,7 @@ Cognitive Services APIs は、個々のリソースとして Azure で使用で�
     ```
     この関数コードは、要求で受信したセンチメント スコアに基づいて、色のカテゴリを返します。 
 
-4. 関数をテストするには、一番右の **[テスト]** をクリックして [テスト] タブを展開します。**[要求本文]** に「`0.2`」という値を入力し、**[実行]** をクリックします。 応答本文で **RED** という値が返されます。 
+4. 関数をテストするには、一番右の **[テスト]** をクリックして [テスト] タブを展開します。[要求本文]`0.2` に「」という値を入力し、**[実行]** をクリックします。 応答本文で **RED** という値が返されます。 
 
     ![Azure Portal で関数をテストする](./media/functions-twitter-email/test.png)
 

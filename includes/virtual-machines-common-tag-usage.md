@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 17778b3edf1845d85302a0bcdf72a1ebc3919cea
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227165"
+---
 ## <a name="viewing-your-tags-in-the-usage-details"></a>使用量の詳細でタグを確認する
 Resource Manager デプロイ モデルで Compute、Network、および Storage リソースに設定したタグは、[課金ポータル](https://account.windowsazure.com/)の使用量の詳細に追加されます。
 

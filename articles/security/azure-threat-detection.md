@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 9b688ca6faaa7e0d84dff0ae28e2a9b8b8279490
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 33a9cc0a7b3d18004e19d73a0d9b91bf33cdb055
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37856880"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408831"
 ---
-# <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威の検出
+# <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威検出
 
-Azure では、Azure Active Directory (Azure AD)、Azure Operations Management Suite (OMS)、Azure Security Center などのサービスを通じて、高度な脅威検出を行う組み込み機能を提供しています。 このセキュリティ サービスと機能のコレクションにより、Azure デプロイの内部で起きている事象をシンプルかつ迅速に把握する方法が提供されます。
+Azure では、Azure Active Directory (Azure AD)、Azure Log Analytics、Azure Security Center などのサービスを通じて、高度な脅威検出を行う組み込み機能を提供しています。 このセキュリティ サービスと機能のコレクションにより、Azure デプロイの内部で起きている事象をシンプルかつ迅速に把握する方法が提供されます。
 
 Azure では、アプリのデプロイ要件を満たすセキュリティを構成およびカスタマイズするための幅広いオプションを提供します。 この記事では、これらの要件を満たす方法について説明します。
 
 ## <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
-[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) は、[Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) エディションの機能であり、リスク イベントと組織の ID に影響する可能性がある潜在的な脆弱性に関する概要を提供します。 Identity Protection は、[Azure AD 異常アクティビティ レポート](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports#anomalous-activity-reports)を通じて利用できる、既存の Azure AD 異常検出機能を使用して、リアルタイムの異常を検出できる新しいリスク イベントの種類を紹介します。
+[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) は、[Azure Active Directory Premium P2](https://docs.microsoft.com/azure/active-directory/active-directory-editions) エディションの機能であり、リスク イベントと組織の ID に影響する可能性がある潜在的な脆弱性に関する概要を提供します。 Identity Protection では、[Azure AD 異常アクティビティ レポート](https://docs.microsoft.com/azure/active-directory/active-directory-view-access-usage-reports#anomalous-activity-reports)を通じて利用できる既存の Azure AD 異常検出機能を使用して、リアルタイムの異常を検出できる新しい種類のリスク イベントを導入します。
 
 ![Azure AD Identity Protection の図](./media/azure-threat-detection/azure-threat-detection-fig1.png)
 
-Identity Protection はアダプティブ Machine Learning アルゴリズムとヒューリスティックを使用して、ID が侵害されていることを示している可能性のある異常とリスク イベントを検出します。 このデータを使用して、Identity Protection はレポートとアラートを生成するので、ユーザーはこれらのリスク イベントを調査して、適切な修復または軽減のアクションを実行することができます。
+Identity Protection ではアダプティブな機械学習アルゴリズムとヒューリスティックを使用して、ID が侵害されていることを示している可能性のある異常とリスク イベントを検出します。 このデータを使用して、Identity Protection によりレポートとアラートが生成されます。ユーザーはこれらのリスク イベントを調査して、適切な修復または軽減のアクションを実行することができます。
 
-Azure Active Directory Identity Protection は単なる監視とレポート作成のツールではありません。 リスク イベントを基にして、Identity Protection は各ユーザーのユーザー リスク レベルを計算します。これにより、ユーザーはリスク ベースのポリシーを構成して組織の ID を自動的に保護することができます。
+Azure Active Directory Identity Protection は単なる監視とレポート作成のツールではありません。 リスク イベントを基にして、Identity Protection では各ユーザーのユーザー リスク レベルを計算します。これにより、リスク ベースのポリシーを構成して組織の ID を自動的に保護することができます。
 
-これらのリスクに基づくポリシーと、Azure Active Directory および [EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) によって提供される他の[条件付きアクセス コントロール](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access)により、パスワードのリセットや多要素認証の適用などのアダプティブ修復アクションを自動的にブロックまたは提供できます。
+これらのリスクに基づくポリシーと、Azure Active Directory および [EMS](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access) によって提供される他の[条件付きアクセス コントロール](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access)により、自動的にブロックを行ったり、パスワードのリセットや多要素認証の適用などのアダプティブな修復アクションを提供できます。
 
 ### <a name="identity-protection-capabilities"></a>Identity Protection の機能
 
@@ -45,9 +45,9 @@ Azure Active Directory Identity Protection は単なる監視とレポート作�
 
 Azure の Identity Protection によってユーザーのアカウントや ID を保護できる方法の例には次のようなものがあります。
 
-[リスク イベントとリスクの高いアカウントの検出:](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#detection)
--   Machine Learning とヒューリスティック ルールを使用した 6 つのリスク イベントの種類の検出。
--   ユーザーのリスク レベルを計算します。
+[リスク イベントとリスクの高いアカウントの検出](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#detection)
+-   機械学習とヒューリスティック ルールを使用して 6 種類のリスク イベントを検出します。
+-   ユーザー リスク レベルを計算します。
 -   脆弱性を目立たせることにより全体的なセキュリティ対策を向上させるためのカスタム推奨事項を提供します。
 
 [リスク イベントの調査](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection#investigation)
@@ -63,68 +63,68 @@ Azure の Identity Protection によってユーザーのアカウントや ID �
 
 ### <a name="azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management
 
-組織内のアクセス権は、[Azure Active Directory Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) を使用して管理、制御、監視することができます。 その機能には、Azure AD をはじめとする Microsoft の各種オンライン サービス (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
+組織内のアクセスは、[Azure Active Directory Privileged Identity Management (PIM)](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) を使用して管理、制御、監視することができます。 その機能には、Azure AD をはじめとする Microsoft Online Services (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
 
 ![Azure AD Privileged Identity Management の図](./media/azure-threat-detection/azure-threat-detection-fig2.png)
 
 PIM は以下のことに役立ちます。
 
--   Azure AD 管理者のアラートとレポートを受け取り、Office 365 や Intune などの Microsoft Online Services にジャスト イン タイム (JIT) で管理アクセスを行う。
+-   Azure AD 管理者に関するアラートとレポートを受け取り、Office 365 や Intune などの Microsoft Online Services にジャスト イン タイム (JIT) で管理アクセスを行う。
 
 -   管理者のアクセス履歴と管理者の割り当ての変更に関するレポートを取得する。
 
 -   特権ロールへのアクセスに関するアラートを受け取る。
 
-## <a name="operations-management-suite"></a>Operations Management Suite
+## <a name="azure-log-analytics"></a>Azure Log Analytics
 
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、Microsoft のクラウドベースの IT 管理ソリューションです。Operations Management Suite を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 OMS はクラウドベースのサービスとして実装されるため、インフラストラクチャ サービスに最小限の投資をするだけで、すぐに稼働させることができます。 新しいセキュリティ機能が追加されると自動的に配信されるため、継続的なメンテナンスやアップグレードのコストが節約されます。
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、Microsoft のクラウド ベースの IT 管理ソリューションです。 Log Analytics はクラウドベースのサービスとして実装されるため、インフラストラクチャ サービスに最小限の投資をするだけで、すぐに稼働させることができます。 新しいセキュリティ機能は自動的に配信されるため、継続的なメンテナンスやアップグレードのコストが節約されます。
 
-OMS は、価値のある独自のサービスに加え、[System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) などの System Center のコンポーネントと統合して、管理のための既存のセキュリティ投資をクラウドに拡張できます。 System Center と OMS を連携させることで、本格的なハイブリッド管理を実現できます。
+Log Analytics は、価値のある独自のサービスに加え、[System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/) などの System Center のコンポーネントと連携して、セキュリティ管理のための既存の投資をクラウドに拡張できます。 System Center と Log Analytics を連携させることで、本格的なハイブリッド管理を実現できます。
 
 ### <a name="holistic-security-and-compliance-posture"></a>包括的なセキュリティおよびコンプライアンスの体制
 
-[OMS の [セキュリティおよび監査] ダッシュボード](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)では、注意を必要とする重要な問題向けの組み込みの検索クエリと共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 [セキュリティおよび監査] ダッシュボードは、OMS におけるすべてのセキュリティ関連機能のホーム画面です。 この画面では、コンピューターのセキュリティの状態について大まかな情報を得ることができます。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示することができます。
+[Log Analytics の [セキュリティおよび監査] ダッシュボード](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)では、注意を必要とする重要な問題向けの組み込みの検索クエリと共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 [セキュリティおよび監査] ダッシュボードは、Log Analytics におけるすべてのセキュリティ関連機能のホーム画面です。 この画面では、コンピューターのセキュリティの状態について大まかな情報を得ることができます。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示することができます。
 
-OMS のダッシュボードは、あらゆる環境における包括的なセキュリティ体制をすばやく簡単に理解するのに役立ちます。この環境には、IT オペレーションというコンテキストでのソフトウェアの更新プログラムの評価、マルウェア対策の評価、構成基準などがすべて含まれます。 セキュリティ ログ データに容易にアクセスできるため、セキュリティとコンプライアンスを目的とする監査プロセスが合理化されます。
+Log Analytics のダッシュボードは、あらゆる環境における包括的なセキュリティ体制をすばやく簡単に理解するのに役立ちます。これはすべて、ソフトウェアの更新プログラムの評価、マルウェア対策の評価、構成基準などを含む IT オペレーションのコンテキストの中で行われます。 セキュリティ ログ データに容易にアクセスできるため、セキュリティとコンプライアンスを目的とする監査プロセスが合理化されます。
 
-![OMS の [セキュリティおよび監査] ダッシュボード](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
+![Log Analytics の [セキュリティおよび監査] ダッシュボード](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
 
-OMS の [セキュリティおよび監査] ダッシュボードは、次の 4 つの主要カテゴリで構成されています。
+Log Analytics の [セキュリティおよび監査] ダッシュボードは、次の 4 つの主要カテゴリで構成されています。
 
--   **セキュリティ ドメイン**: 時間の経過に伴うセキュリティ レコードを詳しく調査したり、マルウェアの評価にアクセスしたり、評価を更新したり、ネットワーク セキュリティ、ID、アクセスの情報を表示したり、セキュリティ イベントが発生したコンピューターを表示したり、Azure Security Center のダッシュボードに簡単にアクセスしたりできます。
+-   **セキュリティ ドメイン**: 時間の経過に伴うセキュリティ レコードを詳しく調査できます。また、マルウェアの評価へのアクセス、評価の更新、ネットワーク セキュリティ、ID、アクセス情報の表示、セキュリティ イベントが発生したコンピューターの表示を行うことができ、Azure Security Center のダッシュボードにも簡単にアクセスできます。
 
 -   **注目に値する問題**: アクティブな問題の数と問題の重要度をすばやく特定できます。
 
--   **検出 (プレビュー)**: リソースに対して攻撃が発生したときにセキュリティの警告を表示することで、攻撃パターンを特定できます。
+-   **検出 (プレビュー)**: リソースに対して攻撃が発生したときにセキュリティ アラートを表示することで、攻撃パターンを特定できます。
 
 -   **脅威インテリジェンス**: 悪意のある送信側 IP トラフィックを持つサーバーの総数、悪意のある脅威の種類、IP の場所のマップを表示することで、攻撃パターンを特定できます。
 
 -   **一般的なセキュリティ クエリ**: 環境を監視するために使用できる最も一般的なセキュリティ クエリが一覧表示されます。 任意のクエリを選択すると、[検索] ウィンドウが開き、そのクエリの結果が表示されます。
 
 ### <a name="insight-and-analytics"></a>分析情報と分析
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) の核となる機能は、Azure でホストされている OMS リポジトリです。
+[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) の核となる機能は、Azure でホストされているリポジトリです。
 
 ![分析情報と分析の図](./media/azure-threat-detection/azure-threat-detection-fig4.png)
 
 データ ソースを構成し、ソリューションをサブスクリプションに追加することによって、接続されているソースからリポジトリにデータを収集します。
 
-![OMS ダッシュボード ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![Log Analytics のダッシュボード ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 データ ソースとソリューションは、独自のプロパティのセットを持つレコードの種類をそれぞれ別々に作成しますが、リポジトリに対するクエリでまとめて分析することもできます。 同じツールとメソッドを使用することで、さまざまなソースによって収集された各種のデータを使用することができます。
 
 
-Log Analytics とのやり取りのほとんどは、任意のブラウザーで実行する OMS ポータルを通じて行います。ここから構成設定や複数のツールにアクセスして収集したデータの分析や操作ができる機能が提供されます。 ポータルでは、以下を使用できます。
+Log Analytics とのやり取りのほとんどは、任意のブラウザーで実行する Azure portal を通じて行います。ここから構成設定や複数のツールにアクセスして収集したデータの分析や操作ができる機能が提供されます。 ポータルでは、以下を使用できます。
 * [ログ検索](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches)。収集されたデータを分析するためのクエリを構築します。
 * [ダッシュボード](https://docs.microsoft.com/azure/log-analytics/log-analytics-dashboards)。最も重要な検索のグラフィカル表示でカスタマイズできます。
 * [ソリューション](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)。追加の機能と分析ツールが提供されます。
 
 ![分析ツール](./media/azure-threat-detection/azure-threat-detection-fig6.png)
 
-ソリューションにより、Log Analytics に機能が追加されます。 これらは主にクラウドで実行し、OMS リポジトリで収集されたデータの分析を提供します。 また、ソリューションでは、OMS ダッシュボード内でソリューションによって提供される追加のユーザー インターフェイスを使用するか、またはログ検索を使用して分析できる収集対象の新しいレコードの種類を定義することもできます。
+ソリューションにより、Log Analytics に機能が追加されます。 これらは主にクラウドで実行し、Log Analytics リポジトリで収集されたデータの分析を提供します。 また、ソリューションでは、新しいレコードの種類を収集対象として定義することもできます。それらは Log Analytics ダッシュボード内でソリューションによって提供される追加のユーザー インターフェイスを使用するか、ログ検索を使用して分析できます。
 
 [セキュリティおよび監査] ダッシュボードはこのような種類のソリューションの一例です。
 
-### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>Automation と制御: セキュリティ構成の誤差に関するアラート
+### <a name="automation-and-control-alert-on-security-configuration-drifts"></a>自動化と制御: セキュリティ構成の誤差に関するアラート
 
 Azure Automation は、PowerShell に基づいた Runbook を使用して管理プロセスを自動化し、クラウドで実行します。 ローカル データセンターのサーバーで Runbook を実行してローカル リソースを管理することもできます。 Azure Automation では、PowerShell Desired State Configuration (DSC) によって構成を管理します。
 

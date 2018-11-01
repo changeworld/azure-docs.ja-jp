@@ -1,3 +1,16 @@
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: 1d1d593b7305e0cd9899f4ec388cb441ced90b10
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133972"
+---
 1. Mac で [Azure portal] にアクセスします。 **[すべてのサービス]** > **[App Services]** の順にクリックして、先ほど作成したバックエンドをクリックします。 モバイル アプリの設定で、優先する言語を選択します。
 
     - Objective-C &ndash; **[クイック スタート]** > **[iOS (Objective-C)]**

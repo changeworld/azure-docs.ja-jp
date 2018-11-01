@@ -11,12 +11,12 @@ ms.assetid: e0ec3149-507a-409d-8e7b-d5fbded006ce
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 5a3968e1aec98092767712220d8aaf676aba89cd
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f076b2e859d334b407fe5c93fcec1bb67cb75e48
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052841"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233261"
 ---
 # <a name="monitor-and-manage-sharepoint-resources-with-azure-logic-apps"></a>Azure Logic Apps を使用して SharePoint リソースを監視および管理する
 
@@ -74,16 +74,16 @@ SharePoint から応答を取得し、その出力を他のアクションが使
 
 1. サインインするように求められたら、必要な接続情報を入力します。 SharePoint Server を使用している場合は、**[オンプレミスのデータ ゲートウェイ経由で接続]** を選択してください。 操作が完了したら、**[作成]** を選択します。
 
-1. 選択したトリガーまたはアクションで必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
+1. 選択したトリガーまたはアクションのために必要な詳細を指定し、ロジック アプリのワークフローの構築を続けます。
 
 ## <a name="connector-reference"></a>コネクタのレファレンス
 
-コネクタの OpenAPI (以前の Swagger) の説明で記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/sharepoint/)を参照してください。
+コネクタの OpenAPI (以前の Swagger) の説明に記載されているトリガー、アクション、および制限に関する技術的な詳細については、コネクタの[リファレンス ページ](/connectors/sharepoint/)を参照してください。
 
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

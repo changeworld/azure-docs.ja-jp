@@ -3,7 +3,7 @@ title: 'Azure AD ドメイン サービス: パスワード同期を有効にす
 description: Azure Active Directory Domain Services の概要
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 8731f2b2-661c-4f3d-adba-2c9e06344537
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.author: maheshu
-ms.openlocfilehash: 33cbc65ec5971f8bfe0133e5dca181194cd0bbdd
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.author: ergreenl
+ms.openlocfilehash: 751c9df8dc3826b54baab6166cd63a0dd8cff4f5
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294001"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155951"
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services とのパスワード同期を有効にする
 前のタスクでは、Azure Active Directory (Azure AD) テナントに対して Azure Active Directory Domain Services を有効にしました。 次のタスクでは、NT LAN Manager (NTLM) および Kerberos 認証に必要な資格情報ハッシュを Azure AD Domain Services との間で同期できるようにします。 資格情報の同期が設定されると、ユーザーは自社の資格情報を使用して、マネージド ドメインにサインインできます。
@@ -31,7 +31,7 @@ ms.locfileid: "46294001"
 | **ユーザー アカウントの種類** | **実行する手順** |
 | --- | --- |
 | **オンプレミス ディレクトリとの間で同期されるユーザー アカウント** |**&#x2713;** [この記事の手順に従う](active-directory-ds-getting-started-password-sync-synced-tenant.md#task-5-enable-password-synchronization-to-your-managed-domain-for-user-accounts-synced-with-your-on-premises-ad) | 
-| **Azure AD に作成されたクラウド ユーザー アカウント** |**&#x2713;**[クラウド専用ユーザー アカウントのパスワードをマネージド ドメインとの間で同期する](active-directory-ds-getting-started-password-sync.md) |
+| **Azure AD に作成されたクラウド ユーザー アカウント** |**&amp;amp;#x2713;**[クラウド専用ユーザー アカウントのパスワードをマネージド ドメインとの間で同期する](active-directory-ds-getting-started-password-sync.md) |
 <br>
 
 > [!TIP]

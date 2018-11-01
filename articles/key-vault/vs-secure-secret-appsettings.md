@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 1635d0fa51fb56f30dc7cf5864e49000d30cc25d
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 339d96c8b9a6e149e41a8668e51ba38f8b024d47
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719785"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229948"
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Web アプリケーションのシークレット アプリケーション設定を安全に保存する
 

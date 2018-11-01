@@ -10,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/22/2018
 ms.author: erhopf
-ms.openlocfilehash: 8db2f6a67f64216276ccdb0b16bbeb48565f6bc6
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 854cf1646d716f7cd721a7286b79a0f733243268
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127603"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416233"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-java"></a>クイック スタート: Java 用の Bing Web Search SDK を使用する
 
@@ -29,7 +29,7 @@ Bing Web Search SDK を使用すると、Java アプリケーションに Bing W
 
 このクイック スタートを実行するには、以下のものが必要です。
 
-* [JDK 7 または 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [JDK 7 または 8](https://aka.ms/azure-jdks)
 * [Apache Maven](https://maven.apache.org/download.cgi) または普段使用しているビルド オートメーション ツール
 * サブスクリプション キー
 

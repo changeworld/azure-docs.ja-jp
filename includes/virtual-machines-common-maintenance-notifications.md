@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/02/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: efedb2f48748264fb936fe82a1dbb3cf4403cc5e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: b3f71c4710bd9711a3209dd55f8e680f63627c1b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40166006"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50035440"
 ---
 ## <a name="view-vms-scheduled-for-maintenance-in-the-portal"></a>ポータルでメンテナンスがスケジュールされている VM を表示する
 
@@ -49,7 +49,7 @@ Azure Portal を使用して、VM のメンテナンス スケジュールを検
 
 ## <a name="notification-and-alerts-in-the-portal"></a>ポータルの通知とアラート
 
-Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画済みメンテナンスのスケジュールを伝えます。 Azure アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳細については、「[Azure アクティビティ ログでサブスクリプション アクティビティを監視する] (../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md) 」を参照してください。
+Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画済みメンテナンスのスケジュールを伝えます。 Azure アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳しくは、「[Azure アクティビティ ログでサブスクリプション アクティビティを監視する](../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md)」をご覧ください。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで **[監視]** を選択します。 

@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
 ms.component: ''
-ms.openlocfilehash: 1c72421be6cfb266293c98d9ad06bd6adb35019b
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: be0a12bbb84db1e4016bd7126a38e750e6c0c3ad
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043601"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412824"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics の Azure Key Vault Analytics ソリューション
 
-![Key Vault のシンボル](./media/log-analytics-azure-keyvault/key-vault-analytics-symbol.png)
+![Key Vault のシンボル](media/log-analytics-azure-key-vault/key-vault-analytics-symbol.png)
 
 Log Analytics の Azure Key Vault ソリューションを使用して、Azure Key Vault の AuditEvent ログを調査することができます。
 
@@ -46,10 +46,10 @@ Azure Key Vault ソリューションのインストールと構成は、次の�
 1. Azure Portal で、監視する Key Vault リソースに移動します。
 2. *[診断ログ]* を選択して、次のページを開きます。
 
-   ![[Azure Key Vault] タイルの画像](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics01.png)
+   ![[Azure Key Vault] タイルの画像](media/log-analytics-azure-key-vault/log-analytics-keyvault-enable-diagnostics01.png)
 3. *[診断を有効にする]* をクリックして、次のページを開きます。
 
-   ![[Azure Key Vault] タイルの画像](./media/log-analytics-azure-keyvault/log-analytics-keyvault-enable-diagnostics02.png)
+   ![[Azure Key Vault] タイルの画像](media/log-analytics-azure-key-vault/log-analytics-keyvault-enable-diagnostics02.png)
 4. 診断を有効にするには、*[状態]* の下の *[オン]* をクリックします。
 5. *[Send to Log Analytics]* (Log Analytics に送信) のチェックボックスをクリックします。
 6. 既存の Log Analytics ワークスペースを選択するか、ワークスペースを作成します。
@@ -81,7 +81,7 @@ Azure Blob Storage にログを記述する必要はありません。データ�
 ## <a name="use-azure-key-vault"></a>Azure Key Vault の使用
 [ソリューションをインストール](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.KeyVaultAnalyticsOMS?tab=Overview)すると、Log Analytics の **[概要]** ページの **[Azure Key Vault]** タイルをクリックすることで、Key Vault データが表示されます。
 
-![[Azure Key Vault] タイルの画像](./media/log-analytics-azure-keyvault/log-analytics-keyvault-tile.png)
+![[Azure Key Vault] タイルの画像](media/log-analytics-azure-key-vault/log-analytics-keyvault-tile.png)
 
 **[概要]** タイルをクリックした後、収集されたログの概要を表示し、次のカテゴリについて詳細表示することができます。
 
@@ -90,9 +90,9 @@ Azure Blob Storage にログを記述する必要はありません。データ�
 * 操作ごとの平均待機時間
 * 操作のサービス品質 (所要時間が 1,000 ミリ秒を超える操作の数と所要時間が 1,000 ミリ秒を超える操作の一覧)
 
-![Azure Key Vault ダッシュボードの画像](./media/log-analytics-azure-keyvault/log-analytics-keyvault01.png)
+![Azure Key Vault ダッシュボードの画像](media/log-analytics-azure-key-vault/log-analytics-keyvault01.png)
 
-![Azure Key Vault ダッシュボードの画像](./media/log-analytics-azure-keyvault/log-analytics-keyvault02.png)
+![Azure Key Vault ダッシュボードの画像](media/log-analytics-azure-key-vault/log-analytics-keyvault02.png)
 
 ### <a name="to-view-details-for-any-operation"></a>いずれかの操作の詳細を表示するには
 1. **[概要]** ページの **[Azure Key Vault]** タイルをクリックします。

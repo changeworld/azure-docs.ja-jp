@@ -1,6 +1,6 @@
 ---
 title: Azure Log Analytics の IT Service Management Connector とのサポートされている接続 | Microsoft Docs
-description: この記事では、ITSM 製品/サービスを OMS Log Analytics の IT Service Management Connector (ITSMC) に接続して、ITSM 作業項目を一元的に監視して管理する方法に関する情報を提供します。
+description: この記事では、ITSM 製品/サービスを Azure Monitor の IT Service Management Connector (ITSMC) に接続して、ITSM 作業項目を一元的に監視して管理する方法に関する情報を提供します。
 documentationcenter: ''
 author: jyothirmaisuri
 manager: riyazp
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 50ab09d39fc0c224a97b6cf0c758c55026ac8ce7
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 190e173e035716431c92533e42ded97e147f21a7
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042846"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409205"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](log-analytics-itsmc-overview.md)に関する記事をご覧ください。
@@ -76,7 +76,7 @@ System Center Service Manager インスタンスを ITSMC に接続するには�
 | **クライアント シークレット**   | この ID 用に生成したクライアント シークレットを入力します。   |
 | **データ同期スコープ**   | ITSMC 経由で同期する Service Manager 作業項目を選択します。  これらの作業項目は、Log Analytics にインポートされます。 **オプション:** インシデント、変更要求。|
 | **データの同期** | 過去何日分のデータを同期するのかについて、日数を入力します。 **上限**: 120 日。 |
-| **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、OMS は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。 |
+| **Create new configuration item in ITSM solution (ITSM ソリューション内の新しい構成項目の作成)** | ITSM 製品で構成項目を作成する場合は、このオプションを選択します。 選択すると、Log Analytics は影響を受ける CI を、サポートされている ITSM システムの構成項目として作成します (CI が存在しない場合)。 **既定**: 無効。 |
 
 ![Service Manager の接続](./media/log-analytics-itsmc/service-manager-connection.png)
 
@@ -199,7 +199,7 @@ Service Manager インスタンスを Azure の ITSMC に接続するハイブ�
     - [Geneva の OAuth の設定](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
 
 
-- Microsoft OMS 統合のユーザー アプリ (ServiceNow アプリ) をインストールします。 [詳細情報](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )。
+- Microsoft Log Analytics 統合のユーザー アプリ (ServiceNow アプリ) をインストールします。 [詳細情報](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 )。
 - インストールしたユーザー アプリの統合ユーザー ロールを作成します。 統合ユーザー ロールを作成する方法については、[こちら](#create-integration-user-role-in-servicenow-app)をご覧ください。
 
 ### <a name="connection-procedure"></a>**接続手順**
@@ -221,7 +221,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 | **フィールド** | **説明** |
 | --- | --- |
-| **Connection Name**   | ITSMC に接続する ServiceNow インスタンスの名前を入力します。  この名前は、ITSM の作業項目を構成したり、詳細な Log Analytics を確認したりするときに、あとで OMS 上で使用します。 |
+| **Connection Name**   | ITSMC に接続する ServiceNow インスタンスの名前を入力します。  この名前は、ITSM の作業項目を構成したり、詳細な Log Analytics を確認したりするときに、後で Log Analytics 上で使用します。 |
 | **パートナーの種類**   | **[ServiceNow]** を選択します。 |
 | **ユーザー名**   | ITSMC への接続をサポートするために ServiceNow アプリで作成した統合ユーザー名を入力します。 詳細については、「[ServiceNow アプリのユーザー ロールの作成](#create-integration-user-role-in-servicenow-app)」をご覧ください。|
 | **パスワード**   | このユーザー名に関連付けられているパスワードを入力します。 **注**: ユーザー名とパスワードは、認証トークンを生成するためにのみ使用されます。ITSMC サービス内には格納されません。  |
@@ -247,6 +247,9 @@ ServiceNow 接続を作成するには、次の手順に従います。
 次の手順に従います。
 
 1.  [ServiceNow ストア](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1)にアクセスし、**ServiceNow と Microsoft OMS 統合のユーザー アプリ**を ServiceNow インスタンスにインストールします。
+   
+   >[!NOTE]
+   >Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS は Log Analytics という名称になります。     
 2.  インストール後に、ServiceNow インスタンスの左側のナビゲーション バーで、Microsoft OMS インテグレーターを検索し選択します。  
 3.  **[Installation Checklist] \(インストールのチェックリスト)** をクリックします。
 

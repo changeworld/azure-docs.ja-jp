@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 1c111031af4163dcc915ab6c705edbd613cfcefd
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: ce76f36b93d6dabd83fbaa93357c2dc96209a1c0
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984827"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087620"
 ---
 # <a name="diagnostics-in-durable-functions-azure-functions"></a>Durable Functions における診断 (Azure Functions)
 
@@ -136,15 +136,15 @@ traces
 ```cs
 public static async Task Run(
     DurableOrchestrationContext ctx,
-    TraceWriter log)
+    ILogger log)
 {
-    log.Info("Calling F1.");
+    log.LogInformation("Calling F1.");
     await ctx.CallActivityAsync("F1");
-    log.Info("Calling F2.");
+    log.LogInformation("Calling F2.");
     await ctx.CallActivityAsync("F2");
-    log.Info("Calling F3");
+    log.LogInformation("Calling F3");
     await ctx.CallActivityAsync("F3");
-    log.Info("Done!");
+    log.LogInformation("Done!");
 }
 ```
 
@@ -189,15 +189,15 @@ Done!
 ```cs
 public static async Task Run(
     DurableOrchestrationContext ctx,
-    TraceWriter log)
+    ILogger log)
 {
-    if (!ctx.IsReplaying) log.Info("Calling F1.");
+    if (!ctx.IsReplaying) log.LogInformation("Calling F1.");
     await ctx.CallActivityAsync("F1");
-    if (!ctx.IsReplaying) log.Info("Calling F2.");
+    if (!ctx.IsReplaying) log.LogInformation("Calling F2.");
     await ctx.CallActivityAsync("F2");
-    if (!ctx.IsReplaying) log.Info("Calling F3");
+    if (!ctx.IsReplaying) log.LogInformation("Calling F3");
     await ctx.CallActivityAsync("F3");
-    log.Info("Done!");
+    log.LogInformation("Done!");
 }
 ```
 
@@ -244,7 +244,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] DurableOrchestrati
 ```
 
 > [!NOTE]
-> JavaScript 用のカスタム オーケストレーション状況は、今後のリリースで利用可能になる予定です。
+> JavaScript 用のカスタム オーケストレーションの状態は、今後のリリースで利用可能になる予定です。
 
 オーケストレーションの実行中に、外部クライアントはこのカスタム状態を取り込むことができます:
 

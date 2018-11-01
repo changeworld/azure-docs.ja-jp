@@ -3,7 +3,7 @@ title: Azure AD の参加と Azure Active Directory Domain Services の比較 | 
 description: Azure AD の参加と Azure AD Domain Services を見極める
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 31a71d36-58c1-4839-b958-80da0c6a77eb
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/26/2017
-ms.author: maheshu
-ms.openlocfilehash: e4357738417a202d5dd5a97907b5240cf855f395
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 275f537511f721ea3f01c22a962462bab458129c
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504116"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156581"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>Azure Active Directory の参加と Azure Active Directory Domain Services 間で選定する
 この記事では、Azure Active Directory (AD) の参加と Azure AD Domain Services の違いを説明し、お使いのユースケースに基づく選定を支援します。

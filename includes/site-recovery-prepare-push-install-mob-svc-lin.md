@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: 5ba55e339db4c33d1b0d759e4682481e20318938
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165335"
+---
 ### <a name="prepare-for-a-push-installation-on-a-linux-server"></a>Linux サーバーへのプッシュ インストールの準備
 
 1. Linux コンピューターとプロセス サーバーの間にネットワーク接続が存在することを確認します。

@@ -1,3 +1,16 @@
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: 30b5ae499d29b8b78b5852074362841ac1ceb49f
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50134025"
+---
 1. [Azure Portal] にサインインします。
 2. **[+ 新規]** > **[Web + モバイル]** > **[モバイル アプリ]** の順に選択し、Mobile Apps バックエンドの名前を入力します。
 3. **[リソース グループ]** で、既存のリソース グループを選択するか、新しく作成します (アプリと同じ名前を使用)。 
@@ -5,7 +18,7 @@
 
    App Service プランの設定により、アプリに関連付けられる[場所、機能、コスト、コンピューティング リソース](https://azure.microsoft.com/pricing/details/app-service/)が決まります。 App Services プランの詳細と、さまざまな価格レベルおよび目的の場所で新しいプランを作成する方法については、「[Azure App Service プランの概要](../articles/app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。
    
-5. **[作成]** を選択します。 この手順により、Mobile Apps バックエンドが作成されます。 
+5. **作成**を選択します。 この手順により、Mobile Apps バックエンドが作成されます。 
 6. 新しい Mobile Apps バックエンドの **[設定]** ウィンドウで、**[クイック スタート]** > お使いのクライアント アプリ プラットフォーム > **[データベースの接続]** の順に選択します。 
    
    ![データベース接続のための選択](./media/app-service-mobile-dotnet-backend-create-new-service/dotnet-backend-create-data-connection.png)

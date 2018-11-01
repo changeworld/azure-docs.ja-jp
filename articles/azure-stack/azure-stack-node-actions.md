@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2018
+ms.date: 10/22/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 1f59f2ce6e3bf8d34ce225aa93da76ad523775e0
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f299cca57e3eaddd2a9d4868f3bae822392e45a0
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41947455"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944938"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Azure Stack でのスケール ユニット ノードの操作
 
@@ -31,7 +31,7 @@ ms.locfileid: "41947455"
 > この記事で説明されているすべてのノード操作は、一度に 1 つのノードだけを対象にするようにしてください。
 
 
-## <a name="view-the-status-of-a-scale-unit-and-its-nodes"></a>スケール ユニットとそのノードの状態の表示
+## <a name="view-the-node-status"></a>ノードの状態を表示する
 
 管理者ポータルで、スケール ユニットとその関連するノードの状態を簡単に表示できます。
 
@@ -47,11 +47,11 @@ ms.locfileid: "41947455"
 - システムの種類
 - 論理コアの合計
 - メモリの合計
-- 個々のノードとその状態 (**実行中**または**停止**) の一覧。
+- 個々のノードとその状態 (**実行中**または**停止**) の一覧
 
 ![各ノードの実行中の状態を示すスケール ユニットのタイル](media/azure-stack-node-actions/ScaleUnitStatus.PNG)
 
-## <a name="view-information-about-a-scale-unit-node"></a>スケール ユニット ノードに関する情報の表示
+## <a name="view-node-information"></a>ノードの情報を表示する
 
 1 つのノードを選択すると、次の情報を表示できます。
 

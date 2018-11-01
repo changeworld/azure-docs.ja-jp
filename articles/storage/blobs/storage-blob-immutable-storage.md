@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: mihauss
 ms.component: blobs
-ms.openlocfilehash: 14b5dfb0a12df6c5251ee9f9e6b35a7ce527a1d3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 38e34391294e1a070d506583fbc30dcdb703bea0
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961979"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156903"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>ビジネスに不可欠なデータを Azure Blob Storage 内に保管する
 
@@ -222,7 +222,7 @@ New-AzureRmResourceGroup -Name $ResourceGroup -Location $location
 
 # Create your Azure storage account
 New-AzureRmStorageAccount -ResourceGroupName $ResourceGroup -StorageAccountName `
-    $StorageAccount -SkuName Standard_LRS -Location $location -Kind Storage
+    $StorageAccount -SkuName Standard_LRS -Location $location -Kind StorageV2
 
 # Create a new container
 New-AzureRmStorageContainer -ResourceGroupName $ResourceGroup `

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 8177fb6e8dea83ab2b8b12183cdcca6e43f92ade
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 58e5b06d613ee3e3311b58af64abd2411c637449
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095098"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084443"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions のシングルトン オーケストレーター (Azure Functions)
 
@@ -32,7 +32,7 @@ public static async Task<HttpResponseMessage> RunSingle(
     [OrchestrationClient] DurableOrchestrationClient starter,
     string functionName,
     string instanceId,
-    TraceWriter log)
+    ILogger log)
 {
     // Check if an instance with the specified ID already exists.
     var existingInstance = await starter.GetStatusAsync(instanceId);
@@ -41,7 +41,7 @@ public static async Task<HttpResponseMessage> RunSingle(
         // An instance with the specified ID doesn't exist, create one.
         dynamic eventData = await req.Content.ReadAsAsync<object>();
         await starter.StartNewAsync(functionName, instanceId, eventData);
-        log.Info($"Started orchestration with ID = '{instanceId}'.");
+        log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
         return starter.CreateCheckStatusResponse(req, instanceId);
     }
     else

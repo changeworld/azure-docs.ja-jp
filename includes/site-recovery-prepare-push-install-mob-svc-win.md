@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: ffc9b09c72ef1bf5180a0d626908d09b6fdd41ca
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166134"
+---
 ### <a name="prepare-for-a-push-installation-on-a-windows-computer"></a>Windows コンピューターへのプッシュ インストールの準備
 
 1. Windows コンピューターとプロセス サーバーの間にネットワーク接続が存在することを確認します。

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: b52e491162dcf17eff2ca07bc067586358aa9a35
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: cd41fba675a0814e6f2a1b17576add7811a803eb
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393294"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233482"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS) での Virtual Kubelet の使用
 
@@ -115,7 +115,7 @@ virtual-kubelet-virtual-kubelet-win     Ready     agent     4m        v1.8.3
 
 ## <a name="run-linux-container"></a>Linux コンテナーを実行する
 
-`virtual-kubelet-linux.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 `kubernetes.io/hostname` の値を Linux Virtual Kubelet ノードの名前に置き換えます。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と [toleration][toleration] が使用されている点に気を付けてください。
+`virtual-kubelet-linux.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と [toleration][toleration] が使用されている点に気を付けてください。
 
 ```yaml
 apiVersion: apps/v1
@@ -138,7 +138,9 @@ spec:
         ports:
         - containerPort: 80
       nodeSelector:
-        kubernetes.io/hostname: virtual-kubelet-virtual-kubelet-linux
+        beta.kubernetes.io/os: linux
+        kubernetes.io/role: agent
+        type: virtual-kubelet
       tolerations:
       - key: virtual-kubelet.io/provider
         operator: Equal
@@ -163,7 +165,7 @@ aci-helloworld-2559879000-8vmjw     1/1       Running   0          39s       52.
 
 ## <a name="run-windows-container"></a>Windows コンテナーを実行する
 
-`virtual-kubelet-windows.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 `kubernetes.io/hostname` の値を Windows Virtual Kubelet ノードの名前に置き換えます。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と [toleration][toleration] が使用されている点に気を付けてください。
+`virtual-kubelet-windows.yaml` という名前のファイルを作成し、そこに以下の YAML をコピーします。 ノード上のコンテナーをスケジュールするために [nodeSelector][node-selector] と [toleration][toleration] が使用されている点に気を付けてください。
 
 ```yaml
 apiVersion: apps/v1
@@ -174,7 +176,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: aci-helloworld
+      app: nanoserver-iis
   template:
     metadata:
       labels:
@@ -186,7 +188,9 @@ spec:
         ports:
         - containerPort: 80
       nodeSelector:
-        kubernetes.io/hostname: virtual-kubelet-virtual-kubelet-win
+        beta.kubernetes.io/os: windows
+        kubernetes.io/role: agent
+        type: virtual-kubelet
       tolerations:
       - key: virtual-kubelet.io/provider
         operator: Equal

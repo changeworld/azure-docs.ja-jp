@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 8fbc84b4016659b6d0d6ce9ec47c05a0b241c3d9
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 5b58f4b71d8d9f3ca91d8cefc6215073fd836765
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48855376"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093668"
 ---
 # <a name="enterprise-integration-architecture-with-queues-and-events"></a>キューとイベントによるエンタープライズ統合アーキテクチャ
 
@@ -26,7 +26,7 @@ ms.locfileid: "48855376"
 
 ## <a name="architecture-components"></a>アーキテクチャ コンポーネント
 
-このアーキテクチャは、[アーキテクチャ リファレンスのシンプルなエンタープライズ統合](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md)に関する記事で説明されているアーキテクチャをベースにしています。 このアーキテクチャの[推奨事項](../logic-apps/logic-apps-architectures-simple-enterprise-integration.md#recommendations)もこの記事に当てはまりますが、ここでは、簡潔にするために、「[推奨事項](#recommendations)」セクションの推奨事項を省略しています。 このエンタープライズ統合アーキテクチャには、次のコンポーネントが含まれます。
+このアーキテクチャは、[アーキテクチャ リファレンスのシンプルなエンタープライズ統合](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration)に関する記事で説明されているアーキテクチャをベースにしています。 このアーキテクチャの[推奨事項](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration#recommendations)もこの記事に当てはまりますが、ここでは、簡潔にするために、「[推奨事項](#recommendations)」セクションの推奨事項を省略しています。 このエンタープライズ統合アーキテクチャには、次のコンポーネントが含まれます。
 
 - **リソース グループ**: [リソース グループ](../azure-resource-manager/resource-group-overview.md)は、Azure リソースの論理コンテナーです。
 
@@ -143,4 +143,4 @@ Event Grid サービスは、検証コードを使ってイベント配信をセ
 
 ## <a name="next-steps"></a>次の手順
 
-* [単純なエンタープライズ統合](logic-apps-architectures-simple-enterprise-integration.md)について学習します
+* [単純なエンタープライズ統合](/azure/architecture/reference-architectures/enterprise-integration/simple-enterprise-integration)について学習します

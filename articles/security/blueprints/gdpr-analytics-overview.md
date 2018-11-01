@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: b4f40dfced7060dd01df7410d07ac5b7cfdf3176
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: f744a1126e12766980727e31d5c50ce4aa17934c
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580703"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408780"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-gdpr"></a>Azure のセキュリティとコンプライアンスのブループリント: GDPR のための分析
 
@@ -43,7 +43,7 @@ Azure では、多様なレポート サービスおよび分析サービスを�
 
 Azure Portal からお客様が構成する Azure Storage 上にソリューション全体がビルドされます。 Azure Storage は Storage Service Encryption を使用してすべてのデータを暗号化し、保存データの機密性を保持します。 geo 冗長ストレージ (GRS) は、数百マイルは離れた別の場所にセカンダリ コピーが格納されることで、お客様のプライマリ データ センターでの有害事象によってデータを損失することがないようにします。
 
-セキュリティ強化のために、このアーキテクチャでは、Azure Active Directory と Azure Key Vault を使ってリソースを管理します。 システムの正常性は、Operations Management Suite (OMS) と Azure Monitor によって監視されます。 お客様が両方の監視サービスを構成してログをキャプチャし、簡単にナビゲートできる単一のダッシュボードにシステムの正常性を表示できます。
+セキュリティ強化のために、このアーキテクチャでは、Azure Active Directory と Azure Key Vault を使ってリソースを管理します。 システムの正常性は、Log Analytics と Azure Monitor によって監視されます。 お客様が両方の監視サービスを構成してログをキャプチャし、簡単にナビゲートできる単一のダッシュボードにシステムの正常性を表示できます。
 
 Azure SQL Database は一般的に、SQL Server Management Studio (SSMS) 経由で管理されます。SSMS は、セキュアな VPN または ExpressRoute 接続経由で Azure SQL Database にアクセスするように構成されたローカル コンピューターから実行されます。 **Azure では参照アーキテクチャのリソース グループに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています**。
 
@@ -56,7 +56,7 @@ Azure SQL Database は一般的に、SQL Server Management Studio (SSMS) 経由�
 - Azure Machine Learning
 - Azure Active Directory
 - Azure Key Vault
-- Operations Management Suite (OMS)
+- Log Analytics
 - Azure Monitor
 - Azure Storage
 - Power BI ダッシュボード
@@ -73,7 +73,7 @@ Azure SQL Database は一般的に、SQL Server Management Studio (SSMS) 経由�
 : [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) によって、イベント ベースのアーキテクチャを備えたアプリケーションを簡単にビルドできます。 ユーザーは、サブスクライブする Azure リソースを選択し、イベントの送信先となるイベント ハンドラーまたは webhook エンドポイントを指定します。 お客様はイベント サブスクリプションを作成するときに、webhook URL にクエリ パラメーターを追加することで、webhook エンドポイントをセキュリティで保護できます。 Azure Event Grid は、 HTTPS webhook エンドポイントのみをサポートします。 Azure Event Grid を使用すると、お客様はイベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な管理操作を実行する各ユーザーに付与するアクセス レベルを制御できます。 Event Grid は、Azure のロール ベースのアクセス制御 (RBAC) を利用します。
 
 **Azure Functions**
-: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) は、インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できるサーバーレス コンピューティング サービスです。 Azure Functions を使用すると、各種のイベントに応じてスクリプトまたはコードの一部を実行できます。
+: [Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) は、ユーザーがインフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できるサーバーレス コンピューティング サービスです。 Azure Functions を使用すると、各種のイベントに応じてスクリプトまたはコードの一部を実行できます。
 
 **Azure Machine Learning**
 : [Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/preview/) は、コンピューターで既存のデータを使って、将来の動き、結果、傾向を予測できるデータ サイエンスの手法の 1 つです。
@@ -89,7 +89,7 @@ Azure SQL Database は一般的に、SQL Server Management Studio (SSMS) 経由�
 
 各 NSG では、ソリューションが安全かつ適切に機能できるように、固有のポートとプロトコルが開かれます。 さらに、各 NSG で次の構成が有効になります。
   - [診断ログとイベント](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)が有効化され、ストレージ アカウントに格納される
-  - OMS Log Analytics が [NSG の診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)に接続される
+  - Log Analytics が [NSG の診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)に接続される
 
 **サブネット**: 各サブネットは、対応する NSG に関連付けられています。
 
@@ -138,12 +138,12 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 
 ### <a name="logging-and-auditing"></a>ログ記録と監査
 
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 OMS [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
+[Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
 - **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) は、サブスクリプション内のリソースに対して実行された操作に関する分析情報を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、および状態の判断に役立ちます。
 - **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログと、Azure Blob Storage、テーブル、キューのログが含まれます。
 - **ログのアーカイブ**: すべての診断ログは、暗号化された集中型の Azure ストレージ アカウントに書き込まれ、定義済みのリテンション期間である 2 日間にわたってアーカイブされるように構成されます。 これらのログは、処理、格納、およびダッシュボードのレポート化を行うために、Azure Log Analytics に接続されます。
 
-さらに、このアーキテクチャの一部として、次の OMS ソリューションが含まれます。
+さらに、このアーキテクチャの一部として、次の監視ソリューションが含まれます。
 -   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): この Active Directory 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
 -   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): このマルウェア対策ソリューションは、マルウェア、脅威、および保護の状態に関する報告を行います。
 -   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation ソリューションは、Runbook の格納、実行、および管理を行います。

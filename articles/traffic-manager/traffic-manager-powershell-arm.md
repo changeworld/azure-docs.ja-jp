@@ -4,8 +4,6 @@ description: Azure Resource Manager での Traffic Manager に対する Powershe
 services: traffic-manager
 documentationcenter: na
 author: kumudd
-manager: timlt
-ms.assetid: bc247448-1d2e-4104-ac03-42b59ebde065
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -13,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 951e845e23a1ed0cbdc83fc24a97a545f00c52ad
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 8dcd89415bdd48b2d8d5c8e1e699159e9d1129e5
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526643"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139477"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell を使用した Traffic Manager の管理
 
@@ -36,7 +34,7 @@ Azure Traffic Manager は、Traffic Manager プロファイルと呼ばれる設
 
 以下の手順では、Microsoft Azure PowerShell を使用します。 次の記事では、Azure PowerShell をインストールして構成する方法について説明します。
 
-* [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
+* [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)
 
 この記事の例では、既存のリソース グループがあることを前提としています。 リソース グループを作成するには、次のコマンドを使用します。
 
@@ -57,7 +55,7 @@ $profile = New-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName M
 
 次の表で、パラメーターについて説明します。
 
-| パラメーター | [説明] |
+| パラメーター | 説明 |
 | --- | --- |
 | Name |Traffic Manager プロファイル リソースのリソース名。 同じリソース グループ内のプロファイルには、一意の名前が必要です。 この名前は、DNS クエリに使用される DNS 名とは別のものです。 |
 | ResourceGroupName |プロファイル リソースを含むリソース グループの名前。 |

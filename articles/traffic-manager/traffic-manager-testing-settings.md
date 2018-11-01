@@ -4,9 +4,6 @@ description: この記事では、Traffic Manager の設定を検証する方法
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: 2180b640-596e-4fb2-be59-23a38d606d12
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: aadff1806a7cb22347283143563467366e857569
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ce6467f2cdb47dd7cc61897831019a34e174478f
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110720"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140453"
 ---
 # <a name="verify-traffic-manager-settings"></a>Traffic Manager の設定の検証
 
@@ -70,7 +67,7 @@ DNS 名がプロファイル内のエンドポイントの IP アドレスに解
 
 また、無料の Web ベースの DNS 検索と検出サービスも利用できます。 これらのツールの中には、世界中のさまざまな場所から DNS 名前解決を確認できるものもあります。 たとえば、"DNS lookup" の検索などを実行できます。 Gomez や Keynote のようなサード パーティのサービスを使用して、トラフィックがプロファイルに基づいて予期した通りに振り分けられることを確認できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)
 * [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)

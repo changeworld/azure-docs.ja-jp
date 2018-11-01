@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 1cf5bbdad555c50c418851904f36a578522843b2
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164894"
+---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>クラウド アプライアンス上にパブリック エンドポイントを作成するには
 
 1. Azure ポータルにサインインします。

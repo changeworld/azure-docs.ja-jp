@@ -5,14 +5,14 @@ services: digital-twins
 author: dsk-2015
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 10/15/2018
+ms.date: 10/26/2018
 ms.author: dkshir
-ms.openlocfilehash: 1e5cb18b4e526cd0a0607f5bc93788fcf07430e1
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: cf45cb8de0e40dfe5f5772dcb1a0be2aa7585fd6
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364237"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50156682"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins"></a>チュートリアル: Azure Digital Twins を使用して建物をプロビジョニングし、作業環境を監視する
 
@@ -161,7 +161,7 @@ Visual Studio Code で、**_occupancy-quickstart_** サンプル プロジェク
             }
         ```
         
-        変更後の UDF では、部屋が使用可能で、二酸化炭素と温度が許容限度内にある状態が検索されます。 この条件が満たされると、`parentSpace.Notify(JSON.stringigy(alert));` ステートメントによって通知が生成されます。 条件が満たされているかどうかに関係なく、監視されている空間の値が対応するメッセージと共に設定されます。
+        変更後の UDF では、部屋が使用可能で、二酸化炭素と温度が許容限度内にある状態が検索されます。 この条件が満たされると、`parentSpace.Notify(JSON.stringify(alert));` ステートメントによって通知が生成されます。 条件が満たされているかどうかに関係なく、監視されている空間の値が対応するメッセージと共に設定されます。
     
     1. ファイルを保存します。 
     

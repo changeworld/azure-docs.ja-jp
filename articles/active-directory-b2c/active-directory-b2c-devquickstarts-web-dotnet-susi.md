@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/17/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 838717aa8f426ea54f4736453aac8c6fcf9a0099
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 1db805efe7eaec77fcafeb169b3d99098b57f582
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344499"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155765"
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Azure Active Directory B2C のサインアップ、サインイン、プロファイル編集、パスワード リセットを使用する ASP.NET Web アプリケーションの構築
 
@@ -195,7 +195,7 @@ public partial class Startup
                     NameClaimType = "name"
                 },
 
-                // Specify the scope by appending all of the scopes requested into one string (seperated by a blank space)
+                // Specify the scope by appending all of the scopes requested into one string (separated by a blank space)
                 Scope = $"openid profile offline_access {ReadTasksScope} {WriteTasksScope}"
             }
         );

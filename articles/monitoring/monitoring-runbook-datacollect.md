@@ -1,6 +1,6 @@
 ---
 title: Azure Automation で Runbook を使用して Log Analytics データを収集する | Microsoft Docs
-description: Log Analytics による分析用のデータを OMS リポジトリに収集するための Runbook を Azure Automation で作成する詳細な手順について説明します。
+description: Log Analytics による分析用のデータをリポジトリに収集するための Runbook を Azure Automation で作成する詳細な手順について説明します。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: d3e8e876a6c01123d65c1e8df13328bdd5fad71f
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f1a106a4f99c09134b8784e98ca547db51ce0eae
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347892"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409511"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Azure Automation の Runbook を使用して Log Analytics でデータを収集する
 エージェントの[データ ソース](../log-analytics/log-analytics-data-sources.md)や [Azure から収集されたデータ](../log-analytics/log-analytics-azure-storage.md)など、Log Analytics ではさまざまなソースから大量のデータを収集できます。  しかし、これらの標準的なソースではアクセスできないデータの収集が必要なシナリオがあります。  このような場合は、[HTTP データ コレクター API](../log-analytics/log-analytics-data-collector-api.md) を使って、REST API クライアントから Log Analytics にデータを書き込むことができます。  このデータ収集を実行する一般的な方法は、Azure Automation で Runbook を使うものです。   
@@ -56,7 +56,7 @@ ms.locfileid: "37347892"
 
 
 ## <a name="2-create-automation-variables"></a>2.Automation 変数を作成する
-[Automation 変数](..\automation\automation-variables.md)は、Automation アカウントのすべての Runbook で使うことができる値を保持します。  実際の Runbook を編集することなくこれらの値を変更できるので、Runbook の柔軟性が高くなります。 HTTP データ コレクター API からのすべての要求では、OMS ワークスペースの ID とキーが必要であり、この情報を格納するには変数資産が最適です。  
+[Automation 変数](..\automation\automation-variables.md)は、Automation アカウントのすべての Runbook で使うことができる値を保持します。  実際の Runbook を編集することなくこれらの値を変更できるので、Runbook の柔軟性が高くなります。 HTTP データ コレクター API からのすべての要求では、Log Analytics ワークスペースの ID とキーが必要であり、この情報を格納するには変数資産が最適です。  
 
 ![variables](media/monitoring-runbook-datacollect/variables.png)
 

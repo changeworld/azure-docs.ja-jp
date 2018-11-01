@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: ca9823a76064e504ee04bf5896f1362b5187bc34
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 8d573b5a0dafaab5eea98f05163ff99e7ccd3760
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042038"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409086"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Linux 仮想マシン用の Azure CLI サンプル
 
@@ -49,7 +49,7 @@ ms.locfileid: "48042038"
 |**セキュリティ保護された仮想マシン**||
 | [VM とデータ ディスクを暗号化する](./../scripts/virtual-machines-linux-cli-sample-encrypt-vm.md?toc=%2fcli%2fazure%2ftoc.json) | Azure Key Vault、暗号化キー、およびサービス プリンシパルを作成し、VM を暗号化します。 |
 |**仮想マシンの監視**||
-| [Operations Management Suite による VM の監視](./../scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fcli%2fazure%2ftoc.json) | 仮想マシンを作成し、Operations Management Suite エージェントをインストールし、OMS ワークスペースに VM を登録します。  |
+| [Azure Log Analytics を使用して VM を監視する](./../scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fcli%2fazure%2ftoc.json) | 仮想マシンを作成し、Log Analytics エージェントをインストールして、VM を Log Analytics ワークスペースに登録します。  |
 |**仮想マシンのトラブルシューティング**||
 | [VM オペレーティング システム ディスクのトラブルシューティング](./../scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fcli%2fazure%2ftoc.json) | 1 つ目の VM からオペレーティング システム ディスクを 2 つ目の VM のデータ ディスクとしてマウントします。 |
 | | |

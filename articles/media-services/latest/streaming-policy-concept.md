@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 118660e8947663328554ac0116b5519267197336
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: c5f441fef95989e5c82586d96fc6c10e00a9627c
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984300"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085497"
 ---
 # <a name="streaming-policies"></a>ストリーミング ポリシー
 
@@ -29,17 +29,17 @@ Azure Media Services v3 では、ストリーミング ポリシーを使用し�
 
 次の表は、StreamingPolicy のプロパティとそれらの定義を示しています。
 
-|Name|type|説明|
-|---|---|---|
-|id|string|リソースの完全修飾リソース ID。|
-|name|string|リソースの名前。|
-|properties.commonEncryptionCbcs|CommonEncryptionCbcs|CommonEncryptionCbcs の構成|
-|properties.commonEncryptionCenc|CommonEncryptionCenc|CommonEncryptionCenc の構成|
-|properties.created |string|ストリーミング ポリシーの作成時刻|
-|properties.defaultContentKeyPolicyName |string|現在のストリーミング ポリシーによって使用される既定の ContentKey|
-|properties.envelopeEncryption  |EnvelopeEncryption|EnvelopeEncryption の構成|
-|properties.noEncryption|NoEncryption|NoEncryption の構成|
-|type|string|リソースの種類。|
+|Name|説明|
+|---|---|
+|id|リソースの完全修飾リソース ID。|
+|name|リソースの名前。|
+|properties.commonEncryptionCbcs|CommonEncryptionCbcs の構成|
+|properties.commonEncryptionCenc|CommonEncryptionCenc の構成|
+|properties.created |ストリーミング ポリシーの作成時刻|
+|properties.defaultContentKeyPolicyName |現在のストリーミング ポリシーによって使用される既定の ContentKey|
+|properties.envelopeEncryption  |EnvelopeEncryption の構成|
+|properties.noEncryption|NoEncryption の構成|
+|type|リソースの種類。|
 
 完全な定義については、「[Streaming Policies](https://docs.microsoft.com/rest/api/media/streamingpolicies)」(ストリーミング ポリシー) を参照してください。
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9bb7adaeec89979ff86920b4bfd74c6399bda298
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 9ac8d876e9c79e5aadfcf834e18e94f6ac8b3a30
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043632"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408474"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -46,7 +46,7 @@ DNS 分析ソリューションは、Windows DNS の分析ログと監査ログ�
 | --- | --- | --- |
 | [Windows エージェント](log-analytics-windows-agent.md) | [はい] | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
 | [Linux エージェント](log-analytics-linux-agents.md) | いいえ  | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
-| [System Center Operations Manager 管理グループ](log-analytics-om-agents.md) | [はい] | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Operations Management Suite への直接接続は必要ありません。 データは管理グループから Operations Management Suite レポジトリに転送されます。 |
+| [System Center Operations Manager 管理グループ](log-analytics-om-agents.md) | [はい] | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
 | [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ  | ソリューションでは、Azure Storage は使用されません。 |
 
 ### <a name="data-collection-details"></a>データ収集の詳細
@@ -58,7 +58,7 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 次の情報を使用して、ソリューションを構成します。
 
 - 監視対象の各 DNS サーバーに [Windows](log-analytics-windows-agent.md) エージェントまたは [Operations Manager](log-analytics-om-agents.md) エージェントが必要です。
-- [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace) から、DNS 分析ソリューションを Operations Management Suite ワークスペースに追加できます。 [ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページの手順も使用できます。
+- [Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace) から、DNS Analytics ソリューションを Log Analytics ワークスペースに追加できます。 [ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページの手順も使用できます。
 
 さらに構成を行わなくても、ソリューションはデータの収集を開始します。 ただし、次の構成を使用してデータ収集をカスタマイズできます。
 
@@ -76,11 +76,11 @@ DNS 分析ソリューションでは、Log Analytics エージェントがイ�
 
 ## <a name="management-packs"></a>管理パック
 
-Microsoft Monitoring Agent を使用して Operations Management Suite ワークスペースに接続すると、次の管理パックがインストールされます。
+Microsoft Monitoring Agent を使用して Log Analytics ワークスペースに接続すると、次の管理パックがインストールされます。
 
 - Microsoft DNS Data Collector Intelligence Pack (Microsft.IntelligencePacks.Dns)
 
-Operations Manager 管理グループが Operations Management Suite ワークスペースに接続されている場合は、このソリューションを追加したときに次の管理パックが Operations Manager にインストールされます。 これらの管理パックの構成や保守は必要ありません。
+Operations Manager 管理グループが Log Analytics ワークスペースに接続されている場合は、このソリューションを追加したときに次の管理パックが Operations Manager にインストールされます。 これらの管理パックの構成や保守は必要ありません。
 
 - Microsoft DNS Data Collector Intelligence Pack (Microsft.IntelligencePacks.Dns)
 - Microsoft System Center Advisor DNS Analytics Configuration (Microsoft.IntelligencePack.Dns.Configuration)
@@ -91,7 +91,7 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 
 このセクションでは、すべてのダッシュボード機能とそれらの使用方法について説明します。
 
-ソリューションをワークスペースに追加すると、Operations Management Suite の概要ページのソリューション タイルに DNS インフラストラクチャの簡単な概要が表示されます。 この概要には、データを収集した DNS サーバーの数が示されています。 また、過去 24 時間以内の、悪意のあるドメインを解決しようとしているクライアントからの要求の数も示されています。 タイルをクリックすると、ソリューション ダッシュボードが開きます。
+ソリューションをワークスペースに追加すると、Azure portal の Log Analytics の概要ページに DNS インフラストラクチャの簡単な概要への **[ソリューションの表示]** リンクが示されます。 この概要には、データを収集した DNS サーバーの数が示されています。 また、過去 24 時間以内の、悪意のあるドメインを解決しようとしているクライアントからの要求の数も示されています。 タイルをクリックすると、ソリューション ダッシュボードが開きます。
 
 ![[DNS 分析] タイル](./media/log-analytics-dns/dns-tile.png)
 
@@ -185,7 +185,7 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 
 フィードバックを送信する方法は 2 つあります。
 
-- **UserVoice**。 DNS 分析の機能についてアイデアを投稿できます。 [Operations Management Suite UserVoice ページ](https://aka.ms/dnsanalyticsuservoice)にアクセスしてください。
+- **UserVoice**。 DNS 分析の機能についてアイデアを投稿できます。 [Log Analytics に関する UserVoice ページ](https://aka.ms/dnsanalyticsuservoice)をご覧ください。
 - **コーホートへの参加**。 Microsoft が実施しているコーホートに参加して、DNS 分析の機能向上にご協力ください。コーホートに参加すると、新機能にいち早く触れることができます。 コーホートへの参加に関心がある場合は、[こちらの簡単なアンケート](https://aka.ms/dnsanalyticssurvey)にご記入ください。
 
 ## <a name="next-steps"></a>次の手順

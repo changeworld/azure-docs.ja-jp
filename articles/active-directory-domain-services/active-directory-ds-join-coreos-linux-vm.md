@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: CoreOS Linux VM のマネージ�
 description: CoreOS Linux 仮想マシンを Azure AD Domain Services に参加させる
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 5db65f30-bf69-4ea3-9ea5-add1db83fdb8
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: 1574a6a4cf727198b17f5c62488d12be12d928f4
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 0552085eb5ee5e5b3d1379482e9463a7ae802388
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502034"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158450"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>CoreOS Linux 仮想マシンをマネージド ドメインに参加させる
 この記事では、Azure 内の CoreOS Linux 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
@@ -33,13 +33,12 @@ ms.locfileid: "39502034"
 2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ** 。
 3. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](active-directory-ds-getting-started.md)に記載されているすべてのタスクを実行してください。
 4. マネージド ドメインの IP アドレスを、必ず仮想ネットワークの DNS サーバーとして構成します。 詳しくは、[Azure 仮想ネットワークの DNS 設定を更新する方法](active-directory-ds-getting-started-dns.md)に関するページをご覧ください。
-5. 
-  [Azure AD Domain Services のマネージド ドメインとのパスワードの同期](active-directory-ds-getting-started-password-sync.md)に必要な手順をすべて実行します。
+5. [Azure AD Domain Services のマネージド ドメインとのパスワードの同期](active-directory-ds-getting-started-password-sync.md)に必要な手順をすべて実行します。
 
 
 ## <a name="provision-a-coreos-linux-virtual-machine"></a>CoreOS Linux 仮想マシンをプロビジョニングする
 次のいずれかの方法を使用して、Azure で CoreOS 仮想マシンをプロビジョニングします。
-* [Azure ポータル](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -113,8 +112,7 @@ sudo adcli join -D CONTOSO100.COM -U bob@CONTOSO100.COM -K /etc/krb5.keytab -H c
 
 
 > [!NOTE]
-> 
->   **トラブルシューティング:***adcli* でマネージド ドメインが見つからない場合:
+> **トラブルシューティング:***adcli* でマネージド ドメインが見つからない場合:
   * ドメインに仮想マシンからアクセスできることを確認します (ping の試行)。
   * 仮想マシンが、マネージド ドメインが利用可能な同じ仮想ネットワークにデプロイされていることを確認します。
   * マネージド ドメインのドメイン コントローラーを指すように、仮想ネットワークの DNS サーバー設定を更新したかどうかを確認します。
@@ -150,6 +148,5 @@ SSSD サービスを起動します。 SSH ターミナルで、次のコマン�
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
-* 
-  [Azure AD Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Azure AD Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

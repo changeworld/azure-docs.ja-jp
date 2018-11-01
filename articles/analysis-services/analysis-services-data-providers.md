@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b3ee62ec6b8155841121eed6c4ab9c12b08f0e9b
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: f0c852b0b3de4edcf894d80ae397eae6c8980d49
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165220"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240411"
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
 
@@ -59,7 +59,7 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 
 ### <a name="amo"></a>AMO  
 
- AMO は、サーバーの管理とデータの定義に使用されるマネージド クライアント ライブラリです。 ツールおよびクライアント アプリケーションによってインストールされ、使用されます。 たとえば、SQL Server Management Studio (SSMS) は、AMO を使用して Analysis Services に接続します。 AMO を使用した接続は、通常は最小で、`“data source=\<servername>”` で構成されています。 接続の確立後は、API を使用して、データベース コレクションおよび主要なオブジェクトを操作します。 SSDT と SSMS のどちらも、AMO を使用して Analysis Services インスタンスに接続します。  
+ AMO は、サーバーの管理とデータの定義に使用されるマネージド クライアント ライブラリです。 ツールおよびクライアント アプリケーションによってインストールされ、使用されます。 たとえば、SQL Server Management Studio (SSMS) は、AMO を使用して Analysis Services に接続します。 AMO を使用した接続は、通常は最小で、`"data source=\<servername>"` で構成されています。 接続の確立後は、API を使用して、データベース コレクションおよび主要なオブジェクトを操作します。 SSDT と SSMS のどちらも、AMO を使用して Analysis Services インスタンスに接続します。  
 
   
 ### <a name="adomd"></a>ADOMD

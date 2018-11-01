@@ -1,4 +1,16 @@
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 52e1a7bf3e8f8770e4ba4f931c4d7427a7362f2f
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226889"
+---
 Microsoft Azure クラウド サービスに関する問題を診断するためには、仮想マシン上で問題の発生に伴って生成されるクラウド サービスのログ ファイルを収集する必要があります。 AzureLogCollector 拡張機能をオンデマンドで使用し、クラウド サービスの VM (Web ロールと worker ロールの両方) からログを一度に収集して、Azure ストレージ アカウントにその収集したファイルを転送することができます。このとき、リモートから VM にログオンする必要は一切ありません。
 
 > [!NOTE]
@@ -294,7 +306,7 @@ param (
 
 $publicConfig = New-Object PSObject
 
-if ($Instances -ne $null -and $Instances.Count -gt 0)  #Instances should be seperated by ,
+if ($Instances -ne $null -and $Instances.Count -gt 0)  #Instances should be separated by ,
 {
   $instanceText = $Instances[0]
   for ($i = 1;$i -lt $Instances.Count;$i++)
@@ -437,7 +449,7 @@ if ($AdditionDataLocationList -ne $null )
 #
 $publicConfigJSON = $publicConfig | ConvertTo-Json
 
-Write-Output "PublicConfiguration is: \r\n$publicConfigJSON"
+Write-Output "PublicConfigurtion is: \r\n$publicConfigJSON"
 
 #
 #we just provide a empty privateConfig object

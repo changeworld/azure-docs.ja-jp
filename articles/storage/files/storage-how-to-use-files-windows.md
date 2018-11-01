@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 3e63a4c05fde570e598ba05c65fb99cec0427711
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f1dd07756ca484171a3d662df35493efbe5a5ee7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47226419"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415621"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Windows で Azure ファイル共有を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Azure ファイル共有は、Windows と Windows Server でシームレスに使うことができます。 この記事では、Windows と Windows Server で Azure ファイル共有を使う際の注意点について取り上げます。
@@ -49,7 +49,7 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 * **ポート 445 が開いていること**: SMB プロトコルでは、TCP ポート 445 が開放されている必要があります。ポート 445 がブロックされていると接続に失敗します。 ポート 445 がファイアウォールでブロックされているかどうかは、`Test-NetConnection` コマンドレットで確認できます。 `your-storage-account-name` は、実際のストレージ アカウントの該当する名前に置き換えてください。
 
     ```PowerShell
-    Test-NetConnection -ComputerName <your-storage-account-name>.core.windows.net -Port 445
+    Test-NetConnection -ComputerName <your-storage-account-name>.file.core.windows.net -Port 445
     
     ```
 

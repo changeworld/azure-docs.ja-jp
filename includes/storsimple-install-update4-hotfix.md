@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 6b37f4bac4bfcc6001171ed27899b71cdac7a312
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164951"
+---
 <!--author=alkohli last changed: 01/23/18-->
 
 #### <a name="to-download-hotfixes"></a>修正プログラムをダウンロードするには

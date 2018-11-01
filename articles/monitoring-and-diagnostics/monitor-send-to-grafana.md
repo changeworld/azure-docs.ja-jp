@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: b4fbd1248f91e0766cca66d1c51033a8b338c324
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 75b1edf80f1dad5f0db48c11329effe080760820
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957379"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413147"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Azure Monitor データ ソース プラグイン](https://grafana.com/plugins/grafana-azure-monitor-datasource)を使用して [Grafana](https://grafana.com/) から Azure サービスおよびアプリケーションを監視することもできるようになりました。 このプラグインは、Application Insights SDK によって収集されたアプリケーション パフォーマンス データや、Azure Monitor によって提供されるインフラストラクチャ データを収集します。 その後、このデータを Grafana ダッシュボードで表示できます。
@@ -37,13 +37,13 @@ Azure Marketplace から Grafana サーバーを設定し、Azure Monitor およ
 ## <a name="log-in-to-grafana"></a>Grafana にログインする
 1. デプロイが完了したら、**[Go to Resource Group] (リソース グループに移動する)** を選択します。 新しく作成されたリソースの一覧が表示されます。
 
-    ![Grafana リソース グループ オブジェクト](.\media\monitor-how-to-grafana\grafana1.png)
+    ![Grafana リソース グループ オブジェクト](media/monitor-send-to-grafana/grafana1.png)
 
     ネットワーク セキュリティ グループ (この場合は *grafana-nsg*) を選択すると、Grafana サーバーへのアクセスのためにポート 3000 が使用されることを確認できます。
 
 2. リソースの一覧に戻り、**[パブリック IP アドレス]** を選択します。 この画面で見つかった値を使用して、ブラウザーに「*http://<IP address>:3000*」または「*<DNSName>:3000*」と入力します。 今構築した Grafana サーバーのログイン ページが表示されます。
 
-    ![Grafana ログイン画面](.\media\monitor-how-to-grafana\grafana2.png)
+    ![Grafana ログイン画面](media/monitor-send-to-grafana/grafana2.png)
 
 3. *admin* のユーザー名と、前に作成した Grafana サーバー管理者のパスワードを使用してログインします。
 
@@ -51,7 +51,7 @@ Azure Marketplace から Grafana サーバーを設定し、Azure Monitor およ
 
 正常にログインすると、Azure Monitor データ ソース プラグインが既に含まれていることが確認されます。
 
-![Grafana での Azure Monitor プラグインの表示](.\media\monitor-how-to-grafana\grafana3.png)
+![Grafana での Azure Monitor プラグインの表示](media/monitor-send-to-grafana/grafana3.png)
 
 1. Azure Monitor および Application Insights を構成するには、**[データ ソースを追加する]** を選択します。
 
@@ -70,7 +70,7 @@ Grafana は Azure Active Directory サービス プリンシパルを使用し�
 
 4. これらのすべての情報を入力した後、**[保存]** を選択すると、Grafana が API をテストします。 次のようなメッセージが表示されます。  
 
-    ![Grafana での Azure Monitor プラグインの表示](.\media\monitor-how-to-grafana\grafana4-1.png)
+    ![Grafana での Azure Monitor プラグインの表示](media/monitor-send-to-grafana/grafana4-1.png)
 
 > [!NOTE]
 > プラグインを構成するときに、どの Azure クラウド (パブリック、Azure 米国政府機関、Azure Germany、または Azure China) に対してプラグインを構成するかを指定できます。
@@ -83,7 +83,7 @@ Grafana は Azure Active Directory サービス プリンシパルを使用し�
 
 2. 新しいダッシュボードで、**[Graph] (グラフ)** を選択します。 他のチャート作成オプションを試すこともできますが、この記事では *[Graph] (グラフ)* を例として使用します。
 
-    ![Grafana の新しいダッシュボード](.\media\monitor-how-to-grafana\grafana5.png)
+    ![Grafana の新しいダッシュボード](media/monitor-send-to-grafana/grafana5.png)
 
 3. ダッシュボードに空白のグラフが表示されます。
 
@@ -93,14 +93,14 @@ Grafana は Azure Active Directory サービス プリンシパルを使用し�
 
 2 つのグラフを含む単純なダッシュボードを次に示します。 左側のグラフは、2 つの VM の CPU の割合を示します。 右側のグラフは、トランザクション API の種類で分類された Azure Storage アカウント内のトランザクションを示します。
 
-![Grafana の 2 つのグラフの例](.\media\monitor-how-to-grafana\grafana6.png)
+![Grafana の 2 つのグラフの例](media/monitor-send-to-grafana/grafana6.png)
 
 
 ## <a name="optional-create-dashboard-playlists"></a>省略可能: ダッシュボード再生リストを作成する
 
 Grafana の多くの有効な機能の 1 つに、ダッシュボード再生リストがあります。 複数のダッシュボードを作成し、それらを再生リストに追加して、表示するダッシュボードごとに間隔を構成できます。 ダッシュボードのサイクル全体を表示するには、**[再生]** を選択します。 それらを大きな壁のモニタに表示して、グループの "状態ボード" を提供することもできます。
 
-![Grafana の再生リストの例](.\media\monitor-how-to-grafana\grafana7.png)
+![Grafana の再生リストの例](media/monitor-send-to-grafana/grafana7.png)
 
 
 ## <a name="optional-monitor-your-custom-metrics-in-the-same-grafana-server"></a>省略可能: 同じ Grafana サーバーでカスタム メトリックを監視する
@@ -117,7 +117,7 @@ Telegraf、InfluxDB、Prometheus、および Docker の使用方法に関する�
  - [A monitoring solution for Docker hosts, containers, and containerized services (Docker ホスト、コンテナー、およびコンテナー化されたサービスの監視ソリューション)](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 
 Azure Monitor および Application Insights からのメトリックを含む完全な Grafana ダッシュボードのイメージを次に示します。
-![Grafana Example Metrics (Grafana のメトリックの例)](.\media\monitor-how-to-grafana\grafana8.png)
+![Grafana Example Metrics (Grafana のメトリックの例)](media/monitor-send-to-grafana/grafana8.png)
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ

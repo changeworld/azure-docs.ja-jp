@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
-ms.openlocfilehash: d8658740772ed4a11fdfd70a0c925ac1b597dd69
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 7d6845624c838ac0cf49e5963cae1ca0ea15ec15
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452022"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230609"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>Azure Logic Apps を使用して Azure BLOB ストレージ内に BLOB を作成して管理する
 
@@ -28,7 +28,7 @@ ms.locfileid: "47452022"
 >
 > * Azure 仮想ネットワーク内のリソースに接続できる[統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)を作成します。 
 > 
-> * API Management を既に使用している場合は、このシナリオでこのサービスを使用できます。 詳細については、[単純なエンタープライズ統合アーキテクチャ](http://aka.ms/aisarch)を参照してください。
+> * API Management を既に使用している場合は、このシナリオでこのサービスを使用できます。 詳細については、[単純なエンタープライズ統合アーキテクチャ](https://aka.ms/aisarch)を参照してください。
 
 ロジック アプリを初めて使用する場合は、「[Azure Logic Apps とは](../logic-apps/logic-apps-overview.md)」と「[クイックスタート: 初めてのロジック アプリ ワークフローの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)」を参照してください。
 コネクタ固有の技術情報については、<a href="https://docs.microsoft.com/connectors/azureblobconnector/" target="blank">Azure Blob Storage コネクタ リファレンス</a>に関する記事を参照してください。
@@ -124,7 +124,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

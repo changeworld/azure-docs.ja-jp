@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 10/01/2018
-ms.openlocfilehash: 925173f85301d6481ae3b9cf891041239b06bc8f
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.date: 10/29/2018
+ms.openlocfilehash: 3b2ff5bf4413c5d6a681aff66f0f338567f3b6a8
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49113718"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242740"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Azure Machine Learning でモデルを Web サービスとして FPGA 上に配置する
 
@@ -23,8 +23,6 @@ ms.locfileid: "49113718"
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 お持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
-
-- FPGA クォータを要求して承認を受ける必要があります。 アクセスを要求するには、クォータ要求フォームに入力します。 https://aka.ms/aml-real-time-ai
 
 - Azure Machine Learning サービス ワークスペースと、Azure Machine Learning SDK for Python がインストール済み。 これらの前提条件を満たす方法については、[開発環境を構成する方法](how-to-configure-environment.md)に関するドキュメントを参照してください。
  

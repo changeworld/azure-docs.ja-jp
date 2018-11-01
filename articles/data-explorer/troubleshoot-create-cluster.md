@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6009953ece78eefd52fca9f12e3db80a6d2cc3eb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0edf9ebcde2df7e639666f8fe7472baacdeb8640
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953210"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212184"
 ---
 # <a name="troubleshoot-failure-to-create-a-cluster-in-azure-data-explorer"></a>問題解決: Azure データ エクスプローラーでクラスターを作成できない
 
@@ -27,4 +27,4 @@ ms.locfileid: "46953210"
 
     状態が**良好** (緑色のチェック マーク) でない場合は、状態が改善されてから、クラスターの作成をもう一度お試しください。
 
-1. 問題解決にさらに手助けが必要な場合、[Azure portal](https://portal.azure.com) でサポート リクエストを作成してください。
+1. 問題解決にさらに手助けが必要な場合、[Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) でサポート リクエストを作成してください。

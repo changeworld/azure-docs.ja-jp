@@ -5,15 +5,16 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: conceptual
-ms.date: 10/10/2018
+ms.topic: tutorial
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: b8bc34d3786293aeae2c184ce5c44f4622ec57f1
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.custom: MVC
+ms.openlocfilehash: b2b6de09b5c8dd825cd3d61c23be7081fab20e53
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078598"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213272"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>セカンダリのオンプレミスのサイトに対して Hyper-V VM のディザスター リカバリーを設定する
 

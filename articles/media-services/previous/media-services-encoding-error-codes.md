@@ -4,7 +4,7 @@ description: このトピックでは、エンコード タスクの実行中に
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ce4e939f-5aee-41f9-859d-e4429815e9f2
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 7a1733175f796a0d8c0c0d4247b2db2dd47e4674
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bc1a53ba9e3630c7f985ce5c78bc4c874c70b26e
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782671"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230388"
 ---
 # <a name="encoding-error-codes"></a>エラー コードのエンコード
 

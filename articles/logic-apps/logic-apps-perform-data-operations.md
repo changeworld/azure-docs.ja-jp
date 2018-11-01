@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 7e62986569888ebbcd9f17b4eb4cfb2c70411d4a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 93c24f88fcd6a002493933ef71c5c80bd2ff8c10
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39393059"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231646"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Azure Logic Apps でデータの操作を実行する
 
@@ -33,7 +33,7 @@ ms.locfileid: "39393059"
 
 これらのアクションは、配列内のデータを操作するのに役立ちます。
 
-| アクションを表示します。 | 説明 | 
+| Action | 説明 | 
 |--------|-------------| 
 | [**CSV テーブルの作成**](#create-csv-table-action) | 配列からコンマ区切り値 (CSV) テーブルを作成します。 | 
 | [**HTML テーブルの作成**](#create-html-table-action) | 配列から HTML テーブルを作成します。 | 
@@ -46,7 +46,7 @@ ms.locfileid: "39393059"
 
 これらのアクションは、JavaScript Object Notation (JSON) 形式のデータを操作するのに役立ちます。
 
-| アクションを表示します。 | 説明 | 
+| Action | 説明 | 
 |--------|-------------| 
 | [**作成**](#compose-action) | さまざまなデータ型を含むことができる複数の入力からメッセージまたは文字列を作成します。 その後は、同じ入力を繰り返し入力するのではなく、この文字列を 1 つの入力として使用できます。 たとえば、さまざまな入力から 1 つの JSON メッセージを作成できます。 | 
 | [**JSON の解析**](#parse-json-action) | ロジック アプリでプロパティを簡単に使用できるように、JSON コンテンツのプロパティに対するわかりやすいデータ トークンを作成します。 | 
@@ -567,7 +567,7 @@ JavaScript Object Notation (JSON) のコンテンツのプロパティを参照�
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

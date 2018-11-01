@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: マネージド ドメインを�
 description: Azure Active Directory Domain Services マネージド ドメインを管理する
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: d4fdbc75-3e6b-4e20-8494-5dcc3bf2220a
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: c2258b9d26a62fd7c8e50c1ed7b3583c06e1c353
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 031c609ee5dcd04fc461af74b7f49973fbd290c3
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503436"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157621"
 ---
 # <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services のマネージド ドメインを管理する
 この記事では、Azure Active Directory (AD) ドメイン サービスのマネージド ドメインを管理する方法について説明します。
@@ -110,12 +110,10 @@ TechNet の 手順に従って、Windows クライアントの仮想マシンで
 3. ドメインを確認するには、左ウィンドウのドメイン名 ("contoso100.com" など) をクリックします。 'AADDC Computers' と 'AADDC Users' という名前の 2 つのコンテナーがあります。
 
     ![ADAC: ドメインの表示](./media/active-directory-domain-services-admin-guide/adac-domain-view.png)
-4. 
-  **AADDC Users** というコンテナーをクリックすると、マネージド ドメインに属しているすべてのユーザーとグループが表示されます。 ユーザー アカウントと Azure AD テナントからのグループがこのコンテナー内にあります。 この例では、"bob" という名前のユーザーのユーザー アカウントおよび "AAD DC Administrators" という名前のグループがこのコンテナーで利用できます。
+4. **AADDC Users** というコンテナーをクリックすると、マネージド ドメインに属しているすべてのユーザーとグループが表示されます。 ユーザー アカウントと Azure AD テナントからのグループがこのコンテナー内にあります。 この例では、"bob" という名前のユーザーのユーザー アカウントおよび "AAD DC Administrators" という名前のグループがこのコンテナーで利用できます。
 
     ![ADAC: ドメイン ユーザー](./media/active-directory-domain-services-admin-guide/adac-aaddc-users.png)
-5. 
-  **AADDC Computers** という名前のコンテナーをクリックすると、このマネージド ドメインに参加しているコンピューターが表示されます。 ドメインに参加している現在の仮想マシンのエントリが表示されます。 Azure AD Domain Services のマネージド ドメインに参加しているすべてのコンピューターのコンピューター アカウントが、この "AADDC Computers" コンテナーに格納されます。
+5. **AADDC Computers** という名前のコンテナーをクリックすると、このマネージド ドメインに参加しているコンピューターが表示されます。 ドメインに参加している現在の仮想マシンのエントリが表示されます。 Azure AD Domain Services のマネージド ドメインに参加しているすべてのコンピューターのコンピューター アカウントが、この "AADDC Computers" コンテナーに格納されます。
 
     ![ADAC: ドメインに参加しているコンピューター](./media/active-directory-domain-services-admin-guide/adac-aaddc-computers.png)
 
@@ -123,6 +121,5 @@ TechNet の 手順に従って、Windows クライアントの仮想マシンで
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
-* 
-  [Azure AD Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Azure AD Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
 * [リモート サーバー管理ツールのデプロイ](https://technet.microsoft.com/library/hh831501.aspx)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2c5d0dc322a4a56f0de9bd3c1af7efc158131a89
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 16e78784337771d1e31d826f475c92c86fe20411
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954217"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212320"
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
 アプリケーションのインフラストラクチャは通常、仮想マシン、ストレージ アカウント、仮想ネットワーク、Web アプリ、データベース、データベース サーバー、サード パーティのサービスなど、複数のコンポーネントで構成されます。 これらのコンポーネントは別々のエンティティではなく、1 つのエンティティの中で互いに関連付けられ相互依存しています。 これらのコンポーネントを、1 つのグループとしてデプロイ、管理、および監視するのが好ましいです。 Azure Resource Manager を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。 
@@ -65,29 +65,7 @@ Azure Resource Manager には、初めて使う方にとって、あまり馴染
 
 グローバル Azure、Azure ソブリン クラウド、Azure Stack で使用できる Resource Manager テンプレートの作成に関する推奨事項については、「[クラウドの一貫性のための Azure Resource Manager テンプレートを開発する](templates-cloud-consistency.md)」をご覧ください。
 
-## <a name="quickstarts-and-tutorials"></a>クイック スタートとチュートリアル
-
-次のクイック スタートとチュートリアルを使用して、Resource Manager テンプレートの開発方法を学ぶことができます。
-
-- クイック スタート
-
-    |タイトル|説明|
-    |------|-----|
-    |[Azure Portal の使用](./resource-manager-quickstart-create-templates-use-the-portal.md)|ポータルを使用してテンプレートを生成します。また、テンプレートを編集してデプロイするプロセスについて説明しています。|
-    |[Visual Studio Code を使用する](./resource-manager-quickstart-create-templates-use-visual-studio-code.md)|Visual Studio Code を使用してテンプレートを作成および編集します。また、Azure Cloud Shell を使用してテンプレートをデプロイする方法を説明しています。|
-    |[Visual Studio を使用する](./vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)|Visual Studio を使用してテンプレートを作成、編集、デプロイします。|
-
-- チュートリアル
-
-    |タイトル|説明|
-    |------|-----|
-    |[テンプレート リファレンスの利用](./resource-manager-tutorial-create-encrypted-storage-accounts.md)|テンプレートを開発するためにテンプレート リファレンス ドキュメントを利用します。 このチュートリアルでは、ストレージ アカウントのスキーマを確認し、その情報を使用して、暗号化されたストレージ アカウントを作成します。|
-    |[複数のインスタンスの作成](./resource-manager-tutorial-create-multiple-instances.md)|Azure リソースの複数のインスタンスを作成します。 このチュートリアルでは、ストレージ アカウントの複数のインスタンスを作成します。|
-    |[リソースのデプロイ順序の設定](./resource-manager-tutorial-create-templates-with-dependent-resources.md)|リソースの依存関係を定義します。 このチュートリアルでは、仮想ネットワーク、仮想マシン、および依存する Azure リソースを作成します。 依存関係を定義する方法を説明しています。|
-    |[使用条件](./resource-manager-tutorial-use-conditions.md)|いくつかのパラメーター値に基づいてリソースをデプロイします。 このチュートリアルでは、新しいストレージ アカウントを作成するか、パラメーターの値に基づいて既存のストレージ アカウントを使用するためのテンプレートを定義します。|
-    |[キー コンテナーの統合](./resource-manager-tutorial-use-key-vault.md)|Azure Key Vault からシークレット/パスワードを取得します。 このチュートリアルでは、仮想マシンを作成します。  仮想マシンの管理者のパスワードは、キー コンテナーから取得されます。|
-    |[リンク済みテンプレートを作成する](./resource-manager-tutorial-create-linked-templates.md)|テンプレートをモジュール化し、テンプレートから他のテンプレートを呼び出します。 このチュートリアルでは、仮想ネットワーク、仮想マシン、および依存するリソースを作成します。  依存するストレージ アカウントは、リンクされたテンプレートで定義されます。 |
-    |[安全なデプロイ プラクティスの使用](./deployment-manager-tutorial.md)|Azure Deployment Manager を使用します。 |
+[!INCLUDE [arm-tutorials-quickstarts](../../includes/resource-manager-tutorials-quickstarts.md)]
 
 ## <a name="resource-groups"></a>リソース グループ
 リソース グループを定義する際、次のような考慮すべき要素があります。

@@ -1,4 +1,16 @@
-
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: af57721c99fb5f5c855e037d145e4fa5d122b9f5
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50166459"
+---
 <!--author=alkohli last changed: 01/02/17-->
 
 #### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>StorSimple のバックアップ スケジュールを追加または変更するには

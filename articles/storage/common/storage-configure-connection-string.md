@@ -2,18 +2,18 @@
 title: Azure Storage の接続文字列を構成する |Microsoft Docs
 description: Azure Storage アカウントの接続文字列を構成します。 接続文字列には、ストレージ アカウントへのアクセスを実行時にアプリケーションから承認するための必要な情報が格納されます。
 services: storage
-author: craigshoemaker
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: cshoe
+ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 1c6ba727bf9c19b5da0d0d0313377d5d4ad1e2ac
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 75f8e5605b84b21abf92cd77a71793dbceb4a62b
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530468"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139044"
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 

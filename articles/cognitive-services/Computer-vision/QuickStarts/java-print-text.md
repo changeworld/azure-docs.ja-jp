@@ -10,12 +10,12 @@ ms.component: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
-ms.openlocfilehash: 83675a146d6d43ce5bc25b24809924d7be1331dd
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: e7bcb1ef902bfa525a917adead0dd2fe8c44fa83
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49339969"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413827"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-java-in-computer-vision"></a>クイック スタート: Computer Vision の REST API と Java を使用して印刷されたテキストを抽出する (OCR)
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Java&trade; プラットフォーム、Standard Edition Development Kit 7 または 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) (JDK 7 または 8) をインストールしている必要があります。
+- [Java&trade; プラットフォーム、Standard Edition Development Kit 7 または 8](https://aka.ms/azure-jdks) (JDK 7 または 8) をインストールしている必要があります。
 - Computer Vision のサブスクリプション キーが必要です。 「[サブスクリプション キーを取得する](../Vision-API-How-to-Topics/HowToSubscribe.md)」をご覧ください。
 
 ## <a name="create-and-run-the-sample-application"></a>サンプル アプリケーションを作成して実行する

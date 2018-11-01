@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: df88e9025da305701dc7168f663cad2e8f5ac738
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 5b52fd41fc3e37078bbddc721c0c54af2c430b43
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42819469"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419233"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>統合されたコンポーネント間のトランザクションの診断
 
@@ -38,7 +38,7 @@ ms.locfileid: "42819469"
 ## <a name="transaction-diagnostics-experience"></a>トランザクションの診断エクスペリエンス
 このビューには 4 つの重要な部分があります。結果リスト、コンポーネント間のトランザクションのグラフ、この操作に関連するすべてのテレメトリの時系列順の一覧、左側で選択されたテレメトリ項目の詳細ウィンドウです。
 
-![重要な部分](media/app-insights-e2eTxn-diagnostics/4partsCrossComponent.png)
+![重要な部分](media/app-insights-transaction-diagnostics/4partsCrossComponent.png)
 
 ## <a name="cross-component-transaction-chart"></a>コンポーネント間のトランザクションのグラフ
 
@@ -57,19 +57,19 @@ ms.locfileid: "42819469"
 
 このセクションでは、このトランザクションに関連するすべてのテレメトリの時系列順の単純な一覧が表示されます。 トランザクションのグラフに表示されないカスタム イベントとトレースも表示されます。 この一覧をフィルター処理して、特定のコンポーネントまたは呼び出しで生成されたテレメトリのみを表示できます。 この一覧の任意のテレメトリ項目を選択して、対応する[詳細を右側に](#details-of-the-selected-telemetry)表示できます。
 
-![すべてのテレメトリの時系列](media/app-insights-e2eTxn-diagnostics/allTelemetryDrawerOpened.png)
+![すべてのテレメトリの時系列](media/app-insights-transaction-diagnostics/allTelemetryDrawerOpened.png)
 
 ## <a name="details-of-the-selected-telemetry"></a>選択したテレメトリの詳細
 
 この折りたたみ可能なウィンドウには、トランザクション グラフまたは一覧から選択した項目の詳細が表示されます。 [すべて表示] では、収集されたすべての標準属性が一覧表示されます。 カスタム属性は標準セットの下に個別に一覧表示されます。 スタック トレース ウィンドウの下の [...] をクリックして、トレースをコピーするオプションを表示します。 [Open profiler traces]\(Profiler トレースを開く\) または [デバッグ スナップショットを開く] を選択すると、対応する詳細ウィンドウにコード レベルの診断が表示されます。
 
-![例外の詳細](media/app-insights-e2eTxn-diagnostics/exceptiondetail.png)
+![例外の詳細](media/app-insights-transaction-diagnostics/exceptiondetail.png)
 
 ## <a name="search-results"></a>[検索結果]
 
 この折りたたみ可能なウィンドウには、フィルター条件を満たすその他の結果が表示されます。 どの結果をクリックしても、上にある 3 つのセクションでそれぞれの詳細が更新されます。 サンプリングがいずれかのコンポーネントで有効になっている場合でも、すべてのコンポーネントで使用可能な詳細を含む可能性が最も高いサンプルを探そうとしています。 これらは "推奨" サンプルとして表示されます。
 
-![[検索結果]](media/app-insights-e2eTxn-diagnostics/searchResults.png)
+![[検索結果]](media/app-insights-transaction-diagnostics/searchResults.png)
 
 ## <a name="profiler-and-snapshot-debugger"></a>Profiler とスナップショット デバッガー
 
@@ -79,7 +79,7 @@ ms.locfileid: "42819469"
 
 スナップショット デバッガーが機能しない場合は、**snapshothelp@microsoft.com** までお問い合わせください。
 
-![Profiler の統合](media/app-insights-e2eTxn-diagnostics/profilerTraces.png)
+![Profiler の統合](media/app-insights-transaction-diagnostics/profilerTraces.png)
 
 ## <a name="faq"></a>FAQ
 

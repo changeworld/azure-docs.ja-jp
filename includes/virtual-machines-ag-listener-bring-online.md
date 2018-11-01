@@ -1,10 +1,23 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 760bb5b62e9bba9b7a83f99760f7fe5d8c399dfb
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227315"
+---
 1. フェールオーバー クラスター マネージャーで、**[ロール]** を展開し、可用性グループを強調表示します。  
 
 2. **[リソース]** タブで、リスナー名を右クリックし、**[プロパティ]** をクリックします。
 
 3. **[依存関係]** タブをクリックします。複数のリソースが一覧表示される場合は、IP アドレスに (AND ではなく) OR 依存関係があることを確認します。  
 
-4. **[OK]** をクリックします。
+4. Click **OK**.
 
 5. リスナー名を右クリックし、**[オンラインにする]** をクリックします。
 

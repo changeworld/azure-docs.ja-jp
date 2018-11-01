@@ -10,12 +10,12 @@ ms.suite: integration
 tags: connectors
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: ceef6c5f32372bb69f6ce789e755bc540cb12ba1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 917b9abd4a32b7951313c5555f4111dff990078c
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051951"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230953"
 ---
 # <a name="manage-excel-online-data-with-azure-logic-apps"></a>Azure Logic Apps を使用して Excel Online データを管理する
 
@@ -69,7 +69,7 @@ Azure Logic Apps と Excel Online コネクタを使用して、Excel Online for
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

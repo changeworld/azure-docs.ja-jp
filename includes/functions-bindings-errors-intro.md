@@ -1,3 +1,16 @@
+---
+author: ggailey777
+ms.service: azure-functions
+ms.topic: include
+ms.date: 09/04/2018
+ms.author: glenga
+ms.openlocfilehash: 9fb462b83eccde3d2b486d491517973fe6bac4f1
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50133299"
+---
 Azure Functions の[トリガーとバインディング](..\articles\azure-functions\functions-triggers-bindings.md)はさまざまな Azure サービスと通信します。 これらのサービスと統合する際、基になる Azure サービスの API からのエラーが発生する場合があります。 エラーは、REST またはクライアント ライブラリを使用して、関数コードから他のサービスと通信しようとした場合に発生することもあります。 データの損失を防ぎ、関数を適切に動作させるには、いずれのソースからのエラーも処理することが重要です。
 
 次のトリガーには、組み込みの再試行サポートがあります。

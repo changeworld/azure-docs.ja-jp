@@ -5,15 +5,15 @@ services: site-recovery
 author: asgang
 manager: rochakm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 07/06/2018
+ms.topic: conceptual
+ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: 7002e8a63ca0223a38ba099b17955a86034fa057
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2f4721155610da3be3ff0db3608d7c1e163aa344
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295463"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211844"
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Azure 仮想マシンを別の Azure リージョンにレプリケートする
 
@@ -62,7 +62,7 @@ ms.locfileid: "46295463"
 
 Site Recovery によって使用される既定のターゲット設定を変更することができます。
 
-1. "ターゲット サブスクリプション" の横にある **[カスタマイズ]** をクリックして、既定のターゲット サブスクリプションを変更します。 同じ Azure Active Directory (AAD) テナントで使用できるすべてのサブスクリプションの一覧からサブスクリプションを選択します。
+1. [ターゲット サブスクリプション] の横にある **[カスタマイズ]** をクリックして、既定のターゲット サブスクリプションを変更します。 同じ Azure Active Directory (AAD) テナントで使用できるすべてのサブスクリプションの一覧からサブスクリプションを選択します。
 
 2. **[カスタマイズ]** をクリックして、既定の設定を次のように変更します。
     - **ターゲット リソース グループ**で、サブスクリプションのターゲットの場所にあるすべてのリソース グループの一覧から、リソース グループを選択します。

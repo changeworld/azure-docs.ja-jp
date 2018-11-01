@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
-ms.openlocfilehash: d07342bac3f76472a4783c28cac0741906049bb2
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 3d4e91465e2f9986ec1029b304e1c026e39f45b6
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41920931"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231970"
 ---
 # <a name="process-emails-and-attachments-with-azure-logic-apps"></a>Azure Logic Apps を使用したメールと添付ファイルの処理
 
 Azure Logic Apps を使うと、Azure サービスや Microsoft サービスを初めとする各種の SaaS (サービスとしてのソフトウェア) アプリとオンプレミス システムの垣根を越えてワークフローを自動化したりデータを統合したりすることができます。 このチュートリアルでは、受信メールと添付ファイルを処理する[ロジック アプリ](../logic-apps/logic-apps-overview.md)の作成方法を紹介します。 このロジック アプリは、対象のコンテンツを処理して Azure Storage に保存し、その内容の確認依頼通知を送信するものです。 
 
-このチュートリアルで学習する内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習します。
 
 > [!div class="checklist"]
 > * [Azure Storage](../storage/common/storage-introduction.md) と Storage Explorer を設定します (保存済みメールと添付ファイルのチェックに使用)。
@@ -670,7 +670,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

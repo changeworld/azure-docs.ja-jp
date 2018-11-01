@@ -3,7 +3,7 @@ title: Azure Application Insights のユーザー動作分析ツールをトラ�
 description: トラブルシューティング ガイド - Application Insights でのサイトとアプリの利用状況の分析。
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,14 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 07/11/2018
-ms.reviewer: daviste
-ms.author: mbullwin
-ms.openlocfilehash: 725f67af8178c6c851999d18c771ebdd360d6d01
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.reviewer: mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: c1e5b420c4821732aa8cc19328b0955070100926
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38992375"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138506"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Application Insights のユーザー動作分析ツールをトラブルシューティングする
 [Application Insights のユーザー動作分析ツール](app-insights-usage-overview.md): [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)、[じょうご](usage-funnels.md)、[ユーザー フロー](app-insights-usage-flows.md)、[リテンション](app-insights-usage-retention.md)、またはコーホートについて質問がありますか?  いくつかの答えを次に示します。

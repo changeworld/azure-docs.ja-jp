@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: a761e384a356a0cbf5531eee7340ddbbd1526909
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a3f837b41ba6ec7ecadb3e34917a8088e4d1e2d9
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122248"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233516"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Azure Logic Apps から呼び出しできるカスタム API の作成
 
@@ -36,12 +36,12 @@ API は [Azure App Service](../app-service/app-service-web-overview.md) でホ�
 > 
 > * [ASP.NET](../app-service/app-service-web-get-started-dotnet.md)。 
 > * [Java](../app-service/app-service-web-get-started-java.md)
-> * [Node.js](../app-service/app-service-web-get-started-nodejs.md)
+> * [Node.JS](../app-service/app-service-web-get-started-nodejs.md)
 > * [PHP](../app-service/app-service-web-get-started-php.md)
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> ロジック アプリ用の API アプリ サンプルについては、[Azure Logic Apps GitHub リポジトリ](http://github.com/logicappsio)または[ブログ](http://aka.ms/logicappsblog)をご覧ください。
+> ロジック アプリ用の API アプリ サンプルについては、[Azure Logic Apps GitHub リポジトリ](http://github.com/logicappsio)または[ブログ](https://aka.ms/logicappsblog)をご覧ください。
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>カスタム API とカスタム コネクタの違い
 
@@ -230,7 +230,7 @@ Logic Apps、Microsoft Flow、および Microsoft PowerApps のすべてのユ�
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 
-* [Logic Apps ユーザー フィードバック サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Logic Apps の改善にご協力ください。 
+* [Logic Apps ユーザー フィードバック サイト](https://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Logic Apps の改善にご協力ください。 
 
 ## <a name="next-steps"></a>次の手順
 

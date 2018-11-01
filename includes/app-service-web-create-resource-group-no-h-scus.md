@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: msangapu
 ms.custom: include file
-ms.openlocfilehash: 5c1bcdb3ad524040fe4c74c58938305cceee7762
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 458782011623721bb44771d42caa32130e23bbc9
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47396024"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50035202"
 ---
 [!INCLUDE [resource group intro text](resource-group.md)]
 
-Cloud Shell で [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所*米国中南部*に作成します。 **Free** レベルの App Service がサポートされているすべての場所を表示するには、[`az appservice list-locations --sku FREE`](/cli/azure/appservice?view=azure-cli-latest#az_appservice_list_locations) コマンドを実行します。
+Cloud Shell で [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) コマンドを使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを場所*米国中南部*に作成します。 **Free** レベルの App Service がサポートされているすべての場所を表示するには、[`az appservice list-locations --sku FREE`](/cli/azure/appservice?view=azure-cli-latest#az-appservice-list-locations) コマンドを実行します。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "South Central US"

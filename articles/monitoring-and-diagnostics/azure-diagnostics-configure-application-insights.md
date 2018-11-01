@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2016
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: 3e1f4076c7a90cbb348f31b7b92e745fff79a04f
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: f2a48756252f538adc7d813aafe6dbfbf3a270b5
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262139"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416690"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する
 Cloud Services、Virtual Machines、Virtual Machine Scale Sets、および Service Fabric では、Azure 診断拡張機能を使用してデータを収集します。  Azure 診断のデータは、Azure Storage のテーブルに送信されます。  ただし、Azure 診断拡張機能 1.5 以降を使用して、すべてのデータまたはデータのサブセットを他の場所にパイプすることもできます。
@@ -70,18 +70,18 @@ Application Insights のシンクの構成の例を以下に示します。
         - 詳細
         - 情報
         - 警告
-        - エラー
+        - Error
         - 重大
 
 チャンネルはフィルターのように機能し、対象のシンクに送信する特定のログ レベルを選択するために使用できます。 たとえば、詳細ログを収集してストレージに送信し、シンクにはエラーのみを送信することができます。
 
 次の図にこの関係を示します。
 
-![Diagnostics Public Configuration](./media/azure-diagnostics-configure-applicationinsights/AzDiag_Channels_App_Insights.png)
+![Diagnostics Public Configuration](media/azure-diagnostics-configure-application-insights/AzDiag_Channels_App_Insights.png)
 
 次の図は、構成値とそのしくみについてまとめたものです。 構成の階層内のさまざまなレベルに複数のシンクを含めることができます。 最上位のシンクはグローバルな設定として機能し、個々の要素のレベルに指定されたシンクはそのグローバル設定をオーバーライドします。
 
-![Application Insights による診断シンクの構成](./media/azure-diagnostics-configure-applicationinsights/Azure_Diagnostics_Sinks.png)
+![Application Insights による診断シンクの構成](media/azure-diagnostics-configure-application-insights/Azure_Diagnostics_Sinks.png)
 
 ## <a name="complete-sink-configuration-example"></a>完全なシンクの構成例
 パブリック構成ファイルの完全な例を以下に紹介します。

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 07/25/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 8ac3d4ba9b9ae1268cef9d4ee255021004924377
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 8de70e8df50b79f27c19c74307d9321ff8cd1eb5
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39393019"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229965"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Azure Logic Apps のデータ操作のコード サンプル
 
@@ -226,7 +226,7 @@ ms.locfileid: "39393019"
 
 <a name="join-action-example"></a>
 
-## <a name="join"></a>Join (結合)
+## <a name="join"></a>Join
 
 [**結合**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#join-action)を試すには、次のアクション定義を使用できます。
 
@@ -326,7 +326,7 @@ ms.locfileid: "39393019"
 
 <a name="select-action-example"></a>
 
-## <a name="select"></a>elect
+## <a name="select"></a>Select
 
 [**選択**アクションの例](../logic-apps/logic-apps-perform-data-operations.md#select-action)を試すには、次のアクション定義を使用できます。
 
@@ -370,7 +370,7 @@ ms.locfileid: "39393019"
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

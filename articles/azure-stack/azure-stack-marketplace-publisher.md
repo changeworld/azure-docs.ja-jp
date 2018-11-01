@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/24/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: fabc72e6dc31bb7f244cda9634af3b2556ba23a9
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 98a7ae31aeeae29b81a1053b38992d3bc4e0e03f
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023795"
+ms.locfileid: "50085311"
 ---
 #  <a name="add-marketplace-items-using-publishing-tool"></a>発行ツールを使用して Marketplace アイテムを追加する
 
@@ -28,7 +28,7 @@ ms.locfileid: "50023795"
 
 ## <a name="prerequisites"></a>前提条件
 
- - このツールキットは Azure Stack ホストで実行するか、ASDK ホストからツールを実行するマシンとの間に [VPN](.\asdk\asdk-connect.md#connect-to-azure-stack-with-vpn) 接続を用意する必要があります。
+ - このツールキットは Azure Stack ホストで実行するか、ASDK ホストからツールを実行するマシンとの間に [VPN](.\asdk\asdk-connect.md#connect-with-vpn) 接続を用意する必要があります。
 
  - [Azure Stack クイック スタート テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip)をダウンロードして抽出します。
 

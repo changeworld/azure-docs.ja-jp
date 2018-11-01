@@ -1,4 +1,16 @@
-
+---
+author: conceptdev
+ms.service: app-service-mobile
+ms.topic: include
+ms.date: 08/23/2018
+ms.author: crdun
+ms.openlocfilehash: b609a708a987194398c53bdf83f0d6e1f281808d
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50132925"
+---
 既定では、Mobile Apps バックエンドの API は匿名で呼び出すことができます。 次に、認証されたクライアントのみにアクセスを制限する必要があります。  
 
 * **Node.js バックエンド (Azure Portal 経由)**:  

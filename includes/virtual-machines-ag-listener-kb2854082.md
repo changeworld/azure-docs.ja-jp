@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: d656d756759c997972eb034e194355185be93e1a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227113"
+---
 次に、クラスター上に Windows Server 2008 R2 または Windows Server 2012 を実行しているサーバーがある場合は、修正プログラム [KB2854082](http://support.microsoft.com/kb/2854082) がオンプレミスのサーバーまたはクラスターの一部である Azure VM にそれぞれインストールされていることを確認する必要があります。 クラスター内 (可用性グループ内ではなく) のすべてのサーバーまたは VM にも、この修正プログラムがインストールされている必要があります。
 
 各クラスター ノードのリモート デスクトップ セッションで、 [KB2854082](http://support.microsoft.com/kb/2854082) をローカル ディレクトリにダウンロードします。 次に、クラスター ノードごとに順番に修正プログラムをインストールします。 クラスター ノードでクラスター サービスが実行されている場合は、修正プログラムのインストールの最後に、サーバーが再起動されます。

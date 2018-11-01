@@ -11,12 +11,12 @@ ms.assetid: d4141c08-88d7-4e59-a757-c06d0dc74300
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 90af33574093cfbe529093c7091ee6988f043aa6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 78b1eb6272fa97ef392e97723454d29cf56bb4bf
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052024"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230507"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>Azure Logic Apps を使用して SMTP アカウントから電子メールを送信する
 
@@ -42,7 +42,7 @@ Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを�
 
 [!INCLUDE [Create connection general intro](../../includes/connectors-create-connection-general-intro.md)]
 
-1. [Azure Portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
+1. [Azure portal](https://portal.azure.com) にサインインし、ロジック アプリ デザイナーでロジック アプリを開きます (まだ開いていない場合)。
 
 1. SMTP アクションを追加する最後のステップの下で、**[新しいステップ]** を選択します。 
 
@@ -55,10 +55,10 @@ Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを�
 
    | プロパティ | 必須 | 説明 |
    |----------|----------|-------------|
-   | **接続名** | はい | SMTP サーバーへの接続の名前 | 
-   | **SMTP サーバー アドレス** | はい | SMTP サーバーのアドレス | 
-   | **ユーザー名** | はい | SMTP アカウントのユーザー名 | 
-   | **パスワード** | はい | SMTP アカウントのパスワード | 
+   | **Connection Name** | [はい] | SMTP サーバーへの接続の名前 | 
+   | **SMTP サーバー アドレス** | [はい] | SMTP サーバーのアドレス | 
+   | **ユーザー名** | [はい] | SMTP アカウントのユーザー名 | 
+   | **パスワード** | [はい] | SMTP アカウントのパスワード | 
    | **SMTP サーバー ポート** | いいえ  | 使用する SMTP サーバー上の特定のポート | 
    | **SSL を有効にしますか?** | いいえ  | SSL 暗号化を有効または無効にします。 | 
    |||| 
@@ -74,7 +74,7 @@ Azure Logic Apps と簡易メール転送プロトコル (SMTP) コネクタを�
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

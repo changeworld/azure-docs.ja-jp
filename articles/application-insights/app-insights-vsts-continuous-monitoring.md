@@ -9,12 +9,12 @@ ms.date: 11/13/2017
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ecda8621640223f1c27f32834f2e4a098da4aba6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 75401614b6892402083af5192b691f00d82c8d05
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301628"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413623"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>リリース パイプラインに継続的監視を追加する
 
@@ -28,13 +28,13 @@ Azure DevOps Services が継続的な監視をサポートするようになり�
 
 2. **[ビルドとリリース]** にポインターを合わせ、**[リリース]** を選択して **プラス記号** > **[リリース定義の作成]** の順にクリックし、**[監視]** > **[Azure App Service Deployment with Continuous Monitoring]\(継続的監視を使用した Azure App Service の展開\)** を探します。
 
-   ![新しい Azure DevOps Services リリース パイプライン](.\media\app-insights-continuous-monitoring\001.png)
+   ![新しい Azure DevOps Services リリース パイプライン](media/app-insights-vsts-continuous-monitoring/001.png)
 
 3. **[適用]** をクリックします。
 
 4. 赤色の感嘆符の横にある青色のテキストを選択して**環境のタスクを表示**します。
 
-   ![環境のタスクを表示](.\media\app-insights-continuous-monitoring\002.png)
+   ![環境のタスクを表示](media/app-insights-vsts-continuous-monitoring/002.png)
 
    構成ボックスが表示されたら、下の表を使用して入力フィールドに入力します。
 
@@ -60,7 +60,7 @@ Azure DevOps Services が継続的な監視をサポートするようになり�
 
 3. 可用性の **[しきい値]** をサービス レベルの要件を満たすように変更します。
 
-   ![アラートの変更](.\media\app-insights-continuous-monitoring\003.png)
+   ![アラートの変更](media/app-insights-vsts-continuous-monitoring/003.png)
 
 4. **[OK]** > **[保存]** の順に選択し、説明のコメントを入力して **[OK]** をクリックします。
 
@@ -68,13 +68,13 @@ Azure DevOps Services が継続的な監視をサポートするようになり�
 
 1. **[パイプライン]** をクリックし、継続的監視ゲートを必要とするステージに応じて **[配置前の条件]** または **[配置後の条件]** 記号を選択します。
 
-   ![配置前の条件](.\media\app-insights-continuous-monitoring\004.png)
+   ![配置前の条件](media/app-insights-vsts-continuous-monitoring/004.png)
 
 2. **[ゲート]** を **[有効]** > **[Approval gates]\(承認ゲート\)** の順に設定し、**[追加]** をクリックします。
 
 3. **[Azure Monitor]** を選択します (このオプションにより、Azure Monitor と Application Insights の両方からアラートにアクセスできるようになります)
 
-    ![Azure Monitor](.\media\app-insights-continuous-monitoring\005.png)
+    ![Azure Monitor](media/app-insights-vsts-continuous-monitoring/005.png)
 
 4. **ゲートのタイムアウト**値を入力します。
 
@@ -86,7 +86,7 @@ Azure DevOps Services が継続的な監視をサポートするようになり�
 
 この動作を確認するには、**[リリース]** を選択し、リリース名を右クリックして **[開く]** > **[ログ]** の順にクリックします。
 
-![ログ](.\media\app-insights-continuous-monitoring\006.png)
+![ログ](media/app-insights-vsts-continuous-monitoring/006.png)
 
 ## <a name="next-steps"></a>次の手順
 

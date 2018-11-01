@@ -14,14 +14,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 7d4deb0618b0e0802306e344fea6d259c0597fe2
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: f4d733e29d2ba8213e1832f2c604b726283ab3e1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412014"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417397"
 ---
 # <a name="troubleshooting-specific-rdp-error-messages-to-a-windows-vm-in-azure"></a>Azure の Windows VM に対する特定の RDP エラー メッセージのトラブルシューティング
 Azure の Windows 仮想マシン (VM) に対してリモート デスクトップ接続を使用すると、特定のエラー メッセージが表示される場合があります。 この記事では、よく発生するエラー メッセージのいくつかと、それを解決するためのトラブルシューティング手順について詳しく説明します。 RDP を使用した VM への接続で問題が発生していても、特定のエラー メッセージが表示されない場合は、[リモート デスクトップのトラブルシューティング ガイド](troubleshoot-rdp-connection.md)を参照してください。

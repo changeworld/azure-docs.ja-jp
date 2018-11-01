@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: danlep
-ms.openlocfilehash: feb9547b004141a3c1d02ef4b356b9d00b74fc95
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: cab19cf051efea55a476128e4038aa69efdce8d9
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902370"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157090"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>コンテナー インスタンスを Azure 仮想ネットワークにデプロイする
 
@@ -118,7 +118,7 @@ az container create \
     --name appcontainer \
     --resource-group myResourceGroup \
     --image microsoft/aci-helloworld \
-    --vnet-name aci-vnet \
+    --vnet aci-vnet \
     --vnet-address-prefix 10.0.0.0/16 \
     --subnet aci-subnet \
     --subnet-address-prefix 10.0.0.0/24
@@ -154,7 +154,7 @@ az container create \
     --image alpine:3.5 \
     --command-line "wget $CONTAINER_GROUP_IP" \
     --restart-policy never \
-    --vnet-name aci-vnet \
+    --vnet aci-vnet \
     --subnet aci-subnet
 ```
 

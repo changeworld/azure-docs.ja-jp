@@ -4,21 +4,21 @@ description: Azure ポータルを使用して Azure Active Directory (Azure AD)
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 6267dd8dca4c932d4a4d96b34a8eaa26f6a59c20
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: bae134d30bd175656e4da9121bca8dbfcfe7fcdd
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785801"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229461"
 ---
 # <a name="get-started-with-azure-ad-authentication-by-using-the-azure-portal"></a>Azure ポータルで Azure AD 認証を開始する
 
@@ -36,7 +36,7 @@ Azure Media Services で Azure AD 認証を使用する場合、次の 2 つの�
 - **サービス プリンシパル認証**。 サービスが認証を受けます。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリ (Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス) です。
 
 > [!IMPORTANT]
-> 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 承認は 2018 年 6 月 1 日に廃止される予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
+> 現在 Media Services では、Azure Access Control Service 認証モデルがサポートされています。 ただし、Access Control 承認は 2018 年 6 月 1 日に非推奨となる予定です。 できるだけ早く Azure AD 認証モデルに移行することをお勧めします。
 
 ## <a name="select-the-authentication-method"></a>認証方法を選択する
 

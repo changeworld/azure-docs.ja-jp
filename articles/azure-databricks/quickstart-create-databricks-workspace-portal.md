@@ -5,18 +5,17 @@ services: azure-databricks
 ms.service: azure-databricks
 author: jasonwhowell
 ms.author: jasonh
-manager: cgronlun
-editor: cgronlun
+ms.reviewer: jasonh
 ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 38e254c3ddc976a0ffebaa8c6fe1c60fd3b7c840
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 38c2ee55b5eb2f35ce28c37e6e6c1f62a0f59ff0
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025567"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418162"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する
 

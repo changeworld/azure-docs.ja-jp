@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 879241b56ddb3be76b1b54d7a3bb5429facf148a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165784"
+---
 <!--author=alkohli last changed: 09/28/17-->
 
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>StorSimple の最小デバイス セットアップを完了するには
@@ -25,7 +38,7 @@
 
             ![Test-HcsmConnection showing routable IPs](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 
-1. **[OK]** をクリックします。 デバイス構成が開始されます。 デバイス構成が完了すると、通知が表示されます。 **[デバイス]** ブレードで、デバイスの状態が **[オンライン]** に変わります。
+1. Click **OK**. デバイス構成が開始されます。 デバイス構成が完了すると、通知が表示されます。 **[デバイス]** ブレードで、デバイスの状態が **[オンライン]** に変わります。
 
     ![StorSimple の最小限のデバイス セットアップのネットワーク インターフェイス](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
 

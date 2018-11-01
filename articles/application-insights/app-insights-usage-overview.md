@@ -3,7 +3,7 @@ title: Azure Application Insights による利用状況分析 | Microsoft docs
 description: ユーザーを理解し、提供しているアプリでユーザーが何を実行するかを理解します。
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,13 +11,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/10/2017
-ms.author: mbullwin
-ms.openlocfilehash: d5b580df531e2f0c61ac1d43cfd5ae353f314fce
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.pm_owner: daviste;NumberByColors
+ms.reviewer: mbullwin
+ms.author: daviste
+ms.openlocfilehash: eeaf46a9ce523ecd11689d0aa430fcc522732f70
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091903"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139858"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
@@ -82,7 +84,7 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 ## <a name="retention---how-many-users-come-back"></a>リテンション期間 - サービスの利用を再開したユーザーの数
 
-リテンション期間では、一定のタイム バケットでビジネス アクションを実行したユーザーのコーホートに基づいて、ユーザーがアプリの利用を再開した頻度を把握できます。 
+リテンション期間では、一定のタイム バケットでビジネス アクションを実行したユーザーのコーホートに基づいて、ユーザーがアプリの利用を再開した頻度を把握できます。 
 
 - どのような特定の機能により、どのような特定のユーザーが使用を再開したかを把握します 
 - 実際のユーザー データに基づいて仮説を立てます 

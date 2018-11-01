@@ -3,7 +3,7 @@ title: Azure AD Domain Services マネージド ドメイン用の Secure LDAP �
 description: Azure AD Domain Services マネージド ドメイン用の Secure LDAP 証明書を作成します
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: c6da94b6-4328-4230-801a-4b646055d4d7
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2017
-ms.author: maheshu
-ms.openlocfilehash: d34da3c7a32a9fd425e30880ba9bc808d9d2bab1
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: a97b16451392ce0e84eb7b49a6fc71fb03adab12
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505986"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157294"
 ---
 # <a name="create-a-pfx-file-with-the-secure-ldap-ldaps-certificate-for-a-managed-domain"></a>マネージド ドメイン用の Secure LDAP (LDAPS) 証明書で .PFX ファイルを作成する
 

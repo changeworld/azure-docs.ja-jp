@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: a95cdbb48371cf960211f55bf077cea9db783db5
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 3c8202f762c65d72417020b0524e415e55076eb0
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248331"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415271"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してアクティビティ ログ アラートを作成、表示、管理する  
 
@@ -43,11 +43,11 @@ ms.locfileid: "48248331"
 1. Azure Portal で、**[モニター]** > **[アラート]** の順に選択します。
 2. **[アラート]** ウィンドウの上部にある **[新しいアラート ルール]** をクリックします。
 
-     ![新しいアラート ルール](./media/monitor-alerts-unified/AlertsPreviewOption.png)
+     ![新しいアラート ルール](media/alert-activity-log/AlertsPreviewOption.png)
 
      **[ルールの作成]** ウィンドウが表示されます。
 
-      ![新しいアラート ルールのオプション](./media/monitoring-activity-log-alerts-new-experience/create-new-alert-rule-options.png)
+      ![新しいアラート ルールのオプション](media/alert-activity-log/create-new-alert-rule-options.png)
 
 3. **[アラートの条件を定義します]** で、次の情報を入力し、**[完了]** をクリックします。
 
@@ -57,7 +57,7 @@ ms.locfileid: "48248331"
 
     > アクティビティ ログ シグナルについてリソース、リソース グループ、またはサブスクリプション全体を選択できます。
 
-    **アラート対象のサンプル ビュー** ![対象の選択](./media/monitoring-activity-log-alerts-new-experience/select-target.png)
+    **アラート対象のサンプル ビュー** ![対象の選択](media/alert-activity-log/select-target.png)
 
     - **[対象の条件]** の下で **[条件の追加]** をクリックすると、対象で使用可能なすべてのシグナルが表示されます。これには、さまざまなカテゴリの**アクティビティ ログ**のものも含まれ、カテゴリ名は **[サービスの監視]** 名に付加されます。
 
@@ -67,7 +67,7 @@ ms.locfileid: "48248331"
 
     **[条件の追加] 画面**
 
-    ![条件の追加](./media/monitoring-activity-log-alerts-new-experience/add-criteria.png)
+    ![条件の追加](media/alert-activity-log/add-criteria.png)
 
     **履歴の時間**: 選択した操作で利用できるイベントをプロットできるのは、過去 6 時間/12 時間/24 時間または過去 1 週間です。
 
@@ -79,7 +79,7 @@ ms.locfileid: "48248331"
 
         アラート ロジックが適用されたシグナル グラフのサンプル:
 
-        ![ 選択済み条件](./media/monitoring-activity-log-alerts-new-experience/criteria-selected.png)
+        ![ 選択済み条件](media/alert-activity-log/criteria-selected.png)
 
 4. **[アラートの詳細を定義します]** で、以下の詳細を入力します。
 
@@ -99,20 +99,20 @@ ms.locfileid: "48248331"
 
 あるいは、アクティビティ ログに対してアラート ルールを作成する状況を簡単にたとえるとすれば、[Azure portal のアクティビティ ログ](monitoring-overview-activity-logs.md#query-the-activity-log-in-the-azure-portal)でイベントを探索したりフィルター処理したりするのに似ています。 Azure Monitor のアクティビティ ログでは、必要なイベントを検索またはフィルター処理し、次に **[アクティビティ ログ アラートの追加]** をクリックすることでアラートを作成できます。その後、上記のチュートリアルで説明した 4 つの手順に従います。
     
- ![ アクティビティ ログからのアラートの追加](./media/monitoring-activity-log-alerts-new-experience/add-activity-log.png)
+ ![ アクティビティ ログからのアラートの追加](media/alert-activity-log/add-activity-log.png)
     
 
 ### <a name="view-and-manage-in-azure-portal"></a>Azure portal での表示と管理
 
 1. Azure Portal で、**[モニター]** > **[アラート]** の順にクリックし、ウィンドウの左上にある **[ルールの管理]** をクリックします。
 
-    ![ manage alert rules](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
+    ![ manage alert rules](media/alert-activity-log/manage-alert-rules.png)
 
     使用可能なルールの一覧が表示されます。
 
 2. 変更するアクティビティ ログ ルールを検索します。
 
-    ![ アクティビティ ログ アラート ルールの検索](./media/monitoring-activity-log-alerts-new-experience/searth-activity-log-rule-to-edit.png)
+    ![ アクティビティ ログ アラート ルールの検索](media/alert-activity-log/searth-activity-log-rule-to-edit.png)
 
     編集するアクティビティのルールを検索するには、用意されているフィルターとして _[サブスクリプション]_、_[リソース グループ]_、_[リソース]_、_[シグナルの種類]_ または _[状態]_ を使用できます。
 
@@ -122,7 +122,7 @@ ms.locfileid: "48248331"
 
 3.  ルールを選択し、ダブルクリックしてルールのオプションを編集します。 必要な変更を行い、**[保存]** をクリックします。
 
-    ![ manage alert rules](./media/monitoring-activity-log-alerts-new-experience/activity-log-rule-edit-page.png)
+    ![ manage alert rules](media/alert-activity-log/activity-log-rule-edit-page.png)
 
 4.  ルールは、無効化、有効化、または削除することができます。 手順 2 で説明したようにルールを選択した後、ウィンドウの上部にある適切なオプションを選択します。
 

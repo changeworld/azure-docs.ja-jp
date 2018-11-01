@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 10/11/2018
-ms.openlocfilehash: 52f30adf1ea383b098d3f187a315257f101e8a9b
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 1ae350e74a9b56aaaa72b38a9e3a43bddfbefefc
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320440"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232275"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure Logic Apps の制限と構成情報
 
@@ -332,7 +332,7 @@ B2B プロトコルに適用される制限を次に示します。
 >
 > * Azure 仮想ネットワーク内のリソースに接続できる[統合サービス環境](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)を作成します。 
 > 
-> * API Management を既に使用している場合は、このシナリオでこのサービスを使用できます。 詳細については、[単純なエンタープライズ統合アーキテクチャ](http://aka.ms/aisarch)を参照してください。
+> * API Management を既に使用している場合は、このシナリオでこのサービスを使用できます。 詳細については、[単純なエンタープライズ統合アーキテクチャ](https://aka.ms/aisarch)を参照してください。
 
 | Logic Apps のリージョン | 送信 IP | 
 |-------------------|-------------|  

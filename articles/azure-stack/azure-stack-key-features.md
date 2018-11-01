@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2018
+ms.date: 10/23/2018
 ms.author: jeffgilb
 ms.reviewer: ''
-ms.openlocfilehash: 851530910c702d388cd4dc8607bf09ecb5fa44e0
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 38120b2be2ab7789946a4ad2fe688954e6212189
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198475"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959028"
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack の主要な機能と概念
 Microsoft Azure Stack を初めて使う場合は、次の用語と機能の説明を参考にしてください。
@@ -131,7 +131,7 @@ KeyVault RP は、パスワードや証明書などのシークレットの管�
 ## <a name="high-availability-for-azure-stack"></a>Azure Stack の高可用性
 *対象: Azure Stack 1802 以降のバージョン*
 
-Azure でのマルチ VM による実稼働システムの高可用性を実現するため、VM は、複数の障害ドメインと更新ドメインに分散される可用性セットに配置されます。 この方法では、[可用性セットに配置された VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) は、次の図に示すように、障害から回復できるようにするために、複数のサーバー ラックに互いに物理的に分離されます。
+Azure でのマルチ VM による実稼働システムの高可用性を実現するため、VM は、複数の障害ドメインと更新ドメインに分散される可用性セットに配置されます。 この方法では、次の図に示すように[可用性セットにデプロイされた VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) が複数のサーバー ラックに互いに物理的に分離され、障害からの回復性が考慮されています。
 
   ![Azure Stack の高可用性](media/azure-stack-key-features/high-availability.png)
 
@@ -155,14 +155,6 @@ Azure RBAC には、すべてのリソースの種類に適用される 3 つの
 ## <a name="usage-data"></a>使用状況データ
 Microsoft Azure Stack は、すべてのリソース プロバイダーの使用状況データを収集して集約し、Azure コマースによる処理のために Azure に送信します。 Azure Stack で収集された使用状況データは、REST API を使用して表示できます。 Azure と一貫性のある Tenant API だけでなく、Provider および Delegated Provider API を使用して、すべてのテナント サブスクリプション全体の使用状況データを取得できます。 このデータは、請求や配賦のために外部のツールやサービスと統合できます。 Azure コマースによって処理された使用状況は、Azure の課金ポータルに表示できます。
 
-## <a name="in-development-build-of-azure-stack-development-kit"></a>Azure Stack Development Kit の開発途中のビルド
-早期導入者は、開発途中のビルドによって Azure Stack Development Kit の最新バージョンを評価できます。 これらのビルドは、最新のメジャー リリースに基づくインクリメンタル ビルドです。 メジャー バージョンは数か月ごとに継続的にリリースされますが、開発途中のビルドは、メジャー リリースの合間に断続的にリリースされます。
-
-開発途中のビルドには、次の利点があります。
-- バグの修正
-- 新機能
-- その他の機能強化
-
 ## <a name="next-steps"></a>次の手順
-[Azure Stack Development Kit の評価](azure-stack-deploy-overview.md)
+[管理の基本](azure-stack-manage-basics.md)
 

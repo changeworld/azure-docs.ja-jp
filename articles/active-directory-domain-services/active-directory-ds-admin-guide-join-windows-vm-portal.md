@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: Windows Server VM のマネー�
 description: Windows Server 仮想マシンの Azure AD DS への参加
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 29316313-c76c-4fb9-8954-5fa5ec82609e
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/21/2018
-ms.author: maheshu
-ms.openlocfilehash: f9ee68fda3bb5e0f5302c8d5c96da0515c05ce1d
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 753818526ad637db0baa13c92e92d2725b19dbf8
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503402"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158331"
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Windows Server 仮想マシンのマネージド ドメインへの参加
 この記事では、Azure Portal を使用して Windows Server 仮想マシンをデプロイする方法を示します。 その後、仮想マシンを Azure Active Directory Domain Services (Azure AD DS) のマネージド ドメインに参加させる方法を示します。
@@ -30,7 +30,7 @@ ms.locfileid: "39503402"
 ## <a name="step-1-create-a-windows-server-virtual-machine"></a>ステップ 1: Windows Server 仮想マシンを作成する
 Azure AD DS を有効にした仮想ネットワークに参加する Windows 仮想マシンを作成するには、次の手順を実行します。
 
-1. [Azure ポータル](http://portal.azure.com)にサインインします。
+1. [Azure Portal](http://portal.azure.com) にサインインします。
 2. 左側のウィンドウの上部にある **[新規]** を選択します。
 3. **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。
 

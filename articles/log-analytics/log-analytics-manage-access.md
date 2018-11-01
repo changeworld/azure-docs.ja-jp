@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 633bf2cf68449849c019ba940644d78d1478efc3
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 75faceb641382df29a93c44803af48dcfed142d4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042328"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421171"
 ---
 # <a name="manage-workspaces"></a>ワークスペースを管理する
 
@@ -64,7 +64,7 @@ System Center Operations Manager を使用している場合、各 Operations Ma
 
 2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。  
 
-    ![Azure ポータル](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)  
+    ![Azure ポータル](media/log-analytics-manage-access/azure-portal-01.png)  
 
 3. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択します。
 
@@ -78,7 +78,7 @@ System Center Operations Manager を使用している場合、各 Operations Ma
 
 次のアクティビティにも、Azure のアクセス許可が必要です。
 
-| アクションを表示します。                                                          | 必要とされる Azure のアクセス許可 | メモ |
+| Action                                                          | 必要とされる Azure のアクセス許可 | メモ |
 |-----------------------------------------------------------------|--------------------------|-------|
 | 管理ソリューションの追加と削除                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | これらのアクセス許可は、リソース グループまたはサブスクリプション レベルで付与する必要があります。 |
 | 価格レベルの変更                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -101,10 +101,10 @@ Log Analytics 閲覧者ロールには、次の Azure アクションが含ま�
 
 | type    | アクセス許可 | 説明 |
 | ------- | ---------- | ----------- |
-| アクションを表示します。 | `*/read`   | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure 診断の構成 <br> すべてのリソースのすべてのプロパティと設定 |
-| アクションを表示します。 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | ログ検索 v2 クエリを実行する機能 |
-| アクションを表示します。 | `Microsoft.OperationalInsights/workspaces/search/action` | ログ検索 v1 クエリを実行する機能 |
-| アクションを表示します。 | `Microsoft.Support/*` | サポート ケースを開く機能 |
+| Action | `*/read`   | すべての Azure リソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure 診断の構成 <br> すべてのリソースのすべてのプロパティと設定 |
+| Action | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | ログ検索 v2 クエリを実行する機能 |
+| Action | `Microsoft.OperationalInsights/workspaces/search/action` | ログ検索 v1 クエリを実行する機能 |
+| Action | `Microsoft.Support/*` | サポート ケースを開く機能 |
 |非アクション | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | データ コレクション API の使用とエージェントのインストールに必要なワークスペース キーの読み取りを防ぎます。 これにより、ユーザーは新しいリソースをワークスペースに追加できなくなります |
 
 

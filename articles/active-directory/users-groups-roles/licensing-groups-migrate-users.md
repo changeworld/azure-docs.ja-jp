@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.component: users-groups-roles
-ms.date: 01/14/2018
+ms.date: 10/29/2018
 ms.author: curtand
 ms.custom: seohack1
-ms.openlocfilehash: 5beee2fae518fec23b65ff05a79281e0fc3f1417
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4272d16a2acba992f05bb0874a40affa7d30abb5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800742"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213646"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Azure Active Directory でライセンスを付与するためにライセンスを持つユーザーをグループに追加する方法
 
@@ -84,7 +84,9 @@ ms.locfileid: "48800742"
 
 グループによるライセンス管理の他のシナリオについては、以下をご覧ください。
 
-* [Azure Active Directory でのグループへのライセンス割り当て](licensing-groups-assign.md)
-* [Azure Active Directory のグループベースのライセンスとは](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
+* [What is group-based licensing in Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md) (Azure Active Directory のグループベースのライセンスとは)
+* [Assigning licenses to a group in Azure Active Directory](licensing-groups-assign.md) (Azure Active Directory でのグループへのライセンス割り当て)
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](licensing-groups-resolve-problems.md)
-* [Azure Active Directory のグループベースのライセンスが使用されるその他のシナリオ](licensing-group-advanced.md)
+* [Azure Active Directory のグループベースのライセンスを使用して製品ライセンス間でユーザーを移行する方法](licensing-groups-change-licenses.md)
+* [Azure Active Directory グループベース ライセンスのその他のシナリオ](licensing-group-advanced.md)
+* [Azure Active Directory のグループベースのライセンスの PowerShell の例](licensing-ps-examples.md)

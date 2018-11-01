@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
 ms.author: dobett
-ms.openlocfilehash: 2c784fa2879a78e52ed7aa80cb50535a830b1ed7
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b7f0e1ff359d7ec062f35360c107e33999ca198a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376688"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414252"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Java)
 
@@ -46,7 +46,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 * [デバイスからハブへのテレメトリ送信 (Java)](quickstart-send-telemetry-java.md) または [IoT Hub を使用したメッセージ ルーティングの構成](tutorial-routing.md)に関するチュートリアルの、完全に動作するバージョン。
 
-* 最新の [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* 最新の [Java SE Development Kit 8](https://aka.ms/azure-jdks)
 
 * [Maven 3](https://maven.apache.org/install.html)
 

@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: マネージド ドメインの�
 description: Azure Active Directory Domain Services のマネージド ドメインのグループ ポリシーを管理します
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: acdba45bef5407af4b96d8e5f805a828e10d2d61
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: 31805f7588a58eb1682ce50fd55dd14b967d6099
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502218"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158342"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインのグループ ポリシーの管理
 Azure Active Directory Domain Services には、"AADDC Users" コンテナーと "AADDC Computers" コンテナー用の組み込みのグループ ポリシー オブジェクト (GPO) が含まれています。 これらの組み込みの GPO を、マネージド ドメインのグループ ポリシーを構成するようにカスタマイズできます。 さらに、"AAD DC Administrators" グループのメンバーは、マネージド ドメイン内に、独自のカスタム OU を作成できます。 カスタム GPO を作成してカスタム OU にリンクすることもできます。 "AAD DC Administrators" グループに属するユーザーには、マネージド ドメインのグループ ポリシー管理者権限が付与されます。
@@ -91,8 +91,7 @@ Azure AD ディレクトリの管理者には、マネージド ドメイン上�
 ## <a name="task-4---customize-built-in-group-policy-objects"></a>タスク 4 - 組み込みのグループ ポリシー オブジェクトをカスタマイズする
 マネージド ドメインには、"AADDC Computers" コンテナーと "AADDC Users" コンテナーという 2 つの組み込みのグループ ポリシー オブジェクト (GPO) があります。 これらの GPO をカスタマイズして、マネージド ドメインのグループ ポリシーを構成できます。
 
-1. 
-  **グループ ポリシー管理**コンソールで、**[フォレスト: contoso100.com]** ノードと **[ドメイン]** ノードをクリックして展開し、マネージド ドメインのグループ ポリシーを表示します。
+1. **グループ ポリシー管理**コンソールで、**[フォレスト: contoso100.com]** ノードと **[ドメイン]** ノードをクリックして展開し、マネージド ドメインのグループ ポリシーを表示します。
 
     ![組み込みの GPO](./media/active-directory-domain-services-admin-guide/builtin-gpos.png)
 2. これらの組み込みの GPO を、マネージド ドメインのグループ ポリシーを構成するようにカスタマイズできます。 組み込みの GPO をカスタマイズするには、GPO を右クリックし、**[編集...]** をクリックします。 グループ ポリシー構成エディター ツールで GPO をカスタマイズできます。
@@ -128,8 +127,6 @@ Azure AD ディレクトリの管理者には、マネージド ドメイン上�
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
-* 
-  [Azure AD Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
-* 
-  [Azure AD Domain Services のマネージド ドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
+* [Azure AD Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Azure AD Domain Services のマネージド ドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
 * [グループ ポリシー管理コンソール](https://technet.microsoft.com/library/cc753298.aspx)

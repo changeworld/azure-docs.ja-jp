@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: f66dcc55b01b407c59c65ea300757ab4ee1002ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d10d39a65acd3664c99e8b5aa5cc015a76d9d1aa
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965060"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50209379"
 ---
 # <a name="troubleshoot-failure-to-connect-to-a-cluster-in-azure-data-explorer"></a>トラブルシューティング: Azure データ エクスプローラーでクラスターに接続できない
 
@@ -31,4 +31,4 @@ Azure データ エクスプローラーでクラスターに接続できない�
 
     状態が**正常** (緑色のチェック マーク) でない場合は、状態が改善されてから、クラスターに接続してみてください。
 
-1. 問題を解決するために手助けが必要な場合は、[Azure ポータル](https://portal.azure.com) でサポート リクエストを提出してください。
+1. 問題を解決するために手助けが必要な場合は、[Azure ポータル](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) でサポート リクエストを提出してください。

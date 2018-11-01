@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/11/2018
+ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 02f6e2648c007cfe87984e8de886b8b76e1e8d16
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 7574ac1a5937fbe963ef764d42f04d00f6c02d69
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409917"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241771"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Azure VM 間の接続に関する問題のトラブルシューティング
 

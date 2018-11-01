@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/15/2018
+ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: bede78782154e014d4ffad949f9ebd1a44eb2c4c
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e40648ef47b108050486d43eefdb1564786c053e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47097025"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421392"
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する
 

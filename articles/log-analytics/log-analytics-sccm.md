@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 28ddfea0f4127f402b82388a10ee150b30a65736
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: dfa0a4b637153d6fa3cce5c9b402587950686341
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954234"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418077"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Configuration Manager を Log Analytics に接続する
 お使いの System Center Configuration Manager 環境を Azure Log Analytics に接続して、デバイス コレクション データを同期し、Log Analytics と Azure Automation でこれらのコレクションを参照することができます。  
@@ -49,7 +49,7 @@ Configuration Manager を Log Analytics に接続する方法について詳し�
 > Log Analytics へのアクセス許可を Configuration Manager に指定する必要があります。 そうしないと、Configuration Manager で構成ウィザードを使用するときにエラー メッセージが表示されます。
 >
 
-1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](media/log-analytics-sccm/azure-portal-01.png)<br><br>  
 2. Log Analytics ワークスペースの一覧で、変更するワークスペースを選びます。
 3. 左側のウィンドウで **[アクセス制御 (IAM)]** を選びます。
 4. [アクセス制御] ページで、**[追加]** をクリックして **[アクセス許可の追加]** ウィンドウを表示します。
@@ -101,7 +101,7 @@ Log Analytics 接続を Configuration Manager に追加し、Configuration Manag
 
 1. Azure Portal の左上隅にある **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、Configuration Manager が登録されているワークスペースを選びます。  
-3. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+3. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/log-analytics-sccm/log-analytics-advanced-settings-01.png)<br><br>  
 4. **[コンピューター グループ]** を選び、**[SCCM]** を選びます。  
 5. **[Configuration Manager コレクション メンバーシップをインポートする]** を選択し、**[保存]** をクリックします。  
    ![コンピューター グループ - [SCCM] タブ](./media/log-analytics-sccm/sccm-computer-groups01.png)

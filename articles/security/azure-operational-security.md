@@ -1,6 +1,6 @@
 ---
 title: Azure で運用可能なセキュリティ | Microsoft Docs
-description: Microsoft Operations Management Suite (OMS) とそのサービスおよびしくみについて説明します。
+description: Microsoft Azure Log Analytics およびそのサービスとしくみについて説明します。
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 60260d7bcff07a9ce2d680c84119d11271579e7d
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 2ae2ea14bc712563867f32b83eddbd9d4129ac1d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342271"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409494"
 ---
 # <a name="azure-operational-security"></a>Azure で運用可能なセキュリティ
 ## <a name="introduction"></a>はじめに
@@ -40,7 +40,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
 
 このホワイト ペーパーでは、Microsoft Azure クラウド プラットフォーム内での Azure で運用可能なセキュリティに対する Microsoft の取り組みと、次のサービスについて説明します。
-1.  [Azure Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
+1.  [Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview)
 
 2.  [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
@@ -53,28 +53,28 @@ Azure で運用可能なセキュリティとは、ユーザーのデータ、�
 6.  [Azure Active directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 
-## <a name="microsoft-operations-management-suite"></a>Microsoft Operations Management Suite
+## <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
 
-Microsoft Operations Management Suite (OMS) は、ハイブリッド クラウド向けの IT 管理ソリューションです。 OMS は単独で使用されるかまたは System Center の既存のデプロイを拡張するために使用され、インフラストラクチャをクラウドベースで管理するための柔軟な制御を最大限に実現します。
+Microsoft Azure Log Analytics は、ハイブリッド クラウド向けの IT 管理ソリューションです。 Log Analytics は単独で使用されるかまたは System Center の既存のデプロイを拡張するために使用され、インフラストラクチャをクラウドベースで管理するための柔軟な制御を最大限に実現します。
 
-![Microsoft Operations Management Suite](./media/azure-operational-security/azure-operational-security-fig1.png)
+![Log Analytics](./media/azure-operational-security/azure-operational-security-fig1.png)
 
-OMS を使用すれば、オンプレミス型、Azure、AWS、Windows Server、Linux、VMware、OpenStack など、あらゆるクラウドのインスタンスを競合ソリューションよりも低コストで管理できます。 クラウド中心に構築された OMS は、新しいビジネス課題に対応し、新しいワークロード、アプリケーション、およびクラウド環境にも対応する最も高速でコスト効率の良い新たな企業の管理方法を提供します。
+Log Analytics を使用すれば、オンプレミス型、Azure、AWS、Windows Server、Linux、VMware、OpenStack など、あらゆるクラウドのインスタンスを競合ソリューションよりも低コストで管理できます。 クラウド中心に構築された Log Analytics は、新しいビジネス課題に対応し、新しいワークロード、アプリケーション、およびクラウド環境にも対応する最も高速でコスト効率の良い新たな企業の管理方法を提供します。
 
-### <a name="oms-services"></a>OMS サービス
+### <a name="log-analytics-services"></a>Log Analytics サービス
 
-OMS のコア機能は、Azure で実行される一連のサービスによって提供されます。 サービスごとに固有の管理機能があり、サービスを組み合わせてさまざまな管理シナリオを実現できます。
+Log Analytics のコア機能は、Azure で実行される一連のサービスによって提供されます。 サービスごとに固有の管理機能があり、サービスを組み合わせてさまざまな管理シナリオを実現できます。
 
-| サービス  | 説明|
+| Service  | 説明|
 | :------------- | :-------------|
 | Log Analytics | 物理マシンや仮想マシンなど、さまざまなリソースの可用性とパフォーマンスを監視、分析します。 |
 |Automation | 手動プロセスを自動化し、物理マシンと仮想マシンの構成を適用します。 |
-| Backup | 重要なデータのバックアップと復元を行います。 |
+| バックアップ | 重要なデータのバックアップと復元を行います。 |
 | Site Recovery | 重要なアプリケーションの高可用性を実現します。 |
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) は、管理対象のリソースから中央リポジトリにデータを収集する OMS の監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) は、管理対象リソースから中央リポジトリにデータを収集する監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
 
 
 この方法を使用すると、さまざまなソースからのデータを統合できるため、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、データの収集とそのデータに対して実行される操作は明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
@@ -92,17 +92,17 @@ Log Analytics サービスは次の方法でクラウドベースのデータを
 
 ### <a name="azure-backup"></a>Azure Backup
 
-OMS スイートの製品およびサービスの一部である [Azure Backup](http://azure.microsoft.com/documentation/services/backup) は、データのバックアップと復元サービスを提供します。
+Log Analytics スイートの製品およびサービスの一部である [Azure Backup](http://azure.microsoft.com/documentation/services/backup) は、データのバックアップと復元サービスを提供します。
 アプリケーション データを保護し、長年にわたってデータを保管できます。設備投資は不要で、運用コストも最小限で済みます。 SQL Server や SharePoint などのアプリケーション ワークロードだけでなく、Windows の物理サーバーや仮想サーバーのデータもバックアップできます。 また、[System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) で Azure Backup を使用することで、保護データを Azure にレプリケートし、冗長性と長期保存を実現しています。
 
 
 Azure Backup で保護されるデータは、特定の地域リージョンにあるバックアップ コンテナーに格納されます。 データは同じリージョン内でレプリケートされます。コンテナーのタイプによっては、回復性を高めるために別のリージョンにレプリケートされることもあります。
 
 ### <a name="management-solutions"></a>管理ソリューション
-[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、Microsoft のクラウド ベースの IT 管理ソリューションです。
 
 
-[管理ソリューション](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)は、1 つ以上の OMS サービスを使用する特定の管理シナリオが実装された、事前にパッケージ化された一連のロジックです。 さまざまなソリューションが Microsoft とパートナーによって提供されており、Azure サブスクリプションに簡単に追加して、OMS への投資の価値を高めることができます。 パートナーは、アプリケーションとサービスをサポートする独自のソリューションを作成し、Azure Marketplace またはクイック スタート テンプレートを使用してユーザーに提供できます。
+[管理ソリューション](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)は、1 つ以上の Log Analytics サービスを使用する特定の管理シナリオが実装された、事前にパッケージ化された一連のロジックです。 さまざまなソリューションが Microsoft とパートナーによって提供されており、Azure サブスクリプションに簡単に追加して、Log Analytics への投資の価値を高めることができます。 パートナーは、アプリケーションとサービスをサポートする独自のソリューションを作成し、Azure Marketplace またはクイック スタート テンプレートを使用してユーザーに提供できます。
 
 
 ![管理ソリューション](./media/azure-operational-security/azure-operational-security-fig4.png)
@@ -164,7 +164,7 @@ Azure Security Center は、クラッシュ ダンプ ファイルの一時的�
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-[OMS のセキュリティ](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) と監査ソリューションによって、IT 管理者はすべてのリソースを能動的に監視できるようになるため、セキュリティ インシデントの影響を最小限に抑えることができます。 OMS のセキュリティと監査には、リソースを監視するために利用できるセキュリティ ドメインがあります。 セキュリティ ドメインによって各オプションへの速やかなアクセスが可能になるほか、セキュリティを監視するうえで、次に示すドメインの監視対象がさらに詳細になります。
+[Log Analytics のセキュリティ](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)と監査ソリューションによって、IT 管理者はすべてのリソースを能動的に監視できるようになるため、セキュリティ インシデントの影響を最小限に抑えることができます。 Log Analytics Security and Audit には、リソースを監視するために利用できるセキュリティ ドメインがあります。 セキュリティ ドメインによって各オプションへの速やかなアクセスが可能になるほか、セキュリティを監視するうえで、次に示すドメインの監視対象がさらに詳細になります。
 
 -   マルウェアの評価
 -   [Update Assessment] \(更新の評価)
@@ -312,7 +312,7 @@ Azure AD の監査レポートのイベントは、180 日間保持されます�
 
 この記事では、以下の内容について説明しています。
 
--   Operations Management Suite (OMS) におけるデータの収集、処理、および保護の方法。
+-   Log Analytics スイートでのデータの収集、処理、および保護方法
 
 -   複数のデータ ソース間での迅速なイベント分析。 セキュリティ上のリスクを特定し、脅威と攻撃の範囲および影響を把握してセキュリティ違反による損害を軽減します。
 
@@ -335,7 +335,7 @@ Azure AD の監査レポートのイベントは、180 日間保持されます�
 
 Microsoft は、攻撃に強く、回復力のあるクラウド インフラストラクチャを確保することを考慮しながら、サービスとソフトウェアを設計しています。
 
-- [Operations Management Suite | Security & Compliance](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Log Analytics | Security & Compliance](https://www.microsoft.com/cloud-platform/security-and-compliance)
 
 Microsoft のセキュリティ データと分析を使用することにより、よりインテリジェントで効果的な脅威の検出を実行できます。
 

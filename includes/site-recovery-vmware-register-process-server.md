@@ -1,3 +1,16 @@
+---
+author: rayne-wiselman
+ms.service: site-recovery
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: raynew
+ms.openlocfilehash: e18d0a6a01a86f844edc213fc95003cf4f4b46c9
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50164794"
+---
 * リモート デスクトップ接続を使用して、プロセス サーバー仮想マシンに接続します。
 * デスクトップにあるショートカットをクリックして、cspsconfigtool.exe を起動できます  (プロセス サーバーに初めてログインする場合、このツールは自動的に起動します)。
   - 構成サーバーの完全修飾名 (FQDN) または IP アドレス。

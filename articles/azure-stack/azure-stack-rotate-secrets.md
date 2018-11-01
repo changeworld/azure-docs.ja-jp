@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: b0fe9acc187aab87e8ee0528cf998e2ef923f897
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 418b23f0783341ff7e5aaf7e2bbb2e869eb7dc45
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722012"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466156"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Azure Stack でシークレットをローテーションする
 
@@ -81,14 +81,18 @@ Azure Stack では、次のようなコンテキストで、新しい証明書�
 
    > [!IMPORTANT]  
    > シークレット ローテーションが環境で正常に実行されていないことを確認します。 シークレット ローテーションが既に実行されている場合、Azure Stack をバージョン 1807 以降に更新してからシークレット ローテーションを実行します。 
-1.  メンテナンス操作をユーザーに通知します。 可能な限り非営業時間中に、通常のメンテナンス期間をスケジュールします。 メンテナンス操作は、ユーザーのワークロードとポータル操作の両方に影響を及ぼす可能性があります。
+
+1.  オペレーターが、Azure Stack シークレットのローテーション中に、アラートが開いて自動的に閉じることに気付くことがあります。  これは予期される動作であり、アラートは無視してもかまいません。  オペレーターは、Test-AzureStack を実行することで、このアラートの有効性を確認できます。  SCOM を使用して Azure Stack システムを監視しているオペレーターの場合、システムをメンテナンスモードにすると、これらのアラートは ITSM システムに届かなくなりますが、Azure Stack システムに到達できなくなっても引き続きアラートは生成されます。 
+2. メンテナンス操作をユーザーに通知します。 可能な限り非営業時間中に、通常のメンテナンス期間をスケジュールします。 メンテナンス操作は、ユーザーのワークロードとポータル操作の両方に影響を及ぼす可能性があります。
     > [!note]  
     > 次の手順は、Azure Stack 外部シークレットのローテーションに対してのみ適用されます。
-3. 代わりの外部証明書の新しいセットを準備します。 新しいセットは、「[Azure Stack 公開キー インフラストラクチャ証明書の要件](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)」で説明されている証明書の仕様と一致します。
-4.  ローテーションに使われる証明書のバックアップを安全なバックアップ場所に格納します。 ローテーションを実行して失敗した場合は、ローテーションを再実行する前に、ファイル共有内の証明書をバックアップ コピーに置き換えます。 バックアップ コピーはセキュリティで保護されたバックアップ場所に保存するよう注意してください。
-5.  ERCS VM からアクセスできるファイル共有を作成します。 ファイル共有は、**CloudAdmin** ID で読み書きできる必要があります。
-6.  ファイル共有にアクセスできるコンピューターから PowerShell ISE コンソールを開きます。 ファイル共有に移動します。 
-7.  **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** を実行して、外部証明書に必要なディレクトリを作成します。
+
+3. シークレットをローテーションする前に、**[Test-AzureStack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test)** を実行して、すべてのテスト出力が正常であることを確認します。
+4. 代わりの外部証明書の新しいセットを準備します。 新しいセットは、「[Azure Stack 公開キー インフラストラクチャ証明書の要件](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs)」で説明されている証明書の仕様と一致します。
+5.  ローテーションに使われる証明書のバックアップを安全なバックアップ場所に格納します。 ローテーションを実行して失敗した場合は、ローテーションを再実行する前に、ファイル共有内の証明書をバックアップ コピーに置き換えます。 バックアップ コピーはセキュリティで保護されたバックアップ場所に保存するよう注意してください。
+6.  ERCS VM からアクセスできるファイル共有を作成します。 ファイル共有は、**CloudAdmin** ID で読み書きできる必要があります。
+7.  ファイル共有にアクセスできるコンピューターから PowerShell ISE コンソールを開きます。 ファイル共有に移動します。 
+8.  **[CertDirectoryMaker.ps1](http://www.aka.ms/azssecretrotationhelper)** を実行して、外部証明書に必要なディレクトリを作成します。
 
 ## <a name="rotating-external-and-internal-secrets"></a>外部および内部シークレットのローテーション
 

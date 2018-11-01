@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: d3714f7226de2a457f37e6ea4afa2b066ee460d1
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c14013121517267445e89f43e228b03ba184f013
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49409137"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415264"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
 
@@ -49,12 +49,12 @@ Log Analytics には、収集されたデータの量、データの送信元、
     - データの収集とインデックス作成に要した時間  
 - クエリのリスト
 
-![使用量とコストのダッシュボード](./media/log-analytics-manage-cost-storage/usage-estimated-cost-dashboard-01.png)<br>
+![使用量とコストのダッシュボード](media/log-analytics-usage/usage-estimated-cost-dashboard-01.png)<br>
 )
 
 ### <a name="to-work-with-usage-data"></a>使用量データを扱うには
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](./media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](media/log-analytics-usage/azure-portal-01.png)<br><br>  
 3. Log Analytics ワークスペースの一覧からワークスペースを選択します。
 4. 左側のウィンドウにある一覧から **[使用量と推定コスト]** を選択します。
 5. **[使用量と推定コスト]** ダッシュボードでは、**[時間: 過去 24 時間]** を選択して時間の範囲を変更したり、期間を変更したりすることができます。<br><br> ![期間](./media/log-analytics-usage/usage-time-filter-01.png)<br><br>

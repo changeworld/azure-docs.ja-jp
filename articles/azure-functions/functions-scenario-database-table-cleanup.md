@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: 024958d8a548313b53fc24ade5805de036a89afb
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: adeabacfd468a7a5967ff05f527849e31cbeead8
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351917"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084460"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
 このトピックでは、Azure Functions を使用して Azure SQL Database のテーブルの行をクリーンアップするスケジュール済みジョブを作成する方法を示します。 この新しい C# スクリプト関数は、Azure Portal の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 このシナリオではデータベースに対する一括操作を使用しています。 
@@ -86,11 +86,12 @@ Function App は、Azure での関数の実行をホストします。 接続文
     using System.Configuration;
     using System.Data.SqlClient;
     using System.Threading.Tasks;
+    using Microsoft.Extensions.Logging;
     ```
 
 4. 既存の `Run` 関数を次のコードに置き換えます。
     ```cs
-    public static async Task Run(TimerInfo myTimer, TraceWriter log)
+    public static async Task Run(TimerInfo myTimer, ILogger log)
     {
         var str = ConfigurationManager.ConnectionStrings["sqldb_connection"].ConnectionString;
         using (SqlConnection conn = new SqlConnection(str))
@@ -103,7 +104,7 @@ Function App は、Azure での関数の実行をホストします。 接続文
             {
                 // Execute the command and log the # rows affected.
                 var rows = await cmd.ExecuteNonQueryAsync();
-                log.Info($"{rows} rows were updated");
+                log.LogInformation($"{rows} rows were updated");
             }
         }
     }

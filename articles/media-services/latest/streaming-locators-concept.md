@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 56e9a0b4eec347d2367c38ab00c6c9d9dca60752
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: cb34855fc9451679c885eebb0ef5a2fab0be8c57
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986898"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50086847"
 ---
 # <a name="streaming-locators"></a>ストリーミング ロケーター
 
@@ -26,20 +26,20 @@ ms.locfileid: "49986898"
 
 次の表は、StreamingLocator のプロパティとそれらの定義を示しています。
 
-|Name|type|説明|
-|---|---|---|
-|id |string|リソースの完全修飾リソース ID。|
-|name   |string|リソースの名前。|
-|properties.alternativeMediaId  |string|このストリーミング ロケーターの別のメディア ID。|
-|properties.assetName   |string|アセット名。|
-|properties.contentKeys |StreamingLocatorContentKey[]|このストリーミング ロケーターで使用される ContentKey。|
-|properties.created |string|ストリーミング ロケーターの作成時刻。|
-|properties.defaultContentKeyPolicyName |string|このストリーミング ロケーターで使用される既定の ContentKeyPolicy の名前。|
-|properties.endTime |string|ストリーミング ロケーターの終了時刻。|
-|properties.startTime   |string|ストリーミング ロケーターの開始時刻。|
-|properties.streamingLocatorId  |string|ストリーミング ロケーターの StreamingLocatorId。|
-|properties.streamingPolicyName |string|このストリーミング ロケーターで使用されるストリーミング ポリシーの名前。 作成したストリーミング ポリシーの名前を指定するか、定義済みのストリーミング ポリシーのいずれかを指定します。 利用できる定義済みのストリーミング ポリシーは次のとおりです。'Predefined_DownloadOnly'、'Predefined_ClearStreamingOnly'、'Predefined_DownloadAndClearStreaming'、'Predefined_ClearKey'、'Predefined_MultiDrmCencStreaming' および 'Predefined_MultiDrmStreaming'|
-|type   |string|リソースの種類。|
+|Name|説明|
+|---|---|
+|id |リソースの完全修飾リソース ID。|
+|name   |リソースの名前。|
+|properties.alternativeMediaId|このストリーミング ロケーターの別のメディア ID。|
+|properties.assetName   |アセット名。|
+|properties.contentKeys |このストリーミング ロケーターで使用される ContentKey。|
+|properties.created |ストリーミング ロケーターの作成時刻。|
+|properties.defaultContentKeyPolicyName|このストリーミング ロケーターで使用される既定の ContentKeyPolicy の名前。|
+|properties.endTime |ストリーミング ロケーターの終了時刻。|
+|properties.startTime|ストリーミング ロケーターの開始時刻。|
+|properties.streamingLocatorId|ストリーミング ロケーターの StreamingLocatorId。|
+|properties.streamingPolicyName |このストリーミング ロケーターで使用されるストリーミング ポリシーの名前。 作成したストリーミング ポリシーの名前を指定するか、定義済みのストリーミング ポリシーのいずれかを指定します。 利用できる定義済みのストリーミング ポリシーは次のとおりです。'Predefined_DownloadOnly'、'Predefined_ClearStreamingOnly'、'Predefined_DownloadAndClearStreaming'、'Predefined_ClearKey'、'Predefined_MultiDrmCencStreaming' および 'Predefined_MultiDrmStreaming'|
+|type|リソースの種類。|
 
 完全な定義については、「[Streaming Locators](https://docs.microsoft.com/rest/api/media/streaminglocators)」(ストリーミング ロケーター) を参照してください。
 

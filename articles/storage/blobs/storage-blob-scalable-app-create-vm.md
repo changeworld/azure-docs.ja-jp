@@ -10,12 +10,12 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.custom: mvc
 ms.component: blobs
-ms.openlocfilehash: fddf35f4d2a2bc7abef891ee508eaecc9ffb4719
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 82f0820faadfdcb067abad340c6fbed1a62e94d4
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39396915"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230762"
 ---
 # <a name="create-a-virtual-machine-and-storage-account-for-a-scalable-application"></a>スケーラブルなアプリケーションの仮想マシンおよびストレージ アカウントの作成
 
@@ -54,7 +54,6 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -SkuName Standard_LRS `
   -Kind Storage `
-  -EnableEncryptionService Blob
 ```
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成

@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps から Azure Virtual Network にアクセスする
-description: この概要では、分離されたロジック アプリが、プライベートおよび専用のリソースを使用する統合サービス環境 (ISE) から Azure Virtual Network にどのように接続されるのかを示します
+title: 統合サービス環境 (ISE) により Azure Logic Apps から Azure Virtual Network にアクセスする
+description: この概要では、統合サービス環境 (ISE) によって、Logic Apps から Azure Virtual Network にアクセスする方法を説明します。
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,19 +9,19 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 9546b8ca33ef7da2d570b547446858e2a4099234
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: f21af23cf0b7b121441b1433f382db60ef7f13fe
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393149"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408661"
 ---
-# <a name="access-to-azure-virtual-network-resources-from-isolated-azure-logic-apps"></a>分離された Azure Logic Apps から Azure Virtual Network のリソースにアクセスする
+# <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>統合サービス環境 (ISE) を使用して、Azure Logic Apps から Azure Virtual Network リソースにアクセスする
 
 > [!NOTE]
 > この機能は*プライベート プレビュー*段階です。 アクセスを要求するには、[参加要求をここで作成](https://aka.ms/iseprivatepreview)します。
 
-場合によって、ご利用のロジック アプリと統合アカウントで、仮想マシン (VM) や [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) 内の他のシステムまたはサービスのようなセキュリティで保護されたリソースにアクセスする必要があります。 このアクセスを提供するため、自分のロジック アプリと統合アカウントを作成するための場所として、[*統合サービス環境* (ISE) を作成する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)ことができます。 
+場合によって、ご利用のロジック アプリと統合アカウントで、仮想マシン (VM) や [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) 内の他のシステムまたはサービスのようなセキュリティで保護されたリソースにアクセスする必要があります。 このアクセスを設定するため、自分のロジック アプリと統合アカウント用の場所として使用する ["*統合サービス環境*" (ISE) を作成する](../logic-apps/connect-virtual-network-vnet-isolated-environment.md)ことができます。 
 
 ![統合サービス環境を選択する](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 

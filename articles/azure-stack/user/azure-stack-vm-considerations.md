@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: mabrigg
-ms.openlocfilehash: 30cdb07f8e0d5481f34148b99fa86f2a1bb85e0b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: f1088e63b33d7c0a00777d7a06e6e80244acc84d
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022198"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954859"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Azure Stack で仮想マシンを操作する際の考慮事項
 
@@ -29,7 +29,7 @@ Azure Stack 仮想マシンは、オンデマンドのスケーラブルなコ�
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>チート シート: 仮想マシンの相違点
 
-| Feature | Azure (グローバル) | Azure Stack |
+| 機能 | Azure (グローバル) | Azure Stack |
 | --- | --- | --- |
 | 仮想マシン イメージ | Azure Marketplace には、仮想マシンの作成に使用できるイメージが含まれています。 Azure Marketplace で入手できるイメージの一覧を参照するには、[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) のページを参照してください。 | 既定では、Azure Stack Marketplace に使用可能なイメージはありません。 Azure Stack のクラウド管理者は、ユーザーがイメージを使用する前に、Azure Stack Marketplace に対してイメージの発行またはダウンロードを行う必要があります。 |
 | 仮想マシン サイズ | Azure では、幅広いサイズの仮想マシンがサポートされます。 提供されているサイズとオプションの詳細については、[Windows 仮想マシンのサイズ](../../virtual-machines/virtual-machines-windows-sizes.md)と [Linux 仮想マシンのサイズ](../../virtual-machines/linux/sizes.md)に関するトピックを参照してください。 | Azure Stack は、Azure で使用できる仮想マシンのサイズのサブセットをサポートしています。 サポートされているサイズの一覧を参照するには、この記事の[仮想マシンのサイズ](#virtual-machine-sizes)についてのセクションを参照してください。 |
@@ -37,6 +37,7 @@ Azure Stack 仮想マシンは、オンデマンドのスケーラブルなコ�
 | 仮想マシン拡張機能 |Azure では、幅広い仮想マシン拡張機能がサポートされます。 使用可能な拡張機能については、「[Windows 用の仮想マシン拡張機能とその機能](../../virtual-machines/windows/extensions-features.md)」をご覧ください。| Azure Stack は、Azure で使用できる拡張機能のサブセットをサポートしており、拡張機能それぞれに特定のバージョンがあります。 Azure Stack のクラウド管理者は、ユーザーにどの拡張機能を提供するかを選択することができます。 サポートされている拡張機能の一覧を参照するには、この記事の[仮想マシンの拡張機能](#virtual-machine-extensions)についてのセクションを参照してください。 |
 | 仮想マシンのネットワーク | テナントの仮想マシンに割り当てられたパブリック IP アドレスは、インターネット経由でアクセスできます。<br><br><br>Azure の仮想マシンには固定の DNS 名がある | テナントの仮想マシンに割り当てられたパブリック IP アドレスにアクセスできるのは、Azure Stack Development Kit 環境内のみです。 ユーザーは、Azure Stack で作成される仮想マシンに接続するためには、[RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) または [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) 経由で Azure Stack Development Kit にアクセスできる必要があります。<br><br>特定の Azure Stack インスタンス内に作成された仮想マシンには、クラウド管理者が構成した値に基づく DNS 名があります。 |
 | 仮想マシンのストレージ | [マネージド ディスク](../../virtual-machines/windows/managed-disks-overview.md)をサポートしています。 | マネージド ディスクは、バージョン 1808 以降の Azure Stack でサポートされています。 |
+| 仮想マシン ディスクのパフォーマンス | ディスクの種類とサイズによって異なります。 | ディスクが接続されている VM のサイズによって異なります。「[Azure Stack でサポートされている仮想マシンのサイズ](azure-stack-vm-sizes.md)」を参照してください。
 | API のバージョン | Azure では常に、すべての仮想マシン機能について最新の API のバージョンが用意されます。 | Azure Stack では特定の Azure サービスがサポートされ、それらのサービスについて特定の API バージョンがサポートされます。 サポートされている API バージョンの一覧を参照するには、この記事の [API バージョン](#api-versions)についてのセクションを参照してください。 |
 |仮想マシン可用性セット|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン<br>マネージド ディスクのサポート|複数の障害ドメイン (リージョンあたり 2 または 3)<br>複数の更新ドメイン (最大 20)<br>マネージド ディスクのサポートなし|
 |仮想マシン スケール セット|自動スケールがサポートされる|自動スケールはサポートされない。<br>ポータル、Resource Manager テンプレート、または PowerShell を使用してスケール セットにより多くのインスタンスを追加します。

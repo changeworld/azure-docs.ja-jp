@@ -4,10 +4,6 @@ description: すべてのポートで内部トラフィックを負荷分散す�
 services: load-balancer
 documentationcenter: na
 author: rdhillon
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 9661722c5d35e4336d5e42374a1444cf50734fba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8e1b94dbdef66c6423d16ffcbc9df4cd60a13c69
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998340"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415544"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>内部ロード バランサー用の高可用性ポートの構成
 

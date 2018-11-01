@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/24/2018
 ms.author: juliako
-ms.openlocfilehash: 62cc4634a0f76b0562d5b3c1355a7442fc5cf989
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e7abdb568b11870fb467ee6d3759881ca337d3cc
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985235"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085812"
 ---
 # <a name="assets"></a>アセット
 
@@ -34,19 +34,19 @@ Media Services v3 では、アセットまたは HTTP(S) URL からジョブの�
 
 次の表は、アセットのプロパティとその定義を示しています。
 
-|Name|type|説明|
-|---|---|---|
-|id|string|リソースの完全修飾リソース ID。|
-|name|string|リソースの名前。|
-|properties.alternateId |string|アセットの代替 ID。|
-|properties.assetId |string|アセット ID。|
-|properties.container |string|アセットの BLOB コンテナーの名前。|
-|properties.created |string|アセットの作成日。|
-|properties.description |string|アセットの説明。|
-|properties.lastModified |string|アセットの最終変更日。|
-|properties.storageAccountName |string|ストレージ アカウントの名前。|
-|properties.storageEncryptionFormat |AssetStorageEncryptionFormat |資産の暗号化形式。 None または MediaStorageEncryption のいずれか。|
-|type|string|リソースの種類。|
+|Name|説明|
+|---|---|
+|id|リソースの完全修飾リソース ID。|
+|name|リソースの名前。|
+|properties.alternateId |資産の代替 ID。|
+|properties.assetId |資産 ID。|
+|properties.container |資産の BLOB コンテナーの名前。|
+|properties.created |アセットの作成日。|
+|properties.description|アセットの説明。|
+|properties.lastModified |資産の最終変更日。|
+|properties.storageAccountName |ストレージ アカウントの名前。|
+|properties.storageEncryptionFormat |アセットの暗号化形式。 None または MediaStorageEncryption のいずれか。|
+|type|リソースの種類。|
 
 完全な定義については、「[Assets](https://docs.microsoft.com/rest/api/media/assets)」(アセット) を参照してください。
 

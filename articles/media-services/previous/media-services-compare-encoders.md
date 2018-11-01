@@ -4,7 +4,7 @@ description: このトピックでは、**Media Encoder Standard** と **Media E
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a79437c0-4832-423a-bca8-82632b2c47cc
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 10/24/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: cf420c6b5f72b2109016bdb8b86d6cfcc506f4e5
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c08759f4682c6010c2338ff7aaf61cda92eb0484
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34639522"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232089"
 ---
 # <a name="comparison-of-azure-on-demand-media-encoders"></a>Azure オンデマンド メディア エンコーダーの比較
 

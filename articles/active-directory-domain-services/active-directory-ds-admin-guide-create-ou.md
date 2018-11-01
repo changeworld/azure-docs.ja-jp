@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: 管理ガイド | Microsoft Docs
 description: Azure AD Domain Services のマネージド ドメインに組織単位 (OU) を作成する
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: 52602ad8-2b93-4082-8487-427bdcfa8126
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: 31fe241a94cedb04e1f8c50819eef7ebf675d2fb
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: cd4964939aa9b9ebd96a2fb29e1a6f7bf422d477
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504840"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50154830"
 ---
 # <a name="create-an-organizational-unit-ou-on-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services のマネージド ドメインに組織単位 (OU) を作成する
 Azure AD Domain Services のマネージド ドメインには 2 つの組み込みのコンテナーが含まれており、それぞれを "AADDC Computers"、"AADDC Users" と呼びます。 "AADDC Computers" コンテナーには、マネージド ドメインに参加しているすべてのコンピューターを対象としたコンピューター オブジェクトが含まれています。 "AADDC Users" コンテナーには、Azure AD テナント内のユーザーとグループが含まれています。 場合によっては、ワークロードをデプロイするために、マネージド ドメイン上にサービス アカウントを作成しなければならないことがあります。 その場合は、マネージド ドメイン上でカスタムの組織単位 (OU) を作成し、その OU 内でサービス アカウントを作成できます。 この記事では、マネージド ドメインに OU を作成する方法を説明します。
@@ -81,9 +81,7 @@ Azure AD Domain Services のマネージド ドメインは、Active Directory �
 >
 
 ## <a name="related-content"></a>関連コンテンツ
-* 
-  [Azure AD Domain Services のマネージド ドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
-* 
-  [マネージド ドメインでグループ ポリシーを構成する](active-directory-ds-admin-guide-administer-group-policy.md)
+* [Azure AD Domain Services のマネージド ドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
+* [マネージド ドメインでグループ ポリシーを構成する](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Active Directory 管理センター: はじめに](https://technet.microsoft.com/library/dd560651.aspx)
 * [サービス アカウントのステップ バイ ステップ ガイド](https://technet.microsoft.com/library/dd548356.aspx)

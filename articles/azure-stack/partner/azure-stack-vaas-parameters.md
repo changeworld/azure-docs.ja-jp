@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Validation as a Service の一般的なワークフロー パラメーター | Microsoft Docs
-description: Azure Stack Validation as a Service に使用される一般的なワークフロー パラメーター
+title: Azure Stack のサービスとしての検証のワークフロー共通パラメーター | Microsoft Docs
+description: Azure Stack のサービスとしての検証のワークフロー共通パラメーター
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,53 +10,82 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 10/19/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.openlocfilehash: c50e4b5c9eb81c9386e2cb0db96a88de70dcb9e9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 25c93560b24b2915ef9a9077b5bca0d15286b0e3
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157805"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646781"
 ---
-# <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Azure Stack Validation as a Service に使用される一般的なワークフロー パラメーター
+# <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>Azure Stack のサービスとしての検証のワークフロー共通パラメーター
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-一般的なパラメーターとしては、サービスとしての検証 (VaaS) のすべてのテストに必要な環境変数やユーザー資格情報などの値が含まれます。 これらの値は、ワークフロー レベルで定義します。 ワークフローを作成または変更するときにこれらの値を保存します。 スケジュールするときに、ワークフローによって、テスト用の値が読み込まれます。 
+共通パラメーターには、サービスとしての検証 (VaaS) のすべてのテストに必要な環境変数やユーザー資格情報などの値が含まれます。 これらの値は、ワークフローを作成または変更するときにワークフロー レベルで定義されます。 テストをスケジュールするときに、ワークフローの各テストにこれらの値がパラメーターとして渡されます。
+
+> [!NOTE]
+> 各テストでは、独自のパラメーター セットが定義されています。 スケジュール時に、テストで共通パラメーターとは別に値を入力することが必要な場合があります。また、共通パラメーターの値を上書きできる場合もあります。
 
 ## <a name="environment-parameters"></a>環境パラメーター
 
-環境パラメーターは、テスト対象の Azure Stack 環境を表します。 これらの値を指定するには、お使いのスタンプ構成ファイルを生成してアップロードする必要があります `&lt;link&gt;. [How to get the stamp info link].`
+環境パラメーターは、テスト対象の Azure Stack 環境を表します。 テスト対象の特定のインスタンスの Azure Stack スタンプ情報ファイルを生成してアップロードすることによって、これらの値を提供する必要があります。
 
-| パラメーター名 | 必須 | type | 説明 |
-|----------------------------------|----------|------|---------------------------------------------------------------------------------------------------------------------------------|
-| Azure Stack のビルド | 必須 |  | Azure Stack のデプロイのビルド番号 (例: 1.0.170330.9) |
-| OEM バージョン | [はい] |  | Azure Stack のデプロイ中に使用される OEM パッケージのバージョン番号。 |
-| OEM 署名 | [はい] |  | Azure Stack のデプロイ中に使用される OEM パッケージの署名。 |
-| AAD テナント ID | 必須 |  | Azure Stack のデプロイ中に指定される Azure Active Directory テナント GUID。|
-| リージョン | 必須 |  | Azure Stack のデプロイ リージョン。 |
-| テナントの Resource Manager エンドポイント | 必須 |  | テナントの Azure Resource Manager 操作のエンドポイント (例: https://management.<ExternalFqdn>) |
-| 管理者の Resource Manager エンドポイント | [はい] |  | テナントの Azure Resource Manager 操作のエンドポイント (例: https://adminmanagement.<ExternalFqdn>) |
-| 外部 FQDN | [はい] |  | エンドポイントのサフィックスとして使用される外部の完全修飾ドメイン名  (例: local.azurestack.external、redmond.contoso.com)。 |
-| ノードの数 | [はい] |  | デプロイのノードの数。 |
+> [!NOTE]
+> 公式の検証ワークフローでは、ワークフローの作成後に環境パラメーターを変更することはできません。
+
+### <a name="generate-the-stamp-information-file"></a>スタンプ情報ファイルを生成する
+
+1. DVM または Azure Stack 環境にアクセスできる任意のマシンにログインします。
+2. 管理者特権の PowerShell ウィンドウで次のコマンドを実行します。
+    ```PowerShell
+    $CloudAdminUser = "<cloud admin username>"
+    $stampInfoPass = ConvertTo-SecureString "<cloud admin password>" -AsPlainText -Force
+    $stampInfoCreds = New-Object System.Management.Automation.PSCredential($CloudAdminUser, $stampInfoPass)
+    $params = Invoke-RestMethod -Method Get -Uri 'https://ASAppGateway:4443/ServiceTypeId/4dde37cc-6ee0-4d75-9444-7061e156507f/CloudDefinition/GetStampInformation'
+    ConvertTo-Json $params > stampinfoproperties.json
+    ```
+
+### <a name="locate-values-in-the-ece-configuration-file"></a>ECE 構成ファイルで値を検索する
+
+環境パラメーター値は、DVM の `C:\EceStore\403314e1-d945-9558-fad2-42ba21985248\80e0921f-56b5-17d3-29f5-cd41bf862787` にある **ECE 構成ファイル**で手動で検索することもできます。
 
 ## <a name="test-parameters"></a>テスト パラメーター
 
-一般的なテスト パラメーターには、構成ファイルに格納できない機密情報が含まれています。このパラメーターは手動で指定する必要があります。
+共通のテスト パラメーターには、構成ファイルに格納できない機密情報が含まれます。 これらは手動で指定する必要があります。
 
-| パラメーター名 | 必須 | type | 説明 |
-|--------------------------------|------------------------------------------------------------------------------|------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| テナント ユーザー名 | 必須 |  | AAD ディレクトリのサービス管理者によって既にプロビジョニングされている、またはプロビジョニングする必要がある Azure Active Directory テナント管理者。 テナント アカウントのプロビジョニングの詳細については、「[Get started with Azure AD (Azure AD の概要)](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad)」を参照してください。 この値は、リソース (VM、ストレージ アカウントなど) のプロビジョニングやワークロードを実行する目的で、テンプレートのデプロイなどのテナント レベルの操作を行うためにテストによって使用されます。 この値は、リソース (VM、ストレージ アカウントなど) のプロビジョニングやワークロードを実行する目的で、テンプレートのデプロイなどのテナント レベルの操作を行うためにテストによって使用されます。 |
-| テナント パスワード | 必須 |  | テナント ユーザーのパスワード。 |
-| サービス管理者のユーザー名 | 必須: ソリューションの検証、パッケージの検証<br>不要: テスト成功 |  | Azure Stack のデプロイ中に指定される AAD ディレクトリ テナントの Azure Active Directory の管理者。 |
-| サービス管理者のパスワード | 必須: ソリューションの検証、パッケージの検証<br>不要: テスト成功 |  | サービス管理者ユーザーのパスワード。 |
-| クラウド管理者のユーザー名 | 必須 |  | Azure Stack ドメイン管理者アカウント (例: contoso\cloudadmin)。 構成ファイルで User Role="CloudAdmin" を検索します。また、構成ファイルで UserName タグの値を選択します。 |
-| クラウド管理者のパスワード | 必須 |  | クラウド管理者ユーザーのパスワード。 |
-| 診断接続文字列 | 必須 |  | テスト実行中に診断ログがコピーされる先の Azure Storage アカウントの SAS URI。 SAS URI を生成する手順については、[Blob Storage アカウントの設定](azure-stack-vaas-set-up-account.md)に関するページをご覧ください。 |
+パラメーター    | 説明
+-------------|-----------------
+テナント管理者ユーザー                            | AAD ディレクトリのサービス管理者によってプロビジョニングされた Azure Active Directory テナント管理者。 このユーザーは、リソース (VM、ストレージ アカウントなど) を設定したり、ワークロードを実行したりするためのテンプレートのデプロイなどのテナント レベルのアクションを実行します。 テナント アカウントのプロビジョニングの詳細については、[新しい Azure Stack テナントの追加](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-new-user-aad)に関する記事をご覧ください。
+サービス管理者ユーザー             | Azure Stack のデプロイ時に指定された AAD ディレクトリ テナントの Azure Active Directory 管理者。 ECE 構成ファイルで `AADTenant` を検索し、`UniqueName` 要素の値を選択します。
+クラウド管理者ユーザー               | Azure Stack ドメイン管理者アカウント (例: `contoso\cloudadmin`)。 ECE 構成ファイルで `User Role="CloudAdmin"` を検索し、`UserName` 要素の値を選択します。
+診断接続文字列          | テストの実行中に診断ログのコピー先となる Azure ストレージ アカウントの SAS URL。 SAS URL を生成する手順については、「[診断接続文字列を生成する](#generate-the-diagnostics-connection-string)」をご覧ください。 |
 
+> [!IMPORTANT]
+> 先に進むには、**診断接続文字列**が有効である必要があります。
+
+### <a name="generate-the-diagnostics-connection-string"></a>診断接続文字列を生成する
+
+テストの実行中に診断ログを保存するために、診断接続文字列が必要となります。 セットアップ時に作成した Azure ストレージ アカウント ([サービスとしての検証のリソースの設定](azure-stack-vaas-set-up-resources.md)に関する記事を参照) を使用して、VaaS でログをストレージ アカウントにアップロードする際にアクセスする Shared Access Signature (SAS) URL を作成します。
+
+1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
+
+1. **[使用できるサービス]** のオプションから **[BLOB]** を選択します。 残りのオプションについてはすべて選択を解除します。
+
+1. **[使用できるリソースの種類]** で、**[サービス]**、**[コンテナー]**、**[オブジェクト]** を選択します。
+
+1. **[与えられているアクセス許可]** で、**[読み取り]**、**[書き込み]**、**[リスト]**、**[追加]**、**[作成]** を選択します。 残りのオプションについてはすべて選択を解除します。
+
+1. **[開始時間]** を現在の時刻に設定し、**[終了時刻]** を現在の時刻から 3 か月後に設定します。
+
+1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
+
+> [!NOTE]  
+> SAS URL の生成時に指定した終了時刻になると、URL の有効期限が切れます。  
+テストをスケジュールするときは、URL の有効期間が 30 日以上であり、なおかつテストの実行に必要な期間有効であることを確認してください (3 か月を推奨)。
 
 ## <a name="next-steps"></a>次の手順
 
-- [Azure Stack のサービスとしての検証](https://docs.microsoft.com/azure/azure-stack/partner)について、さらに詳しい情報をご覧ください。
+- [サービスとしての検証の主要概念](azure-stack-vaas-key-concepts.md)を確認する

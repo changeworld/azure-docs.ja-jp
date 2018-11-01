@@ -1,20 +1,20 @@
 ---
 title: インデクサーを使用した Azure Search への Azure SQL Database の接続 | Microsoft Docs
 description: インデクサーを使用して Azure SQL Database から Azure Search インデックスにデータを取得する方法について説明します。
-author: chaosrealm
-manager: jlembicz
+ms.date: 10/17/2018
+author: mgottein
+manager: cgronlun
+ms.author: magottei
 services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 04/20/2018
-ms.author: eugenesh
-ms.openlocfilehash: 5897740a1b5a183738c08b4dfde571be652aff3e
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 1c498bb857b717682f943af96b222d9712b5d389
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092251"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49409222"
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>インデクサーを使用した Azure Search への Azure SQL Database の接続
 
@@ -277,7 +277,7 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
         }
     }
 
-**softDeleteMarkerValue** は、文字列にする必要があります。実際の値の文字列表現を使用してください。 たとえば、削除された行が値 1 でマークされている整数列がある場合は、`"1"` を使用します。 削除された行が BIT 列でブール型の true 値でマークされている場合は、`"True"` を使用します。
+**softDeleteMarkerValue** は、文字列にする必要があります。実際の値の文字列表現を使用してください。 たとえば、削除された行が値 1 でマークされている整数列がある場合は、`"1"` を使用します。 削除された行が BIT 列でブール型の true 値でマークされている場合は、文字列リテラル `True` または `true` を使用します。大文字/小文字は区別されません。
 
 <a name="TypeMapping"></a>
 

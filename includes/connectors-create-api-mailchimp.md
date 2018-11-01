@@ -1,3 +1,16 @@
+---
+author: ecfan
+ms.service: logic-apps
+ms.topic: include
+ms.date: 11/03/2016
+ms.author: estfan
+ms.openlocfilehash: 752c43604349a2361a8f5b26cd6d0bce7b516bc0
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50134125"
+---
 ### <a name="prerequisites"></a>前提条件
 * [MailChimp](https://www.MailChimp.com/) アカウント 
 

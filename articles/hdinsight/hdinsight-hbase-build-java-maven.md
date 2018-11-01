@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: fc2bd03156d6005f1e10252583b4a13451f66dbf
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c10fcb8e45dc163629186cfb48408e8734bc5a56
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092629"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418213"
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Windows ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する
 Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成し、ビルドする方法について説明します。 その後、このアプリケーションを Azure HDInsight (Hadoop) で使用します。
@@ -25,7 +25,7 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 > このドキュメントの手順では、Windows を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="requirements"></a>必要条件
-* [Java プラットフォーム JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html) 7 以降
+* [Java プラットフォーム JDK](https://aka.ms/azure-jdks) 7 以降
 * [Maven](http://maven.apache.org/)
 * Windows ベースの HDInsight クラスターと HBase
 

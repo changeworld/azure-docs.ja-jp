@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
-ms.openlocfilehash: a22cd65ef5d4ef22038a8506359d1036e829db4d
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 44477f77547c9373bd4a3394c80e217d419bc8e0
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49362111"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420049"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Bulk Executor Java ライブラリを使用して Azure Cosmos DB で一括操作を実行する
 
@@ -28,7 +28,7 @@ ms.locfileid: "49362111"
 
 * Azure サブスクリプションを必要とせず、課金や契約もなしに [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、`https://localhost:8081` URI で [Azure Cosmos DB Emulator](https://docs.microsoft.com/azure/cosmos-db/local-emulator) を使用することもできます。 主キーは、[要求の認証](local-emulator.md#authenticating-requests)で与えられます。  
 
-* [Java Development Kit (JDK) 1.7 以降](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)  
+* [Java Development Kit (JDK) 1.7 以降](https://aka.ms/azure-jdks)  
   - Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。  
 
   - 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。

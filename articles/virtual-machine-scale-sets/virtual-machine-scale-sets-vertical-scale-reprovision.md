@@ -3,7 +3,7 @@ title: Azure 仮想マシン スケール セットの垂直方向のスケー�
 description: Azure Automation によるアラートの監視に応じて仮想マシンを垂直方向にスケーリングする方法
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
-ms.author: negat
-ms.openlocfilehash: 6e4733e023d1dc27fb099216f9afea07fe07446c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.author: manayar
+ms.openlocfilehash: 8080cdf78333eed9541311ba67221c713341a21a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26781821"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741574"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>仮想マシン スケール セットを使用した垂直方向の自動スケール
 この記事では、再プロビジョニングありまたはなしで Azure [仮想マシン スケール セット](https://azure.microsoft.com/services/virtual-machine-scale-sets/) を垂直方向にスケーリングする方法について説明します。 スケール セットにない VM の垂直方向のスケーリングについては、「[Azure Automation で Azure 仮想マシンを垂直方向にスケーリングする](../virtual-machines/windows/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
@@ -56,7 +56,7 @@ ms.locfileid: "26781821"
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>実行機能を持つ Azure Automation アカウントを作成する
-最初に、仮想マシン スケール セットのインスタンスをスケーリングするために使用する runbook をホストする、Azure Automation アカウントを作成する必要があります。 最近、[Azure Automation](https://azure.microsoft.com/services/automation/) では、ユーザーの代わりに Runbook を自動的に実行するためのサービス プリンシパルをセットアップする "アカウントとして実行" 機能が導入されました。 詳細については、「
+最初に、仮想マシン スケール セットのインスタンスをスケーリングするために使用する runbook をホストする、Azure Automation アカウントを作成する必要があります。 最近、[Azure Automation](https://azure.microsoft.com/services/automation/) では、ユーザーの代わりに Runbook を自動的に実行するためのサービス プリンシパルをセットアップする "アカウントとして実行" 機能が導入されました。 詳細については、次を参照してください。
 
 * [Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)
 
