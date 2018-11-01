@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
-ms.openlocfilehash: 349fe9eafc169d232c4434a2c536d2020d4ea76a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 68f8963464cd11711bcc7c380fd745875ad94d16
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702080"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419183"
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>クイックスタート: Java と Azure Cosmos DB で Table API アプリを構築する
 
@@ -38,7 +38,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 加えて次の作業を行います。 
 
-* [Java Development Kit (JDK) 1.7 以降](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Java Development Kit (JDK) 1.7 以降](https://aka.ms/azure-jdks)
     * Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。
     * 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
 * [Maven](http://maven.apache.org/) バイナリ アーカイブの[ダウンロード](http://maven.apache.org/download.cgi)と[インストール](http://maven.apache.org/install.html)

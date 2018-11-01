@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 02/06/2018
+ms.date: 10/31/2018
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: 1e95b00ea08105238a860265e46275c24ed7bfbd
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 2164dedc27d81aa488c3e054b4c6df067e96e612
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
-ms.locfileid: "29151819"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418196"
 ---
 #  <a name="configure-reverse-lookup-zones-for-an-smtp-banner-check"></a>SMTP バナー チェック用に逆引き参照ゾーンを構成する
 

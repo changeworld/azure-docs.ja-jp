@@ -14,12 +14,12 @@ ms.date: 04/06/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 210526e105793820a2e8a80a11b356b1d7d764da
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 857d58d31565e413a207162202f1a680d7da7c65
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42143729"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250735"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure のセルフサービス サインアップについて](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-signup)」をご覧ください。
@@ -128,7 +128,7 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 
 1. セルフ サービス プランに対応するために使用された資格情報を使用して Azure AD に接続します。
   ````
-    import-module MSOnline
+    Install-Module -Name MSOnline
     $msolcred = get-credential
     
     connect-msolservice -credential $msolcred

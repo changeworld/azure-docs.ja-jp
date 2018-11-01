@@ -4,10 +4,6 @@ description: PowerShell でゾーン冗長パブリック IP アドレス フロ
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -15,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: kumud
-ms.openlocfilehash: ba76037f36d3f4f8a06103105d65b3f2ddc88c96
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 9dfd477678148f3e4bb80bafe61e4867dab54c8e
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31590838"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739534"
 ---
 #  <a name="create-a-public-load-balancer-standard-with-zone-redundant-public-ip-address-frontend-using-powershell"></a>PowerShell でゾーン冗長パブリック IP アドレス フロントエンドを使用してパブリック Load Balancer Standard を作成する
 
@@ -39,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Connect-AzureRmAccount
 ```
 
-## <a name="create-resource-group"></a>Create resource group
+## <a name="create-resource-group"></a>リソース グループの作成
 
 リソース グループを作成するには、次のコマンドを使用します。
 
@@ -52,7 +48,7 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location westeurope
 
 ```powershell
 $publicIp = New-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup -Name 'myPublicIP' `
-  -Location westeurope -AllocationMethod Static -Sku Standard 
+  -Location westeurope -AllocationMethod Static -Sku Standard 
 ```
 
 ## <a name="create-a-front-end-ip-configuration-for-the-website"></a>Web サイトのフロントエンド IP 構成の作成
@@ -92,8 +88,8 @@ Load Balancer Standard を作成するには、次のコマンドを使用しま
 
 ```powershell
 $lb = New-AzureRmLoadBalancer -ResourceGroupName myResourceGroup -Name 'MyLoadBalancer' -Location westeurope `
-  -FrontendIpConfiguration $feip -BackendAddressPool $bepool `
-  -Probe $probe -LoadBalancingRule $rule -Sku Standard
+  -FrontendIpConfiguration $feip -BackendAddressPool $bepool `
+  -Probe $probe -LoadBalancingRule $rule -Sku Standard
 ```
 
 ## <a name="next-steps"></a>次の手順

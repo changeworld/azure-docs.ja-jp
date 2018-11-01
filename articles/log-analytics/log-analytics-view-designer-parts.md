@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 8cc654fca8e645253ffc79ef808075bdbe887530
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 31ee14369cc3f1c03d13c59e1239aa567bce3552
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043296"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419777"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Log Analytics のビュー デザイナー 視覚化パーツのリファレンス ガイド
 Azure Log Analytics のビュー デザイナーを使用すると、Azure Portal で Log Analytics ワークスペースからのデータのさまざまな視覚化を含むカスタム ビューを作成できます。 この記事は、カスタム ビューで使用可能な視覚化パーツの設定のリファレンス ガイドです。
@@ -50,7 +50,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="list-of-queries-part"></a>[クエリのリスト] パーツ
 [クエリのリスト] パーツには、ログ検索クエリのリストが表示されます。 各クエリを選択すると、その結果が表示されます。 このビューには、既定では 1 つのクエリが含まれます。**[+ Query]** (クエリの追加) を選択すると、クエリを追加できます。
 
-![[クエリのリスト] ビュー](media/log-analytics-view-designer/view-list-queries.png)
+![[クエリのリスト] ビュー](media/log-analytics-view-designer-parts/view-list-queries.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -66,7 +66,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="number-and-list-part"></a>[Number and list] (数値とリスト) パーツ
 ヘッダーには、ログ検索クエリのレコード数を示す 1 つの数値が表示されます。 リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。
 
-![[クエリのリスト] ビュー](media/log-analytics-view-designer/view-number-list.png)
+![[クエリのリスト] ビュー](media/log-analytics-view-designer-parts/view-number-list.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -95,7 +95,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="two-numbers-and-list-part"></a>[Two numbers and list] (2 つの数値とリスト) パーツ
 別のログ検索クエリのレコード数を示す 2 つの数値がヘッダーに表示されます。 リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。
 
-![[Two numbers & list] \(2 つの番号とリスト) ビュー](media/log-analytics-view-designer/view-two-numbers-list.png)
+![[Two numbers & list] \(2 つの番号とリスト) ビュー](media/log-analytics-view-designer-parts/view-two-numbers-list.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -126,7 +126,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="donut-and-list-part"></a>[Donut and list] (ドーナツとリスト) パーツ
 ヘッダーには、ログ クエリ内の値列を集計した 1 つの数値が表示されます。 ドーナツには、上位 3 件のレコードの結果がグラフィカルに表示されます。
 
-![[Donut and list] (ドーナツとリスト) ビュー](media/log-analytics-view-designer/view-donut-list.png)
+![[Donut and list] (ドーナツとリスト) ビュー](media/log-analytics-view-designer-parts/view-donut-list.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -167,7 +167,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="two-timelines-and-list-part"></a>[Two timelines and list] (2 つのタイムラインとリスト) パーツ
 ヘッダーには、一定期間の 2 つのログ クエリの結果が棒グラフとして表示され、ログ クエリの 1 つの値列を集計した 1 つの数字がコールアウトに示されます。 リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。
 
-![[Two timelines and list] (2 つのタイムラインとリスト) ビュー](media/log-analytics-view-designer/view-two-timelines-list.png)
+![[Two timelines and list] (2 つのタイムラインとリスト) ビュー](media/log-analytics-view-designer-parts/view-two-timelines-list.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -199,7 +199,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="information-part"></a>[Information] \(情報) パーツ
 ヘッダーには、静的テキストとリンク (オプション) が表示されます。 リストには、静的タイルとテキストを含む 1 つ以上の項目が表示されます。
 
-![[Information] \(情報) ビュー](media/log-analytics-view-designer/view-information.png)
+![[Information] \(情報) ビュー](media/log-analytics-view-designer-parts/view-information.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -220,7 +220,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="line-chart-callout-and-list-part"></a>[Line chart, callout, and list] (折れ線グラフ、コールアウト、およびリスト) パーツ
 ヘッダーには、一定期間のログ クエリの複数のデータ系列を含む折れ線グラフと、集計値を示すコールアウトが表示されます。 リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。
 
-![[Line chart, callout, and list] (折れ線グラフ、コールアウト、およびリスト) ビュー](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![[Line chart, callout, and list] (折れ線グラフ、コールアウト、およびリスト) ビュー](media/log-analytics-view-designer-parts/view-line-chart-callout-list.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -260,7 +260,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="line-chart-and-list-part"></a>[Line chart & list] (折れ線グラフとリスト) パーツ
 ヘッダーには、一定期間のログ クエリの複数のデータ系列を含む折れ線グラフが表示されます。 リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。
 
-![[折れ線グラフとリスト] ビュー](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![[折れ線グラフとリスト] ビュー](media/log-analytics-view-designer-parts/view-line-chart-callout-list.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -296,7 +296,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="stack-of-line-charts-part"></a>Stack of line charts part (折れ線グラフの積み重ねパーツ)
 折れ線グラフの積み重ねには、次のように、一定期間のログ クエリの複数の系列を含む 3 つの折れ線グラフが表示されます。
 
-![折れ線グラフの積み重ね](media/log-analytics-view-designer/view-stack-line-charts.png)
+![折れ線グラフの積み重ね](media/log-analytics-view-designer-parts/view-stack-line-charts.png)
 
 | Setting | 説明 |
 |:--- |:--- |

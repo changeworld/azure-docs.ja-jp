@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: 1c9c93c198b4d88da55ecd241e096e73e4a40d5d
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: aa9e91614152aed6a04fa748521991920a0ed569
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042188"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413062"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Log Analytics のビュー デザイナー タイルへのリファレンス ガイド
 Azure Log Analytics のビュー デザイナーを使用すると、Azure Portal で Log Analytics ワークスペース内にさまざまなデータ視覚化を提供するカスタム ビューを作成できます。 この記事は、カスタム ビューで使用可能なタイルの設定へのリファレンス ガイドです。
@@ -47,7 +47,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="number-tile"></a>数値タイル
 **数値**タイルには、ログ クエリからのレコードの数とラベルの両方が表示されます。
 
-![数値タイル](media/log-analytics-view-designer/tile-number.png)
+![数値タイル](media/log-analytics-view-designer-tiles/tile-number.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -65,7 +65,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="two-numbers-tile"></a>2 つの数値タイル
 このタイルには、2 つの異なるログ クエリからのレコードの数とそれぞれのラベルが表示されます。
 
-![2 つの数値タイル](media/log-analytics-view-designer/tile-two-numbers.png)
+![2 つの数値タイル](media/log-analytics-view-designer-tiles/tile-two-numbers.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -86,7 +86,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="donut-tile"></a>ドーナツ タイル
 **ドーナツ**タイルには、ログ クエリ内の値列を集計した 1 つの数値が表示されます。 ドーナツには、上位 3 件のレコードの結果がグラフィカルに表示されます。
 
-![ドーナツ タイル](media/log-analytics-view-designer/tile-donut.png)
+![ドーナツ タイル](media/log-analytics-view-designer-tiles/tile-donut.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -110,7 +110,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="line-chart-tile"></a>折れ線グラフ タイル
 このタイルは、一定期間にわたるログ クエリからの複数の系列を表示する折れ線グラフです。 
 
-![折れ線グラフとコールアウト タイル](media/log-analytics-view-designer/tile-line-chart.png)
+![折れ線グラフとコールアウト タイル](media/log-analytics-view-designer-tiles/tile-line-chart.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -131,7 +131,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="line-chart-and-callout-tile"></a>折れ線グラフとコールアウト タイル
 このタイルには、一定期間にわたるログ クエリからの複数の系列を表示する折れ線グラフと、集計値が表示されたコールアウトの両方があります。 
 
-![折れ線グラフとコールアウト タイル](media/log-analytics-view-designer/tile-line-chart-callout.png)
+![折れ線グラフとコールアウト タイル](media/log-analytics-view-designer-tiles/tile-line-chart-callout.png)
 
 | Setting | 説明 |
 |:--- |:--- |
@@ -156,7 +156,7 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 ## <a name="two-timelines-tile"></a>2 つのタイムライン タイル
 **2 つのタイムライン** タイルには、特定の期間の 2 つのログ クエリの結果が縦棒グラフとして表示されます。 各系列のコールアウトが表示されます。 
 
-![2 つのタイムライン タイル](media/log-analytics-view-designer/tile-two-timelines.png)
+![2 つのタイムライン タイル](media/log-analytics-view-designer-tiles/tile-two-timelines.png)
 
 | Setting | 説明 |
 |:--- |:--- |

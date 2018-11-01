@@ -3,7 +3,7 @@ title: Azure 仮想マシン スケール セットのネットワーク | Micro
 description: Azure 仮想マシン スケール セットのネットワーク プロパティの構成。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
-ms.author: negat
-ms.openlocfilehash: 6ed3488218a5b813478fa18f7bb05dcfb07a319c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: manayar
+ms.openlocfilehash: a939438ad657066805f0179eb06f829abf301763
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955153"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740129"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットのネットワーク
 

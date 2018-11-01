@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: jasonh
-ms.openlocfilehash: 9e87392ad7730571b973dbec809f64487eefa849
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 02adeb46ad7533f3668f5a46ffc19b6ce5b86b6f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048593"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420729"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する
 
@@ -31,7 +31,7 @@ IntelliJ 用 HDInsight ツールを使用して、コンピューターで実行
     > [!NOTE]
     > IntelliJ 用 HDInsight ツールがテストされているのは HDP 2.4 のみです。 HDP 2.4 を入手するには、[Hortonworks Sandbox ダウンロード サイト](http://hortonworks.com/downloads/#sandbox)で、**[Hortonworks Sandbox アーカイブ]** を展開します。
 
-- [Java Developer Kit (JDK) バージョン 1.8 以降](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)。 Azure Toolkit for IntelliJ には JDK が必要です。
+- [Java Developer Kit (JDK) バージョン 1.8 以降](https://aka.ms/azure-jdks)。 Azure Toolkit for IntelliJ には JDK が必要です。
 
 - [IntelliJ IDEA コミュニティ エディション](https://www.jetbrains.com/idea/download)と、[Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) プラグインおよび [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij) プラグイン。 IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。 
 

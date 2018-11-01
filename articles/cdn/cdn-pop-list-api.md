@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 06/22/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 34bd958260056d7a0297c4d3545d97543a363480
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: f703a934b0eaf4bff5be3811adeed8f0287bc658
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344794"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50237827"
 ---
 # <a name="retrieve-the-current-verizon-pop-list-for-azure-cdn"></a>Azure CDN の現在の Verizon POP リストの取得
 
 REST API を使用して、Verizon の POP (point of presence) サーバーの IP アドレスのセットを取得できます。 これらの POP サーバーは、Verizon プロファイル (**Azure CDN Standard from Verizon** または **Azure CDN Premium from Verizon**) で Azure Content Delivery Network (CDN) エンドポイントに関連付けられている配信元サーバーに要求を送信します。 この IP アドレスのセットは POP に要求を送信するときにクライアントが認識する IP アドレスとは異なることに注意してください。 
 
-POP リストを取得するための REST API 操作の構文については、「[Edge Nodes - List (エッジ ノード - リスト)](https://docs.microsoft.com/rest/api/cdn/edgenodes/edgenodes_list)」を参照してください。
+POP リストを取得するための REST API 操作の構文については、「[Edge Nodes - List (エッジ ノード - リスト)](https://docs.microsoft.com/rest/api/cdn/edgenodes/list)」を参照してください。
 
 ## <a name="typical-use-case"></a>一般的なユース ケース
 

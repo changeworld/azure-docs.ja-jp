@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 670d465f1481592862f5e653a508460c19be07d8
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4e99ed88eb6a58308ecd972931ca877493504fea
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049693"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419837"
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm から HDFS への書き込み
 
@@ -29,7 +29,7 @@ Storm を使用して、HDInsight 上の Apache Storm によって使用され�
 
 このプロジェクトをコンパイルするには、開発環境に次の構成が必要です。
 
-* [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 以上 HDInsight 3.5 以降には Java 8 が必要です。
+* [Java JDK 1.8](https://aka.ms/azure-jdks) 以上 HDInsight 3.5 以降には Java 8 が必要です。
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -153,7 +153,7 @@ Flux フレームワークの詳細については、「[https://storm.apache.or
 
 ## <a name="deploy-and-run-the-topology"></a>トポロジをデプロイおよび実行する
 
-1. 次のコマンドを使用して、トポロジを HDInsight クラスターにコピーします。 **USER** を、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **CLUSTERNAME** は、クラスターの名前に置き換えます。
+1. 次のコマンドを使用して、トポロジを HDInsight クラスターにコピーします。 **USER** を、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    
         scp target\StormToHdfs-1.0-SNAPSHOT.jar USER@CLUSTERNAME-ssh.azurehdinsight.net:StormToHdfs-1.0-SNAPSHOT.jar
    
@@ -162,7 +162,7 @@ Flux フレームワークの詳細については、「[https://storm.apache.or
    > [!NOTE]
    > HDInsight での `scp` の使用の詳細については、「[HDInsight で SSH を使用する](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
 
-2. アップロードが完了したら、次のようにして、SSH を使用して HDInsight クラスターに接続します。 **USER** を、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **CLUSTERNAME** は、クラスターの名前に置き換えます。
+2. アップロードが完了したら、次のようにして、SSH を使用して HDInsight クラスターに接続します。 **USER** を、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
    
         ssh USER@CLUSTERNAME-ssh.azurehdinsight.net
    

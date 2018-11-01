@@ -10,12 +10,12 @@ ms.component: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 4147e164434109a90a2a044565a1fb0b2e1b48bf
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: ebff07a68975f3629b57df4cfc8a5bbcf564ce27
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386504"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412926"
 ---
 # <a name="quickstart-translator-speech-api-with-java"></a>クイック スタート: Java での Translator Speech API 
 <a name="HOLTop"></a>
@@ -26,7 +26,7 @@ ms.locfileid: "49386504"
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードをコンパイルして実行するには、[JDK 7 または 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) が必要です。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
+このコードをコンパイルして実行するには、[JDK 7 または 8](https://aka.ms/azure-jdks) が必要です。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
 
 次のファイルが必要になります。
 - [javax.websocket-api-1.1.jar (以降)](https://mvnrepository.com/artifact/javax.websocket/javax.websocket-api)

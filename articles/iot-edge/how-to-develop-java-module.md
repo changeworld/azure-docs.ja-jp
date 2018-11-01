@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a5e86b7c93344a6c61fecaa41b98bc1daa20f36f
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: af37822429098f904e08404462deb134d4370898
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423223"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421205"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-java-modules-for-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge の Java モジュールを開発し、デバッグする
 
@@ -33,7 +33,7 @@ ms.locfileid: "47423223"
 * [Docker 拡張機能](https://marketplace.visualstudio.com/items?itemName=PeterJausovec.vscode-docker)
 
 モジュールを作成するには、モジュール コードを構築して実行する Java と Maven、モジュール イメージを構築する Docker、モジュール イメージを保持するコンテナー レジストリが必要です。
-* [Java SE Development Kit 10](http://www.oracle.com/technetwork/java/javase/downloads/index.html) (JDK インストールを指すように [`JAVA_HOME` 環境変数を設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)します)。
+* [Java SE Development Kit 10](https://aka.ms/azure-jdks) (JDK インストールを指すように [`JAVA_HOME` 環境変数を設定](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/)します)。
 * [Maven](https://maven.apache.org/)
 * [Docker](https://docs.docker.com/engine/installation/)
 * [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) または [Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
@@ -45,7 +45,7 @@ ms.locfileid: "47423223"
    pip install --upgrade iotedgehubdev
    ```
 
-デバイス上でモジュールをテストするには、アクティブな IoT ハブが必要であり、1 つ以上の IoT Edge デバイス ID が作成されている必要があります。 開発コンピューター上で IoT Edge デーモンを実行しているなら、場合によっては、次の手順に移動する前に EdgeHub と EdgeAgent を停止する必要があります。 
+デバイス上でモジュールをテストするには、アクティブな IoT ハブが必要であり、1 つ以上の IoT Edge デバイス ID が作成されている必要があります。 開発コンピューター上で IoT Edge デーモンを実行しているときは、場合によっては、次の手順に移動する前に EdgeHub と EdgeAgent を停止する必要があります。 
 
 
 ## <a name="create-a-new-solution-template"></a>新しいソリューション テンプレートを作成する

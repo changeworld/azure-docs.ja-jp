@@ -3,7 +3,7 @@ title: Azure 仮想マシン スケール セットの接続されたデータ �
 description: 接続されたデータ ディスクを仮想マシン スケール セットで使用する方法について説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
-ms.author: negat
-ms.openlocfilehash: cfe49e7f4e3692518c890b48582a2f4a6aa16faa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: manayar
+ms.openlocfilehash: 551d90661f845aa98a41ed7de0b75c657c234f52
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952462"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741404"
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 仮想マシン スケール セットと接続されたデータ ディスク
 [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) では、使用できるストレージを拡張するために、データ ディスクをアタッチした VM インスタンスがサポートされています。 新たに作成するスケール セットや既存のスケール セットにデータ ディスクをアタッチすることができます。

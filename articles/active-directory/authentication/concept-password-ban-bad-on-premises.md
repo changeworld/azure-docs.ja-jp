@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: 286f8e560ec653ed4f4f1cad5a2ae27b940f8d15
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ca412e94f65c7e1ed9a547ec9dcabc62fac7d42f
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781782"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741829"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>プレビュー: Windows Server Active Directory に Azure AD パスワード保護を適用する
 
@@ -33,16 +33,6 @@ Azure AD パスワード保護を構成するソフトウェア コンポーネ�
 * DC エージェント パスワード フィルター dll は、オペレーティング システムからパスワード検証要求を受け取り、ドメイン コントローラーのローカルで実行されている Azure AD パスワード保護 DC エージェント サービスにそれらの要求を転送します。
 
 ![Azure AD パスワード保護コンポーネントの連携方法](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
-
-## <a name="requirements"></a>必要条件
-
-* ドメイン コントローラーを含む Azure AD パスワード保護コンポーネントがインストールされているすべてのマシンは、Windows Server 2012 以降を実行している必要があります。
-* ドメイン コントローラーを含む Azure AD パスワード保護コンポーネントがインストールされているすべてのマシンに、ユニバーサル C ランタイムがインストールされている必要があります。 これは、Windows Update 経由でマシンに対する修正プログラムの適用を完全に行うことで実現することをお勧めします。 それ以外の場合は、適切な OS 固有の更新パッケージをインストールできます。「[Windows での汎用の C ランタイムの更新プログラム](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)」を参照してください。
-* 各ドメイン内の少なくとも 1 つのドメイン コントローラーと、Azure AD パスワード保護プロキシ サービスをホストする少なくとも 1 つのサーバーとの間に、ネットワーク接続が存在する必要があります。
-* パスワード保護機能を活用する Active Directory ドメイン コントローラーには DC エージェントがインストールされている必要があります。
-* DC エージェント サービス ソフトウェアを実行しているすべての Active Directory ドメインは、sysvol レプリケーションに DFSR を使用する必要があります。
-* Azure AD で Azure AD パスワード保護プロキシ サービスを登録するグローバル管理者アカウント。
-* フォレスト ルート ドメイン内の Active Directory ドメイン管理者特権を持つアカウント。
 
 ### <a name="license-requirements"></a>ライセンスの要件
 
@@ -70,7 +60,6 @@ Azure AD パスワード保護のために必要なインストーラーが 2 �
 * パスワード保護を確実に適用するには、すべての DC に DC エージェントをインストールすることをお勧めします。 
 * Azure AD パスワード保護は、リアルタイム ポリシー アプリケーション エンジンではありません。 パスワード ポリシー構成の変更と、すべてのドメイン コントローラーに変更が到達して適用されるまでに遅延が生じることがあります。
 
-
 ## <a name="next-steps"></a>次の手順
 
-[Azure AD のパスワード保護をデプロイする](howto-password-ban-bad-on-premises.md)
+[Azure AD のパスワード保護をデプロイする](howto-password-ban-bad-on-premises-deploy.md)
