@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 21cd4990e2117cef2d36fa2607a601afd1a4c4e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2195a43665f99e8388b13fc6dc3e528496bd3901
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990503"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242689"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>登録済み Azure Active Directory アプリのサービス利用規約とプライバシーに関する声明
 
@@ -65,7 +65,7 @@ Azure Active Directory (Azure AD) アカウントおよび Microsoft アカウ�
 Azure portal でアプリを登録した場合、次の手順に従います。
 
 1.  [Azure portal](https://portal.azure.com/) にサインインします。
-2. [ **アプリの登録** ]セクションに移動して、自分のアプリを選択します。
+2.  **[アプリの登録]**  セクションに移動して、自分のアプリを選択します。
 3. アプリの **[プロパティ]** セクションを開きます。
 4. [ **サービス利用規約 URL** ]と **[プライバシーに関する声明 URL]** フィールドに入力します。
 5. 変更を保存します。
@@ -77,7 +77,7 @@ Azure portal でアプリを登録した場合、次の手順に従います。
 アプリケーション登録ポータルまたはデベロッパー センターでアプリを登録した場合、次の手順に従います。
 
 1.  [アプリケーション登録ポータル](https://apps.dev.microsoft.com/)にサインインします。
-2. 自分のアプリを選択して、 **[プロファイル]** セクションまでスクロールします。
+2. 自分のアプリを選択して、 **[プロファイル]**  セクションまでスクロールします。
 3. [ **サービス利用規約 URL** ]と **[プライバシーに関する声明 URL]** フィールドに入力します。
 4. 変更を保存します。
 
@@ -89,8 +89,8 @@ Azure portal でアプリを登録した場合、次の手順に従います。
 
 ```json
     "informationalUrls": { 
-        "termsOfService": “<your_terms_of_service_url>”, 
-        "privacy": “<your_privacy_statement_url>” 
+        "termsOfService": "<your_terms_of_service_url>", 
+        "privacy": "<your_privacy_statement_url>" 
     }
 ```
 

@@ -2,18 +2,18 @@
 title: 'クイック スタート: Node.js を使用して BLOB をアップロード、ダウンロード、および一覧表示する - Azure Storage'
 description: オブジェクト (BLOB) ストレージ内にストレージ アカウントとコンテナーを作成します。 その後、Node.js 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
-author: craigshoemaker
+author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 09/20/2018
-ms.author: cshoe
-ms.openlocfilehash: 1c62dbd6856ec7bf2663f0b70a47357b52528899
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.author: tamram
+ms.openlocfilehash: 267218b4b958251e6748fbae17ca1ac267cf3287
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040814"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140589"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-nodejs"></a>クイック スタート: Node.js を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -104,7 +104,7 @@ const blobService = storage.createBlobService();
 
 次の実装では、*blobService* の各関数は *Promise* にラップされます。これにより、JavaScript の *async* 関数と *await* 演算子にアクセスして [Azure Storage API](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) のコールバックの性質を合理化できます。 各関数に対して正常な応答が返されると、アクションに固有のメッセージと関連データを使用して Promise が解決されます。
 
-### <a name="list-containers"></a>コンテナーを一覧表示する
+### <a name="list-containers"></a>コンテナーの一覧表示
 
 *listContainers* 関数は、グループ内のコンテナーのコレクションを返す [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listcontainerssegmented) を呼び出します。
 

@@ -4,9 +4,6 @@ description: この記事は、Azure Traffic Manager プロファイルの作成
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: f06e0365-0a20-4d08-b7e1-e56025e64f66
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: hero-article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.openlocfilehash: e19f8f373fed8c7e9ab64f2fc9e34eba182af717
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 19f8f1f89031ba392b8d986fbcb0725c5c8f212f
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29398058"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138486"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Azure Traffic Manager プロファイルの管理
 

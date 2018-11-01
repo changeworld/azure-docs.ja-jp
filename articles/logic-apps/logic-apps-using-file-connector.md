@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, LADocs
 ms.topic: article
 ms.date: 08/25/2018
-ms.openlocfilehash: 41dd8ad721329c4c4d2761c9e4a37c640251dac3
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 0c30ffec58b1542fa80cf0c9873a0e6df8641104
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125280"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232547"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Azure Logic Apps でオンプレミスのファイル システムに接続する
 
@@ -99,7 +99,7 @@ ms.locfileid: "43125280"
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 
-* [Azure Logic Apps User Voice サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Azure Logic Apps とコネクタの改善にご協力ください。
+* [Azure Logic Apps User Voice サイト](https://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Azure Logic Apps とコネクタの改善にご協力ください。
 
 ## <a name="next-steps"></a>次の手順
 

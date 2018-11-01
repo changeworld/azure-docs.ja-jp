@@ -1,3 +1,16 @@
+---
+author: alkohli
+ms.service: storsimple
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: alkohli
+ms.openlocfilehash: 36a014fbff30c32a7149a83907c9586bc3b2f01a
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50165841"
+---
 <!--author=SharS last changed: 11/18/16-->
 
 #### <a name="to-install-regular-updates-via-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell を使用して通常の更新プログラムをインストールするには

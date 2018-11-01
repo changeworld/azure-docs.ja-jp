@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 09/24/2018
-ms.openlocfilehash: cfee4f06479d2504b88f4a5d5a0a2417154e3b03
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2250c6952aeac7b10dcb1a1a35419941e5cad507
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064501"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233210"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps-and-sftp-ssh-connector"></a>Azure Logic Apps および SFTP-SSH コネクタを使用して SFTP ファイルの監視、作成、および管理を行う
 
@@ -50,7 +50,7 @@ SFTP サーバーから応答を取得し、その出力を他のアクション
 
 SFTP-SSH は、SFTP ファイル システムをポーリングし、前回のポーリング以降に変更されたファイルを検索することで動作をトリガーします。 いくつかのツールでは、ファイル変更時に timestamp を保持できます。そのためこの場合は、この機能を無効にしてトリガーが動作するようにする必要があります。 一般的な設定をいくつか次に示します。
 
-| SFTP クライアント | アクションを表示します。 | 
+| SFTP クライアント | Action | 
 |-------------|--------| 
 | Winscp | [オプション] → [環境設定…] → [転送] → [編集...] → [Preserve timestamp]\(タイムスタンプの保持)\ → [無効] |
 | FileZilla | [転送] → [転送したファイルのタイムスタンプを維持] → [無効] | 
@@ -126,7 +126,7 @@ SFTP-SSH は、SFTP ファイル システムをポーリングし、前回の�
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -3,7 +3,7 @@ title: 'Azure Active Directory Domain Services: RHEL VM のマネージド ド�
 description: Red Hat Enterprise Linux 仮想マシンのAzure AD ドメイン サービスへの参加
 services: active-directory-ds
 documentationcenter: ''
-author: mahesh-unnikrishnan
+author: eringreenlee
 manager: mtillman
 editor: curtand
 ms.assetid: d76ae997-2279-46dd-bfc5-c0ee29718096
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
-ms.author: maheshu
-ms.openlocfilehash: e84a4b0c1f3496bc26f4a8830f7a08ddd5506338
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.author: ergreenl
+ms.openlocfilehash: bfad3b8c8347b885fd713d30c620d6c86377fab3
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503725"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50155237"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Red Hat Enterprise Linux 7 仮想マシンのマネージド ドメインへの参加
 この記事では、Red Hat Enterprise Linux (RHEL) 7 仮想マシンを Azure AD Domain Services のマネージド ドメインに参加させる方法について説明します。
@@ -33,13 +33,12 @@ ms.locfileid: "39503725"
 2. オンプレミス ディレクトリまたはクラウド専用ディレクトリのいずれかと同期されている **Azure AD ディレクトリ** 。
 3. **Azure AD ドメイン サービス** が Azure AD ディレクトリに対して有効である必要があります。 有効になっていない場合は、 [作業の開始に関するガイド](active-directory-ds-getting-started.md)に記載されているすべてのタスクを実行してください。
 4. マネージド ドメインの IP アドレスを、必ず仮想ネットワークの DNS サーバーとして構成します。 詳しくは、[Azure 仮想ネットワークの DNS 設定を更新する方法](active-directory-ds-getting-started-dns.md)に関するページをご覧ください。
-5. 
-  [Azure AD Domain Services のマネージド ドメインとのパスワードの同期](active-directory-ds-getting-started-password-sync.md)に必要な手順をすべて実行します。
+5. [Azure AD Domain Services のマネージド ドメインとのパスワードの同期](active-directory-ds-getting-started-password-sync.md)に必要な手順をすべて実行します。
 
 
 ## <a name="provision-a-red-hat-enterprise-linux-virtual-machine"></a>Red Hat Enterprise Linux 仮想マシンのプロビジョニング
 次のいずれかの方法を使用して、Azure で RHEL 7 仮想マシンをプロビジョニングします。
-* [Azure ポータル](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -88,8 +87,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     ```
 
      > [!NOTE]
-     > 
-     >   **トラブルシューティング:***realm discover* でマネージド ドメインが見つからない場合:
+     > **トラブルシューティング:***realm discover* でマネージド ドメインが見つからない場合:
      * ドメインに仮想マシンからアクセスできることを確認します (ping の試行)。
      * 仮想マシンが、マネージド ドメインが利用可能な同じ仮想ネットワークにデプロイされていることを確認します。
      * マネージド ドメインのドメイン コントローラーを指すように、仮想ネットワークの DNS サーバー設定を更新したかどうかを確認します。
@@ -143,8 +141,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
-* 
-  [Azure AD Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
+* [Azure AD Domain Services のマネージド ドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Linux が実行されている仮想マシンにログオンする方法](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Installing Kerberos (Kerberos のインストール)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Managing_Smart_Cards/installing-kerberos.html)
 * [Red Hat Enterprise Linux 7 - Windows Integration Guide (Red Hat Enterprise Linux 7 - Windows 統合ガイド)](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Windows_Integration_Guide/index.html)

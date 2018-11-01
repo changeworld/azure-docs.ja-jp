@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 03/15/2018
-ms.openlocfilehash: 6ba274bb3ff3679b4a44950db168215c54f3ade6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1c8abc153084f0c6491cab3677b93f8c450ad908
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299748"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50229419"
 ---
 # <a name="create-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用して Customer Insights ストリーミング ダッシュボードを作成する
 
@@ -26,7 +26,7 @@ Azure Logic Apps では、サーバーレス コンポーネント間でオー�
 
 このシナリオでは、カスタマーからのフィードバックを検出するとトリガーされるロジック アプリを作成します。 カスタマー フィードバックへの応答に役立つコネクタには、Outlook.com、Office 365、Survey Monkey、Twitter、[Web フォームからの HTTP 要求](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/)などがあります。 作成するワークフローは、Twitter のハッシュタグを監視します。
 
-[Visual Studio でソリューション全体をビルド](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)し、[Azure Resource Manager テンプレートを使用してソリューションをデプロイ](../logic-apps/logic-apps-create-deploy-template.md)することができます。 このソリューションの作成方法に関するビデオ チュートリアルについては、[こちらの Channel 9 ビデオ](http://aka.ms/logicappsdemo)をご覧ください。 
+[Visual Studio でソリューション全体をビルド](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)し、[Azure Resource Manager テンプレートを使用してソリューションをデプロイ](../logic-apps/logic-apps-create-deploy-template.md)することができます。 このソリューションの作成方法に関するビデオ チュートリアルについては、[こちらの Channel 9 ビデオ](https://aka.ms/logicappsdemo)をご覧ください。 
 
 ## <a name="trigger-on-customer-data"></a>カスタマー データによるトリガー
 

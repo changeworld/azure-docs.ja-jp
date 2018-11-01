@@ -15,12 +15,12 @@ ms.date: 06/26/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: aa7962e3659618b8c5a4f161d667c5e90477acc9
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8be0e909ea391ed1b66fc78349cc2283d009e8cb
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347649"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240377"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs
 発行されたアプリケーションへのアクセス中、またはアプリケーションの発行中にエラーが発生する場合は、Microsoft Azure AD アプリケーション プロキシが正しく機能しているかどうかを次のオプションで確認します。
@@ -43,7 +43,7 @@ Azure AD のトラブルシューティング ツールについて詳しくは�
 
 コネクタ ウィザードのインストール中に登録に失敗した場合は、2 とおりの方法でエラーの原因を確認できます。 **Applications and Services Logs\Microsoft\AadApplicationProxy\Connector\Admin** にあるイベント ログを確認するか、次の Windows PowerShell コマンドを実行してください。
 
-    Get-EventLog application –source “Microsoft AAD Application Proxy Connector” –EntryType “Error” –Newest 1
+    Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
 
 イベント ログでコネクタのエラーが確認された場合は、この一般的なエラーの表を参考に問題を解決してください。
 

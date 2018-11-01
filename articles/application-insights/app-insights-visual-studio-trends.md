@@ -3,7 +3,7 @@ title: Visual Studio での傾向の分析 | Microsoft Docs
 description: Visual Studio で、Application Insights テレメトリの傾向を分析、視覚化、調査します。
 services: application-insights
 documentationcenter: .net
-author: mrbullwinkle
+author: NumberByColors
 manager: carmonm
 ms.assetid: 3150c6fc-2691-44f6-a290-fc5cd68e692a
 ms.service: application-insights
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/17/2017
-ms.reviewer: daviste
-ms.author: mbullwin
-ms.openlocfilehash: 17303186b176c6d14b1c895d17d21c0f29cdcdcf
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.reviewer: mbullwin
+ms.pm_owner: daviste;NumberByColors
+ms.author: daviste
+ms.openlocfilehash: 7de545870b87d4b221bba8eba32652a00c9ad2b2
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42441791"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50139915"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Visual Studio での傾向の分析
 Application Insights Trends ツールを使用すると、Web アプリケーションの重要なテレメトリ イベントが時間の経過に伴ってどのように変化しているかを視覚化できます。これにより、問題と異常を迅速に特定できるようになります。 より詳細な診断情報が得られるようになるため、Trends は、アプリのパフォーマンスの向上、例外の原因の追跡、カスタム イベントからの知見の獲得に役立ちます。

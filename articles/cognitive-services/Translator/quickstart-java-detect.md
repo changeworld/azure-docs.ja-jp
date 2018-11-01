@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: quickstart
 ms.date: 06/21/2018
 ms.author: erhopf
-ms.openlocfilehash: dd08280b0a4a4608888cf262957c51499412612c
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: dcf7529ab0b9d7eb6792e2934d59a24c7a834174
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647121"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415561"
 ---
 # <a name="quickstart-identify-language-from-text-with-the-translator-text-rest-api-java"></a>クイック スタート: Translator Text REST API を使用してテキストの言語を認識する (Java)
 
@@ -23,7 +23,7 @@ ms.locfileid: "49647121"
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードをコンパイルして実行するには、[JDK 7 または 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) が必要です。 好みの Java IDE がある場合はそれを使用してください。ただしテキスト エディターでも問題ありません。
+このコードをコンパイルして実行するには、[JDK 7 または 8](https://aka.ms/azure-jdks) が必要です。 好みの Java IDE がある場合はそれを使用してください。ただしテキスト エディターでも問題ありません。
 
 Translator Text API を使用するには、サブスクリプション キーも必要となります。「[Translator Text API にサインアップする方法](translator-text-how-to-signup.md)」を参照してください。
 

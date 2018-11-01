@@ -11,12 +11,12 @@ ms.assetid: e11c6b4d-65a5-4d2d-8e13-38150db09c0b
 ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
-ms.openlocfilehash: 95a039c990dc9b6c852a69518f0a71c51a4747b7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1c30f77c061ec25c88186caee3f60e65f3afb3de
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302624"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232870"
 ---
 # <a name="call-http-or-https-endpoints-with-azure-logic-apps"></a>Azure Logic Apps を使用して HTTP または HTTPS エンドポイントを呼び出す
 
@@ -84,7 +84,7 @@ HTTP トリガーは、定期的にエンドポイントをチェック、つま
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 682288338d66f1006e9f1d7f3d6d30f822626425
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50227245"
+---
 Resource Manager のコマンドとテンプレートで Azure CLI を使用して、リソース グループを使用する Azure リソースとワークロードをデプロイするには、Azure のアカウントが必要です。 アカウントがない場合、 [ここから無料の Azure 試用版](https://azure.microsoft.com/pricing/free-trial/)を入手できます。
 
 まだ Azure CLI をインストールしてサブスクリプションに接続していない場合は、「[Azure CLI のインストール](../articles/cli-install-nodejs.md)」を参照して、`azure config mode arm` を実行してモードを `arm` に設定し、`azure login` コマンドを実行して Azure に接続してください。

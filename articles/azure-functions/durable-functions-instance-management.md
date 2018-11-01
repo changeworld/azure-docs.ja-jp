@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: azfuncdf
-ms.openlocfilehash: c9b3cd112cef7a34e0d475cdeb85b9e07d77f584
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: bcb87b3030eb673dd3c9a8b93a045c75fae964a9
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352595"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087034"
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Durable Functions でのインスタンスの管理 (Azure Functions)
 
@@ -40,10 +40,10 @@ ms.locfileid: "49352595"
 public static async Task Run(
     [ManualTrigger] string input,
     [OrchestrationClient] DurableOrchestrationClient starter,
-    TraceWriter log)
+    ILogger log)
 {
     string instanceId = await starter.StartNewAsync("HelloWorld", input);
-    log.Info($"Started orchestration with ID = '{instanceId}'.");
+    log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
 }
 ```
 
@@ -119,12 +119,12 @@ public static async Task Run(
 public static async Task Run(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
     [OrchestrationClient] DurableOrchestrationClient client,
-    TraceWriter log)
+    ILogger log)
 {
     IList<DurableOrchestrationStatus> instances = await starter.GetStatusAsync(); // You can pass CancellationToken as a parameter.
     foreach (var instance in instances)
     {
-        log.Info(JsonConvert.SerializeObject(instance));
+        log.LogInformation(JsonConvert.SerializeObject(instance));
     };
 }
 ```
@@ -137,7 +137,7 @@ public static async Task Run(
 public static async Task Run(
     [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")]HttpRequestMessage req,
     [OrchestrationClient] DurableOrchestrationClient client,
-    TraceWriter log)
+    ILogger log)
 {
     IEnumerable<OrchestrationRuntimeStatus> runtimeStatus = new List<OrchestrationRuntimeStatus> {
         OrchestrationRuntimeStatus.Completed,
@@ -150,7 +150,7 @@ public static async Task Run(
     ); // You can pass CancellationToken as a parameter.
     foreach (var instance in instances)
     {
-        log.Info(JsonConvert.SerializeObject(instance));
+        log.LogInformation(JsonConvert.SerializeObject(instance));
     };
 }
 ```

@@ -4,7 +4,7 @@ description: この記事では、.NET を使用して、Media Encoder Standard 
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 03431b64-5518-478a-a1c2-1de345999274
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 10/30/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 2964be45c98350fb1f3c82f25716943493979240
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7b0de5e149b8b64252f90a01f66642c15fb25ddc
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783451"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247794"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>.NET を使用した Media Encoder Standard での資産のエンコード
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>.NET を使用した Media Encoder Standard での資産のエンコード 
 エンコード ジョブは Media Services で最も一般的な処理の 1 つです。 エンコード ジョブを作成することで、メディア ファイルをあるエンコードから別のエンコードに変換できるようになります。 エンコードには、Media Services の組み込み Media Encoder を使用できます。 Media Services のパートナーから提供されているエンコーダーを使うこともできます。サードパーティのエンコーダーは Azure Marketplace から入手できます。 
 
 この記事では、.NET を使用して、Media Encoder Standard (MES) で資産をエンコードする方法について説明します。 Media Encoder Standard は、 [ここ](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)で説明されているエンコーダーのプリセット文字列のいずれかを使用して構成されます。

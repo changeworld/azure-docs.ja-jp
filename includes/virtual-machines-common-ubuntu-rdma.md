@@ -1,3 +1,16 @@
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 7f5b829399004a58ba84dc9abc34b2c9dd544fbf
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226669"
+---
 1. dapl、rdmacm、ibverbs、mlx4 をインストールします
 
   ```bash
@@ -15,7 +28,7 @@
   OS.UpdateRdmaDriver=y
   ```
 
-3. /etc/security/limits.conf ファイルで次のメモリ設定 (KB単位) を追加または変更します。 このファイルを編集するにはルート アクセスが必要です。 テスト目的で、memlock を無制限に設定することができます。 たとえば、「 `<User or group name>   hard    memlock   unlimited`」のように入力します。
+3. /etc/security/limits.conf ファイルで次のメモリ設定 (KB単位) を追加または変更します。 このファイルを編集するにはルート アクセスが必要です。 テスト目的で、memlock を無制限に設定することができます。 (例: `<User or group name>   hard    memlock   unlimited`)。
 
   ```
   <User or group name> hard    memlock <memory required for your application in KB>

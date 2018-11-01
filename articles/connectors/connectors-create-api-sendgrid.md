@@ -11,12 +11,12 @@ ms.assetid: bc4f1fc2-824c-4ed7-8de8-e82baff3b746
 ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
-ms.openlocfilehash: c8747210a77879d551e323a7c0e46a9ab013fa3f
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 7eecd3908883b195b52755d03e70872afe9180bb
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887191"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50228858"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>Azure Logic Apps を使用して SendGrid で電子メールの送信とメーリング リストの管理を行う
 
@@ -73,7 +73,7 @@ Azure Logic Apps と SendGrid コネクタを使用すると、電子メール�
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

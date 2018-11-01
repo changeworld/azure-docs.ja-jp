@@ -1,84 +1,74 @@
 ---
-title: Azure Active Directory B2C で組み込みポリシーを使用して Azure AD プロバイダーを追加する| Microsoft Docs
-description: Open ID Connect の ID プロバイダー (Azure AD) を追加する方法を説明します。
+title: Azure Active Directory B2C でサインイン Azure Active Directory アカウントの組み込みポリシーを設定する | Microsoft Docs
+description: Azure Active Directory B2C でサインイン Azure Active Directory アカウントの組み込みポリシーを設定します。
 services: active-directory-b2c
 author: davidmu1
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/27/2018
+ms.date: 10/22/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e09ad89f3225af9de40781fafc022c8326f80619
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 9b9754c9087f2d0064cc1aa75e76520731dfb3a9
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43338640"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242860"
 ---
-# <a name="azure-active-directory-b2c-sign-in-using-azure-ad-accounts-through-a-built-in-policy"></a>Azure Active Directory B2C: 組み込みポリシーを使用した Azure AD アカウントのサインイン
+# <a name="set-up-sign-in-azure-active-directory-accounts-a-built-in-policy-in-azure-active-directory-b2c"></a>Azure Active Directory B2C でサインイン Azure Active Directory アカウントの組み込みポリシーを設定する
 
 >[!NOTE]
 > この機能はパブリック プレビュー段階にあります。 運用環境で、この機能を使用しないでください。
 
-この記事では、組み込みポリシーを使用して、特定の Azure Active Directory (Azure AD) 組織のユーザーがサインインを行えるようにする方法について説明します。
+この記事では、Azure Active Directory (Azure AD) B2C の組み込みポリシーを使用して、特定の Azure Active Directory (Azure AD) 組織のユーザーがサインインを行えるようにする方法について説明します。
 
 ## <a name="create-an-azure-ad-app"></a>Azure AD アプリの作成
 
-特定の Azure AD 組織のユーザーのサインインを有効にするには、組織の Azure AD テナント内でアプリケーションを登録する必要があります。
-
->[!NOTE]
-> 以下の手順では、組織の Azure AD テナントには "Contoso.com"を使用して、Azure AD B2C テナントとして "fabrikamb2c.onmicrosoft.com" を使用します。
+特定の Azure AD 組織のユーザーのサインインを有効にするには、組織の Azure AD テナント内でアプリケーションを登録する必要があります。このテナントは、お使いの Azure AD B2C テナントと同じではありません。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-1. 上部のバーで、自分のアカウントを選択します。 **[ディレクトリ]** の一覧から、アプリケーションを登録する Azure AD テナント (contoso.com) を選択します。
-1. 左側のウィンドウで **[All Services]**  を選択し、"App registrations" を検索します。
-1. **[新しいアプリケーションの登録]** を選択します。
-1. アプリケーションの名前を入力します (`Azure AD B2C App` など)。
-1. アプリケーション タイプとして **[Web app / API] \(Web アプリ/API)** を選択します。
-1. **[サインオン URL]** に次の URL を入力します。`yourtenant`は、Azure AD B2C テナントの名前 (`fabrikamb2c`) で置き換えられます。
+2. お使いの Azure AD テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある [ディレクトリとサブスクリプション フィルター] をクリックして、お使いの Azure AD テナントを含むディレクトリを選択します。
+3. Azure portal の左上隅にある **[すべてのサービス]** を選択し、**[アプリの登録]** を検索して選択します。
+4. **[新しいアプリケーションの登録]** を選択します。
+5. アプリケーションの名前を入力します。 たとえば、「 `Azure AD B2C App` 」のように入力します。
+6. **[アプリケーションの種類]** には `Web app / API` を選択します。
+7. **[サインオン URL]** には、次の URL を全部小文字で入力します。`your-B2C-tenant-name` は、お使いの Azure AD B2C テナントの名前に変更します。 例: `https://fabrikam.b2clogin.com/fabrikam.onmicrosoft.com/oauth2/authresp`
 
-    >[!NOTE]
-    >**[サインイン URL]** の "yourtenant" の値は、すべて小文字にする必要があります。
-
-    ```Console
-    https://yourtenant.b2clogin.com/te/yourtenant.onmicrosoft.com/oauth2/authresp
+    ```
+    https://your-tenant-name.b2clogin.com/your-B2C-tenant-name.onmicrosoft.com/oauth2/authresp
     ```
 
-1. アプリケーション ID を保存します｡この ID は次のセクションでクライアント ID として利用します｡
-1. **[設定]** ブレードで **[キー]** を選択します。
-1. **Passwords** のところで **Key description** を入力して､**Duration** を [Never expires] に設定します｡ 
-1. **Save** をクリックして､生成されたキーの**値** を書き留めます｡このキー値は､次のセクションでクライアント シークレットとして利用します｡
+    ここでは、すべての URL で [b2clogin.com](b2clogin.md) を使用してください。
 
-## <a name="configure-azure-ad-as-an-identity-provider-in-your-tenant"></a>テナントで Azure AD を ID プロバイダとして構成する
+8. **Create** をクリックしてください。 後で使用するために **[アプリケーション ID]** をコピーします。
+9. アプリケーションを選択し、**[設定]** を選択します。
+10. **[キー]** を選択し、キーの説明を入力し、期間を選択し、**[保存]** をクリックします。 後で使用するために、表示されているキーの値をコピーします。
 
-1. 上部のバーで、自分のアカウントを選択します。 **Directory** 一覧から Azure AD B2C テナント (fabrikamb2c.onmicrosoft.com) を選択します｡
-1. Azure Portal で [Azure AD B2C settings メニューに移動します](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)｡
-1. Azure AD B2C settings メニューで **Identity providers** をクリックします｡
-1. ブレードの上部にある **[+追加]** をクリックします。
-1. ID プロバイダー構成のわかりやすい **[名前]** を指定します。 たとえば､"Contoso Azure AD" を入力します｡
-1. **[ID プロバイダーの種類]** をクリックし、**[Open ID Connect]** を選択して、**[OK]** をクリックします。
-1. **[この ID プロバイダーをセットアップします]** をクリックします。
-1. **Metadata url** には､次の URL を入力します。`yourtenant`は、Azure AD テナントの名前 (例: `contoso.com` ) で置き換えられます。
+## <a name="configure-azure-ad-as-an-identity-provider"></a>Azure AD を ID プロバイダーとして構成する
 
-    ```Console
-    https://login.microsoftonline.com/yourtenant/.well-known/openid-configuration
+1. Azure AD B2C テナントを含むディレクトリを使用していることを確認してください。確認のために、トップ メニューにある **[ディレクトリとサブスクリプション フィルター]** をクリックして、お使いの Azure AD B2C テナントを含むディレクトリを選択します。
+2. Azure portal の左上隅にある **[すべてのサービス]** を選択してから、**[Azure AD B2C]** を検索して選択します。
+3. **[ID プロバイダー]**、**[追加]** の順に選択します。
+4. **[名前]** を入力します。 たとえば､"Contoso Azure AD" を入力します｡
+5. **[ID プロバイダーの種類]** を選択し、**[Open ID Connect (Preview)]\(Open ID Connect (プレビュー))** を選択して、**[OK]** をクリックします。
+6. **[この ID プロバイダーをセットアップします]** をクリックします。
+7. **Metadata url** には、次の URL を入力します。`your-AD-tenant-domain` は、Azure AD テナントのドメイン名で置き換えます。 例: `https://login.microsoftonline.com/contoso.onmicrosoft.com/.well-known/openid-configuration`
+
     ```
-1. **Client ID** と **Client secret** には､前のセクションで取得したアプリケーション ID とキーをそれぞれ入力します｡
-1. **Scope** は既定値 (`openid`) をそのまま残します｡
-1. **Response type** は既定値 (`code`) をそのまま残します｡
-1. **Response mode** は既定値 (`form_post`) をそのまま残します｡
-1. 必要に応じて､**Domain** に値を入力します (例: `ContosoAD`)｡ この値は､要求で *domain_hint* を使用するこの ID プロバイダーを参照するときに使用します｡ 
-1. Click **OK**.
-1. **Map this identity provider's claims** をクリックします｡
-1. **User ID** には `oid` を入力します｡
-1. **Display Name** には `name` を入力します｡
-1. **Given name** には `given_name` を入力します｡
-1. **Surname** には `family_name` を入力します｡
-1. **Email** には `unique_name` を入力します｡
-1. **[OK]** をクリックし、**[作成]** をクリックして構成を保存します。
+    https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
+    ```
 
-## <a name="next-steps"></a>次の手順
+8. **クライアント ID** には、先ほどメモしたアプリケーション ID を入力し、**クライアント シークレット**には、先ほどメモしたキーの値を入力します。
+9. 必要に応じて、**Domain_hint** に値を入力します。 たとえば、「 `ContosoAD` 」のように入力します。 この値は､要求で *domain_hint* を使用するこの ID プロバイダーを参照するときに使用します｡ 
+10. Click **OK**.
+11. **[この ID プロバイダーの要求をマップする]** を選択し、次の要求を設定します。
+    
+    - **User ID** には `oid` を入力します｡
+    - **Display Name** には `name` を入力します｡
+    - **Given name** には `given_name` を入力します｡
+    - **Surname** には `family_name` を入力します｡
+    - **Email** には `unique_name` を入力します｡
 
-新しく作成した Azure AD ID プロバイダーを組み込みポリシーに追加して､[AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) にフィードバックを提供する
+12. **[OK]** をクリックし、**[作成]** をクリックして構成を保存します。

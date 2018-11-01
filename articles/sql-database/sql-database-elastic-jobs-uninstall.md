@@ -3,7 +3,7 @@ title: エラスティック データベース ジョブ ツールのアンイ�
 description: Azure ポータルまたは PowerShell を使用してエラスティック データベース ジョブ コンポーネントをアンインストールする方法を説明します。
 services: sql-database
 ms.service: sql-database
-subservice: operations
+ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 06/14/2018
-ms.openlocfilehash: a444f725a88917d43a99a21fc916e31831162a33
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 15313bf0d2d152a8295fb831e62452f8ad63bbeb
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161116"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242451"
 ---
 # <a name="uninstall-elastic-database-jobs-components"></a>エラスティック データベース ジョブ コンポーネントのアンインストール
 

@@ -10,12 +10,12 @@ ms.author: netahw
 author: nhaiby
 ms.date: 05/20/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 371903e1ee080d2b98fd46ac4d6d9838416e1335
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b1b4e3e19adb38a69e16aaa98300972df3bb71a8
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973424"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093651"
 ---
 # <a name="build-and-deploy-image-similarity-models-with-azure-machine-learning"></a>Azure Machine Learning で画像類似性モデルを構築してデプロイする
 
@@ -38,7 +38,7 @@ ms.locfileid: "46973424"
 7. Web サービスのデプロイ
 8. Web サービスのロード テスト
 
-ディープ ラーニング フレームワークとして [CNTK](https://www.microsoft.com/cognitive-toolkit/) が使用され、[ディープ ラーニング データ サイエンス VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) などの GPU を備えたマシンでトレーニングがローカルに実行され、展開では Azure ML Operationalization CLI が使用されます。
+ディープ ラーニング フレームワークとして [CNTK](https://www.microsoft.com/en-us/cognitive-toolkit/) が使用され、[ディープ ラーニング データ サイエンス VM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning?tab=Overview) などの GPU を備えたマシンでトレーニングがローカルに実行され、展開では Azure ML Operationalization CLI が使用されます。
 
 ## <a name="prerequisites"></a>前提条件
 

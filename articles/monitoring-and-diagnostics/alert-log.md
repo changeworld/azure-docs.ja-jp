@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 627c0ee5a2fab333b8a120867ab54ea76bc66823
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fd183b5776f30b12d577a94be147eabef05d258f
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976841"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419369"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Azure Monitor を使用してログ アラートを作成、表示、管理する  
 
@@ -34,26 +34,26 @@ ms.locfileid: "46976841"
 
 ### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Microsoft Azure portal でログ アラート ルールを作成する
 1. [ポータル](https://portal.azure.com/)で **[モニター]** を選び、[モニター] セクションで **[アラート]** を選びます。  
-    ![監視](./media/monitor-alerts-unified/AlertsPreviewMenu.png)
+    ![監視](media/alert-log/AlertsPreviewMenu.png)
 
 1. **[新しいアラート ルール]** を選択して、Azure 内で新しいアラートを作成します。
-    ![アラートの追加](./media/monitor-alerts-unified/AlertsPreviewOption.png)
+    ![アラートの追加](media/alert-log/AlertsPreviewOption.png)
 
 1. [アラートの作成] セクションが表示されます。*[アラートの条件を定義します]*、*[アラートの詳細を定義します]*、*[アクション グループを定義します]* の 3 つのセクションで構成されています。
 
-    ![ルールを作成する](./media/monitor-alerts-unified/AlertsPreviewAdd.png)
+    ![ルールを作成する](media/alert-log/AlertsPreviewAdd.png)
 
 1.  **[リソースの選択]** のリンクを使用してターゲットを指定し、リソースを選択することで、アラートの条件を定義します。 _サブスクリプション_、_リソースの種類_を選択し、必要な_リソース_ を選択して、フィルターを適用します。 
 
     >[!NOTE]
 
     > ログ アラートを作成する場合、続行する前に、選択したリソースに使用可能な**ログ** シグナルを確認します。
-    ![リソースの選択](./media/monitor-alerts-unified/Alert-SelectResourceLog.png)
+    ![リソースの選択](media/alert-log/Alert-SelectResourceLog.png)
 
  
 1. "*ログ アラート*": **[リソースの種類]** が *Log Analytics* または *Application Insights* のような分析ソースであり、シグナルの種類が **[ログ]** であることを確認し、適切な**リソース**を選択したら、"*[完了]*" をクリックします。 次に **[条件の追加]** をクリックして、そのリソースで使用できるシグナル オプションの一覧を表示し、シグナル一覧から、*Log Analytics* または *Application Insights* などの選択したログ監視サービスの **[Custom log search]\(カスタム ログ検索\)** オプションを選択します。
 
-   ![リソースの選択 - カスタム ログ検索](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
+   ![リソースの選択 - カスタム ログ検索](media/alert-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
 
@@ -61,7 +61,7 @@ ms.locfileid: "46976841"
 
 1.  *[ログ アラート]*: 選択すると、アラート設定のクエリを **[検索クエリ]** フィールドで宣言できます。クエリ構文が正しくない場合は、フィールドに赤文字でエラーが表示されます。 クエリ構文が正しい場合は、直近の 6 時間から最後の週までさまざまな時間枠を微調整するオプションとともに、宣言されたクエリの履歴データが参考としてグラフで表示されます。
 
- ![アラート ルールの構成](./media/monitor-alerts-unified/AlertsPreviewAlertLog.png)
+ ![アラート ルールの構成](media/alert-log/AlertsPreviewAlertLog.png)
 
  > [!NOTE]
 
@@ -69,7 +69,7 @@ ms.locfileid: "46976841"
 
     >  Application Insights を使用するメトリック測定タイプのログ アラートでは、以下に示すように、**[集計]** オプションを使用して、データをグループ化する特定の変数を指定できます。
 
-    ![[集計] オプション](./media/monitor-alerts-unified/aggregate-on.png)
+    ![[集計] オプション](media/alert-log/aggregate-on.png)
 
 1.  *[ログ アラート]*: 所定の視覚エフェクトを使用して、表示される [条件]、[集計]、[しきい値] のオプションから**アラート ロジック**を選択できます。 最後に、そのロジック内で **[期間]** オプションを使用して、指定した条件を評価する期間を指定します。 また、**[頻度]** を選択して Alert を実行する頻度を指定します。
 **ログ アラート**の場合、アラートは次のものに基づきます。
@@ -83,7 +83,7 @@ ms.locfileid: "46976841"
 
     - **[アラートを表示しない]**: アラート ルールの抑制を有効にすると、新しいアラートを作成した後、定義された期間中、ルールのアクションが無効になります。 ルールは引き続き実行され、条件が満たされればアラート レコードが作成されます。 これにより、同じアクションを繰り返し実行することなく、問題を修正できます。
 
-        ![ログ アラートのアラートを表示しない](./media/monitor-alerts-unified/AlertsPreviewSuppress.png)
+        ![ログ アラートのアラートを表示しない](media/alert-log/AlertsPreviewSuppress.png)
 
         > [!TIP]
         > アラート抑制の値をアラートの頻度より大きくし、通知がオーバーラップすることなく停止されるようにします
@@ -98,19 +98,19 @@ ms.locfileid: "46976841"
     - **電子メール通知**: 前述のアクション グループに 1 つ以上の電子メール アクションが存在する場合、アクションのグループ経由で送信された電子メール内の "*電子メールの件名*" をオーバーライドします。 メールの本文は変更できず、このフィールドは電子メール アドレス用では**ありません**。
     - **カスタム JSON ペイロードを含める**: 前述のアクション グループに 1 つ以上の webhook アクションが存在する場合、アクション グループによって使用される webhook JSON をオーバーライドします。 ユーザーは、関連付けられているアクション グループで構成されているすべての webhook に使用する JSON の形式を指定できます。webhook 形式について詳しくは、「[ログ アラート ルールの webhook アクション](monitor-alerts-unified-log-webhook.md)」をご覧ください。 サンプルの JSON データを使用して形式を確認する [View Webhook] (Webhook の表示) オプションが提供されています。
 
-        ![ログ アラートのアクションのオーバーライド](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
+        ![ログ アラートのアクションのオーバーライド](media/alert-log/AlertsPreviewOverrideLog.png)
 
 
 1. すべてのフィールドが有効で緑色のチェックマークがついている場合、**[アラート ルールの作成]** をクリックすることができ、アラートが Azure Monitor - アラートで作成されます。 アラート ダッシュボードですべてのアラートを表示できます。
 
-    ![ルールの作成](./media/monitor-alerts-unified/AlertsPreviewCreate.png)
+    ![ルールの作成](media/alert-log/AlertsPreviewCreate.png)
 
     数分後にアラートがアクティブになり、前述のようにトリガーされます。
 
 ユーザーは、[Microsoft Azure portal の [Log Analytics] ページ](../log-analytics/log-analytics-log-search-portals.md#log-analytics-page
 )で分析クエリを最終処理し、[Set Alert] (アラートの設定) ボタンでアラートを作成するようにプッシュし、上記のチュートリアルの手順 6 以降の指示に従います。
 
- ![Log Analytics - アラートの設定](./media/monitor-alerts-unified/AlertsAnalyticsCreate.png)
+ ![Log Analytics - アラートの設定](media/alert-log/AlertsAnalyticsCreate.png)
 
 ### <a name="view--manage-log-alerts-in-azure-portal"></a>Microsoft Azure portal でログ アラートを表示および管理する
 
@@ -122,7 +122,7 @@ ms.locfileid: "46976841"
 
 
 1. 上部のバーにある **[ルールの管理]** を選択して、ルールを管理するセクションに移動します。ここでは、作成されたすべてのアラート ルール (無効にされたアラートも含む) が一覧表示されます。
-    ![アラート ルールの管理](./media/monitoring-activity-log-alerts-new-experience/manage-alert-rules.png)
+    ![アラート ルールの管理](media/alert-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Azure リソース テンプレートを使用したログ アラートの管理
 現在、ログ アラートは、アラートがどの分析プラットフォームに基づくことになるか、(つまり) Log Analytics と Application Insights のどちらに基づくことになるかに応じて、2 つの異なるリソース テンプレートを使用して作成できます。

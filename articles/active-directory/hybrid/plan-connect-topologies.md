@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: ef72829d507d6a471ec9a8972ead262da7f7b582
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 4362a6b936c52319f6f6fc625370733f3c84e361
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068699"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158858"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -87,7 +87,7 @@ Azure AD Connect 同期の既定の構成では、次のことを前提として
 ### <a name="multiple-forests-separate-topologies"></a>複数のフォレスト、分離トポロジ
 ![ユーザーがすべてのディレクトリで 1 度だけ示されるオプション](./media/plan-connect-topologies/MultiForestUsersOnce.png)
 
-![複数のフォレストと分離トポロジの説明図](./media/plan-connect-topologies/MultiForestSeperateTopologies.png)
+![複数のフォレストと分離トポロジの説明図](./media/plan-connect-topologies/MultiForestSeparateTopologies.png)
 
 この環境では、すべてのオンプレミス フォレストが個別のエンティティとして扱われます。 他のどのフォレストにもユーザーは存在しません。 各フォレストには独自の Exchange 組織があり、フォレスト間に GALSync はありません。 このトポロジは、合併や買収後の組織や、各部署が独立して運営されている組織で見られます。 Azure AD ではこれらのフォレストは同じ組織内にあり、統合された GAL で表示されます。 前の図では、すべてのフォレスト内の各オブジェクトが、一度メタバースに表され、ターゲットの Azure AD テナントに集約されます。
 

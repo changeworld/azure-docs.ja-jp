@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: 32f533d06b7db0284459951e65f9c04fe0bb0285
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226620"
+---
 可用性セットは、メンテナンス時などのシステム停止時に仮想マシンを利用するのに役立ちます。 同じように構成された 2 つ以上の仮想マシンを同じ可用性セットに割り当てることによって、仮想マシンが実行するアプリケーションやサービスの可用性を維持するために必要な冗長性が実現されます。 このしくみの詳細については、[仮想マシンの可用性管理][Manage the availability of virtual machines]に関する記事を参照してください。
 
 アプリケーションをいつでも利用できるようにするだけでなく、効率的に実行できるようにするためには、可用性セットと負荷分散エンドポイントの両方を使用することをお勧めします。 負荷分散されたエンドポイントの詳細については、[Azure インフラストラクチャ サービスの負荷分散][Load balancing for Azure infrastructure services]に関する記事を参照してください。

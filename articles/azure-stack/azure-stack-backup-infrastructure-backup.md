@@ -5,22 +5,20 @@ services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: ''
-ms.assetid: 9B51A3FB-EEFC-4CD8-84A8-38C52CFAD2E4
-ms.service: azure-stack
+mss.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/10/2018
+ms.date: 10/25/2018
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.openlocfilehash: 9f2668ff84ade4ba99b7aa7dcd67feafadc1c6c4
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 4cb8ffe218ef1cd64b93201eddbbd09bb16026db
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377838"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087391"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>インフラストラクチャ バックアップ サービスを使用した Azure Stack のバックアップとデータの回復
 
@@ -33,13 +31,13 @@ ms.locfileid: "44377838"
 バックアップ サービスを有効にする前に、[要件が満たされている](#verify-requirements-for-the-infrastructure-backup-service)ことを確認してください。
 
 > [!Note]  
-> インフラストラクチャ バックアップ サービスには、ユーザー データとアプリケーションは含まれません。 [App Services](https://aka.ms/azure-stack-app-service)、[SQL](https://aka.ms/azure-stack-ms-sql)、および [MySQL](https://aka.ms/azure-stack-mysql) リソース プロバイダーと関連するユーザー データのバックアップと復元の手順については、以下の記事を参照してください。
+> インフラストラクチャ バックアップ サービスには、ユーザー データとアプリケーションは含まれません。 <!-- See the following articles for instructions on backing up and restore [App Services](https://aka.ms/azure-stack-app-service), [SQL](https://aka.ms/azure-stack-ms-sql), and [MySQL](https://aka.ms/azure-stack-mysql) resource providers and associated user data. -->
 
 ## <a name="the-infrastructure-backup-service"></a>インフラストラクチャ バックアップ サービス
 
 このサービスには以下の機能が含まれています。
 
-| Feature                                            | 説明                                                                                                                                                |
+| 機能                                            | 説明                                                                                                                                                |
 |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | バックアップ インフラストラクチャ サービス                     | Azure Stack でインフラストラクチャ サービスのサブセット全体のバックアップを調整します。 災害が発生した場合、再デプロイの一環としてデータを復元できます。 |
 | エクスポートされるバックアップ データの圧縮と暗号化 | バックアップ データは、システムによって圧縮および暗号化されてから、管理者が提供する外部ストレージの場所にエクスポートされます。                |

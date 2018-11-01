@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 3dd0b99275dc3b6de1da6e433e44ae5ba01cdd33
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2f1b1568b75edba800cdac0fd5970ddf90126d9a
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985932"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087569"
 ---
 # <a name="durable-functions-overview"></a>Durable Functions の概要
 
@@ -176,14 +176,14 @@ public static async Task<HttpResponseMessage> Run(
     HttpRequestMessage req,
     DurableOrchestrationClient starter,
     string functionName,
-    TraceWriter log)
+    ILogger log)
 {
     // Function name comes from the request URL.
     // Function input comes from the request content.
     dynamic eventData = await req.Content.ReadAsAsync<object>();
     string instanceId = await starter.StartNewAsync(functionName, eventData);
     
-    log.Info($"Started orchestration with ID = '{instanceId}'.");
+    log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
     
     return starter.CreateCheckStatusResponse(req, instanceId);
 }

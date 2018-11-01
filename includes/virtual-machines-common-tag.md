@@ -1,6 +1,16 @@
-
-
-
+---
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 10/26/2018
+ms.author: cynthn
+ms.openlocfilehash: ccc2b574ea054a1b0ecf32a1e59691050fb66fcf
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50226954"
+---
 ## <a name="tagging-a-virtual-machine-through-templates"></a>テンプレートを使用して仮想マシンにタグを付ける
 まず、テンプレートを使用してタグを付けてみましょう。 [このテンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-tags) では、Compute (仮想マシン)、Storage (ストレージ アカウント)、および Network (パブリック IP アドレス、Virtual Network、およびネットワーク インターフェイス) というリソースにタグを設定します。 このテンプレートは Windows VM のものですが、Linux VM 用に調整できます。
 
