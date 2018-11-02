@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: a0aa63291a7fb3f069663d40687f81c3a3265712
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: ea0987eaea8ee558df35ecce6afb5e7bab3ac4de
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945945"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50087628"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso での移行: Azure への移行の対象となるオンプレミスのワークロードを評価する
 
@@ -289,19 +289,11 @@ Contoso は、VM をデプロイする前に OVA ファイルが安全である�
     ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. 生成されたハッシュは、次の設定と一致する必要があります (バージョン 1.0.9.15)。
 
-<<<<<<< HEAD
     **アルゴリズム** | **ハッシュ値**
     --- | ---
     MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
     SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
     SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
-=======
-**アルゴリズム** | **ハッシュ値**
---- | ---
-MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
-SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
-SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
->>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37
 
 ### <a name="create-the-collector-appliance"></a>コレクター アプライアンスを作成する
 

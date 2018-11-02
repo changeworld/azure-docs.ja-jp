@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: b99c14e6022fa34d41caaa02bfc9feecb3c840ce
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4f8261983feb8e655333f548b0b90f822eda30a6
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407505"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421188"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
-![IT Service Management Connector シンボル](./media/log-analytics-itsmc/itsmc-symbol.png)
+![IT Service Management Connector シンボル](media/log-analytics-itsmc-overview/itsmc-symbol.png)
 
 IT Service Management Connector (ITSMC) を使用すると、サポートされている IT Service Management (ITSM) 製品/サービスと Azure を接続できます。
 
@@ -56,18 +56,18 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
 
 1.  Azure Portal で、**[+ 新規]** アイコンをクリックします。
 
-    ![Azure の新しいリソース](./media/log-analytics-itsmc/azure-add-new-resource.png)
+    ![Azure の新しいリソース](media/log-analytics-itsmc-overview/azure-add-new-resource.png)
 
 2.  Marketplace で **IT Service Management Connector** を検索し、**[作成]** をクリックします。
 
-    ![ITSMC ソリューションの追加](./media/log-analytics-itsmc/add-itsmc-solution.png)
+    ![ITSMC ソリューションの追加](media/log-analytics-itsmc-overview/add-itsmc-solution.png)
 
 3.  **[OMS ワークスペース]** セクションで、ソリューションをインストールする Azure Log Analytics ワークスペースを選択します。
    >[!NOTE]
    >Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ワークスペースは Log Analytics ワークスペースと呼ばれるようになります。
 4.  **[OMS ワークスペースの設定]** セクションで、ソリューション リソースを作成する ResourceGroup を選択します。
 
-    ![ITSMC ワークスペース](./media/log-analytics-itsmc/itsmc-solution-workspace.png)
+    ![ITSMC ワークスペース](media/log-analytics-itsmc-overview/itsmc-solution-workspace.png)
     >[!NOTE]
     >Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ワークスペースは Log Analytics ワークスペースと呼ばれるようになります。
 
@@ -93,12 +93,12 @@ ITSM ツールの準備が完了したら、次の手順に従って接続を作
 
 1.  **[すべてのリソース]** に移動し、**ServiceDesk(YourWorkspaceName)** を探します。
 2.  左側のウィンドウの **[ワークスペースのデータ ソース]** で、**[ITSM 接続]** をクリックします。
-    ![ITSM 接続](./media/log-analytics-itsmc/itsm-connections.png)
+    ![ITSM 接続](media/log-analytics-itsmc-overview/itsm-connections.png)
 
     このページには接続の一覧を表示されています。
 3.  **[接続の追加]** をクリックします。
 
-    ![ITSM 接続の追加](./media/log-analytics-itsmc/add-new-itsm-connection.png)
+    ![ITSM 接続の追加](media/log-analytics-itsmc-overview/add-new-itsm-connection.png)
 
 4.  [ITSM 製品/サービスとの ITSMC 接続の構成](log-analytics-itsmc-connections.md)に関する記事の説明に従って、接続の設定を指定します。
 
@@ -106,7 +106,7 @@ ITSM ツールの準備が完了したら、次の手順に従って接続を作
 
     > 既定では、ITSMC は、接続の構成データを 24 時間に 1 回更新します。 編集内容やテンプレートの更新を反映するために接続データをすぐに更新するには、接続のブレードに表示される **[同期]** ボタンをクリックします。
 
-    ![接続の更新](./media/log-analytics-itsmc/itsmc-connections-refresh.png)
+    ![接続の更新](media/log-analytics-itsmc-overview/itsmc-connections-refresh.png)
 
 
 ## <a name="using-the-solution"></a>ソリューションの使用
@@ -123,16 +123,16 @@ ITSM 接続を作成したら、**アクション グループ**の **ITSM ア�
 1. Azure Portal で、**[監視]** をクリックします。
 2. 左側のウィンドウで、**[アクション グループ]** をクリックします。 **[アクション グループの追加]** ウィンドウが表示されます。
 
-    ![アクション グループ](media/log-analytics-itsmc/action-groups.png)
+    ![アクション グループ](media/log-analytics-itsmc-overview/action-groups.png)
 
 3. アクション グループの**名前**と**短い名前**を入力します。 アクション グループを作成する**リソース グループ**と**サブスクリプション**を選択します。
 
-    ![アクション グループの詳細](media/log-analytics-itsmc/action-groups-details.png)
+    ![アクション グループの詳細](media/log-analytics-itsmc-overview/action-groups-details.png)
 
 4. アクション リストで、**[アクションの種類]** のドロップダウン メニューから **[ITSM]** を選択します。 アクションの**名前**を入力し、**[詳細の編集]** をクリックします。
 5. Log Analytics ワークスペースが配置される**サブスクリプション**を選択します。 ご使用のワークスペース名が後に続く**接続**名 (ITSM Connector の名前) を選択します。 たとえば、"MyITSMMConnector(MyWorkspace)" などです。
 
-    ![ITSM アクションの詳細](./media/log-analytics-itsmc/itsm-action-details.png)
+    ![ITSM アクションの詳細](media/log-analytics-itsmc-overview/itsm-action-details.png)
 
 6. ドロップダウン メニューから **[作業項目]** の種類を選択します。
    既存のテンプレートを使用するか、ITSM 製品に必要なフィールドに入力します。
@@ -151,7 +151,7 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 
 インシデントと変更要求データを視覚化するには、ソリューションで ITSM Connector ダッシュボードを使用します。
 
-![Log Analytics 画面](./media/log-analytics-itsmc/itsmc-overview-sample-log-analytics.png)
+![Log Analytics 画面](media/log-analytics-itsmc-overview/itsmc-overview-sample-log-analytics.png)
 
 ダッシュボードでは、接続の問題を分析するときの開始ポイントとして使用できるコネクタの状態に関する情報も確認できます。
 
@@ -161,7 +161,7 @@ Service Map ソリューション内で、影響を受けるコンピュータ�
 
 Service Map ソリューションを使用する場合は、ITSM ソリューションで作成されたサービス デスク項目が次の例のように表示されます。
 
-![Log Analytics 画面](./media/log-analytics-itsmc/itsmc-overview-integrated-solutions.png)
+![Log Analytics 画面](media/log-analytics-itsmc-overview/itsmc-overview-integrated-solutions.png)
 
 詳細: [Service Map](../operations-management-suite/operations-management-suite-service-map.md)
 

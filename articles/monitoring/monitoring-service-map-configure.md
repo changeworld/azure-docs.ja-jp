@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: 70cf6fe1e2256ba2ed58d020111669e59d9db56b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 4461b98c56bcf99fc11aa9d89e6c6dc5961c86ac
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405516"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419522"
 ---
 # <a name="configure-service-map-in-azure"></a>Azure で Service Map を構成する
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すれば、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -146,7 +146,7 @@ Linux または Windows が System Center Operations Manager 管理グループ�
 
 サービス マップ エージェントがデータを送信することはないため、ファイアウォールやポートを変更する必要はありません。 Service Map 内のデータは、常に Log Analytics エージェントによって、直接または Log Analytics ゲートウェイを使用して Log Analytics サービスに送信されます。
 
-![Service Map エージェント](media/monitoring-service-map/agents.png)
+![Service Map エージェント](media/monitoring-service-map-configure/agents.png)
 
 Log Analytics に管理グループが接続されている System Center Operations Manager ユーザーである場合は次のとおりです。
 
@@ -172,7 +172,7 @@ Dependency Agent は、通常、システム メモリの 0.1%、システム CP
 
 ## <a name="installation"></a>インストール
 
-## <a name="azure-vm-extension"></a>Azure VM 拡張機能
+### <a name="azure-vm-extension"></a>Azure VM 拡張機能
 Windows 用 (DependencyAgentWindows) と Linux 用 (DependencyAgentLinux) の両方の拡張機能が用意されています。[Azure VM 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-features)を使用すると、Azure VM に Dependency Agent を簡単に展開できます。  Azure VM 拡張機能により、PowerShell スクリプトを使用して、または VM で Azure Resource Manager テンプレートを使用して直接、Windows および Linux の VM に Dependency Agent を展開することができます。  Azure VM 拡張機能を使用して展開したエージェントは、最新バージョンに自動的に更新されます。
 
 PowerShell を使用して Azure VM 拡張機能を展開するには、次の例を使用してください。

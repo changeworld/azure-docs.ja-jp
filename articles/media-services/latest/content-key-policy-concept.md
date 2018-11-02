@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 9a5ef8df9b1ca87430fb5e8d1da94f1899c4a856
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 24597c36ab6569abb53c7be331631556e2abfe66
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985864"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50085959"
 ---
 # <a name="content-key-policies"></a>コンテンツ キー ポリシー
 
@@ -28,16 +28,16 @@ Azure Media Services v3 では、コンテンツ キー ポリシーによって
 
 次の表は、ContentKeyPolicy のプロパティとそれらの定義を示しています。
 
-|Name|type|説明|
-|---|---|---|
-|id|string|リソースの完全修飾リソース ID。|
-|name|string|リソースの名前。|
-|properties.created |string|ポリシーの作成日|
-|properties.description |string|ポリシーの説明。|
-|properties.lastModified    |string|ポリシーの最終変更日|
-|properties.options |ContentKeyPolicyOption[]|キー ポリシーのオプション。|
-|properties.policyId    |string|従来のポリシー ID。|
-|type   |string|リソースの種類。|
+|Name|説明|
+|---|---|
+|id|リソースの完全修飾リソース ID。|
+|name|リソースの名前。|
+|properties.created |ポリシーの作成日|
+|properties.description |ポリシーの説明。|
+|properties.lastModified|ポリシーの最終変更日|
+|properties.options |キー ポリシーのオプション。|
+|properties.policyId    |従来のポリシー ID。|
+|type   |リソースの種類。|
 
 完全な定義については、「[Content Key Policies](https://docs.microsoft.com/rest/api/media/contentkeypolicies)」(コンテンツ キー ポリシー) を参照してください。
 
