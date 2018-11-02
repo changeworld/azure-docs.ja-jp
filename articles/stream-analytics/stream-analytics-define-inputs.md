@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/27/2018
-ms.openlocfilehash: 2da388ef2fc0df8b08658900fe91ecc9d440fd3a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 2bd2a90c6bac280b6f68bde378b7f7d32b7fcd38
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579294"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248747"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Stream Analytics に入力としてデータをストリーム配信する
 
@@ -39,7 +39,7 @@ Azure Event Hubs はスケーラブルな発行/サブスクライブ イベン�
 `EventEnqueuedUtcTime` は、イベントが Event Hubs に到着したときのタイムスタンプであり、Event Hubs から Stream Analytics に送信されるイベントの既定のタイムスタンプです。 イベント ペイロードのタイムスタンプを利用してデータをストリームとして処理するには、[TIMESTAMP BY](https://msdn.microsoft.com/library/azure/dn834998.aspx) キーワードを使用する必要があります。
 
 ### <a name="consumer-groups"></a>コンシューマー グループ
-Stream Analytics イベント ハブの各入力は、独自のコンシューマー グループを持つように構成する必要があります。 ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。 この状況は 1 つのコンシューマー グループの閲覧者数に影響を与えます。 閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とする Event Hubs の上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。 イベント ハブごとに 20 個のコンシューマー グループという制限もあります。 詳細については、[Event Hub レシーバーでの Azure Stream Analytics のトラブルシューティング](stream-analytics-event-hub-consumer-groups.md)をご覧ください。
+Stream Analytics イベント ハブの各入力は、独自のコンシューマー グループを持つように構成する必要があります。 ジョブに自己結合または複数の入力が含まれる場合、一部の入力は複数の閲覧者ダウンストリームによって読み取られる可能性があります。 この状況は 1 つのコンシューマー グループの閲覧者数に影響を与えます。 閲覧者の数を各パーティションのコンシューマー グループ別に 5 人とする Event Hubs の上限を回避するには、Stream Analytics ジョブごとにコンシューマー グループを指定するのが最良事例となります。 イベント ハブごとに 20 個のコンシューマー グループという制限もあります。 詳細については、[Azure Stream Analytics の入力のトラブルシューティング](stream-analytics-troubleshoot-input.md)に関するページを参照してください。
 
 ### <a name="stream-data-from-event-hubs"></a>Event Hubs からのデータのストリーム配信
 次の表に示したのは、Azure Portal の **[新しい入力]** ページで Event Hubs からのデータ入力をストリーム配信するときに使用される各プロパティの説明です。
@@ -115,7 +115,6 @@ IoT Hub からのストリーム データを使用する場合、Stream Analyti
 | **IoTHub.ConnectionDeviceId** | このメッセージの送信に使用される認証 ID。 この値は、IoT Hub により servicebound メッセージにスタンプされます。 |
 | **IoTHub.ConnectionDeviceGenerationId** | このメッセージの送信に使用された認証済みデバイスの世代 ID。 この値は、IoT Hub により servicebound メッセージにスタンプされます。 |
 | **IoTHub.EnqueuedTime** | IoT Hub でメッセージを受信した時刻。 |
-| **IoTHub.StreamId** | 送信元デバイスにより追加されたカスタム イベント プロパティ。 |
 
 
 ## <a name="stream-data-from-blob-storage"></a>Blob Storage からのデータのストリーム配信
@@ -179,5 +178,5 @@ FROM Input
 [stream.analytics.scale.jobs]: stream-analytics-scale-jobs.md
 [stream.analytics.introduction]: stream-analytics-introduction.md
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
-[stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
-[stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
+[stream.analytics.query.language.reference]: https://go.microsoft.com/fwlink/?LinkID=513299
+[stream.analytics.rest.api.reference]: https://go.microsoft.com/fwlink/?LinkId=517301

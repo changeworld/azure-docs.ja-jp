@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/15/2018
-ms.openlocfilehash: bd40faf8a77a8940dc78375ec516c39742540231
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 2a0bacaf0405a5223afedcd3897e2a1514f7128b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352839"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466683"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 
@@ -79,7 +79,7 @@ SQL Database 監査を使用して、以下を行うことができます。
 
     ![ナビゲーション ウィンドウ][3]
 
-5. **新規** - 監査ログを書き込む場所を構成するときに、複数のオプションから選択できるようになりました。 ログは、Azure ストレージ アカウント、OMS ワークスペース (Log Analytics で使用)、またはイベント ハブ (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
+5. **新規** - 監査ログを書き込む場所を構成するときに、複数のオプションから選択できるようになりました。 ログは、Azure ストレージ アカウント、Log Analytics ワークスペース (Log Analytics で使用)、またはイベント ハブ (イベント ハブで使用) に書き込むことができます。 これらのオプションは組み合わせて構成でき、それぞれの場所に監査ログが書き込まれます。
 
     ![ストレージ オプション](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -87,9 +87,9 @@ SQL Database 監査を使用して、以下を行うことができます。
 
     ![ストレージ アカウント](./media/sql-database-auditing-get-started/auditing_select_storage.png)
 
-7. OMS ワークスペースへの監査ログの書き込みを構成するには、**[Log Analytics (プレビュー)]** を選択し、**[Log Analytics の詳細]** を開きます。 ログが書き込まれる OMS ワークスペースを選択または作成し、**[OK]** をクリックします。
+7. Log Analytics ワークスペースへの監査ログの書き込みを構成するには、**[Log Analytics (プレビュー)]** を選択し、**[Log Analytics の詳細]** を開きます。 ログが書き込まれる Log Analytics ワークスペースを選択または作成し、**[OK]** をクリックします。
 
-    ![OMS](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. イベント ハブへの監査ログの書き込みを構成するには、**[イベント ハブ (プレビュー)]** を選択し、**[イベント ハブの詳細]** を開きます。 ログが書き込まれるイベント ハブを選択し、**[OK]** をクリックします。 イベント ハブがお使いのデータベースおよびサーバーと同じリージョンにあることを確認します。
 
@@ -109,10 +109,10 @@ SQL Database 監査を使用して、以下を行うことができます。
 
 - **[監査レコード]** ページの上部にある **[Open in OMS]\(OMS で開く\)** をクリックすると、Log Analytics でログ ビューが開きます。このビューで、時間の範囲と検索クエリをカスタマイズできます。
 
-    ![OMS で開く](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+    ![Log Analytics で開く](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
 - また、Log Analytics ブレードから監査ログにアクセスすることもできます。 ご自身の Log Analytics ワークスペースを開いて、**[全般]** セクションで **[ログ]** をクリックします。 監査ログを表示するには、*search "SQLSecurityAuditEvents"* などの単純なクエリから始めることができます。
-    ここから [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) を使用して、お使いの監査ログのデータに対して詳細検索を実行することもできます。 Log Analytics により、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 OMS Log Analytics 検索言語およびコマンドに関する有用な追加情報については、[Log Analytics 検索リファレンス](../log-analytics/log-analytics-log-search.md)に関するページをご覧ください。
+    ここから [Log Analytics](../log-analytics/log-analytics-log-search.md) を使用して、監査ログのデータに対して詳細検索を実行することもできます。 Log Analytics により、統合された検索とカスタム ダッシュボードを使用してオペレーション インサイトがリアルタイムで得られるため、ワークロードやサーバー全体に散在する何百万件のレコードもすぐに分析できます。 Log Analytics 検索言語およびコマンドに関する有用な追加情報については、[Log Analytics 検索リファレンス](../log-analytics/log-analytics-log-search.md)に関するページをご覧ください。
 
 監査ログをイベント ハブに書き込む場合:
 
@@ -222,17 +222,17 @@ Geo レプリケーション データベースでは、プライマリ デー�
 
 **REST API - BLOB 監査**:
 
-- [データベース BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/databaseblobauditingpolicies_createorupdate)
-- [サーバー BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_createorupdate)
-- [データベース BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/databaseblobauditingpolicies_get)
-- [サーバー BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_get)
+- [データベース BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [サーバー BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [データベース BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+- [サーバー BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 WHERE 句のサポートによってフィルタリングを強化した拡張ポリシー:
 
-- [データベース "*拡張*" BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/extendeddatabaseblobauditingpolicies_createorupdate)
-- [サーバー "*拡張*" BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_createorupdate)
-- [データベース "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/extendeddatabaseblobauditingpolicies_get)
-- [サーバー "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/serverblobauditingpolicies_get)
+- [データベース "*拡張*" BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [サーバー "*拡張*" BLOB 監査ポリシーの作成または更新](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [データベース "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [サーバー "*拡張*" BLOB 監査ポリシーの取得](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

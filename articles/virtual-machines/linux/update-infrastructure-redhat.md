@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: borisb
-ms.openlocfilehash: 4a8bc45b253def1130e5a02dfcd6d359f0e74506
-ms.sourcegitcommit: 76797c962fa04d8af9a7b9153eaa042cf74b2699
+ms.openlocfilehash: ad28e30f7f31ec61332faac3ab3ee3c3e2fd67ca
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42145898"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024156"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Azure のオンデマンド Red Hat Enterprise Linux VM 用 Red Hat Update Infrastructure
  クラウド プロバイダー (Azure など) は、[Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) を使用して、Red Hat でホストされているリポジトリのコンテンツのミラーリング、Azure 固有のコンテンツを使用したカスタム リポジトリの作成、およびエンド ユーザーの VM での使用を実行できます。
@@ -76,7 +76,7 @@ Azure RHEL PAYG VM から Azure RHUI への接続で問題が発生した場合�
 
     b. 次のパターン `mirrorlist.*cds[1-4].cloudapp.net` の場所をポイントしている場合、構成の更新が必要です。 古い VM スナップショットが使用されているため、新しい Azure RHUI をポイントするように更新する必要があります。
 
-1. Azure でホストされている RHUI へのアクセスは、[Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)内の VM に限定されます。
+1. Azure でホストされている RHUI へのアクセスは、[[Azure データセンターの IP 範囲]](https://www.microsoft.com/download/details.aspx?id=41653) 内の VM に限定されます。
  
 1. 新しい構成を使用し、VM が Azure IP 範囲から接続していることを確認したが、それでも Azure RHUI に接続できない場合は、Microsoft または Red Hat にサポート ケースを提出してください。
 

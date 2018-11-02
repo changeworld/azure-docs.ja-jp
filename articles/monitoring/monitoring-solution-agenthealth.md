@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: f0737c6a6ff228b92a030242faf7f4d634bdd9f2
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e9ac4b7f7a0900f8b49f95c0db9ba5e9c962fa0e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733188"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404037"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Azure での Agent Health ソリューション
 Azure の Agent Health ソリューションを使用すると、Log Analytics ワークスペースに対して、または Log Analytics に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、運用データを送信しているエージェントと応答していないエージェントを効率的に把握できます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    

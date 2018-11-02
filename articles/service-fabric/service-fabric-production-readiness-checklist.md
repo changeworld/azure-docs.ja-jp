@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: subramar
-ms.openlocfilehash: 6ebe83794f23ed3cf637f668d2810b9ba7521084
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7557e2b993a5059df8aea63c7394539acc28c110
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295872"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403526"
 ---
 # <a name="production-readiness-checklist"></a>運用環境の準備状況チェックリスト
 
@@ -36,7 +36,7 @@ ms.locfileid: "44295872"
 6. ノード タイプの[信頼性レベル](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)を理解して選択します。 シルバー以上の信頼性をお勧めします。
 7. クラスターの[容量の要件](service-fabric-cluster-capacity.md)を特定するため、ワークロードのロード テストとスケール テストを実行します。 
 8. アラートを使用して、サービスとアプリケーションが監視され、アプリケーション ログが生成され、格納されています。 例については、「[Service Fabric アプリケーションにログ記録を追加する](service-fabric-how-to-diagnostics-log.md)」と「[Log Analytics でコンテナーを監視](service-fabric-diagnostics-oms-containers.md)」を参照してください。
-9. クラスターがアラート ([OMS](service-fabric-diagnostics-event-analysis-oms.md) など) で監視されています。 
+9. クラスターがアラート ([Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) など) で監視されています。 
 10. 基になる仮想マシン スケール セット インフラストラクチャが、アラート ([Log Analytics](service-fabric-diagnostics-oms-agent.md) など) で監視されています。
 11. ロックアウトされないように、クラスターには、常に[プライマリ証明書とセカンダリ証明書](service-fabric-cluster-security-update-certs-azure.md)があります。
 12. 開発、ステージング、および運用環境用に個別のクラスターを維持します。 

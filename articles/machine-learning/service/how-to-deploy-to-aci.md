@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 5a62d4b0b324d8b2536e408132210f07f08e8bb8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8a736516a598eee051b416834d2b737211e66b96
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958698"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429465"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Azure Container Instances への Web サービスのデプロイ 
 
@@ -33,9 +33,9 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
 
 ## <a name="prerequisites"></a>前提条件
 
-- Azure Machine Learning ワークスペースと、Azure Machine Learning SDK for Python がインストール済みである｡ これら前提条件を取得する方法については､[Azure Machine Learning のクイック スタートの概要](quickstart-get-started.md)で説明しています｡
+- Azure Machine Learning サービス ワークスペースと、Azure Machine Learning SDK for Python がインストール済み。 これら前提条件を取得する方法については､[Azure Machine Learning のクイック スタートの概要](quickstart-get-started.md)で説明しています｡
 
-- Azure Machine Learning ワークスペース オブジェクト
+- Azure Machine Learning サービスのワークスペース オブジェクト
 
     ```python
     from azureml.core import Workspace
@@ -82,10 +82,10 @@ aciconfig = AciWebservice.deploy_configuration(cpu_cores = 1,
 
 > [モデル ファイル ](#deploy-from-model-file) (`Webservice.deploy()`) からデプロイする場合､この前提条件は省略してかまいません｡
 
-[ `Webservice.deploy_from_model` ](#deploy-from-registered-model) または [ `Webservice.deploy_from_image`](#deploy-from-image) を使用するためのモデルを登録します｡ 登録済みのモデルが既にある場合は､ここでそのモデルを取得します。
+[Webservice.deploy_from_model](#deploy-from-registered-model) または [Webservice.deploy_from_image](#deploy-from-image) を使用するには、モデルを登録します。 登録済みのモデルが既にある場合は､ここでそのモデルを取得します。
 
 ### <a name="retrieve-a-registered-model"></a>登録済みのモデルを取得します。
-モデルのトレーニングに Azure Machine Learning を利用している場合、モデルは既にワークスペースに登録されている可能性があります。  たとえば､[モデルをトレーニング](tutorial-train-models-with-aml.md)チュートリアルの最後の手順では､ モデルが登録されます。  デプロイ登録済みモデルを取得します。
+モデルのトレーニングに Azure Machine Learning を利用している場合、モデルは既にワークスペースに登録されている可能性があります。  たとえば､[モデルのトレーニング チュートリアル](tutorial-train-models-with-aml.md)の最後の手順で､モデルが登録されます。  デプロイ登録済みモデルを取得します。
 
 ```python
 from azureml.core.model import Model
@@ -109,7 +109,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
                         workspace = ws)
 ```
 
-
+<a name='deploy-from-model-file'/>
 ## <a name="option-1-deploy-from-model-file"></a>オプション 1: モデル ファイルからデプロイする
 
 モデル ファイルからデプロイする選択肢では､記述するコードは最小になります､コンポーネントの命名時の自由度も最小になります｡ この選択肢では､モデル ファイルからスタートして､そのファイルがワークスペースに登録されます。  ただし、モデルに名前を付けたり、タグや説明を関連付けたりすることはできません。  
@@ -148,6 +148,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
 
 1. これで[web サービスをテスト](#test-web-service)できます｡
 
+<a name='deploy-from-registered-model'/>
 ## <a name="option-2-deploy-from-registered-model"></a>オプション 2: 登録済みモデルからデプロイする
 
 登録済みモデル ファイルをデプロイする選択肢では､もう少し多くの行のコードを受け取ります｡出力に対する命名には多少の自由度があります｡ この選択肢は、既にある登録済みモデルをデプロイする便利な方法です。  ただし、Docker イメージに名前を付けることはできません。  
@@ -173,6 +174,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
 
 1. これで[web サービスをテスト](#test-web-service)できます｡
 
+<a name='deploy-from-image'/>
 ## <a name="option-3-deploy-from-image"></a>オプション 3: イメージからデプロイする
 
 `Webservice.deploy_from_image()` を使用して登録済みモデル (`model`) をデプロイします。 この方法では､Docker イメージを個別に作成して、そのイメージからデプロイできます。
@@ -215,6 +217,7 @@ model = Model.register(model_path = "sklearn_mnist_model.pkl",
 
 これで Web サービスをテストできます。
 
+<a name='test-web-service'/>
 ## <a name="test-the-web-service"></a>Web サービスをテストする
 
 Web サービスは、使用された方法に関係なく同じです。  予測情報を取得するには、サービスの `run` メソッドを利用します。  

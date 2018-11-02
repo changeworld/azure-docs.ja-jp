@@ -10,12 +10,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2ec0dea7e50747f8af337874c8f12463cecb8df7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 798960f30ae13f42c0198cf4bf63412192edc63e
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163479"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429832"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>クラウドで自動機械学習を使用してモデルをトレーニングする
 
@@ -110,7 +110,7 @@ def get_data():
 
 ## <a name="configure-experiment"></a>実験を構成する
 
-`AutoMLConfig` の設定を指定します  (全パラメーターの一覧と使用できる値については[こちら]()を参照してください)。
+`AutoMLConfig` の設定を指定します  (全パラメーターの一覧と使用できる値については[こちら](how-to-configure-auto-train.md#configure-experiment)を参照してください)。
 
 この設定で、`run_configuration` は `run_config` オブジェクトに設定されます。このオブジェクトには、DSVM の設定と構成が含まれています。  
 
@@ -141,7 +141,7 @@ automl_config = AutoMLConfig(task='classification',
 
 ## <a name="submit-training-experiment"></a>トレーニング実験を送信する
 
-次に、自動的にハイパー パラメーターのアルゴリズムを選択し、モデルをトレーニングするように構成を送信します (`submit` メソッドの設定の詳細については[こちら]()を参照してください)。
+次に、自動的にハイパー パラメーターのアルゴリズムを選択し、モデルをトレーニングするように構成を送信します
 
 ```python
 from azureml.core.experiment import Experiment
@@ -203,7 +203,7 @@ DSVM に関するログは、/tmp/azureml_run/{iterationid}/azureml-logs 以下�
 
 ## <a name="example"></a>例
 
-`automl/03.auto-ml-remote-execution.ipynb` ノートブックは、この記事の概念を説明する例です。  このノートブックの入手:
+[automl/03.auto-ml-remote-execution.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/automl/03.auto-ml-remote-execution.ipynb) ノートブックでは、この記事の概念が示されています。  このノートブックの入手:
 
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 

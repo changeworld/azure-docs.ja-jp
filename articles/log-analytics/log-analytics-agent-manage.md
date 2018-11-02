@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 03/30/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: e00ccc4d55da805538801a0a8f3ee5502d871fab
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: eaf6aa538a4733528b52b1417c2d53318064e068
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042310"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405398"
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
@@ -34,7 +34,7 @@ Log Analytics 用の Windows または Linux エージェントを最初に配�
 
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
 2. **[コントロール パネル]** を開きます。
-3. **[Microsoft Monitoring Agent]** を選択した後、**[Azure Log Analytics (OMS)]** タブをクリックします。
+3. **[Microsoft Monitoring Agent]** を選択した後、**[Azure Log Analytics]** タブをクリックします。
 4. ワークスペースを削除する場合は、削除するワークスペースを選択し、**[削除]** をクリックします。 エージェントによる報告を停止するその他のワークスペースに対して、この手順を繰り返します。
 5. ワークスペースを追加する場合は、**[追加]** をクリックし、**[Log Analytics ワークスペースの追加]** ダイアログ ボックスにワークスペース ID とワークスペース キー (主キー) を貼り付けます。 コンピューターが Azure Government クラウド内の Log Analytics ワークスペースに報告する必要がある場合は、[Azure クラウド] ドロップダウン リストから [Azure US Government] を選択します。 
 6. **[OK]** をクリックして変更を保存します。
@@ -101,7 +101,7 @@ $mma.ReloadConfiguration()
 変更を有効にするために、エージェント サービスを再起動する必要はありません。
 
 ## <a name="update-proxy-settings"></a>プロキシ設定を更新する 
-配置後にプロキシ サーバーまたは [OMS ゲートウェイ](log-analytics-oms-gateway.md)経由で通信するようにエージェントを構成するには、次の方法のいずれかを使用して、このタスクを完了します。
+配置後にプロキシ サーバーまたは [Log Analytics ゲートウェイ](log-analytics-oms-gateway.md)経由で通信するようにエージェントを構成するには、次の方法のいずれかを使用して、このタスクを完了します。
 
 ### <a name="windows-agent"></a>Windows エージェント
 
@@ -110,7 +110,7 @@ $mma.ReloadConfiguration()
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
 2. **[コントロール パネル]** を開きます。
 3. **[Microsoft Monitoring Agent]** を選択した後、**[プロキシ設定]** タブをクリックします。
-4. **[プロキシ サーバーの使用]** をクリックし、プロキシ サーバーまたはゲートウェイの URL とポート番号を指定します。 プロキシ サーバーまたは OMS ゲートウェイで認証が必要な場合は、認証するためのユーザー名とパスワードを入力し、**[OK]** をクリックします。 
+4. **[プロキシ サーバーの使用]** をクリックし、プロキシ サーバーまたはゲートウェイの URL とポート番号を指定します。 プロキシ サーバーまたは Log Analytics ゲートウェイで認証が必要な場合は、認証するためのユーザー名とパスワードを入力し、**[OK]** をクリックします。 
 
 #### <a name="update-settings-using-powershell"></a>PowerShell を使用して設定を更新する 
 
@@ -141,7 +141,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 ```  
 
 ### <a name="linux-agent"></a>Linux エージェント
-Linux コンピューターがプロキシ サーバーまたは OMS ゲートウェイ経由で Log Analytics と通信する必要がある場合は、次の手順を実行します。  プロキシ構成の値には次の構文があります。`[protocol://][user:password@]proxyhost[:port]`  *proxyhost* プロパティは、プロキシ サーバーの完全修飾ドメイン名または IP アドレスを受け取ります。
+Linux コンピューターがプロキシ サーバーまたは Log Analytics ゲートウェイ経由で通信する必要がある場合は、次の手順を実行します。  プロキシ構成の値には次の構文があります。`[protocol://][user:password@]proxyhost[:port]`  *proxyhost* プロパティは、プロキシ サーバーの完全修飾ドメイン名または IP アドレスを受け取ります。
 
 1. 次のコマンドを実行してファイル `/etc/opt/microsoft/omsagent/proxy.conf` を編集し、値を固有の設定に変更します。
 
@@ -185,7 +185,9 @@ Linux コンピューターがプロキシ サーバーまたは OMS ゲート�
 ## <a name="configure-agent-to-report-to-an-operations-manager-management-group"></a>Operations Manager 管理グループに報告するようにエージェントを構成する
 
 ### <a name="windows-agent"></a>Windows エージェント
-System Center Operations Manager 管理グループに報告するように OMS Agent for Windows を構成するには、次の手順を実行します。 
+System Center Operations Manager 管理グループに報告するように Windows 用 Log Analytics エージェントを構成するには、次の手順を実行します。
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)] 
 
 1. 管理者権限を持つアカウントでコンピューターにサインオンします。
 2. **[コントロール パネル]** を開きます。 
@@ -199,7 +201,9 @@ System Center Operations Manager 管理グループに報告するように OMS 
 10. **[OK]** をクリックして **[管理グループを追加する]** ダイアログ ボックスを閉じ、さらに **[OK]** をクリックして **[Microsoft Monitoring Agent のプロパティ]** ダイアログ ボックスを閉じます。
 
 ### <a name="linux-agent"></a>Linux エージェント
-System Center Operations Manager 管理グループにレポートするように OMS Agent for Linux を構成するには、次の手順を実行します。 
+System Center Operations Manager 管理グループに報告するように Linux 用 Log Analytics エージェントを構成するには、次の手順を実行します。 
+
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
 1. `/etc/opt/omi/conf/omiserver.conf`
 2. `httpsport=` で始まる行にポート 1270 が定義されていることを確認します  (例: `httpsport=1270`)。

@@ -1,22 +1,23 @@
 ---
-title: 音声サービスで Text to Speech を使用する
+title: Speech Service で Text to Speech を使用する
+titleSuffix: Azure Cognitive Services
 description: 音声サービスで Text to Speech を使用する方法について説明します。
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: erhopf
-ms.openlocfilehash: 774425d19101e4d326f0d6435d56aff1b37a31f7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 162b690d4b371cfe76738cd83ce484a3062d139f
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165047"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469919"
 ---
-# <a name="use-text-to-speech-in-speech-service"></a>音声サービスで "Text to Speech" を使用する
+# <a name="use-text-to-speech-in-speech-service"></a>Speech Service で "Text to Speech" を使用する
 
 音声サービスには、簡単な HTTP 要求を通じて利用できる、Text to Speech 機能が用意されています。 読み上げられるテキストを適切なエンドポイントに `POST` し、合成された音声を含むオーディオ ファイル (`.wav`) がサービスから返されます。 こうすることで、アプリケーションがこのオーディオを適宜使用できるようになります。
 

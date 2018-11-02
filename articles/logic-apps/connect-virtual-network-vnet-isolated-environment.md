@@ -1,6 +1,6 @@
 ---
-title: Azure Logic Apps から Azure 仮想ネットワークに接続する
-description: Azure Logic Apps から Azure 仮想ネットワークにアクセスするために、ロジック アプリや他のリソースをパブリックまたは "グローバル" な Azure とは分離するプライベートな専用の分離統合サービス環境を作成できます
+title: 統合サービス環境 (ISE) を介して Azure Logic Apps から Azure Virtual Network に接続する
+description: 統合サービス環境 (ISE) を作成して、ロジック アプリと統合アカウントが Azure Virtual Network にアクセスできるが、同時にパブリックすなわち "グローバル" の Azure から分離されたプライベートな状態を維持できるようにします。
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,23 +9,21 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/25/2018
-ms.openlocfilehash: 354c31014448b914b33d2bef5483efc78092f726
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: d9a849fb5556332fab39467c270360c09c774cc9
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391923"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231782"
 ---
-# <a name="create-isolated-environments-to-access-azure-virtual-networks-from-azure-logic-apps"></a>Azure Logic Apps から Azure 仮想ネットワークにアクセスするための分離環境を作成する
+# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>統合サービス環境 (ISE) を介して Azure Logic Apps から Azure Virtual Network に接続する
 
 > [!NOTE]
-> この機能は*プライベート プレビュー*段階です。 アクセスを要求するには､[ここから参加要求を作成](https://aka.ms/iseprivatepreview)します。
+> この機能は*プライベート プレビュー*段階です。 アクセスを要求するには、[参加要求をここで作成](https://aka.ms/iseprivatepreview)します。
 
-論理アプリと統合アカウントが [Azure 仮想ネットワーク](../virtual-network/virtual-networks-overview.md)にアクセスする必要がある統合シナリオでは、組織の仮想ネットワークにリンクし、組織のネットワーク内に Logic Apps サービスを展開する[*統合サービス環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成できます。 ロジック アプリと統合アカウントを作成するときに、この ISE を場所として選択します。 ロジック アプリと統合アカウントは、仮想ネットワーク内の仮想マシン (VM)、サーバー、システム、サービスなどのリソースに直接アクセスできます。 
+ロジック アプリと統合アカウントが [Azure Virtual Network](../virtual-network/virtual-networks-overview.md) にアクセスする必要があるという統合のシナリオでは、[*統合サービス環境* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) を作成します。これは、プライベートで分離された環境です。専用のストレージを使用し、パブリックすなわち "*グローバル*" Logic Apps サービスから切り離されたその他のリソースを使用します。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響も軽減されます。 この ISE を Azure Virtual Network にリンクしてから、Logic Apps サービスを仮想ネットワークにデプロイできます。 ロジック アプリまたは統合アカウントを作成するときに、この ISE を場所として選択します。 ロジック アプリまたは統合アカウントは、仮想ネットワーク内の仮想マシン (VM)、サーバー、システム、サービスなどのリソースに直接アクセスできます。 
 
 ![統合サービス環境を選択する](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
-
-ISE は、専用のストレージと、パブリックまたは*グローバル*の Logic Apps サービスとは別に存在する他のリソースを使用するプライベートな分離環境です。 この分離で、他の Azure テナントがご利用のアプリのパフォーマンスに与える可能性がある影響を軽減することもできます。 
 
 この記事では、次のタスクの実行方法について説明します。
 
@@ -208,7 +206,7 @@ ISE を使用する統合アカウントを作成するには、**[場所]** プ
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、<a href="https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps" target="_blank">Azure Logic Apps フォーラム</a>にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、<a href="http://aka.ms/logicapps-wish" target="_blank">Logic Apps のユーザー フィードバック サイト</a>にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、<a href="https://aka.ms/logicapps-wish" target="_blank">Logic Apps のユーザー フィードバック サイト</a>にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

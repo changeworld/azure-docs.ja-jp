@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/29/2018
 ms.author: srrengar
-ms.openlocfilehash: 49d9b5306a0fcf51cc0de036c725fca8345cd0ec
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: 6dee895ba9fc024baac0500619b7d6cc62167b6d
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36302184"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404479"
 ---
 # <a name="event-analysis-and-visualization-with-log-analytics"></a>Log Analytics を使用したイベントの分析と視覚化
 Log Analytics では、クラウド内でホストされているアプリケーションとサービスからテレメトリが収集および分析され、可用性とパフォーマンスを最大限にできるように分析ツールが提供されます。 この記事では、Log Analytics でクエリを実行して洞察を取得する方法と、クラスター内の処理をトラブルシューティングする方法について説明します。 次のような一般的な質問に対応します。
@@ -105,7 +105,7 @@ Kusto クエリ言語は優れています。 実行可能なもう 1 つの重�
 ## <a name="next-steps"></a>次の手順
 
 * インフラストラクチャの監視、つまりパフォーマンス カウンターを有効にするために、[Log Analytics エージェントの追加](service-fabric-diagnostics-oms-agent.md)に関するページにアクセスしてください。 エージェントによって、パフォーマンス カウンターが収集され、既存のワークスペースに追加されます。
-* オンプレミス クラスター用に、Log Analytics ではデータを Log Analytics に送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供します。 詳細については、「[インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って接続する](../log-analytics/log-analytics-oms-gateway.md)」を参照してください
-* 検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を構成する
-* Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
-* Log Analytics および Log Analytics が提供するサービスの詳しい概要について、[Log Analytics とは何か](../operations-management-suite/operations-management-suite-overview.md)に関するページで確認する
+* オンプレミス クラスター用に、Log Analytics ではデータを Log Analytics に送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供します。 詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って接続する](../log-analytics/log-analytics-oms-gateway.md)」を参照してください。
+* 検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を構成します。
+* Log Analytics の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる。
+* Log Analytics および Log Analytics が提供するサービスの詳しい概要について、[Log Analytics とは何か](../operations-management-suite/operations-management-suite-overview.md)に関するページで確認します。

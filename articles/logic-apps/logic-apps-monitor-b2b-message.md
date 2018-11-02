@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 07/21/2017
-ms.openlocfilehash: fd48dfaf7b863ab026da1758751509d9911ae01e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 63aa455851633d1e49fd1b26861aaac8a670ef15
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948011"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404786"
 ---
 # <a name="monitor-b2b-messages-and-set-up-logging-for-integration-accounts-in-azure-logic-apps"></a>B2B メッセージの監視と Azure Logic Apps の統合アカウントに対するログの設定
 
@@ -58,7 +58,9 @@ ms.locfileid: "46948011"
 
    1. **[Log Analytics への送信]** を選択します。 
    2. **[Log Analytics]** で、**[構成]** を選択します。 
-   3. **[OMS ワークスペース]** で、ログに使用する Log Analytics ワークスペースを選択します。
+   3. **[OMS ワークスペース]** で、ログに使用する Log Analytics ワークスペースを選択します。 
+   > [!NOTE]
+   > OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。 
    4. **[ログ]** で、**[IntegrationAccountTrackingEvents]** カテゴリを選択します。
    5. **[保存]** を選択します。
 
@@ -93,6 +95,8 @@ ms.locfileid: "46948011"
    1. **[Log Analytics への送信]** を選択します。 
    2. **[Log Analytics]** で、**[構成]** を選択します。 
    3. **[OMS ワークスペース]** で、ログに使用する Log Analytics ワークスペースを選択します。
+   > [!NOTE]
+   > OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
    4. **[ログ]** で、**[IntegrationAccountTrackingEvents]** カテゴリを選択します。
    5. 完了したら、**[保存]** を選択します。
 
@@ -129,6 +133,6 @@ Azure では、次の種類の追跡スキーマをサポートしています�
 
 ## <a name="next-steps"></a>次の手順
 
-* [Log Analytics で B2B メッセージを追跡する](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "OMS で B2B メッセージを追跡する")
+* [Azure Log Analytics で B2B メッセージを追跡する](../logic-apps/logic-apps-track-b2b-messages-omsportal.md " で B2B メッセージを追跡する")
 * [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
 

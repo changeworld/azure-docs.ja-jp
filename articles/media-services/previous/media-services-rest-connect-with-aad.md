@@ -3,22 +3,22 @@ title: REST で Azure AD 認証を使用して Azure Media Services API にア�
 description: REST で Azure Active Directory 認証を使用して Azure Media Services API にアクセスする方法を説明します。
 services: media-services
 documentationcenter: ''
-author: willzhan
-manager: cfowler
+author: juliako
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/26/2017
+ms.date: 10/22/2018
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: b44c5b29f41f08ac5c1d5e6aa3c37f8c15ae7c54
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: d9d1fa7d8cf25057339e560c371deb939997b578
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984659"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945079"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>REST で Azure AD 認証を使用して Azure Media Services API にアクセスする
 
@@ -47,7 +47,7 @@ Azure Media Services で Azure AD Authentication を使用する場合は、次�
 
 - Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を作成してください。
 - [Azure Portal を使用して Azure Media Services アカウントを作成](media-services-portal-create-account.md)します。
-- [AAD 認証による Azure Media Services API へのアクセスの概要](media-services-use-aad-auth-to-access-ams-api.md)に関する記事を確認してください。
+- [Azure AD 認証による Azure Media Services API へのアクセスの概要](media-services-use-aad-auth-to-access-ams-api.md)に関する記事を確認してください。
 - [Postman](https://www.getpostman.com/) REST クライアントをインストールして、この記事に記載されている REST API を実行します。 
 
     このチュートリアルでは **Postman** を使用しますが、任意の REST ツールを使用できます。 その他の選択肢は、REST プラグインを使用した **Visual Studio Code** や **Telerik Fiddler** です。 
@@ -60,7 +60,7 @@ Media Services API にアクセスするには、以下のデータ ポイント
 
 |Setting|例|説明|
 |---|-------|-----|
-|Azure Active Directory テナント ドメイン|microsoft.onmicrosoft.com|セキュリティ トークン サービス (STS) エンドポイントとしての Azure AD は、 https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token という形式で作成されます。 Azure AD は、リソース (アクセス トークン) にアクセスするために JWT を発行します。|
+|Azure Active Directory テナント ドメイン|microsoft.onmicrosoft.com|セキュリティ トークン サービス (STS) エンドポイントとしての Azure AD は、 https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token という形式で作成されます。 Azure AD は、リソース (アクセス トークン) にアクセスするために JWT を発行します。|
 |REST API エンドポイント|https://amshelloworld.restv2.westus.media.azure.net/api/|これは、アプリケーションのすべての Media Services REST API 呼び出しの呼び出し先エンドポイントです。|
 |クライアント ID (アプリケーション ID)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Azure AD アプリケーション (クライアント) ID。 アクセス トークンを取得するには、クライアント ID が必要です。 |
 |クライアント シークレット|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD アプリケーション キー (クライアント シークレット)。 アクセス トークンを取得するには、クライアント シークレットが必要です。|
@@ -144,8 +144,8 @@ AD 接続パラメーターの値を web.config ファイルまたは app.config
     または、Postman ウィンドウの右側にある **[Bulk Edit]\(一括編集\)** リンクをクリックし、次の本文を貼り付けます (クライアント ID とシークレット値を置き換えます)。
 
         grant_type:client_credentials
-        client_id:{Your Client ID that you got from your AAD Application}
-        client_secret:{Your client secret that you got from your AAD Application's Keys}
+        client_id:{Your Client ID that you got from your Azure AD Application}
+        client_secret:{Your client secret that you got from your Azure AD Application's Keys}
         resource:https://rest.media.azure.net
 
 8. **[送信]** をクリックします。

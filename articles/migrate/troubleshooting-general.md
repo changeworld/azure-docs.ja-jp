@@ -4,14 +4,14 @@ description: Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 906c6e56b670dfc26b5905a453fd43a3c72086c3
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a41a27f2a87a67ea51bcbe110ac77f7908c44e7a
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433499"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945520"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -40,6 +40,14 @@ ms.locfileid: "47433499"
 メタデータが格納されている場所を識別するには、プロジェクトの**概要**ページにある**Essentials**セクションをご覧ください。 場所が Azure Migrate によって地理内で任意に選択され、変更することはできません。 特定のリージョンだけでプロジェクトを作成するには、移行プロジェクトを作成し、目的のリージョンを通過する REST API を使用できます。
 
    ![プロジェクトの場所](./media/troubleshooting-general/geography-location.png)
+
+### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>継続的検出 OVA を使用していますが、オンプレミスの環境で削除された VM がまだポータルに表示されます。
+
+継続的検出のアプライアンスでは、パフォーマンス データのみが継続的に収集され、オンプレミス環境での構成の変更 (VM の追加、削除、ディスクの追加など) は検出されません。 オンプレミス環境で構成の変更がある場合は、次の操作を行って、変更をポータルに反映することができます。
+
+1. 項目 (VM、ディスク、コアなど) の追加: これらの変更を Azure portal に反映するには、アプライアンスで検出を停止してから、再開します。 これにより、Azure Migrate プロジェクトで変更が確実に更新されます。
+
+2. VM の削除: アプライアンスの設計方法のために、検出を停止して開始しても VM の削除は反映されません。 これは、後続の検出のデータが古い検出に追加され、上書きされないためです。 この場合、VM をグループから削除し、評価を再計算して、ポータルの VM は単に無視することができます。
 
 ## <a name="collector-errors"></a>コレクターのエラー
 

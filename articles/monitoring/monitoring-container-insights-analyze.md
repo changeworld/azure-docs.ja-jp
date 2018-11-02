@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 6df7d42bc291713a815cac9f719f53136ed35b19
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 430145119721ac947162d3b661377290a0ae2c11
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956675"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638000"
 ---
-## <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する
+# <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>コンテナーの Azure Monitor を使用して AKS クラスターのパフォーマンスを把握する
 Azure Kubernetes Service (AKS) クラスターのパフォーマンスは、コンテナーの Azure Monitor を使用して、AKS クラスターから直接観察するか、またはサブスクリプションのすべての AKS クラスターをまとめて観察することができます。 
 
 この記事を読むと、2 つの観点のエクスペリエンスと、検出された問題をすばやく評価、調査、解決する方法を理解できます。
@@ -109,6 +109,10 @@ Azure Monitor では、サブスクリプション内のリソース グルー�
 
 ![パフォーマンス ビューの Kubernetes ノード階層の例](./media/monitoring-container-insights-analyze/containers-nodes-view.png)
 
+展開されたノードでは、ノード上で実行されているポッドまたはコンテナーからコントローラーにドリルダウンして、そのコントローラーでフィルター処理されたパフォーマンス データを見ることができます。 特定のノードの **[コントローラー]** 列の値をクリックします。   
+
+![パフォーマンス ビューでのノードからコントローラーへのドリルダウンの例](./media/monitoring-container-insights-analyze/drill-down-node-controller.png)
+
 ページ上部のコントローラーまたはコンテナーを選択し、それらのオブジェクトの状態やリソース使用率を確認できます。  また、**[メトリック]** ドロップダウン リストで **[Memory RSS]\(使用メモリ (RSS)\)** または **[メモリ ワーキング セット]** を選択すると、メモリ使用率を確認することもできます。 **[Memory RSS]\(使用メモリ (RSS)\)** は、Kubernetes 1.8 以降でのみサポートされています。 それ以外のバージョンでは、**Min&nbsp;%** の値が、未定義または表示できない値を示す数値データ型である、*NaN&nbsp;%* として示されます。 
 
 ![コンテナー ノード パフォーマンス ビュー](./media/monitoring-container-insights-analyze/containers-node-metric-dropdown.png)
@@ -125,7 +129,7 @@ Azure Monitor では、サブスクリプション内のリソース グルー�
 
 次の表では、ノードを表示した場合に示される情報について説明します。
 
-| 列 | 説明 | 
+| 分割 | 説明 | 
 |--------|-------------|
 | Name | ホストの名前。 |
 | Status | ノードの状態の Kubernetes ビュー。 |
@@ -144,11 +148,13 @@ Azure Monitor では、サブスクリプション内のリソース グルー�
 
 ![<名前> コントローラーのパフォーマンス ビュー](./media/monitoring-container-insights-analyze/containers-controllers-view.png)
 
-行階層はコントローラーで始まり、コントローラーを展開します。 1 つまたは複数のコンテナーを表示できます。 ポッドを展開すると、ポッドにグループ化されているコンテナーが最後の行に表示されます。  
+行階層はコントローラーから開始し、コントローラーを展開すると、1 つまたは複数のポッドが表示されます。  ポッドを展開すると、ポッドにグループ化されているコンテナーが最後の行に表示されます。 展開されたコントローラーからは、それが実行されているノードにドリルダウンして、そのノードでフィルター処理されたパフォーマンス データを見ることができます。 特定のコントローラーの **[ノード]** 列の値をクリックします。   
+
+![パフォーマンス ビューでのノードからコントローラーへのドリルダウンの例](./media/monitoring-container-insights-analyze/drill-down-controller-node.png)
 
 次の表では、コントローラーを表示した場合に示される情報について説明します。
 
-| 列 | 説明 | 
+| 分割 | 説明 | 
 |--------|-------------|
 | Name | コントローラーの名前。|
 | Status | *[OK]*、*[終了]*、*[失敗]*、*[停止]*、*[一時停止]* などの、実行完了時のコンテナーのロールアップ状態です。 コンテナーが実行されているのに状態が正しく表示されない、またはエージェントが状態を認識せず、コンテナーが 30 分を超えても応答しない場合は、*[不明]* 状態になります。 状態アイコンのその他の詳細については、以下の表を参照してください。|
@@ -179,9 +185,13 @@ Azure Monitor では、サブスクリプション内のリソース グルー�
 
 ![<名前> コントローラーのパフォーマンス ビュー](./media/monitoring-container-insights-analyze/containers-containers-view.png)
 
+コンテナーからは、ポッドまたはノードにドリルダウンして、そのオブジェクトでフィルター処理されたパフォーマンス データを見ることができます。 特定のコンテナーの **[ポッド]** または **[ノード]** 列の値をクリックします。   
+
+![パフォーマンス ビューでのノードからコントローラーへのドリルダウンの例](./media/monitoring-container-insights-analyze/drill-down-controller-node.png)
+
 次の表では、コンテナーを表示した場合に示される情報について説明します。
 
-| 列 | 説明 | 
+| 分割 | 説明 | 
 |--------|-------------|
 | Name | コントローラーの名前。|
 | Status | 存在する場合、コンテナーの状態です。 状態アイコンのその他の詳細については、次の表を参照してください。|

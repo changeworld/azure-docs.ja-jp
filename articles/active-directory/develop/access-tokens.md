@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: f184c18e97144f7efb30d61ebd024344510f3f5c
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 3a3768e796284895b25eb62d00a58b20ca811540
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078768"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49958943"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory アクセス トークン
 
@@ -136,7 +136,7 @@ Microsoft ID はさまざまな方法で認証できます。これは、アプ�
 | 値 | 説明 |
 |-----|-------------|
 | `pwd` | パスワード認証。ユーザーの Microsoft パスワードまたはアプリのクライアント スークレット。 |
-| `rsa` | [Microsoft Authenticator アプリ](https://aka.ms/AA2kvvu)を使用した認証など、認証が RSA キーの証明に基づいていたことを示します。これは、サービスが所有する X509 証明書を使用して自己署名 JWT によって認証が実行された場合に含まれます。 |
+| `rsa` | [Microsoft Authenticator アプリ](https://aka.ms/AA2kvvu)を使用した認証など、認証が RSA キーの証明に基づいていたことを示します。 これは、サービスが所有する X509 証明書を使用して自己署名 JWT によって認証が実行された場合に含まれます。 |
 | `otp` | 電子メールまたはテキスト メッセージを使用したワンタイム パスコード。 |
 | `fed` | フェデレーション認証アサーション (JWT や SAML など) が使用されたことを示します。 |
 | `wia` | Windows 統合認証 |
@@ -179,7 +179,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> ブラウザーでこの URL をお試してみてください!
+> ブラウザーでこの [URL](https://login.microsoftonline.com/common/.well-known/openid-configuration) を試してみてください!
 
 このメタデータ ドキュメントの詳細は次のとおりです。
 
@@ -187,7 +187,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 * トークンの署名に使用される公開キーのセットの場所を示す `jwks_uri` が含まれます。 `jwks_uri` にある JSON ドキュメントには、特定の時点で使用されているすべての公開キー情報が含まれます。 アプリでは、 `kid` 要求を JWT ヘッダーで使用して、特定のトークンの署名に使用されたこのドキュメント内の公開キーを選択できます。 その後、正しい公開キーと指定されたアルゴリズムを使用して、署名の検証を実行できます。
 
 > [!NOTE]
-> V1.0 エンドポイントは、`x5t` 要求と `kid` 要求の両方を返します。 V2.0 トークンに `x5t` 要求はありません。 V2.0 エンドポイントは `kid` 要求で応答します。 いずれは、`kid` 要求を利用してトークンを検証することをお勧めします。
+> V1.0 エンドポイントは `x5t` および `kid` の両方の要求を返すのに対して、v2.0 エンドポイントは `kid` 要求のみで応答します。 いずれは、`kid` 要求を利用してトークンを検証することをお勧めします。
 
 署名の検証の実行は、このドキュメントの対象範囲外です。必要な場合は、役に立つオープン ソース ライブラリが数多く提供されています。
 
@@ -202,7 +202,7 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 * `tid` が、API の呼び出しを許可されているテナントと一致することを確認します。
 * `acr` 要求を使用して、ユーザーが MFA を実行したことを確認します。 これは、[条件付きアクセス](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)を使用して適用する必要があります。
 * アクセス トークンに `roles` 要求または `groups` 要求を含めた場合は、このアクションを実行することを許可されているグループにユーザーが属していることを確認します。
-  * 暗黙的フローを使用してトークンを取得した場合、このデータは大きすぎてトークンに収まらないことが多いため、データを [Graph](https://developer.microsoft.com/graph/) に照会することが必要になる可能性があります。 
+  * 暗黙的フローを使用してトークンを取得した場合、このデータは大きすぎてトークンに収まらないことが多いため、データを [Microsoft Graph](https://developer.microsoft.com/graph/) に照会することが必要になる可能性があります。 
 
 ## <a name="user-and-application-tokens"></a>ユーザー トークンとアプリケーション トークン
 

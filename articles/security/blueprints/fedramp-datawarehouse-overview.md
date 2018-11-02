@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 110ce131286f437e051dd859eb4d2baa29f106f6
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 727c76dc62c054baff24f0e3e7a3b677450a4070
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206514"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404836"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-fedramp-automation"></a>Azure のセキュリティとコンプライアンスのブルー プリント: FedRAMP Automation のためのデータ ウェアハウス
 
@@ -31,13 +31,13 @@ ms.locfileid: "33206514"
 
 Microsoft Azure では、お客様向けのさまざまなレポートと分析サービスを提供しています。 このソリューションには、Azure SQL Data Warehouse からレポートをすばやく作成するための SQL Server Reporting Services (SSRS) が含まれています。 すべての SQL トラフィックは、自己署名証明書を含めることによって、SSL で暗号化されます。 ベスト プラクティスとして、Azure では、セキュリティ強化のために信頼された証明書機関を利用することをお勧めします。
 
-Azure SQL Data Warehouse 内のデータは、単票形式ストレージのリレーショナル テーブルに格納されます。この形式は、クエリのパフォーマンスを向上させると同時に、データ ストレージ コストを大幅に削減します。  用途の要件に応じて、コンピューティング リソースを必要とするアクティブなプロセスが存在しない場合に、Azure SQL Data Warehouse のコンピューティング リソースのスケールアップ、スケールダウン、または完全なシャット ダウンを実行できます。
+Azure SQL Data Warehouse 内のデータは、単票形式ストレージを持つリレーショナル テーブルに格納されます。この形式は、クエリのパフォーマンスを向上させると同時に、データ ストレージ コストを大幅に削減します。  用途の要件に応じて、コンピューティング リソースを必要とするアクティブなプロセスが存在しない場合に、Azure SQL Data Warehouse のコンピューティング リソースのスケールアップ、スケールダウン、または完全なシャット ダウンを実行できます。
 
 SQL ロード バランサーは、SQL トラフィックを管理することで高パフォーマンスを保証します。 この参照アーキテクチャ内のすべての仮想マシンは、高可用性とディザスター リカバリー機能のために AlwaysOn 可用性グループ内に構成された SQL Server インスタンスを使用して可用性セット内にデプロイされます。
 
 このデータ ウェアハウスの参照アーキテクチャには、アーキテクチャ内のリソースを管理するための Active Directory (AD) 層も含まれています。 Active Directory サブネットによって、大規模な AD フォレスト構造への容易な導入が可能になり、大規模なフォレストへのアクセスが利用できない場合でも、環境を継続的に運用できます。 すべての仮想マシンは、Active Directory 層に対してドメイン参加済みであり、Active Directory グループ ポリシーを使用して、オペレーティング システム レベルでセキュリティとコンプライアンスの構成が適用されます。
 
-仮想マシンは管理用再保つとして機能し、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 データは、この管理要塞ホストを通してステージング領域に読み込まれます。 **Azure では参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または Azure ExpressRoute 接続を構成することを推奨しています。**
+仮想マシンは管理要塞ホストとして機能し、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。 データは、この管理要塞ホストを通してステージング領域に読み込まれます。 **Azure では参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または Azure ExpressRoute 接続を構成することを推奨しています。**
 
 ![FedRAMP のためのデータ ウェアハウスの参照アーキテクチャの図](images/fedramp-datawarehouse-architecture.png?raw=true "FedRAMP のためのデータ ウェアハウスの参照アーキテクチャの図")
 
@@ -69,7 +69,7 @@ Recovery Services コンテナー
 
 Azure Key Vault
 
-Operations Management Suite (OMS)
+Log Analytics
 
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
 
@@ -83,24 +83,24 @@ Operations Management Suite (OMS)
 
 仮想マシンは、次の構成を使用してドメイン参加済み要塞ホストとして作成されています。
 -   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)
--   [OMS 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-oms)
+-   [Log Analytics 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-oms)
 -   [Azure 診断拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   Azure Key Vault を使用した [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) (Azure Government、PCI DSS、HIPAA、およびその他の要件に準拠)
 -   未使用時の仮想マシン リソースの消費を抑えるための[自動シャットダウン ポリシー](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)
 -   [Windows Defender Credential Guard](https://docs.microsoft.com/windows/access-protection/credential-guard/credential-guard) の有効化。実行中のオペレーティング システムから分離されている保護された環境で、資格情報とその他のシークレットが実行されるようにします。
 
-### <a name="virtual-network"></a>Virtual Network
+### <a name="virtual-network"></a>仮想ネットワーク
 この参照アーキテクチャは、10.0.0.0/16 のアドレス空間 を使用してプライベート仮想ネットワークを定義します。
 
 **ネットワーク セキュリティ グループ**: [NSG](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) には、VNet 内のトラフィックを許可または拒否するアクセス制御リスト (ACL) が含まれます。 NSG を使用して、サブネットまたは個々の VM レベルでトラフィックを保護できます。 次の NSG が存在します。
-  - データ層用の NSG (SQL Server クラスター、SQL Server 監視、および SQL Load Balancer)
+  - データ層 (SQL Server クラスター、SQL Server 監視、および SQL Load Balancer) 用の NSG
   - 管理要塞ホスト用の NSG
   - Active Directory 用の NSG
   - SQL Server Reporting Services 用の NSG
 
-各 NSG では、ソリューションが安全かつ適切に機能できるように、固有のポートとプロトコルが開かれます。 さらに、各 NSG で次の構成を使用できます。
+各 NSG では、ソリューションが安全かつ適切に機能できるように、固有のポートとプロトコルが開かれます。 さらに、各 NSG で次の構成が有効になります。
   - [診断ログとイベント](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)が有効化され、ストレージ アカウントに格納される
-  - OMS Log Analytics が [NSG の診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)に接続される
+  - Log Analytics が [NSG の診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)に接続される
 
 **サブネット**: 各サブネットは、対応する NSG に関連付けられています。
 
@@ -117,9 +117,9 @@ Operations Management Suite (OMS)
 -   [SQL Database の監査](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。
 -   SQL Database は、[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) を使用するように構成されます。TDE は、データとログ ファイルのリアルタイムの暗号化と暗号化解除を実行して保存情報を保護します。 TDE は、保存されているデータが未承認のアクセスの対象になっていないことを保証します。
 -   [ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)は、適切なアクセス許可が付与されていない限り、データベース サーバーへのすべてのアクセスを阻止します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。
--   [SQL 脅威の検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started)は、不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンに対するセキュリティの警告を提供することで、潜在的な脅威の検出とそれらの脅威への対応を可能にします。
+-   [SQL の脅威検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started)は、不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンに対するセキュリティの警告を提供することで、潜在的な脅威の検出とそれらの脅威への対応を可能にします。
 -   [Always Encrypted の列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)により、データベース システム内で機密データがプレーンテキストとして表示されることはありません。 データ暗号化を有効にした後は、キーへのアクセス権を持つクライアント アプリケーションまたはアプリケーション サーバーのみが、プレーンテキスト データにアクセスできます。
--   [SQL Database の動的データ マスク](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)は、参照アーキテクチャがデプロイされた後に実行できます。 お客様は、お使いのデータベース スキーマに準拠するように動的データ マスクの設定を調整する必要があります。
+-   [SQL Database 動的データ マスク](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)は、参照アーキテクチャがデプロイされた後に実行できます。 お客様は、お使いのデータベース スキーマに準拠するように動的データ マスクの設定を調整する必要があります。
 
 ### <a name="business-continuity"></a>ビジネス継続性
 **高可用性**: サーバー ワークロードは、Azure の仮想マシンの高可用性を確保するために[可用性セット](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にグループ化されます。 Azure SLA を 99.95% 満たすように、計画または計画外メンテナンス イベントの間に、少なくとも 1 つの仮想マシンが利用可能です。
@@ -127,22 +127,22 @@ Operations Management Suite (OMS)
 **Recovery Services コンテナー**: [Recovery Services コンテナー](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)はバックアップ データを保管し、このアーキテクチャの Azure Virtual Machines のすべての構成を保護します。 Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。
 
 ### <a name="logging-and-audit"></a>ログ記録と監査
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 OMS [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
-- **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) は、サブスクリプションのリソースに対して実行された操作に関する知見を提供します。
+[Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
+- **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) は、サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。
 - **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログと Azure Blob Storage、テーブル、キューのログが含まれます。
 - **ファイアウォール ログ**: Application Gateway は、完全な診断およびアクセス ログを提供します。 ファイアウォール ログは、WAF が有効になっている Application Gateway リソースで使用できます。
 - **ログのアーカイブ**: すべての診断ログは、暗号化された集中型の Azure ストレージ アカウントに書き込まれ、定義済みのリテンション期間である2 日間にわたってアーカイブされるように構成されます。 これらのログは、処理、格納、およびダッシュボードのレポート化を行うために、Azure Log Analytics に接続されます。
 
-さらに、このアーキテクチャの一部として、次の OMS ソリューションが含まれます。
+さらに、このアーキテクチャの一部として、次の監視ソリューションが含まれます。
 -   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): この Active Directory 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
 -   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): このマルウェア対策ソリューションは、マルウェア、脅威、および保護の状態に関する報告を行います。
 -   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation ソリューションは、Runbook の格納、実行、および管理を行います。
--   [セキュリティおよび監査](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): セキュリティおよび監査ダッシュボードは、セキュリティ ドメイン、注意が必要な問題、検出、脅威インテリジェンス、および一般的なセキュリティの照会に関するメトリックを示すことで、リソースのセキュリティ状態に対する高度な分析情報を提供します。
--   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): この SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
+-   [セキュリティおよび監査](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): セキュリティおよび監査のダッシュ ボードは、セキュリティ ドメイン、注意が必要な問題、検出、脅威に関する知識、および一般的なセキュリティの照会に関するメトリックを提供することで、リソースのセキュリティ ステータスに対する高度な分析情報を提供します。
+-   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): この SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧をお客様に提供します。
 -   [Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Update Management ソリューションは、利用可能な更新プログラムの状態や必要な更新プログラムのインストール プロセスなど、オペレーティング システムのセキュリティ更新プログラムを管理できるようにします。
 -   [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Agent Health ソリューションは、デプロイされたエージェント数とその地理的配置に加え、応答しないエージェント数やオペレーショナル データを送信しているエージェント数を報告します。
--   [Azure Activity Logs](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): この Activity Log Analytics ソリューションは、すべての Azure サブスクリプションにわたる Azure アクティビティ ログの分析に役立ちます。
--   [Change Tracking](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Change Tracking ソリューションは、環境の変更を簡単に識別できるようにします。
+-   [Azure Activity Logs](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Activity Log Analytics ソリューションは、すべての Azure サブスクリプションにわたる Azure アクティビティ ログの分析に役立ちます。
+-   [Change Tracking](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Change Tracking ソリューションは、お客様が環境の変更を簡単に識別できるようにします。
 
 ### <a name="identity-management"></a>ID 管理
 次のテクノロジによって、Azure 環境に ID 管理機能が提供されます。
@@ -158,7 +158,7 @@ Azure SQL Database のセキュリティ機能の使用方法の詳細につい�
 
 **マルウェア対策**: 仮想マシン向けの [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するリアルタイム保護機能を提供し、既知のマルウェアや不要なソフトウェアが保護されている仮想マシンへのインストールまたは実行を試みた場合に警告する構成可能なアラートを備えています。
 
-**パッチ管理**: この参照アーキテクチャの一部としてデプロイされる Windows 仮想マシンは、Windows Update サービスから自動的に更新プログラムを受け取るように、既定で構成されます。 また、このソリューションには、OMS [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) サービスが含まれます。このサービスによって、必要に応じて更新されたデプロイを作成して、仮想マシンに修正プログラムを適用できます。
+**パッチ管理**: この参照アーキテクチャの一部としてデプロイされる Windows 仮想マシンは、Windows Update サービスから自動的に更新プログラムを受け取るように、既定で構成されます。 また、このソリューションには、[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) サービスが含まれます。このサービスによって、必要に応じて仮想マシンにパッチを適用するために、更新されたデプロイが作成される場合があります。
 
 
 ## <a name="guidance-and-recommendations"></a>ガイダンスと推奨事項
@@ -169,14 +169,14 @@ Azure SQL Database のセキュリティ機能の使用方法の詳細につい�
 [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) は、別の ETL やインポート ツールなしで Azure SQL Data Warehouse にデータを読み込むことができます。 PolyBase では、T-SQL クエリを使用してデータにアクセスできます。 Microsoft のビジネス インテリジェンスと分析スタックに加え、SQL Server 対応のサードパーティ ツールを PolyBase で使用できます。
 
 ### <a name="azure-active-directory-setup"></a>Azure Active Directory の設定
-[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) は、デプロイを管理して環境を操作する担当者へのアクセスをプロビジョニングするために不可欠です。 既存の Windows Server Active Directory は、[4 回のクリック](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express)で AAD と統合できます。 また、デプロイされた Active Directory インフラストラクチャを AAD フォレストのサブドメインにすることで、お客様はデプロイされた Active Directory インフラストラクチャ (ドメイン コントローラー) を既存の AAD に連結できます。
+[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) は、デプロイの管理と環境を操作する担当者へのアクセスのプロビジョニングを行うために不可欠です。 既存の Windows Server Active Directory は、[4 回のクリック](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express)で AAD と統合できます。 また、デプロイされた Active Directory インフラストラクチャを AAD フォレストのサブドメインにすることで、デプロイされた Active Directory インフラストラクチャ (ドメイン コントローラー) を既存の AAD に連結できます。
 
 ### <a name="additional-services"></a>その他のサービス
 このデータ ウェアハウス アーキテクチャは[Azure Commercial](https://azure.microsoft.com/overview/what-is-azure/) 環境へのデプロイを意図していませんが、この参照アーキテクチャに示されたサービスと、Azure Commercial 環境だけで使用できる追加のサービスを利用して、ほぼ同じ目的を実現できます。 Azure Commercial では、中程度の影響レベルで FedRAMP JAB P-ATO を維持し、官庁やパートナーが Azure Commercial 環境を活用しているクラウドに中程度の機密情報をデプロイできるようにしています。
 
 Azure Commercial では、書式設定されているデータ ストレージと書式設定されていないデータ ストレージ、およびデータ ウェアハウスに使用されるステージングを処理する、次のようなさまざまなサービスが提供されています。
 -   [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) は、ETL (抽出 - 変換 - 読み込み)、ELT (抽出 - 読み込み - 変換)、データ統合という複雑なハイブリッド プロジェクト用に構築された、管理クラウド サービスです。 Azure Data Factory を使用すると、さまざまなデータ ストアからデータを取り込むデータ駆動型ワークフロー (パイプラインと呼ばれます) を作成し、スケジュールを設定できます。 お客様は、Azure SQL Data Warehouse などのデータ ストアに出力できるように、データを処理して変換できます。
--   [Azure Data Lake Store ](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、および取り込み速度のデータを 1 か所でキャプチャすることができます。 Azure Data Lake Store は、Hadoop のエコシステムのほとんどのオープン ソース コンポーネントと共存でき、Azure SQL Data Warehouse などの他の Azure サービスと問題なく連携します。
+-   [Azure Data Lake Store ](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview) を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、および取り込み速度のデータを 1 か所でキャプチャすることができます。 Azure Data Lake Store は Hadoop エコシステムのほとんどのオープン ソース コンポーネントと互換性があり、Azure SQL Data Warehouse などの他の Azure サービスと緊密に統合しています。
 
 ## <a name="threat-model"></a>脅威モデル
 

@@ -5,19 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 67e0731c1f10bb635baa4e0d1a26dce0a336b555
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d8382cac86abb112018195695340ed12663a2333
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090357"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427418"
 ---
-# <a name="authenticate-access-to-blobs-and-queues-with-azure-managed-identities-for-azure-resources-preview"></a>Azure リソース (プレビュー) の Azure 管理 ID を使用した blob およびキューへのアクセス認証
+# <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources-preview"></a>Azure リソース (プレビュー) に対するマネージド ID を使用して BLOB およびキューへのアクセスを認証する
 
-Azure の Blob およびキュー ストレージは、Azure Active Directory (Azure AD) 認証を[ Azure リソースの管理 ID ](../../active-directory/managed-identities-azure-resources/overview.md)を使用してサポートします。 Azure リソースの管理 ID を使用して、Azure の仮想マシン (VMs)、関数アプリ、仮想マシン スケール セット、およびその他においてで実行されているアプリケーションから blob およびキューへのアクセスを認証することができます。 Azure リソースの管理 ID を使用し、Azure AD の認証機能を利用して、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。  
+Azure の Blob およびキュー ストレージは、Azure Active Directory (Azure AD) 認証を[ Azure リソースの管理 ID ](../../active-directory/managed-identities-azure-resources/overview.md)を使用してサポートします。 Azure リソースに対するマネージド ID により、Azure の仮想マシン (VM)、関数アプリ、仮想マシン スケール セットなどで実行されているアプリケーションから BLOB およびキューへのアクセスを、Azure AD 資格情報を使用して認証することができます。 Azure リソースの管理 ID を使用し、Azure AD の認証機能を利用して、クラウドで動作するアプリケーションに資格情報を保存することを避けることができます。  
 
 管理 ID から blob コンテナーまたはキューへのアクセス許可を付与するには、ロールベースのアクセス制御 (RBAC) ロールを適切なスコープでそのリソースに対するアクセス許可を含む管理 ID に割り当てます。 ストレージの RBAC ロールについては、[RBAC でストレージ データへのアクセス許可を管理する (プレビュー)](storage-auth-aad-rbac.md) 方法に関するページを参照してください。 
 
@@ -34,6 +34,10 @@ VM から blob およびキューへのアクセス認証に対し Azure リソ�
 - [Azure CLI](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md)
 - [Azure Resource Manager テンプレート](../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md)
 - [Azure SDK](../../active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm.md)
+
+## <a name="assign-an-rbac-role-to-an-azure-ad-managed-identity"></a>Azure AD のマネージド ID に RBAC ロールを割り当てる
+
+Azure Storage アプリケーションからマネージド ID の認証を行うには、最初に、そのマネージド ID に対してロールベースのアクセス制御 (RBAC) の設定を構成します。 コンテナーとキューのアクセス許可を含む RBAC ロールは、Azure Storage によって定義されます。 マネージド ID に RBAC ロールを割り当てると、そのマネージド ID にそのリソースへのアクセス権が付与されます。 詳しくは、[RBAC を使用した Azure BLOB とキューのデータへのアクセス権の管理 (プレビュー)](storage-auth-aad-rbac.md) に関するページをご覧ください。
 
 ## <a name="get-a-managed-identity-access-token"></a>管理 ID アクセス トークンの取得
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: db9e49cc4dc02b6864bee2dc4b73ff3c085f5380
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 0e5beb89f3ea2a5c14fc56af35112710964bdb16
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33206529"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406570"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure のセキュリティとコンプライアンスのブルー プリント: FedRAMP の分析
 
@@ -27,7 +27,7 @@ ms.locfileid: "33206529"
 
 ## <a name="architecture-diagram-and-components"></a>アーキテクチャ ダイアグラムとコンポーネント
 
-このソリューションは、お客様が独自の分析ツールをビルドできる分析プラットフォームを提供します。 リファレンス アーキテクチャは、SQL/データの管理者による一括データのインポートを利用するか、または操作ユーザーによるオペレーショナル データの更新を利用して、お客様がデータを入力する汎用的なユース ケースの枠組みとなります。 どちらの作業ストリームでも、SQL Database にデータをインポートするために、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) を組み込みます。 それぞれのお客様独自の分析要件に固有のインポート タスクを処理するために、Azure Functions は、Azure Portal 経由でお客様によって構成される必要があります。
+このソリューションでは分析プラットフォームを提供します。お客様はそのプラットフォーム上に独自の分析ツールをビルドできます。 リファレンス アーキテクチャは、SQL/データの管理者による一括データのインポートを利用するか、または操作ユーザーによるオペレーショナル データの更新を利用して、お客様がデータを入力する汎用的なユース ケースの枠組みとなります。 どちらの作業ストリームでも、SQL Database にデータをインポートするために、[Azure Functions](https://docs.microsoft.com/azure/azure-functions/functions-overview) を組み込みます。 それぞれのお客様独自の分析要件に固有のインポート タスクを処理するために、Azure Functions は、Azure Portal 経由でお客様によって構成される必要があります。
 
 Microsoft Azure では、多様なレポート サービスおよび分析サービスをお客様に提供していますが、このソリューションでは、迅速にデータを参照して、お客様のデータのより高度なモデリングによって迅速に結果を配信するために、Azure SQL Database と連動する Azure Analysis Services を組み込みます。 Azure Analytics Services は、データセット間の新しいリレーションシップを見つけることで、クエリ速度を高めることを意図した機械学習の 1 つの形態です。 複数の統計関数を使ってデータがトレーニングされた後は、クエリ ワークロードを分散させて応答時間を削減するために、同じ表形式モデルを使って最大 7 個の追加のクエリ プール (顧客のサーバーを含めた場合、合計 8 個) を同期できます。
 
@@ -37,7 +37,7 @@ Microsoft Azure では、多様なレポート サービスおよび分析サー
 
 ソリューション全体は、アカウントの顧客が Azure Portal から構成する Azure Storage 上にビルドされます。 Azure Storage は Storage Service Encryption を使用してすべてのデータを暗号化し、保存データの機密性を保持します。  geo 冗長ストレージ (GRS) は、数百マイルは離れた別の場所にセカンダリ コピーが格納されることで、お客様のプライマリ データ センターでの有害事象によってデータを損失することがないようにします。
 
-セキュリティ強化のために、このアーキテクチャでは、Azure Active Directory と Azure Key Vault を使ってリソースを管理します。 システムの正常性は、Operations Management Suite (OMS) および Azure Monitor によって監視されます。 お客様は、両方の監視サービスを構成してログをキャプチャし、簡単に誘導可能な単一のダッシュボードにシステムの正常性を表示します。
+セキュリティ強化のために、このアーキテクチャでは、Azure Active Directory と Azure Key Vault を使ってリソースを管理します。 システムの正常性は、Log Analytics と Azure Monitor によって監視されます。 お客様が両方の監視サービスを構成してログをキャプチャし、簡単にナビゲートできる単一のダッシュボードにシステムの正常性を表示できます。
 
 Azure SQL Database は一般的に、SQL Server Management Studio (SSMS) 経由で管理されます。SSMS は、セキュアな VPN または ExpressRoute 接続経由で Azure SQL Database にアクセスするように構成されたローカル コンピューターから実行されます。 **Azure では、参照アーキテクチャのリソース グループに対する管理とデータ インポートのために、VPN または Azure ExpressRoute 接続を構成することを推奨しています。**
 
@@ -63,7 +63,7 @@ SQL/データ管理者は、Azure SQL Database にアップロードするため
 - Azure Analysis Service
 - Azure Active Directory
 - Azure Key Vault
-- OMS
+- Azure Log Analytics
 - Azure Monitor
 - Azure Storage
 - ExpressRoute/VPN Gateway
@@ -83,9 +83,9 @@ SQL/データ管理者は、Azure SQL Database にアップロードするため
 ### <a name="networking"></a>ネットワーク
 **ネットワーク セキュリティ グループ**: [NSG](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) は、デプロイされたリソースやサービスに送信されるトラフィックを管理するために設定されます。 ネットワーク セキュリティ グループは、既定で拒否のスキームに設定され、事前構成された Access Control List (ACL) に含まれるトラフィックのみを許可します。
 
-各 NSG では、ソリューションが安全かつ適切に機能できるように、固有のポートとプロトコルが開かれています。 さらに、各 NSG で次の構成を使用できます。
+各 NSG では、ソリューションが安全かつ適切に機能できるように、固有のポートとプロトコルが開かれます。 さらに、各 NSG で次の構成が有効になります。
   - [診断ログとイベント](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)が有効化され、ストレージ アカウントに格納される
-  - OMS [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics) が NSG の診断ログに接続される
+  - [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics) が NSG の診断ログに接続される
 
 ### <a name="data-at-rest"></a>保存データ
 このアーキテクチャでは、暗号化、データベース監査などの手段によって保存データを保護します。
@@ -104,23 +104,23 @@ SQL/データ管理者は、Azure SQL Database にアップロードするため
 -   [SQL Database の監査](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。
 -   SQL Database は、[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) を使用するように構成されます。TDE は、データとログ ファイルのリアルタイムの暗号化と暗号化解除を実行して保存情報を保護します。 TDE は、保存されているデータが未承認のアクセスの対象になっていないことを保証します。
 -   [ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)は、適切なアクセス許可が付与されていない限り、データベース サーバーへのすべてのアクセスを阻止します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。
--   [SQL 脅威の検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started)は、不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンに対するセキュリティの警告を提供することで、潜在的な脅威の検出とそれらの脅威への対応を可能にします。
+-   [SQL の脅威検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started)は、不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンに対するセキュリティの警告を提供することで、潜在的な脅威の検出とそれらの脅威への対応を可能にします。
 -   [Always Encrypted の列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)により、データベース システム内で機密データがプレーンテキストとして表示されることはありません。 データ暗号化を有効にした後は、キーへのアクセス権を持つクライアント アプリケーションまたはアプリケーション サーバーのみが、プレーンテキスト データにアクセスできます。
--   [SQL Database の動的データ マスク](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)は、参照アーキテクチャがデプロイした後に実行できます。 お客様は、お使いのデータベース スキーマに準拠するように動的データ マスクの設定を調整する必要があります。
+-   [SQL Database 動的データ マスク](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)は、参照アーキテクチャがデプロイされた後に実行できます。 お客様は、お使いのデータベース スキーマに準拠するように動的データ マスクの設定を調整する必要があります。
 
 ### <a name="logging-and-audit"></a>ログ記録と監査
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) は、アクティビティ ログ、メトリック、および診断データなどのデータを監視する総合的な表示画面を生成し、お客様によるシステム正常性の全体像の作成を可能にします。  
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 OMS [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
+[Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 これは Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
 - **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) は、サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。
 - **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログと Azure Blob Storage、テーブル、キューのログが含まれます。
 - **ファイアウォール ログ**: Application Gateway は、完全な診断およびアクセス ログを提供します。 ファイアウォール ログは、WAF が有効になっている Application Gateway リソースで使用できます。
 - **ログのアーカイブ**: すべての診断ログは、暗号化された集中型の Azure ストレージ アカウントに書き込まれ、定義済みのリテンション期間である2 日間にわたってアーカイブされるように構成されます。 これらのログは、処理、格納、およびダッシュボードのレポート化を行うために、Azure Log Analytics に接続されます。
 
-さらに、このアーキテクチャの一部として、次の OMS ソリューションが含まれます。
--   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation ソリューションは Runbook の格納、実行、および管理を行います。
+さらに、このアーキテクチャの一部として、次の監視ソリューションが含まれます。
+-   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation ソリューションは、Runbook の格納、実行、および管理を行います。
 -   [セキュリティおよび監査](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): セキュリティおよび監査のダッシュ ボードは、セキュリティ ドメイン、注意が必要な問題、検出、脅威に関する知識、および一般的なセキュリティの照会に関するメトリックを提供することで、リソースのセキュリティ ステータスに対する高度な分析情報を提供します。
 -   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧をお客様に提供します。
--   [Azure アクティビティ ログ](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity) Activity Log Analytics ソリューションは、お客様のすべての Azure サブスクリプションにわたる Azure アクティビティ ログの分析に役立ちます。
+-   [Azure Activity Logs](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Activity Log Analytics ソリューションは、すべての Azure サブスクリプションにわたる Azure アクティビティ ログの分析に役立ちます。
 
 ### <a name="identity-management"></a>ID 管理
 -   アプリケーションに対する認証は Azure AD を使用して行われます。 詳細については、「[Azure Active Directory とアプリケーションの統合](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications)」をご覧ください。 さらに、データベース列の暗号化では、アプリケーションを Azure SQL Database に対して認証するために Azure AD が使用されます。 詳細については、[SQL Database で機密データを保護する](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)方法に関するページを参照してください。
@@ -138,19 +138,19 @@ Azure SQL Database のセキュリティ機能の使用方法の詳細につい�
 [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) またはセキュリティ保護された VPN トンネルは、デプロイされるリソースへの接続を安全に確立するために、この Data Analytics 参照アーキテクチャの一部として構成される必要があります。 ExpressRoute 接続はインターネットを経由しないため、これらの接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 ExpressRoute または VPN を適切に設定することで、お客様は転送中のデータに対して保護のレイヤーを追加できます。
 
 ### <a name="azure-active-directory-setup"></a>Azure Active Directory の設定
-[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) は、デプロイを管理して環境を操作する担当者へのアクセスをプロビジョニングするために不可欠です。 既存の Windows Server Active Directory は、[4 回のクリック](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express)で AAD と統合できます。 また、デプロイされた Active Directory インフラストラクチャを AAD フォレストのサブドメインにすることで、お客様はデプロイされた Active Directory インフラストラクチャ (ドメイン コントローラー) を既存の AAD に連結できます。
+[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) は、デプロイの管理と環境を操作する担当者へのアクセスのプロビジョニングを行うために不可欠です。 既存の Windows Server Active Directory は、[4 回のクリック](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express)で AAD と統合できます。 また、デプロイされた Active Directory インフラストラクチャを AAD フォレストのサブドメインにすることで、デプロイされた Active Directory インフラストラクチャ (ドメイン コントローラー) を既存の AAD に連結できます。
 
 ### <a name="additional-services"></a>その他のサービス
 #### <a name="iaas---vm-vonsiderations"></a>IaaS - VM に関する考慮事項
-この PaaS ソリューションには、Azure IaaS VM は組み込まれません。 お客様は、これらの PaaS サービスの多くを実行する Azure VM を作成できます。 この場合、ビジネス継続性と OMS に対して、次のような特定の機能とサービスを活用できます。
+この PaaS ソリューションには、Azure IaaS VM は組み込まれません。 お客様は、これらの PaaS サービスの多くを実行する Azure VM を作成できます。 この場合、ビジネス継続性と Log Analytics に対して、次のような特定の機能とサービスを活用できます。
 
 ##### <a name="business-continuity"></a>ビジネス継続性
 - **高可用性**: サーバー ワークロードは、Azure の仮想マシンの高可用性を確保するために[可用性セット](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-manage-availability?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にグループ化されます。 Azure SLA を 99.95% 満たすように、計画または計画外メンテナンス イベントの間に、少なくとも 1 つの仮想マシンが利用可能です。
 
 - **Recovery Services コンテナー**: [Recovery Services コンテナー](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)はバックアップ データを保管し、このアーキテクチャの Azure Virtual Machines のすべての構成を保護します。 Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。
 
-##### <a name="oms"></a>OMS
--   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Active Directory 正常性チェックのソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
+##### <a name="monitoring-solutions"></a>監視ソリューション
+-   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): この Active Directory 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
 -   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): マルウェア対策のソリューションは、マルウェア、脅威、および保護の状態に関する報告を行います。
 -   [Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Update Management ソリューションは、利用可能な更新プログラムのステータスや必要な更新プログラムのインストール プロセスなど、オペレーティング システムのセキュリティ更新プログラムをお客様が管理できるようにします。
 -   [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Agent Health ソリューションは、デプロイされたエージェント数とその地理的配置に加え、応答しないエージェント数やオペレーショナル データを送信しているエージェント数を報告します。
@@ -158,7 +158,7 @@ Azure SQL Database のセキュリティ機能の使用方法の詳細につい�
 
 ##### <a name="security"></a>セキュリティ
 - **マルウェア対策**: 仮想マシン向けの [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するリアルタイム保護機能を提供し、既知のマルウェアや不要なソフトウェアが保護されている仮想マシンへのインストールまたは実行を試みた場合に警告する構成可能なアラートを備えています。
-- **パッチ管理**: この参照アーキテクチャの一部としてデプロイされる Windows 仮想マシンは、Windows Update サービスから自動的に更新プログラムを受け取るように、既定で構成されます。 また、このソリューションには、OMS [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro)サービスが含まれます。このサービスによって、必要に応じて仮想マシンにパッチを適用するために、更新されたデプロイが作成される場合があります。
+- **パッチ管理**: この参照アーキテクチャの一部としてデプロイされる Windows 仮想マシンは、Windows Update サービスから自動的に更新プログラムを受け取るように、既定で構成されます。 また、このソリューションには、[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) サービスが含まれます。このサービスによって、必要に応じて仮想マシンにパッチを適用するために、更新されたデプロイが作成される場合があります。
 
 #### <a name="azure-commercial"></a>Azure Commercial
 この Data Analytics アーキテクチャは[Azure Commercial](https://azure.microsoft.com/overview/what-is-azure/) 環境へのデプロイを意図していませんが、この参照アーキテクチャに示されたサービスと、Azure Commercial 環境だけで使用できる追加のサービスを利用して、ほぼ同じ目的を実現できます。 Azure Commercial では、中程度の影響レベルで FedRAMP JAB P-ATO を維持し、官庁やパートナーが Azure Commercial 環境を活用しているクラウドに中程度の機密情報をデプロイできるようにしています。
@@ -169,7 +169,7 @@ Azure Commercial は、大量のデータから分析情報を導き出すため
 
 ## <a name="threat-model"></a>脅威モデル
 
-この参照アーキテクチャのデータ フロー ダイアグラム (DFD) は、[ダウンロード](https://aka.ms/blueprintanalyticsthreatmodel)するか、または下記を検索して利用できます。
+この参照アーキテクチャのデータ フロー ダイアグラム (DFD) を[ダウンロード](https://aka.ms/blueprintanalyticsthreatmodel)できます。または下記を参照してください。
 
 ## <a name="compliance-documentation"></a>コンプライアンス ドキュメント
 [Azure Security and Compliance Blueprint – FedRAMP High Customer Responsibility Matrix](https://aka.ms/blueprinthighcrm) (Azure のセキュリティとコンプライアンスのブルー プリント - FedRAMP の高度なベースラインでのお客様の責任に関するマトリックス) では、FedRAMP の高度なベースラインで必要とされるすべてのセキュリティ コントロールの一覧を示しています。 同様に、[Azure Security and Compliance Blueprint – FedRAMP Moderate Customer Responsibility Matrix](https://aka.ms/blueprintanalyticscimmod) (Azure のセキュリティとコンプライアンスのブルー プリント - FedRAMP の中程度のベースラインでのお客様の責任に関するマトリックス) では、FedRAMP の中程度のベースラインで必要なすべてのセキュリティ コントロールの一覧を示しています。 どちらのドキュメントにも、各コントロールの実装がマイクロソフト、お客様、または両者間での共有の責任のどれに該当するかが、詳細に示されています。

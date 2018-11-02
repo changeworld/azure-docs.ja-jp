@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: b5433ea0a92635b5bf9c2a4887451f1e64ec62e6
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: db8fc0b6926930521f11285dc56c886c10c42fc2
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49067770"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649314"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding のよくあるご質問
 
@@ -157,11 +157,9 @@ LUIS アプリを別の Azure サブスクリプションに譲渡するには�
 * **[Review endpoint utterances]\(エンドポイントの発話の確認\)** ページで LUIS が提案するユーザー発話のリストから、発話を削除できます。 このリストから削除した発話は提案されなくなりますが、ログからは削除されません。
 * アカウントを削除すると、発話例およびログと共に、すべてのアプリが削除されます。 データは、サーバーに 60 日間保持された後、完全に削除されます。
 
-### <a name="does-microsoft-access-my-luis-app-data-for-its-own-purposes-for-example-to-enhance-luis-or-microsoft-in-general"></a>Microsoft は、たとえば LUIS や Microsoft の一般的な機能強化などの Microsoft 独自の目的で、ユーザーの LUIS アプリ データにアクセスしますか?
+### <a name="how-does-microsoft-manage-data-i-send-to-luis"></a>LUIS に送信されたデータを Microsoft はどのように管理しますか?
 
-いいえ。 LUIS アプリのデータ モデルは、プラットフォームとしての LUIS を強化するために LUIS によって、または何らかの方法で Microsoft によって、使用されることはありません。 各アプリのデータは分離され、ユーザーとコラボレーターによってのみ所有されます。
-
-[ユーザー プライバシー](luis-user-privacy.md)、[追加のセキュリティ コンプライアンス](luis-concept-security.md#security-compliance)、および[データ ストレージ](luis-concept-data-storage.md)の詳細を確認してください。
+Microsoft の取り組みと、Azure サービスでのデータ管理とアクセスに対するお客様のオプションについては、[セキュリティ センター](https://www.microsoft.com/trustcenter)の説明をご覧ください。
 
 ## <a name="language-and-translation-support"></a>言語と翻訳のサポート
 

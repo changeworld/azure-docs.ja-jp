@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/19/2018
 ms.author: rajanaki
-ms.openlocfilehash: 9f0a299fb8221554a3b0c9a19a616d5ba7613a67
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 06a7e23eb16cf6296a8997273ea8d554851600c3
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574405"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49456492"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションに使用されるモビリティ サービスの自動更新
 
@@ -61,6 +61,19 @@ Site Recovery による更新の管理は次の方法で選択できます。
 
 > [!Note] 
 > どちらのオプションでも、更新の管理に使用される Automation アカウントが通知されます。 コンテナーでこの機能を初めて有効にする場合は、新しい Automation アカウントが作成されます。 それ以降は、同じコンテナー内でレプリケーションを有効にすると、以前に作成されたアカウントが使用されます。
+
+### <a name="manage-manually"></a>手動で管理する
+
+1. Azure VM にインストールされているモビリティ サービスに使用可能な新しい更新プログラムがある場合は、"Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。 クリックしてインストールしてください" という通知が表示されます。
+
+     ![[レプリケートされたアイテム] ウィンドウ](.\media\vmware-azure-install-mobility-service\replicated-item-notif.png)
+3. この通知を選択して、仮想マシンの選択ページを開きます。
+4. モビリティ サービスをアップグレードする仮想マシンを選択し、**[OK]** を選択します。
+
+     ![[レプリケートされたアイテム] VM リスト](.\media\vmware-azure-install-mobility-service\update-okpng.png)
+
+選択した各仮想マシンで、モビリティ サービスの更新ジョブが開始されます。
+
 
 ## <a name="common-issues--troubleshooting"></a>一般的な問題とトラブルシューティング
 

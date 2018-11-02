@@ -5,21 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c26eee05a59a10036138f81086b3f6a9e0de6d5d
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 5da34e8e79c0df88cfad0b398aa8e1c22f158489
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737296"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428880"
 ---
-# <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>RBAC を使用して Azure Storage データへのアクセス権を管理する (プレビュー)
+# <a name="manage-access-rights-to-azure-blob-and-queue-data-with-rbac-preview"></a>RBAC を使用して Azure BLOB およびキューのデータへのアクセス権を管理する (プレビュー)
 
 Azure Active Directory (Azure AD) では、[ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) を通じて、セキュリティで保護されたリソースへのアクセス権が承認されます。 コンテナーまたはキューへのアクセスに使用される一般的なアクセス許可セットを含む一連の組み込み RBAC ロールは、Azure Storage によって定義されます。 RBAC ロールが Azure AD ID に割り当てられると、指定されたスコープに応じて、その ID はそれらのリソースへのアクセスを許可されます。 アクセスのスコープは、サブスクリプション、リソース グループ、ストレージ アカウント、あるいは個別のコンテナーまたはキューのレベルで指定できます。 Azure Storage リソースのアクセス権は、Azure portal、Azure コマンドライン ツール、Azure 管理 API を使用して割り当てることができます。 
 
 Azure AD ID は、ユーザー、グループ、アプリケーション サービス プリンシパル、または Azure リソースのマネージド ID の場合があります。 セキュリティ プリンシパルは、ユーザー、グループ、またはアプリケーション サービス プリンシパルの場合があります。 [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) は自動的に管理される ID であり、Azure Virtual Machines、関数アプリ、仮想マシン スケール セットなどで動作するアプリケーションから認証を行うために使用されます。 Azure AD の ID の概要については、「[Understand Azure identity solutions (Azure ID ソリューションについて)](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions)」を参照してください。
+
+[!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>BLOB とキューの RBAC ロール
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: c94d4d4beea22e68a581cd208a25f915e4217614
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 843b03ce33d1897e2e985ac832f883e1fae12960
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870878"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959045"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページに記載されている情報をご覧ください。
@@ -106,16 +106,17 @@ API Management サービスを Virtual Network にデプロイするときに発
 
 API Management サービス インスタンスが VNET でホストされている場合は、次の表のポートが使用されます。
 
-| ソース / ターゲット ポート | 方向          | トランスポート プロトコル | ソース / ターゲット                  | 目的 ( * )                                                 | 仮想ネットワークの種類 |
+| ソース / ターゲット ポート | 方向          | トランスポート プロトコル |   [サービス タグ](../virtual-network/security-overview.md#service-tags) <br> ソース / ターゲット   | 目的 ( * )                                                 | 仮想ネットワークの種類 |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / 80, 443                  | 受信            | TCP                | INTERNET / VIRTUAL_NETWORK            | API Management へのクライアント通信                      | 外部             |
-| * / 3443                     | 受信            | TCP                | APIMANAGEMENT / VIRTUAL_NETWORK       | Azure Portal と Powershell 用の管理エンドポイント         | 外部 / 内部  |
+| * / 3443                     | 受信            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure Portal と Powershell 用の管理エンドポイント         | 外部 / 内部  |
 | * / 80, 443                  | 送信           | TCP                | VIRTUAL_NETWORK / Storage             | **Azure Storage への依存関係**                             | 外部 / 内部  |
-| * / 80, 443                  | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | Azure Active Directory (該当する場合)                   | 外部 / 内部  |
+| * / 80, 443                  | 送信           | TCP                | VIRTUAL_NETWORK / AzureActiveDirectory | Azure Active Directory (該当する場合)                   | 外部 / 内部  |
 | * / 1433                     | 送信           | TCP                | VIRTUAL_NETWORK / SQL                 | **Azure SQL エンドポイントへのアクセス**                           | 外部 / 内部  |
 | * / 5672                     | 送信           | TCP                | VIRTUAL_NETWORK / EventHub            | Event Hub へのログ ポリシーおよび監視エージェントの依存関係 | 外部 / 内部  |
 | * / 445                      | 送信           | TCP                | VIRTUAL_NETWORK / Storage             | GIT のための Azure ファイル共有への依存関係                      | 外部 / 内部  |
 | * / 1886                     | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | 正常性の状態を Resource Health に公開するために必要          | 外部 / 内部  |
+| * / 443                     | 送信           | TCP                | VIRTUAL_NETWORK / AzureMonitor         | 診断ログとメトリックの公開                        | 外部 / 内部  |
 | * / 25                       | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | 電子メールを送信するために SMTP リレーに接続する                    | 外部 / 内部  |
 | * / 587                      | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | 電子メールを送信するために SMTP リレーに接続する                    | 外部 / 内部  |
 | * / 25028                    | 送信           | TCP                | VIRTUAL_NETWORK / INTERNET            | 電子メールを送信するために SMTP リレーに接続する                    | 外部 / 内部  |

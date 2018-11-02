@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: d46c55f809d24529ea5deeb4d84de44dae876a4b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: e0a47da168ae9371979290b3febc9d767e8755d7
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968988"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428013"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines おける SQL Server のバックアップと復元
 
-この記事では、Microsoft Azure Virtual Machines 上で実行されている SQL Server で使用可能なバックアップと復元のオプションに関するガイダンスを紹介します。 Azure Storage では、データの損失や物理データの破損に対する保護を保証するためにすべての Azure VM ディスクの 3 つのコピーが維持されます。 したがって、オンプレミスとは異なり、ハードウェアの障害に気を配る必要がありません。 それでも、SQL Server データベースをバックアップして、アプリケーションやユーザー エラー (間違ったデータの挿入や削除など) から保護する必要はあります。 このような状況では、特定の時点に復元できることが重要です。
+この記事では、Azure 内の Windows 仮想マシン上で実行されている SQL Server で使用可能なバックアップと復元のオプションに関するガイダンスを紹介します。 Azure Storage では、データの損失や物理データの破損に対する保護を保証するためにすべての Azure VM ディスクの 3 つのコピーが維持されます。 したがって、オンプレミスとは異なり、ハードウェアの障害に気を配る必要がありません。 それでも、SQL Server データベースをバックアップして、アプリケーションやユーザー エラー (間違ったデータの挿入や削除など) から保護する必要はあります。 このような状況では、特定の時点に復元できることが重要です。
 
 この記事の最初の部分では、使用可能なバックアップと復元のオプションの概要を示します。 その後のセクションでは、各戦略について詳しく説明します。
 
@@ -36,13 +36,13 @@ ms.locfileid: "38968988"
 |---|---|---|---|
 | [自動化されたバックアップ](#automated) | 2014<br/> 2016<br/> 2017 | 自動バックアップを使用すると、SQL Server VM 上にあるすべてのデータベースの定期的なバックアップをスケジュールできます。 バックアップは Azure Storage に最大 30 日間保存されます。 SQL Server 2016 以降では、自動バックアップ v2 により、手動でのスケジュール設定の構成や完全バックアップとログ バックアップの頻度などの追加オプションが利用できます。 |
 | [SQL VM の Azure Backup](#azbackup) | 2012<br/> 2014<br/> 2016<br/> 2017 | Azure Backup は、Azure VM 上で実行されている SQL Server 向けのエンタープライズ クラスのバックアップ機能を提供します。 このサービスを使用すると、複数のサーバーと数千のデータベースのバックアップを一元的に管理できます。 データベースは、ポータルで特定の時点に復元することができます。 これにより、数年間バックアップを維持できるカスタマイズ可能な保持ポリシーが提供されます。 現在、この機能はパブリック プレビュー段階にあります。 |
-| [手動バックアップ](#manual) | すべて | Azure VM 上で実行されている SQL Server を手動でバックアップおよび復元する方法は、SQL Server のバージョンによってさまざまです。 このシナリオでは、あなたがデータベースのバックアップ方法に加え、そうしたバックアップの保存場所と管理を担当しているとします。 |
+| [手動バックアップ](#manual) | All | Azure VM 上で実行されている SQL Server を手動でバックアップおよび復元する方法は、SQL Server のバージョンによってさまざまです。 このシナリオでは、あなたがデータベースのバックアップ方法に加え、そうしたバックアップの保存場所と管理を担当しているとします。 |
 
 以下のセクションでは、各オプションについて詳しく説明します。 この記事の最後のセクションでは、機能マトリックスの形式でまとめています。
 
 ## <a id="autoamted"></a> 自動バックアップ
 
-自動バックアップは、Microsoft Azure VM 上で実行されている SQL Server Standard エディションおよび Enterprise エディションの自動バックアップ サービスを提供します。 このサービスは、Azure portal で SQL Server Windows 仮想マシン イメージに自動的にインストールされる [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)によって提供されます。
+自動バックアップは、Azure 内の Windows VM で実行されている SQL Server Standard エディションおよび Enterprise エディションの自動バックアップ サービスを提供します。 このサービスは、Azure portal で SQL Server Windows 仮想マシン イメージに自動的にインストールされる [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)によって提供されます。
 
 すべてのデータベースは、構成した Azure Storage アカウントにバックアップされます。 バックアップを暗号化して最大 30 日間保持できます。
 
@@ -144,7 +144,7 @@ SQL Server 2016 以降では、マネージド バックアップに、スケジ
 | VM に接続されているディスクへのバックアップ |   |   | ![[はい]](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | 一元化されたカスタマイズ可能なバックアップ レポート |   | ![[はい]](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | エラーが発生した場合の統合電子メール アラート |   | ![[はい]](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| OMS に基づいた監視のカスタマイズ |   | ![[はい]](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Log Analytics に基づいた監視のカスタマイズ |   | ![[はい]](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | SSMS または Transact-SQL スクリプトを使用したバックアップ ジョブの監視 | ![[はい]](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![はい](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![[はい]](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | SSMS または Transact-SQL スクリプトを使用したデータベースの復元 | ![[はい]](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![[はい]](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 

@@ -6,19 +6,19 @@ author: jeffpatt24
 tags: storage
 ms.service: storage
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 0f99913ab252b94d475f920bd734e68ff5f3b3d3
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 2ae116649de02c5602aa50d706f6a88ac5872960
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525122"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025856"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
-この記事では、Linux クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。
+この記事では、Linux クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089) を使って Linux クライアントが前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。 この情報は、[Azure ファイル共有の トラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。記載されている手順に従って、Azure ファイル共有の接続、マッピング、マウントに関する問題を解決することができます。
 
 <a id="permissiondenied"></a>
 ## <a name="permission-denied-disk-quota-exceeded-when-you-try-to-open-a-file"></a>ファイルを開こうとしたときの "[アクセス許可が拒否されました] ディスク クォータを超えました"
@@ -82,7 +82,7 @@ Linux カーネルの再接続に関するこの問題は、以下の変更の�
 
 ### <a name="solution"></a>解決策
 
-Linux 用の SMB 3.0 の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできます。 この機能は、公開時に Ubuntu 17.04 と Ubuntu 16.10 に移植されました。 Linux SMB クライアントが暗号化をサポートしていない場合は、File Storage アカウントと同じデータ センターにある Azure Linux VM から SMB 2.1 を使用して Azure Files をマウントします。
+Linux 用の SMB 3.0 の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできます。 この機能は、公開時に Ubuntu 17.04 と Ubuntu 16.10 に移植されました。 Linux SMB クライアントが暗号化をサポートしていない場合は、ファイル共有と同じデータ センターにある Azure Linux VM から SMB 2.1 を使用して Azure Files をマウントし、そのストレージ アカウントで [[安全な転送が必須]]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定が無効であることを確認します。 
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM にマウントされている Azure ファイル共有のパフォーマンスが低下している
@@ -150,6 +150,7 @@ COPYFILE の強制フラグ **f** を使用すると、Unix 上で **cp -p -f** 
 - SMB 3.0 暗号化がクライアントでサポートされていません。 SMB 3.0 暗号化は、Ubuntu 16.4 以降のバージョンと SUSE 12.3 以降のバージョンで使用可能です。 他のディストリビューションの場合は、カーネル 4.11 以降のバージョンが必要です。
 - サポートされていない TCP ポート 445 経由でストレージ アカウントに接続しようとしています。
 - Azure VM から Azure ファイル共有に接続しようとしていますが、VM はストレージ アカウントと同じリージョンにありません。
+- [[安全な転送が必須]]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) 設定がストレージ アカウントで有効になっている場合、Azure Files は暗号化付き SMB 3.0 を使った接続のみを許可します。
 
 ### <a name="solution"></a>解決策
 
@@ -179,7 +180,7 @@ ln -s linked -n t
 ln: failed to create symbolic link 't': Operation not supported
 ```
 ### <a name="solution"></a>解決策
-Linux CIFS クライアントは、SMB2/3 プロトコルでの Windows スタイル シンボリック リンクの作成をサポートしていません。 現在のところ、Linux クライアントは、[Mishall+French symlinks] (https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) という別形式のシンボリック リンクをサポートしています。 シンボリック リンクが必要な場合は、"mfsymlinks" マウント オプションを使用できます。 Mac でも使用されている形式なので、通常は "mfsymlinks" をお勧めします。
+Linux CIFS クライアントは、SMB2/3 プロトコルでの Windows スタイル シンボリック リンクの作成をサポートしていません。 現在のところ、Linux クライアントは、[Mishall+French symlinks](https://wiki.samba.org/index.php/UNIX_Extensions#Minshall.2BFrench_symlinks) という別形式のシンボリック リンクをサポートしています。 シンボリック リンクが必要な場合は、"mfsymlinks" マウント オプションを使用できます。 Mac でも使用されている形式なので、通常は "mfsymlinks" をお勧めします。
 
 シンボリック リンクを使用できるようにするには、CIFS mount コマンドの末尾に以下を追加します。
 
@@ -190,7 +191,7 @@ Linux CIFS クライアントは、SMB2/3 プロトコルでの Windows スタ�
 コマンドは以下のようになります。
 
 ```
-sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsynlinks
+sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino,mfsymlinks
 ```
 
 追加すると、[Wiki](https://wiki.samba.org/index.php/UNIX_Extensions#Storing_symlinks_on_Windows_servers) で提案されているようにシンボリック リンクを作成することができます。

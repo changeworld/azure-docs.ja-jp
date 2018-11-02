@@ -15,33 +15,33 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: roiyz
-ms.openlocfilehash: 02fa19cad56f1a31ad60c597df1b004710cb5b50
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 12f7c52f916f385ddf95cf16aa89c4848ab7c118
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452090"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406604"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Windows 用の Log Analytics 仮想マシン拡張機能
 
-Log Analytics では、クラウドとオンプレミスの資産全体にわたって監視機能を提供します。 Windows 用の Log Analytics Agent 仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Windows 用の Log Analytics 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
+Log Analytics では、クラウドとオンプレミスの資産全体にわたって監視機能を提供します。 Windows 用の Log Analytics エージェント仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Windows 用の Log Analytics 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="operating-system"></a>オペレーティング システム
 
-Windows 用の Log Analytics Agent 拡張機能は、Windows Server 2008 R2、2012、2012 R2、2016 の各リリースで実行できます。
+Windows 用の Log Analytics エージェント拡張機能は、Windows Server 2008 R2、2012、2012 R2、2016 の各リリースで実行できます。
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
 Azure Security Center は自動的に Log Analytics エージェントをプロビジョニングし、Azure サブスクリプションの既定の Log Analytics ワークスペースに接続します。 Azure Security Center を使用している場合は、このドキュメントの手順を実行しないでください。 実行すると、構成されているワークスペースが上書きされ、Azure Security Center との接続が中断されます。
 
 ### <a name="internet-connectivity"></a>インターネット接続
-Windows 用の Log Analytics Agent 拡張機能では、ターゲットの仮想マシンがインターネットに接続されている必要があります。 
+Windows 用の Log Analytics エージェント拡張機能では、ターゲットの仮想マシンがインターネットに接続されている必要があります。 
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
 
-次の JSON は、Log Analytics Agent 拡張機能のスキーマを示しています。 この拡張機能では、ターゲット Log Analytics ワークスペースのワークスペース ID とワークスペース キーが必要です。 これらは Azure portal 内のワークスペースの設定で確認できます。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
+次の JSON は、Log Analytics エージェント拡張機能のスキーマを示しています。 この拡張機能では、ターゲット Log Analytics ワークスペースのワークスペース ID とワークスペース キーが必要です。 これらは Azure portal 内のワークスペースの設定で確認できます。 ワークスペース キーは機密データとして取り扱う必要があるため、保護された設定構成に格納される必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **workspaceId** と **workspaceKey** の大文字と小文字は区別されることに注意してください。
 
 ```json
 {
@@ -81,7 +81,7 @@ Windows 用の Log Analytics Agent 拡張機能では、ターゲットの仮想
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時に Log Analytics Agent 拡張機能を実行できます。 Log Analytics Agent VM 拡張機能を含むサンプル テンプレートは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)にあります。 
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 前のセクションで詳しく説明した JSON スキーマを Azure Resource Manager テンプレートで使用すると、Azure Resource Manager テンプレートのデプロイ時に Log Analytics エージェント拡張機能を実行できます。 Log Analytics エージェント VM 拡張機能を含むサンプル テンプレートは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-windows-vm)にあります。 
 
 仮想マシン拡張機能の JSON は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON の配置は、リソースの名前と種類の値に影響します。 詳細については、[子リソースの名前と種類の設定](../../azure-resource-manager/resource-manager-templates-resources.md#child-resources)に関する記事を参照してください。 
 
@@ -140,7 +140,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
 
-`Set-AzureRmVMExtension` コマンドを使用して、Log Analytics Agent 仮想マシン拡張機能を既存の仮想マシンにデプロイすることができます。 このコマンドを実行する前に、パブリック構成とプライベート構成を PowerShell ハッシュ テーブルに格納しておく必要があります。 
+`Set-AzureRmVMExtension` コマンドを使用して、Log Analytics エージェント仮想マシン拡張機能を既存の仮想マシンにデプロイすることができます。 このコマンドを実行する前に、パブリック構成とプライベート構成を PowerShell ハッシュ テーブルに格納しておく必要があります。 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}

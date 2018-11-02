@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 7e0a68efc93d0f907edfb38dbc548ac95a35b3e1
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 4b24ab406cc9cdbc3ce03ee203ec034843d5630a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465811"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986425"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Azure Monitor でリソース グループを監視する (プレビュー)
 
@@ -113,7 +113,12 @@ App Service を選択すると、Azure Monitor Workbook テンプレートのギ
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 ### <a name="enabling-access-to-alerts"></a>アラートへのアクセスを有効にする
-リソース グループ用の Azure Monitor には、リソース グループ内のリソースのアラート状態にアクセスするための特定のアクセス許可が必要です。 アラートを読み込むときにエラー メッセージが表示された場合は、十分なアクセス許可がありません。 管理者に依頼して、リソース グループを含むサブスクリプションの**所有者**ロールまたは**共同作成者**ロールを付与してもらってください。
+
+Azure Monitor でリソース グループのアラートを確認するには、このサブスクリプションの所有者または共同作成者ロールを持つユーザーが、サブスクリプション内の任意のリソース グループに対して、Azure Monitor for Resource Groups を開く必要があります。 これにより、読み取りアクセス権を持つユーザーが、サブスクリプション内のすべてのリソース グループのアラートを Azure Monitor for Resource Groups で確認できるようになります。 所有者または共同作成者ロールをお持ちの場合、数分単位でこのページを更新してください。
+
+Azure Monitor for Resource Groups は、Azure Monitor Alerts Management システムに依存して、アラート ステータスを取得します。 Alerts Management は、既定でどのリソース グループおよびサブスクリプションにも構成されているわけではなく、所有者または共同作成者ロールを持つユーザーしか有効化できません。 次のいずれかの方法で、有効化できます。
+* サブスクリプション内の任意のリソース グループに対して Azure Monitor for Resource Groups を開く。
+* サブスクリプションに移動して、**[リソース プロバイダー]** をクリックしてから、**[Register for Alerts.Management]\(Alerts.Management への登録\)** をクリックする。
 
 ## <a name="next-steps"></a>次の手順
 

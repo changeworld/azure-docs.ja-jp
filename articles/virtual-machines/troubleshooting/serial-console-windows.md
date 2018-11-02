@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/07/2018
+ms.date: 10/22/2018
 ms.author: harijay
-ms.openlocfilehash: 29b045266836ace35aab12c51746b7e339cbb88f
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: facd9be037894932e516e8294e36b6b0e55374c8
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354344"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024420"
 ---
 # <a name="virtual-machine-serial-console"></a>仮想マシンのシリアル コンソール
 
@@ -53,7 +53,6 @@ Linux VM のシリアル コンソールのドキュメントを参照するに�
   3. 一覧で VM をクリックします。 VM の概要ページが開きます。
   4. 下へスクロールして [サポート + トラブルシューティング] セクションを表示し、[シリアル コンソール] オプションをクリックします。 シリアル コンソールで新しいウィンドウが開き、接続が開始されます。
 
-
 ## <a name="enable-serial-console-in-custom-or-older-images"></a>カスタム イメージまたは古いイメージでシリアル コンソールを有効にする
 Azure の新しい Windows Server イメージでは、既定で [Special Administrative Console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) が有効になります。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。 2018 年 2 月以前に作成された Windows 仮想マシンのシリアル コンソールを有効にするには、次の手順を実行します。 
 
@@ -74,7 +73,7 @@ Azure の新しい Windows Server イメージでは、既定で [Special Admini
 
 ### <a name="how-do-i-know-if-sac-is-enabled"></a>SAC が有効になっているかどうかを知る方法
 
-[SAC] (https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) が有効になっていない場合、シリアル コンソールに SAC プロンプトは表示されません。 VM の正常性情報が表示される場合もありますが、それ以外は空白になります。 2018 年 2 月より前に作成された Windows Server イメージを使用している場合、SAC が有効になっていない可能性があります。
+[SAC](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) が有効になっていない場合、シリアル コンソールに SAC プロンプトは表示されません。 VM の正常性情報が表示される場合もありますが、それ以外は空白になります。 2018 年 2 月より前に作成された Windows Server イメージを使用している場合、SAC が有効になっていない可能性があります。
 
 ## <a name="enable-the-windows-boot-menu-in-serial-console"></a>シリアル コンソールの Windows ブート メニューの有効化 
 
@@ -98,6 +97,21 @@ Windows ブート ローダーのプロンプトを有効にしてシリアル �
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-nmi.png) <br>
 
 NMI を受信したときにクラッシュ ダンプを作成するように Windows を構成する方法については、「[How to generate a complete crash dump file or a kernel crash dump file by using an NMI on a Windows-based system](https://support.microsoft.com/en-us/help/927069/how-to-generate-a-complete-crash-dump-file-or-a-kernel-crash-dump-file)」(Windowsベースのシステムで NMI を使用して完全なクラッシュ ダンプ ファイルまたはカーネル クラッシュ ダンプ ファイルを生成する方法) を参照してください。
+
+## <a name="open-cmd-or-powershell-in-serial-console"></a>シリアル コンソールで CMD または PowerShell を開く
+
+1. シリアル コンソールに接続します。 シリアル コンソールに正常に接続すると、次のスクリーンショットのように **SAC>** が表示されます。
+
+    ![SAC に接続する](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect-sac.png)
+
+3.  「`cmd`」と入力して、CMD インスタンスがあるチャネルを作成します。 
+4.  「`ch -si 1`」と入力して、CMD インスタンスを実行しているチャネルに切り替えます。 
+5.  Enter キーを押し、管理者のアクセス許可を持つログイン資格情報を入力します。
+6.  有効な資格情報を入力すると、CMD インスタンスが開きます。
+7.  PowerShell インスタンスを起動するには、CMD インスタンスに「`PowerShell`」と入力し、Enter キーを押します。 
+
+    ![PowerShell インスタンスを開く](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-powershell.png)
+
 
 ## <a name="disable-serial-console"></a>シリアル コンソールを無効にする
 既定では、すべてのサブスクリプションは、すべての VM に対してシリアル コンソールのアクセスが有効になっています。 VM レベルまたはサブスクリプション レベルのいずれかで、シリアル コンソールを無効にすることができます。

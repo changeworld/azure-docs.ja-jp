@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/21/2018
+ms.date: 10/08/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 18dfdce827a76d924494e66ceb0d03e2bb3a3ffe
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 618e1f5249f2e05c26e91231b4283d82546a880b
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39523762"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49954489"
 ---
 # <a name="azure-storage-replication"></a>Azure Storage のレプリケーション
 
@@ -38,10 +38,14 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 | データ センター全体 (ゾーンまたは非ゾーン) が使用できなくなる                                           | いいえ                               | 可能                               | はい                                  | [はい]                                  |
 | リージョン全体の停止                                                                                     | いいえ                               | いいえ                                | 可能                                   | [はい]                                  |
 | リージョン全体が使用できなくなった場合に (リモートの geo 冗長化されたリージョンの) データへの読み取りアクセス | いいえ                               | いいえ                                | いいえ                                    | [はい]                                  |
-| 1 年にわたって \_\_ のオブジェクトの持続性を提供するように設計                                          | 99.999999999% (イレブン ナイン) 以上 | 99.9999999999% (トゥエルブ ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 |
-| サポートされるストレージ アカウントの種類                                                                   | GPv1、GPv2、BLOB                | GPv2                             | GPv1、GPv2、BLOB                     | GPv1、GPv2、BLOB                     |
+| 指定された 1 年間にわたって \_\_ オブジェクトの持続性を提供するように設計                                          | 99.999999999% (イレブン ナイン) 以上 | 99.9999999999% (トゥエルブ ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 | 99.99999999999999% (シックスティーン ナイン) 以上 |
+| サポートされるストレージ アカウントの種類                                                                   | GPv2、GPv1、BLOB                | GPv2、GPv1 (PowerShell、Azure CLI、またはリソース プロバイダー API 経由)                             | GPv2、GPv1、BLOB                     | GPv2、GPv1、BLOB                     |
+| 読み取り要求の可用性 SLA | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.99% 以上 (クール アクセス層の場合、99.9%) |
+| 書き込み要求の可用性 SLA | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) | 99.9% 以上 (クール アクセス層の場合、99%) |
 
-さまざまな冗長オプションの料金情報については、[Azure Storage の料金](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。
+さまざまな冗長オプションの料金情報については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページをご覧ください。 
+
+Azure Storage の持続性と可用性の保証については、[Azure Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage/) に関するページをご覧ください。
 
 > [!NOTE]
 > Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。 Premium Storage については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)」をご覧ください。

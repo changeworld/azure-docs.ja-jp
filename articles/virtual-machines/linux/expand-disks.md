@@ -12,39 +12,39 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 10/15/2018
 ms.author: rogarana
-ms.openlocfilehash: 0c2d4d1413b6cfd0b5e457e720b59c6c7b575092
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 62057d3041aa83e0097b688b48386b80f5c4f87e
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974546"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637291"
 ---
-# <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する方法
+# <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する
 
-Azure の Linux 仮想マシン (VM) では、通常、オペレーティング システム (OS) の既定の仮想ハード ディスク サイズは 30 GB です。 [データ ディスクを追加](add-disk.md)して記憶域スペースを追加できますが、既存のデータ ディスクを拡張することもできます。 この記事では、Azure CLI を使用して、Linux VM のマネージド ディスクを拡張する方法について詳しく説明します。 
+この記事では、Azure CLI を使用して、Linux 仮想マシン (VM) 用のマネージド ディスクを拡張する方法について説明します。 [データ ディスクを追加](add-disk.md)して記憶域スペースを追加でき、既存のデータ ディスクを拡張することもできます。 Azure の Linux VM では、通常、オペレーティング システム (OS) の既定の仮想ハード ディスク サイズは 30 GB です。 
 
 > [!WARNING]
 > ディスクのサイズ変更操作を実行する前に、常にデータをバックアップしていることを確認してください。 詳細については、「[Azure での Linux 仮想マシンのバックアップ](tutorial-backup-vms.md)」を参照してください。
 
-## <a name="expand-azure-managed-disk"></a>Azure Managed Disks の拡張
-[Azure CLI](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしていることを確認します。
+## <a name="expand-an-azure-managed-disk"></a>Azure マネージド ディスクの拡張
+最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az-login) を使用して Azure アカウントにサインインしていることを確認します。
 
 この記事では、少なくとも 1 つのデータ ディスクが接続され、準備ができている Azure の既存の VM が必要です。 使用できる VM をまだ用意していない場合は、[データ ディスク付きの VM の作成と準備](tutorial-manage-disks.md#create-and-attach-disks)に関するページを参照してください。
 
-以下のサンプルでは、パラメーター名を独自の値に置き換えてください。 たとえば、*myResourceGroup* と *myVM* といったパラメーター名にします。
+以下のサンプルでは、*myResourceGroup* や *myVM* などのパラメーター名を各自の値に置き換えてください。
 
-1. 仮想ハード ディスクに対する操作は、実行中の VM では実行できません。 [az vm deallocate](/cli/azure/vm#az_vm_deallocate) を使用して VM の割り当てを解除します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM の割り当てを解除します。
+1. 仮想ハード ディスクに対する操作は、実行中の VM では実行できません。 [az vm deallocate](/cli/azure/vm#az-vm-deallocate) を使用して VM の割り当てを解除します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM の割り当てを解除します。
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
     > [!NOTE]
-    > 仮想ハード ディスクを拡張するには、VM の割り当てを解除する必要があります。 `az vm stop` では、コンピューティング リソースは解放されません。 コンピューティング リソースを解放するには、`az vm deallocate` を使用します。
+    > 仮想ハード ディスクを拡張するには、VM の割り当てを解除する必要があります。 `az vm stop` で VM を停止すると、コンピューティング リソースは解放されません。 コンピューティング リソースを解放するには、`az vm deallocate` を使用します。
 
-1. [az disk list](/cli/azure/disk#az_disk_list) を使用して、リソース グループに含まれるマネージド ディスクの一覧を表示します。 次の例では、*myResourceGroup* という名前のリソース グループに含まれるマネージド ディスクの一覧を表示します。
+1. [az disk list](/cli/azure/disk#az-disk-list) を使用して、リソース グループに含まれるマネージド ディスクの一覧を表示します。 次の例では、*myResourceGroup* という名前のリソース グループに含まれるマネージド ディスクの一覧を表示します。
 
     ```azurecli
     az disk list \
@@ -53,7 +53,7 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
         --output table
     ```
 
-    [az disk update](/cli/azure/disk#az_disk_update) を使用して、必要なディスクを拡張します。 次の例では、*myDataDisk* という名前のマネージド ディスクのサイズを *200* GB に拡張します。
+    [az disk update](/cli/azure/disk#az-disk-update) を使用して、必要なディスクを拡張します。 次の例では、*myDataDisk* という名前のマネージド ディスクを *200* GB に拡張します。
 
     ```azurecli
     az disk update \
@@ -63,25 +63,25 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
     ```
 
     > [!NOTE]
-    > マネージド ディスクを拡張すると、更新されたサイズがマネージド ディスクの最も近いサイズにマップされます。 マネージド ディスクの利用可能なサイズとレベルの表については、「[Azure Managed Disks の概要 - 価格と課金](../windows/managed-disks-overview.md#pricing-and-billing)」をご覧ください。
+    > マネージド ディスクを拡張すると、更新されたサイズがマネージド ディスクの最も近いサイズに切り上げられます。 マネージド ディスクの利用可能なサイズとレベルの表については、「[Azure Managed Disks の概要 - 価格と課金](../windows/managed-disks-overview.md#pricing-and-billing)」をご覧ください。
 
-1. [az vm start](/cli/azure/vm#az_vm_start) を使用して VM を起動します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を起動します。
+1. [az vm start](/cli/azure/vm#az-vm-start) を使用して VM を起動します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を起動します。
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
 
 
-## <a name="expand-disk-partition-and-filesystem"></a>ディスク パーティションとファイル システムの拡張
-拡張ディスクを使用するには、基になるパーティションとファイル システムを拡張する必要があります。
+## <a name="expand-a-disk-partition-and-filesystem"></a>ディスク パーティションとファイル システムの拡張
+拡張ディスクを使用するには、基になるパーティションとファイル システムを拡張します。
 
-1. 適切な資格情報を使用して VM に SSH 接続します。 [az vm show](/cli/azure/vm#az_vm_show) で、VM のパブリック IP アドレスを取得できます。
+1. 適切な資格情報を使用して VM に SSH 接続します。 [az vm show](/cli/azure/vm#az-vm-show) で、VM のパブリック IP アドレスを確認できます。
 
     ```azurecli
     az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv
     ```
 
-1. 拡張ディスクを使用するには、基になるパーティションとファイル システムを拡張する必要があります。
+1. 基になるパーティションとファイル システムを拡張します。
 
     a. ディスクが既にマウントされている場合は、マウントを解除します。
 
@@ -95,7 +95,7 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
     sudo parted /dev/sdc
     ```
 
-    `print` を使用して、既存のパーティション レイアウトに関する情報を表示します。 出力は次の例のようになります。これは、基になるディスクのサイズが 215 GB であることを示しています。
+    `print` を使用して、既存のパーティション レイアウトに関する情報を表示します。 出力は次の例のようになります。これは、基になるディスクが 215 GB であることを示しています。
 
     ```bash
     GNU Parted 3.2
@@ -128,7 +128,7 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
     sudo e2fsck -f /dev/sdc1
     ```
 
-1. 次に、`resize2fs` を使用して、ファイル システムのサイズを変更します。
+1. `resize2fs` を使用して、ファイル システムのサイズを変更します。
 
     ```bash
     sudo resize2fs /dev/sdc1
@@ -148,4 +148,5 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
     ```
 
 ## <a name="next-steps"></a>次の手順
-追加の記憶域が必要な場合に、[Linux VM にデータ ディスクを追加](add-disk.md)します。 ディスク暗号化の詳細については、「[Azure CLI を使って Linux VM のディスクを暗号化する](encrypt-disks.md)」をご覧ください。
+* 追加の記憶域が必要な場合は、[Linux VM にデータ ディスクを追加する](add-disk.md)こともできます。 
+* ディスク暗号化の詳細については、「[Azure CLI を使って Linux VM のディスクを暗号化する](encrypt-disks.md)」をご覧ください。

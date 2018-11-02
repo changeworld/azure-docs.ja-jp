@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: tamram
-ms.openlocfilehash: d599b54fe828b88edd3d04d6cd66a4baf36c2c1a
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: 1962a3237fb54409d17fefa314605bafa91c3e9c
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831553"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427639"
 ---
 # <a name="overview-of-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>SMB を使用した Azure Files の Azure Active Directory 認証の概要 (プレビュー)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -59,7 +59,7 @@ VM 上で実行されているアプリケーションに関連付けられて�
 ![SMB 経由の Azure AD 認証のスクリーン ショット](media/storage-files-active-directory-overview/azure-active-directory-over-smb-for-files-overview.png)
 
 ### <a name="enable-azure-ad-authentication-over-smb"></a>SMB 経由の Azure AD 認証を有効にする
-2018 年 8 月 29 日より後に作成された、Azure Files の新規および既存のストレージ アカウントでは、SMB 経由の Azure AD 認証を有効にできます。 
+2018 年 9 月 24 日より後に作成された、Azure Files の新規および既存のストレージ アカウントでは、SMB 経由の Azure AD 認証を有効にできます。 
 
 SMB 経由の Azure AD 認証を有効にする場合は、ストレージ アカウントが関連付けられているプライマリ Azure AD テナントのために、Azure AD Domain Services がデプロイされていることを事前に確認します。 Azure AD Domain Services の設定がまだ完了していない場合は、「[Azure portal を使用して Azure Active Directory Domain Services を有効にする](../../active-directory-domain-services/active-directory-ds-getting-started.md)」に記載の手順に従ってください。
 

@@ -4,21 +4,21 @@ description: このトピックでは、.NET で Azure Active Directory (Azure A
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2018
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: b8f58f4010590dc40d5e8dc7ac1b634f161a807d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: e36673c7baa03e1bcf36c149851e6455cea798fe
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33784571"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945571"
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>.NET で Azure AD Authentication を使用して Azure Media Services API にアクセスする
 
@@ -29,7 +29,7 @@ Windowsazure.mediaservices 4.0.0.4 以降では、Azure Media Services で Azure
 - Azure アカウント。 詳細については、[Azure の無料評価版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。 
 - Media Services アカウント。 詳細については、「[Azure Portal を使用した Azure Media Services アカウントの作成](media-services-portal-create-account.md)」を参照してください。
 - 最新の [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) パッケージ。
-- [AAD 認証による Azure Media Services API へのアクセスの概要](media-services-use-aad-auth-to-access-ams-api.md)を示すトピックの内容をよく理解していること。 
+- [Azure AD 認証による Azure Media Services API へのアクセスの概要](media-services-use-aad-auth-to-access-ams-api.md)を示すトピックの内容をよく理解していること。 
 
 Azure Media Services で Azure AD Authentication を使用する場合は、次の 2 つの方法のいずれかで認証できます。
 
@@ -37,7 +37,7 @@ Azure Media Services で Azure AD Authentication を使用する場合は、次�
 - **サービス プリンシパルの認証**: サービスを認証します。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリ (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス) です。
 
 >[!IMPORTANT]
->現在、Azure Media Services では Azure Access Control Service 認証モデルがサポートされています。 しかし、Access Control 承認は 2018 年 6 月 22 日に廃止される予定です。 できるだけ早く Azure Active Directory 認証モデルに移行することをお勧めします。
+>現在、Azure Media Services では Azure Access Control Service 認証モデルがサポートされています。 しかし、Access Control 承認は 2018 年 6 月 22 日に非推奨となる予定です。 できるだけ早く Azure Active Directory 認証モデルに移行することをお勧めします。
 
 ## <a name="get-an-azure-ad-access-token"></a>Azure AD アクセス トークンを取得する
 
@@ -97,14 +97,14 @@ Media Services に対するプログラミングを開始するには、サー�
 
 次の例には、Azure AD トークンとコンテキストを作成する方法が示されています。
 
-    namespace AADAuthSample
+    namespace AzureADAuthSample
     {
         class Program
         {
             static void Main(string[] args)
             {
                 // Specify your Azure AD tenant domain, for example "microsoft.onmicrosoft.com".
-                var tokenCredentials = new AzureAdTokenCredentials("{YOUR AAD TENANT DOMAIN HERE}", AzureEnvironments.AzureCloudEnvironment);
+                var tokenCredentials = new AzureAdTokenCredentials("{YOUR Azure AD TENANT DOMAIN HERE}", AzureEnvironments.AzureCloudEnvironment);
     
                 var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
     
@@ -158,7 +158,7 @@ Media Services に対するプログラミングを開始するには、サー�
     
 次の例には、Azure AD トークンとコンテキストを作成する方法が示されています。
 
-    namespace AADAuthSample
+    namespace AzureADAuthSample
     {
     
         class Program

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: 25e6fba6ac8aa34c0c30fd61f5fe297b94720439
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 05e7a7e3c2824a9b47ff723e91103611871d7ed2
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983669"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429560"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Azure Blob Storage のライフサイクルの管理 (プレビュー)
 
@@ -37,7 +37,7 @@ ms.locfileid: "46983669"
 プレビュー段階のライフサイクル管理機能は無料です。 お客様には、[List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) および [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) API 呼び出しの通常の運用コストが課金されます。 価格の詳細については、「[ブロック BLOB の料金](https://azure.microsoft.com/pricing/details/storage/blobs/)」を参照してください。
 
 ## <a name="register-for-preview"></a>プレビューの利用登録 
-パブリック プレビューに登録するには、この機能をサブスクリプションに登録するための要求を送信する必要があります。 (数日以内に) 要求が承認された後、米国西部 2、米国中西部、西ヨーロッパの既存および新規の GPv2 または Blob Storage アカウントでこの機能が有効になります。 プレビュー段階では、ブロック BLOB のみがサポートされます。 ほとんどのプレビューと同様、この機能は GA に達するまで実稼働ワークロードに使用しないでください。
+パブリック プレビューに登録するには、この機能をサブスクリプションに登録するための要求を送信する必要があります。 (数日以内に) 要求が承認された後、米国西部 2、米国中西部、米国東部 2、西ヨーロッパの既存および新規の GPv2 または Blob Storage アカウントでこの機能が有効になります。 プレビュー段階では、ブロック BLOB のみがサポートされます。 ほとんどのプレビューと同様、この機能は GA に達するまで実稼働ワークロードに使用しないでください。
 
 要求を送信するには、次の PowerShell または CLI コマンドを実行します。
 
@@ -69,7 +69,7 @@ az feature show --namespace Microsoft.Storage --name DLM
 
 ## <a name="add-or-remove-policies"></a>ポリシーの追加または削除 
 
-ポリシーを追加、編集、または削除するには、Azure portal、[PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview)、[REST API](https://docs.microsoft.com/rest/api/storagerp/storageaccounts/createorupdatemanagementpolicies)、または [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2) の言語のクライアント ツールを使用することができます。 
+ポリシーを追加、編集、または削除するには、Azure portal、[PowerShell](https://www.powershellgallery.com/packages/AzureRM.Storage/5.0.3-preview)、[REST API](https://docs.microsoft.com/rest/api/storagerp/managementpolicies/managementpolicies_createorupdate)、または [.NET](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/8.0.0-preview)、[Python](https://pypi.org/project/azure-mgmt-storage/2.0.0rc3/)、[Node.js]( https://www.npmjs.com/package/azure-arm-storage/v/5.0.0)、[Ruby](   https://rubygems.org/gems/azure_mgmt_storage/versions/0.16.2) の言語のクライアント ツールを使用することができます。 
 
 ### <a name="azure-portal"></a>Azure ポータル
 
@@ -185,7 +185,7 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
 
 ライフサイクル管理のプレビューでは、BLOB の階層化と削除、および BLOB スナップショットの削除がサポートされています。 各ルールでは、BLOB または BLOB スナップショットに対する 1 つ以上のアクションが定義されている必要があります。
 
-| アクションを表示します。        | ベース BLOB                                   | スナップショット      |
+| Action        | ベース BLOB                                   | スナップショット      |
 |---------------|---------------------------------------------|---------------|
 | tierToCool    | 現在ホット層にある BLOB をサポートします         | サポートされていません |
 | tierToArchive | 現在ホット層またはクール層にある BLOB をサポートします | サポートされていません |
@@ -316,6 +316,10 @@ Get-AzureRmStorageAccountManagementPolicy -ResourceGroupName [resourceGroupName]
   ]
 }
 ```
+## <a name="faq"></a>FAQ
+### <a name="i-created-a-new-policy-why-are-the-actions-specified-not-executed-immediately"></a>新しいポリシーを作成しましたが、指定したアクションがすぐに実行されないのはなぜですか? 
+
+ライフサイクル ポリシーは、プラットフォームによって 1 日に 1 回実行されます。 新しいポリシーを設定した場合、階層化や削除などのアクションが開始されて実行されるまでに、最大で 24 時間がかかることがあります。  
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,26 +1,18 @@
 ---
 title: 'ルートベースの VPN ゲートウェイを作成する: Azure Portal | Microsoft Docs'
-description: Azure Portal を使用して、ルートベースの VPN ゲートウェイをすばやく作成します
+description: Azure portal を使用してルートベースの VPN Gateway をすばやく作成します
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jeconnoc
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/04/2018
+ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: fe05ab36f971105cf72342b8df5e2a82de7fc2b8
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 7139b2de79b4e092ca761a4e51061c233e6031b5
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391795"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470304"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Azure Portal を使用してルートベースの VPN ゲートウェイをすばやく作成する
 
@@ -74,33 +66,19 @@ ms.locfileid: "44391795"
   - **SKU**: VpnGw1
   - **場所**: 米国東部
   - **仮想ネットワーク**: **[仮想ネットワーク]、[仮想ネットワークの選択]** の順にクリックして、**[仮想ネットワークの選択]** ページを開きます。 **[VNet1]** を選択します。
+  - **[パブリック IP アドレス]**: この設定は、VPN ゲートウェイに関連付けられるパブリック IP アドレス オブジェクトを指定します。 パブリック IP アドレスは、VPN ゲートウェイの作成時に、このオブジェクトに対して動的に割り当てられます。 VPN Gateway では現在、パブリック IP アドレスの "*動的*" 割り当てのみサポートしています。 もっとも、VPN ゲートウェイに割り当てられた IP アドレスが後から変わることは基本的にありません。 パブリック IP アドレスが変わるのは、ゲートウェイが削除され、再度作成されたときのみです。 VPN ゲートウェイのサイズ変更、リセット、その他の内部メンテナンス/アップグレードでは、IP アドレスは変わりません。
 
-  ![ゲートウェイ設定の構成](./media/create-routebased-vpn-gateway-portal/configure-gateway.png "ゲートウェイ設定の構成")
+    - **[新規作成]** を選択しておいてください。
+    - テキスト ボックスに、パブリック IP アドレスの**名前**を入力します。 この演習では、**VNet1GWIP** を使用します。<br>
 
-## <a name="pip"></a>パブリック IP アドレスの作成
-
-VPN ゲートウェイには、動的に割り当てられるパブリック IP アドレスが必要です。 VPN ゲートウェイへの接続を作成するときは、これが、ご自身のオンプレミス デバイスの接続先 IP アドレスです。
-
-1. **[最初の IP 構成] の [ゲートウェイ IP 構成の作成]** を選択し、パブリック IP アドレスを要求します。
-
-  ![最初の IP 構成](./media/create-routebased-vpn-gateway-portal/add-public-ip-address.png "最初の IP 構成")
-2. **パブリック IP の選択ページ**で、**[+ 新規作成]** をクリックして、**[パブリック IP アドレスの作成]** ページを開きます。
-3. 次の値で設定を構成します。
-
-  - **名前**: **VNet1GWIP**
-  - **SKU**: **基本**
-
-  ![パブリック IP の作成](./media/create-routebased-vpn-gateway-portal/public-ip-address-name.png "PIP の作成")
-4. ページの下部にある **[OK]** をクリックして、自分の変更を保存します。
+    ![ゲートウェイ設定の構成](./media/create-routebased-vpn-gateway-portal/gw.png "ゲートウェイ設定の構成")
 
 ## <a name="creategw"></a>VPN ゲートウェイの作成
 
 1. **[仮想ネットワーク ゲートウェイの作成]** ページで設定を確認します。 必要に応じて、値を調整します。
-
-  ![VPN ゲートウェイの作成](./media/create-routebased-vpn-gateway-portal/create-vpn-gateway.png "VPN ゲートウェイの作成")
 2. ページの下部にある **[作成]** をクリックします。
 
-**[作成]** をクリックすると、設定が検証され、ダッシュボードに **[Deploying Virtual network gateway]\(仮想ネットワーク ゲートウェイのデプロイ\)** タイルが表示されます。 VPN ゲートウェイには最大 45 分かかることがあります。 完了状態を確認するために、ポータル ページの更新が必要な場合があります。
+  **[作成]** をクリックすると、設定が検証され、ダッシュボードに **[Deploying Virtual network gateway]\(仮想ネットワーク ゲートウェイのデプロイ\)** タイルが表示されます。 VPN ゲートウェイには最大 45 分かかることがあります。 完了状態を確認するために、ポータル ページの更新が必要な場合があります。
 
 ## <a name="viewgw"></a>VPN ゲートウェイの表示
 

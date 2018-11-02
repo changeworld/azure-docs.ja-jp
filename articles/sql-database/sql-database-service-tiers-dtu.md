@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/04/2018
-ms.openlocfilehash: a9e274cea7543fc3361b1f2d0a60fc18176b6248
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.date: 10/22/2018
+ms.openlocfilehash: 00e5a77bdf8554d473194b2e84947d7adb10df90
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831315"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955260"
 ---
 # <a name="dtu-based-service-tiers"></a>DTU ベースのサービス レベル
 
@@ -25,7 +25,6 @@ DTU ベースのサービス レベルは、固定の付属ストレージ容量
 
 > [!IMPORTANT]
 > SQL Database Managed Instance は、現在、パブリック プレビュー段階であり、DTU ベースの購入モデルをサポートしていません。 詳細については、[Azure SQL Database Managed Instance に関するページ](sql-database-managed-instance.md)を参照してください。
-
 > [!NOTE]
 > 仮想コアベースのサービス レベルの詳細については、[仮想コアベースのサービス レベル](sql-database-service-tiers-vcore.md)に関するページを参照してください。 DTU ベースのサービス レベルと仮想コアベースのサービス レベルの違いの詳細については、[Azure SQL Database の購入モデル](sql-database-service-tiers.md)に関するページを参照してください。
 
@@ -33,7 +32,7 @@ DTU ベースのサービス レベルは、固定の付属ストレージ容量
 
 サービス レベルの選択は、主に、ビジネス継続性、ストレージ、およびパフォーマンスの要件に依存します。
 ||Basic|標準|Premium|
-| :-- | --: |--:| --:| --:| 
+| :-- | --: |--:| --:| --:|
 |対象のワークロード|開発、運用|開発、運用|開発、運用||
 |アップタイム SLA|99.99%|99.99%|99.99%|プレビューは対象外|
 |バックアップ保有期間|7 日|35 日|35 日|
@@ -44,13 +43,16 @@ DTU ベースのサービス レベルは、固定の付属ストレージ容量
 |インメモリ OLTP|該当なし|該当なし|サポートされています|
 |||||
 
+> [!NOTE]
+> Azure 無料アカウントと組み合わせて Basic サービス レベルで無料の Azure SQL Database を取得して、Azure を探索できます。 詳細については、「[Azure の無料アカウントでマネージド クラウド データベースを作成する](https://azure.microsoft.com/free/services/sql-database/)」をご覧ください。
+
 ## <a name="single-database-dtu-and-storage-limits"></a>Single Database の DTU と容量の上限
 
 コンピューティング サイズは、単一データベースの場合はデータベース トランザクション ユニット (DTU) で、エラスティック プールの場合はエラスティック データベース トランザクション ユニット (eDTU) で表されます。 DTU と eDTU の詳細については、[DTU ベースの購入モデル](sql-database-service-tiers.md#dtu-based-purchasing-model)に関するページを参照してください。
 
 ||Basic|標準|Premium|
 | :-- | --: | --: | --: | --: |
-| 最大ストレージ サイズ | 2 GB | 1 TB (テラバイト) | 4 TB  | 
+| 最大ストレージ サイズ | 2 GB | 1 TB (テラバイト) | 4 TB  |
 | 最大 DTU | 5 | 3000 | 4000 | |
 ||||||
 
@@ -59,18 +61,17 @@ DTU ベースのサービス レベルは、固定の付属ストレージ容量
 
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>エラスティック プールの eDTU、ストレージ、プールされているデータベースの上限
 
-| | **Basic** | **Standard** | **Premium** | 
+| | **Basic** | **Standard** | **Premium** |
 | :-- | --: | --: | --: | --: |
-| データベースあたりの最大ストレージ サイズ  | 2 GB | 1 TB (テラバイト) | 1 TB (テラバイト) | 
-| プールあたりの最大ストレージ サイズ | 156 GB | 4 TB | 4 TB | 
-| データベースあたりの最大 eDTU 数 | 5 | 3000 | 4000 | 
-| プールあたりの最大 eDTU 数 | 1600 | 3000 | 4000 | 
-| プールあたりのデータベースの最大数 | 500  | 500 | 100 | 
+| データベースあたりの最大ストレージ サイズ  | 2 GB | 1 TB (テラバイト) | 1 TB (テラバイト) |
+| プールあたりの最大ストレージ サイズ | 156 GB | 4 TB | 4 TB |
+| データベースあたりの最大 eDTU 数 | 5 | 3000 | 4000 |
+| プールあたりの最大 eDTU 数 | 1600 | 3000 | 4000 |
+| プールあたりのデータベースの最大数 | 500  | 500 | 100 |
 ||||||
 
 > [!IMPORTANT]
 > 現在、米国中西部、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、USGov アイオワ、ドイツ北東部、中国北部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
-
 > [!IMPORTANT]
 > 場合によっては、未使用領域を再利用できるようにデータベースを縮小する必要があります。 詳細については、「[Manage file space in Azure SQL Database](sql-database-file-space-management.md)」(Azure SQL Database でファイル領域を管理する) を参照してください。
 

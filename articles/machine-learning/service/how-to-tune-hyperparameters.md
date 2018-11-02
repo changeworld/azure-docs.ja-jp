@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 950d985ca87cce484edeb7930ca1bda34d812f33
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 13820dd511d31217b79385e893edbb55a3a57693
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344134"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430021"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>モデルに合わせてハイパーパラメーターを調整する
 
@@ -141,8 +141,9 @@ param_sampling = BayesianParameterSampling( {
 ```
 
 > [!NOTE]
-> ベイジアン サンプリングは早期終了ポリシーをサポートしていません (「[早期終了ポリシーを指定する](#specify-an-early-termination-policy)」を参照)。 ベイジアン パラメーター サンプリングを使用する場合は、`early_termination_policy = None` を設定するか、`early_termination_policy` パラメーターをオフのままにします。
-`
+> ベイジアン サンプリングは早期終了ポリシーをサポートしていません (「[早期終了ポリシーを指定する](#specify-early-termination-policy)」を参照)。 ベイジアン パラメーター サンプリングを使用する場合は、`early_termination_policy = None` を設定するか、`early_termination_policy` パラメーターをオフのままにします。
+
+<a name='specify-primary-metric-to-optimize'/>
 
 ## <a name="specify-primary-metric"></a>主要メトリックを指定する
 
@@ -158,9 +159,11 @@ primary_metric_goal=PrimaryMetricGoal.MAXIMIZE
 
 "精度" が最大になるように実行が最適化されます。  必ずこの値をトレーニング スクリプトに記録してください。
 
+<a name='log-metrics-for-hyperparameter-tuning'/>
+
 ### <a name="log-metrics-for-hyperparameter-tuning"></a>ハイパーパラメーターの調整のためのログ メトリック
 
-モデルのトレーニング スクリプトでは、モデルのトレーニング中に関連するメトリックをログに記録する必要があります。 ハイパーパラメーターのチューニングを構成するときは、実行のパフォーマンスの評価に使用する主要メトリックを指定します。 (「[最適化する主要メトリックを指定する](#specify-a-primary-metric-to-optimize)」を参照。)トレーニング スクリプトでは、ハイパーパラメーターの調整処理に使用できるように、このメトリックを記録する必要があります。
+モデルのトレーニング スクリプトでは、モデルのトレーニング中に関連するメトリックをログに記録する必要があります。 ハイパーパラメーターのチューニングを構成するときは、実行のパフォーマンスの評価に使用する主要メトリックを指定します。 (「[最適化する主要メトリックを指定する](#specify-primary-metric-to-optimize)」を参照。)トレーニング スクリプトでは、ハイパーパラメーターの調整処理に使用できるように、このメトリックを記録する必要があります。
 
 次のサンプル スニペットで、このメトリックをトレーニング スクリプトに記録します。
 
@@ -171,6 +174,8 @@ run_logger.log("accuracy", float(val_accuracy))
 ```
 
 トレーニング スクリプトは `val_accuracy` を計算し、"精度" としてログに記録します。これは主要メトリックとして使用されます。 メトリックをログに記録するたびに、ハイパーパラメーター調整サービスによって受信されます。 このメトリックを報告する頻度は、モデルの開発者が任意に決定できます。
+
+<a name='specify-early-termination-policy'/>
 
 ## <a name="specify-early-termination-policy"></a>早期終了ポリシーを指定する
 
@@ -297,7 +302,7 @@ experiment = Experiment(workspace, experiment_name)
 hyperdrive_run = experiment.submit(hyperdrive_run_config)
 ```
 
-`experiment_name` はハイパーパラメーター調整実験に割り当てる名前、`workspace` は実験を作成するワークスペースです (実験について詳しくは、「[Azure Machine Learning サービスのしくみ](/concept-azure-machine-learning-architecture.md)」をご覧ください)。
+`experiment_name` はハイパーパラメーター調整実験に割り当てる名前、`workspace` は実験を作成するワークスペースです (実験について詳しくは、「[Azure Machine Learning サービスのしくみ](concept-azure-machine-learning-architecture.md)」をご覧ください)。
 
 ## <a name="visualize-experiment"></a>実験を視覚化する
 
@@ -320,7 +325,7 @@ RunDetails(hyperdrive_run).show()
 
 ![ハイパーパラメーター調整の並行座標](media/how-to-tune-hyperparameters/HyperparameterTuningParallelCoordinates.png)
 
-Azure Web ポータルですべてのハイパーパラメーター調整実行を視覚化できます。 Web ポータルで実験を表示する方法について詳しくは、[実験の追跡方法](/how-to-track-experiments.md/#view-the-experiment-in-the-web-portal)に関するページをご覧ください。
+Azure Web ポータルですべてのハイパーパラメーター調整実行を視覚化できます。 Web ポータルで実験を表示する方法について詳しくは、[実験の追跡方法](how-to-track-experiments.md#view-the-experiment-in-the-web-portal)に関するページをご覧ください。
 
 ![ハイパーパラメーター調整ポータル](media/how-to-tune-hyperparameters/HyperparameterTuningPortal.png)
 

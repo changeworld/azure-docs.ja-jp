@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: 6d08dbe1976363be414597401d7a4efbae82c9b4
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.date: 10/12/2018
+ms.openlocfilehash: 54aef992e95454387ee2fda1d1b34d6dcae3e21e
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498438"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49959113"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Azure Disk Encryption の前提条件 (以前のリリース)
 
@@ -41,7 +41,7 @@ Azure Disk Encryption は、次のオペレーティング システムでサポ
 - 暗号化を有効にする前に、暗号化するデータ ディスクを /etc/fstab に正しく登録する必要があります。 "/dev/sdX" 形式のデバイス名は、再起動後 (特に暗号化が適用された後) に同じディスクに関連付けられるとは限らないため、このエントリに永続的なブロック デバイス名を使用してください。 この動作の詳細については、「[Linux VM デバイス名の変更トラブルシューティング](../virtual-machines/linux/troubleshoot-device-names-problems.md)」を参照してください。
 - /etc/fstab 設定がマウントに合わせて正しく構成されていることを確認します。 これらの設定を構成するには、mount -a コマンドを実行するか、VM を再起動してその方法での再マウントをトリガーします。 完了したら、lsblk コマンドの出力を調べて、目的のドライブがまだマウントされていることを確認します。 
     - 暗号化を有効にする前に /etc/fstab ファイルがドライブに適切にマウントされない場合、Azure Disk Encryption でそれを適切にマウントできません。
-    - Azure Disk Encryption プロセスは、暗号化プロセスの一部として、/etc/fstab から独自の構成ファイルにマウント情報を移動します。 データ ドライブの暗号化が完了した後、/etc/fstab にエントリがないことを心配しないでください。
+    - Azure Disk Encryption プロセスは、暗号化プロセスの一部として、/etc/fstab から独自の構成ファイルにマウント情報を移動します。 データ ドライブの暗号化が完了した後、/etc/fstab からそのエントリがなくなっても気にする必要はありません。
     -  再起動後、新しく暗号化されたディスクが Azure Disk Encryption プロセスによってマウントされる処理には時間がかかります。 再起動後すぐには利用できません。 このプロセスでは、他のプロセスがアクセスできるようになる前に、暗号化されたドライブを起動し、ロックを解除し、マウントする時間が必要です。 システムの特性によっては、再起動後に 1 分以上かかることがあります。
 
 データ ディスクをマウントし、必要な /etc/fstab エントリを作成するために使用できるコマンドの例は、[このスクリプト ファイルの行 197-205](https://github.com/ejarvi/ade-cli-getting-started/blob/master/validate.sh#L197-L205) にあります。 
@@ -49,11 +49,23 @@ Azure Disk Encryption は、次のオペレーティング システムでサポ
 
 ## <a name="bkmk_GPO"></a> ネットワークとグループ ポリシー
 
-**Azure Disk Encryption 機能を有効にするには、IaaS VM が次のネットワーク エンドポイントの構成要件を満たす必要があります。**
+**従来の AAD パラメーター構文を使用して Azure Disk Encryption 機能を有効にするには、IaaS VM が次のネットワーク エンドポイントの構成要件を満たす必要があります。** 
   - Key Vault に接続するためのトークンを取得するには、IaaS VM が Azure Active Directory エンドポイント \[login.microsoftonline.com\] に接続できる必要があります。
   - 暗号化キーを Key Vault に書き込むには、IaaS VM が Key Vault エンドポイントに接続できる必要があります。
   - IaaS VM は、Azure 拡張リポジトリをホストする Azure ストレージ エンドポイントと、VHD ファイルをホストする Azure ストレージ アカウントに接続できる必要があります。
-  -  セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、上記の URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。 詳細については、「[ファイアウォールの内側にある Azure Key Vault へのアクセス](../key-vault/key-vault-access-behind-firewall.md)」を参照してください。    
+  -  セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、上記の URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。 詳細については、「[ファイアウォールの内側にある Azure Key Vault へのアクセス](../key-vault/key-vault-access-behind-firewall.md)」を参照してください。
+  - Windows 上で、TLS 1.0 が明示的に無効化されており、.NET バージョンが 4.6 以降に更新されていない場合は、次のレジストリ変更によって ADE を有効にして、より新しい TLS バージョンを選択できるようにします。
+    
+        [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+        "SystemDefaultTlsVersions"=dword:00000001
+        "SchUseStrongCrypto"=dword:00000001
+
+        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+        "SystemDefaultTlsVersions"=dword:00000001
+        "SchUseStrongCrypto"=dword:00000001` 
+     
+
+ 
 
 
 **グループ ポリシー:**
@@ -65,7 +77,7 @@ Azure Disk Encryption は、次のオペレーティング システムでサポ
 ## <a name="bkmk_PSH"></a> Azure PowerShell
 [Azure PowerShell](/powershell/azure/overview) には、Azure リソースの管理に [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) モデルを使う一連のコマンドレットが用意されています。 これは、[Azure Cloud Shell](../cloud-shell/overview.md) を使用してブラウザーで使用するか、以下の手順でローカル コンピューターにインストールして PowerShell セッションで使用することができます。 既にローカルにインストールされている場合、Azure Disk Encryption を構成するには、最新バージョンの Azure PowerShell SDK を使用します。 [Azure PowerShell リリース](https://github.com/Azure/azure-powershell/releases)の最新バージョンをダウンロードします。
 
-### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>ローカル コンピューターで使用する Azure PowerShell をインストールします (省略可能)。 
+### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Azure PowerShell をインストールしてローカル コンピューターで使用する (省略可能):  
 1. お使いのオペレーティング システムのリンク先に記載されている指示を実行してから、以下の残りの手順を続行します。      
     - [Windows 用 Azure Powershell をインストールして構成します](/powershell/azure/install-azurerm-ps)。 
         - PowerShellGet、Azure PowerShell をインストールし、AzureRM モジュールを読み込みます。 
@@ -230,12 +242,12 @@ Azure CLI で [az ad sp](/cli/azure/ad/sp) コマンドを使用してサービ�
 3.  返される appId は、他のコマンドで使用される Azure AD ClientID です。 これは、az keyvault set-policy に使用する SPN でもあります。 パスワードは、あとで Azure Disk Encryption を有効にするために使用するクライアント シークレットです。 Azure AD のクライアント シークレットは適切に保護してください。
  
 ### <a name="bkmk_ADappRM"></a> Azure portal を使用して Azure AD アプリとサービス プリンシパルを設定する
-[ポータルを使用した、リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関する記事の手順を使用して、Azure AD アプリケーションを作成します。 以下の各手順で、完了する必要がある記事のセクションに直接進むことができます。 
+[ポータルを使用した、リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](../active-directory/develop/howto-create-service-principal-portal.md)に関する記事の手順を使用して、Azure AD アプリケーションを作成します。 以下の各手順で、完了する必要がある記事のセクションに直接進むことができます。 
 
-1. [必要なアクセス許可を確認する](../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions)
-2. [Azure Active Directory アプリケーションを作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) 
+1. [必要なアクセス許可を確認する](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)
+2. [Azure Active Directory アプリケーションを作成する](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application) 
      - アプリケーションの作成時には任意の名前とサインオン URL を使用できます。
-3. [アプリケーション ID と認証キーを取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)。 
+3. [アプリケーション ID と認証キーを取得する](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)。 
      - 認証キーはクライアント シークレットであり、Set-AzureRmVMDiskEncryptionExtension の AadClientSecret として使用されます。 
         - 認証キーは、Azure AD にサインインするための資格情報としてアプリケーションによって使用されます。 Azure portal では、このシークレットはキーと呼ばれますが、キー コンテナーとは関係がありません。 このシークレットはセキュリティで適切に保護してください。 
      - アプリケーション ID は、あとで Set-AzureRmVMDiskEncryptionExtension の AadClientId と Set-AzureRmKeyVaultAccessPolicy の ServicePrincipalName として使用されます。 

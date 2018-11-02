@@ -5,19 +5,19 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/20/2018
+ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 6354d89ff5a23ccb51b85737b3a842c08534683e
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 345e7c6985f03081048019912d636bba8e9a2361
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223612"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426483"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Azure AD ID を使用し、CLI または PowerShell で Azure Storage にアクセスする (プレビュー)
 
-Azure Storage には、Azure CLI と PowerShell のためのプレビュー拡張機能があります。この機能では、Azure Active Directory (Azure AD) ID でログインし、スクリプト コマンドを実行できます。 ユーザー、グループ、アプリケーション サービス プリンシパルが Azure AD ID になることができます。[マネージド サービス ID](../../active-directory/managed-identities-azure-resources/overview.md) が Azure AD ID になることもあります。 ストレージ リソースにアクセスするためのアクセス許可をロールベースのアクセス制御 (RBAC) を介して Azure AD ID に割り当てることができます。 Azure Storage の RBAC ロールについては、「[Manage access rights to Azure Storage data with RBAC (Preview)](storage-auth-aad-rbac.md)」 (RBAC で Azure Storage データへのアクセス許可を管理する (プレビュー)) を参照してください。
+Azure Storage には、Azure CLI と PowerShell のためのプレビュー拡張機能があります。この機能では、Azure Active Directory (Azure AD) ID でログインし、スクリプト コマンドを実行できます。 Azure AD ID には、ユーザー、グループ、アプリケーション サービス プリンシパル、または [Azure リソースのマネージド ID](../../active-directory/managed-identities-azure-resources/overview.md) を使用できます。 ストレージ リソースにアクセスするためのアクセス許可をロールベースのアクセス制御 (RBAC) を介して Azure AD ID に割り当てることができます。 Azure Storage の RBAC ロールについては、「[Manage access rights to Azure Storage data with RBAC (Preview)](storage-auth-aad-rbac.md)」 (RBAC で Azure Storage データへのアクセス許可を管理する (プレビュー)) を参照してください。
 
 Azure AD ID で Azure CLI または PowerShell にログインするとき、その ID で Azure Storage にアクセスするためのアクセス トークンが返されます。 そのトークンが CLI または PowerShell によって自動的に使用され、Azure Storage に対する操作が承認されます。 サポートされている操作については、コマンドでアカウント キーや SAS トークンを渡す必要がなくなりました。
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 8fe4fdfa88a5aea4b8df49d9c00fa7f6b1768209
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: b9b6c67930e251302f397e199c65f949997a25cf
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363437"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637973"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor の Azure Storage メトリック
 
@@ -23,13 +23,13 @@ Azure Monitor には、さまざまな Azure サービスで監視を実施す�
 
 ## <a name="access-metrics"></a>メトリックにアクセスする
 
-Azure Monitor では、複数の方法でメトリックにアクセスできます。 たとえば、[Azure Portal](https://portal.azure.com)、Azure Monitor API (REST および .Net) のほか、Operation Management Suite や Event Hubs などの分析ソリューションからアクセスできます。 詳細については、[Azure Monitor のメトリック](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関するページをご覧ください。
+Azure Monitor では、複数の方法でメトリックにアクセスできます。 たとえば、[Azure portal](https://portal.azure.com)、Azure Monitor API (REST および .Net) のほか、Event Hub などの分析ソリューションからアクセスできます。 詳細については、[Azure Monitor のメトリック](../../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関するページをご覧ください。
 
 メトリックは既定で有効になっており、過去 93 日間のデータにアクセスできます。 データを長期にわたって保持する必要がある場合は、メトリック データを Azure ストレージ アカウントにアーカイブできます。 これは、Azure Monitor の[診断設定](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)で構成されます。
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Azure Portal でメトリックにアクセスする
 
-Azure Portal ではメトリックを時間経過に沿って監視できます。 次の例は、アカウント レベルで **UsedCapacity** を表示する方法の例を示しています。
+Azure Portal ではメトリックを時間経過に沿って監視できます。 次の例は、アカウント レベルで **Transactions** を表示する方法の例を示しています。
 
 ![Azure Portal でのメトリック アクセスのスクリーンショット](./media/storage-metrics-in-azure-monitor/access-metrics-in-portal.png)
 
@@ -350,7 +350,7 @@ Azure Storage は、Azure Monitor で次の容量メトリックを提供しま�
 | TableCount   | ストレージ アカウントのテーブルの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
 | TableEntityCount | ストレージ アカウントのテーブル エンティティの数。 <br/><br/> 単位: カウント <br/> 集計の種類: 平均 <br/> 値の例: 1024 |
 
-### <a name="queue-storage"></a>Queue Storage
+### <a name="queue-storage"></a>ストレージ
 
 | メトリックの名前 | 説明 |
 | ------------------- | ----------------- |

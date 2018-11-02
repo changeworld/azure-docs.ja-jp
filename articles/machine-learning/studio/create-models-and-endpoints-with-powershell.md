@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
-ms.openlocfilehash: 17354891b50138911f36314620f0c826db4b5dac
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: dcf4e9fa9435d8f20784b20f3873d408adb78c20
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833667"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469828"
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>PowerShell を使用して 1 つの実験から複数の Machine Learning モデルと Web サービス エンドポイントを作成する
 機械学習について多くの人が考えることは、トレーニング ワークフローと使用アルゴリズムが同じ複数のモデルを作成できないものだろうか、ということです。 ただし、入力としては異なるトレーニング データセットを使用します。 この記事では、Azure Machine Learning Studio で 1 つの実験だけを使い、規模の制約なくこの課題に対応する方法を紹介しています。

@@ -1,6 +1,6 @@
 ---
 title: Azure メンテナンス スケジュール (プレビュー) |Microsoft Docs
-description: メンテナンス スケジューリングにより、お客様は、Azure SQL データ ウェアハウス サービスが新しい機能をロールアウト、アップグレード、パッチするために必要な、スケジュールされたメンテナンス イベントを計画することができます。
+description: メンテナンス スケジューリングを使用すると、Azure SQL Data Warehouse サービスで新機能のロールアウト、アップグレード、パッチを行うために必要な予定メンテナンス イベントを計画することができます。
 services: sql-data-warehouse
 author: antvgski
 manager: craigg
@@ -10,48 +10,50 @@ ms.component: design
 ms.date: 10/07/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: a6eedc0bac7aab69a9138f4f63d0d9d802e74dfc
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 428b9970471c9365812639e251810c571698a574
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228197"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49425960"
 ---
 # <a name="change-a-maintenance-schedule"></a>メンテナンス スケジュールの変更 
 
 ## <a name="portal"></a>ポータル
-メンテナンス スケジュールをいつでも更新または、変更できます。 ただし、選択されたインスタンスが現在アクティブなメンテナンス サイクルを行っている場合、設定は保存され、次に特定されたメンテナンス期間中のみ有効になります。 アクティブなメンテナンス イベント中にデータウェアハウスを監視する方法について[さらに理解する](https://docs.microsoft.com/azure/service-health/resource-health-overview)。 
+メンテナンス スケジュールをいつでも更新または、変更できます。 選択したインスタンスのアクティブなメンテナンス サイクルが経過している間、設定は保存されています。 指定した次のメンテナンス期間になると、設定がアクティブになります。 アクティブなメンテナンス イベント中にデータウェアハウスを監視する方法について[さらに理解する](https://docs.microsoft.com/azure/service-health/resource-health-overview)。 
 
-プレビューでは、7 日間の 2 つのメンテナンス ウィンドウを選択するように求められます。 各メンテナンス ウィンドウはそれぞれ 3 時間から 8 時間の間で、3 時間は現在利用可能な最短オプションです。 メンテナンスは、特定されたメンテナンス ウィンドウ内のいつでも実行できます。しかし、事前に通知された時間ウィンドウの外では発生しません。 また、サービスが新しいコードをデータ ウェアハウスにデプロイする際に、接続が一時切断されることもあります。 
+プレビュー中の Azure メンテナンス スケジュールでは、7 日の間に 2 つのメンテナンス ウィンドウを選択します。 メンテナンス ウィンドウはそれぞれ 3 ～ 8 時間です。 メンテナンスは、メンテナンス ウィンドウ内であればいつでも行われる可能性がありますが、ウィンドウ外については事前通知なしでは行われません。 また、サービスではデータ ウェアハウスに新しいコードが展開されるので、接続が一時的に失われます。 
 
-## <a name="identifying-the-primary-and-secondary-windows"></a>プライマリとセカンダリのウィンドウを識別します。
+## <a name="identifying-the-primary-and-secondary-windows"></a>プライマリ ウィンドウとセカンダリ ウィンドウの指定
 
-プライマリ ウィンドウとセカンダリ ウィンドウを異なる期間内に指定する必要があります。プライマリ ウィンドウ (火曜日～木曜日) 、セカンダリ ウィンドウ (土曜日～日曜日)。
+プライマリ ウィンドウとセカンダリ ウィンドウは別の曜日範囲にする必要があります。 たとえば、プライマリ ウィンドウを火曜日から木曜日にしたら、土曜日から日曜日をセカンダリ ウィンドウにします。
 
-ポータルのデータウェア ハウスに適用されたメンテナンス スケジュールを変更するには、次の手順を実行します。
+データウェア ハウスに対するメンテナンス スケジュールを変更するには、次の手順のようにします。
 1.  [Azure Portal](https://portal.azure.com/) にサインインします。
 2.  更新するデータ ウェア ハウスを選択します。 [概要] ブレードで、ページが開きます。 
-3.  メンテナンス スケジュール設定ページにアクセスするには、概要ブレードのメンテナンス スケジュール (プレビュー) 概要リンクをクリックするか、左側のリソース メニューのメンテナンス スケジュール オプションを使用します。  
+3.  [概要] ブレードの **[Maintenance Schedule (preview)]\(メンテナンス スケジュール (プレビュー)\)** 概要リンクを選択して、メンテナンス スケジュール設定用のページを開きます。 または、左側にあるリソース メニューの **[Maintenance Schedule]\(メンテナンス スケジュール\)** オプションを選択します。  
 
     ![概要ブレードのオプション](media/sql-data-warehouse-maintenance-scheduling/maintenance-change-option.png)
 
-4. プライマリ メンテナンス ウィンドウの優先日の範囲は、ページ上部のラジオ ボタンを使用して特定できます。 この選択は、平日または週末にプライマリ  ウィンドウが発生するかどうかを決定します。 選択した値に応じて、下のドロップダウン値が更新されます。 プレビュー中、一部のリージョンでは、まだ利用可能な日のオプションのフルセットをサポートしていない可能性があります。 これらの値は今後数か月で更新されます。
+4. ページ上部のオプションを使用して、プライマリ メンテナンス ウィンドウの優先日の範囲を指定できます。 この選択は、平日または週末にプライマリ  ウィンドウが発生するかどうかを決定します。 選択した値に応じて、ドロップダウンの値が更新されます。 プレビュー中、一部のリージョンでは、利用可能な **[Day]\(日\)** オプションのフルセットがまだサポートされていない可能性があります。
 
    ![メンテナンスの設定ブレード](media/sql-data-warehouse-maintenance-scheduling/maintenance-settings-page.png)
 
-5. 以下の日、開始時間、時間ウィンドウのドロップダウンを使用して、希望のプライマリおよびセカンダリのメンテナンス ウィンドウを選択します。 ブレードの下部にあるスケジュールの概要は、選択されたドロップダウン値に基づいて更新されます。
+5. ドロップダウン リスト ボックスを使用して、優先されるプライマリとセカンダリのメンテナンス ウィンドウを選択します。
+   - **[日]**: 選択したウィンドウでメンテナンスを実行する優先日。
+   - **[開始時刻]**: メンテナンス ウィンドウに対する優先開始時刻。
+   - **[時間枠]**: 時間枠の優先時間数。
 
-#### <a name="dropdown-options"></a>ドロップダウン リストのオプション
-- 日：選択したウィンドウでメンテナンスを実行するための優先日。
-- 開始時間：優先メンテナンス ウィンドウの開始時間。
-- 時間ウィンドウ: 時間ウィンドウの優先期間。
+   ブレードの下部にある **[スケジュールの概要]** 領域が、選択した値に基づいて更新されます。 
+  
+6. **[保存]** を選択します。 新しいスケジュールがアクティブになったことを確認するメッセージが表示されます。 
 
-  優先のメンテナンス期間を選択した後は、[保存] をクリックします。 新しいスケジュールが有効でないことを確認する確認メッセージが表示されます。 メンテナンス スケジューリングをまだサポートしていないリージョンにスケジュールを保存すると、次のメッセージが表示されます。 選択したリージョンで機能が使用可能になると、設定が保存され、アクティブになります。    
+   メンテナンス スケジュールがサポートされていないリージョンにスケジュールを保存すると、次のメッセージが表示されます。 "Your settings are saved and become active when the feature becomes available in your selected region." (設定は保存されており、選択したリージョンで機能が使用可能になるとアクティブになります。)    
 
-    ![トーストのリージョンでアクティブではありません。](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
+   ![リージョンの可用性に関するメッセージ](media/sql-data-warehouse-maintenance-scheduling/maintenance-notactive-toast.png)
 
 ## <a name="next-steps"></a>次の手順
-- ログ アラート ルールの Webhook アクションについて、[さらに理解する](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)。
-- Azure Service Health の詳細について、[さらに理解する](https://docs.microsoft.com/azure/service-health/service-health-overview)。
+- ログ アラート ルール用の Webhook アクションについて[さらに理解する](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)。
+- Azure Service Health について[詳しく知る](https://docs.microsoft.com/azure/service-health/service-health-overview)。
 
 

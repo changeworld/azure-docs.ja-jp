@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/25/2018
 ms.author: dekapur
-ms.openlocfilehash: b9372c806eab1b0ca69ba078d972b076c8a7d6f6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ca63d67f6d7c19b4ca6928c4cc0f9ccb06eace2b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212723"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402983"
 ---
 # <a name="service-fabric-events"></a>Service Fabric イベント 
 
 Service Fabric プラットフォームは、クラスター内で発生している重要な運用アクティビティについて、いくつかの構造化されたイベントを書き込みます。 その範囲は、クラスターのアップグレードから、レプリカの配置決定までにわたります。 Service Fabric が公開している各イベントは、クラスター内の以下のエンティティのいずれかにマッピングされています。
 * クラスター
 * アプリケーション
-* サービス
+* Service
 * Partition
 * レプリカ 
 * コンテナー
@@ -45,7 +45,7 @@ Service Fabric プラットフォームは、クラスター内で発生して�
 ## <a name="how-to-access-events"></a>イベントへのアクセス方法
 
 Service Fabric イベントには、いくつかの異なる方法を通してアクセスすることができます。
-* 稼働チャネルを介して。 これらは、Azure 診断拡張機能を通して収集し、OMS Log Analytics などのツールでの消費や取り込みのためにストレージ テーブルに送信することができます。 クラスターに対する「診断」が有効にされると、クラスター上に Azure 診断エージェントがデプロイされ、既定で稼働チャネルからのログを読み取るように構成されます。 より多くのログやパフォーマンス カウンターを収集するようにクラスターの診断構成を変更するには、[Azure 診断エージェント](service-fabric-diagnostics-event-aggregation-wad.md)の構成に関する詳細をご確認ください。 
+* 稼働チャネルを介して。 これらは、Azure 診断拡張機能を通して収集し、Azure Log Analytics などのツールでの消費や取り込みのためにストレージ テーブルに送信することができます。 クラスターに対する「診断」が有効にされると、クラスター上に Azure 診断エージェントがデプロイされ、既定で稼働チャネルからのログを読み取るように構成されます。 より多くのログやパフォーマンス カウンターを収集するようにクラスターの診断構成を変更するには、[Azure 診断エージェント](service-fabric-diagnostics-event-aggregation-wad.md)の構成に関する詳細をご確認ください。 
 * EventStore サービスの Rest API を介して。この方法では、クラスターに直接、または Service Fabric クライアント ライブラリを介してクエリを発行することができます。 「[EventStore API でクラスター イベントのクエリを実行する](service-fabric-diagnostics-eventstore-query.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順

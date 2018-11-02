@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: ae2458b6fc650961c63da2f7644dbd54d27fc2a8
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: d93fc81241053418ea2ff0576d50cbaefa0df9fb
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452107"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428557"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 Microsoft Azure 仮想マシン エージェント (VM エージェント) は、仮想マシン (VM) と Azure ファブリック コントローラーのやり取りを管理する、セキュリティで保護された簡易プロセスです。 VM エージェントは、Azure 仮想マシン拡張機能の有効化と実行において主要な役割を果たします。 VM 拡張機能は、VM のデプロイ後の構成 (ソフトウェアのインストールと構成など) を有効にします。 VM 拡張機能は、VM の管理者パスワードのリセットなどの回復機能も有効にします。 Azure VM エージェントがないと、VM 拡張機能を実行できません。
@@ -100,7 +100,8 @@ foreach ($vm in $vms) {
 ```
 
 ### <a name="manual-detection"></a>手動での検出
-Windows Azure VM にログインすると、タスク マネージャーを使用して、実行中のプロセスを調べることができます。 Azure VM エージェントを確認するには、タスク マネージャーを開いて *[詳細]* タブをクリックし、**WindowsAzureGuestAgent.exe** というプロセス名を探します。 このプロセスが存在する場合は、VM エージェントがインストールされています。
+
+Windows VM にログインすると、タスク マネージャーを使用して、実行中のプロセスを調べることができます。 Azure VM エージェントを確認するには、タスク マネージャーを開いて *[詳細]* タブをクリックし、**WindowsAzureGuestAgent.exe** というプロセス名を探します。 このプロセスが存在する場合は、VM エージェントがインストールされています。
 
 
 ## <a name="upgrade-the-vm-agent"></a>VM エージェントのアップグレード

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/10/2018
+ms.date: 10/15/2018
 ms.author: raynew
-ms.openlocfilehash: 35cce4e9e0b722e8ee1b2ea42a79f18a987033f0
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: bb756a89babef96b16419104737e87405b3527ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078646"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407403"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>VMware VM 用の構成サーバーの管理
 
@@ -138,6 +138,9 @@ Open Virtualization Format (OVF) テンプレートは、ネットワーク ア�
 - 9.6 以前を実行している場合に、9.11 にアップグレードするには、まずバージョン 9.7 にアップグレードしてから、 9.11 にアップグレードする必要があります。
 
 すべてのバージョンの構成サーバーにアップグレードするための更新プログラムのロールアップへのリンクは、[wiki の更新プログラムのページ](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)にあります。
+
+> [!IMPORTANT]
+> Azure Site Recovery コンポーネントの新バージョン "N" がリリースされるたびに、"N - 4" よりも前のすべてのバージョンはサポート対象外と見なされます。 常に使用可能な最新バージョンにアップグレードすることをお勧めします。
 
 次のようにサーバーをアップグレードします。
 

@@ -47,9 +47,11 @@ items:
         href: Quickstarts/publish-kb-python.md
 - name: チュートリアル
   items:
-  - name: ナレッジ ベースを作成して照会する
+  - name: KB を作成して回答する
     displayName: curl, publish, chit-chat, chit chat
     href: Tutorials/create-publish-query-in-portal.md
+  - name: C# を使用して KB を作成して回答する
+    href: Tutorials/create-publish-answer.md
   - name: QnA Maker ボットを作成する
     href: Tutorials/create-qna-bot.md
 - name: 概念
@@ -65,10 +67,6 @@ items:
     href: Concepts/confidence-score.md
   - name: サポートされるデータ ソース
     href: Concepts/data-sources-supported.md
-- name: チュートリアル
-  items:
-  - name: C# を使用して KB を作成して回答する
-    href: Tutorials/create-publish-answer.md
 - name: ハウツー ガイド
   items:
   - name: QnA Maker サービスの設定
@@ -149,9 +147,9 @@ items:
     href: https://docs.microsoft.com/search/index?search=QnAMaker
   - name: ブログ
     href: https://blog.botframework.com/category/QnAMaker/
-ms.openlocfilehash: 2819cb8c3264f7f1086f4eaeca3fdbf9c07c3be8
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: c376fc03f6dd884206373588c9277dfb224186cd
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50221351"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740061"

@@ -9,12 +9,12 @@ ms.date: 07/12/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 7c3ce5571c54d6c613114ea49999e450934c8ff4
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 0047ed4f0a172451bd50af3f62e2fecb8e147bf2
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136200"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49944445"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh の用語
 
@@ -22,25 +22,38 @@ Azure Service Fabric Mesh は、仮想マシン、ストレージ、ネットワ
 
 ## <a name="service-fabric"></a>Service Fabric
 
-Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる、オープン ソースの分散システム プラットフォームです。 Service Fabric は Service Fabric Mesh の動力となるオーケストレーターです。 Service Fabric には、マイクロサービス アプリケーションをビルドし、実行するためのオプションがあります。 あらゆるフレームワークを利用してサービスを記述したり、複数の環境からアプリケーションを実行する場所を選択したりできます。
+[Service Fabric](/azure/service-fabric/) は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる、オープン ソースの分散システム プラットフォームです。 Service Fabric は Service Fabric Mesh の動力となるオーケストレーターです。 Service Fabric には、マイクロサービス アプリケーションをビルドし、実行するためのオプションがあります。 あらゆるフレームワークを利用してサービスを記述したり、複数の環境からアプリケーションを実行する場所を選択したりできます。
+
+## <a name="application-and-service-concepts"></a>アプリケーションとサービスの概念
+
+**Service Fabric Mesh アプリケーション**: Service Fabric Mesh アプリケーションは、[リソース モデル](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources) (YAML および JSON リソース ファイル) によって記述され、Service Fabric が実行される任意の環境にデプロイできます。
+
+**Service Fabric ネイティブ アプリケーション**: Service Fabric ネイティブ アプリケーションは、[ネイティブ アプリケーション モデル](/azure/service-fabric/service-fabric-application-model) (XML ベースのアプリケーションおよびサービス マニフェスト) で示されます。  Service Fabric ネイティブ アプリケーションは、Service Fabric Mesh では実行できません。
+
+**アプリケーション**: Service Fabric Mesh アプリケーションは、Mesh アプリケーションのデプロイ、バージョン管理、有効期間の単位です。 各アプリケーション インスタンスのライフサイクルを個別に管理できます。  アプリケーションは、1 つ以上のサービス コード パッケージと設定で構成されます。 アプリケーションは、Azure Resource Model (RM) スキーマを使用して定義されます。  サービスは、RM テンプレート内でアプリケーション リソースのプロパティとして記述されます。  アプリケーションによって使用されるネットワークとボリュームは、アプリケーションから参照されます。  アプリケーションを作成すると、アプリケーション、サービス、ネットワーク、ボリュームは、Service Fabric Resource Model を使用してモデル化されます。
+
+**サービス**: アプリケーション内のサービスはマイクロサービスを表し、完全なスタンドアロンの機能を実行します。 各サービスは 1 つまたは複数のコード パッケージで構成されます。コード パッケージには、コード パッケージに関連付けられたコンテナー イメージの実行に必要なすべてが示されています。  アプリケーション内のサービス数は、スケールアップまたはスケールダウンすることができます。
+
+**コード パッケージ**: コード パッケージには、以下のようにコード パッケージに関連付けられたコンテナー イメージの実行に必要なすべてが記述されています。
+
+* コンテナー名、バージョン、およびレジストリ
+* 各コンテナーに必要な CPU およびメモリ リソース
+* ネットワーク エンドポイント
+* 別のボリューム リソースを参照して、コンテナーでマウントされるボリューム。
 
 ## <a name="deployment-and-application-models"></a>デプロイとアプリケーション モデル 
 
 サービスをデプロイするには、その実行方法を記述する必要があります。 Service Fabric では、3 つの異なるデプロイ モデルをサポートしています。
 
 ### <a name="resource-model"></a>リソース モデル
-アプリケーション、サービス、ネットワーク、ボリュームなど、Service Fabric に個別にデプロイできるあらゆるものがリソースです。 リソースは、Azure Resource Model スキーマと YAML ファイルまたは JSON ファイルを使用することで定義されます。
-
-リソース モデルは、Service Fabric アプリケーションを記述する最も簡単な方法です。 その中心は、コンテナー化されたサービスの単純なデプロイと管理にあります。
-
-リソースは Service Fabric が実行されているあらゆる場所にデプロイできます。
+Service Fabric リソースは、アプリケーション、サービス、ネットワーク、ボリュームなど、Service Fabric に個別にデプロイできるあらゆるものです。 リソースは、クラスター エンドポイントにデプロイできる JSON ファイルを使用して定義されます。  Service Fabric Mesh では、Azure Resource Model スキーマが使用されます。 YAML ファイル スキーマを使用して、定義ファイルをより簡単に作成することもできます。 リソースは Service Fabric が実行されているあらゆる場所にデプロイできます。 リソース モデルは、Service Fabric アプリケーションを記述する最も簡単な方法です。 その中心は、コンテナー化されたサービスの単純なデプロイと管理にあります。 詳細については、「[Service Fabric リソース モデルの概要](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)」を参照してください。
 
 ### <a name="native-model"></a>ネイティブ モデル
 ネイティブ アプリケーション モデルからアプリケーションに Service Fabric への完全な低レベル アクセスが与えられます。 アプリケーションとサービスは、XML マニフェスト ファイルに登録済みタイプとして定義されます。
 
 ネイティブ モデルは Reliable Services フレームワークに対応しています。このフレームワークは、C# と Java で、Service Fabric ランタイム API とクラスター管理 API へのアクセスを提供します。 ネイティブ モデルは任意のコンテナーと実行可能ファイルにも対応しています。
 
-Service Fabric Mesh 環境では、ネイティブ モデルがサポートされていません。
+Service Fabric Mesh 環境では、ネイティブ モデルがサポートされていません。  詳しくは、[プログラミング モデルの概要](/azure/service-fabric/service-fabric-choose-framework)に関する記事をご覧ください。
 
 ### <a name="docker-compose"></a>Docker Compose 
 [Docker Compose](https://docs.docker.com/compose/) は Docker プロジェクトの一部です。 Service Fabric は、Docker Compose モデルを利用したアプリケーションのデプロイに一部対応していますす。
@@ -57,19 +70,19 @@ Service Fabric はオープンソースのプラットフォーム テクノロ�
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>環境、フレームワーク、デプロイ モデルのサポート マトリックス
 環境が異なると、フレームワークやデプロイ モデルのサポート レベルも異なります。 次の表では、サポートされているフレームワーク/デプロイ モデルの組み合わせをまとめてあります。
 
-| アプリケーションの種類 | 記述モデル | Azure Service Fabric Mesh | Azure サービス クラスター (任意の OS)| ローカル クラスター - Windows | ローカル クラスター - Linux | ローカル クラスター - Mac | スタンドアロン クラスター (Windows)
+| アプリケーションの種類 | 記述モデル | Azure Service Fabric Mesh | Azure Service Fabric クラスター (任意の OS)| ローカル クラスター | スタンドアロン クラスター |
 |---|---|---|---|---|---|---|---|---|---|
-| Service Fabric Mesh アプリケーション | リソース モデル (YAML と JSON) | サポートされています |サポートされていません | サポートされています |サポートされていません | サポートされていません | サポートされていません |
-|Service Fabric ネイティブ アプリケーション | ネイティブ アプリケーション モデル (XML) | サポートされていません| サポートされています|サポートされています|サポートされています|サポートされています|サポートされています|
+| Service Fabric Mesh アプリケーション | リソース モデル (YAML と JSON) | サポートされています |サポートされていません | Windows - サポートされています、Linux と Mac - サポートされていません | Windows - サポートされていません |
+|Service Fabric ネイティブ アプリケーション | ネイティブ アプリケーション モデル (XML) | サポートされていません| サポートされています|サポートされています|Windows - サポートされています|
 
 次の表では、Service Fabric に対してさまざまなアプリケーション モデルとそのツールをまとめています。
 
-| アプリケーションの種類 | 記述モデル | Visual Studio 2017 | Visual Studio 2015 | Eclipse | VS Code | SFCTL | AZ CLI | Powershell
+| アプリケーションの種類 | 記述モデル | Visual Studio | Eclipse | SFCTL | AZ CLI | Powershell|
 |---|---|---|---|---|---|---|---|---|---|
-| Service Fabric Mesh アプリケーション | リソース モデル (YAML と JSON) | サポートされています |サポートされていません |サポートされていません |サポートされていません |サポートされていません | サポートされています - Mesh 環境のみ | サポートされていません
-|Service Fabric ネイティブ アプリケーション | ネイティブ アプリケーション モデル (XML) | サポートされています| サポートされています|サポートされています|サポートされています|サポートされています|サポートされています|サポートされています|
+| Service Fabric Mesh アプリケーション | リソース モデル (YAML と JSON) | VS 2017 |サポートされていません |サポートされていません | サポートされています - Mesh 環境のみ | サポートされていません|
+|Service Fabric ネイティブ アプリケーション | ネイティブ アプリケーション モデル (XML) | VS 2017 と VS 2015| サポートされています|サポートされています|サポートされています|サポートされています|
 
 ## <a name="next-steps"></a>次の手順
 
-Service Fabric Mesh の詳細については、概要ページをお読みください。
-- [Service Fabric Mesh 概要](service-fabric-mesh-overview.md)
+Service Fabric Mesh の詳細については、以下の概要ページを参照してください。
+- [Service Fabric Mesh の概要](service-fabric-mesh-overview.md)

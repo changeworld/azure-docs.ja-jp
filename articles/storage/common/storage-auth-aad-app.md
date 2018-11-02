@@ -1,21 +1,21 @@
 ---
 title: Azure Active Directory を使用して認証を行い、BLOB やキュー データにアプリケーションからアクセスする (プレビュー) |Microsoft Docs
-description: Azure Active Directory を使用してアプリケーション内から認証を行い、Azure Storage リソースへの要求を承認します (プレビュー)。
+description: Azure Active Directory を使用してアプリケーション内から認証を行い、BLOB やキューへの要求を承認します (プレビュー)。
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 10/15/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 6a0b7139fd8d216397090154a4324c8e4305a939
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: d249753dd954ba610a757a88060c6c0f7c58ad95
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816380"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427095"
 ---
-# <a name="authenticate-with-azure-active-directory-from-an-azure-storage-application-preview"></a>Azure Storage アプリケーションから Azure Active Directory で認証を行う (プレビュー)
+# <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>BLOB やキューにアクセスするためにアプリケーションから Azure Active Directory で認証を行う (プレビュー)
 
 Azure Storage で Azure Active Directory (Azure AD) を使用する主な利点は、資格情報をコード内に格納する必要がなくなることです。 代わりに、Azure AD に対して OAuth 2.0 アクセス トークンを要求できます。 Azure AD によって、アプリケーションを実行しているセキュリティ プリンシパル (ユーザー、グループ、またはサービス プリンシパル) の認証が処理されます。 認証が成功すると、Azure AD からアプリケーションにアクセス トークンが返されます。アプリケーションでは、このアクセス トークンを使用して Azure Storage への要求を承認できます。
 
@@ -26,6 +26,10 @@ Azure Storage アプリケーションからセキュリティ プリンシパ�
 OAuth 2.0 コード付与フローの概要については、「[OAuth 2.0 コード付与フローを使用して Azure Active Directory Web アプリケーションへアクセスを承認する](../../active-directory/develop/v1-protocols-oauth-code.md)」を参照してください。
 
 [!INCLUDE [storage-auth-aad-note-include](../../../includes/storage-auth-aad-note-include.md)]
+
+## <a name="assign-an-rbac-role-to-an-azure-ad-security-principal"></a>Azure AD のセキュリティ プリンシパルに RBAC ロールを割り当てる
+
+Azure Storage アプリケーションからセキュリティ プリンシパルの認証を行うには、最初に、そのセキュリティ プリンシパルのロールベースのアクセス制御 (RBAC) 設定を構成します。 コンテナーとキューのアクセス許可を含む RBAC ロールは、Azure Storage によって定義されます。 RBAC ロールがセキュリティ プリンシパルに割り当てられると、そのセキュリティ プリンシパルはそのリソースへのアクセス権を付与されます。 詳しくは、[RBAC を使用した Azure BLOB とキューのデータへのアクセス権の管理 (プレビュー)](storage-auth-aad-rbac.md) に関するページをご覧ください。
 
 ## <a name="register-your-application-with-an-azure-ad-tenant"></a>アプリケーションを Azure AD テナントに登録する
 

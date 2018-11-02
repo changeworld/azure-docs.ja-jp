@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: b604782f917584d1ecec432c20de75f427176ed1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 50d7ca73e5e18f88f5d789e12fc7f26908e8b8f0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
-ms.locfileid: "29132893"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025550"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure 仮想マシンのネットワーク スループットの最適化
 
@@ -155,5 +155,5 @@ Linux Integration Services Version 4.2 for Hyper-V の詳細については、[�
 
 ## <a name="next-steps"></a>次の手順
 * 自分のシナリオで [Azure VM をテストする帯域幅/スループット](virtual-network-bandwidth-testing.md)の最適化された結果を確認します。
-* [仮想マシンに帯域幅が割り当てられる] (virtual-machine-network-throughput.md) 方法についてご覧ください
+* [仮想マシンに帯域幅が割り当てられる方法](virtual-machine-network-throughput.md)に関するページを参照してください
 * 「[Azure Virtual Network についてよく寄せられる質問 (FAQ)](virtual-networks-faq.md)」を参照してください。

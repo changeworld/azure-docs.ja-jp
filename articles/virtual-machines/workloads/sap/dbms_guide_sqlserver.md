@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cefecdf0f87483a1fb544d1eb4e3e514e388259
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 90b4bc17de60baa59d6c159105674468a63d10f9
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406924"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430172"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための SQL Server Azure Virtual Machines DBMS のデプロイ
 
@@ -418,7 +418,7 @@ Azure でのさまざまな SQL Server のバックアップ方法について�
 
 
 ### <a name="automated-backup-for-sql-server"></a>SQL Server の自動バックアップ
-自動バックアップは、Microsoft Azure VM 上で実行されている SQL Server Standard エディションおよび Enterprise エディションの自動バックアップ サービスを提供します。 このサービスは、Azure portal で SQL Server Windows 仮想マシン イメージに自動的にインストールされる [SQL Server IaaS Agent 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)によって提供されます。 SQL Server がインストールされた独自の OS イメージをデプロイする場合は、VM 拡張機能を個別にインストールする必要があります。 必要な手順については、[こちらの記事](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)を参照してください。
+自動バックアップは、Azure 内の Windows VM で実行されている SQL Server Standard エディションおよび Enterprise エディションの自動バックアップ サービスを提供します。 このサービスは、Azure portal で SQL Server Windows 仮想マシン イメージに自動的にインストールされる [SQL Server IaaS Agent 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)によって提供されます。 SQL Server がインストールされた独自の OS イメージをデプロイする場合は、VM 拡張機能を個別にインストールする必要があります。 必要な手順については、[こちらの記事](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension)を参照してください。
 
 この方法の機能の詳細については、次の記事を参照してください。
 

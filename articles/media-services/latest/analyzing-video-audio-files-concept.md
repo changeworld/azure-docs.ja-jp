@@ -9,20 +9,23 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 10/23/2018
 ms.author: juliako
-ms.openlocfilehash: 36c30e11e8b7bd8b3e8ae3e424649998dcfff5bb
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 90aa3551bb9e2d903fb0f66e3a9b464b0f4be928
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380714"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987615"
 ---
 # <a name="analyzing-video-and-audio-files"></a>ビデオおよびオーディオ ファイルの分析
 
 Azure Media Services v3 では、Video Indexer と AMS v3 アナライザー プリセットを使用して、オーディオおよびビデオ ファイルから分析情報を抽出することもできます (この記事で説明します)。 より詳細な分析情報が必要な場合は、Video Indexer を直接使用します。 どのような場合に Video Indexer やMedia Services アナライザー プリセットを使用するかについて詳しくは、[比較のドキュメント](../video-indexer/compare-video-indexer-with-media-services-presets.md)をご覧ください。
 
 Media Services v3 プリセットを使用してコンテンツを分析するには、**Transform** を作成し、プリセット (**AudioAnalyzerPreset** または **VideoAnalyzerPreset** のいずれか) を使用する **Job** を送信します。 「[チュートリアル: Azure Media Services を使用してビデオを分析する](analyze-videos-tutorial-with-api.md)」の記事では、**VideoAnalyzerPreset** を使用する方法を説明します。
+
+> [!NOTE]
+> ビデオ アナライザーまたはオーディオ アナライザーのプリセットを使用する場合は、Azure portal を使用して、10 個の S3 メディア占有ユニットを備えるようアカウントを設定します。 詳細については、[メディア処理のスケーリング](../previous/media-services-scale-media-processing-overview.md)に関するページを参照してください。
 
 ## <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 

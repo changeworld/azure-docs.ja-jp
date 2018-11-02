@@ -1,5 +1,5 @@
 ---
-title: Packer を使用して Windows Azure VM のイメージを作成する方法 | Microsoft Docs
+title: Azure で Packer を使用して Windows VM のイメージを作成する方法 | Microsoft Docs
 description: Packer を使用して Azure に Windows 仮想マシンのイメージを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 03723b8653e42bca371f47e16657e7e973c257ae
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f848c6b654f3378df04d1320d957e76ac5384465
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44294988"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427826"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Packer を使用して Azure に Windows 仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Windows ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどの OS およびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。
@@ -39,11 +39,11 @@ New-AzureRmResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Azure 資格情報の作成
 Packer はサービス プリンシパルを使用して Azure で認証されます。 Azure のサービス プリンシパルは、アプリケーション、サービス、および Packer などのオートメーション ツールで使用できるセキュリティ ID です。 Azure でサービス プリンシパルが実行できる操作を設定するアクセス許可の制御と定義を行います。
 
-[New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) を使用してサービス プリンシパルを作成し、そのサービス プリンシパルにアクセス許可を割り当て、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) を使用してリソースを作成および管理します。
+[New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) を使用してサービス プリンシパルを作成し、そのサービス プリンシパルにアクセス許可を割り当て、[New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) を使用してリソースを作成および管理します。 例の *&lt;password&gt;* は、自分のパスワードに置き換えてください。  
 
 ```powershell
 $sp = New-AzureRmADServicePrincipal -DisplayName "AzurePacker" `
-    -Password (ConvertTo-SecureString "P@ssw0rd!" -AsPlainText -Force)
+    -Password (ConvertTo-SecureString "<password>" -AsPlainText -Force)
 Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```

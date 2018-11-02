@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 51711e3cb0a2e26e8e10590e98414d4d72cc4d59
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: f8b7d2620b5b972c9476332f2b662a891a0b3765
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320579"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49430342"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
 
@@ -541,7 +541,7 @@ Microsoft Azure Virtual Machines では、複数のストレージ タイプが�
 * 非永続的 (揮発性) ストレージ。
 * 永続的ストレージ。
 
-Azure VM は、VM をデプロイした後に非永続ディスクを提供します。 VM が再起動された場合、非永続ドライブ上のすべてのコンテンツは消去されます。そのため、データ ファイルとデータベースのログ/再実行ファイルが、どんな状況でも、非永続ドライブ上にないことが条件になります。 例外として、データベースによっては、tempdb や temp tablespaces などにこれらの非永続ドライブが適している場合があります。 ただし、非永続ドライブのスループットは、その VM ファミリーで制限されているために、A シリーズ VM にはこれらのドライブを使用しないでください。 詳細については、[Windows Azure Virtual Machines 上の一時ドライブ](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)に関する記事を参照してください。
+Azure VM は、VM をデプロイした後に非永続ディスクを提供します。 VM が再起動された場合、非永続ドライブ上のすべてのコンテンツは消去されます。そのため、データ ファイルとデータベースのログ/再実行ファイルが、どんな状況でも、非永続ドライブ上にないことが条件になります。 例外として、データベースによっては、tempdb や temp tablespaces などにこれらの非永続ドライブが適している場合があります。 ただし、非永続ドライブのスループットは、その VM ファミリーで制限されているために、A シリーズ VM にはこれらのドライブを使用しないでください。 詳しくは、「[Understanding the temporary drive on Windows VMs in Azure](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)」(Azure での Windows VM 上の一時ドライブ) をご覧ください
 
 - - -
 > ![Windows][Logo_Windows] Windows

@@ -7,35 +7,33 @@ manager: kamalb
 ms.service: event-hubs
 ms.workload: core
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 10/18/2018
 ms.author: shvija
-ms.openlocfilehash: 413f36a12dee135cc1a7dc99a34d8b7b2be6c46f
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 14ea98b9d31bee08b962e8b3801ed507472ba692
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48801065"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49455795"
 ---
 # <a name="send-events-to-azure-event-hubs-using-nodejs"></a>Node.js を使用して Azure Event Hubs にイベントを送信する
 
-Azure Event Hubs は、拡張性の高いイベント管理システムで、1 秒あたり何百万ものイベントを処理することができます。そのためアプリケーションは、接続されているデバイスや他のシステムによって生成された大量のデータを処理し、分析できます。 イベント ハブに収集されたイベントは、インプロセス ハンドラーを使用するか、他の分析システムに転送して、受信し処理することができます。
+Azure Event Hubs はビッグ データ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスです。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 Event Hubs の詳しい概要については、[Event Hubs の概要](event-hubs-about.md)と [Event Hubs の機能](event-hubs-features.md)に関するページをご覧ください。
 
-Event Hubs について詳しくは、[Event Hubs の概要](event-hubs-about.md)に関する記事をご覧ください。
+このチュートリアルでは、Node.js で書かれたアプリケーションからイベント ハブにイベントを送信する方法について説明します。
 
-このチュートリアルでは、Node.js で書かれたアプリケーションからイベント ハブにイベントを送信する方法について説明します。 Node.js イベント プロセッサ ホスト パッケージを使用してイベントを受信する方法については、[対応する受信の記事](event-hubs-node-get-started-receive.md)をご覧ください。
-
-このクイック スタートのコードは、[GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) で入手できます。 
+> [!NOTE]
+> このクイック スタートをサンプルとして [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client) からダウンロードし、`EventHubConnectionString` と `EventHubName` の文字列を対象のイベント ハブの値に置き換え、実行します。 または、このチュートリアルの手順に従って独自のものを作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
 - Node.js バージョン 8.x 以降。 [https://nodejs.org](https://nodejs.org) から最新の LTS バージョンをダウンロードします。
-- アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント][] を作成してください。
 - Visual Studio Code (推奨) または他の任意の IDE
 
-## <a name="create-a-namespace-and-event-hub"></a>名前空間とイベント ハブを作成する
-最初の手順として、Azure portal を使用して、Event Hubs 名前空間とイベント ハブを作成します。 既存のものがない場合は、[Azure portal を使用して Event Hubs 名前空間とイベント ハブを作成する方法](event-hubs-create.md)に関する記事の手順に従って、これらのエンティティを作成できます。
+## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
+最初の手順では、[Azure Portal](https://portal.azure.com) を使用して Event Hubs 型の名前空間を作成し、アプリケーションがイベント ハブと通信するために必要な管理資格情報を取得します。 名前空間とイベント ハブを作成するには、[こちらの記事](event-hubs-create.md)の手順を実行した後、このチュートリアルに示されている手順に進みます。
 
 ## <a name="clone-the-sample-git-repository"></a>サンプル Git リポジトリを複製する
 サンプルの Git リポジトリを [GitHub](https://github.com/Azure/azure-event-hubs-node) からお使いのコンピューターに複製します。 
@@ -55,7 +53,7 @@ GitHub から[サンプル](https://github.com/Azure/azure-event-hubs-node/tree/
 
 1. Visual Studio Code でプロジェクトを開きます。 
 2. **client** フォルダーに **.env** という名前のファイルを作成します。 ルート フォルダーの **sample.env** からサンプルの環境変数をコピーして貼り付けます。
-3. 自分のイベント ハブの接続文字列、イベント ハブ名、およびストレージ エンドポイントを構成します。 Azure portal 内のイベント ハブ ページの **RootManageSharedAccessKey** の下にある **[接続文字列 - プライマリ キー]** から自分のイベント ハブ用の接続文字列をコピーできます。 詳細な手順については、[接続文字列の取得](event-hubs-quickstart-portal.md#create-an-event-hubs-namespace)に関するページを参照してください。
+3. 自分のイベント ハブの接続文字列、イベント ハブ名、およびストレージ エンドポイントを構成します。 Azure portal 内のイベント ハブ ページの **RootManageSharedAccessKey** の下にある **[接続文字列 – プライマリ]** からご自分のイベント ハブ用の接続文字列をコピーできます。 詳細な手順については、[接続文字列の取得](event-hubs-create.md#create-an-event-hubs-namespace)に関するページを参照してください。
 4. Azure CLI で、**client** フォルダー パスに移動します。 次のコマンドを実行して、ノード パッケージをインストールし、プロジェクトをビルドします。
 
     ```nodejs
@@ -105,12 +103,6 @@ export EVENTHUB_NAME="<your-event-hub-name>"
 ```
 
 ## <a name="next-steps"></a>次の手順
+このクイック スタートでは、Node.js を使用してメッセージをイベント ハブに送信しました。 Node.js を使用してイベント ハブからイベントを受信する方法については、[Node.js を使用してイベント ハブからイベントを受信する方法](event-hubs-node-get-started-receive.md)に関するページをご覧ください。
 
-Event Hubs の詳細については、次の記事を参照してください。
-
-* [Node.js を使用したイベントの受信](event-hubs-node-get-started-receive.md)
-* [GitHub のサンプル](https://github.com/Azure/azure-event-hubs-node/tree/master/client/examples/)
-* [Event Hubs の FAQ](event-hubs-faq.md)
-
-<!-- Links -->
-[無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+Event Hubs に関する他の Node.js のサンプルを [GitHub](https://github.com/Azure/azure-event-hubs-node/tree/master/client/examples/) で確認してください。

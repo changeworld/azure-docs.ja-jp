@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 60139915e8d8dca382f4ef62b5129f1a84e7e80d
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: b207af3bed40f6287f60b25638f3091fa187aa6f
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056711"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405074"
 ---
 # <a name="set-up-and-use-log-analytics-with-a-multitenant-sql-database-saas-app"></a>マルチテナントの SQL Database SaaS アプリで Log Analytics を設定して使用する
 
@@ -42,7 +42,7 @@ Azure SQL Database については、Azure Portal でデータベースとプー
 
 大規模なシナリオでは、監視とアラート設定に Log Analytics を使用できます。 Log Analytics は、潜在的に多くのサービスからワークスペースに集められた診断ログやテレメトリに対する分析を可能にする、別個の Azure サービスです。 Log Analytics には、オペレーション データを分析できるクエリ言語とデータ視覚化ツールが組み込まれています。 SQL Analytics ソリューションには、エラスティック プールとデータベースを監視およびアラートを設定するためのさまざまな定義済みのビューとクエリが用意されています。 Log Analytics には、カスタム ビュー デザイナーも用意されています。
 
-Log Analytics のワークスペースと分析ソリューションは、Azure Portal と Operations Management Suite の両方で開きます。 Azure Portal は新しいアクセス ポイントですが、一部の領域では Operations Management Suite ポータルの背後に配置される場合があります。
+OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。 Log Analytics のワークスペースと分析ソリューションは、Azure portal で開きます。 Azure portal は新しいアクセス ポイントですが、一部の領域では Operations Management Suite ポータルの背後に配置される場合があります。
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>テナントでワークロードをシミュレートしてパフォーマンスの診断データを作成する 
 
@@ -70,12 +70,12 @@ Log Analytics は別個のサービスとして構成する必要があります
 1. PowerShell ISE で、*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\Demo-LogAnalytics.ps1* を開きます。
 1. F5 キーを押してスクリプトを実行します。
 
-これで Azure Portal または Operations Management Suite ポータルで Log Analytics を開くことができます。 Log Analytics ワークスペース内にテレメトリが収集されて視覚化されるまで、数分かかります。 システムが診断データを収集する時間を長くすればするほど、エクスペリエンスの関連性が高くなります。 
+これで、Log Analytics を Azure portal で開くことができます。 Log Analytics ワークスペース内にテレメトリが収集されて視覚化されるまで、数分かかります。 システムが診断データを収集する時間を長くすればするほど、エクスペリエンスの関連性が高くなります。 
 
 ## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Log Analytics と SQL Analytics ソリューションを使用してプールとデータベースを監視する
 
 
-この演習では、Log Analytics と Operations Management Suite ポータルを開き、データベースとプールで収集されるテレメトリを調べます。
+この演習では、Azure portal で Log Analytics を開き、データベースとプールで収集されるテレメトリを調べます。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。 **[すべてのサービス]** を選択して Log Analytics を選択します。 Log Analytics を検索します。
 
@@ -127,9 +127,9 @@ Log Analytics は別個のサービスとして構成する必要があります
 
 1. Log Analytics ワークスペースに戻り、**[OMS ポータル]** を選択して、このポータルでワークスペースを開きます。
 
-    ![Operations Management Suite ポータル タイル](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+    ![Log Analytics ワークスペース](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
-Operations Management Suite ポータルでは、ワークスペース内のログとメトリック データをさらに詳しく調査できます。 
+Log Analytics ワークスペースでは、ログとメトリック データをさらに詳細に調査できます。 
 
 Log Analytics の監視とアラートは、Azure Portal の各リソースで定義されているアラートとは異なり、ワークスペース内のデータに対するクエリに基づいています。 アラートがクエリに基づくようにすることで、すべてのデータベースを対象とする単一のアラートを定義でき、データベース別に 1 つずつアラートを定義する必要はありません。 クエリは、ワークスペースで利用可能なデータによってのみ制限されます。
 

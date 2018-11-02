@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6a2a72f46c4d5faacb7d5871f4c917a5cd578e96
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: f5ba6a001f8933283e0867367ef7bd8d3918c3fd
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34809167"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405380"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure のセキュリティとコンプライアンスのブループリント: FedRAMP のための IaaS Web アプリケーション
 
@@ -72,7 +72,7 @@ ms.locfileid: "34809167"
 - Azure Key Vault
 - Azure Active Directory (Azure AD)
 - Azure Resource Manager
-- Operations Management Suite (OMS)
+- Log Analytics
 - Azure Monitor
 
 ## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
@@ -81,7 +81,7 @@ ms.locfileid: "34809167"
 
 **要塞ホスト**: 要塞ホストは、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供する、単一のエントリ ポイントです。 要塞ホストの NSG は、TCP ポート 3389 のみで RDP 接続を許可します。 お客様は、組織のシステム セキュリティ強化要件を満たすために要塞ホストをさらに詳細に構成できます。
 
-### <a name="virtual-network"></a>Virtual network
+### <a name="virtual-network"></a>仮想ネットワーク
 このアーキテクチャは、10.200.0.0/16 のアドレス空間 を使用してプライベート仮想ネットワークを定義します。
 
 **ネットワーク セキュリティ グループ**: このソリューションは、分離された Web サブネット、データベース サブネット、Active Directory サブネット、管理サブネットを持つアーキテクチャの仮想ネットワーク内にリソースをデプロイします。 サブネット間のトラフィックをシステムと管理機能に必要なものだけに制限するために、個々のサブネットに適用されるネットワーク セキュリティ グループの規則に従って、サブネットが論理的に分離されます。
@@ -148,18 +148,18 @@ ms.locfileid: "34809167"
 
 ### <a name="logging-and-auditing"></a>ログ記録と監査
 
-OMS は、システムの正常性だけではなく、システムとユーザーのアクティビティを詳細に記録します。 OMS [Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
+Log Analytics は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 [Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
 
 - **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) は、サブスクリプションのリソースに対して実行された操作に関する知見を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、状態の判断に役立ちます。
 - **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)は、リソースによって出力されるすべてのログです。 これらのログには、Windows イベント システム ログ、Azure ストレージ ログ、Key Vault 監査ログ、および Application Gateway のアクセス ログとファイアウォール ログが含まれます。
 - **ログのアーカイブ**: すべての診断ログは、暗号化され、集中管理された Azure Storage アカウントに書き込まれ、アーカイブされます。 リテンション期間には、組織固有の保有要件を満たすために最長 730 日までの日数をユーザーが設定できます。 これらのログは、処理、格納、およびダッシュボードのレポート化を行うために、Azure Log Analytics に接続されます。
 
-さらに、このアーキテクチャの一部として、次の OMS ソリューションがインストールされます。 これらのソリューションは、FedRAMP セキュリティ統制に適合するよう、お客様の責任で設定してください。
+さらに、このアーキテクチャの一部として、次の監視ソリューションがインストールされます。 これらのソリューションは、FedRAMP セキュリティ統制に適合するよう、お客様の責任で設定してください。
 -   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Active Directory 正常性チェックのソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
 -   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): このマルウェア対策ソリューションは、マルウェア、脅威、および保護の状態に関する報告を行います。
 -   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation ソリューションは、Runbook の格納、実行、および管理を行います。
 -   [セキュリティおよび監査](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started): セキュリティおよび監査のダッシュ ボードは、セキュリティ ドメイン、注意が必要な問題、検出、脅威に関する知識、および一般的なセキュリティの照会に関するメトリックを提供することで、リソースのセキュリティ ステータスに対する高度な分析情報を提供します。
--   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): この SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
+-   [SQL Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-sql-assessment): この SQL 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧をお客様に提供します。
 -   [Update Management](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management): Update Management ソリューションは、利用可能な更新プログラムの状態や必要な更新プログラムのインストール プロセスなど、オペレーティング システムのセキュリティ更新プログラムを管理できるようにします。
 -   [Agent Health](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-agenthealth): Agent Health ソリューションは、デプロイされたエージェント数とその地理的配置に加え、応答しないエージェント数やオペレーショナル データを送信しているエージェント数を報告します。
 -   [Azure Activity Logs](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity): Activity Log Analytics ソリューションは、すべての Azure サブスクリプションにわたる Azure アクティビティ ログの分析に役立ちます。
@@ -198,7 +198,7 @@ OMS は、システムの正常性だけではなく、システムとユーザ�
 ### <a name="vpn-and-expressroute"></a>VPN と ExpressRoute
 この IaaS Web アプリケーションの参照アーキテクチャの一部としてデプロイされるリソースへの接続を安全に確立するために、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) またはセキュリティ保護された VPN トンネルを構成する必要があります。 ExpressRoute または VPN を適切に設定することで、転送中のデータに対して保護のレイヤーを追加できます。
 
-Azure を使用してセキュリティ保護された VPN トンネルを実装することにより、オンプレミス ネットワークと Azure 仮想ネットワークの間で仮想プライベート接続を作成できます。 この接続はインターネットをまたいでいるため、自社ネットワークと Azure の間の暗号化されたリンクの "トンネル" を通して情報を送信できます。 サイト間 VPN は、数十年にわたってあらゆる規模の企業に導入されている安全で成熟したテクノロジです。 このオプションでは、暗号化メカニズムとして [IPsec トンネル モード](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))が使用されています。
+Azure を使用してセキュリティ保護された VPN トンネルを実装することにより、オンプレミス ネットワークと Azure 仮想ネットワークの間で仮想プライベート接続を作成できます。 この接続はインターネットをまたいでいるため、お客様は自社ネットワークと Azure の間の暗号化されたリンクの "トンネル" を通して情報を送信できます。 サイト間 VPN は、数十年にわたってあらゆる規模の企業に導入されている安全で成熟したテクノロジです。 このオプションでは、暗号化メカニズムとして [IPsec トンネル モード](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10))が使用されています。
 
 VPN トンネル内のトラフィックはサイト間 VPN を使用してインターネット上を転送されるため、Microsoft は、さらに高いセキュリティで保護されたもう 1 つの接続オプションを提供します。 Azure ExpressRoute は、オンプレミスの場所または Exchange ホスティング プロバイダーと Azure の間に確立される専用 WAN リンクです。 ExpressRoute 接続はインターネットを経由しないため、これらの接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 さらに、これはお客様の通信プロバイダーの直接接続であり、データがインターネット上を移動しないため、インターネットに公開されることはありません。
 

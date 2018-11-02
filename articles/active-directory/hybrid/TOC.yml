@@ -139,6 +139,8 @@ items:
       href: how-to-connect-azureadaccount.md
     - name: AD DS コネクタ アカウントのパスワードの変更
       href: how-to-connect-sync-change-addsacct-pass.md
+    - name: ADConnectivityTools PowerShell モジュールとは
+      href: how-to-connect-adconnectivitytools.md
   - name: フェデレーション サービスを管理する
     items:
     - name: Azure AD Connect とのフェデレーションとは
@@ -291,9 +293,17 @@ items:
     href: reference-connect-sync-functions-reference.md
   - name: Azure AD のフェデレーション互換性リスト
     href: how-to-connect-fed-compatibility.md
-ms.openlocfilehash: e5d89e467b9dd6b41e246c889f41ad9abe21182b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+  - name: TLS 1.2 の適用
+    href: reference-connect-tls-enforcement.md
+  - name: ADSyncConfig リファレンス
+    href: reference-connect-adsyncconfig.md
+  - name: ADSyncTools リファレンス
+    href: reference-connect-adsynctools.md
+  - name: ADConnectivityTools リファレンス
+    href: reference-connect-adconnectivitytools.md
+ms.openlocfilehash: e5eaaa3446db7af705825e74a456770a4e981915
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249673"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414014"

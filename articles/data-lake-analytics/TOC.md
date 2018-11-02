@@ -64,6 +64,7 @@
 
 ## 継続的インテグレーションと継続的配置
 ### [概要](data-lake-analytics-cicd-overview.md)
+### [アセンブリの登録](data-lake-analytics-cicd-manage-assemblies.md)
 ### [テストの設定](data-lake-analytics-cicd-test.md)
 ### [U-SQL SDK](data-lake-analytics-u-sql-sdk.md)
 

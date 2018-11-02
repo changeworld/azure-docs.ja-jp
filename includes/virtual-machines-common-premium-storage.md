@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: a05d0c623c1abdb5713c1d49b0b577298c1d6c7d
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 97e4e670d5db646cea28cb30e9ca95633cea2a8a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49347024"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49437088"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 向けの高パフォーマンスの Premium Storage とマネージド ディスク
 
@@ -151,7 +151,11 @@ Premium Storage アカウントのスケーラビリティ ターゲットは、
 ### <a name="premium-storage-disk-limits"></a>Premium Storage ディスクの制限
 Premium Storage ディスクをプロビジョニングする場合、ディスクのサイズによって最大 IOPS とスループット (帯域幅) が決まります。 Azure では、Premium Storage ディスクとして P4 (Managed Disks のみ)、P6 (Managed Disks のみ)、P10、P15 (Managed Disks のみ)、P20、P30、P40、P50 の 8 種類の GA を提供しています。 プレビュー段階の 3 つのディスク サイズ (P60、P70、P80) もあります。 Premium Storage ディスクの種類それぞれには、IOPS とスループットに関する固有の制限があります。 ディスクの種類の制限については、次の表で説明します。
 
-| Premium ディスクの種類  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | P60   | P70   | P80   | |---------------------|-------|-------|-------|-------|-------|-------|-------|-------||-------||-------||-------| | ディスク サイズ           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32,767 GiB (32 TiB)    | | ディスクあたりの IOPS       | 120   | 240   | 500   | 1100   | 2300              | 5000              | 7500              | 7500              | 12,500              | 15,000              | 20,000              | | ディスクあたりのスループット | 25 MB/秒  | 50 MB/秒  | 100 MB/秒 | 125 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 480 MB/秒 | 750 MB/秒 | 750 MB/秒 |
+| Premium ディスクの種類  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60             | P70                | P80                |
+|---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
+| ディスク サイズ           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 GiB (1 TiB) | 2048 GiB (2 TiB)| 4095 GiB (4 TiB)| 8192 GiB (8 TiB)| 16,384 GiB (16 TiB)| 32,767 GiB (32 TiB)|
+| ディスクあたりの IOPS       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12,500          | 15,000             | 20,000             |
+| ディスクあたりのスループット | 25 MB/秒 | 50 MB/秒 | 100 MB/秒 | 125 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 | 480 MB/秒 | 750 MB/秒 | 750 MB/秒 |
 
 > [!NOTE]
 > [Premium Storage でサポートされる VM](#premium-storage-supported-vms) に関するセクションの説明に従って、ディスク トラフィックを促進するために、VM で十分な帯域幅を使用できることを確認してください。 確認できない場合、ディスクのスループットと IOPS の値は低くなります。 スループットと IOPS の最大値は、上記の表で説明したディスクの制限ではなく、VM の制限に基づきます。  

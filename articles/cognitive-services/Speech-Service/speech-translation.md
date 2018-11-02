@@ -1,26 +1,27 @@
 ---
 title: Speech Translation について
+titlesuffix: Azure Cognitive Services
 description: Speech Translation の機能の概要を説明します。
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/28/2018
 ms.author: erhopf
-ms.openlocfilehash: f3c22589270ccee2c60ca5ea5b15047d9c81fabe
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: af363a45ab113d89c7aad7a38c6e10d335bc6035
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165439"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469145"
 ---
 # <a name="about-the-speech-translation-api"></a>Speech Translation API について
 
-Microsoft Speech API を使用すると、音声のエンド ツー エンドでリアルタイムの多言語翻訳機能を、アプリケーション、ツール、デバイスに追加することができます。 同じ API を、音声間の翻訳と、音声テキスト変換の両方に使用できます。
+Speech Service API を使用すると、音声のエンド ツー エンドでリアルタイムの多言語翻訳機能を、アプリケーション、ツール、デバイスに追加することができます。 同じ API を、音声間の翻訳と、音声テキスト変換の両方に使用できます。
 
-Microsoft Translator Speech API では、クライアント アプリケーションは、サービスに音声オーディオをストリーミングし、結果のストリームを受け取ります。 これらの結果には、ソース言語での認識されたテキストと、ターゲット言語での翻訳が含まれます。 発話が完了するまでは中間翻訳を提供でき、完了した時点で最終的な翻訳を提供できます。
+Translator Speech API では、クライアント アプリケーションは、サービスに音声オーディオをストリーミングし、結果のストリームを受け取ります。 これらの結果には、ソース言語での認識されたテキストと、ターゲット言語での翻訳が含まれます。 発話が完了するまでは中間翻訳を提供でき、完了した時点で最終的な翻訳を提供できます。
 
 必要に応じて、最終的な翻訳の合成オーディオ バージョンを準備して、真の音声間翻訳を実現できます。
 

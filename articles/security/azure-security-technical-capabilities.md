@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: eab55f6e2bf909ccdbdb30a8ced34dbc58d3954a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 862143aec0ac54abb3c62677c5a1ab1c15007edb
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721332"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405567"
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 
@@ -199,7 +199,7 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 
 **データを保存するすべての場所を特定する**
 
-保存データの暗号化の目的は、すべてのデータを暗号化することです。 これにより、重要なデータや保持されているすべての場所が失われる可能性がなくなります。アプリケーションによって格納されたすべてのデータを列挙します。 
+保存データの暗号化の目的は、すべてのデータを暗号化することです。 これにより、重要なデータや保持されているすべての場所が失われる可能性がなくなります。 アプリケーションによって格納されたすべてのデータを列挙します。 
 
 > [!Note] 
 > "アプリケーション データ" や "PII" だけでなく、アカウント メタデータ (サブスクリプション マッピング、コントラクト情報、PII) などのアプリケーションに関連するすべてのデータが対象です。
@@ -327,7 +327,7 @@ Web アプリケーション ファイアウォールで保護される一般的
 
 - [クライアントの IP アドレスによってアプリへのアクセスを制限する](http://microsoftazurewebsitescheatsheet.info/#filtering-traffic-by-ip)
 
-- [クライアントの動作 (要求の頻度と同時実行) によってアプリへのアクセスを制限する](http://microsoftazurewebsitescheatsheet.info/#dynamic-ip-restrictions)
+- [クライアントの動作 (要求の頻度とコンカレンシー) によってアプリへのアクセスを制限する](http://microsoftazurewebsitescheatsheet.info/#dynamic-ip-restrictions)
 
 - [Tinfoil Security Scanning を使って Web アプリ コードをスキャンして脆弱性を検出する](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)
 
@@ -398,17 +398,17 @@ Azure Cloud Services および 仮想マシン に対する Microsoft マルウ�
 
 Azure で運用可能なセキュリティは、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、およびサイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワーク上に構築されています。
 
-### <a name="microsoft-operations-management-suiteoms"></a>Microsoft Operations Management Suite (OMS)
+### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
 
-[Microsoft Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、ハイブリッド クラウド向けの IT 管理ソリューションです。 OMS は単独で使用されるかまたは System Center の既存のデプロイを拡張するために使用され、インフラストラクチャをクラウドベースで管理するための柔軟な制御を最大限に実現します。
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、ハイブリッド クラウド向けの IT 管理ソリューションです。 Log Analytics は単独で使用されるかまたは System Center の既存のデプロイを拡張するために使用され、インフラストラクチャをクラウドベースで管理するための柔軟な制御を最大限に実現します。
 
-![Microsoft Operations Management Suite (OMS)](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-OMS を使用すれば、オンプレミス型、Azure、AWS、Windows Server、Linux、VMware、OpenStack など、あらゆるクラウドのインスタンスを競合ソリューションよりも低コストで管理できます。 クラウド中心に構築された OMS は、新しいビジネス課題に対応し、新しいワークロード、アプリケーション、およびクラウド環境にも対応する最も高速でコスト効率の良い新たな企業の管理方法を提供します。
+Log Analytics を使用すれば、オンプレミス型、Azure、AWS、Windows Server、Linux、VMware、OpenStack など、あらゆるクラウドのインスタンスを競合ソリューションよりも低コストで管理できます。 クラウド中心に構築された Log Analytics は、新しいビジネス課題に対応し、新しいワークロード、アプリケーション、およびクラウド環境にも対応する最も高速でコスト効率の良い新たな企業の管理方法を提供します。
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) は、管理対象のリソースから中央リポジトリにデータを収集する OMS の監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
+[Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) は、管理対象リソースから中央リポジトリにデータを収集する監視サービスです。 このデータには、API 経由で提供されたイベント、パフォーマンス データ、カスタム データが含まれます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。
 
 ![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 

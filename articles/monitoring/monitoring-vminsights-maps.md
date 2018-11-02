@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: magoedte
-ms.openlocfilehash: e75409e791c00dc0a5bec591aecfbaa019df8f81
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 8641b6cfb14bceb248cc587095a9d3469ce2c9e0
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225164"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402151"
 ---
 # <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>VM 用 Azure Monitor のマップを使用したアプリケーション コンポーネントの理解
-Azure 環境で実行されている Windows および Linux 仮想マシン上の検出されたアプリケーション コンポーネントの表示は、VM 用 Azure Monitor を使用して仮想マシンから直接、または Azure Monitor から VM のグループを経由しての 2 の方法で観察できます。 
+VM 用 Azure Monitor を使用して、Azure で実行されている Windows および Linux 仮想マシン上で検出されたアプリケーション コンポーネントを表示することで、環境を監視できます。仮想マシンから VM 用 Azure Monitor に直接アクセスする方法と、Azure Monitor から仮想マシンのグループ全体の情報を表示する方法があります。 
 
 この記事は、2 つの視点でのエクスペリエンスとマップ機能の使用方法を理解するうえで役立ちます。 VM の Azure Monitor の構成については、[VM の Azure Monitor の有効化](monitoring-vminsights-onboard.md)に関する記事をご覧ください。
 
@@ -44,7 +44,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ![[プロパティ] ウィンドウのログ検索の一覧](./media/monitoring-vminsights-maps/properties-pane-logs-01.png)
 
-"*ログ*" を閉じると、**[プロパティ]** ウィンドウに戻ります。**[アラート]** を選択すると、正常性基準に基づいて VM で発生したアラートが表示されます。 マップが Azure アラートと統合され、選択された時間範囲内に選択されたサーバーで発生したアラートが表示されます。 最新のアラートがある場合はサーバーにアイコンが表示され、[Machine Alerts]\(マシンのアラート\) ウィンドウにアラートが一覧表示されます。 
+"*ログ*\*" を閉じると、**[プロパティ]** ウィンドウに戻ります。**[アラート]** を選択すると、正常性基準に基づいて VM で発生したアラートが表示されます。 マップが Azure アラートと統合され、選択された時間範囲内に選択されたサーバーで発生したアラートが表示されます。 最新のアラートがある場合はサーバーにアイコンが表示され、[Machine Alerts]\(マシンのアラート\) ウィンドウにアラートが一覧表示されます。 
 
 ![[プロパティ] ウィンドウのマシンのアラート](./media/monitoring-vminsights-maps/properties-pane-alerts-01.png)
 
@@ -107,7 +107,9 @@ Azure Monitor からマップ機能にアクセスすると、仮想マシンと
 
 ![Azure Monitor のマルチ VM マップの概要](./media/monitoring-vminsights-maps/map-multivm-azure-monitor-01.png)
 
-複数の Log Analytics ワークスペースがある場合は、ページの上部にある**ワークスペース** セレクターから、ソリューションと統合され、ソリューションに報告する仮想マシンがあるワークスペースを選択します。  次に、**グループ** セレクターからサブスクリプションまたはリソース グループを選択して、指定した期間で、そのグループに一致する一連の VM とその依存関係を表示します。  既定では、マップには過去 30 分間の情報が表示されます。  **時間範囲**セレクターを使用して、過去の時間範囲 (最大 1 時間) でクエリを実行すると、過去 (インシデントの発生中や変更が行われる前など) の依存関係を表示できます。   
+複数の Log Analytics ワークスペースがある場合は、ページ上部の**ワークスペース** セレクターから、ソリューションともに使用でき、なおかつソリューションに報告する仮想マシンがあるワークスペースを選択します。 **グループ** セレクターでは、選択したワークスペースに関連するコンピューターのサブスクリプション、リソース グループ、[コンピューター グループ](../log-analytics/log-analytics-computer-groups.md)、および VM スケール セットが返されます。 この選択が適用されるのは、マップ機能のみで、パフォーマンスやマップには引き継がれません。
+
+既定では、マップには過去 30 分間の情報が表示されます。 **時間範囲**セレクターを使用して、過去の時間範囲 (最大 1 時間) でクエリを実行すると、過去 (インシデントの発生中や変更が行われる前など) の依存関係を表示できます。   
 
 ## <a name="next-steps"></a>次の手順
 正常性機能の使用方法については、[Azure VM の正常性の表示](monitoring-vminsights-health.md)に関する記事をご覧ください。また、VM のパフォーマンスによってボトルネックや全体的な使用状況を確認する方法については、[VM 用 Azure Monitor でのパフォーマンスの表示](monitoring-vminsights-performance.md)に関する記事をご覧ください。 

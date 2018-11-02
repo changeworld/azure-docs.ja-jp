@@ -1,27 +1,35 @@
 ---
 title: Azure Batch 文字起こし API
-description: サンプル
+titlesuffix: Azure Cognitive Services
+description: 大量のオーディオ コンテンツの文字起こしに関するサンプルです。
 services: cognitive-services
 author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: Speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 8f9a033ebf9cdfdb96ae8511b14202e49ec0a85e
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: e7523bf97d6252422ebb853b818453c935640f50
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884461"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648804"
 ---
 # <a name="batch-transcription"></a>バッチ文字起こし
 
-Batch 文字起こしは大量のオーディオがある場合に最適です。 URI でオーディオ ファイルを指定して、文字起こしを非同期モードで受け取ることができます。
+Batch 文字起こしはストレージ内に大量のオーディオがある場合に最適です。 この REST API を使用すると、SAS URI でオーディオ ファイルを示して、非同期に文字起こしを受け取ることができます。
 
 ## <a name="batch-transcription-api"></a>バッチ文字起こし API
 
-Batch 文字起こし API では、音声からテキストへの非同期文字起こしと他の機能が提供されます。
+Batch 文字起こし API では、音声からテキストへの非同期文字起こしと他の機能が提供されます。 次のためのメソッドを公開する REST API です。
+
+1. バッチ処理要求の作成
+
+2. クエリの状態 
+
+3. 文字起こしのダウンロード
 
 > [!NOTE]
 > Batch 文字起こし API は、何千時間ものオーディオがたまるのが普通なコール センターに理想的です。 この API は "ファイア アンド フォーゲット" の方針に従い、大量のオーディオ録音を簡単に文字起こしできます。
@@ -95,78 +103,77 @@ Speech Service の他の機能と同様に、[使用開始ガイド](get-started
         }
 ```
 
-トークンを取得した後、文字起こしが必要なオーディオ ファイルを指す SAS URI を指定する必要があります。 コードの残りでは、状態を反復処理し、結果を表示します。
+トークンを取得した後、文字起こしが必要なオーディオ ファイルを指す SAS URI を指定する必要があります。 コードの残りでは、状態を反復処理し、結果を表示します。 最初に、使用する キー、リージョン、モデルと、SA を設定します。 これを次のコード スニペットに示します。 次に、クライアントと POST 要求をインスタンス化します。 
 
 ```cs
-   static async Task TranscribeAsync()
-        { 
             private const string SubscriptionKey = "<your Speech subscription key>";
             private const string HostName = "westus.cris.ai";
             private const int Port = 443;
     
+            // SAS URI 
+            private const string RecordingsBlobUri = "some SAS URI";
+
+            // adapted model Ids
+            private static Guid AdaptedAcousticId = new Guid("some guid");
+            private static Guid AdaptedLanguageId = new Guid("some guid");
+
             // Creating a Batch transcription API Client
             var client = CrisClient.CreateApiV2Client(SubscriptionKey, HostName, Port);
             
-            var transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
-
             var transcriptionLocation = await client.PostTranscriptionAsync(Name, Description, Locale, new Uri(RecordingsBlobUri), new[] { AdaptedAcousticId, AdaptedLanguageId }).ConfigureAwait(false);
+```
 
-            // get the transcription Id from the location URI
-            var createdTranscriptions = new List<Guid>();
-            createdTranscriptions.Add(new Guid(transcriptionLocation.ToString().Split('/').LastOrDefault()))
+要求が行われたので、ユーザーはクエリを行って、文字起こしの結果をダウンロードできます (コード スニペット参照)。
 
-            while (true)
+```cs
+  
+            // get all transcriptions for the user
+            transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
+
+            // for each transcription in the list we check the status
+            foreach (var transcription in transcriptions)
             {
-                // get all transcriptions for the user
-                transcriptions = await client.GetTranscriptionAsync().ConfigureAwait(false);
-                completed = 0; running = 0; notStarted = 0;
-
-                // for each transcription in the list we check the status
-                foreach (var transcription in transcriptions)
+                switch(transcription.Status)
                 {
-                    switch(transcription.Status)
-                    {
-                        case "Failed":
-                        case "Succeeded":
+                    case "Failed":
+                    case "Succeeded":
 
                             // we check to see if it was one of the transcriptions we created from this client.
-                            if (!createdTranscriptions.Contains(transcription.Id))
-                            {
-                                // not creted form here, continue
-                                continue;
-                            }
+                        if (!createdTranscriptions.Contains(transcription.Id))
+                        {
+                            // not creted form here, continue
+                            continue;
+                        }
                             
-                            completed++;
+                        completed++;
                             
-                            // if the transcription was successfull, check the results
-                            if (transcription.Status == "Succeeded")
-                            {
-                                var resultsUri = transcription.ResultsUrls["channel_0"];
-                                WebClient webClient = new WebClient();
-                                var filename = Path.GetTempFileName();
-                                webClient.DownloadFile(resultsUri, filename);
-                                var results = File.ReadAllText(filename);
-                                Console.WriteLine("Transcription succedded. Results: ");
-                                Console.WriteLine(results);
-                            }
-                            break;
-                        case "Running":
-                            running++;
-                            break;
-                        case "NotStarted":
-                            notStarted++;
-                            break;
+                        // if the transcription was successfull, check the results
+                        if (transcription.Status == "Succeeded")
+                        {
+                            var resultsUri = transcription.ResultsUrls["channel_0"];
+                            WebClient webClient = new WebClient();
+                            var filename = Path.GetTempFileName();
+                            webClient.DownloadFile(resultsUri, filename);
+                            var results = File.ReadAllText(filename);
+                            Console.WriteLine("Transcription succedded. Results: ");
+                            Console.WriteLine(results);
+                        }
+                    
+                    break;
+                    case "Running":
+                    running++;
+                     break;
+                    case "NotStarted":
+                    notStarted++;
+                    break;
+                    
                     }
                 }
-
-                Console.WriteLine(string.Format("Transcriptions status: {0} completed, {1} running, {2} not started yet", completed, running, notStarted));
-
-                await Task.Delay(TimeSpan.FromSeconds(5)).ConfigureAwait(false);
             }
-
-            Console.WriteLine("Press any key...");
         }
 ```
+
+この [Swagger ドキュメント](https://westus.cris.ai/swagger/ui/index)では、上記の呼び出しの完全な詳細がわかります。 ここで示した完全なサンプルは、[GitHub](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI) にあります。
 
 > [!NOTE]
 > 上のコードで示されているサブスクリプション キーは、Azure portal で作成する Speech リソースからのキーです。 Custom Speech Service リソースから取得したキーでは動きません。

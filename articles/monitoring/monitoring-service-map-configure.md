@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: daseidma;bwren
-ms.openlocfilehash: a68c35ba2f740720e3d7940d6fafa2dcfe183589
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 70cf6fe1e2256ba2ed58d020111669e59d9db56b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064375"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405516"
 ---
 # <a name="configure-service-map-in-azure"></a>Azure で Service Map を構成する
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すれば、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -138,22 +138,22 @@ Service Map は、Microsoft Dependency Agent からデータを取得します�
 | System Center Operations Manager 管理グループ | [はい] | Service Map は、接続された [System Center Operations Manager 管理グループ](../log-analytics/log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br>System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 |
 | Azure ストレージ アカウント | いいえ  | Service Map はエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
-Windows では、監視データの収集と送信のために System Center Operations Manager と Log Analytics の両方で Microsoft Monitoring Agent (MMA) が使用されます。 (このエージェントは、状況に応じて、System Center Operations Manager エージェント、OMS エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます)。System Center Operations Manager と Log Analytics では、MMA のすぐに使用できるバージョンが異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Log Analytics、またはその両方にレポートできます。  
+Windows では、監視データの収集と送信のために System Center Operations Manager と Log Analytics の両方で Microsoft Monitoring Agent (MMA) が使用されます。 (このエージェントは、状況に応じて、System Center Operations Manager エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます)。System Center Operations Manager と Log Analytics では、MMA のすぐに使用できるバージョンが異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Log Analytics、またはその両方にレポートできます。  
 
 Linux では、Linux の Log Analytics エージェントが監視データを収集して Log Analytics に送信します。 Service Map は、Log Analytics エージェントがサービスに直接接続されているサーバーまたは Log Analytics と統合された Operations Manager 管理グループの管理下にあるサーバーで使用できます。  
 
 Linux または Windows が System Center Operations Manager 管理グループに接続されているか Log Analytics に直接接続されているかに関係なく、この記事ではすべてのエージェントを "*Log Analytics エージェント*" と呼びます。 
 
-サービス マップ エージェントがデータを送信することはないため、ファイアウォールやポートを変更する必要はありません。 Service Map 内のデータは、常に Log Analytics エージェントによって、直接または OMS ゲートウェイを使用して Log Analytics サービスに送信されます。
+サービス マップ エージェントがデータを送信することはないため、ファイアウォールやポートを変更する必要はありません。 Service Map 内のデータは、常に Log Analytics エージェントによって、直接または Log Analytics ゲートウェイを使用して Log Analytics サービスに送信されます。
 
 ![Service Map エージェント](media/monitoring-service-map/agents.png)
 
 Log Analytics に管理グループが接続されている System Center Operations Manager ユーザーである場合は次のとおりです。
 
 - System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできる場合は、追加の構成は必要ありません。  
-- System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできない場合は、System Center Operations Manager を操作するために OMS ゲートウェイを構成する必要があります。
+- System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできない場合は、System Center Operations Manager を操作するために Log Analytics ゲートウェイを構成する必要があります。
   
-Windows または Linux コンピューターがサービスに直接接続できない場合は、OMS ゲートウェイを使用して Log Analytics に接続するように Log Analytics エージェントを構成する必要があります。 OMS ゲートウェイをデプロイおよび構成する方法の詳細については、「[インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って接続する](../log-analytics/log-analytics-oms-gateway.md)」を参照してください。  
+Windows または Linux コンピューターがサービスに直接接続できない場合は、ゲートウェイを使用して Log Analytics ワークスペースに接続するように Log Analytics エージェントを構成する必要があります。 Log Analytics ゲートウェイをデプロイおよび構成する方法の詳細については、「[インターネットにアクセスできないコンピューターを Log Analytics ゲートウェイを使って接続する](../log-analytics/log-analytics-oms-gateway.md)」を参照してください。  
 
 ### <a name="management-packs"></a>管理パック
 Service Map が Log Analytics ワークスペースでアクティブになると、300 KB の管理パックがそのワークスペース内のすべての Windows サーバーに転送されます。 System Center Operations Manager エージェントを[接続された管理グループ](../log-analytics/log-analytics-om-agents.md)で使用している場合は、Service Map 管理パックが System Center Operations Manager からデプロイされます。 

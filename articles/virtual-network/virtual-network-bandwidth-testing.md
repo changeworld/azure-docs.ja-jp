@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: d65b86cc63a4fd39824a6421afd5ce9abb7fd270
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 45efaebb9539c4c0e2542966df6ab890b64d12ee
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
-ms.locfileid: "28200981"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50023825"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>帯域幅/スループットのテスト (NTTTCP)
 
@@ -29,11 +29,10 @@ ms.locfileid: "28200981"
 
 #### <a name="deploying-vms-for-testing"></a>テスト用の VM のデプロイ
 このテストの目的を達成するには、2 つの VM が同じクラウド サービス内にあるか同じ可用性セット内に含まれている必要があります。これは、内部 IP アドレスの使用と、ロード バランサーのテストからの除外を行えるようにするためです。 VIP を使用してテストすることは可能ですが、この種類のテストはこのドキュメントの範囲外です。
- 
+ 
 受信側の IP アドレスをメモしておきます。 その IP を "a.b.c.r" と呼びましょう。
 
-VM 上のコアの数をメモしておきます。 これを "\#num\_cores" と呼びましょう。
- 
+VM 上のコアの数をメモしておきます。 これを "\#num\_cores" と呼びましょう。 
 送信側 VM と 受信側 VM で、NTTTCP テストを 300 秒間 (5 分間) 実行します。
 
 ヒント: このテストを初めて設定するときは、フィードバックをすぐに取得するために、もっと短い時間でテストを実行できます。 ツールが想定どおりに動作したら、最も正確な結果を得るために、テスト時間を 300 秒に延長します。
@@ -54,9 +53,9 @@ VM 上のコアの数をメモしておきます。 これを "\#num\_cores" と
 
 #### <a name="get-ntttcp-onto-the-vms"></a>VM 上に NTTTCP を取得する
 
-<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769> から最新バージョンをダウンロードします。
+最新バージョンをダウンロードする: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
 
-移動している場合は、<https://www.bing.com/search?q=ntttcp+download>\< で検索します。1 番目のの検索結果として表示されるはずです。
+または移動済みの場合は検索する: <https://www.bing.com/search?q=ntttcp+download>\< -- 最初に検出されるはずです
 
 NTTTCP は、独立したフォルダー (C:\\tools など) に配置することを検討してください。
 
@@ -67,7 +66,7 @@ NTTTCP は、独立したフォルダー (C:\\tools など) に配置するこ�
 
 netsh advfirewall firewall add rule program=\<パス\>\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
-たとえば、ntttcp.exe を "C:\\tools" フォルダーにコピーした場合、このコマンドは次のようになります。 
+たとえば、ntttcp.exe を "c:\\tools" フォルダーにコピーした場合、このコマンドは次のようになります。 
 
 netsh advfirewall firewall add rule program=c:\\tools\\ntttcp.exe name="ntttcp" protocol=any dir=in action=allow enable=yes profile=ANY
 
@@ -84,32 +83,32 @@ ntttcp -r –m 8,\*,10.0.0.4 -t 300
 
 送信側で NTTTCP を開始します (PowerShell からではなく **CMD から実行**します)。
 
-ntttcp -s –m 8,\*,10.0.0.4 -t 300 
+ntttcp -s –m 8,\*,10.0.0.4 -t 300 
 
 結果を待ちます。
 
 
 ## <a name="testing-vms-running-linux"></a>LINUX を実行している VM のテスト:
 
-nttcp-for-linux を使用します。 これは、<https://github.com/Microsoft/ntttcp-for-linux> から入手できます。
+nttcp-for-linux を使用します。 これは <https://github.com/Microsoft/ntttcp-for-linux> 以降で使用可能です。
 
 Linux VM (送信側と受信側の両方) で、次のコマンドを実行して、VM 上に ntttcp-for-linux を準備します。
 
 CentOS - Install Git:
 ``` bash
-  yum install gcc -y  
-  yum install git -y
+  yum install gcc -y  
+  yum install git -y
 ```
 Ubuntu - Install Git:
 ``` bash
- apt-get -y install build-essential  
- apt-get -y install git
+ apt-get -y install build-essential  
+ apt-get -y install git
 ```
 両方で作成とインストールを行います。
 ``` bash
- git clone https://github.com/Microsoft/ntttcp-for-linux
- cd ntttcp-for-linux/src
- make && make install
+ git clone https://github.com/Microsoft/ntttcp-for-linux
+ cd ntttcp-for-linux/src
+ make && make install
 ```
 
 Windows の例のように、Linux の受信側 IP は 10.0.0.4 とします。
@@ -125,7 +124,7 @@ ntttcp -r -t 300
 ``` bash
 ntttcp -s10.0.0.4 -t 300
 ```
- 
+ 
 時間パラメーターが指定されない場合、テストの長さは既定値の 60 秒になります。
 
 ## <a name="testing-between-vms-running-windows-and-linux"></a>Windows と Linux を実行している VM 間でのテスト
@@ -169,5 +168,5 @@ ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 
 ## <a name="next-steps"></a>次の手順
 * 結果によっては、シナリオに適合するように[マシンのネットワーク スループットの最適化](virtual-network-optimize-network-bandwidth.md)を実行できる余地がある場合があります。
-* [仮想マシンに帯域幅が割り当てられる] (virtual-machine-network-throughput.md) 方法についてご覧ください
+* [仮想マシンに帯域幅が割り当てられる方法](virtual-machine-network-throughput.md)に関するページを参照してください
 * 「[Azure Virtual Network についてよく寄せられる質問 (FAQ)](virtual-networks-faq.md)」を参照してください。

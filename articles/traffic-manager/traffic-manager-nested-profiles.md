@@ -4,22 +4,19 @@ description: この記事では、Azure Traffic Manager の "入れ子になっ�
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
-manager: timlt
-editor: ''
-ms.assetid: f1b112c4-a3b1-496e-90eb-41e235a49609
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
+ms.date: 10/22/2018
 ms.author: kumud
-ms.openlocfilehash: 1ac4ec2775ca9f690f5adf4f939908f8cee3f715
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 876305c7195a186671c30c4bdd9bb0c6b5331e9a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111700"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648600"
 ---
 # <a name="nested-traffic-manager-profiles"></a>入れ子になった Traffic Manager プロファイル
 
@@ -66,9 +63,7 @@ Traffic Manager は、各サービス エンドポイントの正常性をアク
 
 ## <a name="example-3-prioritized-failover-regions-in-performance-traffic-routing"></a>例 3: "パフォーマンス" トラフィック ルーティングにおける優先フェールオーバー リージョン
 
-"パフォーマンス" トラフィック ルーティング方法の既定の動作は、次に最も近いエンドポイントが過負荷になり、連鎖的な障害が発生するのを防ぐことを目的としています。 エンドポイントで障害が発生した場合、そのエンドポイントに送信されたすべてのトラフィックが、すべてのリージョンのその他のエンドポイントに均等に振り分けられます。
-
-![既定のフェールオーバーを使用する "パフォーマンス" トラフィック ルーティング][5]
+"パフォーマンス" トラフィック ルーティング方式の既定の動作では、エンドポイントが地理的に異なる場所にある場合、エンド ユーザーはネットワーク待ち時間が最も短いという意味で "最も近い" エンドポイントにルーティングされます。
 
 西ヨーロッパのトラフィックをなるべく米国西部にフェールオーバーし、これらのエンドポイントがどちらも使用できない場合にのみ、他の場所に送信するとします。 このソリューションは、"優先順位" トラフィック ルーティング方法と子プロファイルを使用して作成することができます。
 
@@ -98,7 +93,7 @@ Traffic Manager プロファイルの監視の設定は、1 つのプロファ�
 
 ![エンドポイントごとの設定を使用する Traffic Manager のエンドポイント監視][10]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Traffic Manager のプロファイル](traffic-manager-overview.md)の詳細を確認する
 

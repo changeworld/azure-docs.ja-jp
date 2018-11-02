@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: e3620bbf92cab926d56c4de0817f833b61cf2b03
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d1fdec8e3a959aaeb68d4b63a1c71d6ef1ddd054
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125087"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406323"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure の Office 365 管理ソリューション (プレビュー)
 
@@ -37,7 +37,7 @@ Office 365 管理ソリューションでは、Log Analytics で Office 365 環�
 
 - 組織の Office 365 サブスクリプション。
 - グローバル管理者であるユーザー アカウントの資格情報。
-- 監査データを受信するには、Office 365 サブスクリプションで[監査を構成する](https://support.office.com/en-us/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin)必要があります。  [メールボックスの監査](https://technet.microsoft.com/library/dn879651.aspx)は個別に構成されることに注意してください。  監査が構成されていない場合でも、ソリューションをインストールしてその他のデータを収集することは可能です。
+- 監査データを受信するには、Office 365 サブスクリプションで[監査を構成する](https://support.office.com/article/Search-the-audit-log-in-the-Office-365-Security-Compliance-Center-0d4d0f35-390b-4518-800e-0c7ec95e946c?ui=en-US&rs=en-US&ad=US#PickTab=Before_you_begin)必要があります。  [メールボックスの監査](https://technet.microsoft.com/library/dn879651.aspx)は個別に構成されることに注意してください。  監査が構成されていない場合でも、ソリューションをインストールしてその他のデータを収集することは可能です。
  
 
 ## <a name="management-packs"></a>管理パック
@@ -477,7 +477,7 @@ At line:12 char:18
 
 ## <a name="data-collection"></a>データ収集
 ### <a name="supported-agents"></a>サポートされているエージェント
-Office 365 ソリューションは、どの [OMS エージェント](../log-analytics/log-analytics-data-sources.md)からもデータを取得しません。  Office 365 から直接データを取得します。
+Office 365 ソリューションは、どの [Log Analytics エージェント](../log-analytics/log-analytics-data-sources.md)からもデータを取得しません。  Office 365 から直接データを取得します。
 
 ### <a name="collection-frequency"></a>収集の頻度
 最初のデータ収集には数時間かかる場合があります。 収集が開始されると、レコードが作成されるたびに、Office 365 は [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)と詳細なデータを Log Analytics に送信します。 このレコードは、受信した後、数分以内に Log Analytics で使用できます。
@@ -622,7 +622,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 |:--- |:--- |
 | OfficeWorkload | Exchange |
 | RecordType     | ExchangeItem |
-| 項目 | 操作が実行された対象の項目を表します。 | 
+| Item | 操作が実行された対象の項目を表します。 | 
 | SendAsUserMailboxGuid | その名前で電子メールを送信するためにアクセスされたメールボックスの Exchange GUID。 |
 | SendAsUserSmtp | 偽装されているユーザーの SMTP アドレス。 |
 | SendonBehalfOfUserMailboxGuid | 代理でメールを送信するためにアクセスされたメールボックスの Exchange GUID。 |

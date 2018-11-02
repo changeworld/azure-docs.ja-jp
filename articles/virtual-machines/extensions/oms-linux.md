@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: roiyz
-ms.openlocfilehash: b8a946588d09eb05e1609344318c91f76c7ee106
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: dc0d7857dbbbdc862878201ba9d47632d2b5affd
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452124"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404853"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Linux 用の Log Analytics 仮想マシン拡張機能
 
@@ -28,13 +28,16 @@ ms.locfileid: "47452124"
 
 Log Analytics は、クラウドとオンプレミスの資産全体にまたがる監視、アラート、アラート修復の機能を提供します。 Linux 用の Log Analytics Agent 仮想マシン拡張機能は、Microsoft によって発行およびサポートされています。 この拡張機能では、Azure 仮想マシンに Log Analytics エージェントがインストールされ、仮想マシンが既存の Log Analytics ワークスペースに登録されます。 このドキュメントでは、Linux 用の Log Analytics 仮想マシン拡張機能でサポートされているプラットフォーム、構成、デプロイ オプションについて詳しく説明します。
 
+>[!NOTE]
+>現在 Microsoft Operations Management Suite (OMS) から Azure Monitor への移行作業が進行していますが、その一環として、OMS エージェント for Windows と OMS エージェント for Linux は、それぞれ Log Analytics エージェント for Windows および Log Analytics エージェント for Linux という名称になります。
+
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="operating-system"></a>オペレーティング システム
 
 Log Analytics Agent 拡張機能は、次の Linux ディストリビューションに対して実行することができます。
 
-| ディストリビューション | バージョン |
+| ディストリビューション | Version |
 |---|---|
 | CentOS Linux | 6 および 7 (x86/x64) |
 | Amazon Linux | 2017.09 | 
@@ -49,7 +52,7 @@ Log Analytics Agent 拡張機能は、次の Linux ディストリビューシ�
 >
 
 ### <a name="agent-and-vm-extension-version"></a>エージェントおよび VM 拡張機能のバージョン
-次の表は、Log Analytics VM 拡張機能と Log Analytics Agent バンドルのバージョンのマッピングをリリースごとに示しています。 Log Analytics エージェント バンドルのバージョンのリリース ノートへのリンクが含まれます。 リリース ノートには、特定のエージェント リリースでのバグ修正と利用可能な新機能の詳細が記載されています。  
+次の表は、Log Analytics VM 拡張機能と Log Analytics エージェント バンドルのバージョンのマッピングをリリースごとに示しています。 Log Analytics エージェント バンドルのバージョンのリリース ノートへのリンクが含まれます。 リリース ノートには、特定のエージェント リリースでのバグ修正と利用可能な新機能の詳細が記載されています。  
 
 | Log Analytics Linux VM 拡張機能のバージョン | Log Analytics Agent バンドルのバージョン | 
 |--------------------------------|--------------------------|
@@ -80,9 +83,9 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
 
 ```json
 {
-  "type": "extensions",
+  "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "OMSExtension",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-06-01",
   "location": "<location>",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"
@@ -101,11 +104,15 @@ Linux 用の Log Analytics Agent 拡張機能では、ターゲットの仮想�
 }
 ```
 
+>[!NOTE]
+>上のスキーマは、テンプレートのルート レベルに配置されると仮定しています。 テンプレートの仮想マシン リソース内に配置する場合は、[後で](#template-deployment)説明するように、`type` および `name` プロパティを変更する必要があります。
+>
+
 ### <a name="property-values"></a>プロパティ値
 
-| 名前 | 値/例 |
+| Name | 値/例 |
 | ---- | ---- |
-| apiVersion | 2015-06-15 |
+| apiVersion | 2018-06-01 |
 | publisher | Microsoft.EnterpriseCloud.Monitoring |
 | type | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
@@ -125,7 +132,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 {
   "type": "extensions",
   "name": "OMSExtension",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-06-01",
   "location": "<location>",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"
@@ -150,7 +157,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "<parentVmResource>/OMSExtension",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-06-01",
   "location": "<location>",
   "dependsOn": [
     "[concat('Microsoft.Compute/virtualMachines/', <vm-name>)]"
@@ -206,13 +213,13 @@ az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 | 9 | Enable が予定よりも早く呼び出されました | 入手できる最新のバージョンに [Azure Linux エージェントを更新](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent)します。 |
 | 10 | VM は既に Log Analytics ワークスペースに接続されています | 拡張スキーマに指定されたワークスペースに VM を接続するには、パブリック設定で stopOnMultipleConnections を false に設定するか、このプロパティを削除します。 この VM は、各ワークスペースに接続された後、課金されます。 |
 | 11 | 拡張機能に提供された構成が無効です | 前の例に従って、デプロイするために必要なすべてのプロパティ値を設定します。 |
-| 17 | OMS パッケージのインストールが失敗しました | 
+| 17 | Log Analytics パッケージのインストールが失敗しました | 
 | 19 | OMI パッケージのインストールが失敗しました | 
 | 20 | SCX パッケージのインストールが失敗しました |
 | 51 | VM のオペレーティング システムでは、この拡張機能はサポートされていません | |
-| 55 | OMS サービスに接続できない、必要なパッケージが見つからない、または dpkg パッケージ マネージャーがロックされています| システムがインターネットにアクセスしていること、または有効な HTTP プロキシが指定されていることを確認します。 さらに、ワークスペース ID が正しいこと、および curl ユーティリティと tar ユーティリティがインストールされていることを確認します。 |
+| 55 | Log Analytics サービスに接続できない、必要なパッケージが見つからない、または dpkg パッケージ マネージャーがロックされています| システムがインターネットにアクセスしていること、または有効な HTTP プロキシが指定されていることを確認します。 さらに、ワークスペース ID が正しいこと、および curl ユーティリティと tar ユーティリティがインストールされていることを確認します。 |
 
-その他のトラブルシューティング情報については、「[Troubleshooting Guide for OMS Agent for Linux](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md)」(Linux 用の OMS エージェントに関するトラブルシューティン グガイド) を参照してください。
+その他のトラブルシューティング情報については、[Log Analytics エージェントのトラブルシューティング](../../log-analytics/log-analytics-azure-vmext-troubleshoot.md)に関する記事を参照してください。
 
 ### <a name="support"></a>サポート
 

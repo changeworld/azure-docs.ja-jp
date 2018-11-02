@@ -1,22 +1,37 @@
 ---
-title: Cognitive Services Speech SDK のドキュメント | Microsoft Docs
+title: Speech Service SDK のドキュメント
+titlesuffix: Azure Cognitive Services
 description: リリース ノート - 最新リリースの変更点
-titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
-ms.date: 09/24/2018
+ms.topic: conceptual
+ms.date: 10/12/2018
 ms.author: wolfma
-ms.openlocfilehash: cfc8f973ac9bced9396a081f7fb2ab6a4a1b2f7f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b5e4d239121b2449a45dfce826c99765f1c3f4be
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963085"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49471139"
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="speech-service-sdk-101"></a>Speech Service SDK 1.0.1
+
+信頼性の向上とバグ修正
+
+* 認識エンジンの破棄での競合状態によって致命的なエラーが発生する可能性を修正しました
+* 未設定のプロパティによって致命的なエラーが発生する可能性を修正しました。
+* 新しいエラーとパラメーターのチェックを追加しました。
+* Objective-C: NSString での名前のオーバーライドによって致命的なエラーが発生する可能性を修正しました。
+* Objective-C: API の可視性を調整しました
+* JavaScript: イベントとそのペイロードに関して修正しました。
+* ドキュメントの改善。
+
+[サンプル リポジトリ](https://aka.ms/csspeech/samples)に、JavaScript の新しいサンプルを追加しました。
 
 ## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Cognitive Services Speech SDK 1.0.0: 2018-September リリース
 

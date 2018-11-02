@@ -11,13 +11,13 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: ''
 manager: craigg
-ms.date: 08/20/2018
-ms.openlocfilehash: 1d292007b06e12b6be28e053bc6def3b12c7befe
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 10/22/2018
+ms.openlocfilehash: 4bc655f1e9da00a42c60e1ab763c5503b393d4a1
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063655"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646304"
 ---
 # <a name="best-practices-for-sql-data-sync"></a>SQL データ同期のベスト プラクティス 
 
@@ -70,6 +70,10 @@ Azure SQL Database では、単一の資格情報セットのみをサポート�
 同期グループ内の各テーブルには主キーが必要です。 SQL データ同期サービスは、主キーを持たないテーブルと同期できません。
 
 運用環境で SQL データ同期を使用する前に、初期同期と継続的な同期のパフォーマンスをテストしてください。
+
+#### <a name="empty-tables-provide-the-best-performance"></a>空のテーブルが最高のパフォーマンスを提供する
+
+初期化時には空のテーブルが最高のパフォーマンスを提供します。 ターゲット テーブルが空の場合、データ同期は一括挿入を使用してデータを読み込みます。 それ以外の場合、データ同期は行単位の比較と挿入を行って競合を確認します。 ただし、パフォーマンスが重要でない場合は、既にデータが含まれているテーブル間の同期を設定することができます。
 
 ### <a name="provisioning-destination-databases"></a>同期先データベースをプロビジョニングする
 

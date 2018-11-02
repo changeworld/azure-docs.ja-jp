@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: eaf65bef28110d73378c213ae4781a409b86e1bd
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e0654d6a4696e6f02939cad51a715412fdcfb61a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128181"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645236"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API を V2 から V3 に移行する
 
@@ -32,29 +32,29 @@ Microsoft Translator チームは Translator Text API のバージョン 3 (V3) 
 * 音訳 - 音訳メソッドが API に追加されました。 このメソッドでは、ある文字体系 (アラビア語 など) で書かれた言葉や文章が別の文字体系 (ラテン語 など) に変換されます。
 * 言語 - 新しい ‘languages’ メソッドは、‘translate’、‘dictionary’、‘transliterate’ メソッドで使用するために、言語情報を JSON 形式で届けます。
 * 翻訳の新機能 - 別のメソッドとして V2 API に存在した一部の機能に対応する目的で、新しい機能が ‘translate’ メソッドに追加されました。 それには、たとえば、TranslateArray があります。
-* 読み上げメソッド - テキスト読み上げ機能は、Microsoft Translator API でサポートから外れました。 テキスト読み上げ機能は、Azure Cognitive サービスの Bing Speech API でご利用いただけます。
+* 読み上げメソッド - テキスト読み上げ機能は、Microsoft Translator API でサポートから外れました。 テキスト読み上げ機能は、[Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech) で利用できます。
 
 V2 メソッドと V3 メソッドについてまとめた次のリストで、V3 メソッドと、V2 に備わっていた機能を提供する API を確認できます。
 
 | V2 API メソッド   | V3 API 互換性 |
 |:----------- |:-------------|
-| Translate     | 翻訳          |
-| TranslateArray      | 翻訳          |
-| GetLanguageNames      | Languages          |
-| GetLanguagesForTranslate     | Languages        |
-| GetLanguagesForSpeak      | Cognitive Services Speech API         |
-| Speak     | Cognitive Services Speech API          |
-| Detect     | Detect         |
-| DetectArray     | Detect         |
-| AddTranslation     | Microsoft Translator HUB API         |
-| AddTranslationArray    | Microsoft Translator HUB API          |
-| BreakSentences      | BreakSentence         |
+| Translate     | [Translate](reference/v3-0-translate.md)          |
+| TranslateArray      | [Translate](reference/v3-0-translate.md)        |
+| GetLanguageNames      | [言語](reference/v3-0-languages.md)         |
+| GetLanguagesForTranslate     | [言語](reference/v3-0-languages.md)       |
+| GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
+| Speak     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| Detect     | [Detect](reference/v3-0-detect.md)         |
+| DetectArray     | [Detect](reference/v3-0-detect.md)         |
+| AddTranslation     | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
+| AddTranslationArray    | [Microsoft Translator Hub API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| BreakSentences      | [BreakSentence](reference/v3-0-break-sentence.md)       |
 | GetTranslations      | この機能は現在サポートされていません         |
 | GetTranslationsArray      | Feature は現在サポートされていません         |
 
 ## <a name="move-to-json-format"></a>JSON 形式に移行
 
-Microsoft Translator Text Translation V2 では、XML 形式でデータを受け取り、返しました。 V3 では、API を利用して送受信されるすべてのデータが JSON 形式になります。 XML は V3 では受け取られず、返されません。 
+Microsoft Translator Text Translation V2 では、XML 形式でデータを受け取り、返しました。 V3 では、API を利用して送受信されるすべてのデータが JSON 形式になります。 XML は V3 では受け取られず、返されません。
 
 この変更は、V2 Text Translation API のために記述されたアプリケーションのいくつかの面に影響を与えます。 例: Languages API は、テキスト翻訳メソッド、音訳メソッド、2 か国語辞書メソッドの言語情報を返します。 1 回の呼び出しですべてのメソッドのすべての言語情報を要求するか、それらを個別に要求できます。
 

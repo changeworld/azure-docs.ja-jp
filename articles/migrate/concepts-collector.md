@@ -4,15 +4,15 @@ description: Azure Migrate の Collector アプライアンスに関する情報
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/28/2018
+ms.date: 10/24/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: b79045e54b9c2ee4846f2216704a419e0ff85501
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 006a246323e9f82ea9c9a6a2940ed624d7e44e13
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434434"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986782"
 ---
 # <a name="about-the-collector-appliance"></a>Collector アプライアンスについて
 
@@ -179,11 +179,11 @@ Collector は仮想マシンについてのメタデータを収集するため�
 - この検出方法では、vCenter Server で統計設定をレベル 3 に設定する必要があります。
 - レベルを 3 に設定したら、パフォーマンス カウンターを生成するために最長で 1 日かかります。 そのため、1 日経過してから検出を実行することをお勧めします。
 - 仮想マシンのパフォーマンス データを収集するときに、アプライアンスは、vCenter Server に格納されている履歴パフォーマンス データに依存します。 それは過去の 1 か月のパフォーマンスの履歴を収集しています。
-- Azure Migrate は各メトリックの (ピーク カウンターではなく) 平均カウンターを収集します。
+- Azure Migrate は、サイズダウンにつながる各メトリックの (ピーク時のカウンターではなく) 平均カウンターを収集します。
 
 ### <a name="continuous-discovery"></a>継続的な検出
 
-Collector アプライアンスが Azure Migrate プロジェクトに継続的に接続されていません。
+Collector アプライアンスは Azure Migrate プロジェクトに常に接続され、VM のパフォーマンス データを継続的に収集します。
 
 - Collector は、20 秒ごとにリアルタイムの使用状況データを収集するために、オンプレミス環境をプロファイルします。
 - このモデルは、パフォーマンス データを収集するために vCenter Server の統計設定に依存していません。
@@ -191,8 +191,14 @@ Collector アプライアンスが Azure Migrate プロジェクトに継続的�
 - データ ポイントを作成するために、アプライアンスは 20 秒のサンプルからピーク値を選択し、それを Azure に送信します。
 - 継続的なプロファイルは、Collector からいつでも停止できます。
 
+アプライアンスはパフォーマンス データのみを継続的に収集し、オンプレミス環境での構成の変更 (VM の追加、削除、ディスクの追加など) は検出されないことに注意してください。 オンプレミス環境で構成の変更がある場合は、次の操作を行って、変更をポータルに反映することができます。
+
+1. 項目 (VM、ディスク、コアなど) の追加: これらの変更を Azure portal に反映するには、アプライアンスで検出を停止してから、再開します。 これにより、Azure Migrate プロジェクトで変更が確実に更新されます。
+
+2. VM の削除: アプライアンスの設計方法のために、検出を停止して開始しても VM の削除は反映されません。 これは、後続の検出のデータが古い検出に追加され、上書きされないためです。 この場合、VM をグループから削除し、評価を再計算して、ポータルの VM は単に無視することができます。
+
 > [!NOTE]
-> 継続的な検出の機能は、プレビュー段階にあります。 vCenter Server の統計設定がレベル 3 にセットされていない場合は、このメソッドを使用することをお勧めします。
+> 継続的な検出の機能は、プレビュー段階にあります。 この方法では、細かいパフォーマンス データが収集され、適切なサイズ調整を正確に行うことができるため、この方法を使用することをお勧めします。
 
 
 ## <a name="discovery-process"></a>検出プロセス
@@ -241,8 +247,8 @@ virtualDisk.read.average | 2 | 2 | ディスク サイズ、ストレージ コ�
 virtualDisk.write.average | 2 | 2  | ディスク サイズ、ストレージ コスト、仮想マシン サイズを計算します
 virtualDisk.numberReadAveraged.average | 1 | 3 |  ディスク サイズ、ストレージ コスト、仮想マシン サイズを計算します
 virtualDisk.numberWriteAveraged.average | 1 | 3 |   ディスク サイズ、ストレージ コスト、仮想マシン サイズを計算します
-net.received.average | 2 | 3 |  仮想マシン サイズおよびネットワーク コストを計算します                        |
-net.transmitted.average | 2 | 3 | 仮想マシン サイズおよびネットワーク コストを計算します    
+net.received.average | 2 | 3 |  VM のサイズを計算します                          |
+net.transmitted.average | 2 | 3 | VM のサイズを計算します     
 
 ## <a name="next-steps"></a>次の手順
 

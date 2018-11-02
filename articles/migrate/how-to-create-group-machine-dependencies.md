@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: raynew
-ms.openlocfilehash: ac1cf5a30dee29f2737a05133aed774e86f78932
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: de093976a318b2658ff4009f4c5e314851f66b81
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163428"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403811"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>マシンの依存関係マッピングを使用したマシンのグループ化
 
@@ -35,7 +35,7 @@ Azure Migrate は、マシンの依存関係を視覚化できるように Log A
 > Migration プロジェクトに関連付けられているワークスペースは変更できません。
 
 ### <a name="download-and-install-the-vm-agents"></a>VM エージェントをダウンロードしてインストールする
-ワークステーションを構成したら、評価するオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。 また、インターネットに接続されていないマシンの場合、[OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)をダウンロードしてインストールする必要があります。
+ワークステーションを構成したら、評価するオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。 また、インターネットに接続されていないマシンの場合、[Log Analytics ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)をダウンロードしてインストールする必要があります。
 
 1. **[概要]** で **[管理]** > **[マシン]** をクリックし、必要なマシンを選択します。
 2. **[依存関係]** 列で、**[エージェントのインストール]** をクリックします。

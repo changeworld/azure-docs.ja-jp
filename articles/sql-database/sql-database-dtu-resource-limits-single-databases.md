@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 10/15/2018
-ms.openlocfilehash: 15518d8122f66c2e6f4ab398e0c69563fe0c79e0
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.date: 10/23/2018
+ms.openlocfilehash: 0a514cced50a2a05008c03dfb438cceefb332d17
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354061"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987326"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>DTU ベースの購入モデルを使用した単一データベースに対するリソース制限
 
@@ -81,17 +81,17 @@ ms.locfileid: "49354061"
 |||||||
 
 > [!IMPORTANT]
-> 現在、米国中西部、中国東部、US DoD 中部、ドイツ中部、US DoD 東部、US Gov 南西部、ドイツ北東部、USGov アイオワ、中国北部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。 それ以外のリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+> 現在、中国東部、中国北部、ドイツ中部、ドイツ北東部、英国北部、英国南部、US DoD 中部、US DoD 東部、US 政府中部、および米国中西部を除くすべてのリージョンでは、Premium レベルで 1 TB を超えるストレージを使用できます。  これらのリージョンでは、Premium レベルのストレージの最大容量は 1 TB です。 [P11 ～ P15 の現時点での制限](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
 
 ## <a name="single-database-change-storage-size"></a>単一データベース: ストレージ サイズを変更する
 
 - 単一データベースの DTU 価格には、追加コストなしで一定量のストレージが含まれます。 付属の容量を超える分のストレージについては、追加費用を払うことで、1 TB までは 250 GB 単位で、1 TB 以降は 256 GB 単位で、最大サイズ制限までプロビジョニングできます。 付属するストレージの量と最大サイズ制限については、「[単一データベース: ストレージ サイズとコンピューティング サイズ](#single-database-storage-sizes-and-compute-sizes)」をご覧ください。
-- 単一データベースの追加ストレージは、[Azure Portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/databases_update) を使ってサイズを最大に増やすことでプロビジョニングできます。
+- 単一データベースの追加ストレージは、[Azure Portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使ってサイズを最大に増やすことでプロビジョニングできます。
 - 単一データベースの追加ストレージの料金は、追加ストレージ量にサービス レベルの追加ストレージ単価を掛けて計算します。 追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
 
 ## <a name="single-database-change-dtus"></a>単一データベース: DTU を変更する
 
-サービス レベル、コンピューティング サイズ、ストレージ量を最初に選択した後は、[Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/databases_update) を使い、実際の状況に基づいて、単一データベースを動的にスケールアップまたはスケールダウンできます。
+サービス レベル、コンピューティング サイズ、ストレージ量を最初に選択した後は、[Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases)、[Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples)、[PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update)、または [REST API](https://docs.microsoft.com/rest/api/sql/databases/update) を使い、実際の状況に基づいて、単一データベースを動的にスケールアップまたはスケールダウンできます。
 
 次のビデオでは、サービス レベルとコンピューティング サイズを動的に変更して単一データベースで使用可能な DTU を増やす方法を示します。
 
@@ -103,7 +103,7 @@ ms.locfileid: "49354061"
 スケールアップ プロセス全体の継続時間は、変更前後のデータベースのサイズとサービス レベルによって異なります。 たとえば、250 GB のデータベースを Standard サービス レベルとの間または Standard サービス レベル内で変更する場合は、6 時間以内に完了します。 Premium サービス レベル内で同じサイズのデータベースのコンピューティング サイズを変更する場合、スケールアップは 3 時間以内で完了します。
 
 > [!TIP]
-> 実行中の操作の監視については、[SQL REST API を使った操作の管理](https://docs.microsoft.com/rest/api/sql/databaseoperations/databaseoperations_listbydatabase
+> 実行中の操作の監視については、[SQL REST API を使った操作の管理](https://docs.microsoft.com/rest/api/sql/databaseoperations/listbydatabase
 )、[CLI を使った操作の管理](/cli/azure/sql/db/op)、[T-SQL を使った操作の管理](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)に関する各ページと、2 つの PowerShell コマンド [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) と [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity) をご覧ください。
 
 - より上位のサービス レベルまたはコンピューティング サイズにアップグレードしても、より大きなサイズ (最大サイズ) を明示的に指定しない限り、データベースの最大サイズは増加しません。
@@ -116,7 +116,7 @@ ms.locfileid: "49354061"
 
 ## <a name="single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>単一データベース: 最大サイズが 1 TB を超える場合の P11 および P15 の制限事項
 
-次のリージョンでは、最大サイズが 1 TB を超える P11 および P15 データベースがサポートされます。オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 最大サイズが 1 TB を超える P11 および P15 データベースには、次の考慮事項と制限事項が適用されます。
+最大サイズが 1 TB を超える P11 および P15 データベースには、次の考慮事項と制限事項が適用されます。
 
 - データベースを作成するときに (4 TB または 4096 GB の値を使用して) 1 TB を超える最大サイズを選択した場合、サポートされていないリージョンでデータベースをプロビジョニングすると、エラーのため、create コマンドが失敗します。
 - サポート対象のリージョンにある既存の P11 と P15 のデータベースでは、最大ストレージを 1 TB を超えて最大 4 TB まで 256 GB 刻みで増やすことができます。 対象リージョンでより大きなサイズがサポートされているかどうかを確認するには、[DATABASEPROPERTYEX](/sql/t-sql/functions/databasepropertyex-transact-sql) 関数を使うかか、Azure Portal でデータベースのサイズを調べてください。 既存の P11 または P15 のデータベースのアップグレードは、サーバーレベル プリンシパルのログインまたは dbmanager データベース ロールのメンバーのみが実行できます。

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: snehaa
-ms.openlocfilehash: 2b704edee55f7d15da1b59d8f8b357b9ba7ca8f3
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e39cf260cc4931fc0dddc4922479522cb521d08e
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239219"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407063"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - よく寄せられる質問 (FAQ)
 
@@ -98,7 +98,7 @@ Azure Migrate は、アプライアンスベースの検出とエージェント
 
 コレクター アプライアンスによって収集されたデータは、移行プロジェクトの作成中に指定した Azure の場所に格納されます。 データは Microsoft サブスクリプションに安全に格納され、ユーザーがその Azure Migrate プロジェクトを削除すると削除されます。
 
-依存関係の視覚化で、VM にエージェントをインストールした場合、依存関係エージェントによって収集されたデータは、ユーザーのサブスクリプションで作成された米国の OMS ワークスペースに格納されます。 サブスクリプションの OMS ワークスペースを削除すると、このデータは削除されます。 [詳細情報](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization)。
+依存関係の視覚化で、VM にエージェントをインストールした場合、依存関係エージェントによって収集されたデータは、ユーザーのサブスクリプションで作成された米国の Log Analytics ワークスペースに格納されます。 サブスクリプションの Log Analytics ワークスペースを削除すると、このデータは削除されます。 [詳細情報](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization)。
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>保存データや転送中のデータは暗号化されますか。
 

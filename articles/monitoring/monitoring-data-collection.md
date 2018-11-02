@@ -12,19 +12,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: 19a611ca88310f06503bea2b8606699fe3e1c709
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: a810de5c3c70322560bb45bcc2aee5cf0798cea9
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406042"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248712"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Azure Monitor によって収集される監視データ
 [Azure Monitor](../azure-monitor/overview.md) は、アプリケーションと、それらが依存するリソースを監視するのに役立つサービスです。 この機能の中心にあるのは、監視対象のリソースからのテレメトリとその他のデータのストレージです。 この記事では、このデータが Azure Monitor によってどのように格納され、使用されるかを詳細に説明します。
 
 Azure Monitor によって収集されるすべてのデータは、2 つの基本的な種類である[メトリック](#metrics)と[ログ](#logs)のいずれかに合致します。 メトリックは、特定の時点におけるシステムの何らかの側面を表す数値です。 メトリックは軽量であり、リアルタイムに近いシナリオをサポートできます。 ログには、種類ごとに異なるプロパティ セットを持つレコードに編成されたさまざまな種類のデータが含まれます。 イベントやトレースなどの利用統計情報は、組み合わせて分析できるように、パフォーマンス データとともにログとして格納されます。
 
-![Azure Monitor の概要](../azure-monitor/media/overview/overview.png)
+![Azure Monitor の概要](media/monitoring-data-collection/overview.png)
 
 ## <a name="metrics"></a>メトリック
 メトリックは、特定の時点におけるシステムの何らかの側面を表す数値です。 メトリックは軽量であり、リアルタイムに近いシナリオをサポートできます。 メトリックは、値の変化とは無関係に、一定の間隔で収集されます。 これらは頻繁にサンプリングでき、比較的単純なロジックですばやく起動できるため、アラートを発行するときに役に立ちます。 
@@ -108,7 +108,7 @@ Azure Monitor によって収集されるメトリックのソースには、基
 
 
 ### <a name="viewing-metrics"></a>メトリックの表示
-Azure 内のメトリックは、Azure Monitor メトリック ストアに収集されます。 これは、迅速な取得のために最適化された時系列のデータベースで、メトリックの値を 93 日間保存します。 長期的な分析やトレンド分析のためには、Log Analytics にメトリックをコピーします。
+Azure 内のメトリックは、Azure Monitor メトリック データベースに収集されます。 これは、迅速な取得のために最適化された時系列のデータベースで、メトリックの値を 93 日間保存します。 長期的な分析やトレンド分析のためには、Log Analytics にメトリックをコピーします。
 
 メトリック データは、前述のように、さまざまな方法で使用されます。 [メトリックス エクスプ ローラー](../monitoring-and-diagnostics/monitoring-metric-charts.md)を使用して、メトリック ストア内のデータを直接分析し、一定期間にわたる複数のメトリックの値をグラフにします。 グラフは、対話形式で表示したり、ダッシュボードにピン留めして他の視覚化と一緒に表示したりできます。 [Azure monitoring REST API](../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) を使用してメトリックを取得することもできます。
 
@@ -173,7 +173,7 @@ Log Analytics からのデータはすべて、特定のデータ セットを�
 Azure リソースからメトリックを収集するためのガイダンスについては、「[Log Analytics で Azure サービスのログとメトリックを使用できるように収集する](../log-analytics/log-analytics-azure-storage.md)」を参照してください。 Azure PaaS リソースからのリソースのメトリックを収集するためのガイダンスについては、「[Log Analytics を使用した Azure PaaS リソース メトリックの収集を構成する](../log-analytics/log-analytics-collect-azurepass-posh.md)」を参照してください。
 
 ### <a name="logs-to-metrics"></a>ログからメトリックへ
-上記のように、メトリックはログよりも反応が早いため、短い待機時間と低コストでアラートを作成できます。 Log Analytics は、メトリックに適しているが、Azure のメトリック ストアには格納されない大量の数値データを収集します。  一般的な例は、エージェントと管理ソリューションから収集されるパフォーマンス データです。 これらの値の一部をメトリック ストアにコピーして、メトリックス エクスプローラーでアラートの発行と分析を行うために使用できます。
+上記のように、メトリックはログよりも反応が早いため、短い待機時間と低コストでアラートを作成できます。 Log Analytics は、メトリックに適しているが、Azure のメトリック データベースには格納されない大量の数値データを収集します。  一般的な例は、エージェントと管理ソリューションから収集されるパフォーマンス データです。 これらの値の一部をメトリック データベースにコピーして、メトリックス エクスプローラーでアラートの発行と分析を行うために使用できます。
 
 この機能の説明については、「[Azure Monitor でのログのメトリック アラートの作成](../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md)」を参照してください。 サポートされる値の一覧は、「[Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)」に記載されています。
 

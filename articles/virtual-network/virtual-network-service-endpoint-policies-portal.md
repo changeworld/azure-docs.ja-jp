@@ -15,12 +15,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 09/18/2018
 ms.author: anithaa
-ms.openlocfilehash: 8c750937cd45e104e754335f7da51d813b8dc7ba
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3c28181e1d1a4fd1cdac530ed8f393c7e0c7ea92
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999649"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426303"
 ---
 # <a name="create-change-or-delete-service-endpoint-policy-using-the-azure-portal"></a>Azure portal を使用してサービス エンドポイント ポリシーを作成、変更、または削除する
 
@@ -64,7 +64,7 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
    
    ![サービス エンドポイント ポリシーの定義を作成する](./media/virtual-network-service-endpoint-policies-portal/virtual-network-endpoint-policies-create-policydefinitionspane.PNG)
    
-5. 省略可能: **[タブ]** に次の情報を入力または選択します。
+5. 省略可能: **[タグ]** に次の情報を入力または選択します
    
    - キー: ポリシーのキーを選択します。 例: Dept     
    - 値: キーの値ペアを入力します。 例: 財務
@@ -103,7 +103,7 @@ Azure Portal ( http://portal.azure.com ) にサインインします。
    - アドレス空間: 10.0.0.0/16      
    - サブスクリプション: ご使用のサブスクリプションを選択します。 ポリシーは VNet と同じサブスクリプションにする必要があります     
    - リソース グループ: **[既存のものを使用]** を選択し、*[myResourceGroup]* を選択します     
-   - 場所: 米国中西部     
+   - [場所]: 米国中西部     
    - サブネット名: プライベート     
    - アドレス範囲: 10.0.0.0/24
      

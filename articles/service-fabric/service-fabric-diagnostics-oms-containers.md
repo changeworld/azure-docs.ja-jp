@@ -14,23 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/1/2017
 ms.author: dekapur
-ms.openlocfilehash: 79d30a47b017379107b63b0006a35534f68c43b9
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: aabdae370c28f8fa633372be4505c00c25254408
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34210778"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49403252"
 ---
 # <a name="monitor-containers-with-log-analytics"></a>Log Analytics でコンテナーを監視
  
-この記事では、コンテナーのイベントを表示するための OMS Log Analytics コンテナー監視ソリューションを設定するために必要な手順について説明します。 コンテナー イベントを収集するクラスターを設定するには、こちらの[ステップ バイ ステップ チュートリアル](service-fabric-tutorial-monitoring-wincontainers.md)を参照してください。
+この記事では、コンテナーのイベントを表示するための Azure Log Analytics コンテナー監視ソリューションを設定するために必要な手順について説明します。 コンテナー イベントを収集するクラスターを設定するには、こちらの[ステップ バイ ステップ チュートリアル](service-fabric-tutorial-monitoring-wincontainers.md)を参照してください。 
+
+[!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)]
 
 ## <a name="set-up-the-container-monitoring-solution"></a>コンテナー監視ソリューションの設定
 
 > [!NOTE]
-> お使いのクラスターに対して Log Analytics を設定して、ノード上に OMS エージェントを展開させる必要があります。 実行していない場合は、[Log Analytics の設定](service-fabric-diagnostics-oms-setup.md)と[エージェントのクラスターへの追加](service-fabric-diagnostics-oms-agent.md)の手順をまず実行します。
+> お使いのクラスターに対して Log Analytics を設定して、ノード上に Log Analytics エージェントを展開させる必要があります。 実行していない場合は、[Log Analytics の設定](service-fabric-diagnostics-oms-setup.md)と [Log Analytics エージェントのクラスターへの追加](service-fabric-diagnostics-oms-agent.md)の手順をまず実行します。
 
-1. お使いのクラスターを Log Analytics と OMS エージェントを使って設定した後、コンテナーを展開します。 コンテナーが展開されるのを待ってから次の手順に進みます。
+1. お使いのクラスターを Log Analytics と Log Analytics エージェントを使って設定した後、コンテナーを展開します。 コンテナーが展開されるのを待ってから次の手順に進みます。
 
 2. Azure Marketplace で、「*コンテナー監視ソリューション*」を検索し、監視 + 管理 カテゴリの下に表示される **コンテナー監視ソリューション** リソースをクリックします。
 
@@ -38,9 +40,9 @@ ms.locfileid: "34210778"
 
 3. 既にクラスターに対して作成したのと同じワークスペース内でソリューションを作成します。 この変更により、コンテナーの Docker データの収集を開始するエージェントが自動的にトリガーされます。 下の図に示すように、約 15 分位でソリューションが点灯し、ログの受信と統計が表示されるのを確認できます。
 
-    ![基本的な OMS のダッシュボード](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
+    ![Log Analytics の基本のダッシュボード](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
-エージェントはいくつかのコンテナー固有ログの収集を有効にします。これらは、OMS 内で照会したり、視覚化されたパフォーマンス インジケーターに使用したりできます。 収集されるログの種類は次のとおりです。
+エージェントはいくつかのコンテナー固有ログの収集を有効にします。これらは、Log Analytics 内で照会したり、視覚化されたパフォーマンス インジケーターに使用したりできます。 収集されるログの種類は次のとおりです。
 
 * ContainerInventory: コンテナーの場所、名前、およびイメージに関する情報を表示
 * ContainerImageInventory: ID やサイズなど、デプロイ済みのイメージに関する情報
@@ -51,7 +53,7 @@ ms.locfileid: "34210778"
 
 
 ## <a name="next-steps"></a>次の手順
-* [OMS のコンテナー ソリューション](../log-analytics/log-analytics-containers.md)について説明します。
+* [Log Analytics のコンテナー ソリューション](../log-analytics/log-analytics-containers.md)について説明します。
 * Service Fabric のコンテナー オーケストレーションについての詳細 - [Service Fabric とコンテナー](service-fabric-containers-overview.md)
 * Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
 * Log Analytics を構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)規則を設定する

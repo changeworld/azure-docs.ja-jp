@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 10/22/2018
 ms.author: juliako
-ms.openlocfilehash: 4001d0e21e7a0c8977d785463fb54aa4de45786c
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: db68f979239a5783338d99360209ae231a75c936
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378739"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945037"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 リリース ノート 
 
@@ -35,10 +35,6 @@ ms.locfileid: "49378739"
 ### <a name="rest-v3-ga-release"></a>REST v3 GA リリース
 
 [REST v3 GA リリース](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)には、ライブの追加の API、アカウント/アセット レベルのマニフェスト フィルター、および DRM サポートが含まれています。
-
-#### <a name="azure-cli-20"></a>Azure CLI 2.0
- 
-ライブ、コンテンツ キー ポリシー、アカウント/アセット フィルター、ストリーミング ポリシーを含むすべての機能の Azure CLI 2.0 モジュール。
 
 #### <a name="azure-resource-management"></a>Azure Resource Management 
 
@@ -95,7 +91,9 @@ Video Indexer GA のリリースは 8 月に発表されました。 現在サ�
 
 ### <a name="plans-for-changes"></a>変更の計画
 
-Azure CLI のリリースは 2018 年 10 月 23 日の予定です。
+#### <a name="azure-cli-20"></a>Azure CLI 2.0
+ 
+すべての機能 (ライブ、コンテンツ キー ポリシー、アカウント/アセット フィルター、ストリーミング ポリシーなど) の操作を含む Azure CLI 2.0 モジュールは近日公開されます。 
 
 ### <a name="known-issues"></a>既知の問題
 

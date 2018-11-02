@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 706e946e61f7d5f48ce5071e90d724af717449d9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 4305afff1e35e9e05f1b2314f8fb9d5a96383e9f
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575220"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955645"
 ---
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 [Azure で運用可能なセキュリティ](https://docs.microsoft.com/azure/security/azure-operational-security)とは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 これは、Microsoft 独自のさまざまな機能を通じて得られた知識を統合化したフレームワークです。 これらの機能には、Microsoft Security Development Lifecycle (SDL)、Microsoft Security Response Center プログラム、およびサイバーセキュリティ上の脅威に関する高度なノウハウが含まれています。
 
-## <a name="operations-management-suite"></a>Operations Management Suite
+##  <a name="azure-management-services"></a>Azure 管理サービス
 IT 運用チームは、データセンター インフラストラクチャ、アプリケーション、データの管理を担当します。これには、こうしたシステムの安定性とセキュリティが含まれます。 ただし、多くの場合、複雑さを増す IT 環境のセキュリティを組織が把握するには、複数のセキュリティおよび管理システムのデータをまとめる必要があります。
 
-[Microsoft Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、クラウドベースの IT 管理ソリューションです。Operations Management Suite を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 このソリューションのコア機能は、Azure で実行される次のサービスによって提供されます。 各サービスでは、固有の管理機能が提供されます。 お客様は、複数のサービスを組み合わせて、さまざまな管理シナリオを実現することができます。 
+[Microsoft Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、オンプレミスのインフラストラクチャやクラウド インフラストラクチャの管理および保護に役立つ、クラウドベースの IT 管理ソリューションです。 このソリューションのコア機能は、Azure で実行される次のサービスによって提供されます。 Azure には、オンプレミスおよびクラウド インフラストラクチャを管理して保護できる複数のサービスがあります。 各サービスでは、固有の管理機能が提供されます。 お客様は、複数のサービスを組み合わせて、さまざまな管理シナリオを実現することができます。 
 
-### <a name="log-analytics"></a>Log Analytics
-[Azure Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) は、管理対象のリソースから中央リポジトリにデータを収集する、Operations Management Suite 向けの監視サービスです。 このデータには、API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 収集されたデータは、アラート、分析、エクスポートに使用できます。 
+### <a name="azure-monitor"></a>Azure Monitor
+[Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) は、マネージド ソースから中央のデータ ストアにデータを収集します。 このデータには、API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 収集されたデータは、アラート、分析、エクスポートに使用できます。 
 
 さまざまなソースからのデータを統合し、Azure サービスから得たデータを既存のオンプレミス環境と組み合わせることが可能です。 さらに、Log Analytics ではデータの収集とそのデータに対して実行される操作が明確に分離されているため、あらゆる種類のデータにすべての操作を実行できます。
 
 ### <a name="automation"></a>Automation
 [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) を使用すると、クラウド環境およびエンタープライズ環境で一般的に実行される、手動で実行時間が長く、エラーが起こりやすく、頻繁に繰り返されるタスクを自動化する手段を得られます。 これによりお客様は、管理タスクにかかる時間を短縮すると共に、タスクの信頼性を高めることができます。 また、これらのタスクは一定の頻度で自動的に実行されるようスケジュールされます。 お客様は、Runbook を使用してプロセスを自動化したり、Desired State Configuration を使用して構成管理を自動化したりすることができます。
 
-### <a name="backup"></a>Backup
+### <a name="backup"></a>バックアップ
 [Azure Backup](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup) は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 
 
 Azure Backup には複数のコンポーネントが用意されており、お客様はそれらを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Azure Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 
@@ -85,7 +85,7 @@ Security Center は、リソースの構成を評価して、セキュリティ�
 >[!Note]
 >Security Center のロールと許可されているアクションの詳細については、「[Azure Security Center におけるアクセス許可](https://docs.microsoft.com/azure/security-center/security-center-permissions)」を参照してください。
 
-Security Center では、Microsoft Monitoring Agent が使用されます。 これは、Operations Management Suite や Log Analytics サービスで使用されるのと同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics [ワークスペース](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)または新規のワークスペースのいずれかに格納されます。
+Security Center では、Microsoft Monitoring Agent が使用されます。 これは、Log Analytics サービスで使用されるエージェントと同じです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics [ワークスペース](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access)または新規のワークスペースのいずれかに格納されます。
 
 ## <a name="azure-monitor"></a>Azure Monitor
 クラウド アプリのパフォーマンスの問題は、ビジネスに影響を及ぼす場合があります。 複数の相互接続されたコンポーネントや頻繁なリリースにより、いつでもパフォーマンスの低下が生じる可能性があります。 さらに、アプリを開発している場合、通常、テストで見つからなかった問題はユーザーによって発見されます。 このような問題について即座に把握し、問題を診断して修正するためのツールを用意しておく必要があります。
@@ -155,8 +155,8 @@ Microsoft Azure などのクラウド プラットフォームでは、従来の
 -   [マイクロサービス](https://www.visualstudio.com/learn/what-are-microservices/) アーキテクチャを使用して、ビジネス ユース ケースを小規模の再利用可能なサービスに分離します。  このアーキテクチャでは、スケーラビリティと効率性が実現されます。
 
 ## <a name="next-steps"></a>次の手順
-Operations Management Suite の Security and Audit ソリューションについて詳しくは、次の記事をご覧ください。
+セキュリティおよび監査ソリューションの詳細については、次の記事をご覧ください。
 
 - [セキュリティとコンプライアンス](https://www.microsoft.com/cloud-platform/security-and-compliance)
-- [Operations Management Suite の Security and Audit ソリューションでのセキュリティの警告に対する監視と対応](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)
-- [Operations Management Suite の Security and Audit ソリューションでのリソースの監視](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources)
+- [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)

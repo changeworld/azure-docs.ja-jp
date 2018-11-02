@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: dd9a2c6a5b2183d4909b6bcfd24dc1fae401c785
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fa316ee47e6fdabacf22e1e419bfd501620dd83d
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412624"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429152"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM のシステム再起動について
 
@@ -73,7 +73,7 @@ VM の再起動の原因となる一般的なその他のシナリオとして�
 ### <a name="azure-security-center-and-windows-update"></a>Azure Security Center と Windows の更新プログラム
 Azure Security Center では、オペレーティング システムに不足している更新プログラムがないかどうかを確認するために、Windows と Linux の VM の監視を毎日行っています。 Security Center は、Windows VM に構成されているサービスに応じて、Windows Update または Windows Server Update Services (WSUS) から利用可能なセキュリティ更新プログラムと重要な更新プログラムの一覧を取得します。 また、Linux システムの最新の更新プログラムについてもチェックしています。 VM でシステムの更新プログラムが不足している場合、Security Center は、それらを適用することを推奨します。 これらのシステムの更新プログラムの適用は、Azure Portal で Security Center を通して制御されます。 一部の更新プログラムでは、その適用後に VM の再起動が必要になります。 詳細については、「[Azure Security Center でシステムの更新プログラムを適用する](../../security-center/security-center-apply-system-updates.md)」を参照してください。
 
-Windows Azure VM は、オンプレミスのサーバーと同じように、ユーザーによって管理されることを想定しているため、Azure 側からそれらの VM に Windows の更新プログラムをプッシュすることはありません。 ただし、自動 Windows Update の設定は有効のままにしておくことをお勧めします。 Windows Update による更新プログラムの自動インストールでも、更新プログラムの適用後に再起動が発生する可能性があります。 詳細については、「[Windows Update: FAQ](https://support.microsoft.com/help/12373/windows-update-faq)」を参照してください。
+Windows VM は、オンプレミスのサーバーと同じように、ユーザーによって管理されることを想定しているため、Azure 側からそれらの VM に Windows の更新プログラムをプッシュすることはありません。 ただし、自動 Windows Update の設定は有効のままにしておくことをお勧めします。 Windows Update による更新プログラムの自動インストールでも、更新プログラムの適用後に再起動が発生する可能性があります。 詳細については、「[Windows Update: FAQ](https://support.microsoft.com/help/12373/windows-update-faq)」を参照してください。
 
 ### <a name="other-situations-affecting-the-availability-of-your-vm"></a>VM の可用性に影響するその他の状況
 Azure によって VM の使用が能動的に停止される場合があります。 ユーザーは、この操作が行われる前に電子メール通知を受信するため、基になる問題を解決するチャンスがあります。 VM の可用性に影響する問題の例としては、セキュリティ違反や、支払いの有効期限切れがあります。

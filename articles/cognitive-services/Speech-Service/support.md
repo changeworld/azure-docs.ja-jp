@@ -1,19 +1,21 @@
 ---
 title: サポート オプションとヘルプ オプション
-description: Azure Cognitive Services Speech と統合するアプリケーションを作成するときの疑問や問題に対するヘルプやサポートを入手する方法について説明します
+titlesuffix: Azure Cognitive Services
+description: Speech Service と統合するアプリケーションを作成するときの疑問や問題に対するヘルプやサポートを入手する方法について説明します
 services: cognitive-services
 author: wolfma61
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: custom-speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: c08cc34631afdec4a4b08b4c599b79e1a161558c
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 58fb5d4be2137eed7d62e702f08bdd66c80be347
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364159"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468060"
 ---
 # <a name="support-and-help-options"></a>サポート オプションとヘルプ オプション
 
@@ -74,8 +76,41 @@ Stack Overflow は、開発関連の質問を投稿するのに適したチャ�
 
 多くの場合、サンプルはオープン ソースとして投稿されます。 質問や問題の場合は、それぞれの GitHub リポジトリで "*問題*" を作成します。 プル要求を送信することもできます。 次の一覧には、サンプル リポジトリへのリンクが含まれます。
 
-* [Speech SDK](https://aka.ms/csspeech/samples)
-* [Device SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK)
+* [Speech SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues)
+* [Devices SDK](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK/issues)
+
+バグ レポート、機能要求、または一般的な質問を作成し、ベスト プラクティスを共有できます。 バグ レポートの場合は、提供されているテンプレートに従ってください。
+
+**バグの説明**
+
+バグの明確で簡潔な説明。
+
+**再現方法**
+
+動作を再現する手順:
+1. ...
+2. ...
+
+**正しい動作**
+
+正しい反応の明確で簡潔な説明。
+
+**Cognitive Services Speech SDK のバージョン**
+
+使用している SDK のバージョン。
+
+**プラットフォーム、オペレーティング システム、プログラミング言語**
+
+ - OS: (例: Windows、Linux、Android、iOS、...) - 特定してください
+ - ハードウェア - x64、x86、ARM、...
+ - ブラウザー (例: Chrome、Safari) (該当する場) - 特定してください
+
+**追加コンテキスト**
+
+ - エラー メッセージ、ログ情報、スタック トレース、...
+ - 特定のサービス操作のエラーを報告する場合は、報告するインシデントのセッション ID と時刻 (タイムゾーンを含む) を報告してください。 セッション ID は、すべてのコールバック/受け取ったイベントで報告されます。
+ - 他の追加情報
+
 
 ## <a name="uservoice-forum"></a>UserVoice フォーラム
 

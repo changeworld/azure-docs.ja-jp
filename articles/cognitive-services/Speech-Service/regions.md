@@ -1,23 +1,25 @@
 ---
-title: 音声サービスのリージョン
-description: 音声認識サービスのリージョンに関するリファレンスです。
+title: Speech Service のリージョン
+titlesuffix: Azure Cognitive Services
+description: Speech Service のリージョンに関するリファレンスです。
 services: cognitive-services
 author: mahilleb-msft
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mahilleb
-ms.openlocfilehash: 01c76d80d6b2fd64165b126df01c391d7e18292f
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: a5fce6f9547a96da3ce482ce388e5ba2093f2af4
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887549"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49468128"
 ---
-# <a name="regions-of-the-speech-service"></a>音声サービスのリージョン
+# <a name="regions-of-the-speech-service"></a>Speech Service のリージョン
 
-音声サービスは、さまざまなリージョンで使用できます。
+Speech Service は、さまざまなリージョンで使用できます。
 サブスクリプションを作成する場合は、ニーズに応じて、使用可能なリージョンを選択できます。
 
 そのサブスクリプションを使用する場合は、選択したリージョンを考慮する必要があります。
@@ -29,7 +31,7 @@ ms.locfileid: "48887549"
 
 ## <a name="speech-sdk"></a>Speech SDK
 
-[Speech SDK](speech-sdk.md) では、リージョンは文字列として (たとえば、C# 用の Speech SDK では `SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。
+[Speech Service SDK](speech-sdk.md) では、リージョンは文字列として (たとえば、C# 用の Speech SDK では `SpeechConfig.FromSubscription` へのパラメーターとして) 指定されます。
 
 ### <a name="regions-for-speech-recognition-and-translation"></a>音声認識と翻訳のリージョン
 

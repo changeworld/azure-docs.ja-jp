@@ -27,6 +27,10 @@ items:
     href: troubleshoot-rdp-intermittent-connectivity.md
   - name: 一般的なエラーのトラブルシューティング
     href: troubleshoot-rdp-general-error.md
+  - name: 認証エラーのトラブルシューティング
+    href: troubleshoot-authentication-error-rdp-vm.md
+  - name: イベント ID を使用した、Azure VM の RDP 接続に関する問題のトラブルシューティング
+    href: event-id-troubleshoot-vm-rdp-connecton.md
 - name: SSH
   items:
   - name: SSH のトラブルシューティング
@@ -135,9 +139,11 @@ items:
   href: troubleshoot-vm-by-use-nested-virtualization.md
 - name: システムの再起動を理解する
   href: understand-vm-reboot.md
-ms.openlocfilehash: 749bfa9916431b4131dd7d0e814835baa96c6d64
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+- name: リモートのトラブルシューティング ツール
+  href: remote-tools-troubleshoot-azure-vm-issues.md
+ms.openlocfilehash: 677fad7f648d88d5598d1c58da205d6cbb859408
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50209243"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414762"

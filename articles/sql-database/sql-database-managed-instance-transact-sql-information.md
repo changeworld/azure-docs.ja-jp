@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 08/13/2018
-ms.openlocfilehash: 2f512c666555ca8bee58305b76573459f6e631e2
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/24/2018
+ms.openlocfilehash: fd63d0ce9ef335efdebf9759d52cf93312986d16
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166505"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025380"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database Managed Instance と SQL Server の T-SQL の相違点 
 
@@ -57,7 +57,7 @@ Azure Blob Storage の監査の `CREATE AUDIT` 構文の主な相違点は次の
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql) 
 - [監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)     
 
-### <a name="backup"></a>Backup 
+### <a name="backup"></a>バックアップ 
 
 マネージド インスタンスには自動バックアップがあり、ユーザーは完全なデータベースの `COPY_ONLY` バックアップを作成できます。 差分、ログ、ファイル スナップショットの各バックアップはサポートされていません。  
 - マネージド インスタンスでは、Azure BLOB ストレージ アカウントにのみデータベースをバックアップできます。 
@@ -103,7 +103,7 @@ T-SQL を使用したバックアップについては、[BACKUP](https://docs.m
 > ``` 
 CREATE CERTIFICATE  
  FROM BINARY = asn_encoded_certificate    
-WITH PRIVATE KEY ( <private_key_options> ) 
+WITH PRIVATE KEY (<private_key_options>) 
 >```   
  
 ### <a name="clr"></a>CLR 
@@ -254,7 +254,7 @@ In-Database R および In-Database Python 外部ライブラリはまだサポ�
 - クロス インスタンス書き込みトランザクションはサポートされていません。
 - リンク サーバーの削除で `sp_dropserver` がサポートされています。 [sp_dropserver](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql) に関する記事をご覧ください。
 - SQL Server インスタンス (マネージド、オンプレミス、または仮想マシン内) でのみ、`OPENROWSET` 関数を使用してクエリを実行できます。 [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql) に関する記事をご覧ください。
-- SQL Server インスタンス (マネージド、オンプレミス、または仮想マシン内) でのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 たとえば、「 `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`」のように入力します。 [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
+- SQL Server インスタンス (マネージド、オンプレミス、または仮想マシン内) でのみ、`OPENDATASOURCE` 関数を使用してクエリを実行できます。 プロバイダーとしてサポートされる値は、`SQLNCLI`、`SQLNCLI11`、`SQLOLEDB` だけです。 (例: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`)。 [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql) に関する記事をご覧ください。
  
 ### <a name="logins--users"></a>ログイン/ユーザー 
 
@@ -333,21 +333,22 @@ RESTORE ステートメントについては、[RESTORE ステートメント](h
  - `remote proc trans` 
 - `sp_execute_external_scripts` はサポートされていません。 [sp_execute_external_scripts](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql#examples) に関するセクションをご覧ください。
 - `xp_cmdshell` はサポートされていません。 [xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql) に関する記事をご覧ください。
-- `sp_addextendedproc` や `sp_dropextendedproc` など、`Extended stored procedures` はサポートされていません。 [拡張ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)に関する記事をご覧ください。
+- `Extended stored procedures``sp_addextendedproc` や   など、`sp_dropextendedproc` はサポートされていません。 [拡張ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)に関する記事をご覧ください。
 - `sp_attach_db`、`sp_attach_single_file_db`、`sp_detach_db` はサポートされていません。 [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql)、[sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql)、[sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql) に関する各記事をご覧ください。
 - `sp_renamedb` はサポートされていません。 [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql) に関する記事をご覧ください。
 
 ### <a name="sql-server-agent"></a>SQL Server エージェント
 
 - SQL エージェントの設定は読み取り専用です。 `sp_set_agent_properties` プロシージャは、マネージド インスタンスではサポートされていません。  
-- ジョブ - 現在、T-SQL ジョブ ステップがサポートされています。
-- 他の種類のジョブ ステップは現在、サポートされていません (パブリック プレビュー期間に、ステップの種類がさらに追加される予定です)。
-  - サポートされていないレプリケーション ジョブには、次が含まれます。
+- [ジョブ]
+ - T-SQL ジョブ ステップがサポートされています。
+ - 次のレプリケーション ジョブがサポートされています。
     - トランザクション ログ リーダー。  
     - スナップショット。
-    - ディストリビューター。  
-    - マージ。  
-  - SSIS はまだサポートされていません。 
+    - ディストリビューター。
+ - SSIS がサポートされています。 
+- 以下のように、他の種類のジョブ ステップは現在サポートされていません。
+  - マージ レプリケーション ジョブ ステップはサポートされていません。  
   - キュー リーダーはサポートされていません。  
   - コマンド シェルはまだサポートされていません。 
   - マネージド インスタンスは、外部リソース (例: robocopy を介したネットワーク共有) にはアクセスできません。  
@@ -411,7 +412,7 @@ SQL Server エージェントについては、「[SQL Server エージェント
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>データベースの復元時の SAS キーの構成が正しくない
 
 `CREDENTIAL` の Shared Access Signature が正しくない場合、.bak ファイルを読み取る `RESTORE DATABASE` が、.bak ファイルの読み取りの再試行を繰り返し、長時間経過した後にエラーを返すことがあります。 データベースを復元する前に RESTORE HEADERONLY を実行して、SAS キーが正しいことを確認します。
-Azure Portal を使用して生成された SAS キーから、先頭の `?` を必ず削除してください。
+Azure portal を使用して生成された SAS キーから、先頭の `?` を必ず削除してください。
 
 ### <a name="tooling"></a>ツール
 

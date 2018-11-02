@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a889307138564bd56168d9561a56fc391704a459
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 3f23464776036a8c91b180d46341782fddb9d5e8
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318981"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140961"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントに関する問題のトラブルシューティング方法 
 
@@ -166,7 +166,7 @@ OMS 出力プラグインを使用する代わりに、データ項目を `stdou
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <Workspace ID> -s <Workspace Key> -p <Proxy Conf> -v`
 
 2. 「[プロキシ設定を更新する](log-analytics-agent-manage.md#update-proxy-settings)」セクションを参照して、プロキシ サーバー経由で通信するようにエージェントを正しく構成したことを確認します。    
-* 以下の Log Analytics サービス エンドポイントが許可リストに載っていることを再確認します。
+* 以下の Log Analytics エンドポイントが許可リストに載っていることを再確認します。
 
     |エージェントのリソース| ポート | 方向 |
     |------|---------|----------|  

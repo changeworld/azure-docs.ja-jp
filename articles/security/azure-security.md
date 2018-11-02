@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 81eb23a0955bbc6a5f9dcd95c6874f0c5a8c286c
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: ce2b4304ea53be7e9a7be42b8a7fb30f713d85f8
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434039"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405210"
 ---
 # <a name="introduction-to-azure-security"></a>Azure セキュリティの概要
 ## <a name="overview"></a>概要
@@ -74,10 +74,10 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 ## <a name="operations"></a>[操作]
 このセクションでは、セキュリティ操作を行う上で重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
-### <a name="operations-management-suite-security-and-audit-dashboard"></a>Operations Management Suite の Security and Audit ダッシュボード
-[OMS の Security and Audit ソリューション](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)では、注意を必要とする重要な問題向けの[組み込みの検索クエリ](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/)と共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 [[Security and Audit]](https://technet.microsoft.com/library/mt484091.aspx) \(セキュリティと監査) ダッシュボードは、OMS におけるすべてのセキュリティ関連機能のホーム画面です。 コンピューターのセキュリティ状態に関する高度な洞察を提供します。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示する機能も含まれています。
+### <a name="security-and-audit-dashboard"></a>[セキュリティおよび監査] ダッシュボード
+[セキュリティおよび監査ソリューション](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started)では、注意を必要とする重要な問題向けの[組み込みの検索クエリ](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/)と共に、組織の IT セキュリティ対策への包括的な視点が提供されます。 [[セキュリティおよび監査]](https://technet.microsoft.com/library/mt484091.aspx) ダッシュボードは、Log Analytics におけるすべてのセキュリティ関連機能のホーム画面です。 コンピューターのセキュリティ状態に関する高度な洞察を提供します。 また、過去の 24 時間、7 日間、またはそれ以外のカスタム期間に発生したすべてのイベントを表示する機能も含まれています。
 
-さらに、OMS のセキュリティとコンプライアンスを構成して、特定のイベントが検出されたときに[特定のアクションを自動的に実行](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)します。
+さらに、セキュリティとコンプライアンスを構成して、特定のイベントが検出されたときに[特定のアクションを自動的に実行](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/)します。
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) を使用すると、ソリューション内の複数のリソースを 1 つのグループにまとめて作業できます。 ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイには [Azure Resource Manager テンプレート](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/)を使用します。このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
@@ -95,7 +95,7 @@ Application Insights が作成するグラフや表を見ると、たとえば�
 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) は、Azure インフラストラクチャ ([アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)) と個々の Azure リソース ([診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)) の両方から得られたデータの視覚化、クエリ、ルーティング、アラート、自動スケール、自動化を行います。 Azure Monitor を使用して、Azure ログで生成されたセキュリティ関連のイベントについて通知を作成できます。
 
 ### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) ([Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) の一部) – Azure リソースだけでなく、オンプレミスやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える IT 管理ソリューションです。 Log Analytics には Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを 1 か所で確認できます。
+[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) – Azure リソースだけでなく、オンプレミスやサードパーティ製のクラウド インフラストラクチャ (AWS など) にも使える IT 管理ソリューションです。 Log Analytics には Azure Monitor のデータを直接ルーティングできるため、環境全体のメトリックとログを 1 か所で確認できます。
 
 Log Analytics は、フォレンジック分析などのセキュリティ分析に便利なツールで、セキュリティ関連の項目が大量にあっても柔軟なクエリ方法により迅速に検索を行うことができます。 さらに、オンプレミスの[ファイアウォールおよびプロキシ ログを Azure にエクスポートして、Log Analytics を使用した分析に使用することができます。](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
 

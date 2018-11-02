@@ -1,6 +1,6 @@
 ---
 title: Log Analytics のワイヤ データ ソリューション | Microsoft Docs
-description: ワイヤ データとは、Operations Manager エージェントや Windows に接続されたエージェントなどの OMS エージェントがインストールされたコンピューターからのネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。
+description: ワイヤー データは、Log Analytics エージェントを使用してコンピューターのネットワークとパフォーマンスのデータを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,20 +15,20 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 9ee388e8d33d293240e70ccf79ec8d3c445dffd1
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 61ceea60962acc2e1ec032df49683e8a28381dd7
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269159"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405363"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics の Wire Data 2.0 (プレビュー) ソリューション
 
 ![ワイヤ データのシンボル](./media/log-analytics-wire-data/wire-data2-symbol.png)
 
-ワイヤ データとは、OMS エージェントがインストールされた Windows に接続されたコンピューターおよび Linux に接続されたコンピューター (環境内の Operations Manager によって監視されているコンピューターを含む) から収集したネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データを他のログ データと結び付けると、データを相関させるのに役立ちます。
+ワイヤ データとは、Log Analytics エージェントがインストールされた Windows に接続されたコンピューターおよび Linux に接続されたコンピューター (環境内の Operations Manager によって監視されているコンピューターを含む) から収集したネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データを他のログ データと結び付けると、データを相関させるのに役立ちます。
 
-OMS エージェントに加えて、ワイヤ データ ソリューションは、IT インフラストラクチャ内のコンピューターにインストールされている Microsoft Dependency Agent を使用します。 Dependency Agent では、使用されるさまざまなプロトコルやポートなど、[OSI モデル](https://en.wikipedia.org/wiki/OSI_model)のネットワーク レベル 2 ～ 3 について、コンピューターとの間で送受信されたネットワーク データを監視します。 データはその後、エージェントを使用して Log Analytics に送信されます。  
+Log Analytics エージェントに加えて、ワイヤ データ ソリューションは、IT インフラストラクチャ内のコンピューターにインストールされている Microsoft Dependency Agent を使用します。 Dependency Agent では、使用されるさまざまなプロトコルやポートなど、[OSI モデル](https://en.wikipedia.org/wiki/OSI_model)のネットワーク レベル 2 ～ 3 について、コンピューターとの間で送受信されたネットワーク データを監視します。 データはその後、エージェントを使用して Log Analytics に送信されます。  
 
 >[!NOTE]
 >Service Map を既にデプロイしているか、Service Map または [Azure Monitor for VM](../monitoring/monitoring-vminsights-overview.md) を検討している場合は、それらが Log Analytics で収集して格納する、ワイヤ データにかなりの情報を提供する新しい接続メトリック データセットがあります。
@@ -65,20 +65,20 @@ OMS エージェントに加えて、ワイヤ データ ソリューション�
 | System Center Operations Manager 管理グループ | [はい] | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 |
 | Azure ストレージ アカウント | いいえ  | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
-Windows では、データの収集と送信のために System Center Operations Manager と Log Analytics の両方で Microsoft Monitoring Agent (MMA) が使用されます。 状況に応じて、このエージェントは System Center Operations Manager エージェント、OMS エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます。 System Center Operations Manager と Log Analytics では、MMA バージョンが少し異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Log Analytics、またはその両方にレポートできます。
+Windows では、データの収集と送信のために System Center Operations Manager と Log Analytics の両方で Microsoft Monitoring Agent (MMA) が使用されます。 状況に応じて、このエージェントは System Center Operations Manager エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます。 System Center Operations Manager と Log Analytics では、MMA バージョンが少し異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Log Analytics、またはその両方にレポートできます。
 
 Linux では、Linux の Log Analytics エージェントがデータを収集して Log Analytics に送信します。 ワイヤ データは、Log Analytics に直接接続されているエージェントを含むサーバーまたは System Center Operations Manager 管理グループ経由で Log Analytics に接続されているサーバーで使用できます。
 
-Dependency Agent がデータ自体を送信することはないため、ファイアウォールやポートを変更する必要はありません。 ワイヤ データ内のデータは、常に Log Analytics エージェントによって、直接または OMS ゲートウェイを使用して Log Analytics に送信されます。
+Dependency Agent がデータ自体を送信することはないため、ファイアウォールやポートを変更する必要はありません。 ワイヤ データ内のデータは、常に Log Analytics エージェントによって、直接または Log Analytics ゲートウェイを使用して Log Analytics に送信されます。
 
 ![エージェントの図](./media/log-analytics-wire-data/agents.png)
 
 Log Analytics に管理グループが接続されている System Center Operations Manager ユーザーである場合は次のとおりです。
 
 - System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできる場合は、追加の構成は必要ありません。
-- System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできない場合は、System Center Operations Manager を操作するために OMS ゲートウェイを構成する必要があります。
+- System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできない場合は、System Center Operations Manager を操作するために Log Analytics ゲートウェイを構成する必要があります。
 
-Windows または Linux コンピューターがサービスに直接接続できない場合は、OMS ゲートウェイを使用して Log Analytics に接続するように Log Analytics エージェントを構成する必要があります。 OMS ゲートウェイは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=52666)からダウンロードできます。
+Windows または Linux コンピューターがサービスに直接接続できない場合は、Log Analytics ゲートウェイを使用して Log Analytics に接続するように Log Analytics エージェントを構成する必要があります。 Log Analytics ゲートウェイは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=52666)からダウンロードできます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -211,7 +211,7 @@ Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows �
 
 Windows を実行している各コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1. [環境でホストされている Windows コンピューターからのデータの収集](log-analytics-windows-agent.md)に関する記事の手順に従って、OMS エージェントをインストールします。
+1. [環境でホストされている Windows コンピューターからのデータの収集](log-analytics-windows-agent.md)に関する記事の手順に従って、Log Analytics エージェントをインストールします。
 2. 前のセクションのリンクを使用して Windows Dependency Agent をダウンロードしてから、次のコマンドを使用して実行します。`InstallDependencyAgent-Windows.exe`
 3. ウィザードに従ってエージェントをインストールします。
 4. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントの場合、ログ ディレクトリは %Programfiles%\Microsoft Dependency Agent\logs です。
@@ -237,7 +237,7 @@ Dependency Agent は、InstallDependencyAgent-Linux64.bin (自己解凍バイナ
 
 各 Linux コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1. [環境でホストされている Linux コンピューターからのデータの収集](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key)に関する記事の手順に従って、OMS エージェントをインストールします。
+1. [環境でホストされている Linux コンピューターからのデータの収集](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key)に関する記事の手順に従って、Log Analytics エージェントをインストールします。
 2. 前のセクションのリンクを使用して Linux Dependency Agent をダウンロードしてから、次のコマンドを使用して root としてインストールします。sh InstallDependencyAgent-Linux64.bin
 3. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Linux エージェントのログ ディレクトリは、/var/opt/microsoft/dependency-agent/log です。
 

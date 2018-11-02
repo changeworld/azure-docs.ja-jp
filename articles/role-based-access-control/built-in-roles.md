@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 09/27/2018
+ms.date: 10/19/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 88667749d9cdf5239be33f3aca52d1a614556a41
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 72a8a09d04dc009598dafc35b65304662b7b8915
+ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816612"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49955917"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure リソースの組み込みロール
 [ロールベースのアクセス制御 (RBAC)](overview.md) には、ユーザー、グループ、サービス プリンシパルに割り当てることのできるいくつかの組み込みロールの定義があります。 ロールの割り当ては、Azure でリソースへのアクセスを制御する方法です。 組み込みロールが組織の特定のニーズを満たさない場合は、独自の[カスタム ロール](custom-roles.md)を作成することができます。
@@ -95,7 +95,6 @@ ms.locfileid: "48816612"
 | [Monitoring Reader](#monitoring-reader) | すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](../monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。 |
 | [Network Contributor](#network-contributor) | ネットワークを管理できます。ただし、それらへのアクセスは含まれません。 |
 | [New Relic APM Account Contributor](#new-relic-apm-account-contributor) | New Relic Application Performance Management のアカウントとアプリケーションを管理できます。ただし、それらへのアクセスは含まれません。 |
-| [PowerApps 管理者テスト](#powerapps-administrator-test) | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
 | [Reader and Data Access](#reader-and-data-access) | すべてを表示することができますが、ストレージ アカウントや含まれるリソースの削除や作成はできません。 ストレージ アカウント キーへのアクセスを使用して、ストレージ アカウントに含まれるすべてのデータへの読み取り/書き込みアクセスも許可されます。 |
 | [Redis Cache Contributor](#redis-cache-contributor) | Redis Caches を管理できます。ただし、それらへのアクセスは含まれません。 |
 | [リソース ポリシーの共同作成者 (プレビュー)](#resource-policy-contributor-preview) | (プレビュー) リソース ポリシーの作成/変更、サポート チケットの作成、リソース/階層の読み取りを実行する権限により、ユーザーを EA からバックフィルしました。 |
@@ -147,8 +146,8 @@ ms.locfileid: "48816612"
 > | Microsoft.Authorization/*/Delete | ロールとロール割り当ては削除できません |
 > | Microsoft.Authorization/*/Write | ロールとロール割り当ては作成できません |
 > | Microsoft.Authorization/elevateAccess/Action | テナント スコープで、ユーザー アクセス管理者のアクセス権を呼び出し元に付与します。 |
-> | Microsoft.Blueprint/blueprintAssignments/write |  |
-> | Microsoft.Blueprint/blueprintAssignments/delete |  |
+> | Microsoft.Blueprint/blueprintAssignments/write | 任意のブループリント アーティファクトの作成または更新 |
+> | Microsoft.Blueprint/blueprintAssignments/delete | 任意のブループリント アーティファクトの削除 |
 
 ## <a name="reader"></a>Reader
 > [!div class="mx-tableFixed"]
@@ -379,10 +378,9 @@ ms.locfileid: "48816612"
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Network/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
 > | Microsoft.RecoveryServices/locations/* |  |
-> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp は、サービスによって使用される内部操作です。 |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/* | バックアップ管理操作の結果の管理 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/* | Recovery Services コンテナーのバックアップ ファブリック内でのバックアップ コンテナーの作成および管理 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | バックアップ ジョブの作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | "ジョブのエクスポート" 操作の結果を返します。 |
@@ -399,13 +397,26 @@ ms.locfileid: "48816612"
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Recovery Services コンテナーのアラートを取得します。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 > | Microsoft.RecoveryServices/Vaults/read | "コンテナーの取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトを取得します。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/* | 登録済み ID の管理 |
-> | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/usages/* | Recovery Services コンテナーの使用状況の作成および管理 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
+> | Microsoft.RecoveryServices/Vaults/backupconfig/* |  |
+> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 保護された項目に対する操作を検証します |
+> | Microsoft.RecoveryServices/Vaults/write | "コンテナーの作成" 操作では、"コンテナー" 型の Azure リソースを作成します。 |
+> | Microsoft.RecoveryServices/Vaults/backupOperations/read | Recovery Services コンテナーに対するバックアップ操作の状態を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupEngines/read | コンテナーに登録されているすべてのバックアップ管理サーバーを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/* |  |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | すべての保護可能なコンテナーを取得します。 |
+> | Microsoft.RecoveryServices/locations/backupStatus/action | Recovery Services コンテナーのバックアップの状態を確認します。 |
+> | Microsoft.RecoveryServices/locations/backupPreValidateProtection/action |  |
+> | Microsoft.RecoveryServices/locations/backupValidateFeatures/action | 機能を検証します。 |
+> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | アラートを解決する。 |
+> | Microsoft.RecoveryServices/operations/read | リソース プロバイダーの操作の一覧を返します。 |
+> | Microsoft.RecoveryServices/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ## <a name="backup-operator"></a>Backup Operator
@@ -417,8 +428,6 @@ ms.locfileid: "48816612"
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.Network/virtualNetworks/read | 仮想ネットワークの定義を取得します。 |
-> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp は、サービスによって使用される内部操作です。 |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 操作の状態を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | 保護コンテナーに対して実行された操作の結果を取得します。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/backup/action | 保護された項目のバックアップを実行します。 |
@@ -431,19 +440,15 @@ ms.locfileid: "48816612"
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/action | 保護された項目のインスタント項目回復を取り消します。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write | バックアップ保護項目を作成します。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | すべての登録済みコンテナーを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/* | バックアップ ジョブの作成および管理 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/cancel/action | ジョブを取り消します。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | ジョブ操作の結果を返します。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobs/read | すべてのジョブ オブジェクトを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | "ジョブのエクスポート" 操作の結果を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Recovery Services コンテナーのバックアップ管理メタデータを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/* | バックアップ管理操作の結果の作成および管理 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
-> | Microsoft.RecoveryServices/Vaults/backupPolicies/operationStatus/read |  |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/read | すべての保護ポリシーを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectableItems/* | バックアップできるアイテムの作成および管理 |
-> | Microsoft.RecoveryServices/Vaults/backupProtectableItems/read | すべての保護可能な項目の一覧を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectedItems/read | すべての保護された項目の一覧を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | サブスクリプションに属するすべてのコンテナーを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Recovery Services の保護された項目と保護されたサーバーの概要を返します。 |
@@ -453,15 +458,31 @@ ms.locfileid: "48816612"
 > | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Recovery Services コンテナーのアラートを取得します。 |
 > | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
 > | Microsoft.RecoveryServices/Vaults/read | "コンテナーの取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトを取得します。 |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/refreshContainers/action | コンテナーの一覧を更新します。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | "操作結果を取得" 操作を使用すると、非同期で送信された操作の状態と結果を取得できます。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | " コンテナーを取得" 操作を使用すると、リソースの登録済みコンテナーを取得できます。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/write | "サービス コンテナーを登録" 操作を使用すると、コンテナーを Recovery Services に登録できます。 |
-> | Microsoft.RecoveryServices/Vaults/storageConfig/* |  |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 > | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
 > | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの一覧を返すか、指定されたストレージ アカウントのプロパティを取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/* |  |
+> | Microsoft.RecoveryServices/Vaults/backupValidateOperation/action | 保護された項目に対する操作を検証します |
+> | Microsoft.RecoveryServices/Vaults/backupOperations/read | Recovery Services コンテナーに対するバックアップ操作の状態を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | ポリシー操作の状態を取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/write | 登録済みコンテナーを作成します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/inquire/action | コンテナー内のワークロードを照会します。 |
+> | Microsoft.RecoveryServices/Vaults/backupEngines/read | コンテナーに登録されているすべてのバックアップ管理サーバーを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | バックアップの保護インテントを作成します |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | バックアップ保護の意図を取得します |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectableContainers/read | すべての保護可能なコンテナーを取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | コンテナー内のすべての項目を取得します。 |
+> | Microsoft.RecoveryServices/locations/backupStatus/action | Recovery Services コンテナーのバックアップの状態を確認します。 |
+> | Microsoft.RecoveryServices/locations/backupPreValidateProtection/action |  |
+> | Microsoft.RecoveryServices/locations/backupValidateFeatures/action | 機能を検証します。 |
+> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | アラートを解決する。 |
+> | Microsoft.RecoveryServices/operations/read | リソース プロバイダーの操作の一覧を返します。 |
+> | Microsoft.RecoveryServices/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ## <a name="backup-reader"></a>Backup Reader
@@ -472,15 +493,18 @@ ms.locfileid: "48816612"
 > | **Id** | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | **アクション** |  |
 > | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
+> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp は、サービスによって使用される内部操作です。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/operationResults/read | 操作の状態を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/operationResults/read | 保護コンテナーに対して実行された操作の結果を取得します。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/read | 保護された項目に対して実行された操作の結果を取得します。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/read | 保護された項目に対して実行された操作の状態を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read | 保護された項目のオブジェクトの詳細を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 保護された項目の復旧ポイントを取得します。 |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/read | すべての登録済みコンテナーを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/operationResults/read | ジョブ操作の結果を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobs/read | すべてのジョブ オブジェクトを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupJobsExport/action | ジョブをエクスポートします。 |
+> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | "ジョブのエクスポート" 操作の結果を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupManagementMetaData/read | Recovery Services コンテナーのバックアップ管理メタデータを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupOperationResults/read | Recovery Services コンテナーに対するバックアップ操作の結果を返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupPolicies/operationResults/read | ポリシー操作の結果を取得します。 |
@@ -489,17 +513,23 @@ ms.locfileid: "48816612"
 > | Microsoft.RecoveryServices/Vaults/backupProtectionContainers/read | サブスクリプションに属するすべてのコンテナーを返します。 |
 > | Microsoft.RecoveryServices/Vaults/backupUsageSummaries/read | Recovery Services の保護された項目と保護されたサーバーの概要を返します。 |
 > | Microsoft.RecoveryServices/Vaults/extendedInformation/read | "拡張情報の取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトの拡張情報を取得します。 |
+> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Recovery Services コンテナーのアラートを取得します。 |
 > | Microsoft.RecoveryServices/Vaults/read | "コンテナーの取得" 操作では、"コンテナー" 型の Azure リソースを表すオブジェクトを取得します。 |
-> | Microsoft.RecoveryServices/Vaults/refreshContainers/read |  |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/operationResults/read | "操作結果を取得" 操作を使用すると、非同期で送信された操作の状態と結果を取得できます。 |
 > | Microsoft.RecoveryServices/Vaults/registeredIdentities/read | " コンテナーを取得" 操作を使用すると、リソースの登録済みコンテナーを取得できます。 |
-> | Microsoft.RecoveryServices/locations/allocatedStamp/read | GetAllocatedStamp は、サービスによって使用される内部操作です。 |
-> | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
-> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/read | Recovery Services コンテナーのアラートを取得します。 |
-> | Microsoft.RecoveryServices/Vaults/storageConfig/read |  |
-> | Microsoft.RecoveryServices/Vaults/backupconfig/vaultconfig/read |  |
-> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/read | 保護された項目の復旧ポイントを取得します。 |
-> | Microsoft.RecoveryServices/Vaults/backupJobsExport/operationResults/read | "ジョブのエクスポート" 操作の結果を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupstorageconfig/read | Recovery Services コンテナーのストレージ構成を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupconfig/read | Recovery Services コンテナーの構成を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupOperations/read | Recovery Services コンテナーに対するバックアップ操作の状態を返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupPolicies/operations/read | ポリシー操作の状態を取得します。 |
+> | Microsoft.RecoveryServices/Vaults/backupEngines/read | コンテナーに登録されているすべてのバックアップ管理サーバーを返します。 |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/read | バックアップ保護の意図を取得します |
+> | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/items/read | コンテナー内のすべての項目を取得します。 |
+> | Microsoft.RecoveryServices/locations/backupStatus/action | Recovery Services コンテナーのバックアップの状態を確認します。 |
+> | Microsoft.RecoveryServices/Vaults/monitoringConfigurations/* |  |
+> | Microsoft.RecoveryServices/Vaults/monitoringAlerts/write | アラートを解決する。 |
+> | Microsoft.RecoveryServices/operations/read | リソース プロバイダーの操作の一覧を返します。 |
+> | Microsoft.RecoveryServices/locations/operationStatus/read | 特定の操作の操作の状態を取得します |
+> | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | すべてのバックアップ保護の意図を一覧表示します |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Recovery Services コンテナーの使用状況の詳細を返します。 |
 
 ## <a name="billing-reader"></a>Billing Reader
@@ -786,14 +816,14 @@ ms.locfileid: "48816612"
 > | **説明** | データ ファクトリを管理できます。ただし、それらへのアクセスは含まれません。 |
 > | **Id** | 673868aa-7521-48a0-acc6-0f60742d39f5 |
 > | **アクション** |  |
-> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り。 |
+> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
 > | Microsoft.DataFactory/dataFactories/* | Data Factory と Data Factory に含まれる子リソースを作成および管理します。 |
 > | Microsoft.DataFactory/factories/* | Data Factory と Data Factory に含まれる子リソースを作成および管理します。 |
-> | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理。 |
+> | Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理。 |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループの取得または一覧表示。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理。 |
+> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
+> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
+> | Microsoft.Support/* | サポート チケットの作成と管理 |
 
 ## <a name="data-lake-analytics-developer"></a>Data Lake Analytics Developer
 > [!div class="mx-tableFixed"]
@@ -1211,21 +1241,6 @@ ms.locfileid: "48816612"
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
 > | NewRelic.APM/accounts/* |  |
 
-## <a name="powerapps-administrator-test"></a>PowerApps 管理者テスト
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **説明** | Azure DNS の DNS ゾーンとレコード セットを管理できますが、それにアクセスできるユーザーを制御することはできません。 |
-> | **Id** | befefa01-2a29-4897-83a8-272ff33ce314 |
-> | **アクション** |  |
-> | Microsoft.Authorization/*/read | ロールとロール割り当ての読み取り |
-> | Microsoft.Insights/alertRules/* | Insights アラート ルールの作成と管理 |
-> | Microsoft.Network/dnsZones/* |  |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | 指定されたスコープのすべてのリソースの利用状況を取得します。 |
-> | Microsoft.Resources/deployments/* | リソース グループ デプロイの作成と管理 |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | リソース グループを取得または一覧表示します。 |
-> | Microsoft.Support/* | サポート チケットの作成と管理 |
-
 ## <a name="reader-and-data-access"></a>Reader and Data Access
 > [!div class="mx-tableFixed"]
 > | | |
@@ -1510,6 +1525,8 @@ ms.locfileid: "48816612"
 > | Microsoft.Sql/servers/databases/* | SQL データベースの作成と管理 |
 > | Microsoft.Sql/servers/read | サーバーの一覧を返すか、指定されたサーバーのプロパティを取得します。 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Insights/metrics/read | メトリックを読み取ります。 |
+> | Microsoft.Insights/metricDefinitions/read | メトリック定義を読み取ります。 |
 > | **NotActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/databases/auditingPolicies/* | 監査ポリシーを編集することはできません |
@@ -1578,6 +1595,8 @@ ms.locfileid: "48816612"
 > | Microsoft.Sql/locations/*/read |  |
 > | Microsoft.Sql/servers/* | SQL サーバーの作成と管理 |
 > | Microsoft.Support/* | サポート チケットの作成と管理 |
+> | Microsoft.Insights/metrics/read | メトリックを読み取ります。 |
+> | Microsoft.Insights/metricDefinitions/read | メトリック定義を読み取ります。 |
 > | **NotActions** |  |
 > | Microsoft.Sql/managedInstances/databases/vulnerabilityAssessments/* |  |
 > | Microsoft.Sql/servers/auditingPolicies/* | SQL サーバー監査ポリシーは編集できません |

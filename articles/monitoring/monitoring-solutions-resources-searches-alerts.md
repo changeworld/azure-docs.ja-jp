@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f03e124aab27292ee86fcd8c28ecebb0ba9cbdcf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8ec5f1cef3f9ca82953093d2086b615087db1a7f
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999513"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024774"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを管理ソリューションに追加する (プレビュー)
 
@@ -54,7 +54,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 
 ## <a name="saved-searches"></a>保存された検索条件
-ソリューションによって収集されたデータをユーザーが照会できるように、[保存された検索条件](../log-analytics/log-analytics-log-searches.md)をソリューションに含めます。  保存された検索条件は、OMS ポータルの **[お気に入り]** と、Azure Portal の **[保存された検索条件]** に表示されます。  保存された検索条件は、各アラートにも必要です。   
+ソリューションによって収集されたデータをユーザーが照会できるように、[保存された検索条件](../log-analytics/log-analytics-log-searches.md)をソリューションに含めます。  保存された検索条件は、Azure portal の **[保存された検索条件]** に表示されます。  保存された検索条件は、各アラートにも必要です。   
 
 [Log Analytics の保存された検索条件](../log-analytics/log-analytics-log-searches.md)リソースは、`Microsoft.OperationalInsights/workspaces/savedSearches` 型であり、次のような構造をしています。  ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。 
 
@@ -84,13 +84,13 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 | query | 実行するクエリ。 |
 
 > [!NOTE]
-> JSON として解釈される可能性のある文字が含まれる場合、クエリではエスケープ文字を使うことが必要になる場合があります。  たとえば、**Type: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"** というクエリの場合、ソリューション ファイルには **Type: AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"** と書き込まれる必要があります。
+> JSON として解釈される可能性のある文字が含まれる場合、クエリではエスケープ文字を使うことが必要になる場合があります。  たとえば、**AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"** というクエリの場合、ソリューション ファイルには **AzureActivity | OperationName:/\"Microsoft.Compute/virtualMachines/write\"** と書き込まれる必要があります。
 
 ## <a name="alerts"></a>アラート
 [Azure Log のアラート](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)は、指定されたログ クエリを一定の間隔で実行する Azure Alert ルールによって作成されます。  クエリの結果が指定されている条件と一致する場合、アラート レコードが作成されて、[アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)を使用して 1 つまたは複数のアクションが実行されます。  
 
 > [!NOTE]
-> 2018 年 5 月 14 日から、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートの Azure への自動的な拡張が開始されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日から、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートは Azure に拡張されます。 詳細については、[Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)を使用してアクションを取得または追加できます。
 
 管理ソリューションのアラート ルールは、次の 3 つの異なるリソースで構成されます。
 
@@ -130,9 +130,9 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 | 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| enabled       | はい | 作成時点でアラートが有効かどうかを指定します。 |
-| interval      | はい | クエリを実行する間隔です (分単位)。 |
-| queryTimeSpan | はい | 結果を評価する期間です (分単位)。 |
+| enabled       | [はい] | 作成時点でアラートが有効かどうかを指定します。 |
+| interval      | [はい] | クエリを実行する間隔です (分単位)。 |
+| queryTimeSpan | [はい] | 結果を評価する期間です (分単位)。 |
 
 スケジュール リソースは保存された検索条件に依存するので、スケジュールの前に作成する必要があります。
 
@@ -146,7 +146,7 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 アクションは、アクション グループ リソースまたはアクション リソースを使って定義できます。
 
 > [!NOTE]
-> 2018 年 5 月 14 日から、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートの Azure への自動的な拡張が開始されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日から、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートは自動的に Azure に拡張されます。 詳細については、[Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)を使用してアクションを取得または追加できます。
 
 
 **Type** プロパティによって指定される 2 種類のアクション リソースがあります。  スケジュールには、アラート ルールの詳細と、アラート作成時に実行するアクションが定義されている、1 つの **Alert** アクションが必要です。 アクション リソースは `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions` 型です。  
@@ -242,15 +242,15 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 どのスケジュールも 1 つの**アラート** アクションを保持しています。  アラート アクションでは、アラートの詳細と、必要に応じて通知と修復のアクションが定義されています。  通知は、1 つ以上のアドレスにメールを送信します。  修復は、Azure Automation で Runbook を開始し、検出された問題の修復を試みます。
 
 > [!NOTE]
-> 2018 年 5 月 14 日から、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートの Azure への自動的な拡張が開始されます。 ユーザーは 2018 年 5 月 14 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)を使用してアクションを取得または追加できます。
+> 2018 年 5 月 14 日から、Log Analytics ワークスペースの Azure パブリック クラウド インスタンス内のすべてのアラートは自動的に Azure に拡張されます。 詳細については、[Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの Azure Resource Manager テンプレート](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md)を使用してアクションを取得または追加できます。
 
 ##### <a name="emailnotification"></a>EmailNotification
  このセクションは省略可能です。アラートで 1 人以上の受信者にメールを送信する場合に指定します。
 
 | 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| Recipients | はい | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Subject | はい | メールの件名です。 |
+| Recipients | [はい] | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
+| Subject | [はい] | メールの件名です。 |
 | Attachment | いいえ  | 添付ファイルは現在はサポートされていません。  この要素を指定する場合は、**None** にする必要があります。 |
 
 
@@ -259,8 +259,8 @@ Azure のすべてのアラートは、アクションを管理する既定の�
 
 | 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| RunbookName | はい | 開始する Runbook の名前です。 |
-| WebhookUri | はい | Runbook に対する webhook の URI です。 |
+| RunbookName | [はい] | 開始する Runbook の名前です。 |
+| WebhookUri | [はい] | Runbook に対する webhook の URI です。 |
 | Expiry | いいえ  | 修復が期限切れになる日付と時刻です。 |
 
 ##### <a name="webhook-actions"></a>Webhook アクション
@@ -289,9 +289,9 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 
 | 要素名 | 必須 | 説明 |
 |:--|:--|:--|
-| type | はい | アクションの種類。  これは、webhook アクションの **Webhook** です。 |
-| name | はい | アクションの表示名です。  コンソールには表示されません。 |
-| wehookUri | はい | webhook の URI です。 |
+| type | [はい] | アクションの種類。  これは、webhook アクションの **Webhook** です。 |
+| name | [はい] | アクションの表示名です。  コンソールには表示されません。 |
+| wehookUri | [はい] | webhook の URI です。 |
 | customPayload | いいえ  | Webhook に送信するカスタム ペイロード。 形式は、Webhook で想定される内容によって異なります。 |
 
 

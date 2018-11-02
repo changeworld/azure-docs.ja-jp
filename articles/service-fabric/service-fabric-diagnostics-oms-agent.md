@@ -14,23 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: 21c9441e2b3d3ad54d491834e6de097a8880b5b7
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: e440cca59bde1c845bc99ef137c18242e888ee06
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311118"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230099"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Log Analytics でのパフォーマンスの監視
 
-この記事では、Log Analytics Agent を仮想マシン スケール セットの拡張機能としてクラスターに追加し、既存の Azure Log Analytics ワークスペースに接続する手順について説明します。 これにより、コンテナー、アプリケーション、およびパフォーマンスの監視に関する診断データを収集できます。 これを、仮想マシン スケール セット リソースの拡張機能として追加することで、クラスターをスケーリングしても Azure Resource Manager によってすべてのノードにインストールされるようになります。
+この記事では、Log Analytics エージェントを仮想マシン スケール セットの拡張機能としてクラスターに追加し、既存の Azure Log Analytics ワークスペースに接続する手順について説明します。 これにより、コンテナー、アプリケーション、およびパフォーマンスの監視に関する診断データを収集できます。 これを、仮想マシン スケール セット リソースの拡張機能として追加することで、クラスターをスケーリングしても Azure Resource Manager によってすべてのノードにインストールされるようになります。
 
 > [!NOTE]
 > この記事では、Azure Log Analytics ワークスペースが設定済みであることを前提としています。 設定していない場合は、[Azure Log Analytics の設定](service-fabric-diagnostics-oms-setup.md)に関するページに進んでください。
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Azure CLI を使用して拡張機能を追加する
 
-Log Analytics Agent をクラスターに追加する最も良い方法は、Azure CLI で利用できる仮想マシン スケール セットの API を使用することです。 Azure CLI をまだ設定していない場合は、Azure portal に移動して [Cloud Shell](../cloud-shell/overview.md) インスタンスを開くか、[Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
+Log Analytics エージェントをクラスターに追加する最も良い方法は、Azure CLI で利用できる仮想マシン スケール セットの API を使用することです。 Azure CLI をまだ設定していない場合は、Azure portal に移動して [Cloud Shell](../cloud-shell/overview.md) インスタンスを開くか、[Azure CLI をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
 
 1. Cloud Shell を要求されたら、お使いのリソースと同じサブスクリプションで作業していることを確認します。 確認には `az account show` を使用し、"name" (名前) の値がクラスターのサブスクリプション名と一致することを確認します。
 
@@ -54,7 +54,7 @@ Log Analytics Agent をクラスターに追加する最も良い方法は、Azu
     az vmss extension set --name OmsAgentForLinux --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group <nameOfResourceGroup> --vmss-name <nameOfNodeType> --settings "{'workspaceId':'<Log AnalyticsworkspaceId>'}" --protected-settings "{'workspaceKey':'<Log AnalyticsworkspaceKey>'}"
     ```
 
-    Windows クラスターに Log Analytics Agent を追加する例を次に示します。
+    Windows クラスターに Log Analytics エージェントを追加する例を次に示します。
 
     ![Log Analytics エージェントの CLI コマンド](media/service-fabric-diagnostics-oms-agent/cli-command.png)
  
@@ -100,4 +100,4 @@ Log Analytics エージェントを追加したら、Log Analytics ポータル�
 
 * 関連する[パフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)を収集する。 特定のパフォーマンス カウンターを収集するように Log Analytics エージェントを構成する場合は、「[データ ソースの構成](../log-analytics/log-analytics-data-sources.md#configuring-data-sources)」を確認してください。
 * Log Analytics を構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する。
-* 代わりに、パフォーマンス カウンターの収集は、[Microsoft Azure 診断の拡張機能で行い、Application Insights に送信](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)することができる。
+* 代わりに、パフォーマンス カウンターの収集は、[Microsoft Azure 診断の拡張機能で行い、Application Insights に送信](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template)することができる。

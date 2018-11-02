@@ -10,12 +10,12 @@ ms.component: text-analytics
 ms.topic: article
 ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: b2916e5c414562c55c35c9c5e7ab378963e004be
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 42e1704df315c754b2b506a0470d128b7666c280
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248075"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645799"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Text Analytics (プレビュー段階) で名前付きエンティティの認識を使用する方法
 
@@ -28,12 +28,12 @@ Text Analytics の`entities`エンドポイントは､名前付きエンティ�
 ### <a name="entity-linking"></a>Entity Linking
 エンティティ リンク設定は、テキスト内で見つかったエンティティの個性を識別してあいまいさを解消する機能です (例: "Mars" が惑星として使用されているか、古代ローマの戦争の神様として使用されているかを判定する)。 このプロセスのためには、認識されたエンティティがリンクされているナレッジ ベースが存在している必要があります。`entities` エンドポイントの Text Analytics には、Wikipedia がナレッジ ベースとして使用されます。
 
-Text Analytics [バージョン 2.1 - Preview](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) では、エンティティのリンクのみ利用できます｡
+Text Analytics [バージョン 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) では、エンティティ リンク設定のみ利用できます。
 
 ### <a name="named-entity-recognition-ner"></a>名前付きエンティティの認識 (NER)
 名前付きエンティティの認識 (NER) は、テキスト形式のさまざまなエンティティを識別して、事前に定義したクラスに分類する機能です。 サポートされているエンティティのクラスを以下に示します。
 
-Text Analytics のバージョン 2.1 のプレビュー (`https://[region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`) では､エンティティのリンクと名前付きエンティティ認識 (NER) の両方を利用できます。
+Text Analytics [バージョン 2.1 プレビュー](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)では､エンティティ リンク設定と名前付きエンティティ認識 (NER) の両方を利用できます。
 
 ### <a name="language-support"></a>言語のサポート
 
@@ -74,7 +74,7 @@ JSON ドキュメントは、id、text、language の形式である必要があ
 
 現在サポートされている言語については、[この一覧](../text-analytics-supported-languages.md)を参照してください。
 
-ドキュメントのサイズは、ドキュメントごとに 5,000 文字未満である必要があり、コレクションごとに最大 1,000 の項目 (ID) を持つことができます。 コレクションは、要求の本文で送信されます。 次の例では、エンティティ リンク設定の末尾に付け加えるコンテンツを示しています。
+ドキュメントのサイズは、ドキュメントあたり 5,000 文字未満である必要があり、コレクションあたり最大 1,000 の項目 (ID) を含めることができます。 コレクションは、要求の本文で送信されます。 次の例では、エンティティ リンク設定の末尾に付け加えるコンテンツを示しています。
 
 ```
 {"documents": [{"id": "1",

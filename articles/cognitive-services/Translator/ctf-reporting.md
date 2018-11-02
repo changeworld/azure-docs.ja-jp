@@ -1,5 +1,5 @@
 ---
-title: コラボレーション翻訳フレームワーク (CTF) レポート - Translator Text
+title: コラボレーション翻訳フレームワーク (CTF) レポート - Translator Text API
 titlesuffix: Azure Cognitive Services
 description: コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法。
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.component: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9b3ac6e6d10fb0e70549cadfd7bf65220deb8f33
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: aa59ce89bf8c2c4b31d85c572dcdfb3645f06884
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126923"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646012"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>コラボレーション翻訳フレームワーク (CTF) レポートを使用する方法
 
 > [!NOTE]
 > このメソッドは非推奨です。 これは Translator Text API の V3.0 では使用できません。
 
-> コラボレーション翻訳フレームワーク (CTF) は、以前 Translator Text API の V2.0 で利用可能でしたが、2018 年 2 月 1 日をもって廃止されました。 AddTranslation と AddTranslationArray 関数により、ユーザーは、コラボレーション翻訳フレームワークによる修正を有効にできます。 2018 年 1 月 31 日以降、これら 2 つの関数は、新しい文の送信を受け付けなくなり、ユーザーにはエラー メッセージが表示されます。 これらの関数は廃止されており、置き換えられることはありません。 
+> コラボレーション翻訳フレームワーク (CTF) は、以前 Translator Text API の V2.0 で利用可能でしたが、2018 年 2 月 1 日をもって廃止されました。 AddTranslation と AddTranslationArray 関数により、ユーザーは、コラボレーション翻訳フレームワークによる修正を有効にできます。 2018 年 1 月 31 日以降、これら 2 つの関数は、新しい文の送信を受け付けなくなり、ユーザーにはエラー メッセージが表示されます。 これらの関数は廃止されており、置き換えられることはありません。
 
 >同様の機能は Translator Hub API で利用可能で、自身の用語およびスタイルでカスタム翻訳システムをビルドできます。これは、Translator Text API でカテゴリ ID を使用して呼び出すことができます。 Translator Hub: [https://hub.microsofttranslator.com](https://hub.microsofttranslator.com)。 Translator Hub API: [https://hub.microsofttranslator.com/swagger](https://hub.microsofttranslator.com/swagger)。
 
@@ -33,7 +33,7 @@ ms.locfileid: "46126923"
 
 ## <a name="endpoint"></a>エンドポイント
 CTF Reporting API のエンドポイントは http://api.microsofttranslator.com/v2/beta/ctfreporting.svc です。
-                        
+
 
 ## <a name="methods"></a>メソッド
 | Name |    説明|
@@ -64,7 +64,7 @@ UserTranslationCount[]GetUserTranslationCounts(
            string to,
            int? minRating,
            int? maxRating,
-           string user, 
+           string user,
            string category
            DateTime? minDateUtc,
            DateTime? maxDateUtc,
@@ -135,12 +135,12 @@ UserTranslation[] GetUserTranslations (
             string to,
             int? minRating,
             int? maxRating,
-            string user, 
+            string user,
             string category
             DateTime? minDateUtc,
             DateTime? maxDateUtc,
             int? skip,
-            int? take); 
+            int? take);
 ```
 
 **パラメーター**
@@ -154,8 +154,8 @@ UserTranslation[] GetUserTranslations (
 | minRating| **省略可能**: 翻訳されたテキストの最低限の品質評価を表す整数値。 有効な値は -10 から 10 です。 既定値は 1 です。|
 | maxRating| **省略可能**: 翻訳されたテキストの最高の品質評価を表す整数値。 有効な値は -10 から 10 です。 既定値は 1 です。|
 | user| **省略可能。送信の発信元に基づいた結果のフィルタリングに使用する文字列。|
-| category| **省略可能**: 翻訳のカテゴリまたは領域を含む文字列。 このパラメーターは、既定のオプション general のみをサポートしています。| 
-| minDateUtc| **省略可能**: 翻訳の取得の開始日の日付。 日付は UTC 形式でなければなりません。| 
+| category| **省略可能**: 翻訳のカテゴリまたは領域を含む文字列。 このパラメーターは、既定のオプション general のみをサポートしています。|
+| minDateUtc| **省略可能**: 翻訳の取得の開始日の日付。 日付は UTC 形式でなければなりません。|
 | maxDateUtc| **省略可能**: 翻訳の取得の終了日の日付。 日付は UTC 形式でなければなりません。|
 | skip| **省略可能**: ページでスキップする結果の数。 たとえば、結果の最初の 20 行をスキップして、21 行目の結果レコードから表示する場合、このパラメーターに 20 を指定します。 パラメーターの既定値は 0 です。|
 | take| **省略可能**: 取得する結果の数。 各要求の最大数は 100 です。 既定値は 50 です。|
@@ -192,21 +192,3 @@ UserTranslation[] GetUserTranslations (
 **GitHib のコード例の表示**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

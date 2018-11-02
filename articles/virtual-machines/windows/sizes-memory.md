@@ -1,5 +1,5 @@
 ---
-title: Windows Azure VM のサイズ - メモリ | Microsoft Docs
+title: Windows に関する Azure VM のサイズ - メモリ | Microsoft Docs
 description: Azure の Windows 仮想マシンで使用できるさまざまなメモリ最適化済みのサイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: 0ac25520e6de0208664e6c61ff21a988ebbd8f75
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: a81ce010e2d31a9852ca24a0ac45f6b4f60ab480
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903788"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49428200"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>メモリ最適化済み仮想マシンのサイズ
 

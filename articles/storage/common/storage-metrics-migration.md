@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/30/2018
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: fc11e29b03df617c4b5bb6f4fbb43cd478001d42
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 3f2ebb82f5affa3c41f237edcc039eb6214c7a4c
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521423"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649297"
 ---
 # <a name="azure-storage-metrics-migration"></a>Azure Storage メトリックの移行
 
@@ -25,7 +25,7 @@ Azure のモニター エクスペリエンスの統合戦略に合わせて、A
 
 Azure Storage では、従来のメトリック値を収集し、集計して、同じストレージ アカウント内の $Metric テーブルに保存します。 Azure portal を使用して、監視グラフを設定することができます。 また、Azure Storage SDK を使用して、スキーマに基づく $Metric テーブルからデータを読み取ることもできます。 詳細については、「[Storage Analytics](./storage-analytics.md)」を参照してください。
 
-従来のメトリックは、容量メトリックを Azure BLOB Storage に対してのみ提供します。 従来のメトリックは、トランザクション メトリックを BLOB Storage、Table ストレージ、Azure Files、および Queue Storage に対して提供します。 
+従来のメトリックは、容量メトリックを Azure BLOB Storage に対してのみ提供します。 従来のメトリックは、トランザクション メトリックを BLOB Storage、Table ストレージ、Azure Files、および Queue Storage に対して提供します。
 
 従来のメトリックは、フラット スキーマで設計されています。 このデザインでは、メトリックをトリガーするトラフィック パターンがない場合はメトリック値が 0 になります。 たとえば、ライブ トラフィックからストレージ アカウントへのサーバー タイムアウト エラーを受信しない場合でも、$Metric テーブル内の **ServerTimeoutError** 値は 0 に設定されます。
 
@@ -65,14 +65,14 @@ Azure Storage では、従来のメトリック値を収集し、集計して、
 
 | 従来のメトリック | 新しいメトリック |
 | ------------------- | ----------------- |
-| **AnonymousAuthorizationError** | ディメンション **ResponseType** が **AuthorizationError** と等しい Transactions |
-| **AnonymousClientOtherError** | ディメンション **ResponseType** が **ClientOtherError** と等しい Transactions |
-| **AnonymousClientTimeoutError** | ディメンション **ResponseType** が **ClientTimeoutError** と等しい Transactions |
-| **AnonymousNetworkError** | ディメンション **ResponseType** が **NetworkError** と等しい Transactions |
-| **AnonymousServerOtherError** | ディメンション **ResponseType** が **ServerOtherError** と等しい Transactions |
-| **AnonymousServerTimeoutError** | ディメンション **ResponseType** が **ServerTimeoutError** と等しい Transactions |
-| **AnonymousSuccess** | ディメンション **ResponseType** が **Success** と等しい Transactions |
-| **AnonymousThrottlingError** | ディメンション **ResponseType** が **ClientThrottlingError** または **ServerBusyError** と等しい Transactions |
+| **AnonymousAuthorizationError** | ディメンション **ResponseType** が **AuthorizationError** と等しく、ディメンション **Authentication** が **Anonymous** と等しいトランザクション |
+| **AnonymousClientOtherError** | ディメンション **ResponseType** が **ClientOtherError** と等しく、ディメンション **Authentication** が **Anonymous** と等しいトランザクション |
+| **AnonymousClientTimeoutError** | ディメンション **ResponseType** が **ClientTimeoutError** と等しく、ディメンション **Authentication** が **Anonymous** と等しいトランザクション |
+| **AnonymousNetworkError** | ディメンション **ResponseType** が **NetworkError** と等しく、ディメンション **Authentication** が **Anonymous** と等しいトランザクション |
+| **AnonymousServerOtherError** | ディメンション **ResponseType** が **ServerOtherError** と等しく、ディメンション **Authentication** が **Anonymous** と等しいトランザクション |
+| **AnonymousServerTimeoutError** | ディメンション **ResponseType** が **ServerTimeoutError** と等しく、ディメンション **Authentication** が **Anonymous** と等しいトランザクション |
+| **AnonymousSuccess** | ディメンション **ResponseType** が **Success** と等しく、ディメンション **Authentication** が **Anonymous** と等しいトランザクション |
+| **AnonymousThrottlingError** | ディメンション **ResponseType** が **ClientThrottlingError** または **ServerBusyError** と等しく、ディメンション **Authentication** が **Anonymous** と等しいトランザクション |
 | **AuthorizationError** | ディメンション **ResponseType** が **AuthorizationError** と等しい Transactions |
 | **可用性** | **可用性** |
 | **AverageE2ELatency** | **SuccessE2ELatency** |
@@ -87,14 +87,14 @@ Azure Storage では、従来のメトリック値を収集し、集計して、
 | **PercentSuccess** | ディメンション **ResponseType** が **Success** と等しい Transactions |
 | **PercentThrottlingError** | ディメンション **ResponseType** が **ClientThrottlingError** または **ServerBusyError** と等しい Transactions |
 | **PercentTimeoutError** | ディメンション **ResponseType** が **ServerTimeoutError** と等しいか、**ResponseType** が **ClientTimeoutError** と等しい Transactions |
-| **SASAuthorizationError** | ディメンション **ResponseType** が **AuthorizationError** と等しい Transactions |
-| **SASClientOtherError** | ディメンション **ResponseType** が **ClientOtherError** と等しい Transactions |
-| **SASClientTimeoutError** | ディメンション **ResponseType** が **ClientTimeoutError** と等しい Transactions |
-| **SASNetworkError** | ディメンション **ResponseType** が **NetworkError** と等しい Transactions |
-| **SASServerOtherError** | ディメンション **ResponseType** が **ServerOtherError** と等しい Transactions |
-| **SASServerTimeoutError** | ディメンション **ResponseType** が **ServerTimeoutError** と等しい Transactions |
-| **SASSuccess** | ディメンション **ResponseType** が **Success** と等しい Transactions |
-| **SASThrottlingError** | ディメンション **ResponseType** が **ClientThrottlingError** または **ServerBusyError** と等しい Transactions |
+| **SASAuthorizationError** | ディメンション **ResponseType** が **AuthorizationError** と等しく、ディメンション **Authentication** が **SAS** と等しいトランザクション |
+| **SASClientOtherError** | ディメンション **ResponseType** が **ClientOtherError** と等しく、ディメンション **Authentication** が **SAS** と等しいトランザクション |
+| **SASClientTimeoutError** | ディメンション **ResponseType** が **ClientTimeoutError** と等しく、ディメンション **Authentication** が **SAS** と等しいトランザクション |
+| **SASNetworkError** | ディメンション **ResponseType** が **NetworkError** と等しく、ディメンション **Authentication** が **SAS** と等しいトランザクション |
+| **SASServerOtherError** | ディメンション **ResponseType** が **ServerOtherError** と等しく、ディメンション **Authentication** が **SAS** と等しいトランザクション |
+| **SASServerTimeoutError** | ディメンション **ResponseType** が **ServerTimeoutError** と等しく、ディメンション **Authentication** が **SAS** と等しいトランザクション |
+| **SASSuccess** | ディメンション **ResponseType** が **Success** と等しく、ディメンション **Authentication** が **SAS** と等しいトランザクション |
+| **SASThrottlingError** | ディメンション **ResponseType** が **ClientThrottlingError** または **ServerBusyError** と等しく、ディメンション **Authentication** が **SAS** と等しいトランザクション |
 | **ServerOtherError** | ディメンション **ResponseType** が **ServerOtherError** と等しい Transactions |
 | **ServerTimeoutError** | ディメンション **ResponseType** が **ServerTimeoutError** と等しい Transactions |
 | **Success** | ディメンション **ResponseType** が **Success** と等しい Transactions |

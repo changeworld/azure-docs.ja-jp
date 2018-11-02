@@ -9,12 +9,12 @@ ms.component: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: nitinme
-ms.openlocfilehash: 5fcd625edf913e6629bfedb7ce7a6b5fe204af28
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: f7a68aab4959c3793c7688504d73d2b539a26f83
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48901433"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025397"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Azure Cognitive Services とは
 
@@ -74,11 +74,11 @@ Azure Cognitive Services は、開発者が直接的な AI またはデータ �
 
 ## <a name="use-free-trials"></a>無料試用版の使用
 
-[無料試用版のサインアップ](https://azure.microsoft.com/try/cognitive-services/ 「サインアップのヘルプ」) に必要なのは、電子メールといくつかの簡単な手順だけです。 Microsoft アカウントをまだお持ちでない場合は、それが必要です。 要求された各 API の一意のキー ペアを受け取ります。 2 つ目は単なるスペアです。 秘密鍵は誰とも共有しないでください。 試用版には、秒または分あたりのトランザクション数の速度制限と、月間使用量の上限の両方があります。 トランザクションは単なる API 呼び出しです。 有料プランにアップグレードすれば制限を解除できます。
+[無料試用版のサインアップ](https://azure.microsoft.com/try/cognitive-services/ "サインアップのヘルプ")に必要なのは、電子メールといくつかの簡単な手順だけです。 Microsoft アカウントをまだお持ちでない場合は、それが必要です。 要求された各 API の一意のキー ペアを受け取ります。 2 つ目は単なるスペアです。 秘密鍵は誰とも共有しないでください。 試用版には、秒または分あたりのトランザクション数の速度制限と、月間使用量の上限の両方があります。 トランザクションは単なる API 呼び出しです。 有料プランにアップグレードすれば制限を解除できます。
 
 ## <a name="subscription-management"></a>サブスクリプション管理
 
-Microsoft Account にサインインすると、[個人用サブスクリプション] (https://www.microsoft.com/cognitive-services/en-us/subscriptions 「個人用サブスクリプション」) にアクセスして、使用している製品、残りのクォータ、およびサブスクリプションにさらに製品を追加する機能を表示できます。
+Microsoft Account にサインインすると、[個人用サブスクリプション](https://www.microsoft.com/cognitive-services/en-us/subscriptions "個人用サブスクリプション")にアクセスして、使用している製品、残りのクォータ、およびサブスクリプションにさらに製品を追加する機能を表示できます。
 
 ## <a name="upgrade-to-unlock-limits"></a>アップグレードして制限を解除する
 

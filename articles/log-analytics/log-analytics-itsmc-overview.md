@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 5f5b03090f374f936e03d487596ca0462feea348
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: b99c14e6022fa34d41caaa02bfc9feecb3c840ce
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042430"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407505"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -63,9 +63,13 @@ ITSM Connector の使用を開始するには、次の手順を使用します�
     ![ITSMC ソリューションの追加](./media/log-analytics-itsmc/add-itsmc-solution.png)
 
 3.  **[OMS ワークスペース]** セクションで、ソリューションをインストールする Azure Log Analytics ワークスペースを選択します。
+   >[!NOTE]
+   >Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ワークスペースは Log Analytics ワークスペースと呼ばれるようになります。
 4.  **[OMS ワークスペースの設定]** セクションで、ソリューション リソースを作成する ResourceGroup を選択します。
 
     ![ITSMC ワークスペース](./media/log-analytics-itsmc/itsmc-solution-workspace.png)
+    >[!NOTE]
+    >Microsoft Operations Management Suite (OMS) から Azure Monitor への現在進行中の移行の一環として、OMS ワークスペースは Log Analytics ワークスペースと呼ばれるようになります。
 
 5.  **Create** をクリックしてください。
 
@@ -180,7 +184,7 @@ ServiceDeskWorkItemType_s="Incident"
 
 - サービス デスク接続名
 - サービス デスク ID
-- 状態
+- 州
 - 緊急度
 - 影響
 - 優先順位
@@ -238,7 +242,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Log Analytics のフィールド | ServiceNow のフィールド |
 |:--- |:--- |
 | ServiceDeskId_s| Number |
-| IncidentState_s | 状態 |
+| IncidentState_s | 州 |
 | Urgency_s |緊急度 |
 | Impact_s |影響|
 | Priority_s | 優先順位 |
@@ -266,7 +270,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  簡単な説明 |
 | Type_s|  type |
 | Category_s|  Category |
-| CRState_s|  状態|
+| CRState_s|  州|
 | Urgency_s|  緊急度 |
 | Priority_s| 優先順位|
 | Risk_s| リスク|
@@ -290,7 +294,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
     - Web アプリが正常にデプロイされ、ハイブリッド接続が作成されていることを確認します。 オンプレミスの Service Manager コンピューターとの接続が正常に確立されていることを確認するには、[ハイブリッド接続](log-analytics-itsmc-connections.md#configure-the-hybrid-connection)の作成に関するドキュメントで詳述するように、Web アプリの URL にアクセスします。  
 
 2.  ServiceNow のデータが Log Analytics に同期されていない場合は、ServiceNow インスタンスがスリープ状態でないことを確認します。 ServiceNow Dev インスタンスは、長時間アイドル状態になっている場合、スリープ状態になることがあります。 それ以外の場合は、問題を報告してください。
-3.  OMS アラートが発生しても、ITSM 製品で作業項目が作成されない場合や、構成項目が作成されない/作業項目にリンクされない場合、または一般情報が必要な場合は、以下を確認してください。
+3.  Log Analytics アラートが発生しても、ITSM 製品で作業項目が作成されない場合や、構成項目が作成されない/作業項目にリンクされない場合、または一般情報が必要な場合は、以下を確認してください。
  -  ITSMC: このソリューションでは、接続/作業項目/コンピューターなどの概要が表示されます。**接続の状態**を示すタイルをクリックします。これにより、関連するクエリを使用する **[ログ検索]** が表示されます。 詳細については、LogType_S が ERROR のログ レコードを確認してください。
  - **[ログ検索]** ページ: `*`ServiceDeskLog_CL`*` というクエリを使用して直接エラー/関連情報を表示します。
 

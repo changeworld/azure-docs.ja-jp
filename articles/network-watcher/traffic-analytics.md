@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: ad26772650cf052926a2534d343f64765f47b78f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2b057a94022077aa210b1e4ebb6122eaf350a40b
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36333396"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457410"
 ---
 # <a name="traffic-analytics"></a>トラフィック分析
 
@@ -53,7 +53,9 @@ Azure 仮想ネットワークには、個々のネットワーク インター�
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-米国中西部、米国東部、米国東部 2、米国中北部、米国中南部、米国中部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国西部、英国南部、オーストラリア東部、オーストラリア南東部、および東南アジアのいずれかのリージョンの NSG でトラフィック分析をご利用いただけます。 Log Analytics ワークスペースは、米国中西部、米国東部、西ヨーロッパ、英国南部、オーストラリア南東部、または東南アジア リージョンに存在する必要があります。
+米国中西部、米国東部、米国東部 2、米国中北部、米国中南部、米国中部、米国西部、米国西部 2、カナダ中部、西ヨーロッパ、北ヨーロッパ、英国西部、英国南部、東日本、インド中部、オーストラリア東部、オーストラリア南東部、および東南アジアのいずれかのリージョンの NSG でトラフィック分析をご利用いただけます。 
+
+Log Analytics ワークスペースは、米国中西部、米国東部、西ヨーロッパ、英国南部、カナダ中部、東日本、インド中部、オーストラリア南東部、または東南アジア リージョンに存在する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -61,7 +63,7 @@ Azure 仮想ネットワークには、個々のネットワーク インター�
 
 お使いのアカウントは、次のいずれかの Azure [組み込みロール](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)のメンバーである必要があります。
 
-|デプロイメント モデル   | 役割                   |
+|デプロイメント モデル   | Role                   |
 |---------          |---------               |
 |リソース マネージャー   | Owner                  |
 |                   | Contributor            |
@@ -135,7 +137,7 @@ New-AzureRmStorageAccount `
 2. フロー ログを保存する既存のストレージ アカウントを選択します。 データを無期限に保存する場合は、値を *0* に設定します。 ストレージ アカウントに対して Azure Storage の料金が発生します。
 3. **[リテンション期間]** を、データを保存する日数に設定します。
 4. *[Traffic Analytics Status]\(Traffic Analytics の状態\)* で、**[オン]** を選択します。
-5. 既存の Log Analytics (OMS) ワークスペースを選択するか、**[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#traffic-analytics-supported-regions)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
+5. 既存の Log Analytics ワークスペースを選択するか、**[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#traffic-analytics-supported-regions)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
 
     トラフィック分析ソリューションをホストするログ分析ワークスペースと NSG は、同じリージョンに存在する必要はありません。 たとえば、西ヨーロッパ リージョンのワークスペースにトラフィック分析があり、米国東部と米国西部に NSG があっても構いません。 同じワークスペースに複数の NSG を構成できます。
 6. **[保存]** を選択します。

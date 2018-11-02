@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: a08cd6289fc85b79ccec731126a33a9549d60546
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c2e487f421d2dfc875efde82c078f557f7bd03d2
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123535"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405737"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Azure Logic Apps の状態の監視、診断ログの設定、アラートの有効化
 
@@ -90,7 +90,9 @@ ms.locfileid: "43123535"
 
    1. **[Log Analytics への送信]** を選択します。 
    2. **[Log Analytics]** で、**[構成]** を選択します。 
-   3. **[OMS ワークスペース]** で、ログに使用する Log Analytics ワークスペースを選択します。
+   3. **[OMS ワークスペース]** で、ログに使用するワークスペースを選択します。
+   > [!NOTE]
+   > OMS ワークスペースは、Log Analytics ワークスペースと呼ばれるようになりました。
    4. **[ログ]** で、**[WorkflowRuntime]** カテゴリを選択します。
    5. メトリックの間隔を選択します。
    6. 完了したら、**[保存]** を選択します。

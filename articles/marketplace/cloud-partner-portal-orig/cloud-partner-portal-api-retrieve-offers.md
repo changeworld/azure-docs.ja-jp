@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3429917fcee520ae932253f1fdfead4ffb6535e6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cf6e2fa296d3d9f152edf22685b930586b4de524
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807139"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024816"
 ---
 <a name="retrieve-offers"></a>オファーを取得する
 ===============
@@ -77,10 +77,10 @@ ms.locfileid: "48807139"
 |  -------------  |      --------------------------------------------------------------------------------------------------------------    |
 |  offerTypeId    | オファーの種類を示します                                                                                           |
 |  publisherId    | パブリッシャーを一意に示す ID                                                                      |
-|  status         | オファーの状態。 使用可能な値の一覧については、下の「[オファーの状態](#offer-status)」をご覧ください。                         |
+|  status         | オファーの状態。 使用可能な値の一覧については、下の「[オファーの状態](#offer-status)」を参照してください。                         |
 |  id             | パブリッシャーの名前空間内のオファーを一意に示す GUID。                                                    |
 |  version        | オファーの現在のバージョン。 バージョン プロパティはクライアントでは変更できません。 発行のたびにインクリメントされます。 |
-|  定義     | ワークロードの実際の定義の要約ビューが含まれます。 詳細な定義を取得するには、[特定のオファーの取得](./cloud-partner-portal-api-retrieve-specific-offer.md) API を使用します。 |
+|  定義     | ワークロードの実際の定義の要約ビューが含まれます。 詳細な定義を取得するには、[Retrieve specific offer](./cloud-partner-portal-api-retrieve-specific-offer.md) API を使用します。 |
 |  changedTime    | オファーが最後に変更されたときの UTC 日時                                                                              |
 |  |  |
 

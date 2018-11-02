@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 13ff24c24a881297775fa5f65821e53ceb83c351
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 727cf523f2a505729377f36738657fc5489134a7
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108760"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025992"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイス構成を変更する
 
@@ -65,7 +65,7 @@ StorSimple デバイス マネージャー サービスに接続されている 
 
  ドロップダウン リストからタイム ゾーンを選択します。 最大 2 台のネットワーク タイム プロトコル (NTP) サーバーを指定できます。
 
- - **プライマリ NTP サーバー**: 構成は必須であり、StorSimple 用 Windows PowerShell を使用してデバイスを構成するときに指定します。 NTP サーバーとして、既定の Windows Server である **time.windows.com** を指定できます。 プライマリ NTP サーバーの構成は Azure ポータルから確認できますが、変更するには Windows PowerShell インターフェイスを使用する必要があります。 デバイスのプライマリ NTP サーバーを変更するには、`Set-HcsNTPClientServerAddress` コマンドレットを使用します。 詳細については、[Set-HcsNTPClientServerAddress] (https://technet.microsoft.com/library/dn688138.aspx) コマンドレットの構文を参照してください。
+ - **プライマリ NTP サーバー**: 構成は必須であり、StorSimple 用 Windows PowerShell を使用してデバイスを構成するときに指定します。 NTP サーバーとして、既定の Windows Server である **time.windows.com** を指定できます。 プライマリ NTP サーバーの構成は Azure ポータルから確認できますが、変更するには Windows PowerShell インターフェイスを使用する必要があります。 デバイスのプライマリ NTP サーバーを変更するには、`Set-HcsNTPClientServerAddress` コマンドレットを使用します。 詳細については、[Set-HcsNTPClientServerAddress](https://technet.microsoft.com/library/dn688138.aspx) コマンドレットの構文を参照してください。
 
 - **セカンダリ NTP サーバー**: 構成は省略可能です。 ポータルを使用して、セカンダリ NTP サーバーを構成できます。
 
@@ -165,7 +165,7 @@ DATA 1 から DATA 5 までのネットワーク インターフェイスでは�
 1. 両方のインターフェイスの IP アドレスをクリアします。
 2. IP アドレスがクリアされた後に、それぞれのインターフェイスに新しい IP アドレスを割り当てます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [StorSimple デバイスの MPIO の構成方法](storsimple-8000-configure-mpio-windows-server.md)を参照します。
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)を参照します。

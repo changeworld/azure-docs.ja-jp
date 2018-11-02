@@ -1,6 +1,6 @@
 ---
 title: Azure CLI を使用したカスタム Linux VM のアップロードまたはコピー | Microsoft Docs
-description: Resource Manager デプロイ モデルと Azure CLI を使用してカスタマイズされた仮想マシンをアップロードおよびコピーする
+description: Resource Manager デプロイ モデルと Azure CLI を使用して、カスタマイズされた仮想マシンをアップロードまたはコピーする
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -13,30 +13,30 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: b5df02c9f07549aec406cf449bb0ae49ee9e280a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bbbcc1b3b505aae4bcc6869359ca27a8cd3fd1be
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957433"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638111"
 ---
-# <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクから Linux VM を作成しアップロードする
+# <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Azure CLI を使用してカスタム ディスクから Linux VM を作成する
 
 <!-- rename to create-vm-specialized -->
 
-この記事は、カスタマイズされた仮想ハード ディスク (VHD) をアップロードする方法、または Azure で既存の VHD をコピーし、カスタム ディスクから新しい Linux 仮想マシン (VM) を作成する方法を示します。 要件に合った Linux ディストリビューションをインストールして構成し、その VHD を使用して新しい Azure 仮想マシンをすばやく作成することができます。
+この記事では、Azure でカスタマイズされた仮想ハード ディスク (VHD) をアップロードする方法、および既存の VHD をコピーする方法について説明します。 その後、新しく作成された VHD を使用して新しい Linux 仮想マシン (VM) を作成します。 Linux ディストリビューションを要件に応じてインストールして構成した後、その VHD を使用して新しい Azure 仮想マシンを作成できます。
 
-カスタマイズされたディスクから複数の VM を作成する場合は、VM または VHD からイメージを作成する必要があります。 詳細については、「[CLI を使用した Azure VM のカスタム イメージの作成](tutorial-custom-images.md)」をご覧ください。
+カスタマイズされたディスクから複数の VM を作成するには、まず VM または VHD からイメージを作成します。 詳細については、「[CLI を使用した Azure VM のカスタム イメージの作成](tutorial-custom-images.md)」を参照してください。
 
-2 つのオプションがあります。
+カスタム ディスクを作成するには、次の 2 つのオプションがあります。
 * [VHD をアップロードする](#option-1-upload-a-specialized-vhd)
 * [既存の Azure VM をコピーする](#option-2-copy-an-existing-azure-vm)
 
 ## <a name="quick-commands"></a>クイック コマンド
 
-[az vm create](/cli/azure/vm#az_vm_create) を使用してカスタマイズされたディスクまたは特殊化されたディスクから新しい VM を作成するときには、カスタムまたはマーケットプレース イメージを指定 (--image) するのではなく、ディスクを**アタッチ** (--attach-os-disk) します。 次の例では、カスタマイズされた VHD から作成した *myManagedDisk* というマネージド ディスクを使用して *myVM* という VM を作成します。
+カスタマイズまたは特殊化されたディスクから [az vm create](/cli/azure/vm#az-vm-create) を使用して新しい VM を作成する場合は、カスタムまたはマーケットプレース イメージを指定 (--image) するのではなく、ディスクを**アタッチ** (--attach-os-disk) します。 次の例では、カスタマイズされた VHD から作成した *myManagedDisk* というマネージド ディスクを使用して *myVM* という VM を作成します。
 
 ```azurecli
 az vm create --resource-group myResourceGroup --location eastus --name myVM \
@@ -44,28 +44,28 @@ az vm create --resource-group myResourceGroup --location eastus --name myVM \
 ```
 
 ## <a name="requirements"></a>必要条件
-次の手順を完了するには、以下が必要です。
+次の手順を完了するには、次のものが必要です。
 
-* Azure で使用するために準備された Linux 仮想マシン。 この記事の「[アップロードするディスクを準備する](#prepare-the-vm)」セクションでは、Azure Linux エージェント (waagent) のインストールに関して、ディストリビューション固有の情報を見つける方法を説明します。Azure Linux エージェント (waagent) は、VM を Azure で正常に動作させるため、および SSH を使用して VM に接続できるようにするために必要です。
+* Azure で使用するために準備された Linux 仮想マシン。 この記事の「[VM を準備する](#prepare-the-vm)」のセクションでは、SSH で VM に接続するために必要な Azure Linux エージェント (waagent) のインストールに関するディストリビューション固有の情報を見つける方法について説明します。
 * 既存の [Azure で動作保証済みの Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (または「[動作保証外のディストリビューションに関する情報](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」をご覧ください) から入手し VHD 形式の仮想ディスクにした VHD ファイル。 VM と VHD を作成するツールはいくつかあります。
-  * [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) または [KVM](http://www.linux-kvm.org/page/RunningKVM) をインストールして構成します。その際、イメージ形式として VHD を使用します。 必要であれば **qemu-img convert** を使用して[イメージを変換](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)できます。
+  * [QEMU](https://en.wikibooks.org/wiki/QEMU/Installing_QEMU) または [KVM](http://www.linux-kvm.org/page/RunningKVM) をインストールして構成します。その際、イメージ形式として VHD を使用します。 必要に応じて、`qemu-img convert` を使用して[イメージを変換](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats)できます。
   * [Windows 10 上](https://msdn.microsoft.com/virtualization/hyperv_on_windows/quick_start/walkthrough_install)または [Windows Server 2012/2012 R2 上](https://technet.microsoft.com/library/hh846766.aspx)の Hyper-V を使用することもできます。
 
 > [!NOTE]
-> 新しい VHDX 形式は、Azure ではサポートされていません。 VM を作成するときに、形式として VHD を指定します。 必要であれば、[qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) または [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) PowerShell コマンドレットを使用して VHDX ディスクを VHD に変換できます。 Azure では動的 VHD のアップロードはサポートしないため、そのようなディスクは、アップロードする前に静的 VHD に変換する必要があります。 Azure へのアップロード プロセス中、動的ディスクの変換には、 [Azure VHD Utilities for GO (GO 用の Azure VHD Utilities)](https://github.com/Microsoft/azure-vhd-utils-for-go) などのツールを使用できます。
+> 新しい VHDX 形式は、Azure ではサポートされていません。 VM を作成するときに、形式として VHD を指定します。 必要に応じて、[qemu-img convert](https://en.wikibooks.org/wiki/QEMU/Images#Converting_image_formats) または [Convert-VHD](https://technet.microsoft.com/library/hh848454.aspx) PowerShell コマンドレットを使用して VHDX ディスクを VHD に変換できます。 Azure は動的 VHD のアップロードをサポートしていないため、このようなディスクは、アップロードの前に静的 VHD に変換する必要があります。 [Azure VHD Utilities for GO (GO 用の Azure VHD Utilities)](https://github.com/Microsoft/azure-vhd-utils-for-go) などのツールを使用すると、ダイナミック ディスクを Azure へのアップロード中に変換できます。
 > 
 > 
 
 
-* [Azure CLI](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしていることを確認します。
+* 最新の [Azure CLI](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az-login) を使用して Azure アカウントにサインインしていることを確認します。
 
-次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*mystorageaccount*、*mydisks* といったパラメーター名にします。
+以降の例では、パラメーター名の例を *myResourceGroup*、*mystorageaccount*、*mydisks* などの独自の値に置き換えてください。
 
 <a id="prepimage"> </a>
 
 ## <a name="prepare-the-vm"></a>VM を準備する
 
-Azure は、さまざまな Linux ディストリビューションをサポートしています (「 [Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください)。 次の記事では、Azure でサポートされる以下のさまざまな Linux ディストリビューションを準備する方法について説明します。
+Azure は、さまざまな Linux ディストリビューションをサポートしています (「 [Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください)。 次の記事では、Azure でサポートされているさまざまな Linux ディストリビューションを準備する方法について説明しています。
 
 * [CentOS ベースのディストリビューション](create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Debian Linux](debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -73,24 +73,25 @@ Azure は、さまざまな Linux ディストリビューションをサポー�
 * [Red Hat Enterprise Linux](redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [SLES と openSUSE](suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Ubuntu](create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [その他 - 動作保証外のディストリビューション](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [その他: 動作保証外のディストリビューション](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 Azure で Linux イメージを準備する際のその他の一般的なヒントについては、[Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes)に関するページをご覧ください。
 
 > [!NOTE]
-> [Azure プラットフォームの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) は、動作保証済みディストリビューションのいずれか 1 つを、「[Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」の "サポートされているバージョン" で指定されている構成で使用した場合にのみ、Linux を実行する VM に適用されます。
+> [Azure プラットフォームの SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) は、いずれかの動作保証済みディストリビューションが、「[Azure での動作保証済み Linux ディストリビューション](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」の "サポートされているバージョン" で指定されている構成の詳細で使用されている場合にのみ、Linux を実行している VM に適用されます。
 > 
 > 
 
 ## <a name="option-1-upload-a-vhd"></a>オプション 1: VHD をアップロードする
 
-ローカル コンピューターで実行されている VHD、または別のクラウドからエクスポートしたカスタマイズされた VHD をアップロードできます。 VHD を使用して新しい Azure VM を作成するには、ストレージ アカウントに VHD をアップロードし、VHD からマネージド ディスクを作成する必要があります。 
+ローカル コンピューターで実行されている VHD、または別のクラウドからエクスポートしたカスタマイズされた VHD をアップロードできます。 VHD を使用して新しい Azure VM を作成するには、ストレージ アカウントに VHD をアップロードし、その VHD からマネージド ディスクを作成する必要があります。 詳細については、「[Azure Managed Disks の概要](../windows/managed-disks-overview.md)」をご覧ください。
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-カスタム ディスクをアップロードして VM を作成する前に、まず [az group create](/cli/azure/group#az_group_create) を使用してリソース グループを作成する必要があります。
+カスタム ディスクをアップロードし、VM を作成する前に、[az group create](/cli/azure/group#az-group-create) を使用してリソース グループを作成する必要があります。
 
-次の例では、*myResourceGroup* というリソース グループを *eastus* に作成します。「[Azure Managed Disks の概要](../windows/managed-disks-overview.md)」
+次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+
 ```azurecli
 az group create \
     --name myResourceGroup \
@@ -99,9 +100,7 @@ az group create \
 
 ### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-[az storage account create](/cli/azure/storage/account#az_storage_account_create) を使用して、カスタム ディスクと VM 用に、ストレージ アカウントを作成します。 
-
-次の例では、*mystorageaccount* というストレージ アカウントを以前に作成したリソース グループに作成します。
+[az storage account create](/cli/azure/storage/account#az-storageaccount-create) を使用して、カスタム ディスクと VM 用に、ストレージ アカウントを作成します。 次の例では、*mystorageaccount* というストレージ アカウントを以前に作成したリソース グループに作成します。
 
 ```azurecli
 az storage account create \
@@ -113,9 +112,9 @@ az storage account create \
 ```
 
 ### <a name="list-storage-account-keys"></a>ストレージ アカウント キーの一覧表示
-Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作の実行のように、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/common/storage-account-manage.md#access-keys)をご覧ください。 アクセス キーを表示するには、[az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) を使用します。
+Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合などに、ストレージ アカウントを認証するときに使用されます。 詳細については、[ストレージへのアクセスの管理](../../storage/common/storage-account-manage.md#access-keys)に関するページを参照してください。 
 
-作成したストレージ アカウントのアクセス キーは次のようにして表示します。
+アクセス キーを表示するには、[az storage account keys list](/cli/azure/storage/account/keys#az-storage-account-keys-list) を使用します。 たとえば、作成したストレージ アカウントのアクセス キーを表示するには、次のようにします。
 
 ```azurecli
 az storage account keys list \
@@ -137,7 +136,7 @@ info:    storage account keys list command OK
 以降の手順でストレージ アカウントとのやり取りに使用するため、 **key1** を書き留めます。
 
 ### <a name="create-a-storage-container"></a>ストレージ コンテナーを作成する
-ローカル ファイル システムを論理的に整理するためにさまざまなディレクトリを作成するのと同様に、ストレージ アカウント内にコンテナーを作成してディスクを整理します。 ストレージ アカウントには、任意の数のコンテナーを含めることができます。 コンテナーを作成するには、[az storage container create](/cli/azure/storage/container#az_storage_container_create) を使用します。
+ローカル ファイル システムを論理的に整理するためにさまざまなディレクトリを作成するのと同様に、ディスクを整理するためにストレージ アカウント内にコンテナーを作成します。 ストレージ アカウントには、多数のコンテナーを含めることができます。 コンテナーを作成するには、[az storage container create](/cli/azure/storage/container#az-storage-container-create) を使用します。
 
 次の例では、*mydisks* というコンテナーを作成します。
 
@@ -148,7 +147,7 @@ az storage container create \
 ```
 
 ### <a name="upload-the-vhd"></a>VHD をアップロードする
-次に、[az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) を使用してカスタム ディスクをアップロードします。 カスタム ディスクをアップロードし、ページ BLOB として保存します。
+[az storage blob upload](/cli/azure/storage/blob#az-storage-blob-upload) を使用してカスタム ディスクをアップロードします。 カスタム ディスクをアップロードし、ページ BLOB として格納します。
 
 アクセス キー、前の手順で作成したコンテナー、ローカル コンピューター上のカスタム ディスクへのパスの順に指定します。
 
@@ -165,7 +164,7 @@ VHD のアップロードにはしばらくかかることがあります。
 ### <a name="create-a-managed-disk"></a>マネージド ディスクを作成する
 
 
-[az disk create](/cli/azure/disk#az_disk_create) を使用して VHD からマネージド ディスクを作成します。 次の例では、指定したストレージ アカウントとコンテナーにアップロードした VHD から *myManagedDisk* というマネージド ディスクを作成します。
+[az disk create](/cli/azure/disk#az-disk-create) を使用して VHD からマネージド ディスクを作成します。 次の例では、指定したストレージ アカウントとコンテナーにアップロードした VHD から *myManagedDisk* というマネージド ディスクを作成します。
 
 ```azurecli
 az disk create \
@@ -175,7 +174,7 @@ az disk create \
 ```
 ## <a name="option-2-copy-an-existing-vm"></a>オプション 2: 既存の VM をコピーする
 
-Azure でカスタマイズされた VM を作成してから OS ディスクをコピーし、新しい VM にアタッチして別のコピーを作成することもできます。 これは、テストでは問題ありませんが、複数の新しい VM のモデルとして既存の Azure VM を使用する場合は、代わりに**イメージ**を作成してください。 既存の Azure VM からイメージを作成する方法の詳細については、「[CLI を使用した Azure VM のカスタム イメージの作成](tutorial-custom-images.md)」をご覧ください。
+Azure でカスタマイズされた VM を作成してから OS ディスクをコピーし、それを新しい VM にアタッチして別のコピーを作成することもできます。 これはテストとしては有効ですが、複数の新しい VM のモデルとして既存の Azure VM を使用する場合は、代わりに*イメージ*を作成します。 既存の Azure VM からのイメージの作成の詳細については、「[CLI を使用した Azure VM のカスタム イメージの作成](tutorial-custom-images.md)」を参照してください。
 
 ### <a name="create-a-snapshot"></a>スナップショットの作成
 
@@ -198,7 +197,7 @@ az snapshot create \
 snapshotId=$(az snapshot show --name osDiskSnapshot --resource-group myResourceGroup --query [id] -o tsv)
 ```
 
-マネージド ディスクを作成します。 この例では、スナップショットから標準ストレージのサイズが 128 GB の *myManagedDisk* というマネージド ディスクを作成します。
+マネージド ディスクを作成します。 この例では、スナップショットから、標準ストレージでサイズが 128 GB の *myManagedDisk* という名前のマネージド ディスクを作成します。
 
 ```azure-cli
 az disk create \
@@ -211,7 +210,7 @@ az disk create \
 
 ## <a name="create-the-vm"></a>VM の作成
 
-ここで、[az vm create](/cli/azure/vm#az_vm_create) で VM を作成し、OS ディスクとしてマネージド ディスクをアタッチ (--attach-os-disk) します。 次の例では、アップロードした VHD から作成したマネージド ディスクを使用して *myNewVM* という VM を作成します。
+[az vm create](/cli/azure/vm#az-vm-create) を使用して VM を作成し、マネージド ディスクを OS ディスクとしてアタッチ (--attach-os-disk) します。 次の例では、アップロードされた VHD から作成したマネージド ディスクを使用して *myNewVM* という名前の VM を作成します。
 
 ```azurecli
 az vm create \
@@ -222,8 +221,7 @@ az vm create \
     --attach-os-disk myManagedDisk
 ```
 
-資格情報を使用して、ソース VM からこの VM に SSH できる必要があります。 
+ソース VM の資格情報を使用して、SSH でその VM に接続できる必要があります。 
 
 ## <a name="next-steps"></a>次の手順
 カスタム仮想ディスクを準備してアップロードしたら、 [Resource Manager とテンプレートの使用](../../azure-resource-manager/resource-group-overview.md)について学習しましょう。 必要であれば、新しい VM に [データ ディスクを追加](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) することもできます。 VM 上で実行するアプリケーションがあり、これにアクセスする必要がある場合は、必ず [ポートとエンドポイント](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を開放してください。
-

@@ -4,9 +4,6 @@ description: この記事では、Traffic Manager に関してよく寄せられ
 services: traffic-manager
 documentationcenter: ''
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: 8c3d632063c8ed9347aa870d0971cc09dc1a658e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d784bf3637c83c724c3616a1a42b66c4914b4ff7
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129541"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987241"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -32,7 +29,7 @@ ms.locfileid: "46129541"
 そのため、Traffic Manager では、クライアントが接続するエンドポイントまたは IP アドレスが提供されません。 サービスに静的 IP アドレスが必要な場合は、Traffic Manager ではなくサービス側で構成する必要があります。
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Traffic Manager を使用して、どのような種類のトラフィックをルーティングできますか。
-「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)」で説明したとおり、Traffic Manager エンドポイントとして、Azure の内部または外部でホストされているインターネット接続サービスを指定することができます。 したがって、Traffic Manager は、インターネットに接続されている一連のエンドポイントにパブリック インターネットからのトラフィックをルーティングすることができます。 エンドポイントがプライベート ネットワーク内にある場合 (内部バージョンの [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) など)、またはユーザーが内部ネットワークから DNS 要求を行う場合、Traffic Manager をそれらのトラフックで使用することはできません。
+「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-how-it-works.md)」で説明したとおり、Traffic Manager エンドポイントとして、Azure の内部または外部でホストされているインターネット接続サービスを指定することができます。 したがって、Traffic Manager は、インターネットに接続されている一連のエンドポイントにパブリック インターネットからのトラフィックをルーティングすることができます。 エンドポイントがプライベート ネットワーク内にある場合 (内部バージョンの [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) など)、またはユーザーが内部ネットワークから DNS 要求を行う場合、Traffic Manager をこのトラフックのルーティングに使用することはできません。
 
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Traffic Manager では "スティッキー" セッションはサポートされていますか。
@@ -87,7 +84,7 @@ Traffic Manager が DNS クエリを受信すると、応答に Time to Live (TT
 DNS TTL は、プロファイル レベルで 0 ～ 2,147,483,647 秒に設定できます (最大範囲は [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt ) に準拠しています)。 TTL を 0 にすると、ダウンストリームの DNS リゾルバーはクエリの応答をキャッシュしないので、すべてのクエリが解決のために Traffic Manager の DNS サーバーに送信されることになります。
 
 ### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>マイ プロファイルへのクエリの量を把握する方法を教えてください。 
-Traffic Manager が提供しているメトリックの 1 つにプロファイルが応答するクエリ数があります。 プロファイル レベルの集計でこの情報を取得できます。または、これをさらに分割して、特定のエンドポイントが返されたクエリの量を確認できます。 また、アラートを設定して、クエリ応答量が設定した条件を超えた場合に通知できます。 詳細については、「[Traffic Manager のメトリックとアラート](traffic-manager-metrics-alerts.md)」を参照してください。
+Traffic Manager が提供しているメトリックの 1 つに、プロファイルが応答するクエリ数があります。 プロファイル レベルの集計でこの情報を取得できます。または、これをさらに分割して、特定のエンドポイントが返されたクエリの量を確認できます。 また、アラートを設定して、クエリ応答量が設定した条件を超えた場合に通知できます。 詳細については、「[Traffic Manager のメトリックとアラート](traffic-manager-metrics-alerts.md)」を参照してください。
 
 ## <a name="traffic-manager-geographic-traffic-routing-method"></a>Traffic Manager の地理的トラフィック ルーティング方法
 
@@ -128,7 +125,7 @@ Traffic Manager は、クエリの送信元 IP (ほとんどの場合、ユー�
 
 ###  <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>地理的ルーティングを有効にしたプロファイルには、エンドポイントではなく、入れ子にしたプロファイルを作成することが強く推奨されているのはなぜですか。 
 
-地理的ルーティング タイプが使用されているプロファイル内のエンドポイントには、リージョンを一対一でしか割り当てることができません。 そのエンドポイントに子プロファイルが入れ子式に関連付けられていない場合、エンドポイントで異常が発生しても、トラフィックの送信先となる良好な状態の代替エンドポイントが存在しないため、Traffic Manager は引き続きそのエンドポイントにトラフィックを送信します。 別のエンドポイントに割り当てられているリージョンが、異常が発生したエンドポイントに割り当てられているリージョンの "親" であっても、その別のエンドポイントにはフェールオーバーされません (たとえば、スペイン リージョンが割り当てられているエンドポイントで異常が発生した場合、ヨーロッパ リージョンが割り当てられている別のエンドポイントにフェールオーバーされません)。 Traffic Manager は、お客様がそのプロファイルの中で設定した地理的境界を尊重するようになっているためです。 エンドポイントで異常が発生したときに別のエンドポイントへのフェールオーバーのメリットが得られるように、地理的リージョンは、個々のエンドポイントに割り当てるのではなく、複数のエンドポイントを含む入れ子になったプロファイルに割り当てることをお勧めします。 そうすることで、入れ子になった子プロファイルのいずれかのエンドポイントで異常が発生した場合、入れ子にされている同じ子プロファイル内の別のエンドポイントにトラフィックがフェールオーバーされます。
+地理的ルーティング方法が使用されているプロファイル内のエンドポイントには、リージョンを一対一でしか割り当てることができません。 そのエンドポイントに子プロファイルが入れ子式に関連付けられていない場合、エンドポイントで異常が発生しても、トラフィックの送信先となる良好な状態の代替エンドポイントが存在しないため、Traffic Manager は引き続きそのエンドポイントにトラフィックを送信します。 別のエンドポイントに割り当てられているリージョンが、異常が発生したエンドポイントに割り当てられているリージョンの "親" であっても、その別のエンドポイントにはフェールオーバーされません (たとえば、スペイン リージョンが割り当てられているエンドポイントで異常が発生した場合、ヨーロッパ リージョンが割り当てられている別のエンドポイントにフェールオーバーされません)。 Traffic Manager は、お客様がそのプロファイルの中で設定した地理的境界を尊重するようになっているためです。 エンドポイントで異常が発生したときに別のエンドポイントへのフェールオーバーのメリットが得られるように、地理的リージョンは、個々のエンドポイントに割り当てるのではなく、複数のエンドポイントを含む入れ子になったプロファイルに割り当てることをお勧めします。 そうすることで、入れ子になった子プロファイルのいずれかのエンドポイントで異常が発生した場合、入れ子にされている同じ子プロファイル内の別のエンドポイントにトラフィックがフェールオーバーされます。
 
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>このルーティング タイプをサポートする API バージョンに制限はありますか。
 
@@ -176,7 +173,7 @@ Traffic Manager は、クエリの送信元 IP (ほとんどの場合、ユー�
 Real User Measurements では、Azure リージョンにアクセスするときの待機時間のみが測定およびレポートされます。 Azure 以外のリージョンでホストされているエンドポイントでパフォーマンス ベースのルーティングを使用している場合は、選択した代表的な Azure リージョンの待機時間増加に関する情報を、このエンドポイントに関連付けることで、引き続きこの機能のメリットを得られます。
 
 ### <a name="which-routing-method-benefits-from-real-user-measurements"></a>どのルーティング方法が Real User Measurements のメリットを得られますか。
-Real User Measurements から取得された追加情報は、パフォーマンスによるルーティング方法を使用するプロファイルにのみ適用されます。 Real User Measurements リンクは、Azure Portal で表示すると、すべてのプロファイルから利用できることに注意してください。
+Real User Measurements から取得された追加情報は、パフォーマンスによるルーティング方法を使用するプロファイルにのみ適用されます。 Real User Measurements リンクは、Azure portal で表示すると、すべてのプロファイルから利用できます。
 
 ### <a name="do-i-need-to-enable-real-user-measurements-each-profile-separately"></a>Real User Measurements は、プロファイルごとに個別に有効にする必要がありますか。
 いいえ。サブスクリプションごとに 1 回有効にすれば、測定およびレポートされたすべての待機時間情報を、すべてのプロファイルで利用できます。
@@ -190,12 +187,12 @@ Real User Measurements から取得された追加情報は、パフォーマン
 はい。Real User Measurements は、さまざまな種類のエンド ユーザー クライアントによって収集されたデータを取り込むように設計されています。 この FAQ は、新しい種類のクライアント アプリケーションがサポートされた時点で更新されます。
 
 ### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>Real User Measurements が有効な Web ページのレンダリング 1 回あたりの測定数はどのくらいですか。
-測定 JavaScript を指定して Real User Measurements が使用されている場合、ページ レンダリングあたり 6 つの測定値が取得されます。 この測定値は Traffic Manager サービスにレポートされます。 この機能の料金は、Traffic Manager サービスにレポートされた測定数に基づいて発生することに注意してください。 たとえば、測定が行われていても、レポートされる前に、ユーザーが自分の Web ページから移動すると、その測定は課金の対象とはなりません。
+測定 JavaScript を指定して Real User Measurements が使用されている場合、ページ レンダリングあたり 6 つの測定値が取得されます。 この測定値は Traffic Manager サービスにレポートされます。 この機能の料金は、Traffic Manager サービスにレポートされた測定数に基づいて発生します。 たとえば、測定が行われていても、レポートされる前に、ユーザーが自分の Web ページから移動すると、その測定は課金の対象とはなりません。
 
 ### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>Web ページで Real User Measurements スクリプトが実行されるまでの間に、遅延が発生しますか。
 いいえ。スクリプトは、プログラムによる遅延なしで呼びされます。
 
-### <a name="can-i-use-configure-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Real User Measurements を使用できるのは、測定対象の Azure リージョンでだけですか。
+### <a name="can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Real User Measurements を使用できるのは、測定対象の Azure リージョンでだけですか。
 いいえ。Real User Measurements スクリプトは、呼び出されるたびに、サービスで指定されているように 6 つの Azure リージョン セットを測定します。 このセットは呼び出しによって異なり、大量の呼び出しが発生すると、測定範囲はさまざまな Azure リージョンにまたがります。
 
 ### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>測定数を特定の数値に制限できますか。
@@ -226,7 +223,7 @@ Web ページに埋め込まれた内容を制御しているときは、待機�
 いいえ。Real User Measurements を動作させるために、Azure でホストする必要があるサーバー側コンポーネントはありません。 測定 JavaScript によってダウンロードされた 1 つのピクセル イメージと、そのイメージをさまざまな Azure リージョンで実行するサービスは、Azure でホストおよび管理されます。 
 
 ### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Real User Measurements を使用しているとき、Azure の帯域幅の使用量は増えますか。
-前の回答で説明したように、Real User Measurements のサーバー側コンポーネントは、Azure によって所有および管理されます。 つまり、Real User Measurements を使用していることが原因で、Azure の帯域幅の使用量が増加することはありません。 これは、帯域幅の使用量が Azure の課金対象にならない、という意味ではないので気を付けてください。 Microsoft では、Azure リージョンへの待機時間の測定のためにダウンロードするピクセル イメージを 1 つだけにして、帯域幅の使用量を最小限に抑えています。 
+前の回答で説明したように、Real User Measurements のサーバー側コンポーネントは、Azure によって所有および管理されます。 つまり、Real User Measurements を使用していることが原因で、Azure の帯域幅の使用量が増加することはありません。 これは、帯域幅の使用量が Azure の課金対象にならない、という意味ではありません。 Microsoft では、Azure リージョンへの待機時間の測定のためにダウンロードするピクセル イメージを 1 つだけにして、帯域幅の使用量を最小限に抑えています。 
 
 ## <a name="traffic-view"></a>Traffic View
 
@@ -290,7 +287,7 @@ Azure Web Apps では、複数のサブスクリプションからのエンド�
 
 現在、Traffic Manager では、IPv6 アドレスに対応するネーム サーバーを提供していません。 ただし、Traffic Manager は、IPv6 エンドポイントに接続する IPv6 クライアントでも使用できます。 クライアントが Traffic Manager に対して DNS 要求を直接行うことはなく、 代わりに、再帰的な DNS サービスを使用します。 IPv6 専用のクライアントは、IPv6 経由で再帰的な DNS サービスに要求を送信します。 その後、再帰サービスは、IPv4 を使用して Traffic Manager ネーム サーバーに接続します。
 
-Traffic Manager からの応答には、エンドポイントの DNS 名または IP アドレスが含まれます。 IPv6 エンドポイントをサポートする場合、2 つのオプションがあります。 関連付けられている AAAA レコードが含まれる DNA 名としてエンドポイントを追加すると、そのエンドポイントは、Traffic Manager によって正常性がチェックされ、クエリ応答内の CNAME レコード タイプとして返されます。 そのエンドポイントを、IPv6 アドレスを使用して直接追加することもできます。その場合、Traffic Manager によって、AAAA タイプのレコードがクエリ応答で返されます。 
+Traffic Manager からの応答には、エンドポイントの DNS 名または IP アドレスが含まれます。 IPv6 エンドポイントをサポートする場合、2 つのオプションがあります。 関連付けられている AAAA レコードが含まれる DNS 名としてエンドポイントを追加すると、そのエンドポイントは、Traffic Manager によって正常性がチェックされ、クエリ応答内の CNAME レコード タイプとして返されます。 そのエンドポイントを、IPv6 アドレスを使用して直接追加することもできます。その場合、Traffic Manager によって、AAAA タイプのレコードがクエリ応答で返されます。 
 
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>同じリージョン内の複数の Web アプリで Traffic Manager を使用できますか。
 
@@ -334,7 +331,7 @@ Traffic Manager は、次のように証明書の検証を提供できません�
 * クライアント証明書はサポートされていません。
 
 ### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>エンドポイントを追加する際には、IP アドレスと DNS 名のどちらを使用しますか。
-Traffic Manager では、追加するエンドポイントの参照方法として、DNS 名、IPv4 アドレス、IPv6 アドレスという 3 つの方法がサポートされています。 エンドポイントが IPv4 アドレスまたは IPv6 アドレスとして追加された場合、クエリ応答のレコード タイプはそれぞれ A と AAAA になります。 エンドポイントが DNS 名として追加された場合、クエリ応答のレコード タイプは CNAME になります。 IPv4 アドレスまたは IPv6 アドレスとして追加できるエンドポイントは、種類が "外部" のエンドポイントだけであることに注意してください。
+Traffic Manager では、追加するエンドポイントの参照方法として、DNS 名、IPv4 アドレス、IPv6 アドレスという 3 つの方法がサポートされています。 エンドポイントが IPv4 アドレスまたは IPv6 アドレスとして追加された場合、クエリ応答のレコード タイプはそれぞれ A と AAAA になります。 エンドポイントが DNS 名として追加された場合、クエリ応答のレコード タイプは CNAME になります。 IPv4 アドレスまたは IPv6 アドレスとして追加できるエンドポイントは、種類が**外部**のエンドポイントだけです。
 この 3 種類のエンドポイント アドレス指定方法では、すべてのルーティング方法と監視設定がサポートされています。
 
 ### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>エンドポイントを追加するときに、どの種類の IP アドレスを使用できますか。

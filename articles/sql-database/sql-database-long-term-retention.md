@@ -11,25 +11,26 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 07/16/2018
-ms.openlocfilehash: 6110773ecaba0ad333e4cfc9f9cc6014bd29a7a6
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.date: 10/24/2018
+ms.openlocfilehash: 7fe34423e706054daf84eaa8baf45fe201a661c9
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249521"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026179"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間 Azure SQL Database のバックアップを格納する
 
 多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database の[自動バックアップ](sql-database-automated-backups.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期リテンション期間 (LTR) 機能を使用すると、最大で 10 年間、指定した SQL データベースの完全バックアップを [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) Blob Storage に格納できます。 その後、任意のバックアップを新しいデータベースとして復元できます。
 
 > [!NOTE]
-> LTR は、Azure SQL Database 論理サーバーでホストされているデータベースで有効にすることができます。 これは、Managed Instance でまだ利用できません。
+> LTR は、Azure SQL Database 論理サーバーでホストされているデータベースで有効にすることができます。 Managed Instance でホストされているデータベースではまだ使用できません。
 > 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>SQL Database の長期リテンション期間のしくみ
 
-長期バックアップ リテンション期間では、ポイントインタイム リストア (PITR) のために作成された[自動 SQL Database バックアップ](sql-database-automated-backups.md)が活用されます。 SQL データベースごとに長期リテンション ポリシーを構成し、バックアップをどのくらいの頻度で長期ストレージにコピーする必要があるかを指定できます。 この柔軟性を実現するために、ポリシーの定義には、毎週のバックアップ リテンション期間 (W)、毎月のバックアップ リテンション期間 (M)、毎年のバックアップ リテンション期間 (Y)、年度の通算週 (WeekOfYear) の 4 つのパラメーターの組み合わせを使用できます。 W を指定すると、毎週 1 つのバックアップが長期ストレージにコピーされます。 M を指定すると、毎月第 1 週に 1 つのバックアップが長期ストレージにコピーされます。 Y を指定すると、WeekOfYear によって指定された週に 1 つのバックアップが長期ストレージにコピーされます。 これらのパラメーターで指定された期間、各バックアップが長期ストレージに保持されます。 
+長期的なバックアップ保有期間 (LTR) は、ポイントインタイム リストア (PITR) を有効にするために[自動的に作成された](sql-database-automated-backups.md)完全なデータベース バックアップを利用します。 LTR ポリシーが構成されている場合、これらのバックアップは異なるストレージ BLOB にコピーされます。
+SQL データベースごとに LTR ポリシーを構成し、バックアップをどのくらいの頻度で長期ストレージ BLOB にコピーする必要があるかを指定できます。 この柔軟性を実現するために、ポリシーの定義には、毎週のバックアップ リテンション期間 (W)、毎月のバックアップ リテンション期間 (M)、毎年のバックアップ リテンション期間 (Y)、年度の通算週 (WeekOfYear) の 4 つのパラメーターの組み合わせを使用できます。 W を指定すると、毎週 1 つのバックアップが長期ストレージにコピーされます。 M を指定すると、毎月第 1 週に 1 つのバックアップが長期ストレージにコピーされます。 Y を指定すると、WeekOfYear によって指定された週に 1 つのバックアップが長期ストレージにコピーされます。 これらのパラメーターで指定された期間、各バックアップが長期ストレージに保持されます。 
 
 次に例を示します。
 

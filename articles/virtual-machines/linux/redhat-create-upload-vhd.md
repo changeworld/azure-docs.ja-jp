@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/27/2018
 ms.author: szark
-ms.openlocfilehash: f5bce08bfc61d5b9b17e9500c002c3b870384c7b
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 43253423e3a27a61000c3f93868dd8b42809b7ae
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618660"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49650164"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure"></a>Azure 用の Red Hat ベースの仮想マシンの準備
 この記事では、Red Hat Enterprise Linux (RHEL) の仮想マシンを Azure で使用できるように準備する方法について説明します。 この記事で取り上げる RHEL のバージョンは 6.7+ と 7.1+ で、 準備対象のハイパーバイザーは Hyper-V、Kernel-based Virtual Machine (KVM)、VMware です。 Red Hat の Cloud Access プログラムに参加するための資格要件の詳細については、[Red Hat の Cloud Access Web サイト](http://www.redhat.com/en/technologies/cloud-computing/cloud-access)と [Azure での RHEL の実行](https://access.redhat.com/ecosystem/ccsp/microsoft-azure)に関するページを参照してください。
@@ -35,7 +35,7 @@ ms.locfileid: "39618660"
 * Azure では、VHDX 形式がサポートされません。 Azure でサポートされるのは、容量固定の VHD のみです。 Hyper-V マネージャーを使ってディスクの形式を VHD に変換するか、または convert-vhd コマンドレットを使用してください。 VirtualBox を使用する場合は、ディスクの作成時に、既定の動的割り当てオプションではなく、**[容量固定]** を選択します。
 * Azure でサポートされるのは、世代 1 の仮想マシンのみです。 第 1 世代の仮想マシンを、VHDX ファイル形式から VHD ファイル形式に、容量可変から容量固定ディスクに変換できます。 ただし仮想マシンの世代を変更することはできません。 詳細については、「[Should I create a generation 1 or 2 virtual machine in Hyper-V? (Hyper-V で第 1 世代または第 2 世代の仮想マシンを作成する必要はありますか)](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)」を参照してください。
 * VHD のサイズの上限は、1,023 GB です。
-* Linux オペレーティング システムをインストールする場合は、Logical Volume Manager (LVM) (通常、多くのインストールで既定) ではなく標準パーティションを使用することをお勧めします。 特にオペレーティング システム ディスクをトラブルシューティングのために別の同じ仮想マシンに接続する必要がある場合、そうすることで、複製された仮想マシンとの LVM 名の競合を回避することができます。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) または [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) をデータ ディスク上で使用できます。
+* Logical Volume Manager (LVM) がサポートされており、Azure 仮想マシンの OS ディスクやデータ ディスクに使用できます。 ただし、一般に、LVM ではなく OS ディスクの標準パーティションを使用することをお勧めします。 特にオペレーティング システム ディスクをトラブルシューティングのために別の同じ仮想マシンに接続する必要がある場合、そうすることで、複製された仮想マシンとの LVM 名の競合を回避することができます。 [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) および [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のドキュメントもご覧ください。
 * ユニバーサル ディスク フォーマット (UDF) ファイル システムをマウントするためのカーネル サポートが必要です。 Azure での最初の起動時に、ゲストに接続されている UDF でフォーマットされたメディアを介して、プロビジョニング構成が Linux 仮想マシンに渡されます。 Azure Linux エージェントは、その構成を読み取り、仮想マシンをプロビジョニングする UDF ファイル システムをマウントできる必要があります。
 * オペレーティング システム ディスクでスワップ パーティションを構成しないでください。 Linux エージェントは、一時的なリソース ディスク上にスワップ ファイルを作成するよう構成できます。  このことに関する詳細については、次の手順を参照してください。
 * Azure の VHD の仮想サイズはすべて、1 MB にアラインメントさせる必要があります。 未フォーマット ディスクから VHD に変換するときに、変換する前の未フォーマット ディスクのサイズが 1 MB の倍数であることを確認する必要があります。 詳細については、後述の手順を参照してください。 また、[Linux のインストールに関する注記](create-upload-generic.md#general-linux-installation-notes)のセクションも参照してください。

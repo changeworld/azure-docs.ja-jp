@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: debefb329304235818b7b441122b90ae9a2834a9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 69d2d80e40400cc7fa40aeb5a163dce5036905ab
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578312"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402762"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>トラフィック分析についてよく寄せられる質問
 
@@ -77,9 +77,9 @@ ms.locfileid: "45578312"
 
 はい。 既存のワークスペースを選択する場合は、それが新しいクエリ言語に移行されていることを確認してください。 そのワークスペースのアップグレードを望まない場合は、新しいワークスペースを作成する必要があります。 新しいクエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md)」をご覧ください。
 
-## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-operations-management-suite-workspace-be-in-a-different-subscription"></a>自分の Azure Storage アカウントと自分の Operations Management Suite ワークスペースをそれぞれ別のサブスクリプションに置くことができますか?
+## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>自分の Azure Storage アカウントと自分の Log Analytics ワークスペースをそれぞれ別のサブスクリプションに置くことができますか?
 
-はい。自分の Azure Storage アカウントと自分の Operations Management Suite ワークスペースをそれぞれ別のサブスクリプションに置くことができます。
+はい。自分の Azure Storage アカウントと自分の Log Analytics ワークスペースをそれぞれ別のサブスクリプションに置くことができます。
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>未処理のログを別のサブスクリプションで格納することはできますか?
 
@@ -115,7 +115,7 @@ ms.locfileid: "45578312"
 
 このメッセージは、次の理由で表示される場合があります。
 - トラフィック分析が最近有効化され、意味のある分析情報を導出できる十分なデータをまだ集計していない可能性があります。
-- 無料版の Operations Management Suite ワークスペースを使用しており、クォータ制限を超えています。 容量の大きいワークスペースを使用しなければならない可能性があります。
+- 無料版の Log Analytics ワークスペースを使用しており、クォータ制限を超えています。 容量の大きいワークスペースを使用しなければならない可能性があります。
     
 問題が解決しない場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
     

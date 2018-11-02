@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2018
+ms.date: 10/19/2018
 ms.author: magoedte
-ms.openlocfilehash: de7ae5788224b83105e4dc9a24aea35c8b841c88
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19d015947e5d2331c50cd64956e8a7650f96616d
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986729"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49638326"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>コンテナー用 Azure Monitor のトラブルシューティング
 
@@ -92,5 +92,17 @@ ms.locfileid: "46986729"
     docker-cimprov 1.0.0.31
     ```
 
+## <a name="error-messages"></a>エラー メッセージ
+
+次の表は、コンテナー用 Azure Monitor の使用中に発生する可能性のある既知のエラーをまとめたものです。
+
+| エラー メッセージ  | Action |  
+| ---- | --- |  
+| エラー メッセージ: `No data for selected filters`  | 新しく作成したクラスターの監視データ フローの確立に時間がかかる場合があります。 クラスターのデータが表示されるまで、少なくとも 10 ～ 15 分お待ちください。 |   
+| エラー メッセージ: `Error retrieving data` | Azure Kubenetes Service クラスターが正常性とパフォーマンスの監視用に設定される間に、クラスターと Azure Log Analytics ワークスペースの間に接続が確立されます。 Log Analytics ワークスペースは、クラスターのすべての監視データを格納するために使用されます。 Log Analytics ワークスペースが削除されるか失われると、このエラーが発生する可能性があります。 [アクセスの管理](../log-analytics/log-analytics-manage-access.md?toc=/azure/azure-monitor/toc.json#workspace-information)に関する記事を参照して、ワークスペースが使用可能かどうかを確認してください。 ワークスペースがない場合は、コンテナー用 Azure Monitor にクラスターを再オンボードする必要があります。 再オンボードするには、クラスターに対する監視を[無効](/monitoring-container-insights-optout.md?toc=%2fazure%2fmonitoring%2ftoc.json)にしてから、コンテナーの Azure Monitor を再び[有効](monitoring-container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json#enable-monitoring-for-a-new-cluster)にする必要があります。 |  
+| az aks cli でコンテナーの Azure Monitor を追加した後の `Error retrieving data` | `az aks cli` を使用してオンボードすると、コンテナーの Azure Monitor が正しくオンボードされない可能性があります。 ソリューションがオンボードされているかどうかを確認します。 そのためには、Log Analytics ワークスペースに移動し、左側のウィンドウで **[ソリューション]** を選択して、ソリューションが使用可能かどうかを確認します。 この問題を解決するには、[コンテナー用の Azure Monitor をデプロイする方法](monitoring-container-insights-onboard.md?toc=%2fazure%2fmonitoring%2ftoc.json)に関する記事の手順に従ってソリューションを再デプロイする必要があります |  
+
+問題の診断を助けるために提供されているトラブルシューティング スクリプトを、[こちら](https://github.com/Microsoft/OMS-docker/tree/ci_feature_prod/Troubleshoot#troubleshooting-script)で利用できます。  
+
 ## <a name="next-steps"></a>次の手順
-AKS クラスター ノードとポッドの両方について正常性メトリックを取得するための監視が有効になりました。これらの正常性メトリックは Azure portal で使用できます。 コンテナー用 Azure Monitor を使用する方法については、[Azure Kubernetes Service の正常性の表示](monitoring-container-insights-analyze.md)に関するページをご覧ください。
+AKS クラスター ノードとポッドの両方について正常性メトリックを取得するための監視が有効になったので、これらの正常性メトリックを Azure portal で利用できます。 コンテナー用 Azure Monitor を使用する方法については、[Azure Kubernetes Service の正常性の表示](monitoring-container-insights-analyze.md)に関するページをご覧ください。

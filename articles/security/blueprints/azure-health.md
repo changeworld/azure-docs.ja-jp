@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: cbeee643ee4a2705d3f0202a7206e10fbcc5acab
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: c0255ff31353ca8fe0cf684af53a12654b400208
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831621"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407556"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
@@ -361,8 +361,8 @@ Han は、ISO、SOC、HiTrust の監査経験がある認定監査担当者で�
 ### <a name="azure-alerts"></a>Azure アラート
 - アラートは Azure サービスの監視方法の 1 つであり、データに対する条件を構成できます。 また、アラートの条件が監視データと一致したときに、通知を受け取ることができます。
 
-### <a name="operations-management-suite-oms"></a>Operations Management Suite (OMS)
-[Operations Management Suite (OMS)](/azure/operations-management-suite/operations-management-suite-overview) は一連の管理サービスです。
+### <a name="log-analytics"></a>Log Analytics
+[Log Analytics](/azure/operations-management-suite/operations-management-suite-overview) は管理サービスのコレクションです。
 
 -   Security Center でワークスペースが有効になっています。
 

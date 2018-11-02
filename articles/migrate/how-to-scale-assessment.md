@@ -4,14 +4,14 @@ description: Azure Migrate サービスを使用して、多数のオンプレ�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 5f02393e6c8d5e094443e418b3fe7439d73ff837
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 32bed3a60c40b93471b75b9d54dccd822ccc3be8
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325024"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025876"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
@@ -122,7 +122,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
 1. Azure Migrate プロジェクトで、**[開始]** > **[検出と評価]** > **[マシンの検出]** の順にクリックします。
 2. **[マシンの検出]** には、アプライアンスに使用できるオプションが 2 つあり、設定に基づいて適切なアプライアンスをダウンロードするには **[ダウンロード]** をクリックします。
 
-    a. **1 回限りの検出:** このモデルでのアプライアンスは、vCenter Server と通信して、VM に関するメタデータを収集します。 VM のパフォーマンス データの収集については、vCenter Server に格納されているパフォーマンス データの履歴に依存しており、過去 1 か月のパフォーマンス履歴を収集します。 このモデルでは、Azure Migrate は各メトリックの (ピーク カウンターではなく) 平均カウンターを収集します [詳細はこちら] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected)。 これは 1 回限りの検出であるため、いったん検出が完了すると、オンプレミス環境での変更は反映されません。 変更を反映したい場合は、同じプロジェクトに対して、同じ環境の再検出を行う必要があります。
+    a. **1 回限りの検出:** このモデルでのアプライアンスは、vCenter Server と通信して、VM に関するメタデータを収集します。 VM のパフォーマンス データの収集については、vCenter Server に格納されているパフォーマンス データの履歴に依存しており、過去 1 か月のパフォーマンス履歴を収集します。 このモデルでは、Azure Migrate は各メトリックの平均カウンター (ピーク カウンターではない) を収集します。詳細については、[こちら](https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected)を参照してください。 これは 1 回限りの検出であるため、いったん検出が完了すると、オンプレミス環境での変更は反映されません。 変更を反映したい場合は、同じプロジェクトに対して、同じ環境の再検出を行う必要があります。
 
     b. **継続的な検出:** このモデルでのアプライアンスは、継続的にオンプレミス環境をプロファイルして、各 VM のリアルタイムの使用状況データを収集します。 このモデルでは、各メトリック (CPU 使用率、メモリ使用率など) のピーク カウンターが収集されます。 このモデルは、パフォーマンス データ収集に関する vCenter Server の統計情報設定に依存しません。 継続的なプロファイルは、いつでもアプライアンスから停止できます。
 
@@ -148,7 +148,17 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
 
 #### <a name="one-time-discovery"></a>1 回限りの検出
 
-OVA バージョン 1.0.9.14 の場合
+<<<<<<< HEAD For OVA version 1.0.9.15 (Released on 10/23/2018)
+
+ <a name="algorithm--hash-value"></a>**アルゴリズム** | **ハッシュ値**
+=======
+OVA バージョン 1.0.9.15 の場合
+
+**アルゴリズム** | **ハッシュ値**
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37 --- | --- MD5 | e9ef16b0c837638c506b5fc0ef75ebfa SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864 SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+
+<<<<<<< HEAD For OVA version 1.0.9.14 (Released on 8/24/2018) ======= For OVA version 1.0.9.14
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37
 
 **アルゴリズム** | **ハッシュ値**
 --- | ---

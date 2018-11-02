@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: bcb772185f0a16183b8a6c9674419781ef41be3e
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 7c01940c41067029bc3d47d19c2ded1d710cc2c6
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068538"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49470066"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 Azure Storage は多層型セキュリティ モデルを提供しているため、許可されたネットワークの特定のセットに対するストレージ アカウントをセキュリティで保護することができます。  ネットワーク ルールが構成されている場合、ストレージ アカウントにアクセスできるのは、許可されているネットワークからのアプリケーションのみです。  許可されているネットワークからの呼び出し時に、アプリケーションはストレージ アカウントにアクセスするための適切な承認 (有効なアクセス キーまたは SAS トークン) を要求します。
@@ -86,7 +86,7 @@ az storage account update --name "mystorageaccount" --resource-group "myresource
 az storage account update --name "mystorageaccount" --resource-group "myresourcegroup" --default-action Allow
 ```
 
-## <a name="grant-access-from-a-virtual-network"></a>仮想ネットワークからアクセスの許可
+## <a name="grant-access-from-a-virtual-network"></a>仮想ネットワークからのアクセスを許可する
 特定の Azure 仮想ネットワークからのみアクセスを許可するようにストレージ アカウントを構成できます。 
 
 仮想ネットワーク内で Azure Storage の[サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)を有効にすると、トラフィックでは Azure Storage サービスへの最適なルートが確保されます。 仮想ネットワークとサブネットの ID も、各要求と一緒に転送されます。  管理者は、仮想ネットワーク内の特定のサブネットから受信する要求を許可するストレージ アカウントのネットワーク ルールを後で構成できます。  これらのネットワーク ルールによってアクセスを許可されたクライアントがデータにアクセスするには、ストレージ アカウントの承認要件を満たす必要があります。
@@ -188,7 +188,11 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 > 「/31」や「/32」のプレフィックス サイズを使用した小さなアドレス範囲はサポートされていません。  これらの範囲は、個々の IP アドレス ルールを使用して構成する必要があります。
 >
 
-IP ネットワーク ルールは、**パブリック インターネット**の IP アドレスに対してのみ許可されます。  プライベート ネットワーク用に予約されている IP アドレス範囲 (RFC 1918 で定義) は、IP ルールでは許可されません。  プライベート ネットワークには、*10.\**、*172.16.\**、および *192.168.\** で始まるアドレスが含まれます。
+IP ネットワーク ルールは、**パブリック インターネット**の IP アドレスに対してのみ許可されます。  プライベート ネットワーク用に予約されている IP アドレス範囲 ([RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) で定義) は、IP ルールでは許可されません。  プライベート ネットワークには、*10.\**、*172.16.\** - *172.31.\**、*192.168.\** で始まるアドレスが含まれています。
+
+> [!NOTE]
+> IP ネットワーク ルールは、ストレージ アカウントと同じ Azure リージョンから送信された要求には影響ありません。  同じリージョンの要求を許可するには、[仮想ネットワーク ルール](#grant-access-from-a-virtual-network)を使用します。
+>
 
 現時点でサポートされているのは、IPv4 アドレスのみです。
 

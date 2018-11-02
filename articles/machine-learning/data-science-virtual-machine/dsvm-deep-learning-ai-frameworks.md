@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 891059a440189112c834f3402725781a6b4a3960
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: 234e9233e69877c9afe79a5a053a4310d013a9ab
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952826"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49646112"
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>ディープ ラーニングと AI のフレームワーク
 [データ サイエンス仮想マシン](http://aka.ms/dsvm) (DSVM) と[ディープ ラーニング VM](http://aka.ms/dsvm/deeplearning) は、多数のディープ ラーニング フレームワークをサポートし、予測分析や、画像および言語の理解などの認識機能を駆使した人工知能 (AI) アプリケーションの構築を支援します。 
@@ -174,7 +174,7 @@ X2Go で VM にログインします。 ターミナルで、サービスを開�
 
     sudo systemctl start digits
 
-サービスが開始するまで 1 分ほどかかります。 Web ブラウザーを起動し、`http://localhost:5000` にアクセスします。
+サービスが開始するまで 1 分ほどかかります。 Web ブラウザーを起動し、`http://localhost:5000` にアクセスします。 DIGITS ではセキュリティ保護されたログインが提供されないので、VM の外部には公開しないでください。
 
 
 

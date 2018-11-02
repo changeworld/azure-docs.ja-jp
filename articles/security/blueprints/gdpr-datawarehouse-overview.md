@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6a777418c5381f1f52bae31ad4e697248587fc6d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 84e26212b1102d693b84e5b66fbd606da2673934
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576546"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405941"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-gdpr"></a>Azure のセキュリティとコンプライアンスのブルー プリント: GDPR のためのデータ ウェアハウス
 
@@ -66,7 +66,7 @@ SQL Load Balancer は、SQL トラフィックを管理することで高パフ�
 - Azure Active Directory
 - Recovery Services コンテナー
 - Azure Key Vault
-- Operations Management Suite (OMS)
+- Log Analytics
 - Azure Data Catalog
 - Azure Security Center
 
@@ -83,7 +83,7 @@ SQL Load Balancer は、SQL トラフィックを管理することで高パフ�
 
 このソリューションでは、次の構成を持つドメイン参加済み要塞ホストとして仮想マシンを作成します。
 -   [マルウェア対策拡張機能](https://docs.microsoft.com/azure/security/azure-security-antimalware)
--   [OMS 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-oms)
+-   [Log Analytics 拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-oms)
 -   [Azure 診断拡張機能](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   Azure Key Vault を使用した [Azure ディスクの暗号化](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 -   未使用時の仮想マシン リソースの消費を抑えるための[自動シャットダウン ポリシー](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/)
@@ -100,7 +100,7 @@ SQL Load Balancer は、SQL トラフィックを管理することで高パフ�
 
 各 NSG では、ソリューションが安全かつ適切に機能できるように、固有のポートとプロトコルが開かれます。 さらに、各 NSG で次の構成が有効になります。
   - [診断ログとイベント](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)が有効化され、ストレージ アカウントに格納される
-  - OMS Log Analytics が [NSG の診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)に接続される
+  - Log Analytics が [NSG の診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)に接続される
 
 **サブネット**: 各サブネットは、対応する NSG に関連付けられています。
 
@@ -140,7 +140,7 @@ SQL Load Balancer は、SQL トラフィックを管理することで高パフ�
 - Key Vault の診断ログは、少なくとも 365 日のリテンション期間で有効になっています。
 - キーに対して許可される暗号化操作は必要なものに制限されます。
 
-**パッチ管理**: この参照アーキテクチャの一部としてデプロイされる Windows 仮想マシンは、Windows Update サービスから自動的に更新プログラムを受け取るように、既定で構成されます。 また、このソリューションには、OMS [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) サービスが含まれます。このサービスによって、必要に応じて更新されたデプロイを作成して、仮想マシンに修正プログラムを適用できます。
+**パッチ管理**: この参照アーキテクチャの一部としてデプロイされる Windows 仮想マシンは、Windows Update サービスから自動的に更新プログラムを受け取るように、既定で構成されます。 また、このソリューションには、[Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) サービスが含まれます。このサービスによって、必要に応じて仮想マシンにパッチを適用するために、更新されたデプロイが作成される場合があります。
 
 **マルウェア対策**: 仮想マシン向けの [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware) は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するリアルタイム保護機能を提供し、既知のマルウェアや不要なソフトウェアが保護されている仮想マシンへのインストールまたは実行を試みた場合に警告する構成可能なアラートを備えています。
 
@@ -152,12 +152,12 @@ SQL Load Balancer は、SQL トラフィックを管理することで高パフ�
 **Recovery Services コンテナー**: [Recovery Services コンテナー](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview)はバックアップ データを保管し、このアーキテクチャの Azure Virtual Machines のすべての構成を保護します。 Recovery Services コンテナーを使用すると、VM 全体を復元せずに IaaS VM からファイルとフォルダーを復元できるため、復元時間を短縮できます。
 
 ### <a name="logging-and-auditing"></a>ログ記録と監査
-[Operations Management Suite (OMS)](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 OMS [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
+[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
 - **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) は、サブスクリプションのリソースに対して実行された操作に関する分析情報を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、および状態の判断に役立ちます。
 - **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログと、Azure Blob Storage、テーブル、キューのログが含まれます。
 - **ログのアーカイブ**: すべての診断ログは、暗号化され、集中管理された Azure Storage アカウントに書き込まれ、アーカイブされます。 リテンション期間には、組織固有の保有要件を満たすために最長 730 日までの日数をユーザーが設定できます。 これらのログは、処理、格納、およびダッシュボードのレポート化を行うために、Azure Log Analytics に接続されます。
 
-さらに、このアーキテクチャの一部として、次の OMS ソリューションが含まれます。
+さらに、このアーキテクチャの一部として、次の Log Analytics ソリューションが含まれます。
 -   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): この Active Directory 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
 -   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): このマルウェア対策ソリューションは、マルウェア、脅威、および保護の状態に関する報告を行います。
 -   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation ソリューションは、Runbook の格納、実行、および管理を行います。

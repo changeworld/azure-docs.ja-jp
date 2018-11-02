@@ -5,21 +5,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 10/15/2018
 ms.author: tamram
-ms.openlocfilehash: 6ee80aa7b7a58e2f02ed36d3c0c4b1a0889a906f
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: ae6f7646192b7bee8cbd836f1eff3814c26a6b46
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831468"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427333"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>SMB を使用して Azure Files への Azure Active Directory 認証を有効にする (プレビュー)
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
 
 SMB を使用した Azure Files への Azure AD 認証の概要については、[SMB を使用した Azure Files への Azure Active Directory 認証 (プレビュー) の概要](storage-files-active-directory-overview.md)に関する記事を参照してください。
 
-## <a name="workflow-overview"></a>ワークフローの概要
+## <a name="overview-of-the-workflow"></a>ワークフローの概要
 SMB を使用した Azure Files への Azure AD 認証を有効にする前に、Azure AD と Azure Storage 環境が正しく構成されていることを確認してください。 [前提条件](#prerequisites)を参照して、必要な手順をすべて実行したことを確認することをお勧めします。 
 
 次に、以下の手順を実行して、Azure AD 資格情報を使用して Azure Files のリソースへのアクセス許可を付与します。 
@@ -34,6 +34,9 @@ SMB を使用した Azure Files への Azure AD 認証を有効にする前に�
 ![SMB を使用した Azure Files への Azure AD ワークフローを示す図](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
 ## <a name="prerequisites"></a>前提条件 
+
+Azure Files への SMB 経由の Azure AD を有効にする前に、次の前提条件を完了していることを確認してください。
+
 1.  **Azure AD テナントを選択または作成します。**
 
     SMB を使用した Azure AD 認証には、新規または既存のテナントを使用できます。 アクセスするテナントとファイル共有は、同じサブスクリプションに関連付けられている必要があります。
@@ -57,7 +60,7 @@ SMB を使用した Azure Files への Azure AD 認証を有効にする前に�
 
     Azure AD テナントと同じサブスクリプションに関連付けられている新規または既存のファイル共有を選択します。 新しいファイル共有を作成する方法の詳細については、「[Azure Files にファイル共有を作成する](storage-how-to-create-file-share.md)」を参照してください。 
 
-    Azure AD テナントは、SMB を使用した Azure AD のプレビューがサポートされているリージョンにデプロイする必要があります。 プレビューは、米国西部、米国西部 2、米国中南部、米国東部、米国東部 2、米国中部、米国中北部、オーストラリア東部、西ヨーロッパ、北ヨーロッパを除くすべてのパブリック リージョンで利用可能です。
+    Azure AD テナントは、SMB を使用した Azure AD のプレビューがサポートされているリージョンにデプロイする必要があります。 このプレビューは、米国西部、米国西部 2、米国中南部、米国東部、米国東部 2、米国中部、米国中北部、オーストラリア東部、西ヨーロッパ、北ヨーロッパを除くすべてのパブリック リージョンで使用できます。
 
     パフォーマンスを最適化するには、共有にアクセスする予定の VM と同じリージョンにファイル共有を配置することをお勧めします。
 
@@ -65,20 +68,29 @@ SMB を使用した Azure Files への Azure AD 認証を有効にする前に�
 
     VM とファイル共有が正しく構成されていることを確認するには、ストレージ アカウント キーを使用してファイル共有をマウントします。 詳細については、「[Windows で Azure ファイル共有をマウントして共有にアクセスする](storage-how-to-use-files-windows.md)」を参照してください。
 
-## <a name="enable-azure-ad-authentication"></a>Azure AD 認証を有効にする
-[前提条件](#prerequisites)を満たしたら、SMB を使用した Azure AD 認証を有効にすることができます。
+## <a name="enable-azure-ad-authentication-for-your-account"></a>アカウントへの Azure AD 認証を有効にする
 
-### <a name="step-1-enable-azure-ad-authentication-over-smb-for-your-storage-account"></a>手順 1: SMB を使用した、ストレージ アカウントへの Azure AD 認証を有効にする
-SMB を使用した Azure Files への Azure AD 認証を有効にするには、PowerShell または Azure CLI からの Azure ストレージ リソース プロバイダーを使用して、2018 年 8 月 29 日以降に作成されたストレージ アカウントにプロパティを設定できます。 プレビュー リリースでは、Azure portal でプロパティを設定することはできません。 
-
-このプロパティを設定すると、ストレージ アカウントが、関連付けられている Azure AD Domain Services デプロイに登録されます。 登録されると、ストレージ アカウント内のすべての新規および既存のファイル共有に対する、SMB を使用した Azure AD 認証が有効になります。 
+Azure Files への SMB 経由の Azure AD 認証を有効にするには、Azure Portal、Azure PowerShell、または Azure CLI を使用して、2018 年 9 月 24 日以降に作成されたストレージ アカウントでプロパティを設定できます。 このプロパティを設定すると、ストレージ アカウントが、関連付けられている Azure AD Domain Services デプロイに登録されます。 登録されると、ストレージ アカウント内のすべての新規および既存のファイル共有に対する、SMB を使用した Azure AD 認証が有効になります。 
 
 SMB を使用した Azure AD 認証を有効にするには、Azure AD テナントに Azure AD Domain Services が正常にデプロイされている必要があることに注意してください。 詳細については、[前提条件](#prerequisites)を参照してください。
 
-**Powershell**  
-SMB を使用した Azure AD 認証を有効にするには `AzureRM.Storage 6.0.0-preview` PowerShell モジュールをインストールします。 PowerShell モジュールのインストールの詳細については、[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関する記事を参照してください。
+### <a name="azure-portal"></a>Azure ポータル
 
-次に、[Set-azurermstorageaccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) を呼び出し、**EnableAzureFilesAadIntegrationForSMB** パラメーターを **true** に設定します。 以下の例のプレースホルダーをお客様独自の値に置き換えてください。
+[Azure Portal](https://portal.azure.com) を使用して SMB 経由の Azure AD 認証を有効にするには、次の手順に従います。
+
+1. Azure Portal で、既存のストレージ アカウントに移動するか、または[ストレージ アカウントを作成](../common/storage-quickstart-create-account.md)します。
+2. **[設定]** セクションで、**[構成]** を選択します。
+3. **[Azure Active Directory Authentication for Azure Files (preview)] (Azure Files への Azure Active Directory 認証 (プレビュー))** を有効にします。
+
+次の図は、ストレージ アカウントへの SMB 経由の Azure AD 認証を有効にする方法を示しています。
+
+![Azure Portal で SMB 経由の Azure AD 認証を有効にする](media/storage-files-active-directory-enable/portal-enable-active-directory-over-smb.png)
+  
+### <a name="powershell"></a>PowerShell  
+
+Azure PowerShell から SMB 経由の Azure AD 認証を有効にするには、まず `AzureRM.Storage 6.0.0-preview` モジュールをインストールします。 PowerShell モジュールのインストールの詳細については、[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関する記事を参照してください。
+
+次に、新しいストレージ アカウントを作成してから [Set-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/set-azurermstorageaccount) を呼び出し、**EnableAzureFilesAadIntegrationForSMB** パラメーターを **true** に設定します。 以下の例のプレースホルダーをお客様独自の値に置き換えてください。
 
 ```powershell
 # Create a new storage account
@@ -90,37 +102,40 @@ New-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
     -EnableAzureFilesAadIntegrationForSMB $true
 
 # Update an existing storage account
-# Supported for storage accounts created after August 29, 2018 only
+# Supported for storage accounts created after September 24, 2018 only
 Set-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
     -Name "<storage-account-name>" `
     -EnableAzureFilesAadIntegrationForSMB $true```
 ```
 
-**CLI**  
-Azure CLI 2.0 から SMB を使用した Azure AD 認証を有効にするには、まず、*storage-preview* 拡張機能をインストールします。
+### <a name="azure-cli"></a>Azure CLI
 
-```azurecli-interactive
+Azure CLI 2.0 から SMB 経由の Azure AD 認証を有効にするには、まず `storage-preview` 拡張機能をインストールします。
+
+```cli-interactive
 az extension add --name storage-preview
 ```
-
-次に、[az storage account update](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) を呼び出し、`--file-aad` プロパティを **true** に設定します。 以下の例のプレースホルダーをお客様独自の値に置き換えてください。
+  
+次に、新しいストレージ アカウントを作成してから [az storage account update](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) を呼び出し、`--file-aad` プロパティを **true** に設定します。 以下の例のプレースホルダーをお客様独自の値に置き換えてください。
 
 ```azurecli-interactive
 # Create a new storage account
 az storage account create -n <storage-account-name> -g <resource-group-name> --file-aad true
 
 # Update an existing storage account
-# Supported for storage accounts created after August 29, 2018 only
+# Supported for storage accounts created after September 24, 2018 only
 az storage account update -n <storage-account-name> -g <resource-group-name> --file-aad true
 ```
 
-### <a name="step-2-assign-access-permissions-to-an-identity"></a>手順 2: ID にアクセス許可を割り当てる 
-Azure AD の資格情報を使用して Azure Files のリソースにアクセスするには、ID (ユーザー、グループ、またはサービス プリンシパル) に、共有レベルで必要なアクセス許可が必要です。 以下のステップ バイ ステップ ガイダンスでは、ファイル共有の読み取り、書き込み、または削除操作のアクセス許可を ID に割り当てる方法を示します。
+## <a name="assign-access-permissions-to-an-identity"></a>ID にアクセス許可を割り当てる 
+
+Azure AD の資格情報を使用して Azure Files のリソースにアクセスするには、ID (ユーザー、グループ、またはサービス プリンシパル) に、共有レベルで必要なアクセス許可が必要です。 このセクションのガイダンスでは、ID にファイル共有のための読み取り、書き込み、または削除のアクセス許可を割り当てる方法を示します。
 
 > [!IMPORTANT]
 > ID にロールを割り当てる機能など、ファイル共有を完全に管理制御するには、ストレージ アカウント キーを使用する必要があります。 Azure AD 資格情報を使用した管理制御はサポートされていません。 
 
-#### <a name="step-21-define-a-custom-role"></a>手順 2.1: カスタム ロールを定義する
+### <a name="define-a-custom-role"></a>カスタム ロールを定義する
+
 共有レベルのアクセス許可を付与するには、カスタム RBAC ロールを定義してそれを ID に割り当て、特定のファイル共有へのスコープに割り当てます。 このプロセスは、ファイル共有に対し特定のユーザーが持っているアクセス権の種類を指定する、Windows 共有のアクセス許可の指定に似ています。  
 
 次のセクションで示したテンプレートでは、ファイル共有の読み取りまたは変更のアクセス許可を付与します。 カスタム ロールを定義するには、JSON ファイルを作成し、適切なテンプレートをそのファイルにコピーします。 カスタム RBAC ロールの定義の詳細については、「[Azure のカスタム ロール](../../role-based-access-control/custom-roles.md)」を参照してください。
@@ -172,19 +187,39 @@ Azure AD の資格情報を使用して Azure Files のリソースにアクセ�
 }
 ```
 
-#### <a name="step-22-create-the-custom-role-and-assign-it-to-the-target-identity"></a>手順 2.2: カスタム ロールを作成し、対象の ID に割り当てる
-次に、PowerShell または Azure CLI を使用してロールを作成し、Azure AD の ID に割り当てます。 
+### <a name="create-the-custom-role"></a>カスタム ロールを作成する
 
-**Powershell**  
-SMB を使用した Azure AD 認証を有効にするには `AzureRM.Storage 6.0.0-preview` PowerShell モジュールをインストールします。 PowerShell モジュールのインストールの詳細については、[PowerShellGet を使用した Windows への Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関する記事を参照してください。
+カスタム ロールを作成するには、PowerShell または Azure CLI を使用します。 
 
-次の PowerShell コマンドは、カスタム ロールを作成し、サインイン名に基づいて Azure AD ID にロールを割り当てます。 PowerShell を使用した RBAC ロールの割り当ての詳細については、「[RBAC と Azure PowerShell を使用してアクセスを管理する](../../role-based-access-control/role-assignments-powershell.md)」を参照してください。
+#### <a name="powershell"></a>PowerShell
 
-次のサンプル スクリプトを実行する際には、プレース ホルダーの値をお客様独自の値に置き換えてください。
+次の PowerShell コマンドは、いずれかのサンプル テンプレートに基づいてカスタム ロールを作成します。
 
 ```powershell
 #Create a custom role based on the sample template above
 New-AzureRmRoleDefinition -InputFile "<custom-role-def-json-path>"
+```
+
+#### <a name="cli"></a>CLI 
+
+次の Azure CLI コマンドは、いずれかのサンプル テンプレートに基づいてカスタム ロールを作成します。
+
+```azurecli-interactive
+#Create a custom role based on the sample templates above
+az role definition create --role-definition "<Custom-role-def-JSON-path>"
+```
+
+### <a name="assign-the-custom-role-to-the-target-identity"></a>対象の ID にカスタム ロールを割り当てる
+
+次に、PowerShell または Azure CLI を使用して、Azure AD の ID にカスタム ロールを割り当てます。 
+
+#### <a name="powershell"></a>PowerShell
+
+次の PowerShell コマンドは、使用可能なカスタム ロールを一覧表示してから、サインイン名に基づいて Azure AD の ID にカスタム ロールを割り当てる方法を示しています。 PowerShell を使用した RBAC ロールの割り当ての詳細については、「[RBAC と Azure PowerShell を使用してアクセスを管理する](../../role-based-access-control/role-assignments-powershell.md)」を参照してください。
+
+次のサンプル スクリプトを実行するときは、プレースホルダー値 (かっこを含む) を独自の値に置き換えることを忘れないでください。
+
+```powershell
 #Get the name of the custom role
 $FileShareContributorRole = Get-AzureRmRoleDefinition "<role-name>"
 #Constrain the scope to the target file share
@@ -193,21 +228,20 @@ $scope = "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/provi
 New-AzureRmRoleAssignment -SignInName <user-principal-name> -RoleDefinitionName $FileShareContributorRole.Name -Scope $scope
 ```
 
-**CLI**  
-次の CLI 2.0 コマンドは、カスタム ロールを作成し、サインイン名に基づいて、Azure AD ID にロールを割り当てます。 Azure CLI を使用した RBAC ロールの割り当ての詳細については、「[RBAC と Azure CLI を使用してアクセスを管理する](../../role-based-access-control/role-assignments-cli.md)」を参照してください。 
+#### <a name="cli"></a>CLI
+  
+次の CLI 2.0 コマンドは、使用可能なカスタム ロールを一覧表示してから、サインイン名に基づいて Azure AD の ID にカスタム ロールを割り当てる方法を示しています。 Azure CLI を使用した RBAC ロールの割り当ての詳細については、「[RBAC と Azure CLI を使用してアクセスを管理する](../../role-based-access-control/role-assignments-cli.md)」を参照してください。 
 
-次のサンプル スクリプトを実行する際には、プレース ホルダーの値をお客様独自の値に置き換えてください。
+次のサンプル スクリプトを実行するときは、プレースホルダー値 (かっこを含む) を独自の値に置き換えることを忘れないでください。
 
 ```azurecli-interactive
-#Create a custom role based on the sample templates above
-az role definition create --role-definition "<Custom-role-def-JSON-path>"
 #List the custom roles
 az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "description":.description, "roleType":.roleType}'
 #Assign the custom role to the target identity
 az role assignment create --role "<custome-role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshare/<share-name>"
 ```
 
-### <a name="step-3-configure-ntfs-permissions-over-smb"></a>手順 3: SMB を使用した NTFS アクセス許可を構成する 
+## <a name="configure-ntfs-permissions-over-smb"></a>SMB 経由の NTFS アクセス許可を構成する 
 RBAC に共有レベルのアクセス許可を割り当てたら、ルート、ディレクトリ、またはファイル レベルに適切な NTFS アクセス許可を割り当てる必要があります。 共有レベルのアクセス許可は、ユーザーが共有にアクセスできるかどうかを決定する高度なゲートキーパーであり、NTFS アクセス許可はユーザーがディレクトリまたはファイル レベルでどんな操作を実行できるかを規定し、より詳細なレベルで動作すると考えることができます。 
 
 Azure Files では、NTFS の基本的なアクセス許可と詳細なアクセス許可で構成される完全なセットをサポートします。 共有をマウントし、Windows の [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) または [Set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/get-acl) コマンドを実行することにより、Azure ファイル共有内のディレクトリとファイルに対する NTFS アクセス許可を表示し構成できます。 
@@ -227,14 +261,15 @@ Azure Files では、NTFS の基本的なアクセス許可と詳細なアクセ
 - NT AUTHORITY\SYSTEM:(F)
 - CREATOR OWNER:(OI)(CI)(IO)(F)
 
-#### <a name="step-31-mount-an-azure-file-share-from-the-command-prompt"></a>手順 3.1: コマンド プロンプトから Azure ファイル共有をマウントする
+### <a name="mount-a-file-share-from-the-command-prompt"></a>コマンド プロンプトからファイル共有をマウントする
+
 Windows の **net use** コマンドを使用して Azure ファイル共有をマウントします。 例中のプレースホルダーをお客様独自の値に置き換えてください。 ファイル共有のマウントの詳細については、「[Windows で Azure ファイル共有をマウントして共有を使用する](storage-how-to-use-files-windows.md)」を参照してください。
 
 ```
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
 ```
 
-#### <a name="step-32-configure-ntfs-permissions-with-icacls"></a>手順 3.2: icacls を使用して NTFS アクセス許可を構成する
+### <a name="configure-ntfs-permissions-with-icacls"></a>icacls を使用して NTFS アクセス許可を構成する
 ルート ディレクトリを含む、ファイル共有下のすべてのディレクトリとファイル共有に完全なアクセス許可を付与するには、次の Windows コマンドを使用します。 例中のプレースホルダーをお客様独自の値に置き換えてください。
 
 ```
@@ -243,7 +278,8 @@ icacls <mounted-drive-letter> /grant <user-email>:(f)
 
 icacls を使用して NTFS アクセス許可を設定する方法や、サポートされるさまざまな種類のアクセス許可の詳細については、[コマンド ライン リファレンスの icacls ](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls)に関する記事を参照してください。
 
-### <a name="step-4-mount-an-azure-file-share-from-a-domain-joined-vm"></a>手順 4: ドメインに参加している VM から Azure ファイル共有をマウントする 
+## <a name="mount-a-file-share-from-a-domain-joined-vm"></a>ドメインに参加している VM からファイル共有をマウントする 
+
 上記の手順が正常に完了したことを確認する準備が整いましたので、Azure AD 資格情報を使用して、ドメインに参加している VM から Azure のファイル共有にアクセスします。 まず、次の図のように、アクセス許可を付与した Azure AD の ID を使用して VM にサインインします。
 
 ![ユーザー認証のための Azure AD サインイン画面を示すスクリーン ショット](media/storage-files-active-directory-enable/azure-active-directory-authentication-dialog.png)
@@ -257,6 +293,7 @@ net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<
 これで、SMB を使用した Azure AD 認証を有効にし、ファイル共有へのアクセスを提供するカスタム ロールが Azure AD の ID に割り当てられました。 追加のユーザーにファイル共有へのアクセス許可を付与するには、手順 2 と 3 で説明されている手順を実行します。
 
 ## <a name="next-steps"></a>次の手順
+
 Azure Files や、SMB 経由で Azure AD を使用する方法の詳細については、これらのリソースを参照してください。
 
 - [Azure Files の概要](storage-files-introduction.md)

@@ -3,17 +3,18 @@ title: 音声サービスの REST API
 description: 音声サービスの REST API のリファレンス。
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: speech
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: erhopf
-ms.openlocfilehash: f8b27277cbf3ea6d53a8f02e550beae67fc50741
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 7f3daf71f4d94371af5f7d98c4e03761d7217a2a
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167632"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025839"
 ---
 # <a name="speech-service-rest-apis"></a>音声サービスの REST API
 
@@ -21,7 +22,7 @@ Azure Cognitive Services 音声サービスの REST API は、[Bing Speech API](
 
 ## <a name="speech-to-text"></a>音声テキスト変換
 
-Speech to Text REST API のエンドポイントを次の表に示します。 ご利用のサブスクリプション リージョンと一致するものを使用してください。 
+Speech to Text REST API のエンドポイントを次の表に示します。 ご利用のサブスクリプション リージョンと一致するものを使用してください。
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
 
@@ -56,13 +57,13 @@ Speech to Text REST API のエンドポイントを次の表に示します。 �
 
 ### <a name="audio-format"></a>音声の形式
 
-オーディオは HTTP `PUT` 要求の本文で送信されます。 次の形式/エンコードの、16 KHz PCM シングル チャンネル (モノラル) の 16 ビット WAV 形式である必要があります。
+オーディオは HTTP `POST` 要求の本文で送信されます。 次の形式/エンコードの、16 KHz PCM シングル チャンネル (モノラル) の 16 ビット WAV 形式である必要があります。
 
 * PCM コーデックの WAV 形式
 * OPUS コーデックの Ogg 形式
 
 >[!NOTE]
->上の形式は、Speech Service の REST API と WebSocket を介してサポートされます。 現在、[Speech SDK](/index.yml) では PCM コーデックの WAV 形式のみがサポートされています。 
+>上の形式は、Speech Service の REST API と WebSocket を介してサポートされます。 現在、[Speech SDK](/index.yml) では PCM コーデックの WAV 形式のみがサポートされています。
 
 ### <a name="chunked-transfer"></a>チャンク転送
 
@@ -144,7 +145,7 @@ HTTP コード|意味|考えられる理由
 | `Error` | 認識サービスで内部エラーが発生し、処理を継続できない。 可能であれば再試行してください。 |
 
 > [!NOTE]
-> オーディオが不適切な表現のみで構成されており、`profanity` クエリ パラメーターが `remove` に設定されている場合、サービスは音声結果を返しません。 
+> オーディオが不適切な表現のみで構成されており、`profanity` クエリ パラメーターが `remove` に設定されている場合、サービスは音声結果を返しません。
 
 
 `detailed` 形式には、`simple` 形式と同じフィールドに加えて `NBest` フィールドが含まれています。 `NBest` フィールドは同じ音声の代替解釈のリストであり、最も可能性が高いものから最も可能性が低いものまでランク付けされています。 最初のエントリはメイン認識結果と同じです。 各エントリには次のフィールドが含まれます。
@@ -206,7 +207,7 @@ HTTP コード|意味|考えられる理由
 
 ロケール | Language   | 性別 | サービス名のマッピング
 -------|------------|--------|------------
-en-US  | 英語 (米国) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)" 
+en-US  | 英語 (米国) | 女性 | "Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)"
 en-US  | 英語 (米国) | 男性   | "Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)"
 
 利用可能なすべての音声の一覧については、[サポートされている言語](language-support.md#text-to-speech)を参照してください。
@@ -234,7 +235,7 @@ en-US  | 英語 (米国) | 男性   | "Microsoft Server Speech Text to Speech Vo
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
 > [!NOTE]
-> 選択した音声と出力形式のビット レートが異なる場合、オーディオは必要に応じて再サンプリングされます。 ただし、24 khz の音声は `audio-16khz-16kbps-mono-siren` や `riff-16khz-16kbps-mono-siren` の出力形式をサポートしていません。 
+> 選択した音声と出力形式のビット レートが異なる場合、オーディオは必要に応じて再サンプリングされます。 ただし、24 khz の音声は `audio-16khz-16kbps-mono-siren` や `riff-16khz-16kbps-mono-siren` の出力形式をサポートしていません。
 
 ### <a name="request-body"></a>要求本文
 
@@ -253,7 +254,7 @@ Host: westus.tts.speech.microsoft.com
 Content-Length: 225
 Authorization: Bearer [Base64 access_token]
 
-<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' 
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female'
     name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
         Microsoft Speech Service Text-to-Speech API
 </voice></speak>
@@ -327,10 +328,10 @@ cURL は Linux (および Windows Subsystem for Linux) で使用できるコマ�
 > コマンドは見やすいように複数行で表示されていますが、シェル プロンプトでは 1 行で入力します。
 
 ```
-curl -v -X POST 
- "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken" 
- -H "Content-type: application/x-www-form-urlencoded" 
- -H "Content-Length: 0" 
+curl -v -X POST
+ "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken"
+ -H "Content-type: application/x-www-form-urlencoded"
+ -H "Content-Length: 0"
  -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
@@ -410,7 +411,7 @@ Connection: Keep-Alive
     */
 public class Authentication
 {
-    public static readonly string FetchTokenUri = 
+    public static readonly string FetchTokenUri =
         "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
     private string subscriptionKey;
     private string token;
@@ -485,4 +486,3 @@ public class Authentication
 - [Speech 試用版サブスクリプションを取得する](https://azure.microsoft.com/try/cognitive-services/)
 - [音響モデルをカスタマイズする](how-to-customize-acoustic-models.md)
 - [言語モデルをカスタマイズする](how-to-customize-language-model.md)
-

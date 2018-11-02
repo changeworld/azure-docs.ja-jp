@@ -1,6 +1,6 @@
 ---
-title: OMS Log Analytics でのカスタム JSON データの収集 | Microsoft Docs
-description: カスタム JSON データ ソースは、OMS Agent for Linux を使用して Log Analytics に収集できます。  これらのカスタム データ ソースは、curl や FluentD の 300 を超えるプラグインのいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。
+title: Log Analytics でのカスタム JSON データの収集 | Microsoft Docs
+description: カスタム JSON データ ソースは、Linux 用 Log Analytics エージェントを使用して Log Analytics に収集できます。  これらのカスタム データ ソースは、curl や FluentD の 300 を超えるプラグインのいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -15,18 +15,19 @@ ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 9725a3df04ef28fc3a076c3c6ca6663e36b186a8
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 69338e438ced8871de1e994ee8b816f9dc40b13a
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48040270"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49402354"
 ---
-# <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Log Analytics での OMS Agent for Linux を使用したカスタム JSON データ ソースの収集
-カスタム JSON データ ソースは、OMS Agent for Linux を使用して Log Analytics に収集できます。  これらのカスタム データ ソースは、[curl](https://curl.haxx.se/) や [FluentD の 300 を超えるプラグイン](http://www.fluentd.org/plugins/all)のいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。
+# <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-log-analytics"></a>Log Analytics での Linux 用 Log Analytics エージェントを使用したカスタム JSON データ ソースの収集
+[!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+カスタム JSON データ ソースは、Linux 用 Log Analytics エージェントを使用して Log Analytics に収集できます。  これらのカスタム データ ソースは、[curl](https://curl.haxx.se/) や [FluentD の 300 を超えるプラグイン](http://www.fluentd.org/plugins/all)のいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。
 
 > [!NOTE]
-> カスタム JSON データには OMS Agent for Linux v1.1.0-217 以降が必要です
+> カスタム JSON データには Linux 用 Log Analytics エージェント v1.1.0-217 以降が必要です
 
 ## <a name="configuration"></a>構成
 
@@ -80,8 +81,8 @@ Log Analytics で JSON データを収集するには、入力プラグイン内
 </match>
 ```
 
-### <a name="restart-oms-agent-for-linux"></a>OMS Agent for Linux を再起動する
-次のコマンドを使用して、OMS Agent for Linux サービスを再起動します。
+### <a name="restart-log-analytics-agent-for-linux"></a>Linux 用 Log Analytics エージェントを再起動する
+次のコマンドを使用して、Linux 用 Log Analytics エージェント サービスを再起動します。
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 

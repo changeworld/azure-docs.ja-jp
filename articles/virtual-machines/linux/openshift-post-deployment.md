@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 05/09/2018
 ms.author: haroldw
-ms.openlocfilehash: d400512c2e96e0e24bbf965b2e201adf92ccbb0f
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 39febceff58127fb9777ace6e3063fbe41605b79
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434893"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49426449"
 ---
 # <a name="post-deployment-tasks"></a>デプロイ後タスク
 
@@ -82,7 +82,7 @@ Azure Portal で次の操作を行います。
 
   ![アプリケーションの登録](media/openshift-post-deployment/app-registration.png)
 
-6.  [手順 1: API の選択]、**[Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)]** の順にクリックします。 下部にある **[選択]** をクリックします。
+6.  [手順 1: API の選択]、**[Azure Active Directory (Microsoft.Azure.ActiveDirectory)]** の順にクリックします。 下部にある **[選択]** をクリックします。
 
   ![[アプリの登録] の [API の選択]](media/openshift-post-deployment/app-registration-select-api.png)
 
@@ -174,7 +174,7 @@ OpenShift Console に、認証のオプションが 2 つ表示されるよう�
 
 ## <a name="monitor-openshift-with-log-analytics"></a>Log Analytics を使用して OpenShift を監視する
 
-Log Analytics を使用して OpenShift を監視するには、OMS Agent を VM ホストにインストールする方法か、OMS Container を使用する方法のいずれかを使用できます。 この記事では、OMS Container のデプロイ手順について説明します。
+Log Analytics を使用して OpenShift を監視するには、Log Analytics エージェントを VM ホストにインストールする方法か、Log Analytics コンテナーを使用する方法のいずれかを使用できます。 この記事では、Log Analytics コンテナーのデプロイ手順について説明します。
 
 ## <a name="create-an-openshift-project-for-log-analytics-and-set-user-access"></a>Log Analytics 用の OpenShift プロジェクトを作成してユーザー アクセスを設定する
 
@@ -276,7 +276,7 @@ echo $key_data | base64 | tr -d '\n'
 oc create -f ocp-secret.yml
 ```
 
-OMS エージェントのデーモン セットをデプロイします。
+Log Analytics エージェントのデーモン セットをデプロイします。
 
 ```bash
 oc create -f ocp-omsagent.yml

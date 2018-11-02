@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 3154a2f8b283f68ec3e10ba621ccba3ee6d77de2
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 82cfa9e62dcc6b3a72dcb1ccf97f1f52a88a75c4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44324752"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49404105"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Azure での管理ソリューションのデータ収集の詳細
 この記事には、Microsoft で利用可能な[管理ソリューションの](monitoring-solutions.md)一覧を、詳細なドキュメントへのリンクと共に示します。  また、Log Analytics へのデータ収集の手法および頻度に関する情報についても提供します。  この記事の情報を利用して、使用可能なさまざまなソリューションを識別し、異なる管理ソリューションのデータ フローと接続要件を理解できます。 
@@ -34,7 +34,7 @@ ms.locfileid: "44324752"
 - **Operations Manager** - Microsoft Monitoring Agent と同一のエージェント。 この構成では、Log Analytics に接続されている [Operations Manager 管理グループに接続](../log-analytics/log-analytics-om-agents.md)されます。 
 -  **Azure Storage** - ソリューションは、Azure ストレージ アカウントからデータを収集します。 
 - **Operations Manager が必要か** - 接続された Operations Manager 管理グループが、該当の管理ソリューションによるデータ収集を必要とします。 
-- **管理グループ経由で送信される Operations Manager エージェント データ** - エージェントが[ SCOM 管理グループに接続されている](../log-analytics/log-analytics-om-agents.md)場合、データは管理サーバーから Log Analytics へ送信されます。 この場合、エージェントが直接、Log Analytics に接続される必要はありません。 このボックスに印がない場合、エージェントが SCOM 管理グループに接続されている場合でも、データはエージェントから直接 Log Analytics に送信されます。 また、エージェントは、[OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)経由で Log Analytics と通信できる必要があります。
+- **管理グループ経由で送信される Operations Manager エージェント データ** - エージェントが[ SCOM 管理グループに接続されている](../log-analytics/log-analytics-om-agents.md)場合、データは管理サーバーから Log Analytics へ送信されます。 この場合、エージェントが直接、Log Analytics に接続される必要はありません。 このボックスに印がない場合、エージェントが SCOM 管理グループに接続されている場合でも、データはエージェントから直接 Log Analytics に送信されます。 また、エージェントは、[Log Analytics ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)経由で Log Analytics と通信できる必要があります。
 - **収集の頻度** - 管理ソリューションによってデータが収集される頻度を示します。 
 
 

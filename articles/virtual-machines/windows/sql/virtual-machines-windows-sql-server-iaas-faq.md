@@ -1,5 +1,5 @@
 ---
-title: Windows Azure Virtual Machines における SQL Server に関する FAQ | Microsoft Docs
+title: Azure での Windows 仮想マシン上の SQL Server に関する FAQ | Microsoft Docs
 description: この記事では、Azure VM で SQL Server を実行することに関してよく寄せられる質問に対する回答を示します。
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 48df858095cb867954460ec858567e41ed330063
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 906cec35c30c277ac1e8bc641d12fe37c29413dd
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39012070"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427180"
 ---
-# <a name="frequently-asked-questions-for-sql-server-running-on-windows-azure-virtual-machines"></a>Windows Azure Virtual Machines 上で実行されている SQL Server についてよく寄せられる質問
+# <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシン上で実行されている SQL Server についてよく寄せられる質問
 
 > [!div class="op_single_selector"]
 > * [Windows](virtual-machines-windows-sql-server-iaas-faq.md)
 > * [Linux](../../linux/sql/sql-server-linux-faq.md)
 
-この記事では、[Windows Azure Virtual Machines における SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) に関して特に多く寄せられる質問への回答を示します。
+この記事では、[Azure の Windows 仮想マシン上の SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) に関して特に多く寄せられる質問への回答を示します。
 
 > [!NOTE]
 > この記事では、Windows VM 上の SQL Server に固有の問題について説明します。 Linux VM で SQL Server を実行している場合は、[Linux での FAQ](../../linux/sql/sql-server-linux-faq.md) に関する記事をご覧ください。

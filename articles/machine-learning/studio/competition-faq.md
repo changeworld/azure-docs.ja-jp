@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.openlocfilehash: 1db1b8ee7ba3611f8d1d69f711f1ec72308c7d06
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 15d46f16c78b8fa757d7810542b3d6bfa9a95f3c
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34833330"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49465629"
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence コンペティションの FAQ
 **Microsoft Cortana Intelligence コンペティションとは何ですか。**
@@ -59,7 +59,7 @@ Microsoft は自社のコンペティションを定期的に発表していま�
 
 * **データ開発者**、**データ サイエンティスト**、**BI**、および**分析のプロフェッショナル**: 他のユーザーが使用するデータおよび分析用コンテンツの生成を担当するユーザー
 * **データ スチュワード**: データの意味、意図された使用方法、目的などのデータに関する知識を持つユーザー
-* **学生** & **研究者:** 大学の教育プログラムを通じてデータ関連のスキルを学習したり習得しようとしているユーザー、または Massively Open Online Courses (MOOC) の参加者
+* **学生**と**研究者**: 大学の教育プログラムを通じてデータ関連のスキルを学習したり習得しようとしているユーザー、または Massively Open Online Courses (MOOC) の参加者
 
 **同僚とチームとして参加できますか。**
 

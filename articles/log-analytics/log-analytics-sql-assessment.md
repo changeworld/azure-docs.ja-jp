@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 43faf1b29f602d2930a2b5764dd83ea4ce1fc9ac
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 4f9882ce94827e490b676fdf421095eae40420d5
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043598"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407726"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Log Analytics で SQL Server 正常性チェック ソリューションを使用して SQL 環境を最適化する
 
@@ -86,7 +86,7 @@ Log Analytics では、データの収集と Log Analytics サービスへのデ
 >
 
 1. Operations Manager でオペレーション コンソールを開き、 **[管理]** をクリックします。
-2. **[実行アカウントの構成]** の **[プロファイル]** をクリックし、**[OMS SQL の評価の実行プロファイル]** を開きます。
+2. **[実行アカウントの構成]** の **[プロファイル]** をクリックし、**[SQL Assessment Run As Profile]\(SQL の評価の実行プロファイル\)** を開きます。
 3. **[実行アカウント]** ページの **[追加]** をクリックします。
 4. SQL Server に必要な資格情報を含んだ Windows 実行アカウントを選択するか、 **[新規]** をクリックして新たに作成します。
 
@@ -123,7 +123,7 @@ PowerShell ウィンドウを開き、次のスクリプトに自分の情報を
     import-module OperationsManager
     New-SCOMManagementGroupConnection "<your management group name>"
 
-    $profile = Get-SCOMRunAsProfile -DisplayName "OMS SQL Assessment Run As Profile"
+    $profile = Get-SCOMRunAsProfile -DisplayName "SQL Assessment Run As Profile"
     $account = Get-SCOMrunAsAccount | Where-Object {$_.Name -eq "<your run as account name>"}
     Set-SCOMRunAsProfile -Action "Add" -Profile $Profile -Account $Account
 ```

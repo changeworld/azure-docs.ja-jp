@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 0ea9fbf8042c4d6ab3f9462c77ec5cf5106d1021
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 331ec4bd7e91e8283f6a44b0fd440a9d73e28710
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389546"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024173"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -89,14 +89,14 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 Instance Metadata Service エンドポイントには、実行中の仮想マシン インスタンスからのみ、ルーティング不可能な IP アドレスでアクセスできます。 さらに、`X-Forwarded-For` ヘッダーがあるすべての要求は、サービスによって拒否されます。
 また、実際の要求が意図しないリダイレクトの一部として行われたのではなく、直接意図されたものであったことを明確に示すために、要求に `Metadata: true`ヘッダーを含める必要があります。 
 
-### <a name="error"></a>エラー
-見つからないデータ要素または無効な形式の要求がある場合、Instance Metadata Service は標準 HTTP エラーを返します。 次に例を示します。
+### <a name="error"></a>Error
+見つからないデータ要素または無効な形式の要求がある場合、Instance Metadata Service は標準 HTTP エラーを返します。 For example:
 
 HTTP 状態コード | 理由
 ----------------|-------
 200 OK |
 400 Bad Request | `Metadata: true` ヘッダーがありません
-404 Not Found | 要求された要素は存在しません 
+404 見つかりません | 要求された要素は存在しません 
 405 Method Not Allowed | `GET` 要求と `POST` 要求のみがサポートされています
 429 Too Many Requests | 現在 API は、1 秒あたり最大 5 つのクエリをサポートしています
 500 Service Error     | しばらくしてからやり直してください
@@ -282,7 +282,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ## <a name="instance-metadata-data-categories"></a>インスタンス メタデータのデータ カテゴリ
 Instance Metadata Service を通して次のデータ カテゴリを使用できます。
 
-データ | 説明 | 導入されたバージョン 
+データ | Description | 導入されたバージョン 
 -----|-------------|-----------------------
 location | VM を実行中の Azure リージョン | 2017-04-02 
 name | VM の名前 | 2017-04-02
@@ -299,7 +299,7 @@ subscriptionId | 仮想マシンの Azure サブスクリプション | 2017-08-
 tags | お使いの仮想マシンの[タグ](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
 resourceGroupName | お使いの仮想マシンの[リソース グループ](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 placementGroupId | お使いの仮想マシン スケール セットの[配置グループ](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-プラン | VM の Azure Marketplace イメージの https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には、名前、製品、および発行元が含まれています | 2017-04-02
+プラン | VM の Azure Marketplace イメージの[プラン](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)には、名前、製品、および発行元が含まれています | 2017-04-02
 publicKeys | VM とパスに割り当てられた公開キー (https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) のコレクション | 2017-04-02
 vmScaleSetName | お使いの仮想マシン スケール セットの[仮想マシン スケール セット名](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 ゾーン | 仮想マシンの[可用性ゾーン](../../availability-zones/az-overview.md) | 2017-12-01 

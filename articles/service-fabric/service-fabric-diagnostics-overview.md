@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/25/2018
+ms.date: 10/18/2018
 ms.author: srrengar
-ms.openlocfilehash: f7fe07500f877cf34626e53361c9c68dd459a5e4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 5fc2674a145be99fb8867c5cf1b1f65ba860db80
+ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643177"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49457835"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric での監視と診断
 
@@ -44,7 +44,7 @@ Service Fabric は、標準で、包括的なイベントのセットを提供�
 * EventStore - (バージョン 6.2 以降では Windows において利用可能で、この記事の最終更新日時点で Linux への対応はまだ作業中の) EventStore は、一連の API (REST エンドポイントを介して、または、クライアント ライブラリからアクセス可能) を介してこれらのイベントを公開しています。 EventStore に関する詳細については、[「EventStore の概要](service-fabric-diagnostics-eventstore.md)」を参照してください。
 * Service Fabric イベントのチャネル - Windows では、Service Fabric イベントは、稼働およびデータのチャネルとメッセージング チャネルの選択に使用される、一連の関連する `logLevelKeywordFilters` を持つ単一の ETW プロバイダーから提供されます。これが、発信される Service Fabric イベントを必要に応じて取り出してフィルター処理する方法となっています。 Linux では、Service Fabric イベントは LTTng 経由で到着し、1 つの Storage テーブルに格納されます。ここで、必要に応じてイベントをフィルター処理できます。 これらのチャネルには、選別され、構造化されたイベントが含まれ、これを使用してクラスターの状態をより詳細に把握できます。 クラスターの作成時には、既定で診断が有効になります。それにより、Azure Storage テーブルが作成され、後でクエリを実行できるように、そこにこれらのチャネルからのイベントが送信されます。 
 
-EventStore は、すばやい分析や、クラスターがどのように動作しているか、そして、物事が想定したとおりに起きているかどうかの概要を把握するために使用することをお勧めします。 クラスターによって生成されたログとイベントを収集するには、通常、[Azure 診断拡張機能](service-fabric-diagnostics-event-aggregation-wad.md)を使用することをお勧めします。 この機能は OMS Log Analytics の Service Fabric 固有のソリューションである Service Fabric Analytics と緊密に統合されています。Service Fabric Analytics は Service Fabric クラスターを監視するためのカスタム ダッシュボードを備えており、クラスターのイベントのクエリを実行し、アラートを設定することができます。 [OMS を使用したイベント分析](service-fabric-diagnostics-event-analysis-oms.md)に関する記事で、これに関する詳細をご覧ください。 
+EventStore は、すばやい分析や、クラスターがどのように動作しているか、そして、物事が想定したとおりに起きているかどうかの概要を把握するために使用することをお勧めします。 クラスターによって生成されたログとイベントを収集するには、通常、[Azure 診断拡張機能](service-fabric-diagnostics-event-aggregation-wad.md)を使用することをお勧めします。 この機能は Log Analytics の Service Fabric 固有のソリューションである Service Fabric Analytics と緊密に統合されています。Service Fabric Analytics は Service Fabric クラスターを監視するためのカスタム ダッシュボードを備えており、クラスターのイベントのクエリを実行し、アラートを設定することができます。 [Log Analytics を使用したイベント分析](service-fabric-diagnostics-event-analysis-oms.md)に関する記事で、これに関する詳細をご覧ください。 
 
  クラスターの監視の詳細については、「[プラットフォーム レベルのイベントとログの生成](service-fabric-diagnostics-event-generation-infra.md)」でご覧いただけます。
 
@@ -58,7 +58,7 @@ EventStore は、すばやい分析や、クラスターがどのように動作
 
 Service Fabric は、Reliable Services および Reliable Actors プログラミング モデル向けのパフォーマンス カウンター セットを提供しています。 これらのモデルのいずれかを使用している場合、アクターが上下に適切にスピンするようにしたり、Reliable Services の要求が迅速に処理されるようにしたりするのに役立つ KPI をこれらのパフォーマンス カウンターが提供します。 詳細については、[Reliable Services のリモート処理の監視](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters)および [Reliable Actors のパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md#performance-counters)に関する記事を参照してください。 これに加え、Application Insights にも、アプリケーションで構成されている場合に収集されるパフォーマンス メトリックのセットが用意されています。
 
-[OMS エージェント](service-fabric-diagnostics-oms-agent.md)を使用して、適切なパフォーマンス カウンターを収集し、これらの KPI を OMS Log Analytics に表示できます。
+[Log Analytics エージェント](service-fabric-diagnostics-oms-agent.md)を使用して、適切なパフォーマンス カウンターを収集し、これらの KPI を Azure Log Analytics に表示できます。
 
 ![診断の概要グラフ](media/service-fabric-diagnostics-overview/diagnostics-overview.png)
 
@@ -71,7 +71,7 @@ SFX で最新の正常性レポートを参照するのに加え、各レポー�
 
 ## <a name="other-logging-solutions"></a>その他のログ記録ソリューション
 
-[OMS](service-fabric-diagnostics-event-analysis-oms.md) と [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) が Service Fabric との統合で構築されている 2 つのソリューションをお勧めしましたが、多くのイベントは etw プロバイダーを介して出力されるので、他のログ記録ソリューションを使用して拡張できます。 さらに、[Elastic Stack](https://www.elastic.co/products) (特に、オフライン環境でクラスターの実行を検討している場合)、[Splunk](https://www.splunk.com/)、[Dynatrace](https://www.dynatrace.com/)、またはその他の好みのプラットフォームを検討してもよいでしょう。 
+[Azure Log Analytics](service-fabric-diagnostics-event-analysis-oms.md) と [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) が Service Fabric との統合で構築されている 2 つのソリューションをお勧めしましたが、多くのイベントは ETW プロバイダーを介して出力されるので、他のログ記録ソリューションを使用して拡張できます。 また、[Elastic Stack](https://www.elastic.co/products) (特に、オフライン環境でクラスターの実行を検討している場合)、[Dynatrace](https://www.dynatrace.com/)、またはその他の好みのプラットフォームを検討する必要もあります。 使用可能な統合されたパートナーの一覧は[こちら](service-fabric-diagnostics-partners.md)をご覧ください。
 
 プラットフォーム選びの重要なポイントは、ユーザー インターフェイスやクエリのオプションをどれだけ使い慣れているかということ、データを視覚化し、簡単に読み取れるダッシュボードを作成する機能や、監視を強化するための追加ツール (自動アラートなど) が含まれているということです。
 
@@ -81,4 +81,6 @@ SFX で最新の正常性レポートを参照するのに加え、各レポー�
 * Service Fabric が提供するプラットフォームおよびイベント監視の詳細については、[プラットフォーム レベルのイベントとログの生成](service-fabric-diagnostics-event-generation-infra.md)に関するページを参照してください。
 * アプリケーションの AI を設定する手順をについては、「[Service Fabric の ASP.NET Core アプリケーションを監視および診断する](service-fabric-tutorial-monitoring-aspnet.md)」を参照してください。
 * コンテナーを監視するために OMS Log Analytics を設定する方法については、[Azure Service Fabric での Windows コンテナーの監視と診断](service-fabric-tutorial-monitoring-wincontainers.md)に関するページを参照してください。
+* Service Fabric での診断の問題と解決策の例については、[一般的なシナリオの診断](service-fabric-diagnostics-common-scenarios.md)に関する記事をご覧ください
+* Service Fabric と統合する他の診断製品については、[Service Fabric 診断パートナー](service-fabric-diagnostics-partners.md)に関する記事をご覧ください
 * Azure リソースの一般的な監視の推奨事項については、[監視と診断のベスト プラクティス](https://docs.microsoft.com/azure/architecture/best-practices/monitoring)に関するページを参照してください。 

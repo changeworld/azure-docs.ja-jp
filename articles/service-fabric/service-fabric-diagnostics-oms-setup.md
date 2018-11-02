@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/11/2018
 ms.author: srrengar
-ms.openlocfilehash: a73a288852eea713623b65324853761e10fad282
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 68374cd1675f76555ff313b42e35bdf2aed96874
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220468"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408083"
 ---
 # <a name="set-up-log-analytics-for-a-cluster"></a>クラスターに Log Analytics を設定する
 
@@ -80,7 +80,7 @@ Resource Manager テンプレートを使用してクラスターをデプロイ
 
 * 新しい 5 ノードの Service Fabric クラスターを作成する
 * Log Analytics ワークスペースと Service Fabric ソリューションを作成する
-* 2 つサンプル パフォーマンス カウンターを収集して、ワークスペースに送信するように OMS エージェントを構成する
+* 2 つサンプル パフォーマンス カウンターを収集して、ワークスペースに送信するように Log Analytics エージェントを構成する
 * Service Fabric を収集するように WAD を構成し、Azure sストレージ テーブル (WADServiceFabric*EventTable) に送信する
 * これらのテーブルからイベントを読み取るように Log Analytics ワークスペースを構成する
 
@@ -126,6 +126,6 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 PowerShell を使って、他のソリューションを追加したり、Log Analytics ワークスペースに他の変更を行うこともできます。 詳しくは、「[PowerShell を使用した Log Analytics の管理](../log-analytics/log-analytics-powershell-workspace-configuration.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
-* お使いのノードに [Log Analytics Agent をデプロイ](service-fabric-diagnostics-oms-agent.md)してパフォーマンス カウンターを収集し、Docker の統計とコンテナーのログを収集する
+* お使いのノードに [Log Analytics エージェントをデプロイ](service-fabric-diagnostics-oms-agent.md)してパフォーマンス カウンターを収集し、Docker の統計とコンテナーのログを収集する
 * Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる
 * [Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する](../log-analytics/log-analytics-view-designer.md)

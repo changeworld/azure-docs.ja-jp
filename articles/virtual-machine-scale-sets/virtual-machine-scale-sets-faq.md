@@ -3,7 +3,7 @@ title: Azure Virtual Machine Scale Sets の FAQ | Microsoft Docs
 description: 仮想マシン スケール セットについてよく寄せられる質問の回答を示します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
-ms.author: negat
+ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: db1ac46521a6ca8688ed1257b8b812321fee2ea3
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 7b8faca82a23875b403d0b51b2e8719549d845fb
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49345324"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740692"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -705,7 +705,7 @@ Azure Portal で既存のリソース グループにスケール セットを�
 ```
 az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.EnterpriseCloud.Monitoring --resource-group Team-03 --vmss-name nt01 --settings "{'workspaceId': '<your workspace ID here>'}" --protected-settings "{'workspaceKey': '<your workspace key here'}"
 ```
-OMS ポータルに、必要な workspaceId と workspaceKey が表示されます。 [概要] ページで、[設定] タイルをクリックします。 上部の [接続されたソース] タブをクリックします。
+Azure portal の Log Analytics ワークスペースに、必要な workspaceId と workspaceKey が表示されます。 [概要] ページで、[設定] タイルをクリックします。 上部の [接続されたソース] タブをクリックします。
 
 注: スケール セット _upgradePolicy_ が手動に設定されている場合、セット内のすべての VM でアップグレードを呼び出して拡張機能を適用することが必要になります。 CLI ではこれは _az vmss update-instances_ になります。
 

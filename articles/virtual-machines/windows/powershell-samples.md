@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/30/2017
+ms.date: 10/19/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 27f926a9a5d30d28e2721ffa52695292f794a501
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 3571ccfbb2f15738fd951c0fa55248745eac281a
+ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31522433"
+ms.lasthandoff: 10/22/2018
+ms.locfileid: "49637435"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure 仮想マシンの PowerShell のサンプル
 
-次の表には、Windows 仮想マシンを作成および管理する PowerShell サンプル スクリプトへのリンクが掲載されています。
+次の表では、Windows 仮想マシン (VM) を作成および管理する PowerShell サンプル スクリプトへのリンクを示します。
 
 | | |
 |---|---|
@@ -37,17 +37,17 @@ ms.locfileid: "31522433"
 | [VM の作成と DSC 構成の実行](./../scripts/virtual-machines-windows-powershell-sample-create-iis-using-dsc.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 仮想マシンを作成し、Azure Desired State Configuration (DSC) の拡張機能を使用して IIS をインストールします。 |
 | [VHD をアップロードして VM を作成する](./../scripts/virtual-machines-windows-powershell-upload-generalized-script.md) | ローカル VHD ファイルを Azure にアップロードします。その VHD からイメージを作成し、そのイメージから VM を作成します。 |
 | [管理 OS ディスクから VM を作成する](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 既存の管理ディスクを OS ディスクとして接続することで仮想マシンを作成します。 |
-| [スナップショットから VM を作成する](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json) | スナップショットから管理ディスクを作成し、その新しい管理ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 |
+| [スナップショットから VM を作成する](./../scripts/virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json) | スナップショットからマネージド ディスクを作成し、その新しいマネージド ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 |
 |**ストレージの管理**||
-| [同じまたは別のサブスクリプションの VHD から管理ディスクを作成する](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 同じまたは別のサブスクリプションで、OS ディスクとして特殊化した VHD から、またはデータ ディスクとしてデータ VHD から、管理ディスクを作成します。  |
-| [スナップショットから管理ディスクを作成する](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json) | スナップショットから管理ディスクを作成します。 |
-| [同じまたは別のサブスクリプションに管理ディスクをコピーする](../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json) | 同じサブスクリプションまたは親管理ディスクと同じリージョン内の別のサブスクリプションに、管理ディスクをコピーします。 
-| [ストレージ アカウントに VHD としてスナップショットをエクスポートする](../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 別のリージョンのストレージ アカウントに、VHD として管理スナップショットをエクスポートします。 |
-| [VHD からスナップショットを作成する](../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json) | VHD からスナップショットを作成して、スナップショットから複数の同じ管理ディスクを短時間で作成します。  |
-| [同じまたは別のサブスクリプションにスナップショットをコピーする](../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 同じサブスクリプションまたは親スナップショットと同じリージョン内の別のサブスクリプションに、スナップショットをコピーします。 |
-|**仮想マシンのセキュリティ保護**||
-| [VM とデータ ディスクを暗号化する](./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?toc=%2fpowershell%2fazure%2ftoc.json) | Azure Key Vault、暗号化キー、およびサービス プリンシパルを作成し、VM を暗号化します。 |
+| [同じまたは別のサブスクリプションの VHD からマネージド ディスクを作成する](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 同じまたは別のサブスクリプションで、OS ディスクとして特殊化した VHD から、またはデータ ディスクとしてデータ VHD から、マネージド ディスクを作成します。  |
+| [スナップショットからマネージド ディスクを作成する](../scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json) | スナップショットからマネージド ディスクを作成します。 |
+| [同じサブスクリプションまたは別のサブスクリプションにマネージド ディスクをコピーする](../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json) | 同じサブスクリプションまたは親マネージド ディスクと同じリージョン内の別のサブスクリプションに、マネージド ディスクをコピーします。 
+| [ストレージ アカウントに VHD としてスナップショットをエクスポートする](../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 管理スナップショットを VHD として別のリージョンのストレージ アカウントにエクスポートします。 |
+| [ストレージ アカウントにマネージド ディスクの VHD をエクスポートする](../scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 別のリージョンのストレージ アカウントに、マネージド ディスクの基盤となる VHD をエクスポートします。 |
+| [VHD からスナップショットを作成する](../scripts/virtual-machines-windows-powershell-sample-create-snapshot-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json) | VHD からスナップショットを作成した後、そのスナップショットを使用して複数の同じマネージド ディスクを短時間で作成します。  |
+| [同じサブスクリプションまたは別のサブスクリプションにスナップショットをコピーする](../scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 同じサブスクリプションまたは親スナップショットと同じリージョン内の別のサブスクリプションに、スナップショットをコピーします。 |
+|**セキュリティ保護された仮想マシン**||
+| [VM とそのデータ ディスクを暗号化する](./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?toc=%2fpowershell%2fazure%2ftoc.json) | Azure キー コンテナー、暗号化キー、およびサービス プリンシパルを作成し、VM を暗号化します。 |
 |**仮想マシンの監視**||
-| [Operations Management Suite による VM の監視](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 仮想マシンを作成し、Operations Management Suite エージェントをインストールし、OMS ワークスペースに VM を登録します。  |
+| [Log Analytics を使用して VM を監視する](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fpowershell%2fmodule%2ftoc.json) | 仮想マシンを作成し、Azure Log Analytics エージェントをインストールして、VM を Log Analytics ワークスペースに登録します。  |
 | | |
-

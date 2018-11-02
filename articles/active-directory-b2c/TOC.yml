@@ -35,6 +35,8 @@ items:
       href: active-directory-b2c-tutorials-desktop-app-webapi.md
     - name: シングル ページ
       href: active-directory-b2c-tutorials-spa-webapi.md
+  - name: UI のカスタマイズ
+    href: tutorial-customize-ui.md
 - name: サンプル
   href: code-samples.md
 - name: 概念
@@ -63,6 +65,8 @@ items:
     href: active-directory-b2c-reference-tokens.md
   - name: ユーザー アカウント
     href: user-overview.md
+  - name: ユーザー インターフェイスのカスタマイズ
+    href: customize-ui-overview.md
 - name: ハウツー ガイド
   items:
   - name: 監査ログにアクセスする
@@ -73,11 +77,6 @@ items:
     href: active-directory-b2c-reference-language-customization.md
   - name: パスワードをカスタマイズする
     href: active-directory-b2c-reference-password-complexity.md
-  - name: ユーザー インターフェイスをカスタマイズする
-    href: active-directory-b2c-reference-ui-customization.md
-    items:
-    - name: カスタマイズ用のヘルパー ツール
-      href: active-directory-b2c-reference-ui-customization-helper-tool.md
   - name: カスタム属性を定義する
     href: active-directory-b2c-reference-custom-attr.md
   - name: メールの確認を無効にする
@@ -323,9 +322,9 @@ items:
     href: active-directory-b2c-support.md
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: 87dbf2eb87d4761186e298e27da142ff8a0e789a
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 276a67a6dc5708f5e4f25796d7d31523db7a7446
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49310523"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415867"

@@ -8,21 +8,21 @@ ms.service: security
 ms.topic: article
 ms.date: 07/31/2018
 ms.author: jomolesk
-ms.openlocfilehash: 02db944e96c74d865026a17a3871dbad2835cf1d
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: f4d8f4a927415426248860b07a40e7294c84de59
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056078"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406960"
 ---
 # <a name="azure-security-and-compliance-blueprint---data-analytics-for-nist-sp-800-171"></a>Azure のセキュリティとコンプライアンスのブループリント - NIST SP 800-171 のためのデータ分析
 
 ## <a name="overview"></a>概要
 [NIST Special Publication 800-171](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-171.pdf) では、非連邦情報システムおよび組織に存在する管理対象の非機密情報 (CUI) を保護するためのガイドラインが提供されます。 NIST SP 800-171 では、CUI の機密性を保護するための 14 個のセキュリティ要件ファミリが確立されています。
 
-Azure のセキュリティとコンプライアンスのブルー プリントでは、NIST SP 800-171 制御のサブセットを実装する、Azure のデータ分析アーキテクチャをお客様がデプロイするのに役立つガイダンスが提供されます。 このソリューションは、お客様が特定のセキュリティとコンプライアンスの要件を満たすことができる方法を例示するものです。 Azure でお客様が独自の Data Analytics アプリケーションをビルドして構成するための基礎としても機能します。
+Azure のセキュリティとコンプライアンスのブルー プリントでは、NIST SP 800-171 制御のサブセットを実装する、Azure のデータ分析アーキテクチャをお客様がデプロイするのに役立つガイダンスが提供されます。 このソリューションでは、お客様が特定のセキュリティおよびコンプライアンス要件を紹介しています｡ Azure でお客様が独自の Data Analytics アプリケーションをビルドして構成するための基礎としても機能します。
 
-この参照アーキテクチャ、関連する実装ガイド、および脅威モデルは、お客様固有の要件に適合させるための基礎として使用されることを目的としています。 運用環境でそのまま使用することはできません。 変更を加えずにこのアーキテクチャをデプロイすることは、NIST SP 800-171 の要件を完全に満たすには不十分です。 このアーキテクチャを使用して構築されたソリューションのセキュリティとコンプライアンスの適切なアセスメントは、お客様が実施する必要があります。 要件は、お客様の実装の詳細によって異なる可能性があります。
+この参照アーキテクチャ、関連する実装ガイド、および脅威モデルは、お客様固有の要件に適合させるための基礎として使用されることを目的としています。 運用環境でそのまま使用することはできません。 変更を加えずにこのアーキテクチャをデプロイすることは、NIST SP 800-171 の要件を完全に満たすには不十分です。 このアーキテクチャを使用して構築されたソリューションのセキュリティとコンプライアンスの適切なアセスメントは、お客様が実施する必要があります。 要件は、お客様の実装の細部によって異なる場合があります。
 
 ## <a name="architecture-diagram-and-components"></a>アーキテクチャ ダイアグラムとコンポーネント
 このソリューションでは分析プラットフォームを提供します。お客様はそのプラットフォーム上に独自の分析ツールをビルドできます。 参照アーキテクチャでは、一般的なユース ケースについて説明します。 お客様は、これを使用して、SQL/データ管理者によるデータの一括インポートを通してデータを入力することができます。 また、これを使用して、操作ユーザーによる運用データの更新を通してデータを入力することができます。 どちらのワークストリームでも、Azure SQL Database にデータをインポートするために Azure Functions が組み込まれます。 Azure Functions は、お客様の分析要件に固有のインポート タスクを処理するために、Azure portal 経由でお客様が構成する必要があります。
@@ -33,7 +33,7 @@ Azure では、お客様向けのさまざまなレポートと分析サービ�
 
 データが SQL Database にアップロードされ、Machine Learning によってトレーニングされると、そのデータは Power BI を利用する操作ユーザーと SQL/データ管理者によって使用されます。 Power BI はデータを直感的に表示し、複数のデータセットに及ぶ情報をまとめて、より優れた分析情報を引き出します。 Power BI は、高度な適応性を備え、SQL Database と簡単に統合できます。 お客様は、それぞれの業務ニーズに応じた幅広いシナリオを処理するように構成できます。
 
-Azure Portal からお客様が構成する Azure Storage 上にソリューション全体がビルドされます。 Storage は Storage Service Encryption を使用してすべてのデータを暗号化し、保存データの機密性を保持します。 geo 冗長ストレージにより、お客様のプライマリ データ センターでトラブルが発生してデータが失われることを防ぎます。 2 番目のコピーは、別の数百 km 離れた場所に格納されます。
+Azure Portal からお客様が構成する Azure Storage 上にソリューション全体がビルドされます。 Storage は Storage Service Encryption を使用してすべてのデータを暗号化し、保存データの機密性を維持します。 Geo 冗長ストレージは、、お客様のプライマリ データ ロケーションで問題が発生してもデータが失われないようにします｡ 2 つ目のコピーは、数百マイル離れた別の場所に格納されます。
 
 セキュリティ強化のために、このソリューションのすべてのリソースは、Azure Resource Manager を通じてリソース グループとして管理されます。 Azure Active Directory (Azure AD) のロールベース アクセス制御 (RBAC) は、デプロイされたリソースへのアクセスの制御に使用されます。 Azure Key Vault では､これらのリソースに顧客キーが含まれます。 システムの正常性は、Azure Security Center と Azure Monitor によって監視されます。 どちらの監視サービスについても､お客様はログをキャプチャするよう構成できます。 システム正常性は、使いやすい単一のダッシュ ボードに表示されます。
 
@@ -41,7 +41,7 @@ SQL Database は一般的に、SQL Server Management Studio 経由で管理さ�
 
 ![NIST SP 800-171 のためのデータ分析の参照アーキテクチャ ダイアグラム](images/nist171-analytics-architecture.png "NIST SP 800-171 のためのデータ分析の参照アーキテクチャ ダイアグラム")
 
-このソリューションでは、次の Azure サービスを使用します。 詳しくは、[デプロイ アーキテクチャ](#deployment-architecture)のセクションをご覧ください。
+このソリューションでは、次の Azure サービスを使用します。 詳しくは、[deployment architecture](#deployment-architecture)セクションをご覧ください。
 
 - Application Insights
 - Azure Active Directory
@@ -87,7 +87,7 @@ SQL Database は一般的に、SQL Server Management Studio 経由で管理さ�
 **サブネット**: 各サブネットは、対応する NSG に関連付けられています。
 
 ### <a name="data-in-transit"></a>転送中のデータ
-Microsoft Azure portal では、Azure データ センターとの間のすべての通信を既定で暗号化します。 Microsoft Azure portal での Storage に対するすべてのトランザクションは HTTPS 経由で行われます。
+Azure の既定では､Azure データセンターとの間のあらゆる通信は暗号化されます。 Microsoft Azure portal での Storage に対するすべてのトランザクションは HTTPS 経由で行われます。
 
 ### <a name="data-at-rest"></a>保存データ
 
@@ -100,10 +100,10 @@ Microsoft Azure portal では、Azure データ センターとの間のすべ�
 **Azure SQL Database**: SQL Database インスタンスは、次のデータベース セキュリティ対策を使用します。
 -   [Active Directory 認証と承認](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)を使用して、データベース ユーザーの ID 管理と他の Microsoft サービスを一元管理できます。
 -   [SQL Database の監査](https://docs.microsoft.com/azure/sql-database/sql-database-auditing-get-started)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。
--   SQL Database は、[Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) を使用するように構成されます。 これは、データベース、関連付けられたバックアップ、トランザクション ログ ファイルのリアルタイムの暗号化と暗号化解除を実行して保存情報を保護します。 Transparent Data Encryption により、保存されているデータが未承認のアクセスの対象になっていないことが保証されます。
+-   SQL Database は、[Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) を使用するように構成されます。 これは、データベース、関連付けられたバックアップ、トランザクション ログ ファイルのリアルタイムの暗号化と暗号化解除を実行して保存情報を保護します。 透過的なデータ暗号化により、保存されているデータが未承認のアクセスに晒されないようになります｡
 -   [ファイアウォール規則](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure)は、適切なアクセス許可が付与されていない限り、データベース サーバーへのすべてのアクセスを阻止します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。
 -   [SQL 脅威の検出](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-get-started)により、発生した潜在的な脅威を検出し、対応することができます。 不審なデータベース アクティビティ、潜在的な脆弱性、SQL インジェクション攻撃、および異常なデータベース アクセス パターンが見つかった場合に、セキュリティ アラートが提供されます。
--   [暗号化された列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)により、データベース システム内で機微なデータがプレーンテキストとして表示されないことが確保されます。 データ暗号化を有効にした後は、キーへのアクセス権を持つクライアント アプリケーションまたはアプリケーション サーバーのみが、プレーンテキスト データにアクセスできます。
+-   [暗号化された列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)により、データベース システム内で機密データがプレーンテキストとして表示されないことが保証されます。 データ暗号化を有効にした後は、キーへのアクセス権を持つクライアント アプリケーションまたはアプリケーション サーバーのみが、プレーンテキスト データにアクセスできます。
 - [SQL Database 動的データ マスク](https://docs.microsoft.com/azure/sql-database/sql-database-dynamic-data-masking-get-started)では、特権のないユーザーやアプリケーションに対してデータをマスクすることで､機密データの露出を制限されます。 DDM はまた潜在的に機密のデータを自動的に検出し、適用する適切なマスクを提案することもできます。 動的データ マスクは、機密データが未承認のアクセスによってデータベースが終了されるようなアクセスを制限するのに役立ちます。 *お客様は、お使いのデータベース スキーマに準拠するように設定を調整する必要があります。*
 
 ### <a name="identity-management"></a>ID 管理
@@ -128,15 +128,15 @@ Microsoft Azure portal では、Azure データ センターとの間のすべ�
 
  Security Center では、さまざまな検出機能を使用して、お客様の環境が標的の可能性がある攻撃を通知します。 これらのアラートには、アラートをトリガーした要因、対象となったリソース、攻撃元に関する重要な情報が含まれています。 Security Center には、一連の[セキュリティ アラート](https://docs.microsoft.com/azure/security-center/security-center-alerts-type)が事前に定義されています。これらは、脅威または不審なアクティビティが発生した際にトリガーされます。 お客様は[カスタム アラート ルール](https://docs.microsoft.com/azure/security-center/security-center-custom-alert)を使用して、お客様の環境から既に収集されているデータに基づく新しいセキュリティ アラートを定義することができます。
 
- Security Center では、優先順位の付いたセキュリティ アラートとインシデントを提供します。 Security Center では、お客様が潜在的なセキュリティ問題を簡単に検出､対処できるようにします。 1 つの脅威が検出されるたびに [脅威インテリジェンス レポート](https://docs.microsoft.com/azure/security-center/security-center-threat-report)脅威が生成されます。 インシデント対応チームは、脅威を調査し､修復するときに､このレポートを利用します。
+ Security Center では、優先順位の付いたセキュリティ アラートとインシデントを提供します。 Security Center では、お客様が潜在的なセキュリティ問題を簡単に検出､対処できるようにします。 検出された脅威ごとに、[脅威インテリジェンス レポート](https://docs.microsoft.com/azure/security-center/security-center-threat-report)が生成されます。 インシデント対応チームは、脅威を調査し､修復するときに､このレポートを利用します。
 
 ### <a name="logging-and-auditing"></a>ログ記録と監査
 
 Azure サービスは、システムの正常性だけではなく、システムとユーザーのアクティビティも詳細に記録します。
 - **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) は、サブスクリプション内のリソースに対して実行された操作に関する分析情報を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、および状態の判断に役立ちます。
-- **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログや Storage ログ、Key Vault 監査ログ、および Azure Application Gateway のアクセス ログとファイアウォール ログが含まれます。 すべての診断ログは、暗号化され、集中管理された Azure Storage アカウントに書き込まれ、アーカイブされます。 ユーザーは、特定の要件を満たすために、730 日間に最大、保有期間を構成できます。
+- **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログや Storage ログ、Key Vault 監査ログ、および Azure Application Gateway のアクセス ログとファイアウォール ログが含まれます。 すべての診断ログは、暗号化され、集中管理された Azure Storage アカウントに書き込まれ、アーカイブされます。 ユーザーは個々の要件に応じて最大 730 日間の保有期間を設定できます。
 
-**Log Analytics**: ログは、処理、格納、ダッシュボードのレポート化を行うために、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) に統合されます。 データの収集後は、Operations Management Suite ワークスペース内にデータ型ごとに別にテーブルに編成されます。 これにより、元のソースに関係なくにすべてのデータをまとめて分析できます。 Security Center は Log Analytics と連携しています。 お客様は Log Analytics クエリを使用してセキュリティ イベント データにアクセスして、それを他のサービスからのデータと組み合わせることができます。
+**Log Analytics**: ログは、処理、格納、ダッシュボードのレポート化を行うために、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) に統合されます。 データの収集後は、Log Analytics ワークスペース内にデータ型ごとに別にテーブルに編成されます｡ これにより、元のソースに関係なくにすべてのデータをまとめて分析できます。 Security Center は Log Analytics と連携しています。 お客様は Log Analytics クエリを使用してセキュリティ イベント データにアクセスして、それを他のサービスからのデータと組み合わせることができます。
 
 このアーキテクチャの一部として、次の Log Analytics [管理ソリューション](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)が含まれます。
 -   [Active Directory 評価](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Active Directory 正常性チェック ソリューションはサーバー環境のリスクと正常性を定期的に評価します。 このソリューションは、デプロイされているサーバー インフラストラクチャに固有の推奨事項を優先順位付きの一覧で提供します。

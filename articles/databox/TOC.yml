@@ -94,11 +94,13 @@ items:
     items:
     - name: Data Box 製品
       href: https://azure.microsoft.com/services/storage/databox/data/
-    - name: 価格
+    - name: Data Box の価格
       href: https://azure.microsoft.com/pricing/details/storage/databox/
-ms.openlocfilehash: cc4b50ec5bd851d4015a594d5d355856be957b48
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+    - name: Data Box Disk の価格
+      href: https://azure.microsoft.com/pricing/details/storage/databox/disk/
+ms.openlocfilehash: bd23df1abd99ba3fd89a4b382c6c5f00c8b80f1f
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50087000"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739194"

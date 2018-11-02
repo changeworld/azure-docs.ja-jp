@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/16/2018
 ms.author: sutalasi
-ms.openlocfilehash: b71c381c3ebc2b36c36b862c00de02144f94bd0f
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 1d72d56188c3b787ab335ced554eb7c1dc74e0b7
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043642"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49427435"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して Azure に対する Hyper-V VM のディザスター リカバリーを設定する
 
@@ -69,7 +69,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 1. 資格情報コンテナーの作成先となる Azure Resource Manager リソース グループを作成するか、既存のリソース グループを使用します。 次のように、新しいリソース グループを作成します。 $ResourceGroupName 変数には、作成するリソース グループの名前が格納され、$Geo 変数には、リソース グループの作成先となる Azure リージョン (例: "ブラジル南部") が格納されます。
 
-    `New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Geo` 
+    `New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Geo`
 
 2. サブスクリプションのリソース グループの一覧を取得するには、**Get-AzureRmResourceGroup** コマンドレットを実行します。
 2. 次のコマンドを使用して、Azure Recovery Services の新しい資格情報コンテナーを作成します。
@@ -83,22 +83,22 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
 次のように、コンテナーのコンテキストを設定します。
 
-`Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault`
+`Set-AsrVaultSettings -Vault $vault`
 
 ## <a name="step-4-create-a-hyper-v-site"></a>手順 4: Hyper-V サイトを作成する
 
 1. 次のコマンドを使用して、新しい Hyper-V サイトを作成します。
 
         $sitename = "MySite"                #Specify site friendly name
-        New-AzureRmSiteRecoverySite -Name $sitename
+        New-AsrFabric -Type HyperVSite -Name $sitename
 
 2. このコマンドレットは Site Recovery ジョブを起動してサイトを作成し、Site Recovery ジョブ オブジェクトを返します。 ジョブの完了を待って、ジョブが正常に完了したことを確認します。
-3. **Get-AzureRmSiteRecoveryJob** を使用して、ジョブ オブジェクトを取得し、ジョブの現在の状態を確認します。
+3. **Get-AsrJob コマンドレット**を使用して、ジョブ オブジェクトを取得し、ジョブの現在の状態を確認します。
 4. 次のように、サイトの登録キーを生成してダウンロードします。
 
     ```
-    $SiteIdentifier = Get-AzureRmSiteRecoverySite -Name $sitename | Select -ExpandProperty SiteIdentifier
-        Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vault -SiteIdentifier $SiteIdentifier -SiteFriendlyName $sitename -Path $Path
+    $SiteIdentifier = Get-AsrFabric -Name $sitename | Select -ExpandProperty SiteIdentifier
+    $path = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vault -SiteIdentifier $SiteIdentifier -SiteFriendlyName $sitename
     ```
 
 5. ダウンロードしたキーを Hyper-V ホストにコピーします。 このキーは、Hyper-V ホストをサイトに登録するときに必要になります。
@@ -111,7 +111,7 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 4. メッセージに従って、ダウンロードしたキーを入力し、Hyper-V ホストの登録を完了します。
 5. 次のように、Hyper-V ホストがサイトに登録されたことを確認します。
 
-        $server =  Get-AzureRmSiteRecoveryServer -FriendlyName $server-friendlyname
+        $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
 ## <a name="step-6-create-a-replication-policy"></a>手順 6: レプリケーション ポリシーを作成する
 
@@ -124,33 +124,33 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
         $Recoverypoints = 6                    #specify the number of recovery points
         $storageaccountID = Get-AzureRmStorageAccount -Name "mystorea" -ResourceGroupName "MyRG" | Select -ExpandProperty Id
 
-        $PolicyResult = New-AzureRmSiteRecoveryPolicy -Name $PolicyName -ReplicationProvider “HyperVReplicaAzure” -ReplicationFrequencyInSeconds $ReplicationFrequencyInSeconds  -RecoveryPoints $Recoverypoints -ApplicationConsistentSnapshotFrequencyInHours 1 -RecoveryAzureStorageAccountId $storageaccountID
+        $PolicyResult = New-AsrPolicy -Name $PolicyName -ReplicationProvider “HyperVReplicaAzure” -ReplicationFrequencyInSeconds $ReplicationFrequencyInSeconds  -RecoveryPoints $Recoverypoints -ApplicationConsistentSnapshotFrequencyInHours 1 -RecoveryAzureStorageAccountId $storageaccountID
 
 2. 返されたジョブをチェックし、レプリケーション ポリシーが正常に作成されたことを確認します。
 
 3. 次のように、サイトに対応する保護コンテナーを取得します。
 
-        $protectionContainer = Get-AzureRmSiteRecoveryProtectionContainer
+        $protectionContainer = Get-AsrProtectionContainer
 3. 次のように、保護コンテナーをレプリケーション ポリシーに関連付けます。
 
-     $Policy = Get-AzureRmSiteRecoveryPolicy -FriendlyName $PolicyName   $associationJob  = Start-AzureRmSiteRecoveryPolicyAssociationJob -Policy $Policy -PrimaryProtectionContainer $protectionContainer
+     $Policy = Get-AsrPolicy -FriendlyName $PolicyName   $associationJob  = New-AsrProtectionContainerMapping -Name $mappingName -Policy $Policy -PrimaryProtectionContainer $protectionContainer[0]
 
 4. 関連付けが正常に完了するのを待ちます。
 
 ## <a name="step-7-enable-vm-protection"></a>手順 7: VM 保護を有効にする
 
-1. 次のように、保護する VM に対応する保護エンティティを取得します。
+1. 次のように、保護する VM に対応する保護可能な項目を取得します。
 
         $VMFriendlyName = "Fabrikam-app"                    #Name of the VM
-        $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
+        $ProtectableItem = Get-AsrProtectableItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
 2. VM を保護します。 保護対象の VM に複数のディスクが接続されている場合は、 *OSDiskName* パラメーターを使ってオペレーティング システム ディスクを指定します。
 
         $Ostype = "Windows"                                 # "Windows" or "Linux"
-        $DRjob = Set-AzureRmSiteRecoveryProtectionEntity -ProtectionEntity $protectionEntity -Policy $Policy -Protection Enable -RecoveryAzureStorageAccountId $storageaccountID  -OS $OStype -OSDiskName $protectionEntity.Disks[0].Name
+        $DRjob = New-AsrReplicationProtectedItem -ProtectableItem $VM -Name $VM.Name -ProtectionContainerMapping $ProtectionContainerMapping -RecoveryAzureStorageAccountId $StorageAccountID -OSDiskName $OSDiskNameList[$i] -OS Windows -RecoveryResourceGroupId
 
-3. 初回レプリケーション後、VM が保護された状態になるまで待ちます。 これには、レプリケートされるデータ量と Azure で使用できるアップストリーム帯域幅などの要因に応じて、しばらく時間がかかることがあります。 保護された状態になると、ジョブの State および StateDescription は次のように更新されます。 
+3. 初回レプリケーション後、VM が保護された状態になるまで待ちます。 これには、レプリケートされるデータ量と Azure で使用できるアップストリーム帯域幅などの要因に応じて、しばらく時間がかかることがあります。 保護された状態になると、ジョブの State および StateDescription は次のように更新されます。
 
-        PS C:\> $DRjob = Get-AzureRmSiteRecoveryJob -Job $DRjob
+        PS C:\> $DRjob = Get-AsrJob -Job $DRjob
 
         PS C:\> $DRjob | Select-Object -ExpandProperty State
         Succeeded
@@ -163,31 +163,16 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
         PS C:\> $VMFriendlyName = "Fabrikam-App"
 
-        PS C:\> $VM = Get-AzureRmSiteRecoveryVM -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
+        PS C:\> $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
 
-        PS C:\> $UpdateJob = Set-AzureRmSiteRecoveryVM -VirtualMachine $VM -PrimaryNic $VM.NicDetailsList[0].NicId -RecoveryNetworkId $nw1.Id -RecoveryNicSubnetName $nw1.Subnets[0].Name
+        PS C:\> $UpdateJob = Set-AsrReplicationProtectedItem --InputObject $rpi -PrimaryNic $VM.NicDetailsList[0].NicId -RecoveryNetworkId $nw1.Id -RecoveryNicSubnetName $nw1.Subnets[0].Name
 
-        PS C:\> $UpdateJob = Get-AzureRmSiteRecoveryJob -Job $UpdateJob
+        PS C:\> $UpdateJob = Get-AsrJob -Job $UpdateJob
 
-        PS C:\> $UpdateJob
+        PS C:\> $UpdateJob| select -ExpandProperty state
+        Get-AsrJob -Job $job | select -ExpandProperty state
 
-        Name             : b8a647e0-2cb9-40d1-84c4-d0169919e2c5
-        ID               : /Subscriptions/a731825f-4bf2-4f81-a611-c331b272206e/resourceGroups/MyRG/providers/Microsoft.RecoveryServices/vault
-                           s/MyVault/replicationJobs/b8a647e0-2cb9-40d1-84c4-d0169919e2c5
-        Type             : Microsoft.RecoveryServices/vaults/replicationJobs
-        JobType          : UpdateVmProperties
-        DisplayName      : Update the virtual machine
-        ClientRequestId  : 805a22a3-be86-441c-9da8-f32685673112-2015-12-10 17:55:51Z-P
-        State            : Succeeded
-        StateDescription : Completed
-        StartTime        : 10-12-2015 17:55:53 +00:00
-        EndTime          : 10-12-2015 17:55:54 +00:00
-        TargetObjectId   : 289682c6-c5e6-42dc-a1d2-5f9621f78ae6
-        TargetObjectType : ProtectionEntity
-        TargetObjectName : Fabrikam-App
-        AllowedActions   : {Restart}
-        Tasks            : {UpdateVmPropertiesTask}
-        Errors           : {}
+        Succeeded
 
 
 
@@ -196,13 +181,13 @@ Azure PowerShell は、Windows PowerShell を使用して Azure を管理する�
 
         $nw = Get-AzureRmVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group
 
-        $protectionEntity = Get-AzureRmSiteRecoveryProtectionEntity -FriendlyName $VMFriendlyName -ProtectionContainer $protectionContainer
+        $rpi = Get-AsrReplicationProtectedItem -ProtectionContainer $protectionContainer -FriendlyName $VMFriendlyName
 
-        $TFjob = Start-AzureRmSiteRecoveryTestFailoverJob -ProtectionEntity $protectionEntity -Direction PrimaryToRecovery -AzureVMNetworkId $nw.Id
+        $TFjob =Start-AsrTestFailoverJob -ReplicationProtectedItem $VM -Direction PrimaryToRecovery -AzureVMNetworkId $nw.Id
 2. Azure でテスト VM が作成されていることを確認します。 テスト フェールオーバー ジョブは、Azure にテスト VM を作成した後に中断されます。
 3. クリーンアップして、テスト フェールオーバーを完了するには、次を実行します。
 
-        $TFjob = Resume-AzureRmSiteRecoveryJob -Job $TFjob
+        $TFjob = Start-AsrTestFailoverCleanupJob -ReplicationProtectedItem $rpi -Comment "TFO done"
 
 ## <a name="next-steps"></a>次の手順
 Azure Site Recovery と Azure Resource Manager PowerShell コマンドレットの[詳細を確認](https://docs.microsoft.com/powershell/module/azurerm.siterecovery)します。

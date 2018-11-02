@@ -8,99 +8,52 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 10/18/2018
 ms.author: diberry
-ms.openlocfilehash: e3bd203c9ab1d6daaae04866cf195b3ca28c3078
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2f7c724b14efd569a5993f9a9319c9004874bc43
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47041559"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49647597"
 ---
 # <a name="prebuilt-entities-to-recognize-common-data-types"></a>一般的なデータ型を認識するための作成済みエンティティ
 
-LUIS には、日付、時刻、数字、測定値、通貨など、一般的な情報の種類を認識するための作成済みエンティティのセットが含まれています。 作成済みエンティティのサポートは、LUIS アプリのカルチャによって異なります。 カルチャによるサポートを含む、LUIS がサポートする作成済みエンティティの完全な一覧については、[作成済みエンティティのリファレンス](./luis-reference-prebuilt-entities.md)に関するページをご覧ください。
-
-> [!NOTE]
-> **builtin.datetime** は非推奨です。 [**builtin.datetimeV2**](luis-reference-prebuilt-datetimev2.md) によって置き換えられます。datetimeV2 は日付と時間の範囲を認識し、あいまいな日付と時刻の認識が強化されています。
+LUIS には、日付、時刻、数字、測定値、通貨など、一般的な情報の種類を認識するための作成済みエンティティのセットが含まれています。 
 
 ## <a name="add-a-prebuilt-entity"></a>作成済みエンティティの追加
 
 1. **[マイ アプリ]** ページで名前をクリックしてアプリを開き、左側で **[エンティティ]** をクリックします。 
-2. **[エンティティ]** ページで **[Manage prebuilt entities]\(作成済みエンティティの管理\)** をクリックします。
 
-3. **[Add prebuilt entities]\(作成済みエンティティの追加\)** ダイアログ ボックスで、追加する作成済みエンティティ (たとえば、"datetimeV2") をクリックします。 その後、 **[保存]** をクリックします。
+1. **[エンティティ]** ページで **[Manage prebuilt entities]\(作成済みエンティティの管理\)** をクリックします。
+
+1. **[Add prebuilt entities]\(事前構築済みエンティティの追加\)** ダイアログ ボックスで、datetimeV2 事前構築済みエンティティを選択します。 
 
     ![[Add prebuilt entities]\(作成済みエンティティの追加\) ダイアログ ボックス](./media/luis-use-prebuilt-entity/add-prebuilt-entity-dialog.png)
 
-## <a name="use-a-prebuilt-number-entity"></a>作成済みの number エンティティを使用する
-作成済みエンティティがアプリケーションに含まれる場合、エンティティの予測が発行されるアプリケーションに含まれます。 作成済みエンティティの動作は事前にトレーニングされており、変更することは**できません**。 作成済みエンティティの動作を確認するには、次の手順のようにします。
+1. **[完了]** を選択します。
 
-1. **number** エンティティをアプリに追加した後、アプリを[トレーニング](luis-interactive-test.md)して[発行](luis-how-to-publish-app.md)します。
-2. **[アプリの発行]** ページでエンドポイント URL をクリックして、LUIS エンドポイントを Web ブラウザーで開きます。 
-3. 数値表現が含まれている発話を URL に追加します。 たとえば、「`buy two plane ticktets`」などと入力します。LUIS が `two` を `builtin.number` エンティティとして識別し、その値を `2` と識別することを、`resolution` フィールドで確認します。 `resolution` フィールドは、数値と日付をクライアント アプリケーションが使いやすい標準形式に解決するのに役立ちます。 
+## <a name="publish-the-app"></a>アプリの発行
 
-    ![ブラウザーでの number エンティティを含む発話](./media/luis-use-prebuilt-entity/browser-query.png)
+事前構築済みエンティティの値を見る最も簡単な方法は、公開されているエンドポイントに対してクエリを行うことです。 
 
-LUIS は、非標準形式ではない数字をインテリジェントに認識できます。 別の数値表現を発話で試し、LUIS が何を返すかを確認してしてください。
+1. 上部ツール バーの **[発行]** を選択します。 **[運用]** に発行します。 
 
-次の例では、"two dozen" (2 ダース) という発話に対する解決である 24 という値を含む LUIS からの JSON 応答を示します。
+1. 緑の成功通知が表示されたら、**[Refer to the list of endpoints]\(エンドポイントの一覧を参照する\)** リンクを選択して、エンドポイントを表示します。
 
-```json
-{
-  "query": "order two dozen tickets for group travel",
-  "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.905443209
-  },
-  "entities": [
-    {
-      "entity": "two dozen",
-      "type": "builtin.number",
-      "startIndex": 6,
-      "endIndex": 14,
-      "resolution": {
-        "value": "24"
-      }
-    }
-  ]
-}
-```
-## <a name="use-a-prebuilt-datetimev2-entity"></a>datetimeV2 作成済みエンティティを使用する
-**datetimeV2** 作成済みエンティティは、日付、時刻、日付範囲、および期間を認識します。 `datetimeV2` 作成済みエンティティの動作を確認するには、次の手順のようにします。
+1. エンドポイントを選択します。 新しいブラウザー タブでそのエンドポイントが開きます。 ブラウザー タブを開いたままにして、**[テスト]** セクションに移動します。
 
-1. **datetimeV2** エンティティをアプリに追加した後、アプリを[トレーニング](luis-interactive-test.md)して[発行](luis-how-to-publish-app.md)します。
-2. **[アプリの発行]** ページでエンドポイント URL をクリックして、LUIS エンドポイントを Web ブラウザーで開きます。 
-3. 日付範囲が含まれている発話を URL に追加します。 たとえば、「`book a flight tomorrow`」などと入力します。LUIS が `tomorrow` を `builtin.datetimeV2.date` エンティティとして識別し、その値を明日の日付と識別することを、`resolution` フィールドで確認します。 
+## <a name="test"></a>テスト
+エンティティを追加した後、アプリをトレーニングする必要はありません。 
 
-次の例は、今日の日付が 2017 年 10 月 31 日である場合に、LUIS からの JSON 応答がどのようになるかを示しています。
+**q** パラメーターに値を追加して、エンドポイントで新しい意図をテストします。 **q** に対する推奨される発話の次の表を使用します。
 
-```json
-{
-  "query": "book a flight tomorrow",
-  "topScoringIntent": {
-    "intent": "BookFlight",
-    "score": 0.9063408
-  },
-  "entities": [
-    {
-      "entity": "tomorrow",
-      "type": "builtin.datetimeV2.date",
-      "startIndex": 14,
-      "endIndex": 21,
-      "resolution": {
-        "values": [
-          {
-            "timex": "2017-11-01",
-            "type": "date",
-            "value": "2017-11-01"
-          }
-        ]
-      }
-    }
-  ]
-}
-```
+|テスト発話|エンティティの値|
+|--|:--|
+|明日の便を予約する|2018-10-19|
+|3 月 3 日の予定をキャンセルする|発話で年が指定されていないため、LUIS は過去で直近の 3 月 3 日 (2018-03-03) と未来で直近の 3 月 3日 (2019-03-03) を返しました。|
+|午前 10 時に会議をスケジュールする|10:00:00|
+
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]

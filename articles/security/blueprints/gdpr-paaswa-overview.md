@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/14/2018
 ms.author: jomolesk
-ms.openlocfilehash: 26227e1a6766a80bbcef3cfda3f2faee82396fe3
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c51ce44d1f6c2dcacaed09a490e46ad3af1ec9dc
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577056"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49406689"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-gdpr"></a>Azure のセキュリティとコンプライアンスのブループリント: GDPR のための PaaS Web アプリケーション
 
@@ -33,7 +33,7 @@ Microsoft では、業界をリードするセキュリティ対策とプライ�
 - お客様は、このアーキテクチャを使用してビルドしたソリューションの適切なセキュリティとコンプライアンスの評価を実施する責任を負います。これは、要件がお客様の実装によって変化する可能性があるからです。
 
 ## <a name="architecture-diagram-and-components"></a>アーキテクチャ ダイアグラムとコンポーネント
-このソリューションは、Azure SQL Database バックエンドがある PaaS Web アプリケーション向けのリファレンス アーキテクチャを用意します。 Web アプリケーションは、分離された Azure App Service Environment でホストされます。これは、Azure データセンター内のプライベートな専用環境です。 この環境では、Azure によって管理されている VM 間に Web アプリケーションのトラフィックを負荷分散します。 このアーキテクチャには、ネットワーク セキュリティ グループ、Application Gateway、Azure DNS、および Load Balancer も含まれています。 さらに、Application Insights は、Operations Management Suite (OMS) を通して、リアルタイムでアプリケーションのパフォーマンス管理と分析を行います。 **Azure では、参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています。**
+このソリューションは、Azure SQL Database バックエンドがある PaaS Web アプリケーション向けのリファレンス アーキテクチャを用意します。 Web アプリケーションは、分離された Azure App Service Environment でホストされます。これは、Azure データセンター内のプライベートな専用環境です。 この環境では、Azure によって管理されている VM 間に Web アプリケーションのトラフィックを負荷分散します。 このアーキテクチャには、ネットワーク セキュリティ グループ、Application Gateway、Azure DNS、および Load Balancer も含まれています。 また、Azure Monitor ではシステム正常性のリアルタイム分析も提供されます。 **Azure では、参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています。**
 
 ![GDPR のための PaaS Web アプリケーションの参照アーキテクチャ図](images/gdpr-paaswa-architecture.png?raw=true "GDPR のための PaaS Web アプリケーションの参照アーキテクチャ図")
 
@@ -51,7 +51,6 @@ Microsoft では、業界をリードするセキュリティ対策とプライ�
 - ネットワーク セキュリティ グループ
 - Azure DNS
 - Azure Storage
-- Operations Management Suite (OMS)
 - Azure Monitor
 - Application Insights
 - Azure Security Center
@@ -92,7 +91,7 @@ ASE は、単一の顧客のアプリケーションだけを実行するため�
 
 各 NSG では、ソリューションが安全かつ適切に機能できるように、固有のポートとプロトコルが開かれます。 さらに、各 NSG で次の構成が有効になります。
   - [診断ログとイベント](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)が有効化され、ストレージ アカウントに格納される
-  - OMS Log Analytics が [NSG の診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)に接続される
+  - Log Analytics が [NSG の診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)に接続される
 
 **サブネット**: 各サブネットは、対応する NSG に関連付けられています。
 
@@ -156,12 +155,12 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 
 ### <a name="logging-and-auditing"></a>ログ記録と監査
 
-OMS は、システムの正常性だけではなく、システムとユーザーのアクティビティを詳細に記録します。 OMS [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
+Azure Monitor は、システムの正常性だけではなく、システムとユーザーのアクティビティを詳細に記録します。 これは Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
 - **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) は、サブスクリプション内のリソースに対して実行された操作に関する分析情報を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、および状態の判断に役立ちます。
 - **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログ、Azure Storage ログ、Key Vault 監査ログ、および Application Gateway のアクセス ログとファイアウォール ログが含まれます。
 - **ログのアーカイブ**: すべての診断ログは、暗号化され、集中管理された Azure Storage アカウントに書き込まれ、アーカイブされます。 リテンション期間には、組織固有の保有要件を満たすために最長 730 日までの日数をユーザーが設定できます。 これらのログは、処理、格納、およびダッシュボードのレポート化を行うために、Azure Log Analytics に接続されます。
 
-さらに、このアーキテクチャの一部として、次の OMS ソリューションが含まれます。
+さらに、このアーキテクチャの一部として、次の監視ソリューションが含まれます。
 -   [AD Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): この Active Directory 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
 -   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): このマルウェア対策ソリューションは、マルウェア、脅威、および保護の状態に関する報告を行います。
 -   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation ソリューションは、Runbook の格納、実行、および管理を行います。 このソリューションでは、Runbook を使用して、Application Insights と Azure SQL Database からログを収集できます。

@@ -1,24 +1,25 @@
 ---
-title: Cognitive Services Speech SDK について
-description: Speech サービスで使用できる SDK の概要。
+title: Speech Service SDK について
 titleSuffix: Azure Cognitive Services
+description: Speech Service で使用できる SDK の概要です。
 services: cognitive-services
 author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: speech-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: wolfma
-ms.openlocfilehash: 4be6b1e8373b6e7a7db8d97f2c99137cb6aca9bf
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: f071c15ea586f7b146b82a6201adf16dadc65add
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364644"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49464813"
 ---
-# <a name="about-the-cognitive-services-speech-sdk"></a>Cognitive Services Speech SDK について
+# <a name="about-the-speech-service-sdk"></a>Speech Service SDK について
 
-Cognitive Services Speech ソフトウェア開発キット (SDK) は、Speech サービスの機能に対するネイティブ アクセス権をアプリケーションに提供します。これによりソフトウェアの開発が容易になります。 現時点で、SDK からは、**音声テキスト変換**、**音声翻訳**、および**意図認識**にアクセスできます。
+Speech Service ソフトウェア開発キット (SDK) は、Speech サービスの機能に対するネイティブ アクセス権をアプリケーションに提供します。これによりソフトウェアの開発が容易になります。 現時点で、SDK からは、**音声テキスト変換**、**音声翻訳**、および**意図認識**にアクセスできます。
 
 [!INCLUDE [Speech SDK Platforms](../../../includes/cognitive-services-speech-service-speech-sdk-platforms.md)]
 

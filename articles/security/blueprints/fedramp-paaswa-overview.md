@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: jomolesk
-ms.openlocfilehash: eb8db75a8ff5af11b98ee2c61628f923a8422153
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: bad808455ebb35523a04e07edd22f4e6ce9473e6
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299935"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407301"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-fedramp"></a>Azure のセキュリティとコンプライアンスのブループリント: FedRAMP のための PaaS Web アプリケーション
 
@@ -26,7 +26,7 @@ ms.locfileid: "44299935"
 - お客様は、このアーキテクチャを使用してビルドしたソリューションの適切なセキュリティとコンプライアンスの評価を実施する責任を負います。要件は、お客様の実装によって変化する可能性があるからです。
 
 ## <a name="architecture-diagram-and-components"></a>アーキテクチャ ダイアグラムとコンポーネント
-このソリューションは、Azure SQL Database バックエンドがある PaaS Web アプリケーション向けのリファレンス アーキテクチャを用意します。 Web アプリケーションは、分離された Azure App Service Environment でホストされます。これは、Azure データセンター内のプライベートな専用環境です。 この環境では、Azure によって管理されている VM 間に Web アプリケーションのトラフィックを負荷分散します。 このアーキテクチャには、ネットワーク セキュリティ グループ、Application Gateway、Azure DNS、および Load Balancer も含まれています。 さらに、Operations Management Suite は、システムの正常性とセキュリティのリアルタイム分析を提供します。 **Azure では、参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています。**
+このソリューションは、Azure SQL Database バックエンドがある PaaS Web アプリケーション向けのリファレンス アーキテクチャを用意します。 Web アプリケーションは、分離された Azure App Service Environment でホストされます。これは、Azure データセンター内のプライベートな専用環境です。 この環境では、Azure によって管理されている VM 間に Web アプリケーションのトラフィックを負荷分散します。 このアーキテクチャには、ネットワーク セキュリティ グループ、Application Gateway、Azure DNS、および Load Balancer も含まれています。 また、Azure Monitor ではシステム正常性のリアルタイム分析も提供されます。 **Azure では、参照アーキテクチャのサブネットに対する管理とデータ インポートのために、VPN または ExpressRoute 接続を構成することを推奨しています。**
 
 ![FedRAMP のための PaaS Web アプリケーションの参照アーキテクチャ図](images/fedramp-paaswa-architecture.png?raw=true "FedRAMP のための PaaS Web アプリケーションの参照アーキテクチャ図")
 
@@ -44,7 +44,6 @@ ms.locfileid: "44299935"
 - ネットワーク セキュリティ グループ
 - Azure DNS
 - Azure Storage
-- Operations Management Suite
 - Azure Monitor
 - App Service Environment v2
 - Azure Load Balancer
@@ -85,7 +84,7 @@ ASE は、単一の顧客のアプリケーションだけを実行するため�
 
 各 NSG では、ソリューションが安全かつ適切に機能できるように、固有のポートとプロトコルが開かれます。 さらに、各 NSG で次の構成が有効になります。
   - [診断ログとイベント](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)が有効化され、ストレージ アカウントに格納される
-  - OMS Log Analytics が [NSG の診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)に接続される
+  - Log Analytics が [NSG の診断](https://github.com/krnese/AzureDeploy/blob/master/AzureMgmt/AzureMonitor/nsgWithDiagnostics.json)に接続される
 
 **サブネット**: 各サブネットは、対応する NSG に関連付けられています。
 
@@ -143,12 +142,12 @@ Azure では、Azure データセンターとの間のすべての通信を既�
 - [Azure Security Center](https://azure.microsoft.com/services/security-center) と [Azure Advisor](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations) による、その他の保護と通知の提供。 Azure Security Center は評価システムも提供します。
 
 ### <a name="logging-and-auditing"></a>ログ記録と監査
-Operations Management Suite は、システムの正常性だけではなく、システムとユーザーのアクティビティを幅広く記録します。 Operations Management Suite [Log Analytics](https://azure.microsoft.com/services/log-analytics/) ソリューションは、Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
+Azure Monitor は、システムの正常性だけではなく、システムとユーザーのアクティビティを詳細に記録します。 これは Azure やオンプレミス環境のリソースによって生成されるデータを収集して分析します。
 - **アクティビティ ログ**: [アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) は、サブスクリプション内のリソースに対して実行された操作に関する分析情報を提供します。 アクティビティ ログは、操作のイニシエーター、発生時刻、および状態の判断に役立ちます。
 - **診断ログ**: [診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)には、各リソースによって出力されるすべてのログが含まれます。 これらのログには、Windows イベント システム ログ、Azure Storage ログ、Key Vault 監査ログ、および Application Gateway のアクセス ログとファイアウォール ログが含まれます。
 - **ログのアーカイブ**: すべての診断ログは、暗号化され、集中管理された Azure Storage アカウントに書き込まれ、アーカイブされます。 リテンション期間には、組織固有の保有要件を満たすために最長 730 日までの日数をユーザーが設定できます。 これらのログは、処理、格納、およびダッシュボードのレポート化を行うために、Azure Log Analytics に接続されます。
 
-さらに、このアーキテクチャの一部として、次の Operations Management Suite ソリューションが含まれます。
+さらに、このアーキテクチャの一部として、次の監視ソリューションが含まれます。
 -   [Active directory Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): この Active Directory 正常性チェック ソリューションは、一定の間隔でサーバー環境のリスクと正常性を評価し、デプロイされたサーバー インフラストラクチャに固有の推奨事項を重要度別に示した一覧を提供します。
 -   [Antimalware Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-malware): このマルウェア対策ソリューションは、マルウェア、脅威、および保護の状態に関する報告を行います。
 -   [Azure Automation](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker): Azure Automation ソリューションは、Runbook の格納、実行、および管理を行います。 このソリューションでは、Runbook を使用して、Application Insights と Azure SQL Database からログを収集できます。

@@ -2,25 +2,17 @@
 title: クロスプレミス Azure 接続用の VPN Gateway の設定 | Microsoft Docs
 description: Azure 仮想ネットワーク ゲートウェイ用の VPN Gateway の設定について説明します。
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: jpconnock
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ae665bc5-0089-45d0-a0d5-bc0ab4e79899
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/20/2018
+ms.topic: conceptual
+ms.date: 10/22/2018
 ms.author: cherylmc
-ms.openlocfilehash: 60cdc7bbe08df7816560e9720f96edc51769c342
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 30edc7308ad2d01d5245f8cd1073a7def674b74d
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38618223"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49649841"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 
@@ -29,10 +21,11 @@ VPN ゲートウェイは、仮想ネットワークとオンプレミスの場�
 VPN Gateway の接続は複数のリソースの構成に依存し、それぞれに構成可能な設定が含まれます。 このセクションでは、Resource Manager デプロイ モデルに作成される仮想ネットワークの VPN ゲートウェイに関するリソースと設定について説明します。 各接続ソリューションの説明とトポロジ ダイアグラムについては、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」をご覧ください。
 
 >[!NOTE]
-> この記事の値は、-GatewayType 'Vpn' を使用する仮想ネットワーク ゲートウェイに適用されます。 これが、これらの特定の仮想ネットワーク ゲートウェイが VPN ゲートウェイと呼ばれる理由です。 ExpressRoute ゲートウェイの値は、VPN ゲートウェイに使用するものと同じ値ではありません。
+> この記事の値は、VPN ゲートウェイ (-GatewayType Vpn を使用する仮想ネットワーク ゲートウェイ) に適用されます。 この記事では、すべてのゲートウェイの種類またはゾーン冗長ゲートウェイについては説明されていません。
 >
->-GatewayType 'ExpressRoute' に適用される値については、「[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](../expressroute/expressroute-about-virtual-network-gateways.md)」をご覧ください。
->
+>* -GatewayType 'ExpressRoute' に適用される値については、「[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](../expressroute/expressroute-about-virtual-network-gateways.md)」をご覧ください。
+>* ゾーン冗長ゲートウェイについては、[ゾーン冗長ゲートウェイについて](about-zone-redundant-vnet-gateways.md)の記事をご覧ください。
+>* 仮想 WAN については、「[Virtual WAN について](../virtual-wan/virtual-wan-about.md)」をご覧ください。 
 >
 
 ## <a name="gwtype"></a>ゲートウェイの種類

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: b9e96473a6f66dcbc675da1553deaed4ad61b249
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 1d65238115ca57a3fcc8047a27c8161aaa144ce4
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630936"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49407709"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC 拡張機能
 
@@ -130,7 +130,7 @@ Windows 用の DSC 拡張機能では、ターゲットの仮想マシンがイ�
 
 ## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の構成が必要な仮想マシンを 1 つ以上デプロイするときに最適です。 OMS Agent VM 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm)にあります。 
+Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロイできます。 テンプレートは、デプロイ後の構成が必要な仮想マシンを 1 つ以上デプロイするときに最適です。 Log Analytics エージェント VM 拡張機能を含む Resource Manager テンプレートのサンプルは、[Azure クイック スタート ギャラリー](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm)にあります。 
 
 仮想マシン拡張機能の JSON 構成は、仮想マシン リソース内に入れ子にすることも、Resource Manager JSON テンプレートのルートまたは最上位レベルに配置することもできます。 JSON 構成の配置は、リソースの名前と種類の値に影響します。 
 
@@ -139,7 +139,7 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 
 ## <a name="azure-cli-deployment"></a>Azure CLI でのデプロイ
 
-Azure CLI を使用して、OMS Agent VM 拡張機能を既存の仮想マシンにデプロイすることができます。 OMS キーと OMS ID は、実際の OMS ワークスペースのものに置き換えてください。 
+Azure CLI を使用して、Log Analytics エージェント VM 拡張機能を既存の仮想マシンにデプロイすることができます。 Log Analytics キーと Log Analytics IDを Log Analytics ワークスペースのもので置き換えます。 
 
 ```azurecli
 az vm extension set \

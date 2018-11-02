@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/25/2018
-ms.openlocfilehash: 4a84e8f7460d3a339be783be6a12353770ced1b8
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 219fe9e8f91f9b02e64b3b44ab4301f77820561f
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665825"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49648957"
 ---
 # <a name="understand-inputs-for-azure-stream-analytics"></a>Azure Stream Analytics の入力について
 
@@ -38,7 +38,7 @@ Stream Analytics ジョブへの入力の作成、編集、テストは、[Azure
 ストリーミングによるデータ入力の詳細については、「[Stream Analytics に入力としてデータをストリーム配信する](stream-analytics-define-inputs.md)」を参照してください
 
 ### <a name="reference-data-input"></a>参照データ入力
-Stream Analytics は、"*参照データ*" と呼ばれる入力もサポートします。 参照データは、完全に静的であるか、ゆっくりと変化しているかのいずれかです。 これは通常、相関関係の関連付けと参照を実行するために使用されます。 たとえば、SQL の結合を実行して静的な値を参照する場合と同様に、データ ストリーム入力のデータを参照データのデータに結合できます。 現在、Azure BLOB ストレージは参照データをサポートする唯一の入力ソースです。 参照データ ソースの BLOB のサイズは、最大で 100 MB に制限されています。
+Stream Analytics は、"*参照データ*" と呼ばれる入力もサポートします。 参照データは、完全に静的であるか、ゆっくりと変化しているかのいずれかです。 これは通常、相関関係の関連付けと参照を実行するために使用されます。 たとえば、SQL の結合を実行して静的な値を参照する場合と同様に、データ ストリーム入力のデータを参照データのデータに結合できます。 現在、Azure BLOB ストレージは参照データをサポートする唯一の入力ソースです。 参照データ ソースの BLOB には、クエリの複雑さと割り当てられたストリーミング ユニットに応じて、最大 300 MB のサイズ制限があります。
 
 参照データ入力に関する詳細については、「[Stream Analytics での参照に参照データを使用する](stream-analytics-use-reference-data.md)」を参照してください
 

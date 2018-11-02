@@ -6,14 +6,14 @@ author: cherylmc
 tags: azure-resource-manager
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 10/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: d524555330653a90f52505c22f50f4d677ab6632
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 3254f0c26e21bc7ba71fc23362f263cb126ea3b0
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387261"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50026366"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト接続の構成: Azure Portal
 
@@ -73,7 +73,7 @@ ms.locfileid: "49387261"
 [!INCLUDE [create-gateway](../../includes/vpn-gateway-add-gw-p2s-rm-portal-include.md)]
 
 >[!NOTE]
->Basic SKU では、IKEv2 と RADIUS 認証はサポートされません。
+>Basic SKU では、IKEv2 と RADIUS 認証はサポートされません。 Mac クライアントを仮想ネットワークに接続する予定がある場合は、Basic SKU を使用しないでください。
 >
 
 ## <a name="generatecert"></a>5.証明書の生成
@@ -172,7 +172,7 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 
 [ネットワーク] ダイアログ ボックスで使用するクライアント プロファイルを探し、[VpnSettings.xml](point-to-site-vpn-client-configuration-azure-cert.md#installmac) の設定を指定して、**[接続]** をクリックします。
 
-手順の詳細については、「[インストール - Mac (OS X)](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac)」を確認してください。
+手順の詳細については、[Mac (OS X) のインストール](https://docs.microsoft.com/azure/vpn-gateway/point-to-site-vpn-client-configuration-azure-cert#installmac)に関するセクションを参照してください。 接続に問題がある場合は、仮想ネットワーク ゲートウェイが Basic SKU を使用していないことを確認します。 Basic SKU は Mac クライアントではサポートされていません。
 
   ![Mac の接続](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 

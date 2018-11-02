@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 10/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 06073197254245727cfa41020f060d904a4e50f9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a63a9d22638231aa076cc4ced9030a378d0c36e4
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957565"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49429492"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>VM 用 Azure Monitor を使用してパフォーマンスをグラフ化する方法
 VM 用 Azure Monitor には、仮想マシンがどの程度効果的に実行されているかを判定するのに役立ついくつかの主要業績評価指標 (KPI) を対象とする一連のパフォーマンス グラフが含まれています。 グラフには一定期間にわたるリソース使用率が表示されるので、ボトルネックまたは異常を識別することができます。あるいは、各マシンを一覧表示するパースペクティブに切り替えて、選択したメトリックに基づくリソース使用率を表示することもできます。 パフォーマンスを扱うときに考慮すべき要素は数多くありますが、VM 用 Azure Monitor では、プロセッサ、メモリ、ネットワーク アダプター、およびディスクの視点からオペレーティング システムに重点を置いています。 パフォーマンスによって正常性の監視機能が補完されます。さらに、システム コンポーネントに障害がある可能性を示す問題を明らかにしたり、効率化のためのチューニングや最適化をサポートしたり、容量計画をサポートしたりするのにパフォーマンスは役立ちます。  
@@ -33,13 +33,15 @@ Azure Monitor のパフォーマンス機能では、ご利用のサブスクリ
 
 ![VM insights のパフォーマンス上位 N のリスト ビュー](./media/monitoring-vminsights-performance/vminsights-performance-aggview-01.png)
 
-**[Top N Charts]\(上位 N グラフ\)** タブ上では、Log Analytics ワークスペースが複数ある場合、ページの上部にある **[ワークスペース]** セレクターからソリューションに統合されたワークスペースを選択します。  次に **[グループ]** セレクターから、指定した期間でのサブスクリプション、リソース グループ、または特定のマシンを選択します。  既定では、過去 24 時間がグラフに表示されます。  **TimeRange** セレクターを使用すると、過去の時間範囲 (最大で 30 日) に対してクエリを実行して、過去のパフォーマンスがどのような経過をたどっているかを確認できます。   
+**[Top N Charts]\(上位 N グラフ\)** タブ上では、Log Analytics ワークスペースが複数ある場合、ページの上部にある **[ワークスペース]** セレクターから、ソリューションで有効になっているワークスペースを選択します。 **グループ** セレクターでは、選択したワークスペースに関連するコンピューターのサブスクリプション、リソース グループ、[コンピューター グループ](../log-analytics/log-analytics-computer-groups.md)、仮想マシン スケール セットが返されます。これらを使用して、このページや他のページのグラフに表示される結果に対し、さらにフィルターを適用することができます。 この選択が適用されるのは、パフォーマンス機能のみで、正常性やマップには引き継がれません。  
+
+既定では、過去 24 時間がグラフに表示されます。 **TimeRange** セレクターを使用すると、過去の時間範囲 (最大で 30 日) に対してクエリを実行して、過去のパフォーマンスがどのような経過をたどっているかを確認できます。   
 
 ページ上に表示される 5 つの容量使用率のグラフは次のとおりです。
 
 * CPU 使用率 % - 平均プロセッサ使用率が最も高い上位 5 つのマシンが示されます。 
 * 使用可能なメモリ - 使用可能なメモリ量の平均が最も低い上位 5 つのマシンが示されます。 
-* Logical Disk Space Used % (使用済み論理ディスク領域 %)- すべてのディスク ボリュームにわたって平均使用済みディスク領域 % が最も高い上位 5 つのマシンが示されます。 
+* Logical Disk Space Used % (使用済み論理ディスク領域 %) - すべてのディスク ボリュームにわたって平均使用済みディスク領域 % が最も高い上位 5 つのマシンが示されます。 
 * 送信バイト数の比率 - 送信バイト数の平均が最も高い上位 5 つのマシンが示されます。 
 * 受信バイト数の比率 - 送信バイト数の平均が最も高い上位 5 つのマシンが示されます。 
 
@@ -100,6 +102,13 @@ Azure Monitor のパフォーマンス機能では、ご利用のサブスクリ
 * 受信バイト数の比率 - 既定では平均受信バイト数が示されます。
 
 ![VM から直接表示した VM Insights パフォーマンスビュー](./media/monitoring-vminsights-performance/vminsights-performance-directvm-01.png)
+
+## <a name="alerting-and-alert-management"></a>アラートの生成とアラートの管理 
+Azure Monitor for VMs の構成要素として有効にされたパフォーマンス メトリックには、事前構成済みのアラート ルールが含まれていません。 Azure VM 上で検出されたパフォーマンスの問題 (CPU 使用率の上昇、使用可能なメモリの不足、ディスク I/O、ディスク領域不足など) に対応する[正常性アラート](monitoring-vminsights-health.md#alerting-and-alert-management)は存在しますが、これらのアラートが適用されるのは、同じ Log Analytics ワークスペースに接続されたすべての VM のうち、Azure Monitor for VMs が有効にされている VM に限られます。 
+
+しかし、Log Analytics ワークスペースに収集して格納する可能性があるのは、必要なパフォーマンス メトリックの一部だけです。 実際の監視戦略上、仮想マシンの容量や正常性を有効に評価するために、他のパフォーマンス メトリックを含んだ分析またはアラートが必要な場合、あるいは独自のアラート基準やロジックを柔軟に指定する必要がある場合は、Log Analytics で[それらのパフォーマンス カウンターのコレクション](../log-analytics/log-analytics-data-sources-performance-counters.md?toc=/azure/azure-monitor/toc.json)を構成し、[ログ アラート](../monitoring-and-diagnostics/alert-log.md?toc=/azure/azure-monitor/toc.json)を定義することができます。 Log Analytics では、他の種類のデータを使った複雑な分析を実行でき、また、傾向分析をサポートするために保持期間もより長くなります。これに対して、メトリックは軽量であり、ほぼリアルタイムのシナリオに対応することができます。 これらは [Azure 診断エージェント](../virtual-machines/windows/monitor.md)によって収集されて、Azure Monitor のメトリック ストアに格納されるため、アラート作成に伴う待ち時間が短縮され、コストも低くなります。
+
+こうした追加メトリックの収集やアラート ルールを構成する作業に入る前に、[Azure Monitor を使用したメトリックとログの収集](monitoring-data-collection.md?toc=/azure/azure-monitor/toc.json)について概説したページを参照して、基本的な相違とその他の考慮事項について理解を深めましょう。  
 
 ## <a name="next-steps"></a>次の手順
 正常性機能を使用する方法については、[Azure Monitor for VMs の正常性の表示](monitoring-vminsights-health.md)に関するページを参照してください。検出されたアプリケーションの依存関係を表示するには、[Azure Monitor for VMs マップの表示](monitoring-vminsights-maps.md)に関するページを参照してください。 

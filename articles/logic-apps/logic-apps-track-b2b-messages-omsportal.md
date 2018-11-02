@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 06/19/2018
-ms.openlocfilehash: 5bf5385824eb9b711a2fee547c29d24d7ef5a01d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 666c998a781f13ea2a26ccfc0b94aeead0308f5b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125770"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49405686"
 ---
 # <a name="track-b2b-communication-with-azure-log-analytics"></a>Azure Log Analytics で B2B 通信を追跡する
 
@@ -40,9 +40,9 @@ ms.locfileid: "43125770"
 >  
 > Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。
 
-## <a name="add-the-logic-apps-b2b-solution-to-log-analytics"></a>Log Analytics への Logic Apps B2B ソリューションの追加
+## <a name="add-the-logic-apps-b2b-solution-to-azure"></a>Azure への Logic Apps B2B ソリューションの追加
 
-Log Analytics でロジック アプリの B2B メッセージを追跡するには、OMS ポータルに **Logic Apps B2B** ソリューションを追加する必要があります。 [Log Analytics へのソリューションの追加](../log-analytics/log-analytics-quick-create-workspace.md)に関する詳細を参照してください。
+Log Analytics でロジック アプリの B2B メッセージを追跡するには、Log Analytics に **Logic Apps B2B** ソリューションを追加する必要があります。 [Log Analytics へのソリューションの追加](../log-analytics/log-analytics-quick-create-workspace.md)に関する詳細を参照してください。
 
 1. [Azure Portal](https://portal.azure.com) で、**[すべてのサービス]** を選択します。 次に示すように、"ログ分析" を検索し、**[Log Analytics]** を選択します。
 
@@ -52,7 +52,7 @@ Log Analytics でロジック アプリの B2B メッセージを追跡するに
 
    ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
 
-3. **[管理]** で、**[概要]** を選択します。
+3. **[管理]** の下で **[ワークスペースの概要]** を選択します。
 
    ![Log Analytics ポータルを選択する](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
 

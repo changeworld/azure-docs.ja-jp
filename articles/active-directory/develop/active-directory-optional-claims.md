@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/05/2018
 ms.author: celested
-ms.reviewer: hirsin
+ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: c42e8978a94730669f3c3f879d1d26c4426bd9da
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 784213531c061912dded8e7776e79bea5adb217b
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49079139"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466054"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>方法: Azure AD アプリに省略可能な要求を提供する (パブリック プレビュー)
 
@@ -215,7 +215,7 @@ SAML トークン内では、このような要求は `http://schemas.microsoft.
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 1. 認証が完了したら、ページの右上隅から Azure AD テナントを選択します。
-1. 左側のナビゲーション パネルで **Azure AD 拡張機能**を選択して、**[アプリの登録]** をクリックします。
+1. 左側から **[アプリの登録]** を選択します。
 1. 省略可能な要求を構成するアプリケーションを一覧から探し、クリックします。
 1. アプリケーションのページで **[マニフェスト]** をクリックして、インライン マニフェスト エディターを開きます。 
 1. このエディターを使用して、マニフェストを直接編集できます。 マニフェストは、[アプリケーション エンティティ](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#application-entity)のスキーマに従っており、保存されるとマニフェストの書式が自動的に構成されます。 新しい要素が `OptionalClaims` プロパティに追加されます。
