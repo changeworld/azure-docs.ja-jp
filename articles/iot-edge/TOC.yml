@@ -16,33 +16,33 @@ items:
   expanded: true
 - name: チュートリアル
   items:
-  - name: エッジでの分析情報の検索
-    items:
-    - name: Azure Functions を使用したデータのフィルター処理
-      href: tutorial-deploy-function.md
-    - name: ASA を使用した平均値の検索
-      href: tutorial-deploy-stream-analytics.md
-    - name: Azure ML を使用したデータへのスコア付け
-      href: tutorial-deploy-machine-learning.md
-    - name: カスタム コードを使用したデータのフィルター処理
-      items:
-      - name: C#
-        href: tutorial-csharp-module.md
-      - name: Python
-        href: tutorial-python-module.md
-      - name: Node.js
-        href: tutorial-node-module.md
-      - name: Java
-        href: tutorial-java-module.md
-      - name: C
-        href: tutorial-c-module.md
+  - name: Azure Functions を使用したデータのフィルター処理
+    href: tutorial-deploy-function.md
+  - name: ASA を使用した平均値の検索
+    href: tutorial-deploy-stream-analytics.md
+  - name: Azure ML を使用したデータへのスコア付け
+    href: tutorial-deploy-machine-learning.md
+  - name: Custom Vision を使用したイメージの分類
+    href: tutorial-deploy-custom-vision.md
   - name: SQL を使用したローカルへのデータの格納
     href: tutorial-store-data-sql-server.md
+  - name: カスタム コード モジュールの開発
+    items:
+    - name: C#
+      href: tutorial-csharp-module.md
+    - name: Python
+      href: tutorial-python-module.md
+    - name: Node.js
+      href: tutorial-node-module.md
+    - name: Java
+      href: tutorial-java-module.md
+    - name: C
+      href: tutorial-c-module.md
 - name: 概念
   items:
   - name: IoT Edge ランタイム
     href: iot-edge-runtime.md
-  - name: IoT Edge の証明書
+  - name: IoT Edge 証明書
     href: iot-edge-certs.md
   - name: IoT Edge のモジュール
     items:
@@ -136,10 +136,10 @@ items:
       href: how-to-deploy-monitor-cli.md
   - name: ゲートウェイとしての Edge デバイスの使用
     items:
-    - name: 透過的なゲートウェイ (Linux)
-      href: how-to-create-transparent-gateway-linux.md
-    - name: 透過的なゲートウェイ (Windows)
-      href: how-to-create-transparent-gateway-windows.md
+    - name: 透過的なゲートウェイの構成
+      href: how-to-create-transparent-gateway.md
+    - name: ダウンストリームのデバイスを接続する
+      href: how-to-connect-downstream-device.md
     - name: Modbus プロトコル ゲートウェイ
       href: deploy-modbus-gateway.md
   - name: プロキシ サポートの構成
@@ -172,7 +172,7 @@ items:
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
     - name: Time Series Insights
       href: /azure/time-series-insights
-  - name: Microsoft Edge
+  - name: Edge
     items:
     - name: IoT Edge
       href: /azure/iot-edge
@@ -220,9 +220,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: fa5d551c95493361cac9d661938b50fb9ad2fed6
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 625545123d9cbd4c587667bb7bf4e1eda8984a6d
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48816312"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913488"

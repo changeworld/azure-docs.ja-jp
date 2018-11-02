@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 9/28/2018
 ms.author: rithorn
-ms.openlocfilehash: 6b369c8209e62ff3c98b3fdf78378b403b0a0d2d
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: b5a99ff8cfc0a915b70c6d90b8aa04d020177d54
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017655"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748172"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループでリソースを整理する
 
@@ -73,7 +73,7 @@ ms.locfileid: "48017655"
 
 ## <a name="trouble-seeing-all-subscriptions"></a>サブスクリプションの表示の問題
 
-(2018 年 6 月 25 日)より前のプレビューの管理グループを使用して開始された数個のディレクトリでは、一部のサブスクリプションが階層に適用されないという問題が発生していました。  これは、階層にサブスクリプションを適用するプロセスが、ディレクトリのルート管理グループでロールまたはポリシーの割り当てが行われた後に実装されることが原因でした。
+(2018 年 6 月 25 日)より前のプレビューの管理グループの使用を早期に開始した数個のディレクトリでは、一部のサブスクリプションが階層に適用されないという問題が発生していました。  これは、階層にサブスクリプションを適用するプロセスが、ディレクトリのルート管理グループでロールまたはポリシーの割り当てが行われた後に実装されることが原因でした。
 
 ### <a name="how-to-resolve-the-issue"></a>この問題を解決する方法
 

@@ -743,6 +743,8 @@ items:
           href: ../monitoring-and-diagnostics/alert-log.md?toc=/azure/azure-monitor/toc.json
         - name: ログ アラートの webhook アクション
           href: ../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md?toc=/azure/azure-monitor/toc.json
+        - name: ログ アラートのトラブルシューティング
+          href: ../monitoring-and-diagnostics/alert-log-troubleshoot.md?toc=/azure/azure-monitor/toc.json
       - name: アクティビティ ログ アラートの使用
         items:
         - name: アクティビティ ログ イベントでアラートを構成する
@@ -996,9 +998,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: コード サンプル
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 251d8bd7cc64c485b150b57165164d3fc96c04fc
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f471152d1cc1ca1385c84a6b7e995a29cc84ae68
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415445"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50747832"
