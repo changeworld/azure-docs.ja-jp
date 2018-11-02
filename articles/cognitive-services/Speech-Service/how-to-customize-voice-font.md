@@ -1,33 +1,33 @@
 ---
-title: Custom Voice とは - Azure Cognitive Services
-description: この記事では、Microsoft Text to Speech での音声のカスタマイズの概要を説明します。この機能を使うと、認識可能な独自のブランド音声を作成できます。
+title: カスタム音声フォントを作成する方法
+titlesuffix: Azure Cognitive Services
+description: この記事では、Text to Speech での音声のカスタマイズの概要を説明します。この機能を使うと、認識可能な独自のブランド音声を作成できます。
 services: cognitive-services
-author: noellelacharite
+author: PanosPeriorellis
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: speech-service
+ms.topic: conceptual
 ms.date: 05/07/2018
-ms.author: nolach
-ms.openlocfilehash: 5e99e7e376a020f845816fb38e31dd727d87a4cb
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.author: panosper
+ms.openlocfilehash: bf06042d3b820e61d1f5b316a8b7b26d1a366388
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423427"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49467720"
 ---
 # <a name="creating-custom-voice-fonts"></a>カスタム音声フォントの作成
 
-Microsoft Text-to-Speech (TTS) の音声カスタマイズ機能を使うと、"*音声フォント*" つまり認識可能な独自のブランドの音声を作成できます。 
+Text to Speech (TTS) の音声カスタマイズ機能を使うと、"*音声フォント*" つまり認識可能な独自のブランドの音声を作成できます。 
 
 音声フォントを作成するには、スタジオで録音し、関連するスクリプトをトレーニング データとしてアップロードします。 サービスは、録音に合わせて調整された一意の音声モデルを作成します。 この音声フォントを使用して、音声を合成できます。 
 
 概念実証のために少量のデータで始めることができます。 ただし、データが多いほど、より自然で本格的な音声になります。
 
-
 ## <a name="prerequisites"></a>前提条件
 
-現在、**Text to Speech** 音声カスタマイズ機能は、プライベート プレビュー段階にあります。 アクセスするには[申請フォームに入力してください](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u)。
-
-Azure アカウントと音声サービスへのサブスクリプションも必要です。 まだない場合は、[作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)してください。 次のように、サブスクリプションを Custom Voice ポータルに接続します。
+Azure アカウントと音声サービスへのサブスクリプションが必要です。 まだない場合は、[作成](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)してください。 次のように、サブスクリプションを Custom Voice ポータルに接続します。
 
 1. アクセスの申請に使用したのと同じ Microsoft アカウントを使って、[Custom Voice ポータル](https://customvoice.ai)にサインインします。
 
@@ -37,7 +37,6 @@ Azure アカウントと音声サービスへのサブスクリプションも�
 
 3. [Subscriptions]\(サブスクリプション\) ページで **[Connect existing subscription]\(既存のサブスクリプションに接続する\)** を選択します。 Speech Services はさまざまなリージョンをサポートしていることに注意してください。 サブスクリプション キーが作成されたリージョンを調べて、キーを正しいサブポータルに接続していることを確認してください。  
 
-     
 4. 次の例に示すように、テーブルにサブスクリプション キーを貼り付けます。 各サブスクリプションには 2 つのキーがあり、それらのいずれかを使用できます。
 
      ![サブスクリプションを追加する](media/custom-voice/add-subscription.png)
@@ -56,7 +55,7 @@ Azure アカウントと音声サービスへのサブスクリプションも�
 
 ### <a name="audio-files"></a>オーディオ ファイル
 
-各オーディオ ファイルには、1 つの発話が含まれる必要があります (1 つの文、対話システムの 1 つのターンなど)。 すべてのファイルは、同じ言語である必要があります。 (複数言語のカスタム音声はサポートされていません。) それそれのオーディオ ファイルに、ファイル名拡張子が `.wav` の一意の数値ファイル名が付いている必要もあります。
+各オーディオ ファイルには、1 つの発話が含まれる必要があります (1 つの文、対話システムの 1 つのターンなど)。 すべてのファイルは、同じ言語である必要があります。 (複数言語のカスタム音声はサポートされません。)また、オーディオ ファイルにはファイル名拡張子が `.wav` の一意の数値ファイル名が付いている必要があります。
 
 オーディオ ファイルは次のように準備する必要があります。 他の形式はサポートされておらず、拒否されます。
 
@@ -128,7 +127,7 @@ Azure アカウントと音声サービスへのサブスクリプションも�
 
 次の表に、インポートされたデータセットの処理状態を示します。 
 
-| 状態 | 意味
+| 州 | 意味
 | ----- | -------
 | `NotStarted` | データセットは受信され、処理のためにキューに入れられています。
 | `Running` | データセットは検証中です。
@@ -174,7 +173,7 @@ Azure アカウントと音声サービスへのサブスクリプションも�
 
 表示される状態は、次に示すように、データセットから音声フォントへの変換プロセスを反映しています。
 
-| 状態 | 意味
+| 州 | 意味
 | ----- | -------
 | `NotStarted` | 音声フォント作成要求は、処理のためにキューに置かれました。
 | `Running` | 音声フォントを作成中です。

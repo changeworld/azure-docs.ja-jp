@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 10/20/2018
 ms.author: celested
-ms.reviewer: jeedes
+ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5633dfbf59396e79226b196c2b699981409092ab
-ms.sourcegitcommit: 7824e973908fa2edd37d666026dd7c03dc0bafd0
+ms.openlocfilehash: 4e80f5cb85a53281da9ec50a02d089f46e97dfde
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "48902027"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49466718"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>方法: エンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
 
@@ -49,21 +49,38 @@ SAML トークンで発行された要求を編集する必要がある理由は
 ![ユーザー属性の編集][3]
 
 ## <a name="editing-the-nameidentifier-claim"></a>NameIdentifier 要求の編集
-異なるユーザー名を使ってデプロイされたアプリケーションの問題を解決するには、**[ユーザー属性]** セクションの **[ユーザー識別子]** ドロップダウンをクリックします。 この操作によって、複数のオプションがある次のダイアログが表示されます。
+
+異なるユーザー名を使ってデプロイされたアプリケーションの問題を解決するには、**[ユーザー属性]** セクションの **[ユーザー識別子]** ドロップダウンを選択します。 この操作によって、複数のオプションがある次のダイアログが表示されます。
 
 ![ユーザー属性の編集][4]
 
-ドロップダウンで **[user.mail]** を選んで、NameIdentifier 要求をディレクトリ内のユーザーのメール アドレスに設定します。 オンプレミスの Azure AD から同期されているユーザーの SAM アカウント名に設定する場合は、**[user.onpremisessamaccountname]** を選びます。
+### <a name="attributes"></a>属性
 
-特殊な **ExtractMailPrefix()** 関数を使って、メール アドレス、SAM アカウント名、またはユーザー プリンシパル名から、ドメイン サフィックスを削除することもできます。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。
+`NameIdentifier` (または NameID) 要求の必要なソースを選択します。 次のオプションから選択できます。
 
-![ユーザー属性の編集][5]
+| Name | 説明 |
+|------|-------------|
+| 電子メール | ユーザーのメール アドレス |
+| userprincipalName | ユーザーのユーザー プリンシパル名 (UPN) |
+| onpremisessamaccount | オンプレミスの Azure AD から同期された SAM アカウント名 |
+| objectID | Azure AD でのユーザーの objectID |
+| EmployeeID | ユーザーの EmployeeID |
+| ディレクトリ拡張機能 | [Azure AD Connect 同期を使用してオンプレミスの Active Directory から同期された](../hybrid/how-to-connect-sync-feature-directory-extensions.md)ディレクトリ拡張機能 |
+| 拡張属性 1 ～ 15 | Azure AD のスキーマを拡張するために使用されるオンプレミスの 拡張機能属性 |
 
-ユーザー識別子の値で検証済みのドメインに参加するための **join()** 関数も追加されています。 **[ユーザー識別子]** で join() 関数を選ぶときは、最初にメール アドレスやユーザー プリンシパル名などのユーザー識別子を選び、2 番目のドロップダウン リストで検証済みのドメインを選びます。 検証済みドメインでメール アドレスを選ぶと、Azure AD は最初の値からユーザー名を抽出し (joe_smith@contoso.com から joe_smith)、それに contoso.onmicrosoft.com を追加します。 次の例を参照してください。
+### <a name="transformations"></a>変換
 
-![ユーザー属性の編集][6]
+特別な要求変換関数を使用することもできます。
+
+| 関数 | 説明 |
+|----------|-------------|
+| **ExtractMailPrefix()** | メール アドレス、SAM アカウント名、またはユーザー プリンシパル名からドメイン サフィックスを除去します。 これにより、渡されたユーザー名の最初の部分のみが抽出されます (例: joe_smith@contoso.com ではなく "joe_smith" のみ)。 |
+| **join()** | 属性を検証済みドメインと結合します。 選択したユーザー ID 値にドメインが含まれる場合、ユーザー名が抽出されて、選択された検証済みドメインが追加されます。 たとえば、ユーザー ID 値としてメール アドレス (joe_smith@contoso.com) を選択し、検証済みドメインとして contoso.onmicrosoft.com を選択した場合、結果は joe_smith@contoso.onmicrosoft.com になります。 |
+| **ToLower()** | 選択した属性の文字を小文字に変換します。 |
+| **ToUpper()** | 選択した属性の文字を大文字に変換します。 |
 
 ## <a name="adding-claims"></a>要求の追加
+
 要求を追加する場合は、属性の名前を指定できます (SAML 仕様とは異なり、URI パターンに厳密に従う必要はありません)。 ユーザー属性には、ディレクトリに格納されている値を設定します。
 
 ![ユーザー属性の追加][7]
@@ -132,7 +149,7 @@ SAML には制限付きの要求がいくつかあります。 これらの要�
 ## <a name="next-steps"></a>次の手順
 
 * [Azure AD のアプリケーション管理](../manage-apps/what-is-application-management.md)
-* [Azure AD アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンの構成](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+* [Azure AD アプリケーション ギャラリーに含まれていないアプリケーションへのシングル サインオンを構成する](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
 * [Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](howto-v1-debug-saml-sso-issues.md)
 
 <!--Image references-->

@@ -3,16 +3,17 @@ title: Contoso での Azure への移行についてオンプレミスのワー�
 description: Contoso が Azure への移行に向けて Azure Migrate と Data Migration Assistant を使用してオンプレミスのマシンを評価する方法を説明します。
 services: site-recovery
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 3969286b4a748a9dde8c126f91a5b19ee14a7c0d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a0aa63291a7fb3f069663d40687f81c3a3265712
+ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303316"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49945945"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso での移行: Azure への移行の対象となるオンプレミスのワークロードを評価する
 
@@ -35,6 +36,7 @@ ms.locfileid: "44303316"
 [記事 11: Azure DevOps サービスでの Team Foundation Server をリファクタリングします](contoso-migration-tfs-vsts.md) | Contoso がそのオンプレミスの Team Foundation Server の展開を Azure の Azure DevOps Services に移行します。 | 使用可能
 [記事 12: Azure コンテナーと Azure SQL Database でのアプリの再構築](contoso-migration-rearchitect-container-sql.md) | Contoso が SmartHotel アプリを Azure に移行します。 その後、アプリの Web 階層を Azure Service Fabric 内で動作する Windows コンテナーとして再構築し、さらに、Azure SQL Database を使用してデータベースを再構築します。 | 使用可能
 [記事 13: Azure でのアプリのリビルド](contoso-migration-rebuild.md) | Contoso が Azure のさまざまな機能とサービス (Azure App Service、Azure Kubernetes Service (AKS)、Azure Functions、Azure Cognitive Services、Azure Cosmos DB など) を使用して SmartHotel アプリをリビルドします。 | 使用可能
+[記事 14: Azure への移行のスケーリング](contoso-migration-scale.md) | 移行の組み合わせを試した後、Contoso は Azure への完全移行に向けてスケーリングを準備します。 | 使用可能
 
 
 ## <a name="overview"></a>概要
@@ -230,7 +232,7 @@ Contoso の評価では、依存関係のマッピングを使用します。 �
 
 ### <a name="set-statistics-settings"></a>統計情報設定を行う
 
-Contoso は、デプロイを開始する前に vCenter Server の統計情報設定をレベル 3 に設定する必要があります。 
+Contoso は、デプロイを開始する前に vCenter Server の統計情報設定をレベル 3 に設定する必要があります。
 
 > [!NOTE]
 > - レベルを設定した後、少なくとも 1 日待ってから評価を実行する必要があります。 そうしないと、評価が想定どおりに機能しない可能性があります。
@@ -256,7 +258,7 @@ Contoso が VM を探索するには、Azure Migrate プロジェクトを作成
 ### <a name="create-a-project"></a>プロジェクトの作成
 
 1. [Azure Portal](https://portal.azure.com) で、**Azure Migrate** を検索します。 次に、プロジェクトを作成します。
-2. プロジェクト名 (**ContosoMigration**) と Azure サブスクリプションを指定します。 新しい Azure リソース グループ (**ContosoFailoverRG**) を作成します。 
+2. プロジェクト名 (**ContosoMigration**) と Azure サブスクリプションを指定します。 新しい Azure リソース グループ (**ContosoFailoverRG**) を作成します。
     > [!NOTE]
     > - Azure Migrate プロジェクトを作成できるのは、米国中西部または米国東部リージョンに限られます。
     > - 移行は、任意のターゲットの場所で計画できます。
@@ -281,17 +283,25 @@ Contoso は、VM をデプロイする前に OVA ファイルが安全である�
 2. 次のコマンドを実行して、OVA ファイルのハッシュを生成します。
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    
-    **例** 
-    
-    ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3. 生成されたハッシュは、次の設定と一致する必要があります (バージョン 1.0.9.14)。
 
+    **例**
+
+    ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+3. 生成されたハッシュは、次の設定と一致する必要があります (バージョン 1.0.9.15)。
+
+<<<<<<< HEAD
     **アルゴリズム** | **ハッシュ値**
     --- | ---
-    MD5 | 6d8446c0eeba3de3ecc9bc3713f9c8bd
-    SHA1 | e9f5bdfdd1a746c11910ed917511b5d91b9f939f
-    SHA256 | 7f7636d0959379502dfbda19b8e3f47f3a4744ee9453fc9ce548e6682a66f13c
+    MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
+    SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
+    SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+=======
+**アルゴリズム** | **ハッシュ値**
+--- | ---
+MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
+SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
+SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+>>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37
 
 ### <a name="create-the-collector-appliance"></a>コレクター アプライアンスを作成する
 
@@ -409,8 +419,8 @@ Contoso は VM ごとにインストールを実行します。
 3. MMA をインストールします。
     - コマンドでワークスペース ID とキーを入力します。
     - コマンドは 64 ビット用です。
-    - ワークスペース ID と主キーは、Microsoft Operations Management Suite (OMS) ポータルで確認できます。 **[設定]** を選択し、次に **[接続されたソース]** タブを選択します。
-    - OMS エージェントをダウンロードしてチェックサムを検証し、エージェントをインストールして利用できる状態にするためには、以下のコマンドを実行します。
+    - ワークスペース ID とプライマリ キーは、Azure portal の Log Analytics ワークスペースにあります。 **[設定]** を選択し、次に **[接続されたソース]** タブを選択します。
+    - Log Analytics エージェントをダウンロードしてチェックサムを検証し、エージェントをインストールして利用できる状態にするためには、以下のコマンドを実行します。
 
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w 6b7fcaff-7efb-4356-ae06-516cacf5e25d -s k7gAMAw5Bk8pFVUTZKmk2lG4eUciswzWfYLDTxGcD8pcyc4oT8c6ZRgsMy3MmsQSHuSOcmBUsCjoRiG2x9A8Mg==

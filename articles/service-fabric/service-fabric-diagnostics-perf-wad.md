@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/26/2018
 ms.author: srrengar
-ms.openlocfilehash: 68e0192756db539767dd808d0f0d408e77c2ae1b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: bc86ef5a32e08bc00b5a2fa53dccb8d6313f167b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405652"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230987"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>Windows Azure 診断拡張機能を使用したパフォーマンスの監視
 
@@ -115,7 +115,7 @@ WAD を介してパフォーマンス カウンターを収集するには、ク
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. アップグレードのロールアウトが完了したら (15 ～ 45 分かかります)、WAD はパフォーマンス カウンターを収集し、クラスターに関連付けられているストレージ アカウント内の WADPerformanceCountersTable という名前のテーブルにそれらを送信します。 [Resource Manager テンプレートに AI シンクを追加する](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-ai-sink-to-the-resource-manager-template)ことにより、Application Insights のパフォーマンス カウンターを確認します。
+5. アップグレードのロールアウトが完了したら (15 ～ 45 分かかります)、WAD はパフォーマンス カウンターを収集し、クラスターに関連付けられているストレージ アカウント内の WADPerformanceCountersTable という名前のテーブルにそれらを送信します。 [Resource Manager テンプレートに AI シンクを追加する](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template)ことにより、Application Insights のパフォーマンス カウンターを確認します。
 
 ## <a name="next-steps"></a>次の手順
 * クラスターのその他のパフォーマンス カウンターを収集します。 収集が必要なカウンターの一覧については、「[パフォーマンス メトリック](service-fabric-diagnostics-event-generation-perf.md)」を参照してください。

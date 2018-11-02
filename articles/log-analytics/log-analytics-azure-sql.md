@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
-ms.component: na
-ms.openlocfilehash: b7a7e2787128c74cd7d016c01b751d15628fb4b2
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.component: ''
+ms.openlocfilehash: 3c80007a8188fb239a13aaa0ccc9ef2237a2d8d1
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181993"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025671"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
 ![Azure SQL Analytics のシンボル](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Azure SQL Analytics は、複数のサブスクリプションにわたって大規模に Azure SQL データベース、エラスティック プール、マネージド インスタンスのパフォーマンスを監視するためのクラウド監視ソリューションです。 これを使用すると、パフォーマンスのトラブルシューティングのために、組み込みのインテリジェンスを使用して Azure SQL Database の重要なパフォーマンス メトリックを収集し、視覚化できます。
+Azure SQL Analytics は、大規模かつ複数のサブスクリプションにまたがる Azure SQL データベースやエラスティック プール、マネージド インスタンスのパフォーマンスを､1 つの窓から監視するためのクラウド監視ソリューションです。 これを使用すると、パフォーマンスのトラブルシューティングのために、組み込みのインテリジェンスを使用して Azure SQL Database の重要なパフォーマンス メトリックを収集し、視覚化できます。
 
 このソリューションを使用して収集できるメトリックを使用して、独自の監視ルールおよびアラートを作成できます。 このソリューションは、アプリケーション スタックの各層の問題を特定するのに役立ちます。 Azure 診断メトリックと Log Analytics ビューを使用して、すべての Azure SQL データベース、エラスティック プール、マネージド インスタンスのデータベースに関するデータを、単一の Log Analytics ワークスペースに表示します。 Log Analytics では、収集、関連付けのほか、構造化データおよび非構造化データの視覚化ができます。
 
@@ -66,23 +66,11 @@ Azure SQL Analytics ソリューションを Azure ダッシュボードに追�
 
 ### <a name="configure-azure-sql-databases-elastic-pools-and-managed-instances-to-stream-diagnostics-telemetry"></a>診断テレメトリをストリーム配信するための Azure SQL Database、エラスティック プール、および Managed Instance の構成
 
-ワークスペースに Azure SQL Analytics ソリューションを作成した後に、Azure SQL Database、Managed Instance データベース、およびエラスティック プールのパフォーマンスを監視するには、診断テレメトリをソリューションにストリーム配信するように、監視するこれらのリソース**それぞれを構成**する必要があります。
+ワークスペースに Azure SQL Analytics ソリューションを作成した後に、Azure SQL データベース､マネージド インスタンス内のデータベース、およびエラスティック プールのパフォーマンスを監視するには、監視対象にするそれらリソースが診断テレメトリをソリューションにストリーム配信するよう､**それぞれ構成**する必要があります。 このためには､次のページの詳細手順に従ってください。
 
 - Azure SQL Database、Managed Instance データベース、およびエラスティック プールの Azure 診断を有効にして、[診断テレメトリを Azure SQL Analytics にストリーム配信](../sql-database/sql-database-metrics-diag-logging.md)します。
 
-### <a name="to-configure-multiple-azure-subscriptions"></a>複数の Azure サブスクリプションの構成方法
- 
-複数のサブスクリプションをサポートするためには、「[Enable Azure resource metrics logging using PowerShell (PowerShell を使用して Azure リソース メトリックのログ記録を有効にする)](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/)」の PowerShell スクリプトを使用します。 スクリプトを実行するときにパラメーターとしてワークスペース リソース ID を入力すると、1 つの Azure サブスクリプション内のリソースから別の Azure サブスクリプションのワークスペースに診断データを送信できます。
-
-**例**
-
-```
-PS C:\> $WSID = "/subscriptions/<subID>/resourcegroups/oms/providers/microsoft.operationalinsights/workspaces/omsws"
-```
-
-```
-PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
-```
+上記手順ではまた､1 つの Azure SQL Analytics ワークスペースから複数の Azure サブスクリプションを 1 つの窓で監視するためのサポート機能を有効にする手順も説明しています｡ 
 
 ## <a name="using-the-solution"></a>ソリューションの使用
 
@@ -159,7 +147,48 @@ Azure SQL Database [Intelligent Insights](../sql-database/sql-database-intellige
 
 ![Azure SQL Analytics のクエリ](./media/log-analytics-azure-sql/azure-sql-sol-queries.png)
 
-### <a name="analyze-data-and-create-alerts"></a>データの分析とアラートの作成
+## <a name="permissions"></a>アクセス許可
+
+Azure SQL Analytics を使用するには､少なくとも Azure で閲覧者ロールが付与されている必要があります｡ ただし､このロールはクエリのテキストを表示したり､自動チューニング アクションを実行したりすることを許可するものではありません｡ Azure には､このソリューションを最大限活用するためのもっと自由なロールとして､所有者、共同作成者、SQL DB 共同作成者、または SQL DB 共同作成者､SQL Server 共同作成者があります｡ ポータルから､Azure SQL Analytics を使用するために必要な許可だけ与えて､他のリソースへの管理アクセス権を付与しないカスタム ロールを作成することもできます｡
+
+### <a name="creating-a-custom-role-in-portal"></a>ポータルからのカスタム ロールの作成
+
+組織によっては､Azure で厳格な許可制御を実施しています｡Azure portal には､｢SQL Analytics Monitoring Operator｣という次の PowerShell スクリプトがあります｡この､スクリプトを利用して､Azure SQL Analytics を最大限活用するために最低限必要な読み取りおよび書き込み許可を持つカスタム ロールを作成することできます｡
+
+次のスクリプトの “{SubscriptionId}" の部分をご自分の Azure サブスクリプション ID に置き換え､スクリプトを実行して､所有者または共同作成者として Azure にログインしてください｡
+
+   ```powershell
+    Connect-AzureRmAccount
+    Select-AzureRmSubscription {SubscriptionId}
+    $role = Get-AzureRmRoleDefinition -Name Reader
+    $role.Name = "SQL Analytics Monitoring Operator"
+    $role.Description = "Lets you monitor database performance with Azure SQL Analytics as a reader. Does not allow change of resources."
+    $role.IsCustom = $true
+    $role.Actions.Add("Microsoft.SQL/servers/databases/read");
+    $role.Actions.Add("Microsoft.SQL/servers/databases/topQueries/queryText/*");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/read");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/write");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/recommendedActions/read");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/advisors/recommendedActions/write");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/automaticTuning/read");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/automaticTuning/write");
+    $role.Actions.Add("Microsoft.Sql/servers/databases/*");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/read");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/write");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/recommendedActions/read");
+    $role.Actions.Add("Microsoft.Sql/servers/advisors/recommendedActions/write");
+    $role.Actions.Add("Microsoft.Resources/deployments/write");
+    $role.AssignableScopes = "/subscriptions/{SubscriptionId}"
+    New-AzureRmRoleDefinition $role
+   ```
+
+新しいロールが作成されると､Azure SQL Analytics を使用する特別な許可を付与する必要があるユーザーそれぞれにそのロールを割り当てることができます｡
+
+## <a name="analyze-data-and-create-alerts"></a>データの分析とアラートの作成
+
+Azure SQL Analytics のデータ分析のカスタム クエリやカスタム レポート機能は [Log Analytics 言語](./query-language/get-started-queries.md)に依拠しています｡ [利用可能なメトリックおよびログ](../sql-database/sql-database-metrics-diag-logging.md#metrics-and-logs-available)でのカスタム クエリでは､データベース リソースから収集され､利用可能になっているデータの説明を検索してください｡
+
+ソリューションの自動アラート機能は､条件が満たされたときにアラートをトリガーする Log Analytics クエリに依拠しています｡ ソリューションでアラートを設定できる Log Analytics クエリに関する､次のいくつかの例を検索してください｡
 
 ### <a name="creating-alerts-for-azure-sql-database"></a>Azure SQL Database のアラートの作成
 
@@ -251,8 +280,12 @@ AzureDiagnostics
 ```
 
 > [!NOTE]
-> - このアラートを設定する際の事前要件は、監視対象の Managed Instance で、ソリューションへの ResourceUsageStats ログのストリーミングが有効になっていることです。
+> - このアラートを設定する際の事前要件は、監視対象の Managed Instance で、ソリューションに対する ResourceUsageStats ログのストリーム配信が有効になっていることです。
 > - このクエリでは、クエリの結果が存在する (結果が 0 より多い) ときにアラートが発生するようアラート ルールを設定する必要があります。それにより、条件が Managed Instance 上に存在することが示されます。 出力は、Managed Instance でのストレージの消費の割合です。
+
+### <a name="pricing"></a>価格
+
+ソリューションは無料で使用できますが､毎月割り当てられる無料のデータ取り込み単位数を超えた診断テレメトリの使用量が適用されます｡[Log Analytics の価格](https://azure.microsoft.com/en-us/pricing/details/monitor)を参照してください｡ 提供される無料データ取り込み単位数では､毎月いくつかのデータを無料で監視することができます｡ アイドル状態のときに比べて､データベースがアクティブで､ワークロードが重いほど取り込まれるデータは多くなることに注意してください｡ データ取り込み使用量は､Azure SQL Analytics のナビゲーション メニューで OMS Workspace を選択し､Usage and Estimated Costs を選択することで簡単に監視することができます｡
 
 ## <a name="next-steps"></a>次の手順
 

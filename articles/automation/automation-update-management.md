@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 10/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 67a987d9b491ba6813e900c293529ed677c45757
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 6d2076a91bc7e7c0e2ca9d2fe6899cddec2f8d0b
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167683"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50024496"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -69,7 +69,7 @@ Linux コンピューターでは、コンプライアンス スキャンは既�
 |オペレーティング システム  |メモ  |
 |---------|---------|
 |Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします。         |
-|Windows Server 2008 R2 SP1 以降     |.NET Framework 4.5 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です。 ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします   ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2008 R2 SP1 以降     |.NET Framework 4.5.1 以降が必要です。 ([.NET Framework のダウンロード](/dotnet/framework/install/guide-for-developers))<br/> Windows PowerShell 4.0 以降が必要です。 ([WMF 4.0 のダウンロード](https://www.microsoft.com/download/details.aspx?id=40855))。<br/> より高い信頼性を確保するには Windows PowerShell 5.1 を使用することをお勧めします   ([WMF 5.1 のダウンロード](https://www.microsoft.com/download/details.aspx?id=54616))        |
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。 分類に基づく修正プログラムでは、CentOS に既定では設定されていない、セキュリティ データを返すための "yum" が必須です。         |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
@@ -264,7 +264,34 @@ sudo yum -q --security check-update
 
 CentOS 上でネイティブ分類データを使用できるようにするためのサポートされている方法はありません。 現時点では、独自の方法で分類データを使用するお客様には、できる範囲内のサポートのみを提供しています。
 
-## <a name="ports"></a>ポート
+## <a name="firstparty-predownload"></a>ファースト パーティの修正プログラム適用と事前ダウンロード
+
+Update Management は、Windows の更新プログラムのダウンロードとインストールに Windows Update を使用しています。 そのため、Windows Update で使用される多くの設定を尊重しています。 Windows 以外の更新プログラムを有効にする設定を使用している場合、Update Management では、それらの更新プログラムも管理されます。 更新プログラムの展開が行われる前の更新プログラムのダウンロードを有効にすると、更新プログラムの展開が速くなり、メンテナンス期間を超過する可能性が低くなります。
+
+### <a name="pre-download-updates"></a>更新プログラムの事前ダウンロード
+
+グループ ポリシーで更新プログラムを自動的にダウンロードするように構成するには、[[自動更新を構成する]](/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates#BKMK_comp5) 設定を **[3]** に設定します。 これで、必要な更新プログラムはバックグラウンドでダウンロードされますが、インストールされません。 そのため、Update Management のスケジュールを管理しながら、更新プログラムの管理のメンテナンス期間以外に更新プログラムをダウンロードできます。 この方法で Update Management の "**メンテナンス期間を超過しました**" エラーを防ぐことができます。
+
+この設定は PowerShell で行うこともできます。更新プログラムを自動ダウンロードするシステム上で、次の PowerShell を実行してください。
+
+```powershell
+$WUSettings = (New-Object -com "Microsoft.Update.AutoUpdate").Settings
+$WUSettings.NotificationLevel = 3
+$WUSettings.Save()
+```
+
+### <a name="enable-updates-for-other-microsoft-products"></a>他の Microsoft 製品の更新プログラムを有効にする
+
+既定では、Windows Update は Windows の更新プログラムのみを提供します。 **[Windows の更新時に他の Microsoft 製品の更新プログラムも入手します]** をオンにすると、SQL Server や他のファースト パーティ ソフトウェアのセキュリティ修正プログラムなど、他の製品の更新プログラムも提供されます。 このオプションをグループ ポリシーで構成することはできません。 他のファースト パーティの修正プログラムを有効にするシステム上で次の PowerShell を実行すると、Update Management はその設定に従います。
+
+```powershell
+$ServiceManager = (New-Object -com "Microsoft.Update.ServiceManager")
+$ServiceManager.Services
+$ServiceID = "7971f918-a847-4430-9279-4a52d1efe18d"
+$ServiceManager.AddService2($ServiceId,7,"")
+```
+
+## <a name="ports"></a>ネットワークの計画
 
 Update Management には次のアドレスが明示的に必要です。 このアドレスへの通信は、ポート 443 を使用して行われます。
 

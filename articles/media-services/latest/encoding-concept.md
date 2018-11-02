@@ -4,19 +4,19 @@ description: このトピックでは、Azure Media Services を使用する場�
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/21/2018
+ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 69c5516ee503d774b143bb2d83f09ea863a00b31
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: bee74f0399def142915aa26d15ecfa671925f405
+ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091551"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50025584"
 ---
 # <a name="encoding-with-azure-media-services"></a>Azure Media Services によるエンコード
 
@@ -26,9 +26,7 @@ Media Services v3 でエンコードするには、変換とジョブを作成�
 
 Azure Media Services でエンコードする場合、プリセットを使用してエンコーダーに入力メディア ファイルの処理方法を指示します。 たとえば、エンコードされたコンテンツに必要なビデオ解像度やオーディオ チャンネルの数を指定できます。 
 
-業界のベスト プラクティスに基づいて推奨される組み込みのプリセットのいずれかを使用して、すぐに始めることができます。また、特定のシナリオやデバイスの要件を対象とするカスタム プリセットを作成することもできます。 
-
-エンコーダーの詳細については、[OpenAPI の仕様](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2018-03-30-preview)を参照してください。 
+業界のベスト プラクティスに基づいて推奨される組み込みのプリセットのいずれかを使用して、すぐに始めることができます。また、特定のシナリオやデバイスの要件を対象とするカスタム プリセットを作成することもできます。 詳細については、[カスタム変換を使用するエンコード](customize-encoder-presets-how-to.md)に関するページを参照してください。 
 
 ## <a name="built-in-presets"></a>組み込みのプリセット
 

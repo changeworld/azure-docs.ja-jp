@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 05/04/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: faa3ad2376935aee4508b814f1b67fdacb98cf6e
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 15db2192703971a8056df34343c427db11c8411a
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843522"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988521"
 ---
 ## <a name="register-your-application"></a>アプリケーションの登録
 
@@ -30,21 +30,21 @@ ms.locfileid: "48843522"
 次の手順を実行すると、アプリケーションをすばやく登録できます。
 
 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app?appType=serverSideWebApp&appTech=aspNetWebAppOwin&step=configure)でアプリケーションを登録します。
-2.  アプリケーションの名前とお使いのメール アドレスを入力します
-3.  ガイド付きセットアップのオプションがオンになっていることを確認します
-4.  指示に従って、アプリケーションにリダイレクト URL を追加します
+2. アプリケーションの名前とお使いのメール アドレスを入力します。
+3. ガイド付きセットアップのオプションがオンになっていることを確認します。
+4. 指示に従って、アプリケーションにリダイレクト URL を追加します。
 
 ### <a name="option-2-advanced-mode"></a>オプション 2: 詳細モード
 
 アプリケーションを登録し、ソリューションにアプリケーション登録情報を追加するには、次の手順を実行します。
 
-1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します
-2. アプリケーションの名前とお使いのメール アドレスを入力します 
+1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します。
+2. アプリケーションの名前とお使いのメール アドレスを入力します。
 3. ガイド付きセットアップのオプションがオフになっていることを確認します
-4. [`Add Platform`] \(プラットフォームの追加) をクリックし、[`Web`] を選択します
+4. [`Add Platform`]、[`Web`] の順に選択します。
 5. Visual Studio に戻り、ソリューション エクスプローラーでプロジェクトを選択して [プロパティ] ウィンドウを確認します ([プロパティ] ウィンドウが表示されない場合は、F4 キーを押します)
-6. [SSL 有効] を `True` に変更します
-7. Visual Studio でプロジェクトを右クリックし、**[プロパティ]**、および **[Web]** タブを選択します。*[サーバー]* セクションで、*[プロジェクト URL]* が SSL URL になるように変更します
+6. [SSL 有効] を `True` に変更します。
+7. Visual Studio でプロジェクトを右クリックし、**[プロパティ]**、**[Web]** タブの順に選択します。*[サーバー]* セクションで、*[プロジェクト URL]* が SSL URL になるように変更します。
 8. SSL URL をコピーし、登録ポータルのリダイレクト URL の一覧にこの URL を追加します<br/><br/>![プロジェクトのプロパティ](media/active-directory-develop-guidedsetup-aspnetwebapp-configure/vsprojectproperties.png)<br />
 9. `configuration\appSettings` セクションの下のルート フォルダーにある `web.config` に、以下のコードを追加します。
 
@@ -55,6 +55,5 @@ ms.locfileid: "48843522"
     <add key="Authority" value="https://login.microsoftonline.com/{0}/v2.0" />
     ```
 
-10. `ClientId` を、さきほど登録したアプリケーション ID に置き換えます
-11. `redirectUri` を、プロジェクトの SSL URL に置き換えます
-
+10. `ClientId` を、先ほど登録したアプリケーション ID に置き換えます。
+11. `redirectUri` を、プロジェクトの SSL URL に置き換えます。

@@ -5,21 +5,21 @@ services: virtual-machines-windows, virtual-machines-linux
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 09/28/2018
+ms.date: 10/09/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: f9974aae1e5996ffeaa6cde690a5e10ccba4cc32
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 4d2235eaea457c89d01a632afa5dd5a862bec344
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48019014"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49437007"
 ---
 ## <a name="deploy-an-image-with-marketplace-terms"></a>Marketplace の契約条件でイメージを展開する
 
-Azure Marketplace の特定の VM イメージには、プログラムで展開する前に同意する必要がある追加のライセンスと購入契約条件があります。  
+Azure Marketplace の一部の VM イメージには、プログラムでデプロイする前に同意する必要がある追加のライセンスと購入契約条件があります。  
 
-このようなイメージから VM を展開するには、イメージの契約条件に同意し、プログラムによるデプロイを有効にする必要があります。 ご使用のサブスクリプションでこれを行う必要があるのは 1 回のみです。 また、イメージからプログラムを使って VM を展開するたびに、*購入プラン*のパラメーターを指定する必要があります。
+このようなイメージから VM をデプロイするには、イメージの契約条件に同意し、なおかつプログラムによるデプロイを有効にする必要があります。 これを行う必要があるのはサブスクリプションごとに 1 回だけです。 その後、イメージからプログラムを使って VM をデプロイするたびに、*購入プラン*のパラメーターを指定する必要があります。
 
 以下のセクションでは、その方法について説明します。
 

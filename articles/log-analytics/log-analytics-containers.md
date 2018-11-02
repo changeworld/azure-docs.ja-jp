@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: f9876f3e21a7cfccae2fb7f70913269d4ca1fdf4
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: d8f2701ca62eee261beaa49fe2a0719be7423a5b
+ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49115371"
+ms.lasthandoff: 10/18/2018
+ms.locfileid: "49408491"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics のコンテナー監視ソリューション
 
@@ -67,6 +67,7 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
 
 ### <a name="x64-linux-distributions-supported-as-container-hosts"></a>コンテナー ホストとしてサポートされている x64 Linux ディストリビューション
 
+
 - Ubuntu 14.04 LTS と 16.04 LTS
 - CoreOS (Stable)
 - Amazon Linux 2016.09.0
@@ -78,8 +79,10 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
 - Red Hat OpenShift Container Platform (OCP) 3.4 と 3.5
 - ACS Mesosphere DC/OS 1.7.3 ～ 1.8.8
 - ACS Kubernetes 1.4.5 ～ 1.6
-    - Kubernetes イベント、Kubernetes インベントリ、およびコンテナー プロセスは、バージョン 1.4.1-45 以降の OMS エージェント for Linux のみでサポートされています。
+    - Kubernetes イベント、Kubernetes インベントリ、およびコンテナー プロセスは、バージョン 1.4.1～45 以降の Log Analytics エージェント for Linux のみでサポートされています。
 - ACS Docker Swarm
+
+[!INCLUDE [log-analytics-agent-note.md](../../includes/log-analytics-agent-note.md)] 
 
 ### <a name="supported-windows-operating-system"></a>サポートされている Windows オペレーティング システム
 
@@ -96,25 +99,25 @@ Azure Kubernetes Service (AKS) でホストされている Kubernetes 環境に�
 
 1. コンテナー監視ソリューションを Log Analytics ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って追加してください。
 
-2. OMS エージェントで Docker をインストールして使用します。 ご使用のオペレーティング システムと Docker Orchestrator に基づいて、次のメソッドを使用してエージェントを構成できます。
+2. Log Analytics エージェントを使って Docker をインストールし､使用します｡ ご使用のオペレーティング システムと Docker Orchestrator に基づいて、次のメソッドを使用してエージェントを構成できます。
   - スタンドアロン ホストの場合
-    - サポートされている Linux オペレーティング システムでは、Docker をインストールして実行し、[OMS エージェント for Linux](log-analytics-agent-linux.md) をインストールして構成します。  
-    - CoreOS では、OMS Agent for Linux を実行できません。 代わりに、OMS Agent for Linux のコンテナー化されたバージョンを実行します。 Azure Government Cloud のコンテナーで作業をしている場合は、[CoreOS を含む Linux コンテナー ホスト](#for-all-linux-container-hosts-including-coreos)または [CoreOS を含む Azure Government Linux コンテナー](#for-all-azure-government-linux-container-hosts-including-coreos)に関する記事をご覧ください。
+    - サポートされている Linux オペレーティング システムでは、Docker をインストールして実行し、[Log Analytics エージェント for Linux](log-analytics-agent-linux.md) をインストールして構成します。  
+    - CoreOS で、Log Analytics エージェント for Linux を実行することはできません。 代わりに、コンテナー化されたバージョンの Log Analytics エージェント Linux を実行できます。 Azure Government Cloud のコンテナーで作業をしている場合は、[CoreOS を含む Linux コンテナー ホスト](#for-all-linux-container-hosts-including-coreos)または [CoreOS を含む Azure Government Linux コンテナー](#for-all-azure-government-linux-container-hosts-including-coreos)に関する記事をご覧ください。
     - Windows Server 2016 および Windows 10 では、Docker エンジンとクライアントをインストールした後、エージェントを接続して情報を収集し、Log Analytics に送信します。 Windows 環境をご利用の場合は、「[Windows コンテナー ホストをインストールして構成する](#install-and-configure-windows-container-hosts)」を確認します。
   - Docker の複数ホストのオーケストレーションの場合
-    - Red Hat OpenShift 環境がある場合は、[Red Hat OpenShift の OMS エージェントの構成](#configure-an-oms-agent-for-red-hat-openshift)に関する記事をご覧ください。
+    - Red Hat OpenShift 環境がある場合は、｢[Log Analytics エージェント for Red Hat OpenShift を構成する](#configure-an-oms-agent-for-red-hat-openshift)｣をお読みください｡
     - Kubernetes クラスターで Azure Container Service を使用している場合:
-       - 「[Kubernetes 用の OMS Linux エージェントを構成する](#configure-an-oms-linux-agent-for-kubernetes)」をご確認ください。
-       - 「[Kubernetes 用の OMS Windows エージェントを構成する](#configure-an-oms-windows-agent-for-kubernetes)」をご確認ください。
-       - 「[Helm を使用して Linux Kubernetes に OMS エージェントをデプロイする](#use-helm-to-deploy-oms-agent-on-linux-kubernetes)」をご確認ください。
-    - Azure Container Service DC/OS クラスターがある場合、詳細については、「[Operations Management Suite を使用した Azure Container Service DC/OS クラスターの監視](../container-service/dcos-swarm/container-service-monitoring-oms.md)」をご覧ください。
-    - Docker Swarm モード環境がある場合、詳細については、「[Docker Swarm 用の OMS エージェントを構成する](#configure-an-oms-agent-for-docker-swarm)」をご覧ください。
-    - Service Fabric クラスターがある場合、詳細については、「[OMS Log Analytics でコンテナーを監視](../service-fabric/service-fabric-diagnostics-oms-containers.md)」を参照してください。
+       - ｢[Log Analytics Linux エージェント for Kubernetes を構成する](#configure-an-oms-linux-agent-for-kubernetes)｣をお読みください｡
+       - ｢[Log Analytics Windows エージェント for Kubernetes を構成する](#configure-an-oms-windows-agent-for-kubernetes)｣をお読みください｡
+       - 「[Helm を使用して Linux Kubernetes に Log Analytics エージェントをデプロイする](#use-helm-to-deploy-oms-agent-on-linux-kubernetes)」をお読みください｡
+    - Azure Container Service DC/OS クラスターがある場合は、「[Log Analytics を使用して Azure Container Service DC/OS クラスターを監視する](../container-service/dcos-swarm/container-service-monitoring-oms.md)」をご覧ください。
+    - Docker Swarm モード環境がある場合、詳細については、「[Log Analytics エージェント for Docker Swarm を構成する](#configure-an-oms-agent-for-docker-swarm)」をご覧ください。
+    - Service Fabric クラスターがある場合は､｢[ Log Analytics を使用してコンテナーを監視する](../service-fabric/service-fabric-diagnostics-oms-containers.md)｣をご覧ください｡
 
 Windows を実行しているコンピューターに Docker エンジンをインストールして構成する方法の詳細については、「[Windows 上の Docker エンジン](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 
 > [!IMPORTANT]
-> Docker は、[OMS Agent for Linux](log-analytics-agent-linux.md) をコンテナー ホストにインストールする**前**に実行しておく必要があります。 Docker をインストールするより先にエージェントをインストールしてある場合は、OMS Agent for Linux を再インストールする必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
+> Docker は、コンテナー ホストに [Log Analytics エージェント for Linux](log-analytics-agent-linux.md) をインストールする**前**に起動しておく必要があります。 Docker をインストールした後で Log Analytics エージェント for Linux をインストールしている場合は、エージェントをインストールし直す必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
 
 
 ### <a name="install-and-configure-linux-container-hosts"></a>Linux コンテナー ホストをインストールして構成する
@@ -123,7 +126,7 @@ Docker をインストールした後で、コンテナー ホストの次の設
 
 **CoreOS を除くすべての Linux コンテナー ホスト**
 
-- OMS Agent for Linux のインストール方法の詳細と手順については、[Log Analytics への Linux コンピューターの接続](log-analytics-concept-hybrid.md)に関するページを参照してください。
+- Log Analytics エージェント for Linux のインストール方法に関する詳細と手順は、｢[Log Analytics に Linux コンピューターを接続する](log-analytics-concept-hybrid.md)｣を参照してください。
 
 **CoreOS を含むすべての Linux コンテナー ホスト**
 
@@ -143,11 +146,11 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 **インストール済みの Linux エージェントからコンテナー内のエージェントの使用への切り替え**
 
-これまで直接インストールされたエージェントを使用しており、今後はコンテナーで実行されているエージェントを使用したい場合は、まず OMS Agent for Linux を削除する必要があります。 エージェントを正しくアンインストール方法について詳しくは、「[OMS Agent for Linux のアンインストール](log-analytics-agent-linux.md)」をご覧ください。  
+直接インストールしたエージェントを過去に使用したことがあり、代わりにコンテナーで実行されているエージェントを使用したい場合は、まず Log Analytics エージェント for Linux を削除する必要があります。 Log Analytics エージェント for Linux を正しくアンインストール方法については、「[Log Analytics エージェント for Linux のアンインストール](log-analytics-agent-linux.md)」をご覧ください。  
 
-#### <a name="configure-an-oms-agent-for-docker-swarm"></a>Docker Swarm 用の OMS エージェントを構成する
+#### <a name="configure-a-log-analytics-agent-for-docker-swarm"></a>Log Analytics エージェント for Docker Swarm を構成する
 
-Docker Swarm で、OMS エージェントをグローバル サービスとして実行できます。 次の情報を使用して、OMS Agent サービスを作成します。 Log Analytics ワークスペースの ID と主キーを指定する必要があります。
+Docker Swarm で、Log Analytics エージェントをグローバル サービスとして実行できます。 次の情報を参考に､Log Analytics エージェント サービスを作成します。 Log Analytics ワークスペースの ID と主キーを指定する必要があります。
 
 - マスター ノードで、次を実行します。
 
@@ -178,20 +181,20 @@ Docker Swarm の場合、ワークスペース ID と主キーのシークレッ
     l9rh3n987g9c45zffuxdxetd9   KEY                 38 minutes ago      38 minutes ago
     ```
 
-3. 次のコマンドを実行して、シークレットをコンテナー化された OMS エージェントにマウントします。
+3. 次のコマンドを実行して、コンテナー化された Log Analytics エージェントにシークレットをマウントします。
 
     ```
     sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --mount type=bind,source=/var/lib/docker/containers,destination=/var/lib/docker/containers --secret source=WSID,target=WSID --secret source=KEY,target=KEY  -p 25225:25225 -p 25224:25224/udp --restart-condition=on-failure microsoft/oms
     ```
 
-#### <a name="configure-an-oms-agent-for-red-hat-openshift"></a>Red Hat OpenShift 用の OMS エージェントを構成する
-Red Hat OpenShift に OMS エージェントを追加してコンテナーの監視データの収集を開始するには、次の 3 つの方法が用意されています。
+#### <a name="configure-a-log-analytics-agent-for-red-hat-openshift"></a>Log Analytics エージェント for Red Hat OpenShift を構成する
+Red Hat OpenShift に Log Analytics エージェントを追加してコンテナーの監視データの収集を開始するには、次の 3 通りの方法があります｡
 
-* OpenShift の各ノードに直接 [OMS Agent for Linux をインストールする](log-analytics-agent-linux.md)  
+* OpenShift の各ノードに直接 [Log Analytics エージェント for Linux をインストールする](log-analytics-agent-linux.md)  
 * Azure 内に存在する OpenShift の各ノードで [Log Analytics VM 拡張機能を有効にする](log-analytics-azure-vm-extension.md)  
-* OMS エージェントを OpenShift デーモン セットとしてインストールする  
+* Log Analytics エージェントを OpenShift デーモン セットとしてインストールする  
 
-このセクションでは、OMS エージェントを OpenShift デーモン セットとしてインストールするために必要な手順を説明します。  
+このセクションでは、Log Analytics エージェントを OpenShift デーモン セットとしてインストールするために必要な手順を説明します。  
 
 1. OpenShift のマスター ノードにサインオンし、yaml ファイル [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) を GitHub からマスター ノードにコピーして、値を Log Analytics のワークスペース ID と 主キーに変更します。
 2. 次のコマンドを実行して Log Analytics のプロジェクトを作成し、ユーザー アカウントを設定します。
@@ -230,7 +233,7 @@ Red Hat OpenShift に OMS エージェントを追加してコンテナーの監
     No events.  
     ```
 
-OMS Agent デーモン セットの yaml ファイルを使用するときにシークレットを使用して Log Analytics のワークスペース ID と主キーをセキュリティで保護するには、次の手順を実行します。
+Log Analytics エージェント デーモン セットの yaml ファイルを使用している場合､シークレットを利用して Log Analytics のワークスペース ID と主キーのセキュリティを保護するには、次の手順を実行します。
 
 1. OpenShift のマスター ノードにサインオンして、yaml ファイル [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) とシークレットを生成するスクリプト [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) を GitHub からコピーします。  このスクリプトにより Log Analytics のワークスペース ID と主キーのシークレット yaml ファイルが生成され、秘密情報がセキュリティで保護されます。  
 2. 次のコマンドを実行して Log Analytics のプロジェクトを作成し、ユーザー アカウントを設定します。 シークレットを生成するスクリプトは Log Analytics のワークスペース ID <WSID> と主キー <KEY> を要求し、完了すると ocp-secret.yaml ファイルが作成されます。  
@@ -269,7 +272,7 @@ OMS Agent デーモン セットの yaml ファイルを使用するときにシ
     No events.  
     ```
 
-6. 次を実行して、OMS エージェントのデーモン セット yaml ファイルをデプロイします。
+6. 次を実行して、Log Analytics エージェントのデーモン セットの yaml ファイルをデプロイします。
 
     `oc create -f ocp-ds-omsagent.yaml`  
 
@@ -294,18 +297,18 @@ OMS Agent デーモン セットの yaml ファイルを使用するときにシ
      WSID:   37 bytes  
     ```
 
-#### <a name="configure-an-oms-linux-agent-for-kubernetes"></a>Kubernetes 用の OMS Linux エージェントを構成する
+#### <a name="configure-a-log-analytics-linux-agent-for-kubernetes"></a>Log Analytics Linux エージェント for Kubernetes を構成する
 
-Kubernetes では、スクリプトを使用して、ワークスペース ID と主キーのシークレット yaml ファイルを生成して OMS エージェント for Linux をインストールします。 [OMS Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) ページに、シークレット情報を使用して、または使用せずに使うことができるファイルがあります。
+Kubernetes に対しては、スクリプトを使用して、ワークスペース ID と主キーのシークレット yaml ファイルを生成して Log Analytics エージェント for Linux をインストールします。 [Log Analytics Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) ページには、シークレット情報があるときと､シークレット情報がないときに利用できる両方のファイルがあります。
 
-- 既定の OMS エージェント for Linux DaemonSet には、シークレット情報 (omsagent.yaml) がありません。
-- OMS エージェント for Linux DaemonSet yaml ファイルは、シークレット情報 (omsagent-ds-secrets.yaml) とシークレット生成スクリプトを使用してシークレット yaml (omsagentsecret.yaml) ファイルを生成します。
+- 既定の Log Analytics エージェント for Linux DaemonSet には、シークレット情報 (omsagent.yaml) はありません。
+- Log Analytics エージェント for Linux DaemonSet の yaml ファイルは、シークレット情報 (omsagent-ds-secrets.yaml) とシークレット生成スクリプトを使用してシークレット yaml (omsagentsecret.yaml) ファイルを生成します。
 
 omsagent DaemonSet は、シークレットを使用して作成するか使用せずに作成するかを選択できます。
 
 **シークレットを使用しない既定の OMSagent DaemonSet yaml ファイル**
 
-- 既定の OMS Agent DaemonSet yaml ファイルでは、`<WSID>` と `<KEY>` を自分の WSID と KEY に置き換えます。 ファイルをマスター ノードにコピーし、次を実行します。
+- 既定の Log Analytics エージェントの DaemonSet yaml ファイルでは、`<WSID>` と `<KEY>` を自分の WSID と KEY に置き換えます。 ファイルをマスター ノードにコピーし、次を実行します。
 
     ```
     sudo kubectl create -f omsagent.yaml
@@ -313,7 +316,7 @@ omsagent DaemonSet は、シークレットを使用して作成するか使用�
 
 **シークレットを使用する既定の OMSagent DaemonSet yaml ファイル**
 
-1. シークレット情報を使用して OMS Agent DaemonSet を使用するには、まずシークレットを作成します。
+1. シークレット情報を使用して Log Analytics エージェントのDaemonSet を使用するには、まずシークレットを作成します。
     1. スクリプトとシークレット テンプレート ファイルをコピーし、それらが同じディレクトリにあることを確認します。
         - シークレット生成スクリプト: secret-gen.sh
         - シークレット テンプレート: secret-template.yaml
@@ -364,7 +367,7 @@ omsagent DaemonSet は、シークレットを使用して作成するか使用�
 
     5. ``` sudo kubectl create -f omsagent-ds-secrets.yaml ``` を実行して、omsagent daemon-set を作成します。
 
-2. 次のように、OMS Agent DaemonSet が実行されていることを確認します。
+2. 次のように、Log Analytics エージェントの DaemonSet がすでに起動していることを確認します。
 
     ```
     keiko@ubuntu16-13db:~# sudo kubectl get ds omsagent
@@ -376,7 +379,7 @@ omsagent DaemonSet は、シークレットを使用して作成するか使用�
     ```
 
 
-Kubernetes では、スクリプトを使用して、OMS エージェント for Linux 用のワークスペース ID と 主キー用のシークレット yaml ファイルを生成します。 [omsagent yaml ファイル](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml)で次の例の情報を使用して、シークレット情報を保護します。
+Kubernetes の場合は、スクリプトを使用して、Log Analytics エージェント for Linux 用のワークスペース ID と 主キー用のシークレット yaml ファイルを生成します。 [omsagent yaml ファイル](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml)で次の例の情報を使用して、シークレット情報を保護します。
 
 ```
 keiko@ubuntu16-13db:~# sudo kubectl describe secrets omsagent-secret
@@ -393,15 +396,15 @@ WSID:   36 bytes
 KEY:    88 bytes
 ```
 
-#### <a name="configure-an-oms-windows-agent-for-kubernetes"></a>Kubernetes 用の OMS Windows エージェントを構成する
-Windows Kubernetes では、スクリプトを使用して、ワークスペース ID と主キーのシークレット yaml ファイルを生成して OMS エージェントをインストールします。 [OMS Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) ページに、シークレット情報を利用して使用できるファイルがあります。  マスター ノードとエージェント ノードに個別に OMS エージェントをインストールする必要があります。  
+#### <a name="configure-a-log-analytics-windows-agent-for-kubernetes"></a>Log Analytics Windows エージェント for Kubernetes を構成する
+Windows Kubernetes の場合は､スクリプトを使用して、ワークスペース ID と主キー用のシークレット yaml ファイルを生成して Log Analytics エージェントをインストールします。 [Log Analytics Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) ページには、シークレット情報があるときに利用できるファイルがあります。  Log Analytics エージェントは､マスター ノードとエージェント ノードごとにインストールする必要があります。  
 
-1. マスター ノードでシークレット情報を使用して OMS エージェント DaemonSet を使用するには、サインインして、まずシークレットを作成します。
+1. マスター ノードでシークレット情報を使用して Log Analytics エージェント DaemonSet を使用するには、まずサインインして、シークレットを作成します。
     1. スクリプトとシークレット テンプレート ファイルをコピーし、それらが同じディレクトリにあることを確認します。
         - シークレット生成スクリプト: secret-gen.sh
         - シークレット テンプレート: secret-template.yaml
 
-    2. 次の例のように、スクリプトを実行します。 このスクリプトでは、OMS のワークスペース ID と主キーの入力を求められます。それらを入力すると、シークレット yaml ファイルが作成され、実行できるようになります。   
+    2. 次の例のように、スクリプトを実行します。 このスクリプトでは、Log Analytics のワークスペース ID と主キーの入力を求められます。それらを入力すると、シークレット yaml ファイルが作成され、実行できるようになります。   
 
         ```
         #> sudo bash ./secret-gen.sh
@@ -435,7 +438,7 @@ Windows Kubernetes では、スクリプトを使用して、ワークスペー�
 
     5. ```kubectl create -f ws-omsagent-de-secrets.yaml``` を実行して、omsagent daemon-set を作成します。
 
-2. 次のように、OMS Agent DaemonSet が実行されていることを確認します。
+2. 次のように、Log Analytics エージェントの DaemonSet がすでに起動していることを確認します。
 
     ```
     root@ubuntu16-13db:~# kubectl get deployment omsagent
@@ -445,8 +448,8 @@ Windows Kubernetes では、スクリプトを使用して、ワークスペー�
 
 3. Windows を実行している worker ノードにエージェントをインストールするには、セクション「[Windows コンテナー ホストをインストールして構成する](#install-and-configure-windows-container-hosts)」の手順に従います。
 
-#### <a name="use-helm-to-deploy-oms-agent-on-linux-kubernetes"></a>Helm を使用して Linux Kubernetes に OMS エージェントをデプロイする
-Helm を使用して Linux Kubernetes 環境内に OMS エージェントをデプロイするには、次の手順を実行します。
+#### <a name="use-helm-to-deploy-log-analytics-agent-on-linux-kubernetes"></a>Helm を使用して Linux Kubernetes に Log Analytics エージェントをデプロイする
+Helm を使用して Linux Kubernetes 環境内に Log Analytics エージェントをデプロイするには、次の手順を実行します。
 
 1. ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms``` を実行して、omsagent daemon-set を作成します。
 2. 結果は次のようになります。
@@ -530,7 +533,7 @@ Windows でコンテナー監視ソリューションが正しく設定されて
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 
-OMS ポータルから *[ソリューション ギャラリー]* に移動し、**[コンテナー監視ソリューション]** を追加します。 Windows エージェントを使用している場合、このソリューションを追加するときに、各コンピューターにエージェントと共に次の管理パックがインストールされます。 この管理パックは構成や保守が不要です。
+Azure ポータルから *[ソリューション ギャラリー]* に移動し、**[コンテナー監視ソリューション]** を追加します。 Windows エージェントを使用している場合、このソリューションを追加するときに、各コンピューターにエージェントと共に次の管理パックがインストールされます。 この管理パックは構成や保守が不要です。
 
 - *ContainerManagement.xxx* は、C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs にインストールされます。
 
@@ -539,7 +542,7 @@ OMS ポータルから *[ソリューション ギャラリー]* に移動し、
 
 データは、次のエージェントの種類によって 3 分ごとに収集されます。
 
-- [OMS Agent for Linux](log-analytics-linux-agents.md)
+- [Log Analytics エージェント for Linux](log-analytics-linux-agents.md)
 - [Windows エージェント](log-analytics-windows-agent.md)
 - [Log Analytics VM 拡張機能](log-analytics-azure-vm-extension.md)
 

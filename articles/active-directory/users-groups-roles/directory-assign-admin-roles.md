@@ -14,12 +14,12 @@ ms.date: 09/25/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 755b94b71fdaefb261741f4d4e756b90d8148280
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: cae0b6a316839f10636ff3d81b9e18729d03298e
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116897"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49987870"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Azure Active Directory での管理者ロールのアクセス許可
 
@@ -65,7 +65,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[Dynamics 365 サービス管理者/CRM サービス管理者](#dynamics-365-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Dynamics 365 Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「[service admin ロールを使用してテナントを管理する](https://docs.microsoft.com/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)」を参照してください。
 
-* **[Exchange サービス管理者](#exchange-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+* **[Exchange サービス管理者](#exchange-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 また、すべての Office 365 グループの作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
 * **[全体管理者/会社の管理者](#company-administrator)**: このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory の ID を使用するサービス (Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 Azure Active Directory テナントにサインアップしたユーザーが全体管理者になります。 他の管理者ロールを割り当てることができるのは全体管理者だけです。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
 
@@ -94,6 +94,14 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   * ヘルプデスク管理者
   * メッセージ センター閲覧者
   * レポート閲覧者
+  
+  <b>重要</b>: このロールを持つユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーのパスワードを変更するということは、そのユーザーの ID およびアクセス許可を取得できるということを意味します。 例: 
+  * 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、Azure AD およびヘルプデスク管理者に付与されていない場所への特権アクセス許可がある場合があります。 ヘルプデスク管理者は、このパスからアプリケーション所有者の ID を取得し、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を取得できる場合があります。
+  * 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
+  * グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
+  * Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
+  * 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
+
   
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "ヘルプデスク管理者" として識別されます。 [Azure Portal](https://portal.azure.com/) では、"パスワード管理者" になります。
@@ -125,7 +133,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[サービス サポート管理者](#service-support-administrator)**: このロールが割り当てられたユーザーは、Azure サービスと Office 365 サービスについて Microsoft へのサポート要求を開くことができます。また、Azure portal と Office 365 管理ポータルで、サービス ダッシュボードとメッセージ センターを表示できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
-* **[SharePoint サービス管理者](#sharepoint-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
+* **[SharePoint サービス管理者](#sharepoint-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft SharePoint Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、すべての Office 365 グループを作成および管理し、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
 * **[Skype for Business/Lync サービス管理者](#lync-service-administrator)**: このロールが割り当てられたユーザーは、Microsoft Skype for Business 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、Azure Active Directory で Skype 固有のユーザー属性を管理します。 さらに、このロールはサポート チケットを管理し、サービス正常性を監視して、Teams と Skype for Business の管理センターにアクセスすることができます。 アカウントには、Teams のライセンスが付与されている必要もあります。そうでないと、Teams の PowerShell コマンドレットを実行できません。 詳細については、[Skype for Business の管理者ロール](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5)に関するページを参照してください。Teams のライセンス情報については、[Skype for Business と Microsoft Teams アドオンのライセンス](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)に関するページを参照してください
 
@@ -140,7 +148,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 
 * **[Teams 通信サポート スペシャリスト](#teams-communications-support-specialist)**: このロールのユーザーは、Microsoft Teams と Skype for Business の管理センターでユーザー通話のトラブルシューティング ツールを使用して、Microsoft Teams と Skype for Business での通信に関する問題をトラブルシューティングできます。 このロールのユーザーが表示できるのは、調査した特定ユーザーの通話における詳細のみです。
 
-* **[Teams サービス管理者](#teams-service-administrator)**: このロールのユーザーは、Microsoft Teams および Skype for Business の管理センターと、対応する PowerShell モジュールを使用して、Microsoft Teams のワークロードの全側面を管理できます。 これにはその他の領域の、テレフォニー、メッセージング、会議、およびチーム自体に関連するすべての管理ツールが含まれます。 このロールでは、Office 365 グループを管理する機能の付与も行います。
+* **[Teams サービス管理者](#teams-service-administrator)**: このロールのユーザーは、Microsoft Teams および Skype for Business の管理センターと、対応する PowerShell モジュールを使用して、Microsoft Teams のワークロードの全側面を管理できます。 これにはその他の領域の、テレフォニー、メッセージング、会議、およびチーム自体に関連するすべての管理ツールが含まれます。 このロールはさらに、すべての Office 365 グループの作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。
 
 * **[ユーザー アカウント管理者](#user-account-administrator)**: このロールが割り当てられたユーザーは、ユーザーを作成し、いくつか制限はありますがユーザーのすべての側面を管理できます (後述)。 また、このロールのユーザーは、グループを作成し、すべてのグループを管理することができます。 このロールでは、ユーザー ビューを作成および管理、サポート チケットの管理、サービスの正常性の監視を行うこともできます。
 
@@ -149,6 +157,13 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   |一般的なアクセス許可|<p>ユーザーとグループを作成する</p><p>ユーザー ビューの作成と管理</p><p>Office サポート チケットの管理|
   |<p>すべての管理者を含むすべてのユーザーに対して</p>|<p>ライセンスを管理する</p><p>ユーザー プリンシパル名を除くすべてのユーザーのプロパティを管理する</p>
   |管理者以外のユーザー、または次の制限付き管理者ロールのいずれかに対してのみ:<ul><li>ディレクトリ リーダー<li>ゲスト招待元<li>ヘルプデスク管理者<li>メッセージ センター閲覧者<li>レポート閲覧者<li>ユーザー アカウント管理者|<p>削除と復元</p><p>無効化と有効化</p><p>更新トークンを無効にする</p><p>ユーザー プリンシパル名を含むすべてのユーザーのプロパティを管理する</p><p>[パスワードのリセット]</p><p>(FIDO) デバイス キーを更新する</p>
+  
+  <b>重要</b>: このロールを持つユーザーは、機密情報や個人情報または Azure Active Directory の内外の重要な構成にアクセスできるユーザーのパスワードを変更できます。 ユーザーのパスワードを変更するということは、そのユーザーの ID およびアクセス許可を取得できるということを意味します。 例: 
+  * 所有しているアプリの資格情報を管理できる、アプリケーションの登録とエンタープライズ アプリケーションの所有者。 これらのアプリには、Azure AD およびユーザー管理者に付与されていない場所への特権アクセス許可がある場合があります。 ユーザー管理者は、このパスからアプリケーション所有者の ID を取得し、さらにそのアプリケーションの資格情報を更新して特権アプリケーションの ID を取得できる場合があります。
+  * 機密情報や個人情報または Azure の重要な構成にアクセスできる Azure サブスクリプション所有者。
+  * グループ メンバーシップを管理できるセキュリティ グループと Office 365 グループの所有者。 これらのグループは、機密情報や個人情報または Azure AD や別の場所の重要な構成へのアクセス権を付与される場合があります。
+  * Exchange Online、Office Security and Compliance Center、人事システムのような Azure AD 以外のサービスの管理者。
+  * 機密情報や個人情報にアクセスできる場合がある役員、弁護士、人事担当者のような非管理者。
 
 以降の表は、各ロールに割り当てられている Azure Active Directory の具体的なアクセス許可の説明です。 一部のロールは、Azure Active Directory 以外の Microsoft サービスにおけるその他のアクセス許可を持っている場合があります。
 
@@ -220,7 +235,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -232,6 +247,28 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
 | microsoft.commerce.billing/allEntities/allTasks | Office 365 課金の全側面の管理。 |
+| microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
+| microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
+
+### <a name="desktop-analytics-administrator"></a>デスクトップ Analytics 管理者
+デスクトップの管理ツールとサービス (Intune を含む) にアクセスして管理できます。
+
+  > [!NOTE]
+  > このロールは、ディレクトリ閲覧者ロールから追加のアクセス許可を継承します。
+  >
+  >
+
+  > [!NOTE]
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
+  >
+  >
+
+| **アクション** | **説明** |
+| --- | --- |
+| microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
+| microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.office365.desktopAnalytics/allEntities/allTasks | デスクトップ Analytics のすべての側面を管理します。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
 
@@ -304,7 +341,7 @@ Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -349,6 +386,8 @@ Azure AD のすべての側面と、Azure AD の ID が使用される Microsoft
 | microsoft.office365.complianceManager/allEntities/allTasks | Office 365 コンプライアンス マネージャーの全側面の管理 |
 | microsoft.office365.exchange/allEntities/allTasks | Exchange Online の全側面の管理。 |
 | microsoft.office365.lockbox/allEntities/allTasks | Office 365 カスタマ― ロックボックスの全側面の管理 |
+| microsoft.office365.messageCenter/messages/read | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
+| microsoft.office365.messageCenter/securityMessages/read | Microsoft.office365.messageCenter でセキュリティ メッセージを読み取ります。 |
 | microsoft.powerApps.powerBI/allEntities/allTasks | Power BI の全側面の管理。 |
 | microsoft.office365.protectionCenter/allEntities/allTasks | Office 365 プロテクション センターの全側面の管理。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
@@ -366,7 +405,7 @@ Azure AD および Office 365 のコンプライアンスの構成とレポー�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -409,7 +448,7 @@ Dynamics 365 製品のすべての側面を管理できます。
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -431,7 +470,7 @@ Microsoft サポートがお客様の組織データにアクセスする要求�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -587,7 +626,7 @@ Exchange 製品のすべての側面を管理できます。
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -596,6 +635,11 @@ Exchange 製品のすべての側面を管理できます。
 | microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.aad.directory/groups/unified/create | Office 365 グループを作成します。 |
+| microsoft.aad.directory/groups/unified/delete | Office 365 グループを削除します。 |
+| microsoft.aad.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
+| microsoft.aad.directory/groups/unified/members/update | Office 365 グループのメンバーシップを更新します。 |
+| microsoft.aad.directory/groups/unified/owners/update | Office 365 グループの所有権を更新します。 |
 | microsoft.office365.exchange/allEntities/allTasks | Exchange Online の全側面の管理。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
@@ -650,7 +694,7 @@ Azure Information Protection 製品のすべての側面を管理できます。
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -671,7 +715,7 @@ Intune 製品のすべての側面を管理できます。
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -727,7 +771,7 @@ Skype for Business 製品のすべての側面を管理できます。
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -749,14 +793,14 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
 | **アクション** | **説明** |
 | --- | --- |
-| microsoft.aad.accessmessagecenter/allEntities/allTasks | メッセージ センターでのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
+| microsoft.office365.messageCenter/messages/read | Microsoft.office365.messageCenter でメッセージを読み取ります。 |
 
 ### <a name="partner-tier1-support"></a>パートナー レベル 1 のサポート
 使用しないでください。一般的な使用は想定されていません。
@@ -767,7 +811,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -804,7 +848,7 @@ Office 365 メッセージ センター内でのみ自分の組織のメッセ�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -844,7 +888,7 @@ Power BI 製品のすべての側面を管理できます。
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -866,7 +910,7 @@ Azure AD でのロールの割り当てと、Privileged Identity Management の�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -884,7 +928,7 @@ Azure AD でのロールの割り当てと、Privileged Identity Management の�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -904,7 +948,7 @@ Azure AD でのロールの割り当てと、Privileged Identity Management の�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -934,7 +978,7 @@ Azure AD と Office 365 のセキュリティ情報とレポートを読み取�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -956,7 +1000,7 @@ Azure AD と Office 365 のセキュリティ情報とレポートを読み取�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -977,7 +1021,7 @@ SharePoint サービスのすべての側面を管理できます。
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -986,6 +1030,10 @@ SharePoint サービスのすべての側面を管理できます。
 | microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |
+| microsoft.aad.directory/groups/unified/delete | Office 365 グループを削除します。 |
+| microsoft.aad.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
+| microsoft.aad.directory/groups/unified/members/update | Office 365 グループのメンバーシップを更新します。 |
+| microsoft.aad.directory/groups/unified/owners/update | Office 365 グループの所有権を更新します。 |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Office 365 Service Health の読み取りと構成。 |
 | microsoft.office365.sharepoint/allEntities/allTasks | microsoft.office365.sharepoint でのすべてのリソースの作成と削除、および標準プロパティの読み取りと更新。 |
 | microsoft.office365.supportTickets/allEntities/allTasks | Office 365 サポート チケットの作成と管理。 |
@@ -999,7 +1047,7 @@ Microsoft Teams サービス内での通話と会議の機能を管理できま�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1022,7 +1070,7 @@ Microsoft Teams サービス内での通話と会議の機能を管理できま�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1042,7 +1090,7 @@ Microsoft Teams サービス内での通話と会議の機能を管理できま�
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1062,7 +1110,7 @@ Microsoft Teams サービスを管理できます。
   >
 
   > [!NOTE]
-  > このロールは、Azure Active Directory 以外の追加のアクセス許可を持っています。 詳細については、上記のロールの説明を参照してください。
+  > このロールは、Azure Active Directory 以外の追加のアクセス許可を備えています。 詳細については、上記のロールの説明を参照してください。
   >
   >
 
@@ -1070,6 +1118,10 @@ Microsoft Teams サービスを管理できます。
 | --- | --- |
 | microsoft.aad.directory/groups/hiddenMembers/read | Azure Active Directory での groups.hiddenMembers プロパティの読み取り。 |
 | microsoft.aad.directory/policies/basic/read | Azure Active Directory での policies の基本プロパティの読み取り。 |
+| microsoft.aad.directory/groups/unified/delete | Office 365 グループを削除します。 |
+| microsoft.aad.directory/groups/unified/basic/update | Office 365 グループの基本プロパティを更新します。 |
+| microsoft.aad.directory/groups/unified/members/update | Office 365 グループのメンバーシップを更新します。 |
+| microsoft.aad.directory/groups/unified/owners/update | Office 365 グループの所有権を更新します。 |
 | microsoft.azure.accessService/allEntities/allTasks | Azure Access サービスの全側面の管理。 |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Azure Service Health の読み取りと構成。 |
 | microsoft.azure.supportTickets/allEntities/allTasks | Azure サポート チケットの作成と管理。 |

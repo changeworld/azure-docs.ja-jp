@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 10/10/2018
 ms.author: diberry
-ms.openlocfilehash: adb44dcc8c41b1a7846ff346d141dc0c4b028e96
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 6a3edfd426fcdce83bd60332ba2b1ff6224dae1a
+ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888290"
+ms.lasthandoff: 10/23/2018
+ms.locfileid: "49645561"
 ---
 # <a name="add-example-utterances-and-label-with-entities"></a>発話の例を追加し、エンティティ ラベルを付ける
 
@@ -159,6 +159,36 @@ book me 2 adult business tickets to Paris tomorrow on Air France
     >子エンティティ名は、1 つのアプリのエンティティ全体で一意となる必要があります。 2 つの異なる階層構造エンティティには、同じ名前の子エンティティを含めることができません。 
 
     エンドポイント JSON クエリ応答から階層構造エンティティを抽出する方法の詳細については、[データの抽出](luis-concept-data-extraction.md#hierarchical-entity-data)に関するページを参照してください。 階層構造エンティティの使用方法の詳細については、階層構造エンティティの[クイック スタート](luis-quickstart-intent-and-hier-entity.md)をお試しください。
+
+## <a name="entity-status-predictions"></a>エンティティの状態の予測
+
+LUIS ポータルで新しい発話を入力するとき、発話にエンティティ予測誤差が存在することがあります。 予測誤差とは、エンティティのラベル付けと、LUIS によるエンティティの予測の間の差異です。 
+
+この差異は、LUIS ポータルでは発話の赤い下線で視覚的に示されます。 赤い下線は、エンティティの角かっこ内または角かっこ外に表示されることがあります。 
+
+![エンティティ状態予測不一致のスクリーンショット](./media/luis-how-to-add-example-utterances/entity-prediction-error.png)
+
+発話で赤い下線の付いた単語を選択します。 
+
+予測に相違がある場合、エンティティ ボックスに赤い感嘆符の付いた **[Entity status]\(エンティティの状態\)** が表示されます。 エンティティの状態と、ラベル付けされたエンティティと予測されたエンティティの間の相違に関する情報を表示するには、**[Entity status]\(エンティティの状態\)** を選択した後、右側の項目を選択します。
+
+![エンティティ状態予測不一致のスクリーンショット](./media/luis-how-to-add-example-utterances/entity-status.png)
+
+赤い線は、次のいずれかのときに表示される可能性があります。
+
+    * エンティティがラベル付けされる前に、発話が入力されたとき
+    * エンティティ ラベルが適用されたとき
+    * エンティティ ラベルが削除されたとき
+    * そのテキストに対して複数のエンティティ ラベルが予測されたとき 
+
+エンティティ予測の不一致を解決するには、次の解決策が役に立ちます。
+
+|エンティティ|視覚的インジケータ|予測|解決策|
+|--|--|--|--|
+|発話が入力されたが、エンティティがまだラベル付けされていない。|赤い下線|予測は正しい。|予測された値でエンティティにラベルを付けます。|
+|ラベル付けされていないテキスト|赤い下線|正しくない予測|この正しくないエンティティを使用している現在の発話を、すべての意図について確認する必要があります。 現在の発話には、このテキストが予測されたエンティティである、誤って学習された LUIS があります。
+|正しくラベル付けされたテキスト|エンティティの青い強調表示、赤い下線|正しくない予測|さまざまな場所と使用方法で、正しくラベル付けされたエンティティを含む発話をさらに提供します。 現在の発話は、これがエンティティであることを LUIS に学習させるのに十分ではないか、または似たエンティティが同じコンテキストで出現しています。 LUIS が混乱しないよう、似たエンティティは 1 つのエンティティに結合する必要があります。 もう 1 つの解決策は、フレーズ リストを追加して単語の重要性を高めることです。 |
+|誤ってラベル付けされたテキスト|エンティティの青い強調表示、赤い下線|正しい予測| さまざまな場所と使用方法で、正しくラベル付けされたエンティティを含む発話をさらに提供します。 
 
 
 ## <a name="remove-entity-labels-from-utterances"></a>発話からエンティティ ラベルを削除する

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/11/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 61a64981d13c49a6245cc3cf494a78a777cf6d9c
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: d750ac7a5ac847a8c1eb5a9c91bb42804c2eebe0
+ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40044891"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49437137"
 ---
 Azure 仮想マシン (VM) を作成する場合、[仮想ネットワーク](../articles/virtual-network/virtual-networks-overview.md) (VNet) を作成するか、既存の VNet を使用する必要があります。 VNet における VM への望ましいアクセス方法を決定する必要もあります。 [リソースを作成する前に計画](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md)を立て、必ず[ネットワーク リソースの制限](../articles/azure-subscription-service-limits.md#networking-limits)を確認することが大切です。
 
@@ -68,7 +68,7 @@ VM の IP アドレスが変わらないようにするため、割り当て方�
 
 | 方法 | 説明 |
 | ------ | ----------- |
-| [Azure ポータル](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | 既定では、パブリック IP アドレスは動的であり、VM が停止または削除されると、それらの IP アドレスに関連付けられたアドレスは変更される場合があります。 VM で常に同じパブリック IP アドレスが使用されるようにするには、静的パブリック IP アドレスを作成します。 既定では、VM の作成時にポータルによって動的プライベート IP アドレスが NIC に割り当てられます。 この IP アドレスは、VM の作成後に "静的" に変更できます。|
+| [Azure Portal](../articles/virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | 既定では、パブリック IP アドレスは動的であり、VM が停止または削除されると、それらの IP アドレスに関連付けられたアドレスは変更される場合があります。 VM で常に同じパブリック IP アドレスが使用されるようにするには、静的パブリック IP アドレスを作成します。 既定では、VM の作成時にポータルによって動的プライベート IP アドレスが NIC に割り当てられます。 この IP アドレスは、VM の作成後に "静的" に変更できます。|
 | [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | **-AllocationMethod** パラメーターを Dynamic または Static に設定して [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) を実行します。 |
 | [Azure CLI](../articles/virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | **allocation-method** パラメーターを Dynamic または Static に設定して [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip#create) を実行します。 |
 | [テンプレート](../articles/virtual-network/template-samples.md) | テンプレートを使用したパブリック IP アドレスのデプロイのガイドとして、「[Network Interface in a Virtual Network with Public IP Address (パブリック IP アドレスを使用した仮想ネットワークのネットワーク インターフェイス)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet)」を使用してください。 |
@@ -89,7 +89,7 @@ VNet を設定するときに、使用できるアドレス空間やサブネッ
 
 | 方法 | 説明 |
 | ------ | ----------- |
-| [Azure ポータル](../articles/virtual-network/quick-create-portal.md) | VM の作成時に Azure に VNet を自動的に作成させる場合、VNet の名前は、VNet が含まれたリソース グループ名と **-vnet** の組み合わせになります。 アドレス空間は 10.0.0.0/24、必要なサブネット名は **default**、サブネットのアドレス範囲は 10.0.0.0/24 です。 |
+| [Azure Portal](../articles/virtual-network/quick-create-portal.md) | VM の作成時に Azure に VNet を自動的に作成させる場合、VNet の名前は、VNet が含まれたリソース グループ名と **-vnet** の組み合わせになります。 アドレス空間は 10.0.0.0/24、必要なサブネット名は **default**、サブネットのアドレス範囲は 10.0.0.0/24 です。 |
 | [Azure PowerShell](../articles/virtual-network/quick-create-powershell.md) | [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/New-AzureRmVirtualNetworkSubnetConfig) と [New-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/New-AzureRmVirtualNetwork) を使用して、サブネットと VNet を作成します。 [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/add-azurermvirtualnetworksubnetconfig) を使用して既存の VNet にサブネットを追加することもできます。 |
 | [Azure CLI](../articles/virtual-network/quick-create-cli.md) | サブネットと VNet は同時に作成されます。 **--subnet-name** パラメーターにサブネット名を指定して [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) を実行します。 |
 | テンプレート | VNet とサブネットを作成する最も簡単な方法は、「[Virtual Network with two Subnets (2 つのサブネットが含まれた仮想ネットワーク)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)」などから既存のテンプレートをダウンロードし、必要に応じて変更するやり方です。 |
@@ -110,7 +110,7 @@ VM と VNet を計画する際は、必ず NSG の[計画](../articles/virtual-n
 
 | 方法 | 説明 |
 | ------ | ----------- |
-| [Azure ポータル](../articles/virtual-network/tutorial-filter-network-traffic.md) | Azure Portal で VM を作成する場合、NSG は自動的に作成され、ポータルで作成された NIC に関連付けられます。 NSG の名前は、VM の名前と **-nsg** の組み合わせです。 この NSG には、優先順位 (1000)、サービス (RDP)、プロトコル (TCP)、ポート (3389)、アクション (許可) が設定された受信ルールが 1 つ含まれています。 VM への他の受信トラフィックを許可したい場合は、NSG に他のルールを追加する必要があります。 |
+| [Azure Portal](../articles/virtual-network/tutorial-filter-network-traffic.md) | Azure Portal で VM を作成する場合、NSG は自動的に作成され、ポータルで作成された NIC に関連付けられます。 NSG の名前は、VM の名前と **-nsg** の組み合わせです。 この NSG には、優先順位 (1000)、サービス (RDP)、プロトコル (TCP)、ポート (3389)、アクション (許可) が設定された受信ルールが 1 つ含まれています。 VM への他の受信トラフィックを許可したい場合は、NSG に他のルールを追加する必要があります。 |
 | [Azure PowerShell](../articles/virtual-network/tutorial-filter-network-traffic.md) | [New-AzureRmNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/azurerm.network/New-AzureRmNetworkSecurityRuleConfig) を使用し、必要なルールの情報を指定します。 [New-AzureRmNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/azurerm.network/New-AzureRmNetworkSecurityGroup) を使用して NSG を作成します。 [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetworkSubnetConfig) を使用して NSG をサブネット用に構成します。 [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) を使用して NSG を VNet に追加します。 |
 | [Azure CLI](../articles/virtual-network/tutorial-filter-network-traffic-cli.md) | [az network nsg create](https://docs.microsoft.com/cli/azure/network/nsg#create) を使用して、最初に NSG を作成します。 [az network nsg rule create](https://docs.microsoft.com/cli/azure/network/nsg/rule#create) を使用して、その NSG にルールを追加します。 [az network vnet subnet update](https://docs.microsoft.com/cli/azure/network/vnet/subnet#update) を使用して NSG をサブネットに追加します。 |
 | [テンプレート](../articles/virtual-network/template-samples.md) | テンプレートを使用したネットワーク セキュリティ グループのデプロイについては、「[Create a Network Security Group (ネットワーク セキュリティ グループの作成)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-security-group-create)」をガイドとして使用してください。 |
@@ -159,7 +159,7 @@ VM にはデプロイ時に IP アドレスが割り当てられます。 複数
 
 | 方法 | 説明 |
 | ------ | ----------- |
-| [Azure ポータル](../articles/virtual-machines/windows/quick-create-portal.md) | 前に述べた既定のネットワーク設定を使用して、1 つの NIC を備えた VM を作成します。 複数の NIC を備えた VM を作成するには、別の方法を使用する必要があります。 |
+| [Azure Portal](../articles/virtual-machines/windows/quick-create-portal.md) | 前に述べた既定のネットワーク設定を使用して、1 つの NIC を備えた VM を作成します。 複数の NIC を備えた VM を作成するには、別の方法を使用する必要があります。 |
 | [Azure PowerShell](../articles/virtual-machines/windows/tutorial-manage-vm.md) | [Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface) を使用して、以前作成した NIC を VM 構成に追加します。 |
 | [Azure CLI](../articles/virtual-machines/linux/create-cli-complete.md) | VM を作成し、個々のステップとして構築された Vnet、サブネット、および NIC に接続します。 |
 | [テンプレート](../articles/virtual-machines/windows/ps-template.md) | テンプレートを使用した VM のデプロイについては、「[Very simple deployment of a Windows VM (Windows VM の非常に簡単なデプロイ)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)」をガイドとして使用してください。 |

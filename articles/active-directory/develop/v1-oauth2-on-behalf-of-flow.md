@@ -17,14 +17,17 @@ ms.date: 06/06/2017
 ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: cf62d961d7bd2b6ff2cb03ee577368f2ee7b8452
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: a231b79bebd9684281edea48dfe7cf5f57ccdacb
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49318830"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49986017"
 ---
 # <a name="service-to-service-calls-using-delegated-user-identity-in-the-on-behalf-of-flow"></a>On-Behalf-Of フローでの委任ユーザー ID を使ったサービス間の呼び出し
+
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
+
 OAuth 2.0 の On-Behalf-Of (OBO) フローは、アプリケーションがサービス/Web API を呼び出し、それがさらに別のサービス/Web API を呼び出す必要のあるユース ケースを提供します。 その考え方は、委任されたユーザー ID とアクセス許可を要求チェーン経由で伝達するというものです。 中間層サービスがダウンストリーム サービスに認証済み要求を発行するには、そのサービスは Azure Active Directory (Azure AD) からのアクセス トークンをユーザーに代わってセキュリティ保護する必要があります。
 
 > [!IMPORTANT]
@@ -43,6 +46,9 @@ OAuth 2.0 の On-Behalf-Of (OBO) フローは、アプリケーションがサ�
 3. Azure AD トークン発行エンドポイントはトークン A を使用して API A の資格情報を検証し、API B (トークン B) へのアクセス トークンを発行します。
 4. API B への要求の承認ヘッダー内にトークン B が設定されます。
 5. セキュリティで保護されたリソースからのデータが API B によって返されます。
+
+>[!NOTE]
+>ダウンストリーム サービスのトークンを要求するために使用するアクセス トークンの受信者要求は OBO 要求を行うサービスの ID である必要があり、そのトークンは Azure Active Directory のグローバル署名キーで署名されている必要があります (ポータルの**アプリの登録**を使用して登録されたアプリケーションでは既定)。
 
 ## <a name="register-the-application-and-service-in-azure-ad"></a>Azure AD でのアプリケーションとサービスの登録
 Azure AD で、クライアント アプリケーションと中間層サービスの両方を登録します。
@@ -82,8 +88,8 @@ https://login.microsoftonline.com/<tenant>/oauth2/token
 
 | パラメーター |  | 説明 |
 | --- | --- | --- |
-| grant_type |必須 | トークン要求の種類。 JWT を使用する要求の場合、値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
-| assertion |必須 | 要求で使用されるトークンの値。 |
+| grant_type |必須 | トークン要求の種類。 OBO 要求は JWT アクセス トークンを使用するため、その値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
+| assertion |必須 | 要求で使用されるアクセス トークンの値。 |
 | client_id |必須 | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリケーション ID。 Azure 管理ポータルでアプリ ID を調べるには、**[Active Directory]**、目的のディレクトリ、アプリケーション名の順にクリックします。 |
 | client_secret |必須 | 呼び出し元のサービスに対して Azure AD に登録されているキー。 この値は登録時にメモしているはずです。 |
 | resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 アプリ ID URI を調べるには、Azure 管理ポータルで、**[Active Directory]**、目的のディレクトリ、アプリケーション名、**[すべての設定]**、**[プロパティ]** の順にクリックします。 |
@@ -114,7 +120,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 | パラメーター |  | 説明 |
 | --- | --- | --- |
-| grant_type |必須 | トークン要求の種類。 JWT を使用する要求の場合、値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
+| grant_type |必須 | トークン要求の種類。 OBO 要求は JWT アクセス トークンを使用するため、その値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
 | assertion |必須 | 要求で使用されるトークンの値。 |
 | client_id |必須 | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリケーション ID。 Azure 管理ポータルでアプリ ID を調べるには、**[Active Directory]**、目的のディレクトリ、アプリケーション名の順にクリックします。 |
 | client_assertion_type |必須 |値は `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` である必要があります |
@@ -201,8 +207,54 @@ GET /me?api-version=2013-11-08 HTTP/1.1
 Host: graph.windows.net
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
 ```
+## <a name="service-to-service-calls-using-a-saml-assertion-obtained-with-an-oauth20-on-behalf-of-flow"></a>OAuth2.0 の On-Behalf-Of フローで取得した SAML アサーションを使用したサービス間の呼び出し
+
+一部の OAuth ベースの Web サービスは、非対話型フローで SAML アサーションを受け入れるその他の Web サービス API にアクセスする必要があります。  Azure Active Directory は、On-Behalf-Of フローに対応する SAML アサーションにターゲット リソースとして SAML ベースの Web サービスを提供できます。 
+
+>[!NOTE] 
+>これは、OAuth2 ベースのアプリケーションが SAML トークンを使用する Web サービス API エンドポイントにアクセスできる、OAuth 2.0 の On-Behalf-Of フローの非標準の拡張機能です。  
+
+>[!TIP]
+>フロントエンド Web アプリケーションから SAML で保護された Web サービスを呼び出している場合、単純に API を呼び出し、ユーザーが存在するセッションを使用する通常の対話型認証フローを開始できます。  サービス間の呼び出しでユーザー コンテキストを提供するために SAML トークンが必要なときのみ OBO フローの使用を検討する必要があります。
+
+### <a name="obtain-a-saml-token-using-an-obo-request-with-a-shared-secret"></a>共有シークレットを使用して OBO 要求を使用する SAML トークンを取得する
+SAML アサーションを取得するサービス間の要求には、次のパラメーターが含まれています。
+
+| パラメーター |  | 説明 |
+| --- | --- | --- |
+| grant_type |必須 | トークン要求の種類。 JWT を使用する要求の場合、値は **urn:ietf:params:oauth:grant-type:jwt-bearer** である必要があります。 |
+| assertion |必須 | 要求で使用されるアクセス トークンの値。|
+| client_id |必須 | Azure AD での登録時に呼び出し元のサービスに割り当てられるアプリケーション ID。 Azure 管理ポータルでアプリ ID を調べるには、**[Active Directory]**、目的のディレクトリ、アプリケーション名の順にクリックします。 |
+| client_secret |必須 | 呼び出し元のサービスに対して Azure AD に登録されているキー。 この値は登録時にメモしているはずです。 |
+| resource |必須 | 受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 これは SAML トークンの対象となるリソースです。  アプリ ID URI を調べるには、Azure 管理ポータルで、**[Active Directory]**、目的のディレクトリ、アプリケーション名、**[すべての設定]**、**[プロパティ]** の順にクリックします。 |
+| requested_token_use |必須 | 要求の処理方法を指定します。 On-Behalf-Of フローでは、値は **on_behalf_of** である必要があります。 |
+| requested_token_type | 必須 | 要求するトークンの種類を指定します。  アクセスするリソースの要件に応じて、値は "urn:ietf:params:oauth:token-type:saml2" または "urn:ietf:params:oauth:token-type:saml1" のいずれかです。 |
+
+
+応答には、UTF8 および Base64url エンコード SAML トークンが含まれます。 
+
+OBO 呼び出しから提供される SAML アサーションの SubjectConfirmationData: ターゲット アプリケーションが SubjectConfirmationData の受信者の値を必要とする場合、リソース アプリケーション構成で非ワイルドカードの応答 URL として設定する必要があります。
+
+SubjectConfirmationData ノードは、SAML 応答の一部ではないため、InResponseTo 属性を含めることはできません。  SAML トークンを受け取るアプリケーションは、InResponseTo 属性なしで SAML アサーションを受け入れることができる必要があります。
+
+同意: OAuth フローでユーザー データを含む SAML トークンを受信するためには、同意が付与される必要があります。  アクセス許可および管理者の同意の取得の詳細については、 https://docs.microsoft.com/azure/active-directory/develop/v1-permissions-and-consent を参照してください。
+
+### <a name="response-with-saml-assertion"></a>SAML アサーションの応答
+
+| パラメーター | 説明 |
+| --- | --- |
+| token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは **Bearer**タイプのみです。 ベアラー トークンの詳細については、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750) (OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750))](http://www.rfc-editor.org/rfc/rfc6750.txt)」を参照してください。 |
+| scope |トークンで付与されるアクセスのスコープ。 |
+| expires_in |アクセス トークンが有効な時間の長さ (秒単位)。 |
+| expires_on |アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。 |
+| resource |受信側のサービスのアプリ ID URI (セキュリティ保護されたリソース)。 |
+| access_token |SAML アサーションは access_token パラメーターで返されます。 |
+| refresh_token |更新トークン。 呼び出し元のサービスは、現在の SAML アサーションの期限が切れた後に、このトークンを使用して別のアクセス トークンを要求できます。 |
+
+token_type: Bearer expires_in:3296 ext_expires_in:0 expires_on:1529627844 resource:https://api.contoso.com access_token: <Saml assertion> issued_token_type:urn:ietf:params:oauth:token-type:saml2 refresh_token: <Refresh token>
+
 ## <a name="client-limitations"></a>クライアントの制限事項
-ワイルドカード応答 URL を持つパブリック クライアントは、OBO フローで `id_token` を使用することはできません。 ただし、パブリック クライアントが登録済みのワイルドカード リダイレクト URI を持っている場合でも、機密クライアントは引き続き、暗黙的な付与フローを通じて取得した**アクセス** トークンを利用することができます。
+ワイルドカード応答 URL を持つパブリック クライアントは、OBO フローで `id_token` を使用することはできません。 ただし、パブリック クライアントが登録済みのワイルドカード リダイレクト URI を持っている場合でも、機密クライアントは引き続き、暗黙的な付与フローを通じて取得したアクセス トークンを利用することができます。
 
 ## <a name="next-steps"></a>次の手順
 OAuth 2.0 プロトコルと、クライアント資格情報を使用したサービス間認証を実行する別の方法について詳しく学びます。

@@ -7,17 +7,17 @@ ms.subservice: security
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: becczhang
+author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 07/09/2018
-ms.openlocfilehash: 50b433c65dec1f667f32aaf60148a6e393c67320
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/15/2018
+ms.openlocfilehash: 0d5b7e484024294eb5c95b632dbef85c377b717e
+ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165928"
+ms.lasthandoff: 10/19/2018
+ms.locfileid: "49469029"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>SQL Database と Data Warehouse の Transparent Data Encryption
 
@@ -25,7 +25,7 @@ Transparent Data Encryption (TDE) を使用すると、悪意のあるアクテ�
 
 古いデータベースや Azure SQL Data Warehouse の場合、TDE を手動で有効にする必要があります。  
 
-Transparent Data Encryption は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。 このデータベース暗号化キーは、Transparent Data Encryption 保護機能によって保護されます。 保護機能は、サービスによって管理された証明書 (サービスによって管理された Transparent Data Encryption) または Azure Key Vault に格納されている非対称キー (Bring Your Own Key) です。 Transparent Data Encryption 保護機能はサーバー レベルで設定します。 
+Transparent Data Encryption は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。 このデータベース暗号化キーは、Transparent Data Encryption 保護機能によって保護されます。 保護機能は、サービスによって管理された証明書 (サービスによって管理された Transparent Data Encryption) または Azure Key Vault に格納されている非対称キー (Bring Your Own Key) です。 Transparent Data Encryption 保護機能はサーバー レベルで設定します。
 
 データベースの起動時に、暗号化されたデータベース暗号化キーが暗号化解除され、SQL Server データベース エンジン プロセスでデータベース ファイルの暗号化解除と再暗号化に使用されます。 Transparent Data Encryption では、データのリアルタイムの I/O 暗号化と暗号化解除がページ レベルで実行されます。 各ページは、メモリに読み込まれるときに暗号化解除され、ディスクに書き込まれる前に暗号化されます。 Transparent Data Encryption の概要については、[Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) に関する記事をご覧ください。
 
@@ -35,11 +35,10 @@ Azure 仮想マシン上で実行されている SQL Server も、Key Vault の�
 
 Azure での Transparent Data Encryption の既定の設定では、データベース暗号化キーは組み込みのサーバー証明書によって保護されます。 組み込みのサーバー証明書は、サーバーごとに一意です。 データベースが geo レプリケーションのリレーションシップに含まれている場合、プライマリ データベースと geo セカンダリ データベースの両方が、プライマリ データベースの親サーバー キーによって保護されます。 2 つのデータベースが同じサーバーに接続されている場合は、同じ組み込み証明書が共有されます。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的にローテーションします。
 
-また、geo レプリケーションと復元のために、必要に応じてキーの移動と管理をシームレスに行います。 
+また、geo レプリケーションと復元のために、必要に応じてキーの移動と管理をシームレスに行います。
 
 > [!IMPORTANT]
 > 新しく作成されたすべての SQL データベースは、サービスによって管理された Transparent Data Encryption を使用して既定で暗号化されます。 2017 年 5 月より前の既存のデータベースと、復元、geo レプリケーション、データベースのコピーによって作成されたデータベースは、既定で暗号化されません。
->
 
 ## <a name="bring-your-own-key"></a>Bring Your Own Key
 
@@ -54,11 +53,12 @@ Bring Your Own Key をサポートする Transparent Data Encryption の使用�
 ## <a name="move-a-transparent-data-encryption-protected-database"></a>Transparent Data Encryption で保護されたデータベースを移動する
 
 Azure 内での操作のためにデータベースを暗号化解除する必要はありません。 ソース データベースまたはプライマリ データベースの Transparent Data Encryption 設定は、ターゲットで透過的に継承されます。 含まれている操作は次のとおりです。
-- geo リストア。
-- セルフサービスのポイントインタイム リストア。
-- 削除されたデータベースの復元。
-- アクティブ geo レプリケーション。
-- データベース コピーの作成。
+
+- geo リストア
+- セルフサービスのポイントインタイム リストア
+- 削除されたデータベースの復元
+- アクティブ geo レプリケーション
+- データベース コピーの作成
 
 Transparent Data Encryption で保護されたデータベースをエクスポートした場合、データベースのエクスポートされたコンテンツは暗号化されません。 このエクスポートされたコンテンツは、暗号化されていない BACPAC ファイルに保存されます。 BACPAC ファイルを適切に保護し、新しいデータベースのインポートが完了してから Transparent Data Encryption を有効にする必要があります。
 
@@ -68,19 +68,19 @@ Transparent Data Encryption で保護されたデータベースをエクスポ�
 
 ## <a name="manage-transparent-data-encryption-in-the-azure-portal"></a>Azure portal で Transparent Data Encryption を管理する
 
-Azure portal を使用して Transparent Data Encryption を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ管理者として接続する必要があります。 
+Azure portal を使用して Transparent Data Encryption を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ管理者として接続する必要があります。
 
-Transparent Data Encryption はデータベース レベルで設定します。 データベースで Transparent Data Encryption を有効にするには、[Azure portal](https://portal.azure.com) に移動し、Azure 管理者または共同作成者アカウントでサインインします。 ユーザー データベースの Transparent Data Encryption 設定を見つけます。 既定では、サービスによって管理された Transparent Data Encryption が使用されます。 Transparent Data Encryption 証明書は、データベースを含むサーバーに対して自動的に生成されます。 
+Transparent Data Encryption はデータベース レベルで設定します。 データベースで Transparent Data Encryption を有効にするには、[Azure portal](https://portal.azure.com) に移動し、Azure 管理者または共同作成者アカウントでサインインします。 ユーザー データベースの Transparent Data Encryption 設定を見つけます。 既定では、サービスによって管理された Transparent Data Encryption が使用されます。 Transparent Data Encryption 証明書は、データベースを含むサーバーに対して自動的に生成されます。
 
 ![サービスによって管理された Transparent Data Encryption](./media/transparent-data-encryption-azure-sql/service-managed-tde.png)  
 
-Transparent Data Encryption マスター キー (Transparent Data Encryption 保護機能とも呼ばれます) は、サーバー レベルで設定します。 Bring Your Own Key をサポートする Transparent Data Encryption を使用し、Key Vault のキーでデータベースを保護するには、サーバーの Transparent Data Encryption 設定を確認します。 
+Transparent Data Encryption マスター キー (Transparent Data Encryption 保護機能とも呼ばれます) は、サーバー レベルで設定します。 Bring Your Own Key をサポートする Transparent Data Encryption を使用し、Key Vault のキーでデータベースを保護するには、サーバーの Transparent Data Encryption 設定を確認します。
 
-![Bring Your Own Key をサポートする Transparent Data Encryption](./media/transparent-data-encryption-azure-sql/tde-byok-support.png) 
+![Bring Your Own Key をサポートする Transparent Data Encryption](./media/transparent-data-encryption-azure-sql/tde-byok-support.png)
 
 ## <a name="manage-transparent-data-encryption-by-using-powershell"></a>PowerShell を使用して Transparent Data Encryption を管理する
 
-PowerShell を使用して Transparent Data Encryption を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ管理者として接続する必要があります。 
+PowerShell を使用して Transparent Data Encryption を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ管理者として接続する必要があります。
 
 | コマンドレット | 説明 |
 | --- | --- |
@@ -102,28 +102,28 @@ master データベースの **dbmanager** ロールの管理者またはメン�
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) | SET ENCRYPTION ON/OFF によって、データベースを暗号化または暗号化解除します。 |
 | [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |データベースの暗号化の状態と、関連付けられているデータベース暗号化キーに関する情報を返します。 |
-| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |各データ ウェアハウス ノードの暗号化の状態と、関連付けられているデータベース暗号化キーに関する情報を返します。 | 
+| [sys.dm_pdw_nodes_database_encryption_keys](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-nodes-database-encryption-keys-transact-sql) |各データ ウェアハウス ノードの暗号化の状態と、関連付けられているデータベース暗号化キーに関する情報を返します。 |
 |  | |
 
 Transact-SQL を使用して、Transparent Data Encryption 保護機能を Key Vault のキーに切り替えることはできません。 PowerShell または Azure portal を使用してください。
 
 ## <a name="manage-transparent-data-encryption-by-using-the-rest-api"></a>REST API を使用して Transparent Data Encryption を管理する
- 
-REST API を使用して Transparent Data Encryption を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ管理者として接続する必要があります。 
+
+REST API を使用して Transparent Data Encryption を構成するには、Azure の所有者、共同作成者、または SQL セキュリティ管理者として接続する必要があります。
 
 | コマンド | 説明 |
 | --- | --- |
-|[サーバーの作成または更新](/rest/api/sql/servers/createorupdate)|SQL Server インスタンスに Azure Active Directory ID を追加します (Key Vault へのアクセスを許可するために使用)。|
-|[サーバー キーの作成または更新](/rest/api/sql/serverkeys/createorupdate)|SQL Server インスタンスに Key Vault キーを追加します。|
-|[サーバー キーの削除](/rest/api/sql/serverkeys/delete)|SQL Server インスタンスから Key Vault キーを削除します。|
-|[サーバー キーの取得](/rest/api/sql/serverkeys/get)|SQL Server インスタンスから特定の Key Vault キーを取得します。|
-|[サーバーごとにサーバー キーのリストを取得](/rest/api/sql/serverkeys/listbyserver)|SQL Server インスタンスの Key Vault キーを取得します。 |
-|[暗号化保護機能の作成または更新](/rest/api/sql/encryptionprotectors/createorupdate)|SQL Server インスタンスの Transparent Data Encryption 保護機能を設定します。|
-|[暗号化保護機能の取得](/rest/api/sql/encryptionprotectors/get)|SQL Server インスタンスの Transparent Data Encryption 保護機能を取得します。|
-|[サーバーごとに暗号化保護機能のリストを取得](/rest/api/sql/encryptionprotectors/listbyserver)|SQL Server インスタンスの Transparent Data Encryption 保護機能を取得します。 |
-|[Transparent Data Encryption 構成の作成または更新](/rest/api/sql/transparentdataencryptions/createorupdate)|データベースの Transparent Data Encryption を有効または無効にします。|
-|[Transparent Data Encryption 構成の取得](/rest/api/sql/transparentdataencryptions/get)|データベースの Transparent Data Encryption 構成を取得します。|
-|[Transparent Data Encryption 構成の結果リストの取得](/rest/api/sql/transparentdataencryptionactivities/ListByConfiguration)|データベースの暗号化の結果を取得します。|
+|[サーバーの作成または更新](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|SQL Server インスタンスに Azure Active Directory ID を追加します (Key Vault へのアクセスを許可するために使用)。|
+|[サーバー キーの作成または更新](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|SQL Server インスタンスに Key Vault キーを追加します。|
+|[サーバー キーの削除](https://docs.microsoft.com/rest/api/sql/serverkeys/delete)|SQL Server インスタンスから Key Vault キーを削除します。|
+|[サーバー キーの取得](https://docs.microsoft.com/rest/api/sql/serverkeys/get)|SQL Server インスタンスから特定の Key Vault キーを取得します。|
+|[サーバーごとにサーバー キーのリストを取得](https://docs.microsoft.com/rest/api/sql/serverkeys/listbyserver)|SQL Server インスタンスの Key Vault キーを取得します。 |
+|[暗号化保護機能の作成または更新](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/createorupdate)|SQL Server インスタンスの Transparent Data Encryption 保護機能を設定します。|
+|[暗号化保護機能の取得](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/get)|SQL Server インスタンスの Transparent Data Encryption 保護機能を取得します。|
+|[サーバーごとに暗号化保護機能のリストを取得](https://docs.microsoft.com/rest/api/sql/encryptionprotectors/listbyserver)|SQL Server インスタンスの Transparent Data Encryption 保護機能を取得します。 |
+|[Transparent Data Encryption 構成の作成または更新](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/createorupdate)|データベースの Transparent Data Encryption を有効または無効にします。|
+|[Transparent Data Encryption 構成の取得](https://docs.microsoft.com/rest/api/sql/transparentdataencryptions/get)|データベースの Transparent Data Encryption 構成を取得します。|
+|[Transparent Data Encryption 構成の結果リストの取得](https://docs.microsoft.com/rest/api/sql/transparentdataencryptionactivities/listbyconfiguration)|データベースの暗号化の結果を取得します。|
 
 ## <a name="next-steps"></a>次の手順
 

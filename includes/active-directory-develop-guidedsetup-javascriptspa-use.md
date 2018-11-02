@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 77400453e455ff2ebf20f59f888a3e3d641bcf07
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: e42c678f3c6d030be13e40197a06e73b62581902
+ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48842863"
+ms.lasthandoff: 10/24/2018
+ms.locfileid: "49988419"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>ユーザーのサインインに Microsoft Authentication Library (MSAL) を使用する
 
@@ -127,24 +127,26 @@ else {
 <!--start-collapse-->
 ### <a name="more-information"></a>詳細情報
 
-初めて *[サインイン]* ボタンをクリックすると、`signIn` メソッドによって、ユーザーがサインインするための `loginPopup` が呼び出されます。 このメソッドで、*Microsoft Azure Active Directory v2 エンドポイント*のポップアップ ウィンドウが開かれて、ユーザーの資格情報が要求され、検証が行われます。 サインインに成功すると、ユーザーは元の *index.html* ページにリダイレクトされ、トークンが受信されて `msal.js` によって処理され、トークンに含まれる情報がキャッシュされます。 このトークンは *ID トークン*と呼ばれ、ユーザー表示名などのユーザーに関する基本情報が含まれます。 何らかの目的のためにこのトークンが提供する任意のデータを使用する予定がある場合、アプリケーションの有効なユーザーに対してトークンが発行されたことを保証するために、このトークンがバックグラウンド サーバーで確実に検証される必要があります。
+ユーザーが初めて **[サインイン]** ボタンをクリックすると、`signIn` メソッドによって、ユーザーがサインインするための `loginPopup` が呼び出されます。 このメソッドで、*Microsoft Azure Active Directory v2.0 エンドポイント*のポップアップ ウィンドウが開かれて、ユーザーの資格情報が要求され、検証が行われます。 サインインに成功すると、ユーザーは元の *index.html* ページにリダイレクトされ、トークンが受信されて `msal.js` によって処理され、トークンに含まれる情報がキャッシュされます。 このトークンは *ID トークン*と呼ばれ、ユーザー表示名などのユーザーに関する基本情報が含まれます。 何らかの目的のためにこのトークンが提供する任意のデータを使用する予定がある場合、アプリケーションの有効なユーザーに対してトークンが発行されたことを保証するために、このトークンがバックグラウンド サーバーで確実に検証される必要があります。
 
 このガイドで生成する SPA は、ユーザー プロファイル情報のため、`acquireTokenSilent`、`acquireTokenPopup`、またはその両方を呼び出して、Microsoft Graph API の照会に使用される*アクセス トークン*を取得します。 ID トークンを検証するサンプルが必要な場合は、[こちら](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Github active-directory-javascript-singlepageapp-dotnet-webapi-v2 sample")にある GitHub のサンプル アプリケーションを確認してください。このサンプルでは、トークンの検証に ASP.NET Web API を使用しています。
 
 #### <a name="getting-a-user-token-interactively"></a>ユーザー トークンを対話形式で取得する
 
-最初のサインインの後に、リソースにアクセスするためにトークンを要求するたびにユーザーを再認証しなくてすむようにするには、トークンを取得する多くの場合に *acquireTokenSilent* を使用する必要があります。 ただし、次の例のように、ユーザーが Azure Active Directory v2 エンドポイントとやり取りを行う必要がある状況があります。
+最初のサインインの後に、リソースにアクセスするためにトークンを要求するたびにユーザーを再認証しなくてすむようにするには、トークンを取得する多くの場合に *acquireTokenSilent* を使用する必要があります。 ただし、次の例のように、ユーザーが Azure Active Directory v2.0 エンドポイントとやり取りを行う必要がある状況があります。
+
 - パスワードの有効期限が切れているため、ユーザーは資格情報を再入力する必要がある
 - ご使用のアプリケーションが、ユーザーによる同意が必要なリソースへのアクセスを要求している
 - 2 要素認証が必須である
 
-*acquireTokenPopup(scope)* を呼び出すとポップアップ ウィンドウが表示されます (または、*acquireTokenRedirect(scope)* を呼び出すとユーザーが Azure Active Directory v2 エンドポイントにリダイレクトされます)。ユーザーはそこでやり取りをして、自分の資格情報の確認、要求されたリソースへの同意、または 2 要素認証の完了を行う必要があります。
+*acquireTokenPopup(scope)* を呼び出すとポップアップ ウィンドウが表示されます (または、*acquireTokenRedirect(scope)* を呼び出すとユーザーが Azure Active Directory v2.0 エンドポイントにリダイレクトされます)。ユーザーはそこでやり取りをして、自分の資格情報の確認、要求されたリソースへの同意、2 要素認証の完了のいずれかを行う必要があります。
 
 #### <a name="getting-a-user-token-silently"></a>ユーザー トークンを自動で取得する
+
 ` acquireTokenSilent` メソッドは、ユーザーの操作なしでトークンの取得や更新を処理します。 初めて `loginPopup` (または `loginRedirect`) が実行された後、その後の呼び出しでは、保護されたリソースにアクセスするトークンを取得するために `acquireTokenSilent` メソッドが通常使用されます。トークンの要求や更新のための呼び出しは自動で行われるためです。
 `acquireTokenSilent` は、ユーザーのパスワードの期限が切れている場合などに失敗することがあります。 アプリケーションでは、この例外を 2 つの方法で処理できます。
 
-1.  すぐに `acquireTokenPopup` を呼び出し、ユーザーにサインインを求める。 オンライン アプリケーション (ユーザーが使用できる非認証コンテンツが含まれていないアプリケーション) の場合は、一般に、この方法で処理します。 このガイドの設定で生成したサンプルでは、このパターンを使用しています。
+1. すぐに `acquireTokenPopup` を呼び出し、ユーザーにサインインを求める。 オンライン アプリケーション (ユーザーが使用できる非認証コンテンツが含まれていないアプリケーション) の場合は、一般に、この方法で処理します。 このガイドの設定で生成したサンプルでは、このパターンを使用しています。
 
 2. ユーザーに対してアプリケーションで視覚的に対話形式でのサインインを求めることで、ユーザーが適切なタイミングでサインインできるようにし、アプリケーションがあとで `acquireTokenSilent` を再試行できるようにする。 アプリケーションにユーザーが使用できる非認証コンテンツが含まれている場合など、アプリケーションの他の機能を中断せずに使用できる場合は、一般に、この方法で処理します。 この場合、ユーザーは、保護されたリソースにアクセスしたり、古くなった情報を更新したりするためにサインインするタイミングを決定できます。
 
