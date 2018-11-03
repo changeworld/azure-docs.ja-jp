@@ -339,10 +339,10 @@ items:
       href: how-to-enable-write-accelerator.md
     - name: ウルトラ SSD の使用
       href: disks-enable-ultra-ssd.md
-    - name: 管理ディスクに移行する
+    - name: マネージド ディスクに移行する
       href: migrate-to-managed-disks.md
       items:
-      - name: 非管理対象ディスクから管理ディスク
+      - name: 非管理対象ディスクからマネージド ディスク
         href: convert-unmanaged-to-managed-disks.md
       - name: 単一の クラシック VM から Resource Manager
         href: migrate-single-classic-to-resource-manager.md
