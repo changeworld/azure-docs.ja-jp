@@ -192,8 +192,6 @@ items:
         href: programming.md
       - name: SQL データのパーティション分割
         href: sql-api-partition-data.md
-      - name: Java Async SDK のトラブルシューティング
-        href: troubleshoot-java-async-sdk.md
       - name: データの種類
         items:
         - name: Datetime
@@ -485,6 +483,10 @@ items:
     items:
     - name: Bulk Executor ライブラリについて
       href: bulk-executor-overview.md
+- name: トラブルシューティング ガイド
+  items:
+  - name: Java Async SDK のトラブルシューティング
+    href: troubleshoot-java-async-sdk.md
 - name: リソース
   items:
   - name: Microsoft Learn でスキルを身に付ける
@@ -513,9 +515,9 @@ items:
       href: use-cases.md
     - name: ソーシャル メディア アプリ
       href: social-media-apps.md
-ms.openlocfilehash: b1e5e353d461f685593bce86be51ef4f133ddc99
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: bb18835e9bd413867b9cd8f7fe8c58d525c79875
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50740469"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963950"

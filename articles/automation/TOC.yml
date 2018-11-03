@@ -203,12 +203,6 @@ items:
       href: automation-create-alert-triggered-runbook.md
     - name: Amazon Web Service VM を作成する
       href: automation-scenario-aws-deployment.md
-    - name: GitHub Enterprise によるソース管理の統合
-      displayName: CI, runbooks
-      href: automation-scenario-source-control-integration-with-github-ent.md
-    - name: Azure DevOps によるソース管理の統合
-      displayName: VSTS, CI, runbooks
-      href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
       href: automation-deploy-template-runbook.md
     - name: Azure Automation を Event Grid および Microsoft Teams と統合する
@@ -277,9 +271,9 @@ items:
     href: http://stackoverflow.com/questions/tagged/azure-automation
   - name: ビデオ
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: 9ecdfd37ac2de97342447d25c4e09c53730651bf
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 671b0ea315af44875134c16c77b8bbeb9cf2ec73
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50155609"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962590"
