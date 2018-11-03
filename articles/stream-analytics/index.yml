@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: a9629df2a9f07450116cfc80752b0e192ca8a293
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 157a9c88fb3e8c4236b19637df88563af0b41b86
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987207"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977024"
 documentType: LandingData
 title: Stream Analytics のドキュメント
 metadata:
@@ -12,7 +12,7 @@ metadata:
   meta.description: Learn how to run IoT analytics in the cloud with fully-managed event processing. Analyze data in real time from applications, sensors, devices, and more.
   services: stream-analytics
   author: jasonwhowell
-  ms.author: jasonh
+  ms.author: mamccrea
   manager: kfile
   ms.service: stream-analytics
   ms.topic: landing-page
