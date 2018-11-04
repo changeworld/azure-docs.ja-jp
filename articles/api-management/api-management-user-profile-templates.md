@@ -110,7 +110,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |addresserEmail|string|現在のユーザーの電子メール アドレス。|  
 |developersUsageStatisticsLinkk|string|現在のユーザーの分析結果を表示するための相対 URL。|  
 |subscriptions|[サブスクリプション](api-management-template-data-model-reference.md#Subscription) エンティティのコレクション|現在のユーザーのサブスクリプション。|  
-|格納する|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション|現在のユーザーのアプリケーション。|  
+|applications|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション|現在のユーザーのアプリケーション。|  
 |changePasswordUrl|string|現在のユーザーのパスワードを変更するための相対 URL。|  
 |changeNameOrEmailUrl|string|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
 |canChangePassword|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
@@ -331,7 +331,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |addresserEmail|string|現在のユーザーの電子メール アドレス。|  
 |developersUsageStatisticsLinkk|string|現在のユーザーの分析結果を表示するための相対 URL。|  
 |subscriptions|[サブスクリプション](api-management-template-data-model-reference.md#Subscription) エンティティのコレクション|現在のユーザーのサブスクリプション。|  
-|格納する|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション|現在のユーザーのアプリケーション。|  
+|applications|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション|現在のユーザーのアプリケーション。|  
 |changePasswordUrl|string|現在のユーザーのパスワードを変更するための相対 URL。|  
 |changeNameOrEmailUrl|string|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
 |canChangePassword|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
@@ -494,7 +494,7 @@ Azure API Management には、開発者ポータルの各ページの内容を�
 |addresserEmail|string|現在のユーザーの電子メール アドレス。|  
 |developersUsageStatisticsLinkk|string|現在のユーザーの分析結果を表示するための相対 URL。|  
 |subscriptions|[サブスクリプション](api-management-template-data-model-reference.md#Subscription) エンティティのコレクション|現在のユーザーのサブスクリプション。|  
-|格納する|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション|現在のユーザーのアプリケーション。|  
+|applications|[アプリケーション](api-management-template-data-model-reference.md#Application) エンティティのコレクション|現在のユーザーのアプリケーション。|  
 |changePasswordUrl|string|現在のユーザーのパスワードを変更するための相対 URL。|  
 |changeNameOrEmailUrl|string|現在のユーザーの電子メール アドレスと名前を変更するための相対 URL。|  
 |canChangePassword|ブール値|現在のユーザーがパスワードを変更できるかどうか。|  
