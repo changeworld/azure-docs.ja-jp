@@ -213,7 +213,7 @@ items:
       href: virtual-machine-scale-sets-convert-template-to-md.md
     - name: 優先順位の低い VM を使用する
       href: virtual-machine-scale-sets-use-low-priority.md
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: 一般的な管理タスク
       items:
