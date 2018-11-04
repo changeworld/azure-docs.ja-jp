@@ -199,7 +199,7 @@ items:
       href: virtual-network-optimize-network-bandwidth.md
     - name: ホスト名を表示および変更する
       href: virtual-networks-viewing-and-modifying-hostnames.md
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: 仮想ネットワーク
       href: manage-virtual-network.md
@@ -262,7 +262,7 @@ items:
         href: virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md
       - name: サービス構成ファイルでの DNS 設定の指定
         href: virtual-networks-specifying-dns-settings-in-a-service-configuration-file.md
-      - name: '[管理]'
+      - name: 管理
         items:
         - name: ネットワーク構成ファイル
           href: virtual-networks-using-network-configuration-file.md
@@ -290,7 +290,7 @@ items:
           href: virtual-network-deploy-multinic-classic-cli.md
       - name: VM の作成 - 静的プライベート IP アドレス
         href: virtual-networks-reserved-public-ip.md
-      - name: '[管理]'
+      - name: 管理
         items:
         - name: 静的 IP アドレス
           items:
