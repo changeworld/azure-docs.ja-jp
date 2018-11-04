@@ -66,7 +66,7 @@ Web サービスのデプロイも検索可能です。 たとえば、特定の
 
 ご自身のイメージを、クラウド内の次の[デプロイ ターゲット](how-to-deploy-and-where.md)にデプロイできます。
 
-* Azure コンテナー インスタンス
+* Azure Container Instances
 * Azure Kubernetes Service
 * Azure FPGA マシン
 * Azure IoT Edge デバイス
