@@ -90,7 +90,7 @@ H2O Sparkling Water の提供内容:
 
     ![出力](./media/hdinsight-apps-install-h2o/output.png)
 
-これで完了です。 わずか数分の内に Spark で人工知能を利用しました。 次は、さまざまな種類の機会学習アルゴリズムのデモを行う H2O Flow のサンプルをさらに試すことができます。
+これで完了です。 わずか数分の内に Spark で人工知能を利用しました。 次は、さまざまな種類の機械学習アルゴリズムのデモを行う H2O Flow のサンプルをさらに試すことができます。
 
 ## <a name="next-steps"></a>次の手順
 
