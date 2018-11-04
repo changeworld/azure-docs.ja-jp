@@ -65,7 +65,7 @@ items:
     href: output-error-policy.md
 - name: ハウツーガイド
   items:
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: 資格情報の更新
       href: stream-analytics-login-credentials-inputs-outputs.md
