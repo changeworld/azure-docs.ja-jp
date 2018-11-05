@@ -86,7 +86,18 @@
 ### [Azure を通じた SaaS の販売](./cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions.md)
 ### [SaaS API](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
 
-## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md)
+<!-- Legacy ## [Containers](./cloud-partner-portal-orig/cloud-partner-portal-containers-guide.md) -->
+
+## [Containers のプラン](./cloud-partner-portal/containers/cpp-containers-offer.md)
+### [前提条件](./cloud-partner-portal/containers/cpp-prerequisites.md)
+### [コンテナー プランの作成](./cloud-partner-portal/containers/cpp-create-offer.md)
+#### [[プランの設定] タブ](./cloud-partner-portal/containers/cpp-offer-settings-tab.md)
+#### [[SKU] タブ](./cloud-partner-portal/containers/cpp-skus-tab.md)
+#### [[Marketplace] タブ](./cloud-partner-portal/containers/cpp-marketplace-tab.md)
+#### [[サポート] タブ](./cloud-partner-portal/containers/cpp-support-tab.md)
+### [コンテナーの技術アセットの作成](./cloud-partner-portal/containers/cpp-create-technical-assets.md)
+### [コンテナー プランの発行](./cloud-partner-portal/containers/cpp-publish-offer.md)
+### [既存のプランの更新](./cloud-partner-portal/containers/cpp-update-existing-offer.md)
 
 ## [IoT Edge モジュール プラン](./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md)
 ### [前提条件](./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md)

@@ -86,6 +86,8 @@ items:
       href: how-to-configure-python.md
     - name: アプリ設定の使用
       href: ../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
+    - name: Storage によるコンテンツの配信
+      href: how-to-serve-content-from-azure-storage.md
   - name: '[Deploy to Azure (Azure へのデプロイ)]'
     items:
     - name: アプリケーションのデプロイ
@@ -238,9 +240,9 @@ items:
         href: ../app-service-web-open-source-technologies-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
       - name: 構成と管理に関する FAQ
         href: ../app-service-web-configuration-and-management-faq.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-ms.openlocfilehash: 751430519904af873ae8e086c2c05426223acb4b
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 08da442462083f86ba3c1c5a493d4fe97c760595
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50240343"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978007"
