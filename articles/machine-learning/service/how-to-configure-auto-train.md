@@ -109,7 +109,7 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 `get_data` スクリプトは次のものを返すことができます。
 キー | type |    相互に排他的 | 説明
 ---|---|---|---
-○ | Pandas データフレームまたは Numpy 配列 | data_train、label、columns |  トレーニングするすべての機能
+X | Pandas データフレームまたは Numpy 配列 | data_train、label、columns |  トレーニングするすべての機能
 y | Pandas データフレームまたは Numpy 配列 |   label   | トレーニングするラベル データ。 分類の場合、整数の配列にする必要があります。
 X_valid | Pandas データフレームまたは Numpy 配列   | data_train、label | "_省略可能_" 検証するすべての機能。 指定しない場合、X はトレーニング間で分割されて検証されます
 y_valid |   Pandas データフレームまたは Numpy 配列 | data_train、label | "_省略可能_" 検証するラベル データ。 指定しない場合、y はトレーニング間で分割されて検証されます
