@@ -28,7 +28,7 @@ items:
       href: data-box-gateway-limits.md
   - name: 方法
     items:
-    - name: '[管理]'
+    - name: 管理
       items:
       - name: 共有
         href: data-box-gateway-manage-shares.md
