@@ -52,7 +52,7 @@ items:
       href: container-instances-environment-variables.md
     - name: liveness probe の構成
       href: container-instances-liveness-probe.md
-  - name: '[管理]'
+  - name: 管理
     items:
     - name: 実行中のコンテナーの更新
       href: container-instances-update.md
