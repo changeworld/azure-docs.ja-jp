@@ -92,7 +92,7 @@
 #### [App Service 環境内でのアプリのスケーリング](../app-service/environment/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 #### [App Service 環境内での自動スケール](../app-service/environment/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## [管理]
+## 管理
 ### [構成](../app-service/web-sites-configure.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### カスタム ドメイン
 #### [カスタム ドメインを購入して構成する](../app-service/custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
