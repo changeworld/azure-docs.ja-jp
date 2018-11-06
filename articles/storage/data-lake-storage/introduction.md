@@ -19,7 +19,7 @@ ms.locfileid: "42140712"
 
 Azure Data Lake Storage Gen2 プレビューは、[Azure Blob ストレージ](../blobs/storage-blobs-introduction.md)の上位にビルドされる、ビッグ データ分析専用の機能セットです。 ファイル システムとオブジェクト ストレージの両方のパラダイムを使用して、データと連携させることができます。 これにより、Data Lake Storage Gen2 は、唯一のクラウドベースのマルチモーダル ストレージ サービスとなり、すべてのデータから分析値を抽出することができます。
 
-Data Lake Storage Gen2 は、全サイクルの分析データに必要なすべての特性を備えています。 これは、2 つの既存のストレージ サービスの機能に由来します。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケールなど、[Azure Data Lake Storage Gen1](../../data-lake-store/index.md) に由来する機能は、[Azure Blob ストレージ](../blobs/storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能、および SDK/ツーツ エコシステムと組み合わされています。 Data Lake Storage Gen2 では、すべてのオブジェクト ストレージの品質を備えたまま、分析ワークロード用に最適化されたファイル システム インターフェイスの利点が追加されています。
+Data Lake Storage Gen2 は、全サイクルの分析データに必要なすべての特性を備えています。 これは、2 つの既存のストレージ サービスの機能に由来します。 ファイル システム セマンティクス、ファイル レベルのセキュリティおよびスケールなど、[Azure Data Lake Storage Gen1](../../data-lake-store/index.md) に由来する機能は、[Azure Blob ストレージ](../blobs/storage-blobs-introduction.md)の低コストの階層型記憶域、高可用性/ディザスター リカバリー機能、および SDK/ツール エコシステムと組み合わされています。 Data Lake Storage Gen2 では、すべてのオブジェクト ストレージの品質を備えたまま、分析ワークロード用に最適化されたファイル システム インターフェイスの利点が追加されています。
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>エンタープライズ ビッグ データ分析用に設計されている
 
