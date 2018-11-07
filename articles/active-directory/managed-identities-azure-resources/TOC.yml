@@ -73,7 +73,7 @@ items:
       href: qs-configure-powershell-windows-vm.md
     - name: Azure Resource Manager テンプレート
       href: qs-configure-template-windows-vm.md
-    - name: REST ()
+    - name: REST
       href: qs-configure-rest-vm.md
     - name: Azure SDK
       href: qs-configure-sdk-windows-vm.md
@@ -87,7 +87,7 @@ items:
       href: qs-configure-powershell-windows-vmss.md
     - name: Azure Resource Manager テンプレート
       href: qs-configure-template-windows-vmss.md
-    - name: REST ()
+    - name: REST
       href: qs-configure-rest-vmss.md
   - name: VM でのマネージド ID の利用
     items:
@@ -107,7 +107,7 @@ items:
       href: how-to-manage-ua-identity-powershell.md
     - name: Azure Resource Manager テンプレート
       href: how-to-manage-ua-identity-arm.md
-    - name: REST ()
+    - name: REST
       href: how-to-manage-ua-identity-rest.md
 - name: リファレンス
   items:
