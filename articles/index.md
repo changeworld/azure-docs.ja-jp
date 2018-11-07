@@ -3634,7 +3634,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning サービス</h3>
-                                                    <p>機会学習および AI モデルを構築、デプロイ、管理</p>
+                                                    <p>機械学習および AI モデルを構築、デプロイ、管理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4137,7 +4137,7 @@ PowerShell でスクリプトを使用した Azure タスクの自動化</a>
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning サービス</h3>
-                                                    <p>機会学習および AI モデルを構築、デプロイ、管理</p>
+                                                    <p>機械学習および AI モデルを構築、デプロイ、管理</p>
                                                 </div>
                                             </div>
                                         </div>
