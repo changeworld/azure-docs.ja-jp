@@ -1,6 +1,6 @@
 ---
 title: クイック スタート - Hello World を Azure Service Fabric Mesh にデプロイする | Microsoft Docs
-description: このクイック スタートでは、Service Fabric Mesh アプリケーションを Azure Service Fabric mesh にデプロイする方法について説明します。
+description: このクイック スタートでは、Service Fabric Mesh アプリケーションを Azure Service Fabric Mesh にデプロイする方法について説明します。
 services: service-fabric-mesh
 keywords: SEO チャンプを確認せずに、キーワードを追加または編集しないでください。
 author: rwike77
@@ -26,7 +26,7 @@ ms.locfileid: "45541468"
 
 Azure アカウントをまだお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
-## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定 
+## <a name="set-up-service-fabric-mesh-cli"></a>Service Fabric Mesh CLI の設定
 Azure Cloud Shell または Azure CLI のローカル インストールを使用して、このクイック スタートを完了できます。 こちらの[手順](service-fabric-mesh-howto-setup-cli.md)に従って、Azure Service Fabric Mesh CLI 拡張モジュールをインストールしてください。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
@@ -38,24 +38,24 @@ az account set --subscription "<subscriptionID>"
 ```
 
 ## <a name="create-resource-group"></a>リソース グループの作成
-アプリケーションのデプロイ先となるリソース グループを作成します。 既存のリソース グループを使用して、この手順をスキップできます。 
+アプリケーションのデプロイ先となるリソース グループを作成します。 既存のリソース グループを使用して、この手順をスキップできます。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus 
+az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="deploy-the-application"></a>アプリケーションのデプロイ
-`az mesh deployment create` コマンドを使用して、リソース グループにアプリケーションを作成します。  次のコマンドレットを実行します。
+`az mesh deployment create` コマンドを使用して、リソース グループにアプリケーションを作成します。 次のコマンドレットを実行します。
 
 ```azurecli-interactive
-az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{'location': {'value': 'eastus'}}" 
+az mesh deployment create --resource-group myResourceGroup --template-uri https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json --parameters "{'location': {'value': 'eastus'}}"
 ```
 
 前述のコマンドでは、[mesh_rp.linux.json template](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.linux.json) を使用して Linux アプリケーションがデプロイされます。 Windows アプリケーションをデプロイする場合は、[mesh_rp.windows.json template](https://sfmeshsamples.blob.core.windows.net/templates/helloworld/mesh_rp.windows.json) を使用します。 Windows コンテナー イメージは Linux コンテナー イメージよりも大きく、デプロイに時間がかかることがあります。
 
 数分後、コマンドによって以下が返されます。
 
-`helloWorldApp has been deployed successfully on helloWorldNetwork with public ip address <IP Address>` 
+`helloWorldApp has been deployed successfully on helloWorldNetwork with public ip address <IP Address>`
 
 ## <a name="open-the-application"></a>アプリケーションを開く
 アプリケーションが正常にデプロイされたら、CLI 出力からサービス エンドポイントのパブリック IP アドレスをコピーします。 Web ブラウザーで IP アドレスを開きます。 Azure Service Fabric Mesh のロゴと一緒に Web ページが表示されます。
