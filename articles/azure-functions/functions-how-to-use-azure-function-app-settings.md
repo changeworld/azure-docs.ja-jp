@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 18e4adb47ecf8e6d44edea873a4b3cc73492b273
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5e34aae62f871cba2a27a292242cff8e90c67934
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301485"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228982"
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
 
@@ -50,7 +50,7 @@ Azure Functions では、関数アプリに個々の関数の実行コンテキ�
 
 **[設定]** タブでは、関数アプリで使用される関数のランタイム バージョンを更新できます。 また、関数アプリでホストされるすべての関数への HTTP アクセスを制限するホスト キーを管理します。
 
-Functions では、従量課金ホスティング プランと App Service ホスティング プランの両方がサポートされます。 詳細については、「[Azure Functions の適切なサービス プランを選択する](functions-scale.md)」を参照してください。 従量課金プランで予測しやすいように、Functions では、毎日の使用量クォータをギガバイト秒で設定してプラットフォームの使用量を制限できます。 毎日の使用量クォータに達すると、関数アプリは停止されます。 使用量クォータに達した結果として停止した関数アプリは、毎日の使用量クォータの設定と同じ手順で再び有効にすることができます。 課金の詳細については、[Azure Functions の価格のページ](http://azure.microsoft.com/pricing/details/functions/)をご覧ください。   
+Functions では、従量課金ホスティング プランと App Service ホスティング プランの両方がサポートされます。 詳細については、「[Azure Functions の適切なサービス プランを選択する](functions-scale.md)」を参照してください。 従量課金プランで予測しやすいように、Functions では、毎日の使用量クォータをギガバイト秒で設定してプラットフォームの使用量を制限できます。 毎日の使用量クォータに達すると、関数アプリは停止されます。 使用量クォータに達した結果として停止した関数アプリは、毎日の使用量クォータの設定と同じ手順で再び有効にすることができます。 課金の詳細については、[Azure Functions の価格のページ](https://azure.microsoft.com/pricing/details/functions/)をご覧ください。   
 
 ## <a name="platform-features-tab"></a>[プラットフォーム機能] タブ
 

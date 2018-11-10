@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 ms.component: common
-ms.openlocfilehash: 0a105122eccdfa671c806389908762941f23200c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 6384af5368fe722d6c9307d56d8a071ebcd17bf0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525309"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226976"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>C++ での Azure Storage のリソース一覧の取得
 一覧取得操作は、Azure Storage を使用する多くの開発シナリオで重要です。 この記事では、C++ 用 Microsoft Azure Storage クライアント ライブラリで提供される一覧取得 API を使用して、Azure Storage 内のオブジェクトを最も効率的に列挙する方法について説明します。
@@ -195,6 +195,6 @@ Azure Storage および C++ 用クライアント ライブラリの詳細につ
 * [C++ から Table ストレージを使用する方法](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [C++ から Queue ストレージを使用する方法](../storage-c-plus-plus-how-to-use-queues.md)
 * [C++ 用 Azure Storage クライアント ライブラリのドキュメント](http://azure.github.io/azure-storage-cpp/)
-* [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure のストレージ チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
 

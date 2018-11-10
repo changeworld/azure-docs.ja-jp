@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: a715c300cc5490eef9dbe7971dabe1733fd47f49
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 833bb6838733395d83468be3d2960c7c237aa3fc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402219"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957677"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics を管理する
 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
@@ -521,6 +521,6 @@ Azure クイックスタート テンプレート ギャラリーに、Log Analy
 * [既存のストレージ アカウントの Log Analytics への追加](https://azure.microsoft.com/resources/templates/oms-existing-storage-account/)
 
 ## <a name="next-steps"></a>次の手順
-* [Resource Manager テンプレートを使用して Windows エージェントを Azure VM にデプロイします](../virtual-machines/windows/extensions-oms.md)。
-* [Resource Manager テンプレートを使用して Linux エージェントを Azure VM にデプロイします](../virtual-machines/linux/extensions-oms.md)。
+* [Resource Manager テンプレートを使用して Windows エージェントを Azure VM にデプロイします](../virtual-machines/extensions/oms-windows.md)。
+* [Resource Manager テンプレートを使用して Linux エージェントを Azure VM にデプロイします](../virtual-machines/extensions/oms-linux.md)。
 

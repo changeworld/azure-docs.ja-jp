@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 10/3/2018
 ms.author: trinadhk
-ms.openlocfilehash: 9152733e189aec25a5c024de7f9a3582c29218a3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 20c1606d4d6a1ddd43426731e5498d1bee47f2e3
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406536"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50962539"
 ---
 # <a name="upgrade-to-azure-vm-backup-stack-v2"></a>Azure VM バックアップ スタック V2 にアップグレードする
 
@@ -28,8 +28,8 @@ ms.locfileid: "49406536"
 
 * 復元時に非管理対象 VM の元のストレージ アカウントを使用できます。 この機能は、ストレージ アカウント間に分散しているディスクが VM にある場合でも使用できます。 さまざまな VM 構成で復元操作が速くなります。
     > [!NOTE]
-    > この機能は、VM のディスクを復旧ポイントのデータで置き換えることと同じではありません。 
-    
+    > この機能は、VM のディスクを復旧ポイントのデータで置き換えることと同じではありません。
+
 
 ## <a name="whats-changing-in-the-new-stack"></a>新しいスタックでの変更点
 現在、バックアップ ジョブは 2 つのフェーズで構成されます。
@@ -55,7 +55,7 @@ ms.locfileid: "49406536"
 * Premium Storage アカウントの場合、インスタント復旧ポイントのために作成されるスナップショットには上限として 10 TB の領域が割り当てられています。
 
 > [!NOTE]
-> [Standard SSD マネージド ディスク](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)と最大 32 個のデータ ディスクを備えた仮想マシンの Azure Backup のサポートを受けるには、Azure VM バックアップ スタック V2 にアップグレードしてください。
+> [Standard SSD マネージド ディスク](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)の Azure Backup のサポートを受けるには、Azure VM バックアップ スタック V2 にアップグレードしてください。
 
 ## <a name="upgrade"></a>アップグレード
 ### <a name="the-azure-portal"></a>Azure ポータル
@@ -119,4 +119,4 @@ V2 にスタックをアップグレードする場合、コストはかかり�
 アンマネージド ディスクには増分スナップショットが使用されます。 マネージド ディスクの場合、Azure Backup によって作成される復元ポイント コレクションは、BLOB スナップショットを使用するため、増分されます。
 
 ### <a name="how-to-get-standard-ssd-managed-disk-support-for-a-virtual-machine"></a>仮想マシンの Standard SSD マネージド ディスクのサポートはどのようにして受けるのですか。
-[Standard SSD マネージド ディスク](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)の Azure Backup のサポートを受けるには、Azure VM バックアップ スタック V2 にアップグレードしてください。 アップグレードすると、最大 32 個のデータ ディスクを備えた仮想マシンもバックアップできます。
+[Standard SSD マネージド ディスク](https://azure.microsoft.com/blog/announcing-general-availability-of-standard-ssd-disks-for-azure-virtual-machine-workloads/)の Azure Backup のサポートを受けるには、Azure VM バックアップ スタック V2 にアップグレードしてください。
