@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
-ms.openlocfilehash: 656a5df21d1f7dd2e7662dc3a0415581eae02b00
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 7cb8c992b4c131b7f28eca6c2f35ee9facdf8d4e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471239"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416105"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Custom Speech Service から Speech Service に移行する
 
@@ -25,7 +25,7 @@ Custom Speech Service は Speech Service の一部になっています。 Speec
  
 ## <a name="migration-for-new-customers"></a>新しいお客様の移行
 
-価格モデルがより単純になり、Speech Service の時間ベースの価格モデルに移動します。   
+Speech Service の価格モデルは時間ベースになっており、より単純です。   
 
 1. お使いのアプリケーションが使用可能なリージョンごとに Azure リソースを作成します。 Azure リソース名は **Speech** です。 同じリージョン内では、以下のサービスについて、個別のリソースを作成する代わりに、1 つの Azure リソースを使用できます。
 
@@ -38,17 +38,17 @@ Custom Speech Service は Speech Service の一部になっています。 Speec
 
 3. クイック スタート ガイドと SDK サンプルに従って、適切な API を使用します。 REST API を使用する場合は、正しいエンドポイントとリソース キーを使用する必要もあります。 
 
-4. Speech Service とその API を使用するようにクライアント アプリケーションを更新します｡ 
+4. Speech Service とその API を使用するようにクライアント アプリケーションを更新します。 
 
 > [!NOTE]
-> * LUIS - Language Understanding (LUIS) で音声 を有効にした場合は、同じリージョン内の 1 つの LUIS リソースで、LUIS だけでなく、すべての音声サービスに対応できます。 「[音声から意図を認識する](how-to-recognize-intents-from-speech-csharp.md)」をご覧ください。
-> * テキストからテキストへの翻訳は Speech Service の一部ではありません。 専用の Azure リソース サブスクリプションが必要です。
+> * Language Understanding (LUIS) で音声を有効にした場合は、同じリージョン内の 1 つの LUIS リソースで、LUIS だけでなく、すべての音声サービスに対応できます。 詳細については、「[音声から意図を認識する](how-to-recognize-intents-from-speech-csharp.md)」を参照してください。
+> * テキストからテキストへの翻訳は Speech Service の一部ではありません。 この機能には、専用の Azure リソース サブスクリプションが必要です。
   
 
 
 ## <a name="migration-for-existing-customers"></a>既存のお客様の移行
 
-既存のお客様は、Speech Service ポータルで Speech Service に既存のリソース キーを移行する必要があります。 次の手順に従います。 
+Speech Service ポータルで Speech Service に既存のリソース キーを移行します。 次の手順に従います。 
 
 > [!NOTE] 
 > リソース キーは、同じリージョン内でのみ移行できます。 
@@ -62,7 +62,7 @@ Custom Speech Service は Speech Service の一部になっています。 Speec
 ## <a name="next-steps"></a>次の手順
 
 * [Speech Service を無料で試す](get-started.md)
-* [音声テキスト変換](./speech-to-text.md)の概念を学習する
+* [Speech to Text API](./speech-to-text.md) の概念を学習する
 
 ## <a name="see-also"></a>関連項目
 

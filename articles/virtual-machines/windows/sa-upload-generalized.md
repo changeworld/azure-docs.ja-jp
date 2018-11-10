@@ -1,6 +1,6 @@
 ---
 title: 一般化した VHD をアップロードして複数の VM を Azure に作成する | Microsoft Docs
-description: 一般化した VHD を Azure ストレージ アカウントにアップロードして、Resource Manager デプロイメント モデルで使用する Windows VM を作成します。
+description: 一般化した VHD を Azure ストレージ アカウントにアップロードして、Resource Manager デプロイ モデルで使用する Windows VM を作成します。
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: be2ec6df33f5756dc080195bfad32e0c9079453c
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: 199343fce4774ea643bc22c879efc6717aa0a510
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31603202"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244731"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>一般化した VHD を Azure にアップロードして新しい VM を作成する
 
@@ -29,7 +29,7 @@ ms.locfileid: "31603202"
 
 ストレージ アカウント内の特殊な VHD から VM を作成する場合は、「[Create a VM from a specialized VHD (特殊な VHD からの VM の作成)](sa-create-vm-specialized.md)」を参照してください。
 
-このトピックではストレージ アカウントの使用について説明していますが、代わりに Managed Disks の使用をお勧めします。 管理ディスクを使用する新しい VM の準備、アップロード、作成を行う方法の詳しいチュートリアルについては、[Azure にアップロードされた一般化した VHD から Managed Disks を使用した新しい VM の作成](upload-generalized-managed.md)に関するページをご覧ください。
+このトピックではストレージ アカウントの使用について説明していますが、代わりに Managed Disks の使用をお勧めします。 マネージド ディスクを使用する新しい VM の準備、アップロード、作成を行う方法の詳しいチュートリアルについては、[Azure にアップロードされた一般化した VHD から Managed Disks を使用した新しい VM の作成](upload-generalized-managed.md)に関するページをご覧ください。
 
 
 
@@ -41,7 +41,7 @@ ms.locfileid: "31603202"
   * Sysprep を使用した仮想マシンの一般化
 
 ### <a name="generalize-a-windows-virtual-machine-using-sysprep"></a>Sysprep を使用した Windows 仮想マシンの一般化
-このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。 特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+このセクションでは、Windows 仮想マシンをイメージとして使用できるように一般化する方法について説明します。 特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](https://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
 
 コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
@@ -155,7 +155,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 
 ### <a name="set-the-uri-of-the-vhd"></a>VHD の URI の設定
 
-使用する VHD の URI は、https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd という形式になります。 この例では、**myVHD** という名前の VHD がストレージ アカウント **mystorageaccount** のコンテナー **mycontainer** にあります。
+使用する VHD の URI は、 https://**mystorageaccount**.blob.core.windows.net/**mycontainer**/**MyVhdName**.vhd という形式になります。 この例では、**myVHD** という名前の VHD がストレージ アカウント **mystorageaccount** のコンテナー **mycontainer** にあります。
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"

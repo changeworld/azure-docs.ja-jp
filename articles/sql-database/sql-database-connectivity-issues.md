@@ -13,12 +13,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 08/01/2018
-ms.openlocfilehash: f381eaad61c98228ea9be2665ebed5878b666317
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: ee5542c72991a2aa8de94f5dc2e819eb5d311a27
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064239"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246805"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>SQL Database の SQL 接続エラーと一時エラーのトラブルシューティング、診断、防止
 この記事では、クライアント アプリケーションが Azure SQL Database とやり取りする際に発生する接続エラーと一時エラーを防止、トラブルシューティング、診断、軽減する方法について説明します。 再試行ロジックの構成方法、接続文字列の作成方法、およびその他の接続設定の調整方法について説明します。
@@ -63,7 +63,7 @@ ms.locfileid: "47064239"
 ### <a name="interval-increase-between-retries"></a>再試行の間隔を長くする
 最初に再試行する前に、5 秒間待つことをお勧めします。 5 秒未満で再試行すると、クラウド サービスに過度の負荷がかかるおそれがあります。 再試行するたびに、待ち時間を大幅に長くし、最大 60 秒待つ必要があります。
 
-ADO.NET を使用するクライアントのブロック期間については、「[SQL Server の接続プール (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
+ADO.NET を使用するクライアントのブロック期間については、「[SQL Server の接続プール (ADO.NET)](https://msdn.microsoft.com/library/8xx3tyca.aspx)」を参照してください。
 
 加えて、最大再試行回数を設定し、プログラムが自動的に終了するように配慮する必要があります。
 
@@ -115,13 +115,13 @@ ADO.NET を使用するクライアントのブロック期間については、
 <a id="net-sqlconnection-parameters-for-connection-retry" name="net-sqlconnection-parameters-for-connection-retry"></a>
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>接続再試行用の .NET SqlConnection パラメーター
-.NET Framework クラスの **System.Data.SqlClient.SqlConnection** を使用してクライアント プログラムから SQL Database に接続する場合は、接続再試行機能を活用できるように .NET 4.6.1 以降 (または .NET Core) を使用してください。 機能の詳細については、[この Web ページ](http://go.microsoft.com/fwlink/?linkid=393996)を参照してください。
+.NET Framework クラスの **System.Data.SqlClient.SqlConnection** を使用してクライアント プログラムから SQL Database に接続する場合は、接続再試行機能を活用できるように .NET 4.6.1 以降 (または .NET Core) を使用してください。 機能の詳細については、[この Web ページ](https://go.microsoft.com/fwlink/?linkid=393996)を参照してください。
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
 
-[接続文字列](http://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) を **SqlConnection** オブジェクト用に作成するときは、次のパラメーター間で値を調整します。
+[接続文字列](https://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) を **SqlConnection** オブジェクト用に作成するときは、次のパラメーター間で値を調整します。
 
 * **ConnectRetryCount**:&nbsp;&nbsp;既定値は 1 です。 範囲は 0 ～ 255 です。
 * **ConnectRetryInterval**:&nbsp;&nbsp;既定値は 1 秒です。 範囲は 1 ～ 60 です。
@@ -211,7 +211,7 @@ ADO.NET 4.0 以前のバージョンを使用する場合、最新の ADO.NET. �
 任意の Windows コンピューターで、次のユーティリティを試すことができます。
 
 * SQL Server Management Studio (ssms.exe)。ADO.NET を使用して接続します。
-* sqlcmd.exe。[ODBC](http://msdn.microsoft.com/library/jj730308.aspx) を使用して接続します。
+* sqlcmd.exe。[ODBC](https://msdn.microsoft.com/library/jj730308.aspx) を使用して接続します。
 
 プログラムが接続された後に、短い SQL SELECT クエリが正しく動作するかどうかをテストしてください。
 
@@ -226,7 +226,7 @@ Linux では、次のユーティリティが役に立つ場合があります�
 * `nmap -sS -O 127.0.0.1`
   * 例の値を実際の IP アドレスに変更してください。
 
-Windows では [PortQry.exe](http://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。 以下は、SQL Database サーバーのポートの状況の照会をノート PC 上で実行する例を示しています。
+Windows では [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) ユーティリティが利用できます。 以下は、SQL Database サーバーのポートの状況の照会をノート PC 上で実行する例を示しています。
 
 ```
 [C:\Users\johndoe\]
@@ -253,7 +253,7 @@ TCP port 1433 (ms-sql-s service): LISTENING
 
 診断には、クライアントで発生したエラーのログが役立ちます。 SQL Database が内部的に記録するエラー データとそれらのログ エントリを相互に関連付けることも可能です。
 
-Enterprise Library 6 (EntLib60) には、ログ記録をサポートする .NET マネージド クラスがあります。 詳細については、「[5 - As easy as falling off a log: Use the Logging Application Block (5 - きわめて簡単: Logging アプリケーション ブロックの使用)](http://msdn.microsoft.com/library/dn440731.aspx)」を参照してください。
+Enterprise Library 6 (EntLib60) には、ログ記録をサポートする .NET マネージド クラスがあります。 詳細については、「[5 - As easy as falling off a log: Use the Logging Application Block (5 - きわめて簡単: Logging アプリケーション ブロックの使用)](https://msdn.microsoft.com/library/dn440731.aspx)」を参照してください。
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
@@ -262,8 +262,8 @@ Enterprise Library 6 (EntLib60) には、ログ記録をサポートする .NET 
 
 | ログのクエリ | 説明 |
 |:--- |:--- |
-| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[sys.event_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一時エラーや接続障害を引き起こす可能性のあるものを含む、個々のイベントに関する情報が表示されます。<br/><br/>理想的には、**start_time** や **end_time** の値を、クライアント プログラムに問題が発生した時間の情報に関連付けます。<br/><br/>このクエリを実行するには、"*マスター*" データベースに接続する必要があります。 |
-| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[sys.database_connection_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>このクエリを実行するには、"*マスター*" データベースに接続する必要があります。 |
+| `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[sys.event_log](https://msdn.microsoft.com/library/dn270018.aspx) ビューには、一時エラーや接続障害を引き起こす可能性のあるものを含む、個々のイベントに関する情報が表示されます。<br/><br/>理想的には、**start_time** や **end_time** の値を、クライアント プログラムに問題が発生した時間の情報に関連付けます。<br/><br/>このクエリを実行するには、"*マスター*" データベースに接続する必要があります。 |
+| `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[sys.database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>このクエリを実行するには、"*マスター*" データベースに接続する必要があります。 |
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
@@ -309,12 +309,12 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 <a id="l-enterprise-library-6" name="l-enterprise-library-6"></a>
 
 ## <a name="enterprise-library-6"></a>Enterprise Library 6
-Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (SQL Database サービスもその 1 つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。 EntLib60 の利便性が発揮される個々の領域の説明については、「[Enterprise Library 6 - April 2013 (Enterprise Library 6 – 2013 年 4 月)](http://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)」を参照してください。
+Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークです。クラウド サービス (SQL Database サービスもその 1 つ) に対する堅牢なクライアントをこのフレームワークを使って実装することができます。 EntLib60 の利便性が発揮される個々の領域の説明については、「[Enterprise Library 6 - April 2013 (Enterprise Library 6 – 2013 年 4 月)](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx)」を参照してください。
 
-一時エラーを処理するための再試行ロジックは、EntLib60 を利用できる 1 つの領域です。 詳細については、「[4 - Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block (4 - 成功のための耐力と秘密: 一時的な障害処理アプリケーション ブロック)](http://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)」をご覧ください。
+一時エラーを処理するための再試行ロジックは、EntLib60 を利用できる 1 つの領域です。 詳細については、「[4 - Perseverance, Secret of All Triumphs: Using the Transient Fault Handling Application Block (4 - 成功のための耐力と秘密: 一時的な障害処理アプリケーション ブロック)](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx)」をご覧ください。
 
 > [!NOTE]
-> EntLib60 のソース コードは、[ダウンロード センター](http://go.microsoft.com/fwlink/p/?LinkID=290898)から入手できます。 EntLib に対して機能の更新や保守目的での更新を行う予定はありません。
+> EntLib60 のソース コードは、[ダウンロード センター](https://go.microsoft.com/fwlink/p/?LinkID=290898)から入手できます。 EntLib に対して機能の更新や保守目的での更新を行う予定はありません。
 >
 >
 
@@ -341,7 +341,7 @@ Enterprise Library 6 (EntLib60) は、.NET クラスのフレームワークで�
 
 EntLib60 に関する情報は以下のリンクから入手できます。
 
-* 無料の電子ブック ダウンロード: [Microsoft Enterprise Library 開発者ガイド、第 2 版](http://www.microsoft.com/download/details.aspx?id=41145)
+* 無料の電子ブック ダウンロード: [Microsoft Enterprise Library 開発者ガイド、第 2 版](https://www.microsoft.com/download/details.aspx?id=41145)
 * ベスト プラクティス: [再試行全般のガイダンス](../best-practices-retry-general.md) には、再試行のロジックが詳しく解説されていてお勧めです。
 * NuGet ダウンロード: [Enterprise Library - Transient Fault Handling Application Block 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)
 

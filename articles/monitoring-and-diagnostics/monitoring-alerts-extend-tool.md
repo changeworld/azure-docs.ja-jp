@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: d70eecb6a5d6bafbfa6507dbe8b1bcb1cad67191
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ed6b2fafbb3329e20985b75f55d29b52dcc5da57
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990248"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415703"
 ---
 # <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>アラートを Log Analytics から Azure アラートに拡張する
 Azure Log Analytics のアラート機能は、Azure アラートに置き換わりつつあります。 この移行の一環として、Log Analytics で最初に構成したアラートは Azure に拡張されます。 アラートが自動的に Azure に移動されるのを待ちたくない場合は、次の方法でプロセスを開始できます。
@@ -22,31 +22,31 @@ Azure Log Analytics のアラート機能は、Azure アラートに置き換わ
 - AlertsVersion API を使ってプログラムによって開始する。  
 
 > [!NOTE]
-> Microsoft は 2018 年 5 月 14 日より、完了するまで反復される一連の処理で、Log Analytics のパブリック クラウド インスタンスで作成されたアラートを自動的に Azure アラートに拡張します。 [アクション グループ](monitoring-action-groups.md)の作成でなんらかの問題がある場合は、[これらの修復手順](monitoring-alerts-extend-tool.md#troubleshooting)を使用して、アクション グループを自動作成させます。 2018 年 7 月 5日まで、これらの手順を使用できます。 *Log Analytics の Azure Goverment およびソブリン クラウド ユーザーには適用されません*。 
+> Microsoft は 2018 年 5 月 14 日より、完了するまで反復される一連の処理で、Log Analytics のパブリック クラウド インスタンスで作成されたアラートを自動的に Azure アラートに拡張します。 [アクション グループ](monitoring-action-groups.md)の作成でなんらかの問題がある場合は、[これらの修復手順](monitoring-alerts-extend-tool.md#troubleshooting)を使用して、アクション グループを自動作成させます。 2018 年 7 月 5日まで、これらの手順を使用できます。 *Log Analytics の Azure Government およびソブリン クラウド ユーザーには適用されません*。 
 
 ## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>オプション 1: Operations Management Suite ポータルから開始する
 次の手順では、Operations Management Suite ポータルからワークスペースのアラートを拡張する方法について説明します。  
 
 1. Azure Portal で **[すべてのサービス]** を選択します。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択して **[OMS ポータル]** タイルを選択します。
-![[OMS ポータル] タイルが強調表示されている Log Analytics サブスクリプション ウィンドウのスクリーンショット](./media/monitor-alerts-extend/azure-portal-01.png) 
+![[OMS ポータル] タイルが強調表示されている Log Analytics サブスクリプション ウィンドウのスクリーンショット](media/monitoring-alerts-extend-tool/azure-portal-01.png) 
 3. Operations Management Suite ポータルにリダイレクトされたら、**[設定]** アイコンを選択します。
-![[設定] アイコンが強調表示されている Operations Management Suite ポータルのスクリーンショット](./media/monitor-alerts-extend/oms-portal-settings-option.png) 
+![[設定] アイコンが強調表示されている Operations Management Suite ポータルのスクリーンショット](media/monitoring-alerts-extend-tool/oms-portal-settings-option.png) 
 4. **[設定]** ページで **[アラート]** を選択します。  
 5. **[Azure に拡張]** を選択します。
-![[Azure に拡張] が強調表示されている Operations Management Suite ポータルの [アラートの設定] ページのスクリーンショット](./media/monitor-alerts-extend/ExtendInto.png)
+![[Azure に拡張] が強調表示されている Operations Management Suite ポータルの [アラートの設定] ページのスクリーンショット](media/monitoring-alerts-extend-tool/ExtendInto.png)
 6. **[アラート]** ウィンドウに 3 つのステップで構成されるウィザードが表示されます。 概要を読み、**[次へ]** を選択します。
-![ウィザードのステップ 1 のスクリーンショット](./media/monitor-alerts-extend/ExtendStep1.png)  
+![ウィザードのステップ 1 のスクリーンショット](media/monitoring-alerts-extend-tool/ExtendStep1.png)  
 7. 2 番目のステップでは、アラートに対して提案される変更の概要が、適切な[アクション グループ](monitoring-action-groups.md)の一覧により示されます。 複数のアラートに同様のアクションがある場合は、それらのすべてに 1 つのアクション グループを関連付けることが提案されます。  名前付け規則は *WorkspaceName_AG_#Number* です。 続行するには、**[次へ]** を選択します。
-![ウィザードのステップ 2 のスクリーンショット](./media/monitor-alerts-extend/ExtendStep2.png)  
+![ウィザードのステップ 2 のスクリーンショット](media/monitoring-alerts-extend-tool/ExtendStep2.png)  
 8. ウィザードの最後のステップで、**[完了]** を選択し、プロセスを開始するよう求められたら確認します。 必要に応じて、メールアドレスを指定できます。これにより、プロセスが完了し、すべてのアラートが適切に Azure アラートに移動された時点で通知を受け取ることができます。
-![ウィザードのステップ 3 のスクリーンショット](./media/monitor-alerts-extend/ExtendStep3.png)
+![ウィザードのステップ 3 のスクリーンショット](media/monitoring-alerts-extend-tool/ExtendStep3.png)
 
 ウィザードが終了すると、**[アラートの設定]** ページから、Azure にアラートを拡張するためのオプションが削除されます。 対象のアラートはバックグラウンドで Azure に移動されますが、これには少し時間がかかることがあります。 処理中、Operations Management Suite ポータルからアラートを変更することはできません。 現在の状態は、ポータル上部のバナーで確認できます。 前にメールアドレスを指定した場合は、プロセスが適切に完了した時点でメールが届きます。  
 
 
 アラートは、Azure に適切に移動された後も、引き続き Operation Management Suite ポータルに表示されます。
-![Operations Management Suite ポータルの [アラートの設定] ページのスクリーンショット](./media/monitor-alerts-extend/PostExtendList.png)
+![Operations Management Suite ポータルの [アラートの設定] ページのスクリーンショット](media/monitoring-alerts-extend-tool/PostExtendList.png)
 
 
 ## <a name="option-2-use-the-alertsversion-api"></a>オプション 2: AlertsVersion API を使用する
@@ -460,7 +460,7 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
 > Azure パブリック クラウド ベースの Log Analytics ユーザーが 2018 年 7 月 5日までに次の修復手順を実行しない場合、アラートは Azure で実行されますが、アクションや通知は実行されません。 アラートの通知を取得するには、[アクション グループ](monitoring-action-groups.md)を手動で編集して追加するか、前述の[カスタム PowerShell スクリプト](#option-3---using-custom-powershell-script)を使用する必要があります。
 
 各エラーの修復手順を次に示します。
-- **エラー: Scope Lock is present at subscription/resource group level for write operations (サブスクリプション/リソース グループ レベルに書き込み操作のスコープ ロックが存在します)**:   ![スコープ ロックのエラー メッセージが強調表示されている Operation Management Suite ポータルの [アラートの設定] ページのスクリーンショット](./media/monitor-alerts-extend/ErrorScopeLock.png)
+- **エラー: Scope Lock is present at subscription/resource group level for write operations (サブスクリプション/リソース グループ レベルに書き込み操作のスコープ ロックが存在します)**:   ![スコープ ロックのエラー メッセージが強調表示されている Operation Management Suite ポータルの [アラートの設定] ページのスクリーンショット](media/monitoring-alerts-extend-tool/ErrorScopeLock.png)
 
     スコープ ロックが有効になっている場合、Log Analytics (Operation Management Suite) ワークスペースを含むサブスクリプションまたはリソース グループ内での新しい変更がすべて制限されます。 システムによる Azure へのアラートの拡張は行われず、必要なアクション グループが作成されません。
     
@@ -468,7 +468,7 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
     
     この記事で説明されている手順を使用して問題を解決すると、スケジュールされている翌日の実行が行われている間に、Operation Management Suite によって対象のアラートが Azure に拡張されます。 他の操作を行ったり、何かを開始したりする必要はありません。
 
-- **エラー: Policy is present at subscription/resource group level (サブスクリプション/リソース グループ レベルにポリシーが存在します)**:   ![ポリシーのエラー メッセージが強調表示されている Operation Management Suite ポータルの [アラートの設定] ページのスクリーンショット](./media/monitor-alerts-extend/ErrorPolicy.png)
+- **エラー: Policy is present at subscription/resource group level (サブスクリプション/リソース グループ レベルにポリシーが存在します)**:   ![ポリシーのエラー メッセージが強調表示されている Operation Management Suite ポータルの [アラートの設定] ページのスクリーンショット](media/monitoring-alerts-extend-tool/ErrorPolicy.png)
 
     [Azure Policy](../azure-policy/azure-policy-introduction.md) が適用されている場合、Log Analytics (Operation Management Suite) ワークスペースを含むサブスクリプションまたはリソース グループの新しいリソースがすべて制限されます。 システムによる Azure へのアラートの拡張は行われず、必要なアクション グループが作成されません。
     

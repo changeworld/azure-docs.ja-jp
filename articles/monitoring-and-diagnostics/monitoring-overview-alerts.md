@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.component: alerts
-ms.openlocfilehash: 7565c536b5d24c859b164a960f74bd1e2ce97b63
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f044cf7e0b614d338ec9b294dfbf02c26c4351b1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46960636"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413862"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要 
 
@@ -23,7 +23,7 @@ ms.locfileid: "46960636"
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要
 アラートは、監視データで重要な状態が見つかると事前に通知します。 管理者は、その通知を見て、システムのユーザーが問題に気付く前に問題を識別して対処できます。 
 
-この記事では、Log Analytics と Application Insights が含まれるようになった Azure Monitor の統合アラート エクスペリエンスについて説明します。 [以前のアラート エクスペリエンス](monitoring-overview-alerts.md)とアラートの種類は、**クラシック アラート**と呼ばれます。 この古いエクスペリエンスと古いアラートの種類は、アラート ページの上部にある **[クラシック アラートの表示]** をクリックすることで表示できます。 
+この記事では、Log Analytics と Application Insights が含まれるようになった Azure Monitor の統合アラート エクスペリエンスについて説明します。 [以前のアラート エクスペリエンス](monitoring-overview-alerts.md)とアラートの種類は、**クラシック アラート**と呼ばれます。 この古いエクスペリエンスと古いアラートの種類は、アラート ページの上部にある **[クラシック アラートの表示]** をクリックすることで表示できます。
 
 
 ## <a name="overview"></a>概要
@@ -62,7 +62,7 @@ ms.locfileid: "46960636"
 
 次のアラートの状態がサポートされています。
 
-| State | 説明 |
+| 州 | 説明 |
 |:---|:---|
 | 新規 | 問題が検出されたばかりであり、まだレビューされていません。 |
 | [Acknowledged] (確認済み) | 管理者がアラートをレビューし、それに対する作業を開始しました。 |

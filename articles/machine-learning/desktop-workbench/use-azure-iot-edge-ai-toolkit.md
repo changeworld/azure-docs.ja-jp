@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9b2f4dbf1e87aa5aa035bfd9071fed7be74a9c07
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 023674f05dda6c2da8edddb843277dd07a513162
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978997"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244629"
 ---
 # <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>Azure IoT Edge 用 AI ツールキットを使用する
 
@@ -27,4 +27,4 @@ ms.locfileid: "46978997"
 
 Azure IoT Edge 用 AI ツールキットは、スクリプト、コード、およびデプロイ可能なコンテナーのコレクションです。 サンプルには、予測メンテナンス、イメージ分類、音声処理のほか、Azure Machine Learning および Azure IoT Hub を通じたカスタム モデル デプロイが含まれています。 ツールキットに含まれているモデルはそのまま使用することもできますが、すべてのソース コードとデータは、開発者のニーズに応じてカスタマイズすることができます。
 
-Azure IoT Edge 用 AI ツールキットのパブリック GitHub リポジトリは、[aka.ms/AI-toolkit](http://aka.ms/AI-toolkit) にあります。
+Azure IoT Edge 用 AI ツールキットのパブリック GitHub リポジトリは、[aka.ms/AI-toolkit](https://aka.ms/AI-toolkit) にあります。

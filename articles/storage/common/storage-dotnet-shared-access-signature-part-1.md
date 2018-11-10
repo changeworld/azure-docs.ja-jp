@@ -2,18 +2,18 @@
 title: Azure Storage での Shared Access Signatures (SAS) の使用 | Microsoft Docs
 description: Shared Access Signature (SAS) を使用して、BLOB、キュー、テーブル、ファイルを含む Azure Storage リソースへのアクセスを委任する方法について説明します。
 services: storage
-author: craigshoemaker
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 04/18/2017
-ms.author: cshoe
+ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 315c5a88d16206414b6b81a83963cbb1f8b4424a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: c7d2c16ef135644c1ff23d7a71c66bec27ac930d
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524756"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241047"
 ---
 # <a name="using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) の使用
 

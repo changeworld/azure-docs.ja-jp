@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: cc6cb768e9403a09ea09309e0ffd85ce9012cb41
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: c3d9b0660ab7803fc0c2696ded7bbffa90e07a5a
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352088"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211606"
 ---
 # <a name="azure-media-services-overview"></a>Azure Media Services の概要 
 
 > [!div class="op_single_selector" title1="Select the version of Media Services that you are using:"]
-> * [バージョン 2 - 一般公開](media-services-overview.md)
-> * [バージョン 3 - プレビュー](../latest/media-services-overview.md)
+> * [Version 2](media-services-overview.md)
+> * [Version 3](../latest/media-services-overview.md)
 
 Microsoft Azure Media Services (AMS) は拡張可能なクラウド ベースのプラットフォームです。これにより、開発者はスケーラブルなメディア管理の構築、アプリケーションの配信を実行できます。 Media Services は、各種クライアント (TV、PC、モバイル デバイスなど) へのオンデマンドとライブ ストリーミングでの配信でビデオやオーディオのコンテンツの安全なアップロード、格納、エンコード、パッケージ化を可能にする REST API に基づいています。
 

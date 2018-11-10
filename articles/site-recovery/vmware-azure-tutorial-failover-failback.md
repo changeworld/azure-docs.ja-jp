@@ -1,20 +1,19 @@
 ---
-title: Site Recovery を使用して Azure にレプリケートされた VMware VM と物理サーバーのフェールオーバーとフェールバック | Microsoft Docs
-description: Azure Site Recovery を使用して、VMware VM と物理サーバーを Azure にフェールオーバーする方法と、オンプレミスにフェールバックする方法について説明します。
-services: site-recovery
+title: Site Recovery を使用した Azure へのディザスター リカバリー時の VMware VM と物理サーバーのフェールオーバーとフェールバック | Microsoft Docs
+description: Azure Site Recovery を使用した Azure へのディザスター リカバリー時に VMware VM と物理サーバーを Azure にフェールオーバーする方法とオンプレミス サイトにフェールバックする方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/11/2018
+ms.date: 10/29/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7e586e7e3ec8c16dcd215dbc11251d1b9fe928e1
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: a574c28cae449526ddc8fe0fbb9323fb14b7b6f1
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457070"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215346"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた VMware VM と物理サーバーのフェールオーバーとフェールバック
 

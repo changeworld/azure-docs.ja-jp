@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.component: compliance
-ms.date: 10/19/2018
+ms.date: 10/30/2018
 ms.author: rolyon
-ms.openlocfilehash: be00f6fb41572c0a9599f7005f2cdd1d6587f15a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 87b08ce138cde5cc70c5a80cc414c68dd7aea743
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49944145"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50249830"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory Terms of Use 機能
 Azure AD Terms of use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。 この方法で情報を提示することにより、法律上やコンプライアンス上の要件を満たすうえで重要な免責事項が確実にユーザーに表示されます。 この記事では、利用規約の使用を開始する方法について説明します。
@@ -46,6 +46,7 @@ Azure AD Terms of use を使用すると、以下のことができます。
 - プライバシー規制の順守に役立つ。
 - 使用条件に同意したユーザーと同意していないユーザーを一覧表示する。
 - コンプライアンスおよび監査のために利用規約アクティビティのログを表示する。
+- [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/agreement) を使用して利用規約を作成および管理する (現在プレビューの段階)。
 
 ## <a name="prerequisites"></a>前提条件
 Azure AD Terms of use を使用および構成するには、以下が必要です。

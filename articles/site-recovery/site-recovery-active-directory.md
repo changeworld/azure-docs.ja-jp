@@ -1,6 +1,6 @@
 ---
-title: Azure Site Recovery で Active Directory と DNS を保護する | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して Active Directory 用のディザスター リカバリー ソリューションを実装する方法について説明します。
+title: Azure Site Recovery で Active Directory と DNS をのディザスター リカバリーを設定する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して Active Directory と DNS 用のディザスター リカバリー ソリューションを実装する方法について説明します。
 services: site-recovery
 documentationcenter: ''
 author: mayurigupta13
@@ -9,14 +9,14 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: mayg
-ms.openlocfilehash: 1072c903e9bd9ccb3d63cae426283a677d10077e
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 51d435d9edea5e341127cac89bc96a71c7bc8bb4
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49354293"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50211895"
 ---
-# <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Azure Site Recovery を使用して Active Directory と DNS を保護する
+# <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Active Directory と DNS のディザスター リカバリーを設定する
 
 SharePoint、Dynamics AX、SAP などのエンタープライズ アプリケーションは、Active Directory と DNS インフラストラクチャを基盤として正常な動作が実現されています。 アプリケーションのディザスター リカバリーを設定するときは、多くの場合、他のアプリケーション コンポーネントを復旧する前に Active Directory と DNS を復旧する必要があります。そうすることで、アプリケーションが正しく機能します。
 

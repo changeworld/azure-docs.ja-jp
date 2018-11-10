@@ -1,17 +1,17 @@
 ---
-title: System Center Configuration Manager を使用して Azure Site Recovery の Mobility Service インストールを自動化する |Microsoft Docs
-description: この記事は、System Center Configuration Manager を使用して Mobility Service のインストールを自動化する場合に役立ちます。
+title: System Center Configuration Manager を使用した VMware VM と物理サーバーの Azure へのディザスター リカバリーのために Azure Site Recovery モビリティ サービスのインストールを自動化する | Microsoft Docs
+description: この記事は、Site Recovery を使用した VMware VM と物理サーバーの Azure へのディザスター リカバリーのために、System Center Configuration Manager を使用してモビリティ サービスのインストールを自動化するのに役立ちます。
 author: Rajeswari-Mamilla
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: ramamill
-ms.openlocfilehash: 6aff17908d220557720776a2d7884adc28b5deee
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: f14c02404dae5a923aabcd2df8279a6150c42f57
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "37917171"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215295"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>System Center Configuration Manager を使用して Mobility Service のインストールを自動化する
 

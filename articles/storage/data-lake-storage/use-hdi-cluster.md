@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: jamesbak
-ms.openlocfilehash: 3869d83ada1cbe0b234694b6acae88b6f68fc2dd
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 04e2e32de90283da2563395f8b24dbb4b1dab888
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782279"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241761"
 ---
 # <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Data Lake Storage Gen2 プレビューを使用する
 
@@ -49,13 +49,13 @@ HDInsight クラスターで Azure Storage アカウントを使用するとき�
 * **クラスターに接続されていないストレージ アカウントのパブリック ファイル**の場合、ファイル システム内のファイルに対して読み取り専用アクセス許可が付与されます。
   
   > [!NOTE]
-  > パブリック ファイル システムを使用すると、ファイル システムで使用可能なすべてのファイルの一覧を取得し、メタデータにアクセスできます。 パブリック ファイル システムの場合、正確な URL がわかっているときのみ、そのファイルにアクセスできます。 詳細については、「[Restrict access to containers and blobs](http://msdn.microsoft.com/library/windowsazure/dd179354.aspx)」(コンテナーと BLOB へのアクセスを制限する) を参照してください (コンテナーと BLOB のルールはファイルとファイル システムで同様に機能します)。
+  > パブリック ファイル システムを使用すると、ファイル システムで使用可能なすべてのファイルの一覧を取得し、メタデータにアクセスできます。 パブリック ファイル システムの場合、正確な URL がわかっているときのみ、そのファイルにアクセスできます。 詳細については、「[Restrict access to containers and blobs](https://msdn.microsoft.com/library/windowsazure/dd179354.aspx)」(コンテナーと BLOB へのアクセスを制限する) を参照してください (コンテナーと BLOB のルールはファイルとファイル システムで同様に機能します)。
  
 * **クラスターに接続されていないストレージ アカウントのプライベート ファイル システム**では、WebHCat ジョブを送信するときにストレージ アカウントを定義しない限り、ファイル システム内のファイルにはアクセスできません。 この制限の理由については、この記事で後述します。
 
 作成プロセスで定義されたストレージ アカウントとそのキーは、クラスター ノードの *%HADOOP_HOME%/conf/core-site.xml* に格納されます。 HDInsight の既定の動作では、*core-site.xml* ファイルに定義されたストレージ アカウントが使用されます。 この設定は、[Ambari](../../hdinsight/hdinsight-hadoop-manage-ambari.md) を使用して変更できます。
 
-Hive、MapReduce、Hadoop ストリーミング、Pig など、複数の WebHCat ジョブを利用して、ストレージ アカウントの説明とそのメタデータを伝達できます。 (このアプローチは、現在、ストレージ アカウントについては Pig が対応していますが、メタデータについては対応していません)。詳細については、「 [Using an HDInsight Cluster with Alternate Storage Accounts and Metastores (代替のストレージ アカウントおよびメタストアでの HDInsight クラスターの使用)](http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)」を参照してください。
+Hive、MapReduce、Hadoop ストリーミング、Pig など、複数の WebHCat ジョブを利用して、ストレージ アカウントの説明とそのメタデータを伝達できます。 (このアプローチは、現在、ストレージ アカウントについては Pig が対応していますが、メタデータについては対応していません)。詳細については、「 [Using an HDInsight Cluster with Alternate Storage Accounts and Metastores (代替のストレージ アカウントおよびメタストアでの HDInsight クラスターの使用)](https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx)」を参照してください。
 
 ## <a id="benefits"></a>Azure Storage の利点
 

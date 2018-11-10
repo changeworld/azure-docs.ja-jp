@@ -1,6 +1,6 @@
 ---
 title: シミュレートされた TPM デバイスを Java を使って Azure IoT Hub にプロビジョニングする | Microsoft Docs
-description: Azure クイックスタート - Azure IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使い、シミュレートされた TPM デバイスを作成してプロビジョニングする
+description: Azure クイック スタート - Azure IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使い、シミュレートされた TPM デバイスを作成してプロビジョニングします。 このクイック スタートでは、個別登録を使用します。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/09/2018
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: b6c6e407e0bd54c4713056fdee12f7a4c355af97
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c1426ebb5a64a1e0552cc35a736186fda60a5af1
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47030911"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415153"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-java-device-sdk-for-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使い、シミュレートされた TPM デバイスを作成してプロビジョニングする
 
@@ -25,11 +25,17 @@ ms.locfileid: "47030911"
 
 自動プロビジョニングの処理に慣れていない場合は、「[自動プロビジョニングの概念](concepts-auto-provisioning.md)」も確認してください。 また、先に進む前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順も済ませておいてください。 
 
+Azure IoT Device Provisioning Service では、次の 2 種類の登録がサポートされています。
+- [登録グループ](concepts-service.md#enrollment-group): 複数の関連するデバイスを登録するために使用します。
+- [個別登録](concepts-service.md#individual-enrollment): 1 台のデバイスを登録するために使用します。
+
+この記事では、個別登録の使用方法を示します。
+
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>環境の準備 
 
-1. [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) がマシンにインストールされていることを確認します。
+1. [Java SE Development Kit 8](https://aka.ms/azure-jdks) がマシンにインストールされていることを確認します。
 
 1. [Maven](https://maven.apache.org/install.html) をダウンロードし、インストールします。
 
@@ -62,11 +68,11 @@ ms.locfileid: "47030911"
     cd provisioning/provisioning-samples/provisioning-tpm-sample
     ```
 
-1. Azure Portal にログインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。 "_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" をメモします。
+1. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。 "_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" をメモします。
 
     ![Device Provisioning サービスの情報](./media/java-quick-create-simulated-device/extract-dps-endpoints.png)
 
-1. `src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningTpmSample.java` を編集して、メモした _ID スコープ_と _Provisioning Service のグローバル エンドポイント_を含めます。  
+1. `src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningTpmSample.java` を編集して、メモした "_ID スコープ_" と "_プロビジョニング サービス グローバル エンドポイント_" を含めます。  
 
     ```java
     private static final String idScope = "[Your ID scope here]";
@@ -89,7 +95,7 @@ ms.locfileid: "47030911"
 
 ## <a name="create-a-device-enrollment-entry"></a>デバイス登録エントリを作成する
 
-1. Azure Portal にログインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
+1. Azure Portal にサインインし、左側のメニューの **[すべてのリソース]** をクリックして、Device Provisioning Service を開きます。
 
 1. Device Provisioning Service の概要ブレードで、**[Manage enrollments]\(登録の管理\)** を選択します。 **[個別登録]** タブを選択し、上部にある **[個別登録の追加]** ボタンをクリックします。 
 

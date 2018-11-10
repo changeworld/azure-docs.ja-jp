@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: juliako
-ms.openlocfilehash: 1d1506e26beec3cc48a904ddeb9bbb4e7656a08e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ae0ff36c7e83120a9571e0f87788c25193027616
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783751"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240139"
 ---
 # <a name="deliver-content-to-customers"></a>顧客へのコンテンツ配信
 ストリーミング コンテンツまたはビデオ オン デマンド コンテンツを顧客に配信するときの目標は、さまざまなネットワーク条件にある多様なデバイスに高品質のビデオを配信することにあります。
@@ -70,9 +70,9 @@ Media Services を使用すると、資産にフィルターを定義できま�
 > 
 > 
 
-ロケーターの有効期限を更新するには、[REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) API または [.NET](http://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。 SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
+ロケーターの有効期限を更新するには、[REST](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) API または [.NET](https://go.microsoft.com/fwlink/?LinkID=533259) API を使用します。 SAS ロケーターの有効期限を更新すると、URL が変更されることにご注意ください。
 
-ロケーターは、ユーザーごとのアクセス制御を管理するためのものではありません。 デジタル著作権管理 (DRM) ソリューションを使用することで、個々のユーザーに異なるアクセス権限を付与できます。 詳細については、「 [メディアの保護](http://msdn.microsoft.com/library/azure/dn282272.aspx)」をご覧ください。
+ロケーターは、ユーザーごとのアクセス制御を管理するためのものではありません。 デジタル著作権管理 (DRM) ソリューションを使用することで、個々のユーザーに異なるアクセス権限を付与できます。 詳細については、「 [メディアの保護](https://msdn.microsoft.com/library/azure/dn282272.aspx)」をご覧ください。
 
 ロケーターを作成する際、Azure Storage に必要な記憶域や伝達プロセスの関係上 30 秒の遅延が生じる場合があります。
 

@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.date: 05/15/2017
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 6546553fa3537ac63d956dc5febfd77efe9fd34d
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 6e33f700e9f453f419bf431d772d3db27e806ac0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39400125"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240700"
 ---
 # <a name="shared-access-signatures-part-2-create-and-use-a-sas-with-blob-storage"></a>Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用
 
@@ -591,5 +591,5 @@ Additional error information: The remote server returned an error: (403) Forbidd
 
 * [共有アクセス署名、パート 1: SAS モデルについて](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [コンテナーと BLOB への匿名読み取りアクセスを管理する](storage-manage-access-to-resources.md)
-* [共有アクセス署名を使用したアクセスの委任 (REST API)](http://msdn.microsoft.com/library/azure/ee395415.aspx)
-* [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
+* [共有アクセス署名を使用したアクセスの委任 (REST API)](https://msdn.microsoft.com/library/azure/ee395415.aspx)
+* [テーブルおよびキュー SAS についての MSDN ブログ](https://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)

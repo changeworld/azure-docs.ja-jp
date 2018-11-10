@@ -3,19 +3,19 @@ title: Azure Functions における SendGrid のバインディング
 description: Azure Functions における SendGrid のバインディングのリファレンス
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/29/2017
-ms.author: glenga
-ms.openlocfilehash: 212f8b0dacf5fa56e48df99fb10b11da54df57ac
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.author: cshoe
+ms.openlocfilehash: 23ec5cd6eee3333922b5371a0ece631ebbc20939
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091222"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248033"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions における SendGrid のバインディング
 
@@ -101,8 +101,9 @@ C# スクリプト コードを次に示します。
 #r "SendGrid"
 using System;
 using SendGrid.Helpers.Mail;
+using Microsoft.Extensions.Logging;
 
-public static void Run(TraceWriter log, string input, out Mail message)
+public static void Run(ILogger log, string input, out Mail message)
 {
      message = new Mail
     {        
@@ -151,7 +152,7 @@ JavaScript コードを次に示します。
 ```javascript
 module.exports = function (context, input) {    
     var message = {
-         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
+         "personalizations": [ { "to": [ { "email": "sample@sample.com" } ] } ],
         from: { email: "sender@contoso.com" },        
         subject: "Azure news",
         content: [{
@@ -198,6 +199,31 @@ public static void Run(
 |**text**|**テキスト**| 電子メールの本文。 |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>host.json 設定
+
+このセクションでは、バージョン 2.x でこのバインディングに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインディングのバージョン 2.x の設定のみが含まれています。 バージョン 2.x でのグローバル構成設定の詳細については、「[Azure Functions の host.json のリファレンス](functions-host-json.md)」を参照してください。
+
+> [!NOTE]
+> Functions 1.x の host.json のリファレンスについては、[Azure Functions 1.x の host.json のリファレンス](functions-host-json-v1.md)に関する記事を参照してください。
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "sendGrid": {
+            "from": "Azure Functions <samples@functions.com>"
+        }
+    }
+}
+```  
+
+|プロパティ  |既定値 | 説明 |
+|---------|---------|---------| 
+|from|該当なし|すべての関数の送信者の電子メール アドレス。| 
+
 
 ## <a name="next-steps"></a>次の手順
 

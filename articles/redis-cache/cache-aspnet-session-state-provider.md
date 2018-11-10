@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/01/2017
 ms.author: wesmc
-ms.openlocfilehash: 047d23184ccf640dd6510faca9f508eef0dc50cb
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: e007b23b6e4a55e2a939994e8f95d01fc24cc529
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050815"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241577"
 ---
 # <a name="aspnet-session-state-provider-for-azure-redis-cache"></a>Azure Redis Cache の ASP.NET セッション状態プロバイダー
 Azure Redis Cache には、セッション状態プロバイダーが用意されています。セッション状態プロバイダーを使用すると、セッション状態を SQL Server データベースにではなく Redis Cache でメモリ内に格納することができます。 キャッシュ セッション状態プロバイダーを使用するには、まず対象のキャッシュを構成し、Redis Cache Session State NuGet パッケージを使用して、キャッシュに必要な構成を ASP.NET アプリケーションに対して行います。
@@ -94,11 +94,11 @@ NuGet パッケージがダウンロードされ、必要なアセンブリ参�
 * **retryTimeoutInMilliseconds**: 失敗した操作がこの時間に再試行されます。ミリ秒単位で指定します。 最初は 20 ミリ秒後に再試行され、その後 retryTimeoutInMilliseconds の時間が経過するまで 1 秒ごとに再試行されます。 この時間を過ぎるとすぐに、操作が最後に 1 回再試行されます。 操作が失敗した場合、throwOnError 設定に応じて、例外がスローされて呼び出し元に戻ります。 既定値は 0 です。これは再試行されないことを意味します。
 * **databaseId** : キャッシュ出力データに使用するデータベースを指定します。 指定されていない場合は、既定値の 0 が使用されます。
 * **applicationName**: キーが `{<Application Name>_<Session ID>}_Data` として Redis に格納されます。 この命名規則により、複数のアプリケーションで同じ Redis インスタンスを共有できます。 このパラメーターは省略可能です。指定されていない場合は、既定値が使用されます。
-* **connectionTimeoutInMilliseconds** : この設定によって、StackExchange.Redis クライアントの connectTimeout 設定をオーバーライドすることができます。 指定されていない場合は、connectTimeout 設定の既定値である 5000 が使用されます。 詳細については、 [StackExchange.Redis 構成モデル](http://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。
-* **operationTimeoutInMilliseconds** : この設定によって、StackExchange.Redis クライアントの syncTimeout 設定をオーバーライドすることができます。 指定されていない場合は、syncTimeout 設定の既定値である 1000 が使用されます。 詳細については、 [StackExchange.Redis 構成モデル](http://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。
+* **connectionTimeoutInMilliseconds** : この設定によって、StackExchange.Redis クライアントの connectTimeout 設定をオーバーライドすることができます。 指定されていない場合は、connectTimeout 設定の既定値である 5000 が使用されます。 詳細については、 [StackExchange.Redis 構成モデル](https://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。
+* **operationTimeoutInMilliseconds** : この設定によって、StackExchange.Redis クライアントの syncTimeout 設定をオーバーライドすることができます。 指定されていない場合は、syncTimeout 設定の既定値である 1000 が使用されます。 詳細については、 [StackExchange.Redis 構成モデル](https://go.microsoft.com/fwlink/?LinkId=398705)に関するページを参照してください。
 * **redisSerializerType** - この設定では、Redis に送信されるセッションの内容のカスタム シリアル化を指定できます。 指定される型では、`Microsoft.Web.Redis.ISerializer` を実装し、パラメーターのないパブリック コンストラクターを宣言する必要があります。 既定では `System.Runtime.Serialization.Formatters.Binary.BinaryFormatter` が使用されます。
 
-これらのプロパティの詳細については、 [Redis の ASP.NET セッション状態プロバイダーの発表](http://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関する元のブログ投稿を参照してください。
+これらのプロパティの詳細については、 [Redis の ASP.NET セッション状態プロバイダーの発表](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx)に関する元のブログ投稿を参照してください。
 
 web.config の標準の InProc セッション状態プロバイダー セクションを忘れずにコメント アウトしてください。
 

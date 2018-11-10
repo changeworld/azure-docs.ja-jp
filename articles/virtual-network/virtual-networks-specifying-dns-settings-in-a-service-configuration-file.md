@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2016
 ms.author: genli
-ms.openlocfilehash: 009206f1e0ba848538ed2c666032a63051d062e4
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 0ac488a67d8b9debf6539d199395997cf44cf1e4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31790748"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247179"
 ---
 # <a name="specifying-dns-settings-in-a-service-configuration-file"></a>サービス構成ファイルでの DNS 設定の指定
 ## <a name="dns-elements"></a>DNS 要素
@@ -41,9 +41,9 @@ ms.locfileid: "31790748"
 ## <a name="see-also"></a>関連項目
 [Azure サービス構成スキーマ (.cscfg)](https://msdn.microsoft.com/library/windowsazure/ee758710)
 
-[Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Azure Virtual Network の構成スキーマ](https://go.microsoft.com/fwlink/?LinkId=248093)
 
-[ネットワーク構成ファイルを使用した Virtual Network の構成](http://go.microsoft.com/fwlink/?LinkId=248094)
+[ネットワーク構成ファイルを使用した Virtual Network の構成](https://go.microsoft.com/fwlink/?LinkId=248094)
 
-[管理ポータルでの Virtual Network の設定について](http://go.microsoft.com/fwlink/?LinkId=248092)
+[管理ポータルでの Virtual Network の設定について](https://go.microsoft.com/fwlink/?LinkId=248092)
 

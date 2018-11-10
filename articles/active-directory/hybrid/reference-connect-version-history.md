@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 93bd141b591cda5ec6ff1d9d042222070d3146e6
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f0a9ac1700d635365ebea0c5966489ed3d2d797b
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49390314"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420247"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -37,6 +37,37 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 
 ダウンロード | [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)します。
 
+## <a name="12650"></a>1.2.65.0 
+
+### <a name="release-status"></a>リリースの状態 
+
+2018 年 10 月 25 日: ダウンロード対象としてリリース済み
+
+ 
+### <a name="new-features-and-improvements"></a>新機能と機能強化 
+
+
+- ホストされているボイス メールが期待どおりに動作していることを確認するために、属性の書き戻し機能が変更されました。  一部のシナリオでは、Azure AD は、null 値での書き戻し中に msExchUcVoicemailSettings 属性を上書きしていました。  これで Azure AD は、クラウドの値が設定されていない場合は、この属性のオンプレミスの値をクリアしないようになりました。
+- 変更された既定のルールの処理が強化されました。 既定のルールに変更を加えた場合は通知され、既定のルールを修復するオプションが表示されるようになりました。 
+- Azure AD への接続の問題を調査および特定するため、Azure AD Connect ウィザードに診断が追加されました。 これらと同じ診断は、Test- AdSyncAzureServiceConnectivity コマンドレットを使用して Powershell を介して直接実行することもできます。 
+- AD への接続の問題を調査および特定するため、Azure AD Connect ウィザードに診断が追加されました。 これらと同じ診断は、ADConnectivityTools Powershell モジュールの Start-ConnectivityValidation 関数を使用して、Powershell を介して直接実行することもできます。  詳細については、[ADConnectivityTool PowerShell モジュール](how-to-connect-adconnectivitytools.md)に関するページを参照してください
+- ハイブリッド Azure Active Directory Join とデバイスの書き戻し用の AD スキーマのバージョンの事前チェックが追加されました 
+- ディレクトリ拡張ページ属性の検索で大文字と小文字が区別されないように変更されました。
+-   TLS 1.2 の完全なサポートが追加されました。 このリリースでは、Azure AD Connect がインストールされているマシン上で、他のすべてのプロトコルを無効にし、TLS 1.2 のみを有効にすることがサポートされています。  詳細については、[Azure AD Connect への TLS 1.2 の適用](reference-connect-tls-enforcement.md)に関するページを参照してください
+
+ 
+
+### <a name="fixed-issues"></a>修正された問題   
+
+- SQL Always On が使用されている場合に Azure AD Connect のアップグレードが失敗したバグを修正しました。 
+- スラッシュが含まれている OU 名が正しく解析されるよう、バグを修正しました。 
+- ステージング モードでのクリーン インストールの場合にパススルー認証が無効になる問題を修正しました。 
+- トラブルシューティング ツールの実行中に PowerShell モジュールの読み込みを妨げるバグを修正しました 
+- 顧客がホスト名の最初の文字に数値を使用できないバグを修正しました。 
+- Azure AD Connect が無効なパーティションとコンテナーの選択を許可するバグを修正しました 
+- デスクトップ SSO が有効になっている場合の「無効なパスワードです」というエラー メッセージを修正しました。 
+- AD FS 信頼管理に関するさまざまなバグの修正  
+- デバイスの書き戻しの構成時 - msDs-DeviceContainer オブジェクト クラス (WS2012 R2 で導入) を検索するためのスキーマの確認を修正しました
 
  
 ## <a name="118820"></a>1.1.882.0  

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: a88a0d9105942502b634f3be7c3279167ea590c6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: d5ea6f18fb288711bae67b6840ddb5b8bb9942c2
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393254"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245445"
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリの概要
 
@@ -39,7 +39,7 @@ Microsoft Authenticator アプリは、Microsoft 以外のアカウントでも�
 
 ## <a name="install-the-app"></a>アプリのインストール
 
-Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594)、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。 最適なエクスペリエンスを得るには、ユーザーが情報を要求された際に、アプリに通知が送られるようにしてください。 
+Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594)、[Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。 最適なエクスペリエンスを得るには、ユーザーが情報を要求された際に、アプリに通知が送られるようにしてください。 
 
 ## <a name="add-accounts-to-the-app"></a>アプリへのアカウントの追加
 
@@ -51,7 +51,7 @@ Microsoft Authenticator アプリには、職場/学校用アカウントや個�
 
 ### <a name="add-a-work-or-school-account"></a>職場または学校用のアカウントを追加する
 
-1. 可能であれば、別の PC やデバイスで [[追加のセキュリティ確認]](http://aka.ms/mfasetup) 画面にアクセスします。 この画面の表示方法について詳しくは、 [セキュリティ設定の変更](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)に関するページを参照するか、管理者に問い合わせてください。
+1. 可能であれば、別の PC やデバイスで [[追加のセキュリティ確認]](https://aka.ms/mfasetup) 画面にアクセスします。 この画面の表示方法について詳しくは、 [セキュリティ設定の変更](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page)に関するページを参照するか、管理者に問い合わせてください。
 
     >[!Note]
     >管理者がセキュリティ情報のプレビューを有効にしている場合は、「[認証アプリを使用するようにセキュリティ情報を設定する](security-info-setup-auth-app.md)」セクションの手順をご覧ください。

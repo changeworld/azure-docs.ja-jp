@@ -4,20 +4,30 @@ description: Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 10/31/2018
 ms.author: raynew
-ms.openlocfilehash: a41a27f2a87a67ea51bcbe110ac77f7908c44e7a
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 0b2954ddfda0ab4c94ddf6176d76d8bcd937fa42
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945520"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413335"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
 ## <a name="troubleshoot-common-errors"></a>一般的なエラーのトラブルシューティング
 
 [Azure Migrate](migrate-overview.md) は、オンプレミスのワークロードを評価することによって、Azure への移行を支援します。 この記事では、Azure Migrate をデプロイして使用する際に発生する問題のトラブルシューティングを説明します。
+
+### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>継続的検出 OVA を使用していますが、オンプレミスの環境で削除された VM がまだポータルに表示されます。
+
+継続的検出のアプライアンスでは、パフォーマンス データのみが継続的に収集され、オンプレミス環境での構成の変更 (VM の追加、削除、ディスクの追加など) は検出されません。 オンプレミス環境で構成の変更がある場合は、次の操作を行って、変更をポータルに反映することができます。
+
+- 項目 (VM、ディスク、コアなど) の追加: これらの変更を Azure portal に反映するには、アプライアンスで検出を停止してから、再開します。 これにより、Azure Migrate プロジェクトで変更が確実に更新されます。
+
+   ![検出の停止](./media/troubleshooting-general/stop-discovery.png)
+
+- VM の削除: アプライアンスの設計方法のために、検出を停止して開始しても VM の削除は反映されません。 これは、後続の検出のデータが古い検出に追加され、上書きされないためです。 この場合、VM をグループから削除し、評価を再計算して、ポータルの VM は単に無視することができます。
 
 ### <a name="migration-project-creation-failed-with-error-requests-must-contain-user-identity-headers"></a>"*要求にはユーザー ID ヘッダーが含まれていなければなりません*" というエラーが表示されて、移行プロジェクトの作成が失敗しました
 
@@ -41,19 +51,18 @@ ms.locfileid: "49945520"
 
    ![プロジェクトの場所](./media/troubleshooting-general/geography-location.png)
 
-### <a name="i-am-using-the-continuous-discovery-ova-but-vms-that-are-deleted-in-my-on-premises-environment-are-still-being-shown-in-the-portal"></a>継続的検出 OVA を使用していますが、オンプレミスの環境で削除された VM がまだポータルに表示されます。
-
-継続的検出のアプライアンスでは、パフォーマンス データのみが継続的に収集され、オンプレミス環境での構成の変更 (VM の追加、削除、ディスクの追加など) は検出されません。 オンプレミス環境で構成の変更がある場合は、次の操作を行って、変更をポータルに反映することができます。
-
-1. 項目 (VM、ディスク、コアなど) の追加: これらの変更を Azure portal に反映するには、アプライアンスで検出を停止してから、再開します。 これにより、Azure Migrate プロジェクトで変更が確実に更新されます。
-
-2. VM の削除: アプライアンスの設計方法のために、検出を停止して開始しても VM の削除は反映されません。 これは、後続の検出のデータが古い検出に追加され、上書きされないためです。 この場合、VM をグループから削除し、評価を再計算して、ポータルの VM は単に無視することができます。
-
 ## <a name="collector-errors"></a>コレクターのエラー
 
-### <a name="deployment-of-collector-ova-failed"></a>コレクター OVA のデプロイに失敗しました
+### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Azure Migrate Collector のデプロイが次のエラーで失敗しました: 指定されたマニフェスト ファイルが無効です: 無効な OVF マニフェストのエントリ。
 
-これは、OVA が部分的にダウンロードされている場合、または OVA のデプロイに vSphere Web Client を使用している場合にブラウザーが原因で発生する可能性があります。 ダウンロードが完了していることを確認して、別のブラウザーで OVA のデプロイを試行してください。
+1. ハッシュ値をチェックして、Azure Migrate Collector の OVA ファイルが正常にダウンロードされているかどうかを確認します。 ハッシュ値の確認については、こちらの[記事](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance)を参照してください。 ハッシュ値が一致しない場合は、OVA ファイルをもう一度ダウンロードしてデプロイを再試行してください。
+2. それでも失敗する場合、および、OVF をデプロイするのに VMware vSphere クライアントを使用している場合は、vSphere Web クライアントでデプロイしてみてください。 それでも失敗する場合は、別の Web ブラウザーをお試しください。
+3. vSphere Web クライアントを使用しており、vCenter Server 6.5 にそれをデプロイしようとしている場合は、次の手順に従って ESXi ホストに直接 OVA をデプロイしてみてください。
+  - Web クライアント (https:// <*ホスト IP アドレス*>/ui) を使用して、(vCenter Server ではなく) ESXi ホストに直接接続する
+  - [ホーム] > [インベントリ] に移動する
+  - [ファイル] > [OVF テンプレートのデプロイ] > [OVA を参照] をクリックして、デプロイを完了する
+4. それでもデプロイが失敗する場合は、Azure Migrate のサポートにお問い合わせください。
+
 
 ### <a name="collector-is-not-able-to-connect-to-the-internet"></a>コレクターがインターネットに接続できない
 
@@ -212,9 +221,8 @@ Windows イベント トレーシング を収集するには、次の操作を�
 
 ## <a name="collector-error-codes-and-recommended-actions"></a>コレクターのエラー コードと推奨されるアクション
 
-|           |                                |                                                                               |                                                                                                       |                                                                                                                                            |
-|-----------|--------------------------------|-------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| エラー コード | エラー名                      | Message                                                                       | 考えられる原因                                                                                        | 推奨される操作                                                                                                                          |
+| エラー コード | エラー名   | Message   | 考えられる原因 | 推奨される操作  |
+| --- | --- | --- | --- | --- |
 | 601       | CollectorExpired               | コレクターの有効期限が切れています。                                                        | コレクターの有効期限が切れました。                                                                                    | 新しいバージョンのコレクターをダウンロードし、再試行してください。                                                                                      |
 | 751       | UnableToConnectToServer        | vCenter Server '%Name;' に接続できません。原因となったエラー: %ErrorMessage;     | 詳細については、エラー メッセージを確認してください。                                                             | 問題を解決してから、操作をやり直してください。                                                                                                           |
 | 752       | InvalidvCenterEndpoint         | サーバー '%Name;' は vCenter Server ではありません。                                  | vCenter Server の詳細を指定してください。                                                                       | 正しい vCenter Server の詳細を指定してから、操作を再試行してください。                                                                                   |

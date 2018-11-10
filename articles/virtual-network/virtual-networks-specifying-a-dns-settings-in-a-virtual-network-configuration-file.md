@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: ed7f02d3e389db3bc772c4fcb00a7b3877d60173
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
+ms.openlocfilehash: 36f7ed9b02b66718327c1a05a6cf29eedf39e7a5
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31794526"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248387"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>仮想ネットワーク構成ファイルでの DNS 設定の指定
 ネットワーク構成ファイルの 2 つの要素を使用して、ドメイン ネーム システム (DNS) の設定 **DnsServers** と **DnsServerRef** を指定することができます。 **DnsServers** 要素に IP アドレスと参照名を指定することにより、DNS サーバーのリストを追加できます。 その後、 **DnsServerRef** 要素を使用して、DnsServers 要素から、仮想ネットワーク内のネットワーク サイトに使用する DNS サーバー エントリを指定できます。
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-この記事では、クラシック デプロイメント モデルについて説明します。
+この記事では、クラシック デプロイ モデルについて説明します。
 
 ネットワーク構成ファイルは、次の要素を含むことができます。 各要素のタイトルは、要素値の設定に関する追加情報を提供するページにリンクされています。
 
@@ -36,7 +36,7 @@ ms.locfileid: "31794526"
 > 
 > 
 
-[Dns 要素](http://go.microsoft.com/fwlink/?LinkId=248093)
+[Dns 要素](https://go.microsoft.com/fwlink/?LinkId=248093)
 
     <Dns>
       <DnsServers>
@@ -51,7 +51,7 @@ ms.locfileid: "31794526"
 > 
 > 
 
-[VirtualNetworkSites 要素](http://go.microsoft.com/fwlink/?LinkId=248093)
+[VirtualNetworkSites 要素](https://go.microsoft.com/fwlink/?LinkId=248093)
 
     <DnsServersRef>
       <DnsServerRef name="ID1" />
@@ -65,7 +65,7 @@ ms.locfileid: "31794526"
 > 
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Virtual Network の構成スキーマ](http://go.microsoft.com/fwlink/?LinkId=248093)について理解します。
+* [Azure Virtual Network の構成スキーマ](https://go.microsoft.com/fwlink/?LinkId=248093)について理解します。
 * [Azure サービスの構成スキーマ](https://msdn.microsoft.com/library/windowsazure/ee758710)について理解します。
 * [ネットワーク構成ファイルを使用して仮想ネットワークを構成](virtual-networks-using-network-configuration-file.md)します。
 

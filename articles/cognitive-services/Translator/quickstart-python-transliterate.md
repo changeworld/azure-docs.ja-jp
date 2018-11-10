@@ -1,105 +1,160 @@
 ---
-title: 'クイック スタート: テキスト スクリプトを変換する、Python - Translator Text API'
+title: 'クイック スタート: テキストを表記変換する (Python) - Translator Text API'
 titleSuffix: Azure Cognitive Services
-description: このクイック スタートでは、Python で Translator Text API を使って 1 つの言語の中でテキストの表記を変換します。
+description: このクイック スタートでは、Python と Translator Text REST API を使用して、テキストの表記変換 (スクリプトの変換) を実行する方法について説明します。 このサンプルでは、ラテン アルファベットを使用した表記に日本語を変換します。
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: quickstart
-ms.date: 06/21/2018
+ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: 2621e3ae165efe9f592400e3ad2782b396cf2a60
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 24887e39b98c41cbafbe962cb81391571d8b86b9
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647450"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247880"
 ---
-# <a name="quickstart-transliterate-text-with-the-translator-text-rest-api-python"></a>クイック スタート: Translator Text REST API を使用してテキストを表記変換する (Python)
+# <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>クイック スタート: Python と Translator Text API を使用してテキストの表記を変換する
 
-このクイック スタートでは、Translator Text API を使って、1 つの言語の中でテキストの表記を変換します。
+このクイック スタートでは、Python と Translator Text REST API を使用して、テキストの表記変換 (スクリプトの変換) を実行する方法について説明します。 ここに記載されているサンプルでは、ラテン アルファベットを使用した表記に日本語を変換します。
+
+このクイック スタートでは、[Azure Cognitive Services アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と Translator Text リソースが必要になります。 アカウントを持っていない場合は、[無料試用版](https://azure.microsoft.com/try/cognitive-services/)を使用してサブスクリプション キーを取得できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードを実行するには、[Python 3.x](https://www.python.org/downloads/) が必要です。
+このクイック スタートでは以下が必要です。
 
-Translator Text API を使用するには、サブスクリプション キーも必要となります。「[Translator Text API にサインアップする方法](translator-text-how-to-signup.md)」を参照してください。
+* Python 2.7.x または 3.x
+* Translator Text の Azure サブスクリプション キー
 
-## <a name="transliterate-request"></a>表記変換要求
+## <a name="create-a-project-and-import-required-modules"></a>プロジェクトの作成と必要なモジュールのインポート
 
-以下のコードは、[Transliterate](./reference/v3-0-transliterate.md) メソッドを使って、1 つの言語の中でテキストの表記を変換します。
-
-1. 任意のコード エディターで新しい Python プロジェクトを作成します。
-2. 次に示すコードを追加します。
-3. `subscriptionKey` の値を、お使いのサブスクリプションで有効なアクセス キーに置き換えます。
-4. プログラムを実行します。
+普段使用している IDE またはエディターで、新しい Python プロジェクトを作成します。 次に、このコード スニペットをプロジェクトの `transliterate-text.py` という名前のファイルにコピーします。
 
 ```python
 # -*- coding: utf-8 -*-
-
-import http.client, urllib.parse, uuid, json
-
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
-
-host = 'api.cognitive.microsofttranslator.com'
-path = '/transliterate?api-version=3.0'
-
-# Transliterate text in Japanese from Japanese script (i.e. Hiragana/Katakana/Kanji) to Latin script.
-params = '&language=ja&fromScript=jpan&toScript=latn';
-
-# Transliterate "good afternoon".
-text = 'こんにちは'
-
-def transliterate (content):
-
-    headers = {
-        'Ocp-Apim-Subscription-Key': subscriptionKey,
-        'Content-type': 'application/json',
-        'X-ClientTraceId': str(uuid.uuid4())
-    }
-
-    conn = http.client.HTTPSConnection(host)
-    conn.request ("POST", path + params, content, headers)
-    response = conn.getresponse ()
-    return response.read ()
-
-requestBody = [{
-    'Text' : text,
-}]
-content = json.dumps(requestBody, ensure_ascii=False).encode('utf-8')
-result = transliterate (content)
-
-# Note: We convert result, which is JSON, to and from an object so we can pretty-print it.
-# We want to avoid escaping any Unicode characters that result contains. See:
-# https://stackoverflow.com/questions/18337407/saving-utf-8-texts-in-json-dumps-as-utf8-not-as-u-escape-sequence
-output = json.dumps(json.loads(result), indent=4, ensure_ascii=False)
-
-print (output)
+import os, requests, uuid, json
 ```
 
-## <a name="transliterate-response"></a>表記変換応答
+> [!NOTE]
+> これらのモジュールを使用していない場合は、プログラムを実行する前にこれらをインストールする必要があります。 これらのパッケージをインストールするには、`pip install requests uuid` を実行します。
 
-成功した応答は、次の例に示すように JSON で返されます。
+最初のコメントでは、UTF-8 エンコードを使用するように Python インタープリターに指示しています。 次に、必要なモジュールをインポートして、環境変数からのサブスクリプション キーの読み取り、HTTP 要求の作成、一意識別子の作成、Translator Text API から返された JSON 応答の処理を行っています。
+
+## <a name="set-the-subscription-key-base-url-and-path"></a>サブスクリプション キー、ベース URL、パスの設定
+
+このサンプルでは、環境変数 `TRANSLATOR_TEXT_KEY` から Translator Text のサブスクリプション キーが読み取られるよう試行されます。 環境変数を使い慣れていない場合は、`subscriptionKey` を文字列として設定し、条件ステートメントをコメント アウトすることができます。
+
+このコードをプロジェクトにコピーします。
+
+```python
+# Checks to see if the Translator Text subscription key is available
+# as an environment variable. If you are setting your subscription key as a
+# string, then comment these lines out.
+if 'TRANSLATOR_TEXT_KEY' in os.environ:
+    subscriptionKey = os.environ['TRANSLATOR_TEXT_KEY']
+else:
+    print('Environment variable for TRANSLATOR_TEXT_KEY is not set.')
+    exit()
+# If you want to set your subscription key as a string, uncomment the line
+# below and add your subscription key.
+#subscriptionKey = 'put_your_key_here'
+```
+
+現在、1 つのエンドポイントが Translator Text 用に使用可能で、`base_url` として設定されています。 `path` によって、`transliterate` ルートが設定され、API のバージョン 3 を使用することが識別されます。
+
+入力言語、入力スクリプト、出力スクリプトは、`params` を使用して設定します。 このサンプルでは、日本語からラテン アルファベットへの表記変換を実行します。
+
+>[!NOTE]
+> エンドポイント、ルート、要求パラメーターの詳細については、「[Translator Text API 3.0: Transliterate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-transliterate)」を参照してください。
+
+```python
+base_url = 'https://api.cognitive.microsofttranslator.com'
+path = '/transliterate?api-version=3.0'
+params = '&language=ja&fromScript=jpan&toScript=latn'
+constructed_url = base_url + path + params
+```
+
+## <a name="add-headers"></a>ヘッダーの追加
+
+要求を認証する最も簡単な方法は、このサンプルで使用している `Ocp-Apim-Subscription-Key` ヘッダーとしてサブスクリプション キーを渡すことです。 または、アクセス トークンのサブスクリプション キーを交換し、アクセス トークンを一緒に `Authorization` ヘッダーとして渡して要求を検証することもできます。 詳細については、[認証](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication)に関するページをご覧ください。
+
+このコード スニペットをプロジェクトにコピーします。
+
+```python
+headers = {
+    'Ocp-Apim-Subscription-Key': subscriptionKey,
+    'Content-type': 'application/json',
+    'X-ClientTraceId': str(uuid.uuid4())
+}
+```
+
+## <a name="create-a-request-to-transliterate-text"></a>テキストを表記変換する要求の作成
+
+表記変換したい 1 つまたは複数の文字列を定義します。
+
+```python
+# Transliterate "good afternoon" from source Japanese.
+# Note: You can pass more than one object in body.
+body = [{
+    'text': 'こんにちは'
+}]
+```
+
+次に、`requests` モジュールを使用して POST 要求を作成します。 これは、連結された URL、要求ヘッダー、および要求本文の 3 つの引数を受け取ります。
+
+```python
+request = requests.post(constructed_url, headers=headers, json=body)
+response = request.json()
+```
+
+## <a name="print-the-response"></a>応答の出力
+
+最後の手順では、結果を出力します。 このコード スニペットでは、キーを並べ替え、インデントを設定し、項目とキーの区切りを宣言することによって、結果を整形します。
+
+```python
+print(json.dumps(response, sort_keys=True, indent=4, ensure_ascii=False, separators=(',', ': ')))
+```
+
+## <a name="put-it-all-together"></a>すべてをまとめた配置
+
+これで、Translator Text API を呼び出して JSON 応答を返す簡単なプログラムが完成しました。 ここで、プログラムを実行してみましょう。
+
+```console
+python transliterate-text.py
+```
+
+作成したコードをサンプル コードと比較したい場合は、完全なサンプルを [GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python) から入手できます。
+
+## <a name="sample-response"></a>応答のサンプル
 
 ```json
 [
-  {
-    "text": "konnnichiha",
-    "script": "latn"
-  }
+    {
+        "script": "latn",
+        "text": "konnnichiha"
+    }
 ]
 ```
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+サブスクリプション キーをプログラムにハードコーディングしている場合は、このクイック スタートを終了するときにサブスクリプション キーを必ず削除してください。
+
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートをはじめとする各種ドキュメントで翻訳と言語認識を含んだサンプル コードを詳しく見てみましょう。GitHub にある Translator Text の各種サンプル プロジェクトもご覧ください。
-
 > [!div class="nextstepaction"]
-> [GitHub で Python のコード例を詳しく見てみる](https://aka.ms/TranslatorGitHub?type=&language=python)
+> [GitHub で Python のコード例を詳しく見てみる](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Python)
+
+## <a name="see-also"></a>関連項目
+
+テキストの表記変換に加えて、Translator Text API を使用して次の操作を行う方法を学習します。
+
+* [テキストを翻訳する](quickstart-python-translate.md)
+* [入力によって言語を識別する](quickstart-python-detect.md)
+* [別の翻訳を取得する](quickstart-python-dictionary.md)
+* [サポートされている言語の一覧を取得する](quickstart-python-languages.md)
+* [入力から文章の長さを判定する](quickstart-python-sentences.md)

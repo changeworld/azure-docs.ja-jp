@@ -1,21 +1,20 @@
 ---
 title: Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する | Microsoft Docs
-description: この記事では、Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します
-services: site-recovery
+description: この記事では、Azure Site Recovery を使用して Azure への VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 4222214705c42fe09d90d77faa7be63cc2a13206
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 516edd922d6ead9a71f81c3b9b777b15f1fb28ae
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025278"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233159"
 ---
-# <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
+# <a name="deploy-a-configuration-server-for-vmware-disaster-recovery-to-azure"></a>Azure への VMware ディザスター リカバリーのための構成サーバーのデプロイ
 
 Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスの構成サーバーを展開します。 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整します。 データのレプリケーションも管理します。 この記事では、VMware VM を Azure にレプリケートするときの構成サーバーの展開に必要な手順について説明します。 物理サーバーのレプリケーション用に構成サーバーを設定する必要がある場合は、[こちらの記事に従ってください](physical-azure-set-up-source.md)。
 
@@ -117,6 +116,14 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 8. **[構成の確定]** を選択して、登録を完了します。
 9. 登録が終了したら、Azure portal を開き、構成サーバーと VMware サーバーが、**[Recovery Services コンテナー]** > **[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** にリストされていることを確認します。
 
+## <a name="upgrade-the-configuration-server"></a>構成サーバーをアップグレードする
+
+構成サーバーを最新バージョンにアップグレードするには、こちらの[手順](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)に従ってください。
+
+## <a name="manage-the-configuration-server"></a>構成サーバーの管理
+
+進行中のレプリケーションの中断を回避するには、構成サーバーがコンテナーに登録された後に構成サーバーの IP アドレスが変更されないようにします。 構成サーバーの一般的な管理タスクの詳細については、[こちら](vmware-azure-manage-configuration-server.md)を参照してください。
+
 ## <a name="faq"></a>FAQ
 
 1. 構成サーバーがインストールされている VM をさまざまな目的で使用することはできますか?
@@ -140,14 +147,6 @@ OVA テンプレートに付属するライセンスは、180 日間有効な評
 7. コンテナー登録キーはどこでダウンロードできますか?
 
     **[Recovery Services コンテナー]** で、**[管理]** > **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** の順に移動します。 [サーバー] で **[登録キーのダウンロード]** を選択して、コンテナーの資格情報ファイルをダウンロードします。
-
-## <a name="upgrade-the-configuration-server"></a>構成サーバーをアップグレードする
-
-構成サーバーを最新バージョンにアップグレードするには、こちらの[手順](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server)に従ってください。
-
-## <a name="manage-the-configuration-server"></a>構成サーバーの管理
-
-進行中のレプリケーションの中断を回避するには、構成サーバーがコンテナーに登録された後に構成サーバーの IP アドレスが変更されないようにします。 構成サーバーの一般的な管理タスクの詳細については、[こちら](vmware-azure-manage-configuration-server.md)を参照してください。
 
 ## <a name="troubleshoot-deployment-issues"></a>デプロイに関する問題のトラブルシューティング
 

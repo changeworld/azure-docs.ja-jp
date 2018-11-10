@@ -10,12 +10,12 @@ ms.component: custom-vision
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: areddish
-ms.openlocfilehash: e302fc580d9c83d269f0deedd051a3ea23bd274e
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d02dced071594732978f961c1b9d8effcd2e35ab
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957215"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415629"
 ---
 # <a name="tutorial-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>チュートリアル: Custom Vision SDK for Java を使って画像分類プロジェクトを作成する
 
@@ -23,12 +23,12 @@ Custom Vision Service と Java を使って、画像分類プロジェクトを�
 
 ## <a name="prerequisites"></a>前提条件
 
-- JDK 7 または 8 がインストールされていること。
+- [JDK 7 または 8](https://aka.ms/azure-jdks) がインストールされていること。
 - Maven がインストールされていること。
 
 ## <a name="get-the-training-and-prediction-keys"></a>トレーニング キーと予測キーを取得する
 
-このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある__歯車アイコン__を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
+このサンプルで使用されるキーを取得するには、[Custom Vision Web ページ](https://customvision.ai)にアクセスし、右上にある __歯車アイコン__ を選択します。 __[アカウント]__ セクションで、__[Training Key]\(トレーニング キー\)__ フィールドと __[Prediction Key]\(予測キー\)__ フィールドから値をコピーします。
 
 ![キー UI の画像](./media/python-tutorial/training-prediction-keys.png)
 
@@ -44,7 +44,7 @@ Maven Central Repository から Custom Vision SDK をインストールできま
 
 好みの Java IDE を使用して、`Vision/CustomVision` プロジェクトを開きます。 
 
-このアプリケーションは、先ほど取得したトレーニング キーを使用して、__Sample Java Project__ という名前の新しいプロジェクトを作成します。 その後、イメージをアップロードして分類器のトレーニングおよびテストを行います。 分類器は、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを識別します。
+このアプリケーションは、先ほど取得したトレーニング キーを使用して、__Sample Java Project__ という名前の新しいプロジェクトを作成します。 その後、イメージをアップロードして分類子のトレーニングおよびテストを行います。 分類子は、木が __Hemlock__ (ドクニンジン) であるか __Japanese Cherry__ (桜) であるかを識別します。
 
 この例の主な機能は、以下のコード スニペットに実装されています。
 
