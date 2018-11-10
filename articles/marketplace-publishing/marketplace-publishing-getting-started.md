@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: 82580fbab68eab28a2027cd277213f1fb2a76e07
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 3556384d71649391d094172a136b863ed26fd2ad
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716003"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227401"
 ---
 > [!NOTE]
 > このドキュメントは最新ではなく、情報は正確ではありません。 代わりに Azure Marketplace の[販売者ガイド](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide)にアクセスして、Azure Marketplace へのプランの発行についてのガイダンスをご覧ください。
@@ -28,7 +28,7 @@ ms.locfileid: "39716003"
 この記事では、Azure Marketplace に掲載されるソリューションを開発者が作成、デプロイ、管理し、Azure の他の顧客やパートナーに有償で提供するための方法を紹介しています。
 
 ## <a name="marketplace-publishing"></a>Marketplace への発行
-開発した革新的なソリューションやサービスを Azure の発行元として、Marketplace で他の開発者、ISV、および IT プロフェッショナルに配布および販売できます。 Marketplace を通して、クラウド ベースのアプリケーションやモバイル ソリューションを簡単に開発することを望んでいる顧客にアピールすることができます。 ソリューションのターゲットがビジネス ユーザーの場合は、[AppSource](http://appsource.microsoft.com) Marketplace を検討することをお勧めします。
+開発した革新的なソリューションやサービスを Azure の発行元として、Marketplace で他の開発者、ISV、および IT プロフェッショナルに配布および販売できます。 Marketplace を通して、クラウド ベースのアプリケーションやモバイル ソリューションを簡単に開発することを望んでいる顧客にアピールすることができます。 ソリューションのターゲットがビジネス ユーザーの場合は、[AppSource](https://appsource.microsoft.com) Marketplace を検討することをお勧めします。
 
 
 ## <a name="supported-types-of-solutions"></a>サポートされるソリューションの種類
@@ -51,7 +51,7 @@ ms.locfileid: "39716003"
 >[!NOTE]
 > パートナー アカウント マネージャーまたは DX パートナー マネージャと協力している場合は、ソリューションを Azure Certified プログラムにノミネートするように依頼してください。 [Microsoft Azure Certified](http://createopportunity.azurewebsites.net) Web ページに移動して申し込みフォームに入力することもできます。 パートナー アカウント マネージャーまたは DX パートナー マネージャーの電子メール アドレスを **[Microsoft Sponsor Contact]\(Microsoft スポンサーの取引先担当者\)** ボックスに入力してください。
 
-[Azure Marketplace 参加ポリシー](http://go.microsoft.com/fwlink/?LinkID=526833)の資格基準を満たしている場合、アプリケーションが承認された際には、マイクロソフトがお客様のソリューションを Azure Marketplace にオンボードするお手伝いをします。
+[Azure Marketplace 参加ポリシー](https://go.microsoft.com/fwlink/?LinkID=526833)の資格基準を満たしている場合、アプリケーションが承認された際には、マイクロソフトがお客様のソリューションを Azure Marketplace にオンボードするお手伝いをします。
 
 ### <a name="register-your-account-as-a-microsoft-seller"></a>Microsoft 販売者としてアカウントを登録する
 Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-publishing-accounts-creation-registration.md)として登録します。
@@ -68,11 +68,9 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 
 2. プランを作成します。
 
-    a. 
-  [仮想マシン](marketplace-publishing-vm-image-creation.md) プランを作成します。
+    a. [仮想マシン](marketplace-publishing-vm-image-creation.md) プランを作成します。
 
-    b. 
-  [ソリューション テンプレート](marketplace-publishing-solution-template-creation.md) プランを作成します。
+    b. [ソリューション テンプレート](marketplace-publishing-solution-template-creation.md) プランを作成します。
 
 3. プランの[マーケティング コンテンツ](marketplace-publishing-push-to-staging.md)を作成します。
 
@@ -94,17 +92,12 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 
 ## <a name="manage-your-solution"></a>ソリューションを管理する
 以下のリソースを参照してソリューションを管理します。
-* 
-  [仮想マシン プランの作成後ガイドを読む](marketplace-publishing-vm-image-post-publishing.md)
-* 
-  [プランまたは SKU の技術面以外の詳細を更新する](marketplace-publishing-vm-image-post-publishing.md#update-the-nontechnical-details-of-an-offer-or-a-sku)
-* 
-  [プランまたは SKU の技術面の詳細を更新する](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
-* 
-  [表示されているプランに新しい SKU を追加する](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
+* [仮想マシン プランの作成後ガイドを読む](marketplace-publishing-vm-image-post-publishing.md)
+* [プランまたは SKU の技術面以外の詳細を更新する](marketplace-publishing-vm-image-post-publishing.md#update-the-nontechnical-details-of-an-offer-or-a-sku)
+* [プランまたは SKU の技術面の詳細を更新する](marketplace-publishing-vm-image-post-publishing.md#update-the-technical-details-of-a-sku)
+* [表示されているプランに新しい SKU を追加する](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
 * [表示されている SKU のデータ ディスク数を変更する](marketplace-publishing-vm-image-post-publishing.md#change-the-data-disk-count-for-a-listed-sku)
-* 
-  [表示されているプランを Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md)
+* [表示されているプランを Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md)
 * [表示されている SKU を Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
 * [表示されている SKU の現在のバージョンを Marketplace から削除する](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
 * [表示価格を運用時の値に戻す](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)

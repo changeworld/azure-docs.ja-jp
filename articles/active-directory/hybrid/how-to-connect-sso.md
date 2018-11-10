@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 4e9292b5932c36d55069ff300bf7c0a99b280fc5
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 8b74cf533c0fe59a0967b7063791df2cfc9a7a77
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054186"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913933"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -58,15 +58,15 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 - バージョン 16.0.8730.xxxx 以降の Office 365 Win32 クライアント (Outlook、Word、Excel など) は、非対話型フローを使用してサポートされています。 OneDrive の場合、サイレント サインオン エクスペリエンス用の [OneDrive サイレント構成機能](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894)をアクティブにする必要があります。
 - この機能は、Azure AD Connect を使用して有効にできます。
 - これは無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。
-- この機能は、Web ブラウザー ベースのクライアントと、Kerberos 認証に対応したプラットフォームおよびブラウザーで[最新の認証](https://aka.ms/modernauthga)をサポートする Office クライアントでサポートされています。
+- この機能は、Web ブラウザー ベースのクライアントと、Kerberos 認証に対応したプラットフォームおよびブラウザーで[最新の認証](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)をサポートする Office クライアントでサポートされています。
 
-| OS\ブラウザー |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
+| OS\ブラウザー |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|はい\*|いいえ |[はい]|[はい]\*\*\*|該当なし
 |Windows 8.1|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
 |Windows 8|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
 |Windows 7|はい\*|該当なし|[はい]|[はい]\*\*\*|該当なし
-|Windows Server 2012 R2 以降|[はい]\*\*|該当なし|[はい]|[はい]\*\*\*|該当なし
+|Windows Server 2012 R2 以降|はい\*\*|該当なし|[はい]|[はい]\*\*\*|該当なし
 |Mac OS X|該当なし|該当なし|[はい]\*\*\*|[はい]\*\*\*|[はい]\*\*\*
 
 

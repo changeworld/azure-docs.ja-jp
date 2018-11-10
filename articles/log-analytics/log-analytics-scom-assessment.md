@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 39e11f35870fa3a3573e5f1af467cfbd898a1563
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: c17c14b015531bf3f978ac30b013c80ad5be779e
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182146"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006517"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 
@@ -212,7 +212,7 @@ System Center Operations Manager Health Check ソリューションの管理パ�
 
 ## <a name="use-health-check-focus-area-recommendations"></a>正常性チェックの関心領域に関する推奨事項の使用
 
-Log Analytics の正常性チェック ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 ソリューションのインストールの詳細については、[管理ソリューションのインストール](log-analytics-add-solutions.md)に関する記事を参照してください。 インストール後は、Azure portal でワークスペースの **[概要]** ページの [System Center Operations Manager Health Check] タイルを使用して、推奨事項の概要を表示できます。
+Log Analytics の正常性チェック ソリューションを使用するには、ソリューションが事前にインストールされている必要があります。 ソリューションのインストールの詳細については、[管理ソリューションのインストール](../monitoring/monitoring-solutions.md)に関する記事を参照してください。 インストール後は、Azure portal でワークスペースの **[概要]** ページの [System Center Operations Manager Health Check] タイルを使用して、推奨事項の概要を表示できます。
 
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認します。
 
@@ -238,7 +238,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
     ```
 
     >[!NOTE]
-    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-queries.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -263,7 +263,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
     ```
 
     >[!NOTE]
-    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-queries.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
     >
     > `SCOMAssessmentRecommendationRecommendation | where RecommendationResult == "Ignore" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
@@ -304,4 +304,4 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 
 ## <a name="next-steps"></a>次の手順
 
-- [ログの検索](log-analytics-log-searches.md)で、詳細な System Center Operations Manager Health Check データと推奨事項を分析する方法を学びます。
+- [ログの検索](log-analytics-queries.md)で、詳細な System Center Operations Manager Health Check データと推奨事項を分析する方法を学びます。

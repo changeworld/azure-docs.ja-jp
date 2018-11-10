@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 4faea38817a546dbab02064d22a0813362f77b3d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: e504f8c4fb34084d613e7ab1e506187a856defef
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50416462"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961842"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](log-analytics-itsmc-overview.md)に関する記事をご覧ください。
@@ -293,7 +293,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 
 - ITSMC がインストールされている。 詳細については、「[IT Service Management Connector ソリューションの追加](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution)」を参照してください。
-- Provance アプリが Azure AD で登録されており、クライアント ID が使用可能である。 詳細については、[Active Directory 認証の構成方法](../app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication.md)に関する記事をご覧ください。
+- Provance アプリが Azure AD で登録されており、クライアント ID が使用可能である。 詳細については、[Active Directory 認証の構成方法](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md)に関する記事をご覧ください。
 
 - ユーザー ロールが管理者である。
 

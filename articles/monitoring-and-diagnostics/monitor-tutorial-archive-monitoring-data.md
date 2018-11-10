@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: be6f3efd74d013e9ddb02c44031dd6a402f00871
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ac8be998a70b31af9829eeeab24902c62fd2fe37
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409492"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961512"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure Storage を使用して Azure のメトリック データとログ データをアーカイブする
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-最初に、監視データをアーカイブするストレージ アカウントを設定する必要があります。 それには、[こちらの手順に従います](../storage/common/storage-create-storage-account.md)。
+最初に、監視データをアーカイブするストレージ アカウントを設定する必要があります。 それには、[こちらの手順に従います](../storage/common/storage-quickstart-create-account.md)。
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>サブスクリプション ログをストレージ アカウントにルーティングする
 
@@ -198,4 +198,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 データからさらに情報を取り出して洞察を得るには、Log Analytics にもデータを送ってください。
 
 > [!div class="nextstepaction"]
-> [Log Analytics の起動と開始](../log-analytics/log-analytics-get-started.md)
+> [Log Analytics の起動と開始](../log-analytics/log-analytics-queries.md)

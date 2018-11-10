@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2018
+ms.date: 11/05/2018
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.openlocfilehash: ed89468d65f35d0a8cda90da365e8625f46e3f92
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: bd72abd4f8f23414ea1003c74d2f90cde3b51d34
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41946591"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51034339"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>致命的なデータ損失からの復旧
 
@@ -46,7 +46,7 @@ Azure Stack を保護する過程は、インフラストラクチャとアプ�
 
 ![Azure Stack の再デプロイ](media\azure-stack-backup\azure-stack-backup-workflow2.png)
 
-## <a name="restore"></a>Restore
+## <a name="restore"></a>復元
 
 致命的なデータ損失が発生しても、ハードウェアが引き続き使用できる場合は、Azure Stack の再展開が必要になります。 再展開の際に、ストレージの場所と、バックアップのアクセスに必要な資格情報を指定できます。 このモードでは、復元の必要があるサービスを指定する必要はありません。 展開ワークフローの一部として、インフラストラクチャ バックアップ コントローラーによってコントロール プレーンの状態が挿入されます。
 
@@ -73,4 +73,4 @@ Azure Stack では、クラウド回復モードというタイプの展開が�
 
 ## <a name="next-steps"></a>次の手順
 
- - [インフラストラクチャ バックアップ サービスの使用](azure-stack-backup-best-practices.md)について、ベスト プラクティスを説明します。
+[インフラストラクチャ バックアップ サービスの使用](azure-stack-backup-best-practices.md)について、ベスト プラクティスを説明します。

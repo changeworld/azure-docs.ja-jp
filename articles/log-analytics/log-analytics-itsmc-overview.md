@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
 ms.component: ''
-ms.openlocfilehash: 4f8261983feb8e655333f548b0b90f822eda30a6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 526ba73858322ee41f649a338f22226da6af33e7
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50421188"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50964079"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>IT Service Management Connector を使用して Azure を ITSM ツールに接続する
 
@@ -157,13 +157,13 @@ Azure のアラート ルールを作成/編集する場合は、ITSM アクシ�
 
 Service Map ソリューション内で、影響を受けるコンピューターに対して同期されたインシデントを視覚化することもできます。
 
-サービス マップは、Windows と Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 サービス マップは、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続を表示します。エージェントのインストール以外の構成は必要ありません。 [詳細情報](../operations-management-suite/operations-management-suite-service-map.md)。
+サービス マップは、Windows と Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 サービス マップは、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続を表示します。エージェントのインストール以外の構成は必要ありません。 [詳細情報](../monitoring/monitoring-service-map.md)。
 
 Service Map ソリューションを使用する場合は、ITSM ソリューションで作成されたサービス デスク項目が次の例のように表示されます。
 
 ![Log Analytics 画面](media/log-analytics-itsmc-overview/itsmc-overview-integrated-solutions.png)
 
-詳細: [Service Map](../operations-management-suite/operations-management-suite-service-map.md)
+詳細: [Service Map](../monitoring/monitoring-service-map.md)
 
 
 ## <a name="additional-information"></a>追加情報

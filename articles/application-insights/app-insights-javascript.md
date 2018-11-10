@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6d826702d8302246a225ebfcdf0a5987cf9d2045
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 46939e15100468eab0d5575546eb6bd58df4aacd
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167054"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961077"
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 Web ページまたはアプリのパフォーマンスと使用状況について調べます。 [Application Insights](app-insights-overview.md) をページ スクリプトに追加すると、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。 エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。 また、JavaScript コードにトレースの呼び出しを挿入することで、Web ページ アプリケーションのさまざまな機能がどのように使用されているかを追跡できます。
@@ -230,7 +230,7 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 ## <a name="usage-tracking"></a>使用状況の追跡
 アプリケーションで、ユーザーが何をするのかを知る必要がありますか。
 
-* [ユーザー動作分析ツールの詳細情報](app-insights-web-track-usage.md)
+* [ユーザー動作分析ツールの詳細情報](app-insights-usage-overview.md)
 * [カスタム イベントとメトリックの API の詳細情報](app-insights-api-custom-events-metrics.md)。
 
 ## <a name="video"></a> ビデオ
@@ -241,7 +241,7 @@ AJAX 呼び出しには、Web ページのスクリプトから実行される�
 
 
 ## <a name="next"></a> 次のステップ
-* [利用状況を追跡する](app-insights-web-track-usage.md)
+* [利用状況を追跡する](app-insights-usage-overview.md)
 * [カスタム イベントとメトリックス](app-insights-api-custom-events-metrics.md)
-* [ビルド - 測定 - 学習](app-insights-web-track-usage.md)
+* [ビルド - 測定 - 学習](app-insights-usage-overview.md)
 

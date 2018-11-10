@@ -5,14 +5,14 @@ services: container-service
 author: seanmck
 ms.service: container-service
 ms.topic: troubleshooting
-ms.date: 09/13/2018
+ms.date: 11/05/2018
 ms.author: seanmck
-ms.openlocfilehash: e29308b7b1c17377cf1d627f2a32a2ba6ea4d077
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 01095ac4ed8e362f1a89a53b10b5da6a547feb57
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46310091"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51218638"
 ---
 # <a name="checking-for-kubernetes-best-practices-in-your-cluster"></a>クラスターでの Kubernetes のベスト プラクティスを確認する
 
@@ -30,7 +30,7 @@ ms.locfileid: "46310091"
 [ロールベースのアクセス制御 (RBAC)](aad-integration.md) 用に構成されたクラスターでこのツールを実行するには、次のコマンドを使用します。 最初のコマンドにより、Kubernetes サービス アカウントが作成されます。 2 番目のコマンドでは、そのサービス アカウントを使用して、ツールがポッドで実行されます。また、そのポッドは、終了後に削除されるように構成されます。 
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml?token=ABLLDrNcuHMro9jQ0xduCaEbpzLupzQUks5bh3RhwA%3D%3D
+kubectl apply -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 
 kubectl run --rm -i -t kubeadvisor --image=mcr.microsoft.com/aks/kubeadvisor --restart=Never --overrides="{ \"apiVersion\": \"v1\", \"spec\": { \"serviceAccountName\": \"kube-advisor\" } }"
 ```
@@ -60,7 +60,7 @@ Kubernetes では、[ポッド仕様でのリソースの要求と制限][kube-c
 お使いのクラスターで RBAC が有効になっている場合は、ツールを実行した後に次のコマンドを使用して、`ClusterRoleBinding` をクリーンアップできます。
 
 ```bash
-kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml?token=ABLLDrNcuHMro9jQ0xduCaEbpzLupzQUks5bh3RhwA%3D%3D
+kubectl delete -f https://raw.githubusercontent.com/Azure/kube-advisor/master/sa.yaml
 ```
 
 RBAC が有効になっていないクラスターに対してツールを実行している場合、クリーンアップは不要です。

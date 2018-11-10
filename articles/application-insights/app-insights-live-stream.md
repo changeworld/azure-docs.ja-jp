@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: a7953781776fa4d7c9ae47901bb5f0c28a87ff2b
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 9105b7f44a9677b2b843305c30fec30c74dd8be5
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091193"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958493"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: 1 秒の待機時間での監視と診断
 
@@ -203,7 +203,7 @@ services.ConfigureTelemetryModule<QuickPulseTelemetryModule>( module => module.A
 
 
 ## <a name="next-steps"></a>次の手順
-* [Application Insights による使用状況の監視](app-insights-web-track-usage.md)
+* [Application Insights による使用状況の監視](app-insights-usage-overview.md)
 * [診断検索の使用](app-insights-diagnostic-search.md)
 * [プロファイラー](app-insights-profiler.md)
 * [スナップショット デバッガー](app-insights-snapshot-debugger.md)

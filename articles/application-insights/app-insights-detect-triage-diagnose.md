@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 799593758bf24924d91d38bd6a626b945247183b
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 41c8fd0092af035153b3161c4a6c3eb5c5ef3f1d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050240"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958901"
 ---
 # <a name="overview-of-application-insights-for-devops"></a>DevOps のための Application Insights の概要
 
@@ -231,6 +231,6 @@ Application Insights を使用して、ユーザーによるアプリの使用�
 * [ASP.NET Web アプリケーション](app-insights-asp-net.md)
 * [Java Web アプリケーション](app-insights-java-get-started.md)
 * [Node.js Web アプリケーション](app-insights-nodejs.md)
-* [IIS](app-insights-monitor-web-app-availability.md)、[J2EE](app-insights-java-live.md) または [Azure](app-insights-azure.md) でホストされているデプロイ済みのアプリ。
+* [IIS](app-insights-monitor-web-app-availability.md)、[J2EE](app-insights-java-live.md) または [Azure](app-insights-overview.md) でホストされているデプロイ済みのアプリ。
 * [Web ページ](app-insights-javascript.md) (シングル ページ アプリまたは通常の Web ページ) - 単独で、または任意のサーバー オプションに加えて使用します。
 * [可用性テスト](app-insights-monitor-web-app-availability.md) - パブリック インターネットからアプリをテストします。

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/21/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8cfe8c309c11eb24bc6e7af9fc3ba3eef0422c35
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: c16da55540faaf165faa592c3565b317a8eab922
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638218"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50914092"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
@@ -50,7 +50,7 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
     * Azure AD Connect を使用して Azure AD に同期している。
     * シームレス SSO を有効にさせたいユーザーが含まれている。
     
-* **先進認証を有効にする**: この機能を作動させるには、テナントで[先進認証](https://aka.ms/modernauthga)を有効にする必要があります。
+* **先進認証を有効にする**: この機能を作動させるには、テナントで[先進認証](https://docs.microsoft.com/office365/enterprise/modern-auth-for-office-2013-and-2016)を有効にする必要があります。
 
 * **Office 365 クライアントの最新版を使用する**: Office 365 クライアント (Outlook、Word、Excel、その他) でサイレント サインオンを利用するには、ユーザーは 16.0.8730.xxxx 以上のバージョンを使用している必要があります。
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 0244673d50e22124e8a0678e202004f06b0bca00
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: e1f33551c02562bbd8b7cc6a4187f7135a06c60f
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182622"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50961944"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>容量とパフォーマンス ソリューション (プレビュー) を使って Hyper-V 仮想マシンの容量を計画する
 
@@ -50,8 +50,8 @@ Log Analytics の容量とパフォーマンス ソリューションは、Hyper
 
 | 接続先ソース | サポート | 説明 |
 |---|---|---|
-| [Windows エージェント](log-analytics-windows-agent.md) | [はい] | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
-| [Linux エージェント](log-analytics-linux-agents.md) | いいえ     | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
+| [Windows エージェント](log-analytics-agent-windows.md) | [はい] | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
+| [Linux エージェント](log-analytics-quick-collect-linux-computer.md) | いいえ     | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
 | [SCOM 管理グループ](log-analytics-om-agents.md) | [はい] |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから Log Analytics への直接接続は必要ありません。|
 | [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ  | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|
 
@@ -64,7 +64,7 @@ Log Analytics の容量とパフォーマンス ソリューションは、Hyper
 
 容量とパフォーマンス ソリューションをワークスペースに追加する手順は、以下のとおりです。
 
-- [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)方法に関するページの手順に従って、容量とパフォーマンス ソリューションを Log Analytics ワークスペースに追加します。
+- [ソリューション ギャラリーから Log Analytics ソリューションを追加する](../monitoring/monitoring-solutions.md)方法に関するページの手順に従って、容量とパフォーマンス ソリューションを Log Analytics ワークスペースに追加します。
 
 ## <a name="management-packs"></a>管理パック
 
@@ -138,4 +138,4 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 
 ## <a name="next-steps"></a>次の手順
-* [Log Analytics のログ検索機能](log-analytics-log-search.md)を使用して、容量とパフォーマンスに関する詳細なデータを確認します。
+* [Log Analytics のログ検索機能](log-analytics-queries.md)を使用して、容量とパフォーマンスに関する詳細なデータを確認します。

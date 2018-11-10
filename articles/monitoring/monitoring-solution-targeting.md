@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: 65585e6c09def23101d9735c8b9c719d213938ac
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 1aaa753c91a324621dc66fab23e5fed3a9d11d01
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33887402"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50912767"
 ---
 # <a name="targeting-management-solutions-in-azure-preview"></a>Azure での管理ソリューションのターゲット設定 (プレビュー)
 サブスクリプションに管理ソリューションを追加すると、ソリューションは、既定では Log Analytics ワークスペースに接続されているすべての Windows エージェントと Linux エージェントに自動的にデプロイされます。  ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。  この記事では、**ソリューションのターゲット設定**を使用する方法について説明します。この機能を使用すると、ソリューションにスコープを適用することができます。
@@ -74,5 +74,5 @@ ms.locfileid: "33887402"
 - エージェントの正常性評価
 
 ## <a name="next-steps"></a>次の手順
-- 「[Azure Log Analytics 管理ソリューションをワークスペースに追加する](../log-analytics/log-analytics-add-solutions.md)」で管理ソリューション (環境にインストールできるソリューションなど) について学習する。
+- 「[Azure Log Analytics 管理ソリューションをワークスペースに追加する](monitoring-solutions.md)」で管理ソリューション (環境にインストールできるソリューションなど) について学習する。
 - 「[Log Analytics のログ検索におけるコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)」でコンピューター グループの作成について学習する。

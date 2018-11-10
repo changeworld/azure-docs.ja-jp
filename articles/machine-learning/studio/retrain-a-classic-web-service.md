@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.openlocfilehash: 6fc03865185b97fb1f34028239f647f97d5bd315
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 3de17375670d7697a298023dc79ffc2418cb7e42
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34836876"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50963770"
 ---
 # <a name="retrain-a-classic-web-service"></a>従来の Web サービスの再トレーニングを行う
 デプロイした予測 Web サービスは、既定のスコア付けエンドポイントです。 既定のエンドポイントは、元のトレーニングおよびスコア付け実験との同期が維持されるため、既定のエンドポイントのトレーニング済みモデルは置き換えることができません。 Web サービスを再トレーニングするには、Web サービスに新しいエンドポイントを追加する必要があります。 
@@ -51,7 +51,7 @@ Web サービスのデプロイの詳細については、「[Azure Machine Lear
 2. Microsoft Azure Web サービス ポータルを使用する
 
 ### <a name="programmatically-add-an-endpoint"></a>プログラムを使用してエンドポイントを追加する
-[GitHub リポジトリ](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs)で提供されているサンプル コードを使用して、スコア付けエンドポイントを追加できます。
+[GitHub リポジトリ](https://github.com/hning86/azuremlps#add-amlwebserviceendpoint)で提供されているサンプル コードを使用して、スコア付けエンドポイントを追加できます。
 
 ### <a name="use-the-microsoft-azure-web-services-portal-to-add-an-endpoint"></a>Microsoft Azure Web サービス ポータルを使用してエンドポイントを追加する
 1. Machine Learning Studio の左側のナビゲーション列で [Web サービス] をクリックします。

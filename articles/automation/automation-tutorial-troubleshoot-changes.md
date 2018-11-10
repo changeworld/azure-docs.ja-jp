@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: 変更, 追跡, オートメーション
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 09/12/2018
+ms.date: 11/01/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 16d5a025f0c0ff571298e0f528fb9119e37950f3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1865fcf47510bbaae82f98ccad85993a85ffc1ab
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995262"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959139"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>環境の変更に関する問題を解決する
 
@@ -97,10 +97,10 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 
 1. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
-|有効     | 設定が適用されるかどうかを決定します。        |
-|項目名     | 追跡するファイルのフレンドリ名。        |
+|Enabled     | 設定が適用されるかどうかを決定します。        |
+|Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |Windows レジストリ キー   | ファイル確認のためのパス (例: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup")。      |
 
@@ -110,10 +110,10 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 
 1. **[変更履歴用の Windows ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
-|有効     | 設定が適用されるかどうかを決定します。        |
-|項目名     | 追跡するファイルのフレンドリ名。        |
+|Enabled     | 設定が適用されるかどうかを決定します。        |
+|Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "c:\temp\\\*.txt")。<br>"%winDir%\System32\\\*.*" などの環境変数も使用できます。         |
 |再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
@@ -125,10 +125,10 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 
 1. **[変更履歴用の Linux ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
-|有効     | 設定が適用されるかどうかを決定します。        |
-|項目名     | 追跡するファイルのフレンドリ名。        |
+|Enabled     | 設定が適用されるかどうかを決定します。        |
+|Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
 |パスの入力     | ファイル確認のためのパス (例: "/etc/*.conf")。       |
 |パスの種類     | 追跡する項目の種類。"ファイル" または "ディレクトリ" を指定できます。        |

@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/17/2015
 ms.author: mbullwin
-ms.openlocfilehash: 0a95da39b73201ea15bd6d3be64de9a12571028d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e2ec165d0183510487744bc98e31688eb5de0f8c
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095187"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959258"
 ---
 # <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Azure Web アプリのための PowerShell を使用した Application Insights の設定
-[Microsoft Azure](https://azure.com) は、[Azure Application Insights](app-insights-overview.md) に [Azure 診断を送信するように構成](app-insights-azure-diagnostics.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
+[Microsoft Azure](https://azure.com) は、[Azure Application Insights](app-insights-overview.md) に [Azure 診断を送信するように構成](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)できます。 診断は、Azure Cloud Services および Azure VM に関するものです。 このデータは、Application Insights SDK を使用するアプリケーション内から送信されるテレメトリを補完します。 Azure での新規リソース作成プロセスを自動化する一部として、PowerShell を使用して診断を構成できます。
 
 ## <a name="azure-template"></a>Azure テンプレート
 Web アプリが Azure に存在するとき、Azure Resource Manager テンプレートを使用してリソースを作成する場合、resources ノードに次のコードを追加することで Application Insights を構成できます。
@@ -136,6 +136,6 @@ Role パラメーターを指定しないで `Set-AzureServiceDiagnosticsExtensi
 
 ## <a name="see-also"></a>関連項目
 * [Application Insights で Azure Cloud Services アプリを監視する](app-insights-cloudservices.md)
-* [Azure 診断を Application Insights に送信する](app-insights-azure-diagnostics.md)
+* [Azure 診断を Application Insights に送信する](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)
 * [アラートの構成を自動化する](app-insights-powershell-alerts.md)
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 2c52baf47e0b1495a5abfa727ab8bc8d997a4283
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 8343c27693538480757a879e477ec77fba08de3d
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418893"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50958340"
 ---
 # <a name="manage-cost-by-controlling-data-volume-and-retention-in-log-analytics"></a>Log Analytics でデータ ボリュームと保有期間を制御してコストを管理する
 
@@ -78,7 +78,7 @@ Azure Portal から Log Analytics ワークスペースを作成するときに 
 5. 日次上限は既定では **[オフ]** になっています。有効にするには、**[オン]** をクリックし、GB/日でデータ ボリュームの制限を設定します。<br><br> ![Log Analytics のデータ制限の構成](media/log-analytics-manage-cost-storage/set-daily-volume-cap-01.png)
 
 ### <a name="alert-when-limit-reached"></a>制限に達したらアラートする
-データ制限のしきい値に達したら Azure Portal に視覚的な合図が表示されますが、この動作は、早急な措置を必要とする運用上の問題を管理する方法と、必ずしも一致していない場合があります。  アラート通知を受け取るには、Azure Monitor で新しいアラート ルールを作成します。  詳しくは、[アラートを作成、表示、管理する方法](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md)に関するページをご覧ください。      
+データ制限のしきい値に達したら Azure Portal に視覚的な合図が表示されますが、この動作は、早急な措置を必要とする運用上の問題を管理する方法と、必ずしも一致していない場合があります。  アラート通知を受け取るには、Azure Monitor で新しいアラート ルールを作成します。  詳しくは、[アラートを作成、表示、管理する方法](../monitoring-and-diagnostics/alert-metric.md)に関するページをご覧ください。      
 
 最初は、次のようにアラートを設定することをお勧めします。
 
