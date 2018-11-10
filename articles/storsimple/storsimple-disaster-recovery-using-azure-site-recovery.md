@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: d6b8341f16cca29fe5bedca34749f47053a14ebb
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: c88df7ba1a9a60ffcda9a5235197037088abca4e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666940"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249270"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動ディザスター リカバリー ソリューション
 ## <a name="overview"></a>概要
@@ -43,7 +43,7 @@ StorSimple ストレージでホストされているファイル共有向けに
    - StorSimple ストレージ デバイスで構成されたボリュームでホストされているファイル共有
    - [Azure Site Recovery Services コンテナー](../site-recovery/site-recovery-vmm-to-vmm.md) 
 
-さらに、Azure が復旧サイトに設定されている場合は、 [Azure Virtual Machines 準備状況評価ツール](http://azure.microsoft.com/downloads/vm-readiness-assessment/) を VM で実行し、Azure VM および Azure Site Recovery サービスと互換性があることを確認してください。
+さらに、Azure が復旧サイトに設定されている場合は、 [Azure Virtual Machines 準備状況評価ツール](https://azure.microsoft.com/downloads/vm-readiness-assessment/) を VM で実行し、Azure VM および Azure Site Recovery サービスと互換性があることを確認してください。
 
 (コストを引き上げる可能性のある) 待機時間が発生しないようにするには、StorSimple Cloud Appliance、オートメーション アカウント、およびストレージ アカウントを同じリージョンに作成してください。
 
@@ -81,7 +81,7 @@ Active Directory と DNS を実行するコンピューターを保護してデ�
 
 1. 各ファイル サーバー VM に VM エージェントをインストールします。 このインストールは、フェールオーバーされた VM で Azure オートメーション スクリプトを実行するために必要です。
    
-   1. `C:\\Users\\<username>\\Downloads` に[エージェントをダウンロード](http://aka.ms/vmagentwin)します。
+   1. `C:\\Users\\<username>\\Downloads` に[エージェントをダウンロード](https://aka.ms/vmagentwin)します。
    1. 管理者モード (管理者として実行) で Windows PowerShell を開き、次のコマンドを入力してダウンロード先に移動します。  
          `cd C:\\Users\\<username>\\Downloads\\WindowsAzureVmAgent.2.6.1198.718.rd\_art\_stable.150415-1739.fre.msi`
          
@@ -321,10 +321,10 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 ## <a name="best-practices"></a>ベスト プラクティス
 ### <a name="capacity-planning-and-readiness-assessment"></a>キャパシティ プランニングと準備状態評価
 #### <a name="hyper-v-site"></a>Hyper-V サイト
-[ユーザー向け容量計画ツール](http://www.microsoft.com/download/details.aspx?id=39057) を使用すると、Hyper-V レプリカ環境のデプロイに必要なサーバー、ストレージ、およびネットワーク インフラストラクチャを設計できます。
+[ユーザー向け容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057) を使用すると、Hyper-V レプリカ環境のデプロイに必要なサーバー、ストレージ、およびネットワーク インフラストラクチャを設計できます。
 
 #### <a name="azure"></a>Azure
-[Azure Virtual Machine 準備状態評価ツール](http://azure.microsoft.com/downloads/vm-readiness-assessment/) を VM で実行すると、VM が Azure VM および Azure Site Recovery Services と互換性があることを確認できます。 準備状態評価ツールを使用すると、VM の構成が確認され、構成と Azure に互換性がないと警告が表示されます。 たとえば、C: ドライブが 127 GB を超える場合は警告が表示されます。
+[Azure Virtual Machine 準備状態評価ツール](https://azure.microsoft.com/downloads/vm-readiness-assessment/) を VM で実行すると、VM が Azure VM および Azure Site Recovery Services と互換性があることを確認できます。 準備状態評価ツールを使用すると、VM の構成が確認され、構成と Azure に互換性がないと警告が表示されます。 たとえば、C: ドライブが 127 GB を超える場合は警告が表示されます。
 
 キャパシティ プランニングは、少なくとも 2 つの重要なプロセスで構成されます。
 

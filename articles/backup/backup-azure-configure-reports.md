@@ -6,22 +6,29 @@ author: adiganmsft
 manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 07/26/2018
+ms.date: 10/29/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0c1d7a404ffd9b4da4868f56a5e17300495b57db
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 493a8881975e6b7568a7823bfc86fc97b4389378
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269362"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418281"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 この記事では、Recovery Services コンテナーを使用して Azure Backup のレポートを構成するために実行する手順を示します。 また、Power BI を使用してレポートにアクセスする方法についても説明します。 これらの手順を完了したら、Power BI に直接移動してレポートを表示、カスタマイズ、および作成できます。
 
+> [!IMPORTANT]
+> 2018 年 11 月 1 日以降、Power BI で Azure Backup アプリのデータを読み込んでいるときに問題が発生する場合があり、"JSON 入力の末尾に余分な文字が見つかり、 IDataReader インターフェイスによって例外が発生した" ことが通知される可能性があります。
+これは、データがストレージ アカウントに読み込まれるときの形式の変更によるものです。
+この問題を回避するには、最新のアプリ (バージョン 1.8) をダウンロードしてください。
+>
+>
+
 ## <a name="supported-scenarios"></a>サポートされるシナリオ
 - Azure Backup レポートは、Azure Recovery Services エージェントを使用したクラウドへの Azure 仮想マシンのバックアップやファイルおよびフォルダーのバックアップに対してサポートされます。
-- この時点では、Azure SQL Database、Data Protection Manager、および Azure Backup サーバーのレポートはサポートされていません。
+- この時点では、Azure SQL Database、Azure File Shares、Data Protection Manager、および Azure Backup サーバーのレポートはサポートされていません。
 - 各コンテナーに対して同じストレージ アカウントが構成されている場合は、コンテナーおよびサブスクリプションにまたがるレポートを表示できます。 選択されるストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
 - Power BI での、レポートのスケジュールされた更新の頻度は 24 時間ごとです。 また、Power BI でレポートのアドホック更新を実行することもできます。 この場合は、顧客のストレージ アカウント内の最新のデータを使用してレポートが描画されます。
 
@@ -67,23 +74,24 @@ ms.locfileid: "48269362"
       ![診断設定を表示する (手順 9)](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
-> ストレージ アカウントを保存することによってレポートを構成した後、初期のデータ プッシュが完了するまで*24 時間待ってください*。 その後でのみ、Power BI で Azure Backup コンテンツ パックをインポートします。 詳細については、[FAQ のセクション](#frequently-asked-questions)を参照してください。 
+> ストレージ アカウントを保存することによってレポートを構成した後、初期のデータ プッシュが完了するまで*24 時間待ってください*。 その後でのみ、Power BI で Azure Backup アプリをインポートします。 詳細については、[FAQ のセクション](#frequently-asked-questions)を参照してください。 
 >
 >
 
 ## <a name="view-reports-in-power-bi"></a>Power BI でレポートを表示する 
 Recovery Services コンテナーを使用してレポート用のストレージ アカウントを構成した後、レポート データが流入を開始するには約 24 時間かかります。 ストレージ アカウントを設定してから 24 時間経った後、次の手順に従って Power BI でレポートを表示します。
-1. Power BI に[サインイン](https://powerbi.microsoft.com/landing/signin/)します。
-2. **[データの取得]** を選択します。 **[コンテンツ パック ライブラリ]** で、**[サービス]** の下にある **[取得]** を選択します。 [コンテンツ パックにアクセスするための Power BI のドキュメント](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/)にある手順に従います。
+レポートをカスタマイズして共有したい場合は、ワークスペースを作成して次の手順を実行します。
 
-     ![コンテンツ パックをインポートする](./media/backup-azure-configure-reports/content-pack-import.png)
+1. Power BI に[サインイン](https://powerbi.microsoft.com/landing/signin/)します。
+2. **[データの取得]** を選択します。 **[独自のコンテンツを作成する他の方法]** で、**[サービス コンテンツ パック]** を選択します。 [サービスに接続するための Power BI のドキュメント](https://powerbi.microsoft.com/documentation/powerbi-content-packs-services/)にある手順に従います。
+
 3. **[検索]** バーに「**Azure Backup**」と入力し、**[今すぐ入手する]** を選択します。
 
       ![コンテンツパックを入手する](./media/backup-azure-configure-reports/content-pack-get.png)
 4. 前の手順 5. で構成されたストレージ アカウントの名前を入力し、**[次へ]** を選択します。
 
     ![ストレージ アカウント名を入力する](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. このストレージ アカウントのストレージ アカウント キーを入力します。 [ストレージ アクセス キーを表示してコピーする](../storage/common/storage-account-manage.md#access-keys)には、Azure Portal でストレージ アカウントに移動します。 
+5. [Authentication method]\(認証方法) で [Key]\(キー) を使用し、このストレージ アカウントのストレージ アカウント キーを入力します。 [ストレージ アクセス キーを表示してコピーする](../storage/common/storage-account-manage.md#access-keys)には、Azure Portal でストレージ アカウントに移動します。 
 
      ![ストレージ アカウントを入力する](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      
@@ -95,9 +103,7 @@ Recovery Services コンテナーを使用してレポート用のストレー�
     
     ![コンテンツ パックのインポート成功](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
     
-7. データが正常にインポートされると、ナビゲーション ウィンドウの **[アプリ]** に **Azure Backup** コンテンツ パックが表示されます。 **[ダッシュボード]**、**[レポート]**、および **[データセット]** の下の一覧に、新しくインポートされたレポートを示す黄色い星印が付いた Azure Backup が表示されるようになります。
-
-     ![Azure Backup コンテンツ パック](./media/backup-azure-configure-reports/content-pack-azure-backup.png) <br/>
+7. データが正常にインポートされると、ナビゲーション ウィンドウの **[アプリ]** に **Azure Backup** コンテンツ パックが表示されます。 **[ダッシュ ボード]**、**[Reports]** \(レポート)、および **[データセット]** の下に Azure Backup の一覧が表示されます。
      
 8. **[ダッシュボード]** の下の **[Azure Backup]** を選択します。これにより、一連のピン留めされた主要なレポートが表示されます。
 

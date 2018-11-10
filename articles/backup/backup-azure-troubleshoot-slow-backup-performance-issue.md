@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: ab338964a67991c0e97bf218f8aa004e0e5dfe38
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: f24a60ab9bdcf1231085de4edeeb89ce1edf4e80
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418247"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248471"
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
 この記事では、ファイルとフォルダーのバックアップに関して、Azure Backup の使用中にパフォーマンスが低下している原因を診断するためのトラブルシューティングの指針を紹介します。 Azure Backup エージェントを使用してファイルをバックアップするとき、予想以上にバックアップ処理に時間がかかる場合があります。 次のいずれかまたは複数の事柄が、この遅延の原因として考えられます。
@@ -23,7 +23,7 @@ ms.locfileid: "50418247"
 * [Azure 仮想マシン (VM) で Backup エージェントが実行されている。](#cause3)  
 * [大量 (数百万) のファイルをバックアップしようとしている。](#cause4)
 
-問題のトラブルシューティングを開始する前に、 [最新の Azure Backup エージェント](http://aka.ms/azurebackup_agent)をダウンロードしてインストールすることをお勧めします。 Backup エージェントは、さまざまな問題の解決、機能の追加、パフォーマンスの改善を目的として絶えず更新されています。
+問題のトラブルシューティングを開始する前に、 [最新の Azure Backup エージェント](https://aka.ms/azurebackup_agent)をダウンロードしてインストールすることをお勧めします。 Backup エージェントは、さまざまな問題の解決、機能の追加、パフォーマンスの改善を目的として絶えず更新されています。
 
 また、一般的な構成の問題ではないことを確認するために、「 [Azure Backup サービス - FAQ](backup-azure-backup-faq.md) 」に目を通すよう強くお勧めします。
 

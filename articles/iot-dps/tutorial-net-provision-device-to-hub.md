@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 84072c7e5f7aa37e89fc1b93c1585167dd6d9f4b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 8602f020481249282756a952a46b32bd9e768372
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41920758"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241329"
 ---
 # <a name="enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Azure IoT Hub Device Provisioning Service Client (.NET) を使用して IoT ハブにデバイスを登録する
 
@@ -230,7 +230,7 @@ ms.locfileid: "41920758"
 
 ## <a name="verify-the-device-is-registered"></a>デバイスが登録されていることを確認する
 
-デバイスが起動すると、次のアクションが実行されます。 詳細については、TPM シミュレーター サンプル アプリケーションの [dps_client_sample](https://github.com/Azure/azure-iot-device-auth/blob/master/dps_client/samples/dps_client_sample/dps_client_sample.c) を参照してください。 
+デバイスが起動すると、次のアクションが実行されます。 詳細については、[プロビジョニング デバイス クライアントのサンプル](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device)に関するページを参照してください。 
 
 1. デバイスが Device Provisioning Service に登録要求を送信します。
 2. TPM デバイスの場合、Device Provisioning Service が登録チャレンジを送信し、デバイスがこれに応答します。 
@@ -241,7 +241,7 @@ ms.locfileid: "41920758"
     ![ポータルに表示されたハブへの成功した接続](./media/tutorial-net-provision-device-to-hub/hub-connect-success.png)
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルで学習した内容は次のとおりです。
+このチュートリアルでは、以下の内容を学習しました。
 
 > [!div class="checklist"]
 > * デバイスを登録する

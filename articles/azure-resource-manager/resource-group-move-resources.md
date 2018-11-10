@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 10/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: c32c4f97a963485e87e36afc44e9cea2ebcebd90
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: e99d5d36fa46e9972e706d580e4dfb1d5f9e8bbc
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394413"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50093829"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -28,8 +28,10 @@ ms.locfileid: "49394413"
 リソースの場所を変更することはできません。 リソースを移動しても、新しいリソース グループに移動されるだけです。 新しいリソース グループは別の場所に存在する場合もありますが、リソース自体の場所は変更されません。
 
 > [!NOTE]
-> この記事では、既存の Azure アカウント プラン内のリソースを移動する方法について説明します。 実際に Azure アカウント オファーを変更 (従量課金制から前払いにアップグレードするなど) しながら既存のリソースの処理を継続する場合は、 [別の Azure サブスクリプション オファーへの切り替え](../billing/billing-how-to-switch-azure-offer.md)に関するページをご覧ください。
->
+> この記事では、既存の Azure アカウント プラン内のリソースを移動する方法について説明します。 実際に Azure アカウント プランを変更する場合 (無料から従量課金制へのアップグレードなど)、お使いのサブスクリプションを変換する必要があります。 
+> * 無料試用版をアップグレードするには、「[無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする](..//billing/billing-upgrade-azure-subscription.md)」をご覧ください。
+> * 従量課金制のアカウントを変更するには、「[Azure の従量課金制サブスクリプションを別のオファーに変更する](../billing/billing-how-to-switch-azure-offer.md)」をご覧ください。
+> * サブスクリプションを変換できない場合は、[Azure サポート要求を作成](../azure-supportability/how-to-create-azure-support-request.md)してください。 問題の種類として **[サブスクリプション管理]** を選択します。
 >
 
 ## <a name="checklist-before-moving-resources"></a>リソースの移動前のチェック リスト
@@ -269,7 +271,7 @@ Authorization: Bearer <access-token>
 
 2018 年 9 月 24 日現在、移動へのマネージド ディスクはサポートされています。 
 
-1. この機能を有効にするように登録する必要があります。
+1. ソース サブスクリプションに、この機能を登録します。
 
   ```azurepowershell-interactive
   Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute

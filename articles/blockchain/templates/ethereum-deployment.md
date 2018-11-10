@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/21/2018
+ms.date: 10/29/2018
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 823bea9bac8ff270d5b5c02e3b76a2f7236c9c99
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: fa58ecf4607efc1d212e40b98d199756d4b987f8
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48241688"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231799"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Ethereum プルーフオブワーク コンソーシアム ソリューション テンプレート
 
@@ -119,7 +119,7 @@ Fifth region (リージョン 5)| コンソーシアム ネットワークをデ
 
 ### <a name="network-size-and-performance"></a>Network size and performance (ネットワークのサイズとパフォーマンス)
 
-次に、**[Network Size and Performance]\(ネットワークのサイズとパフォーマンス\)** で、マイニング ノードとトランザクション ノードの数やサイズなど、コンソーシアム ネットワークのサイズを入力します。
+次に、**[Network Size and Performance]\(ネットワークのサイズとパフォーマンス\)** で、コンソーシアム ネットワークのサイズを入力します。 たとえば、マイニング ノードとトランザクション ノードの数やサイズです。
 
 ![Network size and performance (ネットワークのサイズとパフォーマンス)](./media/ethereum-deployment/network-size-performance.png)
 
@@ -261,10 +261,10 @@ PowerShell モジュールをダウンロードし、ローカルに保存しま
 
 最後に、適切な入力内容で関数を実行します。
 
-- **MyGatewayResourceId**: ゲートウェイのリソース パス。 これは、**CONSORTIUM_MEMBER_GATEWAY_ID** というテンプレート デプロイ出力パラメーターに指定されています。
-- **OtherGatewayResourceId**: 参加するメンバーのゲートウェイのリソース パス。 これは、参加するメンバーから提供されます。**CONSORTIUM_MEMBER_GATEWAY_ID** というテンプレート デプロイ出力パラメーターに指定されています。
-- **ConnectionName**: このゲートウェイ接続を識別するための名前。
-- **共有キー**: 接続を確立しているコンソーシアム ネットワークの 2 人のメンバー間で事前に確立しているシークレット。
+- **MyGatewayResourceId:** ゲートウェイのリソース パス。 これは、**CONSORTIUM_MEMBER_GATEWAY_ID** というテンプレート デプロイ出力パラメーターに指定されています。
+- **OtherGatewayResourceId:** 参加するメンバーのゲートウェイのリソース パス。 これは、参加するメンバーから提供されます。**CONSORTIUM_MEMBER_GATEWAY_ID** というテンプレート デプロイ出力パラメーターに指定されています。
+- **ConnectionName:** このゲートウェイ接続を識別するための名前。
+- **共有キー:** 接続を確立しているコンソーシアム ネットワークの 2 人のメンバー間で事前に確立しているシークレット。
 
 **CreateConnection** - MyGatewayResourceId <resource path of your Gateway> -OtherGatewayResourceId <参加するメンバーのゲートウェイのリソース パス> -ConnectionName myConnection -SharedKey "MySharedKeyAbc123"
 
@@ -274,11 +274,11 @@ Azure CLI スクリプトをダウンロードし、ローカルに保存しま�
 
 適切な入力内容でスクリプトを実行します。
 
-- **MyGatewayResourceId**: ゲートウェイのリソース パス。 これは、**CONSORTIUM_MEMBER_GATEWAY_ID** というテンプレート デプロイ出力パラメーターに指定されています。
-- **OtherGatewayResourceId**: 参加するメンバーのゲートウェイのリソース パス。 これは、参加するメンバーから提供されます。デプロイの **CONSORTIUM_MEMBER_GATEWAY_ID** というテンプレート デプロイ出力パラメーターに指定されています。
-- **ConnectionName**: このゲートウェイ接続を識別するための名前。
-- **共有キー**: 接続を確立しているコンソーシアム ネットワークの 2 人のメンバー間で事前に確立しているシークレット。
-- **Location**: ゲートウェイ リソースがデプロイされる Azure リージョン。
+- **MyGatewayResourceId:** ゲートウェイのリソース パス。 これは、**CONSORTIUM_MEMBER_GATEWAY_ID** というテンプレート デプロイ出力パラメーターに指定されています。
+- **OtherGatewayResourceId:** 参加するメンバーのゲートウェイのリソース パス。 これは、参加するメンバーから提供されます。デプロイの **CONSORTIUM_MEMBER_GATEWAY_ID** というテンプレート デプロイ出力パラメーターに指定されています。
+- **ConnectionName:** このゲートウェイ接続を識別するための名前。
+- **共有キー:** 接続を確立しているコンソーシアム ネットワークの 2 人のメンバー間で事前に確立しているシークレット。
+- **Location:** ゲートウェイ リソースがデプロイされる Azure リージョン。
 
 ``` powershell
 az network vpn-connection create --name $ConnectionName --resource-group
@@ -316,7 +316,7 @@ Chrome にこの拡張機能をインストールするには、Google Chrome �
 
 ![MetaMask 拡張機能](./media/ethereum-deployment/metamask-extension.png)
 
-インストールしたら、MetaMask を開いて新しいコンテナーを作成します。 既定では、コンテナーは Morden Test Network に接続されます。 デプロイしたプライベート コンソーシアム ネットワーク、具体的にはトランザクション ノードの前面にあるロード バランサーに接続するには、これを変更する必要があります。 テンプレート出力から、ポート 8545 で公開されている Ethereum RPC エンドポイント (`ETHEREUM-RPC-ENDPOINT` という名前) を取得して、以下のようにカスタム RPC に入力します。
+インストールしたら、MetaMask を開いて新しいコンテナーを作成します。 既定では、コンテナーは Morden Test Network に接続されます。 デプロイしたプライベート コンソーシアム ネットワーク、具体的にはトランザクション ノードの前面にあるロード バランサーに接続するには、これを変更します。 テンプレート出力から、ポート 8545 で公開されている Ethereum RPC エンドポイント (`ETHEREUM-RPC-ENDPOINT` という名前) を取得して、以下のようにカスタム RPC に入力します。
 
 ![MetaMask の設定](./media/ethereum-deployment/metamask-settings.png)
 

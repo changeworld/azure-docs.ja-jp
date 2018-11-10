@@ -10,20 +10,20 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/06/2018
+ms.date: 10/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8c3d208b12166a590c68753fb4f58c9bb6e55610
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 80246114ac839efa0025dfbc29b9bdbbe2b740be
+ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225533"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50084806"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ
 
 この記事では、Azure CLI と Resource Manager テンプレートを使用して、Azure にリソースをデプロイする方法について説明します。 Azure ソリューションのデプロイと管理に関する概念に精通していない場合は、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。  
 
-デプロイする Resource Manager テンプレートとして、コンピューター上のローカル ファイル、または GitHub などのリポジトリに配置した外部ファイルを使用できます。 この記事でデプロイするテンプレートは、「[サンプル テンプレート](#sample-template)」セクションから、または [GitHub のストレージ アカウントのテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json)として入手できます。
+デプロイする Resource Manager テンプレートとして、コンピューター上のローカル ファイル、または GitHub などのリポジトリに配置した外部ファイルを使用できます。 この記事でデプロイするテンプレートは、[GitHub のストレージ アカウントのテンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-storage-account-create/azuredeploy.json)として入手できます。
 
 [!INCLUDE [sample-cli-install](../../includes/sample-cli-install.md)]
 
@@ -116,9 +116,46 @@ az group deployment create \
 
 指定したデプロイは成功している必要があります。
 
-## <a name="parameter-files"></a>パラメーター ファイル
+## <a name="parameters"></a>パラメーター
 
-スクリプト内のインライン値としてパラメーターを渡すよりも、パラメーター値を含む JSON ファイルを使用するほうが簡単な場合もあります。 パラメーター ファイルは次の形式にする必要があります。
+パラメーター値を渡すには、インライン パラメーターまたはパラメーター ファイルのいずれかを使用できます。 この記事の先の例では、インライン パラメーターを示しています。
+
+### <a name="inline-parameters"></a>インライン パラメーター
+
+インライン パラメーターを渡すには、`parameters` に値を指定します。 たとえば、Bash シェルで文字列と配列をテンプレートに渡すには、以下を使用します。
+
+```azurecli
+az group deployment create \
+  --resource-group testgroup \
+  --template-file demotemplate.json \
+  --parameters exampleString='inline string' exampleArray='("value1", "value2")'
+```
+
+ファイルの内容を取得し、その内容をインライン パラメーターとして提供することもできます。
+
+```azurecli
+az group deployment create \
+  --resource-group testgroup \
+  --template-file demotemplate.json \
+  --parameters exampleString=@stringContent.txt exampleArray=@arrayContent.json
+```
+
+ファイルからのパラメーター値の取得は、構成値を指定する必要がある場合に便利です。 たとえば、[Linux 仮想マシン用の cloud-init の値](../virtual-machines/linux/using-cloud-init.md)を指定できます。
+
+arrayContent.json 形式は次のようになります。
+
+```json
+[
+    "value1",
+    "value2"
+]
+```
+
+### <a name="parameter-files"></a>パラメーター ファイル
+
+スクリプト内のインライン値としてパラメーターを渡すよりも、パラメーター値を含む JSON ファイルを使用するほうが簡単な場合もあります。 パラメーター ファイルは、ローカル ファイルでも、アクセス可能な URI を持つ外部ファイルでもかまいません。
+
+パラメーター ファイルは次の形式にする必要があります。
 
 ```json
 {
@@ -132,7 +169,7 @@ az group deployment create \
 }
 ```
 
-parameters セクションに、テンプレートで定義したパラメーター (storageAccountType) に一致するパラメーター名が含まれていることに注目してください。 パラメーター ファイルに、このパラメーターの値が含まれます。 この値は、デプロイの際に、テンプレートに自動的に渡されます。 さまざまなデプロイ シナリオに合わせて複数のパラメーター ファイルを作成し、適切なパラメーター ファイルを渡すことができます。 
+parameters セクションに、テンプレートで定義したパラメーター (storageAccountType) に一致するパラメーター名が含まれていることに注目してください。 パラメーター ファイルに、このパラメーターの値が含まれます。 この値は、デプロイの際に、テンプレートに自動的に渡されます。 複数のパラメーター ファイルを作成し、シナリオに合う適切なパラメーター ファイルを渡すことができます。 
 
 前の例をコピーし、`storage.parameters.json` という名前のファイルとして保存します。
 
@@ -145,6 +182,19 @@ az group deployment create \
   --template-file storage.json \
   --parameters @storage.parameters.json
 ```
+
+### <a name="parameter-precedence"></a>パラメーターの優先順位
+
+同じデプロイ操作で、インライン パラメーターとローカル パラメーター ファイルを使用することができます。 たとえば、一部の値をローカル パラメーター ファイルで指定し、その他の値をデプロイ中にインラインで追加します。 ローカル パラメーター ファイルとインラインの両方でパラメーターの値を指定すると、インラインの値が優先されます。
+
+```azurecli
+az group deployment create \
+  --resource-group testgroup \
+  --template-file demotemplate.json \
+  --parameters @demotemplate.parameters.json \
+  --parameters exampleArray=@arrtest.json
+```
+
 
 ## <a name="test-a-template-deployment"></a>テンプレートのデプロイをテストする
 
@@ -166,7 +216,7 @@ az group deployment validate \
       ...
 ```
 
-エラーが検出された場合は、エラー メッセージが返されます。 たとえば、ストレージ アカウント SKU について間違った値を渡そうとした場合は、次のエラーが返されます。
+エラーが検出された場合は、エラー メッセージが返されます。 たとえば、ストレージ アカウント SKU について間違った値を渡した場合は、次のエラーが返されます。
 
 ```azurecli
 {
@@ -197,59 +247,10 @@ az group deployment validate \
 }
 ```
 
-## <a name="sample-template"></a>サンプル テンプレート
-
-次のテンプレートをこの記事の例として使います。 このテンプレートをコピーして、storage.json という名前のファイルとして保存します。 このテンプレートを作成する方法にについては、「[初めての Azure Resource Manager テンプレートを作成する](resource-manager-create-first-template.md)」を参照してください。  
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storageAccountType": {
-      "type": "string",
-      "defaultValue": "Standard_LRS",
-      "allowedValues": [
-        "Standard_LRS",
-        "Standard_GRS",
-        "Standard_ZRS",
-        "Premium_LRS"
-      ],
-      "metadata": {
-        "description": "Storage Account type"
-      }
-    }
-  },
-  "variables": {
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountName')]",
-      "apiVersion": "2016-01-01",
-      "location": "[resourceGroup().location]",
-      "sku": {
-          "name": "[parameters('storageAccountType')]"
-      },
-      "kind": "Storage", 
-      "properties": {
-      }
-    }
-  ],
-  "outputs": {
-      "storageAccountName": {
-          "type": "string",
-          "value": "[variables('storageAccountName')]"
-      }
-  }
-}
-```
-
 ## <a name="next-steps"></a>次の手順
 * この記事の例では、既定のサブスクリプションのリソース グループにリソースをデプロイしています。 別のサブスクリプションを使用するには、「[Manage multiple Azure subscriptions (複数の Azure サブスクリプションの管理)](/cli/azure/manage-azure-subscriptions-azure-cli)」を参照してください。
-* リソース グループに存在するが、テンプレートで定義されていないリソースの処理方法を指定するには、「[Azure Resource Manager deployment modes](deployment-modes.md)」(Azure Resource Manager デプロイ モード) を参照してください。
+* リソース グループに存在するが、テンプレートで定義されていないリソースの処理方法を指定するには、「[Azure Resource Manager のデプロイ モード](deployment-modes.md)」を参照してください。
 * テンプレートでパラメーターを定義する方法については、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」を参照してください。
 * 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](resource-manager-common-deployment-errors.md)」を参照してください。
 * SAS トークンを必要とするテンプレートをデプロイする方法については、「[Deploy private template with SAS token (SAS トークンを使用したプライベート テンプレートのデプロイ)](resource-manager-cli-sas-token.md)」を参照してください。
-* 複数のリージョン間で、サービスを安全にロールアウトするには、[Azure デプロイ マネージャー](deployment-manager-overview.md)を参照してください。
+* 複数のリージョン間で、サービスを安全にロールアウトするには、[Azure Deployment Manager](deployment-manager-overview.md) に関する記事を参照してください。

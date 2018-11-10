@@ -5,23 +5,23 @@ services: application-insights
 keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/15/2018
+ms.date: 10/29/2018
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: f4de10c29364ab96f54e5d07e9c416a2beb038f6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 8e764bfc4481343a1e1fb710df7d09f7a38f4f78
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49380184"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420370"
 ---
 # <a name="start-monitoring-your-website"></a>Web サイトの監視を開始する
 
 Azure Monitor Application Insights を使用すると、Web サイトの可用性、パフォーマンス、および利用状況を簡単に監視できます。 アプリケーションのエラーを、ユーザーからの報告を待つことなく、迅速に特定して診断することもできます。 Application Insights では、サーバー側の監視機能とクライアント/ブラウザー側の監視機能の両方が提供されます。
 
-このクイック スタートでは、[オープン ソースの Application Insight JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) の追加方法を説明します。これによって、Web サイトへの訪問者にとってのクライアント/ブラウザー側のエクスペリエンスを理解することができます。
+このクイック スタートでは、[オープン ソースの Application Insights JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS) の追加方法を説明します。これによって、Web サイトへの訪問者にとってのクライアント/ブラウザー側のエクスペリエンスを理解することができます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -74,7 +74,7 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
 1. **[概要]** > **[Essentials]** を選択し、アプリケーションの**インストルメンテーション キー**をコピーします。
 
-   ![新しい App Insights リソースのフォーム](./media/app-insights-nodejs-quick-start/instrumentation-key-001.png)
+   ![新しい App Insights リソースのフォーム](media/app-insights-website-monitoring/instrumentation-key-001.png)
 
 2. ``hello_world.html`` の閉じる ``</head>`` タグの前に、次のスクリプトを追加します。
 
@@ -98,7 +98,7 @@ Application Insights は、オンプレミスまたはクラウドで実行さ�
 
 1. Azure Portal で、インストルメンテーション キーを取得した Application Insights の**概要**ページを再度開き、現在実行中のアプリケーションに関する詳細情報を表示できます。 概要ページの 4 つの既定のグラフでは、サーバー側のアプリケーション データが対象になっています。 ここではクライアント/ブラウザー側の JavaScript SDK との対話をインストルメント化しているため、この特定のビューは、サーバー側の SDK もインストールされない限り、適用されません。
 
-2. [![アプリケーション マップ アイコン](./media/app-insights-nodejs-quick-start/006.png) **分析]** をクリックします。  これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Analytics** が開きます。 クライアント側のブラウザー要求に関連しているデータを表示するには、次のクエリを実行します。
+2. [![アプリケーション マップ アイコン](media/app-insights-website-monitoring/006.png) **分析]** をクリックします。  これにより、Application Insights で収集されたすべてのデータを分析するための豊富なクエリ言語を備えた **Analytics** が開きます。 クライアント側のブラウザー要求に関連しているデータを表示するには、次のクエリを実行します。
 
     ```kusto
     // average pageView duration by name

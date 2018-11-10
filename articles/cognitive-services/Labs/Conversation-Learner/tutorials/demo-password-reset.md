@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f633dd375d690a1c3e66a2a6e02ae69665dbe960
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: bd0bcd79bb21dc3973b34086f6dad21b47a95c2f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170635"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240870"
 ---
 # <a name="demo-password-reset"></a>デモ - パスワードのリセット
 このデモでは、パスワードのリセットを支援する機能を備えた単純なテクニカル サポート ボットの例を紹介します。 
@@ -24,7 +24,7 @@ Conversation Learner は、ドメイン外クラスを含め、簡単ではな�
 
 ## <a name="video"></a>ビデオ
 
-[![パスワードのデモのプレビュー](http://aka.ms/cl-demo-password-preview)](http://aka.ms/blis-demo-password)
+[![パスワードのデモのプレビュー](https://aka.ms/cl-demo-password-preview)](https://aka.ms/blis-demo-password)
 
 ## <a name="requirements"></a>必要条件
 このチュートリアルでは、パスワードのリセット ボットが実行されている必要があります。
@@ -35,7 +35,7 @@ Conversation Learner は、ドメイン外クラスを含め、簡単ではな�
 
 Web UI の [モデル] 一覧で、[Tutorial Demo Password Reset] (チュートリアル デモ: パスワードのリセット) をクリックします。 
 
-### <a name="actions"></a>アクション
+### <a name="actions"></a>Actions
 
 ユーザーがパスワードに関して支援 (解決策を含む) を求める一連のアクションを作成してあります。
 

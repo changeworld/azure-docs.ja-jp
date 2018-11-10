@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2018
+ms.date: 10/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 0ef8fc2ea8b006d49dd54d638183a58bf78a5797
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: b148967af0882993d8ab113bdf0fd3ad3835296f
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311954"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50092612"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-three"></a>チュートリアル: Azure Active Directory と Zscaler Three の統合
 
@@ -119,10 +119,7 @@ Zscaler Three で Azure AD のシングル サインオンを構成してテス�
 
     ![Configure single sign-on](./media/zscaler-three-tutorial/tutorial_zscalerthree_url.png)
 
-    [応答 URL] ボックスに、URL「`https://login.zscalerthree.net/sfc_sso`」を入力します。
-
-    > [!NOTE]
-    > この値は実際のサインオン URL で更新する必要があります。 これらの値を取得するには、[Zscaler Three クライアント サポート チーム](https://www.zscaler.com/company/contact)に問い合わせてください。
+    [サインオン URL] ボックスに、URL (`https://login.zscalerthree.net/sfc_sso`) を入力します。
 
 6. **[SAML 署名証明書]** セクションで、**[ダウンロード]** をクリックして **[証明書 (Base64)]** をダウンロードし、コンピューターに証明書ファイルを保存します。
 
@@ -220,7 +217,7 @@ Zscaler Three で Azure AD のシングル サインオンを構成してテス�
 
     a. **[名前]** フィールドに「**BrittaSimon**」と入力します。
   
-    b. **[ユーザー名]** フィールドに、**brittasimon@yourcompanydomain.extension** と入力します  
+    b. **[ユーザー名]** フィールドに「**brittasimon@yourcompanydomain.extension**」と入力します。  
     たとえば、BrittaSimon@contoso.com のように指定します。
 
     c. **[プロパティ]** を選択し、**[パスワードを表示]** チェック ボックスをオンにして、[パスワード] ボックスに表示された値を書き留めます。

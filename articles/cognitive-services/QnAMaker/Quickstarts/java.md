@@ -1,7 +1,7 @@
 ---
 title: REST API (V4) - Java - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Azure 上の Microsoft Cognitive Services で Microsoft Translator Text API の使用をすぐに開始するために役立つ REST ベースの情報とコード サンプルを提供します。
+description: Azure 上の Microsoft Cognitive Services で Microsoft Translator Text API の使用をすぐに開始するために役立つ Java REST ベースの情報とコード サンプルを提供します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,19 +10,19 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: c92addcbb6a4071022474c5c157c498364ebf0f6
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 70fa8c5af4f00500c39ce3832e182a5532721799
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647937"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419709"
 ---
 # <a name="qna-maker-rest-api-with-java"></a>Java での QnA Maker REST API 
 <a name="HOLTop"></a>
 
-この記事では、Java で [Microsoft QnA Maker API](../Overview/overview.md) を使用し、次を行う方法について説明します。
+この記事では、Java で [Microsoft QnA Maker API](../Overview/overview.md)  を使用し、次を行う方法について説明します。
 
-- [新しいサポート技術情報を作成します。](#Create)
+- [新しいナレッジ ベースを作成します。](#Create)
 - [既存のナレッジ ベースを更新します。](#Update)
 - [ナレッジ ベースの作成または更新要求の状態を取得します。](#Status)
 - [既存のナレッジ ベースを公開します。](#Publish)
@@ -41,7 +41,7 @@ ms.locfileid: "49647937"
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードをコンパイルして実行するには、[JDK 7 または 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) が必要です。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
+このコードをコンパイルして実行するには、[JDK 7 または 8](https://aka.ms/azure-jdks) が必要です。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Microsoft QnA Maker API** を用意している必要があります。 [Azure ダッシュボード](https://portal.azure.com/#create/Microsoft.CognitiveServices)の有料サブスクリプション キーが必要です。
 

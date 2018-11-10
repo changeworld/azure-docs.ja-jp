@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/15/2018
+ms.date: 10/31/2018
 ms.author: abnarain
-ms.openlocfilehash: 251d1a187c2a6742c361349274fd1e0bb1e41525
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 2dc81a96f1e83c3a6b1ddee92f57b2f0bae4196d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48817151"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248931"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>セルフホステッド統合ランタイムを作成して構成する
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)に関するページを参照してください。
@@ -146,6 +146,8 @@ ms.locfileid: "48817151"
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>複数のデータ ファクトリでセルフホステッド統合ランタイムを共有する
 
 データ ファクトリに既に設定してある既存のセルフホステッド統合ランタイム インフラストラクチャを再利用することができます。 これにより、既存のセルフホステッド IR (共有) を参照して、異なるデータ ファクトリに*リンクされたセルフホステッド統合ランタイム*を作成できます。
+
+PowerShell を使用してセルフホステッド統合ランタイムを共有するには、「[Create a shared self-hosted integration runtime in Azure Data Factory with PowerShell](create-shared-self-hosted-integration-runtime-powershell.md)」 (PowerShell を使用して Azure Data Factory 内で共有のセルフホステッド統合ランタイムを作成する) を参照してください。
 
 ### <a name="terminology"></a>用語集
 

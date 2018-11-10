@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f9bf42e5e20a7d9e861d0c3354040e981bf3ef21
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 24231a02575fed8ee71f85c22a14540f2e9d47e3
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987751"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247506"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -257,7 +257,7 @@ Visual Studio を使用する場合は、[OrchestrationClientAttribute](https://
     "taskHub": "<Optional - name of the task hub>",
     "connectionName": "<Optional - name of the connection string app setting>",
     "type": "orchestrationClient",
-    "direction": "out"
+    "direction": "in"
 }
 ```
 
@@ -311,7 +311,7 @@ public static Task Run(
     {
       "name": "starter",
       "type": "orchestrationClient",
-      "direction": "out"
+      "direction": "in"
     }
   ],
   "disabled": false
@@ -351,6 +351,12 @@ module.exports = function (context, input) {
 ```
 
 インスタンスの開始の詳細については、[インスタンスの管理](durable-functions-instance-management.md)に関する記事を参照してください。
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>host.json 設定
+
+[!INCLUDE [durabletask](../../includes/functions-host-json-durabletask.md)]
 
 ## <a name="next-steps"></a>次の手順
 

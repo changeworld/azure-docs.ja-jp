@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 2821f3fa07d8d9ada02da212084639c93e469d0b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 91cfa35cd10772da0042566bdd9030f780329f93
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49408882"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415187"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor ソリューションの FAQ
 
-![ネットワーク パフォーマンス モニターのシンボル](media/log-analytics-network-performance-monitor/npm-symbol.png)
+![ネットワーク パフォーマンス モニターのシンボル](media/log-analytics-network-performance-monitor-faq/npm-symbol.png)
 
 この記事では、Azure の Network Performance Monitor (NPM) についてよく寄せられる質問 (FAQ) について説明します
 
@@ -44,7 +44,7 @@ NPM の様々な機能に対するプラットフォーム要件を、以下に�
 Linux ベースのノードを使用してネットワークを監視する機能は、現在はプライベート プレビュー段階です。 詳細についてはアカウント マネージャーにご連絡ください。 ご使用のワークスペース ID を提供すれば、機能が有効にされます。 Linux エージェントは NPM のパフォーマンス モニター機能についてのみ監視機能を提供し、サービス接続モニターおよび ExpressRoute Monitor 機能については使用できません
 
 ### <a name="what-are-the-size-requirements-of-the-nodes-to-be-used-for-monitoring-by-npm"></a>NPM による監視で使用するノードのサイズ要件はありますか。
-ネットワークを監視するために ノード VM 上に NPM ソリューションを実行するには、ノードには少なくとも 500 MB のメモリと 1 つのコアが必要です。 NPM を実行するために別のノードを使用する必要はありません。 ソリューションは、別のワークロードが実行されているノードでも実行できます。 ソリューションには、使用する CPU が 5% を超えた場合に監視プロセスを停止する機能があります。
+ネットワークを監視するためにノード VM 上に NPM ソリューションを実行するには、ノードには少なくとも 500 MB のメモリと 1 つのコアが必要です。 NPM を実行するために別のノードを使用する必要はありません。 ソリューションは、別のワークロードが実行されているノードでも実行できます。 ソリューションには、使用する CPU が 5% を超えた場合に監視プロセスを停止する機能があります。
 
 ### <a name="to-use-npm-should-i-connect-my-nodes-as-direct-agent-or-through-system-center-operations-manager"></a>NPM を使用するには、ノードを直接エージェントとして、または System Center Operations Manager を介して接続する必要がありますか。
 パフォーマンス モニター機能およびサービス接続モニター機能は両方とも、[直接エージェントとして接続されている](log-analytics-agent-windows.md)ノードだけでなく [Operations Manager 経由で接続されている](log-analytics-om-agents.md)ノードもサポートします。
@@ -54,7 +54,7 @@ ExpressRoute モニター機能では、Azure ノードは直接エージェン�
 ### <a name="which-protocol-among-tcp-and-icmp-should-be-chosen-for-monitoring"></a>TCP と ICMP のどちらのプロトコルを監視用に選択する必要がありますか。
 Windows Server ベースのノードを使用してネットワークを監視する場合は、正確さに優れている TCP を監視プロトコルとして使用することをお勧めします。 
 
-Windows デスクトップ/クライアント オペレーティング システム ベースのノードでは、ICMP をお勧めします。これは、このプラットフォームでは、ネットワーク トポロジを NPM によって検出するために必要な、raw ソケット経由での TCP データの送信が許可されないためです。
+Windows デスクトップ/クライアント オペレーティング システム ベースのノードには、ICMP を使用することをお勧めします。 このプラットフォームでは、ネットワーク トポロジを検出するために NPM が必要とする RAW ソケット経由での TCP データの送信は許可されていません。
 
 各プロトコルの相対的な利点の詳細を[ここ](log-analytics-network-performance-monitor-performance-monitor.md#choose-the-protocol)から取得できます。
 

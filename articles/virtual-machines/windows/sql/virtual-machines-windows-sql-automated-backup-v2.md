@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: jroth
-ms.openlocfilehash: 4619c26e34c90f58702ad286f76a999f83f49cc4
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 664a0036b8aa753de9636688d22afff0163f031f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894511"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246822"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines の自動バックアップ v2 (Resource Manager)
 
@@ -27,7 +27,7 @@ ms.locfileid: "33894511"
 > * [SQL Server 2014](virtual-machines-windows-sql-automated-backup.md)
 > * [SQL Server 2016/2017](virtual-machines-windows-sql-automated-backup-v2.md)
 
-自動バックアップ v2 は、SQL Server 2016/2017 Standard、Enterprise、または Developer エディションを実行している Azure VM 上のすべての既存および新規データベースのための [Microsoft Azure へのマネージ バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)を自動的に構成します。 これにより、永続的な Azure BLOB ストレージを利用した日常的なデータベース バックアップを構成できます。 自動バックアップ v2 は、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存します。
+自動バックアップ v2 は、SQL Server 2016/2017 Standard、Enterprise、または Developer エディションを実行している Azure VM 上のすべての既存および新規データベースのための [Microsoft Azure へのマネージド バックアップ](https://msdn.microsoft.com/library/dn449496.aspx)を自動的に構成します。 これにより、永続的な Azure BLOB ストレージを利用した日常的なデータベース バックアップを構成できます。 自動バックアップ v2 は、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存します。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -61,7 +61,7 @@ ms.locfileid: "33894511"
 
 ### <a name="basic-settings"></a>基本設定
 
-| Setting | 範囲 (既定値) | [説明] |
+| Setting | 範囲 (既定値) | 説明 |
 | --- | --- | --- |
 | **自動化されたバックアップ** | 有効/無効 (無効) | SQL Server 2016/2017 Developer、Standard、または Enterprise を実行している Azure VM の自動バックアップを有効または無効にします。 |
 | **保有期間** | 1 ～ 30 日 (30 日) | バックアップを保持する日数。 |
@@ -71,7 +71,7 @@ ms.locfileid: "33894511"
 
 ### <a name="advanced-settings"></a>詳細設定
 
-| Setting | 範囲 (既定値) | [説明] |
+| Setting | 範囲 (既定値) | 説明 |
 | --- | --- | --- |
 | **システム データベースのバックアップ** | 有効/無効 (無効) | 有効にすると、この機能によりシステム データベース (マスター、MSDB、およびモデル) もバックアップされます。 ログのバックアップを作成する場合は、MSDB とモデル データベースが完全復旧モードであることを確認します。 マスターのログのバックアップは作成されません。 また TempDB のバックアップは一切作成されません。 |
 | **バックアップ スケジュール** | 手動/自動 (自動) | 既定では、バックアップ スケジュールはログの増加に基づいて自動的に決定されます。 手動のバックアップ スケジュールでは、ユーザーはバックアップの時間枠を指定することができます。 この場合、バックアップは指定された頻度で、特定の日の指定された時間枠内でのみ行われます。 |
@@ -151,7 +151,7 @@ Resource Manager デプロイメント モデルで新しい SQL Server 2016 ま
 
 PowerShell を使用して自動バックアップ v2 を構成できます。 開始する前に、次の操作を行う必要があります。
 
-- [最新の Azure PowerShell をダウンロードしてインストールします](http://aka.ms/webpi-azps)。
+- [最新の Azure PowerShell をダウンロードしてインストールします](https://aka.ms/webpi-azps)。
 - Windows PowerShell を開き、**Connect-AzureRmAccount** コマンドを使用してそれをアカウントに関連付けます。
 
 ### <a name="install-the-sql-iaas-extension"></a>SQL IaaS 拡張機能のインストール
@@ -316,7 +316,7 @@ Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
 
 ## <a name="monitoring"></a>監視
 
-SQL Server 2016/2017 上で自動バックアップを監視するには、主なオプションが 2 つあります。 自動バックアップでは SQL Server マネージ バックアップ機能を使用するため、この両方に同じ監視手法が適用されます。
+SQL Server 2016/2017 上で自動バックアップを監視するには、主なオプションが 2 つあります。 自動バックアップでは SQL Server マネージド バックアップ機能を使用するため、この両方に同じ監視手法が適用されます。
 
 まず、[msdb.managed_backup.sp_get_backup_diagnostics](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/managed-backup-sp-get-backup-diagnostics-transact-sql) を呼び出すことによって状態をポーリングできます。 または、[msdb.managed_backup.fn_get_health_status](https://docs.microsoft.com/sql/relational-databases/system-functions/managed-backup-fn-get-health-status-transact-sql) テーブル値関数にクエリを実行します。
 
@@ -329,7 +329,7 @@ SQL Server 2016/2017 上で自動バックアップを監視するには、主�
 1. SMTP ポートがローカルの VM ファイアウォールと、その VM のネットワーク セキュリティ グループの両方で許可されていることを確認します。
 
 ## <a name="next-steps"></a>次の手順
-自動バックアップ v2 では、Azure VM でマネージ バックアップが構成されます。 そのため、 [マネージ バックアップに関するドキュメント](https://msdn.microsoft.com/library/dn449496.aspx) を見直して、動作と影響を理解することが重要です。
+自動バックアップ v2 では、Azure VM でマネージド バックアップが構成されます。 そのため、 [マネージド バックアップに関するドキュメント](https://msdn.microsoft.com/library/dn449496.aspx) を見直して、動作と影響を理解することが重要です。
 
 Azure VM 上の SQL Server のバックアップと復元の追加のガイダンスについては、「[Azure Virtual Machines おける SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」の記事を参照してください。
 

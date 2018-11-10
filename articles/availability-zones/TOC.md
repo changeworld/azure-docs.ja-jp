@@ -1,6 +1,6 @@
 
 # Azure の回復性
-## [Azure の回復性の機能に関するページ](http://azure.microsoft.com/features/resiliency)
+## [Azure の回復性の機能に関するページ](https://azure.microsoft.com/features/resiliency)
 ## [回復性に優れた Azure 用アプリケーションの設計](https://docs.microsoft.com/azure/architecture/resiliency/)
 
 # 高可用性

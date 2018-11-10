@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: 3512cb7eda9f9e5a6e18dc83f6523029b17a9de2
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c1e38064e8abe53c96a70fb189b3d9e4cc4bc4e4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391472"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413997"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Ansible を使用して Azure 内の仮想マシン スケール セットにアプリケーションをデプロイする
 Ansible を使用すると、環境でのリソースの展開と構成を自動化することができます。 また、Ansible を使用して、Azure にアプリケーションをデプロイすることもできます。 この記事では、Java アプリケーションを Azure 仮想マシン スケール セット (VMSS) にデプロイする方法について説明します。  
@@ -23,7 +23,7 @@ Ansible を使用すると、環境でのリソースの展開と構成を自動
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 - **仮想マシン スケール セット** - 仮想マシン スケール セットがまだない場合は、[Ansible を使用して仮想マシン スケール セットを作成](ansible-create-configure-vmss.md)します。 
 - **git** - このチュートリアルでは、[git](https://git-scm.com) を使用して Java サンプルをダウンロードします。
-- **Java SE Development Kit (JDK)** - JDK は、サンプルの Java プロジェクトを作成する際に使用します。
+- **Java SE Development Kit (JDK)** - [JDK](https://aka.ms/azure-jdks) は、サンプルの Java プロジェクトをビルドする際に使用します。
 - **Apache Maven ビルド ツール** - [Apache Maven ビルド ツール](https://maven.apache.org/download.cgi)は、サンプルの Java プロジェクトを作成する際に使用します。
 
 > [!Note]

@@ -10,12 +10,12 @@ ms.component: knowledge-exploration
 ms.topic: overview
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: a34396a7f707ed5f9982e20dbd1b49cddce98251
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 6f744815b9b2670ddf9b2a873956715a3964bcd6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121806"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242406"
 ---
 # <a name="knowledge-exploration-service"></a>Knowledge Exploration Service
 
@@ -25,7 +25,7 @@ KES を使用して学術発表の分野で対話型検索インターフェイ�
 
 ![AcademicAutoComplete](AutoComplete.png)
 
-KES は、Cognitive Services プレビューから Cognitive Services Labs に移動されました。 プロジェクトの新しいホームページは [http://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration](http://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration) です。
+KES は、Cognitive Services プレビューから Cognitive Services Labs に移動されました。 プロジェクトの新しいホームページは [http://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration](https://labs.cognitive.microsoft.com/en-us/project-knowledge-exploration) です。
 
 ## <a name="reference"></a>リファレンス
 

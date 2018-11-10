@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 10/31/2018
 ms.author: jingwang
-ms.openlocfilehash: 958d1ea09ce4d85afc59af412e1050efc6290a1a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 7dc60c18e105c9be190b5bfede786f61a65feec3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39002247"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416938"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,7 +56,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 注意する点:
 
 * スループットの計算には、[ソースから読み取られたデータ サイズ]/[コピー アクティビティの実行時間] という数式を使用します。
-* 表のパフォーマンスの参考数値は、1 回のコピー アクティビティ実行で [TPC-H](http://www.tpc.org/tpch/) データセットを使用して測定されました。
+* 表のパフォーマンスの参考数値は、1 回のコピー アクティビティ実行で [TPC-H](http://www.tpc.org/tpch/) データセットを使用して測定されました。 ファイル ベースのストア用のテスト ファイルは、サイズが 10 GB の複数のファイルです。
 * Azure データ ストアでは、ソースとシンクは同じ Azure リージョンにあります。
 * オンプレミスとクラウドのデータ ストア間のハイブリッド コピーの場合、各セルフホステッド統合ランタイム ノードは、以下の仕様でデータストアとは別のマシンで実行されました。 1 つのアクティビティの実行中、コピー操作で使用されたのは、テスト コンピューターの CPU、メモリ、またはネットワーク帯域幅のごく一部だけでした。
     <table>
@@ -76,7 +76,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 
 
 > [!TIP]
-> 既定の最大許容データ統合単位 (DIU) は、クラウド間のコピー アクティビティの実行では 32 ですが、これよりも大きい DIU を使用すると、より高いスループットを得ることができます。 たとえば、100 DIU にすると、Azure BLOB から Azure Data Lake Store に **1.0 Gbps** でデータをコピーすることができます。 この機能の詳細とサポートされるシナリオについては、「[データ統合単位](#data-integration-units)」セクションをご覧ください。 DIU の追加依頼は、[Azure サポート](https://azure.microsoft.com/support/)に連絡してください。
+> 使用するデータ統合ユニット (DIU) を増やすと、より高いスループットを実現できます。 たとえば、100 DIU にすると、Azure BLOB から Azure Data Lake Store に **1.0 Gbps** でデータをコピーすることができます。 この機能の詳細とサポートされるシナリオについては、「[データ統合単位](#data-integration-units)」セクションをご覧ください。 
 
 ## <a name="data-integration-units"></a>データ統合単位
 
@@ -94,7 +94,7 @@ Azure によりエンタープライズ クラスのデータ ストレージお
 アクティビティの実行の監視中に、コピー アクティビティの出力で、各コピー実行に実際に使用されたデータ統合単位を確認できます。 詳細については、[コピー アクティビティの監視](copy-activity-overview.md#monitoring)を参照してください。
 
 > [!NOTE]
-> スループットをより高めるためにさらに DIU が必要な場合は、[Azure サポート](https://azure.microsoft.com/support/)にお問い合わせください。 現在、8 以上を設定できるのは、**複数のファイルを、Blob Storage/Data Lake Store/Amazon S3/クラウド FTP/クラウド SFTP から他の任意のクラウド データ ストアにコピーする**場合のみです。
+> 現在、**4 より大きい** DIU を設定できるのは、**複数のファイルを、Blob Storage/Data Lake Store/Amazon S3/クラウド FTP/クラウド SFTP から他の任意のクラウド データ ストアにコピーする**場合のみです。
 >
 
 **例:**

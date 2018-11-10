@@ -4,17 +4,17 @@ description: Azure Policy の評価と効果によって、コンプライアン
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 10/29/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 3fa185e741f1b14bf3f2e7413945b70b1ea1baaa
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f88e68150aa2708557775df2719409228166520b
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970857"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233414"
 ---
 # <a name="getting-compliance-data"></a>コンプライアンス データの取得
 
@@ -40,6 +40,44 @@ Azure Policy の最大の利点の 1 つは、サブスクリプション内の�
 - 既にスコープに割り当てられているポリシーまたはイニシアティブが更新される。 このシナリオでの評価サイクルとタイミングは、スコープへの新しい割り当ての場合と同じです。
 - Resource Manager、REST、Azure CLI、または Azure PowerShell を介した割り当てで、リソースがスコープにデプロイされる。 このシナリオでは、個々のリソースに対する効果的なイベント (追加、監査、拒否、展開) とコンプライアンス ステータスの情報が、約 15 分後にポータルおよび SDKで利用可能です。 このイベントによって、他のリソースの評価が行われることはありません。
 - 標準コンプライアンス評価サイクル。 24 時間に 1 回、割り当てが自動的に再評価されます。 大きなスコープのリソースに対する大きなポリシーまたはイニシアティブの評価には時間がかかるため、評価サイクルがいつ完了するかを事前に予想することはできません。 完了すると、更新されたコンプライアンス結果をポータルと SDK で使用できるようになります。
+- オンデマンドのスキャン
+
+### <a name="on-demand-evaluation-scan"></a>オンデマンドの評価スキャン
+
+サブスクリプションまたはリソース グループの評価スキャンは、REST API の呼び出しで開始できます。 これは、非同期プロセスです。 そのため、スキャンを開始する REST エンドポイントは、スキャンが応答を完了するまで待機しません。 代わりに、要求された評価の状態を照会する URI を提供します。
+
+各 REST API URI には、独自の値で置き換える必要のある変数があります。
+
+- `{YourRG}` - リソース グループの名前に置き換えます
+- `{subscriptionId}` - サブスクリプション ID で置き換えます
+
+スキャンは、サブスクリプションまたはリソース グループ内のリソースの評価をサポートしています。 次の URI の構造を使用して、REST API の **POST**コマンドで目的のスコープのスキャンを開始します。
+
+- サブスクリプション
+
+  ```http
+  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  ```
+
+- リソース グループ
+
+  ```http
+  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  ```
+
+この呼び出しは「**202 受理されました**」の状態を返します。 応答ヘッダーには、次の形式の **Location** プロパティが含まれています。
+
+```http
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
+```
+
+`{ResourceContainerGUID}` は、要求されたスコープに対して静的に生成されます。 スコープが既にオンデマンドのスキャンを実行中の場合、新しいスキャンは開始されません。 代わりに、新しい要求で状態の同じ `{ResourceContainerGUID}` **場所**の URI が提供されます。 **場所**の URI に対する REST API の **GET** コマンドは、評価の進行中に「**202 受理されました**」を返します。 評価スキャンが完了すると、「**200 OK**」の状態を返します。 完了済みスキャンの本文は、状態を含む JSON 応答です。
+
+```json
+{
+    "status": "Succeeded"
+}
+```
 
 ## <a name="how-compliance-works"></a>コンプライアンスのしくみ
 

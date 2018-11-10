@@ -10,12 +10,12 @@ ms.component: core
 ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 9/24/2018
-ms.openlocfilehash: f221d160685dd12fb18a611432911baa60ebc6f7
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 4d25e147044053aa76afe2da482b71c24efc2325
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48888121"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242876"
 ---
 # <a name="development-environment-for-azure-machine-learning"></a>Azure Machine Learning の開発環境 
 
@@ -30,7 +30,7 @@ Azure Machine Learning サービスは、プラットフォームに依存せず
 * __統合開発環境 (IDE) とコード エディター__
 * __データ サイエンス仮想マシン__
 
-Notebook と IDE はどちらも拡張可能なため、これらの環境を比較するのは困難です。 たとえば、一部の IDE は、Jupyter Notebook のクライアントとして使用できます。 一般的に言えば、__Notebook__ は __対話型の実験__ と __視覚化__ のために設計されています。 __IDE エディターとコード エディター__ は、__コード品質を向上__ し、バージョン管理などの __外部システムと統合__ するためのツールを提供します。
+Notebook と IDE はどちらも拡張可能なため、これらの環境を比較するのは困難です。 たとえば、一部の IDE は、Jupyter Notebook のクライアントとして使用できます。 一般的に言えば、__Notebook__ は__対話型の実験__と__視覚化__のために設計されています。 __IDE エディターとコード エディター__は、__コード品質を向上__し、バージョン管理などの__外部システムと統合__するためのツールを提供します。
 
 > [!TIP]
 > ある環境を使用しても、他の環境が利用できなくなるわけではありません。 Notebook や IDE は単なるツールで、必要に応じて混在させることができます。 たとえば、Notebook で実験を開始し、IDE で編集およびデバッグするために Python スクリプトにエクスポートすることができます。
@@ -59,7 +59,7 @@ Azure Machine Learning で動作する多くの IDE エディターとコード 
 
 ## <a name="data-science-virtual-machine"></a>データ サイエンス仮想マシン
 
-Data Science Virtual Machine (DSVM) は、前述の環境を組み合わせたものです。 これは、Jupyter Notebook、Visual Studio Code、および Azure Machine Learning SDK が事前にインストールされている Azure プラットフォーム上の VM です。 VM の作成は Azure Notebooks よりも複雑ですが、マシンを最初から設定するよりは複雑ではありません。 VM イメージに必要なソフトウェアが事前にインストールされているため、VM が作成されたらすぐに、Azure Machine Learning で実験を開始できます。
+Data Science Virtual Machine (DSVM) は、前述の環境を組み合わせたものです。 これは、Jupyter Notebook、Visual Studio Code、および Azure Machine Learning SDK が事前にインストールされている Azure プラットフォーム上の VM です。 VM イメージに必要なソフトウェアが事前にインストールされているため、VM が作成されたらすぐに、Azure Machine Learning で実験を開始できます。
 
 DSVM では、CPU、GPU、およびメモリなどの必要なコンピューティング リソースを選択できます。 PyCharm などのその他のエディターに加え、TensorFlow、Keras、PyTorch などの一般的な機械学習ソフトウェアも事前インストールされています。 必要なソフトウェアがインストールされていない場合は、ご自分でインストールできます。
 

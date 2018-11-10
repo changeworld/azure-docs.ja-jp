@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 160172b25f4bcdb04ac9f9649bca6b08e0be1b0d
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 1706364ca0281240b5b887bea219620c7b4add5e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269074"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246839"
 ---
 # <a name="api-management-caching-policies"></a>API Management のキャッシュ ポリシー
-このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
+このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](https://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
   
 ##  <a name="CachingPolicies"></a> キャッシュ ポリシー  
   
@@ -121,7 +121,7 @@ ms.locfileid: "48269074"
 |vary-by-developer-groups|`true` に設定すると、ユーザー ロールごとに応答をキャッシュします。|[はい]||  
   
 ### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound  
 -   **ポリシー スコープ:** API、操作、製品  
@@ -193,7 +193,7 @@ ms.locfileid: "48269074"
 |duration|キャッシュに格納されたエントリの有効期間 (秒単位)。|[はい]|該当なし|  
   
 ### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** outbound    
 -   **ポリシー スコープ:** API、操作、製品  
@@ -237,7 +237,7 @@ ms.locfileid: "48269074"
 |variable-name|検索が成功した場合に、検索された値が割り当てられる[コンテキスト変数](api-management-policy-expressions.md#ContextVariables)の名前。 検索結果で何も見つからなかった場合、変数には、`default-value` 属性の値または `null` (`default-value` 属性が省略されたとき) が割り当てられます。|[はい]|該当なし|  
   
 ### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
 -   **ポリシー スコープ:** グローバル、API、操作、製品  
@@ -279,7 +279,7 @@ ms.locfileid: "48269074"
 |value|キャッシュされる値。|[はい]|該当なし|  
   
 ### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
 -   **ポリシー スコープ:** グローバル、API、操作、製品  
@@ -316,7 +316,7 @@ ms.locfileid: "48269074"
 |key|キャッシュから削除される、前にキャッシュされた値のキー。|[はい]|該当なし|  
   
 #### <a name="usage"></a>使用法  
- このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+ このポリシーは、次のポリシー [セクション](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
 -   **ポリシー スコープ:** グローバル、API、操作、製品  

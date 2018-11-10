@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 10/29/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: fbb51d8dc3b1ea4c6b34120e8fe35474ae949cf2
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 7071e22d703ab7ec3a51eff02d1694fc04cb3417
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49116914"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231238"
 ---
 # <a name="troubleshoot-your-deployment-to-kubernetes-to-azure-stack"></a>Kubernetes (K8) を Azure Stack にデプロイする場合のトラブルシューティング
 
@@ -28,7 +28,7 @@ ms.locfileid: "49116914"
 > [!Note]  
 > Azure Stack 上の Kubernetes はプレビュー段階にあります。
 
-以下の記事では、Kubernetes クラスターのトラブルシューティングについて説明します。 デプロイのアラートを確認し、デプロイに必要な要素によってデプロイの状態を確認することができます。 場合によっては、Azure Stack または Kubernetes をホストする Linux VM からデプロイ ログを収集する必要があります。 また、場合によっては、管理エンドポイントからログを取得するために Azure Stack 管理者と連携する必要があります。
+以下の記事では、Kubernetes クラスターのトラブルシューティングについて説明します。 デプロイのアラートを確認でき、デプロイに必要な要素を確認することでデプロイの状態を確認できます。 場合によっては、Azure Stack または Kubernetes をホストする Linux VM からデプロイ ログを収集する必要があります。 また、場合によっては、管理エンドポイントからログを取得するために Azure Stack 管理者と連携する必要があります。
 
 ## <a name="overview-of-deployment"></a>デプロイの概要
 
@@ -47,7 +47,7 @@ ms.locfileid: "49116914"
     次のような Kubernetes クラスターの設定に必要な値を入力します。
     -  **ユーザー名** Kubernetes クラスターと DVM の一部である Linux Virtual Machines のユーザー名
     -  **SSH 公開キー** Kubernetes クラスターと DVM の一部として作成されたすべての Linux マシンに対する承認に使用されるキー
-    -  **サービス プリンシパル** Kubernetes Azure クラウド プロバイダーによって使用される ID。 サービス プリンシパルを作成したときにアプリケーション ID として識別されるクライアント ID。 
+    -  **サービス プリンシパル** Kubernetes Azure クラウド プロバイダーによって使用される ID。 クライアント ID は、サービス プリンシパルを作成したときにアプリケーション ID として識別されています。 
     -  **クライアント シークレット** サービス プリンシパルを作成するときに作成されるキー。
 
 2. デプロイの VM とカスタム スクリプト拡張機能を作成します。

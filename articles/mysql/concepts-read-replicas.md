@@ -7,13 +7,13 @@ ms.author: andrela
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 283b529aa8c6431ea725b066c9b5cb3db19a929b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/30/2018
+ms.openlocfilehash: b4e79723072a19f2637bea16d0534cb85588e9e3
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969446"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412450"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL の読み取りレプリカ
 
@@ -34,6 +34,10 @@ BI ワークロードおよび分析ワークロードでレポート用のデ�
 ### <a name="pricing-tiers"></a>価格レベル
 
 読み取りレプリカは現在、General Purpose 価格レベルとメモリ最適化価格レベルでのみ使用できます。
+
+### <a name="master-server-restart"></a>マスター サーバーの再起動
+
+このプレビュー中は、既存のレプリカがないマスターのレプリカを作成すると、マスターは最初に、レプリケーションの準備をするために再起動します。 これを考慮して、これらの操作はオフピーク時に実行してください。
 
 ### <a name="stopping-replication"></a>レプリケーションの停止
 

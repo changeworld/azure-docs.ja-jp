@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e74d2cbada1d433bdaf4ebc905e88d66444b2e2f
-ms.sourcegitcommit: 4b1083fa9c78cd03633f11abb7a69fdbc740afd1
+ms.openlocfilehash: 35e6cd988a0532221d88b22cdd51fc29d7f17ba9
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49078207"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50158756"
 ---
 # <a name="id-tokens"></a>ID トークン
 
@@ -74,6 +74,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`at_hash`| String |アクセス トークン ハッシュは、ID トークンが OAuth 2.0 アクセス トークンと共に発行される場合にのみ、ID トークンに含まれます。 これを使用して、アクセス トークンの信頼性を検証できます。 この検証の実行の詳細については、[OpenID Connect の仕様](http://openid.net/specs/openid-connect-core-1_0.html) を参照してください。 |
 |`aio` | 不透明な文字列 | Azure AD がトークン再利用のためにデータの記録に使用する内部の要求。 無視してください。|
 |`preferred_username` | String | ユーザーを表すプライマリ ユーザー名です。 電子メール アドレス、電話番号、または指定された書式のない一般的なユーザー名を指定できます。 その値は、変更可能であり、時間の経過と共に変化することがあります。 これは変更可能であるため、この値は、承認の決定には使用できません。 この要求を受け取るには、 `profile` スコープが必要です。|
+|`email` | String | `email` 要求は、電子メール アドレスを持つゲスト アカウントに対して既定で使用されます。  アプリでは、[オプション要求](active-directory-optional-claims.md) `email` を使用して、管理対象ユーザー (リソースと同じテナントのユーザー) の電子メール要求を要求できます。  v2.0 エンドポイントでは、アプリで `email` OpenID Connect スコープを要求することもできます (要求を取得するためにオプション要求とスコープの両方を要求する必要はありません)。  電子メール要求では、ユーザーのプロファイル情報からアドレス指定可能なメールのみがサポートされます。 |
 |`name` | String | `name`要求は、トークンのサブジェクトを識別する、人が認識できる値を示します。 この値は、一意であるとは限らず、変更可能であり、表示目的でのみ使用されます。 この要求を受け取るには、 `profile` スコープが必要です。 |
 |`nonce`| String | nonce は、IDP に対する元の要求または承認要求に含まれるパラメーターと一致します。 一致しない場合は、アプリケーションによってトークンが拒否されます。 |
 |`oid` | 文字列、GUID | Microsoft ID システム (ここではユーザー アカウント) のオブジェクトに対する変更不可の識別子です。 この ID によって、複数のアプリケーションでユーザーが一意に識別されます。同じユーザーにサインインする 2 つの異なるアプリケーションは `oid` 要求で同じ値を受け取ります。 Microsoft Graph は、この ID を、指定されたユーザー アカウントの `id` プロパティとして返します。 `oid` では複数のアプリがユーザーを関連付けることができるため、この要求を受け取るには、`profile` スコープが必要です。 1 人のユーザーが複数のテナントに存在する場合、そのユーザーのオブジェクト ID はテナントごとに異なります。つまり、ユーザーは、同じ資格情報で各アカウントにログインしても、異なるアカウントと見なされます。 |

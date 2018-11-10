@@ -10,21 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/18/2018
+ms.date: 10/30/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 552b39c520396942fa81f963c0cfa1c8c7b47db4
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 325071be56935ca02adccf69f99fa1718e3f7b91
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456968"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239425"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>チュートリアル: Azure Resource Manager テンプレートでの条件の使用
 
-条件に基づいて Azure リソースをデプロイする方法について説明します。 
+条件に基づいて Azure リソースをデプロイする方法について説明します。
 
-このチュートリアルで使用するシナリオは、[チュートリアル: Azure Resource Manager テンプレートを依存リソースで作成する](./resource-manager-tutorial-create-templates-with-dependent-resources.md)で使用されたシナリオに似ています。 そのチュートリアルでは、仮想マシン、仮想ネットワーク、およびその他の依存リソース (ストレージ アカウントなど) を作成します。 新しいストレージ アカウントを毎回作成する代わりに、新しいストレージ アカウントを作成するか、既存のストレージ アカウントを使用するかをユーザーに選択してもらいます。 この目的を達成するために、追加のパラメーターを定義します。 パラメーターの値に "new" が指定されると、新しいストレージ アカウントが作成されます。
+[リソースのデプロイ順序の設定](./resource-manager-tutorial-create-templates-with-dependent-resources.md)に関するチュートリアルでは、仮想マシン、仮想ネットワーク、およびその他の依存リソース (ストレージ アカウントなど) を作成します。 新しいストレージ アカウントを毎回作成する代わりに、新しいストレージ アカウントを作成するか、既存のストレージ アカウントを使用するかをユーザーに選択してもらいます。 この目的を達成するために、追加のパラメーターを定義します。 パラメーターの値に "new" が指定されると、新しいストレージ アカウントが作成されます。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -40,7 +40,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 この記事を完了するには、以下が必要です。
 
-* [Resource Manager ツール拡張機能](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)を持つ [Visual Studio Code](https://code.visualstudio.com/)
+* [Visual Studio Code](https://code.visualstudio.com/) と [Resource Manager ツール拡張機能](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites)。
+* セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 パスワードを生成するためのサンプルを次に示します。
+
+    ```azurecli-interactive
+    openssl rand -base64 32
+    ```
+    Azure Key Vault は、暗号化キーおよびその他のシークレットを保護するために設計されています。 詳細については、「[チュートリアル: Resource Manager Template deployment で Azure Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)」を参照してください。 パスワードは 3 か月ごとに更新することをお勧めします。
 
 ## <a name="open-a-quickstart-template"></a>クイック スタート テンプレートを開く
 
@@ -53,7 +59,16 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 3. **[開く]** を選択して、ファイルを開きます。
-4. **[ファイル]**>**[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
+4. テンプレートによって定義されたリソースは、5 つあります。
+
+    * `Microsoft.Storage/storageAccounts` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)をご覧ください。
+    * `Microsoft.Network/publicIPAddresses` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)をご覧ください。
+    * `Microsoft.Network/virtualNetworks` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)をご覧ください。
+    * `Microsoft.Network/networkInterfaces` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)をご覧ください。
+    * `Microsoft.Compute/virtualMachines` [テンプレート リファレンス](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)をご覧ください。
+
+    カスタマイズする前にテンプレートの基本をある程度理解することは役に立ちます。
+5. **[ファイル]**>**[Save As]\(名前を付けて保存\)** を選択し、このファイルのコピーを **azuredeploy.json** という名前でローカル コンピューターに保存します。
 
 ## <a name="modify-the-template"></a>テンプレートの変更
 
@@ -61,6 +76,8 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 * ストレージ アカウント名パラメーターを追加します。 ユーザーは、新しいストレージ アカウント名を指定するか、または既存のストレージ アカウント名を指定することができます。
 * **newOrExisting** という新しいパラメーターを追加します。 デプロイする際には、このパラメーターを使用して、新しいストレージ アカウントを作成する、または既存のストレージ アカウントを使用する場所が判別されます。
+
+変更を行う手順は次のとおりです。
 
 1. Visual Studio Code で **azuredeploy.json** を開きます。
 2. テンプレート全体で **variables('storageAccountName')** を **parameters('storageAccountName')** に置き換えます。  **variables('storageAccountName')** は 3 か所で使用されています。
@@ -74,7 +91,7 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
     ```json
     "storageAccountName": {
       "type": "string"
-    },    
+    },
     "newOrExisting": {
       "type": "string", 
       "allowedValues": [
@@ -112,22 +129,26 @@ Azure クイック スタート テンプレートは、Resource Manager テン�
 
 [テンプレートをデプロイする](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template)の指示に従って、テンプレートをデプロイします。
 
-Azure PowerShell を使用してテンプレートをデプロイする場合、1 つの追加パラメーターを指定する必要があります。
+Azure PowerShell を使用してテンプレートをデプロイする場合、1 つの追加パラメーターを指定する必要があります。 セキュリティを向上させるには、生成されたパスワードを仮想マシンの管理者アカウントに対して使用します。 「[前提条件](#prerequisites)」を参照してください。
 
 ```azurepowershell
+$deploymentName = Read-Host -Prompt "Enter the name for this deployment"
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"
 $storageAccountName = Read-Host -Prompt "Enter the storage account name"
 $newOrExisting = Read-Host -Prompt "Create new or use existing (Enter new or existing)"
 $location = Read-Host -Prompt "Enter the Azure location (i.e. centralus)"
 $vmAdmin = Read-Host -Prompt "Enter the admin username"
-$vmPassword = Read-Host -Prompt "Enter the admin password"
+$vmPassword = Read-Host -Prompt "Enter the admin password" -AsSecureString
 $dnsLabelPrefix = Read-Host -Prompt "Enter the DNS Label prefix"
 
 New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
-$vmPW = ConvertTo-SecureString -String $vmPassword -AsPlainText -Force
-New-AzureRmResourceGroupDeployment -Name mydeployment1018 -ResourceGroupName $resourceGroupName `
-    -adminUsername $vmAdmin -adminPassword $vmPW `
-    -dnsLabelPrefix $dnsLabelPrefix -storageAccountName $storageAccountName -newOrExisting $newOrExisting `
+New-AzureRmResourceGroupDeployment -Name $deploymentName `
+    -ResourceGroupName $resourceGroupName `
+    -adminUsername $vmAdmin `
+    -adminPassword $vmPassword `
+    -dnsLabelPrefix $dnsLabelPrefix `
+    -storageAccountName $storageAccountName `
+    -newOrExisting $newOrExisting `
     -TemplateFile azuredeploy.json
 ```
 
@@ -147,7 +168,7 @@ Azure リソースが不要になったら、リソース グループを削除�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、新しいストレージ アカウントを作成するか、既存のストレージ アカウントを使用するかをユーザーが選択できるテンプレートを作成します。 このチュートリアルで作成した仮想マシンでは、管理者のユーザー名とパスワードが必要になります。 デプロイ時にパスワードを渡す代わりに、Azure Key Vault を使用してパスワードを事前に格納しておき、デプロイ時にパスワードを取得することができます。 Azure Key Vault からシークレットを取得し、テンプレートのデプロイでそのシークレットを使用する方法については、以下を参照してください。
+このチュートリアルでは、新しいストレージ アカウントを作成するか、既存のストレージ アカウントを使用するかをユーザーが選択できるテンプレートを作成しました。 Azure Key Vault からシークレットを取得し、テンプレートのデプロイでそのシークレットをパスワードとして使用する方法については、以下を参照してください。
 
 > [!div class="nextstepaction"]
 > [テンプレートのデプロイで Key Vault を統合する](./resource-manager-tutorial-use-key-vault.md)

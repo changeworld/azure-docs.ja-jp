@@ -9,16 +9,16 @@ ms.reviewer: sgilley
 author: rastala
 ms.author: roastala
 ms.date: 09/24/2018
-ms.openlocfilehash: b81e40298eae0f0b44f37e7f8f16beaddad999a5
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 624564d61a7031cee910ab98e1b327b6f0205e28
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456815"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50159011"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>クイック スタート: Azure portal を使用した Azure Machine Learning の基本操作
 
-このクイック スタートでは、Azure portal を使用して Azure Machine Learning ワークスペースを作成します。 このワークスペースが、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。 
+このクイック スタートでは、Azure portal を使用して Azure Machine Learning ワークスペースを作成します。 このワークスペースが、Machine Learning で機械学習モデルの実験、トレーニング、およびデプロイを行うために使用される、クラウドでの基礎ブロックとなります。 このクイック スタートではクラウド リソースを使用するため、インストールは不要です。 独自の Jupyter Notebook サーバーを構成する場合は、「[クイック スタート: Python を使用して Azure Machine Learning の利用を開始する](quickstart-create-workspace-with-python.md)」を参照してください。
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2F9Ad]
 
@@ -78,32 +78,9 @@ Azure Notebooks では、Jupyter ノートブック向けの無料のクラウ�
 
 `01.run-experiment.ipynb` を選択してノートブックを開きます。
 
-セルを 1 つずつ実行するには、`Shift`+`Enter` キーを使用します。 ノートブック全体を実行するには、[`Cells`] > [`Run All`] を選択します。 セルの横にアスタリスク (*) が表示されているときは実行中です。 そのセルのコードが完了すると、数値が表示されます。
+セルを 1 つずつ実行するには、`Shift`+`Enter` キーを使用します。 ノートブック全体を実行するには、[`Cells`] > [`Run All`] を選択します。 セルの横にアスタリスク (*) が表示されているときは実行中です。 そのセルのコードが完了すると、数値が表示されます。 
 
-サインインを要求される場合があります。 メッセージ内のコードをコピーします。 次にリンクを選択して、コードを新しいウィンドウに貼り付けます。 コードの前後にスペースが入らないようにしてください。 サインインには、Azure portal で使用したアカウントを使用します。
-
- ![ログイン](./media/quickstart-get-started/login.png)
-
-ノートブックで、2 番目のセルが `config.json` から読み取り、ワークスペースに接続します。
-```
-ws = Workspace.from_config()
-```
-
-コードの 3 番目のセルが "my-first-experiment" という名前の実験を開始します。 ワークスペースに戻ったとき、この名前を使用して実行に関する情報を検索します。
-
-```
-experiment = Experiment(workspace_object=ws, name = "my-first-experiment")
-```
-
-ノートブックの最後のセルで、ログ ファイルに書き込まれる値に注意してください。
-
-```
-# Log final results
-run.log("Final estimate: ",pi_estimate)
-run.log("Final error: ",math.pi-pi_estimate)
-```
-
-この値はコードの実行後にワークスペースで参照できます。
+ノートブック内のセルをすべて実行すると、記録された値をワークスペースで確認できるようになります。
 
 ## <a name="view-logged-values"></a>ログに記録された値を表示する
 
@@ -121,11 +98,11 @@ run.log("Final error: ",math.pi-pi_estimate)
 
  ![実行履歴リンク](./media/quickstart-get-started/report.png)
 
-ログに記録された値を基に自動的に作成されたプロットが表示されます。  
+ログに記録された値を基に自動的に作成されたプロットが表示されます。 同じ name パラメーターで複数の値をログに記録するときは常に、プロットが自動的に生成されます。
 
    ![履歴を表示する](./media/quickstart-get-started/plots.png)
 
-Pi を概算するコードではランダムな値が使用されるため、実際のプロットには異なる値が表示されます。
+Pi を概算するコードではランダムな値が使用されるため、実際のプロットには異なる値が表示されます。  
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ 
 

@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/25/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a69692d9f50d0362a6b10d3237e1e5448c43baab
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 31e675b101d903af5dd4a07fee3bc56fbc3353d9
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268718"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412790"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Azure VM のローカルの Windows パスワードをオフラインでリセットする
 Azure ゲスト エージェントがインストールされている場合、[Azure Portal または Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を使用して、Azure 内の VM のローカルの Windows パスワードをリセットできます。 これは、Azure VM のパスワードをリセットする最も一般的な方法です。 Azure のゲスト エージェントが応答しない場合やカスタム イメージのアップロード後にインストールに失敗する場合、Windows のパスワードを手動でリセットできます。 この記事では、ソース OS の仮想ディスクを別の VM に接続してローカル アカウントのパスワードをリセットする方法について説明します。 この記事に記載されている手順は、Windows ドメイン コントローラーには適用されません。 
@@ -133,7 +133,7 @@ Azure ゲスト エージェントへのアクセス権がない場合に Azure 
      ![ディスクの URI をコピーする](./media/reset-local-password-without-agent/copy_source_vhd_uri.png)
 9. ソース VM の OS ディスクから VM を作成します。
    
-   * [この Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet)を使って、特殊な VHD から VM を作成します。 [`Deploy to Azure`] をクリックして Azure Portal を開きます。テンプレートの情報が自動入力されています。
+   * [この Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-specialized-vhd-new-or-existing-vnet)を使って、特殊な VHD から VM を作成します。 [`Deploy to Azure`] をクリックして Azure Portal を開きます。テンプレートの情報が自動入力されています。
    * VM の以前の設定をすべて保持する場合は、*[Edit template]* を選んで、既存の VNet、サブネット、ネットワーク アダプター、パブリック IP のいずれかを入力します。
    * [`OSDISKVHDURI`] パラメーター テキスト ボックスに、前の手順で取得したソース VHD の URI を貼り付けます。
      

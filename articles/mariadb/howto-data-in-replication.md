@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 13d1353b0f8b3320972973d428f4aedb0fb68ac8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f75b3e33cbd5719211bb30b22ab8d53c344b5579
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990690"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212762"
 ---
 # <a name="how-to-configure-azure-database-for-mariadb-data-in-replication"></a>Azure Database for MariaDB のデータイン レプリケーションを構成する方法
 
@@ -62,7 +62,7 @@ ms.locfileid: "46990690"
 
    レプリケーションの権限を持つように構成されたユーザー アカウントをマスター サーバーに作成します。 この作業には SQL コマンドのほか、MySQL Workbench などのツールを使用することができます。 レプリケートに SSL を使用するかどうかをよく考えておいてください。ユーザーを作成する際に指定する必要があります。 マスター サーバーに[ユーザー アカウントを追加](https://mariadb.com/kb/en/library/create-user/)する方法については、MariaDB のドキュメントを参照してください。 
 
-   以降のコマンドでは、新たに作成したレプリケーション ロールが、マスターのホスト マシンに限らず、任意のマシンからマスターにアクセスできます。 そのため、create user コマンドには "syncuser@'%'" を指定しています。 [アカウント名の指定](https://mariadb.com/kb/en/library/create-user/#account-names)について詳しくは、MariaDB のドキュメントをご覧ください。
+   以降のコマンドでは、新たに作成したレプリケーション ロールが、マスターのホスト マシンに限らず、任意のマシンからマスターにアクセスできます。 そのため、create user コマンドには "syncuser\@'%'" を指定しています。 [アカウント名の指定](https://mariadb.com/kb/en/library/create-user/#account-names)について詳しくは、MariaDB のドキュメントをご覧ください。
 
    **SQL コマンド**
 

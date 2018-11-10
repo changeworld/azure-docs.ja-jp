@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: 3bdf44e0a1cf0ccda6d015fa3683964f3530d4af
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 3cbded3224e7622d13e7af362cb3532a1813787e
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003485"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242162"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection と Microsoft Graph の基本
 Microsoft Graph は、Microsoft の統合 API エンドポイントであり、[Azure Active Directory Identity Protection](../active-directory-identityprotection.md) API のホームです。 最初の API である **identityRiskEvents** を使用して、Microsoft Graph に対して一連の[リスク イベント](../reports-monitoring/concept-risk-events.md)とその関連情報のクエリを実行できます。 この記事では、この API クエリの基礎について説明します。 さらに踏み込んだ概要や詳しい解説、Graph Explorer の利用については、[Microsoft Graph のサイト](https://graph.microsoft.io/)を参照してください。
@@ -37,8 +37,11 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
 以降の手順を開始する前に次の情報が必要となります。
 
-* Azure AD にアプリケーションを作成するための管理者特権
-* テナントのドメインの名前 (例: contoso.onmicrosoft.com)
+- Azure AD P2 テナント
+
+- Azure AD にアプリケーションを作成するための管理者特権
+
+- テナントのドメインの名前 (例: contoso.onmicrosoft.com)
 
 
 ## <a name="retrieve-your-domain-name"></a>ドメイン名の取得 
@@ -49,12 +52,14 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
    
     ![Creating an application](./media/graph-get-started/41.png)
 
+3. **[カスタム ドメイン名]** をクリックします。
 
-3. **[管理]** セクションで、**[プロパティ]** をクリックします。
+    ![カスタム ドメイン名](./media/graph-get-started/71.png)
 
-    ![Creating an application](./media/graph-get-started/42.png)
+4. ドメイン名の一覧から、プライマリとしてフラグが設定されたドメイン名をコピーします。
 
-4. ドメイン名をコピーします。
+    ![カスタム ドメイン名](./media/graph-get-started/72.png)
+
 
 
 ## <a name="create-a-new-app-registration"></a>新しいアプリ登録の作成
@@ -74,7 +79,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
     a. **[名前]** ボックスにアプリケーションの名前 (例: AADIP Risk Event API Application) を入力します。
    
-    b. **[種類]** として **[Web アプリケーションや Web API]** を選択します。
+    b. **[アプリケーションの種類]** として **[Web アプリケーションや Web API]** を選択します。
    
     c. **[サインオン URL]** ボックスに、「`http://localhost`」と入力します。
 
@@ -158,7 +163,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 
 - grant_type: “**client_credentials**”
 
--  リソース: "**https://graph.microsoft.com**"
+-  resource: "**https://graph.microsoft.com**"
 
 - client_id: \<クライアント ID\>
 
@@ -168,7 +173,7 @@ Microsoft Graph を介して Identity Protection のデータにアクセスす�
 認証に成功すると、認証トークンが返されます。  
 API を呼び出すためには、次のパラメーターを持つヘッダーを作成します。
 
-    `Authorization`=”<token_type> <access_token>"
+    `Authorization`="<token_type> <access_token>"
 
 
 トークンの種類とアクセス トークンは、認証時に返されたトークンで確認できます。

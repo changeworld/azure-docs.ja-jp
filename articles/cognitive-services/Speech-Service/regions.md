@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mahilleb
-ms.openlocfilehash: a5fce6f9547a96da3ce482ce388e5ba2093f2af4
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 088e581da7511797a0f39959d867c6298262462a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49468128"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242332"
 ---
 # <a name="regions-of-the-speech-service"></a>Speech Service のリージョン
 
@@ -37,7 +37,7 @@ Speech Service は、さまざまなリージョンで使用できます。
 
 次の表は、**音声認識**と**翻訳**に使用可能なリージョンの一覧です。
 
-  リージョン | Speech SDK パラメーター | ポータル
+  リージョン | Speech SDK パラメーター | 音声カスタマイズ ポータル
  ------|-------|--------
  米国西部 | `westus` | https://westus.cris.ai
  米国西部 2 | `westus2` | https://westus2.cris.ai 

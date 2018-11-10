@@ -8,16 +8,16 @@ ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a65eb029dbf10b194bd28bf7ad82f5aa839338a2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: beb7574653375024f36912c4b3a37b01d2f59bd5
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990622"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248404"
 ---
-# <a name="learn-how-to-use-deployment-manifests-to-deploy-modules-and-establish-routes"></a>デプロイ マニフェストを使ってモジュールをデプロイしルートを確立する
+# <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>IoT Edge にモジュールをデプロイしてルートを確立する方法について説明します。
 
-各 IoT Edge デバイスは、少なくとも 2 つのモジュール $edgeAgent と $edgeHub を実行します。IoT Edge ランタイムはこのモジュールによって構成されます。 この 2 つの標準のモジュールに加えて、IoT Edge デバイスでは複数のモジュールを実行して、任意の数のプロセスを実行できます。 デバイスにすべてのモジュールを一度にデプロイする場合、含めるモジュール、およびモジュール同士の連携の仕方について宣言する方法が必要です。 
+各 IoT Edge デバイスは、少なくとも 2 つのモジュール $edgeAgent と $edgeHub を実行します。IoT Edge ランタイムはこのモジュールによって構成されます。 加えて、IoT Edge デバイスでは複数のモジュールを実行して、任意の数のプロセスを実行できます。 デバイスにすべてのモジュールを一度にデプロイする場合、含めるモジュール、およびモジュール同士の連携の仕方について宣言する方法が必要です。 
 
 *デプロイ マニフェスト*は、次の内容が記述された JSON ドキュメントです。
 
@@ -27,7 +27,7 @@ ms.locfileid: "46990622"
 
 すべての IoT Edge デバイスをデプロイ マニフェストで構成する必要があります。 新しくインストールされた IoT Edge ランタイムは、有効なマニフェストで構成されるまでエラー コードを報告します。 
 
-Azure IoT Edge チュートリアルでは、Azure IoT Edge ポータルでウィザードを使用することによってデプロイ マニフェストを作成します。 また、REST または IoT Hub サービス SDK を使用して、プログラムでデプロイ マニフェストを適用することもできます。 詳細については、[IoT Edge の展開][lnk-deploy]に関する記事を参照してください。
+Azure IoT Edge チュートリアルでは、Azure IoT Edge ポータルでウィザードを使用することによってデプロイ マニフェストを作成します。 また、REST または IoT Hub サービス SDK を使用して、プログラムでデプロイ マニフェストを適用することもできます。 詳細については、[IoT Edge のデプロイ](module-deployment-monitoring.md)に関する記事を参照してください。
 
 ## <a name="create-a-deployment-manifest"></a>配置マニフェストの作成
 
@@ -138,7 +138,7 @@ Edge ハブは、モジュール間およびモジュールと IoT Hub の間で
 | `/messages/modules/{moduleId}/outputs/{output}` | {output} を使用して {moduleId} によって送信された、デバイスからクラウドへの任意のメッセージ |
 
 ### <a name="condition"></a>条件
-条件は、ルートの宣言では省略可能です。 シンクからソースへのメッセージをすべて渡す場合は、**WHERE** 句全体をそのまま削除します。 または、[IoT Hub クエリ言語][lnk-iothub-query] を使用して、条件を満たす特定のメッセージまたはメッセージの種類をフィルター処理することができます。
+条件は、ルートの宣言では省略可能です。 シンクからソースへのメッセージをすべて渡す場合は、**WHERE** 句全体をそのまま削除します。 または、[IoT Hub クエリ言語](../iot-hub/iot-hub-devguide-routing-query-syntax.md)を使用して、条件を満たす特定のメッセージまたはメッセージの種類をフィルター処理することができます。
 
 IoT Edge のモジュール間を通過するメッセージは、デバイスと Azure IoT Hub の間を通過するメッセージと同じ形式になります。 すべてのメッセージは JSON で書式設定され、パラメーターとして **systemProperties**、**appProperties**、**body** が与えられます。 
 
@@ -262,10 +262,4 @@ Edge ハブでは、[Edge ハブの必要なプロパティ](module-edgeagent-ed
 
 * $edgeAgent および $edgeHub に含めることができるプロパティおよび含める必要があるプロパティの完全な一覧については、[Edge エージェントおよび Edge ハブのプロパティ](module-edgeagent-edgehub.md)に関するページをご覧ください。
 
-* これで IoT Edge モジュールがどのように使用されるかがわかったので、「[Understand the requirements and tools for developing IoT Edge modules (IoT Edge モジュールを開発するための要件およびツールを理解する)][lnk-module-dev]」に進みます。
-
-[lnk-deploy]: module-deployment-monitoring.md
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-routing-query-syntax.md
-[lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
-[lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
-[lnk-module-dev]: module-development.md
+* これで IoT Edge モジュールがどのように使用されるかがわかったので、「[IoT Edge モジュールを開発するための要件とツールについて理解する](module-development.md)」に進みます。

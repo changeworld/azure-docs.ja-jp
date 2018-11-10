@@ -10,20 +10,20 @@ ms.component: bing-autosuggest
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 6f79416c28631a47209558fd0c415ae79cff93bc
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
+ms.openlocfilehash: c19fa95bd5529f18a65ad466e9c6352b1be80657
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48831400"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421120"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-java"></a>Java での Bing Autosuggest API のクイック スタート
 
-この記事では、Java で [Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) を使用する方法について説明します。 Bing Autosuggest API は、ユーザーが検索ボックスに入力した部分的なクエリ文字列に基づいて、候補となるクエリの一覧を返します。 通常は、ユーザーが検索ボックスに新しい文字を入力するたびにこの API を呼び出して、検索ボックスのドロップダウン リストに候補を表示します。 この記事では、*sail* に対するクエリ文字列の候補を返す要求を送信する方法を示します。
+この記事では、Java で [Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/)  を使用する方法について説明します。 Bing Autosuggest API は、ユーザーが検索ボックスに入力した部分的なクエリ文字列に基づいて、候補となるクエリの一覧を返します。 通常は、ユーザーが検索ボックスに新しい文字を入力するたびにこの API を呼び出して、検索ボックスのドロップダウン リストに候補を表示します。 この記事では、*sail* に対するクエリ文字列の候補を返す要求を送信する方法を示します。
 
 ## <a name="prerequisites"></a>前提条件
 
-このコードをコンパイルして実行するには、[JDK 7 または 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) が必要です。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
+このコードをコンパイルして実行するには、[JDK 7 または 8](https://aka.ms/azure-jdks) が必要です。 好みの Java IDE がある場合はそれを使用してもかまいませんが、テキスト エディターで十分です。
 
 [Cognitive Services API アカウント](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)と **Bing Autosuggest API v7** を取得している必要があります。 このクイックスタートには[無料試用版](https://azure.microsoft.com/try/cognitive-services/#search)で十分です。 無料試用版を起動するとき、アクセス キーを入力する必要があります。あるいは、Azure ダッシュボードの有料サブスクリプション キーを使用できます。
 

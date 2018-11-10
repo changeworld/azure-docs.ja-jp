@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: b1002d046014abd15452489e343ecf7c30b00d73
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 64d940552f2790c08e8087f279990d0a6c595bac
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311339"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245731"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス
 
-ID はセキュリティの新しい境界レイヤーであり、従来のネットワーク中心の観点からその役割を引き継ぐものであると一般に考えられています。 セキュリティに関する注目と投資の主軸のこのような変化は、ネットワーク境界の侵入がますます容易になり、[BYOD](http://aka.ms/byodcg) デバイスとクラウド アプリケーションが爆発的に増加する前と比べて境界防御の有効性が低下しているという事実によるものです。
+ID はセキュリティの新しい境界レイヤーであり、従来のネットワーク中心の観点からその役割を引き継ぐものであると一般に考えられています。 セキュリティに関する注目と投資の主軸のこのような変化は、ネットワーク境界の侵入がますます容易になり、[BYOD](https://aka.ms/byodcg) デバイスとクラウド アプリケーションが爆発的に増加する前と比べて境界防御の有効性が低下しているという事実によるものです。
 
 この記事では、Azure の ID 管理とアクセス制御のセキュリティに関するベスト プラクティスについて説明します。 このベスト プラクティスは、[Azure AD](../active-directory/fundamentals/active-directory-whatis.md) に関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
 
@@ -51,7 +51,7 @@ ID はセキュリティの新しい境界レイヤーであり、従来のネ�
 
 ## <a name="treat-identity-as-the-primary-security-perimeter"></a>ID を主要なセキュリティ境界として扱う
 
-多くの人々は、ID が主要なセキュリティ境界であると考えています。 これは、従来重視されていたネットワーク セキュリティからの転換です。 ネットワーク境界は浸透を続けており、その境界による防御の効果は [BYOD](http://aka.ms/byodcg) デバイスとクラウド アプリケーションが急増する前ほどは得られません。
+多くの人々は、ID が主要なセキュリティ境界であると考えています。 これは、従来重視されていたネットワーク セキュリティからの転換です。 ネットワーク境界は浸透を続けており、その境界による防御の効果は [BYOD](https://aka.ms/byodcg) デバイスとクラウド アプリケーションが急増する前ほどは得られません。
 [Azure Active Directory (Azure AD)](../active-directory/active-directory-whatis.md) は ID とアクセスを管理するための Azure ソリューションです。 Azure AD は、マイクロソフトが提供する、マルチテナントに対応したクラウドベースのディレクトリおよび ID 管理サービスです。 これには、主要なディレクトリ サービス、アプリケーション アクセスの管理、および ID 保護の機能が 1 つのソリューションとして統合されています。
 
 以降のセクションでは、Azure AD を使用した ID とアクセスのセキュリティに対するベスト プラクティスを示します。

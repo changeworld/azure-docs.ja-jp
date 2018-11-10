@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 37498394bc163852d397337cf5728b4941ae45a7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d264160fb3f1c14db3379a314e60efdadb6905b5
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956508"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210416"
 ---
 # <a name="what-is-role-based-access-control-rbac"></a>ロールベースのアクセス制御 (RBAC) とは
 
@@ -54,7 +54,7 @@ RBAC を使用してリソースへのアクセスを制御するには、ロー
 
 ![ロール割り当てのセキュリティ プリンシパル](./media/overview/rbac-security-principal.png)
 
-- ユーザー - Azure Active Directory 内にプロファイルを持つ個人です。 他のテナント内のユーザーにロールを割り当てることもできます。 他の組織のユーザーについては、「[Azure Active Directory B2B](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)」をご覧ください。
+- ユーザー - Azure Active Directory 内にプロファイルを持つ個人です。 他のテナント内のユーザーにロールを割り当てることもできます。 他の組織のユーザーについては、「[Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md)」をご覧ください。
 - グループ - Azure Active Directory 内に作成されたユーザーのセットです。 グループにロールを割り当てると、そのグループ内のすべてのユーザーがそのロールを持つようになります。 
 - サービス プリンシパル - 特定の Azure リソースにアクセスするためにアプリケーションまたはサービスによって使用されるセキュリティ ID です。 アプリケーションに対する "*ユーザー ID*" (ユーザー名とパスワード、または証明書) と考えることができます。
 
@@ -130,3 +130,4 @@ Azure では、複数のレベル ([管理グループ](../azure-resource-manage
 - [クイック スタート: RBAC と Azure portal を使用してユーザーにアクセス権を付与する](quickstart-assign-role-user-portal.md)
 - [RBAC と Azure portal を使用してアクセスを管理する](role-assignments-portal.md)
 - [Azure での各種ロールについて](rbac-and-directory-admin-roles.md)
+- [エンタープライズ クラウドの導入: Azure でのリソース アクセス管理](/azure/architecture/cloud-adoption/getting-started/azure-resource-access)

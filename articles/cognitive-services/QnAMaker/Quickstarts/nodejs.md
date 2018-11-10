@@ -1,7 +1,7 @@
 ---
 title: REST API (V4) - Node.js - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Azure 上の Microsoft Cognitive Services で Microsoft Translator Text API の使用をすぐに開始するために役立つ REST ベースの情報とコード サンプルを提供します。
+description: Azure 上の Microsoft Cognitive Services で Microsoft Translator Text API の使用をすぐに開始するために役立つ Node.js REST ベースの情報とコード サンプルを提供します。
 services: cognitive-services
 author: diberry
 manager: cgronlun
@@ -10,19 +10,19 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: diberry
-ms.openlocfilehash: 68ec8fe90c19106c989f072dc041ee81af536389
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: cd3d159e4482b43c6356ab7b657a79fa59159c60
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647920"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214989"
 ---
 # <a name="qna-maker-rest-api-with-nodejs"></a>Node.js での QnA Maker REST API 
 <a name="HOLTop"></a>
 
-この記事では、Node.js で [Microsoft QnA Maker API](../Overview/overview.md) を使用し、次を行う方法について説明します。
+この記事では、Node.js で [Microsoft QnA Maker API](../Overview/overview.md)  を使用し、次を行う方法について説明します。
 
-- [新しいサポート技術情報を作成します。](#Create)
+- [新しいナレッジ ベースを作成します。](#Create)
 - [既存のナレッジ ベースを更新します。](#Update)
 - [ナレッジ ベースの作成または更新要求の状態を取得します。](#Status)
 - [既存のナレッジ ベースを公開します。](#Publish)

@@ -1,5 +1,5 @@
 ---
-title: Azure Log Analytics - Azure Logic Apps を使用して B2B メッセージを追跡する | Microsoft Docs
+title: Log Analytics を使用して B2B メッセージを追跡する - Azure Logic Apps | Microsoft Docs
 description: Azure Log Analytics で統合アカウントと Azure Logic Apps の B2B 通信を追跡します
 services: logic-apps
 ms.service: logic-apps
@@ -8,18 +8,17 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
-ms.date: 06/19/2018
-ms.openlocfilehash: 666c998a781f13ea2a26ccfc0b94aeead0308f5b
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.date: 10/19/2018
+ms.openlocfilehash: 0bfb652d9e64b9dbf61ad4032f1449fd484cc80a
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405686"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233560"
 ---
-# <a name="track-b2b-communication-with-azure-log-analytics"></a>Azure Log Analytics で B2B 通信を追跡する
+# <a name="track-b2b-messages-with-azure-log-analytics"></a>Azure Log Analytics を使用して B2B メッセージを追跡する
 
-統合アカウント経由で 2 つの実行中のビジネス プロセスまたはアプリケーション間で B2B 通信を設定した後、これらのエンティティは互いにメッセージを交換できます。 これらのメッセージが正しく処理されているかどうかを確認するには、 [Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して AS2、X12、および EDIFACT メッセージを追跡できます。 たとえば、メッセージを追跡するために次の Web ベースの追跡機能を使用できます。
+統合アカウントで取引先間の B2B 通信を設定すると、これらの取引先が AS2、X12、および EDIFACT などのプロトコルを使用してメッセージを交換できるようになります。 これらのメッセージが正しく処理されていることを確認するには、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用してこれらのメッセージを追跡できます。 たとえば、メッセージを追跡するために次の Web ベースの追跡機能を使用できます。
 
 * メッセージの数と状態
 * 受信確認の状態
@@ -27,7 +26,10 @@ ms.locfileid: "49405686"
 * エラーの詳細な説明
 * 検索機能
 
-## <a name="requirements"></a>必要条件
+> [!NOTE]
+> このページでは、以前、これらのタスクの実行方法の手順を、[2019 年 1 月に廃止される](../log-analytics/log-analytics-oms-portal-transition.md) Microsoft Operations Management Suite (OMS) を使用して説明していましたが、代わりに、Azure Log Analytics を使用した手順に置き換えられています。 
+
+## <a name="prerequisites"></a>前提条件
 
 * 診断ログが設定されているロジック アプリ。 [ロジック アプリを作成する方法](quickstart-create-first-logic-app-workflow.md)および[そのロジック アプリのログを設定する方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)を参照してください。
 
@@ -35,51 +37,57 @@ ms.locfileid: "49405686"
 
 * まだ実行していない場合は、[Log Analytics に診断データを発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)します。
 
-> [!NOTE]
-> 上記の要件を満たした後、Log Analytics 内にワークスペースを用意する必要があります。 Log Analytics 内で B2B 通信を追跡するための同じワークスペースを使用する必要があります。 
->  
-> Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。
+* 上記の要件を満たしたら、Log Analytics を使用して B2B 通信を追跡するために使用する Log Analytics ワークスペースも必要になります。 Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。
 
-## <a name="add-the-logic-apps-b2b-solution-to-azure"></a>Azure への Logic Apps B2B ソリューションの追加
+## <a name="install-logic-apps-b2b-solution"></a>Logic Apps B2B ソリューションをインストールする
 
-Log Analytics でロジック アプリの B2B メッセージを追跡するには、Log Analytics に **Logic Apps B2B** ソリューションを追加する必要があります。 [Log Analytics へのソリューションの追加](../log-analytics/log-analytics-quick-create-workspace.md)に関する詳細を参照してください。
+Log Analytics でロジック アプリの B2B メッセージを追跡するには、事前に Log Analytics に **Logic Apps B2B** ソリューションを追加します。 [Log Analytics へのソリューションの追加](../log-analytics/log-analytics-quick-create-workspace.md)に関する詳細を参照してください。
 
-1. [Azure Portal](https://portal.azure.com) で、**[すべてのサービス]** を選択します。 次に示すように、"ログ分析" を検索し、**[Log Analytics]** を選択します。
+1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、**[Log Analytics]** を選択します。
 
-   ![Log Analytics を見つける](media/logic-apps-track-b2b-messages-omsportal/browseloganalytics.png)
+   ![[Log Analytics] を選択する](media/logic-apps-track-b2b-messages-omsportal/find-log-analytics.png)
 
-2. **[Log Analytics]** で、ご利用の Log Analytics ワークスペースを見つけて選択します。 
+1. **[Log Analytics]** で、ご利用の Log Analytics ワークスペースを見つけて選択します。 
 
-   ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal/selectla.png)
+   ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal/select-log-analytics-workspace.png)
 
-3. **[管理]** の下で **[ワークスペースの概要]** を選択します。
+1. **[Log Analytics の使用を開始する]** > **[監視ソリューションの構成]** の順に選択し、**[ソリューションの表示]** を選択します。
 
-   ![Log Analytics ポータルを選択する](media/logic-apps-track-b2b-messages-omsportal/omsportalpage.png)
+   ![[ソリューションの表示] を選択する](media/logic-apps-track-b2b-messages-omsportal/log-analytics-workspace.png)
 
-4. ホーム ページが開いたら、**[追加]** を選択して Logic Apps B2B ソリューションをインストールします。    
-   ![[ソリューション ギャラリー] を選択する](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
+1. [概要] ページで、**[追加]** を選択して、**[管理ソリューション]** の一覧を開きます。 その一覧から **[Logic Apps B2B]** を選択します。 
 
-5. **[管理ソリューション]** で、**Logic Apps B2B** ソリューションを検索して作成します。     
-   ![[Logic Apps B2B] を選択する](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
+   ![Logic Apps B2B ソリューションを選択する](media/logic-apps-track-b2b-messages-omsportal/add-b2b-solution.png)
 
-   ホーム ページに、**[Logic Apps B2B メッセージ]** のタイルが表示されるようになります。 
-   このタイルは、B2B メッセージが処理されたらメッセージ カウントを更新します。
+   ソリューションが見つからない場合は、ソリューションが表示されるまで一覧の下端にある **[さらに読み込む]** を選択します。
+
+1. **[作成]** を選択し、ソリューションをインストールする Log Analytics ワークスペースを確認してから、もう一度 **[作成]** を選択します。   
+
+   ![Logic Apps B2B の [作成] を選択する](media/logic-apps-track-b2b-messages-omsportal/create-b2b-solution.png)
+
+   既存のワークスペースを使用しない場合は、この時点で新しいワークスペースを作成することもできます。
+
+1. 完了したら、ワークスペースの **[概要]** ページに戻ります。 
+
+   Logic Apps B2B ソリューションが、[概要] ページに表示されます。 
+   B2B メッセージが処理されているときに、このページのメッセージ数が更新されます。
 
 <a name="message-status-details"></a>
 
-## <a name="track-message-status-and-details-in-log-analytics"></a>Log Analytics でのメッセージの状態と詳細の追跡
+## <a name="view-b2b-message-information"></a>B2B メッセージ情報を表示する
 
-1. B2B メッセージが処理された後、それらのメッセージの状態と詳細を表示できます。 [概要] ページで、**[Logic Apps B2B メッセージ]** タイルを選択します。
+B2B メッセージが処理された後、それらのメッセージの状態と詳細を **[Logic Apps B2B]** タイルに表示できます。
+
+1. Logic Analytics ワークスペースに移動し、[概要] ページを開きます。 **[Logic Apps B2B]** を選択します。
 
    ![更新されたメッセージ カウント](media/logic-apps-track-b2b-messages-omsportal/b2b-overview-tile.png)
 
    > [!NOTE]
-   > 既定では、**[Logic Apps B2B メッセージ]** タイルには 1 日に基づいたデータが表示されます。 データの範囲を異なる間隔に変更するには、ページの上部にある範囲コントロールを選択します。
+   > 既定では、**[Logic Apps B2B]** タイルには 1 日に基づいたデータが表示されます。 データの範囲を異なる間隔に変更するには、ページの上部にある範囲コントロールを選択します。
    > 
-   > ![データの範囲を変更する](media/logic-apps-track-b2b-messages-omsportal/server-filter.png)
-   >
+   > ![間隔を変更する](media/logic-apps-track-b2b-messages-omsportal/change-interval.png)
 
-2. メッセージの状態ダッシュボードが表示された後、特定のメッセージの種類の詳細を表示できます。ここには、1 日に基づいたデータが表示されます。 **AS2**、**X12**、または **EDIFACT** のタイルを選択します。
+1. メッセージの状態ダッシュボードが表示された後、特定のメッセージの種類の詳細を表示できます。ここには、1 日に基づいたデータが表示されます。 **AS2**、**X12**、または **EDIFACT** のタイルを選択します。
 
    ![メッセージの状態を表示する](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 

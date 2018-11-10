@@ -4,22 +4,21 @@ description: このトピックでは、Azure Media Services を使用したメ�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
-ms.assetid: 780ef5c2-3bd6-4261-8540-6dee77041387
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 10/29/2018
 ms.author: juliako
-ms.openlocfilehash: 698a85244d5341224dd9f513c5617b9086e36844
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f15ba7606136786b49eb4d6a0da097e7abf3fab4
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47033075"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231663"
 ---
 # <a name="scaling-media-processing-overview"></a>メディア処理のスケール設定の概要
 このページでは、メディア処理のスケールを設定する方法と、スケール設定を行う理由の概要について説明します。 
@@ -32,11 +31,11 @@ Media Services アカウントは、メディア処理タスクを処理する�
 ## <a name="choosing-between-different-reserved-unit-types"></a>さまざまな予約ユニットの種類の選択
 次の表は、さまざまなエンコーディングの速度を選択して決定するときに役立ちます。 いくつかのベンチマーク ケースも用意されています[ダウンロード可能なビデオ](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)独自のテストを実行します。
 
-| シナリオ | **S1** | **S2** | **S3** |
-| --- | --- | --- | --- |
-| 目的のユース ケース |シングル ビットレート エンコード。 <br/>解像度が SD 以下であり、時間的制約がなく、低コストなファイル。 |シングル ビットレート エンコードと複数ビットレート エンコード。<br/>通常は SD と HD 両方のエンコードに使用されます。 |シングル ビットレート エンコードと複数ビットレート エンコード。<br/>解像度がフル HD および 4K であるビデオ。 時間に依存しない高速ターンアラウンド エンコード。 |
-| 7 分間のビデオのベンチマーク |同じ解像度でシングル ビットレート MP4 ファイルにエンコードするには約 5 分かかります。 |"H264 Single Bitrate 720p" プリセットでのエンコードは約 8 分かかります。<br/><br/>"H264 Multiple Bitrate 720p" プリセットでのエンコードは約 16.8 分半かかります。 |"H264 Single Bitrate 1080p" プリセットでのエンコードは約 4 分かかります。<br/><br/>"H264 Multiple Bitrate 1080p" プリセットでのエンコードは約 8 分かかります。 |
-
+|RU の種類|シナリオ|[7 分間の 1080p ビデオ](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z)に関するサンプル結果|
+|---|---|---|
+| **S1**|シングル ビットレート エンコード。 <br/>解像度が SD 以下であり、時間的制約がなく、低コストなファイル。|"H264 Single Bitrate SD 16x9" を使用したシングル ビットレート SD 解像度 MP4 ファイルへのエンコードは 10 分かかります。|
+| **S2**|シングル ビットレート エンコードと複数ビットレート エンコード。<br/>通常は SD と HD 両方のエンコードに使用されます。|"H264 Single Bitrate 720p" プリセットでのエンコードは約 8 分かかります。<br/><br/>"H264 Multiple Bitrate 720p" プリセットでのエンコードは約 16.8 分半かかります。|
+| **S3**|シングル ビットレート エンコードと複数ビットレート エンコード。<br/>解像度がフル HD および 4K であるビデオ。 時間に依存しない高速ターンアラウンド エンコード。|"H264 Single Bitrate 1080p" プリセットでのエンコードは約 4 分かかります。<br/><br/>"H264 Multiple Bitrate 1080p" プリセットでのエンコードは約 8 分かかります。|
 
 ## <a name="considerations"></a>考慮事項
 > [!IMPORTANT]

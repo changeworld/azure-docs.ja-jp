@@ -1,22 +1,22 @@
 ---
-title: Azure VM を別の Azure リージョンにレプリケートする
-description: このクイック スタートでは、ある Azure リージョンから別のリージョンに Azure VM をレプリケートするのに必要な手順を紹介します。
+title: Azure IaaS VM のセカンダリ Azure リージョンへのディザスター リカバリーの設定
+description: このクイック スタートでは、Azure Site Recovery サービスを使用した Azure リージョン間での Azure IaaS VM のディザスター リカバリーに必要な手順を紹介します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: quickstart
-ms.date: 10/19/2018
+ms.date: 10/28/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 623c45cbc82139090d893b8501c7d363c4443d67
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: e5f6cbec75a9f652cf05c9608c412e00489288b9
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49456185"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212932"
 ---
-# <a name="replicate-an-azure-vm-to-another-azure-region"></a>Azure VM を別の Azure リージョンにレプリケートする
+# <a name="set-up-disaster-recovery-to-a-secondary-azure-region-for-an-azure-vm"></a>Azure VM のセカンダリ Azure リージョンへのディザスター リカバリーの設定 
 
 [Azure Site Recovery](site-recovery-overview.md) サービスは、計画された停止や計画外の停止の際にビジネス アプリを実行し続け、使用できるようにすることで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、フェールバックなど、オンプレミスのマシンと Azure Virtual Machines (VM) のディザスター リカバリーを管理し、調整します。
 

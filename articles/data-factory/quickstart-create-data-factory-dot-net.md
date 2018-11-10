@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a4f9e1111516d439f018e965883eb8268c83289c
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 25a1913fba3e66e65b3c785eb6ce1738c5f00a26
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954792"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247927"
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 この記事のチュートリアルでは、Visual Studio 2017 を使用します。 Visual Studio 2013 または 2015 を使用することもできます。
 
 ### <a name="azure-net-sdk"></a>Azure .NET SDK
-[Azure .NET SDK](http://azure.microsoft.com/downloads/) をマシンにダウンロードしてインストールします。
+[Azure .NET SDK](https://azure.microsoft.com/downloads/) をマシンにダウンロードしてインストールします。
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
 [こちらの記事](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)のセクションの手順に従って、以下のタスクを行ってください。 

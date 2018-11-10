@@ -10,12 +10,12 @@ ms.component: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: 4caa05ffa96dbc15922fed85edfdefdb68ead68b
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 48d9dee014d0759bd339c79811bb7b2fddecfe0b
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49361713"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214938"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Bing Spell Check API とは
 
@@ -42,7 +42,7 @@ API は、2 つの校正モード (`Proof` と `Spell`) をサポートします
 <br /><br/>**注:** クエリ テキストの長さが 4,096 を超える場合は 4.096 文字に切り捨てられた後で処理されます。 
 ### <a name="spell----for-web-searchesqueries-scenario"></a>Spell - Web 検索/クエリ シナリオ用
 `Spell` は、より良い検索結果を返すためにもっと積極的に機能します。 `Spell` モードは、ほとんどのスペル ミスを検出しますが、`Proof` ではキャッチされる一部の文法エラーは検出されません (大文字小文字エラーや単語の繰り返しなど)。
-<br /></br>**注:** サポートされているクエリの最大長を次に示します。 クエリがこの境界を超えている場合は、クエリは変更されないことを示す結果が表示されます。
+<br /></br>**注:** サポートされているクエリの最大長を次に示します。 クエリが最大長を超えた場合、クエリとその結果は変更されません。
 <ul><li>言語コード en、de、es、fr、pl、pt、sv、ru、nl、nb、tr-tr、it、zh、ko では 130 文字。 </li>
 <li>それ以外は 65 文字。</li></ul>
 

@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: ccb3c6b1349576c0fa91066f4e98f0a53f5bef45
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: b1711b86042c74eba47fe1cfa41bbbd36ceaf127
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319599"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51248760"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定
 
@@ -51,7 +51,7 @@ Azure Active Directory デバイス登録サービスに対して個人用デバ
 * Azure Active Directory Premium のライセンス
 * Azure AD に対する SSO 用に構成された Windows Server 2012 R2 フェデレーション サービス
 * Windows Server 2012 R2 の Web アプリケーション プロキシ 
-* Microsoft Azure Active Directory Connect (Azure AD Connect) [(Azure AD Connect をダウンロード)](http://www.microsoft.com/download/details.aspx?id=47594)
+* Microsoft Azure Active Directory Connect (Azure AD Connect) [(Azure AD Connect をダウンロード)](https://www.microsoft.com/download/details.aspx?id=47594)
 * 確認済みドメイン
 
 ## <a name="known-issues-in-this-release"></a>このリリースの既知の問題

@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: shvija
-ms.openlocfilehash: eaea6adbaef7baf9bb1e617ba0a709cf14edf781
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 0a8cb349be0ffefecb07bc705391684dc57f1b96
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005580"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239493"
 ---
 # <a name="receive-events-from-event-hubs-using-go"></a>Go を使用して Event Hubs からイベントを受信する
 
@@ -80,7 +80,7 @@ import (
 
 ## <a name="create-service-principal"></a>サービス プリンシパルの作成
 
-「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」の手順に従って、新しいサービス プリンシパルを作成します。 次の名前を使用して指定された資格情報を環境内に保存します。 Azure SDK for Go と Event Hubs パッケージは、どちらもこれらの変数名を検索するために事前に構成されています。
+「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」の手順に従って、新しいサービス プリンシパルを作成します。 次の名前で指定された資格情報を環境に保存します。両方の Azure SDK for Go と Event Hubs パッケージは両方ともこれらの変数名を検索するように事前構成されます。
 
 ```bash
 export AZURE_CLIENT_ID=
@@ -197,13 +197,7 @@ if err != nil {
 このチュートリアルでは、 **EventProcessorHost**の単一のインスタンスを使用します。 スループットと信頼性を向上させるには、**EventProcessorHost** の複数のインスタンスを異なるシステムで実行する必要があります。 Leaser システムにより、確実に 1 人の受信者だけが関連付けられ、指定された時間に指定したパーティションからメッセージを受信するようにします。
 
 ## <a name="next-steps"></a>次の手順
-
-Event Hubs の詳細については、次のページを参照してください。
-
-* [Go を使用してイベントを送信する](event-hubs-go-get-started-send.md)
-* [Event Hubs の概要](event-hubs-about.md)
-* [Event Hub を作成する](event-hubs-create.md)
-* [Event Hubs の FAQ](event-hubs-faq.md)
+このクイック スタートでは、イベント ハブからメッセージを受信する Go アプリケーションを作成しました。 Go を使用してイベント ハブにイベントを送信する方法については、[Go を使用してイベント ハブからイベントを送信すること](event-hubs-go-get-started-send.md)に関するページを参照してください。
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-about.md

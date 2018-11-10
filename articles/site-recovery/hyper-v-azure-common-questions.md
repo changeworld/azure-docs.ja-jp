@@ -1,21 +1,21 @@
 ---
-title: よくある質問 - Azure Site Recovery による Hyper-V から Azure へのレプリケーション | Microsoft Docs
-description: この記事では、Azure Site Recovery を使ってオンプレミスの Hyper-V VM を Azure にレプリケートする場合によくある質問をまとめます。
+title: よくある質問 - Azure Site Recovery を使用した Hyper-V から Azure へのディザスター リカバリー | Microsoft Docs
+description: この記事では、Azure Site Recovery サイトを使用したオンプレミス Hyper-V VM の Azure へのディザスター リカバリーを設定する場合によくある質問をまとめます。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 10/10/2018
+ms.date: 10/28/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 7c5316aea2bfdb9a96b9aeb2dd5387b2643a92b2
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 6345cf47d19f7990e776e0fe4ec2bafd005c9cf2
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319729"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50212490"
 ---
-# <a name="common-questions---hyper-v-to-azure-replication"></a>よくある質問 - Hyper-V から Azure へのレプリケーション
+# <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>よくある質問 - Hyper-V から Azure へのディザスター リカバリー
 
 この記事では、オンプレミスの Hyper-V VM を Azure にレプリケートするときによくある質問に回答します。 
 

@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: b94f6ad4c7c6f3b5e93cdb890e053a3d1678e161
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: eab00663918eadea485aed17a91ce01e5718c36e
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094430"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50413674"
 ---
 # <a name="transform-and-protect-your-api"></a>API を変換および保護する 
 
@@ -39,9 +39,11 @@ ms.locfileid: "47094430"
 
 ## <a name="prerequisites"></a>前提条件
 
++ [Azure API Management の用語](api-management-terminology.md)について学習します。
++ [Azure API Management のポリシーの概念](api-management-howto-policies.md)を理解します。
 + [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
 + また、[最初の API のインポートと発行](import-and-publish.md)に関するチュートリアルを完了します。
- 
+
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="transform-an-api-to-strip-response-headers"></a>応答ヘッダーを削除するように API を変換する
@@ -57,21 +59,22 @@ ms.locfileid: "47094430"
 
 1. APIM サービス インスタンスで **[API]** (**[API 管理]** の下) を選択します。
 2. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
-3. **[GetSpeakers]** 操作を選択します。
-4. 画面の上部にある **[テスト]** タブをクリックします。
-5. 画面の下部にある **[送信]** をクリックします。 
+3. 画面の上部にある **[テスト]** タブをクリックします。
+4. **[GetSpeakers]** 操作を選択します。
+5. 画面の下部にある **[送信]** をクリックします。
 
-    元の応答が次のように表示されます。
+元の応答は次のようになります。
 
-    ![ポリシー](./media/transform-api/original-response.png)
+![ポリシー](./media/transform-api/original-response.png)
 
 ### <a name="set-the-transformation-policy"></a>変換ポリシーを設定する
 
-1. **[Demo Conference API]\(デモ会議 API\)** を選択します。
+![送信ポリシーを設定する](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png)
+
+1. **[Demo Conference API]\(デモ会議 API)** を選択します。
 2. 画面の上部の **[デザイン]** タブを選択します。
 3. **[すべての操作]** を選択します。
-4. **[送信処理]** ウィンドウで、(鉛筆の横にある) 三角形をクリックし、**[コード エディター]** を選択します。
-     ![ポリシーを編集する](./media/set-edit-policies/set-edit-policies01.png)
+4. **[送信処理]** セクションで、**[</>]** アイコンをクリックします。
 5. **&lt;outbound&gt;** 要素内にカーソルを配置します。
 6. 右側のウィンドウの **[変換ポリシー]** で、**[+ HTTP ヘッダーの設定]** を 2 回クリックします (2 つのポリシー スニペットを挿入するため)。
 
@@ -82,8 +85,8 @@ ms.locfileid: "47094430"
         <set-header name="X-AspNet-Version" exists-action="delete" />
 
     ![ポリシー](./media/transform-api/set-policy.png)
-8. **[保存]** ボタンをクリックします。
 
+8. **[保存]** ボタンをクリックします。
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>API 応答の本文内の元の URL を APIM ゲートウェイの URL に置換する
 
@@ -93,9 +96,9 @@ ms.locfileid: "47094430"
 
 元の応答を表示するには:
 
-1. **[Demo Conference API]\(デモ会議 API\)** を選択します。
-2. **[GetSpeakers]** 操作を選択します。
-3. 画面の上部にある **[テスト]** タブをクリックします。
+1. **[Demo Conference API]\(デモ会議 API)** を選択します。
+2. 画面の上部にある **[テスト]** タブをクリックします。
+3. **[GetSpeakers]** 操作を選択します。
 4. 画面の下部にある **[送信]** をクリックします。 
 
     元の応答が次のように表示されます。
@@ -107,7 +110,7 @@ ms.locfileid: "47094430"
 1. **[Demo Conference API]\(デモ会議 API\)** を選択します。
 2. **[すべての操作]** を選択します。
 3. 画面の上部の **[デザイン]** タブを選択します。
-4. **[送信処理]** ウィンドウで、(鉛筆の横にある) 三角形をクリックし、**[コード エディター]** を選択します。
+4. **[送信処理]** セクションで、**[</>]** アイコンをクリックします。
 5. **&lt;outbound&gt;** 要素内にカーソルを配置します。
 6. 右側のウィンドウの **[変換ポリシー]** で、**[+ Find and replace string in body]\(+ 本文内の文字列の検索および置換\)** をクリックします。
 7. **find-and-replace** コード (**\<outbound\>** 要素内) を変更して、APIM ゲートウェイと一致するように URL を置換します。 例: 
@@ -118,13 +121,14 @@ ms.locfileid: "47094430"
 
 このセクションでは、レート制限を構成してバックエンド API の保護を強化する方法を示します。 たとえば、API の呼び出し回数を制限して、開発者が過剰に使用しないようにすることができます。 この例では、各サブスクリプション ID に対して呼び出しの上限が 15 秒ごとに 3 回に設定されます。15 秒後、開発者は、API の呼び出しを再試行できます。
 
-1. **[Demo Conference API]\(デモ会議 API\)** を選択します。
+![受信ポリシーを設定する](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
+
+1. **[Demo Conference API]\(デモ会議 API)** を選択します。
 2. **[すべての操作]** を選択します。
 3. 画面の上部の **[デザイン]** タブを選択します。
-4. **[受信処理]** ウィンドウで、(鉛筆の横にある) 三角形をクリックし、**[コード エディター]** を選択します。
-5. **&lt;inbound&gt;** 要素内にカーソルを配置します。
-6. 右側のウィンドウの **[アクセス制限ポリシー]** で、**[+ Limit call rate per key]\(+ キーごとの呼び出しレートの制限\)** をクリックします。
-7. **rate-limit-by-key** コード (**\<inbound\>** 要素内) を次のコードに変更します。
+4. **[受信処理]** セクションで、**[</>]** アイコンをクリックします。5. **&lt;inbound&gt;** 要素内にカーソルを配置します。
+5. 右側のウィンドウの **[アクセス制限ポリシー]** で、**[+ Limit call rate per key]\(+ キーごとの呼び出しレートの制限\)** をクリックします。
+6. **rate-limit-by-key** コード (**\<inbound\>** 要素内) を次のコードに変更します。
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
@@ -155,9 +159,9 @@ ms.locfileid: "47094430"
 
 ### <a name="test-the-stripped-response-headers"></a>削除した応答ヘッダーをテストする
 
-1. **[Demo Conference API]\(デモ会議 API\)** を選択します。
-2. **[GetSpeakers]** 操作をクリックします。
-3. **[テスト]** タブを選択します。
+1. **[Demo Conference API]\(デモ会議 API)** を選択します。
+2. **[テスト]** タブを選びます。
+3. **[GetSpeakers]** 操作をクリックします。
 4. **[送信]** をクリックします。
 
     ヘッダーが削除されたことがわかります。
@@ -166,9 +170,9 @@ ms.locfileid: "47094430"
 
 ### <a name="test-the-replaced-url"></a>置換された URL をテストする
 
-1. **[Demo Conference API]\(デモ会議 API\)** を選択します。
-2. **[GetSpeakers]** 操作をクリックします。
-3. **[テスト]** タブを選択します。
+1. **[Demo Conference API]\(デモ会議 API)** を選択します。
+2. **[テスト]** タブを選びます。
+3. **[GetSpeakers]** 操作をクリックします。
 4. **[送信]** をクリックします。
 
     URL が置換されたことがわかります。
@@ -177,12 +181,13 @@ ms.locfileid: "47094430"
 
 ### <a name="test-the-rate-limit-throttling"></a>レート制限 (調整) をテストする
 
-1. **[Demo Conference API]\(デモ会議 API\)** を選択します。
-2. **[GetSpeakers]** 操作をクリックします。
-3. **[テスト]** タブを選びます。
+1. **[Demo Conference API]\(デモ会議 API)** を選択します。
+2. **[テスト]** タブを選びます。
+3. **[GetSpeakers]** 操作をクリックします。
 4. 行の **[送信]** を 3 回クリックします。
 
     要求を 3 回送信すると、"**429 要求が多すぎます**" 応答が返されます。
+
 5. 15 秒ほど待ち、**[送信]** をもう一度クリックします。 今度は "**200 OK**" 応答が返されます。
 
     ![調整](./media/transform-api/test-throttling.png)
@@ -190,8 +195,6 @@ ms.locfileid: "47094430"
 ## <a name="video"></a>ビデオ
 
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
-> 
-> 
 
 ## <a name="next-steps"></a>次の手順
 

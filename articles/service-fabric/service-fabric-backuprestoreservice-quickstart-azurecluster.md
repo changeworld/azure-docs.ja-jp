@@ -1,6 +1,6 @@
 ---
-title: 'クイック スタート: Azure Service Fabric での定期的なバックアップと復元 (プレビュー) | Microsoft Docs'
-description: アプリケーションデータの定期的なバックアップを可能にする Service Fabric の定期的なバックアップと復元機能を使用します。
+title: Azure Service Fabric での定期的なバックアップと復元 (プレビュー) | Microsoft Docs
+description: アプリケーションデータの定期バックアップを可能にする Service Fabric の定期バックアップと復元機能を使用します。
 services: service-fabric
 documentationcenter: .net
 author: hrushib
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2018
 ms.author: hrushib
-ms.openlocfilehash: 50ee0d91b27805e4db785e5df211660900333e7f
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: ef92212b84496802dc2464498a0b6789f79a729b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38990301"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246703"
 ---
-# <a name="quickstart-periodic-backup-and-restore-in-azure-service-fabric-preview"></a>クイック スタート:Azure Service Fabric での定期的なバックアップと復元 (プレビュー)
+# <a name="periodic-backup-and-restore-in-azure-service-fabric-preview"></a>Azure Service Fabric での定期的なバックアップと復元 (プレビュー)
 > [!div class="op_single_selector"]
 > * [Azure 上のクラスター](service-fabric-backuprestoreservice-quickstart-azurecluster.md) 
 > * [スタンドアロン クラスター](service-fabric-backuprestoreservice-quickstart-standalonecluster.md)

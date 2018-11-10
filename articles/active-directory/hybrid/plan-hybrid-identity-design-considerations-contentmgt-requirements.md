@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a3e5ae61fcefcb65d08288a2ddc2dd239e68b211
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 60d4501257bf79d1846e62010bf7b336c1b18f19
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46306321"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51250868"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのコンテンツ管理要件の決定
 ビジネスのコンテンツ管理要件を理解することは、使用するハイブリッド ID ソリューションの決定に影響があります。 複数デバイスと、ユーザーが自分のデバイスを使用できる機能 ([BYOD](https://aka.ms/byodcg)) を普及する場合、社内データを保護すると共に、ユーザーのプライバシーを損ねないようにする必要があります。 通常、ユーザーが自分のデバイスを持っている場合、使用するアプリケーションによって切り替える複数の資格情報も持っている可能性があります。 個人の資格情報を使用して作成したコンテンツと、会社の資格情報を使用して作成したコンテンツを区別することが重要です。 ID ソリューションは、クラウド サービスと対話してシームレスなエクスペリエンスをエンド ユーザーに提供すると共に、ユーザーのプライバシーを確保し、データ漏洩に対する保護を強化する必要があります。 
@@ -38,7 +38,7 @@ ms.locfileid: "46306321"
 * データ漏えい保護: データを保護して漏えいを防ぐ処理を行うセキュリティ保護は、ユーザーの ID を検証するために、ID システムと対話する必要があります。 これは監査証跡のためにも重要です。
 
 > [!NOTE]
-> データ分類のベスト プラクティスとガイドラインの詳細については、 [クラウドに備えたデータ分類](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) に関するドキュメントを参照してください。
+> データ分類のベスト プラクティスとガイドラインの詳細については、 [クラウドに備えたデータ分類](https://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) に関するドキュメントを参照してください。
 > 
 > 
 

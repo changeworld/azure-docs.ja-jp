@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 9/26/2018
 ms.author: victorh
-ms.openlocfilehash: 1527ed9c0a83577da9a231cb91a93ad7f182061c
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 868c20e6f0244794299678214902adf3e6e95f14
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392698"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241414"
 ---
 # <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -65,7 +65,7 @@ Azure Firewall には、次の既知の問題があります。
 |問題  |説明  |対応策  |
 |---------|---------|---------|
 |Azure Security Center (ASC) Just-in-Time (JIT) 機能との競合|JIT を使用して仮想マシンへのアクセスが行われており、Azure Firewall に向かうユーザー定義ルートを備えたサブネットにその仮想マシンがある場合、ASC JIT は機能しません。 これは、非対称ルーティングの結果です。パケットは仮想マシン パブリック IP 経由で到着しますが (アクセスは JIT によって開かれた)、リターン パスはファイアウォール経由です。ファイアウォールでセッションが確立されていないため、パケットがファイアウォールによって破棄されます。|この問題を回避するには、ファイアウォールへのユーザー定義ルートがない別のサブネットに JIT 仮想マシンを配置します。|
-|グローバル ピアリングを使用したハブとスポークが機能しない|ある Azure リージョンにハブとファイアウォールがデプロイされており、グローバル VNET ピアリング経由でハブに接続されるスポークが別の Azure リージョンにある場合、ハブとスポークのモデルはサポートされません。|詳細については、「[仮想ネットワーク ピアリングの作成、変更、削除](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)」を参照してください。|
+|グローバル ピアリングを使用したハブとスポークがサポートされていない|ハブとスポークのモデルを使用しており、ある Azure リージョンにハブとファイアウォールがデプロイされており、スポークが別の Azure リージョンにある場合。 グローバル VNET ピアリング経由によるハブへの接続はサポートされていません。|これは設計によるものです。 詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md#azure-firewall-limits)」を参照してください。|
 TCP/UDP 以外のプロトコル (ICMP など) に関するネットワーク フィルタリング規則が、インターネットへのトラフィックで機能しない|TCP/UDP 以外のプロトコルに関するネットワーク フィルタリング規則は、パブリック IP アドレスへの SNAT で機能しません。 TCP/UDP 以外のプロトコルは、スポーク サブネットと VNet との間でサポートされます。|Azure Firewall では Standard Load Balancer が使用されます。[現在 Standard Load Balancer では、IP プロトコルの SNAT はサポートされていません](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations)。 Microsoft は、将来のリリースでこのシナリオに対応できるよう方法を模索しています。|
 |宛先 NAT (DNAT) はポート 80 と 22 では機能しません。|NAT 規則のコレクション内の [宛先ポート] フィールドには、ポート 80 またはポート 22 を含めることはできません。|これは近い将来に解決できるよう取り組んでいます。 それまでの間は、NAT 規則の宛先ポートとして他の任意のポートを使用します。 ポート 80 または 22 は、変換されたポートとして引き続き使用できます (たとえば、パブリックの ip:81 をプライベートの ip:80 にマップできます)。|
 |PowerShell と CLI では ICMP がサポートされない|Azure PowerShell と CLI は、ネットワーク ルールの有効なプロトコルとして ICMP をサポートしていません。|それでも、ポータルと REST API を介して、ICMP をプロトコルとして使用することが可能です。 近いうちに PowerShell と CLI に ICMP を追加するため、取り組みを進めています。|

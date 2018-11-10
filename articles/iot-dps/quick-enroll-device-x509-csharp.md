@@ -1,6 +1,6 @@
 ---
 title: このクイック スタートは、C# を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法を示します | Microsoft Docs
-description: このクイック スタートでは、C# を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します
+description: このクイック スタートでは、グループ登録を使用します。 このクイック スタートでは、C# を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 01/21/2018
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: cf2a2dfbb46b8958e10431ba61e4bd8bc7ae18d6
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 4c466c8289d7ebde484ea627eecfcbba6a5bc4aa
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39204961"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157413"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>クイック スタート: C# を使用して X.509 デバイスを Device Provisioning Service に登録する
 

@@ -3,22 +3,22 @@ title: Azure Maps を使ってシェイプを追加する | Microsoft Docs
 description: Javascript マップにシェイプを追加する方法
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 10/30/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 6b78c7f5d7d1b5ad4db9401bf2138502c9bbd397
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 801cbd6367e0843e43121b3582971a437984e863
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46121910"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247710"
 ---
 # <a name="add-a-shape-to-a-map"></a>マップにシェイプを追加する
 
-この記事では、マップに線、円、および多角形を追加する方法について説明します。 
+この記事では、マップに [Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) を追加して、マップ上の既存のシェイプのプロパティを更新する方法を説明します。
 
 <a id="addALine"></a>
 
@@ -29,9 +29,9 @@ ms.locfileid: "46121910"
 
 上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-コードの 2 つ目のブロックでは、線が作成されます。 線は、Feature プロパティに LineStringProperties を使った、LineString の[フィーチャー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)です。 線を作成してそのプロパティを定義するには、`new atlas.data.Feature(new atlas.data.LineString())` を使います。
+2 番目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用して、データ ソース オブジェクトが作成されます。 線は、LineString の [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) です。 さらに、`new atlas.Shape(new atlas.data.Feature((new atlas.data.LineString()))` を使用して、[Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) クラス オブジェクト内に線が作成され、ラップされて、データ ソースに追加されます。
 
-線レイヤーは、複数の線の配列です。 コードの最後のブロックでは、マップ クラスの [addLineStrings](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addlinestrings) 関数を使用して、マップに線レイヤーを追加し、線レイヤーのプロパティを定義しています。 線レイヤーのプロパティについては、[LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.linestringlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。
+[LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) によって、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされた線オブジェクトがレンダリングされます。 最後のコード ブロックでは、線レイヤーが作成され、マップに追加されます。 線レイヤーのプロパティについては、[LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.linestringlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。 データ ソースと線レイヤーが作成され、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内でマップに追加されるため、マップが完全に読み込まれた後に、線が表示されます。
 
 <a id="addACircle"></a>
 
@@ -42,22 +42,59 @@ ms.locfileid: "46121910"
 
 上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-コードの 2 つ目のブロックでは、円が作成されます。 円は、Feature プロパティに [CircleProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/models.circleproperties?view=azure-iot-typescript-latest) を使った、[Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) の[フィーチャー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)です。 円を作成してそのプロパティを定義するには、`new atlas.data.Feature(new atlas.data.Point())` を使います。
+2 番目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用して、データ ソース オブジェクトが作成されます。 円は [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) の [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) です。 さらに、`new atlas.Shape(new atlas.data.Feature(new atlas.data.Point()))` を使用して、[Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) クラス オブジェクト内に円が作成され、ラップされて、データ ソースに追加されます。
 
-円レイヤーは、円の配列です。 コードの最後のブロックでは、マップ クラスの [addCircle](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcircles) 関数を使用して、マップに円レイヤーを追加し、円レイヤーのプロパティを定義しています。 円レイヤーのプロパティについては、[CircleLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.circlelayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。
+[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) によって、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたデータがマップにレンダリングされます。 最後のコード ブロックでは、多角形レイヤーが作成され、マップに追加されます。 多角形レイヤーのプロパティについては、[PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.polygonlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。 データ ソースと多角形レイヤーが作成され、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内でマップに追加されるため、マップが完全に読み込まれた後に、円が表示されます。
 
 <a id="addAPolygon"></a>
 
 ## <a name="add-a-polygon"></a>多角形を追加する
+
+多角形をマップに追加できる方法は 2 つあります。 次の例で両方の方法について説明します。
+
+### <a name="use-polygon-layer"></a>多角形レイヤーを使用する 
 
 <iframe height='500' scrolling='no' title='マップに多角形を追加する ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=543&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>Add a polygon to a map</a>」Pen を表示します。
 </iframe>
 
 上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
 
-コードの 2 つ目のブロックでは、多角形が作成されます。 多角形は、Feature プロパティに [PolygonProperties](https://docs.microsoft.com/javascript/api/azure-maps-control/models.polygonproperties?view=azure-iot-typescript-latest) を使った、[Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest) の[フィーチャー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)です。 多角形を作成してそのプロパティを定義するには、`new atlas.data.Feature(new atlas.data.Polygon())` を使います。 多角形のコンストラクターでは、多角形のパスを、順序付けられた座標で指定します。
+2 番目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用して、データ ソース オブジェクトが作成されます。 [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest) は、[Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest) クラスの [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) です。 `new atlas.Shape(new atlas.data.Feature(new atlas.data.Polygon()))` を使用して、順序付き座標が [Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) クラス オブジェクトにラップされた多角形が作成されます。 次にシェイプ オブジェクトがデータ ソースに追加されます。
 
-多角形レイヤーは、多角形の配列です。 コードの最後のブロックでは、マップ クラスの [addPolygons](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addpolygons) 関数を使用して、マップに多角形レイヤーを追加し、プロパティを定義しています。 多角形レイヤーのプロパティについては、[PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.polygonlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。
+[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) によって、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたデータがマップにレンダリングされます。 最後のコード ブロックでは、多角形レイヤーが作成され、マップに追加されます。 多角形レイヤーのプロパティについては、[PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.polygonlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。 データ ソースと多角形レイヤーが作成され、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内でマップに追加されるため、マップが完全に読み込まれた後に、多角形が表示されます。
+
+### <a name="use-polygon-and-line-layer"></a>多角形と線レイヤーを使用する
+
+<iframe height='500' scrolling='no' title='多角形と多角形を追加する線レイヤー' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/aRyEPy/'>Polygon and line layer to add polygon</a>」Pen を表示します。
+</iframe>
+
+上記のコードの最初のコード ブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
+
+2 番目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用して、データ ソース オブジェクトが作成されます。 [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest) は、[Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest) の [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) です。 `new atlas.Shape(new atlas.data.Feature(new atlas.data.Polygon()))` を使用して、順序付き座標が [Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) クラス オブジェクトにラップされた多角形が作成されます。 次にシェイプ オブジェクトがデータ ソースに追加されます。
+
+[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) によって、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたデータがマップにレンダリングされます。 多角形レイヤーのプロパティについては、[PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.polygonlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) は、複数の線の配列です。 線レイヤーのプロパティについては、[LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.linestringlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。 3 番目のコード ブロックでは、多角形と線レイヤーが作成されます。
+
+最後のコード ブロックでは、マップに多角形と線レイヤーが追加されます。 データ ソースとレイヤーが作成され、[イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内でマップに追加されるため、マップが完全に読み込まれた後に、多角形が表示されます。
+
+## <a name="update-a-shape"></a>シェイプを更新する
+
+Shape クラスは [Geometry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest) または [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) をラップしているため、更新や管理が簡単です。
+`new Shape(data: Feature<data.Geometry, any>)` はシェイプ オブジェクトを作成し、指定したフィーチャーで初期化します。
+
+<br>
+
+<iframe height='500' scrolling='no' title='シェイプのプロパティを更新する' src='//codepen.io/azuremaps/embed/ZqMeQY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'><a href='https://codepen.io'>CodePen</a> 上の Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) による「<a href='https://codepen.io/azuremaps/pen/ZqMeQY/'>Update shape properties</a>」Pen を表示します。
+</iframe>
+
+上記のコードの最初のブロックでは、マップ オブジェクトが作成されます。 作成方法については、[マップの作成](./map-create.md)に関する記事を参照してください。
+
+ポイントは、[Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) クラスの [Feature](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) です。 2 番目のコード ブロックでは、HTML スライダー要素の半径の値が初期化されて、ポイント オブジェクトが作成され、[Shape](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) クラス オブジェクトにラップされます。
+
+3 番目のコード ブロックでは、HTML 範囲スライダー要素から値が取得され、shape クラスの [addProperty](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest#addproperty) メソッドを使用して、半径値が変更されます。
+
+4 番目のコード ブロックでは、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) クラスを使用して、データ ソース オブジェクトが作成されます。 ポイントがデータ ソースに追加されます。
+
+[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) によって、[DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) にラップされたデータがマップにレンダリングされます。 3 番目のコード ブロックでは、多角形レイヤーが作成されます。 多角形レイヤーのプロパティについては、[PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.polygonlayeroptions?view=azure-iot-typescript-latest) に関する記事をご覧ください。 データ ソース、クリック イベント リスナー、および多角形レイヤーが作成され、マップの [イベント リスナー](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)関数内に追加されるため、マップが完全に読み込まれた後に、ポイントが表示されます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/22/2018
-ms.openlocfilehash: 88bea87c752563e1c19332121eb568b0bd329d03
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 7bb692735cb3541fb05b2c39dd7325fa74a00034
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954145"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232207"
 ---
 # <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database に関してよく寄せられる質問 (FAQ)
 

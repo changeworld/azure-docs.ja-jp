@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/26/2018
+ms.date: 10/29/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 8a4c0c1426200e6c2d5041131fd0dd9cde4761cf
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 17102f31a7fadad02031725791c66c1a596922e9
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409288"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231918"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>チュートリアル: Azure Virtual WAN (プレビュー) を使用してポイント対サイト接続を作成する
 
@@ -111,12 +111,13 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 
 ## <a name="hub"></a>5.ハブの割り当てを編集する
 
-1. 仮想 WAN のページで、**[ポイント対サイト構成]** をクリックします。
-2. **[ハブ]** には、まだハブに接続されていない構成の一覧が表示されます。
-3. 関連付ける構成を選択し、**[Edit hub assignment]\(ハブの割り当ての編集\)** をクリックします。
-4. ドロップダウンから、構成を関連付けるハブを選択します。
-5. **[割り当て]** をクリックします。 
-6. この操作は、完了するまで最大 30 分かかることがあります。
+1. 仮想 WAN のページで、**[ハブ]** をクリックします。
+2. ポイント対サイト構成の割り当て先となるハブを選択します。
+3. **[...]** をクリックして、**[仮想ハブを編集する]** を選択します。
+4. **[ポイント対サイト ゲートウェイを含める]** チェック ボックスをオンにします。
+5. **ゲートウェイ スケール ユニット**のほか、クライアントの**アドレス プール**と共に**ポイント対サイト構成**を選択します。
+6. **[Confirm]\(確認\)** をクリックします。 
+7. 操作の完了には最長で 30 分かかる場合があります。
 
 ## <a name="vnet"></a>6.VNet をハブに接続する
 
@@ -135,9 +136,10 @@ P2S 構成には、リモート クライアントを接続するためのパラ
 
 VPN プロファイルを使用してクライアントを構成します。
 
-1. 仮想 WAN のページで、**[ポイント対サイト構成]** をクリックします。
-2. ページの上部にある **[ポイント対サイト プロファイルのダウンロード]** をクリックします。 
-3. ファイルの作成が完了したら、リンクをクリックしてファイルをダウンロードできます。
+1. 仮想 WAN のページで、**[ハブ]** をクリックします。
+2. プロファイルをダウンロードするハブを選択します。
+3. **[...]** をクリックして、**[プロファイルのダウンロード]** を選択します。 
+4. ファイルの作成が完了したら、リンクをクリックしてファイルをダウンロードできます。
 4. プロファイル ファイルを使用してポイント対サイト クライアントを構成します。
 
 ## <a name="device"></a>8.ポイント対サイト クライアントを構成する

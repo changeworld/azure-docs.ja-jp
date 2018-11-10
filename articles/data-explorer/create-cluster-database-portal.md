@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 6aff31c662a845028a02cecd7a99837f92bc87e5
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394223"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50214819"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>クイック スタート: Azure Data Explorer クラスターとデータベースを作成する
 
@@ -31,11 +31,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。
 
-1. *Azure Data Explorer* を検索し、**[Azure Data Explorer]** を選択します。
+1. *Azure Data Explorer* を検索します。
 
    ![リソースの検索](media/create-cluster-database-portal/search-resources.png)
 
-1. 右下隅にある **[作成]** を選択します。
+1. **[Azure Data Explorer]** で、画面の下部にある **[作成]** を選択します。
 
 1. クラスターの一意名を入力し、サブスクリプションを選択して、*test-resource-group* という名前のリソース グループを作成します。
 
@@ -54,7 +54,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     | Compute specification (コンピューティングの仕様) | *D13_v2* | このクイック スタートでは最低価格の仕様を選択します。 実稼働環境システムでは、ニーズに最も適した仕様を選択します。
     | | |
 
-1. **[作成]** を選択して、クラスターをプロビジョニングします。 通常、プロビジョニングには約 10 分かかります。 プロビジョニング プロセスを監視するには、ツール バーの **[通知]** (ベル アイコン) を選択します。
+1. **[作成]** を選択して、クラスターをプロビジョニングします。 通常、プロビジョニングには約 10 分かかります。 プロビジョニング プロセスを監視するには、ツール バーの **[通知]** を選択します。
+
+    ![通知](media/create-cluster-database-portal/notifications.png)
 
 1. プロセスが完了したら、**[通知]** を選択し、**[リソースに移動]** を選択します。
 

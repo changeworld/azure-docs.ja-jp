@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: patricka
 ms.reviewer: jerskine
-ms.openlocfilehash: e1c1ba0a065a20874bf51d7464cbcfdfa13a571d
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: 43f30989fa09e711fc71941e7722dcd195212472
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49946878"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50416241"
 ---
 # <a name="validate-graph-integration-for-azure-stack"></a>Azure Stack の Graph 統合を検証する
 
-Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を使用して、対象の環境で Azure Stack と Graph を統合する準備が整っていることを検証します。 データ センターの統合を開始したり、Azure Stack をデプロイしたりする前に、Graph 統合を検証する必要があります。
+Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を使用して、対象の環境で Azure Stack と Graph を統合する準備が整っていることを検証します。 データ センターの統合を開始したり、Azure Stack をデプロイしたりする前に、Graph 統合を検証します。
 
 適合性チェッカーは以下を検証します。
 
@@ -33,11 +33,11 @@ Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を使用�
 * KDC を解決できること。また、KDC に接続できること。
 * 必要なネットワーク接続が存在すること。
 
-Azure Stack とデータ センターの統合の詳細については、「[Azure Stack とデータセンターの統合 - ID](azure-stack-integrate-identity.md)」を参照してください
+Azure Stack とデータ センターの統合の詳細については、「[Azure Stack とデータセンターの統合 - ID](azure-stack-integrate-identity.md)」を参照してください。
 
 ## <a name="get-the-readiness-checker-tool"></a>適合性チェッカー ツールを取得する
 
-最新バージョンの Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を [PSGallery](https://aka.ms/AzsReadinessChecker) からダウンロードします。
+最新バージョンの Azure Stack 適合性チェッカー ツール (AzsReadinessChecker) を [PowerShell ギャラリー](https://aka.ms/AzsReadinessChecker)からダウンロードします。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -48,29 +48,29 @@ Azure Stack とデータ センターの統合の詳細については、「[Azu
 * ドメインに接続された Windows 10 または Windows Server 2016。
 * PowerShell 5.1 以降。 お使いのバージョンを確認するには、次の PowerShell コマンドを実行し、"*メジャー*" バージョンと "*マイナー*" バージョンを確かめます。  
    > `$PSVersionTable.PSVersion`
-* Active Directory PowerShell モジュール
-* 最新バージョンの [Microsoft Azure Stack 適合性チェッカー](https://aka.ms/AzsReadinessChecker) ツール
+* Active Directory PowerShell モジュール。
+* 最新バージョンの [Microsoft Azure Stack 適合性チェッカー](https://aka.ms/AzsReadinessChecker) ツール。
 
 **Active Directory の環境:**
 
-* 既存の Active Directory で Graph サービスのアカウントのユーザー名とパスワードを特定できる
-* Active Directory フォレストの ルート FQDN を特定できる
+* 既存の Active Directory インスタンスで Graph サービスのアカウントのユーザー名とパスワードを特定します。
+* Active Directory フォレストの ルート FQDN を特定します。
 
-## <a name="validate-graph"></a>Graph を検証する
+## <a name="validate-the-graph-service"></a>Graph サービスを検証する
 
 1. 前提条件を満たしているコンピューターで、管理 PowerShell プロンプトを開き、次のコマンドを実行して、AzsReadinessChecker をインストールします。
 
      `Install-Module Microsoft.AzureStack.ReadinessChecker -Force`
 
-1. PowerShell プロンプトから次を実行して、*$graphCredential* 変数を Graph アカウントに設定します。 `domain\username` の形式を使用して `contoso\graphservice` をご自身のアカウントで置き換えます。
+1. PowerShell プロンプトから次のコマンドを実行して、*$graphCredential* 変数を Graph アカウントに設定します。 `domain\username` の形式を使用して `contoso\graphservice` をご自身のアカウントで置き換えます。
 
     `$graphCredential = Get-Credential contoso\graphservice -Message "Enter Credentials for the Graph Service Account"`
 
-1. PowerShell プロンプトから次を実行して、Graph の検証を開始します。 次のように、**-ForestFQDN** の値をフォレスト ルートの FQDN として指定します。
+1. PowerShell プロンプトから次のコマンドを実行して、Graph サービスの検証を開始します。 次のように、**-ForestFQDN** の値をフォレスト ルートの FQDN として指定します。
 
      `Invoke-AzsGraphValidation -ForestFQDN contoso.com -Credential $graphCredential`
 
-1. ツールの実行後、出力を確認します。 Graph 統合の要件について、状態が OK であることを確認します。 検証が成功した場合は、次のように表示されます。
+1. ツールの実行後、出力を確認します。 Graph 統合の要件について、状態が OK であることを確認します。 検証が成功した場合は、次の例と同様になります。
 
     ```
     Testing Graph Integration (v1.0)
@@ -94,7 +94,7 @@ Azure Stack とデータ センターの統合の詳細については、「[Azu
     Invoke-AzsGraphValidation Completed
     ```
 
-運用環境では、オペレーターのワークステーションからのネットワーク接続をテストしても、その接続を Azure Stack で使用できることを完全に示しているとは見なされません。 Azure Stack スタンプのパブリック VIP ネットワークでは、ID の統合を実行する LDAP トラフィック用の接続が必要です。
+運用環境では、オペレーターのワークステーションからのネットワーク接続をテストしても、その接続を Azure Stack で使用できることを完全に示しているわけではありません。 Azure Stack スタンプのパブリック VIP ネットワークでは、ID の統合を実行する LDAP トラフィック用の接続が必要です。
 
 ## <a name="report-and-log-file"></a>レポートとログ ファイル
 
@@ -106,8 +106,8 @@ Azure Stack とデータ センターの統合の詳細については、「[Azu
 
 次のコマンドを使用します。
 
-* 別のレポートの場所を指定するには、実行コマンド ラインの末尾に **-OutputPath** "*パス*" パラメーターを使用します。
-* 前のレポート情報から *AzsReadinessCheckerReport.json* をクリアするには、実行コマンドの末尾に **-CleanReport** を使用します。 詳細については、「[Azure Stack 検証レポート](azure-stack-validation-report.md)」を参照してください。
+* **-OutputPath**: 別のレポートの場所を指定するには、実行コマンドの末尾に *path* パラメーターを使用します。
+* **-CleanReport**: 前のレポート情報から *AzsReadinessCheckerReport.json* をクリアするには、実行コマンドの末尾にこのパラメーターを使用します。 詳細については、「[Azure Stack 検証レポート](azure-stack-validation-report.md)」を参照してください。
 
 ## <a name="validation-failures"></a>検証エラー
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
 ms.author: danlep
-ms.openlocfilehash: bf7dfc2600c3d94faeb8d03561f6f2b30a0ee2d2
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: f8c0adf96d027f58a35dbe570f1b19c311cd84b9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30316989"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246516"
 ---
 # <a name="pool-create-event"></a>プール作成イベント
 
@@ -51,7 +51,7 @@ ms.locfileid: "30316989"
 |-------------|----------|-----------|
 |id|String|プールの ID。|
 |displayName|String|プールの表示名。|
-|vmSize|String|プール内の仮想マシンのサイズ。 プール内の仮想マシンのサイズはすべて同じです。 <br/><br/> クラウド サービスのプール (cloudServiceConfiguration で作成されたプール) で利用可能な仮想マシンのサイズについては、[クラウド サービスのサイズ](http://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/)を参照してください。 Batch は、`ExtraSmall` を除くすべての Cloud Services VM サイズに対応しています。<br/><br/> Virtual Machines Marketplace から、イメージを使用して利用可能なプール (virtualMachineConfiguration で作成されたプール) の VM サイズについては、[仮想マシンのサイズ](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) または[仮想マシンのサイズ](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows) を参照してください。 Batch は、Premium Storage を使用する VM (`STANDARD_GS`、`STANDARD_DS`、`STANDARD_DSV2` シリーズ) と `STANDARD_A0` を除くすべての Azure VM サイズに対応しています。|
+|vmSize|String|プール内の仮想マシンのサイズ。 プール内の仮想マシンのサイズはすべて同じです。 <br/><br/> クラウド サービスのプール (cloudServiceConfiguration で作成されたプール) で利用可能な仮想マシンのサイズについては、[クラウド サービスのサイズ](https://azure.microsoft.com/documentation/articles/cloud-services-sizes-specs/)を参照してください。 Batch は、`ExtraSmall` を除くすべての Cloud Services VM サイズに対応しています。<br/><br/> Virtual Machines Marketplace から、イメージを使用して利用可能なプール (virtualMachineConfiguration で作成されたプール) の VM サイズについては、[仮想マシンのサイズ](https://azure.microsoft.com/documentation/articles/virtual-machines-linux-sizes/) (Linux) または[仮想マシンのサイズ](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-sizes/) (Windows) を参照してください。 Batch は、Premium Storage を使用する VM (`STANDARD_GS`、`STANDARD_DS`、`STANDARD_DSV2` シリーズ) と `STANDARD_A0` を除くすべての Azure VM サイズに対応しています。|
 |[CloudServiceConfiguration](#bk_csconf)|複合型|プールのクラウドサービス構成。|
 |[virtualMachineConfiguration](#bk_vmconf)|複合型|プールの仮想マシン構成。|
 |[networkConfiguration](#bk_netconf)|複合型|プールのネットワーク構成。|
@@ -83,7 +83,7 @@ ms.locfileid: "30316989"
 |要素名|type|メモ|
 |------------------|----------|-----------|
 |publisher|String|イメージの発行元。|
-|プラン|String|イメージのプラン。|
+|offer|String|イメージのプラン。|
 |sku|String|イメージの SKU。|
 |version|String|イメージのバージョン。|
 
@@ -91,7 +91,7 @@ ms.locfileid: "30316989"
 
 |要素名|type|メモ|
 |------------------|----------|-----------|
-|enableAutomaticUpdates|ブール|仮想マシンの自動更新が有効になっているかどうかを示しています。 このプロパティが指定されていない場合は、既定値が正規の値となります。|
+|enableAutomaticUpdates|Boolean|仮想マシンの自動更新が有効になっているかどうかを示しています。 このプロパティが指定されていない場合は、既定値が正規の値となります。|
 
 ###  <a name="bk_netconf"></a>NetworkConfiguration
 

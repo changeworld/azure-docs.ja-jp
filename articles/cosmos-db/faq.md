@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: de67d71a209ea0889b4dc5c87fed254700cb9916
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 554718f0bb465ca757fc4dcf6c22d3b0dd80f2fb
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49395139"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50251092"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -53,11 +53,11 @@ Azure Cosmos DB でコンテナーが格納できるデータの合計量に制�
 ### <a name="what-are-the-throughput-limits-of-azure-cosmos-db"></a>Azure Cosmos DB のスループットの制限を教えてください。
 Azure Cosmos DB でコンテナーがサポートできるスループットの総量に制限はありません。 基本的な考え方は、十分な数のパーティション キーにワークロードをほぼ均等に分散させることです。
 
-### <a name="are-direct-and-gateway-connectivity-modes-encrypted-"></a>ダイレクトとゲートウェイの接続モードは暗号化されますか? 
+### <a name="are-direct-and-gateway-connectivity-modes-encrypted"></a>ダイレクトとゲートウェイの接続モードは暗号化されますか? 
 はい、どちらのモードも常に完全に暗号化されます。 
 
 ### <a name="how-much-does-azure-cosmos-db-cost"></a>Azure Cosmos DB の料金はいくらですか?
-詳細については、[Azure Cosmos DB の価格の詳細](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページをご覧ください。 Azure Cosmos DB の利用料金は、プロビジョニング済みコンテナーの数、コンテナーがオンラインであった時間数、各コンテナーのプロビジョニング スループットによって決まります。 この場合の "*コンテナー*" とは、SQL API のコレクション、Gremlin API (グラフ)、MongoDB API のコレクション、Table API のテーブルを指します。 
+詳細については、[Azure Cosmos DB の価格の詳細](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページをご覧ください。 Azure Cosmos DB の利用料金は、プロビジョニング済みコンテナーの数、コンテナーがオンラインであった時間数、各コンテナーのプロビジョニング スループットによって決まります。 この場合のコンテナーとは、SQL API のコレクション、Gremlin API (Graph)、MongoDB API のコレクション、Table API のテーブルを指します。 
 
 ### <a name="is-a-free-account-available"></a>無料アカウントはありますか?
 はい。契約することなく、期間限定のアカウントに無料でサインアップできます。 サインアップするには、「[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」にアクセスするか、[Try Azure Cosmos DB に関する FAQ](#try-cosmos-db) セクションで詳細を確認してください。
@@ -72,7 +72,7 @@ Azure を初めて使用する場合は、[Azure 無料アカウント](https://
 * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow は、プログラミングに関する質問に最適です。 質問が[的を得ており](https://stackoverflow.com/help/on-topic)、かつ[その質問を明確で回答可能なものにするようにできるだけ多くの詳細情報が含まれている](https://stackoverflow.com/help/how-to-ask)ことを確認してください。 
 
-新機能を要求するには、[Uservoice](https://feedback.azure.com/forums/263030-azure-cosmos-db) で新しい要求を作成します。
+新機能を要求するには、[User voice](https://feedback.azure.com/forums/263030-azure-cosmos-db) で新しい要求を作成します。
 
 アカウントを使用して問題を修正するには、Azure Portal で[サポート要求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)を提出します。
 
@@ -91,7 +91,7 @@ Try Azure Cosmos DB サブスクリプションには、次の条件が適用さ
 * MongoDB アカウントのサブスクリプションあたり最大 3 つのコレクション。
 * 10 GB のストレージ容量。
 * グローバルなレプリケーションは、米国中部、北ヨーロッパ、東南アジアという [Azure リージョン](https://azure.microsoft.com/regions/)で利用可能です。
-* 最大スループット 5K RU/秒。
+* 最大スループット 5 K RU/秒。
 * サブスクリプションの有効期限は 24 時間後に切れます。これは、合計で最大 48 時間まで延長できます。
 * Try Azure Cosmos DB アカウントでは Azure サポート チケットを作成できません。ただし、既存のサポート プランをご利用のサブスクライバーにはサポートが提供されます。 
 
@@ -116,7 +116,7 @@ Azure Cosmos DB は、「[Azure リージョン](https://azure.microsoft.com/reg
 
 ### <a name="how-do-i-create-fixed-collection-with-partition-key"></a>パーティション キーを使って固定のコレクションを作成する方法を教えてください。
 
-現在、パーティション キー スループットを使ってコレクションを作成するには、.Net SDK の [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) メソッドを使用するか、[Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create) を使用します。 Azure Portal を使用した固定のコレクションの作成は、現在サポートされていません。  
+現在、パーティション キー スループットを使ってコレクションを作成するには、.Net SDK の [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) メソッドを使用するか、[Azure CLI](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create) を使用します。 Azure portal を使用した固定のコレクションの作成は、現在サポートされていません。  
 
 ### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Azure CosmosDB では、時系列分析がサポートされていますか。 
 はい。Azure CosmosDB では、時系列分析がサポートされています。時系列パターンのサンプルについては、[こちら](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/samples/Patterns)をご覧ください。 このサンプルでは、変更フィードを利用し、時系列データを集計したビューを構築する方法をご確認いただけます。 Spark Streaming やその他のストリーム データ プロセッサを使用することでこの手法を拡張できます。
@@ -230,7 +230,7 @@ Azure Cosmos DB Table API は [Azure Portal][azure-portal] で利用できます
 ### <a name="where-is-table-api-not-identical-with-azure-table-storage-behavior"></a>Table API と Azure Table Storage の動作はどのような点が異なりますか?
 これまで Azure Table Storage を使っていたユーザーが Azure Cosmos DB Table API でテーブルを作成する場合、知っておく必要のある動作の違いがいくつかあります。
 
-* Azure Cosmos DB Table API ではパフォーマンスを保証するために予約容量モデルが使われていますが、これは、テーブルが作成されると直ちに、たとえ容量が使われていない場合でも、容量に対して課金されることを意味します。 Azure Table Storage では、実際に使われた容量に対してのみ課金されます。 Table API では 99 パーセンタイルで 10 ミリ秒の読み取り SLA と 15 ミリ秒の書き込み SLA が提供されるのに対し、Azure Table Storage で提供される SLA が 10 秒であるのは、このためです。 ただし、その結果として、Table API のテーブルでは、要求が含まれない空のテーブルであっても、Azure Cosmos DB が提供する SLA でテーブルへの要求を処理できる容量を確保するためにコストがかかります。
+* Azure Cosmos DB Table API ではパフォーマンスを保証するために予約容量モデルが使われていますが、これは、テーブルが作成されると直ちに、たとえ容量が使われていない場合でも、容量に対して課金されることを意味します。 Azure Table Storage では、使用された容量に対してのみ課金されます。 Table API では 99 パーセンタイルで 10 ミリ秒の読み取り SLA と 15 ミリ秒の書き込み SLA が提供されるのに対し、Azure Table Storage で提供される SLA が 10 秒であるのは、このためです。 ただし、その結果として、Table API のテーブルでは、要求が含まれない空のテーブルであっても、Azure Cosmos DB が提供する SLA でテーブルへの要求を処理できる容量を確保するためにコストがかかります。
 * Table API によって返されるクエリ結果は、Azure Table Storage のようなパーティション キー/行キーの順序にはなりません。
 * 行キーに許される最大長は 255 バイトです。
 * バッチが含むことができるのは最大 2 MB です。
@@ -260,7 +260,7 @@ Azure Cosmos DB は Shared Access Signature (SAS) をサポートしています
 |                  | \*ServiceStats* |
 | CloudTable | SetPermissions* |
 |            | GetPermissions* |
-| TableServiceContext | * (このクラスは実際には非推奨です) |
+| TableServiceContext | * (このクラスは非推奨です) |
 | TableServiceEntity | " " |
 | TableServiceExtensions | " " |
 | TableServiceQuery | " " |
@@ -270,7 +270,7 @@ Azure Cosmos DB は Shared Access Signature (SAS) をサポートしています
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>SDK やバグに関するフィードバックを提供するにはどうすればよいですか?
 次のいずれかの方法でフィードバックをお寄せください。
 
-* [Uservoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
+* [ユーザーの声](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow は、プログラミングに関する質問に最適です。 質問が[的を得ており](https://stackoverflow.com/help/on-topic)、かつ[その質問を明確で回答可能なものにするようにできるだけ多くの詳細情報が含まれている](https://stackoverflow.com/help/how-to-ask)ことを確認してください。
 
@@ -329,7 +329,7 @@ Table API の **[メトリック]** ウィンドウを使って、要求とス�
 Azure Cosmos DB ポータルの[グローバル レプリケーション設定](tutorial-global-distribution-sql-api.md#portal)を使用して、アプリケーションに適したリージョンを追加できます。 グローバル分散型のアプリケーションを開発するには、低待機時間の読み取りを実現するために、PreferredLocation 情報をローカル リージョンに設定したアプリケーションを追加する必要があります。 
 
 ### <a name="how-do-i-change-the-primary-write-region-for-the-account-in-the-table-api"></a>Table API でアカウントのプライマリ書き込みリージョンを変更するにはどうすればよいですか?
-Azure Cosmos DB のグローバル レプリケーション ポータル ウィンドウを使用してリージョンを追加し、必要なリージョンにフェールオーバーできます。 手順については、[複数リージョンの Azure Cosmos DB アカウントを使用した開発](regional-failover.md)に関する記事をご覧ください。 
+Azure Cosmos DB のグローバル レプリケーション ポータル ウィンドウを使用してリージョンを追加し、必要なリージョンにフェールオーバーできます。 手順については、[複数リージョンの Azure Cosmos DB アカウントを使用した開発](high-availability.md)に関する記事をご覧ください。 
 
 ### <a name="how-do-i-configure-my-preferred-read-regions-for-low-latency-when-i-distribute-my-data"></a>データを分散するときに低待機時間を実現するために、優先読み取りリージョンを構成するにはどうすればよいですか? 
 ローカルの場所から読み取りを実行できるようにするには、app.config ファイルの PreferredLocation キーを使用します。 既存のアプリケーションの場合、LocationMode が設定されていると、Table API はエラーをスローします。 Table API は app.config ファイルからこの情報を取得するので、該当のコードを削除してください。 詳細については、「[Azure Cosmos DB の機能](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities)」をご覧ください。
@@ -351,7 +351,7 @@ Azure Cosmos DB では、データはローカル リージョンで永続的に
 Azure Cosmos DB では、コンテナー レベル (テーブル) で整合性レベルを設定できます。 レベルを変更するには、.NET SDK を使って、app.config ファイルで TableConsistencyLevel キーの値を指定します。 指定できる値は、Strong、Bounded Staleness、Session、Consistent Prefix、Eventual です。 詳細については、「[Azure Cosmos DB の調整可能なデータの一貫性レベル](consistency-levels.md)」をご覧ください。 基本的な考え方として、要求の整合性レベルは、テーブルの設定よりも高いレベルに設定することはできません。 たとえば、テーブルの整合性レベルを Eventual (最終的) に設定し、要求の整合性レベルを Strong (厳密) に設定することはできません。 
 
 ### <a name="how-does-the-table-api-handle-failover-if-a-region-goes-down"></a>リージョンがダウンした場合、Table API はフェールオーバーをどのように処理しますか? 
-Table API は、Azure Cosmos DB のグローバルに分散されたプラットフォームを利用します。 アプリケーションがデータ センターのダウンタイムを許容できるようにするには、Azure Cosmos DB ポータルでアカウントのリージョンを少なくとももう 1 つ有効にします ([複数リージョンの Azure Cosmos DB アカウントを使用した開発](regional-failover.md)に関する記事を参照)。 ポータルを使用してリージョンの優先順位を設定できます ([複数リージョンの Azure Cosmos DB アカウントを使用した開発](regional-failover.md)に関する記事を参照)。 
+Table API は、Azure Cosmos DB のグローバルに分散されたプラットフォームを利用します。 アプリケーションがデータ センターのダウンタイムを許容できるようにするには、Azure Cosmos DB ポータルでアカウントのリージョンを少なくとももう 1 つ有効にします ([複数リージョンの Azure Cosmos DB アカウントを使用した開発](high-availability.md)に関する記事を参照)。 ポータルを使用してリージョンの優先順位を設定できます ([複数リージョンの Azure Cosmos DB アカウントを使用した開発](high-availability.md)に関する記事を参照)。 
 
 アカウントのリージョンを必要な数だけ追加し、フェールオーバーの優先順位を指定してフェールオーバー先を制御できます。 データベースを使用するには、そのリージョンでもアプリケーションを提供する必要があります。 そうすれば、ダウンタイムが発生しなくなります。 [最新の .NET クライアント SDK](table-sdk-dotnet.md) は自動回帰しますが、他の SDK はしません。 つまり、ダウンしているリージョンを検出すると、新しいリージョンに自動的にフェールオーバーできます。
 
@@ -431,7 +431,7 @@ Azure Cosmos DB では、操作に上限を設定してパフォーマンスと�
 
 また、スループットの仕様により、スループットを弾力的に変更して、アプリケーションの季節性によるメリットを享受し、スループットのニーズを満たして、コストを削減できます。
 
-### <a name="azure-table-storage-has-been-very-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-have-not-performed-a-single-transaction-or-stored-anything-can-you-please-explain"></a>データの保存にしか料金を支払っておらず、クエリを実行することはほとんどないため、Azure Table Storage は非常に安価でした。 Azure Cosmos DB Table API では、トランザクションを 1 つも実行していない場合や何も保存していない場合でも課金されているようです。 説明していただけますか?
+### <a name="azure-table-storage-has-been-inexpensive-for-me-because-i-pay-only-to-store-the-data-and-i-rarely-query-the-azure-cosmos-db-table-api-offering-seems-to-be-charging-me-even-though-i-have-not-performed-a-single-transaction-or-stored-anything-can-you-please-explain"></a>データの保存にしか料金を支払っておらず、クエリを実行することはほとんどないため、Azure Table Storage は安価でした。 Azure Cosmos DB Table API では、トランザクションを 1 つも実行していない場合や何も保存していない場合でも課金されているようです。 説明していただけますか?
 
 Azure Cosmos DB は、可用性、待機時間、スループットが保証された、グローバル分散型の SLA ベースのシステムとして設計されています。 他のシステムのスループットとは異なり、Azure Cosmos DB でスループットを予約すると、そのスループットが保証されます。 Azure Cosmos DB には、セカンダリ インデックスやグローバル分散など、お客様から要望があった追加機能が用意されています。  
 
@@ -462,7 +462,7 @@ RU 課金は、結果セットではなく、トラバーサルの作業デー�
 
 ### <a name="whats-the-maximum-scale-that-a-graph-database-can-have-in-azure-cosmos-db-gremlin-api"></a>Azure Cosmos DB Gremlin API でグラフ データベースに与えられる最大スケールは何ですか。 
 
-Azure Cosmos DB では、[行方向のパーティション分割](partition-data.md)を利用し、ストレージ要件とスループット要件の増加に自動的に対処します。 ワークロードの最大スループットと最大ストレージ容量は、指定されたコレクションに関連付けられているパーティションの容量により決定されます。 しかしながら、Gremlin API コレクションには、大規模でも適切なパフォーマンスを得るために、一連のガイドラインが指定されています。 ベスト プラクティスの詳細については、[パーティション分割のベスト プラクティス](partition-data.md#best-practices-when-choosing-a-partition-key)ドキュメントを参照してください。 
+Azure Cosmos DB では、[行方向のパーティション分割](partition-data.md)を利用し、ストレージ要件とスループット要件の増加に自動的に対処します。 ワークロードの最大スループットと最大ストレージ容量は、指定されたコレクションに関連付けられているパーティションの数により決定されます。 しかしながら、Gremlin API コレクションには、大規模でも適切なパフォーマンスを得るために、一連のガイドラインが指定されています。 ベスト プラクティスの詳細については、[パーティション分割のベスト プラクティス](partition-data.md#best-practices-when-choosing-a-partition-key)ドキュメントを参照してください。 
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Gremlin ドライバーを利用したインジェクション攻撃はどのように防ぎますか。 
 
@@ -614,7 +614,7 @@ Azure Cosmos DB では、操作に上限を設定してパフォーマンスと�
 はい。パーティション キーは、適切な場所にエンティティを配置するために使用されます。 Azure Cosmos DB では、物理パーティションに格納されている適切な論理パーティションを見つけるために使用されます。 パーティション分割の概念については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」の記事でわかりやすく説明されています。 ここで重要な点は、論理パーティションは現在の 10 GB の制限を超えないようにすることです。 
 
 ### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>パーティションが満杯であることを示す "クォータが上限に達した" 通知が表示された場合はどうなりますか?
-Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証し、無制限のスケールを提供する SLA ベースのシステムです。 Cassandra API も無制限のデータ ストレージを許可しています。 この無制限のストレージは、主要概念としてパーティション分割を使用する、データの水平スケールアウトに基づいてします。 パーティション分割の概念については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」の記事でわかりやすく説明されています。
+Azure Cosmos DB は、待機時間、スループット、可用性、整合性を保証し、無制限のスケールを提供する SLA ベースのシステムです。 この無制限のストレージは、主要概念としてパーティション分割を使用する、データの水平スケールアウトに基づいてします。 パーティション分割の概念については、「[Azure Cosmos DB でのパーティション分割とスケーリング](partition-data.md)」の記事でわかりやすく説明されています。
 
 論理パーティションあたりのエンティティ数または項目数に対する 10 GB の制限に従うことをお勧めします。 すべての情報を 1 つのパーティションに格納し、そのパーティションに対してクエリを実行すると、ホット パーティションになります。アプリケーションが適切にスケールできるように、ホット パーティションが発生*しない*ようにすることをお勧めします。 このエラーは、データが均等ではない場合、つまり、1 つのパーティション キーにデータの多くが割り当てられ、10 GB を超える場合に発生します。 ストレージ ポータルを使用して、データの分散を確認できます。 このエラーを解決するには、テーブルを作成し直し、より細分化されたプライマリ (パーティション キー) を選択し、データの分散を改善することをお勧めします。
 
@@ -627,10 +627,10 @@ Azure Cosmos DB はストレージをスケールアウトすることで無制�
 ### <a name="is-it-possible-to-create-multiple-tables-in-succession"></a>連続して複数のテーブルを作成することはできますか?
 Azure Cosmos DB は、データ アクティビティとコントロール プレーン アクティビティ両方のリソース管理システムです。 コレクションやテーブルなどのコンテナーは、特定のスループット容量に対してプロビジョニングされるランタイム エンティティです。 これらのコンテナーの連続的な作成は、予期されるアクティビティではなく、調整されます。 テーブルを即時にドロップ/作成するテストを行う場合は、間隔を空けるようにしてください。
 
-### <a name="what-is-maximum-number-of-tables-which-can-be-created"></a>最大何個のテーブルを作成できますか?
+### <a name="what-is-maximum-number-of-tables-that-can-be-created"></a>最大何個のテーブルを作成できますか?
 テーブル数には物理的な制限がありません。数十または数百単位からの大量のテーブル (データの定常的な合計サイズが 10 TB を超える) を作成する必要がある場合は、[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせください。 
 
-### <a name="what-is-the-maximum--of-keyspace-which-we-can-create"></a>最大何個のキースペースを作成できますか? 
+### <a name="what-is-the-maximum--of-keyspace-that-we-can-create"></a>最大何個のキースペースを作成できますか? 
 キースペースはメタデータ コンテナーなので、キースペース数に物理的な制限はありません。何らかの理由で大量のキースペースがある場合は、[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせください。 
 
 ### <a name="is-it-possible-to-bring-in-lot-of-data-after-starting-from-normal-table"></a>通常のテーブルから開始した後で、大量のデータを取り込むことはできますか? 
@@ -661,8 +661,8 @@ Azure Cosmos DB はプラットフォーム サービスであり、生産性を
 ### <a name="is-composite-partition-key-supported"></a>複合パーティション キーはサポートされていますか?
 はい。通常の構文を使って、複合パーティション キーを作成できます。 
 
-### <a name="can-i-use-sstable-loader-for-data-loading"></a>データの読み込みに sstable ローダーを使うことはできますか?
-いいえ。プレビューでは、sstable ローダーはサポートされていません。 
+### <a name="can-i-use-stable-loader-for-data-loading"></a>データの読み込みに stable ローダーを使うことはできますか?
+いいえ。プレビューでは、stable ローダーはサポートされていません。 
 
 ### <a name="can-an-on-premises-cassandra-cluster-be-paired-with-azure-cosmos-dbs-apache-cassandra-api"></a>オンプレミスの Cassandra クラスターを Azure Cosmos DB の Apache Cassandra API とペアにできますか?
 現在、Azure Cosmos DB では、操作のオーバーヘッドがないクラウド環境に合わせてエクスペリエンスが最適化されています。 ペアリングが必要な場合は、シナリオの説明を添えて [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせください。
@@ -671,7 +671,7 @@ Azure Cosmos DB はプラットフォーム サービスであり、生産性を
 現在、Azure Cosmos DB では、すべての API について 4 時間間隔で 2 つの無料の完全バックアップが提供されています。 そのため、バックアップ スケジュールなどを設定する必要はありません。リテンション期間と頻度を変更したい場合は、[askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) まで電子メールでお問い合わせいただくか、サポート ケースを作成してください。 バックアップ機能については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」の記事を参照してください。 
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>リージョンがダウンした場合、Cassandra API アカウントはフェールオーバーをどのように処理しますか? 
-Azure Cosmos DB の Cassandra API は、Azure Cosmos DB のグローバルに分散されたプラットフォームを利用します。 アプリケーションがデータ センターのダウンタイムを許容できるようにするには、Azure Cosmos DB ポータルでアカウントのリージョンを少なくとももう 1 つ有効にします ([複数リージョンの Azure Cosmos DB アカウントを使用した開発](regional-failover.md)に関する記事を参照)。 ポータルを使用してリージョンの優先順位を設定できます ([複数リージョンの Azure Cosmos DB アカウントを使用した開発](regional-failover.md)に関する記事を参照)。 
+Azure Cosmos DB の Cassandra API は、Azure Cosmos DB のグローバルに分散されたプラットフォームを利用します。 アプリケーションがデータ センターのダウンタイムを許容できるようにするには、Azure Cosmos DB ポータルでアカウントのリージョンを少なくとももう 1 つ有効にします ([複数リージョンの Azure Cosmos DB アカウントを使用した開発](high-availability.md)に関する記事を参照)。 ポータルを使用してリージョンの優先順位を設定できます ([複数リージョンの Azure Cosmos DB アカウントを使用した開発](high-availability.md)に関する記事を参照)。 
 
 アカウントのリージョンを必要な数だけ追加し、フェールオーバーの優先順位を指定してフェールオーバー先を制御できます。 データベースを使用するには、そのリージョンでもアプリケーションを提供する必要があります。 そうすれば、ダウンタイムが発生しなくなります。 
 

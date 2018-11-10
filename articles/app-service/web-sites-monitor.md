@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: fdc4329806d416811352d0d4dbc8dd3bce25aa0b
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9c58e5c64ea3689634d7afb4c5fef08c9b21798c
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
-ms.locfileid: "29573805"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244374"
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Azure App Service でアプリを監視する方法
-[App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、組み込みの監視機能が [Azure Portal](https://portal.azure.com) に用意されています。
+[App Service](https://go.microsoft.com/fwlink/?LinkId=529714) では、組み込みの監視機能が [Azure Portal](https://portal.azure.com) に用意されています。
 この Azure ポータルには、アプリと App Service プランの**クォータ**と**メトリック**を確認する機能、**アラート**のセットアップ、さらにこれらのメトリックに基づいた自動**スケール**が含まれています。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]

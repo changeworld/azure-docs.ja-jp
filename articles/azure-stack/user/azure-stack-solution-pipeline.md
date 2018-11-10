@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/30/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: febdb2e3ae4432c36ca839f81ba7a1d333df1a2f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a9e601d0bd9a4d7879ecd205488c6a901a464021
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952003"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419846"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>チュートリアル: Azure と Azure Stack にアプリをデプロイする
 
@@ -273,21 +273,57 @@ Visual Studio Online (VSTO) のビルドでは、エンドポイントを作成�
 10. **[変更の保存]** を選択します。
 
 これでエンドポイント情報が存在するので、Azure DevOps Services から Azure Stack への接続を使用する準備ができました。 Azure Stack のビルド エージェントは、Azure DevOps Services から命令を受け取った後、Azure Stack との通信のためのエンドポイント情報を伝達します。
+
 ## <a name="create-an-azure-stack-endpoint"></a>Azure Stack エンドポイントを作成する
+
+### <a name="create-an-endpoint-for-azure-ad-deployments"></a>Azure AD デプロイ用のエンドポイントを作成する
 
 「[Create an Azure Resource Manager service connection with an existing service principal (既存のサービス プリンシパルで Azure Resource Manager サービス接続を作成する)](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal)」の記事の手順に従い、既存のサービス プリンシパルでサービス接続を作成します。次のマッピングを使用してください。
 
-- 環境: AzureStack
-- 環境 URL: `https://management.local.azurestack.external` など
-- サブスクリプション ID: Azure Stack のユーザーのサブスクリプション ID
-- サブスクリプション名: Azure Stack のユーザーのサブスクリプション名
-- サービス プリンシパル クライアント ID: この記事で取得したプリンシパル ID ([こちら](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal)のセクションを参照)
-- サービス プリンシパル キー: 同じ記事で取得したキー (スクリプトを使用した場合はパスワード)
-- テナント ID: 「[テナント ID を取得する](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)」の手順に従って取得したテナント ID
+次のマッピングを使用してサービス接続を作成できます。
 
-これでエンドポイントが作成されたので、VSTS から Azure Stack への接続を使用する準備は完了です。 Azure Stack のビルド エージェントは、VSTS から命令を受け取った後、Azure Stack との通信に使用されるエンドポイント情報を伝達します。
+| Name | 例 | 説明 |
+| --- | --- | --- |
+| 接続名 | Azure Stack Azure AD | 接続の名前。 |
+| 環境 | AzureStack | 環境の名前。 |
+| 環境 URL | `https://management.local.azurestack.external` | 管理エンドポイント。 |
+| スコープのレベル | サブスクリプション | 接続のスコープ。 |
+| サブスクリプション ID | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Azure Stack のユーザーのサブスクリプション ID |
+| サブスクリプション名 | name@contoso.com | Azure Stack のユーザーのサブスクリプション名。 |
+| サービス プリンシパルのクライアント ID | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | この記事で取得したプリンシパル ID ([こちら](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal)のセクションを参照)。 |
+| サービス プリンシパルのキー | THESCRETGOESHERE = | 同じ記事で取得したキー (スクリプトを使用した場合はパスワード)。 |
+| テナント ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | 「テナント ID を取得する」の手順に従って取得したテナント ID。 「[テナント ID を取得する](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)」の手順に従って取得したテナント ID。  |
+| 接続: | 未確認 | サービス プリンシパルに対する接続の設定を確認します。 |
 
-![ビルド エージェント](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+これでエンドポイントが作成されたので、DevOps から Azure Stack への接続を使用する準備は完了です。 Azure Stack のビルド エージェントは、DevOps から命令を受け取った後、Azure Stack との通信に使用されるエンドポイント情報を伝達します。
+
+![ビルド エージェントの Azure AD](media\azure-stack-solution-hybrid-pipeline\016_save_changes.png)
+
+### <a name="create-an-endpoint-for-ad-fs"></a>AD FS のエンドポイントの作成
+
+Azure DevOps の最新の更新プログラムにより、認証に証明書を使用したサービス プリンシパルを使ってサービス接続を作成できるようになります。 これは、ID プロバイダーとして AD FS を使用して Azure Stack をデプロイするときに必要です。 
+
+![ビルド エージェントの AD FS](media\azure-stack-solution-hybrid-pipeline\image06.png)
+
+次のマッピングを使用してサービス接続を作成できます。
+
+| Name | 例 | 説明 |
+| --- | --- | --- |
+| 接続名 | Azure Stack ADFS | 接続の名前。 |
+| 環境 | AzureStack | 環境の名前。 |
+| 環境 URL | `https://management.local.azurestack.external` | 管理エンドポイント。 |
+| スコープのレベル | サブスクリプション | 接続のスコープ。 |
+| サブスクリプション ID | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | Azure Stack のユーザーのサブスクリプション ID |
+| サブスクリプション名 | name@contoso.com | Azure Stack のユーザーのサブスクリプション名。 |
+| サービス プリンシパルのクライアント ID | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | AD FS 用に作成したサービス プリンシパルのクライアント ID。 |
+| 証明書 | `<certificate>` |  証明書ファイルを PFX から PEM に変換します。 証明書の PEM ファイルの内容をこのフィールドに貼り付けます。 <br> PFX から PEM への変換:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
+| テナント ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | 「テナント ID を取得する」の手順に従って取得したテナント ID。 「[テナント ID を取得する](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id)」の手順に従って取得したテナント ID。 |
+| 接続: | 未確認 | サービス プリンシパルに対する接続の設定を確認します。 |
+
+これでエンドポイントが作成されたので、Azure DevOps から Azure Stack への接続を使用する準備は完了です。 Azure Stack のビルド エージェントは、Azure DevOps から命令を受け取った後、Azure Stack との通信のためのエンドポイント情報を伝達します。
+
+> [!Note]
+> Azure Stack User ARM エンドポイントがインターネットに公開されていない場合、接続の検証は失敗します。 これは想定されているため、簡単なタスクのリリース パイプラインを作成することで接続を検証できます。 
 
 ## <a name="develop-your-application-build"></a>アプリケーション ビルドの開発
 

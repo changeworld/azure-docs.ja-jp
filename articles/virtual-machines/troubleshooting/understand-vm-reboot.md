@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f50be01d067032b1143a80e56ccb5d49d899d4d6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c1f48e3273ac0a237c72565acf25049b763dba8a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415969"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246669"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure VM のシステム再起動について
 
@@ -108,7 +108,7 @@ Azure の VM は、オペレーティング システムの仮想ディスクと
 
 **制限を超える IO**
 
-1 秒あたりの I/O 操作の量 (IOPS) がディスクの I/O の上限を超えているために、I/O 要求のスロットルが連続的に行われていると、VM が一時的にシャットダウンされることがあります  (たとえば Standard ディスク ストレージは 500 IOPS に制限されています)。この問題を軽減するには、ワークロードに応じて、ディスク ストライピングを使用するか、ゲスト VM 内に記憶域スペースを構成します。 詳細については、「[Configuring Azure VMs for Optimal Storage Performance](http://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)」(最適なストレージ パフォーマンスのための Azure Virtual Machines の構成) を参照してください。
+1 秒あたりの I/O 操作の量 (IOPS) がディスクの I/O の上限を超えているために、I/O 要求のスロットルが連続的に行われていると、VM が一時的にシャットダウンされることがあります  (たとえば Standard ディスク ストレージは 500 IOPS に制限されています)。この問題を軽減するには、ワークロードに応じて、ディスク ストライピングを使用するか、ゲスト VM 内に記憶域スペースを構成します。 詳細については、「[Configuring Azure VMs for Optimal Storage Performance](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)」(最適なストレージ パフォーマンスのための Azure Virtual Machines の構成) を参照してください。
 
 Azure Premium Storage で、最大 80,000 IOPS という高い IOPS 制限を利用することができます。 詳細については、[高パフォーマンスの Premium Storage](../windows/premium-storage.md) に関するページを参照してください。
 

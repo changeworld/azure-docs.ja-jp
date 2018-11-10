@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: e8ecdf1fffb51c0b8e9ce996307595a5444a64ee
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: eeecf37a6cc7a0f86662f002b6f0efab5ef8c35c
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412619"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417465"
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 
@@ -82,7 +82,7 @@ Windows Server 2016 または Windows Server 2012 R2 のカスタム イメー�
 2. [スタート] で [Windows PowerShell] を検索し、それを右クリックして [管理者として実行] を選択します。
 
 3. 正しい Azure KMS サーバーを使用するように VM が構成されていることを確認します。 そのためには、次のコマンドを実行します。
-  
+  
     ```
     iex “$env:windir\system32\cscript.exe $env:windir\system32\slmgr.vbs /skms
     kms.core.windows.net:1688
@@ -90,11 +90,11 @@ Windows Server 2016 または Windows Server 2012 R2 のカスタム イメー�
     コマンドにより "キー管理サービスのマシン名は kms.core.windows.net:1688 に正常に設定されました。" というメッセージが返されるはずです。
 
 4. Psping を使用して、KMS サーバーへの接続があることを確認します。 ダウンロードした Pstools.zip を展開したフォルダーに移動し、次のコマンドを実行します。
-  
+  
     ```
     \psping.exe kms.core.windows.net:1688
     ```
-  
+  
   出力の最後から 2 番目の行が、"Sent = 4, Received = 4, Lost = 0 (0% loss)" になっていることを確認します。
 
   Lost が 0 (ゼロ) より大きい場合、VM には KMS サーバーへの接続がありません。 この状況で、VM が仮想ネットワーク内にあり、その VM にカスタム DNS サーバーが指定されている場合は、その DNS サーバーが kms.core.windows.net を解決できることを確認する必要があります。 または、DNS サーバーを、kms.core.windows.net を解決できるサーバーに変更します。

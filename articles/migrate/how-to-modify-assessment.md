@@ -4,14 +4,14 @@ description: Azure Migration Planner を使用して VMware VM を Azure に移�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 06/20/2018
+ms.date: 10/30/2018
 ms.author: raynew
-ms.openlocfilehash: 9ddd6c32388b2e05fd97138414958b67c009f9ee
-ms.sourcegitcommit: d8ffb4a8cef3c6df8ab049a4540fc5e0fa7476ba
+ms.openlocfilehash: d0cfab51b686b5b6eb9617d4424ac3f834de8d6f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36284915"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241074"
 ---
 # <a name="customize-an-assessment"></a>評価のカスタマイズ
 
@@ -21,13 +21,13 @@ ms.locfileid: "36284915"
 ## <a name="edit-assessment-properties"></a>評価のプロパティの編集
 
 1. 移行プロジェクトの **[評価]** ページで、評価を選択し、**[プロパティの編集]** をクリックします。
-2. 次の表に従ってプロパティを変更します。
+2. 以下の詳細に基づいて、評価のプロパティをカスタマイズします。
 
     **設定** | **詳細** | **既定値**
     --- | --- | ---
     **ターゲットの場所** | Azure 上の移行先となる場所。<br/><br/> Azure Migrate は現在、30 のリージョンをサポートしています (オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、インド中部、米国中部、中国東部、中国北部、東アジア、米国東部、ドイツ中部、ドイツ北東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、英国西部、US Gov アリゾナ、US Gov テキサス、US Gov バージニア、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2)。 |  既定の場所は、米国西部 2 です。
-    **[価格レベル]** | ターゲット Azure VM の[価格レベル (Basic/Standard)](../virtual-machines/windows/sizes-general.md) を指定できます。 たとえば、運用環境の移行を計画している場合は、Standard レベルを検討するかもしれません。この場合、VM の待ち時間は短くなりますが、コストは高くなります。 一方、開発/テスト環境の場合は、Basic レベルを検討するかもしれません。この場合、VM の待ち時間は長くなり、コストは安くなります。 | 既定では [Standard](../virtual-machines/windows/sizes-general.md) レベルが使用されます。
-    **ストレージの種類** | Azure に割り当てるディスクの種類を指定できます。 このプロパティは、サイズ変更の設定基準がオンプレミスのときに適用されます。 ターゲットのディスクの種類を、Premium マネージド ディスクまたは Standard マネージド ディスクのいずれかに指定できます。 サイズ変更がパフォーマンス ベースの場合、VM のパフォーマンス データに基づいてディスクのレコメンデーションが自動的に行われます。 Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。 | 既定値は、Premium マネージド ディスクです (サイズ変更の設定基準は*オンプレミスのサイズ設定*)。
+    **[価格レベル]** | ターゲット Azure VM の[価格レベル (Basic/Standard)](../virtual-machines/windows/sizes-general.md) を指定できます。 たとえば、運用環境の移行を計画している場合は、Standard レベルを検討することをお勧めします。 一方、開発/テスト環境の場合は、Basic レベルを検討するかもしれません。この場合、VM の待ち時間は長くなり、コストは安くなります。 | 既定では [Standard](../virtual-machines/windows/sizes-general.md) レベルが使用されます。
+    **ストレージの種類** | このプロパティを使用して、Azure に割り当てるディスクの種類を指定できます。 オンプレミスと同様のサイズ設定の場合は、ターゲットのディスクの種類を、Premium マネージド ディスクまたは Standard マネージド ディスクのいずれかに指定できます。 パフォーマンスに基づくサイズ設定の場合は、ターゲットのディスクの種類を、Automatic、Premium マネージド ディスク、または Standard マネージド ディスクのいずれかに指定できます。 ストレージの種類を Automatic として指定すると、ディスクのパフォーマンス データ (IOPS とスループット) に基づいてディスクに関する推奨事項が実行されます。 たとえば、[単一インスタンスの VM で 99.9% の SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) を達成したい場合は、ストレージの種類を、評価対象のすべてのディスクが Premium マネージド ディスクとして推奨されることが保証される Premium マネージド ディスクとして指定してください。 Azure Migrate の移行評価では、マネージド ディスクのみがサポートされます。 | 既定値は、Premium マネージド ディスクです (サイズ変更の設定基準は*オンプレミスのサイズ設定*)。
     **予約インスタンス** |  Azure 上に[予約インスタンス](https://azure.microsoft.com/pricing/reserved-vm-instances/)があるかどうかも指定できます。Azure Migrate はそれに応じてコストを見積もります。 予約インスタンスは独立リージョン (Azure Government、Germany、および China) には適用されず、Azure Migrate の従量課金制プランにのみ適用されます。 | このプロパティの既定値は、3 年間の予約インスタンスです。
     **サイズ変更の設定基準** | Azure 用に VM を適切なサイズにするために Azure Migrate によって使用される基準。 "*パフォーマンスに基づく*" サイズ変更、またはパフォーマンスの履歴を考慮しない "*オンプレミスとしての*" VM のサイズ変更を実行できます。 | パフォーマンスに基づくサイズ変更が既定のオプションです。
     **パフォーマンス履歴** | VM のパフォーマンスを評価するために考慮する期間。 このプロパティは、サイズ変更の基準が "*パフォーマンスに基づくサイズ変更*" の場合にのみ適用されます。 | 既定値は 1 日です。
@@ -36,7 +36,7 @@ ms.locfileid: "36284915"
     **快適性係数** | Azure Migrate では、評価時にバッファー (快適性係数) が考慮されます。 VM のマシン使用率データ (CPU、メモリ、ディスク、ネットワーク) に加えて、このバッファーが適用されます。 快適性係数は、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 一方、快適性係数を 2.0x とした場合は、結果が 4 コア VM になります。 | 既定の設定は 1.3x です。
     **プラン** | 登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 | [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)が既定値です。
     **通貨** | 請求通貨です。 | 既定値は、米ドルです。
-    **割引率 (%)** | Azure プランに適用される任意のサブスクリプション固有の割引です。 | 既定の設定は 0% です。
+    **割引率 (%)** | Azure オファーに適用される任意のサブスクリプション固有の割引です。 | 既定の設定は 0% です。
     **VM のアップタイム** | VM が Azure 上で 24 時間 365 日稼働するわけではない場合は、Azure 上で稼働する期間 (1 か月あたりの日数と １ 日あたりの時間数) を指定できます。それに応じてコストの見積もりが行われます。 | 既定値は、1 か月あたり 31 日、1 日あたり 24 時間です。
     **Azure ハイブリッド特典** | ソフトウェア アシュアランスがあり、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を受ける資格があるかどうかを指定します。 [はい] に設定すると、Windows VM に Windows Azure 以外の価格は考慮されません。 | 既定値は Yes です。
 

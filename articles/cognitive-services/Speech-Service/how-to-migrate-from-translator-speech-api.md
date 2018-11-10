@@ -1,7 +1,7 @@
 ---
 title: Translator Speech API から Speech Service に移行する
 titleSuffix: Azure Cognitive Services
-description: アプリケーションを Translator Speech API から Speech Service に移行するにあたっては､このトピックを参考にしてください。
+description: アプリケーションを Translator Speech API から Speech Service に移行する方法について説明します。
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: aahi
-ms.openlocfilehash: a35c4a7f2d2b64bd3650df1f18d08da4ea191e3a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 81513819fd60dc088c2ed4a781562684c84e803a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49466394"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415476"
 ---
 # <a name="migrate-from-the-translator-speech-api-to-the-speech-service"></a>Translator Speech API から Speech Service に移行する
 
@@ -30,13 +30,13 @@ ms.locfileid: "49466394"
 |---------------------------------------------------|-----------------------------------------------------------------|------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | テキストに変換                               | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 音声に変換                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| グローバル エンドポイント                                   | :heavy_check_mark:                                              | :heavy_minus_sign:                 | 現在､Speech Service はグローバル エンドポイントを提供していません。 グローバル エンドポイントでは、最も近いリージョン固有エンドポイントにトラフィックに自動的に誘導するため、アプリケーションでの待機時間を短縮できます。                                                    |
+| グローバル エンドポイント                                   | :heavy_check_mark:                                              | :heavy_minus_sign:                 | 現在､Speech Service はグローバル エンドポイントを提供していません｡ グローバル エンドポイントでは、最も近いリージョン固有エンドポイントにトラフィックに自動的に誘導するため、アプリケーションでの待機時間を短縮できます。                                                    |
 | 地域のエンドポイント                                | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
-| 接続時間の制限                             | 90 分                                               | SDK では無制限です。 Websocket 接続で 10 分                                                                                                                                                                                                                                                                                   |
+| 接続時間の制限                             | 90 分                                               | SDK では無制限です。 WebSocket 接続で 10 分。                                                                                                                                                                                                                                                                                   |
 | ヘッダーに Auth キー                                | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 1 つの要求での複数言語への翻訳 | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | SDK が使用可能                                    | :heavy_minus_sign:                                              | :heavy_check_mark:                 | 使用できる SDK については､[Speech Service のドキュメント](index.yml)をご覧ください。                                                                                                                                                    |
-| Websocket 接続                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
+| WebSocket 接続                             | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 言語 API                                     | :heavy_check_mark:                                              | :heavy_minus_sign:                 | Speech Service は、[Translator API の言語リファレンス](../translator-speech/languages-reference.md)記事に記載された同じ言語範囲をサポートしています。 |
 | 不適切な表現のフィルターとマーカー                       | :heavy_minus_sign:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | 入力として .WAV/PCM                                 | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
@@ -44,20 +44,20 @@ ms.locfileid: "49466394"
 | 部分結果                                   | :heavy_check_mark:                                              | :heavy_check_mark:                 |                                                                                                                                                                                                                                                                                    |
 | タイミング情報                                       | :heavy_check_mark:                                              | :heavy_minus_sign:                 |                                                                                                                                                                 |
 | 関連付け ID                                    | :heavy_check_mark:                                              | :heavy_minus_sign:                 |                                                                                                                                                                                                                                                                                    |
-| Custom Speech モデル                              | :heavy_minus_sign:                                              | :heavy_check_mark:                 | Speech Service には、音声認識を組織の一意のボキャブラリにカスタマイズできるカスタム音声モデルが用意されています。                                                                                                                                           |
+| カスタム音声モデル                              | :heavy_minus_sign:                                              | :heavy_check_mark:                 | Speech Service には、音声認識を組織の一意のボキャブラリにカスタマイズできるカスタム音声モデルが用意されています。                                                                                                                                           |
 | カスタム変換モデル                         | :heavy_minus_sign:                                              | :heavy_check_mark:                 | Microsoft Text Translation API に登録すると、[Custom Translator](https://www.microsoft.com/translator/business/customization/) (現在プレビュー) により、独自のデータを使ってより正確な翻訳ができます。                                                 |
 
 ## <a name="migration-strategies"></a>移行方法
 
-Translator Speech API を使用しているアプリケーションを開発中の場合､あるいはそうしたアプリケーションを運用している場合は､Speech Service を使用するように更新することをお勧めします。 使用できる SDK やサンプル コード､チュートリアルについては､[Speech Service](index.yml) のドキュメントをご覧ください。 次には、移行する場合の考慮事項をいくつか示します。
+Translator Speech API を使用しているアプリケーションを開発中の場合､あるいはそうしたアプリケーションを運用している場合は､Speech Service を使用するように更新することをお勧めします。 使用できる SDK やサンプル コード､チュートリアルについては､[Speech Service](index.yml) のドキュメントをご覧ください。 移行する際は、次を考慮してください。
 
-* 現在､Speech Service はグローバル エンドポイントを提供していません。 アプリケーションの全トラフィックに同じ地域エンドポイントを使用したときにアプリケーションが効率的に機能するかどうかは､お客様自身が判断する必要があります。 効率的に機能しない場合は､geolocation を使って最も効率的なエンドポイントを探す必要があります。
+* 現在､Speech Service はグローバル エンドポイントを提供していません｡ アプリケーションの全トラフィックに同じ地域エンドポイントを使用しているときにアプリケーションが効率的に機能するかどうかを判断してください。 効率的に機能しない場合は､geolocation を使って最も効率的なエンドポイントを探してください｡
 
-* アプリケーションが長時間の接続を使用し､現在ある SDK を使用できない場合は､Websockets 接続を利用し､適切なタイミングで接続し直すことで 10 分間のタイムアウト制限に対処することができます。
+* アプリケーションが長時間維持される接続を使用していて、利用可能な SDK を使用できない場合は、WebSocket 接続を使用できます。 適切なタイミングで再接続して、10 分のタイムアウト制限を管理してください。
 
-* アプリケーションで Translator Text API と Translator Speech API を使用してカスタム変換を有効にしている場合は、Speech Service を使用して直接「カテゴリ」の ID を追加することができます。
+* アプリケーションで Translator Text API と Translator Speech API を使用してカスタム変換を有効にしている場合は、Speech Service を使用して直接カテゴリ ID を追加することができます。
 
-* Speech Sevice では、Translator Speech API とは異なり、1 つの要求で複数の言語への翻訳を完了できます。
+* Translator Speech API とは異なり、Speech Service では、1 つの要求で複数の言語への翻訳を完了できます。
 
 ## <a name="next-steps"></a>次の手順
 

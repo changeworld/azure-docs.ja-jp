@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: aa63a31f7f84502a29aad6b38f454ea1080127e0
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 8a5a71fada190939abf638cd1b681adff7e80970
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39530037"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244544"
 ---
 # <a name="develop-for-azure-files-with-java"></a>Java での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -231,6 +231,6 @@ if ( file.deleteIfExists() ) {
 * [Azure Storage SDK for Android に関するページ に関するページ](https://github.com/azure/azure-storage-android)
 * [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-* [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+* [Azure のストレージ チーム ブログ](https://blogs.msdn.com/b/windowsazurestorage/)
 * [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../common/storage-use-azcopy.md)
 * [Azure Files に関する問題のトラブルシューティング - Windows](storage-troubleshoot-windows-file-connection-problems.md)

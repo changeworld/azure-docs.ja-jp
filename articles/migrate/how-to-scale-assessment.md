@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: raynew
-ms.openlocfilehash: 32bed3a60c40b93471b75b9d54dccd822ccc3be8
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b5685640a55e2ce52a202c341cb293fe9315ab14
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025876"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50240190"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
@@ -148,17 +148,15 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
 
 #### <a name="one-time-discovery"></a>1 回限りの検出
 
-<<<<<<< HEAD For OVA version 1.0.9.15 (Released on 10/23/2018)
-
- <a name="algorithm--hash-value"></a>**アルゴリズム** | **ハッシュ値**
-=======
-OVA バージョン 1.0.9.15 の場合
+OVA バージョン 1.0.9.15 (2018 年 10 月 23 日リリース) の場合
 
 **アルゴリズム** | **ハッシュ値**
->>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37 --- | --- MD5 | e9ef16b0c837638c506b5fc0ef75ebfa SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864 SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
+--- | ---
+MD5 | e9ef16b0c837638c506b5fc0ef75ebfa
+SHA1 | 37b4b1e92b3c6ac2782ff5258450df6686c89864
+SHA256 | 8a86fc17f69b69968eb20a5c4c288c194cdcffb4ee6568d85ae5ba96835559ba
 
-<<<<<<< HEAD For OVA version 1.0.9.14 (Released on 8/24/2018) ======= For OVA version 1.0.9.14
->>>>>>> 20dc93529e7c0a4d17f2f4524752b5e2bead4e37
+OVA バージョン 1.0.9.14 (2018 年 8 月 24 日リリース) の場合
 
 **アルゴリズム** | **ハッシュ値**
 --- | ---

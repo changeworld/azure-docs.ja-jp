@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/12/2018
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 7f71e92513aedb1eb9c394c1e8f547173cfb4dbe
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 4f7955c013ce7f45ebe6db8bb23eeec92303876e
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604180"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230933"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>クイック スタート: .NET Web アプリを使用して Azure Key Vault との間でシークレットの設定と取得を行う
 
@@ -25,7 +25,7 @@ ms.locfileid: "45604180"
 > * キー コンテナーにシークレットを格納する。
 > * キー コンテナーからシークレットを取得する。
 > * Azure AD Web アプリケーションを作成する。
-> * Web アプリの[マネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする。
+> * Web アプリの[マネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を有効にする。
 > * Web アプリケーションに必要なアクセス許可を付与して、キー コンテナーからデータを読み取る
 
 先に進む前に、[基本概念](key-vault-whatis.md#basic-concepts)を確認してください。
@@ -33,7 +33,7 @@ ms.locfileid: "45604180"
 >[!NOTE]
 >Key Vault は、プログラムでシークレットを格納できる中央リポジトリです。 しかしこれを実行するには、アプリケーションとユーザーが最初に Key Vault に対する認証を行う (シークレットを提示する) 必要があります。 セキュリティのベスト プラクティスに従うために、最初のシークレットのローテーションが定期的に行われる必要があります。 
 >
->[Azure リソースのマネージド ID](../active-directory/managed-identities-azure-resources/overview.md) を使用すると、Azure で実行されるアプリケーションには、Azure が自動的に管理する ID が付与されます。 これにより、*シークレット導入問題*が解決されます。ユーザーとアプリケーションはベスト プラクティスに従うことができ、最初のシークレットのローテーションについて心配する必要がありません
+>[Azure リソースのマネージド サービス ID](../active-directory/managed-identities-azure-resources/overview.md) を使用すると、Azure で実行されるアプリケーションには、Azure が自動的に管理する ID が付与されます。 これにより、*シークレット導入問題*が解決されます。ユーザーとアプリケーションはベスト プラクティスに従うことができ、最初のシークレットのローテーションについて心配する必要がありません
 
 ## <a name="prerequisites"></a>前提条件
 

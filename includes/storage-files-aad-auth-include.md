@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/22/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: b7682b83ca415ebff2be1c9dbb5581e8da1bb7fb
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
+ms.openlocfilehash: 64751e0fcbf9a2255964d0de673e2cc2020ceb9a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49805106"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254524"
 ---
 [Azure Files](../articles/storage/files/storage-files-introduction.md) は、[Azure Active Directory (Azure AD) Domain Services](../articles/active-directory-domain-services/active-directory-ds-overview.md) を使用した、SMB (Server Message Block) 上の ID ベースの認証をサポートします。 ドメインに参加している Windows 仮想マシン (VM) は、[Azure AD](../articles/active-directory/fundamentals/active-directory-whatis.md) の資格情報を使用して Azure ファイル共有にアクセスできます。 
 
@@ -25,3 +25,4 @@ Azure AD は、[ロールベースのアクセス制御 (RBAC)](../articles/role
 > - SMB 経由の Azure AD 認証は、プレビュー リリースの Linux VM ではサポートされていません。 サポートされているのは Windows Server VM のみです。
 > - SMB 経由の Azure AD 認証は、Azure Files にアクセスするオンプレミスのマシンではサポートされません。
 > - Azure AD 認証は、2018 年 9 月 24 日よりも後に作成されたストレージ アカウントにのみ使用できます。
+> - SMB と永続的 NTFS ACL 経由の Azure AD 認証は、Azure File Sync サービスによって管理されている Azure ファイル共有でサポートされていません。 

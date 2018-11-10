@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: 0b920d21486fc0003d8b11bef79bd44be4b28adf
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: de0ddbc041d6f177e5bfcd24d593b8d63a8e1e23
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37030616"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248729"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics でのリアルタイム Twitter 感情分析
 
@@ -235,7 +235,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 1. **[入力]** ブレードを閉じます (まだ閉じていない場合)。
 
-2. ジョブ ブレードで、**[クエリ]** ボックスをクリックします。 そのジョブ用に構成されている入力と出力が一覧表示されます。出力に送信される入力ストリームを変換できるクエリを作成できます。
+2. **[概要]** ブレードで、クエリ ボックスの右上付近にある **[クエリの編集]** をクリックします。 そのジョブ用に構成されている入力と出力が一覧表示されます。出力に送信される入力ストリームを変換できるクエリを作成できます。
 
 3. TwitterWpfClient アプリケーションが実行されていることを確認します。 
 
@@ -282,7 +282,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 |トピック | 指定したキーワードと一致するトピック|
 |SentimentScore | Sentiment140 のセンチメント スコア|
 |Author | ツイートを送信した Twitter ハンドル|
-|テキスト | ツイートの全文|
+|Text | ツイートの全文|
 
 
 ## <a name="create-an-output-sink"></a>出力シンクの作成
@@ -302,7 +302,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
     * **[インポート オプション]**: **[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
     * **[ストレージ アカウント]**。 **[新しいストレージ アカウントを作成する]** を選択します。
     * **[ストレージ アカウント]** (2 つ目のボックス):  「`YOURNAMEsa`」と入力します。`YOURNAME` は、自分の名前または別の一意の文字列です。 名前には小文字と数字だけを使用できます。名前は Azure 全体で一意である必要があります。 
-    * **[コンテナー]**:  「`socialtwitter`」を入力します。
+    * **[コンテナー]**:  「 `socialtwitter` 」を入力します。
     ストレージ アカウント名とコンテナー名は、BLOB ストレージの URI を指定するときに次のように組み合わせて使われます。 
 
     `http://YOURNAMEsa.blob.core.windows.net/socialtwitter/...`

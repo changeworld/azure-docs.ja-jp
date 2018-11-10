@@ -3,7 +3,7 @@ title: Azure Functions における Azure Event Hubs のバインド
 description: Azure Functions で Azure Event Hubs のバインドを使用する方法について説明します。
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: daf81798-7acc-419a-bc32-b5a41c6db56b
@@ -11,13 +11,13 @@ ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
-ms.author: glenga
-ms.openlocfilehash: d79a57db6f56264d4070debbca83de4192f7f503
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.author: cshoe
+ms.openlocfilehash: 3f1a9535037f099cdfe7bf4ec41a337fdf6a434d
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49987088"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248780"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Functions における Azure Event Hubs のバインド
 
@@ -83,9 +83,9 @@ Functions がスケーリングするインスタンスの数 `N` が、イベ�
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
-public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] string myEventHubMessage, TraceWriter log)
+public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] string myEventHubMessage, ILogger log)
 {
-    log.Info($"C# Event Hub trigger function processed a message: {myEventHubMessage}");
+    log.LogInformation($"C# Event Hub trigger function processed a message: {myEventHubMessage}");
 }
 ```
 
@@ -98,17 +98,17 @@ public static void Run(
     DateTime enqueuedTimeUtc, 
     Int64 sequenceNumber,
     string offset,
-    TraceWriter log)
+    ILogger log)
 {
-    log.Info($"Event: {Encoding.UTF8.GetString(myEventHubMessage.Body)}");
+    log.LogInformation($"Event: {Encoding.UTF8.GetString(myEventHubMessage.Body)}");
     // Metadata accessed by binding to EventData
-    log.Info($"EnqueuedTimeUtc={myEventHubMessage.SystemProperties.EnqueuedTimeUtc}");
-    log.Info($"SequenceNumber={myEventHubMessage.SystemProperties.SequenceNumber}");
-    log.Info($"Offset={myEventHubMessage.SystemProperties.Offset}");
+    log.LogInformation($"EnqueuedTimeUtc={myEventHubMessage.SystemProperties.EnqueuedTimeUtc}");
+    log.LogInformation($"SequenceNumber={myEventHubMessage.SystemProperties.SequenceNumber}");
+    log.LogInformation($"Offset={myEventHubMessage.SystemProperties.Offset}");
     // Metadata accessed by using binding expressions in method parameters
-    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
-    log.Info($"SequenceNumber={sequenceNumber}");
-    log.Info($"Offset={offset}");
+    log.LogInformation($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.LogInformation($"SequenceNumber={sequenceNumber}");
+    log.LogInformation($"Offset={offset}");
 }
 ```
 
@@ -119,12 +119,12 @@ public static void Run(
 
 ```cs
 [FunctionName("EventHubTriggerCSharp")]
-public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] EventData[] eventHubMessages, TraceWriter log)
+public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] EventData[] eventHubMessages, ILogger log)
 {
     foreach (var message in eventHubMessages)
     {
-        log.Info($"C# Event Hub trigger function processed a message: {Encoding.UTF8.GetString(message.Body)}");
-        log.Info($"EnqueuedTimeUtc={message.SystemProperties.EnqueuedTimeUtc}");
+        log.LogInformation($"C# Event Hub trigger function processed a message: {Encoding.UTF8.GetString(message.Body)}");
+        log.LogInformation($"EnqueuedTimeUtc={message.SystemProperties.EnqueuedTimeUtc}");
     }
 }
 ```
@@ -173,23 +173,24 @@ public static void Run(string myEventHubMessage, TraceWriter log)
 
 using System.Text;
 using System;
+using Microsoft.ServiceBus.Messaging;
 using Microsoft.Azure.EventHubs;
 
 public static void Run(EventData myEventHubMessage,
     DateTime enqueuedTimeUtc, 
     Int64 sequenceNumber,
     string offset,
-    ILogger log)
+    TraceWriter log)
 {
-    log.LogInformation($"Event: {Encoding.UTF8.GetString(myEventHubMessage.Body)}");
-    log.LogInformation($"EnqueuedTimeUtc={myEventHubMessage.SystemProperties.EnqueuedTimeUtc}");
-    log.LogInformation($"SequenceNumber={myEventHubMessage.SystemProperties.SequenceNumber}");
-    log.LogInformation($"Offset={myEventHubMessage.SystemProperties.Offset}");
+    log.Info($"Event: {Encoding.UTF8.GetString(myEventHubMessage.Body)}");
+    log.Info($"EnqueuedTimeUtc={myEventHubMessage.SystemProperties.EnqueuedTimeUtc}");
+    log.Info($"SequenceNumber={myEventHubMessage.SystemProperties.SequenceNumber}");
+    log.Info($"Offset={myEventHubMessage.SystemProperties.Offset}");
 
     // Metadata accessed by using binding expressions
-    log.LogInformation($"EnqueuedTimeUtc={enqueuedTimeUtc}");
-    log.LogInformation($"SequenceNumber={sequenceNumber}");
-    log.LogInformation($"Offset={offset}");
+    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.Info($"SequenceNumber={sequenceNumber}");
+    log.Info($"Offset={offset}");
 }
 ```
 
@@ -235,7 +236,7 @@ F# コードを次に示します。
 
 ```fsharp
 let Run(myEventHubMessage: string, log: TraceWriter) =
-    log.Info(sprintf "F# eventhub trigger function processed work item: %s" myEventHubMessage)
+    log.Log(sprintf "F# eventhub trigger function processed work item: %s" myEventHubMessage)
 ```
 
 ### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
@@ -353,7 +354,7 @@ public void eventHubProcessor(
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
-public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] string myEventHubMessage, TraceWriter log)
+public static void Run([EventHubTrigger("samples-workitems", Connection = "EventHubConnectionAppSetting")] string myEventHubMessage, ILogger log)
 {
     ...
 }
@@ -423,9 +424,9 @@ Event Hubs 出力バインドを使用して、イベント ストリームに�
 ```csharp
 [FunctionName("EventHubOutput")]
 [return: EventHub("outputEventHubMessage", Connection = "EventHubConnectionAppSetting")]
-public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, TraceWriter log)
+public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
 {
-    log.Info($"C# Timer trigger function executed at: {DateTime.Now}");
+    log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
     return $"{DateTime.Now}";
 }
 ```
@@ -459,11 +460,12 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 
 ```cs
 using System;
+using Microsoft.Extensions.Logging;
 
-public static void Run(TimerInfo myTimer, out string outputEventHubMessage, TraceWriter log)
+public static void Run(TimerInfo myTimer, out string outputEventHubMessage, ILogger log)
 {
     String msg = $"TimerTriggerCSharp1 executed at: {DateTime.Now}";
-    log.Verbose(msg);   
+    log.LogInformation(msg);   
     outputEventHubMessage = msg;
 }
 ```
@@ -471,10 +473,10 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, Trac
 複数のメッセージを作成する C# スクリプト コードを次に示します。
 
 ```cs
-public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, TraceWriter log)
+public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, ILogger log)
 {
     string message = $"Event Hub message created at: {DateTime.Now}";
-    log.Info(message);
+    log.LogInformation(message);
     outputEventHubMessage.Add("1 " + message);
     outputEventHubMessage.Add("2 " + message);
 }
@@ -508,9 +510,9 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 F# コードを次に示します。
 
 ```fsharp
-let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWriter) =
+let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: ILogger) =
     let msg = sprintf "TimerTriggerFSharp1 executed at: %s" DateTime.Now.ToString()
-    log.Verbose(msg);
+    log.LogInformation(msg);
     outputEventHubMessage <- msg;
 ```
 
@@ -589,7 +591,7 @@ public String sendTime(
 ```csharp
 [FunctionName("EventHubOutput")]
 [return: EventHub("outputEventHubMessage", Connection = "EventHubConnectionAppSetting")]
-public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, TraceWriter log)
+public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILogger log)
 {
     ...
 }
@@ -623,6 +625,36 @@ JavaScript では、`context.bindings.<name>` を使用して出力イベント�
 | バインド | リファレンス |
 |---|---|
 | イベント ハブ | [運用ガイド](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>host.json 設定
+
+このセクションでは、バージョン 2.x でこのバインディングに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインディングのバージョン 2.x の設定のみが含まれています。 バージョン 2.x でのグローバル構成設定の詳細については、「[Azure Functions の host.json のリファレンス](functions-host-json.md)」を参照してください。
+
+> [!NOTE]
+> Functions 1.x の host.json のリファレンスについては、[Azure Functions 1.x の host.json のリファレンス](functions-host-json-v1.md)に関する記事を参照してください。
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "eventHubs": {
+            "batchCheckpointFrequency": 5,
+            "eventProcessorOptions": {
+                "maxBatchSize": 256,
+                "prefetchCount": 512
+            }
+        }
+    }
+}  
+```  
+
+|プロパティ  |既定値 | 説明 |
+|---------|---------|---------| 
+|maxBatchSize|64|受信ループあたりで受信される最大イベント数。|
+|prefetchCount|該当なし|基になる EventProcessorHost に使用される既定の PrefetchCount。| 
+|batchCheckpointFrequency|1|EventHub カーソル チェックポイントを作成する前に処理するイベント バッチ数。| 
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,22 +1,21 @@
 ---
 title: Azure Site Recovery で保護できるワークロード | Microsoft Docs
 description: Azure Site Recovery サービスによるディザスター リカバリーを使用して保護できるワークロードについて説明します。
-services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 07/22/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 5295002e823dc864f0f0dcc67594f49b5431bce7
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 70f19213da9c311e306e09890f54185f6d2834dc
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205954"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50213244"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用してレプリケートできるワークロードとアプリケーションについて説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスによるディザスター リカバリーを使用して保護できるワークロードとアプリケーションについて説明します。
 
 
 
@@ -103,8 +102,8 @@ Azure Site Recovery は、次のような点で Dynamics AX ERP ソリューシ�
 
 | **RDS** |**Azure VM を Azure にレプリケートする** | **Hyper-V VM をセカンダリ サイトにレプリケート** | **Hyper-V VM を Azure にレプリケート** | **VMware VM をセカンダリ サイトにレプリケート** | **VMware VM を Azure にレプリケート** | **物理サーバーをセカンダリ サイトにレプリケート** | **物理サーバーを Azure にレプリケート** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **プールされた仮想デスクトップ (管理対象外)** |いいえ |はい |いいえ  |はい |いいえ  |はい |いいえ |
-| **プールされた仮想デスクトップ (管理対象、UPD なし)** |いいえ|はい |いいえ  |はい |いいえ  |はい |いいえ  |
+| **プールされた仮想デスクトップ (管理対象外)** |いいえ |はい |いいえ  |はい |いいえ  |はい |いいえ  |
+| **プールされた仮想デスクトップ (管理対象、UPD なし)** |いいえ |はい |いいえ  |はい |いいえ  |はい |いいえ  |
 | **リモート アプリケーションとデスクトップ セッション (UPD なし)** |[はい]|はい |はい |はい |はい |はい |[はい] |
 
 [Azure Site Recovery を使用して RDS のディザスター リカバリーを設定します](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure)。

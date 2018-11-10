@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2017
 ms.author: jeedes
-ms.openlocfilehash: e2dc9b7e7cf5964c36b21418a0162c1c2ef92dc8
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b5f240091cf5ce9331ada818c218db04f508dbc8
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430183"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50241805"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sprinklr"></a>チュートリアル: Azure Active Directory と Sprinklr の統合
 
@@ -88,7 +88,7 @@ Sprinklr で、Azure AD の **[ユーザー名]** の値を **[Username]\(ユー
 
 Sprinklr で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 1. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 1. **[Sprinklr テスト ユーザーの作成](#creating-a-sprinklr-test-user)** - Sprinklr で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 1. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
@@ -161,7 +161,7 @@ Sprinklr で Azure AD のシングル サインオンを構成してテストす
 
     h. Azure Portal からコピーした **サインアウト URL** を **[Identity Provider Logout URL]\(ID プロバイダーのログアウト URL\)** ボックスに貼り付けます。
      
-    i. **[SAML User ID Type]** として **[Assertion contains User”s sprinklr.com username]** を選択します。
+    i. **[SAML User ID Type]\(SAML ユーザー ID の種類\)** として、**[Assertion contains User’s sprinklr.com username]\(アサーションにユーザーの sprinklr.com ユーザー名を含む\)** を選択します。
 
     j. **[SAML User ID Location]** として **[User ID is in the Name Identifier element of the Subject statement]** を選択します。
 

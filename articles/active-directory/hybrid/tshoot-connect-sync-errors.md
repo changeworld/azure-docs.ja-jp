@@ -11,22 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2018
+ms.date: 10/29/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: cb2b4bdee445587b32516c8db869170ab067b8d3
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c94ecc223c4e2c0533c23e58823bb203064ceef6
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406859"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250472"
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
 
  この記事では、読者に [Azure AD と Azure AD Connect の設計概念](plan-connect-design-concepts.md)の知識があることを想定しています。
 
-Azure AD Connect の最新バージョン \(2016 年 8 月以降\) では、同期エラーのレポートは [Azure Portal](https://aka.ms/aadconnecthealth) で Azure AD Connect Health for sync の一部として提供されます。
+Azure AD Connect の最新バージョン \(2016 年 8 月以降\) では、同期エラーのレポートは [Azure portal](https://aka.ms/aadconnecthealth) で Azure AD Connect Health for sync の一部として提供されます。
 
 2016 年 9 月 1 日以降、[Azure Active Directory Duplicate Attribute Resiliency](how-to-connect-syncservice-duplicate-attribute-resiliency.md) 機能がすべての "*新しい*" Azure Active Directory テナントに対して既定で有効になります。 この機能は既存のテナントについても数か月のうちに自動的に有効になります。
 
@@ -219,6 +219,29 @@ Azure Active Directory スキーマで設定されている、使用可能なサ
 
 ### <a name="how-to-fix"></a>修正方法
 1. エラーを引き起こした属性が、許可されている制限内になるようにします。
+
+## <a name="existing-admin-role-conflict"></a>既存の管理者ロールの競合
+
+### <a name="description"></a>説明
+**既存の管理者ロールの競合**は、ユーザー オブジェクトに次のものがある場合に、同期中にそのユーザー オブジェクトに対して発生します。
+
+- 管理権限、および
+- 既存の Azure AD オブジェクトと同じ UserPrincipalName
+
+Azure AD Connect は、オンプレミスの AD からのユーザー オブジェクトと、管理ロールが割り当てられている Azure AD 内のユーザー オブジェクトとのあいまい一致は行えません。  詳細については、「[Azure AD の UserPrincipalName の設定](plan-connect-userprincipalname.md)」を参照してください
+
+![既存の管理者](media/tshoot-connect-sync-errors/existingadmin.png)
+
+
+### <a name="how-to-fix"></a>修正方法
+この問題を解決するには、次のいずれかの操作を行ってください。
+
+
+- UserPrincipalName を Azure AD の管理者ユーザーのものと一致しない値に変更する - Azure AD に UserPrincipalName が一致する新しいユーザーを作成します
+- Azure AD の管理者ユーザーから管理ロールを削除します。これにより、オンプレミスのユーザー オブジェクトと既存の Azure AD ユーザー オブジェクトの間のあいまい一致が有効になります。
+
+>[!NOTE]
+>オンプレミスのユーザー オブジェクトと Azure AD ユーザー オブジェクトの間のあいまい一致が完了した後、管理ロールを既存のユーザー オブジェクトに再度割り当てることができます。
 
 ## <a name="related-links"></a>関連リンク
 * [Locate Active Directory Objects in Active Directory Administrative Center (Active Directory 管理センターで Active Directory オブジェクトを見つける)](https://technet.microsoft.com/library/dd560661.aspx)

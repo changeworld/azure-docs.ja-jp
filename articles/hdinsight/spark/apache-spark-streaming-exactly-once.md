@@ -3,17 +3,17 @@ title: イベント処理を 1 回のみ伴う Spark Streaming ジョブの作�
 description: ただ 1 回だけイベントを処理するように Spark Streaming を設定する方法。
 services: hdinsight
 ms.service: hdinsight
-author: jasonwhowell
-ms.author: jasonh
+author: hrasheed-msft
+ms.author: hrasheed
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 01/26/2018
-ms.openlocfilehash: ae170e90cede26bd6a43fcc10b93fcd7490d838f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.date: 11/06/2018
+ms.openlocfilehash: 6c39eb02e9610e0020ab2abe8a192dabf0b768d9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618823"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241319"
 ---
 # <a name="create-spark-streaming-jobs-with-exactly-once-event-processing"></a>イベント処理を 1 回のみ伴う Spark Streaming ジョブの作成
 
@@ -61,13 +61,21 @@ Spark Streaming がその使用をサポートしている先書きログでは�
 
 1. StreamingContext オブジェクトでは、チェックポイントのストレージ パスを構成します。
 
-    val ssc = new StreamingContext(spark, Seconds(1))  ssc.checkpoint("/path/to/checkpoints")
+    ```Scala
+    val ssc = new StreamingContext(spark, Seconds(1))
+    ssc.checkpoint("/path/to/checkpoints")
+    ```
 
     HDInsight では、これらのチェックポイントをクラスターに接続されている既定のストレージ (Azure Storage または Azure Data Lake Store) に保存する必要があります。
 
 2. 次に、DStream でチェックポイントの間隔 (秒単位) を指定します。 各間隔で、入力イベントから派生した状態データがストレージに保存されます。 永続化された状態データは、ソース イベントから状態を再構築するときに必要な計算を減らすことができます。
 
-    val lines = ssc.socketTextStream("hostname", 9999)  lines.checkpoint(30)  ssc.start()  ssc.awaitTermination()
+    ```Scala
+    val lines = ssc.socketTextStream("hostname", 9999)
+    lines.checkpoint(30)
+    ssc.start()
+    ssc.awaitTermination()
+    ```
 
 ### <a name="use-idempotent-sinks"></a>べき等シンクの使用
 

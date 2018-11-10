@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.component: alerts
-ms.openlocfilehash: 9e4302b780d0c08afbc791a0aec6bfd806aba161
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fe854c6a33a950f9f937118b6048d547f1a2fe37
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263706"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51245768"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>管理イベントに関する Azure アラートをアクティビティ ログ アラートに移行する
 
@@ -28,7 +28,7 @@ ms.locfileid: "35263706"
 Azure Monitor (旧称 Azure Insights) では、管理イベントからトリガーされ、webhook の URL または電子メール アドレスへの通知を生成するアラートを作成する機能が提供されていました。 次のいずれかの方法でアラートを作成している可能性があります。
 * Azure Portal で、特定の種類のリソースについて、[監視]、[アラート]、[アラートの追加] の順に移動して、[アラート対象] を [イベント] に設定する
 * Add-AzureRmLogAlertRule PowerShell コマンドレットを実行する
-* [アラート REST API](http://docs.microsoft.com/rest/api/monitor/alertrules) を odata.type = “ManagementEventRuleCondition” および dataSource.odata.type = “RuleManagementEventDataSource” と共に直接使用する
+* [アラート REST API](https://docs.microsoft.com/rest/api/monitor/alertrules) を odata.type = “ManagementEventRuleCondition” および dataSource.odata.type = “RuleManagementEventDataSource” と共に直接使用する
  
 次の PowerShell スクリプトは、各アラートに設定されている条件だけでなく、サブスクリプション内にある管理イベントに関するすべてのアラートの一覧を返します。
 
@@ -95,7 +95,7 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 この機能は、[Azure Monitor アクティビティ ログ アラート](monitoring-activity-log-alerts.md)に移行されました。 この新しいアラートを使用すると、アクティビティ ログのイベントに条件を設定し、新しいイベントがその条件に一致するときに通知を受信できます。 管理イベントに関するアラートから強化された機能も提供しています。
 * [アクション グループ](monitoring-action-groups.md)を使用して、多くのアラートにわたって通知の受信者 (「アクション」) のグループを再利用すると、アラートを受信する必要のあるユーザーを変更するときの複雑さが軽減されます。
 * アクション グループと SMS を使用して、携帯電話で直接通知を受信できます。
-* [Resource Manager テンプレートでアクティビティ ログ アラートを作成](monitoring-create-activity-log-alerts-with-resource-manager-template.md)できます。
+* [Resource Manager テンプレートでアクティビティ ログ アラートを作成](alert-activity-log.md)できます。
 * 特定のニーズを満たす、より柔軟で複雑な条件を作成できます。
 * 通知は、より迅速に配信されます。
  
@@ -103,7 +103,7 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
  
 新しいアクティビティ ログ アラートを作成するには、次のいずれかの方法を使用できます。
 * [Azure Portal でアラートを作成する方法についてのガイド](monitoring-activity-log-alerts.md)に従う
-* [Resource Manager テンプレートを使用してアラートを作成する](monitoring-create-activity-log-alerts-with-resource-manager-template.md)方法を学習する
+* [Resource Manager テンプレートを使用してアラートを作成する](alert-activity-log.md)方法を学習する
  
 以前に作成した、管理イベントに関するアラートは、アクティビティ ログ アラートに自動的には移行されません。 上記の PowerShell スクリプトを使用して、現在構成済みで、かつアクティビティ ログ アラートとして手動で再作成する、管理イベントに関するアラートを一覧表示する必要があります。 この操作は、10 月 1 日より前に行う必要があります。10 月 1 日以降、管理イベントに関するアラートが Azure サブスクリプションに表示されなくなります。 Azure Monitor のメトリック アラート、Application Insights のアラート、および Log Analytics のアラートを含むその他の種類の Azure アラートは、この変更による影響を受けません。 ご質問があれば、後のコメントに投稿してください。
 
@@ -112,7 +112,7 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 
 * [アクティビティ ログ](monitoring-overview-activity-logs.md) の詳細
 * [Azure Portal からのアクティビティ ログ アラート](monitoring-activity-log-alerts.md)の構成
-* [Resource Manager からのアクティビティ ログ アラート](monitoring-create-activity-log-alerts-with-resource-manager-template.md)の構成
+* [Resource Manager からのアクティビティ ログ アラート](alert-activity-log.md)の構成
 * [アクティビティ ログ アラート webhook スキーマ](monitoring-activity-log-alerts-webhook.md) の確認
 * [サービス通知](monitoring-service-notifications.md) の詳細
 * [アクション グループ](monitoring-action-groups.md)の詳細については、こちらをご覧ください。

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 5/21/2018
+ms.date: 10/29/2018
 ms.topic: article
 ms.service: azure-blockchain
-ms.reviewer: zeyadr
+ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: ee8057be98d18db5963a3e5f1ba1f8bd8d76fe05
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: c08557156848d4e7fcf0b1adbe6c8faa4ee00c82
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48241597"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50231374"
 ---
 # <a name="hyperledger-fabric-single-member-network"></a>Hyperledger Fabric シングル メンバー ネットワーク
 
@@ -26,9 +26,9 @@ Hyperledger Fabric コンソーシアム ソリューション テンプレー�
 - ブロックチェーン、Hyperledger Fabric、より複雑なコンソーシアム ネットワーク アーキテクチャの実用的知識を得る
 - Azure Portal 内からシングル メンバー Hyperledger Fabric コンソーシアム ネットワークをデプロイし、構成する方法を学習する
 
-## <a name="about-blockchain"></a>ブロックチェーンについて
+## <a name="about-blockchain"></a>ブロックチェーンの概要
 
-ブロックチェーン コミュニティに参加したばかりなら、ぜひこの機会にこの技術を学習してください。Azure で構成可能な方法で楽に学習できます。 ブロックチェーンは Bitcoin の背後にある基礎技術ですが、仮想通貨を可能にするだけの技術ではありません。 既存のデータベース、分散システム、暗号化技術を合わせたものであり、マルチパーティ秘密計算 (Secure Multi-party Computation) を可能にします。不変性、検証可能性、監査可能性、攻撃に対する回復力が約束されます。 さまざまなプロトコルでさまざまなメカニズムを採用することで、このような特性が与えられます。 [Hyperledger Fabric](https://github.com/hyperledger/fabric) はこのようなプロトコルの 1 つです。
+このソリューション テンプレートは、ブロックチェーン コミュニティに参加したばかりの方に最適です。ぜひこの機会にこの技術を学習してください。Azure で構成可能な方法で楽に学習できます。 ブロックチェーンは Bitcoin の背後にある基礎技術ですが、仮想通貨を可能にするだけの技術ではありません。 既存のデータベース、分散システム、暗号化技術を合わせたものであり、マルチパーティ秘密計算 (Secure Multi-party Computation) を可能にします。不変性、検証可能性、監査可能性、攻撃に対する回復力が約束されます。 さまざまなプロトコルでさまざまなメカニズムを採用することで、このような特性が与えられます。 [Hyperledger Fabric](https://github.com/hyperledger/fabric) はこのようなプロトコルの 1 つです。
 
 ## <a name="consortium-architecture-on-azure"></a>Azure のコンソーシアム アーキテクチャ
 
@@ -36,7 +36,7 @@ Hyperledger Fabric コンソーシアム ソリューション テンプレー�
 
 このネットワークは次の 3 種類のノードから成ります。
 
-1. **Member ノード**: ネットワークのメンバーを登録し、管理する Fabric メンバーシップ サービスを実行するノード。 このノードはゆくゆくは拡張性と高可用性のためにクラスター化できます。ただし、この演習ではシングル メンバー ノードが使用されます。
+1. **Member ノード**: ネットワークのメンバーを登録し、管理する Fabric メンバーシップ サービスを実行するノード。 このノードは拡張性と高可用性のためにクラスター化できます。ただし、この演習ではシングル メンバー ノードが使用されます。
 2. **Orderer ノード**: トータル オーダー ブロードキャストやアトミック トランザクションなど、配信保証を実装する通信サービスを実行するノード。
 3. **Peer ノード**: トランザクションをコミットし、分散型台帳の状態とコピーを保守管理するノード。
 
@@ -57,13 +57,13 @@ Hyperledger Fabric コンソーシアム ソリューション テンプレー�
 
 ## <a name="deployment"></a>Deployment
 
-始めに、**[Hyperledger Fabric Single Member Blockchain]\(Hyperledger Fabric シングル メンバー ブロックチェーン\)** を選択し、**[作成]** をクリックします。 ウィザードで **[基本]** ブレードが開きます。
+始めに、**[Hyperledger Fabric Single Member Blockchain]\(Hyperledger Fabric シングル メンバー ブロックチェーン\)** を選択し、**[作成]** をクリックして、ウィザードの **[基本]** ブレードを開きます。
 
 テンプレート デプロイでは、マルチノード ネットワークを段階的に構成できます。 デプロイ フローは、基本、ネットワーク構成、Fabric 構成の 3 段階に分かれています。
 
 ### <a name="basics"></a>基本
 
-**[基本]** ブレードで、サブスクリプション、リソース グループ、基本仮想マシンのプロパティなど、デプロイの標準パラメーターの値を指定します。
+**[基本]** ブレードで、デプロイの標準パラメーターの値を指定します。 たとえば、サブスクリプション、リソース グループ、基本仮想マシンのプロパティを指定します。
 
 ![基本](./media/hyperledger-fabric-single-member-blockchain/basics.png)
 
@@ -72,7 +72,7 @@ Hyperledger Fabric コンソーシアム ソリューション テンプレー�
 **[リソース プレフィックス]**| デプロイされたリソースの命名規則の基礎として使用される文字列。|6 文字以下|該当なし
 **[VM ユーザー名]**| このメンバーに対してデプロイされている各仮想マシンの管理者のユーザー名。|1 から 64 文字|azureuser
 **認証の種類**| 仮想マシンに対して認証する方法。|[パスワード] または [SSH 公開キー]|パスワード
-**[パスワード] ([認証の種類] = [パスワード])**|デプロイされた各仮想マシンの管理者アカウントのパスワード。 パスワードには、小文字、大文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。<br /><br />VM にはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|12 から 72 文字|該当なし
+**[パスワード] ([認証の種類] = [パスワード])**|デプロイされた各仮想マシンの管理者アカウントのパスワード。 パスワードには、大文字、小文字、数字、特殊文字の 4 種類のうち 3 種類を使用する必要があります。<br /><br />VM にはすべて、最初の段階で同じパスワードが与えられます。プロビジョニング後にそのパスワードを変更できます。|12 から 72 文字|該当なし
 **[SSH キー] ([認証の種類] = [公開キー])**|リモート ログインに使用される Secure Shell キー。||該当なし
 **[Restrict access by IP address]\(IP アドレスごとにアクセスを制限する\)**|クライアント エンドポイント アクセスが制限されるかどうかを決定する設定。|はい/いいえ| いいえ 
 **[Allowed IP address or subnet]\(許可される IP アドレスまたはサブネット\) ([Restrict access by IP address]\(IP アドレスごとにアクセスを制限する\) = [はい])**|アクセス制御が有効になっているとき、クライアント エンドポイントへのアクセスが許可される IP アドレスまたは一連の IP アドレス。||該当なし
@@ -80,9 +80,9 @@ Hyperledger Fabric コンソーシアム ソリューション テンプレー�
 **リソース グループ** |コンソーシアム ネットワークをデプロイするリソース グループ||該当なし
 **場所** |最初のメンバー**のネットワーク フットプリントをデプロイする Azure リージョン。
 
-### <a name="network-size-and-performance"></a>ネットワーク サイズとパフォーマンス
+### <a name="network-size-and-performance"></a>Network size and performance (ネットワークのサイズとパフォーマンス)
 
-次に、**[Network Size and Performance]\(ネットワークのサイズとパフォーマンス\)** で、Membership ノード、Orderer ノード、Peer ノードの数など、コンソーシアム ネットワークのサイズに対する入力を指定します。 インフラストラクチャ オプションと仮想マシンのサイズを選択します。
+次に、**[Network Size and Performance]\(ネットワークのサイズとパフォーマンス\)** で、コンソーシアム ネットワークのサイズを入力します。 たとえば、Membership ノード、Orderer ノード、Peer ノードの数を指定します。 インフラストラクチャ オプションと仮想マシンのサイズを選択します。
 
 ![Network size and performance (ネットワークのサイズとパフォーマンス)](./media/hyperledger-fabric-single-member-blockchain/network-size-performance.png)
 

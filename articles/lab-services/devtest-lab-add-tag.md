@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 3d9a5b3c0ae0b6058d3e8ccf8cdb340bd1200edc
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 38ec93afd27ac75a97a28fef59bd10fafdf963c9
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299113"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247043"
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボにタグを追加する
 
@@ -32,7 +32,7 @@ ms.locfileid: "38299113"
 * IP アドレス
 * ロード バランサー
 * ストレージ アカウント
-* 管理ディスク
+* マネージド ディスク
 
 [ラボを作成](devtest-lab-create-lab.md)するときにタグを適用すると、あとで [Configuration and settings]\(構成と設定\) の[タグ] ブレードから管理できます。
 
@@ -40,7 +40,7 @@ ms.locfileid: "38299113"
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>既存のラボのタグを管理する手順
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 1. 必要に応じて、**[All Services]\(その他のサービス\)** を選択し、一覧から **[DevTest Labs]** を選択します。 お使いのラボは、**[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります。
 1. ラボの一覧から、タグを追加して管理するラボを選択します。  
 1. ラボの **[概要]** で、**[Configuration and policies]\(構成とポリシー\)** を選択します。  

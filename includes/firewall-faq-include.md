@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/20/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: e4d698b8b9c3f9e304780ee49bd4243a76e69138
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: e33871f35613fbd5cdc5bf3162855b942056807f
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471532"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254694"
 ---
 ### <a name="what-is-azure-firewall"></a>Azure Firewall とは
 
@@ -111,10 +111,7 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 
 ### <a name="what-are-the-known-service-limits"></a>既知のサービスの制限には何がありますか?
 
-* Azure Firewall には、1 か月あたり 1 ファイアウォールにつき 1,000 TB のソフト制限があります。
-* 中央の仮想ネットワークで実行される Azure Firewall のインスタンスには、仮想ネットワーク ピアリングの上限があり、スポーク仮想ネットワークは最大 50 個に制限されます。  
-* Azure Firewall はグローバル ピアリングで機能しないので、リージョンごとにファイアウォールを少なくとも 1 つ展開する必要があります。
-* Azure Firewall では、10,000 個のアプリケーション ルールと 10,000 個のネットワーク ルールがサポートされます。
+Azure Firewall サービスの制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md#azure-firewall-limits)」を参照してください。
 
 ### <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Azure Firewall では、ハブ仮想ネットワークで 2 つのスポーク仮想ネットワーク間のネットワーク トラフィックを転送したりフィルター処理したりできますか?
 

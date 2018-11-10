@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: c183bbe2c20bdc1772160cbbd8260dece0b6eb54
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 7348f76ab0d5a1057e9fd929e8a55dd0a9e99eb6
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309503"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50140978"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Azure Cosmos DB と Azure Functions を使用したサーバーレス データベース コンピューティング
 
@@ -31,7 +31,8 @@ Azure Cosmos DB と Azure Functions を使用して、次の方法でデータ�
 * **出力バインディング**を使用して、関数を Azure Cosmos DB コンテナーにバインドします。 関数が完了すると、出力バインディングはコンテナーにデータを書き込みます。
 
 > [!NOTE]
-> 現時点で、Azure Cosmos DB トリガー、入力バインディング、出力バインディングは、SQL API アカウントと Gremlin API アカウントにのみ使用できます。
+> 現在のところ、Azure Cosmos DB トリガー、入力バインディング、および出力バインディングは、SQL API で使用する場合にのみサポートされます。 他のすべての Azure Cosmos DB API については、MongoDB API、Cassandra API、Gremlin API、Table API など、API 用の静的クライアントを使用して関数からデータベースにアクセスする必要があります。
+
 
 次の各図は、これら 3 つの統合を示しています。 
 

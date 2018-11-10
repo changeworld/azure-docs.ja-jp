@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 35c15613192ac12a7d4c64cbe28f62200724d311
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: af7500d6bf12ef34e6919aa255185a87525310b3
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452277"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240717"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でストレージ アカウントを管理する
 ビジネスのニーズに基づいてストレージ容量を検索、回復、および回収するために、Azure Stack でストレージ アカウントを管理する方法について説明します。
@@ -136,8 +136,8 @@ PowerShell を使用して保有期間を明示的にオーバーライドし、
 **PowerShell を使用して容量を回収するには:**   
 
 1. Azure PowerShell がインストールおよび構成されていることを確認します。 それ以外の場合は、次の手順を実行します。 
-   * Azure PowerShell の最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、[Azure PowerShell のインストールおよび構成方法](http://azure.microsoft.com/documentation/articles/powershell-install-configure/)に関するページをご覧ください。
-   Azure Resource Manager コマンドレットの詳細については、[Azure Resource Manager での Azure PowerShell の使用](http://go.microsoft.com/fwlink/?LinkId=394767)に関するページを参照してください。
+   * Azure PowerShell の最新バージョンをインストールして、Azure サブスクリプションに関連付けるには、[Azure PowerShell のインストールおよび構成方法](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)に関するページをご覧ください。
+   Azure Resource Manager コマンドレットの詳細については、[Azure Resource Manager での Azure PowerShell の使用](https://go.microsoft.com/fwlink/?LinkId=394767)に関するページを参照してください。
 2. 次のコマンドレットを実行します。
 
 > [!NOTE]  

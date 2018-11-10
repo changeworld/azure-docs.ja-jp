@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/17/2018
-ms.openlocfilehash: 31f61a1d6dee19ada60a1024a235f6329d7d5ca0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 661fd36b4451238f488bff1db60a901a8dabd5aa
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377816"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242162"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Azure SQL ハイパースケール データベースに関する FAQ
 
@@ -253,7 +253,7 @@ SQL Server 2005。 詳しくは、「[単一データベースまたはプール
 
 ### <a name="what-slas-are-provided-for-a-hyperscale-database"></a>ハイパースケール データベースではどのような SLA が提供されるか
 
-一般に、パブリック プレビューの段階で SLA は提供されません。 ただし、ハイパースケールでは、現在の SQL DB サービスと同じレベルの高可用性を提供します。 [SLA](http://azure.microsoft.com/support/legal/sla/) に関するページをご覧ください。
+一般に、パブリック プレビューの段階で SLA は提供されません。 ただし、ハイパースケールでは、現在の SQL DB サービスと同じレベルの高可用性を提供します。 [SLA](https://azure.microsoft.com/support/legal/sla/) に関するページをご覧ください。
 
 ### <a name="are-the-database-backups-managed-for-me-by-the-azure-sql-database-service"></a>Azure SQL Database サービスによってデータベース バックアップが管理されるか
 

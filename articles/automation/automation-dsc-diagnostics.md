@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: dsc
 author: bobbytreed
 ms.author: robreed
-ms.date: 08/08/2018
+ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 62d201e608864949c86e52d8ac8fbf9ce8538f11
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: aa543ad119716b25b7f3ab00d49efb9fe6fb6c3f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631465"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244238"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Log Analytics への Azure Automation State Configuration レポート データの転送
 
@@ -44,14 +44,14 @@ Azure Automation DSC から Log Analytics へのデータのインポートを�
 
   ```powershell
   # Find the ResourceId for the Automation Account
-  Find-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
+  Get-AzureRmResource -ResourceType 'Microsoft.Automation/automationAccounts'
   ```
 
 1. 次の PowerShell コマンドを実行して、Log Analytics ワークスペースの _ResourceId_ を取得します (ワークスペースが 1 つ以上ある場合は、構成するワークスペースの _ResourceID_ を選択します)。
 
   ```powershell
   # Find the ResourceId for the Log Analytics workspace
-  Find-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
+  Get-AzureRmResource -ResourceType 'Microsoft.OperationalInsights/workspaces'
   ```
 
 1. 次の PowerShell コマンドを実行します。`<AutomationResourceId>` と `<WorkspaceResourceId>` はそれぞれ前の手順で取得した _ResourceId_ の値と置き換えます。

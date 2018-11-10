@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: harijay
-ms.openlocfilehash: facd9be037894932e516e8294e36b6b0e55374c8
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 2cde7d2af4dee9e2bd241f0856b8f2d29ccad6ad
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024420"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210739"
 ---
 # <a name="virtual-machine-serial-console"></a>仮想マシンのシリアル コンソール
 
@@ -54,20 +54,26 @@ Linux VM のシリアル コンソールのドキュメントを参照するに�
   4. 下へスクロールして [サポート + トラブルシューティング] セクションを表示し、[シリアル コンソール] オプションをクリックします。 シリアル コンソールで新しいウィンドウが開き、接続が開始されます。
 
 ## <a name="enable-serial-console-in-custom-or-older-images"></a>カスタム イメージまたは古いイメージでシリアル コンソールを有効にする
-Azure の新しい Windows Server イメージでは、既定で [Special Administrative Console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) が有効になります。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。 2018 年 2 月以前に作成された Windows 仮想マシンのシリアル コンソールを有効にするには、次の手順を実行します。 
+Azure の新しい Windows Server イメージでは、既定で [Special Administrative Console](https://technet.microsoft.com/library/cc787940(v=ws.10).aspx) (SAC) が有効になります。 SAC は Windows のサーバー バージョンではサポートされていますが、クライアント バージョン (Windows 10、Windows 8、Windows 7 など) では使用できません。 
+
+以前の Windows Server イメージ (2018 年 2 月より前に作成されたもの) では、Azure portal の実行コマンド機能を使用してシリアル コンソールを自動的に有効にすることができます。 Azure portal で "EnableEMS" という名前の実行コマンドを探します。
+
+![](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-runcommand.png)
+
+または、2018 年 2 月以前に作成された Windows 仮想マシンのシリアル コンソールを手動で有効にするには、次の手順を実行します。 
 
 1. リモート デスクトップを介して Windows 仮想マシンに接続します。
-2. 管理コマンド プロンプトで次のコマンドを実行します。 
-* `bcdedit /ems {current} on`
-* `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
-3. システムを再起動して、SAC コンソールを有効にします。
+1. 管理コマンド プロンプトで次のコマンドを実行します。 
+    * `bcdedit /ems {current} on`
+    * `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
+1. システムを再起動して、SAC コンソールを有効にします。
 
-![](/media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
+![](./media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
 必要に応じて、SAC をオフラインでも有効にすることができます。
 
 1. SAC を構成する Windows ディスクをデータ ディスクとして既存の VM に接続します。 
-2. 管理コマンド プロンプトで次のコマンドを実行します。 
+1. 管理コマンド プロンプトで次のコマンドを実行します。 
 * `bcdedit /store <mountedvolume>\boot\bcd /ems {default} on`
 * `bcdedit /store <mountedvolume>\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 

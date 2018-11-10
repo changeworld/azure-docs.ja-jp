@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 03/22/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 95f2ffb1a51184f1194f87a4a5e9a54e682edf80
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cbafe7fcdf2ccd515dfec5554c93bec9c7f3537a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46305961"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50243165"
 ---
 # <a name="connector-version-release-history"></a>コネクタ バージョンのリリース履歴
 Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネクタは頻繁に更新されます。
@@ -98,7 +98,7 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 * 一般的な Web サービス:
   * Wsconfig ツールでは、JSON 配列が、REST サービス メソッドの "サンプル要求" から正しく変換されませんでした。 このため、REST 要求のこの JSON 配列で、シリアル化の問題が発生しました。
   * Web サービス コネクタの構成ツールでは、JSON 属性名で空白記号を使用できません。 
-    * 代入パターンを、WSConfigTool.exe.config ファイルに手動で追加できます (例: ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```)。
+    * 代入パターンを、WSConfigTool.exe.config ファイルに手動で追加できます (例: ```<appSettings> <add key="JSONSpaceNamePattern" value="__" /> </appSettings>```)。
 > [!NOTE]
 > エクスポートには JSONSpaceNamePattern キーが必要です。次のエラーが表示されます: メッセージ: 空の名前は無効です。 
 
@@ -143,7 +143,7 @@ Lotus:
 ### <a name="enhancements"></a>強化された機能
 
 * Generic SQL:</br>
-  **シナリオの現象:** 1 つのオブジェクトの種類への参照のみが許可され、メンバーによる相互参照が必要であるということは、よく知られている SQL コネクタの制限事項です。 </br>
+  **シナリオの現象:**  1 つのオブジェクトの種類への参照のみが許可され、メンバーによる相互参照が必要であるということは、よく知られている SQL コネクタの制限事項です。 </br>
   **ソリューションの説明:** [*] オプションが選択されている参照の処理手順では、オブジェクトの種類の "すべての" 組み合わせが同期エンジンに返されます。
 
 >[!Important]

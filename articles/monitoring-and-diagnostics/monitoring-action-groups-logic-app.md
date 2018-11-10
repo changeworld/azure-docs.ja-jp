@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 3c1bff98debf426fc02dbd4518c0bb798d7ba96d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 74607f61482d4a96931e307e77b4a6d4c45e4c30
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576021"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50420933"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Azure Monitor アラートによって複雑なアクションをトリガーする方法
 
@@ -38,25 +38,25 @@ Azure Monitor アラートは、トリガー時に[アクション グループ]
 
 1.  Azure portal で、左上隅にある **[リソースの作成]** を選択します。
 
-2.  **[ロジック アプリ]** を見つけて選択し、**[作成]** を選択します。
+2.   **[ロジック アプリ]** を見つけて選択し、 **[作成]** を選択します。
 
 3.  ロジック アプリに**名前**を付け、**リソース グループ**などを選択します。
 
-    ![ロジック アプリを作成する](media/monitoring-action-groups/create-logic-app-dialog.png "ロジック アプリを作成する")
+    ![ロジック アプリを作成する](media/monitoring-action-groups-logic-app/create-logic-app-dialog.png "ロジック アプリを作成する")
 
 4.  **[作成]** を選択して、ロジック アプリを作成します。 ロジック アプリが作成されたことを示すポップアップ メッセージが表示されます。 **[Launch Resource]\(リソースの起動\)** を選択して **Logic Apps デザイナー**を開きます。
 
 5.  トリガー **[HTTP 要求の受信時]** を選択します。
 
-    ![ロジック アプリのトリガー](media/monitoring-action-groups/logic-app-triggers.png "ロジック アプリのトリガー")
+    ![ロジック アプリのトリガー](media/monitoring-action-groups-logic-app/logic-app-triggers.png "ロジック アプリのトリガー")
 
 6.  **[編集]** を選択して HTTP 要求トリガーを変更します。
 
-    ![HTTP 要求トリガー](media/monitoring-action-groups/http-request-trigger-shape.png "HTTP 要求トリガー")
+    ![HTTP 要求トリガー](media/monitoring-action-groups-logic-app/http-request-trigger-shape.png "HTTP 要求トリガー")
 
 7.  **[サンプルのペイロードを使用してスキーマを生成する]** を選びます。
 
-    ![サンプルのペイロードを使用する](media/monitoring-action-groups/use-sample-payload-button.png "サンプルのペイロードを使用する")
+    ![サンプルのペイロードを使用する](media/monitoring-action-groups-logic-app/use-sample-payload-button.png "サンプルのペイロードを使用する")
 
 8.  次のサンプル スキーマをコピーしてダイアログ ボックスに貼り付けます。
 
@@ -99,15 +99,15 @@ Azure Monitor アラートは、トリガー時に[アクション グループ]
 
 9. **ロジック アプリ デザイナー**により、ロジック アプリに送信する要求の **Content-Type** ヘッダーを **application/json** に設定する必要があることを示すポップアップ ウィンドウが表示されます。 ポップアップ ウィンドウを閉じます。 Azure Monitor アラートによってヘッダーが設定されます。
 
-    ![Content-Type ヘッダーを設定する](media/monitoring-action-groups/content-type-header.png "Content-Type ヘッダーを設定する")
+    ![Content-Type ヘッダーを設定する](media/monitoring-action-groups-logic-app/content-type-header.png "Content-Type ヘッダーを設定する")
 
 10. **[+** **新しいステップ]**、**[アクションの追加]** の順に選択します。
 
-    ![アクションの追加](media/monitoring-action-groups/add-action.png "アクションの追加")
+    ![アクションの追加](media/monitoring-action-groups-logic-app/add-action.png "アクションの追加")
 
 11. Microsoft Teams コネクタを検索して選択します。 **[Microsoft Teams – メッセージの投稿]** アクションを選択します。
 
-    ![Microsoft Teams アクション](media/monitoring-action-groups/microsoft-teams-actions.png "Microsoft Teams アクション")
+    ![Microsoft Teams アクション](media/monitoring-action-groups-logic-app/microsoft-teams-actions.png "Microsoft Teams アクション")
 
 12. Microsoft Teams アクションを構成します。 **Logic Apps デザイナー**により、Office 365 アカウントを認証するよう求められます。 メッセージ送信先の **[Team Id] (チーム ID)** と **[Channel Id] (チャネル ID)** を選択します。
 
@@ -125,13 +125,13 @@ Azure Monitor アラートは、トリガー時に[アクション グループ]
     > [!NOTE]
     > **status** という名前の 2 つの動的フィールドがあります。 その両方のフィールドをメッセージに追加します。 **activityLog** プロパティ バッグにあるフィールドを使用し、もう一方のフィールドを削除します。 **status** フィールドにカーソルを重ねると、次のスクリーンショットに示すように、完全修飾のフィールド参照が表示されます
 
-    ![Microsoft Teams アクション: メッセージを投稿する](media/monitoring-action-groups/teams-action-post-message.png "Microsoft Teams アクション: メッセージを投稿する")
+    ![Microsoft Teams アクション: メッセージを投稿する](media/monitoring-action-groups-logic-app/teams-action-post-message.png "Microsoft Teams アクション: メッセージを投稿する")
 
 14. **Logic Apps デザイナー**の上部にある **[保存]** を選択して、ロジック アプリを保存します。
 
 15. 既存のアクション グループを開き、ロジック アプリを参照するためのアクションを追加します。 既存のアクション グループがない場合は、「[Azure portal でのアクション グループの作成および管理](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)」を参照してアクション グループを作成します。 忘れずに変更を保存してください。
 
-    ![アクション グループを更新する](media/monitoring-action-groups/update-action-group.png "アクション グループを更新する")
+    ![アクション グループを更新する](media/monitoring-action-groups-logic-app/update-action-group.png "アクション グループを更新する")
 
 アラートが次にアクション グループを起動するときに、ロジック アプリが呼び出されます。
 
@@ -192,7 +192,7 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
        - `eventSource == ServiceHealth`
        - `version == "0.1.1"`
 
-      !["サービス正常性のペイロード条件"](media/monitoring-action-groups/service-health-payload-condition.png "サービス正常性のペイロード条件")
+      !["サービス正常性のペイロード条件"](media/monitoring-action-groups-logic-app/service-health-payload-condition.png "サービス正常性のペイロード条件")
 
    1. **[true の場合]** 条件で、「[アクティビティ ログ アラートの作成](#create-an-activity-log-alert-administrative)」の手順 11 から 13 に従って、Microsoft Teams アクションを追加します。
 
@@ -209,7 +209,7 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
        <p>[communication]</p>
        ```
 
-       !["サービス正常性の true 条件の投稿アクション"](media/monitoring-action-groups/service-health-true-condition-post-action.png "サービス正常性の true 条件の投稿アクション")
+       !["サービス正常性の true 条件の投稿アクション"](media/monitoring-action-groups-logic-app/service-health-true-condition-post-action.png "サービス正常性の true 条件の投稿アクション")
 
    1. **[false の場合]** 条件には有用なメッセージを指定します
 
@@ -219,7 +219,7 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
        <p><a href="https://ms.portal.azure.com/#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues">For details, log in to the Azure Service Health dashboard.\</a></p>
        ```
 
-       !["サービス正常性の false 条件の事後アクション"](media/monitoring-action-groups/service-health-false-condition-post-action.png "サービス正常性の false 条件の事後アクション")
+       !["サービス正常性の false 条件の事後アクション"](media/monitoring-action-groups-logic-app/service-health-false-condition-post-action.png "サービス正常性の false 条件の事後アクション")
 
 - 手順 15 は同じです。 指示に従ってロジック アプリを保存し、アクション グループを更新します
 
@@ -279,15 +279,15 @@ Azure Service Health エントリは、アクティビティ ログの一部で�
        - `schemaId == AzureMonitorMetricAlert`
        - `version == "2.0"`
        
-       !["メトリック アラートのペイロード条件"](media/monitoring-action-groups/metric-alert-payload-condition.png "メトリック アラートのペイロード条件")
+       !["メトリック アラートのペイロード条件"](media/monitoring-action-groups-logic-app/metric-alert-payload-condition.png "メトリック アラートのペイロード条件")
 
    1. **[true の場合]** 条件で、**For each** ループと Microsoft Teams アクションを追加します。 HTML と動的コンテンツの組み合わせを使用してメッセージを定義します。
 
-       !["メトリック アラートの true 条件の事後アクション"](media/monitoring-action-groups/metric-alert-true-condition-post-action.png "メトリック アラートの true 条件の事後アクション")
+       !["メトリック アラートの true 条件の事後アクション"](media/monitoring-action-groups-logic-app/metric-alert-true-condition-post-action.png "メトリック アラートの true 条件の事後アクション")
 
    1. **[false の場合]** 条件で、メトリック アラートがロジック アプリの期待に一致しないことを知らせる Microsoft Teams アクションを定義します。 JSON ペイロードを含めます。 `json()` 式で `triggerBody` 動的コンテンツを参照する方法に注目してください。
 
-       !["メトリック アラートの false 条件の事後アクション"](media/monitoring-action-groups/metric-alert-false-condition-post-action.png "メトリック アラートの false 条件の事後アクション")
+       !["メトリック アラートの false 条件の事後アクション"](media/monitoring-action-groups-logic-app/metric-alert-false-condition-post-action.png "メトリック アラートの false 条件の事後アクション")
 
 - 手順 15 は同じです。 指示に従ってロジック アプリを保存し、アクション グループを更新します
 

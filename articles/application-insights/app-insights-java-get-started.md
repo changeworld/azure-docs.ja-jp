@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: lagayhar
-ms.openlocfilehash: 216cebe74b7661e0ca336480774a56ea953ddc75
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 1079b83411fd76b4b9115ee80e385f1f2c63ba85
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49069473"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247094"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -342,7 +342,7 @@ Application Insights には、2 種類のデータが表示されます。1 つ�
 
 * Windows サーバーに次のものをインストールします。
 
-  * [Microsoft Visual C++ 再頒布可能パッケージ](http://www.microsoft.com/download/details.aspx?id=40784)
+  * [Microsoft Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/details.aspx?id=40784)
 
     (このコンポーネントにより、パフォーマンス カウンターが有効になります。)
 

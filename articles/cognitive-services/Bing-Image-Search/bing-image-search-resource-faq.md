@@ -10,12 +10,12 @@ ms.component: bing-image-search
 ms.topic: troubleshooting
 ms.date: 10/06/2017
 ms.author: v-jerkin
-ms.openlocfilehash: ea170f4751952288c7894cab9c5acda2bf443043
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: cdc8d8cad26ce4807c8f7bf8fe1d33f13d5799c1
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295502"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232938"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>Bing Image Search API についてよく寄せられる質問 (FAQ)
 
@@ -55,7 +55,7 @@ CORS プロキシをインストールして[チュートリアル アプリ](tu
 
 前の回答で説明されている CORS プロキシ アプローチは、開発、テスト、学習に適しています。
 
-一方、実稼働環境では、Bing Web Search API を使用する Web ページと同じドメイン上のサーバー側スクリプトをホストする必要があります。 このスクリプトは、実際には Web ページの JavaScript からの要求時に API 呼び出しを実行し、ヘッダーを含むすべての結果をクライアントに戻します。 2 つのリソース (ページとスクリプト) が配信元を共有するので、CORS は関与せず、特殊なヘッダーが Web ページ上の JavaScript からアクセスできます。
+一方、実稼働環境では、Bing Web Search API を使用する Web ページと同じドメイン上のサーバー側スクリプトをホストする必要があります。 このスクリプトは、実際には Web ページの JavaScript からの要求時に API 呼び出しを実行し、ヘッダーを含むすべての結果をクライアントに戻します。 2 つのリソース (ページとスクリプト) が配信元を共有するので、CORS は関与せず、特殊なヘッダーに Web ページ上の JavaScript からアクセスできます。
 
 API キーはサーバー側スクリプトでのみ必要なので、このアプローチでは API キーもパブリックへの露出から保護されます。 スクリプトでは、別の方法 (HTTP 参照元など) を使用して、要求が承認されているかどうかを確認できます。
 

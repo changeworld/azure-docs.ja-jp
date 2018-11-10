@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: b8b0b8934b51080c3583281673183c1498c26417
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 2f642a91bd656cb74cdce2a98c44372a64f23cb9
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31408311"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50237879"
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシン上の開発ツール
 
@@ -77,7 +77,7 @@ ms.locfileid: "31408311"
 | ------------- | ------------- |
 | 紹介   | Python 言語用のクライアント IDE    |
 | サポートされている DSVM バージョン      | Linux      |
-| 一般的な用途      |  R 開発     |
+| 一般的な用途      |  Python 開発     |
 | 使用/実行方法      | Linux のデスクトップ ショートカット (`/usr/bin/pycharm`)      |
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、RStudio      |
 

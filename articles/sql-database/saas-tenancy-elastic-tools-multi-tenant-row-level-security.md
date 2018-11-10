@@ -7,17 +7,17 @@ ms.subservice: scenario
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: tmullaney
-ms.author: thmullan
+author: VanMSFT
+ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 94430d3b72bb5b8e8bde0e9e2e9fb2eb2b0c3632
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: d669e7beb2d0e41ff26408d4f71c3e1648c41e3a
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056286"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50242570"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 
@@ -39,8 +39,8 @@ ms.locfileid: "47056286"
 
 ### <a name="prerequisites"></a>前提条件
 
-- Visual Studio (2012 以降) を使用します。 
-- 3 つの Azure SQL データベースを作成します 
+- Visual Studio (2012 以降) を使用します。
+- 3 つの Azure SQL データベースを作成します
 - サンプル プロジェクトをダウンロードします: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](http://go.microsoft.com/?linkid=9888163)
   - **Program.cs** 
 

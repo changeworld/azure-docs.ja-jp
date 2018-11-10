@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/07/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 92dde19e42c1adb6d83e1708106f844f228e8989
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: e286942f092d2e8c22824a18f5a6503d04a1be0c
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48239352"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50247557"
 ---
 # <a name="quickstart-create-a-java-web-app-in-app-service-on-linux"></a>クイック スタート: App Service on Linux で Java Web アプリを作成する
 
@@ -77,26 +77,7 @@ code pom.xml
 
 
 > [!NOTE] 
-> この記事では、WAR ファイル内にパッケージ化された Java アプリのみを操作します。 このプラグインは JAR Web アプリケーションもサポートしています。 これらのアプリケーションには、次の代替のプラグイン定義を使用します。 この構成は、Maven によって構築された JAR をローカル ファイル システム上の `${project.build.directory}/${project.build.finalName}.jar` にデプロイします。
->
->```xml
-><plugin>
->            <groupId>com.microsoft.azure</groupId>
->            <artifactId>azure-webapp-maven-plugin</artifactId>
->            <version>1.4.0</version>
->            <configuration>
->                <deploymentType>jar</deploymentType>
->
->           <!-- Web App information -->
->            <resourceGroup>${RESOURCEGROUP_NAME}</resourceGroup>
->            <appName>${WEBAPP_NAME}</appName>
->            <region>${REGION}</region>  
->
->                <!-- Java Runtime Stack for Web App on Linux-->
->                <linuxRuntime>jre8</linuxRuntime>
->            </configuration>
->         </plugin>
->```    
+> この記事では、WAR ファイル内にパッケージ化された Java アプリのみを操作します。 このプラグインは、JAR Web アプリケーションもサポートしています。[Java SE JAR ファイルを App Service on Linux にデプロイする方法](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)に関するページにアクセスしてお試しください。
 
 
 プラグイン構成で、次のプレースホルダーを更新します。
@@ -127,8 +108,8 @@ mvn package azure-webapp:deploy
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Maven を使用して Java Web アプリを作成し、[Maven Plugin for Azure Web Apps (プレビュー)](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) を構成した後、Web アーカイブにパッケージ化された Java Web アプリを App Service on Linux にデプロイしました。 Azure で Java を使用する方法の詳細については、以下のリンクを参照してください。
+このクイック スタートでは、Maven を使用して Java Web アプリを作成し、[Maven Plugin for Azure Web Apps](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin) を構成した後、Web アーカイブにパッケージ化された Java アプリを App Service on Linux にデプロイしました。 データベースを接続する方法、ログと監視を設定する方法、セキュリティを構成する方法、ランタイム オプションを設定する方法については、引き続き「App Service on Linux の Java 開発者ガイド」をお読みください。
 
 > [!div class="nextstepaction"]
-> [Java 開発者向けの Azure](https://docs.microsoft.com/java/azure/)
+> [App Service on Linux の Java 開発者ガイド](app-service-linux-java.md)
 

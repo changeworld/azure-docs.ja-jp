@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 86fc1c3542bea1be840041bb73df15631c066c7e
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: a91daf08a56470e4d1e112e37b51150c2c5f00ef
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294974"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230320"
 ---
 # <a name="monitor-receive-and-send-events-with-azure-event-hubs-and-azure-logic-apps"></a>Azure Event Hubs および Azure Logic Apps でイベントを監視および送受信する 
 
@@ -52,7 +52,7 @@ Azure サブスクリプションがない場合は、<a href="https://azure.mic
       ![Event Hubs 名前空間の接続文字列をコピーする](media/connectors-create-api-azure-event-hubs/find-event-hub-namespace-connection-string.png)
 
       > [!TIP]
-      > 接続文字列が Event Hubs 名前空間に関連付けられているか、特定のイベント ハブに関連付けられているかを確認するには、接続文字列に `EntityPath` パラメーターがないかどうかを確認します。 このパラメーターがある場合、接続文字列は特定のイベント ハブ "エンティティ" を対象としており、ロジック アプリで使用する正しい文字列ではありません。
+      > 接続文字列が Event Hubs 名前空間に関連付けられているか、特定のイベント ハブに関連付けられているかを確認するには、接続文字列に `EntityPath` パラメーターがないかどうかを確認します。 このパラメーターがある場合、接続文字列は特定のイベント ハブ "エンティティ" を対象としており、ロジック アプリで使用する正しい文字列ではありません。
 
 4. 続いて、[Event Hubs トリガーを追加](#add-trigger)するか、[Event Hubs アクションを追加](#add-action)します。
 
@@ -68,7 +68,8 @@ Azure Logic Apps では、すべてのロジック アプリは、必ず[トリ�
 
 2. 検索ボックスに、フィルターとして「イベント ハブ」と入力します。 トリガーの一覧から、目的のトリガーを選択します。 
 
-   この例では、**[Event Hubs - When events are available in Event Hub]\(イベント ハブ - イベント ハブでイベントを使用できるとき\)** トリガーを使用します
+   この例では、 
+    **[Event Hubs - When events are available in Event Hub]\(イベント ハブ - イベント ハブでイベントを使用できるとき\)** トリガーを使用します
 
    ![トリガーの選択](./media/connectors-create-api-azure-event-hubs/find-event-hubs-trigger.png)
 
@@ -111,7 +112,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 
 1. Azure Portal または Visual Studio で、Logic Apps デザイナーでロジック アプリを開きます。 この例では、Azure Portal を使用します。
 
-2. トリガーまたはアクションで、**[新しいステップ]** > **[アクションの追加]** を選択します。
+2. トリガーまたはアクションで、**[新しいステップ]** > **[アクションの追加]** を選択します。
 
    既存のステップの間にアクションを追加するには、接続矢印の上にマウスを移動します。 
    表示されるプラス記号 (**+**) を選択し、**[アクションの追加]** を選択します。
@@ -172,7 +173,7 @@ Azure Logic Apps では、[アクション](../logic-apps/logic-apps-overview.md
 ## <a name="get-support"></a>サポートを受ける
 
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
-* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
+* 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](https://aka.ms/logicapps-wish)にアクセスしてください。
 
 ## <a name="next-steps"></a>次の手順
 

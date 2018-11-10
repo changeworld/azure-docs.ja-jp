@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure PowerShell で Azure Database Migration Service モジュールを使用してオンプレミスの SQL Server を Azure SQL DB に移行する |Microsoft Docs
-description: Azure PowerShell を使用してオンプレミスの SQL Server から Azure SQL に移行する方法について説明します。
+title: Database Migration Service および PowerShell を使用して SQL Server を Azure SQL Database に移行する | Microsoft Docs
+description: Azure PowerShell を使用してオンプレミスの SQL Server から Azure SQL Database に移行する方法について説明します。
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/09/2018
-ms.openlocfilehash: ffa4d5f87a722ed3cb95d873d02707ed1c797dc6
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 0a4e88ed52e2da814d1b10dbc695c9c61b899ef1
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48886668"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50248206"
 ---
-# <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Azure PowerShell を使用して オンプレミスの SQL Server を Azure SQL DB に移行する
+# <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Azure PowerShell を使用してオンプレミスの SQL Server を Azure SQL Database に移行する
 この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2016 以上のオンプレミス インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database に移行します。 データベースをオンプレミスの SQL Server インスタンスから Azure SQL Database に移行するには、Microsoft Azure PowerShell で `AzureRM.DataMigration` モジュールを使用します。
 
 この記事では、次のことについて説明します:

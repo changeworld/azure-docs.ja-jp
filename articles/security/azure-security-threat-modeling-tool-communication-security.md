@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7e8afc02c738a2bba445b1d84b7cb899dfbb93a0
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: bc724f57a25e2ca12d334192d2171899345e72de
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301556"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51247383"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信セキュリティの | 対応策 
 | 製品/サービス | 記事 |
@@ -113,7 +113,7 @@ ms.locfileid: "43301556"
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - Azure |
 | **参照**              | [Azure App Service に HTTPS を適用する](../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
-| **手順** | <p>Azure では、*.azurewebsites.net ドメインのワイルドカード証明書を使用する Azure App Service に対して、HTTPS が既に有効になっていますが、適用されていません。 訪問者は引き続き HTTP を使用してアプリにアクセスするため、アプリのセキュリティが侵害される可能性があります。したがって HTTPS を明示的に適用する必要があります。 ASP.NET MVC アプリケーションは、セキュリティで保護されていない HTTP 要求が HTTPS 経由で再送信されるように強制する、[RequireHttps フィルター](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)を使用する必要があります。</p><p>また、Azure App Service に組み込まれている URL 書き換えモジュールを使用して、HTTPS を適用することもできます。 URL 書き換えモジュールを使用すると、アプリケーションに渡す前に受信要求に適用するルールを開発者が定義できます。 URL 書き換えルールは、アプリケーションのルートに格納されている web.config ファイルで定義されます</p>|
+| **手順** | <p>Azure では、*.azurewebsites.net ドメインのワイルドカード証明書を使用する Azure App Service に対して、HTTPS が既に有効になっていますが、適用されていません。 訪問者は引き続き HTTP を使用してアプリにアクセスするため、アプリのセキュリティが侵害される可能性があります。したがって HTTPS を明示的に適用する必要があります。 ASP.NET MVC アプリケーションは、セキュリティで保護されていない HTTP 要求が HTTPS 経由で再送信されるように強制する、[RequireHttps フィルター](https://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)を使用する必要があります。</p><p>また、Azure App Service に組み込まれている URL 書き換えモジュールを使用して、HTTPS を適用することもできます。 URL 書き換えモジュールを使用すると、アプリケーションに渡す前に受信要求に適用するルールを開発者が定義できます。 URL 書き換えルールは、アプリケーションのルートに格納されている web.config ファイルで定義されます</p>|
 
 ### <a name="example"></a>例
 次の例には、すべての受信トラフィックに HTTPS の使用を強制する基本的な URL 書き換えルールが含まれています
@@ -156,7 +156,7 @@ ms.locfileid: "43301556"
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | SQL Azure  |
 | **属性**              | SQL バージョン - V12 |
-| **参照**              | [SQL Database 用のセキュリティで保護された接続文字列の書き込みに関するベスト プラクティス](http://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
+| **参照**              | [SQL Database 用のセキュリティで保護された接続文字列の書き込みに関するベスト プラクティス](https://social.technet.microsoft.com/wiki/contents/articles/2951.windows-azure-sql-database-connection-security.aspx#best) |
 | **手順** | <p>SQL Database とクライアント アプリケーションの間の通信はすべて、常に Secure Sockets Layer (SSL) を使用して暗号化されます。 SQL Database では、暗号化されていない接続はサポートされません。 アプリケーション コードやツールで証明書を検証するには、暗号化された接続を明示的に要求し、サーバー証明書は信頼しないようにします。 アプリケーション コードやツールが、暗号化された接続を要求しない場合でも、暗号化された接続を受け付けることはできます</p><p>ただし、サーバー証明書は検証されず、"man in the middle" 攻撃を受けやすくなります。 ADO.NET アプリケーション コードで証明書を検証するには、データベース接続文字列で `Encrypt=True` と `TrustServerCertificate=False` を設定します。 SQL Server Management Studio を使用して証明書を検証するには、[サーバーに接続] ダイアログ ボックスを開きます。 [接続プロパティ] タブの [暗号化接続] をクリックします</p>|
 
 ## <a id="encrypted-sqlserver"></a>SQL サーバーへの通信を強制的に暗号化する

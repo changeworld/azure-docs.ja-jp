@@ -1,0 +1,126 @@
+---
+title: オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行する - アーキテクチャのベスト プラクティス
+description: オンプレミスの Hadoop クラスターを Azure HDInsight に移行する場合のアーキテクチャのベスト プラクティスについて説明します。
+services: hdinsight
+author: hrasheed-msft
+ms.reviewer: ashishth
+ms.service: hdinsight
+ms.custom: hdinsightactive
+ms.topic: conceptual
+ms.date: 10/25/2018
+ms.author: hrasheed
+ms.openlocfilehash: 02db6b4691beb4bfefa3815c87cf54f350219d81
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418009"
+---
+# <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>オンプレミスの Apache Hadoop クラスターを Azure HDInsight に移行する - アーキテクチャのベスト プラクティス
+
+この記事では、Azure HDInsight システムのアーキテクチャに関する推奨事項について説明します。 これは、オンプレミスの Apache Hadoop システムを Azure HDInsight に移行する際に役立つベスト プラクティスを紹介するシリーズの一部です。
+
+## <a name="use-multiple-workload-optimized-clusters"></a>ワークロードに最適化された複数のクラスターを使用する
+
+多くのオンプレミスの Apache Hadoop デプロイは、多数のワークロードをサポートする 1 つの大規模なクラスターで構成されています。 この 1 つのクラスターは複雑になることがあり、すべてを連携させるために個々のサービスに対して妥協が必要になる場合があります。 オンプレミスの Hadoop クラスターを Azure HDInsight に移行するには、アプローチの変更が必要になります。
+
+Azure HDInsight クラスターは、特定の種類の計算を利用するために設計されています。 ストレージは複数のクラスター間で共有できるため、ワークロードに最適化された複数のコンピューティング クラスターを作成してさまざまなジョブのニーズを満たすことができます。 クラスターの種類ごとに、それぞれ特定のワークロードに最適な構成があります。 次の表には、HDInsight でサポートされるクラスターの種類と対応するワークロードを示しています。
+
+|**ワークロード**|**HDInsight クラスターの種類**|
+|---|---|
+|バッチ処理 (ETL/ELT)|Hadoop、Spark|
+|データ ウェアハウス|Hadoop、Spark、対話型クエリ|
+|IoT/ストリーミング|Kafka、Storm、Spark|
+|NoSQL トランザクション処理|hbase|
+|メモリ内キャッシュによる対話型でより高速なクエリ|Interactive Query|
+|データ サイエンス|ML Services、Spark|
+
+次の表は、HDInsight クラスターの作成に使用できる各種方法を示しています。
+
+|**ツール**|**ブラウザー ベース**|**コマンド ライン**|**REST API**|**SDK**|
+|---|---|---|---|---|
+|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|○||||
+|[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|○|○|○|○|
+|[Azure CLI (ver 1.0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||○|||
+|[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||○|||
+|[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||○|○||
+|[.NET SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)||||○|
+|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||○|
+|[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||○|
+|[Azure リソース マネージャーのテンプレート](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||○|||
+
+詳細については、[HDInsight のクラスターの種類](../hadoop/apache-hadoop-introduction.md)に関する記事を参照してください。
+
+## <a name="use-transient-on-demand-clusters"></a>一時的なオンデマンド クラスターを使用する
+
+HDInsight クラスターは、長期間未使用の状態が続くことがあります。 リソースのコストを節約できるように、HDInsight では、オンデマンドの一時的なクラスターがサポートされています。このようなクラスターは、ワークロードが正常に完了すると削除できます。
+
+クラスターを削除しても、関連付けられているストレージ アカウントと外部メタデータは削除されません。 このクラスターは、同じストレージ アカウントと metastore を使用して、後で再作成することができます。
+
+オンデマンドの HDInsight クラスターの作成は、Azure Data Factory を使用してスケジュールすることができます。 詳細については、「[Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する](../hdinsight-hadoop-create-linux-clusters-adf.md)」を参照してください。
+
+## <a name="decouple-storage-from-compute"></a>コンピューティングからストレージを切り離す
+
+一般的なオンプレミスの Hadoop デプロイでは、データ ストレージとデータ処理に同じ一連のマシンを使用します。 これらは併置されているため、コンピューティングとストレージを一緒にスケーリングする必要があります。
+
+HDInsight クラスターでは、ストレージをコンピューティングと同じ場所にデプロイする必要はなく、Azure Storage、Azure Data Lake Storage、またはその両方に配置することができます。 ストレージをコンピューティングから切り離すことには、次の利点があります。
+
+- クラスター間でのデータ共有
+- 一時的なクラスターの使用 (データがクラスターに依存しないため)
+- ストレージ コストの削減
+- ストレージとコンピューティングの個別のスケーリング
+- リージョン間でのデータのレプリケーション
+
+コンピューティング クラスターは Azure リージョン内のストレージ アカウント リソースの近くに作成され、コンピューティングとストレージを切り離した場合のパフォーマンス コストを軽減します。 高速ネットワークにより、コンピューティング ノードは Azure Storage 内のデータに効率的にアクセスできます。
+
+## <a name="use-external-metadata-stores"></a>外部のメタデータ ストアを使用する
+
+HDInsight クラスターで動作する主な metastore には、Hive と Oozie の 2 つがあります。 Hive metastore は、Hadoop、Spark、LLAP、Presto、Pig などのデータ処理エンジンで使用できる中心的なスキーマ リポジトリです。 Oozie metastore には、スケジューリングの詳細と、進行中および完了した Hadoop ジョブの状態が格納されます。
+
+HDInsight では、Hive metastore と Oozie metastore に Azure SQL Database を使用します。 HDInsight クラスターで metastore を設定する方法は 2 とおりあります。
+
+1. 既定の metastore
+
+    - 追加コストはありません。
+    - クラスターが削除されると metastore も削除されます。
+    - metastore は異なるクラスター間では共有できません。
+    - DTU の上限が 5 である基本的な Azure SQL DB が使用されます。
+
+1. カスタムの外部 metastore
+
+    - 外部の Azure SQL Database を metastore として指定します。
+    - Hive スキーマ Oozie ジョブの詳細を含むメタデータを失うことなく、クラスターを作成および削除できます。
+    - 単一の metastore DB をさまざまな種類のクラスターと共有できます。
+    - metastore を必要に応じてスケールアップできます。
+    - 詳細については、[Azure HDInsight での外部メタデータ ストアの使用](../hdinsight-use-external-metadata-stores.md)に関する記事を参照してください。
+
+## <a name="best-practices-for-hive-metastore"></a>Hive metastore のベスト プラクティス
+
+いくつかの HDInsight Hive metastore のベスト プラクティスを次に示します。
+
+- カスタムの外部 metastore を使用して、コンピューティング リソースとメタデータを切り離します。
+- 50 DTU と 250 GB のストレージを提供する S2 レベルの Azure SQL インスタンスから開始します。 ボトルネックを確認した場合は、データベースをスケール アップできます。
+- ある HDInsight クラスター バージョン用に作成された metastore を別のバージョンのクラスターと共有しないでください。 異なるバージョンの Hive は異なるスキーマを使用します。 たとえば、1 つの metastore を Hive 1.2 クラスターと Hive 2.1 クラスターの両方で共有することはできません。
+- カスタム metastore を定期的にバックアップします。
+- metastore と HDInsight クラスターを同じリージョンで保持します。
+- Azure portal や Azure Log Analytics などの Azure SQL Database 監視ツールを使用して、metastore のパフォーマンスと可用性を監視します。
+- 必要に応じて **ANALYZE TABLE** コマンドを実行して、表と列の統計を生成します。 たとえば、「 `ANALYZE TABLE [table_name] COMPUTE STATISTICS` 」のように入力します。
+
+## <a name="best-practices-for-different-types-of-workloads"></a>さまざまな種類のワークロードのベスト プラクティス
+
+- 応答時間が改善された対話型 Hive クエリに LLAP クラスターを使用することを検討します。[LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP)  は、クエリのメモリ内キャッシュを可能にする Hive 2.0 の新機能です。 LLAP により、Hive クエリは速くなり、 [場合によっては Hive 1.x と比べて最大 26 倍高速化](https://hortonworks.com/blog/announcing-apache-hive-2-1-25x-faster-queries-much/)されます。
+- Hive ジョブの代わりに Spark ジョブを使用することを検討します。
+- impala ベースのクエリを LLAP クエリに置き換えることを検討します。
+- MapReduce ジョブを Spark ジョブに置き換えることを検討します。
+- Spark Structured Streaming ジョブを使用して待ち時間の短い Spark バッチ ジョブを置き換えることを検討します。
+- データのオーケストレーションに Azure Data Factory (ADF) 2.0 を使用することを検討します。
+- クラスター管理に Ambari の使用を検討します。
+- スクリプトを処理するために、データ ストレージをオンプレミスの HDFS から WASB、ADLS、または ADFS に変更します。
+- Hive のテーブルと監査で Ranger の RBAC を使用することを検討します。
+- MongoDB または Cassandra の代わりに CosmosDB を使用することを検討します。
+
+## <a name="next-steps"></a>次の手順
+
+このシリーズの次の記事をお読みください。
+
+- [オンプレミスから Azure HDInsight Hadoop への移行のためのインフラストラクチャのベスト プラクティス](apache-hadoop-on-premises-migration-best-practices-infrastructure.md)

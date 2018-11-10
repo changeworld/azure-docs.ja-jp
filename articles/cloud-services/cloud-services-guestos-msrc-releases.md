@@ -11,17 +11,59 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/16/2018
+ms.date: 10/28/2018
 ms.author: raiye
-ms.openlocfilehash: 7540f12f888108ed7091cece575b6d25131ef47b
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 0430eefb55893420cf7ea603998f14465fb2cc60
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377516"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215516"
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="october-2018-guest-os"></a>2018 年 10 月のゲスト OS
+>[!NOTE]
+>10 月のゲスト OS は、現在、自動更新が構成されているクラウド サービス VM にロールアウトされているところです。 ロールアウトが完了すると、このバージョンは Azure portal と構成ファイルを通した手動更新で使用できるようになります。 10 月のゲスト OS には、以下の修正プログラムが含まれています。 この一覧は変更されることがあります。
+
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 18-10 | [4462917] | Windows 10 セキュリティ | 5.24 | 2018 年 10 月 9 日 |
+| Rel 18-10 | [4464330] | Windows 10 セキュリティ | 6.0 | 2018 年 10 月 9 日 |
+| Rel 18-10 | [4462915] | Windows セキュリティ | 2.79 | 2018 年 10 月 9 日 |
+| Rel 18-10 | [4462931] | Windows セキュリティ | 3.66 | 2018 年 10 月 9 日 |
+| Rel 18-10 | [4462941] | Windows セキュリティ | 4.59 | 2018 年 10 月 9 日 |
+| Rel 18-10 | [4462930] | 点滅 | 3.66, 4.59, 5.24, 6.0 | 2018 年 10 月 9 日 |
+| Rel 18-10 | [4462949] | Internet Explorer | 2.79, 3.66, 4.59 | 2018 年 10 月 9 日 |
+| 該当なし | [4339284] | タイム ゾーンの更新 | 2.79, 3.66, 4.59 | 2018 年 7 月 24 日 |
+| 該当なし | [4457144] | 9 月のセキュリティ以外のロールアップ | 2.79 | 2018 年 9 月 11 日 |
+| 該当なし | [4457044] | 9 月のセキュリティ以外の .NET 3.5 ロールアップ | 2.79 | 2018 年 9 月 11 日 |
+| 該当なし | [4457038] | 9 月のセキュリティ以外の .NET 4.5.2 ロールアップ | 2.79 | 2018 年 9 月 11 日 |
+| 該当なし | [4457135] | 9 月のセキュリティ以外のロールアップ | 3.66 | 2018 年 9 月 11 日 |
+| 該当なし | [4457042] | 9 月のセキュリティ以外の .NET 3.5 ロールアップ | 3.66 | 2018 年 9 月 11 日 |
+| 該当なし | [4457037] | 9 月のセキュリティ以外の .NET 4.5.2 ロールアップ | 3.66 | 2018 年 9 月 11 日 |
+| 該当なし | [4457129] | 9 月のセキュリティ以外のロールアップ | 4.59 | 2018 年 9 月 11 日 |
+| 該当なし | [4457045] | 9 月のセキュリティ以外の .NET 3.5 ロールアップ | 4.59 | 2018 年 9 月 11 日 |
+| 該当なし | [4457036] | 9 月のセキュリティ以外の .NET 4.5.2 ロールアップ | 4.59 | 2018 年 9 月 11 日 |
+
+[4462917]: http://support.microsoft.com/kb/4462917
+[4464330]: http://support.microsoft.com/kb/4464330
+[4462915]: http://support.microsoft.com/kb/4462915
+[4462931]: http://support.microsoft.com/kb/4462931
+[4462941]: http://support.microsoft.com/kb/4462941
+[4462930]: http://support.microsoft.com/kb/4462930
+[4462949]: http://support.microsoft.com/kb/4462949
+[4339284]: http://support.microsoft.com/kb/4339284
+[4457144]: http://support.microsoft.com/kb/4457144
+[4457044]: http://support.microsoft.com/kb/4457044
+[4457038]: http://support.microsoft.com/kb/4457038
+[4457135]: http://support.microsoft.com/kb/4457135
+[4457042]: http://support.microsoft.com/kb/4457042
+[4457037]: http://support.microsoft.com/kb/4457037
+[4457129]: http://support.microsoft.com/kb/4457129
+[4457045]: http://support.microsoft.com/kb/4457045
+[4457036]: http://support.microsoft.com/kb/4457036
 
 ## <a name="september-2018-guest-os"></a>2018 年 9 月のゲスト OS
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |

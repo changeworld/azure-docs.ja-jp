@@ -7,49 +7,50 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/15/2018
 ms.author: charwen
-ms.openlocfilehash: b8c9bc1944e9ed0281616062a84958c953d08694
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 1bb2bb61ccd06d5774b811203e86d609a01250a4
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40180555"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415816"
 ---
 # <a name="reset-expressroute-peerings"></a>ExpressRoute ピアリングをリセットする
 
-この記事では、PowerShell を使用して ExpressRoute 回線のピアリングを無効および有効にする方法について説明します。 ピアリングを無効にすると、ExpressRoute 回線のプライマリ接続とセカンダリ接続の両方の BGP セッションがシャットダウンされます。 Microsoft へのこのピアリング経由の接続が失われます。 ピアリングを有効にすると、ExpressRoute 回線のプライマリ接続とセカンダリ接続の両方の BGP セッションが起動されます。 Microsoft へのこのピアリング経由の接続が回復します。 ExpressRoute 回線上の Microsoft ピアリングと Azure プライベート ピアリングを独立に有効および無効にすることができます。 ExpressRoute 回線上のピアリングを初めて構成すると、そのピアリングは既定で有効になります。 
+この記事では、PowerShell を使用して ExpressRoute 回線のピアリングを無効および有効にする方法について説明します。 ピアリングを無効にすると、ExpressRoute 回線のプライマリ接続とセカンダリ接続の両方の BGP セッションがシャットダウンされます。 Microsoft へのこのピアリング経由の接続が失われます。 ピアリングを有効にすると、ExpressRoute 回線のプライマリ接続とセカンダリ接続の両方の BGP セッションが起動されます。 Microsoft へのこのピアリング経由の接続が回復します。 ExpressRoute 回線上の Microsoft ピアリングと Azure プライベート ピアリングを独立に有効および無効にすることができます。 ExpressRoute 回線上のピアリングを初めて構成すると、そのピアリングは既定で有効になります。
 
 ExpressRoute ピアリングをリセットすると役立つ可能性のあるシナリオがいくつかの存在します。
 * ディザスター リカバリーの設計と実装をテストします。 たとえば、2 つの ExpressRoute 回線があるとします。 1 つの回線のピアリングを無効にして、ネットワーク トラフィックをもう一方の回線に強制的にフェールオーバーするようにできます。
 * ExpressRoute 回線の Azure プライベート ピアリングで BFD (Bidirectional Forwarding Detection) を有効にします。 ExpressRoute 回線が 2018 年 8 月 1 日の後に作成されている場合、BFD は既定で有効になります。 回線がその前に作成された場合、BFD は有効になっていません。 ピアリングを無効にし、再度有効にすることによって、BFD を有効にすることができます。 BFD が Azure プライベート ピアリングでのみサポートされることに注意する必要があります。
 
+### <a name="working-with-azure-powershell"></a>Azure PowerShell を使用する
+
+[!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ## <a name="reset-a-peering"></a>ピアリングをリセットする
 
-1. Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 詳細については、[Azure PowerShell のインストールおよび構成](/powershell/azure/install-azurerm-ps)をご覧ください。
+1. PowerShell をローカルで実行している場合は、昇格された特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
 
-2. 昇格された特権で PowerShell コンソールを開き、アカウントに接続します。 接続については、次の例を参考にしてください。
-
-  ```powershell
+  ```azurepowershell
   Connect-AzureRmAccount
   ```
-3. 複数の Azure サブスクリプションを所有している場合には、アカウントのサブスクリプションをすべて確認します。
+2. 複数の Azure サブスクリプションを所有している場合には、アカウントのサブスクリプションをすべて確認します。
 
-  ```powershell
+  ```azurepowershell-interactive
   Get-AzureRmSubscription
   ```
-4. 使用するサブスクリプションを指定します。
+3. 使用するサブスクリプションを指定します。
 
-  ```powershell
+  ```azurepowershell-interactive
   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
   ```
-5. 次のコマンドを実行して、ExpressRoute 回線を取得します。
+4. 次のコマンドを実行して、ExpressRoute 回線を取得します。
 
-  ```powershell
+  ```azurepowershell-interactive
   $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
   ```
-6. 無効または有効にするピアリングを識別します。 *Peerings* は配列です。 次の例では、Peerings[0] は Azure プライベート ピアリングであり、Peerings[1] は Microsoft ピアリングです。
+5. 無効または有効にするピアリングを識別します。 *Peerings* は配列です。 次の例では、Peerings[0] は Azure プライベート ピアリングであり、Peerings[1] は Microsoft ピアリングです。
 
-  ```powershell
+  ```azurepowershell-interactive
 Name                             : ExpressRouteARMCircuit
 ResourceGroupName                : ExpressRouteResourceGroup
 Location                         : westus
@@ -130,9 +131,9 @@ Authorizations                   : []
 AllowClassicOperations           : False
 GatewayManagerEtag               :
   ```
-7. 次のコマンドを実行して、ピアリングの状態を変更します。
+6. 次のコマンドを実行して、ピアリングの状態を変更します。
 
-  ```powershell
+  ```azurepowershell-interactive
   $ckt.Peerings[0].State = "Disabled"
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```

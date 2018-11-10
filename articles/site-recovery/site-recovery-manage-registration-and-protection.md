@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: 06169ff8e084882eb9a2dbe71c89c3b2a40b384b
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 4dac0ed85500e4339f6389f05113dfd68b72c5ff
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214088"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244340"
 ---
 # <a name="remove-servers-and-disable-protection"></a>サーバーの削除と保護の無効化
 
@@ -34,7 +34,7 @@ VMware VM または Windows/Linux 物理サーバーを Azure にレプリケー
 3. VMM サーバーの ID を書き留めます。
 4. 削除する VMM サーバー上のクラウドからレプリケーション ポリシーの関連付けを解除します。  **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For System Center VMM (System Center VMM)]**  >   **[レプリケーション ポリシー]** で、関連付けられているポリシーをダブルクリックします。 クラウドを右クリックして、**[関連付け解除]** をクリックします。
 5. VMM サーバーまたはアクティブなノードを削除します。 **[Site Recovery Infrastructure (Site Recovery インフラストラクチャ)]**  >  **[For System Center VMM (System Center VMM)]**  >  **[VMM サーバー]** で、サーバーを右クリックして **[削除]** をクリックします。
-6. VMM サーバーが切断状態になっていた場合は、VMM サーバーで[クリーンアップ スクリプト](http://aka.ms/asr-cleanup-script-vmm)をダウンロードして実行します。 **[管理者として実行]** オプションを使用して PowerShell を開き、既定 (LocalMachine) のスコープの実行ポリシーを変更します。 スクリプトで、削除する VMM サーバーの ID を指定します。 このスクリプトにより、登録とクラウドのペアリングの情報がサーバーから削除されます。
+6. VMM サーバーが切断状態になっていた場合は、VMM サーバーで[クリーンアップ スクリプト](https://aka.ms/asr-cleanup-script-vmm)をダウンロードして実行します。 **[管理者として実行]** オプションを使用して PowerShell を開き、既定 (LocalMachine) のスコープの実行ポリシーを変更します。 スクリプトで、削除する VMM サーバーの ID を指定します。 このスクリプトにより、登録とクラウドのペアリングの情報がサーバーから削除されます。
 5. 任意のセカンダリ VMM サーバーでクリーンアップ スクリプトを実行します。
 6. プロバイダーがインストールされたパッシブ VMM クラスター ノードがあれば、そのノードでクリーンアップ スクリプトを実行します。
 7. VMM サーバー上のプロバイダーを手動でアンインストールします。 クラスターがある場合は、すべてのノードから削除します。

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 10/31/2018
 ms.author: jingwang
-ms.openlocfilehash: efbc020f482a46621eb5c3e3cd6137d1114da6de
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 02d21db5c5fadb65ec63e41cbd9e2db8869ed2e7
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129609"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50415833"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Azure Data Factory を使用して Marketo からデータをコピーする (プレビュー)
 
@@ -32,6 +32,9 @@ ms.locfileid: "46129609"
 Marketo から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
 
 Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
+
+>[!NOTE]
+>この Marketo コネクタは、Marketo REST API の上に構築されています。 Marketo では、サービス側に[同時要求の制限](http://developers.marketo.com/rest-api/)があることに注意してください。 "Error while attempting to use REST API: Max rate limit '100' exceeded with in '20' secs (606)" (REST API の使用を試みたときにエラーが発生しました: '20' 秒以内の最大レート制限 '100' を超えました (606)) または "Error while attempting to use REST API: Concurrent access limit '10' reached (615)" (REST API の使用を試みたときにエラーが発生しました: 同時アクセス制限 '10' に達しました (615)) というエラーが発生する場合は、サービスに対する要求の数を減らすため、同時コピー アクティビティの実行数を減らすことを検討してください。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -104,7 +107,7 @@ Marketo からデータをコピーするには、コピー アクティビテ�
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | コピー アクティビティのソースの type プロパティを **MarketoSource** に設定する必要があります | [はい] |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Activitiy_Types"`」のように入力します。 | [はい] |
+| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM Activitiy_Types"`)。 | [はい] |
 
 **例:**
 

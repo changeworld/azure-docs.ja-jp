@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7470416ab5e5d71cc569db19e47d34c5a29bc063
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 1cd9e99d9f530abb34ff072a740d89bc511c64ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48807716"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51241516"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Cloud パートナー ポータルの GDPR コンプライアンス
 ====================================
@@ -33,7 +33,7 @@ Cloud パートナー ポータルには、顧客データの処理と、その�
 
 Cloud パートナー ポータルでは、[ユーザー] タブですべてのデータにアクセスできます。そこで個人データを特定できます。 ユーザーを追加または削除する方法については、こちらの[ドキュメント](./cloud-partner-portal-manage-users.md)を参照してください。
 
-<a name="manage"></a>[管理]
+<a name="manage"></a>管理
 ------
 
 [ユーザー] タブでユーザー アカウントの [削除] を押して、個人データを管理できます。**所有者**と**共同作成者**のロールがあり、個々の特定のユーザーに割り当てることができます。両方とも割り当て、コピー、更新、削除することができます。
@@ -48,6 +48,6 @@ Cloud パートナー ポータル上での同意を管理するために、必�
 
 -   [Microsoft が地理的場所を含む顧客データを送信する方法と場所](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located)
 -   [顧客データへのアクセス権を持つ下請業者](https://aka.ms/Online_Serv_Subcontractor_List)
--   [Microsoft によって管理される Azure セキュリティ対策の詳細](http://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+-   [Microsoft によって管理される Azure セキュリティ対策の詳細](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 -   [すべての Azure サービスを含めたすべての製品に実施される、Microsoft のプライバシー レビュー プロセスの詳細](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards)
 -   [顧客のシステムとエンド ユーザーから Microsoft が収集して処理するデータ](https://www.microsoft.com/trustcenter/privacy/you-own-your-data)

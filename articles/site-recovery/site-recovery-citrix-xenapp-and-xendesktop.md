@@ -1,29 +1,22 @@
 ---
-title: Azure Site Recovery を使用して多層 Citrix XenDesktop および XenApp デプロイをレプリケートする | Microsoft Docs
-description: この記事では、Azure Site Recovery を使用して、Citrix XenDesktop および XenApp デプロイを保護および復旧する方法について説明します。
-services: site-recovery
-documentationcenter: ''
+title: Azure Site Recovery を使用して多層 Citrix XenDesktop および XenApp デプロイのディザスター リカバリーを設定する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して、Citrix XenDesktop および XenApp デプロイのディザスター リカバリーを設定する方法について説明します。
 author: ponatara
 manager: abhemraj
-editor: ''
-ms.assetid: 9126f5e8-e9ed-4c31-b6b4-bf969c12c184
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: ponatara
-ms.openlocfilehash: 45d366842416ddfa7b0153a1d075ee6de58e45a1
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 0b8d9765766191533745da4c653f1a91ce635c24
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213635"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50210314"
 ---
-# <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 XenApp および Citrix XenDesktop デプロイをレプリケートします
+# <a name="set-up-disaster-recovery-for-a-multi-tier-citrix-xenapp-and-xendesktop-deployment"></a>多層 XenApp および Citrix XenDesktop デプロイのディザスター リカバリーを設定する
 
-## <a name="overview"></a>概要
+
 
 Citrix XenDesktop は、デスクトップとアプリケーションを提供するデスクトップ仮想化ソリューションを、任意の場所の任意のユーザーに、オンデマンド サービスとして提供します。 XenDesktop では、FlexCast 配信テクノロジによって、迅速かつ安全にアプリケーションとデスクトップをユーザーに提供することができます。
 現在、Citrix XenApp には、ディザスター リカバリー機能が用意されていません。
@@ -75,7 +68,7 @@ Azure では XenApp 7.7 以降がサポートされています。したがっ�
 
 1. XenApp 発行アプリと XenApp 発行デスクトップを提供するための、サーバー OS マシンを使用したオンプレミス デプロイの保護と復旧がサポートされています。
 
-2. Windows 10 などのクライアント仮想デスクトップに Desktop VDI を提供するための、デスクトップ OS マシンを使用したオンプレミス デプロイの保護と復旧はサポートされていません。 これは、ASR が、デスクトップ OS のマシン復旧をサポートしていないためです。  また、一部のクライアント仮想デスクトップ オペレーティング システムでは ( Windows 7 など)、Azure のライセンスがまだサポートされていません。 Azure におけるクライアント/サーバー デスクトップのライセンスについては、[こちら](https://azure.microsoft.com/pricing/licensing-faq/)を参照してください。
+2. Windows 10 などのクライアント仮想デスクトップに Desktop VDI を提供するための、デスクトップ OS マシンを使用したオンプレミス デプロイの保護と復旧はサポートされていません。 これは、Site Recovery が、デスクトップ OS のマシン復旧をサポートしていないためです。  また、一部のクライアント仮想デスクトップ オペレーティング システムでは ( Windows 7 など)、Azure のライセンスがまだサポートされていません。 Azure におけるクライアント/サーバー デスクトップのライセンスについては、[こちら](https://azure.microsoft.com/pricing/licensing-faq/)を参照してください。
 
 3.  Azure Site Recovery では、既存の オンプレミス MCS または PVS クローンをレプリケートして保護することができません。
 こうしたクローンについては、配信コントローラーから Azure RM プロビジョニングを使用して、作成し直す必要があります。
@@ -163,20 +156,20 @@ XenApp コンポーネント VM のレプリケーションを有効にしたら
    >[!NOTE]     
    >手動またはスクリプトのアクションが含まれる手順 4、6、および 7 は、MCS/PVS カタログがあるオンプレミス XenApp 環境にのみ適用できます。
 
-4. グループ 3 の手動またはスクリプト アクション: マスター VDA VM をシャットダウンします。Azure にフェールオーバーされたマスター VDA VM は実行状態になります。 Azure ARM ホスティングを使用して新しい MCS カタログを作成するには、マスター VDA VM を停止 (割り当て解除) 状態にする必要があります。 Azure Portal から VM をシャットダウンします。
+4. グループ 3 の手動またはスクリプト アクション: マスター VDA VM をシャットダウンします。Azure にフェールオーバーされたマスター VDA VM は実行状態になります。 Azure のホスティングを使用して新しい MCS カタログを作成するには、マスター VDA VM を停止 (割り当て解除) 状態にする必要があります。 Azure portal から VM をシャットダウンします。
 
 5. グループ 4: 配信コントローラーと StoreFront サーバー VM のフェールオーバー
 6. グループ 3 手動またはスクリプト アクション 1:
 
     "***Azure RM ホスト接続を追加する***"
 
-    配信コントローラー マシンで Azure ARM ホスト接続を作成し、Azure で新しい MCS カタログをプロビジョニングします。 こちらの[記事](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/)の手順に従ってください。
+    配信コントローラー マシンで Azure のホスト接続を作成し、Azure で新しい MCS カタログをプロビジョニングします。 こちらの[記事](https://www.citrix.com/blogs/2016/07/21/connecting-to-azure-resource-manager-in-xenapp-xendesktop/)の手順に従ってください。
 
 7. グループ 3 手動またはスクリプト アクション 2:
 
     "***Azure で MCS カタログを再作成する***"
 
-    プライマリ サイトの既存の MCS または PVS クローンは、Azure にレプリケートされません。 こうしたクローンは、配信コントローラーから、レプリケートされたマスター VDA および Azure ARM のプロビジョニングを使用して再作成する必要があります。Azure で MCS カタログを作成するには、こちらの[記事](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/)の手順に従ってください。
+    プライマリ サイトの既存の MCS または PVS クローンは、Azure にレプリケートされません。 こうしたクローンについては、配信コントローラーから、レプリケートされたマスター VDA と Azure プロビジョニングを使用して作成し直す必要があります。 この[記事](https://www.citrix.com/blogs/2016/09/12/using-xenapp-xendesktop-in-azure-resource-manager/)で説明されている手順に従って、Azure で MCS カタログを作成します。
 
 ![XenApp コンポーネントの復旧計画](./media/site-recovery-citrix-xenapp-and-xendesktop/citrix-recoveryplan.png)
 

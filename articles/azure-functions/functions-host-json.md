@@ -1,6 +1,6 @@
 ---
-title: Azure Functions の host.json のリファレンス
-description: Azure Functions の host.json ファイルのリファレンス ドキュメント
+title: Azure Functions 2.x の host.json のリファレンス
+description: Azure Functions の v2 ランタイムの host.json ファイルのリファレンス ドキュメント。
 services: functions
 author: ggailey777
 manager: jeconnoc
@@ -10,19 +10,23 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 704a41ec840e2a252a1bbb5c20688f722bd0cdfd
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 13f81ced7ebaee97b53cf843421b339db6fd6096
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48887038"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50246909"
 ---
-# <a name="hostjson-reference-for-azure-functions"></a>Azure Functions の host.json のリファレンス
+# <a name="hostjson-reference-for-azure-functions-2x"></a>Azure Functions 2.x の host.json のリファレンス  
 
-*host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、使用できる設定の一覧を紹介します。 JSON スキーマは、 http://json.schemastore.org/host にあります。
+> [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
+> * [Version 1](functions-host-json-v1.md)
+> * [Version 2](functions-host-json.md)
+
+*host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、v2 ランタイムで使用できる設定の一覧を紹介します。  
 
 > [!NOTE]
-> Azure Functions ランタイムのバージョン v1 と v2 の間では、*host.json* に大きな違いがあります。 v2 ランタイムを対象とする関数アプリでは、`"version": "2.0"` が必要です。
+> この記事は、Azure Functions 2.x を対象としています。  Functions 1.x の host.json のリファレンスについては、[Azure Functions 1.x の host.json のリファレンス](functions-host-json-v1.md)に関する記事を参照してください。
 
 関数アプリの他の構成オプションは、[アプリの設定](functions-app-settings.md)で管理されます。
 
@@ -32,7 +36,6 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 次のサンプル *host.json* ファイルには、すべての使用できるオプションが指定されています。
 
-### <a name="version-2x"></a>バージョン 2.x
 
 ```json
 {
@@ -42,28 +45,13 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
         "flushTimeout": "00:00:30"
     },
     "extensions": {
-        "eventHubs": {
-          "maxBatchSize": 64,
-          "prefetchCount": 256,
-          "batchCheckpointFrequency": 1
-        },
-        "http": {
-            "routePrefix": "api",
-            "maxConcurrentRequests": 100,
-            "maxOutstandingRequests": 30
-        },
-        "queues": {
-            "visibilityTimeout": "00:00:10",
-            "maxDequeueCount": 3
-        },
-        "sendGrid": {
-            "from": "Azure Functions <samples@functions.com>"
-        },
-        "serviceBus": {
-          "maxConcurrentCalls": 16,
-          "prefetchCount": 100,
-          "autoRenewTimeout": "00:05:00"
-        }
+        "cosmosDb": {},
+        "durableTask": {},
+        "eventHubs": {},
+        "http": {},
+        "queues": {},
+        "sendGrid": {},
+        "serviceBus": {}
     },
     "functions": [ "QueueProcessor", "GitHubWebHook" ],
     "functionTimeout": "00:05:00",
@@ -74,7 +62,6 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
         "healthCheckThreshold": 6,
         "counterThreshold": 0.80
     },
-    "id": "9f4ea53c5136457d883d685e57164f08",
     "logging": {
         "fileLoggingMode": "debugOnly",
         "logLevel": {
@@ -99,175 +86,31 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 }
 ```
 
-### <a name="version-1x"></a>バージョン 1.x
-
-```json
-{
-    "aggregator": {
-        "batchSize": 1000,
-        "flushTimeout": "00:00:30"
-    },
-    "applicationInsights": {
-        "sampling": {
-          "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 5
-        }
-    },
-    "eventHub": {
-      "maxBatchSize": 64,
-      "prefetchCount": 256,
-      "batchCheckpointFrequency": 1
-    },
-    "functions": [ "QueueProcessor", "GitHubWebHook" ],
-    "functionTimeout": "00:05:00",
-    "healthMonitor": {
-        "enabled": true,
-        "healthCheckInterval": "00:00:10",
-        "healthCheckWindow": "00:02:00",
-        "healthCheckThreshold": 6,
-        "counterThreshold": 0.80
-    },
-    "http": {
-        "routePrefix": "api",
-        "maxOutstandingRequests": 20,
-        "maxConcurrentRequests": 10,
-        "dynamicThrottlesEnabled": false
-    },
-    "id": "9f4ea53c5136457d883d685e57164f08",
-    "logger": {
-        "categoryFilter": {
-            "defaultLevel": "Information",
-            "categoryLevels": {
-                "Host": "Error",
-                "Function": "Error",
-                "Host.Aggregator": "Information"
-            }
-        }
-    },
-    "queues": {
-      "maxPollingInterval": 2000,
-      "visibilityTimeout" : "00:00:30",
-      "batchSize": 16,
-      "maxDequeueCount": 5,
-      "newBatchThreshold": 8
-    },
-    "serviceBus": {
-      "maxConcurrentCalls": 16,
-      "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
-    },
-    "singleton": {
-      "lockPeriod": "00:00:15",
-      "listenerLockPeriod": "00:01:00",
-      "listenerLockRecoveryPollingInterval": "00:01:00",
-      "lockAcquisitionTimeout": "00:01:00",
-      "lockAcquisitionPollingInterval": "00:00:03"
-    },
-    "tracing": {
-      "consoleLevel": "verbose",
-      "fileLoggingMode": "debugOnly"
-    },
-    "watchDirectories": [ "Shared" ],
-}
-```
-
 この記事の次のセクションでは、最上位レベルの各プロパティについて説明します。 特記がない場合は、いずれも省略可能です。
 
 ## <a name="aggregator"></a>aggregator
 
-[Application Insights のメトリックを計算する](functions-monitoring.md#configure-the-aggregator)ときに集計される関数呼び出しの数を指定します。 
-
-```json
-{
-    "aggregator": {
-        "batchSize": 1000,
-        "flushTimeout": "00:00:30"
-    }
-}
-```
-
-|プロパティ |既定値  | 説明 |
-|---------|---------|---------| 
-|batchSize|1,000|集計する要求の最大数。| 
-|flushTimeout|00:00:30|集計する最長期間。| 
-
-2 つの制限のいずれかに最初に達した場合、関数呼び出しが集計されます。
+[!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
 ## <a name="applicationinsights"></a>applicationInsights
 
-[Application Insights のサンプリング機能](functions-monitoring.md#configure-sampling)を制御します。 バージョン 2.x では、この設定は [logging](#log) の子です。
+この設定は [logging](#log) の子です。
 
-```json
-{
-    "applicationInsights": {
-        "sampling": {
-          "isEnabled": true,
-          "maxTelemetryItemsPerSecond" : 5
-        }
-    }
-}
-```
+[!INCLUDE [applicationInsights](../../includes/functions-host-json-applicationinsights.md)]
 
-|プロパティ  |既定値 | 説明 |
-|---------|---------|---------| 
-|isEnabled|true|サンプリングを有効または無効にします。| 
-|maxTelemetryItemsPerSecond|5|サンプリングが開始されるしきい値。| 
+## <a name="cosmosdb"></a>cosmosDb
+
+構成設定は、[Cosmos DB のトリガーとバインディング](functions-bindings-cosmosdb-v2.md#host-json)に関する記事に記載されています。
 
 ## <a name="durabletask"></a>durableTask
 
-[Durable Functions](durable-functions-overview.md) の構成設定。
-
-```json
-{
-  "durableTask": {
-    "HubName": "MyTaskHub",
-    "ControlQueueBatchSize": 32,
-    "PartitionCount": 4,
-    "ControlQueueVisibilityTimeout": "00:05:00",
-    "WorkItemQueueVisibilityTimeout": "00:05:00",
-    "MaxConcurrentActivityFunctions": 10,
-    "MaxConcurrentOrchestratorFunctions": 10,
-    "AzureStorageConnectionStringName": "AzureWebJobsStorage",
-    "TraceInputsAndOutputs": false,
-    "LogReplayEvents": false,
-    "EventGridTopicEndpoint": "https://topic_name.westus2-1.eventgrid.azure.net/api/events",
-    "EventGridKeySettingName":  "EventGridKey",
-    "EventGridPublishRetryCount": 3,
-    "EventGridPublishRetryInterval": "00:00:30"
-  }
-}
-```
-
-タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、関数アプリの既定のタスク ハブ名は **DurableFunctionsHub** です。 詳細については、[タスク ハブ](durable-functions-task-hubs.md)に関するページをご覧ください。
-
-|プロパティ  |既定値 | 説明 |
-|---------|---------|---------|
-|HubName|DurableFunctionsHub|代替[タスク ハブ](durable-functions-task-hubs.md)名を使用すると、複数の Durable Functions アプリケーションが同じストレージ バックエンドを使用している場合でも、これらのアプリケーションを互いに分離できます。|
-|ControlQueueBatchSize|32|コントロール キューから一度にプルするメッセージの数。|
-|PartitionCount |4|コントロール キューのパーティション数。 1 から 16 までの正の整数を使用できます。|
-|ControlQueueVisibilityTimeout |5 分|デキューされたコントロール キュー メッセージの表示タイムアウト。|
-|WorkItemQueueVisibilityTimeout |5 分|デキューされた作業項目キュー メッセージの表示タイムアウト。|
-|MaxConcurrentActivityFunctions |現在のマシン上のプロセッサ数の 10 倍|1 つのホスト インスタンスで同時に処理できるアクティビティ関数の最大数。|
-|MaxConcurrentOrchestratorFunctions |現在のマシン上のプロセッサ数の 10 倍|1 つのホスト インスタンスで同時に処理できるアクティビティ関数の最大数。|
-|AzureStorageConnectionStringName |AzureWebJobsStorage|基になる Azure Storage リソースの管理に使用される Azure Storage 接続文字列を含むアプリ設定の名前。|
-|TraceInputsAndOutputs |false|関数呼び出しの入力と出力をトレースするかどうかを示す値。 関数の実行イベントをトレースした場合の既定の動作では、関数呼び出しのシリアル化された入力および出力のバイト数が記録されます。 これにより、ログが肥大化することも、機密情報が誤ってログに公開されることもなく、入力および出力に関する最小限の情報が示されます。 このプロパティを true に設定すると、既定の関数ログ記録によって、関数の入力および出力の内容全体がログに記録されます。|
-|LogReplayEvents|false|オーケストレーションの再生イベントを Application Insights に書き込むかどうかを示す値。|
-|EventGridTopicEndpoint ||Azure Event Grid カスタム トピック エンドポイントの URL。 このプロパティが設定されている場合は、オーケストレーションのライフ サイクル通知イベントがこのエンドポイントに発行されます。 このプロパティは、アプリ設定の解決をサポートします。|
-|EventGridKeySettingName ||`EventGridTopicEndpoint` での Azure Event Grid カスタム トピックによる認証に使用されるキーを含むアプリ設定の名前。|
-|EventGridPublishRetryCount|0|Event Grid トピックへの発行が失敗した場合に再試行する回数。|
-|EventGridPublishRetryInterval|5 分|Event Grid の発行を再試行する間隔 (*hh:mm:ss* 形式)。|
-
-これらの多くはパフォーマンスの最適化を目的としています。 詳細については、[パフォーマンスとスケール](durable-functions-perf-and-scale.md)に関するページをご覧ください。
+構成設定は、[Durable Functions のバインディング](durable-functions-bindings.md#host-json)に関する記事に記載されています。
 
 ## <a name="eventhub"></a>eventHub
 
-[Event Hub トリガーとバインディング](functions-bindings-event-hubs.md)の構成設定。 バージョン 2.x では、これは [extensions](#extensions) の子です。
-
-[!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
+構成設定は、[Event Hub のトリガーとバインディング](functions-bindings-event-hubs.md#host-json)に関する記事に記載されています。 
 
 ## <a name="extensions"></a>拡張機能
-
-*Version 2.x のみ。*
 
 バインド固有の設定 ([http](#http) や [eventHub](#eventhub) など) をすべて含むオブジェクトを返すプロパティ。
 
@@ -317,54 +160,11 @@ host.json の一部の設定は、[local.settings.json](functions-run-local.md#l
 
 ## <a name="http"></a>http
 
-[http トリガーとバインディング](functions-bindings-http-webhook.md)の構成設定。 バージョン 2.x では、これは [extensions](#extensions) の子です。
+構成設定は、[HTTP トリガーとバインディング](functions-bindings-http-webhook.md)に関する記事に記載されています。
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="id"></a>id
-
-*バージョン 1.x のみ。*
-
-ジョブ ホストの一意の ID。 ダッシュを削除した小文字の GUID を指定できます。 ローカルで実行しているときに必要です。 Azure で実行するときは、ID 値を設定しないことをお勧めします。 `id` を省略すると、ID は Azure で自動的に生成されます。 バージョン 2.x ランタイムを使用している場合は、カスタム関数アプリ ID を設定できません。
-
-ストレージ アカウントを複数の関数アプリで共有している場合は、各関数アプリの `id` がそれぞれ異なることを確認してください。 `id` プロパティは省略することができます。あるいは、各関数アプリの `id` を手動でそれぞれ異なる値に設定することもできます。 1 つの関数アプリが複数のインスタンスにスケール アウトする場合、タイマー インスタンスが 1 しか存在しないようにするために、タイマー トリガーではストレージ ロックが使用されます。 2 つの関数アプリが同じ `id` を共有していて、それぞれタイマー トリガーを使用している場合は、1 つのタイマーのみが実行されます。
-
-```json
-{
-    "id": "9f4ea53c5136457d883d685e57164f08"
-}
-```
-
-## <a name="logger"></a>logger
-
-*バージョン 1.x のみ。バージョン 2.x の場合は [logging](#logging) を使用します。*
-
-[ILogger object](functions-monitoring.md#write-logs-in-c-functions) から出力されたログまたは [context.log](functions-monitoring.md#write-logs-in-javascript-functions) ログのフィルターを制御します。
-
-```json
-{
-    "logger": {
-        "categoryFilter": {
-            "defaultLevel": "Information",
-            "categoryLevels": {
-                "Host": "Error",
-                "Function": "Error",
-                "Host.Aggregator": "Information"
-            }
-        }
-    }
-}
-```
-
-|プロパティ  |既定値 | 説明 |
-|---------|---------|---------| 
-|categoryFilter|該当なし|カテゴリ別のフィルターを指定します| 
-|defaultLevel|情報|`categoryLevels` 配列に指定されていないカテゴリの場合、このレベル以上のログを Application Insights に送信します。| 
-|categoryLevels|該当なし|各カテゴリの Application Insights に送信される最小ログ レベルを指定するカテゴリの配列。 ここで指定されるカテゴリは、同じ値で始まるすべてのカテゴリを制御し、長い値の方が優先されます。 前述のサンプル *host.json* ファイルでは、`Information` レベルの "Host.Aggregator" で始まるすべてのカテゴリ。 `Error` レベルのログである、"Host.Executor" など "Host" で始まるその他すべてのカテゴリ。| 
-
 ## <a name="logging"></a>logging
-
-*バージョン 2.x のみ。バージョン 1.x の場合は [logger](#logger) を使用します。*
 
 Application Insights など、関数アプリのログの動作を制御します。
 
@@ -383,21 +183,21 @@ Application Insights など、関数アプリのログの動作を制御しま�
 
 |プロパティ  |既定値 | 説明 |
 |---------|---------|---------|
-|fileLoggingMode|情報|このレベル以上のログを Application Insights に送信します。 |
+|fileLoggingMode|debugOnly|どのレベルでファイルのログ記録を有効にするかを定義します。  オプションは、`never`、`always`、`debugOnly` です。 |
 |logLevel|該当なし|アプリ内の関数に対するログ カテゴリのフィルター処理を定義するオブジェクト。 バージョン 2.x のログ カテゴリのフィルター処理は、ASP.NET Core のレイアウトに従います。 これにより、特定の関数についてログをフィルター処理できます。 詳しくは、ASP.NET Core のドキュメントの「[ログのフィルター処理](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering)」をご覧ください。 |
 |applicationInsights|該当なし| [applicationInsights](#applicationinsights) の設定。 |
 
 ## <a name="queues"></a>queues
 
-[Storage キュー トリガーとバインディング](functions-bindings-storage-queue.md)の構成設定。 バージョン 2.x では、これは [extensions](#extensions) の子です。
+構成設定は、[Storage キュー トリガーとバインディング](functions-bindings-storage-queue.md#host-json)に関する記事に記載されています。  
 
-[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
+## <a name="sendgrid"></a>sendGrid
+
+構成設定は、[SendGrid のトリガーとバインディング](functions-bindings-sendgrid.md#host-json)に関する記事に記載されています。
 
 ## <a name="servicebus"></a>serviceBus
 
-[Service Bus トリガーとバインディング](functions-bindings-service-bus.md)の構成設定。 バージョン 2.x では、これは [extensions](#extensions) の子です。
-
-[!INCLUDE [functions-host-json-service-bus](../../includes/functions-host-json-service-bus.md)]
+構成設定は、[Service Bus のトリガーとバインディング](functions-bindings-service-bus.md#host-json)に関する記事に記載されています。
 
 ## <a name="singleton"></a>singleton
 
@@ -423,29 +223,7 @@ Application Insights など、関数アプリのログの動作を制御しま�
 |lockAcquisitionTimeout|00:01:00|ランタイムがロックの獲得を試行する最長時間。| 
 |lockAcquisitionPollingInterval|該当なし|ロックの獲得の試行間隔。| 
 
-## <a name="tracing"></a>tracing
-
-*バージョン 1.x*
-
-`TraceWriter` オブジェクトを使用して作成するログの構成設定。 [C# のログの記録](functions-reference-csharp.md#logging)と [Node.js のログの記録](functions-reference-node.md#writing-trace-output-to-the-console)に関するページを参照してください。 バージョン 2.x では、すべてのログ動作は [logging](#logging) によって制御されます。
-
-```json
-{
-    "tracing": {
-      "consoleLevel": "verbose",
-      "fileLoggingMode": "debugOnly"
-    }
-}
-```
-
-|プロパティ  |既定値 | 説明 |
-|---------|---------|---------| 
-|consoleLevel|info|コンソール ログのトレース レベル。 オプションは、`off`、`error`、`warning`、`info`、および `verbose` です。|
-|fileLoggingMode|debugOnly|ファイルのログ記録のトレース レベル。 オプションは、`never`、`always`、`debugOnly` です。| 
-
 ## <a name="version"></a>version
-
-*バージョン 2.x*
 
 v2 ランタイムを対象とする関数アプリでは、バージョン文字列 `"version": "2.0"` が必要です。
 

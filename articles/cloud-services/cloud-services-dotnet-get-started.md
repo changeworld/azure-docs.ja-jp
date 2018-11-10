@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 819a2f81ca5403a3656bf713cf0ee3ae58050a4b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 04c68308739f641e892a335832725ba87e36f7af
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39003115"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242128"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure Cloud Services と ASP.NET を使ってみる
 
 ## <a name="overview"></a>概要
-このチュートリアルでは、ASP.NET MVC フロントエンドを使用する多層 .NET アプリケーションを作成して [Azure クラウド サービス](cloud-services-choose-me.md)にデプロイする方法について説明します。 このアプリケーションでは、[Azure SQL Database](http://msdn.microsoft.com/library/azure/ee336279)、[Azure Blob service](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)、および [Azure Queue サービス](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)を使用します。 MSDN コード ギャラリーから、対象の [Visual Studio プロジェクトをダウンロード](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) できます。
+このチュートリアルでは、ASP.NET MVC フロントエンドを使用する多層 .NET アプリケーションを作成して [Azure クラウド サービス](cloud-services-choose-me.md)にデプロイする方法について説明します。 このアプリケーションでは、[Azure SQL Database](https://msdn.microsoft.com/library/azure/ee336279)、[Azure Blob service](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)、および [Azure Queue サービス](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)を使用します。 MSDN コード ギャラリーから、対象の [Visual Studio プロジェクトをダウンロード](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4) できます。
 
 このチュートリアルでは、アプリケーションを作成してローカルで実行する方法、アプリケーションを Azure にデプロイしてクラウドで実行する方法、アプリケーションを最初から作成する方法について説明します。 アプリケーションを最初から作成する手順から始め、必要に応じて後でアプリケーションのテストとデプロイ手順に進んでください。
 
@@ -36,7 +36,7 @@ ms.locfileid: "39003115"
 アプリケーションでは、 [キューを中心とした作業パターン](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern) を使用して、CPU 負荷の高い縮小表示の作成をバックエンド プロセスにオフロードします。
 
 ## <a name="alternative-architecture-web-apps-and-webjobs"></a>代替アーキテクチャ: Web Apps および WebJobs
-このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。 これに代わる方法として、フロントエンドを [Azure Web Apps](/azure/app-service/) で実行し、バックエンド用に [WebJobs](http://go.microsoft.com/fwlink/?LinkId=390226) 機能を使用する方法があります。 Web ジョブを使用するチュートリアルについては、「 [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 自分のシナリオに最適なサービスを選択する方法の詳細については、「 [Azure Websites、Cloud Services、および Virtual Machines の比較](../app-service/choose-web-site-cloud-service-vm.md)」を参照してください。
+このチュートリアルでは、Azure クラウド サービスでフロントエンドとバックエンドの両方を実行する方法について説明します。 これに代わる方法として、フロントエンドを [Azure Web Apps](/azure/app-service/) で実行し、バックエンド用に [WebJobs](https://go.microsoft.com/fwlink/?LinkId=390226) 機能を使用する方法があります。 Web ジョブを使用するチュートリアルについては、「 [Get Started with the Azure WebJobs SDK (Azure Web ジョブ SDK の概要)](https://github.com/Azure/azure-webjobs-sdk/wiki)」を参照してください。 自分のシナリオに最適なサービスを選択する方法の詳細については、「 [Azure Websites、Cloud Services、および Virtual Machines の比較](../app-service/choose-web-site-cloud-service-vm.md)」を参照してください。
 
 ## <a name="what-youll-learn"></a>学習内容
 * Azure SDK をインストールして、Azure 向け開発用にコンピューターを準備する方法
@@ -71,7 +71,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 [!INCLUDE [install-sdk](../../includes/install-sdk-2017-2015-2013.md)]
 
 ## <a name="download-and-run-the-completed-solution"></a>完成したソリューションをダウンロードして実行する
-1. [完成したソリューション](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)をダウンロードして解凍します。
+1. [完成したソリューション](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)をダウンロードして解凍します。
 2. Visual Studio を起動します。
 3. **[ファイル]** メニューの **[プロジェクトを開く]** を選択し、ソリューションをダウンロードした場所に移動して、ソリューション ファイルを開きます。
 4. Ctrl + Shift + B キーを押して、ソリューションをビルドします。
@@ -81,7 +81,7 @@ Azure サブスクリプションがなくてもアプリケーションをロ�
 6. Visual Studio 2015 以上を使用している場合は、ContosoAdsWeb プロジェクトのアプリケーションの *Web.config* ファイルと ContosoAdsCloudService プロジェクトの *ServiceConfiguration.Local.cscfg* ファイルで SQL Server 接続文字列を変更します。 いずれの場合も、"(localdb)\v11.0" を "(localdb)\MSSQLLocalDB" に変更します。
 7. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
 
-    クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure "*コンピューティング エミュレーター*" と Azure "*ストレージ エミュレーター*" が自動的に起動されます。 コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。 ストレージ エミュレーターは、 [SQL Server Express LocalDB](http://msdn.microsoft.com/library/hh510202.aspx) を使用して、Azure クラウド ストレージをシミュレートします。
+    クラウド サービス プロジェクトをローカルで実行すると、Visual Studio によって Azure "*コンピューティング エミュレーター*" と Azure "*ストレージ エミュレーター*" が自動的に起動されます。 コンピューティング エミュレーターは、コンピューターのリソースを使用して、Web ロール環境と worker ロール環境をシミュレートします。 ストレージ エミュレーターは、 [SQL Server Express LocalDB](https://msdn.microsoft.com/library/hh510202.aspx) を使用して、Azure クラウド ストレージをシミュレートします。
 
     クラウド サービス プロジェクトを初めて実行するときは、エミュレーターが起動されるまで 1 分程度かかります。 エミュレーターの起動が完了すると、既定のブラウザーが開き、アプリケーションのホーム ページが表示されます。
 
@@ -232,7 +232,7 @@ Web ロール プロジェクトと worker ロール プロジェクトの Azure
 1. **ソリューション エクスプローラー**で、**[ContosoAdsCloudService]** プロジェクトの **[ロール]** の下にある **[ContosoAdsWeb]** を右クリックし、**[プロパティ]** をクリックします。
 
     ![ロール プロパティ](./media/cloud-services-dotnet-get-started/roleproperties.png)
-2. **[設定]** タブをクリックします。**[サービス構成]** ボックスの一覧の **[クラウド]** を選択します。
+2. **[設定]** タブをクリックします。[サービス構成] ボックスの一覧の **[クラウド]** を選択します。
 
     ![クラウドの構成](./media/cloud-services-dotnet-get-started/sccloud.png)
 3. **StorageConnectionString** エントリを選択すると、行の右端に省略記号 **[...]** ボタンが表示されます。 省略記号ボタンをクリックして、 **[ストレージ アカウント接続文字列の作成]** ダイアログ ボックスを開きます。
@@ -311,7 +311,7 @@ Visual Studio UI を使用して構成したロールの環境設定は、Contos
 >
 
 ## <a name="create-the-application-from-scratch"></a>アプリケーションを最初から作成する
-[完成版のアプリケーション](http://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)をまだダウンロードしていない場合は今すぐダウンロードしてください。 以降の操作では、ダウンロードしたプロジェクトから新しいプロジェクトにファイルをコピーします。
+[完成版のアプリケーション](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)をまだダウンロードしていない場合は今すぐダウンロードしてください。 以降の操作では、ダウンロードしたプロジェクトから新しいプロジェクトにファイルをコピーします。
 
 Contoso Ads アプリケーションを作成するには、次の手順を実行します。
 
@@ -549,7 +549,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-コントローラー コードのほとんどは、DbContext クラスを使用した Entity Framework データ モデルの操作に典型的なものです。 ただし、ファイルをアップロードして Blob Storage に保存する HttpPost `Create` メソッドは例外です。 モデル バインダーは、このメソッドに [HttpPostedFileBase](http://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) オブジェクトを提供します。
+コントローラー コードのほとんどは、DbContext クラスを使用した Entity Framework データ モデルの操作に典型的なものです。 ただし、ファイルをアップロードして Blob Storage に保存する HttpPost `Create` メソッドは例外です。 モデル バインダーは、このメソッドに [HttpPostedFileBase](https://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) オブジェクトを提供します。
 
 ```csharp
 [HttpPost]
@@ -766,8 +766,8 @@ Contoso Ads アプリケーションは、入門用のチュートリアルと�
 
 以下に、より現実的なコーディング手法を示すいくつかのクラウド サービス サンプル アプリケーションを、やさしいものから順に示します。
 
-* [PhluffyFotos](http://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31)。 概念は Contoso Ads に似ていますが、より多くの機能とより現実的なコーディング手法が実装されています。
-* [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs (テーブル、キュー、BLOB を使用する Azure クラウド サービス多層アプリケーション)](http://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。 Azure Storage のテーブル、BLOB、キューが紹介されています。 Azure SDK for .NET の以前のバージョンに基づいているため、現在のバージョンで作業するには一部変更する必要があります。
+* [PhluffyFotos](https://code.msdn.microsoft.com/PhluffyFotos-Sample-7ecffd31)。 概念は Contoso Ads に似ていますが、より多くの機能とより現実的なコーディング手法が実装されています。
+* [Azure Cloud Service Multi-Tier Application with Tables, Queues, and Blobs (テーブル、キュー、BLOB を使用する Azure クラウド サービス多層アプリケーション)](https://code.msdn.microsoft.com/windowsazure/Windows-Azure-Multi-Tier-eadceb36)。 Azure Storage のテーブル、BLOB、キューが紹介されています。 Azure SDK for .NET の以前のバージョンに基づいているため、現在のバージョンで作業するには一部変更する必要があります。
 
 クラウド向けの開発については、「 [Azure を使用した実際のクラウド アプリケーションの作成](http://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/introduction)」をご覧ください。
 

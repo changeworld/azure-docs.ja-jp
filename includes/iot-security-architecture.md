@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 64c7525be9bd44b0d33fdcd8da717e9fe893e057
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: ac51dc8b7cbfa08ebca201c42c0c82356b7d5b6c
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49070187"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50254667"
 ---
 # <a name="internet-of-things-security-architecture"></a>モノのインターネットのセキュリティ アーキテクチャ
 
@@ -21,7 +21,7 @@ ms.locfileid: "49070187"
 
 ## <a name="security-starts-with-a-threat-model"></a>セキュリティの第一歩は脅威モデル
 
-マイクロソフトは以前から自社製品に脅威モデルを採用すると共に、だれもが使用できるよう、その脅威モデル化プロセスを公開してきました。 Microsoft の経験上、モデル化には、懸念される脅威が把握しやすくなるというだけでなく、それ以上に思いがけない利点もあります。 たとえば開発チーム以外の人々との間で、率直な議論ができるようになり、新しいアイデアや改善策が製品にもたらされることがあります。
+Microsoft は以前から、自社製品に脅威モデルを採用すると共に、だれもが使用できるよう、その脅威モデル化プロセスを公開してきました。 Microsoft の経験上、モデル化には、懸念される脅威が把握しやすくなるというだけでなく、それ以上に思いがけない利点もあります。 たとえば開発チーム以外の人々との間で、率直な議論ができるようになり、新しいアイデアや改善策が製品にもたらされることがあります。
 
 脅威をモデル化する目的は、攻撃者がどのような方法でシステムに侵入しうるかを把握したうえで、適切な軽減策を講じることです。 脅威がモデル化されていれば設計チームは否応なしに、システムのデプロイ後ではなく設計段階で軽減策を考慮するようになります。 この点は非常に重要です。なぜなら、現場で稼働している無数のデバイスに対してセキュリティ対策を行うことは現実的ではなく、間違いが起きやすいうえに、利用者を危険にさらすことになるからです。
 

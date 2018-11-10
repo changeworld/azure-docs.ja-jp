@@ -3,7 +3,7 @@ title: Azure Security Center で Web アプリケーション ファイアウォ
 description: このドキュメントでは、Azure Security Center の推奨事項である **"Web アプリケーション ファイアウォールを追加する"** と **"アプリケーションの保護を完了する"** を実装する方法について説明します。
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 8f56139a-4466-48ac-90fb-86d002cf8242
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2018
-ms.author: terrylan
-ms.openlocfilehash: 8824e9f7481ed92eb482c14280e79a94be3c9372
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/28/2018
+ms.author: rkarlin
+ms.openlocfilehash: 8ae1a4b7b8ce2e82856b63bd108e44a111dfd3fe
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300717"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51246584"
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Azure Security Center で Web アプリケーション ファイアウォールを追加する
 Azure Security Center では、Web アプリケーションを保護するために、Microsoft パートナーの Web アプリケーション ファイアウォール (WAF) を追加することを勧める場合があります。 このドキュメントでは、この推奨事項を適用する方法の例を紹介します。
@@ -78,7 +78,7 @@ Security Center では、[Isolated](https://azure.microsoft.com/pricing/details/
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -- セキュリティの警告の管理と対応の方法について説明しています。
 * [Azure セキュリティ センターでのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」 -- 推奨事項に従って Azure リソースを保護する方法について説明しています。
 * [Azure セキュリティ センターのよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
 
 <!--Image references-->
 [1]: ./media/security-center-add-web-application-firewall/secure-web-application.png

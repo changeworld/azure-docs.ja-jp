@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.component: common
-ms.openlocfilehash: 0be0d6c9613b4160a6c4c5cc3b63336fcf67d5c2
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: b16a476f1960c79c378cd3aa18eae789c289eb54
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50025626"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244034"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 
@@ -309,7 +309,7 @@ WAImportExport ツールは、ドライブの準備および修復用のツー�
 
 #### <a name="where-can-i-find-previous-version-of-waimportexport-tool"></a>以前のバージョンの WAImportExport ツールはどこで入手できますか?
 
-WAImportExport ツールには、WAImportExport V1 ツールのすべての機能が含まれています。 WAImportExport ツールを使用すると、ユーザーは複数のソースを指定し、複数のドライブに書き込むことができます。 また、データのコピー元となる複数の場所を 1 つの CSV ファイルで簡単に管理できます。 しかし、SAS のサポートが必要な場合や、単一のソースを単一のディスクにコピーする場合は、[WAImportExport V1 ツールをダウンロード](http://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409)し、[WAImportExport V1 リファレンス](storage-import-export-tool-how-to-v1.md)で WAImportExport V1 の使用方法を参照できます。
+WAImportExport ツールには、WAImportExport V1 ツールのすべての機能が含まれています。 WAImportExport ツールを使用すると、ユーザーは複数のソースを指定し、複数のドライブに書き込むことができます。 また、データのコピー元となる複数の場所を 1 つの CSV ファイルで簡単に管理できます。 しかし、SAS のサポートが必要な場合や、単一のソースを単一のディスクにコピーする場合は、[WAImportExport V1 ツールをダウンロード](https://go.microsoft.com/fwlink/?LinkID=301900&amp;clcid=0x409)し、[WAImportExport V1 リファレンス](storage-import-export-tool-how-to-v1.md)で WAImportExport V1 の使用方法を参照できます。
 
 #### <a name="what-is-a-session-id"></a>セッション ID とは何ですか?
 

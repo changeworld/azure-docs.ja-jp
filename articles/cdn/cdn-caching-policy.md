@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: dce8d588a78b028223776e3ade737d4abd26094b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: ac94370b1c6a8f48ad55f0e277d93cd2f8388cb1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765287"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51242605"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Azure Media Services での Azure CDN キャッシュ ポリシーの管理
 Azure Media Services では、HTTP ベースのアダプティブ ストリーミングとプログレッシブ ダウンロードが提供されます。 HTTP ベースのストリーミングは、プロキシと CDN レイヤーにおけるキャッシュだけでなくクライアント側のキャッシュの利点もあり、高い拡張性を備えています。 ストリーミング エンドポイントは、一般的なストリーミング機能と、HTTP キャッシュ ヘッダーの構成も提供します。 ストリーミング エンドポイントは、HTTP Cache-Control: max-age および Expires ヘッダーを設定します。 HTTP キャッシュ ヘッダーの詳細については、 [W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html)を参照してください。
@@ -40,10 +40,10 @@ Azure Portal または Azure Media Services API を使用して、キャッシ�
 
 1. Azure Portal を使用してキャッシュ ヘッダーを構成する方法については、[ストリーミング エンドポイントの管理方法](../media-services/previous/media-services-portal-manage-streaming-endpoints.md)に関するページの「ストリーミング エンドポイントの構成」セクションをご覧ください。
 2. Azure Media Services REST API の「 [StreamingEndpoint](https://msdn.microsoft.com/library/azure/dn783468.aspx#StreamingEndpointCacheControl)」。
-3. Azure Media Services .NET SDK の「 [StreamingEndpointCacheControl プロパティ](http://go.microsoft.com/fwlink/?LinkId=615302)」。
+3. Azure Media Services .NET SDK の「 [StreamingEndpointCacheControl プロパティ](https://go.microsoft.com/fwlink/?LinkId=615302)」。
 
 ## <a name="cache-configuration-precedence-order"></a>キャッシュの構成の優先順位
-1. Azure Media Services で構成されたキャッシュ値は、既定値を上書きします。
+1. Azure Media Services で構成されたキャッシュ値は、既定値をオーバーライドします。
 2. 手動による構成がない場合は既定値が適用されます。
-3. 既定では、Azure Media または Azure Storage の構成に関係なく 2 秒のキャッシュ ヘッダーがライブ ストリーミング マニフェスト (プレイリスト) に適用され、この値の上書きは使用できません。
+3. 既定では、Azure Media または Azure Storage の構成に関係なく 2 秒のキャッシュ ヘッダーがライブ ストリーミング マニフェスト (プレイリスト) に適用され、この値のオーバーライドは使用できません。
 

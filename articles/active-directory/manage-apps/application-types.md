@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 754a06cc8bb9cc6e660e2ac5f01ef2c40176eb05
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: f483be5866715ddf253daefb197ae3dd87e02d99
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44355829"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51249100"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>アプリケーション リストに予期しないアプリケーションがある
 
@@ -59,13 +59,13 @@ ms.locfileid: "44355829"
 
 2.  Azure Active Directory と統合されたサードパーティー製アプリケーションにサインアップまたはサインインする場合。<sup> </sup> 一例として、[Smartsheet](https://app.smartsheet.com/b/home) または [DocuSign](https://www.docusign.net/member/MemberLogin.aspx) があります。
 
-3.  [Microsoft Office 365](http://products.office.com/) などのファースト パーティーのアプリケーションにサインアップするか、ユーザーやグループのライセンスを追加する場合
+3.  [Microsoft Office 365](https://products.office.com/) などのファースト パーティーのアプリケーションにサインアップするか、ユーザーやグループのライセンスを追加する場合
 
 4.  [アプリケーション レジストリ](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)でカスタム開発アプリケーションを作成して、新しいアプリケーション登録を追加する場合
 
 5.  [V2.0 アプリケーション登録ポータル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration#visit-the-microsoft-app-registration-portal)でカスタム開発アプリケーションを作成して、新しいアプリケーション登録を追加する場合
 
-6.  Visual Studio の [ASP.net の認証方法](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)または [接続済みサービス](http://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)を使用して開発しているアプリケーションを追加する場合
+6.  Visual Studio の [ASP.net の認証方法](http://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions)または [接続済みサービス](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)を使用して開発しているアプリケーションを追加する場合
 
 7.  [Azure AD PowerShell モジュール](/powershell/azure/install-adv2?view=azureadps-2.0)を使用してサービス プリンシパル オブジェクトを作成する場合
 

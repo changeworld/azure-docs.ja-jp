@@ -1,21 +1,20 @@
 ---
-title: Azure Site Recovery を使用した VMware VM および物理サーバーの Azure へのレプリケートに関するサポート マトリックス | Microsoft Docs
-description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にレプリケートする処理をサポートしているオペレーティング システムとコンポーネントの概要について説明します。
-services: site-recovery
+title: Azure Site Recovery を使用した VMware VM および物理サーバーの Azure へのディザスター リカバリーに関するサポート マトリックス | Microsoft Docs
+description: Azure Site Recovery を使用して VMware VM および物理サーバーを Azure にディザスター リカバリーする処理をサポートしているオペレーティング システムとコンポーネントの概要について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 10/29/2018
 ms.author: raynew
-ms.openlocfilehash: f6f1ceb4f9afaaeb0a436879802144bdebc06280
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: b472ed1c32e64b8f8ac881c09f22590c49f39c75
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49378654"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215363"
 ---
-# <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware および物理サーバーの Azure へのレプリケーションのサポート マトリックス
+# <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>VMware VM および物理サーバーの Azure へのディザスター リカバリーのサポート マトリックス
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して、VMware VM の Azure へのディザスター リカバリーを行う場合にサポートされるコンポーネントと設定の概要について説明します。
 

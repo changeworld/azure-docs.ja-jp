@@ -9,12 +9,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: adc8b84f0f22e85de88c4bd80c10a2a35d7b490a
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: 02fffe7c4a3acff6ce6d68046eee4286003b1766
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114602"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232224"
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault ストレージ アカウント キー
 
@@ -36,33 +36,40 @@ ms.locfileid: "49114602"
       
 <a name="step-by-step-instructions"></a>ステップ バイ ステップの手順
 -------------------------
+以下の手順では、ストレージ アカウントに対するオペレーター アクセス許可を持つサービスとして Key Vault を割り当てます。
 
-1. 管理する Azure ストレージ アカウントのリソース ID を取得します。
-    a. ストレージ アカウントの作成後に、次のコマンドを実行して、管理するストレージ アカウントのリソース ID を取得します。
+1. ストレージ アカウントの作成後に、次のコマンドを実行して、管理するストレージ アカウントのリソース ID を取得します。
+
     ```
     az storage account show -n storageaccountname (Copy ID out of the result of this command)
     ```
+    
 2. Azure Key Vault のサービス プリンシパルを表すアプリケーション ID を取得します。 
+
     ```
     az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
     ```
+    
 3. Azure Key Vault ID に Storage Key Operator ロールを割り当てます。
+
     ```
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id hhjkh --scope idofthestorageaccount
     ```
+    
 4. Key Vault の管理対象ストレージ アカウントを作成します。     <br /><br />
-   以下のコマンドでは、再生成期間を指定して、Key Vault でストレージのアクセス キーを定期的に再生成することを指示します。 次の例では、再生成期間を 90 日に設定しています。 90 日後、Key Vault は "key1" を再生成し、アクティブ キーを "key2" から "key1" に切り替えます。
-   ### <a name="key-regeneration"></a>キーの再生成
+   次の例では、再生成期間を 90 日に設定しています。 90 日後、Key Vault は "key1" を再生成し、アクティブ キーを "key2" から "key1" に切り替えます。
+   
     ```
-    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-generate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
+    az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-regenerate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
     ```
     ユーザーがストレージ アカウントを作成しておらず、ストレージ アカウントへのアクセス許可もない場合に備えて、以下の手順で自分のアカウントのアクセス許可を設定して、Key Vault 内のすべてのストレージ アクセス許可を確実に管理できるようにします。
-    [!NOTE] ユーザーにストレージ アカウントに対するアクセス許可がない場合に備えて、最初にユーザーのオブジェクト ID を取得します。
+ > [!NOTE] 
+    ユーザーにストレージ アカウントに対するアクセス許可がない場合に備えて、最初にユーザーのオブジェクト ID を取得します。
 
     ```
     az ad user show --upn-or-object-id "developer@contoso.com"
 
-    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover purge restore set setsas update
+    az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
     ```
 
 ### <a name="relevant-powershell-cmdlets"></a>関連した PowerShell コマンドレット

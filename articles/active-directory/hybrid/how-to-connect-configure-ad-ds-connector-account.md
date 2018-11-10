@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a12549a52171afc1c95588f9a2b259829e170fcc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: f57a5a2413103ddcf7484f3b1fc5b4170b7bdc98
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389957"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412861"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS コネクタ アカウントのアクセス許可の構成 
 
-ADSyncConfig.psm1 という名前の新しい PowerShell モジュールがビルド 1.1.880.0 (2018 年 8 月にリリース) に導入されました。これには、Azure AD Connect のデプロイ用の適切な Active Directory アクセス許可を構成するのに役立つコマンドレットのコレクションが含まれています。 
+[ADSyncConfig.psm1](reference-connect-adsyncconfig.md) という名前の新しい PowerShell モジュールがビルド 1.1.880.0 (2018 年 8 月にリリース) に導入されました。これには、Azure AD Connect のデプロイ用の適切な Active Directory アクセス許可を構成するのに役立つコマンドレットのコレクションが含まれています。 
 
 ## <a name="overview"></a>概要 
 以下の PowerShell コマンドレットを使用すると、AD DS コネクタ アカウントの Active Directory アクセス許可を、Azure AD Connect で有効にするかのようにする機能ごとに設定することができます。 問題を防ぐため、フォレストに接続するためにカスタム ドメイン アカウントを使用して Azure AD Connect をインストールしたい場合は、必ず事前に Active Directory のアクセス許可を準備してください。 この ADSyncConfig モジュールは、Azure AD Connect のデプロイ後にアクセス許可を構成する場合も使用できます。
@@ -49,7 +49,8 @@ Install-WindowsFeature RSAT-AD-Tools
 ```
 ![構成](media/how-to-connect-configure-ad-ds-connector-account/configure2.png)
 
->![注] AD DS 用の RAST が既にインストールされているドメイン コントローラーにファイル **C:\Program files \microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** を、コピーし、そこでこの PowerShell モジュールを使用することもできます。
+>[!NOTE]
+>AD DS 用の RAST が既にインストールされているドメイン コントローラーにファイル **C:\Program files \microsoft Azure Active Directory Connect\AdSyncConfig\ADSyncConfig.psm1** を、コピーし、そこでこの PowerShell モジュールを使用することもできます。
 
 ADSyncConfig の使用を開始するには、Windows PowerShell ウィンドウにモジュールを読み込む必要があります。 
 
@@ -269,10 +270,10 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 - 指定したオブジェクトの継承を無効にします 
 - 特定のオブジェクトのすべての ACE を削除します。ただし、SELF については既定のアクセス許可を維持するために、SELF に固有の ACE を除きます。 
  
- -ObjectDN パラメーターは、アクセス許可のセキュリティを強化する必要がある AD アカウントです。 これは、通常、AD DS コネクタに構成されている MSOL_nnnnnnnnnnnn ドメイン アカウントです (「AD DS コネクタ アカウントの確認」を参照)。 -Credential パラメーターは、ターゲットの AD オブジェクトに対する Active Directory のアクセス許可を制限するために必要な特権を持つ、管理者アカウントを指定するために必要です。 これは通常、企業またはドメインの管理者です。  
+ -ADConnectorAccountDN パラメーターは、アクセス許可のセキュリティを強化する必要がある AD アカウントです。 これは、通常、AD DS コネクタに構成されている MSOL_nnnnnnnnnnnn ドメイン アカウントです (「AD DS コネクタ アカウントの確認」を参照)。 -Credential パラメーターは、ターゲットの AD オブジェクトに対する Active Directory のアクセス許可を制限するために必要な特権を持つ、管理者アカウントを指定するために必要です。 これは通常、企業またはドメインの管理者です。  
 
 ``` powershell
-Set-ADSyncRestrictedPermissions [-ObjectDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 
+Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <PSCredential> [-DisableCredentialValidation] [-WhatIf] [-Confirm] [<CommonParameters>] 
 ```
  
 次に例を示します。 
@@ -301,3 +302,5 @@ Set-ADSyncRestrictedPermissions -ObjectDN 'CN=ADConnectorAccount,CN=Users,DC=Con
 - [Azure AD Connect: アカウントとアクセス許可](reference-connect-accounts-permissions.md)
 - [高速インストール](how-to-connect-install-express.md)
 - [カスタム インストール](how-to-connect-install-custom.md)
+- [ADSyncConfig リファレンス](reference-connect-adsyncconfig.md)
+

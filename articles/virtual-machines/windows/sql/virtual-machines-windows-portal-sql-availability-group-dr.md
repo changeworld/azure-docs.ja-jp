@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 84fa2e051c46e178e3e72709886babc8c3db7b9d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 43f3628878654a32be8aeafe1ba0d2e42e03d82f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29852831"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51240411"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>さまざまな地域に存在する Azure 仮想マシンに Always On 可用性グループを構成します｡
 
@@ -56,7 +56,7 @@ ms.locfileid: "29852831"
    ![可用性グループ](./media/virtual-machines-windows-portal-sql-availability-group-dr/01-vpngateway-example.png)
 
 >[!IMPORTANT]
->このアーキテクチャでは、Azure リージョン間でレプリケートされるデータに対して送信データ料金がかかります。 「[帯域幅の料金詳細](http://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。  
+>このアーキテクチャでは、Azure リージョン間でレプリケートされるデータに対して送信データ料金がかかります。 「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。  
 
 ## <a name="create-remote-replica"></a>リモート レプリカを作成する
 
@@ -104,13 +104,13 @@ ms.locfileid: "29852831"
    - リモート データ センターからのネットワークを使います。
    - 新しい Azure Load Balancer からの IP アドレスを割り当てます。 
 
-1. SQL Server 構成マネージャーで、新しい SQL Server の [Always On 可用性グループを有効](http://msdn.microsoft.com/library/ff878259.aspx)にします。
+1. SQL Server 構成マネージャーで、新しい SQL Server の [Always On 可用性グループを有効](https://msdn.microsoft.com/library/ff878259.aspx)にします。
 
 1. [新しい SQL Server でファイアウォール ポートを開きます](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall)。
 
    開く必要があるポート番号は、環境に依存します。 ミラーリング エンドポイントと Azure Load Balancer 正常性プローブのポートを開きます。
 
-1. [新しい SQL Server の可用性グループにレプリカを追加します](http://msdn.microsoft.com/library/hh213239.aspx)。
+1. [新しい SQL Server の可用性グループにレプリカを追加します](https://msdn.microsoft.com/library/hh213239.aspx)。
 
    リモート Azure リージョンのレプリカについては、手動フェールオーバーでの非同期レプリケーション用に設定します。  
 
@@ -142,9 +142,9 @@ ms.locfileid: "29852831"
 
 リモート データ センターのレプリカは、可用性グループの一部ですが、異なるサブネット内にあります。 このレプリカがプライマリ レプリカになった場合、アプリケーション接続のタイムアウトが発生する可能性があります。 この動作は、マルチサブネット デプロイでのオンプレミスの可用性グループと同じです。 クライアント アプリケーションからの接続を許可するには、クライアント接続を更新するか、またはクラスター ネットワーク名リソースに名前解決キャッシュを構成します。
 
-可能であれば、`MultiSubnetFailover=Yes` を設定するようにクライアント接続文字列を更新します。 「[MultiSubnetFailover を使用した接続](http://msdn.microsoft.com/library/gg471494#Anchor_0)」をご覧ください。
+可能であれば、`MultiSubnetFailover=Yes` を設定するようにクライアント接続文字列を更新します。 「[MultiSubnetFailover を使用した接続](https://msdn.microsoft.com/library/gg471494#Anchor_0)」をご覧ください。
 
-接続文字列を変更できない場合は、名前解決キャッシュを構成できます。 「[Connection Timeouts in Multi-subnet Availability Group](http://blogs.msdn.microsoft.com/alwaysonpro/2014/06/03/connection-timeouts-in-multi-subnet-availability-group/)」(マルチサブネット可用性グループでの接続タイムアウト) をご覧ください。
+接続文字列を変更できない場合は、名前解決キャッシュを構成できます。 「[Connection Timeouts in Multi-subnet Availability Group](https://blogs.msdn.microsoft.com/alwaysonpro/2014/06/03/connection-timeouts-in-multi-subnet-availability-group/)」(マルチサブネット可用性グループでの接続タイムアウト) をご覧ください。
 
 ## <a name="fail-over-to-remote-region"></a>リモート リージョンにフェールオーバーする
 
@@ -164,7 +164,7 @@ ms.locfileid: "29852831"
 
 接続をテストした後は、プライマリ レプリカをプライマリ データ センターに戻し、可用性モードを通常の動作設定に戻します。 次の表では、このドキュメントで説明されているアーキテクチャの通常の動作設定を示します。
 
-| 場所 | サーバー インスタンス | 役割 | 可用性モード | フェールオーバー モード
+| Location | サーバー インスタンス | Role | 可用性モード | フェールオーバー モード
 | ----- | ----- | ----- | ----- | -----
 | プライマリ データ センター | SQL-1 | プライマリ | 同期 | 自動
 | プライマリ データ センター | SQL-2 | セカンダリ | 同期 | 自動
@@ -175,12 +175,12 @@ ms.locfileid: "29852831"
 
 詳細については、次のトピックを参照してください。
 
-- [可用性グループの計画的な手動フェールオーバーの実行 (SQL Server)](http://msdn.microsoft.com/library/hh231018.aspx)
-- [可用性グループの強制手動フェールオーバーの実行 (SQLServer)](http://msdn.microsoft.com/library/ff877957.aspx)
+- [可用性グループの計画的な手動フェールオーバーの実行 (SQL Server)](https://msdn.microsoft.com/library/hh231018.aspx)
+- [可用性グループの強制手動フェールオーバーの実行 (SQLServer)](https://msdn.microsoft.com/library/ff877957.aspx)
 
 ## <a name="additional-links"></a>その他のリンク
 
-* [AlwaysOn 可用性グループ](http://msdn.microsoft.com/library/hh510230.aspx)
-* [Azure Virtual Machines](http://docs.microsoft.com/azure/virtual-machines/windows/)
+* [AlwaysOn 可用性グループ](https://msdn.microsoft.com/library/hh510230.aspx)
+* [Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/)
 * [Azure Load Balancer](virtual-machines-windows-portal-sql-availability-group-tutorial.md#configure-internal-load-balancer)
 * [Azure の可用性セット](../manage-availability.md)

@@ -1,19 +1,19 @@
 ---
-title: Azure Site Recovery を使用して Azure から VMware にフェールバックする | Microsoft Docs
-description: 仮想マシンを Azure にフェールオーバーした後に、フェールバックを開始して仮想マシンをオンプレミスに戻すことができます。 フェールバック方法の手順について説明します。
+title: Azure Site Recovery を使用した VMware VM の Azure へのディザスター リカバリー中の Azure からのフェールバック | Microsoft Docs
+description: VMware VM と物理サーバーの Azure へのディザスター リカバリー時に、Azure にフェールオーバーした後で、オンプレミス サイトにフェールバックする方法について説明します。
 author: nsoneji
 ms.service: site-recovery
 ms.date: 10/11/2018
 ms.topic: conceptual
 ms.author: nisoneji
-ms.openlocfilehash: 841e036555723051dfeaf946f31eaf9eedaee798
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: becf0b8c9f14d81b0a25fb1727b69452c3ff690c
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093512"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215176"
 ---
-# <a name="fail-back-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトへのフェールバック
+# <a name="fail-back-vmware-vms-and-physical-servers-from-azure-to-an-on-premises-site"></a>VMware VM と物理サーバーを Azure からオンプレミス サイトにフェールバックする
 
 この記事では、Azure Virtual Machines からオンプレミスの VMware 環境に仮想マシンをフェールバックする方法について説明します。 この記事の手順は、[Azure Site Recovery でのフェールオーバー](site-recovery-failover.md)に関するチュートリアルを使用して、VMware 仮想マシンまたは Windows/Linux 物理サーバーをオンプレミス サイトから Azure にフェールオーバーした後で、それらをフェールバックするために実行します。
 
