@@ -14,53 +14,53 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/04/2018
 ms.author: srrengar
-ms.openlocfilehash: 29adf362fdacdb793af071fa6d7bd59214536374
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: aedbc5925a6e101299170843abef79ef6125eafe
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34207755"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230422"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights を使用したイベント分析と視覚化
 
-Azure Application Insights は、アプリケーションの監視と診断のための拡張可能なプラットフォームです。 このプラットフォームには、強力な分析ツールとクエリ ツール、カスタマイズ可能なダッシュボードや視覚化、さらには自動アラート通知を含むオプションが含まれています。 これは、Service Fabric アプリケーションとサービスの監視と診断用に推奨されるプラットフォームです。 この記事を読むと、次の一般的な問題に対処できます
+Microsoft Azure Application Insights は、アプリケーションの監視と診断のための拡張可能なプラットフォームです。 このプラットフォームには、強力な分析ツールとクエリ ツール、カスタマイズ可能なダッシュボードや視覚化、さらには自動アラート通知を含むオプションが含まれています。 これは、Service Fabric アプリケーションとサービスの監視と診断用に推奨されるプラットフォームです。 この記事を読むと、次の一般的な問題に対処できます
 
 * アプリケーションとサービスの内部で何が行われているかを理解し、テレメトリを収集する方法
 * 互いに通信しているアプリケーション (特にサービス) のトラブルシューティングを行う方法
 * サービスのパフォーマンスに関するメトリック (たとえば、ページの読み込み時間や http 要求など) を取得する方法
 
-この記事の目的は、App Insights 内から情報を取得し、トラブルシューティングを行う方法を示すことです。 Service Fabric で AI を設定および構成する方法については、この[チュートリアル](service-fabric-tutorial-monitoring-aspnet.md)をご覧ください。
+この記事の目的は、Application Insights 内から情報を取得し、トラブルシューティングを行う方法を示すことです。 Service Fabric で Application Insights を設定および構成する方法については、この[チュートリアル](service-fabric-tutorial-monitoring-aspnet.md)をご覧ください。
 
-## <a name="monitoring-in-app-insights"></a>App Insights 内での監視
+## <a name="monitoring-in-application-insights"></a>Application Insights での監視
 
-Application Insights には、Service Fabric の使用時にすぐに利用できる豊富な機能が用意されています。 [概要] ページでは、AI はサービスに関する重要な情報 (応答時間や処理された要求の数など) を提供します。 上部にある [検索] をクリックすると、アプリケーション内での最近の要求の一覧を確認できます。 さらに、失敗した要求をここで確認し、発生したエラーを診断できます。
+Application Insights には、Service Fabric の使用時にすぐに利用できる豊富な機能が用意されています。 Application Insights の概要ページでは、サービスに関する重要な情報 (応答時間や処理された要求の数など) が提供されます。 上部にある [検索] をクリックすると、アプリケーション内での最近の要求の一覧を確認できます。 さらに、失敗した要求をここで確認し、発生したエラーを診断できます。
 
-![AI の概要](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
+![Application Insights の概要](media/service-fabric-diagnostics-event-analysis-appinsights/ai-overview.png)
 
-前の図の右側のパネルでは、リスト内に要求およびイベントという 2 つの主要な種類のエントリがあります。 要求は、HTTP 要求を通じてアプリの API に対して行われた呼び出しです。イベントはカスタム イベントで、コード内の任意の場所に追加できるテレメトリとして機能します。 アプリケーションのインストルメント化については、「[カスタムのイベントとメトリックのための Application Insights API](../application-insights/app-insights-api-custom-events-metrics.md)」で詳しく調べることができます。 要求をクリックすると、次の図に示すような詳細が表示されます。これには、AI Service Fabric NuGet パッケージ内で収集される Service Fabric 固有のデータが含まれます。 この情報はアプリケーションのトラブルシューティングと状態の確認に役立ち、このすべての情報を Application Insights 内で検索できます
+前の図の右側のパネルでは、リスト内に要求およびイベントという 2 つの主要な種類のエントリがあります。 要求は、HTTP 要求を通じてアプリの API に対して行われた呼び出しです。イベントはカスタム イベントで、コード内の任意の場所に追加できるテレメトリとして機能します。 アプリケーションのインストルメント化については、「[カスタムのイベントとメトリックのための Application Insights API](../application-insights/app-insights-api-custom-events-metrics.md)」で詳しく調べることができます。 要求をクリックすると、次の図に示すような詳細が表示されます。これには、Application Insights の Service Fabric NuGet パッケージで収集される Service Fabric 固有のデータが含まれます。 この情報はアプリケーションのトラブルシューティングと状態の確認に役立ち、このすべての情報を Application Insights 内で検索できます
 
-![AI 要求の詳細](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
+![Application Insights の要求の詳細](media/service-fabric-diagnostics-event-analysis-appinsights/ai-request-details.png)
 
-Application Insights には、取得したすべてのデータに対してクエリを実行するための指定ビューがあります。 AI ポータルに移動するには、[概要] ページの上部にある [メトリックス エクスプローラー] をクリックします。 ここで、Kusto クエリ言語を使用して前述のカスタム イベント、要求、例外、パフォーマンス カウンター、その他のメトリックに対してクエリを実行できます。 次の例は、過去 1 時間のすべての要求を示しています。
+Application Insights には、取得したすべてのデータに対してクエリを実行するための指定ビューがあります。 [概要] ページの上部にある [メトリックス エクスプローラー] をクリックして、Application Insights ポータルに移動します。 ここで、Kusto クエリ言語を使用して前述のカスタム イベント、要求、例外、パフォーマンス カウンター、その他のメトリックに対してクエリを実行できます。 次の例は、過去 1 時間のすべての要求を示しています。
 
-![AI 要求の詳細](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
+![Application Insights の要求の詳細](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
-App Insights ポータルの機能をさらに調べるには、[Application Insights ポータルに関するドキュメント](../application-insights/app-insights-dashboards.md)をご覧ください。
+Application Insights ポータルの機能についてさらに調べるには、[Application Insights ポータルに関するドキュメント](../application-insights/app-insights-dashboards.md)をご覧ください。
 
-### <a name="configuring-ai-with-wad"></a>WAD を使用した AI の設定
+### <a name="configuring-application-insights-with-wad"></a>WAD を使用した Application Insights の構成
 
 >[!NOTE]
 >これは現在、Windows クラスターにのみ当てはまります。
 
-WAD から Azure AI にデータを送信する主な方法は 2 つあります。この方法は、[この記事](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)で説明しているように、AI シンクを WAD 構成に追加することで実行できます。
+WAD から Azure Application Insights にデータを送信する主な方法は 2 つあります。この方法は、[この記事](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)で説明しているように、Application Insights シンクを WAD 構成に追加することで実行できます。
 
-#### <a name="add-an-ai-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Azure ポータルでクラスターを作成するときに、AI インストルメンテーション キーを追加する
+#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Azure portal でクラスターを作成するときに、Application Insights のインストルメンテーション キーを追加する
 
 ![AIKey の追加](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
 
-クラスターを作成するときに、診断が "オン" になっている場合、Application Insights のインストルメンテーション キーを入力するオプションのフィールドが表示されます。 ここに AI IKey を貼り付けると、クラスターの展開に使用する Resource Manager テンプレートで AI シンクが自動的に構成されます。
+クラスターを作成するときに、診断が "オン" になっている場合、Application Insights のインストルメンテーション キーを入力するオプションのフィールドが表示されます。 ここに Application Insights のキーを貼り付けると、クラスターの展開に使用される Resource Manager テンプレートで、Application Insights シンクが自動的に構成されます。
 
-#### <a name="add-the-ai-sink-to-the-resource-manager-template"></a>Resource Manager テンプレートに AI シンクを追加する
+#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Resource Manager テンプレートに Application Insights シンクを追加する
 
 Resource Manager テンプレートの "WadCfg" に、次の 2 つの変更を含めることによって "シンク" を追加します。
 
@@ -86,12 +86,12 @@ Resource Manager テンプレートの "WadCfg" に、次の 2 つの変更を�
 
 上記の両方のコード スニペットには、シンクを記述するために "applicationInsights" という名前が使用されていました。 これは要件ではなく、シンクの名前が "sinks" に含まれている限り、任意の文字列で名前を設定できます。
 
-現時点では、クラスターのログは AI のログ ビューアーに**トレース**として表示されます。 プラットフォームからのトレースのほとんどは "情報" レベルであるため、シンクの構成を変更して "重大" または "エラー" タイプのログのみを送信することも検討できます。 これは、[この記事](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)で説明するように、シンクに "チャネル" を追加することで実現できます。
+現時点では、クラスターのログは Application Insights のログ ビューアーに**トレース**として表示されます。 プラットフォームからのトレースのほとんどは "情報" レベルであるため、シンクの構成を変更して "重大" または "エラー" タイプのログのみを送信することも検討できます。 これは、[この記事](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)で説明するように、シンクに "チャネル" を追加することで実現できます。
 
 >[!NOTE]
->ポータルまたは Resource Manager テンプレートのいずれかで間違った AI Key を使用した場合、手動でキーを変更してクラスターを更新するか、再デプロイする必要があります。
+>ポータルまたは Resource Manager テンプレートのいずれかで間違った Application Insights キーを使用した場合、手動でキーを変更してクラスターを更新するか、再デプロイする必要があります。
 
-### <a name="configuring-ai-with-eventflow"></a>EventFlow を使用した AI の設定
+### <a name="configuring-application-insights-with-eventflow"></a>EventFlow を使用した Application Insights の構成
 
 EventFlow を使用してイベントを集計する場合は、必ず `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights`NuGet パッケージをインポートしてください。 *eventFlowConfig.json* の *outputs* セクションには、次のコードが必要です。
 
@@ -106,17 +106,17 @@ EventFlow を使用してイベントを集計する場合は、必ず `Microsof
 
 フィルターに必要な変更を加えるだけでなく、他の入力を (それぞれの NuGet パッケージとともに) 含めるようにしてください。
 
-## <a name="aisdk"></a>AI.SDK
+## <a name="application-insights-sdk"></a>Application Insights SDK
 
-EventFlow と WAD は集計ソリューションとして使用することをお勧めします。これは診断と監視を行うモジュール性の高いアプローチが可能になるためです。つまり、EventFlow からの出力を変更する場合、実際のインストルメンテーションを変更する必要はなく、構成ファイルを簡単に変更するだけで済みます。 ただし、Application Insights に投資することとし、別のプラットフォームに変更する可能性が低い場合、AI の新しい SDK を使用してイベントを集計し、AI に送信することを検討した方がよいでしょう。 つまり、データを AI に送信するように EventFlow を設定する必要はなくなり、代わりに ApplicationInsight の Service Fabric NuGet パッケージをインストールすることになります。 パッケージの詳細は、[こちら](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)をご覧ください。
+EventFlow と WAD は集計ソリューションとして使用することをお勧めします。これは診断と監視を行うモジュール性の高いアプローチが可能になるためです。つまり、EventFlow からの出力を変更する場合、実際のインストルメンテーションを変更する必要はなく、構成ファイルを簡単に変更するだけで済みます。 ただし、Application Insights の利用に投資し、別のプラットフォームに変更する可能性が低い場合は、Application Insights の新しい SDK を使用してイベントを集計し、それを Application Insights に送信することを検討してください。 つまり、データを Application Insights に送信するように EventFlow を設定する必要はなくなり、代わりに ApplicationInsight の Service Fabric NuGet パッケージをインストールすることになります。 パッケージの詳細は、[こちら](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)をご覧ください。
 
-[Application Insights のマイクロサービスとコンテナーのサポート](https://azure.microsoft.com/blog/app-insights-microservices/)により、開発中の新機能 (現在はまだベータ版) が表示され、AI を使用した、より豊かで、細かい設定が不要なモニタリング オプションを利用できます。 これには、依存関係の追跡 (クラスター内すべてのサービスやアプリケーションおよびそれらの間の通信の AppMap 構築に使用されます)、サービスからのトレースの関連付けの向上 (アプリやサービスのワークフローの問題点を特定するのに役立ちます) が含まれます。
+[Application Insights のマイクロサービスとコンテナーのサポート](https://azure.microsoft.com/blog/app-insights-microservices/)により、開発中の新機能 (現在はまだベータ版) が表示され、Application Insights を使用した、より豊かで、細かい設定が不要なモニタリング オプションを利用できます。 これには、依存関係の追跡 (クラスター内すべてのサービスやアプリケーションおよびそれらの間の通信の AppMap 構築に使用されます)、サービスからのトレースの関連付けの向上 (アプリやサービスのワークフローの問題点を特定するのに役立ちます) が含まれます。
 
-.NET で開発中で、Service Fabric のプログラミング モデルの一部を使用する可能性があり、イベントとログ データを視覚化して分析するためのプラットフォームとして AI を使用する場合は、AI SDK ルートをたどる監視および診断ワークフローを作成することをお勧めします。 AI を使用したログの収集と表示を開始するには、[こちら](../application-insights/app-insights-asp-net-more.md)と[こちら](../application-insights/app-insights-asp-net-trace-logs.md)をご覧ください。
+.NET で開発中で、Service Fabric のプログラミング モデルの一部を使用する可能性があり、イベントとログ データを視覚化して分析するためのプラットフォームとして Application Insights を使用する場合は、Application Insights SDK ルートをたどる監視および診断ワークフローを作成することをお勧めします。 Application Insights を使用したログの収集と表示を開始するには、[こちら](../application-insights/app-insights-asp-net-more.md)と[こちら](../application-insights/app-insights-asp-net-trace-logs.md)をご覧ください。
 
-## <a name="navigating-the-ai-resource-in-azure-portal"></a>Azure ポータルで AI リソースをナビゲートする
+## <a name="navigating-the-application-insights-resource-in-azure-portal"></a>Azure portal で Application Insights のリソースを参照する
 
-イベントとログの出力として AI を構成すると、数分後に AI リソースに情報が表示されます。 AI リソースに移動すると、AI リソース ダッシュボードに移動します。 AI タスク バーの **[検索]** をクリックすると、受信した最新のトレースが表示され、それらのトレースをフィルター処理できます。
+イベントとログの出力として Application Insights を構成すると、数分後に Application Insights リソースに情報が表示されます。 Application Insights リソースに移動すると、Application Insights リソースのダッシュ ボードが表示されます。 Application Insights タスク バーの **[検索]** をクリックすると、受信した最新のトレースが表示され、それらのトレースをフィルター処理できます。
 
 *メトリックス エクスプローラー*は、アプリケーションやサービス、クラスターが報告するメトリックに基づいたカスタム ダッシュボードを作成する便利なツールです。 収集するデータに基づいたグラフを自分でいくつか設定するには、「[Application Insights を使用したメトリックの探索](../application-insights/app-insights-metrics-explorer.md)」を参照してください。
 
@@ -125,4 +125,4 @@ EventFlow と WAD は集計ソリューションとして使用することを�
 ## <a name="next-steps"></a>次の手順
 
 * [AI のアラートを設定して](../application-insights/app-insights-alerts.md)、パフォーマンスまたは使用状況の変化について通知を受けます
-* [Application Insights のスマート検出](../application-insights/app-insights-proactive-diagnostics.md)は、 AI に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します
+* [Application Insights のスマート検出](../application-insights/app-insights-proactive-diagnostics.md)は、Application Insights に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します

@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: e11b115d7a6421c34e7f1371ad8931b6affa0436
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: f07d830e90045c11d870a921d091b45de6d2a89b
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48815173"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50418536"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>App Service on Linux の Java 開発者ガイド
 
@@ -147,6 +147,8 @@ App Service for Linux で実行される Java アプリケーションは、他�
 >[!NOTE]
 > アプリケーションで Spring Boot または Spring Framework を使用している場合は、Spring データ JPA のデータベース接続情報を環境変数として設定できます [アプリケーションのプロパティ ファイル内]。 その後、Azure portal または CLI で、[アプリ設定](/azure/app-service/web-sites-configure#app-settings)を使用してアプリケーションに対してこれらの値を定義することができます。
 
+このセクションの構成スニペットの例では、MySQL データベースを使用します。 詳細については、[MySQL](https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-usagenotes-tomcat.html)、[SQL Server JDBC](https://docs.microsoft.com/en-us/sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server?view=sql-server-2017)、および [PostgreSQL](https://jdbc.postgresql.org/documentation/head/index.html) の構成ドキュメントを参照してください。
+
 Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用して、データベースへのマネージド接続を使用するよう Tomcat を構成するには、まず起動時に Tomcat によって読み取られる CATALINA_OPTS 環境変数をカスタマイズします。 App Service Maven プラグインで、アプリ設定を使用してこれらの値を設定します。
 
 ```xml
@@ -233,7 +235,7 @@ Java Database Connectivity (JDBC) または Java Persistence API (JPA) を使用
 
 ## <a name="docker-containers"></a>Docker コンテナー
 
-Azure がサポートしている Zulu JDK をコンテナーで使用するには、[Azul のダウンロード ページ](https://www.azul.com/downloads/azure-only/zulu/#docker)に記載されている事前構築済みのイメージをプルして使用するか、[Microsoft Java GitHub リポジトリ](https://github.com/Microsoft/java/tree/master/docker)にある `Dockerfile` の例を使用するようにします。
+Azure がサポートしている Zulu JDK をコンテナーで使用するには、[サポートされている Azul Zulu Enterprise for Azure のダウンロード ページ](https://www.azul.com/downloads/azure-only/zulu/)に記載されている事前構築済みのイメージをプルして使用するか、[Microsoft Java GitHub リポジトリ](https://github.com/Microsoft/java/tree/master/docker)にある `Dockerfile` の例を使用するようにします。
 
 ## <a name="runtime-availability-and-statement-of-support"></a>ランタイムの可用性とサポート ステートメント
 

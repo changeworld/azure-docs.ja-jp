@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
-ms.openlocfilehash: 8c34696f81e40b4db13e6868f6bdaa1b2a8e7a2a
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b0256e899d47e3b6f8141218c11e1a7a62ca8e1a
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095465"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50419726"
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
@@ -47,7 +47,7 @@ Application Insights は、アプリケーションのパフォーマンスの�
 通知には診断情報が含まれます。 次に例を示します。
 
 
-![サーバー応答時間の低下の検出例](./media/app-insights-proactive-diagnostics/server_response_time_degradation.png)
+![サーバー応答時間の低下の検出例](media/app-insights-proactive-performance-diagnostics/server_response_time_degradation.png)
 
 1. **トリアージ**:  通知は、影響を受けるユーザーまたは操作の数を示します。 この情報を基に、問題に優先順位を割り当てることができます。
 2. **スコープ**:  問題が影響する範囲はすべてのトラフィックですか。または一部のページのみですか。 特定のブラウザーまたは場所に限定されますか。 この情報を通知から取得できます。
@@ -61,7 +61,7 @@ Application Insights は、アプリケーションのパフォーマンスの�
 
 スマート検出による通知は既定で有効になっており、[Application Insights リソースにアクセスできる所有者、共同作成者、および閲覧者](app-insights-resources-roles-access-control.md)に送信されます。 これを変更するには、電子メール通知の **[構成]** をクリックするか、または Application Insights で [スマート検出の設定] を開きます。 
   
-  ![スマート検出の設定](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
+  ![スマート検出の設定](media/app-insights-proactive-performance-diagnostics/smart_detection_configuration.png)
   
   * スマート検出電子メール内の **[サブスクライブ解除]** リンクを使用して電子メール通知の受け取りを停止できます。
 
@@ -143,7 +143,7 @@ Web サイト ユーザーにとって最大の不満の 1 つは、自らの経
 
 依存関係の低下の通知例を次に示します。
 
-![依存関係の期間の低下の検出例](./media/app-insights-proactive-diagnostics/dependency_duration_degradation.png)
+![依存関係の期間の低下の検出例](media/app-insights-proactive-performance-diagnostics/dependency_duration_degradation.png)
 
 次の指標が提示されます。
 

@@ -15,12 +15,12 @@ ms.date: 05/04/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 0d139437a069406db2ae0f189480072f8063a327
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 73854cba151dfbebe53862a39fbe980502192c2d
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982274"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50230065"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシで公開されているアプリのハードコードされたリンクをリダイレクトする
 
@@ -97,6 +97,7 @@ MyApps ブラウザー拡張機能を使用すると、アプリケーション 
 
 - コード タグ内にないリンク。 
 - HTML や CSS の中にないリンク。 
+- URL エンコード形式のリンク。
 - 他のプログラムから開かれた内部リンク。 電子メールまたはインスタント メッセージで送信されたか、他のドキュメントに含まれているリンクは変換されません。 ユーザーは、外部 URL に移動するために知っておく必要があります。
 
 この 2 つのシナリオのいずれかをサポートする必要がある場合は、リンク変換ではなく同じ内部および外部 URL を使用します。  

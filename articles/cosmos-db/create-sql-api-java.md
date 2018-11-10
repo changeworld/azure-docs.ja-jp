@@ -9,16 +9,16 @@ ms.component: cosmosdb-sql
 ms.custom: quick start connect, mvc, devcenter
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 03/26/2018
-ms.author: sngun
-ms.openlocfilehash: 85a7a6f5b1224c732f5a385789aef13e1d7bd1db
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/24/2018
+ms.author: moderakh
+ms.openlocfilehash: 399db2d7ed5d1c94fe359cb55e9b90df3d99e003
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961248"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50421290"
 ---
-# <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: ドキュメント データベースを Java と Azure Portal で作成する
+# <a name="create-and-manage-resources-of-an-azure-cosmos-db-sql-api-account-using-a-java-application"></a>Java アプリケーションを使用して Azure Cosmos DB SQL API アカウントのリソースを作成および管理する
 
 > [!div class="op_single_selector"]
 > * [.NET](create-sql-api-dotnet.md)
@@ -26,11 +26,8 @@ ms.locfileid: "46961248"
 > * [Node.js](create-sql-api-nodejs.md)
 > * [Python](create-sql-api-python.md)
 > * [Xamarin](create-sql-api-xamarin-dotnet.md)
->  
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB を使用すると、管理対象のドキュメントやテーブル、グラフのデータベースを迅速に作成しクエリできます。
-
-このクイックスタートでは、Azure Cosmos DB [SQL API](sql-api-introduction.md) 用の Azure Portal ツールを使ってドキュメント データベースを作成します。 また、[SQL Java API](sql-api-sdk-java.md) を使ってすばやく Java コンソール アプリを作成する方法も紹介します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートを完了すると、UI とプログラムのどちらか好きな方法で、ドキュメント データベース リソースの作成と変更ができるようになります。
+このクイック スタートでは、Java アプリケーションを使用して Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウントのリソースを作成および管理する方法について説明します。 まず、Azure portal を使用して Azure Cosmos DB SQL API アカウントを作成し、[SQL Java SDK](sql-api-sdk-async-java.md) を使用して Java アプリケーションを作成します。さらに Java アプリケーションを使用して Cosmos DB アカウントにリソースを追加します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイック スタートを完了すると、UI とプログラムのどちらか好きな方法で、Cosmos DB データベースとコレクションの作成と変更ができるようになります。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,7 +36,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 加えて次の作業を行います。 
 
-* [Java Development Kit (JDK) 1.7 以降](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Java Development Kit (JDK) 1.8 以降](https://aka.ms/azure-jdks)
     * Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。
     * 必ず、JDK のインストール先フォルダーを指すように JAVA_HOME 環境変数を設定してください。
 * [Maven](http://maven.apache.org/) バイナリ アーカイブの[ダウンロード](http://maven.apache.org/download.cgi)と[インストール](http://maven.apache.org/install.html)
@@ -70,151 +67,133 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 次は、コードを使った作業に移りましょう。 GitHub から SQL API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
-1. コマンド プロンプトを開いて git-samples という名前の新しいフォルダーを作成し、コマンド プロンプトを閉じます。
+1. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
-    md "C:\git-samples"
-    ```
-
-2. git bash などの git ターミナル ウィンドウを開いて、`cd` コマンドを使用して、サンプル アプリをインストールする新しいフォルダーに変更します。 
-
-    ```bash
-    cd "C:\git-samples"
-    ```
-
-3. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
-
-    ```bash
-    git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
+    git clone https://github.com/Azure-Samples/azure-cosmos-db-sql-api-async-java-getting-started
     ```
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 それ以外の場合は、「[アプリの実行](#run-the-app)」に進んでください。 
 
-以降のスニペットはすべて、C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted\Program.java ファイルから取得されます。
-
-* `DocumentClient` の初期化。 [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client) は Azure Cosmos DB データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。 このコードの `FILLME` 部分は、このクイック スタートの中で後から更新します。
+* `AsyncDocumentClient` の初期化。 [AsyncDocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client) は、Azure Cosmos DB データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。
 
     ```java
-    this.client = new DocumentClient("https://FILLME.documents.azure.com",
-            "FILLME", 
-            new ConnectionPolicy(),
-            ConsistencyLevel.Session);
+    client = new AsyncDocumentClient.Builder()
+             .withServiceEndpoint(YOUR_COSMOS_DB_ENDPOINT)
+             .withMasterKeyOrResourceToken(YOUR_COSMOS_DB_MASTER_KEY)
+             .withConnectionPolicy(ConnectionPolicy.GetDefault())
+             .withConsistencyLevel(ConsistencyLevel.Eventual)
+             .build();
     ```
 
-* [Database](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._database) の作成。
+* [Database](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._database) の作成。
 
     ```java
-    Database database = new Database();
-    database.setId(databaseName);
+    Database databaseDefinition = new Database();
+    databaseDefinition.setId(databaseName);
     
-    this.client.createDatabase(database, null);
+    client.createDatabase(databaseDefinition, null)
+            .toCompletable()
+            .await();
     ```
 
-* [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_collection) の作成。
+* [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._document_collection) の作成。
 
     ```java
-    DocumentCollection collectionInfo = new DocumentCollection();
-    collectionInfo.setId(collectionName);
+    DocumentCollection collectionDefinition = new DocumentCollection();
+    collectionDefinition.setId(collectionName);
 
-    ...
+    //...
 
-    this.client.createCollection(databaseLink, collectionInfo, requestOptions);
+    client.createCollection(databaseLink, collectionDefinition, requestOptions)
+            .toCompletable()
+            .await();
     ```
 
-* [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.createdocument) メソッドを使用したドキュメントの作成。
+* [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb._document) メソッドを使用したドキュメントの作成。
 
     ```java
-    // Any Java object within your code can be serialized into JSON and written to Azure Cosmos DB
+    // Any Java object within your code
+    // can be serialized into JSON and written to Azure Cosmos DB
     Family andersenFamily = new Family();
     andersenFamily.setId("Andersen.1");
     andersenFamily.setLastName("Andersen");
     // More properties
 
     String collectionLink = String.format("/dbs/%s/colls/%s", databaseName, collectionName);
-    this.client.createDocument(collectionLink, family, new RequestOptions(), true);
+    client.createDocument(collectionLink, family, null, true)
+            .toCompletable()
+            .await();
+
     ```
 
-* [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.querydocuments) メソッドを使用して JSON に対する SQL クエリを実行します。
+* [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx._async_document_client.querydocuments?view=azure-java-stable) メソッドを使用して JSON に対する SQL クエリを実行します。
 
     ```java
     FeedOptions queryOptions = new FeedOptions();
     queryOptions.setPageSize(-1);
     queryOptions.setEnableCrossPartitionQuery(true);
+    queryOptions.setMaxDegreeOfParallelism(-1);
 
-    String collectionLink = String.format("/dbs/%s/colls/%s", databaseName, collectionName);
-    FeedResponse<Document> queryResults = this.client.queryDocuments(
-        collectionLink,
-        "SELECT * FROM Family WHERE Family.lastName = 'Andersen'", queryOptions);
+    String collectionLink = String.format("/dbs/%s/colls/%s",
+            databaseName,
+            collectionName);
+    Iterator<FeedResponse<Document>> it = client.queryDocuments(
+            collectionLink,
+            "SELECT * FROM Family WHERE Family.lastName = 'Andersen'",
+            queryOptions).toBlocking().getIterator();
 
     System.out.println("Running SQL query...");
-    for (Document family : queryResults.getQueryIterable()) {
-        System.out.println(String.format("\tRead %s", family));
+    while (it.hasNext()) {
+        FeedResponse<Document> page = it.next();
+        System.out.println(
+                String.format("\tRead a page of results with %d items",
+                        page.getResults().size()));
+        for (Document doc : page.getResults()) {
+            System.out.println(String.format("\t doc %s", doc));
+        }
     }
     ```    
 
-## <a name="update-your-connection-string"></a>接続文字列を更新する
-
-ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。
-
-1. [Azure Portal](http://portal.azure.com/) で **[キー]** をクリックします。 
-
-    画面の右側にある [コピー] ボタンを使用して 1 番上の [URI] の値をコピーします。
-
-    ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/create-sql-api-java/keys.png)
-
-2. C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted フォルダーから `Program.java` ファイルを開きます。 
-
-3. 45 行目の `https://FILLME.documents.azure.com` にポータルの [URI] の値を貼り付けます。
-
-4. ポータルに戻り、スクリーン ショットに示すように、[主キー] の値をコピーします。 46 行目の `FILLME` にポータルの [主キー] の値を貼り付けます。
-
-    GetStartedDemo メソッドは、次のようになります。 
-    
-    ```java
-    private void getStartedDemo() throws DocumentClientException, IOException {
-        this.client = new DocumentClient("https://youraccountname.documents.azure.com:443/",
-                "your-primary-key...RJhQrqQ5QQ==", 
-                new ConnectionPolicy(),
-                ConsistencyLevel.Session);
-    ```
-
-5. Program.java ファイルを保存します。
-
 ## <a name="run-the-app"></a>アプリの実行
 
-1. git ターミナル ウィンドウで、azure-cosmos-db-documentdb-java-getting-started フォルダーに `cd` で移動します。
+ここで Azure portal に戻って接続文字列情報を取得し、エンドポイント情報を使用してアプリを起動します。 これでアプリが、ホストされているデータベースと通信できます。
 
-    ```git
-    cd "C:\git-samples\azure-cosmos-db-documentdb-java-getting-started"
+
+1. Git ターミナル ウィンドウで `cd` を使用して、サンプル コード フォルダーに移動します。
+
+    ```bash
+    cd azure-cosmos-db-sql-api-async-java-getting-started/azure-cosmosdb-get-started
     ```
 
 2. git ターミナル ウィンドウで、次のコマンドを実行して 必要な Java パッケージをインストールします。
 
-    ```
+    ```bash
     mvn package
     ```
 
-3. git ターミナル ウィンドウで、次のコマンドを実行して Java アプリケーションを起動します。
+3. Git ターミナル ウィンドウで、次のコマンドを使用して Java アプリケーションを起動します (YOUR_COSMOS_DB_HOSTNAME は引用符で囲んだポータルの URI 値に置き換え、YOUR_COSMOS_DB_MASTER_KEY は引用符で囲んだポータルのプライマリ キーに置き換えます)
 
-    ```
-    mvn exec:java -D exec.mainClass=GetStarted.Program
+    ```bash
+    mvn exec:java -DACCOUNT_HOST=YOUR_COSMOS_DB_HOSTNAME -DACCOUNT_KEY=YOUR_COSMOS_DB_MASTER_KEY
+
     ```
 
     ターミナル ウィンドウに、FamilyDB データベースが作成されたという通知が表示されます。 
     
 4. 任意のキーを押してデータベースを作成し、さらにもう一度キーを押してコレクションを作成します。 
 
-    プログラムの最後にリソースはすべて削除されます。ブラウザーでデータ エクスプローラーに戻り、FamilyDB データベースと FamilyCollection コレクションが格納されていることを確認してください。
+    ブラウザーでデータ エクスプローラーに戻り、FamilyDB データベースと FamilyCollection コレクションが格納されていることを確認してください。
 
 5. コンソール ウィンドウに切り替え、任意のキーを押して 1 つ目のドキュメントを作成し、もう一度キーを押して 2 つ目のドキュメントを作成します。 その後再びデータ エクスプローラーに切り替えてそれらを確認します。 
 
 6. キーを押してクエリを実行し、コンソール ウィンドウで出力を確認します。 
 
-7. 次に押すキーでリソースが削除されます。 リソースを残しておきたい場合は、コンソール ウィンドウで Ctrl キーを押しながら C キーを押してプログラムを終了します。 それ以外の場合は、料金が発生しないよう、任意のキーを押して、ご利用のアカウントからリソースを削除してください。 
+7. 作成したリソースは、アプリによって削除されません。 ポータルに戻り、[リソースをクリーンアップ](#clean-up-resources)します。  料金が発生しないように、アカウントから削除します。
 
-    ![コンソール出力](./media/create-sql-api-java/console-output.png)
+    ![コンソール出力](./media/create-sql-api-java/rxjava-console-output.png)
 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
@@ -231,5 +210,3 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB へのデータのインポート](import-data.md)
-
-

@@ -1,5 +1,5 @@
 ---
-title: VM 用 Azure Monitor を使用してアプリの依存関係を表示する方法 | Microsoft Docs
+title: Azure Monitor for VMs (プレビュー) を使用してアプリの依存関係を表示する方法 | Microsoft Docs
 description: マップは、Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする、VM 用 Azure Monitor の機能です。 この記事では、さまざまなシナリオでこの機能を使用する方法について詳しく説明します。
 services: azure-monitor
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 8641b6cfb14bceb248cc587095a9d3469ce2c9e0
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: af3d2b997a4d58f2d32705c55151c4cf13bdcc7c
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49402151"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50095480"
 ---
-# <a name="using-azure-monitor-for-vms-map-to-understand-application-components"></a>VM 用 Azure Monitor のマップを使用したアプリケーション コンポーネントの理解
+# <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Azure Monitor for VMs (プレビュー) のマップを使用したアプリケーション コンポーネントの理解
 VM 用 Azure Monitor を使用して、Azure で実行されている Windows および Linux 仮想マシン上で検出されたアプリケーション コンポーネントを表示することで、環境を監視できます。仮想マシンから VM 用 Azure Monitor に直接アクセスする方法と、Azure Monitor から仮想マシンのグループ全体の情報を表示する方法があります。 
 
 この記事は、2 つの視点でのエクスペリエンスとマップ機能の使用方法を理解するうえで役立ちます。 VM の Azure Monitor の構成については、[VM の Azure Monitor の有効化](monitoring-vminsights-onboard.md)に関する記事をご覧ください。
@@ -44,7 +44,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ![[プロパティ] ウィンドウのログ検索の一覧](./media/monitoring-vminsights-maps/properties-pane-logs-01.png)
 
-"*ログ*\*" を閉じると、**[プロパティ]** ウィンドウに戻ります。**[アラート]** を選択すると、正常性基準に基づいて VM で発生したアラートが表示されます。 マップが Azure アラートと統合され、選択された時間範囲内に選択されたサーバーで発生したアラートが表示されます。 最新のアラートがある場合はサーバーにアイコンが表示され、[Machine Alerts]\(マシンのアラート\) ウィンドウにアラートが一覧表示されます。 
+"*ログ*" を閉じると、**[プロパティ]** ウィンドウに戻ります。**[アラート]** を選択すると、正常性基準に基づいて VM で発生したアラートが表示されます。 マップが Azure アラートと統合され、選択された時間範囲内に選択されたサーバーで発生したアラートが表示されます。 最新のアラートがある場合はサーバーにアイコンが表示され、[Machine Alerts]\(マシンのアラート\) ウィンドウにアラートが一覧表示されます。 
 
 ![[プロパティ] ウィンドウのマシンのアラート](./media/monitoring-vminsights-maps/properties-pane-alerts-01.png)
 

@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 0346cf456c53b14fd3c5b14b2e40eddd8b89fe4d
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 0f2b45685d2976c567c16666e2ca89d334914b63
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465952"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50417295"
 ---
 # <a name="create-and-publish-a-product"></a>製品を作成して発行する  
 
@@ -35,6 +35,7 @@ Azure API Management の成果物には、少なくとも 1 つの API に加え
 
 ## <a name="prerequisites"></a>前提条件
 
++ [Azure API Management の用語](api-management-terminology.md)について学習します。
 + [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
 + また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
 
@@ -83,6 +84,9 @@ Azure API Management の成果物には、少なくとも 1 つの API に加え
 2. **[API]** タブに移動します。
 3. **[+ 追加]** をクリックします。
 4. API を選択して **[選択]** をクリックします。
+
+> [!TIP]
+> [REST API](https://docs.microsoft.com/rest/api/apimanagement/subscription/createorupdate) または PowerShell コマンドを通じてカスタム サブスクリプション キーを使用して、"*製品*" へのユーザーのサブスクリプションを作成または更新できます。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 10/05/2018
-ms.openlocfilehash: 9d4ede9aee5261903a814cc2f29c788a2ba377f3
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: 86e60f339af3d6d467b68d5d3b27d77a9861add1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48869771"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51244079"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Azure Active Directory 認証を使用して SQL を認証する
 
@@ -35,7 +35,7 @@ Azure AD 認証を使用すると、データベース ユーザーの ID や他
 - 統合 Windows 認証や、Azure Active Directory でサポートされる他の認証形式を有効にすることで、パスワードが保存されないようにすることができます。
 - Azure AD 認証では、包含データベース ユーザーを使用して、データベース レベルで ID を認証します。
 - Azure AD は、SQL Database に接続するアプリケーション向けにトークンベース認証をサポートしています。
-- Azure AD 認証は、ADFS (ドメイン フェデレーション) またはドメインを同期しないローカル Azure Active Directory のネイティブ ユーザー/パスワード認証をサポートします。  
+- Azure AD 認証は、ADFS (ドメイン フェデレーション) またはドメインを同期しないローカル Azure Active Directory のネイティブ ユーザー/パスワード認証をサポートします。  
 - Azure AD 認証は、Multi-Factor Authentication (MFA) を含む Active Directory ユニバーサル認証を使用する SQL Server Management Studio からの接続をサポートします。  MFA には、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知など、簡単な各種確認オプションによる強力な認証が含まれます。 詳細については、「 [SQL Database と SQL Data Warehouse での Azure AD MFA のための SSMS のサポート](sql-database-ssms-mfa-authentication.md)」を参照してください。  
 
 > [!NOTE]  
@@ -118,10 +118,10 @@ Azure Active Directory 認証では、Azure AD の ID を使用してデータ�
 - 接続のタイムアウトを 30 秒に設定することをお勧めします。   
 - SQL Server 2016 Management Studio と SQL Server Data Tools for Visual Studio 2015 (バージョン 14.0.60311.1April 2016 以降) では、Azure Active Directory 認証がサポートされています  (Azure AD 認証は、**.NET Framework Data Provider for SqlServer** (.NET Framework 4.6 以降のバージョン) でサポートされています)。 したがって、これらのツールとデータ層アプリケーション (DAC および .BACPAC) の最新のバージョンでは、Azure AD 認証を使用できます。   
 - [ODBC バージョン 13.1](https://www.microsoft.com/download/details.aspx?id=53339) は Azure Active Directory 認証をサポートしていますが、`bcp.exe` では以前の ODBC プロバイダーが使用されているため、Azure Active Directory 認証を使用して接続することはできません。   
-- `sqlcmd` では、 [ダウンロード センター](http://go.microsoft.com/fwlink/?LinkID=825643)から入手可能なバージョン 13.1 以降の Azure Active Directory 認証をサポートしています。
-- SQL Server Data Tools for Visual Studio 2015 には、April 2016 バージョン以降の Data Tools (バージョン 14.0.60311.1) が必要です。 現在、Azure AD ユーザーは SSDT のオブジェクト エクスプローラーに表示されません。 回避策として、ユーザーを [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx) で表示してください。   
+- `sqlcmd` では、 [ダウンロード センター](https://go.microsoft.com/fwlink/?LinkID=825643)から入手可能なバージョン 13.1 以降の Azure Active Directory 認証をサポートしています。
+- SQL Server Data Tools for Visual Studio 2015 には、April 2016 バージョン以降の Data Tools (バージョン 14.0.60311.1) が必要です。 現在、Azure AD ユーザーは SSDT のオブジェクト エクスプローラーに表示されません。 回避策として、ユーザーを [sys.database_principals](https://msdn.microsoft.com/library/ms187328.aspx) で表示してください。   
 - [Microsoft JDBC Driver 6.0 for SQL Server](https://www.microsoft.com/download/details.aspx?id=11774) は、Azure AD 認証をサポートしています。 「 [接続プロパティの設定](https://msdn.microsoft.com/library/ms378988.aspx)」もご覧ください。   
-- PolyBase では Azure AD 認証を使用した認証は行えません。   
+- PolyBase では Azure AD 認証を使用した認証は行えません。   
 - SQL Database の Azure AD 認証は、Azure Portal の **[データベースのインポート]** ブレードと **[データベースのエクスポート]** ブレードでサポートされています。 Azure AD 認証を使用したインポートとエクスポートは、PowerShell コマンドでもサポートされています。   
 - Azure AD 認証は、CLI を使用することによって、SQL Database、マネージド インスタンス、および SQL Data Warehouse でサポートされます。 詳細については、「[SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](sql-database-aad-authentication-configure.md)」と「[SQL Server - az sql server](https://docs.microsoft.com/cli/azure/sql/server)」を参照してください。
 

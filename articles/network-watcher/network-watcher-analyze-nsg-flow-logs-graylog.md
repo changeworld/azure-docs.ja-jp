@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: db3b08ae8092661e6ffa0f2dd7e460f341a8d013
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 3030fdcec95d91b75974465ad30f707837263367
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666061"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50414779"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
 
@@ -38,7 +38,7 @@ Network Watcher を使用して、ネットワーク セキュリティ グル�
 
 ### <a name="enable-network-security-group-flow-logging"></a>ネットワーク セキュリティ グループ フロー ログを有効にする
 
-このシナリオでは、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、ネットワーク セキュリティ グループ フロー ログが有効になっている必要があります。 ネットワーク セキュリティ グループ フロー ログを有効にする手順については、「[ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」をご覧ください。
+このシナリオでは、アカウント内の少なくとも 1 つのネットワーク セキュリティ グループで、ネットワーク セキュリティ グループ フロー ログが有効になっている必要があります。 ネットワーク セキュリティ グループ フロー ログを有効にする手順については、「 [ネットワーク セキュリティ グループのフローのログ記録の概要](network-watcher-nsg-flow-logging-overview.md)」という記事を参照してください。
 
 ### <a name="setting-up-graylog"></a>Graylog をセットアップする
 
@@ -51,7 +51,7 @@ Network Watcher を使用して、ネットワーク セキュリティ グル�
 
 Graylog は、プラットフォームと基本設定に応じて、さまざまな方法でインストールできます。 使用可能なインストール方法の一覧については、Graylog の公式[ドキュメント](http://docs.graylog.org/en/2.2/pages/installation.html)を参照してください。 Graylog サーバー アプリケーションは、Linux ディストリビューションで実行されます。前提条件は次のとおりです。
 
--  Oracle Java SE 8 以降 - [Oracle のインストール ドキュメント](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)
+-  Java SE 8 以降 - [Azul Azure JDK のドキュメント](https://aka.ms/azure-jdks)
 -  Elastic Search 2.x (2.1.0 以降) - [Elasticsearch のインストール ドキュメント](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
 -  MongoDB 2.4 移行 - [MongoDB のインストール ドキュメント](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
@@ -156,7 +156,7 @@ filter セクションは、個々のフロー タプルとそれに関連付け
    > [!NOTE]
    > 前の構成ファイルでは、Graylog サーバーがローカル ホスト ループバック IP アドレス 127.0.0.1 に 構成されているものと想定しています。 そうでない場合は、出力セクションのホスト パラメーターを正しい IP アドレスに変更してください。
 
-Logstash のインストールの詳細については、Logstash の[ドキュメント](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)を参照してください。
+Logstash のインストールの詳しい手順については、Logstash の[ドキュメント](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html)を参照してください。
 
 ### <a name="install-the-logstash-input-plug-in-for-azure-blob-storage"></a>Azure Blob Storage 向けの Logstash 入力プラグインをインストールする
 
@@ -244,4 +244,4 @@ Network Watcher を Graylog と統合することで、ネットワーク セキ
 
 ## <a name="next-steps"></a>次の手順
 
-[Power BI を使用したネットワーク セキュリティ グループ フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関する記事を参照して、Power BI でネットワーク セキュリティ グループ フロー ログを視覚化する方法を確認します。
+ [Power BI を使用したネットワーク セキュリティ グループ フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関する記事を参照して、Power BI でネットワーク セキュリティ グループ フロー ログを視覚化する方法を確認します。

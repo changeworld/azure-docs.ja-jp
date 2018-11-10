@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: d2ed07be829e48cc4fc0538c08fd498dea99e71e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: ad77f1f0a99fbdb355163e1bc83461c8c4eb75fa
+ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985177"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50157702"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central のデバイス接続機能
 
@@ -102,7 +102,7 @@ CSV ファイルには次の列 (とヘッダー) が必要です
 1.  エクスポートするデバイスを選択して、**エクスポート** アクションをクリックします。
 1.  エクスポートが完了すると、生成されたファイルをダウンロードするリンクと共に成功メッセージが表示されます。
 1.  成功メッセージをクリックし、ディスク上のローカル フォルダーにファイルをダウンロードします。
-1.  エクスポートされた CSV ファイルには、**デバイス ID、デバイス名、デバイスのプライマリ/セカンダリ キー、プライマリ/セカンダリ証明書サムプリント**の列情報が含まれます
+1.  エクスポートされた CSV ファイルには、**デバイス ID、デバイス名、デバイスの主キー/セカンダリ キー、プライマリ/セカンダリ証明書サムプリント**の列情報が含まれます
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY

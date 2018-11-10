@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2018
+ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 4ed4e73348db8cfffb6e79afaa9d196e242d7488
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 759de1c62cb9cb4aa642fa564378b1ed551d7dae
+ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42145865"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50239357"
 ---
 # <a name="azure-storage-security-overview"></a>Azure Storage のセキュリティの概要
 
@@ -33,6 +33,7 @@ Azure Storage は、持続性、可用性、スケーラビリティで顧客の
 * 分析を使って、ストレージにアクセスするときにユーザーが使っている認証方法を追跡できます。
 
 Azure Storage でのセキュリティの詳細については、「 [Azure Storage セキュリティ ガイド](../storage/common/storage-security-guide.md)」を参照してください。 このガイドでは、Azure Storage のセキュリティ機能について詳しく説明します。 このような機能としては、ストレージ アカウント キー、転送中と保存中のデータの暗号化、Storage Analytics などがあります。
+
 
 この記事では、Azure Storage で使用できる Azure のセキュリティ機能の概要について説明します。 各機能の詳細記事へのリンクが用意されているため、さらに詳しく学習できます。
 
@@ -91,13 +92,35 @@ Linux および Windows オペレーティング システムに対して機能�
 
 * [Azure Disk Encryption for Windows and Linux IaaS Virtual Machines (Windows と Linux IaaS Virtual Machines の Azure Disk Encryption)](https://gallery.technet.microsoft.com/Azure-Disk-Encryption-for-a0018eb0)
 
-## <a name="azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールと仮想ネットワーク
+## <a name="firewalls-and-virtual-networks"></a>ファイアウォールと仮想ネットワーク
 
 Azure Storageでは、ストレージ アカウントのファイアウォール規則を有効にすることができます。 有効にすると、他の Azure サービスからの要求を含めて、データに対する受信要求がブロックされます。 トラフィックを許可する例外を構成できます。 ファイアウォール規則は、既存のストレージ アカウントに対して有効にするか、作成時に有効にできます。
 
 この機能は、許可された一連のネットワークに対してストレージ アカウントをセキュリティで保護するときに使用する必要があります。
 
 Azure Storage ファイアウォールと仮想ネットワークの詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークを構成する](../storage/common/storage-network-security.md)」を参照してください。
+
+## <a name="azure-data-box"></a>Azure Data Box
+
+ネットワークを利用できない場合は、Data Box、Data Box Disk、Data Box Heavy の各デバイスを使えば、大量のデータを Azure に転送するのに役立ちます。 これらのオフライン データ転送デバイスは、貴社と Azure データセンターとの間で運送業者を介してやり取りされます。 転送中のデータは AES 暗号化を使って保護され、また、アップロード後はサニタイズ処理が適用され、データがデバイスから削除されます。
+
+Data Box Edge と Data Box Gateway は、ネットワーク ストレージのゲートウェイとして機能して自社サイトと Azure の間でデータを管理するオンライン データ転送製品です。 Data Box Edge は、Azure との間でデータを転送する機能と、人工知能 (AI) に対応したエッジ計算によってデータを処理する機能とを備えたオンプレミスのネットワーク デバイスです。 Data Box Gateway は、ストレージ ゲートウェイ機能を備えた仮想アプライアンスです。
+
+詳細情報:
+
+* [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
+* [Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
+* [Azure Data Box Gateway](..//databox-online/data-box-gateway-overview.md)
+
+## <a name="advanced-threat-protection"></a>高度な脅威保護
+
+Azure Storage では Advanced Threat Protection が提供され、ストレージ アカウントに対する通常と異なる潜在的に有害なアクセスの試行すなわちストレージ アカウントの悪用を検出するセキュリティ インテリジェンスが強化されます。 Advanced Threat Protection は、BLOB ストレージに対する不審な読み取り、書込み、または削除要求がないか Azure Storage 診断ログを監視します。 
+
+Advanced Threat Protection のアラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) でご確認いただけます。 Azure Security Center では、検出されたすべての疑わしいアクティビティについての詳細が提供され、潜在的な脅威を調査して修復する方法が推奨されます。 
+
+詳細情報:
+
+* [Azure Storage Advanced Threat Protection の概要](../storage/common/storage-advanced-threat-protection.md)
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: deguhath
-ms.openlocfilehash: f87bc1d8140bea9ebb09e45d42b27e201b474026
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: dfb36cfba312d54d469b371f02820fd01da6dc7f
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214344"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51243422"
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>SQL パーティション テーブルを使用した並列の一括データ インポート
 このドキュメントでは、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。 SQL Database へのビッグ データの読み込み/転送では、"*パーティション テーブルとビュー*" を使用することによって、SQL DB へのデータのインポートと以降のクエリを向上させることができます。 
@@ -102,7 +102,7 @@ ms.locfileid: "39214344"
 * [データベースを変更](https://msdn.microsoft.com/library/bb522682.aspx)して、トランザクション ログの設定を BULK_LOGGED に変更し、ログのオーバーヘッドを最小限に抑えます。たとえば、以下のようにします。
   
         ALTER DATABASE <database_name> SET RECOVERY BULK_LOGGED
-* データの読み込み時間を短縮するには、一括インポート操作を並列に起動します。 SQL Server データベースへのビッグ データの一括インポートを高速化するヒントについては、「 [1 時間未満で 1 TB を読み込む](http://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)」を参照してください。
+* データの読み込み時間を短縮するには、一括インポート操作を並列に起動します。 SQL Server データベースへのビッグ データの一括インポートを高速化するヒントについては、「 [1 時間未満で 1 TB を読み込む](https://blogs.msdn.com/b/sqlcat/archive/2006/05/19/602142.aspx)」を参照してください。
 
 次の PowerShell スクリプトは、BCP を使用した並行データ読み込みの例を示しています。
 

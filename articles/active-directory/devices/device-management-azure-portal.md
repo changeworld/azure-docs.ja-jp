@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2018
+ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 7aa7cd2e5b1cf1346a5a7b1f82ec9c7933dd1112
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: bda1a9df8a58833a544dc065dee0110bccf3ec59
+ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542482"
+ms.lasthandoff: 10/26/2018
+ms.locfileid: "50138862"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Azure portal を使用してデバイスを管理する方法
 
@@ -118,7 +118,14 @@ Azure Portal を使ってデバイスを管理するには、デバイスが Azu
 
 ## <a name="device-management-tasks"></a>デバイス管理タスク
 
-管理者は、登録済みまたは参加済みデバイスを管理することができます。 このセクションでは、一般的なデバイス管理タスクについて説明します。
+グローバル管理者は、登録済みまたは参加済みデバイスを管理することができます。 Intune サービス管理者は次のことができます。
+ 
+- デバイスを更新する  - たとえば、デバイスを有効化/無効化するなどといった日常の操作
+
+- デバイスを削除する - デバイスが廃止された場合や、Azure AD から削除する必要がある場合
+
+このセクションでは、一般的なデバイス管理タスクについて説明します。
+
 
 
 ### <a name="manage-an-intune-device"></a>Intune デバイスの管理

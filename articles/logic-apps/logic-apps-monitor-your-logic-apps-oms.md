@@ -1,6 +1,6 @@
 ---
-title: Log Analytics でロジック アプリの実行を監視する - Azure Logic Apps | Microsoft Docs
-description: トラブルシューティングと診断のために、Log Analytics を使用してロジック アプリの実行に関する洞察の取得とデータのデバッグを行います
+title: Log Analytics でロジック アプリを監視する - Azure Logic Apps | Microsoft Docs
+description: ロジック アプリの実行に関するトラブルシューティングと診断のために、Azure Log Analytics を使用して分析情報とデバッグ データを取得します
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,26 +8,26 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.date: 10/11/2018
-ms.openlocfilehash: 177c361734a88acab5fc10d6b460645be82bf437
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.date: 10/19/2018
+ms.openlocfilehash: c65cc24f9b0083e9c873465008490bf00ea83852
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49457141"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50232378"
 ---
-# <a name="monitor-and-get-insights-about-logic-app-runs-with-log-analytics"></a>Log Analytics を使用してロジック アプリの実行を監視して洞察を得る
+# <a name="monitor-logic-apps-with-azure-log-analytics"></a>Azure Log Analytics でロジック アプリを監視する
 
-監視と豊富なデバッグ情報の獲得のために、ロジック アプリの作成と同時に Log Analytics をオンにできます。 Log Analytics では、Azure Portal を通じて、ロジック アプリの実行を監視して診断ログを収集できます。 Logic Apps の管理ソリューションを追加すると、ロジック アプリの実行の状態の集計や、その状態、実行時間、再送信の状態、および相関関係 ID などの詳細情報を取得できます。
+ロジック アプリを監視してより多くのデバッグ詳細情報を取得するには、ロジック アプリの作成時に [Azure Log Analytics](../log-analytics/log-analytics-overview.md) を有効にします。 Azure portal で Logic Apps 管理ソリューションをインストールすると、Log Analytics によりロジック アプリの診断ログと監視の機能が提供されます。 このソリューションは、ロジック アプリ実行の集計情報に加えて、状態、実行時間、再送信の状態、関連付け ID など、特定の詳細情報も提供します。 この記事では、Log Analytics を有効にして、ロジック アプリ実行のランタイム イベントとランタイム データを確認する方法を説明します。
 
-この記事では、Log Analytics をオンにして、ロジック アプリの実行のランタイム イベントやデータを確認できます。
+既存のロジック アプリに対して Azure Log Analytics を有効にするには、[診断ログを有効にしてロジック アプリのランタイム データを Log Analytics に送信する](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)手順に従います。
 
- > [!TIP]
- > 既存のロジック アプリを監視するには、これらの手順に従って[診断ログの記録をオンにしてロジック アプリのランタイム データを Log Analytics に送信](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)します。
+> [!NOTE]
+> このページでは、以前、Microsoft Operations Management Suite (OMS) を使用してこれらのタスクを実行する手順を説明していましたが、OMS は [2019 年 1 月に廃止される](../log-analytics/log-analytics-oms-portal-transition.md)ため、代わりに Azure Log Analytics を使用する手順に置き換えられています。 
 
-## <a name="requirements"></a>必要条件
+## <a name="prerequisites"></a>前提条件
 
-開始する前に、Log Analytics ワークスペースを用意しておく必要があります。 [Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。 
+開始する前に、Log Analytics ワークスペースが必要です。 [Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。 
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>ロジック アプリの作成時に診断ログの記録をオンにする
 
@@ -54,11 +54,11 @@ ms.locfileid: "49457141"
 
 1. ロジック アプリの実行を確認するには、[この手順を続行します](#view-logic-app-runs-oms)。
 
-## <a name="install-the-logic-apps-management-solution"></a>Logic Apps 管理ソリューションをインストールする
+## <a name="install-logic-apps-management-solution"></a>Logic Apps 管理ソリューションをインストールする
 
 ロジック アプリの作成時にすでに Log Analytics をオンにしている場合は、この手順をスキップします。 Logic Apps 管理ソリューションが既にインストールされています。
 
-1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスにフィルターとして「log analytics」と入力し、**Log Analytics** を選択します。
+1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、**[Log Analytics]** を選択します。
 
    !["Log Analytics" を選択する](./media/logic-apps-monitor-your-logic-apps-oms/find-log-analytics.png)
 
@@ -66,7 +66,7 @@ ms.locfileid: "49457141"
 
    ![Log Analytics ワークスペースを選択する](./media/logic-apps-monitor-your-logic-apps-oms/select-log-analytics-workspace.png)
 
-1. **[監視ソリューションの構成]** で **[ソリューションの表示]** を選択します。
+1. **[Log Analytics の起動と開始]** > **[監視ソリューションの構成]** の順に選択し、**[ソリューションの表示]** を選択します。
 
    ![[ソリューションの表示] を選択する](media/logic-apps-monitor-your-logic-apps-oms/log-analytics-workspace.png)
 
@@ -76,19 +76,23 @@ ms.locfileid: "49457141"
 
    ソリューションが見つからない場合は、ソリューションが表示されるまで一覧の下端にある **[さらに読み込む]** を選択します。
 
-1. **[作成]** を選択すると、ソリューションがインストールされます。
+1. **[作成]** を選択し、ソリューションをインストールする Log Analytics ワークスペースを確認してから、もう一度 **[作成]** を選択します。   
 
-   ![[Logic Apps Management]\(Logic Apps 管理\) の [追加] を選択する](./media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
+   ![[Logic Apps 管理] の [作成] を選択する](./media/logic-apps-monitor-your-logic-apps-oms/create-logic-apps-management-solution.png)
+
+   既存のワークスペースを使用しない場合は、この時点で新しいワークスペースを作成することもできます。
+
+   完了すると、Logic Apps 管理ソリューションが [概要] ページに表示されます。 
 
 <a name="view-logic-app-runs-oms"></a>
 
-## <a name="view-logic-app-runs-in-log-analytics-workspace"></a>Log Analytics ワークスペースでロジック アプリの実行を表示する
+## <a name="view-logic-app-run-information"></a>ロジック アプリ実行情報を参照する
 
-1. ロジック アプリの実行の数と状態を確認するには、Log Analytics ワークスペースに移動して、[概要] ページを開きます。 
+ロジック アプリを実行した後、**[Logic Apps 管理]** タイルで状態と実行件数を参照できます。 
 
-   ロジック アプリの実行に関する詳細が、**[Logic Apps 管理]** タイルに表示されます。 ロジック アプリの実行に関する詳細が含まれる概要を確認するには、**[Logic Apps Management]\(Logic Apps 管理\)** タイルを選択します。 
+1. Log Analytics ワークスペースに移動し、[概要] ページを開きます。 **[Logic Apps 管理]** を選択します。 
 
-   ![ロジック アプリの実行の数と状態を示す概要タイル](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
+   ![ロジック アプリの実行状態と実行件数](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
 
    ここでは、ロジック アプリの実行は名前または実行状態でグループ化されます。 
    このページには、ロジック アプリの実行のアクションまたはトリガーで発生したエラーに関する詳細も表示されます。

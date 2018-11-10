@@ -3,7 +3,7 @@ title: Azure Functions における Azure Service Bus のバインド
 description: Azure Functions で Azure Service Bus トリガーとバインドを使用する方法を説明します。
 services: functions
 documentationcenter: na
-author: ggailey777
+author: craigshoemaker
 manager: jeconnoc
 keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
@@ -11,13 +11,13 @@ ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
-ms.author: glenga
-ms.openlocfilehash: 8728533171ec8c8754aabf1a3e32c5ab7630db77
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.author: cshoe
+ms.openlocfilehash: f440e92f62c7c61966145a1e74d3d3be9f6b7825
+ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49637990"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50250569"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
@@ -63,16 +63,20 @@ public static void Run(
     Int32 deliveryCount,
     DateTime enqueuedTimeUtc,
     string messageId,
-    TraceWriter log)
+    ILogger log)
 {
-    log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
-    log.Info($"EnqueuedTimeUtc={enqueuedTimeUtc}");
-    log.Info($"DeliveryCount={deliveryCount}");
-    log.Info($"MessageId={messageId}");
+    log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
+    log.LogInformation($"EnqueuedTimeUtc={enqueuedTimeUtc}");
+    log.LogInformation($"DeliveryCount={deliveryCount}");
+    log.LogInformation($"MessageId={messageId}");
 }
 ```
 
-この例は、Azure Functions バージョン 1.x の場合です。2.x の場合は、[アクセス権のパラメーターを省略してください](#trigger---configuration)。
+この例は、Azure Functions バージョン 1.x 用です。 このコードを 2.x で機能させるには、次のようにします。
+
+- [アクセス権パラメーターを省略する](#trigger---configuration)
+- ログ パラメーターの型を `TraceWriter` から `ILogger` に変更する
+- `log.Info` を `log.LogInformation` に変更する
  
 ### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
 
@@ -138,8 +142,8 @@ public static void Run(string myQueueItem,
 F# スクリプト コードを次に示します。
 
 ```fsharp
-let Run(myQueueItem: string, log: TraceWriter) =
-    log.Info(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
+let Run(myQueueItem: string, log: ILogger) =
+    log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
 ```
 
 ### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
@@ -223,7 +227,7 @@ Java コードを次に示します。
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
   public static void Run(
-      [ServiceBusTrigger("myqueue")] string myQueueItem, TraceWriter log)
+      [ServiceBusTrigger("myqueue")] string myQueueItem, ILogger log)
   {
       ...
   }
@@ -235,7 +239,7 @@ Java コードを次に示します。
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
   public static void Run(
       [ServiceBusTrigger("myqueue", Connection = "ServiceBusConnection")] 
-      string myQueueItem, TraceWriter log)
+      string myQueueItem, ILogger log)
   {
       ...
   }
@@ -255,7 +259,7 @@ Java コードを次に示します。
       [FunctionName("ServiceBusQueueTriggerCSharp")]
       public static void Run(
           [ServiceBusTrigger("myqueue", AccessRights.Manage)] 
-          string myQueueItem, TraceWriter log)
+          string myQueueItem, ILogger log)
   {
       ...
   }
@@ -357,9 +361,9 @@ Service Bus トリガーには、いくつかの[メタデータ プロパティ
 ```cs
 [FunctionName("ServiceBusOutput")]
 [return: ServiceBus("myqueue", Connection = "ServiceBusConnection")]
-public static string ServiceBusOutput([HttpTrigger] dynamic input, TraceWriter log)
+public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 {
-    log.Info($"C# function processed: {input.Text}");
+    log.LogInformation($"C# function processed: {input.Text}");
     return input.Text;
 }
 ```
@@ -395,10 +399,10 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, TraceWriter l
 単一のメッセージを作成する C# スクリプト コードを次に示します。
 
 ```cs
-public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQueue)
+public static void Run(TimerInfo myTimer, ILogger log, out string outputSbQueue)
 {
     string message = $"Service Bus queue message created at: {DateTime.Now}";
-    log.Info(message); 
+    log.LogInformation(message); 
     outputSbQueue = message;
 }
 ```
@@ -406,10 +410,10 @@ public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQu
 複数のメッセージを作成する C# スクリプト コードを次に示します。
 
 ```cs
-public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> outputSbQueue)
+public static void Run(TimerInfo myTimer, ILogger log, ICollector<string> outputSbQueue)
 {
     string message = $"Service Bus queue messages created at: {DateTime.Now}";
-    log.Info(message); 
+    log.LogInformation(message); 
     outputSbQueue.Add("1 " + message);
     outputSbQueue.Add("2 " + message);
 }
@@ -446,9 +450,9 @@ public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> ou
 単一のメッセージを作成する F# スクリプト コードを次に示します。
 
 ```fsharp
-let Run(myTimer: TimerInfo, log: TraceWriter, outputSbQueue: byref<string>) =
+let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
     let message = sprintf "Service Bus queue message created at: %s" (DateTime.Now.ToString())
-    log.Info(message)
+    log.LogInformation(message)
     outputSbQueue = message
 ```
 
@@ -532,7 +536,7 @@ public String pushToQueue(
 ```csharp
 [FunctionName("ServiceBusOutput")]
 [return: ServiceBus("myqueue")]
-public static string Run([HttpTrigger] dynamic input, TraceWriter log)
+public static string Run([HttpTrigger] dynamic input, ILogger log)
 {
     ...
 }
@@ -543,7 +547,7 @@ public static string Run([HttpTrigger] dynamic input, TraceWriter log)
 ```csharp
 [FunctionName("ServiceBusOutput")]
 [return: ServiceBus("myqueue", Connection = "ServiceBusConnection")]
-public static string Run([HttpTrigger] dynamic input, TraceWriter log)
+public static string Run([HttpTrigger] dynamic input, ILogger log)
 {
     ...
 }
@@ -593,6 +597,38 @@ JavaScript で、`context.bindings.<name from function.json>` を使用して、
 |---|---|
 | Service Bus | [Service Bus のエラー コード](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-exceptions) |
 | Service Bus | [Service Bus の制限](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-quotas) |
+
+<a name="host-json"></a>  
+
+## <a name="hostjson-settings"></a>host.json 設定
+
+このセクションでは、バージョン 2.x でこのバインディングに使用可能なグローバル構成設定について説明します。 次の host.json ファイルの例には、このバインディングのバージョン 2.x の設定のみが含まれています。 バージョン 2.x でのグローバル構成設定の詳細については、「[Azure Functions の host.json のリファレンス](functions-host-json.md)」を参照してください。
+
+> [!NOTE]
+> Functions 1.x の host.json のリファレンスについては、[Azure Functions 1.x の host.json のリファレンス](functions-host-json-v1.md)に関する記事を参照してください。
+
+```json
+{
+    "version": "2.0",
+    "extensions": {
+        "serviceBus": {
+            "prefetchCount": 100,
+            "messageHandlerOptions": {
+                "autoComplete": false,
+                "maxConcurrentCalls": 32,
+                "maxAutoRenewDuration": "00:55:00"
+        }
+    }
+}
+```
+
+|プロパティ  |既定値 | 説明 |
+|---------|---------|---------| 
+|autoRenewTimeout|00:05:00|メッセージ ロックが自動的に更新される最大間隔。| 
+|autoComplete|false|トリガーをすぐに完了としてマークする (オートコンプリート) か、呼び出しの処理が完了するまで待機するか。| 
+|maxConcurrentCalls|16|メッセージ ポンプが開始する必要があるコールバックの同時呼び出しの最大数 既定では、Functions ランタイムは、複数のメッセージを同時に処理します。 一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、`maxConcurrentCalls` を 1 に設定します。 | 
+|prefetchCount|該当なし|基になる MessageReceiver に使用される既定の PrefetchCount。| 
+
 
 ## <a name="next-steps"></a>次の手順
 

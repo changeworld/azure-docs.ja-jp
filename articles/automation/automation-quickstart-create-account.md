@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: automation
 ms.component: process-automation
 ms.custom: mvc
-ms.openlocfilehash: 701d2c348e91efed17c8c7828ace920914093b5a
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 6d473d8874208297e905a5d90a08ffd870ffa8a6
+ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49426194"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50091826"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Automation アカウントを作成する
 
@@ -32,9 +32,12 @@ https://portal.azure.com で Azure にサインインします
 
 1. **[管理ツール]**、**[Automation]** の順に選択します。
 
-1. アカウント情報を入力します。 **[Azure 実行アカウントの作成]** で **[はい]** を選択し、Azure に対する認証が簡単になるアーティファクトが自動的に有効になるようにします。 Automation アカウントの作成時には、選択後に名前を変更できないことに注意してください。 1 つの Automation アカウントで、特定のテナントのすべてのリージョンとすべてのサブスクリプションにわたってリソースを管理できます。 完了したら、**[作成]** をクリックして、Automation アカウントの展開を開始します。
+1. アカウント情報を入力します。 **[Azure 実行アカウントの作成]** で **[はい]** を選択し、Azure に対する認証が簡単になるアーティファクトが自動的に有効になるようにします。 Automation アカウントの作成時には、選択後に名前を変更できないことに注意してください。 1 つの Automation アカウントで、特定のテナントのすべてのリージョンおよびサブスクリプションにわたってリソースを管理できます。 完了したら、**[作成]** をクリックして、Automation アカウントの展開を開始します。
 
     ![このページに Automation アカウントに関する情報を入力します](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
+
+    > [!NOTE]
+    > Automation アカウントをデプロイできる場所の最新の一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=automation&regions=all)」を参照してください。
 
 1. デプロイが完了したら、** **[すべてのサービス]** をクリックし、**[Automation アカウント]** を選択して、作成した Automation アカウントを選択します。
 

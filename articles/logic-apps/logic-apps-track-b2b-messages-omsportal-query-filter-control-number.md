@@ -1,6 +1,6 @@
 ---
-title: Log Analytics での B2B メッセージのクエリの作成 - Azure Logic Apps | Microsoft Docs
-description: Azure Logic Apps 用 Log Analytics を使用して AS2、X12、EDIFACT メッセージを追跡するクエリを作成する
+title: Log Analytics で B2B メッセージの追跡クエリを作成する - Azure Logic Apps | Microsoft Docs
+description: Azure Log Analytics で Azure Logic Apps の AS2、X12、EDIFACT メッセージを追跡するクエリを作成する
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -8,109 +8,127 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
-ms.date: 06/19/2018
-ms.openlocfilehash: baccd255fc2812eae0de3a98dfcef3dcbc7e1b46
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 10/19/2018
+ms.openlocfilehash: af1d00e49819f1d69e08c0fa99891690e07b489f
+ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124272"
+ms.lasthandoff: 10/30/2018
+ms.locfileid: "50233754"
 ---
-# <a name="create-queries-for-tracking-as2-x12-and-edifact-messages-in-log-analytics-for-azure-logic-apps"></a>Azure Logic Apps 用 Log Analytics で AS2、X12、EDIFACT メッセージを追跡するクエリを作成する
+# <a name="create-tracking-queries-for-b2b-messages-in-azure-log-analytics-for-azure-logic-apps"></a>Azure Log Analytics で Azure Logic Apps の B2B メッセージの追跡クエリを作成する
 
-[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して追跡している AS2、X12、または EDIFACT メッセージを見つけるには、特定の条件に基づいてアクションをフィルター処理するクエリを作成します。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。
+[Azure Log Analytics](../log-analytics/log-analytics-overview.md) を使用して追跡している AS2、X12、または EDIFACT メッセージを検索するために、特定の条件に基づいてアクションをフィルター処理するクエリを作成できます。 たとえば、特定のインターチェンジ制御番号に基づいてメッセージを検索できます。
 
-## <a name="requirements"></a>必要条件
+> [!NOTE]
+> このページでは、以前、これらのタスクの実行方法の手順を、[2019 年 1 月に廃止される](../log-analytics/log-analytics-oms-portal-transition.md) Microsoft Operations Management Suite (OMS) を使用して説明していましたが、代わりに、Azure Log Analytics を使用した手順に置き換えられています。 
 
-* 診断ログが設定されているロジック アプリ。 [ロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)および[そのロジック アプリのログを設定する方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)を参照してください。
+## <a name="prerequisites"></a>前提条件
+
+* 診断ログが設定されているロジック アプリ。 [ロジック アプリを作成する方法](quickstart-create-first-logic-app-workflow.md)および[そのロジック アプリのログを設定する方法](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics)を参照してください。
 
 * 監視とログが設定されている統合アカウント。 [統合アカウントを作成する方法](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)および[そのアカウントの監視とログを設定する方法](../logic-apps/logic-apps-monitor-b2b-message.md)を参照してください。
 
 * [診断データの Log Analytics への発行](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)と [Log Analytics でのメッセージ追跡の設定](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)をまだ行っていない場合は、これらの操作を実行します。
 
-> [!NOTE]
-> 上記の要件を満たした後、Log Analytics 内にワークスペースを用意する必要があります。 Log Analytics 内で B2B 通信を追跡するための同じワークスペースを使用する必要があります。 
->  
-> Log Analytics ワークスペースがない場合は、[Log Analytics ワークスペースの作成方法](../log-analytics/log-analytics-quick-create-workspace.md)に関するページを参照してください。
+## <a name="create-queries-with-filters"></a>フィルターを使用するクエリを作成する
 
-## <a name="create-message-queries-with-filters-in-log-analytics"></a>Log Analytics でフィルターを適用してメッセージ クエリを作成する
+特定のプロパティや値に基づいてメッセージを検索するため、フィルターを使用するクエリを作成できます。 
 
-ここでは、インターチェンジ制御番号に基づいてメッセージを検索する方法の例を示します。
+1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、**[Log Analytics]** を選択します。
 
-> [!TIP] 
-> Log Analytics ワークスペースの名前がわかっている場合は、ワークスペースのホーム ページ (`https://{your-workspace-name}.portal.mms.microsoft.com`) に移動して、手順 4 から始めてください。 それ以外の場合は、手順 1 から始めてください。
+   ![[Log Analytics] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/find-log-analytics.png)
 
-1. [Azure Portal](https://portal.azure.com) で、**[すべてのサービス]** を選択します。 次に示すように、"ログ分析" を検索し、**[Log Analytics]** を選択します。
+1. **[Log Analytics]** で、ご利用の Log Analytics ワークスペースを見つけて選択します。 
 
-   ![Log Analytics を見つける](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
+   ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/select-log-analytics-workspace.png)
 
-2. **[Log Analytics]** で、ご利用の Log Analytics ワークスペースを見つけて選択します。
+1. ワークスペース メニューの **[全般]** で、**[ログ (クラシック)]** または **[ログ]** のいずれかを選択します。 
 
-   ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/selectla.png)
+   この例では、クラシック ログのビューを使用する方法を示しています。 
+   **[Maximize your Log Analytics experience]\(Log Analytics エクスペリエンスの最大化)** セクションの **[Search and analyze logs]\(検索と分析ログ)** で **[View logs]\(ログの表示)** を選択した場合は、**[Logs (classic view)]\(ログ (クラシック ビュー))** が表示されます。 
 
-3. **[管理]** で、**[ログ検索]** を選択します。
+   ![クラシック ログを表示する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/view-classic-logs.png)
 
-   ![[ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/azure-portal-page.png)
+1. クエリの編集ボックスで、検索するフィールド名の入力を開始します。 入力を開始すると、クエリ エディターには一致項目と使用できる操作が表示されます。 クエリを作成した後は、**[実行]** を選択するか、Enter キーを押します。
 
-4. 検索ボックスに、検索するフィールドを入力し、**Enter**キーを押します。 入力を開始すると、一致候補と使用できる操作が表示されます。 詳細については、[Log Analytics でのデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
+   この例では、**LogicAppB2B** に対する一致を検索します。 
+   詳細については、[Log Analytics でのデータの検索方法](../log-analytics/log-analytics-log-searches.md)に関する記事を参照してください。
 
-   この例では、**Type=AzureDiagnostics** のイベントを検索します。
+   ![クエリ文字列の入力を開始する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/create-query.png)
 
-   ![クエリ文字列の入力を開始する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-start-query.png)
+1. 表示する期間を変更するには、左側のウィンドウで、期間の一覧から選択するか、スライダーをドラッグします。 
 
-5. 左側のバーで、表示する期間を選択します。 クエリにフィルターを追加するには、**[+追加]** を選択します。
+   ![期間を変更する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/change-timeframe.png)
 
-   ![クエリにフィルターを追加する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query1.png)
+1. クエリにフィルターを追加するには、**[追加]** を選択します。 
 
-6. **[フィルターの追加]** にフィルター名を入力して、目的のフィルターを検索できるようにします。 フィルターを選択し、**[+追加]** を選択します。
+   ![クエリにフィルターを追加する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/add-filter.png)
 
-   インターチェンジ制御番号を検索するため、この例では、「インターチェンジ」という単語を検索し、フィルターとして **[event_record_messageProperties_interchangeControlNumber_s]** を選択しています。
+1. **[Add Filters]\(フィルターの追加)** で、検索するフィルター名を入力します。 フィルターが見つかった場合は、そのフィルターを選択します。 左側のウィンドウで、再度 **[追加]** を選択します。
 
-   ![フィルターを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-add-filter.png)
+   たとえば、ここでは **Type=="AzureDiagnostics"** であるイベントに対して検索する別のクエリがあり、**event_record_messageProperties_interchangeControlNumber_s** フィルターを選択することで、インターチェンジ制御番号に基づく結果を検索しています。
 
-7. 左側のバーで、使用するフィルター値を選択し、**[適用]** を選択します。
+   ![フィルター値を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/filter-example.png)
 
-   この例では、目的のメッセージのインターチェンジ制御番号を選択します。
+   **[追加]** の選択後は、選択したフィルター イベントと値によってクエリが更新されています。 
+   以前の結果もフィルター処理されています。 
 
-   ![フィルター値を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-select-filter-value.png)
+   たとえば、このクエリは **Type=="AzureDiagnostics"** を検索し、**event_record_messageProperties_interchangeControlNumber_s** フィルターを使用して、インターチェンジ制御番号に基づく結果を見つけています。
 
-8. これで、バインドされているクエリに戻ります。 選択したフィルター イベントと値によってクエリが更新されています。 前の結果もフィルター処理されています。
-
-    ![フィルター処理された結果を持つクエリに戻る](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-filtered-results.png)
+   ![フィルターが適用された結果](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/filtered-results.png)
 
 <a name="save-oms-query"></a>
 
-## <a name="save-your-query-for-future-use"></a>将来的に使用するためにクエリを保存する
+## <a name="save-query"></a>クエリを保存する
 
-1. **[ログ検索]** ページのクエリから **[保存]** を選択します。 クエリに名前を付け、カテゴリを選択した後、**[保存]** を選択します。
+**[Logs (classic view)]\(ログ (クラシック ビュー))** ビューでクエリを保存するには、以下の手順に従います。
 
-   ![クエリの名前付けとカテゴリの選択](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-save.png)
+1. **[Logs (classic view)]\(ログ (クラシック ビュー))** ページの自分のクエリから **[Analytics]** を選択します。 
 
-2. クエリを表示するには、**[お気に入り]** を選択します。
+   ![[Analytics] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/choose-analytics.png)
 
-   ![[お気に入り] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-query-favorites.png)
+1. クエリのツールバーで、**[保存]** を選択します。
 
-3. **[保存された検索]** で、クエリを選択して結果を表示できるようにします。 クエリを更新して異なる結果を検索できるようにするには、クエリを編集します。
+   ![[Save]\(保存\) を選択](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/save-query.png)
 
-   ![クエリを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
+1. クエリの詳細を指定します。たとえば、クエリに名前を付けて、**[クエリ]** を選択し、カテゴリ名を指定します。 完了したら、**[保存]** を選択します。
 
-## <a name="find-and-run-saved-queries-in-log-analytics"></a>Log Analytics で保存されたクエリを検索して実行する
+   ![[Save]\(保存\) を選択](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/query-details.png)
 
-1. Log Analytics ワークスペースのホーム ページ (`https://{your-workspace-name}.portal.mms.microsoft.com`) を開き、**[ログ検索]** を選択します。
+1. 保存されたクエリを表示するには、クエリ ページに戻ります。 クエリのツールバーで、**[保存された検索条件]** を選択します。
 
-   ![Log Analytics ホーム ページで [ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch.png)
+   ![[保存された検索条件] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/choose-saved-searches.png)
 
-   または
+1. **[保存された検索条件]** で目的のクエリを選択すると、結果を表示できます。 
 
-   ![メニューの [ログ検索] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/logsearch-2.png)
+   ![クエリを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/saved-query-results.png)
 
-2. **[ログ検索]** ホーム ページで、**[お気に入り]** を選択します。
+   クエリを更新して異なる結果を検索できるようにするには、クエリを編集します。
 
-   ![[お気に入り] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-favorites.png)
+## <a name="find-and-run-saved-queries"></a>保存されたクエリを検索して実行する
 
-3. **[保存された検索]** で、クエリを選択して結果を表示できるようにします。 クエリを更新して異なる結果を検索できるようにするには、クエリを編集します。
+1. [Azure portal](https://portal.azure.com) で **[すべてのサービス]** を選択します。 検索ボックスに「log analytics」と入力して検索し、**[Log Analytics]** を選択します。
 
-   ![クエリを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/oms-log-search-find-favorites.png)
+   ![[Log Analytics] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/find-log-analytics.png)
+
+1. **[Log Analytics]** で、ご利用の Log Analytics ワークスペースを見つけて選択します。 
+
+   ![Log Analytics ワークスペースを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/select-log-analytics-workspace.png)
+
+1. ワークスペース メニューの **[全般]** で、**[ログ (クラシック)]** または **[ログ]** のいずれかを選択します。 
+
+   この例では、クラシック ログのビューを使用する方法を示しています。 
+
+1. クエリのページが開いたら、クエリのツールバーで **[保存された検索条件]** を選択します。
+
+   ![[保存された検索条件] を選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/choose-saved-searches.png)
+
+1. **[保存された検索条件]** で目的のクエリを選択すると、結果を表示できます。 
+
+   ![クエリを選択する](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/saved-query-results.png) 
+
+   クエリは自動的に実行されますが、何らかの理由でクエリが実行されない場合は、クエリ エディターで **[実行]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 

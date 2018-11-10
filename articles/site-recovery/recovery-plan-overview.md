@@ -1,29 +1,24 @@
 ---
-title: Azure Site Recovery で復旧計画を使用する | Microsoft Docs
-description: Azure Site Recovery の復旧計画について説明します。
-services: site-recovery
-documentationcenter: ''
+title: Azure Site Recovery を使用したディザスター リカバリーで復旧計画を使用する | Microsoft Docs
+description: Azure Site Recovery サービスを使用したディザスター リカバリーで復旧計画を使用する方法について説明します。
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 10/28/2018
 ms.author: raynew
-ms.openlocfilehash: 011c9acb5d34e15f65b64d59867e7501f0720a08
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 463a7fc51cac6160fbb97fc53077d0b5eda80533
+ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37920119"
+ms.lasthandoff: 10/29/2018
+ms.locfileid: "50215193"
 ---
 # <a name="about-recovery-plans"></a>復旧計画について
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) の復旧計画について説明します。
 
 復旧計画は、マシンを復旧グループに収集します。 順序、説明、タスクを追加することで計画をカスタマイズできます。 計画を定義した後に、フェールオーバーを実行できます。
-
-
 
 
 

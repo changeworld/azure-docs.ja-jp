@@ -1,6 +1,6 @@
 ---
 title: このクイック スタートは、Java を使用して X.509 デバイスを Azure Device Provisioning Service に登録する方法を示します | Microsoft Docs
-description: このクイック スタートでは、Java を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します
+description: このクイック スタートでは、グループ登録と個別登録の両方を使用します。 このクイック スタートでは、Java を使用して X.509 デバイスを Azure IoT Hub Device Provisioning Service に登録します。
 author: wesmc7777
 ms.author: wesmc
 ms.date: 12/20/2017
@@ -10,12 +10,12 @@ services: iot-dps
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 505aee35c839a0224ca158d918fc5e54dc6e0f28
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 3eec6628ca7dbc16e0cc01701620f1699ba8d368
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205767"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50412773"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>クイック スタート: Java を使用して X.509 デバイスを Device Provisioning Service に登録する
 
@@ -31,7 +31,7 @@ Java Service SDK は Windows および Linux マシンの両方で動作しま�
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) のインストール。
+* [Java SE Development Kit 8](https://aka.ms/azure-jdks) のインストール。
 * [Maven 3](https://maven.apache.org/download.cgi) のインストール。 現在使用している Maven のバージョンは、次を実行することで確認できます。
 
     ```cmd/sh
