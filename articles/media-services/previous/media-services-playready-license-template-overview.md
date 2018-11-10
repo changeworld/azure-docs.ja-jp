@@ -2,7 +2,7 @@
 title: Media Services PlayReady ライセンス テンプレートの概要
 description: このトピックでは、PlayReady ライセンスの設定に使用する PlayReady ライセンス テンプレートの概要を示します。
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 11/05/2018
 ms.author: juliako
-ms.openlocfilehash: 74a2eb579f38cfc885234fac7fd3ad4be1747ad7
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 780fa37351ec590beff6fd2d9e80ec8f22afa84d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783661"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228506"
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady ライセンス テンプレートの概要
 Azure Media Services では、PlayReady ライセンスの配信サービスが提供されるようになりました。 プレーヤー (Silverlight など) は、PlayReady で保護されたコンテンツを再生しようとする際に、ライセンス配信サービスにライセンス取得要求を送信します。 ライセンス サービスはその要求を承認した後、ライセンスを発行します。このライセンスはクライアントに送信され、指定されたコンテンツの暗号化解除と再生に用いられます。
@@ -81,7 +81,7 @@ Media Services は、XML へのシリアル化および XML からの逆シリ�
 > 
 > 
 
-Silverlight でサポートされる保護レベルの例については、「[Silverlight での出力保護のサポート](http://go.microsoft.com/fwlink/?LinkId=617318)」を参照してください。
+Silverlight でサポートされる保護レベルの例については、「[Silverlight での出力保護のサポート](https://go.microsoft.com/fwlink/?LinkId=617318)」を参照してください。
 
 ## <a id="schema"></a>PlayReady ライセンス テンプレート XML スキーマ
     <?xml version="1.0" encoding="utf-8"?>

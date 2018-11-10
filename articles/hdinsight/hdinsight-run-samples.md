@@ -2,19 +2,19 @@
 title: HDInsight での Hadoop のサンプルの実行 - Azure
 description: 用意されたサンプルを利用して、Azure HDInsight サービスを使い始めます。 データ クラスター上で MapReduce プログラムを実行する PowerShell スクリプトを使用します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/25/2017
-ms.author: jasonh
+ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 59e6fd0a05374329efb20201c8d904cbbdc72b1a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d1da4d10b6346d774c657b0263c9da6278116b61
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43111001"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006415"
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -211,7 +211,6 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
 * [HDInsight での Pig と Hadoop の使用][hdinsight-use-pig]
 * [HDInsight での Hive と Hadoop の使用][hdinsight-use-hive]
 * [HDInsight での Hadoop Job の送信][hdinsight-submit-jobs]
-* [Azure HDInsight SDK のドキュメント][hdinsight-sdk-documentation]
 
 ## <a name="appendix-a---the-word-count-source-code"></a>付録 A - ワード カウントのソース コード
 
@@ -977,8 +976,6 @@ public class TeraSort extends Configured implements Tool {
     }
 }
 ```
-
-[hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn479185.aspx
 
 [hdinsight-submit-jobs]: hadoop/submit-apache-hadoop-jobs-programmatically.md
 [hdinsight-introduction]:hadoop/apache-hadoop-introduction.md

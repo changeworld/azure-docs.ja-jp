@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5638b71147592ae71c741ca86da68ddfec668af5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: acb010b0169fd876bf540f7a4115dbabfeda923a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299068"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227197"
 ---
 # <a name="connecting-microsoft-azure-application-gateway-to-azure-security-center"></a>Microsoft Azure Application Gateway の Azure Security Center への接続
 このドキュメントは、Application Gateway Web アプリケーション ファイアウォール (WAF) と Security Center の統合を構成するために役立ちます。
@@ -61,4 +61,4 @@ Security Center は、サブスクリプション内の以前にデプロイさ�
 * [Security Center でのセキュリティ正常性の監視](security-center-monitoring.md)。
 * [Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md)。
 * [Azure Security Center の FAQ](security-center-faq.md)。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/)。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/)。

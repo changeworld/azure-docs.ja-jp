@@ -15,12 +15,12 @@ ms.topic: conceptal
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: b7b8734e648e79ab22a6783e7fab31e942f08eb4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 11307e3c0dbf831a03b5f7685b8e44f03f8d242e
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418428"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957230"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Azure PowerShell を使用して Log Analytics ワークスペースを作成する
 
@@ -131,4 +131,4 @@ PowerShell をインストールしてローカルで使用する場合、この
 * Microsoft Azure 診断または Azure ストレージを使用して Azure リソースからデータを収集できるようにするには、「[Log Analytics で Azure サービスのログとメトリックを使用できるように収集する](log-analytics-azure-storage.md)」を参照してください。  
 * Operations Manager 管理グループに報告するエージェントからデータを収集して Log Analytics ワークスペースに格納するには、[データ ソースとして System Center Operations Manager を追加](log-analytics-om-agents.md)します。  
 * 階層内のコレクションのメンバーであるコンピュータをインポートするには、[構成マネージャー](log-analytics-sccm.md)に接続します。  
-* 使用可能な[管理ソリューション](log-analytics-add-solutions.md)と、ソリューションをワークスペースに対して追加または削除する方法を確認します。
+* 使用可能な[管理ソリューション](../monitoring/monitoring-solutions.md)と、ソリューションをワークスペースに対して追加または削除する方法を確認します。

@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: b951d0b8d91729340cf382e70f72511fb009053e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 15a4ff73476ce54f0617a88e040ac64d7288e9a8
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386554"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741115"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API の調整エラーのトラブルシューティング 
 
@@ -76,6 +76,18 @@ Content-Type: application/json; charset=utf-8
 残りの呼び出し回数が 0 というポリシーは、調整エラーが返されるためのポリシーの 1 つです。 ここでは、それは `HighCostGet30Min` です。 応答本文の全体的な形式は、一般的な Azure Resource Manager API エラー形式です (OData に準拠します)。 メインのエラー コードである `OperationNotAllowed` は、コンピューティング リソース プロバイダーが (その他の種類のクライアント エラーと共に) 調整エラーを報告するために使用するものです。 内部エラーの`message` プロパティには、シリアル化された JSON 構造体と調整違反の詳細が含まれています。
 
 上に示したように、すべての調整エラーには、クライアントが要求を再試行する前に待機する必要がある最少秒数を指定する `Retry-After` ヘッダーが含まれています。 
+
+## <a name="api-call-rate-and-throttling-error-analyzer"></a>API 呼び出しレートと調整エラー アナライザー
+プレビュー バージョンのトラブルシューティング機能は、コンピューティング リソース プロバイダーの API に使用できます。 これらの PowerShell コマンドレットは、操作ごとの時間間隔あたりの API 要求レートと操作グループ (ポリシー) ごとの調整違反に関する統計情報を提供します。
+-   [Export-AzureRmLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticrequestratebyinterval)
+-   [Export-AzureRmLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticthrottledrequests)
+
+API 呼び出しの統計情報は、サブスクリプションのクライアントの動作に関する優れた洞察を提供でき、調整の原因となる呼び出しパターンを識別しやすくすることができます。
+
+当面のアナライザーの制限は、(マネージド ディスク のサポートで) ディスクとスナップショットのリソースの種類に対する要求がカウントされないことです。 これは CRP の利用統計情報からデータを収集するため、ARM からの調整エラーの特定にも役立ちません。 ただし、既に説明したように、それらは独特の ARM 応答ヘッダーに基づいて簡単に特定できます。
+
+これらの PowerShell コマンドレットは REST サービス API を使用しています。これは、クライアントから簡単に直接呼び出すことができます (まだ正式にはサポートされていません)。 HTTP 要求の形式を確認するには、Fiddler での実行時に -Debug スイッチまたは snoop を指定してコマンドレットを実行します。
+
 
 ## <a name="best-practices"></a>ベスト プラクティス 
 

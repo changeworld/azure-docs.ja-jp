@@ -9,12 +9,12 @@ ms.date: 09/21/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 88537c8579a3acb2fd89a43bfcfa50be89cac5cc
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.openlocfilehash: e10c80f658a7297a6642e34d8f5d0abe13b0881d
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49114092"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748189"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>チュートリアル: SQL Server データベースを使用したエッジでのデータの格納
 
@@ -356,4 +356,4 @@ SQL コマンド ツール内から次のコマンドを実行して、書式設
 引き続き次のチュートリアルを実行すると、Azure IoT Edge を利用して、エッジでデータをビジネス上の分析情報に変える他の方法について学習できます。
 
 > [!div class="nextstepaction"]
-> [Azure Stream Analytics でフローティング ウィンドウを使用して平均値を見つける](tutorial-deploy-stream-analytics.md)
+> [C# コードを使用してセンサー データをフィルター処理する](tutorial-csharp-module.md)

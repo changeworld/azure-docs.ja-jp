@@ -9,12 +9,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: 34293ffc70ebbc2a8639913aefe3b62ed8e618d4
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a86b7375122d38d36707a419b265dcd3c1b57087
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222779"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741693"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>HDInsight を使用して YARN で Spark から Azure Cosmos DB Cassandra API にアクセスする
 
@@ -34,7 +34,7 @@ ms.locfileid: "47222779"
 
 * **Spark2 の Cassandra API 構成** - Cassandra 用の Spark コネクタでは、Spark コンテキストの一部として、Cassandra への接続の詳細を初期化する必要があります。 Jupyter ノートブックを起動すると、Spark セッションとコンテキストは既に初期化されています。Spark コンテキストが、HDInsight の既定の Jupyter ノートブックのスタートアップの一部としてすべての構成セットを備えていない限り、このコンテキストを停止して再初期化することはお勧めしません。 回避策の 1 つは、Ambari、Spark2 サービス構成に Cassandra インスタンスの詳細を直接追加することです。 これはクラスターあたり 1 回限りのアクティビティで、Spark2 サービスの再起動が必要です。
  
-  1. Ambari、Spark2 サービスに移動し、configs をクリックします
+  1. Ambari、Spark2 サービスに移動し、configs を選択します
 
   2. 次に、カスタム spark2-defaults に移動し、次を含む新しいプロパティを追加して、Spark2 サービスを再起動します。
 

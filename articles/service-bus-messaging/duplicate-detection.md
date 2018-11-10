@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: spelluru
-ms.openlocfilehash: fb42f9920ce173b25cbc16725cf1f9dfd96fcc9e
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 5241020b1db3797891ae13da54cc9225bbd4619b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48853455"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741269"
 ---
 # <a name="duplicate-detection"></a>重複検出
 
@@ -41,6 +41,9 @@ ID のアプリケーションによる制御は、アプリケーションが *
 この機能は、ポータルでエンティティの作成する際に、既定ではオフになっている、**[重複データ検出を有効にする]** チェック ボックスをオンにすることで有効にできます。 新しいトピックを作成するための設定と同じです。
 
 ![][1]
+
+> [!IMPORTANT]
+> キューが作成された後に重複の検出を有効または無効にすることはできません。 それができるのはキューの作成時点のみです。 
 
 プログラム上では、フル フレームワーク .NET API の [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) プロパティにフラグを設定します。 Azure Resource Manager API では、値は [queueProperties.requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) プロパティで設定されます。
 

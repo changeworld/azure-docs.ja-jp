@@ -4,19 +4,18 @@ titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
-author: ghogen
-ms.author: ghogen
+author: iainfoulds
+ms.author: iainfou
 ms.date: 05/11/2018
 ms.topic: article
 description: Azure のコンテナーとマイクロサービスを使用した迅速な Kubernetes 開発
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, コンテナー
-manager: douge
-ms.openlocfilehash: 1d7d665c20baddb3a94bfe53568ab56a5a961630
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 11c9f07731c58f619ff109def3ca5c436efac24e
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42145822"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50977772"
 ---
 # <a name="share-azure-dev-spaces"></a>Azure Dev Spaces を共有する
 

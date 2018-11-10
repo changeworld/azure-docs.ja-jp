@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 01b8ccc9fe6b5469408131bce68a903f15382998
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 04ee2daaf7b06f8e7bdd8de144a039474551ea11
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222530"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227044"
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Azure SDK for .NET 2.9 リリース ノート
 
@@ -80,7 +80,7 @@ ms.locfileid: "39222530"
 
 * **Azure Data Lake Tools** for Visual Studio が Azure SDK for .NET リリースに統合されました。 Azure SDK をインストールすると、Azure Data Lake Tools が自動的にインストールされます。 
   
-    このツールは頻繁に更新されます。最新版は[こちら](http://aka.ms/datalaketool)から取得してください。
+    このツールは頻繁に更新されます。最新版は[こちら](https://aka.ms/datalaketool)から取得してください。
 * **サーバー エクスプローラー** で U-SQL メタデータ エンティティをすべて表示したり、一部を作成したりできるようになりました。 詳細については、 [このブログ](https://azure.microsoft.com/documentation/services/data-lake-analytics/) をご覧ください。
 
 ## <a name="hdinsight-tools"></a>HDInsight ツール

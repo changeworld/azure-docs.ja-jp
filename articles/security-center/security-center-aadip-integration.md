@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 10/13/2018
 ms.author: yurid
-ms.openlocfilehash: 6ab3611d47b32eddd41736df69a3e7382c2b220d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9c13bd671efee5bc07885320cbaa0bd090cc1390
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298763"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226362"
 ---
 # <a name="connecting-azure-active-directory-identity-protection-to-azure-security-center"></a>Azure Active Directory Identity Protection を Azure Security Center に接続する
 このドキュメントは、Azure Active Directory (AD) Identity Protection と Azure Security Center 間の統合を構成する場合に役立ちます。
@@ -55,6 +55,6 @@ ms.locfileid: "44298763"
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 - 「[Azure Security Center のデータ セキュリティ](security-center-data-security.md)」 - Security Center でデータがどのように管理および保護されているかを説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
 
 

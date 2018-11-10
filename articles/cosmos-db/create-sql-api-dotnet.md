@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 clicktale: true
-ms.openlocfilehash: 36265685b9bc43e95c6d7bc1e7a9ad3c52835b36
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 506d21589ee8c5d284bd9ffc430d8b1d40afb910
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977997"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741727"
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>クイック スタート: SQL API と Azure Portal を使って Azure Cosmos DB による .NET Web アプリを作る
 
@@ -120,7 +120,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. [Azure Portal](http://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[キー]** をクリックしてから **[読み取り/書き込みキー]** をクリックします。 次の手順では、画面の右側のコピー ボタンを使用して、URI とプライマリ キーを web.config ファイルにコピーします。
+1. [Azure portal](http://portal.azure.com/) の Azure Cosmos DB アカウントで、左のナビゲーションの **[キー]** を選択してから **[読み取り/書き込みキー]** を選択します。 次の手順では、画面の右側のコピー ボタンを使用して、URI とプライマリ キーを web.config ファイルにコピーします。
 
     ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-sql-api-dotnet/keys.png)
 
@@ -139,7 +139,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     `<add key="database" value="Tasks" />`    
     
 ## <a name="run-the-web-app"></a>Web アプリの実行
-1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
+1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 
 
 2. NuGet の **[参照]** ボックスに「*DocumentDB*」と入力します。
 
@@ -147,7 +147,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 4. Ctrl + F5 キーを押してアプリケーションを実行します。 ブラウザーにアプリが表示されます。 
 
-5. ブラウザーで、**[新規作成]** をクリックし、to-do アプリで、いくつか新しいタスクを作成します。
+5. ブラウザーで **[新規作成]** を選択し、to-do アプリでいくつかの新しいタスクを作成します。
 
    ![todo アプリとサンプル データ](./media/create-sql-api-dotnet/azure-comosdb-todo-app-list.png)
 

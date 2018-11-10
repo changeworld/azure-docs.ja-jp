@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 673faff51c3d06e50941a6982a9f654c28598d86
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d1c5c9a8709467c9f9ca87c841cffcf77a5b5f0b
+ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47006509"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219911"
 ---
 <a name="virtual-networking-limits-classic"></a>次の制限は、サブスクリプションごとにクラシック デプロイメント モデルを通じて管理されるネットワーク リソースのみに適用されます。 [サブスクリプションの上限に対する現在のリソース使用状況の確認](../articles/networking/check-usage-against-limits.md)に関するページを参照してください。
 
@@ -21,7 +21,7 @@ ms.locfileid: "47006509"
 | --- | --- | --- |
 | 仮想ネットワーク |50 |100 |
 | ローカル ネットワーク サイト |20 |サポートにお問い合わせください |
-| 仮想ネットワークあたりの DNS サーバー数 |20 |100 |
+| 仮想ネットワークあたりの DNS サーバー数 |20 |20 |
 | 仮想ネットワークごとのプライベート IP アドレス |4096 |4096 |
 | 仮想マシンまたはロール インスタンスの NIC ごとの同時 TCP または UDP フロー数 |500K |500K |
 | ネットワーク セキュリティ グループ (NSG) |100 |200 |

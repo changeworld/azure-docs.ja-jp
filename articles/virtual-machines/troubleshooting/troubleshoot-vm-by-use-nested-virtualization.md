@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 04/06/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 36c42830738f160b24f65e86576ba93aac1ea737
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412739"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005600"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure で入れ子になった仮想化を使用して問題のある Azure VM のトラブルシューティングを行う
 
@@ -101,7 +101,7 @@ ms.locfileid: "47412739"
 
 11. **[後で仮想ハード ディスクを接続する]** を選択します。
 
-    ![[後で仮想ハード ディスクを接続する] オプションの画像](/media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
+    ![[後で仮想ハード ディスクを接続する] オプションの画像](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
 12. VM が作成されたら **[完了]** を選択します。
 
@@ -109,11 +109,11 @@ ms.locfileid: "47412739"
 
 14. **[IDE コントローラー 0]** を選択し、**[ハード ドライブ]** を選択して、**[追加]** をクリックします。
 
-    ![新しいハード ドライブの追加に関する画像](/media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
+    ![新しいハード ドライブの追加に関する画像](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
 15. **[物理ハード ディスク]** で、Azure VM にアタッチされている問題のある VM のディスクを選択します。 ディスクが一覧にない場合は、[ディスクの管理] でそのディスクがオフラインに設定されているかどうかを確認してください。
 
-    ![ディスクのマウントに関する画像](/media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
+    ![ディスクのマウントに関する画像](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
 17. **[Apply]\(適用\)** を選択し、次に **[OK]** を選択します。
@@ -130,11 +130,11 @@ ms.locfileid: "47412739"
 
 3.  **[すべてのリソース]** に移動して目的のディスク名を検索し、そのディスクを選択します。
 
-     ![ディスクの検索に関する画像](/media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
+     ![ディスクの検索に関する画像](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
 
 4. **[VM の作成]** をクリックします。
 
-     ![ディスクからの VM 作成に関する画像](./media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
+     ![ディスクからの VM 作成に関する画像](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
 
 Azure PowerShell を使用してディスクから VM を作成することもできます。 詳細については、[PowerShell を使用して既存のディスクから新しい VM を作成する方法](../windows/create-vm-specialized.md#create-the-new-vm)に関するページを参照してください。 
 

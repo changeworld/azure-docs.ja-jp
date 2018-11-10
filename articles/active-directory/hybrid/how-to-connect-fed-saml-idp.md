@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: a197b3c7aa423323f984a793851a458733391e33
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 08d9566c3ce8f486465f0ed7fb5aab4419e592d8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50243114"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228591"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
@@ -167,7 +167,7 @@ SAML 2.0 ID プロバイダーと Azure AD 間の通信を有効にする必要�
 ## <a name="install-windows-powershell-for-sign-on-with-saml-20-identity-provider"></a>SAML 2.0 ID プロバイダーでサインオンするための Windows PowerShell をインストールする
 Azure AD サインオンで使用するように SAML 2.0 ID プロバイダーを構成したら、次の手順は、Azure Active Directory Module for Windows PowerShell をダウンロードしてインストールすることです。 インストールしたら、これらのコマンドレットを使用して、Azure AD ドメインをフェデレーション ドメインとして構成します。
 
-Azure Active Directory Module for Windows PowerShell は、組織のデータを Azure AD で管理するためのダウンロードです。 このモジュールは、Windows PowerShell に一連のコマンドレットをインストールします。これらのコマンドレットを実行して Azure AD へのシングル サインオン アクセスを設定し、サブスクライブしているすべてのクラウド サービスにアクセスします。 コマンドレットをダウンロードしてインストールする方法の手順については、[http://technet.microsoft.com/library/jj151815.aspx](http://technet.microsoft.com/library/jj151815.aspx) を参照してください。
+Azure Active Directory Module for Windows PowerShell は、組織のデータを Azure AD で管理するためのダウンロードです。 このモジュールは、Windows PowerShell に一連のコマンドレットをインストールします。これらのコマンドレットを実行して Azure AD へのシングル サインオン アクセスを設定し、サブスクライブしているすべてのクラウド サービスにアクセスします。 コマンドレットをダウンロードしてインストールする方法の手順については、[http://technet.microsoft.com/library/jj151815.aspx](https://technet.microsoft.com/library/jj151815.aspx) を参照してください。
 
 ## <a name="set-up-a-trust-between-your-saml-identity-provider-and-azure-ad"></a>SAML ID プロバイダーと Azure AD との間に信頼を確立する
 Azure AD ドメインのフェデレーションを構成する前に、カスタム ドメインを構成する必要があります。 Microsoft によって提供されている既定のドメインをフェデレーションすることはできません。 Microsoft の既定のドメインは、"onmicrosoft.com" で終わります。
@@ -190,12 +190,12 @@ SAML 2.0 ID プロバイダーを使用してフェデレーションする各 A
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-"Set-MsolDomainAuthentication" の詳細については [http://technet.microsoft.com/library/dn194112.aspx](http://technet.microsoft.com/library/dn194112.aspx) を参照してください。
+"Set-MsolDomainAuthentication" の詳細については [http://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx) を参照してください。
 
 >[!NOTE]
 >“$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"” は、ID プロバイダーに対して ECP 拡張機能を設定する場合にのみ実行する必要があります。 Outlook Web Application (OWA) を除く Exchange Online クライアントは、POST ベースのアクティブなエンドポイントを活用します。 SAML 2.0 STS でアクティブなエンドポイントの Shibboleth の ECP 実装に似たアクティブなエンドポイントを実装すると、これらのリッチ クライアントが Exchange Online サービスと対話することが可能になる場合があります。
 
-フェデレーションが構成された後で、"非フェデレーション" ("マネージ") に切り替えることもできます。ただし、この変更は、完了までに最大 2 時間かかり、クラウドベースのサインイン用の新しいランダム パスワードを各ユーザーに割り当てる必要があります。 "マネージド" への切り替えは、一部のシナリオで設定のエラーをリセットするために必要になる場合があります。 ドメインの変換の詳細については、[http://msdn.microsoft.com/library/windowsazure/dn194122.aspx](http://msdn.microsoft.com/library/windowsazure/dn194122.aspx) を参照してください。
+フェデレーションが構成された後で、"非フェデレーション" ("マネージ") に切り替えることもできます。ただし、この変更は、完了までに最大 2 時間かかり、クラウドベースのサインイン用の新しいランダム パスワードを各ユーザーに割り当てる必要があります。 "マネージド" への切り替えは、一部のシナリオで設定のエラーをリセットするために必要になる場合があります。 ドメインの変換の詳細については、[http://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx) を参照してください。
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>ユーザー プリンシパルを Azure AD/Office 365 にプロビジョニングする
 Office 365 に対してユーザーを認証するには、SAML 2.0 要求のアサーションに対応するユーザー プリンシパルを使用して Azure AD をプロビジョニングしておく必要があります。 これらのユーザー プリンシパルが Azure AD で事前に認識されていない場合、フェデレーション サインインで使用することはできません。 ユーザー プリンシパルは、Azure AD Connect または Windows PowerShell を使用してプロビジョニングできます。
@@ -218,7 +218,7 @@ Windows PowerShell は、新しいユーザーの Azure AD への追加を自動
         -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
         -UsageLocation "US" ` 
 
-"New-MsolUser" チェックアウトの詳細については、[http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx) を参照してください。
+"New-MsolUser" チェックアウトの詳細については、[http://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx) を参照してください。
 
 >[!NOTE]
 >"UserPrinciplName" 値は SAML 2.0 要求で送信する "IDPEmail" の値と一致し、"ImmutableID" 値は "NameID" アサーションで送信される値と一致する必要があります。

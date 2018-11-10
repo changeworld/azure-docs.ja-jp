@@ -9,14 +9,14 @@ ms.author: govindk
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: f73a201a25bb2f975e8a261a6c21aa7b066c3a7c
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 56fc07c6d775ee8015ce244acb7782607bda802a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247852"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739789"
 ---
-# <a name="migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API アカウントにデータを移行する
+# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-cassandra-api-account"></a>チュートリアル: Azure Cosmos DB Cassandra API アカウントにデータを移行する
 
 このチュートリアルでは、Apache Cassandra のデータを Azure Cosmos DB Cassandra API に移行する方法を説明します。 
 
@@ -62,7 +62,7 @@ Azure Cosmos DB Cassandra API にデータを移行する前に、ワークロ�
 
 ## <a name="prerequisites-for-migration"></a>移行の前提条件
 
-* **Azure Cosmos DB Cassandra API アカウントでテーブルを作成する:** データの移行を開始する前に、Azure portal または cqlsh からすべてのテーブルを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行しようとしている場合は、Azure Cosmos DB コンテナーの作成時に必ずパーティション キーを提供するようにしてください。
+* **Azure Cosmos DB Cassandra API アカウントでテーブルを作成する:** データの移行を開始する前に、Azure portal または cqlsh からすべてのテーブルを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行しようとしている場合は、Azure Cosmos DB コンテナーの作成時に必ずパーティション キーを指定するようにしてください。
 
 * **スループットを上げる:** データの移行にかかる時間は、Azure Cosmos DB のテーブルに対してプロビジョニングしたスループットの量に依存します。 移行の間だけスループットを高くします。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 移行が完了したら、コストを節約するためにスループットを下げます。 スループットの引き上げについて詳しくは、Azure Cosmos DB コンテナーに対する[スループットの設定](set-throughput.md)に関するページをご覧ください。 また、Azure Cosmos DB アカウントをソース データベースと同じリージョンにすることもお勧めします。 
 
@@ -101,7 +101,7 @@ Spark を使用して Azure Cosmos DB Cassandra API にデータを移行する�
 
 - [テーブル コピー操作](cassandra-spark-table-copy-ops.md)を使用して、ターゲットの Cassandra API エンドポイントにデータを移動します 
 
-Azure 仮想マシンまたは他のクラウドの既存クラスターにデータが存在する場合は、Spark ジョブを使用したデータの移行が推奨されるオプションです。 これには、Spark を 1 回または定期的な取り込みの仲介者として設定する必要があります。 オンプレミスと Azure の間に ExpressRoute 接続を使用することで、この移行を速くできます。 
+Azure 仮想マシンまたは他のクラウドの既存クラスターにデータが存在する場合は、Spark ジョブを使用したデータの移行が推奨されるオプションです。 このオプションでは、Spark を 1 回の取り込みまたは定期的な取り込みの仲介者として設定する必要があります。 オンプレミスと Azure の間に ExpressRoute 接続を使用することで、この移行を速くできます。 
 
 ## <a name="next-steps"></a>次の手順
 

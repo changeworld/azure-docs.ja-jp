@@ -1,10 +1,10 @@
 ---
-title: 管理ディスクを使用するために Azure Resource Manager のスケール セット テンプレートを変換する | Microsoft Docs
-description: スケール セット テンプレートを管理ディスク スケール セット テンプレートに変換します。
+title: マネージド ディスクを使用するために Azure Resource Manager のスケール セット テンプレートを変換する | Microsoft Docs
+description: スケール セット テンプレートをマネージド ディスク スケール セット テンプレートに変換します。
 keywords: 仮想マシン スケール セット
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
@@ -15,21 +15,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 5/18/2017
-ms.author: negat
-ms.openlocfilehash: 760e30f5c6f4ecaff299bae1725548a6a7c5184c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.author: manayar
+ms.openlocfilehash: be56fd80229010090216413a7c1833d94e8bac25
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
-ms.locfileid: "26781073"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739568"
 ---
-# <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>スケール セット テンプレートを管理ディスク スケール セット テンプレートに変換する
+# <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>スケール セット テンプレートをマネージド ディスク スケール セット テンプレートに変換する
 
-Resource Manager テンプレートを基に管理ディスクを使用しないスケール セットを作成している場合、管理ディスクを使用するようにそのテンプレートを変更することができます。 この記事では、「[Azure Quickstart Templates (Azure クイック スタート テンプレート)](https://github.com/Azure/azure-quickstart-templates)」ページ (コミュニティにより運営されている、サンプルの Resource Manager テンプレートを集めたリポジトリ) に登録されているプル要求の例を使用して、管理ディスクの使用方法を示します。 完全なプル要求は [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998) で確認できます。以降では、該当する差分とその説明を示していきます。
+Resource Manager テンプレートを基にマネージド ディスクを使用しないスケール セットを作成している場合、マネージド ディスクを使用するようにそのテンプレートを変更することができます。 この記事では、「[Azure Quickstart Templates (Azure クイック スタート テンプレート)](https://github.com/Azure/azure-quickstart-templates)」ページ (コミュニティにより運営されている、サンプルの Resource Manager テンプレートを集めたリポジトリ) に登録されているプル要求の例を使用して、マネージド ディスクの使用方法を示します。 完全なプル要求については、[https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998) で確認できます。diff の関連する部分と説明を以下に示します。
 
 ## <a name="making-the-os-disks-managed"></a>OS ディスクを管理ディスクにする
 
-次の差分では、ストレージ アカウントとディスクのプロパティに関連するいくつかの変数が削除されています。 ストレージ アカウントの種類はもう必要ありません (Standard_LRS が既定です)。ただし、必要に応じて指定することはできます。 管理ディスクでは、Standard_LRS と Premium_LRS のみがサポートされます。 古いテンプレートでは、新しいストレージ アカウントのサフィックス、一意の文字列配列、および sa カウントが、ストレージ アカウント名を生成するために使用されていました。 管理ディスクでは自動的にストレージ アカウントが作成されるため、新しいテンプレートではこれらの変数が不要になりました。 同様に、管理ディスクでは基になるストレージ BLOB コンテナーとディスクの名前が自動的に付けられるため、VHD コンテナー名と OS ディスク名も不要になりました。
+次の差分では、ストレージ アカウントとディスクのプロパティに関連するいくつかの変数が削除されています。 ストレージ アカウントの種類はもう必要ありません (Standard_LRS が既定です)。ただし、必要に応じて指定することはできます。 マネージド ディスクでは、Standard_LRS と Premium_LRS のみがサポートされます。 古いテンプレートでは、新しいストレージ アカウントのサフィックス、一意の文字列配列、および sa カウントが、ストレージ アカウント名を生成するために使用されていました。 マネージド ディスクでは自動的にストレージ アカウントが作成されるため、新しいテンプレートではこれらの変数が不要になりました。 同様に、マネージド ディスクでは基になるストレージ BLOB コンテナーとディスクの名前が自動的に付けられるため、VHD コンテナー名と OS ディスク名も不要になりました。
 
 ```diff
    "variables": {
@@ -53,7 +53,7 @@ Resource Manager テンプレートを基に管理ディスクを使用しない
 ```
 
 
-次の差分では、コンピューティング API のバージョンが 2016-04-30-preview に更新されています。これは、スケール セットでの管理ディスクのサポートに必要な最も初期のバージョンです。 必要であれば、古い構文を使用して、管理されないディスクを新しい API バージョンで使用することも可能です。 コンピューティング API バージョンのみを更新し、それ以外のものを変更しない場合、テンプレートは以前と同じように動作します。
+次の差分では、コンピューティング API のバージョンが 2016-04-30-preview に更新されています。これは、スケール セットでのマネージド ディスクのサポートに必要な最も初期のバージョンです。 必要であれば、古い構文を使用して、管理されないディスクを新しい API バージョンで使用することも可能です。 コンピューティング API バージョンのみを更新し、それ以外のものを変更しない場合、テンプレートは以前と同じように動作します。
 
 ```diff
 @@ -86,7 +74,7 @@
@@ -67,7 +67,7 @@ Resource Manager テンプレートを基に管理ディスクを使用しない
    },
 ```
 
-次の差分では、ストレージ アカウント リソースがリソース配列から完全に削除されています。 管理ディスクによって自動的に作成されるため、リソースは必要ありません。
+次の差分では、ストレージ アカウント リソースがリソース配列から完全に削除されています。 マネージド ディスクによって自動的に作成されるため、リソースは必要ありません。
 
 ```diff
 @@ -113,19 +101,6 @@
@@ -92,7 +92,7 @@ Resource Manager テンプレートを基に管理ディスクを使用しない
        "location": "[resourceGroup().location]",
 ```
 
-次の差分では、ストレージ アカウントを作成したループをスケール セットから参照する depends on 句が削除されていることがわかります。 古いテンプレートでは、これによって、スケール セットの作成を開始する前にストレージ アカウントが作成されていることが保証されていました。しかし、管理ディスクでは、この句はもう必要ありません。 また、VHD コンテナー プロパティと OS ディスク名プロパティも削除されています。管理ディスクでは、これらのプロパティが自動的に処理されます。 Premium OS ディスクが必要な場合は、"osDisk" 構成に `"managedDisk": { "storageAccountType": "Premium_LRS" }` を追加することができます。 Premium ディスクを使用できるのは、VM SKU に大文字または小文字の "s" が含まれる VM に限られます。
+次の差分では、ストレージ アカウントを作成したループをスケール セットから参照する depends on 句が削除されていることがわかります。 古いテンプレートでは、これによって、スケール セットの作成を開始する前にストレージ アカウントが作成されていることが保証されていました。しかし、マネージド ディスクでは、この句はもう必要ありません。 また、VHD コンテナー プロパティと OS ディスク名プロパティも削除されています。マネージド ディスクでは、これらのプロパティが自動的に処理されます。 Premium OS ディスクが必要な場合は、"osDisk" 構成に `"managedDisk": { "storageAccountType": "Premium_LRS" }` を追加することができます。 Premium ディスクを使用できるのは、VM SKU に大文字または小文字の "s" が含まれる VM に限られます。
 
 ```diff
 @@ -183,7 +158,6 @@
@@ -126,7 +126,7 @@ Resource Manager テンプレートを基に管理ディスクを使用しない
 
 ## <a name="data-disks"></a>データ ディスク
 
-上記の変更により、スケール セットで OS ディスクに管理ディスクが使用されるようになります。それでは、データ ディスクの場合はどうでしょうか。 データ ディスクを追加するには、"storageProfile" の下の "osDisk" と同じレベルに "dataDisks" プロパティを追加します。 このプロパティの値には、オブジェクトの JSON リストを指定します。それぞれのオブジェクトには、次の例に示すとおり、"lun" (VM 上のデータ ディスクごとに一意である必要があります)、"createOption" (現在、"empty" のみがサポートされています)、および "diskSizeGB" (ギガバイト単位のディスク サイズ。0 より大きく 1,024 未満の値である必要があります) の各プロパティがあります。 
+上記の変更により、スケール セットで OS ディスクにマネージド ディスクが使用されるようになります。それでは、データ ディスクの場合はどうでしょうか。 データ ディスクを追加するには、"storageProfile" の下の "osDisk" と同じレベルに "dataDisks" プロパティを追加します。 このプロパティの値には、オブジェクトの JSON リストを指定します。それぞれのオブジェクトには、次の例に示すとおり、"lun" (VM 上のデータ ディスクごとに一意である必要があります)、"createOption" (現在、"empty" のみがサポートされています)、および "diskSizeGB" (ギガバイト単位のディスク サイズ。0 より大きく 1,024 未満の値である必要があります) の各プロパティがあります。 
 
 ```
 "dataDisks": [

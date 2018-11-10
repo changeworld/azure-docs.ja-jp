@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.author: asgang
-ms.openlocfilehash: 3090dd9e0d9681dbf77f052e9d324f2add0a1910
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: ddbfdc9928122373b82d043fac0777576c5fe99e
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50215040"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227486"
 ---
 # <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Azure Site Recovery エージェントに関する問題のトラブルシューティング
 
@@ -64,7 +64,7 @@ VM エージェントが破損しているまたはサービスが停止して�
 1. VM サービス (services.msc) で "Windows Azure ゲスト エージェント サービス" が実行されているかどうかを確認します。 "Windows Azure ゲスト エージェント サービス" の再起動を試みます。    
 2. コントロール パネルの [サービス] に Windows Azure ゲスト エージェント サービスが表示されない場合は、**[プログラムと機能]** に移動し、Windows ゲスト エージェント サービスがインストールされているかどうかを確認してください。
 4. Windows Azure ゲスト エージェント サービスが **[プログラムと機能]** に表示される場合は、Windows ゲスト エージェントをアンインストールします。
-5. [最新バージョンのエージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。 インストールを実行するには、管理者権限が必要です。
+5. [最新バージョンのエージェント MSI](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) をダウンロードしてインストールします。 インストールを実行するには、管理者権限が必要です。
 6. [サービス] に Windows Azure ゲスト エージェント サービスが表示されることを確認します。
 7. 保護ジョブを再開します。
 

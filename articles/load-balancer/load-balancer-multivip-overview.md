@@ -4,9 +4,6 @@ description: Azure Load Balancer の複数フロントエンドの概要
 services: load-balancer
 documentationcenter: na
 author: chkuhtz
-manager: narayan
-editor: ''
-ms.assetid: 748e50cd-3087-4c2e-a9e1-ac0ecce4f869
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2018
 ms.author: chkuhtz
-ms.openlocfilehash: cf8fa396e0518e1c847225dfc1d8f91c3421bd11
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: d435d2c491cf17356e96f7bbb05b1e22c8e04aca
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30181491"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219360"
 ---
 # <a name="multiple-frontends-for-azure-load-balancer"></a>Azure Load Balancer の複数フロントエンド
 

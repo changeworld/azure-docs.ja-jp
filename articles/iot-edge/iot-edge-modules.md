@@ -8,12 +8,12 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5d80b6438569e74ee254d27e0061443a87efc6ce
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 80679d6efd44598fbe403707ad2e757010eb8d91
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423393"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741676"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Azure IoT Edge モジュールについて
 
@@ -31,7 +31,7 @@ IoT Edge モジュール イメージには、IoT Edge ランタイムの管理�
 
 モジュール イメージがデバイスに展開され、IoT Edge ランタイムによって開始されるたびに、該当モジュールの新しいインスタンスが作成されます。 世界のクラウドの異なる部分にある 2 つのデバイスが同じモジュール イメージを使用することができますが、モジュールがデバイスで開始されたときに、各デバイスは独自のモジュール インスタンスを持つことになります。 
 
-![クラウド内のモジュール イメージ - デバイス上のモジュール インスタンス][1]
+![クラウド内のモジュール イメージ - デバイス上のモジュール インスタンス](./media/iot-edge-modules/image_instance.png)
 
 実装では、モジュール イメージはリポジトリ内のコンテナー イメージとして存在し、モジュール インスタンスはデバイス上のコンテナーです。 
 
@@ -46,23 +46,23 @@ As use cases for Azure IoT Edge grow, new types of module images and instances w
 
 明らかに、1 つのモジュール イメージを同じデバイスに複数回展開する必要があるシナリオで、同じイメージを異なる名前で複数回展開することができます。
 
-![モジュールの ID は一意][2]
+![モジュールの ID は一意](./media/iot-edge-modules/identity.png)
 
 ## <a name="module-twins"></a>モジュール ツイン
 
 各モジュール インスタンスは、モジュール インスタンスの構成に使用できる、対応するモジュール ツインも持ちます。 インスタンスとツインは、モジュール ID によってお互いに関連付けられます。 
 
-モジュール ツインは、モジュールの情報と構成プロパティを格納する JSON ドキュメントです。 この概念は、IoT Hub の[デバイス ツイン][lnk-device-twin]の概念に似ています。 モジュール ツインの構造は、デバイス ツインとまったく同じです。 両方の種類のツインと対話するために使用する API も同じです。 2 つの唯一の違いは、クライアント SDK をインスタンス化するために使用する ID です。 
+モジュール ツインは、モジュールの情報と構成プロパティを格納する JSON ドキュメントです。 この概念は、IoT Hub の[デバイス ツイン](../iot-hub/iot-hub-devguide-device-twins.md)の概念に似ています。 モジュール ツインの構造は、デバイス ツインとまったく同じです。 両方の種類のツインと対話するために使用する API も同じです。 2 つの唯一の違いは、クライアント SDK をインスタンス化するために使用する ID です。 
 
 ```csharp
-// Create a ModuleClient object. This ModuleClient will act on behalf of a 
-// module since it is created with a module’s connection string instead 
-// of a device connection string. 
-ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(settings); 
-await client.OpenAsync(); 
- 
-// Get the module twin 
-Twin twin = await client.GetTwinAsync(); 
+// Create a ModuleClient object. This ModuleClient will act on behalf of a 
+// module since it is created with a module’s connection string instead 
+// of a device connection string. 
+ModuleClient client = new ModuleClient.CreateFromEnvironmentAsync(settings); 
+await client.OpenAsync(); 
+ 
+// Get the module twin 
+Twin twin = await client.GetTwinAsync(); 
 ```
 
 ## <a name="offline-capabilities"></a>オフライン機能
@@ -79,15 +79,8 @@ IoT Edge モジュールは、次の要件を満たしている場合、既定�
 その他のオフライン機能はパブリック プレビューで利用できます。 詳細については、「[IoT Edge デバイス、モジュール、子デバイスの拡張オフライン機能について](offline-capabilities.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
- - [IoT Edge モジュールを開発するための要件とツールについて理解する][lnk-mod-dev]
- - [Understand the Azure IoT Edge runtime and its architecture (Azure IoT Edge ランタイムとそのアーキテクチャについて)][lnk-runtime]
+ - [IoT Edge モジュールを開発するための要件とツールについて理解する](module-development.md)
+ - [Azure IoT Edge ランタイムとそのアーキテクチャの概要](iot-edge-runtime.md)
 
 <!-- Images -->
-[1]: ./media/iot-edge-modules/image_instance.png
 [2]: ./media/iot-edge-modules/identity.png
-
-<!-- Links -->
-[lnk-device-identity]: ../iot-hub/iot-hub-devguide-identity-registry.md
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-runtime]: iot-edge-runtime.md
-[lnk-mod-dev]: module-development.md

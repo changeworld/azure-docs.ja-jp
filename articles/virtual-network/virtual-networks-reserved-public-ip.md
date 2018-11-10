@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: df48e0dbf5a6c010f659e1019e56b7670c264234
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: bd2b28a7f8d0a765e10ffa58b5a72b4bd5bc47b0
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319695"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228183"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>予約済み IP アドレス (クラシック デプロイ)
 
@@ -43,7 +43,7 @@ Azure における IP アドレスの詳細については、[IP アドレス](v
 - 予約済み IP は、いくつ使用できますか。
     詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
 - 予約済み IP に料金はかかりますか。
-    場合によります。 料金の詳細については、[予約済み IP アドレスの料金の詳細](http://go.microsoft.com/fwlink/?LinkID=398482)に関するページをご覧ください。
+    場合によります。 料金の詳細については、[予約済み IP アドレスの料金の詳細](https://go.microsoft.com/fwlink/?LinkID=398482)に関するページをご覧ください。
 - どうやって IP アドレスを予約するのですか。
     PowerShell、[Azure Management REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)、または [Azure Portal](https://portal.azure.com) を使用して、Azure リージョンの IP アドレスを予約できます。 予約済み IP アドレスは、サブスクリプションに関連付けられます。
 - アフィニティ グループ ベースの VNet で予約済み IP を使用できますか。
@@ -83,7 +83,7 @@ Get-AzureReservedIP
     OperationStatus      : Succeeded
 
 >[!NOTE]
->PowerShell を使用して予約済み IP アドレスを作成する場合、予約済み IP を作成するリソース グループを指定することはできません。 Azure では、予約済み IP は *Default-Networking* という名前のリソース グループに自動的に配置されます。 [Azure Portal](http://portal.azure.com) を使用して予約済み IP を作成する場合は、任意のリソース グループを指定できます。 ただし、*Default-Networking* 以外のリソース グループに予約済み IP を作成した場合、`Get-AzureReservedIP` や `Remove-AzureReservedIP` などのコマンドでその予約済み IP を参照するときに、*Group resource-group-name reserved-ip-name* という名前を参照する必要があります。  たとえば、*myResourceGroup* という名前のリソース グループに *myReservedIP* という予約済み IP を作成した場合、予約済み IP の名前を *Group myResourceGroup myReservedIP* として参照する必要があります。   
+>PowerShell を使用して予約済み IP アドレスを作成する場合、予約済み IP を作成するリソース グループを指定することはできません。 Azure では、予約済み IP は *Default-Networking* という名前のリソース グループに自動的に配置されます。 [Azure Portal](http://portal.azure.com) を使用して予約済み IP を作成する場合は、任意のリソース グループを指定できます。 ただし、*Default-Networking* 以外のリソース グループに予約済み IP を作成した場合、`Get-AzureReservedIP` や `Remove-AzureReservedIP` などのコマンドでその予約済み IP を参照するときに、*Group resource-group-name reserved-ip-name* という名前を参照する必要があります。  たとえば、*myResourceGroup* という名前のリソース グループに *myReservedIP* という予約済み IP を作成した場合、予約済み IP の名前を *Group myResourceGroup myReservedIP* として参照する必要があります。   
 
 
 IP アドレスが予約されると、サブスクリプションとの関連付けは、サブスクリプションが削除されるまで維持されます。 予約済み IP アドレスを削除するには次のようにします。

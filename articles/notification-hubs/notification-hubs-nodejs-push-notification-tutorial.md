@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 04/14/2018
 ms.author: dimazaid
-ms.openlocfilehash: 49ee6b7fabe78c2328a2a772347c612ad38cfe7a
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 8e4c97a710cc9e6d3af4ebdd7dc97bda9f8d02ed
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091732"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228438"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs と Node.js でのプッシュ通知の送信
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -43,7 +43,7 @@ ms.locfileid: "44091732"
 通知ハブの詳細については、「 [次のステップ](#next) 」のセクションを参照してください。
 
 ## <a name="what-are-notification-hubs"></a>Notification Hubs とは
-Azure Notification Hubs によって、モバイル デバイスにプッシュ通知を送信するための、使いやすくスケーラブルなマルチプラットフォーム インフラストラクチャが提供されます。 サービス インフラストラクチャの詳細については、「 [Azure Notification Hubs](http://msdn.microsoft.com/library/windowsazure/jj927170.aspx) 」のページを参照してください。
+Azure Notification Hubs によって、モバイル デバイスにプッシュ通知を送信するための、使いやすくスケーラブルなマルチプラットフォーム インフラストラクチャが提供されます。 サービス インフラストラクチャの詳細については、「 [Azure Notification Hubs](https://msdn.microsoft.com/library/windowsazure/jj927170.aspx) 」のページを参照してください。
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
 このチュートリアルの最初の手順では、新しい空の Node.js アプリケーションを作成します。 Node.js アプリケーションを作成する手順については、[Node.js アプリケーションの作成と Azure Web サイトへのデプロイ][nodejswebsite]、[Node.js クラウド サービス][Node.js Cloud Service] (Windows PowerShell の使用)、または [WebMatrix を使用した Web サイト][webmatrix]に関する各ページをご覧ください。
@@ -141,11 +141,11 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 * **Tags** - タグ識別子。 タグが指定されない場合、通知はすべてのクライアントに送信されます。
 * **Payload** - メッセージの XML ペイロード。
 * **TargetName** -  トースト通知の場合は `toast`。 `token` 。
-* **NotificationClass** - 通知の優先度。 有効な値については、「 **Push notifications from a server (サーバーからのプッシュ通知)** 」の「 [HTTP Header Elements](http://msdn.microsoft.com/library/hh221551.aspx) (HTTP ヘッダー要素)」のセクションを参照してください。
+* **NotificationClass** - 通知の優先度。 有効な値については、「 **Push notifications from a server (サーバーからのプッシュ通知)** 」の「 [HTTP Header Elements](https://msdn.microsoft.com/library/hh221551.aspx) (HTTP ヘッダー要素)」のセクションを参照してください。
 * **Options** - 省略可能な要求ヘッダー。
 * **Callback** - コールバック関数。
 
-有効な **TargetName**、**NotificationClass**、ヘッダー オプションについては、「[Push notifications from a server (サーバーからのプッシュ通知)](http://msdn.microsoft.com/library/hh221551.aspx)」を参照してください。
+有効な **TargetName**、**NotificationClass**、ヘッダー オプションについては、「[Push notifications from a server (サーバーからのプッシュ通知)](https://msdn.microsoft.com/library/hh221551.aspx)」を参照してください。
 
 次のサンプル コードは、**NotificationHubService** によって公開されている **MpnsService** インスタンスを使用して、トースト プッシュ通知を送信します。
 
@@ -165,7 +165,7 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 * **Options** - 省略可能な要求ヘッダー。
 * **Callback** - コールバック関数。
 
-有効なタイプと要求ヘッダーの一覧については、「 [プッシュ通知サービスの要求ヘッダーと応答ヘッダー](http://msdn.microsoft.com/library/windows/apps/hh465435.aspx)」を参照してください。
+有効なタイプと要求ヘッダーの一覧については、「 [プッシュ通知サービスの要求ヘッダーと応答ヘッダー](https://msdn.microsoft.com/library/windows/apps/hh465435.aspx)」を参照してください。
 
 次のコードは、**NotificationHubService** によって公開されている **WnsService** インスタンスを使用して、UWP アプリケーションにトースト プッシュ通知を送信します。
 

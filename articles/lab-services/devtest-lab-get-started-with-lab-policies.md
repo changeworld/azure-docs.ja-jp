@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 40b8fb360be7b08540e25886aaebe7f911607b6d
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8cc529fbf9b24335be1bec07f81c732ced7a2b72
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781831"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227010"
 ---
 # <a name="manage-basic-policies-for-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの基本ポリシーの管理
 
@@ -30,7 +30,7 @@ Azure DevTest Labs では、各ラボのポリシー (設定) を管理するこ
 
 ラボのポリシーを表示 (および変更) するには、次の手順に従います。
 
-1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
+1. [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
 
 1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 93b79b7adacdec18912d28bb9725e2dc77737d59
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 2190978b2583b2f5d8a1b10431c65fd24fe6842d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43050765"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228149"
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-cluster-on-windows-server"></a>Windows Server でのスタンドアロン Azure Service Fabric クラスターのアップグレード 
 > [!div class="op_single_selector"]
@@ -43,9 +43,9 @@ Microsoft が新しいバージョンをリリースしたときに、クラス�
 2 つの異なるワークフローで、Service Fabric の最新バージョンまたはサポートされているバージョンにクラスターをアップグレードできます。 1 つは、最新バージョンを自動的にダウンロードするための接続を使用できるクラスター向けのワークフローです。 もう 1 つは、Service Fabric の最新バージョンをダウンロードするための接続を使用できないクラスター向けのワークフローです。
 
 ### <a name="upgrade-clusters-that-have-connectivity-to-download-the-latest-code-and-configuration"></a>最新のコードと構成をダウンロードするための接続を使用できるクラスターをアップグレードする
-クラスター ノードがインターネットを通じて [Microsoft ダウンロード センター](http://download.microsoft.com)に接続できる場合、次の手順でクラスターをサポートされているバージョンにアップグレードします。
+クラスター ノードがインターネットを通じて [Microsoft ダウンロード センター](https://download.microsoft.com)に接続できる場合、次の手順でクラスターをサポートされているバージョンにアップグレードします。
 
-[Microsoft ダウンロード センター](http://download.microsoft.com)に接続できるクラスターについては、マイクロソフトが Service Fabric の新しいバージョンが利用可能であるかどうかを定期的に確認します。
+[Microsoft ダウンロード センター](https://download.microsoft.com)に接続できるクラスターについては、マイクロソフトが Service Fabric の新しいバージョンが利用可能であるかどうかを定期的に確認します。
 
 Service Fabric の新しいバージョンが利用可能になると、パッケージがローカルのクラスターにダウンロードされ、アップグレードの準備が行われます。 さらに、この新しいバージョンの情報をお客様に伝えるために、クラスターの正常性に関する次のような警告が表示されます。
 
@@ -106,7 +106,7 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
     ロールバックの原因となった問題を解決したら、前述の手順に従って、もう一度アップグレードを開始します。
 
 ### <a name="upgrade-clusters-that-have-no-connectivity-to-download-the-latest-code-and-configuration"></a>最新のコードと構成をダウンロードするための*接続を使用できない*クラスターをアップグレードする
-クラスター ノードがインターネットを通じて [Microsoft ダウンロード センター](http://download.microsoft.com)に接続できない場合、次の手順でクラスターをサポートされているバージョンにアップグレードします。
+クラスター ノードがインターネットを通じて [Microsoft ダウンロード センター](https://download.microsoft.com)に接続できない場合、次の手順でクラスターをサポートされているバージョンにアップグレードします。
 
 > [!NOTE]
 > インターネットに接続されていないクラスターを実行している場合、新しいリリースの情報は Service Fabric チーム ブログで確認する必要があります。 新しいリリースについて通知する、クラスターの正常性に関する警告は表示されません。  

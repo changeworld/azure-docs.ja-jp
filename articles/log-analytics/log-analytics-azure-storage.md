@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 297b3f4c9ef110f8adc9dcb5cd9eac9e30729a5d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: f9cc3033c476afe389cb52d3468facb9168fb920
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47180127"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51006534"
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Log Analytics で Azure サービスのログとメトリックを使用できるように収集する
 
@@ -51,7 +51,7 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 | Recovery コンテナー         | Microsoft.RecoveryServices/vaults       |             |             | [Azure Recovery Services Analytics (プレビュー)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | Search サービス         | Microsoft.Search/searchServices         | 診断 | 診断 | |
 | Service Bus 名前空間   | Microsoft.ServiceBus/namespaces         | 診断 | 診断 | [Service Bus Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-| Service Fabric          |                                         | Storage     |             | [Service Fabric Analytics (プレビュー)](log-analytics-service-fabric.md) |
+| Service Fabric          |                                         | Storage     |             | [Service Fabric Analytics (プレビュー)](../service-fabric/service-fabric-diagnostics-oms-setup.md) |
 | SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | 診断 | [Azure SQL Analytics (プレビュー)](log-analytics-azure-sql.md) |
 | Storage                 |                                         |             | スクリプト      | [Azure Storage Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | Virtual Machines        | Microsoft.Compute/virtualMachines       | 内線番号   | 内線番号 <br> 診断  | |
@@ -61,14 +61,14 @@ Azure サービスのログとメトリックを収集する方法は 4 種類�
 
 
 > [!NOTE]
-> Azure 仮想マシン (Linux と Windows の両方) を監視する場合は、[Log Analytics VM 拡張機能](log-analytics-azure-vm-extension.md)のインストールをお勧めします。 仮想マシン内から収集された洞察は、エージェントによって提供されます。 仮想マシン スケール セットの拡張機能を使用することもできます。
+> Azure 仮想マシン (Linux と Windows の両方) を監視する場合は、[Log Analytics VM 拡張機能](log-analytics-quick-collect-azurevm.md)のインストールをお勧めします。 仮想マシン内から収集された洞察は、エージェントによって提供されます。 仮想マシン スケール セットの拡張機能を使用することもできます。
 >
 >
 
 ## <a name="azure-diagnostics-direct-to-log-analytics"></a>Azure 診断から Log Analytics に直接
 多くの Azure リソースで診断ログとメトリックを Log Analytics に直接書き込むことができます。分析用のデータを収集するにはこの方法がお勧めです。 Azure 診断を使用すると、データが Log Analytics に即座に書き込まれるため、データを最初にストレージに出力する必要はありません。
 
-[Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) をサポートする Azure リソースのログとメトリックは、Log Analytics に直接送信できます。
+[Azure Monitor](../azure-monitor/overview.md) をサポートする Azure リソースのログとメトリックは、Log Analytics に直接送信できます。
 
 > [!NOTE]
 > 診断設定を使用した Log Analytics への多ディメンション メトリックの送信は現在サポートされていません。 ディメンションを含むメトリックは、ディメンション値間で集計され、フラット化された単一ディメンションのメトリックとしてエクスポートされます。
@@ -158,5 +158,5 @@ Azure テンプレート ギャラリーには、サービスからデータを�
 ## <a name="next-steps"></a>次の手順
 
 * [Blob Storage (IIS の場合) と Table Storage (イベントの場合) を使用](log-analytics-azure-storage-iis-table.md)して、診断情報を Table Storage に出力する Azure サービスのログや、Blob Storage に出力された IIS ログを読み取ります。
-* [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。
-* [検索クエリを使用](log-analytics-log-searches.md) して、データを分析します。
+* [ソリューションを有効](../monitoring/monitoring-solutions.md) にして、データに対する洞察を得ます。
+* [検索クエリを使用](log-analytics-queries.md) して、データを分析します。

@@ -2,19 +2,19 @@
 title: Linux ベースの HDInsight でのスクリプト アクション開発 - Azure
 description: Bash スクリプトを使用して Linux ベースの HDInsight クラスターをカスタマイズする方法について説明します。 HDInsight のスクリプト アクション機能では、クラスターの作成中または作成後にスクリプトを実行できます。 スクリプトを使用して、クラスター構成設定を変更したり、追加のソフトウェアをインストールしたりできます。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
-ms.author: jasonh
-ms.openlocfilehash: 9a10620e3a388fa47076afd54e1789607e5ca47e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 90bba26bf1fd941085568cacd4d005f10eaed1b8
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46986253"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005395"
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -274,7 +274,7 @@ echo "HADOOP_CONF_DIR=/etc/hadoop/conf" | sudo tee -a /etc/environment
 
 * クラスターに関連付けられている __Azure Storage アカウント__。
 
-* クラスターに関連付けられている __追加のストレージ アカウント__。
+* クラスターに関連付けられている__追加のストレージ アカウント__。
 
 * __パブリックに読み取り可能な URI__。 たとえば、OneDrive、Dropbox、その他の ホスティング サービスに格納されたデータの URL。
 

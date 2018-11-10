@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2018
-ms.openlocfilehash: 5fe85d74b247e890790ec577d813d42f15290cde
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 5bf3e6d8839c3ec08bae03772d9a7ab011c67857
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140910"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228404"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Terraform を使用して Azure 仮想マシン スケール セットを作成する
 
@@ -569,6 +569,6 @@ terraform destroy
 この記事では、Terraform を使用して Azure 仮想マシン スケール セットを作成する方法について説明しました。 Azure 上の Terraform の詳細については、次のリソースもご覧ください。 
 
  [Microsoft.com の Terraform ハブ](https://docs.microsoft.com/azure/terraform/)  
- [Terraform Azure プロバイダーのドキュメント](http://aka.ms/terraform)  
- [Terraform Azure プロバイダーのソース](http://aka.ms/tfgit)  
- [Terraform Azure モジュール](http://aka.ms/tfmodules)
+ [Terraform Azure プロバイダーのドキュメント](https://aka.ms/terraform)  
+ [Terraform Azure プロバイダーのソース](https://aka.ms/tfgit)  
+ [Terraform Azure モジュール](https://aka.ms/tfmodules)

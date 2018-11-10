@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/29/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 6eba50fbe7c2a7a40b08e37a96adac66583b8251
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 112b9bac5d99556201b2038cf150293c9f2ed86d
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781862"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005803"
 ---
 # <a name="restoring-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse を復元する 
 この記事では、Azure portal と PowerShell で次のことを行う方法について説明します。
@@ -25,10 +25,6 @@ ms.locfileid: "43781862"
 - 削除されたデータベースから復元します
 - geo バックアップから復元します
 - ユーザー定義の復元ポイントからデータ ウェアハウスのコピーを作成します
-
-> [!NOTE]
-> 8/27 の時点では、既知の回帰が原因でサーバー間の復元は無効になっています。 Microsoft では、この問題の修正に最優先で取り組んでいます。 ご不便をおかけして申し訳ありません。 それまでは、[geo バックアップ](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore#restore-from-an-azure-geographical-region)を活用してサーバー間の復元を行うことができます。  
->
 
 ## <a name="before-you-begin"></a>開始する前に
 **DTU 容量を確認します。** 各 SQL Data Warehouse は、既定の DTU クォータが割り当てられている SQL サーバー (例: myserver.database.windows.net) でホストされます。  SQL データ ウェアハウスを復元する前に、データベースを復元するための十分な DTU クォータが SQL Server に残っていることを確認する必要があります。 必要な DTU を計算する方法と DTU を要求する方法については、[DTU クォータの変更の要求][Request a DTU quota change]に関するトピックをご覧ください。

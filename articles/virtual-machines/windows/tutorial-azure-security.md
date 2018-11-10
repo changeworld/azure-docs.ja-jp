@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 06/11/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 0fd843b150148057399a4e05f5e25a728cd4ae56
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7cf3db5020d6a100ca6afdd5a1dccd522189720d
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298512"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978504"
 ---
 # <a name="tutorial-use-azure-security-center-to-monitor-windows-virtual-machines"></a>チュートリアル: Azure Security Center を使用して Windows 仮想マシンを監視する
 
@@ -133,7 +133,7 @@ Security Center には、リソースの構成に関する推奨事項を提示�
 > * 構成の正常性に関する問題を確認して解決する
 > * 検出された脅威を確認する
 
-次のチュートリアルに進み、Azure DevOps Services と IIS を実行する Windows VM で CI/CD パイプラインを作成する方法を学習してください。
+次のチュートリアルに進み、Windows VM のペア上に SQL&#92;IIS&#92;.NET スタックをインストールする方法について確認してください。
 
 > [!div class="nextstepaction"]
-> [Azure Pipelines(./tutorial-vsts-iis-cicd.md)
+> [SQL&#92;IIS&#92;.NET スタック](tutorial-iis-sql.md)

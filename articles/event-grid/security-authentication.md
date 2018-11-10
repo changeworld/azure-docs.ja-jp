@@ -6,14 +6,14 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 10/09/2018
+ms.date: 10/31/2018
 ms.author: babanisa
-ms.openlocfilehash: 2fd8712cbe5d34baed158a56e6f06b6235f5d4b2
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: a9bffe148339bfac89796405b771e9c2816eb0de
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068197"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741523"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -37,7 +37,7 @@ Webhook をサポートする他の多くのサービスと同様に、EventGrid
 
 1. **ValidationCode ハンドシェイク**: イベント サブスクリプションの作成時に、EventGrid は "サブスクリプション検証イベント" をエンドポイントに POST します。 このイベントのスキーマはその他の EventGridEvent に似ており、このイベントのデータ部分には `validationCode` プロパティが含まれています。 検証の要求が想定されるイベント サブスクリプション用であることをアプリケーションが確認したら、検証コードを EventGrid にエコーで返すことによってアプリケーション コードが応答する必要があります。 このハンドシェイク メカニズムは、すべての EventGrid バージョンでサポートされます。
 
-2. **ValidationURL ハンドシェイク (手動のハンドシェイク)**: 特定のケースでは、ValidationCode ベースのハンドシェイクを実装できるようにするためのエンドポイントのソース コードを制御できない場合があります。 たとえば、サード パーティのサービス ([Zapier](https://zapier.com) や [IFTTT](https://ifttt.com/) など) を使用する場合は、プログラムによって検証コードに応答できない可能性があります。 2018-05-01-preview バージョン以降では、手動の検証ハンドシェイクが EventGrid によってサポートされるようになりました。 この新しい API バージョン (2018-05-01-preview) を使用する SDK/ツールを使用してイベント サブスクリプションを作成すると、EventGrid によってサブスクリプション検証イベントのデータ部分の一部として `validationUrl` プロパティが送信されます。 ハンドシェイクを完了するには、REST クライアントまたは Web ブラウザーを使用して、その URL に対して GET 要求を実行します。 提供された検証 URL は、約 10 分間だけ有効です。 この期間、イベント サブスクリプションのプロビジョニング状態は `AwaitingManualAction` になります。 手動による検証を 10 分以内に完了しなかった場合、プロビジョニング状態には `Failed` が設定されます。 手動による検証を試行する前に、もう一度イベント サブスクリプションを作成する必要があります。
+2. **ValidationURL ハンドシェイク (手動のハンドシェイク)**: 特定のケースでは、ValidationCode ベースのハンドシェイクを実装するためのエンドポイントのソース コードを制御できない場合があります。 たとえば、サード パーティのサービス ([Zapier](https://zapier.com) や [IFTTT](https://ifttt.com/) など) を使用する場合は、プログラムによって検証コードに応答できません。 2018-05-01-preview バージョン以降では、手動の検証ハンドシェイクが EventGrid によってサポートされるようになりました。 API バージョン 2018-05-01-preview 以降を使用する SDK またはツールでイベント サブスクリプションを作成すると、EventGrid によって、サブスクリプション検証イベントのデータ部分の一部として `validationUrl` プロパティが送信されます。 ハンドシェイクを完了するには、REST クライアントまたは Web ブラウザーを使用して、その URL に対して GET 要求を実行します。 提供された検証 URL は、約 10 分間だけ有効です。 この期間、イベント サブスクリプションのプロビジョニング状態は `AwaitingManualAction` になります。 手動による検証を 10 分以内に完了しなかった場合、プロビジョニング状態には `Failed` が設定されます。 手動による検証を始める前に、もう一度イベント サブスクリプションを作成する必要があります。
 
 この手動の検証のメカニズムはプレビュー段階です。 使用するには、[Azure CLI](/cli/azure/install-azure-cli) 向けの [Event Grid 拡張機能](/cli/azure/azure-cli-extensions-list)をインストールする必要があります。 `az extension add --name eventgrid` でインストールできます。 REST API を使用している場合は、`api-version=2018-05-01-preview` を使用していることを確認してください。
 
@@ -93,7 +93,7 @@ SubscriptionValidationEvent の例を以下に示します。
 
 ### <a name="event-delivery-security"></a>イベント配信のセキュリティ
 
-イベント サブスクリプションを作成するときに、webhook URL にクエリ パラメーターを追加することで、webhook エンドポイントをセキュリティで保護できます。 これらのクエリ パラメーターのいずれかを、[アクセス トークン](https://en.wikipedia.org/wiki/Access_token)などのシークレットとして設定します。webhook は、これを使用して、イベントが有効なアクセス許可を持つ Event Grid からのものであることを が認識できます。 Event Grid には、webhook へのすべてのイベント配信にこれらのクエリ パラメーターが含められます。
+イベント サブスクリプションを作成するときに、webhook URL にクエリ パラメーターを追加することで、webhook エンドポイントをセキュリティで保護できます。 これらのクエリ パラメーターのいずれかを、[アクセス トークン](https://en.wikipedia.org/wiki/Access_token)などのシークレットに設定します。 Event Grid から有効なアクセス許可を持つイベントが来ていることを認識するために、webhook が利用できます。 Event Grid には、webhook へのすべてのイベント配信にこれらのクエリ パラメーターが含められます。
 
 イベント サブスクリプションを編集すると、Azure [CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) で [--include-full-endpoint-url](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-show) パラメーターを使用した場合を除き、クエリ パラメーターが表示されなくなるか、返されなくなります。
 
@@ -174,11 +174,11 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ## <a name="management-access-control"></a>管理アクセス制御
 
-Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な管理操作を実行する各ユーザーに付与するアクセス レベルを制御できます。 Event Grid は、Azure のロール ベースのアクセス確認 (RBAC) を使います。
+Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な管理操作を実行する各ユーザーに付与するアクセス レベルを制御できます。 Event Grid は、Azure のロール ベースのアクセス制御 (RBAC) を使います。
 
 ### <a name="operation-types"></a>操作の種類
 
-Azure Event Grid では、次の操作がサポートされています。
+Event Grid では、以下の操作がサポートされています。
 
 * Microsoft.EventGrid/*/read
 * Microsoft.EventGrid/*/write
@@ -187,13 +187,17 @@ Azure Event Grid では、次の操作がサポートされています。
 * Microsoft.EventGrid/topics/listKeys/action
 * Microsoft.EventGrid/topics/regenerateKey/action
 
-最後の 3 つの操作は秘密情報を返す可能性がありますが、この情報は通常の読み取り操作からはフィルターで除外されます。 このような操作へのアクセスは制限することをお勧めします。 カスタム ロールは、[Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)、[Azure コマンド ライン インターフェイス (CLI)](../role-based-access-control/role-assignments-cli.md)、および [REST API](../role-based-access-control/role-assignments-rest.md) で作成することができます。
+最後の 3 つの操作は秘密情報を返す可能性がありますが、この情報は通常の読み取り操作からはフィルターで除外されます。 このような操作へのアクセスは制限することをお勧めします。 
 
-### <a name="enforcing-role-based-access-check-rbac"></a>ロール ベースのアクセス確認 (RBAC) の適用
+### <a name="built-in-roles"></a>組み込みのロール
 
-次の手順を使用して、ユーザーごとに RBAC を適用します。
+Event Grid には、イベント サブスクリプションを管理するための組み込みロールが 2 つ用意されています。 `EventSubscription Contributor (Preview)` と `EventSubscription Reader (Preview)` がそのロールです。 これらは、イベント ドメインを実装する場合に重要です。 許可される操作の詳細については、[アクセス管理におけるイベント ドメイン](event-domains.md#access-management)についてページを参照してください。
 
-#### <a name="create-a-custom-role-definition-file-json"></a>カスタム ロールの定義ファイル (.json) を作成する
+[これらのロールはユーザーまたはグループに割り当てる](../role-based-access-control/quickstart-assign-role-user-portal.md)ことができます。
+
+### <a name="custom-roles"></a>カスタム ロール
+
+組み込みロールとは異なるアクセス許可を指定する必要がある場合は、カスタム ロールを作成できます。
 
 さまざまなアクションの実行をユーザーに許可する Event Grid ロール定義の例を以下に示します。
 
@@ -201,18 +205,18 @@ Azure Event Grid では、次の操作がサポートされています。
 
 ```json
 {
-  "Name": "Event grid read only role",
-  "Id": "7C0B6B59-A278-4B62-BA19-411B70753856",
-  "IsCustom": true,
-  "Description": "Event grid read only role",
-  "Actions": [
-    "Microsoft.EventGrid/*/read"
-  ],
-  "NotActions": [
-  ],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription Id>"
-  ]
+  "Name": "Event grid read only role",
+  "Id": "7C0B6B59-A278-4B62-BA19-411B70753856",
+  "IsCustom": true,
+  "Description": "Event grid read only role",
+  "Actions": [
+    "Microsoft.EventGrid/*/read"
+  ],
+  "NotActions": [
+  ],
+  "AssignableScopes": [
+    "/subscriptions/<Subscription Id>"
+  ]
 }
 ```
 
@@ -220,22 +224,22 @@ Azure Event Grid では、次の操作がサポートされています。
 
 ```json
 {
-  "Name": "Event grid No Delete Listkeys role",
-  "Id": "B9170838-5F9D-4103-A1DE-60496F7C9174",
-  "IsCustom": true,
-  "Description": "Event grid No Delete Listkeys role",
-  "Actions": [
-    "Microsoft.EventGrid/*/write",
-    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
-    "Microsoft.EventGrid/topics/listkeys/action",
-    "Microsoft.EventGrid/topics/regenerateKey/action"
-  ],
-  "NotActions": [
-    "Microsoft.EventGrid/*/delete"
-  ],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription id>"
-  ]
+  "Name": "Event grid No Delete Listkeys role",
+  "Id": "B9170838-5F9D-4103-A1DE-60496F7C9174",
+  "IsCustom": true,
+  "Description": "Event grid No Delete Listkeys role",
+  "Actions": [
+    "Microsoft.EventGrid/*/write",
+    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
+    "Microsoft.EventGrid/topics/listkeys/action",
+    "Microsoft.EventGrid/topics/regenerateKey/action"
+  ],
+  "NotActions": [
+    "Microsoft.EventGrid/*/delete"
+  ],
+  "AssignableScopes": [
+    "/subscriptions/<Subscription id>"
+  ]
 }
 ```
 
@@ -243,37 +247,25 @@ Azure Event Grid では、次の操作がサポートされています。
 
 ```json
 {
-  "Name": "Event grid contributor role",
-  "Id": "4BA6FB33-2955-491B-A74F-53C9126C9514",
-  "IsCustom": true,
-  "Description": "Event grid contributor role",
-  "Actions": [
-    "Microsoft.EventGrid/*/write",
-    "Microsoft.EventGrid/*/delete",
-    "Microsoft.EventGrid/topics/listkeys/action",
-    "Microsoft.EventGrid/topics/regenerateKey/action",
-    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
-  ],
-  "NotActions": [],
-  "AssignableScopes": [
-    "/subscriptions/<Subscription id>"
-  ]
+  "Name": "Event grid contributor role",
+  "Id": "4BA6FB33-2955-491B-A74F-53C9126C9514",
+  "IsCustom": true,
+  "Description": "Event grid contributor role",
+  "Actions": [
+    "Microsoft.EventGrid/*/write",
+    "Microsoft.EventGrid/*/delete",
+    "Microsoft.EventGrid/topics/listkeys/action",
+    "Microsoft.EventGrid/topics/regenerateKey/action",
+    "Microsoft.EventGrid/eventSubscriptions/getFullUrl/action"
+  ],
+  "NotActions": [],
+  "AssignableScopes": [
+    "/subscriptions/<Subscription id>"
+  ]
 }
 ```
 
-#### <a name="create-and-assign-custom-role-with-azure-cli"></a>Azure CLI によるカスタム ロールの作成および割り当て
-
-カスタム ロールを作成するには、次のコマンドを使用します。
-
-```azurecli
-az role definition create --role-definition @<file path>
-```
-
-ロールをユーザーに割り当てるには、次のコマンドを使用します。
-
-```azurecli
-az role assignment create --assignee <user name> --role "<name of role>"
-```
+カスタム ロールは、[PowerShell](../role-based-access-control/custom-roles-powershell.md)、[Azure CLI](../role-based-access-control/custom-roles-cli.md)、[REST API](../role-based-access-control/custom-roles-rest.md) で作成できます。
 
 ## <a name="next-steps"></a>次の手順
 

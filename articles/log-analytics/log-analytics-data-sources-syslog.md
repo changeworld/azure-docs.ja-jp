@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: magoedte
 ms.component: ''
-ms.openlocfilehash: 3b1724853b4c874a1482a13c4de0ccb179f52f98
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 132935371a1b4f52892ae2fb956407079906e79a
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041105"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004904"
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Log Analytics の Syslog データ ソース
 Syslog は、Linux に共通のイベント ログ プロトコルです。  アプリケーションは、ローカル コンピューターへの保存または Syslog コレクターへの配信が可能なメッセージを送信します。  OMS Agent for Linux がインストールされている場合は、エージェントにメッセージを転送するローカル Syslog デーモンが構成されます。  エージェントは Log Analytics にメッセージを送信し、そこで対応するレコードが OMS リポジトリに作成されます。  
@@ -45,7 +45,7 @@ OMS Agent for Linux は、構成で指定されているファシリティと重
 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  各 Linux エージェントで Syslog を手動で構成する場合は、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]* チェック ボックスをオフにします。
 
 ### <a name="configure-syslog-on-linux-agent"></a>Linux エージェントでの Syslog の構成
-[Linux クライアントに OMS エージェントがインストールされている](log-analytics-linux-agents.md)場合は、収集されるメッセージのファシリティと重大度を定義する既定の syslog 構成ファイルがインストールされます。  このファイルを修正して、構成を変更することができます。  クライアントにインストールされている Syslog デーモンによって、構成ファイルは異なります。
+[Linux クライアントに OMS エージェントがインストールされている](log-analytics-quick-collect-linux-computer.md)場合は、収集されるメッセージのファシリティと重大度を定義する既定の syslog 構成ファイルがインストールされます。  このファイルを修正して、構成を変更することができます。  クライアントにインストールされている Syslog デーモンによって、構成ファイルは異なります。
 
 > [!NOTE]
 > syslog 構成を編集した場合、変更を有効にするには、syslog デーモンを再起動する必要があります。
@@ -207,6 +207,6 @@ Syslog レコードの型は **Syslog** になり、次の表に示すプロパ�
 | Syslog &#124; summarize AggregatedValue = count() by Facility |ファシリティごとの Syslog レコードの数です。 |
 
 ## <a name="next-steps"></a>次の手順
-* [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。
+* [ログ検索](log-analytics-queries.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。
 * [カスタム フィールド](log-analytics-custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
-* [Linux エージェントを構成](log-analytics-linux-agents.md) して、他の種類のデータを収集します。
+* [Linux エージェントを構成](log-analytics-quick-collect-linux-computer.md) して、他の種類のデータを収集します。

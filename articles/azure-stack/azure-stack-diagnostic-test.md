@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 10/31/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 4f95fb5f2199e8c276b78a83391f3814303a9470
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 0720edeab7577f41ddbaa67e4643f1dfe57ebac0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024621"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740316"
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Azure Stack の検証テストを実行する
 
@@ -39,7 +39,7 @@ Azure Stack の状態を検証できます。 問題が発生している場合�
     3. PowerShell を管理者として開きます。
     4. 次のコマンドを実行します: `Enter-PSSession -ComputerName <ERCS-VM-name> -ConfigurationName PrivilegedEndpoint`
     5. 次のコマンドを実行します: `Test-AzureStack`
-4. どのテストも失敗を報告する場合は、`Get-AzureStackLog -FilterByRole SeedRing -OutputPath <Log output path>` を実行します。このコマンドレットは、Test-AzureStack からログを収集します。 診断ログの詳細については、「[Azure Stack diagnostics tools (Azure Stack 診断ツール)](azure-stack-diagnostics.md)」を参照してください。 テストで警告が報告された場合、ログを収集したり、Microsoft カスタマー サービス サポート (CSS) に連絡したりすることはしないでください。
+4. どのテストでも **FAIL** が報告される場合は、`Get-AzureStackLog -FilterByRole SeedRing -OutputSharePath “<path>” -OutputShareCredential $cred` を実行します。このコマンドレットは、Test-AzureStack からログを収集します。 診断ログの詳細については、「[Azure Stack diagnostics tools (Azure Stack 診断ツール)](azure-stack-diagnostics.md)」を参照してください。 テストで **WARN** が報告される場合、ログの収集や、Microsoft カスタマー サービス サポート (CSS) への連絡はしないでください。
 5. **SeedRing** ログを Microsoft カスタマー サービス サポートに送信します。 Microsoft カスタマー サービス サポートは、ユーザーと協力して問題を解決します。
 
 ## <a name="reference-for-test-azurestack"></a>Test-AzureStack のリファレンス

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: 551bc2aa4ff80feb3f28b5698e25dfd1b03dc870
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 431ca75a653b93342b61a9b39dc42a93270519f1
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34607339"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228523"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Backup コンテナーを Recovery Services コンテナーにアップグレードする
 
@@ -30,8 +30,7 @@ Backup コンテナーを Recovery Services コンテナーにアップグレー
 ## <a name="changes-to-your-automation-and-tool-after-upgrading"></a>アップグレード後のオートメーションおよびツールの変更
 
 コンテナーをアップグレードするためにインフラストラクチャーを準備するときに、既存のオートメーションまたはツールがアップグレード後も引き続き動作できるように、それらをアップグレードする必要があります。
-
-  [Resource Manager デプロイ モデル](backup-client-automation.md)用の PowerShell コマンドレット リファレンスを参照してください。
+[Resource Manager デプロイ モデル](backup-client-automation.md)用の PowerShell コマンドレット リファレンスを参照してください。
 
 
 ## <a name="before-you-upgrade"></a>アップグレードする前に
@@ -81,7 +80,7 @@ PowerShell スクリプトによって、資格情報を入力することを求
 ### <a name="pre-requisites-checking"></a>前提条件のチェック
 Azure の資格情報を入力すると、Azure によって、環境が次の前提条件を満たしていることがチェックされます。
 
-- **エージェントの最小バージョン** - バックアップ コンテナーを Recovery Services コンテナーにアップグレードするには、MARS エージェントのバージョンが少なくとも 2.0.9083.0 である必要があります。 2.0.9083.0 より前のエージェントを使用してバックアップ コンテナーに登録した項目がある場合、前提条件のチェックは失敗します。 前提条件のチェックが失敗した場合は、エージェントを更新し、コンテナーのアップグレードをやり直してください。 最新バージョンのエージェントは、[http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) からダウンロードできます。
+- **エージェントの最小バージョン** - バックアップ コンテナーを Recovery Services コンテナーにアップグレードするには、MARS エージェントのバージョンが少なくとも 2.0.9083.0 である必要があります。 2.0.9083.0 より前のエージェントを使用してバックアップ コンテナーに登録した項目がある場合、前提条件のチェックは失敗します。 前提条件のチェックが失敗した場合は、エージェントを更新し、コンテナーのアップグレードをやり直してください。 最新バージョンのエージェントは、[http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe) からダウンロードできます。
 - **進行中の構成ジョブ**: アップグレードするように設定した Backup コンテナーに対するジョブの構成または項目の登録が進行中の場合、前提条件のチェックは失敗します。 構成を完了するか、項目の登録を終了した後、コンテナーのアップグレード プロセスを開始してください。
 - **ストレージ ベースの課金モデル**: Recovery Services コンテナーは、インスタンス ベースの課金モデルをサポートします。 ストレージ ベースの課金モデルを使用している Backup コンテナーでコンテナーのアップグレードを実行した場合、コンテナーと共に課金モデルもアップグレードするよう求められます。 または、課金モデルを更新した後でコンテナーのアップグレードを実行できます。
 - Recovery Services コンテナーのリソース グループを識別します。 Resource Manager デプロイ機能を活用するには、Recovery Services コンテナーをリソース グループ内に配置する必要があります。 使用するリソース グループがわからない場合は、名前を指定すると、アップグレード プロセスによってリソース グループが作成されます。 さらに、アップグレード プロセスは、新しいリソース グループにコンテナーを関連付けます。

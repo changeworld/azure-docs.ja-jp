@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: caa8f1a10652c16e181c47fbbe4f9f0c815cfd67
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ab7689cb18dcd11926abc2e9806885b1072e3886
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983686"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50960176"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Azure 診断ログのアーカイブ
 
@@ -26,7 +26,7 @@ ms.locfileid: "46983686"
 
 ## <a name="prerequisites"></a>前提条件
 
-開始する前に、診断ログのアーカイブ先となる[ストレージ アカウントを作成する](../storage/storage-create-storage-account.md)必要があります。 既存のストレージ アカウントを使用しないことを強くお勧めします。既存のストレージ アカウントには、監視データへのアクセスをさらに制御するために保存されている他の非監視データがあります。 ただし、アクティビティ ログと診断メトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、診断ログのそのストレージ アカウントも使用するのが適切であることがあります。
+開始する前に、診断ログのアーカイブ先となる[ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md)必要があります。 既存のストレージ アカウントを使用しないことを強くお勧めします。既存のストレージ アカウントには、監視データへのアクセスをさらに制御するために保存されている他の非監視データがあります。 ただし、アクティビティ ログと診断メトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、診断ログのそのストレージ アカウントも使用するのが適切であることがあります。
 
 > [!NOTE]
 >  現在、セキュリティで保護された仮想ネットワークの背後にあるストレージ アカウントにデータをアーカイブすることはできません。
@@ -62,7 +62,7 @@ ms.locfileid: "46983686"
 
    ![診断設定の追加 - 既存の設定が存在する](media/monitoring-archive-diagnostic-logs/diagnostic-settings-configure.png)
 
-4. **[保存]** をクリックします。
+4. **[Save]** をクリックします。
 
 しばらくすると、このリソースの設定一覧に新しい設定が表示され、新しいイベント データが生成されるとすぐに、診断ログがそのストレージ アカウントにアーカイブされます。
 
@@ -74,10 +74,10 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 
 | プロパティ | 必須 | 説明 |
 | --- | --- | --- |
-| resourceId |はい |診断設定の対象となるリソースの ID。 |
+| resourceId |[はい] |診断設定の対象となるリソースの ID。 |
 | StorageAccountId |いいえ  |診断ログの保存先となるストレージ アカウントのリソース ID。 |
 | Categories |いいえ  |有効にするログ カテゴリのコンマ区切りのリスト。 |
-| Enabled |はい |このリソースに対する診断が有効であるか無効であるかを示すブール値。 |
+| Enabled |[はい] |このリソースに対する診断が有効であるか無効であるかを示すブール値。 |
 | RetentionEnabled |いいえ  |このリソースに対するリテンション期間ポリシーが有効であるか無効であるかを示すブール値。 |
 | RetentionInDays |いいえ  |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に保存されます。 |
 
@@ -151,9 +151,9 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 | 要素名 | 説明 |
 | --- | --- |
 | time |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
-| resourceId |影響を受けるリソースのリソース ID。 |
+| ResourceId |影響を受けるリソースのリソース ID。 |
 | operationName |操作の名前。 |
-| category |イベントのログ カテゴリ。 |
+| カテゴリ |イベントのログ カテゴリ。 |
 | properties |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
 
 > [!NOTE]
@@ -161,7 +161,7 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 
 ## <a name="next-steps"></a>次の手順
 
-* [分析のための BLOB のダウンロード](../storage/storage-dotnet-how-to-use-blobs.md)
+* [分析のための BLOB のダウンロード](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
 * [診断ログの Event Hubs 名前空間へのストリーミング](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Azure Monitor による Azure Active Directory ログのアーカイブ](../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [診断ログの詳細の参照](monitoring-overview-of-diagnostic-logs.md)

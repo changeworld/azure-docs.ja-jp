@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 19f066bea9de580cf1245aec74fbe563bf8ba449
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d178041a420c49480c6043869f139eb3a09c91fd
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996555"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959275"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Azure 診断ログをイベント ハブにストリーミングする
 **[Azure 診断ログ](monitoring-overview-of-diagnostic-logs.md)** は、ポータルに組み込まれた [Event Hubs にエクスポート] オプションを使用するか、Azure PowerShell コマンドレットまたは Azure CLI を使用して診断設定でイベント ハブ承認規則 ID を有効にすることによって、任意のアプリケーションにほぼリアルタイムでストリーミングできます。
@@ -44,7 +44,7 @@ ms.locfileid: "46996555"
 診断ログのストリーミングは、プログラム、ポータル、または [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) を使用して有効にすることができます。 どの方法でも、Event Hubs 名前空間と、名前空間に送信するログ カテゴリおよびメトリックを指定する診断設定を作成します。 有効にしたログ カテゴリごとにイベント ハブがその名前空間に作成されます。 診断**ログ カテゴリ**とは、リソースで収集できるログの種類です。
 
 > [!WARNING]
-> コンピューティング リソース (VM や Service Fabric など) の診断ログを有効にし、ストリーミングするには、 [別の手順が必要](../event-hubs/event-hubs-streaming-azure-diags-data.md)となります。
+> コンピューティング リソース (VM や Service Fabric など) の診断ログを有効にし、ストリーミングするには、 [別の手順が必要](azure-diagnostics-streaming-event-hubs.md)となります。
 
 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っており、さらに両方のサブスクリプションが同じ AAD テナントに含まれている限り、Event Hubs 名前空間は、ログを出力するリソースと同じサブスクリプションに属している必要はありません。
 
@@ -77,7 +77,7 @@ ms.locfileid: "46996555"
 
    診断ログを初めてストリーミングする場合は、選択した名前空間にイベント ハブが作成されます。そのログ カテゴリを選択した名前空間にストリーミングするリソースが既に存在する場合は、その名前空間にイベント ハブがストリーミングされます。また、ストリーミング メカニズムで使用するアクセス許可をポリシーで定義します。 現在、イベント ハブにストリーミングするには、管理、送信、リッスンの各アクセス許可が必要です。 Event Hubs 名前空間の共有アクセス ポリシーは、ポータルの名前空間の [構成] タブで作成または変更できます。 これらの診断設定のいずれかを更新するには、クライアントに Event Hubs の承認規則に対する ListKey アクセス許可が必要です。 また、必要に応じて、イベント ハブの名前を指定できます。 イベント ハブの名前を指定した場合、ログは、新しく作成されたログ カテゴリごとのイベント ハブではなく、名前を指定したイベント ハブにルーティングされます。
 
-4. **[保存]** をクリックします。
+4. **[Save]** をクリックします。
 
 しばらくすると、このリソースの設定一覧に新しい設定が表示され、新しいイベント データが生成されるとすぐに、診断ログがそのイベント ハブにストリーミングされます。
 
@@ -191,10 +191,10 @@ Event Hubs へのストリーミングをサポートするすべてのリソー
 
 ## <a name="stream-data-from-compute-resources"></a>Compute リソースからのデータのストリーミング
 
-診断ログは、Windows Azure 診断エージェントを使用して Compute リソースからストリーミングすることもできます。 その設定方法については、[この記事を参照してください](../event-hubs/event-hubs-streaming-azure-diags-data.md)。
+診断ログは、Windows Azure 診断エージェントを使用して Compute リソースからストリーミングすることもできます。 その設定方法については、[この記事を参照してください](azure-diagnostics-streaming-event-hubs.md)。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Monitor による Azure Active Directory ログのストリーム](../active-directory/reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md)
+* [Azure Monitor による Azure Active Directory ログのストリーム](../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md)
 * [Azure 診断ログの詳細を確認する](monitoring-overview-of-diagnostic-logs.md)
-* [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+* [Event Hubs の使用](../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)

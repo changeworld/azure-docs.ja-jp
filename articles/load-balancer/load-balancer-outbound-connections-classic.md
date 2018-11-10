@@ -4,9 +4,6 @@ description: この記事では、Azure によって、パブリック インタ
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: bd446923f84d22537b7a49a8ef6124f343141d73
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 5cb0647148d2cd90ad4cce6e16de30b72fff8429
+ms.sourcegitcommit: 1b186301dacfe6ad4aa028cfcd2975f35566d756
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39069912"
+ms.lasthandoff: 11/06/2018
+ms.locfileid: "51219666"
 ---
 # <a name="outbound-connections-classic"></a>送信接続 (クラシック)
 

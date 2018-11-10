@@ -4,93 +4,39 @@ description: mongoimport と mongorestore を使用して、MongoDB 用 API ア�
 keywords: mongoimport, mongorestore
 services: cosmos-db
 author: SnehaGunda
-manager: slyons
 ms.service: cosmos-db
 ms.component: cosmosdb-mongo
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/07/2018
-ms.author: sclyon
+ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 56d885fa4a52c907ef2b7eab10899191a1ac3acd
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: d3a7ddcd4a95660264bdf9609f54af39a05c97b3
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248525"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741030"
 ---
-# <a name="migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>Azure Cosmos DB MongoDB API アカウントにデータを移行する
+# <a name="tutorial-migrate-your-data-to-azure-cosmos-db-mongodb-api-account"></a>チュートリアル: Azure Cosmos DB MongoDB API アカウントにデータを移行する
 
-MongoDB 用 API で使用するために MongoDB から Azure Cosmos DB アカウントにデータを移行するには、次の操作を行う必要があります。
-
-* [MongoDB Download Center](https://www.mongodb.com/download-center) からコミュニティ サーバーをダウンロードしてインストールします。
-* "installation folder/bin" ディレクトリにインストールされる mongoimport.exe または mongorestore.exe を使用します。 
-* [MongoDB 用 API 接続文字列](connect-mongodb-account.md)を取得します。
-
-MongoDB からデータをインポートしており、Azure Cosmos DB SQL API でそれを使用する予定がある場合は、[データ移行ツール](import-data.md)を使用してデータをインポートする必要があります。
+このチュートリアルでは、MongoDB に格納されているデータを Azure Cosmos DB MongoDB API アカウントに移行する方法を説明します。 MongoDB からデータをインポートしており、Azure Cosmos DB SQL API でそれを使用する予定がある場合は、[データ移行ツール](import-data.md)を使用してデータをインポートする必要があります。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
-> * 接続文字列の取得
-> * mongoimport を使用した MongoDB データのインポート
-> * mongorestore を使用した MongoDB データのインポート
+> * 移行の計画
+> * 移行の前提条件
+> * mongoimport を使用してデータを移行する
+> * mongorestore を使用してデータを移行する
 
-## <a name="prerequisites"></a>前提条件
+データを MongoDB API アカウントに移行する前に、サンプルの MongoDB データがあることを確認してください。 サンプルの MongoDB データベースがない場合は、[MongoDB コミュニティ サーバー](https://www.mongodb.com/download-center)をダウンロードしてインストールし、サンプル データベースを作成して、mongoimport.exe または mongorestore.exe を使用してサンプル データをアップロードできます。 
 
-* **スループットを上げる**: データの移行にかかる時間は、個別のコレクションまたは一連のコレクションに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 [Azure Portal](https://portal.azure.com) でスループットを上げることの詳細については、[Azure Cosmos DB のパフォーマンス レベルと価格レベル](performance-levels.md)に関するページを参照してください。
-
-* **SSL を有効にする:** Azure Cosmos DB には、厳密なセキュリティ要件と基準が存在します。 アカウントを操作するときは、SSL が有効になっていることを確認してください。 この記事で説明する手順の中に、mongoimport と mongorestore で SSL を有効にする方法が含まれています。
-
-* **Azure Cosmos DB リソースを作成する:** データの移行を開始する前に、Azure portal のすべてのコレクションを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行しようとしている場合は、Azure Cosmos DB コレクションの作成時に必ずパーティション キーを提供するようにしてください。
-
-## <a name="get-your-connection-string"></a>接続文字列を取得する 
-
-1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**[Azure Cosmos DB]** エントリをクリックします。
-1. **[サブスクリプション]** ウィンドウで、自分のアカウント名を選択します。
-1. **[接続文字列]** ブレードで、**[接続文字列]** をクリックします。
-
-   右側のウィンドウに、自分のアカウントに正常に接続するために必要なすべての情報が表示されます。
-
-   ![[接続文字列] ブレード](./media/mongodb-migrate/ConnectionStringBlade.png)
-
-## <a name="migrate-data-by-using-mongoimport"></a>mongoimport を使用してデータを移行する
-
-Azure Cosmos DB アカウントにデータをインポートするには、次のテンプレートを使用します。 *ホスト*、*ユーザー名*および*パスワード*には、自分のアカウントに固有の値を入力します。  
-
-テンプレート:
-
-```bash
-    mongoimport.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates --type json --file "C:\sample.json"
-```
-
-例:  
-
-```bash
-    mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file "C:\Users\admin\Desktop\*.json"
-```
-
-## <a name="migrate-data-by-using-mongorestore"></a>mongorestore を使用してデータを移行する
-
-MongoDB 用 API アカウントにデータを復元するには、次のテンプレートを使用してインポートを実行します。 *ホスト*、*ユーザー名*および*パスワード*には、自分のアカウントに固有の値を入力します。
-
-テンプレート:
-
-```bash
-    mongorestore.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates <path_to_backup>
-```
-
-例:
-
-```bash
-    mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p tkvaVkp4Nnaoirnouenrgisuner2435qwefBH0z256Na24frio34LNQasfaefarfernoimczciqisAXw== --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
-```
-    
-## <a name="steps-for-a-successful-migration"></a>移行を成功させるための手順
+## <a name="plan-for-migration"></a>移行の計画
 
 1. コレクションを事前に作成し、拡大縮小します。
         
-    * 既定では、Azure Cosmos DB は、毎秒 1,000 要求ユニット (RU/秒) で新しい MongoDB コレクションをプロビジョニングします。 mongoimport または mongorestore を使用して移行を開始する前に、[Azure portal](https://portal.azure.com) または MongoDB ドライバーとツールから、すべてのコレクションを事前に作成します。 データのサイズが 10 GB を超える場合は、適切なシャード キーを使用して[シャード/パーティション コレクション](partition-data.md)を作成します。
+    * 既定では、Azure Cosmos DB は、毎秒 1,000 要求ユニット (RU/秒) で新しい MongoDB コレクションをプロビジョニングします。 mongoimport または mongorestore を使用して移行を開始する前に、[Azure portal](https://portal.azure.com) または MongoDB ドライバーとツールから、すべてのコレクションを事前に作成します。 データのサイズが 10 GB を超える場合は、適切なシャード キーを使用して[パーティション分割コレクション](partition-data.md)を作成します。
 
     * [Azure portal](https://portal.azure.com) で、コレクションのスループットを 1,000 RU/秒 (単一パーティションのコレクションの場合) または 2,500 RU/秒 (移行のためだけにシャード化されたコレクションの場合) から引き上げます。 スループットが高くなるほど、レート制限を回避し、移行に要する時間を短縮できます。 移行直後にスループットを低くすることでコストを削減できます。
 
@@ -143,9 +89,9 @@ MongoDB 用 API アカウントにデータを復元するには、次のテン�
     
     b. ```db.coll.find().limit(1)``` を使用して、データベースに対して単純なクエリを実行します。 次のような応答が返されます。
 
-        ```
-        Fetched 1 record(s) in 100(ms)
-        ```
+       ```bash
+       Fetched 1 record(s) in 100(ms)
+       ```
         
 1. 移行前に挿入したドキュメントを削除して、重複するドキュメントがないことを確認します。 ドキュメントを削除するには、```db.coll.remove({})``` コマンドを使用します。
 
@@ -169,16 +115,66 @@ MongoDB 用 API アカウントにデータを復元するには、次のテン�
     
     *numInsertionWorkers = (10,000 RU x 0.1) / (24 x 10 RU) = 4.1666*
 
-1. 最後の移行コマンドを実行します。
+1. 移行コマンドを実行します。 データを移行するオプションについては、以降のセクションで説明します。
 
    ```bash
-   mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
+   mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates --jsonArray --db dabasename --collection collectionName --file "C:\sample.json" --numInsertionWorkers 4 --batchSize 24
    ```
-   または mongorestore で (すべてのコレクションが、前の計算で使用された RU 量以上のスループットに設定されます):
+   または mongorestore で実行します (すべてのコレクションで、スループットが前の計算で使用された RU の数値以上に設定されていることを確認します):
    
    ```bash
-   mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p wzRJCyjtLPNuhm53yTwaefawuiefhbauwebhfuabweifbiauweb2YVdl2ZFNZNv8IU89LqFVm5U0bw== --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07 --numInsertionWorkersPerCollection 4 --batchSize 24
+   mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07 --numInsertionWorkersPerCollection 4 --batchSize 24
    ```
+
+## <a name="prerequisites-for-migration"></a>移行の前提条件
+
+* **スループットを上げる**: データの移行にかかる時間は、個別のコレクションまたは一連のコレクションに対して設定したスループットの量に依存します。 大規模なデータ移行では、スループットが上がっていることを確認します。 移行が完了したら、コストを節約するためにスループットを下げます。 [Azure Portal](https://portal.azure.com) でスループットを上げることの詳細については、[Azure Cosmos DB のパフォーマンス レベルと価格レベル](performance-levels.md)に関するページを参照してください。
+
+* **SSL を有効にする:** Azure Cosmos DB には、厳密なセキュリティ要件と基準が存在します。 アカウントを操作するときは、SSL が有効になっていることを確認してください。 この記事で説明する手順の中に、mongoimport と mongorestore で SSL を有効にする方法が含まれています。
+
+* **Azure Cosmos DB リソースを作成する:** データの移行を開始する前に、Azure portal のすべてのコレクションを事前に作成します。 データベース レベルのスループットがある Azure Cosmos DB アカウントに移行しようとしている場合は、Azure Cosmos DB コレクションの作成時に必ずパーティション キーを提供するようにしてください。
+
+## <a name="get-your-connection-string"></a>接続文字列を取得する 
+
+1. [Azure Portal](https://portal.azure.com) の左側のウィンドウで、**[Azure Cosmos DB]** エントリをクリックします。
+1. **[サブスクリプション]** ウィンドウで、自分のアカウント名を選択します。
+1. **[接続文字列]** ブレードで、**[接続文字列]** をクリックします。
+
+   右側のウィンドウに、自分のアカウントに正常に接続するために必要なすべての情報が表示されます。
+
+   ![[接続文字列] ブレード](./media/mongodb-migrate/ConnectionStringBlade.png)
+
+## <a name="migrate-data-by-using-mongoimport"></a>mongoimport を使用してデータを移行する
+
+Azure Cosmos DB アカウントにデータをインポートするには、次のテンプレートを使用します。 *ホスト*、*ユーザー名*および*パスワード*には、自分のアカウントに固有の値を入力します。  
+
+テンプレート:
+
+```bash
+mongoimport.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates --type json --file "C:\sample.json"
+```
+
+例:  
+
+```bash
+mongoimport.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates --db sampleDB --collection sampleColl --type json --file "C:\Users\admin\Desktop\*.json"
+```
+
+## <a name="migrate-data-by-using-mongorestore"></a>mongorestore を使用してデータを移行する
+
+MongoDB 用 API アカウントにデータを復元するには、次のテンプレートを使用してインポートを実行します。 *ホスト*、*ユーザー名*および*パスワード*には、自分のアカウントに固有の値を入力します。
+
+テンプレート:
+
+```bash
+mongorestore.exe --host <your_hostname>:10255 -u <your_username> -p <your_password> --db <your_database> --collection <your_collection> --ssl --sslAllowInvalidCertificates <path_to_backup>
+```
+
+例:
+
+```bash
+mongorestore.exe --host cosmosdb-mongodb-account.documents.azure.com:10255 -u cosmosdb-mongodb-account -p <Your_MongoDB_password> --ssl --sslAllowInvalidCertificates ./dumps/dump-2016-12-07
+```
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/22/2017
 ms.author: mikeray
-ms.openlocfilehash: b4641c847db817df905f056847a26d003ac25fd1
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: ee7b403c2ebdc590bd428eff880769ae83632585
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43381797"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228217"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>1 つ以上の AlwaysOn 可用性グループ リスナーの構成 - Resource Manager
 このトピックでは、以下のことを行う方法を示します。
@@ -41,7 +41,7 @@ ms.locfileid: "43381797"
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
 ## <a name="configure-the-windows-firewall"></a>Windows ファイアウォールの構成
-SQL Server のアクセスを許可するように Windows ファイアウォールを構成します。 ファイアウォール規則では、SQL Server インスタンスによって使用されるポートとリスナー プローブによって使用されるポートへの TCP 接続を許可します。 詳細については、「[データベース エンジン アクセスを有効にするための Windows ファイアウォールを構成する](http://msdn.microsoft.com/library/ms175043.aspx#Anchor_1)」をご覧ください。 SQL Server のポートとプローブ ポート用の受信規則を作成します。
+SQL Server のアクセスを許可するように Windows ファイアウォールを構成します。 ファイアウォール規則では、SQL Server インスタンスによって使用されるポートとリスナー プローブによって使用されるポートへの TCP 接続を許可します。 詳細については、「[データベース エンジン アクセスを有効にするための Windows ファイアウォールを構成する](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1)」をご覧ください。 SQL Server のポートとプローブ ポート用の受信規則を作成します。
 
 Azure ネットワーク セキュリティ グループを使用してアクセスを制限する場合は、バックエンド SQL Server VM の IP アドレス、AG リスナーのロード バランサー フローティング IP アドレス、および該当する場合はクラスター コア IP アドレスが許可ルールに含まれていることを確認します。
 
@@ -110,7 +110,7 @@ foreach($VMName in $VMNames)
 > SQL Server 可用性グループの場合は、各 IP アドレスに特定のプローブ ポートが必要です。 たとえば、ロード バランサー上の 1 つの IP アドレスでプローブ ポート 59999 が使用されている場合、そのロード バランサー上の他の IP アドレスではプローブ ポート 59999 を使用できません。
 
 * ロード バランサーの制限については、「**ネットワークの制限 - Azure Resource Manager**」にある「[ロード バランサーごとのプライベート フロント エンド IP](../../../azure-subscription-service-limits.md#azure-resource-manager-virtual-networking-limits)」をご覧ください。
-* 可用性グループの制限については、「[制限 (可用性グループ)](http://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG)」をご覧ください。
+* 可用性グループの制限については、「[制限 (可用性グループ)](https://msdn.microsoft.com/library/ff878487.aspx#RestrictionsAG)」をご覧ください。
 
 次のスクリプトは、既存のロード バランサーに新しい IP アドレスを追加します。 ILB では、負荷分散フロントエンド ポート用のリスナー ポートが使用されます。 このポートには、SQL Server がリッスンしているポートを使用できます。 SQL Server の既定のインスタンスでは、このポートは 1433 です。 バックエンド ポートがフロントエンド ポートと同じになるように、可用性グループの負荷分散規則ではフローティング IP (Direct Server Return) が必要です。 環境に合わせて変数を更新してください。 
 
@@ -188,7 +188,7 @@ $ILB | Add-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConf
 SQLCMD 接続では、プライマリ レプリカをホストしている SQL Server インスタンスに対して自動的に接続されます。 
 
 > [!NOTE]
-> 指定したポートは、両方の SQL Server のファイアウォールで必ず開放してください。 使用する TCP ポートに対する入力方向の規則が両方のサーバーに必要となります。 詳細については、「 [ファイアウォール規則を追加または編集する](http://technet.microsoft.com/library/cc753558.aspx) 」を参照してください。 
+> 指定したポートは、両方の SQL Server のファイアウォールで必ず開放してください。 使用する TCP ポートに対する入力方向の規則が両方のサーバーに必要となります。 詳細については、「 [ファイアウォール規則を追加または編集する](https://technet.microsoft.com/library/cc753558.aspx) 」を参照してください。 
 > 
 > 
 
@@ -205,9 +205,9 @@ SQLCMD 接続では、プライマリ レプリカをホストしている SQL S
 ## <a name="powershell-cmdlets"></a>PowerShell コマンドレット
 Azure 仮想マシン用の内部ロード バランサーを作成するには、次の PowerShell コマンドレットを使用します。
 
-* [New-AzureRmLoadBalancer](http://msdn.microsoft.com/library/mt619450.aspx) は、ロード バランサーを作成します。 
-* [New-AzureRMLoadBalancerFrontendIpConfig](http://msdn.microsoft.com/library/mt603510.aspx) は、ロード バランサー用のフロントエンド IP 構成を作成します。 
-* [New-AzureRmLoadBalancerRuleConfig](http://msdn.microsoft.com/library/mt619391.aspx) は、ロード バランサー用の規則の構成を作成します。 
-* [New-AzureRmLoadBalancerBackendAddressPoolConfig](http://msdn.microsoft.com/library/mt603791.aspx) は、ロード バランサー用のバックエンド アドレス プールを作成します。 
-* [New-AzureRmLoadBalancerProbeConfig](http://msdn.microsoft.com/library/mt603847.aspx) は、ロード バランサー用のプローブの構成を作成します。
-* [Remove-AzureRmLoadBalancer](http://msdn.microsoft.com/library/mt603862.aspx) は、Azure リソース グループからロード バランサーを削除します。
+* [New-AzureRmLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) は、ロード バランサーを作成します。 
+* [New-AzureRMLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) は、ロード バランサー用のフロントエンド IP 構成を作成します。 
+* [New-AzureRmLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) は、ロード バランサー用の規則の構成を作成します。 
+* [New-AzureRmLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) は、ロード バランサー用のバックエンド アドレス プールを作成します。 
+* [New-AzureRmLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) は、ロード バランサー用のプローブの構成を作成します。
+* [Remove-AzureRmLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) は、Azure リソース グループからロード バランサーを削除します。

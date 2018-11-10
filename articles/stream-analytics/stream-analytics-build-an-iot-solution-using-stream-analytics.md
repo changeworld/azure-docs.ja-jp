@@ -3,18 +3,18 @@ title: Azure Stream Analytics を使って IoT ソリューションをビルド
 description: 料金所ブースを例に Stream Analytics を使った基本的な IoT ソリューションを紹介します。
 services: stream-analytics
 author: jasonwhowell
-ms.author: jasonh
+ms.author: mamccrea
 manager: kfile
 ms.reviewer: jasonh, sngun
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/21/2018
-ms.openlocfilehash: 88c58175f4886d4796ed4e32b41d030c9ee441fc
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: e70a1210d44e5bfec914006afaf18eff772cac47
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49986890"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978793"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 

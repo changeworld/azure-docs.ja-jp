@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 555bf95367ab0d3e6c4afe09edb6777899400dd8
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 66a2871e0c4b36959ccd8f08df5b6b7edd09f624
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344670"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227826"
 ---
 # <a name="asdk-administration-basics"></a>ASDK の管理の基本 
 Azure Stack Development Kit (ASDK) の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイダンスでは、評価環境での Azure Stack オペレーターとしての役割の概要と、テスト ユーザーの生産性を迅速に向上させる方法を示します。
@@ -43,7 +43,7 @@ Azure Stack を管理する場合に注意するいくつかのアカウント�
 ## <a name="what-tools-do-i-use-to-manage"></a>管理に使用するツールについて
 [Azure Stack 管理者ポータル](https://adminportal.local.azurestack.external)または PowerShell を使って Azure Stack を管理できます。 基本的概念を学ぶためには、ポータルを介するのが最も容易な方法です。 PowerShell を使う場合は、[PowerShell for Azure Stack](asdk-post-deploy.md#install-azure-stack-powershell) をインストールし、[GitHub から Azure Stack ツールをダウンロードする](asdk-post-deploy.md#download-the-azure-stack-tools)必要があります。
 
-Azure Stack はデプロイ、管理、整理のための基礎となるメカニズムとして、Azure Resource Manager を使用します。 Azure Stack の管理とユーザーのサポートを行う予定であれば、Azure Resource Manager について学習する必要があります。 詳しくは、「[Azure Resource Manager の概要](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)」ホワイトペーパーをご覧ください。
+Azure Stack はデプロイ、管理、整理のための基礎となるメカニズムとして、Azure Resource Manager を使用します。 Azure Stack の管理とユーザーのサポートを行う予定であれば、Azure Resource Manager について学習する必要があります。 詳しくは、「[Azure Resource Manager の概要](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)」ホワイトペーパーをご覧ください。
 
 ## <a name="your-typical-responsibilities"></a>クラウド オペレーターの通常の担当範囲
 ユーザーはサービスを使用する必要があります。 ユーザーの観点からは、クラウド オペレーターの主な役割は、ユーザーがこれらのサービスを使用できるようにすることです。 ASDK を使って、提供するサービスと、[プラン、オファー、クォータを作成する](asdk-offer-services.md)ことで、それらのサービスを使用できるようにする方法を確認できます。 仮想マシンのイメージなど、マーケットプレースに項目を追加する必要もあります。 Azure から Azure Stack に[マーケットプレースの項目をダウンロードする](asdk-marketplace-item.md)のが最も容易な方法です。

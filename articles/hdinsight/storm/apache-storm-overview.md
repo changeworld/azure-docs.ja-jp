@@ -2,20 +2,20 @@
 title: Apache Storm とは - Azure HDInsight
 description: Apache Storm を利用すると、データ ストリームをリアルタイムで処理できます。 Azure HDInsight を利用すると、Azure クラウド上に Storm クラスターを簡単に作成できます。 Visual Studio では、C# を使用して Storm ソリューションを作成し、それを HDInsight Storm クラスターにデプロイできます。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 keywords: Apache Storm のユース ケース,Storm クラスター,Apache Storm とは
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.author: jasonh
-ms.openlocfilehash: 353ab846c576a9b133cf640bbc856ec6eddf73f4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.author: hrasheed
+ms.openlocfilehash: 034e3cfddee8cd6b51193e16ba0972d7f7595832
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982900"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005912"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Azure HDInsight での Apache Storm とは
 
@@ -100,7 +100,7 @@ HDInsight 上に新しい Storm クラスターを数分で作成できます。
 
     * [HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (C#)](apache-storm-develop-csharp-event-hub-topology.md)
 
-* __SQL Database__、__Cosmos DB__、__Event Hubs__、__HBase__: Data Lake Tools for Visual Studio にテンプレート例が含まれています。 詳細については、[HDInsight の Storm 向けの C# トポロジの開発](apache-storm-develop-csharp-visual-studio-topology.md)に関する記事を参照してください。
+* __SQL Database____Cosmos DB__、__Event Hubs__、__HBase__: Data Lake Tools for Visual Studio にテンプレート例が含まれています。 詳細については、[HDInsight の Storm 向けの C# トポロジの開発](apache-storm-develop-csharp-visual-studio-topology.md)に関する記事を参照してください。
 
 ## <a name="support"></a>サポート
 

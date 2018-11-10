@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 617f60345fb2a349eddb0db697604ba383794591
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3e660dbcbfecd57c43ecec6006581364660adb44
+ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060836"
+ms.lasthandoff: 10/31/2018
+ms.locfileid: "50737241"
 ---
 # <a name="azure-managed-disks-overview"></a>Azure Managed Disks の概要
 
@@ -21,7 +21,7 @@ Azure Managed Disks は、VM ディスクに関連付けられている[スト�
 
 ## <a name="benefits-of-managed-disks"></a>マネージド ディスクの利点
 
-マネージド ディスクを使用して得られる利点をいくつか見てみましょう。まず、チャンネル 9 のビデオ「[マネージド ディスクを使用した Azure VM の回復性向上](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency)」です。
+マネージド ディスクを使用して得られる利点をいくつか見てみましょう。まず、チャンネル 9 のビデオ「[管理ディスクを使用した Azure VM の回復性向上](https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency)」です。
 <br/>
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Managed-Disks-for-Azure-Resiliency/player]
 
@@ -33,15 +33,15 @@ Managed Disks では、サブスクリプション内の特定の種類の VM **
 
 ### <a name="better-reliability-for-availability-sets"></a>可用性セットの信頼性の向上
 
-マネージド ディスクでは、[可用性セットの VM](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 ディスクはさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 たとえば、5 台の VM 上で実行されているアプリケーションがあり、これらの VM が可用性セットに含まれているとします。 各 VM のディスクはすべて同じスタンプに格納されるわけではないため、1 つのスタンプがダウンしても、アプリケーションの他のインスタンスは引き続き実行されます。
+管理ディスクでは、[可用性セットの VM](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 ディスクはさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 たとえば、5 台の VM 上で実行されているアプリケーションがあり、これらの VM が可用性セットに含まれているとします。 各 VM のディスクはすべて同じスタンプに格納されるわけではないため、1 つのスタンプがダウンしても、アプリケーションの他のインスタンスは引き続き実行されます。
 
 ### <a name="highly-durable-and-available"></a>優れた持続性と可用性
 
-Azure ディスクは、99.999% の可用性で設計されています。 3 つのデータ レプリカで高い持続性を実現できるため、安心してお使いいただけます。 1 つのレプリカに問題が発生しても (またはそれが 2 つのレプリカであっても)、残りのレプリカでデータを維持し、高い耐障害性を確保します。 このアーキテクチャにより、Azure は IaaS ディスクのエンタープライズ レベルの持続性を、業界トップレベルの年間故障率 0% で一貫して提供できます。
+Azure ディスクは、99.999% の可用性で設計されています。 3 つのデータ レプリカで高い持続性を実現できるため、安心してお使いいただけます。 1 つのレプリカに問題が発生しても (またはそれが 2 つのレプリカであっても)、残りのレプリカでデータを維持し、高い耐障害性を確保します。 このアーキテクチャにより、Azure は IaaS ディスクのエンタープライズ レベルの持続性を、業界トップレベルの年間故障率 0% で一貫して提供できます。 
 
 ### <a name="granular-access-control"></a>詳細なアクセス制御
 
-[Azure のロールベースのアクセス制御 (RBAC)](../articles/role-based-access-control/overview.md) を使用して、マネージド ディスクに対する特定のアクセス許可を 1 人以上のユーザーに割り当てることができます。 マネージド ディスク では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーがマネージド ディスクをストレージ アカウントにコピーすることが望ましくない場合は、そのマネージド ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用してマネージド ディスクをコピーできないようにする場合は、そのマネージド ディスクに対する該当のアクセス許可を付与しないことを選択できます。
+[Azure のロールベースのアクセス制御 (RBAC)](../articles/role-based-access-control/overview.md) を使用して、マネージド ディスクに対する特定のアクセス許可を 1 人以上のユーザーに割り当てることができます。 Managed Disks では、ディスクの読み取り、書き込み (作成/更新)、削除、[Shared Access Signature (SAS) URI](../articles/storage/common/storage-dotnet-shared-access-signature-part-1.md) の取得など、さまざまな操作を公開しています。 ユーザーが仕事をする上で必要な操作へのアクセス権だけを付与することができます。 たとえば、ユーザーが管理ディスクをストレージ アカウントにコピーすることが望ましくない場合は、その管理ディスクに対するエクスポート アクションへのアクセス権を付与しないようにします。 同様に、ユーザーが SAS URI を使用してマネージド ディスクをコピーできないようにする場合は、そのマネージド ディスクに対する該当のアクセス許可を付与しないことを選択できます。
 
 ### <a name="azure-backup-service-support"></a>Azure Backup サービスのサポート
 
@@ -59,29 +59,29 @@ Managed Disks を使用するときには、課金に関する次の考慮事項
 
 * 送信データ転送
 
-* マネージド ディスク スナップショット (フル ディスク コピー)
+* 管理ディスク スナップショット (フル ディスク コピー)
 
 これらのオプションについて詳しく見ていきましょう。
 
 **ストレージの種類**: Managed Disks には、[Standard HDD](../articles/virtual-machines/windows/standard-storage.md)、[Standard SSD](../articles/virtual-machines/windows/disks-standard-ssd.md)、[Premium](../articles/virtual-machines/windows/premium-storage.md) の 3 つのパフォーマンス レベルが用意されています。 マネージド ディスクへの課金は、ディスク用に選択したストレージの種類によって異なります。
 
-**ディスク サイズ**: マネージド ディスクへの課金は、ディスクのプロビジョニング済みサイズによって異なります。 Azure では、プロビジョニング済みサイズ (切り上げたもの) を、次の表に示す マネージド ディスク オプションの中で最も近いオプションにマップします。 各マネージド ディスクは、サポートされているプロビジョニング済みサイズのいずれかにマップされ、それに応じて課金されます。 たとえば、Standard マネージド ディスクを作成し、200 GB のプロビジョニング済みサイズを指定した場合、S15 ディスクの価格に従って課金されます。
+**ディスク サイズ**: マネージド ディスクへの課金は、ディスクのプロビジョニング済みサイズによって異なります。 Azure では、プロビジョニング済みサイズ (切り上げたもの) を、次の表に示す Managed Disks オプションの中で最も近いオプションにマップします。 各管理ディスクは、サポートされているプロビジョニング済みサイズのいずれかにマップされ、それに応じて課金されます。 たとえば、Standard 管理ディスクを作成し、200 GB のプロビジョニング済みサイズを指定した場合、S15 ディスクの価格に従って課金されます。
 
 Premium マネージド ディスクで提供されるディスク サイズを次に示します。
 
-| **Premium HDD マネージド <br>ディスクの種類** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
+| **Premium SDD マネージド <br>ディスクの種類** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60** | **P70** | **P80** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | ディスク サイズ        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1,024 GiB (1 TiB) | 2,048 GiB (2 TiB) | 4,095 GiB (4 TiB) | 8,192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32,767 GiB (TiB) |
 
 Standard SSD マネージド ディスクで提供されるディスク サイズを次に示します。
 
-| **Standard SSD マネージド<br>ディスクの種類** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60** | **E70** | **E80** |
+| **Standard SSD 管理<br>ディスクの種類** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60** | **E70** | **E80** |
 |------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | ディスク サイズ        | 128 GiB | 256 GiB | 512 GiB | 1,024 GiB (1 TiB) | 2,048 GiB (2 TiB) | 4,095 GiB (4 TiB) | 8,192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32,767 GiB (TiB) |
 
-Standard HDD マネージド ディスクで提供されるディスク サイズを次に示します。
+Standard HDD 管理ディスクで提供されるディスク サイズを次に示します。
 
-| **Standard HDD マネージド<br>ディスクの種類** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+| **Standard HDD 管理<br>ディスクの種類** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
 | ディスク サイズ        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1,024 GiB (1 TiB) | 2,048 GiB (2 TiB) | 4,095 GiB (4 TiB) | 8,192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32,767 GiB (TiB) |
 
@@ -89,23 +89,23 @@ Standard HDD マネージド ディスクで提供されるディスク サイ�
 
 Standard SSD ディスクでは、256 KB の IO ユニット サイズが使用されます。 転送されるデータが 256 KB に満たない場合は、1 つの I/O ユニットとみなされます。 I/O のサイズが大きくなると、サイズが 256 KB の複数の I/O としてカウントされます。 たとえば、1,100 KB の I/O は 5 つの I/O ユニットとしてカウントされます。
 
-Premium マネージド ディスクの場合、トランザクションのコストはかかりません。
+Premium 管理ディスクの場合、トランザクションのコストはかかりません。
 
 **送信データ転送**: [送信データ転送](https://azure.microsoft.com/pricing/details/data-transfers/) (Azure データ センターから送信されるデータ) では、帯域幅の使用量に対して課金されます。
 
 Managed Disks の価格の詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)」をご覧ください。
 
 
-## <a name="managed-disk-snapshots"></a>マネージド ディスクのスナップショット
+## <a name="managed-disk-snapshots"></a>管理ディスクのスナップショット
 
-管理スナップショットはマネージド ディスクの読み取り専用のフル コピーであり、デフォルトで Standard マネージド ディスクとして保存されます。 スナップショットを使用すると、任意の時点のマネージド ディスクのバックアップを作成できます。 これらのスナップショットはソース ディスクとは独立して存在し、新しいマネージド ディスクの作成に使用できます。 これらは使用済みサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量でマネージド ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。
+管理スナップショットはマネージド ディスクの読み取り専用のフル コピーであり、デフォルトで Standard 管理ディスクとして保存されます。 スナップショットを使用すると、任意の時点の管理ディスクのバックアップを作成できます。 これらのスナップショットはソース ディスクとは独立して存在し、新しい管理ディスクの作成に使用できます。 これらは使用済みサイズに基づいて請求されます。 たとえば、64 GiB のプロビジョニング済み容量で管理ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GiB である場合、スナップショットは使用されたデータ サイズである 10 GiB 分のみ課金されます。  
 
 Managed Disks の[増分スナップショット](../articles/virtual-machines/windows/incremental-snapshots.md)は、現時点ではサポートされていません。
 
 Managed Disks でスナップショットを作成する方法の詳細については、次のリソースをご覧ください。
 
-* [Windows のスナップショットを使用してマネージド ディスクとして格納された VHD のコピーを作成する](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [Linux のスナップショットを使用してマネージド ディスクとして格納された VHD のコピーを作成する](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [Windows のスナップショットを使用して管理ディスクとして格納された VHD のコピーを作成する](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [Linux のスナップショットを使用して管理ディスクとして格納された VHD のコピーを作成する](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ## <a name="images"></a>イメージ
 
@@ -130,7 +130,7 @@ VM が 5 つのディスクを使用しており、それらのディスクが�
 
 ### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 
-[Azure Storage Service Encryption ](../articles/storage/common/storage-service-encryption.md) は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 SSE は、マネージド ディスクを使用できるすべてのリージョンのすべての マネージド ディスク、スナップショット、イメージに対して既定で有効になっています。 2017 年 6 月 10 日以降、新しいすべてのマネージド ディスク、スナップショット、イメージおよび既存のマネージド ディスクに書き込まれた新しいデータは、既定でマイクロソフトが管理するキーで自動的に暗号化されます。 詳細については、「[マネージド ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
+[Azure Storage Service Encryption ](../articles/storage/common/storage-service-encryption.md) は、保管データの暗号化を提供し、データの安全性を保護して組織のセキュリティおよびコンプライアンス要件を満たします。 SSE は、マネージド ディスクを使用できるすべてのリージョンのすべての Managed Disks、スナップショット、イメージに対して既定で有効になっています。 2017 年 6 月 10 日以降、新しいすべての管理ディスク、スナップショット、イメージおよび既存の管理ディスクに書き込まれた新しいデータは、既定でマイクロソフトが管理するキーで自動的に暗号化されます。 詳細については、「[管理ディスクに関する FAQ ページ](../articles/virtual-machines/windows/faq-for-disks.md#managed-disks-and-storage-service-encryption)」を参照してください。
 
 ### <a name="azure-disk-encryption-ade"></a>Azure Disk Encryption (ADE)
 
@@ -140,7 +140,7 @@ Azure Disk Encryption を使用すると、IaaS 仮想マシンで使用され�
 
 Managed Disks の詳細については、次の記事をご覧ください。
 
-### <a name="get-started-with-managed-disks"></a>マネージド ディスクの概要
+### <a name="get-started-with-managed-disks"></a>管理ディスクの概要
 
 * [Resource Manager と PowerShell を使用して VM を作成する](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md)
 
@@ -148,11 +148,11 @@ Managed Disks の詳細については、次の記事をご覧ください。
 
 * [PowerShell を使用して Windows VM にマネージド データ ディスクを接続する](../articles/virtual-machines/windows/attach-disk-ps.md)
 
-* [Linux VM にマネージド ディスクを追加する](../articles/virtual-machines/linux/add-disk.md)
+* [Linux VM に管理ディスクを追加する](../articles/virtual-machines/linux/add-disk.md)
 
 * [Managed Disks の PowerShell サンプル スクリプト](https://github.com/Azure-Samples/managed-disks-powershell-getting-started)
 
-* [Azure Resource Manager テンプレートでのマネージド ディスクの使用](../articles/virtual-machines/windows/using-managed-disks-template-deployments.md)
+* [Azure Resource Manager テンプレートでの管理ディスクの使用](../articles/virtual-machines/windows/using-managed-disks-template-deployments.md)
 
 ### <a name="compare-managed-disks-storage-options"></a>Managed Disks のストレージ オプションの比較
 

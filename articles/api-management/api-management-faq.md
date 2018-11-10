@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 7082edf43e53766d32bd967d0b894f6439eaa492
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 760feae2c9b58e162dae487e240dda72099ed91b
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42142381"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227979"
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -77,7 +77,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 はい、API Management は次の手段を使用してプログラムで管理できます。
 
 * [API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx)
-* [Microsoft Azure ApiManagement Service Management Library SDK](http://aka.ms/apimsdk)
+* [Microsoft Azure ApiManagement Service Management Library SDK](https://aka.ms/apimsdk)
 * [サービスのデプロイ](https://docs.microsoft.com/powershell/module/wds)および[サービスの管理](https://docs.microsoft.com/powershell/azure/servicemanagement/overview)用の PowerShell コマンドレット
 
 ### <a name="how-do-i-add-a-user-to-the-administrators-group"></a>ユーザーを Administrators グループに追加するにはどうすればよいですか。
@@ -104,7 +104,7 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 * 異なるテナントで同じ API をホストする。
 
 ### <a name="can-i-use-soap-with-api-management"></a>API Management で SOAP を使用することはできますか。
-[SOAP パススルー](http://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/)がサポートされるようになりました。 管理者が SOAP サービスの WSDL をインポートすると、Azure API Management によって SOAP フロント エンドが作成されます。 開発者ポータル ドキュメント、テスト コンソール、ポリシーと分析を、SOAP サービスで利用できます。
+[SOAP パススルー](https://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/)がサポートされるようになりました。 管理者が SOAP サービスの WSDL をインポートすると、Azure API Management によって SOAP フロント エンドが作成されます。 開発者ポータル ドキュメント、テスト コンソール、ポリシーと分析を、SOAP サービスで利用できます。
 
 ### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>API Management ゲートウェイ IP アドレスは一定ですか。 それをファイアウォール ルールで使用できますか。
 API Management のすべてのレベルでは、API Management テナントのパブリック IP アドレス (VIP) は、テナントの有効期間中、静的です。ただし、いくつかの例外があります。 IP アドレスは次の状況では変化します。
@@ -126,7 +126,7 @@ Active Directory フェデレーション サービス (AD FS) セキュリテ�
 API Management では、複数の地理的な場所へのデプロイで[パフォーマンス トラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#performance)を使用します。 着信トラフィックは、最も近い API ゲートウェイにルーティングされます。 1 つのリージョンがオフラインになった場合、着信トラフィックは自動的に次に最も近いゲートウェイにルーティングされます。 ルーティング方法の詳細については、[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)に関するページを参照してください。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Azure Resource Manager テンプレートを使用して API Management サービス インスタンスを作成することはできますか。
-はい。 詳細については、[Azure API Management サービス](http://aka.ms/apimtemplate)のクイックスタート テンプレートを参照してください。
+はい。 詳細については、[Azure API Management サービス](https://aka.ms/apimtemplate)のクイックスタート テンプレートを参照してください。
 
 ### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>バックエンドに自己署名 SSL 証明書を使用できますか。
 はい。 これを行うには、PowerShell を使用するか、API に直接送信します。 これにより、証明書チェーン検証を無効になり、API Management からバックエンド サービスへの通信時に、自己署名証明書または個人署名証明書を使用することができます。

@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: ''
-ms.openlocfilehash: 75b1edf80f1dad5f0db48c11329effe080760820
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 533fbfc42939299f99699a13513cd3b55c89cabc
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413147"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50957286"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Grafana での Azure サービスの監視
 [Azure Monitor データ ソース プラグイン](https://grafana.com/plugins/grafana-azure-monitor-datasource)を使用して [Grafana](https://grafana.com/) から Azure サービスおよびアプリケーションを監視することもできるようになりました。 このプラグインは、Application Insights SDK によって収集されたアプリケーション パフォーマンス データや、Azure Monitor によって提供されるインフラストラクチャ データを収集します。 その後、このデータを Grafana ダッシュボードで表示できます。
@@ -128,4 +128,4 @@ VM を実行している場合は、それを使用しているかどうかに�
 2. リソース グループのページで、**[削除]** をクリックし、テキスト ボックスに「**Grafana**」と入力してから **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Monitor メトリックの概要](monitoring-overview-metrics.md)
+* [Azure Monitor メトリックの概要](../monitoring/monitoring-data-collection.md)

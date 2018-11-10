@@ -10,12 +10,12 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/28/2017
 ms.author: maheshb
-ms.openlocfilehash: b4e022d6237712d8281c6f4f9332a68821dfd5b1
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fea0e4d640f42909b33ae418315c460946544256
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49470083"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739585"
 ---
 # <a name="paging-webpages"></a>Web ページのページング 
 
@@ -57,4 +57,7 @@ GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=sailing+d
 Ocp-Apim-Subscription-Key: <subscription ID>  
 Host: api.cognitive.microsoft.com  
 ```  
+
+> [!NOTE]
+> `TotalEstimatedAnswers` フィールドは、現在のクエリで取得できる検索結果の合計数の見積もりです。  `count` パラメーターと `offset` パラメーターを設定すると、`TotalEstimatedAnswers` の数が変わる場合があります。 
 

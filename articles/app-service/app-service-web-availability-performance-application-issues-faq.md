@@ -13,14 +13,14 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 06fe9f1fd65f70e41d528a513e44e61edb4a7e4f
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 00563b93a3601ba6299c479c49375fd252841f79
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307910"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748121"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
@@ -34,11 +34,11 @@ ms.locfileid: "39307910"
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>CPU 使用量が多いシナリオをトラブルシューティングするにはどうすればよいですか?
 
-CPU 使用量が多い一部のシナリオでは、アプリが実際により多くのコンピューティング リソースを必要としている可能性があります。 その場合は、アプリケーションが必要なすべてのリソースを取得できるように、より高いサービス階層へのスケーリングを検討してください。 その他の場合、CPU 使用量の多さは、不適切なループまたはコーディング方法によって発生している可能性があります。 CPU 使用量が増えている原因の調査は 2 つの部分からなるプロセスです。 最初にプロセス ダンプを作成し、次にプロセス ダンプを分析します。 詳細については、「[Capture and analyze a dump file for high CPU consumption for Web Apps (Web アプリの増加した CPU 使用量のためのダンプ ファイルの取得と分析)](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)」を参照してください。
+CPU 使用量が多い一部のシナリオでは、アプリが実際により多くのコンピューティング リソースを必要としている可能性があります。 その場合は、アプリケーションが必要なすべてのリソースを取得できるように、より高いサービス階層へのスケーリングを検討してください。 その他の場合、CPU 使用量の多さは、不適切なループまたはコーディング方法によって発生している可能性があります。 CPU 使用量が増えている原因の調査は 2 つの部分からなるプロセスです。 最初にプロセス ダンプを作成し、次にプロセス ダンプを分析します。 詳細については、「[Capture and analyze a dump file for high CPU consumption for Web Apps (Web アプリの増加した CPU 使用量のためのダンプ ファイルの取得と分析)](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)」を参照してください。
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>メモリ使用量が多いシナリオをトラブルシューティングするにはどうすればよいですか?
 
-メモリ使用量が多い一部のシナリオでは、アプリが実際により多くのコンピューティング リソースを必要としている可能性があります。 その場合は、アプリケーションが必要なすべてのリソースを取得できるように、より高いサービス階層へのスケーリングを検討してください。 その他の場合、コード内のバグがメモリ リークの原因になることがあります。 また、コーディング方法によってもメモリ使用量が増えることがあります。 メモリ使用量が多い原因の調査は 2 つの部分からなるプロセスです。 最初にプロセス ダンプを作成し、次にプロセス ダンプを分析します。 Azure サイト拡張機能ギャラリーのクラッシュ診断は、これらの手順の両方を効率的に実行できます。 詳細については、「[Capture and analyze a dump file for intermittent high memory for Web Apps (Web アプリの断続的な増加したメモリ使用量のためのダンプ ファイルの取得と分析)](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)」を参照してください。
+メモリ使用量が多い一部のシナリオでは、アプリが実際により多くのコンピューティング リソースを必要としている可能性があります。 その場合は、アプリケーションが必要なすべてのリソースを取得できるように、より高いサービス階層へのスケーリングを検討してください。 その他の場合、コード内のバグがメモリ リークの原因になることがあります。 また、コーディング方法によってもメモリ使用量が増えることがあります。 メモリ使用量が多い原因の調査は 2 つの部分からなるプロセスです。 最初にプロセス ダンプを作成し、次にプロセス ダンプを分析します。 Azure サイト拡張機能ギャラリーのクラッシュ診断は、これらの手順の両方を効率的に実行できます。 詳細については、「[Capture and analyze a dump file for intermittent high memory for Web Apps (Web アプリの断続的な増加したメモリ使用量のためのダンプ ファイルの取得と分析)](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)」を参照してください。
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>PowerShell を使用して App Service Web アプリを自動化するにはどうすればよいですか?
 

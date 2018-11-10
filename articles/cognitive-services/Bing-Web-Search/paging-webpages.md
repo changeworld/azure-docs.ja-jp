@@ -11,12 +11,12 @@ ms.component: bing-web-search
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: erhopf
-ms.openlocfilehash: 4aa3509fcdfc6fd1bccb4db95a8c916a42ce23d2
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e98407dface348dfdbc99a1146d50c46f3bb03a7
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125274"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739245"
 ---
 # <a name="how-to-page-through-results-from-the-bing-web-search-api"></a>Bing Web Search API から結果をページングする方法
 
@@ -61,4 +61,7 @@ Host: api.cognitive.microsoft.com
 
 Web Search API は、Web ページを含み、画像、動画、ニュースを含む可能性のある結果を返します。 検索結果をページングする場合、[WebAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) 回答をページングし、画像やニュースなどの他の回答はページングしません。 たとえば、`count` を 50 に設定した場合、50 件の Web ページ結果が返されますが、応答には、他の回答の結果も含まれる場合があります。 たとえば、応答には、15 個の画像と 4 つのニュース記事が含まれる場合があります。 結果に最初のページのニュースが含まれ、2 ページのニュースが含まれない場合、またはその逆の場合もあります。   
 
-`responseFilter` クエリ パラメーターを指定し、フィルターの一覧に Web ページを含めない場合は、`count` および `offset` パラメーターを使用しないでください。  
+`responseFilter` クエリ パラメーターを指定し、フィルターの一覧に Web ページを含めない場合は、`count` および `offset` パラメーターを使用しないでください。 
+
+> [!NOTE]
+> `TotalEstimatedAnswers` フィールドは、現在のクエリで取得できる検索結果の合計数の見積もりです。  `count` パラメーターと `offset` パラメーターを設定すると、`TotalEstimatedAnswers` の数が変わる場合があります。 

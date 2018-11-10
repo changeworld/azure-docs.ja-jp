@@ -14,23 +14,23 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
-ms.openlocfilehash: f89ff3a030f1da75bca538eefaf2496e9be8e97b
-ms.sourcegitcommit: 4e36ef0edff463c1edc51bce7832e75760248f82
+ms.openlocfilehash: 6af0dfb00ff791b8a73ebf1ad14b35d99f67a483
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35233821"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227418"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Google ログインを使用するように App Service アプリケーションを構成する方法
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
 このトピックでは、認証プロバイダーとして Google を使用するように Azure App Services を構成する方法を示します。
 
-このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。 新しい Google アカウントを作成するには、 [accounts.google.com](http://go.microsoft.com/fwlink/p/?LinkId=268302)にアクセスしてください。
+このトピックの手順を完了するには、検証済みの電子メール アドレスを持つ Google アカウントが必要になります。 新しい Google アカウントを作成するには、 [accounts.google.com](https://go.microsoft.com/fwlink/p/?LinkId=268302)にアクセスしてください。
 
 ## <a name="register"> </a>Google にアプリケーションを登録する
 1. [Azure Portal]にログオンし、目的のアプリケーションに移動します。 **URL** をコピーします。この URL は、後で Google アプリを構成するために使用します。
-2. [Google apis](http://go.microsoft.com/fwlink/p/?LinkId=268303) Web サイトに移動して、Google アカウント資格情報でサインインします。**[Create Project (プロジェクトの作成)]** をクリックして**プロジェクト名**を入力し、**[Create (作成)]** をクリックします。
+2. [Google apis](https://go.microsoft.com/fwlink/p/?LinkId=268303) Web サイトに移動して、Google アカウント資格情報でサインインします。**[Create Project (プロジェクトの作成)]** をクリックして**プロジェクト名**を入力し、**[Create (作成)]** をクリックします。
 3. プロジェクトが作成されたら選択します。 プロジェクト ダッシュボードから、**[Go to APIs overview] (API の概要に移動)** をクリックします。
 4. **[Enable APIs and Services] (API とサービスの有効化)** を選択します。 **[Google+ API]** を検索し、それを選択します。 **[有効]** をクリックします。
 5. 左側のナビゲーションで、**[Credentials (資格情報)]** > **[OAuth consent screen (OAuth 同意画面)]** の順にクリックした後、自分の**電子メール アドレス**を選択し、**製品名**を入力して、**[Save (保存)]** をクリックします。

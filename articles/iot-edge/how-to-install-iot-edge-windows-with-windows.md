@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 2eebc96b14ee0f06b3bd88ea565dfe9372aba1ff
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d85355b50bad9f05acc7da92d763d011e6f807b6
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47037816"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741081"
 ---
 # <a name="install-azure-iot-edge-runtime-on-windows-to-use-with-windows-containers"></a>Windows に Azure IoT Edge をインストールして Windows コンテナーと共に使用する
 
@@ -36,11 +36,11 @@ Windows コンテナーを使用する Azure IoT Edge は、以下と共に使�
 ## <a name="install-the-container-runtime"></a>コンテナー ランタイムをインストールする 
 
 >[!NOTE]
->Windows IoT Core でのコンテナー エンジンのインストールについては、[IoT Core デバイスのプロビジョニングに関する記事][lnk-iot-core]の手順を実行してから、以下の指示を続行します。
+>Windows IoT Core でのコンテナー エンジンのインストールについては、[IoT Core デバイスのプロビジョニングに関する記事](how-to-install-iot-core.md)の手順を実行してから、以下の手順に進みます。
 
-Azure IoT Edge は、[OCI と互換性のある][lnk-oci]コンテナー ランタイム (Docker など) に依存します。 [Docker for Windows][lnk-docker-for-windows] は、開発とテストに使用できます。 
+Azure IoT Edge は、[OCI と互換性のある](https://www.opencontainers.org/)コンテナー ランタイム (Docker など) に依存します。 [Docker for Windows](https://www.docker.com/docker-windows) は、開発とテストに使用できます。 
 
-[Windows コンテナーを使用するように][lnk-docker-config] Docker for Windows を構成してください。
+[Windows コンテナーを使用するように](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers) Docker for Windows を構成してください。
 
 ## <a name="install-the-azure-iot-edge-security-daemon"></a>Azure IoT Edge セキュリティ デーモンのインストール
 
@@ -51,7 +51,7 @@ IoT Hub によって提供されるデバイス接続文字列を使用して、
 
 ### <a name="install-and-manually-provision"></a>インストールして手動でプロビジョニングする
 
-1. 「[新しい Azure IoT Edge デバイスを登録する][lnk-dcs]」の手順に従って、デバイスを登録し、デバイス接続文字列を取得します。 
+1. 「[新しい Azure IoT Edge デバイスを登録する](how-to-register-device-portal.md)」の手順に従って、デバイスを登録し、デバイス接続文字列を取得します。 
 
 2. IoT Edge デバイスで、PowerShell を管理者として実行します。 
 
@@ -66,7 +66,7 @@ IoT Hub によって提供されるデバイス接続文字列を使用して、
 
 ### <a name="install-and-automatically-provision"></a>インストールして自動的にプロビジョニングする
 
-1. 「[Windows 上のシミュレートされた TPM Edge デバイスの作成とプロビジョニング][lnk-dps]」の手順に従って、Device Provisioning Service を設定し、その**スコープ ID** を取得して、TPM デバイスをシミュレートし、その**登録 ID** を取得した後、個別の登録を作成します。 デバイスが IoT Hub に登録されたら、インストールを続行します。  
+1. 「[Windows 上のシミュレートされた TPM Edge デバイスの作成とプロビジョニング](how-to-auto-provision-simulated-device-windows.md)」の手順に従って、Device Provisioning Service を設定し、その**スコープ ID** を取得して、TPM デバイスをシミュレートし、その**登録 ID** を取得した後、個別の登録を作成します。 デバイスが IoT Hub に登録されたら、インストールを続行します。  
 
    >[!TIP]
    >インストールとテストを行っている間は、TPM シミュレーターを実行しているウィンドウを開いたままにしてください。 
@@ -116,21 +116,6 @@ iotedge list
 
 ## <a name="next-steps"></a>次の手順
 
-ランタイムがインストールされた IoT Edge デバイスがプロビジョニングされたら、次は [IoT Edge モジュールをデプロイ][lnk-modules]できます。
+ランタイムがインストールされた IoT Edge デバイスがプロビジョニングされたら、次は [IoT Edge モジュールをデプロイ](how-to-deploy-modules-portal.md)できます。
 
-Edge ランタイムを正常にインストールできない場合は、[トラブルシューティング][lnk-trouble]のページを調べてください。
-
-
-<!-- Images -->
-[img-nat]: ./media/how-to-install-iot-edge-windows-with-windows/nat.png
-
-<!-- Links -->
-[lnk-docker-config]: https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers
-[lnk-dcs]: how-to-register-device-portal.md
-[lnk-dps]: how-to-auto-provision-simulated-device-windows.md
-[lnk-oci]: https://www.opencontainers.org/
-[lnk-moby]: https://mobyproject.org/
-[lnk-trouble]: troubleshoot.md
-[lnk-docker-for-windows]: https://www.docker.com/docker-windows
-[lnk-iot-core]: how-to-install-iot-core.md
-[lnk-modules]: how-to-deploy-modules-portal.md
+Edge ランタイムを正常にインストールできない場合は、[トラブルシューティング](troubleshoot.md)のページを調べてください。

@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: rafats
-ms.openlocfilehash: b6d05c5e9bc59df9df7ef8840b70ab027b6e2f74
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: 09f827e8784fe2a97c587524d70baf76ae4458ba
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48269498"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741863"
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Azure Cosmos DB での Change Feed サポートの使用
 
@@ -77,7 +77,7 @@ Change Feed は、ドキュメント コレクション内の各パーティシ�
 また、[サーバーレス](http://azure.com/serverless) Web やモバイル アプリ内で、お客様のプロファイル、設定、または場所への変更などのイベントを追跡し、[Azure Functions](#azure-functions) を使用して各デバイスにプッシュ通知を送信するなど特定のアクションをトリガーできます。 たとえば、Azure Cosmos DB を使用してゲームを構築する場合、Change Feed を使用して完了したゲームのスコアに基づくリアルタイムのスコアボードを実装できます。
 
 <a id="azure-functions"></a>
-## <a name="using-azure-functions"></a>Azure Functions の使用 
+## <a name="using-azure-functions"></a>Azure Functions の使用 
 
 Azure Functions を使用してインストール場合、Azure Cosmos DB の変更フィードに接続する最も簡単な方法は、Azure Cosmos DB トリガーを Azure Functions アプリケーションに追加することです。 Azure Functions アプリケーションで Azure Cosmos DB トリガーを作成するときに、接続先の Azure Cosmos DB コレクションを選択します。これで、コレクションに変更が加えられるたびに関数がトリガーされます。 
 
@@ -114,9 +114,9 @@ Azure Cosmos DB 用の [SQL SDK](sql-api-sdk-dotnet.md) は、変更フィード
     ```csharp
     FeedResponse pkRangesResponse = await client.ReadPartitionKeyRangeFeedAsync(
         collectionUri,
-        new FeedOptions
-            {RequestContinuation = pkRangesResponseContinuation });
-     
+        new FeedOptions
+            {RequestContinuation = pkRangesResponseContinuation });
+     
     partitionKeyRanges.AddRange(pkRangesResponse);
     pkRangesResponseContinuation = pkRangesResponse.ResponseContinuation;
     ```
@@ -125,29 +125,29 @@ Azure Cosmos DB 用の [SQL SDK](sql-api-sdk-dotnet.md) は、変更フィード
 
     ```csharp
     foreach (PartitionKeyRange pkRange in partitionKeyRanges){
-        string continuation = null;
-        checkpoints.TryGetValue(pkRange.Id, out continuation);
-        IDocumentQuery<Document> query = client.CreateDocumentChangeFeedQuery(
-            collectionUri,
-            new ChangeFeedOptions
-            {
-                PartitionKeyRangeId = pkRange.Id,
-                StartFromBeginning = true,
-                RequestContinuation = continuation,
-                MaxItemCount = -1,
-                // Set reading time: only show change feed results modified since StartTime
-                StartTime = DateTime.Now - TimeSpan.FromSeconds(30)
-            });
-        while (query.HasMoreResults)
-            {
-                FeedResponse<dynamic> readChangesResponse = query.ExecuteNextAsync<dynamic>().Result;
+        string continuation = null;
+        checkpoints.TryGetValue(pkRange.Id, out continuation);
+        IDocumentQuery<Document> query = client.CreateDocumentChangeFeedQuery(
+            collectionUri,
+            new ChangeFeedOptions
+            {
+                PartitionKeyRangeId = pkRange.Id,
+                StartFromBeginning = true,
+                RequestContinuation = continuation,
+                MaxItemCount = -1,
+                // Set reading time: only show change feed results modified since StartTime
+                StartTime = DateTime.Now - TimeSpan.FromSeconds(30)
+            });
+        while (query.HasMoreResults)
+            {
+                FeedResponse<dynamic> readChangesResponse = query.ExecuteNextAsync<dynamic>().Result;
     
-                foreach (dynamic changedDocument in readChangesResponse)
-                    {
-                         Console.WriteLine("document: {0}", changedDocument);
-                    }
-                checkpoints[pkRange.Id] = readChangesResponse.ResponseContinuation;
-            }
+                foreach (dynamic changedDocument in readChangesResponse)
+                    {
+                         Console.WriteLine("document: {0}", changedDocument);
+                    }
+                checkpoints[pkRange.Id] = readChangesResponse.ResponseContinuation;
+            }
     }
     ```
 
@@ -165,13 +165,13 @@ Azure Cosmos DB 用の [SQL SDK](sql-api-sdk-dotnet.md) は、変更フィード
 そのため、チェックポイントの配列は各パーティションの LSN のみを維持しています。 ただし、パーティション、チェックポイント、LSN、開始時間などを扱わない場合は、変更フィード プロセッサ ライブラリを使用する方法が簡単です。
 
 <a id="change-feed-processor"></a>
-## <a name="using-the-change-feed-processor-library"></a>変更フィード プロセッサ ライブラリの使用 
+## <a name="using-the-change-feed-processor-library"></a>変更フィード プロセッサ ライブラリの使用 
 
 [Azure Cosmos DB 変更フィード プロセッサ ライブラリ](https://docs.microsoft.com/azure/cosmos-db/sql-api-sdk-dotnet-changefeed)を使用すると、複数のコンシューマーにイベント処理を簡単に分散させることができます。 このライブラリで、並列で実行されている複数のパーティションと複数のスレッド全体の変更の読み取りが簡単になります。
 
 変更フィード プロセッサ ライブラリの主な利点は、各パーティションと継続トークンを管理する必要がないことと、各コレクションを手動でポーリングする必要がないことです。
 
-変更フィード プロセッサ ライブラリにより、並列で実行されている複数のパーティションと複数のスレッド全体の変更の読み取りが簡単になります。  リース メカニズムを使用して、パーティション全体の変更の読み取りが自動的に管理されます。 次の図のように、変更フィード プロセッサ ライブラリを使用している 2 つのクライアントを起動すると、2 つのクライアント間で作業が分割されます。 クライアント数を増やし続けると、クライアント全体で作業が分割されます。
+変更フィード プロセッサ ライブラリにより、並列で実行されている複数のパーティションと複数のスレッド全体の変更の読み取りが簡単になります。  リース メカニズムを使用して、パーティション全体の変更の読み取りが自動的に管理されます。 次の図のように、変更フィード プロセッサ ライブラリを使用している 2 つのクライアントを起動すると、2 つのクライアント間で作業が分割されます。 クライアント数を増やし続けると、クライアント全体で作業が分割されます。
 
 ![Azure Cosmos DB の Change Feed の分散処理](./media/change-feed/change-feed-output.png)
 
@@ -433,7 +433,7 @@ Azure 関数の呼び出しごとに 100 ドキュメントです。 ただし�
 
 ### <a name="my-document-is-updated-every-second-and-i-am-not-getting-all-the-changes-in-azure-functions-listening-to-change-feed"></a>私のドキュメント更新間隔は 1 秒ですが、変更フィードをリッスンしている Azure 関数ですべての変更を取得できていません。
 
-Azure 関数のポーリング間隔は 5 秒であるため、5 秒の間に加えられた変更は失われます。 Azure Cosmos DB は、5 秒おきに 1 バージョンのみを格納するため、取得できるのはドキュメントの 5 番目の変更となります。 ただし、5 秒未満を希望し、変更フィードを 1 秒おきにポーリングするのであれば、ポーリング時間 "feedPollTime" を構成できます。詳しくは、[Azure Cosmos DB バインディング](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)に関する記事を参照してください。 単位はミリ秒で、既定値は 5000 です。 1 秒未満も可能ですが、CPU への負担が大きくなるためお勧めできません。
+Azure 関数のポーリング間隔は 5 秒であるため、5 秒の間に加えられた変更は失われます。 Azure Cosmos DB は、5 秒おきに 1 バージョンのみを格納するため、取得できるのはドキュメントの 5 番目の変更となります。 ただし、5 秒未満を希望し、変更フィードを 1 秒おきにポーリングするのであれば、ポーリング時間 "feedPollDelay" を構成できます。詳細については、[Azure Cosmos DB バインディング](../azure-functions/functions-bindings-cosmosdb.md#trigger---configuration)に関する記事を参照してください。 単位はミリ秒で、既定値は 5000 です。 1 秒未満も可能ですが、CPU への負担が大きくなるためお勧めできません。
 
 ### <a name="i-inserted-a-document-in-the-mongo-api-collection-but-when-i-get-the-document-in-change-feed-it-shows-a-different-id-value-what-is-wrong-here"></a>Mongo API コレクションにドキュメントを挿入しましたが、変更フィードでドキュメントを取得すると、別の ID 値が表示されます。 何がおかしいのでしょうか?
 

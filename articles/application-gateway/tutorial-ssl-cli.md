@@ -10,12 +10,12 @@ ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 7fa581610e007c583dfbad512f74ad335dc21a1e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3364df360926f2065af8650076e129de75934c1a
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974444"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741016"
 ---
 # <a name="tutorial-create-an-application-gateway-with-ssl-termination-using-the-azure-cli"></a>チュートリアル: Azure CLI を使用して SSL 終了でアプリケーション ゲートウェイを作成する
 
@@ -155,15 +155,17 @@ az vmss extension set \
 
 ## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
 
-アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) を使用できます。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
+アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az-network_public_ip_show) を使用できます。
 
-```azurepowershell-interactive
+```azurecli-interactive
 az network public-ip show \
   --resource-group myResourceGroupAG \
   --name myAGPublicIPAddress \
   --query [ipAddress] \
   --output tsv
 ```
+
+そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 この例では、URL は **https://52.170.203.149** です。
 
 ![セキュリティに関する警告](./media/tutorial-ssl-cli/application-gateway-secure.png)
 
@@ -180,14 +182,6 @@ az group delete --name myResourceGroupAG --location eastus
 ```
 
 ## <a name="next-steps"></a>次の手順
-
-このチュートリアルで学習した内容は次のとおりです。
-
-> [!div class="checklist"]
-> * 自己署名証明書の作成
-> * ネットワークの設定
-> * 証明書でのアプリケーション ゲートウェイの作成
-> * 既定のバックエンド プールでの仮想マシン スケール セットの作成
 
 > [!div class="nextstepaction"]
 > [複数の Web サイトをホストするアプリケーション ゲートウェイを作成する](./tutorial-multiple-sites-cli.md)

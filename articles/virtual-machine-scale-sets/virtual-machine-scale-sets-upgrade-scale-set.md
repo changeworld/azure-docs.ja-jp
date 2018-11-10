@@ -3,7 +3,7 @@ title: Azure 仮想マシン スケール セットを変更する | Microsoft D
 description: REST API、Azure PowerShell、Azure CLI を使って、Azure 仮想マシン スケール セットに変更を加え、更新する方法について説明します
 services: virtual-machine-scale-sets
 documentationcenter: ''
-author: gatneil
+author: mayanknayar
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
-ms.author: negat
-ms.openlocfilehash: 49414b06010cf83c10bbc9519f2bced2126661a4
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.author: manayar
+ms.openlocfilehash: c3c01d7013749ca5cbd95224c230932a20a8146b
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49322075"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740589"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 アプリケーションのライフサイクルを通して、仮想マシン スケール セットを変更したり更新したりすることが必要になる場合があります。 スケール セットの構成を更新したりアプリケーションの構成を変更したりする際の方法が、こうした更新の対象になることもあります。 この記事では、REST API、Azure PowerShell、Azure CLI を使って、既存のスケール セットに変更を加える方法を説明します。
@@ -162,11 +162,11 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-これらのプロパティは、スケール セット全体の構成ではなく VM インスタンスの構成を示します。 たとえば、スケール セット モデルにはプロパティとして `overprovision` がありますが、スケール セット内の VM インスタンスのモデルにはありません。 この違いは、オーバープロビジョニングがスケール セット内の個々の VM インスタンスではなくスケール セット全体のプロパティであることが原因です (オーバープロビジョニングについて詳しくは、「[スケール セットの設計上の考慮事項](virtual-machine-scale-sets-design-overview.md#overprovisioning)」をご覧ください)。
+これらのプロパティは、スケール セット全体の構成ではなく、スケール セット内の VM インスタンスの構成を示しています。 たとえば、スケール セット モデルにはプロパティとして `overprovision` がありますが、スケール セット内の VM インスタンスのモデルにはありません。 この違いは、オーバープロビジョニングがスケール セット内の個々の VM インスタンスではなくスケール セット全体のプロパティであることが原因です (オーバープロビジョニングについて詳しくは、「[スケール セットの設計上の考慮事項](virtual-machine-scale-sets-design-overview.md#overprovisioning)」をご覧ください)。
 
 
 ### <a name="the-scale-set-vm-instance-view"></a>スケール セットの VM インスタンス ビュー
-スケール セットにインスタンス ビューがあるのと同様に、スケール セット内の各 VM インスタンスには独自のインスタンス ビューがあります。 スケール セットで特定の VM インスタンスに関してインスタンス ビューにクエリを実行するには、以下を使用できます。
+スケール セットにインスタンス ビューがあるのと同様に、スケール セット内の各 VM インスタンスには独自のインスタンス ビューがあります。 スケール セット内の特定の VM インスタンスに関してインスタンス ビューにクエリを実行するには、以下を使用できます。
 
 - REST API ([compute/virtualmachinescalesetvms/getinstanceview](/rest/api/compute/virtualmachinescalesetvms/getinstanceview))
 
@@ -239,7 +239,7 @@ $ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet -
 }
 ```
 
-これらのプロパティは、VM インスタンスの現在のランタイム状態を示します。これには、スケール セットに適用された拡張機能が含まれます。
+これらのプロパティは、スケール セット内の VM インスタンスの現在のランタイム状態を示しています。これには、スケール セットに適用された拡張機能が含まれます。
 
 
 ## <a name="how-to-update-global-scale-set-properties"></a>グローバル スケール セットのプロパティの更新方法

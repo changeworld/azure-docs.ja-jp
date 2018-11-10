@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 10/09/2018
+ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7bc8b3ba415f8fe701098a9fa7e51d60ffb9df4e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: ade409760e3946e9d574a304afc5b48ec4279157
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092458"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740265"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>チュートリアル: Azure Data Box Disk にデータをコピーして確認する
 
@@ -38,7 +38,7 @@ ms.locfileid: "49092458"
 
 ご利用のコンピューターから Data Box Disk に接続してデータをコピーするには、次の手順を実行します。
 
-1. ロックを解除したドライブの内容を表示します。 
+1. ロックを解除したドライブの内容を表示します。
 
     ![ドライブの内容を表示する](media/data-box-disk-deploy-copy-data/data-box-disk-content.png)
  
@@ -229,7 +229,7 @@ ms.locfileid: "49092458"
 
 データを確認するには、次の手順を実行します。
 
-1. ドライブの *AzureImportExport* フォルダーで、チェックサムの検証のために `DataBoxDiskValidation.cmd` を実行します。 
+1. ドライブの *DataBoxDiskImport* フォルダーで、チェックサムの検証のために `DataBoxDiskValidation.cmd` を実行します。 
     
     ![Data Box Disk 検証ツールの出力](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 

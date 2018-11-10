@@ -8,12 +8,12 @@ ms.date: 06/26/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: a63a31c5ceb4298829f85627196fea5d7a38ca4b
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 632a91e9c76f14bceace00c9cee29a189b604464
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49068504"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740214"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -108,7 +108,7 @@ IoT Edge セキュリティ デーモンが実行されている場合は、コ�
 
 ### <a name="view-the-messages-going-through-the-edge-hub"></a>Edge ハブを経由するメッセージを確認します。
 
-Edge ハブを経由するメッセージを確認し、edgeAgent および edgeHubランタイム コンテナーからの詳細なログからデバイスのプロパティの更新についての洞察を収集します。 これらのコンテナーで詳細ログを有効にするには、yaml 構成ファイルに`RuntimeLogLevel` を設定します。 ファイルを開くには:
+Edge ハブを通過するメッセージを表示し、ランタイム コンテナーから得た詳細なログから分析情報を収集できます。 これらのコンテナーで詳細ログを有効にするには、yaml 構成ファイルに`RuntimeLogLevel` を設定します。 ファイルを開くには:
 
 Linux の場合:
 
@@ -122,7 +122,7 @@ Windows の場合:
    notepad C:\ProgramData\iotedge\config.yaml
    ```
 
-既定では、`agent` 要素は次のようになります。
+既定では、`agent` 要素は次の例のようになります。
 
    ```yaml
    agent:
@@ -146,7 +146,7 @@ Windows の場合:
 
 ファイルを保存し、IoT Edge Security Manager を再起動します。
 
-IoT Hub デバイスと IoT Edge デバイスの間で送信されたメッセージを確認することもできます。 Visual Studio Code 用の [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) 拡張機能を使ってメッセージを表示します。 詳しくは、「[Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)」(Azure IoT で開発するときの便利なツール) をご覧ください。
+IoT Hub デバイスと IoT Edge デバイスの間で送信されたメッセージを確認することもできます。 Visual Studio Code 用の [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) 拡張機能を使ってメッセージを表示します。 詳細については、[Azure IoT で開発するときの便利なツール](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)に関するページを参照してください。
 
 ### <a name="restart-containers"></a>コンテナーを再起動する
 ログとメッセージの情報を調べた後は、コンテナーの再起動を試みることもできます。
@@ -181,7 +181,7 @@ Windows の場合:
 
 ## <a name="edge-agent-stops-after-about-a-minute"></a>約 1 分後に Edge エージェントが停止する
 
-Edge エージェントが起動し、約 1 分間正常に実行した後、停止します。 ログでは、Edge エージェントが AMQP 経由で IoT Hub に接続を試み、約 30 秒後に WebSocket 経由の AMQP を使って接続しようとしたことが示されています。 それが失敗すると、Edge エージェントは終了します。 
+Edge エージェントが起動し、約 1 分間正常に実行した後、停止します。 ログでは、Edge エージェントが AMQP 経由で IoT Hub に接続を試みて、その後、WebSocket 経由の AMQP を使って接続を試みていることが示されています。 それが失敗すると、Edge エージェントは終了します。 
 
 Edge エージェント ログの例:
 
@@ -193,7 +193,7 @@ Edge エージェント ログの例:
 ```
 
 ### <a name="root-cause"></a>根本原因
-ホスト ネットワークでのネットワーク構成のために、Edge エージェントはネットワークに到達できません。 エージェントは、最初に AMQP (ポート 5671) で接続を試みます。 それが失敗した場合は、WebSocket (ポート 443) を試します。
+ホスト ネットワークでのネットワーク構成のために、Edge エージェントはネットワークに到達できません。 エージェントは、最初に AMQP (ポート 5671) で接続を試みます。 接続が失敗した場合は、WebSocket (ポート 443) が試されます。
 
 IoT Edge ランタイムは、各モジュールが通信するネットワークをセットアップします。 Linux では、このネットワークはブリッジ ネットワークです。 Windows では、NAT を使います。 この問題は、NAT ネットワークを使う Windows コンテナーを使っている Windows デバイスで、より多く見られます。 
 
@@ -235,7 +235,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 ```
 
 ### <a name="root-cause"></a>根本原因
-IoT Edge ランタイムは、64 文字未満のホスト名のみをサポートできます。 これは通常、物理マシンの場合は問題になりませんが、仮想マシン上にランタイムを設定するときに発生する場合があります。 特に、Azure でホストされる Windows 仮想マシンのために自動生成されるホスト名は長くなる傾向があります。 
+IoT Edge ランタイムは、64 文字未満のホスト名のみをサポートできます。 通常、物理マシンに長いホスト名は付いていませんが、これは仮想マシンではより一般的な問題です。 特に、Azure でホストされる Windows 仮想マシンのために自動生成されるホスト名は長くなる傾向があります。 
 
 ### <a name="resolution"></a>解決策
 このエラーが発生したときは、仮想マシンの DNS 名を構成し、setup コマンドでその DNS 名をホスト名として設定することで、エラーを解決できます。
@@ -265,16 +265,16 @@ IoT Edge ランタイムは、64 文字未満のホスト名のみをサポー�
 Raspberry Pi のようなリソースに制約があるデバイスを、特にゲートウェイとして使用した場合、安定性の問題が発生する可能性があります。 症状には、Edge ハブ モジュールのメモリ不足例外、ダウンストリームのデバイスの構成不能、数時間後のデバイスによるテレメトリ メッセージの送信停止が含まれます。
 
 ### <a name="root-cause"></a>根本原因
-Edge ハブは Edge ランタイムの一部であり、既定ではパフォーマンス用に最適化されており、大きな塊のメモリを割り当てようとします。 これは制約がある Edge デバイスには適していないため、安定性の問題が発生する可能性があります。
+Edge ハブは Edge ランタイムの一部であり、既定ではパフォーマンス用に最適化されており、大きな塊のメモリを割り当てようとします。 この最適化は、制約のある Edge デバイスには適していないため、安定性の問題が発生する可能性があります。
 
 ### <a name="resolution"></a>解決策
-Edge ハブに対して、環境変数 **OptimizeForPerformance** を**false** に設定します。 この作業を実行する 2 つの方法があります。
+Edge ハブに対して、環境変数 **OptimizeForPerformance** を **false** に設定します。 この作業を実行する 2 つの方法があります。
 
 UI で: 
 
 ポータルで、*[デバイスの詳細]*->*[モジュールの設定]*->*[Edge ランタイムの詳細設定を構成する]* に移動し、*Edge ハブ* に対して *false* が設定された *OptimizeForPerformance* という名前の環境変数を作成します。
 
-![optimizeforperformance][img-optimize-for-perf]
+![optimizeforperformance](./media/troubleshoot/OptimizeForPerformanceFalse.png)
 
 **OR**
 
@@ -297,7 +297,7 @@ UI で:
 Windows で `Get-WinEvent` の使用時に EventLogException が表示された場合、レジストリ エントリを確認してください。
 
 ### <a name="root-cause"></a>根本原因
-`Get-WinEvent` PowerShell コマンドは、特定の `ProviderName` でログを見つけるとき、レジストリ エントリを利用します。
+`Get-WinEvent` PowerShell コマンドは、存在しているレジストリ エントリを利用して、特定の `ProviderName` でログを見つけます。
 
 ### <a name="resolution"></a>解決策
 IoT Edge デーモンにレジストリ エントリを設定します。 次の内容の **iotedge.reg** ファイルを作成し、ダブルクリックするか `reg import iotedge.reg` コマンドを使用して Windows レジストリにインポートします。
@@ -320,26 +320,24 @@ Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/ada
 ```
 
 ### <a name="root-cause"></a>根本原因
-IoT Edge デーモンでは、セキュリティ上の理由から、edgeHub に接続するすべてのモジュールのプロセス識別が強制されます。 モジュールによって送信されているすべてのメッセージが、モジュールのメイン プロセス ID から来たものであることが確認されます。 モジュールによって、最初に確立されたのと異なるプロセス ID からメッセージが送信されている場合、そのメッセージは 404 エラー メッセージで拒否されます。
+IoT Edge デーモンでは、セキュリティ上の理由から、edgeHub に接続するすべてのモジュールのプロセス識別が強制されます。 モジュールによって送信されているすべてのメッセージが、モジュールのメイン プロセス ID から来ていることが確認されます。 モジュールによって、最初に確立されたのと異なるプロセス ID からメッセージが送信されている場合、そのメッセージは 404 エラー メッセージで拒否されます。
 
 ### <a name="resolution"></a>解決策
 カスタム IoT Edge モジュールによる edgeHub へのメッセージの送信で、常に同じプロセス ID が使用されるようにします。 たとえば、Docker ファイルで、`CMD` コマンドではなく `ENTRYPOINT` コマンドを使用するようにします。これは、`ENTRYPOINT` では単一のプロセス ID が使用されるのに対して、`CMD` ではモジュールに 1 つのプロセス ID が使用され、メイン プログラムを実行している bash コマンドには別のプロセス ID が使用されるためです。
 
 
 ## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>IoT Edge デプロイのファイアウォール規則とポート構成規則
-Azure IoT Edge では、サポートされている IoT Hub プロトコルを使用した、オンプレミスの Edge サーバーから Azure クラウドへの通信が許可されています。[通信プロトコルの選択](../iot-hub/iot-hub-devguide-protocols.md)に関するページを参照してください。 セキュリティ強化のため、Azure IoT Edge と Azure IoT Hub の間の通信チャネルは常にアウトバウンドに構成されます。これは、[Services Assisted Communication パターン](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)に基づいています。そうすることで、悪意のある者が探索する攻撃面が最小限に抑えられます。 インバウンド通信は、Azure IoT Hub が Azure IoT Edge サーバーにメッセージをプッシュダウンする必要がある特定のシナリオ (たとえば cloud-to-device メッセージング) でのみ必要です。それらの通信も、安全な TLS チャネルを使用して保護され、さらに X.509 証明書と TPM デバイス モジュールを使用して保護されます。 この通信の確立方法は、Azure IoT Edge セキュリティ マネージャーによって管理されます。[IoT Edge セキュリティ マネージャー](../iot-edge/iot-edge-security-manager.md)に関するページを参照してください。
+Azure IoT Edge では、サポートされている IoT Hub プロトコルを使用した、オンプレミスの Edge サーバーから Azure クラウドへの通信が許可されています。[通信プロトコルの選択](../iot-hub/iot-hub-devguide-protocols.md)に関するページを参照してください。 セキュリティ強化のため、Azure IoT Edge と Azure IoT Hub の間の通信チャネルは常にアウトバウンドに構成されます。 この構成は、[サービス支援通信方式](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/)に基づいていて、悪意のあるエンティティが探る攻撃対象の領域が最小限になります。 インバウンド通信が必要なのは、Azure IoT Hub がメッセージを Azure IoT Edge デバイスにプッシュする必要がある特定のシナリオのみです。 cloud-to-device メッセージは、セキュリティで保護された TLS チャネルを使用して保護されます。また、X.509 証明書と TPM デバイス モジュールを使用してさらに保護することができます。 この通信の確立方法は、Azure IoT Edge セキュリティ マネージャーによって管理されます。[IoT Edge セキュリティ マネージャー](../iot-edge/iot-edge-security-manager.md)に関するページを参照してください。
 
 IoT Edge は、Azure IoT Edge ランタイムとデプロイされたモジュールをセキュリティで保護するための強化された構成を提供しますが、依然として基になるマシンとネットワークの構成に依存しています。 そのため、Edge からクラウドへの安全な通信を実現するための適切なネットワーク規則およびファイアウォール規則が設定されていることを確認する必要があります。 Azure IoT Edge ランタイムがホストされている、基になるサーバーのファイアウォール規則を構成するときには、以下の設定をガイドラインとして使用できます。
 
 |プロトコル|ポート|受信|送信|ガイダンス|
 |--|--|--|--|--|
 |MQTT|8883|ブロック (既定値)|ブロック (既定値)|<ul> <li>通信プロトコルとして MQTT を使用する場合は、送信 (アウトバウンド) をオープンになるように構成します。<li>MQTT での 1883 は、IoT Edge ではサポートされていません。 <li>受信 (インバウンド) 接続はブロックする必要があります。</ul>|
-|AMQP|5671|ブロック (既定値)|オープン (既定値)|<ul> <li>IoT Edge の既定の通信プロトコル。 <li> Azure IoT Edge が他のサポートされているプロトコル用に構成されていない場合、または AMQP が望ましい通信プロトコルである場合は、オープンになるように構成する必要があります。<li>AMQP での 5672 は、IoT Edge ではサポートされていません。<li>IoT Hub でサポートされている別のプロトコルが Azure IoT Edge によって使用されている場合は、このポートをブロックします。<li>受信 (インバウンド) 接続はブロックする必要があります。</ul></ul>|
-|HTTPS|443|ブロック (既定値)|オープン (既定値)|<ul> <li>443 で IoT Edge プロビジョニング用に送信 (アウトバウンド) がオープンになるように構成します。手動スクリプトまたは Azure IoT Device Provisioning Service (DPS) を使用する場合は、こうする必要があります。 <li>受信 (インバウンド) 接続が以下の特定のシナリオだけでオープンになるようにする必要があります。 <ul> <li>  メソッド要求を送信することがあるリーフ デバイスを備えた透過的なゲートウェイがある場合。 この場合、ポート 443 は、IoT Hub に接続したり Azure IoT Edge を通じて IoT Hub サービスを提供したりするために外部ネットワークに対してオープンにする必要はありません。 そのため、受信規則は内部ネットワークからのオープンな受信 (インバウンド) だけに制限することができます。 <li> Client to Device (C2D) シナリオの場合。</ul><li>HTTP での 80 は、IoT Edge ではサポートされていません。<li>企業内で非 HTTP プロトコル (AMQP、MQTT など) を構成できない場合は、メッセージを WebSockets 経由で送信できます。 その場合、ポート 443 は WebSocket 通信のために使用されます。</ul>|
+|AMQP|5671|ブロック (既定値)|オープン (既定値)|<ul> <li>IoT Edge の既定の通信プロトコル。 <li> Azure IoT Edge が他のサポートされているプロトコル用に構成されていない場合、または AMQP が望ましい通信プロトコルである場合は、オープンになるように構成する必要があります。<li>AMQP での 5672 は、IoT Edge ではサポートされていません。<li>Azure IoT Edge が、IoT Hub でサポートされているのとは異なるプロトコルを使用する場合は、このポートをブロックします。<li>受信 (インバウンド) 接続はブロックする必要があります。</ul></ul>|
+|HTTPS|443|ブロック (既定値)|オープン (既定値)|<ul> <li>IoT Edge のプロビジョニングのために、送信 (アウトバウンド) を 443 でオープンにするように構成します。 この構成は、手動スクリプトや Azure IoT Device Provisioning Service (DPS) を使用する場合に必要です。 <li>受信 (インバウンド) 接続が以下の特定のシナリオだけでオープンになるようにする必要があります。 <ul> <li>  メソッド要求を送信することがあるリーフ デバイスを備えた透過的なゲートウェイがある場合。 この場合、ポート 443 は、IoT Hub に接続したり Azure IoT Edge を通じて IoT Hub サービスを提供したりするために外部ネットワークに対してオープンにする必要はありません。 そのため、受信規則は内部ネットワークからのオープンな受信 (インバウンド) だけに制限することができます。 <li> Client to Device (C2D) シナリオの場合。</ul><li>HTTP での 80 は、IoT Edge ではサポートされていません。<li>企業内で非 HTTP プロトコル (AMQP や MQTT など) を構成できない場合は、メッセージを WebSockets 経由で送信できます。 その場合、ポート 443 は WebSocket 通信のために使用されます。</ul>|
 
 
 ## <a name="next-steps"></a>次の手順
 IoT Edge プラットフォームのバグを発見したと思われる場合は、 改善を続けられるように[問題を報告](https://github.com/Azure/iotedge/issues)してください。 
 
-<!-- Images -->
-[img-optimize-for-perf]: ./media/troubleshoot/OptimizeForPerformanceFalse.png

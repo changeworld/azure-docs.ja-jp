@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: rafats
-ms.openlocfilehash: 5811cb1e08ed5d02038da2a4460ae4b63580833b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: ff432de59e5a5fdfeaad4c3a5361554ee32e21b0
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696141"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740010"
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB における一意なキー
 
@@ -130,7 +130,7 @@ private static async Task CreateCollectionIfNotExistsAsync(string dataBase, stri
 次のコマンドの例は、MongoDB API のユーザー コレクションの firstName、lastName、email フィールドに対して、一意なインデックスを作成する方法を示しています。 これにより、コレクション内のすべてのドキュメント間で、3 つすべてのフィールドの組み合わせが一意であることが保証されます。 MongoDB API のコレクションでは、一意なインデックスが作成されるのはコレクションの作成後、コレクションにデータが設定される前になります。
 
 > [!NOTE]
-> MongoDB API アカウントの一意キーの形式は、SQL API のキーの形式とは異なります。フィールド名の前にバックスラッシュ (/) 文字を指定する必要はありません。 
+> MongoDB API アカウントの一意キーの形式は、SQL API のキーの形式とは異なります。フィールド名の前にスラッシュ (/) 文字を指定する必要はありません。 
 
 ```
 db.users.createIndex( { firstName: 1, lastName: 1, email: 1 }, { unique: true } )

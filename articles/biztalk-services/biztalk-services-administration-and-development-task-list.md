@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 9edd7261ca62f505ffb4854e3132fae916768f67
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e762141e089b11dd0fb129f3bf758874d4ad4da8
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26626589"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227639"
 ---
 # <a name="administration-and-development-task-list-in-biztalk-services"></a>BizTalk Services の管理および開発タスク一覧
 
@@ -32,18 +32,18 @@ Microsoft Azure BizTalk Services を使用する場合、考慮する必要が�
 
 | 手順 | 責任者 | タスク | 関連リンク |
 | --- | --- | --- | --- |
-| 1. |管理者 |Microsoft アカウントまたは組織アカウントを使用して、Microsoft Azure のサブスクリプションを作成します |[Azure ポータル](https://portal.azure.com) |
-| 手順 2. |管理者 |BizTalk サービスの作成またはプロビジョニング |[BizTalk サービスを作成する](https://msdn.microsoft.com/library/azure/dn232347.aspx) |
-| 3. |管理者 |個人または会社の BizTalk Services のデプロイを登録します。 |[BizTalk Services ポータルでの BizTalk サービス デプロイの登録と更新](https://msdn.microsoft.com/library/azure/hh689837.aspx) |
+| 1. |管理者 |Microsoft アカウントまたは組織アカウントを使用して、Microsoft Azure のサブスクリプションを作成します |[Azure Portal](https://portal.azure.com) |
+| 2. |管理者 |BizTalk サービスの作成またはプロビジョニング |[BizTalk サービスを作成する](https://msdn.microsoft.com/library/azure/dn232347.aspx) |
+| 手順 3. |管理者 |個人または会社の BizTalk Services のデプロイを登録します。 |[BizTalk Services ポータルでの BizTalk サービス デプロイの登録と更新](https://msdn.microsoft.com/library/azure/hh689837.aspx) |
 | 4. |管理者 |アプリケーションが BizTalk Adapter サービスを使用してオンプレミス基幹業務 (LOB) システムに接続しているか、キューまたはトピック ターゲットを使用している場合に適用されます。  Azure Service Bus 名前空間を作成します。 この名前空間、Service Bus の発行者名、および Service Bus の発行者キー値を開発者に伝えます。 |「[方法: Service Bus サービス名前空間を作成または変更する](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md)」および「[発行者名および発行者キー値の取得](biztalk-issuer-name-issuer-key.md)」 |
 | 5. |Developer |SDK をインストールし、Visual Studio で BizTalk サービス プロジェクト を作成します。 |「[Azure BizTalk Services SDK のインストール](https://msdn.microsoft.com/library/azure/hh689760.aspx)」および「[Azure の多機能メッセージング エンドポイントの作成](https://msdn.microsoft.com/library/azure/hh689766.aspx)」 |
-| 6. |Developer |Azure でホストされている BizTalk サービスに BizTalk サービス プロジェクトをデプロイします。 |[BizTalk Services プロジェクトのデプロイおよび更新](https://msdn.microsoft.com/library/azure/hh689881.aspx) |
+| 6. |開発者 |Azure でホストされている BizTalk サービスに BizTalk サービス プロジェクトをデプロイします。 |[BizTalk Services プロジェクトのデプロイおよび更新](https://msdn.microsoft.com/library/azure/hh689881.aspx) |
 | 7. |管理者 |EDI を使用している場合に適用されます。  パートナーを追加し、Microsoft Azure BizTalk Services ポータルでアグリーメントを作成できます。 アグリーメントを作成するときに、アグリーメントの設定に開発者が作成したブリッジまたは変換を追加することができます。 |[BizTalk Services ポータルでの EDI、AS2、および EDIFACT の構成](https://msdn.microsoft.com/library/azure/hh689853.aspx) |
-| 8. |管理者 |[REST](https://msdn.microsoft.com/library/azure/dn232347.aspx) を使って、パフォーマンス メトリックなど、BizTalk サービスの状態を監視します。 |[BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](http://go.microsoft.com/fwlink/p/?LinkID=302281) |
+| 8. |管理者 |[REST](https://msdn.microsoft.com/library/azure/dn232347.aspx) を使って、パフォーマンス メトリックなど、BizTalk サービスの状態を監視します。 |[BizTalk Services: [ダッシュボード]、[監視]、および [スケール] タブ](https://go.microsoft.com/fwlink/p/?LinkID=302281) |
 | 9. |管理者 |Microsoft Azure BizTalk Services ポータルを使用して、BizTalk Services で使用されているアーティファクトを管理し、ブリッジ ファイルで処理されるメッセージを追跡します。 |[BizTalk Services ポータルを使用する](https://msdn.microsoft.com/library/azure/dn874043.aspx) |
 | 10. |管理者 |バックアップ計画を作成して BizTalk サービスをバックアップします。 |[BizTalk Services のビジネス継続性と障害復旧](https://msdn.microsoft.com/library/azure/dn509557.aspx) |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [チュートリアルとサンプル](https://msdn.microsoft.com/library/azure/hh689895.aspx)
 
 [Visual Studio でのプロジェクトの作成](https://msdn.microsoft.com/library/azure/hh689811.aspx)
@@ -58,5 +58,5 @@ Microsoft Azure BizTalk Services を使用する場合、考慮する必要が�
 [ソース、宛先、およびブリッジ メッセージング エンドポイントの追加](https://msdn.microsoft.com/library/azure/hh689877.aspx)  
 [メッセージ マップおよび変換の学習および作成](https://msdn.microsoft.com/library/azure/hh689905.aspx)  
 [BizTalk アダプター サービス (BAS) の使用](https://msdn.microsoft.com/library/azure/hh689889.aspx)  
-[Azure BizTalk Services](http://go.microsoft.com/fwlink/p/?LinkID=303664)
+[Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=303664)
 

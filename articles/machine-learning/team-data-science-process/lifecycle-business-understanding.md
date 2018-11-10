@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 6d8eedbbf4a682443e73ecb9cf9496f3cdd1cd9d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 00dc359fc171afe470b1dfe8f38d0951085ec580
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34837203"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228302"
 ---
 # <a name="business-understanding"></a>ビジネスの把握
 
@@ -29,7 +29,7 @@ ms.locfileid: "34837203"
    1. **ビジネスの把握**
    2. **データの取得と理解**
    3. **モデリング**
-   4. **デプロイ**
+   4. **Deployment**
    5. **顧客による受け入れ**
 
 TDSP ライフサイクルを視覚化すると、次のようになります。 
@@ -92,9 +92,9 @@ TDSP のライフサイクルの各ステップへのリンクを次に示しま
    1. [ビジネスの把握](lifecycle-business-understanding.md)
    2. [データの取得と理解](lifecycle-data.md)
    3. [モデリング](lifecycle-modeling.md)
-   4. [デプロイ](lifecycle-deployment.md)
+   4. [Deployment](lifecycle-deployment.md)
    5. [顧客による受け入れ](lifecycle-acceptance.md)
 
 特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 
-Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](http://aka.ms/datascienceprocess)」を参照してください。
+Azure Machine Learning Studio を使用して TDSP の手順を実行する方法の例については、「[Azure Machine Learning での Team Data Science Process の使用](https://aka.ms/datascienceprocess)」を参照してください。

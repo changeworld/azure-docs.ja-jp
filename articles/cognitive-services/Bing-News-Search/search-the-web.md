@@ -10,12 +10,12 @@ ms.component: bing-news-search
 ms.topic: overview
 ms.date: 06/21/2016
 ms.author: scottwhi
-ms.openlocfilehash: 4ed816b117d11dd38e6a8ea5191171b812db0f1c
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
+ms.openlocfilehash: 7a5df20358198e7ccb44ccc60be3ab7716f71ba6
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50023204"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227860"
 ---
 # <a name="what-is-bing-news-search"></a>Bing News Search とは
 
@@ -45,7 +45,7 @@ Host: api.cognitive.microsoft.com
 
 いずれかの Bing API を初めて呼び出す場合は、クライアント ID ヘッダーを含めないでください。 クライアント ID を含めるのは、過去に Bing API を呼び出したことがあり、かつユーザーとデバイスの組み合わせに対応するクライアント ID が Bing から返されたことがある場合だけです。
 
-特定のドメインからニュースを取得するには、[site:](http://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
+特定のドメインからニュースを取得するには、[site:](https://msdn.microsoft.com/library/ff795613.aspx) というクエリ演算子を使用します。
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1

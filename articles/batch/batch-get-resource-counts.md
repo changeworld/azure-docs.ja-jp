@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 09/07/2018
 ms.author: danlep
-ms.openlocfilehash: e1d6f2d6181e70fde75907191664dcf6cd0b7252
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 5c65ee3ecc851b289c32a480ecad8f2df3aaad95
+ms.sourcegitcommit: 799a4da85cf0fec54403688e88a934e6ad149001
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391761"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50913888"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>タスクとノードを状態別にカウントして、Batch ソリューションを監視する
 
@@ -42,7 +42,7 @@ ms.locfileid: "44391761"
 次の .NET コード サンプルは、状態別のタスクの数を取得する方法を示しています。 
 
 ```csharp
-var taskCounts = await batchClient.JobOperations.GetTaskCountsAsync("job-1");
+var taskCounts = await batchClient.JobOperations.GetJobTaskCountsAsync("job-1");
 
 Console.WriteLine("Task count in active state: {0}", taskCounts.Active);
 Console.WriteLine("Task count in preparing or running state: {0}", taskCounts.Running);

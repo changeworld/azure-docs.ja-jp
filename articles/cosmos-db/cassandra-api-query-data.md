@@ -9,14 +9,14 @@ ms.reviewer: sngun
 ms.component: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: c1fb4c27f897e3c0952ed6419e167613ac8204f7
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a06e7e6159953bfeffa966759d29b91bbcbafd37
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223493"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739211"
 ---
-# <a name="query-data-from-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API アカウントのデータのクエリを実行する
+# <a name="tutorial-query-data-from-an-azure-cosmos-db-cassandra-api-account"></a>チュートリアル: Azure Cosmos DB Cassandra API アカウントのデータのクエリを実行する
 
 このチュートリアルでは、Java アプリケーションを使用して、Azure Cosmos DB Cassandra API アカウントのユーザー データのクエリを実行する方法について説明します。 この Java アプリケーションでは、[Java ドライバー](https://github.com/datastax/java-driver)を使用して、ユーザー ID、ユーザー名、ユーザー所在地などのユーザー データのクエリを実行します。 
 
@@ -28,59 +28,65 @@ ms.locfileid: "47223493"
 
 ## <a name="prerequisites"></a>前提条件
 
-* この記事では、マルチパートのチュートリアルの一部です｡ 開始する前に、必ず前の手順を実行して [Cassandra API アカウント、キースペース、テーブルを作成](create-cassandra-api-account-java.md)し、[サンプル データをテーブルに読み込んでください](cassandra-api-load-data.md)。 
+* この記事では、マルチパートのチュートリアルの一部です｡ 開始する前に、必ず前の手順を実行して Cassandra API アカウント、キースペース、テーブルを作成し、[サンプル データをテーブルに読み込んで](cassandra-api-load-data.md)ください。 
 
 ## <a name="query-data"></a>データのクエリを実行する
 
-`src\main\java\com\azure\cosmosdb\cassandra` フォルダーにある `UserRepository.java` ファイルを開きます。 次のコード ブロックを末尾に追加します。 このコードには 3 つの機能があります。データベース内のすべてのユーザーに対してクエリを実行する機能、ユーザー ID を指定してフィルター処理された特定のユーザーに対してクエリを実行する機能、そしてテーブルを削除する機能です。 
+以下の手順を使用して、Cassandra API アカウントのデータに対するクエリを実行します。
 
-```java
-/**
-* Select all rows from user table
-*/
-public void selectAllUsers() {
+1. `src\main\java\com\azure\cosmosdb\cassandra` フォルダーにある `UserRepository.java` ファイルを開きます。 次のコード ブロックを末尾に追加します。 このコードは、次の 3 つの方法を提供します。 
 
-    final String query = "SELECT * FROM uprofile.user";
-    List<Row> rows = session.execute(query).all();
+   * データベース内のすべてのユーザーを照会する
+   * ユーザー ID でフィルター処理された特定のユーザーを照会する
+   * テーブルを削除する。
 
-    for (Row row : rows) {
-       LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
-    }
-}
+   ```java
+   /**
+   * Select all rows from user table
+   */
+   public void selectAllUsers() {
 
-/**
-* Select a row from user table
-*
-* @param id user_id
-*/
-public void selectUser(int id) {
-    final String query = "SELECT * FROM uprofile.user where user_id = 3";
-    Row row = session.execute(query).one();
+     final String query = "SELECT * FROM uprofile.user";
+     List<Row> rows = session.execute(query).all();
 
-    LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
-}
+     for (Row row : rows) {
+        LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
+     }
+   }
 
-/**
-* Delete user table.
-*/
-public void deleteTable() {
-   final String query = "DROP TABLE IF EXISTS uprofile.user";
-   session.execute(query);
-}
-```
+   /**
+   * Select a row from user table
+   *
+   * @param id user_id
+   */
+   public void selectUser(int id) {
+      final String query = "SELECT * FROM uprofile.user where user_id = 3";
+      Row row = session.execute(query).one();
 
-`src\main\java\com\azure\cosmosdb\cassandra` フォルダーにある `UserProfile.java` ファイルを開きます。 このクラスには、createKeyspace および createTable (以前に定義したデータの挿入メソッド) を呼び出す main メソッドが含まれています。 すべてのユーザーまたは特定のユーザーに対してクエリを実行する次のコードを末尾に追加します。
+      LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
+   }
 
-```java
-LOGGER.info("Select all users");
-repository.selectAllUsers();
+   /**
+   * Delete user table.
+   */
+   public void deleteTable() {
+     final String query = "DROP TABLE IF EXISTS uprofile.user";
+     session.execute(query);
+   }
+   ```
 
-LOGGER.info("Select a user by id (3)");
-repository.selectUser(3);
+2. `src\main\java\com\azure\cosmosdb\cassandra` フォルダーにある `UserProfile.java` ファイルを開きます。 このクラスには、createKeyspace および createTable (以前に定義したデータの挿入メソッド) を呼び出す main メソッドが含まれています。 すべてのユーザーまたは特定のユーザーに対してクエリを実行する次のコードを末尾に追加します。
 
-LOGGER.info("Delete the users profile table");
-repository.deleteTable();
-```
+   ```java
+   LOGGER.info("Select all users");
+   repository.selectAllUsers();
+
+   LOGGER.info("Select a user by id (3)");
+   repository.selectUser(3);
+
+   LOGGER.info("Delete the users profile table");
+   repository.deleteTable();
+   ```
 
 ## <a name="run-the-java-app"></a>Java アプリを実行する
 1. コマンド プロンプトまたはターミナル ウィンドウを開きます。 次のコード ブロックを貼り付けます。 

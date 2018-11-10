@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 30a23010f326189ffd5886407d70e357abb9c53e
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 81e41ce6818a6f56ba5e6e888480f8b25979fb81
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038500"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50979201"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題についてよくあるご質問 (FAQ)
 
@@ -142,7 +142,7 @@ csdef および cscfg のアップロード先に blob またはローカルを�
 
 ### <a name="how-do-i-enable-wad-logging-for-cloud-services"></a>Cloud Services の WAD ログ記録を有効にする方法を教えてください。
 Windows Azure 診断 (WAD) ログ記録は、次のオプションを使用して有効にできます。
-1. [Visual Studio から有効にする](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
+1. [Visual Studio から有効にする](https://docs.microsoft.com/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)
 2. [.Net コードを使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics)
 3. [PowerShell を使用して有効にする](https://docs.microsoft.com/azure/cloud-services/cloud-services-diagnostics-powershell)
 
@@ -248,7 +248,7 @@ Application Insights でカスタム メトリックを利用してクラウド 
 
 Cloud Services 用に Application Insights を有効にする方法について詳しくは、「[Azure Cloud Services 向けの Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices)」をご覧ください
 
-Cloud Services 用に Azure 診断ログを有効にする方法について詳しくは、「[Azure クラウド サービスと仮想マシンに対する診断を設定する](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)」をご覧ください
+Cloud Services 用に Azure 診断ログを有効にする方法について詳しくは、「[Azure クラウド サービスと仮想マシンに対する診断を設定する](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them)」をご覧ください
 
 ## <a name="generic"></a>ジェネリック
 

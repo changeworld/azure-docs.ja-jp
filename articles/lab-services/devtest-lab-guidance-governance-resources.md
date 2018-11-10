@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 2edfa84530c147e1f716aef10c967ac36eadc922
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 2d17f4471383be623cb40276ec1e51257bf3fbce
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250837"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740384"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Azure DevTest Labs インフラストラクチャのガバナンス - リソース
 この記事では、組織内での DevTest Labs 用リソースの調整と管理について説明します。 
@@ -67,7 +67,7 @@ DevTest Labs をデプロイするときは、開始時のポリシーを具体�
 
 また、地理的境界を考慮することが必要な場合があります。 たとえば、米国 (US) 北東部の開発者は、米国東部 2 でプロビジョニングされたラボを使用できます。 また、テキサス州ダラスおよびコロラド州デンバーの開発者は、米国中南部のリソースを使用できます。 外部のサード パーティと共同作業する場合は、社内開発者によって使用されていないラボに割り当てることができます。 
 
-また、Visual Studio Team Services チーム プロジェクト内の特定のプロジェクトのラボを使用することもできます。 その後、指定された Azure Active Directory グループによってセキュリティを適用すると、両方のリソースのセットにアクセスできます。 ラボに割り当てられた仮想ネットワークは、ユーザーを統合する別の境界になる場合があります。
+また、Azure DevOps プロジェクト内の特定のプロジェクトのラボを使用することもできます。 その後、指定された Azure Active Directory グループによってセキュリティを適用すると、両方のリソースのセットにアクセスできます。 ラボに割り当てられた仮想ネットワークは、ユーザーを統合する別の境界になる場合があります。
 
 ## <a name="deletion-of-resources"></a>リソースの削除
 

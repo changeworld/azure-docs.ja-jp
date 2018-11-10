@@ -2,19 +2,19 @@
 title: 機械学習の概要 - Azure HDInsight
 description: HDInsight の機械学習オプションについて説明します。
 services: hdinsight
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.author: jasonh
-ms.openlocfilehash: 10d4056ea9d78bd56710b7b5d67297b90232cf0b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.author: hrasheed
+ms.openlocfilehash: 2ac108d65b42221189e50987238ad3d7edad1e30
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43107733"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51005341"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight での機械学習
 

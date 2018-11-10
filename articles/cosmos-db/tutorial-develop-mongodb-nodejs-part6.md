@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 06/17/2018
 ms.author: jopapa
 ms.custom: mvc
-ms.openlocfilehash: a1705913e1656901d0a87a3cebb2eb69a6c7ad63
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 667c1fbce398e06f9f2a6edca21935ae1062a737
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43698589"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50740572"
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-6-add-post-put-and-delete-functions-to-the-app"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 6: Post、Put、Delete の各関数をアプリに追加する
 
@@ -88,13 +88,13 @@ ms.locfileid: "43698589"
     });
     ```
 
-5. アプリを実行して正常に動作するかどうかを確かめます。 Visual Studio Code で変更内容をすべて保存してください。左側にある **[デバッグ]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)) をクリックし、**[デバッグ開始]** ボタン (![Visual Studio Code のデバッグ開始アイコン](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)) をクリックします。
+5. アプリを実行して正常に動作するかどうかを確かめます。 Visual Studio Code で変更内容をすべて保存してください。左側にある **[デバッグ]** ボタン (![Visual Studio Code のデバッグ アイコン](./media/tutorial-develop-mongodb-nodejs-part6/debug-button.png)) を選択し、**[デバッグ開始]** ボタン (![Visual Studio Code のデバッグ開始アイコン](./media/tutorial-develop-mongodb-nodejs-part6/start-debugging-button.png)) を選択します。
 
 6. インターネット ブラウザーに戻り、デベロッパー ツールの [Network] タブを開きます。ほとんどのマシンでは、F12 キーを押すと、デベロッパー ツールが表示されます。 [http://localhost:3000](http://localhost:3000) にアクセスして、ネットワーク上で実行される呼び出しを観察します。
 
     ![Chrome の [Network] タブでネットワーク アクティビティを表示](./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png)
 
-7. **[Add New Hero]** ボタンをクリックして新しいヒーローを追加します。 ID に「999」を、名前に「Fred」を、台詞に「Hello」と入力して、**[Save]** をクリックします。 [Network] タブを見ると、新しいヒーローの POST 要求が送信されたことを確認できます。 
+7. **[Add New Hero]** ボタンを選択して新しいヒーローを追加します。 ID に「999」を、名前に「Fred」を、台詞に「Hello」と入力して、**[Save]** を選択します。 [Network] タブを見ると、新しいヒーローの POST 要求が送信されたことを確認できます。 
 
     ![Chrome の [Network] タブで Get 関数と Post 関数のネットワーク アクティビティを表示](./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png)
 
@@ -173,17 +173,17 @@ ms.locfileid: "43698589"
     };
     ```
 
-4. コードを更新したら、Visual Studio Code の **[再起動]** ボタン (![Visual Studio Code の [再起動] ボタン](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)) をクリックします。
+4. コードを更新したので、Visual Studio Code の **[再起動]** ボタン (![Visual Studio Code の [再起動] ボタン](./media/tutorial-develop-mongodb-nodejs-part6/restart-debugger-button.png)) を選択します。
 
-5. インターネット ブラウザーでページを最新の情報に更新し、**[Add New Hero]** ボタンをクリックします。 新しいヒーローを追加します。ID に「9」を、名前に「Starlord」を、台詞に「Hi」を入力してください。 **[Save]** ボタンをクリックして新しいヒーローを保存します。
+5. インターネット ブラウザーでページを最新の情報に更新し、**[Add New Hero]** ボタンを選択します。 新しいヒーローを追加します。ID に「9」を、名前に「Starlord」を、台詞に「Hi」を入力してください。 **[Save]** ボタンを選択して新しいヒーローを保存します。
 
-6. 次に **[Starlord]** ヒーローを選択し、その台詞を "Hi" から "Bye" に変更して、**[Save]** ボタンをクリックします。 
+6. 次に **[Starlord]** ヒーローを選択し、その台詞を "Hi" から "Bye" に変更して、**[Save]** ボタンを選択します。 
 
     [Network] タブで ID を選択すると、ペイロードが表示されます。 ペイロードを見ると、台詞が "Bye" に設定されていることが確認できます。
 
     ![Heroes アプリと [Network] タブでペイロードを表示](./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png) 
 
-    いずれかのヒーローを UI で削除して、削除操作にかかった時間を確認することもできます。 "Fred" というヒーローの [Delete] ボタンをクリックして試してみましょう。
+    いずれかのヒーローを UI で削除して、削除操作にかかった時間を確認することもできます。 "Fred" というヒーローの [Delete] ボタンを選択して試してみましょう。
 
     ![Heroes アプリと [Network] タブで関数の所要時間を表示](./media/tutorial-develop-mongodb-nodejs-part6/times.png) 
 

@@ -15,17 +15,17 @@ ms.topic: get-started-article
 ms.date: 07/13/2017
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7d11d238b921c63d1d2317371da07d8e49e8ac9d
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 41bbc2fd57617bb4bafb121f9c766b1f673dd075
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46301974"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51228625"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: DirSync からのアップグレード
 Azure AD Connect は DirSync の後継のツールです。 このトピックでは、DirSync からアップグレードする方法について説明します。 以下の手順は、Azure AD Connect の別のリリースまたは Azure AD Sync からのアップグレードには使用できません。
 
-Azure AD Connect のインストールを始める前に、必ず [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)し、[Azure AD Connect のハードウェアと前提条件](how-to-connect-install-prerequisites.md)に関するページに記載されている前提条件の手順を完了してください。 特に、以下の領域は DirSync とは異なるため、確認が必要です。
+Azure AD Connect のインストールを始める前に、必ず [Azure AD Connect をダウンロード](https://go.microsoft.com/fwlink/?LinkId=615771)し、[Azure AD Connect のハードウェアと前提条件](how-to-connect-install-prerequisites.md)に関するページに記載されている前提条件の手順を完了してください。 特に、以下の領域は DirSync とは異なるため、確認が必要です。
 
 * .NET と PowerShell の必須バージョン。 DirSync での必須バージョンよりも新しいバージョンがサーバーにインストールされている必要があります。
 * プロキシ サーバーの構成。 プロキシ サーバーを使用してインターネットに接続する場合は、アップグレードする前にこの設定を構成する必要があります。 DirSync では、インストールしたユーザー向けに構成されたプロキシ サーバーが常に使用されていましたが、Azure AD Connect では、コンピューターの設定が使用されます。

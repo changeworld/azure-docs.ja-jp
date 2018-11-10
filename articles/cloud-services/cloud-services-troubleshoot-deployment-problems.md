@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: 7f0e65b1de1df48603cab29148c7f4c6fb909714
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 348321592fc32f7dd77447c7217c7142f7ad9bd4
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094999"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51226942"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>クラウド サービスのデプロイメントに関する問題のトラブルシューティング
 クラウド サービス アプリケーション パッケージを Azure にデプロイするとき、デプロイメントに関する情報は、Azure Portal の **[プロパティ]** ウィンドウで確認できます。 クラウド サービスに関する問題は、このウィンドウの情報を頼りにトラブルシューティングすることができます。新規にサポート リクエストを行う際も、この情報を Azure サポートに提供してください。
@@ -50,7 +50,7 @@ ms.locfileid: "47094999"
 2. ロールのリサイクルが観測された時間帯にサービス復旧機能が作動したかどうかを、Azure ポータルの **[プロパティ]** ウィンドウの情報を見て調べます。
 
 ロールは、およそ月 1 回、ホスト OS とゲスト OS のアップグレード時にリサイクルされます。  
-詳細については、 [OS のアップグレードに伴うロール インスタンスの再起動](http://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)
+詳細については、 [OS のアップグレードに伴うロール インスタンスの再起動](https://blogs.msdn.com/b/kwill/archive/2012/09/19/role-instance-restarts-due-to-os-upgrades.aspx)
 
 ## <a name="problem-i-cannot-do-a-vip-swap-and-receive-an-error"></a>問題: VIP スワップを実行できずエラーが発生する
 デプロイメントの更新処理が行われている場合、VIP スワップが許可されません。 デプロイメントの更新処理は、次の状況で自動的に実行されます。
@@ -68,14 +68,14 @@ VIP スワップを妨げている原因が自動更新であることを確認�
 ## <a name="problem-a-role-instance-is-looping-between-started-initializing-busy-and-stopped"></a>問題: ロール インスタンスの状態が [開始済み]、[初期化しています]、[ビジー]、[停止] と絶えず変化する
 この状態は、アプリケーションのコード、パッケージ、または構成ファイルに問題があることを示している可能性があります。 該当する場合、数分おきに [状態] が変化し、Azure Portal には、**[リサイクル中]**、**[ビジー]**、**[初期化しています]** などと表示される場合があります。 これは、ロール インスタンスの実行を妨げる問題がアプリケーションに生じていることを示します。
 
-この問題をトラブルシューティングする方法の詳細については、[Azure PaaS 計算診断データ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)に関するブログ記事と「[ロールのリサイクルを引き起こす一般的な問題](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)」を参照してください。
+この問題をトラブルシューティングする方法の詳細については、[Azure PaaS 計算診断データ](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)に関するブログ記事と「[ロールのリサイクルを引き起こす一般的な問題](cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md)」を参照してください。
 
 ## <a name="problem-my-application-stopped-working"></a>問題: アプリケーションの動作しなくなった
 1. Azure ポータルで、ロール インスタンスをクリックします。
 2. Azure ポータルの **[プロパティ]** ウィンドウで次の状況を考慮しながら、問題を解決します。
    * ロール インスタンスが最近停止した場合 ( **[中止の数]** の値を確認)、デプロイが更新中である可能性があります。 しばらく待って、ロール インスタンスの機能が自然に再開するかどうかを確認してください。
    * ロール インスタンスが **[ビジー]** 状態である場合、アプリケーション コードを見て、 [StatusCheck](https://msdn.microsoft.com/library/microsoft.windowsazure.serviceruntime.roleenvironment.statuscheck) イベントを処理しているかどうかを確認します。 場合によっては、このイベントを処理するコードを追加するか、コードに修正を加える必要があります。
-   * [Azure PaaS コンピューティング診断データ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)に関するブログ記事で、診断データとトラブルシューティングのシナリオを参照してください。
+   * [Azure PaaS コンピューティング診断データ](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)に関するブログ記事で、診断データとトラブルシューティングのシナリオを参照してください。
 
 > [!WARNING]
 > クラウド サービスをリサイクルした場合、デプロイメントのプロパティはリセットされ、元の問題に関する情報は事実上失われます。
@@ -85,4 +85,4 @@ VIP スワップを妨げている原因が自動更新であることを確認�
 ## <a name="next-steps"></a>次の手順
 クラウド サービスの他の [トラブルシューティングに関する記事](https://docs.microsoft.com/azure/cloud-services/cloud-services-allocation-failures) を参照します。
 
-Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。
+Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](https://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。

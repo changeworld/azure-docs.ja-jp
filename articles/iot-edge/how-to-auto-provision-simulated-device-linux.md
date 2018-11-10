@@ -4,16 +4,16 @@ description: Linux VM 上のシミュレートされた TPM を使用して Azur
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/27/2018
+ms.date: 10/31/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9609aab6c70bc0c2755de142023bd26e7417987a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: 6d0d2adfb4a727ec93db6d44e6a3e8f923760b91
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347858"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50739670"
 ---
 # <a name="create-and-provision-an-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Linux 仮想マシン上で仮想 TPM を持つ Edge デバイスの作成とプロビジョニングを行う
 
@@ -53,7 +53,7 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
 
 新しい仮想スイッチの作成中にエラーが発生した場合は、イーサネット アダプターを使用している他のスイッチがないこと、および同じ名前を使用している他のスイッチがないことを確認します。 
 
-### <a name="create-virtual-machine"></a>仮想マシンを作成する
+### <a name="create-virtual-machine"></a>仮想マシンの作成
 
 1. 仮想マシンで使用するディスク イメージ ファイルをダウンロードし、ローカルに保存します。 例: [Ubuntu server](https://www.ubuntu.com/download/server) 
 
@@ -63,7 +63,7 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
 
    1. **世代の指定**: **[世代 2]** を選択します。
    2. **ネットワークの構成**: **[接続]** の値を、前のセクションで作成した仮想スイッチに設定します。 
-   3. **インストール オプション**: **[Install an operating system from a bootable image file]\(起動可能イメージ ファイルからオペレーティング システムをインストールする\)** を選択し、ローカルに保存したディスク イメージ ファイルを参照します。
+   3. **インストール オプション**: **[ブート イメージ ファイルからオペレーティング システムをインストールする]** を選択し、ローカルに保存したディスク イメージ ファイルを参照します。
 
 新しい VM の作成には数分かかる可能性があります。 
 
@@ -73,7 +73,7 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
 2. **[セキュリティ]** に移動します。 
 3. **[セキュア ブートを有効にする]** をオフにします。
 4. **[トラステッド プラットフォーム モジュールを有効にする]** をオンにします。 
-5. **[OK]** をクリックします。  
+5. Click **OK**.  
 
 ### <a name="start-the-virtual-machine-and-collect-tpm-data"></a>仮想マシンを起動し、TPM データを収集する
 
@@ -97,7 +97,7 @@ Azure IoT Edge デバイスは、[Device Provisioning Service](../iot-dps/index.
 
 ## <a name="set-up-the-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を設定する
 
-Azure 内に IoT Hub Device Provisioning Service の新しいインスタンスを作成し、それを自分の IoT Hub にリンクします。 [IoT Hub DPS の設定](../iot-dps/quick-setup-auto-provision.md)に関する記事の手順に従うことができます。
+Azure 内に IoT Hub Device Provisioning Service の新しいインスタンスを作成し、それを自分の IoT Hub にリンクします。 手順については、[IoT Hub DPS の設定](../iot-dps/quick-setup-auto-provision.md)に関する記事を参照してください。
 
 Device Provisioning Service を実行した後、概要ページから **[ID スコープ]** の値をコピーします。 この値は、IoT Edge ランタイムを構成するときに使用します。 
 
@@ -180,7 +180,7 @@ IoT Edge ランタイムがデバイスを自動的にプロビジョニング�
    成功の出力は次のようになります。
 
    ```output
-   crw------- 1 root root 10, 224 Jun 28 22:34 /dev/tpm0
+   crw------- 1 root iotedge 10, 224 Jul 20 16:27 /dev/tpm0
    ```
 
 8. IoT Edge ランタイム上書きファイルを開きます。 

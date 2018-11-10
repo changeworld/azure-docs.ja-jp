@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d7f9dfee447cddc771e0e88ca5be04018b51dba2
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: a4117b41700446770e10ef799967ae4a43db342d
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49433557"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227758"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>IoT Edge モジュールの技術アセットの準備
 
@@ -45,7 +45,7 @@ IoT Edge モジュールは、次のプラットフォーム オプションの�
 IoT Edge でサポートされているすべてのレベル 1 プラットフォーム ([Azure IoT Edge サポート](https://docs.microsoft.com/azure/iot-edge/support)に記録されているもの) をサポートします。 より良いカスタマー エクスペリエンスを提供するため、このオプションをお勧めします。 この条件を満たすモジュールが紹介されます。 このプラットフォーム オプションを使用するモジュールは、以下のことが必要です。
 
 - GitHub の [manifest-tool](https://github.com/estesp/manifest-tool) でビルドされたマニフェスト タグである `latest` タグとバージョン タグ (`1.0.1` など) を指定する。
-- [[Marketplace] タブ](./cpp-marketplace-tab.md)を使用して[互換性のある IoT Edge 認定デバイス](http://aka.ms/iot-edge-certified)へのリンクを追加する。 このリンクは、顧客が認定デバイスを参照または検索できる Web サイトである `http://aka.ms/iot-edge-certified` に解決されます。 この Web サイトは、 [Azure IoT Edge 認定](https://catalog.azureiotsolutions.com/)デバイス カタログとも呼ばれます。
+- [[Marketplace] タブ](./cpp-marketplace-tab.md)を使用して[互換性のある IoT Edge 認定デバイス](https://aka.ms/iot-edge-certified)へのリンクを追加する。 このリンクは、顧客が認定デバイスを参照または検索できる Web サイトである `http://aka.ms/iot-edge-certified` に解決されます。 この Web サイトは、 [Azure IoT Edge 認定](https://catalog.azureiotsolutions.com/)デバイス カタログとも呼ばれます。
 
 #### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>IoT Edge によってサポートされるレベル 1 プラットフォームのサブセット
   

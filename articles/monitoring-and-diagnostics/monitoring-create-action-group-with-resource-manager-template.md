@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/16/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 9b49d21dad9bb1e48194cc31940c5cd53c909dc0
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 583a84fd943f6dab63f94e2811e21853e6e5f6a1
+ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35263101"
+ms.lasthandoff: 11/02/2018
+ms.locfileid: "50959173"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用したアクション グループの作成
 この記事では、[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)を使用して、アクション グループを構成する方法について説明します。 テンプレートを使用することで、特定の種類のアラートで再利用できるアクション グループを自動的に設定できます。 このようなアクション グループを使用することで、アラートがトリガーされたときに、すべての適切な関係者が通知を確実に受け取ることができます。
@@ -166,4 +166,4 @@ Resource Manager テンプレートを使用してアクション グループ�
 ## <a name="next-steps"></a>次の手順
 * [アクション グループ](monitoring-action-groups.md)について学習します。
 * [アラート](monitoring-overview-alerts.md)の詳細について学習します。
-* [Resource Manager テンプレートを使用してアクション グループ](monitoring-create-activity-log-alerts-with-resource-manager-template.md)を追加する方法を学習します。
+* [Resource Manager テンプレートを使用してアクション グループ](alert-activity-log.md)を追加する方法を学習します。

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 09/24/2018
-ms.openlocfilehash: 4a867692d3ce509443e5aa94536075fdcd4bab84
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.openlocfilehash: e3b8d6bfaa54991e0e521a0c42eba8ca3f995c92
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945962"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741169"
 ---
 # <a name="what-is-azure-machine-learning-service-preview"></a>Azure Machine Learning サービス (プレビュー) の概要
 
@@ -59,7 +59,7 @@ Azure Machine Learning サービスを使用すると、モデルを自動生成
 
 モデルを作成したら、それを使用してローカルで展開できるコンテナー (Docker など) を作成してテストしてから、[Azure Container Instances](how-to-deploy-to-aci.md) または [Azure Kubernetes Service](how-to-deploy-to-aks.md) で実稼働 Web サービスとして使用します。
 
-デプロイされたモデルは、[Azure portal](https://portal.azure.com/) または [Azure Machine Learning CLI 拡張機能](https://review.docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)を使用して管理できます。
+デプロイされたモデルは、[Azure portal](https://portal.azure.com/) または [Azure Machine Learning CLI 拡張機能](reference-azure-machine-learning-cli.md)を使用して管理できます。
 モデルの実験を追跡しながら、モデルのメトリックを評価し、モデルの新しいバージョンを再トレーニングして再デプロイすることができます。
 
 Azure Machine Learning サービスの基本的な使い方については、後述する「[次の手順](#next-steps)」を参照してください。
@@ -85,6 +85,8 @@ Machine Learning サービスを使用するのは、Python 環境で作業し�
 - 詳細なチュートリアルの「[Train an image classification model with Azure Machine Learning](tutorial-train-models-with-aml.md)」(Azure Machine Learning を使用して画像の分類モデルをトレーニングする) に従って、Azure Machine Learning サービスでモデルをトレーニングおよびデプロイする方法を学びます。
 
 - Azure Machine Learning でモデルの自動生成および自動調整する方法については、[自動化された Azure Machine Learning で分類モデルを自動的にトレーニングする方法に関するチュートリアル](tutorial-auto-train-models.md)を参照してください。
+
+- 機械学習シナリオを構築、最適化、および管理する[機械学習パイプライン](/azure/machine-learning/service/concept-ml-pipelines)について学習します。
 
 - サービスの技術的な詳細情報については、[Azure Machine Learning サービスのアーキテクチャと概念](concept-azure-machine-learning-architecture.md)に関する記事を参照してください。
 

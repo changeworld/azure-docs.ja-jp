@@ -5,23 +5,23 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/30/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: jsimmons
-ms.openlocfilehash: c164c2465a4e9d60159ea9596139f2e4938f792f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 6832f6f9d09cbbfea6ccaa69160ad93209c7ac8c
+ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50242502"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50741183"
 ---
 # <a name="preview-azure-ad-password-protection-monitoring-reporting-and-troubleshooting"></a>プレビュー: Azure AD パスワード保護の監視、レポート、トラブルシューティング
 
 |     |
 | --- |
-| Azure AD パスワード保護と禁止パスワードのカスタム リストは、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
+| Azure AD パスワード保護は、Azure Active Directory のパブリック プレビュー機能です。 詳細については、「[Microsoft Azure プレビューの追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)」を参照してください。|
 |     |
 
 Azure AD のデプロイ後、パスワード保護の監視と報告は重要なタスクです。 この記事では、各サービスが情報をログに記録する場所と、Azure AD パスワード保護の使用について報告する方法を理解できるように詳しく説明しています。
@@ -88,7 +88,7 @@ The reset password for the specified user was rejected because it matched at lea
 
 The password for the specified user was accepted because an Azure password policy is not available yet
 
-UserName: <user> FullName: <user>
+UserName: SomeUser FullName: Some User
 
 This condition may be caused by one or more of the following reasons:%n
 

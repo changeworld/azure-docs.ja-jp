@@ -3,7 +3,7 @@ title: Azure Security Center でのセキュリティの警告の管理 | Micros
 description: このドキュメントは、Azure セキュリティ センターの機能を使用してセキュリティの警告の管理と対応することに役立ちます。
 services: security-center
 documentationcenter: na
-author: terrylan
+author: rkarlin
 manager: mbaldwin
 editor: ''
 ms.assetid: b88a8df7-6979-479b-8039-04da1b8737a7
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/3/2018
-ms.author: yurid
-ms.openlocfilehash: f139f2f967edc03419f41f8c903c71b9ab9e6fcb
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.author: rkarlin
+ms.openlocfilehash: f865a0a609422ae4938a9cccf15d9cd176a9400a
+ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48044435"
+ms.lasthandoff: 11/07/2018
+ms.locfileid: "51227792"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>Azure セキュリティ センターでのセキュリティの警告の管理と対応
 このドキュメントは、Azure Security Center を使用してセキュリティの警告を管理し、必要な対応を行う際にお役立てください。
@@ -95,4 +95,4 @@ Security Center から提案される修復方法は、セキュリティ アラ
 * [Azure Security Center の検出機能](security-center-detection-capabilities.md)
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
+* [Azure セキュリティ ブログ](https://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。

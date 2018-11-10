@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.workload: data-services
 ms.date: 04/09/2018
-ms.author: jasonh
+ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 50ea4dafe7edfdeb851ad6d9cc42a7bca262e970
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 0a187bbc476738294e2f7f31de4e11ea92e604f9
+ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49985813"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50978002"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブから Azure Functions を実行する 
 
@@ -196,6 +196,13 @@ Azure サブスクリプションがない場合は、開始する前に[無料�
    このコマンドにより、指定したキーの値が出力されるはずです。
 
    ![Azure Redis Cache 出力のスクリーンショット](./media/stream-analytics-with-azure-functions/image5.png)
+   
+## <a name="error-handling-and-retries"></a>エラー処理と再試行
+Stream Analytics は、Azure Functions へのイベントの送信中にエラーが発生した場合、操作を正常に完了するために再試行します。 ただし、再試行が行われないエラーがいくつかあります。たとえば、次のようなエラーです。
+
+ 1. HttpRequestExceptions
+ 2. 要求のエンティティが大きすぎます (Http エラー コード 413)
+ 3. ApplicationExceptions
 
 ## <a name="known-issues"></a>既知の問題
 

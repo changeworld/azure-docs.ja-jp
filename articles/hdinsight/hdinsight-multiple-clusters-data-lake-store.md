@@ -3,19 +3,19 @@ title: Azure Data Lake Store アカウントで複数の HDInsight クラスタ�
 description: 1 つの Data Lake Store アカウントで複数の HDInsight クラスターを使用する方法を学習する
 keywords: hdinsight ストレージ,hdfs,構造化データ,非構造化データ, Data Lake Store
 services: hdinsight,storage
-author: jasonwhowell
+author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: jasonh
-ms.openlocfilehash: eb046e62b5ed2d9512af0d25908c3253962f5a6a
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.author: hrasheed
+ms.openlocfilehash: f92100e6e4dd7569a109aa01f3c998777568cce3
+ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954673"
+ms.lasthandoff: 11/05/2018
+ms.locfileid: "51004594"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-store-account"></a>Azure Data Lake Store アカウントで複数の HDInsight クラスターを使用する
 

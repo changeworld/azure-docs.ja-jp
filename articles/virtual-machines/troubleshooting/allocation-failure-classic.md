@@ -10,14 +10,14 @@ tags: top-support-issue,azure-resource-manager,azure-service-management
 ms.assetid: bb939e23-77fc-4948-96f7-5037761c30e8
 ms.service: virtual-machines
 ms.topic: troubleshooting
-ms.date: 04/13/2018
+ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 786957f8b6aa8721a0613260f6c4a6ec6e06ef45
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 7cd7897e3a0b940bbc636b2fbc3dbbc13b7cf540
+ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47412634"
+ms.lasthandoff: 11/01/2018
+ms.locfileid: "50748427"
 ---
 # <a name="troubleshooting-steps-specific-to-allocation-failure-scenarios-in-the-classic-deployment-model"></a>クラシック デプロイ モデルでの特定の割り当てエラー シナリオのトラブルシューティング手順
 
